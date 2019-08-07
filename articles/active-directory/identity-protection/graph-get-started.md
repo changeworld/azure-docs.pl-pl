@@ -11,20 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f939811bec312baa1f4c37f0f915d2e881121af
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 1640511c2f97865f5026f9f977ed0e4a9c03e338
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334082"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774373"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Wprowadzenie do Azure Active Directory Identity Protection i Microsoft Graph
 
-Microsoft Graph to punkt końcowy Microsoft Unified API i Strona główna [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) interfejsów API. Istnieją trzy interfejsy API, które ujawniają informacje o ryzykownych użytkownikach i logowaniach. Pierwszy interfejs API, **identityRiskEvents**, umożliwia wysyłanie zapytań do Microsoft Graph, aby uzyskać listę [zdarzeń](../reports-monitoring/concept-risk-events.md) o podwyższonym ryzyku i związanych z nią informacji. Drugi interfejs API, **riskyUsers**, umożliwia wysyłanie zapytań do Microsoft Graph, aby uzyskać informacje o ochronie tożsamości użytkowników wykryte jako ryzyko. Trzeci interfejs API, usługa **logowania**, umożliwia wysyłanie zapytań do Microsoft Graph, aby uzyskać informacje na temat logowania do usługi Azure AD z określonymi właściwościami związanymi ze stanem ryzyka, szczegółami i poziomami. W tym artykule opisano rozpoczęcie łączenia się z Microsoft Graph i wykonywania zapytań dotyczących tych interfejsów API. Aby uzyskać szczegółowe informacje, pełną dokumentację i dostęp do Eksploratora grafów, zapoznaj się z [witryną Microsoft Graph](https://graph.microsoft.io/) lub z konkretną dokumentacją dotyczącą tych interfejsów API:
+Microsoft Graph to punkt końcowy Microsoft Unified API i Strona główna [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) interfejsów API. Istnieją cztery interfejsy API, które ujawniają informacje o ryzykownych użytkownikach i logowaniach. Pierwszy interfejs API, **riskDetection**, umożliwia wysyłanie zapytań do Microsoft Graph, aby uzyskać listę wykrytych i powiązanych z nimi wykrytych zagrożeń oraz informacje o wykrywaniu. Drugi interfejs API, **riskyUsers**, umożliwia wysyłanie zapytań do Microsoft Graph, aby uzyskać informacje o ochronie tożsamości użytkowników wykryte jako ryzyko. Trzeci interfejs API, usługa **logowania**, umożliwia wysyłanie zapytań do Microsoft Graph, aby uzyskać informacje na temat logowania do usługi Azure AD z określonymi właściwościami związanymi ze stanem ryzyka, szczegółami i poziomami. Czwarty interfejs API, **identityRiskEvents**, umożliwia wysyłanie zapytań do Microsoft Graph, aby uzyskać listę [zdarzeń o podwyższonym ryzyku](../reports-monitoring/concept-risk-events.md) i związanych z nimi informacji. W tym artykule opisano rozpoczęcie łączenia się z Microsoft Graph i wykonywania zapytań dotyczących tych interfejsów API. Aby uzyskać szczegółowe informacje, pełną dokumentację i dostęp do Eksploratora grafów, zapoznaj się z [witryną Microsoft Graph](https://graph.microsoft.io/) lub z konkretną dokumentacją dotyczącą tych interfejsów API:
 
-* [Interfejs API identityRiskEvents](https://docs.microsoft.com/graph/api/resources/identityriskevent?view=graph-rest-beta)
+* [Interfejs API riskDetection](https://docs.microsoft.com/graph/api/resources/riskdetection?view=graph-rest-beta)
 * [riskyUsers API](https://docs.microsoft.com/graph/api/resources/riskyuser?view=graph-rest-beta)
 * [Interfejs API logowania](https://docs.microsoft.com/graph/api/resources/signin?view=graph-rest-beta)
+* [Interfejs API identityRiskEvents](https://docs.microsoft.com/graph/api/resources/identityriskevent?view=graph-rest-beta)
 
 ## <a name="connect-to-microsoft-graph"></a>Połącz z programem Microsoft Graph
 
@@ -194,6 +195,14 @@ Po prostu Dodaj swój identyfikator klienta, klucz tajny i domenę dzierżawy.
 ## <a name="query-the-apis"></a>Wykonywanie zapytań dotyczących interfejsów API
 
 Te trzy interfejsy API zapewniają wiele możliwości pobierania informacji o ryzykownych użytkownikach i logowaniach w organizacji. Poniżej przedstawiono niektóre typowe przypadki użycia tych interfejsów API i skojarzone przykładowe żądania. Można uruchamiać te zapytania przy użyciu przykładowego kodu powyżej lub za pomocą [Eksploratora grafów](https://developer.microsoft.com/graph/graph-explorer).
+
+### <a name="get-all-of-the-offline-risk-detections-riskdetection-api"></a>Pobierz wszystkie wykrycia ryzyka w trybie offline (riskDetection API)
+
+Zasady dotyczące ryzyka związanego z logowaniem do programu Identity Protection umożliwiają stosowanie warunków w przypadku wykrycia ryzyka w czasie rzeczywistym. Ale informacje o wykryciu wykrywanych w trybie offline (w czasie rzeczywistym)? Aby zrozumieć, jakie wykryte wystąpienia wystąpiły w trybie offline i w rezultacie nie wywołały zasad dotyczących ryzyka związanego z logowaniem, można wysłać zapytanie do interfejsu API riskDetection.
+
+```
+GET https://graph.microsoft.com/beta/riskDetections?$filter=detectionTimingType eq 'offline'
+```
 
 ### <a name="get-the-high-risk-and-medium-risk-events-identityriskevents-api"></a>Pobierz zdarzenia wysokiego ryzyka i średniego ryzyka (identityRiskEvents API)
 

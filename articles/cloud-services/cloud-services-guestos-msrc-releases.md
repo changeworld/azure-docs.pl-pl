@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 7/26/2019
+ms.date: 8/2/2019
 ms.author: raiye
-ms.openlocfilehash: dd0adbe7cc27389e3b1d6533b038042824daea22
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 534a77ad29338ca1cdba22a3adeb8113521a6246
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592431"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780089"
 ---
 # <a name="azure-guest-os"></a>System operacyjny gościa platformy Azure
 W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Response Center (MSRC) zastosowane do systemu operacyjnego gościa platformy Azure. Przeszukaj ten artykuł, aby ustalić, czy dana aktualizacja dotyczy systemu operacyjnego gościa, którego używasz. Aktualizacje są zawsze przenoszone dla określonej [rodziny][family-explain] , w której zostały wprowadzone.
@@ -28,7 +28,6 @@ W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Respo
 | Kategoria produktu | Nadrzędny artykuł bazy wiedzy | Opis luki w zabezpieczeniach | System operacyjny gościa | Data wprowadzenia po raz pierwszy |
 | --- | --- | --- | --- | --- |
 |  Rel 19-07   |  [4507434]  |  Internet Explorer   |  2,88, 3,75, 4,68  |  9 lipca 2019  |
-|  Rel 19-07   |  [4506621]  |  Zabezpieczenia systemu Windows   |  2,88, 3,75, 4,68  |  9 lipca 2019  |
 |  Rel 19-07   |  [4506966]  |  Zabezpieczenia .NET 4.5.2   |  2,88  |  9 lipca 2019  |
 |  Rel 19-07   |  [4506976]  |  Zabezpieczenia programu .NET 3.5.1   |  2,88  |  9 lipca 2019  |
 |  Rel 19-07   |  [4507456]  |  Zabezpieczenia systemu Windows   |  2,88  |  9 lipca 2019  |

@@ -1,6 +1,6 @@
 ---
-title: Tekst, Podziel umiejętności wyszukiwania kognitywnego — usługa Azure Search
-description: Podziel tekst na fragmenty lub strony tekstu, na podstawie długości w usłudze Azure Search wzbogacony potok.
+title: Umiejętność wyszukiwania poznawczego w postaci tekstu — Azure Search
+description: Przerwij tekst w fragmentach lub stronach tekstu na podstawie długości w potoku wzbogacenia Azure Search.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -10,50 +10,50 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: c7f5fda405ca0e5ba9cf1dd0ed44c47cd3ee74b1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.subservice: cognitive-search
+ms.openlocfilehash: 8fb7ff51507212dfb162c09fcee469d6f154f3c3
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65949863"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840888"
 ---
-#   <a name="text-split-cognitive-skill"></a>Tekst, Podziel umiejętności cognitive
+#   <a name="text-split-cognitive-skill"></a>Umiejętność rozdzielania tekstu
 
-**Dzielenie tekstu** umiejętności dzieli tekst na fragmenty tekstu. Można określić, czy użytkownik chce podzielić go na zdania lub do stron o określonej długości. To umiejętności jest szczególnie przydatne w przypadku tekstu wymagania dotyczące długości w innych umiejętności podrzędne. 
+Umiejętności **podziału tekstu** dzieli tekst na fragmenty tekstu. Można określić, czy tekst ma być podzielony na zdania, czy na strony o określonej długości. Ta umiejętność jest szczególnie przydatna, jeśli istnieją maksymalne wymagania dotyczące długości tekstu w innych umiejętnościach. 
 
 > [!NOTE]
-> Umiejętności, to nie jest powiązany z interfejsu API usług Cognitive Services i nie są naliczane dotyczące korzystania z niego. Powinna nadal [dołączenia zasobu usług Cognitive Services](cognitive-search-attach-cognitive-services.md), jednak aby zastąpić **bezpłatna** resource — Opcja ograniczająca na niewielką liczbę dziennych wzbogacenia dziennie.
+> Ta umiejętność nie jest powiązana z interfejsem API Cognitive Services i nie jest naliczana opłata za korzystanie z niego. Mimo to należy [dołączyć zasób Cognitive Services](cognitive-search-attach-cognitive-services.md), aby zastąpić opcję bezpłatnych zasobów , która ogranicza liczbę codziennych wzbogacań dziennie.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.SplitSkill 
 
-## <a name="skill-parameters"></a>Parametry kwalifikacji
+## <a name="skill-parameters"></a>Parametry umiejętności
 
-Parametrów jest rozróżniana wielkość liter.
+W parametrach jest rozróżniana wielkość liter.
 
 | Nazwa parametru     | Opis |
 |--------------------|-------------|
-| textSplitMode      | "Pojęcie strony" lub "zdania" | 
-| maximumPageLength | Jeśli textSplitMode "strony" odnosi się to do długość maksymalna strony, gdyż jest mierzone przez `String.Length`. Wartość minimalna wynosi 100.  Jeśli textSplitMode jest ustawiona na "strony", algorytm podejmie próbę podzielić tekst fragmentów, do których należą do co najwyżej "maximumPageLength" rozmiar. W tym przypadku algorytm będzie wykonywać doskonale na Podziel zdania na granicy zdania, dlatego rozmiar fragmentu może być nieco mniej niż "maximumPageLength". | 
-| defaultLanguageCode   | (opcjonalnie) Jedną z następujących kodach języków: `da, de, en, es, fi, fr, it, ko, pt`. Wartością domyślną jest angielski (en). Kwestie do rozważenia:<ul><li>W przypadku przekazania format languagecode countrycode jest używana tylko część languagecode format.</li><li>Jeśli język nie jest na poprzedniej liście, umiejętności podziału dzieli tekst na granicach znaków.</li><li>Dostarczanie kodu języka jest przydatna, aby uniknąć Wycinanie wyrazu w połowie języków innych niż spacja, takich jak języka chińskiego, japońskiego i koreańskiego.</li></ul>  |
+| textSplitMode      | "Strony" lub "zdania" | 
+| maximumPageLength | Jeśli textsplitmode ma wartość "Pages", odnosi się do maksymalnej długości strony, która jest `String.Length`mierzona przez. Wartość minimalna to 100.  Jeśli element textsplitmode ma wartość "Pages", algorytm podejmie próbę podzielenia tekstu na fragmenty o rozmiarze co najwyżej "maximumPageLength". W takim przypadku algorytm będzie optymalnie dzielić zdanie na granicy zdania, więc rozmiar fragmentu może być nieco mniejszy niż "maximumPageLength". | 
+| defaultLanguageCode   | obowiązkowe Jeden z następujących kodów języka: `da, de, en, es, fi, fr, it, ko, pt`. Wartość domyślna to angielski (EN). Kilka kwestii, które należy wziąć pod uwagę:<ul><li>Jeśli przekażesz format languagecode-CountryCode, zostanie użyta tylko część languagecode formatu.</li><li>Jeśli język nie znajduje się na poprzedniej liście, podzielona umiejętność zrywa tekst w granicach znaku.</li><li>Podawanie kodu języka jest przydatne, aby uniknąć wycinania wyrazu w połowie dla języków bez miejsca, takich jak chiński, japoński i koreański.</li></ul>  |
 
 
-## <a name="skill-inputs"></a>Dane wejściowe umiejętności
+## <a name="skill-inputs"></a>Dane wejściowe kwalifikacji
 
 | Nazwa parametru       | Opis      |
 |----------------------|------------------|
-| tekst  | Tekst, który można podzielić na podciąg. |
-| languageCode  | (Opcjonalnie) Kod języka dla danego dokumentu.  |
+| text  | Tekst, który ma zostać podzielony na podciąg. |
+| languageCode  | Obowiązkowe Kod języka dla dokumentu.  |
 
-## <a name="skill-outputs"></a>Dane wyjściowe umiejętności 
+## <a name="skill-outputs"></a>Wyniki umiejętności 
 
 | Nazwa parametru     | Opis |
 |--------------------|-------------|
-| textItems | Tablica podciągi, które zostały wyodrębnione. |
+| textitems | Tablica podciągów, które zostały wyodrębnione. |
 
 
-##  <a name="sample-definition"></a>Przykładowa definicja
+##  <a name="sample-definition"></a>Definicja Przykładowa
 
 ```json
 {
@@ -130,10 +130,10 @@ Parametrów jest rozróżniana wielkość liter.
 }
 ```
 
-## <a name="error-cases"></a>W przypadku wystąpienia błędów
-Jeśli język nie jest obsługiwany, generowane jest ostrzeżenie, a tekst jest podzielony na granicach znaków.
+## <a name="error-cases"></a>Przypadki błędów
+Jeśli język nie jest obsługiwany, generowane jest ostrzeżenie, a tekst jest dzielony w granicach znaków.
 
 ## <a name="see-also"></a>Zobacz także
 
 + [Wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md)
-+ [Jak Definiowanie zestawu umiejętności](cognitive-search-defining-skillset.md)
++ [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)

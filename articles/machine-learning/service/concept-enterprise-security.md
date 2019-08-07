@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/10/2019
-ms.openlocfilehash: f9fd9f88a0aa6af9cd4160bf5879b9b8f383dca1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: f0fb6f0d2b2579679ee8a6ec43b3241377701d48
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720425"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780897"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Zabezpieczenia przedsiębiorstwa dla usługi Azure Machine Learning
 
@@ -161,7 +161,7 @@ Wszystkie obrazy kontenerów w rejestrze (ACR) są szyfrowane w stanie spoczynku
 
 Dysk systemu operacyjnego dla każdego węzła obliczeniowego jest przechowywany w usłudze Azure Storage przy użyciu kluczy zarządzanych przez firmę Microsoft w ramach kont magazynu usługi Azure Machine Learning. To obliczenie jest tymczasowe, a klastry są zwykle skalowane w dół, gdy nie ma żadnych uruchomionych w kolejce. Podstawowa maszyna wirtualna jest nieobsługiwana i dysk systemu operacyjnego został usunięty. Usługa Azure Disk Encryption nie jest obsługiwana w przypadku dysku systemu operacyjnego.
 Każda maszyna wirtualna ma także lokalny dysk tymczasowy dla operacji systemu operacyjnego. Ten dysk może być również opcjonalnie używany do przygotowywania danych szkoleniowych. Ten dysk nie jest szyfrowany.
-Aby uzyskać więcej informacji na temat sposobu, w jaki szyfrowanie w spoczynku działa na platformie Azure, zobacz [szyfrowanie danych na platformie Azure](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest).
+Aby uzyskać więcej informacji na temat sposobu, w jaki szyfrowanie w spoczynku działa na platformie Azure, zobacz [szyfrowanie danych na platformie Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest).
 
 ### <a name="encryption-in-transit"></a>Szyfrowanie podczas przesyłania
 
@@ -252,7 +252,7 @@ Zobacz szczegóły poniżej:
 
 ![Zrzut ekranu przedstawiający przepływ pracy tworzenia obszaru roboczego](./media/enterprise-readiness/inferencing.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Zabezpieczania usług sieci web Azure Machine Learning przy użyciu protokołu SSL](how-to-secure-web-service.md)
 * [Korzystanie z modelu uczenia Maszynowego, wdrożyć jako usługę sieci web](how-to-consume-web-service.md)

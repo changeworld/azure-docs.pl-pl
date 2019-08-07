@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: a4947349e64d5f9bf95a9213701dc62a0e018b8f
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 300dd634cc99e5203145619b475d813705f09553
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501306"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815690"
 ---
 # <a name="create-a-new-saas-offer"></a>Utwórz nową ofertę SaaS
 
@@ -271,7 +271,7 @@ Aby dowiedzieć się, jak będzie bardziej atrakcyjny opis oferty, możesz uży�
         <li> tutaj Dodaj tekst </li> 
     </ul> 
 
-1. Aby  pogrubić zawartość `<b>` , Dodaj na początku tekstu, który ma być pogrubiony, `</b>` i Dodaj na końcu tekstu, który ma być pogrubiony. 
+1. Aby pogrubić zawartość `<b>` , Dodaj na początku tekstu, który ma być pogrubiony, `</b>` i Dodaj na końcu tekstu, który ma być pogrubiony. 
 
     **Przykład**: `<b>`BEZPŁATNA WERSJA PRÓBNA`</b>`
     
@@ -431,7 +431,7 @@ Jeśli już ustawisz ceny dla planu w Stany Zjednoczone dolarów (USD) i dodasz 
 
 **Stała stawka:** Zapewnij dostęp do oferty przy użyciu jednej ceny miesięcznej lub rocznej ceny ryczałtowej. Jest to czasami określane jako Cennik oparty na witrynie. Korzystając z tego modelu cen, można opcjonalnie zdefiniować plany taryfowe używające interfejsu API usługi pomiarowej Marketplace do naliczania opłat klientom zgodnie z jednostkami niestandardowymi.  Aby uzyskać więcej informacji na temat rozliczeń naliczanych, zobacz opłaty [naliczane przy użyciu usługi pomiaru Marketplace](./saas-metered-billing.md).
 
-**Na podstawie miejsca:** Zapewnij dostęp do oferty przy użyciu ceny na podstawie liczby użytkowników, którzy uzyskują dostęp do oferty lub zajmują *stanowiska*. Ten model oparty na miejscu umożliwia ustawienie minimalnej i maksymalnej liczby miejsc dozwolonych na podstawie ceny. W ten sposób można skonfigurować różne punkty cenowe na podstawie liczby użytkowników, konfigurując wiele planów.  Te pola są opcjonalne. W przypadku pozostawienia pustej liczby miejsc będą interpretowane jako nie mające limitu (minimum 1 i maksimum, tak jak system może obsługiwać). Te pola mogą być edytowane w ramach aktualizacji planu.
+**Na użytkownika:** Zapewnij dostęp do oferty przy użyciu ceny na podstawie liczby użytkowników, którzy uzyskują dostęp do oferty lub zajmują stanowiska. Ten model oparty na użytkownikach umożliwia ustawienie minimalnej i maksymalnej liczby użytkowników dozwolonych na podstawie ceny. W ten sposób można skonfigurować różne punkty cenowe na podstawie liczby użytkowników, konfigurując wiele planów.  Te pola są opcjonalne. Jeśli pole pozostanie puste, liczba użytkowników będzie interpretowana jako nie ma limitu (minimum 1 i maksimum, tak jak system może obsługiwać). Te pola mogą być edytowane w ramach aktualizacji planu.
 
 Po opublikowaniu wyboru modelu cen rozliczeniowych nie można zmienić. Ponadto wszystkie plany dla tej samej oferty muszą mieć ten sam model cen.
 
@@ -495,7 +495,7 @@ Szablon wdrożenia zawierający wszystkie zasoby platformy Azure, które składa
 
 - **Wystąpienia**: Wybierz typ (gorąca lub zimna) oraz liczbę dostępnych wystąpień, które zostaną pomnożone przez liczbę regionów, w których oferta jest dostępna.
 
-**Gorąca**: Ten typ wystąpienia jest wdrożony i oczekuje na dostęp w wybranym regionie. Klienci mogą natychmiast uzyskać  dostęp do gorącego wystąpienia dysku testowego, a nie muszą czekać na wdrożenie. Jego wadą jest to, że te wystąpienia są zawsze uruchamiane na Twojej subskrypcji platformy Azure, spowoduje naliczenie opłaty za większych przestojów, koszt. Zdecydowanie zaleca się, aby miało co najmniej jedno *aktywne* wystąpienie, ponieważ większość klientów nie chce czekać na pełne wdrożenia, co powoduje odrzucanie w przypadku użycia klienta w przypadku braku dostępnego *wystąpienia.*
+**Gorąca**: Ten typ wystąpienia jest wdrożony i oczekuje na dostęp w wybranym regionie. Klienci mogą natychmiast uzyskać dostęp do gorącego wystąpienia dysku testowego, a nie muszą czekać na wdrożenie. Jego wadą jest to, że te wystąpienia są zawsze uruchamiane na Twojej subskrypcji platformy Azure, spowoduje naliczenie opłaty za większych przestojów, koszt. Zdecydowanie zaleca się, aby miało co najmniej jedno *aktywne* wystąpienie, ponieważ większość klientów nie chce czekać na pełne wdrożenia, co powoduje odrzucanie w przypadku użycia klienta w przypadku braku dostępnego wystąpienia.
 
 **Zimne**: Ten typ wystąpienia reprezentuje łączną liczbę wystąpień, które mogą być wdrożone w poszczególnych regionach. Zimne wystąpienia wymagają, aby cały dysk testowy Menedżer zasobów szablon do wdrożenia, gdy klient zażąda dysku testowego, więc *zimne* wystąpienia są znacznie wolniejsze, aby można było ładować je od *aktywnych* wystąpień. Wadą jest to, że musisz tylko uregulować czas trwania testu, ale *nie* zawsze działa w ramach subskrypcji platformy Azure, tak jak w przypadku wystąpienia *aktywnego* .
 
@@ -585,6 +585,6 @@ Jeśli ta oferta jest publikowana po raz pierwszy, możesz:
 - Podaj instrukcje dotyczące testowania dla zespołu certyfikacji, aby upewnić się, że aplikacja została prawidłowo przetestowana, a także wszelkich dodatkowych notatek przydatnych w zrozumieniu swojej aplikacji.
 - Prześlij ofertę do opublikowania, wybierając pozycję **Prześlij**. Wyślemy Ci wiadomość e-mail z prośbą o udostępnienie wersji zapoznawczej oferty, którą można przejrzeć i zatwierdzić. Musisz wrócić do Centrum partnerskiego i wybrać pozycję **Przejdź na żywo** , aby uzyskać ofertę opublikowania oferty na publiczną (lub w przypadku prywatnej oferty dla odbiorców prywatnych).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Aktualizowanie istniejącej oferty w komercyjnej witrynie Marketplace](./update-existing-offer.md)

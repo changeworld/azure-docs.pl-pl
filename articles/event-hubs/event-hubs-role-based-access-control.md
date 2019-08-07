@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 05/21/2019
 ms.author: shvija
-ms.openlocfilehash: dfdeee9591b5d6ccbadadaef83c6598dd0e850d8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 117b7d4adb508628ee768bb9531d0bbc52f61121
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448144"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816060"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Kontrola dostępu w usłudze Active Directory Role-Based (wersja zapoznawcza)
 
@@ -27,19 +27,19 @@ Dla usługi Azure Event Hubs zarządzania przestrzenie nazw i wszystkie pokrewne
 Aplikacja, która korzysta z usługi Azure AD RBAC nie trzeba obsługiwać zasady sygnatury dostępu Współdzielonego i klucze lub innych tokenów dostępu, specyficzne dla usługi Event Hubs. Aplikacja kliencka wchodzi w interakcję z usługą Azure AD, aby ustanowić kontekstu uwierzytelniania, a następnie uzyskuje token dostępu dla usługi Event Hubs. Przy użyciu kont użytkowników domeny, które wymagają logowania interakcyjnego aplikacja nigdy nie obsługuje żadnych poświadczeń bezpośrednio.
 
 ## <a name="event-hubs-roles-and-permissions"></a>Event Hubs role i uprawnienia
-System Azure oferuje następujące wbudowane role kontroli RBAC Autoryzowanie dostępu do przestrzeni nazw usługi Event Hubs:
+Platforma Azure udostępnia następujące wbudowane role RBAC do autoryzacji dostępu do Event Hubs przestrzeni nazw:
 
-[Właściciel danych centra zdarzeń Azure (wersja zapoznawcza)](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner-preview) rola umożliwia dostęp do danych w przestrzeni nazw usługi Event Hubs i jej podmioty (kolejki, tematy, subskrypcje i filtrów)
+Rola [właściciel danych Event Hubs systemu Azure (wersja zapoznawcza)](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner-preview) umożliwia dostęp do danych do przestrzeni nazw Event Hubs i jej jednostek (kolejek, tematów, subskrypcji i filtrów)
 
 >[!IMPORTANT]
-> Wcześniej obsługiwane dodawanie zarządzanych tożsamości w celu **właściciela** lub **Współautor** roli. Jednak uprawnienia dostępu do danych **właściciela** i **Współautor** roli nie są już uznawane. Jeśli używasz **właściciela** lub **Współautor** roli, przełącz się do przy użyciu **właściciel danych centra zdarzeń Azure (wersja zapoznawcza)** roli.
+> Wcześniej obsługujemy Dodawanie tożsamości zarządzanej do roli **właściciela** lub współautora. Jednak uprawnienia dostępu do danych dla roli **właściciela** i współautora nie są już honorowane. Jeśli używasz roli **właściciela** lub współautora, przełącz się do korzystania z roli **właściciel danych Event Hubs platformy Azure (wersja zapoznawcza)** .
 
 
 ## <a name="use-event-hubs-with-an-azure-ad-domain-user-account"></a>Usługa Event Hubs przy użyciu konta użytkownika domeny usługi Azure AD
 
 W poniższej sekcji opisano kroki wymagane do tworzenia i uruchamiania przykładowej aplikacji, która wyświetla monit dotyczący interaktywnego platformy Azure użytkownika usługi AD w celu logowania się, jak udzielić dostępu usługi Event Hubs do tego konta użytkownika i jak dostęp do usługi Event Hubs za pomocą tej tożsamości. 
 
-Tego wprowadzenia opisano prostej aplikacji konsolowej, [kodu, dla którego znajduje się w witrynie GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Rbac/EventHubsSenderReceiverRbac/)
+W tym artykule opisano prostą aplikację konsolową, [kod, dla którego znajduje się w serwisie GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/AzureEventHubsSDK)
 
 ### <a name="create-an-active-directory-user-account"></a>Tworzenie konta użytkownika usługi Active Directory
 
@@ -49,7 +49,7 @@ Jeśli nadal chcesz utworzyć konto określone w tym scenariuszu [wykonaj nastę
 
 ### <a name="create-an-event-hubs-namespace"></a>Tworzenie przestrzeni nazw usługi Event Hubs
 
-Następnie [tworzenie przestrzeni nazw usługi Event Hubs](event-hubs-create.md). 
+Następnie [Utwórz przestrzeń nazw Event Hubs](event-hubs-create.md). 
 
 Po utworzeniu przestrzeni nazw, przejdź do jej **kontrola dostępu (IAM)** strony w portalu, a następnie kliknij przycisk **Dodaj przypisanie roli** można dodać konto użytkownika usługi Azure AD do roli właściciel. Jeśli używasz konta użytkownika, a następnie utworzono przestrzeń nazw, użytkownik jest już w roli właściciela. Aby dodać innego konta do roli, wyszukaj nazwę aplikacji sieci web w **Dodaj uprawnienia** panelu **wybierz** pola, a następnie kliknij pozycję. Następnie kliknij przycisk **Save** (Zapisz). Konto użytkownika ma teraz dostęp do przestrzeni nazw usługi Event Hubs i Centrum zdarzeń została wcześniej utworzona.
  
@@ -65,18 +65,18 @@ Kroki szczegółowe rejestracji są wyjaśnione w [w tym samouczku](../active-di
 
 Przed uruchomieniem próbki, Edytuj plik App.config i zależnie od scenariusza, ustaw następujące wartości:
 
-- `tenantId`: Ustaw **TenantId** wartości.
-- `clientId`: Ustaw **ApplicationId** wartość. 
-- `clientSecret`: Jeśli chcesz zalogować się przy użyciu klucza tajnego klienta, należy go utworzyć w usłudze Azure AD. Ponadto używane zamiast aplikacji natywnej aplikacji sieci web lub interfejsu API. Ponadto Dodaj aplikację w obszarze **kontrola dostępu (IAM)** w przestrzeni nazw utworzone wcześniej.
-- `eventHubNamespaceFQDN`: Ustaw na w pełni kwalifikowana nazwa DNS nowo utworzonej przestrzeni nazw usługi Event Hubs; na przykład `example.servicebus.windows.net`.
-- `eventHubName`: Ustaw nazwę Centrum zdarzeń, który został utworzony.
+- `tenantId`: Ustaw wartość **TenantId** .
+- `clientId`: Ustaw wartość na identyfikator **aplikacji** . 
+- `clientSecret`: Jeśli chcesz zalogować się przy użyciu klucza tajnego klienta, utwórz go w usłudze Azure AD. Ponadto używane zamiast aplikacji natywnej aplikacji sieci web lub interfejsu API. Ponadto Dodaj aplikację w obszarze **kontrola dostępu (IAM)** w przestrzeni nazw utworzone wcześniej.
+- `eventHubNamespaceFQDN`: Ustaw na w pełni kwalifikowaną nazwę DNS nowo utworzonej Event Hubs przestrzeni nazw; na przykład `example.servicebus.windows.net`.
+- `eventHubName`: Ustaw na nazwę utworzonego centrum zdarzeń.
 - Identyfikator URI przekierowania określone w aplikacji w poprzednich krokach.
  
 Po uruchomieniu aplikacji konsoli, monit o wybór scenariusza; Kliknij przycisk **interakcyjnego logowania użytkownika** , wpisując jego numer, a następnie naciskając klawisz ENTER. Aplikacja wyświetli okno logowania, poprosi o podanie Twojej zgody na dostęp do usługi Event Hubs i następnie używa usługi, aby uruchamiać funkcję wysyłania i odbierania scenariusza, przy użyciu tożsamości logowania.
 
-Ta aplikacja używa `ServiceAudience.EventHubsAudience` jako odbiorców tokenu. Gdy przy użyciu innych języków lub zestawów SDK, których nie jest dostępna jako stała odbiorców, jest wartość prawej strony, aby użyć `https://eventhubs.azure.net/`.
+Aplikacja używa `ServiceAudience.EventHubsAudience` jako odbiorców tokenu. W przypadku korzystania z innych języków lub zestawów SDK, w których odbiorcy nie są dostępni jako stała, odpowiednia wartość `https://eventhubs.azure.net/`do użycia to.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat usługi Event Hubs, skorzystaj z następujących linków:
 

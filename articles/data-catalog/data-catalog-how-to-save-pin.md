@@ -1,80 +1,78 @@
 ---
-title: Zapisywanie wyszukiwań i numer pin zasobów danych w usłudze Azure Data Catalog
-description: Artykuł porad wyróżniania możliwości usługi Azure Data Catalog zapisywania źródła danych i zasobów danych w celu późniejszego użycia.
-services: data-catalog
+title: Zapisywanie wyszukiwań i Przypinanie zasobów danych w Azure Data Catalog
+description: Funkcje wyróżniania artykułów w Azure Data Catalog do zapisywania źródeł danych i zasobów danych do późniejszego użycia.
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 6bd00a81-820d-4b7c-91fa-ab09e575474c
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: df3220ddb80ebc329ed6b0024ca4eefd2bdfb321
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/01/2019
+ms.openlocfilehash: 8e2a98748f4fef69b4fd6e3b32d15560641a6336
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61002066"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68737054"
 ---
-# <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>Zapisywanie wyszukiwań i numer pin zasobów danych w usłudze Azure Data Catalog
+# <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>Zapisywanie wyszukiwań i Przypinanie zasobów danych w Azure Data Catalog
 ## <a name="introduction"></a>Wprowadzenie
-Usługa Azure Data Catalog udostępnia możliwości Odnajdowanie źródeł danych. Możesz szybko wyszukiwanie i filtrowanie katalogu odnajdywania źródeł danych i zrozumienie ich przeznaczenie, co ułatwia znalezienie odpowiednich danych dla zadania pod ręką.
+Azure Data Catalog zapewnia możliwości odnajdowania źródeł danych. Można szybko wyszukiwać i filtrować wykaz, aby zlokalizować źródła danych i zrozumieć ich zamierzone przeznaczenie, ułatwiając znalezienie odpowiednich danych dla zadania.
 
-Ale co zrobić, jeśli należy regularnie pracować z tymi samymi danymi? I co zrobić, jeśli użytkownicy będą mieli regularnie swojej wiedzy, aby te same źródła danych w wykazie? W takich sytuacjach wielokrotnego wydania tej samej operacji wyszukiwania może być mało wydajne. Jest to, gdzie może pomóc zapisanego wyszukiwania i zasoby danych przypięte.
+Ale co zrobić, jeśli chcesz regularnie korzystać z tych samych danych? Co zrobić, jeśli ty i inni użytkownicy regularnie współwiedzają swoją wiedzę z tymi samymi źródłami danych w katalogu? W takich sytuacjach, koniecznie powtarzające się te same wyszukiwania może być niewydajne. Jest to miejsce, w którym zapisane wyszukiwanie i przypięte zasoby danych mogą pomóc.
 
 ## <a name="saved-searches"></a>Zapisane wyszukiwania
-Zapisane wyszukiwanie w usłudze Data Catalog jest wielokrotnego użytku, definicja wyszukiwania dla poszczególnych użytkowników. Można zdefiniować wyszukiwania, w tym wyszukiwane terminy, tagi i inne filtry, a następnie zapisz go. Można ponownie uruchomić zapisane wyszukiwanie definicji później, aby zwrócić wszystkie zasoby danych, które pasują do jej kryteriów wyszukiwania.
+Zapisane wyszukiwanie w Data Catalog jest definicją wyszukiwania na użytkownika wielokrotnego użytku. Możesz zdefiniować wyszukiwanie, w tym terminy wyszukiwania, Tagi i inne filtry, a następnie je zapisać. Zapisanej definicji wyszukiwania można ponownie uruchomić później, aby przywrócić wszystkie zasoby danych, które pasują do kryteriów wyszukiwania.
 
 ### <a name="create-a-saved-search"></a>Tworzenie zapisanego wyszukiwania
-Aby utworzyć zapisanego kryterium wyszukiwania, wykonaj następujące czynności:
-1. W portalu usługi Azure Data Catalog w **bieżące wyszukiwanie** okna, kliknij przycisk **Zapisz**. 
+Aby utworzyć zapisane wyszukiwanie, wykonaj następujące czynności:
+1. W portalu Azure Data Catalog w **bieżącym oknie wyszukiwania** kliknij pozycję **Zapisz**. 
 
-    ![Bieżące połączenie Zapisz ustawienia wyszukiwania](./media/data-catalog-how-to-save-pin/01-save-option.png) 
+    ![Link zapisywania bieżących ustawień wyszukiwania](./media/data-catalog-how-to-save-pin/01-save-option.png) 
 
-2. Wprowadź kryteria wyszukiwania, które chcesz ponownie użyć, a następnie kliknij przycisk **Zapisz**.
+2. Wprowadź kryteria wyszukiwania, których chcesz użyć ponownie, a następnie kliknij przycisk **Zapisz**.
 
-    ![Bieżące ustawienia wyszukiwania Nazwa zapisanego wyszukiwania](./media/data-catalog-how-to-save-pin/02-name.png)
+    ![Bieżące ustawienia wyszukiwania Zapisano nazwę wyszukiwania](./media/data-catalog-how-to-save-pin/02-name.png)
 
-3. Po wyświetleniu monitu wprowadź nazwę dla zapisanego wyszukiwania. Wybierz nazwę opisową i opisujący zasobów danych, które zostaną zwrócone przez wyszukiwanie.
+3. Po wyświetleniu monitu wprowadź nazwę zapisanego wyszukiwania. Wybierz nazwę zrozumiałą i opisującą zasoby danych, które zostaną zwrócone przez wyszukiwanie.
 
-### <a name="manage-saved-searches"></a>Zarządzanie zapisanych wyszukiwań
-Po zapisaniu jednego lub więcej wyszukiwań **zapisane wyszukiwania** opcja jest wyświetlana poniżej **bieżące wyszukiwanie** pole. Po rozwinięciu listy są wyświetlane wszystkie zapisane wyszukiwania.
+### <a name="manage-saved-searches"></a>Zarządzanie zapisanymi wyszukiwaniami
+Po zapisaniu co najmniej jednego wyszukiwania opcja **zapisane wyszukiwania** jest wyświetlana poniżej **bieżącego pola wyszukiwania** . Gdy lista zostanie rozwinięta, wyświetlane są wszystkie zapisane wyszukiwania.
 
  ![Lista zapisanych wyszukiwań](./media/data-catalog-how-to-save-pin/03-list.png)
 
 Wykonaj jedną z następujących czynności:
 
-* Aby wykonać wyszukiwanie, wybierz z listy zapisanej operacji wyszukiwania.
+* Aby wykonać wyszukiwanie, wybierz zapisane wyszukiwanie na liście.
 
-* Aby wyświetlić listę opcji zarządzania dla zapisanego kryterium wyszukiwania, kliknij strzałkę w dół obok nazwy wyszukiwania.
+* Aby wyświetlić listę opcji zarządzania dla zapisanego wyszukiwania, kliknij strzałkę w dół obok nazwy wyszukiwania.
 
-    ![Opcje zarządzania zapisanych wyszukiwań](./media/data-catalog-how-to-save-pin/04-managing.png)
+    ![Opcje zarządzania zapisanymi wyszukiwaniami](./media/data-catalog-how-to-save-pin/04-managing.png)
 
-* Aby wprowadzić nową nazwę dla zapisanego wyszukiwania, wybierz opcję **Zmień nazwę**. Definicja wyszukiwania nie jest zmieniany.
+* Aby wprowadzić nową nazwę zapisanego wyszukiwania, wybierz pozycję **Zmień nazwę**. Definicja wyszukiwania nie została zmieniona.
 
-* Aby usunąć zapisane wyszukiwanie z listy, wybierz **Usuń**, a następnie Potwierdź usunięcie.
+* Aby usunąć zapisane wyszukiwanie z listy, wybierz pozycję **Usuń**, a następnie Potwierdź usunięcie.
 
-* Aby oznaczyć zapisanego wyszukiwania jako domyślny wyszukiwania, wybierz **Zapisz jako domyślne**. Jeśli wykonujesz to "puste" wyszukiwanie ze strony głównej usługi Azure Data Catalog domyślne wyszukiwanie jest wykonywane. Ponadto, wyszukiwania, która jest oznaczona jako domyślne wyszukiwanie jest wyświetlany w górnej części **zapisane wyszukiwania** listy.
+* Aby oznaczyć zapisane wyszukiwanie jako domyślne wyszukiwania, wybierz opcję **Zapisz jako domyślne**. Jeśli przeszukasz "puste" na stronie głównej Azure Data Catalog, zostanie wykonane domyślne wyszukiwanie. Ponadto wyszukiwanie oznaczone jako domyślne wyszukiwania jest wyświetlane w górnej części listy **zapisane wyszukiwania** .
 
-### <a name="organizational-saved-searches"></a>Organizacyjne zapisanych wyszukiwań
-Wszystkich użytkowników w organizacji można zapisać wyszukiwania na własny użytek. Administratorzy wykazu danych można również zapisać wyszukanie wszystkich użytkowników w organizacji. Gdy administratorzy Zapisz wyszukiwanie, ich wyświetlone **udziału w firmie** opcji. Wybranie tej opcji udziałów zapisanego wyszukiwania dla wszystkich użytkowników w organizacji.
+### <a name="organizational-saved-searches"></a>Zapisane wyszukiwania w organizacji
+Wszyscy użytkownicy w organizacji mogą zapisywać wyszukiwania do użycia. Administratorzy Data Catalog mogą także zapisywać wyszukiwania dla wszystkich użytkowników w organizacji. Gdy administratorzy zapisują wyszukiwanie, są one prezentowane z **udziałem w opcji firmy** . Wybranie tej opcji udostępnia zapisane wyszukiwanie dla wszystkich użytkowników w organizacji.
 
- ![Organizacyjne zapisanych wyszukiwań](./media/data-catalog-how-to-save-pin/08-organizational-saved-search.png)
+ ![Zapisane wyszukiwania w organizacji](./media/data-catalog-how-to-save-pin/08-organizational-saved-search.png)
 
-## <a name="pinned-data-assets"></a>Zasoby danych przypięte
-Za pomocą zapisanego wyszukiwania można zapisać i wielokrotnie używać definicje wyszukiwania. Zasoby danych, które są zwracane przez wyszukiwanie mogą ulec zmianie w czasie, gdy zawartość zmiany katalogu. Po przypięciu zasobów danych, można zidentyfikować jawnie określonych danych zasobów, aby ułatwić im dostępu bez konieczności korzystania z wyszukiwania.
+## <a name="pinned-data-assets"></a>Przypięte zasoby danych
+Dzięki zapisane wyszukiwania można zapisywać i ponownie używać definicji wyszukiwania. Zasoby danych zwracane przez wyszukiwania mogą ulec zmianie w czasie, ponieważ zawartość katalogu zostanie zmieniona. W przypadku przypinania zasobów danych można jawnie zidentyfikować konkretne zasoby danych, aby ułatwić im dostęp bez konieczności wyszukiwania.
 
-Przypinanie zasobów danych jest bardzo proste. Aby dodać zasobu danych do przypiętych listy, możesz po prostu kliknij **numeru pin** ikony. Ikona jest wyświetlana w rogiem kafelka zasobu w widoku kafelków, a w kolumnie najdalej po lewej stronie w widoku listy, w portalu usługi Azure Data Catalog.
+Przypinanie zasobów danych jest proste. Aby dodać zasób danych do listy przypiętej, wystarczy kliknąć ikonę **pinezki** . Ikona zostanie wyświetlona w rogu kafelka zasobu w widoku kafelków, a w kolumnie najwyższego poziomu w widoku listy w portalu Azure Data Catalog.
 
-![Ikonę przypinania zasobów danych](./media/data-catalog-how-to-save-pin/05-pinning.png)
+![Ikona numeru PIN zasobu dane](./media/data-catalog-how-to-save-pin/05-pinning.png)
 
-Odpięcie zasobu danych jest równie proste. Po prostu kliknij **Odepnij** ikonę, aby przełączyć ustawienie dla wybranego zasobu.
+Odpięcie zasobu danych jest równie proste. Po prostu kliknij ikonę **Odepnij** , aby przełączyć ustawienie dla wybranego elementu zawartości.
 
-![Zasobu danych Odepnij ikony](./media/data-catalog-how-to-save-pin/06-unpinning.png)
+![Ikona odpinania danych](./media/data-catalog-how-to-save-pin/06-unpinning.png)
 
-## <a name="the-my-assets-section"></a>W sekcji Moje zasoby
-Strona główna portalu Data Catalog zawiera **Moje zasoby** sekcja, która zawiera zasoby, interesujące dla bieżącego użytkownika. Ta sekcja zawiera zarówno przypięte zasoby i zapisane wyszukiwania.
+## <a name="the-my-assets-section"></a>Sekcja my Assets
+Na stronie głównej portalu Data Catalog znajdują się sekcje **My Assets** , w których są wyświetlane zasoby istotne dla bieżącego użytkownika. Ta sekcja zawiera elementy przypięte i zapisane wyszukiwania.
 
-![W sekcji Moje zasoby, na stronie głównej](./media/data-catalog-how-to-save-pin/07-my-assets.png)
+![Sekcja my Assets na stronie głównej](./media/data-catalog-how-to-save-pin/07-my-assets.png)
 
 ## <a name="summary"></a>Podsumowanie
-Usługa Azure Data Catalog oferuje możliwości, które ułatwiają odnajdywanie źródeł danych, których potrzebujesz, dzięki czemu użytkownik i inni członkowie organizacji mogą poświęcać więcej czasu na pracę. Zapisane wyszukiwania, a następnie przypiąć dane, które zasoby kompilacji na tych podstawowych możliwości, dzięki czemu użytkownicy mogą łatwo zidentyfikować źródeł danych, które współpracują z wielokrotnie.
+Azure Data Catalog udostępnia funkcje, które ułatwiają odnajdywanie potrzebnych źródeł danych, dzięki czemu Ty i inni członkowie organizacji mogą poświęcać mniej czasu na wyszukiwanie danych i dłuższy czas pracy z działem IT. Zapisane wyszukiwania i przypięte zasoby danych kompilują się na tych podstawowych możliwościach, dzięki czemu użytkownicy mogą łatwo identyfikować źródła danych, z których pracują wielokrotnie.

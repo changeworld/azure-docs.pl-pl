@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: fbc5b18de093b2c91b17fa310c08a5b02b113a22
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 86350f21f5c530a00560c92cc0ae2fd58c9a2c57
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68406524"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780058"
 ---
 # <a name="secure-your-cluster-in-azure-data-explorer"></a>Zabezpieczanie klastra na platformie Azure Eksplorator danych
 
@@ -20,7 +20,7 @@ ms.locfileid: "68406524"
   
 ## <a name="enable-encryption-at-rest"></a>Włącz szyfrowanie w spoczynku
   
-Włączenie [szyfrowania](/azure/security/azure-security-encryption-atrest) przechowywanego w klastrze zapewnia ochronę danych przechowywanych danych (w spoczynku). 
+Włączenie [szyfrowania](/azure/security/fundamentals/encryption-atrest) przechowywanego w klastrze zapewnia ochronę danych przechowywanych danych (w spoczynku). 
 
 1. W Azure Portal przejdź do zasobu klastra usługi Azure Eksplorator danych. W obszarze **Ustawienia** wybierz pozycję **zabezpieczenia**. 
 
@@ -30,6 +30,6 @@ Włączenie [szyfrowania](/azure/security/azure-security-encryption-atrest) prze
 
 1. Wybierz pozycję **Zapisz**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Sprawdzanie kondycji klastra](/azure/data-explorer/check-cluster-health)

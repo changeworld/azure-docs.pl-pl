@@ -1,5 +1,5 @@
 ---
-title: Macierz obsługi dla tworzenia kopii zapasowych maszyn z uruchomionym agentem Microsoft Azure Recovery Services (MARS) z Azure Backup
+title: Macierz obsługi dla agenta Microsoft Azure Recovery Services (MARS) — Azure Backup
 description: Ten artykuł zawiera podsumowanie Azure Backup pomocy technicznej podczas tworzenia kopii zapasowej maszyn, na których jest uruchomiony agent Microsoft Azure Recovery Services (MARS).
 author: dcurwin
 ms.service: backup
@@ -7,12 +7,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: 46863b2eed8e5c5c4074a713b50739820a1e5bc9
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 6d05b6ac49b372caff1bdc2f03358598fcc1afba
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639533"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68737091"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Macierz obsługi kopii zapasowej za pomocą agenta Microsoft Azure Recovery Services (MARS)
 
@@ -74,14 +74,14 @@ Agenta MARS można używać do tworzenia kopii zapasowych bezpośrednio na platf
 
 **System operacyjny** | **Pliki/foldery** | **Stan systemu**
 --- | --- | ---
-Windows 10 (Enterprise, Pro, Home) | Tak | Nie
+Windows 10 (Enterprise, Pro, Home) | Yes | Nie
 Windows 8.1 (Enterprise, Pro)| Tak |Nie
-Windows 8 (Enterprise, Pro) | Yes | Nie
+Windows 8 (Enterprise, Pro) | Tak | Nie
 Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Tak | Nie
 Windows Server 2016 (wersje Standard, Datacenter, Essentials) | Tak | Tak
 Windows Server 2012 R2 (wersje Standard, Datacenter, Foundation, Essentials) | Tak | Tak
-Windows Server 2012 (wersje Standard, Datacenter, Foundation) | Tak | Tak
-Windows Server 2008 R2 (wersje Standard, Enterprise, Datacenter, Foundation) | Yes | Tak
+Windows Server 2012 (wersje Standard, Datacenter, Foundation) | Yes | Yes
+Windows Server 2008 R2 (wersje Standard, Enterprise, Datacenter, Foundation) | Tak | Yes
 Windows Server 2008 z dodatkiem SP2 (wersje Standard, Datacenter, Foundation) | Tak | Nie
 Windows Storage Server 2016/2012 R2/2012 (standard, Grupa robocza) | Tak | Nie
 

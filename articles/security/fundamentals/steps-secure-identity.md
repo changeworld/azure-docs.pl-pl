@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martinco
-ms.openlocfilehash: 0ccd2ee8b2c9f542eabe7a297f4c99a3993a47e9
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c5cdd12c3075d48ff32c40d686b32a650ec43d8e
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726754"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779777"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Pięć kroków związanych z zabezpieczaniem infrastruktury tożsamości
 
@@ -74,7 +74,7 @@ Możesz użyć [programu PowerShell, aby zapobiec wygaśnięciu haseł](https://
 Jeśli Twoja organizacja korzysta z rozwiązania do obsługi tożsamości hybrydowej z uwierzytelnianiem przekazującym lub federacyjnym, należy włączyć synchronizację skrótów haseł z następujących dwóch przyczyn:
 
 * Raport [Użytkownicy z ujawnionymi poświadczeniami](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-risk-events) w usłudze Azure AD Management ostrzega użytkownika o parach nazw i hasła, które zostały uwidocznione w "ciemnej sieci Web". Niezwykła ilość haseł jest wycieka za pośrednictwem wyłudzania informacji, złośliwego oprogramowania i ponownego użycia haseł w witrynach innych firm, które zostały później naruszone. Firma Microsoft odszuka wiele z tych nieujawnionych poświadczeń i poinformuje użytkownika, że w tym raporcie są one zgodne z poświadczeniami w organizacji, ale tylko w przypadku [włączenia synchronizacji skrótów haseł](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization).
-* W przypadku awarii lokalnej (na przykład w przypadku ataku z użyciem oprogramowania wymuszającego okup) można przełączyć się do korzystania z [uwierzytelniania w chmurze przy użyciu funkcji synchronizacji skrótów haseł](https://docs.microsoft.com/azure/security/azure-ad-choose-authn). Ta metoda uwierzytelniania kopii zapasowej umożliwi kontynuowanie dostępu do aplikacji skonfigurowanych do uwierzytelniania za pomocą Azure Active Directory, w tym pakietu Office 365. W takim przypadku pracownicy IT nie będą musieli korzystać z osobistych kont e-mail w celu udostępniania danych, dopóki nie zostanie rozwiązane lokalne przestoje.
+* W przypadku awarii lokalnej (na przykład w przypadku ataku z użyciem oprogramowania wymuszającego okup) można przełączyć się do korzystania z [uwierzytelniania w chmurze przy użyciu funkcji synchronizacji skrótów haseł](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn). Ta metoda uwierzytelniania kopii zapasowej umożliwi kontynuowanie dostępu do aplikacji skonfigurowanych do uwierzytelniania za pomocą Azure Active Directory, w tym pakietu Office 365. W takim przypadku pracownicy IT nie będą musieli korzystać z osobistych kont e-mail w celu udostępniania danych, dopóki nie zostanie rozwiązane lokalne przestoje.
 
 Dowiedz się więcej o tym, jak działa [Synchronizacja skrótów haseł](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization) .
 
@@ -146,7 +146,7 @@ Inspekcja i rejestrowanie zdarzeń związanych z zabezpieczeniami oraz powiązan
 
 ### <a name="monitor-azure-ad"></a>Monitorowanie usługi Azure AD
 
-Usługi Microsoft Azure i funkcje udostępniają konfigurowalne opcje inspekcji zabezpieczeń i rejestrowania, które ułatwiają identyfikację luk w zabezpieczeniach i mechanizmach i rozwiązywanie tych luk w celu uniknięcia naruszeń. [W portalu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs)można korzystać z funkcji [rejestrowania i inspekcji na platformie Azure](https://docs.microsoft.com/azure/security/azure-log-audit) oraz raportów dotyczących aktywności inspekcji.
+Usługi Microsoft Azure i funkcje udostępniają konfigurowalne opcje inspekcji zabezpieczeń i rejestrowania, które ułatwiają identyfikację luk w zabezpieczeniach i mechanizmach i rozwiązywanie tych luk w celu uniknięcia naruszeń. [W portalu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs)można korzystać z funkcji [rejestrowania i inspekcji na platformie Azure](https://docs.microsoft.com/azure/security/fundamentals/log-audit) oraz raportów dotyczących aktywności inspekcji.
 
 ### <a name="monitor-azure-ad-connect-health-in-hybrid-environments"></a>Monitoruj Azure AD Connect Health w środowiskach hybrydowych
 

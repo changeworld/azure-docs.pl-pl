@@ -5,14 +5,14 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 07/19/2019
+ms.date: 08/06/2019
 ms.author: banders
-ms.openlocfilehash: c63447ff0a3329e0cc0dc0605984ae4f26e9c25f
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 2e595fbee90b710ec6b8090a770d93e688a04818
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359236"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839983"
 ---
 # <a name="what-are-azure-reservations"></a>Co to jest Azure Reservations?
 
@@ -38,7 +38,7 @@ W przypadku maszyn wirtualnych z systemem Windows i SQL Database można obsłuż
 
 Aby kupić plan, musisz mieć rolę właściciela subskrypcji w przedsiębiorstwie (MS-AZR-0017P lub MS-AZR-0148P) lub z opcją płatność zgodnie z rzeczywistym użyciem (MS-AZR-003P lub MS-AZR-0023P). Dostawcy rozwiązań w chmurze mogą kupować Azure Reservations za pomocą Azure Portal lub [centrum](/partner-center/azure-reservations) partnerskiego.
 
-Klienci korzystający z programu Umowa Enterprise (EA) mogą ograniczać zakupy do administratorów EA. W tym celu należy wyłączyć opcję **Dodaj wystąpienia zarezerwowane** w portalu EA. Administratorzy EA muszą być właścicielami subskrypcji dla co najmniej jednej subskrypcji EA do zakupu rezerwacji. Ta opcja jest przydatna w przypadku przedsiębiorstw, które chcą kupować rezerwacje dla różnych centrów kosztów za pomocą scentralizowanego zespołu. Po zakupie zespoły centralne mogą dodawać do rezerwacji właścicieli centrów kosztów. Właściciele mogą następnie ograniczyć rezerwację do swoich subskrypcji. Centralny zespół nie musi mieć dostępu właściciela subskrypcji w przypadku zakupu rezerwacji.
+Klienci korzystający z programu Umowa Enterprise (EA) mogą ograniczyć liczbę zakupów do administratorów EA, wyłączając opcję **Dodaj wystąpienia zarezerwowane** w portalu EA. Administratorzy EA muszą być właścicielami subskrypcji dla co najmniej jednej subskrypcji EA do zakupu rezerwacji. Ta opcja jest przydatna w przypadku przedsiębiorstw, które chcą kupować rezerwacje dla różnych centrów kosztów za pomocą scentralizowanego zespołu. Po zakupie zespoły centralne mogą dodawać do rezerwacji właścicieli centrów kosztów. Właściciele mogą następnie ograniczyć rezerwację do swoich subskrypcji. Centralny zespół nie musi mieć dostępu właściciela subskrypcji w przypadku zakupu rezerwacji.
 
 Rabat rezerwacji dotyczy tylko zasobów skojarzonych z subskrypcjami zakupionymi w ramach przedsiębiorstwa, dostawcy rozwiązań w chmurze (CSP) i poszczególnych planów z uwzględnieniem stawek płatność zgodnie z rzeczywistym użyciem.
 

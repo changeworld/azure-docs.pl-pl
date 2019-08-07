@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 07/29/2019
 ms.author: lyhughes
-ms.openlocfilehash: 114edc072524552fab35e9cad6fc85573c4e8d0e
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: c0b4b6a13143f613bec64c8507f1726e2450be44
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846531"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815547"
 ---
 # <a name="connect-and-authenticate-to-apis"></a>Łączenie się z interfejsami API i uwierzytelnianie do nich
 
@@ -45,7 +45,7 @@ Gdy deweloperzy korzystają z rozwiązań bliźniaczych reprezentacji Digital, z
 
 Aby uzyskać instrukcje dotyczące sposobu organizowania przepływu w imieniu, zobacz [uwierzytelnianie OAuth 2,0 w imieniu użytkownika](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). Możesz również wyświetlić przykłady kodu w [wywołaniu podrzędnego interfejsu API sieci Web](https://azure.microsoft.com/resources/samples/active-directory-dotnet-webapi-onbehalfof/).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby skonfigurować i przetestować usługę Azure Digital bliźniaczych reprezentacji przy użyciu niejawnego przepływu OAuth 2,0, przeczytaj artykuł [Konfigurowanie wpisu](./how-to-configure-postman.md).
 

@@ -1,61 +1,61 @@
 ---
-title: Omówienie węzłów dla oprogramowania VMware Solution by CloudSimple - Azure
-description: Informacje o węzłach CloudSimple i pojęć.
+title: Przegląd węzłów dla rozwiązań VMware według CloudSimple — Azure
+description: Dowiedz się więcej o węzłach i pojęciach CloudSimple.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fb82e31d58d9955efc3b147eccf2b82b8768aeee
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 346bd046810ebae5142bc23400419857000d0c8e
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165804"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812578"
 ---
-# <a name="cloudsimple-nodes-overview"></a>Omówienie węzłów CloudSimple
+# <a name="cloudsimple-nodes-overview"></a>Przegląd węzłów CloudSimple
 
-Węzeł to:
+Węzeł:
 
-* Dedykowany zera obliczenia hosta z zainstalowanym funkcji hypervisor VMware ESXi  
-* Jednostka przetwarzania danych, które można udostępnić lub rezerw tworzenie chmur prywatnych  
-* Dostępne do aprowizowania lub zarezerwować w regionie, w których usługa CloudSimple jest dostępna
+* Dedykowany Host obliczeniowy bez systemu operacyjnego, na którym zainstalowano VMware ESXi funkcji hypervisor  
+* Jednostka obliczeniowa, którą można zainicjować lub zarezerwować w celu utworzenia chmur prywatnych  
+* Dostępne do aprowizacji lub rezerwowania w regionie, w którym jest dostępna usługa CloudSimple
 
-Węzły są bloków konstrukcyjnych w chmurze prywatnej.  Aby utworzyć chmurę prywatną, musisz mieć co najmniej trzy węzły tej samej jednostki SKU.  Aby rozwinąć chmury prywatnej, należy dodać więcej węzłów.  Możesz dodać węzły do istniejącego klastra. Alternatywnie można utworzyć nowego klastra, inicjowanie obsługi administracyjnej węzłów w witrynie Azure portal i skojarzenie ich z usługą CloudSimple.  Wszystkie węzły aprowizacji są widoczne w ramach usługi CloudSimple.  Można utworzyć chmurę prywatną z aprowizowaną węzłów w portalu CloudSimple.
+Węzły tworzą bloki w chmurze prywatnej.  Aby utworzyć chmurę prywatną, potrzebne są co najmniej trzy węzły tej samej jednostki SKU.  Aby rozwinąć chmurę prywatną, Dodaj dodatkowe węzły.  Można dodać węzły do istniejącego klastra. Można też utworzyć nowy klaster za pomocą węzłów aprowizacji w Azure Portal i skojarzyć je z usługą CloudSimple.  Wszystkie węzły, które są obsługiwane, są widoczne w ramach usługi CloudSimple.  Chmurę prywatną można utworzyć na podstawie węzłów zainicjowanych w portalu CloudSimple.
 
-## <a name="provisioned-nodes"></a>Elastycznie węzłów
+## <a name="provisioned-nodes"></a>Węzły inicjowane
 
-Węzły elastycznie zapewniają pojemność zgodnie z rzeczywistym użyciem. Inicjowanie obsługi administracyjnej węzłów pomoże Ci szybko przeskalować klaster VMware na żądanie. Dodawanie węzłów stosownie do potrzeb lub usunąć węzeł elastycznie skalować klaster VMware. elastycznie węzły są rozliczane co miesiąc, a obciążany opłatą za subskrypcję, w których jest aprowizowane:
+Węzły z zainicjowaną obsługą zapewniają pojemność płatność zgodnie z rzeczywistym użyciem. Węzły aprowizacji ułatwiają szybkie skalowanie klastra VMware na żądanie. Możesz dodać węzły w razie potrzeby lub usunąć węzeł aprowizacji, aby przeskalować swój klaster VMware. na węzłach inicjowanych jest rozliczana co miesiąc i naliczana jest opłata za subskrypcję, w której są one inicjowane:
 
-* Płacisz za subskrypcję platformy Azure przy użyciu karty kredytowej, karty jest rozliczana natychmiast.
-* Jeśli są naliczane za pomocą faktury, opłaty są wyświetlane na następnej fakturze.
+* Jeśli płacisz za subskrypcję platformy Azure za pomocą karty kredytowej, karta jest rozliczana od razu.
+* Jeśli opłata jest naliczana według faktury, opłaty są naliczane na następnej fakturze.
 
-## <a name="vmware-solution-by-cloudsimple-nodes-sku"></a>VMware Solution by węzłów CloudSimple jednostki SKU
+## <a name="vmware-solution-by-cloudsimple-nodes-sku"></a>Rozwiązanie VMware według jednostki SKU węzłów CloudSimple
 
-Następujące węzły typy są dostępne do aprowizowania ani rezerwacji.
+Następujące węzły typów są dostępne do aprowizacji lub rezerwacji.
 
-| SKU | CS28 - Node | CS36 - Node |
+| SKU | CS28 — węzeł | CS36 — węzeł |
 |-----|-------------|-------------|
-| Procesor CPU | 2x2.2 GHz, 28 rdzeni (56 zasobników tablicy skrótów) | 2x2.3 GHz, 36 rdzeni (72 zasobników tablicy skrótów) |
+| Procesor CPU | 2\.2,2 GHz, 28 rdzeni (56 HT) | 2 rdzenie 2,3 GHz, 36 (72 HT) |
 | Pamięć RAM | 256 GB | 512 GB |
-| Dysk pamięci podręcznej |  NVMe TB w wersji 1.6 | NVMe 3.2 TB |
-| Pojemność dysku | 5.625 TB nieprzetworzone | 11,25 TB nieprzetworzone |
-| Typ magazynu | Wszystkie Flash | Wszystkie Flash |
+| Dysk pamięci podręcznej |  1,6 – TB interfejsu NVMe | 3,2 – TB interfejsu NVMe |
+| Dysk pojemności | 5,625 TB nieprzetworzonych | 11,25 TB nieprzetworzonych |
+| Typ magazynu | Wszystkie lampy błyskowe | Wszystkie lampy błyskowe |
 
-## <a name="limits"></a>Limits
+## <a name="limits"></a>Limity
 
-Poniższe limity węzła mają zastosowanie do chmur prywatnych.
+Poniższe limity węzłów mają zastosowanie do chmur prywatnych.
 
 | Resource | Limit |
 |----------|-------|
-| Minimalna liczba węzłów w celu utworzenia chmury prywatnej | 3 |
+| Minimalna liczba węzłów do utworzenia chmury prywatnej | 3 |
 | Maksymalna liczba węzłów w klastrze w chmurze prywatnej | 16 |
 | Maksymalna liczba węzłów w chmurze prywatnej | 64 |
 | Minimalna liczba węzłów w nowym klastrze | 3 |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się, jak [aprowizacji węzłów](create-nodes.md)
-* Dowiedz się więcej o [Chmura prywatna](cloudsimple-private-cloud.md)
+* Dowiedz się, jak [inicjować obsługę węzłów](create-nodes.md)
+* Informacje o [chmurze prywatnej](cloudsimple-private-cloud.md)

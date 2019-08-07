@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: kevidal
-ms.openlocfilehash: 92c3452e07dee126666e6ee1fe0c46b1f8f6dfa4
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: f9ff6e19a0f0091cb5b831279eee90727bbb89fd
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876537"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742261"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>Przewodnik publikowania w aplikacjach SaaS
 
@@ -25,7 +25,7 @@ Aplikacje SaaS są dostępne w ramach witryny Azure portale w poniższej tabeli 
 | Opcja witryny sklepu | Zawierające | Wersja próbna/Transact |  
 | --- | --- | --- |  
 | AppSource | Tak (skontaktuj się z nami) | Tak (PowerBI/Dynamics) |
-| Rynek platformy Azure | Nie | Tak (SaaS Apps) |   
+| Azure Marketplace | Nie | Tak (SaaS Apps) |   
 
 **Staw**  Opcja publikowania listy składa się z typu oferty kontakt ze mną i jest używana, gdy nie jest możliwe uczestnictwo w wersji próbnej lub na poziomie transakcji. Zaletą tego podejścia jest to, że umożliwia ona wydawcom korzystanie z rozwiązania na rynku do natychmiastowego rozpoczęcia otrzymywania potencjalnych klientów, które mogą zostać przekształcone w celu zwiększenia firmy.  
 **Wersja próbna/transakcja:**  Klient ma możliwość bezpośredniego zakupu lub żądania wersji próbnej rozwiązania. Udostępnienie wersji próbnej spowoduje zwiększenie poziomu zaangażowania oferowanego klientom i umożliwienie klientom eksplorowania Twojego rozwiązania przed zakupem. Korzystając z wersji próbnej, będziesz mieć lepszy stopień promocji w witrynie sklepu i powinieneś oczekiwać więcej i bogatszych potencjalnych klientów od zaangażowania klientów. Wersje próbne muszą obejmować bezpłatną pomoc techniczną co najmniej przez okres próbny.  
@@ -126,13 +126,13 @@ Jeśli jesteś nowym w przypadku federacyjnego logowania jednokrotnego usługi A
 ## <a name="saas-subscriptions"></a>Subskrypcje SaaS
 
 Użyj typu oferty aplikacji SaaS, aby umożliwić klientowi kupowanie rozwiązań technicznych opartych na SaaS, w ramach subskrypcji. Dla aplikacji SaaS muszą zostać spełnione następujące wymagania:
-- Cena i rozliczanie usługi według stawki ryczałtowej, miesięcznej.
+- Cena i rozliczanie usługi za pomocą stawki ryczałtowej (co miesiąc lub co rok) lub według stawki za użytkownika.
 - Podaj metodę uaktualnienia lub anulowania usługi w dowolnym momencie.
-Firma Microsoft hostuje transakcję handlową. Firma Microsoft rozlicza klienta w Twoim imieniu. Aby używać rozliczania aplikacji SaaS jako subskrypcji, musisz włączyć własny interfejs API usługi zarządzania subskrypcjami. Interfejs API usługi zarządzania subskrypcjami musi komunikować się bezpośrednio z interfejsami API Azure Resource Manager. Interfejs API usługi zarządzania subskrypcjami musi obsługiwać Inicjowanie obsługi administracyjnej, uaktualnianie i anulowanie usług.
+Firma Microsoft hostuje transakcję handlową. Firma Microsoft rozlicza klienta w Twoim imieniu. Aby zaoferować aplikację SaaS jako subskrypcję, musisz przeprowadzić integrację z interfejsami API realizacji SaaS.  Usługa musi obsługiwać Inicjowanie obsługi administracyjnej, uaktualnianie i anulowanie.
 
 | Wymaganie | Szczegóły |  
 |:--- |:--- |  
-|Rozliczenia i pomiary | Twoja oferta jest naliczana według stawki miesięcznej. W tej chwili nie są obsługiwane możliwości bazujące na użyciu i użycie "true-up". |  
+|Rozliczenia i pomiary | Cena oferty jest naliczana na podstawie modelu cen wybranych przed opublikowaniem (stawka ryczałtowa lub dla użytkownika).  W przypadku korzystania z modelu stawki Flat można opcjonalnie uwzględnić dodatkowe wymiary używane do naliczania opłat klientom za użycie nieuwzględnione w stałej stawce. |  
 |Anulowania | Twoja oferta jest anulowana przez klienta w dowolnym momencie. |  
 |Strona docelowa transakcji | Możesz obsługiwać stronę docelową transakcji z platformą Azure, w której użytkownicy mogą tworzyć konta usługi SaaS i zarządzać nimi. |   
 | Interfejs API subskrypcji | Uwidaczniasz usługę, która może współistnieć z subskrypcją SaaS, aby utworzyć, zaktualizować i usunąć konto użytkownika i plan usług. Krytyczne zmiany interfejsu API muszą być obsługiwane w ciągu 24 godzin. Niekrytyczne zmiany interfejsu API będą okresowo publikowane. |  
@@ -140,7 +140,7 @@ Firma Microsoft hostuje transakcję handlową. Firma Microsoft rozlicza klienta 
 >[!Note]
 >Niedostępność kanału partnera dostawcy rozwiązań w chmurze (CSP) jest teraz dostępna.  Zobacz [dostawcy rozwiązań w chmurze](./cloud-solution-providers.md) , aby uzyskać więcej informacji na temat marketingu oferty przez kanały partnerskie programu Microsoft CSP.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Jeśli jeszcze tego nie zrobiono,
 
 - [Zarejestruj](https://azuremarketplace.microsoft.com/sell) się w portalu Marketplace.

@@ -1,6 +1,6 @@
 ---
-title: Zakresy dla aplikacji w wersji 1.0 (Microsoft Authentication Library) | Azure
-description: Dowiedz się więcej na temat zakresów dla aplikacji w wersji 1.0 przy użyciu Microsoft Authentication Library (MSAL).
+title: Zakresy dla aplikacji w wersji 1.0 (Biblioteka uwierzytelniania firmy Microsoft) | Azure
+description: Dowiedz się więcej o zakresach dla aplikacji w wersji 1.0 przy użyciu biblioteki uwierzytelniania firmy Microsoft (MSAL).
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -9,7 +9,7 @@ editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/23/2019
@@ -17,21 +17,21 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e43bc245a5908ba1bf91e7b4bee6df2f5cfc618
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 17837c6f4d1b3c690c39c9f99ca4896fcce16b00
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514369"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834906"
 ---
-# <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>Zakresy interfejsu API sieci Web akceptuje tokenów w wersji 1.0
+# <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>Zakresy dla internetowego interfejsu API akceptujące tokeny v 1.0
 
-Uprawnienia OAuth2 są zakresy uprawnień, które usługa Azure AD dla aplikacji interfejsu API (zasobu) w sieci web deweloperów (1.0) uwidacznia aplikacjom klienckim. Te zakresy uprawnień, może przyznawać aplikacjom klienckim podczas wyrażania zgody. Zobacz sekcję `oauth2Permissions` w [odwołanie do manifestu aplikacji usługi Azure Active Directory](reference-app-manifest.md#manifest-reference).
+Uprawnienia OAuth2 to zakresy uprawnień, które aplikacja sieci Web usługi Azure AD dla deweloperów (w wersji 1.0) uwidacznia dla aplikacji klienckich. Te zakresy uprawnień mogą być udzielane aplikacjom klienckim podczas wyrażania zgody. Zapoznaj się z `oauth2Permissions` sekcją w temacie Informacje dotyczące [manifestu aplikacji Azure Active Directory](reference-app-manifest.md#manifest-reference).
 
-## <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>Zakresy, aby zawnioskować o dostęp do określonych uprawnień OAuth2 aplikacji w wersji 1.0
-Jeśli chcesz uzyskać tokeny dla określonych zakresów aplikacji w wersji 1.0 (na przykład wykres usługi Azure AD, która jest typu https:\//graph.windows.net), należy utworzyć zakresy przez złączenie identyfikatorem żądanego zasobu z uprawnieniem żądaną OAuth2 dla tego zasobu.
+## <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>Zakresy żądania dostępu do określonych uprawnień OAuth2 aplikacji v 1.0
+Jeśli chcesz uzyskać tokeny dla określonych zakresów aplikacji v 1.0 (na przykład Azure AD Graph, czyli https:\//Graph.Windows.NET), musisz utworzyć zakresy, łącząc żądany identyfikator zasobu z żądanym uprawnieniem OAuth2 dla tego zasobu.
 
-Na przykład, aby dostępu w imieniu użytkownika v1.0 internetowego interfejsu API w przypadku aplikacji, identyfikator URI `ResourceId`:
+Na przykład, aby uzyskać dostęp w imieniu użytkownika do interfejsu API sieci Web w wersji 1.0, gdzie identyfikator `ResourceId`URI aplikacji jest:
 
 ```csharp
 var scopes = new [] {  ResourceId+"/user_impersonation"};
@@ -41,7 +41,7 @@ var scopes = new [] {  ResourceId+"/user_impersonation"};
 var scopes = [ ResourceId + "/user_impersonation"];
 ```
 
-Jeśli chcesz odczytywać i zapisywać przy użyciu platformy MSAL.NET usługi Azure Active Directory przy użyciu interfejsu API programu graph usługi Azure AD (https:\//graph.windows.net/), należy utworzyć listę zakresów, co przedstawiono poniżej:
+Jeśli chcesz odczytywać i zapisywać MSAL.NET Azure Active Directory przy użyciu interfejsu API programu Azure AD Graph (https:\//Graph.Windows.NET/), należy utworzyć listę zakresów w następujący sposób:
 
 ```csharp
 string ResourceId = "https://graph.windows.net/";
@@ -53,7 +53,7 @@ var ResourceId = "https://graph.windows.net/";
 var scopes = [ ResourceId + "Directory.Read", ResourceID + "Directory.Write"];
 ```
 
-Jeśli chcesz zapisać zakres odpowiadający interfejsu API usługi Azure Resource Manager (https:\//management.core.windows.net/), musisz zażądać następującym zakresem (Uwaga dwa ukośniki):
+Jeśli chcesz napisać zakres odpowiadający interfejsowi API Azure Resource Manager (https:\//Management.Core.Windows.NET/), musisz zażądać następującego zakresu (należy zauważyć dwa ukośniki):
 
 ```csharp
 var scopes = new[] {"https://management.core.windows.net//user_impersonation"};
@@ -63,16 +63,16 @@ var result = await app.AcquireTokenInteractive(scopes).ExecuteAsync();
 ```
 
 > [!NOTE]
-> Należy użyć dwa ukośniki, ponieważ interfejs API usługi Azure Resource Manager oczekuje ukośnika w jego oświadczenia odbiorców (aud), a następnie jest ukośnikiem, aby oddzielić nazwę interfejsu API z zakresu.
+> Należy użyć dwóch ukośników, ponieważ Azure Resource Manager interfejs API oczekuje ukośnika w swoim zasobie (AUD), a następnie jest ukośnik, aby oddzielić nazwę interfejsu API od zakresu.
 
-Przez logikę używaną przez usługę Azure AD jest następująca:
+Logika używana przez usługę Azure AD jest następująca:
 
-- Dla punktu końcowego biblioteki ADAL (1.0), przy użyciu tokenu dostępu w wersji 1.0 (tylko to możliwe), aud = zasobów
-- Dla biblioteki MSAL (punkt końcowy platformy (w wersji 2.0) programu Microsoft identity) pytaniem tokenu dostępu dla zasobu, akceptując tokenów w wersji 2.0, aud = zasobów. Identyfikator aplikacji
-- Biblioteka MSAL (punktu końcowego v2.0) pytaniem tokenu dostępu dla zasobu akceptowania tokenu dostępu w wersji 1.0 (czyli tak powyżej) usługi Azure AD zostanie przetworzony przez pobranie wszystkiego wcześniej niż ostatni ukośnika i używać go jako identyfikator zasobu odbiorców w żądanym zakresie. W związku z tym jeśli https:\//database.windows.net oczekuje odbiorcami "https:\//database.windows.net/", należy do zakresu żądania "https:\//database.windows.net//.default". Zobacz też GitHub problem [#747: Ukośnika url zasobu jest pominięty, który spowodował niepowodzenie uwierzytelniania sql](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
+- Dla punktu końcowego ADAL (v 1.0) z tokenem dostępu w wersji 1.0 (możliwe), AUD = zasób
+- W przypadku usługi MSAL (punkt końcowy Microsoft Identity platform (v 2.0)) żądanie tokenu dostępu dla zasobu akceptującego tokeny v 2.0, AUD = Resource. AppId
+- W przypadku usługi MSAL (punkt końcowy v 2.0) z prośbą o token dostępu dla zasobu akceptującego token dostępu w wersji 1.0 (w tym przypadku powyżej) usługa Azure AD analizuje żądanych odbiorców od żądanego zakresu, pobierając wszystko przed ostatnim ukośnikiem i używając go jako identyfikatora zasobu. W związku z tym\/jeśli https:/Database.Windows.NET oczekuje odbiorców protokołu https:\//Database.Windows.NET/, należy zażądać zakresu "https:\//Database.Windows.NET//.default". Zobacz również artykuł dotyczący problemów [z usługą GitHub #747: Końcowy ukośnik adresu URL zasobu został pominięty, co spowodowało błąd](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)uwierzytelniania SQL.
 
-## <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>Zakresy, aby zawnioskować o dostęp do uprawnień aplikacji w wersji 1.0
-Jeśli chcesz uzyskać token dla wszystkich zakresów statycznej aplikacji w wersji 1.0, Dołącz ".default", aby identyfikator URI interfejsu API:
+## <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>Zakresy żądania dostępu do wszystkich uprawnień aplikacji w wersji 1.0
+Jeśli chcesz uzyskać token dla wszystkich zakresów statycznych aplikacji v 1.0, Dołącz wartość ". default" do identyfikatora URI aplikacji interfejsu API:
 
 ```csharp
 ResourceId = "someAppIDURI";
@@ -84,5 +84,5 @@ var ResourceId = "someAppIDURI";
 var scopes = [ ResourceId + "/.default"];
 ```
 
-## <a name="scopes-to-request-for-client-credential-flow--daemon-app"></a>Zakresy, aby poprosić o dodanie do klienta poświadczeń przepływu / aplikacji demona
-W przypadku przepływ poświadczeń klienta, również będą zakres, aby przekazać `/.default`. Oznacza to, do usługi Azure AD: "wszystkie poziomie aplikacji uprawnienia, które administrator wyraził zgody na rejestracji aplikacji.
+## <a name="scopes-to-request-for-client-credential-flow--daemon-app"></a>Zakresy żądania dla aplikacji Flow/demon poświadczeń klienta
+W przypadku przepływu poświadczeń klienta należy również `/.default`przekazać zakres. Ta informacja dotyczy usługi Azure AD: "wszystkie uprawnienia na poziomie aplikacji, które administrator wyraził zgodę na rejestrację aplikacji.

@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie i monitorowanie SQL Server baz danych na maszynie wirtualnej platformy Azure, której kopia zapasowa jest wykonywana przez Azure Backup | Microsoft Docs
+title: Zarządzanie SQL Servermi bazami danych na maszynie wirtualnej platformy Azure i monitorowanie ich przy użyciu Azure Backup
 description: W tym artykule opisano sposób zarządzania i monitorowania SQL Server baz danych, które są uruchomione na maszynie wirtualnej platformy Azure.
 author: dcurwin
 manager: carmonm
@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: dacurwin
-ms.openlocfilehash: c5f61c778849a57d9143580e0e1041c7fe992d52
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 7cd916c8e52b40dee3ce2d63d43dc88f09001b32
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639590"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827564"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Zarządzanie kopiami zapasowymi baz danych SQL Server i ich monitorowanie
 
@@ -120,7 +120,7 @@ Można uruchamiać różne typy kopii zapasowych na żądanie:
 * Różnicowa kopia zapasowa
 * Kopia zapasowa dziennika
 
-Chociaż należy określić czas przechowywania dla pełnej kopii zapasowej, zakres przechowywania dla innych typów kopii zapasowych jest automatycznie ustawiany na 30 dni od bieżącego czasu. <br/>
+Podczas gdy trzeba określić czas przechowywania dla pełnej kopii zapasowej, zakres przechowywania dla pełnej kopii zapasowej w trybie ad-hoc zostanie automatycznie ustawiony na 45 dni od bieżącego czasu. <br/>
 Aby uzyskać więcej informacji, zobacz [SQL Server typów kopii zapasowych](backup-architecture.md#sql-server-backup-types).
 
 ## <a name="unregister-a-sql-server-instance"></a>Wyrejestrowywanie wystąpienia programu SQL Server

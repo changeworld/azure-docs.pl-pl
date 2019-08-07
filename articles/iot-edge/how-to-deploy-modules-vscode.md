@@ -10,12 +10,12 @@ ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 91a074cf98291b105864a69730314efff3482254
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 61ea7eb0b81c5489ad2bf20e8148d2481bb4fb13
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62126413"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840181"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Wdrażanie usługi Azure IoT Edge modułów z programu Visual Studio Code
 
@@ -71,7 +71,7 @@ Poniżej przedstawiono manifestu podstawowego wdrożenia za pomocą jednego modu
              }
            },
            "modules": {
-             "tempSensor": {
+             "SimulatedTemperatureSensor": {
                "version": "1.0",
                "type": "docker",
                "status": "running",
@@ -95,7 +95,7 @@ Poniżej przedstawiono manifestu podstawowego wdrożenia za pomocą jednego modu
            }
          }
        },
-       "tempSensor": {
+       "SimulatedTemperatureSensor": {
          "properties.desired": {}
        }
      }
@@ -128,10 +128,10 @@ Możesz wdrożyć moduły do Twojego urządzenia, stosując manifestu wdrażania
 
 1. W widoku Eksploratora Visual Studio Code, rozwiń węzeł **Azure IoT Hub Devices** sekcji.
 
-1. Kliknij prawym przyciskiem myszy na urządzeniu usługi IoT Edge, które chcesz skonfigurować za pomocą pliku manifestu wdrożenia.
+1. Kliknij prawym przyciskiem myszy urządzenie IoT Edge, które chcesz skonfigurować przy użyciu manifestu wdrażania.
 
     > [!TIP]
-    > Aby potwierdzić, że urządzenie zostało wybrane jest urządzenia usługi IoT Edge, wybierz ją, aby rozwinąć listę modułów i sprawdź obecność **$edgeHub** i **$edgeAgent**. Każde urządzenie usługi IoT Edge obejmuje te dwa moduły.
+    > Aby upewnić się, że wybrane urządzenie jest urządzeniem IoT Edge, wybierz je, aby rozwinąć listę modułów i sprawdzić obecność **$edgeHub** i **$edgeAgent**. Każde urządzenie IoT Edge obejmuje te dwa moduły.
 
 1. Wybierz **tworzenie wdrożenia dla jednego urządzenia**.
 

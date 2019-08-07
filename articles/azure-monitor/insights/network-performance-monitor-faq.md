@@ -1,6 +1,6 @@
 ---
-title: Często zadawane pytania — rozwiązanie Network Performance Monitor na platformie Azure | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera często zadawane pytania dotyczące rozwiązania Network Performance Monitor na platformie Azure. Sieć Performance Monitor (NPM) pomaga monitorować wydajność sieci, niemal w czasie rzeczywistym oraz wykrywanie i Znajdź sieci wąskich gardeł wydajności.
+title: Często zadawane pytania — Network Performance Monitor rozwiązanie na platformie Azure | Microsoft Docs
+description: W tym artykule opisano często zadawane pytania dotyczące Network Performance Monitor na platformie Azure. Network Performance Monitor (NPM) ułatwia monitorowanie wydajności sieci niemal w czasie rzeczywistym oraz wykrywanie i lokalizowanie wąskich gardeł wydajności sieci.
 services: log-analytics
 documentationcenter: ''
 author: vinynigam
@@ -12,217 +12,227 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinigam
-ms.openlocfilehash: 71eb789c92452353029613265fe97411c8c00649
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: b3274c214aa60c930e62e651af960d5f01cbdd20
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706328"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782121"
 ---
-# <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor rozwiązania — często zadawane pytania
+# <a name="network-performance-monitor-solution-faq"></a>Rozwiązanie Network Performance Monitor — często zadawane pytania
 
-![Symbol monitora wydajności sieci](media/network-performance-monitor-faq/npm-symbol.png)
+![Symbol Network Performance Monitor](media/network-performance-monitor-faq/npm-symbol.png)
 
-Ten artykuł zawiera często zadawane pytania (FAQ) dotyczących Network Performance Monitor (NPM) na platformie Azure
+W tym artykule zapoznaj się z często zadawanymi pytaniami dotyczącymi Network Performance Monitor (NPM) na platformie Azure
 
-[Monitor wydajności sieci](/azure/networking/network-monitoring-overview) jest oparta na chmurze [monitorowania sieci hybrydowych](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md) rozwiązanie, które pomaga monitorować wydajność sieci, między różnymi punktami w infrastrukturze sieci. Pozwala on także monitorować łączność sieciową do [punktów końcowych usług i aplikacji](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md) i [monitorowanie wydajności usługi Azure ExpressRoute](../../azure-monitor/insights/network-performance-monitor-expressroute.md). 
+[Network Performance Monitor](/azure/networking/network-monitoring-overview) to rozwiązanie [hybrydowego monitorowania sieci](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md) opartego na chmurze, które ułatwia monitorowanie wydajności sieci między różnymi punktami infrastruktury sieciowej. Pomaga również monitorować łączność sieciową z [punktami końcowymi usługi i aplikacji](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md) oraz [monitorować wydajność usługi Azure ExpressRoute](../../azure-monitor/insights/network-performance-monitor-expressroute.md). 
 
-Rozwiązanie Network Performance Monitor wykrywa problemy sieciowe, takie jak blackholing ruchu, routingu błędy i problemy, które metody monitorowania sieci są konwencjonalne funkcje nie są w stanie wykryć. Rozwiązanie generuje alerty i powiadamia użytkownika, gdy nastąpi naruszenie progu związanego z połączeniem sieciowym. Ponadto gwarantuje ono szybkie wykrywanie problemów z wydajnością sieci i lokalizuje źródło problemu w określonym segmencie lub urządzeniu w sieci. 
+Network Performance Monitor wykrywa problemy z siecią, takie jak ruch blackholing, błędy routingu i problemy, które nie są w stanie wykryć konwencjonalnych metod monitorowania sieci. Rozwiązanie generuje alerty i powiadamia użytkownika, gdy nastąpi naruszenie progu związanego z połączeniem sieciowym. Ponadto gwarantuje ono szybkie wykrywanie problemów z wydajnością sieci i lokalizuje źródło problemu w określonym segmencie lub urządzeniu w sieci. 
 
-Więcej informacji na temat różnych funkcji obsługiwanych przez [rozwiązania Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) jest dostępna w trybie online.
+Więcej informacji na temat różnych możliwości obsługiwanych przez [Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) jest dostępnych w trybie online.
 
-## <a name="set-up-and-configure-agents"></a>Instalowanie i konfigurowanie agentów
+## <a name="set-up-and-configure-agents"></a>Konfigurowanie i konfigurowanie agentów
 
-### <a name="what-are-the-platform-requirements-for-the-nodes-to-be-used-for-monitoring-by-npm"></a>Jakie są wymagania dotyczące platformy dla węzłów, które ma być używany do monitorowania Menedżera NPM?
-Poniżej wymieniono wymagania dotyczące platformy programu NPM dla różnych funkcji:
+### <a name="what-are-the-platform-requirements-for-the-nodes-to-be-used-for-monitoring-by-npm"></a>Jakie są wymagania dotyczące platformy dla węzłów, które mają być używane do monitorowania przez NPM?
+Poniżej wymieniono wymagania dotyczące platformy dla różnych możliwości NPM:
 
-- Monitor wydajności i możliwości Monitor łączności usługi NPM obsługuje zarówno Windows server i Windows, komputerów stacjonarnych/klienckie systemy operacyjne. Obsługiwane wersje systemu operacyjnego serwera Windows są 2008 z dodatkiem SP1 lub nowszym. Obsługiwane wersje pulpitów/klienta Windows to Windows 10, Windows 8.1, Windows 8 i Windows 7. 
-- Możliwość monitorowania usługi ExpressRoute NPM obsługuje tylko Windows server (2008 z dodatkiem SP1 lub nowszym) systemu operacyjnego.
+- Funkcje monitora wydajności NPM i monitora łączności usług obsługują zarówno system Windows Server, jak i komputery klienckie z systemem Windows. Obsługiwane są wersje systemu operacyjnego Windows Server z dodatkiem SP1 lub nowszym 2008. Obsługiwane wersje komputerów stacjonarnych i klienckich systemu Windows to Windows 10, Windows 8.1, Windows 8 i Windows 7. 
+- NPM ExpressRoute monitor obsługuje tylko system operacyjny Windows Server (2008 z dodatkiem SP1 lub nowszym).
 
-### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>Czy można używać maszyny z systemem Linux, jak monitorowanie węzłów w NPM?
-Możliwość monitorowania sieci przy użyciu węzłów opartych na systemie Linux jest obecnie w wersji zapoznawczej. Dotrzyj do Menedżera konta, aby dowiedzieć się więcej. Agenci dla systemu Linux zapewniają możliwość monitorowania tylko w przypadku funkcji Monitora wydajności Menedżera NPM, a nie są dostępne dla możliwości usługi Monitor łączności i Monitor usługi ExpressRoute
+### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>Czy można używać maszyn z systemem Linux jako węzłów monitorowania w NPM?
+Możliwość monitorowania sieci przy użyciu węzłów opartych na systemie Linux jest obecnie dostępna w wersji zapoznawczej. Aby dowiedzieć się więcej, skontaktuj się z menedżerem konta. Agenci systemu Linux oferują możliwość monitorowania tylko dla funkcji monitora wydajności NPM i nie są dostępne na potrzeby funkcji Monitor łączności usługi i ExpressRoute
 
-### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>Jakie są wymagania rozmiar węzłów, ma być używany do monitorowania Menedżera NPM?
-Uruchamianie rozwiązania NPM w węźle Monitorowanie sieci maszyn wirtualnych, węzły powinny mieć co najmniej 500 MB pamięci i jednego rdzenia. Nie należy używać oddzielnych węzłów do uruchamiania Menedżera NPM. Rozwiązanie można uruchomić na węzły, które mają innych obciążeń uruchomionych na nim. Rozwiązanie ma możliwości, aby zatrzymać proces monitorowania za pomocą ponad 5% zasobów Procesora.
+### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>Jakie są wymagania dotyczące rozmiaru węzłów, które mają być używane do monitorowania przez NPM?
+Aby można było uruchomić rozwiązanie NPM na maszynach wirtualnych węzła do monitorowania sieci, węzły powinny mieć co najmniej 500 MB pamięci i jeden rdzeń. Nie musisz używać oddzielnych węzłów do uruchamiania NPM. Rozwiązanie można uruchomić na węzłach, które mają uruchomione inne obciążenia. Rozwiązanie ma możliwość zatrzymania procesu monitorowania, jeśli używa więcej niż 5% procesora CPU.
 
-### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>Aby użyć Menedżera NPM, należy się połączyć mojego węzłów jako funkcja agentów bezpośrednich lub za pomocą programu System Center Operations Manager?
-Monitor wydajności i możliwości usługi Monitor łączności obsługują węzłów [podłączony jako agentów bezpośrednich](../../azure-monitor/platform/agent-windows.md) i [połączone za pośrednictwem programu Operations Manager](../../azure-monitor/platform/om-agents.md).
+### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>Aby użyć NPM, czy należy połączyć węzły jako bezpośredni Agent czy za pośrednictwem System Center Operations Manager?
+Zarówno Monitor wydajności, jak i funkcje monitora łączności usług obsługują węzły [połączone jako agenci bezpośredni](../../azure-monitor/platform/agent-windows.md) i [połączone za pośrednictwem Operations Manager](../../azure-monitor/platform/om-agents.md).
 
-Aby uzyskać możliwość monitorowania usługi ExpressRoute węzły na platformie Azure powinny być połączone jako agentów bezpośrednich tylko. Węzły platformy Azure, które są połączone za pomocą programu Operations Manager nie są obsługiwane. Dla węzłów w środowisku lokalnym węzły połączone jako agentów bezpośrednich i za pomocą programu Operations Manager są obsługiwane w przypadku monitorowania obwodu usługi ExpressRoute.
+W przypadku możliwości monitorowania ExpressRoute węzły platformy Azure powinny być połączone tylko z agentami bezpośrednimi. Węzły platformy Azure, które są połączone za pomocą Operations Manager nie są obsługiwane. W przypadku węzłów lokalnych węzły połączone jako agenci bezpośredni i za pośrednictwem Operations Manager są obsługiwane na potrzeby monitorowania obwodu usługi ExpressRoute.
 
-### <a name="which-protocol-among-tcp-and-icmp-should-be-chosen-for-monitoring"></a>Należy wybrać protokół TCP i ICMP do monitorowania?
-Jeśli monitorujesz sieci przy użyciu węzłów na serwerze Windows zalecamy użyć TCP jako protokół monitorowania, ponieważ zapewnia większą dokładność. 
+### <a name="which-protocol-among-tcp-and-icmp-should-be-chosen-for-monitoring"></a>Który protokół z protokołów TCP i ICMP powinien być wybierany do monitorowania?
+W przypadku monitorowania sieci przy użyciu węzłów opartych na systemie Windows Server zalecamy użycie protokołu TCP jako protokołu monitorowania, ponieważ zapewnia lepszą dokładność. 
 
-Protokół ICMP jest zalecana dla Windows pulpitów/kliencie systemu Windows w oparciu o system operacyjny węzłów. Ta does'nt platformy umożliwiają danych TCP do przesyłania za pośrednictwem gniazd sieciowych, które używa NPM, aby odnaleźć topologię sieci.
+Protokół ICMP jest zalecany dla komputerów stacjonarnych/klienckich z systemem Windows. Ta platforma does'nt zezwala na wysyłanie danych TCP za pośrednictwem gniazd surowych, których NPM używa do odnajdywania topologii sieci.
 
-Więcej informacji można uzyskać na względne zalety każdego protokołu [tutaj](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md#choose-the-protocol).
+Więcej szczegółowych informacji na temat względnych zalet poszczególnych protokołów można znaleźć [tutaj](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md#choose-the-protocol).
 
-### <a name="how-can-i-configure-a-node-to-support-monitoring-using-tcp-protocol"></a>Jak można skonfigurować węzła do obsługi monitorowania przy użyciu protokołu TCP
-Dla węzła do obsługi monitorowania przy użyciu protokołu TCP: 
-* Upewnij się, że platforma węzeł systemu Windows Server (2008 z dodatkiem SP1 lub nowszym).
-* Uruchom [EnableRules.ps1](https://aka.ms/npmpowershellscript) skrypt programu Powershell w węźle. Zobacz [instrukcje](../../azure-monitor/insights/network-performance-monitor.md#configure-log-analytics-agents-for-monitoring) Aby uzyskać więcej informacji.
+### <a name="how-can-i-configure-a-node-to-support-monitoring-using-tcp-protocol"></a>Jak skonfigurować węzeł do obsługi monitorowania przy użyciu protokołu TCP?
+Aby węzeł obsługiwał monitorowanie przy użyciu protokołu TCP: 
+* Upewnij się, że platformą jest system Windows Server (2008 z dodatkiem SP1 lub nowszym).
+* Uruchom skrypt programu PowerShell [skrypt enablerules. ps1](https://aka.ms/npmpowershellscript) w węźle. Zapoznaj się z [instrukcjami](../../azure-monitor/insights/network-performance-monitor.md#configure-log-analytics-agents-for-monitoring) , aby uzyskać więcej szczegółów.
 
 
-### <a name="how-can-i-change-the-tcp-port-being-used-by-npm-for-monitoring"></a>Jak zmienić port TCP używany przez narzędzie NPM monitorowania?
-Możesz zmienić port TCP używany przez narzędzie NPM dla monitorowania, uruchamiając [EnableRules.ps1](https://aka.ms/npmpowershellscript) skryptu. Należy wprowadzić numer portu, którego zamierzasz użyć jako parametru. Na przykład, aby umożliwić ruch TCP na porcie 8060, należy uruchomić `EnableRules.ps1 8060`. Upewnij się, że używasz tego samego portu TCP we wszystkich węzłach używanych do monitorowania.
+### <a name="how-can-i-change-the-tcp-port-being-used-by-npm-for-monitoring"></a>Jak mogę zmienić port TCP używany przez NPM do monitorowania?
+Można zmienić port TCP używany przez NPM do monitorowania, uruchamiając skrypt [skrypt enablerules. ps1](https://aka.ms/npmpowershellscript) . Musisz wprowadzić numer portu, który ma być używany jako parametr. Na przykład, aby włączyć protokół TCP na porcie 8060, `EnableRules.ps1 8060`Uruchom polecenie. Upewnij się, że używasz tego samego portu TCP na wszystkich węzłach używanych do monitorowania.
 
-Skrypt konfiguruje tylko Windows zapory lokalnie. Jeśli masz Zapora sieciowa lub reguł sieciowej grupy zabezpieczeń (NSG), upewnij się, że zezwalają na ruch kierowany do portu TCP używanego przez NPM.
+Skrypt konfiguruje tylko zaporę systemu Windows lokalnie. Jeśli masz reguły zapory sieciowej lub sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń), upewnij się, że zezwalają na ruch przeznaczony dla portu TCP używanego przez NPM.
 
-### <a name="how-many-agents-should-i-use"></a>Ile agentów należy używać?
-Dla każdej podsieci, które mają być monitorowane, należy użyć co najmniej jednego agenta.
+### <a name="how-many-agents-should-i-use"></a>Ilu agentów należy użyć?
+Należy używać co najmniej jednego agenta dla każdej podsieci, która ma być monitorowana.
 
-### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--youve-reached-your-configuration-limit"></a>Co to jest maksymalna liczba agentów, których można używać lub widzę błąd w "menu... Osiągnięto limit konfiguracji"?
-NPM ogranicza liczbę adresów IP adresy IP 5000 danego obszaru roboczego. Jeśli węzeł ma adresy IPv4 i IPv6, to będzie liczone jako 2 adresy IP, dla tego węzła. W związku z tym ten limit 5000 adresy IP zdecyduje, górny limit liczby agentów. Nieaktywnych agentów można usunąć z węzłów karcie NPM >> Konfiguruj. NPM udostępnia również historię wszystkich adresów IP, który nigdy nie zostały przypisane do maszyny Wirtualnej hostującym agenta oraz każdy jest traktowana jako oddzielne adresów IP, przyczyniając się do tego górny limit 5000 adresów IP. Do Zwolnij adresy IP dla Twojego obszaru roboczego służy strona węzły można usunąć adresy IP, które nie są używane.
+### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--youve-reached-your-configuration-limit"></a>Jaka jest maksymalna liczba agentów, których można użyć lub pojawia się błąd ".... Osiągnięto limit konfiguracji "?
+NPM ogranicza liczbę adresów IP do 5000 adresów IP dla obszaru roboczego. Jeśli węzeł ma adresy IPv4 i IPv6, wartość ta będzie wynosić 2 adresy IP dla tego węzła. W związku z tym limit 5000 adresów IP decyduje o górnym limicie liczby agentów. Nieaktywnych agentów można usunąć z karty węzły w NPM > > Konfiguruj. NPM przechowuje również historię wszystkich adresów IP, które zostały kiedykolwiek przypisane do maszyny wirtualnej hostującym agenta, a każda z nich jest traktowana jako oddzielny adres IP, który ma do tego górny limit 5000 adresów IP. Aby zwolnić adresy IP dla obszaru roboczego, możesz użyć strony węzły do usunięcia adresów IP, które nie są używane.
 
 ## <a name="monitoring"></a>Monitorowanie
 
-### <a name="how-are-loss-and-latency-calculated"></a>Jak są strat i opóźnień obliczane
-Źródło agenci wysyłają albo TCP SYN żądania (Jeśli protokół TCP jest wybierany jako protokół monitorowania) lub realizacji żądań ECHA protokołu ICMP (Jeśli protokół ICMP jest wybierany jako protokół monitorowania) do docelowego adresu IP w regularnych odstępach czasu, aby upewnić się, że wszystkie ścieżki między źródłowy i docelowy adres IP Kombinacja zostały uwzględnione. Procent odebranych pakietów i czas obustronnej konwersji pakietów jest zaokrąglana do obliczania strat i opóźnień, każdej ścieżki. Te dane są agregowane dla interwału sondowania i za pośrednictwem wszystkich ścieżek, które można pobrać wartości zagregowane strat i opóźnień dla kombinacji adresu IP dla określonego interwału sondowania.
+### <a name="how-are-loss-and-latency-calculated"></a>Jak są obliczane straty i opóźnienia
+Agenci źródłowi wysyłają żądania protokołu TCP SYN (w przypadku wybrania protokołu TCP do monitorowania) lub żądań echa protokołu ICMP (Jeśli protokół ICMP jest wybierany jako protokołu monitorowania) do docelowego adresu IP w regularnych odstępach czasu w celu zapewnienia, że wszystkie ścieżki między źródłowym adresem IP źródła podano kombinację. Procent odebranych pakietów i czas rundy pakietu jest mierzony w celu obliczenia utraty i opóźnienia każdej ścieżki. Te dane są agregowane względem interwału sondowania i wszystkich ścieżek w celu uzyskania zagregowanych wartości utraty i opóźnienia dla kombinacji adresów IP dla określonego interwału sondowania.
 
-### <a name="with-what-frequency-does-the-source-agent-send-packets-to-the-destination-for-monitoring"></a>Częstotliwość źródłowym agencie wysyłanie pakietów do miejsca docelowego do monitorowania?
-Monitor wydajności i Monitor usługi ExpressRoute możliwości źródło wysyła pakiety co 5 sekund i rejestruje pomiarów sieci. Tych danych jest agregowana w przedziałach sondowania 3-minutowy do obliczania średniej i szczytowe użycie wartości strat i opóźnień. Dla funkcji usługi Monitor łączności częstotliwość wysyłania pakietów do pomiaru sieci zależy od częstotliwości wprowadzonej przez użytkownika dla specyficznego testu podczas konfigurowania testu.
+### <a name="with-what-frequency-does-the-source-agent-send-packets-to-the-destination-for-monitoring"></a>Z jaką częstotliwością Agent źródłowy wysyła pakiety do miejsca docelowego na potrzeby monitorowania?
+W przypadku funkcji monitorowania wydajności i monitorowania ExpressRoute Źródło wysyła pakiety co 5 sekund i rejestruje miary sieci. Te dane są agregowane w ciągu 3-minutowego interwału sondowania, aby obliczyć średnią i szczytową wartość utraty i opóźnienia. W przypadku możliwości monitora łączności usług częstotliwość wysyłania pakietów do miary sieci jest określana przez częstotliwość wprowadzoną przez użytkownika dla określonego testu podczas konfigurowania testu.
 
-### <a name="how-many-packets-are-sent-for-monitoring"></a>Ile pakiety są wysyłane do monitorowania?
-Liczba pakietów wysłanych przez agenta źródła do miejsca docelowego w sondowania jest adaptacyjne i zadecyduje o naszego algorytmu mogą być różne dla różnych sieci topologii. Zwiększenie liczby ścieżek sieciowych między kombinacji adresu IP źródłowy i docelowy, więcej jest liczba pakietów, które są wysyłane. System zapewnia, że wszystkie ścieżki między kombinacji adresu IP źródłowy i docelowy znajdują się.
+### <a name="how-many-packets-are-sent-for-monitoring"></a>Ile pakietów jest wysyłanych do monitorowania?
+Liczba pakietów wysłanych przez agenta źródłowego do miejsca docelowego w trakcie sondowania jest dostosowywana i jest określana przez nasz algorytm własnościowy, który może być różny dla różnych topologii sieci. Większa liczba ścieżek sieciowych między kombinacją adresu IP źródł-docelowy, czyli liczbą wysyłanych pakietów. System gwarantuje, że wszystkie ścieżki między kombinacją adresu IP źródł-docelowy są pokryte.
 
-### <a name="how-does-npm-discover-network-topology-between-source-and-destination"></a>Jak NPM Odnajdywanie topologii sieci, między źródłowym i docelowym?
-NPM używa algorytmu, w oparciu o Traceroute do odnajdywania, ścieżki i przeskoków między źródłowym i docelowym.
+### <a name="how-does-npm-discover-network-topology-between-source-and-destination"></a>Jak NPM odnajdywanie topologii sieci między źródłem a miejscem docelowym?
+NPM używa algorytmu własnościowego opartego na traceroute do odnajdywania wszystkich ścieżek i przeskoków między źródłem a miejscem docelowym.
 
-### <a name="does-npm-provide-routing-and-switching-level-info"></a>NPM zapewnia routing i przełączania poziomu info 
-Chociaż NPM może wykryć wszystkie możliwe trasy między agentem źródło i miejsce docelowe, nie zapewnia widoczność, do którego trasa została wykonana przez pakiety wysłane przez konkretnych obciążeń. Rozwiązanie może pomóc w identyfikacji ścieżek i podstawowych przeskoków sieciowych, które dodajesz więcej opóźnienia, niż oczekiwano.
+### <a name="does-npm-provide-routing-and-switching-level-info"></a>Czy NPM dostarcza informacje o poziomie routingu i przełączania 
+Chociaż NPM może wykryć wszystkie możliwe trasy między agentem źródłowym a miejscem docelowym, nie zapewnia widoczności trasy wykonanej przez pakiety wysyłane przez określone obciążenia. Rozwiązanie może pomóc w zidentyfikowaniu ścieżek i przeskoków sieci, które zwiększają opóźnienia niż oczekiwano.
 
-### <a name="why-are-some-of-the-paths-unhealthy"></a>Dlaczego są niektóre ścieżki złej kondycji?
-Innymi ścieżkami sieciowymi mogą istnieć między źródłowe i docelowe adresy IP, a każda ścieżka może mieć inną wartość strat i opóźnień. NPM oznacza tych ścieżek o złej kondycji (oznaczone kolorem czerwonym) dla wartości utraty i/lub opóźnienia jest większy niż próg odpowiednich w konfiguracji monitorowania.
+### <a name="why-are-some-of-the-paths-unhealthy"></a>Dlaczego niektóre ścieżki są w złej kondycji?
+Między źródłowym i docelowym adres IP może istnieć różne ścieżki sieciowe, a każda ścieżka może mieć inną wartość utraty i opóźnienia. NPM oznacza te ścieżki jako w złej kondycji (oznaczone czerwonym kolorem), dla których wartości utraty i/lub opóźnienia są większe niż odpowiedni próg ustawiony w konfiguracji monitorowania.
 
-### <a name="what-does-a-hop-in-red-color-signify-in-the-network-topology-map"></a>Co to przeskoków w kolorze czerwonym oznaczającego w mapie topologii sieci?
-W przypadku czerwoną skoku, oznacza to, że jest częścią co najmniej jedna ścieżka w złej kondycji. NPM oznacza tylko ścieżki o złej kondycji, go nie oddzielenie czynności związanych z stan kondycji każdej ścieżki. Aby zidentyfikować problematycznych przeskoków, można wyświetlić opóźnienie przeskoku przeskoku i oddzielenie czynności związanych z tymi, dodając więcej niż oczekiwane opóźnienie.
+### <a name="what-does-a-hop-in-red-color-signify-in-the-network-topology-map"></a>Co oznacza skok w kolorze czerwonym w mapie topologii sieci?
+Jeśli przeskok ma kolor czerwony, oznacza to, że jest on częścią co najmniej jednej ścieżki w złej kondycji. NPM oznacza tylko ścieżki jako w złej kondycji, ale nie podzieli stan kondycji każdej ścieżki. Aby zidentyfikować przeskoki problematycznych, można wyświetlić opóźnienie przeskoku do przeskoku i oddzielić je, dodając więcej niż oczekiwane opóźnienie.
 
-### <a name="how-does-fault-localization-in-performance-monitor-work"></a>Jak działa Lokalizacja błędu w Monitorze wydajności
-NPM przypisuje prawdopodobieństwa błędów każdej ścieżce sieciowej segmentu sieci przy użyciu mechanizmu Probabilistyczne i przeskoków sieciowych składników, na podstawie liczby ścieżki w złej kondycji są częścią. Gdy segmentów sieci i przeskoków stają się częścią zwiększenie liczby ścieżki w złej kondycji, zwiększa prawdopodobieństwo błędów skojarzonych z nimi. Ten algorytm sprawdza się najlepiej, jeśli masz wiele węzłów za pomocą agenta menedżera NPM, połączone ze sobą, ponieważ zwiększa to punktów danych na obliczanie prawdopodobieństwa błędów.
+### <a name="how-does-fault-localization-in-performance-monitor-work"></a>Jak działa lokalizacja błędów w Monitorze wydajności?
+NPM używa mechanizmu probabilistyczne do przypisywania prawdopodobieństwa błędów do każdej ścieżki sieciowej, segmentu sieci i przeskoków sieci w zależności od liczby ścieżek w złej kondycji, które są częścią. Ponieważ segmenty i przeskoki sieciowe stają się częścią większej liczby ścieżek w złej kondycji, wzrasta prawdopodobieństwo wystąpienia błędu. Ten algorytm działa najlepiej, gdy istnieje wiele węzłów z NPM agentem podłączonym do siebie, ponieważ zwiększa to punkty danych do obliczenia prawdopodobieństwa błędów.
 
-### <a name="how-can-i-create-alerts-in-npm"></a>Jak utworzyć alerty w NPM
-Zapoznaj się [alerty sekcji w dokumentacji](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor#alerts) instrukcje krok po kroku.
+### <a name="how-can-i-create-alerts-in-npm"></a>Jak mogę utworzyć alerty w programie NPM?
+Instrukcje krok po kroku znajdują się [w sekcji alertów w dokumentacji](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor#alerts) .
 
-### <a name="can-npm-monitor-routers-and-servers-as-individual-devices"></a>NPM monitorować serwery i routerów jako poszczególnych urządzeń?
-NPM identyfikuje tylko adresów IP i hosta nazwę podstawowej przeskoków sieciowych (przełączniki, routery, serwery, itp.) między źródłowe i docelowe adresy IP. Określa on także opóźnienia między te zidentyfikowanych przeskoków. Nie indywidualnie monitoruje ona tych podstawowych przeskoków.
+### <a name="can-npm-monitor-routers-and-servers-as-individual-devices"></a>Czy NPM monitorować routery i serwery jako pojedyncze urządzenia?
+NPM identyfikują adres IP i nazwę hosta odpowiednich przeskoków sieci (przełączniki, routery, serwery itp.) między źródłowym i docelowym adresem IP. Identyfikuje także opóźnienie między tymi zidentyfikowanymi przeskokami. Nie monitorują osobno tych bazowych przeskoków.
 
-### <a name="can-npm-be-used-to-monitor-network-connectivity-between-azure-and-aws"></a>Może służyć do monitorowania łączności sieciowej między platformą Azure i AWS NPM?
-Tak. Zapoznaj się z artykułem [monitorowanie platformy Azure, AWS i sieciami lokalnymi za pomocą Menedżera NPM](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/) Aby uzyskać szczegółowe informacje.
+### <a name="can-npm-be-used-to-monitor-network-connectivity-between-azure-and-aws"></a>Czy NPM można użyć do monitorowania łączności sieciowej między platformą Azure i AWS?
+Tak. Aby uzyskać szczegółowe informacje, zobacz artykuł [monitorowanie sieci Azure, AWS i lokalnych](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/) .
 
-### <a name="is-the-expressroute-bandwidth-usage-incoming-or-outgoing"></a>Przychodzące lub wychodzące, jest użycie przepustowości usługi ExpressRoute?
-Wykorzystanie przepustowości jest łączną przepustowość przychodzących i wychodzących. Jest on wyrażany w bitach na sekundę.
+### <a name="is-the-expressroute-bandwidth-usage-incoming-or-outgoing"></a>Czy użycie przepustowości ExpressRoute jest przychodzące lub wychodzące?
+Użycie przepustowości to całkowita przepustowość przychodząca i wychodząca. Jest on wyrażony w bitach na sekundę.
 
-### <a name="can-we-get-incoming-and-outgoing-bandwidth-information-for-the-expressroute"></a>Firma Microsoft znajdziesz informacje przychodzące i wychodzące przepustowości dla usługi ExpressRoute?
-Mogą być przechwytywane wartości przychodzących i wychodzących dla przepustowości podstawowym i pomocniczym.
+### <a name="can-we-get-incoming-and-outgoing-bandwidth-information-for-the-expressroute"></a>Czy można uzyskać informacje o przepustowości przychodzące i wychodzące dla ExpressRoute?
+Wartości przychodzące i wychodzące dla przepustowości podstawowej i pomocniczej mogą być przechwytywane.
 
-Aby uzyskać informacje dotyczące komunikacji równorzędnej poziomu, użyj poniżej wymienionych zapytania podczas wyszukiwania dziennika
+Aby uzyskać informacje na temat poziomu komunikacji równorzędnej, użyj poniższego zapytania w przeszukiwaniu dzienników
 
     NetworkMonitoring 
     | where SubType == "ExpressRoutePeeringUtilization"
     | project CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
   
-Aby uzyskać informacje o poziomie obwodu, użyj poniżej wymienionych zapytania 
+Aby uzyskać informacje o poziomie obwodu, użyj poniższego zapytania 
 
     NetworkMonitoring 
     | where SubType == "ExpressRouteCircuitUtilization"
     | project CircuitName,PrimaryBytesInPerSecond, PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
 
-### <a name="which-regions-are-supported-for-npms-performance-monitor"></a>Które regiony są obsługiwane w przypadku monitora wydajności Menedżera NPM?
-NPM można monitorować łączność między sieciami w dowolnej części świata, z obszaru roboczego, który znajduje się w jednym z [obsługiwane regiony](../../azure-monitor/insights/network-performance-monitor.md#supported-regions)
+### <a name="which-regions-are-supported-for-npms-performance-monitor"></a>Które regiony są obsługiwane przez Monitor wydajności NPM?
+NPM może monitorować łączność między sieciami w dowolnej części świata z obszaru roboczego, który jest hostowany w jednym z [obsługiwanych regionów](../../azure-monitor/insights/network-performance-monitor.md#supported-regions)
 
-### <a name="which-regions-are-supported-for-npms-service-connectivity-monitor"></a>Które regiony są obsługiwane w przypadku Monitor łączności usługi NPM?
-NPM można monitorować łączność z usługami w dowolnej części świata, z obszaru roboczego, który znajduje się w jednym z [obsługiwane regiony](../../azure-monitor/insights/network-performance-monitor.md#supported-regions)
+### <a name="which-regions-are-supported-for-npms-service-connectivity-monitor"></a>Które regiony są obsługiwane przez Monitor łączności usługi NPM?
+NPM może monitorować łączność z usługami w dowolnej części świata z obszaru roboczego, który jest hostowany w jednym z [obsługiwanych regionów](../../azure-monitor/insights/network-performance-monitor.md#supported-regions)
 
-### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>Które regiony są obsługiwane w przypadku rozwiązania NPM Monitor usługi ExpressRoute?
-NPM można monitorować obwodów usługi ExpressRoute znajduje się w dowolnym regionie systemu Azure. Aby dołączyć do usługi NPM, będzie wymagać obszaru roboczego usługi Log Analytics, który musi być hostowany w jednym z [obsługiwane regiony](/azure/expressroute/how-to-npm)
+### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>Które regiony są obsługiwane przez Monitor ExpressRoute NPM?
+NPM może monitorować obwody usługi ExpressRoute znajdujące się w dowolnym regionie platformy Azure. Aby dołączyć do NPM, musisz mieć obszar roboczy Log Analytics, który musi być hostowany w jednym z [obsługiwanych regionów](/azure/expressroute/how-to-npm)
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 
-### <a name="why-are-some-of-the-hops-marked-as-unidentified-in-the-network-topology-view"></a>Dlaczego są przeskoków oznaczone jako niezidentyfikowanych w widoku topologii sieci?
-NPM używa zmodyfikowanej wersji traceroute umożliwia odnalezienie topologii z agenta źródła do miejsca docelowego. Niezidentyfikowany przeskok reprezentuje to, że przeskok sieci nie odpowiedziała na żądanie traceroute agenta źródłowego. Jeśli trzy przeskoków sieciowych kolejnych odpowiada na polecenie traceroute agenta, rozwiązanie oznacza odpowiadać przeskoków jako niezidentyfikowane i nie podejmuje próby odkryć więcej przeskoków.
+### <a name="why-are-some-of-the-hops-marked-as-unidentified-in-the-network-topology-view"></a>Dlaczego niektóre przeskoki oznaczono jako niezidentyfikowane w widoku topologii sieci?
+NPM używa zmodyfikowanej wersji traceroute do odnajdywania topologii od agenta źródłowego do miejsca docelowego. Niezidentyfikowany przeskok oznacza, że przeskok sieci nie odpowiedział na żądanie traceroute agenta źródłowego. Jeśli trzy kolejne przeskoki sieci nie odpowiadają na traceroute agenta, to rozwiązanie oznaczy nieodpowiadające chmiel jako niezidentyfikowane i nie próbuje odnaleźć większej liczby przeskoków.
 
-Przeskok nie mogą odpowiadać na traceroute w co najmniej jeden z poniższych scenariuszy:
+Przeskok może nie reagować na traceroute w co najmniej jednym z poniższych scenariuszy:
 
-* Routery skonfigurowano nie ujawnił swojej tożsamości.
+* Routery zostały skonfigurowane w taki sposób, aby nie ujawniali swojej tożsamości.
 * Urządzenia sieciowe nie zezwalają na ruch ICMP_TTL_EXCEEDED.
-* Zapora nie blokuje odpowiedzi ICMP_TTL_EXCEEDED z urządzenia sieciowego.
+* Zapora blokuje odpowiedź ICMP_TTL_EXCEEDED z urządzenia sieciowego.
 
-### <a name="why-does-my-link-show-unhealthy-but-the-topology-does-not"></a>Dlaczego zła pokazu łącza, ale topologii nie 
-NPM monitoruje utraty end-to-end, opóźnienia i topologii w różnych interwałach. Strat i opóźnień są mierzone co 5 sekund i agregowane co trzy minuty (dla monitora wydajności i monitora Express Route) podczas gdy topologia jest obliczana przy użyciu traceroute raz na 10 minut. Na przykład między 3:44 i 4:04 topologia może zostać zaktualizowany trzy razy (3:44, 3:54 4:04), ale strat i opóźnień zostaną zaktualizowane o siedem razy (3:44, 3:47 3:50, 3:53 3:56 3:59, 4:02). Topologia generowane w 3:54 będzie renderowana dla strat i opóźnień, która pobiera obliczona na 3:56 3:59 i 4:02. Załóżmy, że otrzymasz alert obwodu ER była zła 3:59. Zaloguj się do usługi NPM i próbuje ustawić czas topologii do 3:59. NPM spowoduje, że topologia generowane w 3:54. Aby poznać ostatnie znane topologii sieci, porównanie pola TimeProcessed (czas, w których strat i opóźnień obliczono) i TracerouteCompletedTime (czas w topologii, która została obliczona). 
+### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy-"></a>Otrzymuję alerty dotyczące testów w złej kondycji, ale nie widzę wysokich wartości w grafie strat i opóźnień NPM. Jak mogę sprawdzić, co jest w złej kondycji?
+NPM zgłasza alert, jeśli opóźnienie końca między źródłem a miejscem docelowym przekroczy przykład opcja próg dla każdej ścieżki między nimi. Niektóre sieci mają więcej niż jedną ścieżkę łączącą to samo źródło i miejsce docelowe. NPM wywołuje alert, każda ścieżka jest w złej kondycji. Utrata i opóźnienie widoczne na wykresach to średnia wartość dla wszystkich ścieżek, dlatego nie może być pokazywana dokładna wartość pojedynczej ścieżki. Aby zrozumieć, gdzie próg został naruszony, poszukaj kolumny "podtyp" w alercie. Jeśli problem jest spowodowany przez ścieżkę, wartość podtypu będzie wartość networkpath ((dla testów monitora wydajności), EndpointPath (dla testów monitora łączności usług) i ExpressRoutePath (dla testów monitora ExpressRotue). 
 
-### <a name="what-is-the-difference-between-the-fields-e2emedianlatency-and-avghoplatencylist-in-the-networkmonitoring-table"></a>Jaka jest różnica między polami E2EMedianLatency i AvgHopLatencyList w tabeli NetworkMonitoring
-E2EMedianLatency to opóźnienie aktualizowane co trzy minuty po uaktualnieniu do większej agregacji wyników testów ping protokołu tcp, jest AvgHopLatencyList co 10 minut, w oparciu o traceroute. Aby poznać dokładny czas, w którym została obliczona E2EMedianLatency, należy użyć pola TimeProcessed. Aby poznać dokładny czas, w których traceroute zostało ukończone i zaktualizowano AvgHopLatencyList, należy użyć pola TracerouteCompletedTime
+Przykładowe zapytanie do znalezienia jest w złej kondycji:
 
-### <a name="why-does-hop-by-hop-latency-numbers-differ-from-hoplatencyvalues"></a>Dlaczego liczby przeskoków przeskoku opóźnienia jest różnica między HopLatencyValues 
+    NetworkMonitoring 
+    | where ( SubType == "ExpressRoutePath")
+    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and          CircuitResourceID =="<your ER circuit ID>" and ConnectionResourceId == "<your ER connection resource id>"
+    | project SubType, LossHealthState, LatencyHealthState, MedianLatency 
+
+### <a name="why-does-my-test-show-unhealthy-but-the-topology-does-not"></a>Dlaczego mój test jest wyświetlany w złej kondycji, ale topologia nie 
+NPM śledzi kompleksową utratę, opóźnienia i topologię w różnych interwałach. Utrata i opóźnienie są mierzone co 5 sekund i agregowane co trzy minuty (dla monitora wydajności i monitora trasy Express), podczas gdy topologia jest obliczana przy użyciu traceroute co 10 minut. Na przykład, od 3:44 do 4:04, topologia może być aktualizowana trzy razy (3:44, 3:54, 4:04), ale utrata i opóźnienie są aktualizowane na siedem razy (3:44, 3:47, 3:50, 3:53, 3:56, 3:59, 4:02). Topologia wygenerowana na 3:54 będzie renderowana dla strat i opóźnień, które są obliczane w 3:56, 3:59 i 4:02. Załóżmy, że otrzymasz alert informujący o złej kondycji obwodu w 3:59. Zaloguj się do NPM i spróbuj ustawić czas topologii na 3:59. NPM będzie renderować topologię wygenerowaną w 3:54. Aby zrozumieć ostatnią znaną topologię sieci, porównaj pola TimeProcessed (czas, w którym obliczono utratę i opóźnienia) i TracerouteCompletedTime (czas, w którym została obliczona topologia). 
+
+### <a name="what-is-the-difference-between-the-fields-e2emedianlatency-and-avghoplatencylist-in-the-networkmonitoring-table"></a>Różnica między polami E2EMedianLatency i AvgHopLatencyList w tabeli NetworkMonitoring
+E2EMedianLatency to opóźnienie, które jest aktualizowane co trzy minuty po agregowaniu wyników testów ping protokołu TCP, a AvgHopLatencyList jest aktualizowany co 10 minut w oparciu o traceroute. Aby zrozumieć dokładnie czas, w którym E2EMedianLatency został obliczony, użyj pola TimeProcessed. Aby zrozumieć dokładnie czas, w którym traceroute zostało ukończone i zaktualizowane AvgHopLatencyList, użyj pola TracerouteCompletedTime
+
+### <a name="why-does-hop-by-hop-latency-numbers-differ-from-hoplatencyvalues"></a>Dlaczego liczby opóźnień przeskoków z skoku różnią się od HopLatencyValues 
 HopLatencyValues są źródłem do punktu końcowego.
-Na przykład: Przeskoki — A, B, c AvgHopLatency - 10,15,20. Oznacza to, że źródło do opóźnieniem = 10, źródło do opóźnienia B = 15 oraz źródła do C opóźnienia wynosi 20. Interfejs użytkownika będzie obliczać opóźnienie przeskoku A i B, jak 5 w topologii
+Na przykład: Przeskoki-A, B, C. AvgHopLatency-10, 15, 20. Oznacza to, że źródło do opóźnienia = 10, źródło do B opóźnienia = 15 i opóźnienie źródła do C wynosi 20. Interfejs użytkownika obliczy opóźnienie przeskoków A B jako 5 w topologii
 
-### <a name="the-solution-shows-100-loss-but-there-is-connectivity-between-the-source-and-destination"></a>To rozwiązanie przedstawia utraty 100%, ale istnieje łączność między miejscem źródłowym i docelowym
-Może się to zdarzyć, jeśli Zapora hosta lub pośredniego zapory (Zapora sieciowa lub sieciowej grupy zabezpieczeń platformy Azure) blokuje komunikację między agentem źródło i miejsce docelowe za pośrednictwem portów używanych do monitorowania przez narzędzie NPM (domyślnie port jest port 8084, chyba że Klient został zmieniony to).
+### <a name="the-solution-shows-100-loss-but-there-is-connectivity-between-the-source-and-destination"></a>Rozwiązanie pokazuje 100% strat, ale istnieje łączność między źródłem a miejscem docelowym
+Taka sytuacja może wystąpić, Jeśli Zapora hosta lub pośrednia Zapora (Zapora sieciowa lub usługa Azure sieciowej grupy zabezpieczeń) blokuje komunikację między agentem źródłowym a miejscem docelowym przez port używany do monitorowania przez NPM (domyślnie port jest 8084, chyba że klient został zmieniony.
 
-* Aby sprawdzić, czy Zapora hosta nie blokuje komunikację na porcie wymagane, Wyświetl stan kondycji węzłów źródłowych i docelowych z następującego widoku: Rozwiązanie Network Performance Monitor -> Konfiguracja -> węzłów. 
-  Jeśli są w złej kondycji, Wyświetl instrukcje i podejmij działania naprawcze. Jeśli węzły są w dobrej kondycji, przejdź do kroku b. poniżej.
-* Aby sprawdzić, czy Zapora sieciowa pośrednie lub sieciowej grupy zabezpieczeń platformy Azure nie blokuje komunikację na porcie wymagane, użyj do innych firm PsPing narzędzie przy użyciu poniższych instrukcji:
-  * Narzędzie psping jest dostępna do pobrania [tutaj](https://technet.microsoft.com/sysinternals/psping.aspx) 
-  * Uruchom następujące polecenie z węzeł źródłowy.
-    * Narzędzie psping -n 15 \<węzeł docelowy adres IP\>: numer_portu domyślnie NPM wykorzystuje 8084 port. W przypadku możesz jawnie zmieniono to za pomocą skrypt EnableRules.ps1, wprowadź numer portu niestandardowego, którego używasz). Jest to ping z maszyny platformy Azure do środowiska lokalnego
-* Sprawdź, czy pomyślnie polecenia ping. Jeśli nie, następnie oznacza to, że Zapora sieciowa pośrednie lub sieciowej grupy zabezpieczeń usługi Azure blokuje ruch na tym porcie.
-* Teraz uruchom polecenie w węźle docelowym i źródłowy adres IP węzła.
+* Aby sprawdzić, czy Zapora hosta nie blokuje komunikacji na wymaganym porcie, Wyświetl stan kondycji węzłów źródłowych i docelowych z następującego widoku: Network Performance Monitor > Konfiguracja-> węzły. 
+  Jeśli są w złej kondycji, Wyświetl instrukcje i wykonaj działania naprawcze. Jeśli węzły są w dobrej kondycji, przejdź do kroku b. poniżej.
+* Aby sprawdzić, czy pośrednia Zapora sieciowa lub usługa Azure sieciowej grupy zabezpieczeń nie blokuje komunikacji na wymaganym porcie, użyj narzędzia PsPing innej firmy, korzystając z poniższych instrukcji:
+  * Narzędzie psping jest dostępne do pobrania w [tym miejscu](https://technet.microsoft.com/sysinternals/psping.aspx) 
+  * Uruchom następujące polecenie w węźle źródłowym.
+    * psping-n 15 \<węzeł docelowy adres\>IP:p ortnumber domyślnie używa portu 8084. Na wypadek, gdyby został jawnie zmieniony za pomocą skryptu skrypt enablerules. ps1, wprowadź niestandardowy numer portu, którego używasz). To jest polecenie ping z maszyny Azure do lokalnego
+* Sprawdź, czy polecenia ping zostały wykonane pomyślnie. W przeciwnym razie wskazuje, że pośrednia Zapora sieciowa lub usługa Azure sieciowej grupy zabezpieczeń blokuje ruch na tym porcie.
+* Teraz uruchom polecenie z węzła docelowego do adresu IP węzła źródłowego.
 
 
-### <a name="there-is-loss-from-node-a-to-b-but-not-from-node-b-to-a-why"></a>Następuje utrata z węzła A do B, ale nie z węzła B do serwera A. Dlaczego?
-Jak ścieżek sieciowych, od A do B może różnić się od ścieżek sieciowych między B do A, można zaobserwować różne wartości dla strat i opóźnień.
+### <a name="there-is-loss-from-node-a-to-b-but-not-from-node-b-to-a-why"></a>Istnieje utrata z węzła A do B, ale nie z węzła B do. Zalet?
+Ponieważ ścieżki sieciowe między A A B mogą różnić się od ścieżek sieciowych między B a A, można zaobserwować różne wartości utraty i opóźnienia.
 
-### <a name="why-are-all-my-expressroute-circuits-and-peering-connections-not-being-discovered"></a>Dlaczego są wszystkie obwody usługi ExpressRoute i połączeń komunikacji równorzędnej nie odnaleziono?
-NPM wykrywa teraz obwody usługi ExpressRoute i połączeń komunikacji równorzędnej w przypadku wszystkich subskrypcji, do których użytkownik ma dostęp. Wybierz wszystkie subskrypcje, w którym zasoby usługi Express Route są połączone i Włącz monitorowanie dla każdego odnalezionego zasobu. NPM szuka obiekty połączenia podczas rozpoznawania prywatnej komunikacji równorzędnej, dlatego Sprawdź, czy sieć wirtualna jest skojarzona z usługi komunikacji równorzędnej.
+### <a name="why-are-all-my-expressroute-circuits-and-peering-connections-not-being-discovered"></a>Dlaczego wszystkie obwody usługi ExpressRoute i połączenia komunikacji równorzędnej nie są wykrywane?
+NPM teraz odnajduje obwody usługi ExpressRoute i połączenia komunikacji równorzędnej we wszystkich subskrypcjach, do których użytkownik ma dostęp. Wybierz wszystkie subskrypcje, w których są połączone zasoby usługi Express Route, i Włącz monitorowanie dla każdego wykrytego zasobu. NPM szuka obiektów połączeń podczas odnajdywania prywatnej komunikacji równorzędnej, dlatego należy sprawdzić, czy sieć wirtualna jest skojarzona z usługą komunikacji równorzędnej.
 
-### <a name="the-er-monitor-capability-has-a-diagnostic-message-traffic-is-not-passing-through-any-circuit-what-does-that-mean"></a>Funkcja ER Monitor ma komunikat diagnostyczny "Ruch nie przechodzi przez wszystkie obwód". Co to oznacza?
+### <a name="the-er-monitor-capability-has-a-diagnostic-message-traffic-is-not-passing-through-any-circuit-what-does-that-mean"></a>Funkcja monitora ER ma komunikat diagnostyczny "ruch nie przechodzi przez żaden obwód". Co to oznacza?
 
-Może wystąpić scenariusz, w którym ma dobrej kondycji połączenie między usługą lokalną i węzły na platformie Azure, ale ruch nie przechodzi w obwodzie usługi ExpressRoute skonfigurowana do monitorowania przez narzędzie NPM. 
+Może istnieć scenariusz, w którym istnieje zdrowe połączenie między węzłami lokalnymi i Azure, ale ruch nie przechodzi przez obwód ExpressRoute skonfigurowany do monitorowania przez NPM. 
 
-Może się to zdarzyć, jeśli:
+Może się tak zdarzyć, jeśli:
 
 * Obwód ER nie działa.
-* Filtry tras są skonfigurowane w taki sposób, mogą nadać priorytet do innych tras (np. połączenia sieci VPN lub innego obwodu usługi ExpressRoute) za pośrednictwem zakładanego obwodu usługi ExpressRoute. 
-* Lokalne i węzły wybrany do monitorowania obwód usługi ExpressRoute w konfiguracji monitorowania na platformie Azure nie ma połączenia ze sobą za pośrednictwem zakładanego obwodu usługi ExpressRoute. Upewnij się, wybrano poprawny węzły, które mają łączność do siebie nawzajem za pośrednictwem obwodu usługi ExpressRoute, które chcesz monitorować.
+* Filtry tras są konfigurowane w taki sposób, że zapewniają priorytet innym trasom (na przykład połączenie sieci VPN lub inny obwód usługi ExpressRoute) przez zamierzony obwód ExpressRoute. 
+* Węzły lokalne i platformy Azure wybrane do monitorowania obwodu usługi ExpressRoute w konfiguracji monitorowania nie mają łączności ze sobą za pośrednictwem zamierzonego obwodu usługi ExpressRoute. Upewnij się, że wybrano poprawne węzły, które mają łączność ze sobą za pośrednictwem obwodu usługi ExpressRoute, który ma być monitorowany.
 
-### <a name="while-configuring-monitoring-of-my-expressroute-circuit-the-azure-nodes-are-not-being-detected"></a>Podczas konfigurowania, monitorowania z obwodem usługi ExpressRoute, nie są zostały wykryte węzły na platformie Azure.
-Może to nastąpić, jeśli węzły na platformie Azure są połączone za pomocą programu Operations Manager. Funkcja Monitor usługi ExpressRoute obsługuje tylko tych węzłów platformy Azure, które są połączone agentów bezpośrednich.
+### <a name="while-configuring-monitoring-of-my-expressroute-circuit-the-azure-nodes-are-not-being-detected"></a>Podczas konfigurowania monitorowania obwodu usługi ExpressRoute nie są wykrywane węzły platformy Azure.
+Taka sytuacja może wystąpić, jeśli węzły platformy Azure są połączone za pomocą Operations Manager. Funkcja monitor ExpressRoute obsługuje tylko te węzły platformy Azure, które są połączone jako agenci bezpośrednio.
 
-### <a name="i-cannot-discover-by-expressroute-circuits-in-the-oms-portal"></a>Nie można odnaleźć przez obwodów usługi ExpressRoute w portalu pakietu OMS
-Chociaż można użyć Menedżera NPM, zarówno z witryny Azure portal, jak również w portalu pakietu OMS, odnajdywanie obwód w możliwości Monitor usługi ExpressRoute działa wyłącznie za pośrednictwem witryny Azure portal. Po odnalezieniu obwodów za pośrednictwem witryny Azure portal możesz użyć możliwości w jednym z tych dwóch portali. 
+### <a name="i-cannot-discover-by-expressroute-circuits-in-the-oms-portal"></a>Nie mogę wykryć przez obwody usługi ExpressRoute w portalu pakietu OMS
+Chociaż NPM można użyć zarówno z Azure Portal, jak i portalu pakietu OMS, Wykrywanie obwodu w funkcji monitorowania ExpressRoute działa tylko za pośrednictwem Azure Portal. Po odnalezieniu obwodów za pomocą Azure Portal można użyć możliwości w jednym z dwóch portali. 
 
-### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-network-loss-as-well-as-latency-are-shown-as-na"></a>W możliwości usługi Monitor łączności czasu odpowiedzi usługi, utrata połączenia sieciowego, jak również opóźnienia są wyświetlane jako n/d
-Może się to zdarzyć, jeśli co najmniej jeden:
+### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-network-loss-as-well-as-latency-are-shown-as-na"></a>W ramach możliwości monitora łączności usług, czasu odpowiedzi usługi, utraty sieci, a opóźnienie są wyświetlane jako NA
+Może się tak zdarzyć, jeśli co najmniej jeden ma wartość PRAWDA:
 
 * Usługa nie działa.
-* Węzeł, używany do sprawdzania łączności sieciowej z usługą nie działa.
-* Element docelowy w konfiguracji testu jest nieprawidłowy.
-* Węzeł nie ma łączności sieciowej.
+* Węzeł używany do sprawdzania łączności sieciowej z usługą nie działa.
+* Wartość docelowa wprowadzona w konfiguracji testu jest niepoprawna.
+* Węzeł nie ma żadnej łączności sieciowej.
 
-### <a name="in-the-service-connectivity-monitor-capability-a-valid-service-response-time-is-shown-but-network-loss-as-well-as-latency-are-shown-as-na"></a>W możliwości usługi Monitor łączności usługi prawidłowy czas odpowiedzi jest wyświetlane, ale utrata połączenia sieciowego, a także opóźnienia są wyświetlane jako n/d
- Może się to zdarzyć, jeśli co najmniej jeden:
+### <a name="in-the-service-connectivity-monitor-capability-a-valid-service-response-time-is-shown-but-network-loss-as-well-as-latency-are-shown-as-na"></a>W funkcji Monitor łączności usługi jest pokazywany prawidłowy czas odpowiedzi usługi, ale utrata sieci, a także opóźnienie są wyświetlane jako NA
+ Może się tak zdarzyć, jeśli co najmniej jeden ma wartość PRAWDA:
 
-* Węzeł używany do sprawdzania łączności sieciowej do usługi w przypadku komputera klienta Windows, Usługa docelowa blokuje żądania protokołu ICMP lub Zapora sieci blokuje żądania protokołu ICMP, które pochodzą z węzła.
-* Pole wyboru wykonaj pomiary sieci jest puste w konfiguracji testu.
+* Jeśli węzeł używany do sprawdzania łączności sieciowej z usługą jest komputerem klienckim z systemem Windows, usługa docelowa blokuje żądania protokołu ICMP lub Zapora sieciowa blokuje żądania protokołu ICMP, które pochodzą z tego węzła.
+* Pole wyboru Wykonaj pomiary sieci jest puste w konfiguracji testu.
 
-### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-is-na-but-network-loss-as-well-as-latency-are-valid"></a>W możliwości Monitor łączności usługi Czas odpowiedzi usługi to nazwa, ale utrata połączenia sieciowego, a także opóźnienia są prawidłowe
-Może się to zdarzyć, jeśli Usługa docelowa nie jest aplikacją sieci web, ale test został skonfigurowany jako test sieci Web. Edytuj konfigurację testu, a następnie wybierz typ testu jako sieci zamiast sieci Web.
+### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-is-na-but-network-loss-as-well-as-latency-are-valid"></a>W funkcji Monitor łączności usług czas odpowiedzi usługi to, ale utrata połączenia sieciowego, a także opóźnienia są prawidłowe
+Taka sytuacja może wystąpić, jeśli usługa docelowa nie jest aplikacją internetową, ale test jest skonfigurowany jako test sieci Web. Edytuj konfigurację testu i wybierz typ testowy jako sieć zamiast sieci Web.
 
 ## <a name="miscellaneous"></a>Różne
 
-### <a name="is-there-a-performance-impact-on-the-node-being-used-for-monitoring"></a>W węźle, używanych do monitorowania jest negatywny wpływ na wydajność?
-Proces NPM jest skonfigurowany tak, aby zatrzymać, jeśli jego korzysta z więcej niż 5% zasobów Procesora hosta. To, aby upewnić się, że możesz nadal korzystać z węzły dla swoich obciążeń zwykle bez wpływu na wydajność.
+### <a name="is-there-a-performance-impact-on-the-node-being-used-for-monitoring"></a>Czy istnieje wpływ na wydajność w węźle używanym do monitorowania?
+Proces NPM jest skonfigurowany do zatrzymania, jeśli wykorzystuje ponad 5% zasobów procesora CPU hosta. Ma to na celu zapewnienie, że można nadal korzystać z węzłów dla ich zwykłych obciążeń bez wpływu na wydajność.
 
-### <a name="does-npm-edit-firewall-rules-for-monitoring"></a>NPM edytować reguły zapory na potrzeby monitorowania?
-NPM tworzy tylko lokalne reguły zapory Windows w węzłach, na których uruchomiono skrypt EnableRules.ps1 programu Powershell umożliwia agentów do utworzenia połączenia TCP ze sobą na określonym porcie. Rozwiązanie nie powoduje modyfikacji, wszelkie zapory sieciowej lub reguł sieciowej grupy zabezpieczeń (NSG).
+### <a name="does-npm-edit-firewall-rules-for-monitoring"></a>Czy NPM edytować reguły zapory na potrzeby monitorowania?
+NPM tworzy tylko lokalną regułę zapory systemu Windows w węzłach, na których jest uruchomiony skrypt skrypt enablerules. ps1 PowerShell, aby umożliwić agentom tworzenie połączeń TCP ze sobą na określonym porcie. Rozwiązanie nie modyfikuje żadnej reguły zapory sieciowej ani sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń).
 
-### <a name="how-can-i-check-the-health-of-the-nodes-being-used-for-monitoring"></a>Jak można sprawdzić kondycji węzłów używanych do monitorowania
-Można wyświetlić stan kondycji węzłów używanych do monitorowania z następującego widoku: Rozwiązanie Network Performance Monitor -> Konfiguracja -> węzłów. Jeśli węzeł jest w złej kondycji, można wyświetlić szczegóły błędów i sugerowane akcje.
+### <a name="how-can-i-check-the-health-of-the-nodes-being-used-for-monitoring"></a>Jak sprawdzić kondycję węzłów używanych do monitorowania?
+Można wyświetlić stan kondycji węzłów używanych do monitorowania z następującego widoku: Network Performance Monitor > Konfiguracja-> węzły. Jeśli węzeł jest w złej kondycji, możesz wyświetlić szczegóły błędu i wykonać sugerowaną akcję.
 
-### <a name="can-npm-report-latency-numbers-in-microseconds"></a>Można NPM raport wartościami opóźnień w mikrosekundach
-NPM zaokrągla liczby opóźnienia w Interfejsie i w milisekundach. Te same dane są przechowywane na większą szczegółowość (czasami do czterech miejsc po przecinku).
+### <a name="can-npm-report-latency-numbers-in-microseconds"></a>Czy NPMe liczby opóźnień raportów w mikrosekundach?
+NPM zaokrągla liczbę opóźnień w interfejsie użytkownika i w milisekundach. Te same dane są przechowywane na wyższym poziomie szczegółowości (czasami do czterech miejsc dziesiętnych).
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Więcej informacji na temat rozwiązania Network Performance Monitor, odwołując się do [rozwiązanie Network Performance Monitor na platformie Azure](../../azure-monitor/insights/network-performance-monitor.md).
+- Dowiedz się więcej na temat Network Performance Monitor, odwołując się do [Network Performance Monitor rozwiązania na platformie Azure](../../azure-monitor/insights/network-performance-monitor.md).

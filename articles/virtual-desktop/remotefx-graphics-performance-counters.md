@@ -2,17 +2,17 @@
 title: Diagnozowanie problemów z wydajnością grafiki w usłudze pulpit zdalny — Azure
 description: W tym artykule opisano, jak używać liczników grafiki RemoteFX w sesjach protokołu pulpitu zdalnego do diagnozowania problemów z wydajnością za pomocą grafiki na pulpicie wirtualnym systemu Windows.
 services: virtual-desktop
-author: ChJenk
+author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019
-ms.author: v-chjenk
-ms.openlocfilehash: 8cd24861b9d7432a582d1b635b8ffcf0d8d2b9e6
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.author: helohr
+ms.openlocfilehash: de849701365438b21244d1e46ae657495d16c307
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233622"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816408"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>Diagnozowanie problemów z wydajnością grafiki w programie Pulpit zdalny
 

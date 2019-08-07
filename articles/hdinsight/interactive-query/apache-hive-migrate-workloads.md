@@ -7,12 +7,12 @@ ms.author: tacox
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: b9bf3b41bcd0a79027c5dd9a4f3df979fb0bd9f0
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: eb6b42a88e47e3fcb35700ec542c8ca642e17a6a
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250147"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815810"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Migrowanie obciążeń platformy Azure HDInsight 3,6 do usługi HDInsight 4,0
 
@@ -30,7 +30,7 @@ W tym artykule opisano następujące zagadnienia:
 Jedną z zalet programu Hive jest możliwość eksportowania metadanych do zewnętrznej bazy danych (określanej jako magazyn metadanych Hive). **Magazyn metadanych Hive** jest odpowiedzialny za przechowywanie statystyk tabeli, w tym lokalizacji magazynu tabel, nazw kolumn i informacji o indeksie tabeli. Schemat bazy danych magazynu metadanych różni się między wersjami programu Hive. Wykonaj poniższe czynności, aby uaktualnić magazyn metadanych Hive usługi HDInsight 3,6 w taki sposób, aby był zgodny z usługą HDInsight 4,0.
 
 1. Utwórz nową kopię zewnętrznego magazynu metadanych. Usługi HDInsight 3,6 i HDInsight 4,0 wymagają różnych schematów magazynu metadanych i nie mogą współdzielić pojedynczego magazynu. Zobacz [Używanie zewnętrznych magazynów metadanych w usłudze Azure HDInsight](../hdinsight-use-external-metadata-stores.md) , aby dowiedzieć się więcej na temat dołączania zewnętrznego magazynu Metadata do klastra usługi HDInsight. 
-2. Uruchom akcję skryptu względem klastra HDI 3,6 z "węzłami głównymi" jako typem węzła do wykonania. Wklej następujący identyfikator URI do pola tekstowego oznaczonego jako "bash skryptu URI https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh":. W polu tekstowym oznaczonym jako "argumenty" wprowadź wartość Nazwa serwera, bazy danych, nazwę użytkownika i  hasło dla skopiowanego magazyn metadanych Hive, rozdzielone spacjami. Podczas określania serwera ServerName nie należy umieszczać ". database.windows.net".
+2. Uruchom akcję skryptu względem klastra HDI 3,6 z "węzłami głównymi" jako typem węzła do wykonania. Wklej następujący identyfikator URI do pola tekstowego oznaczonego jako "bash skryptu URI https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh":. W polu tekstowym oznaczonym jako "argumenty" wprowadź wartość Nazwa serwera, bazy danych, nazwę użytkownika i hasło dla skopiowanego magazyn metadanych Hive, rozdzielone spacjami. Podczas określania serwera ServerName nie należy umieszczać ". database.windows.net".
 
 > [!Warning]
 > Uaktualnienie, które konwertuje schemat metadanych usługi HDInsight 3,6 do schematu usługi HDInsight 4,0, nie może zostać cofnięte.
@@ -99,9 +99,7 @@ W usłudze HDInsight 3,6 klient z graficznym interfejsem użytkownika służący
 
 Uruchom akcję skryptu względem klastra z "węzłami głównymi" jako typ węzła do wykonania. Wklej następujący identyfikator URI do pola tekstowego oznaczonego jako "bash skryptu URI": https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh
 
-Program Data Analytics Studio można uruchomić z adresem URL:\<https://ClusterName >. azurehdinsight. NET/Das/
-
-
+Zaczekaj od 5 do 10 minut, a następnie uruchom program Data Analytics Studio przy\<użyciu tego adresu URL: https://ClusterName >. azurehdinsight. NET/Das/
 
 Jeśli nie widzisz zapytań, które zostały uruchomione w podglądzie zapytań, należy wykonać następujące czynności:
 
@@ -111,7 +109,7 @@ Jeśli nie widzisz zapytań, które zostały uruchomione w podglądzie zapytań,
     * `tez.history.logging.proto-base-dir`
 3. Uruchom ponownie System HDFS, Hive, tez i DAS na obu węzłów głównychach.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Anons usługi HDInsight 4,0](../hdinsight-version-release.md)
 * [HDInsight 4,0 głębokie szczegółowe](https://azure.microsoft.com/blog/deep-dive-into-azure-hdinsight-4-0/)

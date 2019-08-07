@@ -1,6 +1,6 @@
 ---
-title: Zabezpieczenia platformy Azure i zgodności planu — magazynu danych na potrzeby NHS Zjednoczone Królestwo
-description: Zabezpieczenia platformy Azure i zgodności planu — magazynu danych na potrzeby NHS Zjednoczone Królestwo
+title: Strategia zabezpieczeń i zgodności z przepisami platformy Azure — magazyn danych dla Wielkiej Brytanii NHS
+description: Strategia zabezpieczeń i zgodności z przepisami platformy Azure — magazyn danych dla Wielkiej Brytanii NHS
 services: security
 author: jomolesk
 ms.assetid: f4e4b939-88db-4d78-8fa9-c2a12b2c025b
@@ -8,45 +8,45 @@ ms.service: security
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: jomolesk
-ms.openlocfilehash: 12042b853682efcff2de285a97508b8a81b1d647
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7f3b68ab78a67a5ee628b14be1189ee5f710370b
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60610079"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780986"
 ---
-# <a name="azure-security-and-compliance-blueprint-data-warehouse-for-uk-nhs"></a>Zabezpieczenia platformy Azure i zgodności planu: Magazyn danych dla NHS Zjednoczone Królestwo
+# <a name="azure-security-and-compliance-blueprint-data-warehouse-for-uk-nhs"></a>Strategia zabezpieczeń i zgodności z przepisami platformy Azure: Magazyn danych dla Wielkiej Brytanii NHS
 
 ## <a name="overview"></a>Omówienie
 
-Tych samych zabezpieczeń platformy Azure i zgodności plan zawiera wskazówki dotyczące rozwiązania magazynu danych odpowiednie dla bezpiecznie zbierać, przejściowe, przechowywanie i wchodzenie w interakcje z danymi poufnymi w branży opieki zdrowotnej i architekturze referencyjnej. W tym rozwiązaniu pokazano sposób, w którym klienci mogą spełniać ze wskazówkami zawartymi w [przewodnik dobre praktyki zabezpieczeń chmury](https://digital.nhs.uk/data-and-information/looking-after-information/data-security-and-information-governance/nhs-and-social-care-data-off-shoring-and-the-use-of-public-cloud-services/health-and-social-care-cloud-security-good-practice-guide) opublikowanych przez [cyfrowy NHS](https://digital.nhs.uk/), partner Zjednoczonego Królestwa (Wielka Brytania) Departamentu zdrowia i opieki społecznej (DHSC). Chmura poradnik bezpieczeństwa programu dobrą praktyką jest oparty na 14 [zasad bezpieczeństwa w chmurze](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) opublikowane przez UK National Cybernetycznymi zabezpieczeń Centrum (NCSC).
+Ten Strategia zabezpieczeń i zgodności z przepisami platformy Azure zawiera architekturę referencyjną i wskazówki dotyczące rozwiązania magazynu danych odpowiednie do bezpiecznego pozyskiwania, przemieszczania, przechowywania i korzystania z poufnych danych opieki zdrowotnej. W tym rozwiązaniu pokazano, w jaki sposób klienci mogą przestrzegać wskazówek dotyczących usługi [Cloud Security dobry Practice Guide](https://digital.nhs.uk/data-and-information/looking-after-information/data-security-and-information-governance/nhs-and-social-care-data-off-shoring-and-the-use-of-public-cloud-services/health-and-social-care-cloud-security-good-practice-guide) opublikowanej przez [NHS Digital](https://digital.nhs.uk/), partnera działu IT (Zjednoczone Królestwo) ds. zdrowia i opieki społecznej (DHSC). Przewodnik dotyczący zabezpieczeń w chmurze jest oparty na 14 [zasadach zabezpieczeń w chmurze](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) opublikowanych przez narodowe Zjednoczone Królestwo cybernetycznymi Security Centre (NCSC).
 
-Ta architektura referencyjna przewodnik wdrażania i model zagrożeń są przeznaczone do służyć jako podstawa dla klientów dostosować ich określonych wymagań i nie może być używana jako — w środowisku produkcyjnym bez dodatkowej konfiguracji. Klienci są zobowiązani do przeprowadzania odpowiednie zabezpieczenia i oceny zgodności dla dowolnego rozwiązania utworzone przy użyciu tej architektury, ponieważ wymagania mogą się różnić oparte na szczegółowe informacje na temat implementacji każdego klienta.
+Ta architektura referencyjna, przewodnik implementacji i model zagrożeń mają służyć jako podstawa dla klientów, którzy dostosowują się do określonych wymagań i nie powinny być używane w środowisku produkcyjnym bez dodatkowej konfiguracji. Klienci są odpowiedzialni za przeprowadzenie odpowiednich ocen dotyczących zabezpieczeń i zgodności wszystkich rozwiązań utworzonych przy użyciu tej architektury, ponieważ wymagania mogą się różnić w zależności od implementacji poszczególnych klientów.
 
-## <a name="architecture-diagram-and-components"></a>Diagram architektury i składników
+## <a name="architecture-diagram-and-components"></a>Diagram architektury i składniki
 
-To rozwiązanie zapewnia architekturę referencyjną, która implementuje magazyn danych w chmurze o wysokiej wydajności i bezpieczne. Istnieją dwie warstwy danych w ramach tej architektury: jeden w którym dane są importowane, przechowywane i umieszczane w środowisku klastrowanym SQL, a drugi dla usługi Azure SQL Data Warehouse gdzie dane są ładowane za pomocą do wyodrębniania, przekształcania, ładowania narzędzia (np. [PolyBase](https://docs.microsoft.com/azure/sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase) zapytań T-SQL) do przetworzenia. Gdy dane są przechowywane w usłudze Azure SQL Data Warehouse, analizy można uruchomić na dużą skalę.
+To rozwiązanie zapewnia architekturę referencyjną, która implementuje magazyn danych w chmurze o wysokiej wydajności i bezpiecznych. W tej architekturze są dwie osobne warstwy danych: jedno miejsce, w którym dane są importowane, przechowywane i przemieszczane w ramach klastrowanego środowiska SQL, a drugi dla Azure SQL Data Warehouse, w którym dane są ładowane przy użyciu narzędzia wyodrębniania, przekształcania, ładowania (np. [Base ](https://docs.microsoft.com/azure/sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase)Zapytania T-SQL) do przetwarzania. Gdy dane są przechowywane w Azure SQL Data Warehouse, analiza może być uruchamiana na dużą skalę.
 
-Platforma Azure oferuje szereg usług raportowania i analizy dla klienta. To rozwiązanie oferuje program SQL Server Reporting Services do szybkiego tworzenia raportów z usługi Azure SQL Data Warehouse. Cały ruch SQL jest szyfrowany przy użyciu protokołu SSL przez dołączenie certyfikaty z podpisem własnym. Najlepszym rozwiązaniem jest Azure zaleca się korzystanie z zaufanego urzędu certyfikacji w celu uzyskania zwiększonych zabezpieczeń.
+Platforma Azure oferuje różne usługi raportowania i analiz dla klienta. To rozwiązanie zawiera SQL Server Reporting Services do szybkiego tworzenia raportów z Azure SQL Data Warehouse. Cały ruch SQL jest szyfrowany przy użyciu protokołu SSL w ramach dołączania certyfikatów z podpisem własnym. Najlepszym rozwiązaniem jest to, że platforma Azure zaleca korzystanie z zaufanego urzędu certyfikacji w celu zwiększenia bezpieczeństwa.
 
-Dane w usłudze Azure SQL Data Warehouse są przechowywane w tabelach relacyjnych z magazynem kolumnowym formatu, który znacznie zmniejsza koszty przechowywania danych przy jednoczesnym zwiększeniu wydajności zapytań.  W zależności od wymagań użycia usługi Azure SQL Data Warehouse zasoby obliczeniowe można skalować w górę i w dół lub wyłączony całkowicie przypadku Brak aktywnych procesów wymagających zasoby obliczeniowe.
+Dane w Azure SQL Data Warehouse są przechowywane w tabelach relacyjnych z magazynem kolumnowym, co znacznie zmniejsza koszty magazynowania danych przy jednoczesnym zwiększeniu wydajności zapytań.  W zależności od wymagań dotyczących użycia Azure SQL Data Warehouse zasoby obliczeniowe mogą być skalowane w górę lub w dół lub wyłączane całkowicie, jeśli nie ma aktywnych procesów wymagających zasobów obliczeniowych.
 
-Moduł równoważenia obciążenia SQL zarządza ruchem SQL, zapewnienie wysokiej wydajności. Wszystkie maszyny wirtualne w tej architekturze referencyjnej w wdrożyć zestaw dostępności z wystąpienia programu SQL Server skonfigurowanych w zawsze włączonej grupy dostępności funkcji wysokiej dostępności i odzyskiwania po awarii.
+Moduł równoważenia obciążenia SQL zarządza ruchem SQL, zapewniając wysoką wydajność. Wszystkie maszyny wirtualne w tej architekturze referencyjnej wdrażają się w zestawie dostępności z wystąpieniami SQL Server skonfigurowanymi w zawsze włączonym grupie dostępności na potrzeby funkcji wysokiej dostępności i odzyskiwania po awarii.
 
-Aby zwiększyć bezpieczeństwo wszystkie zasoby w tym rozwiązaniu są zarządzane jako grupa zasobów za pomocą usługi Azure Resource Manager. Kontroli dostępu opartej na rolach w usłudze Azure Active Directory jest używane do kontrolowania dostępu do zasobów i wdrażać w usłudze Azure Key Vault. Kondycja systemu jest monitorowany za pośrednictwem usługi Azure Security Center i Azure Monitor. Klienci, skonfigurować zarówno usług monitorowania do przechwytywania dzienników i wyświetlania kondycji systemu w jednym, łatwo można nawigować pulpitu nawigacyjnego.
+W celu zwiększenia bezpieczeństwa wszystkie zasoby w tym rozwiązaniu są zarządzane jako Grupa zasobów za pomocą Azure Resource Manager. Azure Active Directory kontroli dostępu opartej na rolach służy do kontrolowania dostępu do wdrożonych zasobów i kluczy w Azure Key Vault. Kondycja systemu jest monitorowana za poorednictwem Azure Security Center i Azure Monitor. Klienci konfigurują obie usługi monitorowania do przechwytywania dzienników i wyświetlania kondycji systemu w jednym, łatwym do nawigacji Pulpitie nawigacyjnym.
 
 
-Ta architektura referencyjna magazynu danych obejmuje również warstwą usługi Active Directory do zarządzania zasobami w ramach architektury. Podsieć usługi Active Directory umożliwia łatwe przyjęcie w ramach większe struktury lasu usługi Active Directory, co do pracy ciągłej, środowiska, nawet wtedy, gdy dostęp do większej lasu jest niedostępny. Wszystkie maszyny wirtualne są przyłączone do domeny do warstwy usługi Active Directory i wymuszanie konfiguracji zabezpieczeń i zgodności na poziomie systemu operacyjnego za pomocą zasad grupy usługi Active Directory.
+Ta architektura referencyjna magazynu danych obejmuje również warstwę Active Directory na potrzeby zarządzania zasobami w ramach architektury. Podsieć Active Directory umożliwia łatwe wdrażanie w ramach większej struktury lasów Active Directory, co pozwala na ciągłą eksploatację środowiska, nawet gdy dostęp do większego lasu jest niedostępny. Wszystkie maszyny wirtualne są przyłączone do domeny Active Directory i używają zasad grupy Active Directory, aby wymusić konfiguracje zabezpieczeń i zgodności na poziomie systemu operacyjnego.
 
-Maszyna wirtualna służy jako zarządzania hostem bastionu, zapewnienia bezpiecznego połączenia dla administratorów, które uzyskują dostęp do wdrożonych zasobów. Załadowaniu danych do obszaru tymczasowego za pośrednictwem tego zarządzania hostem bastionu. **Firma Microsoft zaleca skonfigurowanie połączenia sieci VPN lub usługi Azure ExpressRoute do importowania danych i zarządzania do podsieci architektury odwołanie.**
+Maszyna wirtualna służy jako host zarządzania bastionu, co zapewnia bezpieczne połączenie dla administratorów w celu uzyskania dostępu do wdrożonych zasobów. Dane są ładowane do obszaru przejściowego za pomocą tego hosta zarządzania bastionu. **Firma Microsoft zaleca skonfigurowanie połączenia sieci VPN lub usługi Azure ExpressRoute na potrzeby zarządzania i importowania danych do podsieci architektury referencyjnej.**
 
-![Data Warehouse, Zjednoczone Królestwo NHS referencyjny diagram architektury](images/uknhs-datawarehouse-architecture.png?raw=true "magazynu danych dla Wielkiej Brytanii NHS referencyjny diagram architektury")
+![Magazyn danych dla diagramu architektury referencyjnej dla Wielkiej Brytanii NHS](images/uknhs-datawarehouse-architecture.png?raw=true "Magazyn danych dla diagramu architektury referencyjnej dla Wielkiej Brytanii NHS")
 
-To rozwiązanie korzysta z poniższych usług platformy Azure. Szczegółowe informacje na temat architektury wdrożenia [architektura wdrożenia](#deployment-architecture) sekcji.
+To rozwiązanie używa następujących usług platformy Azure. Szczegóły architektury wdrożenia znajdują się w sekcji [Architektura wdrażania](#deployment-architecture) .
 
 - Zestawy dostępności
-    - Kontrolery domeny usługi Active Directory
-    - Węzły klastra SQL i monitora
+    - Active Directory kontrolery domeny
+    - Węzły klastra SQL i monitor
 - Usługa Azure Active Directory
 - Azure Data Catalog
 - W usłudze Azure Key Vault
@@ -56,176 +56,176 @@ To rozwiązanie korzysta z poniższych usług platformy Azure. Szczegółowe inf
 - Azure Storage
 - Azure Automation
 - Usługa Azure Virtual Machines
-    - (1) host bastionu
-    - (2) kontrolera domeny active Directory
-    - (2) węzeł klastra serwera SQL
-    - (1) Monitor serwera SQL
+    - (1) Host bastionu
+    - (2) Active Directory kontroler domeny
+    - (2) SQL Server węzeł klastra
+    - (1) monitor SQL Server
 - Azure Virtual Network
-    - (1) /16 Network
-    - (4) /24 Networks
-    - (4) grupy zabezpieczeń sieci
-- Magazyn usługi Recovery Services
+    - (1)/16 sieci
+    - (4)/24 sieci
+    - (4) sieciowe grupy zabezpieczeń
+- Magazyn Recovery Services
 - SQL Data Warehouse
 - SQL Server Reporting Services
 
 ## <a name="deployment-architecture"></a>Architektura wdrożenia
 
-W poniższej sekcji przedstawiono elementy wdrożenia i implementacji.
+W poniższej sekcji znajdują się szczegółowe informacje dotyczące elementów wdrażania i implementacji.
 
-**Usługa SQL Data Warehouse**: [Usługa SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is) jest magazynu danych przedsiębiorstwa wykorzystującego masowego przetwarzania równoległego do szybkiego uruchamiania złożonych zapytań obejmujących petabajty danych, dzięki czemu użytkownicy mogą wydajnie identyfikowanie danych opieki zdrowotnej. Użytkownicy mogą używać prostych zapytań PolyBase T-SQL do importowania danych big data do usługi SQL Data Warehouse i wykorzystywać możliwości masowego przetwarzania równoległego, aby wykonywać analizy o wysokiej wydajności.
+**SQL Data Warehouse**: [SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is) to magazyn danych przedsiębiorstwa, który wykorzystuje wysoce równoległe przetwarzanie, aby szybko uruchamiać złożone zapytania na petabajtów danych, dzięki czemu użytkownicy mogą skutecznie identyfikować dane dotyczące opieki zdrowotnej. Użytkownicy mogą używać prostych zapytań T-SQL w celu zaimportowania danych Big Data do SQL Data Warehouse i wykorzystaniu możliwości masowego przetwarzania równoległego w celu uruchomienia analizy o wysokiej wydajności.
 
-**SQL Server Reporting Services**: [SQL Server Reporting Services](https://docs.microsoft.com/sql/reporting-services/report-data/sql-azure-connection-type-ssrs) umożliwia szybkie tworzenie raportów przy użyciu tabele, wykresy, mapy, mierniki, macierzach i bardziej dla usługi Azure SQL Data Warehouse.
+**SQL Server Reporting Services**: [SQL Server Reporting Services](https://docs.microsoft.com/sql/reporting-services/report-data/sql-azure-connection-type-ssrs) umożliwia szybkie tworzenie raportów za pomocą tabel, wykresów, map, mierników, macierzy i innych elementów Azure SQL Data Warehouse.
 
-**Data Catalog**: [Wykaz danych](https://docs.microsoft.com/azure/data-catalog/data-catalog-what-is-data-catalog) sprawia, że źródła danych łatwe do zrozumienia i prostsze do odnalezienia przez użytkowników, którzy zarządzają danymi. Wspólnych źródeł danych można zarejestrować, oznaczone i wyszukiwane dane dotyczące kondycji. Dane pozostają w istniejącej lokalizacji, ale kopia ich metadanych jest dodawany do usługi Data Catalog wraz z odwołaniem do lokalizacji źródła danych. Te metadane są również indeksowane, aby można było je łatwo odnaleźć za pomocą wyszukiwania oraz uczynić je zrozumiałymi dla użytkowników, którzy je odnajdą.
+**Data Catalog**: [Data Catalog](https://docs.microsoft.com/azure/data-catalog/data-catalog-what-is-data-catalog) umożliwia łatwe odnajdywanie źródeł danych i zrozumienie ich przez użytkowników, którzy zarządzają danymi. Typowe źródła danych mogą być rejestrowane, otagowane i przeszukiwane pod kątem danych związanych z kondycją. Dane pozostają w istniejącej lokalizacji, ale kopia jej metadanych zostanie dodana do Data Catalog wraz z odwołaniem do lokalizacji źródła danych. Te metadane są również indeksowane, aby można było je łatwo odnaleźć za pomocą wyszukiwania oraz uczynić je zrozumiałymi dla użytkowników, którzy je odnajdą.
 
-**Host bastionu**: Host bastionu jest pojedynczym punktem wejścia, który umożliwia użytkownikom dostęp do zasobów wdrożonych w tym środowisku. Host bastionu zapewnia bezpieczne połączenie do wdrożonych zasobów poprzez zezwolenie wyłącznie na zdalny ruch z publicznych adresów IP na liście bezpiecznych. Zezwalaj ruchu (RDP) pulpitu zdalnego, źródło ruchu musi być zdefiniowany w sieciowej grupie zabezpieczeń.
+**Host bastionu**: Host bastionu jest pojedynczym punktem wejścia, który umożliwia użytkownikom dostęp do wdrożonych zasobów w tym środowisku. Host bastionu zapewnia bezpieczne połączenie z wdrożonymi zasobami przez umożliwienie zdalnego ruchu z publicznych adresów IP na bezpiecznej liście. Aby zezwolić na ruch pulpitu zdalnego (RDP), źródło ruchu musi być zdefiniowane w sieciowej grupie zabezpieczeń.
 
-To rozwiązanie tworzy maszynę wirtualną jako host bastionu przyłączone do domeny w następujący sposób:
--   [Rozszerzenia ochrony przed złośliwym kodem](https://docs.microsoft.com/azure/security/azure-security-antimalware)
--   [Rozszerzenie diagnostyki platformy Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)
--   [Usługa Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) przy użyciu usługi Azure Key Vault
--   [Zasady automatycznego zamykania](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/) można ograniczyć zużycie zasobów maszyny wirtualnej nieużywane
--   [Windows Defender Credential Guard](https://docs.microsoft.com/windows/access-protection/credential-guard/credential-guard) włączone tak, aby poświadczeń i innych wpisów tajnych są uruchamiane w środowisku chronionego, która jest odizolowana od system operacyjny
+To rozwiązanie tworzy maszynę wirtualną jako przyłączony do domeny Host bastionu z następującymi konfiguracjami:
+-   [Rozszerzenie chroniące przed złośliwym kodem](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
+-   [Diagnostyka Azure rozszerzenie](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)
+-   [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) przy użyciu Azure Key Vault
+-   [Zasady automatycznego zamykania](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/) w celu ograniczenia użycia zasobów maszyny wirtualnej, gdy nie są używane
+-   Włączono funkcję [Windows Defender Credential Guard](https://docs.microsoft.com/windows/access-protection/credential-guard/credential-guard) , dzięki czemu poświadczenia i inne wpisy tajne są uruchamiane w chronionym środowisku, które jest odizolowane od działającego systemu operacyjnego
 
 ### <a name="virtual-network"></a>Sieć wirtualna
 
-Ta architektura referencyjna definiuje prywatnej sieci wirtualnej przy użyciu przestrzeni adresów 10.0.0.0/16.
+Ta architektura referencyjna definiuje prywatną sieć wirtualną z przestrzenią adresową 10.0.0.0/16.
 
-**Sieciowe grupy zabezpieczeń**: [Sieciowe grupy zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) zawierają listy kontroli dostępu, które blokują lub zezwalają na ruch w sieci wirtualnej. Sieciowe grupy zabezpieczeń może służyć do zabezpieczenia ruchu na poziomie poszczególnych maszyn wirtualnych lub podsieci. Istnieją następujące grupy zabezpieczeń sieci:
+**Sieciowe grupy zabezpieczeń**: [Sieciowe grupy zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) zawierają listy kontroli dostępu, które zezwalają na ruch lub go odmawiają w ramach sieci wirtualnej. Sieciowe grupy zabezpieczeń mogą służyć do zabezpieczania ruchu w podsieci lub na poziomie poszczególnych maszyn wirtualnych. Istnieją następujące sieciowe grupy zabezpieczeń:
 
-  - Sieciową grupę zabezpieczeń dla warstwy danych (klastry serwera SQL, SQL Server monitora i modułu równoważenia obciążenia programu SQL)
-  - Sieciową grupę zabezpieczeń do zarządzania hostem bastionu
-  - Sieciową grupę zabezpieczeń usługi Active Directory
-  - Sieciową grupę zabezpieczeń dla programu SQL Server Reporting Services
+  - Sieciowa Grupa zabezpieczeń dla warstwy danych (klastrów SQL Server, SQL Server monitora i modułu równoważenia obciążenia SQL)
+  - Sieciowa Grupa zabezpieczeń dla hosta usługi Management bastionu
+  - Sieciowa Grupa zabezpieczeń dla Active Directory
+  - Sieciowa Grupa zabezpieczeń dla SQL Server Reporting Services
 
-Każdej z grup zabezpieczeń sieci ma określone porty i protokoły Otwórz rozwiązanie może pracować bezpiecznie i poprawnie. Ponadto następujące konfiguracje są włączone dla każdej sieciowej grupy zabezpieczeń:
+Każda z sieciowych grup zabezpieczeń ma otwarte określone porty i protokoły, dzięki czemu rozwiązanie może być bezpieczne i poprawne. Ponadto dla każdej sieciowej grupy zabezpieczeń są włączone następujące konfiguracje:
 
 - [Dzienniki diagnostyczne i zdarzenia](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log) są włączone i przechowywane na koncie magazynu
-- Dzienniki platformy Azure Monitor jest podłączony do [sieciowej grupy zabezpieczeń&#39;s dzienników diagnostycznych](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)
+- Dzienniki Azure Monitor są połączone z [dziennikami diagnostycznymi&#39;sieciowych grup zabezpieczeń](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)
 
-**Podsieci**: Każda podsieć jest skojarzona z sieciową grupą zabezpieczeń odpowiednich.
+**Podsieci**: Każda podsieć jest skojarzona z odpowiednią sieciową grupą zabezpieczeń.
 
 ### <a name="data-at-rest"></a>Dane magazynowane
 
-Architektura chroni dane za pomocą wielu środków, takimi jak szyfrowanie i inspekcja bazy danych.
+Architektura chroni dane przechowywane przez wiele miar, w tym szyfrowanie i inspekcję bazy danych.
 
-Architektura chroni dane za pomocą funkcji szyfrowania, inspekcja bazy danych i innych miar.
+Architektura chroni dane przechowywane przez szyfrowanie, inspekcję bazy danych i inne miary.
 
-**Azure Storage**: Aby spełnić zaszyfrowanych danych na pozostałe wymagania, wszystkie [usługi Azure Storage](https://azure.microsoft.com/services/storage/) używa [szyfrowanie usługi Storage](https://docs.microsoft.com/azure/storage/storage-service-encryption). Pomaga to chronić i ochrony danych na rzecz organizacji bezpieczeństwa i zdefiniowane przez cyfrowy NHS wymagań dotyczących zgodności.
+**Azure Storage**: Aby zaspokoić zaszyfrowane dane w wymaganiach dotyczących REST, wszystkie [usługi Azure Storage](https://azure.microsoft.com/services/storage/) używają [szyfrowanie usługi Storage](https://docs.microsoft.com/azure/storage/storage-service-encryption). Pomaga to w ochronie i ochronie danych w celu obsługi zobowiązań w zakresie zabezpieczeń organizacji i wymagań dotyczących zgodności zdefiniowanych przez NHS Digital.
 
-**Usługa Azure Disk Encryption**: [Usługa Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) korzysta z funkcji BitLocker Windows, aby zapewnić szyfrowanie woluminów dla dysków z danymi. To rozwiązanie integruje się z usługą Azure Key Vault ułatwiają sterowanie i zarządzanie kluczami szyfrowania dysków.
+**Azure Disk Encryption**: [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) korzysta z funkcji BitLocker systemu Windows w celu zapewnienia szyfrowania woluminów dla dysków danych. Rozwiązanie integruje się z Azure Key Vault w celu ułatwienia kontroli kluczy szyfrowania dysków i zarządzania nimi.
 
-**Azure SQL Database**: Wystąpienie usługi Azure SQL Database wykorzystuje następujące środki bezpieczeństwa bazy danych:
+**Azure SQL Database**: W wystąpieniu Azure SQL Database są stosowane następujące miary zabezpieczeń bazy danych:
 
-- [Uwierzytelnianie usługi Active Directory i autoryzacji](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) umożliwia zarządzanie tożsamościami użytkowników bazy danych i innych usług firmy Microsoft w jednej centralnej lokalizacji.
-- [Inspekcja bazy danych SQL](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started) śledzi zdarzenia bazy danych i zapisuje je do inspekcji dzienniku na konto magazynu platformy Azure.
-- Usługa Azure SQL Database jest skonfigurowany do używania [technologii transparent data encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql), który wykonuje w czasie rzeczywistym szyfrowanie i odszyfrowywanie bazy danych, skojarzonych kopii zapasowych i rest usługi pliki dziennika transakcji, aby chronić informacje o. Przezroczyste szyfrowanie danych zapewnia pewność, że przechowywanych danych nie została poddana przed nieautoryzowanym dostępem.
-- [Reguły zapory](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) uniemożliwia wszelki dostęp do serwerów bazy danych, dopóki nie zostały przyznane odpowiednie uprawnienia. Zapora udziela dostępu do bazy danych na podstawie źródłowego adresu IP każdego żądania.
-- [Funkcja wykrywania zagrożeń SQL](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-get-started) umożliwia wykrywanie i odpowiedzi na potencjalne zagrożenia w miarę ich występowania, zapewniając alerty zabezpieczeń dla podejrzanych działaniach bazy danych, potencjalnych lukach w zabezpieczeniach, atakami polegającymi na iniekcji SQL i dostęp do bazy danych nietypowe wzorce.
-- [Zaszyfrowane kolumny](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault) upewnij się, że poufne dane nigdy nie pojawia się jako zwykły tekst wewnątrz system bazy danych. Po włączeniu szyfrowania danych tylko aplikacje klienckie lub serwery aplikacji z dostępem do kluczy można dostęp do danych w postaci zwykłego tekstu.
-- [Baza danych SQL dynamiczne maskowanie danych](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) ogranicza ujawnianie poufnych danych przez maskowanie danych nieuprzywilejowanych użytkowników lub aplikacji. Dynamiczne maskowanie danych można automatycznie wykryć potencjalnie poufnych danych i zaproponuj odpowiednie maski mają być stosowane. Pomaga to identyfikować i Ogranicz dostęp do danych w taki sposób, że nie istnieje w bazie danych za pośrednictwem przed nieautoryzowanym dostępem. Klienci są zobowiązani do dostosowywania dane dynamiczne maskowanie ustawienia, aby stosować się do ich schemat bazy danych.
+- [Active Directory uwierzytelnianie i autoryzacja](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) umożliwiają zarządzanie tożsamościami użytkowników baz danych i innych usług firmy Microsoft w jednej centralnej lokalizacji.
+- [Inspekcja bazy danych SQL](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started) śledzi zdarzenia bazy danych i zapisuje je w dzienniku inspekcji na koncie usługi Azure Storage.
+- Azure SQL Database jest skonfigurowany do korzystania z funkcji [przezroczystego szyfrowania danych](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql), która wykonuje szyfrowanie i odszyfrowywanie bazy danych, skojarzonych kopii zapasowych i plików dziennika transakcji, aby chronić informacje przechowywane w czasie rzeczywistym. Przezroczyste szyfrowanie danych zapewnia gwarancję, że przechowywane dane nie podlegają nieautoryzowanemu dostępowi.
+- [Reguły zapory](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) uniemożliwiają dostęp do serwerów baz danych do momentu udzielenia odpowiednich uprawnień. Zapora udziela dostępu do bazy danych na podstawie źródłowego adresu IP każdego żądania.
+- [Wykrywanie zagrożeń SQL](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-get-started) umożliwia wykrywanie i reagowanie na potencjalne zagrożenia w miarę ich występowania, zapewniając alerty zabezpieczeń dla podejrzanych działań bazy danych, potencjalne luki w zabezpieczeniach, ataki z iniekcją SQL i nietypowe wzorce dostępu do bazy danych.
+- [Zaszyfrowane kolumny](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault) zapewniają, że poufne dane nigdy nie pojawiają się jako zwykły tekst w systemie bazy danych. Po włączeniu szyfrowania danych tylko aplikacje klienckie lub serwery aplikacji z dostępem do kluczy mogą uzyskiwać dostęp do danych w postaci zwykłego tekstu.
+- [SQL Database Dynamiczne maskowanie danych](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) ogranicza narażenie na dane poufne przez zamaskowanie danych do użytkowników nieuprzywilejowanych lub aplikacji. Dynamiczne maskowanie danych może automatycznie odnajdywać potencjalnie poufne dane i zasugerować odpowiednie maski, które mają zostać zastosowane. Pomaga to identyfikować i ograniczać dostęp do danych w taki sposób, aby nie zamykał bazy danych za pośrednictwem nieautoryzowanego dostępu. Klienci są odpowiedzialni za dostosowanie ustawień dynamicznego maskowania danych, aby były zgodne ze schematem bazy danych.
 
 ### <a name="identity-management"></a>Zarządzanie tożsamościami
 
-Następujące technologie zapewniają możliwości, aby zarządzać dostępem do danych w środowisku platformy Azure:
+Następujące technologie zapewniają możliwości zarządzania dostępem do danych w środowisku platformy Azure:
 
-- [Usługa Azure Active Directory](https://azure.microsoft.com/services/active-directory/) Microsoft&#39;s wieloma dzierżawami opartej na chmurze zarządzania katalogami i tożsamościami usługi zarządzania. Wszyscy użytkownicy w tym rozwiązaniu są tworzone w usługi Azure Active Directory, w tym użytkowników uzyskujących dostęp do usługi Azure SQL Database.
-- Do aplikacji uwierzytelniania przy użyciu usługi Azure Active Directory. Aby uzyskać więcej informacji, zobacz [Integrowanie aplikacji z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications). Ponadto szyfrowania kolumny bazy danych używa usługi Azure Active Directory do uwierzytelniania aplikacji w usłudze Azure SQL Database. Aby uzyskać więcej informacji, zobacz instrukcje [chronić poufne dane w usłudze Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault).
-- [Kontrola dostępu oparta na rolach na platformie Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) umożliwia administratorom zdefiniować uprawnienia dostępu w zakresie, aby udzielać uprawnień dostępu potrzebnym użytkownikom do wykonywania swoich zadań. Zamiast wszystkie uprawnienia użytkownika bez ograniczeń dla zasobów platformy Azure, Administratorzy mogą zezwalać tylko określone akcje do uzyskiwania dostępu do danych. Dostęp do subskrypcji jest ograniczona do administratora subskrypcji.
-- [Usługa Azure Active Directory Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-getting-started) umożliwia klientom zminimalizować liczbę użytkowników, którzy mają dostęp do niektórych informacji. Administratorzy mogą używać usługi Azure Active Directory Privileged Identity Management w celu odnajdywania, ograniczanie i monitorowanie uprzywilejowanych tożsamości oraz ich dostępu do zasobów. Ta funkcja może również wymuszać na żądanie, just-in-time dostęp administracyjny w razie.
-- [Usługa Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) wykrywa potencjalnych luk w zabezpieczeniach wpływających na organizacji&#39;tożsamości s umożliwia skonfigurowanie automatycznych odpowiedzi na wykryte podejrzane akcje powiązane z organizacji&#39;tożsamości s i bada podejrzane zdarzenia podejmowanie odpowiednich działań, aby je rozwiązać.
+- [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) to usługa&#39;zarządzania katalogiem i tożsamościami opartymi na chmurze z wieloma dzierżawcami firmy Microsoft. Wszyscy użytkownicy tego rozwiązania są tworzone w Azure Active Directory, w tym użytkownicy uzyskujący dostęp do Azure SQL Database.
+- Uwierzytelnianie w aplikacji odbywa się przy użyciu Azure Active Directory. Aby uzyskać więcej informacji, zobacz [Integrowanie aplikacji z Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications). Ponadto szyfrowanie kolumny bazy danych używa Azure Active Directory do uwierzytelniania aplikacji w Azure SQL Database. Aby uzyskać więcej informacji, zobacz jak [chronić poufne dane w Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault).
+- [Kontrola dostępu oparta na rolach na platformie Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) umożliwia administratorom definiowanie szczegółowych uprawnień dostępu w celu udzielania dostępu tylko użytkownikom potrzebnym do wykonywania swoich zadań. Zamiast zapewniać każdemu użytkownikowi nieograniczony dostęp do zasobów platformy Azure, Administratorzy mogą zezwalać na dostęp do danych tylko określonym akcjom. Dostęp do subskrypcji jest ograniczony do administratora subskrypcji.
+- [Azure Active Directory Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-getting-started) pozwala klientom zminimalizować liczbę użytkowników, którzy mają dostęp do określonych informacji. Administratorzy mogą używać Azure Active Directory Privileged Identity Management do odnajdywania, ograniczania i monitorowania uprzywilejowanych tożsamości oraz ich dostępu do zasobów. Tej funkcji można także użyć do wymuszenia dostępu administracyjnego na żądanie, w miarę potrzeb, w razie potrzeby.
+- [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) wykrywa potencjalne luki w zabezpieczeniach,&#39;które mają wpływ na tożsamości organizacji, konfiguruje automatyczne odpowiedzi na wykryte podejrzane działania związane z tożsamościami organizacji&#39;i bada podejrzane zdarzenia w celu podjęcia odpowiednich działań w celu ich rozwiązania.
 
 ### <a name="security"></a>Bezpieczeństwo
 
-**Zarządzanie wpisami tajnymi**: Rozwiązanie używa [usługi Azure Key Vault](https://azure.microsoft.com/services/key-vault/) do zarządzania kluczami i wpisami tajnymi. Usługa Azure Key Vault ułatwia ochronę kluczy kryptograficznych i kluczy tajnych używanych przez aplikacje i usługi w chmurze. Następujące funkcje usługi Azure Key Vault pomóc klientom chronić i uzyskać dostęp do takich danych:
+**Zarządzanie**wpisami tajnymi: Rozwiązanie używa [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) do zarządzania kluczami i wpisami tajnymi. Usługa Azure Key Vault ułatwia ochronę kluczy kryptograficznych i kluczy tajnych używanych przez aplikacje i usługi w chmurze. Następujące funkcje Azure Key Vault pomagają klientom chronić i uzyskiwać dostęp do tych danych:
 
-- Zaawansowane zasady dostępu są skonfigurowane na podstawie potrzeb.
-- Zasady dostępu magazynu kluczy są definiowane za pomocą minimalnych wymaganych uprawnień do kluczy i wpisów tajnych.
-- Wszystkie klucze i wpisy tajne w usłudze Key Vault ma daty wygaśnięcia.
-- Wszystkie klucze w usłudze Key Vault są chronione przez specjalistyczne sprzętowych modułów zabezpieczeń. Typ klucza jest sprzętowego modułu zabezpieczeń chronionej 2048-bitowego klucza RSA.
-- Wszyscy użytkownicy i tożsamości są przyznawane minimalnych wymaganych uprawnień za pomocą kontroli dostępu opartej na rolach.
-- Dzienniki diagnostyczne usługi Key Vault są włączone z okresem przechowywania, co najmniej 365 dni.
-- Dozwolone operacje kryptograficzne klucze są ograniczone do tych wymagane.
+- Zaawansowane zasady dostępu są konfigurowane w zależności od potrzeb.
+- Zasady dostępu Key Vault są zdefiniowane z minimalnymi wymaganymi uprawnieniami do kluczy i wpisów tajnych.
+- Wszystkie klucze i wpisy tajne w Key Vault mają daty wygaśnięcia.
+- Wszystkie klucze w Key Vault są chronione przez wyspecjalizowane sprzętowe moduły zabezpieczeń. Typ klucza jest sprzętowym modułem zabezpieczeń chronionym 2048-bitowym kluczem RSA.
+- Wszyscy użytkownicy i tożsamości otrzymują minimalne wymagane uprawnienia przy użyciu kontroli dostępu opartej na rolach.
+- Dzienniki diagnostyczne dla Key Vault są włączone z okresem przechowywania wynoszącym co najmniej 365 dni.
+- Dozwolone operacje kryptograficzne dla kluczy są ograniczone do tych, które są wymagane.
 
-**Zarządzanie poprawkami**: Windows wdrożone maszyny wirtualne w ramach tej architektury referencyjnej są domyślnie skonfigurowane, automatyczne otrzymywanie aktualizacji z usługi programu Windows Update. To rozwiązanie obejmuje również [usługi Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) usługi za pomocą których zaktualizowano wdrożenia mogą być tworzone do poprawki maszyny wirtualne w razie.
+**Zarządzanie poprawkami**: Maszyny wirtualne z systemem Windows wdrożone w ramach tej architektury referencyjnej są domyślnie skonfigurowane tak, aby otrzymywać aktualizacje automatyczne z usługi Windows Update. To rozwiązanie obejmuje również usługę [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) , za pomocą której można tworzyć zaktualizowane wdrożenia w celu zastosowania poprawek do maszyn wirtualnych w razie potrzeby.
 
-**Ochrona przed szkodliwym oprogramowaniem**: [Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) dla maszyn wirtualnych zapewnia możliwość ochrony w czasie rzeczywistym, która ułatwia identyfikowanie i usuwanie wirusów, programów szpiegujących oraz innego złośliwego oprogramowania, można skonfigurować alerty, gdy znany złośliwego lub niechcianego oprogramowania próbuje zainstalowania lub uruchomienia na chronionych maszynach wirtualnych.
+**Ochrona przed złośliwym oprogramowaniem**: [Oprogramowanie chroniące przed złośliwym oprogramowaniem firmy Microsoft](https://docs.microsoft.com/azure/security/fundamentals/antimalware) dla maszyn wirtualnych zapewnia ochronę w czasie rzeczywistym, która pomaga identyfikować i usuwać wirusy, programy szpiegujące i inne złośliwe oprogramowanie, z konfigurowalnymi alertami, gdy znane złośliwe lub niepożądane oprogramowanie próbuje Zainstaluj lub Uruchom na chronionych maszynach wirtualnych.
 
-**Usługa Azure Security Center**: Za pomocą [usługi Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro), klienci mogą centralnie zastosować i zarządzać zasadami zabezpieczeń na potrzeby różnych obciążeń, ograniczenia narażenia na zagrożenia i wykrywanie oraz reagowanie na ataki. Ponadto usługa Azure Security Center uzyskuje dostęp do istniejących konfiguracji usług platformy Azure w celu zapewnienia konfiguracji i zalecenia dotyczące usługi w celu zwiększenia poziomu bezpieczeństwa i ochrony danych.
+**Azure Security Center**: Dzięki [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)klienci mogą centralnie stosować zasady zabezpieczeń i zarządzać nimi w ramach obciążeń, ograniczać zagrożenie dla zagrożeń oraz wykrywać ataki i reagować na nie. Ponadto Azure Security Center uzyskuje dostęp do istniejących konfiguracji usług platformy Azure w celu zapewnienia konfiguracji i zaleceń dotyczących usług w celu zwiększenia bezpieczeństwa i ochrony danych.
 
-Usługa Azure Security Center używa różnych możliwości wykrywania powiadamia klientów przed potencjalnymi atakami wymierzonymi w ich środowiskach. Te alerty zawierają cenne informacje dotyczące przyczyny ich wyzwolenia, zasobów, których dotyczy atak, i źródła ataku. Usługa Azure Security Center zawiera zbiór [wstępnie zdefiniowane alerty zabezpieczeń](https://docs.microsoft.com/azure/security-center/security-center-alerts-type), które są wyzwalane w przypadku wystąpienia zagrożenia lub podejrzanej aktywności. [Niestandardowe reguły alertów](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) w Centrum zabezpieczeń Azure umożliwiają klientom Definiowanie nowych alertów zabezpieczeń, w oparciu o dane, które zostały już zebrane ze swoim środowisku.
+Azure Security Center korzysta z różnych funkcji wykrywania, aby wysyłać alerty klientom potencjalnych ataków ukierunkowanych na swoje środowiska. Te alerty zawierają cenne informacje dotyczące przyczyny ich wyzwolenia, zasobów, których dotyczy atak, i źródła ataku. Azure Security Center ma zestaw [wstępnie zdefiniowanych alertów zabezpieczeń](https://docs.microsoft.com/azure/security-center/security-center-alerts-type), które są wyzwalane w przypadku wystąpienia zagrożenia lub podejrzanego działania. [Niestandardowe reguły alertów](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) w Azure Security Center umożliwiają klientom definiowanie nowych alertów zabezpieczeń na podstawie danych, które zostały już zebrane z ich środowiska.
 
-Azure Security Center oferuje alerty zabezpieczeń z określonymi priorytetami i zdarzenia, dzięki czemu łatwiejsze dla klientów odkryć i rozwiązać potencjalne problemy z zabezpieczeniami. A [raport analizy zagrożeń](https://docs.microsoft.com/azure/security-center/security-center-threat-report) jest generowany dla każdej wykrytej przed zagrożeniami, aby pomóc zespołom reagowania na zdarzenia w badanie i korygowanie działań na podstawie zagrożeń.
+Azure Security Center zapewnia priorytetowe alerty zabezpieczeń i zdarzenia, dzięki czemu klienci mogą łatwiej wykrywać i rozwiązywać potencjalne problemy z zabezpieczeniami. [Raport analizy zagrożeń](https://docs.microsoft.com/azure/security-center/security-center-threat-report) jest generowany dla każdego wykrytego zagrożenia, aby pomóc zespołom reagowania na incydenty w trakcie badania i korygowaniem zagrożeń.
 
-Ponadto, ta architektura referencyjna korzysta z usługi [oceny luk w zabezpieczeniach](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations) w usłudze Azure Security Center. Po skonfigurowaniu agent partnera (np. rozwiązania firmy Qualys) raportuje danych luki w zabezpieczeniach do platformy zarządzania partnera. Z kolei platforma zarządzania partnera zawiera luk w zabezpieczeniach i dane z powrotem do usługi Azure Security Center, monitorowania kondycji co umożliwia klientom szybko zidentyfikować maszyny wirtualne na ataki.
+Ponadto ta architektura referencyjna wykorzystuje [ocenę luk](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations) w zabezpieczeniach w Azure Security Center. Po skonfigurowaniu Agent partnera (np. Qualys) zgłasza luki w zabezpieczeniach do platformy zarządzania partnera. Z kolei Platforma zarządzania przez partnera zapewnia informacje dotyczące luk i monitorowania kondycji z powrotem do Azure Security Center, dzięki czemu klienci mogą szybko identyfikować zagrożone maszyny wirtualne.
 
 ### <a name="business-continuity"></a>Ciągłość działalności biznesowej
 
-**Wysoka dostępność**: Obciążenia serwera są zgrupowane w [zestawu dostępności](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) do pomagają zapewnić wysoką dostępność maszyn wirtualnych na platformie Azure. Co najmniej jednej maszyny wirtualnej są dostępne podczas planowanych lub nieplanowanych zdarzeń związanych z konserwacją spotkania 99,95% umowy SLA platformy Azure.
+**Wysoka dostępność**: Obciążenia serwera są pogrupowane w [zestawie dostępności](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) , aby zapewnić wysoką dostępność maszyn wirtualnych na platformie Azure. Co najmniej jedna maszyna wirtualna jest dostępna podczas planowanego lub nieplanowanego zdarzenia konserwacji, które spełnia warunki umowy SLA na 99,95%.
 
-**Magazyn usług Recovery Services**: [Magazyn usługi Recovery Services](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview) przechowuje dane kopii zapasowej i chroni wszystkie konfiguracje maszyn wirtualnych platformy Azure w ramach tej architektury. Przy użyciu magazynu usługi Recovery Services klientów można przywrócić pliki i foldery z maszyny wirtualnej IaaS bez przywracania całej maszyny wirtualnej, umożliwiając skraca czas ich przywracania.
+**Magazyn Recovery Services**: [Magazyn Recovery Services](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview) przechowuje dane kopii zapasowych i chroni wszystkie konfiguracje maszyn wirtualnych platformy Azure w tej architekturze. W przypadku magazynu Recovery Services klienci mogą przywracać pliki i foldery z maszyny wirtualnej IaaS bez przywracania całej maszyny wirtualnej, co umożliwia szybsze przywracanie.
 
-### <a name="logging-and-auditing"></a>Rejestrowanie i przeprowadzanie inspekcji
+### <a name="logging-and-auditing"></a>Rejestrowanie i inspekcja
 
-Usługi platformy Azure często dziennika systemu i aktywności użytkownika, a także kondycji systemu:
-- **Dzienniki aktywności**: [Dzienniki aktywności](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) udostępniają szczegółowe dane operacji wykonywanych na zasobach w subskrypcji. Dzienniki aktywności można określić inicjatora operacji czasu wystąpienie i stan.
-- **Dzienniki diagnostyczne**: [Dzienniki diagnostyczne](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) obejmują wszystkie dzienniki emitowane przez każdy zasób. Dzienniki te obejmują dzienniki systemu zdarzeń Windows, dzienniki usługi Azure Storage, dzienników inspekcji usługi Key Vault i usługa Application Gateway Dzienniki dostępu i zapory. Wszystkie dzienniki diagnostyczne zapisu do konta usługi Azure storage scentralizowany i zaszyfrowane w celu archiwizacji. Okres przechowywania jest konfigurowanych przez użytkownika, się do 730 dni, spełniają wymagania specyficzne dla organizacji przechowywania.
+Usługi platformy Azure w szerokim zakresie rejestrują aktywność systemu i użytkownika, a także kondycję systemu:
+- **Dzienniki aktywności**: [Dzienniki aktywności](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) zapewniają wgląd w operacje wykonywane na zasobach w ramach subskrypcji. Dzienniki aktywności mogą pomóc w ustaleniu inicjatora, czasu wystąpienia i stanu operacji.
+- **Dzienniki diagnostyczne**: [Dzienniki diagnostyczne](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) obejmują wszystkie dzienniki wyemitowane przez każdy zasób. Dzienniki te obejmują Dzienniki systemu Windows, dzienniki usługi Azure Storage, dzienniki inspekcji Key Vault i Application Gateway dostępu i dzienników zapory. Wszystkie dzienniki diagnostyczne zapisu na scentralizowanym i zaszyfrowanym koncie usługi Azure Storage w celu archiwizacji. Przechowywanie jest możliwe do skonfigurowania przez użytkownika, do 730 dni, w celu spełnienia wymagań dotyczących przechowywania specyficznych dla organizacji.
 
-**Dzienniki platformy Azure Monitor**: Te dzienniki i dalszych są skonsolidowane w [dzienniki usługi Azure Monitor](https://azure.microsoft.com/services/log-analytics/) do przetwarzania, przechowywania i raportowanie na pulpicie nawigacyjnym. Po zebraniu dane są organizowane w oddzielnych tabelach dla każdego typu danych, dzięki czemu wszystkie dane mogą być analizowane razem niezależnie od ich oryginalnego źródła. Ponadto usługa Azure Security Center integruje się z dzienników usługi Azure Monitor, dzięki czemu klienci mogą korzystać z zapytania Kusto dostęp do swoich danych zdarzeń zabezpieczeń i łączyć je z danymi z innych usług.
+**Azure monitor dzienników**: Te dzienniki są konsolidowane w [Azure monitor dziennikach](https://azure.microsoft.com/services/log-analytics/) na potrzeby przetwarzania, przechowywania i raportowania na pulpicie nawigacyjnym. Po zebraniu dane są organizowane w oddzielnych tabelach dla każdego typu danych, dzięki czemu wszystkie dane mogą być analizowane razem niezależnie od ich oryginalnego źródła. Ponadto Azure Security Center integruje się z dziennikami Azure Monitor, dzięki czemu klienci mogą korzystać z zapytań Kusto w celu uzyskania dostępu do danych zdarzeń zabezpieczeń i połączyć je z danymi z innych usług.
 
-Następujące Azure [rozwiązania do monitorowania](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions) są uwzględniane w ramach tej architektury:
--   [Ocena usługi Active Directory](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Rozwiązanie kondycja Sprawdzanie usługi Active Directory ocenia ryzyko i kondycję środowisk serwerów programu w regularnych odstępach czasu i zapewnia priorytetową listą zalecenia dotyczące infrastruktury serwera wdrożone.
-- [Ocena SQL](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): Rozwiązanie SQL Health Check ocenia ryzyko i kondycję środowisk serwerów programu w regularnych odstępach czasu i zapewnia klientom priorytetową listą zalecenia dotyczące infrastruktury serwera wdrożone.
-- [Kondycja agenta](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): Rozwiązanie Agent Health raporty są wdrażane liczby agentów i ich rozmieszczenie geograficzne, a także liczby agentów, które są nie odpowiada i liczbę agentów, które są przesyłanie danych operacyjnych.
--   [Activity Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Rozwiązanie Activity Log Analytics obsługuje analizy dzienników aktywności platformy Azure we wszystkich subskrypcjach platformy Azure dla klientów.
+Następujące rozwiązania do [monitorowania](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions) platformy Azure są dostępne w ramach tej architektury:
+-   [Active Directory Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Rozwiązanie Active Directory Sprawdzanie kondycji ocenia ryzyko i kondycję środowisk serwera w regularnych odstępach czasu i zawiera priorytetową listę zaleceń specyficznych dla wdrożonej infrastruktury serwera.
+- [SQL Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): Rozwiązanie Sprawdzanie kondycji SQL ocenia ryzyko i kondycję środowisk serwera w regularnych odstępach czasu oraz zapewnia klientom priorytetową listę zaleceń specyficznych dla wdrożonej infrastruktury serwera.
+- [Agent Health](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): Rozwiązanie Agent Health zgłasza liczbę wdrożonych agentów i ich dystrybucję geograficzną, a także liczbę agentów, które nie odpowiadają, oraz liczby agentów przesyłających dane operacyjne.
+-   [Activity Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Activity Log Analytics rozwiązanie pomaga w analizie dzienników aktywności platformy Azure we wszystkich subskrypcjach platformy Azure dla klienta.
 
-**Usługa Azure Automation**: [Usługa Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker) przechowywane i zarządza elementami runbook i jest uruchamiany. W tym rozwiązaniu elementów runbook pomagają zbieranie dzienników z usługi Azure SQL Database. Automatyzację [Change Tracking](https://docs.microsoft.com/azure/automation/automation-change-tracking) rozwiązanie umożliwia klientom łatwo identyfikować zmiany w środowisku.
+**Azure Automation**: [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker) przechowuje elementy Runbook, uruchamia je i zarządza nimi. W tym rozwiązaniu elementy Runbook ułatwiają zbieranie dzienników z Azure SQL Database. Rozwiązanie [Change Tracking](https://docs.microsoft.com/azure/automation/automation-change-tracking) Automation umożliwia klientom łatwe identyfikowanie zmian w środowisku.
 
-**Azure Monitor**: [Usługa Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) ułatwia użytkownikom śledzenia wydajności, zapewniania bezpieczeństwa i identyfikowania trendów, umożliwiając organizacjom inspekcję, tworzyć alerty i archiwizować dane, w tym śledzenia wywołań interfejsu API w swoich zasobów platformy Azure.
+**Azure monitor**: [Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) ułatwia użytkownikom śledzenie wydajności, zachowanie bezpieczeństwa i identyfikowanie trendów przez umożliwienie organizacjom inspekcji, tworzenia alertów i archiwizowania danych, w tym śledzenia wywołań interfejsu API w swoich zasobach platformy Azure.
 
 ## <a name="threat-model"></a>Model zagrożeń
 
-Diagram przepływu danych dla tej architektury referencyjnej jest dostępne dla [Pobierz](https://aka.ms/uknhs-dw-tm) lub znajdują się poniżej. Ten model może pomóc klientom w zrozumieniu punkty potencjalne ryzyko w ramach infrastruktury systemu podczas wprowadzania zmian.
+Diagram przepływu danych dla tej architektury referencyjnej jest dostępny do [pobrania](https://aka.ms/uknhs-dw-tm) lub można go znaleźć poniżej. Ten model może pomóc klientom zrozumieć punkty potencjalnego ryzyka w infrastrukturze systemu podczas wprowadzania modyfikacji.
 
-![Data Warehouse, Zjednoczone Królestwo NHS model zagrożeń](images/uknhs-datawarehouse-threat-model.png?raw=true "magazynu danych na potrzeby model zagrożeń NHS Zjednoczone Królestwo")
+![Magazyn danych dla modelu zagrożeń NHS UK](images/uknhs-datawarehouse-threat-model.png?raw=true "Magazyn danych dla modelu zagrożeń NHS UK")
 
-## <a name="compliance-documentation"></a>Dokumentacja zgodności
+## <a name="compliance-documentation"></a>Dokumentacja dotycząca zgodności
 
-[Zabezpieczeń platformy Azure i plan zgodność — UK NHS klienta odpowiedzialność macierzy](https://aka.ms/uknhs-crm) Wyświetla listę wszystkich wymagań NHS Zjednoczone Królestwo. Ta macierz szczegółowe informacje, czy implementacji Każda zasada jest odpowiedzialność firmy Microsoft, klientów, lub współużytkowana przez dwa.
+W [macierzy strategia zabezpieczeń i zgodności z przepisami platformy Azure – UK NHS — Wielka Brytania](https://aka.ms/uknhs-crm) zawiera wszystkie wymagania NHS. Ta macierz zawiera szczegółowe informacje o tym, czy implementacja każdej z tych zasad jest odpowiedzialna za firmę Microsoft, klienta, czy współdzielona między nimi.
 
-[Zabezpieczeń platformy Azure i plan zgodność — UK NHS dane magazynu implementacji macierzy](https://aka.ms/uknhs-dw-cim) zawiera informacje, na które NHS UK wymagania są rozwiązywane przez architektury magazynu danych, w tym szczegółowy opis działania Implementacja spełnia wymagania każdego objętego usługą zasady.
+[Macierz implementacji magazynu danych NHS — Wielka Brytania](https://aka.ms/uknhs-dw-cim) zawiera informacje o tym, które wymagania dotyczące Wielkiej Brytanii NHS są rozwiązywane przez architekturę magazynu danych, w tym szczegółowy opis sposobu implementacji strategia zabezpieczeń i zgodności z przepisami platformy Azure spełnia wymagania każdej z tych zasad.
 
 ## <a name="guidance-and-recommendations"></a>Wskazówki i zalecenia
 
 ### <a name="vpn-and-expressroute"></a>Sieci VPN i ExpressRoute
 
-Bezpieczny tunel sieci VPN lub [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) musi zostać skonfigurowany nawiązać bezpiecznego połączenia z zasobami wdrożonymi w ramach tej architektury referencyjnej aplikacji sieci web PaaS. Konfigurując odpowiednie sieci VPN lub usługi ExpressRoute, klientów można dodać warstwę ochrony danych podczas przesyłania.
+Bezpieczny tunel VPN lub [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) musi być skonfigurowany do bezpiecznego nawiązywania połączenia z zasobami wdrożonymi w ramach tej architektury referencyjnej aplikacji sieci Web PaaS. Przez odpowiednie skonfigurowanie sieci VPN lub ExpressRoute klienci mogą dodać warstwę ochrony danych do przetworzenia.
 
-Wdrażając bezpieczny tunel sieci VPN z platformą Azure, można tworzyć wirtualne prywatne połączenie między siecią lokalną a siecią wirtualną platformy Azure. To połączenie odbywa się przez Internet oraz umożliwia klientom bezpieczne &quot;tunelu&quot; informacji o wewnątrz zaszyfrowanych powiązanie klienta&#39;s siecią i platformą Azure. Sieci VPN typu lokacja lokacja to bezpieczne, dojrzała technologia, która został wdrożony w przedsiębiorstwach każdej wielkości używana od dziesięcioleci. [Trybu tunelowania IPsec](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10)) jest używany w przypadku tej opcji jako mechanizmu szyfrowania.
+Implementując bezpieczny tunel VPN z platformą Azure, można utworzyć wirtualne połączenie prywatne między siecią lokalną a siecią wirtualną platformy Azure. To połączenie odbywa się za pośrednictwem Internetu i umożliwia klientom bezpieczne &quot;przekazywanie&quot; informacji w ramach zaszyfrowanego połączenia między&#39;siecią klienta i platformą Azure. Sieci VPN typu lokacja-lokacja to bezpieczna, dojrzała technologia, która została wdrożona przez przedsiębiorstwa wszystkich rozmiarów dla dekad. [Tryb tunelowania IPSec](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10)) jest używany w tej opcji jako mechanizm szyfrowania.
 
-Ponieważ ruch sieciowy w ramach tunelu VPN przechodzą przez Internet przy użyciu sieci VPN lokacja lokacja, firma Microsoft oferuje opcję inny, jeszcze bardziej bezpieczne połączenia. Usługa ExpressRoute systemu Azure jest dedykowany sieci WAN łącze między Azure i lokacją lokalną lub hostingu dostawcy usług Exchange. Jak połączeń usługi ExpressRoute nie odbywają się za pośrednictwem Internetu, te połączenia oferują więcej niezawodność, większe szybkości, krótsze opóźnienia i lepsze zabezpieczenia niż typowe połączenia przez Internet. Ponadto ponieważ jest to bezpośrednie połączenie klienta&#39;s dostawcy usług telekomunikacyjnych, dane nie przesyłane za pośrednictwem Internetu i w związku z tym nie jest uwidaczniana, do niego.
+Ze względu na to, że ruch w ramach tunelu sieci VPN przechodzi przez Internet przy użyciu sieci VPN typu lokacja-lokacja, firma Microsoft oferuje kolejną, jeszcze bardziej bezpieczną opcję połączenia. Azure ExpressRoute to dedykowany link sieci WAN między platformą Azure i lokalizacją lokalną lub dostawcą hostingu programu Exchange. Ponieważ połączenia ExpressRoute nie przechodzą przez Internet, połączenia te oferują większą niezawodność, większe szybkości, mniejsze opóźnienia i lepsze zabezpieczenia niż typowe połączenia przez Internet. Ponadto, ponieważ jest to bezpośrednie połączenie z dostawcą telekomunikacyjnym klienta&#39;, dane nie są przesyłane przez Internet i w związku z tym nie są dostępne.
 
-Najlepsze rozwiązania dotyczące wdrażania bezpieczną sieć hybrydową, która rozszerza sieć lokalną na platformę Azure są [dostępne](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid).
+[Dostępne](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)są najlepsze rozwiązania dotyczące implementowania bezpiecznej sieci hybrydowej, która rozszerza sieć lokalną na platformę Azure.
 
-### <a name="extract-transform-load-process"></a>Proces wyodrębniania, przekształcania, ładowania
+### <a name="extract-transform-load-process"></a>Proces wyodrębniania i ładowania
 
-[Program PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) można ładowanie danych do usługi Azure SQL Data Warehouse bez konieczności oddzielnego wyodrębniania, przekształcania, załadowania lub zaimportowania narzędzia. Program PolyBase umożliwia dostęp do danych za pomocą zapytań T-SQL. Przy użyciu technologii PolyBase może służyć przez firmę Microsoft analizy biznesowej i stos analizy, a także narzędzia innych producentów są zgodne z programem SQL Server.
+[Baza](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) danych może ładować dane do Azure SQL Data Warehouse bez potrzeby oddzielnego narzędzia wyodrębniania, przekształcania, ładowania i importowania. Baza danych wielobase umożliwia dostęp do nich za poorednictwem zapytań T-SQL. Stos analizy biznesowej i analizy firmy Microsoft oraz narzędzia innych firm zgodne z SQL Server mogą być używane z bazą danych.
 
-### <a name="azure-active-directory-setup"></a>Konfiguracja usługi Azure Active Directory
+### <a name="azure-active-directory-setup"></a>Konfiguracja Azure Active Directory
 
-[Usługa Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) jest Zarządzanie wdrożeniem i inicjowania obsługi dostępu do personelu wchodzenie w interakcje ze środowiskiem. Istniejący serwer Active Directory systemu Windows można zintegrować z usługą Azure Active Directory w [cztery kliknięcia](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-express). Klienci mogą również powiązanie wdrożonej infrastrukturę usługi Active Directory (kontrolery domeny) istniejących usług Azure Active Directory, wprowadzając poddomeny lasu usługi Azure Active Directory wdrożone infrastrukturę usługi Active Directory.
+[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) ma zasadnicze znaczenie dla zarządzania wdrożeniem i zapewnianiem dostępu do pracowników, którzy współpracują ze środowiskiem. Istniejące Active Directory systemu Windows Server można zintegrować z Azure Active Directory za pomocą [czterech kliknięć](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-express). Klienci mogą również powiązać wdrożoną infrastrukturę Active Directory (kontrolery domeny) z istniejącym Azure Active Directory przez nadanie wdrożonej infrastruktury Active Directory poddomeny lasu Azure Active Directory.
 
-### <a name="optional-services"></a>Usługi opcjonalne
+### <a name="optional-services"></a>Opcjonalne usługi
 
-Platforma Azure oferuje szereg usług na potrzeby magazynu i przemieszczania danych sformatowanego i niesformatowane. Następujące usługi mogą być dodawane do tej architektury referencyjnej, w zależności od wymagań klientów:
--   [Usługa Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) to usługa zarządzana usługa w chmurze stworzonemu dla kompleksowych, hybrydowych extract-transform-load i projekty integracji danych. Usługa Azure Data Factory ma możliwości śledzenia i Znajdź dane dotyczące kondycji, łącznie z wizualizacją i monitorowania narzędzi do identyfikacji, gdy źródła otrzymanych danych, a, z którego pochodzi. Za pomocą usługi Azure Data Factory, klientów można tworzyć i planować opartych na danych przepływy pracy o nazwie potoki, które pozyskiwać dane z różnych magazynów danych. Te potoki Zezwalaj klientom na odbieranie danych z wewnętrznych i zewnętrznych źródeł. Klienci, a następnie jest przetwarzanie i przekształcanie danych dla danych wyjściowych w magazynach danych, takich jak Azure SQL Data Warehouse.
-- Klientów można umieścić dane bez struktury w [usługi Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview), które umożliwia przechwytywanie danych o dowolnym rozmiarze, typie, i pozyskiwania szybkości w jednym miejscu na potrzeby analizy operacyjnej i rozpoznawczej.  Usługa Azure Data Lake ma funkcje, które umożliwiają wyodrębnianie i konwersja danych. Azure Data Lake Store jest zgodna z najbardziej otwarta składnikami źródła w ekosystemie usługi Hadoop i bardzo dobrze integruje się z innymi usługami Azure, takich jak Azure SQL Data Warehouse.
+Platforma Azure oferuje różne usługi ułatwiające przechowywanie i przenoszenie sformatowanych i niesformatowanych danych. Do tej architektury referencyjnej można dodać następujące usługi, w zależności od wymagań klienta:
+-   [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) to zarządzana usługa w chmurze, która jest oparta na złożonych projektach hybrydowych typu extract-transform-load i integracji danych. Azure Data Factory zawiera funkcje ułatwiające śledzenie i lokalizowanie danych związanych z kondycją, w tym narzędzia do wizualizacji i monitorowania, które umożliwiają identyfikowanie, kiedy dane dotarły i skąd pochodzą. Korzystając z Azure Data Factory, klienci mogą tworzyć i planować przepływy pracy oparte na danych nazywane potokami, które pozyskiwanie danych z różnych magazynów danych. Te potoki umożliwiają klientom pozyskiwanie danych ze źródeł wewnętrznych i zewnętrznych. Klienci mogą następnie przetwarzać i przekształcać dane wyjściowe w magazyny danych, takie jak Azure SQL Data Warehouse.
+- Klienci mogą przemieszczać dane niestrukturalne w [Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview), co umożliwia przechwytywanie danych dowolnego rozmiaru, typu i szybkości wprowadzania w jednym miejscu na potrzeby analiz operacyjnych i poznawczych.  Azure Data Lake zawiera funkcje, które umożliwiają wyodrębnianie i konwertowanie danych. Azure Data Lake Store jest zgodny z większością składników typu open source w ekosystemie usługi Hadoop i integruje dobrze z innymi usługami platformy Azure, takimi jak Azure SQL Data Warehouse.
 
-## <a name="disclaimer"></a>Zrzeczenie odpowiedzialności
+## <a name="disclaimer"></a>Zastrzeżenie
 
- - Ten dokument jest tylko do celów informacyjnych. MICROSOFT NIE UDZIELA ŻADNYCH GWARANCJI, WYRAŹNYCH, DOROZUMIANYCH LUB USTAWOWYCH, W ODNIESIENIU DO INFORMACJI W TYM DOKUMENCIE. Niniejszy dokument jest udostępniany "jako-to." Informacje i poglądy wyrażone w tym dokumencie, w tym adresy URL i inne odnośniki do witryn internetowych, mogą ulec zmianie bez powiadomienia. Klienci odczytu ten dokument jest odpowiedzialny za jej pomocą.
- - W tym dokumencie nie zapewnia klientom żadnych praw do własności intelektualnej w dowolnym produkcie firmy Microsoft lub rozwiązań.
- - Klienci kopiować i używać tego dokumentu do celów referencyjnych wewnętrznego.
- - Zastosowanie niektórych zaleceń zamieszczonych w tym dokumencie może spowodować od zwiększoną danych, sieci lub użycia zasobów obliczeniowych na platformie Azure i może zwiększyć Azure kosztów licencji lub subskrypcji klienta.
- - Ta architektura jest przeznaczona do służyć jako podstawa dla klientów dostosować ich określonych wymagań i nie może być używana jako — w środowisku produkcyjnym.
- - Ten dokument jest opracowana jako odwołanie i nie należy używać do definiowania wszystkich oznacza, że przez co klient spełnia wymagania w zakresie wymagań dotyczących określonych zgodności i przepisów. Klienci, powinny zwrócić prawne obsługi ze swojej organizacji w implementacji zatwierdzone klienta.
+ - Ten dokument jest przeznaczony wyłącznie do celów informacyjnych. FIRMA MICROSOFT NIE UDZIELA ŻADNYCH GWARANCJI, WYRAŹNYCH, DOROZUMIANYCH ANI USTAWOWYCH, W ODNIESIENIU DO INFORMACJI ZAWARTYCH W TYM DOKUMENCIE. Ten dokument jest dostarczany "w takiej postaci, w jakim jest". Informacje i poglądy wyrażone w tym dokumencie, w tym adresy URL i inne odwołania do witryn internetowych, mogą ulec zmianie bez powiadomienia. Klienci czytający ten dokument mają ryzyko związane z jego użyciem.
+ - Niniejszy dokument nie zapewnia klientom żadnych praw do jakiejkolwiek własności intelektualnej w jakichkolwiek produktach lub rozwiązaniach firmy Microsoft.
+ - Klienci mogą kopiować i używać tego dokumentu do wewnętrznych celów referencyjnych.
+ - Niektóre zalecenia zawarte w tym dokumencie mogą spowodować zwiększenie użycia zasobów, sieci lub obliczeń na platformie Azure oraz zwiększyć koszty związane z licencją lub subskrypcją platformy Azure klienta.
+ - Ta architektura jest przeznaczona dla klientów w celu dostosowania ich do konkretnych wymagań i nie powinna być używana w środowisku produkcyjnym.
+ - Niniejszy dokument jest opracowywany jako odwołanie i nie należy go używać do definiowania wszystkich środków, za pomocą których klient może spełnić określone wymagania i regulacje dotyczące zgodności. Klienci powinni zwrócić się z pomocą techniczną od organizacji na zatwierdzone implementacje klientów.

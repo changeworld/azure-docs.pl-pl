@@ -1,97 +1,97 @@
 ---
-title: C# moduł usługi IoT Edge dla usługi Azure Data Box Edge | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak tworzenie modułu C# usługi IoT Edge, który można wdrożyć na krawędzi sieci pola danych.
+title: C#Moduł IoT Edge dla Azure Data Box Edge | Microsoft Docs
+description: Dowiedz się, jak C# opracowywać moduł IoT Edge, który można wdrożyć na Data Box Edge.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/19/2019
+ms.date: 08/02/2019
 ms.author: alkohli
-ms.openlocfilehash: c2803ba598895834bb197f4a06ff0635354fcaca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 734ad263356ab9f91c7cb92ab174a14e0c5dd867
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64680892"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775172"
 ---
-# <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Twórz C# moduł usługi IoT Edge, aby przenieść pliki na krawędzi pola danych
+# <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Opracowywanie C# modułu IoT Edge do przenoszenia plików na Data Box Edge
 
-Ten artykuł przeprowadzi Cię przez jak utworzyć moduł usługi IoT Edge dla wdrożenia przy użyciu urządzenia usługi Edge pola danych. Azure Data Box Edge to rozwiązanie magazynu umożliwiające przetwarzanie danych i wysyłanie ich za pośrednictwem sieci na platformę Azure.
+W tym artykule opisano sposób tworzenia modułu IoT Edge na potrzeby wdrożenia z urządzeniem Data Box Edge. Azure Data Box Edge to rozwiązanie magazynu umożliwiające przetwarzanie danych i wysyłanie ich za pośrednictwem sieci na platformę Azure.
 
-Za pomocą usługi Azure IoT Edge modułów i krawędzi pola danych, sieci przekształcać dane ponieważ przeniesione do platformy Azure. Moduł używane w tym artykule implementuje logikę do kopiowania pliku z udziału lokalnego do udziału chmury na twoim urządzeniu krawędź pola danych.
+Za pomocą Data Box Edge modułów Azure IoT Edge można przekształcić dane w miarę ich przenoszenia na platformę Azure. Moduł używany w tym artykule implementuje logikę kopiowania pliku z udziału lokalnego do udziału w chmurze na urządzeniu Data Box Edge.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
-> * Tworzenie rejestru kontenerów do przechowywania i zarządzania nimi moduły (obrazy platformy Docker).
-> * Utwórz moduł usługi IoT Edge można wdrożyć na urządzeniu usługi Edge pola danych.
+> * Utwórz rejestr kontenerów w celu przechowywania modułów (obrazów platformy Docker) i zarządzania nimi.
+> * Utwórz moduł IoT Edge do wdrożenia na urządzeniu Data Box Edge.
 
 
-## <a name="about-the-iot-edge-module"></a>Moduł usługi IoT Edge — informacje
+## <a name="about-the-iot-edge-module"></a>Informacje o module IoT Edge
 
-Urządzenie brzegowe pole danych wdrażać i uruchamiać moduły usługi IoT Edge. Moduły usługi Edge to zasadniczo kontenerów platformy Docker, które wykonywania określonych zadań, takich jak odbieranie komunikatów z urządzenia, przekształcić wiadomość lub wysyłania komunikatu do usługi IoT Hub. W tym artykule utworzy moduł, który kopiuje pliki z udziału lokalnego do udziału chmury na twoim urządzeniu krawędź pola danych.
+Na urządzeniu Data Box Edge można wdrażać i uruchamiać moduły IoT Edge. Moduły brzegowe są zasadniczo kontenerami Docker, które wykonują określone zadanie, takie jak pozyskiwanie komunikatów z urządzenia, przekształcanie komunikatu lub wysyłanie komunikatu do IoT Hub. W tym artykule opisano tworzenie modułu, który kopiuje pliki z udziału lokalnego do udziału w chmurze na urządzeniu Data Box Edge.
 
-1. Pliki są zapisywane w udziale lokalnym na swoim urządzeniu krawędź pola danych.
-2. Generator zdarzeń pliku Tworzy zdarzenie pliku dla każdego pliku zapisywane do udziału lokalnego. Zdarzenia pliku również są generowane, gdy plik zostanie zmodyfikowany. Zdarzenia w pliku są następnie wysyłane do usługi IoT Edge Hub (środowisko uruchomieniowe usługi IoT Edge).
-3. Niestandardowy moduł usługi IoT Edge przetwarza zdarzenia pliku do utworzenia obiektu zdarzenia pliku, który również zawiera ścieżkę względną do pliku. Moduł generuje przy użyciu ścieżki względnej ścieżki bezwzględnej i kopiuje plik z udziału lokalnego do udziału w chmurze. Moduł następnie usuwa plik z lokalnego udziału.
+1. Pliki są zapisywane w udziale lokalnym na urządzeniu Data Box Edge.
+2. Generator zdarzeń pliku tworzy zdarzenie pliku dla każdego pliku zapisywanego w udziale lokalnym. Zdarzenia plików są również generowane, gdy plik zostanie zmodyfikowany. Zdarzenia plików są następnie wysyłane do centrum IoT Edge (w IoT Edge Runtime).
+3. Moduł niestandardowy IoT Edge przetwarza zdarzenie pliku, aby utworzyć obiekt zdarzenia pliku, który zawiera również ścieżkę względną dla pliku. Moduł generuje ścieżkę bezwzględną przy użyciu względnej ścieżki pliku i kopiuje plik z udziału lokalnego do udziału w chmurze. Następnie moduł usunie plik z udziału lokalnego.
 
-![Jak działa moduł usługi Azure IoT Edge na krawędzi pola danych](./media/data-box-edge-create-iot-edge-module/how-module-works-1.png)
+![Jak działa moduł Azure IoT Edge na Data Box Edge](./media/data-box-edge-create-iot-edge-module/how-module-works-1.png)
 
-Gdy plik znajduje się w udziale chmury, automatycznie zostaje on przesłany do konta usługi Azure Storage.
+Gdy plik znajduje się w udziale w chmurze, zostanie automatycznie przekazany do konta usługi Azure Storage.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed rozpoczęciem upewnij się, że masz następujące elementy:
 
-- Urządzenie krawędź pola danych, które jest uruchomiona.
+- Urządzenie Data Box Edge, na którym działa program.
 
-    - Urządzenie ma również skojarzony zasób usługi IoT Hub.
-    - Urządzenie ma krawędzi obliczenia skonfigurowaną rolą.
-    Aby uzyskać więcej informacji, przejdź do [Konfigurowanie obliczeń](data-box-edge-deploy-configure-compute.md#configure-compute) na krawędzi sieci pola danych.
+    - Urządzenie ma także skojarzony zasób IoT Hub.
+    - Na urządzeniu skonfigurowano rolę obliczeń brzegowych.
+    Aby uzyskać więcej informacji, przejdź do pozycji [Konfigurowanie obliczeń](data-box-edge-deploy-configure-compute.md#configure-compute) dla Data Box Edge.
 
-- Programowanie w następujących zasobach:
+- Następujące zasoby programistyczne:
 
     - [Program Visual Studio Code](https://code.visualstudio.com/)
     - [Rozszerzenie C# for Visual Studio Code (obsługiwane przez technologię OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
     - [Rozszerzenie usługi Azure IoT Edge dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)
     - [Zestaw .NET Core 2.1 SDK](https://www.microsoft.com/net/download).
-    - [Program Docker CE](https://store.docker.com/editions/community/docker-ce-desktop-windows). Może być konieczne Utwórz konto Aby pobrać i zainstalować oprogramowanie.
+    - [Program Docker CE](https://store.docker.com/editions/community/docker-ce-desktop-windows). Może być konieczne utworzenie konta w celu pobrania i zainstalowania oprogramowania.
 
 ## <a name="create-a-container-registry"></a>Tworzenie rejestru kontenerów
 
-Usługa Azure Container Registry to rejestr prywatny platformy Docker na platformie Azure, w którym można przechowywać prywatne obrazy kontenerów Docker i zarządzać nimi. Dwie popularne usługi rejestru Docker dostępne w chmurze są usługi Azure Container Registry i Docker Hub. W tym artykule korzysta z rejestru kontenerów.
+Usługa Azure Container Registry to rejestr prywatny platformy Docker na platformie Azure, w którym można przechowywać prywatne obrazy kontenerów Docker i zarządzać nimi. Dwie popularne usługi rejestru platformy Docker dostępne w chmurze to Azure Container Registry i Docker Hub. W tym artykule jest wykorzystywany Container Registry.
 
 1. Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
-2. Wybierz **Utwórz zasób > kontenery > Container Registry**. Kliknij pozycję **Utwórz**.
-3. Zapewniają:
+2. Wybierz pozycję **Utwórz zasób > kontenery > Container Registry**. Kliknij przycisk **Utwórz**.
+3. Oferować
 
-   1. Unikatowy **nazwa rejestru** w obrębie platformy Azure, która zawiera 5 do 50 znaków alfanumerycznych.
-   2. Wybierz **subskrypcji**.
-   3. Utwórz nową lub wybierz istniejącą **grupy zasobów**.
-   4. Wybierz **lokalizację**. Zaleca się, że ta lokalizacja być taka sama, jak skojarzony z zasobem krawędź pola danych.
+   1. Unikatowa **Nazwa rejestru** na platformie Azure, która zawiera od 5 do 50 znaków alfanumerycznych.
+   2. Wybierz **subskrypcję**.
+   3. Utwórz nową lub wybierz istniejącą **grupę zasobów**.
+   4. Wybierz **lokalizację**. Zalecamy, aby ta lokalizacja była taka sama, jak skojarzona z zasobem Data Box Edge.
    5. Przełącz pozycję **Administrator** na wartość **Włącz**.
-   6. Ustaw jednostkę SKU **podstawowe**.
+   6. Ustaw jednostkę SKU na **podstawową**.
 
-      ![Tworzenie rejestru kontenerów](./media/data-box-edge-create-iot-edge-module/create-container-registry-1.png)
+      ![Utwórz rejestr kontenerów](./media/data-box-edge-create-iot-edge-module/create-container-registry-1.png)
  
 4. Wybierz pozycję **Utwórz**.
 5. Po utworzeniu rejestru kontenerów przejdź do niego i wybierz pozycję **Klucze dostępu**.
 
-    ![Uzyskiwanie dostępu do kluczy](./media/data-box-edge-create-iot-edge-module/get-access-keys-1.png)
+    ![Pobierz klucze dostępu](./media/data-box-edge-create-iot-edge-module/get-access-keys-1.png)
  
-6. Skopiuj wartości w polach **Serwer logowania**, **Nazwa użytkownika** i **Hasło**. Można użyć tych wartości później na opublikowanie obrazu platformy Docker do rejestru i dodawanie poświadczeń rejestru do środowiska uruchomieniowego usługi Azure IoT Edge.
+6. Skopiuj wartości w polach **Serwer logowania**, **Nazwa użytkownika** i **Hasło**. Te wartości są używane później do publikowania obrazu platformy Docker w rejestrze i dodawania poświadczeń rejestru do środowiska uruchomieniowego Azure IoT Edge.
 
 
 ## <a name="create-an-iot-edge-module-project"></a>Tworzenie projektu modułu usługi IoT Edge
 
-Poniższe kroki umożliwiają utworzenie usługi IoT Edge modułu projektu na podstawie zestawu SDK programu .NET Core 2.1. Projekt korzysta z programu Visual Studio Code i rozszerzenia usługi Azure IoT Edge.
+Poniższe kroki tworzą projekt modułu IoT Edge na podstawie zestawu .NET Core 2,1 SDK. Projekt używa Visual Studio Code i Azure IoT Edge rozszerzenia.
 
-### <a name="create-a-new-solution"></a>Tworzenie nowego rozwiązania
+### <a name="create-a-new-solution"></a>Utwórz nowe rozwiązanie
 
 Utwórz szablon rozwiązania w języku C#, który można dostosować przy użyciu własnego kodu.
 
-1. W programie Visual Studio Code wybierz **Widok > paletę poleceń** aby otworzyć paletę poleceń programu VS Code.
+1. W Visual Studio Code wybierz pozycję **wyświetl > paletę poleceń** , aby otworzyć paletę poleceń vs Code.
 2. W palecie poleceń wprowadź i uruchom polecenie **Azure: Sign in (Azure: zaloguj się)** , a następnie postępuj zgodnie z instrukcjami, aby zalogować się na swoim koncie platformy Azure. Jeśli już się zalogowano, można pominąć ten krok.
 3. W palecie poleceń wprowadź i uruchom polecenie **Azure IoT Edge: New IoT Edge solution** (Azure IoT Edge: nowe rozwiązanie usługi IoT Edge). W palecie poleceń podaj następujące informacje, aby utworzyć rozwiązanie:
 
@@ -101,36 +101,36 @@ Utwórz szablon rozwiązania w języku C#, który można dostosować przy użyci
         ![Utwórz nowe rozwiązanie 1](./media/data-box-edge-create-iot-edge-module/create-new-solution-1.png)
 
     3. Wybierz szablon modułu **C# Module** (Moduł języka C#).
-    4. Zamień na nazwę, którą chcesz przypisać domyślną nazwę modułu, w tym przypadku jest to **FileCopyModule**.
+    4. Zastąp domyślną nazwę modułu nazwą, którą chcesz przypisać, w tym przypadku jest to **FileCopyModule**.
     
         ![Utwórz nowe rozwiązanie 2](./media/data-box-edge-create-iot-edge-module/create-new-solution-2.png)
 
-    5. Określ rejestru kontenerów, utworzony w poprzedniej sekcji jako repozytorium obrazów dla pierwszego modułu. Zastąp ciąg **localhost:5000** skopiowaną wartością serwera logowania.
+    5. Określ rejestr kontenerów utworzony w poprzedniej sekcji jako repozytorium obrazów dla pierwszego modułu. Zastąp ciąg **localhost:5000** skopiowaną wartością serwera logowania.
 
-        Końcowy ciąg wygląda jak `<Login server name>/<Module name>`. W tym przykładzie ciąg jest: `mycontreg2.azurecr.io/filecopymodule`.
+        Końcowy ciąg wygląda następująco `<Login server name>/<Module name>`. W tym przykładzie ciąg: `mycontreg2.azurecr.io/filecopymodule`.
 
         ![Utwórz nowe rozwiązanie 3](./media/data-box-edge-create-iot-edge-module/create-new-solution-3.png)
 
-4. Przejdź do **Plik > Otwórz Folder**.
+4. Przejdź do **pliku > Otwórz folder**.
 
     ![Utwórz nowe rozwiązanie 4](./media/data-box-edge-create-iot-edge-module/create-new-solution-4.png)
 
-5. Przeglądaj, a następnie wskaż **EdgeSolution** folder, który został utworzony wcześniej. Okna programu VS Code ładuje obszar roboczy rozwiązania usługi IoT Edge przy użyciu ich pięć elementów najwyższego poziomu. Nie będzie edytował **.vscode** folderu **.gitignore** pliku **ENV** pliku, a **deployment.template.json** w tym artykule.
+5. Przeglądaj i wskaż utworzony wcześniej folder **EdgeSolution** . Okno VS Code ładuje obszar roboczy rozwiązania IoT Edge z pięcioma składnikami najwyższego poziomu. W tym artykule nie można edytować folderu **. programu vscode** , pliku **GITIGNORE** , pliku **. env** i **wdrożenia. Template. JSON** .
     
-    Jedyny składnik, który modyfikujesz jest folder modułów. Ten folder zawiera kod C# dla modułu i plików platformy Docker do tworzenia modułu jako obrazu kontenera.
+    Jedynym modyfikowanym składnikiem jest folder moduły. Ten folder zawiera C# kod modułu i plików Docker służący do kompilowania modułu jako obrazu kontenera.
 
     ![Utwórz nowe rozwiązanie 5](./media/data-box-edge-create-iot-edge-module/create-new-solution-5.png)
 
 ### <a name="update-the-module-with-custom-code"></a>Aktualizowanie modułu przy użyciu kodu niestandardowego
 
-1. Otwórz w Eksploratorze programu VS Code **modułów > FileCopyModule > Program.cs**.
-2. W górnej części **przestrzeni nazw FileCopyModule**, Dodaj następujące instrukcje using dla typów, które są używane w dalszej części. **Microsoft.Azure.Devices.Client.Transport.Mqtt** jest protokołem, aby wysyłać komunikaty do usługi IoT Edge Hub.
+1. W Eksploratorze VS Code Otwórz **moduł > FileCopyModule > program.cs**.
+2. W górnej części **przestrzeni nazw FileCopyModule**Dodaj następujące instrukcje using dla typów, które są używane później. **Microsoft. Azure. Devices. Client. transport. MQTT** to protokół służący do wysyłania komunikatów do centrum IoT Edge.
 
     ```
     using Microsoft.Azure.Devices.Client.Transport.Mqtt;
     using Newtonsoft.Json;
     ```
-3. Dodaj **InputFolderPath** i **OutputFolderPath** zmiennej do klasy Program.
+3. Dodaj zmienną **InputFolderPath** i **OutputFolderPath** do klasy program.
 
     ```
     class Program
@@ -140,11 +140,11 @@ Utwórz szablon rozwiązania w języku C#, który można dostosować przy użyci
             private const string OutputFolderPath = "/home/output";
     ```
 
-4. Dodaj **Element MessageBody** klasy do klasy Program. Te klasy definiują oczekiwany schemat treści komunikatów przychodzących.
+4. Dodaj klasę **FileEvent** , aby zdefiniować treść wiadomości.
 
     ```
     /// <summary>
-    /// The MessageBody class defines the expected schema for the body of incoming messages. 
+    /// The FileEvent class defines the body of incoming messages. 
     /// </summary>
     private class FileEvent
     {
@@ -156,7 +156,7 @@ Utwórz szablon rozwiązania w języku C#, który można dostosować przy użyci
     }
     ```
 
-5. W metodzie **Init** kod tworzy i konfiguruje obiekt **ModuleClient**. Ten obiekt umożliwia modułu nawiązać połączenie lokalne środowisko uruchomieniowe usługi Azure IoT Edge, wysyłanie i odbieranie wiadomości przy użyciu protokołu MQTT. Parametry połączenia, który jest używany w metodzie Init jest dostarczany do modułu przez środowisko uruchomieniowe usługi IoT Edge. Ten kod rejestruje wywołanie zwrotne operacja FileCopy do odbierania komunikatów z Centrum IoT Edge za pośrednictwem **wejście1** punktu końcowego.
+5. W metodzie **Init** kod tworzy i konfiguruje obiekt **ModuleClient**. Ten obiekt umożliwia modułowi łączenie się z lokalnymi Azure IoT Edge środowiska uruchomieniowego przy użyciu protokołu MQTT w celu wysyłania i odbierania komunikatów. Parametry połączenia używane w metodzie init są dostarczane do modułu przez środowisko uruchomieniowe IoT Edge. Kod rejestruje wywołanie zwrotne operacja FileCopy, aby odbierać komunikaty z Centrum IoT Edge za pośrednictwem punktu końcowego **INPUT1** .
 
     ```
     /// <summary>
@@ -178,7 +178,7 @@ Utwórz szablon rozwiązania w języku C#, który można dostosować przy użyci
     }
     ```
 
-6. Wstaw kod **operacja FileCopy**.
+6. Wstaw kod dla **operacja FileCopy**.
 
     ```
         /// <summary>
@@ -239,38 +239,38 @@ Utwórz szablon rozwiązania w języku C#, który można dostosować przy użyci
 
 ## <a name="build-your-iot-edge-solution"></a>Kompilowanie rozwiązania usługi IoT Edge
 
-W poprzedniej sekcji utworzyliśmy rozwiązanie IoT Edge i dodać kod do FileCopyModule do kopiowania plików z udziału lokalnego do udziału w chmurze. Teraz należy skompilować to rozwiązanie jako obraz kontenera i wypchnąć go do rejestru kontenerów.
+W poprzedniej sekcji utworzono rozwiązanie IoT Edge i dodano kod do FileCopyModule w celu skopiowania plików z udziału lokalnego do udziału w chmurze. Teraz należy skompilować to rozwiązanie jako obraz kontenera i wypchnąć go do rejestru kontenerów.
 
-1. W programu VSCode, przejdź do terminala > nowe terminalu, aby otworzyć nowy zintegrowany terminal programu Visual Studio Code.
+1. W programu vscode przejdź do pozycji Terminal > Nowy terminal, aby otworzyć nowy Visual Studio Code zintegrowany terminal.
 2. Zaloguj się do platformy Docker, wprowadzając następujące polecenie w zintegrowanym terminalu.
 
     `docker login <ACR login server> -u <ACR username>`
 
-    Użyj logowania serwera i nazwa użytkownika, który został skopiowany z rejestru kontenerów. 
+    Użyj serwera logowania i nazwy użytkownika skopiowanej z rejestru kontenerów. 
 
-    ![Kompilowanie i wypychanie rozwiązania usługi IoT Edge](./media/data-box-edge-create-iot-edge-module/build-iot-edge-solution-1.png)
+    ![Rozwiązanie do kompilowania i wypychania IoT Edge](./media/data-box-edge-create-iot-edge-module/build-iot-edge-solution-1.png)
 
-2. Po wyświetleniu monitu o hasło, należy podać hasło. Możesz również pobrać wartości dla nazwy logowania serwera, nazwę użytkownika i hasło za pomocą **klucze dostępu** w rejestrze kontenera w witrynie Azure portal.
+2. Po wyświetleniu monitu o podanie hasła Podaj hasło. Możesz również pobrać wartości dla opcji serwer logowania, nazwa użytkownika i hasło z **kluczy dostępu** w rejestrze kontenerów w Azure Portal.
  
-3. Gdy podano poświadczenia, możesz wypchnąć obraz moduł do usługi Azure container registry. W Eksploratorze programu VS Code kliknij prawym przyciskiem myszy **module.json** plik i wybierz **rozwiązanie kompilacji i wypychania usługi IoT Edge**.
+3. Po dostarczeniu poświadczeń można wypchnąć obraz modułu do usługi Azure Container Registry. W Eksploratorze VS Code kliknij prawym przyciskiem myszy plik **module. JSON** i wybierz polecenie **Kompiluj i wypchnij IoT Edge rozwiązanie**.
 
-    ![Kompilowanie i wypychanie rozwiązania usługi IoT Edge](./media/data-box-edge-create-iot-edge-module/build-iot-edge-solution-2.png)
+    ![Rozwiązanie do kompilowania i wypychania IoT Edge](./media/data-box-edge-create-iot-edge-module/build-iot-edge-solution-2.png)
  
-    Gdy wiadomo, Visual Studio Code, aby utworzyć swoje rozwiązanie, jest ono wykonywane dwa polecenia w zintegrowanym terminalu: kompilacji platformy docker i wypychania platformy docker. Te dwa polecenia kompilują kod, konteneryzują plik CSharpModule.dll i wypychają go do rejestru kontenerów określonego podczas inicjowania rozwiązania.
+    Po poinformowaniu Visual Studio Code o skompilowaniu rozwiązania są uruchamiane dwa polecenia w zintegrowanym terminalu: kompilacja Docker i narzędzie Docker push. Te dwa polecenia kompilują kod, konteneryzują plik CSharpModule.dll i wypychają go do rejestru kontenerów określonego podczas inicjowania rozwiązania.
 
-    Zostanie wyświetlony monit wybierz platformę modułu. Wybierz *amd64* odpowiadający systemu Linux.
+    Zostanie wyświetlony monit o wybranie platformy modułu. Wybierz pozycję *amd64* odpowiadający systemowi Linux.
 
     ![Wybierz platformę](./media/data-box-edge-create-iot-edge-module/select-platform.png)
 
     > [!IMPORTANT] 
     > Obsługiwane są tylko moduły systemu Linux.
 
-    Zobaczysz poniższe ostrzeżenie, który można zignorować:
+    Może zostać wyświetlone następujące ostrzeżenie:
 
-    *Program.cs(77,44): ostrzeżenie CS1998: Tej metodzie asynchronicznej brakuje operatorów "await" i zostanie ona uruchomiona synchronicznie. Należy wziąć pod uwagę, aby poczekać na nieblokujące wywołania interfejsów API za pomocą operatora "await" lub "await Task.Run(...)" do wykonania pracy Procesora CPU w wątku tła.*
+    *Program. cs (77, 44): ostrzeżenie CS1998: Ta metoda asynchroniczna nie zawiera operatorów "await" i zostanie uruchomiona synchronicznie. Rozważ użycie operatora "await" do oczekiwania na nieblokujące wywołania interfejsu API lub "await Task. Run (...)" w celu wykonania pracy związanej z PROCESORem w wątku w tle.*
 
-4. Pełny adres obrazu kontenera możesz wyświetlić za pomocą tagu w zintegrowanym terminalu programu VS Code. Adres obrazu jest tworzona na podstawie informacji w pliku module.json przy użyciu formatu `<repository>:<version>-<platform>`. W tym artykule, powinien on wyglądać podobnie `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`.
+4. Pełny adres obrazu kontenera możesz wyświetlić za pomocą tagu w zintegrowanym terminalu programu VS Code. Adres obrazu jest tworzony na podstawie informacji znajdujących się w pliku module. JSON w formacie `<repository>:<version>-<platform>`. W tym artykule powinien wyglądać tak `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby wdrożyć i uruchomić ten moduł na krawędzi pola danych, zobacz kroki opisane w [Dodaj moduł](data-box-edge-deploy-configure-compute.md#add-a-module).
+Aby wdrożyć i uruchomić ten moduł na Data Box Edge, zobacz kroki opisane w temacie [Dodawanie modułu](data-box-edge-deploy-configure-compute.md#add-a-module).

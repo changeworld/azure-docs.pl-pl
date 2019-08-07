@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure drzwiami frontowymi — monitorowanie kondycji zaplecza | Dokumentacja firmy Microsoft
-description: Ten artykuł pomoże Ci zrozumieć, jak usługa drzwiami frontowymi Azure monitoruje kondycję usługi zaplecza
+title: Usługa frontonu platformy Azure — monitorowanie kondycji zaplecza | Microsoft Docs
+description: Ten artykuł pomaga zrozumieć, jak usługa Azure front-drzwi monitoruje kondycję zasobie
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,52 +11,53 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 59a3bac39437b91eeee3b005bd23476a34a308b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 289b05a2c50a2b4af50eb2114515a49bb653cf1a
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736585"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742391"
 ---
 # <a name="health-probes"></a>Sondy kondycji
 
-Aby można było ustalić kondycję poszczególnych pól zaplecza, każde środowisko drzwiami frontowymi okresowo wysyła syntetyczne żądania HTTP/HTTPS do każdego skonfigurowanego zaplecza. Usługa Front Door następnie używa odpowiedzi z tych sond, aby określić „najlepsze” zaplecza, do których powinna kierować rzeczywiste żądania klientów.
+Aby określić kondycję każdego zaplecza, każdy ze środowisk czołowych okresowo wysyła żądanie HTTP/HTTPS do każdego ze skonfigurowanych frontonów. Usługa Front Door następnie używa odpowiedzi z tych sond, aby określić „najlepsze” zaplecza, do których powinna kierować rzeczywiste żądania klientów. Należy zauważyć, że ze względu na to, że od drzwi do przodu jest globalnie wiele środowisk brzegowych, sonda kondycji żąda dużej ilości danych, jak wiele żądań na sekundę zależy od skonfigurowanej częstotliwości sondowania kondycji. 
+
 
 
 ## <a name="supported-protocols"></a>Obsługiwane protokoły
 
-Drzwiami frontowymi obsługuje sondy do wysyłania za pośrednictwem protokołów HTTP lub HTTPS. Te sondy są wysyłane przy użyciu tych samych portów TCP co skonfigurowane na potrzeby routingu żądań klientów i nie można ich zmienić.
+Drzwi tylne obsługują wysyłanie sond za pośrednictwem protokołów HTTP i HTTPS. Te sondy są wysyłane przy użyciu tych samych portów TCP co skonfigurowane na potrzeby routingu żądań klientów i nie można ich zmienić.
 
-## <a name="health-probe-responses"></a>Odpowiedzi sond kondycji
+## <a name="health-probe-responses"></a>Odpowiedzi sondy kondycji
 
 | Responses  | Opis | 
 | ------------- | ------------- |
-| Określanie kondycji  |  Kod stanu 200 OK wskazuje, że wewnętrznej bazy danych jest w dobrej kondycji. Cała reszta jest uznawany za błąd. Jeśli z jakiegokolwiek powodu (łącznie z awarii sieci) prawidłową odpowiedź HTTP nie została odebrana sondowania, sondy jest traktowana jako błąd.|
-| Pomiary opóźnienia  | Opóźnienie to czas zegarowy mierzony od momentu bezpośrednio przed wykonaniem możemy wysłać do momentu, gdy firma Microsoft otrzyma ostatniego bajtu odpowiedzi na żądania sondowania. Używamy nowego połączenia protokołu TCP dla każdego żądania, więc ten pomiar nie jest ukierunkowane zaplecza przy użyciu istniejących połączeń bez wyłączania zasilania.  |
+| Określanie kondycji  |  Kod stanu 200 OK wskazuje, że zaplecze jest w dobrej kondycji. Wszystko inne jest uznawane za niepowodzenie. Jeśli z jakiegoś powodu (w tym awarii sieci) nie odebrano prawidłowej odpowiedzi HTTP dla sondy, sonda jest traktowana jako błąd.|
+| Pomiar opóźnienia  | Opóźnienie to czas zegara ściany mierzony od momentu natychmiast po wysłaniu żądania sondy do momentu otrzymania ostatniego bajtu odpowiedzi. Dla każdego żądania używane jest nowe połączenie TCP, więc pomiary nie są wliczane do zachodzących istniejących połączeń ciepłej.  |
 
-## <a name="how-front-door-determines-backend-health"></a>Jak drzwiami frontowymi określa kondycję wewnętrznej bazy danych
+## <a name="how-front-door-determines-backend-health"></a>Jak drzwi z przodu określają kondycję zaplecza
 
-Usługa drzwiami frontowymi używa tego samego trzy kroki proces poniżej wszystkich algorytmów w celu ustalenia kondycji.
+Usługa frontonu platformy Azure używa tego samego dwuetapowego procesu dla wszystkich algorytmów w celu określenia kondycji.
 
-1. Wyklucz wyłączone zaplecza.
+1. Wyklucz wyłączone punkty końcowe.
 
-2. Wyklucz zapleczy, które mają błędy sondy kondycji:
-    * Zaznacz to pole wyboru jest wykonywane przez spojrzenie na ostatnich _n_ odpowiedzi sond kondycji. Jeśli co najmniej _x_ są w dobrej kondycji, wewnętrznej bazy danych jest uznawany za dobrej kondycji.
+2. Wyklucz nadkończenie, które mają Błędy sond kondycji:
+    * Aby to zrobić, należy przejrzeć odpowiedzi z ostatnich _n_ sondy kondycji. Jeśli co najmniej _x_ jest w dobrej kondycji, zaplecze jest traktowana jako dobra kondycja.
 
-    * _n_ jest skonfigurowany, zmieniając właściwość SampleSize ustawienia równoważenia obciążenia.
+    * _n_ jest skonfigurowany przez zmianę właściwości SampleSize w ustawieniach równoważenia obciążenia.
 
-    * _x_ jest skonfigurowany, zmieniając właściwość SuccessfulSamplesRequired ustawienia równoważenia obciążenia.
+    * wartość _x_ jest konfigurowana przez zmianę właściwości SuccessfulSamplesRequired w ustawieniach równoważenia obciążenia.
 
-3. Poza zestaw dobrej kondycji zaplecza w puli zaplecza drzwiami frontowymi dodatkowo miary i przechowuje czas oczekiwania (czas błądzenia) dla poszczególnych pól zaplecza.
+3. Poza zestawem nieprawidłowych punktów końcowych w puli zaplecza z przodu są dodatkowo stosowane i utrzymywane opóźnienie (czas błądzenia) dla każdego zaplecza.
 
 
-## <a name="complete-health-probe-failure"></a>Awaria sondy kondycji ukończone
+## <a name="complete-health-probe-failure"></a>Ukończ błąd sondy kondycji
 
-W przypadku awarii sond kondycji każdego zaplecza w puli zaplecza, drzwiami frontowymi uwzględnia wszystkie zaplecza dobrej kondycji i kieruje ruchem w dystrybucji działanie okrężne we wszystkich z nich.
+Jeśli sondy kondycji dla każdego zaplecza w puli zaplecza nie powiedzie się, a następnie drzwi przede wszystkim są w dobrej kondycji i przekierowują ruch w ramach rozkładu okrężnego między wszystkimi nimi.
 
-Gdy dowolnego zaplecza powróci do stanu dobrej kondycji, drzwiami frontowymi wznowi normalne algorytm równoważenia obciążenia.
+Gdy dowolna zaplecze powróci do stanu dobrej kondycji, następnie drzwi do przodu spowodują wznowienie normalnego algorytmu równoważenia obciążenia.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, jak [utworzyć usługę Front Door](quickstart-create-front-door.md).
 - Dowiedz się, [jak działa usługa Front Door](front-door-routing-architecture.md).

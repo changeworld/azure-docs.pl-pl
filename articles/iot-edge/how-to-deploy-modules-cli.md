@@ -10,12 +10,12 @@ ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: edcde083934bb454f62ce3dd55c026138ad8fcca
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: fe947dbb7effde7bfa4f0b9824c6af645c85691c
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797675"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840193"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Wdrożyć moduły usługi Azure IoT Edge przy użyciu wiersza polecenia platformy Azure
 
@@ -73,7 +73,7 @@ Poniżej przedstawiono manifestu podstawowego wdrożenia za pomocą jednego modu
              }
            },
            "modules": {
-             "tempSensor": {
+             "SimulatedTemperatureSensor": {
                "version": "1.0",
                "type": "docker",
                "status": "running",
@@ -97,7 +97,7 @@ Poniżej przedstawiono manifestu podstawowego wdrożenia za pomocą jednego modu
            }
          }
        },
-       "tempSensor": {
+       "SimulatedTemperatureSensor": {
          "properties.desired": {}
        }
      }
@@ -108,7 +108,7 @@ Poniżej przedstawiono manifestu podstawowego wdrożenia za pomocą jednego modu
 
 Możesz wdrożyć moduły do Twojego urządzenia, stosując manifestu wdrażania, który został skonfigurowany z informacjami o module.
 
-Przejdź do folderu, w którym jest zapisany manifest wdrożenia. Jeśli używasz jednego z szablonów program VS Code IoT Edge, użyj `deployment.json` w pliku **config** folder katalogu rozwiązania i nie `deployment.template.json` pliku.
+Przejdź do folderu, w którym jest zapisany manifest wdrożenia. Jeśli użyto jednego z szablonów vs Code IoT Edge, użyj `deployment.json` pliku w folderze **konfiguracyjnym** `deployment.template.json` katalogu rozwiązania, a nie pliku.
 
 Aby zastosować konfigurację do urządzenia usługi IoT Edge, użyj następującego polecenia:
 

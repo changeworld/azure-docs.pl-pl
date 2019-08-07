@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: bbbec680cd2575cc63761c9fbe1335d548ec4d3b
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: ed7e53570127f12dbe41932481a3286a78865dde
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640787"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828279"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>Macierz obsługi dotycząca oceny i migracji środowiska VMware
 
@@ -42,8 +42,12 @@ W tabeli zestawiono obsługiwane scenariusze dotyczące maszyn wirtualnych VMwar
 **Lokalizacja geograficzna** | **Lokalizacja magazynu metadanych**
 --- | ---
 Azure Government | Administracja USA — Wirginia
-Azja i Pacyfik | Azja Południowo-Wschodnia lub Azja Wschodnia
-Europa | Europa Południowa lub Europa Zachodnia
+Azja i Pacyfik | Azja Wschodnia lub Azja Południowo-Wschodnia
+Australia | Australia Wschodnia lub Australia Południowo-Wschodnia
+Kanada | Kanada środkowa lub Kanada Wschodnia
+Europa | Europa Północna lub Europa Zachodnia
+Indie | Indie Środkowe lub Indie Południowe
+Japonia |  Japonia Wschodnia lub Japonia Zachodnia
 Zjednoczone Królestwo | Południowe Zjednoczone Królestwo lub Zachodnie Zjednoczone Królestwo
 Stany Zjednoczone | Środkowe stany USA lub zachodnie stany USA 2
 
@@ -70,7 +74,7 @@ Urządzenie Azure Migrate dla oprogramowania VMware zostanie wdrożone przy uży
 
 **Pomoc techniczna** | **Szczegóły**
 --- | ---
-**vCenter Server** | Musisz mieć wystarczającą ilość zasobów na vCenter Server, aby przydzielić maszynę wirtualną z 32 GB pamięci, 4 procesorów wirtualnych vCPU i zewnętrznym przełącznikiem wirtualnym.<br/><br/> Urządzenie wymaga dostępu do Internetu, bezpośrednio lub za pomocą serwera proxy.
+**vCenter Server** | Musisz mieć wystarczającą ilość zasobów na vCenter Server, aby przydzielić maszynę wirtualną z 32 GB pamięci RAM, 8 procesorów wirtualnych vCPU i zewnętrznym przełącznikiem wirtualnym.<br/><br/> Urządzenie wymaga dostępu do Internetu, bezpośrednio lub za pomocą serwera proxy.
 **ESXi** | Maszynę wirtualną urządzenia należy wdrożyć na hoście ESXi z systemem w wersji 5,5 lub nowszej.
 **Projekt Azure Migrate** | Urządzenie może być skojarzone z pojedynczym projektem.
 **vCenter Server** | Urządzenie może wykryć do 10 000 maszyn wirtualnych VMware na vCenter Server.<br/> Urządzenie może połączyć się z jednym vCenter Server.
@@ -78,7 +82,7 @@ Urządzenie Azure Migrate dla oprogramowania VMware zostanie wdrożone przy uży
 
 ## <a name="assessment-url-access-requirements"></a>Ocena — wymagania dotyczące dostępu do adresów URL
 
-Urządzenie Azure Migrate wymaga połączenia z Internetem za pośrednictwem Internetu.
+Urządzenie Azure Migrate wymaga połączenia z Internetem.
 
 - Podczas wdrażania urządzenia Azure Migrate sprawdza połączenie adresów URL, które zostały podsumowane w poniższej tabeli.
 - Jeśli używasz serwera proxy opartego na adresie URL do łączenia się z Internetem, Zezwól na dostęp do tych adresów URL, upewniając się, że serwer proxy rozpoznaje wszystkie rekordy CNAME otrzymane podczas wyszukiwania adresów URL.

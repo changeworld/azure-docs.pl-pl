@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie tokeny (Microsoft Authentication Library) | Azure
-description: Więcej informacji na temat uzyskiwania i buforowanie tokenów przy użyciu Microsoft Authentication Library (MSAL).
+title: Zarządzanie tokenami (Biblioteka uwierzytelniania firmy Microsoft) | Azure
+description: Dowiedz się więcej o uzyskiwaniu i buforowaniu tokenów przy użyciu biblioteki uwierzytelniania firmy Microsoft (MSAL).
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -9,7 +9,7 @@ editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/24/2019
@@ -17,89 +17,89 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ca011ec7185b084de6d1d346556c1c270c7aee3
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: e6148f6f9d449dc5aa55da2f041119a8b706491b
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546090"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835101"
 ---
-# <a name="acquiring-and-caching-tokens-using-msal"></a>Pobieranie i buforowanie tokenów z zastosowaniem biblioteki MSAL
-[Tokeny dostępu](access-tokens.md) umożliwić klientom bezpiecznie wywoływać interfejsy API chronionej przez platformę Azure w sieci web. Istnieje wiele sposobów, aby uzyskać token za pomocą usługi Microsoft Authentication Library (MSAL). Niektóre sposoby wymaga interakcji użytkownika za pośrednictwem przeglądarki sieci web. Niektóre nie wymagają żadnych interakcji użytkownika. Ogólnie rzecz biorąc sposób, aby uzyskać token zależy od Jeśli aplikacja jest aplikacją kliencką publiczny (komputerze lub urządzeniu przenośnym aplikacja) lub poufne klienta aplikacji (aplikacje demona aplikacja sieci Web i interfejsów API, takim jak usługa Windows).
+# <a name="acquiring-and-caching-tokens-using-msal"></a>Pobieranie i buforowanie tokenów przy użyciu MSAL
+[Tokeny dostępu](access-tokens.md) umożliwiają klientom bezpieczne wywoływanie interfejsów API sieci Web chronionych przez platformę Azure. Istnieje wiele sposobów uzyskania tokenu przy użyciu biblioteki uwierzytelniania firmy Microsoft (MSAL). Niektóre sposoby wymagają interakcji z użytkownikami za pomocą przeglądarki sieci Web. Niektóre nie wymagają interakcji z użytkownikiem. Ogólnie rzecz biorąc, sposób uzyskania tokenu zależy od tego, czy aplikacja to publiczna aplikacja kliencka (aplikacja klasyczna lub mobilna), czy poufna aplikacja kliencka (aplikacja sieci Web, internetowy interfejs API lub aplikacja demona, taka jak usługa systemu Windows).
 
-Biblioteka MSAL buforuje token po został nabyty.  Kod aplikacji, należy spróbować uzyskać token dyskretnie (z pamięci podręcznej), najpierw przed pobierania tokenu w inny sposób.
+MSAL buforuje token po jego uzyskaniu.  Kod aplikacji powinien próbować uzyskać token dyskretnie (z pamięci podręcznej), najpierw przed uzyskaniem tokenu przy użyciu innych metod.
 
-Można także wyczyścić pamięci podręcznej tokenu, który jest osiągane poprzez usunięcie konta z pamięci podręcznej. Plik cookie sesji, który znajduje się w przeglądarce, jednak nie powoduje usunięcia.
+Można również wyczyścić pamięć podręczną tokenów, która jest osiągana przez usunięcie kont z pamięci podręcznej. Nie spowoduje to usunięcia pliku cookie sesji, który znajduje się w przeglądarce.
 
 ## <a name="scopes-when-acquiring-tokens"></a>Zakresy podczas uzyskiwania tokenów
-[Zakresy](v2-permissions-and-consent.md) są uprawnienia, które uwidacznia interfejs API sieci web dla aplikacji klienckich zażądać dostępu do. Aplikacje klienckie żądanie zgody użytkownika na te zakresy, podczas wprowadzania żądań uwierzytelnienia do uzyskania tokenów dostępu do interfejsów API sieci web. Biblioteka MSAL pozwala uzyskiwać tokeny dostępu do usługi Azure AD dla deweloperów (1.0) i platforma tożsamości firmy Microsoft (w wersji 2.0), interfejsów API. Protokół v2.0 używa zakresów zamiast resource w żądaniach. Aby uzyskać więcej informacji, przeczytaj [porównanie w wersji 1.0 i 2.0](active-directory-v2-compare.md). Na podstawie konfiguracji internetowego interfejsu API w wersji tokenu, który przyjmuje punktu końcowego v2.0 zwraca token dostępu do biblioteki MSAL.
+[Zakresy](v2-permissions-and-consent.md) są uprawnieniami udostępnianymi przez interfejs API sieci Web dla aplikacji klienckich w celu żądania dostępu do programu. Aplikacje klienckie żądają zgody użytkownika na te zakresy podczas wykonywania żądań uwierzytelniania w celu uzyskania dostępu do interfejsów API sieci Web. MSAL umożliwia uzyskanie tokenów dostępu do usługi Azure AD dla deweloperów (v 1.0) i Microsoft Identity platform (v 2.0). Protokół v 2.0 używa zakresów zamiast zasobów w żądaniach. Więcej informacji można znaleźć w artykule [porównanie wersji 1.0 i 2.0](active-directory-v2-compare.md). W oparciu o konfigurację internetowego interfejsu API akceptowaną przez tę wersję tokenu punkt końcowy v 2.0 zwraca token dostępu do MSAL.
 
-Liczba MSAL uzyskania tokenu metody wymagają *zakresy* parametru. Ten parametr jest prostą listę ciągów, które deklarują żądane uprawnienia i zasoby, które są wymagane. Dobrze znane zakresy są [uprawnienia usługi Microsoft Graph](/graph/permissions-reference).
+Szereg metod uzyskiwania tokenów MSAL wymaga parametru *Scopes* . Ten parametr jest prostą listą ciągów, które deklarują żądane uprawnienia i żądane zasoby. Dobrze znane zakresy są [uprawnieniami Microsoft Graph](/graph/permissions-reference).
 
-Jest również możliwe MSAL dostęp do zasobów w wersji 1.0. Aby uzyskać więcej informacji, przeczytaj [zakresów dla aplikacji w wersji 1.0](msal-v1-app-scopes.md).
+Możliwe jest również, że w MSAL dostęp do zasobów w wersji 1.0. Aby uzyskać więcej informacji, Przeczytaj [zakresy dla aplikacji w wersji 1.0](msal-v1-app-scopes.md).
 
-### <a name="request-specific-scopes-for-a-web-api"></a>Żądanie określonych zakresów dla internetowego interfejsu API
-Gdy aplikacja musi żądać tokenów przy użyciu określonych uprawnień do zasobów interfejsu API, musisz przekazać zakresy zawierający identyfikator URI interfejsu API w poniższego formatu:  *&lt;identyfikator URI&gt; / &lt;zakresu&gt;*
+### <a name="request-specific-scopes-for-a-web-api"></a>Żądaj określonych zakresów dla internetowego interfejsu API
+Gdy aplikacja musi zażądać tokenów z określonymi uprawnieniami dla interfejsu API zasobów, należy przekazać zakresy zawierające identyfikator URI aplikacji interfejsu API w następującym formacie:  *&lt;&gt;/&lt;zakres identyfikatorów URI aplikacji&gt;*
 
-Na przykład zakresy dla interfejsu API Microsoft Graph: `https://graph.microsoft.com/User.Read`
+Na przykład zakresy interfejsu API Microsoft Graph:`https://graph.microsoft.com/User.Read`
 
-Lub, na przykład zakres dla niestandardowego interfejsu API sieci web: `api://abscdefgh-1234-abcd-efgh-1234567890/api.read`
+Lub na przykład zakresy niestandardowego interfejsu API sieci Web:`api://abscdefgh-1234-abcd-efgh-1234567890/api.read`
 
-Dla interfejsu API Microsoft Graph, tylko wartość zakresu `user.read` mapuje `https://graph.microsoft.com/User.Read` sformatowanie i mogą być używane zamiennie.
+W przypadku interfejsu API Microsoft Graph tylko wartości `user.read` zakresu są mapowane na `https://graph.microsoft.com/User.Read` format i mogą być używane zamiennie.
 
 > [!NOTE]
-> Niektóre interfejsy API, np. interfejsu API usługi Azure Resource Manager w sieci web (https://management.core.windows.net/) oczekiwać końcowe "/" w grupie odbiorców tokenu dostępu oświadczenia (aud). W takim przypadku należy przekazać zakresu jako https://management.core.windows.net//user_impersonation (Uwaga podwójny ukośnik), aby token był prawidłowy w interfejsie API.
+> Niektóre interfejsy API sieci Web, takie jak https://management.core.windows.net/) Azure Resource Manager API (oczekiwano znaku końcowego "/" w ramach żądania odbiorców (AUD) tokenu dostępu. W takim przypadku ważne jest przekazanie zakresu jako https://management.core.windows.net//user_impersonation (należy pamiętać o podwójnym ukośniku), aby token był prawidłowy w interfejsie API.
 
-### <a name="request-dynamic-scopes-for-incremental-consent"></a>Zakresy dynamiczne żądania o zgodę przyrostowe
-Podczas tworzenia aplikacji przy użyciu v1.0, trzeba było zarejestrować pełnego zestawu uprawnień (zakresy statyczne) wymagany przez aplikację dla użytkownika o zgodę podczas logowania. W wersji 2.0 można uzyskać dodatkowe uprawnienia, stosownie do potrzeb, przy użyciu parametru zakresu. Te są nazywane dynamiczne zakresy i umożliwia użytkownikowi przyrostowe zgody do zakresów.
+### <a name="request-dynamic-scopes-for-incremental-consent"></a>Żądaj zakresów dynamicznych na potrzeby przyrostowej zgody
+Podczas kompilowania aplikacji przy użyciu wersji 1.0, należy zarejestrować pełen zestaw uprawnień (zakresy statyczne) wymagane przez aplikację, aby użytkownik mógł wyrazić zgodę w czasie logowania. W wersji 2.0 można zażądać dodatkowych uprawnień zgodnie z wymaganiami przy użyciu parametru scope. Są one nazywane zakresami dynamicznymi i umożliwiają użytkownikowi zapewnienie przyrostowej zgody na zakresy.
 
-Na przykład można początkowo loguje użytkownika i je zablokować dostępu żadnego rodzaju. Później można nadać im możliwość odczytu kalendarza użytkownika przez zażądanie zakresu kalendarza w metodach tokenu nabywania i uzyskać zgodę użytkownika.
+Na przykład możesz początkowo zalogować użytkownika i odmówić im dowolnego rodzaju dostępu. Później można dać im możliwość odczytywania kalendarza użytkownika przez zażądanie zakresu kalendarza w metodach uzyskiwania tokenu i uzyskanie zgody użytkownika.
 
-Na przykład: `https://graph.microsoft.com/User.Read` i `https://graph.microsoft.com/Calendar.Read`
+Na przykład: `https://graph.microsoft.com/User.Read` i`https://graph.microsoft.com/Calendar.Read`
 
-## <a name="acquiring-tokens-silently-from-the-cache"></a>Pobieranie tokenów w trybie dyskretnym (z pamięci podręcznej)
-Biblioteka MSAL zachowuje pamięć podręczną tokenu (lub dwóch pamięci podręczne dla aplikacji zawierających poufne dane klienta) i buforuje token po został pozyskany.  W wielu przypadkach próby dyskretnie uzyskać token zostanie uzyskać inny token za pomocą więcej zakresów, na podstawie tokenów w pamięci podręcznej. Istnieje również możliwość odświeżanie tokenu, gdy będzie niedługo wygaśnie (zgodnie z pamięci podręcznej tokenu zawiera także tokenu odświeżania).
+## <a name="acquiring-tokens-silently-from-the-cache"></a>Uzyskiwanie tokenów dyskretnie (z pamięci podręcznej)
+MSAL przechowuje pamięć podręczną tokenów (lub dwie pamięci podręczne dla poufnych aplikacji klienckich) i buforuje token po jego uzyskaniu.  W wielu przypadkach próba dyskretnego pobrania tokenu spowoduje uzyskanie innego tokenu z większą liczbą zakresów na podstawie tokenu w pamięci podręcznej. Istnieje również możliwość odświeżenia tokenu, gdy zbliża się do wygaśnięcia (ponieważ pamięć podręczna tokenów zawiera również token odświeżania).
 
-### <a name="recommended-call-pattern-for-public-client-applications"></a>Zalecane wywołanie wzorców aplikacji publicznych klienta
-Kod aplikacji, należy spróbować uzyskać token w trybie dyskretnym (z pamięci podręcznej), najpierw.  Jeśli wywołanie metody zwraca błąd "Required interfejsu użytkownika" lub wyjątku, spróbuj pobierania tokenu w inny sposób. 
+### <a name="recommended-call-pattern-for-public-client-applications"></a>Zalecany wzorzec wywołań dla publicznych aplikacji klienckich
+Kod aplikacji powinien próbować uzyskać token dyskretnie (z pamięci podręcznej), najpierw.  Jeśli wywołanie metody zwraca błąd lub wyjątek "wymagany interfejs użytkownika", spróbuj uzyskać token w inny sposób. 
 
-Istnieją dwa przepływów, przed którym zostanie **nie powinien** próba uzyskania dyskretnie tokenu:
+Jednak istnieją dwa przepływy, przed którymi **nie należy** próbować dyskretnie uzyskać tokenu:
 
-- [Przepływ poświadczeń klienta](msal-authentication-flows.md#client-credentials), która nie korzysta z pamięci podręcznej tokenu użytkownika, ale token pamięci podręcznej aplikacji. Ta metoda zajmuje się weryfikowanie tej pamięci podręcznej do tokenu aplikacji przed wysłaniem żądania do usługi STS.
-- [Przepływ kodu autoryzacji](msal-authentication-flows.md#authorization-code) w aplikacji sieci Web, ponieważ umarza kod, który aplikacja stało się przez użytkownika logowania i konieczności ich zgody na więcej zakresów. Ponieważ kod jest przekazywany jako parametr, a nie kontem, metoda nie może wyglądać w pamięci podręcznej przed zrealizowaniem kod, który wymaga mimo to, wywołanie usługi.
+- [przepływ poświadczeń klienta](msal-authentication-flows.md#client-credentials), który nie korzysta z pamięci podręcznej tokenów użytkownika, ale pamięci podręcznej tokenu aplikacji. Ta metoda polega na sprawdzeniu poprawności tej pamięci podręcznej token aplikacji przed wysłaniem żądania do usługi STS.
+- [przepływ kodu autoryzacji](msal-authentication-flows.md#authorization-code) w Web Apps, ponieważ realizuje kod, który aplikacja otrzymała po zalogowaniu się użytkownika i wyraża zgodę na więcej zakresów. Ponieważ kod jest przekazaniem jako parametr, a nie na koncie, metoda nie może wyszukać w pamięci podręcznej przed zrealizowaniem kodu, który wymaga, pomimo, wywołania usługi.
 
-### <a name="recommended-call-pattern-in-web-apps-using-the-authorization-code-flow"></a>Zalecany wzorzec rozmowy w aplikacji sieci Web przy użyciu przepływu kodu autoryzacji 
-Dla aplikacji sieci Web, które używają [przepływ kodu autoryzacji protokołu OpenID Connect](v2-protocols-oidc.md), jest zalecany wzorzec w kontrolerów:
+### <a name="recommended-call-pattern-in-web-apps-using-the-authorization-code-flow"></a>Zalecany wzorzec wywołań w Web Apps przy użyciu przepływu kodu autoryzacji 
+W przypadku aplikacji sieci Web, które używają [przepływu kodu autoryzacji OpenID Connect Connect](v2-protocols-oidc.md), zalecanym wzorcem w kontrolerach jest:
 
-- Tworzy aplikację kliencką zawierających poufne dane z pamięci podręcznej tokenu przy użyciu dostosowanych serializacji. 
-- Uzyskanie tokenu przy użyciu przepływ kodu autoryzacji
+- Utwórz wystąpienie poufnej aplikacji klienckiej z pamięcią podręczną tokenów z dostosowaną serializacji. 
+- Uzyskiwanie tokenu przy użyciu przepływu kodu autoryzacji
 
 ## <a name="acquiring-tokens"></a>Uzyskiwanie tokenów
-Ogólnie rzecz biorąc sposób pobierania tokenu zależy od tego, czy jest klientem publicznym lub poufne klienta aplikacji.
+Ogólnie rzecz biorąc, metoda uzyskiwania tokenu zależy od tego, czy jest to klient publiczny, czy poufna aplikacja kliencka.
 
-### <a name="public-client-applications"></a>Aplikacje klienckie publiczne
-Dla aplikacji klienckich publiczny (komputerze lub urządzeniu przenośnym aplikacja) możesz:
-- Często uzyskać tokeny interaktywnie użytkownika, zaloguj się za pośrednictwem interfejsu użytkownika lub okna podręcznego.
-- Można [uzyskać token w trybie dyskretnym dla zalogowanego użytkownika](msal-authentication-flows.md#integrated-windows-authentication) przy użyciu zintegrowanego uwierzytelniania Windows (IWA/Kerberos), jeśli aplikacja jest uruchomiona na komputerze Windows przyłączone do domeny lub na platformie Azure.
-- Można [pobrać tokenu przy użyciu nazwy użytkownika i hasła](msal-authentication-flows.md#usernamepassword) w klienta pulpitu programu .NET framework aplikacje, ale nie jest zalecane. Nie należy używać w aplikacjach klienckich poufne nazwy użytkownika i hasła.
-- Można pobrać tokenu za pośrednictwem [przepływ kodu urządzenia](msal-authentication-flows.md#device-code) w aplikacje działające na urządzeniach, które nie zawierają przeglądarki sieci web. Użytkownik otrzymuje adres URL i kod, który następnie przechodzi do przeglądarki sieci web na innym urządzeniu i wprowadza kod i loguje się.  Następnie usługa Azure AD wysyła token z powrotem do urządzenia bez przeglądarki.
+### <a name="public-client-applications"></a>Publiczne aplikacje klienckie
+W przypadku publicznych aplikacji klienckich (aplikacji klasycznej lub mobilnej):
+- Często uzyskuje tokeny interaktywnie, gdy użytkownik loguje się za pomocą interfejsu użytkownika lub okna podręcznego.
+- Program może [uzyskać token dyskretny dla zalogowanego użytkownika](msal-authentication-flows.md#integrated-windows-authentication) przy użyciu zintegrowanego uwierzytelniania systemu Windows (IWA/Kerberos), jeśli aplikacja klasyczna jest uruchomiona na komputerze z systemem Windows przyłączonym do domeny lub na platformie Azure.
+- Program może [uzyskać token z nazwą użytkownika i hasłem](msal-authentication-flows.md#usernamepassword) w aplikacjach klienckich programu .NET Framework Desktop, ale nie jest to zalecane. Nie używaj nazwy użytkownika/hasła w poufnych aplikacjach klienckich.
+- Może uzyskać token za pomocą [przepływu kodu urządzenia](msal-authentication-flows.md#device-code) w aplikacjach działających na urządzeniach, które nie mają przeglądarki sieci Web. Użytkownik otrzymuje adres URL i kod, który następnie przechodzi do przeglądarki sieci Web na innym urządzeniu i wprowadza kod i loguje się.  Usługa Azure AD następnie wysyła token z powrotem do urządzenia bez przeglądarki.
 
-### <a name="confidential-client-applications"></a>Aplikacje poufne klienta 
-Poufne klienta aplikacji (aplikacji sieci Web, interfejs API sieci Web lub demona aplikacja takim jak usługa Windows) możesz:
-- Uzyskiwanie tokenów **samej aplikacji** , a nie dla użytkownika, za pomocą [przepływ poświadczeń klienta](msal-authentication-flows.md#client-credentials). Może to służyć do synchronizacji narzędzia lub narzędzia przetwarzające ogólnie rzecz biorąc użytkowników i określonego użytkownika. 
-- Użyj [przepływu w imieniu z](msal-authentication-flows.md#on-behalf-of) dla internetowego interfejsu API, aby wywołać interfejs API w imieniu użytkownika. Aplikacja jest identyfikowany przy użyciu poświadczeń klienta w celu uzyskania tokenu, w oparciu o użytkownika potwierdzenia (języka SAML na przykład lub JWT token). Ten przepływ jest używany przez aplikacje, które muszą uzyskać dostęp do zasobów określonego użytkownika w wywołaniach do usługi.
-- Uzyskiwanie tokenów przy użyciu [przepływ kodu autoryzacji](msal-authentication-flows.md#authorization-code) w aplikacjach sieci web po użytkownik loguje się za pośrednictwem autoryzację adres URL żądania. OpenID Connect aplikacji zwykle użyć to mechanizm, który informuje użytkownika, którego zalogować się przy użyciu Open ID connect, a następnie dostęp do internetowych interfejsów API w imieniu użytkownika.
+### <a name="confidential-client-applications"></a>Poufne aplikacje klienckie 
+W przypadku poufnych aplikacji klienckich (aplikacji sieci Web, internetowego interfejsu API lub aplikacji demona, takich jak usługa systemu Windows):
+- Uzyskaj tokeny **dla samej aplikacji** , a nie dla użytkownika, przy użyciu [przepływu poświadczeń klienta](msal-authentication-flows.md#client-credentials). Może to służyć do synchronizowania narzędzi lub narzędzi, które przetwarzają użytkowników ogólnie, a nie do określonego użytkownika. 
+- Użyj [przepływu w imieniu](msal-authentication-flows.md#on-behalf-of) interfejsu API sieci Web, aby wywołać interfejs API w imieniu użytkownika. Aplikacja jest identyfikowana przy użyciu poświadczeń klienta w celu uzyskania tokenu na podstawie potwierdzenia użytkownika (na przykład lub tokenu JWT). Ten przepływ jest używany przez aplikacje, które muszą uzyskać dostęp do zasobów określonego użytkownika w ramach wywołań między usługami.
+- Uzyskuj tokeny przy użyciu [przepływu kodu autoryzacji](msal-authentication-flows.md#authorization-code) w usłudze Web Apps po zalogowaniu się użytkownika za pośrednictwem adresu URL żądania autoryzacji. Aplikacja OpenID Connect Connect zazwyczaj używa tego mechanizmu, który umożliwia użytkownikowi Logowanie przy użyciu funkcji Open ID Connect, a następnie dostęp do internetowych interfejsów API w imieniu użytkownika.
 
 
 ## <a name="authentication-results"></a>Wyniki uwierzytelniania 
-Gdy klient żąda tokenu dostępu, usługa Azure AD również zwraca wynik uwierzytelniania, który zawiera niektóre metadane dotyczące tokenu dostępu. Informacje te obejmują czas wygaśnięcia tokenu dostępu i zakresy, dla których jest on prawidłowy. Te dane umożliwia aplikacji, aby wykonać inteligentne buforowanie tokenów dostępu, bez konieczności przeanalizować tokenu dostępu, sama.  Przedstawia wynik uwierzytelniania:
+Gdy klient zażąda tokenu dostępu, usługa Azure AD zwraca również wynik uwierzytelniania, który zawiera metadane dotyczące tokenu dostępu. Te informacje obejmują czas wygaśnięcia tokenu dostępu i zakresy, dla których jest on prawidłowy. Te dane umożliwiają aplikacji inteligentne buforowanie tokenów dostępu bez konieczności analizowania samego tokenu dostępu.  Wynik uwierzytelniania ujawnia:
 
-- [Token dostępu](access-tokens.md) dla internetowego interfejsu API dostępu do zasobów. Jest to ciąg, zwykle JWT zakodowany w formacie base64, ale klient nigdy nie powinien wyglądać w tokenie dostępu. Format nie jest gwarantowana pozostaną niezmienione i mogą być szyfrowane dla zasobu. Osoby pisanie kodu w zależności od zawartości tokenu dostępu na komputerze klienckim jest jednym z największych źródeł błędów i podziałów logiki klienta.
-- [Tokenu Identyfikacyjnego](id-tokens.md) dla użytkownika (jest to token JWT).
-- Wygaśnięcie tokenu, która informuje o tym data/godzina, po wygaśnięciu ważności tokenu.
-- Identyfikator dzierżawy zawiera dzierżawy, w którym użytkownik został znaleziony. Dla użytkowników-gości (scenariusze B2B usługi Azure AD) identyfikator dzierżawy jest dzierżawy gościa, a nie unikatowy dzierżawy. Gdy token jest dostarczany w imieniu użytkownika, wynik uwierzytelniania zawiera także informacje o tym użytkowniku. Poufne klienta przepływów, w których tokeny są żądane bez użytkownika (w przypadku aplikacji) te informacje użytkownika ma wartość null.
+- [Token dostępu](access-tokens.md) dla internetowego interfejsu API do uzyskiwania dostępu do zasobów. Jest to ciąg, zazwyczaj szyfrowany przy użyciu algorytmu Base64, ale klient nigdy nie powinien być widoczny w tokenie dostępu. Format nie jest gwarantowany, aby pozostały stabilny i można go było zaszyfrować dla zasobu. Osoby piszące kod w zależności od zawartości tokenu dostępu na kliencie są jednym z największych źródeł błędów i podziałów logiki klienta.
+- [Identyfikator tokenu](id-tokens.md) dla użytkownika (jest to token JWT).
+- Wygaśnięcie tokenu, które informuje datę i godzinę wygaśnięcia tokenu.
+- Identyfikator dzierżawy zawiera dzierżawcę, w którym znaleziono użytkownika. Dla użytkowników-Gości (scenariusze B2B usługi Azure AD) identyfikator dzierżawy jest dzierżawcą gościa, a nie z unikatowym dzierżawcą. Po dostarczeniu tokenu w nazwie użytkownika wynik uwierzytelniania zawiera również informacje o tym użytkowniku. W przypadku poufnych przepływów klientów, w których tokeny są żądane bez użytkownika (dla aplikacji), informacje o użytkowniku mają wartość null.
 - Zakresy, dla których token został wystawiony.
-- Unikatowy identyfikator dla użytkownika.
+- Unikatowy identyfikator użytkownika.
 
-## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się więcej o [Obsługa błędów i wyjątków](msal-handling-exceptions.md). 
+## <a name="next-steps"></a>Następne kroki
+Dowiedz się więcej na temat [obsługi błędów i wyjątków](msal-handling-exceptions.md). 

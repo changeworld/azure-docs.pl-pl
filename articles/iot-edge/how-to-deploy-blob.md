@@ -9,12 +9,12 @@ ms.service: iot-edge
 ms.custom: seodec18
 ms.reviewer: arduppal
 manager: mchad
-ms.openlocfilehash: 4511510dec6f488e1a6ea9a6842b771d2a298fec
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 86040020c8f9163a327b2029008e3648723b14ec
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640678"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839690"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Wdrażanie Blob Storage platformy Azure w module IoT Edge na urządzeniu
 
@@ -168,7 +168,7 @@ Usługa Azure IoT Edge zapewnia szablony programu Visual Studio Code, aby pomóc
 
 1. Otwórz *deployment.template.json* nowy obszar roboczy rozwiązania i Znajdź **modułów** sekcji. Wprowadź następujące zmiany w konfiguracji:
 
-   1. Usuń **tempSensor** modułu, ponieważ nie użytkownika wymaganych dla tego wdrożenia.
+   1. Usuń moduł **SimulatedTemperatureSensor** , ponieważ nie jest to konieczne w przypadku tego wdrożenia.
 
    1. Skopiuj i wklej następujący kod do `createOptions` pola:
 
@@ -238,7 +238,7 @@ Usługa Azure IoT Edge zapewnia szablony programu Visual Studio Code, aby pomóc
 
 Jeśli chcesz wdrożyć wiele wystąpień BLOB Storage platformy Azure w module IoT Edge, musisz podać inną ścieżkę magazynu i zmienić `HostPort` wartość, z którą jest powiązany moduł. Moduły magazynu obiektów blob jest zawsze udostępniania portów 11002 w kontenerze, ale można zadeklarować port, który jest powiązany z na hoście.
 
-Edytuj **Opcje tworzenia kontenera** (w Azure Portal) lub **w polu "** w pliku *Deployment. Template. JSON* w `HostPort` Visual Studio Code), aby zmienić wartość:
+Edytuj **Opcje tworzenia kontenera** (w Azure Portal) lub w polu "w pliku *Deployment. Template. JSON* w `HostPort` Visual Studio Code), aby zmienić wartość:
 
 ```json
 "PortBindings":{

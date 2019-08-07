@@ -1,6 +1,6 @@
 ---
-title: Dołączanie dysku danych do maszyny Wirtualnej z systemem Linux | Dokumentacja firmy Microsoft
-description: Można dołączyć danych do nowego lub istniejącego dysku do maszyny Wirtualnej z systemem Linux za pomocą portalu.
+title: Dołączanie dysku danych do maszyny wirtualnej z systemem Linux | Microsoft Docs
+description: Użyj portalu, aby dołączyć nowy lub istniejący dysk danych do maszyny wirtualnej z systemem Linux.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -16,71 +16,71 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 162857ed1b22edf67b44cb4648607103cf733c7d
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: f4933369f20d7f39cc4718e367552bfe1d7574e8
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671851"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774340"
 ---
-# <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Dołączanie dysku danych do maszyny Wirtualnej z systemem Linux za pomocą portalu 
-W tym artykule pokazano, jak dołączyć istniejących i nowych dysków do maszyny wirtualnej z systemem Linux w witrynie Azure portal. Możesz również [dołączanie dysku danych do maszyny Wirtualnej z systemem Windows w witrynie Azure portal](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+# <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Dołączanie dysku danych do maszyny wirtualnej z systemem Linux przy użyciu portalu 
+W tym artykule opisano sposób dołączania nowych i istniejących dysków do maszyny wirtualnej z systemem Linux za pomocą Azure Portal. Możesz również [dołączyć dysk danych do maszyny wirtualnej z systemem Windows w Azure Portal](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
-Przed dołączeniem dyski do maszyny Wirtualnej, przejrzyj te wskazówki:
+Przed dołączeniem dysków do maszyny wirtualnej zapoznaj się z następującymi wskazówkami:
 
-* Liczba dysków z danymi można dołączać jest kontrolowana przez rozmiar maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [rozmiary maszyn wirtualnych](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Dyski dołączone do maszyn wirtualnych są faktycznie pliki VHD przechowywane na platformie Azure. Aby uzyskać więcej informacji, zobacz nasze [wprowadzenie do usługi managed disks](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Po dołączeniu dysku, należy [łączenie z maszyną Wirtualną systemu Linux zainstaluj nowy dysk](#connect-to-the-linux-vm-to-mount-the-new-disk).
+* Rozmiar maszyny wirtualnej kontroluje liczbę dysków z danymi, które można dołączyć. Aby uzyskać szczegółowe informacje, zobacz [rozmiary maszyn wirtualnych](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Dyski dołączone do maszyn wirtualnych są w rzeczywistości plikami VHD przechowywanymi na platformie Azure. Aby uzyskać szczegółowe informacje, zobacz [wprowadzenie do usługi Managed disks](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Po dołączeniu dysku musisz nawiązać [połączenie z maszyną wirtualną z systemem Linux, aby zainstalować nowy dysk](#connect-to-the-linux-vm-to-mount-the-new-disk).
 
 
 ## <a name="find-the-virtual-machine"></a>Znajdź maszynę wirtualną
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
-2. W menu po lewej stronie, kliknij polecenie **maszyn wirtualnych**.
+2. W menu po lewej stronie kliknij pozycję **Virtual Machines**.
 3. Wybierz maszynę wirtualną z listy.
-4. Do wirtualnej maszyny stronie **Essentials**, kliknij przycisk **dysków**.
+4. Na stronie maszyny wirtualne w obszarze **podstawy**kliknij pozycję **dyski**.
    
     ![Otwórz ustawienia dysku](./media/attach-disk-portal/find-disk-settings.png)
 
 
-## <a name="attach-a-new-disk"></a>Dołączyć nowy dysk
+## <a name="attach-a-new-disk"></a>Dołącz nowy dysk
 
-1. Na **dysków** okienku kliknij **+ Dodaj dysk danych**.
-2. Kliknij menu rozwijane dla **nazwa** i wybierz **Utwórz dysk**:
+1. W okienku **dyski** kliknij pozycję **+ Dodaj dysk danych**.
+2. Kliknij menu rozwijane **Nazwa** i wybierz pozycję **Utwórz dysk**:
 
-    ![Tworzenie platformy Azure dysku zarządzanego](./media/attach-disk-portal/create-new-md.png)
+    ![Tworzenie dysku zarządzanego platformy Azure](./media/attach-disk-portal/create-new-md.png)
 
-3. Wprowadź nazwę dla dysku zarządzanego. Przejrzyj ustawienia domyślne, zaktualizuj zgodnie z potrzebami, a następnie kliknij **Utwórz**.
+3. Wprowadź nazwę dla dysku zarządzanego. Sprawdź ustawienia domyślne, zaktualizuj je w razie potrzeby, a następnie kliknij przycisk **Utwórz**.
    
-   ![Przejrzyj ustawienia dysków](./media/attach-disk-portal/create-new-md-settings.png)
+   ![Przejrzyj ustawienia dysku](./media/attach-disk-portal/create-new-md-settings.png)
 
-4. Kliknij przycisk **Zapisz** do tworzenia dysku zarządzanego i aktualizowania konfiguracji maszyny Wirtualnej:
+4. Kliknij przycisk **Zapisz** , aby utworzyć dysk zarządzany i zaktualizować konfigurację maszyny wirtualnej:
 
-   ![Zapisz nowy dysk zarządzany platformy Azure](./media/attach-disk-portal/confirm-create-new-md.png)
+   ![Zapisz nowy dysk zarządzany przez platformę Azure](./media/attach-disk-portal/confirm-create-new-md.png)
 
-5. Po platforma Azure utworzy dysk i dołącza go do maszyny wirtualnej, nowy dysk ma na liście ustawień dysku maszyny wirtualnej w obszarze **dysków z danymi**. Dyski zarządzane są zasobem najwyższego poziomu, dysku, który pojawia się w katalogu głównym, grupy zasobów:
+5. Po utworzeniu dysku przez platformę Azure i dołączeniu go do maszyny wirtualnej nowy dysk zostanie wyświetlony na liście ustawień dyskowych maszyny wirtualnej w obszarze **dyski danych**. Ponieważ dyski zarządzane są zasobami najwyższego poziomu, dysk jest wyświetlany w katalogu głównym grupy zasobów:
 
-   ![Usługa Azure dysku zarządzanego w grupie zasobów](./media/attach-disk-portal/view-md-resource-group.png)
+   ![Dysk zarządzany przez platformę Azure w grupie zasobów](./media/attach-disk-portal/view-md-resource-group.png)
 
 ## <a name="attach-an-existing-disk"></a>Dołączanie istniejącego dysku
-1. Na **dysków** okienku kliknij **+ Dodaj dysk danych**.
-2. Kliknij menu rozwijane dla **nazwa** Aby wyświetlić listę istniejących dyskach zarządzanych, dostępne dla Twojej subskrypcji platformy Azure. Wybierz dysk zarządzany, można dołączyć:
+1. W okienku **dyski** kliknij pozycję **+ Dodaj dysk danych**.
+2. Kliknij menu rozwijane, aby wyświetlić listę istniejących dysków zarządzanych dostępnych dla Twojej subskrypcji platformy Azure. Wybierz dysk zarządzany do dołączenia:
 
    ![Dołącz istniejący dysk zarządzany platformy Azure](./media/attach-disk-portal/select-existing-md.png)
 
-3. Kliknij przycisk **Zapisz** można dołączyć istniejącego dysku zarządzanego i aktualizować konfigurację maszyn wirtualnych:
+3. Kliknij przycisk **Zapisz** , aby dołączyć istniejący dysk zarządzany i zaktualizować konfigurację maszyny wirtualnej:
    
-   ![Zapisz aktualizacje dysk zarządzany platformy Azure](./media/attach-disk-portal/confirm-attach-existing-md.png)
+   ![Zapisz aktualizacje dysku zarządzanego na platformie Azure](./media/attach-disk-portal/confirm-attach-existing-md.png)
 
-4. Po Azure dołącza dysk do maszyny wirtualnej, ta opcja jest wyświetlana w ustawieniach dysku maszyny wirtualnej w obszarze **dysków z danymi**.
+4. Po dołączeniu dysku do maszyny wirtualnej na platformie Azure jest on wyświetlany w ustawieniach dysku maszyny wirtualnej w obszarze **dyski danych**.
 
-## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Łączenie z maszyną Wirtualną systemu Linux zainstaluj nowy dysk
-Partycjonowanie, formatowania i instalacji nowego dysku, dzięki czemu maszyny Wirtualnej systemu Linux można korzystać protokołu SSH z maszyną wirtualną. Aby uzyskać więcej informacji, zobacz temat dotyczący [korzystania z protokołu SSH systemu Linux na platformie Azure](mac-create-ssh-keys.md). Poniższy przykład nawiązuje połączenie z maszyną wirtualną za pomocą publicznego wpis DNS *mypublicdns.westus.cloudapp.azure.com* nazwy użytkownika *azureuser*: 
+## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Nawiązywanie połączenia z maszyną wirtualną z systemem Linux w celu zainstalowania nowego dysku
+Aby podzielić na partycje, sformatować i zainstalować nowy dysk, aby maszyna wirtualna z systemem Linux mogła go używać, Użyj protokołu SSH do maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz temat dotyczący [korzystania z protokołu SSH systemu Linux na platformie Azure](mac-create-ssh-keys.md). Poniższy przykład nawiązuje połączenie z maszyną wirtualną za pomocą publicznego wpisu DNS *mypublicdns.westus.cloudapp.Azure.com* z nazwą użytkownika *azureuser*: 
 
 ```bash
 ssh azureuser@mypublicdns.westus.cloudapp.azure.com
 ```
 
-Po nawiązaniu połączenia z maszyną wirtualną, możesz przystąpić do dołączenia dysku. Po pierwsze Znajdź dysk przy użyciu `dmesg` (metody odnajdywania nowego dysku mogą się różnić). W poniższym przykładzie użyto dmesg do filtrowania *SCSI* dyski:
+Po nawiązaniu połączenia z maszyną wirtualną możesz dołączyć dysk. Najpierw Znajdź dysk przy użyciu `dmesg` (Metoda używana do odnajdywania nowego dysku może się różnić). Poniższy przykład używa dmesg do filtrowania na dyskach *SCSI* :
 
 ```bash
 dmesg | grep SCSI
@@ -96,18 +96,21 @@ Dane wyjściowe są podobne do poniższego przykładu:
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
 
-W tym miejscu *sdc* to dysk, który chcemy. 
+W tym miejscu *SDC* jest dyskiem, który chcemy. 
 
-### <a name="partition-a-new-disk"></a>Nowy dysk
-Jeśli używasz istniejącego dysku, który zawiera dane, przejdź do instalowania na dysku. Dołączając nowy dysk, musisz partycji na dysku.
+### <a name="partition-a-new-disk"></a>Partycjonowanie nowego dysku
+Jeśli używasz istniejącego dysku, który zawiera dane, Pomiń Instalowanie dysku. W przypadku dołączania nowego dysku należy podzielić dysk na partycje.
 
-Podziel dysk na partycje za pomocą polecenia `fdisk`. Jeśli rozmiar dysku jest 2 tebibajtów (TiB) lub większych następnie należy użyć GPT partycji, możesz użyć `parted` do wykonania, partycji GPT. Jeśli rozmiar dysku jest pod 2TiB, następnie służy partycji MBR lub GPT. Stał się podstawowym dysku na partycji 1, a następnie zaakceptuj ustawienia domyślne. Poniższy przykład rozpoczyna się `fdisk` proces */dev/sdc*:
+> [!NOTE]
+> Zalecane jest korzystanie z najnowszych wersji programu fdisk lub częściowo dostępnych dla Twojego dystrybucji.
+
+Podziel dysk na partycje za pomocą polecenia `fdisk`. Jeśli rozmiar dysku wynosi 2 tebibajtów (TIB) lub większy, należy użyć partycjonowania GPT, za pomocą `parted` którego można wykonać partycjonowanie GPT. Jeśli rozmiar dysku jest w obszarze 2TiB, można użyć partycji MBR lub GPT. Ustaw go jako dysk podstawowy na partycji 1 i zaakceptuj inne ustawienia domyślne. Poniższy przykład uruchamia `fdisk` proces w */dev/SDC*:
 
 ```bash
 sudo fdisk /dev/sdc
 ```
 
-Użyj `n` polecenie, aby dodać nową partycję. W tym przykładzie mamy też `p` dla podstawowego Podziel na partycje i zaakceptuj pozostałe wartości domyślne. Dane wyjściowe będą podobne do poniższego przykładu:
+Użyj polecenia `n` , aby dodać nową partycję. W tym przykładzie wybieramy `p` również partycję podstawową i zaakceptujemy resztę wartości domyślnych. Dane wyjściowe będą podobne do następujących:
 
 ```bash
 Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -129,7 +132,7 @@ Last sector, +sectors or +size{K,M,G} (2048-10485759, default 10485759):
 Using default value 10485759
 ```
 
-Drukowanie tabeli partycji, wpisując `p` , a następnie użyj `w` można zapisać tabeli na dysku, a następnie zakończyć pracę. Dane wyjściowe powinny wyglądać podobnie do poniższego przykładu:
+Wydrukuj tabelę partycji przez wpisanie `p` , a następnie użyj polecenia `w` , aby zapisać tabelę na dysku i zakończyć. Dane wyjściowe powinny wyglądać podobnie do poniższego przykładu:
 
 ```bash
 Command (m for help): p
@@ -151,7 +154,7 @@ Calling ioctl() to re-read partition table.
 Syncing disks.
 ```
 
-Teraz Zapisz system plików z partycją `mkfs` polecenia. Określ typ swojego systemu plików, a nazwa urządzenia. Poniższy przykład tworzy *ext4* systemu plików na */dev/sdc1* partycji, który został utworzony w poprzednich krokach:
+Teraz napisz system plików do partycji za pomocą `mkfs` polecenia. Określ typ systemu plików i nazwę urządzenia. Poniższy przykład tworzy system plików *ext4* na partycji */dev/sdc1* , który został utworzony w poprzednich krokach:
 
 ```bash
 sudo mkfs -t ext4 /dev/sdc1
@@ -181,20 +184,20 @@ Writing inode tables: done
 Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
-### <a name="mount-the-disk"></a>Zainstaluj dysk
-Utwórz katalog do instalacji systemu plików przy użyciu `mkdir`. Poniższy przykład tworzy katalog w */datadrive*:
+### <a name="mount-the-disk"></a>Instalowanie dysku
+Utwórz katalog służący do instalowania systemu plików przy `mkdir`użyciu programu. W poniższym przykładzie jest tworzony katalog o godzinie */datadrive*:
 
 ```bash
 sudo mkdir /datadrive
 ```
 
-Użyj `mount` następnie zainstalować w systemie plików. Poniższy przykład instaluje */dev/sdc1* partycji do */datadrive* punktu instalacji:
+Służy `mount` do instalowania systemu plików. Poniższy przykład powoduje zainstalowanie partycji */dev/sdc1* w punkcie instalacji */datadrive* :
 
 ```bash
 sudo mount /dev/sdc1 /datadrive
 ```
 
-Aby upewnić się, że dysk zostanie ponownie zainstalowany automatycznie po ponownym uruchomieniu, należy dodać do */etc/fstab* pliku. Również zdecydowanie zaleca się, że identyfikator UUID (powszechnie Unikatowy identyfikator) jest używany w */etc/fstab* do odwoływania się do stacji, a nie tylko nazwy urządzenia (takich jak */dev/sdc1*). Jeśli system operacyjny wykryje błąd dysku podczas rozruchu, za pomocą identyfikator UUID pozwala uniknąć nieprawidłową dysku montażu do danej lokalizacji. Pozostałe dyski danych będzie można przypisać te takich samych identyfikatorów urządzeń. Aby znaleźć identyfikator UUID nowy dysk, użyj `blkid` narzędzie:
+Aby upewnić się, że dysk zostanie automatycznie zainstalowany po ponownym uruchomieniu, należy dodać go do pliku */etc/fstab* . Zdecydowanie zaleca się również, aby identyfikator UUID (uniwersalny) był używany w */etc/fstab* , aby można było odwołać się do dysku, a nie tylko nazwy urządzenia (na przykład */dev/sdc1*). Jeśli system operacyjny wykryje błąd dysku podczas rozruchu, użycie identyfikatora UUID pozwala uniknąć błędnego dysku instalowanego w danej lokalizacji. Do pozostałych dysków danych zostaną przypisane te same identyfikatory urządzeń. Aby znaleźć identyfikator UUID nowego dysku, użyj `blkid` narzędzia:
 
 ```bash
 sudo -i blkid
@@ -209,36 +212,36 @@ Dane wyjściowe wyglądają podobnie do poniższego przykładu:
 ```
 
 > [!NOTE]
-> Nieprawidłowo edycji **/etc/fstab** plików nieraz powodowały rozruch systemu. Jeśli nie wiesz, zapoznaj się dokumentacją dystrybucji informacji na temat sposobu prawidłowo edytować ten plik. Zalecane jest również, czy kopia zapasowa pliku/etc/fstab został utworzony przed rozpoczęciem edycji.
+> Niewłaściwe edytowanie pliku **/etc/fstab** może spowodować, że system nie zostanie rozruchowy. W razie wątpliwości zapoznaj się z dokumentacją dystrybucji, aby uzyskać informacje o tym, jak prawidłowo edytować ten plik. Przed rozpoczęciem edycji zaleca się również utworzenie kopii zapasowej pliku/etc/fstab.
 
-Następnie otwórz */etc/fstab* plik w edytorze tekstów w następujący sposób:
+Następnie otwórz plik */etc/fstab* w edytorze tekstów w następujący sposób:
 
 ```bash
 sudo vi /etc/fstab
 ```
 
-W tym przykładzie, użyj wartości identyfikatora UUID dla */dev/sdc1* urządzenia, który został utworzony w poprzednich krokach, a punkt instalacji programu */datadrive*. Dodaj następujący wiersz na końcu */etc/fstab* pliku:
+W tym przykładzie Użyj wartości UUID dla urządzenia */dev/sdc1* , które zostało utworzone w poprzednich krokach, i mountpoint */datadrive*. Dodaj następujący wiersz na końcu pliku */etc/fstab* :
 
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
 
 > [!NOTE]
-> Później usunięcie dysku danych bez konieczności edytowania fstab spowodować, że maszyna wirtualna może zakończyć się niepowodzeniem, rozruch. Większości dystrybucji zapewniają albo *nofail* i/lub *nobootwait* opcje fstab. Te opcje umożliwiają systemowi rozruchu, nawet w przypadku awarii dysku, należy zainstalować w czasie rozruchu. Zapoznaj się dokumentacją danej dystrybucji, aby uzyskać więcej informacji na temat tych parametrów.
+> Późniejsze usunięcie dysku z danymi bez edytowania fstab może spowodować niepowodzenie rozruchu maszyny wirtualnej. Większość dystrybucji oferuje opcje nofail i/lub *nobootwait* fstab. Te opcje umożliwiają rozruch systemu nawet wtedy, gdy instalacja dysku nie powiedzie się w czasie rozruchu. Aby uzyskać więcej informacji na temat tych parametrów, zapoznaj się z dokumentacją dystrybucji.
 > 
-> *Nofail* opcja gwarantuje, że maszyna wirtualna zacznie nawet, jeśli system plików jest uszkodzony lub dysk nie istnieje w czasie rozruchu. Bez tej opcji, możesz napotkać zachowanie zgodnie z opisem w [nie SSH do maszyny Wirtualnej systemu Linux z powodu błędów FSTAB](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/)
+> Opcja *nofail* gwarantuje, że maszyna wirtualna jest uruchamiana, nawet jeśli system plików jest uszkodzony lub dysk nie istnieje w czasie rozruchu. Bez tej opcji może wystąpić sytuacja, zgodnie z opisem w artykule [nie można przeprowadzić protokołu SSH do maszyny wirtualnej z systemem Linux z powodu błędów fstab](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/)
 
-### <a name="trimunmap-support-for-linux-in-azure"></a>TRIM/UNMAP obsługę systemu Linux na platformie Azure
-Niektóre jądra systemu Linux obsługuje TRIM/UNMAP operacji można odrzucić nieużywanych bloków na dysku. Ta funkcja jest szczególnie przydatne w magazynie standard storage platformy Azure, które usunięto strony nie są już prawidłowe i można odrzucać i może oszczędzać pieniądze, jeśli utworzysz dużych plików, a następnie je usunąć.
+### <a name="trimunmap-support-for-linux-in-azure"></a>Obsługa przycinania/mapowania dla systemu Linux na platformie Azure
+Niektóre jądra systemu Linux obsługują operacje przycinania/mapowania do odrzucania nieużywanych bloków na dysku. Ta funkcja jest szczególnie przydatna w przypadku magazynu w warstwie Standardowa, aby poinformować platformę Azure, że usunięte strony nie są już prawidłowe i mogą być odrzucone i mogą zaoszczędzić pieniądze w przypadku tworzenia dużych plików, a następnie ich usuwania.
 
-Istnieją dwa sposoby, aby umożliwić PRZYCINANIE obsługi w maszynie Wirtualnej systemu Linux. W zwykły sposób poszukaj dystrybucji Zalecanym podejściem:
+Istnieją dwa sposoby włączania obsługi przycinania na maszynie wirtualnej z systemem Linux. W zwykły sposób zapoznaj się z dystrybucją, aby uzyskać zalecane podejście:
 
-* Użyj `discard` instalacji opcji */etc/fstab*, na przykład:
+* Użyj opcji instalacji w/etc/fstab, na przykład: `discard`
 
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
     ```
-* W niektórych przypadkach `discard` opcji może mieć wpływ na wydajność. Alternatywnie, możesz uruchomić `fstrim` polecenie ręcznie z poziomu wiersza polecenia lub dodać do swojej crontab regularnego uruchamiania:
+* W niektórych przypadkach opcja może `discard` mieć wpływ na wydajność. Alternatywnie można uruchomić `fstrim` polecenie ręcznie z wiersza polecenia lub dodać je do crontab w celu regularnego uruchamiania:
   
     **Ubuntu**
   
@@ -254,5 +257,5 @@ Istnieją dwa sposoby, aby umożliwić PRZYCINANIE obsługi w maszynie Wirtualne
     sudo fstrim /datadrive
     ```
 
-## <a name="next-steps"></a>Kolejne kroki
-Możesz również [dołączanie dysku danych](add-disk.md) przy użyciu wiersza polecenia platformy Azure.
+## <a name="next-steps"></a>Następne kroki
+[Dysk danych](add-disk.md) można również dołączyć przy użyciu interfejsu wiersza polecenia platformy Azure.

@@ -12,12 +12,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba63f9c04e062741eded9c39e44ba64281931387
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 6646217149cec48ca5fcee59b3dd9d850965c602
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311349"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779917"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Migrowanie z Federacji do uwierzytelniania przekazywanego dla Azure Active Directory
 
@@ -156,7 +156,7 @@ W przypadku kont komputerów z systemem Windows 8 i Windows 7 sprzężenie hybry
 
 Aby uzyskać więcej informacji, zobacz [Konfigurowanie hybrydowych urządzeń przyłączonych do usługi Azure AD](https://docs.microsoft.com/azure/active-directory/device-management-hybrid-azuread-joined-devices-setup).
 
-#### <a name="branding"></a>Znakowania
+#### <a name="branding"></a>Znakowanie
 
 Jeśli Twoja organizacja [dostosował AD FS strony logowania](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-user-sign-in-customization) , aby wyświetlić informacje, które są bardziej przydatne dla organizacji, rozważ wprowadzenie podobnych [dostosowań na stronie logowania do usługi Azure AD](https://docs.microsoft.com/azure/active-directory/customize-branding).
 
@@ -454,5 +454,5 @@ Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów Azure Active 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Dowiedz się więcej na temat [pojęć związanych z projektowaniem Azure AD Connect](plan-connect-design-concepts.md).
-* Wybierz odpowiednie [uwierzytelnianie](https://docs.microsoft.com/azure/security/azure-ad-choose-authn).
+* Wybierz odpowiednie [uwierzytelnianie](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn).
 * Poznaj [obsługiwane topologie](plan-connect-design-concepts.md).

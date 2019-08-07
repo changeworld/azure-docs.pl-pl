@@ -8,14 +8,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: bfc9d01284bb5623989676afbdeadc1c91c14ab0
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 025052a5005702232eb9eaf255e6aac2c58fec98
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688379"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68735568"
 ---
-# <a name="manage-azure-vm-backups"></a>Zarządzanie kopiami zapasowymi maszyn wirtualnych platformy Azure
+# <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Zarządzanie kopiami zapasowymi maszyn wirtualnych platformy Azure za pomocą usługi Azure Backup
 
 W tym artykule opisano sposób zarządzania maszynami wirtualnymi platformy Azure, których kopia zapasowa została utworzona przy użyciu [usługi Azure Backup](backup-overview.md). Artykuł zawiera również podsumowanie informacji o kopii zapasowej, które można znaleźć na pulpicie nawigacyjnym magazynu.
 
@@ -165,7 +165,7 @@ Istnieją dwa sposoby usuwania danych kopii zapasowej maszyny wirtualnej:
   > [!NOTE]
   > Usunięcie danych kopii zapasowej powoduje usunięcie wszystkich skojarzonych punktów odzyskiwania. Nie można wybrać określonych punktów odzyskiwania do usunięcia.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się, jak [utworzyć kopię zapasową maszyn wirtualnych platformy Azure z ustawień maszyny wirtualnej](backup-azure-vms-first-look-arm.md).
 - Dowiedz się, jak [przywrócić maszyny wirtualne](backup-azure-arm-restore-vms.md).
 - Dowiedz się, jak [monitorować kopie zapasowe maszyn wirtualnych platformy Azure](backup-azure-monitor-vms.md).

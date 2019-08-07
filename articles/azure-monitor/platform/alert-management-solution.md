@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: 06532369efb802606eb13a4b38a8579a3528f999
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dacc4179483de5d5ef8a05fd836e4241c161deac
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60777041"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741279"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Rozwiązanie usługi alert Management w usłudze Azure Log Analytics
 
 ![Ikona zarządzania alertu](media/alert-management-solution/icon.png)
 
 > [!NOTE]
->  Usługa Azure Monitor teraz obsługuje ulepszonych funkcji [Zarządzanie alertami na dużą skalę](https://aka.ms/azure-alerts-overview), włącznie z wygenerowanymi przez [monitorowania narzędzi, takich jak SCOM, Zabbix lub Nagios](https://aka.ms/managing-alerts-other-monitoring-services).
+>  Azure Monitor teraz obsługuje udoskonalone funkcje [zarządzania alertami na dużą skalę](https://aka.ms/azure-alerts-overview), w tym te wygenerowane przez [narzędzia monitorowania, takie jak SCOM, Zabbix lub Nagios](https://aka.ms/managing-alerts-other-monitoring-services).
 >  
 
 
@@ -89,26 +89,26 @@ Rozwiązanie zaimportować alerty z programu System Center Operations Manager i 
 
 | Właściwość | Opis |
 |:--- |:--- |
-| Typ |*Zgłoś alert* |
-| SourceSystem |*OpsManager* |
-| AlertContext |Szczegóły elementu danych, który spowodował alert zostanie wygenerowany w formacie XML. |
-| AlertDescription |Szczegółowy opis alertu. |
-| AlertId |Identyfikator GUID alertu. |
-| AlertName |Nazwa alertu. |
-| AlertPriority |Priorytet alertu. |
-| AlertSeverity |Poziom ważności alertu. |
-| AlertState |Najnowszy stan rozwiązywania alertu. |
-| LastModifiedBy |Nazwa użytkownika, który ostatnio zmodyfikował alert. |
-| ManagementGroupName |Nazwa grupy zarządzania, w którym alert został wygenerowany. |
-| RepeatCount |Liczba przypadków, gdy ten sam alert został wygenerowany dla tego samego monitorowany obiekt od rozwiązania. |
-| ResolvedBy |Nazwa użytkownika, który rozpoznał alertu. Pusty, jeśli wpis nie został jeszcze rozwiązane. |
-| SourceDisplayName |Wyświetlana nazwa obiektu monitorowania, który wygenerował alert. |
-| SourceFullName |Pełna nazwa obiektu monitorowania, który wygenerował alert. |
-| TicketId |Identyfikator biletu, alert, jeśli środowisko programu System Center Operations Manager jest zintegrowane z procesem przypisywania biletów dla alertów.  Identyfikator pusty biletu nie jest przypisany. |
-| TimeGenerated |Data i godzina utworzenia alertu. |
-| TimeLastModified |Data i godzina ostatniej modyfikacji alertu. |
-| TimeRaised |Data i godzina, który został wygenerowany alert. |
-| TimeResolved |Data i godzina, który ten alert został rozwiązany. Pusty, jeśli wpis nie został jeszcze rozwiązane. |
+| `Type` |*Zgłoś alert* |
+| `SourceSystem` |*OpsManager* |
+| `AlertContext` |Szczegóły elementu danych, który spowodował alert zostanie wygenerowany w formacie XML. |
+| `AlertDescription` |Szczegółowy opis alertu. |
+| `AlertId` |Identyfikator GUID alertu. |
+| `AlertName` |Nazwa alertu. |
+| `AlertPriority` |Priorytet alertu. |
+| `AlertSeverity` |Poziom ważności alertu. |
+| `AlertState` |Najnowszy stan rozwiązywania alertu. |
+| `LastModifiedBy` |Nazwa użytkownika, który ostatnio zmodyfikował alert. |
+| `ManagementGroupName` |Nazwa grupy zarządzania, w którym alert został wygenerowany. |
+| `RepeatCount` |Liczba przypadków, gdy ten sam alert został wygenerowany dla tego samego monitorowany obiekt od rozwiązania. |
+| `ResolvedBy` |Nazwa użytkownika, który rozpoznał alertu. Pusty, jeśli wpis nie został jeszcze rozwiązane. |
+| `SourceDisplayName` |Wyświetlana nazwa obiektu monitorowania, który wygenerował alert. |
+| `SourceFullName` |Pełna nazwa obiektu monitorowania, który wygenerował alert. |
+| `TicketId` |Identyfikator biletu, alert, jeśli środowisko programu System Center Operations Manager jest zintegrowane z procesem przypisywania biletów dla alertów.  Identyfikator pusty biletu nie jest przypisany. |
+| `TimeGenerated` |Data i godzina utworzenia alertu. |
+| `TimeLastModified` |Data i godzina ostatniej modyfikacji alertu. |
+| `TimeRaised` |Data i godzina, który został wygenerowany alert. |
+| `TimeResolved` |Data i godzina, który ten alert został rozwiązany. Pusty, jeśli wpis nie został jeszcze rozwiązane. |
 
 ## <a name="sample-log-searches"></a>Przykładowe wyszukiwania dzienników
 Poniższa tabela zawiera przykładowe wyszukiwania dzienników dla rekordów alertu zbieranych przez to rozwiązanie: 

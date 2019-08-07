@@ -1,28 +1,28 @@
 ---
-title: Eskalowania uprawnień chmury prywatnej — Azure VMware Solution by CloudSimple
-description: Opisuje sposób podwyższania poziomu uprawnień w chmurze prywatnej funkcji administracyjnych w programie vCenter
+title: Eskalacja uprawnień chmury prywatnej — rozwiązanie Azure VMware według CloudSimple
+description: Opisuje sposób eskalacji uprawnień w chmurze prywatnej na potrzeby funkcji administracyjnych w programie vCenter
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/05/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d11c88b91b13cca13120a9203e376fdc2c3d6d8d
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 6e53d0d4f8f19a3cf81f1adb6c62b2797a50d146
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67333072"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812212"
 ---
-# <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>Eskalowania uprawnień vCenter chmurę prywatną z poziomu portalu CloudSimple 
+# <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>Eskalacja uprawnień vCenter w chmurze prywatnej z portalu CloudSimple 
 
-Aby uzyskać dostęp administracyjny do serwera vCenter chmury prywatnej można tymczasowo eskalacji uprawnień usługi CloudSimple.  Korzystając z podwyższonym poziomem uprawnień, można zainstalować rozwiązań VMware, Dodaj źródła tożsamości i zarządzanie użytkownikami.
+Aby uzyskać dostęp administracyjny do programu vCenter w chmurze prywatnej, można tymczasowo eskalować uprawnienia CloudSimple.  Korzystając z podniesionych uprawnień, można zainstalować rozwiązania VMware, dodać źródła tożsamości i zarządzać użytkownikami.
 
-Nowi użytkownicy można tworzyć w domenie logowania jednokrotnego vCenter i udostępniają vCenter.  Podczas tworzenia nowych użytkowników, dodać je do grupy wbudowane CloudSimple do uzyskiwania dostępu do vCenter.  Aby uzyskać więcej informacji, zobacz [Chmura prywatna CloudSimple modelu uprawnień programu VMware vCenter](https://docs.azure.cloudsimple.com/learn-private-cloud-permissions/).
+Nowych użytkowników można utworzyć w domenie vCenter SSO i uzyskać dostęp do programu vCenter.  Podczas tworzenia nowych użytkowników Dodaj je do wbudowanych grup CloudSimple, aby uzyskać dostęp do programu vCenter.  Aby uzyskać więcej informacji, zobacz [model uprawnień chmury prywatnej CloudSimple firmy VMware vCenter](https://docs.azure.cloudsimple.com/learn-private-cloud-permissions/).
 
 > [!CAUTION]
-> Nie wprowadzaj żadnych zmian konfiguracji składników zarządzania. Akcjach podjętych podczas eskalowanych stanu uprzywilejowanych może niekorzystnie wpłynąć na system lub może spowodować systemu stają się niedostępne.
+> Nie wprowadzaj żadnych zmian w konfiguracji składników zarządzania. Akcje podejmowane w ramach eskalacji uprzywilejowanego stanu mogą mieć negatywny wpływ na system lub mogą spowodować, że system stanie się niedostępny.
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
@@ -30,59 +30,59 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
 
 ## <a name="escalate-privileges"></a>Podwyższanie poziomu uprawnień
 
-1. Dostęp do [CloudSimple portal](access-cloudsimple-portal.md).
+1. Dostęp do [portalu CloudSimple](access-cloudsimple-portal.md).
 
-2. Otwórz **zasobów** wybierz chmurę prywatną, dla którego chcesz podwyższania poziomu uprawnień.
+2. Otwórz stronę **zasoby** , wybierz chmurę prywatną, dla której chcesz eskalować uprawnienia.
 
-3. W pobliżu dolnej części strony podsumowania w obszarze **zmienić uprawnienia vSphere**, kliknij przycisk **Escalate**.
+3. W dolnej części strony Podsumowanie w obszarze **Zmień vSphere uprawnienia**kliknij pozycję **Eskalacja**.
 
-    ![Zmienianie uprawnień vSphere](media/escalate-private-cloud-privilege.png)
+    ![Zmień uprawnienie vSphere](media/escalate-private-cloud-privilege.png)
 
-4. Wybierz typ użytkownika vSphere.  Tylko **CloudOwner@cloudsimple.local** użytkownika lokalnego, może zostać przekazany.
+4. Wybierz typ użytkownika vSphere.  Można **CloudOwner@cloudsimple.local** eskalować tylko użytkownika lokalnego.
 
-5. Wybierz przedział czasu escalate z listy rozwijanej. Wybierz okres najkrótszej, który pozwoli na wykonanie zadania.
+5. Wybierz przedział czasu eskalacji z listy rozwijanej. Wybierz najkrótszy okres, który pozwoli na ukończenie zadania.
 
-6. Zaznacz pole wyboru, aby upewnić się, że rozumiesz ryzyka.
+6. Zaznacz pole wyboru, aby potwierdzić, że rozumiesz ryzyko.
 
-    ![Eskalowania uprawnień w oknie dialogowym](media/escalate-private-cloud-privilege-dialog.png)
+    ![Okno dialogowe eskalacji uprawnień](media/escalate-private-cloud-privilege-dialog.png)
 
 7. Kliknij przycisk **OK**.
 
 8. Proces eskalacji może potrwać kilka minut. Po zakończeniu kliknij przycisk **OK**.
 
-Podwyższenie poziomu rozpoczyna się i trwa aż do zakończenia wybranym zakresie.  Możesz zalogować się do serwera vCenter chmury prywatnej do wykonywania zadań administracyjnych.
+Eskalacja uprawnień rozpoczyna się i trwa do końca wybranego interwału.  Możesz zalogować się do programu vCenter w chmurze prywatnej, aby wykonywać zadania administracyjne.
 
 > [!IMPORTANT]
-> Tylko jeden użytkownik może mieć eskalowało uprawnienia.  Zanim można Eskalowanie uprawnień przez innego użytkownika należy cofnąć podwyższania poziomu uprawnień użytkownika.
+> Tylko jeden użytkownik może mieć uprawnienia eskalacji.  Musisz anulować eskalację uprawnień użytkownika, zanim będzie można eskalować uprawnienia innego użytkownika.
 
-## <a name="extend-privilege-escalation"></a>Rozszerzanie podwyższenie poziomu uprawnień
+## <a name="extend-privilege-escalation"></a>Rozwiń eskalację uprawnień
 
-Jeśli potrzebujesz dodatkowego czasu na ukończenie zadań, można rozszerzyć okresu podwyższenie poziomu uprawnień.  Wybierz dodatkowe eskalować przedział czasu, który umożliwia wykonywanie zadań administracyjnych.
+Jeśli potrzebujesz dodatkowego czasu na ukończenie zadań, możesz zwiększyć okres eskalacji uprawnień.  Wybierz dodatkowy interwał okresu eskalacji, który umożliwia wykonywanie zadań administracyjnych.
 
-1. Na **zasobów** > **Chmurami prywatnymi** w portalu CloudSimple wybierz chmurę prywatną, dla którego chcesz rozszerzyć podwyższenie poziomu uprawnień.
+1. W**chmurach prywatnych** **zasobów** > w portalu CloudSimple Wybierz chmurę prywatną, dla której chcesz rozłożyć eskalację uprawnień.
 
-2. W dolnej części karty Podsumowanie kliknij **rozszerzyć podwyższenie poziomu uprawnień**.
+2. W dolnej części karty Podsumowanie kliknij polecenie **Zwiększ eskalację uprawnień**.
 
-    ![Rozszerzanie podwyższenie poziomu uprawnień](media/de-escalate-private-cloud-privilege.png)
+    ![Rozwiń eskalację uprawnień](media/de-escalate-private-cloud-privilege.png)
 
-3. Wybierz przedział czasu escalate z listy rozwijanej. Przejrzyj nową wartość czasu zakończenia eskalacji.
+3. Wybierz przedział czasu eskalacji z listy rozwijanej. Przejrzyj nową godzinę zakończenia eskalacji.
 
-4. Kliknij przycisk **Zapisz** można wydłużyć okres.
+4. Kliknij przycisk **Zapisz** , aby zwiększyć interwał.
 
-## <a name="de-escalate-privileges"></a>Usuń zaznaczenie pola podwyższania poziomu uprawnień
+## <a name="de-escalate-privileges"></a>Anuluj eskalację uprawnień
 
-Po zakończeniu zadań administracyjnych, należy cofnąć eskalować Twoje uprawnienia.  
+Po zakończeniu zadań administracyjnych należy anulować eskalację uprawnień.  
 
-1. Na **zasobów** > **Chmurami prywatnymi** w portalu CloudSimple wybierz chmurę prywatną, dla którego chcesz cofnąć podwyższania poziomu uprawnień.
+1. W**chmurach prywatnych** **zasobów** > w portalu CloudSimple Wybierz chmurę prywatną, dla której chcesz cofnąć eskalację uprawnień.
 
-2. Kliknij przycisk **cofnąć zostały Eskalowanie**.
+2. Kliknij przycisk **Anuluj eskalację**.
 
 3. Kliknij przycisk **OK**.
 
 > [!IMPORTANT]
-> Aby uniknąć błędów, wyloguj się z vCenter, a następnie zaloguj się ponownie po deserializować zamocowaniem uprawnień.
+> Aby uniknąć błędów, Wyloguj się z programu vCenter i zaloguj się ponownie po usunięciu uprawnień.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Konfigurowanie źródła tożsamości vCenter korzystania z usługi Active Directory](https://docs.azure.cloudsimple.com/set-vcenter-identity/)
-* Instalowanie rozwiązania tworzenia kopii zapasowych do [kopie zapasowe obciążeń maszyn wirtualnych](https://docs.azure.cloudsimple.com/backup-workloads-veeam/)
+* [Skonfiguruj źródła tożsamości vCenter do użycia Active Directory](https://docs.azure.cloudsimple.com/set-vcenter-identity/)
+* Instalowanie rozwiązania do tworzenia kopii zapasowych na potrzeby [tworzenia kopii zapasowych maszyn wirtualnych](https://docs.azure.cloudsimple.com/backup-workloads-veeam/)

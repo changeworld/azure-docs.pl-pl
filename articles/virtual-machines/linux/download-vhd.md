@@ -1,6 +1,6 @@
 ---
-title: Pobieranie wirtualnego dysku twardego systemu Linux na platformie Azure | Dokumentacja firmy Microsoft
-description: Pobieranie wirtualnego dysku twardego systemu Linux przy użyciu wiersza polecenia platformy Azure i witryny Azure portal.
+title: Pobieranie wirtualnego dysku twardego z systemem Linux z platformy Azure | Microsoft Docs
+description: Pobierz dysk VHD z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure i Azure Portal.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -15,26 +15,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: e7325282c6442a927f47df3e50efbfda481754fd
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 5639571739f3eb6263f62444e7ab02186e2ca945
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667904"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742577"
 ---
-# <a name="download-a-linux-vhd-from-azure"></a>Pobieranie wirtualnego dysku twardego systemu Linux na platformie Azure
+# <a name="download-a-linux-vhd-from-azure"></a>Pobieranie wirtualnego dysku twardego z systemem Linux z platformy Azure
 
-W tym artykule dowiesz się, jak pobrać pliku wirtualnego dysku twardego (VHD) systemu Linux na platformie Azure przy użyciu wiersza polecenia platformy Azure i witryny Azure portal. 
+W tym artykule dowiesz się, jak pobrać plik wirtualnego dysku twardego z systemem Linux z platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure i Azure Portal. 
 
-Jeśli jeszcze tego nie zrobiono, zainstaluj [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-az-cli2).
+Jeśli jeszcze tego nie zrobiono, zainstaluj [interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-az-cli2).
 
 ## <a name="stop-the-vm"></a>Zatrzymywanie maszyny wirtualnej
 
-Nie można pobrać wirtualnego dysku twardego z platformy Azure, jeśli jest on dołączony do uruchomionej maszyny Wirtualnej. Należy zatrzymać maszynę Wirtualną, aby pobrać wirtualnego dysku twardego. Jeśli chcesz używać wirtualnego dysku twardego [obraz](tutorial-custom-images.md) Aby utworzyć inne maszyny wirtualne przy użyciu nowych dysków, musisz anulowanie aprowizacji i Uogólnianie systemu operacyjnego, znajdujący się w pliku i Zatrzymaj maszynę Wirtualną. Na potrzeby dysku VHD jako dysk nowe wystąpienie klasy istniejącej maszyny Wirtualnej lub dysku z danymi, wystarczy Zatrzymaj i Cofnij Przydział maszyny Wirtualnej.
+Nie można pobrać wirtualnego dysku twardego z platformy Azure, jeśli jest on dołączony do uruchomionej maszyny wirtualnej. Musisz zatrzymać maszynę wirtualną, aby pobrać dysk VHD. Jeśli chcesz użyć dysku VHD jako [obrazu](tutorial-custom-images.md) do tworzenia innych maszyn wirtualnych z nowymi dyskami, musisz anulować obsługę administracyjną i uogólnić system operacyjny zawarty w pliku i zatrzymać maszynę wirtualną. Aby można było użyć wirtualnego dysku twardego dla nowego wystąpienia istniejącej maszyny wirtualnej lub dysku z danymi, należy zatrzymać i cofnąć alokację maszyny wirtualnej.
 
-Aby użyć wirtualnego dysku twardego jako obraz do tworzenia innych maszyn wirtualnych, wykonaj następujące kroki:
+Aby użyć dysku VHD jako obrazu do tworzenia innych maszyn wirtualnych, wykonaj następujące kroki:
 
-1. Użyj protokołu SSH, nazwę konta i publiczny adres IP maszyny wirtualnej nawiązać z nim i jego deprovision. Można znaleźć publiczny adres IP z [az sieci public-ip show](https://docs.microsoft.com/cli/azure/network/public-ip#az-network-public-ip-show). \+ Parametr użytkownika spowoduje również usunięcie ostatnie aprowizowane konto użytkownika. Jeśli są pieczenie poświadczenia konta w do maszyny Wirtualnej, należy pozostawić się z tą + parametru user. Poniższy przykład usuwa ostatnie aprowizowane konto użytkownika:
+1. Użyj protokołu SSH, nazwy konta i publicznego adresu IP maszyny wirtualnej w celu nawiązania połączenia z serwerem i anulowania aprowizacji. Publiczny adres IP można znaleźć za pomocą [AZ Network Public-IP show](https://docs.microsoft.com/cli/azure/network/public-ip#az-network-public-ip-show). Parametr + User usuwa także ostatnio zainicjowane konto użytkownika. Jeśli masz poświadczenia konta pieczenia na maszynie wirtualnej, pozostaw ten parametr + użytkownika. Poniższy przykład usuwa ostatnio zainicjowane konto użytkownika:
 
     ```bash
     ssh azureuser@<publicIpAddress>
@@ -42,50 +42,50 @@ Aby użyć wirtualnego dysku twardego jako obraz do tworzenia innych maszyn wirt
     exit 
     ```
 
-2. Zaloguj się do konta platformy Azure za pomocą [az login](https://docs.microsoft.com/cli/azure/reference-index).
-3. Zatrzymaj i Cofnij Przydział maszyny Wirtualnej.
+2. Zaloguj się do konta platformy Azure przy użyciu [AZ login](https://docs.microsoft.com/cli/azure/reference-index).
+3. Zatrzymaj i Cofnij przydział maszyny wirtualnej.
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
-4. Uogólnianie maszyny Wirtualnej. 
+4. Uogólnij maszynę wirtualną. 
 
     ```azurecli
     az vm generalize --resource-group myResourceGroup --name myVM
     ``` 
 
-Na potrzeby dysku VHD jako dysk nowe wystąpienie klasy istniejącej maszyny Wirtualnej lub dysk danych, wykonaj następujące kroki:
+Aby użyć dysku VHD jako dysku dla nowego wystąpienia istniejącej maszyny wirtualnej lub dysku danych, wykonaj następujące kroki:
 
 1.  Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2.  W menu Centrum kliknij pozycję **Virtual Machines**.
-3.  Wybierz maszynę Wirtualną z listy.
-4.  W bloku maszyny wirtualnej, kliknij **zatrzymać**.
+3.  Z listy wybierz maszynę wirtualną.
+4.  W bloku maszyny wirtualnej kliknij pozycję **Zatrzymaj**.
 
-    ![Zatrzymywanie maszyny Wirtualnej](./media/download-vhd/export-stop.png)
+    ![Zatrzymaj maszynę wirtualną](./media/download-vhd/export-stop.png)
 
-## <a name="generate-sas-url"></a>Generowanie adresu URL sygnatury dostępu Współdzielonego
+## <a name="generate-sas-url"></a>Generuj adres URL SAS
 
-Aby pobrać plik wirtualnego dysku twardego, należy wygenerować [sygnatury dostępu współdzielonego (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) adresu URL. Podczas generowania adresu URL czas wygaśnięcia jest przypisany do adresu URL.
+Aby pobrać plik VHD, należy wygenerować adres URL sygnatury [dostępu współdzielonego (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) . Po wygenerowaniu adresu URL zostanie do niego przypisany czas wygaśnięcia.
 
-1.  W menu bloku maszyny Wirtualnej, kliknij przycisk **dysków**.
-2.  Wybierz dysk systemu operacyjnego dla maszyny Wirtualnej, a następnie kliknij przycisk **wyeksportować**.
-3.  Kliknij przycisk **generowania adresu URL**.
+1.  W menu bloku maszyny wirtualnej kliknij pozycję **dyski**.
+2.  Wybierz dysk systemu operacyjnego dla maszyny wirtualnej, a następnie kliknij pozycję **eksport dysku**.
+3.  Kliknij pozycję **Generuj adres URL**.
 
-    ![Generowanie adresu URL](./media/download-vhd/export-generate.png)
+    ![Generuj adres URL](./media/download-vhd/export-generate.png)
 
-## <a name="download-vhd"></a>Pobieranie wirtualnego dysku twardego
+## <a name="download-vhd"></a>Pobierz dysk VHD
 
-1.  W polu adres URL, który został wygenerowany kliknij pozycję Pobierz plik VHD.
+1.  W obszarze wygenerowanego adresu URL kliknij pozycję Pobierz plik VHD.
 
-    ![Pobieranie wirtualnego dysku twardego](./media/download-vhd/export-download.png)
+    ![Pobierz dysk VHD](./media/download-vhd/export-download.png)
 
-2.  Może być konieczne kliknięcie **Zapisz** w przeglądarce, aby rozpocząć pobieranie. Domyślną nazwą pliku wirtualnego dysku twardego jest *abcd*.
+2.  Aby rozpocząć pobieranie, może być konieczne kliknięcie przycisku **Zapisz** w przeglądarce. Domyślna nazwa pliku VHD jest *ABCD*.
 
     ![Kliknij przycisk Zapisz w przeglądarce](./media/download-vhd/export-save.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się, jak [przekazywanie i tworzenie maszyny Wirtualnej z systemem Linux z niestandardowego dysku przy użyciu wiersza polecenia platformy Azure](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
-- [Zarządzanie dyskami platformy Azure, interfejsu wiersza polecenia Azure](tutorial-manage-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+- Dowiedz się, jak [przekazać i utworzyć maszynę wirtualną z systemem Linux z dysku niestandardowego przy użyciu interfejsu wiersza polecenia platformy Azure](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+- [Zarządzanie dyskami platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure](tutorial-manage-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 

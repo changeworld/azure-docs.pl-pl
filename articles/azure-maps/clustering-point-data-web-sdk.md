@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 69e95a9e6c76da5d502314a7190e99fc10e968f7
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 5f51c1166364a3470a1cc943e66d429c32cdc49b
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639067"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839477"
 ---
 # <a name="clustering-point-data"></a>Dane punktu klastrowania
 
@@ -35,7 +35,7 @@ var datasource = new atlas.source.DataSource(null, {
 
     //The maximum zoom level in which clustering occurs.
     //If you zoom in more than this, all points are rendered as symbols.
-    clusterMaxZoom: 15 
+    clusterMaxZoom: 15
 });
 ```
 
@@ -109,7 +109,17 @@ Dane punktów reprezentowane przez klaster są rozłożone na obszar. W tym przy
 Zapoznaj się z <a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>kadłubem obszar klastra</a> piórem<a href='https://codepen.io/azuremaps'>@azuremaps</a>wypukły przez Azure Maps () w witrynie <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="aggregating-data-in-clusters"></a>Agregowanie danych w klastrach
+
+Często klastry są reprezentowane przy użyciu symbolu z liczbą punktów znajdujących się w klastrze, jednak czasami pożądane jest dalsze dostosowanie stylu klastrów na podstawie pewnej metryki, na przykład łącznego przychodu wszystkich punktów w klastrze. Właściwości niestandardowe z agregacją klastra mogą być tworzone i wypełniane przy użyciu obliczeń [wyrażeń agregujących](data-driven-style-expressions-web-sdk.md#aggregate-expression) .  Agregacje klastrów można definiować w `clusterProperties` opcjach. `DataSource`
+
+Poniższy przykład używa wyrażenia agregującego, aby obliczyć liczbę na podstawie właściwości typu jednostki każdego punktu danych w klastrze.
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Agregacje klastra" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Zobacz agregaty <a href='https://codepen.io/azuremaps/pen/jgYyRL/'>klastra</a> piórem według Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się więcej na temat klas i metod używanych w tym artykule:
 

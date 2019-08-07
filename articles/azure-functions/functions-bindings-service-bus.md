@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: 12a80f77720a6e93a6631947f13247b667c34897
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 3d5b2afd642a7eb042b2e6e07ef93a505f6b9648
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68254731"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774696"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Usługa Azure powiązania usługi Service Bus dla usługi Azure Functions
 
@@ -50,6 +50,7 @@ Zobacz przykład specyficzny dla języka:
 * [F#](#trigger---f-example)
 * [Java](#trigger---java-example)
 * [JavaScript](#trigger---javascript-example)
+* [Python](#trigger---python-example)
 
 ### <a name="trigger---c-example"></a>Wyzwalacz — przykład w języku C#
 
@@ -212,6 +213,57 @@ module.exports = function(context, myQueueItem) {
 };
 ```
 
+### <a name="trigger---python-example"></a>Wyzwalacz — przykład w języku Python
+
+Poniższy przykład ilustruje sposób odczytywania komunikatu kolejki ServiceBus za pośrednictwem wyzwalacza.
+
+Powiązanie ServiceBus jest zdefiniowane w *funkcji Function. JSON* , w której *Typ* jest `serviceBusTrigger`ustawiony na.
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "msg",
+      "type": "serviceBusTrigger",
+      "direction": "in",
+      "queueName": "inputqueue",
+      "connection": "AzureServiceBusConnectionString"
+    }
+  ]
+}
+```
+
+Kod w `func.ServiceBusMessage`   *_\_init_.PRdeklarujeparametr,któryumożliwiaodczytywaniekomunikatuwkolejcewfunkcji.\_*
+
+```python
+import azure.functions as func
+
+import logging
+import json
+
+def main(msg: func.ServiceBusMessage):
+    logging.info('Python ServiceBus queue trigger processed message.')
+
+    result = json.dumps({
+        'message_id': msg.message_id,
+        'body': msg.get_body().decode('utf-8'),
+        'content_type': msg.content_type,
+        'expiration_time': msg.expiration_time,
+        'label': msg.label,
+        'partition_key': msg.partition_key,
+        'reply_to': msg.reply_to,
+        'reply_to_session_id': msg.reply_to_session_id,
+        'scheduled_enqueue_time': msg.scheduled_enqueue_time,
+        'session_id': msg.session_id,
+        'time_to_live': msg.time_to_live,
+        'to': msg.to,
+        'user_properties': msg.user_properties,
+    })
+
+    logging.info(result)
+```
+
 ## <a name="trigger---attributes"></a>Wyzwalacz — atrybuty
 
 W [bibliotek klas języka C#](functions-dotnet-class-library.md), użyć następujących atrybutów, aby skonfigurować wyzwalacz usługi Service Bus:
@@ -367,6 +419,7 @@ Zobacz przykład specyficzny dla języka:
 * [F#](#output---f-example)
 * [Java](#output---java-example)
 * [JavaScript](#output---javascript-example)
+* [Python](#output---python-example)
 
 ### <a name="output---c-example"></a>Dane wyjściowe — przykład w języku C#
 
@@ -555,6 +608,56 @@ module.exports = function (context, myTimer) {
     context.bindings.outputSbQueue.push("2 " + message);
     context.done();
 };
+```
+
+### <a name="output---python-example"></a>Dane wyjściowe — przykład w języku Python
+
+Poniższy przykład ilustruje sposób zapisywania do kolejki ServiceBus w języku Python.
+
+Definicja powiązania ServiceBue jest zdefiniowana w *funkcji Function. JSON* , w której *Typ* jest `serviceBus`ustawiony na.
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    },
+    {
+      "type": "serviceBus",
+      "direction": "out",
+      "connection": "AzureServiceBusConnectionString",
+      "name": "msg",
+      "queueName": "outqueue"
+    }
+  ]
+}
+```
+
+`set` W   *_init\__ .PRmożnanapisaćkomunikatdokolejki\_* , przekazując wartość do metody.
+
+```python
+import azure.functions as func
+
+def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
+
+    input_msg = req.params.get('message')
+
+    msg.set(input_msg)
+
+    return 'OK'
 ```
 
 ## <a name="output---attributes"></a>Dane wyjściowe — atrybuty

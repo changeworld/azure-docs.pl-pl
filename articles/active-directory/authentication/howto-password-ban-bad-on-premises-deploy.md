@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ebeed3636ea6da77e05a9a790e51c7771ebe685
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 596020952fd02a414c050ac7fe7ab37d7137c391
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68666281"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779661"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Wdrażanie ochrony haseł w usłudze Azure AD
 
@@ -282,12 +282,29 @@ Istnieją dwa wymagane Instalatory dla ochrony hasłem usługi Azure AD. Są one
 
    Instalację oprogramowania można zautomatyzować za pomocą standardowych procedur MSI. Przykład:
 
-   `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn`
+   `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`
 
-   > [!WARNING]
-   > Przykładowe polecenie msiexec tutaj powoduje natychmiastowe ponowne uruchomienie. Aby tego uniknąć, należy użyć `/norestart` flagi.
+   Możesz pominąć `/norestart` flagę, jeśli wolisz, aby Instalator automatycznie ponownie uruchomił maszynę.
 
 Instalacja zostanie zakończona po zainstalowaniu na kontrolerze domeny oprogramowania agenta DC i ponownym uruchomieniu komputera. Nie jest wymagana żadna inna konfiguracja.
+
+## <a name="upgrading-the-proxy-agent"></a>Uaktualnianie agenta proxy
+
+Gdy jest dostępna nowsza wersja oprogramowania proxy ochrony hasłem usługi Azure AD, uaktualnienie jest wykonywane przez uruchomienie najnowszej wersji `AzureADPasswordProtectionProxySetup.exe` instalatora oprogramowania. Odinstalowywanie bieżącej wersji oprogramowania serwera proxy nie jest wymagane — Instalator wykona uaktualnienie w miejscu. Podczas uaktualniania oprogramowania serwera proxy nie powinno być wymagane ponowne uruchomienie komputera. Uaktualnienie oprogramowania może być zautomatyzowane przy użyciu standardowych procedur MSI, na przykład: `AzureADPasswordProtectionProxySetup.exe /quiet`.
+
+Agent proxy obsługuje automatyczne uaktualnianie. Automatyczne uaktualnianie Microsoft Azure AD używa usługi Aktualizator Connect Agent, która jest zainstalowana równolegle z usługą proxy. Automatyczne uaktualnianie jest domyślnie włączone i można je włączyć lub wyłączyć za pomocą polecenia cmdlet Set-AzureADPasswordProtectionProxyConfiguration. Bieżące ustawienie można wykonać przy użyciu polecenia cmdlet Get-AzureADPasswordProtectionProxyConfiguration. Firma Microsoft zaleca, aby funkcja automatycznego uaktualniania była włączona.
+
+`Get-AzureADPasswordProtectionProxy` Polecenie cmdlet może służyć do wykonywania zapytań dotyczących wersji oprogramowania wszystkich aktualnie zainstalowanych agentów proxy w lesie.
+
+## <a name="upgrading-the-dc-agent"></a>Uaktualnianie agenta DC
+
+Gdy jest dostępna nowsza wersja oprogramowania agenta DC ochrony hasłem w usłudze Azure AD, uaktualnienie jest wykonywane przez uruchomienie najnowszej wersji `AzureADPasswordProtectionDCAgentSetup.msi` pakietu oprogramowania. Odinstalowywanie bieżącej wersji oprogramowania agenta kontrolera domeny nie jest wymagane — Instalator wykona uaktualnienie w miejscu. Podczas uaktualniania oprogramowania agenta kontrolera domeny jest zawsze wymagane ponowne uruchomienie komputera — jest to spowodowane przez podstawowe zachowanie systemu Windows. 
+
+Uaktualnienie oprogramowania może być zautomatyzowane przy użyciu standardowych procedur MSI, na przykład: `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`.
+
+Możesz pominąć `/norestart` flagę, jeśli wolisz, aby Instalator automatycznie ponownie uruchomił maszynę.
+
+`Get-AzureADPasswordProtectionDCAgent` Polecenie cmdlet może służyć do wykonywania zapytań dotyczących wersji oprogramowania wszystkich aktualnie zainstalowanych agentów kontrolera domeny w lesie.
 
 ## <a name="multiple-forest-deployments"></a>Wdrożenia wielu lasów
 
@@ -301,9 +318,9 @@ Zmiany/zestawy haseł nie są przetwarzane i utrwalane na kontrolerach domeny ty
 
 Główną kwestią dostępności ochrony hasłem jest dostępność serwerów proxy, gdy kontrolery domeny w lesie próbują pobrać nowe zasady lub inne dane z platformy Azure. Każdy agent kontrolera domeny używa prostego algorytmu okrężnej w stylu podczas wybierania serwera proxy do wywołania. Agent pomija serwery proxy, które nie odpowiadają. W przypadku większości w pełni połączonych Active Directory wdrożeń, które mają dobrą replikację stanu katalogu i folderu SYSVOL, dwa serwery proxy są wystarczające do zapewnienia dostępności. Powoduje to okresowe pobieranie nowych zasad i innych danych. Można jednak wdrożyć dodatkowe serwery proxy.
 
-Projekt oprogramowania agenta kontrolera domeny ogranicza typowe problemy, które są związane z wysoką dostępnością. Agent DC obsługuje lokalną pamięć podręczną ostatnio pobranych zasad haseł. Nawet jeśli wszystkie zarejestrowane serwery proxy staną się niedostępne, agenci kontrolera domeny kontynuują wymuszanie zasad haseł w pamięci podręcznej. Rozsądna częstotliwość aktualizacji zasad haseł w dużych wdrożeniach to zwykle *dni*, nie więcej niż godz. W związku z tym krótkie przestoje serwerów proxy nie wpływają znacząco na ochronę hasłem usługi Azure AD.
+Projekt oprogramowania agenta kontrolera domeny ogranicza typowe problemy, które są związane z wysoką dostępnością. Agent DC obsługuje lokalną pamięć podręczną ostatnio pobranych zasad haseł. Nawet jeśli wszystkie zarejestrowane serwery proxy staną się niedostępne, agenci kontrolera domeny kontynuują wymuszanie zasad haseł w pamięci podręcznej. Rozsądna częstotliwość aktualizacji zasad haseł w dużych wdrożeniach to zwykle dni, nie więcej niż godz. W związku z tym krótkie przestoje serwerów proxy nie wpływają znacząco na ochronę hasłem usługi Azure AD.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Po zainstalowaniu usług potrzebnych do ochrony hasłem usługi Azure AD na serwerach lokalnych należy [przeprowadzić konfigurację po instalacji i zebrać informacje o raportowaniu](howto-password-ban-bad-on-premises-operations.md) w celu ukończenia wdrożenia.
 

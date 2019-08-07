@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/22/2019
+ms.date: 08/02/2019
 ms.author: magoedte
-ms.openlocfilehash: 96a312630c92048f36f79e3bec18f83ed5a445ff
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: e1fca1532352c4955f478df70f818ee3151053c1
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414135"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742204"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Usługa Azure Monitor, aby uzyskać przegląd kontenerów
 
@@ -40,9 +40,11 @@ Azure Monitor for Containers to kompleksowe środowisko monitorowania wykorzystu
 * Konfigurowanie alertów w celu aktywnego powiadamiania użytkownika lub rejestrowania go, gdy użycie procesora i pamięci w węzłach lub kontenerach przekracza wartości progowe.
 * Integracja z usługą [Prometheus](https://prometheus.io/docs/introduction/overview/) w celu wyświetlania metryk aplikacji i obciążeń zbieranych z węzłów i Kubernetes przy użyciu [zapytań](container-insights-log-search.md) w celu utworzenia niestandardowych alertów, pulpitów nawigacyjnych i szczegółowej szczegółowej analizy.
 
->[!NOTE]
->Obsługa usługi Prometheus jest w tej chwili funkcją w publicznej wersji zapoznawczej.
->
+    >[!NOTE]
+    >Obsługa usługi Prometheus jest w tej chwili funkcją w publicznej wersji zapoznawczej.
+    >
+
+* Monitoruj obciążenia kontenerów [wdrożone w aparacie AKS](https://github.com/microsoft/OMS-docker/tree/aks-engine).
 
 Zapoznaj się z poniższym filmem wideo dostarczającym poziom pośredni szczegółowe, aby uzyskać informacje na temat monitorowania klastra AKS przy użyciu Azure Monitor dla kontenerów.
 

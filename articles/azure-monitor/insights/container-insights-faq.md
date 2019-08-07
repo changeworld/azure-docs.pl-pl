@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Monitor dla kontenerów — często zadawane pytania | Dokumentacja firmy Microsoft
-description: Usługa Azure Monitor dla kontenerów to rozwiązanie, które monitoruje kondycję klastrów usługi AKS i wystąpień kontenera na platformie Azure. Ten artykuł zawiera odpowiedzi na często zadawane pytania.
+title: Azure Monitor for Containers — często zadawane pytania | Microsoft Docs
+description: Azure Monitor for Containers to rozwiązanie monitorujące kondycję klastrów AKS i Container Instances na platformie Azure. Ten artykuł zawiera odpowiedzi na często zadawane pytania.
 services: azure-monitor
 author: mgoedtel
 manager: carmonm
@@ -8,48 +8,52 @@ editor: tysonn
 ms.service: azure-monitor
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 04/17/2019
+ms.date: 08/02/2019
 ms.author: magoedte
-ms.openlocfilehash: afa332b40884a79b5114b3b8093cd27108c39984
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3644b40311c037df800eb89ca26d1285fbf1e082
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65780004"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741509"
 ---
-# <a name="azure-monitor-for-containers-frequently-asked-questions"></a>Usługa Azure Monitor dla kontenerów — często zadawane pytania
+# <a name="azure-monitor-for-containers-frequently-asked-questions"></a>Azure Monitor for Containers — często zadawane pytania
 
-Ta FAQ firmy Microsoft znajduje się lista często zadawane pytania dotyczące usługi Azure Monitor dla kontenerów. Jeśli masz dodatkowe pytania dotyczące rozwiązania, przejdź do strony [forum dyskusyjne](https://feedback.azure.com/forums/34192--general-feedback) i Publikuj swoje pytania. Gdy zadawane pytanie dodajemy go do tego artykułu tak, aby możliwe było szybkie i łatwe.
+Ta firma Microsoft — często zadawane pytania dotyczące Azure Monitor kontenerów. Jeśli masz dodatkowe pytania dotyczące rozwiązania, przejdź do [forum dyskusyjnego](https://feedback.azure.com/forums/34192--general-feedback) i Opublikuj swoje pytania. Gdy zadawane pytanie dodajemy go do tego artykułu tak, aby możliwe było szybkie i łatwe.
 
-## <a name="why-dont-i-see-data-in-my-log-analytics-workspace"></a>Dlaczego nie widzę danych w obszarze roboczym usługi Log Analytics?
+## <a name="can-i-monitor-my-aks-engine-cluster-with-azure-monitor-for-containers"></a>Czy mogę monitorować klaster AKS-Engine z Azure Monitor dla kontenerów?
 
-Jeśli nie widać żadnych danych w obszarze roboczym usługi Log Analytics na codziennie czasu, możliwe, że osiągnięto domyślny limit 500 MB lub dziennego limitu pozwala określić ilość dane mają być zbierane codziennie. Po spełnieniu limit na ten dzień gromadzenie danych zatrzymuje i wznawia działanie tylko na następny dzień. Aby przejrzeć wykorzystanie danych i zaktualizować do innej warstwy cenowej na podstawie wzorców Twojej oczekiwanego użycia, zobacz [dziennika danych użycia i kosztów](../platform/manage-cost-storage.md). 
+Azure Monitor dla kontenerów obsługuje monitorowanie obciążeń kontenerów wdrożonych na platformie AKS (wcześniej znanych jako klastry ACS) hostowanych w systemie Azure. Aby uzyskać szczegółowe informacje i zapoznać się z omówieniem kroków wymaganych do włączenia monitorowania dla tego scenariusza, zobacz [używanie Azure monitor dla kontenerów dla aparatu AKS](https://github.com/microsoft/OMS-docker/tree/aks-engine).
 
-## <a name="what-are-the-container-states-specified-in-the-containerinventory-table"></a>Jakie są Państwa kontenera określonych w tabeli ContainerInventory?
+## <a name="why-dont-i-see-data-in-my-log-analytics-workspace"></a>Dlaczego nie widzę danych w obszarze roboczym Log Analytics?
 
-Tabela ContainerInventory zawiera informacje o kontenerach zatrzymana i uruchomiona. Tabela jest wypełniana przez przepływ pracy w ramach agenta, który bada platformy docker dla kontenerów (uruchomione i zatrzymane) i przekazuje te dane z obszaru roboczego usługi Log Analytics.
+Jeśli nie widzisz żadnych danych w obszarze roboczym Log Analytics w określonym czasie codziennie, być może osiągnięto domyślny limit 500 MB lub dzienne zakończenie określony w celu kontrolowania ilości danych do zebrania dziennie. Gdy limit zostanie osiągnięty przez dzień, zbieranie danych zostanie zatrzymane i wznowione tylko w następnym dniu. Aby sprawdzić użycie danych i zaktualizować do innej warstwy cenowej na podstawie przewidywanych wzorców użycia, zobacz temat [użycie i koszt danych dziennika](../platform/manage-cost-storage.md). 
+
+## <a name="what-are-the-container-states-specified-in-the-containerinventory-table"></a>Jakie Stany kontenerów określono w tabeli ContainerInventory?
+
+Tabela ContainerInventory zawiera informacje o zatrzymanych i uruchomionych kontenerach. Tabela jest wypełniana przez przepływ pracy wewnątrz agenta, który wysyła zapytanie do platformy Docker dla wszystkich kontenerów (uruchomionych i zatrzymanych) oraz przekazuje te dane do obszaru roboczego Log Analytics.
  
-## <a name="how-do-i-resolve-missing-subscription-registration-error"></a>Jak rozwiązać **rejestracji subskrypcji Brak** błąd?
+## <a name="how-do-i-resolve-missing-subscription-registration-error"></a>Jak mogę rozwiązać **brakującego błędu rejestracji subskrypcji** ?
 
-Jeśli zostanie wyświetlony błąd **rejestracji subskrypcji Brak Microsoft.OperationsManagement**, można je było rozwiązać przez rejestrowanie dostawcy zasobów **Microsoft.OperationsManagement** w Subskrypcja, w którym definiowany jest obszar roboczy. Można znaleźć w dokumentacji dotyczącej sposobu wykonania tego [tutaj](../../azure-resource-manager/resource-manager-register-provider-errors.md).
+Jeśli wystąpi błąd **braku rejestracji subskrypcji dla Microsoft. OperationsManagement**, możesz rozwiązać ten problem, rejestrując dostawcę zasobów **Microsoft. OperationsManagement** w subskrypcji, w której zdefiniowano obszar roboczy. Dokumentację dotyczącą sposobu wykonywania tej czynności można znaleźć [tutaj](../../azure-resource-manager/resource-manager-register-provider-errors.md).
 
-## <a name="is-there-support-for-rbac-enabled-aks-clusters"></a>Jest obsługa RBAC włączona klastrów AKS?
+## <a name="is-there-support-for-rbac-enabled-aks-clusters"></a>Czy obsługiwane są klastry AKS z włączoną funkcją RBAC?
 
-To rozwiązanie monitorowanie kontenera nie obsługuje funkcji RBAC, ale jest obsługiwany z usługą Azure Monitor dla kontenerów. Na stronie szczegółów rozwiązania nie mogą być wyświetlane właściwe informacje w blokach, które wyświetlają dane dotyczące tych klastrów.
+Rozwiązanie do monitorowania kontenerów nie obsługuje RBAC, ale jest obsługiwane w przypadku kontenerów Azure Monitor. Na stronie Szczegóły rozwiązania mogą nie być wyświetlane odpowiednie informacje w blokach, które pokazują dane dla tych klastrów.
 
-## <a name="how-do-i-enable-log-collection-for-containers-in-the-kube-system-namespace-through-helm"></a>Jak włączyć zbieranie dzienników dla kontenerów w przestrzeni nazw systemu kubernetes za pomocą narzędzia Helm?
+## <a name="how-do-i-enable-log-collection-for-containers-in-the-kube-system-namespace-through-helm"></a>Jak mogę włączyć zbieranie dzienników dla kontenerów w przestrzeni nazw polecenia-system za pomocą Helm?
 
-Zbieranie dzienników z kontenerów w przestrzeni nazw kubernetes — system jest domyślnie wyłączona. Zbieranie danych dziennika można włączyć, ustawiając zmienną środowiskową na omsagent. Aby uzyskać więcej informacji, zobacz [usługi Azure Monitor dla kontenerów](https://github.com/helm/charts/tree/master/incubator/azuremonitor-containers) w witrynie github. 
+Kolekcja dzienników z kontenerów w przestrzeni nazw polecenia-system jest domyślnie wyłączona. Zbieranie dzienników można włączyć przez ustawienie zmiennej środowiskowej w omsagent. Aby uzyskać więcej informacji, zobacz stronę [Azure monitor for Containers w](https://github.com/helm/charts/tree/master/incubator/azuremonitor-containers) serwisie GitHub. 
 
-## <a name="how-do-i-update-the-omsagent-to-the-latest-released-version"></a>Jak zaktualizować omsagent najnowszej wersji?
+## <a name="how-do-i-update-the-omsagent-to-the-latest-released-version"></a>Jak mogę zaktualizować omsagent do najnowszej wydanej wersji?
 
-Aby dowiedzieć się, jak uaktualnić agenta, zobacz [zarządzanie agentami](container-insights-manage-agent.md).
+Aby dowiedzieć się, jak uaktualnić agenta, zobacz [Zarządzanie agentem](container-insights-manage-agent.md).
 
-## <a name="how-do-i-enable-multi-line-logging"></a>Jak włączyć rejestrowanie wielowierszowe?
+## <a name="how-do-i-enable-multi-line-logging"></a>Jak mogę włączyć rejestrowanie wielowierszowe?
 
-Obecnie usługa Azure Monitor dla kontenerów nie obsługuje wielowierszowe rejestrowania, ale istnieją obejścia. Można skonfigurować wszystkie usługi, aby zapisać w formacie JSON, a następnie platformy Docker/Moby zapisze je jako jeden wiersz.
+Obecnie Azure Monitor dla kontenerów nie obsługuje rejestrowania wielowierszowego, ale są dostępne obejścia. Można skonfigurować wszystkie usługi do zapisu w formacie JSON, a następnie Docker/Moby zapisze je jako jeden wiersz.
 
-Na przykład można opakować dziennika jako obiekt JSON, jak pokazano w poniższym przykładzie dla przykładowej aplikacji node.js:
+Na przykład możesz otoczyć dziennik jako obiekt JSON, jak pokazano w poniższym przykładzie dla przykładowej aplikacji node. js:
 
 ```
 console.log(json.stringify({ 
@@ -60,24 +64,24 @@ console.log(json.stringify({
       }));
 ```
 
-Tych danych będzie wyglądać jak w poniższym przykładzie w usłudze Azure Monitor dla dzienników po wykonaniu zapytania dotyczącego go:
+Te dane będą wyglądać podobnie do poniższego przykładu w Azure Monitor dla dzienników podczas wykonywania zapytania dotyczącego:
 
 ```
 LogEntry : ({“Hello": "This example has multiple lines:","Docker/Moby": "will not break this into multiple lines", "and you will receive":"all of them in log analytics", "as one": "log entry"}
 
 ```
 
-Aby uzyskać szczegółowy widok ten problem, przejrzyj następujący kod [łącze github](https://github.com/moby/moby/issues/22920).
+Aby zapoznać się z szczegółowym opisem problemu, zapoznaj się z następującym linkiem w witrynie [GitHub](https://github.com/moby/moby/issues/22920).
 
-## <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>Jak rozwiązać błędy usługi Azure AD, po włączeniu dzienniki na żywo? 
+## <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>Jak mogę rozwiązać problemy z usługą Azure AD po włączeniu dzienników na żywo? 
 
-Może zostać wyświetlony następujący błąd: **Odpowiedź adres url określony w żądaniu nie pasuje do adresów URL odpowiedzi skonfigurowane dla aplikacji: "< identyfikator aplikacji\>"** . Rozwiązanie, aby rozwiązać problem, można znaleźć w artykule [sposób wyświetlania kontenera czasie rzeczywistym dzienniki z usługą Azure Monitor dla kontenerów](container-insights-live-logs.md#configure-aks-with-azure-active-directory). 
+Może zostać wyświetlony następujący błąd: **Adres URL odpowiedzi określony w żądaniu jest niezgodny z adresami URL odpowiedzi skonfigurowanymi dla aplikacji: "< identyfikator\>aplikacji"** . Rozwiązanie, które pozwala rozwiązać ten problem, można znaleźć w artykule [jak wyświetlić dzienniki kontenerów w czasie rzeczywistym za pomocą Azure monitor dla kontenerów](container-insights-live-logs.md#configure-aks-with-azure-active-directory). 
 
-## <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>Dlaczego nie można uaktualnić klastra po dołączeniu?
+## <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>Dlaczego nie mogę uaktualnić klastra po dołączeniu?
 
-Po włączeniu usługi Azure Monitor dla kontenerów do klastra usługi AKS w przypadku usunięcia obszaru roboczego usługi Log Analytics klastra wysyłała dane, podczas próby uaktualnienia klastra zakończy się niepowodzeniem. Aby obejść ten problem, należy wyłączyć monitorowanie a następnie włączyć ją ponownie odwołujące się do innego obszaru roboczego prawidłowy w ramach subskrypcji. Podczas próby ponownie uaktualnienie klastra powinien przetworzyć i ukończone pomyślnie.  
+Jeśli po włączeniu Azure Monitor dla kontenerów dla klastra AKS zostanie usunięty obszar roboczy Log Analytics, do którego klaster wysłał swoje dane, podczas próby uaktualnienia klastra zakończy się niepowodzeniem. Aby obejść ten krok, należy wyłączyć monitorowanie, a następnie włączyć go ponownie, odwołując się do innego prawidłowego obszaru roboczego w ramach subskrypcji. Podczas próby ponownego wykonania uaktualnienia klastra należy przetworzyć i zakończyć pracę.  
 
-## <a name="which-ports-and-domains-do-i-need-to-openwhitelist-for-the-agent"></a>Które porty i domeny należy do listy dozwolonych na open/agenta?
+## <a name="which-ports-and-domains-do-i-need-to-openwhitelist-for-the-agent"></a>Które porty i domeny muszę otworzyć/dozwolonych dla agenta?
 - *.ods.opinsights.azure.com   443
 - *.oms.opinsights.azure.com   443
 - *.blob.core.windows.net      443

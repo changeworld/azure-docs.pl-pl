@@ -1,35 +1,67 @@
 ---
-title: Jak wyłączyć funkcje w usłudze Azure Functions
-description: Dowiedz się, jak wyłączyć lub włączyć funkcje w usłudze Azure Functions w wersji 1.x i 2.x.
+title: Jak wyłączyć funkcje w Azure Functions
+description: Dowiedz się, jak wyłączyć i włączyć funkcje w Azure Functions 1. x i 2. x.
 services: functions
 documentationcenter: ''
 author: ggailey777
 manager: jeconnoc
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 07/24/2018
+ms.date: 08/05/2019
 ms.author: glenga
-ms.openlocfilehash: a32b4815a2716428ceeec034ddc5589e3aa062e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 183056d01146194b2854a70df790802e1a0bb839
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60710581"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782234"
 ---
-# <a name="how-to-disable-functions-in-azure-functions"></a>Jak wyłączyć funkcje w usłudze Azure Functions
+# <a name="how-to-disable-functions-in-azure-functions"></a>Jak wyłączyć funkcje w Azure Functions
 
-W tym artykule wyjaśniono, jak wyłączyć funkcję w usłudze Azure Functions. Aby *wyłączyć* funkcji oznacza, że należy zignorować automatyczny wyzwalacz, który jest zdefiniowany dla funkcji środowiska uruchomieniowego. Sposób, możesz zrobić to zależy od wersji środowiska uruchomieniowego i języka programowania:
+W tym artykule wyjaśniono, jak wyłączyć funkcję w Azure Functions. Aby *wyłączyć* funkcję oznacza, że środowisko uruchomieniowe zignoruje automatyczny wyzwalacz, który jest zdefiniowany dla funkcji. W ten sposób zależy od wersji środowiska uruchomieniowego i języka programowania:
 
-* Functions w wersji 1.x
+* Funkcje 2. x:
+  * Jeden ze sposobów dla wszystkich języków
+  * Opcjonalna Metoda C# dla bibliotek klas
+* Funkcje 1. x:
   * Języki skryptów
-  * Biblioteki klas C#
-* Functions w wersji 2.x
-  * Jednym ze sposobów dla wszystkich języków
-  * Rozwiązanie opcjonalne dla bibliotek klas języka C#
+  * C#biblioteki klas
 
-## <a name="functions-1x---scripting-languages"></a>Funkcje 1.x - języków skryptów
+## <a name="functions-2x---all-languages"></a>Funkcje 2. x — wszystkie języki
 
-W językach skryptów, takich jak skrypt języka C# i JavaScript, należy użyć `disabled` właściwość *function.json* plik, aby sprawdzić środowisko wykonawcze nie w celu wyzwolenia funkcji. Ta właściwość może być równa `true` lub nazwa ustawienia aplikacji:
+W funkcjach 2. x można wyłączyć funkcję przy użyciu ustawienia aplikacji w formacie `AzureWebJobs.<FUNCTION_NAME>.Disabled`. To ustawienie można utworzyć i zmodyfikować programowo przy użyciu interfejsu wiersza polecenia platformy Azure. Można to również zrobić z karty **Zarządzanie** funkcją w [Azure Portal](https://portal.azure.com). 
+
+### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
+
+W interfejsie wiersza [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) polecenia platformy Azure można użyć polecenie, aby utworzyć i zmodyfikować ustawienie aplikacji. Następujące polecenie wyłącza funkcję o nazwie `QueueTrigger` przez utworzenie ustawienia aplikacji o nazwie `AzureWebJobs.QueueTrigger.Disabled` ustaw ją na `true`. 
+
+```azurecli-interactive
+az functionapp config appsettings set --name <myFunctionApp> \
+--resource-group <myResourceGroup> \
+--settings AzureWebJobs.QueueTrigger.Disabled=true
+```
+
+Aby ponownie włączyć funkcję, należy ponownie uruchomić to samo polecenie o wartości `false`.
+
+```azurecli-interactive
+az functionapp config appsettings set --name <myFunctionApp> \
+--resource-group <myResourceGroup> \
+--settings AzureWebJobs.QueueTrigger.Disabled=false
+```
+
+### <a name="portal"></a>Portal
+
+Można również użyć przełącznika **stanu funkcji** na karcie **Zarządzanie** funkcją. Przełącznik działa po utworzeniu i usunięciu `AzureWebJobs.<FUNCTION_NAME>.Disabled` ustawienia aplikacji.
+
+![Przełącznik stanu funkcji](media/disable-function/function-state-switch.png)
+
+## <a name="functions-2x---c-class-libraries"></a>Functions 2. x C# — biblioteki klas
+
+W bibliotece klas funkcji 2. x zalecamy użycie metody, która działa dla wszystkich języków. Ale jeśli wolisz, możesz [użyć atrybutu Disable jako w funkcjach 1. x](#functions-1x---c-class-libraries).
+
+## <a name="functions-1x---scripting-languages"></a>Functions 1. x — Języki obsługi skryptów
+
+W przypadku języków skryptów, C# takich jak skrypty i JavaScript, należy `disabled` użyć właściwości pliku *Function. JSON* , aby określić, że środowisko uruchomieniowe nie wyzwala funkcji. Dla `true` tej właściwości można ustawić wartość lub na nazwę ustawienia aplikacji:
 
 ```json
 {
@@ -54,15 +86,15 @@ lub
     "disabled": "IS_DISABLED"
 ```
 
-W drugim przykładzie funkcja jest wyłączona, gdy istnieje ustawienie aplikacji o nazwie IS_DISABLED i ustawiono `true` lub 1.
+W drugim przykładzie funkcja jest wyłączona, gdy istnieje ustawienie aplikacji o nazwie IS_DISABLED i ma wartość `true` lub 1.
 
-Możesz edytować plik w witrynie Azure portal lub użyj **stan funkcji** przełącznika funkcji **Zarządzaj** kartę. Portal przełącznika działa, zmieniając *function.json* pliku.
+Można edytować plik w Azure Portal lub użyć przełącznika **stanu funkcji** na karcie **Zarządzanie** funkcją. Przełącznik portalu działa przez zmianę pliku *Function. JSON* .
 
-![Przełącz stan — funkcja](media/disable-function/function-state-switch.png)
+![Przełącznik stanu funkcji](media/disable-function/function-state-switch.png)
 
-## <a name="functions-1x---c-class-libraries"></a>Funkcje 1.x — bibliotek klas języka C#
+## <a name="functions-1x---c-class-libraries"></a>Functions 1. x C# — biblioteki klas
 
-W bibliotece klas 1.x funkcji używasz `Disable` atrybutu, aby uniemożliwić wyzwalane przez funkcję. Można użyć atrybutu bez parametru konstruktora, jak pokazano w poniższym przykładzie:
+W bibliotece klas Functions 1. x należy użyć `Disable` atrybutu, aby zapobiec wyzwoleniu funkcji. Można użyć atrybutu bez konstruktora, jak pokazano w następującym przykładzie:
 
 ```csharp
 public static class QueueFunctions
@@ -78,7 +110,7 @@ public static class QueueFunctions
 }
 ```
 
-Ten atrybut nie parametrze Konstruktor wymaga ponownie skompilować i ponownie wdrożyć projekt, aby zmienić stan wyłączenia funkcji. Jest bardziej elastyczny sposób użyć atrybutu obejmujący parametr konstruktora, która odwołuje się do ustawienia logiczne aplikacji, jak pokazano w poniższym przykładzie:
+Atrybut bez parametru konstruktora wymaga ponownego skompilowania i ponownego wdrożenia projektu w celu zmiany stanu wyłączenia funkcji. Bardziej elastycznym sposobem korzystania z tego atrybutu jest dołączenie parametru konstruktora, który odwołuje się do ustawienia aplikacji logicznej, jak pokazano w następującym przykładzie:
 
 ```csharp
 public static class QueueFunctions
@@ -94,27 +126,15 @@ public static class QueueFunctions
 }
 ```
 
-Ta metoda umożliwia włączanie i wyłączanie funkcji, zmieniając ustawienia aplikacji bez konieczności ponownego kompilowania lub ponownego wdrażania. Zmiana ustawienia aplikacji powoduje, że aplikację funkcji, aby ponownie uruchomić, dzięki czemu zmiany w stanie wyłączenia rozpoznano natychmiast.
+Ta metoda pozwala włączać i wyłączać funkcję przez zmianę ustawienia aplikacji, bez ponownej kompilacji lub ponownego wdrożenia. Zmiana ustawienia aplikacji powoduje, że aplikacja funkcji zostanie ponownie uruchomiona, więc zmiana stanu wyłączenia zostanie natychmiast rozpoznana.
 
 > [!IMPORTANT]
-> `Disabled` Atrybut jest jedynym sposobem, aby wyłączyć funkcję biblioteki klas. Wygenerowany *function.json* plików dla funkcji biblioteki klasy nie jest przeznaczona do można edytować bezpośrednio. Jeśli edytujesz plik, niezależnie od rodzaju możesz zrobić, aby `disabled` właściwość odniesie żadnego skutku.
+> Ten `Disabled` atrybut jest jedynym sposobem wyłączenia funkcji biblioteki klas. Nie można bezpośrednio edytować pliku generated *Function. JSON* dla funkcji biblioteki klas. Jeśli edytujesz ten plik, nie ma to żadnego wpływu `disabled` na właściwość.
 >
-> To samo dotyczy **funkcji stan** Włącz **Zarządzaj** karcie, ponieważ działa, zmieniając *function.json* pliku.
+> Ta sama wartość dotyczy przełącznika **stanu funkcji** na karcie **Zarządzanie** , ponieważ działa przez zmianę pliku *Function. JSON* .
 >
-> Należy również zauważyć, że portal może wskazywać, że funkcja jest wyłączona, gdy nie jest.
-
-
-
-## <a name="functions-2x---all-languages"></a>Funkcje 2.x — wszystkie języki
-
-W przypadku funkcji 2.x wyłączyć funkcję za pomocą ustawienia aplikacji. Na przykład, aby wyłączyć funkcję o nazwie `QueueTrigger`, utworzyć ustawienie aplikacji o nazwie `AzureWebJobs.QueueTrigger.Disabled`i ustaw ją na `true`. Aby włączyć funkcję, w ustawieniu aplikacji `false`. Można również użyć **stan funkcji** przełącznika funkcji **Zarządzaj** kartę. Przełącznik polega na tworzenie i usuwanie `AzureWebJobs.<functionname>.Disabled` ustawienia aplikacji.
-
-![Przełącz stan — funkcja](media/disable-function/function-state-switch.png)
-
-## <a name="functions-2x---c-class-libraries"></a>Funkcje 2.x - bibliotek klas języka C#
-
-W bibliotece klas 2.x funkcji firma Microsoft zaleca używanie metody, która działa dla wszystkich języków. Jeśli wolisz, możesz to zrobić, ale [użyć atrybutu wyłączyć funkcje w 1.x](#functions-1x---c-class-libraries).
+> Należy również pamiętać, że w portalu może wskazywać, że funkcja jest wyłączona, gdy nie jest.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Ten artykuł dotyczy wyłączania automatycznych wyzwalaczy. Aby uzyskać więcej informacji na temat wyzwalaczy zobacz [wyzwalaczy i powiązań](functions-triggers-bindings.md).
+W tym artykule opisano wyłączanie wyzwalaczy automatycznych. Aby uzyskać więcej informacji na temat wyzwalaczy, zobacz [wyzwalacze i powiązania](functions-triggers-bindings.md).

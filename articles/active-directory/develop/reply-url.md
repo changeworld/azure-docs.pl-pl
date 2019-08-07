@@ -5,18 +5,18 @@ author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
 ms.date: 06/29/2019
-ms.topic: article
+ms.topic: conceptual
 ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5e557d74ff0cb959b11e99391c47e91a90d17ef
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 1702a0c7ab2d2a76e6ec0e8b217539804a683ff7
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325302"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834825"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>Identyfikator URI przekierowania lub adres URL odpowiedzi i ograniczenia
 
@@ -65,6 +65,6 @@ W tym podejściu:
 
 Innym podejściem jest dodanie identyfikatorów URI przekierowania do jednostek [usługi](app-objects-and-service-principals.md#application-and-service-principal-relationship) , które reprezentują rejestrację aplikacji w dowolnej dzierżawie usługi Azure AD. Tego podejścia można użyć, jeśli nie można użyć parametru stanu lub twój scenariusz wymaga dodania nowych identyfikatorów URI przekierowania do rejestracji aplikacji dla każdej nowej dzierżawy, którą obsługujesz. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Informacje o [manifeście aplikacji](reference-app-manifest.md)

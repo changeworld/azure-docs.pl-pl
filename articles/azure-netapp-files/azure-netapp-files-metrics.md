@@ -1,6 +1,6 @@
 ---
-title: Metryki dla usługi pliki Azure NetApp | Dokumentacja firmy Microsoft
-description: W tym artykule opisano metryki dla usługi Azure Files NetApp.
+title: Metryki dla Azure NetApp Files | Microsoft Docs
+description: Opisuje metryki dla Azure NetApp Files.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,38 +12,44 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 08/06/2019
 ms.author: b-juche
-ms.openlocfilehash: 1563b60ef26ac5e4d40f45095d0109dd9dd71570
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9a56fb27fdf9e196291942041d68b249d7f16648
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61084943"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839238"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Metryki dla usługi Azure NetApp Files
 
-Usługa Azure Files NetApp generuje dane pomiarowe na przydzielenia pamięci, użycie rzeczywisty magazyn, przepływność woluminu, operacje We/Wy i opóźnienia. Analizując te metryki, możesz uzyskać lepsze zrozumienie wydajności wzorzec i wolumin użycia konta NetApp.  
+Azure NetApp Files dostarcza metryki przydziału magazynu, rzeczywistego użycia magazynu, przepływności woluminu, operacji we/wy na sekundę oraz opóźnienia. Analizując te metryki, można lepiej zrozumieć wzorzec użycia i wydajność woluminu dla kont NetApp.  
 
-## <a name="capacity_pools"></a>Metryki użycia pojemności pul
+## <a name="capacity_pools"></a>Metryki użycia dla pul pojemności
 
-- *Rozmiar puli przydzielona woluminu*  
-    Jest to rozmiar (GiB) puli zaprowizowaną pojemnością.  
-- *Pula woluminów przydzielonych używane*  
-    Jest to łączny limit przydziału woluminu (GiB) w danej pojemności puli (oznacza to, łączny rozmiar aprowizowanego woluminy w puli pojemności). Jest to rozmiar, który został wybrany podczas tworzenia woluminu.  
-- *Całkowity rozmiar logiczny woluminu puli*  
-    Jest to łączna liczba logicznych miejsca (GiB) używane w całym woluminy w puli pojemności.  
-- *Rozmiar migawki całkowitej puli woluminu*  
-    Jest to suma przyrostowe przestrzeni logicznej używanej przez migawki.  
+<!-- 
+- *Volume pool allocated size*  
+    This is the size (GiB) of the provisioned capacity pool.  
+--> 
+- *Użyte przydzieloną pulę woluminów*  
+    Jest to całkowita liczba przydziałów woluminu (GiB) w danej puli pojemności (czyli całkowita wielkość przyznanych woluminów w puli pojemności). Jest to rozmiar wybrany podczas tworzenia woluminu.  
+- *Łączny rozmiar logiczny puli woluminów*  
+    Jest to całkowita ilość przestrzeni logicznej (GiB) używana między woluminami w puli pojemności.  
+<!-- 
+- *Volume pool total snapshot size*  
+    This is the total of incremental logical space used by the snapshots.  
+-->
 
 ## <a name="volumes"></a>Metryki użycia dla woluminów
 
-- *Przydzielony rozmiar woluminu*   
-    Jest to rozmiar woluminu (przydział) udostępniane w GiB.  
+<!-- 
+- *Volume allocated size*   
+    This is the volume size (quota) provisioned in GiB.  
+--> 
 - *Rozmiar logiczny woluminu*   
-    Jest to łączne miejsce logiczne używane na woluminie (GiB). Ten rozmiar obejmuje logicznej przestrzeni używanej przez systemy plików aktywnych i migawek.  
+    Jest to całkowite miejsce logiczne używane w woluminie (GiB). Ten rozmiar obejmuje przestrzeni logicznej używanej przez aktywne systemy plików i migawki.  
 - *Rozmiar migawki woluminu*   
-    Jest to przyrostowe przestrzeni logicznej używanej przez migawek w woluminie.  
+    Jest to przyrostowe miejsce logiczne używane przez migawki w woluminie.  
 
 ## <a name="next-steps"></a>Kolejne kroki
 

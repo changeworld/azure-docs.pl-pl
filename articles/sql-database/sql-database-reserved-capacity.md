@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
-ms.date: 07/19/2019
-ms.openlocfilehash: adbc2c8818a3d7eff679dadc2245fb0ff8686fc2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/02/2019
+ms.openlocfilehash: 0139b3471eb9117830180088498eb14efd6ab661
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566933"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68781315"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Przedpłata za SQL Database zasobów obliczeniowych z zastrzeżoną pojemnością Azure SQL Database
 
@@ -63,13 +63,9 @@ W poniższej tabeli opisano wymagane pola.
 1. Wybierz pozycję **Kup**.
 1. Wybierz pozycję **Wyświetl to zastrzeżenie** , aby zobaczyć stan zakupu.
 
-## <a name="cancellations-and-exchanges"></a>Anulowania i wymiany
+## <a name="cancel-exchange-or-refund-reservations"></a>Anulowanie, wymiana lub zastrzeżenia zwrotne
 
-Jeśli zachodzi potrzeba anulowania SQL Database rezerwacji zarezerwowanej pojemności, może istnieć 12% opłata za wczesne zakończenie. Zwroty zależą od niższej kwoty z dwóch: cena zakupu i bieżąca cena rezerwacji. Zwroty są ograniczone do 50 000 USD rocznie. Otrzymany zwrot to pozostałe, obliczone proporcjonalnie saldo pomniejszone o 12% opłatę za wcześniejsze zakończenie. Aby anulować, przejdź do rezerwacji w Azure Portal i wybierz pozycję **zwrot**.
-
-Jeśli musisz zmienić rezerwację pojemności zarezerwowanej usługi SQL Database na inny region, typ wdrożenia, warstwę wydajności lub okres, możesz wymienić ją na inną rezerwację o takiej samej lub większej wartości. Data rozpoczęcia okresu nowej rezerwacji nie jest przenoszona z wymienionej rezerwacji. Okres 1 lub 3 lat rozpoczyna się po utworzeniu nowej rezerwacji. W programie Exchange przejdź do rezerwacji w Azure Portal i wybierz pozycję **Exchange**.
-
-Aby uzyskać więcej informacji na temat sposobu wymiany lub zastrzeżeń, zobacz temat [rezerwacje rezerwacji i](../billing/billing-azure-reservations-self-service-exchange-and-refund.md)zwroty.
+Można anulować, wymienić lub refundować rezerwacje z pewnymi ograniczeniami. Aby uzyskać więcej informacji, zobacz samoobsługowe [weksle i zwroty dla Azure Reservations](../billing/billing-azure-reservations-self-service-exchange-and-refund.md).
 
 ## <a name="vcore-size-flexibility"></a>elastyczność rozmiaru rdzeń wirtualny
 
@@ -79,7 +75,7 @@ elastyczność rozmiaru rdzeń wirtualny ułatwia skalowanie w górę i w dół 
 
 Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Rabat rezerwacji rdzeń wirtualny jest automatycznie stosowany do liczby wystąpień SQL Database, które pasują do SQL Database zakres rezerwacji zarezerwowanej pojemności i atrybuty. Zakres SQL Database zarezerwowanej pojemności można zaktualizować za pomocą [Azure Portal](https://portal.azure.com), programu PowerShell, interfejsu wiersza polecenia lub interfejsu API.
 

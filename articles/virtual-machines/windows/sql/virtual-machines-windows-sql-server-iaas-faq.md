@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 07/12/2018
+ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 7f6ec1ee65727fb8c3c7d98f696c288e95ec880a
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 4b50b4acf6ea655c40821e7c49824af11aeeb9ab
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876191"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816305"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Często zadawane pytania dotyczące SQL Server uruchomionych na maszynach wirtualnych z systemem Windows na platformie Azure
 
@@ -122,6 +122,11 @@ Ten artykuł zawiera odpowiedzi na niektóre z najczęstszych pytań dotyczącyc
 
     Tak. Jeśli wdrożono SQL Server z własnego nośnika i zainstalowano rozszerzenie SQL IaaS, można zarejestrować SQL Serverą maszynę wirtualną przy użyciu dostawcy zasobów, aby uzyskać korzyści z zarządzania udostępniane przez rozszerzenie SQL IaaS. Jednak nie możesz przekonwertować samodzielnie wdrożonej maszyny wirtualnej SQL na model płatności zgodnie z rzeczywistym użyciem.
 
+1. **Czy jest możliwe przełączenie modelu licencjonowania na SQL Server maszyny wirtualnej wdrożonej przy użyciu modelu klasycznego?**
+
+   Nie. Zmiana modelu licencjonowania nie jest obsługiwana na klasycznej maszynie wirtualnej. Możesz migrować maszynę wirtualną do modelu Resource Manager (ARM) i zarejestrować się u dostawcy zasobów maszyny wirtualnej SQL. Po zarejestrowaniu maszyny wirtualnej przy użyciu dostawcy zasobów maszyny wirtualnej SQL zmiany modelu licencjonowania będą dostępne na maszynie wirtualnej. 
+   
+
 ## <a name="administration"></a>Administracja
 
 1. **Czy mogę zainstalować drugie wystąpienie programu SQL Server na tej samej maszynie wirtualnej? Czy mogę zmienić zainstalowane funkcje wystąpienia domyślnego?**
@@ -146,9 +151,9 @@ Ten artykuł zawiera odpowiedzi na niektóre z najczęstszych pytań dotyczącyc
    
 ## <a name="updating-and-patching"></a>Aktualizowanie i stosowanie poprawek
 
-1. **Jak mogę zmienić na inną wersję/wydanie SQL Server na maszynie wirtualnej platformy Azure?**
+1. **Jak zmienić wersję/edycję programu SQL Server na inną na maszynie wirtualnej platformy Azure?**
 
-   Klienci mogą zmienić wersję/wydanie SQL Server przy użyciu nośnika instalacyjnego, który zawiera odpowiednią wersję lub wydanie SQL Server. Po zmianie wersji Użyj Azure Portal, aby zmodyfikować właściwość wersji maszyny wirtualnej w celu dokładnego odzwierciedlenia rozliczeń dla maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [Zmiana wersji maszyny wirtualnej SQL Server](virtual-machines-windows-sql-change-edition.md). 
+   Klienci mogą zmienić wersję/edycję programu SQL Server przy użyciu nośnika instalacyjnego zawierającego odpowiednią wersję/edycję programu SQL Server. Po zmianie edycji za pomocą witryny Azure Portal zmodyfikuj właściwość edycji maszyny wirtualnej w celu dokładnego odzwierciedlenia rozliczeń za tę maszynę wirtualną. Aby uzyskać więcej informacji, zobacz [Zmiana wersji maszyny wirtualnej SQL Server](virtual-machines-windows-sql-change-edition.md). 
 
 
 1. **Jak są stosowane aktualizacje i dodatki Service Pack na maszynie wirtualnej SQL Server?**

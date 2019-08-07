@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 07/22/2019
-ms.openlocfilehash: d4724672510d6ccbbc819691d621400cb00d8c9a
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: cd55e078e14ec34006df05096f161e7bdef39a03
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405441"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827229"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Uaktualnij magazyn danych do Gen2
 
@@ -88,7 +88,7 @@ Podczas przeprowadzania samodzielnego uaktualniania dostępne są dwie opcje.  M
 - [Uaktualnij w miejscu](upgrade-to-latest-generation.md) — ta opcja spowoduje uaktualnienie istniejącego magazynu danych Gen1 do Gen2. Proces uaktualniania obejmuje krótki spadek łączności (około 5 minut), co spowoduje ponowne uruchomienie magazynu danych.  Po ponownym uruchomieniu magazynu danych będzie on w pełni dostępny do użycia. Jeśli wystąpią problemy podczas uaktualniania, Otwórz [żądanie obsługi](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) i odwołuje się do "Gen2 upgrade" jako możliwej przyczyny.
 - [Uaktualnienie z punktu przywracania](sql-data-warehouse-restore.md) — Utwórz punkt przywracania zdefiniowany przez użytkownika w bieżącym magazynie danych Gen1, a następnie Przywróć bezpośrednio do wystąpienia Gen2. Istniejący magazyn danych Gen1 pozostanie na miejscu. Po zakończeniu przywracania magazyn danych Gen2 będzie w pełni dostępny do użycia.  Po uruchomieniu wszystkich procesów testowania i walidacji w przywracanym wystąpieniu Gen2 można usunąć oryginalne wystąpienie Gen1.
 
-   - Krok 1: W Azure Portal [Utwórz punkt przywracania zdefiniowany przez użytkownika](sql-data-warehouse-restore.md#create-a-user-defined-restore-point-using-the-azure-portal).
+   - Krok 1: W Azure Portal [Utwórz punkt przywracania zdefiniowany przez użytkownika](sql-data-warehouse-restore-active-paused-dw.md#restore-an-existing-data-warehouse-through-the-azure-portal).
    - Krok 2: Podczas przywracania z punktu przywracania zdefiniowanego przez użytkownika Ustaw poziom wydajności na preferowaną warstwę Gen2.
 
 Może nastąpić okresowe pogorszenie wydajności, gdy w tle będzie odbywać się uaktualnianie plików danych. Łączny okres obniżonej wydajności zależy od rozmiaru plików danych.
@@ -148,13 +148,13 @@ Aby uzyskać więcej informacji, zobacz [uaktualnianie do Gen2](upgrade-to-lates
 
 - Odp.: Nie. Po uaktualnieniu regionu tworzenie nowych wystąpień Gen1 zostanie wyłączone.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Kroki uaktualniania](upgrade-to-latest-generation.md)
 - [Okna obsługi](maintenance-scheduling.md)
 - [Monitor kondycji zasobów](https://docs.microsoft.com/azure/service-health/resource-health-overview)
 - [Przejrzyj przed rozpoczęciem migracji](upgrade-to-latest-generation.md#before-you-begin)
 - [Uaktualnij w miejscu i Uaktualnij z punktu przywracania](upgrade-to-latest-generation.md)
-- [Utwórz punkt przywracania zdefiniowany przez użytkownika](sql-data-warehouse-restore.md#restore-through-the-azure-portal)
-- [Dowiedz się, jak przywrócić do Gen2](sql-data-warehouse-restore.md#restore-an-active-or-paused-database-using-the-azure-portal)
+- [Utwórz punkt przywracania zdefiniowany przez użytkownika](sql-data-warehouse-restore-points.md)
+- [Dowiedz się, jak przywrócić do Gen2](sql-data-warehouse-restore-active-paused-dw.md#restore-an-existing-data-warehouse-through-the-azure-portal)
 - [Otwórz żądanie obsługi SQL Data Warehouse](https://go.microsoft.com/fwlink/?linkid=857950)

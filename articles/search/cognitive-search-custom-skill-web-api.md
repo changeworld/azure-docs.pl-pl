@@ -1,6 +1,6 @@
 ---
-title: Umiejętności niestandardowe wyszukiwanie kognitywne — usługa Azure Search
-description: Rozszerz możliwości dokładniejsze wyszukiwanie kognitywne przez wywołanie metody się z interfejsami API sieci Web
+title: Niestandardowa umiejętność wyszukiwania poznawczego — Azure Search
+description: Zwiększaj możliwości umiejętności wyszukiwania poznawczego, wywołując do interfejsów API sieci Web
 services: search
 manager: pablocas
 author: luiscabrer
@@ -10,50 +10,51 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seojan2018
-ms.openlocfilehash: e1ca8a5ce7b615ed8d84c91d8a0d72098c175c44
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.subservice: cognitive-search
+ms.openlocfilehash: 0451778d9b3bb29d06551c881b9f674ef7a74ab3
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672134"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841210"
 ---
-# <a name="custom-web-api-skill"></a>Niestandardowy interfejs API sieci Web umiejętności
+# <a name="custom-web-api-skill"></a>Niestandardowa umiejętność interfejsu API sieci Web
 
-**Niestandardowego interfejsu API sieci Web** umiejętności pozwala rozszerzyć usłudze wyszukiwania poznawczego wywoływania interfejsu API sieci Web punktu końcowego, zapewniając operacjach niestandardowych. Podobnie jak wbudowane umiejętności **interfejsu API sieci Web usługi Custom** umiejętności zawiera dane wejściowe i wyjściowe. W zależności od danych wejściowych, internetowy interfejs API odbiera ładunek w formacie JSON, po uruchomieniu indeksatora i zwraca ładunek JSON jako odpowiedź, wraz z kodem stanu Powodzenie. Odpowiedź jest powinny mieć określone przez Twoje umiejętności niestandardowe dane wyjściowe. Inne odpowiedzi jest uznawany za błąd i wzbogacenia nie są wykonywane.
+Niestandardowa umiejętność **interfejsu API sieci Web** umożliwia przeprowadzenie wyszukiwania poznawczego przez wywoływanie do punktu końcowego interfejsu API sieci Web dostarczającego operacje niestandardowe. Podobnie jak w przypadku wbudowanych umiejętności, niestandardowa umiejętność **interfejsu API sieci Web** ma dane wejściowe i wyjściowe. W zależności od danych wejściowych internetowy interfejs API odbiera ładunek JSON podczas uruchamiania indeksatora i wyprowadza ładunek JSON jako odpowiedź wraz z kodem stanu sukcesu. Oczekiwano, że odpowiedź będzie miała dane wyjściowe określone przez niestandardową umiejętność. Jakakolwiek inna odpowiedź jest traktowana jako błąd i nie są wykonywane żadne wzbogacania.
 
-Struktura ładunków JSON to dokładniejszym opisem zawartym w dół w tym dokumencie.
+Struktura ładunków JSON została opisana w dalszej części tego dokumentu.
 
 > [!NOTE]
-> Indeksator ponowi próbę w pewnych standardowych kodów stanu HTTP zwrócony z interfejsu API sieci Web. Te kody stanu HTTP są: 
+> Indeksator zostanie dwukrotnie ponowiony dla niektórych standardowych kodów stanu HTTP zwróconych z internetowego interfejsu API. Kody stanu HTTP: 
+> * `502 Bad Gateway`
 > * `503 Service Unavailable`
 > * `429 Too Many Requests`
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Custom.WebApiSkill
 
-## <a name="skill-parameters"></a>Parametry kwalifikacji
+## <a name="skill-parameters"></a>Parametry umiejętności
 
-Parametrów jest rozróżniana wielkość liter.
+W parametrach jest rozróżniana wielkość liter.
 
 | Nazwa parametru     | Opis |
 |--------------------|-------------|
-| Identyfikator URI | Identyfikator URI interfejsu API sieci Web, do którego _JSON_ ładunku będą wysyłane. Tylko **https** schemat identyfikatora URI jest dozwolone. |
-| HttpMethod | Metoda do użycia podczas wysyłania ładunku. Dozwolone metody to `PUT` lub `POST` |
-| httpHeaders | Kolekcja par klucz wartość, gdzie klucze reprezentują nagłówek nazwy i wartości reprezentują wartości nagłówka, które będą wysyłane do internetowego interfejsu API wraz z ładunku. Następujące nagłówki mają zakaz znajdujące się w tej kolekcji: `Accept`, `Accept-Charset`, `Accept-Encoding`, `Content-Length`, `Content-Type`, `Cookie`, `Host`, `TE`, `Upgrade`, `Via` |
-| timeout | (Opcjonalnie) Jeśli zostanie określony, wskazuje limit czasu wywołania interfejsu API klienta http. Musi być sformatowany jako wartość XSD "dayTimeDuration" (ograniczony podzestaw [czas trwania ISO 8601](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) wartości). Na przykład `PT60S` 60 sekund. Jeśli nie zostanie wybrany zestaw wartości domyślnej równej 30 sekund. Limit czasu można ustawić maksymalnie 90 sekund i co najmniej 1 sekundę. |
-| batchSize | (Opcjonalnie) Wskazuje, ile "rekordy data" (zobacz _JSON_ struktura poniższego schematu ładunku) będą wysyłane na wywołania interfejsu API. Jeśli nie zostanie wybrany zestaw, domyślnie 1000. Firma Microsoft zaleca, aby użyć tego parametru, aby osiągnąć odpowiednie zależność między przepływność indeksowania i obciążenie interfejsu API |
+| identyfikator URI | Identyfikator URI internetowego interfejsu API, do którego zostanie wysłany ładunek _JSON_ . Dozwolony jest tylko schemat URI **https** |
+| httpMethod | Metoda do użycia podczas wysyłania ładunku. Dozwolone metody to `PUT` lub`POST` |
+| httpHeaders | Kolekcja par klucz-wartość, gdzie klucze reprezentują nazwy i wartości nagłówków, reprezentujące wartości nagłówka, które będą wysyłane do internetowego interfejsu API wraz z ładunkiem. `Accept`Następujące nagłówki nie mogą być w tej kolekcji: `Content-Type` `Content-Length` `Accept-Encoding` `Accept-Charset`, `Cookie` ,,`TE`,,,,,, `Host` `Upgrade``Via` |
+| limit czasu | Obowiązkowe Gdy ta wartość jest określona, wskazuje limit czasu dla klienta http wykonującego wywołanie interfejsu API. Musi być sformatowana jako wartość XSD "dayTimeDuration" (ograniczony podzbiór wartości [Duration ISO 8601](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) ). Na przykład `PT60S` przez 60 sekund. Jeśli nie zostanie ustawiona, zostanie wybrana wartość domyślna wynosząca 30 sekund. Limit czasu można ustawić na maksymalnie 230 sekund i co najmniej 1 sekundę. |
+| batchSize | Obowiązkowe Wskazuje, ile "rekordów danych" (patrz struktura ładunku _JSON_ poniżej) zostanie wysłana na wywołanie interfejsu API. Jeśli nie zostanie ustawiona, zostanie wybrana wartość domyślna 1000. Zalecamy użycie tego parametru, aby osiągnąć odpowiednią kompromis między indeksowaniem przepływności i obciążeniem interfejsu API |
 
-## <a name="skill-inputs"></a>Dane wejściowe umiejętności
+## <a name="skill-inputs"></a>Dane wejściowe kwalifikacji
 
-Nie ma żadnych "wstępnie zdefiniowanego" dane wejściowe dla tej umiejętności. Możesz wybrać jedno lub więcej pól, które będą już dostępne w czasie wykonywania tej umiejętności jako dane wejściowe i _JSON_ obciążenie wysyłane do interfejsu API sieci Web będzie miał innego pola.
+Brak "wstępnie zdefiniowanych" danych wejściowych dla tej umiejętności. Można wybrać jedno lub więcej pól, które będą już dostępne w momencie wykonywania tego umiejętności, ponieważ dane wejściowe i ładunek _JSON_ wysyłane do internetowego interfejsu API będą mieć różne pola.
 
-## <a name="skill-outputs"></a>Dane wyjściowe umiejętności
+## <a name="skill-outputs"></a>Wyniki umiejętności
 
-Nie ma żadnych "wstępnie zdefiniowanego" danych wyjściowych dla tej umiejętności. W zależności od odpowiedzi zwróci interfejsu API sieci Web, Dodaj pola danych wyjściowych, tak, aby ich mogą być pobierane z _JSON_ odpowiedzi.
+Brak "wstępnie zdefiniowanych" danych wyjściowych dla tej umiejętności. W zależności od odpowiedzi zwracanej przez internetowy interfejs API Dodaj pola wyjściowe, aby można je było pobrać z odpowiedzi _JSON_ .
 
 
-## <a name="sample-definition"></a>Przykładowa definicja
+## <a name="sample-definition"></a>Definicja Przykładowa
 
 ```json
   {
@@ -84,15 +85,15 @@ Nie ma żadnych "wstępnie zdefiniowanego" danych wyjściowych dla tej umiejętn
         ]
       }
 ```
-## <a name="sample-input-json-structure"></a>Przykładowa struktura danych wejściowych w JSON
+## <a name="sample-input-json-structure"></a>Przykładowa wejściowa struktura JSON
 
-To _JSON_ struktury reprezentuje ładunek, który zostanie wysłany do interfejsu API sieci Web.
-Zawsze będzie przestrzegany tych warunków ograniczających:
+Ta struktura _JSON_ reprezentuje ładunek, który zostanie wysłany do internetowego interfejsu API.
+Zawsze będą przestrzegane następujące ograniczenia:
 
-* Jednostki najwyższego poziomu jest nazywany `values` i będzie Tablica obiektów. Liczba obiektów jest co najwyżej `batchSize`
-* Każdy obiekt w `values` odniesie tablicy
-    * A `recordId` właściwość, która jest **unikatowy** ciąg, używany do identyfikowania tego rekordu.
-    * A `data` właściwość, która jest _JSON_ obiektu. Pola `data` właściwość odpowiada "nazwy" określona w `inputs` sekcja definicji umiejętności. Wartości tych pól, zostanie ona nadana `source` tych pól, (które mogą być z polem w dokumencie lub potencjalnie umiejętności inny)
+* Jednostka najwyższego poziomu jest wywoływana `values` i będzie tablicą obiektów. Liczba takich obiektów nie może być większa niż`batchSize`
+* Każdy obiekt w `values` tablicy będzie miał
+    * Właściwość, która jest unikatowym ciągiem używanym do identyfikowania tego rekordu. `recordId`
+    * Właściwość, która jest obiektem _JSON._ `data` Pola `data` właściwości będą odpowiadać nazwie "names" określonej `inputs` w sekcji definicji umiejętności. Wartości tych pól będą pochodzić z `source` tych pól (które mogą pochodzić z pola w dokumencie lub potencjalnie z innej umiejętności)
 
 ```json
 {
@@ -137,18 +138,18 @@ Zawsze będzie przestrzegany tych warunków ograniczających:
 }
 ```
 
-## <a name="sample-output-json-structure"></a>Przykładowe dane wyjściowe JSON struktury
+## <a name="sample-output-json-structure"></a>Przykładowa wyjściowa struktura JSON
 
-"Wyjście" odnosi się do odpowiedź zwrócona z internetowego interfejsu API. Internetowy interfejs API powinien zwrócić tylko _JSON_ ładunek (zweryfikowane, analizując `Content-Type` nagłówek odpowiedzi) i powinny spełniać następujące ograniczenia:
+"Wynik" odpowiada odpowiedzi zwróconej przez internetowy interfejs API. Internetowy interfejs API powinien zwrócić tylko ładunek _JSON_ (zweryfikowany, przeglądając `Content-Type` nagłówek odpowiedzi) i powinien spełniać następujące ograniczenia:
 
-* Powinna istnieć jednostkę najwyższego poziomu o nazwie `values` powinien być Tablica obiektów.
-* Liczba obiektów w tablicy powinna być taka sama jak liczba obiektów wysyłanych do interfejsu API sieci Web.
+* Powinna istnieć jednostka najwyższego poziomu o nazwie `values` , która powinna być tablicą obiektów.
+* Liczba obiektów w tablicy powinna być taka sama jak liczba obiektów wysyłanych do internetowego interfejsu API.
 * Każdy obiekt powinien mieć:
-   * A `recordId` właściwości
-   * A `data` właściwość, która jest obiektem, w których pola są wzbogacenia dopasowywania "nazwy" w `output` i których wartość jest uważana za wzbogacanie.
-   * `errors` Właściwość, tablicę z listą wszystkich wykrytych błędów zostaną dodane do historii wykonywania indeksatora. Ta właściwość jest wymagana, ale może mieć `null` wartość.
-   * A `warnings` właściwość, tablica ofercie wszelkie ostrzeżenia napotkano, które zostaną dodane do historii wykonywania indeksatora. Ta właściwość jest wymagana, ale może mieć `null` wartość.
-* Obiekty w `values` tablicy nie musi być w tej samej kolejności, jak obiekty w `values` tablicy wysyłane jako żądanie do interfejsu API sieci Web. Jednak `recordId` służy do korelacji, dzięki czemu dowolny rekord w odpowiedzi, zawierający `recordId` który nie jest częścią oryginalne żądanie do interfejsu API sieci Web zostaną odrzucone.
+   * `recordId` Właściwość
+   * Właściwość, która jest obiektem, w którym pola są wzbogacane pasujące do "names" `output` w i którego wartość jest uważana za wzbogacanie. `data`
+   * `errors` Właściwość tablica zawierająca błędy, które zostaną dodane do historii wykonywania indeksatora. Ta właściwość jest wymagana, ale może mieć `null` wartość.
+   * `warnings` Właściwość tablica zawierająca wszystkie napotkane ostrzeżenia, które zostaną dodane do historii wykonywania indeksatora. Ta właściwość jest wymagana, ale może mieć `null` wartość.
+* Obiekty w `values` tablicy nie muszą znajdować się w tej samej kolejności, co obiekty `values` w tablicy wysyłane jako żądanie do internetowego interfejsu API. Jednak jest używany do korelacji, dlatego każdy rekord w odpowiedzi `recordId` zawierającej, który nie jest częścią oryginalnego żądania do internetowego interfejsu API zostanie odrzucony. `recordId`
 
 ```json
 {
@@ -193,16 +194,16 @@ Zawsze będzie przestrzegany tych warunków ograniczających:
 
 ```
 
-## <a name="error-cases"></a>W przypadku wystąpienia błędów
-Oprócz interfejsu API sieci Web jest niedostępna lub wysyłania się kodów stanu bez powodzenia poniżej są uważane za błędne przypadków:
+## <a name="error-cases"></a>Przypadki błędów
+Oprócz nieprawidłowego interfejsu API sieci Web lub wysyłania kodów stanu, które nie zostały pomyślnie, są uważane za błędne przypadki:
 
-* Jeśli internetowy interfejs API zwraca kod stanu powodzenia, ale odpowiedź wskazuje, że nie jest `application/json` odpowiedzi jest uznawane za nieprawidłowe i nie wzbogacenia zostaną wykonane.
-* W przypadku **nieprawidłowy** (przy użyciu `recordId` niepodlegających oryginalne żądanie lub ze zduplikowanymi wartościami) rekordy w odpowiedzi `values` tablicy, wzbogacanie nie zostaną wykonane na **tych** rekordów.
+* Jeśli internetowy interfejs API zwraca kod stanu sukcesu, ale odpowiedź wskazuje, że nie `application/json` jest, odpowiedź jest uznawana za nieprawidłową i nie zostaną wykonane żadne wzbogacania.
+* Jeśli w tablicy odpowiedzi `values` są **nieprawidłowe** (z `recordId` niezawartymi w oryginalnym żądaniu lub duplikatami wartości), do **tych** rekordów nie będą wykonywane żadne wzbogacanie.
 
-W przypadkach, gdy interfejsu API sieci Web jest niedostępna lub zwraca błąd HTTP, przyjazne błąd wszystkie dostępne szczegółowe informacje o błędzie HTTP zostanie dodany do historii wykonywania indeksatora.
+W przypadku niedostępności internetowego interfejsu API lub zwrócenie błędu HTTP, przyjazny błąd ze wszystkimi dostępnymi szczegółami dotyczącymi błędu HTTP zostanie dodany do historii wykonywania indeksatora.
 
 ## <a name="see-also"></a>Zobacz także
 
-+ [Jak Definiowanie zestawu umiejętności](cognitive-search-defining-skillset.md)
-+ [Dodaj umiejętności niestandardowe do wyszukiwania kognitywnego](cognitive-search-custom-skill-interface.md)
-+ [Przykład: Tworzenie niestandardowych umiejętności do wyszukiwania kognitywnego](cognitive-search-create-custom-skill-example.md)
++ [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)
++ [Dodaj niestandardową umiejętność wyszukiwania poznawczego](cognitive-search-custom-skill-interface.md)
++ [Przykład: Tworzenie niestandardowej umiejętności wyszukiwania poznawczego](cognitive-search-create-custom-skill-example.md)

@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 82d3656e0adc03157de57b700f8f0be6bde1f2ee
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 59ce6719c117db53b02ed6594de219010ee08ee6
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663489"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828237"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Jak działa usługa Azure Machine Learning: Architektura i pojęcia
 
@@ -40,13 +40,13 @@ Przepływ pracy modelu uczenia maszynowego jest zwykle następujący:
 
 1. **Monitor** -monitoruje **dryf danych** między zestawem danych szkoleń i danymi wnioskowania wdrożonego modelu. W razie potrzeby Wróć do kroku 1, aby ponownie przeprowadzić uczenie modelu przy użyciu nowych danych szkoleniowych.
 
-## <a name="tools-for-azure-machine-learning"></a>Narzędzia dla Azure Machine Learning 
+## <a name="tools-for-azure-machine-learning"></a>Narzędzia dla Azure Machine Learning
 
 Użyj tych narzędzi dla Azure Machine Learning:
 
 +  Korzystanie z usługi w dowolnym środowisku języka Python z [zestawem SDK Azure Machine Learning dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 + Automatyzuj działania uczenia maszynowego za pomocą [interfejsu wiersza polecenia Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli).
-+ Napisz kod w Visual Studio Code z [rozszerzeniem Azure Machine Learning vs Code](how-to-vscode-tools.md) 
++ Napisz kod w Visual Studio Code z [rozszerzeniem Azure Machine Learning vs Code](how-to-vscode-tools.md)
 + Użyj [interfejsu wizualizacji (wersja zapoznawcza) usługi Azure Machine Learning](ui-concept-visual-interface.md) , aby wykonać etapy przepływu pracy bez pisania kodu.
 
 ## <a name="glossary-of-concepts"></a>Słownik pojęć
@@ -87,7 +87,7 @@ Aby uzyskać więcej informacji na temat obszarów roboczych, zobacz [co to jest
 
 Eksperyment to grupa wielu przebiegów z określonego skryptu. Zawsze należy do obszaru roboczego. Po przesłaniu przebiegu można podać nazwę eksperymentu. Informacje dotyczące uruchomienia są przechowywane w ramach tego eksperymentu. Jeśli przesyłasz przebieg i określisz nieistniejącą nazwę eksperymentu, zostanie automatycznie utworzony nowy eksperyment z nowo określoną nazwą.
 
-Aby zapoznać się z przykładem użycia eksperymentu [, zobacz Szybki Start: Rozpocznij pracę z usługą](quickstart-run-cloud-notebook.md)Azure Machine Learning.
+Przykład korzystania z eksperymentu można znaleźć [w samouczku: Uczenie swojego pierwszego](tutorial-1st-experiment-sdk-train.md)modelu.
 
 ### <a name="models"></a>Modele
 
@@ -132,9 +132,9 @@ Aby uzyskać więcej informacji, zobacz [Tworzenie i Rejestrowanie zestawów dan
 
 ### <a name="compute-targets"></a>Celów obliczeń
 
-[Obiekt docelowy obliczeń](concept-compute-target.md) pozwala określić zasób obliczeniowy służący do uruchamiania skryptu szkoleniowego lub hostowania wdrożenia usługi. Ta lokalizacja może być maszyną lokalną lub zasobem obliczeniowym opartym na chmurze. Elementy docelowe obliczeń ułatwiają zmianę środowiska obliczeniowego bez konieczności zmiany kodu. 
+[Obiekt docelowy obliczeń](concept-compute-target.md) pozwala określić zasób obliczeniowy służący do uruchamiania skryptu szkoleniowego lub hostowania wdrożenia usługi. Ta lokalizacja może być maszyną lokalną lub zasobem obliczeniowym opartym na chmurze. Elementy docelowe obliczeń ułatwiają zmianę środowiska obliczeniowego bez konieczności zmiany kodu.
 
-Dowiedz się więcej o [dostępnych celach obliczeniowych na potrzeby szkolenia i wdrażania](concept-compute-target.md). 
+Dowiedz się więcej o [dostępnych celach obliczeniowych na potrzeby szkolenia i wdrażania](concept-compute-target.md).
 
 ### <a name="training-scripts"></a>Skryptów szkolenia
 
@@ -153,7 +153,6 @@ Przebieg jest rekord, który zawiera następujące informacje:
 
 Podczas przesyłania skryptu w celu uczenia modelu należy utworzyć przebieg. Uruchom może mieć zero lub więcej uruchomień podrzędnych. Na przykład uruchomienie najwyższego poziomu może mieć dwa uruchomienia podrzędne, z których każdy może mieć własne uruchomienie podrzędne.
 
-Aby zapoznać się z przykładem wyświetlania przebiegów, które są wytwarzane przez [uczenie modelu, zobacz Szybki Start: Rozpocznij pracę z usługą](quickstart-run-cloud-notebook.md)Azure Machine Learning.
 
 ### <a name="github-tracking-and-integration"></a>Śledzenie i integracja z usługą GitHub
 
@@ -222,7 +221,9 @@ Azure IoT Edge zapewnia, że moduł jest uruchomiony, i monitoruje urządzenie, 
 
 ### <a name="ml-pipelines"></a>Potokach uczenia Maszynowego
 
-Potoki uczenia maszynowego umożliwiają tworzenie przepływów pracy, które łączą etapy uczenia maszynowego, oraz zarządzanie nimi. Na przykład potok może obejmować przygotowanie danych, szkolenie modeli, wdrożenie modelu i etapy wnioskowania/oceniania. Każda faza może obejmować wiele kroków, z których każdy może uruchamiane w różnych celów obliczeń.
+Potoki uczenia maszynowego umożliwiają tworzenie przepływów pracy, które łączą etapy uczenia maszynowego, oraz zarządzanie nimi. Na przykład potok może obejmować przygotowanie danych, szkolenie modeli, wdrożenie modelu i etapy wnioskowania/oceniania. Każda faza może obejmować wiele kroków, z których każdy może uruchamiane w różnych celów obliczeń. 
+
+Kroki potoku są wielokrotnego użytku i można je uruchomić bez ponownego uruchomienia kolejnych kroków, jeśli dane wyjściowe tego kroku nie uległy zmianie. Na przykład możesz ponownie przeprowadzić uczenie modelu bez ponownego uruchamiania kosztownych kroków przygotowywania danych, jeśli dane nie uległy zmianie. Potoki umożliwiają również analitykom danych współpracę podczas pracy nad osobnymi obszarami przepływu pracy uczenia maszynowego.
 
 Aby uzyskać więcej informacji na temat potoków uczenia maszynowego za pomocą tej usługi, zobacz [potoki i Azure Machine Learning](concept-ml-pipelines.md).
 
@@ -230,7 +231,7 @@ Aby uzyskać więcej informacji na temat potoków uczenia maszynowego za pomocą
 
 Podczas opracowywania rozwiązania Użyj zestawu SDK języka Python Azure Machine Learning w skrypcie języka Python, aby rejestrować arbitralne metryki. Po uruchomieniu Zbadaj metryki, aby określić, czy przebieg został utworzony przez model, który chcesz wdrożyć.
 
-### <a name="next-steps"></a>Kolejne kroki
+### <a name="next-steps"></a>Następne kroki
 
 Aby rozpocząć pracę z usługą Azure Machine Learning, zobacz:
 

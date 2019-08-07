@@ -1,6 +1,6 @@
 ---
-title: Obsługiwane style mapy w usługi Azure Maps | Dokumentacja firmy Microsoft
-description: Obsługiwane przez usługi Azure Maps style mapy
+title: Obsługiwane style mapy w Azure Maps | Microsoft Docs
+description: Style mapy obsługiwane przez Azure Maps
 author: walsehgal
 ms.author: v-musehg
 ms.date: 05/06/2019
@@ -8,81 +8,91 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: db396ad06bf46cbbaf486696b68393a6a4214c2f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1aad2284c0f64c92efaefe3f9145d95c4aabec67
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65230830"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839452"
 ---
-# <a name="azure-maps-supported-map-styles"></a>Usługi Azure Maps obsługiwane style mapy
-Usługi Azure Maps obsługuje kilka różnych mapy wbudowane style, zgodnie z poniższym opisem.
+# <a name="azure-maps-supported-map-styles"></a>Azure Maps obsługiwane style mapy
+Azure Maps obsługuje kilka różnych wbudowanych stylów mapy, zgodnie z poniższym opisem.
 
-## <a name="road"></a>Drogowa
-A **drogowej** mapa jest standardowa mapę, która wyświetla drogach naturalnych i sztuczne funkcji wraz z etykiety dla tych funkcji.
+## <a name="road"></a>zwiększa
+Mapa **drogowa** to standardowa mapa, która wyświetla drogi, naturalne i sztuczne funkcje wraz z etykietami dla tych funkcji.
 
-![Drogowa](./media/supported-map-styles/road.png)
+![zwiększa](./media/supported-map-styles/road.png)
 
 **Odpowiednie interfejsy API:**
 * [Obraz mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
 * [Kafelek mapy](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
-* Kontrolki mapy Javascript
-* Kontrolki mapy dla systemu android
+* Kontrolka mapy zestawu SDK sieci Web
+* Kontrolka mapy systemu Android
 
-## <a name="satellite"></a>Satelity 
-**Satelitarnej** stylu jest kombinacją satelitarne i zdjęcia lotnicze.
+## <a name="blank-and-blank_accessible"></a>puste i blank_accessible
 
-![Satelity](./media/supported-map-styles/satellite.png)
+Styl mapy **puste** i **blank_accessible** zapewniają pustą kanwę, na której można wizualizować dane. Styl **blank_accessible** będzie w dalszym ciągu dostarczać aktualizacje czytnika ekranu z informacjami o lokalizacji, w której znajduje się mapa, nawet jeśli mapa podstawowa nie jest wyświetlana.
+
+> [!Note]
+> W zestawie SDK sieci Web można zmienić kolor tła mapy poprzez ustawienie stylu CSS `background-color` elementu map DIV.
 
 **Odpowiednie interfejsy API:**
-* [Kafelek satelity](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
-* Kontrolki mapy Javascript
-* Kontrolki mapy dla systemu android
+* Kontrolka mapy zestawu SDK sieci Web
 
-## <a name="satelliteroadlabels"></a>satellite_road_labels
-Ten styl mapy jest hybrydą, dróg i nałożony na podstawie satelitarne i zdjęcia lotnicze etykiety.
+## <a name="satellite"></a>urządzenia 
+Styl **satelity** to kombinacja zdjęć satelitarnych i antenowych.
+
+![urządzenia](./media/supported-map-styles/satellite.png)
+
+**Odpowiednie interfejsy API:**
+* [Kafelek satelitarny](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
+* Kontrolka mapy zestawu SDK sieci Web
+* Kontrolka mapy systemu Android
+
+## <a name="satellite_road_labels"></a>satellite_road_labels
+Ten styl mapy jest hybrydą dróg i etykiet, które są nakładane na Zdjęcia satelitarne i anteny.
 
 ![satellite_road_labels](./media/supported-map-styles/satellite_road_labels.png)
 
 **Odpowiednie interfejsy API:**
-* Kontrolki mapy Javascript
-* Kontrolki mapy dla systemu android
+* Kontrolka mapy zestawu SDK sieci Web
+* Kontrolka mapy systemu Android
 
-## <a name="grayscaledark"></a>grayscale_dark
-**Ciemny skali szarości** ciemny wersja style mapy drogowej.
+## <a name="grayscale_dark"></a>grayscale_dark
+**ciemna Skala szarości** jest ciemną wersją stylu mapy drogowej.
 
 ![gray_scale](./media/supported-map-styles/grayscale_dark.png)
 
 **Odpowiednie interfejsy API:**
-* Kontrolki mapy Javascript 
-* Kontrolki mapy dla systemu android
+* Kontrolka mapy zestawu SDK sieci Web 
+* Kontrolka mapy systemu Android
 
 
-## <a name="grayscalelight"></a>grayscale_light
-**Skala szarości światła** jest uproszczonej wersji style mapy drogowej.
+## <a name="grayscale_light"></a>grayscale_light
+**sygnalizator skali szarości** to jasna wersja stylu mapy drogowej.
 
-![jasny skali szarości](./media/supported-map-styles/grayscale_light.png)
-
-**Odpowiednie interfejsy API:**
-* Kontrolki mapy Javascript
-* Kontrolki mapy dla systemu android
-
-
-## <a name="night"></a>nocne
-**nocne** ciemny wersja style mapy drogowej z kolorowym drogach i symbole.
-
-![nocne](./media/supported-map-styles/night.png)
+![oświetlenie w skali szarości](./media/supported-map-styles/grayscale_light.png)
 
 **Odpowiednie interfejsy API:**
-* Kontrolki mapy Javascript
-* Kontrolki mapy dla systemu android
+* Kontrolka mapy zestawu SDK sieci Web
+* Kontrolka mapy systemu Android
 
-## <a name="roadshadedrelief"></a>road_shaded_relief
-**drogowa cieniowanie zwolnienia** jest styl głównego usługi Azure Maps zostało ukończone z konturów ziemi.
 
-![zacieniony zwolnienia](./media/supported-map-styles/shaded-relief.png)
+## <a name="night"></a>godzinach
+**nocna** to ciemna wersja stylu mapy drogowej z kolorami dróg i symboli.
+
+![godzinach](./media/supported-map-styles/night.png)
+
+**Odpowiednie interfejsy API:**
+* Kontrolka mapy zestawu SDK sieci Web
+* Kontrolka mapy systemu Android
+
+## <a name="road_shaded_relief"></a>road_shaded_relief
+nastąpi **odcień drogi** jest Azure Maps głównym stylem, który został ukończony z obprezentacją ziemi.
+
+![zacieniowane zwolnienie](./media/supported-map-styles/shaded-relief.png)
 
 **Odpowiednie interfejsy API:**
 * [Kafelek mapy](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
-* Kontrolki mapy Javascript
-* Kontrolki mapy dla systemu android
+* Kontrolka mapy zestawu SDK sieci Web
+* Kontrolka mapy systemu Android

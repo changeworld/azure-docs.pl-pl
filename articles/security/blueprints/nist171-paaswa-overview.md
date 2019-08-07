@@ -1,6 +1,6 @@
 ---
-title: Zabezpieczenia platformy Azure i zgodności planu — aplikacja sieci Web PaaS dla SP NIST 800-171
-description: Zabezpieczenia platformy Azure i zgodności planu - SP NIST aplikacji sieci Web PaaS 800-171
+title: Aplikacja sieci Web Strategia zabezpieczeń i zgodności z przepisami platformy Azure PaaS dla programu NIST SP 800-171
+description: Strategia zabezpieczeń i zgodności z przepisami platformy Azure — PaaS Web Application NIST SP 800-171
 services: security
 author: jomolesk
 ms.assetid: eea21a0a-5930-43e8-937f-5419c20744c9
@@ -8,46 +8,46 @@ ms.service: security
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
-ms.openlocfilehash: f9773c3b372ab22cbcd99828e147d23c185c4eb6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 101d7b621287972571fb5d3ba9ea02ace2ef1421
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62127331"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780695"
 ---
-# <a name="azure-security-and-compliance-blueprint---paas-web-application-for-nist-special-publication-800-171"></a>Zabezpieczenia platformy Azure i zgodności planu — aplikacja sieci Web PaaS dla publikacji specjalne NIST 800-171
+# <a name="azure-security-and-compliance-blueprint---paas-web-application-for-nist-special-publication-800-171"></a>Strategia zabezpieczeń i zgodności z przepisami platformy Azure — aplikacja sieci Web PaaS dla publikacji specjalnej 800-171
 
 ## <a name="overview"></a>Omówienie
-[Publikacja specjalne NIST 800-171](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-171.pdf) zawiera wytyczne dotyczące ochrony informacji unclassified kontrolowanego (CUI), która znajduje się w organizacji i systemów informacyjnych nonfederal. SP NIST 800-171 ustanawia 14 rodzin wymagań dotyczących ochrony poufności CUI zabezpieczeń.
+[Specjalna publikacja NIST 800-171](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-171.pdf) zawiera wytyczne dotyczące ochrony kontrolowanych niesklasyfikowanych informacji (CUI), które znajdują się w niefederalnych systemach i organizacjach informacyjnych. NIST SP 800-171 ustanawia 14 rodzin wymagań dotyczących zabezpieczeń, aby chronić poufność CUI.
 
-Tych samych zabezpieczeń platformy Azure i zgodności planu znajdują się wskazówki pomagające klientom skrócić czas wdrażania platformy jako usługi (PaaS) aplikacji sieci web na platformie Azure, która implementuje podzbiór NIST SP 800-171 kontrolki. To rozwiązanie przedstawia sposób, w którym klienci mogą sprostać zabezpieczeń i zgodności z wymaganiami. Służy również jako podstawa do tworzenia i konfigurowania aplikacji sieci web na platformie Azure.
+Ten Strategia zabezpieczeń i zgodności z przepisami platformy Azure zawiera wskazówki ułatwiające klientom wdrażanie aplikacji sieci Web platformy jako usługi (PaaS) na platformie Azure, która implementuje podzestaw formantów NIST SP 800-171. W tym rozwiązaniu pokazano, w jaki sposób klienci mogą spełniać określone wymagania w zakresie zabezpieczeń i zgodności. Służy również jako podstawa dla klientów do kompilowania i konfigurowania własnej aplikacji sieci Web na platformie Azure.
 
-Ta architektura referencyjna skojarzonego wdrożenia przewodnik i model zagrożeń są przeznaczone do służyć jako podstawa dla klientów dostosować je do swoich wymagań. Nie należy ich używać jako — w środowisku produkcyjnym. Wdrażania tej architektury bez żadnych modyfikacji jest za mała, aby całkowicie wymagań SP NIST 800-171. Klienci są zobowiązani do przeprowadzania odpowiednie ustawienia zabezpieczeń i zgodności oceny dowolnego rozwiązania utworzone przy użyciu tej architektury. Wymagania mogą się różnić w oparciu o szczegóły implementacji każdego klienta.
+Ta architektura referencyjna, skojarzony Przewodnik implementacji oraz model zagrożeń mają służyć jako podstawa dla klientów, którzy dostosowują się do określonych wymagań. Nie powinny być używane w środowisku produkcyjnym. Wdrożenie tej architektury bez modyfikacji jest niewystarczające, aby całkowicie spełnić wymagania architektury NIST SP 800-171. Klienci są odpowiedzialni za przeprowadzenie odpowiednich ocen dotyczących zabezpieczeń i zgodności wszystkich rozwiązań utworzonych przy użyciu tej architektury. Wymagania mogą się różnić w zależności od implementacji poszczególnych klientów.
 
-## <a name="architecture-diagram-and-components"></a>Diagram architektury i składników
+## <a name="architecture-diagram-and-components"></a>Diagram architektury i składniki
 
-Tych samych zabezpieczeń platformy Azure i zgodności planu zapewnia architekturę referencyjną dla aplikacji sieci web PaaS z zapleczem usługi Azure SQL Database. Aplikacja sieci web jest hostowana w izolowanym środowisku usługi App Service, który jest prywatnym, dedykowanym środowisku w centrum danych platformy Azure. Środowisko równoważy obciążenie dla aplikacji sieci web na maszynach wirtualnych (VM) zarządzanych przez platformę Azure. Taka architektura obejmuje również sieciowych grup zabezpieczeń (NSG), bramy aplikacji platformy Azure, usługi Azure DNS i usługi Azure Load Balancer.
+Ten Strategia zabezpieczeń i zgodności z przepisami platformy Azure zapewnia architekturę referencyjną dla aplikacji sieci Web PaaS z zapleczem Azure SQL Database. Aplikacja sieci Web jest hostowana w izolowanym środowisku App Service, czyli prywatnym, dedykowanym środowisku w centrum danych platformy Azure. Obciążenie środowiska równoważenia obciążenia dla aplikacji sieci Web między maszynami wirtualnymi zarządzanymi przez platformę Azure. Ta architektura obejmuje także sieciowe grupy zabezpieczeń (sieciowych grup zabezpieczeń), bramę aplikacji platformy Azure, Azure DNS i Azure Load Balancer.
 
-Ulepszoną analizę i raportowanie baz danych Azure SQL Database można skonfigurować na indeksach magazynu kolumn. Bazy danych SQL platformy Azure można skalować w górę i w dół lub całkowicie wyłączony w odpowiedzi do użycia przez klientów. Cały ruch SQL jest szyfrowany przy użyciu protokołu SSL przez dołączenie certyfikaty z podpisem własnym. Najlepszym rozwiązaniem jest Azure zaleca się korzystanie z zaufanego urzędu certyfikacji w celu uzyskania zwiększonych zabezpieczeń.
+Aby uzyskać ulepszoną analizę i raportowanie, bazy danych SQL platformy Azure można skonfigurować przy użyciu indeksów magazynu kolumn. Bazy danych Azure SQL Database można skalować w górę lub w dół lub całkowicie wyłączać w odpowiedzi na użycie klientów. Cały ruch SQL jest szyfrowany przy użyciu protokołu SSL w ramach dołączania certyfikatów z podpisem własnym. Najlepszym rozwiązaniem jest to, że platforma Azure zaleca korzystanie z zaufanego urzędu certyfikacji w celu zwiększenia bezpieczeństwa.
 
-Rozwiązanie używa konta usługi Azure Storage, w których klienci mogą skonfigurować na potrzeby zachowania poufności danych magazynowanych szyfrowanie usługi Storage. Azure przechowuje trzy kopie danych w obrębie centrum danych wybranego klienta pod kątem odporności. Magazyn geograficznie nadmiarowy gwarantuje, że dane są replikowane do dodatkowego centrum danych setki z mil natychmiast i ponownie przechowywane jako trzy kopie w tym centrum danych. To rozwiązanie zapobiega zdarzenie niepożądane, u klienta podstawowe centrum danych co spowoduje utratę danych.
+Rozwiązanie korzysta z kont usługi Azure Storage, które mogą być szyfrowanie usługi Storage konfigurowane przez klientów w celu zachowania poufności danych przechowywanych w spoczynku. Platforma Azure przechowuje trzy kopie danych w wybranym centrum danych klienta pod kątem odporności. Magazyn Geograficznie nadmiarowy gwarantuje, że dane są replikowane do pomocniczego centrum danych o setki kilometrów i zapisane ponownie jako trzy kopie w tym centrum danych. To rozwiązanie zapobiega niekorzystnemu zdarzeniu w podstawowym centrum danych klienta, co spowodowało utratę danych.
 
-Aby zwiększyć bezpieczeństwo wszystkie zasoby w tym rozwiązaniu są zarządzane jako grupa zasobów za pomocą usługi Azure Resource Manager. Usługa Azure Active Directory, kontrola dostępu oparta na rolach (Azure AD) (RBAC) służy do kontrolowania dostępu do wdrożonych zasobów. Te zasoby obejmują kluczy klienta w usłudze Azure Key Vault. Kondycja systemu jest monitorowany za pośrednictwem usługi Azure Monitor. Klienci, skonfigurować niej monitorowania w celu przechwytywania dzienników. Kondycja systemu jest wyświetlany na pojedynczy pulpit nawigacyjny, który jest łatwy w użyciu.
+W celu zwiększenia bezpieczeństwa wszystkie zasoby w tym rozwiązaniu są zarządzane jako Grupa zasobów za pomocą Azure Resource Manager. Usługa Azure Active Directory (Azure AD) Kontrola dostępu oparta na rolach (RBAC) służy do kontrolowania dostępu do wdrożonych zasobów. Te zasoby obejmują klucze klienta w Azure Key Vault. Kondycja systemu jest monitorowana za Azure Monitor. Klienci konfigurują tę usługę monitorowania do przechwytywania dzienników. Kondycja systemu jest wyświetlana na jednym pulpicie nawigacyjnym łatwym w użyciu.
 
-Bazy danych SQL zwykle odbywa się za pomocą programu SQL Server Management Studio. Działa z komputera lokalnego, który jest skonfigurowany do dostępu do bazy danych SQL za pośrednictwem bezpiecznego połączenia sieci VPN lub usługi Azure ExpressRoute.
+SQL Database jest często zarządzany przez SQL Server Management Studio. Jest ona uruchamiana z komputera lokalnego, który jest skonfigurowany do uzyskiwania dostępu do bazy danych SQL za pośrednictwem bezpiecznego połączenia sieci VPN lub usługi Azure ExpressRoute.
 
-Usługa Application Insights zapewnia zarządzania wydajnością aplikacji w czasie rzeczywistym i analizy przy użyciu dzienników usługi Azure Monitor *firma Microsoft zaleca, aby skonfigurować połączenie sieci VPN lub usługi ExpressRoute do importowania danych i zarządzania do odwołania architektury podsieci.*
+Application Insights zapewnia zarządzanie wydajnością aplikacji i analizy w czasie rzeczywistym za pośrednictwem Azure Monitor dzienników *firma Microsoft zaleca skonfigurowanie połączenia sieci VPN lub ExpressRoute na potrzeby zarządzania i importowania danych do architektury referencyjnej podsieć.*
 
-![Aplikacja sieci Web PaaS dla SP NIST 800-171 referencyjny diagram architektury](images/nist171-paaswa-architecture.png "aplikacji sieci Web PaaS dla SP NIST 800-171 referencyjny diagram architektury")
+![PaaS Web Application for NIST SP 800-171 diagram architektury referencyjnej](images/nist171-paaswa-architecture.png "PaaS Web Application for NIST SP 800-171 diagram architektury referencyjnej")
 
-To rozwiązanie korzysta z poniższych usług platformy Azure. Aby uzyskać więcej informacji, zobacz [architektura wdrożenia](#deployment-architecture) sekcji.
+To rozwiązanie używa następujących usług platformy Azure. Aby uzyskać więcej informacji, zobacz sekcję [architektury wdrożenia](#deployment-architecture) .
 
 - Usługa Azure Virtual Machines
-    - (1) zarządzania/bastionu (Windows Server 2016 Datacenter)
+    - (1) Zarządzanie/bastionu (Windows Server 2016 Datacenter)
 - Azure Virtual Network
-    - (((1) /16 sieci
-    - (4) prefiksie/24 sieci
-    - (4) grupy zabezpieczeń sieci
+    - (1)/16 sieci
+    - (4)/24 sieci
+    - (4) sieciowe grupy zabezpieczeń
 - Azure Application Gateway
     - Zapora aplikacji internetowej
         - Tryb zapory: zapobieganie
@@ -55,170 +55,170 @@ To rozwiązanie korzysta z poniższych usług platformy Azure. Aby uzyskać wię
         - Port odbiornika: 443
 - Application Insights
 - Usługa Azure Active Directory
-- Usługa App Service Environment w wersji 2
+- App Service Environment v2
 - Azure Automation
-- System DNS platformy Azure
+- Usługa DNS platformy Azure
 - W usłudze Azure Key Vault
 - Azure Load Balancer
-- Usługa Azure Monitor (Dzienniki)
+- Azure Monitor (dzienniki)
 - Azure Resource Manager
 - Azure Security Center
 - Azure SQL Database
 - Azure Storage
 - Azure Automation
-- Azure Web Apps
+- Aplikacje internetowe paltformy Azure
 
 ## <a name="deployment-architecture"></a>Architektura wdrożenia
-W poniższej sekcji przedstawiono elementy wdrożenia i implementacji.
+W poniższej sekcji znajdują się szczegółowe informacje dotyczące elementów wdrażania i implementacji.
 
-**Usługa Azure Resource Manager**: [Menedżer zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) może służyć przez klientów do pracy z zasobami w rozwiązaniu jako grupa. Klientów można wdrożyć, zaktualizować lub usunąć wszystkie zasoby dla rozwiązania w jednej, skoordynowanej operacji. Klienci używają szablonu wdrożenia. Szablon można następnie używać w różnych środowiskach, takich jak testowania, przemieszczania i produkcji. Menedżer zasobów zapewnia zabezpieczeń, inspekcji i znakowania funkcje, aby pomóc klientom w zarządzaniu zasobami po wdrożeniu.
+**Azure Resource Manager**: [Menedżer zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) mogą być używane przez klientów do pracy z zasobami w rozwiązaniu jako Grupa. Klienci mogą wdrażać, aktualizować i usuwać wszystkie zasoby rozwiązania w ramach jednej, skoordynowanej operacji. Klienci używają szablonu do wdrożenia. Szablon może współpracować z różnymi środowiskami, takimi jak testowanie, przemieszczanie i produkcja. Menedżer zasobów zapewnia funkcje zabezpieczeń, inspekcji i tagowania ułatwiające klientom zarządzanie zasobami po wdrożeniu.
 
-**Host bastionu**: Host bastionu jest pojedynczym punktem wejścia, którego użytkownicy mogą uzyskać dostęp do zasobów wdrożonych w tym środowisku. Host bastionu zapewnia bezpieczne połączenie do wdrożonych zasobów, zezwalając tylko na zdalny ruch z publicznych adresów IP na liście bezpiecznych. Aby zezwolić na ruch pulpitu zdalnego, źródła ruchu musi być zdefiniowany w sieciowej grupie zabezpieczeń.
+**Host bastionu**: Host bastionu to pojedynczy punkt wprowadzania, za pomocą którego użytkownicy mogą uzyskać dostęp do wdrożonych zasobów w tym środowisku. Host bastionu zapewnia bezpieczne połączenie ze wdrożonymi zasobami, zezwalając na bezpieczną listę tylko ruchu zdalnego z publicznych adresów IP. Aby zezwolić na ruch pulpitu zdalnego, źródło ruchu musi być zdefiniowane w sieciowej grupy zabezpieczeń.
 
-To rozwiązanie umożliwia utworzenie maszyny Wirtualnej jako host bastionu przyłączone do domeny w następujący sposób:
--   [Rozszerzenia ochrony przed złośliwym oprogramowaniem](https://docs.microsoft.com/azure/security/azure-security-antimalware).
--   [Rozszerzenie diagnostyki platformy Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template).
--   [Usługa Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) za pomocą usługi Key Vault.
--   [Zasady automatycznego zamykania](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/) można ograniczyć zużycie zasobów maszyny Wirtualnej nie w użyciu.
--   [Windows Defender Credential Guard](https://docs.microsoft.com/windows/access-protection/credential-guard/credential-guard) jest włączona, tak aby poświadczeń i innych wpisów tajnych uruchomić w środowisku chronionego, która jest odizolowana od systemem operacyjnym.
+To rozwiązanie tworzy maszynę wirtualną jako przyłączony do domeny Host bastionu z następującymi konfiguracjami:
+-   [Rozszerzenie chroniące przed złośliwym kodem](https://docs.microsoft.com/azure/security/fundamentals/antimalware).
+-   [Diagnostyka Azure rozszerzenie](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template).
+-   [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) przy użyciu Key Vault.
+-   [Zasady automatycznego zamykania](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/) w celu ograniczenia użycia zasobów maszyn wirtualnych, gdy nie są używane.
+-   [Funkcja Windows Defender Credential Guard](https://docs.microsoft.com/windows/access-protection/credential-guard/credential-guard) jest włączona, aby poświadczenia i inne wpisy tajne były uruchamiane w chronionym środowisku, które jest odizolowane od działającego systemu operacyjnego.
 
-**Aplikacje sieci Web**: [Aplikacje sieci Web](https://docs.microsoft.com/azure/app-service/) to funkcja usługi Azure App Service. Klienci służy do tworzenia i hostowania wybranych przez nich aplikacji sieci web w języku programowania bez zarządzania infrastrukturą. Oferuje automatyczne skalowanie i wysoka dostępność. Go obsługuje Windows i Linux oraz umożliwia używanie wdrożeń zautomatyzowanych z usługi GitHub, DevOps platformy Azure lub z dowolnym repozytorium Git.
+**Web Apps**: [Web Apps](https://docs.microsoft.com/azure/app-service/) jest funkcją Azure App Service. Klienci mogą używać go do kompilowania i hostowania aplikacji sieci Web w wybranym języku programowania bez zarządzania infrastrukturą. Oferuje automatyczne skalowanie i wysoką dostępność. Obsługuje ona systemy Windows i Linux oraz włącza automatyczne wdrożenia z usług GitHub, Azure DevOps lub dowolnego repozytorium git.
 
-**Środowisko usługi App Service**: [Środowisko App Service Environment](https://docs.microsoft.com/azure/app-service/environment/intro) to funkcja usługi App Service. Zapewnia w pełni izolowane, dedykowane środowisko do bezpiecznego uruchamiania aplikacji usługi App Service w dużej skali.
+**App Service Environment**: [App Service Environment](https://docs.microsoft.com/azure/app-service/environment/intro) jest funkcją App Service. Zapewnia w pełni izolowane i dedykowane środowisko do bezpiecznego uruchamiania aplikacji App Service na dużą skalę.
 
-Środowisko usługi App Service jest izolowane do uruchamiania tylko jednej aplikacji. Jest ona zawsze wdrażane w sieci wirtualnej. Z powodu funkcja izolacji architektury referencyjnej ma izolacji dzierżawcy ukończone, a zostanie on usunięty z platformy Azure w środowisku wielodostępnym. Klienci mają precyzyjną kontrolę nad ruchem sieciowym w obu aplikacji dla ruchu przychodzącego i wychodzącego. Aplikacje mogą nawiązywać bezpieczne szybkie połączenia za pośrednictwem wirtualnych sieci lokalnych zasobów firmowych. Klienci mogą "automatycznego skalowania" za pomocą środowiska App Service Environment na podstawie metryk obciążenia, dostępnego budżetu lub zdefiniowany harmonogram.
+Środowisko App Service jest izolowane do uruchamiania tylko jednej aplikacji. Jest on zawsze wdrażany w sieci wirtualnej. Ze względu na funkcję izolacji architektura referencyjna ma kompletną izolację dzierżawy i jest usuwana ze środowiska wielodostępnego platformy Azure. Klienci mają szczegółową kontrolę nad ruchem sieciowym aplikacji przychodzących i wychodzących. Aplikacje mogą nawiązywać bezpieczne połączenia za pośrednictwem sieci wirtualnych z lokalnymi zasobami firmy. Klienci mogą "automatycznie skalować" z App Service Environment na podstawie metryk obciążenia, dostępnego budżetu lub zdefiniowanego harmonogramu.
 
-App Service Environment w przypadku tej architektury zapewnia następujące kontrolki i konfiguracje:
+Korzystanie z App Service Environment dla tej architektury zapewnia następujące kontrolki i konfiguracje:
 
-- Hostowanie w zabezpieczonej sieci wirtualnej platformy Azure i reguł zabezpieczeń sieciowych.
-- Certyfikat modułu równoważenia obciążenia z podpisem własnym wewnętrznego dla komunikacji HTTPS. Najlepszym rozwiązaniem firma Microsoft zaleca korzystanie z zaufanego urzędu certyfikacji w celu uzyskania zwiększonych zabezpieczeń.
-- [Trybu wewnętrznego równoważenia obciążenia](https://docs.microsoft.com/azure/app-service-web/app-service-environment-with-internal-load-balancer) (tryb 3).
-- Wyłącz [protokołu TLS 1.0](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-custom-settings).
-- Zmiana [szyfrowania TLS](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-custom-settings).
-- Kontrolka [ruchu N/M porty wejściowe](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-control-inbound-traffic).
-- [Zapora aplikacji sieci Web — Ogranicz danych](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-web-application-firewall).
-- Zezwalaj na [ruch usługi Azure SQL Database](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-network-architecture-overview).
+- Host w ramach zabezpieczonej sieci wirtualnej platformy Azure i reguł zabezpieczeń sieciowych.
+- Certyfikat wewnętrznego modułu równoważenia obciążenia z podpisem własnym na potrzeby komunikacji przy użyciu protokołu HTTPS. Najlepszym rozwiązaniem jest to, że firma Microsoft zaleca korzystanie z zaufanego urzędu certyfikacji w celu zwiększenia bezpieczeństwa.
+- [Tryb wewnętrznego równoważenia obciążenia](https://docs.microsoft.com/azure/app-service-web/app-service-environment-with-internal-load-balancer) (tryb 3).
+- Wyłącz [protokół TLS 1,0](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-custom-settings).
+- Zmień [szyfr TLS](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-custom-settings).
+- Steruj [ruchem przychodzącym N/h portów](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-control-inbound-traffic).
+- [Zapora aplikacji sieci Web — ograniczanie danych](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-web-application-firewall).
+- Zezwalaj na [ruch Azure SQL Database](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-network-architecture-overview).
 
 ### <a name="virtual-network"></a>Sieć wirtualna
-Architektura definiuje prywatnej sieci wirtualnej przy użyciu przestrzeni adresowej 10.200.0.0/16.
+Architektura definiuje prywatną sieć wirtualną z przestrzenią adresową 10.200.0.0/16.
 
-**Sieciowe grupy zabezpieczeń**: [Sieciowe grupy zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) zawierają listy kontroli dostępu, które blokują lub zezwalają na ruch w sieci wirtualnej. Sieciowe grupy zabezpieczeń może służyć do zabezpieczenia ruchu na poziomie podsieci lub poszczególnych maszyn wirtualnych. Istnieją następujące sieciowe grupy zabezpieczeń:
-- Jednej sieciowej grupy zabezpieczeń w usłudze Application Gateway
-- Jednej sieciowej grupy zabezpieczeń w środowisku usługi App Service
-- Jednej sieciowej grupy zabezpieczeń usługi SQL Database
-- Jednej sieciowej grupy zabezpieczeń dla hostem bastionu
+**Sieciowe grupy zabezpieczeń**: [Sieciowych grup zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) zawierają listy kontroli dostępu, które zezwalają na ruch w sieci wirtualnej lub odmawiają go. Sieciowych grup zabezpieczeń może służyć do zabezpieczania ruchu w podsieci lub na poziomie poszczególnych maszyn wirtualnych. Następująca sieciowych grup zabezpieczeń istnieje:
+- Jeden sieciowej grupy zabezpieczeń do Application Gateway
+- Jeden sieciowej grupy zabezpieczeń do App Service Environment
+- Jeden sieciowej grupy zabezpieczeń do SQL Database
+- Jeden sieciowej grupy zabezpieczeń dla hosta bastionu
 
-Każdy z sieciowych grup zabezpieczeń ma określone porty i protokoły Otwórz rozwiązanie może pracować bezpiecznie i poprawnie. Ponadto następujące konfiguracje są włączone dla każdej sieciowej grupy zabezpieczeń:
+Każdy z sieciowych grup zabezpieczeń ma określone porty i protokoły, dzięki czemu rozwiązanie może być bezpieczne i poprawne. Ponadto dla każdego sieciowej grupy ZABEZPIECZEŃu są włączone następujące konfiguracje:
   - [Dzienniki diagnostyczne i zdarzenia](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log) są włączone i przechowywane na koncie magazynu.
-  - Dzienniki platformy Azure Monitor jest podłączony do [diagnostyki sieciowej grupy zabezpieczeń](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json).
+  - Dzienniki Azure Monitor są połączone z [diagnostyką sieciowej grupy zabezpieczeń](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json).
 
-**Podsieci**: Każda podsieć jest skojarzone z jego odpowiedniego sieciowej grupy zabezpieczeń.
+**Podsieci**: Każda podsieć jest skojarzona z odpowiadającą jej sieciowej grupy zabezpieczeń.
 
-**Usługa Azure DNS**: System nazw domen (DNS) jest odpowiedzialny za tłumaczenia (lub rozpoznawanie) nazwę witryny sieci Web lub usługi na jej adres IP. [Usługa Azure DNS](https://docs.microsoft.com/azure/dns/dns-overview) to Usługa hostingu dla domen DNS, która umożliwia rozpoznawanie nazw przy użyciu infrastruktury platformy Azure. Hostowanie domen na platformie Azure, użytkownicy mogą zarządzać rekordami DNS przy użyciu tych samych poświadczeń, interfejsów API, narzędzi i rozliczeń co inne usługi platformy Azure. Usługa DNS platformy Azure obsługuje również prywatne domen DNS.
+**Azure DNS**: System nazw domen (DNS) jest odpowiedzialny za tłumaczenie (lub rozpoznanie) nazwy witryny sieci Web lub usługi na adres IP. [Azure DNS](https://docs.microsoft.com/azure/dns/dns-overview) to usługa hostingu dla domen DNS, która umożliwia rozpoznawanie nazw przy użyciu infrastruktury platformy Azure. Hostowanie domen na platformie Azure umożliwia użytkownikom Zarządzanie rekordami DNS przy użyciu tych samych poświadczeń, interfejsów API, narzędzi i rozliczeń, co w przypadku innych usług platformy Azure. Azure DNS obsługuje również prywatne domeny DNS.
 
-**Usługa Azure Load Balancer**: [Moduł równoważenia obciążenia](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) może być używany przez klientów do skalowania swoich aplikacji i zapewniać wysoką dostępność usług. Moduł równoważenia obciążenia obsługuje scenariusze ruchu przychodzącego i wychodzącego. Zapewnia małe opóźnienia i wysoką przepływność i skaluje nawet miliony przepływów dla wszystkich aplikacji TCP i UDP.
+**Azure Load Balancer**: [Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) mogą być używane przez klientów do skalowania aplikacji i tworzenia wysokiej dostępności dla usług. Load Balancer obsługuje scenariusze ruchu przychodzącego i wychodzącego. Zapewnia małe opóźnienia i wysoką przepływność oraz skaluje się do milionów przepływów dla wszystkich aplikacji TCP i UDP.
 
 ### <a name="data-in-transit"></a>Dane przesyłane
-Azure szyfruje cała komunikacja do i z centrów danych platformy Azure, domyślnie. Wszystkie transakcje w usłudze Azure Storage za pośrednictwem witryny Azure portal występują za pośrednictwem protokołu HTTPS.
+Platforma Azure domyślnie szyfruje całą komunikację do i z centrów danych platformy Azure. Wszystkie transakcje do usługi Azure Storage za pośrednictwem Azure Portal odbywają się za pośrednictwem protokołu HTTPS.
 
 ### <a name="data-at-rest"></a>Dane magazynowane
 
-Architektura chroni dane za pomocą funkcji szyfrowania, inspekcja bazy danych i innych miar.
+Architektura chroni dane przechowywane przez szyfrowanie, inspekcję bazy danych i inne miary.
 
-**Azure Storage**: Aby spełnić wymagania dla zaszyfrowanych danych w spoczynku, wszystkie [magazynu](https://azure.microsoft.com/services/storage/) używa [szyfrowanie usługi Storage](https://docs.microsoft.com/azure/storage/storage-service-encryption). Ta funkcja pomaga chronić i ochrony danych na rzecz organizacji bezpieczeństwa i zdefiniowane przez SP NIST 800-171 wymagań dotyczących zgodności.
+**Azure Storage**: Aby spełnić wymagania dotyczące szyfrowanych danych [przechowywanych w magazynie](https://azure.microsoft.com/services/storage/) , wszystkie magazyny są używane [szyfrowanie usługi Storage](https://docs.microsoft.com/azure/storage/storage-service-encryption). Ta funkcja pomaga chronić i zabezpieczać dane w celu obsługi zobowiązań w zakresie zabezpieczeń organizacji i wymagań dotyczących zgodności zdefiniowanych przez instytut NIST SP 800-171.
 
-**Usługa Azure Disk Encryption**: [Szyfrowanie dysków](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) używa funkcji BitLocker Windows, aby zapewnić szyfrowanie woluminów dla dysków z danymi. To rozwiązanie integruje się z usługą Key Vault ułatwiają sterowanie i zarządzanie kluczami szyfrowania dysków.
+**Azure Disk Encryption**: [Szyfrowanie dysków](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) używa funkcji BitLocker systemu Windows w celu zapewnienia szyfrowania woluminów dla dysków danych. Rozwiązanie integruje się z Key Vault w celu ułatwienia kontroli kluczy szyfrowania dysków i zarządzania nimi.
 
-**Azure SQL Database**: Wystąpienie bazy danych SQL wykorzystuje następujące środki bezpieczeństwa bazy danych:
--   [Uwierzytelnianie usługi Active Directory i autoryzacji](https://docs.microsoft.com/azure/sql-database/sql-database-AAD-authentication) umożliwia zarządzanie tożsamościami użytkowników bazy danych i innych usług firmy Microsoft w jednej centralnej lokalizacji.
--   [Inspekcja bazy danych SQL](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started) śledzi zdarzenia bazy danych i zapisuje je do inspekcji dzienniku na konto magazynu platformy Azure.
--   Baza danych SQL jest skonfigurowana do używania [technologii transparent data encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql). Wykonuje się w czasie rzeczywistym szyfrowanie i odszyfrowywanie bazy danych, skojarzonych kopii zapasowych i plików dziennika transakcji, do ochrony informacji w stanie spoczynku. Przezroczyste szyfrowanie danych zapewnia pewność, że przechowywane dane, nie został narażone na nieautoryzowany dostęp.
--   [Reguły zapory](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) uniemożliwia wszelki dostęp do serwerów bazy danych, dopóki nie zostały przyznane odpowiednie uprawnienia. Zapora udziela dostępu do bazy danych na podstawie źródłowego adresu IP każdego żądania.
--   [Funkcja wykrywania zagrożeń SQL](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-get-started) umożliwia wykrywanie i odpowiedzi na potencjalne zagrożenia w miarę ich występowania. Dostarcza alerty zabezpieczeń dla podejrzanych działaniach bazy danych, potencjalnych lukach w zabezpieczeniach, atakami polegającymi na iniekcji SQL i bazy danych nietypowe wzorce dostępu.
--   [Zaszyfrowane kolumny](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault) upewnij się, że poufne dane nigdy nie pojawia się jako zwykły tekst wewnątrz system bazy danych. Po włączeniu szyfrowania danych tylko aplikacje klienckie lub serwery aplikacji z dostępem do kluczy mogą uzyskać dostęp do danych w postaci zwykłego tekstu.
-- [Dynamiczne maskowanie danych](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) ogranicza ujawnianie poufnych danych przez maskowanie danych nieuprzywilejowanym użytkownikom lub aplikacji. Można automatycznie wykryć potencjalnie poufnych danych i zaproponuj odpowiednie maski mają być stosowane. Dynamiczne maskowanie danych pomaga ograniczyć dostęp, tak, aby dane poufne nie zakończyć bazy danych za pośrednictwem przed nieautoryzowanym dostępem. *Klienci są zobowiązani do dostosowywania ustawień stosować się do ich schemat bazy danych.*
+**Azure SQL Database**: W wystąpieniu SQL Database są stosowane następujące miary zabezpieczeń bazy danych:
+-   [Active Directory uwierzytelnianie i autoryzacja](https://docs.microsoft.com/azure/sql-database/sql-database-AAD-authentication) umożliwiają zarządzanie tożsamościami użytkowników baz danych i innych usług firmy Microsoft w jednej centralnej lokalizacji.
+-   [Inspekcja bazy danych SQL](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started) śledzi zdarzenia bazy danych i zapisuje je w dzienniku inspekcji na koncie usługi Azure Storage.
+-   SQL Database jest skonfigurowany do używania [przezroczystego szyfrowania danych](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql). Wykonuje szyfrowanie w czasie rzeczywistym oraz odszyfrowywanie bazy danych, skojarzonych kopii zapasowych i plików dziennika transakcji, aby chronić informacje przechowywane w pamięci podręcznej. Przezroczyste szyfrowanie danych zapewnia gwarancję, że przechowywane dane nie podlegają nieautoryzowanemu dostępowi.
+-   [Reguły zapory](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) uniemożliwiają dostęp do serwerów baz danych do momentu udzielenia odpowiednich uprawnień. Zapora udziela dostępu do bazy danych na podstawie źródłowego adresu IP każdego żądania.
+-   [Wykrywanie zagrożeń SQL](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-get-started) umożliwia wykrywanie i reagowanie na potencjalne zagrożenia w miarę ich występowania. Zapewnia alerty zabezpieczeń dla podejrzanych działań bazy danych, potencjalnych luk w zabezpieczeniach, ataków iniekcji SQL i nietypowych wzorców dostępu do bazy danych.
+-   [Zaszyfrowane kolumny](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault) zapewniają, że poufne dane nigdy nie pojawiają się jako zwykły tekst w systemie bazy danych. Po włączeniu szyfrowania danych tylko aplikacje klienckie lub serwery aplikacji z dostępem do kluczy mogą uzyskiwać dostęp do danych w postaci zwykłego tekstu.
+- [Dynamiczne maskowanie danych](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) ogranicza narażenie na dane poufne przez maskowanie danych do nieuprzywilejowanych użytkowników lub aplikacji. Może automatycznie odnajdywać potencjalnie wrażliwe dane i zasugerować odpowiednie maski, które mają zostać zastosowane. Dynamiczne maskowanie danych pomaga ograniczyć dostęp, tak aby dane poufne nie wyłączać bazy danych za pośrednictwem nieautoryzowanego dostępu. *Klienci są odpowiedzialni za dostosowanie ustawień, aby były zgodne ze schematem bazy danych.*
 
 ### <a name="identity-management"></a>Zarządzanie tożsamościami
-Następujące technologie zapewniają możliwości, aby zarządzać dostępem do danych w środowisku platformy Azure:
--   [Usługa Azure AD](https://azure.microsoft.com/services/active-directory/) to usługa firmy Microsoft wielodostępne oparte na chmurze zarządzania katalogami i tożsamościami zarządzania. Wszyscy użytkownicy w tym rozwiązaniu są tworzone w usłudze Azure AD i są użytkownicy, którzy dostęp do bazy danych SQL.
--   Do aplikacji uwierzytelniania za pomocą usługi Azure AD. Aby uzyskać więcej informacji, zobacz instrukcje [integrować aplikacje z usługą Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications). Szyfrowanie kolumny bazy danych również używa usługi Azure AD można uwierzytelnić aplikację do usługi SQL Database. Aby uzyskać więcej informacji, zobacz instrukcje [chronić poufne dane w bazie danych SQL](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault).
--   [Usługa Azure RBAC](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) może służyć przez administratorów do definiowania uprawnień dostępu w zakresie. Dzięki niemu one można udzielać uprawnień dostępu potrzebnym użytkownikom do wykonywania swoich zadań. Zamiast co dostępu użytkownika bez ograniczeń dla zasobów platformy Azure, Administratorzy mogą zezwalać tylko określone akcje do uzyskiwania dostępu do zasobów i danych. Dostęp do subskrypcji jest ograniczona do administratora subskrypcji.
-- [Usługa Azure Active Directory Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-getting-started) może służyć przez klientów, aby zminimalizować liczbę użytkowników, którzy mają dostęp do pewnych informacji. Administratorzy mogą używać usługi Azure AD Privileged Identity Management w celu odnajdywania, ograniczanie i monitorowanie uprzywilejowanych tożsamości oraz ich dostępu do zasobów. Tej funkcji można również wymusić na żądanie, just-in-time dostęp administracyjny w razie.
-- [Usługa Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) wykrywa potencjalnych luk w zabezpieczeniach, które mają wpływ na tożsamości w organizacji. Konfiguruje automatycznych odpowiedzi na wykryte podejrzane akcje powiązane z tożsamości w organizacji. Bada go również podejrzane zdarzenia podejmowanie odpowiednich działań, aby je rozwiązać.
+Następujące technologie zapewniają możliwości zarządzania dostępem do danych w środowisku platformy Azure:
+-   [Azure AD](https://azure.microsoft.com/services/active-directory/) to usługa zarządzania katalogiem i tożsamościami opartymi na chmurze firmy Microsoft. Wszyscy użytkownicy tego rozwiązania są tworzeniu w usłudze Azure AD i obejmują użytkowników, którzy uzyskują dostęp do bazy danych SQL.
+-   Uwierzytelnianie w aplikacji odbywa się przy użyciu usługi Azure AD. Aby uzyskać więcej informacji, zobacz jak [zintegrować aplikacje z usługą Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications). Szyfrowanie kolumny bazy danych używa również usługi Azure AD do uwierzytelniania aplikacji w SQL Database. Aby uzyskać więcej informacji, zobacz jak [chronić poufne dane w SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault).
+-   Administratorzy [systemu Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) mogą używać administratorów do definiowania szczegółowych uprawnień dostępu. Z działem IT mogą przyznawać tylko dostęp, który użytkownicy potrzebują do wykonywania swoich zadań. Zamiast zapewniać wszystkim użytkownikom nieograniczony dostęp do zasobów platformy Azure, Administratorzy mogą zezwalać na dostęp do zasobów i danych tylko określonym akcjom. Dostęp do subskrypcji jest ograniczony do administratora subskrypcji.
+- [Azure Active Directory Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-getting-started) mogą być używane przez klientów w celu zminimalizowania liczby użytkowników, którzy mają dostęp do określonych informacji. Administratorzy mogą używać Azure AD Privileged Identity Management do odnajdywania, ograniczania i monitorowania uprzywilejowanych tożsamości oraz ich dostępu do zasobów. Tej funkcji można także użyć do wymuszenia dostępu administracyjnego na żądanie, w miarę potrzeb, w razie potrzeby.
+- [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) wykrywa potencjalne luki w zabezpieczeniach, które mają wpływ na tożsamości organizacji. Służy do konfigurowania automatycznych odpowiedzi w celu wykrycia podejrzanych działań związanych z tożsamościami organizacji. Bada także podejrzane zdarzenia w celu podjęcia odpowiednich działań w celu ich rozwiązania.
 
 ### <a name="security"></a>Bezpieczeństwo
-**Zarządzanie wpisami tajnymi**: Rozwiązanie używa [usługi Key Vault](https://azure.microsoft.com/services/key-vault/) do zarządzania kluczami i wpisami tajnymi. Usługa Key Vault ułatwia ochronę kluczy kryptograficznych i wpisów tajnych używanych przez aplikacje w chmurze i usług. Następujące funkcje usługi Key Vault pomagają chronić dane klientów:
-- Zaawansowane zasady dostępu są skonfigurowane na podstawie potrzeb.
-- Zasady dostępu magazynu kluczy są definiowane za pomocą minimalnych wymaganych uprawnień do kluczy i wpisów tajnych.
-- Wszystkie klucze i wpisy tajne w usłudze Key Vault ma daty wygaśnięcia.
-- Wszystkie klucze w usłudze Key Vault są chronione przez specjalistyczne sprzętowych modułów zabezpieczeń. Typ klucza jest sprzętu chronionych modułu zabezpieczeń 2048-bitowego klucza RSA.
-- Wszyscy użytkownicy i tożsamości są przyznawane minimalnych wymaganych uprawnień przy użyciu RBAC.
-- Dzienniki diagnostyczne usługi Key Vault są włączone z okresem przechowywania, co najmniej 365 dni.
-- Dozwolone operacje kryptograficzne klucze są ograniczone do tych wymagane.
+**Zarządzanie**wpisami tajnymi: Rozwiązanie używa [Key Vault](https://azure.microsoft.com/services/key-vault/) do zarządzania kluczami i wpisami tajnymi. Key Vault pomaga chronić klucze kryptograficzne i wpisy tajne używane przez aplikacje i usługi w chmurze. Następujące funkcje Key Vault pomagają klientom chronić dane:
+- Zaawansowane zasady dostępu są konfigurowane w zależności od potrzeb.
+- Zasady dostępu Key Vault są zdefiniowane z minimalnymi wymaganymi uprawnieniami do kluczy i wpisów tajnych.
+- Wszystkie klucze i wpisy tajne w Key Vault mają daty wygaśnięcia.
+- Wszystkie klucze w Key Vault są chronione przez wyspecjalizowane sprzętowe moduły zabezpieczeń. Typ klucza jest sprzętowego sprzętu zabezpieczenia-chroniony przez moduł 2048-bitowy klucz RSA.
+- Wszyscy użytkownicy i tożsamości otrzymują minimalne wymagane uprawnienia przy użyciu RBAC.
+- Dzienniki diagnostyczne dla Key Vault są włączone z okresem przechowywania wynoszącym co najmniej 365 dni.
+- Dozwolone operacje kryptograficzne dla kluczy są ograniczone do tych, które są wymagane.
 
-**Usługa Azure Security Center**: Za pomocą [usługi Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro), klienci mogą centralnie zastosować i zarządzać zasadami zabezpieczeń na potrzeby różnych obciążeń, ograniczenia narażenia na zagrożenia i wykrywanie oraz reagowanie na ataki. Usługa Security Center również uzyskuje dostęp do istniejących konfiguracji usług platformy Azure w celu zapewnienia konfiguracji i zalecenia dotyczące usługi w celu zwiększenia poziomu bezpieczeństwa i ochrony danych.
+**Azure Security Center**: Dzięki [Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)klienci mogą centralnie stosować zasady zabezpieczeń i zarządzać nimi w ramach obciążeń, ograniczać zagrożenie dla zagrożeń oraz wykrywać ataki i reagować na nie. Security Center również uzyskuje dostęp do istniejących konfiguracji usług platformy Azure w celu zapewnienia konfiguracji i zaleceń dotyczących usług w celu zwiększenia bezpieczeństwa i ochrony danych.
 
-Usługa Security Center korzysta z rozmaitych możliwości wykrywania powiadamia klientów o potencjalnych ataków, których platformą docelową ich środowiska. Te alerty zawierają cenne informacje dotyczące przyczyny ich wyzwolenia, zasobów, których dotyczy atak, i źródła ataku. Usługa Security Center zawiera zbiór [wstępnie zdefiniowane alerty zabezpieczeń](https://docs.microsoft.com/azure/security-center/security-center-alerts-type) , są wyzwalane, gdy zagrożenia lub podejrzanej aktywności ma miejsce. Klienci mogą używać [niestandardowe reguły alertów](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) do definiowania nowych alertów zabezpieczeń, w oparciu o dane, które zostały już zebrane ze swoim środowisku.
+Security Center korzysta z różnych funkcji wykrywania, aby wysyłać alerty klientom potencjalnych ataków, które są ukierunkowane na swoje środowiska. Te alerty zawierają cenne informacje dotyczące przyczyny ich wyzwolenia, zasobów, których dotyczy atak, i źródła ataku. Security Center zawiera zestaw [wstępnie zdefiniowanych alertów zabezpieczeń](https://docs.microsoft.com/azure/security-center/security-center-alerts-type) , które są wyzwalane w przypadku wystąpienia zagrożeń lub podejrzanych działań. Klienci mogą używać [niestandardowych reguł alertów](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) w celu definiowania nowych alertów zabezpieczeń opartych na danych, które zostały już zebrane z ich środowiska.
 
-Usługa Security Center zapewnia zdarzeń i alertów zabezpieczeń uporządkowanych według priorytetu. Usługa Security Center sprawia, że prostsze dla klientów odkryć i rozwiązać potencjalne problemy z zabezpieczeniami. A [raport analizy zagrożeń](https://docs.microsoft.com/azure/security-center/security-center-threat-report) jest generowany dla każdej wykrytej zagrożeń. Odpowiedzi na zdarzenia zespołów mogą korzystać z raportów, gdy ich badaniu i usuwaniu zagrożeń.
+Security Center zapewnia priorytetowe alerty zabezpieczeń i zdarzenia. Security Center ułatwia klientom odnajdywanie potencjalnych problemów z zabezpieczeniami i ich rozwiązywanie. Dla każdego wykrytego zagrożenia jest generowany [Raport analizy zagrożeń](https://docs.microsoft.com/azure/security-center/security-center-threat-report) . Zespoły reagowania na incydenty mogą korzystać z raportów podczas badania i korygowania zagrożeń.
 
-**Usługa Azure Application Gateway**: Architektura zmniejsza ryzyko luk w zabezpieczeniach przy użyciu bramy aplikacji przy użyciu zapory aplikacji sieci web, skonfigurowane i zestaw reguł OWASP, które są włączone. Dodatkowe funkcje obejmują:
+**Application Gateway platformy Azure**: Architektura zmniejsza ryzyko wystąpienia luk w zabezpieczeniach przy użyciu bramy aplikacji z skonfigurowaną zaporą aplikacji sieci Web i włączonym zestawem reguł OWASP. Dodatkowe możliwości obejmują:
 
-- [Koniec na końcu SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
+- [Kompleksowy protokół SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
 - Włącz [odciążanie protokołu SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-portal).
-- Wyłącz [protokołu TLS 1.0 i 1.1](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
+- Wyłącz [protokół TLS w wersji 1.0 i 1.1](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
 - [Zapora aplikacji sieci Web](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-overview) (tryb zapobiegania).
-- [Tryb zapobiegania](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-portal) zestaw reguł, OWASP 3.0.
-- Włącz [rejestrowania diagnostycznego](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics).
-- [Niestandardowych sond kondycji](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-gateway-portal).
-- [Usługa Security Center](https://azure.microsoft.com/services/security-center) i [usługi Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations) zapewnia dodatkową ochronę i powiadomienia. Usługa Security Center zapewnia także system reputacji.
+- [Tryb zapobiegania](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-portal) z zestawem reguł OWASP 3,0.
+- Włącz [rejestrowanie diagnostyczne](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics).
+- [Niestandardowe sondy kondycji](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-gateway-portal).
+- [Security Center](https://azure.microsoft.com/services/security-center) i [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations) zapewniają dodatkową ochronę i powiadomienia. Security Center udostępnia również system reputacji.
 
-### <a name="logging-and-auditing"></a>Rejestrowanie i przeprowadzanie inspekcji
+### <a name="logging-and-auditing"></a>Rejestrowanie i inspekcja
 
-Usługi platformy Azure często dziennika systemu i aktywności użytkownika, a także kondycji systemu:
-- **Dzienniki aktywności**: [Dzienniki aktywności](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) udostępniają szczegółowe dane operacji wykonywanych na zasobach w subskrypcji. Dzienniki aktywności można określić inicjatora operacji czasu wystąpienie i stan.
-- **Dzienniki diagnostyczne**: [Dzienniki diagnostyczne](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) obejmują wszystkie dzienniki emitowane przez każdy zasób. Dzienniki te obejmują dzienniki systemu zdarzeń Windows, dzienniki magazynu, dzienników inspekcji usługi Key Vault i usługa Application Gateway Dzienniki dostępu i zapory. Wszystkie dzienniki diagnostyczne zapisu do konta usługi Azure storage scentralizowany i zaszyfrowane w celu archiwizacji. Użytkownicy mogą skonfigurować okres przechowywania, nawet do 730 dni, aby spełnić konkretne wymagania.
+Usługi platformy Azure w szerokim zakresie rejestrują aktywność systemu i użytkownika, a także kondycję systemu:
+- **Dzienniki aktywności**: [Dzienniki aktywności](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) zapewniają wgląd w operacje wykonywane na zasobach w ramach subskrypcji. Dzienniki aktywności mogą pomóc w ustaleniu inicjatora, czasu wystąpienia i stanu operacji.
+- **Dzienniki diagnostyczne**: [Dzienniki diagnostyczne](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) obejmują wszystkie dzienniki wyemitowane przez każdy zasób. Te dzienniki obejmują Dzienniki systemu Windows, dzienniki magazynu, dzienniki inspekcji Key Vault i Application Gateway dostępu i dzienników zapory. Wszystkie dzienniki diagnostyczne zapisu na scentralizowanym i zaszyfrowanym koncie usługi Azure Storage w celu archiwizacji. Użytkownicy mogą skonfigurować okres przechowywania (do 730 dni) w celu spełnienia określonych wymagań.
 
-**Dzienniki platformy Azure Monitor**: Dzienniki i dalszych są skonsolidowane w [dzienniki usługi Azure Monitor](https://azure.microsoft.com/services/log-analytics/) do przetwarzania, przechowywania i raportowanie na pulpicie nawigacyjnym. Po zebraniu danych, wartość jest zorganizowana w oddzielnych tabelach dla każdego typu danych w obszarach roboczych usługi Log Analytics. W ten sposób wszystkie dane mogą być analizowane razem niezależnie od ich oryginalnego źródła. Usługa Security Center integruje się z dziennikami usługi Azure Monitor. Klienci mogą używać zapytania Kusto dostęp do swoich danych zdarzeń zabezpieczeń i łączyć je z danymi z innych usług.
+**Azure monitor dzienników**: Dzienniki są konsolidowane w [dziennikach Azure monitor](https://azure.microsoft.com/services/log-analytics/) na potrzeby przetwarzania, przechowywania i raportowania na pulpicie nawigacyjnym. Po zebraniu danych są one podzielone na oddzielne tabele dla każdego typu danych w obszarze obszary robocze Log Analytics. W ten sposób wszystkie dane można analizować razem niezależnie od oryginalnego źródła. Security Center integruje się z dziennikami Azure Monitor. Klienci mogą używać zapytań Kusto, aby uzyskać dostęp do danych zdarzeń zabezpieczeń i połączyć je z danymi z innych usług.
 
-Następujące Azure [rozwiązania do monitorowania](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions) są uwzględniane w ramach tej architektury:
--   [Oceny usługi Active Directory](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Rozwiązanie kondycja Sprawdzanie usługi Active Directory ocenia ryzyko i kondycję środowisk serwerów programu w regularnych odstępach czasu. Zapewnia priorytetową listą zalecenia dotyczące infrastruktury serwera wdrożone.
-- [Ocena SQL](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): Rozwiązanie SQL Health Check ocenia ryzyko i kondycję środowisk serwerów programu w regularnych odstępach czasu. Daje klientom z priorytetową listą zalecenia dotyczące infrastruktury serwera wdrożone.
-- [Kondycja agenta](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): Rozwiązanie Agent Health raporty są wdrażane liczby agentów i ich rozmieszczenie geograficzne. Zgłasza również odpowiadają liczby agentów i liczbę agentów, którzy przesłali danych operacyjnych.
--   [Activity Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Rozwiązanie Activity Log Analytics obsługuje analizy dzienników aktywności platformy Azure we wszystkich subskrypcjach platformy Azure dla klientów.
+Następujące rozwiązania do [monitorowania](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions) platformy Azure są dostępne w ramach tej architektury:
+-   [Ocena Active Directory](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Rozwiązanie do sprawdzania kondycji Active Directory ocenia ryzyko i kondycję środowisk serwera w regularnych odstępach czasu. Zawiera priorytetową listę zaleceń specyficznych dla wdrożonej infrastruktury serwera.
+- [Ocena SQL](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): Rozwiązanie sprawdzania kondycji SQL ocenia ryzyko i kondycję środowisk serwera w regularnych odstępach czasu. Zapewnia ona klientom priorytetową listę zaleceń specyficznych dla wdrożonej infrastruktury serwera.
+- [Agent Health](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): Rozwiązanie Agent Health zgłasza liczbę wdrożonych agentów i ich dystrybucję geograficzną. Raporty te również przedstawiają liczbę agentów, które nie odpowiadają, oraz liczbę agentów przesyłających dane operacyjne.
+-   [Activity Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Activity Log Analytics rozwiązanie pomaga w analizie dzienników aktywności platformy Azure we wszystkich subskrypcjach platformy Azure dla klienta.
 
-**Usługa Azure Automation**: [Automatyzacja](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker) przechowywane i zarządza elementami runbook i jest uruchamiany. W tym rozwiązaniu elementów runbook pomagają zbieranie dzienników z usługi SQL Database. Klienci mogą korzystać z automatyzacji [Change Tracking](https://docs.microsoft.com/azure/automation/automation-change-tracking) rozwiązania, aby łatwo identyfikować zmiany w środowisku.
+**Azure Automation**: [Usługi Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker) przechowują elementy Runbook, uruchamiają je i zarządzają nimi. W tym rozwiązaniu elementy Runbook ułatwiają zbieranie dzienników z SQL Database. Klienci mogą korzystać z rozwiązania [Change Tracking](https://docs.microsoft.com/azure/automation/automation-change-tracking) Automation, aby łatwo identyfikować zmiany w środowisku.
 
-**Azure Monitor**: [Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) ułatwia użytkownikom śledzenia wydajności, zapewniania bezpieczeństwa i identyfikowania trendów. Organizacje mogą używać go do inspekcji, tworzyć alerty i archiwizować dane. Mogą również śledzić wywołań interfejsu API w swoich zasobów platformy Azure.
+**Azure monitor**: [Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) ułatwia użytkownikom śledzenie wydajności, zachowanie bezpieczeństwa i identyfikowanie trendów. Organizacje mogą używać go do inspekcji, tworzenia alertów i archiwizowania danych. Mogą również śledzić wywołania interfejsu API w swoich zasobach platformy Azure.
 
-**Usługa Application Insights**: [Usługa Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) to usługa zarządzania wydajnością aplikacji rozszerzalnej dla deweloperów sieci web na wielu platformach. Usługa Application Insights wykrywa anomalie wydajność. Klienci mogą go używać do monitorowania działającej aplikacji sieci web. Usługi Application Insights zawiera narzędzia zaawansowane funkcje analityczne, aby ułatwić klientom diagnozować problemy i zrozumieć, jak użytkownicy korzystają z aplikacji. Jego&#39;s zaprojektowane, aby pomóc klientom w ciągłym udoskonalaniu wydajności i użyteczności.
+**Application Insights**: [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) to rozszerzalna usługa zarządzania wydajnością aplikacji dla deweloperów sieci Web na wielu platformach. Application Insights wykrywa anomalie wydajności. Klienci mogą używać go do monitorowania działającej aplikacji sieci Web. Application Insights obejmuje zaawansowane narzędzia analityczne pomagające klientom zdiagnozować problemy i zrozumieć, co użytkownicy robią z aplikacją. Jest&#39;ona przeznaczona do ułatwienia klientom ciągłego ulepszania wydajności i użyteczności.
 
 ## <a name="threat-model"></a>Model zagrożeń
 
-Diagram przepływu danych dla tej architektury referencyjnej jest dostępne dla [Pobierz](https://aka.ms/nist171-paaswa-tm) lub można znaleźć tutaj. Ten model może pomóc klientom w zrozumieniu punkty potencjalne ryzyko w ramach infrastruktury systemu wprowadzasz zmiany.
+Diagram przepływu danych dla tej architektury referencyjnej jest dostępny do [pobrania](https://aka.ms/nist171-paaswa-tm) lub można go znaleźć tutaj. Ten model może pomóc klientom zrozumieć punkty potencjalnego ryzyka w infrastrukturze systemu podczas wprowadzania modyfikacji.
 
-![Aplikacja sieci Web PaaS dla model zagrożeń SP NIST 800-171](images/nist171-paaswa-threat-model.png "aplikacji sieci Web PaaS dla SP NIST 800-171 model zagrożeń")
+![PaaS Web Application for NIST SP 800-171 — model zagrożeń](images/nist171-paaswa-threat-model.png "PaaS Web Application for NIST SP 800-171 — model zagrożeń")
 
-## <a name="compliance-documentation"></a>Dokumentacja zgodności
-[Zabezpieczeń platformy Azure i zgodności planu - SP NIST 800-171 klienta odpowiedzialność macierzy](https://aka.ms/nist171-crm) Wyświetla wszystkie kontrolki zabezpieczeń wymagane przez SP NIST 800-171. Ta macierz szczegółowe informacje, czy implementacja każdej kontrolki jest odpowiedzialność firmy Microsoft, klientów, lub współużytkowana przez dwa.
+## <a name="compliance-documentation"></a>Dokumentacja dotycząca zgodności
+W przypadku [macierzy z strategia zabezpieczeń i zgodności z przepisami platformy Azure-NIST SP 800-171 klient](https://aka.ms/nist171-crm) zawiera listę wszystkich kontroli zabezpieczeń wymaganych przez instytut NIST SP 800-171. Ta macierz zawiera szczegółowe informacje o tym, czy implementacja poszczególnych kontroli jest odpowiedzialna za firmę Microsoft, klienta, czy współdzielona między nimi.
 
-[Zabezpieczeń platformy Azure i zgodności planu - macierzy implementacji kontroli aplikacji sieci Web PaaS SP NIST 800-171](https://aka.ms/nist171-paaswa-cim) zawiera informacje, na które SP NIST 800-171 kontrolki są rozwiązywane przez Architektura aplikacji sieci web PaaS. Zawiera szczegółowy opis sposobu wdrożenia spełnia wymagania każdego formantu objętego usługą.
+[Macierz implementacji kontroli aplikacji sieci web strategia zabezpieczeń i zgodności z przepisami platformy Azure-NIST sp 800-171 PaaS](https://aka.ms/nist171-paaswa-cim) zawiera informacje na temat tego, które kontrolki NIST SP 800-171 są rozwiązywane przez architekturę aplikacji sieci Web PaaS. Zawiera szczegółowy opis sposobu, w jaki implementacja spełnia wymagania poszczególnych formantów objętych usługą.
 
 ## <a name="guidance-and-recommendations"></a>Wskazówki i zalecenia
 ### <a name="vpn-and-expressroute"></a>Sieci VPN i ExpressRoute
-Bezpieczny tunel sieci VPN lub [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) musi być skonfigurowana do bezpieczne nawiązywanie połączenia z zasobami wdrożonymi w ramach tej architektury referencyjnej aplikacji sieci web PaaS. Konfigurując odpowiednie sieci VPN lub usługi ExpressRoute, klientów można dodać warstwę ochrony danych podczas przesyłania.
+Bezpieczny tunel VPN lub [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) musi być skonfigurowany do bezpiecznego nawiązywania połączenia z zasobami wdrożonymi w ramach tej architektury referencyjnej aplikacji sieci Web PaaS. Przez odpowiednie skonfigurowanie sieci VPN lub ExpressRoute klienci mogą dodać warstwę ochrony danych do przetworzenia.
 
-Wdrażając bezpieczny tunel sieci VPN z platformą Azure, można tworzyć wirtualne prywatne połączenie między siecią lokalną a siecią wirtualną platformy Azure. To połączenie odbywa się za pośrednictwem Internetu i umożliwia klientom bezpieczne "tuneli" informacji wewnątrz zaszyfrowane połączenia między siecią i platformą Azure przez klienta. Sieci VPN typu lokacja lokacja to bezpieczne, dojrzała technologia, która został wdrożony w przedsiębiorstwach każdej wielkości używana od dziesięcioleci. [Trybu tunelowania IPsec](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10)) jest używany w przypadku tej opcji jako mechanizmu szyfrowania.
+Implementując bezpieczny tunel VPN z platformą Azure, można utworzyć wirtualne połączenie prywatne między siecią lokalną a siecią wirtualną platformy Azure. To połączenie odbywa się za pośrednictwem Internetu i umożliwia klientom bezpieczne informacje "tunel" w ramach zaszyfrowanego połączenia między siecią klienta i platformą Azure. Sieci VPN typu lokacja-lokacja to bezpieczna, dojrzała technologia, która została wdrożona przez przedsiębiorstwa wszystkich rozmiarów dla dekad. [Tryb tunelowania IPSec](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10)) jest używany w tej opcji jako mechanizm szyfrowania.
 
-Ponieważ ruch sieciowy w ramach tunelu sieci VPN jest przesyłane przez Internet przy użyciu sieci VPN lokacja lokacja, firma Microsoft oferuje inną opcję połączenia jeszcze bardziej bezpieczne. Usługa ExpressRoute jest dedykowany sieci WAN łącze między Azure i lokacją lokalną lub hostingu dostawcy usług Exchange. Połączenia ExpressRoute łączyć się bezpośrednio z dostawcą usług telekomunikacyjnych klienta. W rezultacie dane nie podróżują, przez Internet i nie jest widoczne. Połączenia te oferują więcej niezawodność, większe szybkości, krótsze opóźnienia i lepsze zabezpieczenia niż typowe połączenia.
+Ze względu na to, że ruch w ramach tunelu sieci VPN przechodzi przez Internet przy użyciu sieci VPN typu lokacja-lokacja, firma Microsoft oferuje kolejną jeszcze bezpieczną opcję połączenia. ExpressRoute to dedykowany link sieci WAN między platformą Azure i lokalizacją lokalną lub dostawcą hostingu programu Exchange. Połączenia ExpressRoute nawiązują połączenie bezpośrednio z dostawcą telekomunikacyjnym klienta. W związku z tym dane nie podróżują przez Internet i nie są w nim ujawniane. Połączenia te oferują większą niezawodność, większe szybkości, mniejsze opóźnienia i lepsze zabezpieczenia niż typowe połączenia.
 
-Najlepsze rozwiązania dotyczące wdrażania bezpieczną sieć hybrydową, która rozszerza sieć lokalną na platformę Azure są [dostępne](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid).
+[Dostępne](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)są najlepsze rozwiązania dotyczące implementowania bezpiecznej sieci hybrydowej, która rozszerza sieć lokalną na platformę Azure.
 
-## <a name="disclaimer"></a>Zrzeczenie odpowiedzialności
+## <a name="disclaimer"></a>Zastrzeżenie
 
- - Ten dokument jest tylko do celów informacyjnych. MICROSOFT NIE UDZIELA ŻADNYCH GWARANCJI, WYRAŹNYCH, DOROZUMIANYCH LUB USTAWOWYCH, W ODNIESIENIU DO INFORMACJI W TYM DOKUMENCIE. Niniejszy dokument jest udostępniany "jako-to." Informacje i poglądy wyrażone w tym dokumencie, w tym adresy URL i inne odnośniki do witryn internetowych, mogą ulec zmianie bez powiadomienia. Klienci odczytu ten dokument jest odpowiedzialny za jej pomocą.
- - W tym dokumencie nie zapewnia klientom żadnych praw do własności intelektualnej w dowolnym produkcie firmy Microsoft lub rozwiązań.
- - Klienci kopiować i używać tego dokumentu do celów referencyjnych wewnętrznego.
- - Zastosowanie niektórych zaleceń zamieszczonych w tym dokumencie może spowodować od zwiększoną danych, sieci lub użycia zasobów obliczeniowych na platformie Azure i może zwiększyć Azure kosztów licencji lub subskrypcji klienta.
- - Ta architektura jest przeznaczona do służyć jako podstawa dla klientów dostosować ich określonych wymagań i nie może być używana jako — w środowisku produkcyjnym.
- - Ten dokument jest opracowana jako odwołanie i nie należy używać do definiowania wszystkich oznacza, że przez co klient spełnia wymagania w zakresie wymagań dotyczących określonych zgodności i przepisów. Klienci, powinny zwrócić prawne obsługi ze swojej organizacji w implementacji zatwierdzone klienta.
+ - Ten dokument jest przeznaczony wyłącznie do celów informacyjnych. FIRMA MICROSOFT NIE UDZIELA ŻADNYCH GWARANCJI, WYRAŹNYCH, DOROZUMIANYCH ANI USTAWOWYCH, W ODNIESIENIU DO INFORMACJI ZAWARTYCH W TYM DOKUMENCIE. Ten dokument jest dostarczany "w takiej postaci, w jakim jest". Informacje i poglądy wyrażone w tym dokumencie, w tym adresy URL i inne odwołania do witryn internetowych, mogą ulec zmianie bez powiadomienia. Klienci czytający ten dokument mają ryzyko związane z jego użyciem.
+ - Niniejszy dokument nie zapewnia klientom żadnych praw do jakiejkolwiek własności intelektualnej w jakichkolwiek produktach lub rozwiązaniach firmy Microsoft.
+ - Klienci mogą kopiować i używać tego dokumentu do wewnętrznych celów referencyjnych.
+ - Niektóre zalecenia zawarte w tym dokumencie mogą spowodować zwiększenie użycia zasobów, sieci lub obliczeń na platformie Azure oraz zwiększyć koszty związane z licencją lub subskrypcją platformy Azure klienta.
+ - Ta architektura jest przeznaczona dla klientów w celu dostosowania ich do konkretnych wymagań i nie powinna być używana w środowisku produkcyjnym.
+ - Niniejszy dokument jest opracowywany jako odwołanie i nie należy go używać do definiowania wszystkich środków, za pomocą których klient może spełnić określone wymagania i regulacje dotyczące zgodności. Klienci powinni zwrócić się z pomocą techniczną od organizacji na zatwierdzone implementacje klientów.

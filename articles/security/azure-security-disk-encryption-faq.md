@@ -7,14 +7,14 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: c28cf4326593897dcbc90902737fc4846356078d
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 4f2a34e63a870814c8d2a3ffe24c60083c9d7bb2
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653381"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68781103"
 ---
-# <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Usługa Azure Disk Encryption dla maszyn wirtualnych IaaS — często zadawane pytania
+# <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Azure Disk Encryption dla maszyn wirtualnych IaaS — często zadawane pytania
 
 Ten artykuł zawiera odpowiedzi na często zadawane pytania (FAQ) dotyczących platformy Azure szyfrowania dysku dla Windows i maszyn wirtualnych IaaS z systemem Linux. Aby uzyskać więcej informacji na temat tej usługi, zobacz [Azure szyfrowania dysku dla Windows i maszyn wirtualnych IaaS z systemem Linux](azure-security-disk-encryption-overview.md).
 
@@ -34,28 +34,28 @@ Nie ma opłat do szyfrowania dysków maszyn wirtualnych za pomocą usługi Azure
 
 Aby rozpocząć pracę, przeczytaj [Omówienie usługi Azure Disk Encryption](azure-security-disk-encryption-overview.md).
 
-## <a name="what-vm-sizes-and-operating-systems-support-azure-disk-encryption"></a>Jakie rozmiarów maszyn wirtualnych i systemy operacyjne obsługiwane przez usługi Azure Disk Encryption?
+## <a name="what-vm-sizes-and-operating-systems-support-azure-disk-encryption"></a>Jakie rozmiary maszyn wirtualnych i systemów operacyjnych Azure Disk Encryption obsługiwać?
 
-[Wymagania wstępne dotyczące usługi Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) artykuł list [rozmiarów maszyn wirtualnych](azure-security-disk-encryption-prerequisites.md#supported-vm-sizes) i [maszyn wirtualnych systemów operacyjnych](azure-security-disk-encryption-prerequisites.md#supported-operating-systems) obsługujące usługi Azure Disk Encryption.
+W artykule dotyczącym [wymagań wstępnych Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) wymieniono [rozmiary maszyn wirtualnych](azure-security-disk-encryption-prerequisites.md#supported-vm-sizes) i [systemy operacyjne maszyn wirtualnych](azure-security-disk-encryption-prerequisites.md#supported-operating-systems) obsługujące Azure Disk Encryption.
 
 ## <a name="can-i-encrypt-both-boot-and-data-volumes-with-azure-disk-encryption"></a>Czy można zaszyfrować woluminów rozruchowych i danych przy użyciu usługi Azure Disk Encryption?
 
-Tak, można zaszyfrować woluminy rozruchowe i dane dla Windows i maszyn wirtualnych IaaS z systemem Linux. W przypadku maszyn wirtualnych Windows nie można zaszyfrować dane bez pierwszy szyfrowania woluminu systemu operacyjnego. W przypadku maszyn wirtualnych systemu Linux jest umożliwia szyfrowanie ilości danych bez konieczności najpierw szyfrowania woluminu systemu operacyjnego. Po wolumin systemu operacyjnego został zaszyfrowany dla systemu Linux, wyłączenie szyfrowania na woluminie systemu operacyjnego dla maszyn wirtualnych IaaS z systemem Linux nie jest obsługiwany. W zestawie skalowania maszyn wirtualnych systemu Linux mogą być szyfrowane tylko woluminów danych.
+Tak, można zaszyfrować woluminy rozruchowe i dane dla Windows i maszyn wirtualnych IaaS z systemem Linux. W przypadku maszyn wirtualnych Windows nie można zaszyfrować dane bez pierwszy szyfrowania woluminu systemu operacyjnego. W przypadku maszyn wirtualnych systemu Linux jest umożliwia szyfrowanie ilości danych bez konieczności najpierw szyfrowania woluminu systemu operacyjnego. Po wolumin systemu operacyjnego został zaszyfrowany dla systemu Linux, wyłączenie szyfrowania na woluminie systemu operacyjnego dla maszyn wirtualnych IaaS z systemem Linux nie jest obsługiwany. W przypadku maszyn wirtualnych z systemem Linux w zestawie skalowania można zaszyfrować tylko wolumin danych.
 
-## <a name="can-i-encrypt-an-unmounted-volume-with-azure-disk-encryption"></a>Czy można zaszyfrować odinstalowane woluminu za pomocą usługi Azure Disk Encryption?
+## <a name="can-i-encrypt-an-unmounted-volume-with-azure-disk-encryption"></a>Czy mogę zaszyfrować wolumin odinstalowany z Azure Disk Encryption?
 
-Nie, usługa Azure Disk Encryption szyfruje zainstalowanych woluminów.
+Nie, Azure Disk Encryption szyfruje tylko woluminy zainstalowane.
 
-## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>Jak obrócić klucze tajne i klucze szyfrowania
+## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>Jak mogę obrócić wpisy tajne lub klucze szyfrowania?
 
-Aby obrócić wpisów tajnych, po prostu Wywołaj tego samego polecenia, które były pierwotnie włączyć szyfrowanie dysku, określając inną usługę Key Vault. Aby wymienić główny klucz szyfrowania klucza, należy wywołać tego samego polecenia, które były pierwotnie włączyć szyfrowanie dysku określenie nowego klucza szyfrowania. 
+Aby obrócić wpisy tajne, po prostu wywołaj to samo polecenie, które zostało użyte wcześniej do włączenia szyfrowania dysku, określając inny Key Vault. Aby obrócić klucz szyfrowania klucza, wywołaj to samo polecenie, które zostało użyte pierwotnie, aby włączyć szyfrowanie dysków, określając nowe szyfrowanie klucza. 
 
 >[!WARNING]
-> - Jeśli wcześniej używano [usługi Azure Disk Encryption przy użyciu aplikacji Azure AD](azure-security-disk-encryption-prerequisites-aad.md) , określając poświadczeń usługi Azure AD w celu zaszyfrowania tej maszyny Wirtualnej, konieczne będzie kontynuować ta opcja służy do szyfrowania maszyny Wirtualnej. Nie można użyć [usługi Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) na tej zaszyfrowanej maszyny Wirtualnej, ponieważ nie jest to obsługiwany scenariusz znaczenie przełączania się aplikacja usługi AAD dla to zaszyfrowanych maszyn wirtualnych nie jest jeszcze obsługiwane.
+> - Jeśli wcześniej była używana [Azure Disk Encryption z aplikacją usługi Azure AD](azure-security-disk-encryption-prerequisites-aad.md) przez określenie poświadczeń usługi Azure AD do zaszyfrowania tej maszyny wirtualnej, należy użyć tej opcji w celu ZASZYFROWANIA maszyny wirtualnej. Nie można użyć [Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) dla tej zaszyfrowanej maszyny wirtualnej, ponieważ nie jest to obsługiwany scenariusz, co oznacza, że przełączanie z aplikacji usługi AAD dla tej zaszyfrowanej maszyny wirtualnej nie jest jeszcze obsługiwane.
 
-## <a name="how-do-i-add-or-remove-a-key-encryption-key-if-i-didnt-originally-use-one"></a>Jak dodać lub usunąć klucz szyfrowania klucza, jeśli nie został pierwotnie korzystania z jednego?
+## <a name="how-do-i-add-or-remove-a-key-encryption-key-if-i-didnt-originally-use-one"></a>Jak mogę dodać lub usunąć klucz szyfrowania klucza, jeśli nie był pierwotnie używany?
 
-Aby dodać klucz szyfrowania klucza, wywołaj polecenie Włącz ponownie przekazując parametr klucza szyfrowania. Aby usunąć klucz szyfrowania klucza, wywołaj polecenie Włącz ponownie bez parametru klucza szyfrowania.
+Aby dodać klucz szyfrowania klucza, wywołaj polecenie Włącz ponownie, przekazując klucz szyfrowania klucza. Aby usunąć klucz szyfrowania klucza, wywołaj polecenie Włącz ponownie bez parametru klucza szyfrowania klucza.
 
 ## <a name="does-azure-disk-encryption-allow-you-to-bring-your-own-key-byok"></a>Czy usługa Azure Disk Encryption umożliwia używanie własnego klucza (BYOK)?
 
@@ -88,9 +88,9 @@ Tak. Szyfrowanie dysków za pomocą aplikacji usługi Azure AD jest nadal obsłu
 Najnowszą wersję zestawu SDK programu Azure PowerShell umożliwia skonfigurowanie usługi Azure Disk Encryption. Pobierz najnowszą wersję [programu Azure PowerShell](https://github.com/Azure/azure-powershell/releases). Usługa Azure Disk Encryption jest *nie* obsługiwany przez zestaw SDK platformy Azure w wersji 1.1.0.
 
 > [!NOTE]
-> Rozszerzenia (wersja zapoznawcza) szyfrowania dysków Azure dla systemu Linux "Microsoft.OSTCExtension.AzureDiskEncryptionForLinux" jest przestarzały. To rozszerzenie została opublikowana na potrzeby szyfrowania dysków Azure w wersji zapoznawczej. Wersja zapoznawcza rozszerzenia nie należy używać w danym wdrożeniu testowania i produkcji.
+> Rozszerzenie "Microsoft. OSTCExtension. AzureDiskEncryptionForLinux" systemu Linux Azure Disk Encryption Preview jest przestarzałe. To rozszerzenie zostało opublikowane na potrzeby wersji zapoznawczej usługi Azure Disk Encryption. Nie należy używać wersji zapoznawczej rozszerzenia w testowaniu lub wdrożeniu produkcyjnym.
 
-> Scenariusze wdrażania, takich jak Azure zasobu Manager (ARM), gdzie ma się, aby wdrożyć rozszerzenie szyfrowania dysków Azure dla maszyny Wirtualnej systemu Linux włączyć szyfrowanie na maszynie Wirtualnej IaaS systemu Linux, należy użyć rozszerzenia obsługiwane w środowisku produkcyjnym szyfrowania dysków Azure" Microsoft.Azure.Security.AzureDiskEncryptionForLinux".
+> W przypadku scenariuszy wdrażania, takich jak Azure Resource Manager (ARM), w przypadku których istnieje potrzeba wdrożenia rozszerzenia Azure Disk Encryption dla maszyny wirtualnej z systemem Linux, aby włączyć szyfrowanie na maszynie wirtualnej z systemem Linux IaaS, należy użyć rozszerzenia obsługiwanego w środowisku produkcyjnym usługi Azure Disk Encryption. Microsoft. Azure. Security. AzureDiskEncryptionForLinux ".
 
 ## <a name="can-i-apply-azure-disk-encryption-on-my-custom-linux-image"></a>Czy mogę zastosować szyfrowania dysków Azure na mój niestandardowych obrazów systemu Linux?
 
@@ -98,7 +98,7 @@ Nie można zastosować usługi Azure Disk Encryption z niestandardowych obrazów
 
 ## <a name="can-i-apply-updates-to-a-linux-red-hat-vm-that-uses-the-yum-update"></a>Aktualizacje można stosować do Red Hat Maszynę wirtualną systemu Linux używającej aktualizacji yum?
 
-Tak, można wykonać aktualizacji yum na maszynie Wirtualnej Red Hat Linux.  Aby uzyskać więcej informacji, zobacz [Linux Zarządzanie pakietami za zaporą](azure-security-disk-encryption-tsg.md#linux-package-management-behind-a-firewall).
+Tak, możesz wykonać aktualizację yum na maszynie wirtualnej z systemem Red Hat Linux.  Aby uzyskać więcej informacji, zobacz [Zarządzanie pakietami systemu Linux za zaporą](azure-security-disk-encryption-tsg.md#linux-package-management-behind-a-firewall).
 
 ## <a name="what-is-the-recommended-azure-disk-encryption-workflow-for-linux"></a>Co to jest przepływ pracy szyfrowania dysków Azure zalecane dla systemu Linux?
 
@@ -110,7 +110,7 @@ Aby uzyskać najlepsze wyniki w systemie Linux, zaleca się poniższy przepływ 
 
 Jeśli ten przepływ pracy nie jest możliwe, opierając się na [szyfrowanie usługi Storage](../storage/common/storage-service-encryption.md) (SSE) magazynowania platformy warstwy konta może być alternatywa pełne szyfrowanie dysków za pomocą dm-crypt.
 
-## <a name="what-is-the-disk-bek-volume-or-mntazurebekdisk"></a>Co to jest dysk "Klucz szyfrowania bloków woluminu" lub "/ mnt/azure_bek_disk"?
+## <a name="what-is-the-disk-bek-volume-or-mntazure_bek_disk"></a>Co to jest dysk "Klucz szyfrowania bloków woluminu" lub "/ mnt/azure_bek_disk"?
 
 "Klucz szyfrowania bloków woluminu" Windows lub "/ mnt/azure_bek_disk" dla systemu Linux jest woluminem danych lokalnych, która bezpiecznie klucze szyfrowania są przechowywane zaszyfrowane IaaS maszyn wirtualnych platformy Azure.
 > [!NOTE]
@@ -119,17 +119,17 @@ Jeśli ten przepływ pracy nie jest możliwe, opierając się na [szyfrowanie us
 
 ## <a name="what-encryption-method-does-azure-disk-encryption-use"></a>Metodę szyfrowania używa usługi Azure Disk Encryption?
 
-W Windows, ADE korzysta z metody szyfrowania AES256 funkcji BitLocker (AES256WithDiffuser w wersjach starszych niż Windows Server 2012). W systemie Linux ADE używa domyślnego odszyfrowywania xts-aes-plain64 za pomocą klucza głównego woluminu 256-bitowego.
+W systemie Windows, ADE używa metody szyfrowania funkcji BitLocker AES256 (AES256WithDiffuser w wersjach starszych niż Windows Server 2012). W systemie Linux w programie ADE jest stosowane szyfrowanie domyślnie AES-XTS-plain64 z użyciem klucza głównego woluminu 256-bitowego.
 
 ## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>Czy w przypadku użycia EncryptFormatAll i określić wszystkie typy woluminu, jej spowoduje usunięcie danych na dyskach danych, które już zaszyfrowane?
 Nie, dane nie będą usuwane z dysków danych, które już są szyfrowane przy użyciu usługi Azure Disk Encryption. Podobnie jak EncryptFormatAll nie został ponownie zaszyfrować dysk systemu operacyjnego, go nie będzie ponownie zaszyfrować dysk już zaszyfrowanych danych. Aby uzyskać więcej informacji, zobacz [kryteria EncryptFormatAll](azure-security-disk-encryption-linux.md#bkmk_EFACriteria).        
 
-## <a name="is-xfs-filesystem-supported"></a>XFS systemu plików jest obsługiwana?
-Woluminy XFS są obsługiwane w przypadku szyfrowania dysku danych tylko z EncryptFormatAll. Ponownie sformatować wolumin wymazywanie wszystkich danych wcześniej istnieje. Aby uzyskać więcej informacji, zobacz [kryteria EncryptFormatAll](azure-security-disk-encryption-linux.md#bkmk_EFACriteria).
+## <a name="is-xfs-filesystem-supported"></a>Czy system plików XFS jest obsługiwany?
+Woluminy XFS są obsługiwane na potrzeby szyfrowania dysków danych tylko z EncryptFormatAll. Spowoduje to przeformatowanie woluminu, wymazanie wcześniej istniejących danych. Aby uzyskać więcej informacji, zobacz [kryteria EncryptFormatAll](azure-security-disk-encryption-linux.md#bkmk_EFACriteria).
 
-## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>Czy mogę utworzyć kopię zapasową i przywrócić zaszyfrowanej maszyny Wirtualnej? 
+## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>Czy można utworzyć kopię zapasową i przywrócić zaszyfrowaną maszynę wirtualną? 
 
-Usługa Azure Backup udostępnia mechanizm do tworzenia kopii zapasowych i przywracanie zaszyfrowanych maszyn wirtualnych w ramach tej samej subskrypcji i regionu.  Aby uzyskać instrukcje, zobacz [kopii zapasowej i przywracanie zaszyfrowanych maszyn wirtualnych za pomocą usługi Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).  Przywracanie zaszyfrowanych maszyn wirtualnych do innego regionu nie jest obecnie obsługiwane.  
+Azure Backup udostępnia mechanizm tworzenia kopii zapasowych i przywracania zaszyfrowanej maszyny wirtualnej w ramach tej samej subskrypcji i regionu.  Aby uzyskać instrukcje, zobacz [wykonywanie kopii zapasowej i Przywracanie zaszyfrowanych maszyn wirtualnych przy użyciu Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).  Przywracanie zaszyfrowanej maszyny wirtualnej do innego regionu nie jest obecnie obsługiwane.  
 
 ## <a name="where-can-i-go-to-ask-questions-or-provide-feedback"></a>Gdzie można zadawać pytania lub opinię?
 
@@ -140,4 +140,4 @@ W tym dokumencie przedstawiono więcej informacji na temat najczęściej zadawan
 
 - [Omówienie szyfrowania dysków Azure](azure-security-disk-encryption-overview.md)
 - [Zastosuj szyfrowanie dysków w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-apply-disk-encryption)
-- [Funkcja szyfrowania nieaktywnych danych platformy Azure](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)
+- [Funkcja szyfrowania nieaktywnych danych platformy Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)

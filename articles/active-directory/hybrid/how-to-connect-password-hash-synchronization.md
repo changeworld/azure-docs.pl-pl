@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d74eb91b5122f63088f3344836eab8decf5c57d2
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 98101973627750f87fd06d3f617a1af764a837ee
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227369"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774249"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementowanie synchronizacji skrótów haseł z usługą Azure AD Connect sync
 Ten artykuł zawiera informacje potrzebne do synchronizacji haseł użytkowników z lokalnym wystąpieniem usługi Active Directory do wystąpienia usługi Azure Active Directory (Azure AD) oparte na chmurze.
@@ -63,10 +63,7 @@ W poniższej sekcji opisano, szczegółowe, jak działa synchronizacja skrótów
 >[!Note] 
 >Oryginalny skrót MD4 nie są przesyłane do usługi Azure AD. Zamiast tego są przesyłane skrót SHA256 obiektu oryginalnego wyznaczania wartości skrótu MD4. W rezultacie w przypadku wyznaczania wartości skrótu, przechowywane w usłudze Azure AD, nie można użyć w przypadku ataków typu pass--hash w środowisku lokalnym.
 
-### <a name="how-password-hash-synchronization-works-with-azure-active-directory-domain-services"></a>Jak synchronizacja skrótów haseł współpracuje z usługą Azure Active Directory Domain Services
-Można również użyć funkcji synchronizacji skrótów haseł do synchronizacji haseł w środowisku lokalnym do [usługi Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md). W tym scenariuszu wystąpienia usługi Azure Active Directory Domain Services uwierzytelniani są użytkownicy usługi w chmurze za pomocą wszystkich metod dostępnych w Twoim wystąpieniu usługi Active Directory w środowisku lokalnym. Proces ten scenariusz jest podobny do przy użyciu usługi Active Directory migracji Tool (ADMT) w środowisku lokalnym.
-
-### <a name="security-considerations"></a>Zagadnienia związane z zabezpieczeniami
+### <a name="security-considerations"></a>Zagadnienia dotyczące bezpieczeństwa
 Podczas synchronizacji haseł wersji tekstowego hasła nie jest uwidaczniany w funkcji synchronizacji skrótów haseł, do usługi Azure AD lub dowolnej z usług jest skojarzony.
 
 Uwierzytelnianie użytkownika ma miejsce, w usłudze Azure AD, a nie względem wystąpienia usługi Active Directory w organizacji. Dane haseł SHA256, które są przechowywane w usłudze Azure AD — skrót oryginalnego wyznaczania wartości skrótu MD4 — jest bezpieczniejszy niż co to jest przechowywany w usłudze Active Directory. Co więcej ponieważ nie można odszyfrować ten skrót SHA256, uniemożliwiający sprowadzony z powrotem do środowiska usługi Active Directory w firmie i przedstawiane jako prawidłowego użytkownika hasła w ataku typu pass--hash.
@@ -104,6 +101,39 @@ Synchronizacja haseł nie ma wpływu na użytkownika platformy Azure, który jes
 
 - Ogólnie rzecz biorąc synchronizacji skrótów haseł jest prostsza do zaimplementowania niż usługi federacyjnej. Nie wymaga żadnych dodatkowych serwerów i eliminuje zależność od usługi federacyjnej o wysokiej dostępności do uwierzytelniania użytkowników.
 - Można również włączyć synchronizację skrótów haseł oprócz federacji. Może być używany jako rezerwowe, jeśli usługi federacyjnej ulegnie awarii.
+
+## <a name="password-hash-sync-process-for-azure-ad-domain-services"></a>Proces synchronizacji skrótów haseł dla Azure AD Domain Services
+
+Jeśli używasz Azure AD Domain Services w celu zapewnienia starszego uwierzytelniania dla aplikacji i usług, które muszą korzystać z Keberos, LDAP lub NTLM, niektóre dodatkowe procesy są częścią przepływu synchronizacji skrótów haseł. Azure AD Connect wykorzystuje dodatkowy następujący proces do synchronizowania skrótów haseł w usłudze Azure AD do użycia w programie Azure AD Domain Services:
+
+> [!IMPORTANT]
+> Azure AD Connect synchronizuje tylko starsze skróty haseł po włączeniu AD DS platformy Azure dla dzierżawy usługi Azure AD. Poniższe kroki nie są używane, jeśli do synchronizowania środowiska lokalnego AD DS z usługą Azure AD jest używana tylko Azure AD Connect.
+>
+> Jeśli starsze aplikacje nie korzystają z uwierzytelniania NTLM lub prostych powiązań LDAP, zalecamy wyłączenie synchronizacji skrótów haseł NTLM dla AD DS platformy Azure. Aby uzyskać więcej informacji, zobacz [wyłączanie słabych mechanizmów szyfrowania i synchronizacji skrótów poświadczeń NTLM](../../active-directory-domain-services/secure-your-domain.md).
+
+1. Azure AD Connect Pobiera klucz publiczny dla wystąpienia Azure AD Domain Services dzierżawcy.
+1. Po zmianie hasła przez użytkownika lokalny kontroler domeny przechowuje wynik zmiany hasła (skróty) w dwóch atrybutach:
+    * wartość *unicodePwd* dla skrótu hasła NTLM.
+    * *supplementalCredentials* dla skrótu hasła protokołu Kerberos.
+1. Azure AD Connect wykrywa zmiany haseł za pośrednictwem kanału replikacji katalogu (zmiany atrybutów, które muszą być replikowane do innych kontrolerów domeny).
+1. W przypadku każdego użytkownika, którego hasło zostało zmienione, Azure AD Connect wykonuje następujące czynności:
+    * Generuje losowy klucz symetryczny AES 256-bitowy.
+    * Generuje losowy wektor inicjujący, który jest wymagany podczas pierwszej rundy szyfrowania.
+    * Wyodrębnia skróty haseł protokołu Kerberos z atrybutów *supplementalCredentials* .
+    * Azure AD Domain Services sprawdza ustawienie *SyncNtlmPasswords* zabezpieczeń konfiguracji.
+        * Jeśli to ustawienie jest wyłączone, generuje losowy, wieloznaczny skrót protokołu NTLM (różny od hasła użytkownika). Ten skrót jest następnie połączony z dokładnymi skrótami hasła protokołu Kerberos z atrybutu *supplementalCrendetials* do jednej struktury danych.
+        * Jeśli ta funkcja jest włączona, łączy wartość atrybutu *unicodePwd* z wyodrębnionymi skrótami hasła protokołu Kerberos z atrybutu *supplementalCredentials* do jednej struktury danych.
+    * Szyfruje pojedynczą strukturę danych przy użyciu klucza symetrycznego AES.
+    * Szyfruje klucz symetryczny AES przy użyciu klucza publicznego Azure AD Domain Services dzierżawy.
+1. Azure AD Connect przesyła szyfrowany klucz symetryczny AES, strukturę zaszyfrowanych danych zawierających skróty haseł oraz wektor inicjujący do usługi Azure AD.
+1. Usługa Azure AD przechowuje zaszyfrowany klucz symetryczny AES, strukturę zaszyfrowanych danych i wektor inicjalizacji dla użytkownika.
+1. Usługa Azure AD wypycha zaszyfrowany klucz symetryczny AES, strukturę zaszyfrowanych danych i wektor inicjalizacji przy użyciu wewnętrznego mechanizmu synchronizacji przez zaszyfrowaną sesję HTTP do Azure AD Domain Services.
+1. Azure AD Domain Services Pobiera klucz prywatny dla wystąpienia dzierżawcy z magazynu kluczy platformy Azure.
+1. W przypadku każdego zaszyfrowanego zestawu danych (reprezentującego zmianę hasła pojedynczego użytkownika) Azure AD Domain Services następnie wykonuje następujące czynności:
+    * Używa swojego klucza prywatnego do odszyfrowania klucza symetrycznego AES.
+    * Używa klucza symetrycznego AES z wektorem inicjalizacji w celu odszyfrowania struktury zaszyfrowanych danych, która zawiera skróty haseł.
+    * Zapisuje wartości skrótów haseł protokołu Kerberos, które otrzymuje do kontrolera domeny Azure AD Domain Services. Skróty są zapisywane w atrybucie *supplementalCredentials* obiektu użytkownika, który jest szyfrowany do klucza publicznego Azure AD Domain Services kontrolera domeny.
+    * Azure AD Domain Services zapisuje skrót hasła NTLM otrzymany na Azure AD Domain Services kontrolerze domeny. Skrót jest zapisywany w atrybucie *unicodePwd* obiektu użytkownika, który jest szyfrowany do klucza publicznego Azure AD Domain Services kontrolera domeny.
 
 ## <a name="enable-password-hash-synchronization"></a>Włączanie synchronizacji skrótów haseł
 

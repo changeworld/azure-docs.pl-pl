@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: dacurwin
-ms.openlocfilehash: 8948a620c27311f0371a557c91a971da37111cb9
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 078c8763a08df339b9291807102e2d187d2a882f
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688597"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827573"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Często zadawane pytania — tworzenie kopii zapasowych maszyn wirtualnych platformy Azure
 
@@ -64,14 +64,14 @@ Tak. Kopie zapasowe są uruchamiane, gdy maszyna jest wyłączona. Punkt odzyski
 ### <a name="can-i-cancel-an-in-progress-backup-job"></a>Czy mogę anulować zadanie tworzenia kopii zapasowej w toku?
 Tak. Zadanie tworzenia kopii zapasowej można anulować w stanie trwającej **migawki** . Nie można anulować zadania, jeśli transfer danych z migawki jest w toku.
 
-### <a name="i-enabled-lock-on-resource-group-created-by-azure-backup-service-ie-azurebackuprggeonumber-will-my-backups-continue-to-work"></a>Włączono blokadę dla grupy zasobów utworzonej przez usługę Azure Backup (tj. `AzureBackupRG_<geo>_<number>`) czy moje kopie zapasowe będą nadal działały?
+### <a name="i-enabled-lock-on-resource-group-created-by-azure-backup-service-ie-azurebackuprg_geo_number-will-my-backups-continue-to-work"></a>Włączono blokadę dla grupy zasobów utworzonej przez usługę Azure Backup (tj. `AzureBackupRG_<geo>_<number>`) czy moje kopie zapasowe będą nadal działały?
 Jeśli zablokujesz grupę zasobów utworzoną przez usługę Azure Backup, kopie zapasowe będą się kończyć niepowodzeniem, ponieważ obowiązuje limit 18 punktów przywracania.
 
 Użytkownik musi usunąć blokadę i wyczyścić kolekcję punktów przywracania z tej grupy zasobów, aby umożliwić pomyślne tworzenie kopii zapasowych w przyszłości, [wykonaj następujące kroki](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal) , aby usunąć kolekcję punktów przywracania.
 
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disk"></a>Czy usługa Azure Backup obsługuje dysk zarządzany w standardzie SSD?
-Azure Backup obsługuje [dyski zarządzane w warstwie Standardowa SSD](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/). Dyski zarządzane przez dysk SSD zapewniają nowy typ trwałego magazynu dla maszyn wirtualnych platformy Azure. Obsługa dysków Managed disks jest dostępna w ramach [przywracania natychmiastowego](backup-instant-restore-capability.md).
+Tak, Azure Backup obsługuje [dyski zarządzane w warstwie Standardowa SSD](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/).
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>Czy można utworzyć kopię zapasową maszyny wirtualnej z dyskiem z obsługą akcelerator zapisu (WA)?
 Nie można wykonać migawek na dysku z obsługą WA. Jednak usługa Azure Backup może wykluczyć dysk z obsługą WA z kopii zapasowej.
@@ -119,7 +119,7 @@ Tak. Nawet jeśli usuniesz maszynę wirtualną, możesz przejść do odpowiednie
 W przypadku dysku zarządzanego maszyny wirtualnej platformy Azure przywracanie do zestawów dostępności jest włączone przez udostępnienie opcji w szablonie podczas przywracania jako dyski zarządzane. Ten szablon zawiera parametr wejściowy o nazwie **zestawy dostępności**.
 
 ### <a name="how-do-we-get-faster-restore-performances"></a>Jak szybsze przywracanie wydajności?
-Aby zwiększyć wydajność przywracania, przejdziemy do [natychmiastowej funkcji przywracania](backup-instant-restore-capability.md) .
+Funkcja [natychmiastowego przywracania](backup-instant-restore-capability.md) pomaga w szybszym wykonywaniu kopii zapasowych i natychmiast przywracaniu z migawek.
 
 ## <a name="manage-vm-backups"></a>Zarządzanie kopiami zapasowymi maszyn wirtualnych
 

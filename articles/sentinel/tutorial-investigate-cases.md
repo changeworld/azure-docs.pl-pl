@@ -1,6 +1,6 @@
 ---
-title: Badanie przypadków z platformy Azure przez wartownika w wersji zapoznawczej | Dokumentacja firmy Microsoft
-description: Użyj tego samouczka, dowiesz się, jak w celu zbadania sprawy z platformy Azure przez wartownika.
+title: Zbadaj zdarzenia za pomocą wersji zapoznawczej platformy Azure wskaźnikowej | Microsoft Docs
+description: Skorzystaj z tego samouczka, aby dowiedzieć się, jak zbadać zdarzenia za pomocą platformy Azure.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -15,65 +15,65 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/6/2019
 ms.author: rkarlin
-ms.openlocfilehash: 82fac23fc2d718aa908f6291241abaa2aedb8815
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: bad3fddd6caf7e6eb455e59280f181c787b95a4e
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621184"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780396"
 ---
-# <a name="tutorial-investigate-cases-with-azure-sentinel-preview"></a>Samouczek: Badanie przypadków z platformy Azure przez wartownika w wersji zapoznawczej
+# <a name="tutorial-investigate-incidents-with-azure-sentinel-preview"></a>Samouczek: Zbadaj zdarzenia za pomocą wersji zapoznawczej platformy Azure wskaźnikowej
 
 > [!IMPORTANT]
-> Wartownik platformy Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
+> W publicznej wersji zapoznawczej jest obecnie dostępna usługa Azure.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ten samouczek ułatwia wykrywanie zagrożeń za pomocą platformy Azure przez wartownika.
+Ten samouczek pomaga wykrywać zagrożenia przy użyciu platformy Azure.
 
-Po zakończeniu [połączonych źródeł danych](quickstart-onboard.md) do platformy Azure przez wartownika, chcesz otrzymywać powiadomienia, gdy coś podejrzanego się dzieje. Umożliwia to zrobić, przez wartownika Azure pozwala tworzenia zaawansowanych reguł alertów, które generują przypadki, które można przypisać do użytkowania głęboko badania anomalii i zagrożeń w danym środowisku. 
+Po [nawiązaniu połączenia ze źródłami danych](quickstart-onboard.md) z platformą Azure — użytkownik chce otrzymywać powiadomienia o wystąpieniu podejrzanych sytuacji. Aby można było to zrobić, wskaźnik "platformy Azure" umożliwia tworzenie zaawansowanych reguł alertów, które generują zdarzenia, które można przypisać i wykorzystać do głębokiego zbadania anomalii i zagrożeń w środowisku. 
 
 > [!div class="checklist"]
-> * Tworzenie przypadków
-> * Badanie przypadków
+> * Tworzenie zdarzeń
+> * Badanie zdarzeń
 > * Reagowanie na zagrożenia
 
-## <a name="investigate-cases"></a>Badanie przypadków
+## <a name="investigate-incidents"></a>Badanie zdarzeń
 
-Przypadek może obejmować wiele alertów. To Agregacja wszystkich odpowiednich dowodów w przypadku określonego dochodzenia. Alerty zdefiniowane w oparciu o utworzeniu sprawy **Analytics** strony. Właściwości związane z alertami, takie jak ważność i stan są ustawiane na poziomie przypadku. Po umożliwisz Azure przez wartownika wiedzieć, jakiego rodzaju zagrożenia, których szukasz i jak je znaleźć, można monitorować zagrożenia, które są wykrywane przez badanie przypadków. 
+zdarzenie może zawierać wiele alertów. Jest to agregacja wszystkich istotnych dowodów dla konkretnego badania. zdarzenie jest tworzone na podstawie alertów zdefiniowanych na stronie **analizy** . Właściwości związane z alertami, takie jak ważność i stan, są ustawiane na poziomie incydentu. Po przejściu na platformę Azure wskaż, jakiego rodzaju zagrożenia szukasz i jak je znaleźć, możesz monitorować zagrożenia wykryte przez badanie zdarzeń. 
 
-1. Wybierz **przypadków**. **Przypadków** strony informuje o tym, jak wiele przypadków, masz, ile jest otworzyć, ile ustawiono **w toku**, a ilu są zamknięte. W każdym przypadku widać, czas, w którym wystąpił, a stan sprawy. Przyjrzyj się ważność do podejmowania decyzji o obsługę pierwszy. W **przypadków** kliknij **alerty** kartę, aby wyświetlić wszystkie alerty, które są powiązane z przypadkiem. Jednostki, które są mapowane w wcześniej części mogą być wyświetlane w **jednostek** kartę.  Można filtrować przypadki, zgodnie z potrzebami, na przykład według stanu lub ważności. Podczas przeglądania **przypadków** kartę, zobaczysz otwartych spraw, które zawierają alertów wyzwalanych przez reguł wykrywania zdefiniowane w **analizy**. W górnej części zobaczysz swoje aktywnych spraw, nowe sprawy w przypadkach postępu. Widać również omówienie swoje przypadki według ważności.
+1. Wybierz **zdarzenia**. Na stronie incydenty są dostępne informacje o liczbie zdarzeń, liczbie otwartych, liczbie ustawionych **w toku**i liczbie zamkniętych. Dla każdego zdarzenia można zobaczyć czas jego wystąpienia i stan zdarzenia. Przyjrzyj się ważności, aby zdecydować, co należy najpierw obsłużyć. Na stronie **zdarzenia** kliknij kartę **alerty** , aby wyświetlić wszystkie alerty związane ze zdarzeniem. Jednostki, które zostały zmapowane wcześniej jako część zdarzenia, można wyświetlić na karcie **jednostki** .  Zdarzenia można filtrować zgodnie z wymaganiami, na przykład według stanu lub ważności. Po przejściu na kartę **incydenty** zobaczysz otwarte zdarzenia, które zawierają alerty wyzwalane przez reguły wykrywania zdefiniowane w analizie. W górnej części zobaczysz Twoje aktywne incydenty, nowe incydenty i zdarzenia w toku. Możesz również zapoznać się z omówieniem wszystkich incydentów według ważności.
 
    ![Pulpit nawigacyjny alertów](./media/tutorial-investigate-cases/cases.png)
 
-2. Aby rozpocząć badanie, kliknij na konkretnym przypadku. Po prawej stronie można wyświetlić szczegółowe informacje, w przypadku, w tym o jego ważność, podsumowanie liczby jednostek (oparte na mapowanie). Każdy przypadek ma unikatowy identyfikator. Ważność przypadku jest określana zgodnie z najpoważniejsze alert zawarte w tym przypadku.  
+2. Aby rozpocząć badanie, kliknij określone zdarzenie. Po prawej stronie można wyświetlić szczegółowe informacje o zdarzeniu, w tym jego ważność, podsumowanie liczby jednostek, których dotyczy (na podstawie mapowania). Każde zdarzenie ma unikatowy identyfikator. Ważność zdarzenia jest określana zgodnie z najbardziej poważnym alertem zawartym w zdarzeniu.  
 
-1. Aby wyświetlić więcej szczegółów na temat alertów i jednostek w przypadku, kliknij **Wyświetl pełne szczegóły** w przypadku strony, a następnie przejrzyj odpowiednie karty, które podsumowują przypadków informacji.  Wyświetl pełne przypadków konsoliduje wszystkie dowody w alercie, skojarzonych alertach i jednostek.
+1. Aby wyświetlić więcej szczegółów na temat alertów i jednostek w zdarzeniu, kliknij przycisk **Wyświetl pełne szczegóły** na stronie incydentu i przejrzyj odpowiednie karty podsumowujące informacje o zdarzeniu.  Widok pełnych zdarzeń konsoliduje wszystkie dowody w alercie, skojarzone alerty i jednostki.
 
-1. W **alerty** pozycję Sprawdź sam - alert wyzwolenia została i za ile przekroczenia progów, zostanie ustawiona. Widać wszystkie informacje dotyczące alertu — kwerendę, która wyzwoliła alert liczbę wyników zwracanych przez zapytanie oraz możliwość Uruchom elementy playbook na alerty. Aby przejść do szczegółów w dół jeszcze więcej w tym przypadku kliknij liczbę trafień. Spowoduje to otwarcie kwerendy, który wygenerował wyników, a wyniki, które wyzwolony alert w usłudze Log Analytics.
+1. Na karcie **alerty** Przejrzyj sam alert — gdy został wyzwolony i ile przekracza ustawiony próg. Można wyświetlić wszystkie istotne informacje dotyczące alertu — zapytanie, które wyzwoliło alert, liczbę wyników zwróconych na zapytanie oraz możliwość uruchamiania elementy PlayBook na alertach. Aby przejść do szczegółów zdarzenia, kliknij liczbę trafień. Spowoduje to otwarcie kwerendy, która wygenerowała wyniki i wyniki, które wyzwoliły alert w Log Analytics.
 
-3. W **jednostek** kartę, widać wszystkie jednostki, które można zamapować jako część definicji reguły alertu. 
+3. Na karcie **jednostki** można zobaczyć wszystkie jednostki, które zostały zmapowane w ramach definicji reguły alertu. 
 
-4. Jeśli aktywnie analizujesz przypadek, to dobry pomysł, aby ustawić stan przypadku **w toku** dopóki nie zostanie zamknięty. Możesz też zamknąć przypadek, gdzie **zamknięty do rozwiązany** jest jego stan w sytuacjach, które wskazują, że incydent został obsłużony, podczas **zamknięte odrzuconych** jest jego stan w sytuacjach, które nie wymagają obsługi. Wyjaśnienia są wymagane, wyjaśniające, uzasadnienie zamykanie przypadek.
+4. Jeśli aktywnie badasz zdarzenie, dobrym pomysłem jest ustawienie stanu zdarzenia na **w toku** do momentu jego zamknięcia. Możesz również zamknąć zdarzenie, gdzie **zamknięte rozwiązanie** jest stanem zdarzeń wskazujących, że zdarzenie zostało obsłużone, podczas gdy **zamknięte** odrzucanie jest stanem zdarzeń, które nie wymagają obsługi. Wyjaśnienia są wymagane z wyjaśnieniem przyczyny zamknięcia zdarzenia.
 
-5. Można przypisać przypadków dla określonego użytkownika. Dla każdego przypadku może przypisać właściciela, ustawiając przypadku **właściciela** pola. Uruchomienie wszystkich przypadków jako nieprzypisane. Możesz przejść do przypadków i Filtruj według nazwy, aby zobaczyć wszystkie przypadki, których jesteś właścicielem. 
+5. Zdarzenia mogą być przypisane do określonego użytkownika. Dla każdego zdarzenia można przypisać właściciela, ustawiając pole **właściciel** zdarzenia. Wszystkie incydenty są uruchamiane jako nieprzypisane. Możesz przejść do incydentów i filtrować według swojej nazwy, aby zobaczyć wszystkie incydenty, których dysponujesz. 
 
-5. Kliknij przycisk **zbadaj** służy do wyświetlania Mapa badania i zakresu naruszenia z krokami korygującymi. 
+5. Kliknij przycisk Zbadaj, aby wyświetlić mapę badań i zakres naruszenia z etapami korygowania. 
 
 
 
 ## <a name="respond-to-threats"></a>Reagowanie na zagrożenia
 
-Wartownik Azure daje dwie podstawowe opcje reagowanie na zagrożenia za pomocą elementów playbook. Można ustawić elementu playbook do automatycznego uruchamiania, gdy zostanie wyzwolony alert lub można ręcznie uruchomić elementu playbook w odpowiedzi na alert.
+Wskaźnik na platformie Azure przedstawia dwie podstawowe opcje reagowania na zagrożenia przy użyciu elementy PlayBook. Można ustawić element PlayBook do automatycznego uruchamiania podczas wyzwalania alertu lub można ręcznie uruchomić element PlayBook w odpowiedzi na alert.
 
-- Można ustawić elementu playbook do automatycznego uruchamiania, gdy alert jest wyzwalany, gdy skonfigurujesz element playbook. 
+- Można ustawić element PlayBook do automatycznego uruchamiania, gdy zostanie wyzwolony alert podczas konfigurowania element PlayBook. 
 
-- Można ręcznie uruchomić elementu playbook z wewnątrz alert, klikając **Wyświetl elementy playbook** , a następnie wybierając elementu playbook do uruchomienia.
-
-
+- Możesz ręcznie uruchomić element PlayBook z poziomu alertu, klikając pozycję **Wyświetl elementy PlayBook** , a następnie wybierając element PlayBook do uruchomienia.
 
 
-## <a name="next-steps"></a>Kolejne kroki
-W tym samouczku przedstawiono sposób rozpocząć badanie przy użyciu platformy Azure przez wartownika przypadków. Przejdź do samouczka dotyczącego [sposobu reagowania na zagrożenia za pomocą automatycznych elementy playbook](tutorial-respond-threats-playbook.md).
+
+
+## <a name="next-steps"></a>Następne kroki
+W ramach tego samouczka nauczysz się rozpocząć badanie zdarzeń przy użyciu platformy Azure — wskaźnik. Przejdź do samouczka dotyczącego [sposobu reagowania na zagrożenia przy użyciu zautomatyzowanego elementy PlayBook](tutorial-respond-threats-playbook.md).
 > [!div class="nextstepaction"]
-> [Reagowanie na zagrożenia](tutorial-respond-threats-playbook.md) do automatyzowania odpowiedzi na zagrożenia.
+> [Reagowanie na zagrożenia](tutorial-respond-threats-playbook.md) w celu zautomatyzowania swoich odpowiedzi na zagrożenia.
 

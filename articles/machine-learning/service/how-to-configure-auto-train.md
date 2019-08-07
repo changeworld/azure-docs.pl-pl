@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3a316de54600d18f7ab839b8459bfe4eb0ff86e8
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 5dee966f8664bc14d81004e625ad9632066ffcb2
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479794"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742304"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurowanie zautomatyzowanych eksperymentów ML w języku Python
 
@@ -40,7 +40,7 @@ Jeśli wolisz nie używać kodu, możesz również [utworzyć automatyczne ekspe
 
 Przed przystąpieniem do wykonywania eksperymentu, należy określić rodzaj maszyny nauczanym problemem, które są rozwiązywania. Automatyczne machine learning obsługuje typy zadań klasyfikacji, regresji i prognozowania.
 
-Automatyczne machine learning obsługuje następujące algorytmy podczas automatyzacji i dostosowywania procesu. Użytkownik nie ma potrzeby w celu określenia algorytm. 
+Automatyczne machine learning obsługuje następujące algorytmy podczas automatyzacji i dostosowywania procesu. Użytkownik nie ma potrzeby w celu określenia algorytm.
 
 Klasyfikacja | Regresji | Prognozowanie szeregów czasowych
 |-- |-- |--
@@ -104,7 +104,7 @@ Oto przykład użycia `datastore`:
 ```python
     import pandas as pd
     from sklearn import datasets
-    
+
     data_train = datasets.load_digits()
 
     pd.DataFrame(data_train.data[100:,:]).to_csv("data/X_train.csv", index=False)
@@ -114,7 +114,7 @@ Oto przykład użycia `datastore`:
     ds.upload(src_dir='./data', target_path='digitsdata', overwrite=True, show_progress=True)
 ```
 
-### <a name="define-deprep-references"></a>Definiowanie odwołań deprodukcyjnych
+### <a name="define-dprep-references"></a>Definiuj odwołania dprep
 
 Zdefiniuj X i y jako odwołanie dprep, które zostaną przesłane do zautomatyzowanego obiektu uczenia `AutoMLConfig` maszynowego podobnego do poniższego:
 
@@ -122,8 +122,8 @@ Zdefiniuj X i y jako odwołanie dprep, które zostaną przesłane do zautomatyzo
 
     X = dprep.auto_read_file(path=ds.path('digitsdata/X_train.csv'))
     y = dprep.auto_read_file(path=ds.path('digitsdata/y_train.csv'))
-    
-    
+
+
     automl_config = AutoMLConfig(task = 'classification',
                                  debug_log = 'automl_errors.log',
                                  path = project_folder,
@@ -253,9 +253,60 @@ automl_config = AutoMLConfig(task='forecasting',
                              **time_series_settings)
 ```
 
+### <a name="ensemble"></a>Konfiguracja kompletna
+
+Modele kompletów są domyślnie włączone i pojawiają się jako ostateczne iteracje przebiegu w zautomatyzowanym przebiegu uczenia maszynowego. Obecnie obsługiwane metody kompletu są głosune i ułożone na stosie. Głosowanie jest implementowane jako odmowa głosu przy użyciu średniej ważonej, a implementacja stosu korzysta z 2 implementacji warstwy, gdzie pierwsza warstwa ma takie same modele jak zestaw do głosowania, a drugi model warstwy jest używany do znalezienia optymalnej kombinacji modele z pierwszej warstwy. Jeśli używasz modeli ONNX **lub** włączono wyjaśnienie modelu, stos zostanie wyłączony i będzie można używać tylko głosu.
+
+Istnieje wiele argumentów domyślnych, które mogą być podane jako `kwargs` `AutoMLConfig` obiekt w celu zmiany domyślnego zachowania kompletności stosu.
+
+* `stack_meta_learner_type`: meta-uczyć się to model przeszkolony w danych wyjściowych poszczególnych modeli heterogenicznych. `LogisticRegression` Domyślne meta uczy są przeznaczone do zadań klasyfikacji (lub `LogisticRegressionCV` w przypadku włączenia wzajemnej walidacji) oraz `ElasticNet` dla zadań regresji/prognozowania ( `ElasticNetCV` lub w przypadku włączenia weryfikacji krzyżowej). Ten parametr może być jednym z `LogisticRegression`następujących ciągów:, `LogisticRegressionCV`, `LightGBMRegressor` `ElasticNetCV` `LightGBMClassifier` `ElasticNet`,,,, lub `LinearRegression`.
+* `stack_meta_learner_train_percentage`: określa proporcję zestawu szkoleniowego (podczas wybierania typu uczenia i walidacji), które mają zostać zarezerwowane do uczenia się. Wartość domyślna to `0.2`.
+* `stack_meta_learner_kwargs`: parametry opcjonalne do przekazania do inicjatora meta. Te parametry i typy parametrów stanowią duplikaty z odpowiedniego konstruktora modelu i są przekazywane do konstruktora modelu.
+
+Poniższy kod przedstawia przykład określania zachowania niestandardowego w `AutoMLConfig` obiekcie.
+
+```python
+ensemble_settings = {
+    "stack_meta_learner_type": "LogisticRegressionCV",
+    "stack_meta_learner_train_percentage": 0.3,
+    "stack_meta_learner_kwargs": {
+        "refit": True,
+        "fit_intercept": False,
+        "class_weight": "balanced",
+        "multi_class": "auto",
+        "n_jobs": -1
+    }
+}
+
+automl_classifier = AutoMLConfig(
+        task='classification',
+        primary_metric='AUC_weighted',
+        iterations=20,
+        X=X_train,
+        y=y_train,
+        n_cross_validations=5,
+        **ensemble_settings
+        )
+```
+
+Szkolenia w ramach usługi jest domyślnie włączone, ale można je wyłączyć za pomocą `enable_voting_ensemble` parametrów logicznych i. `enable_stack_ensemble`
+
+```python
+automl_classifier = AutoMLConfig(
+        task='classification',
+        primary_metric='AUC_weighted',
+        iterations=20,
+        X=X_train,
+        y=y_train,
+        n_cross_validations=5,
+        enable_voting_ensemble=False,
+        enable_stack_ensemble=False
+        )
+```
+
 ## <a name="run-experiment"></a>Uruchamianie eksperymentu
 
-Dla zautomatyzowanej ml należy utworzyć `Experiment` obiekt, który jest obiektem nazwanym `Workspace` w używanym do uruchamiania eksperymentów.
+W przypadku zautomatyzowanej ml utworzysz `Experiment` obiekt, który jest obiektem nazwanym `Workspace` w używanym do uruchamiania eksperymentów.
 
 ```python
 from azureml.core.experiment import Experiment

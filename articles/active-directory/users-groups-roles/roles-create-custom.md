@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae773bc1a4e1831dbe462149bb827c26b7e74b96
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e0e33cf9fa1c4661dd71fc41cb667b0373c9e955
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722300"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774813"
 ---
-# <a name="create-a-custom-role-and-assign-a-resource-scope-in-azure-active-directory"></a>Utwórz rolę niestandardową i przypisz zakres zasobów w Azure Active Directory
+# <a name="create-a-custom-role-and-assign-at-resource-scope-in-azure-active-directory"></a>Utwórz rolę niestandardową i przypisz ją do zakresu zasobów w Azure Active Directory
 
-W tym artykule opisano sposób tworzenia nowych ról niestandardowych w usłudze Azure Active Directory (Azure AD). Role niestandardowe można tworzyć na karcie **role i Administratorzy** na stronie Przegląd usługi Azure AD lub na [stronie rejestracji aplikacji](https://portal.azure.com/?Microsoft_AAD_IAM_enableCustomRoleManagement=true&Microsoft_AAD_IAM_enableCustomRoleAssignment=true&feature.rbacv2roles=true&feature.rbacv2=true&Microsoft_AAD_RegisteredApps=demo#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview). Rolę można przypisać do zakresu poziomu katalogu lub do zakresu tylko rejestracje aplikacji.
+W tym artykule opisano sposób tworzenia nowych ról niestandardowych w usłudze Azure Active Directory (Azure AD). Role niestandardowe można tworzyć na karcie [role i Administratorzy](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators) na stronie Przegląd usługi Azure AD. Rolę można przypisać zarówno w zakresie poziomu katalogu, jak i w zakresie zasobów rejestracji aplikacji.
 
 Aby uzyskać więcej informacji, zobacz [Omówienie ról niestandardowych](roles-custom-overview.md) dla podstaw ról niestandardowych.
 
@@ -35,33 +35,31 @@ Aby uzyskać więcej informacji, zobacz [Omówienie ról niestandardowych](roles
 
    ![Tworzenie lub edytowanie ról na stronie role i Administratorzy](./media/roles-create-custom/new-custom-role.png)
 
-1. Na karcie **podstawowe** Podaj nazwę i opis roli.
+1. Na karcie **podstawowe** Podaj nazwę i opis roli, a następnie kliknij przycisk **dalej**.
 
    ![Podaj nazwę i opis roli niestandardowej na karcie podstawowe](./media/roles-create-custom/basics-tab.png)
 
-1. Aby wybrać uprawnienia wymagane do zarządzania poświadczeniami rejestracji aplikacji i właściwościami podstawowymi, takimi jak nazwa:
-   1. Wprowadź ciąg "poświadczenia" na pasku wyszukiwania i wybierz `microsoft.directory/applications/credentials/update` uprawnienie.
+1. Na karcie **uprawnienia** wybierz uprawnienia wymagane do zarządzania podstawowymi właściwościami i właściwościami poświadczeń rejestracji aplikacji. Aby uzyskać szczegółowy opis każdego z tych uprawnień, zobacz [podtypy rejestracji aplikacji i uprawnienia w Azure Active Directory](./roles-custom-available-permissions.md).
+   1. Najpierw wprowadź wartość "poświadczenia" na pasku wyszukiwania i wybierz `microsoft.directory/applications/credentials/update` uprawnienie.
 
       ![Wybierz uprawnienia roli niestandardowej na karcie uprawnienia](./media/roles-create-custom/permissions-tab.png)
 
-   1. Wprowadź wartość "podstawowa" na pasku wyszukiwania, wybierz `microsoft.directory/applications/basic/update` uprawnienie, a następnie kliknij przycisk **dalej**.
+   1. Następnie wprowadź wartość "podstawowa" na pasku wyszukiwania, wybierz `microsoft.directory/applications/basic/update` uprawnienie, a następnie kliknij przycisk **dalej**.
 1. Na karcie **Recenzja + tworzenie** Przejrzyj uprawnienia i wybierz pozycję **Utwórz**.
 
 Rola niestandardowa zostanie wyświetlona na liście dostępnych ról do przypisania.
 
 ## <a name="assign-a-role-scoped-to-a-resource"></a>Przypisywanie roli do zasobu
 
-Podobnie jak wbudowane role, role niestandardowe można przypisywać w domyślnym zakresie organizacji w celu udzielania dostępu przez wszystkie rejestracje aplikacji. Role niestandardowe można także przypisywać w zakresie obiektu. Dzięki temu można przyznać przydzielone uprawnienia do aktualizowania poświadczeń i podstawowych właściwości pojedynczej aplikacji bez konieczności tworzenia drugiej roli niestandardowej.
+Podobnie jak wbudowane role, role niestandardowe można przypisywać w zakresie całej organizacji, aby udzielić dostępu do wszystkich rejestracji aplikacji. Role niestandardowe można także przypisywać do zakresu zasobów. Dzięki temu można przyznać przydzielone uprawnienia do aktualizowania poświadczeń i podstawowych właściwości pojedynczej aplikacji bez konieczności tworzenia drugiej roli niestandardowej.
 
-1. Zaloguj się do [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com) przy użyciu uprawnień dewelopera aplikacji w organizacji usługi Azure AD.
+1. Jeśli jeszcze tego nie zrobiono, zaloguj się do [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com) przy użyciu uprawnień dewelopera aplikacji w organizacji usługi Azure AD.
 1. Wybierz pozycję **Rejestracje aplikacji**.
 1. Wybierz rejestrację aplikacji, do której chcesz udzielić dostępu do zarządzania. Może być konieczne wybranie opcji **wszystkie aplikacje** , aby wyświetlić pełną listę rejestracji aplikacji w organizacji usługi Azure AD.
 
     ![Wybierz rejestrację aplikacji jako zakres zasobów dla przypisania roli](./media/roles-create-custom/appreg-all-apps.png)
 
 1. W obszarze Rejestracja aplikacji wybierz pozycję **role i Administratorzy**. Jeśli jeszcze tego nie zrobiono, instrukcje znajdują się w [poprzedniej procedurze](#create-a-new-custom-role-to-grant-access-to-manage-app-registrations).
-
-    Jeśli przypiszesz tę rolę z kontekstu otwartej rejestracji aplikacji, osoba przydzielona będzie mieć uprawnienia do rejestracji w ramach jednej aplikacji. Przypisana rola jest wyświetlana na liście w każdej rejestracji aplikacji. Ten model dostępu, w którym właściciel może być przypisany do określonych zasobów usługi Azure AD według ról, jest podobny do modelu używanego w [usłudze Azure RBAC](../../role-based-access-control/overview.md) na potrzeby kontroli dostępu do zasobów platformy Azure.
 
 1. Wybierz rolę, aby otworzyć stronę **przypisania** .
 1. Wybierz pozycję **Dodaj przypisanie** , aby dodać użytkownika. Użytkownikowi nie przyznano żadnych uprawnień do rejestracji aplikacji innej niż wybrana.
@@ -70,7 +68,7 @@ Podobnie jak wbudowane role, role niestandardowe można przypisywać w domyślny
 
 ### <a name="prepare-powershell"></a>Przygotowywanie programu PowerShell
 
-Najpierw należy [pobrać moduł Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/).
+Najpierw należy [pobrać moduł programu PowerShell usługi Azure AD Preview](https://www.powershellgallery.com/packages/AzureADPreview).
 
 Aby zainstalować moduł Azure AD PowerShell, użyj następujących poleceń:
 
@@ -82,10 +80,10 @@ import-module azureadpreview
 Aby sprawdzić, czy moduł jest gotowy do użycia, użyj następującego polecenia:
 
 ``` PowerShell
-get-module azuread
+get-module azureadpreview
   ModuleType Version      Name                         ExportedCommands
   ---------- ---------    ----                         ----------------
-  Binary     2.0.0.115    azuread                      {Add-AzureADAdministrati...}
+  Binary     2.0.2.31     azuread                      {Add-AzureADAdministrati...}
 ```
 
 ### <a name="create-the-custom-role"></a>Utwórz rolę niestandardową
@@ -101,7 +99,6 @@ $templateId = (New-Guid).Guid
 # Set of permissions to grant
 $allowedResourceAction =
 @(
-    "microsoft.directory/applications/allProperties/read",
     "microsoft.directory/applications/basic/update",
     "microsoft.directory/applications/credentials/update"
 )
@@ -110,7 +107,24 @@ $rolePermission = @{'resourceActions' = $resourceActions}
 $rolePermissions = $rolePermission
 
 # Create new custom admin role
-$customAdmin = New-AzureAdRoleDefinition -RolePermissions $rolePermissions -DisplayName $displayName -Description $description -TemplateId $templateId -IsEnabled $true
+$customAdmin = New-AzureADMSRoleDefinition -RolePermissions $rolePermissions -DisplayName $displayName -Description $description -TemplateId $templateId -IsEnabled $true
+```
+
+### <a name="assign-the-custom-role-using-azure-ad-powershell"></a>Przypisywanie roli niestandardowej przy użyciu programu Azure AD PowerShell
+
+Przypisz rolę przy użyciu poniższego skryptu programu PowerShell:
+
+``` PowerShell
+# Get the user and role definition you want to link
+$user = Get-AzureADUser -Filter "userPrincipalName eq 'cburl@f128.info'"
+$roleDefinition = Get-AzureADRoleDefinition -Filter "displayName eq ' Application Registration Creator'"
+
+# Get app registration and construct resource scope for assignment.
+$appRegistration = Get-AzureADApplication -Filter "displayName eq 'f/128 Filter Photos'"
+$resourceScopes = '/' + $appRegistration.objectId
+
+# Create a scoped role assignment
+$roleAssignment = New-AzureADRoleAssignment -ResourceScopes $resourceScopes -RoleDefinitionId $roleDefinition.objectId -PrincipalId $user.objectId
 ```
 
 ## <a name="create-a-custom-role-using-microsoft-graph-api"></a>Tworzenie roli niestandardowej przy użyciu interfejsu API Microsoft Graph
@@ -134,13 +148,8 @@ $customAdmin = New-AzureAdRoleDefinition -RolePermissions $rolePermissions -Disp
     "isEnabled":true,
     "rolePermissions":
     [
-        {
-            "allowedResourceActions": 
-            [
-                "microsoft.directory/applications/basic/read",
-                "microsoft.directory/applications/credentials/update"
-            ]
-        }
+        "microsoft.directory/applications/basic/update",
+        "microsoft.directory/applications/credentials/update"
     ]
     }
     ```
@@ -152,7 +161,7 @@ $customAdmin = New-AzureAdRoleDefinition -RolePermissions $rolePermissions -Disp
     POST
 
     ``` HTTP
-    https://graph.microsoft.com/beta/roleManagement/directory/roleDefinitions/roleAssignments
+    https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
     ```
 
     Treść

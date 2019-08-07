@@ -12,24 +12,24 @@ ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f5930f2d3db94f615321eda480aed0d4d196911
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 0c0625a233b3b4a949feff2e289361a26fc8dc5a
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68380828"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835343"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Instrukcje: Dostosowywanie oświadczeń wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw
 
 Obecnie usługa Azure Active Directory (Azure AD) obsługuje logowanie jednokrotne (SSO) z większością aplikacji przedsiębiorstwa, w tym zarówno aplikacje wstępnie zintegrowane w galerii aplikacji usługi Azure AD, jak i aplikacje niestandardowe. Gdy użytkownik uwierzytelnia się w aplikacji za pośrednictwem usługi Azure AD przy użyciu protokołu SAML 2,0, usługa Azure AD wysyła token do aplikacji (za pośrednictwem protokołu HTTP POST). Następnie aplikacja sprawdza poprawność i używa tokenu do zarejestrowania użytkownika w zamiast monitowania o podanie nazwy użytkownika i hasła. Te tokeny SAML zawierają informacje o użytkowniku znanym jako *oświadczenia*.
 
-Jest *to* informacja, którą dostawca tożsamości informuje o użytkowniku w tokenie, który wystawia dla tego użytkownika. W [tokenie SAML](https://en.wikipedia.org/wiki/SAML_2.0)dane te są zazwyczaj zawarte w instrukcji języka SAML. Unikatowy identyfikator użytkownika jest zazwyczaj reprezentowany przez element SAML subject nazywany również identyfikatorem nazwy.
+Jest to informacja, którą dostawca tożsamości informuje o użytkowniku w tokenie, który wystawia dla tego użytkownika. W [tokenie SAML](https://en.wikipedia.org/wiki/SAML_2.0)dane te są zazwyczaj zawarte w instrukcji języka SAML. Unikatowy identyfikator użytkownika jest zazwyczaj reprezentowany przez element SAML subject nazywany również identyfikatorem nazwy.
 
 Domyślnie usługa Azure AD wystawia token języka SAML dla aplikacji, która zawiera `NameIdentifier` zastrzeżenie o wartości nazwy użytkownika (znanej także jako główna nazwa użytkownika) w usłudze Azure AD, która może jednoznacznie identyfikować użytkownika. Token SAML zawiera również dodatkowe oświadczenia zawierające adres e-mail użytkownika, imię i nazwisko.
 

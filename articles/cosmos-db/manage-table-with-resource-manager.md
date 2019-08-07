@@ -1,29 +1,32 @@
 ---
-title: Szablony usługi Azure Resource Manager dla interfejsu API tabeli usługi Azure Cosmos DB
-description: Szablony usługi Azure Resource Manager umożliwia tworzenie i Konfigurowanie interfejsu API tabeli usługi Azure Cosmos DB.
+title: Szablony Azure Resource Manager dla Azure Cosmos DB interfejs API tabel
+description: Utwórz i skonfiguruj Azure Cosmos DB interfejs API tabel za pomocą szablonów Azure Resource Manager.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 08/05/2019
 ms.author: mjbrown
-ms.openlocfilehash: 82e2a436bf6b25b6164d845d234896390a262292
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4dd636be60233beafca8e8680551bd7c711a4ccc
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65968829"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68814873"
 ---
-# <a name="manage-azure-cosmos-db-table-api-resources-using-azure-resource-manager-templates"></a>Zarządzanie zasobami interfejsu API tabeli usługi Azure Cosmos DB przy użyciu szablonów usługi Azure Resource Manager
+# <a name="manage-azure-cosmos-db-table-api-resources-using-azure-resource-manager-templates"></a>Zarządzanie zasobami interfejs API tabel Azure Cosmos DB przy użyciu szablonów Azure Resource Manager
 
-## Tworzenie konta usługi Azure Cosmos i tabeli <a id="create-resource"></a>
+## Tworzenie konta i tabeli platformy Azure Cosmos<a id="create-resource"></a>
 
-Tworzenie zasobów usługi Azure Cosmos DB przy użyciu szablonu usługi Azure Resource Manager. Ten szablon utworzy konta usługi Azure Cosmos dla interfejsu API tabel z jednej tabeli na 400 RU/s przepływności. Kopiowanie szablonu i wdrażanie, jak pokazano poniżej lub odwiedź [galerii Szybki Start Azure](https://azure.microsoft.com/resources/templates/101-cosmosdb-table/) i wdrożyć w witrynie Azure portal. Możesz również pobrać szablon na komputerze lokalnym lub utworzyć nowy szablon i określ ścieżkę lokalną za pomocą `--template-file` parametru.
+Tworzenie Azure Cosmos DB zasobów przy użyciu szablonu Azure Resource Manager. Ten szablon utworzy konto usługi Azure Cosmos dla interfejs API tabel z jedną tabelą w przepływności 400 RU/s. Skopiuj szablon i Wdróż, jak pokazano poniżej, lub odwiedź [galerię szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/101-cosmosdb-table/) i Wdróż ją z Azure Portal. Możesz również pobrać szablon na komputer lokalny lub utworzyć nowy szablon i określić ścieżkę lokalną za pomocą `--template-file` parametru.
+
+> [!NOTE]
+> Nazwy kont muszą zawierać małe litery i < 31 znaków.
 
 [!code-json[create-cosmos-table](~/quickstart-templates/101-cosmosdb-table/azuredeploy.json)]
 
-### <a name="deploy-via-powershell"></a>Wdrażanie przy użyciu programu PowerShell
+### <a name="deploy-via-powershell"></a>Wdrażanie za pomocą programu PowerShell
 
-Aby wdrożyć szablon usługi Resource Manager przy użyciu programu PowerShell, **kopii** skrypt, a następnie wybierz pozycję **wypróbuj** otworzyć usługa Azure Cloud shell. Wklej skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz **Wklej**:
+Aby wdrożyć szablon Menedżer zasobów przy użyciu programu PowerShell, **Skopiuj** skrypt i wybierz pozycję **Wypróbuj** , aby otworzyć usługę Azure Cloud Shell. Aby wkleić skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz polecenie **Wklej**:
 
 ```azurepowershell-interactive
 
@@ -45,11 +48,11 @@ New-AzResourceGroupDeployment `
  (Get-AzResource --ResourceType "Microsoft.DocumentDb/databaseAccounts" --ApiVersion "2015-04-08" --ResourceGroupName $resourceGroupName).name
 ```
 
-Jeśli zdecydujesz się używać lokalnie zainstalowanej wersji programu PowerShell, a nie usługa Azure Cloud shell, musisz [zainstalować](/powershell/azure/install-az-ps) modułu Azure PowerShell. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest używana.
+W przypadku wybrania opcji używania lokalnie zainstalowanej wersji programu PowerShell zamiast programu z usługi Azure Cloud Shell należy [zainstalować](/powershell/azure/install-az-ps) moduł Azure PowerShell. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest używana.
 
-### <a name="deploy-via-azure-cli"></a>Wdrażanie przy użyciu wiersza polecenia platformy Azure
+### <a name="deploy-via-azure-cli"></a>Wdrażanie za pomocą interfejsu wiersza polecenia platformy Azure
 
-Do wdrożenia szablonu usługi Resource Manager przy użyciu wiersza polecenia platformy Azure, **kopiowania** skrypt, a następnie wybierz pozycję **wypróbuj** otworzyć usługa Azure Cloud shell. Wklej skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz **Wklej**:
+Aby wdrożyć szablon Menedżer zasobów przy użyciu interfejsu wiersza polecenia platformy Azure, **Skopiuj** skrypt i wybierz opcję **Wypróbuj** , aby otworzyć usługę Azure Cloud Shell. Aby wkleić skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz polecenie **Wklej**:
 
 ```azurecli-interactive
 read -p 'Enter the Resource Group name: ' resourceGroupName
@@ -67,17 +70,17 @@ az group deployment create --resource-group $resourceGroupName \
 az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
 ```
 
-`az cosmosdb show` Polecenie wyświetla nowo utworzonego konta usługi Azure Cosmos po udostępnieniu mu. Jeśli zdecydujesz się używać lokalnie zainstalowanej wersji wiersza polecenia platformy Azure zamiast CloudShell, zobacz [interfejsu wiersza polecenia platformy Azure (CLI)](/cli/azure/) artykułu.
+`az cosmosdb show` Polecenie wyświetla nowo utworzone konto usługi Azure Cosmos po jego aprowizacji. Jeśli zdecydujesz się używać lokalnie zainstalowanej wersji interfejsu wiersza polecenia platformy Azure zamiast korzystania z programu CloudShell, zobacz artykuł [interfejs wiersza poleceń platformy Azure](/cli/azure/) .
 
-## Aktualizuj przepływność (RU/s) w tabeli <a id="table-ru-update"></a>
+## Aktualizowanie przepływności (RU/s) w tabeli<a id="table-ru-update"></a>
 
-Następujący szablon zaktualizuje przepływność tabeli. Kopiowanie szablonu i wdrażanie, jak pokazano poniżej lub odwiedź [galerii Szybki Start Azure](https://azure.microsoft.com/resources/templates/101-cosmosdb-table-ru-update/) i wdrożyć w witrynie Azure portal. Możesz również pobrać szablon na komputerze lokalnym lub utworzyć nowy szablon i określ ścieżkę lokalną za pomocą `--template-file` parametru.
+Następujący szablon zaktualizuje przepływność tabeli. Skopiuj szablon i Wdróż, jak pokazano poniżej, lub odwiedź [galerię szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/101-cosmosdb-table-ru-update/) i Wdróż ją z Azure Portal. Możesz również pobrać szablon na komputer lokalny lub utworzyć nowy szablon i określić ścieżkę lokalną za pomocą `--template-file` parametru.
 
 [!code-json[cosmosdb-table-ru-update](~/quickstart-templates/101-cosmosdb-table-ru-update/azuredeploy.json)]
 
-### <a name="deploy-table-throughput-via-powershell"></a>Wdrażanie przepływności tabeli za pomocą programu PowerShell
+### <a name="deploy-table-throughput-via-powershell"></a>Wdrażanie przepływności tabeli przy użyciu programu PowerShell
 
-Aby wdrożyć szablon usługi Resource Manager przy użyciu programu PowerShell, **kopii** skrypt, a następnie wybierz pozycję **wypróbuj** otworzyć usługa Azure Cloud shell. Wklej skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz **Wklej**:
+Aby wdrożyć szablon Menedżer zasobów przy użyciu programu PowerShell, **Skopiuj** skrypt i wybierz pozycję **Wypróbuj** , aby otworzyć usługę Azure Cloud Shell. Aby wkleić skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz polecenie **Wklej**:
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -93,9 +96,9 @@ New-AzResourceGroupDeployment `
     -throughput $throughput
 ```
 
-### <a name="deploy-table-template-via-azure-cli"></a>Wdrażanie szablonu tabeli za pomocą wiersza polecenia platformy Azure
+### <a name="deploy-table-template-via-azure-cli"></a>Wdrażanie szablonu tabeli za pośrednictwem interfejsu wiersza polecenia platformy Azure
 
-Aby wdrożyć szablon usługi Resource Manager przy użyciu wiersza polecenia platformy Azure, wybierz **wypróbuj** otworzyć usługa Azure Cloud shell. Wklej skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz **Wklej**:
+Aby wdrożyć szablon Menedżer zasobów przy użyciu interfejsu wiersza polecenia platformy Azure, wybierz pozycję **Wypróbuj** , aby otworzyć usługę Azure Cloud Shell. Aby wkleić skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz polecenie **Wklej**:
 
 ```azurecli-interactive
 read -p 'Enter the Resource Group name: ' resourceGroupName
@@ -110,9 +113,9 @@ az group deployment create --resource-group $resourceGroupName \
 
 ## <a name="next-steps"></a>Następne kroki
 
-Poniżej przedstawiono dodatkowe zasoby:
+Oto kilka dodatkowych zasobów:
 
-- [Dokumentacja usługi Azure Resource Manager](/azure/azure-resource-manager/)
-- [Schemat dostawcy zasobów w usłudze Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions)
-- [Szablony usługi Azure Cosmos DB Quickstart](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
-- [Rozwiązywanie typowych problemów z wdrożenia usługi Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md)
+- [Dokumentacja Azure Resource Manager](/azure/azure-resource-manager/)
+- [Schemat dostawcy zasobów Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions)
+- [Azure Cosmos DB Szablony szybkiego startu](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
+- [Rozwiązywanie typowych błędów wdrażania Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md)

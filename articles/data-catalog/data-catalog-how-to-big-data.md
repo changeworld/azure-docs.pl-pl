@@ -1,30 +1,28 @@
 ---
-title: Sposób pracy ze źródłami danych dane big data w usłudze Azure Data Catalog
-description: Artykuł porad wyróżnianie wzorce ze źródłami danych dane big data, w tym usługi Azure Blob Storage, Azure Data Lake i HDFS, Hadoop przy użyciu usługi Azure Data Catalog.
-services: data-catalog
+title: Jak korzystać ze źródeł danych Big Data w Azure Data Catalog
+description: Instrukcje dotyczące wyróżniania artykułu dotyczącego używania Azure Data Catalog ze źródłami danych Big Data, w tym Azure Blob Storage, Azure Data Lake i Hadoop HDFS.
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 626d1568-0780-4726-bad1-9c5000c6b31a
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: b6b419d575e2164fc683b8e6b5020572db74d1b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/01/2019
+ms.openlocfilehash: 5b213ebabc2d849587590ba295498d24737dbde7
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61001745"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68734655"
 ---
-# <a name="how-to-work-with-big-data-sources-in-azure-data-catalog"></a>Jak pracować z dużymi źródłami danych w usłudze Azure Data Catalog
+# <a name="how-to-work-with-big-data-sources-in-azure-data-catalog"></a>Jak współpracować z dużymi źródłami danych w Azure Data Catalog
 ## <a name="introduction"></a>Wprowadzenie
-**Microsoft Azure Data Catalog** to usługa w pełni zarządzana usługa w chmurze, która służy jako system rejestracji i system odnajdowania firmowych źródeł danych. Jest ona wszystkie o osobach, pomagając odnaleźć, zrozumieć i używać źródła danych i pomagając organizacjom pozwala zwiększyć wartość uzyskiwaną z ich istniejących źródeł danych, włącznie z danymi big Data.
+**Microsoft Azure Data Catalog** to w pełni zarządzana usługa w chmurze, która służy jako system rejestracji i odnajdywania źródeł danych w przedsiębiorstwie. Wszystko to ułatwia osobom odkrywanie, poznawanie i używanie źródeł danych oraz ułatwianie organizacjom uzyskiwania większej wartości z istniejących źródeł danych, w tym danych Big Data.
 
-**Usługa Azure Data Catalog** obsługuje rejestrację obiektów blob Azure Blog Storage i katalogów, a także HDFS, Hadoop, plików i katalogów. Lub częściową strukturą charakter tych źródeł danych zapewnia dużą elastyczność. Jednak aby uzyskać największe korzyści z ich za pomocą rejestrowania **usługi Azure Data Catalog**, użytkowników należy wziąć pod uwagę organizowania źródeł danych.
+**Azure Data Catalog** obsługuje rejestrację obiektów blob i katalogów magazynu w blogu platformy Azure oraz plików i katalogów usługi Hadoop. Ogólny charakter tych źródeł danych zapewnia dużą elastyczność. Aby jednak uzyskać największą wartość rejestrowania ich w **Azure Data Catalog**, użytkownicy muszą rozważyć, jak są zorganizowane źródła danych.
 
-## <a name="directories-as-logical-data-sets"></a>Katalogi jako logicznych zestawów danych
-Typowy wzorzec służący do organizowania źródeł danych big data jest traktować katalogów jako zestawy danych logicznych. Katalogi najwyższego poziomu są używane do definiowania zestawu danych, podczas podfoldery Definiuj partycje, a pliki, które zawierają przechowywania danych.
+## <a name="directories-as-logical-data-sets"></a>Katalogi jako logiczne zestawy danych
+Typowym wzorcem organizowania źródeł danych Big Data jest traktowanie katalogów jako logicznych zestawów danych. Katalogi najwyższego poziomu są używane do definiowania zestawu danych, a podfoldery definiują partycje i pliki, które zawierają same dane.
 
-Przykładem tego wzorca mogą być:
+Przykładem tego wzorca może być:
 
     \vehicle_maintenance_events
         \2013
@@ -39,25 +37,25 @@ Przykładem tego wzorca mogą być:
         \2013
         ...
 
-W tym przykładzie vehicle_maintenance_events i location_tracking_events reprezentują logiczne zestawów danych. Każda z tych folderów zawiera pliki danych, które są zorganizowane według roku i miesiąca w jego podfolderach. Każda z tych folderów potencjalnie mogą zawierać setek lub tysięcy plików.
+W tym przykładzie vehicle_maintenance_events i location_tracking_events reprezentują logiczne zestawy danych. Każdy z tych folderów zawiera pliki danych uporządkowane według roku i miesiąca w podfolderach. Każdy z tych folderów może potencjalnie zawierać setki lub tysiące plików.
 
-W tym wzorcu rejestrowania poszczególnych plików za pomocą **usługi Azure Data Catalog** prawdopodobnie nie ma sensu. Zamiast tego Zarejestruj katalogi, które reprezentują zbiory danych, które można wiele wywnioskować użytkownikom pracy z danymi.
+W tym wzorcu Rejestracja pojedynczych plików z **Azure Data Catalog** prawdopodobnie nie ma sensu. Zamiast tego należy zarejestrować katalogi, które reprezentują zestawy danych, które mają znaczenie dla użytkowników pracujących z danymi.
 
-## <a name="reference-data-files"></a>Odwołanie do plików danych
-Uzupełniające wzorzec jest do przechowywania zestawów danych referencyjnych jako pojedyncze pliki. Te zestawy danych mogą być uważane za "małe" po stronie danych big Data i często są podobne do wymiarów w modelu danych analitycznych. Pliki danych odwołania zawiera rekordy, które są używane do zapewniania kontekstu zbiorczego pliki danych przechowywanych w innym miejscu w magazynie danych big Data.
+## <a name="reference-data-files"></a>Pliki danych referencyjnych
+Wzorzec uzupełniający służy do przechowywania zestawów danych referencyjnych jako pojedynczych plików. Te zestawy danych mogą być uważane za małą część danych Big Data i są często podobne do wymiarów w modelu danych analitycznych. Pliki danych referencyjnych zawierają rekordy, które są używane do zapewnienia kontekstu na potrzeby zbiorczych plików danych przechowywanych w innym miejscu w magazynie danych Big Data.
 
-Przykładem tego wzorca mogą być:
+Przykładem tego wzorca może być:
 
     \vehicles.csv
     \maintenance_facilities.csv
     \maintenance_types.csv
 
-Badacz danych lub analityka pracując z danymi zawartymi w większych struktur katalogów danych w tych plikach odwołania może służyć do zapewnienia bardziej szczegółowe informacje dotyczące jednostek, które są określane tylko według nazwy lub Identyfikatora większy zestaw danych.
+Gdy analityk lub naukowc danych pracuje z danymi zawartymi w większych strukturach katalogów, dane w tych plikach referencyjnych mogą służyć do zapewnienia bardziej szczegółowych informacji o jednostkach, które są nazywane tylko nazwami lub IDENTYFIKATORami w większym zestawie danych.
 
-W tym wzorcu warto zarejestrować plików danych indywidualne odwołanie z **usługi Azure Data Catalog**. Każdy plik reprezentuje zestaw danych i każdej z nich można dodawać adnotacje i odnalezione indywidualnie.
+W tym wzorcu warto zarejestrować pojedyncze pliki danych referencyjnych za pomocą **Azure Data Catalog**. Każdy plik reprezentuje zestaw danych, a każdy z nich może być oznaczony jako adnotacja i odnaleziony indywidualnie.
 
-## <a name="alternate-patterns"></a>Alternatywne wzorce
-Wzorce opisane w poprzedniej sekcji są tylko dwa możliwe sposoby, które mogą być uporządkowane magazynie danych big Data, ale każda implementacja jest inny. Niezależnie od tego, jak strukturalnych źródeł danych, podczas rejestrowania źródeł danych big data za pomocą **usługi Azure Data Catalog**, skupić się na rejestrowanie, pliki i katalogi, które reprezentują zbiory danych, które mają wartość innym użytkownikom w ramach usługi organizacja. Rejestrowanie wszystkich plików i katalogów można zaśmiecać wykazu, co utrudnia użytkownikom znajdowanie potrzebnych informacji.
+## <a name="alternate-patterns"></a>Wzorce alternatywne
+Wzorce opisane w poprzedniej sekcji są tylko dwoma możliwymi sposobami organizowania magazynu danych Big Data, ale każda implementacja jest inna. Niezależnie od tego, jak źródła danych są strukturalne, podczas rejestrowania źródeł danych Big Data przy użyciu **Azure Data Catalog**należy skoncentrować się na zarejestrowaniu plików i katalogów, które reprezentują zestawy danych, które są wartościami innych w organizacji. Zarejestrowanie wszystkich plików i katalogów może obsłużyć katalog, co utrudnia użytkownikom znalezienie potrzebnych informacji.
 
 ## <a name="summary"></a>Podsumowanie
-Rejestrowanie źródeł danych za pomocą **usługi Azure Data Catalog** łatwiej je do odnalezienia i zrozumienia. Rejestrowanie i dodawanie adnotacji do obsługi dużych ilości danych, pliki i katalogi, które reprezentują logiczne zestawów danych, możesz pomóc użytkownikom znajdowanie i używanie źródeł danych big data, które są im potrzebne.
+Zarejestrowanie źródeł danych za pomocą **Azure Data Catalog** ułatwia ich odnajdywanie i zrozumienie. Rejestrując pliki i katalogi danych Big Data, które reprezentują logiczne zestawy danych, można ułatwić użytkownikom znajdowanie i używanie potrzebnych źródeł danych Big Data.

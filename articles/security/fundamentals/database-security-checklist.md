@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 3f51f23f47cfbd81c71234bc2ce5a0adeeadd3f9
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: bf11d7a9dbaa37db521da67deddbed977cc1d251
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727373"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780548"
 ---
 # <a name="azure-database-security-checklist"></a>Lista kontrolna zabezpieczeń usługi Azure Database
 
@@ -41,7 +41,7 @@ Należą do nich:
 Chmura obliczeniowa wymaga nowych odmian zabezpieczeń, które nie są znane dla wielu użytkowników aplikacji, administratorów bazy danych i programistów. W związku z tym niektóre organizacje są wątpliwości do wdrożenia infrastruktury chmurowej na potrzeby zarządzania danymi ze względu na postrzegane zagrożenia bezpieczeństwa. Wiele z tych problemów można jednak poprawić, aby lepiej zrozumieć funkcje zabezpieczeń wbudowane w Microsoft Azure i Microsoft Azure SQL Database.
 
 ## <a name="checklist"></a>Lista kontrolna
-Zalecamy zapoznanie się z artykułem [najlepsze rozwiązania w zakresie zabezpieczeń usługi Azure Database](https://docs.microsoft.com/azure/security/azure-database-security-best-practices) przed przejrzeniem tej listy kontrolnej. Po zrozumieniu najlepszych rozwiązań będzie można maksymalnie wykorzystać tę listę kontrolną. Następnie można użyć tej listy kontrolnej, aby upewnić się, że zostały rozwiązane ważne problemy w zabezpieczeniach usługi Azure Database.
+Zalecamy zapoznanie się z artykułem [najlepsze rozwiązania w zakresie zabezpieczeń usługi Azure Database](https://docs.microsoft.com/azure/security/fundamentals/database-best-practices) przed przejrzeniem tej listy kontrolnej. Po zrozumieniu najlepszych rozwiązań będzie można maksymalnie wykorzystać tę listę kontrolną. Następnie można użyć tej listy kontrolnej, aby upewnić się, że zostały rozwiązane ważne problemy w zabezpieczeniach usługi Azure Database.
 
 
 |Kategoria listy kontrolnej| Opis|
@@ -59,7 +59,7 @@ Zalecamy zapoznanie się z artykułem [najlepsze rozwiązania w zakresie zabezpi
 ## <a name="conclusion"></a>Wniosek
 Azure Database to niezawodna platforma baz danych z pełnymi funkcjami zabezpieczeń, które spełniają wiele wymagań w zakresie organizacji i zgodności. Możesz łatwo chronić dane, kontrolując fizyczny dostęp do danych i korzystając z różnych opcji zabezpieczeń danych na poziomie plików, kolumn lub wierszy z Transparent Data Encryption, szyfrowanie na poziomie komórki lub zabezpieczenia na poziomie wiersza. Always Encrypted włącza również operacje związane z zaszyfrowanymi danymi, upraszczając proces aktualizacji aplikacji. Z kolei dostęp do dzienników inspekcji SQL Database działania zawiera informacje, które są potrzebne, co pozwala dowiedzieć się, jak i kiedy dane są dostępne.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W kilku prostych krokach możesz poprawić zabezpieczenia bazy danych, aby chronić ją przed złośliwymi użytkownikami i nieautoryzowanym dostępem. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 - Skonfiguruj [reguły zapory](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) dla serwera i bazy danych.

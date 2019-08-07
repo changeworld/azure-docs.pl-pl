@@ -1,6 +1,6 @@
 ---
-title: Jak zmienić modelu licencjonowania dla maszyny Wirtualnej z programu SQL Server na platformie Azure
-description: Dowiedz się, jak przełączyć licencjonowania dla maszyny wirtualnej SQL na platformie Azure na podstawie "płatność za rzeczywiste użycie" do "bring-your-own-license" za pomocą korzyści użycia hybrydowego platformy Azure.
+title: Jak zmienić model licencjonowania dla maszyny wirtualnej SQL Server na platformie Azure
+description: Dowiedz się, jak przełączać Licencjonowanie dla maszyny wirtualnej SQL na platformie Azure z "płatność zgodnie z rzeczywistym użyciem" do pozycji "Przenieś własną licencję" przy użyciu Korzyść użycia hybrydowego platformy Azure.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -12,65 +12,65 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 02/13/2019
+ms.date: 08/05/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 78ad784a45d2b0063932791daedc9b1ec1aafd72
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 37457d8ce1189f9282f4763633e944e3c2d639c9
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786758"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816720"
 ---
-# <a name="how-to-change-licensing-model-for-a-sql-server-virtual-machine-in-azure"></a>Jak zmienić modelu licencjonowania maszyny wirtualnej programu SQL Server na platformie Azure
-W tym artykule opisano, jak zmienić modelu licencjonowania maszyny wirtualnej programu SQL Server na platformie Azure za pomocą nowego dostawcę zasobów maszyny Wirtualnej SQL — **Microsoft.SqlVirtualMachine**.
+# <a name="how-to-change-licensing-model-for-a-sql-server-virtual-machine-in-azure"></a>Jak zmienić model licencjonowania dla SQL Server maszyny wirtualnej na platformie Azure
+W tym artykule opisano sposób zmiany modelu licencjonowania dla SQL Server maszyny wirtualnej na platformie Azure przy użyciu nowego dostawcy zasobów maszyny wirtualnej SQL — **Microsoft. SqlVirtualMachine**.
 
-Istnieją dwa modele licencjonowania maszyny wirtualnej (VM), hostowany program SQL Server — płatność za rzeczywiste użycie i korzyści użycia hybrydowego platformy Azure (AHB). A teraz przy użyciu witryny Azure portal, interfejsu wiersza polecenia platformy Azure lub programu PowerShell można modyfikować modelu licencjonowania maszyny wirtualnej programu SQL Server. 
+Istnieją dwa modele licencjonowania dla maszyny wirtualnej obsługującej SQL Server — płatność zgodnie z rzeczywistym użyciem i Korzyść użycia hybrydowego platformy Azure (AHB). Teraz za pomocą Azure Portal, interfejsu wiersza polecenia platformy Azure lub programu PowerShell można modyfikować model licencjonowania SQL Server maszyny wirtualnej. 
 
-**Płatność za rzeczywiste użycie** model (PAYG) oznacza, że koszt na sekundę maszyny Wirtualnej platformy Azure obejmuje koszt licencji programu SQL Server.
-[Korzyść użycia hybrydowego platformy Azure (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) pozwala na używanie własnej licencji programu SQL Server za pomocą maszyny Wirtualnej z programu SQL Server. 
+Model **płatność zgodnie z rzeczywistym** użyciem (PAYG) oznacza, że koszt korzystania z maszyny wirtualnej platformy Azure na sekundę obejmuje również koszt licencji na SQL Server.
+[Korzyść użycia hybrydowego platformy Azure (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) umożliwia korzystanie z własnej licencji SQL Server z maszyną wirtualną z systemem SQL Server. 
 
-Korzyść użycia hybrydowego platformy Azure firmy Microsoft dla programu SQL Server umożliwia korzystanie z licencji programu SQL Server z pakietem Software Assurance ("kwalifikowany licencji") w usłudze Azure Virtual Machines. Dzięki korzyści użycia hybrydowego platformy Azure dla programu SQL Server klienci nie zostanie obciążona za użycie licencji programu SQL Server na maszynie Wirtualnej, ale są nadal musisz zapłacić za koszty podstawowe zasoby obliczeniowe chmury (oznacza to, że stawka podstawowa), magazynu i kopii zapasowych, jak również we/wy skojarzonych z ich u SE usług (o ile dotyczy).
+Microsoft Azure korzyść użycia hybrydowego dla SQL Server umożliwia korzystanie z licencji SQL Server z programem Software Assurance ("kwalifikowana Licencja") na platformie Azure Virtual Machines. W przypadku Korzyść użycia hybrydowego platformy Azure SQL Server klienci nie będą obciążani opłatami za użycie licencji SQL Server na maszynie wirtualnej, ale muszą płacić za koszty związane z obliczeniami w chmurze (czyli stawką bazową), magazynem i zapleczem, a także we/wy skojarzone ze swoimi literami u SE usług (zgodnie z oczekiwaniami).
 
-Zgodnie z postanowieniami produktu firmy Microsoft "klientów musi wskazywać, czy używają usługi Azure SQL Database (wystąpienie zarządzane, puli elastycznej i pojedynczej bazy danych), usługa Azure Data Factory, SQL Server Integration Services lub maszyn wirtualnych programu SQL Server w ramach hybrydowego platformy Azure Korzyści z programu SQL Server podczas konfigurowania obciążeń na platformie Azure."
+Zgodnie z postanowieniami produktu firmy Microsoft "klienci muszą wskazać, że używają Azure SQL Database (wystąpienia zarządzane, Pula elastyczna i pojedyncza baza danych), Azure Data Factory, SQL Server Integration Services lub SQL Server Virtual Machines w ramach hybrydowej platformy Azure Korzyść dla SQL Server podczas konfigurowania obciążeń na platformie Azure ".
 
-Aby wskazać, użyj korzyści użycia hybrydowego platformy Azure dla programu SQL Server na maszynie Wirtualnej platformy Azure i zgodności, dostępne są trzy opcje:
+Aby wskazać użycie Korzyść użycia hybrydowego platformy Azure dla SQL Server na maszynie wirtualnej platformy Azure i być zgodne, dostępne są trzy opcje:
 
-1. Aprowizuj maszynę wirtualną przy użyciu obrazu programu SQL Server w ramach opcji BYOL z portalu Azure marketplace, jest dostępna tylko dla klientów z umową Enterprise Agreement.
-1. Aprowizowanie maszyny wirtualnej przy użyciu obrazu PAYG programu SQL Server z witryny Azure marketplace i Aktywuj AHB.
-1. Samodzielnie ręcznie zainstalować program SQL Server na maszynie Wirtualnej platformy Azure [zarejestrować ich SQL Server VM](virtual-machines-windows-sql-register-with-resource-provider.md) i Aktywuj AHB.
+1. Zainicjuj obsługę administracyjną maszyny wirtualnej przy użyciu obrazu SQL Server BYOL z portalu Azure Marketplace, który jest dostępny tylko dla klientów z Umowa Enterprise.
+1. Zainicjuj obsługę maszyny wirtualnej przy użyciu obrazu SQL Server PAYG z witryny Azure Marketplace i aktywuj AHB.
+1. Samodzielne instalowanie SQL Server na maszynie wirtualnej platformy Azure, ręczne [rejestrowanie SQL Server maszyn wirtualnych](virtual-machines-windows-sql-register-with-resource-provider.md) i aktywowanie AHB.
 
-Typ licencji programu SQL Server jest ustawiona, gdy maszyna wirtualna jest aprowizowana i można je zmienić w dowolnym momencie później. Przełączanie między modelami licencji spowoduje naliczenie **bez przerwy w działaniu**, ponownego uruchamiania maszyny Wirtualnej, dodaje **bez dodatkowych kosztów** (w rzeczywistości aktywowanie AHB *zmniejsza* koszt) i jest **obowiązywać natychmiast**. 
+Typ licencji SQL Server jest ustawiany, gdy maszyna wirtualna jest obsługiwana i można ją zmienić w dowolnym momencie później. Przełączenie między modelamilicencji nie powoduje przestoju, nie powoduje ponownego uruchomienia maszyny wirtualnej, program nie będzie miał **żadnych dodatkowych kosztów** (w rzeczywistości aktywowanie AHB *zmniejsza* koszty) i obowiązuje od **razu**. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Użycie dostawcy zasobów maszyny Wirtualnej SQL wymaga rozszerzenie SQL IaaS. Jako takie aby kontynuować korzystanie z dostawcy zasobów maszyny Wirtualnej SQL, potrzebne są następujące elementy:
+Użycie dostawcy zasobów maszyny wirtualnej SQL wymaga rozszerzenia SQL IaaS. W związku z tym, aby kontynuować korzystanie z dostawcy zasobów maszyny wirtualnej SQL, potrzebne są następujące elementy:
 - [Subskrypcji platformy Azure](https://azure.microsoft.com/free/).
-- [Pakiet Software assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default). 
-- A [maszyny Wirtualnej programu SQL Server](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) zarejestrowane w usłudze [dostawcy zasobów maszyny Wirtualnej SQL](virtual-machines-windows-sql-register-with-resource-provider.md) zainstalowane. 
+- [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default). 
+- [SQL Server maszynę wirtualną](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) zarejestrowaną z zainstalowanym [dostawcą zasobów maszyny wirtualnej SQL](virtual-machines-windows-sql-register-with-resource-provider.md) . 
 
 
-## <a name="change-license-for-vms-already-registered-with-resource-provider"></a>Zmiany licencji dla maszyn wirtualnych już zarejestrowanego dostawcy zasobów 
+## <a name="change-license-for-vms-already-registered-with-resource-provider"></a>Zmień licencję dla maszyn wirtualnych już zarejestrowanych przy użyciu dostawcy zasobów 
 
 # <a name="azure-portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
-Możesz zmodyfikować model licencjonowania bezpośrednio z portalu. 
+Model licencjonowania można modyfikować bezpośrednio w portalu. 
 
-1. Otwórz [witryny Azure portal](https://portal.azure.com) i uruchom [zasobów maszyn wirtualnych SQL](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource) dla maszyny Wirtualnej programu SQL Server. 
-1. Wybierz **skonfigurować** w obszarze **ustawienia**. 
-1. Wybierz **korzyść użycia hybrydowego platformy Azure** opcję i zaznacz pole wyboru, aby upewnić się, że masz licencję programu SQL Server z pakietem Software Assurance. 
-1. Wybierz **Zastosuj** w dolnej części **Konfiguruj** strony. 
+1. Otwórz [Azure Portal](https://portal.azure.com) i uruchom zasób usługi [SQL Virtual Machines](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource) dla maszyny wirtualnej SQL Server. 
+1. W obszarze **Ustawienia**wybierz pozycję **Konfiguruj** . 
+1. Wybierz opcję **korzyść użycia hybrydowego platformy Azure** i zaznacz pole wyboru, aby potwierdzić, że masz licencję na SQL Server z programem Software Assurance. 
+1. Wybierz pozycję **Zastosuj** w dolnej części strony **Konfigurowanie** . 
 
 ![AHB w portalu](media/virtual-machines-windows-sql-ahb/ahb-in-portal.png)
 
 
-# <a name="az-clitabbash"></a>[INTERFEJS WIERSZA POLECENIA AZ](#tab/bash)
+# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
 
-Aby zmienić model licencjonowania, można użyć wiersza polecenia platformy Azure.  
+Aby zmienić model licencjonowania, możesz użyć interfejsu wiersza polecenia platformy Azure.  
 
-Poniższy fragment kodu zmienia licencji zgodnie z rzeczywistym użyciem modelu BYOL (lub za pomocą korzyści użycia hybrydowego platformy Azure):
+Poniższy fragment kodu zmienia model licencji z płatność zgodnie z rzeczywistym użyciem na BYOL (lub przy użyciu Korzyść użycia hybrydowego platformy Azure):
 
 ```azurecli-interactive
 # Switch your SQL Server VM license from pay-as-you-go to bring-your-own
@@ -79,7 +79,7 @@ Poniższy fragment kodu zmienia licencji zgodnie z rzeczywistym użyciem modelu 
 az sql vm update -n <VMName> -g <ResourceGroupName> --license-type AHUB
 ```
 
-Poniższy fragment kodu zmienia swój model bring-your-own-license na płatność za rzeczywiste użycie: 
+Poniższy fragment kodu umożliwia przełączenie modelu "Przenieś własną licencję" na model płatność zgodnie z rzeczywistym użyciem: 
 
 ```azurecli-interactive
 # Switch your SQL Server VM license from bring-your-own to pay-as-you-go
@@ -89,9 +89,9 @@ az sql vm update -n <VMName> -g <ResourceGroupName> --license-type PAYG
 ```
 
 # <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
-Można użyć programu PowerShell, aby zmienić model licencjonowania.
+Aby zmienić model licencjonowania, można użyć programu PowerShell.
 
-Poniższy fragment kodu zmienia licencji zgodnie z rzeczywistym użyciem modelu BYOL (lub za pomocą korzyści użycia hybrydowego platformy Azure):
+Poniższy fragment kodu zmienia model licencji z płatność zgodnie z rzeczywistym użyciem na BYOL (lub przy użyciu Korzyść użycia hybrydowego platformy Azure):
 
 ```powershell-interactive
 # Switch your SQL Server VM license from pay-as-you-go to bring-your-own
@@ -105,7 +105,7 @@ $SqlVm.Sku= [Microsoft.Azure.Management.ResourceManager.Models.Sku]::new() #>
 $SqlVm | Set-AzResource -Force 
 ```
 
-Poniższy fragment kodu zmienia modelu BYOL na płatność za rzeczywiste użycie:
+Poniższy fragment kodu umożliwia przełączenie modelu BYOL na model płatność zgodnie z rzeczywistym użyciem:
 
 ```powershell-interactive
 # Switch your SQL Server VM license from bring-your-own to pay-as-you-go
@@ -120,40 +120,40 @@ $SqlVm | Set-AzResource -Force
 ```
 ---
 
-## <a name="change-license-for-vms-not-registered-with-resource-provider"></a>Zmień licencję dla maszyn wirtualnych nie jest zarejestrowana u dostawcy zasobów
+## <a name="change-license-for-vms-not-registered-with-resource-provider"></a>Zmień licencję dla maszyn wirtualnych, które nie są zarejestrowane przy użyciu dostawcy zasobów
 
-Jeśli zainicjowano obsługę administracyjną maszyny Wirtualnej z programu SQL Server z obrazów w portalu Azure Marketplace PAYG typu licencji SQL będzie PAYG. Jeśli zainicjowano obsługę administracyjną maszyny Wirtualnej programu SQL Server w witrynie Azure Marketplace przy użyciu obrazów BYOL typu licencji będzie AHUB. Wszystkie maszyny wirtualne programu SQL Server, udostępnioną za pomocą domyślnego (PAYG) lub obrazów portalu Azure Marketplace w ramach opcji BYOL zostanie automatycznie zarejestrowany dostawcy zasobów maszyny Wirtualnej SQL, dzięki czemu będzie ona mogła zmienić [typ licencji](#change-license-for-vms-already-registered-with-resource-provider)
+Jeśli zainicjowano SQL Server maszynę wirtualną na podstawie obrazów z witryny Azure Marketplace, wówczas typem licencji SQL będzie PAYG. Jeśli zainicjowano SQL Server maszynę wirtualną przy użyciu obrazu BYOL z witryny Azure Marketplace, typ licencji to — AHUB. Wszystkie maszyny wirtualne SQL Server inicjowane z domyślnych (PAYG) lub BYOL obrazy w portalu Azure Marketplace zostaną automatycznie zarejestrowane przy użyciu dostawcy zasobów maszyny wirtualnej SQL, dzięki czemu mogą zmienić [Typ licencji](#change-license-for-vms-already-registered-with-resource-provider)
 
-Tylko kwalifikujesz się do samodzielnie zainstalować program SQL Server na maszynie Wirtualnej platformy Azure za pomocą korzyści użycia hybrydowego platformy Azure i należy [zarejestrować te maszyny wirtualne za pomocą dostawcy zasobów maszyny Wirtualnej SQL](virtual-machines-windows-sql-register-with-resource-provider.md) , ustawiając licencję programu SQL Server jako AHB, aby wskazać użycia AHB zgodnie z opisem w Warunki produktu firmy Microsoft.
+Możesz zakwalifikować się tylko do samoinstalowania SQL Server na maszynie wirtualnej platformy Azure za pośrednictwem Korzyść użycia hybrydowego platformy Azure i należy [zarejestrować te maszyny wirtualne przy użyciu dostawcy zasobów maszyny wirtualnej SQL](virtual-machines-windows-sql-register-with-resource-provider.md) , ustawiając SQL Server licencję jako AHB, aby wskazać użycie AHB zgodnie z postanowieniami produktu firmy Microsoft.
 
-Typ licencji maszyny Wirtualnej programu SQL Server jako PAYG lub AHB można zmienić tylko, jeśli maszyna wirtualna SQL został zarejestrowany za pomocą dostawcy zasobów maszyny Wirtualnej SQL; i wszystkie maszyny wirtualne SQL powinien być zarejestrowany z punktu odzyskiwania maszyny Wirtualnej SQL pod kątem zgodności licencji.
+Typ licencji maszyny wirtualnej SQL Server można zmienić tylko jako PAYG lub AHB, jeśli maszyna wirtualna SQL jest zarejestrowana u dostawcy zasobów maszyny wirtualnej SQL; wszystkie maszyny wirtualne SQL powinny być zarejestrowane przy użyciu jednostki UZALEŻNIONej SQL w celu zapewnienia zgodności licencji.
 
 ## <a name="remarks"></a>Uwagi
 
- - Klienci usługi Azure Cloud Solution Partner (CSP) mogą korzystać z korzyści użycia hybrydowego platformy Azure, najpierw wdrażanie maszyny Wirtualnej zgodnie z rzeczywistym użyciem, a następnie konwertując go bring-your-own-license jeśli mają aktywne skojarzenia zabezpieczeń.
- - Jeśli usuniesz zasób maszynę Wirtualną programu SQL Server, będzie wrócisz do ustawienia ustaloną licencji obrazu. 
-  - Możliwość zmiany modelu licencjonowania jest funkcją dostawcy zasobów maszyny Wirtualnej SQL. Wdrażanie obrazu z witryny marketplace w witrynie Azure portal automatycznie rejestruje maszynę Wirtualną programu SQL Server za pomocą dostawcy zasobów. Jednak klienci, którzy własnym zainstalowany program SQL Server należy ręcznie [zarejestrować ich SQL Server VM](virtual-machines-windows-sql-register-with-resource-provider.md). 
-- Dodanie maszyny Wirtualnej programu SQL Server do zestawu dostępności, wymaga ponownego tworzenia maszyny Wirtualnej. Jako takie, wszystkie maszyny wirtualne dodane do dostępności zestaw będzie wróć do domyślnego typu licencji zgodnie z rzeczywistym użyciem i AHB trzeba będzie ponownie włączyć. 
+ - Klienci korzystający z usługi Azure Cloud Solution partner (CSP) mogą korzystać z Korzyść użycia hybrydowego platformy Azure, najpierw wdrażając maszynę wirtualną z opcją płatność zgodnie z rzeczywistym użyciem, a następnie konwertując ją na własną licencję, jeśli mają aktywne skojarzenia zabezpieczeń.
+ - W przypadku porzucenia SQL Server zasobów maszyny wirtualnej powrócisz do ustawienia ustalonej licencji dla obrazu. 
+  - Możliwość zmiany modelu licencjonowania to funkcja dostawcy zasobów maszyny wirtualnej SQL. Wdrożenie obrazu z portalu Marketplace za pomocą Azure Portal powoduje automatyczne zarejestrowanie SQL Serverj maszyny wirtualnej przy użyciu dostawcy zasobów. Jednak klienci, którzy samodzielnie instalują SQL Server, będą musieli ręcznie [zarejestrować swoją SQL Serverą maszynę wirtualną](virtual-machines-windows-sql-register-with-resource-provider.md). 
+- Dodanie maszyny wirtualnej SQL Server do zestawu dostępności wymaga ponownego utworzenia maszyny wirtualnej. W związku z tym wszystkie maszyny wirtualne dodane do zestawu dostępności pozostaną z powrotem do domyślnego typu licencji płatność zgodnie z rzeczywistym użyciem, a AHB należy ponownie włączyć. 
 
 
 ## <a name="limitations"></a>Ograniczenia
 
- - Zmiana modelu licencjonowania jest dostępna tylko dla klientów z pakietem software assurance.
- - Zmiana modelu licencjonowania jest obsługiwana tylko dla wersji standard i enterprise programu SQL Server. Zmiany licencji Express, Web i deweloper nie są obsługiwane. 
- - Zmiana modelu licencjonowania jest obsługiwana tylko dla maszyn wirtualnych wdrożonych przy użyciu modelu usługi Resource Manager. Maszyny wirtualne wdrożone przy użyciu modelu klasycznego, nie są obsługiwane. 
- - Zmiana modelu licencjonowania jest włączony tylko w przypadku instalacji w chmurze publicznej.
- - Zmiana modelu licencjonowania jest obsługiwana tylko na maszyny wirtualne z jedną kartą Sieciową (interfejs sieciowy). Na maszynach wirtualnych, które mają więcej niż jedną kartę Sieciową, należy najpierw usunąć jedną z kart sieciowych (przy użyciu witryny Azure portal) przed rozpoczęciem procedury. W przeciwnym razie wystąpi błąd podobny do następującego: `The virtual machine '\<vmname\>' has more than one NIC associated.` Mimo że można dodać kartę Sieciową do maszyny Wirtualnej, po zmianie trybu licencjonowania, operacje wykonywane za pomocą strony konfiguracji programu SQL w witrynie Azure portal, np. funkcję automatycznego instalowania poprawek i kopia zapasowa nie jest już uznawane za obsługiwane.
+ - Zmiana modelu licencjonowania jest dostępna tylko dla klientów z programem Software Assurance.
+ - Zmiana modelu licencjonowania jest obsługiwana tylko w przypadku wersji Standard i Enterprise SQL Server. Zmiany licencji dla ekspresowych, sieci Web i dewelopera nie są obsługiwane. 
+ - Zmiana modelu licencjonowania jest obsługiwana tylko w przypadku maszyn wirtualnych wdrożonych przy użyciu modelu Menedżer zasobów. Maszyny wirtualne wdrożone przy użyciu modelu klasycznego nie są obsługiwane. Możesz migrować maszynę wirtualną z modelu klasycznego do usługi Resource Manager (ARM) i zarejestrować się przy użyciu dostawcy zasobów maszyny wirtualnej SQL. Po zarejestrowaniu maszyny wirtualnej przy użyciu dostawcy zasobów maszyny wirtualnej SQL zmiany modelu licencjonowania będą dostępne na maszynie wirtualnej. 
+ - Zmiana modelu licencjonowania jest włączona tylko dla instalacji chmury publicznej.
+ - Zmiana modelu licencjonowania jest obsługiwana tylko na maszynach wirtualnych z jedną kartą sieciową (interfejs sieciowy). Na maszynach wirtualnych, które mają więcej niż jedną kartę sieciową, należy najpierw usunąć jedną z kart sieciowych (przy użyciu Azure Portal) przed podjęciem próby wykonania procedury. W przeciwnym razie zostanie uruchomiony błąd podobny do następującego: `The virtual machine '\<vmname\>' has more than one NIC associated.`Mimo że może być możliwe dodanie karty sieciowej z powrotem do maszyny wirtualnej po zmianie trybu licencjonowania, operacje wykonywane przez stronę konfiguracji SQL w Azure Portal, na przykład automatyczne stosowanie poprawek i kopii zapasowej, nie będą już uznawane za obsługiwane.
 
 
 ## <a name="known-errors"></a>Znane błędy
 
-### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found-the-property-sqlserverlicensetype-cannot-be-found-on-this-object-verify-that-the-property-exists-and-can-be-set"></a>Zasób "Microsoft.SqlVirtualMachine/SqlVirtualMachines/\<grupa zasobów >" w grupie zasobów "\<grupa zasobów >" nie został znaleziony. Nie można odnaleźć właściwości "sqlServerLicenseType" dla tego obiektu. Sprawdź, czy właściwość istnieje i czy można ustawić.
-Ten błąd występuje podczas próby zmiany modelu licencjonowania na SQL Server VM, który nie został zarejestrowany za pomocą dostawcy zasobów maszyny Wirtualnej SQL. Należy zarejestrować dostawcę zasobów, aby Twoje [subskrypcji](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-vm-resource-provider-with-subscription), a następnie zarejestrować maszyny Wirtualnej programu SQL Server przy użyciu języka SQL [dostawcy zasobów](virtual-machines-windows-sql-register-with-resource-provider.md). 
+### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found-the-property-sqlserverlicensetype-cannot-be-found-on-this-object-verify-that-the-property-exists-and-can-be-set"></a>Nie znaleziono zasobu "Microsoft. SqlVirtualMachine/SqlVirtualMachines\</Resource-Group >" w grupie zasobów\<"Resource-Group >". Nie można odnaleźć właściwości "sqlServerLicenseType" w tym obiekcie. Sprawdź, czy właściwość istnieje i czy można ją ustawić.
+Ten błąd występuje podczas próby zmiany modelu licencjonowania na SQL Server maszynie wirtualnej, która nie została zarejestrowana w dostawcy zasobów maszyny wirtualnej SQL. Należy zarejestrować dostawcę zasobów w [ramach subskrypcji](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-vm-resource-provider-with-subscription), a następnie zarejestrować SQL SERVERą maszynę wirtualną przy użyciu [dostawcy zasobów](virtual-machines-windows-sql-register-with-resource-provider.md)SQL. 
 
-### <a name="cannot-validate-argument-on-parameter-sku"></a>Nie można sprawdzić poprawności argumentu parametru "Sku"
-Błąd może się pojawić podczas próby zmiany modelu licencjonowania maszyny Wirtualnej programu SQL Server przy użyciu programu Azure PowerShell > 4.0: `Set-AzResource: Cannot validate argument on parameter 'Sku'. The argument is null or empty. Provide an argument that is not null or empty, and then try the command again.`
+### <a name="cannot-validate-argument-on-parameter-sku"></a>Nie można zweryfikować argumentu dla parametru "SKU"
+Ten błąd może wystąpić podczas próby zmiany modelu licencjonowania SQL Server VM podczas korzystania Azure PowerShell > 4,0:`Set-AzResource: Cannot validate argument on parameter 'Sku'. The argument is null or empty. Provide an argument that is not null or empty, and then try the command again.`
 
-Aby rozwiązać ten problem, Usuń komentarz następujące wiersze w opisanych powyżej fragmentu kodu programu PowerShell podczas przełączania model licencjonowania:
+Aby rozwiązać ten problem, usuń znaczniki komentarza z tych wierszy w wcześniej wymienionym fragmencie kodu programu PowerShell podczas przełączania modelu licencjonowania:
 
   ```powershell-interactive
   # the following code snippet is necessary if using Azure Powershell version > 4
@@ -162,7 +162,7 @@ Aby rozwiązać ten problem, Usuń komentarz następujące wiersze w opisanych p
   $SqlVm.Sku= [Microsoft.Azure.Management.ResourceManager.Models.Sku]::new()
   ```
   
-Użyj poniższego kodu, aby sprawdzić posiadaną wersję programu Azure PowerShell:
+Użyj następującego kodu, aby zweryfikować wersję Azure PowerShell:
   
   ```powershell-interactive
   Get-Module -ListAvailable -Name Azure -Refresh
@@ -172,9 +172,9 @@ Użyj poniższego kodu, aby sprawdzić posiadaną wersję programu Azure PowerSh
 
 Aby uzyskać więcej informacji zobacz następujące artykuły: 
 
-* [Omówienie programu SQL Server na maszynie Wirtualnej Windows](virtual-machines-windows-sql-server-iaas-overview.md)
-* [SQL Server w usłudze Windows maszyny Wirtualnej — często zadawane pytania](virtual-machines-windows-sql-server-iaas-faq.md)
-* [SQL Server na maszynie Wirtualnej Windows wskazówki dotyczące cen](virtual-machines-windows-sql-server-pricing-guidance.md)
-* [Program SQL Server w wersji Windows VM](virtual-machines-windows-sql-server-iaas-release-notes.md)
+* [Omówienie SQL Server na maszynie wirtualnej z systemem Windows](virtual-machines-windows-sql-server-iaas-overview.md)
+* [SQL Server na maszynie wirtualnej z systemem Windows — często zadawane pytania](virtual-machines-windows-sql-server-iaas-faq.md)
+* [SQL Server wskazówki dotyczące cennika maszyn wirtualnych z systemem Windows](virtual-machines-windows-sql-server-pricing-guidance.md)
+* [SQL Server w informacjach o wersji maszyny wirtualnej z systemem Windows](virtual-machines-windows-sql-server-iaas-release-notes.md)
 
 

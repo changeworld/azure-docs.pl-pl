@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: f53d3bd64b4f837fe29baa338cd338158d59d95d
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 0dd61deb372822c5c564758d26d4c4a4938c1064
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466953"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741464"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Pracuj z ciągami w zapytaniach dziennika Azure Monitor
 
@@ -30,11 +30,11 @@ ms.locfileid: "68466953"
 
 W tym artykule opisano sposób edytowania, porównywania, wyszukiwania i wykonywania różnych operacji na ciągach.
 
-Każdy znak w ciągu ma numer indeksu, zgodnie z jego lokalizacją. Pierwszy znak jest z indeksem 0, następny znak to 1 i tak. Różne funkcje ciągów używają numerów indeksu, jak pokazano w poniższych sekcjach. W wielu poniższych przykładach użyto polecenia **Print** , aby zademonstrować manipulowanie ciągami bez użycia określonego źródła danych.
+Każdy znak w ciągu ma numer indeksu, zgodnie z jego lokalizacją. Pierwszy znak jest przy indeksie 0, następny znak to 1 itd. Różne funkcje ciągów używają numerów indeksu, jak pokazano w poniższych sekcjach. W wielu poniższych przykładach użyto polecenia **Print** , aby zademonstrować manipulowanie ciągami bez użycia określonego źródła danych.
 
 
 ## <a name="strings-and-escaping-them"></a>Ciągi i ucieczki
-Wartości ciągów są opakowane z pojedynczym lub podwójnym cudzysłowem. Ukośnik odwrotny\) (jest używany do ucieczki znaków po nim, takich jak \t dla karty, \n dla wiersza i \" znaku cudzysłowu.
+Wartości ciągów są opakowane z pojedynczym lub podwójnym cudzysłowem. Ukośnik odwrotny\\() jest używany do ucieczki znaków następującego znaku, takiego jak \t dla karty, \n dla wiersza i \" znaku cudzysłowu.
 
 ```Kusto
 print "this is a 'string' literal in double \" quotes"
@@ -61,8 +61,8 @@ Operator       |Opis                         |Z uwzględnieniem wielkości liter
 `!~`           |Nierówne                          |Nie            |`"aBc" !~ "xyz"`
 `has`          |Po prawej stronie jest całym terminem po lewej stronie |Nie|`"North America" has "america"`
 `!has`         |Po prawej stronie nie ma pełnego terminu po lewej stronie       |Nie            |`"North America" !has "amer"` 
-`has_cs`       |Po prawej stronie jest całym terminem po lewej stronie |Tak|`"North America" has_cs "America"`
-`!has_cs`      |Po prawej stronie nie ma pełnego terminu po lewej stronie       |Tak            |`"North America" !has_cs "amer"` 
+`has_cs`       |Po prawej stronie jest całym terminem po lewej stronie |Yes|`"North America" has_cs "America"`
+`!has_cs`      |Po prawej stronie nie ma pełnego terminu po lewej stronie       |Yes            |`"North America" !has_cs "amer"` 
 `hasprefix`    |Po prawej stronie jest termin prefiksu po lewej stronie         |Nie            |`"North America" hasprefix "ame"`
 `!hasprefix`   |Po prawej stronie nie jest terminem prefiksu po lewej stronie     |Nie            |`"North America" !hasprefix "mer"` 
 `hasprefix_cs`    |Po prawej stronie jest termin prefiksu po lewej stronie         |Tak            |`"North America" hasprefix_cs "Ame"`
@@ -73,24 +73,24 @@ Operator       |Opis                         |Z uwzględnieniem wielkości liter
 `!hassuffix_cs`   |Po prawej stronie nie ma sufiksu terminu po lewej stronie     |Yes            |`"North America" !hassuffix_cs "icA"`
 `contains`     |Prawa strona występuje jako podsekwencja po lewej stronie  |Nie            |`"FabriKam" contains "BRik"`
 `!contains`    |Prawa strona nie występuje po lewej stronie           |Nie            |`"Fabrikam" !contains "xyz"`
-`contains_cs`   |Prawa strona występuje jako podsekwencja po lewej stronie  |Tak           |`"FabriKam" contains_cs "Kam"`
+`contains_cs`   |Prawa strona występuje jako podsekwencja po lewej stronie  |Yes           |`"FabriKam" contains_cs "Kam"`
 `!contains_cs`  |Prawa strona nie występuje po lewej stronie           |Tak           |`"Fabrikam" !contains_cs "Kam"`
 `startswith`   |Po prawej stronie jest początkową podsekwencją lewej strony|Nie            |`"Fabrikam" startswith "fab"`
 `!startswith`  |Po prawej stronie nie jest początkową podsekwencją lewej strony|Nie        |`"Fabrikam" !startswith "kam"`
-`startswith_cs`   |Po prawej stronie jest początkową podsekwencją lewej strony|Yes            |`"Fabrikam" startswith_cs "Fab"`
+`startswith_cs`   |Po prawej stronie jest początkową podsekwencją lewej strony|Tak            |`"Fabrikam" startswith_cs "Fab"`
 `!startswith_cs`  |Po prawej stronie nie jest początkową podsekwencją lewej strony|Tak        |`"Fabrikam" !startswith_cs "fab"`
 `endswith`     |Po prawej stronie jest zamykaną podsekwencją lewej strony|Nie             |`"Fabrikam" endswith "Kam"`
 `!endswith`    |Po prawej stronie nie jest zamykana podsekwencja po lewej stronie|Nie         |`"Fabrikam" !endswith "brik"`
-`endswith_cs`     |Po prawej stronie jest zamykaną podsekwencją lewej strony|Yes             |`"Fabrikam" endswith "Kam"`
+`endswith_cs`     |Po prawej stronie jest zamykaną podsekwencją lewej strony|Tak             |`"Fabrikam" endswith "Kam"`
 `!endswith_cs`    |Po prawej stronie nie jest zamykana podsekwencja po lewej stronie|Tak         |`"Fabrikam" !endswith "brik"`
-`matches regex`|po lewej stronie zawiera dopasowanie po prawej stronie        |Yes           |`"Fabrikam" matches regex "b.*k"`
-`in`           |Równa się jednemu z elementów       |Tak           |`"abc" in ("123", "345", "abc")`
-`!in`          |Nie równa się żadnym elementom   |Yes           |`"bca" !in ("123", "345", "abc")`
+`matches regex`|po lewej stronie zawiera dopasowanie po prawej stronie        |Tak           |`"Fabrikam" matches regex "b.*k"`
+`in`           |Równa się jednemu z elementów       |Yes           |`"abc" in ("123", "345", "abc")`
+`!in`          |Nie równa się żadnym elementom   |Tak           |`"bca" !in ("123", "345", "abc")`
 
 
 ## <a name="countof"></a>CountOf
 
-Zlicza wystąpienia podciągu w ciągu. Można dopasować zwykłe ciągi lub użyć wyrażenia regularnego. Dopasowania w postaci zwykłego ciągu mogą się nakładać, gdy wyrażenia regularne nie są zgodne.
+Zlicza wystąpienia podciągu w ciągu. Można dopasować zwykłe ciągi lub użyć wyrażenia regularnego. Dopasowania w postaci zwykłego ciągu mogą się pokrywać, gdy nie są zgodne wyrażenia regularne.
 
 ### <a name="syntax"></a>Składnia
 ```
@@ -129,7 +129,7 @@ print countof("abcabc", "a.c", "regex");  // result: 2
 
 ## <a name="extract"></a>Wyodrębnij
 
-Pobiera dopasowanie wyrażenia regularnego z danego ciągu. Opcjonalnie konwertuje wyodrębniony podciąg określony typ.
+Pobiera dopasowanie wyrażenia regularnego z danego ciągu. Opcjonalnie konwertuje wyodrębniony podciąg na określony typ.
 
 ### <a name="syntax"></a>Składnia
 
@@ -179,7 +179,7 @@ print Duration_seconds =  extract("Duration=([0-9.]+)", 1, Trace, typeof(real)) 
 ## <a name="isempty-isnotempty-notempty"></a>IsEmpty, isnotempty, noskłonność
 
 - *IsEmpty* zwraca wartość true, jeśli argument jest ciągiem pustym lub wartością null (patrz również *IsNull*).
-- *isnotempty* zwraca wartość true, jeśli argument nie jest ciągiem pustym ani wartością null (Zobacz również *IsNotNull*). alias: noskłonność.
+- *isnotempty* zwraca wartość true, jeśli argument nie jest ciągiem pustym ani wartością null (Zobacz również *IsNotNull*). alias:noskłonność.
 
 ### <a name="syntax"></a>Składnia
 
@@ -368,7 +368,7 @@ print toupper("hello"); // result: "HELLO"
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Kontynuuj korzystanie z zaawansowanych samouczków:
 * [Funkcje agregacji](aggregations.md)
 * [Agregacje zaawansowane](advanced-aggregations.md)

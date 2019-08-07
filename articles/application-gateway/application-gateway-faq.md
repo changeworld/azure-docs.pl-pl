@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 6/1/2019
 ms.author: victorh
-ms.openlocfilehash: dc3b9cceda10ae1ff648306236d5ac4868b5b426
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 5bfb3a093cd101f30daf4439dc8f58b5b4f693ca
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722157"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68740886"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Często zadawane pytania dotyczące Application Gateway
 
@@ -101,7 +101,7 @@ Tak. Zobacz [modyfikacje żądania](https://docs.microsoft.com/azure/application
 
 Nowe wdrożenia jednostki SKU Application Gateway V1 mogą potrwać do 20 minut. Zmiany rozmiaru lub liczby wystąpień nie zakłócają działania, a Brama pozostanie aktywna w tym czasie.
 
-Wdrożenia korzystające z jednostki SKU v2 mogą zająć do 6 minut.
+Większość wdrożeń, które używają jednostki SKU w wersji 2, zajmie około 6 minut. Może to jednak trwać dłużej w zależności od typu wdrożenia. Na przykład wdrożenia w wielu Strefy dostępności z wieloma wystąpieniami mogą trwać więcej niż 6 minut. 
 
 ### <a name="can-i-use-exchange-server-as-a-backend-with-application-gateway"></a>Czy mogę używać programu Exchange Server jako zaplecza z Application Gateway?
 
@@ -323,10 +323,6 @@ Tak. Ochronę DDoS można włączyć w sieci wirtualnej, w której wdrożono bra
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Czy istnieją wskazówki dotyczące migracji z jednostki SKU w wersji 1 do wersji 2 SKU?
 
 Tak. Aby uzyskać szczegółowe informacje, zobacz [Migrowanie usługi Azure Application Gateway i zapory aplikacji sieci Web z wersji 1 do wersji 2](migrate-v1-v2.md).
-
-### <a name="does-waf-support-non-utf-8-encoding"></a>Czy WAF obsługuje kodowanie inne niż UTF-8?
-
-Nie. WAF obecnie obsługuje tylko kodowanie UTF-8.
 
 ## <a name="diagnostics-and-logging"></a>Diagnostyka i rejestrowanie
 

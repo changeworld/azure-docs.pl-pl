@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Monitor interfejs API modułu zbierającego dane HTTP | Dokumentacja firmy Microsoft
-description: Interfejsu API modułu zbierającego dane HTTP monitora platformy Azure umożliwia dodawanie danych POST JSON do obszaru roboczego usługi Log Analytics za pomocą dowolnego klienta, który można wywołać interfejsu API REST. W tym artykule opisano sposób korzystania z interfejsu API i zawiera przykłady dotyczące publikowania danych przy użyciu różnych języków programowania.
+title: Azure Monitor interfejs API modułu zbierającego dane HTTP | Microsoft Docs
+description: Korzystając z Azure Monitor interfejsu API modułu zbierającego dane HTTP, można dodać dane po JSON do Log Analytics obszaru roboczego z dowolnego klienta, który może wywołać interfejs API REST. W tym artykule opisano sposób korzystania z interfejsu API i przedstawiono przykłady sposobu publikowania danych przy użyciu różnych języków programowania.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,33 +13,33 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: bwren
-ms.openlocfilehash: 0f5a996d68c80fd9b1f55a36de37579ea245d99d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 11c3ded45e87e815b6c694f0a3f9c0ccb96f8750
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64922781"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68813925"
 ---
-# <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Wyślij dane dziennika do usługi Azure Monitor za pomocą interfejsu API modułu zbierającego dane HTTP (publiczna wersja zapoznawcza)
-W tym artykule pokazano, jak używać interfejsu API modułu zbierającego dane HTTP do wysyłania dzienników danych do usługi Azure Monitor z klienta interfejsu API REST.  Przedstawiono sposób formatowania danych zbieranych przez skrypt lub aplikację, uwzględnić go w żądaniu i ma to żądanie autoryzacji usługi Azure Monitor.  Przykłady są udostępniane dla programu PowerShell, C# i Python.
+# <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Wysyłanie danych dziennika do Azure Monitor za pomocą interfejsu API modułu zbierającego dane HTTP (publiczna wersja zapoznawcza)
+W tym artykule pokazano, jak za pomocą interfejsu API modułu zbierającego dane HTTP wysyłać dane dziennika do Azure Monitor z klienta interfejsu API REST.  Opisano w nim sposób formatowania danych zbieranych przez skrypt lub aplikację, uwzględniania ich w żądaniu oraz żądania autoryzowane przez Azure Monitor.  Przykłady dla programu PowerShell, C#i języka Python.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 > [!NOTE]
-> Interfejsu API modułu zbierającego dane HTTP monitora platformy Azure jest dostępna w publicznej wersji zapoznawczej.
+> Interfejs API modułu zbierającego dane HTTP Azure Monitor jest w publicznej wersji zapoznawczej.
 
 ## <a name="concepts"></a>Pojęcia
-Za pomocą interfejsu API modułu zbierającego dane HTTP do wysłania danych dziennika z obszarem roboczym usługi Log Analytics w usłudze Azure Monitor za pomocą dowolnego klienta, który można wywołać interfejs API REST.  Może to być element runbook w usłudze Azure Automation, która gromadzi zarządzania danymi z platformy Azure lub w innej chmurze albo go może być to system zarządzania alternatywnego, który używa usługi Azure Monitor do konsolidacji i Analizuj dane dzienników.
+Za pomocą interfejsu API modułu zbierającego dane HTTP można wysyłać dane dziennika do obszaru roboczego Log Analytics w Azure Monitor z dowolnego klienta, który może wywołać interfejs API REST.  Może to być element Runbook w Azure Automation, który zbiera dane zarządzania z platformy Azure lub innej chmury, lub może być alternatywnym systemem zarządzania, który używa Azure Monitor do konsolidowania i analizowania danych dziennika.
 
-Wszystkie dane w obszarze roboczym usługi Log Analytics są przechowywane jako rekord o typie określonego rekordu.  Formatowania danych będzie wysyłać do interfejsu API modułu zbierającego dane HTTP jako wiele rekordów w formacie JSON.  Po przesłaniu danych pojedynczego rekordu jest tworzony w repozytorium dla każdego rekordu w ładunku żądania.
+Wszystkie dane w obszarze roboczym Log Analytics są przechowywane jako rekord z określonym typem rekordu.  Dane można sformatować w celu wysłania do interfejsu API modułu zbierającego dane HTTP jako wielu rekordów w formacie JSON.  Podczas przesyłania danych w repozytorium dla każdego rekordu w ładunku żądania tworzony jest pojedynczy rekord.
 
 
-![Omówienie modułu zbierającego dane HTTP](media/data-collector-api/overview.png)
+![Moduł zbierający dane HTTP — Omówienie](media/data-collector-api/overview.png)
 
 
 
 ## <a name="create-a-request"></a>Utwórz żądanie
-Aby użyć interfejsu API modułu zbierającego dane HTTP, należy utworzyć żądanie POST, która zawiera dane do wysłania w JavaScript Object Notation (JSON).  Następne trzy tabele zawierają listę atrybutów, które są wymagane dla każdego żądania. Opisano każdego atrybutu w bardziej szczegółowo w dalszej części tego artykułu.
+Aby użyć interfejsu API modułu zbierającego dane HTTP, należy utworzyć żądanie POST zawierające dane do wysłania w JavaScript Object Notation (JSON).  W następnych trzech tabelach wymieniono atrybuty, które są wymagane dla każdego żądania. Opiszemy każdy atrybut bardziej szczegółowo w dalszej części artykułu.
 
 ### <a name="request-uri"></a>Identyfikator URI żądania
 | Atrybut | Właściwość |
@@ -51,31 +51,31 @@ Aby użyć interfejsu API modułu zbierającego dane HTTP, należy utworzyć ż�
 ### <a name="request-uri-parameters"></a>Parametry identyfikatora URI żądania
 | Parametr | Opis |
 |:--- |:--- |
-| CustomerID |Unikatowy identyfikator dla obszaru roboczego usługi Log Analytics. |
-| Resource |Nazwa zasobu interfejsu API: / api/logs. |
-| Wersja interfejsu API |Wersja interfejsu API do użycia z tym żądaniem. Obecnie jest 2016-04-01. |
+| Identyfikator |Unikatowy identyfikator obszaru roboczego Log Analytics. |
+| Resource |Nazwa zasobu interfejsu API:/API/logs. |
+| Wersja interfejsu API |Wersja interfejsu API, która ma być używana z tym żądaniem. Obecnie jest to 2016-04-01. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 | nagłówek | Opis |
 |:--- |:--- |
-| Autoryzacja |Podpis autoryzacji. W dalszej części tego artykułu możesz przeczytać o tym, jak utworzyć nagłówek HMAC SHA256. |
-| Typ dziennika |Określ typ rekordu jest przesyłane dane. Limit rozmiaru dla tego parametru to 100 znaków. |
-| x-ms-date |Data przetwarzania żądania, w formacie RFC 1123. |
-| x-ms-AzureResourceId | Identyfikator zasobu usługi Azure resource dane powinny być skojarzone z. Spowoduje to wypełnienie [_ResourceId](log-standard-properties.md#_resourceid) właściwości i zezwala na danych, które mają zostać uwzględnione w [skoncentrowane na zasób](manage-access.md#access-modes) zapytania. Jeśli to pole nie jest określony, dane nie zostaną uwzględnione w zapytaniach skoncentrowane na zasób. |
-| time-generated-field | Nazwa pola danych, które zawiera sygnaturę czasową elementu danych. Jeśli określasz pole, a następnie jej zawartość są używane do **TimeGenerated**. Jeśli to pole nie jest określona, wartość domyślna dla **TimeGenerated** to czas, pobieranym wiadomości. Zawartość pola komunikat powinien być zgodny z formatu ISO 8601 RRRR-MM-Ddtgg. |
+| Authorization |Podpis autoryzacji. W dalszej części artykułu można zapoznać się z informacjami na temat tworzenia nagłówka HMAC-SHA256. |
+| Typ dziennika |Określ typ rekordu przesyłanego danych. Limit rozmiaru dla tego parametru to 100 znaków. |
+| x-ms-date |Data przetworzenia żądania w formacie RFC 1123. |
+| x-ms-AzureResourceId | Identyfikator zasobu zasobu platformy Azure, z którym mają być skojarzone dane. Spowoduje to wypełnienie właściwości [_ResourceId](log-standard-properties.md#_resourceid) i umożliwi uwzględnienie danych w zapytaniach [kontekstu zasobów](design-logs-deployment.md#access-mode) . Jeśli to pole nie zostanie określone, dane nie zostaną uwzględnione w zapytaniach kontekstu zasobów. |
+| time-generated-field | Nazwa pola w danych, które zawiera sygnaturę czasową elementu danych. Jeśli określisz pole, jego zawartość zostanie użyta dla **TimeGenerated**. Jeśli to pole nie zostanie określone, wartością domyślną dla **TimeGenerated** jest czas, w którym wiadomość zostanie pozyskana. Zawartość pola komunikat powinna być zgodna z formatem ISO 8601 RRRR-MM-DDTgg: mm: SSS. |
 
-## <a name="authorization"></a>Autoryzacja
-Każde żądanie do interfejsu API modułu zbierającego dane HTTP monitora platformy Azure musi zawierać nagłówek autoryzacji. Aby uwierzytelnić żądania, musisz podpisać żądanie z podstawowej lub klucz pomocniczy dla obszaru roboczego, który wysłał żądanie. Następnie przekaż ten podpis jako część żądania.   
+## <a name="authorization"></a>Authorization
+Każde żądanie do Azure Monitor interfejsu API modułu zbierającego dane HTTP musi zawierać nagłówek autoryzacji. Aby uwierzytelnić żądanie, należy podpisać żądanie przy użyciu klucza podstawowego lub pomocniczego obszaru roboczego, który wysyła żądanie. Następnie Przekaż ten podpis jako część żądania.   
 
-Oto format nagłówek autoryzacji:
+Oto format nagłówka autoryzacji:
 
 ```
 Authorization: SharedKey <WorkspaceID>:<Signature>
 ```
 
-*Identyfikator obszaru roboczego* jest unikatowym identyfikatorem dla obszaru roboczego usługi Log Analytics. *Podpis* jest [bazujących na skrótach komunikatów uwierzytelniania kodu (HMAC)](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) który jest zbudowany z żądania i następnie obliczane przy użyciu [algorytm SHA256](https://msdn.microsoft.com/library/system.security.cryptography.sha256.aspx). Następnie możesz zakodować go przy użyciu kodowania Base64.
+*Identyfikator obszaru roboczego* jest unikatowym identyfikatorem obszaru roboczego log Analytics. *Sygnatura* jest kod uwierzytelniania wiadomości oparty na wykorzystaniu [skrótu (HMAC)](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) , który jest zbudowany z żądania, a następnie obliczany przy użyciu [algorytmu SHA256](https://msdn.microsoft.com/library/system.security.cryptography.sha256.aspx). Następnie kodujesz go za pomocą kodowania base64.
 
-Użyj tego formatu do zakodowania **SharedKey** ciąg podpisu:
+Użyj tego formatu, aby zakodować ciąg podpisu **SharedKey** :
 
 ```
 StringToSign = VERB + "\n" +
@@ -91,16 +91,16 @@ Oto przykład ciągu podpisu:
 POST\n1024\napplication/json\nx-ms-date:Mon, 04 Apr 2016 08:00:00 GMT\n/api/logs
 ```
 
-W przypadku ciągu podpisu kodować je przy użyciu Algorytm HMAC SHA256 na ciąg kodowany UTF-8, a następnie kodowanie wynik w postaci Base64. Użyj następującego formatu:
+Jeśli masz ciąg podpisu, zakoduj go przy użyciu algorytmu HMAC-SHA256 w ciągu kodowania UTF-8, a następnie zakoduj wynik jako Base64. Użyj tego formatu:
 
 ```
 Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 ```
 
-Przykłady w kolejnych sekcjach mają przykładowego kodu w celu utworzenia nagłówka autoryzacji.
+Przykłady w następnych sekcjach zawierają przykładowy kod ułatwiający utworzenie nagłówka autoryzacji.
 
 ## <a name="request-body"></a>Treść żądania
-Treść wiadomości musi być w formacie JSON. Musi zawierać co najmniej jeden rekord z pary nazw i wartości właściwości w następującym formacie:
+Treść wiadomości musi być w formacie JSON. Musi zawierać co najmniej jeden rekord o nazwie właściwości i par wartości w tym formacie:
 
 ```json
 [
@@ -113,7 +113,7 @@ Treść wiadomości musi być w formacie JSON. Musi zawierać co najmniej jeden 
 ]
 ```
 
-Wiele rekordów ze sobą w pojedynczym żądaniu może batch przy użyciu następującego formatu. Wszystkie rekordy muszą być tego samego typu rekordu.
+Wiele rekordów można wsadowo w pojedynczym żądaniu, używając następującego formatu. Wszystkie rekordy muszą być tego samego typu rekordów.
 
 ```json
 [
@@ -133,92 +133,92 @@ Wiele rekordów ze sobą w pojedynczym żądaniu może batch przy użyciu nastę
 ```
 
 ## <a name="record-type-and-properties"></a>Typ rekordu i właściwości
-Typ rekordu niestandardowego należy zdefiniować podczas przesyłania danych za pośrednictwem interfejsu API modułu zbierającego dane HTTP monitora platformy Azure. Obecnie nie można zapisać danych do istniejących typów rekordów, które zostały utworzone przez inne typy danych i rozwiązań. Usługa Azure Monitor odczytuje przychodzące dane, a następnie tworzy właściwości, które pasują do typów danych, które należy wprowadzić wartości.
+Typ rekordu niestandardowego można zdefiniować podczas przesyłania danych za pośrednictwem interfejsu API modułu zbierającego dane HTTP Azure Monitor. Obecnie nie można zapisywać danych do istniejących typów rekordów, które zostały utworzone przez inne typy danych i rozwiązania. Azure Monitor odczytuje dane przychodzące, a następnie tworzy właściwości, które pasują do typów danych wprowadzonych wartości.
 
-Każde żądanie do interfejsu API modułu zbierającego dane mogą zawierać **typ dziennika** nagłówek o nazwie dla typu rekordu. Sufiks **_CL** jest automatycznie dołączany do nazwy wprowadź odróżniający go od innych typów dziennika jako dziennik niestandardowy. Na przykład, jeśli wprowadzasz nazwę **MyNewRecordType**, usługi Azure Monitor jest tworzony rekord o typie **MyNewRecordType_CL**. Pozwala to zagwarantować, że nie istnieją żadne konflikty między nazwami typów, utworzone przez użytkownika i wysłane w bieżących lub przyszłych rozwiązaniach firmy Microsoft.
+Każde żądanie do interfejsu API modułu zbierającego dane musi zawierać nagłówek **log-Type** o nazwie typu rekordu. Sufiks **_CL** jest automatycznie dołączany do wprowadzonej nazwy, aby odróżnić ją od innych typów dzienników jako dziennika niestandardowego. Na przykład, jeśli wprowadzisz nazwę **MyNewRecordType**, Azure monitor tworzy rekord z typem **MyNewRecordType_CL**. Pozwala to zagwarantować, że nie występują żadne konflikty między nazwami typów utworzonych przez użytkownika i tymi, które są dostarczane w bieżących lub przyszłych rozwiązaniach firmy Microsoft.
 
-Aby określić typ danych właściwości, usługi Azure Monitor dodaje sufiks nazwy właściwości. Jeśli jakaś właściwość zawiera wartość null, właściwość nie ma tego rekordu. Poniższa tabela zawiera listę właściwości typu danych i odpowiedniego sufiksu:
+Aby zidentyfikować typ danych właściwości, Azure Monitor dodaje sufiks do nazwy właściwości. Jeśli właściwość zawiera wartość null, właściwość nie jest uwzględniona w tym rekordzie. Ta tabela zawiera listę typów danych właściwości i odpowiadających im sufiksów:
 
 | Typ danych właściwości | Suffix |
 |:--- |:--- |
-| String |_s |
+| Ciąg |_s |
 | Boolean |_b |
 | Double |_d |
-| Data/Godzina |_t |
+| Data/godzina |_t |
 | GUID |_g |
 
-Typ danych, który korzysta z usługi Azure Monitor dla każdej właściwości zależy od tego, czy typ rekordu dla nowego rekordu już istnieje.
+Typ danych, który Azure Monitor używa dla każdej właściwości, zależy od tego, czy typ rekordu dla nowego rekordu już istnieje.
 
-* Jeśli typ rekordu nie istnieje, usługa Azure Monitor utworzenie nowej za pomocą wnioskowanie o typie JSON można ustalić typu danych dla każdej właściwości w nowym rekordzie.
-* Jeśli typ rekordu istnieje, usługa Azure Monitor próbuje utworzyć nowy rekord na podstawie istniejącej właściwości. Jeśli typ danych dla właściwości w nowym rekordzie nie jest zgodny i nie można przekonwertować na typ istniejących lub jeśli rekord zawiera właściwość, która nie istnieje, usługa Azure Monitor tworzy nową właściwość, którą ma odpowiednie sufiks.
+* Jeśli typ rekordu nie istnieje, Azure Monitor tworzy nowy, przy użyciu wnioskowania o typie JSON, aby określić typ danych dla każdej właściwości nowego rekordu.
+* Jeśli typ rekordu istnieje, Azure Monitor próbuje utworzyć nowy rekord na podstawie istniejących właściwości. Jeśli typ danych właściwości w nowym rekordzie nie jest zgodny i nie można go przekonwertować na istniejący typ lub jeśli rekord zawiera właściwość, która nie istnieje, Azure Monitor tworzy nową właściwość o odpowiednim sufiksie.
 
-Na przykład, ten wpis przesyłania utworzyć rekord za pomocą trzech właściwości **number_d**, **boolean_b**, i **string_s**:
+Na przykład ten wpis przesłania spowoduje utworzenie rekordu z trzema właściwościami, **number_d**, **boolean_b**i **string_s**:
 
 ![Przykładowy rekord 1](media/data-collector-api/record-01.png)
 
-Jeśli następnie przesłane tej następnej pozycji ze wszystkimi wartościami ciągów w formacie, nie zmienić właściwości. Te wartości mogą być konwertowane do istniejących typów danych:
+Jeśli następnie Następny wpis zostanie przesłany ze wszystkimi wartościami sformatowanymi jako ciągi, właściwości nie zostaną zmienione. Te wartości można przekonwertować na istniejące typy danych:
 
 ![Przykładowy rekord 2](media/data-collector-api/record-02.png)
 
-Jednak jeśli podejmowana tym przesyłania dalej usługi Azure Monitor utworzyć nowe właściwości **boolean_d** i **string_d**. Nie można przekonwertować wartości:
+Ale jeśli następnie zostanie wykonane następne zgłoszenie, Azure Monitor utworzy nowe właściwości **boolean_d** i **string_d**. Nie można przekonwertować tych wartości:
 
 ![Przykładowy rekord 3](media/data-collector-api/record-03.png)
 
-Jeśli następujący wpis jest następnie przesłane, przed utworzeniem typ rekordu, usługi Azure Monitor utworzyć rekord z trzech właściwości **liczba_s**, **boolean_s**, i **string_s**. W tym wpisie początkowej wartości jest w formacie ciągu:
+Jeśli po utworzeniu typu rekordu zostanie przesłana następująca pozycja, Azure Monitor utworzy rekord z trzema właściwościami: **liczba_s**, **boolean_s**i **string_s**. W tym wpisie każda z wartości początkowych jest formatowana jako ciąg:
 
 ![Przykładowy rekord 4](media/data-collector-api/record-04.png)
 
 ## <a name="reserved-properties"></a>Właściwości zastrzeżone
-Następujące właściwości są zarezerwowane i nie należy używać w typie rekordu niestandardowego. Jeśli Twoje ładunek zawiera dowolne z tych nazw właściwości, zostanie zwrócony błąd.
+Następujące właściwości są zarezerwowane i nie powinny być używane w niestandardowym typie rekordu. Jeśli ładunek zawiera dowolne z tych nazw właściwości, zostanie wyświetlony komunikat o błędzie.
 
 - tenant
 
 ## <a name="data-limits"></a>Limity danych
-Istnieją pewne ograniczenia wokół danych opublikowane w usłudze Azure Monitor interfejsu API zbierania danych.
+Istnieją pewne ograniczenia dotyczące danych ogłoszonych w interfejsie API zbierania danych Azure Monitor.
 
-* Maksymalnie 30 MB na wpis do interfejsu API modułu zbierającego dane usługi Azure Monitor. Jest to limit rozmiaru dla pojedynczego wpisu. Jeśli wpis danych z jednej, która przekracza 30 MB, należy podzielić dane maksymalnie mniejszych fragmentach o rozmiarze i wysyłać je jednocześnie.
+* Maksymalnie 30 MB na wpis do Azure Monitor interfejsu API modułu zbierającego dane. Jest to limit rozmiaru pojedynczego wpisu. Jeśli dane z jednego wpisu, który przekracza 30 MB, należy podzielić dane na fragmenty o mniejszych rozmiarach i wysyłać je współbieżnie.
 * Maksymalny limit 32 KB dla wartości pól. Jeśli wartość pola jest większa niż 32 KB, dane zostaną obcięte.
-* Zalecana maksymalna liczba pól dla danego typu jest 50. Jest to praktyczne ograniczenie z użytecznością i perspektywy środowisko wyszukiwania.  
-* Tabela, w obszarze roboczym usługi Log Analytics obsługuje tylko kolumny do 500 (określane jako pole w tym artykule). 
+* Zalecana maksymalna liczba pól dla danego typu to 50. Jest to praktyczny limit z perspektywy użyteczności i wyszukiwania.  
+* Tabela w obszarze roboczym Log Analytics obsługuje tylko do 500 kolumn (określanych jako pole w tym artykule). 
 * Maksymalna liczba znaków w nazwie kolumny to 500.
 
 ## <a name="return-codes"></a>Kody powrotne
 Kod stanu HTTP 200 oznacza, że żądanie zostało odebrane do przetworzenia. Oznacza to, że operacja została ukończona pomyślnie.
 
-Poniższa tabela zawiera listę pełnego zestawu kodów stanu, które mogą zwracać usługi:
+W tej tabeli przedstawiono pełny zestaw kodów stanu, które mogą zostać zwrócone przez usługę:
 
 | Kod | Stan | Kod błędu | Opis |
 |:--- |:--- |:--- |:--- |
-| 200 |OK | |Pomyślnie Zaakceptowano żądania. |
+| 200 |OK | |Żądanie zostało pomyślnie zaakceptowane. |
 | 400 |Nieprawidłowe żądanie |InactiveCustomer |Obszar roboczy został zamknięty. |
-| 400 |Nieprawidłowe żądanie |InvalidApiVersion |Wersja interfejsu API, który określiłeś, nie został rozpoznany przez usługę. |
-| 400 |Nieprawidłowe żądanie |InvalidCustomerId |Identyfikator obszaru roboczego jest nieprawidłowy. |
-| 400 |Nieprawidłowe żądanie |InvalidDataFormat |Przesłano nieprawidłowy element JSON. Treść odpowiedzi może zawierać więcej informacji na temat sposobu usunięcia błędu. |
-| 400 |Nieprawidłowe żądanie |InvalidLogType |Typ dziennika określony zawartej znaków specjalnych ani wartości numeryczne. |
+| 400 |Nieprawidłowe żądanie |InvalidApiVersion |Określona wersja interfejsu API nie została rozpoznana przez usługę. |
+| 400 |Nieprawidłowe żądanie |InvalidCustomerId |Określony identyfikator obszaru roboczego jest nieprawidłowy. |
+| 400 |Nieprawidłowe żądanie |InvalidDataFormat |Przesłano nieprawidłowy plik JSON. Treść odpowiedzi może zawierać więcej informacji na temat sposobu rozwiązania błędu. |
+| 400 |Nieprawidłowe żądanie |InvalidLogType |Określony typ dziennika zawiera znaki specjalne lub wartości numeryczne. |
 | 400 |Nieprawidłowe żądanie |MissingApiVersion |Nie określono wersji interfejsu API. |
-| 400 |Nieprawidłowe żądanie |MissingContentType |Nie określono typu zawartości. |
-| 400 |Nieprawidłowe żądanie |MissingLogType |Nie określono wymaganej wartości typu dziennika. |
-| 400 |Nieprawidłowe żądanie |UnsupportedContentType |Typ zawartości nie został ustawiony na **application/json**. |
-| 403 |Zabroniony |InvalidAuthorization |Nie można uwierzytelnić żądania usługi. Sprawdź, czy klucz połączenia i identyfikator obszaru roboczego są prawidłowe. |
-| 404 |Nie można odnaleźć | | Podany adres URL jest nieprawidłowy albo żądania jest zbyt duży. |
-| 429 |Zbyt wiele żądań | | Usługa występuje duże ilości danych z Twojego konta. Ponów próbę żądania później. |
-| 500 |Wewnętrzny błąd serwera |UnspecifiedError |Usługa napotkała błąd wewnętrzny. Ponów próbę żądania. |
-| 503 |Usługa jest niedostępna |ServiceUnavailable |Usługa jest obecnie odbierać żądań. Prześlij żądanie ponownie. |
+| 400 |Nieprawidłowe żądanie |MissingContentType |Typ zawartości nie został określony. |
+| 400 |Nieprawidłowe żądanie |MissingLogType |Nie określono wymaganego typu dziennika wartości. |
+| 400 |Nieprawidłowe żądanie |UnsupportedContentType |Typ zawartości nie został ustawiony na wartość **Application/JSON**. |
+| 403 |Zabroniony |InvalidAuthorization |Usługa nie może uwierzytelnić żądania. Sprawdź, czy identyfikator obszaru roboczego i klucz połączenia są prawidłowe. |
+| 404 |Nie znaleziono | | Podany adres URL jest nieprawidłowy lub żądanie jest zbyt duże. |
+| 429 |Zbyt wiele żądań | | W usłudze występuje duża ilość danych z Twojego konta. Spróbuj ponownie wykonać żądanie później. |
+| 500 |Wewnętrzny błąd serwera |UnspecifiedError |W usłudze wystąpił wewnętrzny błąd. Spróbuj ponownie wykonać żądanie. |
+| 503 |Usługa niedostępna |ServiceUnavailable |Usługa jest obecnie niedostępna do odbierania żądań. Spróbuj ponownie wykonać żądanie. |
 
 ## <a name="query-data"></a>Zapytania o dane
-Przesyłać zapytania dotyczące danych przesyłanych przez usługi Azure Monitor HTTP danych interfejsu API modułu zbierającego, wyszukiwać rekordy z **typu** jest równa **LogType** wartości, który określiłeś, jest dołączany wraz z **_CL**. Na przykład, jeśli użyto **MyCustomLog**, a następnie zwróci wszystkie rekordy z `MyCustomLog_CL`.
+Aby wykonać zapytanie o dane przesyłane przez Azure Monitor interfejs API modułu zbierającego dane HTTP, Wyszukaj rekordy o **typie** , który jest równy podanej wartości **LogType** , dołączonej do **_CL**. Na przykład jeśli użyto **MyCustomLog**, zwróć wszystkie rekordy z `MyCustomLog_CL`.
 
-## <a name="sample-requests"></a>Prośby o przykłady
-W kolejnych sekcjach znajdują się przykłady dotyczące przesyłania danych do interfejsu API modułu zbierającego dane HTTP monitora platformy Azure przy użyciu różnych języków programowania.
+## <a name="sample-requests"></a>Przykładowe żądania
+W następnych sekcjach znajdziesz przykłady przesyłania danych do Azure Monitor interfejsu API modułu zbierającego dane HTTP przy użyciu różnych języków programowania.
 
-Dla każdego przykładu wykonaj następujące kroki, aby ustawić zmienne dla nagłówka autoryzacji:
+Dla każdego przykładu wykonaj następujące kroki, aby ustawić zmienne nagłówka autoryzacji:
 
-1. W witrynie Azure portal zlokalizuj obszaru roboczego usługi Log Analytics.
-2. Wybierz **Zaawansowane ustawienia** i następnie **połączonych źródeł**.
-2. Po prawej stronie **identyfikator obszaru roboczego**, wybierz ikonę kopiowania, a następnie wklej identyfikator jako wartość **identyfikator klienta** zmiennej.
-3. Po prawej stronie **klucza podstawowego**, wybierz ikonę kopiowania, a następnie wklej identyfikator jako wartość **klucza wspólnego** zmiennej.
+1. W Azure Portal zlokalizuj obszar roboczy Log Analytics.
+2. Wybierz pozycję **Ustawienia zaawansowane** i **połączone źródła**.
+2. Z prawej strony **identyfikatora obszaru roboczego**wybierz ikonę kopiowania, a następnie wklej identyfikator jako wartość zmiennej **identyfikatora klienta** .
+3. Na prawo od **klucza podstawowego**wybierz ikonę kopiowania, a następnie wklej identyfikator jako wartość zmiennej **klucza** współużytkowanego.
 
-Alternatywnie można zmienić zmienne typu dziennika i danych JSON.
+Alternatywnie można zmienić zmienne dla typu dziennika i danych JSON.
 
 ### <a name="powershell-sample"></a>Przykładowy skrypt programu PowerShell
 ```powershell
@@ -389,7 +389,7 @@ namespace OIAPIExample
 
 ```
 
-### <a name="python-2-sample"></a>Przykład języka Python 2
+### <a name="python-2-sample"></a>Przykładowa Python 2
 ```python
 import json
 import requests
@@ -472,16 +472,16 @@ def post_data(customer_id, shared_key, body, log_type):
 post_data(customer_id, shared_key, body, log_type)
 ```
 ## <a name="alternatives-and-considerations"></a>Alternatywy i zagadnienia
-Interfejsu API modułu zbierającego dane powinny obejmować większość potrzeb można zbierać dane z dowolnych do dzienników platformy Azure, są wystąpienia, gdzie alternatywą może być konieczne pokonanie niektórych ograniczeń interfejsu API. Wszystkie opcje są następujące, główne kwestie dołączone:
+Interfejs API modułu zbierającego dane powinien obejmować większość potrzeb związanych z zbieraniem danych w usłudze Azure logs, ale istnieją sytuacje, w których alternatywa może być wymagana do pokonania niektórych ograniczeń interfejsu API. Wszystkie dostępne opcje są następujące:
 
-| Alternatywna | Opis | Najodpowiedniejsza dla |
+| Różne | Opis | Najlepiej dopasowane do |
 |---|---|---|
-| [Zdarzenia niestandardowe](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties): Natywny zestaw SDK oparte na przyjmowanie danych w usłudze Application Insights | Usługa Application Insights, zwykle Instrumentacji za pomocą zestawu SDK w aplikacji, oferuje możliwość przesyłania danych niestandardowych zdarzeń niestandardowych. | <ul><li> Dane wygenerowane w aplikacji, ale nie są pobierane przez zestaw SDK za pomocą jednego z domyślnych typów danych (ie: żądania, zależności, wyjątki, itp.).</li><li> Dane, które najczęściej są skorelowane z innymi danymi aplikacji w usłudze Application Insights </li></ul> |
-| [Interfejs API modułu zbierającego dane](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) w dziennikach w usłudze Azure Monitor | Interfejsu API modułu zbierającego dane w dziennikach monitora platformy Azure jest całkowicie nieograniczony sposób pozyskiwania danych. W tym miejscu można wysyłać żadnych danych sformatowanych w obiekcie JSON. Po wysłaniu będą przetwarzane i dostępne w dzienniki będą skorelowane z innymi danymi w dziennikach lub inne usługi Application Insights danych. <br/><br/> Jest to dość proste przekazać dane jako pliki do obiektu blob usługi Azure Blob z których przetwarzane i przekazany do usługi Log Analytics tych plików. Zobacz [to](https://docs.microsoft.com/azure/log-analytics/log-analytics-create-pipeline-datacollector-api) artykuł, aby przykład implementacji takich potoku. | <ul><li> Dane, które nie są zawsze generowane w obrębie aplikacji zinstrumentowane w ramach usługi Application Insights.</li><li> Przykłady obejmują tabel odnośników i faktów, dane referencyjne, wstępnie zagregowanych danych statystycznych, itp. </li><li> Przeznaczona dla danych, który ma być odsyłaczy względem innych danych usługi Azure Monitor (na przykład usługi Application Insights, inne dzienniki typy danych, usługa Security Center, usługa Azure Monitor, kontenerów lub maszyny wirtualne itp). </li></ul> |
-| [Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/ingest-data-overview) | Usługa Azure Data Explorer (ADX) jest platformy danych, która obsługuje analizy usługi Application Insights i Azure Monitor dzienniki. Teraz jest ogólnie już dostępna ("GA"), za pomocą platformy danych w nieprzetworzonej postaci zapewnia pełną elastyczność (ale wymaga pracy związanej z zarządzaniem) za pośrednictwem klastra (RBAC, współczynnik utrzymania schematu, itp.). ADX jest dostępnych wiele [opcji pozyskiwania](https://docs.microsoft.com/azure/data-explorer/ingest-data-overview#ingestion-methods) tym [CSV, TSV i JSON](https://docs.microsoft.com/azure/kusto/management/mappings?branch=master) plików. | <ul><li> Dane, które nie będą zostać skorelowane z wszelkimi innymi danymi, w ramach usługi Application Insights lub dzienniki. </li><li> Danych wymagających zaawansowanych pozyskiwania lub nie jest obecnie dostępna w dzienników monitora platformy Azure możliwości przetwarzania. </li></ul> |
+| [Zdarzenia niestandardowe](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties): Pozyskiwanie oparte na natywnym zestawie SDK w Application Insights | Application Insights, zazwyczaj Instrumentacja w ramach zestawu SDK w aplikacji, oferuje możliwość wysyłania niestandardowych danych za pomocą niestandardowych zdarzeń. | <ul><li> Dane, które są generowane w aplikacji, ale nie są pobierane przez zestaw SDK przy użyciu jednego z domyślnych typów danych (żądania, zależności, wyjątki itd.).</li><li> Dane, które najczęściej są skorelowane z innymi danymi aplikacji w Application Insights </li></ul> |
+| [Interfejs API modułu zbierającego dane](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) w dziennikach Azure monitor | Interfejs API modułu zbierającego dane w dziennikach Azure Monitor jest całkowicie otwartym sposobem pozyskiwania danych. Wszystkie dane sformatowane w obiekcie JSON mogą być wysyłane w tym miejscu. Po wysłaniu zostanie on przetworzony i udostępniony w dziennikach w celu skorelowania z innymi danymi w dziennikach lub w odniesieniu do innych danych Application Insights. <br/><br/> Można stosunkowo łatwo przekazać dane jako pliki do obiektu blob platformy Azure, z którego te pliki zostaną przetworzone i przekazane do Log Analytics. Zobacz [ten](https://docs.microsoft.com/azure/log-analytics/log-analytics-create-pipeline-datacollector-api) artykuł, aby zapoznać się z przykładową implementacją tego potoku. | <ul><li> Dane, które nie są generowane w aplikacji w Application Insights.</li><li> Przykłady obejmują wyszukiwanie i tabele faktów, dane referencyjne, statystyki wstępnie zagregowane i tak dalej. </li><li> Zamierzone dla danych, które będą odwoływać się do innych Azure Monitor danych (Application Insights, inne typy danych dzienników, Security Center, Azure Monitor dla kontenerów/maszyn wirtualnych itd.). </li></ul> |
+| [Eksplorator danych platformy Azure](https://docs.microsoft.com/azure/data-explorer/ingest-data-overview) | Azure Eksplorator danych (ADX) to platforma danych, która umożliwia Application Insights analiz i Azure Monitor dzienników. Teraz ogólnie dostępne ("GA") korzystanie z platformy danych w jego pierwotnej postaci zapewnia pełną elastyczność (ale wymaganie obciążenia zarządzania) w ramach klastra (RBAC, szybkość przechowywania, schemat itp.). ADX zapewnia wiele [opcji](https://docs.microsoft.com/azure/data-explorer/ingest-data-overview#ingestion-methods) pozyskiwania [, w tym pliki CSV, TSV i JSON](https://docs.microsoft.com/azure/kusto/management/mappings?branch=master) . | <ul><li> Dane, które nie zostaną skorelowane do żadnych innych danych w Application Insights lub dzienników. </li><li> Dane wymagające zaawansowanych możliwości pozyskiwania lub przetwarzania nie są obecnie dostępne w dziennikach Azure Monitor. </li></ul> |
 
 
-## <a name="next-steps"></a>Kolejne kroki
-- Użyj [interfejsu API wyszukiwania w dzienniku](../log-query/log-query-overview.md) do pobierania danych z obszaru roboczego usługi Log Analytics.
+## <a name="next-steps"></a>Następne kroki
+- Użyj [interfejsu API przeszukiwania dzienników](../log-query/log-query-overview.md) , aby pobrać dane z obszaru roboczego log Analytics.
 
-- Dowiedz się więcej o tym, jak [tworzenie potoku danych przy użyciu interfejsu API modułu zbierającego dane](create-pipeline-datacollector-api.md) przy użyciu przepływu pracy aplikacji logiki do usługi Azure Monitor.
+- Dowiedz się więcej na temat [tworzenia potoku danych za pomocą interfejsu API modułu zbierającego dane](create-pipeline-datacollector-api.md) przy użyciu przepływu pracy Logic Apps do Azure monitor.

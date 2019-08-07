@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: b1817b54e16d77c41b5d5e80776c92eedfec7fc6
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: dba29ea2d4d0ad18f021e0271c6131f9473cbe8b
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600698"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827802"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-sql-api-account-using-striim"></a>Migrowanie danych do Azure Cosmos DB konta interfejsu API SQL przy użyciu Striim
  
@@ -22,7 +22,7 @@ W tym artykule przedstawiono sposób korzystania z programu Striim do migrowania
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Jeśli nie masz [subskrypcji platformy Azure](/azure/guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing), przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+* Jeśli nie masz [subskrypcji platformy Azure](/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing), przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
 * Baza danych Oracle działająca lokalnie z niektórymi danymi.
 

@@ -1,127 +1,127 @@
 ---
-title: Chmur prywatnych w VMware Solution by CloudSimple - Azure
-description: Więcej informacji na temat CloudSimple chmur prywatnych i pojęcia.
+title: Chmury prywatne w rozwiązaniu VMware według CloudSimple — Azure
+description: Dowiedz się więcej na temat chmur prywatnych i pojęć związanych z CloudSimple.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e3ab53466cae5bd39d85f8d846c8e59ad94f1f2d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9885366d5987870fe2739083ff47abaae9ef6ed1
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165743"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816191"
 ---
 # <a name="cloudsimple-private-cloud-overview"></a>Omówienie chmury prywatnej CloudSimple
 
-CloudSimple przekształca i rozszerza obciążeń oprogramowania VMware z chmurami publicznymi w ciągu kilku minut. Korzystanie z niej CloudSimple, można wdrożyć VMware natywnie w infrastrukturze platformy Azure bez systemu operacyjnego na komputerach. Wdrożenie, znajduje się w lokalizacji platformy Azure i jest w pełni zintegrowany z pozostałą częścią chmury platformy Azure.
+CloudSimple przekształca i rozszerza obciążenia oprogramowania VMware do chmur publicznych w ciągu kilku minut. Za pomocą usługi CloudSimple można lokalnie wdrożyć oprogramowanie VMware w infrastrukturze platformy Azure bez systemu operacyjnego. Wdrożenie jest przechowywane w lokalizacjach platformy Azure i w pełni integruje się z pozostałą częścią chmury platformy Azure.
 
-* Rozwiązanie CloudSimple zapewnia pełną VMware ciągłość operacyjną. To rozwiązanie zapewnia zalety chmury publicznej:
+* Rozwiązanie CloudSimple zapewnia pełną ciągłość działania programu VMware. To rozwiązanie zapewnia korzyści z chmury publicznej:
   * Elastyczność
   * Innowacja
   * Wydajność
-* Za pomocą CloudSimple możesz skorzystać z modelu użycia chmury, która zmniejsza całkowity koszt posiadania. Zapewnia ona również na żądanie aprowizacji, płatność jako — liczbę i optymalizacji wydajności.
-* CloudSimple jest w pełni zgodna z usługą:
+* Dzięki CloudSimple można korzystać z modelu zużycia w chmurze, który obniża całkowity koszt posiadania. Oferuje on również Inicjowanie obsługi administracyjnej na żądanie, płatność zgodnie z oczekiwaniami i optymalizację wydajności.
+* CloudSimple jest w pełni zgodny z:
   * Istniejące narzędzia
   * Umiejętności
   * Procesy
-* Ta zgodność umożliwia zespołom do zarządzania obciążeniami w chmurze platformy Azure, bez zakłócania pracy zasad:
+* Ta zgodność umożliwia zespołom zarządzanie obciążeniami w chmurze platformy Azure bez zakłócania stosowania zasad:
   * Sieć
   * Bezpieczeństwo  
   * Ochrona danych  
   * Inspekcja
-* CloudSimple zarządza infrastrukturą i wszystkie wymagane usługi zarządzania i sieci. Usługa CloudSimple umożliwia zespołowi skoncentrować się na:
+* CloudSimple zarządza infrastrukturą i wszystkimi niezbędnymi usługami sieci i zarządzania. Usługa CloudSimple umożliwia zespołowi skoncentrowanie się na:
   * Wartość biznesowa
-  * Aprowizacja aplikacji
+  * Inicjowanie obsługi aplikacji
   * Ciągłość działalności biznesowej
   * Pomoc techniczna
   * Wymuszanie zasad
 
 ## <a name="private-cloud-environment-overview"></a>Omówienie środowiska chmury prywatnej
 
-Chmura prywatna to izolowane stos oprogramowania VMware, takich jak tych środowisk:
+Chmura prywatna to izolowany stos oprogramowania VMware, taki jak następujące środowiska:
 
 * Hosty ESXi
 * vCenter
-* vSAN
+* Sieci vSAN
 * NSX
 
-Chmury prywatne są zarządzane przez serwer vCenter w domenie zarządzania.
+Chmury prywatne są zarządzane przez serwer vCenter we własnej domenie zarządzania.
 
-Stos jest uruchamiane:
+Stos działa na:
 
 * Węzły dedykowane
-* Izolowany bez sprzętu bez systemu operacyjnego węzłów
+* Węzły sprzętu izolowanych od zera
 
-Użytkownicy korzystają z stosu za pośrednictwem natywnych narzędzi VMware, takich jak:
+Użytkownicy wykorzystują stos za pomocą natywnych narzędzi VMware, w tym:
 
 * vCenter
-* Menedżer NSX
+* NSX Manager
 
-Możesz wdrożyć węzły dedykowane w lokalizacji platformy Azure. Można następnie zarządzać nimi przy użyciu platformy Azure i CloudSimple. Chmura prywatna składa się z co najmniej jeden klaster vSphere, a każdy klaster zawiera 3 – 16 węzłów.
+Można wdrażać dedykowane węzły w lokalizacjach platformy Azure. Następnie możesz zarządzać nimi za pomocą platformy Azure i usługi CloudSimple. Chmura prywatna składa się z co najmniej jednego klastra vSphere, a każdy klaster zawiera od 3 do 16 węzłów.
 
-Można utworzyć chmurę prywatną, używając elastycznie węzłów:
+Chmurę prywatną można utworzyć przy użyciu węzłów aprowizacji:
 
-* Płatność za rzeczywiste użycie węzłów
-* Węzły zastrzeżone, dedykowanej
+* Węzły z opcją płatność zgodnie z rzeczywistym użyciem
+* Zastrzeżone, dedykowane węzły
 
-Chmurę prywatną można połączyć do środowiska lokalnego i sieci platformy Azure przy użyciu następujących połączeń:
+Chmurę prywatną można podłączyć do środowiska lokalnego i sieci platformy Azure przy użyciu następujących połączeń:
 
 * Bezpieczeństwo
-* Prywatne sieci VPN
-* Usługa ExpressRoute systemu Azure
+* Prywatna sieć VPN
+* Azure ExpressRoute
 
-W środowisku chmury prywatnej została zaprojektowana, aby wyeliminować wdrożeń z pojedynczym punktem awarii:
+Środowisko chmury prywatnej zostało zaprojektowane w celu wyeliminowania single point of failure:
 
-* Klastry ESXi są skonfigurowane przy użyciu vSphere wysokiej dostępności i mają rozmiar występuje co najmniej jeden węzeł wolnym pod kątem odporności.
-* sieć vsan, która zawiera nadmiarowe podstawowy magazyn. sieć vsan, która wymaga co najmniej trzy węzły w celu zapewnienia ochrony przed awarią jednego. Można skonfigurować sieć vSAN, aby zapewnić odporność wyższe w przypadku większych klastrów.
-* VCenter, PSC i maszyny wirtualne NSX Manager można skonfigurować za pomocą macierzy RAID 10 magazynu zasad w celu ochrony przed awariami magazynu. Następnie są one chronione przez vSphere HA przed awariami węzła i sieci.
+* Klastry ESXi są skonfigurowane z wysoką dostępnością vSphere i mają rozmiar co najmniej jeden węzeł zapasowy na potrzeby odporności.
+* Sieci vSAN zapewnia nadmiarowy magazyn podstawowy. Sieci vSAN wymaga co najmniej trzech węzłów w celu zapewnienia ochrony przed pojedynczym awarią. Można skonfigurować sieci vSAN w celu zapewnienia większej odporności dla większych klastrów.
+* Aby zapewnić ochronę przed awariami magazynu, można skonfigurować maszyny wirtualne programu vCenter, PSC i NSX Manager przy użyciu zasad magazynu RAID-10. Następnie są chronione przez vSphere HA przed awariami węzłów i sieci.
 
 ## <a name="scenarios-for-deploying-a-private-cloud"></a>Scenariusze wdrażania chmury prywatnej
 
-* **Migracji lub wycofywania centrum danych**
+* **Wycofanie lub migracja centrum danych**
 
-  * Pobierz dodatkowej pojemności, gdy będziesz osiągać limity swojego istniejącego centrum danych lub odświeżania sprzętu.
-  * Dodaj wymagane pojemności w chmurze i wyeliminować problemy z zarządzaniem sprzętu.
-  * Zmniejsz ryzyko i koszty migracji w chmurze, w porównaniu do konwersji czasochłonne lub rearchitecture.
-  * Skorzystaj ze znanych narzędzi VMware i umiejętności, aby przyspieszyć migracje do chmury. W chmurze należy za pomocą usług Azure modernizowanie aplikacji własnym tempie.
+  * Uzyskaj dodatkową pojemność po osiągnięciu limitów istniejących centrów danych lub odświeżania sprzętu.
+  * Dodaj wymaganą pojemność w chmurze i Usuń zarządzaniem mu towarzysząę zarządzania odświeżeniami sprzętowymi.
+  * Zmniejszenie ryzyka i kosztów migracji w chmurze w porównaniu do czasochłonnych operacji konwersji lub ponownej architektury.
+  * Przyspiesz migracje w chmurze przy użyciu znanych narzędzi i umiejętności programu VMware. W chmurze korzystaj z usług platformy Azure w celu modernizacji aplikacji w Twoim tempie.
 
-* **Rozwiń węzeł na żądanie**
+* **Rozwiń na żądanie**
 
-  * Rozwiń do chmury do potrzeb nieprzewidziane, takie jak nowe środowiska programowania lub wzrosty sezonowych pojemności.
-  * Utwórz nową pojemność na żądanie i Zachowaj ją tylko tak długo, jak długo będą potrzebne.
-  * Zmniejszenie kosztów ponoszonych z góry inwestycji, przyspieszyć szybkie Inicjowanie obsługi administracyjnej i ograniczyć złożoność przy użyciu tego samego architektury i zasad zarówno lokalnych, jak i w chmurze.
+  * Rozwiń chmurę, aby zaspokoić nieprzewidziane potrzeby, takie jak nowe środowiska programistyczne lub sezonowe zmiany pojemności.
+  * Utwórz nową pojemność na żądanie i Zachowaj ją tylko tak długo, jak to konieczne.
+  * Ogranicz inwestycje z góry, przyspiesz szybkość aprowizacji i zmniejsz złożoność dzięki tej samej architekturze i zasadom zarówno w środowisku lokalnym, jak i w chmurze.
 
-* **Odzyskiwanie po awarii i pulpitów wirtualnych w chmurze platformy Azure**
+* **Odzyskiwanie po awarii i pulpity wirtualne w chmurze platformy Azure**
 
-  * Nawiąż połączenie zdalne z dane, aplikacje i komputery stacjonarne w chmurze platformy Azure. W przypadku połączeń o wysokiej przepustowości przekazywanie / pobieranie danych szybko, aby odzyskać z zdarzeniami. Sieci o małych opóźnieniach zapewniają szybkie odpowiedzi razy, Użytkownicy oczekują z aplikacji klasycznej.
+  * Ustanów zdalny dostęp do danych, aplikacji i pulpitów w chmurze platformy Azure. Połączenia o wysokiej przepustowości umożliwiają szybkie przekazywanie i pobieranie danych w celu odzyskania zdarzeń. Sieci o małym opóźnieniu zapewniają krótszy czas odpowiedzi, który użytkownicy oczekują od aplikacji klasycznej.
 
-  * Replikacja zasad i sieci w chmurze przy użyciu portalu CloudSimple i dobrze znanych narzędzi VMware. Ta replikacja zmniejsza nakład pracy oraz ryzyko tworzenie i zarządzanie nimi wdrożenia odzyskiwania po awarii i infrastruktury VDI.
+  * Replikuj wszystkie zasady i sieci w chmurze przy użyciu portalu CloudSimple i znanych narzędzi VMware. Ta replikacja zmniejsza nakład pracy i ryzyko tworzenia i zarządzania implementacjami odzyskiwania po awarii i infrastruktury VDI.
 
-* **Aplikacje o wysokiej wydajności i bazy danych**
+* **Aplikacje i bazy danych o wysokiej wydajności**
 
-  * Uruchamianie najbardziej wymagających obciążeń, przy użyciu architektury hiperzbieżnego, dostarczone przez CloudSimple.
-  * Uruchom, Oracle, programu Microsoft SQL server, systemów oprogramowania pośredniczącego i baz danych o wysokiej wydajności nie SQL.
+  * Uruchamiaj najbardziej wymagające obciążenia, korzystając ze współzbieżnej architektury zapewnianej przez CloudSimple.
+  * Uruchamiaj oprogramowanie Oracle, Microsoft SQL Server, systemy oprogramowania pośredniczącego i bazy danych bez SQL o wysokiej wydajności.
 
-  * Korzystaj z chmury, jak własne centrum danych z połączenia sieciowe o dużej szybkości, 25 GB. Połączenia o dużej szybkości umożliwia uruchamianie aplikacji hybrydowych obejmujących lokalnych, programu VMware na platformie Azure, i prywatnego obciążeń platformy Azure bez uszczerbku dla wydajności.
+  * Poznaj chmurę jako własne centrum danych z szybkimi połączeniami sieciowymi o szybkości 25 GB/s. Połączenia o dużej szybkości umożliwiają uruchamianie aplikacji hybrydowych obejmujących lokalne, VMware na platformie Azure i prywatne obciążenia platformy Azure bez naruszania wydajności.
 
-* **Wartość true, hybrydowe**
+* **Prawdziwe hybrydowe**
 
-  * Ujednolicenie metodyki DevOps w VMware i usług systemu Azure.
-  * Optymalizuj VMware administracji dla usług platformy Azure i rozwiązań, które mogą być stosowane dla wszystkich obciążeń.
-  * Dostęp do usług w chmurze publicznej bez konieczności zwiększania centrum danych lub Przekształcanie aplikacji.
-  * Scentralizowanie tożsamości, zasady kontroli dostępu, rejestrowania i monitorowania aplikacji programu VMware na platformie Azure.
+  * Ujednolicenie DevOps w ramach usług VMware i Azure.
+  * Optymalizuj administrację VMware dla usług i rozwiązań platformy Azure, które można stosować do wszystkich obciążeń.
+  * Uzyskaj dostęp do usług w chmurze publicznej bez konieczności rozszerzania centrum danych ani tworzenia architektury aplikacji.
+  * Scentralizowanie tożsamości, zasad kontroli dostępu, rejestrowania i monitorowania aplikacji VMware na platformie Azure.
 
-## <a name="limits"></a>Limits
+## <a name="limits"></a>Limity
 
-W poniższej tabeli przedstawiono limity węzła zasobów chmury prywatnej.
+W poniższej tabeli przedstawiono limity węzłów dla zasobów chmury prywatnej.
 
 | Resource | Limit |
 |----------|-------|
-| Minimalna liczba węzłów w celu utworzenia chmury prywatnej | 3 |
+| Minimalna liczba węzłów do utworzenia chmury prywatnej | 3 |
 | Maksymalna liczba węzłów w klastrze w chmurze prywatnej | 16 |
 | Maksymalna liczba węzłów w chmurze prywatnej | 64 |
 | Minimalna liczba węzłów w nowym klastrze | 3 |
@@ -129,4 +129,4 @@ W poniższej tabeli przedstawiono limity węzła zasobów chmury prywatnej.
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Dowiedz się, jak [utworzyć chmurę prywatną](https://docs.azure.cloudsimple.com/create-private-cloud/)
-* Dowiedz się, jak [konfigurowania środowiska chmury prywatnej](quickstart-create-private-cloud.md)
+* Dowiedz się, jak [skonfigurować środowisko chmury prywatnej](quickstart-create-private-cloud.md)

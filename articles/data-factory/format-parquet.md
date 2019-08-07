@@ -1,6 +1,6 @@
 ---
-title: Format parquet w usłudze Azure Data Factory | Dokumentacja firmy Microsoft
-description: W tym temacie opisano sposób postępowania z formatu Parquet w usłudze Azure Data Factory.
+title: Parquet format w Azure Data Factory | Microsoft Docs
+description: W tym temacie opisano sposób postępowania z formatem Parquet w Azure Data Factory.
 author: linda33wj
 manager: craigg
 ms.reviewer: craigg
@@ -9,18 +9,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 360b794f0d8ba9c145a92f015f264eb624fbb0f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 572547f4e22a4fcb63a030e64ca95a0b9d3eff00
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65144876"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68734482"
 ---
-# <a name="parquet-format-in-azure-data-factory"></a>Format parquet w usłudze Azure Data Factory
+# <a name="parquet-format-in-azure-data-factory"></a>Format Parquet w Azure Data Factory
 
-Postępuj zgodnie z tego artykułu, gdy użytkownik chce **analizować pliki Parquet lub zapisywać dane w formacie Parquet**. 
+Postępuj zgodnie z tym artykułem, jeśli chcesz **analizować pliki Parquet lub zapisywać dane w formacie Parquet**. 
 
-Parquet format jest obsługiwany w przypadku następujące łączniki: [Amazon S3](connector-amazon-simple-storage-service.md), [obiektów Blob platformy Azure](connector-azure-blob-storage.md), [usługi Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [usługi Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [usługi Azure File Storage](connector-azure-file-storage.md), [System plików](connector-file-system.md), [FTP](connector-ftp.md), [usługi Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md)i [ SFTP](connector-sftp.md).
+Format Parquet jest obsługiwany dla następujących łączników: [Amazon S3](connector-amazon-simple-storage-service.md), [azure BLOB](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [system plików](connector-file-system.md), [FTP](connector-ftp.md), [Magazyn Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)i [SFTP](connector-sftp.md).
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
@@ -28,14 +28,14 @@ Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zesta
 
 | Właściwość         | Opis                                                  | Wymagane |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| type             | Właściwość typu elementu dataset musi być równa **Parquet**. | Tak      |
-| location         | Ustawienia lokalizacji plików. Każdy łącznik opartych na plikach ma swój własny typ lokalizacji i obsługiwane właściwości w obszarze `location`. **Szczegółowe informacje w artykule łącznika -> Sekcja właściwości zestawu danych**. | Tak      |
-| compressionCodec | Koder-dekoder kompresji do użycia podczas zapisywania plików Parquet. Podczas odczytu z plików Parquet, Data Factory automatycznie określić kodera-dekodera kompresji, na podstawie metadanych pliku.<br>Obsługiwane typy to "**Brak**","**gzip**","**snappy**" (ustawienie domyślne) i "**lzo**". Uwaga: obecnie działanie kopiowania nie obsługuje LZO. | Nie       |
+| type             | Właściwość Type zestawu danych musi być ustawiona na wartość **Parquet**. | Tak      |
+| location         | Ustawienia lokalizacji plików. Każdy Łącznik oparty na plikach ma własny typ lokalizacji i obsługiwane właściwości w sekcji `location`. **Zobacz szczegóły w sekcji łącznik — > Właściwości zestawu danych**. | Yes      |
+| compressionCodec | Koder-dekoder kompresji do użycia podczas zapisywania w plikach Parquet. Podczas odczytywania z plików Parquet Data Factory automatycznie określać koder-dekoder kompresji na podstawie metadanych pliku.<br>Obsługiwane typy to "**none**", "**gzip**", "przyciąganie" (domyślnie) i "**LZO**". Działanie, które jest obecnie kopiowane, nie obsługuje LZO. | Nie       |
 
 > [!NOTE]
-> Biały znak w nazwie kolumny nie jest obsługiwane dla plików Parquet.
+> Biały znak w nazwie kolumny nie jest obsługiwany w przypadku plików Parquet.
 
-Poniżej przedstawiono przykład Parquet dataset w usłudze Azure Blob Storage:
+Poniżej znajduje się przykład zestawu danych Parquet na platformie Azure Blob Storage:
 
 ```json
 {
@@ -61,52 +61,52 @@ Poniżej przedstawiono przykład Parquet dataset w usłudze Azure Blob Storage:
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez Parquet źródła i ujścia.
+Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło i ujścia Parquet.
 
 ### <a name="parquet-as-source"></a>Parquet jako źródło
 
-Następujące właściwości są obsługiwane w działaniu kopiowania ***\*źródła\**** sekcji.
+W sekcji ***\*źródło\**** działania kopiowania są obsługiwane następujące właściwości.
 
 | Właściwość      | Opis                                                  | Wymagane |
 | ------------- | ------------------------------------------------------------ | -------- |
-| — typ          | Właściwość typu źródła działania kopiowania musi być równa **ParquetSource**. | Yes      |
-| storeSettings | Grupa właściwości o tym, jak można odczytać danych z magazynu danych. Każdy łącznik opartych na plikach ma swoje własne obsługiwane ustawienia odczytu w ramach `storeSettings`. **Szczegółowe informacje w artykule łącznika -> Sekcja właściwości działania kopiowania**. | Nie       |
+| — typ          | Właściwość Type źródła działania Copy musi być ustawiona na wartość **ParquetSource**. | Tak      |
+| storeSettings | Grupa właściwości do odczytywania danych z magazynu danych. Każdy Łącznik oparty na plikach ma własne obsługiwane ustawienia odczytu w obszarze `storeSettings`. **Zobacz szczegóły w artykule łącznik — > właściwości działania kopiowania**. | Nie       |
 
-### <a name="parquet-as-sink"></a>Parquet jako ujście
+### <a name="parquet-as-sink"></a>Parquet jako ujścia
 
-Następujące właściwości są obsługiwane w działaniu kopiowania ***\*ujścia\**** sekcji.
+W sekcji ***\*ujścia\**** działania kopiowania są obsługiwane następujące właściwości.
 
 | Właściwość      | Opis                                                  | Wymagane |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | Właściwość typu źródła działania kopiowania musi być równa **ParquetSink**. | Yes      |
-| storeSettings | Grupa właściwości o tym, jak można zapisać danych do magazynu danych. Każdy łącznik opartych na plikach ma swoje własne ustawienia obsługiwanych zapisu w obszarze `storeSettings`. **Szczegółowe informacje w artykule łącznika -> Sekcja właściwości działania kopiowania**. | Nie       |
+| type          | Właściwość Type źródła działania Copy musi być ustawiona na wartość **ParquetSink**. | Yes      |
+| storeSettings | Grupa właściwości do zapisywania danych w magazynie danych. Każdy Łącznik oparty na plikach ma własne obsługiwane ustawienia zapisu w obszarze `storeSettings`. **Zobacz szczegóły w artykule łącznik — > właściwości działania kopiowania**. | Nie       |
 
-## <a name="mapping-data-flow-properties"></a>Mapowanie właściwości z przepływu danych
+## <a name="mapping-data-flow-properties"></a>Mapowanie właściwości przepływu danych
 
-Dowiedz się, szczegółowe informacje z [źródła przekształcenia](data-flow-source.md) i [ujścia przekształcania](data-flow-sink.md) w mapowanie przepływu danych.
+Dowiedz się więcej o [przekształceniu źródłowym](data-flow-source.md) i [transformacji ujścia](data-flow-sink.md) w mapowaniu przepływu danych.
 
 ## <a name="data-type-support"></a>Obsługa typu danych
 
-Parquet, do których złożone typy danych nie są obecnie obsługiwane (mapa, lista, struktura).
+Parquet złożone typy danych nie są obecnie obsługiwane (na przykład mapy, listy, struktury).
 
-## <a name="using-self-hosted-integration-runtime"></a>Przy użyciu własnego środowiska Integration Runtime
+## <a name="using-self-hosted-integration-runtime"></a>Korzystanie z Integration Runtime samoobsługowego
 
 > [!IMPORTANT]
-> Dla kopiowania upoważniony przez własne środowisko IR np. między lokalizacją lokalną i chmurą magazyny danych, jeśli nie kopiujesz plików Parquet **jako — jest**, musisz zainstalować **64-bitowego środowiska JRE 8 (Java Runtime Environment) lub OpenJDK** na swojej maszynie Podczerwieni. Zapoznaj się z bardziej szczegółowymi informacjami.
+> W przypadku kopii obsługiwanej przez samodzielne Integration Runtime, np. między lokalnym i magazynem danych w chmurze, jeśli nie kopiujesz plików Parquet w taki **sposób**, musisz zainstalować **64-bitową JRE, Java Runtime Environment lub OPENJDK** na maszynie IR. Więcej informacji można znaleźć w poniższym akapicie.
 
-Związanym z kopiowaniem działających w własne środowisko IR za pomocą pliku Parquet serializacji/deserializacji, ADF lokalizuje środowisko wykonawcze języka Java po pierwsze, sprawdzając w rejestrze *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* dla środowiska JRE, jeśli nie znaleziono, po drugie sprawdzanie zmiennej systemowej *`JAVA_HOME`* dla OpenJDK.
+W przypadku kopiowania uruchomionego na samoobsługowym środowisku IR przy użyciu serializacji/deserializacji pliku Parquet można zlokalizować środowisko uruchomieniowe języka Java, *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* sprawdzając najpierw rejestr dla środowiska JRE, jeśli nie zostanie on znaleziony *`JAVA_HOME`* , a następnie w celu sprawdzenia zmiennej systemowej dla OpenJDK.
 
-- **Aby użyć środowiska JRE**: Środowisko IR 64-bitowego wymaga 64-bitowego środowiska JRE. Znajdziesz go z [tutaj](https://go.microsoft.com/fwlink/?LinkId=808605).
-- **Aby użyć OpenJDK**: jest ona obsługiwana od środowiska IR wersji 3.13. Pakiet jvm.dll z pozostałych wymagane w związku z tym zestawy OpenJDK własne środowisko IR maszyny i zestaw systemowej zmiennej środowiskowej JAVA_HOME.
+- **Aby użyć środowiska JRE**: 64-bitowy IR wymaga 64-bitowego środowiska JRE. Można je znaleźć w [tym miejscu](https://go.microsoft.com/fwlink/?LinkId=808605).
+- **Aby użyć OpenJDK**: jest obsługiwana od czasu IR w wersji 3,13. Spakuj plik JVM. dll ze wszystkimi innymi wymaganymi zestawami OpenJDK do samodzielnej maszyny podczerwieni i odpowiednio ustaw systemową zmienną środowiskową JAVA_HOME.
 
 > [!TIP]
-> Po skopiowaniu danych do/z Parquet formatowanie przy użyciu środowiskiem Integration Runtime i trafień informacją o tym błędzie "Wystąpił błąd podczas wywoływania kodu java, komunikat: **miejsca na stercie java.lang.OutOfMemoryError:Java**", można dodać zmienną środowiskową `_JAVA_OPTIONS` na komputerze hostującym IR produktem, aby dopasować rozmiar sterty minimalnej/maksymalnej dla maszyny JVM przeznaczonych dla takich kopiowania następnie ponowne uruchamianie potoku.
+> W przypadku kopiowania danych do/z formatu Parquet przy użyciu samoobsługowego Integration Runtime i wystąpienia błędu mówiącego "Wystąpił błąd podczas wywoływania języka Java, komunikat: **Java. lang. OutOfMemoryError: przestrzeń sterty Java**", można dodać zmienną `_JAVA_OPTIONS` środowiskową do Maszyna, która hostuje własne środowisko IR, aby dostosować minimalny/maksymalny rozmiar sterty dla JVM, aby umożliwić taką kopię, a następnie ponownie uruchomić potok.
 
-![Ustaw rozmiar sterty maszyny JVM na własne środowisko IR](C:/AzureContent/azure-docs-pr/articles/data-factory/media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
+![Ustawianie rozmiaru sterty JVM na samoobsługowym środowisku IR](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
-Przykład: Ustaw zmienną `_JAVA_OPTIONS` wartością `-Xms256m -Xmx16g`. Flaga `Xms` Określa pulę alokacji pamięci początkowej dla języka Java maszyny wirtualnej (JVM), podczas gdy `Xmx` określa maksymalny rozmiar pamięci puli alokacji. Oznacza to, że maszyny JVM zostanie uruchomiona przy użyciu `Xms` ilość pamięci i będzie można użyć maksymalnie `Xmx` ilość pamięci. Domyślnie usługi ADF Użyj minimum 64MB i maksymalnej liczby 1G.
+Przykład: Ustaw zmienną `_JAVA_OPTIONS` o wartości `-Xms256m -Xmx16g`. Flaga `Xms` określa początkową pulę alokacji pamięci dla wirtualna maszyna Java (JVM), podczas gdy `Xmx` określa maksymalną pulę alokacji pamięci. Oznacza to, że JVM zostanie uruchomione z `Xms` ilością pamięci i będzie można użyć `Xmx` maksymalnej ilości pamięci. Domyślnie funkcja ADF korzysta z minimalnej 64 MB i maksymalnej wartości 1G.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Omówienie działania kopiowania](copy-activity-overview.md)
 - [Mapowanie przepływu danych](concepts-data-flow-overview.md)

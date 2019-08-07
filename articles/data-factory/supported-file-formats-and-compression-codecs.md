@@ -7,18 +7,18 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 08/06/2019
 ms.author: jingwang
-ms.openlocfilehash: 9f6edc45316eaeceb75da643ed64b39382712852
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2ffd88b21d8cf331435a030199b562e6b5b979f
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66165938"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840264"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Obsługiwane formaty plików i kompresji koderów-dekoderów w usłudze Azure Data Factory
 
-*W tym artykule mają zastosowanie następujące łączniki: [Amazon S3](connector-amazon-simple-storage-service.md), [obiektów Blob platformy Azure](connector-azure-blob-storage.md), [usługi Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [usługi Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [usługi Azure File Storage](connector-azure-file-storage.md), [System plików](connector-file-system.md), [FTP](connector-ftp.md), [usługi Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md)i [ SFTP](connector-sftp.md).*
+*Ten artykuł ma zastosowanie do następujących łączników: [Amazon S3](connector-amazon-simple-storage-service.md), [azure BLOB](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [system plików](connector-file-system.md), [FTP](connector-ftp.md), [Magazyn Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)i [SFTP](connector-sftp.md).*
 
 Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. Jeśli chcesz **analizować lub generowanie plików w określonym formacie**, Azure Data Factory obsługuje następujące typy formatów plików:
 
@@ -27,14 +27,15 @@ Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów 
 * [Parquet format](#parquet-format)
 * [ORC format](#orc-format)
 * [Avro format](#avro-format)
+* [Format binarny](#binary-format)
 
 > [!TIP]
-> Dowiedz się, jak działanie kopiowania mapuje dane źródła do ujścia z [mapowanie schematu w działaniu kopiowania](copy-activity-schema-and-type-mapping.md).
+> Dowiedz się, jak działanie kopiowania mapuje dane źródłowe na ujścia z [mapowania schematu w działaniu kopiowania](copy-activity-schema-and-type-mapping.md).
 
 ## <a name="text-format"></a>Format tekstu
 
 >[!NOTE]
->Data Factory wprowadzono nowe rozdzielany datset format tekstu, zobacz [format tekstu rozdzielanego](format-delimited-text.md) artykułu zawierającego szczegóły. Następujące konfiguracje dla zestawu danych magazynu danych oparte na plikach jest nadal obsługiwany jako — dotyczy compabitility z poprzednimi wersjami. Zaleca się używać nowego modelu, w przyszłości.
+>Data Factory wprowadzono nowy format tekstowy z rozdzielonymi datset, zobacz artykuł [rozdzielający format tekstowy](format-delimited-text.md) , zawierający szczegóły. Następujące konfiguracje zestawu danych opartego na plikach są nadal obsługiwane, tak jak w przypadku compabitility z poprzednimi wersjami. Zamierzasz użyć nowego modelu do przodu.
 
 Jeśli chcesz odczytać z pliku tekstowego lub zapisać do pliku tekstowego, ustaw `type` właściwość `format` części zestawu danych na **TextFormat**. Ponadto możesz określić następujące **opcjonalne** właściwości w sekcji `format`. Aby uzyskać informacje na temat sposobu konfigurowania, zobacz sekcję [Przykład formatu TextFormat](#textformat-example).
 
@@ -42,7 +43,7 @@ Jeśli chcesz odczytać z pliku tekstowego lub zapisać do pliku tekstowego, ust
 | --- | --- | --- | --- |
 | columnDelimiter |Znak używany do rozdzielania kolumn w pliku. Aby wziąć pod uwagę do użycia rzadkich znak niedrukowalny, który nie istnieje w danych. Na przykład określić "\u0001", który reprezentuje Start z nagłówkiem (raportu o kondycji). |Dozwolony jest tylko jeden znak. Wartość **domyślna** to **przecinek (,)** . <br/><br/>Aby użyć znaku Unicode, zobacz [znaków Unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters) można uzyskać odpowiedni kod. |Nie |
 | rowDelimiter |Znak używany do rozdzielania wierszy w pliku. |Dozwolony jest tylko jeden znak. Wartością **domyślną** jest dowolna z następujących wartości przy odczycie: **[„\r\n”, „\r”, „\n”]** oraz wartość **„\r\n”** przy zapisie. |Nie |
-| escapeChar |Znak specjalny służący do zmiany interpretacji ogranicznika kolumny w zawartości pliku wejściowego. <br/><br/>W przypadku tabeli nie można określić zarówno właściwości escapeChar, jak i quoteChar. |Dozwolony jest tylko jeden znak. Brak wartości domyślnej. <br/><br/>Przykład: Jeśli masz przecinkiem (', '), jak ogranicznik kolumny, ale ma mieć znak przecinka występował w tekście (przykład: "Hello, world"), można zdefiniować "$" jako znak ucieczki i użyć ciągu "Witaj$, world" w źródle. |Nie |
+| escapeChar |Znak specjalny służący do zmiany interpretacji ogranicznika kolumny w zawartości pliku wejściowego. <br/><br/>W przypadku tabeli nie można określić zarówno właściwości escapeChar, jak i quoteChar. |Dozwolony jest tylko jeden znak. Brak wartości domyślnej. <br/><br/>Przykład: Jeśli jako ogranicznika kolumny ma być przecinek (","), ale chcesz, aby w tekście znajdował się znak przecinka (przykład: "Hello, World"), można zdefiniować "$" jako znak ucieczki i użyć ciągu "Hello $, World" w źródle. |Nie |
 | quoteChar |Znak używany do umieszczania wartości ciągu w cudzysłowie. Ograniczniki kolumny i wiersza umieszczone w cudzysłowie są traktowane jako część wartości ciągu. Ta właściwość ma zastosowanie zarówno do wejściowych, jak i wyjściowych zestawów danych.<br/><br/>W przypadku tabeli nie można określić zarówno właściwości escapeChar, jak i quoteChar. |Dozwolony jest tylko jeden znak. Brak wartości domyślnej. <br/><br/>Na przykład jeśli ogranicznikiem kolumny jest przecinek (,), ale chcesz, aby znak przecinka występował w tekście (przykład: <Witaj, świecie>), możesz zdefiniować cudzysłów (") jako znak cudzysłowu i użyć ciągu "Witaj, świecie" w źródle. |Nie |
 | nullValue |Co najmniej jeden znak służący do reprezentowania wartości null. |Co najmniej jeden znak. Wartości **domyślne** to **„\N” i „NULL”** przy odczycie oraz **„\N”** przy zapisie. |Nie |
 | encodingName |Określa nazwę kodowania. |Prawidłowa nazwa kodowania. Zobacz [właściwość Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx). Przykład: windows-1250 lub shift_jis. Wartość **domyślna** to **UTF-8**. |Nie |
@@ -81,7 +82,7 @@ Aby użyć właściwości `escapeChar` zamiast `quoteChar`, zastąp wiersz z wł
 
 ### <a name="scenarios-for-using-firstrowasheader-and-skiplinecount"></a>Scenariusze użycia właściwości firstRowAsHeader oraz skipLineCount
 
-* Kopiujesz dane ze źródła innego niż plik do pliku tekstowego i chcesz dodać wiersz nagłówka zawierający metadane schematu (na przykład: SQL schema). Ustaw właściwość `firstRowAsHeader` na wartość true w zestawie danych wyjściowych dla tego scenariusza.
+* Kopiujesz z niepochodzącego od pliku do pliku tekstowego i chcę dodać wiersz nagłówka zawierający metadane schematu (na przykład: Schemat SQL). Ustaw właściwość `firstRowAsHeader` na wartość true w zestawie danych wyjściowych dla tego scenariusza.
 * Kopiujesz dane z pliku tekstowego zawierającego wiersz nagłówka do ujścia innego niż plik i chcesz pominąć ten wiersz. Ustaw właściwość `firstRowAsHeader` na wartość true w zestawie danych wejściowych.
 * Kopiujesz dane z pliku tekstowego i chcesz pominąć kilka początkowych wierszy, które nie zawierają żadnych danych bądź informacji nagłówka. Określ właściwość `skipLineCount`, aby wskazać liczbę wierszy do pominięcia. Jeśli pozostała część pliku zawiera wiersz nagłówka, możesz również określić właściwość `firstRowAsHeader`. Jeśli określono zarówno właściwość `skipLineCount`, jak i `firstRowAsHeader`, najpierw zostaną pominięte wiersze, a następnie zostaną odczytane informacje nagłówka z pliku wejściowego
 
@@ -94,13 +95,13 @@ Jeśli chcesz analizować pliki JSON lub zapisywać dane w formacie JSON, ustaw 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | filePattern |Wskazuje wzorzec danych przechowywanych w każdym pliku JSON. Dozwolone wartości to: **setOfObjects** i **arrayOfObjects**. Wartością **domyślną** jest **setOfObjects**. Aby uzyskać szczegółowe informacje o tych wzorcach, zobacz sekcję [Wzorce plików JSON](#json-file-patterns). |Nie |
-| jsonNodeReference | Jeśli chcesz wykonać iterację i ekstrakcję danych z obiektów wewnątrz pola tablicy o tym samym wzorcu, określ ścieżkę JSON tej tablicy. Ta właściwość jest obsługiwana tylko podczas kopiowania danych **z** pliki w formacie JSON. | Nie |
-| jsonPathDefinition | Określa wyrażenie ścieżki JSON dla każdego mapowania kolumny z niestandardową nazwą kolumny (musi zaczynać się małą literą). Ta właściwość jest obsługiwana tylko podczas kopiowania danych **z** pliki w formacie JSON i wyodrębnianie danych z obiektu lub tablicy. <br/><br/> W przypadku pól obiektu głównego na początku użyj elementu głównego $. W przypadku pól wewnątrz tablicy wybranej przez właściwość `jsonNodeReference` najpierw podaj element tablicy. Aby uzyskać informacje na temat sposobu konfigurowania, zobacz sekcję [Przykład formatu JsonFormat](#jsonformat-example). | Nie |
-| encodingName |Określa nazwę kodowania. Aby uzyskać listę prawidłowych nazw kodowania zobacz: [Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) właściwości. Na przykład: windows-1250 lub shift_jis. **Domyślne** wartość to: **UTF-8**. |Nie |
+| jsonNodeReference | Jeśli chcesz wykonać iterację i ekstrakcję danych z obiektów wewnątrz pola tablicy o tym samym wzorcu, określ ścieżkę JSON tej tablicy. Ta właściwość jest obsługiwana tylko podczas kopiowania danych **z** plików JSON. | Nie |
+| jsonPathDefinition | Określa wyrażenie ścieżki JSON dla każdego mapowania kolumny z niestandardową nazwą kolumny (musi zaczynać się małą literą). Ta właściwość jest obsługiwana tylko podczas kopiowania danych **z** plików JSON i można wyodrębnić dane z obiektu lub tablicy. <br/><br/> W przypadku pól obiektu głównego na początku użyj elementu głównego $. W przypadku pól wewnątrz tablicy wybranej przez właściwość `jsonNodeReference` najpierw podaj element tablicy. Aby uzyskać informacje na temat sposobu konfigurowania, zobacz sekcję [Przykład formatu JsonFormat](#jsonformat-example). | Nie |
+| encodingName |Określa nazwę kodowania. Aby uzyskać listę prawidłowych nazw kodowania, zobacz: [Encoding. EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) właściwości. Na przykład: windows-1250 lub shift_jis. Wartość **Domyślna** to: **UTF-8**. |Nie |
 | nestingSeparator |Znak używany do rozdzielania poziomów zagnieżdżenia. Wartość domyślna to „.” (kropka). |Nie |
 
 >[!NOTE]
->W przypadku krzyżowe stosowanie danych w tablicy na wiele wierszy (przypadek 1 -> przykład 2 w [przykłady JsonFormat](#jsonformat-example)) rozwinąć pojedynczą tablicę przy użyciu właściwości można wybrać tylko `jsonNodeReference`.
+>W przypadku krzyżowego stosowania danych w tablicy do wielu wierszy (przypadek 1-> próbki 2 w przykładach [formatu jsonformat](#jsonformat-example)) można wybrać tylko opcję rozwinięcie pojedynczej tablicy przy użyciu właściwości `jsonNodeReference`.
 
 ### <a name="json-file-patterns"></a>Wzorce plików JSON
 
@@ -412,7 +413,7 @@ Zestaw danych wyjściowych typu **JsonFormat** jest zdefiniowany następująco: 
 ## <a name="parquet-format"></a>Parquet format
 
 >[!NOTE]
->Data Factory wprowadzono nowe datset format Parquet, zobacz [formatu Parquet](format-parquet.md) artykułu zawierającego szczegóły. Następujące konfiguracje dla zestawu danych magazynu danych oparte na plikach jest nadal obsługiwany jako — dotyczy compabitility z poprzednimi wersjami. Zaleca się używać nowego modelu, w przyszłości.
+>Data Factory wprowadzono nowy format Parquet datset, zobacz artykuł [Format Parquet](format-parquet.md) ze szczegółowymi informacjami. Następujące konfiguracje zestawu danych opartego na plikach są nadal obsługiwane, tak jak w przypadku compabitility z poprzednimi wersjami. Zamierzasz użyć nowego modelu do przodu.
 
 Jeśli chcesz analizować pliki Parquet lub zapisywać dane w formacie Parquet, ustaw właściwość `format` `type` na wartość **ParquetFormat**. Nie musisz określać żadnych właściwości w sekcji Format należącej do sekcji typeProperties. Przykład:
 
@@ -425,24 +426,24 @@ Jeśli chcesz analizować pliki Parquet lub zapisywać dane w formacie Parquet, 
 
 Pamiętaj o następujących kwestiach:
 
-* Złożone typy danych są nie są obsługiwane (mapa, lista).
-* Biały znak w nazwie kolumny nie jest obsługiwane.
-* Plik parquet ma następujące opcje związane z kompresją: NONE, SNAPPY, GZIP oraz LZO. Odczytywanie danych z pliku Parquet w dowolnej z tych skompresowanych formatów, z wyjątkiem LZO — używa kodera-dekodera kompresji w metadanych do odczytywania danych obsługuje fabryki danych. Podczas zapisywania w pliku Parquet usługa Data Factory wybiera natomiast opcję SNAPPY, która jest domyślna dla formatu Parquet. Obecnie nie ma możliwości zastąpienia tego zachowania.
+* Złożone typy danych nie są obsługiwane (mapa, lista).
+* Biały znak w nazwie kolumny nie jest obsługiwany.
+* Plik Parquet zawiera następujące opcje kompresji: Brak, przyciąganie, GZIP i LZO. Data Factory obsługuje odczytywanie danych z pliku Parquet w dowolnym z tych skompresowanych formatów, z wyjątkiem LZO — używa kodera-dekoder kompresji w metadanych do odczytu danych. Podczas zapisywania w pliku Parquet usługa Data Factory wybiera natomiast opcję SNAPPY, która jest domyślna dla formatu Parquet. Obecnie nie ma możliwości zastąpienia tego zachowania.
 
 > [!IMPORTANT]
-> Dla kopiowania upoważniony przez własne środowisko IR np. między lokalizacją lokalną i chmurą magazyny danych, jeśli nie kopiujesz plików Parquet **jako — jest**, musisz zainstalować **64-bitowego środowiska JRE 8 (Java Runtime Environment) lub OpenJDK** na swojej maszynie Podczerwieni. Zapoznaj się z bardziej szczegółowymi informacjami.
+> W przypadku kopii obsługiwanej przez samodzielne Integration Runtime, np. między lokalnym i magazynem danych w chmurze, jeśli nie kopiujesz plików Parquet w taki **sposób**, musisz zainstalować **64-bitową JRE, Java Runtime Environment lub OPENJDK** na maszynie IR. Więcej informacji można znaleźć w poniższym akapicie.
 
-Związanym z kopiowaniem działających w własne środowisko IR za pomocą pliku Parquet serializacji/deserializacji, ADF lokalizuje środowisko wykonawcze języka Java po pierwsze, sprawdzając w rejestrze *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* dla środowiska JRE, jeśli nie znaleziono, po drugie sprawdzanie zmiennej systemowej *`JAVA_HOME`* dla OpenJDK.
+W przypadku kopiowania uruchomionego na samoobsługowym środowisku IR przy użyciu serializacji/deserializacji pliku Parquet można zlokalizować środowisko uruchomieniowe języka Java, *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* sprawdzając najpierw rejestr dla środowiska JRE, jeśli nie zostanie on znaleziony *`JAVA_HOME`* , a następnie w celu sprawdzenia zmiennej systemowej dla OpenJDK.
 
-- **Aby użyć środowiska JRE**: Środowisko IR 64-bitowego wymaga 64-bitowego środowiska JRE. Znajdziesz go z [tutaj](https://go.microsoft.com/fwlink/?LinkId=808605).
-- **Aby użyć OpenJDK**: jest ona obsługiwana od środowiska IR wersji 3.13. Pakiet jvm.dll z pozostałych wymagane w związku z tym zestawy OpenJDK własne środowisko IR maszyny i zestaw systemowej zmiennej środowiskowej JAVA_HOME.
+- **Aby użyć środowiska JRE**: 64-bitowy IR wymaga 64-bitowego środowiska JRE. Można je znaleźć w [tym miejscu](https://go.microsoft.com/fwlink/?LinkId=808605).
+- **Aby użyć OpenJDK**: jest obsługiwana od czasu IR w wersji 3,13. Spakuj plik JVM. dll ze wszystkimi innymi wymaganymi zestawami OpenJDK do samodzielnej maszyny podczerwieni i odpowiednio ustaw systemową zmienną środowiskową JAVA_HOME.
 
 >[!TIP]
->Po skopiowaniu danych do/z Parquet formatowanie przy użyciu środowiskiem Integration Runtime i trafień informacją o tym błędzie "Wystąpił błąd podczas wywoływania kodu java, komunikat: **miejsca na stercie java.lang.OutOfMemoryError:Java**", można dodać zmienną środowiskową `_JAVA_OPTIONS` na komputerze hostującym IR produktem, aby dopasować rozmiar sterty minimalnej/maksymalnej dla maszyny JVM przeznaczonych dla takich kopiowania następnie ponowne uruchamianie potoku.
+>W przypadku kopiowania danych do/z formatu Parquet przy użyciu samoobsługowego Integration Runtime i wystąpienia błędu mówiącego "Wystąpił błąd podczas wywoływania języka Java, komunikat: **Java. lang. OutOfMemoryError: przestrzeń sterty Java**", można dodać zmienną `_JAVA_OPTIONS` środowiskową do Maszyna, która hostuje własne środowisko IR, aby dostosować minimalny/maksymalny rozmiar sterty dla JVM, aby umożliwić taką kopię, a następnie ponownie uruchomić potok.
 
-![Ustaw rozmiar sterty maszyny JVM na własne środowisko IR](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
+![Ustawianie rozmiaru sterty JVM na samoobsługowym środowisku IR](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
-Przykład: Ustaw zmienną `_JAVA_OPTIONS` wartością `-Xms256m -Xmx16g`. Flaga `Xms` Określa pulę alokacji pamięci początkowej dla języka Java maszyny wirtualnej (JVM), podczas gdy `Xmx` określa maksymalny rozmiar pamięci puli alokacji. Oznacza to, że maszyny JVM zostanie uruchomiona przy użyciu `Xms` ilość pamięci i będzie można użyć maksymalnie `Xmx` ilość pamięci. Domyślnie usługi ADF Użyj minimum 64MB i maksymalnej liczby 1G.
+Przykład: Ustaw zmienną `_JAVA_OPTIONS` o wartości `-Xms256m -Xmx16g`. Flaga `Xms` określa początkową pulę alokacji pamięci dla wirtualna maszyna Java (JVM), podczas gdy `Xmx` określa maksymalną pulę alokacji pamięci. Oznacza to, że JVM zostanie uruchomione z `Xms` ilością pamięci i będzie można użyć `Xmx` maksymalnej ilości pamięci. Domyślnie funkcja ADF korzysta z minimalnej 64 MB i maksymalnej wartości 1G.
 
 ### <a name="data-type-mapping-for-parquet-files"></a>Mapowanie plików Parquet — typ danych
 
@@ -482,17 +483,17 @@ Jeśli chcesz analizować pliki ORC lub zapisywać dane w formacie ORC, ustaw w�
 
 Pamiętaj o następujących kwestiach:
 
-* Złożone typy danych są nie są obsługiwane (struktura, mapa, lista, Unii).
-* Biały znak w nazwie kolumny nie jest obsługiwane.
-* Plik ORC ma trzy [opcje związane z kompresją](https://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/): NONE, ZLIB, SNAPPY. Usługa Data Factory obsługuje odczyt danych z pliku ORC w dowolnym z tych skompresowanych formatów. Do odczytywania danych używa kodera-dekodera kompresji z metadanych. Podczas zapisywania w pliku ORC usługa Data Factory wybiera natomiast opcję ZLIB, która jest domyślna dla formatu ORC. Obecnie nie ma możliwości zastąpienia tego zachowania.
+* Złożone typy danych nie są obsługiwane (struktura, mapa, lista, Unia).
+* Biały znak w nazwie kolumny nie jest obsługiwany.
+* Plik ORC ma trzy [Opcje związane z kompresją](https://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/): NONE, ZLIB, PRZYCIĄGANIE. Usługa Data Factory obsługuje odczyt danych z pliku ORC w dowolnym z tych skompresowanych formatów. Do odczytywania danych używa kodera-dekodera kompresji z metadanych. Podczas zapisywania w pliku ORC usługa Data Factory wybiera natomiast opcję ZLIB, która jest domyślna dla formatu ORC. Obecnie nie ma możliwości zastąpienia tego zachowania.
 
 > [!IMPORTANT]
-> Dla kopiowania upoważniony przez własne środowisko IR np. między lokalizacją lokalną i chmurą magazyny danych, jeśli nie kopiujesz plików ORC **jako — jest**, musisz zainstalować **64-bitowego środowiska JRE 8 (Java Runtime Environment) lub bibliotekę OpenJDK**  na swojej maszynie Podczerwieni. Zapoznaj się z bardziej szczegółowymi informacjami.
+> W przypadku kopii obsługiwanej przez samodzielne Integration Runtime, np. między lokalnym i magazynem danych w chmurze, jeśli nie kopiujesz plików ORC w taki **sposób**, musisz zainstalować **64-bitową JRE, Java Runtime Environment lub OPENJDK** na maszynie IR. Więcej informacji można znaleźć w poniższym akapicie.
 
-Związanym z kopiowaniem działających w własne środowisko IR za pomocą pliku ORC serializacji/deserializacji, ADF lokalizuje środowisko wykonawcze języka Java po pierwsze, sprawdzając w rejestrze *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* dla środowiska JRE, jeśli nie znaleziono, po drugie sprawdzanie zmiennej systemowej *`JAVA_HOME`* dla OpenJDK.
+W przypadku kopiowania uruchomionego na samoobsługowym środowisku IR przy użyciu serializacji/deserializacji pliku Orc można zlokalizować środowisko uruchomieniowe języka Java, *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* sprawdzając najpierw rejestr dla środowiska JRE, jeśli nie zostanie on znaleziony *`JAVA_HOME`* , a następnie w celu sprawdzenia zmiennej systemowej dla OpenJDK.
 
-- **Aby użyć środowiska JRE**: Środowisko IR 64-bitowego wymaga 64-bitowego środowiska JRE. Znajdziesz go z [tutaj](https://go.microsoft.com/fwlink/?LinkId=808605).
-- **Aby użyć OpenJDK**: jest ona obsługiwana od środowiska IR wersji 3.13. Pakiet jvm.dll z pozostałych wymagane w związku z tym zestawy OpenJDK własne środowisko IR maszyny i zestaw systemowej zmiennej środowiskowej JAVA_HOME.
+- **Aby użyć środowiska JRE**: 64-bitowy IR wymaga 64-bitowego środowiska JRE. Można je znaleźć w [tym miejscu](https://go.microsoft.com/fwlink/?LinkId=808605).
+- **Aby użyć OpenJDK**: jest obsługiwana od czasu IR w wersji 3,13. Spakuj plik JVM. dll ze wszystkimi innymi wymaganymi zestawami OpenJDK do samodzielnej maszyny podczerwieni i odpowiednio ustaw systemową zmienną środowiskową JAVA_HOME.
 
 ### <a name="data-type-mapping-for-orc-files"></a>Mapowanie plików ORC — typ danych
 
@@ -535,6 +536,10 @@ Pamiętaj o następujących kwestiach:
 
 * [Złożone typy danych](https://avro.apache.org/docs/current/spec.html#schema_complex) nie są obsługiwane (rekordy, wyliczenia, tablice, mapy, unie i stała).
 
+## <a name="binary-format"></a>Format binarny
+
+Szczegółowe informacje można znaleźć w artykule w [formacie binarnym](format-binary.md) .
+
 ## <a name="compression-support"></a>Obsługa kompresji
 
 Usługa Azure Data Factory obsługuje Kompresuj/dekompresji danych podczas kopiowania. Po określeniu `compression` właściwości w wejściowego zestawu danych, działanie kopiowania odczytu skompresowane dane ze źródła i dekompresowanie; i po określeniu właściwość w zestawie danych wyjściowych działania kopiowania kompresowanie, a następnie zapisać danych do ujścia. Poniżej przedstawiono kilka przykładowych scenariuszy:
@@ -575,22 +580,22 @@ Aby określić kompresji dla zestawu danych, użyj **kompresji** właściwość 
 * **Typ:** kodera-dekodera kompresji, który może być **GZIP**, **Deflate**, **BZIP2**, lub **ZipDeflate**.
 * **Poziom:** kompresji, który może być **optymalna** lub **najszybciej**.
 
-  * **Najszybszy:** Kompresja operacja powinna być uznana tak szybko, jak to możliwe, nawet wtedy, gdy wynikowy plik nie jest optymalnie skompresowany.
-  * **Optymalne**: Operacja kompresji powinny zostać skompresowane optymalnie, nawet wtedy, gdy operacja trwa dłużej.
+  * **Najlepszy** Operacja kompresji powinna zostać ukończona tak szybko, jak to możliwe, nawet jeśli plik nie jest optymalnie kompresowany.
+  * **Optymalny**: Operacja kompresji powinna być optymalnie skompresowana, nawet jeśli ukończenie operacji trwa dłużej.
 
     Aby uzyskać więcej informacji, zobacz [poziom kompresji](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) tematu.
 
 > [!NOTE]
 > Ustawienia kompresji nie są obsługiwane dla danych w **AvroFormat**, **OrcFormat**, lub **ParquetFormat**. Podczas odczytywania plików w tych formatach, Data Factory wykrywa i używa kodera-dekodera kompresji w metadanych. Podczas zapisywania plików w tych formatach, Data Factory wybiera natomiast opcję domyślną kodera-dekodera kompresji dla tego formatu. Na przykład ZLIB OrcFormat i SNAPPY dla ParquetFormat.
 
-## <a name="unsupported-file-types-and-compression-formats"></a>Nieobsługiwane typy plików i kompresji
+## <a name="unsupported-file-types-and-compression-formats"></a>Nieobsługiwane typy plików i formaty kompresji
 
-Funkcje rozszerzalności usługi Azure Data Factory umożliwia przekształcanie plików, które nie są obsługiwane.
-Dwie opcje obejmują usługi Azure Functions i niestandardowe zadania za pomocą usługi Azure Batch.
+Korzystając z funkcji rozszerzalności Azure Data Factory, można przekształcać pliki, które nie są obsługiwane.
+Dwie opcje obejmują Azure Functions i zadania niestandardowe przy użyciu Azure Batch.
 
-Możesz zobaczyć przykładu korzystającego z funkcji platformy Azure, aby [Wyodrębnij zawartość pliku tar](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction). Aby uzyskać więcej informacji, zobacz [działania usługi Azure Functions](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity).
+Możesz zobaczyć przykład, który używa funkcji platformy Azure, aby [wyodrębnić zawartość pliku tar](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction). Aby uzyskać więcej informacji, zobacz [Azure Functions działania](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity).
 
-Można także utworzyć tej funkcjonalności za pomocą działania niestandardowego dotnet. Więcej informacji jest dostępnych [tutaj](https://docs.microsoft.com/azure/data-factory/transform-data-using-dotnet-custom-activity)
+Tę funkcję można także skompilować przy użyciu niestandardowego działania dotnet. Dodatkowe informacje są dostępne [tutaj](https://docs.microsoft.com/azure/data-factory/transform-data-using-dotnet-custom-activity)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -1,82 +1,80 @@
 ---
 title: Skróty klawiaturowe usługi Azure Data Catalog
-description: W tym artykule przedstawiono skróty klawiaturowe usługi Azure Data Catalog.
-services: data-catalog
+description: W tym artykule przedstawiono skróty klawiaturowe Azure Data Catalog.
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 00b77c88-fbca-4e6f-a175-d40b5cbbf144
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: ed101df5cd3d6e5754b88c5f66807f9fda846cf4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/01/2019
+ms.openlocfilehash: 499067f33bddbede6510f61e2cb5da3fb33a5e7c
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60998805"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736304"
 ---
 # <a name="keyboard-shortcuts-for-azure-data-catalog"></a>Skróty klawiaturowe usługi Azure Data Catalog
-## <a name="keyboard-shortcuts-for-the-data-catalog-data-source-registration-tool"></a>Skróty klawiaturowe dla danych wykazu danych źródła, narzędzia do rejestracji
-### <a name="general-keyboard-shortcuts"></a>Ogólne skróty klawiaturowe
-| Operacja | Naciśnij klawisz |
+## <a name="keyboard-shortcuts-for-the-data-catalog-data-source-registration-tool"></a>Skróty klawiaturowe narzędzia rejestracji Data Catalog źródła danych
+### <a name="general-keyboard-shortcuts"></a>Ogólne Skróty klawiaturowe
+| Operacja | Naciskając |
 | --- | --- |
-| Kartę w każdej kontrolki na stronie |Tab |
-| Wybierz opcję |Wprowadź lub spacja |
-| Maksymalizuj strony |WIN+UP |
-| Minimalizuj/Przywróć strony |WIN+DOWN |
-| Menu Otwórz stronę |ALT+SPACEBAR |
+| Karta do każdej kontrolki na stronie |Tab |
+| Wybierz opcję |Enter lub spację |
+| Maksymalizuj stronę |WIN+UP |
+| Strona przywracania/minimalizowania |WIN+DOWN |
+| Otwórz menu strony |ALT+SPACEBAR |
 
 ### <a name="authentication-page"></a>Strona uwierzytelniania
-| Operacja | Naciśnij klawisz |
+| Operacja | Naciskając |
 | --- | --- |
-| Zaloguj się do usługi |ALT+S |
+| Logowanie do usługi |ALT+S |
 
-### <a name="data-source-selection-page"></a>Strona wybierania źródła danych
-| Operacja | Naciśnij klawisz |
+### <a name="data-source-selection-page"></a>Strona wyboru źródła danych
+| Operacja | Naciskając |
 | --- | --- |
 | Przejdź do następnej strony (jeśli jest włączona) |ALT+N |
-| Zmiana wybranego typu, gdy fokus jest na kafelku |Po lewej stronie w górę, prawo lub Strzałka w dół |
+| Zmień wybrany typ, gdy fokus jest na kafelku |Strzałka w lewo, w górę, w prawo lub w dół |
 
-### <a name="data-source-connection-page"></a>Strona połączenia źródła danych
-| Operacja | Naciśnij klawisz |
+### <a name="data-source-connection-page"></a>Strona połączenia ze źródłem danych
+| Operacja | Naciskając |
 | --- | --- |
 | Przejdź do poprzedniej strony (jeśli jest włączona) |ALT+P |
 | Wybierz przycisk Połącz. |ALT+C |
 
-### <a name="connection-context-page"></a>Połączenie kontekstu strony
-| Operacja | Naciśnij klawisz |
+### <a name="connection-context-page"></a>Strona kontekstu połączenia
+| Operacja | Naciskając |
 | --- | --- |
-| Przycisk Zarejestruj, (jeśli jest włączona) |ALT+R |
-| Zawierają pola wyboru w wersji zapoznawczej (jeśli jest dostępny) |ALT+P |
-| Obejmują wyboru profilu danych (jeśli jest dostępny) |ALT+D |
-| Przejdź do każdego elementu listy |W górę lub Strzałka w dół |
-| Hierarchia serwera rozwiń węzeł w widoku drzewa |STRZAŁKA W PRAWO |
-| Przenieś wybrane elementy do **dostępne obiekty** lub **obiekty do zarejestrowania** |SPACEBAR |
+| Przycisk Zarejestruj (jeśli jest włączony) |ALT+R |
+| Pole wyboru Włącz Podgląd (jeśli jest dostępne) |ALT+P |
+| Pole wyboru Dołącz profil danych (jeśli jest dostępne) |ALT+D |
+| Przejdź do każdego elementu listy |Strzałka w górę lub w dół |
+| Hierarchia serwerów, rozwiń węzeł widoku drzewa |STRZAŁKA W PRAWO |
+| Przenieś wybrane elementy dla **dostępnych obiektów** lub **obiektów do zarejestrowania** |SPACEBAR |
 
-### <a name="publish-progress-page"></a>Na stronie Postęp publikowania
-| Operacja | Naciśnij klawisz |
+### <a name="publish-progress-page"></a>Strona publikowania postępu
+| Operacja | Naciskając |
 | --- | --- |
 | Przycisk Anuluj |ALT+C |
-| Zarejestruj się przycisk więcej obiektów |ALT+R |
-| Wyświetl Portal przycisk |ALT+V |
+| Przycisk Zarejestruj więcej obiektów |ALT+R |
+| Przycisk wyświetlania portalu |ALT+V |
 
-### <a name="publish-progress-page"></a>Na stronie Postęp publikowania
-| Operacja | Naciśnij klawisz |
+### <a name="publish-progress-page"></a>Strona publikowania postępu
+| Operacja | Naciskając |
 | --- | --- |
-| Przycisk Zapisz (jeśli jest włączona) |ALT+S |
+| Przycisk Zapisz (jeśli jest włączony) |ALT+S |
 | Przycisk Anuluj |ALT+C |
 
-## <a name="keyboard-shortcuts-for-the-data-catalog-portal"></a>Skróty klawiaturowe w portalu usługi Data Catalog
-| Operacja | Naciśnij klawisz |
+## <a name="keyboard-shortcuts-for-the-data-catalog-portal"></a>Skróty klawiaturowe dla portalu Data Catalog
+| Operacja | Naciskając |
 | --- | --- |
-| Nawigacja |Karta i SHIFT + TAB |
-| Kliknij element |SPACJI lub ENTER |
-| Przejdź do sekcji szczegółów |SPACJI lub ENTER |
-| Wyjście z sekcji |ESC |
-| Przypiąć/odpiąć zasobu |ALT+P |
-| Na stronie odnajdowania po aktywowaniu zasobów wybierz zasób |SPACJI lub ENTER |
-| Dodaje lub usuń zasób z wielokrotnego wyboru |CTRL + SPACJA lub ENTER |
-| Przełącz menu dopasowania wyszukiwania |ALT+S |
-| Przełącz **Otwórz** menu |ALT+O |
-| Eksplorowanie kontenera, jeśli zasób jest kontener |ALT+L |
+| Nawigacja |TAB i SHIFT + TAB |
+| Kliknij element |SPACJa lub ENTER |
+| Przejdź do sekcji |SPACJa lub ENTER |
+| Wyjdź z sekcji |ESC |
+| Przypinanie/odpinanie elementu zawartości |ALT+P |
+| Na stronie odnajdywanie, gdy element zawartości ma fokus, wybierz pozycję element zawartości. |SPACJa lub ENTER |
+| Dodaje/usuwa element zawartości z wyboru wielokrotnego |CTRL + SPACJa lub ENTER |
+| Przełącz menu wyszukiwania dopasowania |ALT+S |
+| Przełącz menu **Otwórz w** |ALT+O |
+| Eksploruj kontener, jeśli element zawartości jest kontenerem |ALT+L |
 

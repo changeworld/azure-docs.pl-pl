@@ -1,6 +1,6 @@
 ---
-title: Eksplorowanie danych za pomocą Eksploratora usługi Azure Time Series Insights | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak można szybko wyświetlić globalny widok danych dotyczących danych big data, a następnie sprawdź środowisko IoT za pomocą Eksploratora usługi Azure Time Series Insights w przeglądarce sieci web.
+title: Eksplorowanie danych za pomocą Eksploratora Azure Time Series Insights | Microsoft Docs
+description: W tym artykule opisano, jak używać Eksploratora Azure Time Series Insights w przeglądarce sieci Web, aby szybko zobaczyć globalny widok danych Big Data i zweryfikować środowisko IoT.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
@@ -10,120 +10,120 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: a7905213d67fd1cb97a8e50c938427b7ad775924
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9ea9240ce5fa791734ab7b650ebdfa56b3f8dced
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165788"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840567"
 ---
-# <a name="azure-time-series-insights-explorer"></a>Eksplorator usługi Azure Time Series Insights
+# <a name="azure-time-series-insights-explorer"></a>Eksplorator Azure Time Series Insights
 
-W tym artykule opisano funkcje i ogólnie rzecz biorąc opcji dostępności dla usługi Azure Time Series Insights [aplikacji sieci web w Eksploratorze](https://insights.timeseries.azure.com/). Eksplorator usługi Time Series Insights pokazuje możliwości wizualizacji zaawansowanych danych, które są udostępniane przez usługę i są dostępne w ramach własnego środowiska.
+W tym artykule opisano funkcje i opcje ogólnie dostępne dla [aplikacji sieci Web](https://insights.timeseries.azure.com/)programu Azure Time Series Insights Explorer. W Eksploratorze Time Series Insights przedstawiono zaawansowane możliwości wizualizacji danych zapewniane przez usługę i można uzyskać do nich dostęp w ramach własnego środowiska.
 
-Azure Time Series Insights to w pełni zarządzana usługa związana z analizą, przechowywaniem i wizualizacją, dzięki której z łatwością można badać i analizować miliardy zdarzeń IoT jednocześnie. Daje ona globalny widok danych, które umożliwia szybkie weryfikowanie rozwiązań IoT i uniknięcie kosztownych przestojów krytycznych urządzeń. Można wykryć ukryte trendy, zauważyć anomalie i przeprowadzanie analiz głównych przyczyn niemal w czasie rzeczywistym. Eksplorator usługi Time Series Insights jest obecnie w publicznej wersji zapoznawczej.
+Azure Time Series Insights to w pełni zarządzana usługa związana z analizą, przechowywaniem i wizualizacją, dzięki której z łatwością można badać i analizować miliardy zdarzeń IoT jednocześnie. Udostępnia on globalny widok danych, który umożliwia szybkie Weryfikowanie rozwiązania IoT i uniknięcie kosztownych przestojów w przypadku urządzeń o krytycznym znaczeniu. Można odkrywać ukryte trendy, wykrycia i przeprowadzać analizę głównych przyczyn niemal w czasie rzeczywistym. Eksplorator Time Series Insights jest obecnie w publicznej wersji zapoznawczej.
 
 > [!TIP]
-> Aby uzyskać samouczek za pośrednictwem środowiska pokazu, przeczytaj [szybkiego startu usługi Azure Time Series Insights](time-series-quickstart.md).
+> Aby zapoznać się z przewodnikiem w środowisku demonstracyjnym, Przeczytaj [Azure Time Series Insights przewodniku szybki start](time-series-quickstart.md).
 
 ## <a name="video"></a>Połączenia wideo
 
-### <a name="learn-about-querying-data-by-using-the-time-series-insights-explorer-br"></a>Dowiedz się więcej o odpytywaniu danych za pomocą Eksploratora usługi Time Series Insights. </br>
+### <a name="learn-about-querying-data-by-using-the-time-series-insights-explorer-br"></a>Dowiedz się więcej o wysyłaniu zapytań do danych za pomocą Eksploratora Time Series Insights. </br>
 
 > [!VIDEO https://www.youtube.com/embed/SHFPZvrR71s]
 
 >[!NOTE]
->Zobacz poprzedni wideo <a href="https://www.youtube.com/watch?v=6ehNf6AJkFo">"Wprowadzenie do usługi Time Series Insights za pomocą akceleratora rozwiązań IoT platformy Azure."</a>
+>Zobacz poprzednie wideo <a href="https://www.youtube.com/watch?v=6ehNf6AJkFo">"wprowadzenie do Time Series Insights przy użyciu akceleratora rozwiązań usługi Azure IoT".</a>
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Korzystanie z Eksploratora usługi Time Series Insights, musisz mieć:
+Aby móc korzystać z Eksploratora Time Series Insights, musisz:
 
-- Tworzenie środowiska usługi Time Series Insights. Aby uzyskać więcej informacji, zobacz [jak rozpocząć pracę przy użyciu usługi Time Series Insights](./time-series-insights-get-started.md).
-- [Zapewniają dostęp](time-series-insights-data-access.md) do swojego konta w środowisku.
-- Dodaj [usługi IoT hub](time-series-insights-how-to-add-an-event-source-iothub.md) lub [Centrum zdarzeń](time-series-insights-how-to-add-an-event-source-eventhub.md) źródła zdarzeń do niego.
+- Tworzenie środowiska usługi Time Series Insights. Aby uzyskać więcej informacji, zobacz [jak rozpocząć pracę z Time Series Insights](./time-series-insights-get-started.md).
+- [Zapewnianie dostępu](time-series-insights-data-access.md) do Twojego konta w środowisku.
+- Dodaj do niego źródło zdarzeń [Centrum IoT](time-series-insights-how-to-add-an-event-source-iothub.md) lub [centrum zdarzeń](time-series-insights-how-to-add-an-event-source-eventhub.md) .
 
-## <a name="explore-and-query-data"></a>Eksploruj i wykonywanie zapytań dotyczących danych
+## <a name="explore-and-query-data"></a>Eksplorowanie i wykonywanie zapytań dotyczących danych
 
-W ciągu kilku minut nawiązywania połączenia z źródła zdarzeń do środowiska usługi Time Series Insights można eksplorować i zapytanie danych szeregów czasowych.
+W ciągu kilku minut od podłączenia źródła zdarzeń do środowiska Time Series Insights można eksplorować dane szeregów czasowych i wysyłać do nich zapytania.
 
-1. Aby rozpocząć, otwórz [Eksploratora usługi Time Series Insights](https://insights.timeseries.azure.com/) w przeglądarce sieci web. W lewej części okna Wybierz środowisko. Wszystkie środowiska, które mają dostęp do są wymienione w kolejności alfabetycznej.
+1. Aby rozpocząć, Otwórz [eksploratora Time Series Insights](https://insights.timeseries.azure.com/) w przeglądarce internetowej. Po lewej stronie okna wybierz środowisko. Wszystkie środowiska, do których masz dostęp, są wyświetlane w kolejności alfabetycznej.
 
-1. Po wybraniu środowiska, albo użyć **z** i **do** konfiguracje u góry strony, lub kliknij i przeciągnij za pośrednictwem timespan ma. Wybierz ikonę lupy w prawym górnym rogu, lub kliknij prawym przyciskiem myszy na wybrany przedział czasu i wybierz pozycję **wyszukiwania**.
+1. Po wybraniu środowiska Użyj opcji **od** i **do** w górnej części strony lub kliknij i przeciągnij kursor w żądanym przedziale czasu. Wybierz lupę w prawym górnym rogu lub kliknij prawym przyciskiem myszy wybrany przedział czasu i wybierz pozycję **Wyszukaj**.
 
-1. Możesz również odświeżyć dostępności automatycznie co minutę, wybierając **automatycznie na** przycisku. **Automatycznie na** przycisk ma zastosowanie tylko do wykresu dostępności nie zawartości głównego wizualizacji.
+1. Dostępność będzie również automatycznie odświeżana co minutę przez wybranie przycisku **automatycznie włączone** . Przycisk **Włącz** opcję dotyczy tylko wykresu dostępności, a nie zawartości głównej wizualizacji.
 
-1. Ikona chmury platformy Azure umożliwia przejście do środowiska w witrynie Azure portal.
+1. Ikona chmury platformy Azure przenosi do środowiska w Azure Portal.
 
-   [![Środowisko usługi Time Series Insights](media/time-series-insights-explorer/explorer1.png)](media/time-series-insights-explorer/explorer1.png#lightbox)
+   [![Środowisko Time Series Insights](media/time-series-insights-explorer/explorer1.png)](media/time-series-insights-explorer/explorer1.png#lightbox)
 
-1. Następnie zostanie wyświetlony wykres, który pokazuje liczbę wszystkich zdarzeń w czasie wybranego przedziału czasu. W tym miejscu masz wiele formantów:
+1. Następnie zobaczysz wykres pokazujący liczbę wszystkich zdarzeń w wybranym przedziałie czasu. Oto kilka kontrolek:
 
-    - **Panel Edytor warunków**: Miejsce termin jest, gdzie zapytanie środowiska. Znajduje się w lewej części ekranu:
-      - **Miara**: Na tej liście rozwijanej wyświetlane wszystkie kolumny liczbowe (**wartości podwójnej precyzji**).
-      - **Podziel według**: Na tej liście rozwijanej wyświetlane podzielone na kategorie kolumny (**ciągi**).
-      - Można włączyć interpolacji stopniowej, Pokaż minimalne i maksymalne i dostosować obok osi y, z poziomu Panelu sterowania **miary**. Można również dostosować czy dane wyświetlane jest liczba, średnia lub suma danych.
-      - Możesz dodać maksymalnie pięć warunki, aby wyświetlić na tej samej osi x. Użyj **kopiowania rozwijanej** przycisk, aby dodać dodatkowy termin lub wybierz **Dodaj** można dodać nowej termin.
+    - **Panel warunków edytora**: Termin jest miejscem, w którym można wykonywać zapytania dotyczące środowiska. Znajduje się po lewej stronie ekranu:
+      - **Miara**: Ta lista rozwijana zawiera wszystkie kolumny liczbowe (**podwaja**).
+      - **Podziel według**: Ta lista rozwijana zawiera kolumny kategorii (**ciągi**).
+      - Możesz włączyć interpolację krokową, pokazać wartość minimalną i maksymalną, a następnie dostosować oś y w panelu sterowania obok pozycji **pomiar**. Można również określić, czy pokazywane dane są liczbami, średnimi czy sumą danych.
+      - Można dodać maksymalnie pięć wyrazów, aby wyświetlić je na tej samej osi x. Użyj przycisku **kopiowania** , aby dodać dodatkowy termin, lub wybierz pozycję **Dodaj** , aby dodać nowy termin.
 
-        [![Panel edytora terminów](media/time-series-insights-explorer/explorer2.png)](media/time-series-insights-explorer/explorer2.png#lightbox)
+        [![Panel warunków edytora](media/time-series-insights-explorer/explorer2.png)](media/time-series-insights-explorer/explorer2.png#lightbox)
 
-      - **Predykatu**: Orzeczenie szybkie filtrowanie zdarzeń przy użyciu zestawu argumentów operacji wymienionych w poniższej tabeli. Jeśli wyszukiwania przez zaznaczenie lub klikając, predykat automatycznie aktualizacji na podstawie tego wyszukiwania. Operand obsługiwane typy:
+      - **Predykat**: Użyj predykatu, aby szybko filtrować zdarzenia przy użyciu zestawu argumentów operacji wymienionych w poniższej tabeli. W przypadku przeprowadzania wyszukiwania przez wybranie lub kliknięcie, predykat jest automatycznie aktualizowany na podstawie tego wyszukiwania. Operand obsługiwane typy:
 
          |Operacja  |Obsługiwane typy  |Uwagi  |
          |---------|---------|---------|
          |`<`, `>`, `<=`, `>=`     |  Double, DateTime, TimeSpan       |         |
          |`=`, `!=`, `<>`     | String, Bool, Double, DateTime, przedział czasu, wartość NULL        |         |
          |IN     | String, Bool, Double, DateTime, przedział czasu, wartość NULL        |  Wszystkie argumenty powinny być tego samego typu lub być stała NULL.        |
-         |MA     | String        |  Po prawej stronie dozwolone są tylko stałe literałów. Pusty ciąg i wartości NULL nie są dozwolone.       |
+         |MA     | Ciąg        |  Tylko stałe literały ciągu są dozwolone po prawej stronie. Pusty ciąg i wartość NULL są niedozwolone.       |
 
       - **Przykłady zapytań**
 
          [![Przykładowe zapytania](media/time-series-insights-explorer/explorer9.png)](media/time-series-insights-explorer/explorer9.png#lightbox)
 
-1. Możesz użyć **rozmiar interwału** narzędzia suwaka na powiększanie i pomniejszanie odstępach czasu za pośrednictwem tego samego przedziału czasu. Suwak zapewnia dokładniejszą kontrolę ruchu między dużych okresy przedstawiających smooth trendy w dół, aby wycinki tak małej, jak milisekund, które umożliwiają przeglądanie szczegółowe, wysokiej rozdzielczości odpowiednie dane. Domyślne suwaka punkt początkowy jest ustawiony jako najbardziej optymalną wgląd w dane z zaznaczenia równoważyć rozdzielczość, prędkość wysyłania zapytań i stopień szczegółowości.
+1. Za pomocą suwaka **rozmiar interwału** można powiększać i pomniejszać interwały dla tego samego przedziału czasu. Suwak zapewnia dokładniejszą kontrolę nad przenoszeniem między dużymi wycinkami czasu, które pokazują gładkie trendy w dół do wycinków, tak jak w milisekundach, co pozwala na wyświetlanie szczegółowych i wysokiej rozdzielczości kawałków danych. Domyślny punkt początkowy suwaka jest ustawiany jako najbardziej optymalny widok danych z wyboru w celu zrównoważenia rozdzielczości, szybkości zapytania i stopnia szczegółowości.
 
-1. **Czasu pędzla** narzędzie ułatwia przechodzenie z jednego przedział czasu do innego.
+1. Narzędzie **pędzel czasu** ułatwia nawigowanie z jednego przedziału czasowego do innego.
 
-1. Użyj **Zapisz** polecenie, aby zapisać bieżącego zapytania i udostępnić go innym użytkownikom środowiska. Kiedy używasz **Otwórz**, możesz zobaczyć wszystkich zapisanych zapytań i wszelkie udostępnione zapytania innych użytkowników w środowiskach, masz dostęp do.
+1. Użyj polecenia **Zapisz** , aby zapisać bieżące zapytanie i udostępnić je innym użytkownikom środowiska. W przypadku korzystania z programu **Open**można zobaczyć wszystkie zapisane zapytania i wszystkie zapytania udostępnione innym użytkownikom w środowiskach, do których masz dostęp.
 
-   [![Zapytania](media/time-series-insights-explorer/explorer3.png)](media/time-series-insights-explorer/explorer3.png#lightbox)
+   [![Wybiera](media/time-series-insights-explorer/explorer3.png)](media/time-series-insights-explorer/explorer3.png#lightbox)
 
 ## <a name="visualize-data"></a>Wizualizowanie danych
 
-1. Użyj **widoku perspektywy** narzędzie jednoczesnych widoku maksymalnie cztery kwerend unikatowy. **Widoku perspektywy** przycisk znajduje się w prawym górnym rogu wykresu.
+1. Użyj narzędzia **widok perspektywy** , aby zobaczyć równoczesny widok maksymalnie czterech unikatowych zapytań. Przycisk **widok perspektywy** znajduje się w prawym górnym rogu wykresu.
 
    [![Widok perspektywy](media/time-series-insights-explorer/explorer4.png)](media/time-series-insights-explorer/explorer4.png#lightbox)
 
-1. Wyświetl wykres wizualnie eksplorować dane i używać **wykresu** narzędzi:
+1. Wyświetl wykres, aby wizualnie eksplorować dane, i użyj narzędzi **wykresu** :
 
-    - **Wybierz** lub **kliknij** określonego przedziału czasu lub jedną serię danych.
-    - W przedziale czasu można powiększać lub Eksploruj zdarzenia.
-    - W serii danych można podzielić serii według innej kolumny, dodać serii jako nowy termin, Pokaż tylko wybrane serię, Wyklucz wybrane serii, ping tej serii; Eksploruj zdarzenia z wybranej serii
-    - W obszarze filtru po lewej stronie wykresu można zobaczyć wszystkie szeregi wyświetlanych danych i zmiana kolejności według wartości lub nazwę. Również można wyświetlić wszystkich serii danych lub serii przypiętych lub odpięte. Można wybierz jedną serię danych i podzielić serii według innej kolumny, dodać serii jako nowy termin, Pokaż tylko wybrane serię, Wyklucz wybrane serii, przypiąć tej serii; Eksploruj zdarzenia z wybranej serii
-    - Po wyświetleniu jednocześnie wiele wersji warunków, można stosu, anulowania, zobacz dodatkowe dane dotyczące serii danych i używać tej samej osi y we wszystkich warunków umowy. Przyciski w prawym górnym rogu wykresu.
+    - **Zaznacz** lub **kliknij** określony przedział czasu lub jedną serię danych.
+    - W ramach zaznaczenia TimeSpan możesz powiększać lub eksplorować zdarzenia.
+    - W ramach serii danych można podzielić Serie według innej kolumny, dodać serię jako nowy termin, wyświetlić tylko wybraną serię, wykluczyć wybraną serię, wysłać polecenie ping do tej serii lub eksplorować zdarzenia z wybranej serii.
+    - W obszarze filtru z lewej strony wykresu można zobaczyć wszystkie wyświetlane serie danych i zmienić kolejność według wartości lub nazwy. Można również wyświetlić wszystkie serie danych lub przypięte lub odpięte serie. Można wybrać jedną serię danych i podzielić serię według innej kolumny, dodać serię jako nowy termin, wyświetlić tylko wybraną serię, wykluczyć wybraną serię, przypiąć tę serię lub eksplorować zdarzenia z wybranej serii.
+    - Gdy przeglądasz wiele warunków jednocześnie, możesz układać, rozstosować, wyświetlać dodatkowe dane dotyczące serii danych i używać tej samej osi y dla wszystkich warunków. Użyj przycisków w prawym górnym rogu wykresu.
 
-    [![Narzędzia wykresów](media/time-series-insights-explorer/explorer5.png)](media/time-series-insights-explorer/explorer5.png#lightbox)
+    [![Narzędzie wykresu](media/time-series-insights-explorer/explorer5.png)](media/time-series-insights-explorer/explorer5.png#lightbox)
 
-1. Użyj **mapy cieplnej** można szybko wychwycić serii danych unikatowego lub nietypowych w podanej kwerendy. Termin wyszukiwania tylko jeden może ich bezpośrednią wizualizację mapy cieplnej.
+1. Użyj **mapę cieplną** , aby szybko wyszukiwać unikatowe lub nietypowe serie danych w danym zapytaniu. Tylko jeden termin wyszukiwania może być wizualny jako mapę cieplną.
 
     [![Heatmap](media/time-series-insights-explorer/explorer6.png)](media/time-series-insights-explorer/explorer6.png#lightbox)
 
-1. Gdy Eksploruj zdarzenia przez zaznaczenie lub kliknij prawym przyciskiem myszy, **zdarzenia** panelu ma zostać udostępnione. Tutaj widać wszystkie nieprzetworzone zdarzenia i eksportowanie zdarzeń jako pliki JSON lub CSV. Usługa Time Series Insights są przechowywane wszystkie nieprzetworzone dane.
+1. Gdy eksplorujesz zdarzenia, zaznaczając lub klikając prawym przyciskiem myszy, panel **zdarzenia** jest dostępny. W tym miejscu można zobaczyć wszystkie zdarzenia pierwotne i wyeksportować zdarzenia jako pliki JSON lub CSV. Time Series Insights przechowuje wszystkie nieprzetworzone dane.
 
-    [![Zdarzenia](media/time-series-insights-explorer/explorer7.png)](media/time-series-insights-explorer/explorer7.png#lightbox)
+    [![Wydarzeniach](media/time-series-insights-explorer/explorer7.png)](media/time-series-insights-explorer/explorer7.png#lightbox)
 
-1. Wybierz **statystyki** karcie po Eksploruj zdarzenia do udostępnienia, wzorce i statystyki kolumn.
+1. Wybierz kartę **statystyki** po eksplorowaniu zdarzeń w celu uwidocznienia wzorców i statystyk kolumn.
 
-    - **Wzorce**: Ta funkcja i odpowiedzi proaktywnie udostępnia najbardziej są statystycznie istotne wzorców w regionie wybranych danych. Nie masz przyjrzeć się tysięcy zdarzeń, aby zrozumieć, jakie wzorców wymaga najwięcej czasu i energii. Za pomocą usługi Time Series Insights możesz przejść bezpośrednio do tych wzorców są statystycznie istotne, aby kontynuować, przeprowadzanie analizy. Ta funkcja jest również przydatne w przypadku późniejszej śledztwa w danych historycznych.
-    - **Statystyki kolumn**: Statystyki kolumn zapewniają wykresów i tabel, które podzielenie danych z każdej kolumny wybrane serie danych za pośrednictwem wybranego przedziału czasu.
+    - **Wzorce**: Ta funkcja aktywnie przydzieli najbardziej statystycznie znaczące wzorce w wybranym regionie danych. Nie trzeba przeglądać tysięcy zdarzeń, aby zrozumieć, jakie wzorce wymagają najwięcej czasu i energii. Za pomocą Time Series Insights możesz przejść bezpośrednio do tych statystycznie znaczących wzorców, aby kontynuować przeprowadzanie analizy. Ta funkcja jest również przydatna w przypadku badań pośmiertnych w danych historycznych.
+    - **Statystyki kolumn**: Statystyki kolumn zawierają wykresy i tabele dzielące dane z każdej kolumny wybranej serii danych na wybrany przedział czasu.
 
       [![STATYSTYKI](media/time-series-insights-explorer/explorer8.png)](media/time-series-insights-explorer/explorer8.png#lightbox)
 
-Teraz wiesz, różnych funkcji i opcji, które są dostępne w ramach aplikacji internetowej w Eksploratorze usługi Time Series Insights.
+Teraz widzisz różne funkcje i opcje, które są dostępne w aplikacji sieci Web programu Time Series Insights Explorer.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się, jak [diagnozowanie i rozwiązywanie problemów](time-series-insights-diagnose-and-solve-problems.md) w danym środowisku usługi Time Series Insights.
-- Wykonać krok po kroku [szybkiego startu usługi Azure Time Series Insights](time-series-quickstart.md) samouczka.
+- Dowiedz się [, jak diagnozować i rozwiązywać problemy](time-series-insights-diagnose-and-solve-problems.md) w środowisku Time Series Insights.
+- Zapoznaj się z przewodnikiem [szybki start Azure Time Series Insights](time-series-quickstart.md) .

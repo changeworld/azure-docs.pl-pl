@@ -1,29 +1,29 @@
 ---
-title: VMware Solution by CloudSimple - połączeń sieciowych platformy Azure
-description: Więcej informacji na temat połączenia z siecią wirtualną platformy Azure z siecią region CloudSimple
+title: Rozwiązanie VMware według CloudSimple — połączenia sieciowe platformy Azure
+description: Dowiedz się więcej o łączeniu sieci wirtualnej platformy Azure z siecią regionu CloudSimple
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f2ab82b6c1b4b373c186019eaf96f9864861b9d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8e99da05f71cb01744111b41c301b11a0969057
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66497629"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812713"
 ---
-# <a name="azure-network-connections-overview"></a>Omówienie połączenia usługi Azure network
+# <a name="azure-network-connections-overview"></a>Omówienie połączeń sieciowych platformy Azure
 
-Podczas tworzenia usługi CloudSimple w regionie, go:
+W przypadku tworzenia usługi CloudSimple w regionie:
 
-* Tworzy obwodu usługi ExpressRoute platformy Azure i dołącza je do usługi w danym regionie
-* Umożliwia połączenie z sieci CloudSimple region sieci wirtualnej platformy Azure lub w sieci lokalnej przy użyciu usługi Azure ExpressRoute
-* Zapewnia dostęp do usług działających w Twojej subskrypcji platformy Azure lub sieci lokalnych ze środowiska chmury prywatnej
+* Tworzy obwód usługi Azure ExpressRoute i dołącza go do usługi w tym regionie
+* Zezwala na połączenie z sieci z regionu CloudSimple do sieci wirtualnej platformy Azure lub sieci lokalnej przy użyciu usługi Azure ExpressRoute
+* Zapewnia usługi dostępu działające w ramach subskrypcji platformy Azure lub sieci lokalnej w środowisku chmury prywatnej
 
-Połączenie jest:
+Połączenie:
 
 * Bezpieczeństwo
 * Prywatna
@@ -32,25 +32,25 @@ Połączenie jest:
 
 ## <a name="benefits"></a>Korzyści
 
-Połączenie sieci platformy Azure umożliwia:
+Połączenie sieciowe platformy Azure umożliwia:
 
-* Używać systemu Azure jako miejsce docelowe kopii zapasowej dla maszyn wirtualnych w chmurze prywatnej.
-* Wdróż serwery usługi zarządzania Kluczami w Twojej subskrypcji platformy Azure, aby szyfrować magazyn danych z chmury prywatnej sieci vSAN.
-* Użyj aplikacji hybrydowych, gdzie warstwa sieci web aplikacji działa w chmurze publicznej podczas aplikacji bazy danych w warstwach i uruchamiane w chmurze prywatnej.
+* Użyj platformy Azure jako miejsca docelowego kopii zapasowej dla maszyn wirtualnych w chmurze prywatnej.
+* Wdróż serwery usługi KMS w ramach subskrypcji platformy Azure, aby zaszyfrować magazyn danych sieci vSAN w chmurze prywatnej.
+* Używaj aplikacji hybrydowych, w których warstwa sieci Web aplikacji jest uruchamiana w chmurze publicznej, podczas gdy warstwy aplikacji i bazy danych działają w chmurze prywatnej.
 
-## <a name="azure-virtual-network-connection"></a>Połączenia sieci wirtualnej platformy Azure
+## <a name="azure-virtual-network-connection"></a>Połączenie sieci wirtualnej platformy Azure
 
-Chmury prywatne mogą być połączone z zasobami platformy Azure przy użyciu usługi ExpressRoute.  To połączenie umożliwia dostęp do różnych zasobów w subskrypcji platformy Azure z chmury prywatnej.  To połączenie umożliwia rozszerzenie możesz chmury prywatnej sieci z siecią wirtualną platformy Azure.
+Chmury prywatne mogą być połączone z zasobami platformy Azure za pomocą ExpressRoute.  Tego połączenia możesz użyć, aby uzyskać dostęp do różnych zasobów uruchomionych w ramach subskrypcji platformy Azure z chmury prywatnej.  To połączenie umożliwia zwiększenie sieci prywatnej chmury do sieci wirtualnej platformy Azure.
 
-![Połączenia z siecią wirtualną usługi Azure ExpressRoute](media/cloudsimple-azure-network-connection.png)
+![Połączenie usługi Azure ExpressRoute z siecią wirtualną](media/cloudsimple-azure-network-connection.png)
 
-## <a name="expressroute-connection-to-on-premises-network"></a>Połączenie usługi ExpressRoute w sieci lokalnej
+## <a name="expressroute-connection-to-on-premises-network"></a>ExpressRoute połączenie z siecią lokalną
 
-Możesz połączyć z istniejącym obwodem usługi ExpressRoute platformy Azure do regionu CloudSimple. Funkcja zasięgu globalnym ExpressRoute pozwala połączyć dwa obwody ze sobą.  Zostaje nawiązane połączenie między magazynami lokalnymi i obwodów usługi CloudSimple ExpressRoute.  To połączenie umożliwia rozszerzanie sieci lokalnych do chmury prywatnej sieci.
+Istniejący obwód usługi Azure ExpressRoute można połączyć z regionem CloudSimple. Funkcja ExpressRoute Global Reach służy do łączenia obu obwodów.  Nawiązywane jest połączenie między obwodami lokalnymi i CloudSimple ExpressRoute.  To połączenie umożliwia zwiększenie sieci lokalnych do sieci prywatnej chmury.
 
-![Połączenie usługi ExpressRoute w środowisku lokalnym — globalny zasięg](media/cloudsimple-global-reach-connection.png)
+![Połączenie lokalne ExpressRoute — Global Reach](media/cloudsimple-global-reach-connection.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Uzyskaj informacje o komunikacji równorzędnej dla sieci wirtualnej platformy Azure do połączenia CloudSimple](https://docs.azure.cloudsimple.com/virtual-network-connection)
-* [Łączenie ze środowiska lokalnego do CloudSimple przy użyciu usługi ExpressRoute](https://docs.azure.cloudsimple.com/on-premises-connection)
+* [Uzyskaj informacje o komunikacji równorzędnej dla usługi Azure Virtual Network z połączeniem CloudSimple](https://docs.azure.cloudsimple.com/virtual-network-connection)
+* [Nawiązywanie połączenia z poziomu lokalnego z CloudSimple za pomocą ExpressRoute](https://docs.azure.cloudsimple.com/on-premises-connection)

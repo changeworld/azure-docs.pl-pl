@@ -12,18 +12,18 @@ ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7381a0dfb8f780900d8c2c8ba0637dcd232bdb9f
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: bf0c639dd5fb678af7fca9224292218331b10ee6
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68380892"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834756"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Wywołania między usługami, które korzystają z delegowanej tożsamości użytkownika w ramach przepływu w imieniu
 
@@ -183,7 +183,7 @@ Odpowiedź sukcesu to odpowiedź OAuth 2,0 JSON z następującymi parametrami:
 
 | Parametr | Opis |
 | --- | --- |
-| token_type |Wskazuje wartość typu tokenu. Jedynym typem obsługiwanym przez usługę Azure AD **jest znak**. Aby uzyskać więcej informacji na temat tokenów okaziciela, [zobacz Struktura autoryzacji OAuth 2,0: Użycie tokenu okaziciela (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
+| token_type |Wskazuje wartość typu tokenu. Jedynym typem obsługiwanym przez usługę Azure ADjest znak. Aby uzyskać więcej informacji na temat tokenów okaziciela, [zobacz Struktura autoryzacji OAuth 2,0: Użycie tokenu okaziciela (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 | scope |Zakres dostępu udzielony w tokenie. |
 | expires_in |Czas ważności tokenu dostępu (w sekundach). |
 | expires_on |Czas wygaśnięcia tokenu dostępu. Data jest reprezentowana jako liczba sekund od 1970-01-01T0:0: 0Z UTC do czasu wygaśnięcia. Ta wartość służy do określenia okresu istnienia buforowanych tokenów. |
@@ -274,7 +274,7 @@ Odpowiedź zawiera token języka SAML zakodowany w formacie UTF8 i Base64url.
 
 | Parametr | Opis |
 | --- | --- |
-| token_type |Wskazuje wartość typu tokenu. Jedynym typem obsługiwanym przez usługę Azure AD **jest znak**. Aby uzyskać więcej informacji na temat tokenów okaziciela [, zobacz Struktura autoryzacji OAuth 2,0: Użycie tokenu okaziciela (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
+| token_type |Wskazuje wartość typu tokenu. Jedynym typem obsługiwanym przez usługę Azure ADjest znak. Aby uzyskać więcej informacji na temat tokenów okaziciela [, zobacz Struktura autoryzacji OAuth 2,0: Użycie tokenu okaziciela (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 | scope |Zakres dostępu udzielony w tokenie. |
 | expires_in |Czas ważności tokenu dostępu (w sekundach). |
 | expires_on |Czas wygaśnięcia tokenu dostępu. Data jest reprezentowana jako liczba sekund od 1970-01-01T0:0: 0Z UTC do czasu wygaśnięcia. Ta wartość służy do określenia okresu istnienia buforowanych tokenów. |
@@ -295,7 +295,7 @@ Odpowiedź zawiera token języka SAML zakodowany w formacie UTF8 i Base64url.
 
 Klienci publiczni z adresami URL odpowiedzi z `id_token` symbolami wieloznacznymi nie mogą używać dla przepływów OBO. Jednak poufny klient może nadal korzystać z tokenów **dostępu** uzyskanych za pomocą przepływu niejawnego, nawet jeśli klient publiczny ma zarejestrowany identyfikator URI przekierowania z symbolem wieloznacznym.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się więcej o protokole OAuth 2,0 i innym sposobie przeprowadzania uwierzytelniania między usługami, które używa poświadczeń klienta:
 

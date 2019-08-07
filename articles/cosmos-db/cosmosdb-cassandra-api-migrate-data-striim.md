@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 9e91dd4d81a8a29ae18cf70192561442f2fff5bc
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 1e14e9819f4b3344d0f0155ac5c15337a45952dc
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600711"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828053"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-cassandra-api-account-using-striim"></a>Migrowanie danych do konta Azure Cosmos DB interfejs API Cassandra za pomocą Striim
 
@@ -22,7 +22,7 @@ W tym artykule przedstawiono sposób korzystania z programu Striim do migrowania
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Jeśli nie masz [subskrypcji platformy Azure](/azure/guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing), przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+* Jeśli nie masz [subskrypcji platformy Azure](/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing), przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
 * Baza danych Oracle działająca lokalnie z niektórymi danymi.
 
@@ -181,7 +181,7 @@ W tej sekcji skonfigurujesz Azure Cosmos DB konto interfejs API Cassandra jako c
 Korzystając z rozwiązania Striim na platformie Azure, można w sposób ciągły migrować dane do Azure Cosmos DB z różnych źródeł, takich jak Oracle, Cassandra, MongoDB i różne, aby Azure Cosmos DB. W przypadku wszelkich problemów podczas konfigurowania ścieżki migracji za pomocą Striim, należy wysłać żądanie obsługi w [witrynie sieci Web Striim](https://go2.striim.com/request-support-striim).
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Jeśli migrujesz dane do Azure Cosmos DB SQL API, zobacz [jak migrować dane do konta interfejs API Cassandra przy użyciu Striim](cosmosdb-sql-api-migrate-data-striim.md)
 

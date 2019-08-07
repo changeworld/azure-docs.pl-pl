@@ -8,14 +8,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: dacurwin
-ms.openlocfilehash: f17cc71e0666ccf08d90fcef8f18552c09761cbc
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 75916655f1b46cd1b84220cba9db441d54486927
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689407"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68735664"
 ---
-# <a name="back-up-a-sharepoint-farm-to-azure"></a>Tworzenie kopii zapasowych farmy programu SharePoint na platformie Azure
+# <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>Tworzenie kopii zapasowej farmy programu SharePoint na platformie Azure przy użyciu programu DPM
 Można utworzyć kopię zapasową farmy programu SharePoint w celu Microsoft Azure przy użyciu programu System Center Data Protection Manager (DPM) w taki sam sposób, jak w przypadku tworzenia kopii zapasowych innych źródeł danych. Azure Backup zapewnia elastyczność harmonogramu tworzenia kopii zapasowych w celu tworzenia codziennych, cotygodniowych, comiesięcznych i corocznych punktów kopii zapasowych oraz zapewnia opcje zasad przechowywania dla różnych punktów kopii zapasowych. Program DPM oferuje możliwość przechowywania kopii dysków lokalnych w celu uzyskania krótkich celów związanych z odzyskiwaniem (RTO) oraz przechowywania kopii na platformie Azure w celu zapewnienia ekonomicznego i długoterminowego przechowywania.
 
 ## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>Obsługiwane wersje programu SharePoint i powiązane z nimi scenariusze ochrony
@@ -38,7 +38,7 @@ Agent programu DPM musi być zainstalowany na serwerze, na którym działa progr
 Dla każdego 10 000 000 elementów w farmie musi znajdować się co najmniej 2 GB miejsca na woluminie, na którym znajduje się folder programu DPM. To miejsce jest wymagane do generacji katalogu. Aby program DPM odzyskał określone elementy (Kolekcje witryn, witryny, listy, biblioteki dokumentów, foldery, pojedyncze dokumenty i elementy listy), generacja wykazu tworzy listę adresów URL zawartych w poszczególnych bazach danych zawartości. Listę adresów URL można wyświetlić w okienku element możliwy do odzyskania w obszarze zadania **odzyskiwania** Konsola administratora programu DPM.
 
 ### <a name="sql-server"></a>SQL Server
-Program DPM działa jako konto LocalSystem. Aby utworzyć kopię zapasową SQL Server baz danych, program DPM musi mieć uprawnienia administratora systemu na tym koncie dla serwera, na którym działa program SQL Server. Przed utworzeniem kopii zapasowej należy ustawić NT NT\SYSTEM na serwerze *, na którym* działa SQL Server.
+Program DPM działa jako konto LocalSystem. Aby utworzyć kopię zapasową SQL Server baz danych, program DPM musi mieć uprawnienia administratora systemu na tym koncie dla serwera, na którym działa program SQL Server. Przed utworzeniem kopii zapasowej należy ustawić NT NT\SYSTEM na serwerze, na którym działa SQL Server.
 
 Jeśli farma programu SharePoint ma SQL Server baz danych, które są skonfigurowane przy użyciu aliasów SQL Server, Zainstaluj składniki klienta SQL Server na serwerze frontonu sieci Web, który będzie chroniony przez program DPM.
 

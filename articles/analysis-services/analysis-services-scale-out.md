@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 08/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8297a2b1e78da6685b3129071612dc4457990bc1
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 29188013b75dbefbaf80f3c59360f203ae5b5a82
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68696403"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736747"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Skalowanie w poziomie usług Azure Analysis Services
 
@@ -143,9 +143,9 @@ W przypadku programu SSMS, SSDT i parametrów połączenia w programie PowerShel
 
 ![Nazwy serwerów](media/analysis-services-scale-out/aas-scale-out-name.png)
 
-## <a name="scale-up--down-vs-scale-out"></a>Skalowanie w górę a Skalowanie w poziomie
+## <a name="scale-up-scale-down-vs-scale-out"></a>Skalowanie w górę, skalowanie w dół a Skalowanie w poziomie
 
-Warstwę cenową serwera można zmienić na serwerze z wieloma replikami. Ta sama warstwa cenowa ma zastosowanie do wszystkich replik. Operacja skalowania w górę i w dół spowoduje najpierw przełączenie wszystkich replik, a następnie wyświetlenie wszystkich replik w nowej warstwie cenowej.
+Warstwę cenową można zmienić na serwerze z wieloma replikami. Ta sama warstwa cenowa ma zastosowanie do wszystkich replik. W wyniku operacji skalowania wszystkie repliki są najpierw wyłączane, a następnie wszystkie repliki zostaną wyświetlone w nowej warstwie cenowej.
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 

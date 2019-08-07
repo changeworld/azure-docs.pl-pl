@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f1f2e06eb6b5f8d402515ff1c07a4163174495d
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 8ccefec9e548b7981f696712bb4a983f4b577a9b
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68666356"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779647"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Ochrona hasłem w usłudze Azure AD — często zadawane pytania
 
@@ -40,19 +40,19 @@ Nieobsługiwane. Po wdrożeniu i włączeniu ochrony hasłem usługi Azure AD ni
 
 **Pyt.: Jaka jest różnica między zmianą hasła i ustawieniem hasła (lub resetowania)?**
 
-Zmiana hasła jest konieczna, gdy użytkownik wybierze nowe hasło po udowodnieniu, że ma wiedzę o starym haśle. Na przykład dzieje się tak, gdy użytkownik loguje się do systemu Windows i zostanie wyświetlony monit o wybranie nowego hasła.
+Zmiana hasła jest konieczna, gdy użytkownik wybierze nowe hasło po udowodnieniu, że ma wiedzę o starym haśle. Na przykład zmiana hasła ma miejsce, gdy użytkownik loguje się do systemu Windows i zostanie wyświetlony monit o wybranie nowego hasła.
 
-Ustawienie hasła (nazywane czasem resetowaniem hasła) polega na tym, że administrator zastępuje hasło na koncie z nowym hasłem, na przykład za pomocą narzędzia do zarządzania użytkownikami i komputerami Active Directory. Ta operacja wymaga wysokiego poziomu uprawnień (zazwyczaj administratora domeny), a osoba wykonująca operację zwykle nie ma informacji o starym haśle. Scenariusze pomocy technicznej często odbywają się w ten sposób, na przykład podczas wspomagania użytkownika, który zapomniał swoje hasło. W przypadku tworzenia nowego konta użytkownika po raz pierwszy przy użyciu hasła będą widoczne także zdarzenia ustawiania hasła.
+Ustawienie hasła (nazywane czasem resetowaniem hasła) polega na tym, że administrator zastępuje hasło na koncie z nowym hasłem, na przykład za pomocą narzędzia do zarządzania użytkownikami i komputerami Active Directory. Ta operacja wymaga wysokiego poziomu uprawnień (zazwyczaj administratora domeny), a osoba wykonująca operację zwykle nie ma informacji o starym haśle. Scenariusze pomocy technicznej często wykonują zbiory haseł, na przykład podczas wspomagania użytkownika, który zapomniał hasło. W przypadku tworzenia nowego konta użytkownika po raz pierwszy przy użyciu hasła będą widoczne także zdarzenia ustawiania hasła.
 
 Zasady walidacji hasła działają tak samo, niezależnie od tego, czy są wykonywane zmiany lub ustawienia hasła. Usługa agenta DC ochrony hasłem w usłudze Azure AD rejestruje różne zdarzenia w celu powiadomienia użytkownika o tym, czy operacja zmiany lub ustawienia hasła została ukończona.  Zobacz [monitorowanie i rejestrowanie w usłudze Azure AD Password Protection](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor).
 
 **Pyt.: Dlaczego zduplikowane zdarzenia odrzucania hasła zostały zarejestrowane podczas próby ustawienia słabego hasła przy użyciu przystawki Zarządzanie użytkownikami i komputerami Active Directory?**
 
-Przystawka Zarządzanie użytkownikami i komputerami Active Directory najpierw podejmie próbę ustawienia nowego hasła przy użyciu protokołu Kerberos. Gdy wystąpi błąd, przystawka wykona kolejną próbę ustawienia hasła przy użyciu starszego protokołu (SAM protokół RPC) (używane protokoły nie są ważne). Jeśli nowe hasło jest uznawane za słabe przez ochronę hasłem usługi Azure AD, spowoduje to zarejestrowanie dwóch zestawów zdarzeń odrzucenia resetowania hasła.
+Przystawka Zarządzanie użytkownikami i komputerami Active Directory najpierw podejmie próbę ustawienia nowego hasła przy użyciu protokołu Kerberos. Gdy wystąpi awaria, przystawka wykona kolejną próbę ustawienia hasła przy użyciu starszego protokołu (SAM protokół RPC) (używane protokoły nie są ważne). Jeśli nowe hasło jest uznawane za słabe przez ochronę hasłem usługi Azure AD, to zachowanie przystawce spowoduje zarejestrowanie dwóch zestawów zdarzeń odrzucenia resetowania hasła.
 
 **Pyt.: Dlaczego zdarzenia weryfikacji hasła ochrony hasłem usługi Azure AD są rejestrowane przy użyciu pustej nazwy użytkownika?**
 
-Active Directory obsługuje możliwość przetestowania hasła w celu sprawdzenia, czy przeszło bieżące wymagania dotyczące złożoności hasła domeny, na przykład za pomocą interfejsu API [NetValidatePasswordPolicy](https://docs.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netvalidatepasswordpolicy) . Po sprawdzeniu poprawności hasła w ten sposób testowanie obejmuje również sprawdzanie poprawności przez produkty oparte na bibliotece Password-Filter-dll, takie jak ochrona hasłem usługi Azure AD, ale nazwy użytkowników przekazane do danej biblioteki DLL filtru haseł będą puste. W tym scenariuszu Ochrona hasłem w usłudze Azure AD będzie nadal weryfikować hasło przy użyciu obecnie obowiązujących zasad haseł i wystawia komunikat dziennika zdarzeń w celu przechwycenia wyniku, ale komunikat dziennika zdarzeń będzie miał puste pola nazwy użytkownika.
+Active Directory obsługuje możliwość przetestowania hasła w celu sprawdzenia, czy przeszło bieżące wymagania dotyczące złożoności hasła domeny, na przykład za pomocą interfejsu API [NetValidatePasswordPolicy](https://docs.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netvalidatepasswordpolicy) . Po sprawdzeniu poprawności hasła w ten sposób testowanie obejmuje również sprawdzanie poprawności przez produkty oparte na bibliotece Password-Filter-dll, takie jak ochrona hasłem usługi Azure AD, ale nazwy użytkowników przekazane do danej biblioteki DLL filtru haseł będą puste. W tym scenariuszu Ochrona hasłem usługi Azure AD będzie nadal weryfikować hasło przy użyciu obecnie obowiązujących zasad haseł i wystawia komunikat dziennika zdarzeń w celu przechwycenia wyniku, ale komunikat dziennika zdarzeń będzie miał puste pola nazwy użytkownika.
 
 **Pyt.: Czy jest obsługiwana instalacja ochrony hasłem usługi Azure AD obok innych produktów opartych na filtrze haseł?**
 
@@ -115,6 +115,10 @@ Jednym ze sposobów na częściowe osiągnięcie tego celu jest wdrożenie ochro
 Nie. Gdy hasło użytkownika jest zmieniane na danym kontrolerze domeny innego niż kontroler PDC, hasło w postaci zwykłego tekstu nigdy nie jest wysyłane do kontrolera PDC (ten pomysł jest typowym niepercepcjem). Po zaakceptowaniu nowego hasła dla danego kontrolera domeny kontroler ten używa tego hasła do utworzenia różnych wartości skrótu właściwych dla protokołu uwierzytelniania danego hasła, a następnie utrwala te skróty w katalogu. Hasło w postaci zwykłego tekstu nie jest utrwalone. Zaktualizowane skróty są następnie replikowane do podstawowego kontrolera domeny. W niektórych przypadkach hasła użytkowników mogą być zmieniane bezpośrednio na podstawowym kontrolerze domeny, w zależności od różnych czynników, takich jak topologia sieci i Active Directory projektowanie lokacji. (Zobacz poprzednie pytanie).
 
 Podsumowując, wdrożenie usługi agenta DC ochrony hasła usługi Azure AD na podstawowym kontrolerze domeny jest wymagane do uzyskania dostępu do 100% tej funkcji w całej domenie. Wdrożenie funkcji na podstawowym kontrolerze PDC nie zapewnia korzyści związanych z bezpieczeństwem ochrony hasłem usługi Azure AD dla innych kontrolerów domeny w domenie.
+
+**Pyt.: Dlaczego niestandardowa inteligentna blokada nie działa nawet po zainstalowaniu agentów w środowisku lokalnym Active Directory?**
+
+Niestandardowa blokada inteligentna jest obsługiwana tylko na platformie Azure. Zmiany niestandardowych ustawień inteligentnego blokowania w portalu zarządzania systemu Azure nie mają wpływu na lokalne środowisko Active Directory, nawet z zainstalowanymi agentami.
 
 **Pyt.: Czy jest dostępny System Center Operations Manager pakiet administracyjny do ochrony hasłem usługi Azure AD?**
 

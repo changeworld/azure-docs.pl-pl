@@ -2,17 +2,17 @@
 title: Instalowanie pakietu Office na głównym obrazie wirtualnego dysku twardego — Azure
 description: Jak zainstalować i dostosować pakiet Office w obrazie głównym programu Windows Virtual Desktop w wersji zapoznawczej do platformy Azure.
 services: virtual-desktop
-author: ChJenk
+author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.author: v-chjenk
-ms.openlocfilehash: 9243b3e6ae9e164930373960757109ae8a4512e4
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.author: helohr
+ms.openlocfilehash: 79fe541d1bb3bea8447cf095673111362cec74d2
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501191"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816433"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Instalowanie pakietu Office w głównym obrazie wirtualnego dysku twardego
 
@@ -174,6 +174,6 @@ Poniżej przedstawiono sposób instalowania usługi OneDrive w trybie na maszyn�
 
 Pulpit wirtualny systemu Windows nie obsługuje programu Skype dla firm i zespołów.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Po dodaniu pakietu Office do obrazu można kontynuować Dostosowywanie głównego obrazu wirtualnego dysku twardego. Zobacz [Przygotowywanie i dostosowywanie głównego obrazu wirtualnego dysku twardego](set-up-customize-master-image.md).

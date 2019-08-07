@@ -1,60 +1,60 @@
 ---
-title: Rozwiń rozwiązanie VMware na platformie Azure, Chmura prywatna CloudSimple
-description: Zawiera opis sposobu rozszerzania istniejącej chmurze prywatnej CloudSimple na dodanie pojemności w istniejącym lub nowym klastrze
+title: Rozszerzanie rozwiązania Azure VMware według chmury prywatnej CloudSimple
+description: Opisuje, jak rozszerzyć istniejącą chmurę prywatną CloudSimple w celu dodania pojemności w istniejącym lub nowym klastrze.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/06/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 293a09c57ca95e2774e44ff4bc9f9f2c31be2f49
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: a82ba1b433e62ed1c4b72b8e942d4ade29f26c4a
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332672"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816165"
 ---
-# <a name="expand-a-cloudsimple-private-cloud"></a>Rozwiń CloudSimple chmury prywatnej
+# <a name="expand-a-cloudsimple-private-cloud"></a>Rozwiń chmurę prywatną CloudSimple
 
-CloudSimple zapewnia elastyczność rozszerzania dynamicznie chmury prywatnej. Może zaczynać się od konfiguracji o mniejszej, a następnie rozwiń potrzebujesz większej pojemności. Lub można utworzyć chmurę prywatną, oparte na bieżących potrzeb, a następnie rozwiń węzeł wzrostem zużycia.
+CloudSimple zapewnia elastyczność dynamicznego rozszerzania chmury prywatnej. Możesz zacząć od mniejszej konfiguracji, a następnie rozwijać ją, gdy potrzebujesz większej pojemności. Można też utworzyć chmurę prywatną na podstawie bieżących potrzeb, a następnie rozwijać ją w miarę wzrostu zużycia.
 
-Chmura prywatna składa się z co najmniej jeden klaster vSphere. Każdy klaster może mieć węzłów 3-16.  Rozszerzając chmury prywatnej, możesz dodać węzły do istniejącego klastra lub Utwórz nowy klaster. Aby rozszerzyć istniejący klaster, dodatkowe węzły muszą być tego samego typu (SKU), co istniejące węzły. Do tworzenia nowego klastra, węzłów może być innego typu. Aby uzyskać więcej informacji o limitach chmurę prywatną, zobacz ogranicza sekcji [omówienie chmury prywatnej CloudSimple](cloudsimple-private-cloud.md) artykułu.
+Chmura prywatna składa się z co najmniej jednego klastra vSphere. Każdy klaster może zawierać od 3 do 16 węzłów.  Podczas rozszerzania chmury prywatnej należy dodać węzły do istniejącego klastra lub utworzyć nowy klaster. Aby rozszerzyć istniejący klaster, dodatkowe węzły muszą być tego samego typu (SKU) jak istniejące węzły. W przypadku tworzenia nowego klastra węzły mogą być innego typu. Aby uzyskać więcej informacji na temat limitów chmur prywatnych, zobacz sekcja limity w artykule [Omówienie chmury prywatnej CloudSimple](cloudsimple-private-cloud.md) .
 
-Chmura prywatna jest tworzony z domyślną **Datacenter** programie vcenter.  Każde centrum danych służy jako jednostka zarządzania najwyższego poziomu.  Nowy klaster CloudSimple zapewnia wybór dodanie do istniejącego centrum danych lub tworzenie nowych centrów danych.
+Chmura prywatna jest tworzona przy użyciu domyślnego **centrum** danych w programie vCenter.  Każde centrum danych służy jako jednostka zarządzania najwyższego poziomu.  W przypadku nowego klastra CloudSimple zapewnia możliwość dodania do istniejącego centrum danych lub utworzenia nowego centrum danych.
 
-W ramach nową konfigurację klastra CloudSimple służy do konfigurowania infrastruktury VMware.  Ustawienia obejmują ustawienia magazynu dla grupy dysków sieci vSAN, VMware o wysokiej dostępności i harmonogram rozproszonych zasobów (DRS).
+W ramach nowej konfiguracji klastra CloudSimple konfiguruje infrastrukturę VMware.  Ustawienia obejmują ustawienia magazynu dla grup dysków sieci vSAN, wysokiej dostępności VMware i Distributed Resource Scheduler (DRS).
 
-Chmurę prywatną można rozszerzyć, wiele razy. Rozszerzenie jest możliwe tylko wtedy, gdy pozostają w granicach węzeł ogólny. Każdorazowo rozwiń chmury prywatnej, Dodaj do istniejącego klastra lub Utwórz nową.
+Chmurę prywatną można rozszerzyć wiele razy. Rozszerzanie można wykonać tylko wtedy, gdy użytkownik pozostaje w ogólnym limicie węzłów. Za każdym razem, gdy rozszerzasz chmurę prywatną, którą chcesz dodać do istniejącego klastra, lub Utwórz nową.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Musi być obsługiwana węzłów, aby rozszerzyć chmury prywatnej.  Aby uzyskać więcej informacji na temat inicjowania obsługi administracyjnej węzłów, zobacz [Inicjowanie obsługi administracyjnej węzłów dla oprogramowania VMware Solution by CloudSimple - Azure](create-nodes.md) artykułu.  Do tworzenia nowego klastra, musisz mieć co najmniej trzy węzły dostępnych w tej samej jednostki SKU.
+Aby można było rozszerzyć chmurę prywatną, węzły muszą być obsługiwane.  Aby uzyskać więcej informacji o węzłach aprowizacji, zobacz temat [Inicjowanie obsługi węzłów dla rozwiązań VMware przez CloudSimple — artykuł platformy Azure](create-nodes.md) .  Do utworzenia nowego klastra potrzebne są co najmniej trzy dostępne węzły tej samej jednostki SKU.
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="expand-a-private-cloud"></a>Rozwiń chmury prywatnej
+## <a name="expand-a-private-cloud"></a>Rozwiń chmurę prywatną
 
 1. [Dostęp do portalu CloudSimple](access-cloudsimple-portal.md).
 
-2. Otwórz **zasobów** strony i wybierz chmurę prywatną, dla którego chcesz rozwinąć.
+2. Otwórz stronę **zasoby** i wybierz chmurę prywatną, dla której chcesz rozwinąć.
 
-3. W sekcji podsumowania kliknij **rozwiń**.
+3. W sekcji Podsumowanie kliknij przycisk **Rozwiń**.
 
-    ![Rozwiń chmury prywatnej](media/resources-expand-private-cloud.png)
+    ![Rozwiń chmurę prywatną](media/resources-expand-private-cloud.png)
 
-4. Wybierz, czy rozwiń istniejącego klastra lub Utwórz nowy klaster vSphere. Po wprowadzeniu dowolnych zmian, podsumowanie informacji na stronie jest aktualizowana.
+4. Wybierz, czy chcesz rozszerzyć istniejący klaster, czy utworzyć nowy klaster vSphere. Podczas wprowadzania zmian informacje podsumowujące na stronie zostaną zaktualizowane.
 
-    * Aby rozszerzyć istniejący klaster, kliknij przycisk **rozszerzyć istniejący klaster**. Wybierz klaster, który chcesz rozwinąć, a następnie wprowadź liczbę węzłów do dodania. Każdy klaster może mieć maksymalnie 16 węzłach.
-    * Aby dodać nowy klaster, kliknij **Utwórz nowy klaster**. Wprowadź nazwę klastra. Wybierz istniejącego centrum danych, lub wprowadź nazwę, aby utworzyć nowe centrum danych. Wybierz typ węzła. Można wybrać typ innego węzła, podczas tworzenia nowego klastra vSphere, ale nie w przypadku, gdy rozwinięcie w istniejącym klastrze vSphere. Wybierz liczbę węzłów. Każdy nowy klaster musi mieć co najmniej trzy węzły.
+    * Aby rozwinąć istniejący klaster, kliknij przycisk **Rozwiń istniejący klaster**. Wybierz klaster, który chcesz rozwinąć, a następnie wprowadź liczbę węzłów do dodania. Każdy klaster może zawierać maksymalnie 16 węzłów.
+    * Aby dodać nowy klaster, kliknij przycisk **Utwórz nowy klaster**. Wprowadź nazwę klastra. Wybierz istniejące centrum danych lub wprowadź nazwę, aby utworzyć nowe centrum danych. Wybierz typ węzła. Możesz wybrać inny typ węzła podczas tworzenia nowego klastra vSphere, ale nie podczas rozszerzania istniejącego klastra vSphere. Wybierz liczbę węzłów. Każdy nowy klaster musi mieć co najmniej trzy węzły.
 
-    ![Rozwiń chmury prywatnej — Dodawanie węzłów](media/resources-expand-private-cloud-add-nodes.png)
+    ![Rozwiń chmurę prywatną — Dodaj węzły](media/resources-expand-private-cloud-add-nodes.png)
 
-5. Kliknij przycisk **przesyłania** rozszerzania chmury prywatnej.
+5. Kliknij pozycję **Prześlij** , aby rozwinąć chmurę prywatną.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Używanie maszyn wirtualnych VMware na platformie Azure](quickstart-create-vmware-virtual-machine.md)
-* Dowiedz się więcej o [Chmurami prywatnymi](cloudsimple-private-cloud.md)
+* [Korzystanie z maszyn wirtualnych VMware na platformie Azure](quickstart-create-vmware-virtual-machine.md)
+* Dowiedz się więcej o [chmurach prywatnych](cloudsimple-private-cloud.md)

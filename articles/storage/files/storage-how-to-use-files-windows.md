@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d2bad808d0bcbbd5dc8052db0f8fd32fc4c1180a
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 831c771da385ef6faeba194878ca53ede34ccc0a
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699476"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816644"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Korzystanie z udziału plików platformy Azure w systemie Windows
 [Azure Files](storage-files-introduction.md) to łatwy w użyciu system plików w chmurze firmy Microsoft. Udziałów plików platformy Azure można bezproblemowo używać w systemach Windows i Windows Server. W tym artykule omówiono zagadnienia dotyczące korzystania z udziału plików platformy Azure w systemach Windows i Windows Server.
@@ -23,18 +23,18 @@ Z udziałów plików platformy Azure można korzystać w instalacji systemu Wind
 
 | Wersja systemu Windows        | Wersja protokołu SMB | Możliwa instalacja na maszynie wirtualnej platformy Azure | Możliwa instalacja w środowisku lokalnym |
 |------------------------|-------------|-----------------------|----------------------|
-| Windows Server 2019    | SMB 3.0 | Yes | Yes |
-| Windows 10<sup>1</sup> | SMB 3.0 | Tak | Tak |
-| Windows Server semi-annual channel<sup>2</sup> | SMB 3.0 | Yes | Tak |
-| Windows Server 2016    | SMB 3.0     | Tak                   | Tak                  |
+| Windows Server 2019    | SMB 3.0 | Tak | Tak |
+| Windows 10<sup>1</sup> | SMB 3.0 | Yes | Tak |
+| Windows Server semi-annual channel<sup>2</sup> | SMB 3.0 | Tak | Yes |
+| Windows Server 2016    | SMB 3.0     | Yes                   | Yes                  |
 | Windows 8.1            | SMB 3.0     | Tak                   | Tak                  |
 | Windows Server 2012 R2 | SMB 3.0     | Tak                   | Tak                  |
-| Windows Server 2012    | SMB 3.0     | Tak                   | Yes                  |
-| Windows 7              | SMB 2.1     | Yes                   | Nie                   |
+| Windows Server 2012    | SMB 3.0     | Tak                   | Tak                  |
+| Windows 7              | SMB 2.1     | Tak                   | Nie                   |
 | Windows Server 2008 R2 | SMB 2.1     | Tak                   | Nie                   |
 
-<sup>1</sup>Windows 10, wersje 1507, 1607, 1703, 1709, 1803 i 1809.  
-<sup>2</sup>Windows Server, wersje 1709 i 1803.
+<sup>1</sup> Windows 10, wersje 1507, 1607, 1703, 1709, 1803, 1809 i 1903.  
+<sup>2</sup> System Windows Server, wersje 1803, 1809 i 1903.
 
 > [!Note]  
 > Zawsze zalecamy pobranie najnowszej aktualizacji KB dla danej wersji systemu Windows.
@@ -302,7 +302,7 @@ Po utworzeniu tego klucza rejestru należy ponownie uruchomić serwer, aby wył�
 - [Discover SMB 1 in your environment with DSCEA](https://blogs.technet.microsoft.com/ralphkyttle/2017/04/07/discover-smb1-in-your-environment-with-dscea/) (Wykrywanie protokołu SMB 1 w środowisku za pomocą modułu DSCEA)
 - [Disabling SMB 1 through Group Policy](https://blogs.technet.microsoft.com/secguide/2017/06/15/disabling-smbv1-through-group-policy/) (Wyłączanie protokołu SMB 1 za pomocą zasad grupy)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Poniższe linki umożliwiają uzyskanie dodatkowych informacji na temat usługi Azure Files:
 - [Planowanie wdrożenia usługi Azure Files](storage-files-planning.md)
 - [Często zadawane pytania](../storage-files-faq.md)

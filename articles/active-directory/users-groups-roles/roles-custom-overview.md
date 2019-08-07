@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 546abdae5d7c03bb0d4b49f9485fe06b521fdc1d
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 82638e3e102f7b8e39cd797960a11f3193132bc1
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722214"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779386"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Niestandardowe role administratorów w Azure Active Directory (wersja zapoznawcza)
 
@@ -72,13 +72,17 @@ Definicja roli lub rola jest kolekcją uprawnień. Definicja roli zawiera listę
 
 ### <a name="scope"></a>Scope
 
-Zakresem jest ograniczenie dozwolonych akcji w określonym zasobie usługi Azure AD. Podczas przypisywania roli można dostosować rolę w celu ograniczenia dozwolonych akcji administratora przez zdefiniowanie zakresu akcji. Na przykład, jeśli deweloperzy nie muszą w pełni zarządzać wszystkimi aplikacjami, możesz użyć niestandardowych ról usługi Azure AD, aby umożliwić im zarządzanie tylko rejestracjami aplikacji.
+Zakresem jest ograniczenie dozwolonych akcji do określonego zasobu usługi Azure AD. Podczas przypisywania roli można określić zakres, który ogranicza dozwolone akcje administratora do określonego zasobu. Na przykład jeśli chcesz przyznać deweloperowi rolę niestandardową, ale tylko do zarządzania określoną rejestracją aplikacji, możesz dołączyć konkretną rejestrację aplikacji jako zakres do przypisania roli.
+
+  > [!Note]
+  > Role niestandardowe można przypisywać w zakresie katalogu i w zakresie zasobów. Nie mogą jeszcze być przypisane w zakresie jednostki administracyjnej.
+  > Wbudowane role można przypisywać w zakresie katalogu, a w niektórych przypadkach zakresowi jednostki administracyjnej. Nie mogą jeszcze być przypisane w zakresie obiektu.
 
 ## <a name="required-license-plan"></a>Wymagany plan licencji
 
 [!INCLUDE [License requirement for using custom roles in Azure AD](../../../includes/active-directory-p1-license.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Tworzenie niestandardowych przypisań ról przy użyciu [Azure Portal, programu Azure AD PowerShell i interfejs API programu Graph](roles-create-custom.md)
 - [Wyświetlanie przypisań roli niestandardowej](roles-view-assignments.md#view-the-assignments-of-a-role-with-single-application-scope-using-the-azure-ad-portal-preview)

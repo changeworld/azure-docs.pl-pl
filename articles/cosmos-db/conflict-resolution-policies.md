@@ -4,15 +4,15 @@ description: W tym artykule opisano kategorie konfliktów i zasady rozwiązywani
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 08/05/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 45b7257f67be8ba5c134717d73488916056b7a7d
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: f69a70ef3bfc8830ed12173fddee41095937a1c0
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384211"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815093"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>Typy konfliktów i zasady ich rozwiązywania
 
@@ -30,16 +30,16 @@ W przypadku kont usługi Azure Cosmos skonfigurowanych z wieloma regionami zapis
 
 Azure Cosmos DB oferuje elastyczny mechanizm oparty na zasadach do rozwiązywania konfliktów zapisu. Można wybrać jedną z dwóch zasad rozwiązywania konfliktów w kontenerze usługi Azure Cosmos:
 
-- **Ostatni zapis WINS (LWW)** : Ta zasada rozwiązywania domyślnie używa właściwości sygnatury czasowej zdefiniowanej przez system. Jest on oparty na protokole zegara czasu synchronizacji. W przypadku korzystania z interfejsu API SQL można określić dowolną inną niestandardową Właściwość numeryczną (np. własne pojęcie sygnatury czasowej), która ma być używana do rozwiązywania konfliktów. Niestandardowa właściwość numeryczna jest również nazywana *ścieżką rozwiązywania konfliktów*. 
+* **Ostatni zapis WINS (LWW)** : Ta zasada rozwiązywania domyślnie używa właściwości sygnatury czasowej zdefiniowanej przez system. Jest on oparty na protokole zegara czasu synchronizacji. W przypadku korzystania z interfejsu API SQL można określić dowolną inną niestandardową Właściwość numeryczną (np. własne pojęcie sygnatury czasowej), która ma być używana do rozwiązywania konfliktów. Niestandardowa właściwość numeryczna jest również nazywana *ścieżką rozwiązywania konfliktów*. 
 
   Jeśli co najmniej dwa elementy powodują konflikt podczas operacji wstawiania lub zamiany, element o najwyższej wartości ścieżki rozwiązywania konfliktów zostanie zwycięzcą. System określa zwycięzcę, jeśli wiele elementów ma taką samą wartość liczbową dla ścieżki rozwiązywania konfliktów. Wszystkie regiony są gwarantowane, aby przeprowadzić zbieżność z pojedynczym zwycięzcą i zakończyć z tą samą wersją zatwierdzonego elementu. W przypadku konfliktów usuwania w usuniętej wersji zawsze jest używana usługa WINS w przypadku konfliktów INSERT lub Replace. Ten wynik występuje niezależnie od wartości ścieżki rozwiązywania konfliktów.
 
   > [!NOTE]
-  > Ostatnim zapisem jest usługa WINS, która ma domyślne zasady rozwiązywania konfliktów. Jest on dostępny dla następujących interfejsów API: SQL, MongoDB, Cassandra, Gremlin i Table.
+  > Ostatni zapis w usłudze WINS to domyślne zasady rozwiązywania konfliktów, `_ts` które używają sygnatur czasowych dla następujących interfejsów API: SQL, MongoDB, Cassandra, Gremlin i Table. Niestandardowa właściwość numeryczna jest dostępna tylko dla interfejsu API SQL.
 
   Aby dowiedzieć się więcej, zobacz [przykłady, które używają zasad rozwiązywania konfliktów LWW](how-to-manage-conflicts.md).
 
-- **Niestandardowy**: Te zasady rozwiązywania są przeznaczone dla semantyki zdefiniowanej przez aplikację w celu uzgodnienia konfliktów. Po ustawieniu tych zasad w kontenerze usługi Azure Cosmos należy również zarejestrować *procedurę składowaną scalania*. Ta procedura jest wywoływana automatycznie w przypadku wykrycia konfliktów w ramach transakcji bazy danych na serwerze. System zawiera dokładnie raz gwarantuje do wykonania procedury scalania w ramach protokołu zobowiązania.  
+* **Niestandardowy**: Te zasady rozwiązywania są przeznaczone dla semantyki zdefiniowanej przez aplikację w celu uzgodnienia konfliktów. Po ustawieniu tych zasad w kontenerze usługi Azure Cosmos należy również zarejestrować *procedurę składowaną scalania*. Ta procedura jest wywoływana automatycznie w przypadku wykrycia konfliktów w ramach transakcji bazy danych na serwerze. System zawiera dokładnie raz gwarantuje do wykonania procedury scalania w ramach protokołu zobowiązania.  
 
   W przypadku skonfigurowania kontenera przy użyciu opcji rozwiązywania niestandardowego i zarejestrowanie procedury scalania w kontenerze lub procedury scalania zgłasza wyjątek w czasie wykonywania, konflikty są zapisywane w *źródle konfliktów*. Aplikacja musi ręcznie rozwiązać konflikty w strumieniowym źródle konfliktów. Aby dowiedzieć się więcej, zobacz [przykłady użycia niestandardowych zasad rozpoznawania i sposób używania źródła konfliktów](how-to-manage-conflicts.md).
 

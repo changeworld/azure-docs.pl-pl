@@ -10,23 +10,23 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: brahmnes
-ms.date: 03/07/2019
+ms.date: 08/06/2019
 ms.author: mbullwin
-ms.openlocfilehash: 4157285e8af67acd1dc3627bebc12076d7fe072c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02d72ab877577e97592dfdd763a58cb01b201d8b
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65595560"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839354"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Debugowanie migawek wyjątków w aplikacjach .NET
 Gdy wystąpi wyjątek, może automatycznie zbierać migawek debugowania z działającej aplikacji internetowej. Migawka przedstawia stan zmiennych i kod źródłowy w momencie utworzenia zgłoszenia wyjątku. Rozszerzenie Snapshot Debugger (wersja zapoznawcza) w [usługi Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) monitoruje dane telemetryczne dotyczące wyjątków z aplikacji sieci web. Zbiera migawki na listy wyjątków zgłaszanie górnej dzięki temu uzyskasz informacje potrzebne do diagnozowania problemów w środowisku produkcyjnym. Obejmują [pakiet NuGet modułu zbierającego migawki](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) w aplikacji i opcjonalnie skonfigurować kolekcję parametrów w [plik ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md). Migawki są wyświetlane na [wyjątki](../../azure-monitor/app/asp-net-exceptions.md) w portalu Application Insights.
 
-Migawki debugowania można wyświetlić w portalu, aby zobaczyć stos wywołań i sprawdzić zmienne w każdej ramce tego stosu. Aby uzyskać bardziej zaawansowane środowisko debugowania z kodem źródłowym, należy otworzyć migawki za pomocą programu Visual Studio Enterprise 2019 r. W programie Visual Studio, możesz również [Ustaw punkty przyciągania do interaktywnego robienia migawek](https://aka.ms/snappoint) bez oczekiwania na wyjątek.
+Migawki debugowania można wyświetlić w portalu, aby zobaczyć stos wywołań i sprawdzić zmienne w każdej ramce tego stosu. Aby uzyskać bardziej zaawansowane środowisko debugowania z kodem źródłowym, Otwórz migawki w programie Visual Studio 2019 Enterprise. W programie Visual Studio, możesz również [Ustaw punkty przyciągania do interaktywnego robienia migawek](https://aka.ms/snappoint) bez oczekiwania na wyjątek.
 
 Debugowanie migawki są przechowywane przez siedem dni. Te zasady przechowywania jest ustawiona na podstawie poszczególnych aplikacji. Jeśli potrzebujesz zwiększyć tę wartość, możesz poprosić o zwiększenie przez otwarcie zgłoszenia do pomocy technicznej w witrynie Azure portal.
 
-## <a name="enable-application-insights-snapshot-debugger-for-your-application"></a>Włącz rozszerzenie Application Insights Snapshot Debugger dla aplikacji
+## <a name="enable-application-insights-snapshot-debugger-for-your-application"></a>Włącz Snapshot Debugger Application Insights dla aplikacji
 Zbieranie migawek jest dostępna dla:
 * .NET framework i ASP.NET działających .NET Framework 4.5 lub nowszej.
 * Aplikacje platformy .NET core 2.0 i ASP.NET Core 2.0, systemem Windows.
@@ -34,15 +34,15 @@ Zbieranie migawek jest dostępna dla:
 Są obsługiwane w następujących środowiskach:
 
 * [Usługa Azure App Service](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)
-* [Usługi Azure Cloud Services](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) programu rodziny systemów operacyjnych, 4 lub nowszego
-* [Usługi Azure Service Fabric](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) uruchomiony w systemie Windows Server 2012 R2 lub nowszym
-* [Zestawy skalowania maszyn wirtualnych i maszyn wirtualnych platformy Azure](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) systemem Windows Server 2012 R2 lub nowszy
-* [Lokalnych maszyn wirtualnych lub fizycznych](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) systemem Windows Server 2012 R2 lub nowszy
+* [Platforma Azure Cloud Services](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) z systemem operacyjnym 4 lub nowszym
+* [Usługi Service Fabric platformy Azure](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) działające w systemie Windows Server 2012 R2 lub nowszym
+* [Platforma Azure Virtual Machines i zestawy skalowania maszyn wirtualnych](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) z systemem Windows Server 2012 R2 lub nowszym
+* [Lokalne maszyny wirtualne lub fizyczne](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) z systemem Windows Server 2012 R2 lub nowszym
 
 > [!NOTE]
 > Aplikacje klienckie (na przykład, WPF, formularze Windows lub platformy uniwersalnej systemu Windows) nie są obsługiwane.
 
-Jeśli włączono rozszerzenie Snapshot Debugger, ale nie widać migawki, Sprawdź nasze [przewodnik rozwiązywania problemów](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json).
+Jeśli włączono Snapshot Debugger, ale nie widzisz migawek, zapoznaj się [z naszym przewodnikiem rozwiązywania problemów](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json).
 
 ## <a name="grant-permissions"></a>Udzielenie uprawnień
 
@@ -64,13 +64,13 @@ Właściciele subskrypcji należy przypisać `Application Insights Snapshot Debu
 > [!IMPORTANT]
 > Migawki mogą potencjalnie zawierać osobistych, jak i innych informacji poufnych w zmiennej i wartości parametrów.
 
-## <a name="view-snapshots-in-the-portal"></a>Wyświetl migawki w portalu
+## <a name="view-snapshots-in-the-portal"></a>Wyświetlanie migawek w portalu
 
-Gdy wystąpił wyjątek w aplikacji i migawka została utworzona, należy mieć migawek, aby wyświetlić. Może zająć 5 – 10 minut z wyjątku występujących migawkę gotowe i widoczne w portalu. Aby wyświetlić migawki, w **błąd** wybierz opcję **operacji** przycisk podczas wyświetlania **operacji** karty lub wybierz **wyjątki**przycisku przeglądania **wyjątki** karty:
+Gdy w aplikacji wystąpił wyjątek, a migawka została utworzona, należy utworzyć migawki do wyświetlenia. Wykonanie migawki w portalu może potrwać od 5 do 10 minut od wyjątku. Aby wyświetlić migawki, w okienku **awaria** wybierz przycisk **operacje** podczas wyświetlania karty **operacje** lub wybierz przycisk **wyjątki** podczas wyświetlania karty **wyjątki** :
 
-![Strony błędów](./media/snapshot-debugger/failures-page.png)
+![Strona błędów](./media/snapshot-debugger/failures-page.png)
 
-Wybierz operację lub wyjątku w okienku po prawej stronie, aby otworzyć **szczegółów transakcji End-to-End** okienka, a następnie wybierz zdarzenie wyjątku. Jeśli migawka jest dostępna dla danego wyjątku **Otwórz migawkę debugowania** pojawi się przycisk w prawym okienku Szczegóły [wyjątek](../../azure-monitor/app/asp-net-exceptions.md).
+Wybierz operację lub wyjątek w okienku po prawej stronie, aby otworzyć okienko **szczegóły końca transakcji** , a następnie wybierz zdarzenie wyjątku. Jeśli dla danego wyjątku dostępna jest migawka, w okienku po prawej stronie zostanie wyświetlony przycisk **Otwórz migawkę debugowania** z szczegółowymi informacjami dotyczącymi [wyjątku](../../azure-monitor/app/asp-net-exceptions.md).
 
 ![Przycisk Otwórz migawkę debugowania przy wyjątku](./media/snapshot-debugger/e2e-transaction-page.png)
 
@@ -80,10 +80,10 @@ W widoku debugowania migawki zobaczysz stos wywołań i okienko zmiennych. Po wy
 
 Migawki mogą zawierać poufne informacje, a domyślnie nie są widoczne. Aby wyświetlić migawki, konieczne jest posiadanie `Application Insights Snapshot Debugger` rola przypisana użytkownikowi.
 
-## <a name="view-snapshots-in-visual-studio-2017-enterprise-or-above"></a>Wyświetl migawki w programie Visual Studio 2017 Enterprise lub nowszym
-1. Kliknij przycisk **Pobierz migawkę** przycisk, aby pobrać `.diagsession` pliku, który można otworzyć w programie Visual Studio Enterprise.
+## <a name="view-snapshots-in-visual-studio-2017-enterprise-or-above"></a>Wyświetlanie migawek w programie Visual Studio 2017 Enterprise lub nowszym
+1. Kliknij przycisk **Pobierz migawkę** , aby pobrać `.diagsession` plik, który może zostać otwarty przez Visual Studio Enterprise.
 
-2. Aby otworzyć `.diagsession` pliku, musisz mieć zainstalowany składnik programu Visual Studio Snapshot Debugger. Składnik debugera migawki jest wymaganym składnikiem obciążenia programu ASP.net w programie Visual Studio i można wybrać z listy poszczególnych składników w Instalatorze programu Visual Studio. Jeśli używasz wersji programu Visual Studio przed Visual Studio 2017 w wersji 15.5, będą musieli zainstalować rozszerzenie z [Visual Studio Marketplace](https://aka.ms/snapshotdebugger).
+2. Aby otworzyć `.diagsession` plik, należy zainstalować składnik programu Snapshot Debugger Visual Studio. Składnik Snapshot Debugger jest wymaganym składnikiem obciążenia ASP.net w programie Visual Studio i można go wybrać z listy poszczególnych składników w Instalatorze programu Visual Studio. Jeśli używasz wersji programu Visual Studio starszej niż wersja 15,5 programu Visual 2017 Studio, musisz zainstalować rozszerzenie z [Visual Studio Marketplace](https://aka.ms/snapshotdebugger).
 
 3. Po otwarciu pliku migawki zostanie wyświetlona strona minizrzutu w programie Visual Studio. Kliknij przycisk **debugowanie kodu zarządzanego** można rozpocząć debugowania migawki. Migawka zostanie otwarty do wiersza kodu, w którym wystąpił wyjątek, aby można było debugować bieżący stan procesu.
 
@@ -112,7 +112,7 @@ Główny proces jest kontynuowany do uruchamiania i obsługiwać ruch do użytko
 
 ## <a name="limitations"></a>Ograniczenia
 
-Domyślny okres przechowywania danych wynosi 15 dni. Dla każdego wystąpienia usługi Application Insights maksymalna liczba migawek 50 jest dozwolony na dzień.
+Domyślny okres przechowywania danych wynosi 15 dni. Dla każdego wystąpienia Application Insights dozwolonych jest maksymalnie 50 migawek dziennie.
 
 ### <a name="publish-symbols"></a>Publikuj symbole
 Rozszerzenie Snapshot Debugger wymaga plików symboli na serwerze produkcyjnym do zdekodowania zmienne i aby zapewnić środowisko debugowania w programie Visual Studio.
@@ -124,6 +124,10 @@ Wersja 15.2 (lub nowszy) programu Visual Studio 2017 publikuje symbole dla wersj
 
 W przypadku usługi Azure Compute a innymi typami danych, upewnij się, że pliki symbol znajdują się w tym samym folderze plik .dll aplikacji głównej (zazwyczaj `wwwroot/bin`) lub są dostępne w bieżącej ścieżce.
 
+> [!NOTE]
+> Więcej informacji o różnych opcjach symboli dostępnych można znaleźć w [dokumentacji](https://docs.microsoft.com/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output
+)programu Visual Studio. Aby uzyskać najlepsze wyniki, zalecamy użycie "Full", "Portable" lub "Embedded".
+
 ### <a name="optimized-builds"></a>Zoptymalizowane kompilacjami
 W niektórych przypadkach nie można wyświetlić zmiennych lokalnych w wydawanych wersjach ze względu na optymalizacje, które są stosowane przy użyciu kompilatora JIT.
 Jednak w usłudze Azure App Services, modułu zbierającego migawki można deoptimize zgłaszanie metod, które są częścią planu zbierania.
@@ -131,14 +135,14 @@ Jednak w usłudze Azure App Services, modułu zbierającego migawki można deopt
 > [!TIP]
 > W usłudze App Service, aby uzyskać pomoc techniczną deoptimization, należy zainstalować rozszerzenie witryny usługi Application Insights.
 
-## <a name="next-steps"></a>Kolejne kroki
-Włącz rozszerzenie Application Insights Snapshot Debugger dla aplikacji:
+## <a name="next-steps"></a>Następne kroki
+Włącz Snapshot Debugger Application Insights dla aplikacji:
 
 * [Usługa Azure App Service](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Cloud Services](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
-* [Usługi Azure Service Fabric](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
-* [Zestawy skalowania maszyn wirtualnych i maszyn wirtualnych platformy Azure](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
-* [Lokalnych maszyn wirtualnych lub fizycznych](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Usługi Service Fabric platformy Azure](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Virtual Machines i zestawy skalowania maszyn wirtualnych](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Lokalne maszyny wirtualne lub fizyczne](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 
 Poza Application Insights Snapshot Debugger:
  

@@ -7,12 +7,12 @@ ms.author: nakhanha
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: f3a0fa1ecdb2db94b43a5380f9497b4b1c266e47
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: bf9bb7adfa25ea16498a32b57d4927de7e81c007
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441944"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68826919"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Integrowanie Apache Spark i Apache Hive z łącznikiem magazynu Hive
 
@@ -51,7 +51,7 @@ Wykonaj następujące kroki, aby skonfigurować łącznik magazynu Hive między 
 
         ![Konfiguracja Spark2 Ambari](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
 
-    1. Ustaw `spark.hadoop.hive.llap.daemon.service.hosts` tę samą wartość jako właściwość **LLAP nazwa aplikacji** w obszarze **Advanced Hive-Interactive-ENV**. Na przykład: `@llap0`
+    1. Ustaw `spark.hadoop.hive.llap.daemon.service.hosts` tę samą wartość jako właściwość **LLAP nazwa aplikacji** w obszarze **Advanced Hive-Interactive-ENV**. Na przykład: `llap0`
 
     1. Ustaw `spark.sql.hive.hiveserver2.jdbc.url` wartość parametrów połączenia JDBC, która łączy się z serwera hiveserver2 w klastrze zapytań interaktywnych. Parametry połączenia dla klastra będą wyglądały jak identyfikator URI poniżej. `CLUSTERNAME`jest nazwą klastra Spark, a `user` parametry i `password` są ustawionymi prawidłowymi wartościami dla klastra.
 
@@ -64,7 +64,7 @@ Wykonaj następujące kroki, aby skonfigurować łącznik magazynu Hive między 
 
     1. Ustaw `spark.datasource.hive.warehouse.load.staging.dir` odpowiedni katalog przemieszczania zgodny z systemem plików HDFS. Jeśli istnieją dwa różne klastry, katalog przemieszczania powinien być folderem w katalogu przemieszczania konta magazynu klastra LLAP, dzięki czemu serwera hiveserver2 ma do niego dostęp. Na przykład, `wasb://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp` gdzie `STORAGE_ACCOUNT_NAME` to nazwa konta magazynu używanego przez klaster i `STORAGE_CONTAINER_NAME` jest nazwą kontenera magazynu.
 
-    1. Ustaw `spark.datasource.hive.warehouse.metastoreUri` wartość identyfikatora URI magazynu metadanych interaktywnego klastra zapytań. Aby znaleźć metastoreUri dla klastra LLAP, Wyszukaj Właściwość **Hive. metadanych magazynu. URI** w interfejsie użytkownika Ambari dla klastra LLAP w obszarze zaawansowana > opcja usługi **Hive** >  **.** Wartość będzie wyglądać podobnie do następującego identyfikatora URI:
+    1. Ustaw `spark.datasource.hive.warehouse.metastoreUri` wartość identyfikatora URI magazynu metadanych interaktywnego klastra zapytań. Aby znaleźć metastoreUri dla klastra LLAP, Wyszukaj Właściwość **Hive. metadanych magazynu. URI** w interfejsie użytkownika Ambari dla klastra LLAP w obszarze zaawansowana > opcja usługi **Hive** > . Wartość będzie wyglądać podobnie do następującego identyfikatora URI:
 
         ```
         thrift://hn0-hwclla.0iv2nyrmse1uvp2caa4e34jkmf.cx.internal.cloudapp.net:9083,
@@ -231,7 +231,7 @@ Postępuj zgodnie z poniższymi instrukcjami, aby utworzyć przykład łącznika
     1. Kliknij usługę Hive dla klastra w obszarze **Hive**.
         ![tabela demonstracyjna przed zastosowaniem zasad Ranger](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png)
     1. Kliknij kartę **maskowanie** , a następnie **Dodaj nową** ![listę zasad zasad](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
-    1. Podaj żądaną nazwę zasad. Wybierz bazę danych: **Default**, tabela programu Hive : Demonstracja, kolumna Hive: **name**, User: **rsadmin2**, typy dostępu: **SELECT**i **maska częściowa: Pokaż ostatnie 4** z menu **opcji wybierz maskowanie** . Kliknij przycisk **Dodaj**.
+    1. Podaj żądaną nazwę zasad. Wybierz bazę danych: **Default**, tabela programu Hive: Demonstracja, kolumna Hive: **name**, User: **rsadmin2**, typy dostępu: **SELECT**i **maska częściowa: Pokaż ostatnie 4** z menu **opcji wybierz maskowanie** . Kliknij przycisk **Dodaj**.
                 ![Lista zasad](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. Ponownie Wyświetl zawartość tabeli. Po zastosowaniu zasad Ranger można zobaczyć tylko cztery ostatnie znaki w kolumnie.
 

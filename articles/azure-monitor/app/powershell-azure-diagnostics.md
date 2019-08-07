@@ -1,8 +1,7 @@
 ---
 title: Konfigurowanie usługi Application Insights na platformie Azure przy użyciu programu PowerShell | Microsoft Docs
-description: Automatyczne konfigurowanie Diagnostyki Azure do przesyłania potokiem do usługi Application Insights.
+description: Automatyzowanie konfigurowania Diagnostyka Azure do danych potoku do Application Insights.
 services: application-insights
-documentationcenter: .net
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 4ac803a8-f424-4c0c-b18f-4b9c189a64a5
@@ -10,16 +9,16 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 11/17/2015
+ms.date: 08/06/2019
 ms.author: mbullwin
-ms.openlocfilehash: 3c0decaa89b4ecc503157a32fcb1e5b4d249ccfb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 89ed75e4ae3363c2cb25020e6074aa17baf94eda
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60254628"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827103"
 ---
-# <a name="using-powershell-to-set-up-application-insights-for-an-azure-web-app"></a>Konfigurowanie usługi Application Insights dla aplikacji internetowej platformy Azure przy użyciu programu PowerShell
+# <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>Konfigurowanie Application Insights na platformie Azure za pomocą programu PowerShell Cloud Services
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -46,7 +45,7 @@ Jeśli aplikacja internetowa działa na platformie Azure, a zasoby zostały utwo
      } 
 
 * `nameOfAIAppResource` — nazwa zasobu usługi Application Insights
-* `myWebAppName` — Identyfikator aplikacji sieci web
+* `myWebAppName`— Identyfikator aplikacji sieci Web
 
 ## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>Włączanie rozszerzenia diagnostyki w ramach wdrażania usługi Cloud Service
 Polecenie cmdlet `New-AzureDeployment` ma parametr `ExtensionConfiguration`, który przyjmuje tablicę konfiguracji diagnostycznych. Można ją utworzyć za pomocą polecenia cmdlet `New-AzureServiceDiagnosticsExtensionConfig`. Na przykład:

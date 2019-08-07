@@ -1,6 +1,6 @@
 ---
-title: Uruchamianie zadań w tle za pomocą zadań Webjob — usłudze Azure App Service
-description: Dowiedz się, jak uruchamiać zadania w tle w usłudze Azure App Service web apps, aplikacje interfejsu API lub aplikacje mobilne za pomocą zadań Webjob.
+title: Uruchamianie zadań w tle za pomocą zadań WebJob — Azure App Service
+description: Dowiedz się, jak za pomocą zadań WebJob uruchamiać zadania w tle w Azure App Service aplikacje sieci Web, aplikacje interfejsu API lub aplikacje mobilne.
 services: app-service
 documentationcenter: ''
 author: ggailey777
@@ -16,166 +16,166 @@ ms.date: 10/16/2018
 ms.author: glenga
 ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 8f4689e7d8d5af1aba2f31aac0359494a3a259f5
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 47a068ac6a7941c8ce71cf5c6745d2958c75fe74
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67613377"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736591"
 ---
-# <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Uruchamianie zadań w tle za pomocą zadań Webjob w usłudze Azure App Service
+# <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Uruchamianie zadań w tle za pomocą zadań WebJob w Azure App Service
 
-## <a name="overview"></a>Przegląd
-Zadania Webjob są funkcją [usługi Azure App Service](https://docs.microsoft.com/azure/app-service/) , pozwala na uruchamianie programu lub skryptu w tym samym kontekście jako aplikację sieci web, aplikacji mobilnej lub aplikacji interfejsu API. Brak bez dodatkowych kosztów korzystania z zadań WebJobs.
+## <a name="overview"></a>Omówienie
+WebJobs to funkcja [Azure App Service](https://docs.microsoft.com/azure/app-service/) , która umożliwia uruchamianie programu lub skryptu w tym samym kontekście co aplikacja internetowa, aplikacja interfejsu API lub aplikacja mobilna. Nie ma dodatkowych opłat za korzystanie z zadań WebJob.
 
 > [!IMPORTANT]
-> Zadania Webjob nie jest jeszcze obsługiwana dla usługi App Service w systemie Linux.
+> Usługi WebJobs nie są jeszcze obsługiwane w przypadku App Service w systemie Linux.
 
-W tym artykule pokazano, jak wdrażać zadania Webjob przy użyciu [witryny Azure portal](https://portal.azure.com) można przekazać plik wykonywalny lub skrypt. Aby dowiedzieć się, jak tworzyć i wdrażać zadania Webjob przy użyciu programu Visual Studio, zobacz [wdrożyć WebJobs za pomocą programu Visual Studio](webjobs-dotnet-deploy-vs.md).
+W tym artykule przedstawiono sposób wdrażania zadań WebJob przy użyciu [Azure Portal](https://portal.azure.com) do przekazania pliku wykonywalnego lub skryptu. Aby uzyskać informacje na temat sposobu tworzenia i wdrażania zadań WebJob przy użyciu programu Visual Studio, zobacz [wdrażanie zadań WebJob za pomocą programu Visual Studio](webjobs-dotnet-deploy-vs.md).
 
-Zestawu Azure WebJobs SDK może służyć za pomocą zadań Webjob, aby uprościć wiele zadań programistycznych. Aby uzyskać więcej informacji, zobacz [co to jest zestaw SDK zadań Webjob](https://github.com/Azure/azure-webjobs-sdk/wiki).
+Zestawu SDK Azure WebJobs można używać z zadaniami WebJob w celu uproszczenia wielu zadań programistycznych. Aby uzyskać więcej informacji, zobacz [co to jest zestaw SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)usługi WebJobs.
 
-Usługa Azure Functions udostępnia inny sposób uruchamiania programów i skryptów. Aby uzyskać porównanie funkcji i zadań Webjob, zobacz [wybór między usługi Flow, Logic Apps, Functions i WebJobs](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md).
+Azure Functions zapewnia inny sposób uruchamiania programów i skryptów. Aby uzyskać porównanie między zadaniami WebJob i funkcjami, zobacz [Wybieranie między przepływem, Logic Apps, funkcjami i zadaniami WebJob](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md).
 
 ## <a name="webjob-types"></a>Typy zadań WebJob
 
-W poniższej tabeli opisano różnice między *ciągłe* i *wyzwalane* zadań Webjob.
+W poniższej tabeli opisano różnice między *ciągłymi* i *wyzwalanymi* zadaniami WebJob.
 
 
 |Ciągłe  |Wyzwolone  |
 |---------|---------|
-| Rozpoczyna się natychmiast, po utworzeniu zadania WebJob. Aby zakończenia zadania, programu lub skryptu zwykle działa wewnątrz pętli nieskończonej. Jeśli zadanie zakończy się, można uruchomić go ponownie. | Zostanie uruchomiony tylko wtedy, gdy jest to wyzwalane ręcznie lub zgodnie z harmonogramem. |
-| Uruchamiany we wszystkich wystąpieniach, w których działa aplikacja sieci web. Zadania WebJob możesz opcjonalnie ograniczyć do pojedynczego wystąpienia. |Uruchamiany na pojedyncze wystąpienie, które platforma Azure wybiera dla równoważenia obciążenia.|
-| Obsługuje zdalne debugowanie. | Nie obsługuje debugowania zdalnego.|
+| Uruchamiany natychmiast po utworzeniu zadania WebJob. Aby zachować zadanie od końca, program lub skrypt zwykle wykonuje swoją pracę wewnątrz pętli nieskończonej. Jeśli zadanie zakończy się, możesz uruchomić je ponownie. | Uruchamiany tylko w przypadku wyzwolenia ręcznie lub zgodnie z harmonogramem. |
+| Działa na wszystkich wystąpieniach, na których działa aplikacja sieci Web. Opcjonalnie możesz ograniczyć zadanie WebJob do jednego wystąpienia. |Działa w ramach jednego wystąpienia, które wybierze platformę Azure do równoważenia obciążenia.|
+| Obsługuje debugowanie zdalne. | Nie obsługuje debugowania zdalnego.|
 
 [!INCLUDE [webjobs-always-on-note](../../includes/webjobs-always-on-note.md)]
 
-## <a name="acceptablefiles"></a>Obsługiwane typy plików do skryptów lub programów
+## <a name="acceptablefiles"></a>Obsługiwane typy plików dla skryptów lub programów
 
 Obsługiwane są następujące typy plików:
 
-* .cmd, .bat, .exe (przy użyciu polecenia Windows)
-* .ps1 (przy użyciu programu PowerShell)
-* SH (przy użyciu powłoki Bash)
-* PHP (za pomocą języka PHP)
-* PY (przy użyciu języka Python)
-* js (przy użyciu środowiska Node.js)
-* JAR (przy użyciu języka Java)
+* . cmd,. bat,. exe (przy użyciu polecenia Windows cmd)
+* . ps1 (przy użyciu programu PowerShell)
+* . sh (przy użyciu bash)
+* . php (przy użyciu języka PHP)
+* . PR (przy użyciu języka Python)
+* . js (przy użyciu środowiska Node. js)
+* . jar (przy użyciu języka Java)
 
-## <a name="CreateContinuous"></a> Tworzenie ciągłego zadania WebJob
-
-<!-- 
-Several steps in the three "Create..." sections are identical; 
-when making changes in one don't forget the other two.
--->
-
-1. W [witryny Azure portal](https://portal.azure.com), przejdź do **usługi App Service** strona aplikacji internetowej App Service, aplikacji interfejsu API lub aplikacji mobilnej.
-
-2. Wybierz **WebJobs**.
-
-   ![Wybierz zadania Webjob](./media/web-sites-create-web-jobs/select-webjobs.png)
-
-2. W **WebJobs** wybierz opcję **Dodaj**.
-
-    ![Strona zadania WebJob](./media/web-sites-create-web-jobs/wjblade.png)
-
-3. Użyj **Dodaj zadanie WebJob** ustawienia określone w tabeli.
-
-   ![Dodaj stronę zadania WebJob](./media/web-sites-create-web-jobs/addwjcontinuous.png)
-
-   | Ustawienie      | Wartość przykładowa   | Opis  |
-   | ------------ | ----------------- | ------------ |
-   | **Nazwa** | myContinuousWebJob | Nazwa, która jest unikatowa w obrębie aplikacji usługi App Service. Musi rozpoczynać się literą lub cyfrą i nie może zawierać znaków specjalnych innych niż "-" i "_". |
-   | **Przekazywanie pliku** | ConsoleApp.zip | A *zip* pliku, który zawiera plik wykonywalny lub skrypt, a także wszelkie pliki pomocnicze, potrzebne do uruchomienia programu lub skryptu. Obsługiwane typy plików plik wykonywalny lub skrypt są wymienione w [obsługiwane typy plików](#acceptablefiles) sekcji. |
-   | **Typ** | Ciągłe | [Typy zadań WebJob](#webjob-types) są opisane we wcześniejszej części tego artykułu. |
-   | **Skalowanie** | Z wieloma instancjami | Dostępne tylko w przypadku ciągłych zadań Webjob. Określa, czy program lub skrypt jest uruchamiany na wszystkich wystąpień lub tylko jednego wystąpienia. Opcja uruchamiania wielu wystąpień nie ma zastosowania do bezpłatna i współdzielona [warstw cenowych](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). | 
-
-4. Kliknij przycisk **OK**.
-
-   Nowe zadanie WebJob jest wyświetlany na **WebJobs** strony.
-
-   ![Lista zadań Webjob](./media/web-sites-create-web-jobs/listallwebjobs.png)
-
-2. Aby zatrzymać lub uruchomić ponownie ciągłe zadanie WebJob, kliknij prawym przyciskiem myszy zadanie WebJob na liście, a następnie kliknij przycisk **zatrzymać** lub **Start**.
-
-    ![Zatrzymaj ciągłe zadanie WebJob](./media/web-sites-create-web-jobs/continuousstop.png)
-
-## <a name="CreateOnDemand"></a> Tworzenie ręcznie wyzwolone zadania WebJob
+## <a name="CreateContinuous"></a>Tworzenie ciągłego Zadania WebJob
 
 <!-- 
 Several steps in the three "Create..." sections are identical; 
 when making changes in one don't forget the other two.
 -->
 
-1. W [witryny Azure portal](https://portal.azure.com), przejdź do **usługi App Service** strona aplikacji internetowej App Service, aplikacji interfejsu API lub aplikacji mobilnej.
+1. W [Azure Portal](https://portal.azure.com)przejdź do strony **App Service** aplikacji sieci Web App Service, aplikacji interfejsu API lub aplikacji mobilnej.
 
-2. Wybierz **WebJobs**.
+2. Wybierz pozycję **Zadania WebJob**.
 
-   ![Wybierz zadania Webjob](./media/web-sites-create-web-jobs/select-webjobs.png)
+   ![Wybieranie zadań WebJob](./media/web-sites-create-web-jobs/select-webjobs.png)
 
-2. W **WebJobs** wybierz opcję **Dodaj**.
+2. Na stronie **Zadania WebJob** wybierz pozycję **Dodaj**.
 
-    ![Strona zadania WebJob](./media/web-sites-create-web-jobs/wjblade.png)
+    ![Strona Zadania WebJob](./media/web-sites-create-web-jobs/wjblade.png)
 
-3. Użyj **Dodaj zadanie WebJob** ustawienia określone w tabeli.
+3. Użyj **Dodaj ustawienia zadania WebJob** określonych w tabeli.
 
-   ![Dodaj stronę zadania WebJob](./media/web-sites-create-web-jobs/addwjtriggered.png)
+   ![Dodawanie strony zadania WebJob](./media/web-sites-create-web-jobs/addwjcontinuous.png)
 
    | Ustawienie      | Wartość przykładowa   | Opis  |
    | ------------ | ----------------- | ------------ |
-   | **Nazwa** | myTriggeredWebJob | Nazwa, która jest unikatowa w obrębie aplikacji usługi App Service. Musi rozpoczynać się literą lub cyfrą i nie może zawierać znaków specjalnych innych niż "-" i "_".|
-   | **Przekazywanie pliku** | ConsoleApp.zip | A *zip* pliku, który zawiera plik wykonywalny lub skrypt, a także wszelkie pliki pomocnicze, potrzebne do uruchomienia programu lub skryptu. Obsługiwane typy plików plik wykonywalny lub skrypt są wymienione w [obsługiwane typy plików](#acceptablefiles) sekcji. |
-   | **Typ** | Wyzwolone | [Typy zadań WebJob](#webjob-types) są opisane we wcześniejszej części tego artykułu. |
-   | **Wyzwalacze** | Ręcznie | |
+   | **Nazwa** | myContinuousWebJob | Nazwa, która jest unikatowa w ramach aplikacji App Service. Musi zaczynać się literą lub cyfrą i nie może zawierać znaków specjalnych innych niż "-" i "_". |
+   | **Przekazywanie plików** | ConsoleApp.zip | Plik *. zip* , który zawiera plik wykonywalny lub skrypt, a także wszystkie pliki pomocnicze potrzebne do uruchomienia programu lub skryptu. Obsługiwane typy plików wykonywalnych i skryptów są wymienione w sekcji [obsługiwane typy plików](#acceptablefiles) . |
+   | **Wprowadź** | Ciągłe | [Typy zadań WebJob](#webjob-types) zostały opisane wcześniej w tym artykule. |
+   | **Skalowanie** | Wiele wystąpień | Dostępne tylko w przypadku ciągłych zadań WebJob. Określa, czy program lub skrypt jest uruchamiany we wszystkich wystąpieniach, czy tylko w jednym wystąpieniu. Opcja uruchamiania na wielu wystąpieniach nie ma zastosowania do [warstw cenowych](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)bezpłatna lub współdzielona. | 
 
 4. Kliknij przycisk **OK**.
 
-   Nowe zadanie WebJob jest wyświetlany na **WebJobs** strony.
+   Nowe zadanie WebJob pojawia się na stronie WebJobs.
 
-   ![Lista zadań Webjob](./media/web-sites-create-web-jobs/listallwebjobs.png)
+   ![Lista zadań WebJob](./media/web-sites-create-web-jobs/listallwebjobs.png)
 
-7. Aby uruchomić zadania WebJob, kliknij prawym przyciskiem myszy jego nazwę na liście, a następnie kliknij przycisk **Uruchom**.
+2. Aby zatrzymać lub uruchomić ponownie ciągłe zadanie WebJob, kliknij prawym przyciskiem myszy zadanie WebJob na liście, a następnie kliknij przycisk **Zatrzymaj** lub **Uruchom**.
+
+    ![Zatrzymywanie ciągłego Zadania WebJob](./media/web-sites-create-web-jobs/continuousstop.png)
+
+## <a name="CreateOnDemand"></a>Utwórz ręcznie wyzwolone zadanie WebJob
+
+<!-- 
+Several steps in the three "Create..." sections are identical; 
+when making changes in one don't forget the other two.
+-->
+
+1. W [Azure Portal](https://portal.azure.com)przejdź do strony **App Service** aplikacji sieci Web App Service, aplikacji interfejsu API lub aplikacji mobilnej.
+
+2. Wybierz pozycję **Zadania WebJob**.
+
+   ![Wybieranie zadań WebJob](./media/web-sites-create-web-jobs/select-webjobs.png)
+
+2. Na stronie **Zadania WebJob** wybierz pozycję **Dodaj**.
+
+    ![Strona Zadania WebJob](./media/web-sites-create-web-jobs/wjblade.png)
+
+3. Użyj **Dodaj ustawienia zadania WebJob** określonych w tabeli.
+
+   ![Dodawanie strony zadania WebJob](./media/web-sites-create-web-jobs/addwjtriggered.png)
+
+   | Ustawienie      | Wartość przykładowa   | Opis  |
+   | ------------ | ----------------- | ------------ |
+   | **Nazwa** | myTriggeredWebJob | Nazwa, która jest unikatowa w ramach aplikacji App Service. Musi zaczynać się literą lub cyfrą i nie może zawierać znaków specjalnych innych niż "-" i "_".|
+   | **Przekazywanie plików** | ConsoleApp.zip | Plik *. zip* , który zawiera plik wykonywalny lub skrypt, a także wszystkie pliki pomocnicze potrzebne do uruchomienia programu lub skryptu. Obsługiwane typy plików wykonywalnych i skryptów są wymienione w sekcji [obsługiwane typy plików](#acceptablefiles) . |
+   | **Wprowadź** | Wyzwolone | [Typy zadań WebJob](#webjob-types) zostały opisane wcześniej w tym artykule. |
+   | **Wyzwalacze** | Ręczne | |
+
+4. Kliknij przycisk **OK**.
+
+   Nowe zadanie WebJob pojawia się na stronie WebJobs.
+
+   ![Lista zadań WebJob](./media/web-sites-create-web-jobs/listallwebjobs.png)
+
+7. Aby uruchomić zadanie WebJob, kliknij prawym przyciskiem myszy jego nazwę na liście i kliknij polecenie **Uruchom**.
    
     ![Uruchamianie zadania WebJob](./media/web-sites-create-web-jobs/runondemand.png)
 
-## <a name="CreateScheduledCRON"></a> Tworzenie zaplanowanego zadania WebJob
+## <a name="CreateScheduledCRON"></a>Tworzenie zaplanowanego zadania WebJob
 
 <!-- 
 Several steps in the three "Create..." sections are identical; 
 when making changes in one don't forget the other two.
 -->
 
-1. W [witryny Azure portal](https://portal.azure.com), przejdź do **usługi App Service** strona aplikacji internetowej App Service, aplikacji interfejsu API lub aplikacji mobilnej.
+1. W [Azure Portal](https://portal.azure.com)przejdź do strony **App Service** aplikacji sieci Web App Service, aplikacji interfejsu API lub aplikacji mobilnej.
 
-2. Wybierz **WebJobs**.
+2. Wybierz pozycję **Zadania WebJob**.
 
-   ![Wybierz zadania Webjob](./media/web-sites-create-web-jobs/select-webjobs.png)
+   ![Wybieranie zadań WebJob](./media/web-sites-create-web-jobs/select-webjobs.png)
 
-2. W **WebJobs** wybierz opcję **Dodaj**.
+2. Na stronie **Zadania WebJob** wybierz pozycję **Dodaj**.
 
-   ![Strona zadania WebJob](./media/web-sites-create-web-jobs/wjblade.png)
+   ![Strona Zadania WebJob](./media/web-sites-create-web-jobs/wjblade.png)
 
-3. Użyj **Dodaj zadanie WebJob** ustawienia określone w tabeli.
+3. Użyj **Dodaj ustawienia zadania WebJob** określonych w tabeli.
 
-   ![Dodaj stronę zadania WebJob](./media/web-sites-create-web-jobs/addwjscheduled.png)
+   ![Dodawanie strony zadania WebJob](./media/web-sites-create-web-jobs/addwjscheduled.png)
 
    | Ustawienie      | Wartość przykładowa   | Opis  |
    | ------------ | ----------------- | ------------ |
-   | **Nazwa** | myScheduledWebJob | Nazwa, która jest unikatowa w obrębie aplikacji usługi App Service. Musi rozpoczynać się literą lub cyfrą i nie może zawierać znaków specjalnych innych niż "-" i "_". |
-   | **Przekazywanie pliku** | ConsoleApp.zip | A *zip* pliku, który zawiera plik wykonywalny lub skrypt, a także wszelkie pliki pomocnicze, potrzebne do uruchomienia programu lub skryptu. Obsługiwane typy plików plik wykonywalny lub skrypt są wymienione w [obsługiwane typy plików](#acceptablefiles) sekcji. |
-   | **Typ** | Wyzwolone | [Typy zadań WebJob](#webjob-types) są opisane we wcześniejszej części tego artykułu. |
-   | **Wyzwalacze** | Zaplanowane | Podczas planowania niezawodną pracę, należy włączyć funkcję zawsze włączone. Zawsze włączone jest dostępna tylko w języku Basic, Standard i warstw cenowych Premium.|
-   | **Wyrażenie CRON** | 0 0/20 * * * * | [Wyrażenia CRON](#cron-expressions) są opisane w poniższej sekcji. |
+   | **Nazwa** | myScheduledWebJob | Nazwa, która jest unikatowa w ramach aplikacji App Service. Musi zaczynać się literą lub cyfrą i nie może zawierać znaków specjalnych innych niż "-" i "_". |
+   | **Przekazywanie plików** | ConsoleApp.zip | Plik *. zip* , który zawiera plik wykonywalny lub skrypt, a także wszystkie pliki pomocnicze potrzebne do uruchomienia programu lub skryptu. Obsługiwane typy plików wykonywalnych i skryptów są wymienione w sekcji [obsługiwane typy plików](#acceptablefiles) . |
+   | **Wprowadź** | Wyzwolone | [Typy zadań WebJob](#webjob-types) zostały opisane wcześniej w tym artykule. |
+   | **Wyzwalacze** | Zaplanowane | Aby planowanie działało niezawodne, Włącz funkcję zawsze włączone. Opcję zawsze włączone są dostępne tylko w warstwach cenowych podstawowa, standardowa i Premium.|
+   | **Wyrażenie CRONUS** | 0 0/20 * * * * | [Wyrażenia CRONUS](#cron-expressions) są opisane w następnej sekcji. |
 
 4. Kliknij przycisk **OK**.
 
-   Nowe zadanie WebJob jest wyświetlany na **WebJobs** strony.
+   Nowe zadanie WebJob pojawia się na stronie WebJobs.
 
-   ![Lista zadań Webjob](./media/web-sites-create-web-jobs/listallwebjobs.png)
+   ![Lista zadań WebJob](./media/web-sites-create-web-jobs/listallwebjobs.png)
 
-## <a name="cron-expressions"></a>Wyrażenia CRON
+## <a name="cron-expressions"></a>Wyrażenia firmy CRONUS
 
-Możesz wprowadzić [wyrażenie CRON](../azure-functions/functions-bindings-timer.md#cron-expressions) w portalu lub zawierać `settings.job` pliku w katalogu głównym zadania WebJob *zip* pliku, jak w poniższym przykładzie:
+Możesz wprowadzić wyrażenie firmy [cronus](../azure-functions/functions-bindings-timer.md#ncrontab-expressions) w portalu lub dołączyć `settings.job` plik w katalogu głównym pliku WebJob *. zip* , jak w poniższym przykładzie:
 
 ```json
 {
@@ -183,30 +183,30 @@ Możesz wprowadzić [wyrażenie CRON](../azure-functions/functions-bindings-time
 }
 ```
 
-Aby dowiedzieć się więcej, zobacz [planowania wyzwolone zadania WebJob](webjobs-dotnet-deploy-vs.md#scheduling-a-triggered-webjob).
+Aby dowiedzieć się więcej, zobacz [Planowanie wyzwalanego Zadania WebJob](webjobs-dotnet-deploy-vs.md#scheduling-a-triggered-webjob).
 
-## <a name="ViewJobHistory"></a> Wyświetlanie historii zadań
+## <a name="ViewJobHistory"></a>Wyświetl historię zadania
 
-1. Wybierz zadania WebJob, aby zobaczyć historię, a następnie wybierz **dzienniki** przycisku.
+1. Wybierz zadanie WebJob, dla którego ma zostać wyświetlona historia, a następnie wybierz przycisk **dzienniki** .
    
-   ![Przycisk dzienników](./media/web-sites-create-web-jobs/wjbladelogslink.png)
+   ![Przycisk dzienniki](./media/web-sites-create-web-jobs/wjbladelogslink.png)
 
-2. W **szczegóły zadania WebJob** wybierz czas, aby wyświetlić szczegóły dla jednego przebiegu.
+2. Na stronie **szczegóły zadania WebJob** wybierz godzinę, aby wyświetlić szczegółowe informacje o jednym przebiegu.
    
    ![Szczegóły zadania WebJob](./media/web-sites-create-web-jobs/webjobdetails.png)
 
-3. W **szczegóły przebiegu zadania WebJob** wybierz opcję **Przełącz dane wyjściowe** tekst zawartość dziennika.
+3. Na stronie **szczegóły przebiegu Zadania WebJob** wybierz pozycję **Przełącz dane wyjściowe** , aby zobaczyć tekst zawartości dziennika.
    
-    ![Zadanie Web job szczegóły przebiegu](./media/web-sites-create-web-jobs/webjobrundetails.png)
+    ![Szczegóły przebiegu zadania sieci Web](./media/web-sites-create-web-jobs/webjobrundetails.png)
 
-   Aby wyświetlić tekst danych wyjściowych w osobnym oknie przeglądarki, wybierz **Pobierz**. Aby pobrać sam tekst, kliknij prawym przyciskiem myszy **Pobierz** i użyj opcji przeglądarki, aby zapisać zawartość pliku.
+   Aby wyświetlić tekst wyjściowy w osobnym oknie przeglądarki, wybierz pozycję **Pobierz**. Aby pobrać sam tekst, kliknij prawym przyciskiem myszy pozycję **Pobierz** i użyj opcji przeglądarki, aby zapisać zawartość pliku.
    
-5. Wybierz **WebJobs** link łączy do stron nadrzędnych u góry strony aby przejść do listy zadań Webjob.
+5. Aby przejść do listy zadań WebJob, wybierz link do obszaru nawigacyjnego **Zadania WebJob** w górnej części strony.
 
-    ![Zadania WebJob linków do stron nadrzędnych](./media/web-sites-create-web-jobs/breadcrumb.png)
+    ![Łącza do stron WebJob](./media/web-sites-create-web-jobs/breadcrumb.png)
    
-    ![Lista zadań Webjob w pulpit nawigacyjny historii](./media/web-sites-create-web-jobs/webjobslist.png)
+    ![Lista zadań WebJob na pulpicie nawigacyjnym historia](./media/web-sites-create-web-jobs/webjobslist.png)
    
 ## <a name="NextSteps"></a> Następne kroki
 
-Zestawu Azure WebJobs SDK może służyć za pomocą zadań Webjob, aby uprościć wiele zadań programistycznych. Aby uzyskać więcej informacji, zobacz [co to jest zestaw SDK zadań Webjob](https://github.com/Azure/azure-webjobs-sdk/wiki).
+Zestawu SDK Azure WebJobs można używać z zadaniami WebJob w celu uproszczenia wielu zadań programistycznych. Aby uzyskać więcej informacji, zobacz [co to jest zestaw SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)usługi WebJobs.

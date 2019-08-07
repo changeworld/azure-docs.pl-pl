@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 07/30/2019
-ms.openlocfilehash: d97c3d47a277ecd8b1de635e3d835f9ee1f42057
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.date: 08/07/2019
+ms.openlocfilehash: 4b66d015e8a182e305a36dacaa2e082288a3e19e
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68700355"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840544"
 ---
 # <a name="introduction-to-deep-learning-vs-machine-learning"></a>Wprowadzenie do uczenia głębokiego i uczenia maszynowego
 
@@ -43,9 +43,9 @@ Teraz, gdy masz Omówienie uczenia maszynowego i uczenia głębokiego, Porównaj
 
 W poniższej tabeli porównano dwa techniki bardziej szczegółowo:
 
-| |Uczenie maszynowe |Uczenie głębokie|
+| |Wszystkie Uczenie maszynowe |Tylko uczenie głębokie|
 |---|---|---|
-|  **Liczba punktów danych** | Może korzystać z małych ilości danych udostępnianych przez użytkowników | Wymaga dużej ilości danych szkoleniowych bez etykiet, aby tworzyć zwięzłe wnioski |
+|  **Liczba punktów danych** | Może korzystać z małych ilości danych udostępnianych przez użytkowników | Wymaga dużej ilości danych szkoleniowych, aby wykonywać zwięzłe wnioski |
 |  **Zależności sprzętowe** | Może współpracować z maszynami z niską końcówką. Nie wymaga to dużej ilości mocy obliczeniowej | Zależy od maszyn wysokiej klasy. Jest to z założenia wiele operacji mnożenia macierzy. Te operacje mogą być efektywnie zoptymalizowane przy użyciu procesora GPU |
 |  **Proces cechowania** | Wymaga, aby funkcje były dokładnie identyfikowane i tworzone przez użytkowników | Poznaje funkcje wysokiego poziomu z danych i tworzy nowe funkcje |
 |  **Podejście szkoleniowe** | Dzieli zadania na małe fragmenty, a następnie łączy otrzymane wyniki w jeden wniosek | Rozwiązuje problem na całej trasie |
@@ -92,7 +92,7 @@ Przechodzące sieci neuronowych są bardziej szeroko używanymi rodzajami sieci 
 
 Sieć splotowych neuronowych jest szczególnie skutecznym typem sieci sztucznej neuronowych, która przedstawia unikatową architekturę. Najpierw warstwy są zorganizowane w trzy wymiary: Szerokość, Wysokość i głębokość. Dodatkowo neurons w jednej warstwie nie łączą się ze wszystkimi neurons w następnej warstwie, ale tylko w niewielkim regionie. Na koniec ostateczne dane wyjściowe zostaną zredukowane do jednego wektora oceny prawdopodobieństwa, zorganizowane wzdłuż wymiaru głębokości. Te sieci neuronowych są używane w takich obszarach jak rozpoznawanie i Klasyfikacja obrazu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W poniższych artykułach pokazano, jak korzystać z technologii uczenia głębokiego w [usłudze Azure Machine Learning](/azure/machine-learning/service/):
 

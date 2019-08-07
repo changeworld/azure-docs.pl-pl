@@ -1,21 +1,21 @@
 ---
-title: Zarządzanie zasobami usługi Azure Cosmos DB przy użyciu wiersza polecenia platformy Azure
-description: Użyj wiersza polecenia platformy Azure do zarządzania kontem usługi Azure Cosmos DB, bazy danych i kontenerów.
+title: Zarządzanie zasobami Azure Cosmos DB przy użyciu interfejsu wiersza polecenia platformy Azure
+description: Użyj interfejsu wiersza polecenia platformy Azure, aby zarządzać kontem Azure Cosmos DB, bazą danych i kontenerami.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 08/05/2019
 ms.author: mjbrown
-ms.openlocfilehash: 82d7cdf0c9519bb8a682445e666d46d6fd7bfbd7
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 9ec049311fc158b13bba45deb2974d7cdd531f90
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67550937"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815038"
 ---
-# <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Zarządzanie zasobami usługi Azure Cosmos przy użyciu wiersza polecenia platformy Azure
+# <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Zarządzanie zasobami usługi Azure Cosmos za pomocą interfejsu wiersza polecenia platformy Azure
 
-Następującymi wskazówkami w tym artykule opisano typowe polecenia do automatyzowania zarządzania kontami usługi Azure Cosmos DB, bazy danych i kontenerów za pomocą narzędzia wiersza polecenia platformy Azure. Strony referencyjne dla wszystkich poleceń dostępnych w interfejsie wiersza polecenia usługi Azure Cosmos DB są dostępne w [dokumentacji dotyczącej interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/cosmosdb). Można także znaleźć więcej przykładów w [przykłady interfejsu wiersza polecenia platformy Azure dla usługi Azure Cosmos DB](cli-samples.md), w tym jak utworzyć i zarządzać kont usługi Cosmos DB, bazy danych i kontenerów dla bazy danych MongoDB, Gremlin, Cassandra i interfejsu API tabel.
+W poniższym przewodniku opisano typowe polecenia służące do automatyzowania zarządzania kontami Azure Cosmos DB, bazami danych i kontenerami przy użyciu interfejsu wiersza polecenia platformy Azure. Strony referencyjne dla wszystkich poleceń dostępnych w interfejsie wiersza polecenia usługi Azure Cosmos DB są dostępne w [dokumentacji dotyczącej interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/cosmosdb). Więcej przykładów można znaleźć w przykładach [interfejsu wiersza polecenia platformy Azure dla Azure Cosmos DB](cli-samples.md), w tym tworzenia i zarządzania kontami Cosmos DB, bazami danych i kontenerami dla MongoDB, Gremlin, Cassandra i interfejs API tabel.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -23,11 +23,11 @@ Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Tworzenie konta usługi Azure Cosmos DB
 
-Aby utworzyć konto usługi Azure Cosmos DB z interfejsem API SQL, spójność sesji w regionach wschodnie stany USA i zachodnie stany USA, uruchom następujące polecenie:
+Aby utworzyć konto Azure Cosmos DB przy użyciu interfejsu API SQL, spójności sesji w regionach Wschodnie stany USA i zachodnie stany USA, uruchom następujące polecenie:
 
 ```azurecli-interactive
 az cosmosdb create \
-   --name mycosmosdbaccount \
+   --name mycosmosdbaccount # must be lowercase and < 31 characters \
    --resource-group myResourceGroup \
    --kind GlobalDocumentDB \
    --default-consistency-level Session \
@@ -37,7 +37,7 @@ az cosmosdb create \
 ```
 
 > [!IMPORTANT]
-> Nazwa konta usługi Azure Cosmos musi być mała.
+> Nazwa konta usługi Azure Cosmos musi być małymi literami.
 
 ## <a name="create-a-database"></a>Tworzenie bazy danych
 
@@ -52,7 +52,7 @@ az cosmosdb database create \
 
 ## <a name="create-a-container"></a>Tworzenie kontenera
 
-Aby utworzyć kontenera usługi Cosmos DB przy użyciu jednostek RU/s, 400, jak i klucz partycji, uruchom następujące polecenie:
+Aby utworzyć kontener Cosmos DB z atrybutami RU/s z 400 i kluczem partycji, uruchom następujące polecenie:
 
 ```azurecli-interactive
 # Create a container
@@ -65,9 +65,9 @@ az cosmosdb collection create \
    --throughput 400
 ```
 
-## <a name="change-the-throughput-of-a-container"></a>Zmień przepływność kontenera
+## <a name="change-the-throughput-of-a-container"></a>Zmiana przepływności kontenera
 
-Aby zmienić przepływność kontenera usługi Cosmos DB na 1000 jednostek RU/s, uruchom następujące polecenie:
+Aby zmienić przepływność kontenera Cosmos DB na 1000 RU/s, uruchom następujące polecenie:
 
 ```azurecli-interactive
 # Update container throughput
@@ -81,7 +81,7 @@ az cosmosdb collection update \
 
 ## <a name="list-account-keys"></a>Wyświetl listę kluczy konta
 
-Aby pobrać klucze służące do Twojego konta usługi Cosmos, uruchom następujące polecenie:
+Aby uzyskać klucze dla konta usługi Cosmos, uruchom następujące polecenie:
 
 ```azurecli-interactive
 # List account keys
@@ -90,7 +90,7 @@ az cosmosdb keys list \
    --resource-group myResourceGroup
 ```
 
-## <a name="list-connection-strings"></a>Lista parametrów połączenia
+## <a name="list-connection-strings"></a>Wyświetlanie listy parametrów połączenia
 
 Aby uzyskać parametry połączenia dla konta usługi Cosmos, uruchom następujące polecenie:
 
@@ -101,7 +101,7 @@ az cosmosdb list-connection-strings \
    --resource-group myResourceGroup
 ```
 
-## <a name="regenerate-account-key"></a>Ponowne generowanie klucza konta
+## <a name="regenerate-account-key"></a>Ponownie Wygeneruj klucz konta
 
 Aby ponownie wygenerować nowy klucz podstawowy dla konta usługi Cosmos, uruchom następujące polecenie:
 
@@ -113,10 +113,10 @@ az cosmosdb regenerate-key \
    --key-kind primary
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure zobacz:
+Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz:
 
 - [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli)
-- [Odwołanie do wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/cosmosdb)
-- [Więcej przykładów interfejsu wiersza polecenia platformy Azure dla usługi Azure Cosmos DB](cli-samples.md)
+- [Dokumentacja interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/cosmosdb)
+- [Dodatkowe przykłady interfejsu wiersza polecenia platformy Azure dla Azure Cosmos DB](cli-samples.md)

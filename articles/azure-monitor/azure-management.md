@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/07/2018
 ms.author: bwren
-ms.openlocfilehash: a0d3ea3f4a63e7c69a190cf856929437d6f0b9d8
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 4096ee477dc1d40ff6b98b20dd384c6ffad17e5f
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608298"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779270"
 ---
 # <a name="azure-management---monitoring"></a>Zarządzanie platformą Azure — monitorowanie
 
@@ -40,7 +40,7 @@ Monitorowanie to proces zbierania i analizowania danych w celu ustalania wydajno
 Konfigurowanie dotyczy początkowego wdrażania i konfigurowania aplikacji i zasobów oraz ich ciągłej obsługi przy użyciu poprawek i aktualizacji.  Automatyzacja tych zadań za pomocą skryptów i zasad pozwala wyeliminować nadmiarowość, zminimalizować poświęcany czas i wysiłek oraz zwiększyć dokładność i wydajność.  [Usługa Azure Automation](../automation/automation-intro.md) dostarcza większość usług do automatyzowania zadań konfiguracji.  Oprócz elementów Runbook do automatyzowania procesów zapewnia ona zarządzanie konfiguracją i aktualizacjami, co pomaga zarządzać konfiguracją za pośrednictwem zasad oraz identyfikować i wdrażać aktualizacje.
 
 ## <a name="govern"></a>Ład
-Ład dotyczy mechanizmów i procesów kontrolowania aplikacji i zasobów na platformie Azure.  Obejmuje to planowanie inicjatyw i wyznaczanie strategicznych priorytetów.  Ład na platformie Azure jest zaimplementowany głównie za pomocą dwóch usług.  [Zasady platformy Azure](../governance/policy/overview.md) pozwalają tworzyć i przypisywać definicje zasad oraz zarządzać nimi. Te definicje wymuszają różne reguły i działania dotyczące zasobów, aby pozostały one zgodne ze standardami firmy i umowami dotyczącymi poziomu usług. [Usługa Azure Cost Management firmy Cloudyn](../cost-management/overview.md) umożliwia śledzenie użycia chmury i wydatków na zasoby platformy Azure i innych dostawców rozwiązań w chmurze, w tym AWS i Google.
+Ład dotyczy mechanizmów i procesów kontrolowania aplikacji i zasobów na platformie Azure.  Obejmuje to planowanie inicjatyw i wyznaczanie strategicznych priorytetów.  Ład na platformie Azure jest zaimplementowany głównie za pomocą dwóch usług.  [Zasady platformy Azure](../governance/policy/overview.md) pozwalają tworzyć i przypisywać definicje zasad oraz zarządzać nimi. Te definicje wymuszają różne reguły i działania dotyczące zasobów, aby pozostały one zgodne ze standardami firmy i umowami dotyczącymi poziomu usług. [Azure Cost Management](../cost-management/overview-cost-mgt.md) umożliwia śledzenie użycia i wydatków w chmurze dla zasobów platformy Azure i innych dostawców chmury, w tym AWS i Google.
 
 ## <a name="secure"></a>Bezpieczeństwo
 Zarządzanie zabezpieczeniami aplikacji, zasobów i danych obejmuje ocenę zagrożeń, zbieranie i analizowanie danych zabezpieczeń oraz zapewnianie, że aplikacje i zasoby są projektowane i konfigurowane w bezpieczny sposób.  Funkcje monitorowania zabezpieczeń i analizy zagrożeń są dostarczane przez usługę [Azure Security Center](../security-center/security-center-intro.md), która obejmuje ujednolicone zarządzanie zabezpieczeniami i zaawansowaną ochronę przed zagrożeniami w różnych obciążeniach chmur hybrydowych.  Zapoznaj się też z tematem [Introduction to Azure Security](../security/fundamentals/overview.md) (Wprowadzenie do zabezpieczeń platformy Azure), aby uzyskać obszerne informacje o zabezpieczeniach na platformie Azure oraz wskazówki dotyczące bezpiecznego konfigurowania jej zasobów.

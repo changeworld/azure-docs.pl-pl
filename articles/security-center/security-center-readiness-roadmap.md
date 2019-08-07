@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
-ms.openlocfilehash: 7de085766ae700b5c76d9eca49c1127aabdddb9b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1527dbd1df3e4a10a68a5949d9e0bca11628bdd2
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60703408"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68781136"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Mapa gotowości usługi Azure Security Center
 Ten dokument zapewnia mapę gotowości, która będzie pomocna w rozpoczynaniu pracy z usługą Azure Security Center.
@@ -33,7 +33,7 @@ Artykuły
 * [Wprowadzenie do usługi Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
 * [Przewodnik Szybki start dotyczący usługi Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-get-started)
 
-Filmy wideo
+Wideo
 * [Wideo z szybkim wprowadzeniem](https://azure.microsoft.com/resources/videos/introduction-to-azure-security-center/)
 * [Omówienie możliwości związanych z zapobieganiem, wykrywaniem i reagowaniem usługi Security Center](https://azure.microsoft.com/resources/videos/azurecon-2015-new-azure-security-center-helps-you-prevent-detect-and-respond-to-threats/)
 
@@ -81,7 +81,7 @@ Aby zmniejszyć koszty i straty, ważne jest dysponowanie planem reagowania na t
 
 Użyj następujących zasobów, aby zrozumieć sposób dołączenia usługi Security Center do procesu reagowania na zdarzenia.
 
-Filmy wideo  
+Wideo  
 * [Usługa Azure Security Center na potrzeby reagowania na zdarzenia](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Azure-Security-Center-in-Incident-Response)
 * [Szybkie reagowanie na zagrożenia przy użyciu zabezpieczeń, obsługi i badań nowej generacji](https://youtu.be/e8iFCz5RM4g)
 
@@ -95,7 +95,7 @@ Maszyny wirtualne platformy Azure mogą wykorzystywać zaawansowane możliwości
 
 Użyj następujących zasobów, aby dowiedzieć się, jak korzystać z tych możliwości w usłudze Security Center.
 
-Filmy wideo  
+Wideo  
 * [Azure Security Center — dostęp JIT do maszyn wirtualnych](https://youtu.be/UOQb2FcdQnU)
 * [Azure Security Center — funkcje adaptacyjnego sterowania aplikacjami](https://youtu.be/wWWekI1Y9ck)
 
@@ -114,11 +114,11 @@ Artykuły
 * [Strona dokumentacji interfejsu API REST usługi Security Center](https://msdn.microsoft.com/library/mt704034.aspx)
 * [Często zadawane pytania dotyczące usługi Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-faq)
 * [Strona cennika usługi Security Center](https://azure.microsoft.com/pricing/details/security-center/)
-* [Najlepsze rozwiązania z zakresu zabezpieczeń tożsamości](https://docs.microsoft.com/azure/security/azure-security-identity-management-best-practices)
-* [Najlepsze rozwiązania z zakresu zabezpieczeń sieci](https://docs.microsoft.com/azure/security/azure-security-network-security-best-practices)
+* [Najlepsze rozwiązania z zakresu zabezpieczeń tożsamości](https://docs.microsoft.com/azure/security/fundamentals/identity-management-best-practices)
+* [Najlepsze rozwiązania z zakresu zabezpieczeń sieci](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices)
 * [Zalecenia PaaS](https://docs.microsoft.com/azure/security/security-paas-deployments)
 * [Zgodność](https://www.microsoft.com/en-us/trustcenter/compliance/due-diligence-checklist)
-* [Log analytics klienci mogą teraz używać z usługi Azure Security Center, aby chronić swoje obciążenia w chmurze hybrydowej](https://blogs.technet.microsoft.com/msoms/2017/09/25/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads/)
+* [Klienci usługi log Analytics mogą teraz używać Azure Security Center do ochrony obciążeń chmury hybrydowej](https://blogs.technet.microsoft.com/msoms/2017/09/25/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads/)
 
 ## <a name="community-resources"></a>Zasoby społeczności
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 849065460acda36426f8a594a984ad1cc8590c34
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 323470adfe56ee20fe0fb64aeba38b6af4330351
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688833"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827602"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Rozwiązywanie problemów z kopiami zapasowymi SQL Server Database przy użyciu Azure Backup
 
@@ -119,6 +119,19 @@ Aby skonfigurować ochronę bazy danych SQL Server na maszynie wirtualnej, nale�
 | Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
 |---|---|---|
 | Zamiar ochrony autoprotection został usunięty lub nie jest już prawidłowy. | Po włączeniu autoochrony w wystąpieniu SQL Server **Skonfiguruj zadania tworzenia kopii zapasowej** uruchomione dla wszystkich baz danych w tym wystąpieniu. Jeśli wyłączysz funkcję autoochrony podczas działania zadań, zadania **w toku** są anulowane przy użyciu tego kodu błędu. | Ponownie Włącz ochronę autoochrony, aby chronić wszystkie pozostałe bazy danych. |
+
+### <a name="clouddosabsolutelimitreached"></a>CloudDosAbsoluteLimitReached
+
+| Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
+|---|---|---|
+Operacja została zablokowana, ponieważ osiągnięto limit liczby operacji dozwolonych w ciągu 24 godzin. | Po osiągnięciu maksymalnego dopuszczalnego limitu operacji w okresie 24-godzinnym ten błąd jest dostępny. <br> Na przykład: Jeśli osiągnięto limit liczby zadań konfigurowania kopii zapasowych, które mogą być wyzwalane dziennie, a użytkownik spróbuje skonfigurować kopię zapasową dla nowego elementu, zostanie wyświetlony ten błąd. | Zazwyczaj ponowna próba wykonania operacji po 24 godzinach rozwiązuje ten problem. Jeśli jednak problem będzie się powtarzać, możesz skontaktować się z pomocą techniczną firmy Microsoft w celu uzyskania pomocy.
+
+### <a name="clouddosabsolutelimitreachedwithretry"></a>CloudDosAbsoluteLimitReachedWithRetry
+
+| Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
+|---|---|---|
+Operacja została zablokowana, ponieważ magazyn osiągnął limit maksymalny dla takich operacji dozwolony w okresie 24 godzin. | Po osiągnięciu maksymalnego dopuszczalnego limitu operacji w okresie 24-godzinnym ten błąd jest dostępny. Ten błąd zwykle jest dostępny w przypadku operacji na skalę, takich jak Modyfikuj zasady lub ochrona automatyczne. W przeciwieństwie do przypadków CloudDosAbsoluteLimitReached, nie istnieje wiele możliwości rozwiązania tego stanu, w rzeczywistości usługa Azure Backup ponowi próbę wykonania operacji wewnętrznie dla wszystkich elementów, których to dotyczy.<br> Na przykład: Jeśli masz dużą liczbę źródeł danych chronionych przy użyciu zasad i podjęto próbę zmodyfikowania tych zasad, zostanie wyzwolone skonfigurowanie zadań ochrony dla każdego z chronionych elementów i czasami może wystąpić maksymalny limit dozwolony dla takich operacji dziennie.| Usługa Azure Backup automatycznie ponowi próbę wykonania tej operacji po 24 godzinach. 
+
 
 ## <a name="re-registration-failures"></a>Błędy ponownej rejestracji
 

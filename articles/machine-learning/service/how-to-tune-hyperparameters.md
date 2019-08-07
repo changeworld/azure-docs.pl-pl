@@ -1,7 +1,7 @@
 ---
 title: Dostosowywanie hiperparametrów dla modelu
 titleSuffix: Azure Machine Learning service
-description: Efektywne dostrojenie hiperparametrów dla modelu uczenie głębokie uczenie / machine przy użyciu usługi Azure Machine Learning. Dowiesz się jak zdefiniować parametr przestrzeni wyszukiwania, określić podstawową metrykę do optymalizacji i wczesne zakończyć niskiej wydajności działa.
+description: Efektywne dostrojenie hiperparametrów dla modelu uczenie głębokie uczenie / machine przy użyciu usługi Azure Machine Learning. Dowiesz się, jak definiować miejsce wyszukiwania parametrów, określać metrykę podstawową do optymalizacji i wczesne zakończenie działania.
 ms.author: swatig
 author: swatig007
 ms.reviewer: sgilley
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 730f39bf0b05ef33bbbca150532f96f1e495a9ed
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: cb4378047f34f3f635b2f1dd2425bbee28f91178
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302346"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815722"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning-service"></a>Dostosowywanie hiperparametrów dla modelu za pomocą usługi Azure Machine Learning
 
@@ -45,7 +45,7 @@ Automatyczne dostosowywanie hiperparametrów, eksplorując zakres wartości zdef
 
 ### <a name="types-of-hyperparameters"></a>Typy hiperparametrów
 
-Każdy hiperparametrycznego może być discrete lub ciągłe.
+Każdy parametr może być dyskretny lub ciągły i ma rozkład wartości opisany przez [wyrażenie parametru](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.parameter_expressions?view=azure-ml-py).
 
 #### <a name="discrete-hyperparameters"></a>Dyskretne hiperparametrów 
 
@@ -129,7 +129,7 @@ param_sampling = GridParameterSampling( {
 
 Gdy używasz Bayesowskie próbkowania, liczby równoczesnych uruchomień ma wpływ na efektywność procesu dostosowywania. Zazwyczaj mniejszą liczbę równoczesnych uruchomień może prowadzić do lepszego zbieżność próbkowania, ponieważ mniejszych stopień równoległości zwiększa się liczba uruchomień, które korzystają z wcześniej zakończone przebiegi.
 
-Próbkowanie Bayesowskie obsługuje tylko `choice` i `uniform` dystrybucji za pośrednictwem obszaru search. 
+Próbkowanie bayesowskie obsługuje `choice`, `uniform`i `quniform` rozpowszechniać tylko w obszarze wyszukiwania.
 
 ```Python
 from azureml.train.hyperdrive import BayesianParameterSampling
@@ -179,7 +179,7 @@ Oblicza skrypt szkoleniowy `val_accuracy` i rejestruje go jako "dokładność", 
 
 ## <a name="specify-early-termination-policy"></a>Określ wcześniejsze zakończenie zasady
 
-Automatyczne zakończenie uruchamiania przebiegów z użyciem zasad wczesnego zakończenia. Zakończenie zmniejsza nadmierne użycie nadmierny zasobów i zamiast tego używa tych zasobów do eksplorowania innych parametrów konfiguracji.
+Zakończ niskiej wydajności jest uruchamiany automatycznie z wczesnym zasad zakończenia. Zakończenie zmniejsza nadmierne użycie nadmierny zasobów i zamiast tego używa tych zasobów do eksplorowania innych parametrów konfiguracji.
 
 Korzystając z początku zasad rozwiązania, można skonfigurować następujące parametry, które kontrolują, po zastosowaniu zasad:
 
@@ -234,7 +234,7 @@ from azureml.train.hyperdrive import TruncationSelectionPolicy
 early_termination_policy = TruncationSelectionPolicy(evaluation_interval=1, truncation_percentage=20, delay_evaluation=5)
 ```
 
-W tym przykładzie wczesne zasady zakończenia są stosowane w każdej odstępach czasu, zaczynając od interwał oceny 5. Uruchom w odstępach 5, zostaną zakończone, jeśli jego wydajność w odstępach 5 znajduje się w najniższej 20% wyników wszystkich przebiegów w odstępach 5.
+W tym przykładzie wczesne zasady zakończenia są stosowane w każdej odstępach czasu, zaczynając od interwał oceny 5. Przebieg zostanie zakończony z upływem interwału 5, jeśli jego wydajność w interwale 5 jest w najmniejszej 20% wydajności wszystkich przebiegów w interwale 5.
 
 ### <a name="no-termination-policy"></a>Brak zasad zakończenia
 
@@ -246,7 +246,7 @@ policy=None
 
 ### <a name="default-policy"></a>Zasady domyślne
 
-Jeśli zostanie określona żadna zasada, hiperparametrycznego dostrajania usługi umożliwi wszystkich przebiegów szkoleniowych, które zostało ukończone.
+Jeśli żadna zasada nie zostanie określona, usługa strojenia parametrów będzie zezwalać na wykonywanie wszystkich operacji szkoleniowych.
 
 >[!NOTE] 
 >Jeśli szukasz zachowawcze zasady, które zapewnia oszczędności bez przerywania zadań obietnic można użyć zasad zatrzymywanie mediana z `evaluation_interval` 1 i `delay_evaluation` 5. Te są konserwatywnego ustawienia, które może zapewnić około 25 – 35% oszczędności bez utraty podstawową metrykę (oparte na naszych danych oceny).
@@ -275,7 +275,7 @@ max_total_runs=20,
 max_concurrent_runs=4
 ```
 
-Ten kod konfiguruje hiperparametrycznego dostrajania eksperymentu można użyć maksymalnie 20, łączna liczba uruchomień uruchamiania 4 konfiguracji w danym momencie.
+Ten kod umożliwia skonfigurowanie eksperymentu strojenia parametrów w celu użycia maksymalnie 20 łącznych uruchomień z czterema konfiguracjami jednocześnie.
 
 ## <a name="configure-experiment"></a>Konfigurowanie eksperymentu
 

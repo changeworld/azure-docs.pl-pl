@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 45b28b4d88c670a8b2ec34b93a342f06b80e02d7
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: efe5829ffbe4db304f9ffab0a259ab9d10279b27
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668482"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772688"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning
 
@@ -72,11 +72,11 @@ Maszyna wirtualna notesu to:
 
   Jeśli używasz kodu, maszyna wirtualna zawiera samouczki i przykłady ułatwiające eksplorowanie i Dowiedz się, jak korzystać z usługi Azure Machine Learning. Przykładowe notesy są przechowywane na koncie usługi Azure Blob Storage obszaru roboczego, dzięki czemu są one możliwe do udostępnienia między maszynami wirtualnymi. Po uruchomieniu mają również dostęp do magazynów danych i zasobów obliczeniowych obszaru roboczego.
 
-+ **Prosta konfiguracja**: Utwórz ją w dowolnym momencie w obszarze roboczym Azure Machine Learning. Podaj tylko nazwę i określ typ maszyny wirtualnej platformy Azure. Wypróbuj teraz, korzystając z [tego przewodnika Szybki Start: Aby rozpocząć pracę z Azure Machine Learning](quickstart-run-cloud-notebook.md), Użyj serwera notesu opartego na chmurze.
++ **Prosta konfiguracja**: Utwórz ją w dowolnym momencie w obszarze roboczym Azure Machine Learning. Podaj tylko nazwę i określ typ maszyny wirtualnej platformy Azure. Wypróbuj teraz ten [samouczek: Zainstaluj środowisko i obszar](tutorial-1st-experiment-sdk-setup.md)roboczy.
 
 + Możliwość **dostosowania**. Podczas zarządzanej i bezpiecznej oferty maszyn wirtualnych można zachować pełen dostęp do możliwości sprzętu i dostosować go do potrzeb serca. Na przykład szybko Utwórz najnowszą maszynę wirtualną NVidia V100, aby wykonać debugowanie krok po kroku nowej architektury sieci neuronowych.
 
-Aby zatrzymać naliczanie opłat za maszynę wirtualną dla notesu, [Zatrzymaj maszynę wirtualną notesu](quickstart-run-cloud-notebook.md#stop-the-notebook-vm).
+Aby zatrzymać naliczanie opłat za maszynę wirtualną dla notesu, [Zatrzymaj maszynę wirtualną notesu](tutorial-1st-experiment-sdk-setup.md#stop-the-notebook-vm). 
 
 ## <a id="dsvm"></a>Maszyna wirtualna do nauki o danych
 
@@ -294,7 +294,7 @@ Utwórz [klaster datakostki](https://docs.microsoft.com/azure/azure-databricks/q
 
 Użyj tych ustawień:
 
-| Ustawienie |Stosuje się do| Value |
+| Ustawienie |Stosuje się do| Wartość |
 |----|---|---|
 | Nazwa klastra |zawsze| yourclustername |
 | Środowisko uruchomieniowe usługi Databricks |zawsze| Dowolne środowisko uruchomieniowe inne niż ML (nie ML 4. x, 5. x) |

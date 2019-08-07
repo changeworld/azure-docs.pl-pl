@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 9906fe5de9c24f1b1a8c3f713fa772e56ed4e13f
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 135855ee33f783e85b398c7f9716c2c897633de9
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441957"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779537"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Planowanie sieci wirtualnej dla usługi Azure HDInsight
 
@@ -117,14 +117,14 @@ Platforma Azure udostępnia rozpoznawanie nazw dla usług platformy Azure, któr
 
 * Wszystkie zasoby, które są dostępne w Internecie. Na przykład microsoft.com, windowsupdate.com.
 
-* Wszystkie zasoby znajdujące się w tym samym Virtual Network platformy Azure przy użyciu __wewnętrznej nazwy DNS__ zasobu. Na przykład podczas korzystania z domyślnego rozpoznawania nazw, następujące przykładowe nazwy DNS są przypisane do węzłów procesu roboczego usługi HDInsight:
+* Wszystkie zasoby znajdujące się w tym samym Virtual Network platformy Azure przy użyciu __wewnętrznej nazwy DNS__ zasobu. Na przykład podczas korzystania z domyślnego rozpoznawania nazw, poniżej przedstawiono przykłady wewnętrznych nazw DNS przypisanych do węzłów procesu roboczego usługi HDInsight:
 
   * wn0-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
   * wn2-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
 
     Oba węzły mogą komunikować się bezpośrednio ze sobą oraz z innymi węzłami w usłudze HDInsight przy użyciu wewnętrznych nazw DNS.
 
-Domyślne rozpoznawanie nazw __nie zezwala usłudze__ HDInsight na rozpoznawanie nazw zasobów w sieciach, które są przyłączone do sieci wirtualnej. Na przykład często można przyłączyć sieć lokalną do sieci wirtualnej. Tylko w przypadku domyślnego rozpoznawania nazw Usługa HDInsight nie ma dostępu do zasobów w sieci lokalnej według nazwy. Przeciwieństwem jest również wartość true, zasoby w sieci lokalnej nie mogą uzyskać dostępu do zasobów w sieci wirtualnej według nazwy.
+Domyślne rozpoznawanie nazw nie zezwala usłudze HDInsight na rozpoznawanie nazw zasobów w sieciach, które są przyłączone do sieci wirtualnej. Na przykład często można przyłączyć sieć lokalną do sieci wirtualnej. Tylko w przypadku domyślnego rozpoznawania nazw Usługa HDInsight nie ma dostępu do zasobów w sieci lokalnej według nazwy. Przeciwieństwem jest również wartość true, zasoby w sieci lokalnej nie mogą uzyskać dostępu do zasobów w sieci wirtualnej według nazwy.
 
 > [!WARNING]  
 > Należy utworzyć niestandardowy serwer DNS i skonfigurować sieć wirtualną tak, aby korzystała z niej przed utworzeniem klastra usługi HDInsight.
@@ -224,7 +224,7 @@ Jeśli planujesz używać **grup zabezpieczeń sieci** do kontrolowania ruchu si
 
 3. Utwórz lub zmodyfikuj sieciowe grupy zabezpieczeń dla podsieci, w której ma zostać zainstalowana Usługa HDInsight.
 
-    * __Sieciowe grupy zabezpieczeń__: Zezwalaj  na ruch przychodzący na porcie __443__ z adresów IP. Dzięki temu usługi HDInsight Management Services mogą dotrzeć do klastra spoza sieci wirtualnej.
+    * __Sieciowe grupy zabezpieczeń__: Zezwalaj na ruch przychodzący na porcie __443__ z adresów IP. Dzięki temu usługi HDInsight Management Services mogą dotrzeć do klastra spoza sieci wirtualnej.
 
 Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń, zobacz [Omówienie sieciowych grup zabezpieczeń](../virtual-network/security-overview.md).
 
@@ -232,9 +232,9 @@ Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń, zobacz [
 
 Aby uzyskać więcej informacji na temat sterowania ruchem wychodzącym z klastrów usługi HDInsight, zobacz [Konfigurowanie ograniczenia ruchu sieciowego wychodzącego dla klastrów Azure HDInsight](hdinsight-restrict-outbound-traffic.md).
 
-#### <a name="forced-tunneling-to-on-premise"></a>Wymuszone tunelowanie do lokalnego
+#### <a name="forced-tunneling-to-on-premise"></a>Wymuszone tunelowanie do środowiska lokalnego
 
-Wymuszone tunelowanie jest konfiguracją routingu zdefiniowaną przez użytkownika, w której cały ruch z podsieci jest wymuszany w określonej sieci lub lokalizacji, na przykład w sieci lokalnej. Usługa HDInsight __nie obsługuje__ wymuszonego tunelowania ruchu do sieci lokalnych. 
+Wymuszone tunelowanie jest konfiguracją routingu zdefiniowaną przez użytkownika, w której cały ruch z podsieci jest wymuszany w określonej sieci lub lokalizacji, na przykład w sieci lokalnej. Usługa HDInsight nie obsługuje wymuszonego tunelowania ruchu do sieci lokalnych. 
 
 ## <a id="hdinsight-ip"></a>Wymagane adresy IP
 

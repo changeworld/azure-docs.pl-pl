@@ -1,27 +1,27 @@
 ---
-title: Strukturę szablonu usługi Azure Resource Manager i składnię | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, struktury i właściwości szablonów usługi Azure Resource Manager przy użyciu składni deklaratywnej JSON.
+title: Struktura i składnia szablonu Azure Resource Manager | Microsoft Docs
+description: Opisuje strukturę i właściwości szablonów Azure Resource Manager przy użyciu deklaracyjnej składni JSON.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/31/2019
+ms.date: 08/02/2019
 ms.author: tomfitz
-ms.openlocfilehash: ab8e4f5f6506f80b62c112298f73f95bc7fedeaf
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 9858e8a52888304edd48893db02faa992b356b3b
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204356"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774900"
 ---
-# <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Omówienie struktury i składni szablonów usługi Azure Resource Manager
+# <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Zrozumienie struktury i składni szablonów Azure Resource Manager
 
-W tym artykule opisano strukturę szablonu usługi Azure Resource Manager. Przedstawia on różne części szablonu i właściwości, które są dostępne w tych sekcjach. Szablon składa się z kodu JSON i wyrażeń, których można używać do tworzenia wartości na potrzeby wdrożenia.
+W tym artykule opisano strukturę szablonu Azure Resource Manager. Przedstawia różne sekcje szablonu i właściwości, które są dostępne w tych sekcjach. Szablon składa się z notacji JSON i wyrażeń, których można użyć do konstruowania wartości dla wdrożenia.
 
-Ten artykuł jest przeznaczony dla użytkowników, którzy posiadają pewną znajomość szablonów usługi Resource Manager. Zawiera ona szczegółowe informacje dotyczące struktury i składni szablonu. Jeśli chcesz, aby zapoznać się z wprowadzeniem do tworzenia szablonu, zobacz [Tworzenie pierwszego szablonu usługi Azure Resource Manager](resource-manager-create-first-template.md).
+Ten artykuł jest przeznaczony dla użytkowników, którzy mają pewną wiedzę z szablonami Menedżer zasobów. Zawiera szczegółowe informacje na temat struktury i składni szablonu. Jeśli chcesz utworzyć szablon, zobacz [Tworzenie pierwszego szablonu Azure Resource Manager](resource-manager-create-first-template.md).
 
 ## <a name="template-format"></a>Format szablonu
 
-W swojej najprostszej strukturze szablon zawiera następujące elementy:
+W najprostszym strukturze szablon zawiera następujące elementy:
 
 ```json
 {
@@ -38,20 +38,20 @@ W swojej najprostszej strukturze szablon zawiera następujące elementy:
 
 | Nazwa elementu | Wymagane | Opis |
 |:--- |:--- |:--- |
-| $schema |Tak |Lokalizacja pliku schematu JSON, który zawiera opis wersji języka szablonu.<br><br> Dla wdrożenia grupy zasobów użyj polecenia: `https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>W przypadku wdrożeń w subskrypcji należy użyć: `https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#` |
-| contentVersion |Tak |Wersja szablonu (na przykład 1.0.0.0). Możesz podać dowolną wartość dla tego elementu. Użyj tej wartości, aby udokumentować znaczące zmiany w szablonie. Podczas wdrażania zasobów przy użyciu szablonu, ta wartość może służyć do upewnij się, że używany jest odpowiedni szablon. |
-| apiProfile |Nie | Wersja interfejsu API, która służy jako zbiór wersje interfejsu API dla typów zasobów. Użyj tej wartości, aby uniknąć konieczności określania wersji interfejsu API dla każdego zasobu w szablonie. Gdy określać wersję interfejsu API w profilu, a nie określona wersja interfejsu API dla typu zasobu, Menedżer zasobów używa wersji interfejsu API dla tego typu zasobu, która jest zdefiniowana w profilu.<br><br>Właściwości profilu interfejsu API jest szczególnie przydatne w przypadku wdrażania szablonu w różnych środowiskach, takich jak Azure Stack i globalnej platformy Azure. Wersja profilu interfejs API umożliwia upewnij się, że Twój szablon automatycznie używa wersji, które są obsługiwane w obu środowiskach. Aby uzyskać listę bieżących wersji interfejsu API w profilu i zasobów, wersje interfejsów API, zdefiniowaną w profilu, zobacz [profilu interfejsu API](https://github.com/Azure/azure-rest-api-specs/tree/master/profile).<br><br>Aby uzyskać więcej informacji, zobacz [śledzenia wersji przy użyciu interfejsu API profilów](templates-cloud-consistency.md#track-versions-using-api-profiles). |
-| [parameters](#parameters) |Nie |Wartości, które znajdują się po wykonaniu wdrożenia do dostosowywania wdrażania zasobów. |
-| [variables](#variables) |Nie |Wartości, które są używane jako fragmenty JSON w szablonie, aby uprościć wyrażeń języka szablonu. |
+| $schema |Tak |Lokalizacja pliku schematu JSON opisującego wersję języka szablonu.<br><br> W przypadku wdrożeń grup zasobów Użyj:`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>W przypadku wdrożeń subskrypcji Użyj:`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#` |
+| contentVersion |Tak |Wersja szablonu (na przykład 1.0.0.0). Możesz podać dowolną wartość dla tego elementu. Użyj tej wartości, aby udokumentować znaczące zmiany w szablonie. W przypadku wdrażania zasobów przy użyciu szablonu Ta wartość może być używana do upewnienia się, że odpowiedni szablon jest używany. |
+| apiProfile |Nie | Wersja interfejsu API, która służy jako kolekcja wersji interfejsu API dla typów zasobów. Użyj tej wartości, aby uniknąć konieczności określania wersji interfejsu API dla każdego zasobu w szablonie. W przypadku określenia wersji profilu interfejsu API i nieokreślenia wersji interfejsu API dla typu zasobu Menedżer zasobów używa wersji interfejsu API dla tego typu zasobu, który jest zdefiniowany w profilu.<br><br>Właściwość profil interfejsu API jest szczególnie przydatna w przypadku wdrażania szablonu w różnych środowiskach, takich jak Azure Stack i globalny platformę Azure. Użyj wersji profilu interfejsu API, aby upewnić się, że szablon automatycznie używa wersji, które są obsługiwane w obu środowiskach. Listę bieżących wersji profilu interfejsu API i wersje interfejsu API zasobów zdefiniowane w profilu znajdują się w temacie [profil interfejsu API](https://github.com/Azure/azure-rest-api-specs/tree/master/profile).<br><br>Aby uzyskać więcej informacji, zobacz [śledzenie wersji przy użyciu profilów interfejsu API](templates-cloud-consistency.md#track-versions-using-api-profiles). |
+| [parameters](#parameters) |Nie |Wartości, które są dostarczane, gdy wdrożenie jest wykonywane w celu dostosowania wdrożenia zasobów. |
+| [variables](#variables) |Nie |Wartości, które są używane jako fragmenty JSON w szablonie, aby uprościć wyrażenia języka szablonów. |
 | [functions](#functions) |Nie |Funkcje zdefiniowane przez użytkownika, które są dostępne w ramach szablonu. |
-| [resources](#resources) |Yes |Typy zasobów, które są wdrożone lub zaktualizowane w grupie zasobów lub subskrypcji. |
+| [resources](#resources) |Yes |Typy zasobów wdrożone lub zaktualizowane w grupie zasobów lub subskrypcji. |
 | [outputs](#outputs) |Nie |Wartości, które są zwracane po wdrożeniu. |
 
-Każdy element ma właściwości, które można ustawić. W tym artykule opisano części szablonu bardziej szczegółowo.
+Każdy element ma właściwości, które można ustawić. W tym artykule opisano bardziej szczegółowe sekcje szablonu.
 
 ## <a name="syntax"></a>Składnia
 
-Podstawowa składnia szablonu jest JSON. Jednak można użyć wyrażenia rozszerzenie wartości JSON, dostępnych w ramach szablonu.  Wyrażenia pierwszym i ostatnim znakiem nawiasy: `[` i `]`, odpowiednio. Wartość wyrażenie jest oceniane podczas wdrażania szablonu. Wyrażenie może zwrócić ciąg, liczba całkowita, wartość logiczna, tablicy lub obiektu. Poniższy przykład pokazuje wyrażenie wartości domyślnej parametru:
+Podstawowa składnia szablonu to JSON. Można jednak użyć wyrażeń do rozszerania wartości JSON dostępnych w ramach szablonu.  Wyrażenia zaczynają się i kończą z `[` nawiasami: i `]`, odpowiednio. Wartość wyrażenia jest szacowana podczas wdrażania szablonu. Wyrażenie może zwracać ciąg, liczbę całkowitą, wartość logiczną, tablicę lub obiekt. Poniższy przykład przedstawia wyrażenie w wartości domyślnej parametru:
 
 ```json
 "parameters": {
@@ -62,33 +62,33 @@ Podstawowa składnia szablonu jest JSON. Jednak można użyć wyrażenia rozszer
 },
 ```
 
-W wyrażeniu składni `resourceGroup()` wywołuje jedną z funkcji udostępnianych przez Menedżera zasobów do użycia w ramach szablonu. Po prostu, tak jak w języku JavaScript, wywołania funkcji są sformatowane jako `functionName(arg1,arg2,arg3)`. Składnia `.location` pobiera jednej właściwości z obiektu zwróconego przez tę funkcję.
+W wyrażeniu składnia `resourceGroup()` wywołuje jedną z funkcji, które Menedżer zasobów zapewnia do użycia w ramach szablonu. Podobnie jak w języku JavaScript, wywołania funkcji są sformatowane `functionName(arg1,arg2,arg3)`jako. Składnia `.location` pobiera jedną właściwość z obiektu zwróconego przez tę funkcję.
 
-Szablon funkcji i ich parametrów jest rozróżniana wielkość liter. Na przykład usługi Resource Manager rozpoznaje **variables('var1')** i **VARIABLES('VAR1')** taka sama. Podczas oceny, chyba że funkcja modyfikuje wyraźnie przypadek (na przykład toUpper lub toLower), funkcja zachowuje wielkość liter. Niektóre typy zasobów może mieć wymagań dotyczących przypadków niezależnie od tego, jak są obliczane funkcje.
+W funkcjach szablonów i ich parametrach nie jest rozróżniana wielkość liter. Na przykład Menedżer zasobów rozpoznaje **zmienne ("var1")** i **zmienne ("var1")** jako takie same. W przypadku oceny, chyba że funkcja wyraźnie modyfikuje wielkość liter (na przykład toUpper lub toLower), funkcja zachowuje wielkość liter. Niektóre typy zasobów mogą mieć wymagania dotyczące wielkości liter niezależnie od sposobu szacowania funkcji.
 
-Być ciągiem literału, rozpoczynać lewy nawias kwadratowy `[` oraz kończyć się prawy nawias `]`, ale nie jest interpretowany jako wyrażenie, Dodaj nawias dodatkowych można uruchomić ciąg z `[[`. Na przykład zmiennej:
+Aby ciąg literału rozpoczynał się od lewego nawiasu `[` i kończyć się nawiasem klamrowym `]`, ale nie powinien być interpretowany jako wyrażenie, Dodaj dodatkowy nawias klamrowy, `[[`aby uruchomić ciąg. Na przykład zmienna:
 
 ```json
 "demoVar1": "[[test value]"
 ```
 
-Jest rozpoznawana jako `[test value]`.
+Jest rozpoznawany jako `[test value]`.
 
-Jednak jeśli ciągiem literału nie kończy się znakiem nawias kwadratowy, nie ucieczki pierwszym nawiasie kwadratowym. Na przykład zmiennej:
+Jeśli jednak ciąg literału nie kończy się nawiasem, nie należy określać pierwszego nawiasu. Na przykład zmienna:
 
 ```json
 "demoVar2": "[test] value"
 ```
 
-Jest rozpoznawana jako `[test] value`.
+Jest rozpoznawany jako `[test] value`.
 
-Aby przekazać wartość ciągu jako parametr do funkcji, należy używać cudzysłowów.
+Aby przekazać wartość ciągu jako parametr do funkcji, należy użyć apostrofów.
 
 ```json
 "name": "[concat('storage', uniqueString(resourceGroup().id))]"
 ```
 
-Jako znak ucieczki dla cudzysłowów w wyrażeniu, takie jak dodanie obiektu JSON w szablonie, należy użyć ukośnik odwrotny.
+Aby wypróbować podwójne cudzysłowy w wyrażeniu, takie jak dodanie obiektu JSON w szablonie, użyj ukośnika odwrotnego.
 
 ```json
 "tags": {
@@ -96,19 +96,19 @@ Jako znak ucieczki dla cudzysłowów w wyrażeniu, takie jak dodanie obiektu JSO
 },
 ```
 
-Wyrażenie szablonu nie może przekraczać 24 576 znaków.
+Wyrażenie szablonu nie może zawierać więcej niż 24 576 znaków.
 
-Aby uzyskać pełną listę funkcji szablonów, zobacz [funkcje szablonu usługi Azure Resource Manager](resource-group-template-functions.md). 
+Aby zapoznać się z pełną listą funkcji szablonu, zobacz [Azure Resource Manager Template Functions](resource-group-template-functions.md). 
 
 ## <a name="parameters"></a>Parametry
 
-W sekcji parametrów szablonu należy określić wartości, które należy wprowadzić podczas wdrażania zasobów. Te wartości parametrów umożliwiają dostosowanie wdrożenia, podając wartości, które są dostosowane do określonego środowiska (na przykład deweloperskim, testowym i produkcyjnym). Nie musisz podać parametry w szablonie, ale bez parametrów szablonu będzie zawsze wdrażać te same zasoby z tej samej nazwy, lokalizacji i właściwości.
+W sekcji Parametry szablonu należy określić, które wartości można wprowadzać podczas wdrażania zasobów. Te wartości parametrów umożliwiają dostosowanie wdrożenia przez zapewnienie wartości, które są dostosowane do określonego środowiska (na przykład deweloperskich, testowych i produkcyjnych). Nie musisz podawać parametrów w szablonie, ale bez parametrów szablon zawsze wdraża te same zasoby z tymi samymi nazwami, lokalizacjami i właściwościami.
 
-Wszystko jest ograniczona do 256 parametrów w szablonie. Aby zmniejszyć liczbę parametrów, należy za pomocą obiektów, które zawierają wiele właściwości, jak pokazano w tym artykule.
+W szablonie jest ograniczona do 256 parametrów. Możesz zmniejszyć liczbę parametrów za pomocą obiektów, które zawierają wiele właściwości, jak pokazano w tym artykule.
 
 ### <a name="available-properties"></a>Dostępne właściwości
 
-Dostępne właściwości parametru są:
+Dostępne właściwości dla parametru to:
 
 ```json
 "parameters": {
@@ -130,18 +130,18 @@ Dostępne właściwości parametru są:
 | Nazwa elementu | Wymagane | Opis |
 |:--- |:--- |:--- |
 | parameterName |Tak |Nazwa parametru. Musi być prawidłowym identyfikatorem języka JavaScript. |
-| type |Tak |Typ wartości parametru. Dozwolone typy i wartości są **ciąg**, **securestring**, **int**, **bool**, **obiektu**, **secureObject**, i **tablicy**. |
-| defaultValue |Nie |Wartość domyślna parametru, jeśli podano żadnej wartości dla parametru. |
-| allowedValues |Nie |Tablica dozwolonych wartości dla parametru upewnić się, że podano odpowiednie wartości. |
-| minValue |Nie |Wartość minimalna dla parametrów typu int, ta wartość jest włącznie. |
-| maxValue |Nie |Maksymalna wartość dla parametrów typu int, ta wartość jest włącznie. |
-| minLength |Nie |Minimalna długość ciągu, bezpieczny ciąg i Tablica parametrów typu, ta wartość jest włącznie. |
-| maxLength |Nie |Maksymalna długość ciągu, bezpieczny ciąg i Tablica parametrów typu, ta wartość jest włącznie. |
-| description |Nie |Opis parametru, który jest widoczny dla użytkowników za pośrednictwem portalu. Aby uzyskać więcej informacji, zobacz [komentarzy w szablonach](#comments). |
+| type |Yes |Typ wartości parametru. Dozwolone typy i wartości to **String**, **SecureString**, **int**, **bool**, **Object**, **secureobject**i **Array**. |
+| defaultValue |Nie |Wartość domyślna parametru, jeśli nie podano wartości dla parametru. |
+| allowedValues |Nie |Tablica dozwolonych wartości parametru, aby upewnić się, że podano odpowiednią wartość. |
+| minValue |Nie |Minimalna wartość parametrów typu int, ta wartość jest dopuszczalna. |
+| maxValue |Nie |Maksymalna wartość parametrów typu int, ta wartość jest dopuszczalna. |
+| minLength |Nie |Minimalna długość dla parametrów typu String, Secure String i Array, ta wartość jest włącznie. |
+| maxLength |Nie |Maksymalna długość parametrów ciągu, bezpiecznego ciągu i typu tablicy, ta wartość jest włącznie. |
+| description |Nie |Opis parametru, który jest wyświetlany użytkownikom w portalu. Aby uzyskać więcej informacji, zobacz [Komentarze w szablonach](#comments). |
 
-### <a name="define-and-use-a-parameter"></a>Definiowanie i korzystanie z parametru
+### <a name="define-and-use-a-parameter"></a>Definiowanie i używanie parametru
 
-Poniższy przykład pokazuje definicji parametru proste. Określa nazwę parametru i określa, że ma wartość ciągu. Parametr akceptuje tylko wartości, które mają sens dla zamierzonego użycia. Określa wartość domyślną, gdy wartość nie została podana podczas wdrażania. Na koniec ten parametr zawiera opis jego użycia.
+Poniższy przykład pokazuje prostą definicję parametru. Definiuje nazwę parametru i określa, że pobiera wartość ciągu. Parametr akceptuje tylko wartości, które mają sens dla zamierzonego użycia. Określa wartość domyślną, gdy podczas wdrażania nie podano żadnej wartości. Na koniec parametr zawiera opis użycia.
 
 ```json
 "parameters": {
@@ -162,7 +162,7 @@ Poniższy przykład pokazuje definicji parametru proste. Określa nazwę paramet
 }
 ```
 
-W szablonie możesz odwołać się do wartość parametru przy użyciu następującej składni:
+W szablonie należy odwołać się do wartości parametru o następującej składni:
 
 ```json
 "resources": [
@@ -178,7 +178,7 @@ W szablonie możesz odwołać się do wartość parametru przy użyciu następuj
 
 ### <a name="template-functions-with-parameters"></a>Funkcje szablonu z parametrami
 
-Podczas określania wartości domyślnej parametru, można użyć większości funkcji szablonu. Inną wartość parametru można użyć do tworzenia wartości domyślnej. Następujący szablon przedstawia korzystania z funkcji w wartości domyślne:
+Podczas określania wartości domyślnej dla parametru, można użyć większości funkcji szablonu. Możesz użyć innej wartości parametru do skompilowania wartości domyślnej. Poniższy szablon demonstruje użycie funkcji w wartości domyślnej:
 
 ```json
 "parameters": {
@@ -199,13 +199,13 @@ Podczas określania wartości domyślnej parametru, można użyć większości f
 }
 ```
 
-Nie można użyć `reference` funkcji w sekcji parametrów. Parametry są oceniane przed wdrożeniem, więc `reference` funkcji nie można pobrać stanu środowiska uruchomieniowego zasobu. 
+Nie można użyć `reference` funkcji w sekcji Parameters. Parametry są oceniane przed wdrożeniem, `reference` aby funkcja nie mogła pobrać stanu środowiska uruchomieniowego zasobu. 
 
-### <a name="objects-as-parameters"></a>Obiektów jako parametrów
+### <a name="objects-as-parameters"></a>Obiekty jako parametry
 
-Może być łatwiejsze do organizowania powiązanych wartości, przekazując je jako obiekt. Takie podejście zmniejsza się liczba parametrów w szablonie.
+Można łatwiej organizować powiązane wartości, przekazując je w postaci obiektu. Takie podejście zmniejsza również liczbę parametrów w szablonie.
 
-Zdefiniuj parametr w szablonie, a następnie podaj obiekt JSON zamiast pojedynczej wartości podczas wdrażania. 
+Zdefiniuj parametr w szablonie i Określ obiekt JSON zamiast pojedynczej wartości podczas wdrażania. 
 
 ```json
 "parameters": {
@@ -235,7 +235,7 @@ Zdefiniuj parametr w szablonie, a następnie podaj obiekt JSON zamiast pojedyncz
 },
 ```
 
-Następnie odwoływać właściwości podrzędnych parametru za pomocą operatora kropki.
+Następnie należy odwołać się do podwłaściwości parametru przy użyciu operatora kropki.
 
 ```json
 "resources": [
@@ -269,22 +269,22 @@ Następnie odwoływać właściwości podrzędnych parametru za pomocą operator
 ]
 ```
 
-### <a name="parameter-example-templates"></a>Parametr przykładowych szablonów
+### <a name="parameter-example-templates"></a>Przykładowe szablony parametrów
 
-Te przykładowe szablony pokazują niektóre scenariusze użycia parametrów. Wdróż je, aby przetestować sposób obsługi parametrów w różnych scenariuszach.
+Te przykładowe szablony przedstawiają niektóre scenariusze używania parametrów. Wdróż je w celu przetestowania sposobu obsługi parametrów w różnych scenariuszach.
 
 |Szablon  |Opis  |
 |---------|---------|
-|[Parametry, z funkcjami dla wartości domyślnych](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | Pokazuje, jak używać funkcji szablonu, podczas definiowania wartości domyślne parametrów. Szablon nie wdroży żadnych zasobów. On tworzy wartości parametrów i zwraca te wartości. |
-|[Parametr obiektu](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | Demonstruje użycie obiektu dla parametru. Szablon nie wdroży żadnych zasobów. On tworzy wartości parametrów i zwraca te wartości. |
+|[parametry z funkcjami dla wartości domyślnych](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | Pokazuje, jak używać funkcji szablonu podczas definiowania wartości domyślnych dla parametrów. Szablon nie wdraża żadnych zasobów. Konstruuje wartości parametrów i zwraca te wartości. |
+|[Parameter — obiekt](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | Demonstruje użycie obiektu dla parametru. Szablon nie wdraża żadnych zasobów. Konstruuje wartości parametrów i zwraca te wartości. |
 
 ## <a name="variables"></a>Zmienne
 
-W sekcji zmiennych konstruujesz wartości, których można użyć w szablonie. Nie trzeba zdefiniować zmienne, ale często upraszczają działania do szablonu, zmniejszając złożonych wyrażeń.
+W sekcji zmienne można skonstruować wartości, które mogą być używane w całym szablonie. Nie musisz definiować zmiennych, ale często upraszczamy szablon przez zredukowanie złożonych wyrażeń.
 
 ### <a name="available-definitions"></a>Dostępne definicje
 
-Poniższy przykład przedstawia dostępne opcje do definiowania zmiennej:
+W poniższym przykładzie przedstawiono dostępne opcje definiowania zmiennej:
 
 ```json
 "variables": {
@@ -311,11 +311,11 @@ Poniższy przykład przedstawia dostępne opcje do definiowania zmiennej:
 }
 ```
 
-Aby uzyskać informacje o używaniu `copy` Aby utworzyć kilka wartości zmiennej, zobacz [zmiennej iteracji](resource-group-create-multiple.md#variable-iteration).
+Aby uzyskać informacje o `copy` używaniu do tworzenia kilku wartości dla zmiennej, zobacz [zmienna iteracja](resource-group-create-multiple.md#variable-iteration).
 
-### <a name="define-and-use-a-variable"></a>Definiowanie i użyj zmiennej
+### <a name="define-and-use-a-variable"></a>Definiowanie i używanie zmiennej
 
-Poniższy przykład przedstawia definicję zmiennej. Tworzy wartość ciągu dla nazwy konta magazynu. Używa kilka funkcji szablonu, aby uzyskać wartości parametru i łączy ją z unikatowym ciągiem.
+W poniższym przykładzie przedstawiono definicję zmiennej. Tworzy wartość ciągu dla nazwy konta magazynu. Używa kilka funkcji szablonu do uzyskania wartości parametru i łączy ją z unikatowym ciągiem.
 
 ```json
 "variables": {
@@ -323,7 +323,7 @@ Poniższy przykład przedstawia definicję zmiennej. Tworzy wartość ciągu dla
 },
 ```
 
-Podczas definiowania zasobu jest używana zmienna.
+Zmienna jest używana podczas definiowania zasobu.
 
 ```json
 "resources": [
@@ -333,9 +333,9 @@ Podczas definiowania zasobu jest używana zmienna.
     ...
 ```
 
-### <a name="configuration-variables"></a>Zmienne konfiguracji
+### <a name="configuration-variables"></a>Zmienne konfiguracyjne
 
-Typy złożone JSON służy do definiowania powiązanych wartości dla środowiska.
+Za pomocą złożonych typów JSON można definiować powiązane wartości dla środowiska.
 
 ```json
 "variables": {
@@ -352,7 +352,7 @@ Typy złożone JSON służy do definiowania powiązanych wartości dla środowis
 },
 ```
 
-W parametrach utworzysz wartość, która wskazuje, która Konfiguracja wartości do użycia.
+W parametrach można utworzyć wartość wskazującą, które wartości konfiguracji mają być używane.
 
 ```json
 "parameters": {
@@ -366,36 +366,36 @@ W parametrach utworzysz wartość, która wskazuje, która Konfiguracja wartośc
 },
 ```
 
-Możesz pobrać bieżące ustawienia za pomocą:
+Bieżące ustawienia są pobierane z:
 
 ```json
 "[variables('environmentSettings')[parameters('environmentName')].instanceSize]"
 ```
 
-### <a name="variable-example-templates"></a>Przykład zmiennej szablonów
+### <a name="variable-example-templates"></a>Przykładowe szablony zmiennych
 
-Te przykładowe szablony pokazują niektóre scenariusze dotyczące używania zmiennych. Wdróż je do testowania, w jaki sposób zmienne są obsługiwane w różnych scenariuszach. 
+Te przykładowe szablony przedstawiają niektóre scenariusze używania zmiennych. Wdróż je w celu przetestowania sposobu obsługi zmiennych w różnych scenariuszach. 
 
 |Szablon  |Opis  |
 |---------|---------|
-| [definicje zmiennych](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | Demonstruje różne rodzaje zmiennych. Szablon nie wdroży żadnych zasobów. On tworzy wartości zmiennych i zwraca te wartości. |
-| [Zmienna konfiguracyjna](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | Zademonstrowano użycie zmiennej, która definiuje wartości konfiguracji. Szablon nie wdroży żadnych zasobów. On tworzy wartości zmiennych i zwraca te wartości. |
-| [reguł zabezpieczeń sieciowych](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) i [pliku parametrów](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json) | Tworzy tablicę w poprawnym formacie przypisywania zabezpieczeń reguły do sieciowej grupy zabezpieczeń. |
+| [Definicje zmiennych](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | Pokazuje różne typy zmiennych. Szablon nie wdraża żadnych zasobów. Konstruuje wartości zmiennych i zwraca te wartości. |
+| [Zmienna konfiguracyjna](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | Demonstruje użycie zmiennej, która definiuje wartości konfiguracyjne. Szablon nie wdraża żadnych zasobów. Konstruuje wartości zmiennych i zwraca te wartości. |
+| [reguły zabezpieczeń sieciowych](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) i [plik parametrów](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json) | Konstruuje tablicę w prawidłowym formacie do przypisywania reguł zabezpieczeń do sieciowej grupy zabezpieczeń. |
 
 
 ## <a name="functions"></a>Funkcje
 
-W ramach szablonu można utworzyć własne funkcje. Te funkcje są dostępne do użycia w szablonie. Zazwyczaj można zdefiniować złożone wyrażenie, które nie chcesz powtarzać w szablonie. Tworzyć funkcje zdefiniowane przez użytkownika z wyrażeń i [funkcje](resource-group-template-functions.md) , są obsługiwane w szablonach.
+W ramach szablonu można tworzyć własne funkcje. Te funkcje są dostępne do użycia w szablonie. Zwykle definiuje się wyrażenie złożone, które nie ma być powtarzane w całym szablonie. Funkcje zdefiniowane przez użytkownika można utworzyć na podstawie wyrażeń i [funkcji](resource-group-template-functions.md) obsługiwanych w szablonach.
 
-Podczas definiowania funkcji użytkownika, istnieją pewne ograniczenia:
+Podczas definiowania funkcji użytkownika istnieją pewne ograniczenia:
 
-* Funkcja nie może uzyskać dostęp do zmiennych.
-* Funkcja może używać tylko parametry, które są zdefiniowane w funkcji. Kiedy używasz [parametrów funkcji](resource-group-template-functions-deployment.md#parameters) w funkcji zdefiniowanej przez użytkownika, są ograniczone do parametrów dla tej funkcji.
-* Funkcja nie można wywołać inne funkcje zdefiniowane przez użytkownika.
-* Nie można użyć funkcji [odwoływać się do funkcji](resource-group-template-functions-resource.md#reference).
-* Parametry funkcji nie może mieć wartości domyślne.
+* Funkcja nie może uzyskać dostępu do zmiennych.
+* Funkcja może używać tylko parametrów, które są zdefiniowane w funkcji. Gdy używana jest [Funkcja Parameters](resource-group-template-functions-deployment.md#parameters) w funkcji zdefiniowanej przez użytkownika, są ograniczone do parametrów tej funkcji.
+* Funkcja nie może wywoływać innych funkcji zdefiniowanych przez użytkownika.
+* Funkcja nie może używać [funkcji Reference](resource-group-template-functions-resource.md#reference).
+* Parametry funkcji nie mogą mieć wartości domyślnych.
 
-Funkcje wymagają wartości przestrzeni nazw w celu uniknięcia konfliktu z funkcje szablonu nazw. Funkcja, która zwraca nazwę konta magazynu można znaleźć w poniższym przykładzie:
+Funkcje wymagają wartości przestrzeni nazw, aby uniknąć konfliktów nazw z funkcjami szablonu. W poniższym przykładzie pokazano funkcję zwracającą nazwę konta magazynu:
 
 ```json
 "functions": [
@@ -419,7 +419,7 @@ Funkcje wymagają wartości przestrzeni nazw w celu uniknięcia konfliktu z funk
 ],
 ```
 
-Możesz wywołać funkcję za pomocą:
+Wywoływanie funkcji z:
 
 ```json
 "resources": [
@@ -439,11 +439,11 @@ Możesz wywołać funkcję za pomocą:
 ```
 
 ## <a name="resources"></a>Zasoby
-W sekcji zasobów można zdefiniować zasoby, które są wdrożone lub aktualizowane.
+W sekcji Resources (zasoby) zdefiniujesz wdrożone lub zaktualizowane zasoby.
 
 ### <a name="available-properties"></a>Dostępne właściwości
 
-Możesz zdefiniować zasoby o następującej strukturze:
+Należy zdefiniować zasoby o następującej strukturze:
 
 ```json
 "resources": [
@@ -501,26 +501,26 @@ Możesz zdefiniować zasoby o następującej strukturze:
 
 | Nazwa elementu | Wymagane | Opis |
 |:--- |:--- |:--- |
-| condition | Nie | Wartość logiczna wskazująca, czy zasób zostanie udostępniony podczas tego wdrożenia. Gdy `true`, zasób jest tworzony podczas wdrażania. Gdy `false`, zasób jest pomijana dla tego wdrożenia. Zobacz [warunek](#condition). |
-| apiVersion |Yes |Wersja interfejsu API REST na potrzeby tworzenia zasobu. Aby określić dostępne wartości, zobacz [odwołanie do szablonu](/azure/templates/). |
-| type |Tak |Typ zasobu. Ta wartość jest kombinacją przestrzeń nazw dostawcy zasobów i typu zasobu (takie jak **magazyn.Microsoft/kontamagazynu**). Aby określić dostępne wartości, zobacz [odwołanie do szablonu](/azure/templates/). Zasoby podrzędne format typu zależy od tego, czy ma zagnieżdżone w obrębie zasobu nadrzędnego lub zdefiniowane poza zasobu nadrzędnego. Zobacz [zasoby podrzędne](#child-resources). |
-| name |Yes |Nazwa zasobu. Musi spełniać ograniczenia składnika identyfikatora URI zdefiniowane w RFC3986. Ponadto usługi platformy Azure, które uwidaczniają nazwę zasobu, aby poza strony zweryfikować nazwę aby upewnić się, że nie jest próba podszywały się pod innego tożsamości. Zasoby podrzędne format nazwy zależy od tego, czy ma zagnieżdżone w obrębie zasobu nadrzędnego lub zdefiniowane poza zasobu nadrzędnego. Zobacz [zasoby podrzędne](#child-resources). |
-| location |Różna |Obsługiwane lokalizacje geograficzne podane zasobu. Można wybrać jedną z dostępnych lokalizacji, ale zazwyczaj warto wybrać taki, który znajduje się w pobliżu użytkowników. Zazwyczaj także warto umieścić zasoby, które współdziałają ze sobą w tym samym regionie. Większość typów zasobów wymaga lokalizacji, ale niektóre typy (takie jak przypisania roli) nie wymagają lokalizacji. |
-| tags |Nie |Tagi, które są skojarzone z zasobem. Stosowanie tagów w celu logicznego uporządkowania zasobów w ramach subskrypcji. |
-| Komentarze |Nie |Notatki do dokumentowania zasobów w szablonie. Aby uzyskać więcej informacji, zobacz [komentarzy w szablonach](resource-group-authoring-templates.md#comments). |
-| Kopiuj |Nie |Jeśli potrzebna jest więcej niż jedno wystąpienie, liczba zasobów do utworzenia. Domyślnym trybem jest równoległe. Określ tryb serial, gdy nie mają wszystkie lub zasoby w celu wdrożenia w tym samym czasie. Aby uzyskać więcej informacji, zobacz [utworzyć kilka wystąpień zasobów w usłudze Azure Resource Manager](resource-group-create-multiple.md). |
-| dependsOn |Nie |Zasoby, które należy wdrożyć przed wdrożeniem tego zasobu. Menedżer zasobów ocenia zależności między zasobami i ich wdrażania w odpowiedniej kolejności. Gdy zasoby nie są zależne od siebie, są one wdrożone równolegle. Wartość może być zasobem listę rozdzielonych przecinkami nazw lub unikatowych identyfikatorów zasobów. Tylko Wyświetla listę zasobów, które są wdrażane w tym szablonie. Zasoby, które nie są zdefiniowane w tym szablonie musi już istnieć. Należy unikać Dodawanie zależności niepotrzebne, jak długo będą powolne wdrożenie i utworzyć zależności cykliczne. Aby uzyskać wskazówki dotyczące Ustawianie zależności, zobacz [Definiowanie zależności w szablonach usługi Azure Resource Manager](resource-group-define-dependencies.md). |
-| properties |Nie |Ustawienia konfiguracji specyficznych dla zasobów. Wartości właściwości są takie same jak wartość podana w treści żądania dla operacji interfejsu API REST (metodę PUT) w celu utworzenia zasobu. Można również określić tablicy kopiowania, aby utworzyć kilka wystąpień z właściwością. Aby określić dostępne wartości, zobacz [odwołanie do szablonu](/azure/templates/). |
-| sku | Nie | Niektóre zasoby Zezwalaj na wartości, które definiują jednostki SKU do wdrożenia. Na przykład można określić typu nadmiarowości konta magazynu. |
-| rodzaj | Nie | Niektóre zasoby zezwala na wartość, która definiuje typ zasobu, które można wdrożyć. Na przykład można określić typ usługi Cosmos DB do tworzenia. |
-| Plan | Nie | Niektóre zasoby Zezwalaj na wartości, które definiują plan do wdrożenia. Na przykład można określić obrazu portalu marketplace dla maszyny wirtualnej. | 
-| Zasoby |Nie |Zasoby podrzędne, które są zależne od zasobów, w trakcie definiowania. Podaj tylko typy zasobów, które są dozwolone w schemacie zasobu nadrzędnego. Zależność od zasobu nadrzędnego nie jest implikowane. Musisz jawnie zdefiniować tej zależności. Zobacz [zasoby podrzędne](#child-resources). |
+| condition | Nie | Wartość logiczna wskazująca, czy zasób zostanie zainicjowany podczas tego wdrożenia. Gdy `true`zasób jest tworzony podczas wdrażania. Gdy `false`zasób jest pomijany dla tego wdrożenia. Zobacz [warunek](#condition). |
+| apiVersion |Yes |Wersja interfejsu API REST do użycia podczas tworzenia zasobu. Aby określić dostępne wartości, zobacz [Dokumentacja szablonu](/azure/templates/). |
+| type |Yes |Typ zasobu. Ta wartość jest kombinacją przestrzeni nazw dostawcy zasobów i typu zasobu (np **. Microsoft. Storage/storageAccounts**). Aby określić dostępne wartości, zobacz [Dokumentacja szablonu](/azure/templates/). W przypadku zasobu podrzędnego format typu zależy od tego, czy jest on zagnieżdżony w obrębie zasobu nadrzędnego, czy zdefiniowany poza zasobem nadrzędnym. Zobacz [Set Name i Type dla zasobów podrzędnych](child-resource-name-type.md). |
+| name |Tak |Nazwa zasobu. Nazwa musi następować zgodnie z ograniczeniami składnika URI zdefiniowanymi w RFC3986. Ponadto usługi platformy Azure, które uwidaczniają nazwę zasobu podmiotom zewnętrznym, sprawdzają poprawność nazwy, aby upewnić się, że nie jest próbą sfałszowania innej tożsamości. W przypadku zasobu podrzędnego format nazwy zależy od tego, czy jest on zagnieżdżony w obrębie zasobu nadrzędnego, czy zdefiniowany poza zasobem nadrzędnym. Zobacz [Set Name i Type dla zasobów podrzędnych](child-resource-name-type.md). |
+| location |Różna |Obsługiwane lokalizacje geograficzne podanego zasobu. Można wybrać dowolną z dostępnych lokalizacji, ale zazwyczaj warto ją wybrać blisko użytkowników. Zwykle warto również umieścić zasoby, które współpracują ze sobą w tym samym regionie. Większość typów zasobów wymaga lokalizacji, ale niektóre typy (takie jak przypisanie roli) nie wymagają lokalizacji. |
+| tags |Nie |Tagi, które są skojarzone z zasobem. Zastosuj Tagi, aby logicznie organizować zasoby w ramach subskrypcji. |
+| komentarz |Nie |Twoje notatki umożliwiające dokumentowanie zasobów w szablonie. Aby uzyskać więcej informacji, zobacz [Komentarze w szablonach](resource-group-authoring-templates.md#comments). |
+| kopiuj |Nie |Jeśli potrzebujesz więcej niż jednego wystąpienia, liczba zasobów do utworzenia. Domyślny tryb jest równoległy. Określ tryb seryjny, gdy nie chcesz, aby wszystkie lub zasoby zostały wdrożone w tym samym czasie. Aby uzyskać więcej informacji, zobacz [Tworzenie kilku wystąpień zasobów w Azure Resource Manager](resource-group-create-multiple.md). |
+| dependsOn |Nie |Zasoby, które muszą zostać wdrożone przed wdrożeniem tego zasobu. Menedżer zasobów oblicza zależności między zasobami i wdraża je w odpowiedniej kolejności. Gdy zasoby nie są od siebie zależne, są wdrażane równolegle. Wartość może być rozdzielaną przecinkami listą nazw zasobów lub unikatowych identyfikatorów zasobów. Tylko zasoby, które są wdrożone w tym szablonie. Zasoby, które nie są zdefiniowane w tym szablonie, muszą już istnieć. Należy unikać dodawania niepotrzebnych zależności, ponieważ mogą one spowalniać wdrożenie i tworzyć zależności cykliczne. Aby uzyskać wskazówki dotyczące ustawiania zależności, zobacz [Definiowanie zależności w szablonach Azure Resource Manager](resource-group-define-dependencies.md). |
+| properties |Nie |Ustawienia konfiguracji dotyczące zasobów. Wartości właściwości są takie same jak wartości podane w treści żądania dla operacji interfejsu API REST (Metoda PUT), aby utworzyć zasób. Możesz również określić tablicę kopiowania, aby utworzyć kilka wystąpień właściwości. Aby określić dostępne wartości, zobacz [Dokumentacja szablonu](/azure/templates/). |
+| sku | Nie | Niektóre zasoby umożliwiają wartości, które definiują jednostkę SKU do wdrożenia. Na przykład można określić typ nadmiarowości dla konta magazynu. |
+| Natur | Nie | Niektóre zasoby umożliwiają wartości, która definiuje typ wdrażanego zasobu. Na przykład można określić typ Cosmos DB, który ma zostać utworzony. |
+| zamierza | Nie | Niektóre zasoby umożliwiają wartości definiujące plan do wdrożenia. Na przykład można określić obraz z witryny Marketplace dla maszyny wirtualnej. | 
+| zasoby |Nie |Zasoby podrzędne, które są zależne od definiowanego zasobu. Podaj tylko typy zasobów, które są dozwolone przez schemat zasobu nadrzędnego. Nie jest implikowana zależność od zasobu nadrzędnego. Należy jawnie zdefiniować tę zależność. Zobacz [Set Name i Type dla zasobów podrzędnych](child-resource-name-type.md). |
 
 ### <a name="condition"></a>Warunek
 
-Jeśli podczas wdrażania należy zdecydować, czy do utworzenia zasobu, użyj `condition` elementu. Wartość dla tego elementu jest rozpoznawana jako wartość true lub false. Zasób jest tworzony, gdy ma wartość true. Gdy wartość jest równa false, zasób nie jest tworzony. Wartość można zastosować tylko do całego zasobu.
+Jeśli podczas wdrażania należy zdecydować, czy należy utworzyć zasób, należy użyć `condition` elementu. Wartość dla tego elementu jest rozpoznawana jako true lub false. Gdy wartość jest równa true, zasób jest tworzony. Gdy wartość jest równa false, zasób nie zostanie utworzony. Wartość może zostać zastosowana tylko do całego zasobu.
 
-Zazwyczaj ta wartość służy w sytuacji, gdy chcesz utworzyć nowy zasób lub użyć istniejącego. Na przykład aby określić, czy nowe konto magazynu jest wdrożony lub istniejące konto magazynu jest używane, należy użyć:
+Zazwyczaj ta wartość jest używana, gdy chcesz utworzyć nowy zasób lub użyć istniejącego. Na przykład, aby określić, czy nowe konto magazynu zostało wdrożone, czy używane jest istniejące konto magazynu, użyj:
 
 ```json
 {
@@ -537,23 +537,23 @@ Zazwyczaj ta wartość służy w sytuacji, gdy chcesz utworzyć nowy zasób lub 
 }
 ```
 
-Dla szablonu kompletny przykład, który używa `condition` elementu, zobacz [maszyny Wirtualnej przy użyciu nowej lub istniejącej sieci wirtualnej, magazynu i publiczny adres IP](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions).
+Aby zapoznać się z kompletnym przykładowym `condition` szablonem, który używa elementu, zobacz [maszyna wirtualna z nowym lub istniejącym Virtual Network, magazynem i publicznym adresem IP](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions).
 
-Jeśli używasz [odwołania](resource-group-template-functions-resource.md#reference) lub [listy](resource-group-template-functions-resource.md#list) z zasobem warunkowo wdrożeniu funkcji szacowania funkcji będzie nawet, jeśli zasób nie jest wdrożona. Wystąpi błąd, jeśli funkcja odwołuje się do zasobu, który nie istnieje. Użyj [Jeśli](resource-group-template-functions-logical.md#if) funkcję, aby upewnić się, czy funkcja jest oceniane tylko warunki, gdy zasób jest wdrażany. Zobacz [Jeśli funkcja](resource-group-template-functions-logical.md#if) przykładowego szablonu, który używa, jeśli i odwołania z warunkowo wdrożony zasób.
+Jeśli używasz funkcji [odwołania](resource-group-template-functions-resource.md#reference) lub [listy](resource-group-template-functions-resource.md#list) z zasobem, który jest wdrażany warunkowo, funkcja jest oceniana, nawet jeśli zasób nie został wdrożony. Występuje błąd, jeśli funkcja odwołuje się do zasobu, który nie istnieje. Użyj funkcji [if](resource-group-template-functions-logical.md#if) , aby upewnić się, że funkcja jest obliczana tylko pod kątem warunków, gdy zasób jest wdrożony. Zobacz [funkcję if](resource-group-template-functions-logical.md#if) , aby zapoznać się z przykładowym szablonem, który używa if i Reference z wdrożonym warunkowo zasobem.
 
 ### <a name="resource-names"></a>Nazwy zasobów
 
-Ogólnie rzecz biorąc pracować z trzy typy nazw zasobów w usłudze Resource Manager:
+Ogólnie rzecz biorąc, pracujesz z trzema typami nazw zasobów w Menedżer zasobów:
 
 * Nazwy zasobów, które muszą być unikatowe.
-* Nazwy zasobów, które nie muszą być unikatowe, ale możesz zdecydować się na Podaj nazwę, która może pomóc w zidentyfikowaniu zasobu.
+* Nazwy zasobów, które nie muszą być unikatowe, ale wybierasz nazwę, która może ułatwić identyfikację zasobu.
 * Nazwy zasobów, które mogą być ogólne.
 
-Podaj **unikatowy zasób Nazwa** dla wszystkich typów zasobów, która ma punkt końcowy dostępu do danych. Niektóre typowe typy zasobów, które wymagają unikatowej nazwy obejmują:
+Podaj **unikatową nazwę zasobu** dla dowolnego typu zasobu, który ma punkt końcowy dostępu do danych. Niektóre popularne typy zasobów, które wymagają unikatowej nazwy, obejmują:
 
 * Azure Storage<sup>1</sup> 
 * Funkcje aplikacji internetowych w usłudze Azure App Service
-* Oprogramowanie SQL Server
+* SQL Server
 * W usłudze Azure Key Vault
 * Azure Cache for Redis
 * Azure Batch
@@ -561,9 +561,9 @@ Podaj **unikatowy zasób Nazwa** dla wszystkich typów zasobów, która ma punkt
 * Azure Search
 * Azure HDInsight
 
-<sup>1</sup> nazwy kont magazynu muszą być również małymi literami, 24 znaków lub mniej, a nie ma żadnych łączników.
+<sup>1</sup> nazwy kont magazynu muszą również zawierać małe litery, 24 znaki i nie zawierać żadnych łączników.
 
-Podczas ustawiania nazwy, można ręcznie utworzyć unikatową nazwę lub użyć [uniqueString()](resource-group-template-functions-string.md#uniquestring) funkcję, aby wygenerować nazwę. Możesz również chcieć dodać prefiks lub sufiks **uniqueString** wynik. Modyfikowanie unikatową nazwę może pomóc Ci łatwo zidentyfikować typ zasobu na podstawie nazwy. Na przykład można wygenerować unikatową nazwę konta magazynu przy użyciu następującą zmienną:
+Podczas ustawiania nazwy można ręcznie utworzyć unikatową nazwę lub użyć funkcji [uniqueString ()](resource-group-template-functions-string.md#uniquestring) w celu wygenerowania nazwy. Możesz również dodać prefiks lub sufiks do wyniku **uniqueString** . Modyfikowanie unikatowej nazwy może ułatwić łatwą identyfikację typu zasobu na podstawie nazwy. Na przykład można wygenerować unikatową nazwę konta magazynu za pomocą następującej zmiennej:
 
 ```json
 "variables": {
@@ -571,7 +571,7 @@ Podczas ustawiania nazwy, można ręcznie utworzyć unikatową nazwę lub użyć
 }
 ```
 
-Dla niektórych typów zasobów, możesz chcieć zapewnić **Nazwa do identyfikacji**, ale nazwa nie musi być unikatowa. Dla tych typów zasobów Podaj nazwę opisującą jego użycia lub właściwości.
+W przypadku niektórych typów zasobów można podać **nazwę do identyfikacji**, ale nazwa nie musi być unikatowa. W przypadku tych typów zasobów Podaj nazwę opisującą jego użycie lub charakterystykę.
 
 ```json
 "parameters": {
@@ -585,7 +585,7 @@ Dla niektórych typów zasobów, możesz chcieć zapewnić **Nazwa do identyfika
 }
 ```
 
-Dla zasobu typów, które przede wszystkim dostępu za pomocą innego zasobu, można użyć **nazwę rodzajową** jest zakodowane w szablonie. Na przykład można ustawić standardowy ogólnych nazwy dla reguł zapory na serwerze SQL server:
+W przypadku typów zasobów, do których użytkownik uzyskuje dostęp przez inny zasób, można użyć **nazwy ogólnej** , która jest zakodowana w szablonie. Na przykład można ustawić standardową nazwę generyczną dla reguł zapory na serwerze SQL:
 
 ```json
 {
@@ -597,11 +597,11 @@ Dla zasobu typów, które przede wszystkim dostępu za pomocą innego zasobu, mo
 
 ### <a name="resource-location"></a>Lokalizacja zasobu
 
-Podczas wdrażania szablonu, należy podać lokalizację każdego zasobu. Różne typy zasobów są obsługiwane w różnych lokalizacjach. Obsługiwane lokalizacje dla typu zasobu, można znaleźć [dostawcy zasobów platformy Azure i ich typy](resource-manager-supported-services.md).
+Podczas wdrażania szablonu należy podać lokalizację każdego zasobu. Różne typy zasobów są obsługiwane w różnych lokalizacjach. Aby uzyskać obsługiwane lokalizacje dla typu zasobu, zobacz [dostawcy zasobów platformy Azure i ich typy](resource-manager-supported-services.md).
 
-Użyj parametru, aby określić lokalizację dla zasobów, a wartość domyślna równa `resourceGroup().location`.
+Użyj parametru, aby określić lokalizację dla zasobów, i ustaw wartość domyślną na `resourceGroup().location`.
 
-Poniższy przykład przedstawia konta magazynu, który jest wdrożony w miejscu określonym jako parametr:
+Poniższy przykład przedstawia konto magazynu wdrożone w lokalizacji określonej jako parametr:
 
 ```json
 {
@@ -654,77 +654,9 @@ Poniższy przykład przedstawia konta magazynu, który jest wdrożony w miejscu 
 }
 ```
 
-### <a name="child-resources"></a>Zasoby podrzędne
+## <a name="outputs"></a>outputs
 
-W niektórych typów zasobów można także zdefiniować tablicę zasoby podrzędne. Zasoby podrzędne są zasoby, które istnieją tylko w kontekście innego zasobu. Na przykład bazę danych SQL nie może istnieć bez programu SQL server, więc baza danych jest elementem podrzędnym serwerze. Można zdefiniować bazy danych w ramach definicji dla serwera.
-
-```json
-{
-  "apiVersion": "2015-05-01-preview",
-  "type": "Microsoft.Sql/servers",
-  "name": "exampleserver",
-  ...
-  "resources": [
-    {
-      "apiVersion": "2017-10-01-preview",
-      "type": "databases",
-      "name": "exampledatabase",
-      ...
-    }
-  ]
-}
-```
-
-Ale nie trzeba zdefiniować bazy danych na serwerze. Można zdefiniować zasób podrzędny na najwyższym poziomie. Może być użycie tej metody, jeśli zasób nadrzędny nie jest wdrożony w tym samym szablonie, lub jeśli chcesz użyć `copy` utworzyć więcej niż jednego zasobu podrzędnego. W przypadku tej metody musisz podać typ zasobu pełnego i nazwy zasobów podrzędnych zawierają nazwę zasobu nadrzędnego.
-
-```json
-{
-  "apiVersion": "2015-05-01-preview",
-  "type": "Microsoft.Sql/servers",
-  "name": "exampleserver",
-  "resources": [ 
-  ],
-  ...
-},
-{
-  "apiVersion": "2017-10-01-preview",
-  "type": "Microsoft.Sql/servers/databases",
-  "name": "exampleserver/exampledatabase",
-  ...
-}
-```
-
-Wartość podana dla typu i nazwy różnią się zależnie od tego, czy zasób podrzędny jest zdefiniowany w ramach zasobu nadrzędnego lub na zewnątrz zasobu nadrzędnego.
-
-Gdy zagnieżdżony w zasobie nadrzędnym, należy użyć:
-
-```json
-"type": "{child-resource-type}",
-"name": "{child-resource-name}",
-```
-
-Gdy zdefiniowane poza zasobu nadrzędnego, należy użyć:
-
-```json
-"type": "{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}",
-"name": "{parent-resource-name}/{child-resource-name}",
-```
-
-Gdy zagnieżdżony, typ jest ustawiona na `databases` , ale jego typ pełnego zasobu jest nadal `Microsoft.Sql/servers/databases`. Nie podano `Microsoft.Sql/servers/` ponieważ zakłada się od typu zasobu nadrzędnego. Nazwa zasobu podrzędnego jest równa `exampledatabase` , ale Pełna nazwa zawiera nazwę nadrzędnej. Nie podano `exampleserver` ponieważ zakłada się, od zasobu nadrzędnego.
-
-Podczas tworzenia w pełni kwalifikowane odwołanie do zasobu, w kolejności łączenie segmentów z typu, a nazwa nie jest po prostu składa się z dwóch. Zamiast tego po przestrzeni nazw, należy użyć sekwencji *Nazwatypu/* pary z co najmniej określonych do bardziej konkretny od pozostałych:
-
-```json
-{resource-provider-namespace}/{parent-resource-type}/{parent-resource-name}[/{child-resource-type}/{child-resource-name}]*
-```
-
-Na przykład:
-
-`Microsoft.Compute/virtualMachines/myVM/extensions/myExt` jest poprawna `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` jest nieprawidłowy
-
-## <a name="outputs"></a>Dane wyjściowe
-
-W sekcji danych wyjściowych należy określić wartości, które są zwracane z wdrożenia. Zwykle zwracane wartości od zasobów, które zostały wdrożone.
+W sekcji danych wyjściowych należy określić wartości, które są zwracane z wdrożenia. Zazwyczaj zwracane są wartości z zasobów, które zostały wdrożone.
 
 ### <a name="available-properties"></a>Dostępne właściwości
 
@@ -743,8 +675,8 @@ Poniższy przykład pokazuje strukturę definicję danych wyjściowych:
 | Nazwa elementu | Wymagane | Opis |
 |:--- |:--- |:--- |
 | outputName |Yes |Nazwa wartości danych wyjściowych. Musi być prawidłowym identyfikatorem języka JavaScript. |
-| condition |Nie | Wartość logiczna wskazująca, czy to danych wyjściowych wartość jest zwracana. Gdy `true`, wartość jest uwzględniona w danych wyjściowych dla wdrożenia. Gdy `false`, wartość wyjściowa jest pomijana dla tego wdrożenia. Jeśli nie zostanie określony, wartością domyślną jest `true`. |
-| type |Yes |Typ wartości danych wyjściowych. Wartości wyjściowe obsługują te same typy jako parametrów wejściowych szablonu. Jeśli określisz **securestring** dla typu danych wyjściowych wartość nie jest wyświetlane w historii wdrożenia i nie można pobrać z innego szablonu. Aby użyć wartość wpisu tajnego w więcej niż jeden szablon, przechowywać klucz tajny w usłudze Key Vault i odwoływać się do klucza tajnego w pliku parametrów. Aby uzyskać więcej informacji, zobacz [użycia usługi Azure Key Vault do przekazywania wartości parametru secure podczas wdrażania](resource-manager-keyvault-parameter.md). |
+| condition |Nie | Wartość logiczna wskazująca, czy ta wartość wyjściowa jest zwracana. Gdy `true`wartość jest uwzględniona w danych wyjściowych dla wdrożenia. Gdy `false`wartość wyjściowa jest pomijana dla tego wdrożenia. Gdy nie zostanie określony, wartość domyślna to `true`. |
+| type |Yes |Typ wartości danych wyjściowych. Wartości wyjściowe obsługują te same typy jako parametrów wejściowych szablonu. W przypadku określenia elementu **SecureString** dla typu danych wyjściowych wartość nie jest wyświetlana w historii wdrożenia i nie można jej pobrać z innego szablonu. Aby użyć wartości klucza tajnego w więcej niż jednym szablonie, należy zapisać klucz tajny w Key Vault i odwołać się do wpisu tajnego w pliku parametrów. Aby uzyskać więcej informacji, zobacz [używanie Azure Key Vault do przekazywania zabezpieczonej wartości parametrów podczas wdrażania](resource-manager-keyvault-parameter.md). |
 | value |Yes |Wyrażenie języka szablonu, który jest obliczany i zwracany, jako wartość danych wyjściowych. |
 
 ### <a name="define-and-use-output-values"></a>Definiowanie i korzystanie z wartości danych wyjściowych
@@ -760,7 +692,7 @@ Poniższy przykład pokazuje, jak zwraca identyfikator zasobu dla publicznego ad
 }
 ```
 
-W kolejnym przykładzie pokazano sposób zwracania warunkowo, czy jest to nowy, jeden został wdrożony na podstawie Identyfikatora zasobu, opłata za publiczny adres IP:
+W następnym przykładzie pokazano, jak warunkowo zwrócić identyfikator zasobu dla publicznego adresu IP na podstawie tego, czy został wdrożony nowy:
 
 ```json
 "outputs": {
@@ -772,7 +704,7 @@ W kolejnym przykładzie pokazano sposób zwracania warunkowo, czy jest to nowy, 
 }
 ```
 
-Dla prostego przykładu warunkowych danych wyjściowych, zobacz [szablonu warunkowych danych wyjściowych](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/conditional-output/azuredeploy.json).
+Aby uzyskać prosty przykład danych wyjściowych warunkowych, zobacz [warunkowy szablon danych wyjściowych](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/conditional-output/azuredeploy.json).
 
 Po wdrożeniu można pobrać wartość za pomocą skryptu. W przypadku programu PowerShell użyj polecenia:
 
@@ -790,7 +722,7 @@ Możesz pobrać wartość danych wyjściowych z dołączonego szablonu, za pomoc
 
 Podczas pobierania właściwości danych wyjściowych z dołączonego szablonu, nazwy właściwości nie może zawierać kreskę.
 
-Poniższy przykład pokazuje, jak skonfigurować adres IP modułu równoważenia obciążenia, poprzez pobranie wartości z połączonych szablonu.
+Poniższy przykład pokazuje, jak ustawić adres IP dla modułu równoważenia obciążenia przez pobranie wartości z połączonego szablonu.
 
 ```json
 "publicIPAddress": {
@@ -800,7 +732,7 @@ Poniższy przykład pokazuje, jak skonfigurować adres IP modułu równoważenia
 
 Nie można użyć `reference` funkcji w danych wyjściowych części [zagnieżdżonych szablonów](resource-group-linked-templates.md#link-or-nest-a-template). Aby zwrócić wartości dla zasobów wdrożonych w zagnieżdżonych szablonów, należy przekonwertować zagnieżdżony szablon do dołączonego szablonu.
 
-### <a name="output-example-templates"></a>Dane wyjściowe przykładowych szablonów
+### <a name="output-example-templates"></a>Przykładowe szablony danych wyjściowych
 
 |Szablon  |Opis  |
 |---------|---------|
@@ -813,9 +745,9 @@ Nie można użyć `reference` funkcji w danych wyjściowych części [zagnieżd�
 
 ## <a name="comments-and-metadata"></a>Komentarze i metadane
 
-Masz kilka opcji dodawania komentarzy i metadane szablonu.
+Istnieje kilka opcji dodawania komentarzy i metadanych do szablonu.
 
-Możesz dodać `metadata` obiektu praktycznie dowolnym miejscu w szablonie. Menedżer zasobów ignoruje obiektu, ale edytora JSON może ostrzega użytkownika, że właściwość jest nieprawidłowa. W obiekcie Zdefiniuj właściwości, których potrzebujesz.
+`metadata` Obiekt można dodać niemal w dowolnym miejscu w szablonie. Menedżer zasobów ignoruje obiekt, ale Edytor JSON może ostrzec, że właściwość jest nieprawidłowa. W obiekcie Zdefiniuj potrzebne właściwości.
 
 ```json
 {
@@ -827,7 +759,7 @@ Możesz dodać `metadata` obiektu praktycznie dowolnym miejscu w szablonie. Mene
   },
 ```
 
-Aby uzyskać **parametry**, Dodaj `metadata` obiekt z `description` właściwości.
+Dla **parametrów**Dodaj `metadata` obiekt z `description` właściwością.
 
 ```json
 "parameters": {
@@ -839,11 +771,11 @@ Aby uzyskać **parametry**, Dodaj `metadata` obiekt z `description` właściwoś
   },
 ```
 
-Podczas wdrażania szablonu za pośrednictwem portalu, tekst, który należy podać w opisie automatycznie służy jako wskazówka dla tego parametru.
+Podczas wdrażania szablonu za pomocą portalu, tekst w opisie jest automatycznie używany jako Porada dla tego parametru.
 
-![Pokaż podpowiedź do parametru](./media/resource-group-authoring-templates/show-parameter-tip.png)
+![Pokaż poradę dotyczącą parametrów](./media/resource-group-authoring-templates/show-parameter-tip.png)
 
-Aby uzyskać **zasobów**, Dodaj `comments` elementu lub obiektu metadanych. Poniższy przykład pokazuje element komentarze i obiektu metadanych.
+W przypadku **zasobów**Dodaj `comments` element lub obiekt metadanych. W poniższym przykładzie pokazano zarówno element komentarzy, jak i obiekt metadanych.
 
 ```json
 "resources": [
@@ -869,7 +801,7 @@ Aby uzyskać **zasobów**, Dodaj `comments` elementu lub obiektu metadanych. Pon
 ]
 ```
 
-Aby uzyskać **generuje**, dodanie obiektu metadanych do wartości danych wyjściowych.
+Wprzypadku danych wyjściowych Dodaj obiekt metadanych do wartości wyjściowej.
 
 ```json
 "outputs": {
@@ -882,9 +814,9 @@ Aby uzyskać **generuje**, dodanie obiektu metadanych do wartości danych wyjśc
   },
 ```
 
-Nie można dodać obiektu metadanych funkcje zdefiniowane przez użytkownika.
+Nie można dodać obiektu metadanych do funkcji zdefiniowanych przez użytkownika.
 
-Komentarze w tekście, można użyć `//` , ale ta składnia nie działa w przypadku wszystkich narzędzi. Nie można użyć wiersza polecenia platformy Azure, aby wdrożyć szablon przy użyciu komentarze w tekście. Ponadto edytor szablonów portalu nie można użyć do pracy nad szablonów za pomocą komentarze w tekście. Jeśli dodasz ten styl komentarza, upewnij się, narzędzia, których używasz komentarze JSON w tekście pomocy technicznej.
+W przypadku komentarzy wbudowanych można użyć `//` , ale ta składnia nie działa z wszystkimi narzędziami. Nie można użyć interfejsu wiersza polecenia platformy Azure, aby wdrożyć szablon z wbudowanymi komentarzami. Nie można używać edytora szablonów portalu do pracy nad szablonami z wbudowanymi komentarzami. W przypadku dodania tego stylu komentarza upewnij się, że narzędzia, z których korzystasz, obsługują wbudowane Komentarze JSON.
 
 ```json
 {
@@ -898,19 +830,19 @@ Komentarze w tekście, można użyć `//` , ale ta składnia nie działa w przyp
   ],
 ```
 
-W programie VS Code można ustawić tryb języka na format JSON za pomocą komentarzy. Komentarze w tekście są już oznaczone jako nieprawidłowe. Aby zmienić tryb:
+W VS Code można ustawić tryb języka na JSON z komentarzami. Komentarze w tekście nie są już oznaczone jako nieprawidłowe. Aby zmienić tryb:
 
-1. Otwórz zaznaczenie tryb języka (Ctrl + K M)
+1. Otwórz zaznaczenie trybu języka (Ctrl + K M)
 
-1. Wybierz **JSON z komentarzami**.
+1. Wybierz pozycję **JSON z komentarzami**.
 
    ![Wybierz tryb języka](./media/resource-group-authoring-templates/select-json-comments.png)
 
 [!INCLUDE [arm-tutorials-quickstarts](../../includes/resource-manager-tutorials-quickstarts.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Aby wyświetlić pełną listę szablonów dla wielu różnych rozwiązań, zobacz [Szablony szybkiego startu platformy Azure](https://azure.microsoft.com/documentation/templates/).
 * Aby uzyskać szczegółowe informacje na temat funkcji, możesz użyć w szablonie, zobacz [funkcje szablonu usługi Azure Resource Manager](resource-group-template-functions.md).
-* Aby połączyć kilka szablonów, podczas wdrażania, zobacz [przy użyciu szablonów połączonych z usługą Azure Resource Manager](resource-group-linked-templates.md).
-* Aby uzyskać zalecenia dotyczące tworzenia szablonów, zobacz [najlepszych rozwiązań dla szablonu usługi Azure Resource Manager](template-best-practices.md).
-* Aby uzyskać zalecenia dotyczące tworzenia szablonów usługi Resource Manager, korzystające ze wszystkimi środowiskami platformy Azure i usługi Azure Stack, zobacz [szablony Tworzenie usługi Azure Resource Manager w celu zachowania spójności chmury](templates-cloud-consistency.md).
+* Aby połączyć kilka szablonów podczas wdrażania, zobacz [Używanie połączonych szablonów z Azure Resource Manager](resource-group-linked-templates.md).
+* Zalecenia dotyczące tworzenia szablonów można znaleźć w temacie [Azure Resource Manager Best Practices Template](template-best-practices.md).
+* Aby zapoznać się z zaleceniami dotyczącymi tworzenia Menedżer zasobów szablonów, których można używać we wszystkich środowiskach platformy Azure i Azure Stack, zobacz [opracowywanie szablonów Azure Resource Manager dla spójności chmury](templates-cloud-consistency.md).

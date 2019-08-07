@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 974243da07a2570e851b7d44eac2556c201c2782
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 3c81ec5e213364ed6f159fd20e12879a098caad4
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678524"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774985"
 ---
 # <a name="mapping-data-flow-select-transformation"></a>Mapowanie wybierania przepływu danych
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
@@ -32,9 +32,11 @@ Opcji wybierz można także użyć jako sposobu usuwania kolumn z przepływu dan
 ## <a name="options"></a>Opcje
 * Ustawieniem domyślnym dla opcji "Select" jest uwzględnianie wszystkich kolumn przychodzących i zachowywanie tych oryginalnych nazw. Strumień można aliasować przez ustawienie nazwy przekształcenia SELECT.
 * Aby określić alias poszczególnych kolumn, usuń zaznaczenie opcji "Zaznacz wszystko" i użyj mapowania kolumn u dołu.
-* Wybierz pozycję Pomiń duplikaty, aby wyeliminować zduplikowane kolumny z metadanych wejściowych lub wyjściowych.
+* Wybierz pozycję Pomiń duplikaty, aby wyeliminować zduplikowane kolumny z metadanych danych wejściowych lub wyjściowych.
 
 ![Pomiń duplikaty](media/data-flow/select-skip-dup.png "Pomiń duplikaty")
+
+* Po wybraniu opcji pomijania duplikatów wyniki będą widoczne na karcie Inspekcja. ADF będzie przechowywać pierwsze wystąpienie kolumny i zobaczysz, że wszystkie kolejne wystąpienia tej samej kolumny zostały usunięte z przepływu.
 
 > [!NOTE]
 > Aby wyczyścić reguły mapowania, naciśnij przycisk **Resetuj** .

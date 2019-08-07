@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 7/30/2019
-ms.openlocfilehash: 780b9ae6e4664af86fa655c9136193bed58526d9
-ms.sourcegitcommit: 6ad03fa28a0f60cb6dce6144f728c2ceb56ff6e2
+ms.openlocfilehash: a61ddf57d4f01fcaf4a949add29c677aa94060a9
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68708500"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827847"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Używanie Azure Data Factory do migrowania danych z usługi Data Lake lub magazynu danych na platformę Azure 
 
@@ -26,7 +26,7 @@ Azure Data Factory może być narzędziem do migracji danych, gdy chcesz migrowa
 - Migracja obciążenia danych Big Data z AWS S3, Premium systemu plików Hadoop do platformy Azure. 
 - ROZSZERZENIA migrację z rozwiązań Oracle Exadata, Netezza, Teradata, AWS RedShift do platformy Azure. 
 
-Azure Data Factory można przenieść "poziom danych usługi PBs" na potrzeby migracji danych i dziesiątek TB danych na potrzeby migracji magazynu danych. 
+Azure Data Factory może przenosić usługę PBs z danych na potrzeby migracji usługi Data Lake i dziesiątki TB danych na potrzeby migracji magazynu danych. 
 
 ## <a name="why-azure-data-factory-can-be-used-for-data-migration"></a>Dlaczego Azure Data Factory można używać do migracji danych 
 
@@ -59,4 +59,4 @@ Jeśli chcesz ukończyć migrację danych w ciągu dwóch tygodni (okno migracji
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Kopiowanie plików z wielu kontenerów za pomocą Azure Data Factory](solution-template-copy-files-multiple-containers.md)
+- [Migrowanie danych z AWS S3 na platformę Azure](data-migration-guidance-s3-azure-storage.md)

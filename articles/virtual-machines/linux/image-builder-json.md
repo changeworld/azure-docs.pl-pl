@@ -7,12 +7,12 @@ ms.date: 07/31/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: a623aa98cd26e1636e47cb0e2831eeced17935b9
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: abaf96b11abee0bf519a276f825b9c47cd333c1b
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695405"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816322"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Wersja zapoznawcza: Tworzenie szablonu usługi Azure Image Builder 
 
@@ -65,7 +65,11 @@ Lokalizacja to region, w którym zostanie utworzony obraz niestandardowy. W przy
 ```json
     "location": "<region>",
 ```
-    
+
+## <a name="tags"></a>`Tags`
+
+Są to pary klucz/wartość, które można określić dla generowanego obrazu.
+
 ## <a name="depends-on-optional"></a>Zależy od (opcjonalnie)
 
 Tej opcjonalnej sekcji można użyć, aby upewnić się, że zależności zostały ukończone przed kontynuowaniem. 
@@ -259,7 +263,7 @@ Obsługa systemu operacyjnego: Linux
 Dostosuj właściwości:
 
 - **Typ** — Shell 
-- Nazwa **— Nazwa** do śledzenia dostosowania 
+- Nazwa — nazwa do śledzenia dostosowania 
 - **scriptUri** -URI do lokalizacji pliku 
 - **wbudowana** tablica poleceń powłoki, rozdzielonych przecinkami.
  
@@ -344,7 +348,8 @@ Jest to obsługiwane przez katalogi systemu Windows i ścieżki Linux, ale istni
  
 Jeśli wystąpi błąd podczas próby pobrania pliku lub umieszczenia go w określonym katalogu, krok dostosowywania zakończy się niepowodzeniem i będzie on znajdować się w pliku customization. log.
 
->> Korygując! Program do dostosowywania plików jest odpowiedni dla małych plików do pobrania, < baza. W przypadku większych pobrań plików Użyj skryptu lub polecenia wbudowanego, a następnie użyj kodu do pobrania plików, takich jak `wget` Linux `curl`lub Windows, `Invoke-WebRequest`.
+> [!NOTE]
+> Program do dostosowywania plików jest odpowiedni dla małych plików do pobrania, < baza. W przypadku większych pobrań plików Użyj skryptu lub polecenia wbudowanego, a następnie użyj kodu do pobrania plików, takich jak `wget` Linux `curl`lub Windows, `Invoke-WebRequest`.
 
 Pliki w obszarze dostosowywania plików można pobrać z usługi Azure Storage przy użyciu pliku [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage).
 
@@ -493,7 +498,7 @@ az resource show \
 > [!NOTE]
 > Po utworzeniu dysku VHD skopiuj go do innej lokalizacji tak szybko, jak to możliwe. Wirtualny dysk twardy jest przechowywany na koncie magazynu w tymczasowej grupie zasobów utworzonej podczas przesyłania szablonu obrazu do usługi Azure Image Builder. Usunięcie szablonu obrazu spowoduje utratę wirtualnego dysku twardego. 
  
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Istnieją przykładowe pliki JSON dla różnych scenariuszy w witrynie [GitHub usługi Azure Image Builder](https://github.com/danielsollondon/azvmimagebuilder).
  

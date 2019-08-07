@@ -1,6 +1,6 @@
 ---
 title: Uwierzytelnianie na platformie tożsamości firmy Microsoft | Azure
-description: Dowiedz się więcej o uwierzytelnianiu platformie tożsamości firmy Microsoft, jej modelu interfejsu API, inicjowanie obsługi administracyjnej i najbardziej typowych scenariuszy uwierzytelniania tego platforma tożsamości firmy Microsoft obsługuje.
+description: Dowiedz się więcej o uwierzytelnianiu w usłudze Microsoft Identity platform, modelu aplikacji, interfejsie API, aprowizacji i najczęściej spotykanych scenariuszach uwierzytelniania obsługiwanych przez platformę Microsoft Identity.
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -10,7 +10,7 @@ ms.assetid: 0c84e7d0-16aa-4897-82f2-f53c6c990fd9
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/05/2019
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b35d2e21de3da184496da53fdf46d865fdfdf5c7
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: 7883c32e60a09c6fdfc4146c30472cfcdb57b689
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734483"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835187"
 ---
 # <a name="what-is-authentication"></a>Co to jest uwierzytelnianie?
 
@@ -31,14 +31,14 @@ ms.locfileid: "66734483"
 
 *Autoryzacja* to przyznanie uprawnienia uwierzytelnionemu podmiotowi zabezpieczeń do wykonania jakiegoś zadania. Autoryzacja określa, do jakich danych można uzyskać dostęp oraz jakie zadania można na nich wykonać. Autoryzacja jest czasami określana terminem AuthZ.
 
-Platforma tożsamości usługi Microsoft upraszcza uwierzytelniania dla deweloperów aplikacji, zapewniając tożsamość jako usługa, za pomocą obsługi protokoły będące standardami branżowymi, takie jak OAuth 2.0 i OpenID Connect, a także bibliotek typu open source dla różnych platform, aby ułatwiają rozpoczęcie tworzenia kodu szybko.
+Platforma tożsamości firmy Microsoft upraszcza uwierzytelnianie dla deweloperów aplikacji, dostarczając tożsamość jako usługę, z obsługą protokołów standardowych branżowych, takich jak OAuth 2,0 i OpenID Connect Connect, a także bibliotek typu "open source" dla różnych platform do Pomóż szybko rozpocząć tworzenie kodu.
 
-Istnieją dwa główne przypadki użycia w modelu programowania platforma tożsamości firmy Microsoft:
+W modelu programowania platformy tożsamości firmy Microsoft istnieją dwa podstawowe przypadki użycia:
 
 * Podczas przepływu autoryzacji OAuth 2.0 — gdy właściciel zasobu przyznaje autoryzację do aplikacji klienckiej, co umożliwia klientowi uzyskanie dostępu do zasobów właściciela zasobu.
 * Podczas dostępu do zasobu przez klienta — zgodnie z implementacją serwera zasobów, przy użyciu wartości oświadczeń obecnych w tokenie dostępu na potrzeby podejmowania na ich podstawie decyzji dotyczących kontroli dostępu.
 
-## <a name="authentication-basics-in-microsoft-identity-platform"></a>Uwierzytelnianie podstawowe informacje o platformie tożsamości firmy Microsoft
+## <a name="authentication-basics-in-microsoft-identity-platform"></a>Podstawowe informacje o uwierzytelnianiu na platformie tożsamości firmy Microsoft
 
 Rozpatrzymy tutaj najprostszy scenariusz, w którym wymagana jest tożsamość: użytkownik w przeglądarce internetowej musi się uwierzytelnić w aplikacji internetowej. Na poniższym diagramie przedstawiono ten scenariusz:
 
@@ -47,8 +47,8 @@ Rozpatrzymy tutaj najprostszy scenariusz, w którym wymagana jest tożsamość: 
 Poniżej opisano poszczególne składniki wyświetlane na diagramie:
 
 * Platforma tożsamości firmy Microsoft jest dostawcą tożsamości. Dostawca tożsamości jest odpowiedzialny za weryfikację tożsamości użytkowników i aplikacji, które istnieją w katalogu organizacji. Wystawia on także tokeny zabezpieczające po pomyślnym uwierzytelnieniu tych użytkowników i aplikacji.
-* Aplikacja, która chce oddelegowania procesów uwierzytelniania do platformą Microsoft identity musi być zarejestrowany w usłudze Azure Active Directory (Azure AD). Usługa Azure AD rejestruje i unikatowo identyfikuje aplikację w katalogu.
-* Deweloperzy mogą używać bibliotek uwierzytelniania typu open source firmy Microsoft tożsamości platformy, aby ułatwić uwierzytelnianie dzięki obsłudze szczegółów protokołu dla Ciebie. Aby uzyskać więcej informacji, zobacz platforma tożsamości usługi Microsoft [bibliotek uwierzytelniania v2.0](reference-v2-libraries.md) i [bibliotek uwierzytelniania v1.0](active-directory-authentication-libraries.md).
+* Aplikacja, która chce przeprowadzić uwierzytelnianie w usłudze Microsoft Identity platform, musi być zarejestrowana w Azure Active Directory (Azure AD). Usługa Azure AD rejestruje i unikatowo identyfikuje aplikację w katalogu.
+* Deweloperzy mogą korzystać z bibliotek uwierzytelniania platformy Microsoft Identity platform, aby ułatwić sobie uwierzytelnianie dzięki obsłudze szczegółowych informacji o protokole. Aby uzyskać więcej informacji, zobacz [biblioteki uwierzytelniania](reference-v2-libraries.md) programu Microsoft Identity platform v 2.0 i [biblioteki uwierzytelniania w wersji 1.0](active-directory-authentication-libraries.md).
 * Po uwierzytelnieniu użytkownika aplikacja musi zweryfikować jego token zabezpieczający, aby się upewnić, że uwierzytelnianie zakończyło się pomyślnie. Procesy zachodzące w aplikacji zostały opisane w różnych przewodnikach Szybki start, samouczkach i przykładach kodu w różnych językach i strukturach.
   * Aby szybko utworzyć aplikację i dodać do niej funkcje, takie jak między innymi uzyskiwanie tokenów, odświeżanie tokenów, logowanie użytkownika i wyświetlanie informacji o użytkowniku, zapoznaj się z sekcją **Przewodniki Szybki start** w dokumentacji.
   * Aby uzyskać szczegółowe, oparte na scenariuszach procedury zadań dla deweloperów uwierzytelniania, takich jak uzyskiwanie tokenów dostępu i korzystanie z nich w wywołaniach interfejsu API programu Microsoft Graph i innych interfejsów API, implementowanie logowania firmy Microsoft przy użyciu tradycyjnej aplikacji internetowej opartej na przeglądarce za pomocą protokołu OpenID Connect i innych, zapoznaj się z sekcją **Samouczki** w dokumentacji.
@@ -60,42 +60,42 @@ W przykładowym scenariuszu powyżej aplikacje można sklasyfikować według tyc
 * Aplikacje, które wymagają bezpiecznego dostępu do zasobów.
 * Aplikacje, które same pełnią rolę zasobu.
 
-Teraz, po omówieniu wykonywać podstawowe zadania, Czytaj dalej, aby zapoznać się z modelem aplikacji tożsamości i interfejs API obsługuje jak inicjowanie obsługi administracyjnej działa na platformie tożsamości firmy Microsoft i linki do szczegółowych informacji o typowych scenariuszach tego platforma tożsamości usługi Microsoft.
+Teraz, gdy znasz już podstawowe informacje, Przeczytaj, jak poznać model i interfejs API aplikacji tożsamości, sposób działania aprowizacji na platformie tożsamości firmy Microsoft oraz linki do szczegółowych informacji o typowych scenariuszach obsługiwanych przez platformę tożsamości firmy Microsoft.
 
 ## <a name="application-model"></a>Model aplikacji
 
-Platforma tożsamości usługi Microsoft przedstawia aplikacje od określonego modelu, który został zaprojektowany, aby wypełnić dwa główne funkcje:
+Platforma tożsamości firmy Microsoft reprezentuje aplikacje, które są przeznaczone do realizacji dwóch głównych funkcji:
 
-* **Identyfikowanie aplikacji zgodnie z obsługiwanymi protokołami uwierzytelniania** — obejmuje to wyliczanie wszystkich identyfikatorów, adresów URL, wpisów tajnych i powiązanych informacji, które są wymagane podczas uwierzytelniania. Oto, platformą Microsoft identity:
+* **Identyfikowanie aplikacji zgodnie z obsługiwanymi protokołami uwierzytelniania** — obejmuje to wyliczanie wszystkich identyfikatorów, adresów URL, wpisów tajnych i powiązanych informacji, które są wymagane podczas uwierzytelniania. W tym miejscu platforma tożsamości firmy Microsoft:
 
     * Przechowuje wszystkie dane wymagane do obsługi uwierzytelniania w czasie wykonywania.
     * Przechowuje wszystkie dane konieczne do zdecydowania, jakich zasobów może wymagać aplikacja w celu uzyskania dostępu oraz czy konkretne żądanie powinno zostać spełnione i pod jakimi warunkami.
     * Udostępnia infrastrukturę do implementowania aprowizacji aplikacji w ramach dzierżawy dewelopera aplikacji i dowolnej innej dzierżawy usługi Azure AD.
 
-* **Obsługa zgody użytkownika podczas żądania tokenu i ułatwienia dynamicznej aprowizacji aplikacji dla dzierżaw** — w tym miejscu platformą Microsoft identity:
+* **Obsługuj zgodę użytkownika podczas żądania tokenu i Ułatwiaj dynamiczną obsługę administracyjną aplikacji w ramach dzierżawców** — w tym miejscu — platformy tożsamości firmy Microsoft:
 
     * Umożliwia użytkownikom i administratorom dynamiczne wyrażanie zgody lub odmawianie zgody dla aplikacji na uzyskiwanie przez nią dostępu do zasobów w ich imieniu.
     * Umożliwia administratorom ostateczne zdecydowanie, jakie działania mogą podejmować aplikacje, którzy użytkownicy mogą używać określonych aplikacji i w jaki sposób uzyskiwany jest dostęp do zasobów katalogu.
 
-Na platformie tożsamości firmy Microsoft **obiekt aplikacji** opisuje aplikację jako abstrakcyjna jednostki. Deweloperzy pracują z aplikacjami. W czasie wdrażania platforma tożsamości firmy Microsoft używa obiektu danej aplikacji jako planu do utworzenia **nazwy głównej usługi**, która reprezentuje konkretnego wystąpienia aplikacji w katalogu lub dzierżawcy. To właśnie jednostka usługi definiuje, jakie działania może w rzeczywistości wykonywać aplikacja w konkretnym katalogu docelowym, kto może z niej korzystać, do jakich zasobów ma ona dostęp itd. Platforma tożsamości usługi Microsoft tworzy nazwę główną usługi na podstawie obiektu aplikacji za pomocą **zgody**.
+W programie Microsoft Identity platform **obiekt aplikacji** opisuje aplikację jako jednostkę abstrakcyjną. Deweloperzy pracują z aplikacjami. W czasie wdrażania platforma Microsoft Identity platform używa danego obiektu aplikacji jako planu do utworzenia jednostki **usługi**, która reprezentuje konkretne wystąpienie aplikacji w katalogu lub dzierżawie. To właśnie jednostka usługi definiuje, jakie działania może w rzeczywistości wykonywać aplikacja w konkretnym katalogu docelowym, kto może z niej korzystać, do jakich zasobów ma ona dostęp itd. Platforma tożsamości firmy Microsoft tworzy jednostkę usługi z obiektu aplikacji za pomocą **zgody**.
 
-Poniższy diagram przedstawia uproszczoną platformą Microsoft identity, inicjowanie obsługi administracyjnej sterowany za zgodą.  Istnieją dwa dzierżaw (A i B), gdzie dzierżawy A właścicielem aplikacji i dzierżawy B jest utworzenie wystąpienia aplikacji za pomocą nazwy głównej usługi.  
+Na poniższym diagramie przedstawiono uproszczony przepływ aprowizacji platformy tożsamości firmy Microsoft, który jest oparty na wyrażaniu zgody.  W tym przypadku istnieją dwie dzierżawy (a i B), w których dzierżawca jest właścicielem aplikacji, a dzierżawca B tworzy wystąpienie aplikacji za pośrednictwem jednostki usługi.  
 
 ![Uproszczony przepływ aprowizowania sterowany poprzez wyrażenie zgody](./media/authentication-scenarios/simplified-provisioning-flow-consent-driven.svg)
 
 Ten przepływ aprowizowania składa się z następujących etapów:
 
-1. Użytkownik dzierżawy, który B próbuje zalogować się przy użyciu aplikacji, punkt końcowy autoryzacji żądania tokenu dla aplikacji.
-1. Poświadczenia użytkownika są uzyskane i sprawdzane pod kątem uwierzytelniania
-1. Użytkownik jest monitowany o podanie wyrażania zgody dla aplikacji w celu uzyskania dostępu do dzierżawy B
-1. Platforma Microsoft identity korzysta obiekt aplikacji w dzierżawie A jako planu tworzenia usługi głównej w dzierżawie B
+1. Użytkownik z dzierżawy B próbuje zalogować się przy użyciu aplikacji, punkt końcowy autoryzacji żąda tokenu dla aplikacji.
+1. Poświadczenia użytkownika są uzyskiwane i weryfikowane pod kątem uwierzytelniania
+1. Użytkownik otrzymuje monit o wyrażenie zgody aplikacji na uzyskanie dostępu do dzierżawy B
+1. Platforma tożsamości firmy Microsoft używa obiektu aplikacji w dzierżawie A jako strategii tworzenia jednostki usługi w dzierżawie B
 1. Użytkownik otrzymuje żądany token.
 
-Ten proces może być powtarzany dowolną liczbę razy dla innych dzierżaw (C, D itd.). Dzierżawy A zachowuje plan dla aplikacji (obiekt aplikacji). Użytkownicy i administratorzy wszystkich pozostałych dzierżaw, dla których aplikacja otrzymała zgodę, zachowują kontrolę nad tym, jakie działania może wykonywać aplikacja przy użyciu odpowiedniego obiektu jednostki usługi w każdej dzierżawie. Aby uzyskać więcej informacji, zobacz [aplikacji i obiektów nazw głównych usług na platformie tożsamości firmy Microsoft](app-objects-and-service-principals.md).
+Ten proces może być powtarzany dowolną liczbę razy dla innych dzierżaw (C, D itd.). Dzierżawca A zachowuje plan dla aplikacji (obiektu aplikacji). Użytkownicy i administratorzy wszystkich pozostałych dzierżaw, dla których aplikacja otrzymała zgodę, zachowują kontrolę nad tym, jakie działania może wykonywać aplikacja przy użyciu odpowiedniego obiektu jednostki usługi w każdej dzierżawie. Aby uzyskać więcej informacji, zobacz [obiekty główne aplikacji i usług na platformie tożsamości firmy Microsoft](app-objects-and-service-principals.md).
 
-## <a name="claims-in-microsoft-identity-platform-security-tokens"></a>Oświadczenia w tokeny zabezpieczające platforma tożsamości firmy Microsoft
+## <a name="claims-in-microsoft-identity-platform-security-tokens"></a>Oświadczenia w tokenach zabezpieczeń platformy tożsamości firmy Microsoft
 
-Tokeny zabezpieczające (dostępu i identyfikator tokenów) wydane przez platforma tożsamości usługi Microsoft zawierają oświadczenia lub potwierdzenia informacji na temat, który został uwierzytelniony. Aplikacje mogą używać oświadczeń do wykonywania różnych zadań, takich jak:
+Tokeny zabezpieczające (tokeny dostępu i identyfikatorów) wystawiane przez platformę tożsamości firmy Microsoft zawierają oświadczenia lub potwierdzenia informacji dotyczących podmiotu, który został uwierzytelniony. Aplikacje mogą używać oświadczeń do wykonywania różnych zadań, takich jak:
 
 * Sprawdzanie poprawności tokenu
 * Identyfikowanie dzierżawy katalogu podmiotu
@@ -104,12 +104,12 @@ Tokeny zabezpieczające (dostępu i identyfikator tokenów) wydane przez platfor
 
 Oświadczenia obecne w dowolnym tokenie zabezpieczającym są zależne od typu tokenu, typu poświadczenia użytego do uwierzytelnienia użytkownika i konfiguracji aplikacji.
 
-Krótki opis każdego typu oświadczenia wyemitowane przez platforma tożsamości usługi Microsoft znajduje się w poniższej tabeli. Aby uzyskać więcej informacji, zobacz [tokeny dostępu](access-tokens.md) i [tokeny Identyfikatora](id-tokens.md) wystawiony przez platforma tożsamości firmy Microsoft.
+W poniższej tabeli przedstawiono krótki opis każdego typu roszczeń emitowanych przez platformę tożsamości firmy Microsoft. Aby uzyskać bardziej szczegółowe informacje, zobacz [tokeny dostępu](access-tokens.md) i [tokeny identyfikatorów](id-tokens.md) wystawione przez platformę tożsamości firmy Microsoft.
 
-| Claim | Opis |
+| Oświadczenie | Opis |
 | --- | --- |
 | Identyfikator aplikacji | Określa aplikację, która korzysta z tokenu. |
-| Grupy odbiorców | Identyfikuje zasób odbiorcy, dla którego jest przeznaczony token. |
+| Odbiorcy | Identyfikuje zasób odbiorcy, dla którego jest przeznaczony token. |
 | Application Authentication Context Class Reference | Wskazuje, jak klient został uwierzytelniony (klient publiczny lub klient poufny). |
 | Błyskawiczne uwierzytelnianie | Rejestruje datę i godzinę wystąpienia uwierzytelniania. |
 | Metoda uwierzytelniania | Wskazuje, jak podmiot tokenu został uwierzytelniony (hasło, certyfikat itp.). |
@@ -127,8 +127,8 @@ Krótki opis każdego typu oświadczenia wyemitowane przez platforma tożsamośc
 | Identyfikator dzierżawy | Zawiera niezmienny, unikatowy identyfikator dzierżawy katalogu, który wystawił token. |
 | Czas życia tokenu | Definiuje przedział czasu, przez który token jest prawidłowy. |
 | Nazwa główna użytkownika | Zawiera nazwę główną użytkownika podmiotu. |
-| Wersja | Zawiera numer wersji tokenu. |
+| Version | Zawiera numer wersji tokenu. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o [typy aplikacji i scenariuszy obsługiwanych na platformie tożsamości firmy Microsoft](app-types.md)
+* Poznaj [typy aplikacji i scenariusze obsługiwane przez platformę tożsamości firmy Microsoft](app-types.md)

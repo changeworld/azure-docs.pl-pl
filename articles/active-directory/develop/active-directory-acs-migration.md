@@ -11,19 +11,19 @@ ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3daf44ee29a2f7b29eec9215876ca6edc18a5800
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 59a2cc971fbc1df967bc2655c672ab8f419eef71
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325058"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835524"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Instrukcje: Migrowanie z usługi Azure Access Control Service
 
@@ -132,7 +132,7 @@ Każda usługa w chmurze firmy Microsoft, która akceptuje tokeny wystawiane prz
 
 | Usługa | Wskazówki |
 | ------- | -------- |
-| Azure Service Bus | [Migrowanie do sygnatur dostępu współdzielonego](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
+| Magistrala usług Azure | [Migrowanie do sygnatur dostępu współdzielonego](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
 | Azure Service Bus Relay | [Migrowanie do sygnatur dostępu współdzielonego](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |
 | Azure Managed Cache | [Migrowanie do usługi Azure cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-faq#which-azure-cache-offering-is-right-for-me) |
 | Azure DataMarket | [Migrowanie do interfejsy API usług Cognitive Services](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
@@ -325,7 +325,7 @@ Możesz również użyć usługi Azure AD do uwierzytelniania serwer-serwer przy
 | Jak zarejestrować usługę sieci Web | Tworzenie jednostki uzależnionej w portalu zarządzania Access Control | Tworzenie aplikacji sieci Web usługi Azure AD w Azure Portal |
 | Jak zarejestrować klienta | Tworzenie tożsamości usługi w portalu zarządzania Access Control | Utwórz kolejną aplikację sieci Web usługi Azure AD w Azure Portal |
 | Używany protokół |-Protokół ZAWIJAnia OAuth<br />-OAuth 2,0, wersja 13. przyznanie poświadczeń klienta | Przyznawanie poświadczeń klienta OAuth 2.0 |
-| Metody uwierzytelniania klientów |-Proste hasło<br />-Podpisane SWT<br />-Token SAML od dostawcy tożsamości federacyjnych |-Proste hasło<br />-Z podpisem JWT |
+| Metody uwierzytelniania klienta |-Proste hasło<br />-Podpisane SWT<br />-Token SAML od dostawcy tożsamości federacyjnych |-Proste hasło<br />-Z podpisem JWT |
 | Formaty tokenów |- JWT<br />- SAML 1.1<br />- SAML 2.0<br />- SWT<br /> | Tylko JWT |
 | Przekształcenie tokenu |-Dodawanie oświadczeń niestandardowych<br />-Prosta logika wystawiania | Dodawanie oświadczeń niestandardowych | 
 | Automatyzowanie zadań związanych z konfiguracją i zarządzaniem | Obsługiwane przez usługę Access Control Management | Obsługiwane przez Microsoft Graph i usługę Azure AD interfejs API programu Graph |

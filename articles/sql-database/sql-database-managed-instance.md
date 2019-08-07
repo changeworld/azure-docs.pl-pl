@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
-ms.date: 07/18/2019
-ms.openlocfilehash: 7c10bdf5e4f47f5bb5ac97b610c605132c4b4a00
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/05/2019
+ms.openlocfilehash: 94035fda6b1dff491a69c0f0001019ccd753d4e8
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567216"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816615"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Co to jest Azure SQL Database wystąpienie zarządzane?
 
@@ -46,7 +46,7 @@ Wystąpienie zarządzane łączy najlepsze funkcje, które są dostępne zarówn
 | --- | --- |
 |Bez kupowania i zarządzania sprzętem <br>Brak obciążeń związanych z zarządzaniem podstawową infrastrukturą <br>Szybka obsługa i skalowanie usług <br>Automatyczne stosowanie poprawek i uaktualnianie wersji <br>Integracja z innymi usługami danych PaaS |Umowa SLA na 99,99% czasu  <br>Wbudowana [wysoka dostępność](sql-database-high-availability.md) <br>Dane chronione za pomocą [zautomatyzowanych kopii zapasowych](sql-database-automated-backups.md) <br>Okres przechowywania kopii zapasowych konfigurowalnych przez klienta <br>[Kopie zapasowe](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) inicjowane przez użytkownika <br>Możliwość [przywracania bazy danych do punktu w czasie](sql-database-recovery-using-backups.md#point-in-time-restore) |
 |**Zabezpieczenia i zgodność** | **Zarządzanie**|
-|Środowisko izolowane (Integracja z siecią[wirtualną](sql-database-managed-instance-connectivity-architecture.md), usługa pojedynczej dzierżawy, dedykowane zasoby obliczeniowe i magazyn) <br>[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Uwierzytelnianie usługi Azure AD](sql-database-aad-authentication.md), obsługa logowania jednokrotnego <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Nazwy główne serwera usługi Azure AD (logowania)</a> (**publiczna wersja**zapoznawcza) <br>Zgodność ze standardami zgodności, takimi jak usługa Azure SQL Database <br>[Inspekcja SQL](sql-database-managed-instance-auditing.md) <br>[wykrywanie zagrożeń](sql-database-managed-instance-threat-detection.md) |Azure Resource Manager interfejs API do automatyzowania aprowizacji i skalowania usługi <br>Azure Portal funkcje ręcznego inicjowania obsługi i skalowania usługi <br>Usługa migracji danych
+|Środowisko izolowane (Integracja z siecią[wirtualną](sql-database-managed-instance-connectivity-architecture.md), usługa pojedynczej dzierżawy, dedykowane zasoby obliczeniowe i magazyn) <br>[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Uwierzytelnianie usługi Azure AD](sql-database-aad-authentication.md), obsługa logowania jednokrotnego <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Nazwy główne serwera usługi Azure AD (logowania)</a> (**publiczna wersja**zapoznawcza) <br>Zgodność ze standardami zgodności, takimi jak usługa Azure SQL Database <br>[Inspekcja SQL](sql-database-managed-instance-auditing.md) <br>[Advanced Threat Protection](sql-database-managed-instance-threat-detection.md) |Azure Resource Manager interfejs API do automatyzowania aprowizacji i skalowania usługi <br>Azure Portal funkcje ręcznego inicjowania obsługi i skalowania usługi <br>Usługa migracji danych
 
 > [!IMPORTANT]
 > Azure SQL Database (wszystkie opcje wdrażania) mają certyfikat dla wielu standardów zgodności. Aby uzyskać więcej informacji, zobacz [Centrum zaufania Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) , w którym można znaleźć najbardziej aktualną listę SQL Database certyfikatów zgodności.
@@ -57,14 +57,14 @@ W poniższej tabeli przedstawiono najważniejsze funkcje wystąpień zarządzany
 |---|---|
 | Wersja SQL Server/kompilacja | Aparat bazy danych SQL Server (Najnowsza stabilna) |
 | Zarządzane automatyczne kopie zapasowe | Tak |
-| Wbudowane wystąpienie i monitorowanie bazy danych oraz metryki | Yes |
-| Automatyczne stosowanie poprawek oprogramowania | Tak |
-| Najnowsze funkcje aparatu bazy danych | Tak |
+| Wbudowane wystąpienie i monitorowanie bazy danych oraz metryki | Tak |
+| Automatyczne stosowanie poprawek oprogramowania | Yes |
+| Najnowsze funkcje aparatu bazy danych | Yes |
 | Liczba plików danych (wierszy) na bazę danych | Wiele |
 | Liczba plików dziennika (dzienników) na bazę danych | 1 |
 | Wdrożenie Azure Resource Manager sieci wirtualnej | Tak |
 | Model wdrażania klasycznego sieci wirtualnej | Nie |
-| Obsługa portalu | Tak|
+| Obsługa portalu | Yes|
 | Wbudowana usługa integracji (SSIS) | Nie — SSIS jest częścią [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) |
 | Wbudowana usługa analizy (SSAS) | Nie — SSAS jest osobnym [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
 | Wbudowana usługa raportowania (SSRS) | Nie używaj Power BI ani usług SSRS IaaS |
@@ -210,7 +210,7 @@ Azure SQL Database udostępnia zestaw zaawansowanych funkcji zabezpieczeń, któ
 
 - [Inspekcja wystąpienia zarządzanego](sql-database-managed-instance-auditing.md) śledzi zdarzenia bazy danych i zapisuje je w pliku dziennika inspekcji umieszczonym na koncie usługi Azure Storage. Inspekcja pomaga zachować zgodność z przepisami, zrozumieć aktywność bazy danych oraz uzyskać wgląd w niezgodności i anomalie, które mogą wskazywać na problemy biznesowe lub podejrzane naruszenia zabezpieczeń.
 - Szyfrowanie danych w ruchu — wystąpienie zarządzane zabezpiecza dane, zapewniając szyfrowanie danych w ruchu przy użyciu Transport Layer Security. Oprócz zabezpieczeń warstwy transportu opcja wdrażania wystąpienia zarządzanego oferuje ochronę poufnych danych w locie, w czasie spoczynku i podczas przetwarzania zapytań przy użyciu [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine). Funkcja Always Encrypted to pierwsze w branży rozwiązanie, które oferuje bezkonkurencyjne zabezpieczenie danych przed naruszeniami, w tym przed kradzieżą danych o kluczowym znaczeniu. Na przykład w przypadku Always Encrypted numery kart kredytowych są przechowywane w bazie danych zawsze, nawet podczas przetwarzania zapytań, umożliwiając odszyfrowywanie w punkcie użytkowania przez autoryzowanego pracownika lub aplikacje, które muszą przetwarzać te dane.
-- [Wykrywanie zagrożeń](sql-database-managed-instance-threat-detection.md) uzupełnia [inspekcję](sql-database-managed-instance-auditing.md) , zapewniając dodatkową warstwę analizy zabezpieczeń wbudowaną w usługę, która wykrywa nietypowe i potencjalnie szkodliwe próby uzyskania dostępu do baz danych lub ich wykorzystania. Otrzymasz alerty o podejrzanych działaniach, potencjalnych lukach w zabezpieczeniach i atakach iniekcji SQL, a także o nietypowych wzorcach dostępu do bazy danych. Alerty wykrywania zagrożeń mogą być wyświetlane w [Azure Security Center](https://azure.microsoft.com/services/security-center/) i zawierać szczegóły podejrzanych działań oraz zalecaną akcję dotyczącą badania i łagodzenia zagrożeń.  
+- [Zaawansowana ochrona przed zagrożeniami](sql-database-managed-instance-threat-detection.md) uzupełnia [inspekcję](sql-database-managed-instance-auditing.md) , zapewniając dodatkową warstwę analizy zabezpieczeń wbudowaną w usługę, która wykrywa nietypowe i potencjalnie szkodliwe próby uzyskania dostępu do baz danych lub ich wykorzystania. Otrzymasz alerty o podejrzanych działaniach, potencjalnych lukach w zabezpieczeniach i atakach iniekcji SQL, a także o nietypowych wzorcach dostępu do bazy danych. Alerty zaawansowanej ochrony przed zagrożeniami można przeglądać z poziomu [Azure Security Center](https://azure.microsoft.com/services/security-center/) i zapewniać szczegółowe informacje o podejrzanych działaniach i zalecać podejmowanie działań w celu zbadania i ograniczenia zagrożenia.  
 - [Dynamiczne maskowanie danych](/sql/relational-databases/security/dynamic-data-masking) ogranicza narażenie na dane poufne przez zamaskowanie ich dla użytkowników bez uprawnień. Dynamiczne maskowanie danych ułatwia Zapobieganie nieautoryzowanemu dostępowi do poufnych danych przez umożliwienie wyznaczenia ilości poufnych danych do ujawnienia przy minimalnym wpływie na warstwę aplikacji. Jest to funkcja zabezpieczeń oparta na zasadach, która ukrywa dane poufne w zestawie wyników zapytania w wyznaczonych polach bazy danych, przy czym dane w bazie danych pozostają bez zmian.
 - [Zabezpieczenia na poziomie wiersza](/sql/relational-databases/security/row-level-security) umożliwiają kontrolowanie dostępu do wierszy w tabeli bazy danych na podstawie właściwości użytkownika wykonującego zapytanie (na przykład według członkostwa w grupie lub kontekstu wykonania). Zabezpieczenia na poziomie wiersza (RLS, Row-Level Security) upraszczają projektowanie i kodowanie zabezpieczeń w aplikacji. Zabezpieczenia na poziomie wiersza umożliwiają zaimplementowanie ograniczeń w dostępie do wiersza danych. Na przykład zapewnienie pracownikom dostępu tylko do wierszy danych, które są istotne dla działu, lub ograniczenia dostępu do danych tylko do odpowiednich danych.
 - [Przezroczyste szyfrowanie danych (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) szyfruje pliki danych wystąpienia zarządzanego, znane jako szyfrowanie przechowywanych danych. TDE wykonuje szyfrowanie we/wy czasu rzeczywistego i odszyfrowywanie plików danych i dzienników. Szyfrowanie używa klucza szyfrowania bazy danych, który jest przechowywany w rekordzie rozruchowym bazy danych w celu zapewnienia dostępności podczas odzyskiwania. Można chronić wszystkie bazy danych w wystąpieniu zarządzanym z przezroczystym szyfrowaniem danych. TDE SQL Server to sprawdzona technologia szyfrowania w technologii REST, która jest wymagana przez wiele standardów zgodności, aby chronić przed kradzieżą nośników magazynu.
@@ -292,7 +292,7 @@ Opcja wdrożenia wystąpienia zarządzanego pozwala administratorowi systemu po�
 
 W poniższej tabeli przedstawiono kilka właściwości, które są dostępne za pomocą języka Transact SQL, za pomocą których można wykryć, że aplikacja pracuje z wystąpieniem zarządzanym i pobrać ważne właściwości.
 
-|Właściwość|Wartość|Komentarz|
+|Właściwość|Value|Komentarz|
 |---|---|---|
 |`@@VERSION`|Microsoft SQL Azure (RTM) — 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|Ta wartość jest taka sama jak w SQL Database.|
 |`SERVERPROPERTY ('Edition')`|SQL Azure|Ta wartość jest taka sama jak w SQL Database.|

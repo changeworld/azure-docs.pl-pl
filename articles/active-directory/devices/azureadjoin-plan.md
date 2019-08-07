@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e58762bd5bf4342804767a200c94b432dd152a0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e5dc1c3fb7ae12c36a8c1fe383290435c03ee0c4
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562212"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741371"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Instrukcje: Planowanie implementacji dołączania do usługi Azure AD
 
@@ -68,7 +68,11 @@ Te scenariusze nie wymagają konfigurowania serwera federacyjnego na potrzeby uw
 Środowisko federacyjne powinno mieć dostawcę tożsamości, który obsługuje protokoły WS-Trust i WS-karmione:
 
 - **Usługa WS-karmione:** Ten protokół jest wymagany do przyłączania urządzenia do usługi Azure AD.
-- **Usługa WS-Trust:** Ten protokół jest wymagany do zalogowania się do urządzenia dołączonego do usługi Azure AD. 
+- **Usługa WS-Trust:** Ten protokół jest wymagany do zalogowania się do urządzenia dołączonego do usługi Azure AD.
+W przypadku korzystania z AD FS należy włączyć następujące punkty końcowe protokołu WS-Trust:`/adfs/services/trust/2005/usernamemixed`
+ `/adfs/services/trust/13/usernamemixed`
+ `/adfs/services/trust/2005/certificatemixed`
+ `/adfs/services/trust/13/certificatemixed`
 
 Jeśli dostawca tożsamości nie obsługuje tych protokołów, usługa Azure AD Join nie działa w sposób natywny. Począwszy od systemu Windows 10 1809, użytkownicy mogą logować się do urządzenia dołączonego do usługi Azure AD przy użyciu dostawcy tożsamości opartego na protokole SAML za pośrednictwem [logowania w sieci Web w systemie Windows 10](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10). Obecnie logowanie w sieci Web jest funkcją w wersji zapoznawczej i nie jest zalecane w przypadku wdrożeń produkcyjnych.
 
@@ -189,7 +193,7 @@ Poniżej przedstawiono porównanie tych trzech metod
 |   | Konfiguracja samoobsługowa | Autopilotaż systemu Windows | Rejestracja Zbiorcza |
 | --- | --- | --- | --- |
 | Wymagaj interakcji z użytkownikiem w celu skonfigurowania | Tak | Yes | Nie |
-| Wymaganie nakładu pracy IT | Nie | Yes | Tak |
+| Wymaganie nakładu pracy IT | Nie | Yes | Yes |
 | Odpowiednie przepływy | Ustawienia & OOBE | Tylko OOBE | Tylko OOBE |
 | Prawa administratora lokalnego do użytkownika podstawowego | Tak, domyślnie | Skonfigurować | Nie |
 | Wymagaj obsługi OEM urządzenia | Nie | Yes | Nie |
@@ -283,7 +287,7 @@ Jeśli masz skonfigurowanego dostawcę MDM dla urządzeń przyłączonych do us�
 
 Za pomocą tej implementacji można wymagać, aby [zarządzane urządzenia dla dostępu do aplikacji w chmurze miały dostęp warunkowy](../conditional-access/require-managed-devices.md).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Dołącz nowe urządzenie z systemem Windows 10 przy użyciu usługi Azure AD podczas pierwszego uruchomienia](azuread-joined-devices-frx.md)

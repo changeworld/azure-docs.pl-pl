@@ -1,7 +1,8 @@
 ---
-title: Instalowanie IBM zD & T, środowisko programistyczne/testowe na platformie Azure | Dokumentacja firmy Microsoft
-description: Wdróż programowania Z firmy IBM i środowiska testowego (zD & T) w infrastrukturze platformy Azure maszyna wirtualna (VM) jako usługa (IaaS).
+title: Instalowanie środowiska IBM zD & w środowisku deweloperskim/testowym na platformie Azure | Microsoft Docs
+description: Wdróż środowisko deweloperskie i testowe programu IBM Z (zD & T) na platformie Azure Virtual Machines (VM) jako usługa (IaaS).
 services: virtual-machines-linux
+ms.service: virtual-machines-linux
 documentationcenter: ''
 author: njray
 ms.author: edprice
@@ -11,130 +12,130 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: ad02ec75dab4cb6971d0467899d80f5f745fd94b
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 7ba3323f0811f3f9b76d73796264bf17712a1179
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621297"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841339"
 ---
-# <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Instalowanie IBM zD & T, środowisko programistyczne/testowe na platformie Azure
+# <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Zainstaluj środowisko IBM zD & w środowisku deweloperskim/testowym na platformie Azure
 
-Do tworzenia środowiska deweloperskiego/testowego, w przypadku obciążeń mainframe na systemach Z firmy IBM, można wdrożyć programowania Z firmy IBM i środowisko testowe (zD & T) w infrastrukturze platformy Azure maszyna wirtualna (VM) jako usługa (IaaS).
+Aby utworzyć środowisko deweloperskie/testowe dla obciążeń oprogramowania mainframe w systemach IBM Z, można wdrożyć środowisko deweloperskie i testowe (zD & T) na maszynie wirtualnej platformy Azure (IaaS).
 
-Za pomocą zD & T, możesz korzystać z zalet oszczędność kosztów x86 platforma dla mniej ważnych środowiska deweloperskie i testowe i następnie wypychane aktualizacje z powrotem do środowiska produkcyjnego Z systemu. Aby uzyskać więcej informacji, zobacz [IBM ZD & T instrukcje dotyczące instalacji](https://www-01.ibm.com/support/docview.wss?uid=swg24044565#INSTALL).
+Dzięki zD & T możesz skorzystać z oszczędności kosztów platformy x86 w mniej krytycznych środowiskach deweloperskich i testowych, a następnie wypchnąć aktualizacje z powrotem do środowiska produkcyjnego systemu Z. Aby uzyskać więcej informacji, zobacz [instrukcje dotyczące instalacji programu IBM ZD & T](https://www-01.ibm.com/support/docview.wss?uid=swg24044565#INSTALL).
 
-Platforma Azure i usługi Azure Stack obsługuje następujące wersje:
+Platforma Azure i usługa Azure Stack obsługują następujące wersje:
 
 - zD & T Personal Edition
-- zD & T Sysplex równoległe
-- zD&T Enterprise Edition
+- zD & T Parallel Sysplex
+- zD & T Enterprise Edition
 
-Wszystkie wersje zD & T uruchomić tylko na x86 systemów Linux, a nie w systemie Windows Server. Enterprise Edition jest obsługiwana w systemie Red Hat Enterprise Linux (RHEL) lub Ubuntu/Debian. Obrazy systemu RHEL i Debian maszyny Wirtualnej są dostępne na platformie Azure.
+Wszystkie wersje programu zD & T działają tylko w systemach x86 z systemem Linux, a nie na serwerze Windows Server. Wersja Enterprise Edition jest obsługiwana w ramach obu Red Hat Enterprise Linux (RHEL) lub Ubuntu/Debian. Na platformie Azure są dostępne zarówno obrazy maszyn wirtualnych RHEL, jak i debian.
 
-W tym artykule przedstawiono sposób konfigurowania zD & T Enterprise Edition na platformie Azure, aby można było używać zD & T Enterprise Edition, serwer sieci web do tworzenia i zarządzania środowiskami. Instalowanie zD & T nie instaluje żadnych środowisk. Należy utworzyć je oddzielnie jako pakiety instalacyjne. Na przykład dystrybucje kontrolowane deweloperom aplikacji (ADCD) są obrazy woluminów środowisk testowych. Są zawarte w obrazach zip na dostępnych od firmy IBM dystrybucji multimediów. Zobacz jak [skonfigurować środowisko ADCD na platformie Azure](demo.md).
+W tym artykule opisano, jak skonfigurować program zD & T Enterprise Edition na platformie Azure, aby można było tworzyć środowiska i zarządzać nimi za pomocą serwera zD & T Enterprise Edition sieci Web. Instalowanie zD & T nie instaluje żadnych środowisk. Należy je utworzyć oddzielnie jako pakiety instalacyjne. Na przykład dystrybucje kontrolowane przez deweloperów aplikacji (ADCD) są obrazami ilości środowiska testowego. Są one zawarte w obrazach zip dystrybucji multimediów dostępnych z firmy IBM. Zobacz, jak [skonfigurować środowisko ADCD na platformie Azure](demo.md).
 
-Aby uzyskać więcej informacji, zobacz [zD & T Przegląd](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zdt.overview.gs.doc/topics/c_product_overview.html) w centrum wiedzy firmy IBM.
+Aby uzyskać więcej informacji, zobacz [Omówienie usługi zD & T](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zdt.overview.gs.doc/topics/c_product_overview.html) w centrum wiedzy firmy IBM.
 
-W tym artykule dowiesz się, jak skonfigurować Z programowania i środowiska testowego (zD & T) Enterprise Edition na platformie Azure. Następnie przy użyciu zD & T Enterprise Edition, serwer sieci web tworzyć i zarządzać nimi Z środowisk na platformie Azure.
+W tym artykule opisano sposób konfigurowania środowiska deweloperskiego i testowego (zD & T) Enterprise Edition na platformie Azure. Następnie można użyć serwera sieci Web zD & T Enterprise Edition do tworzenia środowisk opartych na platformie Azure i zarządzania nimi.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 > [!NOTE]
-> IBM umożliwia zD & T Enterprise Edition, można zainstalować w środowisku deweloperskim/testowym tylko —*nie* środowisk produkcyjnych.
+> IBM zezwala na zainstalowanie zD & T Enterprise Edition tylko w środowiskach deweloperskich i testowych — a*nie* w środowiskach produkcyjnych.
 
 - Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-- Musisz mieć dostęp do nośnika, który jest dostępny tylko dla klientów firmy IBM i partnerów. Aby uzyskać więcej informacji, skontaktuj się z przedstawicielem firmy IBM lub informacji kontaktowych w [zD & T](https://www.ibm.com/us-en/marketplace/z-systems-development-test-environment) witryny sieci Web.
+- Wymagany jest dostęp do nośnika, który jest dostępny tylko dla klientów i partnerów firmy IBM. Aby uzyskać więcej informacji, skontaktuj się z przedstawicielem firmy IBM lub zapoznaj się z informacjami kontaktowymi w witrynie sieci Web [zD & T](https://www.ibm.com/us-en/marketplace/z-systems-development-test-environment) .
 
-- A [serwer licencyjny](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.tools.user.guide.doc/topics/zdt_ee.html). Jest to wymagane, aby uzyskać dostęp do tych środowisk. Sposób jego tworzenia, zależy od tego, jak licencji oprogramowania od firmy IBM:
+- [Serwer licencjonowania](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.tools.user.guide.doc/topics/zdt_ee.html). Jest to wymagane w celu uzyskania dostępu do środowisk. Sposób tworzenia go zależy od tego, jak Licencjobiorca ma licencję na oprogramowanie firmy IBM:
 
-     - **Oparte na sprzęcie serwer licencyjny** wymaga urządzenie USB, które zawiera tokeny wymierne niezbędnych do uzyskania dostępu wszystkie składniki oprogramowania. Należy to uzyskać od firmy IBM.
+     - **Serwer licencjonowania oparty na sprzęcie** wymaga urządzenia sprzętowego USB, które zawiera wymierne tokeny niezbędne do uzyskania dostępu do wszystkich części oprogramowania. Musisz uzyskać ten dostęp z firmy IBM.
 
-     - **Serwer licencyjny opartych na oprogramowaniu** wymaga skonfigurowania scentralizowanego serwera zarządzania kluczami licencjonowania. Ta metoda jest preferowana i wymaga skonfigurowania kluczy otrzymany od firmy IBM na serwerze zarządzania.
+     - **Serwer licencjonowania oparty na oprogramowaniu** wymaga skonfigurowania scentralizowanego serwera do zarządzania kluczami licencjonowania. Ta metoda jest preferowana i wymaga skonfigurowania kluczy otrzymywanych od firmy IBM na serwerze zarządzania.
 
-## <a name="create-the-base-image-and-connect"></a>Tworzenie obrazu podstawowego i łączenie
+## <a name="create-the-base-image-and-connect"></a>Tworzenie obrazu podstawowego i nawiązywanie połączenia
 
-1. W witrynie Azure portal [Utwórz Maszynę wirtualną](/azure/virtual-machines/linux/quick-create-portal) z konfiguracją systemu operacyjnego ma. W tym artykule założono B4ms maszyny Wirtualnej (z 4 procesorów wirtualnych i 16 GB pamięci) systemem Ubuntu 16.04.
+1. W Azure Portal [Utwórz maszynę wirtualną](/azure/virtual-machines/linux/quick-create-portal) z żądaną konfiguracją systemu operacyjnego. W tym artykule przyjęto założenie, że maszyna wirtualna B4ms (z 4 procesorów wirtualnych vCPU i 16 GB pamięci) uruchomiła system Ubuntu 16,04.
 
-2. Po utworzeniu maszyny Wirtualnej, należy otworzyć porty dla ruchu przychodzącego 22 dla protokołu SSH i 21 dla połączenia FTP 9443 dla serwera sieci web.
+2. Po utworzeniu maszyny wirtualnej Otwórz porty przychodzące 22 dla SSH, 21 dla FTP i 9443 dla serwera sieci Web.
 
-3. Uzyskiwanie poświadczeń SSH, wyświetlane na **Przegląd** bloku maszyny Wirtualnej za pomocą **Connect** przycisku. Wybierz **SSH** kartę, a następnie skopiuj polecenie logowania SSH do Schowka.
+3. Uzyskaj poświadczenia SSH wyświetlane w bloku **Przegląd** maszyny wirtualnej za pomocą przycisku **Połącz** . Wybierz kartę **SSH** i skopiuj polecenie SSH Logon do Schowka.
 
-4. Zaloguj się do [powłokę Bash](/azure/cloud-shell/quickstart) z Twojego komputera lokalnego i Wklej polecenie. Będzie on w formie **ssh\<identyfikator użytkownika\>\@\<adresu IP\>** . Po wyświetleniu monitu o podanie poświadczeń, wprowadź je do nawiązania połączenia z katalogiem w domu.
+4. Zaloguj się do [powłoki bash](/azure/cloud-shell/quickstart) z lokalnego komputera i Wklej polecenie. Będzie on miał postać **adres\<\@\>IPużytkownika\<SSH.\>** Gdy zostanie wyświetlony monit o podanie poświadczeń, wprowadź je w celu nawiązania połączenia z katalogiem macierzystym.
 
-## <a name="copy-the-installation-file-to-the-server"></a>Skopiuj plik instalacyjny na serwer
+## <a name="copy-the-installation-file-to-the-server"></a>Kopiuj plik instalacyjny na serwer
 
-Plik instalacyjny dla serwera sieci web jest **ZDT\_zainstalować\_EE\_V12.0.0.1.tgz**. Znajduje się na nośniku, dostarczane przez firmy IBM. Ten plik należy przekazać do maszyny Wirtualnej systemu Ubuntu.
+Plik instalacyjny dla serwera sieci Web to **ZDT\_instalacji\_EE\_v 12.0.0.1. tgz**. Jest ona uwzględniona na nośniku dostarczonym przez firmę IBM. Musisz przekazać ten plik na maszynę wirtualną Ubuntu.
 
-1. W wierszu polecenia wprowadź następujące polecenie, aby upewnić się, że wszystko jest aktualne w nowo utworzony obraz:
+1. W wierszu polecenia wprowadź następujące polecenie, aby upewnić się, że wszystko jest aktualne w nowo utworzonym obrazie:
 
     ```
     sudo apt-get update
     ```
 
-2. Utwórz katalog do instalacji:
+2. Utwórz katalog do zainstalowania:
 
     ```
     mkdir ZDT
     ```
 
-3. Skopiuj plik z komputera lokalnego do maszyny Wirtualnej:
+3. Skopiuj plik z komputera lokalnego do maszyny wirtualnej:
 
     ```
     scp ZDT_Install_EE_V12.0.0.1.tgz  your_userid@<IP Address /ZDT>   =>
     ```
     
 > [!NOTE]
-> To polecenie powoduje skopiowanie pliku instalacyjnego do katalogu ZDT w katalog macierzysty, który różni się zależnie od tego, czy klient jest uruchamiany, Windows lub Linux.
+> To polecenie kopiuje plik instalacyjny do katalogu ZDT w katalogu macierzystym, co różni się w zależności od tego, czy klient uruchamia system Windows lub Linux.
 
-## <a name="install-the-enterprise-edition"></a>Instalowanie wersji Enterprise Edition
+## <a name="install-the-enterprise-edition"></a>Zainstaluj wersję Enterprise Edition
 
-1. Przejdź do katalogu ZDT i zdekompresować go ZDT\_zainstalować\_EE\_pliku V12.0.0.1.tgz przy użyciu następujących poleceń:
+1. Przejdź do katalogu ZDT i zdekompresuj plik ZDT\_zainstaluj\_EE\_v 12.0.0.1. tgz przy użyciu następujących poleceń:
 
     ```
     cd ZDT
     chmod 755 ZDT\_Install\_EE\_V12.0.0.0.tgz
     ```
 
-2. Uruchom program instalacyjny:
+2. Uruchom Instalatora:
 
     ```
     ./ZDT_Install_EE_V12.0.0.0.x86_64
     ```
 
-3. Wybierz **1** do zainstalowania serwera przedsiębiorstwa.
+3. Wybierz pozycję **1** , aby zainstalować serwer przedsiębiorstwa.
 
-4. Naciśnij klawisz **Enter** i należy uważnie przeczytać umów licencyjnych. Na koniec licencji należy wprowadzić **tak** aby kontynuować.
+4. Naciśnij uważnie i Przeczytaj umowy licencyjne. Na końcu licencji wprowadź **wartość tak** , aby wykonać operację.
 
-5. Po wyświetleniu monitu o zmianę hasła dla nowo utworzonego użytkownika **ibmsys1**, użyj polecenia **ibmsys1 haseł "sudo"** i wprowadź nowe hasło.
+5. Po wyświetleniu monitu o zmianę hasła dla nowo utworzonego użytkownika **ibmsys1**Użyj polecenia **sudo passwd ibmsys1** i wprowadź nowe hasło.
 
-6. Aby sprawdzić, czy instalacja się powiodła wprowadź
+6. Aby sprawdzić, czy instalacja zakończyła się pomyślnie
 
     ```
     dpkg -l | grep zdtapp
     ```
 
-7. Sprawdź, czy dane wyjściowe zawierają ciąg **zdtapp 12.0.0.0**oznaczający, gaz pakiet został zainstalowany pomyślnie
+7. Sprawdź, czy dane wyjściowe zawierają ciąg **zdtapp 12.0.0.0**, wskazujący, że gaz pakietu został pomyślnie zainstalowany
 
-### <a name="starting-enterprise-edition"></a>Począwszy od wersji Enterprise Edition
+### <a name="starting-enterprise-edition"></a>Uruchamianie wersji Enterprise Edition
 
-Należy pamiętać, że po uruchomieniu serwera sieci web jest uruchamiana przy użyciu Identyfikatora użytkownika zD & T, który został utworzony podczas procesu instalacji.
+Należy pamiętać, że po uruchomieniu serwera sieci Web jest on uruchamiany w ramach zD & T, który został utworzony podczas procesu instalacji.
 
-1. Można uruchomić serwera sieci web, należy użyć głównej nazwy użytkownika do uruchom następujące polecenie:
+1. Aby uruchomić serwer sieci Web, użyj identyfikatora użytkownika root, aby uruchomić następujące polecenie:
 
     ```
     sudo /opt/ibm/zDT/bin/startServer
     ```
 
-2. Skopiuj dane wyjściowe adres URL skryptu, który wygląda następująco:
+2. Skopiuj adres URL danych wyjściowych przez skrypt, który wygląda następująco:
 
     ```
     https://<your IP address or domain name>:9443/ZDTMC/login.htm
     ```
 
-3. Wklej adres URL w przeglądarce sieci web, aby otworzyć składnik zarządzania dla Twojego zD & T instalacji.
+3. Wklej adres URL do przeglądarki sieci Web, aby otworzyć składnik zarządzania dla zD & T instalacji.
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Ustaw się aplikacja deweloperów kontrolowane dystrybucji (ADCD) w IBM zD & T w wersji 1](./demo.md)
+[Konfigurowanie dystrybucji kontrolowanej przez deweloperów aplikacji (ADCD) w programie IBM zD & T v1](./demo.md)

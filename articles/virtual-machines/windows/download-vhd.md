@@ -1,6 +1,6 @@
 ---
-title: Pobierz Windows wirtualnego dysku twardego na platformie Azure | Dokumentacja firmy Microsoft
-description: Pobieranie wirtualnego dysku twardego Windows przy użyciu witryny Azure portal.
+title: Pobieranie wirtualnego dysku twardego systemu Windows z platformy Azure | Microsoft Docs
+description: Pobierz dysk VHD systemu Windows przy użyciu Azure Portal.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -15,67 +15,67 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 7128413e48fdeef9b9284bc6db11649016a06153
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: ebcc8301fa3693880974e45b594be218905e8311
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722818"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775409"
 ---
-# <a name="download-a-windows-vhd-from-azure"></a>Pobierz Windows wirtualnego dysku twardego z platformy Azure
+# <a name="download-a-windows-vhd-from-azure"></a>Pobieranie wirtualnego dysku twardego systemu Windows z platformy Azure
 
-W tym artykule dowiesz się, jak pobrać plik wirtualnego dysku twardego (VHD) Windows na platformie Azure przy użyciu witryny Azure portal.
+W tym artykule dowiesz się, jak pobrać plik wirtualnego dysku twardego (VHD) systemu Windows z platformy Azure przy użyciu Azure Portal.
 
 ## <a name="stop-the-vm"></a>Zatrzymywanie maszyny wirtualnej
 
-Nie można pobrać wirtualnego dysku twardego z platformy Azure, jeśli jest on dołączony do uruchomionej maszyny Wirtualnej. Należy zatrzymać maszynę Wirtualną, aby pobrać wirtualnego dysku twardego. Jeśli chcesz używać wirtualnego dysku twardego [obraz](tutorial-custom-images.md) Aby utworzyć inne maszyny wirtualne przy użyciu nowych dysków, należy użyć [Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation) aby zawarte w pliku systemu operacyjnego, a następnie Zatrzymaj maszynę Wirtualną. Na potrzeby dysku VHD jako dysk nowe wystąpienie klasy istniejącej maszyny Wirtualnej lub dysku z danymi, wystarczy Zatrzymaj i Cofnij Przydział maszyny Wirtualnej.
+Nie można pobrać wirtualnego dysku twardego z platformy Azure, jeśli jest on dołączony do uruchomionej maszyny wirtualnej. Musisz zatrzymać maszynę wirtualną, aby pobrać dysk VHD. Jeśli chcesz używać dysku VHD jako [obrazu](tutorial-custom-images.md) do tworzenia innych maszyn wirtualnych z nowymi dyskami, użyj programu [Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation) do uogólnienia systemu operacyjnego zawartego w pliku, a następnie Zatrzymaj maszynę wirtualną. Aby można było użyć wirtualnego dysku twardego dla nowego wystąpienia istniejącej maszyny wirtualnej lub dysku z danymi, należy zatrzymać i cofnąć alokację maszyny wirtualnej.
 
-Aby użyć wirtualnego dysku twardego jako obraz do tworzenia innych maszyn wirtualnych, wykonaj następujące kroki:
+Aby użyć dysku VHD jako obrazu do tworzenia innych maszyn wirtualnych, wykonaj następujące kroki:
 
 1.  Jeśli jeszcze tego nie zrobiono, zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
-2.  [Łączenie z maszyną wirtualną](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
-3.  Na maszynie Wirtualnej Otwórz okno wiersza polecenia jako administrator.
-4.  Zmień katalog na *%windir%\system32\sysprep* i uruchom sysprep.exe.
-5.  W oknie dialogowym narzędzia przygotowywania systemu wybierz **wprowadź System Out-of-Box środowiska (OOBE)** i upewnij się, że **Generalize** jest zaznaczone.
-6.  W oknie dialogowym Opcje zamykania wybierz **zamknięcia**, a następnie kliknij przycisk **OK**. 
+2.  [Nawiąż połączenie z maszyną wirtualną](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+3.  Na maszynie wirtualnej Otwórz okno wiersza polecenia jako administrator.
+4.  Zmień katalog na *%windir%\System32\Sysprep* i uruchom plik Sysprep. exe.
+5.  W oknie dialogowym Narzędzie przygotowywania systemu wybierz opcję **Wprowadź system out-of-Box Experience (OOBE)** i upewnij się, że opcja **generalize** jest zaznaczona.
+6.  W opcje zamykania wybierz pozycję **Zamknij**, a następnie kliknij przycisk **OK**. 
 
-Na potrzeby dysku VHD jako dysk nowe wystąpienie klasy istniejącej maszyny Wirtualnej lub dysk danych, wykonaj następujące kroki:
+Aby użyć dysku VHD jako dysku dla nowego wystąpienia istniejącej maszyny wirtualnej lub dysku danych, wykonaj następujące kroki:
 
-1.  W menu Centrum w witrynie Azure portal, kliknij przycisk **maszyn wirtualnych**.
-2.  Wybierz maszynę Wirtualną z listy.
-3.  W bloku maszyny wirtualnej, kliknij **zatrzymać**.
+1.  W menu centrum w Azure Portal kliknij pozycję **Virtual Machines**.
+2.  Z listy wybierz maszynę wirtualną.
+3.  W bloku maszyny wirtualnej kliknij pozycję **Zatrzymaj**.
 
-    ![Zatrzymywanie maszyny Wirtualnej](./media/download-vhd/export-stop.png)
+    ![Zatrzymaj maszynę wirtualną](./media/download-vhd/export-stop.png)
 
-## <a name="generate-sas-url"></a>Generowanie adresu URL sygnatury dostępu Współdzielonego
+## <a name="generate-sas-url"></a>Generuj adres URL SAS
 
-Aby pobrać plik wirtualnego dysku twardego, należy wygenerować [sygnatury dostępu współdzielonego (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) adresu URL. Podczas generowania adresu URL czas wygaśnięcia jest przypisany do adresu URL.
+Aby pobrać plik VHD, należy wygenerować adres URL sygnatury [dostępu współdzielonego (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) . Po wygenerowaniu adresu URL zostanie do niego przypisany czas wygaśnięcia.
 
-1.  W menu bloku maszyny Wirtualnej, kliknij przycisk **dysków**.
-2.  Wybierz dysk systemu operacyjnego dla maszyny Wirtualnej, a następnie kliknij przycisk **wyeksportować**.
-3.  Ustaw czas wygaśnięcia adresu URL, aby *36000*.
-4.  Kliknij przycisk **generowania adresu URL**.
+1.  W menu bloku maszyny wirtualnej kliknij pozycję **dyski**.
+2.  Wybierz dysk systemu operacyjnego dla maszyny wirtualnej, a następnie kliknij pozycję **eksport dysku**.
+3.  Ustaw czas wygaśnięcia adresu URL na *36000*.
+4.  Kliknij pozycję **Generuj adres URL**.
 
-    ![Generowanie adresu URL](./media/download-vhd/export-generate.png)
+    ![Generuj adres URL](./media/download-vhd/export-generate-new.png)
 
 > [!NOTE]
-> Czas wygaśnięcia zwiększa się w domyślnej, aby zapewnić wystarczającą ilość czasu pobierania dużych plików wirtualnego dysku twardego systemu operacyjnego Windows Server. Można oczekiwać, że plik wirtualnego dysku twardego zawierającego system operacyjny Windows Server, aby zająć wiele godzin, aby pobrać w zależności od połączenia. Jeśli pobierasz wirtualnego dysku twardego dla dysku z danymi, domyślny czas jest wystarczająca. 
+> Czas wygaśnięcia zostanie zwiększony z ustawienia domyślnego, aby zapewnić wystarczającą ilość czasu na pobranie dużego pliku VHD dla systemu operacyjnego Windows Server. Można oczekiwać, że plik VHD zawierający system operacyjny Windows Server zostanie pobrany do kilku godzin w zależności od połączenia. Jeśli pobierasz dysk VHD dla dysku z danymi, wystarczy domyślny czas. 
 > 
 > 
 
-## <a name="download-vhd"></a>Pobieranie wirtualnego dysku twardego
+## <a name="download-vhd"></a>Pobierz dysk VHD
 
-1.  W polu adres URL, który został wygenerowany kliknij pozycję Pobierz plik VHD.
+1.  W obszarze wygenerowanego adresu URL kliknij pozycję Pobierz plik VHD.
 
-    ![Pobieranie wirtualnego dysku twardego](./media/download-vhd/export-download.png)
+    ![Pobierz dysk VHD](./media/download-vhd/export-download.png)
 
-2.  Może być konieczne kliknięcie **Zapisz** w przeglądarce, aby rozpocząć pobieranie. Domyślną nazwą pliku wirtualnego dysku twardego jest *abcd*.
+2.  Aby rozpocząć pobieranie, może być konieczne kliknięcie przycisku **Zapisz** w przeglądarce. Domyślna nazwa pliku VHD jest *ABCD*.
 
     ![Kliknij przycisk Zapisz w przeglądarce](./media/download-vhd/export-save.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się, jak [przesłać plik VHD na platformie Azure](upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
-- [Tworzenie dysków zarządzanych z dysków niezarządzanych na koncie magazynu](attach-disk-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-- [Zarządzanie dyskami platformy Azure przy użyciu programu PowerShell](tutorial-manage-data-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Dowiedz się, jak [przekazać plik VHD na platformę Azure](upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+- [Utwórz dyski zarządzane na podstawie dysków niezarządzanych na koncie magazynu](attach-disk-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- [Zarządzanie dyskami platformy Azure za pomocą programu PowerShell](tutorial-manage-data-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

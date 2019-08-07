@@ -1,155 +1,155 @@
 ---
-title: Dzierżawy i hosta tworzenie puli w Windows pulpitu wirtualnego — platformy Azure
-description: Jak rozwiązać problemy podczas konfiguracji sesji i dzierżawy hosta maszyny wirtualnej (VM) w środowisku Windows pulpitu wirtualnego.
+title: Tworzenie dzierżawy i puli hostów w programie Virtual Desktop systemu Windows — Azure
+description: Jak rozwiązywać problemy podczas konfigurowania maszyny wirtualnej dzierżawy i hosta sesji w środowisku pulpitu wirtualnego systemu Windows.
 services: virtual-desktop
-author: ChJenk
+author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.author: v-chjenk
-ms.openlocfilehash: 96a9d8fc7495ea473b0a3250b34251afc5f30c13
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.author: helohr
+ms.openlocfilehash: 4e5c5f14042f7059f3d802a5e72cbf5c6a126614
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786708"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816341"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Tworzenie dzierżawy i puli hosta
 
-W tym artykule umożliwiają rozwiązywanie problemów, które występują podczas konfigurowania maszyny wirtualne hosta sesji pulpitu wirtualnego Windows (VM).
+Ten artykuł służy do rozwiązywania problemów występujących podczas konfigurowania maszyn wirtualnych hosta sesji usług pulpitu wirtualnego systemu Windows.
 
 ## <a name="provide-feedback"></a>Przekazywanie opinii
 
-Firma Microsoft obecnie nie są zbyt przypadki pomocy technicznej Windows pulpitu wirtualnego jest dostępna w wersji zapoznawczej. Odwiedź stronę [społeczności technicznej pulpitu wirtualnego Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) w celu omówienia usługi Windows pulpitu wirtualnego przy użyciu zespół pracujący nad produktem i elementów członkowskich aktywnej społeczności użytkowników.
+Obecnie nie zajmują się pomocą techniczną, gdy pulpit wirtualny systemu Windows jest w wersji zapoznawczej. Odwiedź [społeczność Tech. pulpitu wirtualnego systemu Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , aby omówić usługę pulpitu wirtualnego systemu Windows z zespołem produktu i aktywnymi członkami społeczności.
 
 ## <a name="vms-are-not-joined-to-the-domain"></a>Maszyny wirtualne nie są przyłączone do domeny
 
-Wykonaj te instrukcje, jeśli występują problemy, przyłączanie maszyn wirtualnych do domeny.
+Postępuj zgodnie z tymi instrukcjami, jeśli masz problemy z przyłączaniem maszyn wirtualnych do domeny.
 
-- Dołączanie maszyny Wirtualnej ręcznie przy użyciu procesu w [dołączanie maszyny wirtualnej systemu Windows Server do domeny zarządzanej](https://docs.microsoft.com/azure/active-directory-domain-services/Active-directory-ds-admin-guide-join-windows-vm-portal) lub za pomocą [szablonu przyłączanie do domeny](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
-- Spróbuj wykonać polecenie ping nazwa domeny z wiersza polecenia na maszynie Wirtualnej.
-- Przejrzyj listę komunikatów o błędach przyłączanie do domeny w [Rozwiązywanie problemów z domeny sprzężenia komunikaty o błędach](https://social.technet.microsoft.com/wiki/contents/articles/1935.troubleshooting-domain-join-error-messages.aspx).
+- Ręcznie Dołącz maszynę wirtualną przy użyciu procesu w przyłączeniu [maszyny wirtualnej z systemem Windows Server do domeny zarządzanej](https://docs.microsoft.com/azure/active-directory-domain-services/Active-directory-ds-admin-guide-join-windows-vm-portal) lub za pomocą szablonu dołączania do [domeny](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
+- Spróbuj wysłać polecenie ping do nazwy domeny z wiersza polecenia na maszynie wirtualnej.
+- Przejrzyj listę komunikatów o błędach dołączania do domeny w [temacie Rozwiązywanie problemów z](https://social.technet.microsoft.com/wiki/contents/articles/1935.troubleshooting-domain-join-error-messages.aspx)przyłączaniem do domeny.
 
 ### <a name="error-incorrect-credentials"></a>Błąd: Nieprawidłowe poświadczenia
 
-**Przyczyna:** Wystąpił błąd pisowni wykonywane, gdy poświadczenia zostały wprowadzone w usługi Azure Resource Manager szablon interfejsu poprawki.
+**Może** Wystąpił błąd podczas wprowadzania poświadczeń w ramach poprawek do interfejsu szablonu Azure Resource Manager.
 
-**Poprawka:** Wykonaj te instrukcje, aby poprawić poświadczenia.
+**Wiązane** Postępuj zgodnie z tymi instrukcjami, aby poprawić poświadczenia.
 
 1. Ręcznie Dodaj maszyny wirtualne do domeny.
-2. Wdróż ponownie, gdy poświadczenia zostały potwierdzone. Zobacz [Utwórz pulę hosta przy użyciu programu PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
-3. Przyłączanie maszyn wirtualnych do domeny przy użyciu szablonu z [sprzężenia istniejącej maszyny Wirtualnej Windows do domeny AD](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
+2. Wdróż ponownie po potwierdzeniu poświadczeń. Zobacz [Tworzenie puli hostów przy użyciu programu PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
+3. Przyłączanie maszyn wirtualnych do domeny przy użyciu szablonu z przyłączaniem [istniejącej maszyny wirtualnej z systemem Windows do domeny usługi AD](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
 
-### <a name="error-timeout-waiting-for-user-input"></a>Błąd: Limit czasu oczekiwania na dane wejściowe użytkownika
+### <a name="error-timeout-waiting-for-user-input"></a>Błąd: Przekroczono limit czasu oczekiwania na dane wejściowe użytkownika
 
-**Przyczyna:** Konto używane do przyłączania do domeny mogą mieć uwierzytelnianie wieloskładnikowe (MFA).
+**Może** Konto używane do dołączania do domeny może mieć uwierzytelnianie wieloskładnikowe (MFA).
 
-**Poprawka:** Wykonaj te instrukcje dotyczące przyłączania do domeny.
+**Wiązane** Postępuj zgodnie z tymi instrukcjami, aby zakończyć przyłączanie do domeny.
 
-1. Tymczasowe usunięcie usługi MFA dla konta.
+1. Tymczasowe usuwanie usługi MFA dla konta.
 2. Użyj konta usługi.
 
-### <a name="error-the-account-used-during-provisioning-doesnt-have-permissions-to-complete-the-operation"></a>Błąd: Konto używane podczas inicjowania obsługi nie ma uprawnień do ukończenia tej operacji
+### <a name="error-the-account-used-during-provisioning-doesnt-have-permissions-to-complete-the-operation"></a>Błąd: Konto używane podczas aprowizacji nie ma uprawnień do ukończenia operacji
 
-**Przyczyna:** Konto używane, nie ma uprawnienia do przyłączania maszyn wirtualnych do domeny z powodu zgodności i przepisów.
+**Może** Używane konto nie ma uprawnień do przyłączania maszyn wirtualnych do domeny ze względu na zgodność i regulacje.
 
-**Poprawka:** Wykonaj te instrukcje.
+**Wiązane** Postępuj zgodnie z tymi instrukcjami.
 
-1. Użyj konta należącego do grupy administratorów.
-2. Przyznaj uprawnienia niezbędne do kont używanych.
+1. Użyj konta, które jest członkiem grupy Administratorzy.
+2. Przyznaj odpowiednie uprawnienia do używanego konta.
 
-### <a name="error-domain-name-doesnt-resolve"></a>Błąd: Nazwa domeny nie jest rozpoznawane
+### <a name="error-domain-name-doesnt-resolve"></a>Błąd: Nazwa domeny nie jest rozpoznawana
 
-**Przyczyny 1:** Maszyny wirtualne są w grupie zasobów, który nie został skojarzony z siecią wirtualną (VNET), gdzie znajduje się domeny.
+**Przyczyna 1:** Maszyny wirtualne znajdują się w grupie zasobów, która nie jest skojarzona z siecią wirtualną (VNET), w której znajduje się domena.
 
-**Napraw 1:** Utwórz wirtualną sieć równorzędną między siecią Wirtualną, której przeprowadzono aprowizację maszyn wirtualnych i sieci Wirtualnej, w którym działa kontroler domeny (DC). Zobacz [tworzenie komunikacji równorzędnej sieci wirtualnej — Resource Manager, w różnych subskrypcjach](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions).
+**Poprawka 1:** Utwórz sieć równorzędną sieci wirtualnej między siecią wirtualną, w której zainicjowano maszyny wirtualne i sieć wirtualną, w której jest uruchomiony kontroler domeny. Zobacz [Tworzenie komunikacji równorzędnej sieci wirtualnej — Menedżer zasobów, różne subskrypcje](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions).
 
-**Przyczyny 2:** Korzystając z AadService (AADS), wpisy DNS nie zostały ustawione.
+**Przyczyna 2:** W przypadku korzystania z AadService (AADS) nie ustawiono wpisów DNS.
 
-**Napraw 2:** Aby ustawić usług domain services, zobacz [włączyć usługi Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-dns).
+**Poprawka 2:** Aby ustawić usługi domenowe, zobacz [Enable Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-dns).
 
-## <a name="windows-virtual-desktop-agent-and-windows-virtual-desktop-boot-loader-are-not-installed"></a>Wirtualny agenta pulpitu Windows i Windows wirtualnego pulpitu rozruchowym nie są zainstalowane
+## <a name="windows-virtual-desktop-agent-and-windows-virtual-desktop-boot-loader-are-not-installed"></a>Nie zainstalowano programu Windows Virtual Desktop Agent i modułu ładującego rozruchu pulpitu wirtualnego systemu Windows
 
-Zalecanym sposobem aprowizacji maszyn wirtualnych używa usługi Azure Resource Manager **tworzenie i aprowizowanie Windows pulpitu wirtualnego hosta puli** szablonu. Ten szablon automatycznie instaluje wirtualnej agenta pulpit Windows i Windows wirtualnego pulpitu agenta moduł ładujący rozruchu.
+Zalecanym sposobem aprowizacji maszyn wirtualnych jest użycie szablonu **puli hostów usług pulpitu wirtualnego systemu Windows Azure Resource Manager tworzenie i udostępnianie** . Szablon automatycznie instaluje agenta pulpitu wirtualnego systemu Windows i moduł ładujący rozruchu agenta pulpitu wirtualnego systemu Windows.
 
-Wykonaj te instrukcje, aby upewnić się, że składniki są zainstalowane i sprawdzić komunikaty o błędach.
+Postępuj zgodnie z tymi instrukcjami, aby upewnić się, że składniki są zainstalowane i sprawdź komunikaty o błędach.
 
-1. Upewnij się, że dwa składniki są zainstalowane, sprawdzając **Panelu sterowania** > **programy** > **programy i funkcje**. Jeśli **wirtualnej agenta pulpitu Windows** i **Windows wirtualnego pulpitu agenta moduł ładujący rozruchu** są niewidoczne, nie są zainstalowane na maszynie Wirtualnej.
-2. Otwórz **Eksploratora plików** i przejdź do **C:\Windows\Temp\scriptlogs.log**. Brakuje pliku wskazuje, że DSC programu PowerShell, który zainstalowany dwa składniki nie był w stanie do uruchamiania w kontekście zabezpieczeń, pod warunkiem.
-3. Jeśli plik **C:\Windows\Temp\scriptlogs.log** jest obecne, otwórz go i sprawdzić komunikaty o błędach.
+1. Upewnij się, że dwa składniki są zainstalowane, zaznaczając **panel** > sterowania**programy** > **programy i funkcje**. Jeśli program **Windows Virtual Desktop Agent** i **moduł ładujący rozruchu agenta wirtualnego systemu Windows** nie są widoczne, nie są one zainstalowane na maszynie wirtualnej.
+2. Otwórz **Eksploratora plików** i przejdź do **C:\Windows\Temp\scriptlogs.log**. Jeśli brakuje pliku, oznacza to, że nie można uruchomić programu PowerShell DSC, który zainstalował dwa składniki, w podanym kontekście zabezpieczeń.
+3. Jeśli plik **C:\Windows\Temp\scriptlogs.log** jest obecny, otwórz go i sprawdź komunikaty o błędach.
 
-### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptlogslog-is-also-missing"></a>Błąd: Brak wirtualnej agenta pulpit Windows i Windows wirtualnego pulpitu agenta moduł ładujący rozruchu. Ponadto brak C:\Windows\Temp\scriptlogs.log
+### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptlogslog-is-also-missing"></a>Błąd: Brak programu Windows Virtual Desktop Agent i modułu ładującego rozruchu agenta wirtualnego systemu Windows. Brak C:\Windows\Temp\scriptlogs.log również
 
-**Przyczyny 1:** Poświadczenia podane podczas wprowadzania dla szablonu usługi Azure Resource Manager są niepoprawne lub uprawnienia były niewystarczające.
+**Przyczyna 1:** Poświadczenia podane podczas wprowadzania dla szablonu Azure Resource Manager były nieprawidłowe lub niewystarczające uprawnienia.
 
-**Napraw 1:** Ręcznie dodaj brakujące składniki do maszyn wirtualnych przy użyciu [Utwórz pulę hosta przy użyciu programu PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
+**Poprawka 1:** Ręcznie Dodaj brakujące składniki do maszyn wirtualnych za pomocą polecenia [Utwórz pulę hostów za pomocą programu PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
 
-**Przyczyny 2:** DSC programu PowerShell można było uruchomić i wykonywanie, ale nie można wykonać, ponieważ nie można zalogować się do wirtualnego pulpitu Windows i uzyskać potrzebne informacje.
+**Przyczyna 2:** Program PowerShell DSC był w stanie uruchomić i wykonać, ale nie można go zakończyć, ponieważ nie może się zalogować do pulpitu wirtualnego systemu Windows i uzyskać wymaganych informacji.
 
-**Napraw 2:** Upewnij się, elementy z poniższej listy.
+**Poprawka 2:** Potwierdź elementy z poniższej listy.
 
 - Upewnij się, że konto nie ma usługi MFA.
-- Upewnij się, że nazwa dzierżawy są dokładne i dzierżawa istnieje w Windows pulpitu wirtualnego.
-- Upewnij się, konto ma co najmniej uprawnienia współautora usług pulpitu zdalnego.
+- Upewnij się, że nazwa dzierżawy jest dokładna, a dzierżawca istnieje na pulpicie wirtualnym systemu Windows.
+- Upewnij się, że konto ma co najmniej uprawnienia współautora pulpitu zdalnego.
 
-### <a name="error-authentication-failed-error-in-cwindowstempscriptlogslog"></a>Błąd: Uwierzytelnianie nie powiodło się, błąd C:\Windows\Temp\scriptlogs.log
+### <a name="error-authentication-failed-error-in-cwindowstempscriptlogslog"></a>Błąd: Uwierzytelnianie nie powiodło się, błąd w C:\Windows\Temp\scriptlogs.log
 
-**Przyczyna:** Nie można wykonać DSC programu PowerShell, ale nie można nawiązać połączenia z pulpitem wirtualnym Windows.
+**Może** Program PowerShell DSC był w stanie wykonać, ale nie mógł nawiązać połączenia z pulpitem wirtualnym systemu Windows.
 
-**Poprawka:** Upewnij się, elementy z poniższej listy.
+**Wiązane** Potwierdź elementy z poniższej listy.
 
-- Maszyny wirtualne należy ręcznie zarejestrować w usłudze Windows pulpitu wirtualnego.
-- Upewnij się, że konto używane do nawiązywania połączenia z pulpitem wirtualnym Windows ma uprawnienia w dzierżawie, aby utworzyć pule hosta.
-- Upewnij się, że konto nie ma usługi MFA.
+- Ręcznie Zarejestruj maszyny wirtualne za pomocą usługi pulpitu wirtualnego systemu Windows.
+- Potwierdź, że konto używane do nawiązywania połączenia z pulpitem wirtualnym systemu Windows ma uprawnienia do tworzenia pul hostów w dzierżawie.
+- Potwierdzenie konta nie ma uwierzytelniania MFA.
 
-## <a name="windows-virtual-desktop-agent-is-not-registering-with-the-windows-virtual-desktop-service"></a>Nie rejestruje Windows wirtualnego pulpitu agenta z usługą Windows pulpitu wirtualnego
+## <a name="windows-virtual-desktop-agent-is-not-registering-with-the-windows-virtual-desktop-service"></a>Agent pulpitu wirtualnego systemu Windows nie jest rejestrowany w usłudze pulpitu wirtualnego systemu Windows
 
-Podczas pierwszej instalacji Windows Agent pulpitu wirtualnego w sesji hostować maszyny wirtualne (albo ręcznie lub za pomocą szablonu usługi Azure Resource Manager i programu PowerShell DSC), zapewnia tokenu rejestracji. W poniższej sekcji opisano rozwiązywanie problemów mające zastosowanie do Windows Agent pulpitu wirtualnego, a token.
+Gdy Agent pulpitu wirtualnego systemu Windows jest instalowany po raz pierwszy na maszynach wirtualnych hosta sesji (ręcznie lub za pośrednictwem szablonu Azure Resource Manager i programu PowerShell DSC), udostępnia token rejestracji. W poniższej sekcji omówiono problemy związane z rozwiązywaniem problemów dotyczących agenta usług pulpitu wirtualnego systemu Windows i tokenu.
 
-### <a name="error-the-status-filed-in-get-rdssessionhost-cmdlet-shows-status-as-unavailable"></a>Błąd: Stan zgłoszone w poleceniu cmdlet Get-RdsSessionHost stan jest wyświetlany jako niedostępny
+### <a name="error-the-status-filed-in-get-rdssessionhost-cmdlet-shows-status-as-unavailable"></a>Błąd: Stan zgłoszony w poleceniu cmdlet Get-RdsSessionHost pokazuje stan jako niedostępny
 
-![Polecenie cmdlet Get-RdsSessionHost stan jest wyświetlany jako niedostępna.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+![Polecenie cmdlet Get-RdsSessionHost wyświetla stan jako niedostępny.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
-**Przyczyna:** Agent nie jest w stanie automatycznie zaktualizowana do nowej wersji.
+**Może** Agent nie może zaktualizować się do nowej wersji.
 
-**Poprawka:** Wykonaj te instrukcje, aby ręcznie zaktualizować agenta.
+**Wiązane** Postępuj zgodnie z tymi instrukcjami, aby ręcznie zaktualizować agenta.
 
-1. Pobierz nową wersję agenta na hoście sesji maszyny Wirtualnej.
-2. Uruchom Menedżera zadań, a następnie na karcie usługi, należy zatrzymać usługę RDAgentBootLoader.
-3. Uruchom Instalatora z nową wersją Windows Agent pulpitu wirtualnego.
-4. Po wyświetleniu monitu dla tokenu rejestracji, Usuń wpis INVALID_TOKEN, a następnie naciśnij klawisz Dalej (nowy token nie jest wymagane).
-5. Wykonaj Kreatora instalacji.
-6. Otwórz Menedżera zadań, a następnie uruchom usługę RDAgentBootLoader.
+1. Pobierz nową wersję agenta na maszynie wirtualnej hosta sesji.
+2. Uruchom Menedżera zadań, a następnie na karcie Usługa Zatrzymaj usługę RDAgentBootLoader.
+3. Uruchom Instalatora, aby uzyskać nową wersję agenta pulpitu wirtualnego systemu Windows.
+4. Po wyświetleniu monitu o token rejestracji Usuń wpis INVALID_TOKEN i naciśnij przycisk Dalej (nowy token nie jest wymagany).
+5. Ukończ pracę Kreatora instalacji.
+6. Otwórz Menedżera zadań i uruchom usługę RDAgentBootLoader.
 
-## <a name="error--windows-virtual-desktop-agent-registry-entry-isregistered-shows-a-value-of-0"></a>Błąd:  Wpis rejestru wirtualnego agenta pulpitu Windows IsRegistered znajduje się wartość 0
+## <a name="error--windows-virtual-desktop-agent-registry-entry-isregistered-shows-a-value-of-0"></a>Błąd:  Wpis rejestru programu Windows Virtual Desktop Agent IsRegistered zawiera wartość 0
 
-**Przyczyna:** Token rejestracji wygasł lub został wygenerowany przy użyciu wartości wygaśnięcia 999999.
+**Może** Token rejestracji wygasł lub został wygenerowany z wartością wygaśnięcia wynoszącą 999999.
 
-**Poprawka:** Wykonaj te instrukcje, aby naprawić błąd rejestru agenta.
+**Wiązane** Postępuj zgodnie z tymi instrukcjami, aby naprawić błąd rejestru agenta.
 
-1. Jeśli istnieje już tokenu rejestracji, należy go usunąć za pomocą Remove RDSRegistrationInfo.
-2. Wygeneruj nowy token z NewRegistrationInfo usług pulpitu zdalnego.
-3. Sprawdź, czy parametr - ExpriationHours jest ustawiona do 72 (wartość maksymalna to 99999).
+1. Jeśli istnieje już token rejestracji, usuń go z poleceniem Remove-RDSRegistrationInfo.
+2. Generuj nowy token przy użyciu programu RDS-NewRegistrationInfo.
+3. Upewnij się, że parametr-ExpriationHours jest ustawiony na 72 (wartość maksymalna to 99999).
 
-### <a name="error-windows-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-rdssessionhost"></a>Błąd: Agent Windows pulpitu wirtualnego nie zgłasza pulsu, podczas uruchamiania Get RdsSessionHost
+### <a name="error-windows-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-rdssessionhost"></a>Błąd: Agent pulpitu wirtualnego systemu Windows nie zgłasza pulsu podczas uruchamiania Get-RdsSessionHost
 
-**Przyczyny 1:** RDAgentBootLoader usługa została zatrzymana.
+**Przyczyna 1:** Usługa RDAgentBootLoader została zatrzymana.
 
-**Napraw 1:** Uruchom Menedżera zadań i, jeśli karta usługi zgłasza stan zatrzymania usługi RDAgentBootLoader, uruchom usługę.
+**Poprawka 1:** Uruchom Menedżera zadań, a jeśli karta usługi zgłosi stan zatrzymania dla usługi RDAgentBootLoader, uruchom usługę.
 
-**Przyczyny 2:** Może zostać zamknięty port 443.
+**Przyczyna 2:** Port 443 może być zamknięty.
 
-**Napraw 2:** Wykonaj te instrukcje, aby otworzyć port 443.
+**Poprawka 2:** Postępuj zgodnie z tymi instrukcjami, aby otworzyć port 443.
 
-1. Upewnij się, port 443 został otwarty, pobierając narzędzie PSPing z [narzędzia Sysinternals](https://docs.microsoft.com/sysinternals/downloads/psping).
-2. Zainstaluj narzędzie PSPing na hoście sesji maszyny Wirtualnej, w którym działa agent.
-3. Otwórz wiersz polecenia jako administrator i wydać poniższe polecenie:
+1. Upewnij się, że port 443 jest otwarty przez pobranie narzędzia PSPing z [narzędzi sysinternal](https://docs.microsoft.com/sysinternals/downloads/psping).
+2. Zainstaluj program PSPing na maszynie wirtualnej hosta sesji, w której jest uruchomiony Agent programu.
+3. Otwórz wiersz polecenia jako administrator i wydaj poniższe polecenie:
 
     ```cmd
     psping rdbroker.wvdselfhost.microsoft.com:443
     ```
 
-4. Upewnij się, te informacje PSPing Odebrano powrót po awarii z RDBroker:
+4. Potwierdź, że PSPing otrzymał informacje z RDBroker:
 
     ```
     PsPing v2.10 - PsPing - ping, latency, bandwidth measurement utility
@@ -167,23 +167,23 @@ Podczas pierwszej instalacji Windows Agent pulpitu wirtualnego w sesji hostować
     Minimum = 2.12ms, Maximum = 3.83ms, Average = 2.58ms
     ```
 
-## <a name="troubleshooting-issues-with-the-windows-virtual-desktop-side-by-side-stack"></a>Rozwiązywanie problemów ze stosem side-by-side Windows pulpitu wirtualnego
+## <a name="troubleshooting-issues-with-the-windows-virtual-desktop-side-by-side-stack"></a>Rozwiązywanie problemów z funkcją pulpitu wirtualnego systemu Windows — stos równoległy
 
-Windows pulpitu wirtualnego stosu side-by-side jest automatycznie instalowany z systemu Windows Server w 2019 r. Użyj Instalatora Microsoft (MSI), aby zainstalować stosu side-by-side na Microsoft Windows Server 2016 lub Windows Server 2012 R2. Program Microsoft Windows 10, Windows pulpitu wirtualnego stosu side-by-side jest włączona przy użyciu **enablesxstackrs.ps1**.
+Stos równoległy pulpitu wirtualnego systemu Windows jest automatycznie instalowany z systemem Windows Server 2019. Użyj Instalatora Microsoft (MSI), aby zainstalować stos równoległy w systemie Microsoft Windows Server 2016 lub Windows Server 2012 R2. W przypadku systemu Microsoft Windows 10 stos równoległy pulpitu wirtualnego systemu Windows jest włączony z **enablesxstackrs. ps1**.
 
-Istnieją trzy sposoby stosu side-by-side pobiera zainstalowane lub włączone w sesji hosta puli maszyn wirtualnych:
+Istnieją trzy główne sposoby, w których stos równoległy jest instalowany lub włączony na maszynach wirtualnych puli hostów sesji:
 
-- Usługi za pomocą usługi Azure Resource Manager **tworzenie i aprowizowanie nowej puli hosta wirtualnego pulpitu Windows** szablonu
-- Jest włączone i włączona obrazu wzorcowego
-- Zainstalowana lub włączona ręcznie na każdej maszynie Wirtualnej (lub za pomocą rozszerzenia/programu PowerShell)
+- Za pomocą Azure Resource Manager **tworzenia i udostępniania nowego szablonu puli hostów wirtualnego systemu Windows**
+- Przez dołączenie i włączenie na obrazie głównym
+- Ręcznie zainstalowane lub włączone dla każdej maszyny wirtualnej (lub z rozszerzeniami/programem PowerShell)
 
-Jeśli występują problemy ze stosem side-by-side Windows pulpitu wirtualnego, wpisz **qwinsta** polecenie w wierszu polecenia, aby upewnić się, że stos side-by-side jest zainstalowana lub włączona.
+Jeśli występują problemy z stosem równoległym pulpitu wirtualnego systemu Windows, wpisz polecenie **qwinsta** z wiersza polecenia, aby upewnić się, że stos równoległy jest zainstalowany lub włączony.
 
-Dane wyjściowe **qwinsta** zostanie wyświetlona lista **rdp sxs** w danych wyjściowych, jeśli stosu side-by-side jest zainstalowane i włączone.
+Dane wyjściowe **qwinsta** będą wystawiać **protokół RDP-SxS** w danych wyjściowych, jeśli zostanie zainstalowany i włączony stos równoległy.
 
-![Stos Side-by-side jest zainstalowana lub włączona przy użyciu qwinsta wymieniony jako rdp-sxs w danych wyjściowych.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+![Stos równoległy został zainstalowany lub włączony przy użyciu qwinsta, który jest wymieniony jako RDP-SxS w danych wyjściowych.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
-Sprawdź wpisy rejestru wymienionych poniżej i upewnij się, że ich wartości są zgodne. Jeśli wartości są niezgodne. Brak kluczy rejestru, postępuj zgodnie z instrukcjami [Utwórz pulę hosta przy użyciu programu PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell) na temat sposobu ponownej instalacji stosu side-by-side.
+Sprawdź wpisy rejestru wymienione poniżej i upewnij się, że ich wartości pasują do siebie. Jeśli brakuje kluczy rejestru lub wartości są niezgodne, postępuj zgodnie z instrukcjami w temacie [Tworzenie puli hostów przy użyciu programu PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell) na temat sposobu ponownej instalacji stosu równoległego.
 
 ```registry
     HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal
@@ -193,89 +193,89 @@ Sprawdź wpisy rejestru wymienionych poniżej i upewnij się, że ich wartości 
     Server\ClusterSettings\"SessionDirectoryListener":rdp-sxs
 ```
 
-### <a name="error-oreverseconnectstackfailure"></a>Błąd: O_REVERSE_CONNECT_STACK_FAILURE
+### <a name="error-o_reverse_connect_stack_failure"></a>Błąd: O_REVERSE_CONNECT_STACK_FAILURE
 
 ![Kod błędu O_REVERSE_CONNECT_STACK_FAILURE.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
-**Przyczyna:** Stos side-by-side nie jest zainstalowany na hoście sesji maszyny Wirtualnej.
+**Może** Stos równoległy nie jest zainstalowany na maszynie wirtualnej hosta sesji.
 
-**Poprawka:** Wykonaj te instrukcje, aby zainstalować stosu side-by-side na hoście sesji maszyny Wirtualnej.
+**Wiązane** Postępuj zgodnie z tymi instrukcjami, aby zainstalować stos równoległy na maszynie wirtualnej hosta sesji.
 
-1. Użyj protokołu RDP (Remote Desktop), aby uzyskać bezpośrednio do maszyny Wirtualnej hosta sesji jako administrator lokalny.
-2. Pobierz i zaimportuj [modułu programu PowerShell pulpitu wirtualnego Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) do użycia w sesji programu PowerShell, jeśli jeszcze go.
-3. Instalowanie przy użyciu stosu side-by-side [Utwórz pulę hosta przy użyciu programu PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
+1. Użyj Remote Desktop Protocol (RDP), aby przejść bezpośrednio do maszyny wirtualnej hosta sesji jako administrator lokalny.
+2. Pobierz i zaimportuj [moduł programu PowerShell dla pulpitu wirtualnego systemu Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , który ma być używany w sesji programu PowerShell, jeśli jeszcze tego nie zrobiono.
+3. Zainstaluj stos równoległy przy użyciu polecenia [Utwórz pulę hostów za pomocą programu PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
 
-## <a name="how-to-fix-a-windows-virtual-desktop-side-by-side-stack-that-malfunctions"></a>Jak naprawić stos side-by-side Windows pulpitu wirtualnego, który działa
+## <a name="how-to-fix-a-windows-virtual-desktop-side-by-side-stack-that-malfunctions"></a>Jak naprawić stos równoległy pulpitu wirtualnego systemu Windows, który działa nieprawidłowo
 
-Są to znane okoliczności, które mogą spowodować niepoprawne działanie stosu side-by-side:
+Istnieją znane sytuacje, które mogą spowodować nieprawidłowe działanie stosu równoległego:
 
-- Nieobserwowane odpowiedniej kolejności kroki umożliwiające stosu side-by-side
-- Automatyczna aktualizacja do systemu Windows 10 rozszerzone wszechstronna dysku (EVD)
-- Brak roli hosta sesji usług pulpitu zdalnego (RDSH)
-- Uruchamianie wielokrotne enablesxsstackrc.ps1
-- Uruchamianie enablesxsstackrc.ps1 na koncie nie ma uprawnień administratora lokalnego
+- Nie zgodnie z prawidłową kolejnością kroków, aby włączyć stos równoległy
+- Autoaktualizacja do ulepszonego uniwersalnego dysku systemu Windows 10 (EVD)
+- Brak roli hosta sesji Pulpit zdalny
+- Uruchamianie enablesxsstackrc. ps1 wiele razy
+- Uruchamianie enablesxsstackrc. ps1 na koncie, które nie ma uprawnień administratora lokalnego
 
-Instrukcje w tej sekcji mogą pomóc w odinstalować Windows pulpitu wirtualnego stosu side-by-side. Po odinstalowaniu stosu side-by-side, przejdź do obszaru "Zarejestruj maszynę Wirtualną z pulą hosta pulpitów wirtualnych Windows" [Utwórz pulę hosta przy użyciu programu PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell) ponowna instalacja stosu side-by-side.
+Instrukcje przedstawione w tej sekcji mogą pomóc w odinstalowaniu stosu równoległego pulpitu wirtualnego systemu Windows. Po odinstalowaniu stosu równoległego przejdź do pozycji "Zarejestruj maszynę wirtualną w puli hostów systemu Windows Virtual Desktop" w temacie [Tworzenie puli hostów za pomocą programu PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell) , aby ponownie zainstalować stos równoległy.
 
-Maszyn wirtualnych używanych do uruchamiania korygowania musi być w tej samej podsieci i domen jako maszyny Wirtualnej ze stosem nieprawidłowo side-by-side.
+Maszyna wirtualna używana do uruchamiania korygowania musi znajdować się w tej samej podsieci i domenie co maszyna wirtualna z nieprawidłowo działającym stosem równoległym.
 
-Wykonaj te instrukcje, aby uruchomić korygowania z tej samej podsieci i domen:
+Postępuj zgodnie z tymi instrukcjami, aby przeprowadzić korygowanie z tej samej podsieci i domeny:
 
-1. Połącz przy użyciu standardowego protokołu RDP (Remote Desktop) do maszyny Wirtualnej, z której zostaną zastosowane poprawki.
-2. Pobierz narzędzia PsExec z https://docs.microsoft.com/sysinternals/downloads/psexec.
+1. Połącz się z maszyną wirtualną przy użyciu standardu Remote Desktop Protocol (RDP), z której zostanie zastosowana poprawka.
+2. Pobierz PsExec z https://docs.microsoft.com/sysinternals/downloads/psexec.
 3. Rozpakuj pobrany plik.
 4. Uruchom wiersz polecenia jako administrator lokalny.
-5. Przejdź do folderu, w którym zostało rozpakowane PsExec.
-6. Z wiersza polecenia użyj następującego polecenia:
+5. Przejdź do folderu, w którym PsExec zostało rozpakowane.
+6. W wierszu polecenia Użyj następującego polecenia:
 
     ```cmd
             psexec.exe \\<VMname> cmd
     ```
 
     >[!Note]
-    >VMname to nazwa komputera maszyny wirtualnej ze stosem nieprawidłowo side-by-side.
+    >VMname to nazwa maszyny wirtualnej z nieprawidłowym stosem równoległym.
 
-7. Zaakceptuj Umowę licencyjną programu PsExec, klikając przycisk Zgadzam się.
+7. Zaakceptuj umowę licencyjną PsExec, klikając pozycję Zgadzam się.
 
-    ![Zrzut ekranu umowy licencyjne oprogramowania.](media/SoftwareLicenseTerms.png)
+    ![Zrzut ekranu umowy licencji na oprogramowanie.](media/SoftwareLicenseTerms.png)
 
     >[!Note]
-    >To okno dialogowe będzie wyświetlana tylko podczas pierwszego uruchomienia narzędzia PsExec.
+    >To okno dialogowe będzie wyświetlane tylko po pierwszym uruchomieniu PsExec.
 
-8. Po otwarciu sesji wiersza polecenia na maszynie Wirtualnej z nieprawidłowo stosu side-by-side Uruchom qwinsta i upewnij się, że wpis o nazwie sxs protokołu rdp jest dostępny. W przeciwnym razie stosu side-by-side nie jest obecny na maszynie Wirtualnej, więc ten problem nie jest powiązany z stosu side-by-side.
+8. Po otwarciu sesji wiersza polecenia na maszynie wirtualnej z nieprawidłowym stosem równoległym Uruchom program qwinsta i upewnij się, że jest dostępny wpis o nazwie RDP-SXS. W przeciwnym razie stos równoległy nie jest obecny na maszynie wirtualnej, więc problem nie jest powiązany z stosem równoległym.
 
     ![Wiersz polecenia administratora](media/AdministratorCommandPrompt.png)
 
-9. Uruchom następujące polecenie, które zostanie wyświetlona lista składników Microsoft zainstalowane na maszynie Wirtualnej ze stosem nieprawidłowo side-by-side.
+9. Uruchom następujące polecenie, które spowoduje wyświetlenie listy składników firmy Microsoft zainstalowanych na maszynie wirtualnej z nieprawidłowym stosem równoległym.
 
     ```cmd
         wmic product get name
     ```
 
-10. Uruchom poniższe polecenie za pomocą nazw produktów w poprzednim kroku.
+10. Uruchom poniższe polecenie z nazwami produktów w powyższym kroku.
 
     ```cmd
         wmic product where name="<Remote Desktop Services Infrastructure Agent>" call uninstall
     ```
 
-11. Odinstaluj wszystkie produkty, które zaczyna się "Pulpit zdalny".
+11. Odinstaluj wszystkie produkty, które zaczynają się od "Pulpit zdalny".
 
-12. Po odinstalowaniu wszystkich składników pulpitu wirtualnego Windows postępuj zgodnie z instrukcjami, systemu operacyjnego:
+12. Po odinstalowaniu wszystkich składników pulpitu wirtualnego systemu Windows postępuj zgodnie z instrukcjami dla danego systemu operacyjnego:
 
-13. Jeśli system operacyjny Windows Server, należy ponownie uruchomić maszynę Wirtualną, która ma nieprawidłowe działanie stosu side-by-side (lub za pomocą witryny Azure portal za pomocą narzędzia PsExec).
+13. Jeśli używany system operacyjny to Windows Server, należy ponownie uruchomić maszynę wirtualną, która ma nieprawidłowo działający stos (z Azure Portal lub z narzędzia PsExec).
 
-Jeśli system operacyjny Microsoft Windows 10, Kontynuuj z poniższymi instrukcjami:
+Jeśli używany system operacyjny to Microsoft Windows 10, wykonaj poniższe instrukcje:
 
-14. Z maszyny Wirtualnej z uruchomionym programu PsExec Otwórz Eksploratora plików i skopiuj disablesxsstackrc.ps1 na dysk systemowy maszyny wirtualnej ze stosem malfunctioned side-by-side.
+14. Na maszynie wirtualnej z systemem PsExec Otwórz Eksploratora plików i skopiuj disablesxsstackrc. ps1 na dysk systemowy maszyny wirtualnej z nieprawidłowo działającym stosem równoległym.
 
     ```cmd
         \\<VMname>\c$\
     ```
 
     >[!NOTE]
-    >VMname to nazwa komputera maszyny wirtualnej ze stosem nieprawidłowo side-by-side.
+    >VMname to nazwa maszyny wirtualnej z nieprawidłowym stosem równoległym.
 
-15. Zalecana procedura: za pomocą narzędzia PsExec Uruchom program PowerShell i przejdź do folderu z poprzedniego kroku i uruchom disablesxsstackrc.ps1. Alternatywnie można uruchomić następujące polecenia cmdlet:
+15. Zalecany proces: w narzędziu PsExec Uruchom program PowerShell i przejdź do folderu z poprzedniego kroku i uruchom polecenie disablesxsstackrc. ps1. Alternatywnie można uruchomić następujące polecenia cmdlet:
 
     ```PowerShell
     Remove-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\ClusterSettings" -Name "SessionDirectoryListener" -Force
@@ -283,28 +283,28 @@ Jeśli system operacyjny Microsoft Windows 10, Kontynuuj z poniższymi instrukcj
     Remove-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations" -Name "ReverseConnectionListener" -Force
     ```
 
-16. Gdy gotowe polecenia cmdlet uruchomione, ponowne uruchomienie maszyny Wirtualnej ze stosem nieprawidłowo side-by-side.
+16. Po zakończeniu działania poleceń cmdlet Uruchom ponownie maszynę wirtualną z nieprawidłowym stosem Side-by-side.
 
-## <a name="remote-licensing-model-is-not-configured"></a>Nie skonfigurowano zdalnego modelu licencjonowania
+## <a name="remote-licensing-model-is-not-configured"></a>Nie skonfigurowano modelu licencjonowania zdalnego
 
-Jeśli logujesz się do wielu sesji systemu Windows 10 Enterprise przy użyciu konta administracyjnego można otrzymać powiadomienie, które mówi "trybu licencjonowania usług pulpitu zdalnego nie jest skonfigurowany, usług pulpitu zdalnego nie będzie działać w X dni. Na serwerze brokera połączeń użyj Menedżera serwera można określać trybu licencjonowania usług pulpitu zdalnego." Jeśli ten komunikat jest wyświetlany, oznacza to, należy ręcznie skonfigurować tryb licencjonowania **na użytkownika**.
+Jeśli zalogujesz się do wielosesyjnego systemu Windows 10 Enterprise przy użyciu konta administracyjnego, możesz otrzymać powiadomienie informujące o tym, że Pulpit zdalny tryb licencjonowania nie jest skonfigurowany, Usługi pulpitu zdalnego przestanie działać w ciągu X dni. Na serwerze brokera połączeń użyj Menedżer serwera, aby określić tryb licencjonowania Pulpit zdalny ". Jeśli zobaczysz ten komunikat, oznacza to, że trzeba ręcznie skonfigurować tryb licencjonowania na **użytkownika**.
 
 Aby ręcznie skonfigurować tryb licencjonowania:  
 
-1. Przejdź do usługi **Start menu** pola wyszukiwania, a następnie znajdź i Otwórz **gpedit.msc** na dostęp do lokalnego edytorze zasad grupy. 
-2. Przejdź do **konfiguracji komputera** > **Szablony administracyjne** > **składników Windows**  >   **Usługi pulpitu zdalnego** > **hosta sesji usług pulpitu zdalnego** > **licencjonowania**. 
-3. Wybierz **Ustaw tryb licencjonowania usług pulpitu zdalnego** i zmień go na **na użytkownika**.
+1. Przejdź do pola wyszukiwania **menu Start** , a następnie Znajdź i Otwórz **gpedit. msc** , aby uzyskać dostęp do edytora zasady grupy lokalnego. 
+2. Przejdź do **pozycji Konfiguracja** > komputera**Szablony administracyjne** > **składniki** > systemu Windows**usługi pulpitu zdalnego** > **pulpit zdalny hosta sesji**  >  **Licencjonowanie**. 
+3. Wybierz pozycję **Ustaw tryb licencjonowania pulpit zdalny** i zmień go na **na użytkownika**.
 
-Firma Microsoft obecnie poszukujesz problemy limitu czasu powiadomienia i okres prolongaty i planowanie pozwalających im sprostać w przyszłej aktualizacji. 
+Obecnie przeszukiwane są problemy z limitem czasu powiadomień i okresu prolongaty oraz zaplanowano ich rozwiązanie w przyszłej aktualizacji. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby uzyskać ogólne na temat rozwiązywania problemów ścieżki eskalacji i pulpitu wirtualnego Windows zobacz [Rozwiązywanie problemów — omówienie, opinie i pomoc techniczna](troubleshoot-set-up-overview.md).
-- Aby rozwiązywać problemy podczas tworzenia puli dzierżawy i hosta w środowisku Windows pulpitu wirtualnego, zobacz [dzierżawy i hostów puli tworzenia](troubleshoot-set-up-issues.md).
-- Aby rozwiązywać problemy podczas konfigurowania maszyny wirtualnej (VM) w Windows pulpitu wirtualnego, zobacz [konfigurację maszyny wirtualnej hosta sesji](troubleshoot-vm-configuration.md).
-- Aby rozwiązywać problemy z połączeniami klienta pulpitu wirtualnego Windows, zobacz [połączeń klienta usług pulpitu zdalnego](troubleshoot-client-connection.md).
-- Aby rozwiązywać problemy podczas korzystania z programu PowerShell z usługą Windows pulpitu wirtualnego, zobacz [środowiska PowerShell pulpitu wirtualnego Windows](troubleshoot-powershell.md).
-- Aby dowiedzieć się więcej na temat usługi w wersji zapoznawczej, zobacz [Windows Desktop w wersji zapoznawczej środowiska](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
-- Aby przejść przez samouczek rozwiązywania problemów, zobacz [samouczka: Rozwiązywanie problemów z wdrożeniami szablonu usługi Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot).
-- Aby dowiedzieć się więcej na temat inspekcji akcji, zobacz [inspekcji operacji przy użyciu usługi Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
-- Aby dowiedzieć się więcej o akcjach, aby określić błędy podczas wdrażania, zobacz [wyświetlanie operacji wdrażania](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).
+- Aby zapoznać się z omówieniem rozwiązywania problemów z pulpitem wirtualnym systemu Windows i ścieżkami eskalacji, zobacz [Omówienie rozwiązywania problemów, opinie i pomoc techniczna](troubleshoot-set-up-overview.md).
+- Aby rozwiązać problemy podczas tworzenia dzierżawy i puli hostów w środowisku pulpitu wirtualnego systemu Windows, zobacz [Tworzenie dzierżawy i puli hostów](troubleshoot-set-up-issues.md).
+- Aby rozwiązać problemy podczas konfigurowania maszyny wirtualnej w programie Virtual Desktop systemu Windows, zobacz [Konfiguracja maszyny wirtualnej hosta sesji](troubleshoot-vm-configuration.md).
+- Aby rozwiązać problemy z połączeniami klienta pulpitu wirtualnego systemu Windows, zobacz [pulpit zdalny połączenia klientów](troubleshoot-client-connection.md).
+- Aby rozwiązać problemy występujące podczas korzystania z programu PowerShell z pulpitem wirtualnym systemu Windows, zobacz [Windows Virtual Desktop PowerShell](troubleshoot-powershell.md).
+- Aby dowiedzieć się więcej na temat usługi w wersji zapoznawczej, zobacz [środowisko Windows Desktop Preview](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
+- Aby przejść przez samouczek dotyczący rozwiązywania [problemów, zobacz Samouczek: Rozwiązywanie problemów z](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)wdrożeniami szablonów Menedżer zasobów.
+- Aby dowiedzieć się więcej o akcjach inspekcji, zobacz [Inspekcja operacji przy użyciu Menedżer zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
+- Aby dowiedzieć się więcej o akcjach dotyczących określania błędów podczas wdrażania, zobacz [Wyświetlanie operacji wdrażania](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).

@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/25/2019
+ms.date: 08/02/2019
 ms.author: banders
-ms.openlocfilehash: 20ed2bcf793ab5c3913ccf66d338e71c1a99a003
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 36bc403c4000e58541f22c2cb44f77a28e81cb72
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478933"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779906"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>Interfejsy API usługi Azure Reservation Automation
 
@@ -84,7 +84,7 @@ Jeśli okaże się, że rezerwacje w organizacji są używane:
 - Upewnij się, że maszyny wirtualne tworzone przez organizację są zgodne z rozmiarem maszyny wirtualnej, która znajduje się w rezerwacji.
 - Upewnij się, że rozmiar wystąpienia jest elastyczny. Aby uzyskać więcej informacji, zobacz [Zarządzanie rezerwacjami — Zmień ustawienie optymalizacji dla wystąpień zarezerwowanych maszyn wirtualnych](billing-manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances).
 - Zmień zakres rezerwacji na współużytkowany, aby był bardziej szeroki. Aby uzyskać więcej informacji, zobacz [Zarządzanie rezerwacjami — Zmień zakres dla rezerwacji](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
-- Wymienia nieużywaną ilość. Aby uzyskać więcej informacji, zobacz [Zarządzanie rezerwacjami — anulowanie i wymiana](billing-manage-reserved-vm-instance.md#cancellations-and-exchanges).
+- Wymienia nieużywaną ilość. Aby uzyskać więcej informacji, zobacz [Zarządzanie rezerwacjami](billing-manage-reserved-vm-instance.md).
 
 ## <a name="give-access-to-reservations"></a>Udzielanie dostępu do rezerwacji
 

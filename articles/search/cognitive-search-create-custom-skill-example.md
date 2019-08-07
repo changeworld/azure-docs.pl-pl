@@ -1,53 +1,53 @@
 ---
-title: 'Przykład: Tworzenie niestandardowych umiejętności cognitive za pomocą API wyszukiwania jednostek Bing — usługa Azure Search'
-description: Demonstruje użycie usługi wyszukiwania jednostek Bing w umiejętności przy użyciu niestandardowych mapowane do potoku indeksowania wyszukiwania kognitywnego w usłudze Azure Search.
+title: 'Przykład: Tworzenie niestandardowej umiejętności poznawczej przy użyciu interfejs API wyszukiwania jednostek Bing-Azure Search'
+description: Demonstruje użycie usługi wyszukiwanie jednostek Bing w niestandardowej umiejętności zamapowanej na potok indeksowania wyszukiwania poznawczego w Azure Search.
 manager: pablocas
 author: luiscabrer
 services: search
 ms.service: search
+ms.subservice: cognitive-search
 ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: 7d90f46ada9b9453b4c1516a4a898456dc73b8e7
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: a032288338d2d6a53489105790b6862eefadf609
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672142"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841232"
 ---
-# <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Przykład: Tworzenie niestandardowych umiejętności, przy użyciu interfejsu API wyszukiwania jednostek Bing
+# <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Przykład: Utwórz niestandardową umiejętność przy użyciu interfejs API wyszukiwania jednostek Bing
 
-W tym przykładzie Dowiedz się, jak utworzyć umiejętności niestandardowego interfejsu API sieci web. To umiejętności Zaakceptuj lokalizacje, osób publicznych i organizacje i zwracać ich opisy. W przykładzie użyto [funkcji platformy Azure](https://azure.microsoft.com/services/functions/) opakowywać [interfejs API wyszukiwania jednostek Bing](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) tak, aby go implementuje interfejs umiejętności niestandardowe.
+W tym przykładzie dowiesz się, jak utworzyć niestandardową umiejętność interfejsu API sieci Web. Ta umiejętność akceptuje lokalizacje, publiczne dane i organizacje oraz zwraca do nich opisy. W przykładzie jest stosowana [Funkcja platformy Azure](https://azure.microsoft.com/services/functions/) , która umożliwia zawinięcie [interfejs API wyszukiwania jednostek Bing](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) tak, aby implementuje niestandardowy interfejs umiejętności.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-+ Przeczytaj o [interfejsu umiejętności niestandardowe](cognitive-search-custom-skill-interface.md) artykułu, jeśli nie jesteś zaznajomiony z interfejsem wejścia/wyjścia, która powinna implementować niestandardowe umiejętności.
++ Zapoznaj się z artykułem dotyczącym [niestandardowego interfejsu umiejętności](cognitive-search-custom-skill-interface.md) , jeśli nie znasz interfejsu wejścia/wyjścia, który powinien być zaimplementowany przez umiejętność niestandardową.
 
 + [!INCLUDE [cognitive-services-bing-entity-search-signup-requirements](../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
-+ Zainstaluj [Visual Studio 2019](https://www.visualstudio.com/vs/) lub później, np. obciążenie programowanie na platformie Azure.
++ Zainstaluj [program Visual Studio 2019](https://www.visualstudio.com/vs/) lub nowszy, w tym obciążenie Programowanie na platformie Azure.
 
 ## <a name="create-an-azure-function"></a>Tworzenie funkcji platformy Azure
 
-Chociaż ten przykład używa funkcji platformy Azure do hostowania interfejsu API sieci web, nie jest to wymagane.  Tak długo, jak spełniasz [interfejsu wymagania dotyczące cognitive umiejętności](cognitive-search-custom-skill-interface.md), podejścia jest bez znaczenia. Usługa Azure Functions, jednak ułatwiają tworzenie umiejętności niestandardowe.
+Mimo że w tym przykładzie używa się funkcji platformy Azure do hostowania internetowego interfejsu API, nie jest to wymagane.  Tak długo, jak spełniasz [wymagania dotyczące interfejsu dla umiejętności poznawczej](cognitive-search-custom-skill-interface.md), podejmowane podejście jest nieistotne. Azure Functions jednak ułatwić tworzenie niestandardowych umiejętności.
 
 ### <a name="create-a-function-app"></a>Tworzenie aplikacji funkcji
 
-1. W programie Visual Studio, wybierz **New** > **projektu** za pomocą menu Plik.
+1. W programie Visual Studio wybierz pozycję **Nowy** > **projekt** z menu plik.
 
-1. W oknie dialogowym Nowy projekt, wybierz **zainstalowane**, rozwiń węzeł **Visual C#**  > **chmury**, wybierz opcję **usługi Azure Functions**, wpisz Nazwa projektu, a następnie wybierz pozycję **OK**. Nazwa aplikacji funkcji musi być prawidłową nazwą C# przestrzeni nazw, dlatego nie należy używać znaków podkreślenia, łączników ani inne znaki inne niż alfanumeryczne.
+1. W oknie dialogowym Nowy projekt wybierz pozycję **zainstalowane**, rozwiń **pozycję C#Visual**   >  **Cloud**, wybierz pozycję **Azure Functions**, wpisz nazwę projektu, a następnie wybierz **przycisk OK**. Nazwa aplikacji funkcji musi być prawidłowa jako C# przestrzeń nazw, dlatego nie należy używać podkreśleń, łączników ani żadnych innych znaków innych niż alfanumeryczne.
 
-1. Wybierz **usługi Azure Functions w wersji 2 (.NET Core)** . Można też zrobić to z wersją 1, ale kod napisany poniżej jest oparty na szablonie v2.
+1. Wybierz **Azure Functions v2 (.NET Core)** . Można to również zrobić z wersją 1, ale kod zapisany poniżej jest oparty na szablonie v2.
 
-1. Wybierz typ jako **wyzwalacz HTTP**
+1. Wybierz typ, który ma być **wyzwalaczem http**
 
-1. Dla konta magazynu można wybrać **Brak**, ponieważ nie ma potrzeby każdy magazyn dla tej funkcji.
+1. W przypadku konta magazynu możesz wybrać opcję **Brak**, ponieważ nie będzie potrzebny żaden magazyn dla tej funkcji.
 
-1. Wybierz **OK** można utworzyć funkcji w projekcie i HTTP funkcja wyzwalana przez.
+1. Wybierz **przycisk OK** , aby utworzyć projekt funkcji i funkcję wyzwalaną przez protokół http.
 
-### <a name="modify-the-code-to-call-the-bing-entity-search-service"></a>Zmodyfikuj kod do wywołania tej usługi wyszukiwania jednostek Bing
+### <a name="modify-the-code-to-call-the-bing-entity-search-service"></a>Modyfikowanie kodu w celu wywołania usługi wyszukiwanie jednostek Bing
 
 Program Visual Studio tworzy projekt, a w nim klasę zawierającą standardowy kod dla wybranego typu funkcji. Atrybut *FunctionName* metody ustawia nazwę funkcji. Atrybut *HttpTrigger* określa, że funkcja jest wyzwalana przez żądanie HTTP.
 
@@ -313,15 +313,15 @@ namespace SampleSkills
 }
 ```
 
-Upewnij się wprowadzić własne *klucz* wartość w `key` stałą na podstawie klucza stało się podczas tworzenia API wyszukiwania jednostek Bing.
+Upewnij się, `key` że na podstawie klucza, który ma być używany podczas rejestrowania się w celu korzystania z interfejsu API wyszukiwania jednostek Bing, wprowadzono własną wartość *klucza* .
 
-W tym przykładzie zawiera wszystkie niezbędne kod w jednym pliku dla wygody. Można znaleźć nieco bardziej ustrukturyzowane wersji tego samego umiejętności w [repozytorium umiejętności power](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Text/BingEntitySearch).
+Ten przykład zawiera wszystkie niezbędne kody w pojedynczym pliku dla wygody. Możesz znaleźć nieco bardziej strukturalną wersję tej samej umiejętności w [repozytorium umiejętności oszczędzania](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Text/BingEntitySearch).
 
-Oczywiście, może zmienić nazwy pliku z `Function1.cs` do `BingEntitySearch.cs`.
+Oczywiście można zmienić nazwę pliku z `Function1.cs` na. `BingEntitySearch.cs`
 
-## <a name="test-the-function-from-visual-studio"></a>Testowanie funkcji w programie Visual Studio
+## <a name="test-the-function-from-visual-studio"></a>Testowanie funkcji z programu Visual Studio
 
-Naciśnij klawisz **F5** Aby uruchomić program i testowanie zachowania funkcji. W tym przypadku użyjemy funkcji poniżej do wyszukania dwie jednostki. Użyj narzędzia Postman lub Fiddler do wysyłania wywołania, tak jak pokazano poniżej:
+Naciśnij klawisz **F5** , aby uruchomić program i testować zachowania funkcji. W takim przypadku użyjemy poniższej funkcji, aby wyszukać dwie jednostki. Użyj elementu Poster lub programu Fiddler, aby wystawić wywołanie podobne do pokazanego poniżej:
 
 ```http
 POST https://localhost:7071/api/EntitySearch
@@ -350,7 +350,7 @@ POST https://localhost:7071/api/EntitySearch
 ```
 
 ### <a name="response"></a>Odpowiedź
-Powinny pojawić się odpowiedź podobna do poniższego przykładu:
+Powinna zostać wyświetlona odpowiedź podobna do poniższego przykładu:
 
 ```json
 {
@@ -375,21 +375,21 @@ Powinny pojawić się odpowiedź podobna do poniższego przykładu:
 
 ## <a name="publish-the-function-to-azure"></a>Publikowanie funkcji na platformie Azure
 
-Gdy jesteś zadowolony z zachowanie funkcji, możesz opublikować go.
+Gdy zachowanie funkcji jest zadowalające, można je opublikować.
 
-1. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Opublikuj**. Wybierz **tworzenia nowych** > **publikowania**.
+1. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Opublikuj**. Wybierz pozycję **Utwórz nową** > **publikację**.
 
-1. Jeśli nie zostało jeszcze połączone programu Visual Studio do konta platformy Azure, wybierz opcję **Dodaj konto...**
+1. Jeśli program Visual Studio nie został jeszcze połączony z kontem platformy Azure, wybierz pozycję **Dodaj konto....**
 
-1. Postępuj zgodnie z monitami wyświetlanymi na ekranie. Użytkownik jest proszony o Określ unikatową nazwę dla usługi app service, subskrypcja platformy Azure, grupę zasobów, plan hostingu i konto magazynu, którego chcesz użyć. Jeśli nie masz jeszcze te można utworzyć nową grupę zasobów, nowy plan hostingu i konta magazynu. Po zakończeniu wybierz pozycję **Create**
+1. Postępuj zgodnie z monitami wyświetlanymi na ekranie. Zostanie wyświetlony monit o podanie unikatowej nazwy usługi App Service, subskrypcji platformy Azure, grupy zasobów, planu hostingu oraz konta magazynu, którego chcesz użyć. Jeśli jeszcze tego nie zrobiono, możesz utworzyć nową grupę zasobów, nowy plan hostingu i konto magazynu. Po zakończeniu wybierz pozycję **Utwórz** .
 
-1. Po zakończeniu wdrożenia należy zauważyć, adres URL witryny. Jest adresem aplikacji funkcji na platformie Azure. 
+1. Po zakończeniu wdrażania Zwróć uwagę na adres URL witryny. Jest to adres aplikacji funkcji na platformie Azure. 
 
-1. W [witryny Azure portal](https://portal.azure.com), przejdź do grupy zasobów i poszukaj `EntitySearch` funkcja została opublikowana. W obszarze **Zarządzaj** sekcji, powinien zostać wyświetlony klucze hosta. Wybierz **kopiowania** ikonę *domyślne* klucz hosta.  
+1. W [Azure Portal](https://portal.azure.com)przejdź do grupy zasobów, a następnie wyszukaj `EntitySearch` opublikowaną funkcję. W sekcji **Zarządzanie** powinny zostać wyświetlone klucze hosta. Wybierz ikonę **kopiowania** dla *domyślnego* klucza hosta.  
 
 ## <a name="test-the-function-in-azure"></a>Testowanie funkcji na platformie Azure
 
-Teraz, gdy domyślny klucz hosta, testowanie funkcji w następujący sposób:
+Teraz, gdy masz domyślny klucz hosta, przetestuj swoją funkcję w następujący sposób:
 
 ```http
 POST https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?code=[enter default host key here]
@@ -417,10 +417,10 @@ POST https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?co
 }
 ```
 
-W tym przykładzie należy utworzyć ten sam wynik, które zostały wcześniej użyte podczas działania funkcji w środowisku lokalnym.
+Ten przykład powinien dawać ten sam wynik, który został wcześniej wyświetlony podczas uruchamiania funkcji w środowisku lokalnym.
 
-## <a name="connect-to-your-pipeline"></a>Nawiązać połączenie z potokiem
-Teraz, gdy masz nowych umiejętności niestandardowe, można dodać go do Twojego zestawu umiejętności. W poniższym przykładzie przedstawiono sposób wywoływania umiejętności, aby dodać opis do organizacji w dokumencie (to może zostać rozszerzony do również działają na lokalizacje i osób). Zastąp `[your-entity-search-app-name]` nazwą swojej aplikacji.
+## <a name="connect-to-your-pipeline"></a>Nawiązywanie połączenia z potokiem
+Teraz, gdy masz nową niestandardową umiejętność, możesz dodać ją do swojej zestawu umiejętności. W poniższym przykładzie pokazano, jak wywoływać umiejętność dodawania opisów do organizacji w dokumencie (można ją rozszerzyć, aby działała także w lokalizacjach i osobach). Zamień `[your-entity-search-app-name]` na nazwę aplikacji.
 
 ```json
 {
@@ -448,7 +448,7 @@ Teraz, gdy masz nowych umiejętności niestandardowe, można dodać go do Twojeg
 }
 ```
 
-W tym miejscu jest firma Microsoft zliczanie na wbudowane [umiejętności rozpoznawania jednostek](cognitive-search-skill-entity-recognition.md) znajdować się w zestawu umiejętności oraz mają wzbogacony dokumentu z listy w organizacji. Odwołanie Oto konfiguracji umiejętności wyodrębniania jednostki, które będą wystarczające do generowania danych, której potrzebujesz:
+W tym miejscu Zliczamy wbudowaną [umiejętność rozpoznawania jednostek](cognitive-search-skill-entity-recognition.md) , która ma być obecna w zestawu umiejętności, i aby wzbogacić dokument z listą organizacji. Poniżej przedstawiono informacje o konfiguracji umiejętności wyodrębniania jednostek, które byłyby wystarczające do generowania potrzebnych danych:
 
 ```json
 {
@@ -478,9 +478,9 @@ W tym miejscu jest firma Microsoft zliczanie na wbudowane [umiejętności rozpoz
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-Gratulacje! Utworzono Twojego pierwszego enricher niestandardowych. Teraz można wykonać tego samego wzorca, aby dodać własne niestandardowe funkcje. 
+Gratulacje! Utworzono pierwszy wzbogacający niestandardowy. Teraz można użyć tego samego wzorca, aby dodać własną funkcję niestandardową. 
 
-+ [Dodaj umiejętności niestandardowe do potoku wyszukiwania kognitywnego](cognitive-search-custom-skill-interface.md)
-+ [Jak Definiowanie zestawu umiejętności](cognitive-search-defining-skillset.md)
-+ [Tworzenie zestawu umiejętności (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-+ [Sposób mapowania pól wzbogacony](cognitive-search-output-field-mapping.md)
++ [Dodaj niestandardową umiejętność do potoku wyszukiwania poznawczego](cognitive-search-custom-skill-interface.md)
++ [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)
++ [Utwórz zestawu umiejętności (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Jak zmapować wzbogacone pola](cognitive-search-output-field-mapping.md)

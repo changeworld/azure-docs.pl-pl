@@ -5,21 +5,23 @@ services: active-directory
 author: rolyon
 ms.service: active-directory
 ms.topic: include
-ms.date: 05/16/2019
+ms.date: 07/31/2019
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: da4bc51cdd8cdfad8212ee5a288f03874f673c2c
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: db16a2f122da1bf6c767e0a47c93c22f1882c406
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678187"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68817237"
 ---
 ### <a name="policy-for-users-in-your-directory"></a>Zasady: Dla użytkowników w katalogu
 
 Wykonaj te kroki, jeśli chcesz, aby zasady były przeznaczone dla użytkowników w katalogu, którzy mogą zażądać tego pakietu dostępu.  **Użytkownicy w katalogu** odwołują się zarówno do użytkowników wewnętrznych, jak i użytkowników zewnętrznych, którzy zostali wcześniej zaproszeni do katalogu, przez ich żądanie zarządzania uprawnieniami z innym pakietem dostępu lub zapraszanie go za pomocą B2B usługi Azure AD. Podczas definiowania zasad można określić poszczególnych użytkowników lub kilka często grup użytkowników. Na przykład organizacja może mieć już grupę, taką jak **Wszyscy pracownicy**.  Jeśli ta grupa zostanie dodana w zasadach dla użytkowników, którzy mogą żądać dostępu, wówczas każdy członek tej grupy może następnie zażądać dostępu.
 
 1. W sekcji **Użytkownicy, którzy mogą żądać dostępu** , wybierz pozycję **dla użytkowników w katalogu**.
+
+    Należy pamiętać, że ustawienie **dla użytkowników w katalogu** obejmuje zarówno użytkowników składowych, jak i użytkowników-Gości, którzy zostali dodani do katalogu. Jeśli chcesz uwzględnić tylko użytkowników należących do członków, a nie użytkowników-Gości, wybierz pozycję **dla użytkowników w katalogu** , a następnie wybierz grupę użytkowników należących do członków. W razie potrzeby można utworzyć grupę dynamiczną użytkowników należących do członków (User. UserType-EQ "member"). Aby uzyskać więcej informacji, zobacz [dynamiczne reguły członkostwa dla grup w Azure Active Directory](../articles/active-directory/users-groups-roles/groups-dynamic-membership.md).
 
 1. W sekcji **Wybieranie użytkowników i grup** kliknij pozycję **Dodaj użytkowników i grupy**.
 

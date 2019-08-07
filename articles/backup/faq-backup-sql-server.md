@@ -1,5 +1,5 @@
 ---
-title: Często zadawane pytania dotyczące tworzenia kopii zapasowych baz danych SQL Server na maszynach wirtualnych platformy Azure przy użyciu Azure Backup
+title: Często zadawane pytania — tworzenie kopii zapasowych baz danych SQL Server na maszynach wirtualnych platformy Azure z Azure Backup
 description: Znajdź odpowiedzi na często zadawane pytania dotyczące tworzenia kopii zapasowych baz danych SQL Server na maszynach wirtualnych platformy Azure przy użyciu Azure Backup.
 ms.reviewer: vijayts
 author: dcurwin
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dacurwin
-ms.openlocfilehash: 23dda22a8350591d5cf87cefc1a2f15fd90f17c7
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: a600c50e97f0d069443112a59d529c0d6f6fecad
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688852"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68737074"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Często zadawane pytania dotyczące SQL Server baz danych uruchomionych w ramach kopii zapasowej maszyny wirtualnej platformy Azure
 

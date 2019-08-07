@@ -1,44 +1,45 @@
 ---
-title: Dokumentacja wejściami i wyjściami, w cognitive Wyszukaj potoki — usługa Azure Search
-description: Opisano składnia adnotacji oraz odwołania do adnotacji w wejść i wyjść zestawu umiejętności w usłudze wyszukiwania poznawczego potoku w usłudze Azure Search.
+title: Wejście referencyjne i wyjście w potokach wyszukiwania poznawczego — Azure Search
+description: Objaśnia składnię adnotacji oraz sposób odwoływania się do adnotacji w danych wejściowych i wyjściowych zestawu umiejętności w potoku wyszukiwania poznawczego w Azure Search.
 services: search
 manager: pablocas
 author: luiscabrer
 ms.service: search
+ms.subservice: cognitive-search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 637edc0e45daa37a753fbaa15313b076e8af4d7c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1868e9fd3a7dde5d6302753986019f481a577007
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65023874"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841300"
 ---
-# <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>Jak odwoływać się do adnotacji w usłudze wyszukiwania poznawczego zestawu umiejętności
+# <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>Jak odwoływać się do adnotacji w zestawu umiejętności wyszukiwania poznawczego
 
-W tym artykule dowiesz się, jak odwoływać się do adnotacji w definicjach umiejętności za pomocą przykładów w celu przedstawienia różnych scenariuszy. Podczas przepływu zawartości dokumentu za pomocą zestawu umiejętności, pobiera wzbogacone adnotacji. Adnotacje mogą być używane jako dane wejściowe w dalszych podrzędnego wzbogacania lub zamapowane do pola danych wyjściowych w indeksie. 
+W tym artykule dowiesz się, jak odwoływać się do adnotacji w definicjach umiejętności, używając przykładów do zilustrowania różnych scenariuszy. Zawartość dokumentu jest przepływa przez zestaw umiejętności, ale jest wzbogacana z adnotacjami. Adnotacje mogą być używane jako dane wejściowe do dalszej wzbogacenia lub zamapowane do pola danych wyjściowych w indeksie. 
  
-Przykłady w niniejszym artykule opierają się na *zawartości* pola wygenerowane automatycznie przez [indeksatory obiektów Blob Azure](search-howto-indexing-azure-blob-storage.md) w ramach fazy łamania dokumentów. Przy odwoływaniu się do dokumentów z kontenera obiektów Blob, użyj formatu takich jak `"/document/content"`, gdzie *zawartości* pole jest częścią *dokumentu*. 
+Przykłady w tym artykule są oparte na polu *zawartości* wygenerowanej automatycznie przez [indeksatory obiektów blob platformy Azure](search-howto-indexing-azure-blob-storage.md) jako część fazy tworzenia dokumentu. W przypadku odwoływania się do dokumentów z kontenera obiektów BLOB Użyj formatu, `"/document/content"`takiego jak, gdzie pole *Content* jest częścią *dokumentu*. 
 
-## <a name="background-concepts"></a>Pojęcia dotyczące tła
+## <a name="background-concepts"></a>Koncepcje w tle
 
-Przed zapoznaniem się składni, Wróćmy do kilku ważnych pojęć, aby lepiej zrozumieć przykłady w dalszej części tego artykułu.
+Przed przejrzeniem składni należy ponownie odwiedzić kilka ważnych koncepcji, aby lepiej zrozumieć przykłady opisane w dalszej części tego artykułu.
 
 | Termin | Opis |
 |------|-------------|
-| Wzbogaconego dokumentu | Dokument wzbogaconego to wewnętrznej struktury tworzone i używane przez potok, aby pomieścić wszystkie adnotacje związane z dokumentu. Dokument wzbogaconego należy traktować jako drzewo adnotacji. Ogólnie rzecz biorąc adnotacja utworzone na podstawie poprzedniej adnotacji staje się jego podrzędny.<p/>Dokumenty wzbogaconego istnieją tylko na czas trwania wykonywanie zestawu umiejętności. Gdy zawartość jest mapowany do indeksu wyszukiwania, wzbogaconego dokumentu nie jest już potrzebny. Mimo że możesz nie wchodzą w interakcję z dokumentami wzbogaconego bezpośrednio, warto mieć mentalnego modelu dokumentów, podczas tworzenia zestawu umiejętności. |
-| Wzbogacanie kontekstu | Kontekst, w którym wzbogacanie ma miejsce, zgodnie z którą jest wzbogacony elementu. Domyślnie, jest kontekst wzbogacania `"/document"` poziomu, w zakresie do poszczególnych dokumentów. Podczas wykonywania umiejętności, dane wyjściowe stają się umiejętności [właściwości zdefiniowanych kontekstu](#example-2).|
+| Wzbogacony dokument | Wzbogacony dokument to wewnętrzna struktura utworzona i używana przez potok do przechowywania wszystkich adnotacji związanych z dokumentem. Zastanów się, że wzbogacony dokument jest drzewem adnotacji. Na ogół adnotacja utworzona na podstawie poprzedniej adnotacji staną się jej elementami podrzędnymi.<p/>Dokumenty wzbogacone istnieją tylko na czas wykonywania zestawu umiejętności. Gdy zawartość jest zamapowana na indeks wyszukiwania, wzbogacony dokument nie będzie już potrzebne. Chociaż nie można bezpośrednio korzystać z ulepszonych dokumentów, warto mieć model psychiczny dokumentów podczas tworzenia zestawu umiejętności. |
+| Kontekst wzbogacania | Kontekst, w którym odbywa się wzbogacanie, w odniesieniu do którego element jest wzbogacany. Domyślnie kontekst wzbogacania jest na `"/document"` poziomie, w zakresie do poszczególnych dokumentów. Po uruchomieniu umiejętności dane wyjściowe tej umiejętności stają się właściwościami [zdefiniowanego kontekstu](#example-2).|
 
 <a name="example-1"></a>
-## <a name="example-1-simple-annotation-reference"></a>Przykład 1: Odwołanie proste adnotacji
+## <a name="example-1-simple-annotation-reference"></a>Przykład 1: Proste odwołanie do adnotacji
 
-W usłudze Azure Blob storage Załóżmy, że mają różne pliki zawierające odwołania do nazw osób, które mają zostać wyodrębnione przy użyciu jednostek. W poniższej definicji umiejętności `"/document/content"` jest tekstową reprezentację całego dokumentu, a "ludzie" wyodrębniania pełne nazwy dla jednostek zidentyfikowane jako osoby.
+Załóżmy, że w usłudze Azure Blob Storage istnieje wiele plików zawierających odwołania do nazw osób, które mają zostać wyodrębnione przy użyciu funkcji rozpoznawania jednostek. W poniższej `"/document/content"` definicji umiejętności jest tekstową reprezentacją całego dokumentu, a "osoby" to wyodrębnianie pełnych nazw dla jednostek zidentyfikowanych jako osoby.
 
-Ponieważ jest domyślny kontekst `"/document"`, listy osób, można teraz przywoływać jako `"/document/people"`. W tym konkretnym przypadku `"/document/people"` jest adnotacja, który może teraz zostać zamapowane do pola w indeksie ani wykorzystywać w ramach innego umiejętności, w tym samym zestawu umiejętności.
+Ze względu na to `"/document"`, że domyślny kontekst to, lista osób może teraz `"/document/people"`być przywoływana jako. W tym konkretnym `"/document/people"` przypadku jest adnotacją, która została teraz zamapowana na pole w indeksie lub użyte w innej umiejętności w tym samym zestawu umiejętności.
 
 ```json
   {
@@ -62,11 +63,11 @@ Ponieważ jest domyślny kontekst `"/document"`, listy osób, można teraz przyw
 
 <a name="example-2"></a>
 
-## <a name="example-2-reference-an-array-within-a-document"></a>Przykład 2: Odwoływać się do tablicy w dokumencie
+## <a name="example-2-reference-an-array-within-a-document"></a>Przykład 2: Odwołuje się do tablicy w dokumencie
 
-W tym przykładzie opiera się na poprzedni omawiający wywoływanie etap wzbogacania wiele razy, za pomocą tego samego dokumentu. Załóżmy, że w poprzednim przykładzie wygenerowany tablicy ciągów z 10 nazwiska osób na podstawie pojedynczego dokumentu. Uzasadnione, następnym krokiem może być wzbogacania drugi, który wyodrębnia nazwiska z pełną nazwę. Ponieważ nie zawiera nazwy 10, chcesz, aby ten krok jest wywoływana 10 razy w tym dokumencie, raz dla każdej osoby. 
+Ten przykład kompiluje na poprzednim, pokazujący, jak wywołać krok wzbogacania wielokrotnie w tym samym dokumencie. Założono, że poprzedni przykład wygenerował tablicę ciągów z 10 nazwami osób z jednego dokumentu. Rozsądny następny krok może stanowić drugie wzbogacanie, które wyodrębnia nazwisko z pełnej nazwy. Ponieważ istnieją 10 nazw, ten krok ma zostać wywołany 10 razy w tym dokumencie raz dla każdej osoby. 
 
-Aby wywołać odpowiednią liczbę iteracji, Ustaw kontekst jako `"/document/people/*"`, gdzie znak gwiazdki (`"*"`) reprezentuje wszystkie węzły w dokumencie wzbogaconego jako elementy podrzędne `"/document/people"`. Mimo że w tablicy umiejętności tej umiejętności jest definiowana tylko raz, dopóki wszystkie elementy członkowskie są przetwarzane jest wywoływana dla każdego elementu członkowskiego, w tym dokumencie.
+Aby wywoływać właściwą liczbę iteracji, ustaw dla kontekstu jako `"/document/people/*"`, gdzie gwiazdka (`"*"`) reprezentuje wszystkie węzły w wzbogaconym `"/document/people"`dokumencie jako elementy podrzędne. Chociaż ta umiejętność jest definiowana tylko raz w tablicy umiejętności, jest wywoływana dla każdego elementu członkowskiego w dokumencie do momentu przetworzenia wszystkich członków.
 
 ```json
   {
@@ -90,15 +91,15 @@ Aby wywołać odpowiednią liczbę iteracji, Ustaw kontekst jako `"/document/peo
   }
 ```
 
-W przypadku tablic lub kolekcji ciągów adnotacji można pod kątem określonych członków, a nie do tablicy jako całości. Powyższy przykład generuje adnotacja o nazwie `"last"` w każdym węźle reprezentowanej przez kontekst. Jeśli chcesz odwołać się do tej rodziny adnotacji, można użyć składni `"/document/people/*/last"`. Jeśli chcesz odwołać się do określonego adnotacji, można użyć indeksu jawne: `"/document/people/1/last`"Aby odwołać się do nazwisko pierwszą osobą, która identyfikowane w dokumencie. Zwróć uwagę, w tej składni tablice są "indeksowane 0".
+Gdy adnotacje są tablicami lub kolekcjami ciągów, możesz chcieć wskazać konkretne elementy członkowskie zamiast tablicy jako całości. Powyższy przykład generuje adnotację o `"last"` nazwie w każdym węźle reprezentowanego przez kontekst. Jeśli chcesz odwołać się do tej rodziny adnotacji, możesz użyć składni `"/document/people/*/last"`. Jeśli chcesz odwołać się do konkretnej adnotacji, możesz użyć jawnego indeksu: `"/document/people/1/last`", aby odwołać się do nazwiska pierwszej osoby wskazanej w dokumencie. Zwróć uwagę, że w tej tablicy składni są "0 indeksowane".
 
 <a name="example-3"></a>
 
-## <a name="example-3-reference-members-within-an-array"></a>Przykład 3: Składowe odwołania w tablicy
+## <a name="example-3-reference-members-within-an-array"></a>Przykład 3: Odwołania do elementów członkowskich w tablicy
 
-Czasami zachodzi potrzeba grupy wszystkie adnotacje konkretnego typu do przekazania ich do określonej umiejętności. Należy wziąć pod uwagę hipotetyczny umiejętności niestandardowe, która identyfikuje najbardziej typowe nazwisko ostatniej nazw wyodrębnionych w przykładzie 2. Aby zapewnić tylko nazwiska do niestandardowych umiejętności, określanie kontekstu jako `"/document"` i dane wejściowe jako `"/document/people/*/lastname"`.
+Czasami trzeba zgrupować wszystkie adnotacje danego typu, aby przekazać je do określonej umiejętności. Rozważmy hipotetyczną niestandardową umiejętność, która identyfikuje najbardziej typowe nazwisko ze wszystkich ostatnich nazw wyodrębnionych w przykładzie 2. Aby podać tylko ostatnie nazwy niestandardowej umiejętności, Określ kontekst jako `"/document"` i dane wejściowe jako. `"/document/people/*/lastname"`
 
-Należy zauważyć, że relacja `"/document/people/*/lastname"` jest większy niż w przypadku dokumentów. Może istnieć 10 węzłów lastname, gdy istnieje tylko jeden węzeł dokumentu dla tego dokumentu. W takim przypadku system automatycznie utworzy tablicę `"/document/people/*/lastname"` zawierający wszystkie elementy w dokumencie.
+Zauważ, że Kardynalność `"/document/people/*/lastname"` jest większa niż wartość dokumentu. Może istnieć 10 węzłów LastName, gdy istnieje tylko jeden węzeł dokumentu dla tego dokumentu. W takim przypadku system automatycznie utworzy tablicę `"/document/people/*/lastname"` zawierającą wszystkie elementy w dokumencie.
 
 ```json
   {
@@ -124,7 +125,7 @@ Należy zauważyć, że relacja `"/document/people/*/lastname"` jest większy ni
 
 
 ## <a name="see-also"></a>Zobacz także
-+ [Jak integrowanie umiejętności niestandardowych wzbogacony potok](cognitive-search-custom-skill-interface.md)
-+ [Jak Definiowanie zestawu umiejętności](cognitive-search-defining-skillset.md)
-+ [Tworzenie zestawu umiejętności (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-+ [Sposób mapowania pól wzbogaconego do indeksu](cognitive-search-output-field-mapping.md)
++ [Jak zintegrować niestandardową umiejętność z potokiem wzbogacania](cognitive-search-custom-skill-interface.md)
++ [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)
++ [Utwórz zestawu umiejętności (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Jak zmapować wzbogacone pola na indeks](cognitive-search-output-field-mapping.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 4115964533072e5d8f1760c8c5cdf0f20c9b7625
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0c07cbd9fef865f3fc7b782210ef44094df9f629
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727135"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779833"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolacja w chmurze publicznej platformy Azure
 ##  <a name="introduction"></a>Wprowadzenie
@@ -240,7 +240,7 @@ Szyfrowanie podczas przesyłania jest mechanizmem ochrony danych przesyłanych m
 -   [Szyfrowanie po stronie klienta](https://docs.microsoft.com/azure/storage/storage-security-guide#using-client-side-encryption-to-secure-data-that-you-send-to-storage)umożliwia szyfrowanie danych przed ich przesłaniem do magazynu oraz odszyfrowanie danych po ich przeniesieniu poza magazyn.
 
 #### <a name="encryption-at-rest"></a>Szyfrowanie w spoczynku
-W przypadku wielu organizacji [szyfrowanie danych w spoczynku](https://docs.microsoft.com/azure/security/azure-isolation) stanowi obowiązkowy krok w kierunku prywatności, zgodności i suwerenności danych. Istnieją trzy funkcje platformy Azure, które zapewniają szyfrowanie danych "w spoczynku":
+W przypadku wielu organizacji [szyfrowanie danych w spoczynku](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices) stanowi obowiązkowy krok w kierunku prywatności, zgodności i suwerenności danych. Istnieją trzy funkcje platformy Azure, które zapewniają szyfrowanie danych "w spoczynku":
 
 -   [Szyfrowanie usługi Storage](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-at-rest) pozwala na zażądanie, aby usługa magazynu automatycznie szyfruje dane podczas ich zapisywania do usługi Azure Storage.
 

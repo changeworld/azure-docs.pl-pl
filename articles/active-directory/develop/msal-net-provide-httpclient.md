@@ -1,6 +1,6 @@
 ---
-title: Podaj HttpClient i serwera proxy (platformy MSAL.NET) | Azure
-description: Naucz się, podając własne HttpClient i serwera proxy do łączenia z usługą Azure AD przy użyciu Biblioteka Microsoft Authentication Library for .NET (platformy MSAL.NET).
+title: Udostępnianie HttpClient i serwera proxy (MSAL.NET) | Azure
+description: Dowiedz się, jak zapewnić własne HttpClient i serwer proxy do łączenia się z usługą Azure AD przy użyciu biblioteki uwierzytelniania firmy Microsoft dla platformy .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -9,7 +9,7 @@ editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/23/2019
@@ -17,18 +17,18 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72ab8a85ecc5649352382469e09d7dfd83a5ddfa
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: daae88cd8e76d0ae1af04c45a7191027e9adece9
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305719"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834935"
 ---
-# <a name="providing-your-own-httpclient-and-proxy-using-msalnet"></a>Dostarczanie własnego HttpClient i serwer proxy przy użyciu platformy MSAL.NET
-Gdy [inicjowania aplikacji publicznych klienta](msal-net-initializing-client-applications.md), możesz użyć `.WithHttpClientFactory method` zapewnienie własnego HttpClient.  Dostarczanie własnego HttpClient umożliwia zaawansowanych scenariuszy takich precyzyjne kontrolowanie serwera proxy HTTP, dostosowywanie nagłówków agenta użytkownika lub wymuszanie biblioteki MSAL do użycia określonego HttpClient (na przykład w aplikacji sieci web platformy ASP.NET Core/API).
+# <a name="providing-your-own-httpclient-and-proxy-using-msalnet"></a>Udostępnianie własnych HttpClient i proxy za pomocą MSAL.NET
+Podczas [inicjowania publicznej aplikacji klienckiej](msal-net-initializing-client-applications.md)można użyć programu `.WithHttpClientFactory method` , aby zapewnić własne HttpClient.  Udostępnienie własnych HttpClient umożliwia zaawansowane scenariusze, takie jak precyzyjne sterowanie serwerem proxy HTTP, Dostosowywanie nagłówków agentów użytkowników lub wymuszanie MSAL przy użyciu określonego HttpClient (na przykład w ASP.NET Core aplikacje/interfejsy API sieci Web).
 
-## <a name="initialize-with-httpclientfactory"></a>Zainicjuj przy użyciu HttpClientFactory
-Poniższy przykład pokazuje, aby utworzyć `HttpClientFactory` i następnie Zainicjowanie aplikacji klienckiej publicznych z nią:
+## <a name="initialize-with-httpclientfactory"></a>Inicjowanie za pomocą HttpClientFactory
+Poniższy przykład pokazuje, aby utworzyć `HttpClientFactory` a następnie zainicjować publiczną aplikację kliencką:
 
 ```csharp
 IMsalHttpClientFactory httpClientFactory = new MyHttpClientFactory();
@@ -38,5 +38,5 @@ var pca = PublicClientApplicationBuilder.Create(MsalTestConstants.ClientId)
                                         .Build();
 ```
 
-## <a name="httpclient-and-xamarin-ios"></a>HttpClient i platformy Xamarin dla systemu iOS
-Korzystając z platformy Xamarin iOS, zalecane jest utworzenie `HttpClient` jawnie używającej `NSURLSession`— na podstawie programu obsługi dla systemu iOS 7 i nowszych. Automatycznie tworzy platformy MSAL.NET `HttpClient` , który używa `NSURLSessionHandler` dla systemu iOS 7 i nowszych. Aby uzyskać więcej informacji, przeczytaj [Xamarin iOS dokumentacji HttpClient](/xamarin/cross-platform/macios/http-stack).
+## <a name="httpclient-and-xamarin-ios"></a>HttpClient i Xamarin iOS
+W przypadku korzystania z platformy Xamarin iOS zaleca się utworzenie `HttpClient` , która jawnie `NSURLSession`używa programu obsługi systemu iOS 7 lub nowszego. MSAL.NET automatycznie tworzy `HttpClient` program, który `NSURLSessionHandler` używa dla systemu iOS 7 lub nowszego. Aby uzyskać więcej informacji, Przeczytaj [dokumentację platformy Xamarin dla systemu iOS dla HttpClient](/xamarin/cross-platform/macios/http-stack).

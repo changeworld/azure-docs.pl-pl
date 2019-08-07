@@ -1,6 +1,6 @@
 ---
 title: Przerzucanie klucza podpisywania w usłudze Azure AD
-description: W tym artykule omówiono najlepsze rozwiązania przerzucania klucza podpisywania usługi Azure Active Directory
+description: W tym artykule omówiono najlepsze rozwiązania związane z przerzucaniem klucza podpisywania dla Azure Active Directory
 services: active-directory
 documentationcenter: .net
 author: rwike77
@@ -11,67 +11,67 @@ ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/20/2018
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f809fa856d39096a85dcc205d8211ba3551eeb48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f20a10f7c6f98b352e8a2d794fabc3b6b3b57319
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65962858"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835294"
 ---
-# <a name="signing-key-rollover-in-azure-active-directory"></a>Przerzucanie klucza w usłudze Azure Active Directory podpisywania
-W tym artykule opisano, co musisz wiedzieć o publiczne klucze, które są używane w usłudze Azure Active Directory (Azure AD) do podpisywania tokenów zabezpieczających. Należy pamiętać, że te klucze przechodzą w regularnych odstępach czasu i w takiej sytuacji, może być przenoszone natychmiast. Wszystkie aplikacje, które używają usługi Azure AD powinien móc programowo obsługuje procesu przerzucania klucza lub ustanowienia okresowe ręczne Przerzucanie procesu. Kontynuuj czytanie, aby zrozumieć, jak działają klawisze jak ocenić wpływ przerzucania do aplikacji i jak zaktualizować aplikację lub ustanowienia procesu okresowe ręczne Przerzucanie do obsługi Przerzucanie klucza, jeśli to konieczne.
+# <a name="signing-key-rollover-in-azure-active-directory"></a>Przerzucanie klucza podpisywania w Azure Active Directory
+W tym artykule omówiono, co należy wiedzieć o kluczach publicznych, które są używane w usłudze Azure Active Directory (Azure AD) do podpisywania tokenów zabezpieczających. Należy pamiętać, że te klucze są okresowo przenoszone i w nagłych przypadkach mogą być natychmiast rzutowane. Wszystkie aplikacje, które korzystają z usługi Azure AD, powinny być w stanie programowo obsłużyć proces przerzucania kluczy lub ustanawiać okresowy proces ręcznego przerzucania. Kontynuuj odczytywanie, aby zrozumieć, jak działają klucze, jak oceniać wpływ przerzucania do aplikacji oraz jak aktualizować aplikację lub ustanawiać okresowe ręczne Przerzucanie w razie potrzeby.
 
 ## <a name="overview-of-signing-keys-in-azure-ad"></a>Omówienie kluczy podpisywania w usłudze Azure AD
-Usługa Azure AD używa kryptografii klucza publicznego, w oparciu o standardy branżowe, aby ustanowić zaufanie między sobą i aplikacje, które go używają. W praktyce to działa w następujący sposób: Usługa Azure AD używa klucza podpisywania, który składa się z pary kluczy publicznych i prywatnych. Po zalogowaniu się użytkownika do aplikacji, która używa usługi Azure AD do uwierzytelniania usługi Azure AD tworzy token zabezpieczający, który zawiera informacje o użytkowniku. Ten token jest podpisany przez usługę Azure AD za pomocą jego klucza prywatnego, przed wysłaniem go do aplikacji. Aby sprawdzić, czy token jest prawidłowy i pochodzącej z usługi Azure AD, aplikacja musi go zweryfikować podpisu tokenu przy użyciu klucza publicznego, udostępniane przez usługę Azure AD, który znajduje się w ramach dzierżawy [dokument odnajdywania protokołu OpenID Connect](https://openid.net/specs/openid-connect-discovery-1_0.html) lub SAML / WS-Fed [dokument metadanych Federacji](azure-ad-federation-metadata.md).
+Usługa Azure AD korzysta z kryptografii klucza publicznego opartej na standardach branżowych, aby ustanowić relację zaufania między nim i aplikacjami, które go używają. W praktyce te działania działają w następujący sposób: Usługa Azure AD używa klucza podpisywania składającego się z pary kluczy publicznych i prywatnych. Gdy użytkownik loguje się do aplikacji korzystającej z usługi Azure AD do uwierzytelniania, usługa Azure AD tworzy token zabezpieczający zawierający informacje o użytkowniku. Ten token jest podpisany przez usługę Azure AD przy użyciu jego klucza prywatnego przed wysłaniem go z powrotem do aplikacji. Aby sprawdzić, czy token jest prawidłowy i pochodzi z usługi Azure AD, aplikacja musi sprawdzić poprawność podpisu tokenu przy użyciu klucza publicznego uwidocznionego przez usługę Azure AD, który znajduje się w [dokumencie odnajdywania OpenID Connect Connect](https://openid.net/specs/openid-connect-discovery-1_0.html) dla dzierżawcy lub Federacji protokołu SAML/WS [ dokument metadanych](azure-ad-federation-metadata.md).
 
-Ze względów bezpieczeństwa usługa Azure AD podpisywania kluczy ustala w regularnych odstępach czasu, a w przypadku sytuacji awaryjnej można jest przenoszone natychmiast. Każda aplikacja, która integruje się z usługą Azure AD powinna być przygotowana do obsługi zdarzenia Przerzucanie klucza, niezależnie od tego, jak często występuje. Jeśli nie, a aplikacja podejmują próbę użycia wygasłych klucza można zweryfikować podpisu tokenu, żądanie logowania nie powiedzie się.
+Ze względów bezpieczeństwa klucz podpisywania usługi Azure AD jest okresowo uwzględniany, a w przypadku awarii może być natychmiast rzutowany. Wszystkie aplikacje, które integrują się z usługą Azure AD, powinny być przygotowane do obsługi zdarzenia przerzucania klucza niezależnie od tego, jak często mogą wystąpić. Jeśli tak nie jest, a aplikacja próbuje użyć wygasłego klucza do zweryfikowania podpisu w tokenie, żądanie logowania zakończy się niepowodzeniem.
 
-Istnieje więcej niż jeden prawidłowy klucz dostępnych w dokumencie odnajdywania protokołu OpenID Connect i dokumentu metadanych federacji. Aplikacja powinna być przygotowane użyć dowolnego z określonych w dokumencie kluczy, ponieważ jeden z kluczy mogła zostać wycofana wkrótce, inny może być zamiennikach i tak dalej.
+W dokumencie OpenID Connect Connect Discovery i dokumencie metadanych Federacji zawsze jest dostępny więcej niż jeden prawidłowy klucz. Twoja aplikacja powinna być przygotowana do użycia dowolnego klucza określonego w dokumencie, ponieważ jeden klucz może zostać przetworzony wkrótce, drugi może być jego zastąpieniem i tak dalej.
 
-## <a name="how-to-assess-if-your-application-will-be-affected-and-what-to-do-about-it"></a>Jak ocenić, czy aplikacja będzie mieć wpływ na dodanie i co należy zrobić
-Jak aplikacja obsługuje przerzucania klucza jest zależna od zmiennych, takich jak typ aplikacji lub użyto jakiego protokołu tożsamości i biblioteki. W poniższych sekcjach ocenić, czy najbardziej typowych aplikacji ma wpływ przerzucania klucza i wytyczne dotyczące sposobu aktualizowania aplikacji do obsługi automatycznego przerzucania lub ręcznie zaktualizować klucza.
+## <a name="how-to-assess-if-your-application-will-be-affected-and-what-to-do-about-it"></a>Jak ocenić, czy będzie to miało wpływ na aplikację i co z nią zrobić
+Sposób, w jaki aplikacja obsługuje Przerzucanie kluczy, zależy od zmiennych, takich jak typ aplikacji lub używany protokół tożsamości i Biblioteka. Poniższe sekcje oceniają, czy Najczęstsze typy aplikacji mają wpływ na Przerzucanie kluczy i zapewniają wskazówki dotyczące aktualizowania aplikacji w celu obsługi automatycznego przerzucania lub ręcznego aktualizowania klucza.
 
-* [Natywne aplikacje klienckie uzyskiwania dostępu do zasobów](#nativeclient)
-* [Aplikacje sieci Web / interfejsów API, uzyskiwaniu dostępu do zasobów](#webclient)
-* [Aplikacje sieci Web / interfejsów API chroni zasoby oraz utworzone przy użyciu usługi Azure App Services](#appservices)
-* [Aplikacje sieci Web / ochrona zasobów przy użyciu programu .NET OWIN OpenID Connect, WS-Fed i oprogramowania pośredniczącego WindowsAzureActiveDirectoryBearerAuthentication interfejsów API](#owin)
-* [Aplikacje sieci Web / interfejsów API, ochrona zasobów przy użyciu platformy .NET Core OpenID Connect lub JwtBearerAuthentication oprogramowania pośredniczącego](#owincore)
-* [Aplikacje sieci Web / interfejsów API, ochrona zasobów przy użyciu modułu passport-azure-ad środowiska Node.js](#passport)
-* [Aplikacje sieci Web / API ochrona zasobów i utworzony za pomocą programu Visual Studio 2015 lub nowszym](#vs2015)
-* [Aplikacje sieci Web chroni zasoby oraz utworzone przy użyciu programu Visual Studio 2013](#vs2013)
-* Interfejsy API sieci Web chroni zasoby oraz utworzone przy użyciu programu Visual Studio 2013
-* [Aplikacje sieci Web chroni zasoby oraz utworzone przy użyciu programu Visual Studio 2012](#vs2012)
-* [Aplikacje sieci Web chroni zasoby oraz utworzone przy użyciu programu Visual Studio 2010, o 2008 za pomocą programu Windows Identity Foundation](#vs2010)
-* [Aplikacje sieci Web / interfejsów API, ochrona zasobów przy użyciu innych bibliotek lub ręcznego wdrażania każdego z obsługiwanych protokołów](#other)
+* [Natywne aplikacje klienckie uzyskujące dostęp do zasobów](#nativeclient)
+* [Aplikacje sieci Web/interfejsy API uzyskujący dostęp do zasobów](#webclient)
+* [Aplikacje sieci Web/interfejsy API chroniące zasoby i skompilowane przy użyciu usługi Azure App Services](#appservices)
+* [Aplikacje sieci Web/interfejsy API chroniące zasoby za pomocą oprogramowania .NET OWIN OpenID Connect Connect, WS-karmione lub WindowsAzureActiveDirectoryBearerAuthentication](#owin)
+* [Aplikacje sieci Web/interfejsy API chroniące zasoby przy użyciu oprogramowania .NET Core OpenID Connect Connect lub JwtBearerAuthentication](#owincore)
+* [Aplikacje sieci Web/interfejsy API chroniące zasoby przy użyciu modułu Node. js paszport-Azure-AD](#passport)
+* [Aplikacje sieci Web/interfejsy API chroniące zasoby i tworzone za pomocą programu Visual Studio 2015 lub nowszego](#vs2015)
+* [Aplikacje sieci Web chroniące zasoby i tworzone za pomocą Visual Studio 2013](#vs2013)
+* Interfejsy API sieci Web chroniące zasoby i tworzone za pomocą Visual Studio 2013
+* [Aplikacje sieci Web chroniące zasoby i utworzone za pomocą programu Visual Studio 2012](#vs2012)
+* [Aplikacje sieci Web chroniące zasoby i utworzone za pomocą programu Visual Studio 2010, 2008 o korzystaniu z programu Windows Identity Foundation](#vs2010)
+* [Aplikacje sieci Web/interfejsy API chroniące zasoby przy użyciu innych bibliotek lub ręcznie implementujących dowolne z obsługiwanych protokołów](#other)
 
-Ten przewodnik jest **nie** dotyczy:
+Wskazówki te **nie** dotyczą:
 
-* Aplikacje dodane z aplikacji galerii usługi Azure AD (w tym niestandardowych) mają oddzielne wytyczne w odniesieniu do kluczy podpisywania. [Więcej informacji.](../manage-apps/manage-certificates-for-federated-single-sign-on.md)
-* Lokalne aplikacje opublikowane za pośrednictwem serwera proxy aplikacji nie musisz martwić się o kluczy podpisywania.
+* Aplikacje dodane z galerii aplikacji usługi Azure AD (w tym niestandardowe) mają oddzielne wskazówki dotyczące kluczy podpisywania. [Więcej informacji.](../manage-apps/manage-certificates-for-federated-single-sign-on.md)
+* Aplikacje lokalne opublikowane za pośrednictwem serwera proxy aplikacji nie muszą martwić się o klucze podpisywania.
 
-### <a name="nativeclient"></a>Natywne aplikacje klienckie uzyskiwania dostępu do zasobów
-Aplikacje, które uzyskują dostęp tylko do zasobów (tj.) Program Microsoft Graph, magazynu kluczy, interfejsu API programu Outlook i innych APIs firmy Microsoft) jest ogólnie tylko uzyskania tokenu i przekazywanie ich wzdłuż do właściciela zasobu. Biorąc pod uwagę, że nie jest chroniony wszelkie zasoby, nie kontrolują token i dlatego nie trzeba upewnić się, że jest prawidłowo podpisana.
+### <a name="nativeclient"></a>Natywne aplikacje klienckie uzyskujące dostęp do zasobów
+Aplikacje, które uzyskują dostęp tylko do zasobów (tj. Microsoft Graph, Magazyn kluczy, interfejs API programu Outlook i inne interfejsy API firmy Microsoft) Generalnie uzyskują jedynie token i przekazują je do właściciela zasobu. Ponieważ nie chronią żadnych zasobów, nie sprawdzają one tokenu i w związku z tym nie trzeba upewnić się, że jest on prawidłowo podpisany.
 
-Natywne aplikacje klienckie, czy komputerze lub urządzeniu przenośnym, należą do tej kategorii, a więc nie ma wpływ przerzucania.
+Natywne aplikacje klienckie, zarówno stacjonarne, jak i mobilne, należą do tej kategorii i nie mają wpływu na Przerzucanie.
 
-### <a name="webclient"></a>Aplikacje sieci Web / interfejsów API, uzyskiwaniu dostępu do zasobów
-Aplikacje, które uzyskują dostęp tylko do zasobów (tj.) Program Microsoft Graph, magazynu kluczy, interfejsu API programu Outlook i innych APIs firmy Microsoft) jest ogólnie tylko uzyskania tokenu i przekazywanie ich wzdłuż do właściciela zasobu. Biorąc pod uwagę, że nie jest chroniony wszelkie zasoby, nie kontrolują token i dlatego nie trzeba upewnić się, że jest prawidłowo podpisana.
+### <a name="webclient"></a>Aplikacje sieci Web/interfejsy API uzyskujący dostęp do zasobów
+Aplikacje, które uzyskują dostęp tylko do zasobów (tj. Microsoft Graph, Magazyn kluczy, interfejs API programu Outlook i inne interfejsy API firmy Microsoft) Generalnie uzyskują jedynie token i przekazują je do właściciela zasobu. Ponieważ nie chronią żadnych zasobów, nie sprawdzają one tokenu i w związku z tym nie trzeba upewnić się, że jest on prawidłowo podpisany.
 
-Aplikacje sieci Web i internetowych interfejsów API, który jest używany tylko do aplikacji flow (poświadczeń klienta / certyfikatu klienta), należą do tej kategorii i w związku z tym nie ma wpływ przerzucania.
+Aplikacje sieci Web i interfejsy API sieci Web, które używają przepływu przeznaczonego tylko dla aplikacji (poświadczenia klienta/certyfikat klienta), należą do tej kategorii i nie mają wpływu na Przerzucanie.
 
-### <a name="appservices"></a>Aplikacje sieci Web / interfejsów API chroni zasoby oraz utworzone przy użyciu usługi Azure App Services
-Usługi Azure App Services uwierzytelniania / autoryzacji (EasyAuth) funkcji ma już logikę potrzebną do obsługi automatycznego przerzucania klucza.
+### <a name="appservices"></a>Aplikacje sieci Web/interfejsy API chroniące zasoby i skompilowane przy użyciu usługi Azure App Services
+Funkcja uwierzytelniania/autoryzacji App Services platformy Azure ma już niezbędną logikę do automatycznego obsługi przerzucania kluczy.
 
-### <a name="owin"></a>Aplikacje sieci Web / ochrona zasobów przy użyciu programu .NET OWIN OpenID Connect, WS-Fed i oprogramowania pośredniczącego WindowsAzureActiveDirectoryBearerAuthentication interfejsów API
-Jeśli aplikacja wykorzystuje .NET OWIN OpenID Connect, WS-Fed lub WindowsAzureActiveDirectoryBearerAuthentication oprogramowanie pośredniczące, już logikę potrzebną do obsługi automatycznego przerzucania klucza.
+### <a name="owin"></a>Aplikacje sieci Web/interfejsy API chroniące zasoby za pomocą oprogramowania .NET OWIN OpenID Connect Connect, WS-karmione lub WindowsAzureActiveDirectoryBearerAuthentication
+Jeśli aplikacja korzysta z oprogramowania .NET OWIN OpenID Connect Connect, WS-pokarmowego lub WindowsAzureActiveDirectoryBearerAuthentication, ma już niezbędną logikę do automatycznego obsługi przerzucania kluczy.
 
-Możesz potwierdzić, że aplikacja korzysta z któregoś z powyższych, wyszukując dowolne poniższe fragmenty kodu w pliku Startup.cs lub Startup.Auth.cs usługi aplikacji
+Możesz potwierdzić, że aplikacja korzysta z dowolnego z poniższych fragmentów kodu w Startup.cs lub Startup.Auth.cs aplikacji
 
 ```
 app.UseOpenIdConnectAuthentication(
@@ -95,10 +95,10 @@ app.UseWsFederationAuthentication(
      });
 ```
 
-### <a name="owincore"></a>Aplikacje sieci Web / interfejsów API, ochrona zasobów przy użyciu platformy .NET Core OpenID Connect lub JwtBearerAuthentication oprogramowania pośredniczącego
-Jeśli aplikacja korzysta z platformy .NET Core OWIN OpenID Connect lub JwtBearerAuthentication oprogramowania pośredniczącego, już logikę potrzebną do obsługi automatycznego przerzucania klucza.
+### <a name="owincore"></a>Aplikacje sieci Web/interfejsy API chroniące zasoby przy użyciu oprogramowania .NET Core OpenID Connect Connect lub JwtBearerAuthentication
+Jeśli aplikacja korzysta z programu .NET Core OWIN OpenID Connect Connect lub JwtBearerAuthentication, ma już niezbędną logikę do automatycznego obsługi przerzucania kluczy.
 
-Możesz potwierdzić, że aplikacja korzysta z któregoś z powyższych, wyszukując dowolne poniższe fragmenty kodu w pliku Startup.cs lub Startup.Auth.cs usługi aplikacji
+Możesz potwierdzić, że aplikacja korzysta z dowolnego z poniższych fragmentów kodu w Startup.cs lub Startup.Auth.cs aplikacji
 
 ```
 app.UseOpenIdConnectAuthentication(
@@ -115,10 +115,10 @@ app.UseJwtBearerAuthentication(
      });
 ```
 
-### <a name="passport"></a>Aplikacje sieci Web / interfejsów API, ochrona zasobów przy użyciu modułu passport-azure-ad środowiska Node.js
-Jeśli aplikacja używa modułu passport-ad Node.js, już logikę potrzebną do obsługi automatycznego przerzucania klucza.
+### <a name="passport"></a>Aplikacje sieci Web/interfejsy API chroniące zasoby przy użyciu modułu Node. js paszport-Azure-AD
+Jeśli aplikacja korzysta z modułu Node. js paszport-AD, ma już niezbędną logikę do automatycznego obsługi przerzucania kluczy.
 
-Potwierdzić, że aplikacja usługi passport-ad, wyszukując poniższy fragment kodu w aplikacji app.js
+Możesz potwierdzić, że aplikacja jest paszportowa, wyszukując następujący fragment kodu w aplikacji App. js.
 
 ```
 var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
@@ -128,32 +128,32 @@ passport.use(new OIDCStrategy({
 ));
 ```
 
-### <a name="vs2015"></a>Aplikacje sieci Web / API ochrona zasobów i utworzony za pomocą programu Visual Studio 2015 lub nowszym
-Jeśli aplikacja została skompilowana przy użyciu szablonu aplikacji sieci web w programie Visual Studio 2015 lub nowszego, a następnie wybrania **lub kont służbowych** z **Zmień uwierzytelnianie** menu jest już niezbędne Logika obsługi automatycznego przerzucania klucza. Tę logikę osadzone w pośredniczącym OWIN OpenID Connect, pobiera i umieszcza w pamięci podręcznej kluczy z dokumentu odnajdywania protokołu OpenID Connect i okresowo odświeża je.
+### <a name="vs2015"></a>Aplikacje sieci Web/interfejsy API chroniące zasoby i tworzone za pomocą programu Visual Studio 2015 lub nowszego
+Jeśli aplikacja została skompilowana przy użyciu szablonu aplikacji sieci Web w programie Visual Studio 2015 lub nowszym, a wybrano **konta służbowe** z menu **Zmień uwierzytelnianie** , ma już ona niezbędną logikę umożliwiającą automatyczne Przerzucanie kluczy. Ta logika osadzona w OWIN OpenID Connect łączy oprogramowanie pośredniczące, pobiera i buforuje klucze z dokumentu OpenID Connect Connect Discovery i okresowo odświeża je.
 
-Jeśli ręcznie dodano uwierzytelniania do rozwiązania, aplikacja może nie mieć logiki potrzeby przerzucania klucza. Musisz napisać samodzielnie lub postępuj zgodnie z instrukcjami w [aplikacji sieci Web / interfejsów API przy użyciu innych bibliotek lub ręcznego wdrażania każdego z obsługiwanych protokołów](#other).
+W przypadku ręcznego dodania uwierzytelniania do rozwiązania aplikacja może nie mieć niezbędnej logiki przerzucania kluczy. Należy napisać go samodzielnie lub wykonać kroki opisane w temacie [aplikacje sieci Web/interfejsy API przy użyciu innych bibliotek lub ręcznie wdrażać dowolne z obsługiwanych protokołów](#other).
 
-### <a name="vs2013"></a>Aplikacje sieci Web chroni zasoby oraz utworzone przy użyciu programu Visual Studio 2013
-Jeśli aplikacja została skompilowana przy użyciu szablonu aplikacji sieci web w programie Visual Studio 2013, a następnie wybrania **kont organizacyjnych** z **Zmień uwierzytelnianie** menu jest już logikę potrzebną do obsługi automatycznego przerzucania klucza. Tę logikę przechowuje unikatowy identyfikator w Twojej organizacji i dane klucza podpisywania w dwóch tabelach bazy danych skojarzony z projektem. Parametry połączenia dla bazy danych można znaleźć w pliku Web.config projektu.
+### <a name="vs2013"></a>Aplikacje sieci Web chroniące zasoby i tworzone za pomocą Visual Studio 2013
+Jeśli aplikacja została skompilowana przy użyciu szablonu aplikacji sieci Web w Visual Studio 2013 i wybrano opcję **konta organizacji** z menu **Zmień uwierzytelnianie** , istnieje już niezbędna logika do automatycznego obsłużenia przerzucania kluczy. Ta logika przechowuje unikatowy identyfikator organizacji i informacje o kluczu podpisywania w dwóch tabelach bazy danych skojarzonych z projektem. Parametry połączenia dla bazy danych można znaleźć w pliku Web. config projektu.
 
-Jeśli ręcznie dodano uwierzytelniania do rozwiązania, aplikacja może nie mieć logiki potrzeby przerzucania klucza. Musisz napisać samodzielnie lub postępuj zgodnie z instrukcjami w [aplikacji sieci Web / interfejsów API przy użyciu innych bibliotek lub ręcznego wdrażania każdego z obsługiwanych protokołów.](#other).
+W przypadku ręcznego dodania uwierzytelniania do rozwiązania aplikacja może nie mieć niezbędnej logiki przerzucania kluczy. Należy napisać go samodzielnie lub wykonać kroki opisane w temacie [aplikacje sieci Web/interfejsy API przy użyciu innych bibliotek lub ręcznie wdrażać dowolne z obsługiwanych protokołów.](#other)
 
-Poniższe kroki pomogą możesz sprawdzić, czy logika działa prawidłowo w aplikacji.
+Poniższe kroki pomogą sprawdzić, czy logika działa prawidłowo w aplikacji.
 
-1. W programie Visual Studio 2013, otwórz rozwiązanie, a następnie kliknij pozycję **Eksploratora serwera** karty w oknie po prawej stronie.
-2. Rozwiń **połączeń danych**, **DefaultConnection**, a następnie **tabel**. Znajdź **IssuingAuthorityKeys** tabelę, kliknij go prawym przyciskiem myszy, a następnie kliknij **Pokaż dane tabeli**.
-3. W **IssuingAuthorityKeys** tabeli, będzie istnieć co najmniej jeden wiersz, który odpowiada wartość odcisku palca dla klucza. Usuń wszystkie wiersze w tabeli.
-4. Kliknij prawym przyciskiem myszy **dzierżaw** tabeli, a następnie kliknij przycisk **Pokaż dane tabeli**.
-5. W **dzierżaw** tabeli, będzie istnieć co najmniej jeden wiersz, który odpowiada identyfikatorowi dzierżawcy unikatowego katalogu. Usuń wszystkie wiersze w tabeli. Jeśli nie usuwaj wiersze w obu **dzierżaw** tabeli i **IssuingAuthorityKeys** tabeli, otrzymasz błąd w czasie wykonywania.
-6. Skompiluj i uruchom aplikację. Po zalogowaniu się do swojego konta, można zatrzymać aplikacji.
-7. Wróć do **Eksploratora serwera** i spójrz na wartości w **IssuingAuthorityKeys** i **dzierżaw** tabeli. Można zauważyć, że mają one automatycznie wypełniona przy użyciu odpowiednich informacji z dokumentu metadanych federacji.
+1. W Visual Studio 2013 Otwórz rozwiązanie, a następnie kliknij kartę **Eksplorator serwera** w oknie po prawej stronie.
+2. Rozwiń węzeł **połączenia danych**, **DefaultConnection**, a następnie **tabele**. Znajdź tabelę **IssuingAuthorityKeys** , kliknij ją prawym przyciskiem myszy, a następnie kliknij polecenie **Pokaż dane tabeli**.
+3. W tabeli **IssuingAuthorityKeys** będzie zawierać co najmniej jeden wiersz, który odnosi się do wartości odcisku palca klucza. Usuń wszystkie wiersze z tabeli.
+4. Kliknij prawym przyciskiem myszy tabelę dzierżawców, a następnie kliknij polecenie **Pokaż dane tabeli**.
+5. W tabeli **dzierżawców** będzie istnieć co najmniej jeden wiersz, który odnosi się do unikatowego identyfikatora dzierżawy katalogu. Usuń wszystkie wiersze z tabeli. Jeśli nie usuniesz wierszy w tabeli dzierżawców i tabeli **IssuingAuthorityKeys** , wystąpi błąd w czasie wykonywania.
+6. Skompiluj i uruchom aplikację. Po zalogowaniu się do konta możesz zatrzymać aplikację.
+7. Wróć do **Eksplorator serwera** i sprawdź wartości w tabeli **IssuingAuthorityKeys** i dzierżawców. Należy zauważyć, że zostały one automatycznie ponownie wypełniane odpowiednimi informacjami z dokumentu metadanych Federacji.
 
-### <a name="vs2013"></a>Interfejsy API sieci Web chroni zasoby oraz utworzone przy użyciu programu Visual Studio 2013
-Jeśli utworzona aplikacja interfejsu API sieci web w programie Visual Studio 2013 za pomocą szablonu interfejsu API sieci Web, a następnie wybrany **kont organizacyjnych** z **Zmień uwierzytelnianie** menu, możesz już mieć niezbędne Logika w aplikacji.
+### <a name="vs2013"></a>Interfejsy API sieci Web chroniące zasoby i tworzone za pomocą Visual Studio 2013
+Jeśli aplikacja internetowego interfejsu API została utworzona w Visual Studio 2013 przy użyciu szablonu internetowego interfejsu API, a następnie wybrane **konta organizacji** z menu **Zmień uwierzytelnianie** , masz już niezbędną logikę w aplikacji.
 
-Jeśli ręcznie skonfigurowano uwierzytelnianie, postępuj zgodnie z poniższymi instrukcjami, aby dowiedzieć się, jak skonfigurować interfejs API sieci Web można automatycznie zaktualizować swoje informacje o kluczu.
+W przypadku ręcznego skonfigurowania uwierzytelniania postępuj zgodnie z poniższymi instrukcjami, aby dowiedzieć się, jak skonfigurować internetowy interfejs API do automatycznego aktualizowania informacji o kluczu.
 
-Poniższy fragment kodu pokazuje, jak pobrać najnowsze kluczy z dokumentu metadanych Federacji, a następnie użyj [rozszerzenie JWT Token Handler](https://msdn.microsoft.com/library/dn205065.aspx) można zweryfikować tokenu. Fragment kodu zakłada, że użytkownik użyje własny mechanizm buforowania przechowywanie klucza do weryfikacji przyszłości tokenów z usługi Azure AD, czy jest to, że w bazie danych, pliku konfiguracji lub gdzie indziej.
+Poniższy fragment kodu pokazuje, jak pobrać najnowsze klucze z dokumentu metadanych Federacji, a następnie użyć [programu obsługi tokenów JWT](https://msdn.microsoft.com/library/dn205065.aspx) do walidacji tokenu. W fragmencie kodu założono, że będzie używany własny mechanizm buforowania w celu utrwalenia klucza w celu zweryfikowania przyszłych tokenów z usługi Azure AD, niezależnie od tego, czy znajduje się on w bazie danych, pliku konfiguracji czy w innym miejscu.
 
 ```
 using System;
@@ -243,18 +243,18 @@ namespace JWTValidation
 }
 ```
 
-### <a name="vs2012"></a>Aplikacje sieci Web chroni zasoby oraz utworzone przy użyciu programu Visual Studio 2012
-Jeśli aplikacja została skompilowana w programie Visual Studio 2012, prawdopodobnie używane narzędzie tożsamość i dostęp do skonfigurowania aplikacji. Jest również prawdopodobieństwo, że używasz [sprawdzania poprawności wystawcy Name Registry (VINR)](https://msdn.microsoft.com/library/dn205067.aspx). Rozszerzenie VINR jest odpowiedzialna za informacje o zaufanych dostawców tożsamości (Azure AD) oraz klucze używane do weryfikacji tokenów wystawionych przez nich. Rozszerzenie VINR ułatwia także do automatycznego aktualizowania kluczowe informacje, które są przechowywane w pliku Web.config, pobierając najnowsze dokumentu metadanych Federacji, skojarzone z katalogiem, sprawdzania, czy konfiguracja jest nieaktualna w najnowszych dokumentów i aktualizowanie aplikacji w celu używania nowego klucza, zgodnie z potrzebami.
+### <a name="vs2012"></a>Aplikacje sieci Web chroniące zasoby i utworzone za pomocą programu Visual Studio 2012
+Jeśli aplikacja została skompilowana w programie Visual Studio 2012, prawdopodobnie używasz narzędzia do tworzenia tożsamości i dostępu do konfigurowania aplikacji. Jest również prawdopodobnie używany do [sprawdzania poprawności rejestru Nazwa wystawcy (VINR)](https://msdn.microsoft.com/library/dn205067.aspx). VINR jest odpowiedzialny za utrzymywanie informacji o zaufanych dostawcach tożsamości (Azure AD) oraz kluczy używanych do weryfikacji tokenów wystawionych przez nich. VINR ułatwia również automatyczne aktualizowanie informacji o kluczach przechowywanych w pliku Web. config przez pobranie najnowszego dokumentu metadanych Federacji skojarzonego z Twoim katalogiem, sprawdzenie, czy konfiguracja jest nieaktualna przy użyciu najnowszego dokumentu, i zaktualizowanie aplikacji tak, aby korzystała z nowego klucza w razie potrzeby.
 
-Jeśli utworzono aplikację przy użyciu dowolnej z przykładów kodu lub dokumentacja przewodnika obsługiwane przez firmę Microsoft, logiki przerzucania klucza znajduje się już w projekcie. Zauważysz, że poniższy kod już istnieje w projekcie. Jeśli aplikacja nie ma już tę logikę, wykonaj następujące czynności, aby dodać go i sprawdź, czy działa poprawnie.
+Jeśli aplikacja została utworzona przy użyciu którejkolwiek z przykładów kodu lub dokumentacji instruktażowej dostarczonej przez firmę Microsoft, kluczowa logika przerzucania jest już dołączona do projektu. Zobaczysz, że Poniższy kod już istnieje w projekcie. Jeśli aplikacja nie ma jeszcze tej logiki, wykonaj poniższe czynności, aby je dodać, i sprawdź, czy działa poprawnie.
 
-1. W **Eksploratora rozwiązań**, Dodaj odwołanie do **System.IdentityModel** zestawu dla odpowiedniego projektu.
-2. Otwórz **Global.asax.cs** pliku i dodaj następujące dyrektywy using:
+1. W **Eksplorator rozwiązań**Dodaj odwołanie do zestawu **System. IdentityModel** dla odpowiedniego projektu.
+2. Otwórz plik **Global.asax.cs** i Dodaj następujące dyrektywy using:
    ```
    using System.Configuration;
    using System.IdentityModel.Tokens;
    ```
-3. Dodaj następującą metodę do **Global.asax.cs** pliku:
+3. Dodaj następującą metodę do pliku **Global.asax.cs** :
    ```
    protected void RefreshValidationSettings()
    {
@@ -264,7 +264,7 @@ Jeśli utworzono aplikację przy użyciu dowolnej z przykładów kodu lub dokume
     ValidatingIssuerNameRegistry.WriteToConfig(metadataAddress, configPath);
    }
    ```
-4. Wywoływanie **RefreshValidationSettings()** method in Class metoda **Application_Start()** method in Class metoda **Global.asax.cs** jak pokazano:
+4. Wywołaj metodę **RefreshValidationSettings ()** w metodzie **Application_Start ()** w **Global.asax.cs** , jak pokazano poniżej:
    ```
    protected void Application_Start()
    {
@@ -274,11 +274,11 @@ Jeśli utworzono aplikację przy użyciu dowolnej z przykładów kodu lub dokume
    }
    ```
 
-Po wykonaniu tych kroków pliku Web.config aplikacji zostaną zaktualizowane przy użyciu najnowszych informacji z dokumentu metadanych Federacji, w tym najnowsze kluczy. Ta aktualizacja zostanie przeprowadzona za każdym razem, gdy pula aplikacji jest odtwarzana w usługach IIS; Domyślnie usługi IIS ustawiono odtwarzanie aplikacji co 29 godziny.
+Po wykonaniu tych kroków plik Web. config aplikacji zostanie zaktualizowany przy użyciu najnowszych informacji z dokumentu metadanych Federacji, łącznie z najnowszymi kluczami. Ta aktualizacja będzie odbywać się za każdym razem, gdy pula aplikacji jest odtwarzana w usługach IIS. Domyślnie usługi IIS są skonfigurowane do odtwarzania aplikacji co 29 godzin.
 
-Wykonaj poniższe kroki, aby sprawdzić, czy działa logiki przerzucania klucza.
+Wykonaj poniższe kroki, aby sprawdzić, czy logika przerzucania kluczy działa.
 
-1. Po upewnieniu się, że aplikacja używa powyższy kod, otwórz **Web.config** plików i przejdź do  **\<issuerNameRegistry >** bloku, w szczególności wyszukiwanie Po kilku wierszy:
+1. Po zweryfikowaniu, że aplikacja korzysta z powyższego kodu, Otwórz plik **Web. config** i przejdź do  **\<bloku issuerNameRegistry >** , w którym szukasz następujących kilku wierszy:
    ```
    <issuerNameRegistry type="System.IdentityModel.Tokens.ValidatingIssuerNameRegistry, System.IdentityModel.Tokens.ValidatingIssuerNameRegistry">
         <authority name="https://sts.windows.net/ec4187af-07da-4f01-b18f-64c2f5abecea/">
@@ -286,31 +286,31 @@ Wykonaj poniższe kroki, aby sprawdzić, czy działa logiki przerzucania klucza.
             <add thumbprint="3A38FA984E8560F19AADC9F86FE9594BB6AD049B" />
           </keys>
    ```
-2. W  **\<dodać odcisk palca = "" >** Zmień wartość odcisku palca, zastępując inny dowolny znak. Zapisz **Web.config** pliku.
-3. Kompiluj aplikację, a następnie uruchom go. Jeśli można ukończyć procesu logowania, aplikacja pomyślnie aktualizuje klucz pobierając wymaganych informacji z dokumentu metadanych federacji w Twoim katalogu. Jeśli występują problemy z logowaniem, upewnij się, zmiany w aplikacji są poprawne, czytając [Dodawanie logowania jednokrotnego do usługi sieci Web Application Using usługi Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) artykułu, lub pobierania i zapoznanie się poniższy przykładowy kod: [Aplikacja w chmurze wielu dzierżaw usługi Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
+2. W ustawieniu **> Dodajodciskpalca=""Zmieńwartośćodciskupalca,zastępującdowolnyznakinnym.\<** Zapisz plik **Web. config** .
+3. Skompiluj aplikację, a następnie uruchom ją. Jeśli możesz zakończyć proces logowania, aplikacja pomyślnie zaktualizuje klucz, pobierając wymagane informacje z dokumentu metadanych Federacji katalogu. Jeśli masz problemy z logowaniem się, upewnij się, że zmiany w aplikacji są poprawne, odczytując [Dodawanie logowania do aplikacji sieci Web przy użyciu artykułu usługi Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) lub pobierając i sprawdzając następujący przykład kodu: [Aplikacja w chmurze z wieloma dzierżawcami dla Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
 
-### <a name="vs2010"></a>Windows Identity Foundation (WIF) w wersji 1.0 programu .NET 3.5 i aplikacji sieci Web chroni zasoby oraz utworzone przy użyciu programu Visual Studio 2008 lub 2010
-Jeśli utworzono aplikację w wersji 1.0 programu WIF, nie ma podanego mechanizmu będzie automatycznie odświeżać konfigurację aplikacji w celu użycia nowego klucza.
+### <a name="vs2010"></a>Aplikacje sieci Web chroniące zasoby i utworzone za pomocą programu Visual Studio 2008 lub 2010 oraz Windows Identity Foundation (WIF) v 1.0 dla programu .NET 3,5
+Jeśli aplikacja została utworzona w systemie WIF v 1.0, nie ma żadnego mechanizmu, aby automatycznie odświeżyć konfigurację aplikacji w celu użycia nowego klucza.
 
-* *Najprostszym sposobem* użyć narzędzi FedUtil zawarte w zestawie SDK programu WIF, który można pobrać najnowszą wersję dokumentu metadanych i zaktualizowanie konfiguracji.
-* Aktualizowanie aplikacji .NET 4.5, która zawiera najnowszą wersję programu WIF, znajduje się w przestrzeni nazw systemu. Następnie można użyć [sprawdzania poprawności wystawcy Name Registry (VINR)](https://msdn.microsoft.com/library/dn205067.aspx) do wykonywania automatycznych aktualizacji konfiguracji aplikacji.
-* Wykonaj ręczne Przerzucanie zgodnie z instrukcjami na końcu tego dokumentu wskazówki.
+* *Najprostszy sposób* Użyj narzędzi FedUtil zawartych w zestawie SDK WIF, które mogą pobrać najnowszy dokument metadanych i zaktualizować konfigurację.
+* Zaktualizuj aplikację do wersji .NET 4,5, która zawiera najnowszą wersję WIF znajdującą się w przestrzeni nazw System. Następnie można użyć [weryfikacji rejestru Nazwa wystawcy (VINR)](https://msdn.microsoft.com/library/dn205067.aspx) w celu przeprowadzenia automatycznych aktualizacji konfiguracji aplikacji.
+* Wykonaj ręczne Przerzucanie zgodnie z instrukcjami znajdującymi się na końcu niniejszego dokumentu wskazówek.
 
-Instrukcje dotyczące korzystania z FedUtil można zaktualizować konfiguracji:
+Instrukcje dotyczące aktualizowania konfiguracji przy użyciu FedUtil:
 
-1. Sprawdź, czy program WIF v1.0 SDK zainstalowany na komputerze deweloperskim dla programu Visual Studio 2008 lub 2010. Możesz [Pobierz go stąd](https://www.microsoft.com/en-us/download/details.aspx?id=4451) Jeśli nie zainstalowano jeszcze je.
-2. W programie Visual Studio, otwórz rozwiązanie, a następnie kliknij prawym przyciskiem myszy odpowiednie projektu i wybierz **aktualizacji metadanych Federacji**. Jeśli ta opcja nie jest dostępna, FedUtil i/lub 1.0 programu WIF, zestaw SDK nie został zainstalowany.
-3. W wierszu polecenia, wybierz **aktualizacji** do rozpoczęcia aktualizowania metadanych federacji. Jeśli masz dostęp do środowiska serwera, gdzie aplikacja jest obsługiwana, można używać w FedUtil [harmonogram aktualizacji automatycznych metadanych](https://msdn.microsoft.com/library/ee517272.aspx).
-4. Kliknij przycisk **Zakończ** do ukończenia procesu aktualizacji.
+1. Sprawdź, czy na komputerze deweloperskim jest zainstalowany zestaw SDK WIF v 1.0 dla programu Visual Studio 2008 lub 2010. Możesz [pobrać go z tego miejsca](https://www.microsoft.com/en-us/download/details.aspx?id=4451) , jeśli jeszcze go nie zainstalowano.
+2. W programie Visual Studio Otwórz rozwiązanie, a następnie kliknij prawym przyciskiem myszy odpowiedni projekt i wybierz polecenie **Aktualizuj metadane federacji**. Jeśli ta opcja jest niedostępna, FedUtil i/lub zestaw SDK WIF v 1.0 nie został zainstalowany.
+3. W wierszu polecenia wybierz pozycję **Aktualizuj** , aby rozpocząć aktualizowanie metadanych Federacji. Jeśli masz dostęp do środowiska serwera, w którym jest hostowana aplikacja, możesz opcjonalnie użyć [automatycznego harmonogramu aktualizacji metadanych](https://msdn.microsoft.com/library/ee517272.aspx)FedUtil.
+4. Kliknij przycisk **Zakończ** , aby ukończyć proces aktualizacji.
 
-### <a name="other"></a>Aplikacje sieci Web / interfejsów API, ochrona zasobów przy użyciu innych bibliotek lub ręcznego wdrażania każdego z obsługiwanych protokołów
-Jeśli używasz niektóre inne biblioteki lub ręcznie zaimplementowane każdego z obsługiwanych protokołów, należy przejrzeć biblioteki lub implementacji w taki sposób, aby upewnić się, że klucz jest pobierana z dokumentu odnajdywania protokołu OpenID Connect lub metadanych Federacji dokument. Jednym ze sposobów, aby sprawdzić, w tym jest wykonaj wyszukiwanie w kodzie lub kod biblioteki wszelkie wywołania się dokument odnajdywania protokołu OpenID lub dokumentu metadanych federacji.
+### <a name="other"></a>Aplikacje sieci Web/interfejsy API chroniące zasoby przy użyciu innych bibliotek lub ręcznie implementujących dowolne z obsługiwanych protokołów
+W przypadku korzystania z innej biblioteki lub ręcznie zaimplementowania któregokolwiek z obsługiwanych protokołów należy przejrzeć bibliotekę lub implementację, aby upewnić się, że klucz jest pobierany z dokumentu odnajdywania OpenID Connect Connect lub metadanych Federacji dokumentu. Jednym ze sposobów, aby sprawdzić, czy jest to wyszukiwanie w kodzie lub kod biblioteki dla wszelkich wywołań do dokumentu odnajdywania OpenID Connect lub dokumentu metadanych Federacji.
 
-Jeśli klucz jest magazynowana gdzieś lub umieszczone w kodzie aplikacji, można ręcznie pobrać klucza i zaktualizować go przez wykonywanie ręczne Przerzucanie zgodnie z instrukcjami na końcu tego dokumentu wskazówki. **Zdecydowanie zaleca się, że ulepszanie aplikacji do obsługi automatycznego przerzucania** przy użyciu dowolnej konspektu podejścia w tym artykule w celu uniknięcia zakłócenia w przyszłości i obciążenie usługi Azure AD ma nagłych lub zwiększa jego kadencji przerzucania Przerzucanie poza pasmem.
+Jeśli klucz jest przechowywany gdzieś lub stałe w aplikacji, można ręcznie pobrać klucz i zaktualizować go odpowiednio przez ręczne Przerzucanie zgodnie z instrukcjami znajdującymi się na końcu niniejszego dokumentu wskazówek. **Zdecydowanie zachęcamy do ulepszania aplikacji, aby obsługiwała automatyczne** Przerzucanie przy użyciu dowolnych z koncepcji w tym artykule, aby uniknąć przyszłego zakłócenia i nakładu pracy, jeśli usługa Azure AD zwiększy erze przerzucania lub ma awaryjne Przerzucanie poza pasmem.
 
-## <a name="how-to-test-your-application-to-determine-if-it-will-be-affected"></a>Jak przetestować aplikację, aby określić, jeśli będzie miała wpływ
-Możesz sprawdzić, czy aplikacja obsługuje automatyczne Przerzucanie klucza, pobierając skrypty i postępując zgodnie z instrukcjami w [to repozytorium serwisu GitHub.](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey)
+## <a name="how-to-test-your-application-to-determine-if-it-will-be-affected"></a>Testowanie aplikacji w celu ustalenia, czy będzie to miało wpływ
+Możesz sprawdzić, czy aplikacja obsługuje automatyczne Przerzucanie kluczy przez pobranie skryptów i postępując zgodnie z instrukcjami w [tym repozytorium GitHub.](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey)
 
-## <a name="how-to-perform-a-manual-rollover-if-your-application-does-not-support-automatic-rollover"></a>Jak przeprowadzić ręczne przerzucanie, jeśli aplikacja nie obsługuje automatycznego przerzucania
-Jeśli Twoja aplikacja wykonuje **nie** obsługują automatyczne przerzucanie, musisz ustanowić procesu, który okresowo podpisywania monitory usługi Azure AD kluczy i wykonuje ręczne Przerzucanie odpowiednio. [To repozytorium serwisu GitHub](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) zawiera skrypty oraz instrukcje, jak to zrobić.
+## <a name="how-to-perform-a-manual-rollover-if-your-application-does-not-support-automatic-rollover"></a>Jak przeprowadzić ręczne Przerzucanie, jeśli aplikacja nie obsługuje automatycznego przerzucania
+Jeśli aplikacja nie obsługuje automatycznego przerzucania, należy ustalić proces, który okresowo monitoruje klucze podpisywania usługi Azure AD i odpowiednio wykonuje ręczne przerzucanie. [To repozytorium GitHub](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) zawiera skrypty i instrukcje dotyczące sposobu wykonania tej czynności.
 

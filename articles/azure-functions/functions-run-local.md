@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: cee91de9e0a5d75be258705f636248a6a6213664
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 16e12021a65a09376293f28efe9a6e9ef74ef5c2
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444047"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839567"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Pracuj z Azure Functions Core Tools
 
@@ -314,7 +314,7 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 Aby przetestować funkcje lokalnie, należy [uruchomić hosta funkcji](#start) i punkty końcowe wywołań na serwerze lokalnym przy użyciu żądań HTTP. Wywoływany punkt końcowy zależy od typu funkcji.
 
 >[!NOTE]
-> Przykłady w tym temacie używają narzędzia zwinięcie do wysyłania żądań HTTP z terminalu lub wiersza polecenia. Możesz użyć wybranego narzędzia, aby wysyłać żądania HTTP do serwera lokalnego. Narzędzie zwinięcie jest dostępne domyślnie w systemach z systemem Linux. W systemie Windows należy najpierw pobrać i zainstalować [Narzędzie zwinięcie](https://curl.haxx.se/).
+> Przykłady w tym temacie używają narzędzia zwinięcie do wysyłania żądań HTTP z terminalu lub wiersza polecenia. Możesz użyć wybranego narzędzia, aby wysyłać żądania HTTP do serwera lokalnego. Narzędzie zwinięcie jest dostępne domyślnie w systemach z systemem Linux i Windows 10 Build 17063 i nowszych. W starszych systemach Windows należy najpierw pobrać i zainstalować [Narzędzie zwinięcie](https://curl.haxx.se/).
 
 Aby uzyskać więcej ogólnych informacji na temat funkcji testowania, zapoznaj się z tematem [strategie testowania kodu w Azure Functions](functions-test-a-function.md).
 
@@ -332,7 +332,7 @@ Następujące polecenie zwinięcie wyzwala `MyHttpTrigger` funkcję szybkiego st
 curl --get http://localhost:7071/api/MyHttpTrigger?name=Azure%20Rocks
 ```
 
-Poniższy przykład to ta sama funkcja wywołana z żądania _post w treści_ żądania:
+Poniższy przykład to ta sama funkcja wywołana z żądania POST w treści żądania :
 
 ```bash
 curl --request POST http://localhost:7071/api/MyHttpTrigger --data '{"name":"Azure Rocks"}'

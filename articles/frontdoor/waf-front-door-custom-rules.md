@@ -10,20 +10,20 @@ ms.workload: infrastructure-services
 ms.date: 04/07/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: 02b335de7f105d768168d5f798ec9109136d7430
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 344e04985c52945b2917d3b5f616d5fca6051ab9
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846257"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839774"
 ---
 #  <a name="custom-rules-for-web-application-firewall-with-azure-front-door"></a>Reguły niestandardowe dla zapory aplikacji sieci Web z usługami frontonu platformy Azure
-Zapora aplikacji sieci Web platformy Azure (WAF) z usługą front-drzwi umożliwia kontrolowanie dostępu do aplikacji sieci Web na podstawie zdefiniowanych warunków. Niestandardowa reguła WAF składa się z numeru priorytetu, typu reguły, warunków dopasowania i akcji. Istnieją dwa typy reguł niestandardowych: reguły dopasowania i reguły limitów szybkości. Reguła dopasowania kontroluje dostęp na podstawie warunków dopasowywania, natomiast reguła limitu szybkości kontroluje dostęp na podstawie zgodnych warunków i stawek żądań przychodzących. Można wyłączyć regułę niestandardową, aby zapobiec jej ocenie, ale nadal zachować konfigurację. W tym artykule omówiono reguły dopasowania, które są oparte na parametrach http.
+Zapora aplikacji sieci Web platformy Azure (WAF) z usługą front-drzwi umożliwia kontrolowanie dostępu do aplikacji sieci Web na podstawie zdefiniowanych warunków. Niestandardowa reguła WAF składa się z numeru priorytetu, typu reguły, warunków dopasowania i akcji. Istnieją dwa typy reguł niestandardowych: reguły dopasowania i reguły limitów szybkości. Reguła dopasowania kontroluje dostęp na podstawie zestawu zgodnych warunków, natomiast reguła limitu szybkości kontroluje dostęp na podstawie pasujących warunków i stawek żądań przychodzących. Można wyłączyć regułę niestandardową, aby zapobiec jej ocenie, ale nadal zachować konfigurację. 
 
 ## <a name="priority-match-conditions-and-action-types"></a>Priorytet, warunki dopasowania i typy akcji
-Można kontrolować dostęp za pomocą niestandardowej reguły WAf, która definiuje numer priorytetu, typ reguły, warunki dopasowania i akcję. 
+Można kontrolować dostęp za pomocą niestandardowej reguły WAf, która definiuje numer priorytetu, typ reguły, tablicę warunków dopasowania i akcję. 
 
-- **Priorytet:** jest unikatową liczbą całkowitą opisującą kolejność oceny reguł WAF. Reguły o niższych wartościach są oceniane przed regułami o wyższych wartościach.
+- **Priorytet:** jest unikatową liczbą całkowitą opisującą kolejność oceny reguł WAF. Reguły o niższych wartościach priorytetów są oceniane przed regułami o wyższych wartościach. Numery priorytetów muszą być unikatowe w ramach wszystkich reguł niestandardowych.
 
 - **Akcja:** definiuje sposób kierowania żądania w przypadku dopasowania reguły WAF. Można wybrać jedną z poniższych akcji do zastosowania, gdy żądanie jest zgodne z regułą niestandardową.
 
@@ -32,19 +32,17 @@ Można kontrolować dostęp za pomocą niestandardowej reguły WAf, która defin
     - *Log* -WAF rejestruje wpis w dziennikach WAF i kontynuuje ocenę następnej reguły.
     - *Redirect* -WAF przekierowuje żądanie do określonego identyfikatora URI, rejestruje wpis w dziennikach WAF i kończy pracę.
 
-- **Warunek dopasowania:** definiuje zmienną dopasowania, operatora i wartość Match. Każda reguła może zawierać wiele warunków dopasowywania. Warunek dopasowania może opierać się na poniższych *zmiennych dopasowania*:
-    - RemoteAddr (adres IP klienta)
+- **Warunek dopasowania:** definiuje zmienną dopasowania, operatora i wartość Match. Każda reguła może zawierać wiele warunków dopasowywania. Warunek dopasowania może opierać się na lokalizacji geograficznej, adresach IP klienta (CIDR), rozmiarze lub dopasowaniu ciągu. Dopasowanie ciągu może odnosić się do listy zmiennych dopasowywania.
+  - **Zmienna dopasowania:**
     - RequestMethod
     - Ciąg zapytania
     - PostArgs
     - RequestUri
     - RequestHeader
     - Elemencie requestbody
-
-- **Operator:** lista zawiera następujące elementy:
+    - Pliki cookie
+  - **Zakład**
     - Any: jest często używany do definiowania akcji domyślnej, jeśli nie są spełnione żadne reguły. Any jest operatorem Match ALL.
-    - IPMatch: Zdefiniuj ograniczenie adresów IP dla zmiennej RemoteAddr
-    - Geodopasowanie: Zdefiniuj filtrowanie geograficzne dla zmiennej RemoteAddr
     - Równa się
     - zawiera
     - LessThan: ograniczenie rozmiaru
@@ -52,26 +50,46 @@ Można kontrolować dostęp za pomocą niestandardowej reguły WAf, która defin
     - LessThanOrEqual: ograniczenie rozmiaru
     - GreaterThanOrEqual: ograniczenie rozmiaru
     - Zaczyna się od
-     - EndsWith
+    - EndsWith
+    - Wyrażeń
+  
+  - **Wyrażenie regularne** nie obsługuje poniższych operacji: 
+    - Odwołania wsteczne i przechwytywanie podwyrażeń
+    - Dowolne potwierdzenia o zerowej szerokości
+    - Odwołania podprocedury i wzorce cykliczne
+    - Wzorce warunkowe
+    - Zlecenia kontroli wycofywania
+    - \C jednobajtowa dyrektywa
+    - Dyrektywa dopasowania nowego wiersza
+    - \K początek dyrektywy resetowania dopasowania
+    - Objaśnienia i kod osadzony
+    - Grupowanie niepodzielne i Kwantyfikatory Possessive
 
-Warunek *Negate* można ustawić na wartość true, jeśli wynik warunku powinien być negacji.
-
-*Wartość Match* definiuje listę możliwych do dopasowania wartości.
-Obsługiwane wartości metod żądania HTTP to:
-- GET
-- POST
-- PUT
-- MTP
-- DELETE
-- SKRĘT
-- ODBLOKOWANIA
-- PROFILU
-- OPCJE
-- PROPFIND
-- PROPPATCH
-- MKCOL
-- KOPIOWANE
-- PRZENIEŚ
+  - **Negate [opcjonalnie]:** Warunek *Negate* można ustawić na wartość true, jeśli wynik warunku powinien być negacji.
+      
+  - **Przekształć [opcjonalnie]:** Lista ciągów z nazwami transformacji, które należy wykonać przed próbą dopasowania. Mogą to być następujące przekształcenia:
+     - Wielkie litery 
+     - Małe litery
+     - Przytnij
+     - RemoveNulls
+     - UrlDecode
+     - UrlEncode
+     
+   - **Wartość dopasowania:** Obsługiwane wartości metod żądania HTTP to:
+     - GET
+     - POST
+     - PUT
+     - HEAD
+     - DELETE
+     - SKRĘT
+     - ODBLOKOWANIA
+     - PROFILU
+     - OPCJE
+     - PROPFIND
+     - PROPPATCH
+     - MKCOL
+     - KOPIOWANE
+     - PRZENIEŚ
 
 ## <a name="examples"></a>Przykłady
 

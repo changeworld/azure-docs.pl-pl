@@ -1,65 +1,63 @@
 ---
-title: Sposób nawiązywania połączeń ze źródłami danych w usłudze Azure Data Catalog
-description: Artykuł porad wyróżnianie sposób nawiązywania połączeń ze źródłami danych odnalezionymi za pomocą usługi Azure Data Catalog.
-services: data-catalog
+title: Jak nawiązać połączenie ze źródłami danych w Azure Data Catalog
+description: Artykuł z instrukcje dotyczące nawiązywania połączenia ze źródłami danych odnalezionymi za pomocą Azure Data Catalog.
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 4e6b27a5-cf75-4012-b88c-333c1fe638e8
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: c64340491dba11870364610a6c2ff62e25c1328a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/01/2019
+ms.openlocfilehash: c91c09da31e4ecf42257b8f9c86f25c6ec39b9df
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61001835"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68734640"
 ---
 # <a name="how-to-connect-to-data-sources"></a>Jak nawiązywać połączenie ze źródłami danych
 ## <a name="introduction"></a>Wprowadzenie
-**Microsoft Azure Data Catalog** to usługa w pełni zarządzana usługa w chmurze, która służy jako system rejestracji i system odnajdowania firmowych źródeł danych. Innymi słowy **usługi Azure Data Catalog** to przede wszystkim pomagając ludziom, odnajdywanie, zrozumienie i używanie źródeł danych oraz pomagając organizacjom pozwala zwiększyć wartość uzyskiwaną z ich istniejących danych. Kluczowe aspekty tego scenariusza jest korzystanie z danych — po użytkownik umożliwia odnalezienie źródła danych i zrozumienie jego przeznaczenie, następnym krokiem jest nawiązanie połączenia ze źródłem danych, aby umieścić swoje dane, które mają być używane.
+**Microsoft Azure Data Catalog** to w pełni zarządzana usługa w chmurze, która służy jako system rejestracji i odnajdywania źródeł danych w przedsiębiorstwie. Innymi słowy, **Azure Data Catalog** to pomoc dla osób, które odnajdują i korzystają ze źródeł danych oraz pomagają organizacjom w uzyskaniu większej korzyści z istniejących danych. Kluczowym aspektem tego scenariusza jest użycie danych — gdy użytkownik odnajduje źródło danych i rozumie jego przeznaczenie, następnym krokiem jest nawiązanie połączenia ze źródłem danych, aby umieścić dane do użycia.
 
 ## <a name="data-source-locations"></a>Lokalizacje źródeł danych
-Podczas rejestracji źródła danych **usługi Azure Data Catalog** otrzymuje metadane dotyczące źródła danych. Te metadane zawiera szczegółowe informacje o lokalizacji źródła danych. Szczegółowe informacje o lokalizacji będą się różnić od źródła danych do źródła danych, ale zawsze będzie zawierać informacji potrzebnych do połączenia. Na przykład lokalizację dla tabeli programu SQL Server zawiera nazwę serwera, nazwę bazy danych, nazwy schematu i nazwę tabeli, natomiast lokalizację dla raportów programu SQL Server Reporting Services zawiera nazwę serwera i ścieżkę do raportu. Innych typów źródeł danych będzie mieć lokalizacje, które odzwierciedlają strukturę i funkcje w systemie źródłowym.
+Podczas rejestracji źródła danych **Azure Data Catalog** otrzymuje metadane dotyczące źródła danych. Metadane zawierają szczegóły lokalizacji źródła danych. Szczegóły lokalizacji będą się różnić w zależności od źródła danych ze źródłem danych, ale zawsze zawierają informacje niezbędne do nawiązania połączenia. Na przykład lokalizacja tabeli SQL Server zawiera nazwę serwera, nazwę bazy danych, nazwę schematu i nazwę tabeli, podczas gdy Lokalizacja raportu SQL Server Reporting Services zawiera nazwę serwera i ścieżkę do raportu. Inne typy źródeł danych będą mieć lokalizacje odzwierciedlające strukturę i możliwości systemu źródłowego.
 
-## <a name="integrated-client-tools"></a>Zintegrowanych narzędzi klienckich
-Najprostszym sposobem, aby połączyć się ze źródłem danych jest użycie "Otwórz w..." w menu **usługi Azure Data Catalog** portalu. To menu wyświetla listę opcji do łączenia się z wybranego zasobu danych.
-Korzystając z widoku tile domyślne, to menu jest dostępne na każdym kafelku.
+## <a name="integrated-client-tools"></a>Zintegrowane narzędzia klienckie
+Najprostszym sposobem nawiązywania połączenia ze źródłem danych jest użycie "Otwórz w..." w portalu **Azure Data Catalog** . To menu wyświetla listę opcji łączenia z wybranym zasobem danych.
+W przypadku korzystania z domyślnego widoku kafelków to menu jest dostępne na każdym kafelku.
 
- ![Otwieranie tabeli programu SQL Server w programie Excel za pomocą kafelka zasobów danych](./media/data-catalog-how-to-connect/data-catalog-how-to-connect1.png)
+ ![Otwieranie tabeli SQL Server w programie Excel z kafelka zasobów danych](./media/data-catalog-how-to-connect/data-catalog-how-to-connect1.png)
 
-Korzystając z widoku listy, jest dostępna na pasku wyszukiwania w górnej części okna portalu.
+W przypadku korzystania z widoku listy menu jest dostępne na pasku wyszukiwania w górnej części okna portalu.
 
- ![Otwieranie raportu usług SQL Server Reporting Services w programie Report Manager z paska wyszukiwania](./media/data-catalog-how-to-connect/data-catalog-how-to-connect2.png)
+ ![Otwieranie raportu SQL Server Reporting Services w Menedżer raportów na pasku wyszukiwania](./media/data-catalog-how-to-connect/data-catalog-how-to-connect2.png)
 
-## <a name="supported-client-applications"></a>Obsługiwany klient aplikacji
-Korzystając z "Otwórz w..." menu dla źródeł danych w portalu usługi Azure Data Catalog, aplikacja kliencka poprawne musi być zainstalowany na komputerze klienckim.
+## <a name="supported-client-applications"></a>Obsługiwane aplikacje klienckie
+W przypadku korzystania z funkcji "Otwórz w..." dla źródeł danych w portalu Azure Data Catalog należy zainstalować na komputerze klienckim poprawną aplikację kliencką.
 
-| Otwórz w aplikacji | Rozszerzenie pliku / protokołu | Wersje obsługiwanych aplikacji. |
+| Otwórz w aplikacji | Rozszerzenie/protokół pliku | Obsługiwane wersje aplikacji |
 | --- | --- | --- |
-| Excel |odc |Program Excel 2010 lub nowszy |
-| Excel (pierwsze 1000) |odc |Program Excel 2010 lub nowszy |
-| Dodatek Power Query |.xlsx |Zainstalowany program Excel 2016 i Excel 2010 lub Excel 2013 za pomocą dodatku Power Query dla dodatku programu Excel |
-| Power BI Desktop |.pbix |Usługa Power BI Desktop lipca 2016 lub nowszy |
-| SQL Server Data Tools |vsweb:// |Visual Studio 2013 Update 4 lub nowszym za pomocą narzędzi SQL Server zainstalowana |
-| Menedżer raportów |http:// |Zobacz [wymagania dotyczące przeglądarki dla programu SQL Server Reporting Services](https://technet.microsoft.com/library/ms156511.aspx) |
+| Excel |odc |Excel 2010 lub nowszy |
+| Excel (najpopularniejsze 1000) |odc |Excel 2010 lub nowszy |
+| Power Query |.xlsx |Excel 2016 lub Excel 2010 lub Excel 2013 z zainstalowanym dodatkiem Power Query for Excel |
+| Power BI Desktop |.pbix |Power BI Desktop lipca 2016 lub nowszej |
+| SQL Server Data Tools |vsweb:// |Visual Studio 2013 Update 4 lub nowszy z zainstalowanymi narzędziami SQL Server |
+| Menedżer raportów |http:// |Zobacz [wymagania dotyczące przeglądarki dla SQL Server Reporting Services](https://technet.microsoft.com/library/ms156511.aspx) |
 
-## <a name="your-data-your-tools"></a>Dane z narzędzi
-Opcje dostępne w menu będzie zależeć od typu zasobu danych, które aktualnie wybrany. Oczywiście nie wszystkie narzędzia możliwe będzie dostępna w "Otwórz w..." menu, ale jest nadal można łatwo połączyć się ze źródłem danych przy użyciu dowolnego narzędzia klienta. Po wybraniu zasobu danych w **usługi Azure Data Catalog** portalu, pełną lokalizacja będzie wyświetlana w okienku właściwości.
+## <a name="your-data-your-tools"></a>Twoje dane, Twoje narzędzia
+Opcje dostępne w menu będą zależeć od typu aktualnie wybranego zasobu danych. Oczywiście nie wszystkie możliwe narzędzia zostaną uwzględnione w "Otwórz w..." , ale nadal łatwo Nawiązuj połączenie ze źródłem danych przy użyciu dowolnego narzędzia klienckiego. Po wybraniu zasobu danych w portalu **Azure Data Catalog** pełna lokalizacja zostanie wyświetlona w okienku właściwości.
 
- ![Informacje o połączeniu dla tabeli programu SQL Server](./media/data-catalog-how-to-connect/data-catalog-how-to-connect3.png)
+ ![Informacje o połączeniu dla tabeli SQL Server](./media/data-catalog-how-to-connect/data-catalog-how-to-connect3.png)
 
-Informacje dotyczące połączenia będą się różnić od typu źródła danych typu źródła danych, ale informacje zawarte w portalu prześle Ci wszystko, co jest potrzebne do połączenia ze źródłem danych w dowolnym klienckim narzędziu. Użytkownicy mogą kopiować szczegóły połączenia dla źródeł danych, które zostały wykryte, przy użyciu **usługi Azure Data Catalog**, umożliwiając im do pracy z danymi w wybranym narzędziu.
+Szczegóły informacji o połączeniu różnią się od typu źródła danych do typu źródła danych, ale informacje zawarte w portalu będą zawierać wszystko, co jest potrzebne do nawiązania połączenia ze źródłem danych za pomocą dowolnego narzędzia klienckiego. Użytkownicy mogą kopiować szczegóły połączenia dla źródeł danych, które zostały odnalezione przy użyciu **Azure Data Catalog**, umożliwiając im współpracują z danymi w wybranym przez siebie narzędziu.
 
-## <a name="connecting-and-data-source-permissions"></a>Łączenie i źródła uprawnień dotyczących danych
-Mimo że **usługi Azure Data Catalog** sprawia, że źródła danych stała się wykrywalna, dostęp do danych sam pozostaje pod kontrolą właściciel lub administrator. Odnajdywanie źródła danych w **usługi Azure Data Catalog** nie daje użytkownikowi żadnych uprawnień dostępu do źródła danych, sam.
+## <a name="connecting-and-data-source-permissions"></a>Łączenie i uprawnienia do źródła danych
+Mimo że **Azure Data Catalog** umożliwia odnajdywanie źródeł danych, dostęp do samych danych pozostaje pod kontrolą właściciela źródła danych lub administratora. Odnajdywanie źródła danych w **Azure Data Catalog** nie daje użytkownikowi żadnych uprawnień dostępu do samego źródła danych.
 
-Aby ułatwić użytkownikom odnalezienie źródła danych, ale nie masz uprawnień dostępu do danych, użytkownicy mogą podać informacje we właściwości żądania dostępu podczas Dodawanie adnotacji do źródła danych. Informacje podane w tym miejscu, w tym łącza do procesu lub punkt kontaktu do uzyskania dostępu do źródła danych — są prezentowane wraz z informacji o lokalizacji źródła danych w portalu.
+Aby ułatwić użytkownikom, którzy odnajdują źródło danych, ale nie ma uprawnień dostępu do jego danych, użytkownicy mogą podawać informacje we właściwościach żądania dostępu podczas dodawania adnotacji do źródła danych. Informacje podane w tym miejscu — w tym linki do procesu lub punktu kontaktu w celu uzyskania dostępu do źródła danych — są wyświetlane obok informacji o lokalizacji źródła danych w portalu.
 
- ![Informacje o połączeniu podanych instrukcji dostęp na żądanie](./media/data-catalog-how-to-connect/data-catalog-how-to-connect4.png)
+ ![Informacje o połączeniu z podanymi instrukcjami dostępu żądania](./media/data-catalog-how-to-connect/data-catalog-how-to-connect4.png)
 
 ## <a name="summary"></a>Podsumowanie
-Rejestrowanie źródła danych za pomocą **usługi Azure Data Catalog** sprawia, że te dane wykrywalny przez skopiowanie metadane strukturalne i opisowy ze źródła danych do usługi katalogu. Gdy źródło danych zostanie zarejestrowane i odnalezione, użytkownicy mogą łączyć się źródło danych z **usługi Azure Data Catalog** portal "Otwórz w..." " menu lub przy użyciu narzędzi data wyboru.
+Zarejestrowanie źródła danych za pomocą **Azure Data Catalog** umożliwia odnajdywanie danych przez kopiowanie strukturalnych i opisowych metadanych ze źródła danych do usługi katalogowej. Gdy źródło danych zostanie zarejestrowane i odnalezione, użytkownicy mogą nawiązywać połączenia ze źródłem danych z portalu **Azure Data Catalog** "Otwórz w..." " lub przy użyciu wybranych przez siebie narzędzi do pracy z danymi.
 
 ## <a name="see-also"></a>Zobacz także
-* [Rozpoczynanie pracy z usługą Azure Data Catalog](data-catalog-get-started.md) samouczek krok po kroku szczegółowe informacje na temat sposobu łączenia ze źródłami danych.
+* [Zacznij korzystać z](data-catalog-get-started.md) samouczka Azure Data Catalog, aby uzyskać szczegółowe informacje na temat sposobu nawiązywania połączenia ze źródłami danych.

@@ -1,44 +1,44 @@
 ---
-title: Rozwiązanie programu VMware na platformie Azure przez CloudSimple - CloudSimple przydziału węzła
-description: Opis limitów przydziału dla węzłów CloudSimple oraz zażądać zwiększenia limitu przydziału
+title: Rozwiązanie VMware platformy Azure według przydziału węzła CloudSimple-CloudSimple
+description: Opisuje limity przydziału dla węzłów CloudSimple oraz sposób żądania zwiększenia limitu przydziału
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/30/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fd1416befb74a7299136ea497eccc8a06b7f0f6a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e765d7c87f2f941a5e2d558b71c4e5a71d2df9b1
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164863"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816673"
 ---
-# <a name="cloudsimple-node-quota-limits"></a>Limity przydziału węzła CloudSimple
+# <a name="cloudsimple-node-quota-limits"></a>Limity przydziału węzłów CloudSimple
 
-Cztery węzły jest domyślna ilość dostępnych do inicjowania obsługi, jeśli Twoja subskrypcja została włączona dla usługi CloudSimple.  Można udostępnić dowolne [typ węzła](cloudsimple-node.md) z witryny Azure portal.  Co najmniej trzy węzły tej samej jednostki SKU są wymagane do utworzenia chmury prywatnej.  Jeśli aprowizowaniu węzłów, zobaczysz błąd przy próbie aprowizować dodatkowe węzły.
+Cztery węzły są domyślną ilością dostępną do aprowizacji, gdy subskrypcja jest włączona dla usługi CloudSimple.  Można zainicjować obsługę dowolnego [typu węzła](cloudsimple-node.md) z Azure Portal.  Do utworzenia chmury prywatnej wymagane jest co najmniej trzy węzły tej samej jednostki SKU.  Jeśli Zainicjowano obsługę węzłów, podczas próby aprowizacji dodatkowych węzłów może zostać wyświetlony komunikat o błędzie.
 
-## <a name="quota-increase"></a>Zwiększenia limitu przydziału
+## <a name="quota-increase"></a>Zwiększenie limitu przydziału
 
-Aby zwiększyć limit przydziału węzła, należy przesłać żądanie pomocy technicznej. Zespół operacyjny usługi oceny żądania i współpraca z Tobą w celu zwiększenia limitu węzła.  Po otwarciu nowego biletu, należy wybrać następujące opcje:
+Limit przydziału węzłów można zwiększyć, przesyłając żądanie pomocy technicznej. Zespół operacyjny usługi oceni żądanie i skontaktuje się z nim, aby zwiększyć przydział węzła.  Wybierz poniższe opcje, aby otworzyć nowy bilet:
 
-* Typ problemu: **Technical Preview**
+* Typ problemu: **Naukow**
 * Subskrypcja: **Identyfikator subskrypcji**
-* Typ usługi: **VMware Solution by CloudSimple**
-* Typ problemu: **Dedykowane węzły limitu przydziału**
-* Podtyp problemu: **Zwiększ limit przydziału wynoszący węzły dedykowane**
-* Temat: **Zwiększenia limitu przydziału**
+* Typ usługi: **Rozwiązanie VMware według CloudSimple**
+* Typ problemu: **Limit przydziału węzłów dedykowanych**
+* Podtyp problemu: **Zwiększenie przydziału węzłów dedykowanych**
+* Temat: **Zwiększenie limitu przydziału**
 
-W obszarze szczegółów bilet pomocy technicznej zapewniają wymaganą liczbę węzłów i węzła jednostki SKU.
+W obszarze Szczegóły biletu pomocy technicznej Podaj wymaganą liczbę węzłów i jednostkę SKU węzła.
 
-Możesz również skontaktować się ze swoim przedstawicielem firmy Microsoft w [ azurevmwaresales@microsoft.com ](mailto:azurevmwaresales@microsoft.com) Aby zwiększyć limit przydziału węzła w ramach Twojej subskrypcji.  Musisz podać:
+Możesz również skontaktować się z przedstawicielem [azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) konto Microsoft w celu zwiększenia przydziału węzła w ramach subskrypcji.  Musisz podać:
 
 * Identyfikator subskrypcji
-* Węzeł jednostki SKU
-* Liczba kolejnych węzłów, dla których one żądanie zwiększenia limitu przydziału
+* Jednostka SKU węzła
+* Liczba dodatkowych węzłów, dla których żądasz zwiększenia limitu przydziału
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Aprowizacja węzłów](create-nodes.md)
-* [Omówienie węzłów CloudSimple](cloudsimple-node.md)
+* [Inicjowanie obsługi węzłów](create-nodes.md)
+* [Przegląd węzłów CloudSimple](cloudsimple-node.md)

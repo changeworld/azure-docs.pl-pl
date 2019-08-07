@@ -1,6 +1,6 @@
 ---
-title: Uaktualnianie i skalowanie wystąpienia usługi Azure API Management | Dokumentacja firmy Microsoft
-description: W tym temacie opisano sposób uaktualniania i Skaluj wystąpienia usługi Azure API Management.
+title: Uaktualnij i Skaluj wystąpienie usługi Azure API Management | Microsoft Docs
+description: W tym temacie opisano sposób uaktualniania i skalowania wystąpienia usługi Azure API Management.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -11,63 +11,67 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/18/2018
 ms.author: apimpm
-ms.openlocfilehash: ed3c5790dcb51d12a38b85aa95e9c9178b6f44cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6bafd5ed5f2d7080b0f2a2db71ac96e4f97a1f76
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65408859"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774945"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Uaktualnianie i skalowanie wystąpienia usługi Azure API Management  
 
-Klienci mogą skalować wystąpienia usługi Azure API Management (APIM), dodając i usuwając jednostki. A **jednostki** składa się z dedykowanych zasobów platformy Azure, a także ma pewne nośnych pojemności, wyrażony jako liczby wywołań interfejsu API na miesiąc. Ta liczba nie reprezentuje ograniczenie wywołań, ale raczej wartość maksymalna przepływność do obsługi planowania pojemności nierównej. Rzeczywista przepływność i opóźnienie zależy szeroko czynników, takich jak liczba i szybkość jednoczesnych połączeń, rodzaj i liczba skonfigurowanych zasad, żądań i rozmiarów odpowiedzi i opóźnienie zaplecza.
+Klienci mogą skalować wystąpienie usługi Azure API Management (APIM), dodając i usuwając jednostki. **Jednostka** składa się z dedykowanych zasobów platformy Azure i ma pewną pojemność obciążenia wyrażoną jako liczba wywołań interfejsu API miesięcznie. Ta liczba nie reprezentuje limitu wywołań, ale raczej maksymalną wartość przepływności, aby umożliwić planowanie nieograniczonej pojemności. Rzeczywista przepływność i opóźnienia różnią się w zależności od czynników, takich jak liczba i szybkość jednoczesnych połączeń, rodzaj i liczba skonfigurowanych zasad, rozmiar żądań i odpowiedzi oraz opóźnienie wewnętrznej bazy danych.
 
-Pojemność i Cena każdej jednostki jest zależna od **warstwy** , w którym istnieje jednostki. Możesz wybrać między czterech warstwach: **Deweloper**, **podstawowe**, **standardowa**, **Premium**. Jeśli potrzebujesz zwiększyć pojemność dla usługi w obrębie warstwy, należy dodać jednostkę. Warstwy, która jest aktualnie wybrany w swojego wystąpienia usługi APIM nie zezwala na dodawanie większej liczby jednostek, musisz wykonać uaktualnienie do warstwy wyższego poziomu.
+Pojemność i cena każdej jednostki są zależne od **warstwy** , w której znajduje się jednostka. Można wybrać jedną z czterech warstw: **Developer**, **Basic**, **Standard**i **Premium**. Jeśli trzeba zwiększyć pojemność usługi w ramach warstwy, należy dodać jednostkę. Jeśli warstwa aktualnie wybrana w wystąpieniu APIM nie zezwala na dodawanie większej liczby jednostek, należy przeprowadzić uaktualnienie do warstwy wyższego poziomu.
 
-Cena każdej jednostki i dostępnych funkcji (na przykład wdrożenie w wielu regionach), zależy od warstwy, który został wybrany dla swojego wystąpienia usługi APIM. [Cennik](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) artykuł, wyjaśnia cena za jednostkę i funkcje w każdej warstwie. 
+Cena każdej jednostki i dostępnych funkcji (na przykład wdrożenia obejmującego wiele regionów) zależy od warstwy wybranej dla wystąpienia usługi APIM. W artykule [szczegóły cennika](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) opisano cenę jednostkową i funkcje, które można uzyskać w poszczególnych warstwach. 
 
 >[!NOTE]
->[Cennik](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) artykule przedstawiono przybliżone liczby jednostek pojemności w przypadku każdej warstwy. Aby uzyskać dokładniejsze numerów, musisz przyjrzyj realistyczny scenariusz dotyczący interfejsów API. Zobacz [pojemności wystąpienia usługi Azure API Management](api-management-capacity.md) artykułu.
+>W artykule [szczegóły cennika](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) przedstawiono przybliżoną liczbę pojemności jednostek w każdej warstwie. Aby uzyskać dokładniejsze numery, należy zapoznać się z realistycznym scenariuszem dla interfejsów API. Zobacz [pojemność artykułu wystąpienia usługi Azure API Management](api-management-capacity.md) .
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby wykonać kroki z tego artykułu, musisz mieć:
+Aby wykonać kroki opisane w tym artykule, musisz:
 
 + Mieć aktywną subskrypcję platformy Azure.
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-+ Utworzono wystąpienie usługi APIM. Aby uzyskać więcej informacji, zobacz [Utwórz wystąpienie usługi Azure API Management](get-started-create-service-instance.md).
++ Mieć wystąpienie APIM. Aby uzyskać więcej informacji, zobacz [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
 
-+ Zrozumienie pojęcia [pojemności wystąpienia usługi Azure API Management](api-management-capacity.md).
++ Zrozumienie koncepcji [pojemności wystąpienia usługi Azure API Management](api-management-capacity.md).
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="upgrade-and-scale"></a>Uaktualnianie i skalowanie  
 
-Możesz wybrać między czterech warstwach: **Deweloper**, **podstawowe**, **standardowa** i **Premium**. **Developer** warstwy powinien być używany do oceny usługi; nie należy jej używać w środowisku produkcyjnym. **Developer** warstwy nie ma umowy SLA i nie można skalować tę warstwę (Dodawanie/usuwanie jednostek). 
+Można wybrać jedną z czterech warstw: **Developer**, **Basic**, **Standard** i **Premium**. Aby oszacować usługę, należy użyć warstwy dewelopera. nie powinna być używana w środowisku produkcyjnym. Warstwa **dewelopera** nie ma umowy SLA i nie można skalować tej warstwy (Dodaj/Usuń jednostki). 
 
-**Podstawowe**, **standardowa** i **Premium** są warstwy produkcji, umowy SLA, które mogą być skalowane. **Podstawowe** warstwa jest najtańszej warstwy, która jest objęta umową SLA i mogą być skalowane do 2 jednostek **standardowa** warstwę można skalować do maksymalnie czterech jednostek. Można dodać dowolną liczbę jednostek do **Premium** warstwy.
+**Podstawowa**, **standardowa** i **Premium** to warstwy produkcyjne, które mają umowę SLA i mogą być skalowane. Warstwa **podstawowa** to najtańsza warstwa, która ma umowę SLA i można ją skalować do 2 jednostek. Warstwa **standardowa** może być skalowana do maksymalnie czterech jednostek. Możesz dodać dowolną liczbę jednostek do warstwy **Premium** .
 
-**Premium** warstwy umożliwia dystrybucję pojedynczego wystąpienia usługi Azure API Management w dowolnej liczbie żądaną regiony platformy Azure. Podczas początkowego tworzenia usługi Azure API Management, wystąpienie zawiera tylko jedną jednostkę i znajduje się w jednym regionie platformy Azure. Początkowy regionów jest wyznaczony jako **głównej** regionu. Łatwo można dodawać dodatkowe regiony. Podczas dodawania regionu, możesz określić liczbę jednostek, które mają zostać przydzielone. Na przykład można mieć jedną jednostkę **głównej** region i pięć jednostek w niektórych innych regionów. Można dostosować liczbę jednostek do ruchu sieciowego, w każdym regionie. Aby uzyskać więcej informacji, zobacz [jak wdrożyć wystąpienie usługi Azure API Management w wielu regionach platformy Azure](api-management-howto-deploy-multi-region.md).
+Warstwa **Premium** umożliwia dystrybucję pojedynczego wystąpienia usługi Azure API Management w dowolnej liczbie żądanych regionów świadczenia usługi Azure. Podczas początkowego tworzenia usługi API Management platformy Azure wystąpienie zawiera tylko jedną jednostkę i znajduje się w jednym regionie świadczenia usługi Azure. Region początkowy jest wyznaczono jako region **podstawowy** . Dodatkowe regiony można łatwo dodawać. Podczas dodawania regionu należy określić liczbę jednostek, które mają zostać przydzielone. Na przykład można mieć jedną jednostkę w regionie **podstawowym** i pięć jednostek w innym regionie. Możesz dostosować liczbę jednostek do ruchu w poszczególnych regionach. Aby uzyskać więcej informacji, zobacz [jak wdrożyć wystąpienie usługi Azure API Management w wielu regionach platformy Azure](api-management-howto-deploy-multi-region.md).
 
-Można uaktualnić i obniżenia poziomu do i z dowolnej warstwy. Należy pamiętać, że uaktualnienia lub zmiany na starszą wersję można usunąć niektórych funkcji — na przykład sieci wirtualnych lub wdrożenie w wielu regionach, podczas zmiany na starszą wersję do wersji Standard lub Basic z warstwy Premium.
+Możesz uaktualnić i obniżyć wersję do i z dowolnej warstwy. Należy pamiętać, że uaktualnienie lub obniżenie wersji może usunąć niektóre funkcje — na przykład wdrożenie sieci wirtualnych lub z wieloregionem, gdy jest to wersja Standard lub Basic z warstwy Premium.
 
 >[!NOTE]
->Procesu uaktualniania lub skalowania zastosowanie może potrwać od 15 do 45 minut. Otrzymaj powiadomienie, gdy wszystko będzie gotowe.
+>Procesu uaktualniania lub skalowania zastosowanie może potrwać od 15 do 45 minut. Po zakończeniu otrzymasz powiadomienie.
 
-## <a name="use-the-azure-portal-to-upgrade-and-scale"></a>Uaktualnianie i skalowanie za pomocą witryny Azure portal
+## <a name="use-the-azure-portal-to-upgrade-and-scale"></a>Używanie Azure Portal do uaktualniania i skalowania
 
-![Skalowanie usługi APIM w witrynie Azure portal](./media/upgrade-and-scale/portal-scale.png)
+![Skalowanie APIM w Azure Portal](./media/upgrade-and-scale/portal-scale.png)
 
-1. Przejdź do swojego wystąpienia usługi APIM w [witryny Azure portal](https://portal.azure.com/).
-2. Wybierz **skalowanie i cennik** z menu.
-3. Wybierz odpowiednią warstwę.
-4. Określ liczbę **jednostek** chcesz dodać. Można użyć suwaka lub wpisz liczbę jednostek.  
-    Jeśli wybierzesz **Premium** warstwy, najpierw musisz wybrać region.
+1. Przejdź do wystąpienia APIM w [Azure Portal](https://portal.azure.com/).
+2. Z menu wybierz pozycję **Skala i Cennik** .
+3. Wybierz żądaną warstwę.
+4. Określ liczbę **jednostek** , które chcesz dodać. Możesz użyć suwaka lub wpisać liczbę jednostek.  
+    W przypadku wybrania warstwy **Premium** należy najpierw wybrać region.
 5. Naciśnij pozycję **Zapisz**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="downtime-during-scaling-up-and-down"></a>Przestoje podczas skalowania w górę i w dół
+W przypadku skalowania z lub do warstwy dewelopera wygaśnie Przestój. W przeciwnym razie nie ma przestojów. 
+
+
+## <a name="next-steps"></a>Następne kroki
 
 - [Jak wdrożyć wystąpienie usługi Azure API Management w wielu regionach świadczenia usługi Azure](api-management-howto-deploy-multi-region.md)
 - [Jak automatycznie skalować wystąpienie usługi Azure API Management](api-management-howto-autoscale.md)

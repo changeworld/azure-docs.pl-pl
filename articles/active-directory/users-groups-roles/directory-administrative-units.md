@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie jednostkami administracyjnymi (wersja zapoznawcza) — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Za pomocą jednostek administracyjnych dla bardziej szczegółowego delegowania uprawnień w usłudze Azure Active Directory
+title: Zarządzanie jednostkami administracyjnymi (wersja zapoznawcza) — Azure Active Directory | Microsoft Docs
+description: Korzystanie z jednostek administracyjnych na potrzeby bardziej szczegółowego delegowania uprawnień w Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -10,35 +10,36 @@ ms.service: active-directory
 ms.topic: article
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 01/31/2019
+ms.date: 08/01/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77f1a6e5b1e8191c1497e437cc26e1caf1255ba7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7b4bdced50f806367a53881d5ef0abd0a3710496
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60472371"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736786"
 ---
-# <a name="administrative-units-management-in-azure-active-directory-public-preview"></a>Zarządzanie jednostkami administracyjnymi w usłudze Azure Active Directory (publiczna wersja zapoznawcza)
+# <a name="administrative-units-management-in-azure-active-directory-public-preview"></a>Zarządzanie jednostkami administracyjnymi w Azure Active Directory (publiczna wersja zapoznawcza)
 
-W tym artykule opisano jednostki administracyjne — nowy kontener usługi Azure Active Directory (Azure AD), zasobów, które mogą służyć do delegowania uprawnień administracyjnych za pośrednictwem podzbiór użytkowników i stosowanie zasad do podzbioru użytkowników. W usłudze Azure Active Directory jednostek administracyjnych, Włącz Administratorzy central, aby delegować uprawnienia do administratorów regionalnych oraz ustawiania zasad na poziomie szczegółowym.
+W tym artykule opisano jednostki administracyjne w Azure Active Directory (Azure AD), które są kontenerami zasobów, które mogą służyć do delegowania uprawnień administracyjnych w ramach podzestawów użytkowników i stosowania zasad do podzbioru użytkowników. W usłudze Azure AD jednostki administracyjne umożliwiają administratorom centralnym delegowanie uprawnień do administratorów regionalnych lub Ustawianie zasad na poziomie szczegółowości.
 
-Jest to przydatne w przypadku organizacji z niezależnych działy, na przykład university dużych, który składa się z wielu szkół autonomicznego (firmy, szkoły, służbowych inżynierii i tak dalej), niezależne od siebie nawzajem. Takie przegrody ma własnych administratorów IT, którzy kontroli dostępu, zarządzanie użytkownikami i ustawić zasady dla ich podział. Chcesz Administratorzy Central, aby można było udzielić tych oddziałów uprawnienia administratorów przez użytkowników w ich określonego działów. Dokładniej korzystając z tego przykładu, głównym administratorem można, na przykład tworzenie jednostki administracyjnej dla konkretnego szkoły (Business szkoły) i wypełnianie jej tylko użytkownicy biznesowi szkoły. Oznacza to, głównym administratorem można dodać służbowego firmy pracowników wsparcia informatycznego roli o określonym zakresie, następnie przyznać pracowników wsparcia informatycznego uprawnień administracyjnych school firm tylko za pośrednictwem jednostki administracyjne school biznesowej.
+Jest to przydatne w organizacjach z niezależnymi oddziałami, na przykład z dużą uczelnią składającą się z wielu szkół autonomicznych (szkoły roboczej, szkoły inżynieryjnej itd.), które są niezależne od siebie nawzajem. Takie działy mają własnych administratorów IT kontrolujących dostęp, zarządzanie użytkownikami i Ustawianie zasad przeznaczonych dla ich działu. Administratorzy centralni chcą udzielić tych uprawnień administratorom, którzy korzystają z ich określonych podziałów. W szczególności przy użyciu tego przykładu administrator centralny może na przykład utworzyć jednostkę administracyjną dla określonej szkoły (szkoły służbowej) i wypełnić ją tylko użytkownikami szkoły. Następnie administrator centralny może dodać służbowy personel działu IT do roli o określonym zakresie, innymi słowy, przyznać personelowi IT uprawnień administracyjnych tylko za pośrednictwem jednostki administracyjnej szkoły roboczej.
 
 > [!IMPORTANT]
-> Aby użyć jednostek administracyjnych wymaga od administratora o określonym zakresie jednostki administracyjnej mają licencję usługi Azure Active Directory Premium i licencje usługi Azure Active Directory w warstwie podstawowa dla wszystkich użytkowników w jednostce administracyjnej. Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi Azure AD Premium](../fundamentals/active-directory-get-started-premium.md).
+> Aby można było korzystać z jednostek administracyjnych, administrator jednostki administracyjnej musi mieć licencję Azure Active Directory — wersja Premiumową. Aby uzyskać więcej informacji, zobacz [wprowadzenie do Azure AD — wersja Premium](../fundamentals/active-directory-get-started-premium.md).
 >
 
-
-Z punktu widzenia administratora centralnego jednostki administracyjnej jest obiekt katalogu, który może zostać utworzony i wypełniony zasobów. **W tej wersji zapoznawczej te zasoby może być tylko użytkownicy.** Po utworzeniu i wypełnieniu jednostki administracyjnej może służyć jako zasięg ograniczyć uprawnienia udzielone tylko za pośrednictwem zasobów znajdujących się w jednostce administracyjnej.
+Z punktu widzenia administratora centralnego jednostka administracyjna to obiekt katalogu, który można utworzyć i wypełnić zasobami. **W tej wersji zapoznawczej te zasoby mogą być tylko użytkownikami.** Po utworzeniu i wypełnieniu jednostka administracyjna może służyć jako zakres ograniczania przyznanych uprawnień tylko do zasobów znajdujących się w jednostce administracyjnej.
 
 ## <a name="managing-administrative-units"></a>Zarządzanie jednostkami administracyjnymi
-W tej wersji zapoznawczej możesz tworzyć i zarządzać jednostek administracyjnych przy użyciu poleceń cmdlet usługi Azure Active Directory modułu dla Windows PowerShell. Aby dowiedzieć się więcej o tym, jak to zrobić, zobacz [Praca z jednostkami administracyjnymi](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0)
 
-Aby uzyskać więcej informacji na temat wymagań programowych i instalowanie modułu Azure AD i uzyskać informacji na temat polecenia cmdlet modułu usługi Azure AD, do zarządzania jednostkami administracyjnymi składni, opisy parametrów i przykłady, zobacz [usługi Azure Active PowerShell katalogu](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0).
+W tej wersji zapoznawczej można tworzyć jednostki administracyjne i zarządzać nimi przy użyciu modułu Azure Active Directory dla poleceń cmdlet programu Windows PowerShell. Aby dowiedzieć się więcej o tym, jak to zrobić, zobacz [Praca z jednostkami administracyjnymi](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0)
 
-## <a name="next-steps"></a>Kolejne kroki
-[Wersje usługi Azure Active Directory](../fundamentals/active-directory-whatis.md)
+Aby uzyskać więcej informacji na temat wymagań programowych i instalowania modułu usługi Azure AD oraz informacje o poleceniach cmdlet modułu usługi Azure AD do zarządzania jednostkami administracyjnymi, w tym składnią, opisami parametrów i przykładami, zobacz [Azure Active Directory Program PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0).
+
+## <a name="next-steps"></a>Następne kroki
+
+[Wersje Azure Active Directory](../fundamentals/active-directory-whatis.md)

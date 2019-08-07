@@ -10,12 +10,12 @@ ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 8337c8672eb886d79b38b2a38a74037f88604497
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f27484fd1d47a2e29aa5083a7d440e5c7dba11c1
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448548"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839648"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Wdrożyć moduły usługi Azure IoT Edge w witrynie Azure portal
 
@@ -39,25 +39,25 @@ W tym artykule pokazano, jak witryna Azure portal przeprowadzi Cię przez tworze
 
 Manifest wdrożenia jest dokumentem JSON, który opisuje jakie moduły do wdrożenia, sposób przepływu danych między modułami i żądane właściwości bliźniaczych reprezentacjach modułów. Aby uzyskać więcej informacji dotyczących sposobu manifesty wdrożenia pracy i jak je utworzyć, zobacz [zrozumieć, jak moduły usługi IoT Edge mogą być używane, skonfigurowania i ponownie](module-composition.md).
 
-Witryna Azure portal ma kreatora, który przeprowadzi Cię przez tworzenie manifestu wdrażania, zamiast ręcznego tworzenia dokumentu JSON. Posiada trzy kroki: **Dodaj moduły**, **określić trasy**, i **Przejrzyj wdrożenia**.
+Witryna Azure portal ma kreatora, który przeprowadzi Cię przez tworzenie manifestu wdrażania, zamiast ręcznego tworzenia dokumentu JSON. Składa się z trzech kroków: **Dodaj moduły**, **Określ trasy**i **Przejrzyj wdrożenie**.
 
 ### <a name="add-modules"></a>Dodaj moduły
 
-1. W **ustawienia usługi Container Registry** części strony, podaj poświadczenia, które mają dostęp do wszelkich rejestry kontenerów prywatnych, zawierających obrazy modułu.
+1. W sekcji **ustawienia Container Registry** na stronie podaj poświadczenia, aby uzyskać dostęp do wszelkich prywatnych rejestrów kontenerów zawierających obrazy modułu.
 
-1. W **moduły wdrożeń** części strony wybierz **Dodaj**.
+1. W sekcji **moduły wdrażania** strony wybierz pozycję **Dodaj**.
 
 1. Przyjrzyj się typów modułów z listy rozwijanej:
 
    * **Moduł usługi IoT Edge** -opcją domyślną.
    * **Usługa Azure Stream Analytics modułu** — tylko moduły wygenerowane z obciążenia usługi Azure Stream Analytics.
-   * **Modułu nauczania w usłudze Azure Machine** — tylko model obrazy generowane z obszaru roboczego usługi Azure Machine Learning.
+   * **Azure Machine Learning** obrazów modeli opartych na module, które są generowane na podstawie Azure Machine Learning obszaru roboczego.
 
 1. Wybierz **moduł usługi IoT Edge**.
 
-1. Podaj nazwę dla modułu, a następnie wybierz obraz kontenera. Na przykład:
+1. Podaj nazwę dla modułu, a następnie wybierz obraz kontenera. Przykład:
 
-   * **Nazwa** -tempSensor
+   * **Nazwa** — SimulatedTemperatureSensor
    * **Identyfikator URI obrazu** -mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0
 
 1. Wypełnij pola opcjonalne, jeśli to konieczne. Więcej informacji na temat kontenerów opcje, zasady ponownego uruchamiania, tworzenia i zobacz żądany stan [EdgeAgent żądane właściwości](module-edgeagent-edgehub.md#edgeagent-desired-properties). Aby uzyskać więcej informacji na temat bliźniaczą reprezentację modułu zobacz [Definiuj lub aktualizacji żądane właściwości](module-composition.md#define-or-update-desired-properties).
@@ -84,29 +84,29 @@ Przejrzyj informacje o wdrożeniu, a następnie wybierz **przesyłania**.
 
 Po wdrożeniu modułów na urządzeniu, możesz wyświetlać wszystkie z nich w **szczegóły urządzenia** strony portalu. Ta strona wyświetla nazwę każdego modułu wdrożone, a także przydatne informacje, takie jak kod stanu i zakończenia wdrożenia.
 
-## <a name="deploy-modules-from-azure-marketplace"></a>Wdrażać moduły z witryny Azure Marketplace
+## <a name="deploy-modules-from-azure-marketplace"></a>Wdrażanie modułów z witryny Azure Marketplace
 
-Witryna Azure Marketplace to rynek online aplikacji i usług, którego można przeglądać przy użyciu szerokiej gamy aplikacji i rozwiązań, które są certyfikowane i optymalizowane pod kątem działania na platformie Azure, w tym [moduły usługi IoT Edge](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules). Portal Azure Marketplace można także uzyskać dostęp za pośrednictwem witryny Azure portal w obszarze **Utwórz zasób**.
+Portal Azure Marketplace to rynek aplikacji i usług online, w którym można przeglądać szeroką gamę aplikacji i rozwiązań dla przedsiębiorstw, które są certyfikowane i zoptymalizowane pod kątem działania na platformie Azure, w tym [modułów IoT Edge](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules). Dostęp do portalu Azure Marketplace można także uzyskać za pomocą Azure Portal w obszarze **Tworzenie zasobu**.
 
-Moduł usługi IoT Edge można zainstalować z witryny Azure Marketplace lub witryny Azure portal:
+Moduł IoT Edge można zainstalować z witryny Azure Marketplace lub Azure Portal:
 
-1. Znajdź moduł i rozpocząć proces wdrażania.
+1. Znajdź moduł i Rozpocznij proces wdrażania.
 
-   * Witryna Azure Portal: Znajdź moduł i zaznacz **Utwórz**.
+   * Azure Portal: Znajdź moduł i wybierz pozycję **Utwórz**.
 
-   * Azure Marketplace:
+   * Portal Azure Marketplace:
 
-     1. Znajdź moduł i zaznacz **Pobierz teraz**.
-     1. Potwierdzenie dostawcy warunki użycia i zasady zachowania poufności, wybierając **Kontynuuj**.
+     1. Znajdź moduł i wybierz pozycję **Pobierz teraz**.
+     1. Potwierdź warunki użytkowania dostawcy i zasady ochrony prywatności, wybierając pozycję **Kontynuuj**.
 
-1. Wybierz subskrypcję i usługi IoT Hub, do której jest dołączona na urządzeniu docelowym.
+1. Wybierz swoją subskrypcję i IoT Hub, do której jest dołączone urządzenie docelowe.
 
-1. Wybierz **wdrażanie na urządzeniu**.
+1. Wybierz pozycję **Wdróż na urządzeniu**.
 
-1. Wprowadź nazwę urządzenia, lub wybierz **znaleźć urządzenia** do przeglądania między urządzeniami zarejestrowane przy użyciu koncentratora.
+1. Wprowadź nazwę urządzenia lub wybierz pozycję **Znajdź urządzenie** , aby przeglądać urządzenia zarejestrowane w centrum.
 
-1. Wybierz **Utwórz** kontynuować standardowy proces konfigurowania manifestu wdrażania, takie jak dodawanie innych modułów, w razie potrzeby. Opcje tworzenia szczegóły dotyczące nowego modułu, takie jak identyfikator URI, obrazu i żądane właściwości są wstępnie zdefiniowane, ale można ją zmienić.
+1. Wybierz pozycję **Utwórz** , aby kontynuować standardowy proces konfigurowania manifestu wdrożenia, łącznie z dodaniem innych modułów w razie potrzeby. Szczegóły dotyczące nowego modułu, takie jak identyfikator URI obrazu, opcje tworzenia i żądane właściwości, są wstępnie zdefiniowane, ale można je zmienić.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się, jak [wdrażanie i monitorowanie moduły usługi IoT Edge na dużą skalę](how-to-deploy-monitor.md)

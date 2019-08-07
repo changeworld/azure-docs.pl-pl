@@ -7,14 +7,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7ee4cffea9c997e5fcd3631594d61e6d5383cb38
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 6b79b34b1db6c201a8f132e4c608e251edb3666a
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639481"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68735420"
 ---
-# <a name="azure-backup-support-matrix"></a>Tabela obsługi usługi Azure Backup
+# <a name="support-matrix-for-azure-backup"></a>Macierz obsługi dla Azure Backup
 
 Za pomocą [Azure Backup](backup-overview.md) można tworzyć kopie zapasowe danych na platformie Microsoft Azure w chmurze. Ten artykuł zawiera podsumowanie ogólnych ustawień pomocy technicznej i ograniczeń dotyczących Azure Backup scenariuszy i wdrożeń.
 
@@ -118,8 +118,8 @@ Azure Backup obsługuje szyfrowanie danych w trakcie przesyłania i w czasie spo
 --- | --- | ---
 **Lokalne maszyny z systemem Windows bez programu DPM/serwera usługi MAB** | ![Tak][green] | ![Tak][green]
 **Maszyny wirtualne platformy Azure** | ![Tak][green] | ![Tak][green]
-**Lokalne komputery z systemem Windows lub maszyny wirtualne platformy Azure z programem DPM** | ![Yes][green] | ![Tak][green]
-**Lokalne komputery z systemem Windows lub maszyny wirtualne platformy Azure z usługą serwera usługi MAB** | ![Tak][green] | ![Tak][green]
+**Lokalne komputery z systemem Windows lub maszyny wirtualne platformy Azure z programem DPM** | ![Tak][green] | ![Tak][green]
+**Lokalne komputery z systemem Windows lub maszyny wirtualne platformy Azure z usługą serwera usługi MAB** | ![Yes][green] | ![Yes][green]
 
 ## <a name="compression-support"></a>Obsługa kompresji
 
@@ -132,7 +132,7 @@ Funkcja Backup obsługuje kompresję ruchu kopii zapasowej, jak przedstawiono w 
 --- | --- | ---
 **Bezpośrednia kopia zapasowa lokalnych maszyn z systemem Windows** | Nie dotyczy | ![Tak][green]
 **Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure przy użyciu rozszerzenia maszyny wirtualnej** | Nie dotyczy | Nie dotyczy
-**Tworzenie kopii zapasowych na maszynach lokalnych/na platformie Azure przy użyciu serwera usługi MAB/DPM** | ![Yes][green] | ![Tak][green]
+**Tworzenie kopii zapasowych na maszynach lokalnych/na platformie Azure przy użyciu serwera usługi MAB/DPM** | ![Yes][green] | ![Yes][green]
 
 ## <a name="retention-limits"></a>Limity przechowywania
 

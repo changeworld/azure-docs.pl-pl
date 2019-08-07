@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 08/06/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 896bd7f9af3c319ec4190131036d8aa8ee49bb79
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: e15fa8c79663fc2517039124f9be8c1ecd57b8a8
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68705432"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68837876"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Delegowanie uprawnień rejestracji aplikacji w Azure Active Directory
 
@@ -29,7 +29,7 @@ W tym artykule opisano sposób korzystania z uprawnień aplikacji w rolach niest
 - [Ograniczenie użytkowników, którzy mogą tworzyć aplikacje](#restrict-who-can-create-applications) i zarządzać tworzonymi przez nie aplikacjami. Domyślnie w usłudze Azure AD wszyscy użytkownicy mogą rejestrować rejestracje aplikacji i zarządzać wszystkimi aspektami tworzonych przez nie aplikacji. Może to być ograniczone tylko do wybranych osób, które mają uprawnienia.
 - [Przypisywanie jednego lub większej liczby właścicieli do aplikacji](#assign-application-owners). Jest to prosty sposób udzielenia komuś możliwości zarządzania wszystkimi aspektami konfiguracji usługi Azure AD dla określonej aplikacji.
 - [Przypisanie wbudowanej roli administracyjnej](#assign-built-in-application-admin-roles) , która przyznaje dostęp do zarządzania konfiguracją w usłudze Azure AD dla wszystkich aplikacji. Jest to zalecany sposób udzielania ekspertom IT dostępu do zarządzania szerokimi uprawnieniami konfiguracji aplikacji bez udzielania dostępu do zarządzania innymi częściami usługi Azure AD niezwiązanych z konfiguracją aplikacji.
-- [Tworzenie roli niestandardowej](#create-and-assign-a-custom-role) Definiowanie bardzo konkretnych uprawnień i przypisywanie jej do zakresu jednej aplikacji jako ograniczonej właściciela lub zakresu katalogu (wszystkie aplikacje) jako ograniczonego administratora.
+- [Tworzenie roli niestandardowej](#create-and-assign-a-custom-role-preview) Definiowanie bardzo konkretnych uprawnień i przypisywanie jej do zakresu jednej aplikacji jako ograniczonej właściciela lub zakresu katalogu (wszystkie aplikacje) jako ograniczonego administratora.
 
 Ważne jest, aby rozważyć udzielenie dostępu przy użyciu jednej z powyższych metod z dwóch przyczyn. Po pierwsze Delegowanie możliwości wykonywania zadań administracyjnych zmniejsza obciążenie administratora globalnego. Po drugie użycie ograniczonych uprawnień usprawnia stan zabezpieczeń i zmniejsza możliwości nieautoryzowanego dostępu. Zagadnienia dotyczące delegowania i ogólne wytyczne zostały omówione w temacie [delegowanie administracji w Azure Active Directory](roles-concept-delegation.md).
 
@@ -86,16 +86,21 @@ Postępuj zgodnie z instrukcjami podanymi w temacie [Assign role to users with A
 > Administratorzy aplikacji i Administratorzy aplikacji w chmurze mogą dodawać poświadczenia do aplikacji i używać tych poświadczeń do personifikacji tożsamości aplikacji. Aplikacja może mieć uprawnienia, które są podniesieniem uprawnień za pośrednictwem uprawnień roli administratora. Administrator w tej roli może potencjalnie utworzyć lub zaktualizować użytkowników lub inne obiekty podczas personifikacji aplikacji, w zależności od uprawnień aplikacji.
 > Żadna rola nie przyznaje możliwości zarządzania ustawieniami dostępu warunkowego.
 
-## <a name="create-and-assign-a-custom-role"></a>Tworzenie i przypisywanie roli niestandardowej
+## <a name="create-and-assign-a-custom-role-preview"></a>Tworzenie i przypisywanie roli niestandardowej (wersja zapoznawcza)
 
 Tworzenie ról niestandardowych i przypisywanie ról niestandardowych są osobnymi krokami:
 
 - [Utwórz niestandardową *definicję roli* ](roles-create-custom.md) i [Dodaj do niej uprawnienia z listy ustawień wstępnych](roles-custom-available-permissions.md). Są to te same uprawnienia, które są używane w rolach wbudowanych.
-- [Utwórz *przypisanie roli* ](roles-assign-graph.md) , aby przypisać rolę niestandardową.
+- [Utwórz *przypisanie roli* ](roles-assign-powershell.md) , aby przypisać rolę niestandardową.
 
 Ta separacja umożliwia utworzenie jednej definicji roli, a następnie przypisanie jej wiele razy w różnych *zakresach*. Rolę niestandardową można przypisać w zakresie całej organizacji lub można ją przypisać do zakresu, jeśli pojedynczy obiekt usługi Azure AD. Przykładem zakresu obiektu jest rejestracja pojedynczej aplikacji. Korzystając z różnych zakresów, można przypisać tę samą definicję roli do Sally przez wszystkie rejestracje aplikacji w organizacji, a następnie Naveen tylko na potrzeby rejestracji aplikacji w raportach wydatków firmy Contoso.
 
-Aby uzyskać więcej informacji na temat podstawowych ról niestandardowych, zobacz [Omówienie ról niestandardowych](roles-custom-overview.md), a także sposób [tworzenia roli niestandardowej](roles-create-custom.md) i sposobu przypisywania [roli](roles-assign-graph.md).
+Porady dotyczące tworzenia i używania ról niestandardowych do delegowania zarządzania aplikacjami:
+- Role niestandardowe udzielają dostępu tylko w najpopularniejszych blokach rejestracji aplikacji w portalu usługi Azure AD. Nie przyznają one dostępu w blokach rejestracji starszych aplikacji.
+- Role niestandardowe nie zapewniają dostępu do portalu usługi Azure AD, gdy ustawienie użytkownika "Ogranicz dostęp do portalu administracyjnego usługi Azure AD" ma wartość tak.
+- Rejestracje aplikacji użytkownik ma dostęp do korzystania z przypisań ról tylko na karcie "wszystkie aplikacje" na stronie rejestracji aplikacji. Nie są one wyświetlane na karcie "posiadane aplikacje".
+
+Aby uzyskać więcej informacji na temat podstawowych ról niestandardowych, zobacz [Omówienie ról niestandardowych](roles-custom-overview.md), a także sposób [tworzenia roli niestandardowej](roles-create-custom.md) i sposobu przypisywania [roli](roles-assign-powershell.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

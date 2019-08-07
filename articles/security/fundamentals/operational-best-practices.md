@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: e815c038cce2e792fe7ea39f1ee43342be0b679f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 97f061d94209d84b70626f8735d08f89870e7319
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726894"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828726"
 ---
 # <a name="azure-operational-security-best-practices"></a>Najlepsze rozwiązania z zakresu zabezpieczeń operacyjnych platformy Azure
 Ten artykuł zawiera zestaw najlepszych rozwiązań operacyjnych dotyczących ochrony danych, aplikacji i innych zasobów na platformie Azure.
@@ -118,7 +118,7 @@ Wynik bezpiecznego, który jest oparty na kontrolkach w centrum zabezpieczeń in
 **Szczegóły**: Większość organizacji korzystających z SIEM jako centralnej usługi Clearinghouse dla alertów zabezpieczeń, które wymagają odpowiedzi analityka. Przetworzone zdarzenia utworzone przez Security Center są publikowane w dzienniku aktywności platformy Azure, jeden z dzienników dostępnych za pomocą Azure Monitor. Azure Monitor oferuje skonsolidowany potok do routingu dowolnych danych monitorowania do narzędzia SIEM. Aby uzyskać instrukcje, zobacz [integrowanie rozwiązań zabezpieczeń w Security Center](../../security-center/security-center-partner-integration.md#exporting-data-to-a-siem) . Jeśli używasz funkcji wskaźnikowej platformy Azure, zobacz [Connect Azure Security Center](../../sentinel/connect-azure-security-center.md).
 
 **Najlepsze rozwiązanie**: Integruj dzienniki platformy Azure z Twoim SIEM.   
-**Szczegóły**: Użyj [Azure monitor, aby zebrać i wyeksportować dane](/azure/azure-monitor/overview.md#integrate-and-export-data). To rozwiązanie ma kluczowe znaczenie dla włączenia badania zdarzeń związanych z zabezpieczeniami, a przechowywanie dzienników w trybie online jest ograniczone. Jeśli używasz funkcji wskaźnikowej platformy Azure, zobacz temat [łączenie ze źródłami danych](../../sentinel/connect-data-sources.md).
+**Szczegóły**: Użyj [Azure monitor, aby zebrać i wyeksportować dane](/azure/azure-monitor/overview#integrate-and-export-data). To rozwiązanie ma kluczowe znaczenie dla włączenia badania zdarzeń związanych z zabezpieczeniami, a przechowywanie dzienników w trybie online jest ograniczone. Jeśli używasz funkcji wskaźnikowej platformy Azure, zobacz temat [łączenie ze źródłami danych](../../sentinel/connect-data-sources.md).
 
 **Najlepsze rozwiązanie**: Przyspiesz przeprowadzenie badań i procesów polowania, aby zmniejszyć liczbę fałszywych pozytywnych wyników dzięki integracji możliwości wykrywania i reagowania punktów końcowych (EDR) na badanie ataku.   
 **Szczegóły**: [Włącz integrację z programem Windows Defender ATP](../../security-center/security-center-wdatp.md#enable-windows-defender-atp-integration) za pośrednictwem zasad zabezpieczeń Security Center. Rozważ użycie funkcji wskaźnikowej platformy Azure na potrzeby łowiectwa zagrożeń i reagowania na zdarzenia.

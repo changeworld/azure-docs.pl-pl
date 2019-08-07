@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: danlep
-ms.openlocfilehash: 285d5592ce667f7b4d84f26d67a00af0698c2967
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 88b6da4e9bd2938adadadc1ef0e696399fc3c75e
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620963"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828005"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Konfigurowanie reguł dostępu do usługi Azure Container Registry za zaporą
 
@@ -121,11 +121,11 @@ W sieci wirtualnej platformy Azure Użyj reguł zabezpieczeń sieci do filtrowan
 
 Można na przykład utworzyć regułę sieciowej grupy zabezpieczeń dla ruchu wychodzącego z **AzureContainerRegistryą** docelową, aby zezwolić na ruch do usługi Azure Container Registry. Aby zezwolić na dostęp do tagu usługi tylko w określonym regionie, Określ region w następującym formacie: **AzureContainerRegistry**. [*Nazwa regionu*].
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-* Poznaj [najlepsze rozwiązania dotyczące platformy Azure dotyczące zabezpieczeń sieci](../security/azure-security-network-security-best-practices.md)
+* Poznaj [najlepsze rozwiązania dotyczące platformy Azure dotyczące zabezpieczeń sieci](../security/fundamentals/network-best-practices.md)
 
-* Dowiedz się więcej o [grupach zabezpieczeń](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview.md) w sieci wirtualnej platformy Azure
+* Dowiedz się więcej o [grupach zabezpieczeń](/azure/virtual-network/security-overview) w sieci wirtualnej platformy Azure
 
 
 

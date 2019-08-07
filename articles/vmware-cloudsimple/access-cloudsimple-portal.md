@@ -1,29 +1,29 @@
 ---
-title: Rozwiązanie Azure VMware dostępu przez CloudSimple — Portal
-description: Opisuje, jak uzyskać dostęp do rozwiązań VMware przez portal CloudSimple z witryny Azure portal
+title: Dostęp do rozwiązania Azure VMware według CloudSimple — Portal
+description: Zawiera opis sposobu uzyskiwania dostępu do rozwiązania VMware przez portal CloudSimple z Azure Portal
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/04/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 61c3d37f365034984231c780199e181872c010c6
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 5bb1a4dd9d652481dfe1a2727ee0e5fe7601e96a
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67544132"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812760"
 ---
-# <a name="accessing-the-vmware-solution-by-cloudsimple-portal-from-azure-portal"></a>Uzyskiwanie dostępu do rozwiązań VMware przez portal CloudSimple z witryny Azure portal
+# <a name="accessing-the-vmware-solution-by-cloudsimple-portal-from-azure-portal"></a>Uzyskiwanie dostępu do rozwiązania VMware przez portal CloudSimple z Azure Portal
 
-Logowanie jednokrotne jest obsługiwana dla dostępu do portalu CloudSimple. Po zalogowaniu się do witryny Azure portal są dostępne w portalu CloudSimple bez ponownego logowania. Po raz pierwszy możesz uzyskać dostęp do portalu CloudSimple, zostanie wyświetlony monit autoryzować [CloudSimple usługi autoryzacji](#consent-to-cloudsimple-service-authorization-application) aplikacji.  Autoryzacja to akcja jednorazowa.
+Logowanie jednokrotne jest obsługiwane w przypadku dostępu do portalu CloudSimple. Po zalogowaniu się do Azure Portal można uzyskać dostęp do portalu CloudSimple bez konieczności ponownego logowania. Podczas pierwszego uzyskiwania dostępu do portalu CloudSimple zostanie wyświetlony monit o autoryzację aplikacji [autoryzacji usługi CloudSimple](#consent-to-cloudsimple-service-authorization-application) .  Autoryzacja to jednorazowa akcja.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Użytkownicy z wbudowanej **właściciela** i **Współautor** role mogą uzyskiwać dostęp do portalu CloudSimple.  Role musi być skonfigurowany w grupie zasobów, w którym wdrożono usługę CloudSimple.  Role można skonfigurować w taki sposób, w obiekcie usługi CloudSimple.  Aby uzyskać więcej informacji na temat sprawdzania swojej roli, zobacz [wyświetlania przypisań roli](https://docs.microsoft.com/azure/role-based-access-control/check-access) artykułu.
+Użytkownicy z rolami wbudowanego **właściciela** i **współautor** mogą uzyskać dostęp do portalu CloudSimple.  Role należy skonfigurować w grupie zasobów, w której wdrożono usługę CloudSimple.  Role można także skonfigurować w obiekcie usługi CloudSimple.  Aby uzyskać więcej informacji na temat sprawdzania roli, zobacz artykuł [Wyświetlanie przypisań ról](https://docs.microsoft.com/azure/role-based-access-control/check-access) .
 
-Jeśli używasz niestandardowych ról roli powinny mieć następujące operacje w obszarze ```Actions```.  Aby uzyskać więcej informacji na temat ról niestandardowych, zobacz [niestandardowych ról dla zasobów platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).  W przypadku każdej operacji stanowi część ```NotActions```, użytkownik nie może uzyskać dostępu CloudSimple portalu. 
+Jeśli używasz ról niestandardowych, rola powinna mieć dowolną z następujących operacji w ```Actions```.  Aby uzyskać więcej informacji na temat ról niestandardowych, zobacz [role niestandardowe dla zasobów platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).  Jeśli którakolwiek z operacji jest częścią ```NotActions```, użytkownik nie może uzyskać dostępu do portalu CloudSimple. 
 
 ```
 Microsoft.VMwareCloudSimple/*
@@ -40,36 +40,36 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
 
 1. Wybierz pozycję **Wszystkie usługi**.
 
-2. Wyszukaj **usług CloudSimple**.
+2. Wyszukaj **usługi CloudSimple Services**.
 
-3. Wybierz usługę CloudSimple, na którym chcesz utworzyć chmury prywatnej.
+3. Wybierz usługę CloudSimple, w której chcesz utworzyć chmurę prywatną.
 
-4. Na **Przegląd** kliknij **przejdź do portalu CloudSimple**.  Jeśli uzyskujesz dostęp do portalu CloudSimple w witrynie Azure portal, po raz pierwszy, zostanie wyświetlony monit do autoryzowania [CloudSimple usługi autoryzacji](#consent-to-cloudsimple-service-authorization-application) aplikacji. 
+4. Na stronie **Przegląd** kliknij pozycję **Przejdź do portalu CloudSimple**.  Jeśli po raz pierwszy uzyskujesz dostęp do portalu CloudSimple z poziomu Azure Portal, zostanie wyświetlony monit o autoryzację aplikacji [autoryzacji usługi CloudSimple](#consent-to-cloudsimple-service-authorization-application) . 
 
-    ![Uruchom CloudSimple portal](media/launch-cloudsimple-portal.png)
+    ![Uruchom Portal CloudSimple](media/launch-cloudsimple-portal.png)
 
 > [!TIP]
-> Jeśli wybierzesz operacją chmury prywatnej (np. Tworzenie lub zwiększyć pojemność chmury prywatnej) bezpośrednio z witryny Azure portal, CloudSimple portal otworzy stronę wskazane.
+> W przypadku wybrania operacji chmury prywatnej (takiej jak utworzenie lub rozszerzenie chmury prywatnej) bezpośrednio z Azure Portal Portal CloudSimple zostanie otwarty na wskazanej stronie.
 
-W portalu CloudSimple wybierz **Home** w menu po stronie, aby wyświetlić podsumowanie informacji na temat usługi chmury prywatnej. Zasoby i wydajność swojej chmury prywatnej są wyświetlane wraz z alertów i zadań, które wymagają uwagi. Do wykonywania typowych zadań kliknij przycisk o nazwie ikony w górnej części strony.
+W portalu CloudSimple wybierz pozycję **Strona główna** w menu bocznym, aby wyświetlić podsumowanie informacji o chmurach prywatnych. Wyświetlane są zasoby i pojemność chmur prywatnych wraz z alertami i zadaniami, które wymagają uwagi. W przypadku typowych zadań kliknij nazwane ikony w górnej części strony.
 
 ![Strona główna](media/cloudsimple-portal-home.png)
 
-## <a name="consent-to-cloudsimple-service-authorization-application"></a>Zgoda na aplikację CloudSimple usługi autoryzacji
+## <a name="consent-to-cloudsimple-service-authorization-application"></a>Wyrażanie zgody na aplikację autoryzacji usługi CloudSimple
 
-Uruchamianie portalu CloudSimple w witrynie Azure portal po raz pierwszy wymaga Twojej zgody dla aplikacji CloudSimple usługi autoryzacji.  Wybierz **Akceptuj** umożliwia udzielenie żądane uprawnienia i uzyskać dostęp do portalu CloudSimple. 
+Po pierwszym uruchomieniu Portal CloudSimple z Azure Portal wymaga zgody użytkownika na aplikację autoryzacji usługi CloudSimple.  Wybierz pozycję **Akceptuj** , aby udzielić żądanych uprawnień i uzyskać dostęp do portalu CloudSimple. 
 
-![Zgoda na CloudSimple usługi autoryzacji — Administratorzy](media/cloudsimple-azure-consent.png)
+![Wyrażanie zgody na autoryzację usługi CloudSimple — Administratorzy](media/cloudsimple-azure-consent.png)
 
-Jeśli masz uprawnienia administratora globalnego, klient wyraża zgodę dla Twojej organizacji.  Wybierz **zgody w imieniu swojej organizacji**.
+Jeśli masz uprawnienia administratora globalnego, możesz wyrazić zgodę na Twoją organizację.  Wybierz pozycję **wyrażanie zgody w imieniu organizacji**.
 
-![Zgoda na CloudSimple usługi autoryzacji — administratora globalnego](media/cloudsimple-azure-consent-global-admin.png)
+![Wyrażanie zgody na autoryzację usługi CloudSimple — Administrator globalny](media/cloudsimple-azure-consent-global-admin.png)
 
-Jeśli Twoje uprawnienia nie zezwalają na dostęp do portalu CloudSimple, skontaktuj się z administratorem globalnym dzierżawy, aby udzielić wymaganych uprawnień.  Administrator globalny może wyrażać zgodę w imieniu swojej organizacji.
+Jeśli Twoje uprawnienia nie zezwalają na dostęp do portalu CloudSimple, skontaktuj się z administratorem globalnym dzierżawy, aby przyznać wymagane uprawnienia.  Administrator globalny może wyrazić zgodę w imieniu organizacji.
 
-![Zgoda na CloudSimple usługi autoryzacji — wymaga od administratorów](media/cloudsimple-azure-consent-requires-administrator.png)
+![Wyrażanie zgody na autoryzację usługi CloudSimple — wymaga od administratorów](media/cloudsimple-azure-consent-requires-administrator.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się, jak [utworzyć chmurę prywatną](https://docs.azure.cloudsimple.com/create-private-cloud/)
-* Dowiedz się, jak [konfigurowania środowiska chmury prywatnej](quickstart-create-private-cloud.md)
+* Dowiedz się, jak [skonfigurować środowisko chmury prywatnej](quickstart-create-private-cloud.md)

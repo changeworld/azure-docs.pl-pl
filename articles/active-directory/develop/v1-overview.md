@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Active Directory dla deweloperów (1.0) — omówienie
-description: Ten artykuł zawiera omówienie logowania firmy Microsoft roboczych i kont służbowych za pomocą usługi Azure Active Directory w wersji 1.0 w punkcie końcowym i platformy.
+title: Azure Active Directory dla deweloperów (v 1.0) — Omówienie
+description: Ten artykuł zawiera omówienie logowania się na kontach służbowych firmy Microsoft przy użyciu punktu końcowego Azure Active Directory v 1.0 i platformy.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -9,7 +9,7 @@ ms.assetid: 5c872c89-ef04-4f4c-98de-bc0c7460c7c2
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/24/2018
@@ -17,19 +17,19 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13cc5c7ae428f74f2892e6066dfdcd7efb73efbb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 91f406198418571ec0d2c4d488909d3baaa494b1
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545239"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834669"
 ---
-# <a name="azure-active-directory-for-developers-v10-overview"></a>Usługa Azure Active Directory dla deweloperów (1.0) — omówienie
+# <a name="azure-active-directory-for-developers-v10-overview"></a>Azure Active Directory dla deweloperów (v 1.0) — Omówienie
 
 Azure Active Directory (Azure AD) to usługa zarządzania tożsamościami w chmurze, która umożliwia deweloperom tworzenie aplikacji zapewniających bezpieczne logowanie użytkowników mających konta służbowe Microsoft. Usługa Azure AD obsługuje zarówno deweloperów tworzących aplikacje biznesowe dla pojedynczej dzierżawy, jak i deweloperów chcących tworzyć aplikacje wielodostępne. Oprócz podstawowego logowania usługa Azure AD umożliwia również aplikacjom wywoływanie interfejsów API firmy Microsoft, takich jak [Microsoft Graph](https://docs.microsoft.com/graph/overview), a także niestandardowych interfejsów API opartych na platformie Azure AD. W tej dokumentacji pokazano, jak dodać obsługę usługi Azure AD do własnej aplikacji, używając standardowych w branży protokołów, takich jak OAuth 2.0 i OpenID Connect.
 
 > [!NOTE]
-> Większość zawartości na tej stronie koncentruje się na v1.0 punktu końcowego i platformy, która obsługuje tylko firma Microsoft kont służbowych. Jeśli chcesz zarejestrować konta użytkownika lub osobistych kont Microsoft, zapoznaj się z informacjami na [punktu końcowego v2.0 i platforma](v2-overview.md). Punkt końcowy w wersji 2.0 oferuje ujednolicone środowisko deweloperów dla aplikacji, które chcesz zarejestrować na wszystkich tożsamości firmy Microsoft.
+> Większość zawartości na tej stronie koncentruje się na punkcie końcowym i platformie v 1.0, który obsługuje tylko konta służbowe firmy Microsoft. Jeśli chcesz zalogować się do użytkowników lub osobistych kont Microsoft, zapoznaj się z informacjami w [punkcie końcowym i platformie v 2.0](v2-overview.md). Punkt końcowy v 2.0 oferuje ujednolicone środowisko programistyczne dla aplikacji, które chcą zalogować się do wszystkich tożsamości firmy Microsoft.
 
 | | |
 | --- | --- |
@@ -37,13 +37,13 @@ Azure Active Directory (Azure AD) to usługa zarządzania tożsamościami w chmu
 |[Typy aplikacji](app-types.md) | Przegląd scenariuszy uwierzytelniania obsługiwanych przez usługę Azure AD. |
 | | |
 
-## <a name="get-started"></a>Rozpoczęcie pracy
+## <a name="get-started"></a>Wprowadzenie
 
-V1.0 przewodników Szybki Start i samouczków opisano tworzenie aplikacji na jego preferowanej platformie przy użyciu usługi Azure AD Authentication Library (ADAL) zestawu SDK. Zobacz **v1.0 przewodników Szybki Start** i **v1.0 samouczki** w [platforma tożsamości firmy Microsoft (Azure Active Directory dla deweloperów)](index.yml) na rozpoczęcie pracy.
+Przewodniki Szybki Start i samouczki dotyczące programu v 1.0 przeprowadzą Cię przez proces tworzenia aplikacji na preferowanej platformie przy użyciu zestawu SDK biblioteki Azure AD Authentication Library (ADAL). Aby rozpocząć pracę, zobacz samouczki **Szybki Start** i **wersja 1.0** usługi [Microsoft Identity platform (Azure Active Directory dla deweloperów)](index.yml) .
 
 ## <a name="how-to-guides"></a>Przewodniki z instrukcjami
 
-Zobacz **v1.0 prowadzi instrukcje** Aby uzyskać szczegółowe informacje i wskazówki dotyczące typowych zadań w usłudze Azure AD.
+Zapoznaj się z przewodnikami instruktażowymi dotyczącymi **wersji 1.0** , aby uzyskać szczegółowe informacje i wskazówki dotyczące najbardziej typowych zadań w usłudze Azure AD.
 
 ## <a name="reference-topics"></a>Tematy informacyjne
 

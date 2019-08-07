@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Konfigurowanie usługi Salesforce dla automatycznej aprowizacji użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Konfigurowanie usługi Salesforce do automatycznej aprowizacji użytkowników przy użyciu Azure Active Directory | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i usługą Salesforce.
 services: active-directory
 documentationCenter: na
@@ -12,112 +12,115 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/08/2018
+ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 712cc5ce62225987f8cc3ea13b5e4fd10a7d5eaf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 64de004a1d9b3aa011c447fdded51658582586b0
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515765"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68825775"
 ---
-# <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie usługi Salesforce dla automatycznej aprowizacji użytkowników
+# <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie usługi Salesforce do automatycznej aprowizacji użytkowników
 
-Celem tego samouczka jest pokazanie kroków wymaganych do wykonania w usłudze Salesforce a usługą Azure AD, aby automatycznie aprowizować i anulować obsługę użytkowników kont z usługi Azure AD do usługi Salesforce.
+Celem tego samouczka jest przedstawienie czynności wymaganych do wykonania w usłudze Salesforce i usłudze Azure AD w celu automatycznego aprowizacji i cofania aprowizacji kont użytkowników z usługi Azure AD w usłudze Salesforce.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Scenariusz opisany w tym samouczku przyjęto założenie, że masz następujące elementy:
+Scenariusz opisany w tym samouczku założono, że masz już następujące elementy:
 
-* Dzierżawy usługi Azure Active directory
-* Dzierżawy Salesforce.com
+* Dzierżawa usługi Azure Active Directory
+* Dzierżawa Salesforce.com
 
 > [!IMPORTANT]
-> Jeśli używasz konta w wersji próbnej Salesforce.com, będzie on mógł skonfigurować aprowizację użytkowników automatycznych. Konta wersji próbnej nie mają włączony, dopóki nabywane są niezbędne dostęp do interfejsu API. Można obejść to ograniczenie, przy użyciu BEZPŁATNEJ [konta dewelopera](https://developer.salesforce.com/signup) do ukończenia tego samouczka.
+> Jeśli używasz konta próbnego Salesforce.com, nie będzie można skonfigurować automatycznej aprowizacji użytkowników. Konta próbne nie mają włączonego dostępu do interfejsu API, dopóki nie zostaną zakupione. To ograniczenie można obejść, używając bezpłatnego [konta dewelopera](https://developer.salesforce.com/signup) do wykonania tego samouczka.
 
-Jeśli używasz środowisku piaskownicy usługi Salesforce, zobacz [samouczkiem integracji usługi Salesforce piaskownicy](https://go.microsoft.com/fwLink/?LinkID=521879).
+Jeśli używasz środowiska piaskownicy Salesforce, zobacz [Samouczek dotyczący integracji](https://go.microsoft.com/fwLink/?LinkID=521879)z piaskownicą usługi Salesforce.
 
 ## <a name="assigning-users-to-salesforce"></a>Przypisywanie użytkowników do usługi Salesforce
 
-Usługa Azure Active Directory używa koncepcji o nazwie "przypisania", aby określić, użytkowników, którzy otrzymają dostęp do wybranych aplikacji. W kontekście Inicjowanie obsługi administracyjnej konta użytkowników są synchronizowane tylko użytkowników i grup, które "przypisano" do aplikacji w usłudze Azure AD.
+Azure Active Directory używa koncepcji o nazwie "przydziały", aby określić, którzy użytkownicy powinni otrzymywać dostęp do wybranych aplikacji. W kontekście automatycznego inicjowania obsługi kont użytkowników są synchronizowane tylko użytkownicy i grupy, które zostały przypisane do aplikacji w usłudze Azure AD.
 
-Przed Skonfiguruj i włącz usługę aprowizacji, musisz zdecydować, którzy użytkownicy lub grupy w usłudze Azure AD muszą mieć dostęp do aplikacji Salesforce. Po utworzeniu tej decyzji, tych użytkowników można przypisać do aplikacji Salesforce, postępując zgodnie z instrukcjami w [przypisać użytkownika lub grupy do aplikacji przedsiębiorstwa](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+Przed skonfigurowaniem i włączeniem usługi aprowizacji należy zdecydować, którzy użytkownicy lub które grupy w usłudze Azure AD potrzebują dostępu do aplikacji w usłudze Salesforce. Po wykonaniu tej decyzji można przypisać tych użytkowników do aplikacji Salesforce, postępując zgodnie z instrukcjami w temacie [Przypisywanie użytkownika lub grupy do aplikacji dla przedsiębiorstw](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) .
 
-### <a name="important-tips-for-assigning-users-to-salesforce"></a>Ważne wskazówki dotyczące przypisywania użytkowników do usługi Salesforce
+### <a name="important-tips-for-assigning-users-to-salesforce"></a>Ważne porady dotyczące przypisywania użytkowników do usługi Salesforce
 
-* Zalecane jest, że jeden użytkownik usługi Azure AD jest przypisany do usługi Salesforce do testowania konfiguracji aprowizacji. Później można przypisać dodatkowych użytkowników i/lub grup.
+* Zaleca się, aby jeden użytkownik usługi Azure AD został przypisany do usług Salesforce w celu przetestowania konfiguracji aprowizacji. Dodatkowych użytkowników i/lub grupy można przypisywać później.
 
-* Podczas przypisywania użytkowników do usługi Salesforce, należy wybrać poprawnej roli użytkownika. Rola "Domyślnego dostępu" nie działa w przypadku inicjowania obsługi administracyjnej
+* Podczas przypisywania użytkownika do usługi Salesforce należy wybrać prawidłową rolę użytkownika. Rola "dostęp domyślny" nie działa w przypadku aprowizacji
 
     > [!NOTE]
-    > Ta aplikacja importuje profile usługi Salesforce, jako część procesu inicjowania obsługi administracyjnej klienta, warto wybrać podczas przypisywania użytkowników w usłudze Azure AD. Należy pamiętać, że profile, które zostanie zaimportowany z usługi Salesforce są wyświetlane jako role w usłudze Azure AD.
+    > Ta aplikacja importuje profile z usługi Salesforce w ramach procesu aprowizacji, który klient może chcieć wybrać podczas przypisywania użytkowników w usłudze Azure AD. Należy pamiętać, że profile zaimportowane z usługi Salesforce są wyświetlane jako role w usłudze Azure AD.
 
-## <a name="enable-automated-user-provisioning"></a>Włączanie użytkownika automatyczne Inicjowanie obsługi administracyjnej.
+## <a name="enable-automated-user-provisioning"></a>Włącz automatyczne Inicjowanie obsługi użytkowników
 
-Ta sekcja przeprowadzi Cię przez połączenie usługi Azure AD do konta użytkownika w usłudze Salesforce aprowizujący interfejs API i konfigurowanie inicjowania obsługi usługi do tworzenia, aktualizacji, a następnie wyłącz kont użytkowników przypisanych do usługi Salesforce na podstawie przypisania użytkowników i grup w usłudze Azure AD.
+Ta sekcja przeprowadzi Cię przez proces łączenia się z interfejsem API aprowizacji konta użytkownika usługi Azure AD i konfigurowania usługi aprowizacji w celu tworzenia, aktualizowania i wyłączania przypisanych kont użytkowników w usłudze Salesforce na podstawie przypisywania użytkowników i grup w usłudze Azure AD.
 
 > [!Tip]
-> Można też włączyć opartej na SAML logowania jednokrotnego dla usług Salesforce, postępując zgodnie z instrukcjami dostarczone w [witryny Azure portal](https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatyczną aprowizację, chociaż te dwie funkcje uzupełnienie siebie nawzajem.
+> Możesz również włączyć funkcję logowania jednokrotnego opartego na protokole SAML dla usługi Salesforce, postępując zgodnie z instrukcjami podanymi w [Azure Portal](https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatycznej aprowizacji, chociaż te dwie funkcje napadają nawzajem.
 
-### <a name="configure-automatic-user-account-provisioning"></a>Konfigurowanie automatycznej konta aprowizacji użytkowników
+### <a name="configure-automatic-user-account-provisioning"></a>Konfigurowanie automatycznego inicjowania obsługi konta użytkownika
 
-Jest celem tej sekcji omówiono sposób włączania aprowizacji użytkowników, kont użytkowników usługi Active Directory do usługi Salesforce.
+Celem tej sekcji jest zaprojektowanie sposobu włączania obsługi administracyjnej użytkowników Active Directory kont użytkowników w usłudze Salesforce.
 
-1. W [witryny Azure portal](https://portal.azure.com), przejdź do **usługi Azure Active Directory > aplikacje dla przedsiębiorstw > wszystkie aplikacje** sekcji.
+1. W [Azure Portal](https://portal.azure.com)przejdź do sekcji **Azure Active Directory > aplikacje dla przedsiębiorstw > Wszystkie aplikacje** .
 
-2. Jeśli już skonfigurowano usługi Salesforce dla logowania jednokrotnego, wyszukiwanie wystąpienia programu Salesforce za pomocą pola wyszukiwania. W przeciwnym razie wybierz **Dodaj** i wyszukaj **Salesforce** w galerii aplikacji. Wybierz usługi Salesforce z wyników wyszukiwania, a następnie dodaj go do listy aplikacji.
+2. Jeśli skonfigurowano już usługi Salesforce do logowania jednokrotnego, Wyszukaj wystąpienie usług Salesforce przy użyciu pola wyszukiwania. W przeciwnym razie wybierz pozycję **Dodaj** i wyszukaj usługi **Salesforce** w galerii aplikacji. Wybierz pozycję Salesforce z wyników wyszukiwania, a następnie dodaj ją do listy aplikacji.
 
-3. Wybierz wystąpienia programu Salesforce, a następnie wybierz **aprowizacji** kartę.
+3. Wybierz wystąpienie usługi Salesforce, a następnie wybierz kartę **aprowizacji** .
 
-4. Ustaw **tryb obsługi administracyjnej** do **automatyczne**.
+4. Ustaw **tryb aprowizacji** na **automatyczny**.
 
-    ![Inicjowanie obsługi administracyjnej](./media/salesforce-provisioning-tutorial/provisioning.png)
+    ![aprowizowanie](./media/salesforce-provisioning-tutorial/provisioning.png)
 
-5. W obszarze **poświadczeń administratora** sekcji, skonfiguruj następujące ustawienia konfiguracji:
+5. W sekcji **poświadczenia administratora** podaj następujące ustawienia konfiguracji:
 
-    a. W **nazwa użytkownika administratora** pola tekstowego, typ, nazwa, która ma konta usługi Salesforce **Administrator systemu** profilu w witrynie Salesforce.com przypisane.
+    a. W polu tekstowym **Nazwa użytkownika administratora** wpisz nazwę konta usługi Salesforce z profilem **administratora systemu** w Salesforce.com przypisane.
 
-    b. W **hasło administratora** pole tekstowe, wpisz hasło dla tego konta.
+    b. W polu tekstowym **hasło administratora** wpisz hasło dla tego konta.
 
-6. Aby bezpieczeństwa Salesforce należy uzyskać token, otwórz nową kartę i zaloguj do tego samego konta administratora usługi Salesforce. W prawym górnym rogu strony, kliknij swoją nazwę użytkownika, a następnie kliknij przycisk **ustawienia**.
+6. Aby uzyskać token zabezpieczający usługi Salesforce, Otwórz nową kartę i zaloguj się do tego samego konta administratora usługi Salesforce. W prawym górnym rogu strony kliknij swoją nazwę, a następnie kliknij pozycję **Ustawienia**.
 
-    ![Włączanie automatycznej aprowizacji użytkowników](./media/salesforce-provisioning-tutorial/sf-my-settings.png "Włączanie automatycznej aprowizacji użytkowników")
+    ![Włącz automatyczne Inicjowanie obsługi użytkowników](./media/salesforce-provisioning-tutorial/sf-my-settings.png "Włącz automatyczne Inicjowanie obsługi użytkowników")
 
-7. W okienku nawigacji po lewej stronie kliknij **Moje dane osobowe** rozwiń sekcję powiązane, a następnie kliknij przycisk **zresetować moje tokenu zabezpieczeń**.
+7. W okienku nawigacji po lewej stronie kliknij pozycję **moje dane osobowe** , aby rozwinąć sekcję powiązaną, a następnie kliknij pozycję **Zresetuj mój token zabezpieczający**.
   
-    ![Włączanie automatycznej aprowizacji użytkowników](./media/salesforce-provisioning-tutorial/sf-personal-reset.png "Włączanie automatycznej aprowizacji użytkowników")
+    ![Włącz automatyczne Inicjowanie obsługi użytkowników](./media/salesforce-provisioning-tutorial/sf-personal-reset.png "Włącz automatyczne Inicjowanie obsługi użytkowników")
 
-8. Na **zresetować tokenu zabezpieczeń** kliknij **zresetować tokenu zabezpieczeń** przycisku.
+8. Na stronie **Resetowanie tokenu zabezpieczeń** kliknij przycisk **Resetuj token zabezpieczający** .
 
-    ![Włączanie automatycznej aprowizacji użytkowników](./media/salesforce-provisioning-tutorial/sf-reset-token.png "Włączanie automatycznej aprowizacji użytkowników")
+    ![Włącz automatyczne Inicjowanie obsługi użytkowników](./media/salesforce-provisioning-tutorial/sf-reset-token.png "Włącz automatyczne Inicjowanie obsługi użytkowników")
 
-9. Sprawdź skrzynkę odbiorczą poczty e-mail skojarzony z tym kontem administratora. Wyszukaj wiadomości e-mail z usługami Salesforce.com, który zawiera nowy token.
+9. Sprawdź skrzynkę odbiorczą wiadomości e-mail skojarzoną z tym kontem administratora. Poszukaj wiadomości e-mail z Salesforce.com, która zawiera nowy token zabezpieczający.
 
-10. Skopiuj token, przejdź do okna w usłudze Azure AD i wklej go do **klucz tajny tokenu** pola.
+10. Skopiuj token, przejdź do okna usługi Azure AD i wklej go w polu **token tajny** .
 
-11. **Adres URL dzierżawy** powinny być wprowadzane w przypadku wystąpienia programu Salesforce znajduje się w chmurze dla instytucji rządowych Salesforce. W przeciwnym razie jest to opcjonalne. Wprowadź adres URL dzierżawy w formacie "https://\<your wystąpienia\>. my.salesforce.com," Zastępowanie \<your wystąpienia\> nazwą wystąpienia usługi Salesforce.
+11. Należy wprowadzić **adres URL dzierżawy** , jeśli wystąpienie usługi Salesforce znajduje się w chmurze dla instytucji rządowych usługi Salesforce. W przeciwnym razie jest to opcjonalne. Wprowadź adres URL dzierżawy przy użyciu formatu "https://\<The-instance\>. my.Salesforce.com", zastępując \<swój wystąpienie\> nazwą wystąpienia usługi Salesforce.
 
-12. W witrynie Azure portal kliknij pozycję **Testuj połączenie** aby zapewnić usłudze Azure AD można połączyć się z aplikacji Salesforce.
+12. W Azure Portal kliknij pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może nawiązać połączenie z Twoją aplikacją w usłudze Salesforce.
 
-13. W **wiadomość E-mail z powiadomieniem** wprowadź adres e-mail osoby lub grupy, który powinien otrzymywać powiadomienia o błędach aprowizacji i zaznacz poniższe pole wyboru.
+13. W polu **adres E-mail powiadomienia** wprowadź adres e-mail osoby lub grupy, które powinny otrzymywać powiadomienia o błędach aprowizacji, i zaznacz pole wyboru poniżej.
 
 14. Kliknij przycisk **Zapisz.**  
 
-15. W sekcji mapowania, wybierz **synchronizacji Azure użytkownicy usługi Active Directory do usługi Salesforce.**
+15. W sekcji mapowania wybierz pozycję **synchronizuj Azure Active Directory użytkowników w usłudze Salesforce.**
 
-16. W **mapowania atrybutów** Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD do usługi Salesforce. Należy zauważyć, że atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania kont użytkowników w usłudze Salesforce dla operacji aktualizacji. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
+16. W sekcji **mapowania atrybutów** Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD z usługą Salesforce. Należy zauważyć, że atrybuty wybrane jako pasujące właściwości są używane do dopasowywania do kont użytkowników w usłudze Salesforce dla operacji aktualizacji. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
 
-17. Aby włączyć usługi Azure AD, inicjowania obsługi usługi dla usług Salesforce, zmień **stanie aprowizacji** do **na** w sekcji Ustawienia
+17. Aby włączyć usługę Azure AD Provisioning dla usługi Salesforce, Zmień **stan aprowizacji** na **włączone** w sekcji Ustawienia.
 
 18. Kliknij przycisk **Zapisz.**
 
-Spowoduje to uruchomienie synchronizacji wstępnej użytkowników i/lub grupy przypisane do usługi Salesforce w sekcji Użytkownicy i grupy. Należy pamiętać, że synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które występują co około 40 minut, tak długo, jak usługa jest uruchomiona. Możesz użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do inicjowania obsługi dzienników aktywności, które opisują każdą akcję wykonaną przez usługę aprowizacji w aplikacji Salesforce.
+> [!NOTE]
+> Po zainicjowaniu obsługi użytkowników w aplikacji Salesforce administrator musi skonfigurować dla nich ustawienia specyficzne dla języka. Aby uzyskać więcej informacji na temat konfiguracji języka, zobacz [ten](https://help.salesforce.com/articleView?id=setting_your_language.htm&type=5) artykuł.
+
+Spowoduje to rozpoczęcie synchronizacji początkowej dla wszystkich użytkowników i/lub grup przypisanych do usługi Salesforce w sekcji Użytkownicy i grupy. Należy pamiętać, że synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które wystąpiły około 40 minut, o ile usługa jest uruchomiona. Za pomocą sekcji **szczegóły synchronizacji** można monitorować postęp i wykonywać linki do dzienników aktywności aprowizacji, które opisują wszystkie akcje wykonywane przez usługę aprowizacji w aplikacji usługi Salesforce.
 
 Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](tutorial-list.md)
+* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 * [Konfigurowanie logowania jednokrotnego](https://docs.microsoft.com/azure/active-directory/active-directory-saas-salesforce-tutorial)

@@ -6,18 +6,18 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 08/03/2019
 ms.author: dacurwin
-ms.openlocfilehash: a2711339f5e952747adeeb6217b283770cb6cc6b
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 0512facbdf5f2222aee1e9bb5d2be64e22bf1a69
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689043"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774629"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Rozwiązywanie problemów z tworzeniem kopii zapasowych baz danych SAP HANA na platformie Azure
 
-Ten artykuł zawiera informacje dotyczące rozwiązywania problemów dotyczących tworzenia kopii zapasowych baz danych SAP HANA na maszynach wirtualnych platformy Azure.
+Ten artykuł zawiera informacje dotyczące rozwiązywania problemów dotyczących tworzenia kopii zapasowych baz danych SAP HANA na maszynach wirtualnych platformy Azure. W poniższej sekcji omówiono ważne dane koncepcyjne wymagane do zdiagnozowania typowego błędu w SAP HANA kopii zapasowej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -56,6 +56,26 @@ Po wybraniu bazy danych do wykonania kopii zapasowej usługa Azure Backup konfig
 
 > [!NOTE]
 > Upewnij się, że te parametry *nie* występują na poziomie hosta. Parametry na poziomie hosta przesłonią te parametry i mogą spowodować nieoczekiwane zachowanie.
+
+## <a name="restore-checks"></a>Testy przywracania
+
+### <a name="single-container-database-sdc-restore"></a>Przywracanie bazy danych z jednym kontenerem (SDC)
+
+Weź pod uwagę dane wejściowe podczas przywracania pojedynczej bazy danych kontenerów (SDC) dla platformy HANA na inną maszynę SDC. Nazwa bazy danych powinna być połączona małymi literami z literą "SDC" w nawiasach. Wystąpienie HANA będzie wyświetlane w Wielkiej litery.
+
+Załóżmy, że utworzono kopię zapasową wystąpienia SDC HANA "H21". Na stronie elementy kopii zapasowej będzie wyświetlana nazwa elementu kopii zapasowej jako **"H21 (SDC)"** . Jeśli podjęto próbę przywrócenia tej bazy danych do innego obiektu docelowego SDC, powiedz H11, a następnie należy podać następujące dane wejściowe.
+
+![SDC przywracania danych wejściowych](media/backup-azure-sap-hana-database/hana-sdc-restore.png)
+
+Zwróć uwagę na następujące kwestie
+- Domyślnie przywrócona Nazwa bazy danych zostanie uzupełniona nazwą elementu kopii zapasowej, np., H21 (SDC)
+- Wybranie elementu docelowego jako H11 nie spowoduje automatycznej zmiany przywróconej nazwy bazy danych. **Powinien być edytowany w H11 (SDC)** . W przypadku SDC nazwa przywróconej bazy danych będzie IDENTYFIKATORem wystąpienia docelowego z małymi literami i "SDC" dołączonym w nawiasach.
+- Ponieważ SDC może mieć tylko jedną bazę danych, należy również kliknąć pole wyboru, aby umożliwić przesłonięcie istniejących danych bazy danych z użyciem danych punktu odzyskiwania.
+- W systemie Linux jest rozróżniana wielkość liter, dlatego należy zachować wielkość liter.
+
+### <a name="multiple-container-database-mdc-restore"></a>Przywracanie wielu baz danych (MDC)
+
+W przypadku wielu baz danych kontenerów dla platformy HANA Standardowa konfiguracja to SYSTEMDB + 1 lub więcej baz danych dzierżawców. Przywrócenie całego wystąpienia SAP HANA oznacza przywrócenie zarówno SYSTEMDB, jak i baz danych dzierżawcy. Najpierw przywraca SYSTEMDB, a następnie przechodzi do bazy danych dzierżawcy. Zasadniczo systemowa baza danych zastępuje informacje o systemie w wybranym miejscu docelowym. Zastępuje to również informacje dotyczące BackInt w wystąpieniu docelowym. W związku z tym po przywróceniu bazy danych systemu do wystąpienia docelowego należy ponownie uruchomić skrypt przed rejestracją. Kolejne Przywracanie bazy danych dzierżawy zakończy się powodzeniem.
 
 ## <a name="common-user-errors"></a>Typowe błędy użytkowników
 

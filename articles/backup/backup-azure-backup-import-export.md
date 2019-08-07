@@ -1,5 +1,5 @@
 ---
-title: Tworzenie kopii zapasowej w trybie offline lub początkowe rozpełnianie przy użyciu usługi Azure Import/Export Azure Backup
+title: Tworzenie kopii zapasowych w trybie offline za pomocą usługi Azure Backup Import/Export
 description: Dowiedz się, jak Azure Backup umożliwia wysyłanie danych z sieci przy użyciu usługi Azure Import/Export. W tym artykule opisano umieszczanie w trybie offline początkowych danych kopii zapasowej za pomocą usługi eksportowej platformy Azure.
 ms.reviewer: saurse
 author: dcurwin
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: dacurwin
-ms.openlocfilehash: 2c628b94879e54616f294e4c5f349f241fbbb98b
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: a59cff3b2edc4d5b94cc0a44472665c95652f868
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689473"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736671"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Przepływ pracy tworzenia kopii zapasowych w trybie offline w usłudze Azure Backup
 Azure Backup ma kilka wbudowanych wydajności, które oszczędzają koszty związane z siecią i magazynem podczas wstępnej pełnej kopii zapasowej danych na platformie Azure. Wstępne pełne kopie zapasowe zwykle przesyłają duże ilości danych i wymagają większej przepustowości sieci w porównaniu z kolejnymi kopiami zapasowymi, które przesyłają tylko różnice/przyrosty. W procesie umieszczania w trybie offline, Azure Backup mogą używać dysków do przekazywania danych kopii zapasowej w trybie offline do platformy Azure.
@@ -197,6 +197,6 @@ W czasie następnej zaplanowanej kopii zapasowej Azure Backup wykonuje przyrosto
 ### <a name="cleaning-up-resources"></a>Czyszczenie zasobów
 Po zakończeniu początkowej kopii zapasowej można bezpiecznie usunąć dane zaimportowane do kontenera usługi Azure Storage i dane kopii zapasowej w lokalizacji tymczasowej.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Aby uzyskać odpowiedzi na pytania dotyczące przepływu pracy importowania/eksportowania platformy Azure, zapoznaj się z tematem [transfer danych do magazynu obiektów BLOB za pomocą usługi Microsoft Azure Import/Export](../storage/common/storage-import-export-service.md).
 * Zapoznaj się z sekcją kopii zapasowej offline Azure Backup [często zadawane](backup-azure-backup-faq.md) pytania dotyczące pytań dotyczących przepływu pracy.

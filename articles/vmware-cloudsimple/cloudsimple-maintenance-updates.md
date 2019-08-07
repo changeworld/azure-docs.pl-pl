@@ -1,93 +1,93 @@
 ---
-title: Rozwiązanie programu VMware na platformie Azure przez CloudSimple - CloudSimple konserwacji i aktualizacji
-description: W tym artykule opisano proces usługi CloudSimple zaplanowanej konserwacji i aktualizacji
+title: Rozwiązanie VMware firmy Azure przez CloudSimple — CloudSimple konserwacja i aktualizacje
+description: Opisuje proces usługi CloudSimple na potrzeby zaplanowanej konserwacji i aktualizacji
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/30/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4dde358f10e9ac5054297ff68a0971404c0dc135
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5d6eeecbecc89995c25e687cc6808ed3b0c5dc5c
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65160248"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816221"
 ---
-# <a name="cloudsimple-maintenance-and-updates"></a>CloudSimple konserwacji i aktualizacji
+# <a name="cloudsimple-maintenance-and-updates"></a>CloudSimple konserwacja i aktualizacje
 
-W środowisku chmury prywatnej jest przeznaczona do ma żadnego pojedynczego punktu awarii:
+Środowisko chmury prywatnej zostało zaprojektowane tak, aby nie zawierało single point of failure:
 
-* ESXi klastry są skonfigurowane z wysoką dostępnością vSphere. Klastry mają rozmiar występuje co najmniej jeden węzeł wolnym pod kątem odporności.
-* Magazyn nadmiarowy podstawowy jest zapewniana przez sieć vSAN, która wymaga co najmniej trzy węzły w celu zapewnienia ochrony przed awarią jednego. Aby zapewnić odporność wyższe w przypadku większych klastrów można skonfigurować sieci vSAN.
-* vCenter, PSC i NSX Menedżera maszyn wirtualnych są skonfigurowane za pomocą macierzy RAID 10 magazynu zasad w celu ochrony przed awariami magazynu. Maszyny wirtualne są chronione przed awariami węzła i sieci przez vSphere wysokiej dostępności.
-* Hosty ESXi mają wentylatory nadmiarowe i kart sieciowych.
-* Przełączniki TOR i grzbietu są konfigurowane w parze wysokiej dostępności, aby zapewnić odporność.
+* Klastry ESXi są skonfigurowane z wysoką dostępnością vSphere. Rozmiary klastrów mają co najmniej jeden węzeł zapasowy na potrzeby odporności.
+* Nadmiarowy magazyn podstawowy jest dostarczany przez sieci vSAN, który wymaga co najmniej trzech węzłów w celu zapewnienia ochrony przed pojedynczym awarią. Sieci vSAN można skonfigurować w celu zapewnienia większej odporności dla większych klastrów.
+* Maszyny wirtualne vCenter, PSC i NSX Manager są skonfigurowane za pomocą zasad magazynu RAID-10 w celu ochrony przed awariami magazynu. Maszyny wirtualne są chronione przed awariami węzłów/sieci przez vSphere HA.
+* Hosty ESXi mają nadmiarowe wentylatory i karty sieciowe.
+* Przełączniki TOR i spin są skonfigurowane w parach HA w celu zapewnienia odporności.
 
-CloudSimple stale monitoruje następujące maszyny wirtualne dotyczące czasu dostępności i dostępności i udostępnia umów SLA dotyczących dostępności:
+CloudSimple stale monitoruje następujące maszyny wirtualne pod kątem czasu i dostępności, a także zapewnia dostępność umowy SLA:
 
 * Hosty ESXi
 * vCenter
 * PSC
-* Menedżer NSX
+* NSX Manager
 
-CloudSimple również monitoruje stale następujące błędy:
+CloudSimple również stale monitoruje następujące kwestie dotyczące niepowodzeń:
 
 * Dyski twarde
-* Portów fizycznej karty Sieciowej
+* Fizyczne porty kart sieciowych
 * Serwery
-* Fanów
-* Zasilania
+* Wachlarz
+* Awansowan
 * Przełączniki
-* Porty przełącznika
+* Przełącz porty
 
-W przypadku niepowodzenia dysku lub węzła nowego węzła jest automatycznie dodawany do zainfekowanego klaster VMware, aby natychmiast przywrócić go do kondycji.
+Jeśli dysk lub węzeł ulegnie awarii, nowy węzeł zostanie automatycznie dodany do klastra programu VMware, którego dotyczy usterka, w celu natychmiastowego przywrócenia kondycji.
 
-CloudSimple tworzy kopie zapasowe, przechowuje i aktualizuje te elementy programu VMware w chmurach prywatnych:
+CloudSimple wykonuje kopię zapasową, utrzymuje i aktualizuje te elementy VMware w chmurach prywatnych:
 
 * ESXi
-* vCenter usługi platformy
+* Usługi platformy vCenter
 * Kontroler
-* vSAN
+* Sieci vSAN
 * NSX
 
 ## <a name="back-up-and-restore"></a>Tworzenie kopii zapasowej i przywracanie
 
-Kopia zapasowa CloudSimple zawiera:
+CloudSimple Backup obejmuje:
 
-* Przyrostowych kopii zapasowych w nocy vCenter, PSC i DVS reguły.
-* Użycie programu vCenter natywnych interfejsów API, aby utworzyć kopię zapasową składniki w warstwie aplikacji.
-* Automatyczne kopie zapasowe przed przystąpieniem do wszelkich aktualizacji lub uaktualnienia oprogramowania VMware do zarządzania.
-* Szyfrowanie danych w źródle, przez program vCenter, zanim transferu danych za pośrednictwem szyfrowanego kanału TLS1.2 na platformie Azure. Dane są przechowywane w obiektu blob platformy Azure, w których są replikowane między regionami.
+* Nocne przyrostowe kopie zapasowe reguł vCenter, PSC i DVS.
+* Używanie natywnych interfejsów API programu vCenter do tworzenia kopii zapasowych składników w warstwie aplikacji.
+* Automatyczna kopia zapasowa przed aktualizacją lub uaktualnieniem oprogramowania do zarządzania VMware.
+* Szyfrowanie danych w źródle przez program vCenter przed transferem danych przez szyfrowany kanał TLS 1.2 do platformy Azure. Dane są przechowywane w obiekcie blob platformy Azure, w którym są replikowane między regionami.
 
-Możesz poprosić przywracania, otwierając [żądania pomocy technicznej](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Możesz zażądać przywrócenia, otwierając [support Request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="maintenance"></a>Konserwacja
 
 CloudSimple wykonuje kilka typów planowanej konserwacji.
 
-### <a name="backendinternal-maintenance"></a>Wewnętrznej bazy danych/wewnętrznej konserwacji
+### <a name="backendinternal-maintenance"></a>Zaplecze/konserwacja wewnętrzna
 
-Ta konserwacja zwykle obejmuje ponownej konfiguracji fizycznych zasobów, a następnie instalowania poprawek oprogramowania. Nie wpływa na normalne zużycie zasobów są obsługiwane. Za pomocą nadmiarowych zamierza każdy stojak fizycznych kart sieciowych nie ma wpływu na ruch sieciowy normalnego i operacji w chmurze prywatnej. Wpływ na wydajność może się okazać tylko wtedy, gdy Twoja organizacja spodziewa się korzystać z pełnej nadmiarowe przepustowości przedział czasu obsługi.
+Ta konserwacja zazwyczaj polega na ponownym konfigurowaniu zasobów fizycznych lub instalowaniu poprawek oprogramowania. Nie ma to wpływu na normalne użycie zasobów, które są w trakcie obsługi. W przypadku nadmiarowych kart sieciowych w każdym stojaku fizycznym nie ma to wpływu na normalny ruch sieciowy i operacje chmury prywatnej. Możesz zauważyć, że wpływ na wydajność jest możliwy tylko wtedy, gdy organizacja oczekuje, że w czasie konserwacji ma być używana pełna nadmiarowa przepustowość.
 
-### <a name="cloudsimple-portal-maintenance"></a>CloudSimple obsługi portalu
+### <a name="cloudsimple-portal-maintenance"></a>Obsługa portalu CloudSimple
 
-Przestój ograniczone usługi jest wymagany po zaktualizowaniu CloudSimple płaszczyznę kontroli ani infrastruktury. Obecnie konserwacje może być tak często, jako jeden raz na miesiąc. Częstotliwość oczekuje się, aby odrzucić wraz z upływem czasu. CloudSimple zapewnia powiadomienie o konserwacji portalu i utrzymuje możliwie krótki interwał. Przedział czasu obsługi portalu następujące usługi nadal działać bez żadnego wpływu na:
+Niektóre ograniczone przestojy usługi są wymagane, gdy jest aktualizowana płaszczyzna lub infrastruktura kontroli CloudSimple. Obecnie interwały konserwacji mogą być tak częste jak raz miesięcznie. Częstotliwość powinna odrzucać się w czasie. CloudSimple zapewnia powiadomienia o konserwacji portalu i utrzymuje interwał tak krótki jak to możliwe. W czasie konserwacji portalu następujące usługi kontynuują działanie bez żadnego wpływu:
 
-* Płaszczyzna zarządzania VMware i aplikacji
+* Aplikacja i płaszczyzny zarządzania VMware
 * dostęp vCenter
-* Wszystkie sieci i magazynu
-* Całego ruchu platformy Azure
+* Wszystkie sieci i magazyn
+* Cały ruch platformy Azure
 
-### <a name="vmware-infrastructure-maintenance"></a>Konserwacja infrastruktury programu VMware
+### <a name="vmware-infrastructure-maintenance"></a>Konserwacja infrastruktury VMware
 
-Czasami zachodzi konieczność wprowadzania zmian w konfiguracji infrastruktury VMware.  Obecnie interwałami może wystąpić co 1 – 2 miesiące, ale oczekiwano częstotliwość odrzucenia wraz z upływem czasu. Ten typ obsługi zwykle może odbywać się bez zakłócania normalnej korzystania z usług CloudSimple. Przedział czasu obsługi VMware następujące usługi nadal działać bez żadnego wpływu na:
+Czasami konieczne jest wprowadzenie zmian w konfiguracji infrastruktury VMware.  Obecnie te interwały mogą wystąpić co 1-2 miesięcy, ale częstotliwość powinna odrzucać się w czasie. Ten typ konserwacji można zwykle wykonać bez przerywania normalnego użycia usług CloudSimple. W czasie konserwacji programu VMware następujące usługi nadal działają bez żadnego wpływu:
 
-* Płaszczyzna zarządzania VMware i aplikacji
+* Aplikacja i płaszczyzny zarządzania VMware
 * dostęp vCenter
-* Wszystkie sieci i magazynu
-* Całego ruchu platformy Azure
+* Wszystkie sieci i magazyn
+* Cały ruch platformy Azure
 
 ## <a name="updates-and-upgrades"></a>Aktualizacje i uaktualnienia
 
@@ -95,14 +95,14 @@ CloudSimple jest odpowiedzialny za zarządzanie cyklem życia oprogramowania VMw
 
 Aktualizacje oprogramowania obejmują:
 
-* **Poprawki**. Poprawki zabezpieczeń lub poprawki wydane firmy VMware.
-* **Aktualizacje**. Zmiana wersji pomocniczej składnika stos oprogramowania VMware.
-* **Uaktualnienia**. Zmiana wersji głównej części stosu oprogramowania VMware.
+* **Poprawki**. Poprawki zabezpieczeń lub poprawki błędów wydane przez oprogramowanie VMware.
+* **Aktualizacje**. Zmiana wersji pomocniczej składnika stosu VMware.
+* **Uaktualnienia**. Główna zmiana wersji składnika stosu VMware.
 
-CloudSimple testy poprawki krytycznych, jak staje się ona dostępna z programu VMware. Na umowie SLA CloudSimple wprowadza poprawki zabezpieczeń w środowiskach chmury prywatnej w ciągu tygodnia.
+CloudSimple testuje krytyczną poprawkę zabezpieczeń, gdy tylko staną się dostępne z programu VMware. Zgodnie z umową SLA CloudSimple wprowadza poprawki zabezpieczeń do środowisk chmury prywatnej w ciągu tygodnia.
 
-CloudSimple zapewnia konserwacji kwartalnej aktualizacji składników oprogramowania VMware. Po udostępnieniu nowej wersji głównej oprogramowanie VMware CloudSimple współpracuje z klientów do koordynowania okna obsługi odpowiednie dla uaktualnienie.
+CloudSimple dostarcza kwartalne aktualizacje dla składników oprogramowania VMware. Po udostępnieniu nowej wersji głównej oprogramowania VMware CloudSimple współpracuje z klientami w celu koordynowania odpowiedniego okna obsługi w celu uaktualnienia.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Utwórz kopię zapasową obciążenia maszyn wirtualnych przy użyciu Veeam](https://docs.azure.cloudsimple.com/backup-workloads-veeam/).
+[Tworzenie kopii zapasowych maszyn wirtualnych obciążeń przy użyciu Veeam](https://docs.azure.cloudsimple.com/backup-workloads-veeam/).

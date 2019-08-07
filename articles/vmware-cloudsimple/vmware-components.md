@@ -1,106 +1,106 @@
 ---
-title: Rozwiązanie programu VMware na platformie Azure przez CloudSimple - składników VMware chmury prywatnej
-description: W tym artykule opisano, jak VMware składniki są zainstalowane w chmurze prywatnej
+title: Rozwiązanie VMware firmy Azure według CloudSimple — składniki VMware chmury prywatnej
+description: Opisuje, jak składniki VMware są instalowane w chmurze prywatnej
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/30/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 62511118edb4f8b5061f90138bac2aa2b5d3cfe3
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 89bc9c07ae74da1a4269a505627a7626e478ef99
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165150"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812180"
 ---
-# <a name="private-cloud-vmware-components"></a>Składniki programu VMware chmury prywatnej
+# <a name="private-cloud-vmware-components"></a>Składniki VMware chmury prywatnej
 
-Chmura prywatna to izolowane stos oprogramowania VMware (hosty ESXi, vCenter, sieć vSAN i NSX) środowiska zarządzanego przez serwer vCenter w domenie zarządzania.  Usługa CloudSimple umożliwia wdrażanie VMware natywnie w infrastrukturze platformy Azure bez systemu operacyjnego w lokalizacji platformy Azure.  Chmury prywatne są zintegrowane z pozostałą częścią chmury platformy Azure.  Chmura prywatna jest wdrażana za pomocą następujących składników stos oprogramowania VMware:
+Chmura prywatna to izolowany ze stosu oprogramowania VMware (hosty ESXi, vCenter, sieci vSAN i NSX) zarządzane przez serwer vCenter w domenie zarządzania.  Usługa CloudSimple umożliwia natywne wdrażanie oprogramowania VMware na platformie Azure bez systemu operacyjnego w lokalizacjach platformy Azure.  Chmury prywatne są zintegrowane z pozostałą częścią chmury platformy Azure.  Chmura prywatna jest wdrażana z następującymi składnikami stosu VMware:
 
-* **Host VMware ESXi -** węzły dedykowane funkcji Hypervisor na platformie Azure
-* **VMware vCenter -** urządzenia w celu scentralizowanego zarządzania środowiska vSphere chmury prywatnej
-* **Sieć vSAN firmy VMware -** rozwiązania hiperkonwergentnego infrastruktury
-* **Centrum danych NSX VMware -** sieci wirtualizacji i oprogramowanie zabezpieczające  
+* **VMware ESXi —** Funkcja hypervisor w dedykowanych węzłach platformy Azure
+* **VMware vCenter —** Urządzenie do scentralizowanego zarządzania środowiskiem vSphere w chmurze prywatnej
+* **VMware sieci vSAN —** Rozwiązanie infrastruktury z technologią Hyper-zbieżność
+* **Centrum danych VMware NSX —** Oprogramowanie do wirtualizacji sieci i zabezpieczeń  
 
-## <a name="vmware-component-versions"></a>Wersje składników oprogramowania VMware
+## <a name="vmware-component-versions"></a>Wersje składników VMware
 
-Stos oprogramowania VMware Chmura prywatna jest wdrażana przy użyciu następujących wersji oprogramowania.
+Stos VMware chmury prywatnej jest wdrażany z użyciem następującej wersji oprogramowania.
 
-| Składnik | Version | Wersji licencjonowanej |
+| Składnik | Version | Licencjonowana wersja |
 |-----------|---------|------------------|
-| ESXi | 6.7U1 | Enterprise Plus |
-| vCenter | 6.7U1 | vCenter Standard |
-| vSAN | 6.7 | Enterprise |
-| NSX centrum danych | 2.3 | Zaawansowane |
+| ESXi | 6.7 U1 | Enterprise Plus |
+| vCenter | 6.7 U1 | Program vCenter Standard |
+| Sieci vSAN | 6.7 | Enterprise |
+| Centrum danych NSX | 2.3 | Zaawansowane |
 
 ## <a name="esxi"></a>ESXi
 
-Host VMware ESXi zainstalowano węzłach CloudSimple elastycznie podczas tworzenia chmury prywatnej.  ESXi zapewnia funkcji hypervisor wdrażania obciążeń maszyn wirtualnych (VM).  Węzły zawierają hiper zbieżności infrastruktury (obliczanie i magazynowanie) w chmurze prywatnej.  Węzły są częścią klastra vSphere w chmurze prywatnej.  Każdy węzeł ma cztery interfejsy sieci fizycznej połączone underlay sieci.  Dwa interfejsy sieci fizycznej są używane do tworzenia **vSphere rozproszonego przełącznika (VDS)** vCenter i dwa są używane do tworzenia **zarządzane NSX rozproszonego przełącznika wirtualnego (N VDS)** .  Interfejsy sieciowe są konfigurowane w trybie aktywny aktywny w celu zapewnienia wysokiej dostępności.
+VMware ESXi jest instalowany w węzłach CloudSimple, gdy tworzysz chmurę prywatną.  ESXi udostępnia funkcję hypervisor do wdrażania maszyn wirtualnych obciążeń.  Węzły zapewniają infrastrukturę prywatną (obliczeniową i magazynową) o zbieżności funkcji Hyper-in.  Węzły są częścią klastra vSphere w chmurze prywatnej.  Każdy węzeł ma cztery interfejsy sieci fizycznych połączone z siecią underlay.  Dwa fizyczne interfejsy sieciowe są używane do tworzenia **przełącznika rozproszonego vSphere (VDS)** w programie vCenter i dwa są używane do tworzenia **wirtualnego przełącznika rozproszonego NSX (N-VDS)** .  Interfejsy sieciowe są konfigurowane w trybie aktywny-aktywny w celu zapewnienia wysokiej dostępności.
 
-Dowiedz się więcej o VMware ESXi
+Dowiedz się więcej na VMware ESXi
 
-## <a name="vcenter-server-appliance"></a>urządzenie serwera vCenter
+## <a name="vcenter-server-appliance"></a>Server Appliance vCenter
 
-urządzenia programu vCenter server (VCSA) oferuje funkcje uwierzytelniania, zarządzania i aranżacji VMware Solution by CloudSimple. VCSA przy użyciu osadzonych platformy usługi kontrolera (PSC) jest wdrażany, podczas tworzenia chmury prywatnej.  VCSA została wdrożona w klastrze vSphere, który jest tworzony podczas wdrażania chmury prywatnej.  Każda Chmura prywatna ma swój własny VCSA.  Rozszerzanie chmury prywatnej dodaje węzły do VCSA w chmurze prywatnej.
+Program vCenter Server Appliance (VCSA) zapewnia funkcje uwierzytelniania, zarządzania i aranżacji dla rozwiązań VMware przez CloudSimple. VCSA z osadzonym kontrolerem usług platformy (PSC) jest wdrażany podczas tworzenia chmury prywatnej.  VCSA jest wdrażana w klastrze vSphere tworzonym podczas wdrażania chmury prywatnej.  Każda chmura prywatna ma własne VCSA.  Rozszerzenie chmury prywatnej dodaje węzły do VCSA w chmurze prywatnej.
 
-### <a name="vcenter-single-sign-on"></a>vCenter logowanie jednokrotne
+### <a name="vcenter-single-sign-on"></a>Logowanie jednokrotne vCenter
 
-Osadzony kontrolera usług platformy, na VCSA jest skojarzony z **vCenter logowanie jednokrotne domeny**.  Nazwa domeny jest **cloudsimple.local**.  Użytkownik domyślny **CloudOwner@cloudsimple.com** zostanie utworzony w celu uzyskania dostępu vCenter.  Można dodać usługi active directory na lokalnego/platformy Azure [źródła tożsamości dla vCenter](https://docs.azure.cloudsimple.com/set-vcenter-identity/).
+Osadzony kontroler usług platformy VCSA jest skojarzony z **domeną logowania**jednokrotnego.  Nazwa domeny to **cloudsimple. Local**.  Tworzony jest domyślny **CloudOwner@cloudsimple.com** użytkownik mający dostęp do programu vCenter.  Możesz dodać [źródła tożsamości](https://docs.azure.cloudsimple.com/set-vcenter-identity/)lokalnego/usługi Azure Active Directory dla serwera vCenter.
 
-## <a name="vsan-storage"></a>vSAN storage
+## <a name="vsan-storage"></a>Magazyn sieci vSAN
 
-Chmury prywatne są tworzone za pomocą sieć vsan, która pełni skonfigurowanej samych pamięci flash z magazynu lokalnego do klastra.  Minimalna trzy węzły w tej samej jednostki SKU są wymagane do utworzenia klastra vSphere z magazynu danych sieci vSAN.  Deduplikacja i kompresja są domyślnie włączone na magazyn danych sieci vSAN.  Dwie grupy dysków są tworzone w każdym węźle klastra vSphere. Każda grupa dysku zawiera dysk pamięci podręcznej i trzy dyski pojemności.
+Chmury prywatne są tworzone za pomocą w pełni skonfigurowanego magazynu sieci vSAN (all-flash) w klastrze.  Aby można było utworzyć klaster vSphere z magazynem danych sieci vSAN, wymagane są co najmniej trzy węzły tej samej jednostki SKU.  Deduplikacja i kompresja są domyślnie włączone w magazynie danych sieci vSAN.  Na każdym węźle klastra vSphere są tworzone dwie grupy dysków. Każda grupa dysków zawiera jeden dysk pamięci podręcznej i trzy dyski pojemności.
 
-Domyślne zasady przechowywania sieć vsan, która jest utworzona w klastrze vSphere i zastosowane do magazynu danych sieci vSAN.  Ta zasada Określa, jak zainicjowano obsługę administracyjną i w magazynie danych, aby zagwarantować wymagany poziom usług obiektów magazynu maszyny Wirtualnej.  Zasady przechowywania określają **(FTT) tolerowanych niepowodzeń** i **metoda tolerancji błędów**.  Można tworzyć nowe zasady przechowywania i zastosować je do maszyn wirtualnych. Aby zachować umowę SLA, 25% wolnego miejsca musi być utrzymywana w magazynie danych sieci vSAN.  
+Domyślne zasady magazynu sieci vSAN są tworzone w klastrze vSphere i stosowane do magazynu danych sieci vSAN.  Te zasady określają, w jaki sposób obiekty magazynu maszyn wirtualnych są obsługiwane i alokowane w magazynie danych w celu zagwarantowania wymaganego poziomu usługi.  Zasady magazynu definiują **niepowodzenia (FTT)** i **metodę**odporności na awarie.  Można utworzyć nowe zasady magazynu i zastosować je do maszyn wirtualnych. Aby zachować umowę SLA, należy utrzymywać 25% pojemności zapasowej w magazynie danych sieci vSAN.  
 
-### <a name="default-vsan-storage-policy"></a>Domyślne zasady przechowywania sieci vSAN
+### <a name="default-vsan-storage-policy"></a>Domyślne zasady magazynu sieci vSAN
 
 W poniższej tabeli przedstawiono domyślne parametry zasad magazynu sieci vSAN.
 
-| Liczba węzłów w klastrze vSphere | FTT | Metoda tolerancji błędów |
+| Liczba węzłów w klastrze vSphere | FTT | Metoda odporności na awarie |
 |------------------------------------|-----|--------------------------|
-| 3 i 4 węzłami | 1 | RAID 1 (dublowanie) — tworzy kopie 2 |
-| węzły 5-16 | 2 | RAID 1 (dublowanie) — tworzy 3 kopie |
+| 3 i 4 węzły | 1 | RAID 1 (dublowanie) — tworzy 2 kopie |
+| od 5 do 16 węzłów | 2 | RAID 1 (dublowanie) — tworzy 3 kopie |
 
-## <a name="nsx-data-center"></a>NSX centrum danych
+## <a name="nsx-data-center"></a>Centrum danych NSX
 
-Centrum danych NSX zapewnia wirtualizację sieci, micro segmentacji i funkcje zabezpieczeń sieci w chmurze prywatnej.  Można skonfigurować wszystkich usług obsługiwanych przez usługę NSX centrum danych w chmurze prywatnej przy użyciu NSX.  Podczas tworzenia chmury prywatnej, następujące składniki NSX są zainstalowane i skonfigurowane.
+NSX Data Center zapewnia wirtualizację sieci, mikrosegmenty i możliwości zabezpieczeń sieci w chmurze prywatnej.  Wszystkie usługi obsługiwane przez usługę NSX Data Center można skonfigurować w chmurze prywatnej za pomocą usługi NSX.  Podczas tworzenia chmury prywatnej są instalowane i konfigurowane następujące składniki NSX.
 
-* Menedżer NSXT
-* Transport Zones
-* Host i profilu pasma krawędzi
-* Przełącznik logiczny dla transportu, Ext1 i Ext2
-* Puli adresów IP dla węzła transportu ESXi
-* Puli adresów IP dla węzła transportu krawędzi
+* NSXT Manager
+* Strefy transportu
+* Profil pasma hosta i granicy
+* Przełącznik logiczny dla transportu brzegowego, EXT1 i EXT2
+* Pula adresów IP dla węzła transportu ESXi
+* Pula adresów IP dla węzła transportu brzegowego
 * Węzły brzegowe
-* Reguły konfiguracji zapobiegającej koligacji usługi rejestracji urządzeń dla kontrolera i maszyny wirtualne usługi Edge
+* DRS regułę antykoligacji dla kontrolerów i maszyn wirtualnych z systemem Edge
 * Router warstwy 0
-* Włącz protokół BGP w warstwie Tier0 routera
+* Włącz protokół BGP na routerze tier0
 
-## <a name="vsphere-cluster"></a>klastrze vSphere
+## <a name="vsphere-cluster"></a>klaster vSphere
 
-Hosty ESXi są konfigurowane jako klaster, aby zapewnić wysoką dostępność chmury prywatnej.  Podczas tworzenia chmury prywatnej, składniki zarządzania vSphere są wdrażane w klastrze pierwszego.  Pula zasobów jest tworzony dla składniki zarządzania i wszystkie maszyny wirtualne zarządzania są wdrażane w tej puli zasobów. Nie można usunąć pierwszy klaster można zmniejszyć chmury prywatnej.  vSphere klastra zapewnia wysoką dostępność dla maszyn wirtualnych przy użyciu **vSphere HA**.  Tolerowana liczba niepowodzeń są oparte na liczbie dostępnych węzłów w klastrze.  Można użyć formuły ```Number of nodes = 2N+1``` gdzie ```N``` jest liczba tolerowana liczba niepowodzeń.
+Hosty ESXi są skonfigurowane jako klaster, aby zapewnić wysoką dostępność chmury prywatnej.  Podczas tworzenia chmury prywatnej składniki zarządzania programu vSphere są wdrażane w pierwszym klastrze.  Pula zasobów jest tworzona dla składników zarządzania, a wszystkie maszyny wirtualne zarządzania są wdrażane w tej puli zasobów. Nie można usunąć pierwszego klastra, aby zmniejszyć chmurę prywatną.  klaster vSphere zapewnia wysoką dostępność maszyn wirtualnych korzystających z **VSPHERE ha**.  Niepowodzenia do tolerowania są zależne od liczby dostępnych węzłów w klastrze.  Można użyć formuły ```Number of nodes = 2N+1``` , gdzie ```N``` jest liczbą niepowodzeń, które mają być tolerowane.
 
-### <a name="vsphere-cluster-limits"></a>limity klastrze vSphere
+### <a name="vsphere-cluster-limits"></a>limity klastrów vSphere
 
 | Resource | Limit |
 |----------|-------|
-| Minimalna liczba węzłów w celu utworzenia chmury prywatnej (pierwszy klaster vSphere) | 3 |
-| Maksymalna liczba węzłów w vSphere klastra w chmurze prywatnej | 16 |
+| Minimalna liczba węzłów do utworzenia chmury prywatnej (pierwszy klaster vSphere) | 3 |
+| Maksymalna liczba węzłów w klastrze vSphere w chmurze prywatnej | 16 |
 | Maksymalna liczba węzłów w chmurze prywatnej | 64 |
-| Maksymalna liczba vSphere klastrów w chmurze prywatnej | 21 |
-| Minimalna liczba węzłów w oprogramowaniu vSphere nowego klastra | 3 |
+| Maksymalna liczba klastrów vSphere w chmurze prywatnej | 21 |
+| Minimalna liczba węzłów w nowym klastrze vSphere | 3 |
 
-## <a name="vmware-infrastructure-maintenance"></a>Konserwacja infrastruktury programu VMware
+## <a name="vmware-infrastructure-maintenance"></a>Konserwacja infrastruktury VMware
 
-Czasami zachodzi konieczność wprowadzania zmian w konfiguracji infrastruktury VMware. Obecnie interwałami może wystąpić co 1 – 2 miesiące, ale oczekiwano częstotliwość odrzucenia wraz z upływem czasu. Ten typ obsługi zwykle może odbywać się bez zakłócania normalnej korzystania z usług CloudSimple. Przedział czasu obsługi VMware następujące usługi nadal działać bez żadnego wpływu na:
+Czasami konieczne jest wprowadzenie zmian w konfiguracji infrastruktury VMware. Obecnie te interwały mogą wystąpić co 1-2 miesięcy, ale częstotliwość powinna odrzucać się w czasie. Ten typ konserwacji można zwykle wykonać bez przerywania normalnego użycia usług CloudSimple. W czasie konserwacji programu VMware następujące usługi nadal działają bez żadnego wpływu:
 
-* Płaszczyzna zarządzania VMware i aplikacji
+* Aplikacja i płaszczyzny zarządzania VMware
 * dostęp vCenter
-* Wszystkie sieci i magazynu
-* Całego ruchu platformy Azure
+* Wszystkie sieci i magazyn
+* Cały ruch platformy Azure
 
 ## <a name="updates-and-upgrades"></a>Aktualizacje i uaktualnienia
 
@@ -108,14 +108,14 @@ CloudSimple jest odpowiedzialny za zarządzanie cyklem życia oprogramowania VMw
 
 Aktualizacje oprogramowania obejmują:
 
-* **Poprawki**. Poprawki zabezpieczeń lub poprawki wydane firmy VMware.
-* **Aktualizacje**. Zmiana wersji pomocniczej składnika stos oprogramowania VMware.
-* **Uaktualnienia**. Zmiana wersji głównej części stosu oprogramowania VMware.
+* **Poprawki**. Poprawki zabezpieczeń lub poprawki błędów wydane przez oprogramowanie VMware.
+* **Aktualizacje**. Zmiana wersji pomocniczej składnika stosu VMware.
+* **Uaktualnienia**. Główna zmiana wersji składnika stosu VMware.
 
-CloudSimple testy poprawki krytycznych, jak staje się ona dostępna z programu VMware. Na umowie SLA CloudSimple wprowadza poprawki zabezpieczeń w środowiskach chmury prywatnej w ciągu tygodnia.
+CloudSimple testuje krytyczną poprawkę zabezpieczeń, gdy tylko staną się dostępne z programu VMware. Zgodnie z umową SLA CloudSimple wprowadza poprawki zabezpieczeń do środowisk chmury prywatnej w ciągu tygodnia.
 
-CloudSimple zapewnia konserwacji kwartalnej aktualizacji składników oprogramowania VMware. Po udostępnieniu nowej wersji głównej oprogramowanie VMware CloudSimple współpracuje z klientów do koordynowania okna obsługi odpowiednie dla uaktualnienie.  
+CloudSimple dostarcza kwartalne aktualizacje dla składników oprogramowania VMware. Po udostępnieniu nowej wersji głównej oprogramowania VMware CloudSimple współpracuje z klientami w celu koordynowania odpowiedniego okna obsługi w celu uaktualnienia.  
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [CloudSimple konserwacji i aktualizacji](cloudsimple-maintenance-updates.md)
+* [CloudSimple konserwacja i aktualizacje](cloudsimple-maintenance-updates.md)

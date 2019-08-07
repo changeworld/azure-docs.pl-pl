@@ -7,14 +7,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: dacurwin
-ms.openlocfilehash: 44bf85eafe3f5cfa801b6c845a51e3dcd5e1262a
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 3165183d4a5e0dcfecee62b128ee8cfa9d94209b
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466869"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736719"
 ---
-# <a name="azure-backup-architecture"></a>Architektura Azure Backup
+# <a name="azure-backup-architecture-and-components"></a>Azure Backup architektura i składniki
 
 Za pomocą [usługi Azure Backup](backup-overview.md) można tworzyć kopie zapasowe danych na platformie Microsoft Azure w chmurze. Ten artykuł zawiera podsumowanie architektury, składników i procesów Azure Backup. 
 
@@ -98,7 +98,7 @@ Poniższa tabela zawiera podsumowanie obsługiwanych funkcji dla różnych typó
 
 **Funkcja** | **Lokalne maszyny z systemem Windows Server (bezpośrednie)** | **Maszyny wirtualne platformy Azure** | **Maszyny lub aplikacje z programem DPM/serwera usługi MAB**
 --- | --- | --- | ---
-Tworzenie kopii zapasowej w magazynie | ![Tak][green] | ![Yes][green] | ![Yes][green] 
+Tworzenie kopii zapasowej w magazynie | ![Tak][green] | ![Yes][green] | ![Tak][green] 
 Utwórz kopię zapasową na dysku programu DPM/serwera usługi MAB, a następnie na platformie Azure | | | ![Tak][green] 
 Kompresuj dane wysyłane do kopii zapasowej | ![Tak][green] | Podczas przesyłania danych nie jest używana kompresja. Magazyn jest nieco nieznacznie napompowany, ale przywracanie jest szybsze.  | ![Tak][green] 
 Uruchom przyrostową kopię zapasową |![Tak][green] |![Yes][green] |![Tak][green] 
@@ -197,7 +197,7 @@ W przypadku przywracania maszyn wirtualnych z dyskami zarządzanymi można przyw
 - W trakcie procesu przywracania platforma Azure obsługuje dyski zarządzane. Jeśli używasz opcji konta magazynu, możesz zarządzać kontem magazynu, które zostało utworzone podczas procesu przywracania.
 - Jeśli przywracasz zaszyfrowaną zarządzaną maszynę wirtualną, przed rozpoczęciem procesu przywracania upewnij się, że klucze i wpisy tajne maszyny wirtualnej znajdują się w magazynie kluczy.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Zapoznaj się z matrycą pomocy technicznej, aby [poznać obsługiwane funkcje i ograniczenia dotyczące scenariuszy tworzenia kopii zapasowych](backup-support-matrix.md).
 - Skonfiguruj kopię zapasową dla jednego z następujących scenariuszy:

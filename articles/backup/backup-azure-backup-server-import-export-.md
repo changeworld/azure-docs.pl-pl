@@ -1,6 +1,6 @@
 ---
 title: Azure Backup — kopia zapasowa offline dla programu DPM i Azure Backup Server
-description: Dowiedz się, jak Azure Backup umożliwia wysyłanie danych z sieci przy użyciu usługi Azure Import/Export. W tym artykule opisano umieszczanie w trybie offline początkowych danych kopii zapasowej za pomocą usługi eksportowej platformy Azure.
+description: Azure Backup umożliwia wysyłanie danych z sieci za pomocą usługi Azure Import/Export. W tym artykule wyjaśniono przepływ pracy kopii zapasowej offline dla programu DPM i Azure Backup Server (serwera usługi MAB).
 ms.reviewer: saurse
 author: dcurwin
 manager: carmonm
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 5/8/2018
 ms.author: dacurwin
-ms.openlocfilehash: 4bc0421f16d56d34e3f3156700a7a141d38fd63d
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 0f60fbf22541e5fdd003d0ab663b5905cd31adcd
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689394"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68737234"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>Tryb offline — przepływ pracy tworzenia kopii zapasowych dla programu DPM i Azure Backup Server
 Azure Backup ma kilka wbudowanych wydajności, które oszczędzają koszty związane z siecią i magazynem podczas wstępnej pełnej kopii zapasowej danych na platformie Azure. Wstępne pełne kopie zapasowe zwykle przesyłają duże ilości danych i wymagają większej przepustowości sieci w porównaniu z kolejnymi kopiami zapasowymi, które przesyłają tylko różnice/przyrosty. Azure Backup kompresuje początkowe kopie zapasowe. W procesie umieszczania w trybie offline, Azure Backup mogą używać dysków do przekazywania skompresowanych danych początkowej kopii zapasowej w trybie offline do platformy Azure.
@@ -24,7 +24,7 @@ Proces rozsadzenia w trybie offline Azure Backup jest ściśle zintegrowany z [u
 > Proces tworzenia kopii zapasowych w trybie offline dla agenta Microsoft Azure Recovery Services (MARS) różni się od programu System Center DPM i Azure Backup Server. Aby uzyskać informacje na temat korzystania z kopii zapasowej offline z agentem MARS, zobacz [ten artykuł](backup-azure-backup-import-export.md). Kopia zapasowa offline nie jest obsługiwana dla kopii zapasowych stanu systemu wykonywanych przy użyciu agenta Azure Backup.
 >
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Korzystając z możliwości wypełniania w trybie offline Azure Backup i usługi Azure Import/Export, można łatwo przekazać dane w trybie offline na platformę Azure przy użyciu dysków. Proces tworzenia kopii zapasowej w trybie offline obejmuje następujące kroki:
 
 > [!div class="checklist"]
@@ -206,6 +206,6 @@ Po zakończeniu zadania importowania dane początkowej kopii zapasowej są dost�
 
 Podczas kolejnej zaplanowanej kopii zapasowej Program Azure Backup wykonuje przyrostową kopię zapasową za pomocą początkowej kopii w celu utworzenia.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Aby uzyskać odpowiedzi na pytania dotyczące przepływu pracy importowania/eksportowania platformy Azure, zapoznaj się z tematem [transfer danych do magazynu obiektów BLOB za pomocą usługi Microsoft Azure Import/Export](../storage/common/storage-import-export-service.md).
 * Zapoznaj się z sekcją kopii zapasowej offline Azure Backup [często zadawane](backup-azure-backup-faq.md) pytania dotyczące pytań dotyczących przepływu pracy.

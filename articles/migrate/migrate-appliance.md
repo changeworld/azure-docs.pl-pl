@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: raynew
-ms.openlocfilehash: 6537bfe5df8de298593428fb21448181ad8075fc
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: c31a9fde50de8190cdd7bc19600344a8e58cf60b
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663459"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827323"
 ---
 # <a name="azure-migrate-appliance"></a>Urządzenie usługi Azure Migrate
 
@@ -42,7 +42,7 @@ Urządzenie ma zainstalowanych tych agentów.
 
 **Agent** | **Szczegóły**
 --- | ---
-Agent odnajdywania | Zbiera dane konfiguracyjne z lokalnych maszyn wirtualnych.
+Agent odnajdywania | Zbiera dane konfiguracyjne lokalnych maszyn wirtualnych
 Agent oceny | Profiluje środowisko lokalne w celu zbierania danych wydajności maszyn wirtualnych.
 Adapter migracji | Organizuje replikację maszyny wirtualnej i koordynuje komunikację między maszynami wirtualnymi i platformą Azure.
 Brama migracji | Wysyła zreplikowane dane maszyn wirtualnych do platformy Azure.
@@ -200,8 +200,8 @@ Urządzenie zostanie uaktualnione w miarę aktualizowania Azure Migrate agentów
 
 - Dzieje się tak automatycznie, ponieważ automatyczna aktualizacja jest domyślnie włączona na urządzeniu.
 - Można zmienić to ustawienie domyślne, aby ręcznie zaktualizować agentów.
-- Aby wyłączyć aktualizacje automatyczne, Ustaw automatyczne aktualizowanie urządzenia klucza rejestru w HKLM\SOFTWAREMicrosoft\Azure.
-
+- Aby wyłączyć automatyczne aktualizowanie, przejdź do edytora rejestru > HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance i Ustaw klucz rejestru "AutoUpdate" na 0 (DWORD).
+ 
 ### <a name="set-agent-updates-to-manual"></a>Ustaw aktualizacje agenta na ręczne
 
 W przypadku aktualizacji ręcznych upewnij się, że wszystkie agenci na urządzeniu zostały zaktualizowane w tym samym czasie, przy użyciu przycisku **Aktualizuj** dla każdego nieaktualnego agenta na urządzeniu. Możesz w dowolnym momencie zmienić ustawienie aktualizacji na aktualizacje automatyczne.

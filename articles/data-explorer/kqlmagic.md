@@ -1,58 +1,58 @@
 ---
-title: Użyj notesu programu Jupyter do analizy danych w Eksploratorze danych platformy Azure
-description: W tym temacie pokazano, jak analizować dane w Eksploratorze danych platformy Azure za pomocą notesu Jupyter i rozszerzenie Kqlmagic.
+title: Używanie Jupyter Notebook do analizowania danych na platformie Azure Eksplorator danych
+description: W tym temacie pokazano, jak analizować dane na platformie Azure Eksplorator danych przy użyciu Jupyter Notebook i rozszerzenia Kqlmagic.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: a894052e54bd1ca9f8316342f714074c92753448
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 312e39ff1b699bb3c7f2baea3c66cbf8999ee44b
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806341"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68814516"
 ---
-# <a name="use-a-jupyter-notebook-and-kqlmagic-extension-to-analyze-data-in-azure-data-explorer"></a>Użyj rozszerzenia notesu Jupyter i Kqlmagic do analizowania danych w Eksploratorze danych platformy Azure
+# <a name="use-a-jupyter-notebook-and-kqlmagic-extension-to-analyze-data-in-azure-data-explorer"></a>Analizowanie danych na platformie Eksplorator danych Azure za pomocą rozszerzenia Jupyter Notebook i Kqlmagic
 
-Notes Jupyter to aplikacja sieci web typu open source, która pozwala tworzyć i udostępniać dokumenty zawierające kodu na żywo, równania, wizualizacje i tekst narracji. Użycie obejmuje czyszczenie danych i transformacji, symulacja wartości liczbowych, modelowanie statystyczne, wizualizacji danych i uczenia maszynowego.
-[Notes Jupyter](https://jupyter.org/) obsługuje magic funkcje, które rozszerzają możliwości jądra dzięki obsłudze dodatkowych poleceń. Magiczna KQL to polecenie, które rozszerza możliwości języka Python jądra w notesie Jupyter, aby można było uruchomić zapytań w języku Kusto natywnie. Umożliwia łatwe łączenie języka Python i Kusto język zapytań w celu wykonywania zapytań i wizualizuj dane przy użyciu rozbudowane biblioteki Plot.ly zintegrowana z usługą `render` poleceń. Źródła danych na potrzeby uruchamiania zapytań są obsługiwane. Te źródła danych obejmują Eksploratora danych usługi Azure, usługa eksploracji danych szybka i wysoce Skalowalna do dziennika i danych telemetrycznych, a także dzienniki usługi Azure Monitor i Application Insights. Magiczna KQL współpracuje również z rozszerzeniem notesów usługi Azure, laboratorium Jupyter i programu Visual Studio Code Jupyter.
+Jupyter Notebook to aplikacja sieci Web Open Source, która umożliwia tworzenie i udostępnianie dokumentów zawierających kod na żywo, równania, wizualizacje i tekst opisowy. Użycie obejmuje czyszczenie i Przekształcanie danych, symulację liczbową, modelowanie statystyczne, wizualizację danych i uczenie maszynowe.
+[Jupyter Notebook](https://jupyter.org/) obsługuje funkcje Magic, które zwiększają możliwości jądra dzięki obsłudze dodatkowych poleceń. KQL Magic to polecenie, które rozszerza możliwości jądra języka Python w Jupyter Notebook, aby można było uruchamiać zapytania w języku Kusto w sposób natywny. Możesz łatwo łączyć język zapytań Python i Kusto, aby wykonywać zapytania i wizualizować dane przy użyciu zaawansowanej biblioteki `render` Plot.ly zintegrowanej z poleceniami. Źródła danych do uruchamiania zapytań są obsługiwane. Te źródła danych obejmują platformę Azure Eksplorator danych, szybką i wysoce skalowalną usługę eksploracji danych na potrzeby danych dzienników i telemetrii, a także Azure Monitor dzienników i Application Insights. KQL Magic działa również z rozszerzeniem Azure Notebooks, Jupyter Lab i Visual Studio Code Jupyter.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Konto e-mail organizacji, które jest członkiem programu Azure Active Directory (AAD).
-- Notes Jupyter zainstalowane na komputerze lokalnym lub korzystanie z notesów usługi Azure i klonowanie przykładu [notesu platformy Azure](https://kustomagicsamples-manojraheja.notebooks.azure.com/j/notebooks/Getting%20Started%20with%20kqlmagic%20on%20Azure%20Data%20Explorer.ipynb)
+- Organizacyjne konto e-mail, które jest członkiem Azure Active Directory (AAD).
+- Jupyter Notebook zainstalowany na komputerze lokalnym lub użyj Azure Notebooks i klonowania przykładowego [notesu platformy Azure](https://kustomagicsamples-manojraheja.notebooks.azure.com/j/notebooks/Getting%20Started%20with%20kqlmagic%20on%20Azure%20Data%20Explorer.ipynb)
 
-## <a name="install-kql-magic-library"></a>Zainstaluj bibliotekę magic KQL
+## <a name="install-kql-magic-library"></a>Zainstaluj KQL Magic Library
 
-1. Zainstaluj KQL magic:
+1. Zainstaluj KQL Magic:
 
     ```python
     !pip install Kqlmagic --no-cache-dir  --upgrade
     ```
     > [!NOTE]
-    > Ten krok za pomocą notesów usługi Azure, nie jest wymagane.
+    > W przypadku korzystania z Azure Notebooks ten krok nie jest wymagany.
 
-1. Magiczna KQL obciążenia:
+1. Załaduj KQL:
 
     ```python
-    reload_ext Kqlmagic
+    %reload_ext Kqlmagic
     ```
 
-## <a name="connect-to-the-azure-data-explorer-help-cluster"></a>Nawiąż połączenie z klastrem usługi Azure Data pomocy
+## <a name="connect-to-the-azure-data-explorer-help-cluster"></a>Nawiązywanie połączenia z klastrem pomocy usługi Azure Eksplorator danych
 
-Użyj następującego polecenia, aby nawiązać połączenie *przykłady* bazy danych w serwisie *pomocy* klastra. Dla użytkowników innych niż Microsoft AAD, zastąp nazwę dzierżawy `Microsoft.com` z dzierżawą usługi AAD.
+Użyj poniższego polecenia, aby nawiązać połączenie z bazą danych *przykładów* hostowaną w klastrze *pomocy* . W przypadku użytkowników usługi AAD innych niż Microsoft należy zastąpić nazwę `Microsoft.com` dzierżawy dzierżawie usługi AAD.
 
 ```python
 %kql AzureDataExplorer://tenant="Microsoft.com";code;cluster='help';database='Samples'
 ```
 
-## <a name="query-and-visualize"></a>Zapytania i wizualizacji
+## <a name="query-and-visualize"></a>Zapytanie i wizualizacja
 
-Kwerendy danych przy użyciu [renderowania operator](/azure/kusto/query/renderoperator) i wizualizuj dane przy użyciu biblioteki ploy.ly. Tego zapytania i wizualizacje udostępnia zintegrowane rozwiązanie używa natywnego KQL. Kqlmagic obsługuje większość wykresy z wyjątkiem `timepivot`, `pivotchart`, i `ladderchart`. Renderowanie jest obsługiwane w przypadku wszystkich atrybutów, z wyjątkiem `kind`, `ysplit`, i `accumulate`. 
+Wykonywanie zapytań dotyczących danych przy użyciu [operatora renderowania](/azure/kusto/query/renderoperator) i wizualizacji danych przy użyciu biblioteki Ploy.ly. To zapytanie i wizualizacja udostępnia zintegrowane środowisko, które korzysta z natywnej KQL. Kqlmagic obsługuje większość wykresów z `timepivot`wyjątkiem `pivotchart`,, `ladderchart`i. Renderowanie jest obsługiwane ze wszystkimi atrybutami `ysplit`z wyjątkiem `accumulate` `kind`,, i. 
 
-### <a name="query-and-render-piechart"></a>Diagram kołowy zapytań i renderowania
+### <a name="query-and-render-piechart"></a>Zapytania i renderowanie piechart
 
 ```python
 %%kql
@@ -63,7 +63,7 @@ StormEvents
 | render piechart title="My Pie Chart by State"
 ```
 
-### <a name="query-and-render-timechart"></a>Wykres czasu kwerendy i renderowania
+### <a name="query-and-render-timechart"></a>Zapytania i renderowanie timechart
 
 ```python
 %%kql
@@ -73,19 +73,19 @@ StormEvents
 ```
 
 > [!NOTE]
-> Te wykresy są interaktywne. Wybierz zakres czasu umożliwiającą powiększenie fragmentu w określonym czasie.
+> Te wykresy są interaktywne. Wybierz zakres czasu, aby powiększyć do określonego czasu.
 
-### <a name="customize-the-chart-colors"></a>Dostosowywanie kolorów wykresu
+### <a name="customize-the-chart-colors"></a>Dostosuj kolory wykresu
 
-Jeśli nie potrzebujesz domyślnej palety kolorów, dostosować wykresów za pomocą opcji palety. Dostępne palety można znaleźć tutaj: [Wybierz paletę kolorów, wykres wyników zapytania magic KQL](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FColorYourCharts.ipynb)
+Jeśli nie podoba Ci się domyślna paleta kolorów, Dostosuj wykresy przy użyciu opcji palety. Dostępne palety można znaleźć tutaj: [Wybierz paletę kolorów dla wynikowego wykresu zapytania KQL Magic](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FColorYourCharts.ipynb)
 
-1. Aby uzyskać listę palety:
+1. Aby uzyskać listę palet:
 
     ```python
     %kql --palettes -popup_window
     ```
 
-1. Wybierz `cool` palety kolorów i ponownie renderowania kwerendy:
+1. Wybierz paletę `cool` kolorów i ponownie Renderuj zapytanie:
 
     ```python
     %%kql -palette_name "cool"
@@ -96,13 +96,13 @@ Jeśli nie potrzebujesz domyślnej palety kolorów, dostosować wykresów za pom
     | render piechart title="My Pie Chart by State"
     ```
 
-## <a name="parameterize-a-query-with-python"></a>Sparametryzuj zapytania za pomocą języka Python
+## <a name="parameterize-a-query-with-python"></a>Sparametryzuj zapytania przy użyciu języka Python
 
-Magiczna KQL umożliwia proste wymiany między język zapytania Kusto i Python. Aby dowiedzieć się więcej: [Sparametryzuj zapytania magic KQL za pomocą języka Python](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb)
+KQL Magic umożliwia prostą wymianę między językiem zapytań Kusto i Python. Aby dowiedzieć się więcej: [Sparametryzuj swoje zapytanie Magic KQL w języku Python](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb)
 
-### <a name="use-a-python-variable-in-your-kql-query"></a>Użyj zmiennej języka Python w zapytaniu KQL
+### <a name="use-a-python-variable-in-your-kql-query"></a>Używanie zmiennej języka Python w zapytaniu KQL
 
-Wartość zmiennej języka Python w zapytaniu służy do filtrowania danych:
+Możesz użyć wartości zmiennej języka Python w zapytaniu, aby przefiltrować dane:
 
 ```python
 statefilter = ["TEXAS", "KANSAS"]
@@ -117,9 +117,9 @@ StormEvents
 | render timechart title = "Trend"
 ```
 
-### <a name="convert-query-results-to-pandas-dataframe"></a>Wyniki zapytania należy przekonwertować Pandas DataFrame
+### <a name="convert-query-results-to-pandas-dataframe"></a>Konwertuj wyniki zapytania na Pandas Dataframe
 
-Możesz uzyskać dostęp do wyników zapytania KQL w Pandas DataFrame. Dostęp do ostatnich wyników zapytania wykonanych przez zmienną `_kql_raw_result_` i prosty sposób konwertowania wyników na Pandas DataFrame w następujący sposób:
+Możesz uzyskać dostęp do wyników zapytania KQL w ramce Dataframe. Uzyskuj dostęp do ostatnich wykonanych wyników zapytania `_kql_raw_result_` według zmiennej i łatwo Konwertuj wyniki do Pandas Dataframe w następujący sposób:
 
 ```python
 df = _kql_raw_result_.to_dataframe()
@@ -128,9 +128,9 @@ df.head(10)
 
 ### <a name="example"></a>Przykład
 
-W wielu scenariuszach analizy warto utworzyć notesy wielokrotnego użytku, które zawierają wiele zapytań i przesłać wyniki z jednego zapytania do kolejnych zapytań. W poniższym przykładzie użyto zmiennej Python `statefilter` do filtrowania danych.
+W wielu scenariuszach analizy można utworzyć notesy wielokrotnego użytku, które zawierają wiele zapytań i podawanie wyników z jednego zapytania do kolejnych zapytań. W poniższym przykładzie przedstawiono użycie zmiennej `statefilter` języka Python do filtrowania danych.
 
-1. Uruchom zapytanie, aby wyświetlić stany 10 najważniejszych maksymalnej `DamageProperty`:
+1. Uruchom zapytanie, aby wyświetlić 10 najważniejszych Stanów z maksymalną `DamageProperty`wartością:
 
     ```python
     %%kql
@@ -140,7 +140,7 @@ W wielu scenariuszach analizy warto utworzyć notesy wielokrotnego użytku, któ
     | limit 10
     ```
 
-1. Uruchom zapytanie, aby wyodrębnić Stan najwyższego i ustaw ją do zmiennej języka Python:
+1. Uruchom zapytanie, aby wyodrębnić najwyższy stan i ustawić go na zmienną języka Python:
 
     ```python
     df = _kql_raw_result_.to_dataframe()
@@ -148,7 +148,7 @@ W wielu scenariuszach analizy warto utworzyć notesy wielokrotnego użytku, któ
     statefilter
     ```
 
-1. Uruchamianie zapytania przy użyciu `let` instrukcji, a zmienna Python:
+1. Uruchom zapytanie przy użyciu `let` instrukcji i zmiennej języka Python:
 
     ```python
     %%kql
@@ -166,13 +166,13 @@ W wielu scenariuszach analizy warto utworzyć notesy wielokrotnego użytku, któ
     ```
 
 > [!TIP]
-> Aby otrzymywać informacje na temat wszystkich dostępnych konfiguracji używania `%config KQLmagic`. Rozwiązywanie problemów i przechwytywania błędów Kusto, takie jak problemy z połączeniem i niepoprawny zapytania, należy użyć `%config Kqlmagic.short_errors=False`
+> Aby uzyskać informacje o wszystkich dostępnych konfiguracjach `%config KQLmagic`, użyj programu. W celu rozwiązywania problemów i przechwytywania błędów Kusto, takich jak problemy z połączeniem i nieprawidłowe zapytania, należy użyć`%config Kqlmagic.short_errors=False`
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Uruchom polecenie Pomoc, aby zapoznać się z następujących notesów próbki, zawierające obsługiwane funkcje:
-- [Rozpoczynanie pracy z usługą KQL magic w Eksploratorze danych platformy Azure](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStart.ipynb) 
-- [Rozpoczynanie pracy z usługą KQL magic dla usługi Application Insights](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStartAI.ipynb) 
-- [Rozpoczynanie pracy z usługą magic KQL dla dzienników usługi Azure Monitor](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStartLA.ipynb) 
-- [Parametrize KQL magic zapytania za pomocą języka Python](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb) 
-- [Wybierz paletę kolorów, wykres wyników zapytania magic KQL](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FColorYourCharts.ipynb)
+Uruchom polecenie pomocy, aby poznać następujące przykładowe notesy, które zawierają wszystkie obsługiwane funkcje:
+- [Wprowadzenie do usługi KQL Magic for Azure Eksplorator danych](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStart.ipynb) 
+- [Wprowadzenie do usługi KQL Magic dla Application Insights](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStartAI.ipynb) 
+- [Wprowadzenie do KQL Magic dla dzienników Azure Monitor](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStartLA.ipynb) 
+- [Parametrize swoje zapytanie Magic KQL w języku Python](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb) 
+- [Wybierz paletę kolorów dla wynikowego wykresu zapytania KQL Magic](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FColorYourCharts.ipynb)

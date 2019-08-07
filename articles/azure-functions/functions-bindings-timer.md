@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: ef02c8120775aa119aff44ff7a06bccf2bc70a21
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: 962c28c8b081980c2715d4d78739662e86748bd1
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377332"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68814451"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Wyzwalacz czasomierza dla Azure Functions 
 
@@ -125,7 +125,7 @@ Następująca przykładowa funkcja wyzwala i wykonuje co pięć minut. Adnotacja
 ```java
 @FunctionName("keepAlive")
 public void keepAlive(
-  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 *&#47;5 * * * *") String timerInfo,
+  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 */5 * * * *") String timerInfo,
       ExecutionContext context
  ) {
      // timeInfo is a JSON string, you can deserialize it to an object using your favorite JSON library
@@ -225,7 +225,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**type** | Nie dotyczy | Musi być ustawiona na wartość "timerTrigger". Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal.|
 |**direction** | Nie dotyczy | Musi być równa "in". Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
 |**Nazwa** | Nie dotyczy | Nazwa zmiennej, która reprezentuje obiekt timer w kodzie funkcji. | 
-|**schedule**|**ScheduleExpression**|[Wyrażenie CRONUS](#cron-expressions) lub wartość [TimeSpan](#timespan) . Elementu `TimeSpan` można używać tylko w przypadku aplikacji funkcji działającej w planie App Service. Możesz umieścić wyrażenie harmonogramu w ustawieniu aplikacji i ustawić tę właściwość na nazwę ustawienia aplikacji ujętą w **%** znaki, jak w tym przykładzie: "% ScheduleAppSetting%". |
+|**schedule**|**ScheduleExpression**|[Wyrażenie CRONUS](#ncrontab-expressions) lub wartość [TimeSpan](#timespan) . Elementu `TimeSpan` można używać tylko w przypadku aplikacji funkcji działającej w planie App Service. Możesz umieścić wyrażenie harmonogramu w ustawieniu aplikacji i ustawić tę właściwość na nazwę ustawienia aplikacji ujętą w **%** znaki, jak w tym przykładzie: "% ScheduleAppSetting%". |
 |**runOnStartup**|**RunOnStartup**|Jeśli `true`, funkcja jest wywoływana po uruchomieniu środowiska uruchomieniowego. Na przykład środowisko uruchomieniowe jest uruchamiane, gdy aplikacja funkcji zostanie wznowiona po przejściu w stan bezczynności z powodu braku aktywności. gdy aplikacja funkcji zostanie ponownie uruchomiona z powodu zmiany funkcji i gdy aplikacja funkcji jest skalowana w dół. Tak więc **runOnStartup** powinna rzadko, jeśli kiedykolwiek jest `true`ustawiona na, szczególnie w środowisku produkcyjnym. |
 |**useMonitor**|**UseMonitor**|Ustaw wartość `false` lub, aby wskazać, czy harmonogram ma być monitorowany. `true` Harmonogram monitorowania utrzymuje harmonogramy, aby pomóc w zapewnieniu, że harmonogram jest prawidłowo obsługiwany nawet po ponownym uruchomieniu wystąpień aplikacji funkcji. Jeśli nie ustawiono jawnie, wartość domyślna to `true` harmonogramy, które mają interwał cyklu większy niż 1 minutę. W przypadku harmonogramów, które wyzwalają więcej niż raz na minutę `false`, wartość domyślna to.
 
@@ -253,9 +253,9 @@ Po wywołaniu funkcji wyzwalacza czasomierza obiekt Timer jest przenoszona do fu
 
 `IsPastDue` Właściwość jest`true` , gdy bieżące wywołanie funkcji jest późniejsze niż zaplanowana. Na przykład ponowne uruchomienie aplikacji funkcji może spowodować utratę wywołania.
 
-## <a name="cron-expressions"></a>Wyrażenia firmy CRONUS 
+## <a name="ncrontab-expressions"></a>Wyrażenia NCRONTAB 
 
-Azure Functions używa biblioteki [NCronTab](https://github.com/atifaziz/NCrontab) do interpretowania wyrażeń firmy cronus. Wyrażenie CRONUS zawiera sześć pól:
+Azure Functions rozpoznaje wyrażenia NCRONTAB przy użyciu biblioteki [NCronTab](https://github.com/atifaziz/NCrontab) . NCRONTAB exppression jest podobny do wyrażenia CRONUS, z tą różnicą, że zawiera dodatkowe szóste pole na początku do użycia dla dokładności czasu w sekundach:
 
 `{second} {minute} {hour} {day} {month} {day-of-week}`
 
@@ -271,9 +271,9 @@ Każde pole może mieć jeden z następujących typów wartości:
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
-### <a name="cron-examples"></a>Przykłady dla firmy CRONUS
+### <a name="ncrontab-examples"></a>Przykłady NCRONTAB
 
-Oto kilka przykładów wyrażeń firmy CRONUS, których można użyć dla wyzwalacza timer w Azure Functions.
+Poniżej przedstawiono kilka przykładów wyrażeń NCRONTAB, których można użyć dla wyzwalacza czasomierza w Azure Functions.
 
 |Przykład|Po wyzwoleniu  |
 |---------|---------|
@@ -284,25 +284,24 @@ Oto kilka przykładów wyrażeń firmy CRONUS, których można użyć dla wyzwal
 |`"0 30 9 * * *"`|Codziennie o godzinie 9:30|
 |`"0 30 9 * * 1-5"`|at 9:30 AM każdego dnia tygodnia|
 |`"0 30 9 * Jan Mon"`|o godzinie 9:30, co poniedziałek w styczniu|
->[!NOTE]   
->Przykłady wyrażeń firmy CRONUS można znaleźć w trybie online, ale wiele z nich `{second}` pomija pole. Jeśli skopiujesz z jednego z nich, Dodaj brakujące `{second}` pole. Zwykle w tym polu będzie potrzebna wartość zero, a nie gwiazdka.
 
-### <a name="cron-time-zones"></a>Strefy czasowe firmy CRONUS
+
+### <a name="ncrontab-time-zones"></a>NCRONTAB strefy czasowe
 
 Liczby w wyrażeniu firmy CRONUS odwołują się do daty i godziny, a nie przedziału czasu. Na przykład 5 w `hour` polu odnosi się do 5:00 am, nie co 5 godzin.
 
 Domyślna strefa czasowa używana z wyrażeniami firmy CRONUS jest uniwersalnym czasem koordynowanym (UTC). Aby wyrażenie firmy CRONUS było oparte na innej strefie czasowej, należy utworzyć ustawienie aplikacji dla aplikacji funkcji o `WEBSITE_TIME_ZONE`nazwie. Ustaw wartość na nazwę żądanej strefy czasowej, jak pokazano w [indeksie strefy czasowej firmy Microsoft](https://technet.microsoft.com/library/cc749073). 
 
-Na przykład *Wschodni czas standardowy* to UTC-05:00. Aby wyzwalacz czasomierza był wyzwalany codziennie o godzinie 10:00, użyj następującego wyrażenia firmy CRONUS dla strefy czasowej UTC:
+Na przykład *Wschodni czas standardowy* to UTC-05:00. Aby wyzwalacz czasomierza był wyzwalany codziennie o godzinie 10:00, należy użyć następującego wyrażenia NCRONTAB, które jest kontem dla strefy czasowej UTC:
 
-```json
-"schedule": "0 0 15 * * *"
+```
+"0 0 15 * * *"
 ``` 
 
-Lub Utwórz ustawienie aplikacji dla aplikacji funkcji o nazwie `WEBSITE_TIME_ZONE` i ustaw wartość na **Wschodni czas standardowy**.  Następnie używa następującego wyrażenia firmy CRONUS: 
+Lub Utwórz ustawienie aplikacji dla aplikacji funkcji o nazwie `WEBSITE_TIME_ZONE` i ustaw wartość na **Wschodni czas standardowy**.  Następnie używa następującego wyrażenia NCRONTAB: 
 
-```json
-"schedule": "0 0 10 * * *"
+```
+"0 0 10 * * *"
 ``` 
 
 Gdy używasz `WEBSITE_TIME_ZONE`, czas jest dostosowywany do zmian czasu w określonej strefie czasowej, na przykład czasu letniego. 

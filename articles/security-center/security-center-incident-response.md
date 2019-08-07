@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 99bfab5a5f80fc0a49c7cc6405154394391f43e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3a55de2d5f47274ea112e52ddbcc0d946db56470
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60908224"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775333"
 ---
 # <a name="using-azure-security-center-for-an-incident-response"></a>Używanie usługi Azure Security Center do reagowania na zdarzenia
 Wiele organizacji uczy się reagowania na zdarzenia zabezpieczeń dopiero wtedy, gdy zostaną celem ataku. Aby zmniejszyć koszty i straty, ważne jest dysponowanie planem reagowania na takie zdarzenia jeszcze przed wystąpieniem ataku. Usługi Azure Security Center można używać na różnych etapach reagowania na zdarzenia.
@@ -51,12 +51,12 @@ Na potrzeby tego scenariusza skoncentrujemy się na rolach następujących czło
 
 ![Cykl życia reakcji na zdarzenie](./media/security-center-incident-response/security-center-incident-response-fig2.png)
 
-Magda zajmuje się operacjami zabezpieczeń. Jej obowiązki obejmują:
+Magda zajmuje się operacjami zabezpieczeń. Ich obowiązki obejmują:
 
 * Stałe monitorowanie zagrożeń bezpieczeństwa i reagowanie na nie.
 * W razie potrzeby eskalację problemu do właściciela obciążeń chmurowych lub analityka zabezpieczeń.
 
-Szymon jest analitykiem zabezpieczeń i do jego obowiązków należą:
+Sam jest analitykiem zabezpieczeń, a ich obowiązki obejmują:
 
 * Badanie ataków.
 * Korygowanie działań na podstawie alertów.
@@ -65,17 +65,17 @@ Szymon jest analitykiem zabezpieczeń i do jego obowiązków należą:
 Jak widać, Magda i Szymon mają różne obowiązki i muszą współpracować, dzieląc się informacjami z usługi Security Center.
 
 ## <a name="recommended-solution"></a>Zalecane rozwiązanie
-Ponieważ Magda i Szymon pełnią różne role, będą korzystać z różnych obszarów usługi Security Center w celu uzyskiwania informacji ważnych dla ich codziennych obowiązków. Magda używa **Alertów zabezpieczeń** w ramach codziennego monitorowania.
+Ponieważ Magda i Szymon pełnią różne role, będą korzystać z różnych obszarów usługi Security Center w celu uzyskiwania informacji ważnych dla ich codziennych obowiązków. Jan będzie używać **alertów zabezpieczeń** w ramach codziennego monitorowania.
 
 ![Alerty zabezpieczeń](./media/security-center-incident-response/security-center-incident-response-fig3.png)
 
-Magda używa alertów zabezpieczeń na etapach wykrywania i oceniania. Po zakończeniu początkowej oceny może przekazać sprawę Szymonowi, jeśli wymaga ona dalszego zbadania. Na tym etapie Szymon korzysta z informacji pochodzących z usługi Security Center, a czasem również z innych źródeł danych, aby przejść do etapu diagnozy.
+Magda używa alertów zabezpieczeń na etapach wykrywania i oceniania. Po zakończeniu oceny wstępnej Jan może przewieść problem do Menedżera zabezpieczeń, jeśli wymagane jest dodatkowe badanie. Na tym etapie Szymon korzysta z informacji pochodzących z usługi Security Center, a czasem również z innych źródeł danych, aby przejść do etapu diagnozy.
 
 ## <a name="how-to-implement-this-solution"></a>Sposób implementacji rozwiązania
 Aby zobaczyć, jak skorzystać z usługi Azure Security Center w scenariuszu reagowania na zdarzenie, prześledzimy czynności Julii na etapie wykrywania i oceny, a następnie czynności Szymona na etapie diagnostyki.
 
 ### <a name="detect-and-assess-incident-response-stages"></a>Etapy wykrywania i oceniania w ramach reagowania na zdarzenie
-Magda zalogowała się w witrynie Azure Portal i otworzyła konsolę usługi Security Center. W ramach codziennego monitorowania zaczęła przeglądać alerty zabezpieczeń o wysokim priorytecie, wykonując następujące czynności:
+Magda zalogowała się w witrynie Azure Portal i otworzyła konsolę usługi Security Center. W ramach codziennych działań monitorowania rozpoczęły się przeglądanie alertów zabezpieczeń o wysokim priorytecie, wykonując następujące czynności:
 
 1. Kliknij kafelek **Alerty zabezpieczeń** i przejdź do bloku **Alerty zabezpieczeń**.
     ![Blok Alerty zabezpieczeń](./media/security-center-incident-response/security-center-incident-response-fig4.png)
@@ -84,12 +84,12 @@ Magda zalogowała się w witrynie Azure Portal i otworzyła konsolę usługi Sec
    > Na potrzeby tego scenariusza Magda zamierza przeprowadzić ocenę alertu dotyczącego złośliwego działania SQL, jak widać na poprzednim rysunku.
    >
    >
-2. Kliknij przycisk **złośliwe działanie SQL** alertów i przejrzyj zaatakowane zasoby w **złośliwe działanie SQL** bloku:  ![Szczegóły zdarzenia](./media/security-center-incident-response/security-center-incident-response-fig5.png)
+2. Kliknij alert **złośliwe działanie SQL** i przejrzyj zaatakowane zasoby w bloku **złośliwe działanie SQL** :  ![Szczegóły zdarzenia](./media/security-center-incident-response/security-center-incident-response-fig5.png)
 
     W tym bloku Magda może zanotować zaatakowane zasoby, liczbę ataków i czas ich wykrycia.
 3. Kliknij pozycję **Zaatakowany zasób**, aby uzyskać więcej informacji na temat ataku.
 
-Po przeczytaniu opisu Julia jest przekonana, że nie jest to fałszywy alarm, i postanawia eskalować sprawę do Szymona.
+Po przeczytaniu opisu Jan jest przekonany, że nie jest to wynik fałszywie pozytywny i że powinien eskalować ten przypadek do sam.
 
 ### <a name="diagnose-incident-response-stage"></a>Etap diagnozy w ramach reagowania na zdarzenie
 Szymon otrzymuje zgłoszenie od Magdy i zaczyna przeglądanie czynności zaradczych zasugerowanych przez usługę Security Center.
@@ -99,5 +99,5 @@ Szymon otrzymuje zgłoszenie od Magdy i zaczyna przeglądanie czynności zaradcz
 ### <a name="additional-resources"></a>Dodatkowe zasoby
 Firmy, które podczas analizy korzystają z rozwiązania do zarządzania informacjami i zdarzeniami dotyczącymi bezpieczeństwa (SIEM), mogą również [zintegrować usługę Security Center z używanym rozwiązaniem](security-center-integrating-alerts-with-log-integration.md). Dzienniki inspekcji platformy Azure i zdarzenia zabezpieczeń dotyczące maszyn wirtualnych można też zintegrować przy użyciu [narzędzia do integracji dziennika Azure](https://azure.microsoft.com/blog/introducing-hdinsight-integration-with-azure-log-analytics/). Aby zbadać atak, możesz użyć tych informacji w połączeniu z informacjami dostarczonymi przez usługę Security Center. W celu ustalenia głównej przyczyny wystąpienia zdarzenia można również użyć funkcji [analizy](https://docs.microsoft.com/azure/security-center/security-center-investigation) w usłudze Security Center.
 
-## <a name="conclusion"></a>Podsumowanie
+## <a name="conclusion"></a>Wniosek
 Stworzenie zespołu przed wystąpieniem ataku jest bardzo istotne dla organizacji i pozytywnie wpływa na sposób reagowania na zdarzenia dotyczące bezpieczeństwa. Odpowiednie narzędzia do monitorowania zasobów mogą ułatwić zespołowi podjęcie właściwych kroków w celu usunięcia skutków zdarzenia zabezpieczeń. [Funkcje wykrywania](security-center-detection-capabilities.md) usługi Security Center mogą pomóc zespołowi IT szybko reagować na zdarzenia zabezpieczeń i rozwiązywać problemy dotyczące bezpieczeństwa.

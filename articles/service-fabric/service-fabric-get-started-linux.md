@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 49e80c3fc8935064aceef8ef4e2bd3257c41e5e7
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 6916eea26f03d7b9cd0b3792fa65354619f97f74
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514196"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828506"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Przygotowywanie środowiska projektowego w systemie Linux
 > [!div class="op_single_selector"]
@@ -103,11 +103,11 @@ Aby zainstalować zestaw SDK i skojarzony pakiet środowiska uruchomieniowego pr
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     ```
 
-7. Dodaj klucz JDK firmy Azul do pęku kluczy APT i skonfiguruj repozytorium.
+7. Dodaj klucz JDK Azul do pęku kluczy APT i skonfiguruj jego repozytorium.
 
     ```bash
-    curl -fsSL https://repos.azul.com/azul-repo.key | sudo apt-key add -
-    sudo add-apt-repository 'deb http://repos.azulsystems.com/ubuntu stable main'
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
+    sudo apt-add-repository "deb http://repos.azul.com/azure-only/zulu/apt stable main"
     ```
 
 8. Odśwież listę pakietów na podstawie nowo dodanych repozytoriów.
@@ -178,8 +178,8 @@ sudo yum install servicefabricsdkcommon
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
-Ubuntu | 2.0.0 | AzulJDK 1.8 | Niejawne z rozwiązania npm | latest |
-RHEL | - | OpenJDK 1.8 | Niejawne z rozwiązania npm | latest |
+Ubuntu | 2.0.0 | AzulJDK 1.8 | Niejawne z rozwiązania npm | najnowsza |
+RHEL | - | OpenJDK 1.8 | Niejawne z rozwiązania npm | najnowsza |
 
 ## <a name="set-up-a-local-cluster"></a>Tworzenie klastra lokalnego
 Uruchom klaster lokalny po zakończeniu instalacji.
@@ -239,7 +239,7 @@ Zainstaluj [zestaw .NET Core 2.0 SDK dla systemu Ubuntu](https://www.microsoft.c
 
 ## <a name="set-up-java-development"></a>Konfigurowanie środowiska programowania w języku Java
 
-Aby skompilować usługi Service Fabric przy użyciu języka Java, należy zainstalować narzędzia Gradle umożliwiające uruchamianie zadań kompilacji. Uruchom poniższe polecenie, aby zainstalować narzędzia Gradle. Biblioteki Java usługi Service Fabric są ściągane z narzędzia Maven.
+Aby skompilować usługi Service Fabric przy użyciu języka Java, zainstaluj Gradle, aby uruchomić zadania kompilacji. Uruchom poniższe polecenie, aby zainstalować Gradle. Biblioteki Java usługi Service Fabric są ściągane z narzędzia Maven.
 
 
 * Ubuntu
@@ -272,7 +272,7 @@ Wtyczkę środowiska Eclipse dla usługi Service Fabric można zainstalować z p
 > 
 > W systemie Ubuntu zaleca się instalowanie bezpośrednio z witryny środowiska Eclipse, a nie za pomocą instalatora pakietu (`apt` lub `apt-get`). Gwarantuje to uzyskanie najnowszej wersji środowiska Eclipse. Można zainstalować środowisko Eclipse IDE for Java Developers lub Java EE Developers.
 
-1. W środowisku Eclipse upewnij się, że masz zainstalowaną wersję Eclipse Neon lub nowszą oraz zestaw Buildship 2.2.1 lub nowszy. Sprawdź wersje zainstalowanych składników, wybierając kolejno pozycje **Help** > **About Eclipse** > **Installation Details** (Pomoc > Informacje o środowisku Eclipse > Szczegóły instalacji). Zestaw Buildship można zaktualizować przy użyciu instrukcji w [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update].
+1. W środowisku Eclipse upewnij się, że masz zainstalowaną wersję Eclipse Neon lub nowszą oraz zestaw Buildship 2.2.1 lub nowszy. Sprawdź wersje zainstalowanych składników, wybierając kolejno pozycje **Help** > **About Eclipse** > **Installation Details** (Pomoc > Informacje o środowisku Eclipse > Szczegóły instalacji). Kompilację można zaktualizować przy użyciu instrukcji w [przezaćmieniu do kompilacji: Zaćmienie dodatków plug-in][buildship-update]dla Gradle.
 
 2. Aby zainstalować wtyczkę usługi Service Fabric, wybierz pozycję **Help** > **Install New Software** (Pomoc > Zainstaluj nowe oprogramowanie).
 

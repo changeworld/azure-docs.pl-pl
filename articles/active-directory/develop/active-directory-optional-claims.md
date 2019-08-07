@@ -1,6 +1,6 @@
 ---
-title: Dowiedz się, jak podaj opcjonalny oświadczenia do aplikacji usługi Azure AD | Dokumentacja firmy Microsoft
-description: Wskazówki dotyczące dodawania niestandardowych lub dodatkowe oświadczenia języka SAML 2.0 i tokenów Web JSON (JWT) tokeny wystawione przez usługę Azure Active Directory.
+title: Dowiedz się, jak dostarczać opcjonalne oświadczenia do aplikacji usługi Azure AD | Microsoft Docs
+description: Przewodnik dodawania niestandardowych lub dodatkowych oświadczeń do tokenów tokenów sieci Web SAML 2,0 i JSON (JWT) wystawionych przez Azure Active Directory.
 documentationcenter: na
 author: rwike77
 services: active-directory
@@ -9,7 +9,7 @@ editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/03/2019
@@ -17,97 +17,97 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98b0ec2e1defc4701bff798b2fa93900ec8a9a64
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: b6e097df21051019495b3bf9bb6c83cb3dba03c8
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595160"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835334"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Instrukcje: Podaj opcjonalne oświadczenia do aplikacji usługi Azure AD
 
-Aplikacji deweloperzy mogą używać opcjonalnych oświadczeń w swoich aplikacjach usługi Azure AD, aby określić, które oświadczenia, że chcą w tokenach wysyłanych do swoich aplikacji. 
+Deweloperzy aplikacji mogą używać opcjonalnych oświadczeń w swoich aplikacjach usługi Azure AD, aby określić, które oświadczenia mają być wysyłane do aplikacji. 
 
-Możesz użyć opcjonalnych oświadczeń:
+Opcjonalne oświadczenia można używać do:
 
-- Wybierz dodatkowe oświadczenia, które mają zostać objęte tokenów dla aplikacji.
-- Zmień zachowanie niektórych oświadczenia, które zwraca tokenów usługi Azure AD.
-- Dodaj i dostęp do oświadczenia niestandardowe dla swojej aplikacji.
+- Wybierz dodatkowe oświadczenia do uwzględnienia w tokenach aplikacji.
+- Zmień zachowanie niektórych oświadczeń zwracanych przez usługę Azure AD w tokenach.
+- Dodawanie niestandardowych oświadczeń do aplikacji i uzyskiwanie do nich dostępu.
 
-List standardowa oświadczenia, zobacz [token dostępu](access-tokens.md) i [id_token](id-tokens.md) oświadczeń dokumentacji. 
+Listę oświadczeń standardowych można znaleźć w dokumentacji [token dostępu](access-tokens.md) i oświadczenia [id_token](id-tokens.md) . 
 
-Gdy opcjonalnych oświadczeń są obsługiwane zarówno w wersji 1.0 i 2.0 tokeny format, a także tokeny SAML, zapewniają większość ich wartości, przy przechodzeniu w wersji 1.0 do wersji 2.0. Jednym z celów [punktu końcowego v2.0 Microsoft tożsamości platformy](active-directory-appmodel-v2-overview.md) jest mniejsze rozmiary tokenu, aby zapewnić optymalną wydajność przez klientów. W wyniku kilku oświadczenia, wcześniej uwzględnione w dostępu i identyfikator tokenów nie są już dostępne w wersji 2.0 tokenów i musi monit o wpisanie specjalnie dla poszczególnych aplikacji.
+Chociaż opcjonalne oświadczenia są obsługiwane zarówno w tokenach w formacie v 1.0, jak i 2.0, jak również w przypadku tokenów języka SAML, zapewniają większość wartości podczas przechodzenia z wersji 1.0 do wersji 2.0. Jednym z celów [punktu końcowego platformy tożsamości w wersji 2.0 firmy Microsoft](active-directory-appmodel-v2-overview.md) jest mniejszy rozmiar tokenu, aby zapewnić optymalną wydajność przez klientów. W związku z tym kilka oświadczeń wcześniej uwzględnionych w tokenach dostępu i identyfikatorów nie jest już obecny w tokenach v 2.0 i musi być poproszony o odszukanie poszczególnych aplikacji.
 
-**Tabela 1: Możliwości zastosowania**
+**Tabela 1: Stosowanie**
 
-| Typ konta | Tokenów w wersji 1.0 | Tokenów w wersji 2.0  |
+| Typ konta | tokeny v 1.0 | tokeny v 2.0  |
 |--------------|---------------|----------------|
-| Osobiste konto Microsoft  | ND  | Obsługiwane |
+| konto Microsoft osobiste  | ND  | Obsługiwane |
 | Konto Azure AD      | Obsługiwane | Obsługiwane |
 
-## <a name="v10-and-v20-optional-claims-set"></a>w wersji 1.0 i 2.0 zestawu oświadczeń opcjonalne
+## <a name="v10-and-v20-optional-claims-set"></a>zestaw oświadczeń opcjonalnych 1.0 i v 2.0
 
-Zestaw oświadczeń opcjonalne, domyślnie dostępne do użycia przez aplikacje są wymienione poniżej. Aby dodać opcjonalny oświadczenia niestandardowe dla swojej aplikacji, zobacz [rozszerzenia katalogów](#configuring-directory-extension-optional-claims)poniżej. Podczas dodawania oświadczeń **token dostępu**, zostaną zastosowane do tokenów dostępu do żądanego *dla* aplikacji (internetowego interfejsu API), nie tych *przez* aplikacji. Dzięki temu niezależnie od tego klienta, uzyskiwanie dostępu do interfejsu API, odpowiednie dane są obecne w tokenie dostępu, których używają do uwierzytelniania względem interfejsu API.
+Zestaw opcjonalnych oświadczeń dostępnych domyślnie dla aplikacji do użycia znajduje się poniżej. Aby dodać niestandardowe oświadczenia opcjonalne dla aplikacji, zobacz [rozszerzenia katalogów](#configuring-directory-extension-optional-claims)poniżej. W przypadku dodawania oświadczeń do **tokenu dostępu**zostanie to zastosowane do tokenów dostępu żądanych *dla* aplikacji (internetowego interfejsu API), a nie dla aplikacji. Dzięki temu nie ma znaczenia, że klient uzyskuje dostęp do interfejsu API, odpowiednie dane znajdują się w tokenie dostępu używanym do uwierzytelniania w interfejsie API.
 
 > [!NOTE]
-> Większość te oświadczenia mogą być dołączane w tokenów Jwt dla wersji 1.0 i tokenów w wersji 2.0, ale nie tokeny SAML, z wyjątkiem w przypadku, gdy wskazane w kolumnie Typ tokenu. Konsumenckie obsługuje podzbiór tych oświadczeń, który jest oznaczony w kolumnie "Typ użytkownika".  Wiele z oświadczenia na liście nie dotyczą konsumentów (mają więc żaden z dzierżawców `tenant_ctry` nie ma wartości).  
+> Większość tych oświadczeń można uwzględnić w JWTs dla tokenów v 1.0 i v 2.0, ale nie tokenów SAML, z wyjątkiem sytuacji, w których zaznaczono w kolumnie Typ tokenu. Konta konsumentów obsługują podzbiór tych oświadczeń, które są oznaczone w kolumnie Typ użytkownika.  Wiele z wymienionych oświadczeń nie dotyczy użytkowników indywidualnych (nie mają dzierżawy, więc `tenant_ctry` nie ma żadnej wartości).  
 
-**Tabela 2: wersja 1.0 i 2.0 opcjonalne zestawu oświadczeń**
+**Tabela 2: zestaw opcjonalnych zestawów zgłoszeń 1.0 i v 2.0**
 
 | Name (Nazwa)                       |  Opis   | Typ tokenu | Typ użytkownika | Uwagi  |
 |----------------------------|----------------|------------|-----------|--------|
-| `auth_time`                | Czas, kiedy użytkownik ostatnio uwierzytelniony. Zobacz specyfikacje OpenID Connect.| JWT        |           |  |
-| `tenant_region_scope`      | Region zasobu dzierżawy | JWT        |           | |
-| `home_oid`                 | Dla użytkowników-gości, identyfikator obiektu użytkownika w dzierżawie macierzystego użytkownika.| JWT        |           | |
-| `sid`                      | Identyfikator sesji używany dla sesji użytkownika wylogowania. | JWT        |  Osobistych i kont usługi Azure AD.   |         |
-| `platf`                    | Platforma urządzeń    | JWT        |           | Ograniczone do zarządzanych urządzeń, które można sprawdzić typ urządzenia.|
-| `verified_primary_email`   | Źródło PrimaryAuthoritativeEmail użytkownika      | JWT        |           |         |
-| `verified_secondary_email` | Źródło SecondaryAuthoritativeEmail użytkownika   | JWT        |           |        |
-| `enfpolids`                | Identyfikatory wymuszanych zasad. Lista zasad identyfikatorów, które zostały ocenione dla bieżącego użytkownika. | JWT |  |  |
-| `vnet`                     | Informacje o specyfikator sieci Wirtualnej. | JWT        |           |      |
-| `fwd`                      | Adres IP.| JWT    |   | Dodaje oryginalny adres IPv4 klienta (wewnątrz sieci Wirtualnej) |
-| `ctry`                     | Kraj użytkownika | JWT |  | Usługa Azure AD zwraca `ctry` opcjonalnego roszczenia, jeśli jest obecny, a wartość oświadczenia jest kod standardowa kraju dwuliterowych, takich jak FR, JP, SZ i tak dalej. |
-| `tenant_ctry`              | Kraj zasobów dzierżawy | JWT | | |
-| `xms_pdl`          | Preferowana lokalizacja danych   | JWT | | W przypadku dzierżaw wielu regionów geograficznych jest 3-literowy kod, przedstawiający region geograficzny, w której znajduje się użytkownik. Aby uzyskać więcej informacji, zobacz [program Azure AD Connect dokumentacji dotyczącej Preferowana lokalizacja danych](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-preferreddatalocation).<br/>Na przykład: `APC` dla Azja. |
-| `xms_pl`                   | Preferowany język  | JWT ||Użytkownik preferowanego języka, jeśli ustawiona. Źródło ich głównej dzierżawy w scenariuszach dostęp gościa. Sformatowana LL DW ("en-us"). |
-| `xms_tpl`                  | Dzierżawy preferowany język| JWT | | Dzierżawy zasobów preferowanego języka, jeśli ustawiona. LL sformatowany ("PL"). |
-| `ztdid`                    | Bezobsługowa identyfikator wdrożenia | JWT | | Tożsamość urządzenia używana dla [rozwiązania Windows AutoPilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) |
-| `email`                    | Adresy e-mail dla tego użytkownika, jeśli użytkownik ma jeden.  | JWT, SAML | Konto MSA, usługi Azure AD | Ta wartość jest domyślnie, jeśli użytkownik Gość w dzierżawie.  Dla zarządzanych użytkowników (te wewnątrz dzierżawy) jej należy wystąpić za pomocą tego opcjonalnego roszczenia, lub w wersji 2.0, z zakresu OpenID.  Dla zarządzanych użytkowników, adres e-mail musi być ustawiona w [portalu administracyjnego usługi Office](https://portal.office.com/adminportal/home#/users).| 
-| `groups`| Opcjonalnie, formatowanie oświadczenia grupy |JWT, SAML| |Używane w połączeniu z ustawieniem GroupMembershipClaims w [manifest aplikacji](reference-app-manifest.md), które należy określić również. Aby uzyskać szczegółowe informacje, zobacz [grupy oświadczenia](#Configuring-group-optional claims) poniżej. Aby uzyskać więcej informacji na temat oświadczenia grupy zobacz [Konfigurowanie oświadczenia grupy](../hybrid/how-to-connect-fed-group-claims.md)
-| `acct`             | Stan konta użytkowników w dzierżawie. | JWT, SAML | | Jeśli użytkownik jest członkiem dzierżawy, wartość jest `0`. Jeśli są one gościa, wartość jest `1`. |
-| `upn`                      | Oświadczenie UserPrincipalName. | JWT, SAML  |           | Mimo że to oświadczenie jest automatycznie dołączane, możesz je określić jako opcjonalnego roszczenia, aby dołączyć dodatkowe właściwości, aby zmodyfikować jego zachowanie w przypadku użytkownika gościa.  |
+| `auth_time`                | Godzina ostatniego uwierzytelnienia użytkownika. Zobacz OpenID Connect Connect spec.| JWT        |           |  |
+| `tenant_region_scope`      | Region dzierżawy zasobów | JWT        |           | |
+| `home_oid`                 | Dla użytkowników-Gości, identyfikator obiektu użytkownika w dzierżawie głównej użytkownika.| JWT        |           | |
+| `sid`                      | Identyfikator sesji używany do wylogowywania użytkownika na sesję. | JWT        |  Konta osobiste i usługi Azure AD.   |         |
+| `platf`                    | Platforma urządzeń    | JWT        |           | Ograniczone do zarządzanych urządzeń, które mogą weryfikować typ urządzenia.|
+| `verified_primary_email`   | Źródłem z PrimaryAuthoritativeEmail użytkownika      | JWT        |           |         |
+| `verified_secondary_email` | Źródłem z SecondaryAuthoritativeEmail użytkownika   | JWT        |           |        |
+| `enfpolids`                | Wymuszane identyfikatory zasad. Lista identyfikatorów zasad, które zostały ocenione dla bieżącego użytkownika. | JWT |  |  |
+| `vnet`                     | Informacje o specyfikatorze sieci wirtualnej. | JWT        |           |      |
+| `fwd`                      | Adres IP.| JWT    |   | Dodaje oryginalny adres IPv4 klienta żądającego (w sieci wirtualnej) |
+| `ctry`                     | Kraj użytkownika | JWT |  | Usługa Azure AD zwraca `ctry` opcjonalne zgłoszenie, jeśli jest obecne, a wartość zgłoszenia to standardowy dwuliterowy kod kraju, taki jak fr, JP, sz i tak dalej. |
+| `tenant_ctry`              | Kraj dzierżawy zasobu | JWT | | |
+| `xms_pdl`          | Preferowana lokalizacja danych   | JWT | | W przypadku dzierżaw geograficznych jest to 3-literowy kod pokazujący region geograficzny, w którym znajduje się użytkownik. Aby uzyskać więcej informacji, zobacz [dokumentację Azure AD Connect dotyczącą preferowanej lokalizacji danych](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-preferreddatalocation).<br/>Na przykład: `APC` dla Azja i Pacyfik. |
+| `xms_pl`                   | Preferowany język użytkownika  | JWT ||Preferowany język użytkownika, jeśli jest ustawiony. Pochodzący od swojej dzierżawy domowej w scenariuszach dostępu gościa. Sformatowane — DW ("pl-US"). |
+| `xms_tpl`                  | Preferowany język dzierżawy| JWT | | Preferowany język dzierżawy zasobu, jeśli został ustawiony. Sformatowane w szystkie ("en"). |
+| `ztdid`                    | Identyfikator wdrożenia bez dotknięcia | JWT | | Tożsamość urządzenia używana na potrzeby [Autopilotażu systemu Windows](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) |
+| `email`                    | Adres e-mail dla tego użytkownika, jeśli użytkownik go ma.  | JWT, SAML | MSA, Azure AD | Ta wartość jest uwzględniana domyślnie, jeśli użytkownik jest gościem w dzierżawie.  W przypadku użytkowników zarządzanych (w ramach dzierżawy) należy zażądać ich przez to opcjonalne żądanie lub tylko w wersji 3.0, z zakresem OpenID Connect.  W przypadku użytkowników zarządzanych adres e-mail musi być ustawiony w [portalu administracyjnym pakietu Office](https://portal.office.com/adminportal/home#/users).| 
+| `groups`| Opcjonalne formatowanie oświadczeń grupy |JWT, SAML| |Używany w połączeniu z ustawieniem GroupMembershipClaims w [manifeście aplikacji](reference-app-manifest.md), który musi być również ustawiony. Aby uzyskać szczegółowe informacje, zobacz poniższe [oświadczenia grupy](#Configuring-group-optional claims) . Aby uzyskać więcej informacji na temat oświadczeń grup [, zobacz Jak skonfigurować oświadczenia grupy](../hybrid/how-to-connect-fed-group-claims.md)
+| `acct`             | Stan konta użytkowników w dzierżawie. | JWT, SAML | | Jeśli użytkownik jest członkiem dzierżawy, wartość jest `0`. Jeśli jest gościem, wartość to `1`. |
+| `upn`                      | Element UserPrincipalName. | JWT, SAML  |           | Chociaż to zgłoszenie jest automatycznie dołączane, można je określić jako opcjonalne, aby dołączyć dodatkowe właściwości, aby zmodyfikować jego zachowanie w przypadku użytkownika-gościa.  |
 
-### <a name="v20-optional-claims"></a>Opcjonalne oświadczeń w wersji 2.0
+### <a name="v20-optional-claims"></a>v 2.0 — opcjonalne oświadczenia
 
-Te oświadczenia są zawsze dołączane w tokenach usługi Azure AD w wersji 1.0, ale nie zostały uwzględnione w tokenów w wersji 2.0, o ile nie jest wymagane. Te oświadczenia są tylko odpowiednie dla elementów Jwt (identyfikator tokenów i tokenów dostępu). 
+Te oświadczenia są zawsze uwzględniane w tokenach usługi Azure AD w wersji 1.0, ale nie są uwzględniane w tokenach v 2.0, chyba że jest to wymagane. Te oświadczenia mają zastosowanie tylko do JWTs (tokeny ID i tokeny dostępu). 
 
-**Tabela 3: tylko do wersji 2.0 opcjonalnych oświadczeń**
+**Tabela 3: v 2.0 — tylko opcjonalne oświadczenia**
 
-| Token JWT oświadczeń     | Name (Nazwa)                            | Opis                                | Uwagi |
+| Claim JWT     | Name (Nazwa)                            | Opis                                | Uwagi |
 |---------------|---------------------------------|-------------|-------|
-| `ipaddr`      | Adres IP                      | Adres IP klienta, zalogowany z.   |       |
-| `onprem_sid`  | Identyfikator zabezpieczeń w środowisku lokalnym |                                             |       |
-| `pwd_exp`     | Czas wygaśnięcia hasła        | Data i godzina jaką hasło wygaśnie. |       |
-| `pwd_url`     | Zmień hasło, adres URL             | Adres URL, który użytkownik może odwiedzić, aby zmienić swoje hasło.   |   |
-| `in_corp`     | Inside Corporate Network        | Sygnały, jeśli klient jest logowania się z siecią firmową. Jeśli nie jesteś, oświadczenia nie jest uwzględniona.   |  Na podstawie wylogować się z [zaufane adresy IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) ustawień w usłudze MFA.    |
-| `nickname`    | Pseudonim                        | Dodatkową nazwę użytkownika, niezależnie od imię lub nazwisko. | 
-| `family_name` | Nazwisko                       | Zawiera ostatni nazwę, nazwisko lub nazwę rodziny użytkownika, zgodnie z definicją w obiekcie użytkownika. <br>"family_name":"Miller" | Obsługiwane w zarządzanych kont usług i Azure AD   |
-| `given_name`  | Imię                      | Zawiera pierwszy lub "" Nazwa użytkownika, według stawki ustalonej obiektu user.<br>"given_name": "Piotr"                   | Obsługiwane w zarządzanych kont usług i Azure AD  |
-| `upn`         | Główna nazwa użytkownika | Identyfikator użytkownika, który może być używany z parametrem username_hint.  Nie trwały identyfikator dla użytkownika i nie należy używać do kluczowych danych. | Zobacz [dodatkowe właściwości](#additional-properties-of-optional-claims) poniżej dla konfiguracji oświadczenia. |
+| `ipaddr`      | Adres IP                      | Adres IP, z którego zalogował się klient.   |       |
+| `onprem_sid`  | Identyfikator zabezpieczeń lokalnych |                                             |       |
+| `pwd_exp`     | Czas wygaśnięcia hasła        | Data i godzina wygaśnięcia hasła. |       |
+| `pwd_url`     | Zmień adres URL hasła             | Adres URL, który użytkownik może odwiedzić, aby zmienić hasło.   |   |
+| `in_corp`     | Wewnątrz sieci firmowej        | Sygnalizuje, czy klient loguje się z sieci firmowej. W przeciwnym razie oświadczenia nie są uwzględniane.   |  Na podstawie ustawień [zaufanych adresów IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) w usłudze MFA.    |
+| `nickname`    | Pseudonim                        | Dodatkowa nazwa użytkownika, oddzielona od imię lub nazwisko. | 
+| `family_name` | Nazwisko                       | Zawiera nazwisko, nazwisko lub nazwę rodziny użytkownika, zgodnie z definicją w obiekcie użytkownika. <br>"family_name":"Miller" | Obsługiwane w usłudze MSA i usłudze Azure AD   |
+| `given_name`  | Imię                      | Określa imię i nazwisko użytkownika, zgodnie z ustawieniem obiektu użytkownika.<br>"given_name": Frank                   | Obsługiwane w usłudze MSA i usłudze Azure AD  |
+| `upn`         | Główna nazwa użytkownika | Identyfikator dla użytkownika, którego można użyć z parametrem username_hint.  Nie jest to trwały identyfikator użytkownika i nie należy go używać do kluczowych danych. | Zapoznaj się z [dodatkowymi właściwościami](#additional-properties-of-optional-claims) poniżej w celu skonfigurowania żądania. |
 
-### <a name="additional-properties-of-optional-claims"></a>Dodatkowe właściwości opcjonalnych oświadczeń
+### <a name="additional-properties-of-optional-claims"></a>Dodatkowe właściwości oświadczeń opcjonalnych
 
-Aby zmienić sposób, w jaki oświadczenie jest zwracany można skonfigurować kilka opcjonalnych oświadczeń. Te dodatkowe właściwości są najczęściej używane migracji aplikacji lokalnych przy użyciu różnych danych oczekiwania (na przykład `include_externally_authenticated_upn_without_hash` pomaga z klientami, które nie obsługują znaki hash (`#`) nazwę UPN)
+Niektóre opcjonalne oświadczenia można skonfigurować w celu zmiany sposobu zwracania oświadczenia. Te dodatkowe właściwości są najczęściej używane do przeprowadzania migracji aplikacji lokalnych z różnymi oczekiwaniami do danych (na przykład `include_externally_authenticated_upn_without_hash` pomagają klientom, którzy nie mogą obsłużyć znaków hash (`#`) w UPN).
 
-**Tabela 4: Wartości dotyczące konfigurowania opcjonalnych oświadczeń**
+**Tabela 4: Wartości konfiguracji opcjonalnych oświadczeń**
 
-| Nazwa właściwości  | Nazwa właściwości dodatkowe | Opis |
+| Nazwa właściwości  | Dodatkowa nazwa właściwości | Opis |
 |----------------|--------------------------|-------------|
-| `upn`          |                          | Może służyć dla odpowiedzi SAML i token JWT i tokenów w wersji 1.0 i 2.0. |
-|                | `include_externally_authenticated_upn`  | Obejmuje gościa nazwy UPN jako przechowywane w dzierżawie zasobów. Na przykład: `foo_hometenant.com#EXT#@resourcetenant.com` |             
-|                | `include_externally_authenticated_upn_without_hash` | Taki sam jak powyżej, z tą różnicą, że oznacza skrót (`#`) są zastępowane znakami podkreślenia (`_`), na przykład `foo_hometenant.com_EXT_@resourcetenant.com` |
+| `upn`          |                          | Może być używany w przypadku odpowiedzi SAML i JWT oraz dla tokenów v 1.0 i v 2.0. |
+|                | `include_externally_authenticated_upn`  | Zawiera nazwę UPN gościa przechowywaną w dzierżawie zasobów. Na przykład: `foo_hometenant.com#EXT#@resourcetenant.com` |             
+|                | `include_externally_authenticated_upn_without_hash` | Tak samo jak powyżej, z tą różnicą,`#`że znaki hash () są zastępowane`_`znakami podkreślenia (), na przykład`foo_hometenant.com_EXT_@resourcetenant.com` |
 
-#### <a name="additional-properties-example"></a>Przykład dodatkowe właściwości
+#### <a name="additional-properties-example"></a>Przykład dodatkowych właściwości
 
 ```json
  "optionalClaims": 
@@ -122,16 +122,16 @@ Aby zmienić sposób, w jaki oświadczenie jest zwracany można skonfigurować k
 }
 ```
 
-Ten obiekt OptionalClaims powoduje, że identyfikator tokenu zwracana do klienta do uwzględnienia innej nazwy upn z dodatkowych głównej dzierżawy i informacje o zasobach dzierżawy. To spowoduje jedynie zmianę `upn` oświadczenia w tokenie, jeśli użytkownik Gość w dzierżawie, (które używa innego dostawcy tożsamości do uwierzytelniania). 
+Ten obiekt OptionalClaims powoduje, że token identyfikatora zwracany do klienta zawiera inną nazwę UPN z dodatkowymi informacjami dzierżawy głównej i dzierżawy zasobów. Spowoduje to zmianę w tokenie tylko tego, `upn` czy użytkownik jest gościem w dzierżawie (który korzysta z innego dostawcy tożsamości na potrzeby uwierzytelniania). 
 
-## <a name="configuring-optional-claims"></a>Konfigurowanie opcjonalnych oświadczeń
+## <a name="configuring-optional-claims"></a>Konfigurowanie oświadczeń opcjonalnych
 
-Można skonfigurować opcjonalny oświadczenia dla danej aplikacji, modyfikując manifest aplikacji (Zobacz przykład poniżej). Aby uzyskać więcej informacji, zobacz [opis artykułu manifestu aplikacji usługi Azure AD](reference-app-manifest.md).
+Można skonfigurować opcjonalne oświadczenia dla aplikacji, modyfikując manifest aplikacji (Zobacz przykład poniżej). Aby uzyskać więcej informacji, zobacz [artykuł Omówienie manifestu aplikacji usługi Azure AD](reference-app-manifest.md).
 
 > [!IMPORTANT]
-> Tokeny dostępu są **zawsze** wygenerowane przy użyciu manifest zasobu, a nie klient.  Dlatego w żądaniu `...scope=https://graph.microsoft.com/user.read...` zasób jest wykresu.  W związku z tym token dostępu jest tworzony przy użyciu manifest wykres, a nie manifest klienta.  Zmiana manifestu aplikacji nigdy nie spowoduje, że tokeny dla wykresu, będzie wyglądać inaczej.  Aby sprawdzić, czy Twoje `accessToken` zmiany są stosowane, żądać tokenu dla aplikacji, nie innej aplikacji.  
+> Tokeny dostępu są **zawsze** generowane przy użyciu manifestu zasobu, a nie klienta.  Dlatego w żądaniu `...scope=https://graph.microsoft.com/user.read...` zasób jest wykresem.  W ten sposób token dostępu jest tworzony przy użyciu manifestu grafu, a nie manifestu klienta.  Zmiana manifestu dla aplikacji nigdy nie spowoduje, że tokeny dla grafu będą wyglądać inaczej.  Aby sprawdzić, czy `accessToken` zmiany są obowiązujące, zażądaj tokenu dla aplikacji, a nie innej aplikacji.  
 
-**Schemat przykładowych:**
+**Przykładowy schemat:**
 
 ```json
 "optionalClaims":  
@@ -164,63 +164,63 @@ Można skonfigurować opcjonalny oświadczenia dla danej aplikacji, modyfikując
 
 ### <a name="optionalclaims-type"></a>Typ OptionalClaims
 
-Deklaruje opcjonalnych oświadczeń, żądane przez aplikację. Aplikację można skonfigurować opcjonalny oświadczeń ma zostać zwrócone w każdej z trzech rodzajów tokenów (identyfikator tokenu, token, SAML 2 token dostępu) może odbierać z usługi tokenu zabezpieczającego. Aplikację można skonfigurować różne zestawy opcjonalnych oświadczeń, które ma zostać zwrócone w każdego typu tokenu. Właściwość OptionalClaims Jednostka aplikacji jest obiektem OptionalClaims.
+Deklaruje opcjonalne oświadczenia wymagane przez aplikację. Aplikacja może skonfigurować opcjonalne oświadczenia, które mają być zwracane w każdym z trzech typów tokenów (token identyfikatora, token dostępu, token SAML 2), które mogą zostać odebrane z usługi tokenu zabezpieczającego. Aplikacja może skonfigurować inny zestaw opcjonalnych oświadczeń do zwrócenia w każdym typie tokenu. Właściwość OptionalClaims obiektu aplikacji jest obiektem OptionalClaims.
 
 **Tabela 5: Właściwości typu OptionalClaims**
 
 | Name (Nazwa)        | Typ                       | Opis                                           |
 |-------------|----------------------------|-------------------------------------------------------|
-| `idToken`     | Kolekcja (OptionalClaim) | Opcjonalne oświadczenia zwrócone w token JWT Identyfikatora. |
-| `accessToken` | Kolekcja (OptionalClaim) | Opcjonalne oświadczenia zwrócone w tokenie dostępu JWT. |
-| `saml2Token`  | Kolekcja (OptionalClaim) | Opcjonalne oświadczenia zwrócone w tokenie języka SAML.   |
+| `idToken`     | Kolekcja (OptionalClaim) | Opcjonalne oświadczenia zwracane w tokenie identyfikatora JWT. |
+| `accessToken` | Kolekcja (OptionalClaim) | Opcjonalne oświadczenia zwracane w tokenie dostępu JWT. |
+| `saml2Token`  | Kolekcja (OptionalClaim) | Opcjonalne oświadczenia zwracane w tokenie języka SAML.   |
 
 ### <a name="optionalclaim-type"></a>Typ OptionalClaim
 
-Zawiera opcjonalnego roszczenia skojarzone z aplikacją lub ta jednostka usługi. Właściwości idToken, accessToken i saml2Token [OptionalClaims](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#optionalclaims-type) typ jest kolekcją OptionalClaim.
-Jeśli jest obsługiwany przez określonych oświadczenia, można również zmodyfikować zachowanie OptionalClaim, korzystając z pola dodatkowe właściwości.
+Zawiera opcjonalne powiązanie skojarzone z aplikacją lub jednostką usługi. Właściwości idToken, accessToken i saml2Token typu [OptionalClaims](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#optionalclaims-type) to kolekcja OptionalClaim.
+Jeśli jest to obsługiwane przez określone zgłoszenie, można również zmodyfikować zachowanie OptionalClaim przy użyciu pola AdditionalProperties.
 
 **Tabela 6: Właściwości typu OptionalClaim**
 
 | Name (Nazwa)                 | Typ                    | Opis                                                                                                                                                                                                                                                                                                   |
 |----------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `name`                 | Edm.String              | Nazwa opcjonalnego roszczenia.                                                                                                                                                                                                                                                                           |
-| `source`               | Edm.String              | Źródło (obiektu katalogu) oświadczenia. Istnieją wstępnie zdefiniowane oświadczeń i zdefiniowanych przez użytkownika z właściwościami rozszerzenia. Jeśli wartość źródłowa jest równa null, oświadczenie jest wstępnie zdefiniowanych opcjonalnego roszczenia. Jeśli wartość źródłowa to użytkownika, wartość właściwości name jest właściwość rozszerzenia z obiektu użytkownika. |
-| `essential`            | Edm.Boolean             | Jeśli ma wartość true, oświadczenia, określony przez klienta jest niezbędne do zapewnienia sprawnego autoryzacji umożliwiający określonego zadania, żądane przez użytkownika końcowego. Wartość domyślna to false.                                                                                                             |
-| `additionalProperties` | Kolekcja (Edm.String) | Dodatkowe właściwości oświadczenia. Jeśli właściwość istnieje w tej kolekcji, modyfikuje zachowanie opcjonalnego roszczenia określony we właściwości name.                                                                                                                                               |
-## <a name="configuring-directory-extension-optional-claims"></a>Konfigurowanie oświadczenia opcjonalne rozszerzenie katalogu
+| `name`                 | Edm.String              | Nazwa opcjonalnego żądania.                                                                                                                                                                                                                                                                           |
+| `source`               | Edm.String              | Źródło (obiekt katalogu) żądania. Istnieją wstępnie zdefiniowane oświadczenia i zdefiniowane przez użytkownika oświadczenia ze wszystkich właściwości rozszerzenia. Jeśli wartość źródłowa jest równa null, to jest to wstępnie zdefiniowane opcjonalne zgłoszenie. Jeśli wartością źródłową jest użytkownik, wartość we właściwości Nazwa jest właściwością rozszerzenia z obiektu użytkownika. |
+| `essential`            | Edm.Boolean             | Jeśli wartość jest równa true, żądanie określone przez klienta jest konieczne, aby zapewnić bezproblemowe środowisko autoryzacji dla określonego zadania żądanego przez użytkownika końcowego. Wartość domyślna to false.                                                                                                             |
+| `additionalProperties` | Kolekcja (EDM. String) | Dodatkowe właściwości żądania. Jeśli właściwość istnieje w tej kolekcji, modyfikuje zachowanie opcjonalnego żądania określonego we właściwości Nazwa.                                                                                                                                               |
+## <a name="configuring-directory-extension-optional-claims"></a>Konfigurowanie opcjonalnych oświadczeń rozszerzenia katalogu
 
-Oprócz zestawu standardowych opcjonalnych oświadczeń można również skonfigurować tokenów, aby uwzględnić rozszerzenia schematu katalogu. Aby uzyskać więcej informacji, zobacz [rozszerzenia schematu katalogu](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions). Ta funkcja jest przydatna do dołączania dodatkowych informacji dotyczących użytkowników, Twoja aplikacja może używać — na przykład, dodatkowe identyfikator lub opcji konfiguracji ważne, ustawionego przez użytkownika. 
+Oprócz standardowego opcjonalnego zestawu oświadczeń można także skonfigurować tokeny do dołączania rozszerzeń schematu katalogu. Aby uzyskać więcej informacji, zobacz [rozszerzenia schematu katalogu](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions). Ta funkcja jest przydatna do dołączania dodatkowych informacji o użytkownikach, które mogą być używane przez aplikację — na przykład dodatkowego identyfikatora lub ważnej opcji konfiguracji ustawionej przez użytkownika. 
 
 > [!Note]
-> - Rozszerzenia schematu katalogu są nowa funkcja platformy Azure tylko do usługi AD, dlatego jeśli aplikacja manifestu żądań niestandardowego rozszerzenia i użytkownika konta Microsoft loguje się do aplikacji, te rozszerzenia nie zostaną zwrócone.
-> - Usługa Azure AD, opcjonalne oświadczeń działają tylko z rozszerzeniem usługi Azure AD i nie działa z rozszerzeniem katalogu programu Microsoft Graph. Oba interfejsy API wymagają `Directory.ReadWriteAll` uprawnienie, które można wyrazić tylko przez administratorów.
+> - Rozszerzenia schematu katalogu to funkcja tylko usługi Azure AD, więc jeśli manifest aplikacji żąda niestandardowego rozszerzenia i loguje się do aplikacji, te rozszerzenia nie zostaną zwrócone.
+> - Opcjonalne oświadczenia usługi Azure AD działają tylko z rozszerzeniem usługi Azure AD i nie działają z rozszerzeniem katalogu Microsoft Graph. Oba interfejsy API wymagają `Directory.ReadWriteAll` uprawnienia, które mogą być wysyłane tylko przez administratorów.
 
-### <a name="directory-extension-formatting"></a>Rozszerzenie katalogu, formatowanie
+### <a name="directory-extension-formatting"></a>Formatowanie rozszerzenia katalogu
 
-W przypadku atrybutów rozszerzenia, należy użyć pełnej nazwy rozszerzenia (w formacie: `extension_<appid>_<attributename>`) w manifeście aplikacji. `<appid>` Musi być zgodny z Identyfikatorem aplikacji żądających oświadczeń. 
+W przypadku atrybutów rozszerzenia Użyj pełnej nazwy rozszerzenia (w formacie: `extension_<appid>_<attributename>`) w manifeście aplikacji. `<appid>` Musi być zgodna z identyfikatorem aplikacji żądającej żądania. 
 
-W ramach tokenu JWT, te oświadczenia będzie emitowane w następującym formacie nazwy: `extn.<attributename>`.
+W ramach tokenu JWT te oświadczenia będą emitowane z następującym formatem nazw: `extn.<attributename>`.
 
-W tokeny SAML te oświadczenia będzie emitowane przy użyciu następującego formatu identyfikatora URI: `http://schemas.microsoft.com/identity/claims/extn.<attributename>`
+W ramach tokenów SAML te oświadczenia będą emitowane przy użyciu następującego formatu identyfikatora URI:`http://schemas.microsoft.com/identity/claims/extn.<attributename>`
 
-## <a name="configuring-group-optional-claims"></a>Konfigurowanie opcjonalnych oświadczenia grupy
+## <a name="configuring-group-optional-claims"></a>Konfigurowanie opcjonalnych oświadczeń grupy
 
    > [!NOTE]
-   > Możliwość emisji nazwy grup użytkowników i grupy synchronizowane z lokalnej jest publicznej wersji zapoznawczej.
+   > Możliwość emisji nazw grup dla użytkowników i grup synchronizowanych z lokalnej wersji zapoznawczej.
 
-W tej sekcji opisano opcje konfiguracji, w obszarze opcjonalne oświadczenia dotyczące zmieniania atrybutów grupy oświadczenia grupy z domyślny identyfikator obiektu grupy atrybutów synchronizowanych z lokalnej usługi Active Directory Windows.
+W tej sekcji omówiono opcje konfiguracji w obszarze opcjonalne oświadczenia dotyczące zmiany atrybutów grupy używanych w oświadczeniach grup z domyślnego identyfikatora obiektu grupy na atrybuty synchronizowane z lokalnymi Active Directory systemu Windows.
 
 > [!IMPORTANT]
-> Zobacz [Konfigurowanie oświadczenia grupy dla aplikacji z usługą Azure AD](../hybrid/how-to-connect-fed-group-claims.md) Aby uzyskać więcej informacji, łącznie z ważnymi zastrzeżeniami dla publicznej wersji zapoznawczej oświadczenia grupy z atrybutów w środowisku lokalnym.
+> Zobacz [Konfigurowanie oświadczeń grupy dla aplikacji w usłudze Azure AD](../hybrid/how-to-connect-fed-group-claims.md) , aby uzyskać więcej informacji, w tym ważne zastrzeżenia dla publicznej wersji zapoznawczej oświadczeń grup z atrybutów lokalnych.
 
-1. W portalu usługi -> Azure Active Directory -> Aplikacja rejestracje -> Wybierz aplikacji -> manifestu
+1. W portalu > Azure Active Directory > — Rejestracja aplikacji — > Wybierz manifest > aplikacji
 
-2. Włączyć oświadczenia członkostwo grupy, zmieniając groupMembershipClaim
+2. Włącz oświadczenia członkostwa w grupie, zmieniając groupMembershipClaim
 
    Prawidłowe wartości to:
 
-   - "Wszystkie"
-   - "SecurityGroup"
+   - Całą
+   - Grupy securitygroup
    - "DistributionList"
    - "DirectoryRole"
 
@@ -230,20 +230,20 @@ W tej sekcji opisano opcje konfiguracji, w obszarze opcjonalne oświadczenia dot
    "groupMembershipClaims": "SecurityGroup"
    ```
 
-   Domyślnie, których identyfikatory obiektów grupy będzie obliczanie w grupie wartości oświadczenia.  Aby zmodyfikować wartość oświadczenia, zawierają atrybuty grupy lokalnej lub zmienić typ oświadczenia roli, należy użyć OptionalClaims konfiguracji w następujący sposób:
+   Domyślnie identyfikatory obiektów grupy będą emitowane w wartości Claim Group.  Aby zmodyfikować wartość żądania w taki sposób, aby zawierała atrybuty grupy lokalnej, lub aby zmienić typ typu "rola", użyj konfiguracji OptionalClaims w następujący sposób:
 
-3. Ustaw oświadczenia opcjonalny konfiguracji nazwę grupy.
+3. Określ ustawienia nazw grup opcjonalne oświadczenia.
 
-   Jeśli chcesz do grup w tokenie zawierać lokalnych, w których atrybuty grupy usługi AD w sekcji opcjonalnych oświadczeń, określ, której typ tokenu opcjonalnego roszczenia powinny być stosowane do, nazwę opcjonalnego roszczenia, żądane i wszelkie dodatkowe właściwości żądanego.  Mogą być wyświetlane wiele typów tokenu:
+   Jeśli chcesz, aby grupy w tokenie zawierały atrybuty lokalnych grup usługi AD w sekcji opcjonalne oświadczenia Określ, które opcjonalne oświadczenie o typie tokenu należy zastosować do, nazwę opcjonalnego oświadczenia, a także wszystkie wymagane właściwości.  Można wymienić wiele typów tokenów:
 
-   - idToken dla tokenu Identyfikacyjnego OIDC
+   - idToken dla tokenu identyfikatora OIDC
    - accessToken dla tokenu dostępu OAuth/OIDC
-   - Saml2Token tokeny SAML.
+   - Saml2Token dla tokenów SAML.
 
    > [!NOTE]
-   > Typ Saml2Token dotyczy zarówno SAML1.1 i SAML2.0 tokeny format
+   > Typ Saml2Token ma zastosowanie do tokenów formatu SAML 1.1 i SAML 2.0
 
-   Dla każdego odpowiedniego typu tokenu zmodyfikuj oświadczenia grupy do użycia w sekcji OptionalClaims w manifeście. Schemat OptionalClaims jest w następujący sposób:
+   Dla każdego odpowiedniego typu tokenu zmodyfikuj je, aby użyć sekcji OptionalClaims w manifeście. Schemat OptionalClaims jest następujący:
 
    ```json
    {
@@ -254,21 +254,21 @@ W tej sekcji opisano opcje konfiguracji, w obszarze opcjonalne oświadczenia dot
    }
    ```
 
-   | Schemat opcjonalnych oświadczeń | Value |
+   | Opcjonalny schemat oświadczeń | Value |
    |----------|-------------|
-   | **Nazwa:** | Musi być "groups" |
-   | **Źródło:** | Nie jest używany. Pomiń lub określ wartość null |
-   | **podstawowe:** | Nie jest używany. Pomiń lub określić wartość false |
-   | **additionalProperties:** | Lista właściwości dodatkowych.  Prawidłowe opcje to "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name", "emit_as_roles" |
+   | **Nazwij** | Musi być "grupami" |
+   | **zewnętrz** | Nieużywane. Pomiń lub określ wartość null |
+   | **olejk** | Nieużywane. Pomiń lub określ wartość false |
+   | **AdditionalProperties** | Lista dodatkowych właściwości.  Prawidłowe opcje to "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name", "emit_as_roles" |
 
-   W dodatkowe właściwości, tylko jeden "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name" są wymagane.  Jeżeli istnieje więcej niż jeden, pierwszy jest używany i ignorowane przez inne osoby.
+   W additionalProperties są wymagane tylko jeden z "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name".  Jeśli istnieje więcej niż jeden, zostanie użyta pierwsza wartość i wszystkie pozostałe zostały zignorowane.
 
-   Niektóre aplikacje wymagają grupy informacje o użytkowniku w oświadczenie roli.  Aby zmienić typ oświadczenia z oświadczenia grupy oświadczenie roli, należy dodać "emit_as_roles" do właściwości dodatkowych.  Wartości grupy będzie emitowane w oświadczenie roli.
+   Niektóre aplikacje wymagają informacji o grupie dla użytkownika w ramach roszczeń ról.  Aby zmienić typ roszczeń na z na podstawie zgłoszenia do roli, należy dodać "emit_as_roles" do dodatkowych właściwości.  Wartości grupy będą emitowane w ramach roszczeń ról.
 
    > [!NOTE]
-   > Jeśli jest używany "emit_as_roles" wszystkie role aplikacji skonfigurowane są przypisane do użytkownika zostanie pojawia się w oświadczenie roli
+   > Jeśli jest używana wartość "emit_as_roles", wszystkie role aplikacji skonfigurowane do przypisania użytkownika nie będą wyświetlane w ramach roszczeń ról
 
-**Przykłady:** Emituj grup jako nazwy grup w tokenów dostępu protokołu OAuth w formacie dnsDomainName\sAMAccountName
+**Przykłady:** Emituj grupy jako nazwy grup w tokenach dostępu OAuth w formacie dnsDomainName\sAMAccountName
 
 ```json
 "optionalClaims": {
@@ -279,7 +279,7 @@ W tej sekcji opisano opcje konfiguracji, w obszarze opcjonalne oświadczenia dot
 }
  ```
 
-Aby emitować nazw grup, które mają zostać zwrócone w formacie netbiosDomain\sAMAccountName, zgodnie z rolami oświadczenia języka SAML i tokeny Identyfikatora OIDC:
+Aby emitować nazwy grup, które mają być zwracane w formacie netbiosDomain\sAMAccountName jako rolę role w tokenach identyfikatorów SAML i OIDC:
 
 ```json
 "optionalClaims": {
@@ -298,19 +298,19 @@ Aby emitować nazw grup, które mają zostać zwrócone w formacie netbiosDomain
 
 ## <a name="optional-claims-example"></a>Przykład opcjonalnych oświadczeń
 
-W tej sekcji można opisano scenariusz, aby zobaczyć, jak skorzystać z funkcji opcjonalnych oświadczeń dla aplikacji.
-Brak dostępnych wiele opcji do aktualizacji właściwości na konfigurację tożsamości aplikacji, aby włączyć i skonfigurować opcjonalne oświadczeń:
--   Można zmodyfikować manifest aplikacji. W poniższym przykładzie użyje tej metody w celu konfiguracji. Odczyt [opis dokumentu manifestu aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-manifest) pierwszy wprowadzenie do manifestu.
--   Istnieje również możliwość pisania aplikacji, która używa [interfejsu API programu Graph](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api) zaktualizowania aplikacji. [Jednostki i odwołania do typów złożonych](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#optionalclaims-type) w dokumentacji interfejsu API programu Graph przewodnik pomaga w konfigurowaniu opcjonalnych oświadczeń.
+W tej sekcji można zapoznać się z scenariuszem, aby dowiedzieć się, jak można użyć opcjonalnej funkcji oświadczeń dla aplikacji.
+Dostępnych jest wiele opcji aktualizowania właściwości konfiguracji tożsamości aplikacji w celu włączenia i skonfigurowania oświadczeń opcjonalnych:
+-   Można zmodyfikować manifest aplikacji. W poniższym przykładzie zostanie użyta ta metoda. Przeczytaj [dokument manifestu aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-manifest) najpierw, aby zapoznać się z wprowadzeniem do manifestu.
+-   Istnieje również możliwość napisania aplikacji, która używa [interfejs API programu Graph](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api) do aktualizowania aplikacji. [Informacje o jednostkach i typach złożonych](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#optionalclaims-type) w podręczniku referencyjnym interfejs API programu Graph mogą pomóc w konfigurowaniu opcjonalnych oświadczeń.
 
-**Przykład:** W poniższym przykładzie należy zmodyfikować manifest aplikacji, aby dodawać oświadczenia dostępu, identyfikator i SAML tokenów przeznaczonych dla aplikacji.
+**Przykład:** W poniższym przykładzie zmodyfikujesz manifest aplikacji w celu dodania oświadczeń do dostępu, identyfikatora i tokenów SAML przeznaczonych dla aplikacji.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Po użytkownik został uwierzytelniony, należy wybrać dzierżawy usługi Azure AD, wybierając je z prawym górnym rogu strony.
-1. Wybierz **rejestracje aplikacji** z lewej strony.
-1. Znajdź aplikację, którą chcesz skonfigurować opcjonalne oświadczeń na liście i kliknij go.
-1. Na stronie aplikacji kliknij **manifestu** aby otworzyć Edytor manifestu w tekście. 
-1. Można bezpośrednio edytować manifest za pomocą tego edytora. Manifest jest zgodna schematu dla [Jednostka aplikacji](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)i formaty automatyczne raz zapisać manifestu. Nowe elementy zostaną dodane do `OptionalClaims` właściwości.
+1. Po uwierzytelnieniu wybierz dzierżawę usługi Azure AD, wybierając ją w prawym górnym rogu strony.
+1. Wybierz pozycję **rejestracje aplikacji** z lewej strony.
+1. Znajdź aplikację, dla której chcesz skonfigurować opcjonalne oświadczenia na liście, a następnie kliknij ją.
+1. Na stronie Aplikacja kliknij pozycję **manifest** , aby otworzyć wbudowany edytor manifestu. 
+1. Możesz bezpośrednio edytować manifest za pomocą tego edytora. Manifest jest zgodny ze schematem dla [jednostki aplikacji](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)i umożliwia Autoformatowanie manifestu po jego zapisaniu. Nowe elementy zostaną dodane do `OptionalClaims` właściwości.
 
     ```json
       "optionalClaims": 
@@ -339,13 +339,13 @@ Brak dostępnych wiele opcji do aktualizacji właściwości na konfigurację to�
 
     ```
 
-    W tym przypadku różne oświadczenia opcjonalne zostały dodane do każdego rodzaju token, który aplikacja może odbierać. Tokeny Identyfikatora będą teraz zawierać nazwę UPN dla użytkowników federacyjnych w pełnej postaci (`<upn>_<homedomain>#EXT#@<resourcedomain>`). Tokeny dostępu, które inne komputery klienckie zażądają tej aplikacji będzie teraz obejmować oświadczenia auth_time. Tokeny SAML będzie teraz zawierać rozszerzenia schematu katalogu skypeId (w tym przykładzie identyfikator aplikacji dla tej aplikacji jest ab603c56068041afb2f6832e2a17e237). Tokeny SAML udostępni Identyfikator Skype jako `extension_skypeId`.
+    W takim przypadku inne opcjonalne oświadczenia zostały dodane do każdego typu tokenu, który aplikacja może odebrać. Tokeny identyfikatora będą teraz zawierać nazwę UPN dla użytkowników federacyjnych w pełnej postaci (`<upn>_<homedomain>#EXT#@<resourcedomain>`). Tokeny dostępu, które inne klienci żądają tej aplikacji, będą teraz zawierać auth_time. Tokeny SAML będą teraz zawierać rozszerzenie schematu katalogu skypeId (w tym przykładzie identyfikator aplikacji dla tej aplikacji to ab603c56068041afb2f6832e2a17e237). Tokeny SAML będą uwidaczniać identyfikator Skype jako `extension_skypeId`.
 
-1. Po zakończeniu aktualizowania manifestu kliknij **Zapisz** można zapisać manifestu
+1. Po zakończeniu aktualizowania manifestu kliknij przycisk **Zapisz** , aby zapisać manifest
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej na temat standardowych oświadczenia dostarczane przez usługę Azure AD.
+Dowiedz się więcej na temat standardowych oświadczeń dostarczonych przez usługę Azure AD.
 
-- [Tokeny Identyfikatora](id-tokens.md)
+- [IDENTYFIKATORY tokenów](id-tokens.md)
 - [Tokeny dostępu](access-tokens.md)

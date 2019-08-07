@@ -1,64 +1,64 @@
 ---
-title: Kluczowe pojęcia związane z administrowanie usługą Azure VMware Solution by CloudSimple
-description: W tym artykule opisano kluczowe pojęcia związane z administrowanie usługą Azure VMware Solution by CloudSimple
+title: Kluczowe pojęcia związane z administrowaniem rozwiązaniem VMware platformy Azure przez CloudSimple
+description: Opisuje kluczowe pojęcia związane z administrowaniem rozwiązaniem VMware platformy Azure przez CloudSimple
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 04/24/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6d87871fe8faaaab2e56d4a0426cd5e5f0899c8f
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: e434065feb218b0a46220b95cc6bfd9a7033de30
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595620"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816110"
 ---
-# <a name="key-concepts-for-administration-of-azure-vmware-solution-by-cloudsimple"></a>Kluczowe pojęcia związane z administracyjnej Azure VMware Solution by CloudSimple
+# <a name="key-concepts-for-administration-of-azure-vmware-solution-by-cloudsimple"></a>Kluczowe pojęcia dotyczące administrowania rozwiązaniem VMware platformy Azure przez CloudSimple
 
-Administrowanie usługą Azure VMware Solution by CloudSimple wymaga zrozumienia następujące pojęcia:
+Zarządzanie rozwiązaniem VMware platformy Azure przez CloudSimple wymaga poznania następujących koncepcji:
 
-* Usługa CloudSimple, która jest wyświetlana jako rozwiązania programu VMware na platformie Azure przez CloudSimple - usługi
-* CloudSimple węzła, który jest wyświetlany jako rozwiązania programu VMware na platformie Azure przez CloudSimple - Node
-* Chmura prywatna CloudSimple
-* Usługi sieciowe
-* CloudSimple maszynę wirtualną, która jest wyświetlana jako rozwiązania programu VMware na platformie Azure przez CloudSimple - maszyny wirtualnej
+* Usługa CloudSimple, która jest wyświetlana jako rozwiązanie VMware platformy Azure przez CloudSimple-Service
+* Węzeł CloudSimple, który jest wyświetlany jako rozwiązanie Azure VMware według CloudSimple-Node
+* CloudSimple chmurę prywatną
+* Sieć usług
+* CloudSimple maszynę wirtualną, która jest wyświetlana jako rozwiązanie VMware platformy Azure przez CloudSimple — maszyna wirtualna
 
 ## <a name="cloudsimple-service"></a>Usługa CloudSimple
 
-W usłudze CloudSimple można tworzyć i zarządzanie wszystkimi zasobami skojarzonymi z rozwiązaniami VMware przez CloudSimple w witrynie Azure portal. Utwórz zasób usługi w każdym regionie, w którym zamierzasz korzystać z usługi.
+Usługa CloudSimple umożliwia tworzenie wszystkich zasobów skojarzonych z rozwiązaniami VMware i zarządzanie nimi za pomocą CloudSimple z Azure Portal. Utwórz zasób usługi w każdym regionie, w którym zamierzasz korzystać z usługi.
 
-Dowiedz się więcej o [usługi CloudSimple](cloudsimple-service.md).
+Dowiedz się więcej o [usłudze CloudSimple](cloudsimple-service.md).
 
 ## <a name="cloudsimple-node"></a>Węzeł CloudSimple
 
-Węzeł CloudSimple to hosta zasobów obliczeniowych i magazynowych hiperzbieżnego dedykowaną, bez systemu operacyjnego, w której jest wdrożony funkcja hypervisor VMware ESXi. Ten węzeł jest następnie włączona do oprogramowania VMware vSphere, vCenter, sieć vSAN i NSX platform. Usługi sieciowe CloudSimple i edge usługi sieciowe również są włączone. Każdy węzeł służy jako jednostki pojemności obliczeniowej i magazynowej, który można udostępnić, aby utworzyć [chmur prywatnych CloudSimple](cloudsimple-private-cloud.md). Aprowizowanie lub rezerwa węzły w regionie, w których usługa CloudSimple jest dostępna.
+Węzeł CloudSimple to dedykowany Host obliczeniowy i magazyn, do którego wdrożono funkcję hypervisor VMware ESXi. Ten węzeł jest następnie dołączany do platform VMware vSphere, vCenter, sieci vSAN i NSX. Usługi sieciowe CloudSimple i usługi sieci brzegowej również są włączone. Każdy węzeł służy jako jednostka pojemności obliczeniowej i magazynu, którą można udostępnić do tworzenia [chmur prywatnych CloudSimple](cloudsimple-private-cloud.md). W regionie, w którym jest dostępna usługa CloudSimple, można zainicjować obsługę administracyjną lub zarezerwować węzły.
 
 
-Dowiedz się więcej o [węzłów CloudSimple](cloudsimple-node.md).
+Dowiedz się więcej o [węzłach CloudSimple](cloudsimple-node.md).
 
-## <a name="cloudsimple-private-cloud"></a>Chmura prywatna CloudSimple
+## <a name="cloudsimple-private-cloud"></a>CloudSimple chmurę prywatną
 
-CloudSimple Chmura prywatna jest izolowanym środowisku stos oprogramowania VMware zarządzane przez serwer vCenter w jego własnej domeny zarządzania. Stos oprogramowania VMware zawiera hosty, vSphere ESXi, vCenter, sieć vSAN i NSX. Uruchamiany stosu na dedykowanych węzłów (dedykowanej i odizolowanej sprzętu bez systemu operacyjnego) i jest używane przez użytkowników za pośrednictwem natywnych narzędzi VMware vCenter i NSX menedżera. Węzły dedykowane są wdrażane w lokalizacjach platformy Azure i są zarządzane przez platformę Azure. Każdej chmury prywatnej można segmentowanych i zabezpieczone za pomocą usług sieciowych, takich jak sieci VLAN i podsieci oraz tabele zapory. Połączenia usługi w środowisku lokalnym i sieci platformy Azure są tworzone przez przy użyciu bezpiecznej, prywatne sieci VPN i usługi Azure ExpressRoute połączeń.
+Chmura prywatna CloudSimple to izolowane środowisko stosu VMware zarządzane przez serwer vCenter we własnej domenie zarządzania. Stos VMware obejmuje hosty ESXi, vSphere, vCenter, sieci vSAN i NSX. Stos działa na dedykowanych węzłach (dedykowany i izolowany sprzęt bez systemu operacyjnego) i jest używany przez użytkowników za pomocą natywnych narzędzi VMware, które obejmują program vCenter i NSX Manager. Węzły dedykowane są wdrażane w lokalizacjach platformy Azure i są zarządzane przez platformę Azure. Każdą chmurę prywatną można podzielić na segmenty i zabezpieczyć przy użyciu usług sieciowych, takich jak sieci VLAN i podsieci oraz tabele zapory. Połączenia ze środowiskiem lokalnym i siecią platformy Azure są tworzone przy użyciu bezpiecznych, prywatnych sieci VPN i połączeń usługi Azure ExpressRoute.
 
-Dowiedz się więcej o [chmury prywatnej CloudSimple](cloudsimple-private-cloud.md).
+Dowiedz się więcej o [chmurze prywatnej CloudSimple](cloudsimple-private-cloud.md).
 
-## <a name="service-networking"></a>Usługi sieciowe
+## <a name="service-networking"></a>Sieć usług
 
-Usługa CloudSimple zapewnia sieci, na którym wdrożono usługę CloudSimple region. Sieć jest w jednej przestrzeni adresowej TCP warstwy 3 routingu, domyślnie włączone. Wszystkich chmur prywatnych i podsieci, utworzone w tym regionie komunikują się ze sobą bez przeprowadzania dodatkowej konfiguracji. Tworzenie grup portów rozproszonych na serwer vCenter odbywa się przy użyciu sieci VLAN. Aby skonfigurować i zabezpieczyć zasoby obciążenia w chmurze prywatnej, można użyć następujących funkcji sieci:
+Usługa CloudSimple zapewnia sieć na region, w którym wdrożono usługę CloudSimple. Sieć jest pojedynczą przestrzenią adresową TCP warstwy 3 z włączoną funkcją routingu. Wszystkie chmury prywatne i podsieci utworzone w tym regionie komunikują się ze sobą bez żadnej dodatkowej konfiguracji. Na serwerze vCenter tworzysz rozproszone grupy portów przy użyciu sieci VLAN. Aby skonfigurować i zabezpieczyć zasoby obciążeń w chmurze prywatnej, można użyć następujących funkcji sieciowych:
 
 * [Sieci VLAN i podsieci](cloudsimple-vlans-subnets.md)
 * [Tabele zapory](cloudsimple-firewall-tables.md)
 * [Bramy sieci VPN](cloudsimple-vpn-gateways.md)
 * [Publiczny adres IP](cloudsimple-public-ip-address.md)
-* [Połączenie sieci platformy Azure](cloudsimple-azure-network-connection.md)
+* [Połączenie sieciowe platformy Azure](cloudsimple-azure-network-connection.md)
 
-## <a name="cloudsimple-virtual-machine"></a>Maszyna wirtualna CloudSimple
+## <a name="cloudsimple-virtual-machine"></a>CloudSimple maszynę wirtualną
 
-Usługa CloudSimple maszyny wirtualne VMware można zarządzać w witrynie Azure portal. Klastry lub pule zasobów ze środowiska vSphere mogą być mapowane do subskrypcji, w którym usługa została utworzona.
+Za pomocą usługi CloudSimple można zarządzać maszynami wirtualnymi VMware z poziomu Azure Portal. Co najmniej jeden klaster lub pule zasobów ze środowiska vSphere można zamapować na subskrypcję, w której jest tworzona usługa.
 
 Dowiedz się więcej o usługach:
 
-* [Maszyny wirtualne CloudSimple](cloudsimple-virtual-machines.md)
+* [CloudSimple maszyn wirtualnych](cloudsimple-virtual-machines.md)
 * [Mapowanie subskrypcji platformy Azure](https://docs.azure.cloudsimple.com/azure-subscription-mapping/)

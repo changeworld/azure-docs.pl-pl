@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 93c36ccb244931c12d8b038f448fbda4eff77f16
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 287902c149fd3a8732ce9ce95b05b0d9fa36147b
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721709"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816607"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
@@ -62,7 +62,7 @@ Azure Files zawiera kilka wbudowanych opcji zapewniających bezpieczeństwo dany
     * Klienci nieobsługujący protokołu SMB 3,0 z szyfrowaniem mogą komunikować się wewnątrz centrum danych za pośrednictwem protokołu SMB 2,1 lub SMB 3,0 bez szyfrowania. Klienci protokołu SMB nie mogą komunikować się między centrami danych za pośrednictwem protokołu SMB 2,1 ani protokołu SMB 3,0 bez szyfrowania.
     * Klienci mogą komunikować się za pośrednictwem pliku HTTP lub HTTPS.
 * Szyfrowanie w spoczynku ([Azure szyfrowanie usługi Storage](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)): Szyfrowanie usługi Storage (SSE) jest włączona dla wszystkich kont magazynu. Dane przechowywane w usłudze REST są szyfrowane za pomocą w pełni zarządzanych kluczy. Szyfrowanie w czasie spoczynku nie zwiększa kosztów magazynu ani nie zmniejsza wydajności. 
-* Opcjonalne wymaganie szyfrowanych danych podczas przesyłania: po zaznaczeniu Azure Files odrzuca dostęp do danych za pośrednictwem nieszyfrowanych kanałów. Dozwolone są tylko protokołu HTTPS i SMB 3,0 z połączeniami szyfrowania.
+* Opcjonalne wymaganie szyfrowanych danych podczas przesyłania: w przypadku wybrania Azure Files odrzuca dostęp do danych za pośrednictwem nieszyfrowanych kanałów. Dozwolone są tylko protokołu HTTPS i SMB 3,0 z połączeniami szyfrowania.
 
     > [!Important]  
     > Wymaganie bezpiecznego transferu danych spowoduje, że starsze klientów SMB nie będą mogły komunikować się z protokołem SMB 3,0 z szyfrowaniem, aby nie powiodło się. Aby uzyskać więcej informacji, zobacz [Instalowanie systemu Windows](storage-how-to-use-files-windows.md), [Instalowanie w systemie Linux](storage-how-to-use-files-linux.md)i [Instalowanie w systemie macOS](storage-how-to-use-files-mac.md).
@@ -207,11 +207,12 @@ Standardowe udziały plików są dostępne we wszystkich regionach do 5 TiB. W n
 
 |Region |Obsługiwana nadmiarowość |Obsługuje istniejące konta magazynu |Obsługa portalu *   |
 |-------|---------|---------|---------|
-|Australia Wschodnia  |LRS|Nie         |Tak|
-|Francja Środkowa  |LRS|Nie         |Jeszcze nie|
-|Azja Południowo-Wschodnia  |LRS, ZRS|Nie         |Tylko LRS, ZRS — jeszcze nie|
-|Europa Zachodnia     |LRS, ZRS|Nie       |Tak|
-|Zachodnie stany USA 2       |LRS, ZRS|Nie         |Tak|
+|Australia Wschodnia  |LRS     |Nie    |Tak|
+|Francja Środkowa  |LRS     |Nie    |Jeszcze nie|
+|Francja Południowa    |LRS     |Nie    |Jeszcze nie|
+|Azja Południowo-Wschodnia  |LRS, ZRS|Nie    |Tak|
+|Europa Zachodnia     |LRS, ZRS|Nie    |Yes|
+|Zachodnie stany USA 2       |LRS, ZRS|Nie    |Tak|
 
 \* W przypadku regionów bez obsługi portalu można nadal używać programu PowerShell lub interfejsu wiersza polecenia platformy Azure do tworzenia większych udziałów TiB. Altenatively, Utwórz nowy udział za pośrednictwem portalu bez określania limitu przydziału. Spowoduje to utworzenie udziału o domyślnym rozmiarze 100 TiB, który można później zaktualizować za pomocą programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
 
@@ -263,7 +264,7 @@ Istnieje wiele łatwych opcji przesyłania zbiorczego danych z istniejącego udz
 * **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** : Robocopy to dobrze znane narzędzie do kopiowania, które jest dostarczane z systemami Windows i Windows Server. Robocopy może służyć do transferowania danych do Azure Files przez zainstalowanie udziału plików lokalnie, a następnie użycie zainstalowanej lokalizacji jako miejsca docelowego w poleceniu Robocopy.
 * **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : AzCopy to narzędzie wiersza polecenia przeznaczone do kopiowania danych do i z Azure Files, a także do usługi Azure Blob Storage przy użyciu prostych poleceń z optymalną wydajnością.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Planowanie wdrożenia Azure File Sync](storage-sync-files-planning.md)
 * [Wdrażanie Azure Files](storage-files-deployment-guide.md)
 * [Wdrażanie Azure File Sync](storage-sync-files-deployment-guide.md)

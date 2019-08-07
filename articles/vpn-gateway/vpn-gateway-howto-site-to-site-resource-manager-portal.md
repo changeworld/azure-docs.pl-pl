@@ -1,5 +1,5 @@
 ---
-title: 'Połącz sieć lokalną z siecią wirtualną platformy Azure: Sieć VPN lokacja lokacja: Portal | Microsoft Docs'
+title: 'Połącz sieć lokalną z siecią wirtualną platformy Azure: Sieć VPN typu lokacja-lokacja: Portal | Microsoft Docs'
 description: Kroki tworzenia połączenia IPsec z sieci lokalnej do sieci wirtualnej platformy Azure za pośrednictwem publicznego Internetu. Kroki te są pomocne podczas tworzenia obejmującego wiele lokalizacji połączenia bramy sieci VPN typu lokacja-lokacja za pomocą portalu.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: cherylmc
-ms.openlocfilehash: 032b6a4f5147d06a4613a827a0372437dca47f47
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5b4be7464a4c19cd0a71d5a786b46091cdbc074b
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60407748"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780243"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Tworzenie połączenia typu lokacja-lokacja w witrynie Azure Portal
 
@@ -42,23 +42,23 @@ Przed rozpoczęciem konfiguracji sprawdź, czy są spełnione następujące kryt
 
 W przykładach w tym artykule są stosowane następujące wartości. Tych wartości możesz użyć do tworzenia środowiska testowego lub odwoływać się do nich, aby lepiej zrozumieć przykłady w niniejszym artykule. Aby uzyskać więcej informacji o typach bram sieci VPN, zobacz [About VPN Gateway configuration settings (Informacje o ustawieniach konfiguracji bramy sieci VPN)](vpn-gateway-about-vpn-gateway-settings.md).
 
-* **Nazwa sieci wirtualnej:** TestVNet1
+* **Nazwa sieci wirtualnej:** Sieć wirtualna 1
 * **Przestrzeń adresowa:** 10.1.0.0/16
-* **Subskrypcja:** Subskrypcję, której chcesz użyć
+* **Subskrypcja:** Subskrypcja, której chcesz użyć
 * **Grupa zasobów:** TestRG1
-* **Lokalizacja:** Wschodnie stany USA
-* **Podsieć:** FrontEnd: 10.1.0.0/24, BackEnd: 10.1.1.0/24 (opcjonalnie na potrzeby tego ćwiczenia)
-* **Nazwa podsieci bramy:** GatewaySubnet (ta zostanie automatycznie wypełniona w portalu)
+* **Lokalizacja:** East US
+* **Podsieci** FrontEnd: 10.1.0.0/24, zaplecze: 10.1.1.0/24 (opcjonalnie w tym ćwiczeniu)
+* **Nazwa podsieci bramy:** GatewaySubnet (Ta funkcja zostanie wypełniona w portalu)
 * **Zakres adresów podsieci bramy:** 10.1.255.0/27
-* **Serwer DNS:** 8.8.8.8 — opcjonalnie. Adres IP serwera DNS.
-* **Nazwa bramy sieci wirtualnej:** VNet1GW
+* **Serwer DNS:** 8.8.8.8 — opcjonalny. Adres IP serwera DNS.
+* **Nazwa bramy Virtual Network:** VNet1GW
 * **Publiczny adres IP:** VNet1GWIP
-* **Typ sieci VPN:** Oparte na trasach
-* **Typ połączenia:** Lokacja lokacja (IPsec)
-* **Typ bramy:** Sieć VPN
+* **Typ sieci VPN:** Oparte na trasie
+* **Typ połączenia:** Lokacja-lokacja (IPsec)
+* **Typ bramy:** VPN
 * **Nazwa bramy sieci lokalnej:** Site1
 * **Nazwa połączenia:** VNet1toSite1
-* **Klucz współużytkowany:** W tym przykładzie użyjemy klucza abc123. Jednak możesz użyć dowolnej wartości zgodnej ze sprzętem sieci VPN. Ważne, żeby wartości były zgodne po obu stronach połączenia.
+* **Klucz współużytkowany:** W tym przykładzie używamy abc123. Jednak możesz użyć dowolnej wartości zgodnej ze sprzętem sieci VPN. Ważne, żeby wartości były zgodne po obu stronach połączenia.
 
 ## <a name="CreatVNet"></a>1. Tworzenie sieci wirtualnej
 
@@ -66,9 +66,11 @@ W przykładach w tym artykule są stosowane następujące wartości. Tych warto�
 
 ## <a name="dns"></a>2. Określanie serwera DNS
 
-Serwer DNS nie jest wymagany do tworzenia połączeń typu lokacja-lokacja. Jeśli jednak chcesz korzystać z funkcji rozpoznawania nazw dla zasobów, które zostały wdrożone w Twojej sieci wirtualnej, określ serwer DNS. To ustawienie umożliwia określenie serwera DNS, który ma być używany do rozpoznawania nazw dla tej sieci wirtualnej. Nie powoduje ono jednak utworzenia serwera DNS. Aby uzyskać więcej informacji na temat rozpoznawania nazw, zobacz artykuł [Name Resolution for VMs and role instances](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) (Rozpoznawanie nazw dla maszyn wirtualnych i wystąpień roli)
+Serwer DNS nie jest wymagany do tworzenia połączeń typu lokacja-lokacja.
 
-[!INCLUDE [Specify a dns server - optional](../../includes/vpn-gateway-specify-dns-portal-include.md)]
+Jeśli jednak chcesz korzystać z funkcji rozpoznawania nazw dla zasobów, które zostały wdrożone w Twojej sieci wirtualnej, określ serwer DNS. To ustawienie umożliwia określenie serwera DNS, który ma być używany do rozpoznawania nazw dla tej sieci wirtualnej. Nie powoduje ono jednak utworzenia serwera DNS. Aby uzyskać więcej informacji na temat rozpoznawania nazw, zobacz artykuł [Name Resolution for VMs and role instances](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) (Rozpoznawanie nazw dla maszyn wirtualnych i wystąpień roli)
+
+[!INCLUDE [Specify a dns server - optional](../../includes/vpn-gateway-add-dns-rm-portal-include.md)]
 
 ## <a name="gatewaysubnet"></a>3. Tworzenie podsieci bramy
 
@@ -128,7 +130,7 @@ Możesz dodać dodatkowe połączenia, pod warunkiem że żadna z przestrzeni ad
 3. Jeśli łączysz się przy użyciu połączenia lokacja-lokacja, a jeszcze nie utworzono brany sieci lokalnej dla lokacji, z którą chcesz nawiązać połączenie, możesz utworzyć nową.
 4. Określ klucz współużytkowany, którego chcesz użyć, a następnie kliknij przycisk **OK**, aby utworzyć połączenie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Informacje na temat protokołu BGP można znaleźć w artykułach [BGP Overview](vpn-gateway-bgp-overview.md) (Omówienie protokołu BGP) i [How to configure BGP](vpn-gateway-bgp-resource-manager-ps.md) (Konfigurowanie protokołu BGP).
 * Aby uzyskać informacje o wymuszonym tunelowaniu, zobacz [Informacje o wymuszonym tunelowaniu](vpn-gateway-forced-tunneling-rm.md).

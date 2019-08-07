@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7799b62b2c330610663e361bbb3930340b1ebdaf
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: a007e3adb72148cfde1590e996f7df9082159445
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726286"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840500"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Korzystanie z modelu usługi Azure Machine Learning, wdrożyć jako usługę sieci web
 
@@ -29,6 +29,9 @@ Ogólny przepływ pracy służący do tworzenia klienta korzystającego z usług
 1. Użyj zestawu SDK, aby uzyskać informacje o połączeniu.
 1. Określ typ danych żądania używanych przez model.
 1. Utwórz aplikację, która wywołuje usługę sieci Web.
+
+> [!TIP]
+> Przykłady w tym dokumencie są tworzone ręcznie bez użycia specyfikacji OpenAPI (Swagger). Jeśli została włączona Specyfikacja OpenAPI dla danego wdrożenia, można użyć narzędzi, takich jak [Swagger-codegen](https://github.com/swagger-api/swagger-codegen) , aby utworzyć biblioteki klienckie dla usługi.
 
 ## <a name="connection-information"></a>informacje o połączeniu
 
@@ -76,7 +79,7 @@ Azure Machine Learning zapewnia dwa sposoby kontroli dostępu do usług sieci We
 |Metoda uwierzytelniania|ACI|AKS|
 |---|---|---|
 |Klucz|Domyślnie wyłączone| Włączona domyślnie|
-|Token| Niedostępne| Domyślnie wyłączone |
+|Token| Niedostępna| Domyślnie wyłączone |
 #### <a name="authentication-with-keys"></a>Uwierzytelnianie przy użyciu kluczy
 
 Po włączeniu uwierzytelniania dla wdrożenia automatycznie tworzone są klucze uwierzytelniania.

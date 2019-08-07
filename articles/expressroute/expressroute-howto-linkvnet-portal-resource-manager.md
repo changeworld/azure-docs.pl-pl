@@ -1,5 +1,5 @@
 ---
-title: 'Łączenie sieci wirtualnej z obwodem — ExpressRoute: Witryna Azure portal | Dokumentacja firmy Microsoft'
+title: 'Łączenie sieci wirtualnej z obwodem ExpressRoute: Azure Portal | Microsoft Docs'
 description: Łączenie sieci wirtualnej z obwodem usługi ExpressRoute platformy Azure. Instrukcje.
 services: expressroute
 author: cherylmc
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 66c43556e698063b95ce1c3787458e40c9d71504
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1545e2e7eba23b0bedbfe297c292fc94e1659ae3
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60365594"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775282"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Łączenie sieci wirtualnej z obwodem usługi ExpressRoute za pomocą portalu
 > [!div class="op_single_selector"]
@@ -70,7 +70,7 @@ Obwód usługi ExpressRoute można udostępniać w wielu subskrypcjach. Na poni�
 
 - Każdy z mniejszych chmury w chmurze dużych jest używana do reprezentowania subskrypcje, które należą do różnych działów w organizacji.
 - Każdego z działów w organizacji można użyć własnej subskrypcji do wdrażania ich usług, ale mogą oni udostępnić pojedynczego obwodu usługi ExpressRoute i połączyć się ponownie z Twojej sieci lokalnej.
-- Jednego działu (w tym przykładzie: IT) mogą być właścicielami obwód usługi ExpressRoute. Inne subskrypcje w ramach organizacji, można użyć obwodu usługi ExpressRoute i autoryzacji skojarzone z obwodu, łącznie z subskrypcjami powiązanymi z innych dzierżaw usługi Azure Active Directory i rejestracji umowy Enterprise Agreement.
+- Pojedynczy dział (w tym przykładzie: Może to być właściciel obwodu ExpressRoute. Inne subskrypcje w ramach organizacji, można użyć obwodu usługi ExpressRoute i autoryzacji skojarzone z obwodu, łącznie z subskrypcjami powiązanymi z innych dzierżaw usługi Azure Active Directory i rejestracji umowy Enterprise Agreement.
 
   > [!NOTE]
   > Połączeniami i przepustowością opłat za obwód dedykowany będą stosowane do właściciela obwodu usługi ExpressRoute. Wszystkie sieci wirtualne współdzielą ten sam przepustowość.
@@ -90,7 +90,7 @@ Właściciela obwodu ma uprawnienia do modyfikowania i odwołać autoryzacji w d
 Właściciela obwodu tworzy autoryzacji. Powoduje to utworzenie klucza autoryzacji, który może służyć przez użytkowników obwodu połączyć ich bramy sieci wirtualnej z obwodem usługi ExpressRoute. Autoryzacja jest prawidłowe dla tylko jedno połączenie.
 
 > [!NOTE]
-> Każde połączenie wymaga oddzielnych autoryzacji.
+> Każde połączenie wymaga oddzielnej autoryzacji.
 >
 
 1. Na stronie usługi ExpressRoute, kliknij przycisk **autoryzacji** , a następnie wpisz **nazwa** autoryzacji, a następnie kliknij przycisk **Zapisz**.
@@ -121,7 +121,7 @@ Obwód trzeba podać identyfikator zasobu i klucza autoryzacji z właściciela o
 
    ![Podstawowe informacje o stronie](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
 5. W **ustawienia** stronie wybierz **bramy sieci wirtualnej** i sprawdź **Zrealizuj autoryzację** pole wyboru.
-6. Wprowadź **klucza autoryzacji** i **identyfikator URI obwodu równorzędnego** i nazwij połączenie. Kliknij przycisk **OK**.
+6. Wprowadź **klucza autoryzacji** i **identyfikator URI obwodu równorzędnego** i nazwij połączenie. Kliknij przycisk **OK**. **URI obwodu równorzędnego** jest identyfikatorem zasobu obwodu ExpressRoute (który można znaleźć w okienku ustawienia właściwości obwodu ExpressRoute).
 
    ![Strona Ustawienia](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
 7. Zapoznaj się z informacjami w **Podsumowanie** strony, a następnie kliknij przycisk **OK**.

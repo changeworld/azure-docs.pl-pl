@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: bb2d5733704b0b31dc010cec2a90e99e1be07b56
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 7d4f36be51591d6be2b4c42eb8a8950ab52a0258
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592033"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782578"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Usługa Advanced Threat Protection dla usługi Azure Storage
 
@@ -117,64 +117,9 @@ Bieżące alerty zabezpieczeń można przeglądać i zarządzać nimi z poziomu 
 
 ## <a name="protection-alerts"></a>Alerty ochrony
 
-Alerty są generowane przez nietypowe i potencjalnie szkodliwe próby dostępu do kont magazynu lub korzystania z nich. Zdarzenia te mogą wyzwalać następujące alerty:
+Alerty są generowane przez nietypowe i potencjalnie szkodliwe próby dostępu do kont magazynu lub korzystania z nich. Aby uzyskać listę tych alertów, zobacz alerty [usługi Azure Storage](../../security-center/security-center-alerts-data-services.md#azure-storage)
 
-### <a name="anomalous-access-pattern-alerts"></a>Alerty nietypowego wzorca dostępu
-
-* **Dostęp z nietypowej lokalizacji**: Ten alert jest wyzwalany, gdy ktoś uzyska dostęp do konta magazynu z nietypowej lokalizacji geograficznej.
-Możliwe przyczyny:
-   * Osoba atakująca uzyskała dostęp do konta magazynu
-   * Uprawniony użytkownik uzyskał dostęp do konta magazynu z nowej lokalizacji
- 
-* **Anomalia aplikacji**: Ten alert wskazuje, że nietypowa aplikacja uzyskała dostęp do tego konta magazynu. Możliwe przyczyny:
-   * Osoba atakująca uzyskała dostęp do konta magazynu przy użyciu nowej aplikacji.
-   * Uprawniony użytkownik użył nowej aplikacji/przeglądarki w celu uzyskania dostępu do konta magazynu.
-
-* **Dostęp anonimowy**: Ten alert oznacza, że do tego konta uzyskano dostęp anonimowo (tj. bez żadnego uwierzytelniania), który jest nieoczekiwany w porównaniu z ostatnim wzorcem dostępu na tym koncie.
-Możliwe przyczyny:
-   * Osoba atakująca korzystała z publicznego dostępu do odczytu do kontenera.
-   * Uprawniony użytkownik lub aplikacja użyła publicznego dostępu do odczytu do kontenera.
-
-* **Anomalia tor**: Ten alert oznacza, że dostęp do tego konta powiodło się z adresu IP, który jest znany jako aktywny węzeł zakończenia sieci Tor (anonymizing proxy). Ważność tego alertu uwzględnia używany typ uwierzytelniania (jeśli istnieje), a także to, czy jest to pierwszy przypadek takiego dostępu.
-Możliwe przyczyny:
-   * Osoba atakująca uzyskała dostęp do konta magazynu przy użyciu sieci Tor.
-   * Uprawniony użytkownik uzyskał dostęp do konta magazynu przy użyciu sieci Tor.
-
-
-### <a name="anomalous-extractupload-alerts"></a>Ostrzeżenia dotyczące wyodrębniania/przekazywania anomalii
-
-* **Eksfiltracji danych**: Ten alert wskazuje, że nietypowo duża ilość danych została wyodrębniona w porównaniu do ostatnich działań w tym kontenerze magazynu. Możliwe przyczyny:
-   * Osoba atakująca wyodrębnił dużą ilość danych z kontenera. (Na przykład: eksfiltracji/naruszenie danych, nieautoryzowany transfer danych)
-   * Uprawniony użytkownik lub aplikacja wyodrębnił nietypową ilość danych z kontenera. (Na przykład: działanie konserwacji)
-
-* **Nieoczekiwane usunięcie**: Ten alert wskazuje na to, że na koncie magazynu wystąpiła co najmniej jedna Nieoczekiwana operacja usuwania w porównaniu do ostatnich działań na tym koncie. Możliwe przyczyny:
-   * Osoba atakująca usunęła dane z konta magazynu.
-   * Uprawniony użytkownik wykonał nietypowe usunięcie.
-
-* **Przekaż pakiet usługi w chmurze platformy Azure**: Ten alert oznacza, że pakiet usługi w chmurze platformy Azure (plik. cspkg) został przekazany do konta magazynu w nietypowy sposób w porównaniu z ostatnią aktywnością na tym koncie. Możliwe przyczyny: 
-   * Osoba atakująca przygotowuje się do wdrożenia złośliwego kodu z konta magazynu w usłudze w chmurze platformy Azure.
-   * Uprawniony użytkownik został przygotował do wiarygodnego wdrożenia usługi.
-
-### <a name="suspicious-storage-activities-alerts"></a>Alerty dotyczące podejrzanych działań związanych z magazynem
-
-* **Zmiana uprawnień dostępu**: Ten alert wskazuje, że uprawnienia dostępu do tego kontenera magazynu zostały zmienione w nietypowy sposób. Możliwe przyczyny: 
-   * Osoba atakująca zmieniła uprawnienia kontenera, aby osłabić jej zabezpieczenia.
-   * Uprawniony użytkownik zmienił uprawnienia do kontenera.
-
-* **Inspekcja dostępu**: Ten alert wskazuje, że uprawnienia dostępu do konta magazynu zostały sprawdzone w nietypowy sposób w porównaniu z ostatnią aktywnością na tym koncie. Możliwe przyczyny: 
-   * Atakujący wykonał rekonesans w celu zaatakowania w przyszłości.
-   * Uprawniony użytkownik wykonał konserwację na koncie magazynu.
-
-* **Eksploracja danych**: Ten alert wskazuje, że obiekty blob lub kontenery na koncie magazynu zostały wyliczone w nietypowy sposób w porównaniu z ostatnią aktywnością na tym koncie. Możliwe przyczyny: 
-   * Atakujący wykonał rekonesans w celu zaatakowania w przyszłości.
-   * Uprawniony użytkownik lub logika aplikacji ma zbadane dane w ramach konta magazynu.
-
-
-
-
-
-
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Dowiedz się więcej o [dziennikach na kontach usługi Azure Storage](/rest/api/storageservices/About-Storage-Analytics-Logging)
 

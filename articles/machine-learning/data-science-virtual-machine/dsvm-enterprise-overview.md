@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: vijetaj
-ms.openlocfilehash: 81aac356f49f7bf8dc57f77054d10aa3e09d473f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 40b8f101d968514ac599b43a79b7e62b7fd837a4
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565269"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779479"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Analiza zespołu na podstawie maszyny wirtualnej do nauki o danych i sztucznej Inteligencji środowiska 
 [Maszyny wirtualnej do nauki o danych](overview.md) (DSVM) zapewnia bogate środowisko na platformie Azure przy użyciu wbudowanych oprogramowania sztucznej inteligencji (AI) i analizy danych. 
@@ -43,12 +43,12 @@ Niektóre z kluczowych bloki konstrukcyjne środowiska przedsiębiorstwa zespoł
 
 Ta seria artykułów zawiera wskazówki i wskaźniki dla każdej z wymienionych elementów. Nie omówiono zagadnienia i wymagania podczas wdrażania maszyny wirtualnej DSVM w konfiguracjach dużych przedsiębiorstw. Poniżej przedstawiono inne dokumentacji platformy Azure, używanego podczas wdrażania wystąpień maszyny wirtualnej DSVM w przedsiębiorstwie: 
 
-* [Bezpieczeństwo sieci](https://docs.microsoft.com/azure/security/azure-network-security)
+* [Zabezpieczenia sieci] (https://docs.microsoft.com/azure/security/fundamentals/network-security
 * [Monitorowanie](https://docs.microsoft.com/azure/virtual-machines/windows/monitor) i [zarządzania](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)
-* [Rejestrowanie i przeprowadzanie inspekcji](https://docs.microsoft.com/azure/security/azure-log-audit)
+* [Rejestrowanie i przeprowadzanie inspekcji](https://docs.microsoft.com/azure/security/fundamentals/log-audit)
 * [Kontrola dostępu oparta na rolach](https://docs.microsoft.com/azure/role-based-access-control/overview)
 * [Ustawienia zasad i wymuszania](../../governance/policy/overview.md)
-* [Oprogramowanie chroniące przed złośliwym kodem](https://docs.microsoft.com/azure/security/azure-security-antimalware)
+* [Oprogramowanie chroniące przed złośliwym kodem](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
 * [Szyfrowanie](https://docs.microsoft.com/azure/virtual-machines/windows/encrypt-disks)
 * [Odnajdywanie danych i zarządzanie](https://docs.microsoft.com/azure/data-catalog/)
 

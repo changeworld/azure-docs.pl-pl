@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: grgale
-ms.openlocfilehash: 0c575076439e3405d34fe0ef3beff0242a53a8c5
-ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
+ms.openlocfilehash: 48b4b71d80bcef1eaf3bf89c0b14c8033748684e
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68601813"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779333"
 ---
 # <a name="additional-documentation-and-resources-by-focus-area"></a>Dodatkowa dokumentacja i zasoby według obszaru fokusu
 
@@ -22,7 +22,7 @@ Ta biblioteka zasobów zawiera dodatkowe linki i odniesienia dotyczące bezpiecz
 * [Strona Australii portalu zaufania usługi firmy Microsoft](https://aka.ms/au-irap)
 * [Strona CCSL Centrum zaufania firmy Microsoft](https://www.microsoft.com/trustcenter/compliance/ccsl)
 * [Plany zabezpieczeń i zgodności platformy Azure na potrzeby ochrony](https://aka.ms/au-protected)
-* [Izolacja dzierżawy w Microsoft Azure](https://docs.microsoft.com/azure/security/azure-isolation)
+* [Izolacja dzierżawy w Microsoft Azure](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices)
 * [Australia — Podręcznik bezpieczeństwa informacji](https://www.cyber.gov.au/ism)
 * [Zatwierdzona lista chmury cybernetycznymi Security Centre (ACSC)](https://www.cyber.gov.au/irap/asd-certified-cloud-services)
 
@@ -32,7 +32,7 @@ Ta biblioteka zasobów zawiera dodatkowe linki i odniesienia dotyczące bezpiecz
 * [Informacje o kluczach, wpisach tajnych i certyfikatach](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates)
 * [Konfigurowanie zapór Azure Key Vault i sieci wirtualnych](https://docs.microsoft.com/azure/key-vault/key-vault-network-security)
 * [Bezpieczny dostęp do magazynu kluczy](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)
-* [Szyfrowanie danych platformy Azure — w spoczynku](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)
+* [Szyfrowanie danych platformy Azure — w spoczynku](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
 * [Jak używać Azure Key Vault z usługą Azure Windows Virtual Machines w środowisku .NET](https://docs.microsoft.com/azure/key-vault/tutorial-net-windows-virtual-machine)
 * [Azure Key Vault zarządzane konto magazynu — PowerShell](https://docs.microsoft.com/azure/key-vault/tutorial-net-windows-virtual-machine)
 * [Konfigurowanie rotacji i inspekcji kluczy](https://docs.microsoft.com/azure/key-vault/key-vault-key-rotation-log-monitoring)
@@ -68,7 +68,7 @@ Ta biblioteka zasobów zawiera dodatkowe linki i odniesienia dotyczące bezpiecz
 * [Przegląd RBAC platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/overview)
 * [Azure Privileged — Omówienie zarządzania](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure)
 * [Omówienie usługi Azure Grupy zarządzania](https://docs.microsoft.com/azure/governance/management-groups/)
-* [Azure Identity i Access Control Best Practices](https://docs.microsoft.com/azure/security/azure-security-identity-management-best-practices)
+* [Azure Identity i Access Control Best Practices](https://docs.microsoft.com/azure/security/fundamentals/identity-management-best-practices)
 * [Zarządzanie grupami usługi Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)
 * [Tożsamość hybrydowa](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity)
 * [Role niestandardowe RBAC](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
@@ -101,6 +101,6 @@ Ta biblioteka zasobów zawiera dodatkowe linki i odniesienia dotyczące bezpiecz
 * [Grupy zarządzania platformy Azure](https://docs.microsoft.com/azure/governance/management-groups/)
 * [Access Control oparte na rolach na platformie Azure](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Zaloguj się do [Azure Portal](https://portal.azure.com) i bezpiecznie Rozpocznij Konfigurowanie zasobów w programie Azure Australia.

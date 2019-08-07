@@ -1,6 +1,6 @@
 ---
-title: Tworzenie obrazu zarządzanego na platformie Azure | Dokumentacja firmy Microsoft
-description: Tworzenie obrazu zarządzanego uogólnionej maszyny Wirtualnej lub wirtualnego dysku twardego na platformie Azure. Obrazy może służyć do tworzenia wielu maszyn wirtualnych, które korzystają z dysków zarządzanych.
+title: Tworzenie obrazu zarządzanego na platformie Azure | Microsoft Docs
+description: Utwórz zarządzany obraz uogólnionej maszyny wirtualnej lub wirtualnego dysku twardego na platformie Azure. Obrazy mogą służyć do tworzenia wielu maszyn wirtualnych korzystających z dysków zarządzanych.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -15,88 +15,88 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 75f1d9b945eab49fb633f2cd3f99f498e686bfab
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 84099a2695d8a26e538f4790b708bf2465ea1a5e
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719344"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827688"
 ---
-# <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Tworzenie obrazu zarządzanego uogólnionej maszyny Wirtualnej na platformie Azure
+# <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Tworzenie obrazu zarządzanego uogólnionej maszyny wirtualnej na platformie Azure
 
-Można utworzyć zasobu obrazu zarządzanego z uogólnionej maszyny wirtualnej (VM), która jest przechowywana jako dysk zarządzany lub dysk niezarządzany na koncie magazynu. Obraz, który następnie może służyć do tworzenia wielu maszyn wirtualnych. Aby uzyskać informacje dotyczące zarządzanych obrazy są rozliczane, zobacz [cennika usługi Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks/). 
+Zasób obrazu zarządzanego można utworzyć na podstawie uogólnionej maszyny wirtualnej, która jest przechowywana jako dysk zarządzany lub dysk niezarządzany na koncie magazynu. Obraz może następnie służyć do tworzenia wielu maszyn wirtualnych. Aby uzyskać informacje dotyczące sposobu rozliczania zarządzanych obrazów, zobacz [Managed disks Cennik](https://azure.microsoft.com/pricing/details/managed-disks/). 
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="generalize-the-windows-vm-using-sysprep"></a>Uogólnianie maszyny wirtualnej z systemem Windows za pomocą narzędzia Sysprep
 
-Narzędzie Sysprep usuwa wszystkie konta osobistego i informacje o zabezpieczeniach, a następnie przygotowuje komputer, który ma być używany jako obraz. Aby uzyskać informacji o narzędziu Sysprep, zobacz [Omówienie programu Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
+Program Sysprep usuwa wszystkie informacje o koncie osobistym i zabezpieczeniach, a następnie przygotuje maszynę do użycia jako obraz. Aby uzyskać informacje o programie Sysprep, zobacz [Omówienie narzędzia Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
 
-Upewnij się, że role serwera uruchomionego na maszynie są obsługiwane przez program Sysprep. Aby uzyskać więcej informacji, zobacz [Obsługa narzędzia Sysprep dla ról serwera](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles).
+Upewnij się, że role serwera uruchomione na komputerze są obsługiwane przez program Sysprep. Aby uzyskać więcej informacji, zobacz [Obsługa programu Sysprep dla ról serwera](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles) i nieobsługiwanych [scenariuszy](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios).
 
 > [!IMPORTANT]
-> Po uruchomieniu programu Sysprep na maszynie Wirtualnej tej maszyny Wirtualnej jest uznawana za *uogólniony* i nie można uruchomić ponownie. Proces uogólniania maszyny wirtualnej jest nieodwracalny. Należy zachować, oryginalnym działania maszyny Wirtualnej, należy utworzyć [kopiowania maszyny wirtualnej](create-vm-specialized.md#option-3-copy-an-existing-azure-vm) i uogólnianie jego kopię. 
+> Po uruchomieniu programu Sysprep na maszynie wirtualnej maszyna wirtualna jest traktowana jako *uogólniona* i nie można jej uruchomić ponownie. Proces uogólniania maszyny wirtualnej jest nieodwracalny. Jeśli musisz zachować oryginalną maszynę wirtualną, Utwórz [kopię maszyny wirtualnej](create-vm-specialized.md#option-3-copy-an-existing-azure-vm) i Uogólnij jej kopię. 
 >
-> Jeśli użytkownik chce uruchomić programu Sysprep przed przekazaniem wirtualnego dysku twardego (VHD) na platformie Azure po raz pierwszy, upewnij się, masz [przygotować maszyny Wirtualnej](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).  
+> Jeśli planujesz uruchomienie programu Sysprep przed przekazaniem wirtualnego dysku twardego (VHD) do platformy Azure po raz pierwszy, upewnij się, że [maszyna wirtualna](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)została przygotowana.  
 > 
 > 
 
-Aby uogólnić maszynę Wirtualną Windows, wykonaj następujące kroki:
+Aby uogólnić maszynę wirtualną z systemem Windows, wykonaj następujące kroki:
 
-1. Zaloguj się do usługi Windows maszyny Wirtualnej.
+1. Zaloguj się do maszyny wirtualnej z systemem Windows.
    
-2. Otwórz okno wiersza polecenia jako administrator. Zmień katalog na % windir%\system32\sysprep, a następnie uruchom `sysprep.exe`.
+2. Otwórz okno wiersza polecenia jako administrator. Zmień katalog na%windir%\System32\Sysprep, a następnie uruchom `sysprep.exe`polecenie.
    
-3. W **narzędzie przygotowywania systemu** okno dialogowe, wybierz opcję **wprowadź System Out-of-Box środowiska (OOBE)** i wybierz **Generalize** pole wyboru.
+3. W oknie dialogowym **Narzędzie przygotowywania systemu** wybierz opcję **Wprowadź system out-of-Box Experience (OOBE)** i zaznacz pole wyboru **generalize** .
    
-4. Aby uzyskać **opcje zamykania**, wybierz opcję **zamknięcia**.
+4. W obszarze **Opcje zamykania**wybierz pozycję **Zamknij**.
    
 5. Kliknij przycisk **OK**.
    
     ![Uruchom program Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
 
-6. Po zakończeniu działania programu Sysprep, zamknięcie maszyny Wirtualnej. Nie uruchamiaj ponownie maszyny Wirtualnej.
+6. Po zakończeniu działania narzędzia Sysprep zamyka ono maszynę wirtualną. Nie uruchamiaj ponownie maszyny wirtualnej.
 
 
 ## <a name="create-a-managed-image-in-the-portal"></a>Tworzenie obrazu zarządzanego w portalu 
 
 1. Otwórz [portal Azure](https://portal.azure.com).
 
-2. W menu po lewej stronie wybierz **maszyn wirtualnych** i następnie wybierz maszynę Wirtualną z listy.
+2. W menu po lewej stronie wybierz pozycję **maszyny wirtualne** , a następnie wybierz maszynę wirtualną z listy.
 
-3. W **maszyny wirtualnej** strony dla maszyny Wirtualnej, w prawym górnym menu wybierz **przechwytywania**.
+3. Na stronie **maszyna wirtualna** dla maszyny wirtualnej w górnym menu wybierz pozycję Przechwyć.
 
-   **Tworzenie obrazu** zostanie wyświetlona strona.
+   Zostanie wyświetlona strona **Tworzenie obrazu** .
 
-4. Aby uzyskać **nazwa**, zaakceptuj nazwę wstępnie wypełnione albo wprowadź nazwę, której chcesz użyć dla obrazu.
+4. W polu **Nazwa**Zaakceptuj wstępnie wypełnioną nazwę lub wprowadź nazwę, której chcesz użyć dla obrazu.
 
-5. Aby uzyskać **grupy zasobów**, wybierz opcję **Utwórz nową** i wprowadź nazwę lub wybierz **Użyj istniejącej** i wybierz grupę zasobów, do użycia z listy rozwijanej.
+5. W obszarze **Grupa zasobów**wybierz pozycję **Utwórz nową** i wprowadź nazwę lub wybierz pozycję **Użyj istniejącej** i wybierz grupę zasobów do użycia z listy rozwijanej.
 
-6. Jeśli chcesz usunąć źródłową maszynę Wirtualną po obraz został utworzony, wybierz opcję **automatycznie Usuń tę maszynę wirtualną po utworzeniu obrazu**.
+6. Jeśli chcesz usunąć źródłową maszynę wirtualną po utworzeniu obrazu, zaznacz opcję **automatycznie Usuń tę maszynę wirtualną po utworzeniu obrazu**.
 
-7. Jeśli chcesz, aby możliwość używania obrazu w dowolnym [strefy dostępności](../../availability-zones/az-overview.md), wybierz opcję **na** dla **odporności stref**.
+7. Jeśli chcesz, aby program używał obrazu w dowolnej [strefie dostępności](../../availability-zones/az-overview.md), wybierz pozycję **Włącz** odporność **strefy**.
 
-8. Wybierz **Utwórz** do utworzenia obrazu.
+8. Wybierz pozycję **Utwórz** , aby utworzyć obraz.
 
-9. Po utworzeniu obrazu możesz znaleźć go w formie **obraz** zasób na liście zasobów w grupie zasobów.
+9. Po utworzeniu obrazu można go znaleźć jako zasób **obrazu** na liście zasobów w grupie zasobów.
 
 
 
-## <a name="create-an-image-of-a-vm-using-powershell"></a>Tworzenie obrazu maszyny wirtualnej przy użyciu programu Powershell
+## <a name="create-an-image-of-a-vm-using-powershell"></a>Tworzenie obrazu maszyny wirtualnej przy użyciu programu PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Tworzenie obrazu bezpośrednio z poziomu maszyny Wirtualnej sprawdza, czy obraz, który zawiera wszystkie dyski skojarzone z maszyną Wirtualną, w tym dysk systemu operacyjnego i dysków z danymi. Ten przykład przedstawia sposób tworzenia obrazu zarządzanego z maszyny Wirtualnej używa dysków zarządzanych.
+Utworzenie obrazu bezpośrednio z maszyny wirtualnej zapewnia, że obraz zawiera wszystkie dyski skojarzone z maszyną wirtualną, w tym dysk systemu operacyjnego i wszystkie dyski z danymi. Ten przykład pokazuje, jak utworzyć obraz zarządzany na podstawie maszyny wirtualnej korzystającej z dysków zarządzanych.
 
-Przed rozpoczęciem upewnij się, że masz najnowszą wersję modułu Azure PowerShell. Aby znaleźć wersję, uruchom `Get-Module -ListAvailable Az` w programie PowerShell. Jeśli musisz uaktualnić, zobacz [Instalowanie programu Azure PowerShell na Windows przy użyciu funkcji PowerShellGet](/powershell/azure/install-az-ps). Jeśli używasz programu PowerShell lokalnie, uruchom `Connect-AzAccount` do utworzenia połączenia z platformą Azure.
+Przed rozpoczęciem upewnij się, że masz najnowszą wersję modułu Azure PowerShell. Aby znaleźć wersję, uruchom `Get-Module -ListAvailable Az` polecenie w programie PowerShell. Jeśli musisz przeprowadzić uaktualnienie, zobacz [instalowanie Azure PowerShell w systemie Windows za pomocą PowerShellGet](/powershell/azure/install-az-ps). Jeśli używasz programu PowerShell lokalnie, uruchom `Connect-AzAccount` polecenie, aby utworzyć połączenie z platformą Azure.
 
 
 > [!NOTE]
-> Jeśli chcesz przechowywać obraz w magazyn strefowo nadmiarowy, należy je utworzyć w regionie, który obsługuje [strefy dostępności](../../availability-zones/az-overview.md) i obejmują `-ZoneResilient` parametr w konfiguracji obrazu (`New-AzImageConfig` polecenie).
+> Jeśli chcesz przechowywać obraz w magazynie strefowo nadmiarowym, musisz go utworzyć w regionie, który obsługuje [strefy dostępności](../../availability-zones/az-overview.md) i dołączyć `-ZoneResilient` parametr w konfiguracji obrazu (`New-AzImageConfig` polecenie).
 
-Aby utworzyć obraz maszyny Wirtualnej, wykonaj następujące kroki:
+Aby utworzyć obraz maszyny wirtualnej, wykonaj następujące kroki:
 
-1. Utwórz zmienne.
+1. Utwórz pewne zmienne.
 
     ```azurepowershell-interactive
     $vmName = "myVM"
@@ -104,13 +104,13 @@ Aby utworzyć obraz maszyny Wirtualnej, wykonaj następujące kroki:
     $location = "EastUS"
     $imageName = "myImage"
     ```
-2. Upewnij się, że maszyna wirtualna została wycofana.
+2. Upewnij się, że maszyna wirtualna została cofnięta.
 
     ```azurepowershell-interactive
     Stop-AzVM -ResourceGroupName $rgName -Name $vmName -Force
     ```
     
-3. Ustaw stan maszyny wirtualnej do **Uogólniono**. 
+3. Ustaw stan maszyny wirtualnej na uogólnione. 
    
     ```azurepowershell-interactive
     Set-AzVm -ResourceGroupName $rgName -Name $vmName -Generalized
@@ -133,12 +133,12 @@ Aby utworzyć obraz maszyny Wirtualnej, wykonaj następujące kroki:
     New-AzImage -Image $image -ImageName $imageName -ResourceGroupName $rgName
     ``` 
 
-## <a name="create-an-image-from-a-managed-disk-using-powershell"></a>Tworzenie obrazu na podstawie dysku zarządzanego przy użyciu programu PowerShell
+## <a name="create-an-image-from-a-managed-disk-using-powershell"></a>Tworzenie obrazu z dysku zarządzanego przy użyciu programu PowerShell
 
-Jeśli chcesz utworzyć obraz na dysku systemu operacyjnego, należy określić identyfikator dysku zarządzanego jako dysk systemu operacyjnego:
+Jeśli chcesz utworzyć obraz tylko dysku systemu operacyjnego, określ identyfikator dysku zarządzanego jako dysk systemu operacyjnego:
 
     
-1. Utwórz zmienne. 
+1. Utwórz pewne zmienne. 
 
     ```azurepowershell-interactive
     $vmName = "myVM"
@@ -147,7 +147,7 @@ Jeśli chcesz utworzyć obraz na dysku systemu operacyjnego, należy określić 
     $imageName = "myImage"
     ```
 
-2. Uzyskiwanie maszyny Wirtualnej.
+2. Pobierz maszynę wirtualną.
 
    ```azurepowershell-interactive
    $vm = Get-AzVm -Name $vmName -ResourceGroupName $rgName
@@ -173,12 +173,12 @@ Jeśli chcesz utworzyć obraz na dysku systemu operacyjnego, należy określić 
     ``` 
 
 
-## <a name="create-an-image-from-a-snapshot-using-powershell"></a>Tworzenie obrazu na podstawie migawki przy użyciu programu Powershell
+## <a name="create-an-image-from-a-snapshot-using-powershell"></a>Tworzenie obrazu na podstawie migawki przy użyciu programu PowerShell
 
-Można utworzyć obrazu zarządzanego z migawki uogólnionej maszyny Wirtualnej, wykonując następujące czynności:
+Można utworzyć obraz zarządzany na podstawie migawki uogólnionej maszyny wirtualnej, wykonując następujące czynności:
 
     
-1. Utwórz zmienne. 
+1. Utwórz pewne zmienne. 
 
     ```azurepowershell-interactive
     $rgName = "myResourceGroup"
@@ -187,7 +187,7 @@ Można utworzyć obrazu zarządzanego z migawki uogólnionej maszyny Wirtualnej,
     $imageName = "myImage"
     ```
 
-2. Pobieranie migawki.
+2. Pobierz migawkę.
 
    ```azurepowershell-interactive
    $snapshot = Get-AzSnapshot -ResourceGroupName $rgName -SnapshotName $snapshotName
@@ -206,12 +206,12 @@ Można utworzyć obrazu zarządzanego z migawki uogólnionej maszyny Wirtualnej,
     ``` 
 
 
-## <a name="create-an-image-from-a-vhd-in-a-storage-account"></a>Tworzenie obrazu na podstawie dysku VHD na koncie magazynu
+## <a name="create-an-image-from-a-vhd-in-a-storage-account"></a>Tworzenie obrazu na podstawie wirtualnego dysku twardego na koncie magazynu
 
-Utworzenie obrazu zarządzanego z uogólnionego wirtualnego dysku twardego systemu operacyjnego na koncie magazynu. Potrzebujesz identyfikatora URI dysku VHD na koncie magazynu, który znajduje się w następującym formacie: https://*mystorageaccount*.blob.core.windows.net/*vhdcontainer* /  *vhdfilename.VHD*. W tym przykładzie wirtualny dysk twardy znajduje się w *mystorageaccount*, w kontenerze o nazwie *vhdcontainer*, a nazwa pliku wirtualnego dysku twardego jest *vhdfilename.vhd*.
+Utwórz obraz zarządzany na podstawie uogólnionego wirtualnego dysku twardego systemu operacyjnego na koncie magazynu. Potrzebujesz identyfikatora URI wirtualnego dysku twardego na koncie magazynu, który ma następujący format: https://*mojekontomagazynu*. blob.Core.Windows.NET/*vhdcontainer*/*vhdfilename. VHD*. W tym przykładzie wirtualny dysk twardy znajduje się w *mojekontomagazynu*, w kontenerze o nazwie *vhdcontainer*, a nazwa pliku VHD to *vhdfilename. VHD*.
 
 
-1.  Utwórz zmienne.
+1.  Utwórz pewne zmienne.
 
     ```azurepowershell-interactive
     $vmName = "myVM"
@@ -220,18 +220,18 @@ Utworzenie obrazu zarządzanego z uogólnionego wirtualnego dysku twardego syste
     $imageName = "myImage"
     $osVhdUri = "https://mystorageaccount.blob.core.windows.net/vhdcontainer/vhdfilename.vhd"
     ```
-2. Zatrzymaj/Cofnij Przydział maszyny Wirtualnej.
+2. Zatrzymaj/Cofnij przydział maszyny wirtualnej.
 
     ```azurepowershell-interactive
     Stop-AzVM -ResourceGroupName $rgName -Name $vmName -Force
     ```
     
-3. Oznaczanie maszyny Wirtualnej jako uogólnionej.
+3. Oznacz maszynę wirtualną jako uogólnioną.
 
     ```azurepowershell-interactive
     Set-AzVm -ResourceGroupName $rgName -Name $vmName -Generalized  
     ```
-4.  Tworzenie obrazu przy użyciu uogólnionego wirtualnego dysku twardego systemu operacyjnego.
+4.  Utwórz obraz przy użyciu uogólnionego wirtualnego dysku twardego systemu operacyjnego.
 
     ```azurepowershell-interactive
     $imageConfig = New-AzImageConfig -Location $location
@@ -240,6 +240,6 @@ Utworzenie obrazu zarządzanego z uogólnionego wirtualnego dysku twardego syste
     ```
 
     
-## <a name="next-steps"></a>Kolejne kroki
-- [Tworzenie maszyny Wirtualnej na podstawie obrazu zarządzanego](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).    
+## <a name="next-steps"></a>Następne kroki
+- [Utwórz maszynę wirtualną na podstawie zarządzanego obrazu](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).    
 

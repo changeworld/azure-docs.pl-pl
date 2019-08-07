@@ -1,40 +1,40 @@
 ---
-title: VMware Solution by CloudSimple — omówienie maszyn wirtualnych platformy Azure
-description: Więcej informacji na temat CloudSimple maszyn wirtualnych i ich zalet.
+title: Rozwiązanie VMware według CloudSimple — Omówienie usługi Azure Virtual Machines
+description: Dowiedz się więcej na temat maszyn wirtualnych CloudSimple i ich korzyści.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 77a2901ae2d81f42780110b1576c1f32c7ff397b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0f4967bbd12107bf6a04cb80537d4425c75c5f46
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65209486"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812491"
 ---
-# <a name="cloudsimple-virtual-machines-overview"></a>CloudSimple maszyn wirtualnych — omówienie
+# <a name="cloudsimple-virtual-machines-overview"></a>CloudSimple maszyn wirtualnych — Omówienie
 
-CloudSimple umożliwia zarządzanie maszynami wirtualnymi VMware w witrynie Azure portal.  Klastra lub pulę zasobów w klastrze vSphere jest zarządzana za pośrednictwem platformy Azure przez mapowania ich na subskrypcję.  Maszyna wirtualna CloudSimple oferuje Samoobsługowe zarządzanie maszyn wirtualnych programu VMware w witrynie Azure portal.  
+CloudSimple umożliwia zarządzanie maszynami wirtualnymi VMware z poziomu Azure Portal.  Klaster lub Pula zasobów z klastra vSphere jest zarządzana za pośrednictwem platformy Azure, mapując ją na subskrypcję.  CloudSimple maszyna wirtualna umożliwia Samoobsługowe zarządzanie maszynami wirtualnymi VMware z Azure Portal.  
 
-Aby utworzyć Maszynę wirtualną CloudSimple z platformy Azure, szablonu maszyny Wirtualnej musi istnieć na vCenter, Chmura prywatna.  Szablon jest używany do dostosowywania systemu operacyjnego i aplikacji.  Szablon maszyny Wirtualnej można trybie zaostrzonym, aby spełnić zasady bezpieczeństwa w przedsiębiorstwie.  Ten szablon umożliwia tworzenie maszyn wirtualnych i używaj ich w witrynie Azure portal przy użyciu modelu samoobsługi.
+Aby można było utworzyć maszynę wirtualną z systemem CloudSimple na platformie Azure, w chmurze prywatnej vCenter musi istnieć szablon maszyny wirtualnej.  Szablon służy do dostosowywania systemu operacyjnego i aplikacji.  Szablon maszyny wirtualnej może być zaostrzony w celu spełnienia zasad zabezpieczeń przedsiębiorstwa.  Za pomocą szablonu można tworzyć maszyny wirtualne i korzystać z nich z Azure Portal przy użyciu modelu samoobsługowego.
 
 ## <a name="benefits"></a>Korzyści
 
-CloudSimple maszyny wirtualne z witryny Azure portal mechanizm samoobsługowy umożliwiający użytkownikom tworzenie i zarządzanie maszynami wirtualnymi VMware.
+CloudSimple maszyny wirtualne z Azure Portal udostępniają mechanizm samoobsługowy do tworzenia maszyn wirtualnych VMware i zarządzania nimi.
 
-* Utwórz Maszynę wirtualną CloudSimple na vCenter, Chmura prywatna
-* Zarządzanie właściwościami maszyny Wirtualnej
-  * Dodaj/Usuń dyski
-  * Dodaj/Usuń karty sieciowe
-* Potęgowania CloudSimple maszyny wirtualnej
-  * Włączenia i wyłączenia zasilania
-  * Resetowanie maszyny Wirtualnej
-* Usuwanie maszyny Wirtualnej
+* Tworzenie maszyny wirtualnej CloudSimple w chmurze prywatnej vCenter
+* Zarządzanie właściwościami maszyny wirtualnej
+  * Dodawanie/usuwanie dysków
+  * Dodawanie/usuwanie kart sieciowych
+* Operacje na mocy maszyny wirtualnej CloudSimple
+  * Włącz i Wyłącz zasilanie
+  * Resetuj maszynę wirtualną
+* Usuń maszynę wirtualną
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Dowiedz się, jak [używanie maszyn wirtualnych VMware na platformie Azure](quickstart-create-vmware-virtual-machine.md)
-* Dowiedz się, jak [mapy subskrypcji platformy Azure](https://docs.azure.cloudsimple.com/azure-subscription-mapping/)
+* Dowiedz się, jak [korzystać z maszyn wirtualnych VMware na platformie Azure](quickstart-create-vmware-virtual-machine.md)
+* Dowiedz się, jak [mapować swoją subskrypcję platformy Azure](https://docs.azure.cloudsimple.com/azure-subscription-mapping/)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d96f5bb189dfd20c65fc6fc6ddcb8fff66d52ff
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 07c035f4823ea8c8eaa96ca9bda22450246811cd
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68666232"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779623"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Rozwiązywanie problemów z ochroną hasłem usługi Azure AD
 
@@ -32,7 +32,7 @@ Zwykle przyczyną tego problemu jest to, że serwer proxy nie został jeszcze za
 
 Głównym objawem tego problemu jest 30018 zdarzeń w dzienniku zdarzeń administratora agenta kontrolera domeny. Ten problem może mieć kilka możliwych przyczyn:
 
-1. Agent DC znajduje się w izolowanej części sieci, która nie zezwala na łączność sieciową z zarejestrowanymi serwerem proxy. W związku z tym problem może być niegroźny, o ile inni agenci DC mogą komunikować się z proxy, aby pobierać zasady haseł z platformy Azure, które zostaną następnie uzyskane przez izolowany kontroler domeny za pośrednictwem replikacji plików zasad w udziale Sysvol.
+1. Agent DC znajduje się w izolowanej części sieci, która nie zezwala na łączność sieciową z zarejestrowanymi serwerem proxy. Ten problem może być niegroźny, o ile inni agenci kontrolera domeny mogą komunikować się z serwerem proxy w celu pobierania zasad haseł z platformy Azure. Po pobraniu te zasady zostaną następnie uzyskane przez izolowany kontroler domeny za pośrednictwem replikacji plików zasad w udziale Sysvol.
 
 1. Komputer hosta serwera proxy blokuje dostęp do punktu końcowego mapowania punktów końcowych RPC (port 135)
 
@@ -48,7 +48,7 @@ Głównym objawem tego problemu jest 30018 zdarzeń w dzienniku zdarzeń adminis
 
 1. Upewnij się, że las i wszystkie serwery proxy są zarejestrowane w ramach tej samej dzierżawy platformy Azure.
 
-   To wymaganie można sprawdzić, uruchamiając `Get-AzureADPasswordProtectionProxy` polecenia `Get-AzureADPasswordProtectionDCAgent` cmdlet i programu PowerShell, a następnie `AzureTenant` porównując właściwość każdego zwróconego elementu. W celu poprawnej operacji zgłoszona nazwa dzierżawy musi być taka sama dla wszystkich agentów kontrolerów domeny i serwerów proxy.
+   To wymaganie można sprawdzić, uruchamiając `Get-AzureADPasswordProtectionProxy` polecenia `Get-AzureADPasswordProtectionDCAgent` cmdlet i programu PowerShell, a następnie `AzureTenant` porównując właściwość każdego zwróconego elementu. W celu poprawnej operacji raportowana nazwa dzierżawy musi być taka sama dla wszystkich agentów kontrolerów domeny i serwerów proxy.
 
    Jeśli istnieje warunek niezgodności rejestracji dzierżawy platformy Azure, ten problem może zostać rozwiązany przez `Register-AzureADPasswordProtectionProxy` uruchomienie poleceń cmdlet `Register-AzureADPasswordProtectionForest` i/lub programu PowerShell zgodnie z wymaganiami, co pozwala upewnić się, że do wszystkich rejestracji są używane poświadczenia z tej samej dzierżawy platformy Azure.
 
@@ -69,6 +69,8 @@ Najbardziej powszechną przyczyną głównej przyczyny uruchomienia usługi KDS 
 ## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>Hasła słabe są akceptowane, ale nie powinny być
 
 Ten problem może mieć kilka przyczyn.
+
+1. Agenci kontrolera domeny korzystają z publicznej wersji zapoznawczej, która wygasła. Zapoznaj się z [oprogramowaniem agenta publicznej wersji](howto-password-ban-bad-on-premises-troubleshoot.md#public-preview-dc-agent-software-has-expired)zapoznawczej.
 
 1. Agenci kontrolera domeny nie mogą pobrać zasad lub nie mogą odszyfrować istniejących zasad. Sprawdź możliwe przyczyny w powyższych tematach.
 
@@ -99,7 +101,7 @@ Setting password failed.
         Error Message: Password doesn't meet the requirements of the filter dll's
 ```
 
-Gdy ochrona hasłem w usłudze Azure AD rejestruje zdarzenia w dzienniku zdarzeń weryfikacji hasła dla hasła Active Directory DSRM, oczekuje się, że komunikaty dziennika zdarzeń nie będą zawierać nazwy użytkownika. Dzieje się tak, ponieważ konto trybu DSRM jest kontem lokalnym, które nie jest częścią rzeczywistej domeny Active Directory.  
+Gdy ochrona hasłem w usłudze Azure AD rejestruje zdarzenia w dzienniku zdarzeń weryfikacji hasła dla hasła Active Directory DSRM, oczekuje się, że komunikaty dziennika zdarzeń nie będą zawierać nazwy użytkownika. Takie zachowanie występuje, ponieważ konto trybu DSRM jest kontem lokalnym, które nie jest częścią rzeczywistej domeny Active Directory.  
 
 ## <a name="domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password"></a>Podwyższanie poziomu repliki kontrolera domeny kończy się niepowodzeniem z powodu słabego hasła DSRM
 
@@ -119,7 +121,67 @@ Po pomyślnym obniżeniu poziomu i ponownym uruchomieniu kontrolera domeny i pon
 
 ## <a name="booting-into-directory-services-repair-mode"></a>Rozruch w trybie naprawy usług katalogowych
 
-Jeśli kontroler domeny jest uruchamiany w trybie naprawy usług katalogowych, usługa agenta kontrolera domeny wykrywa ten warunek i spowoduje wyłączenie wszystkich działań weryfikacji hasła lub wymuszania, niezależnie od obecnie aktywnej konfiguracji zasad.
+Jeśli kontroler domeny jest uruchamiany w trybie naprawy usług katalogowych, biblioteka DLL filtru haseł agenta DC wykryje ten warunek i spowoduje wyłączenie wszystkich działań weryfikacji hasła lub wymuszania, niezależnie od obecnie aktywnych zasad skonfigurować. Biblioteka DLL filtru haseł agenta DC będzie rejestrować zdarzenie ostrzeżenia 10023 w dzienniku zdarzeń administratora, na przykład:
+
+```text
+The password filter dll is loaded but the machine appears to be a domain controller that has been booted into Directory Services Repair Mode. All password change and set requests will be automatically approved. No further messages will be logged until after the next reboot.
+```
+## <a name="public-preview-dc-agent-software-has-expired"></a>Oprogramowanie agenta dla publicznej wersji zapoznawczej nie wygasło
+
+W okresie publicznej wersji zapoznawczej ochrony za pomocą hasła usługi Azure AD oprogramowanie Agent DC zostało trwale zakodowane w celu zatrzymania przetwarzania żądań weryfikacji hasła w następujących datach:
+
+* Wersja 1.2.65.0 zatrzyma przetwarzanie żądań weryfikacji hasła na 1 2019 września.
+* Wersja 1.2.25.0 i wcześniejsze zatrzymane przetwarzanie żądań weryfikacji hasła 1 2019 lipca.
+
+Zgodnie z ostatecznym terminem wszystkie wersje agenta kontrolera domeny z ograniczoną ilością czasu wyemitują zdarzenie 10021 w dzienniku zdarzeń administratora agenta kontrolera domeny w czasie rozruchu, który będzie wyglądać następująco:
+
+```text
+The password filter dll has successfully loaded and initialized.
+
+The allowable trial period is nearing expiration. Once the trial period has expired, the password filter dll will no longer process passwords. Please contact Microsoft for an newer supported version of the software.
+
+Expiration date:  9/01/2019 0:00:00 AM
+
+This message will not be repeated until the next reboot.
+```
+
+Po upływie terminu ostatecznego wszystkie wersje agenta kontrolera domeny z ograniczoną ilością czasu wyemitują zdarzenie 10022 w dzienniku zdarzeń administratora agenta kontrolera domeny w czasie rozruchu, który będzie wyglądać następująco:
+
+```text
+The password filter dll is loaded but the allowable trial period has expired. All password change and set requests will be automatically approved. Please contact Microsoft for a newer supported version of the software.
+
+No further messages will be logged until after the next reboot.
+```
+
+Ponieważ termin ostateczny jest sprawdzany tylko podczas początkowego rozruchu, te zdarzenia mogą nie być wyświetlane do momentu, gdy upłynie termin kalendarzowy. Po rozpoznaniu terminu ostatecznego nie będą miały żadnych negatywnych efektów na kontrolerze domeny ani większego środowiska.
+
+> [!IMPORTANT]
+> Firma Microsoft zaleca, aby wygasły od razu uaktualniony publiczny Agent DC do najnowszej wersji.
+
+Aby łatwo wykryć agentów DC w środowisku, które muszą zostać uaktualnione, należy uruchomić `Get-AzureADPasswordProtectionDCAgent` polecenie cmdlet, na przykład:
+
+```powershell
+PS C:\> Get-AzureADPasswordProtectionDCAgent
+
+ServerFQDN            : bpl1.bpl.com
+SoftwareVersion       : 1.2.125.0
+Domain                : bpl.com
+Forest                : bpl.com
+PasswordPolicyDateUTC : 8/1/2019 9:18:05 PM
+HeartbeatUTC          : 8/1/2019 10:00:00 PM
+AzureTenant           : bpltest.onmicrosoft.com
+```
+
+W tym temacie pole SoftwareVersion jest oczywiście właściwością klucza do wyszukania. Możesz również użyć filtrowania programu PowerShell, aby odfiltrować agentów DC, które są już w wymaganej wersji linii bazowej, na przykład:
+
+```powershell
+PS C:\> $LatestAzureADPasswordProtectionVersion = "1.2.125.0"
+PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion -lt $LatestAzureADPasswordProtectionVersion}
+```
+
+W żadnej wersji nie ograniczono czasu na oprogramowanie serwera proxy ochrony hasłem usługi Azure AD. Firma Microsoft w dalszym ciągu zaleca uaktualnienie kontrolerów DC i proxy do najnowszych wersji. `Get-AzureADPasswordProtectionProxy` Polecenie cmdlet może służyć do znajdowania agentów proxy, którzy wymagają uaktualnień, podobnie jak powyżej w przypadku agentów DC.
+
+Aby uzyskać więcej informacji na temat określonych procedur uaktualniania, należy zapoznać się z tematem Uaktualnianie agenta [kontrolera domeny](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) i [Uaktualnianie agenta proxy](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-agent) .
 
 ## <a name="emergency-remediation"></a>Korygowanie awaryjne
 
@@ -134,7 +196,7 @@ Jeśli podjęto decyzję o odinstalowaniu oprogramowania ochrony hasłem usługi
 > [!IMPORTANT]
 > Ważne jest, aby wykonać te kroki w kolejności. Jeśli jakiekolwiek wystąpienie usługi proxy zostanie uruchomione, spowoduje to ponowne utworzenie obiektu serviceConnectionPoint. Jeśli jakiekolwiek wystąpienie usługi agenta kontrolera domeny zostanie uruchomione, będzie okresowo utworzyć ponownie obiekt serviceConnectionPoint i stan SYSVOL.
 
-1. Odinstaluj oprogramowanie serwera proxy ze wszystkich komputerów. Ten krok nie **wymaga ponownego** uruchomienia.
+1. Odinstaluj oprogramowanie serwera proxy ze wszystkich komputerów. Ten krok nie wymaga ponownego uruchomienia.
 2. Odinstaluj oprogramowanie agenta kontrolera domeny ze wszystkich kontrolerów domeny. Ten krok **wymaga** ponownego uruchomienia.
 3. Ręcznie usuń wszystkie punkty połączenia usługi serwera proxy w każdym kontekście nazewnictwa domen. Lokalizację tych obiektów można odnaleźć za pomocą następującego polecenia Active Directory PowerShell:
 

@@ -1,6 +1,6 @@
 ---
-title: Myślistwo możliwości w wersji zapoznawczej Azure przez wartownika | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak korzystać z możliwości platformy Azure przez wartownika myślistwo.
+title: Możliwości łowiectwa w wersji zapoznawczej platformy Azure wskaźnikowej | Microsoft Docs
+description: W tym artykule opisano sposób korzystania z możliwości łowiectwa wskaźnikowego platformy Azure.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -16,136 +16,136 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 23e7db25e5ebed2a23b4d38bcfe9597b77c6b04b
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 5e6ad3c0b415722349dc584434add1031b7c3cb1
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620740"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780461"
 ---
-# <a name="hunt-for-threats-with-in-azure-sentinel-preview"></a>Hunt pod kątem zagrożeń przy użyciu w wersji zapoznawczej Azure przez wartownika
+# <a name="hunt-for-threats-with-in-azure-sentinel-preview"></a>W wersji zapoznawczej platformy Azure — Wersja zapoznawcza
 
 > [!IMPORTANT]
-> Wartownik platformy Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
+> W publicznej wersji zapoznawczej jest obecnie dostępna usługa Azure.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Jeśli badającego, który chce, aby stosować proaktywne podejście o wyszukiwanie pod kątem zagrożeń zabezpieczeń platformy Azure przez wartownika zaawansowane myślistwo Przeszukuj i Badaj narzędzia do wyszukiwania pod kątem zagrożeń bezpieczeństwa w źródłach danych Twojej organizacji. Jednak systemy i urządzenia zabezpieczeń generuje górach danych, który może być trudne do analizowania i filtrowania do istotnych zdarzeń. Ułatwia zabezpieczeń analityków poszukaj aktywnie nowe anomalie, które nie zostały wykryte przez aplikacje zabezpieczeń platformy Azure przez wartownika "zapytaniach wbudowane myślistwo prowadzą do zadawać właściwe pytania, aby znaleźć problemy w danych, masz już w sieci. 
+Jeśli jesteś analitykiem, który chce być aktywny w sprawie wyszukania zagrożeń bezpieczeństwa, platforma Azure bada zaawansowane narzędzia wyszukiwania i zapytań w poszukiwaniu zagrożeń związanych z bezpieczeństwem w źródłach danych organizacji. Jednak systemy i urządzenia zabezpieczeń generują górach danych, które mogą być trudne do analizy i filtrowania do znaczących zdarzeń. Aby ułatwić analitykom zabezpieczeń odszukanie nowych anomalii, które nie zostały wykryte przez aplikacje zabezpieczające, wbudowane zapytania polowające dotyczące platformy Azure wskazują, że zażądają odpowiednich pytań, aby znaleźć problemy w danych, które już znajdują się w sieci. 
 
-Na przykład jeden wbudowaną kwerendę dostarczają danych o najbardziej nietypowe procesów uruchomionych w ramach swojej infrastruktury — nie byłoby dobrze alert o każdym są uruchamiane, może być całkowicie nieszkodliwie, ale możesz chcieć spojrzeć na zapytanie, które czasami, aby sprawdzić, czy th ere przez coś szczególnego. 
+Na przykład jedno wbudowane zapytanie udostępnia dane dotyczące najbardziej nietypowych procesów uruchomionych w infrastrukturze — nie można utworzyć alertu dotyczącego każdego uruchomienia, ale mogą one zostać całkowicie nieszkodliwene, ale warto zajrzeć do zapytania, aby zobaczyć, czy jest to konieczne. ere coś nietypowego. 
 
 
 
-Za pomocą platformy Azure przez wartownika myślistwo, możesz korzystać z zalet następujące możliwości:
+Korzystając z łowiectwa wskaźnikowego platformy Azure, możesz korzystać z następujących możliwości:
 
-- Wbudowane zapytania: Aby ułatwić rozpoczęcie pracy, strony początkowej zawiera przykłady zapytań załadowanych, umożliwiające pracę i zapoznać się z tabel i język zapytań. Te zapytania myślistwo wbudowane są opracowywane przez Microsoft naukowo w sposób ciągły, dodawanie nowych zapytań i dostosowawczych istniejące zapytanie do przedstawienia punkt wejścia, wyszukaj wykrywanie nowych zagrożeń i zorientować się, jak zacząć dłoni początku nowymi atakami. 
+- Wbudowane zapytania: Aby rozpocząć, Strona początkowa zawiera przykłady wstępnie załadowanych zapytań, które umożliwiają rozpoczęcie pracy i zapoznanie się z tabelami oraz językiem zapytań. Te wbudowane zapytania polowania są opracowywane przez badaczy zabezpieczeń firmy Microsoft w sposób ciągły, dodawanie nowych zapytań i dostosowywanie istniejących zapytań w celu udostępnienia punktu wejścia do wyszukiwania nowych wykryć i ustalenia miejsca, w którym należy zacząć polowanie dla zaczynają się nowe ataki. 
 
-- Zaawansowany język zapytań za pomocą funkcji IntelliSense: Oparty na język zapytań, który zapewnia elastyczność, należy wykonać myślistwo na następny poziom.
+- Zaawansowany język zapytań z technologią IntelliSense: Utworzone na podstawie języka zapytań, który zapewnia elastyczność potrzebną do skorzystania z kolejnego poziomu.
 
-- Utwórz własne zakładek: W trakcie myślistwo mogą pochodzić między dopasowań lub ustalenia, pulpitów nawigacyjnych lub działań, które wyglądają na nietypowe lub podejrzane. Aby można było oznaczyć te elementy, dzięki czemu możesz wrócić do nich w przyszłości, należy korzystać z funkcji zakładki. Zakładki pozwalają na zapisywanie elementów na później, można użyć do utworzenia przypadku badania. Aby uzyskać więcej informacji na temat zakładek Zobacz Użyj [zakładki w myślistwo].
+- Utwórz własne zakładki: W trakcie procesu polowania mogą trafiać między innymi dopasowania lub wyniki, pulpity nawigacyjne lub działania, które wyglądają nierzadko lub podejrzane. Aby oznaczyć te elementy tak, aby można było je w przyszłości wrócić do nich, użyj funkcji Zakładka. Zakładki umożliwiają zapisywanie elementów w celu ich późniejszego użycia w celu utworzenia incydentu do badania. Aby uzyskać więcej informacji na temat zakładek, zobacz use [zakładki w łowiectwie].
 
-- Korzystanie z notesów, aby zautomatyzować badania: Notesy są podobne elementy playbook krok po kroku, tworzących do wykonywania kroków badania i możliwe.  Notesy hermetyzacji wszystkich kroków myślistwo wielokrotnego użytku element playbook, który można udostępniać innym osobom w organizacji. 
-- Zapytanie przechowywane dane: Dane te są dostępne w tabelach służących do wykonywania zapytań. Można na przykład kwerendy procesu tworzenia zdarzeń DNS i wiele innych typów zdarzeń.
+- Automatyzacja badań za pomocą notesów: Notesy przypominają elementy PlayBook krok po kroku, które można kompilować, aby zapoznać się z krokami badania i wyszukiwania.  Notesy hermetyzują wszystkie kroki polowania w element PlayBook wielokrotnego użytku, które mogą być współużytkowane z innymi osobami w organizacji. 
+- Wykonaj zapytanie dotyczące przechowywanych danych: Dane są dostępne w tabelach, aby można było wykonywać zapytania. Można na przykład wykonywać zapytania dotyczące tworzenia procesów, zdarzeń DNS i wielu innych typów zdarzeń.
 
-- Linki do społeczności: Możliwościom większa społeczności można znaleźć dodatkowe zapytania i źródła danych.
+- Linki do społeczności: Skorzystaj z mocy większej społeczności, aby znaleźć dodatkowe zapytania i źródła danych.
  
-## <a name="get-started-hunting"></a>Rozpoczynanie pracy myślistwo
+## <a name="get-started-hunting"></a>Wprowadzenie do łowiectwa
 
-1. W portalu Azure przez wartownika kliknij **myślistwo**.
-  ![Azure wartownik uruchamia myślistwo](media/tutorial-hunting/hunting-start.png)
+1. W portalu wskaźnikowym platformy Azure kliknijpozycję łowiectwo.
+  ![Azure — wskaźnik startowy](media/tutorial-hunting/hunting-start.png)
 
-2. Po otwarciu **myślistwo** stronie wszystkich zapytań myślistwo są wyświetlane w jednej tabeli. Tabela zawiera listę wszystkich zapytań, które są zapisywane przez zespół firmy Microsoft, analityków zabezpieczeń, jak również wszelkie dodatkowe kwerendy utworzony lub zmodyfikowany. Każde zapytanie zawiera opis jego hunts dla i jakiego rodzaju dane, jest uruchamiany na. Te szablony są pogrupowane według ich różnych taktyka — ikony w prawym rogu kategoryzować rodzaju zagrożenia, takie jak początkowego dostępu, trwałość i wykradanie. Możesz filtrować te szablony zapytania myślistwo przy użyciu dowolnych pól. Możesz zapisać każde zapytanie do ulubionych. Zapisane zapytania do ulubionych, zapytanie automatycznie za każdym razem uruchamia **myślistwo** uzyskiwać dostęp do strony. Można utworzyć własne zapytanie myślistwo lub klonowania i dostosować istniejący szablon myślistwo zapytania. 
+2. Po otwarciu strony **polowania** wszystkie zapytania polowania są wyświetlane w pojedynczej tabeli. W tabeli wymieniono wszystkie zapytania, które zostały utworzone przez zespół analityków zabezpieczeń firmy Microsoft, a także wszelkie dodatkowe lub zmodyfikowane zapytania. Każde zapytanie zawiera opis tego, czego szuka i jakiego rodzaju dane są uruchamiane. Te szablony są pogrupowane według różnych taktykę — ikony po prawej stronie są typu zagrożenia, takie jak początkowy dostęp, trwałość i eksfiltracji. Te szablony zapytań polowania można filtrować przy użyciu dowolnych pól. Możesz zapisać dowolne zapytanie do ulubionych. Zapisanie zapytania do ulubionych spowoduje automatyczne uruchomienie zapytania przy każdej próbie uzyskania dostępu do strony polowania. Możesz utworzyć własne zapytanie polowania lub klonować i dostosowywać istniejący szablon zapytania polowania. 
  
-2. Kliknij przycisk **uruchom zapytanie** myślistwo szczegóły kwerendy stronie do uruchamiania każdego zapytania bez opuszczania strony myślistwo.  Liczba dopasowań jest wyświetlany w tabeli. Przejrzyj listę myślistwo zapytań i ich odpowiedniki. Zapoznaj się z etap w łańcuchu kończenia dopasowanie jest skojarzony.
+2. Kliknij przycisk **Uruchom zapytanie** na stronie szczegółów zapytania polowania, aby uruchomić dowolne zapytanie bez opuszczania strony polowania.  W tabeli zostanie wyświetlona liczba dopasowań. Przejrzyj listę zapytań polowania i ich dopasowania. Sprawdź, który etap łańcucha kasowania jest skojarzony z.
 
-3. Przeprowadź krótkiej recenzji podstawowego zapytania w okienku szczegółów zapytania lub kliknij przycisk **wyświetlić wynik zapytania** aby otworzyć kwerendę w usłudze Log Analytics. Na dole należy przejrzeć dopasowania dla zapytania.
+3. Wykonaj szybkie przegląd bazowego zapytania w okienku szczegółów zapytania lub kliknij pozycję **Wyświetl wynik zapytania** , aby otworzyć zapytanie w log Analytics. W dolnej części zapoznaj się z dopasowaniem do zapytania.
 
-4.  Kliknij wiersz i wybierz pozycję **Dodaj zakładkę** dodawania wierszy do należy zbadać — można to zrobić dla każdego elementu, który pewne informacje wyglądają podejrzanie. 
+4.  Kliknij wiersz i wybierz pozycję **Dodaj zakładkę** , aby dodać wiersze do zbadania — można to zrobić dla wszystkich elementów, które wyglądają podejrzanie. 
 
-5. Następnie wróć do głównego **myślistwo** strony, a następnie kliknij przycisk **zakładki** kartę, aby zobaczyć wszystkie podejrzane działania. 
+5. Następnie wróć do strony głównej łowiectwa i kliknij kartę **zakładki** , aby wyświetlić wszystkie podejrzane działania. 
 
-6. Wybierz zakładkę, a następnie kliknij przycisk **zbadaj** otworzyć środowisko badania. Można filtrować zakładek. Na przykład jeśli badasz kampanii, możesz utworzyć tag dla kampanii i następnie filtrować wszystkie zakładki w oparciu kampanii.
+6. Wybierz zakładkę, a następnie kliknij przycisk Zbadaj, aby otworzyć środowisko badania. Można filtrować zakładki. Na przykład, jeśli badasz kampanię, możesz utworzyć tag dla kampanii, a następnie filtrować wszystkie zakładki na podstawie kampanii.
 
-1. Po odnalezieniu którym zapytaniu myślistwo informują o wysokiej wartości możliwych ataków można również utworzyć niestandardowe wykrywania reguł na podstawie Twojego zapytania i prezentuj takie wnioski jako alerty do usługi obiektów odpowiadających w zdarzenia zabezpieczeń.
+1. Po wykryciu, które zapytanie polowające zapewnia wysoką wartość wglądu w możliwe ataki, można także utworzyć niestandardowe reguły wykrywania na podstawie zapytania i przedstawić te informacje jako alerty w odniesieniu do odpowiedzi na zdarzenia zabezpieczeń.
 
  
 
 ## <a name="query-language"></a>Język zapytań 
 
-Myślistwo w przez wartownika Azure opiera się na język zapytań usługi Azure Log Analytics. Aby uzyskać więcej informacji na temat obsługiwanych operatory i język zapytań, zobacz [dokumentacja języka zapytań](https://docs.loganalytics.io/docs/Language-Reference/).
+Łowiectwo na platformie Azure — na podstawie języka zapytań usługi Azure Log Analytics. Aby uzyskać więcej informacji na temat języka zapytań i obsługiwanych operatorów, zobacz [Dokumentacja języka zapytań](https://docs.loganalytics.io/docs/Language-Reference/).
 
-## <a name="public-hunting-query-github-repository"></a>Repozytorium GitHub zapytania publicznych myślistwo
+## <a name="public-hunting-query-github-repository"></a>Zapytanie dotyczące publicznego polowania w repozytorium GitHub
 
-Zapoznaj się z [repozytorium zapytania myślistwo](https://github.com/Azure/Orion). Współtworzenie i użyj przykładowych zapytań udostępnionych przez naszych klientów.
+Zapoznaj się z [repozytorium zapytań polowania](https://github.com/Azure/Orion). Współtworzenie i używanie przykładowych zapytań udostępnionych przez naszych klientów.
 
  
 
 ## <a name="sample-query"></a>Przykładowe zapytanie
 
-Typowe zapytania zaczyna się od nazwy tabeli, następuje szereg operatory rozdzielone \|.
+Typowa kwerenda rozpoczyna się od nazwy tabeli, po której następuje seria operatorów rozdzielonych \|przez.
 
-W przykładzie powyżej rozpoczyna się od tabeli SecurityEvent Określanie nazwy i gazociągami elementów zgodnie z potrzebami.
+W powyższym przykładzie Zacznij od nazwy tabeli SecurityEvent i Dodaj elementy potokowe zgodnie z wymaganiami.
 
-1. Zdefiniuj filtr czasu, aby zapoznać się z tylko rekordy z ostatnich siedmiu dni.
+1. Zdefiniuj filtr czasu, aby przeglądać tylko rekordy z ostatnich siedmiu dni.
 
-2. Dodaj filtr w zapytaniu tylko w celu wyświetlenia zdarzeń 4688 identyfikator.
+2. Dodaj filtr w zapytaniu, aby wyświetlić tylko zdarzenie o IDENTYFIKATORze 4688.
 
-3. Dodaj filtr w zapytaniu w wierszu polecenia, aby zawierała tylko wystąpienia cscript.exe.
+3. Dodaj filtr do zapytania w wierszu polecenia, aby zawierał tylko wystąpienia programu CScript. exe.
 
-4. Projekt tylko kolumny interesuje eksplorowania i ograniczyć wyniki do 1000 i kliknij przycisk **uruchom zapytanie**.
-5. Kliknij zielony trójkąt, a następnie uruchomić zapytanie. Można przetestować zapytanie i uruchom go, aby szukać nietypowego zachowania.
+4. Projektuj tylko te kolumny, które interesują Cię, i Ogranicz wyniki do 1000, a następnie kliknij przycisk **Uruchom zapytanie**.
+5. Kliknij zielony trójkąt i uruchom zapytanie. Możesz przetestować zapytanie i uruchomić je w celu wyszukania nietypowego zachowania.
 
 ## <a name="useful-operators"></a>Przydatne operatory
 
-Zaawansowany język zapytań i ma wiele dostępnych operatorów, poniżej przedstawiono niektóre przydatne operatory:
+Język zapytań jest zaawansowany i ma wiele dostępnych operatorów, niektóre przydatne operatory są wymienione tutaj:
 
-**gdzie** — Filtruj tabelę do podzestawu wierszy, które spełniają predykat.
+**WHERE** -filteruje tabelę do podzestawu wierszy, które spełniają predykat.
 
-**Podsumowanie** -utworzyć tabelę, która agreguje zawartość tabeli wejściowej.
+**Podsumowując** — tworzy tabelę, która agreguje zawartość tabeli wejściowej.
 
-**sprzężenia** -scalenie wierszy z dwóch tabel w celu utworzenia nowej tabeli, dopasowując wartości określone kolumny z każdej tabeli.
+**Dołącz** — Scala wiersze dwóch tabel, aby utworzyć nową tabelę przez dopasowanie wartości określonych kolumn z każdej tabeli.
 
-**Liczba** — zwraca liczbę rekordów w danych wejściowych zestawu rekordów.
+**Count** — zwraca liczbę rekordów w zestawie rekordów wejściowych.
 
-**TOP** -Return pierwsze N rekordów posortowanych według określonych kolumn.
+**Top** — zwraca pierwsze N rekordów posortowane według określonych kolumn.
 
-**limit** -zwracają maksymalnie określoną liczbę wierszy.
+**Limit** — zwraca do określonej liczby wierszy.
 
-**Projekt** — wybierz kolumny do dołączania, zmienić lub porzucić i Wstaw nowe kolumny obliczanej.
+**projekt** — wybierz kolumny do dołączenia, zmiany nazwy lub usunięcia oraz Wstaw nowe kolumny obliczane.
 
-**Rozszerzanie** — Tworzenie kolumn obliczeniowych i dołączyć je do zestawu wyników.
+**Rozwiń** — Utwórz kolumny obliczeniowe i Dołącz je do zestawu wyników.
 
-**makeset** -zwrócić zestawu różne wartości, które pobiera wyrażenie tablic dynamicznych (JSON) w grupie
+**MakeSet** — zwraca tablicę dynamiczną (JSON) zestawu unikatowych wartości, które wyrażenie ma w grupie
 
-**Znajdź** — Znajdź wiersze spełniające predykat w różnych tabelach.
+**Znajdź** — umożliwia znalezienie wierszy pasujących do predykatu w zestawie tabel.
 
 ## <a name="save-a-query"></a>Zapisz zapytanie
 
-Można utworzyć lub zmodyfikować zapytanie i zapisz go jako własną kwerendę lub udostępnić go użytkownikom, którzy znajdują się w tej samej dzierżawy.
+Możesz utworzyć lub zmodyfikować zapytanie i zapisać je jako własne zapytanie lub udostępnić je użytkownikom, którzy znajdują się w tej samej dzierżawie.
 
    ![Zapisz zapytanie](./media/tutorial-hunting/save-query.png)
 
-Utwórz nowe zapytanie myślistwo:
+Utwórz nowe zapytanie polowania:
 
-1. Kliknij przycisk **nowe zapytanie** i wybierz **Zapisz**.
-2. Wypełnij puste pola i wybierz **Zapisz**.
+1. Kliknij pozycję **nowe zapytanie** i wybierz pozycję **Zapisz**.
+2. Wypełnij wszystkie puste pola i wybierz pozycję **Zapisz**.
 
    ![Nowe zapytanie](./media/tutorial-hunting/new-query.png)
 
-Klonowanie i zmodyfikować istniejące zapytanie myślistwo:
+Klonuj i Modyfikuj istniejące zapytanie polowania:
 
-1. Wybierz zapytanie myślistwo w tabeli, którą chcesz zmodyfikować.
-2. Wybierz przycisk wielokropka (...) w wierszu kwerendę, o których chcesz zmodyfikować, a następnie wybierz pozycję **Klonuj zapytanie**.
+1. Wybierz zapytanie polowania w tabeli, którą chcesz zmodyfikować.
+2. Wybierz wielokropek (...) w wierszu zapytania, które chcesz zmodyfikować, a następnie wybierz pozycję **Klonuj zapytanie**.
 
    ![Klonuj zapytanie](./media/tutorial-hunting/clone-query.png)
  
 
-3. Zmodyfikuj zapytanie i wybierz **Utwórz**.
+3. Zmodyfikuj zapytanie i wybierz pozycję **Utwórz**.
 
-   ![Zapytanie niestandardowe](./media/tutorial-hunting/custom-query.png)
+   ![zapytanie niestandardowe](./media/tutorial-hunting/custom-query.png)
 
-## <a name="next-steps"></a>Kolejne kroki
-W tym artykule przedstawiono sposób uruchamiania badania myślistwo za pomocą platformy Azure przez wartownika. Aby dowiedzieć się więcej na temat platformy Azure przez wartownika, zobacz następujące artykuły:
+## <a name="next-steps"></a>Następne kroki
+W tym artykule wyjaśniono, jak uruchomić badanie polowania za pomocą oceny platformy Azure. Aby dowiedzieć się więcej na temat platformy Azure, zobacz następujące artykuły:
 
 
-- [Korzystanie z notesów, aby uruchomić zautomatyzowane myślistwo kampanii](notebooks.md)
-- [Używanie zakładek w celu zapisania interesujące informacje podczas myślistwo](bookmarks.md)
+- [Korzystanie z notesów do uruchamiania zautomatyzowanych kampanii łowieckich](notebooks.md)
+- [Korzystanie z zakładek do zapisywania interesujących informacji podczas polowania](bookmarks.md)

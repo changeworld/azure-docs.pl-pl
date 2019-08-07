@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: apimpm
-ms.openlocfilehash: d902a65c4e36ff698e486e2af899d055de1afca0
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 2756444db010e23f7114e99f474de9ce6614aaee
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638540"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68837906"
 ---
 # <a name="access-and-customize-the-new-developer-portal-in-azure-api-management"></a>Dostęp do nowego portalu dla deweloperów w usłudze Azure API Management i dostosowywanie go
 
@@ -77,6 +77,10 @@ Tak, będzie ona przestarzała po ogólnym udostępnieniu nowej. Jeśli masz pro
 Celem ogólnie dostępnej jest zapewnienie wysokiej dostępności funkcji opartej na scenariuszu w starym portalu. Do tego czasu wersja zapoznawcza może nie mieć wdrożonych wybranych funkcji.
 
 Wyjątkami są *aplikacje* i *problemy* ze starego portalu, które nie będą dostępne w nowym portalu. Jeśli w starym portalu są używane *problemy* , które są potrzebne, należy opublikować komentarz w [ramach dedykowanego problemu](https://github.com/Azure/api-management-developer-portal/issues/122)z usługą GitHub.
+
+### <a name="ive-found-bugs-andor-id-like-to-request-a-feature"></a>Znaleźliśmy błędy i/lub chcę zażądać funkcji.
+
+Wspaniale! Możesz przekazać nam swoją opinię, przesłać żądanie funkcji lub zgłosić raport o usterce w [sekcji problemy dotyczące repozytorium GitHub](https://github.com/Azure/api-management-developer-portal/issues). W tym miejscu będziemy również wdzięczni za opinie dotyczące problemów oznaczonych `community` etykietą.
 
 ### <a name="i-want-to-move-the-content-of-the-new-portal-between-environments-how-can-i-do-that-and-do-i-need-to-go-with-the-self-hosted-version"></a>Chcę przenieść zawartość nowego portalu między środowiskami. Jak można to zrobić, aby móc przejść do samodzielnej wersji?
 

@@ -1,6 +1,6 @@
 ---
-title: Azure CredentialsCombo UI element | Microsoft Docs
-description: Opis elementu Microsoft.Compute.CredentialsCombo interfejsu użytkownika dla witryny Azure portal.
+title: Element interfejsu użytkownika usługi Azure CredentialsCombo | Microsoft Docs
+description: Opisuje element interfejsu użytkownika Microsoft. COMPUTE. CredentialsCombo dla Azure Portal.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,32 +13,32 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0412d55fe60524cde404e6a640723d3259e020e1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3036e5882e236dbbb9cf4f9aae17617822422a82
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60251377"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742104"
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft.Compute.CredentialsCombo UI element
-Grupa kontrolek za pomocą wbudowanych sprawdzania poprawności dla Windows i Linux haseł i kluczy publicznych SSH.
+Grupa kontrolek z wbudowaną walidacją haseł systemu Windows i Linux oraz kluczy publicznych SSH.
 
-## <a name="ui-sample"></a>Przykład interfejsu użytkownika
+## <a name="ui-sample"></a>Przykładowy interfejs użytkownika
 
-Dla Windows, będzie widoczna dla użytkowników:
+W przypadku systemu Windows użytkownicy widzą następujące tematy:
 
 ![Microsoft.Compute.CredentialsCombo Windows](./media/managed-application-elements/microsoft.compute.credentialscombo-windows.png)
 
-Widoczne dla systemu Linux przy użyciu hasła, wybrane:
+Dla systemu Linux z wybranym hasłem użytkownicy zobaczą:
 
-![Hasło Microsoft.Compute.CredentialsCombo systemu Linux](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-password.png)
+![Hasło Microsoft. COMPUTE. CredentialsCombo Linux](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-password.png)
 
-Widoczne dla systemu Linux przy użyciu klucza publicznego SSH, wybrane:
+Dla systemu Linux z wybranym kluczem publicznym SSH użytkownicy zobaczą:
 
-![Microsoft.Compute.CredentialsCombo Linux key](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-key.png)
+![Microsoft. COMPUTE. CredentialsCombo — klucz systemu Linux](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-key.png)
 
 ## <a name="schema"></a>Schemat
-Dla Windows użyj następującego schematu:
+W przypadku systemu Windows należy użyć następującego schematu:
 
 ```json
 {
@@ -54,7 +54,7 @@ Dla Windows użyj następującego schematu:
   "constraints": {
     "required": true,
     "customPasswordRegex": "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{12,}$",
-    "customValidationMessage": "The password must contain at least 12 characters, with at least 1 letter and 1 number."
+    "customValidationMessage": "The password must be alphanumeric, contain at least 12 characters, and have at least 1 letter and 1 number."
   },
   "options": {
     "hideConfirmation": false
@@ -64,7 +64,7 @@ Dla Windows użyj następującego schematu:
 }
 ```
 
-Aby uzyskać **Linux**, użyj następującego schematu:
+W przypadku systemu **Linux**należy użyć następującego schematu:
 
 ```json
 {
@@ -84,7 +84,7 @@ Aby uzyskać **Linux**, użyj następującego schematu:
   "constraints": {
     "required": true,
     "customPasswordRegex": "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{12,}$",
-    "customValidationMessage": "The password must contain at least 12 characters, with at least 1 letter and 1 number."
+    "customValidationMessage": "The password must be alphanumeric, contain at least 12 characters, and have at least 1 letter and 1 number."
   },
   "options": {
     "hideConfirmation": false,
@@ -96,14 +96,14 @@ Aby uzyskać **Linux**, użyj następującego schematu:
 ```
 
 ## <a name="remarks"></a>Uwagi
-- `osPlatform` należy określić, i nie może być **Windows** lub **Linux**.
-- Jeśli `constraints.required` ustawiono **true**, wówczas hasła lub pola tekst klucza publicznego SSH musi mieć wartości, aby sprawdzić poprawność pomyślnie. Wartość domyślna to **true**.
-- Jeśli `options.hideConfirmation` jest ustawiona na **true**, a następnie w drugim polu tekstowym dla potwierdzenie hasła jest ukryty. Wartość domyślna to **false**.
-- Jeśli `options.hidePassword` jest ustawiona na **true**, a następnie opcję, aby użyć uwierzytelniania za pomocą hasła jest ukryty. Mogą być używane tylko wtedy, gdy `osPlatform` jest **Linux**. Wartość domyślna to **false**.
-- Dodatkowe ograniczenia dotyczące dozwolonych haseł można zaimplementować przy użyciu `customPasswordRegex` właściwości. Ciąg w `customValidationMessage` jest wyświetlane, gdy hasło niestandardowego sprawdzania poprawności zakończy się niepowodzeniem. Jest wartością domyślną dla obu właściwości **null**.
+- `osPlatform`musi być określony i może być w **systemie Windows** lub **Linux**.
+- Jeśli `constraints.required` jest ustawiona na **true**, hasło lub pola tekstowe klucza publicznego SSH muszą mieć wartości, aby pomyślnie sprawdzić poprawność. Wartość domyślna to **true**.
+- Jeśli `options.hideConfirmation` jest ustawiona na **wartość true**, drugie pole tekstowe potwierdzające hasło użytkownika jest ukryte. Wartość domyślna to **false**.
+- Jeśli `options.hidePassword` jest ustawiona na **true**, opcja używania uwierzytelniania hasła jest ukryta. Może być używana tylko wtedy, `osPlatform` gdy jest to system **Linux**. Wartość domyślna to **false**.
+- Dodatkowe ograniczenia dotyczące dozwolonych haseł można zaimplementować przy użyciu `customPasswordRegex` właściwości. Ciąg w jest `customValidationMessage` wyświetlany w przypadku niepowodzenia niestandardowej walidacji hasła. Wartość domyślna dla obu właściwości jest **równa null**.
 
 ## <a name="sample-output"></a>Przykładowe dane wyjściowe
-Jeśli `osPlatform` jest **Windows**, lub `osPlatform` jest **Linux** i użytkownik podał hasła zamiast klucza publicznego SSH, formant zwraca następujące wyniki:
+Jeśli `osPlatform` jest **Windows**lub `osPlatform` jest systemem **Linux** , a użytkownik podał hasło zamiast klucza publicznego SSH, kontrolka zwróci następujące dane wyjściowe:
 
 ```json
 {
@@ -112,7 +112,7 @@ Jeśli `osPlatform` jest **Windows**, lub `osPlatform` jest **Linux** i użytkow
 }
 ```
 
-Jeśli `osPlatform` jest **Linux** i użytkownik podał publiczny klucz SSH, formant zwraca następujące wyniki:
+Jeśli `osPlatform` jest **systemem Linux** , a użytkownik podał klucz publiczny SSH, kontrolka zwróci następujące dane wyjściowe:
 
 ```json
 {
@@ -121,6 +121,6 @@ Jeśli `osPlatform` jest **Linux** i użytkownik podał publiczny klucz SSH, for
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-* Wprowadzenie do tworzenia definicji interfejsu użytkownika, zobacz [wprowadzenie do zasobu CreateUiDefinition](create-uidefinition-overview.md).
-* Aby uzyskać opis wspólne właściwości w elementach interfejsu użytkownika, zobacz [elementy CreateUiDefinition](create-uidefinition-elements.md).
+## <a name="next-steps"></a>Następne kroki
+* Wprowadzenie do tworzenia definicji interfejsu użytkownika można znaleźć w temacie [wprowadzenie do CreateUiDefinition](create-uidefinition-overview.md).
+* Opis wspólnych właściwości elementów interfejsu użytkownika można znaleźć w temacie [CreateUiDefinition elementy](create-uidefinition-elements.md).

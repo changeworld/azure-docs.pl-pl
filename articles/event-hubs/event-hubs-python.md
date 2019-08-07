@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2018
 ms.author: shvija
-ms.openlocfilehash: f86dc92b4df45119930970acfe9e173f32f894fb
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 0960862da9e65cff4d957e97a7488dc7a245651a
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356052"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742122"
 ---
 # <a name="how-to-use-azure-event-hubs-from-a-python-application"></a>Jak używać usługi Azure Event Hubs z poziomu aplikacji Python
 Azure Event Hubs to platforma do pozyskiwania i strumieniowego przesyłania danych, która umożliwia odbieranie i przetwarzanie milionów zdarzeń na sekundę. Usługa Event Hubs pozwala przetwarzać i przechowywać zdarzenia, dane lub dane telemetryczne generowane przez rozproszone oprogramowanie i urządzenia. Dane wysłane do centrum zdarzeń mogą zostać przekształcone i zmagazynowane przy użyciu dowolnego dostawcy analityki czasu rzeczywistego lub adapterów przetwarzania wsadowego/magazynowania. Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi Event Hubs](event-hubs-what-is-event-hubs.md). 
@@ -162,7 +162,7 @@ startProcessing('YOUR STORAGE ACCOUNT NAME', 'YOUR KEY', 'capture')
 Aby uzyskać kompletny samouczek dotyczący sposobu odczytywania przechwyconych danych usługi Event Hubs w usłudze Azure blob storage z poziomu aplikacji napisanych w języku Python, zobacz [w tym artykule](event-hubs-capture-python.md)
 
 ## <a name="github-samples"></a>Przykłady dla usługi GitHub
-Można znaleźć więcej przykładów w języku Python w [repozytorium azure zdarzenia koncentratorów — python](https://github.com/Azure/azure-event-hubs-python/).
+Można znaleźć więcej przykładów w języku Python w [repozytorium azure zdarzenia koncentratorów — python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhubs).
 
 ## <a name="next-steps"></a>Kolejne kroki
 Zapoznaj się z artykułami w sekcji pojęcia, zaczynając od [omówienie funkcji usługi Event Hubs](event-hubs-features.md).

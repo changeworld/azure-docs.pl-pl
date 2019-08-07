@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: mlearned
 ms.openlocfilehash: 748abc08c432518be4ce8698713b1df95077c3c1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 08/05/2019
 ms.locfileid: "68722466"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Łączenie się z węzłami klastra SSH z usługą Azure Kubernetes Service (AKS) w celu przeprowadzenia konserwacji lub rozwiązywania problemów
@@ -41,7 +41,7 @@ CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myA
 SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
 ```
 
-Powyższy przykład przypisuje nazwę grupy zasobów klastra dla *myAKSCluster* *w* *CLUSTER_RESOURCE_GROUP*. Przykład następnie używa *CLUSTER_RESOURCE_GROUP* , aby wyświetlić nazwę zestawu skalowania i przypisać go do *SCALE_SET_NAME*.  
+Powyższy przykład przypisuje nazwę grupy zasobów klastra dla *myAKSCluster* w *CLUSTER_RESOURCE_GROUP*. Przykład następnie używa *CLUSTER_RESOURCE_GROUP* , aby wyświetlić nazwę zestawu skalowania i przypisać go do *SCALE_SET_NAME*.  
 
 > [!NOTE]
 > Klucze SSH można obecnie dodawać do węzłów systemu Linux przy użyciu interfejsu wiersza polecenia platformy Azure. Jeśli chcesz nawiązać połączenie z węzłem systemu Windows Server przy użyciu protokołu SSH, użyj kluczy SSH dostarczonych podczas tworzenia klastra AKS i Pomiń następny zestaw poleceń dodawania klucza publicznego SSH. Nadal będzie potrzebny adres IP węzła, który ma zostać rozwiązaniu, który jest wyświetlany w końcowym poleceniu tej sekcji. Alternatywnie można [połączyć się z węzłami systemu Windows Server przy użyciu połączeń RDP (Remote Desktop Protocol)][aks-windows-rdp] , zamiast korzystać z protokołu SSH.
@@ -98,7 +98,7 @@ CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myA
 az vm list --resource-group $CLUSTER_RESOURCE_GROUP -o table
 ```
 
-Powyższy przykład przypisuje nazwę grupy zasobów klastra dla *myAKSCluster* *w* *CLUSTER_RESOURCE_GROUP*. W przykładzie zostanie wystawiona Nazwa maszyny wirtualnej przy użyciu *CLUSTER_RESOURCE_GROUP* . Przykładowe dane wyjściowe przedstawiają nazwę maszyny wirtualnej: 
+Powyższy przykład przypisuje nazwę grupy zasobów klastra dla *myAKSCluster* w *CLUSTER_RESOURCE_GROUP*. W przykładzie zostanie wystawiona Nazwa maszyny wirtualnej przy użyciu *CLUSTER_RESOURCE_GROUP* . Przykładowe dane wyjściowe przedstawiają nazwę maszyny wirtualnej: 
 
 ```
 Name                      ResourceGroup                                  Location
@@ -206,7 +206,7 @@ Aby utworzyć połączenie SSH z węzłem AKS, należy uruchomić pomocnika w kl
 
 Po zakończeniu sesja `exit` SSH, a następnie `exit` interaktywna sesja kontenera. Po zamknięciu tej sesji kontenera używany na potrzeby dostępu SSH z klastra AKS zostaje usunięty.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Jeśli potrzebne są dodatkowe dane dotyczące rozwiązywania problemów, można [wyświetlić dzienniki kubelet][view-kubelet-logs] lub [wyświetlić dzienniki głównego węzła Kubernetes][view-master-logs].
 

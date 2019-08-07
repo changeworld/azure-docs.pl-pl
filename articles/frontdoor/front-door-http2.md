@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure drzwiami frontowymi — obsługę protokołu HTTP2 | Dokumentacja firmy Microsoft
-description: Ten artykuł pomoże Ci więcej informacji na temat obsługi protokołu HTTP/2 w usłudze Azure Service drzwi
+title: Usługa Azure Front-The-HTTP2 support | Microsoft Docs
+description: Ten artykuł ułatwia zapoznanie się z obsługą protokołu HTTP/2 w usłudze Azure front-drzwi
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,38 +11,41 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 33e738f31be493d5890fc972ec71e7c6cd733bf4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c3c1721454c0b3c96071c685a764f34d4fa540b9
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736455"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775270"
 ---
-# <a name="http2-support-in-azure-front-door-service"></a>Obsługa protokołu HTTP/2 w usłudze Azure Service drzwi
-Protokołu HTTP/2 jest główną wersję protokołu HTTP/1.1. Zapewnia ona szybsze wydajności sieci web, czas reakcji mniejsze i ulepszone środowisko pracy, przy zachowaniu znanych metod HTTP, kodów stanu i semantyki. Chociaż protokołu HTTP/2 jest przeznaczona do pracy za pomocą protokołu HTTP i HTTPS, wiele przeglądarek sieci web klienta obsługują tylko protokołu HTTP/2 za pośrednictwem zabezpieczeń TLS (Transport Layer).
+# <a name="http2-support-in-azure-front-door-service"></a>Obsługa protokołu HTTP/2 w usłudze Azure front-drzwi
+
+Obecnie obsługa protokołu HTTP/2 jest aktywna dla wszystkich konfiguracji czołowych drzwi. Od klientów nie są wymagane żadne dalsze działania.
+
+HTTP/2 to główna wersja protokołu HTTP/1.1. Zapewnia to szybszą wydajność sieci Web, krótszy czas odpowiedzi i ulepszone środowisko użytkownika przy zachowaniu znanych metod HTTP, kodów stanu i semantyki. Mimo że protokół HTTP/2 jest przeznaczony do pracy z protokołami HTTP i HTTPS, wiele przeglądarek sieci Web klienta obsługuje tylko protokół HTTP/2 dla Transport Layer Security (TLS).
 
 ### <a name="http2-benefits"></a>Korzyści z protokołu HTTP/2
 
-Zalety protokołu HTTP/2:
+Zalety protokołu HTTP/2 obejmują:
 
-*   **Funkcje multipleksowania i współbieżność**
+*   **Multipleksowanie i współbieżność**
 
-    Przy użyciu protokołu HTTP 1.1, wysyłania wielu żądań zasobów wymaga wielu połączeń TCP, a każde połączenie jest zmniejszenie wydajności skojarzonych z nim. Protokołu HTTP/2 umożliwia wielu zasoby wymagane dla pojedynczego połączenia TCP.
+    Przy użyciu protokołu HTTP 1,1 wykonanie wielu żądań zasobów wymaga wielu połączeń TCP, a każde połączenie ma powiązane z nim obciążenie. Protokół HTTP/2 umożliwia żądanie wielu zasobów na jednym połączeniu TCP.
 
-*   **Kompresja nagłówków**
+*   **Kompresowanie nagłówka**
 
-    Poprzez kompresowanie nagłówków HTTP obsługiwane zasobów, czasu przesyłania jest znacznie ograniczony.
+    Dzięki kompresji nagłówków HTTP dla obsługiwanych zasobów czas w sieci jest zmniejszany znacznie.
 
-*   **Stream zależności**
+*   **Zależności strumienia**
 
-    Zależności Stream umożliwiają klientowi wskazanie serwerowi, zasoby, które mają priorytet.
+    Zależności strumienia umożliwiają klientowi wskazanie serwera, którego zasoby mają priorytet.
 
 
-## <a name="http2-browser-support"></a>Obsługa przeglądarek protokołu HTTP/2
+## <a name="http2-browser-support"></a>Obsługa przeglądarki HTTP/2
 
-Wszystkie popularne przeglądarki wdrożono Obsługa protokołu HTTP/2 w ich bieżącej wersji. Nieobsługiwany przeglądarek automatycznie rezerwowego protokołu HTTP/1.1.
+Wszystkie główne przeglądarki wdrożyły obsługę protokołu HTTP/2 w ich bieżących wersjach. Nieobsługiwane przeglądarki automatycznie powracają do protokołu HTTP/1.1.
 
-|Przeglądarka|Minimalna wersja|
+|Browser|Wersja minimalna|
 |-------------|------------|
 |Microsoft Edge| 12|
 |Google Chrome| 43|
@@ -50,15 +53,11 @@ Wszystkie popularne przeglądarki wdrożono Obsługa protokołu HTTP/2 w ich bie
 |Opera| 32|
 |Safari| 9|
 
-## <a name="enabling-http2-support-in-azure-front-door-service"></a>Włączanie obsługi protokołu HTTP/2 w usłudze Azure Service drzwi
-
-Obecnie obsługa protokołu HTTP/2 jest aktywny w przypadku wszystkich konfiguracji wejściu. Nie są wymagane dalsze działania od klientów.
-
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat protokołu HTTP/2, odwiedź następujące zasoby:
+Więcej informacji na temat protokołu HTTP/2 można znaleźć w następujących zasobach:
 
 - [Strona główna specyfikacji protokołu HTTP/2](https://http2.github.io/)
-- [Oficjalna protokołu HTTP/2 — często zadawane pytania](https://http2.github.io/faq/)
+- [Oficjalne pytania dotyczące protokołu HTTP/2](https://http2.github.io/faq/)
 - Dowiedz się, jak [utworzyć usługę Front Door](quickstart-create-front-door.md).
 - Dowiedz się, [jak działa usługa Front Door](front-door-routing-architecture.md).
