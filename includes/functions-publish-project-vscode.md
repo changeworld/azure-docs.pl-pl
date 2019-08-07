@@ -9,18 +9,18 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: ba3cf3e77e5414804e881e0cddb151fb14fb7fd5
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: abb8b6bed6766ff0ea85eab1434014a057af4ca3
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68669760"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68843286"
 ---
 ## <a name="publish-the-project-to-azure"></a>Publikowanie projektu na platformie Azure
 
 Program Visual Studio Code umożliwia publikowanie projektu usługi Functions bezpośrednio na platformie Azure. W ramach tego procesu tworzysz aplikację funkcji i powiązane zasoby w subskrypcji platformy Azure. Aplikacja funkcji zapewnia kontekst wykonywania dla Twoich funkcji. Projekt jest pakowany i wdrażany do nowej aplikacji funkcji w ramach subskrypcji platformy Azure.
 
-Domyślnie program Visual Studio tworzy wszystkie zasoby platformy Azure wymagane do utworzenia aplikacji funkcji. Nazwy tych zasobów są zależne od wybranej nazwy aplikacji funkcji. Jeśli musisz mieć pełną kontrolę nad utworzonymi zasobami, możesz zamiast tego [opublikować przy użyciu opcji zaawansowanych](../articles/azure-functions/functions-develop-vs-code.md#enable-publishing-with-advanced-create-options).
+Domyślnie Visual Studio Code tworzy wszystkie zasoby platformy Azure wymagane do utworzenia aplikacji funkcji. Nazwy tych zasobów są zależne od wybranej nazwy aplikacji funkcji. Jeśli musisz mieć pełną kontrolę nad utworzonymi zasobami, możesz zamiast tego [opublikować przy użyciu opcji zaawansowanych](../articles/azure-functions/functions-develop-vs-code.md#enable-publishing-with-advanced-create-options).
 
 W tej sekcji założono, że tworzysz nową aplikację funkcji na platformie Azure.
 

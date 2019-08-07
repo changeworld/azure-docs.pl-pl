@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 29a842f7dfcf720f29fcff80d2e736893c824f5a
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 9f7e0e23a04c6b141c6e0c5ff88b3d5ff2d76e1d
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65949559"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840433"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Wdrażanie w usłudze Azure App Service przy użyciu wtyczki Jenkins 
 
@@ -35,7 +35,7 @@ Jeśli nie masz jeszcze głównego serwera Jenkins, zacznij od tego [szablonu ro
 * [Poświadczenia platformy Azure](https://plugins.jenkins.io/azure-credentials) w wersji 1.2
 * [Usługa Azure App Service](https://plugins.jenkins.io/azure-app-service) w wersji 0.1
 
-Przy użyciu wtyczki Jenkins można wdrożyć aplikację internetową w dowolnym języku, który jest obsługiwany przez funkcję Web Apps, na przykład C#, PHP, Java i Node.js. W tym samouczku użyjemy [prostej aplikacji internetowej Java dla platformy Azure](https://github.com/azure-devops/javawebappsample). Aby utworzyć rozwidlenie repozytorium na swoim koncie usługi GitHub, wybierz przycisk **Fork** (Rozwidlenie) w prawym górnym rogu interfejsu usługi GitHub.  
+Wtyczki Jenkins można użyć do wdrożenia aplikacji sieci Web w dowolnym języku obsługiwanym przez Web Apps, takich jak C#php, Python, Java i Node. js. W tym samouczku użyjemy [prostej aplikacji internetowej Java dla platformy Azure](https://github.com/azure-devops/javawebappsample). Aby utworzyć rozwidlenie repozytorium na swoim koncie usługi GitHub, wybierz przycisk **Fork** (Rozwidlenie) w prawym górnym rogu interfejsu usługi GitHub.  
 
 > [!NOTE]
 > Do utworzenia projektu języka Java wymagany jest zestaw Java JDK i narzędzie Maven. Zainstaluj te składniki na głównym serwerze Jenkins lub na agencie maszyny wirtualnej, jeśli używasz agenta w celu zapewnienia ciągłej integracji. Jeśli wdrażasz aplikację Java SE, na serwerze kompilacji jest również wymagany plik ZIP.
@@ -90,7 +90,7 @@ Zanim skonfigurujesz zadanie na serwerze Jenkins, potrzebujesz planu usługi Azu
 ### <a name="set-up-the-jenkins-job"></a>Konfigurowanie zadania serwera Jenkins
 
 1. Utwórz nowy **dowolny** projekt na pulpicie nawigacyjnym serwera Jenkins.
-2. Skonfiguruj pole **Source Code Management** (Zarządzanie kodem źródłowym) w celu użycia Twojego rozwidlenia lokalnego [prostej aplikacji internetowej Java dla platformy Azure](https://github.com/azure-devops/javawebappsample). Podaj wartość **Repository URL** (Adres URL repozytorium). Na przykład: http:\//github.com/&lt;your_ID > / javawebappsample.
+2. Skonfiguruj pole **Source Code Management** (Zarządzanie kodem źródłowym) w celu użycia Twojego rozwidlenia lokalnego [prostej aplikacji internetowej Java dla platformy Azure](https://github.com/azure-devops/javawebappsample). Podaj wartość **Repository URL** (Adres URL repozytorium). Na przykład: http:\//GitHub.com/&lt;your_ID >/javawebappsample.
 3. Dodaj krok kompilowania projektu przy użyciu narzędzia Maven, dodając polecenie **Execute shell** (Wykonaj powłokę). W tym przykładzie potrzebujemy dodatkowego polecenia, aby zmienić nazwę pliku \*.war w folderze docelowym na **ROOT.war**:   
     ```bash
     mvn clean package
@@ -143,7 +143,7 @@ Przed skonfigurowaniem zadania na serwerze Jenkins potrzebujesz aplikacji intern
 ### <a name="set-up-the-jenkins-job-for-docker"></a>Konfigurowanie zadania serwera Jenkins dla platformy Docker
 
 1. Utwórz nowy **dowolny** projekt na pulpicie nawigacyjnym serwera Jenkins.
-2. Skonfiguruj pole **Source Code Management** (Zarządzanie kodem źródłowym) w celu użycia Twojego rozwidlenia lokalnego [prostej aplikacji internetowej Java dla platformy Azure](https://github.com/azure-devops/javawebappsample). Podaj wartość **Repository URL** (Adres URL repozytorium). Na przykład: http:\//github.com/&lt;your_ID > / javawebappsample.
+2. Skonfiguruj pole **Source Code Management** (Zarządzanie kodem źródłowym) w celu użycia Twojego rozwidlenia lokalnego [prostej aplikacji internetowej Java dla platformy Azure](https://github.com/azure-devops/javawebappsample). Podaj wartość **Repository URL** (Adres URL repozytorium). Na przykład: http:\//GitHub.com/&lt;your_ID >/javawebappsample.
 3. Dodaj krok kompilowania projektu przy użyciu narzędzia Maven, dodając polecenie **Execute shell** (Wykonaj powłokę). W poleceniu dołącz następujący wiersz:
     ```bash
     mvn clean package
@@ -231,7 +231,7 @@ W polu **Docker registry URL** (Adres URL rejestru platformy Docker) podaj adres
 
 Jeśli napotkasz jakiekolwiek usterki we wtyczkach narzędzia Jenkins, prześlij zgłoszenie za pomocą narzędzia [Jenkins JIRA](https://issues.jenkins-ci.org/) dla określonego składnika.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przeprowadziliśmy wdrożenie na platformie Azure za pomocą wtyczki Jenkins dla usługi Azure App Service.
 

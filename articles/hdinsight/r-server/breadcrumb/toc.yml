@@ -6,9 +6,9 @@
       tocHref: /azure/hdinsight/
       topicHref: /azure/hdinsight/index
       items:
-        - name: platforma Spark
+        - name: Usługi ML
           tocHref: /azure/hdinsight/hadoop/
-          topicHref: /azure/hdinsight/spark/index
-        - name: platforma Spark
+          topicHref: /azure/hdinsight/r-server/index
+        - name: Usługi ML
           tocHref: /azure/hdinsight/domain-joined/
-          topicHref: /azure/hdinsight/spark/index
+          topicHref: /azure/hdinsight/r-server/index

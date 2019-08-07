@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Tworzenie, ładowanie i wykonywanie zapytań względem indeksów przy użyciu programu Poster i interfejsów API REST — Azure Search'
+title: 'Przewodnik Szybki Start: Tworzenie, ładowanie i wykonywanie zapytań względem indeksów przy użyciu programu Poster-Azure Search'
 description: Dowiedz się, jak wywoływać interfejsy API REST Azure Search przy użyciu programu Poster oraz dane przykładowe i definicje.
 author: HeidiSteen
 manager: cgronlun
@@ -9,13 +9,12 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 07/11/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 5a61f5476551d785f2db0ef52dff45554302fd07
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 5ad1708475200475669c5de8f4fbd316f04ebd04
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849803"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840790"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>Szybki start: Tworzenie indeksu Azure Search w programie Poster przy użyciu interfejsów API REST
 > [!div class="op_single_selector"]
@@ -297,7 +296,7 @@ Zasoby można znaleźć w portalu i zarządzać nimi za pomocą linku **wszystki
 
 Jeśli używasz bezpłatnej usługi, pamiętaj, że masz ograniczone do trzech indeksów, indeksatorów i źródeł danych. Możesz usunąć poszczególne elementy w portalu, aby zachować limit. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Klienci interfejsu REST są nieocenieni dla spontanicznej eksploracji, ale teraz, gdy wiesz, jak działają interfejsy API REST, możesz pójść dalej, używając kodu. Aby zapoznać się z następnym krokiem, zobacz następujący link:
 

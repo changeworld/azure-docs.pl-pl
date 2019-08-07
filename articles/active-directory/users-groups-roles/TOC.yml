@@ -138,8 +138,6 @@
               href: roles-view-assignments.md
             - name: Przypisywanie ról w centrum administracyjnym usługi Azure AD
               href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-            - name: Przypisywanie ról niestandardowych w interfejsie API programu Graph
-              href: roles-assign-graph.md
             - name: Przypisywanie ról niestandardowych w programie PowerShell
               href: roles-assign-powershell.md
             - name: Uprawnienia roli niestandardowej (wersja zapoznawcza)

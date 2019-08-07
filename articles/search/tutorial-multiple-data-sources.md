@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Indeksowanie wielu źródeł danych — Azure Search'
+title: C#Ręczny Indeksowanie wielu źródeł danych — Azure Search
 description: Dowiedz się, jak importować dane z wielu źródeł danych do jednego indeksu Azure Search.
 author: RobDixon22
 manager: HeidiSteen
@@ -7,13 +7,13 @@ services: search
 ms.service: search
 ms.topic: tutorial
 ms.date: 06/21/2019
-ms.author: v-rodixo
-ms.openlocfilehash: dcc4a7f267d1e852fcd50050f6683baa0e736199
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.author: heidist
+ms.openlocfilehash: 2776bcd095c570be500fa6ddb2675820b2259716
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827207"
+ms.locfileid: "68840678"
 ---
 # <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-search-index"></a>C#Ręczny Łączenie danych z wielu źródeł danych w jednym indeksie Azure Search
 
@@ -344,7 +344,7 @@ Na liście kliknij indeks pokojów hotelowych — przykład. Zostanie wyświetlo
 
 Najszybszym sposobem wyczyszczenia środowiska po ukończeniu samouczka jest usunięcie grupy zasobów zawierającej usługę Azure Search. Możesz teraz usunąć tę grupę zasobów, aby trwale usunąć całą jej zawartość. Nazwa grupy zasobów w portalu znajduje się na stronie Przegląd usługi Azure Search.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Istnieje kilka metod i wiele opcji indeksowania obiektów BLOB JSON. Jeśli dane źródłowe zawierają zawartość JSON, możesz przejrzeć te opcje, aby zobaczyć, co najlepiej sprawdza się w danym scenariuszu.
 

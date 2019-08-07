@@ -5,15 +5,16 @@ manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
+ms.subservice: cognitive-search
 ms.topic: tutorial
 ms.date: 06/29/2019
 ms.author: heidist
-ms.openlocfilehash: 139cb598ee774e52da8d97e8d209e11ec4ffc94d
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 7539481105e1c1fd3b6816778e31e6edde8842d3
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828451"
+ms.locfileid: "68840812"
 ---
 # <a name="how-to-get-started-with-knowledge-store-in-azure-search"></a>Jak rozpocząć pracę z usługą Knowledge Store w Azure Search
 
@@ -487,7 +488,7 @@ Należy pamiętać, że magazyn wiedzy jest w pełni odłączony od Azure Search
 
 Utworzono swój pierwszy magazyn wiedzy w usłudze Azure Storage i użyto Eksplorator usługi Storage, aby wyświetlić wzbogacenia. Jest to podstawowe środowisko pracy z przechowywanymi wzbogacami. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Umiejętność kształtu ma duże znaczenie dla tworzenia formularzy danych szczegółowych, które mogą być połączone z nowymi kształtami. W następnym kroku zapoznaj się ze stroną referencyjną tej umiejętności, aby uzyskać szczegółowe informacje na temat sposobu ich używania.
 

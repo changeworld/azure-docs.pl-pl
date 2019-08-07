@@ -4,16 +4,17 @@ description: Utwórz magazyn wiedzy przy użyciu Kreatora importowania danych w 
 author: heidisteen
 services: search
 ms.service: search
+ms.subservice: cognitive-search
 ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: heidist
-ms.openlocfilehash: 66a051c430be9f59569a5843c0138c7ddc15b87c
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 518a96ae8ace5c9630d594fe70487635b6ec1d2c
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707148"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840842"
 ---
 # <a name="create-an-azure-search-knowledge-store-and-connect-using-power-bi"></a>Tworzenie Azure Search magazynu wiedzy i nawiązywanie połączenia przy użyciu Power BI
 
@@ -99,7 +100,7 @@ Użyj Kreatora importu danych, aby utworzyć magazyn wiedzy. Spowoduje to zaimpo
 
 1. Skonfiguruj indeks opcjonalnych zapytań wyszukiwania pełnotekstowego w Azure Search. Chociaż ten Instruktaż jest Power BI połączony z usługą Azure Table Storage, Kreator **importu danych** może również utworzyć indeks używany do wyszukiwania pełnotekstowego w Azure Search. 
 
-   Kreator próbuje użyć źródła danych, aby wywnioskować pola i typy danych, więc wszystko, co trzeba zrobić, to wybranie atrybutów niezbędnych do osiągnięcia potrzebnych zachowań. Na przykład pobieranie *oznacza,* że zawartość pola może być pobierana z usługi, podczas gdy *Wyszukiwanie* umożliwia wyszukiwanie pełnotekstowe w wybranych polach.
+   Kreator próbuje użyć źródła danych, aby wywnioskować pola i typy danych, więc wszystko, co trzeba zrobić, to wybranie atrybutów niezbędnych do osiągnięcia potrzebnych zachowań. Na przykład pobieranie oznacza, że zawartość pola może być pobierana z usługi, podczas gdy *Wyszukiwanie* umożliwia wyszukiwanie pełnotekstowe w wybranych polach.
 
    - Nadaj indeksowi nazwę, na przykład *Hotel-przegląda-IDX*.
    - Ustaw wszystkie pola jako do **pobierania**.
@@ -112,7 +113,7 @@ Użyj Kreatora importu danych, aby utworzyć magazyn wiedzy. Spowoduje to zaimpo
 
    Kliknij pozycję **Next: Utwórz indeksator** , aby przejść do następnego kroku.
 
-1. Skonfiguruj indeksator, nadając mu nazwę i erze wykonywania. W tym instruktażu należy użyć usługi *Hotel-Recenzje-idxr* jako nazwy indeksatora i **użyć domyślnego harmonogramu** , aby natychmiast uruchomić indeksator.
+1. Skonfiguruj indeksator, nadając mu nazwę i erze wykonywania. W tym instruktażu należy użyć usługi *Hotel-Recenzje-idxr* jako nazwy indeksatora i użyć domyślnego harmonogramu , aby natychmiast uruchomić indeksator.
 
    Wykonanie indeksatora umieszcza wszystkie poprzednie konfiguracje w ruchu. Operacje wyodrębniania, przetwarzania i pozyskiwania są wykonywane w tym kroku.
 
@@ -168,7 +169,7 @@ Utwórz nowe kontenery w usłudze Azure Blob Storage i przekaż każdy plik CSV 
 
 | Opis | Łącze |
 |-------------|------|
-| Warstwa Bezpłatna   | [HotelReviews_Free. csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D) |
+| Warstwa bezpłatna   | [HotelReviews_Free. csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D) |
 | Małe (500 rekordów) | [HotelReviews_Small. csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Small.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D) |
 | Średni (6000 rekordów)| [HotelReviews_Medium. csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Medium.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D)
 | Duży (pełny zestaw danych 35000 rekordów) | [HotelReviews_Large. csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Large.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D). Należy pamiętać, że bardzo duże zestawy danych są kosztowne do przetworzenia. Koszty te są w przybliżeniu $1000 USD.|
@@ -177,7 +178,7 @@ W kroku wzbogacania kreatora Dołącz [Cognitive Services](https://docs.microsof
 
   ![Tworzenie zasobu Cognitive Services](media/knowledge-store-howto-powerbi/create-cognitive-service.png "Tworzenie zasobu Cognitive Services")
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Jeśli chcesz powtórzyć to ćwiczenie lub wykonać inne czynności związane z wzbogacaniem AI, Usuń właśnie utworzony indeks *hotelu-przeglądający-IDX* . Usunięcie indeksatora resetuje bezpłatny dzienny licznik transakcji z powrotem do zera. 
 

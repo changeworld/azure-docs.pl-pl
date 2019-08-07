@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 01/25/2019
-ms.openlocfilehash: ba2c8b01861c0ecbc9adeebfcb184cff1b81e816
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: b53d3d6ad5471cfe4ce105a3aace3bc55390a610
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183849"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68843283"
 ---
-* Wykonaj [Szybki Start: Rozpoczynanie pracy z usługą Azure Machine Learning przy użyciu serwer opartych na chmurze notesu](../articles/machine-learning/service/quickstart-run-cloud-notebook.md) celu Utwórz obszar roboczy, a następnie uruchom notesu strony sieci Web. 
+* Wykonaj kroki z artykułu [Samouczek: Skonfiguruj środowisko i obszar](../articles/machine-learning/service/tutorial-1st-experiment-sdk-setup.md) roboczy, aby utworzyć obszar roboczy i uruchomić stronę sieci Web notesu. 
 
