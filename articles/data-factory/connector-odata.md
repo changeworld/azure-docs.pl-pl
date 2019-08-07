@@ -52,7 +52,7 @@ Następujące właściwości są obsługiwane przez usługę OData połączone:
 | url | Główny adres URL usługi OData. |Yes |
 | authenticationType | Typ uwierzytelniania używany do łączenia z źródła OData. Dozwolone wartości to **anonimowe**, **podstawowe**, **Windows**, **AadServicePrincipal**, i **ManagedServiceIdentity** . Użytkownik, na podstawie uwierzytelniania OAuth nie jest obsługiwane. | Yes |
 | userName | Określ **userName** uwierzytelnianie Basic lub Windows. | Nie |
-| password | Określ **hasło** dla użytkownika, konto określone dla **userName**. Oznacz to pole jako **SecureString** typ, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
+| password | Określ **password** dla użytkownika, konto określone dla **userName**. Oznacz to pole jako **SecureString** typ, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
 | servicePrincipalId | Określ identyfikator klienta aplikacji usługi Azure Active Directory. | Nie |
 | aadServicePrincipalCredentialType | Określanie typu poświadczeń na potrzeby uwierzytelniania jednostki usługi. Dozwolone wartości to: `ServicePrincipalKey` lub `ServicePrincipalCert`. | Nie |
 | servicePrincipalKey | Określ klucz aplikacji usługi Azure Active Directory. Oznacz to pole jako **SecureString** można bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
