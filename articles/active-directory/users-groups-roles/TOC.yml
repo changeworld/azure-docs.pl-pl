@@ -128,8 +128,6 @@
           href: directory-assign-admin-roles.md
         - name: Wyświetlanie i przypisywanie ról
           href: directory-manage-roles-portal.md
-        - name: Przypisywanie ról niestandardowych w interfejsie API programu Graph
-          href: roles-assign-powershell.md
         - name: Role niestandardowe (wersja zapoznawcza)
           items:
             - name: Role niestandardowe (wersja zapoznawcza)
@@ -142,6 +140,8 @@
               href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
             - name: Przypisywanie ról niestandardowych w interfejsie API programu Graph
               href: roles-assign-graph.md
+            - name: Przypisywanie ról niestandardowych w programie PowerShell
+              href: roles-assign-powershell.md
             - name: Uprawnienia roli niestandardowej (wersja zapoznawcza)
               href: roles-custom-available-permissions.md
             - name: Delegowanie uprawnień administratora aplikacji

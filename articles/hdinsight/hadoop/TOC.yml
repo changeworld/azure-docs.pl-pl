@@ -56,14 +56,20 @@
       maintainContext: true
     - name: Rozwiązywanie problemów
       items:
+        - name: Blokowanie programowe — procesor CPU
+          href: ./hdinsight-troubleshoot-soft-lockup-cpu.md
+        - name: InvalidNetworkConfigurationErrorCode — tworzenie klastra kończy się niepowodzeniem
+          href: ./troubleshoot-invalidnetworkconfigurationerrorcode-cluster-creation-fails.md
+        - name: InvalidNetworkSecurityGroupSecurityRules — tworzenie klastra kończy się niepowodzeniem
+          href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
         - name: Nie można zalogować się do klastra usługi HDInsight
           href: ./hdinsight-troubleshoot-unable-log-in-cluster.md
         - name: Nie można dodać węzłów do klastra usługi HDInsight
           href: ./hdinsight-troubleshoot-unable-add-nodes.md
-        - name: InvalidNetworkSecurityGroupSecurityRules — tworzenie klastra kończy się niepowodzeniem
-          href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
         - name: Konwertowanie certyfikatu jednostki usługi
           href: ./hdinsight-troubleshoot-converting-service-principal-certificate.md
+        - name: Lokalny system plików HDFS zablokowany w trybie awaryjnym
+          href: ./hdinsight-hdfs-troubleshoot-safe-mode.md
         - name: Problemy z pulsem usługi Apache Ambari
           href: ./apache-ambari-troubleshoot-heartbeat-issues.md
 - name: Instrukcje

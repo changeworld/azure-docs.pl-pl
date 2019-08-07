@@ -131,6 +131,8 @@
   items:
     - name: Zarządzanie usługą Azure Monitor
       items:
+        - name: Projektowanie wdrożenia obszaru roboczego
+          href: platform/design-logs-deployment.md
         - name: Uprawnienia ról i bezpieczeństwo
           href: platform/roles-permissions-security.md
         - name: Adresy IP

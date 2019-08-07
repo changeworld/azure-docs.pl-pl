@@ -27,64 +27,31 @@ sections:
         style: cards
         type: list
   - items:
-      - text: 'Przygotuj się i zacznij korzystać z usługi Azure Machine Learning Service:'
+      - text: Przygotuj się i zacznij korzystać z usługi Azure Machine Learning Service.
         type: paragraph
-      - text: '<b>Przewodniki Szybki start:</b>'
-        type: paragraph
-      - items:
-          - html: <a href="service/quickstart-run-cloud-notebook">Przeprowadzanie eksperymentu w chmurze</a> (nie jest wymagana instalacja)
-          - html: <a href="service/quickstart-run-local-notebook">Przeprowadzanie eksperymentu przy użyciu lokalnego serwera notesów</a> (instalacja lokalna zestawu SDK)
-        style: unordered
-        type: list
-      - text: '<b>Samouczek: Trenowanie i wdrażanie pierwszego zautomatyzowanego modelu uczenia maszynowego w witrynie Azure Portal:</b>'
+      - text: 'Używaj witryny Azure Portal — łatwego w użyciu interfejsu niewymagającego pisania kodu do trenowania i wdrażania modeli uczenia maszynowego oraz zarządzania nimi:'
         type: paragraph
       - items:
+          - html: <a href="service/ui-tutorial-automobile-price-train-score">Trenowanie pierwszego eksperymentu w interfejsie użytkownika przeciągania i upuszczania interfejsu wizualizacji</a>
           - html: <a href="service/tutorial-first-experiment-automated-ml">Trenowanie i wdrażanie pierwszego modelu klasyfikacji za pomocą zautomatyzowanego uczenia maszynowego</a>
         style: unordered
         type: list
-      - text: '<b>Samouczek: Trenowanie pierwszego modelu uczenia maszynowego za pomocą zestawu SDK:</b>'
+      - text: 'Używaj zestawu SDK języka Python w skryptach i notesach do trenowania i wdrażania modeli uczenia maszynowego oraz zarządzania nimi:'
         type: paragraph
       - items:
-          - html: 'Część 1: <a href="service/tutorial-1st-experiment-sdk-setup">Konfigurowanie środowiska i obszaru roboczego</a>'
-          - html: 'Część 2: <a href="service/tutorial-1st-experiment-sdk-train">Trenowanie pierwszego modelu</a>'
+          - html: <a href="service/tutorial-1st-experiment-sdk-setup">Konfigurowanie środowiska i trenowanie pierwszego eksperymentu uczenia maszynowego</a>
+          - html: <a href="service/tutorial-train-models-with-aml">Trenowanie i wdrażanie modeli klasyfikacji obrazów</a>
+          - html: <a href="service/tutorial-data-prep">Przygotowywanie danych i używanie zautomatyzowanego uczenia maszynowego do przewidywania opłat za taksówkę</a>
         style: unordered
         type: list
-      - text: '<b>Samouczek: Trenowanie i wdrażanie pierwszego eksperymentu za pomocą interfejsu wizualnego:</b>'
-        type: paragraph
-      - items:
-          - html: 'Część 1: <a href="service/ui-tutorial-automobile-price-train-score">Trenowanie modelu regresji</a>'
-          - html: 'Część 2: <a href="service/ui-tutorial-automobile-price-deploy">Wdrażanie modelu</a>'
-        style: unordered
-        type: list
-      - text: '<b>Samouczek: Klasyfikacja obrazów (dane MNIST) za pomocą zestawu SDK:</b>'
-        type: paragraph
-      - items:
-          - html: 'Część 1: <a href="service/tutorial-train-models-with-aml">Trenowanie własnego modelu</a>'
-          - html: 'Część 2: <a href="service/tutorial-deploy-models-with-aml">Wdrażanie tego modelu</a>'
-        style: unordered
-        type: list
-      - text: '<b>Samouczek: Przewidywanie opłaty za przejazd taksówką za pomocą zestawu SDK:</b>'
-        type: paragraph
-      - items:
-          - html: 'Część 1: <a href="service/tutorial-data-prep">Przygotowywanie danych do modelowania</a>'
-          - html: 'Część 2: <a href="service/tutorial-auto-train-models">Trenowanie modeli przy użyciu zautomatyzowanego uczenia maszynowego</a>'
-        style: unordered
-        type: list
-      - text: '<b>Samouczek: Przewidywanie ceny samochodu za pomocą interfejsu wizualnego:</b>'
-        type: paragraph
-      - items:
-          - html: 'Część 1: <a href="service/ui-tutorial-automobile-price-train-score">Przewidywanie ceny samochodu</a>'
-          - html: 'Część 2: <a href="service/ui-tutorial-automobile-price-deploy">Wdrażanie modelu regresji</a>'
-        style: unordered
-        type: list
-      - text: '<b>Używanie modeli:</b>'
+      - text: 'Używanie modeli:'
         type: paragraph
       - items:
           - html: <a href="service/how-to-consume-web-service">Używanie modelu żądanie-odpowiedź</a>
           - html: <a href="service/how-to-run-batch-predictions">Prognozy usługi Batch z potokami uczenia maszynowego</a>
         style: unordered
         type: list
-    title: Przewodniki Szybki start i samouczki
+    title: Samouczki krok po kroku
   - items:
       - className: cardsM
         columns: 2

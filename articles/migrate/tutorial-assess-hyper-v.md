@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c790667c73adfed061b97b14ebb7df4c68461786
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 60e1db913336cc9f9e355c2e8f8466854de20389
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663785"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828333"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Ocenianie maszyn wirtualnych funkcji Hyper-V za pomocą oceny serwera Azure Migrate
 
@@ -77,7 +77,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
     ![Tworzenie projektu Azure Migrate](./media/tutorial-assess-hyper-v/assessment-tool.png)
 
-9. W obszarze **Wybieranie narzędzia migracji**wybierz pozycję **Pomiń Dodawanie narzędzia do migracji teraz** >  **.**
+9. W obszarze **Wybieranie narzędzia migracji**wybierz pozycję **Pomiń Dodawanie narzędzia do migracji teraz** > .
 10. W oknie **Recenzja + Dodawanie narzędzi**przejrzyj ustawienia, a następnie kliknij pozycję **Dodaj narzędzia**.
 11. Zaczekaj kilka minut, aż projekt Azure Migrate zostanie wdrożony. Nastąpi przekierowanie do strony projektu. Jeśli nie widzisz projektu, możesz uzyskać do niego dostęp z **serwerów** na pulpicie nawigacyjnym Azure Migrate.
 
@@ -115,12 +115,12 @@ Przed wdrożeniem należy sprawdzić, czy spakowany plik jest bezpieczny.
     - ```C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm]```
     - Przykład użycia: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v1.19.06.27.zip -Algorithm SHA256```
 
-3.  W przypadku 1.19.06.27 w wersji urządzenia wygenerowany skrót powinien być zgodny z tymi ustawieniami.
+3.  W przypadku 2.19.07.30 w wersji urządzenia wygenerowany skrót powinien być zgodny z tymi ustawieniami.
 
   **Algorytm** | **Wartość skrótu**
   --- | ---
-  MD5 | 3681F745FA2B0A0A6910707D85161EC5
-  SHA256 | E6CA109AFAB9657BDCFB291C343B3E3ABCED9A273D25273059171F9954D25832
+  MD5 | d0a68e76ea24ba4e4a494c0dab95e90e
+  SHA256 | 0551221d2a9de75c352c201ccc88f7f10e87e5df1ecda42bfd4ec6c8defc57c0
 
 
 
@@ -243,7 +243,7 @@ Istnieją dwa typy ocen, które można uruchomić za pomocą Azure Migrate oceny
 
 Uruchom ocenę w następujący sposób:
 
-1. Zapoznaj [](best-practices-assessment.md) się z najlepszymi rozwiązaniami dotyczącymi tworzenia ocen.
+1. Zapoznaj się z [najlepszymi rozwiązaniami](best-practices-assessment.md) dotyczącymi tworzenia ocen.
 2. W Azure Migrate **serwery** > : **Ocena**serwera, kliknij przycisk **Oceń**.
 
     ![Oceń](./media/tutorial-assess-hyper-v/assess.png)
@@ -331,7 +331,7 @@ Klasyfikacje zaufania dla oceny są następujące.
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku zostaną wykonane następujące czynności:
 

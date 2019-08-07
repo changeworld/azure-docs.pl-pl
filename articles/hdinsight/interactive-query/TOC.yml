@@ -28,6 +28,10 @@
           items:
             - name: Przekroczono limit narzutu odzyskiwania pamięci
               href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
+        - name: Komunikat o błędzie nie jest wyświetlany w widoku Apache Hive
+          href: ./interactive-query-troubleshoot-error-message-hive-view.md
+        - name: Widok Apache Hive jest niedostępny
+          href: ./interactive-query-troubleshoot-inaccessible-hive-view.md
         - name: ZooKeeperHiveClientException — konfiguracje usługi HiveServer2
           href: ./interactive-query-troubleshoot-zookeeperhiveclientexception-hiveserver-configs.md
         - name: Wydajność zapytań LLAP usługi Apache Hive

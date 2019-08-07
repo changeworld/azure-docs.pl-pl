@@ -70,6 +70,8 @@
     - name: Baza wiedzy
       href: Concepts/knowledge-base.md
       displayName: 'metadata, pair'
+    - name: Korzystanie z usług LUIS i QnA Maker
+      href: ../luis/choose-natural-language-processing-service.md?toc=/azure/cognitive-services/qnamaker/toc.json
     - name: Cykl życia opracowywania bazy wiedzy
       href: Concepts/development-lifecycle-knowledge-base.md
     - name: Najlepsze praktyki

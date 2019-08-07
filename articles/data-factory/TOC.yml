@@ -203,7 +203,7 @@
         - name: Azure SQL Database
           href: connector-azure-sql-database.md
         - name: Wystąpienie zarządzane usługi Azure SQL Database
-          href: connector-azure-sql-database-managed-insance.md
+          href: connector-azure-sql-database-managed-instance.md
         - name: Azure SQL Data Warehouse
           href: connector-azure-sql-data-warehouse.md
         - name: Azure Table Storage
@@ -592,6 +592,8 @@
       items:
         - name: Dlaczego warto wybrać usługę Azure Data Factory
           href: data-migration-guidance-overview.md
+        - name: Migrowanie danych z usług AWS S3 na platformę Azure
+          href: data-migration-guidance-s3-azure-storage.md
 - name: Dokumentacja
   items:
     - name: .NET
