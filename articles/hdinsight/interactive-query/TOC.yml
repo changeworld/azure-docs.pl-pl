@@ -24,10 +24,10 @@
       maintainContext: true
     - name: Rozwiązywanie problemów
       items:
-        - name: Wyjątek OutOfMemoryError
-          items:
-            - name: Przekroczono limit narzutu odzyskiwania pamięci
-              href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
+        - name: Przekroczono limit narzutu odzyskiwania pamięci
+          href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
+        - name: Powolne ładowanie widoku rozwiązania Apache Ambari Tez
+          href: ./interactive-query-troubleshoot-tez-view-slow.md
         - name: Komunikat o błędzie nie jest wyświetlany w widoku Apache Hive
           href: ./interactive-query-troubleshoot-error-message-hive-view.md
         - name: Widok Apache Hive jest niedostępny

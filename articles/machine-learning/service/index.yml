@@ -45,7 +45,7 @@ sections:
         items:
           - html: <a href="tutorial-1st-experiment-sdk-setup">Konfigurowanie środowiska i trenowanie pierwszego eksperymentu uczenia maszynowego.</a>
           - html: <a href="tutorial-train-models-with-aml">Trenowanie i wdrażanie modeli klasyfikacji obrazów</a>.
-          - html: <a href="tutorial-data-prep">Przygotowywanie danych i zautomatyzowanego uczenia maszynowego do przewidywania opłat za taksówkę</b>.</a>
+          - html: <a href="tutorial-data-prep">Przygotowywanie danych i używanie zautomatyzowanego uczenia maszynowego do przewidywania opłat za taksówkę</b>.</a>
   - title: Przykłady
     items:
       - type: paragraph

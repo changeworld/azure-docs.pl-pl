@@ -56,6 +56,8 @@
       maintainContext: true
     - name: Rozwiązywanie problemów
       items:
+        - name: Brak miejsca na dysku
+          href: ./hdinsight-troubleshoot-out-disk-space.md
         - name: Blokowanie programowe — procesor CPU
           href: ./hdinsight-troubleshoot-soft-lockup-cpu.md
         - name: InvalidNetworkConfigurationErrorCode — tworzenie klastra kończy się niepowodzeniem
@@ -72,6 +74,8 @@
           href: ./hdinsight-hdfs-troubleshoot-safe-mode.md
         - name: Problemy z pulsem usługi Apache Ambari
           href: ./apache-ambari-troubleshoot-heartbeat-issues.md
+        - name: W usłudze Apache Ambari są pokazywane niedziałające hosty i usługi
+          href: ./apache-ambari-troubleshoot-down-hosts-services.md
 - name: Instrukcje
   items:
     - name: Korzystanie z piaskownicy usługi Apache Hadoop
