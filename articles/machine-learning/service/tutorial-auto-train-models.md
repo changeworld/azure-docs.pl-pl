@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 04/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: bbb9653173925e1443504aa3f2e9c5e6edbfc486
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 70a95cdba2a8b41c7b2fc3ee4b2664f049a84e95
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371038"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846010"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Samouczek: Kompilowanie modelu regresji przy użyciu zautomatyzowanego uczenia maszynowego
 
@@ -54,7 +54,7 @@ Przejdź do sekcji [Konfigurowanie środowiska projektowego](#start), aby zapozn
 
 Wszystkie te wymagania wstępne można spełnić, korzystając z jednej z poniższych sekcji.
 
-* Korzystanie z [serwera notesu w chmurze w obszarze roboczym](#azure) 
+* Korzystanie z [serwera notesu w chmurze w obszarze roboczym](#azure)
 * Korzystanie z [własnego serwera notesów](#server)
 
 ### <a name="azure"></a>Korzystanie z serwera notesu w chmurze w obszarze roboczym
@@ -688,6 +688,9 @@ automated_ml_config = AutoMLConfig(task='regression',
                                    **automl_settings)
 ```
 
+> [!NOTE]
+> Zautomatyzowane kroki wstępnego przetwarzania w usłudze Machine Learning (normalizacja funkcji, obsługa brakujących danych, konwertowanie tekstu na liczbowe itp.) staje się częścią modelu źródłowego. Przy użyciu modelu dla prognoz te same kroki przetwarzania wstępnego zastosowane podczas uczenia są automatycznie stosowane do danych wejściowych.
+
 ### <a name="train-the-automatic-regression-model"></a>Trenowanie automatycznego modelu regresji
 
 Uruchom eksperyment lokalnie. Przekaż zdefiniowany obiekt `automated_ml_config` do eksperymentu. Ustaw wartość danych wyjściowych na `True`, aby wyświetlić postęp podczas eksperymentu:
@@ -764,7 +767,7 @@ Te same wyniki są przechowywane w obszarze roboczym.  Możesz uzyskać link do 
 ```
 local_run.get_portal_url()
 ```
-  
+
 
 ### <a name="option-2-get-and-examine-all-run-iterations-in-python"></a>Opcja 2: Pobieranie i sprawdzanie wszystkich iteracji przebiegów w środowisku Python
 
@@ -1208,7 +1211,7 @@ Z metryk dokładności prognozowania końcowego widać, że model dość dobrze 
 
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku zautomatyzowanego uczenia maszynowego wykonano następujące czynności:
 

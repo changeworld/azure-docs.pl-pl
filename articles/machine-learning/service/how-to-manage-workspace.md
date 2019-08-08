@@ -1,5 +1,5 @@
 ---
-title: Tworzenie i zarządzanie obszarami roboczymi
+title: Tworzenie obszarów roboczych i zarządzanie nimi
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak tworzyć, wyświetlać i usuwać obszary robocze usługi Azure Machine Learning, w witrynie Azure portal.
 services: machine-learning
@@ -11,16 +11,16 @@ ms.author: shipatel
 author: shivp950
 ms.date: 05/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7f0806a1d68cd2cede1ae51f0a50a8125c1e7c8b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f93b74c57d45ddfc7b47beff7852d183a93df00e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66016528"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856146"
 ---
 # <a name="create-and-manage-azure-machine-learning-service-workspaces"></a>Tworzenie i zarządzanie obszarami roboczymi usługi Azure Machine Learning
 
-W tym artykule będzie tworzenie, wyświetlanie i usuwanie [ **obszary robocze usługi Azure Machine Learning** ](concept-workspace.md) w witrynie Azure portal, aby uzyskać [usługi Azure Machine Learning](overview-what-is-azure-ml.md).  Można również tworzyć i usuwać obszary robocze [przy użyciu interfejsu wiersza polecenia](reference-azure-machine-learning-cli.md), [przy użyciu kodu w języku Python](https://aka.ms/aml-sdk) lub [za pośrednictwem rozszerzenia programu VS Code](how-to-vscode-tools.md#get-started-with-azure-machine-learning).
+W tym artykule będzie tworzenie, wyświetlanie i usuwanie [ **obszary robocze usługi Azure Machine Learning** ](concept-workspace.md) w witrynie Azure portal, aby uzyskać [usługi Azure Machine Learning](overview-what-is-azure-ml.md).  Portal jest najprostszym sposobem na rozpoczęcie pracy z obszarami roboczymi, ale w zależności od zmian lub wymagań dotyczących usługi Automation można także tworzyć i usuwać obszary robocze [przy użyciu interfejsu wiersza polecenia](reference-azure-machine-learning-cli.md), [z kodem języka Python](https://aka.ms/aml-sdk) lub [za pośrednictwem rozszerzenia vs Code](how-to-vscode-tools.md#get-started-with-azure-machine-learning).
 
 ## <a name="create-a-workspace"></a>Tworzenie obszaru roboczego
 
@@ -32,11 +32,11 @@ Aby utworzyć obszar roboczy, musisz mieć subskrypcję platformy Azure. Jeśli 
 
 1. W lewym górnym rogu portalu, wybierz **wszystkich usług**.
 
-1. W **wszystkich usług** polu filtrowania, należy wpisać **usługi machine learning service**.  
+1. W polu Filtr **wszystkich usług** wpisz **Usługa Machine Learning**.  
 
 1. Wybierz **obszary robocze usługi Machine Learning**.
 
-   ![Wyszukaj w obszarze roboczym usługi Azure Machine Learning](media/how-to-manage-workspace/all-services.png)
+   ![Wyszukaj obszar roboczy usługi Azure Machine Learning](media/how-to-manage-workspace/all-services.png)
 
 1. Przejrzyj listę obszarów roboczych, można odnaleźć. Można filtrować na podstawie subskrypcji, grupy zasobów i lokalizacji.  
 
@@ -58,4 +58,4 @@ Przycisk Usuń w górnej części obszaru roboczego, który chcesz usunąć.
 Postępuj zgodnie z samouczka kompleksowo przedstawiono sposób tworzenia, uczenia i wdrażania modeli przy użyciu usługi Azure Machine Learning za pomocą obszaru roboczego.
 
 > [!div class="nextstepaction"]
-> [Samouczek: Szkolenie modeli](tutorial-train-models-with-aml.md)
+> [Samouczek: Modele uczenia](tutorial-train-models-with-aml.md)

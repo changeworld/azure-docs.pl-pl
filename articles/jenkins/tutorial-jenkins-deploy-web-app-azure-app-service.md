@@ -8,18 +8,18 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: 019c4a8f77f2664c68dcc6499fb2f27cc0d1447c
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 51ca9602ff155bf61eb28a59a97faa7a06322c7a
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326927"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855172"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Samouczek: Wdrażanie z usługi GitHub do usługi Azure App Service przy użyciu funkcji ciągłej integracji i ciągłego wdrażania narzędzia Jenkins
 
 W tym samouczku wdrożysz przykładową internetową aplikację Java z usługi GitHub do [usługi Azure App Service w systemie Linux](/azure/app-service/containers/app-service-linux-intro), konfigurując ciągłą integrację i ciągłe wdrażanie w narzędziu Jenkins. Po zaktualizowaniu aplikacji przez wypchnięcie zatwierdzeń do usługi GitHub narzędzie Jenkins automatycznie skompiluje i opublikuje ponownie aplikację w usłudze Azure App Service. Przykładowa aplikacja w tym samouczku została opracowana przy użyciu struktury [Spring Boot](https://projects.spring.io/spring-boot/). 
 
-![Omówienie](media/tutorial-jenkins-deploy-web-app-azure-app-service/overview.png)
+![Przegląd](media/tutorial-jenkins-deploy-web-app-azure-app-service/overview.png)
 
 W tym samouczku wykonasz następujące zadania:
 
@@ -68,7 +68,7 @@ Do ukończenia tego samouczka są potrzebne następujące elementy:
 
    Jeśli te wtyczki nie są wyświetlane, upewnij się, że nie są już zainstalowane, sprawdzając kartę **Installed** (Zainstalowane).
 
-1. Aby zainstalować wybrane wtyczki, wybierz pozycję **Download now and install after restart** (Pobierz teraz i zainstaluj po ponownym uruchomieniu).
+1. Aby zainstalować wybrane wtyczki, wybierz pozycję **Pobierz teraz i zainstaluj po ponownym uruchomieniu**.
 
 1. Po wykonaniu tych działań wybierz w menu narzędzia Jenkins pozycję **Manage Jenkins**  (Zarządzaj narzędziem Jenkins), aby wrócić na stronę zarządzania narzędziem Jenkins w celu wykonania kolejnych kroków.
 
@@ -76,7 +76,7 @@ Do ukończenia tego samouczka są potrzebne następujące elementy:
 
 1. [Zaloguj się do repozytorium GitHub dla przykładowej aplikacji Spring Boot](https://github.com/spring-guides/gs-spring-boot). 
 
-1. W prawym górnym rogu ekranu usługi GitHub wybierz pozycję **Fork** (Utwórz rozwidlenie).
+1. W prawym górnym rogu w usłudze GitHub wybierz opcję **rozwidlenie**.
 
    ![Utworzenie rozwidlenia przykładowego repozytorium z usługi GitHub](media/tutorial-jenkins-deploy-web-app-azure-app-service/fork-github-repo.png)
 
@@ -102,7 +102,7 @@ Aby narzędzie Jenkins monitorowało usługę GitHub i odpowiadało po wypchnię
 
    ![Dodawanie serwera GitHub](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-GitHub-server.png)
 
-1. Jeśli właściwość **Manage hooks** (Zarządzaj wpięciami) nie jest wybrana, wybierz ją. Wybierz pozycję **Advanced** (Zaawansowane), co umożliwi określenie innych ustawień. 
+1. Jeśli właściwość **Manage hooks** (Zarządzaj wpięciami) nie jest wybrana, wybierz ją. Wybierz pozycję **Zaawansowane** , aby określić inne ustawienia. 
 
    ![Wybieranie pozycji „Advanced” (Zaawansowane) w celu określenia kolejnych ustawień](media/tutorial-jenkins-deploy-web-app-azure-app-service/advanced-GitHub-settings.png)
 
@@ -110,7 +110,7 @@ Aby narzędzie Jenkins monitorowało usługę GitHub i odpowiadało po wypchnię
 
    ![Wybieranie pozycji „Manage additional GitHub actions” (Zarządzaj dodatkowymi akcjami usługi GitHub)](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-additional-actions.png)
 
-1. Wybierz pozycję **From login and password** (Z nazwy logowania i hasła), aby można było podać nazwę użytkownika i hasło usługi GitHub. Gdy wszystko będzie gotowe, wybierz pozycję **Create token credentials** (Utwórz poświadczenia tokenu), co spowoduje utworzenie [osobistego tokenu dostępu usługi GitHub](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).   
+1. Wybierz pozycję **From login and password** (Z nazwy logowania i hasła), aby można było podać nazwę użytkownika i hasło usługi GitHub. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz poświadczenia tokenu**, co spowoduje utworzenie [osobistego tokenu dostępu usługi GitHub](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).   
 
    ![Tworzenie osobistego tokenu dostępu usługi GitHub na podstawie nazwy logowania i hasła](media/tutorial-jenkins-deploy-web-app-azure-app-service/create-github-token-credentials.png)
 
@@ -170,7 +170,7 @@ Oto dane wyjściowe wygenerowane przez polecenie **`create-for-rbac`** :
    | **Tenant ID (Identyfikator dzierżawy)** | <*yourAzureActiveDirectoryTenant-ID (Identyfikator dzierżawy usługi Azure Active Directory)* > | Wartość identyfikatora GUID `tenant` dla dzierżawy usługi Azure Active Directory | 
    | **Identyfikator** | <*yourAzureServicePrincipalName (Nazwa jednostki usługi platformy Azure)* > | Wartość `displayName` jednostki usługi platformy Azure | 
 
-1. Aby potwierdzić, że jednostka usługi działa, wybierz pozycję **Verify Service Principal** (Weryfikuj jednostkę usługi). Gdy wszystko będzie gotowe, wybierz pozycję **OK**.
+1. Aby potwierdzić, że nazwa główna usługi działa, wybierz pozycję **weryfikuj nazwę główną usługi**. Gdy skończysz, wybierz opcję **OK**.
 
 Następnie utwórz potok narzędzia Jenkins, który kompiluje i wdraża aplikację.
 
@@ -182,7 +182,7 @@ W narzędziu Jenkins utwórz zadanie potoku na potrzeby kompilowania i wdrażani
 
    ![Wybieranie pozycji „New Item” (Nowy element)](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-new-item.png)
 
-1. Podaj nazwę dla zadania potoku, na przykład, „Moja internetowa aplikacja Java”, i wybierz pozycję **Pipeline** (Potok). W dolnej części wybierz pozycję **OK**.  
+1. Podaj nazwę dla zadania potoku, na przykład, „Moja internetowa aplikacja Java”, i wybierz pozycję **Pipeline** (Potok). Kliknij **przycisk OK**w dolnej części.  
 
    ![Wybieranie pozycji „Pipeline” (Potok)](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-pipeline.png)
 
@@ -200,7 +200,7 @@ W narzędziu Jenkins utwórz zadanie potoku na potrzeby kompilowania i wdrażani
 
       ![Wybieranie pozycji „Prepare an environment for the run” (Przygotuj środowisko dla uruchomienia) i ustawianie zmiennych środowiskowych](media/tutorial-jenkins-deploy-web-app-azure-app-service/prepare-environment-for-run.png)
 
-1. Gdy wszystko będzie gotowe, wybierz pozycję **Zapisz**.
+1. Po zakończeniu wybierz pozycję **Zapisz**.
 
 Następnie utwórz skrypty kompilacji i wdrażania dla narzędzia Jenkins.
 
@@ -273,7 +273,7 @@ Teraz określ skrypt kompilowania i wdrażania, którego ma używać narzędzie 
 
    ![Wskazanie skryptu dla potoku](media/tutorial-jenkins-deploy-web-app-azure-app-service/set-up-jenkins-github.png)
 
-1. Gdy wszystko będzie gotowe, wybierz pozycję **Zapisz**.
+1. Po zakończeniu wybierz pozycję **Zapisz**.
 
 Następnie skompiluj i wdróż aplikację w usłudze Azure App Service. 
 
@@ -309,7 +309,7 @@ Następnie skompiluj i wdróż aplikację w usłudze Azure App Service.
 
    `complete/src/main/java/Hello/Application.java`
    
-1. W prawym górnym rogu ekranu usługi GitHub wybierz pozycję **Edit this file** (Edytuj ten plik).
+1. W prawym górnym rogu w usłudze GitHub wybierz pozycję **Edytuj ten plik**.
 
 1. Wprowadź następującą zmianę w metodzie `commandLineRunner()` i zatwierdź zmianę gałęzi `master` repozytorium. To zatwierdzenie w gałęzi `master` uruchamia kompilację w narzędziu Jenkins. 
    
@@ -325,7 +325,7 @@ Następnie skompiluj i wdróż aplikację w usłudze Azure App Service.
 
 Jeśli napotkasz jakiekolwiek usterki we wtyczkach narzędzia Jenkins, prześlij zgłoszenie za pomocą narzędzia [Jenkins JIRA](https://issues.jenkins-ci.org/) dla określonego składnika.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Use Azure VMs as build agents (Używanie maszyn wirtualnych platformy Azure)](/azure/jenkins/jenkins-azure-vm-agents)

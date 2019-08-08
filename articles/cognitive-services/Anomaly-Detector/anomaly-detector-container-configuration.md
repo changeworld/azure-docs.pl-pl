@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 617a8fc823b7c40d047e5825dc31b095da132f29
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 886c93871a719770cbcbbcef2f536fd7515da34e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321446"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854212"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Konfigurowanie kontenerów wykrywania anomalii
 
@@ -30,7 +30,7 @@ Ten kontener ma następujące ustawienia konfiguracji:
 |Yes|[ApiKey](#apikey-configuration-setting)|Używane do śledzenia informacji dotyczących rozliczeń.|
 |Nie|[ApplicationInsights](#applicationinsights-setting)|Umożliwia dodanie [usługi Azure Application Insights](https://docs.microsoft.com/azure/application-insights) obsługi telemetrii do kontenera.|
 |Yes|[Billing](#billing-configuration-setting)|Określa identyfikator URI punktu końcowego zasobu usługi na platformie Azure.|
-|Tak|[Eula](#eula-setting)| Wskazuje, że zaakceptowano licencję dla kontenera.|
+|Yes|[Eula](#eula-setting)| Wskazuje, że zaakceptowano licencję dla kontenera.|
 |Nie|[Fluentd](#fluentd-settings)|Zapisać dziennik i, opcjonalnie, metryki danych na serwerze Fluentd.|
 |Nie|[Serwer proxy http](#http-proxy-credentials-settings)|Skonfiguruj serwer proxy HTTP do wykonywania żądań wychodzących.|
 |Nie|[Logging](#logging-settings)|Udostępnia obsługę rejestrowania platformy ASP.NET Core dla kontenera. |
@@ -90,7 +90,7 @@ Dokładna składnia lokalizację instalacji hosta różni się zależnie od syst
 
 |Optional| Name (Nazwa) | Typ danych | Opis |
 |-------|------|-----------|-------------|
-|Niedozwolone| `Input` | String | Kontenery wykrywania anomalii nie używają tego.|
+|Niedozwolone| `Input` | Ciąg | Kontenery wykrywania anomalii nie używają tego.|
 |Optional| `Output` | String | Miejsce docelowe instalacji danych wyjściowych. Wartość domyślna to `/output`. Jest to Lokalizacja dzienników. Dotyczy to również dzienników kontenerów. <br><br>Przykład:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Przykład platformy docker, Uruchom polecenia 
@@ -134,3 +134,8 @@ Poniższe przykłady platformy Docker dotyczą kontenera wykrywania anomalii.
   Billing={ENDPOINT_URI} ApiKey={API_KEY} \
   Logging:Console:LogLevel:Default=Information
   ```
+
+## <a name="next-steps"></a>Kolejne kroki
+
+* [Wdróż kontener wykrywania anomalii w Azure Container Instances](how-to/deploy-anomaly-detection-on-container-instances.md)
+* [Dowiedz się więcej o usłudze interfejsu API wykrywania anomalii](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 07/10/2019
-ms.openlocfilehash: f0fb6f0d2b2579679ee8a6ec43b3241377701d48
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.date: 08/07/2019
+ms.openlocfilehash: d1ad89943f6acfec6e42199ef399643be12e2b8b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780897"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856240"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Zabezpieczenia przedsiębiorstwa dla usługi Azure Machine Learning
 
@@ -176,12 +176,24 @@ Key Vault wystąpienie skojarzone z obszarem roboczym jest używane przez usług
 * Hasła do wystąpień repozytorium kontenerów platformy Azure
 * Parametry połączenia z magazynami danych.
 
-Hasła SSH i klucze do elementów docelowych obliczeń, takich jak HDI HDInsight i VM, są przechowywane w osobnym Key Vault, który jest skojarzony z subskrypcją firmy Microsoft. Usługa Azure Machine Learning przechowuje hasła lub klucze dostarczone przez użytkownika zamiast wygenerowania, autoryzacji i przechowywania własnych kluczy SSH w celu nawiązania połączenia z maszyną wirtualną/HDInsight w celu uruchomienia eksperymentów.
+Hasła SSH i klucze do elementów docelowych obliczeń, takich jak HDI HDInsight i VM, są przechowywane w osobnym Key Vault, który jest skojarzony z subskrypcją firmy Microsoft. Usługa Azure Machine Learning nie przechowuje żadnych haseł ani kluczy dostarczonych przez użytkownika zamiast nie generuje, autoryzuje i przechowuje własne klucze SSH w celu nawiązania połączenia z maszyną wirtualną/HDInsight w celu uruchomienia eksperymentów.
 Każdy obszar roboczy ma skojarzoną tożsamość zarządzaną przez system (o takiej samej nazwie jak obszar roboczy), która ma dostęp do wszystkich kluczy, wpisów tajnych i certyfikatów w Key Vault.
 
 ## <a name="monitoring"></a>Monitorowanie
 
-Użytkownicy mogą zobaczyć dziennik aktywności w obszarze roboczym, aby zobaczyć różne operacje wykonywane w obszarze roboczym i uzyskać podstawowe informacje, takie jak nazwa operacji, zdarzenie zainicjowane przez, sygnaturę czasową itp.
+### <a name="metrics"></a>Metryki
+
+Metryki Azure Monitor mogą służyć do wyświetlania i monitorowania metryk dla obszaru roboczego usługi Azure Machine Learning. Na [Azure Portal](https://portal.azure.com)wybierz swój obszar roboczy, a następnie użyj linku __metryki__ .
+
+![Zrzut ekranu przedstawiający przykładowe metryki dla obszaru roboczego](./media/enterprise-readiness/workspace-metrics.png)
+
+Metryki obejmują informacje o uruchomieniach, wdrożeniach i rejestracjach.
+
+Aby uzyskać więcej informacji, zobacz [metryki w Azure monitor](/azure/azure-monitor/platform/data-platform-metrics).
+
+### <a name="activity-log"></a>Dziennik aktywności
+
+Dziennik aktywności można wyświetlić w obszarze roboczym, aby zobaczyć różne operacje wykonywane w obszarze roboczym i uzyskać podstawowe informacje, takie jak nazwa operacji, zdarzenie zainicjowane przez, sygnatura czasowa itd.
 
 Poniższy zrzut ekranu przedstawia dziennik aktywności obszaru roboczego:
 
@@ -252,7 +264,7 @@ Zobacz szczegóły poniżej:
 
 ![Zrzut ekranu przedstawiający przepływ pracy tworzenia obszaru roboczego](./media/enterprise-readiness/inferencing.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Zabezpieczania usług sieci web Azure Machine Learning przy użyciu protokołu SSL](how-to-secure-web-service.md)
 * [Korzystanie z modelu uczenia Maszynowego, wdrożyć jako usługę sieci web](how-to-consume-web-service.md)

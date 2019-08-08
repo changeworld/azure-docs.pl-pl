@@ -10,12 +10,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5323c996b8d974c9db11a508503f767cfee80301
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 7a9c0f24c7b6175b2289af39f2267d695894857d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828111"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855942"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Co to jest usługa Azure Machine Learning?
 
@@ -106,7 +106,7 @@ Możesz uzyskać środki do wydania na usługi platformy Azure. Nawet po ich wyc
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Utwórz obszar roboczy usługi Machine Learning](setup-create-workspace.md) , aby rozpocząć pracę.
+- [Utwórz obszar roboczy usługi Machine Learning](how-to-manage-workspace.md) , aby rozpocząć pracę.
 
 - Wykonaj kompleksowe samouczki:
   + [Uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md)

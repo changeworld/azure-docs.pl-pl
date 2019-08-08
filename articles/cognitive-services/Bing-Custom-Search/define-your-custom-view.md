@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: e4ed781544d3cd11e8494e40589676adf57a9c75
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 1827bfdbebaf1ffa17c7c631a94aa8fc6471d13b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405118"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854095"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Skonfiguruj środowisko wyszukiwanie niestandardowe Bing
 
@@ -64,13 +64,13 @@ Podczas dodawania adresów URL do **aktywnej** listy można dodać pojedyncze ad
 Aby przekazać plik, Utwórz plik tekstowy i określ pojedynczą domenę, podstronę lub stronę sieci Web na wiersz. Plik zostanie odrzucony, jeśli nie został poprawnie sformatowany.
 
 > [!NOTE]
-> * Można przekazać tylko plik do aktywnej listy  . Nie można używać go do dodawania wycinków do  listy zablokowanych.  
-> * Jeśli lista **zablokowanych** zawiera domenę, podstronę lub stronę sieci Web, która została określona w pliku przekazywania, zostanie usunięta z listy zablokowanych  i dodana do aktywnej listy.
+> * Można przekazać tylko plik do aktywnej listy . Nie można używać go do dodawania wycinków do listy zablokowanych.  
+> * Jeśli lista **zablokowanych** zawiera domenę, podstronę lub stronę sieci Web, która została określona w pliku przekazywania, zostanie usunięta z listy zablokowanych i dodana do aktywnej listy.
 > * Zduplikowane wpisy w pliku przekazywania zostaną zignorowane przez wyszukiwanie niestandardowe Bing. 
 
 ### <a name="get-website-suggestions-for-your-search-experience"></a>Uzyskaj sugestie dotyczące witryny sieci Web dla środowiska wyszukiwania
 
-Po dodaniu wycinków internetowych  do aktywnej listy Portal wyszukiwanie niestandardowe Bing będzie generował sugestie dotyczące witryny sieci Web i podstrony w dolnej części karty. Są to wycinki, które wyszukiwanie niestandardowe Bing mogą chcieć uwzględnić. Kliknij przycisk **Odśwież** , aby uzyskać zaktualizowane sugestie po zaktualizowaniu ustawień niestandardowego wystąpienia wyszukiwania. Ta sekcja jest widoczna tylko wtedy, gdy są dostępne sugestie.
+Po dodaniu wycinków internetowych do aktywnej listy Portal wyszukiwanie niestandardowe Bing będzie generował sugestie dotyczące witryny sieci Web i podstrony w dolnej części karty. Są to wycinki, które wyszukiwanie niestandardowe Bing mogą chcieć uwzględnić. Kliknij przycisk **Odśwież** , aby uzyskać zaktualizowane sugestie po zaktualizowaniu ustawień niestandardowego wystąpienia wyszukiwania. Ta sekcja jest widoczna tylko wtedy, gdy są dostępne sugestie.
 
 ## <a name="search-for-images-and-videos"></a>Wyszukaj obrazy i filmy wideo
 
@@ -97,7 +97,7 @@ Portal umożliwia dostosowanie kolejności wyszukiwania zawartości z określony
 | Blokuj      | Przenosi domenę, podstronę lub stronę sieci Web na listę zablokowanych. W wynikach wyszukiwania nie będzie można wykluczać zawartości z wybranej witryny Bing.                    |
 | Zwiększ wynik      | Zwiększa zawartość z domeny lub podstrony tak, aby była wyższa w wynikach wyszukiwania.                                                                                        |
 | Obniż poziom     | Obniża zawartość z domeny lub podstrony poniżej wyników wyszukiwania. Wybierz, czy chcesz obniżyć zawartość z domeny lub podstrony, do której należy strona sieci Web. |
-| Przypnij do góry | Przenosi domenę, podstronę lub stronę sieci Web do listy  przypiętych. Powoduje to wymuszenie wyświetlania strony sieci Web jako górnego wyniku wyszukiwania dla danego zapytania wyszukiwania.                   |
+| Przypnij do góry | Przenosi domenę, podstronę lub stronę sieci Web do listy przypiętych. Powoduje to wymuszenie wyświetlania strony sieci Web jako górnego wyniku wyszukiwania dla danego zapytania wyszukiwania.                   |
 
 Dostosowywanie rangi nie jest dostępne dla wyszukiwania obrazów i wideo.
 
@@ -105,7 +105,7 @@ Dostosowywanie rangi nie jest dostępne dla wyszukiwania obrazów i wideo.
 
 Możesz poprawić, zwiększyć lub obniżyć każdą domenę lub podstronę na aktywnej liście. Domyślnie wszystkie wycinki są dodawane bez korygowania klasyfikacji. Wycinki sieci Web, które są bardzo podwyższana lub podwyższana, są bardziej klasyfikowane w wynikach wyszukiwania (dzięki zwiększeniu klasyfikacji wyższej niż zwiększona). Elementy, które są degradowane, są klasyfikowane w wynikach wyszukiwania.
 
-Można zwiększyć, zwiększyć lub obniżyć poziom elementów przy użyciu kontrolek **Dostosuj klasyfikację** na aktywnej  liście lub korzystając z regulatorów Zwiększ i Obniż w okienku podglądu. Usługa dodaje wycinek do aktywnej listy i odpowiednio dostosowuje klasyfikację.
+Można zwiększyć, zwiększyć lub obniżyć poziom elementów przy użyciu kontrolek **Dostosuj klasyfikację** na aktywnej liście lub korzystając z regulatorów Zwiększ i Obniż w okienku podglądu. Usługa dodaje wycinek do aktywnej listy i odpowiednio dostosowuje klasyfikację.
 
 > [!NOTE] 
 > Zwiększenie i obniżenie poziomu domen i podstron to jedna z wielu metod, wyszukiwanie niestandardowe Bing używa do określenia kolejności wyników wyszukiwania. Ze względu na inne czynniki wpływające na klasyfikację różnej zawartości sieci Web, efekty dostosowywania rangi mogą się różnić. Użyj okienka podglądu, aby przetestować efekty dostosowywania rangi wyników wyszukiwania. 
@@ -114,13 +114,13 @@ W przypadku wyszukiwania obrazów i wideo nie są dostępne żadne zwiększenie,
 
 ## <a name="pin-slices-to-the-top-of-search-results"></a>Przypinanie wycinków na początku wyników wyszukiwania
 
-Portal umożliwia także Przypinanie adresów URL na początku wyników wyszukiwania dla określonych terminów wyszukiwania przy użyciu przypiętej  karty. Wprowadź adres URL i zapytanie, aby określić stronę sieci Web, która będzie wyświetlana jako górny wynik. Zwróć uwagę na to, że możesz przypiąć maksymalnie jedną stronę sieci Web na zapytanie wyszukiwania, a w wyszukiwaniach będą wyświetlane tylko indeksowane strony. Przypinanie wyników nie jest dostępne dla wyszukiwania obrazów i wideo.
+Portal umożliwia także Przypinanie adresów URL na początku wyników wyszukiwania dla określonych terminów wyszukiwania przy użyciu przypiętej karty. Wprowadź adres URL i zapytanie, aby określić stronę sieci Web, która będzie wyświetlana jako górny wynik. Zwróć uwagę na to, że możesz przypiąć maksymalnie jedną stronę sieci Web na zapytanie wyszukiwania, a w wyszukiwaniach będą wyświetlane tylko indeksowane strony. Przypinanie wyników nie jest dostępne dla wyszukiwania obrazów i wideo.
 
 Stronę sieci Web można przypiąć do góry na dwa sposoby:
 
 * Na przypiętej karcie wprowadź adres URL strony sieci Web, aby przypiąć do góry i odpowiadającą jej kwerendą.
 
-* W okienku **podglądu** wprowadź zapytanie wyszukiwania, a następnie kliknij przycisk Wyszukaj. Znajdź stronę sieci Web, którą chcesz przypiąć dla zapytania, a następnie kliknij pozycję **Przypnij do góry**. Strona sieci Web i zapytanie zostaną dodane do listy  przypiętych.
+* W okienku **podglądu** wprowadź zapytanie wyszukiwania, a następnie kliknij przycisk Wyszukaj. Znajdź stronę sieci Web, którą chcesz przypiąć dla zapytania, a następnie kliknij pozycję **Przypnij do góry**. Strona sieci Web i zapytanie zostaną dodane do listy przypiętych.
 
 ### <a name="specify-the-pins-match-condition"></a>Określ warunek dopasowania numeru PIN
 
@@ -140,7 +140,7 @@ Aby zmienić warunek dopasowania numeru PIN, kliknij ikonę edycji numeru PIN. W
 
 ### <a name="change-the-order-of-your-pinned-sites"></a>Zmiana kolejności przypiętych witryn
 
-Aby zmienić kolejność numerów PIN, możesz je przeciągać i upuszczać lub edytować ich numer zamówienia, klikając ikonę "Edytuj" w kolumnie kontrolki listy przypiętej  .
+Aby zmienić kolejność numerów PIN, możesz je przeciągać i upuszczać lub edytować ich numer zamówienia, klikając ikonę "Edytuj" w kolumnie kontrolki listy przypiętej .
 
 Jeśli wiele numerów PIN spełnia warunek dopasowania, wyszukiwanie niestandardowe Bing będzie używać jednego z najwyższego na liście.
 
@@ -150,14 +150,14 @@ Jeśli zasubskrybujesz wyszukiwanie niestandardowe na odpowiednim poziomie (zoba
 
 ## <a name="usage-guidelines"></a>Wskazówki dotyczące użycia
 
-- Dla każdego wystąpienia wyszukiwania niestandardowego Maksymalna liczba korekt klasyfikacji, które mogą zostać wprowadzone do **aktywnych** i zablokowanych  wycinków, jest ograniczona do 400.
+- Dla każdego wystąpienia wyszukiwania niestandardowego Maksymalna liczba korekt klasyfikacji, które mogą zostać wprowadzone do **aktywnych** i zablokowanych wycinków, jest ograniczona do 400.
 - Dodawanie wycinka do aktywnych lub zablokowanych kart jest liczone jako jedna korekta klasyfikacji.
 - Zwiększenie i obniżenie liczby w postaci dwóch korekt klasyfikacji.
 - Dla każdego wystąpienia wyszukiwania niestandardowego Maksymalna liczba numerów PIN, które mogą zostać wprowadzone, jest ograniczona do 200.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Wywoływanie wyszukiwania niestandardowego](./search-your-custom-view.md)
 - [Konfigurowanie środowiska hostowanego interfejsu użytkownika](./hosted-ui.md)
-- [Wyróżnianie tekstu za pomocą znaczników dekoracji](./hit-highlighting.md)
+- [Wyróżnianie tekstu za pomocą znaczników dekoracji](../bing-web-search/hit-highlighting.md)
 - [Dzielenie na strony wyników wyszukiwania stron internetowych](./page-webpages.md)

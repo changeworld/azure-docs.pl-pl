@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/21/2019
-ms.openlocfilehash: 473bf87e1961c3c7687b0867885adef40c14d71f
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: c5b423fca3e0ec116fceefb6867189f4f8413b96
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694326"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856082"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Tworzenie zestawów danych i uzyskiwanie do nich dostępu (wersja zapoznawcza) w Azure Machine Learning
 
@@ -38,7 +38,7 @@ Aby tworzyć zestawy danych i korzystać z nich, potrzebne są:
 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
 
-* [Obszar roboczy usługi Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace)
+* [Obszar roboczy usługi Azure Machine Learning](how-to-manage-workspace.md)
 
 * [Zestaw Azure Machine Learning SDK dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), który obejmuje pakiet usługi Azure DataSets.
 
@@ -144,7 +144,7 @@ dataset = Dataset.get(workspace, 'dataset_crime')
 dataset.to_pandas_dataframe()
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Eksplorowanie i przygotowywanie zestawów danych](how-to-explore-prepare-data.md).
 * Przykład korzystania z zestawów danych można znaleźć w przykładowych [notesach](https://aka.ms/dataset-tutorial).

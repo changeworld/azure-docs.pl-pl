@@ -1,6 +1,6 @@
 ---
-title: Migrowanie użytkowników wraz z tożsamościami społecznościowymi w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Omówiono w nim podstawowe pojęcia dotyczące migracji użytkowników wraz z tożsamościami społecznościowymi do usługi Azure AD B2C przy użyciu interfejsu API programu Graph.
+title: Migrowanie użytkowników przy użyciu tożsamości społecznościowych w Azure Active Directory B2C | Microsoft Docs
+description: Omawiaj podstawowe koncepcje dotyczące migracji użytkowników z tożsamościami społecznościowymi do Azure AD B2C przy użyciu interfejs API programu Graph.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,30 +10,31 @@ ms.topic: conceptual
 ms.date: 03/03/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bca802bb0099b0d854d752db8341dfe74031ef3b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 0117a0881422584e3cb949661b1d58cd0257cf67
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508032"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853863"
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C: Migrowanie użytkowników z tożsamościami społecznościowymi
-Planując migrację dostawcy tożsamości do usługi Azure AD B2C, konieczne może być migrowanie użytkowników wraz z tożsamościami społecznościowymi. W tym artykule wyjaśniono, jak przeprowadzić migrację istniejących kont tożsamości społecznościowych, takich jak: Kont usługi Facebook, LinkedIn i firmy Microsoft oraz Google do usługi Azure AD B2C. Ten artykuł dotyczy również do tożsamości federacyjnej, jednak te migracje są mniej typowe.
+Planując migrację dostawcy tożsamości do Azure AD B2C, może być również konieczne przeprowadzenie migracji użytkowników z tożsamościami społecznościowymi. W tym artykule opisano sposób migrowania istniejących kont tożsamości społecznościowych, takich jak: Konta serwisu Facebook, LinkedIn, Microsoft i Google do Azure AD B2C. Ten artykuł dotyczy również tożsamości federacyjnych, ale te migracje są mniej popularne. W pozostałej części tego artykułu należy wziąć pod uwagę wszystkie kwestie dotyczące kont społecznościowych, które mają zastosowanie również do innych typów kont federacyjnych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Ten artykuł jest kontynuacją artykuł dotyczący migracji użytkowników i koncentruje się na migracji tożsamości dla sieci społecznościowej. Przed rozpoczęciem przeczytaj [migracji użytkowników](active-directory-b2c-user-migration.md).
+Ten artykuł stanowi kontynuację artykułu dotyczącego migracji użytkowników i koncentruje się na migracji tożsamości społecznościowej. Przed rozpoczęciem należy odczytać informacje o [migracji użytkowników](active-directory-b2c-user-migration.md).
 
 ## <a name="social-identities-migration-introduction"></a>Wprowadzenie do migracji tożsamości społecznościowych
 
-* W usłudze Azure AD B2C **kont lokalnych** nazwy logowania (adres nazwy lub adresu e-mail użytkownika) są przechowywane w `signInNames` kolekcji w rekordzie użytkownika. `signInNames` Zawiera jeden lub więcej `signInName` rekordy, które określają nazwy logowania dla użytkownika. Nazwy logowania muszą być unikatowe w dzierżawie.
+* W Azure AD B2C nazwy logowania **kont lokalnych** (nazwa użytkownika lub adres e-mail) są przechowywane w `signInNames` kolekcji w rekordzie użytkownika. Zawiera co najmniej jeden `signInName` rekord określający nazwy logowania dla użytkownika. `signInNames` Każda nazwa logowania musi być unikatowa w dzierżawie.
 
-* **Kont społecznościowych** tożsamości są przechowywane w `userIdentities` kolekcji. Określa wpis `issuer` (nazwa dostawcy tożsamości) takich jak facebook.com i `issuerUserId`, czyli identyfikator unikatowy użytkownika dla wystawcy. `userIdentities` Atrybut zawiera co najmniej jeden rekord tożsamości użytkownika, które określają typ konta w sieci społecznościowej i identyfikator unikatowy użytkownika z dostawcy tożsamości społecznościowych.
+* Tożsamości **konta społecznościowego** są przechowywane w `userIdentities` kolekcji. Wpis określa `issuer` (nazwę dostawcy tożsamości) `issuerUserId`, taki jak Facebook.com i, który jest unikatowym identyfikatorem użytkownika dla wystawcy. Ten `userIdentities` atrybut zawiera co najmniej jeden rekord tożsamość użytkownika, który określa typ konta społecznościowego i unikatowy identyfikator użytkownika od dostawcy tożsamości społecznościowej.
 
-* **Łączenie konta lokalnego za pomocą tożsamości dla sieci społecznościowej**. Jak wspomniano wcześniej, nazwy logowania w lokalnych kont i tożsamości konta w sieci społecznościowej są przechowywane w różnych atrybutów. `signInNames` jest używana do konta lokalnego, podczas gdy `userIdentities` dla konta w sieci społecznościowej. Jedno konto usługi Azure AD B2C, może być tylko konta lokalnego, tylko konta społecznościowego lub Połącz konto lokalne z tożsamości społecznościowych w rekordzie użytkownika. To zachowanie umożliwia zarządzanie jednego konta, gdy użytkownik może zalogować się przy użyciu credential(s) konta lokalnego lub wraz z tożsamościami społecznościowymi.
+* **Połącz konto lokalne z tożsamością społecznościową**. Jak wspomniano, nazwy logowania do konta lokalnego i tożsamości konta społecznościowego są przechowywane w różnych atrybutach. `signInNames`jest używany dla konta lokalnego, podczas `userIdentities` gdy jest używany w przypadku kont społecznościowych. Pojedyncze konto Azure AD B2C może dotyczyć tylko konta lokalnego, tylko konta społecznościowego lub łączenia konta lokalnego z co najmniej jedną tożsamością społecznościową w jednym rekordzie użytkownika. To zachowanie umożliwia zarządzanie pojedynczym kontem, podczas gdy użytkownik może zalogować się przy użyciu poświadczeń konta lokalnego lub tożsamości społecznościowych.
 
-* `UserIdentity` Typ — zawiera informacje o tożsamości użytkownika konta w sieci społecznościowej w dzierżawie usługi Azure AD B2C:
-  * `issuer` Ciąg reprezentujący dostawcę tożsamości, która wydała identyfikator użytkownika, takie jak facebook.com.
-  * `issuerUserId` Identyfikator unikatowy użytkownika używanej przez dostawcę tożsamości dla sieci społecznościowej w formacie base64.
+* `UserIdentity`Typ — zawiera informacje o tożsamości użytkownika konta społecznościowego w dzierżawie Azure AD B2C:
+  * `issuer`Ciąg reprezentujący dostawcę tożsamości, który wystawił identyfikator użytkownika, taki jak facebook.com.
+  * `issuerUserId`Unikatowy identyfikator użytkownika używany przez dostawcę tożsamości społecznościowej w formacie zakodowanym algorytmem Base64.
 
     ```JSON
     "userIdentities": [{
@@ -43,35 +44,35 @@ Ten artykuł jest kontynuacją artykuł dotyczący migracji użytkowników i kon
     ]
     ```
 
-* W zależności od dostawcy tożsamości **identyfikator użytkownika społecznościowych** jest unikatową wartość dla danego użytkownika dla aplikacji lub tworzenia konta. Konfigurowanie zasad usługi Azure AD B2C, mających taki sam identyfikator aplikacji, który wcześniej został przypisany przez dostawcę społecznościowych. Lub innej aplikacji w ramach tego samego konta rozwoju.
+* W zależności od dostawcy tożsamości **Identyfikator użytkownika** wystawcy jest unikatową wartością dla danego użytkownika dla aplikacji lub konta deweloperskiego. Skonfiguruj zasady Azure AD B2C przy użyciu tego samego identyfikatora aplikacji, który został wcześniej przypisany przez dostawcę usług społecznościowych lub inną aplikację w ramach tego samego konta deweloperskiego.
 
-## <a name="use-graph-api-to-migrate-users"></a>Migrowanie użytkowników za pomocą interfejsu API programu Graph
-Tworzenie konta użytkownika usługi Azure AD B2C za pośrednictwem [interfejsu API programu Graph](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet). Aby komunikować się za pomocą interfejsu API programu Graph, należy najpierw musi mieć konto usługi z uprawnieniami administracyjnymi. W usłudze Azure AD należy zarejestrować aplikację i uwierzytelniania usługi Azure AD. Poświadczenia aplikacji to identyfikator aplikacji i klucz tajny aplikacji. Aplikacja działa w swoim imieniu, nie jako użytkownik, do wywołania interfejsu API programu Graph. Postępuj zgodnie z instrukcjami w kroku 1 w [migracji użytkowników](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-user-migration) artykułu.
+## <a name="use-graph-api-to-migrate-users"></a>Użyj interfejs API programu Graph do migracji użytkowników
+Utwórz konto użytkownika Azure AD B2C za pośrednictwem [interfejs API programu Graph](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet). Aby móc komunikować się z interfejs API programu Graph, musisz najpierw mieć konto usługi z uprawnieniami administracyjnymi. W usłudze Azure AD rejestrujesz aplikację i uwierzytelnianie w usłudze Azure AD. Poświadczenia aplikacji to identyfikator aplikacji i klucz tajny aplikacji. Aplikacja działa jako sama, a nie jako użytkownik, aby wywołać interfejs API programu Graph. Postępuj zgodnie z instrukcjami podanymi w kroku 1 w artykule dotyczącym [migracji użytkowników](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-user-migration) .
 
 ## <a name="required-properties"></a>Wymagane właściwości
-Na poniższej liście przedstawiono właściwości, które są wymagane w przypadku tworzenia użytkownika.
-* **accountEnabled** — jest to wartość true
-* **displayName** — Nazwa do wyświetlenia w książce adresowej użytkownika.
+Poniższa lista zawiera właściwości, które są wymagane podczas tworzenia użytkownika.
+* **accountEnabled** — prawda
+* **DisplayName** — nazwa wyświetlana w książce adresowej dla użytkownika.
 * **passwordProfile** — profil hasła użytkownika. 
 
 > [!NOTE]
-> Dla konta społecznościowego tylko (bez poświadczeń kont lokalnych) nadal należy określić hasło. Usługa Azure AD B2C ignoruje hasło, które określisz dla kont społecznościowych.
+> W przypadku kont społecznościowych (bez poświadczeń konta lokalnego) nadal należy określić hasło. Azure AD B2C ignoruje hasło określone dla kont społecznościowych.
 
-* **userPrincipalName** -główna nazwa użytkownika (someuser@contoso.com). Główna nazwa użytkownika, musi zawierać jeden zweryfikowanych domen dzierżawcy. Aby określić nazwę UPN, należy wygenerować nową wartość identyfikatora GUID ZŁĄCZ.teksty z `@` i nazwa dzierżawy.
-* **mailNickname** -alias poczty użytkownika. Ta wartość może być taki sam identyfikator, którego używasz dla właściwości userPrincipalName. 
-* **signInNames** — co najmniej jeden rekord SignInName, które określają nazwy logowania dla użytkownika. Każda nazwa logowania musi być unikatowa we firmy/dzierżawców. Dla konta tylko w sieci społecznościowej ta właściwość może być puste.
-* **userIdentities** — co najmniej jeden rekord tożsamości użytkownika, które określają ubezpieczenia konta, typ i identyfikator unikatowy użytkownika z dostawcy tożsamości społecznościowych.
-* [opcjonalnie] **otherMails** — w przypadku konta w sieci społecznościowej tylko adresy e-mail użytkowników 
+* **userPrincipalName** — główna nazwa użytkownika (someuser@contoso.com). Główna nazwa użytkownika musi zawierać jedną z zweryfikowanych domen dla dzierżawy. Aby określić nazwę UPN, wygeneruj nową wartość identyfikatora GUID, Połącz `@` się z i swoją nazwą dzierżawy.
+* **mailNickname** — alias poczty dla użytkownika. Ta wartość może być tym samym IDENTYFIKATORem, który jest używany dla elementu userPrincipalName. 
+* **signInNames** — co najmniej jeden rekord SignInName, który określa nazwy logowania dla użytkownika. Każda nazwa logowania musi być unikatowa w całej firmie/dzierżawie. Tylko dla konta społecznościowego ta właściwość może pozostać pusta.
+* **userIdentities** — co najmniej jeden rekord tożsamość użytkownika, który określa typ konta społecznościowego i unikatowy identyfikator użytkownika od dostawcy tożsamości społecznościowej.
+* obowiązkowe **otherMails** — tylko w przypadku konta społecznościowego adresy e-mail użytkownika 
 
-Aby uzyskać więcej informacji, zobacz: [Dokumentacja interfejsu API programu Graph](/previous-versions/azure/ad/graph/api/users-operations#CreateLocalAccountUser)
+Aby uzyskać więcej informacji, zobacz: [Informacje interfejs API programu Graph](/previous-versions/azure/ad/graph/api/users-operations#CreateLocalAccountUser)
 
-## <a name="migrate-social-account-only"></a>Migrowanie konta (tylko) w sieci społecznościowej
-Można utworzyć tylko konta społecznościowego bez poświadczeń konta lokalnego. Wysłanie żądania POST protokołu HTTPS do interfejsu API programu Graph. Treść żądania zawiera właściwości użytkownika konta społecznościowego do utworzenia. Jako minimum należy określić wymagane właściwości. 
+## <a name="migrate-social-account-only"></a>Migrowanie konta społecznościowego (tylko)
+Aby utworzyć tylko konto społecznościowe, bez poświadczeń konta lokalnego Wyślij żądanie HTTPS POST do interfejs API programu Graph. Treść żądania zawiera właściwości użytkownika konta społecznościowego, który ma zostać utworzony. Należy określić co najmniej wymagane właściwości. 
 
 
 **POST**  https://graph.windows.net/tenant-name.onmicrosoft.com/users
 
-Prześlij następujące dane formularza: 
+Prześlij następujący formularz — dane: 
 
 ```JSON
 {
@@ -97,8 +98,8 @@ Prześlij następujące dane formularza:
     "userPrincipalName": "c8c3d3b8-60cf-4c76-9aa7-eb3235b190c8@tenant-name.onmicrosoft.com"
 }
 ```
-## <a name="migrate-social-account-with-local-account"></a>Migrowanie konta społecznościowego za pomocą konta lokalnego
-Aby utworzyć konto lokalne połączone wraz z tożsamościami społecznościowymi. Wysłanie żądania POST protokołu HTTPS do interfejsu API programu Graph. Treść żądania zawiera właściwości użytkownika konta społecznościowego do utworzenia. Jako minimum należy określić wymagane właściwości. 
+## <a name="migrate-social-account-with-local-account"></a>Migrowanie konta społecznościowego przy użyciu konta lokalnego
+Aby utworzyć połączone konto lokalne z tożsamościami społecznościowymi, Wyślij żądanie HTTPS POST do interfejs API programu Graph. Treść żądania zawiera właściwości użytkownika konta społecznościowego do utworzenia, w tym nazwę logowania dla konta lokalnego. Należy określić co najmniej wymagane właściwości. 
 
 **POST**  https://graph.windows.net/tenant-name.onmicrosoft.com/users
 
@@ -134,23 +135,23 @@ Prześlij następujące dane formularza:
 ```
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
-### <a name="how-can-i-know-the-issuer-name"></a>Jak sprawdzić Nazwa wystawcy
-Nazwa wystawcy lub nazwę dostawcy tożsamości jest skonfigurowany w zasadach. Jeśli nie znasz wartością do określenia w `issuer`, wykonaj poniższą procedurę:
+### <a name="how-can-i-know-the-issuer-name"></a>Jak mogę znać nazwę wystawcy?
+Nazwa wystawcy lub nazwa dostawcy tożsamości jest skonfigurowana w ramach zasad. Jeśli nie znasz wartości do określenia w `issuer`, wykonaj następującą procedurę:
 1. Zaloguj się przy użyciu jednego z kont społecznościowych
-2. Skopiuj z tokenu JWT `sub` wartość. `sub` Zwykle zawiera identyfikator obiektu użytkownika w usłudze Azure AD B2C. Lub w witrynie Azure portal, otwórz właściwości użytkownika i skopiuj identyfikatora obiektu.
-3. Otwórz [funkcji Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net)
-4. Zaloguj się z administratorem.
-5. Uruchom poniższe żądanie GET. Zastąp userObjectId skopiowanego Identyfikatora użytkownika. **POBIERZ** https://graph.windows.net/tenant-name.onmicrosoft.com/users/userObjectId
-6. Znajdź `userIdentities` element wewnątrz zwrot JSON z usługi Azure AD B2C.
-7. [Opcjonalnie] Możesz również chcieć dekodowania `issuerUserId` wartość.
+2. Z tokenu JWT Skopiuj `sub` wartość. `sub` Zwykle zawiera identyfikator obiektu użytkownika w Azure AD B2C. Lub z Azure Portal Otwórz właściwości użytkownika i skopiuj identyfikator obiektu.
+3. Otwórz [Eksploratora grafów usługi Azure AD](https://graphexplorer.azurewebsites.net)
+4. Zaloguj się przy użyciu administratora.
+5. Uruchom następujące żądanie GET. Zastąp userObjectId IDENTYFIKATORem użytkownika, który został skopiowany. **POBIERZ**https://graph.windows.net/tenant-name.onmicrosoft.com/users/userObjectId
+6. `userIdentities` Znajdź element wewnątrz elementu JSON zwrócony z Azure AD B2C.
+7. Obowiązkowe Możesz również zakodować `issuerUserId` wartość.
 
 > [!NOTE]
-> Użyj konta administratora dzierżawy B2C, lokalne dla dzierżawy usługi B2C. Składnia nazwy konta jest admin@tenant-name.onmicrosoft.com.
+> Użyj konta administratora dzierżawy B2C, które jest lokalne dla dzierżawy B2C. Nazwa konta jest admin@tenant-name.onmicrosoft.comnastępująca.
 
-### <a name="is-it-possible-to-add-social-identity-to-an-existing-local-account"></a>Czy jest możliwe dodawanie tożsamości dla sieci społecznościowej do istniejącego konta lokalnego
-Tak. Po utworzeniu konta lokalnego, można dodać tożsamości społecznościowych. Uruchom żądanie PATCH protokołu HTTPS. Zastąp userObjectId identyfikator użytkownika, które chcesz zaktualizować. 
+### <a name="is-it-possible-to-add-a-social-identity-to-an-existing-user"></a>Czy można dodać tożsamość społecznościową do istniejącego użytkownika?
+Tak. Tożsamość społecznościową można dodać po utworzeniu konta Azure AD B2C (niezależnie od tego, czy jest ono kontem lokalnym czy społecznościowym lub ich kombinacją). Uruchom żądanie poprawki HTTPS. Zastąp userObjectId IDENTYFIKATORem użytkownika, który chcesz zaktualizować. 
 
-**POPRAWKI** https://graph.windows.net/tenant-name.onmicrosoft.com/users/userObjectId
+**POPRAWKA**https://graph.windows.net/tenant-name.onmicrosoft.com/users/userObjectId
 
 Prześlij następujące dane formularza: 
 
@@ -165,10 +166,10 @@ Prześlij następujące dane formularza:
 }
 ```
 
-### <a name="is-it-possible-to-add-multiple-social-identities"></a>Czy jest możliwe dodać wiele tożsamości społecznościowych?
-Tak. Można dodać wiele tożsamości społecznościowych dla jednego konta usługi Azure AD B2C. Uruchom żądanie PATCH protokołu HTTPS. Zamień userObjectId identyfikatora użytkownika. 
+### <a name="is-it-possible-to-add-multiple-social-identities"></a>Czy jest możliwe dodanie wielu tożsamości społecznościowych?
+Tak. Można dodać wiele tożsamości społecznościowych dla jednego konta Azure AD B2C. Uruchom żądanie poprawki HTTPS. Zastąp userObjectId IDENTYFIKATORem użytkownika. 
 
-**POPRAWKI** https://graph.windows.net/tenant-name.onmicrosoft.com/users/userObjectId
+**POPRAWKA**https://graph.windows.net/tenant-name.onmicrosoft.com/users/userObjectId
 
 Prześlij następujące dane formularza: 
 
@@ -187,16 +188,16 @@ Prześlij następujące dane formularza:
 }
 ```
 
-## <a name="optional-user-migration-application-sample"></a>[Opcjonalnie] Przykład aplikacji migracji użytkowników
-[Pobieranie i uruchamianie przykładowej aplikacji w wersji 2](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-user-migration). Przykładowa aplikacja w wersji 2 używa pliku JSON, który zawiera dane użytkownika fikcyjnego z rolą, w tym: konto lokalne, konta w sieci społecznościowej i tożsamości lokalne i społecznościowych w ramach jednego konta.  Aby edytować plik JSON, otwórz `AADB2C.UserMigration.sln` rozwiązania Visual Studio. W `AADB2C.UserMigration` otwarty projekt `UsersData.json` pliku. Plik zawiera listę jednostek użytkownika. Każda jednostka użytkownika ma następujące właściwości:
-* **signInName** — w przypadku lokalnego konta, adres e-mail logowania
-* **displayName** — Nazwa wyświetlana użytkownika
-* **Imię** — imię użytkownika
-* **Nazwisko** -nazwisko użytkownika
-* **hasło** dla lokalnego konta i hasło użytkownika (może być puste)
-* **Wystawca** — w przypadku konta w sieci społecznościowej, nazwa dostawcy tożsamości
-* **issuerUserId** — w przypadku konta w sieci społecznościowej, identyfikator unikatowy użytkownika używanej przez dostawcę tożsamości dla sieci społecznościowej. Wartość powinna być w postaci zwykłego tekstu. Przykładowa aplikacja koduje tę wartość w formacie Base64.
-* **adres e-mail** dla konta społecznościowego tylko (nie połączone) użytkownika adresu e-mail
+## <a name="optional-user-migration-application-sample"></a>Obowiązkowe Przykład aplikacji do migracji użytkowników
+[Pobierz i uruchom przykładową aplikację w wersji 2](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-user-migration). Przykładowa aplikacja v2 używa pliku JSON, który zawiera fikcyjne dane użytkownika, w tym: konto lokalne, konto społecznościowe i lokalne & tożsamości społecznościowe na pojedynczym koncie.  Aby edytować plik JSON, Otwórz `AADB2C.UserMigration.sln` rozwiązanie Visual Studio. `AADB2C.UserMigration` W projekcie`UsersData.json` Otwórz plik. Plik zawiera listę jednostek użytkownika. Każda jednostka użytkownika ma następujące właściwości:
+* **signInName** — w przypadku konta lokalnego adres e-mail do zalogowania
+* **DisplayName** — nazwa wyświetlana użytkownika
+* **FirstName** — Imię użytkownika
+* **nazwisko** -nazwisko użytkownika
+* **hasło** W przypadku konta lokalnego hasło użytkownika (może być puste)
+* **wystawca** — konto społecznościowe, nazwa dostawcy tożsamości
+* **issuerUserId** — dla konta społecznościowego unikatowy identyfikator użytkownika używany przez dostawcę tożsamości społecznościowej. Wartość powinna być w postaci zwykłego tekstu. Przykładowa aplikacja koduje tę wartość na Base64.
+* **adres e-mail** Tylko dla konta społecznościowego (niepołączone), adres e-mail użytkownika
 
 ```JSON
 {
@@ -234,6 +235,6 @@ Prześlij następujące dane formularza:
 ```
 
 > [!NOTE]
-> Jeśli nie zaktualizujesz plik UsersData.json w próbce ze swoimi danymi, możesz się zalogować przy użyciu poświadczeń konta lokalnego próbki, ale nie z przykładami konta społecznościowego. Aby przeprowadzić migrację kont społecznościowych, podaj rzeczywiste dane.
+> Jeśli plik UsersData. JSON nie zostanie zaktualizowany w przykładzie z danymi, możesz zalogować się przy użyciu poświadczeń konta lokalnego, ale nie z przykładami konta społecznościowego. Aby przeprowadzić migrację kont społecznościowych, podaj prawdziwe dane.
 
-Aby uzyskać więcej informacji jak korzystać z przykładowej aplikacji, zobacz [usługi Azure Active Directory B2C: Migracja użytkowników](active-directory-b2c-user-migration.md)
+Aby uzyskać więcej informacji, jak korzystać z przykładowej aplikacji, [Zobacz Azure Active Directory B2C: Migracja użytkowników](active-directory-b2c-user-migration.md)

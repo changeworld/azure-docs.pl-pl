@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 06/18/2019
-ms.openlocfilehash: e33f195ea821b34147c748e9c0aa64cb63b58fdc
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: a35e0496c7e36d42e28a64fef438fe56713d3c78
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249980"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854998"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Rozwiązywanie typowych problemów i błędów Azure Database Migration Service
 
@@ -54,11 +54,11 @@ W przypadku migrowania z programu MySQL do Azure Database for MySQL przy użyciu
 
 Podczas zatrzymywania wystąpienia Azure Database Migration Service pojawia się następujący błąd:
 
-* **Błąd**: Nie można zatrzymać usługi. Błąd: {"Error": {"Code": "InvalidRequest", "Message": "co najmniej jedno działanie jest obecnie uruchomione. Aby zatrzymać usługę, poczekaj na zakończenie działania lub Zatrzymaj te działania ręcznie i spróbuj ponownie. "}}
+* **Błąd**: Nie można zatrzymać usługi. Error: {'error':{'code':'InvalidRequest','message':'Co najmniej jedno działanie jest aktualnie uruchomione. Aby zatrzymać usługę, poczekaj na zakończenie działania lub Zatrzymaj te działania ręcznie i spróbuj ponownie. "}}
 
 | Przyczyna         | Rozwiązanie |
 | ------------- | ------------- |
-| Ten błąd jest wyświetlany, gdy wystąpienie usługi, które ma zostać zatrzymane, obejmuje działania, które są nadal uruchomione lub obecne w projektach migracji. <br><br><br><br><br><br> | Upewnij się, że nie ma żadnych działań uruchomionych w wystąpieniu Azure Database Migration Service, które próbujesz zatrzymać. Przed podjęciem próby zatrzymania usługi można również usunąć działania lub projekty. Poniższe kroki ilustrują, jak usunąć projekty w celu oczyszczenia wystąpienia usługi migracji przez usunięcie wszystkich uruchomionych zadań:<br>1. Install-module-name AzureRM. datamigration <br>2. Login-AzureRmAccount <br>3. SELECT-AzureRmSubscription-subscriptionname "\<SubName >" <br> 4. Remove-AzureRmDataMigrationProject-Name \<projectName >-ResourceGroupName \<rgName >-ServiceName \<ServiceName >-DeleteRunningTask |
+| Ten błąd jest wyświetlany, gdy wystąpienie usługi, które ma zostać zatrzymane, obejmuje działania, które są nadal uruchomione lub obecne w projektach migracji. <br><br><br><br><br><br> | Upewnij się, że nie ma żadnych działań uruchomionych w wystąpieniu Azure Database Migration Service, które próbujesz zatrzymać. Przed podjęciem próby zatrzymania usługi można również usunąć działania lub projekty. Poniższe kroki ilustrują, jak usunąć projekty w celu oczyszczenia wystąpienia usługi migracji przez usunięcie wszystkich uruchomionych zadań:<br>1. Install-Module -Name AzureRM.DataMigration <br>2. Login-AzureRmAccount <br>3. SELECT-AzureRmSubscription-subscriptionname "\<SubName >" <br> 4. Remove-AzureRmDataMigrationProject-Name \<projectName >-ResourceGroupName \<rgName >-ServiceName \<ServiceName >-DeleteRunningTask |
 
 ## <a name="error-when-attempting-to-start-azure-database-migration-service"></a>Wystąpił błąd podczas próby uruchomienia Azure Database Migration Service
 
@@ -98,7 +98,7 @@ Podczas próby nawiązania połączenia ze źródłem w kreatorze projektu usłu
 | ------------- | ------------- |
 | W przypadku korzystania z [ExpressRoute](https://azure.microsoft.com/services/expressroute/), Azure Database Migration Service [wymaga](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) obsługi trzech punktów końcowych usługi w podsieci Virtual Network skojarzonej z usługą:<br> --Service Bus punkt końcowy<br> --Punkt końcowy magazynu<br> --Docelowy punkt końcowy bazy danych (np. punkt końcowy SQL, Cosmos DB punkt końcowy)<br><br><br><br><br> | [Włącz](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) wymagane punkty końcowe usługi dla łączności ExpressRoute między źródłem a Azure Database Migration Service. <br><br><br><br><br><br><br><br> |
 
-## <a name="timeout-error-when-migrating-a-mysql-database-to-azure-mysql"></a>Błąd przekroczenia limitu czasu podczas migrowania bazy danych MySQL do usługi Azure MySQL
+## <a name="timeout-error-when-migrating-a-mysql-database-to-azure-db-for-mysql"></a>Błąd limitu czasu podczas migrowania bazy danych MySQL do usługi Azure DB for MySQL
 
 Podczas migrowania bazy danych MySQL do wystąpienia Azure Database for MySQL za pośrednictwem Azure Database Migration Service migracja kończy się niepowodzeniem z powodu następującego błędu limitu czasu:
 

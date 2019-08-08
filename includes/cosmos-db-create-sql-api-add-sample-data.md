@@ -5,23 +5,23 @@ services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 04/13/2018
+ms.date: 08/07/2019
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 127d67cc3b5dcd0ddd585470821eb1baa08c2388
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 6656c374ae0ff4aae7f99fd340e9e25e5cbc67d1
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183777"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854204"
 ---
-Teraz można dodać dane do nowej kolekcji za pomocą Eksploratora danych.
+Teraz możesz dodawać dane do nowego kontenera przy użyciu Eksplorator danych.
 
-1. W Eksploratorze danych nowa baza danych jest wyświetlana w okienku Kolekcje. Rozwiń bazę danych **Tasks**, rozwiń kolekcję **Items**, kliknij pozycję **Dokumenty**, a następnie kliknij pozycję **Nowe dokumenty**. 
+1. W **Eksplorator danych**rozwiń bazę danych **zadania** , rozwiń kontener **elementy** . Wybierz pozycję **elementy**, a następnie kliknij pozycję **nowy element**.
 
    ![Tworzenie nowych dokumentów w Eksploratorze danych w witrynie Azure Portal](./media/cosmos-db-create-sql-api-add-sample-data/azure-cosmosdb-data-explorer-new-document.png)
   
-2. Teraz dodaj do kolekcji dokument o następującej strukturze.
+2. Teraz Dodaj dokument do kontenera z następującą strukturą.
 
      ```json
      {
@@ -33,8 +33,8 @@ Teraz można dodać dane do nowej kolekcji za pomocą Eksploratora danych.
      }
      ```
 
-3. Po dodaniu danych json do karty **Dokumenty** kliknij pozycję **Zapisz**.
+3. Po dodaniu pliku JSON do karty **dokumenty** wybierz pozycję **Zapisz**.
 
-    ![Kopiowanie danych json i klikanie pozycji Zapisz w Eksploratorze danych w witrynie Azure Portal](./media/cosmos-db-create-sql-api-add-sample-data/azure-cosmosdb-data-explorer-save-document.png)
+    ![Kopiuj w danych JSON i wybierz pozycję Zapisz w Eksplorator danych w Azure Portal](./media/cosmos-db-create-sql-api-add-sample-data/azure-cosmosdb-data-explorer-save-document.png)
 
 4.  Utwórz i zapisz jeszcze jeden dokument, w którym wstawisz unikatową wartość dla właściwości `id` i zmienisz inne właściwości wedle uznania. Nowe dokumenty mogą mieć dowolną strukturę, ponieważ usługa Azure Cosmos DB nie wymusza żadnego schematu danych.

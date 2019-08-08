@@ -1,56 +1,55 @@
 ---
-title: Migracja na platformę Azure metryki magazynu | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak przeprowadzić migrację metryk starej do nowej metryki, które są zarządzane przez usługi Azure Monitor.
-services: storage
+title: Migracja metryk usługi Azure Storage | Microsoft Docs
+description: Dowiedz się, jak przeprowadzić migrację starych metryk do nowych metryk, które są zarządzane przez Azure Monitor.
 author: normesta
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 58ac15c1aba715c9a5b67e723401b531e76608b2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 537369c9466b1083723642ec9e93fcdf25056c5e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153597"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855337"
 ---
-# <a name="azure-storage-metrics-migration"></a>Migracji metryki magazynu platformy Azure
+# <a name="azure-storage-metrics-migration"></a>Migracja metryk usługi Azure Storage
 
-Dostosowane do strategii, ujednolicając naukę środowisko monitorowania na platformie Azure, Azure Storage integruje metryki na platformę Azure Monitor. W przyszłości usługa starego pomiarów zakończy się wcześniejsze powiadomienie na podstawie zasad platformy Azure. Jeśli polegać na starym metryk usługi storage, które chcesz zmigrować przed datą zakończenia usługi, aby zachować dane metryk.
+Zgodnie z strategią ujednolicenia środowiska monitorowania na platformie Azure usługa Azure Storage integruje metryki z platformą Azure Monitor. W przyszłości usługa starych metryk będzie kończyć wczesne powiadomienia na podstawie zasad platformy Azure. Jeśli korzystasz ze starych metryk magazynu, musisz przeprowadzić migrację przed datą zakończenia usługi, aby zachować informacje o metrykach.
 
-W tym artykule pokazano, jak przeprowadzić migrację z metryk starej do nowej metryki.
+W tym artykule pokazano, jak przeprowadzić migrację ze starych metryk do nowych metryk.
 
-## <a name="understand-old-metrics-that-are-managed-by-azure-storage"></a>Zrozumienie stare metryki, które są zarządzane przez usługę Azure Storage
+## <a name="understand-old-metrics-that-are-managed-by-azure-storage"></a>Informacje o starych metrykach zarządzanych przez usługę Azure Storage
 
-Usługa Azure Storage umożliwia zbieranie informacji o stare wartości metryk, agreguje i przechowuje je w tabelach $Metric w obrębie tego samego konta magazynu. Witryna Azure portal umożliwia konfigurowanie monitorowania wykresu. Można również użyć zestawów SDK usługi Azure Storage do odczytywania danych z tabel $Metric, które są oparte na schemacie. Aby uzyskać więcej informacji, zobacz [Storage Analytics](./storage-analytics.md).
+Usługa Azure Storage zbiera stare wartości metryk i agreguje je i zapisuje w tabelach $Metric w ramach tego samego konta magazynu. Możesz użyć Azure Portal, aby skonfigurować wykres monitorowania. Korzystając z zestawów SDK usługi Azure Storage, można również odczytywać dane z tabel $Metric, które są oparte na schemacie. Aby uzyskać więcej informacji, zobacz [analityka magazynu](./storage-analytics.md).
 
-Stary metryki zawierają metryki pojemności tylko na usłudze Azure Blob storage. Stary metryki zawierają metryk transakcji usługi Blob storage, Table storage, Azure Files i Queue storage.
+Stare metryki zapewniają metryki pojemności tylko w usłudze Azure Blob Storage. Stare metryki zapewniają metryki transakcji na serwerze BLOB Storage, Table Storage, Azure Files i queue storage.
 
-Stary metryki zostały zaprojektowane w schemacie prostego. Projekt skutkuje zero wartość metryki, gdy nie masz wzorców ruchu wyzwalania metryki. Na przykład **ServerTimeoutError** wartość jest równa 0 w tabelach $Metric nawet wtedy, gdy wszystkie błędy przekroczenia limitu czasu serwera nie otrzymywać aktywny ruch do konta magazynu.
+Stare metryki są zaprojektowane w schemacie płaskim. W projekcie powstaje wartość zero metryk, gdy nie masz wzorców ruchu wyzwalających metrykę. Na przykład wartość **ServerTimeoutError** jest ustawiona na 0 w tabelach $Metric, nawet jeśli nie otrzymasz żadnych błędów limitu czasu serwera z ruchu na żywo do konta magazynu.
 
-## <a name="understand-new-metrics-managed-by-azure-monitor"></a>Omówienie nowych metryk, zarządzane usługi Azure Monitor
+## <a name="understand-new-metrics-managed-by-azure-monitor"></a>Informacje o nowych metrykach zarządzanych przez Azure Monitor
 
-Dla nowych metryk magazynowania usługi Azure Storage emituje dane metryk do zaplecza usługi Azure Monitor. Usługa Azure Monitor zapewnia ujednolicone środowisko monitorowania, włącznie z danymi z poziomu portalu oraz wprowadzanie danych. Aby uzyskać więcej informacji, możesz zapoznać się z tym [artykułu](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+W przypadku nowych metryk magazynu usługa Azure Storage emituje dane metryk do zaplecza Azure Monitor. Azure Monitor zapewnia ujednolicone środowisko monitorowania, w tym dane z portalu oraz pozyskiwanie danych. Więcej szczegółów można znaleźć w tym [artykule](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
-Nowe metryki zawierają metryki pojemności i transakcji metryki dotyczące obiektów Blob, tabel, pliku, kolejki i Magazyn w warstwie premium.
+Nowe metryki zapewniają metryki wydajności i metryki transakcji dla obiektów blob, tabel, plików, kolejek i Premium Storage.
 
-Wielu wymiarów jest jedną z funkcji udostępnianych przez usługi Azure Monitor. Usługa Azure Storage przyjmuje projektu, definiując nowe metryki schematu. Obsługiwane wymiary dla metryk, można znaleźć szczegółowe informacje w [metryk usługi Azure Storage w usłudze Azure Monitor](./storage-metrics-in-azure-monitor.md). Projekt wielu wymiarów zawiera opłacalności zarówno przepustowość danych wychodzących z pozyskiwania i pojemność przechowywanie metryki. W związku z tym jeśli ruch sieciowy nie wyzwolił powiązane metryki, powiązane dane metryk nie będą generowane. Na przykład, jeśli ruch sieciowy nie wyzwoleniu błędy przekroczenia limitu czasu serwera usługi Azure Monitor nie zwraca żadnych danych kiedy wykonujesz zapytanie o wartość metryki **transakcji** z wymiarem **ResponseType** równa **ServerTimeoutError**.
+Wiele wymiarów to jedna z funkcji udostępnianych przez Azure Monitor. Usługa Azure Storage przyjmuje projekt w celu zdefiniowania nowego schematu metryki. Aby uzyskać informacje o obsługiwanych wymiarach w metrykach, można znaleźć szczegóły w temacie [metryki usługi Azure Storage w Azure monitor](./storage-metrics-in-azure-monitor.md). Projekt z obsługą wielowymiarowego zapewnia wydajność kosztów na podstawie pozyskiwania i zdolności do przechowywania metryk. W związku z tym, jeśli ruch nie wyzwolił powiązanych metryk, powiązane dane metryk nie zostaną wygenerowane. Na przykład, jeśli ruch nie wywołał żadnych błędów przekroczenia limitu czasu serwera, Azure Monitor nie zwróci żadnych danych podczas wykonywania zapytania o wartość **transakcji** metryki z atrybutem **responsetype** równym **ServerTimeoutError**.
 
-## <a name="metrics-mapping-between-old-metrics-and-new-metrics"></a>Metryki mapowanie między metryki stare i nowe metryki
+## <a name="metrics-mapping-between-old-metrics-and-new-metrics"></a>Mapowanie metryk między starymi metrykami i nowymi metrykami
 
-Możesz programowo odczytać dane metryk, należy przyjąć nowy schemat metryki w swoich programach. Aby lepiej zrozumieć zmiany, mogą odwoływać się do mapowania wymienione w poniższej tabeli:
+Jeśli dane metryk są odczytywane programowo, należy zastosować nowy schemat metryki w swoich programach. Aby lepiej zrozumieć zmiany, można odwołać się do mapowania wymienionego w poniższej tabeli:
 
-**Metryki wydajności**
+**Metryki pojemności**
 
-| Stary metryki | Nową metrykę |
+| Stara Metryka | Nowa Metryka |
 | ------------------- | ----------------- |
-| **Dyspozycyjność**            | **BlobCapacity** z wymiarem **BlobType** równa **BlockBlob** lub **PageBlob** |
-| **ObjectCount**        | **BlobCount** z wymiarem **BlobType** równa **BlockBlob** lub **PageBlob** |
+| **Dyspozycyjność**            | **BlobCapacity** z wymiarem **blobtype** równym **BlockBlob** lub **PageBlob** |
+| **ObjectCount**        | **BlobCount** z wymiarem **blobtype** równym **BlockBlob** lub **PageBlob** |
 | **ContainerCount**      | **ContainerCount** |
 
-Nowe oferty, które nie obsługują stare metryki są następujące metryki:
+Następujące metryki to nowe oferty, które nie obsługują starych metryk:
 * **TableCapacity**
 * **TableCount**
 * **TableEntityCount**
@@ -64,42 +63,42 @@ Nowe oferty, które nie obsługują stare metryki są następujące metryki:
 
 **Metryki transakcji**
 
-| Stary metryki | Nową metrykę |
+| Stara Metryka | Nowa Metryka |
 | ------------------- | ----------------- |
-| **AnonymousAuthorizationError** | Transakcje z wymiarem **ResponseType** równa **AuthorizationError** i wymiar **uwierzytelniania** równa **anonimowe** |
-| **AnonymousClientOtherError** | Transakcje z wymiarem **ResponseType** równa **ClientOtherError** i wymiar **uwierzytelniania** równa **anonimowe** |
-| **AnonymousClientTimeoutError** | Transakcje z wymiarem **ResponseType** równa **ClientTimeoutError** i wymiar **uwierzytelniania** równa **anonimowe** |
-| **AnonymousNetworkError** | Transakcje z wymiarem **ResponseType** równa **NetworkError** i wymiar **uwierzytelniania** równa **anonimowe** |
-| **AnonymousServerOtherError** | Transakcje z wymiarem **ResponseType** równa **ServerOtherError** i wymiar **uwierzytelniania** równa **anonimowe** |
-| **AnonymousServerTimeoutError** | Transakcje z wymiarem **ResponseType** równa **ServerTimeoutError** i wymiar **uwierzytelniania** równa **anonimowe** |
-| **AnonymousSuccess** | Transakcje z wymiarem **ResponseType** równa **Powodzenie** i wymiar **uwierzytelniania** równa **anonimowe** |
-| **AnonymousThrottlingError** | Transakcje z wymiarem **ResponseType** równa **ClientThrottlingError** lub **ServerBusyError** i wymiar **uwierzytelniania** równa **anonimowe** |
-| **AuthorizationError** | Transakcje z wymiarem **ResponseType** równa **AuthorizationError** |
+| **AnonymousAuthorizationError** | Transakcje z atrybutem **responsetype** równym **AuthorizationError** i **uwierzytelnianiem** wymiaru równe **anonimowi** |
+| **AnonymousClientOtherError** | Transakcje z atrybutem **responsetype** równym **ClientOtherError** i **uwierzytelnianiem** wymiaru równe **anonimowi** |
+| **AnonymousClientTimeoutError** | Transakcje z atrybutem **responsetype** równym **ClientTimeoutError** i **uwierzytelnianiem** wymiaru równe **anonimowi** |
+| **AnonymousNetworkError** | Transakcje z atrybutem **responsetype** równym **NetworkError** i **uwierzytelnianiem** wymiaru równe **anonimowi** |
+| **AnonymousServerOtherError** | Transakcje z atrybutem **responsetype** równym **ServerOtherError** i **uwierzytelnianiem** wymiaru równe **anonimowi** |
+| **AnonymousServerTimeoutError** | Transakcje z atrybutem **responsetype** równym **ServerTimeoutError** i **uwierzytelnianiem** wymiaru równe **anonimowi** |
+| **AnonymousSuccess** | Transakcje z identyfikatorem **odpowiedzi** wymiaru równym **powodzeniu** i **uwierzytelnianiu** wymiarów równe **anonimowi** |
+| **AnonymousThrottlingError** | Transakcje z atrybutem **responsetype** równym **ClientThrottlingError** lub **ServerBusyError** i **uwierzytelnianiem** wymiaru równe **anonimowi** |
+| **AuthorizationError** | Transakcje o wymiarze **responsetype** równym **AuthorizationError** |
 | **Dostępność** | **Dostępność** |
-| **AverageE2ELatency** | **SuccessE2ELatency** |
-| **AverageServerLatency** | **SuccessServerLatency** |
-| **ClientOtherError** | Transakcje z wymiarem **ResponseType** równa **ClientOtherError** |
-| **ClientTimeoutError** | Transakcje z wymiarem **ResponseType** równa **ClientTimeoutError** |
-| **NetworkError** | Transakcje z wymiarem **ResponseType** równa **NetworkError** |
-| **PercentAuthorizationError** | Transakcje z wymiarem **ResponseType** równa **AuthorizationError** |
-| **PercentClientOtherError** | Transakcje z wymiarem **ResponseType** równa **ClientOtherError** |
-| **PercentNetworkError** | Transakcje z wymiarem **ResponseType** równa **NetworkError** |
-| **PercentServerOtherError** | Transakcje z wymiarem **ResponseType** równa **ServerOtherError** |
-| **PercentSuccess** | Transakcje z wymiarem **ResponseType** równa **sukces** |
-| **PercentThrottlingError** | Transakcje z wymiarem **ResponseType** równa **ClientThrottlingError** lub **ServerBusyError** |
-| **Wartości PercentTimeoutError** | Transakcje z wymiarem **ResponseType** równa **ServerTimeoutError** lub **ResponseType** równa **ClientTimeoutError** |
-| **SASAuthorizationError** | Transakcje z wymiarem **ResponseType** równa **AuthorizationError** i wymiar **uwierzytelniania** równa **sygnatury dostępu Współdzielonego** |
-| **SASClientOtherError** | Transakcje z wymiarem **ResponseType** równa **ClientOtherError** i wymiar **uwierzytelniania** równa **sygnatury dostępu Współdzielonego** |
-| **SASClientTimeoutError** | Transakcje z wymiarem **ResponseType** równa **ClientTimeoutError** i wymiar **uwierzytelniania** równa **sygnatury dostępu Współdzielonego** |
-| **SASNetworkError** | Transakcje z wymiarem **ResponseType** równa **NetworkError** i wymiar **uwierzytelniania** równa **sygnatury dostępu Współdzielonego** |
-| **SASServerOtherError** | Transakcje z wymiarem **ResponseType** równa **ServerOtherError** i wymiar **uwierzytelniania** równa **sygnatury dostępu Współdzielonego** |
-| **SASServerTimeoutError** | Transakcje z wymiarem **ResponseType** równa **ServerTimeoutError** i wymiar **uwierzytelniania** równa **sygnatury dostępu Współdzielonego** |
-| **SASSuccess** | Transakcje z wymiarem **ResponseType** równa **Powodzenie** i wymiar **uwierzytelniania** równa **sygnatury dostępu Współdzielonego** |
-| **SASThrottlingError** | Transakcje z wymiarem **ResponseType** równa **ClientThrottlingError** lub **ServerBusyError** i wymiar **uwierzytelniania** równa **sygnatury dostępu Współdzielonego** |
-| **ServerOtherError** | Transakcje z wymiarem **ResponseType** równa **ServerOtherError** |
-| **ServerTimeoutError** | Transakcje z wymiarem **ResponseType** równa **ServerTimeoutError** |
-| **Powodzenie** | Transakcje z wymiarem **ResponseType** równa **sukces** |
-| **ThrottlingError** | **Transakcje** z wymiarem **ResponseType** równa **ClientThrottlingError** lub **ServerBusyError**|
+| **Niską averagee2elatency** | **SuccessE2ELatency** |
+| **Wartość averageserverlatency** | **SuccessServerLatency** |
+| **ClientOtherError** | Transakcje o wymiarze **responsetype** równym **ClientOtherError** |
+| **ClientTimeoutError** | Transakcje o wymiarze **responsetype** równym **ClientTimeoutError** |
+| **NetworkError** | Transakcje o wymiarze **responsetype** równym **NetworkError** |
+| **PercentAuthorizationError** | Transakcje o wymiarze **responsetype** równym **AuthorizationError** |
+| **PercentClientOtherError** | Transakcje o wymiarze **responsetype** równym **ClientOtherError** |
+| **Wzrost percentnetworkerror** | Transakcje o wymiarze **responsetype** równym **NetworkError** |
+| **PercentServerOtherError** | Transakcje o wymiarze **responsetype** równym **ServerOtherError** |
+| **PercentSuccess** | Transakcje z identyfikatorem **odpowiedzi** wymiaru równym **powodzeniu** |
+| **Wzrost percentthrottlingerror** | Transakcje z atrybutem **responsetype** równym **ClientThrottlingError** lub **ServerBusyError** |
+| **Wzrost percenttimeouterror** | Transakcje o wymiarze **responsetype** równym **ServerTimeoutError** lub **responsetype** równym **ClientTimeoutError** |
+| **SASAuthorizationError** | Transakcje z atrybutem **responsetype** równym **AuthorizationError** i uwierzytelnianiem wymiarów równym **sygnaturze SAS** |
+| **SASClientOtherError** | Transakcje z atrybutem **responsetype** równym **ClientOtherError** i uwierzytelnianiem wymiarów równym **sygnaturze SAS** |
+| **SASClientTimeoutError** | Transakcje z atrybutem **responsetype** równym **ClientTimeoutError** i uwierzytelnianiem wymiarów równym **sygnaturze SAS** |
+| **SASNetworkError** | Transakcje z atrybutem **responsetype** równym **NetworkError** i uwierzytelnianiem wymiarów równym **sygnaturze SAS** |
+| **SASServerOtherError** | Transakcje z atrybutem **responsetype** równym **ServerOtherError** i uwierzytelnianiem wymiarów równym **sygnaturze SAS** |
+| **SASServerTimeoutError** | Transakcje z atrybutem **responsetype** równym **ServerTimeoutError** i uwierzytelnianiem wymiarów równym **sygnaturze SAS** |
+| **SASSuccess** | Transakcje z identyfikatorem **odpowiedź** wymiarutype równe **sukcesowi** i **uwierzytelnianiu** wymiarów równym **sygnaturze SAS** |
+| **SASThrottlingError** | Transakcje z atrybutem **responsetype** równym **ClientThrottlingError** lub **ServerBusyError** i **uwierzytelnianiem** w wymiarze równym sygnaturze **SAS** |
+| **ServerOtherError** | Transakcje o wymiarze **responsetype** równym **ServerOtherError** |
+| **ServerTimeoutError** | Transakcje o wymiarze **responsetype** równym **ServerTimeoutError** |
+| **Prawnego** | Transakcje z identyfikatorem **odpowiedzi** wymiaru równym **powodzeniu** |
+| **ThrottlingError** | **Transakcje** z atrybutem **responsetype** równym **ClientThrottlingError** lub **ServerBusyError**|
 | **TotalBillableRequests** | **Transakcje** |
 | **TotalEgress** | **Ruch wychodzący** |
 | **TotalIngress** | **Ruch przychodzący** |
@@ -107,15 +106,15 @@ Nowe oferty, które nie obsługują stare metryki są następujące metryki:
 
 ## <a name="faq"></a>Często zadawane pytania
 
-### <a name="how-should-i-migrate-existing-alert-rules"></a>Jak przeprowadzić migrację istniejących reguł alertów
+### <a name="how-should-i-migrate-existing-alert-rules"></a>Jak należy migrować istniejące reguły alertów?
 
-Jeśli utworzono klasyczne reguły alertów na podstawie starej metryk magazynowania, należy utworzyć nowy alert reguły na podstawie nowych metryk schematu.
+Jeśli utworzono klasyczne reguły alertów na podstawie starych metryk magazynu, należy utworzyć nowe reguły alertów na podstawie nowego schematu metryki.
 
-### <a name="is-new-metric-data-stored-in-the-same-storage-account-by-default"></a>Nowe dane metryk znajduje się w tym samym koncie magazynu domyślnie?
+### <a name="is-new-metric-data-stored-in-the-same-storage-account-by-default"></a>Czy nowe dane metryk są przechowywane domyślnie na tym samym koncie magazynu?
 
-Nie. Aby zarchiwizować dane metryk do konta magazynu, należy użyć [interfejsu API ustawienie diagnostyczne usługi Azure Monitor](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate).
+Nie. Aby zarchiwizować dane metryki na koncie magazynu, użyj [interfejsu API Azure monitor ustawień diagnostycznych](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Azure Monitor](../../monitoring-and-diagnostics/monitoring-overview.md)
-* [Metryki magazynu w usłudze Azure Monitor](./storage-metrics-in-azure-monitor.md)
+* [Metryki magazynu w Azure Monitor](./storage-metrics-in-azure-monitor.md)

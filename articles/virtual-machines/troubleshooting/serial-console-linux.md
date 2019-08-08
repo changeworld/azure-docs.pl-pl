@@ -1,6 +1,6 @@
 ---
-title: Serial konsoli platformy Azure dla systemu Linux | Dokumentacja firmy Microsoft
-description: Dwukierunkowa konsoli szeregowej maszyny wirtualne platformy Azure i zestawów skalowania maszyn wirtualnych.
+title: Konsola szeregowa platformy Azure dla systemu Linux | Microsoft Docs
+description: Dwukierunkowa konsola szeregowa dla Virtual Machines i Virtual Machine Scale Sets platformy Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
@@ -14,119 +14,119 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: f3fa646fcca99d5762f480b3fd12c5e249eabaf8
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 0eda9fe0e16a945dcb9f9a1b686afcd2aebe6306
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710579"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854387"
 ---
-# <a name="azure-serial-console-for-linux"></a>Serial konsoli platformy Azure dla systemu Linux
+# <a name="azure-serial-console-for-linux"></a>Konsola szeregowa platformy Azure dla systemu Linux
 
-Konsoli szeregowej w witrynie Azure portal zapewnia dostęp do konsoli usługi oparte na tekście dla maszyn wirtualnych systemu Linux (VM) i wystąpienia zestawu skalowania maszyn wirtualnych. To połączenie szeregowe łączy do portu szeregowego ttys0 maszyny Wirtualnej lub maszyny wirtualnej wystąpienia w zestawie skalowania, zapewniając dostęp do niego niezależnie od stanu sieci lub systemu operacyjnego. Konsoli szeregowej może zostać oceniony jedynie przy użyciu witryny Azure portal i jest dozwolone tylko dla tych użytkowników, którzy mają dostęp do roli współautora lub nowszej, aby zestaw skalowania maszyny Wirtualnej lub maszyny wirtualnej.
+Konsola szeregowa w Azure Portal zapewnia dostęp do konsoli opartej na tekście dla maszyn wirtualnych z systemem Linux i wystąpień zestawów skalowania maszyn wirtualnych. To połączenie szeregowe łączy się z portem szeregowym ttyS0 maszyny wirtualnej lub wystąpienia zestawu skalowania maszyn wirtualnych, zapewniając dostęp do niego niezależnie od stanu sieci lub systemu operacyjnego. Dostęp do konsoli szeregowej można uzyskać tylko przy użyciu Azure Portal i jest to dozwolone tylko dla tych użytkowników, którzy mają rolę dostępu współautora lub wyższą dla maszyny wirtualnej lub zestawu skalowania maszyn wirtualnych.
 
-Konsola szeregowa działa w taki sam sposób w przypadku maszyn wirtualnych i wystąpień zestawu skalowania maszyn wirtualnych. W tym dokumencie wszystkie wystąpienia maszyn wirtualnych niejawnie obejmie wystąpień zestawu skalowania maszyny wirtualnej, chyba że określono inaczej.
+Konsola szeregowa działa w taki sam sposób w przypadku maszyn wirtualnych i wystąpień zestawów skalowania maszyn wirtualnych. W tym dokumencie wszystkie wzmianki dotyczące maszyn wirtualnych będą niejawnie obejmować wystąpienia zestawu skalowania maszyn wirtualnych, chyba że określono inaczej.
 
-Aby uzyskać dokumentację konsoli szeregowej dla Windows, zobacz [Windows dla konsoli szeregowej](../windows/serial-console.md).
+Aby uzyskać dokumentację konsoli szeregowej dla systemu Windows, zobacz [konsola szeregowa dla systemu Windows](../windows/serial-console.md).
 
 > [!NOTE]
-> Konsoli szeregowej jest ogólnie dostępna w regionach platformy Azure na świecie. Nie jest jeszcze dostępne w Azure dla instytucji rządowych lub chmury chińskiej wersji platformy Azure.
+> Konsola szeregowa jest ogólnie dostępna w globalnych regionach platformy Azure. Nie jest jeszcze dostępne w Azure dla instytucji rządowych lub chmury chińskiej wersji platformy Azure.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Wystąpienia zestawu skalowania maszyny Wirtualnej lub maszyny wirtualnej, należy użyć modelu wdrażania usługi resource management. W przypadku wdrożeń klasycznych nie są obsługiwane.
+- W maszynie wirtualnej lub wystąpieniu zestawu skalowania maszyn wirtualnych musi być używany model wdrażania zarządzania zasobami. W przypadku wdrożeń klasycznych nie są obsługiwane.
 
-- Twoje konto, którego używa konsoli szeregowej muszą mieć [rola Współautor maszyny wirtualnej](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) dla maszyny Wirtualnej i [diagnostykę rozruchu](boot-diagnostics.md) konta magazynu
+- Twoje konto używające konsoli szeregowej musi mieć [rolę współautora maszyny wirtualnej](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) dla maszyny wirtualnej i konta magazynu [diagnostyki rozruchu](boot-diagnostics.md) .
 
-- Wystąpienia zestawu skalowania maszyny Wirtualnej lub maszyny wirtualnej musi mieć na podstawie hasła użytkownika. Możesz je utworzyć za pomocą [Resetuj hasło](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) funkcji rozszerzenia dostępu do maszyny Wirtualnej. Wybierz **Resetuj hasło** z **pomoc techniczna i rozwiązywanie problemów z** sekcji.
+- Maszyna wirtualna lub wystąpienie zestawu skalowania maszyn wirtualnych muszą mieć użytkownika opartego na hasłach. Możesz je utworzyć za pomocą [Resetuj hasło](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) funkcji rozszerzenia dostępu do maszyny Wirtualnej. Wybierz **Resetuj hasło** z **pomoc techniczna i rozwiązywanie problemów z** sekcji.
 
-- Wystąpienia zestawu skalowania maszyny Wirtualnej lub maszyny wirtualnej musi mieć [diagnostykę rozruchu](boot-diagnostics.md) włączone.
+- Maszyna wirtualna lub wystąpienie zestawu skalowania maszyn wirtualnych muszą mieć włączoną [diagnostykę rozruchu](boot-diagnostics.md) .
 
     ![Ustawienia diagnostyki rozruchu](./media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
 
-- Ustawienia specyficzne dla dystrybucji systemu Linux, zobacz [konsoli szeregowej dostępności dystrybucji systemu Linux](#serial-console-linux-distribution-availability).
+- Aby poznać ustawienia dotyczące dystrybucji systemu Linux, zobacz [konsola szeregowa dostępność dystrybucji systemu Linux](#serial-console-linux-distribution-availability).
 
-- Wystąpienia zestawu skalowania maszyny Wirtualnej lub maszyny wirtualnej musi być skonfigurowany serial danych wyjściowych na `ttys0`. Jest to flaga domyślna dla obrazów systemu Azure, ale warto Sprawdź to na obrazach niestandardowych. Szczegóły [poniżej](#custom-linux-images).
+- Dla maszyny wirtualnej lub wystąpienia zestawu skalowania maszyn wirtualnych musi być skonfigurowane na potrzeby `ttys0`danych wyjściowych seryjnych. Jest to wartość domyślna dla obrazów platformy Azure, ale zawarto to dokładnie sprawdzić na obrazach niestandardowych. Szczegóły [poniżej](#custom-linux-images).
 
 
 ## <a name="get-started-with-the-serial-console"></a>Wprowadzenie do konsoli szeregowej
-Konsoli szeregowej dla maszyn wirtualnych i zestawu skalowania maszyn wirtualnych jest dostępna tylko za pośrednictwem witryny Azure portal:
+Konsola szeregowa dla maszyn wirtualnych i zestawu skalowania maszyn wirtualnych jest dostępna tylko za pośrednictwem Azure Portal:
 
-### <a name="serial-console-for-virtual-machines"></a>Konsola szeregowa dla maszyn wirtualnych
-Konsola szeregowa dla maszyn wirtualnych jest tak proste jak kliknięcie **konsoli szeregowej** w ramach **pomoc techniczna i rozwiązywanie problemów z** sekcji w witrynie Azure portal.
+### <a name="serial-console-for-virtual-machines"></a>Konsola szeregowa dla Virtual Machines
+Konsola szeregowa dla maszyn wirtualnych jest tak prosta jak kliknięcie **konsola szeregowa** w sekcji **Pomoc techniczna i rozwiązywanie problemów** w Azure Portal.
   1. Otwórz [portal Azure](https://portal.azure.com).
 
-  1. Przejdź do **wszystkie zasoby** i wybierz maszynę wirtualną. Zostanie otwarta strona Przegląd dla maszyny Wirtualnej.
+  1. Przejdź do opcji **wszystkie zasoby** i wybierz maszynę wirtualną. Zostanie otwarta strona przegląd dla maszyny wirtualnej.
 
   1. Przewiń w dół do **pomoc techniczna i rozwiązywanie problemów z** i wybierz pozycję **konsoli szeregowej**. Nowe okienko z konsolą szeregową otwiera się i rozpoczyna połączenie.
 
-     ![Okna konsoli szeregowej systemu Linux](./media/virtual-machines-serial-console/virtual-machine-linux-serial-console-connect.gif)
+     ![Okno konsoli szeregowej systemu Linux](./media/virtual-machines-serial-console/virtual-machine-linux-serial-console-connect.gif)
 
-### <a name="serial-console-for-virtual-machine-scale-sets"></a>Konsola szeregowa dla zestawów skalowania maszyn wirtualnych
-Konsola szeregowa jest dostępna na podstawie poszczególnych wystąpień dla zestawów skalowania maszyn wirtualnych. Trzeba będzie przejść do poszczególnych wystąpień zestawu skalowania maszyn wirtualnych zanim **konsoli szeregowej** przycisku. Jeśli zestaw skalowania maszyn wirtualnych nie ma włączoną diagnostyką rozruchu, upewnij się, że aktualizacja modelu zestawu skalowania maszyn wirtualnych, tak aby włączyć diagnostykę rozruchu, a następnie Uaktualnij wszystkie wystąpienia do nowego modelu, aby uzyskać dostęp do konsoli szeregowej.
+### <a name="serial-console-for-virtual-machine-scale-sets"></a>Konsola szeregowa dla Virtual Machine Scale Sets
+Konsola szeregowa jest dostępna dla poszczególnych wystąpień dla zestawów skalowania maszyn wirtualnych. Przed wyświetleniem przycisku **konsola szeregowa** należy przejść do poszczególnych wystąpień zestawu skalowania maszyn wirtualnych. Jeśli zestaw skalowania maszyn wirtualnych nie ma włączonej diagnostyki rozruchu, należy zaktualizować model zestawu skalowania maszyn wirtualnych, aby umożliwić diagnostykę rozruchu, a następnie uaktualnić wszystkie wystąpienia do nowego modelu w celu uzyskania dostępu do konsoli szeregowej.
   1. Otwórz [portal Azure](https://portal.azure.com).
 
-  1. Przejdź do **wszystkie zasoby** i wybierz zestaw skalowania maszyn wirtualnych. Strona przeglądu skalowania maszyn wirtualnych Ustaw zostanie otwarta.
+  1. Przejdź do opcji **wszystkie zasoby** i wybierz zestaw skalowania maszyn wirtualnych. Zostanie otwarta strona przegląd zestawu skalowania maszyn wirtualnych.
 
   1. Przejdź do **wystąpień**
 
-  1. Wybierz wystąpienie zestawu skalowania maszyny wirtualnej
+  1. Wybierz wystąpienie zestawu skalowania maszyn wirtualnych
 
-  1. Z **pomoc techniczna i rozwiązywanie problemów z** zaznacz **konsoli szeregowej**. Nowe okienko z konsolą szeregową otwiera się i rozpoczyna połączenie.
+  1. W sekcji **Pomoc techniczna i rozwiązywanie problemów** wybierz pozycję **konsola szeregowa**. Nowe okienko z konsolą szeregową otwiera się i rozpoczyna połączenie.
 
-     ![Konsola szeregowa zestawu skalowania maszyn wirtualnych systemu Linux](./media/virtual-machines-serial-console/vmss-start-console.gif)
+     ![Konsola szeregowa zestawu skalowania maszyn wirtualnych z systemem Linux](./media/virtual-machines-serial-console/vmss-start-console.gif)
 
-
-> [!NOTE]
-> Konsoli szeregowej wymaga użytkownika lokalnego z skonfigurowanym hasłem. Maszyny wirtualne lub zestawy skalowania maszyn wirtualnych skonfigurowaną tylko klucz publiczny SSH, będą mogli zalogować się do konsoli szeregowej. Aby utworzyć użytkownika lokalnego przy użyciu hasła, użyj [rozszerzenie VMAccess](https://docs.microsoft.com/azure/virtual-machines/linux/using-vmaccess-extension), który jest dostępny w portalu, wybierając **Resetuj hasło** w witrynie Azure portal i Utwórz użytkownika lokalnego przy użyciu hasła.
-> Możesz także zresetować hasło administratora na swoim koncie przez [rozruchu w trybie jednego użytkownika przy użyciu programu GRUB](./serial-console-grub-single-user-mode.md).
-
-## <a name="serial-console-linux-distribution-availability"></a>Serial dostępności dystrybucji systemu Linux z konsoli
-Na konsoli szeregowej działała poprawnie system operacyjny gościa, należy określić do odczytywania i zapisywania komunikatów konsoli do portu szeregowego. Większość [dystrybucje zalecane dla systemu Linux platformy Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) zostały skonfigurowane domyślnie konsoli szeregowej. Wybieranie **konsoli szeregowej** w **pomoc techniczna i rozwiązywanie problemów z** części witryny Azure portal zapewnia dostęp do konsoli szeregowej.
 
 > [!NOTE]
-> Jeśli nie widzisz żadnych czynności w konsoli szeregowej, upewnij się, że ten Diagnostyka rozruchu jest włączona na maszynie Wirtualnej. Naciśnięcie **Enter** często rozwiąże problemy z którym nic nie jest wyświetlane w konsoli szeregowej.
+> Konsola szeregowa wymaga użytkownika lokalnego ze skonfigurowanym hasłem. Maszyny wirtualne lub zestawy skalowania maszyn wirtualnych skonfigurowane tylko przy użyciu klucza publicznego SSH nie będą mogły zalogować się do konsoli szeregowej. Aby utworzyć użytkownika lokalnego przy użyciu hasła, użyj [rozszerzenia VMAccess](https://docs.microsoft.com/azure/virtual-machines/linux/using-vmaccess-extension), które jest dostępne w portalu, wybierając pozycję **zresetuj hasło** w Azure Portal i Utwórz użytkownika lokalnego z hasłem.
+> Możesz również zresetować hasło administratora na koncie przy [użyciu grub, aby przeprowadzić rozruch w trybie jednego użytkownika](./serial-console-grub-single-user-mode.md).
+
+## <a name="serial-console-linux-distribution-availability"></a>Dostępność dystrybucji w konsoli szeregowej systemu Linux
+Aby konsola szeregowa działała poprawnie, system operacyjny gościa musi być skonfigurowany do odczytu i zapisu komunikatów konsoli na porcie szeregowym. Większość [poświadczonej dystrybucji systemu Linux platformy Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) ma domyślnie skonfigurowaną konsolę szeregowaną. Wybranie **konsola szeregowa** w sekcji **Pomoc techniczna i rozwiązywanie problemów** w Azure Portal zapewnia dostęp do konsoli szeregowej.
+
+> [!NOTE]
+> Jeśli nie widzisz niczego w konsoli szeregowej, upewnij się, że na maszynie wirtualnej jest włączona Diagnostyka rozruchu. Naciśnięcie **klawisza ENTER** często rozwiązuje problemy, w przypadku których nic nie pojawia się w konsoli szeregowej.
 
 Dystrybucja      | Dostęp do konsoli szeregowej
 :-----------|:---------------------
-Red Hat Enterprise Linux    | Domyślnie dostęp do konsoli szeregowej.
-CentOS      | Domyślnie dostęp do konsoli szeregowej.
-Ubuntu      | Domyślnie dostęp do konsoli szeregowej.
-CoreOS      | Domyślnie dostęp do konsoli szeregowej.
-SUSE        | Nowsze obrazy w systemie SLES dostępne na platformie Azure mają dostęp do konsoli szeregowej, domyślnie włączone. Jeśli używasz starszych wersji w systemie SLES (10 lub starszy) na platformie Azure, zobacz [artykuł bazy wiedzy](https://www.novell.com/support/kb/doc.php?id=3456486) umożliwiające konsoli szeregowej.
-Oracle Linux        | Domyślnie dostęp do konsoli szeregowej.
+Red Hat Enterprise Linux    | Konsola szeregowa dostęp domyślnie włączony.
+CentOS      | Konsola szeregowa dostęp domyślnie włączony.
+Ubuntu      | Konsola szeregowa dostęp domyślnie włączony.
+CoreOS      | Konsola szeregowa dostęp domyślnie włączony.
+SUSE        | Nowsze obrazy SLES dostępne na platformie Azure mają domyślnie włączony dostęp do konsoli szeregowej. Jeśli używasz starszych wersji (10 lub wcześniejszych) SLES na platformie Azure, zapoznaj się z [artykułem KB](https://www.novell.com/support/kb/doc.php?id=3456486) , aby włączyć konsolę szeregową.
+Oracle Linux        | Konsola szeregowa dostęp domyślnie włączony.
 
-### <a name="custom-linux-images"></a>Niestandardowych obrazów systemu Linux
-Aby włączyć konsoli szeregowej niestandardowego obrazu maszyny Wirtualnej systemu Linux, Włącz dostęp do konsoli w pliku */etc/inittab* systemem terminalu `ttyS0`. Na przykład: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`.
+### <a name="custom-linux-images"></a>Niestandardowe obrazy systemu Linux
+Aby włączyć konsolę szeregową dla niestandardowego obrazu maszyny wirtualnej z systemem Linux, Włącz dostęp do konsoli w pliku */etc/inittab* , aby uruchomić `ttyS0`terminal w. Na przykład: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`.
 
-Należy również dodać ttys0 jako miejsce docelowe danych wyjściowych szeregowe. Aby uzyskać więcej informacji na temat konfigurowania obrazu niestandardowego do pracy z konsoli szeregowej, zobacz wymagania systemowe ogólne na [tworzenie i przekazywanie wirtualnego dysku twardego systemu Linux na platformie Azure](https://aka.ms/createuploadvhd#general-linux-system-requirements).
+Warto również dodać ttyS0 jako lokalizację docelową dla danych wyjściowych seryjnych. Aby uzyskać więcej informacji na temat konfigurowania niestandardowego obrazu do pracy z konsolą szeregową, zobacz Ogólne wymagania systemowe na stronie [Tworzenie i przekazywanie wirtualnego dysku twardego systemu Linux na platformie Azure](https://aka.ms/createuploadvhd#general-linux-system-requirements).
 
-Jeśli tworzysz niestandardowy jądra, należy rozważyć włączenie tych flag jądra: `CONFIG_SERIAL_8250=y` i `CONFIG_MAGIC_SYSRQ_SERIAL=y`. Plik konfiguracji znajduje się w */boot/* ścieżki. |
+Jeśli tworzysz jądro niestandardowe, rozważ włączenie tych flag jądra: `CONFIG_SERIAL_8250=y` i. `CONFIG_MAGIC_SYSRQ_SERIAL=y` Plik konfiguracji zazwyczaj znajduje się w ścieżce */Boot/* .
 
-## <a name="common-scenarios-for-accessing-the-serial-console"></a>Typowe scenariusze dotyczące uzyskiwania dostępu do konsoli szeregowej
+## <a name="common-scenarios-for-accessing-the-serial-console"></a>Typowe scenariusze uzyskiwania dostępu do konsoli szeregowej
 
 Scenariusz          | Akcje w konsoli szeregowej
 :------------------|:-----------------------------------------
-Uszkodzony *FSTAB* pliku | Naciśnij klawisz **Enter** klawisz, aby kontynuować, a następnie użyj edytora tekstów, aby naprawić *FSTAB* pliku. Konieczne może być w trybie jednego użytkownika, aby to zrobić. Aby uzyskać więcej informacji, zobacz sekcję konsoli szeregowej [Rozwiązywanie problemów z fstab](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors) i [Użyj konsoli szeregowej, dostęp do programu GRUB i trybie jednego użytkownika](serial-console-grub-single-user-mode.md).
-Reguły zapory niepoprawne |  Jeśli skonfigurowano iptables w celu blokowania łączności SSH, można użyć konsoli szeregowej wchodzić w interakcje z maszyną Wirtualną bez konieczności używania protokołu SSH. Więcej informacji znajduje się w temacie [iptables man strony](https://linux.die.net/man/8/iptables).<br>Podobnie po swojej firewalld blokuje dostęp SSH, możesz dostęp do maszyny Wirtualnej za pośrednictwem konsoli szeregowej i ponownie skonfigurować firewalld. Więcej szczegółów można znaleźć w [dokumentacji firewalld](https://firewalld.org/documentation/).
-System plików uszkodzenie/wyboru | Można znaleźć w sekcji konsoli szeregowej [maszyny Wirtualnej systemu Linux platformy Azure nie można uruchomić z powodu błędów systemu plików](https://support.microsoft.com/en-us/help/3213321/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck) Aby uzyskać więcej informacji na temat rozwiązywania problemów uszkodzony systemów plików za pomocą konsoli szeregowej.
-Problemy z konfiguracją protokołu SSH | Dostęp do konsoli szeregowej i zmienić ustawienia. Konsola szeregowa może służyć niezależnie od konfiguracji SSH maszyny wirtualnej nie wymaga maszyny Wirtualnej w celu zapewnienia łączności sieciowej do pracy. Przewodnik rozwiązywania problemów znajduje się w temacie [Rozwiązywanie problemów z połączeń protokołu SSH z maszyny Wirtualnej systemu Linux platformy Azure, który zakończy się niepowodzeniem, błędy, lub odmówiono](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-ssh-connection). Szczegółowe informacje są dostępne pod adresem [szczegółowe SSH kroki rozwiązywania problemów dotyczących problemy z połączeniem do maszyny Wirtualnej z systemem Linux na platformie Azure](./detailed-troubleshoot-ssh-connection.md)
-Interakcja z programu inicjującego | Ponowne uruchomienie Twojej maszyny Wirtualnej z w ramach bloku konsoli szeregowej dostępu CHODNIKÓW na maszynie Wirtualnej systemu Linux. Aby uzyskać bardziej szczegółowe informacje i informacje specyficzne dla dystrybucji, zobacz [Użyj konsoli szeregowej, dostęp do programu GRUB i trybie jednego użytkownika](serial-console-grub-single-user-mode.md).
+Uszkodzony plik *fstab* | Naciśnij klawisz **Enter** , aby kontynuować, a następnie użyj edytora tekstów, aby naprawić plik *fstab* . Być może trzeba będzie działać w trybie jednego użytkownika. Aby uzyskać więcej informacji, zobacz sekcję konsola szeregowa w sprawie [rozwiązywania problemów z fstab](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors) i [używania konsoli szeregowej do uzyskiwania dostępu do grub i trybu jednego użytkownika](serial-console-grub-single-user-mode.md).
+Reguły zapory niepoprawne |  Jeśli skonfigurowano dołączenie iptables do blokowania łączności SSH, można użyć konsoli szeregowej do współpracy z maszyną wirtualną bez konieczności używania protokołu SSH. Więcej szczegółów można znaleźć na [stronie dołączenie iptables Man](https://linux.die.net/man/8/iptables).<br>Podobnie, Jeśli zapora blokuje dostęp SSH, można uzyskać dostęp do maszyny wirtualnej za pośrednictwem konsoli szeregowej i ponownie skonfigurować zaporę. Więcej informacji można znaleźć w [dokumentacji zapory](https://firewalld.org/documentation/).
+System plików uszkodzenie/wyboru | Aby uzyskać więcej informacji na temat rozwiązywania problemów z uszkodzonymi systemami plików przy użyciu konsoli szeregowej, zobacz sekcję dotyczącą konsoli szeregowej [maszyny wirtualnej](https://support.microsoft.com/en-us/help/3213321/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck) z systemem Linux systemu Azure.
+Problemy z konfiguracją SSH | Dostęp do konsoli szeregowej i zmienić ustawienia. Konsola szeregowa można użyć niezależnie od konfiguracji SSH maszyny wirtualnej, ponieważ nie wymaga ona, aby maszyna wirtualna mogła działać. Przewodnik rozwiązywania problemów jest dostępny w [przypadku rozwiązywania problemów z połączeniami SSH z maszyną wirtualną platformy Azure z systemem Linux, która kończy się niepowodzeniem, wystąpiła błędy](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-ssh-connection) Więcej szczegółów można znaleźć w [szczegółowych krokach rozwiązywania problemów SSH w przypadku problemów z połączeniem z maszyną wirtualną z systemem Linux na platformie Azure](./detailed-troubleshoot-ssh-connection.md)
+Interakcja z programu inicjującego | Uruchom ponownie maszynę wirtualną z poziomu bloku konsoli szeregowej, aby uzyskać dostęp do usługi GRUB na maszynie wirtualnej z systemem Linux. Aby uzyskać szczegółowe informacje i informacje dotyczące dystrybucji, zobacz [Korzystanie z konsoli szeregowej w celu uzyskania dostępu do grub i trybu jednego użytkownika](serial-console-grub-single-user-mode.md).
 
-## <a name="disable-the-serial-console"></a>Wyłącz konsoli szeregowej
-Wszystkie subskrypcje mają domyślnie włączonym dostępem do konsoli szeregowej. Można wyłączyć konsoli szeregowej na poziomie subskrypcji lub maszyny Wirtualnej/wirtualnego poziomu zestawu skali maszyny. Należy pamiętać, że Diagnostyka rozruchu musi zostać włączona na maszynie Wirtualnej w kolejności dla konsoli szeregowej do pracy.
+## <a name="disable-the-serial-console"></a>Wyłącz konsolę seryjną
+Domyślnie wszystkie subskrypcje mają włączony dostęp do konsoli szeregowej. Konsolę szeregową można wyłączyć na poziomie subskrypcji lub na maszynie wirtualnej/zestawie skalowania maszyn wirtualnych. Należy pamiętać, że Diagnostyka rozruchu musi być włączona na maszynie wirtualnej, aby konsola szeregowa była działać.
 
-### <a name="vmvirtual-machine-scale-set-level-disable"></a>Wyłącz poziomu zestawu skalowania maszyn wirtualnych/maszyna wirtualna
-Konsoli szeregowej można wyłączyć dla określonej maszyny Wirtualnej lub maszyny wirtualnej zestawu skalowania przez wyłączenie ustawienia diagnostyki rozruchu. Wyłącz funkcję diagnostyki rozruchu z witryny Azure portal, aby wyłączyć konsoli szeregowej maszyny Wirtualnej lub zestawu skalowania maszyn wirtualnych. Jeśli używasz konsoli szeregowej w zestawie skalowania maszyn wirtualnych, upewnij się, że uaktualnienie wystąpieniami danego zestawu skalowania maszyn wirtualnych do najnowszego modelu.
+### <a name="vmvirtual-machine-scale-set-level-disable"></a>Wyłączanie maszyny wirtualnej/zestawu skalowania maszyn wirtualnych
+Konsolę szeregową można wyłączyć dla określonej maszyny wirtualnej lub zestawu skalowania maszyn wirtualnych, wyłączając ustawienie diagnostyki rozruchu. Wyłącz diagnostykę rozruchu z Azure Portal, aby wyłączyć konsolę seryjną dla maszyny wirtualnej lub zestawu skalowania maszyn wirtualnych. Jeśli używasz konsoli szeregowej w zestawie skalowania maszyn wirtualnych, upewnij się, że Twoje wystąpienia zestawu skalowania maszyn wirtualnych zostały uaktualnione do najnowszego modelu.
 
 > [!NOTE]
-> Aby włączyć lub wyłączyć konsoli szeregowej subskrypcji, musisz mieć uprawnienia do zapisu do subskrypcji. Uprawnienia te obejmują role administratora lub właściciela. Role niestandardowe może również mieć uprawnienia do zapisu.
+> Aby włączyć lub wyłączyć konsoli szeregowej subskrypcji, musisz mieć uprawnienia do zapisu do subskrypcji. Te uprawnienia obejmują role administratora lub właściciela. Role niestandardowe może również mieć uprawnienia do zapisu.
 
 ### <a name="subscription-level-disable"></a>Wyłącz poziom subskrypcji
-Można wyłączyć dla całej subskrypcji, za pośrednictwem konsoli szeregowej [Wyłącz konsoli wywołania interfejsu API REST](/rest/api/serialconsole/console/disableconsole). Ta akcja wymaga dostępu na poziomie współautora lub nowszego do subskrypcji. Możesz użyć **wypróbuj** funkcji dostępnych na tej stronie dokumentacji interfejsu API, wyłączyć lub włączyć konsoli szeregowej dla subskrypcji. Wprowadź swój identyfikator subskrypcji dla **subscriptionId**, wprowadź **domyślne** dla **domyślne**, a następnie wybierz pozycję **Uruchom**. Poleceń interfejsu wiersza polecenia platformy Azure nie są jeszcze dostępne.
+Można wyłączyć dla całej subskrypcji, za pośrednictwem konsoli szeregowej [Wyłącz konsoli wywołania interfejsu API REST](/rest/api/serialconsole/console/disableconsole). Ta akcja wymaga dostępu na poziomie współautora lub wyższego do subskrypcji. Możesz użyć **wypróbuj** funkcji dostępnych na tej stronie dokumentacji interfejsu API, wyłączyć lub włączyć konsoli szeregowej dla subskrypcji. Wprowadź identyfikator subskrypcji, wprowadź **wartość domyślną** , a następniewybierz pozycję **Uruchom**. Poleceń interfejsu wiersza polecenia platformy Azure nie są jeszcze dostępne.
 
-Aby ponownie włączyć konsoli szeregowej subskrypcji, użyj [Włącz konsoli wywołania interfejsu API REST](/rest/api/serialconsole/console/enableconsole).
+Aby ponownie włączyć konsolę szeregową dla subskrypcji, użyj [wywołania interfejsu API REST konsoli](/rest/api/serialconsole/console/enableconsole).
 
 ![Wypróbuj interfejs API REST](./media/virtual-machines-serial-console/virtual-machine-serial-console-rest-api-try-it.png)
 
@@ -175,83 +175,83 @@ Dostęp do konsoli szeregowej jest aktualnie zalogowany [diagnostykę rozruchu](
 Jeśli użytkownik jest połączony z konsoli szeregowej i inny użytkownik pomyślnie żąda dostępu do tej samej maszyny wirtualnej, pierwszy użytkownik zostanie odłączony, a drugi użytkownik nawiązał połączenie z tą samą sesją.
 
 > [!CAUTION]
-> Oznacza to, że użytkownik, który jest odłączony nie będzie można wylogować. Możliwość wymuszenia wylogowania po rozłączenia (przy użyciu SIGHUP lub podobny mechanizm) jest nadal w planach. Dla Windows jest automatyczne włączono w specjalnych administracyjne Console (Konsola SAC); limit czasu Jednak dla systemu Linux, można skonfigurować ustawienie limitu czasu w terminalu. Aby to zrobić, Dodaj `export TMOUT=600` w swojej *.bash_profile* lub *podstawową* pliku dla użytkowników, używasz do logowania do konsoli. To ustawienie przekroczy limit czasu sesji, po upływie 10 minut.
+> Oznacza to, że użytkownik, który jest odłączony nie będzie można wylogować. Możliwość wymuszenia wylogowania przy rozłączeniu (przy użyciu mechanizmu SIGHUP lub podobnego) nadal znajduje się w planie. W przypadku systemu Windows w specjalnej konsoli administracyjnej (SAC) jest włączony automatyczny limit czasu. Jednak w przypadku systemu Linux można skonfigurować ustawienie limitu czasu terminalu. W tym celu należy dodać `export TMOUT=600` do pliku *. bash_profile* lub *. profilu* użytkownika używanego do logowania się w konsoli programu. To ustawienie spowoduje przekroczenie limitu czasu sesji po 10 minutach.
 
 ## <a name="accessibility"></a>Ułatwienia dostępu
-Dostępność jest kluczowym dla konsoli szeregowej platformy Azure. W tym celu upewniliśmy się, że konsoli szeregowej jest w pełni dostępna.
+Ułatwienia dostępu to kluczowy fokus dla konsoli szeregowej platformy Azure. W tym celu upewnij się, że konsola szeregowa jest w pełni dostępna.
 
 ### <a name="keyboard-navigation"></a>Nawigowanie przy użyciu klawiatury
 Użyj **kartę** kluczowe na klawiaturze, aby przejść w interfejsie konsoli szeregowej w witrynie Azure portal. Twoja lokalizacja zostanie wyróżniony na ekranie. Aby opuścić fokusu okna konsoli szeregowej, naciśnij klawisz **Ctrl**+**F6** na klawiaturze.
 
-### <a name="use-serial-console-with-a-screen-reader"></a>Użyj konsoli szeregowej przy użyciu czytnika zawartości ekranu
+### <a name="use-serial-console-with-a-screen-reader"></a>Korzystanie z konsoli szeregowej z czytnikiem ekranu
 Konsoli szeregowej ma wbudowaną obsługę czytników zawartości ekranu. Przemieszczać się przy użyciu czytnika zawartości ekranu włączone umożliwi tekst alternatywny dla aktualnie wybranego przycisku zostanie odczytany na głos przez czytnik zawartości ekranu.
 
 ## <a name="errors"></a>Błędy
-Ponieważ większość błędów przejściowych, ponawianie próby połączenia można często je naprawić. W poniższej tabeli przedstawiono listę błędy i środki zaradcze. Te błędy i środki zaradcze zastosowania dla obu maszyn wirtualnych i wystąpień zestawu skalowania maszyn wirtualnych.
+Ponieważ większość błędów przejściowych, ponawianie próby połączenia można często je naprawić. W poniższej tabeli przedstawiono listę błędy i środki zaradcze. Te błędy i środki zaradcze dotyczą zarówno maszyn wirtualnych, jak i wystąpień zestawów skalowania maszyn wirtualnych.
 
 Błąd                            |   Środki zaradcze
 :---------------------------------|:--------------------------------------------|
 Nie można pobrać ustawień diagnostyki rozruchu dla  *&lt;VMNAME&gt;* . Aby korzystać z konsoli szeregowej, upewnij się, że Diagnostyka rozruchu jest włączona dla tej maszyny Wirtualnej. | Upewnij się, że maszyna wirtualna ma [diagnostykę rozruchu](boot-diagnostics.md) włączone.
-Maszyna wirtualna jest w stanie zatrzymania, przydział zostanie cofnięty. Uruchom maszynę Wirtualną i spróbuj ponownie nawiązać połączenie konsoli szeregowej. | Maszyna wirtualna musi być w stanie uruchomionym uzyskać dostęp do konsoli szeregowej.
-Nie masz wymaganych uprawnień do tej maszyny Wirtualnej za pomocą konsoli szeregowej. Upewnij się, że co najmniej uprawnienia roli Współautor maszyny wirtualnej.| Dostęp do konsoli szeregowej wymaga pewnych uprawnień. Aby uzyskać więcej informacji, zobacz [wymagania wstępne](#prerequisites).
+Maszyna wirtualna jest w stanie zatrzymania, przydział zostanie cofnięty. Uruchom maszynę Wirtualną i spróbuj ponownie nawiązać połączenie konsoli szeregowej. | Aby można było uzyskać dostęp do konsoli szeregowej, maszyna wirtualna musi znajdować się w stanie uruchomionym.
+Nie masz wymaganych uprawnień do korzystania z tej maszyny wirtualnej za pomocą konsoli szeregowej. Upewnij się, że co najmniej uprawnienia roli Współautor maszyny wirtualnej.| Dostęp do konsoli szeregowej wymaga pewnych uprawnień. Aby uzyskać więcej informacji, zobacz [wymagania wstępne](#prerequisites).
 Nie można określić grupy zasobów dla konta magazynu diagnostyki rozruchu  *&lt;STORAGEACCOUNTNAME&gt;* . Sprawdź, czy Diagnostyka rozruchu jest włączona dla tej maszyny Wirtualnej, i czy masz dostęp do tego konta magazynu. | Dostęp do konsoli szeregowej wymaga pewnych uprawnień. Aby uzyskać więcej informacji, zobacz [wymagania wstępne](#prerequisites).
 Gniazda sieci Web został zamknięty lub nie można otworzyć. | Może być konieczne do listy dozwolonych `*.console.azure.com`. Bardziej szczegółowe, ale dłużej podejście jest do listy dozwolonych adresów [zakresów adresów IP centrum danych platformy Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653), które są stosunkowo regularnie zmieniane.
-Odpowiedź "Dostęp zabroniony" napotkano podczas uzyskiwania dostępu do konta magazynu diagnostyki rozruchu dla tej maszyny Wirtualnej. | Upewnij się, że tej diagnostyki rozruchu nie ma zapory konta. Konto magazynu diagnostyki rozruchu dostępny jest niezbędne do konsoli szeregowej funkcjonowania.
+Odpowiedź "Dostęp zabroniony" napotkano podczas uzyskiwania dostępu do konta magazynu diagnostyki rozruchu dla tej maszyny Wirtualnej. | Upewnij się, że Diagnostyka rozruchu nie ma zapory konta. Konto magazynu diagnostyki rozruchu dostępny jest niezbędne do konsoli szeregowej funkcjonowania.
 
 ## <a name="known-issues"></a>Znane problemy
-Mamy świadomość problemy z konsoli szeregowej. Poniżej przedstawiono listę tych problemów oraz kroki dotyczące ograniczania ryzyka. Te problemy i środki zaradcze są stosowane dla obu maszyn wirtualnych i wystąpień zestawu skalowania maszyn wirtualnych.
+Mamy świadomość problemy z konsoli szeregowej. Poniżej przedstawiono listę tych problemów oraz kroki dotyczące ograniczania ryzyka. Te problemy i środki zaradcze dotyczą zarówno maszyn wirtualnych, jak i wystąpień zestawów skalowania maszyn wirtualnych.
 
 Problem                           |   Środki zaradcze
 :---------------------------------|:--------------------------------------------|
-Naciśnięcie klawisza **Enter** po transparent połączenia nie powoduje, że monit logowania do wyświetlenia. | Aby uzyskać więcej informacji, zobacz [Hitting wprowadź, nic nie robi](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Ten problem może wystąpić, jeśli używasz niestandardowej maszyny Wirtualnej, urządzenia ze wzmocnionymi zabezpieczeniami lub konfiguracji programu GRUB, który powoduje, że Linux, aby mogły nawiązać połączenia z portu szeregowego.
-Tekst konsoli szeregowej wymaga tylko część rozmiaru ekranu (często po nim za pomocą edytora tekstów). | Negocjowanie o rozmiar okna nie obsługują konsoli szeregowej ([RFC 1073](https://www.ietf.org/rfc/rfc1073.txt)), co oznacza, że nie będzie brak sygnału SIGWINCH wysłanych do zaktualizowania rozmiaru ekranu i maszyna wirtualna będzie miała żadnej znajomości rozmiar usługi terminalowe. Zainstaluj xterm lub podobnej użyteczności, aby zapewnić Ci `resize` polecenia, a następnie uruchom `resize`.
+Naciśnięcie klawisza **Enter** po transparent połączenia nie powoduje, że monit logowania do wyświetlenia. | Aby uzyskać więcej informacji, zobacz [Hitting wprowadź, nic nie robi](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Ten problem może wystąpić, jeśli używasz niestandardowej maszyny wirtualnej, urządzenia z ograniczeniami lub konfiguracji GRUB, która powoduje, że system Linux nie może nawiązać połączenia z portem szeregowym.
+Konsola szeregowa tekst pobiera tylko część rozmiaru ekranu (często po użyciu edytora tekstów). | Konsole szeregowe nie obsługują negocjowania rozmiaru okna o rozmiarze ([RFC 1073](https://www.ietf.org/rfc/rfc1073.txt)), co oznacza, że sygnał SIGWINCH nie zostanie wysłany do aktualizacji rozmiaru ekranu, a maszyna wirtualna nie będzie miała informacji o rozmiarze terminalu. Zainstaluj xterm lub podobne narzędzie, aby udostępnić `resize` polecenie, a następnie Uruchom. `resize`
 Wklejanie ciągów długich nie działa. | Konsoli szeregowej ogranicza długość ciągów w terminalu, aby 2048 znaków, aby zapobiec przeciążeniu przepustowość portu szeregowego.
-Konsola szeregowa nie działa z zaporą konta magazynu. | Konsola szeregowa zgodnie z projektem nie może działać z zapór konta usługi storage na konto magazynu diagnostyki rozruchu włączona.
-Konsola szeregowa nie działa z kontem magazynu za pomocą usługi Azure Data Lake Storage Gen2 hierarchiczne przestrzenie nazw. | Jest to znany problem z hierarchicznej przestrzeni nazw. Aby rozwiązać problem, upewnij się, czy konto magazynu diagnostyki rozruchu maszyny Wirtualnej nie został utworzony przy użyciu usługi Azure Data Lake Storage Gen2. Tę opcję można ustawić tylko podczas tworzenia konta magazynu. Może być konieczne utworzenie konta magazynu diagnostyki rozruchu oddzielne bez Azure Data Lake Storage Gen2 włączone, aby rozwiązać ten problem.
-Błędne klawiatury w obrazach SLES BYOS. Tylko sporadycznie rozpoznano danych wprowadzonych z klawiatury. | Jest to problem z pakietem Plymouth. Plymouth nie należy uruchamiać na platformie Azure, nie potrzebujesz ekran powitalny i Plymouth koliduje z możliwością platformy przy użyciu konsoli szeregowej. Usuń Plymouth z `sudo zypper remove plymouth` , a następnie wykonaj ponowny rozruch. Alternatywnie zmodyfikować wiersz jądra swojej konfiguracji CHODNIKÓW, dodając `plymouth.enable=0` do końca wiersza. Można to zrobić, [edycji wpisu rozruchu w czasie rozruchu](https://aka.ms/serialconsolegrub#single-user-mode-in-suse-sles), lub też edytując wiersz GRUB_CMDLINE_LINUX w `/etc/default/grub`, ponowne tworzenie CHODNIKÓW z `grub2-mkconfig -o /boot/grub2/grub.cfg`, a następnie ponowne uruchomienie.
+Konsola szeregowa nie działa z zaporą konta magazynu. | Konsola szeregowa według projektu nie może współpracować z zaporami konta magazynu włączonymi na koncie magazynu diagnostyki rozruchu.
+Konsola szeregowa nie działa z kontem magazynu przy użyciu Azure Data Lake Storage Gen2 z hierarchicznymi przestrzeniami nazw. | Jest to znany problem z hierarchicznymi przestrzeniami nazw. Aby rozwiązać problem, upewnij się, że konto magazynu diagnostyki rozruchu maszyny wirtualnej nie zostało utworzone przy użyciu Azure Data Lake Storage Gen2. Tę opcję można ustawić tylko podczas tworzenia konta magazynu. Może być konieczne utworzenie oddzielnego konta magazynu diagnostyki rozruchu bez Azure Data Lake Storage Gen2 włączenia tego problemu.
+Błędne dane wejściowe klawiatury w obrazach SLES BYOS. Dane wejściowe z klawiatury są tylko sporadycznie rozpoznawane. | Jest to problem z pakietem Plymouth. Nie należy uruchamiać Plymouth na platformie Azure, ponieważ nie jest potrzebny ekran powitalny, a Plymouth zakłóca możliwości platformy do korzystania z konsoli szeregowej. Usuń Plymouth z `sudo zypper remove plymouth` , a następnie uruchom ponownie. Alternatywnie możesz zmodyfikować wiersz jądra konfiguracji grub, dołączając `plymouth.enable=0` do końca wiersza. Można to zrobić przez [Edytowanie wpisu rozruchu w czasie rozruchu](https://aka.ms/serialconsolegrub#single-user-mode-in-suse-sles)lub przez edycję linii GRUB_CMDLINE_LINUX w programie `/etc/default/grub`, ponowne skompilowanie grub przy użyciu `grub2-mkconfig -o /boot/grub2/grub.cfg`, a następnie ponowne uruchomienie.
 
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
 **PYTANIA I ODPOWIEDZI. Jak wysłać opinię?**
 
-A. Przekazać opinię, tworząc problem w usłudze GitHub w https://aka.ms/serialconsolefeedback. Można również (mniej preferowany), możesz wysłać opinię, za pośrednictwem azserialhelp@microsoft.com lub w maszynie wirtualnej kategorii https://feedback.azure.com.
+A. Prześlij opinię, tworząc problem w usłudze GitHub https://aka.ms/serialconsolefeedback w witrynie. Można również (mniej preferowany), możesz wysłać opinię, za pośrednictwem azserialhelp@microsoft.com lub w maszynie wirtualnej kategorii https://feedback.azure.com.
 
 **PYTANIA I ODPOWIEDZI. Konsoli szeregowej obsługuje kopiowania/wklejania?**
 
 A. Tak. Użyj **Ctrl**+**Shift**+**C** i **Ctrl**+**Shift** + **V** do kopiowania i wklejania w terminalu.
 
-**PYTANIA I ODPOWIEDZI. Czy można użyć konsoli szeregowej, zamiast połączenia SSH?**
+**PYTANIA I ODPOWIEDZI. Czy można użyć konsoli szeregowej zamiast połączenia SSH?**
 
-A. Podczas tego użycia może wydawać się to technicznie możliwe, konsoli szeregowej ma służyć przede wszystkim podczas rozwiązywania problemów w sytuacjach, w których łączność za pośrednictwem protokołu SSH nie jest możliwe. Zaleca się przy użyciu konsoli szeregowej jako zamiennika SSH z następujących powodów:
+A. Mimo że takie użycie może wydawać się technicznie możliwe, konsola szeregowa jest przeznaczona głównie jako narzędzie do rozwiązywania problemów w sytuacjach, gdy łączność za pośrednictwem protokołu SSH nie jest możliwa. Zalecamy używanie konsoli szeregowej jako zamiennika protokołu SSH z następujących powodów:
 
-- Konsoli szeregowej nie musi tak dużej ilości przepustowości jako protokołu SSH. Ponieważ jest ona połączenie tylko do tekstu, więcej interakcje ciężkich graficznego interfejsu użytkownika są trudne.
-- Konsola szeregowa jest obecnie możliwe tylko przy użyciu nazwy użytkownika i hasła. Ponieważ klucze SSH są znacznie bezpieczniejsze niż kombinacji nazwy użytkownika/hasła, z punktu widzenia zabezpieczeń logowania zalecamy SSH za pośrednictwem konsoli szeregowej.
+- Konsola szeregowa nie ma tak dużej przepustowości jak SSH. Ponieważ jest to połączenie tylko do tekstu, trudne są duże interakcje ze zbyt dużą graficznym interfejsem użytkownika.
+- Konsola szeregowa dostęp jest obecnie możliwy tylko przy użyciu nazwy użytkownika i hasła. Ponieważ klucze SSH są znacznie bardziej bezpieczne niż kombinacje nazwy użytkownika/hasła, z punktu widzenia zabezpieczeń logowania zalecamy używanie protokołu SSH za pośrednictwem konsoli szeregowej.
 
-**PYTANIA I ODPOWIEDZI. Kto może włączyć lub wyłączyć konsoli szeregowej dla mojej subskrypcji?**
+**PYTANIA I ODPOWIEDZI. Kto może włączyć lub wyłączyć konsolę szeregową dla mojej subskrypcji?**
 
 A. Aby włączyć lub wyłączyć konsoli szeregowej na poziomie całej subskrypcji, musisz mieć uprawnienia do zapisu do subskrypcji. Role, które mają uprawnienia do zapisu obejmują role administratora lub właściciela. Role niestandardowe może również mieć uprawnienia do zapisu.
 
-**PYTANIA I ODPOWIEDZI. Kto ma dostęp do konsoli szeregowej dla mojej maszyny Wirtualnej/wirtualnych zestawu skalowania maszyn?**
+**PYTANIA I ODPOWIEDZI. Kto może uzyskać dostęp do konsoli szeregowej dla maszyny wirtualnej/zestawu skalowania maszyn wirtualnych?**
 
-A. Konieczne jest posiadanie rola Współautor maszyny wirtualnej lub nowszej dla maszyny Wirtualnej lub maszyny wirtualnej zestawu skalowania w celu dostępu do konsoli szeregowej.
+A. Aby można było uzyskać dostęp do konsoli szeregowej, należy mieć rolę współautor maszyny wirtualnej lub wyższą dla maszyny wirtualnej lub zestawu skalowania maszyn wirtualnych.
 
 **PYTANIA I ODPOWIEDZI. Moje konsoli szeregowej nie są wyświetlane wszystko, co należy zrobić?**
 
-A. Obraz jest prawdopodobnie nieprawidłowo skonfigurowane, aby uzyskać dostęp do konsoli szeregowej. Aby uzyskać informacji o konfigurowaniu swój obraz, aby umożliwić konsoli szeregowej, zobacz [konsoli szeregowej dostępności dystrybucji systemu Linux](#serial-console-linux-distribution-availability).
+A. Obraz jest prawdopodobnie nieprawidłowo skonfigurowane, aby uzyskać dostęp do konsoli szeregowej. Aby uzyskać informacje o konfigurowaniu obrazu w celu włączenia konsoli szeregowej, zobacz [konsola szeregowa dostępność dystrybucji systemu Linux](#serial-console-linux-distribution-availability).
 
 **PYTANIA I ODPOWIEDZI. Konsoli szeregowej jest dostępna dla zestawów skalowania maszyn wirtualnych?**
 
-A. Tak! Zobacz [konsoli szeregowej dla zestawów skalowania maszyn wirtualnych](#serial-console-for-virtual-machine-scale-sets)
+A. Tak! Zobacz [konsolę szeregowa dla Virtual Machine Scale Sets](#serial-console-for-virtual-machine-scale-sets)
 
-**PYTANIA I ODPOWIEDZI. Jeśli skonfigurować mojej maszyny Wirtualnej lub maszyny wirtualnej zestawie skalowania za pomocą tylko uwierzytelnianie klucza SSH, można nadal mogę korzystać konsoli szeregowej połączyć się z mojej maszyny Wirtualnej/wirtualnego maszyny wystąpienia w zestawie skalowania?**
+**PYTANIA I ODPOWIEDZI. Czy w przypadku skonfigurowania maszyny wirtualnej lub zestawu skalowania maszyn wirtualnych za pomocą tylko uwierzytelniania przy użyciu klucza SSH można nadal używać konsoli szeregowej do nawiązywania połączenia z maszyną wirtualną/wystąpieniem zestawu skalowania maszyn wirtualnych?**
 
-A. Tak. Ponieważ konsoli szeregowej nie wymaga kluczy SSH, wystarczy ustawić kombinację nazwy użytkownika i hasła. Możesz to zrobić, wybierając **Resetuj hasło** w witrynie Azure portal i za pomocą tych poświadczeń do logowania do konsoli szeregowej.
+A. Tak. Ponieważ konsola szeregowa nie wymaga kluczy SSH, wystarczy skonfigurować kombinację nazwy użytkownika/hasła. Możesz to zrobić, wybierając pozycję **zresetuj hasło** w Azure Portal i używając tych poświadczeń, aby zalogować się do konsoli szeregowej.
 
-## <a name="next-steps"></a>Następne kroki
-* Użyj konsoli szeregowej do [dostępu CHODNIKÓW i trybie jednego użytkownika](serial-console-grub-single-user-mode.md).
-* Użyj konsoli szeregowej dla [wywołania NMI i SysRq](serial-console-nmi-sysrq.md).
-* Dowiedz się, jak korzystać z konsoli szeregowej do [Włącz CHODNIKÓW w różnych dystrybucjach](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/).
-* Jest również dostępny dla konsoli szeregowej [maszyn wirtualnych Windows](../windows/serial-console.md).
+## <a name="next-steps"></a>Kolejne kroki
+* Użyj konsoli szeregowej, aby [uzyskać dostęp do grub i trybu jednego użytkownika](serial-console-grub-single-user-mode.md).
+* Użyj konsoli szeregowej dla [wywołań NMI i sysrq](serial-console-nmi-sysrq.md).
+* Dowiedz się, jak używać konsoli szeregowej do [włączania Grub w różnych dystrybucjeach](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/).
+* Konsola szeregowa jest również dostępna dla [maszyn wirtualnych z systemem Windows](../windows/serial-console.md).
 * Dowiedz się więcej o [diagnostykę rozruchu](boot-diagnostics.md).
 

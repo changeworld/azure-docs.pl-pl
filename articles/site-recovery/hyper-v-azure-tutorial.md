@@ -1,107 +1,107 @@
 ---
-title: Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych funkcji Hyper-V w środowisku lokalnym (bez programu VMM) do platformy Azure z usługą Site Recovery | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować odzyskiwanie po awarii lokalnych maszyn wirtualnych funkcji Hyper-V (bez programu VMM) na platformie Azure przy użyciu usługi Site Recovery.
+title: Skonfiguruj odzyskiwanie po awarii dla lokalnych maszyn wirtualnych funkcji Hyper-V (bez programu VMM) na platformie Azure przy użyciu Site Recovery | Microsoft Docs
+description: Dowiedz się, jak skonfigurować odzyskiwanie po awarii lokalnych maszyn wirtualnych funkcji Hyper-V (bez programu VMM) na platformę Azure przy użyciu Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 08/07/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: f4c9ddf608033f6b85268fe74b12861eb8c30082
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 44f72df28191d02a6d320671e0173eb1306e0c78
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295152"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845698"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Konfigurowanie odzyskiwania po awarii lokalnych maszyn wirtualnych funkcji Hyper-V na platformie Azure
 
-[Usługi Azure Site Recovery](site-recovery-overview.md) przyczynia się do strategii odzyskiwania po awarii przez organizowanie replikacji, trybu failover i powrotu po awarii maszyn lokalnych i maszyn wirtualnych (VM) i zarządzanie nimi.
+Usługa [Azure Site Recovery](site-recovery-overview.md) przyczynia się do strategii odzyskiwania po awarii przez zarządzanie replikacją, trybem failover i powrotem po awarii maszyn lokalnych i maszyn wirtualnych platformy Azure.
 
-Jest to trzeci samouczek z tej serii. Prezentuje sposób konfigurowania odzyskiwania po awarii lokalnych maszyn wirtualnych z funkcją Hyper-V do platformy Azure. Ten samouczek dotyczy maszyn wirtualnych funkcji Hyper-V, które nie są zarządzane przez Microsoft System Center Virtual Machine Manager (VMM).
+Jest to trzeci samouczek z tej serii. Pokazano, jak skonfigurować odzyskiwanie po awarii lokalnych maszyn wirtualnych funkcji Hyper-V na platformie Azure. Ten samouczek dotyczy maszyn wirtualnych funkcji Hyper-V, które nie są zarządzane przez program Microsoft System Center Virtual Machine Manager (VMM).
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Wybieranie źródła i celu replikacji.
-> * Konfigurowanie środowiska źródłowego replikacji, w tym lokalnych składników usługi Site Recovery oraz środowiska docelowego replikacji.
+> * Skonfiguruj środowisko replikacji źródłowej, w tym lokalne składniki Site Recovery i środowisko docelowej replikacji.
 > * Tworzenie zasad replikacji.
 > * Włączanie replikacji maszyny wirtualnej.
 
 > [!NOTE]
-> W samouczkach pokazano to najprostsza ścieżka wdrażania scenariusza. Jeśli to możliwe, używają opcji domyślnych i nie przedstawiają wszystkich możliwych ustawień i ścieżek. Aby uzyskać szczegółowe instrukcje, zapoznaj się z artykułami w **przewodniki z instrukcjami** części [dokumentacja usługi Site Recovery](https://docs.microsoft.com/azure/site-recovery).
+> Samouczki pokazują najprostszą ścieżkę wdrożenia dla scenariusza. Jeśli to możliwe, używają opcji domyślnych i nie przedstawiają wszystkich możliwych ustawień i ścieżek. Aby uzyskać szczegółowe instrukcje, zapoznaj się z artykułami w sekcji przewodniki z instrukcjami w [dokumentacji Site Recovery](https://docs.microsoft.com/azure/site-recovery).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Jest to trzeci samouczek z tej serii. Przyjęto założenie, że zostały już wykonane zadania z poprzednich samouczków:
+Jest to trzeci samouczek z tej serii. Przyjęto założenie, że zadania zostały już wykonane w poprzednich samouczkach:
 
 1. [Przygotowywanie platformy Azure](tutorial-prepare-azure.md)
 2. [Przygotowywanie lokalnej funkcji Hyper-V](tutorial-prepare-on-premises-hyper-v.md)
 
 ## <a name="select-a-replication-goal"></a>Wybieranie celu replikacji
 
-1. W witrynie Azure portal przejdź do **Magazyny usługi Recovery Services** i wybierz magazyn. Możemy przygotować magazyn **ContosoVMVault** w poprzednim samouczku.
-2. W **wprowadzenie**, wybierz opcję **Site Recovery**, a następnie wybierz pozycję **Przygotuj infrastrukturę**.
-3. W **cel ochrony** > **których znajdują się maszyny?** , wybierz opcję **On-premises**.
-4. W **gdzie chcesz zreplikować maszyny?** , wybierz opcję **na platformę Azure**.
-5. W **są maszynach zwirtualizowane?** , wybierz opcję **tak, przy użyciu funkcji Hyper-V**.
-6. W **używasz programu System Center VMM do zarządzania hostów funkcji Hyper-V?** , wybierz opcję **nie**.
+1. W Azure Portal przejdź do obszaru **magazyny Recovery Services** i wybierz magazyn. **ContosoVMVault** magazynu został przygotowany w poprzednim samouczku.
+2. W **wprowadzenie**wybierz pozycję **Site Recovery**, a następnie wybierz pozycję **Przygotuj infrastrukturę**.
+3. W obszarze **cel** > ochrony, gdzie znajdują się**maszyny?** wybierz pozycję **lokalna**.
+4. W obszarze **gdzie chcesz replikować maszyny?** wybierz pozycję **na platformie Azure**.
+5. W obszarze **czy maszyny są zwirtualizowane?** wybierz pozycję **tak, używając funkcji Hyper-V**.
+6. Czy w programie **System Center VMM jest używany do zarządzania hostami funkcji Hyper-V?** wybierz pozycję **nie**.
 7. Kliknij przycisk **OK**.
 
     ![Cel replikacji](./media/hyper-v-azure-tutorial/replication-goal.png)
 
 ## <a name="confirm-deployment-planning"></a>Potwierdzanie planowania wdrożenia
 
-1. W **planowania wdrożenia**, jeśli planowane jest dużych wdrożeniach, Pobierz planista wdrażania funkcji Hyper-v przy użyciu linku na stronie. [Dowiedz się więcej](hyper-v-deployment-planner-overview.md) o planowaniu wdrożenia funkcji Hyper-V.
-2. W tym samouczku nie potrzebujemy planista wdrażania. W **czy ukończono Planowanie wdrożenia?** , wybierz opcję **zrobię to później**, a następnie wybierz pozycję **OK**.
+1. W przypadku **planowania wdrożenia**, jeśli planujesz duże wdrożenie, Pobierz planista wdrażania dla funkcji Hyper-V z linku na stronie. [Dowiedz się więcej](hyper-v-deployment-planner-overview.md) o planowaniu wdrożenia funkcji Hyper-V.
+2. W tym samouczku nie są potrzebne Planista wdrażania. Czy w programie **wykonano Planowanie wdrożenia?** zaznacz opcję **chcę zrobić to później**, a następnie wybierz **przycisk OK**.
 
     ![Planowanie wdrożenia](./media/hyper-v-azure-tutorial/deployment-planning.png)
 
 ## <a name="set-up-the-source-environment"></a>Konfigurowanie środowiska źródłowego
 
-Aby skonfigurować środowisko źródłowe, możesz utworzyć lokację funkcji Hyper-V i dodać do tej witryny i hosty funkcji Hyper-V zawierające maszyny wirtualne, które mają być replikowane. Następnie Pobierz i zainstaluj dostawcę usługi Azure Site Recovery oraz agenta usług odzyskiwania Azure na każdym hoście i zarejestrować lokację funkcji Hyper-V w magazynie.
+Aby skonfigurować środowisko źródłowe, należy utworzyć lokację funkcji Hyper-V i dodać do tej lokacji hosty funkcji Hyper-V zawierające maszyny wirtualne, które mają być replikowane. Następnie należy pobrać i zainstalować dostawcę Azure Site Recovery oraz agenta Recovery Services platformy Azure na każdym hoście i zarejestrować lokację funkcji Hyper-V w magazynie.
 
-1. W obszarze **Przygotuj infrastrukturę**, wybierz opcję **źródła**.
-2. W **przygotowywanie źródła**, wybierz opcję **+ lokacja funkcji Hyper-V**.
-3. W **lokacji funkcji Hyper-V Utwórz**, określ nazwę lokacji. Firma Microsoft korzysta z **ContosoHyperVSite**.
+1. W obszarze **Przygotowanie infrastruktury**wybierz pozycję **Źródło**.
+2. W obszarze **przygotowanie źródła**wybierz pozycję **+ Lokacja funkcji Hyper-V**.
+3. W obszarze **Utwórz lokację funkcji Hyper-V**Określ nazwę lokacji. Korzystamy z usługi **ContosoHyperVSite**.
 
     ![Lokacja funkcji Hyper-V](./media/hyper-v-azure-tutorial/hyperv-site.png)
 
-4. Po utworzeniu witryny w **przygotowywanie źródła** > **krok 1: Wybierz witrynę funkcji Hyper-V**, wybierz lokację, został utworzony.
-5. Wybierz **+ serwer funkcji Hyper-V**.
+4. Po utworzeniu lokacji w obszarze **Przygotuj Źródło** > **krok 1: Wybierz lokację**funkcji Hyper-V, wybierz utworzoną witrynę.
+5. Wybierz pozycję **+ serwer funkcji Hyper-V**.
 
     ![Serwer funkcji Hyper-V](./media/hyper-v-azure-tutorial/hyperv-server.png)
 
-6. Pobierz Instalator dostawcy Microsoft Azure Site Recovery.
-7. Pobierz klucz rejestracji magazynu. Będzie on potrzebny do zainstalowania dostawcy. Klucz jest ważny przez pięć dni po jego wygenerowaniu.
+6. Pobierz Instalatora dla dostawcy Site Recovery Microsoft Azure.
+7. Pobierz klucz rejestracji magazynu. Ten klucz jest wymagany do zainstalowania dostawcy. Klucz jest ważny przez pięć dni po jego wygenerowaniu.
 
-    ![Pobieranie dostawcy i klucz rejestracji](./media/hyper-v-azure-tutorial/download.png)
+    ![Pobierz dostawcę i klucz rejestracji](./media/hyper-v-azure-tutorial/download.png)
     
 
 ### <a name="install-the-provider"></a>Instalowanie dostawcy
 
-Zainstaluj pobrany plik Instalatora (AzureSiteRecoveryProvider.exe) na każdym hoście funkcji Hyper-V, który chcesz dodać do lokacji funkcji Hyper-V. Instalator instaluje się dostawcę usługi Azure Site Recovery i agenta usług Recovery Services na każdym hoście funkcji Hyper-V.
+Zainstaluj pobrany plik instalacyjny (AzureSiteRecoveryProvider. exe) na każdym hoście funkcji Hyper-V, który ma zostać dodany do lokacji funkcji Hyper-V. Instalator instaluje dostawcę Azure Site Recovery i agenta Recovery Services na każdym hoście funkcji Hyper-V.
 
-1. Uruchom plik Instalatora.
+1. Uruchom plik instalacyjny.
 2. W Kreatorze instalacji dostawcy usługi Azure Site Recovery w obszarze **Microsoft Update** wyraź zgodę na używanie usługi Microsoft Update do sprawdzania aktualizacji dostawcy.
-3. W **instalacji**Zaakceptuj domyślną lokalizację instalacji dostawcy i agenta, a wybierz **zainstalować**.
-4. Po zakończeniu instalacji w Kreatorze rejestracji usługi Microsoft Azure lokacji odzyskiwania > **ustawienia magazynu**, wybierz opcję **Przeglądaj**, a następnie w **plik klucza**, wybierz opcję pliku klucza magazynu, który pobrane.
+3. W obszarze **Instalacja**zaakceptuj domyślną lokalizację instalacji dostawcy i agenta, a następnie wybierz pozycję **Zainstaluj**.
+4. Po zakończeniu instalacji w Kreatorze Microsoft Azure rejestracji Site Recovery > **ustawienia magazynu**wybierz pozycję **Przeglądaj**, a następnie w polu **plik klucza**wybierz pobrany plik klucza magazynu.
 5. Określ subskrypcję usługi Azure Site Recovery, nazwę magazynu (**ContosoVMVault**) oraz lokację funkcji Hyper-V (**ContosoHyperVSite**), do której należy serwer funkcji Hyper-V.
 6. W obszarze **Ustawienia serwera proxy** wybierz pozycję **Połącz bezpośrednio z usługą Azure Site Recovery bez serwera proxy**.
-7. W **rejestracji**po serwer jest zarejestrowany w magazynie, wybierz opcję **Zakończ**.
+7. W obszarze **rejestracja**po zarejestrowaniu serwera w magazynie wybierz pozycję **Zakończ**.
 
 Metadane z serwera funkcji Hyper-V zostaną pobrane przez usługę Azure Site Recovery, a serwer zostanie wyświetlony w obszarze **Infrastruktura usługi Site Recovery** > **Hosty funkcji Hyper-V**. Ten proces może potrwać do 30 minut.
 
-#### <a name="install-the-provider-on-a-hyper-v-core-server"></a>Zainstaluj dostawcę na funkcji Hyper-V server core
+#### <a name="install-the-provider-on-a-hyper-v-core-server"></a>Instalowanie dostawcy na serwerze podstawowym funkcji Hyper-V
 
-Jeśli korzystasz z instalacją server core funkcji Hyper-V, Pobierz plik instalacyjny i wykonaj następujące czynności:
+Jeśli używasz serwera podstawowego funkcji Hyper-V, Pobierz plik Instalatora i wykonaj następujące kroki:
 
-1. Wyodrębnij pliki z AzureSiteRecoveryProvider.exe do katalogu lokalnego, uruchamiając następujące polecenie:
+1. Wyodrębnij pliki z AzureSiteRecoveryProvider. exe do katalogu lokalnego, uruchamiając następujące polecenie:
 
     `AzureSiteRecoveryProvider.exe /x:. /q`
  
-2. Uruchom polecenie `.\setupdr.exe /i`. Wyniki są rejestrowane % Programdata%\ASRLogs\DRASetupWizard.log.
+2. Uruchom polecenie `.\setupdr.exe /i`. Wyniki są rejestrowane w%Programdata%\ASRLogs\DRASetupWizard.log.
 
 3. Zarejestruj serwer, uruchamiając następujące polecenie:
 
@@ -111,36 +111,36 @@ Jeśli korzystasz z instalacją server core funkcji Hyper-V, Pobierz plik instal
 
 ## <a name="set-up-the-target-environment"></a>Konfigurowanie środowiska docelowego
 
-Wybierz i Zweryfikuj zasoby docelowe:
+Wybierz i sprawdź zasoby docelowe:
 
 1. Wybierz pozycje **Przygotowanie infrastruktury** > **Cel**.
-2. Wybierz subskrypcję i grupę zasobów **ContosoRG** , w której maszyny wirtualne platformy Azure zostanie utworzony po włączeniu trybu failover.
+2. Wybierz subskrypcję i grupę zasobów **ContosoRG** , w której zostaną utworzone maszyny wirtualne platformy Azure po przejściu do trybu failover.
 3. Wybierz model wdrażania usługi **Resource Manager**.
 
 Usługa Site Recovery sprawdza, czy masz co najmniej jedno zgodne konto magazynu Azure i co najmniej jedną sieć platformy Azure.
 
 ## <a name="set-up-a-replication-policy"></a>Konfigurowanie zasad replikacji
 
-1. Wybierz **przygotowanie infrastruktury** > **ustawień replikacji** >  **+ Utwórz i skojarz**.
-2. W obszarze **Utwórz i skojarz zasady** określ nazwę zasad. Firma Microsoft korzysta z **ContosoReplicationPolicy**.
-3. W tym samouczku pozostawimy wartości domyślnych:
-    - **Częstotliwość kopiowania** wskazuje, jak często dane różnicowe (po replikacji początkowej) będą replikowane. Domyślna częstotliwość to co pięć minut.
-    - **Czas przechowywania punktu odzyskiwania** wskazuje, że punkty odzyskiwania będą przechowywane przez dwie godziny.
+1. Wybierz kolejno pozycje **Przygotowanie infrastruktury** > **Ustawienia** > replikacji **+ Utwórz i skojarz**.
+2. W obszarze **Utwórz i skojarz zasady** określ nazwę zasad. Korzystamy z usługi **ContosoReplicationPolicy**.
+3. W tym samouczku pozostawimy ustawienia domyślne:
+    - **Częstotliwość kopiowania** wskazuje, jak często będą replikowane dane różnicowe (po replikacji początkowej). Częstotliwość domyślna to co pięć minut.
+    - **Przechowywanie punktów odzyskiwania** wskazuje, że punkty odzyskiwania będą przechowywane przez dwie godziny.
     - Ustawienie **Częstotliwość migawek na poziomie aplikacji** wskazuje, że punkty odzyskiwana zawierające migawki na poziomie aplikacji będą tworzone co godzinę.
-    - **Czas rozpoczęcia replikacji początkowej** wskazuje, że Replikacja początkowa rozpocznie się natychmiast.
-4. Po utworzeniu zasad wybierz **OK**. Podczas tworzenia nowych zasad automatycznie skojarzone z określoną lokacją funkcji Hyper-V. W naszym samouczku to **ContosoHyperVSite**.
+    - **Czas rozpoczęcia replikacji początkowej** wskazuje, że replikacja początkowa rozpocznie się natychmiast.
+4. Po utworzeniu zasad wybierz **przycisk OK**. Nowo utworzone zasady są automatycznie kojarzone z określoną lokacją funkcji Hyper-V. W naszym samouczku **ContosoHyperVSite**.
 
     ![Zasady replikacji](./media/hyper-v-azure-tutorial/replication-policy.png)
 
 ## <a name="enable-replication"></a>Włączanie replikacji
 
-1. W **Replikowanie aplikacji**, wybierz opcję **źródła**.
+1. W obszarze **replikacja aplikacji**wybierz pozycję **Źródło**.
 2. W obszarze **Źródło** wybierz lokację **ContosoHyperVSite**. Następnie wybierz przycisk **OK**.
-3. W **docelowej**, sprawdź element docelowy (Azure), subskrypcję magazynu i **usługi Resource Manager** modelu wdrażania.
-4. Jeśli używasz samouczek ustawienia, wybierz **contosovmsacct1910171607** konta magazynu utworzonego w poprzednim samouczku do replikowania danych. Również wybrać **ContosoASRnet** sieci, w której maszyny wirtualne platformy Azure zostaną umieszczone po włączeniu trybu failover.
-5. W **maszyn wirtualnych** > **wybierz**, wybierz maszynę Wirtualną, którą chcesz replikować. Następnie wybierz przycisk **OK**.
+3. W obszarze **cel**Sprawdź, czy element docelowy (Azure), subskrypcję magazynu i model wdrażania **Menedżer zasobów** .
+4. Jeśli używasz ustawień samouczka, wybierz konto magazynu **contosovmsacct1910171607** utworzone w poprzednim samouczku dla replikowanych danych. Wybierz również sieć **ContosoASRnet** , w której maszyny wirtualne platformy Azure będą znajdować się po przejściu do trybu failover.
+5. Na > stronie**Wybierz**maszynę wirtualną wybierz maszynę wirtualną, którą chcesz zreplikować. Następnie wybierz przycisk **OK**.
 
-   Możesz śledzić postępy akcji **Włącz ochronę** w obszarze **Zadania** > **Zadania usługi Site Recovery**. Po **Finalizuj ochronę** zakończenia zadania, Replikacja początkowa zostanie zakończona i maszyna wirtualna jest gotowa do pracy awaryjnej.
+   Możesz śledzić postępy akcji **Włącz ochronę** w obszarze **Zadania** > **Zadania usługi Site Recovery**. Po zakończeniu zadania **finalizowania ochrony** Replikacja początkowa zostanie zakończona, a maszyna wirtualna jest gotowa do przejścia w tryb failover.
 
 ## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"]

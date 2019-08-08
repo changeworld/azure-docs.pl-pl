@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f7387b210c1499ff0a19fe17667090be0c2c0933
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 40969362e339770f18374ff22af5b3fe63908e65
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561403"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845736"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Szybki start: Tworzenie aplikacji systemu Android przy użyciu usługi Azure Spatial Anchors
 
@@ -37,6 +37,7 @@ Aby ukończyć ten przewodnik Szybki start, upewnij się, że dysponujesz nastę
   - W przypadku uruchamiania w systemie macOS Pobierz narzędzie git zainstalowane za pośrednictwem usługi oprogramowania homebrew. Wprowadź następujące polecenie w jednym wierszu terminalu: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Następnie uruchom `brew install git`polecenie.
   - Aby skompilować przykład NDK, należy również zainstalować CMake NDK i 3,6 lub więcej SDK Tools w Android Studio.
 - Urządzenie z systemem Android <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">pracujące w trybie dewelopera</a> i <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">zgodne z platformą ARCore</a>.
+  - Aby komputer mógł komunikować się z urządzeniem z systemem Android, mogą być wymagane dodatkowe sterowniki urządzeń. Aby uzyskać dodatkowe informacje i instrukcje, zobacz [tutaj](https://developer.android.com/studio/run/device.html) .
 - Twoja aplikacja musi być docelowa ARCore **1,8**.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]

@@ -3,20 +3,20 @@ title: Omówienie funkcji akustycznych projektu
 titlesuffix: Azure Cognitive Services
 description: Akustyczny projekt to aparat akustyczny dla interaktywnych środowisk 3W, integrowanie symulacji fizyki rozszerzania Wave z interaktywnymi kontrolkami projektu.
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: overview
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: a654dd966c40b5b079f92b910ade52f4eda10344
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 382d4febed98b53a469ac2788e6e8c8cbf064c23
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704753"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854809"
 ---
 # <a name="what-is-project-acoustics"></a>Co to jest akustyka projektu?
 Akustyczny projekt jest aparatem akustycznym Wave dla interaktywnych środowisk 3W. Modele it to efekty Wave, takie jak diffraction, portale i Reverb, w złożonych scenach, bez konieczności ręcznego znaczników strefy. Obejmuje to także integrację aparatu gier i oprogramowania pośredniczącego. Funkcja "akustyczne projektu" jest podobna do statycznego oświetlenia: Tworzenie szczegółowej fizyki w trybie offline, aby zapewnić fizyczną linię bazową, i korzystać z uproszczonego środowiska uruchomieniowego z kontrolkami projektowymi, aby zaspokoić cele artystyczne.

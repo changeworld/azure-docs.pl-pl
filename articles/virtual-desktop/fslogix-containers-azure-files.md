@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 05/16/2019
+ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: c01e138c8afcdd59fcb0c87f189d98bec10e16d7
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 13f80b42ef6dfd0c70067a3ecf5f3e172527a63f
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828138"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846533"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>Kontenery profili FSLogix i pliki platformy Azure
 
@@ -47,11 +47,11 @@ W poniższej tabeli przedstawiono zalety i ograniczenia dotyczące wcześniejszy
 
 | Technologia | Ustawienia nowoczesne | Ustawienia Win32 | Ustawienia systemu operacyjnego | Dane użytkowników | Obsługiwane w jednostce SKU serwera | Magazyn zaplecza na platformie Azure | Magazyn zaplecza lokalnego | Obsługa wersji | Kolejny czas logowania |Uwagi|
 | ---------- | :-------------: | :------------: | :---------: | --------: | :---------------------: | :-----------------------: | :--------------------------: | :-------------: | :---------------------: |-----|
-| **Dyski profilu użytkownika (UPD)** | Yes | Yes | Yes | Yes | Yes | Nie | Tak | Win 7 + | Tak | |
-| **Profil użytkownika mobilnego (RUP), tryb konserwacji** | Nie | Yes | Yes | Yes | Yes| Nie | Tak | Win 7 + | Nie | |
-| **Enterprise State Roaming (ESR)** | Tak | Nie | Yes | Nie | Zobacz uwagi | Tak | Nie | Win 10 | Nie | Funkcje w jednostce SKU serwera, ale bez interfejsu użytkownika pomocniczego |
-| **Wirtualizacja środowiska użytkownika (UE-V)** | Yes | Yes | Yes | Nie | Yes | Nie | Tak | Win 7 + | Nie |  |
-| **Pliki w chmurze w usłudze OneDrive** | Nie | Nie | Nie | Yes | Zobacz uwagi | Zobacz uwagi  | Zobacz uwagi | Win 10 RS3 | Nie | Nie przetestowano w jednostce SKU serwera. Magazyn zaplecza na platformie Azure zależy od klienta synchronizacji. Magazyn zaplecza Premium wymaga klienta synchronizacji. |
+| **Dyski profilu użytkownika (UPD)** | Tak | Yes | Yes | Yes | Yes | Nie | Yes | Win 7 + | Yes | |
+| **Profil użytkownika mobilnego (RUP), tryb konserwacji** | Nie | Yes | Yes | Yes | Yes| Nie | Yes | Win 7 + | Nie | |
+| **Enterprise State Roaming (ESR)** | Yes | Nie | Yes | Nie | Zobacz uwagi | Tak | Nie | Win 10 | Nie | Funkcje w jednostce SKU serwera, ale bez interfejsu użytkownika pomocniczego |
+| **Wirtualizacja środowiska użytkownika (UE-V)** | Tak | Yes | Yes | Nie | Yes | Nie | Yes | Win 7 + | Nie |  |
+| **Pliki w chmurze w usłudze OneDrive** | Nie | Nie | Nie | Tak | Zobacz uwagi | Zobacz uwagi  | Zobacz uwagi | Win 10 RS3 | Nie | Nie przetestowano w jednostce SKU serwera. Magazyn zaplecza na platformie Azure zależy od klienta synchronizacji. Magazyn zaplecza Premium wymaga klienta synchronizacji. |
 
 #### <a name="performance"></a>Wydajność
 
@@ -75,13 +75,13 @@ Klastry funkcji S2D wymagają systemu operacyjnego, który jest instalowany, akt
 
 Od momentu nabycia firma Microsoft rozpoczęła wymianę istniejących rozwiązań profilu użytkownika, takich jak UPD, z kontenerami profilu FSLogix.
 
-## <a name="azure-files-integration-with-azure-active-directory"></a>Azure Files integrację z usługą Azure Active Directory
+## <a name="azure-files-integration-with-azure-active-directory-domain-service"></a>Azure Files integrację z usługą domenową Azure Active Directory
 
-Wydajność i funkcje kontenerów profilu FSLogix korzystają z chmury. W września. 24, 2018 pliki Microsoft Azure ogłosiły publiczną wersję zapoznawczą [Azure Files obsługi uwierzytelniania Azure Active Directory](https://azure.microsoft.com/blog/azure-active-directory-integration-for-smb-access-now-in-public-preview/). Dzięki rozwiązaniu kosztu i kosztów administracyjnych Azure Files z uwierzytelnianiem Azure Active Directory jest rozwiązaniem Premium dla profilów użytkowników w nowej usłudze pulpitu wirtualnego systemu Windows.
+Wydajność i funkcje kontenerów profilów FSLogix korzystają z chmury. 7 sierpnia 2019 pliki Microsoft Azure ogłoszone ogólnie dostęp do [Azure Files uwierzytelniania przy użyciu usługi domeny Azure Active Directory (AD DS)](/articles/storage/files/storage-files-active-directory-overview.md). Odnosząc się do kosztów i obciążeń administracyjnych, Azure Files z uwierzytelnianiem za pomocą usługi Azure AD DS to rozwiązanie Premium dla profilów użytkowników w usłudze pulpitów wirtualnych systemu Windows.
 
 ## <a name="best-practices-for-windows-virtual-desktop"></a>Najlepsze rozwiązania dotyczące pulpitu wirtualnego systemu Windows
 
-Pulpit wirtualny systemu Windows oferuje pełną kontrolę nad rozmiarem, typem i liczbą maszyn wirtualnych używanych przez klientów. Aby uzyskać więcej informacji, zobacz [co to jest wersja zapoznawcza pulpitu wirtualnego systemu Windows?](https://docs.microsoft.com/azure/virtual-desktop/overview).
+Pulpit wirtualny systemu Windows oferuje pełną kontrolę nad rozmiarem, typem i liczbą maszyn wirtualnych używanych przez klientów. Aby uzyskać więcej informacji, zobacz [co to jest wersja zapoznawcza pulpitu wirtualnego systemu Windows?](overview.md).
 
 Aby zapewnić, że środowisko pulpitu wirtualnego systemu Windows jest zgodne z najlepszymi rozwiązaniami:
 
@@ -94,11 +94,11 @@ Aby zapewnić, że środowisko pulpitu wirtualnego systemu Windows jest zgodne z
 
 ## <a name="next-steps"></a>Następne kroki
 
-Skorzystaj z poniższych instrukcji, aby skonfigurować środowisko pulpitu wirtualnego systemu Windows.
+Poniższe przewodniki umożliwiają skonfigurowanie środowiska pulpitu wirtualnego systemu Windows.
 
-- Aby rozpocząć tworzenie rozwiązania do wirtualizacji pulpitu, zobacz [Tworzenie dzierżawy w systemie Windows Virtual Desktop](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory).
-- Aby utworzyć pulę hostów w ramach dzierżawy pulpitu wirtualnego systemu Windows, zobacz [Tworzenie puli hostów za pomocą witryny Azure Marketplace](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-azure-marketplace).
-- Aby skonfigurować w pełni zarządzane udziały plików w chmurze, zobacz [Konfigurowanie udziału Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable).
-- Aby skonfigurować kontenery profilu FSLogix, zobacz [Konfigurowanie udziału profilu użytkownika dla puli hostów](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-user-profile).
-- Aby przypisać użytkowników do puli hostów, zobacz [Zarządzanie grupami aplikacji dla pulpitu wirtualnego systemu Windows](https://docs.microsoft.com/azure/virtual-desktop/manage-app-groups).
-- Aby uzyskać dostęp do zasobów pulpitu wirtualnego systemu Windows z przeglądarki sieci Web, zobacz [nawiązywanie połączenia z pulpitem wirtualnym systemu Windows](https://docs.microsoft.com/azure/virtual-desktop/connect-web).
+- Aby rozpocząć tworzenie rozwiązania do wirtualizacji pulpitu, zobacz [Tworzenie dzierżawy w systemie Windows Virtual Desktop](tenant-setup-azure-active-directory.md).
+- Aby utworzyć pulę hostów w ramach dzierżawy pulpitu wirtualnego systemu Windows, zobacz [Tworzenie puli hostów za pomocą witryny Azure Marketplace](create-host-pools-azure-marketplace.md).
+- Aby skonfigurować w pełni zarządzane udziały plików w chmurze, zobacz [Konfigurowanie udziału Azure Files](/articles/storage/files/storage-files-active-directory-enable.md).
+- Aby skonfigurować kontenery profilu FSLogix, zobacz [Konfigurowanie udziału profilu użytkownika dla puli hostów](create-host-pools-user-profile.md).
+- Aby przypisać użytkowników do puli hostów, zobacz [Zarządzanie grupami aplikacji dla pulpitu wirtualnego systemu Windows](manage-app-groups.md).
+- Aby uzyskać dostęp do zasobów pulpitu wirtualnego systemu Windows z przeglądarki sieci Web, zobacz [nawiązywanie połączenia z pulpitem wirtualnym systemu Windows](connect-web.md).

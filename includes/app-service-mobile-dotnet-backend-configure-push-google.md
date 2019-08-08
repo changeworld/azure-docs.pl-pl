@@ -4,19 +4,19 @@ ms.author: crdun
 ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
-ms.openlocfilehash: d1dcd7895025ea608e5f6c4db5e0967817934f2a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3c6147cc24f285fc32dce145e594f743c9633c20
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183744"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68857459"
 ---
-Procedura, który jest zgodny z typem projektu zaplecza&mdash;albo [zaplecze .NET](#dotnet) lub [zaplecza Node.js](#nodejs).
+Użyj procedury zgodnej z projektem&mdash;zaplecza lub zaplecza środowiska [Node. js](#nodejs) [platformy .NET](#dotnet) .
 
 ### <a name="dotnet"></a>Projekt zaplecza .NET
 
-1. W programie Visual Studio, kliknij prawym przyciskiem myszy projekt serwera, a następnie kliknij przycisk **Zarządzaj pakietami NuGet**. Wyszukaj `Microsoft.Azure.NotificationHubs`, a następnie kliknij przycisk **zainstalować**. Spowoduje to zainstalowanie biblioteki klienta usługi Notification Hubs.
-2. W folderze kontrolery Otwórz TodoItemController.cs i dodaj następującą `using` instrukcji:
+1. W programie Visual Studio kliknij prawym przyciskiem myszy projekt serwera, a następnie kliknij pozycję **Zarządzaj pakietami NuGet**. Wyszukaj, a następnie kliknij przycisk **Instaluj.** `Microsoft.Azure.NotificationHubs` Spowoduje to zainstalowanie biblioteki klienta Notification Hubs.
+2. W folderze controllers Otwórz TodoItemController.cs i Dodaj następujące `using` instrukcje:
 
     ```csharp
     using Microsoft.Azure.Mobile.Server.Config;
@@ -65,12 +65,12 @@ Procedura, który jest zgodny z typem projektu zaplecza&mdash;albo [zaplecze .NE
     }
     ```
 
-4. Ponownie opublikować projekt serwera.
+4. Opublikuj ponownie projekt serwera.
 
-### <a name="nodejs"></a>Projekt zaplecza node.js
+### <a name="nodejs"></a>Projekt zaplecza Node. js
 
-1. Jeśli użytkownik jeszcze tego nie zrobiono, [pobieranie projektu Szybki Start](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart), lub użyj innego [edytora online w witrynie Azure portal](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).
-2. Zastąp istniejący kod w pliku todoitem.js następujących czynności:
+1. Skonfiguruj projekt zaplecza.
+2. Zastąp istniejący kod w pliku TodoItem. js następującym:
 
     ```javascript
     var azureMobileApps = require('azure-mobile-apps'),
@@ -117,6 +117,6 @@ Procedura, który jest zgodny z typem projektu zaplecza&mdash;albo [zaplecze .NE
     module.exports = table;
     ```
 
-    Spowoduje to wysłanie powiadomienia usługi GCM, zawierający item.text, gdy znajduje się nowy element zadania.
+    Spowoduje to wysłanie powiadomienia GCM zawierającego element. Text po wstawieniu nowego elementu do wykonania.
 
-3. Podczas edytowania pliku na komputerze lokalnym, należy ponownie opublikować projekt serwera.
+3. Podczas edytowania pliku na komputerze lokalnym należy ponownie opublikować projekt serwera.

@@ -1,6 +1,6 @@
 ---
-title: Obrazy systemu Red Hat Enterprise Linux na platformie Azure | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat obrazów Red Hat Enterprise Linux na platformie Microsoft Azure
+title: Red Hat Enterprise Linux obrazów na platformie Azure | Microsoft Docs
+description: Dowiedz się więcej na temat Red Hat Enterprise Linux obrazów w Microsoft Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: BorisB2015
@@ -13,145 +13,151 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 6/6/2019
 ms.author: borisb
-ms.openlocfilehash: f7ae82b0376489e21b35e4e94dce32805bea69c6
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 7d34e480dd3cf90f1948e83ea1d18c04f1dcdce2
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708380"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854435"
 ---
-# <a name="red-hat-enterprise-linux-images-in-azure"></a>Obrazy systemu Red Hat Enterprise Linux na platformie Azure
-W tym artykule opisano dostępne obrazy Red Hat Enterprise Linux (RHEL) w witrynie Azure Marketplace oraz zasady dotyczące nazewnictwa i przechowywania.
+# <a name="red-hat-enterprise-linux-images-in-azure"></a>Red Hat Enterprise Linux obrazów na platformie Azure
+W tym artykule opisano dostępne obrazy Red Hat Enterprise Linux (RHEL) w witrynie Azure Marketplace oraz zasady dotyczące ich nazewnictwa i przechowywania.
 
-Można znaleźć informacji na temat zasad wsparcia firmy Red Hat dla wszystkich wersji systemu RHEL na [Red Hat Enterprise Linux cyklu](https://access.redhat.com/support/policy/updates/errata) strony.
+Informacje o zasadach obsługi systemu Red Hat dla wszystkich wersji programu RHEL można znaleźć na stronie [cykl życia Red Hat Enterprise Linux](https://access.redhat.com/support/policy/updates/errata) .
 
 >[!Important]
-> Obrazy systemu RHEL, obecnie dostępna w witrynie Azure marketplace obsługuje Bring-Your-właścicielem-subskrypcji (BYOS) lub płatność za rzeczywiste użycie (PAYG) Modele licencjonowania. [Korzyści z używania hybrydowej platformy Azure](../windows/hybrid-use-benefit-licensing.md) i dynamicznego przełączania się między BYOS i PAYG nie jest obsługiwana. Przełączanie trybu licencjonowania wymaga ponownego wdrożenia maszyny Wirtualnej z odpowiadających im obrazów.
+> Obrazy RHEL dostępne obecnie w portalu Azure Marketplace obsługują modele licencjonowania "Przenieś własne subskrypcje" (BYOS) lub "płatność zgodnie z rzeczywistym użyciem". [Korzyści z używania hybrydowej platformy Azure](../windows/hybrid-use-benefit-licensing.md) i przełączanie dynamiczne między BYOS i PAYG nie są obsługiwane. Przełączenie trybu licencjonowania wymaga ponownego wdrożenia maszyny wirtualnej z odpowiedniego obrazu.
 
 >[!Note]
-> Na dowolnym problemem dotyczącym programu obrazów systemu RHEL w galerii witryny Azure marketplace Zgłoś bilet pomocy technicznej firmy Microsoft.
+> Wszelkie problemy związane z obrazami RHEL w galerii portalu Azure Marketplace zapoznaj się z pomocą techniczną firmy Microsoft.
 
-## <a name="images-available-in-the-ui"></a>Obrazów dostępnych w interfejsie użytkownika
-Podczas wyszukiwania "Red Hat" w witrynie Marketplace lub tworzenie zasobu w witrynie Azure portal interfejsu użytkownika, zobaczysz podzbioru dostępnych obrazów systemu RHEL i powiązanych produktów firmy Red Hat. Można zawsze uzyskać pełen zestaw dostępnych obrazów maszyn wirtualnych przy użyciu interfejsu wiersza polecenia/programu PowerShell/interfejsu API usługi Azure.
+## <a name="images-available-in-the-ui"></a>Obrazy dostępne w interfejsie użytkownika
+Podczas wyszukiwania "Red Hat" w portalu Marketplace lub podczas tworzenia zasobu w Azure Portal interfejsie użytkownika zobaczysz podzestaw dostępnych obrazów RHEL oraz powiązane produkty Red Hat. Pełny zestaw dostępnych obrazów maszyn wirtualnych można zawsze uzyskać przy użyciu interfejsu wiersza polecenia platformy Azure/programu PowerShell/interfejsu API.
 
-Aby wyświetlić pełny zestaw dostępnych obrazów Red Hat na platformie Azure, uruchom następujące polecenie
+Aby wyświetlić pełny zestaw dostępnych obrazów Red Hat na platformie Azure, uruchom następujące polecenie:
 
 ```azurecli-interactive
 az vm image list --publisher RedHat --all
 ```
 
-## <a name="naming-convention"></a>Konwencje nazewnictwa
-Obrazy maszyn wirtualnych na platformie Azure są zorganizowane według wydawcy, oferty, jednostki SKU i wersji. Kombinacja wydawcy: oferta: SKU:Version jest styl obrazowy URN i unikatowo identyfikuje obraz, który ma być używany.
+## <a name="naming-convention"></a>Konwencja nazewnictwa
+Obrazy maszyn wirtualnych na platformie Azure są zorganizowane według wydawcy, oferty, jednostki SKU i wersji. Kombinacja wydawcy: Oferta: SKU: wersja to obraz URN i unikatowa identyfikacja obrazu do użycia.
 
-Na przykład `RedHat:RHEL:7-RAW:7.6.2018103108` odwołuje się do RHEL 7.6 pierwotne partycjonowane obrazu utworzonego 31 października 2018 r.
+Na przykład `RedHat:RHEL:7-RAW:7.6.2018103108` odwołuje się do obrazu RHEL 7,6 RAW, utworzonego w dniu 31 października 2018.
 
-Poniżej przedstawiono przykład sposobu tworzenia maszyny Wirtualnej 7.6 systemu RHEL.
+Poniżej przedstawiono przykład sposobu tworzenia maszyny wirtualnej z systemem RHEL 7,6.
 ```azurecli-interactive
 az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-RAW:7.6.2018103108 --no-wait
 ```
 
-### <a name="the-latest-moniker"></a>Monikera "najnowsza".
-Interfejs API REST platformy Azure umożliwia użycie krótkiej nazwy "latest" dla wersji zamiast określonych wersji. Za pomocą "latest" przydzieli najnowsza wersja obrazu dla danego wydawcy, oferty i jednostki SKU.
+### <a name="the-latest-moniker"></a>Krótka moniker
+Interfejs API REST platformy Azure umożliwia korzystanie z monikera "Najnowsza" w wersji zamiast określonej wersji. Użycie opcji "Najnowsza" spowoduje udostępnienie najnowszego dostępnego obrazu dla danego wydawcy, oferty i jednostki SKU.
 
-Na przykład `RedHat:RHEL:7-RAW:latest` odwołuje się do najnowszego RHEL 7 rodziny pierwotne partycjonowane obrazu dostępne.
+Na przykład `RedHat:RHEL:7-RAW:latest` odwołuje się do najnowszego obrazu z niesformatowaną partycją RHEL 7.
 
 ```azurecli-interactive
 az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-RAW:latest --no-wait
 ```
 
 >[!NOTE]
-> Ogólnie rzecz biorąc, porównanie wersji do określenia najnowszej następuje [CompareTo — metoda](https://msdn.microsoft.com/library/a5ts8tb6.aspx).
+> Ogólnie porównanie wersji do określenia najnowszych jest zgodne z regułami [metody CompareTo](https://msdn.microsoft.com/library/a5ts8tb6.aspx).
 
-### <a name="current-naming-convention"></a>Bieżący konwencji nazewnictwa
-Wszystkie obecnie opublikowanych obrazów systemu RHEL korzystania z modelu płatność za rzeczywiste użycie i są połączone z [Red Hat Update infrastruktury (RHUI) na platformie Azure](https://aka.ms/rhui-update). Nowa Konwencja nazewnictwa zostało zaadoptowane obrazów rodziny RHEL 7, w których schemat jest partycjonowanie dysku (pierwotne LVM) jest określony w ramach jednostki SKU zamiast wersji. Wersja obrazu systemu RHEL będzie zawierać albo pierwotne 7 lub 7 LVM. W tej chwili nie został zmodyfikowany RHEL 6 rodziny nazewnictwa.
+### <a name="current-naming-convention"></a>Bieżąca Konwencja nazewnictwa
+Wszystkie aktualnie opublikowane obrazy RHEL używają modelu płatność zgodnie z rzeczywistym użyciem i są połączone z [usługą Red Hat Update Infrastructure (RHUI) na platformie Azure](https://aka.ms/rhui-update). Przyjęto nową konwencję nazewnictwa dla obrazów rodziny RHEL 7, w których schemat partycjonowania dysku (RAW, LVM) jest określony w jednostce SKU zamiast wersji. Wersja obrazu RHEL będzie zawierać 7-RAW lub 7-LVM. W tej chwili nie zmieniono nazewnictwa rodziny RHEL 6.
 
-Będzie 2 typy obrazu systemu RHEL 7 jednostek SKU w tę konwencję nazewnictwa: Jednostki SKU, w których przedstawiono wersja pomocnicza i jednostek SKU, które nie. Chcąc użycia 7-RAW lub 7 LVM jednostki SKU, można określić wersję pomocniczą systemu RHEL, które mają zostać wdrożone w wersji. Jeśli wybierzesz opcję "najnowszej" wersji, będą aprowizowane z najnowszą wersją pomocniczą systemu RHEL.
-
->[!NOTE]
-> W RHEL for SAP zestawu obrazów wersja oprogramowania RHEL pozostaje stały. W efekcie ich Konwencja nazewnictwa obejmuje określoną wersję w ramach jednostki SKU.
+W tej konwencji nazewnictwa będą dostępne 2 typy jednostek SKU obrazów RHEL 7: Jednostki SKU, które wyświetlają wersję pomocniczą i jednostki SKU, które nie są. Jeśli chcesz użyć jednostki SKU 7-RAW lub 7-LVM, możesz określić wersję pomocniczą RHEL, która ma zostać wdrożona w wersji. W przypadku wybrania "najnowszej wersji" zostanie zainicjowana Najnowsza wersja pomocnicza programu RHEL.
 
 >[!NOTE]
-> Zestaw obrazów systemu RHEL 6 nie zostało przeniesione do nowej konwencji nazewnictwa.
-
-## <a name="extended-update-support-eus"></a>Aktualizacja rozszerzonej pomocy technicznej (EUS)
-Jak 2019 kwietnia obrazów systemu RHEL są dostępne dołączonych do repozytoriów obsługę rozszerzonych aktualizacji (EUS) domyślnie. Szczegółowe informacje na temat EUS systemu RHEL są dostępne w [dokumentacji firmy Red Hat](https://access.redhat.com/articles/rhel-eus).
-
-Dostępne są instrukcje jak przełączyć maszyny Wirtualnej EUS i więcej szczegółów na temat daty zakończenia eksploatacji pomocy technicznej EUS [tutaj](https://aka.ms/rhui-update#rhel-eus-and-version-locking-rhel-vms).
+> W RHEL dla zestawu obrazów oprogramowania SAP wersja RHEL jest stała. W związku z tym ich Konwencja nazewnictwa obejmuje konkretną wersję w jednostce SKU.
 
 >[!NOTE]
-> EUS nie jest obsługiwana na RHEL dodatki. Oznacza to, że jeśli instalujesz pakiet, który znajduje się zwykle z kanału dodatki RHEL, nie będzie w tym celu znajduje się na EUS. Red Hat dodatki cykl życia została szczegółowo opisana [tutaj](https://access.redhat.com/support/policy/updates/extras/).
+> Zestaw obrazów RHEL 6 nie został przeniesiony do nowej konwencji nazewnictwa.
 
-### <a name="for-customers-that-want-to-use-eus-images"></a>Dla klientów, które mają być używane EUS obrazów:
-Klienci, których chcesz używać obrazów, które są dołączone do repozytoriów EUS powinni używać obrazu systemu RHEL, który zawiera numer wersji pomocniczej RHEL w ramach jednostki SKU. Te obrazy będą pierwotnych na partycje (czyli nie LVM).
+## <a name="extended-update-support-eus"></a>Rozszerzona obsługa aktualizacji (EUS)
+Od kwietnia 2019 obrazy RHEL są dostępne, które są domyślnie dołączone do repozytoriów pomocy technicznej aktualizacji (EUS). Więcej szczegółów na temat RHEL EUS są dostępne w [dokumentacji Red Hat](https://access.redhat.com/articles/rhel-eus).
 
-Na przykład może zostać wyświetlony następujący 2 RHEL 7.4 dostępne obrazy:
+Instrukcje dotyczące przełączenia maszyny wirtualnej do EUS i więcej szczegółów na temat EUS z punktu końcowego pomocy technicznej są dostępne [tutaj](https://aka.ms/rhui-update#rhel-eus-and-version-locking-rhel-vms).
+
+>[!NOTE]
+> EUS nie są obsługiwane w dodatkach RHEL. Oznacza to, że w przypadku instalowania pakietu, który jest zazwyczaj dostępny w kanale RHEL Extras, nie będzie można wykonać tego działania w EUS. Cykl życia produktu Red Hat jest szczegółowo opisany w [tym miejscu](https://access.redhat.com/support/policy/updates/extras/).
+
+### <a name="for-customers-that-want-to-use-eus-images"></a>Klienci, którzy chcą korzystać z obrazów EUS:
+Klienci, którzy chcą korzystać z obrazów dołączonych do repozytoriów EUS, powinni używać obrazu RHEL zawierającego numer pomocniczej RHEL w jednostce SKU. Te obrazy staną się niesformatowane na partycje (tj. nie LVM).
+
+Na przykład mogą zostać wyświetlone następujące 2 RHEL 7,4 obrazów:
 ```bash
 RedHat:RHEL:7-RAW:7.4.2018010506
 RedHat:RHEL:7.4:7.4.2019041718
 ```
-W tym przypadku `RedHat:RHEL:7.4:7.4.2019041718` jest dołączana do repozytoriów EUS domyślnie i `RedHat:RHEL:7-RAW:7.4.2018010506` zostanie dołączona do innego niż EUS repozytoriów domyślnie.
+W tym przypadku `RedHat:RHEL:7.4:7.4.2019041718` zostanie on domyślnie dołączony do repozytoriów EUS i `RedHat:RHEL:7-RAW:7.4.2018010506` zostanie domyślnie dołączony do repozytoriów innych niż EUS.
 
-### <a name="for-customers-that-dont-want-to-use-eus-images"></a>Dla klientów, których nie chcesz, aby używać obrazów EUS:
-Jeśli nie chcesz używać obrazu, który jest podłączony do EUS domyślnie, można wdrożyć przy użyciu obrazu, który nie zawiera podrzędny numer wersji w ramach jednostki SKU.
+### <a name="for-customers-that-dont-want-to-use-eus-images"></a>Dla klientów, którzy nie chcą korzystać z obrazów EUS:
+Jeśli nie chcesz używać obrazu, który jest domyślnie połączony z EUS, wdróż go przy użyciu obrazu, który nie zawiera pomocniczego numeru wersji w jednostce SKU.
 
-#### <a name="rhel-images-with-eus"></a>Obrazy systemu RHEL EUS
-Poniższa tabela będą naliczane dla obrazów systemu RHEL, które zawierają wersję pomocniczą w ramach jednostki SKU.
+#### <a name="rhel-images-with-eus"></a>Obrazy RHEL z EUS
+Poniższa tabela ma zastosowanie do obrazów RHEL zawierających wersję pomocniczą w jednostce SKU.
 
 >[!NOTE]
-> W czasie pisania tylko RHEL 7.4 i nowszej wersje pomocnicze mają EUS pomocy technicznej. EUS nie jest już obsługiwana systemu RHEL < = 7.3.
+> W czasie pisania tylko RHEL 7,4 i nowsze wersje pomocnicze mają EUS pomoc techniczną. EUS nie jest już obsługiwana dla RHEL < = 7,3.
 
-Wersja pomocnicza |Przykład EUS obrazu              |Stan EUS                                                   |
+Wersja pomocnicza |Przykład obrazu EUS              |Stan EUS                                                   |
 :-------------|:------------------------------|:------------------------------------------------------------|
-RHEL 7.4      |RedHat:RHEL:7.4:7.4.2019041718 | Obrazów opublikowanych 2019 kwietnia i później będzie EUS domyślnie|
-RHEL W WERSJI 7.5      |RedHat:RHEL:7.5:7.5.2019060305 | Obrazów opublikowanych 2019 czerwca i później będzie EUS domyślnie |
-RHEL 7.6      |RedHat:RHEL:7.6:7.6.2019052206 | Obrazów opublikowanych maja 2019 i później będzie EUS domyślnie  |
-RHEL 8.0      |ND                            | Obecnie nie EUS obrazów dostępnych                 |
+RHEL 7,4      |RedHat:RHEL:7.4:7.4.2019041718 | Obrazy opublikowane w kwietniu 2019 i nowszych będą domyślnie EUS|
+RHEL W WERSJI 7.5      |RedHat:RHEL:7.5:7.5.2019060305 | Obrazy opublikowane czerwiec 2019 i nowsze będą domyślnie EUS |
+RHEL 7,6      |RedHat:RHEL:7.6:7.6.2019052206 | Obrazy opublikowane z maja 2019 i nowsze będą domyślnie EUS  |
+RHEL 8,0      |ND                            | Obecnie brak dostępnych obrazów EUS                 |
 
 
-## <a name="list-of-rhel-images-available"></a>Lista dostępnych obrazów systemu RHEL
-Jednostki SKU są aktualnie dostępne do użytku ogólnego są następujące oferty:
+## <a name="list-of-rhel-images-available"></a>Lista dostępnych obrazów RHEL
+Następujące oferty są obecnie dostępne do użytku ogólnego:
 
-Oferta| SKU | Partycjonowanie | Inicjowanie obsługi | Uwagi
+Oferta| SKU | Partycjonowanie | Aprowizowanie | Uwagi
 :----|:----|:-------------|:-------------|:-----
-RHEL          | NIEPRZETWORZONE 7    | RAW    | Agent systemu Linux | Rodzina RHEL 7 obrazów. <br> Nie dołączony do repozytoriów EUS domyślnie.
-|             | 7-LVM    | LVM    | Agent systemu Linux | Rodzina RHEL 7 obrazów. <br> Nie dołączony do repozytoriów EUS domyślnie.
-|             | 7-RAW-CI | NIEPRZETWORZONE CIĄGŁEJ INTEGRACJI | Cloud-init  | Rodzina RHEL 7 obrazów. <br> Nie dołączony do repozytoriów EUS domyślnie.
-|             | 6.7      | RAW    | Agent systemu Linux | Obrazy systemu RHEL 6.7 starą konwencję nazewnictwa
-|             | 6.8      | RAW    | Agent systemu Linux | Takie same jak powyżej dla RHEL 6.8
-|             | 6.9      | RAW    | Agent systemu Linux | Takie same jak powyżej dla RHEL 6,9
-|             | 6.10     | RAW    | Agent systemu Linux | Takie same jak powyżej dla RHEL 6.10
-|             | 7.2      | RAW    | Agent systemu Linux | Takie same jak powyżej dla systemu RHEL 7.2
-|             | 7.3      | RAW    | Agent systemu Linux | Takie same jak powyżej dla RHEL 7.3
-|             | 7.4      | RAW    | Agent systemu Linux | Wartość taka sama jak powyżej dla RHEL 7.4. <br> Dołączone do repozytoriów EUS domyślnie począwszy od kwietnia 2019 r
-|             | 7.5      | RAW    | Agent systemu Linux | Wartość taka sama jak powyżej dla RHEL w wersji 7.5. <br> Dołączone do repozytoriów EUS domyślnie począwszy od czerwca 2019 r
-|             | 7.6      | RAW    | Agent systemu Linux | Wartość taka sama jak powyżej dla 7.6 systemu RHEL. <br> Dołączone do repozytoriów EUS domyślnie począwszy od maja 2019 r
-RHEL-SAP      | 7.4      | LVM    | Agent systemu Linux | 7\.4 systemu RHEL for SAP HANA i aplikacje biznesowe
-|             | 7.5      | LVM    | Agent systemu Linux | RHEL w wersji 7.5 dla oprogramowania SAP HANA i aplikacje biznesowe
-RHEL-SAP-HANA | 6.7      | RAW    | Agent systemu Linux | RHEL 6.7 platformy SAP Hana
-|             | 7.2      | LVM    | Agent systemu Linux | 7\.2 RHEL for SAP HANA
-|             | 7.3      | LVM    | Agent systemu Linux | 7\.3 RHEL for SAP HANA
-RHEL-SAP-APPS | 6.8      | RAW    | Agent systemu Linux | 6\.8 systemu RHEL for SAP Business Applications
-|             | 7.3      | LVM    | Agent systemu Linux | 7\.3 systemu RHEL for SAP Business Applications
+RHEL          | 7 — NIEPRZETWORZONY    | RAW    | Agent systemu Linux | Rodzina obrazów RHEL 7. <br> Nie dołączono do domyślnie repozytoriów EUS.
+|             | 7 — LVM    | LVM    | Agent systemu Linux | Rodzina obrazów RHEL 7. <br> Nie dołączono do domyślnie repozytoriów EUS.
+|             | 7-RAW-CI | NIEPRZETWORZONY ELEMENT CI | Cloud-init  | Rodzina obrazów RHEL 7. <br> Nie dołączono do domyślnie repozytoriów EUS.
+|             | 6.7      | RAW    | Agent systemu Linux | RHEL 6,7, stare konwencje nazewnictwa
+|             | 6.8      | RAW    | Agent systemu Linux | Takie samo jak powyżej dla RHEL 6,8
+|             | 6.9      | RAW    | Agent systemu Linux | Takie samo jak powyżej dla RHEL 6,9
+|             | 6.10     | RAW    | Agent systemu Linux | Takie samo jak powyżej dla RHEL 6,10
+|             | 7.2      | RAW    | Agent systemu Linux | Takie samo jak powyżej dla RHEL 7,2
+|             | 7.3      | RAW    | Agent systemu Linux | Takie samo jak powyżej dla RHEL 7,3
+|             | 7.4      | RAW    | Agent systemu Linux | Takie samo jak powyżej dla RHEL 7,4. <br> Dołączono do EUS repozytoriów domyślnie od kwietnia 2019
+|             | 7.5      | RAW    | Agent systemu Linux | Takie samo jak powyżej dla RHEL 7,5. <br> Dołączono do EUS repozytoriów domyślnie od czerwca 2019
+|             | 7,6      | RAW    | Agent systemu Linux | Takie samo jak powyżej dla RHEL 7,6. <br> Dołączono do EUS repozytoriów domyślnie z maja 2019
+RHEL-SAP      | 7.4      | LVM    | Agent systemu Linux | RHEL 7,4 for SAP HANA i aplikacje biznesowe
+|             | 7.5      | LVM    | Agent systemu Linux | RHEL 7,5 for SAP HANA i aplikacje biznesowe
+RHEL-SAP-HANA | 6.7      | RAW    | Agent systemu Linux | RHEL 6,7 dla SAP HANA
+|             | 7.2      | LVM    | Agent systemu Linux | RHEL 7,2 dla SAP HANA
+|             | 7.3      | LVM    | Agent systemu Linux | RHEL 7,3 dla SAP HANA
+RHEL — SAP-APPS | 6.8      | RAW    | Agent systemu Linux | RHEL 6,8 dla oprogramowania SAP Business Applications
+|             | 7.3      | LVM    | Agent systemu Linux | RHEL 7,3 dla oprogramowania SAP Business Applications
+RHEL – HA       | 7.4      | RAW    | Agent systemu Linux | RHEL 7,4 z dodatkiem HA
+|             | 7.5      | RAW    | Agent systemu Linux | RHEL 7,5 z dodatkiem HA
+|             | 7,6      | RAW    | Agent systemu Linux | RHEL 7,6 z dodatkiem HA
+RHEL — SAP-HA   | 7.4      | RAW    | Agent systemu Linux | RHEL 7,4 dla oprogramowania SAP z dodatkiem HA
+|             | 7.5      | RAW    | Agent systemu Linux | RHEL 7,5 dla oprogramowania SAP z dodatkiem HA
+|             | 7,6      | RAW    | Agent systemu Linux | RHEL 7,6 dla oprogramowania SAP z dodatkiem HA
 
 ### <a name="old-naming-convention"></a>Stara Konwencja nazewnictwa
-Rodzina RHEL 7, obrazów i obrazów systemów z rodziny RHEL 6 określonych wersji są używane w ich jednostki SKU, do czasu zmiany konwencji nazewnictwa wyjaśniono powyżej.
+Rodzina obrazów RHEL 7 i rodzina RHEL 6 obrazów używa określonych wersji w swoich jednostkach SKU do momentu wprowadzenia zmiany konwencji nazewnictwa opisanej powyżej.
 
-Liczbowe jednostki SKU znajdzie się na liście pełnego obrazu. Microsoft i Red Hat spowoduje utworzenie nowych jednostek SKU numeryczne, gdy nowa wersja pomocnicza powróci do.
+Liczby jednostek SKU znajdziesz na liście pełny obraz. Firmy Microsoft i Red Hat będą tworzyć nowe, liczbowe jednostki SKU, gdy zostanie wydana nowa wersja pomocnicza.
 
-### <a name="other-available-offers-and-skus"></a>Innych dostępnych ofert oraz jednostek SKU
-Pełną listę dostępnych ofert oraz jednostek SKU może zawierać dodatkowe obrazy poza wymienione w powyższej tabeli, na przykład `RedHat:rhel-ocp-marketplace:rhel74:7.4.1`. Te oferty mogą być używane do obsługi rozwiązaniami z witryny marketplace określone lub mogą być publikowane podglądy i testowania. Może zostać zmienione lub usunięte w dowolnym momencie bez ostrzeżenia. Nie należy ich używać, chyba że ich obecność zostały publicznie opisane przez firmę Microsoft lub Red Hat.
+### <a name="other-available-offers-and-skus"></a>Inne dostępne oferty i jednostki SKU
+Pełna lista dostępnych ofert i jednostek SKU może zawierać dodatkowe obrazy poza wymienionymi w powyższej tabeli, na przykład `RedHat:rhel-ocp-marketplace:rhel74:7.4.1`. Oferty te mogą służyć do świadczenia pomocy technicznej dotyczącej określonych rozwiązań w witrynie Marketplace lub mogą być publikowane na potrzeby wersji zapoznawczych i testowych. Mogą zostać zmienione lub usunięte w dowolnym momencie bez ostrzeżenia. Nie należy ich używać, chyba że ich obecność została publicznie udokumentowana przez firmę Microsoft lub Red Hat.
 
-## <a name="publishing-policy"></a>Publikowanie zasad
-Firma Microsoft i Red Hat aktualizacji obrazów, który został wydawane są nowe wersje pomocnicze, zgodnie z potrzebami w celu rozwiązania określonych CVEs lub konfiguracji okazjonalne zmian/aktualizacji. Staramy się aby jak najszybciej — w ciągu trzech dni roboczych od wersji lub dostępne rozwiązanie CVE zaktualizowanych obrazów.
+## <a name="publishing-policy"></a>Zasady publikowania
+Obrazy aktualizacji firmy Microsoft i Red Hat jako nowe wersje pomocnicze są udostępniane, zgodnie z wymaganiami dotyczącymi konkretnych CVEs lub okazjonalnych zmian konfiguracji/aktualizacji. Staramy się dostarczyć zaktualizowane obrazy najszybciej, jak to możliwe — w ciągu trzech dni roboczych po wydaniu lub udostępnieniu poprawki CVE.
 
-Aktualizujemy tylko bieżącej wersji pomocniczej w rodzinie danego obrazu. W wersji nowszej wersji pomocniczej Trwa zatrzymywanie aktualizowanie starszych wersji pomocniczej. Na przykład wraz z wydaniem systemu RHEL 7.6 obrazów systemu RHEL w wersji 7.5 już przechodzenia do zaktualizowania.
+Aktualizujemy tylko bieżącą wersję pomocniczą w danej rodzinie obrazu. W przypadku wersji nowszej wersji pomocniczej firma Microsoft zaprzestanie aktualizowania starszej wersji pomocniczej. Na przykład w przypadku wersji RHEL 7,6 RHEL 7,5 obrazy nie będą już aktualizowane.
 
 >[!NOTE]
-> Aktywnych maszyn wirtualnych platformy Azure z systemem RHEL płatność za rzeczywiste użycie obrazów są podłączone do usługi RHUI platformy Azure i może odbierać aktualizacje i poprawki, zaraz po ich wydanymi przez firmy Red Hat i replikowane do usługi RHUI platformy Azure (zwykle w mniej niż 24 godziny po oficjalnym wydaniem przez firmy Red Hat) . Te maszyny wirtualne nie wymagają nowych obrazów opublikowanych w celu uzyskania aktualizacji i klienci mają pełną kontrolę nad tym, kiedy można zainicjować aktualizację.
+> Aktywne maszyny wirtualne platformy Azure, które są udostępniane z obrazów z opcją płatność zgodnie z rzeczywistym użyciem, są połączone z usługą Azure RHUI i mogą otrzymywać aktualizacje i poprawki natychmiast po ich wydaniu przez Red Hat i zreplikowane na platformie Azure RHUI (zazwyczaj w ciągu mniej niż 24 godzin od oficjalnego wydania przez Red Hat) . Te maszyny wirtualne nie wymagają nowego opublikowanego obrazu do pobrania aktualizacji, a klienci mają pełną kontrolę nad tym, kiedy należy inicjować aktualizację.
 
-## <a name="image-retention-policy"></a>Zasady przechowywania obrazu
-Nasze bieżące zasady jest przechowywanie wszystkich poprzednio opublikowanych obrazów. Firma Microsoft zastrzega sobie prawo do usunięcia obrazów, które są znane spowodować problemy wszelkiego rodzaju. Na przykład obrazy z konfiguracjami niepoprawna z powodu kolejnych platformy lub aktualizacje składników mogą zostać usunięte. Obrazy, które mogą zostać usunięte podlegają zasadom bieżącej witryny Marketplace do udostępniania powiadomień o się do 30 dni przed usunięcie obrazu.
+## <a name="image-retention-policy"></a>Zasady przechowywania obrazów
+Nasze bieżące zasady mają na celu zachowanie wszystkich poprzednio opublikowanych obrazów. Firma Microsoft zastrzega sobie prawo do usuwania obrazów, które są znane, aby powodowały problemy jakiegokolwiek rodzaju. Na przykład obrazy z nieprawidłowymi konfiguracjami ze względu na kolejne aktualizacje platformy lub składników mogą zostać usunięte. Obrazy, które mogą zostać usunięte, będą zgodne z bieżącymi zasadami witryny Marketplace w celu dostarczenia powiadomień do 30 dni przed usunięciem obrazu.
 
 ## <a name="next-steps"></a>Następne kroki
-* Dowiedz się więcej o usłudze Azure Red Hat Update Infrastructure [tutaj](https://aka.ms/rhui-update).
-* Można znaleźć informacji na temat zasad wsparcia firmy Red Hat dla wszystkich wersji systemu RHEL na [Red Hat Enterprise Linux cyklu](https://access.redhat.com/support/policy/updates/errata) strony.
+* Więcej informacji na temat infrastruktury aktualizacji Red Hat platformy Azure można znaleźć [tutaj](https://aka.ms/rhui-update).
+* Informacje o zasadach obsługi systemu Red Hat dla wszystkich wersji programu RHEL można znaleźć na stronie [cykl życia Red Hat Enterprise Linux](https://access.redhat.com/support/policy/updates/errata) .

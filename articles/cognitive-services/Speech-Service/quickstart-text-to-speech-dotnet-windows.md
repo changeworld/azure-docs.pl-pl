@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: yinhew
-ms.openlocfilehash: 3c925e0160a4c57f7e43c3463fc1db7098a6e606
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 65db847c5df1a05671e3b1c0ac4541f00506c8fd
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553601"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854696"
 ---
 # <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-net-framework-windows"></a>Szybki start: Wyszukiwać mowę przy użyciu zestawu Speech SDK dla .NET Framework (Windows)
 
@@ -31,7 +31,7 @@ Pobierz najnowsze [przykłady Cognitive Services mowy SDK](https://github.com/Az
 
 Aby ukończyć ten projekt, będą potrzebne następujące elementy:
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 * Klucz subskrypcji dla usługi Mowa. [Uzyskaj bezpłatnie](get-started.md).
 * Dostępny jest głośnik (lub zestaw słuchawkowy).
 
@@ -65,7 +65,7 @@ Aby ukończyć ten projekt, będą potrzebne następujące elementy:
 
     ![Zrzut ekranu przedstawiający dane wyjściowe konsoli po pomyślnym ukończeniu rozpoznawania](media/sdk/qs-tts-csharp-dotnet-windows-console-output.png "Dane wyjściowe konsoli po pomyślnym ukończeniu rozpoznawania")
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Zapoznaj się z przykładami dla języka C# w usłudze GitHub](https://aka.ms/csspeech/samples)

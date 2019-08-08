@@ -9,12 +9,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 05/02/2019
-ms.openlocfilehash: 963e4f7e9db638450a89dd4ae0091019fc58e2a4
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 6f72daa4a601df0e3592910645c2f9b35ab64431
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359434"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845815"
 ---
 # <a name="tutorial-build-a-regression-model-with-automated-machine-learning-and-open-datasets"></a>Samouczek: Tworzenie modelu regresji z automatycznym uczeniem maszynowym i otwartymi zestawami danych
 
@@ -37,7 +37,7 @@ W tym samouczku wymagane są następujące wymagania wstępne.
 
 ### <a name="create-a-workspace"></a>Tworzenie obszaru roboczego
 
-Postępuj zgodnie z [instrukcjami](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace#portal) , aby utworzyć obszar roboczy za pomocą Azure Portal, jeśli jeszcze go nie masz. Po utworzeniu Zanotuj nazwę obszaru roboczego, nazwę grupy zasobów i Identyfikator subskrypcji.
+Postępuj zgodnie z [instrukcjami](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-workspace) , aby utworzyć obszar roboczy za pomocą Azure Portal, jeśli jeszcze go nie masz. Po utworzeniu Zanotuj nazwę obszaru roboczego, nazwę grupy zasobów i Identyfikator subskrypcji.
 
 ### <a name="create-a-python-environment"></a>Tworzenie środowiska języka Python
 
@@ -1942,7 +1942,7 @@ Jeśli nie planujesz korzystać z utworzonych zasobów, usuń je, aby nie nawią
 1. Wybierz pozycję **Usuń grupę zasobów**.
 1. Wpisz nazwę grupy zasobów. Następnie wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Więcej przykładów kodu można znaleźć w [notesach](https://github.com/Azure/OpenDatasetsNotebooks) otwartych zestawów danych platformy Azure.
 * Postępuj zgodnie z instrukcjami, [Aby](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train) uzyskać więcej informacji na temat automatycznego uczenia maszynowego w usłudze Azure Machine Learning.

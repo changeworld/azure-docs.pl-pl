@@ -11,12 +11,12 @@ ms.author: sihhu
 ms.reviewer: trbye
 ms.date: 07/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6692f64dc7e7fa2799f9095af39171a2ddc0e76d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: aacb7cbaf3d5864d39d00bc341615f2a0e4e82f2
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360917"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855915"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Samouczek: Przygotowywanie danych do modelowania regresji
 
@@ -56,7 +56,7 @@ Rozpoczęcie pracy z własnym serwerem notesu opartym na chmurze jest proste. Ze
 
 Wykonaj te kroki, aby utworzyć lokalny serwer notesów Jupyter Notebook na komputerze.  Po wykonaniu kroków uruchom notes **tutorials/regression-part1-data-prep.ipynb**.
 
-1. Wykonaj kroki instalacji opisane w [Azure Machine Learning przewodniku szybki start](setup-create-workspace.md#sdk) w języku Python, aby utworzyć środowisko Miniconda i zainstalować zestaw SDK.  Jeśli chcesz możesz pominąć sekcję **Tworzenie obszaru roboczego**, ale będzie ona wymagana na potrzeby [drugiej części](tutorial-auto-train-models.md) tej serii samouczków.
+1. Wykonaj kroki instalacji w [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 1. `azureml-dataprep` Pakiet jest automatycznie instalowany podczas instalowania zestawu SDK.
 1. Sklonuj [repozytorium GitHub](https://aka.ms/aml-notebooks).
 
@@ -100,10 +100,11 @@ Pobierz dwa różne zestawy danych dotyczących nowojorskich taksówek do obiekt
 
 ```python
 from IPython.display import display
-dataset_root = "https://dprepdata.blob.core.windows.net/demo"
 
-green_path = "/".join([dataset_root, "green-small/*"])
-yellow_path = "/".join([dataset_root, "yellow-small/*"])
+green_path = "https://dprepdata.blob.core.windows.net/demo/green-small/*"])
+yellow_path = "https://dprepdata.blob.core.windows.net/demo/yellow-small/*"])
+
+# (optional) Download and view a subset of the data: https://dprepdata.blob.core.windows.net/demo/green-small/green_tripdata_2013-08.csv
 
 green_df_raw = dprep.read_csv(
     path=green_path, header=dprep.PromoteHeadersMode.GROUPED)
@@ -113,9 +114,6 @@ yellow_df_raw = dprep.auto_read_file(path=yellow_path)
 display(green_df_raw.head(5))
 display(yellow_df_raw.head(5))
 ```
-
-> [!Note]
-> Adres URL w tym samym przykładzie nie jest kompletnym adresem URL. Zamiast tego odwołuje się do folderu demonstracyjnego w obiekcie blob. Pełny adres URL do niektórych danych to https://dprepdata.blob.core.windows.net/demo/green-small/green_tripdata_2013-08.csv
 
 Obiekt `Dataflow` jest podobny do ramki danych i zawiera serię ocenianych z opóźnieniem, niemożliwych do zmodyfikowania operacji na danych. Operacje można dodawać, wywołując różne dostępne metody przekształcania i filtrowania. Wynik dodawania operacji do obiektu `Dataflow` to zawsze nowy obiekt `Dataflow`.
 
@@ -1106,7 +1104,7 @@ Aby móc kontynuować pracę z częścią drugą samouczka, w bieżącym katalog
 
 Jeśli nie planujesz pracy z drugą częścią, usuń plik **dflows.dprep** z bieżącego katalogu. Usuń ten plik niezależnie od tego, czy uruchamiasz wykonywanie lokalnie, czy w usłudze [Azure Notebooks](https://notebooks.azure.com/).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W części pierwszej części tego samouczka były wykonywane następujące czynności:
 

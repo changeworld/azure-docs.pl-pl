@@ -1,7 +1,6 @@
 ---
 title: 'Samouczek: Uzyskiwanie dostępu do danych usługi Azure Data Lake Storage Gen2 za pomocą usługi Azure Databricks i platformy Spark | Microsoft Docs'
 description: W tym samouczku pokazano, jak uruchamiać zapytania Spark w klastrze Azure Databricks, aby uzyskać dostęp do danych na koncie magazynu Azure Data Lake Storage Gen2.
-services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -9,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: a745ade33e5d9c493fed187bbd9a4309e1a2d0ff
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 3a283f6cbcf4dc345a8c55192507c461f33244d6
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360107"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855442"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>Samouczek: Uzyskiwanie dostępu do danych usługi Access Data Lake Storage Gen2 za pomocą usługi Azure DataBricks i platformy Spark
 
@@ -128,7 +127,7 @@ Korzystanie z narzędzia AzCopy do kopiowania danych z pliku *csv* na konto usł
    azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<file-system-name>/folder1/On_Time.csv
    ```
 
-   * Zastąp wartość  symboluzastępczegościeżkądopliku`<csv-folder-path>` CSV.
+   * Zastąp wartość symboluzastępczegościeżkądopliku`<csv-folder-path>` CSV.
 
    * Zastąp wartość symbolu zastępczego `<storage-account-name>` nazwą konta magazynu.
 
@@ -225,7 +224,7 @@ Następnie możesz rozpocząć wykonywanie zapytań dotyczących danych przekaza
 
 Aby utworzyć ramki danych dla źródeł danych, uruchom następujący skrypt:
 
-* Zastąp wartość  symboluzastępczegościeżkądopliku`<csv-folder-path>` CSV.
+* Zastąp wartość symboluzastępczegościeżkądopliku`<csv-folder-path>` CSV.
 
 ```python
 # Copy this into a Cmd cell in your notebook.
@@ -290,7 +289,7 @@ print('Airlines that fly to/from Texas: ', out1.show(100, False))
 
 Gdy grupa zasobów i wszystkie pokrewne zasoby nie będą już potrzebne, usuń je. W tym celu zaznacz grupę zasobów konta magazynu i wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"] 
 > [Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu oprogramowania Apache Hive w usłudze Azure HDInsight](data-lake-storage-tutorial-extract-transform-load-hive.md)

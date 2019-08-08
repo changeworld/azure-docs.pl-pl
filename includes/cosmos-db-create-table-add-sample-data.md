@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 4341d06f09c60933bfc0512f54e024b35a19d8dd
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.openlocfilehash: 1ebd645b740ab0f454d006d003518fbb8cb5e9e7
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67183773"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854674"
 ---
 Teraz możesz dodać dane do swojej nowej tabeli za pomocą Eksploratora danych.
 
-1. W Eksploratorze danych rozwiń węzeł **sample-table**, kliknij pozycję **Jednostki**, a następnie kliknij przycisk **Dodaj jednostkę**.
+1. W Eksplorator danych rozwiń węzeł **przykład-tabela**, wybierz pozycję **jednostki**, a następnie wybierz pozycję **Dodaj jednostkę**.
 
    ![Tworzenie nowych jednostek w Eksploratorze danych w witrynie Azure Portal](./media/cosmos-db-create-table-add-sample-data/azure-cosmosdb-data-explorer-new-document.png)
 
-2. Teraz dodaj dane do pól wartości PartitionKey i RowKey, a następnie kliknij przycisk **Dodaj jednostkę**.
+2. Teraz Dodaj dane do pola wartość PartitionKey i RowKey wartość, a następnie wybierz pozycję **Dodaj jednostkę**.
 
    ![Ustawianie klucza partycji i klucza wiersza dla nowej jednostki](./media/cosmos-db-create-table-add-sample-data/azure-cosmosdb-data-explorer-new-entity.png)
   

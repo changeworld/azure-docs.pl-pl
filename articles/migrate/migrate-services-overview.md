@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5409ed799454a6bb64077ee884065fc518556142
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 03918976935f9071ba2a7951e29195118943a8ef
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227808"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845836"
 ---
 # <a name="about-azure-migrate"></a>Informacje o usłudze Azure Migrate
 
@@ -41,16 +41,16 @@ Oprócz natywnych narzędzi platformy Azure Azure Migrate integruje się z innym
 
 **NIEZALEŻNEGO DOSTAWCY OPROGRAMOWANIA** | **Funkcja**
 --- | ---
-[Cloudamize](https://www.cloudamize.com/platform) | Ocena
-[Urządzenie 42](https://docs.device42.com/) | Ocena
-[Platforma turbonomic](https://learn.turbonomic.com/azure-migrate-portal-free-trial) | Ocena
-[UnifyCloud](https://www.cloudatlasinc.com/cloudrecon/) | Ocena
+[Cloudamize](https://www.cloudamize.com/platform) | Oceń
+[Urządzenie 42](https://docs.device42.com/) | Oceń
+[Platforma turbonomic](https://learn.turbonomic.com/azure-migrate-portal-free-trial) | Oceń
+[UnifyCloud](https://www.cloudatlasinc.com/cloudrecon/) | Oceń
 [Technologia najmu](https://www.corenttech.com/AzureMigrate/) | Ocenianie i migrowanie
 [Carbonite](https://www.carbonite.com/globalassets/files/datasheets/carb-migrate4azure-microsoft-ds.pdf) | Migrate (Migracja)
 
 ### <a name="selecting-an-isv-tool"></a>Wybieranie narzędzia niezależnego dostawcy oprogramowania
 
-Po dodaniu narzędzia niezależnego dostawcy oprogramowania do projektu Azure Migrate Zacznij korzystać z narzędzia, uzyskując licencję lub korzystając z bezpłatnej wersji próbnej, zgodnie z zasadami dotyczącymi niezależnych dostawców oprogramowania. W każdym narzędziu jest dostępna opcja nawiązywania połączenia z Azure Migrate. Postępuj zgodnie z instrukcjami i dokumentacją narzędzia, aby połączyć narzędzie z Azure Migrate.
+Po dodaniu narzędzia niezależnego dostawcy oprogramowania do projektu Azure Migrate Zacznij korzystać z narzędzia, uzyskując licencję lub korzystając z bezpłatnej wersji próbnej, zgodnie z zasadami dotyczącymi niezależnych dostawców oprogramowania. W każdym narzędziu jest dostępna opcja nawiązywania połączenia z Azure Migrate. Postępuj zgodnie z instrukcjami i dokumentacją narzędzia, aby połączyć narzędzie z Azure Migrate. Licencjonowanie narzędzi niezależnych dostawców oprogramowania jest zgodne z modelem licencjonowania niezależnego dostawcy oprogramowania.
 
 ## <a name="azure-migrate-server-assessment"></a>Azure Migrate oceny serwera
 
@@ -94,7 +94,7 @@ Z poziomu Centrum Azure Migrate można oceniać i migrować lokalne aplikacje si
 
 Aby przenieść duże ilości danych na platformę Azure, możesz użyć rodziny produktów urządzenie Data Box w trybie offline. [Dowiedz się więcej](https://docs.microsoft.com/azure/databox/)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Wypróbuj nasze samouczki, aby ocenić [maszyny wirtualne VMware](tutorial-assess-vmware.md) i [maszyny wirtualne funkcji Hyper-V](tutorial-assess-hyper-v.md).
 - [Uzyskaj więcej informacji](https://azure.microsoft.com/pricing/details/azure-migrate/) o cenach usługi Azure Migrate.

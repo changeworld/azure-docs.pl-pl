@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 24a3424a73fb21530f3cde227aa9f05f16bd6ad0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3ba50b8317e85d09aeaf32c1acc62342ee2683bc
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562446"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847710"
 ---
 # <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>Szybki start: Tworzenie aplikacji dla systemu Android w środowisku Unity przy użyciu kotwic przestrzennych platformy Azure
 
@@ -34,10 +34,11 @@ Omawiane tematy:
 
 Aby ukończyć ten przewodnik Szybki start, upewnij się, że dysponujesz następującymi elementami:
 
-- Maszyna z systemem Windows lub macOS z programem <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.1 +</a> włącznie z obsługą kompilacji systemu Android i Android SDK & modułów narzędzi NDK oraz <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.4 +</a>.
+- Maszyna z systemem Windows lub macOS z programem <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.1 +</a> włącznie z obsługą kompilacji systemu Android i modułami Android SDK & NDK.
   - W przypadku uruchomienia w systemie Windows potrzebna jest również <a href="https://git-scm.com/download/win" target="_blank">git dla systemu Windows</a>.
   - W przypadku uruchamiania w systemie macOS Pobierz narzędzie git zainstalowane za pośrednictwem usługi oprogramowania homebrew. Wprowadź następujące polecenie w jednym wierszu terminalu: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Następnie uruchom `brew install git`polecenie.
 - Urządzenie z systemem Android <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">pracujące w trybie dewelopera</a> i <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">zgodne z platformą ARCore</a>.
+  - Aby komputer mógł komunikować się z urządzeniem z systemem Android, mogą być wymagane dodatkowe sterowniki urządzeń. Aby uzyskać dodatkowe informacje i instrukcje, zobacz [tutaj](https://developer.android.com/studio/run/device.html) .
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 

@@ -1,6 +1,6 @@
 ---
-title: Tworzenie środowiska usługi aplikacji zewnętrznej — platformy Azure
-description: Wyjaśnia, jak utworzyć środowisko usługi App Service podczas tworzenia aplikacji lub autonomiczny
+title: Tworzenie zewnętrznego środowiska App Service — platforma Azure
+description: Wyjaśnia, jak utworzyć środowisko App Service podczas tworzenia aplikacji lub autonomicznej
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -15,168 +15,168 @@ ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: e04dfa4148213e88aa46e464a31cdd9b6125e0bf
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 08/08/2019
 ms.locfileid: "67705758"
 ---
-# <a name="create-an-external-app-service-environment"></a>Tworzenie środowiska usługi aplikacji zewnętrznej
+# <a name="create-an-external-app-service-environment"></a>Tworzenie zewnętrznego środowiska App Service
 
 Środowisko Azure App Service Environment to wdrożenie usługi Azure App Service w podsieci sieci wirtualnej platformy Azure (VNet).
 
 > [!NOTE]
-> Każdy środowiska App Service Environment ma Virtual IP (VIP), która może służyć do kontaktowania się z usługi App Service Environment.
+> Każdy App Service Environment ma wirtualny adres IP (VIP), który może być używany do kontaktowania się z App Service Environment.
 
 Istnieją dwa sposoby wdrażania środowiska App Service Environment (ASE):
 
 - Z wirtualnym adresem IP będącym zewnętrznym adresem IP — jest to często nazywane zewnętrznym środowiskiem ASE.
-- Z Wirtualnym adresem IP będącym wewnętrznego adresu IP często nazywane środowisko ASE z wewnętrznym modułem równoważenia obciążenia, ponieważ wewnętrzny punkt końcowy wewnętrznego modułu równoważenia obciążenia (ILB).
+- Przy użyciu adresu VIP na wewnętrznym adresie IP, często nazywanego ILB ASE, ponieważ wewnętrzny punkt końcowy jest wewnętrznym Load Balancer (ILB).
 
-W tym artykule pokazano, jak tworzenie zewnętrznego środowiska ASE. Aby uzyskać omówienie środowiska ASE, zobacz [wprowadzenie do usługi App Service Environment][Intro]. For information on how to create an ILB ASE, see [Create and use an ILB ASE][MakeILBASE].
+W tym artykule pokazano, jak utworzyć zewnętrzny środowisko ASE. Aby zapoznać się z omówieniem środowiska ASE, zobacz [wprowadzenie do App Service Environment][Intro]. Aby uzyskać informacje na temat sposobu tworzenia środowiska ILB ASE, zobacz [Tworzenie i używanie środowiska ILB ASE][MakeILBASE].
 
-## <a name="before-you-create-your-ase"></a>Przed przystąpieniem do tworzenia środowiska ASE
+## <a name="before-you-create-your-ase"></a>Przed utworzeniem środowiska ASE
 
-Po utworzeniu środowiska ASE, nie można zmienić następujące czynności:
+Po utworzeniu środowiska ASE nie można zmienić następujących danych:
 
 - Location
 - Subscription
 - Resource group
-- Używane w sieci wirtualnej
-- Podsieć używana
+- Użyta Sieć wirtualna
+- Używana podsieć
 - Rozmiar podsieci
 
 > [!NOTE]
-> Po wybraniu sieci wirtualnej i określ podsieć, upewnij się, że jest wystarczająco duży, aby uwzględnić przyszły rozwój i skalowanie potrzeb. Firma Microsoft zaleca rozmiar `/24` za pomocą 256 adresów.
+> Po wybraniu sieci wirtualnej i określeniu podsieci upewnij się, że jest wystarczająco duża, aby pomieścić w przyszłości potrzeby wzrostu i skalowania. Zalecamy rozmiar `/24` z 256 adresami.
 >
 
-## <a name="three-ways-to-create-an-ase"></a>Trzy sposoby, aby utworzyć środowisko ASE
+## <a name="three-ways-to-create-an-ase"></a>Trzy sposoby tworzenia środowiska ASE
 
-Istnieją trzy sposoby, aby utworzyć środowisko ASE:
+Istnieją trzy sposoby tworzenia środowiska ASE:
 
-- **Podczas tworzenia planu usługi App Service**. Ta metoda tworzy plan usługi App Service i środowisko ASE w jednym kroku.
-- **Jako autonomiczny akcji**. Ta metoda tworzy autonomiczne środowisko ASE, która jest środowisko ASE pustą. Ta metoda jest bardziej zaawansowany proces, aby utworzyć środowisko ASE. Umożliwia ona tworzenie środowiska ASE z wewnętrznym modułem równoważenia obciążenia.
-- **Przy użyciu szablonu usługi Azure Resource Manager**. Ta metoda jest dla użytkowników zaawansowanych. Aby uzyskać więcej informacji, zobacz [utworzyć środowisko ASE na podstawie szablonu][MakeASEfromTemplate].
+- **Podczas tworzenia planu App Service**. Ta metoda umożliwia utworzenie planu ASE i App Service w jednym kroku.
+- **Jako akcja**samodzielna. Ta metoda tworzy autonomiczne środowisko ASE, które jest środowiskiem ASE bez żadnych elementów. Ta metoda jest bardziej zaawansowanym procesem tworzenia środowiska ASE. Służy do tworzenia środowiska ASE z ILB.
+- **Z szablonu Azure Resource Manager**. Ta metoda jest dla zaawansowanych użytkowników. Aby uzyskać więcej informacji, zobacz [Tworzenie środowiska ASE na podstawie szablonu][MakeASEfromTemplate].
 
-Zewnętrzne środowisko ASE ma publicznych adresów VIP, co oznacza, że cały ruch HTTP/HTTPS do aplikacji w środowisku ASE trafienia adresu IP dostępne za pośrednictwem Internetu. Środowisko ASE z wewnętrznym modułem równoważenia obciążenia ma adres IP w podsieci używanej przez środowisko ASE. Aplikacje hostowane w środowisku ASE z wewnętrznym modułem równoważenia obciążenia nie są bezpośrednio połączone z Internetem.
+Zewnętrzny środowisko ASE ma publiczny adres VIP, co oznacza, że cały ruch HTTP/HTTPS do aplikacji w środowisku ASE trafi do internetowego adresu IP. Środowisko ASE z ILB ma adres IP z podsieci używanej przez środowisko ASE. Aplikacje hostowane w środowisku ILB ASE nie są uwidaczniane bezpośrednio w Internecie.
 
-## <a name="create-an-ase-and-an-app-service-plan-together"></a>Jednocześnie utworzyć środowisko ASE i plan usługi App Service
+## <a name="create-an-ase-and-an-app-service-plan-together"></a>Tworzenie planu środowiska ASE i App Service razem
 
-Plan usługi App Service jest kontenerem aplikacji. Podczas tworzenia aplikacji w usłudze App Service, wybierz lub Utwórz plan usługi App Service. Środowiska usługi App Service, przytrzymaj planów usługi App Service i planów usługi App Service przechowywania aplikacji.
+Plan App Service jest kontenerem aplikacji. Podczas tworzenia aplikacji w App Service wybierz lub Utwórz plan App Service. Środowiska App Service przechowują plany App Service, a App Service plany przechowują aplikacje.
 
-Aby utworzyć środowisko ASE, podczas tworzenia planu usługi App Service:
+Aby utworzyć środowisko ASE podczas tworzenia planu App Service:
 
-1. W [witryny Azure portal](https://portal.azure.com/), wybierz opcję **Utwórz zasób** > **sieci Web i mobilność** > **aplikacji sieci Web**.
+1. W [Azure Portal](https://portal.azure.com/)wybierz pozycję **Utwórz zasób** > **Sieć Web + aplikacje mobilne** > **aplikacji sieci Web**.
 
     ![Tworzenie aplikacji sieci Web][1]
 
-2. Wybierz subskrypcję. Aplikacja i środowisko ASE są tworzone w tej samej subskrypcji.
+2. Wybierz subskrypcję. Aplikacja i środowisko ASE są tworzone w tych samych subskrypcjach.
 
-3. Wybierz lub utwórz grupę zasobów. Przy użyciu grup zasobów powiązanych zasobów platformy Azure można zarządzać jako jednostka. Grupy zasobów są także przydatne podczas ustanawiania zasad kontroli dostępu opartej na rolach dla aplikacji. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Resource Manager][ARMOverview].
+3. Wybierz lub utwórz grupę zasobów. Grupy zasobów umożliwiają zarządzanie powiązanymi zasobami platformy Azure jako jednostką. Grupy zasobów są również przydatne w przypadku ustanowienia reguł Access Control opartych na rolach dla aplikacji. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Resource Manager][ARMOverview].
 
-4. Wybierz system operacyjny (Windows, Linux i Docker). 
+4. Wybierz system operacyjny (Windows, Linux lub Docker). 
 
-5. Wybierz plan usługi App Service, a następnie wybierz **Utwórz nowy**. Aplikacje internetowe systemu Linux i Windows, aplikacje sieci web nie może być w tym samym planie usługi App Service, ale mogą znajdować się w tym samym środowisku usługi App Service. 
+5. Wybierz plan App Service, a następnie wybierz pozycję **Utwórz nowy**. Aplikacje sieci Web w systemie Linux i aplikacje sieci Web systemu Windows nie mogą znajdować się w tym samym planie App Service, ale mogą być w tej samej App Service Environment. 
 
     ![Nowy plan usługi App Service][2]
 
-6. W **lokalizacji** listy rozwijanej wybierz region, w którym chcesz utworzyć środowisko ASE. Jeśli wybierzesz istniejącego środowiska ASE, nowego środowiska ASE nie jest tworzony. Plan usługi App Service jest tworzony w wybranym środowisku ASE. 
+6. Z listy rozwijanej **Lokalizacja** wybierz region, w którym chcesz utworzyć środowisko ASE. W przypadku wybrania istniejącego środowiska ASE nowe środowisko ASE nie zostanie utworzone. W wybranym środowisku ASE zostanie utworzony plan App Service. 
 
-7. Wybierz **warstwa cenowa**i wybierz jedną z **izolowany** wycena jednostek SKU. Jeśli wybierzesz **izolowany** karty jednostki SKU i lokalizacji, która nie jest środowisko ASE, nowe środowisko ASE jest tworzony w tej lokalizacji. Aby uruchomić proces, aby utworzyć środowisko ASE, zaznacz **wybierz**. **Izolowany** jednostka SKU jest dostępna tylko w połączeniu z ASE. Również nie można użyć innych SKU cen w środowisku ASE innych niż **izolowany**. 
+7. Wybierz pozycję **warstwa cenowa**i wybierz jedną z wyizolowanych jednostek SKU cenowych. W przypadku wybrania karty izolowanej jednostki SKU i lokalizacji, która nie jest ASE, w tej lokalizacji zostanie utworzony nowy środowisko ASE. Aby rozpocząć proces tworzenia środowiska ASE, wybierz pozycję **Wybierz**. **Izolowana** jednostka SKU jest dostępna tylko w połączeniu z środowiskiem ASE. Nie można również używać żadnej innej jednostki SKU cenowej w środowisku ASEinnym niż izolowany. 
 
     ![Wybór warstwy cenowej][3]
 
-8. Wprowadź nazwę środowiska ASE. Ta nazwa jest używana w nazwie mogą być adresowane dla aplikacji. Jeśli nazwa środowiska ASE jest _appsvcenvdemo_, nazwa domeny jest *. appsvcenvdemo.p.azurewebsites.net*. Jeśli tworzysz aplikację o nazwie *MojaAplikacja*, jest adresowalnej na mytestapp.appsvcenvdemo.p.azurewebsites.net. Nie można użyć biały znak w nazwie. Użycie wielkich liter, nazwa domeny jest całkowita wersję o takiej nazwie.
+8. Wprowadź nazwę dla środowiska ASE. Ta nazwa jest używana w nazwie adresowanej dla aplikacji. Jeśli nazwa środowiska ASE to _appsvcenvdemo_, nazwa domeny to *. appsvcenvdemo.p.azurewebsites.NET*. Jeśli utworzysz aplikację o nazwie *MojaAplikacja*, adresowanie jest możliwe pod adresem mytestapp.appsvcenvdemo.p.azurewebsites.NET. Nie można użyć odstępu w nazwie. Jeśli używasz wielkich liter, nazwa domeny to łączna mała wersja tej nazwy.
 
-    ![Nowa nazwa planu usługi App Service][4]
+    ![Nazwa nowego planu App Service][4]
 
-9. Podaj szczegóły sieci wirtualnej platformy Azure. Wybierz opcję **tworzenia nowych** lub **wybierz istniejący**. Możliwość wybrania istniejącej sieci wirtualnej jest dostępna tylko wtedy, gdy masz sieć wirtualną w wybranym regionie. Jeśli wybierzesz **Utwórz nowy**, wprowadź nazwę sieci wirtualnej. Utworzono nową sieć wirtualną usługi Resource Manager przy użyciu tej nazwy. Używa ona przestrzeń adresową `192.168.250.0/23` w wybranym regionie. Jeśli wybierzesz **wybierz istniejącą**, musisz:
+9. Określ szczegóły sieci wirtualnej platformy Azure. Wybierz opcję **Utwórz nową** lub **Wybierz istniejącą**. Opcja wyboru istniejącej sieci wirtualnej jest dostępna tylko wtedy, gdy w wybranym regionie znajduje się sieć wirtualna. W przypadku wybrania opcji **Utwórz nową**wprowadź nazwę sieci wirtualnej. Zostanie utworzona nowa Menedżer zasobów Sieć wirtualna o tej nazwie. Używa przestrzeni `192.168.250.0/23` adresowej w wybranym regionie. W przypadku wybrania opcji **Wybierz istniejący**należy:
 
-    a. Blok adresów sieci wirtualnej, należy wybrać, jeśli masz więcej niż jeden.
+    a. Wybierz blok adresów sieci wirtualnej, jeśli masz więcej niż jeden.
 
-    b. Wprowadź nazwę nowej podsieci.
+    b. Wprowadź nową nazwę podsieci.
 
-    c. Wybierz rozmiar podsieci. *Pamiętaj, aby wybrać rozmiar wystarczająco dużą do obsługi przyszłego rozwoju środowiska ASE.* Firma Microsoft zaleca `/24`, który zapewnia 128 adresów i może obsłużyć środowiska ASE o maksymalnym rozmiarze. Nie zaleca się `/28`, na przykład, ponieważ nie są dostępne tylko 16 adresów. Infrastruktury przy użyciu co najmniej siedmiu adresów, a inny 5 korzysta z sieci platformy Azure. W `/28` podsieci, w przypadku pozostałych dłuższą skalowanie 4 wystąpień planu usługi App Service dla zewnętrznego środowiska ASE i tylko 3 wystąpień planu usługi App Service, za środowisko ASE wewnętrznego modułu równoważenia obciążenia.
+    c. Wybierz rozmiar podsieci. *Pamiętaj, aby wybrać wystarczająco duży rozmiar, aby uwzględnić przyszły rozwój środowiska ASE.* Zalecane `/24`jest, które mają 128 adresów i obsługujące środowisko ASE o maksymalnym rozmiarze. Nie zalecamy `/28`, na przykład, ponieważ dostępne są tylko 16 adresów. Infrastruktura używa co najmniej siedmiu adresów i sieci platformy Azure używa innej 5. `/28` W podsieci pozostało maksymalne skalowanie wystąpień planu 4 App Service dla zewnętrznego środowiska ASE i tylko 3 App Service wystąpienia planu dla środowiska ILB ASE.
 
     d. Wybierz zakres adresów IP podsieci.
 
-10. Wybierz **Utwórz** do tworzenia środowiska ASE. Ten proces tworzy również plan usługi App Service i aplikację. Środowisko ASE, plan usługi App Service i aplikację są wszystkie tej samej subskrypcji, a także w tej samej grupie zasobów. Jeśli środowisko ASE wymaga oddzielnej grupie zasobów lub jeśli potrzebujesz środowisko ASE z wewnętrznym modułem równoważenia obciążenia, postępuj zgodnie z instrukcjami, aby utworzyć środowisko ASE przez siebie.
+10. Wybierz pozycję **Utwórz** , aby utworzyć środowisko ASE. Ten proces powoduje również utworzenie planu App Service i aplikacji. Środowisko ASE, plan App Service i aplikacja są w tej samej subskrypcji, a także w tej samej grupie zasobów. Jeśli środowisko ASE wymaga oddzielnej grupy zasobów lub jeśli potrzebujesz ILB ASE, postępuj zgodnie z instrukcjami, aby utworzyć środowisko ASE.
 
-## <a name="create-an-ase-and-a-linux-web-app-using-a-custom-docker-image-together"></a>Tworzenie środowiska ASE i aplikację internetową systemu Linux, ze sobą przy użyciu niestandardowego obrazu platformy Docker
+## <a name="create-an-ase-and-a-linux-web-app-using-a-custom-docker-image-together"></a>Tworzenie aplikacji sieci Web środowiska ASE i systemu Linux przy użyciu niestandardowego obrazu platformy Docker
 
-1. W [witryny Azure portal](https://portal.azure.com/), **Utwórz zasób** > **sieci Web i mobilność** > **Web App for Containers.** 
+1. W [Azure Portal](https://portal.azure.com/) **Utwórz** > sieć Web + aplikacje mobilnezasobów > **Web App for Containers.** 
 
     ![Tworzenie aplikacji sieci Web][7]
 
-1. Wybierz subskrypcję. Aplikacja i środowisko ASE są tworzone w tej samej subskrypcji.
+1. Wybierz subskrypcję. Aplikacja i środowisko ASE są tworzone w tych samych subskrypcjach.
 
-1. Wybierz lub utwórz grupę zasobów. Przy użyciu grup zasobów powiązanych zasobów platformy Azure można zarządzać jako jednostka. Grupy zasobów są także przydatne podczas ustanawiania zasad kontroli dostępu opartej na rolach dla aplikacji. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Resource Manager][ARMOverview].
+1. Wybierz lub utwórz grupę zasobów. Grupy zasobów umożliwiają zarządzanie powiązanymi zasobami platformy Azure jako jednostką. Grupy zasobów są również przydatne w przypadku ustanowienia reguł Access Control opartych na rolach dla aplikacji. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Resource Manager][ARMOverview].
 
-1. Wybierz plan usługi App Service, a następnie wybierz **Utwórz nowy**. Aplikacje internetowe systemu Linux i Windows, aplikacje sieci web nie może być w tym samym planie usługi App Service, ale mogą znajdować się w tym samym środowisku usługi App Service. 
+1. Wybierz plan App Service, a następnie wybierz pozycję **Utwórz nowy**. Aplikacje sieci Web w systemie Linux i aplikacje sieci Web systemu Windows nie mogą znajdować się w tym samym planie App Service, ale mogą być w tej samej App Service Environment. 
 
     ![Nowy plan usługi App Service][8]
 
-1. W **lokalizacji** listy rozwijanej wybierz region, w którym chcesz utworzyć środowisko ASE. Jeśli wybierzesz istniejącego środowiska ASE, nowego środowiska ASE nie jest tworzony. Plan usługi App Service jest tworzony w wybranym środowisku ASE. 
+1. Z listy rozwijanej **Lokalizacja** wybierz region, w którym chcesz utworzyć środowisko ASE. W przypadku wybrania istniejącego środowiska ASE nowe środowisko ASE nie zostanie utworzone. W wybranym środowisku ASE zostanie utworzony plan App Service. 
 
-1. Wybierz **warstwa cenowa**i wybierz jedną z **izolowany** wycena jednostek SKU. Jeśli wybierzesz **izolowany** karty jednostki SKU i lokalizacji, która nie jest środowisko ASE, nowe środowisko ASE jest tworzony w tej lokalizacji. Aby uruchomić proces, aby utworzyć środowisko ASE, zaznacz **wybierz**. **Izolowany** jednostka SKU jest dostępna tylko w połączeniu z ASE. Również nie można użyć innych SKU cen w środowisku ASE innych niż **izolowany**. 
+1. Wybierz pozycję **warstwa cenowa**i wybierz jedną z wyizolowanych jednostek SKU cenowych. W przypadku wybrania karty izolowanej jednostki SKU i lokalizacji, która nie jest ASE, w tej lokalizacji zostanie utworzony nowy środowisko ASE. Aby rozpocząć proces tworzenia środowiska ASE, wybierz pozycję **Wybierz**. **Izolowana** jednostka SKU jest dostępna tylko w połączeniu z środowiskiem ASE. Nie można również używać żadnej innej jednostki SKU cenowej w środowisku ASEinnym niż izolowany. 
 
     ![Wybór warstwy cenowej][3]
 
-1. Wprowadź nazwę środowiska ASE. Ta nazwa jest używana w nazwie mogą być adresowane dla aplikacji. Jeśli nazwa środowiska ASE jest _appsvcenvdemo_, nazwa domeny jest *. appsvcenvdemo.p.azurewebsites.net*. Jeśli tworzysz aplikację o nazwie *MojaAplikacja*, jest adresowalnej na mytestapp.appsvcenvdemo.p.azurewebsites.net. Nie można użyć biały znak w nazwie. Użycie wielkich liter, nazwa domeny jest całkowita wersję o takiej nazwie.
+1. Wprowadź nazwę dla środowiska ASE. Ta nazwa jest używana w nazwie adresowanej dla aplikacji. Jeśli nazwa środowiska ASE to _appsvcenvdemo_, nazwa domeny to *. appsvcenvdemo.p.azurewebsites.NET*. Jeśli utworzysz aplikację o nazwie *MojaAplikacja*, adresowanie jest możliwe pod adresem mytestapp.appsvcenvdemo.p.azurewebsites.NET. Nie można użyć odstępu w nazwie. Jeśli używasz wielkich liter, nazwa domeny to łączna mała wersja tej nazwy.
 
-    ![Nowa nazwa planu usługi App Service][4]
+    ![Nazwa nowego planu App Service][4]
 
-1. Podaj szczegóły sieci wirtualnej platformy Azure. Wybierz opcję **tworzenia nowych** lub **wybierz istniejący**. Możliwość wybrania istniejącej sieci wirtualnej jest dostępna tylko wtedy, gdy masz sieć wirtualną w wybranym regionie. Jeśli wybierzesz **Utwórz nowy**, wprowadź nazwę sieci wirtualnej. Utworzono nową sieć wirtualną usługi Resource Manager przy użyciu tej nazwy. Używa ona przestrzeń adresową `192.168.250.0/23` w wybranym regionie. Jeśli wybierzesz **wybierz istniejącą**, musisz:
+1. Określ szczegóły sieci wirtualnej platformy Azure. Wybierz opcję **Utwórz nową** lub **Wybierz istniejącą**. Opcja wyboru istniejącej sieci wirtualnej jest dostępna tylko wtedy, gdy w wybranym regionie znajduje się sieć wirtualna. W przypadku wybrania opcji **Utwórz nową**wprowadź nazwę sieci wirtualnej. Zostanie utworzona nowa Menedżer zasobów Sieć wirtualna o tej nazwie. Używa przestrzeni `192.168.250.0/23` adresowej w wybranym regionie. W przypadku wybrania opcji **Wybierz istniejący**należy:
 
-    a. Blok adresów sieci wirtualnej, należy wybrać, jeśli masz więcej niż jeden.
+    a. Wybierz blok adresów sieci wirtualnej, jeśli masz więcej niż jeden.
 
-    b. Wprowadź nazwę nowej podsieci.
+    b. Wprowadź nową nazwę podsieci.
 
-    c. Wybierz rozmiar podsieci. *Pamiętaj, aby wybrać rozmiar wystarczająco dużą do obsługi przyszłego rozwoju środowiska ASE.* Firma Microsoft zaleca `/24`, który zapewnia 128 adresów i może obsłużyć środowiska ASE o maksymalnym rozmiarze. Nie zaleca się `/28`, na przykład, ponieważ nie są dostępne tylko 16 adresów. Infrastruktury przy użyciu co najmniej siedmiu adresów, a inny 5 korzysta z sieci platformy Azure. W `/28` podsieci, w przypadku pozostałych dłuższą skalowanie 4 wystąpień planu usługi App Service dla zewnętrznego środowiska ASE i tylko 3 wystąpień planu usługi App Service, za środowisko ASE wewnętrznego modułu równoważenia obciążenia.
+    c. Wybierz rozmiar podsieci. *Pamiętaj, aby wybrać wystarczająco duży rozmiar, aby uwzględnić przyszły rozwój środowiska ASE.* Zalecane `/24`jest, które mają 128 adresów i obsługujące środowisko ASE o maksymalnym rozmiarze. Nie zalecamy `/28`, na przykład, ponieważ dostępne są tylko 16 adresów. Infrastruktura używa co najmniej siedmiu adresów i sieci platformy Azure używa innej 5. `/28` W podsieci pozostało maksymalne skalowanie wystąpień planu 4 App Service dla zewnętrznego środowiska ASE i tylko 3 App Service wystąpienia planu dla środowiska ILB ASE.
 
     d. Wybierz zakres adresów IP podsieci.
 
-1.  Wybierz pozycję "Konfigurowanie kontenera".
-    * Wprowadź nazwę niestandardowego obrazu (możesz użyć usługi Azure Container Registry i Docker Hub, prywatnego rejestru). Jeśli nie chcesz użyć własnego kontenera niestandardowego, można po prostu przenieść kod i wbudowanego obrazu za pomocą usługi App Service w systemie Linux, korzystając z powyższych instrukcji. 
+1.  Wybierz pozycję "Konfiguruj kontener".
+    * Wprowadź nazwę niestandardowego obrazu (można użyć Azure Container Registry, Docker Hub i własnego rejestru prywatnego). Jeśli nie chcesz używać własnego kontenera niestandardowego, możesz po prostu przenieść kod i użyć wbudowanego obrazu z App Service w systemie Linux, korzystając z powyższych instrukcji. 
 
-    ![Konfiguruj kontener][9]
+    ![Konfigurowanie kontenera][9]
 
-1. Wybierz **Utwórz** do tworzenia środowiska ASE. Ten proces tworzy również plan usługi App Service i aplikację. Środowisko ASE, plan usługi App Service i aplikację są wszystkie tej samej subskrypcji, a także w tej samej grupie zasobów. Jeśli środowisko ASE wymaga oddzielnej grupie zasobów lub jeśli potrzebujesz środowisko ASE z wewnętrznym modułem równoważenia obciążenia, postępuj zgodnie z instrukcjami, aby utworzyć środowisko ASE przez siebie.
+1. Wybierz pozycję **Utwórz** , aby utworzyć środowisko ASE. Ten proces powoduje również utworzenie planu App Service i aplikacji. Środowisko ASE, plan App Service i aplikacja są w tej samej subskrypcji, a także w tej samej grupie zasobów. Jeśli środowisko ASE wymaga oddzielnej grupy zasobów lub jeśli potrzebujesz ILB ASE, postępuj zgodnie z instrukcjami, aby utworzyć środowisko ASE.
 
 
-## <a name="create-an-ase-by-itself"></a>Tworzenie środowiska ASE samodzielnie
+## <a name="create-an-ase-by-itself"></a>Tworzenie środowiska ASE przez siebie
 
-Jeśli tworzysz autonomiczne środowisko ASE, go nie ma nic w nim. Środowisko ASE pusty nadal opłatę miesięczną infrastruktury. Wykonaj następujące kroki, aby utworzyć środowisko ASE z wewnętrznym modułem równoważenia obciążenia lub utworzyć środowisko ASE w jego własnej grupie zasobów. Po utworzeniu środowiska ASE, można utworzyć aplikacji w nim przy użyciu standardowego procesu. Wybierz nowe środowisko ASE jako lokalizację.
+Jeśli tworzysz autonomiczną aplikację ASE, nie ma nic w nim. Pusta środowisko ASE nadal jest miesięczną opłatą za infrastrukturę. Wykonaj następujące kroki, aby utworzyć środowisko ASE z ILB lub utworzyć środowisko ASE w jego własnej grupie zasobów. Po utworzeniu środowiska ASE można tworzyć w nim aplikacje przy użyciu normalnego procesu. Wybierz nowy środowisko ASE jako lokalizację.
 
-1. Wyszukaj w portalu Azure Marketplace **środowiska App Service Environment**, lub wybierz **Utwórz zasób** > **Web Mobile** > **aplikacji Usługa środowiska**. 
+1. Wyszukaj **App Service Environment**portalu Azure Marketplace, a następnie wybierz pozycję **Utwórz zasób** > **Sieć Web** > **App Service Environment**Mobile. 
 
-1. Wprowadź nazwę środowiska ASE. Ta nazwa jest używana w przypadku aplikacji tworzonych w środowisku ASE. Jeśli nazwa jest *mynewdemoase*, nazwy domeny podrzędnej jest *. mynewdemoase.p.azurewebsites.net*. Jeśli tworzysz aplikację o nazwie *MojaAplikacja*, jest adresowalnej na mytestapp.mynewdemoase.p.azurewebsites.net. Nie można użyć biały znak w nazwie. Użycie wielkich liter, nazwa domeny jest całkowita wersję nazwy. Jeśli korzystasz z wewnętrznym modułem równoważenia obciążenia, nazwa środowiska ASE nie jest używany w Twojej domeny podrzędnej, ale zamiast tego jest jasno określone podczas tworzenia środowiska ASE.
+1. Wprowadź nazwę środowiska ASE. Ta nazwa jest używana dla aplikacji utworzonych w środowisku ASE. Jeśli nazwa to *mynewdemoase*, nazwa domeny podrzędnej to *. mynewdemoase.p.azurewebsites.NET*. Jeśli utworzysz aplikację o nazwie *MojaAplikacja*, adresowanie jest możliwe pod adresem mytestapp.mynewdemoase.p.azurewebsites.NET. Nie można użyć odstępu w nazwie. Jeśli używasz wielkich liter, nazwa domeny to łączna mała wersja nazwy. Jeśli używasz ILB, Nazwa środowiska ASE nie jest używana w poddomenie, ale zamiast tego jest jawnie określona podczas tworzenia ASE.
 
     ![Nazewnictwo środowiska ASE][5]
 
-1. Wybierz subskrypcję. Ta subskrypcja jest także jednym, używanego przez wszystkie aplikacje w środowisku ASE. Środowisko ASE nie można umieścić w sieci wirtualnej, która znajduje się w innej subskrypcji.
+1. Wybierz subskrypcję. Ta subskrypcja jest również tą, którą używają wszystkie aplikacje w środowisku ASE. Nie można umieścić środowiska ASE w sieci wirtualnej, która znajduje się w innej subskrypcji.
 
-1. Wybierz lub określ nową grupę zasobów. Grupę zasobów używaną dla środowiska ASE musi być taka sama, taki, który jest używany dla sieci wirtualnej. Wybranie istniejącej sieci wirtualnej, wybranej grupy zasobów dla środowiska ASE jest aktualizowana w celu odzwierciedlenia zmiany sieci wirtualnej. *Możesz utworzyć środowisko ASE z grupą zasobów, która jest inna niż grupa zasobów sieci wirtualnej, w przypadku używania szablonu usługi Resource Manager.* Aby utworzyć środowisko ASE na podstawie szablonu, zobacz [tworzenie środowiska usługi App Service na podstawie szablonu][MakeASEfromTemplate].
+1. Wybierz lub określ nową grupę zasobów. Grupa zasobów używana dla środowiska ASE musi być taka sama, jak ta, która jest używana w sieci wirtualnej. W przypadku wybrania istniejącej sieci wirtualnej wybór grupy zasobów dla środowiska ASE zostanie zaktualizowany w celu odzwierciedlenia tej sieci wirtualnej. *Jeśli używasz szablonu Menedżer zasobów, możesz utworzyć środowisko ASE z grupą zasobów, która różni się od grupy zasobów sieci wirtualnej.* Aby utworzyć środowisko ASE na podstawie szablonu, zobacz [Tworzenie środowiska App Service na podstawie szablonu][MakeASEfromTemplate].
 
     ![Wybór grupy zasobów][6]
 
-1. Wybierz sieć wirtualną i lokalizacji. Możesz utworzyć nową sieć wirtualną lub wybierz istniejącej sieci wirtualnej: 
+1. Wybierz sieć wirtualną i lokalizację. Można utworzyć nową sieć wirtualną lub wybrać istniejącą sieć wirtualną: 
 
     * W przypadku wybrania nowej sieci wirtualnej możesz określić nazwę i lokalizację. 
     
-    * Nową sieć wirtualną ma 192.168.250.0/23 zakres adresów i podsieć o nazwie domyślnej. Podsieć jest zdefiniowany jako 192.168.250.0/24. Można wybrać tylko z siecią wirtualną usługi Resource Manager. **Typ adresu VIP** ten wybór decyduje, jeśli środowisko ASE są bezpośrednio dostępne z Internetu (zewnętrzny) lub korzysta z wewnętrznym modułem równoważenia obciążenia. Aby dowiedzieć się więcej o tych opcjach, zobacz [tworzenia i używania wewnętrznego modułu równoważenia obciążenia ze środowiskiem usługi App Service environment][MakeILBASE]. 
+    * Nowa sieć wirtualna ma zakres adresów 192.168.250.0/23 i podsieć o nazwie Default. Podsieć jest definiowana jako 192.168.250.0/24. Można wybrać tylko Menedżer zasobów sieci wirtualnej. Wybór **typu adresu VIP** określa, czy środowisko ASE można uzyskać bezpośrednio z Internetu (zewnętrznego) czy przy użyciu ILB. Aby dowiedzieć się więcej na temat tych opcji, zobacz [Tworzenie i używanie wewnętrznego modułu równoważenia obciążenia ze środowiskiem App Service][MakeILBASE]. 
 
-      * Jeśli wybierzesz **zewnętrznych** dla **typ adresu VIP**, można wybrać liczbę zewnętrzne adresy IP systemu jest tworzony z celów SSL opartego na protokole IP. 
+      * W przypadku wybrania opcji **zewnętrzny** dla **typu adresu VIP**można wybrać liczbę zewnętrznych adresów IP, z którymi system został utworzony na potrzeby protokołu SSL opartego na protokole IP. 
     
-      * Jeśli wybierzesz **wewnętrzne** dla **typ adresu VIP**, należy określić domeny, która używa środowiska ASE. Środowisko ASE można wdrożyć w sieci wirtualnej, która używa zakresów adresów publicznych lub prywatnych. Aby użyć sieci wirtualnej z zakresem adresów publicznych, musisz utworzyć sieci wirtualnej wcześniejsze. 
+      * W przypadku wybrania opcji **wewnętrzna** dla **typu adresu VIP**należy określić domenę używaną przez środowisko ASE. Środowisko ASE można wdrożyć w sieci wirtualnej, która używa zakresów adresów publicznych lub prywatnych. Aby użyć sieci wirtualnej z zakresem adresów publicznych, należy najpierw utworzyć sieć wirtualną przed czasem. 
     
-    * Jeśli wybierzesz istniejącej sieci wirtualnej, nowa podsieć jest tworzony po utworzeniu środowiska ASE. *Nie można użyć wstępnie utworzonej podsieci, w portalu. Jeśli używasz szablonu usługi Resource Manager, możesz utworzyć środowisko ASE się na istniejącą podsieć.* Aby utworzyć środowisko ASE na podstawie szablonu, zobacz [tworzenie środowiska usługi App Service na podstawie szablonu][MakeASEfromTemplate].
+    * Jeśli zostanie wybrana istniejąca sieć wirtualna, podczas tworzenia środowiska ASE zostanie utworzona nowa podsieć. *Nie można użyć wstępnie utworzonej podsieci w portalu. Jeśli używasz szablonu Menedżer zasobów, możesz utworzyć środowisko ASE z istniejącą podsiecią.* Aby utworzyć środowisko ASE na podstawie szablonu, zobacz [tworzenie App Service Environment na podstawie szablonu][MakeASEfromTemplate].
 
 ## <a name="app-service-environment-v1"></a>Środowisko usługi App Service — wersja 1
 
-Nadal można utworzyć wystąpienia elementu pierwszą wersję środowiska App Service Environment (środowiska ASEv1). Aby rozpocząć ten proces, portalu Marketplace wyszukaj hasło **środowiska App Service Environment v1**. Należy utworzyć środowisko ASE w taki sam sposób, jak tworzyć autonomiczne środowisko ASE. Po zakończeniu program Twojego środowiska ASEv1 ma dwa Frontony i dwa procesy robocze. Za pomocą środowiska ASEv1 muszą zarządzać frontonami ani procesami roboczymi. Są dodawane automatycznie, gdy tworzysz swoje plany usługi App Service. Frontony działanie jako punktów końcowych HTTP/HTTPS i wysyłania ruchu do pracowników. Procesy robocze to role, które hostują swoje aplikacje. Po utworzeniu środowiska ASE, można dostosować ilość frontonami ani procesami roboczymi. 
+Nadal można tworzyć wystąpienia pierwszej wersji App Service Environment (środowiska asev1). Aby rozpocząć ten proces, Wyszukaj w witrynie Marketplace **App Service Environment V1**. Tworzysz środowisko ASE w taki sam sposób, jak w przypadku tworzenia autonomicznego środowiska ASE. Po zakończeniu środowiska asev1 ma dwa Frontony i dwóch procesów roboczych. W programie środowiska asev1 należy zarządzać frontonami i pracownikami. Nie są one automatycznie dodawane podczas tworzenia planów App Service. Frontony działają jako punkty końcowe protokołu HTTP/HTTPS i wysyłają ruch do pracowników. Procesy robocze to role obsługujące aplikacje. Możesz dostosować liczbę frontonów i procesów roboczych po utworzeniu środowiska ASE. 
 
-Aby dowiedzieć się więcej na temat środowiska ASEv1, zobacz [wprowadzenie do środowiska App Service Environment w wersji 1][ASEv1Intro]. For more information on scaling, managing, and monitoring ASEv1, see [How to configure an App Service Environment][ConfigureASEv1].
+Aby dowiedzieć się więcej na temat środowiska asev1, zobacz [wprowadzenie do App Service Environment V1][ASEv1Intro]. Aby uzyskać więcej informacji na temat skalowania i monitorowania środowiska asev1 oraz zarządzania nim, zobacz [jak skonfigurować App Service Environment][ConfigureASEv1].
 
 <!--Image references-->
 [1]: ./media/how_to_create_an_external_app_service_environment/createexternalase-create.png

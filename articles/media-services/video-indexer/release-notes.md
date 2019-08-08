@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 07/22/2019
 ms.author: juliako
-ms.openlocfilehash: fd67e867b5eac58838551ac29e1fca5e860b15ff
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: b627a78edef1c0b0fe6b3ed011678145aea397ae
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414214"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845887"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Informacje o wersji Azure Media Services Video Indexer
 
@@ -27,6 +27,16 @@ Aby uzyskać najnowsze informacje o najnowszych zmianach, w tym artykule przedst
 * Znane problemy
 * Poprawki błędów
 * Przestarzałe funkcje
+
+## <a name="july-2019"></a>Lipiec 2019
+
+### <a name="editor-as-a-widget"></a>Edytor jako widżet
+
+Edytor Video Indexer AI jest teraz dostępny jako widżet, który ma zostać osadzony w aplikacjach klienta.
+
+### <a name="update-custom-language-model-from-closed-caption-file-from-the-portal"></a>Aktualizowanie niestandardowego modelu języka z pliku napisów w portalu
+
+Klienci mogą udostępniać formaty plików VTT, narzędzia SRT i TTML jako dane wejściowe dla modeli języka na stronie dostosowywania portalu.
 
 ## <a name="june-2019"></a>Czerwiec 2019
 
@@ -62,6 +72,6 @@ Podczas wywoływania [interfejsu API aktualizowania transkrypcji wideo](https://
 
 Oprócz obsługiwanego formatu napisów (narzędzia SRT, VTT i TTML), Video Indexer teraz obsługuje pobieranie transkrypcji w formatach TXT i CSV.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 [Omówienie](video-indexer-overview.md)

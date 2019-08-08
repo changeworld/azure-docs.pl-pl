@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: 1bf8c22c2c7c8e8aaab35a4663652300a341c99c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 04c77a82d08e2559d4ce29d49d56d6b7a5edfca5
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68571051"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856142"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Wdróż model do Azure Container Instances
 
@@ -28,7 +28,7 @@ Aby uzyskać informacje dotyczące przydziału i dostępności regionów dla us�
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Obszar roboczy usługi Azure Machine Learning. Aby uzyskać więcej informacji, zobacz [Tworzenie obszaru roboczego usługi Azure Machine Learning](setup-create-workspace.md).
+- Obszar roboczy usługi Azure Machine Learning. Aby uzyskać więcej informacji, zobacz [Tworzenie obszaru roboczego usługi Azure Machine Learning](how-to-manage-workspace.md).
 
 - Model uczenia maszynowego zarejestrowany w obszarze roboczym. Jeśli nie masz zarejestrowanego modelu, zapoznaj [się z tematem jak i gdzie wdrażać modele](how-to-deploy-and-where.md).
 

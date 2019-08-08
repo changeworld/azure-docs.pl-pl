@@ -1,6 +1,6 @@
 ---
-title: Rozszerzona obsługa programu SQL Server 2008 i SQL Server 2008 R2 z platformą Azure
-description: Dowiedz się, jak rozszerzenie obsługi programu SQL Server 2008 i SQL Server 2008 R2, migracja wystąpienia programu SQL Server na platformie Azure lub zakup rozszerzonej pomocy technicznej, aby zachować wystąpień w środowisku lokalnym.
+title: Rozszerzona pomoc techniczna dla SQL Server 2008 i SQL Server 2008 R2 z platformą Azure
+description: Dowiedz się, jak rozszerzyć wsparcie dla SQL Server 2008 i SQL Server 2008 R2 przez Migrowanie wystąpienia SQL Server na platformę Azure lub zakup rozszerzonej pomocy technicznej, aby zachować wystąpienia lokalnie.
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
@@ -14,76 +14,76 @@ ms.workload: iaas-sql-server
 ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b16fecd6db1f4bed319c832795a2252f8de96c6c
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: adba197b4412177d0655fb6835cfdf8671a81f4e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67607137"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846123"
 ---
-# <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Rozszerzona obsługa programu SQL Server 2008 i SQL Server 2008 R2 z platformą Azure
+# <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Rozszerzona pomoc techniczna dla SQL Server 2008 i SQL Server 2008 R2 z platformą Azure
 
-Program SQL Server 2008 i SQL Server 2008 R2 zarówno zbliża się [koniec cykl życia pomocy technicznej (EOS)](https://www.microsoft.com/sql-server/sql-server-2008). Ponieważ nadal wielu naszych klientów korzystają obie wersje, zapewniamy kilka opcji, aby nadal korzystać z pomocy technicznej. Możesz migracji lokalnych wystąpień programu SQL Server w usłudze Azure virtual machines (VMs), migrację do usługi Azure SQL Database, lub pozostać w środowisku lokalnym i Kup aktualizacje zabezpieczeń.
+SQL Server 2008 i SQL Server 2008 R2 zbliżają się do [końca cyklu życia pomocy technicznej (EOS)](https://www.microsoft.com/sql-server/sql-server-2008). Ponieważ wielu klientów nadal używa obu wersji, udostępniamy kilka opcji, aby kontynuować pomoc techniczną. Lokalne wystąpienia SQL Server można migrować do usługi Azure Virtual Machines (VM), przeprowadzić migrację do Azure SQL Database lub zachować dostęp do lokalnych aktualizacji zabezpieczeń.
 
-W odróżnieniu od za pomocą wystąpienia zarządzanego, migracji na Maszynie wirtualnej platformy Azure nie wymaga recertifying aplikacji. I w przeciwieństwie do przy użyciu pozostając w środowisku lokalnym, zostanie wyświetlony poprawki rozszerzone zabezpieczenia przy użyciu funkcji migracji na Maszynie wirtualnej platformy Azure.
+W przeciwieństwie do wystąpienia zarządzanego migracja do maszyny wirtualnej platformy Azure nie wymaga ponownej certyfikacji aplikacji. I w przeciwieństwie do lokalnego korzystania z usług lokalnych, migracja do maszyny wirtualnej platformy Azure spowoduje otrzymanie bezpłatnych rozszerzonych poprawek zabezpieczeń.
 
-W pozostałej części tego artykułu zawiera zagadnienia dotyczące migracji wystąpienia programu SQL Server na Maszynie wirtualnej platformy Azure.
+Pozostała część tego artykułu zawiera zagadnienia dotyczące migrowania wystąpienia SQL Server na maszynę wirtualną platformy Azure.
 
-## <a name="provisioning"></a>Inicjowanie obsługi
+## <a name="provisioning"></a>Aprowizowanie
 
-Płatność za rzeczywiste użycie jest `SQL Server 2008 R2 on Windows Server 2008 R2` obrazu, które są dostępne w witrynie Azure marketplace.
+Istnieje płatność zgodnie z rzeczywistym użyciem, **SQL Server 2008 R2 w obrazie systemu Windows Server 2008 R2** dostępnym w witrynie Azure Marketplace.
 
-Klienci, którzy są w programie SQL Server 2008 musisz albo samodzielnie instalacji lub uaktualnienia do programu SQL Server 2008 R2. Podobnie w systemie Windows Server 2008 albo konieczne będzie wdrożenie ich maszyny Wirtualnej z niestandardowego pliku VHD lub uaktualnienia do systemu Windows Server 2008 R2.
+Klienci korzystający z SQL Server 2008 będą musieli samodzielnie zainstalować lub uaktualnić do SQL Server 2008 R2. Podobnie klienci korzystający z systemu Windows Server 2008 będą musieli wdrożyć maszynę wirtualną na podstawie niestandardowego wirtualnego dysku twardego lub uaktualnić do systemu Windows Server 2008 R2.
 
-Obrazy wdrożone za pośrednictwem portalu Marketplace są dostarczane z wstępnie zainstalowane rozszerzenie SQL IaaS. Rozszerzenie SQL IaaS jest wymagana dla automatyczne stosowanie poprawek i elastyczne Licencjonowanie. Wdrażanie maszyn wirtualnych z własnym zainstalowanych klientów, należy ręcznie zainstalować rozszerzenie SQL IaaS. Rozszerzenie SQL IaaS nie jest obsługiwane w Windows 2008.
+Obrazy wdrożone za pomocą witryny Azure Marketplace są dostarczane z wstępnie zainstalowanym rozszerzeniem SQL IaaS. Rozszerzenie SQL IaaS jest wymaganiem do elastycznego licencjonowania i zautomatyzowanego stosowania poprawek. Klienci, którzy wdrażają samoinstalujące się maszyny wirtualne, będą musieli ręcznie zainstalować rozszerzenie SQL IaaS. Rozszerzenie SQL IaaS nie jest obsługiwane w systemie Windows Server 2008.
 
-  > [!NOTE]
-  > Podczas gdy program SQL Server `Create` i `Manage` bloków będą działać przy użyciu obrazu programu SQL Server 2008 R2 w witrynie Azure portal, są następujące funkcje _nieobsługiwane_: Automatyczne kopie zapasowe, integracji usługi Azure Key Vault, usługi języka R i konfiguracji magazynu.
+> [!NOTE]
+> Mimo że SQL Server **tworzenia** i **zarządzania** blokami będzie działała z obrazem SQL Server 2008 R2 w Azure Portal, następujące funkcje _nie są obsługiwane_: Automatyczne kopie zapasowe, integracja Azure Key Vault, usługi języka R i Konfiguracja magazynu.
 
 ## <a name="licensing"></a>Licencjonowanie
-Płatność za rzeczywiste użycie programu SQL Server 2008R2 wdrożeń można przekonwertować na [korzyść użycia hybrydowego platformy Azure (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/).
+Wdrożenia z opcją płatność zgodnie z rzeczywistym użyciem SQL Server 2008 R2 mogą być konwertowane na [korzyść użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
-Aby przekonwertować licencji Software Assurance (SA) na podstawie płatność za rzeczywiste użycie, klienci powinni się rejestrować przy maszyny Wirtualnej SQL [dostawcy zasobów](virtual-machines-windows-sql-register-with-resource-provider.md). Po zarejestrowaniu dostawcy zasobów maszyny Wirtualnej SQL typu licencji SQL będzie wymienne między AHB i płatność za rzeczywiste użycie.
+Aby przekonwertować licencję opartą na oprogramowaniu Software Assurance (SA) na płatność zgodnie z rzeczywistym użyciem, klienci powinni zarejestrować się u [dostawcy zasobów](virtual-machines-windows-sql-register-with-resource-provider.md)maszyny wirtualnej SQL. Po tej rejestracji typ licencji SQL będzie można zamiennie zmienić między Korzyść użycia hybrydowego platformy Azure i płatność zgodnie z rzeczywistym użyciem.
 
-Samodzielnie zainstalowanych wystąpień programu SQL Server 2008 lub SQL Server 2008 R2, na maszynie Wirtualnej platformy Azure można rejestrować za pomocą dostawcy zasobów bazy danych SQL i konwertowanie ich typ licencji na płatność za rzeczywiste użycie.
+Samoinstalowane SQL Server 2008 lub SQL Server 2008 R2 wystąpień na maszynie wirtualnej platformy Azure można zarejestrować u dostawcy zasobów maszyny wirtualnej SQL i przekonwertować typ licencji na płatność zgodnie z rzeczywistym użyciem.
 
 ## <a name="migration"></a>Migracja
-Można migrować wystąpień EOS SQL Server na Maszynie wirtualnej platformy Azure przy użyciu metod ręcznych/przywracania kopii zapasowej. jest to najbardziej typowa metoda migracji ze środowiska lokalnego na Maszynie wirtualnej platformy Azure.
+Można migrować wystąpienia EOS SQL Server na maszynę wirtualną platformy Azure przy użyciu metod ręcznego tworzenia kopii zapasowej/przywracania. Jest to najbardziej typowa Metoda migracji z lokalizacji lokalnej do maszyny wirtualnej platformy Azure.
 
 ### <a name="azure-site-recovery"></a>Azure Site Recovery
 
-Zbiorcze migracji, zaleca się [usługi Azure Site Recovery](/azure/site-recovery/site-recovery-overview) usługi. Usługa Azure Site Recovery klientów można replikować całą maszynę Wirtualną, w tym programu SQL Server ze środowiska lokalnego na Maszynie wirtualnej platformy Azure.
+W przypadku migracji zbiorczych zaleca się [Azure Site Recovery](/azure/site-recovery/site-recovery-overview) usługi. Dzięki Azure Site Recovery klienci mogą replikować całą maszynę wirtualną, w tym SQL Server z lokalizacji lokalnej do maszyny wirtualnej platformy Azure.
 
-Serwer SQL wymaga migawek spójności aplikacji usługi Azure Site Recovery w celu zagwarantowania odzyskiwania; i usługi Azure Site Recovery obsługuje migawek spójności aplikacji za pomocą minimalny interwał na 1 godzinę. Możliwe dla programu SQL Server za pomocą usługi Azure Site Recovery migracje cel punktu odzyskiwania minimalną jest 1 godzinę i czas RTO wynosi 2 godziny, a także czas odzyskiwania serwera SQL.
+Aby zagwarantować odzyskiwanie, SQL Server wymaga spójnych Azure Site Recovery migawek na poziomie aplikacji. Azure Site Recovery obsługuje migawki spójne z aplikacjami z co najmniej 1-godzinnym interwałem. Minimalny cel punktu odzyskiwania (RPO) możliwy dla SQL Server z Azure Site Recovery migracji wynosi 1 godzinę. Cel czasu odzyskiwania (RTO) to 2 godziny, a SQL Server czas odzyskiwania.
 
-### <a name="database-migration-service"></a>Usługa migracji bazy danych
+### <a name="database-migration-service"></a>Database Migration Service
 
-[Database Migration Service](/azure/dms/dms-overview) jest opcja dla klientów, jeśli migrowanie ze środowiska lokalnego na maszynie Wirtualnej platformy Azure po uaktualnieniu programu SQL Server do programu SQL Server 2012 lub nowszym.
+[Database Migration Service](/azure/dms/dms-overview) jest opcją dla klientów w przypadku migrowania z lokalizacji lokalnej do maszyny wirtualnej platformy Azure przez uaktualnienie SQL Server do wersji 2012 lub nowszej.
 
 ## <a name="disaster-recovery"></a>Odzyskiwanie po awarii
 
-Rozwiązania odzyskiwania po awarii dla EOS programu SQL Server na maszynie Wirtualnej platformy Azure są następujące:
+Rozwiązania do odzyskiwania po awarii dla EOS SQL Server na maszynie wirtualnej platformy Azure są następujące:
 
-- **Tworzenie kopii zapasowych programu SQL Server**: Usługa Azure Backup umożliwia ochronę przed oprogramowaniem wymuszającym okup, przypadkowym usunięciem i uszkodzeniem EOS SQL Server. Rozwiązanie jest obecnie dostępna w wersji zapoznawczej dla EOS programu SQL Server i obsługuje program SQL Server 2008 i 2008 R2 systemem Windows 2008 R2 z dodatkiem SP1. Aby uzyskać więcej informacji, zobacz [artykułu](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#support-for-sql-server-2008-and-sql-server-2008-r2)
-- **Wysyłanie dziennika**: Replika wysyłania dziennika można utworzyć w innej strefie lub regionu platformy Azure za pomocą ciągłego przeprowadzać operacje przywracania, aby zmniejszyć czas RTO. Klienci będą musieli ręcznie skonfigurować wysyłania dziennika.
-- **Azure Site Recovery**: Teraz można replikować maszyny Wirtualnej między strefami i regionami przy użyciu replikacji usługi Azure Site Recovery. Serwer SQL wymaga migawki spójne z aplikacji zagwarantować odzyskiwania na wypadek awarii. Usługa Azure Site Recovery zapewnia minimalne RPO 1-godzinnego i 2-godzinnego + czas odzyskiwania serwera SQL cel czasu odzyskiwania dla EOS programu SQL Server odzyskiwania po awarii.
+- **SQL Server kopie zapasowe**: Użyj Azure Backup, aby pomóc w ochronie SQL Server EOS w odniesieniu do oprogramowania wymuszającego okup, przypadkowego usunięcia i uszkodzenia. Rozwiązanie jest obecnie dostępne w wersji zapoznawczej usługi EOS SQL Server i obsługuje SQL Server 2008 i 2008 R2 uruchomione w systemie Windows 2008 R2 z dodatkiem SP1. Aby uzyskać więcej informacji, zobacz [ten artykuł](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#support-for-sql-server-2008-and-sql-server-2008-r2).
+- **Wysyłanie dziennika**: Replikę wysyłania dziennika można utworzyć w innej strefie lub regionie platformy Azure z ciągłymi przywracaniami, aby zmniejszyć RTO. Musisz ręcznie skonfigurować wysyłanie dziennika.
+- **Azure Site Recovery**: Możesz replikować maszynę wirtualną między strefami i regionami za poorednictwem Azure Site Recovery replikacji. SQL Server wymaga migawek spójnych z aplikacjami w celu zagwarantowania odzyskiwania w przypadku awarii. Azure Site Recovery oferuje co najmniej 1-godzinny cel punktu odzyskiwania oraz 2-godzinny (plus SQL Server) RTO na potrzeby odzyskiwania po awarii SQL Server.
 
 ## <a name="security-patching"></a>Stosowanie poprawek zabezpieczeń
-Aktualizacje zabezpieczeń dla maszyn wirtualnych programu SQL Server będą dostarczane za pośrednictwem kanałów Microsoft Update po maszynę Wirtualną programu SQL Server został zarejestrowany przy użyciu języka SQL [dostawcy zasobów](virtual-machines-windows-sql-register-with-resource-provider.md). Poprawki albo mogą być pobierane, ręcznie lub automatycznie.
+Rozszerzone aktualizacje zabezpieczeń dla maszyn wirtualnych SQL Server są dostarczane za pośrednictwem kanałów Microsoft Update po zarejestrowaniu maszyny wirtualnej SQL Server z [dostawcą zasobów](virtual-machines-windows-sql-register-with-resource-provider.md)maszyny wirtualnej SQL. Poprawki można pobrać ręcznie lub automatycznie.
 
-Opcja **Automatyczne stosowanie poprawek** jest domyślnie włączona. Automatyczne stosowanie poprawek umożliwia platformie Azure automatyczne stosowanie poprawek programu SQL Server i systemu operacyjnego. Jeśli zainstalowano rozszerzenie programu SQL IaaS, można określić dzień tygodnia, godzinę i czas trwania okna obsługi. Platforma Azure stosuje poprawki w tym oknie obsługi. Harmonogram okna obsługi korzysta z ustawień regionalnych godziny maszyny wirtualnej.  Aby uzyskać więcej informacji, zobacz [Automated Patching for SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-automated-patching.md) (Automatyczne stosowanie poprawek programu SQL Server w usłudze Azure Virtual Machines).
+Opcja *Automatyczne stosowanie poprawek* jest domyślnie włączona. Automatyczne stosowanie poprawek umożliwia platformie Azure automatyczne stosowanie poprawek programu SQL Server i systemu operacyjnego. Jeśli zainstalowano rozszerzenie IaaS SQL Server, można określić dzień tygodnia, godzinę i czas trwania okna obsługi. Platforma Azure stosuje poprawki w tym oknie obsługi. Harmonogram okna obsługi korzysta z ustawień regionalnych godziny maszyny wirtualnej.  Aby uzyskać więcej informacji, zobacz [zautomatyzowane stosowanie poprawek dla SQL Server w usłudze Azure Virtual Machines](virtual-machines-windows-sql-automated-patching.md).
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Migrowanie maszyn wirtualnych SQL Server na platformę Azure
+Migrowanie maszyny wirtualnej SQL Server na platformę Azure:
 
 * [Migrowanie bazy danych programu SQL Server do programu SQL Server na maszynie wirtualnej platformy Azure](virtual-machines-windows-migrate-sql.md)
 
-Wprowadzenie do programu SQL Server na maszynach wirtualnych platformy Azure:
+Rozpocznij pracę z usługą SQL Server na platformie Azure Virtual Machines:
 
 * [Tworzenie maszyny wirtualnej z programem SQL Server w witrynie Azure Portal](quickstart-sql-vm-create-portal.md)
 
-Uzyskaj odpowiedzi na często zadawane pytania dotyczące maszyn wirtualnych SQL:
+Uzyskaj odpowiedzi na często zadawane pytania dotyczące SQL Server maszyn wirtualnych:
 
-* [Często zadawane pytania dotyczące programu SQL Server w usłudze Azure Virtual Machines](virtual-machines-windows-sql-server-iaas-faq.md)
+* [Często zadawane pytania dotyczące SQL Server na platformie Azure Virtual Machines](virtual-machines-windows-sql-server-iaas-faq.md)

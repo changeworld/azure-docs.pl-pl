@@ -1,7 +1,7 @@
 ---
-title: Tworzenie konfiguracji DSC w usługi Azure Automation stanu Configuration (DSC) przy użyciu zasoby złożone
-description: Dowiedz się, jak tworzyć konfiguracje za pomocą zasoby złożone w usługi Azure Automation stanu Configuration (DSC)
-keywords: PowerShell dsc, konfiguracja żądanego stanu, konfiguracji dsc programu powershell, azure, zasoby złożone
+title: Tworzenie konfiguracji DSC w Azure Automation konfiguracji stanu (DSC) przy użyciu zasobów złożonych
+description: Dowiedz się, jak redagować konfiguracje przy użyciu zasobów złożonych w Azure Automation konfiguracji stanu (DSC)
+keywords: PowerShell DSC, Konfiguracja żądanego stanu, środowisko PowerShell DSC Azure, zasoby złożone
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -10,43 +10,44 @@ ms.author: robreed
 ms.date: 08/21/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 64588829cec964e52dcb44465869e0090f36f9f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e153186a3917be3aa94cb663dec58bc3db46aae9
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61303965"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850413"
 ---
-# <a name="composing-dsc-configurations-in-azure-automation-state-configuration-dsc-using-composite-resources"></a>Tworzenie konfiguracji DSC w usługi Azure Automation stanu Configuration (DSC) przy użyciu zasoby złożone
+# <a name="composing-dsc-configurations-in-azure-automation-state-configuration-dsc-using-composite-resources"></a>Tworzenie konfiguracji DSC w Azure Automation konfiguracji stanu (DSC) przy użyciu zasobów złożonych
 
-Gdy zasób musi być zarządzane za pomocą więcej niż jednego żądanego stanu konfiguracji configuration (DSC), jest użycie najlepszej ścieżki [zasoby złożone](/powershell/dsc/authoringresourcecomposite). Złożone zasobów jest Konfiguracja zagnieżdżone i sparametryzowane używany jako zasób DSC w innej konfiguracji. Umożliwia to tworzenie złożonych konfiguracji zezwalając bazowego zasoby złożone (sparametryzowanych konfiguracji) zarządzane oddzielnie i wbudowane.
+Gdy zasób musi być zarządzany z więcej niż jedną konfiguracją konfiguracja konfiguracji stanu (DSC), najlepszą ścieżką jest użycie [zasobów złożonych](/powershell/dsc/authoringresourcecomposite). Zasób złożony jest zagnieżdżoną i sparametryzowana konfiguracją używaną jako zasób DSC w innej konfiguracji. Pozwala to na tworzenie złożonych konfiguracji, jednocześnie umożliwiając zarządzanie i kompilowanie bazowych zasobów złożonych (Konfiguracja sparametryzowane).
 
-Usługa Azure Automation umożliwia [importu i kompilacji zasoby złożone](automation-dsc-compile.md#composite-resources). Po zasoby złożone zostały zaimportowane do konta usługi Automation, jesteś w stanie używać **konfiguracji Compose** środowiska w **Konfiguracja stanu (DSC)** strony.
+Azure Automation umożliwia [Importowanie i kompilowanie zasobów złożonych](automation-dsc-compile.md#compiling-configurations-in-azure-automation-that-contain-composite-resources).
+Gdy zasoby złożone zostały zaimportowane na konto usługi Automation, można użyć funkcji tworzenia **konfiguracji** na stronie **Konfiguracja stanu (DSC)** .
 
-## <a name="composing-a-configuration-from-composite-resources"></a>Tworzenie konfiguracji z zasoby złożone
+## <a name="composing-a-configuration-from-composite-resources"></a>Redagowanie konfiguracji z zasobów złożonych
 
-Zanim będzie można przypisać konfiguracji z zasoby złożone w witrynie Azure portal, należy go utworzyć. Można to zrobić przy użyciu **konfiguracji Compose** na **Konfiguracja stanu (DSC)** stronie podczas albo **konfiguracje** lub **Compiled konfiguracje** karty.
+Aby można było przypisać konfigurację z zasobów złożonych w Azure Portal, należy ją utworzyć. Można to zrobić, korzystając z **konfiguracji redagowania** na stronie **Konfiguracja stanu (DSC)** , a także na kartach **konfiguracje** lub skompilowane **konfiguracje** .
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Po lewej stronie, kliknij przycisk **wszystkie zasoby** i następnie nazwę konta usługi Automation.
-1. Na **konta usługi Automation** wybierz opcję **State configuration (DSC)** w obszarze **zarządzania konfiguracją**.
-1. Na **State configuration (DSC)** kliknij albo **konfiguracje** lub **skompilowany konfiguracje** , a następnie kliknij **tworzenia konfiguracji**  w menu u góry strony.
-1. Na **podstawy** kroku, podaj nową nazwę konfiguracji (wymagane) i kliknij w dowolnym miejscu w wierszu wszystkie złożonego zasoby, które chcesz uwzględnić w nowej konfiguracji, a następnie kliknij przycisk **dalej** lub kliknij przycisk **Kod źródłowy** kroku. Dla następujących kroków, wybraliśmy **PSExecutionPolicy** i **RenameAndDomainJoin** zasoby złożone.
-   ![Zrzut ekranu przedstawiający kroku podstawowe informacje na stronie konfiguracji compose](./media/compose-configurationwithcompositeresources/compose-configuration-basics.png)
-1. **Kod źródłowy** kroku przedstawiono, jak wygląda złożone konfiguracji wybrane zasoby złożone. Możesz zobaczyć scalanie wszystkie parametry i jak są one przekazywane do złożonych zasobu. Po zakończeniu przeglądania nowego kodu źródłowego, kliknij przycisk **dalej** lub kliknij przycisk **parametry** kroku.
-   ![Zrzut ekranu przedstawiający kroku kodu źródłowego na stronie konfiguracji compose](./media/compose-configurationwithcompositeresources/compose-configuration-sourcecode.png)
-1. Na **parametry** kroku parametru, który ma każdy zasób złożonego jest widoczna, dzięki czemu można podać. Jeśli parametr ma opis, jest on wyświetlany obok pola parametru. Jeśli pole zostanie **PSCredential** parametr typu, na liście rozwijanej, aby skonfigurować, zawiera listę **poświadczeń** obiektów w bieżącym kontem usługi Automation. A **+ Dodaj poświadczenie** opcja jest również być dostępne. Po ich podaniu wszystkich wymaganych parametrów kliknij **Zapisz i Kompiluj**.
-   ![Zrzut ekranu przedstawiający kroku parametrów na stronie konfiguracji compose](./media/compose-configurationwithcompositeresources/compose-configuration-parameters.png)
+1. Po lewej stronie kliknij pozycję **wszystkie zasoby** , a następnie nazwę konta usługi Automation.
+1. Na stronie **konto usługi Automation** wybierz pozycję **Konfiguracja stanu (DSC)** w obszarze **Zarządzanie konfiguracją**.
+1. Na stronie **Konfiguracja stanu (DSC)** kliknij kartę **konfiguracje** lub **skompilowane konfiguracje** , a następnie kliknij pozycję **Utwórz konfigurację** w menu w górnej części strony.
+1. Na etapie **podstawowe** Podaj nową nazwę konfiguracji (wymagana) i kliknij w dowolnym miejscu w wierszu każdego zasobu złożonego, który ma zostać uwzględniony w nowej konfiguracji, a następnie kliknij przycisk **dalej** lub kliknij krok **kod źródłowy** . W przypadku następujących kroków wybieramy zasoby złożone **PSExecutionPolicy** i **RenameAndDomainJoin** .
+   ![Zrzut ekranu przedstawiający podstawowe kroki strony Konfiguracja redagowania](./media/compose-configurationwithcompositeresources/compose-configuration-basics.png)
+1. Krok **kod źródłowy** pokazuje, jak wygląda pozłożona konfiguracja wybranych zasobów złożonych. Można zobaczyć scalanie wszystkich parametrów i sposób przekazywania ich do zasobu złożonego. Po zakończeniu przeglądania nowego kodu źródłowego kliknij przycisk **dalej** lub kliknij etap **parametrów** .
+   ![Zrzut ekranu przedstawiający krok kod źródłowy na stronie redagowanie konfiguracji](./media/compose-configurationwithcompositeresources/compose-configuration-sourcecode.png)
+1. W kroku **Parametry** , parametr, który został uwidoczniony każdy zasób złożony, aby można było je udostępnić. Jeśli parametr ma opis, zostanie wyświetlony obok pola parametru. Jeśli pole jest parametrem typu **PSCredential** , lista rozwijana do skonfigurowania zawiera listę obiektów **poświadczeń** na bieżącym koncie usługi Automation. Dostępna jest również opcja **+ Add a Credential** . Po podaniu wszystkich wymaganych parametrów kliknij przycisk **Zapisz i skompiluj**.
+   ![Zrzut ekranu przedstawiający krok parametrów na stronie Konfiguracja redagowania](./media/compose-configurationwithcompositeresources/compose-configuration-parameters.png)
 
-Po zapisaniu nowej konfiguracji jest przesyłany w kompilacji. Podobnie jak wszelkie zaimportowanej konfiguracji można wyświetlić stan zadania kompilacji. Aby uzyskać więcej informacji, zobacz [wyświetlanie zadanie kompilacji](automation-dsc-getting-started.md#viewing-a-compilation-job).
+Po zapisaniu nowej konfiguracji zostanie ona przesłana do kompilacji. Stan zadania kompilacji można wyświetlić jak każda zaimportowana konfiguracja. Aby uzyskać więcej informacji, zobacz [Wyświetlanie zadania kompilacji](automation-dsc-getting-started.md#viewing-a-compilation-job).
 
-Po pomyślnym zakończeniu kompilacji nowej konfiguracji pojawia się w **skompilowany konfiguracje** kartę. Gdy jest ona widoczna na tej karcie, może ona zostać przypisana do węzła zarządzanych przy użyciu kroków w [ponowne przypisywanie węzła do innego węzła konfiguracji](automation-dsc-getting-started.md#reassigning-a-node-to-a-different-node-configuration).
+Po pomyślnym zakończeniu kompilacji Nowa konfiguracja zostanie wyświetlona na karcie **skompilowane konfiguracje** . Gdy jest on widoczny na tej karcie, można go przypisać do węzła zarządzanego przy użyciu kroków w temacie [ponowne przypisywanie węzła do innej konfiguracji węzła](automation-dsc-getting-started.md#reassigning-a-node-to-a-different-node-configuration).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby rozpocząć pracę, zobacz [wprowadzenie do usługi Azure Automation stanu konfiguracji](automation-dsc-getting-started.md)
-- Aby dowiedzieć się, jak dodawanie węzłów, zobacz [dołączanie maszyn w celu zarządzania usługi Azure Automation stanu konfiguracji](automation-dsc-onboarding.md)
-- Aby dowiedzieć się więcej na temat kompilowanie konfiguracji DSC, dzięki czemu można je przypisać do węzłów docelowych, zobacz [kompilowanie konfiguracji w konfiguracji stan automatyzacji platformy Azure](automation-dsc-compile.md)
-- Dokumentacja poleceń cmdlet programu PowerShell, można zobaczyć [poleceń cmdlet usługi Azure Automation stanu konfiguracji](/powershell/module/azurerm.automation/#automation)
-- Aby uzyskać informacje o cenach, zobacz [cennika usługi Azure Automation stanu konfiguracji](https://azure.microsoft.com/pricing/details/automation/)
-- Aby wyświetlić przykład użycia usługi Azure Automation stanu konfiguracji w potoku ciągłego wdrażania, zobacz [ciągłe przy użyciu usługi Azure Automation stan konfiguracji wdrożenia i narzędzia Chocolatey](automation-dsc-cd-chocolatey.md)
+- Aby rozpocząć, zobacz [wprowadzenie do konfiguracji stanu Azure Automation](automation-dsc-getting-started.md)
+- Aby dowiedzieć się, jak dołączyć węzły, zobacz sekcję dołączanie [maszyn w celu zarządzania według konfiguracji stanu Azure Automation](automation-dsc-onboarding.md)
+- Aby dowiedzieć się więcej na temat kompilowania konfiguracji DSC, aby można było przypisać je do węzłów docelowych, zobacz [Kompilowanie konfiguracji w konfiguracji stanu Azure Automation](automation-dsc-compile.md)
+- Aby uzyskać informacje dotyczące poleceń cmdlet programu PowerShell, zobacz temat [polecenia cmdlet konfiguracji stanu Azure Automation](/powershell/module/azurerm.automation/#automation)
+- Aby uzyskać informacje o cenach, zobacz [Cennik konfiguracji stanu Azure Automation](https://azure.microsoft.com/pricing/details/automation/)
+- Aby zapoznać się z przykładem użycia konfiguracji stanu Azure Automation w potoku ciągłego wdrażania, zobacz [wdrażanie ciągłe przy użyciu konfiguracji stanu Azure Automation i czekolady](automation-dsc-cd-chocolatey.md)

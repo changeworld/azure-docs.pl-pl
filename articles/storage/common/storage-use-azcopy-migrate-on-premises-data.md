@@ -1,7 +1,6 @@
 ---
 title: 'Samouczek: Migracja danych lokalnych do usługi Azure Storage za pomocą narzędzia AzCopy | Microsoft Docs'
 description: W tym samouczku narzędzie AzCopy zostanie użyte do migracji lub kopiowania danych z lub do obiektu blob, tabeli i zawartości pliku. W łatwy sposób przeprowadź migrację danych z magazynu lokalnego do usługi Azure Storage.
-services: storage
 author: normesta
 ms.service: storage
 ms.topic: tutorial
@@ -9,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 193c00354b6222152e26476d0b06cfb1555c207e
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 5f09ae7dc625ad579e31fd49d70331f30e6a708a
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754880"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68844903"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-by-using-azcopy"></a>Samouczek: Migracja danych lokalnych do magazynu w chmurze za pomocą narzędzia AzCopy
 
@@ -32,7 +31,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten samouczek, Pobierz najnowszą wersję narzędzia AzCopy. Zobacz [Rozpoczynanie pracy za pomocą narzędzia AzCopy](storage-use-azcopy-v10.md).
+Aby ukończyć ten samouczek, Pobierz najnowszą wersję programu AzCopy. Zobacz Rozpoczynanie [pracy z usługą AzCopy](storage-use-azcopy-v10.md).
 
 W systemie Windows konieczne będzie użycie polecenia [Schtasks](https://msdn.microsoft.com/library/windows/desktop/bb736357(v=vs.85).aspx), ponieważ w tym samouczku jest ono używane w celu zaplanowania zadania. Użytkownicy systemu Linux zamiast tego użyją polecenia crontab.
 
@@ -51,31 +50,31 @@ Wykonaj następujące kroki, aby utworzyć kontener:
  
 Nazwy kontenerów muszą zaczynać się literą lub cyfrą. Mogą one zawierać tylko litery, cyfry i znaki łącznika (-). Aby uzyskać dodatkowe informacje o regułach nazewnictwa kontenerów i obiektów blob, zobacz temat [Naming and Referencing Containers, Blobs, and Metadata (Nazewnictwo i odwoływanie się do kontenerów, obiektów blob i metadanych)](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
-## <a name="download-azcopy"></a>Pobierz narzędzia AzCopy
+## <a name="download-azcopy"></a>Pobierz AzCopy
 
-Pobierz plik wykonywalny V10 narzędzia AzCopy.
+Pobierz plik wykonywalny AzCopy v10.
 
-- [Windows](https://aka.ms/downloadazcopy-v10-windows) (zip)
-- [Linux](https://aka.ms/downloadazcopy-v10-linux) (docelowy)
-- [System MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
+- [System Windows](https://aka.ms/downloadazcopy-v10-windows) kodu
+- System [Linux](https://aka.ms/downloadazcopy-v10-linux) tar
+- [MacOS](https://aka.ms/downloadazcopy-v10-mac) kodu
 
-Umieść plik narzędzia AzCopy w dowolnym miejscu na komputerze. Dodaj lokalizację pliku do zmiennej path systemu, więc, że możesz zapoznać się z tego pliku wykonywalnego z dowolnego folderu na komputerze.
+Umieść plik AzCopy w dowolnym miejscu na komputerze. Dodaj lokalizację pliku do zmiennej PATH systemu, aby można było odwołać się do tego pliku wykonywalnego z dowolnego folderu na komputerze.
 
 ## <a name="authenticate-with-azure-ad"></a>Uwierzytelnianie za pomocą usługi Azure AD
 
-Najpierw przypisz [Współautor danych obiektu Blob magazynu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor) roli do Twojej tożsamości. Zobacz [udzielić dostępu do obiektów blob i kolejek danych Azure przy użyciu funkcji RBAC w witrynie Azure portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal).
+Najpierw Przypisz rolę [współautor danych obiektów blob magazynu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor) do swojej tożsamości. Zobacz [udzielanie dostępu do obiektów blob platformy Azure i danych w kolejce przy użyciu RBAC w Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal).
 
-Następnie otwórz wiersz polecenia, wpisz następujące polecenie i naciśnij klawisz ENTER.
+Następnie otwórz wiersz polecenia, wpisz poniższe polecenie i naciśnij klawisz ENTER.
 
 ```azcopy
 azcopy login
 ```
 
-To polecenie zwraca kod uwierzytelniania i adres URL witryny sieci Web. Otwórz witrynę sieci Web, należy podać kod, a następnie wybierz **dalej** przycisku.
+To polecenie zwraca kod uwierzytelniania i adres URL witryny sieci Web. Otwórz witrynę sieci Web, podaj kod, a następnie wybierz przycisk **dalej** .
 
 ![Tworzenie kontenera](media/storage-use-azcopy-v10/azcopy-login.png)
 
-Zostanie wyświetlone okno logowania. W tym oknie należy zalogować się do konta platformy Azure przy użyciu poświadczeń konta platformy Azure. Po pomyślnym zalogowaniu, możesz zamknąć okno przeglądarki i rozpocząć korzystanie z narzędzia AzCopy.
+Zostanie wyświetlone okno logowania. W tym oknie Zaloguj się do konta platformy Azure przy użyciu poświadczeń konta platformy Azure. Po pomyślnym zalogowaniu możesz zamknąć okno przeglądarki i zacząć korzystać z AzCopy.
 
 ## <a name="upload-contents-of-a-folder-to-blob-storage"></a>Przekazywanie zawartości folderu do magazynu obiektów blob
 
@@ -85,31 +84,31 @@ Za pomocą narzędzia AzCopy możesz przekazać wszystkie pliki w folderze do ma
 azcopy copy "<local-folder-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" --recursive=true
 ```
 
-* Zastąp `<local-folder-path>` zastępczego ścieżkę do folderu, który zawiera pliki (na przykład: `C:\myFolder` lub `/mnt/myFolder`).
+* Zastąp `C:\myFolder` `/mnt/myFolder`symbol zastępczy ścieżką do folderu, który zawiera pliki (na przykład: lub). `<local-folder-path>`
 
 * Zastąp symbol zastępczy `<storage-account-name>` nazwą konta magazynu.
 
-* Zastąp `<container-name>` zastępczego nazwę kontenera, który został utworzony.
+* Zastąp `<container-name>` symbol zastępczy nazwą utworzonego kontenera.
 
-Aby przekazać zawartość określonego katalogu do lokalizacji magazynu obiektów Blob, należy określić `--recursive` opcji. Po uruchomieniu narzędzia AzCopy przy użyciu tej opcji wszystkie podfoldery i pliki również zostaną przekazane.
+Aby przekazać zawartość określonego katalogu cyklicznie do magazynu obiektów blob, określ `--recursive` opcję. Po uruchomieniu AzCopy z tą opcją wszystkie podfoldery i ich pliki są również przekazywane.
 
 ## <a name="upload-modified-files-to-blob-storage"></a>Przekazywanie zmodyfikowanych plików do magazynu obiektów blob
 
-Narzędzia AzCopy można użyć, aby przekazać pliki, w oparciu o czas ostatniej modyfikacji. 
+Można użyć AzCopy do przekazywania plików na podstawie ich czasu ostatniej modyfikacji. 
 
-Aby z tego skorzystać, zmodyfikuj pliki lub utwórz nowe pliki w katalogu źródłowym do celów testowych. Następnie należy użyć narzędzia AzCopy `sync` polecenia.
+Aby z tego skorzystać, zmodyfikuj pliki lub utwórz nowe pliki w katalogu źródłowym do celów testowych. Następnie użyj polecenia AzCopy `sync` .
 
 ```AzCopy
 azcopy sync "<local-folder-path>" "https://<storage-account-name>.blob.core.windows.net/<container-name>" --recursive=true
 ```
 
-* Zastąp `<local-folder-path>` zastępczego ścieżkę do folderu, który zawiera pliki (na przykład: `C:\myFolder` lub `/mnt/myFolder`.
+* Zastąp `C:\myFolder` `/mnt/myFolder`symbol zastępczy ścieżką do folderu, który zawiera pliki (na przykład: lub. `<local-folder-path>`
 
 * Zastąp symbol zastępczy `<storage-account-name>` nazwą konta magazynu.
 
-* Zastąp `<container-name>` zastępczego nazwę kontenera, który został utworzony.
+* Zastąp `<container-name>` symbol zastępczy nazwą utworzonego kontenera.
 
-Aby dowiedzieć się więcej na temat `sync` polecenia, zobacz [synchronizować pliki](storage-use-azcopy-blobs.md#synchronize-files).
+Aby dowiedzieć się więcej `sync` na temat tego polecenia, zobacz [Synchronizing Files](storage-use-azcopy-blobs.md#synchronize-files).
 
 ## <a name="create-a-scheduled-task"></a>Tworzenie zaplanowanego zadania
 
@@ -117,10 +116,10 @@ Możliwe jest utworzenie zaplanowanego zadania lub zadania cron służącego do 
 
 Skopiuj polecenia narzędzia AzCopy do edytora tekstu. Zaktualizuj wartości parametrów polecenia narzędzia AzCopy na odpowiednie wartości. Zapisz plik jako `script.sh` (system Linux) lub `script.bat` (system Windows) na potrzeby narzędzia AzCopy. 
 
-W poniższych przykładach założono, że nosi nazwę folderu `myFolder`, nazwę konta magazynu jest `mystorageaccount` i Twoja nazwa kontenera jest `mycontainer`.
+`myFolder`W tych przykładach przyjęto założenie, że folder ma nazwę, `mystorageaccount` nazwa konta magazynu to `mycontainer`i nazwa kontenera.
 
 > [!NOTE]
-> W przykładzie Linux dołącza token sygnatury dostępu Współdzielonego. Należy podać jedną w poleceniu. Bieżąca wersja programu AzCopy V10 nie obsługuje uwierzytelniania usługi Azure AD w zadania cron.
+> Przykład systemu Linux dołącza token SAS. Musisz podać ją w poleceniu. Bieżąca wersja programu AzCopy v10 nie obsługuje autoryzacji usługi Azure AD w zadaniach firmy cronus.
 
 # <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
@@ -151,7 +150,7 @@ Określenie wyrażenia cron `*/5 * * * *` w poleceniu wskazuje, że skrypt powł
 
 Aby utworzyć zaplanowane zadanie w systemie Windows, wpisz następujące polecenie w wierszu polecenia lub w programie PowerShell:
 
-W tym przykładzie przyjęto założenie, skrypt znajduje się na dysku głównym komputera, że skrypt mogą znajdować się gdziekolwiek zamiaru.
+W tym przykładzie przyjęto założenie, że skrypt znajduje się na dysku głównym komputera, ale skrypt może znajdować się w dowolnym miejscu.
 
 ```cmd
 schtasks /CREATE /SC minute /MO 5 /TN "AzCopy Script" /TR C:\script.bat
@@ -169,20 +168,20 @@ Aby dowiedzieć się więcej o tworzeniu zaplanowanego zadania w systemie Window
 
 Aby sprawdzić, czy zaplanowane zadanie lub zadanie cron jest działa poprawnie, utwórz nowe pliki w katalogu `myFolder`. Poczekaj pięć minut, aby sprawdzić, czy nowe pliki zostały przekazane do konta magazynu. Przejdź do katalogu dzienników, aby wyświetlić dzienniki danych wyjściowych zaplanowanego zadania lub zadania cron.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się więcej o sposobach przenoszenia danych lokalnych do usługi Azure Storage i na odwrót, kliknij następujący link:
 
 * [Przenoszenie danych do i z usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-moving-data?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).  
 
-Aby uzyskać więcej informacji na temat narzędzia AzCopy Zobacz dowolnego z poniższych artykułów:
+Aby uzyskać więcej informacji na temat AzCopy, zobacz dowolny z następujących artykułów:
 
-* [Rozpoczynanie pracy za pomocą narzędzia AzCopy](storage-use-azcopy-v10.md)
+* [Wprowadzenie do AzCopy](storage-use-azcopy-v10.md)
 
-* [Transferowanie danych za pomocą narzędzia AzCopy i blob storage](storage-use-azcopy-blobs.md)
+* [Transferowanie danych za pomocą AzCopy i magazynu obiektów BLOB](storage-use-azcopy-blobs.md)
 
-* [Transferowanie danych za pomocą narzędzia AzCopy oraz plików magazynu](storage-use-azcopy-files.md)
+* [Transferowanie danych za pomocą AzCopy i magazynu plików](storage-use-azcopy-files.md)
 
-* [Transferowanie danych za pomocą narzędzia AzCopy i Amazon S3 przedziałów](storage-use-azcopy-s3.md)
+* [Transferowanie danych za pomocą zasobników AzCopy i Amazon S3](storage-use-azcopy-s3.md)
  
-* [Konfigurowanie optymalizacji i rozwiązywanie problemów z narzędzia AzCopy](storage-use-azcopy-configure.md)
+* [Konfigurowanie, optymalizowanie i rozwiązywanie problemów z AzCopy](storage-use-azcopy-configure.md)

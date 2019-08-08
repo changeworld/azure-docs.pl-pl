@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 05/21/2019
-ms.openlocfilehash: fc3f88e627e0ce19195f6df947d4f11f5f8a73ae
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.date: 08/06/2019
+ms.openlocfilehash: cb1fd8e98a5eba350774ff6ccb8f86dcd3e4d734
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772753"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856212"
 ---
 # <a name="what-is-an-azure-machine-learning-service-workspace"></a>Co to jest obszar roboczy usługi Azure Machine Learning?
 
@@ -65,6 +65,9 @@ Zadania uczenia maszynowego odczytują i/lub zapisują artefakty w obszarze robo
 + Wyświetlanie artefaktów uczenia maszynowego, takich jak eksperymenty, potoki, modele, wdrożenia.
 + Śledź i monitoruj modele.
 
+
+
+
 ## <a name="workspace-management"></a>Zarządzanie obszarem roboczym
 
 Można również wykonać następujące zadania zarządzania obszarem roboczym:
@@ -76,7 +79,14 @@ Można również wykonać następujące zadania zarządzania obszarem roboczym:
 | Zarządzanie dostępem do obszaru roboczego    | **&check;**   | |  **&check;**    |
 | Tworzenie maszyny wirtualnej notesu | **&check;**   | |     |
 
-Rozpocznij pracę z usługą, [tworząc obszar roboczy](setup-create-workspace.md).
+### <a name='create-workspace'></a>Tworzenie obszaru roboczego
+
+Istnieje wiele sposobów tworzenia obszaru roboczego.
+
+* Użyj [Azure Portal](how-to-manage-workspace.md) dla interfejsu typu punkt-i-kliknięcie, aby przeprowadzić Cię przez każdy krok.
+* Użyj [zestawu SDK Azure Machine Learning dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) , aby utworzyć obszar roboczy na bieżąco ze skryptów języka Python lub notesów Jupiter
+* Użyj [szablonu Azure Resource Manager](how-to-create-workspace-template.md) lub [interfejsu wiersza polecenia Azure Machine Learning](reference-azure-machine-learning-cli.md) , gdy zachodzi potrzeba automatyzacji lub dostosowania tworzenia przy użyciu firmowych standardów zabezpieczeń.
+* Jeśli pracujesz w Visual Studio Code, użyj [rozszerzenia vs Code](how-to-vscode-tools.md#get-started-with-azure-machine-learning).
 
 ## <a name="resources"></a>Skojarzone zasoby
 
@@ -95,6 +105,6 @@ Gdy tworzysz nowy obszar roboczy, automatycznie tworzy kilka zasobów platformy 
 Aby rozpocząć pracę z usługą Azure Machine Learning, zobacz:
 
 + [Przegląd usługi Azure Machine Learning](overview-what-is-azure-ml.md)
-+ [Tworzenie obszaru roboczego](setup-create-workspace.md)
++ [Tworzenie obszaru roboczego](how-to-manage-workspace.md)
 + [Zarządzanie obszarem roboczym](how-to-manage-workspace.md)
 + [Samouczek: trenowanie modelu](tutorial-train-models-with-aml.md)

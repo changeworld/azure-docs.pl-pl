@@ -4,14 +4,14 @@ description: Adresy często zadawanych pytań dotyczących Azure Migrate
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 08/07/2019
 ms.author: snehaa
-ms.openlocfilehash: 0708502087ae6880d9559cf17f0ba9982b2ba040
-ms.sourcegitcommit: 57a7d4f67635212f5bf0c56e58fd87c8ec366f2c
+ms.openlocfilehash: bf591306220b2c8c1e6c8166686836d96432fc7d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68372490"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856272"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate — często zadawane pytania
 
@@ -71,7 +71,8 @@ Urządzenie łączy się z vCenter Server (port 443) przy użyciu poświadczeń 
 
 ### <a name="can-i-connect-the-same-appliance-to-multiple-vcenter-servers"></a>Czy można połączyć to samo urządzenie z wieloma serwerami vCenter?
 
-Tak, pojedyncze urządzenie Azure Migrate może służyć do odnajdywania wielu serwerów vCenter, ale nie współbieżnie. Najpierw należy przeprowadzić odnajdywanie.
+Nie. Istnieje mapowanie jeden do jednego między urządzeniem i vCenter Server. Jeśli konieczne jest odnajdywanie maszyn wirtualnych na wielu serwerach vCenter, należy wdrożyć wiele urządzeń. 
+
 
 ### <a name="i-changed-my-machine-size-can-i-rerun-an-assessment"></a>Zmieniono rozmiar maszyny. Czy mogę ponownie uruchomić ocenę?
 
@@ -189,5 +190,5 @@ Możesz [wizualizować zależności dla grup](https://docs.microsoft.com/azure/m
 
 Azure Migrate: Migracja serwera korzysta z aparatu replikacji Site Recovery na potrzeby migracji maszyn wirtualnych VMware, migracji maszyn wirtualnych funkcji Hyper-V i migracji serwerów fizycznych na platformę Azure. Opcja bezagentowego migrowania maszyn wirtualnych VMware jest natywnie wbudowana w ramach migracji serwera.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Przeczytaj [omówienie Azure Migrate](migrate-services-overview.md)

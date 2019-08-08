@@ -4,17 +4,17 @@ ms.author: crdun
 ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
-ms.openlocfilehash: 83a0adf98298225b52d3b4fdfa2ca861ebb70bb9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 346f63109e673692d425ede6bdbcb6f633af80bb
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183917"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68857458"
 ---
-**Zaplecze platformy .NET (C#)** :
+**ZapleczeC#platformy .NET ()** :
   
-1. W programie Visual Studio, kliknij prawym przyciskiem myszy projekt serwera, a następnie kliknij przycisk **Zarządzaj pakietami NuGet**, wyszukaj `Microsoft.Azure.NotificationHubs`, następnie kliknij przycisk **zainstalować**. Spowoduje to zainstalowanie biblioteki usługi Notification Hubs do wysyłania powiadomień z zaplecza.
-2. W projekcie programu Visual Studio wewnętrznej bazy danych otwórz **kontrolerów** > **TodoItemController.cs**. W górnej części pliku Dodaj następujący kod `using` instrukcji:
+1. W programie Visual Studio kliknij prawym przyciskiem myszy projekt serwera, kliknij polecenie **Zarządzaj pakietami NuGet**, Wyszukaj `Microsoft.Azure.NotificationHubs`, a następnie kliknij przycisk **Instaluj**. Spowoduje to zainstalowanie biblioteki Notification Hubs na potrzeby wysyłania powiadomień z zaplecza.
+2. W projekcie programu Visual Studio w zapleczu, > Otwórz pozycję controllers**TodoItemController.cs**. W górnej części pliku Dodaj następującą `using` instrukcję:
 
     ```csharp
     using Microsoft.Azure.Mobile.Server.Config;
@@ -63,13 +63,13 @@ ms.locfileid: "67183917"
     }
     ```
 
-4. Ponownie opublikować projekt serwera.
+4. Opublikuj ponownie projekt serwera.
 
 **Wewnętrzna baza danych Node.js**:
 
-1. Jeśli użytkownik jeszcze tego nie zrobiono, [pobieranie projektu Szybki Start](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart) lub użyj innego [edytora online w witrynie Azure portal](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).    
+1. Skonfiguruj projekt zaplecza.    
 
-2. Zastąp skrypt tabeli todoitem.js następującym kodem:
+2. Zastąp skrypt tabeli TodoItem. js następującym kodem:
 
     ```javascript
     var azureMobileApps = require('azure-mobile-apps'),
@@ -110,4 +110,4 @@ ms.locfileid: "67183917"
     module.exports = table;
     ```
 
-3. Podczas edytowania pliku na komputerze lokalnym, należy ponownie opublikować projekt serwera.
+3. Podczas edytowania pliku na komputerze lokalnym należy ponownie opublikować projekt serwera.

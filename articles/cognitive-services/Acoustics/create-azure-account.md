@@ -3,20 +3,20 @@ title: Ustawienia akustyczne dla projektu Azure Batch konta
 titlesuffix: Azure Cognitive Services
 description: W tym temacie opisano sposób konfigurowania konta Azure Batch do użycia z mechanizmami akustycznymi projektu i integracją aparatu Unreal.
 services: cognitive-services
-author: ashtat
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: f11dfda62ebb53aba6254f2db4eace7c524141d4
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 8f0f726d9d23f20698d3510ad674331ad74fb703
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704894"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855080"
 ---
 # <a name="project-acoustics-azure-batch-account-setup"></a>Ustawienia akustyczne dla projektu Azure Batch konta
 W tym temacie opisano sposób konfigurowania konta Azure Batch do użycia z mechanizmami akustycznymi projektu i integracją aparatu Unreal.
@@ -63,6 +63,6 @@ Konta Azure Batch są inicjowane przy tworzeniu konta z limitem 20 rdzeni oblicz
 
 ![Zrzut ekranu strony przydziału platformy Azure](media/azure-quotas.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Integruj wtyczkę akustyczną projektu z projektem [Unity](unity-integration.md) lub [Unreal](unreal-integration.md)
 

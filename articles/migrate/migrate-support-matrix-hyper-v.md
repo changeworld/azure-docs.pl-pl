@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: da68c0ae1dc92f5b854c30c90b93856248c43281
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 105cbf173a9abe1adf0999f63740d47b3da51a29
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828357"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856285"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Macierz obsługi dotycząca oceny i migracji środowiska funkcji Hyper-V
 
@@ -27,9 +27,9 @@ W tabeli zestawiono obsługiwane scenariusze dotyczące maszyn wirtualnych funkc
 **Wdrożenie** | **Uzyskać***
 --- | ---
 **Ocenianie lokalnych maszyn wirtualnych funkcji Hyper-V** | [Skonfiguruj](tutorial-prepare-hyper-v.md) swoją pierwszą ocenę.<br/><br/> [Uruchom](scale-hyper-v-assessment.md) ocenę na dużą skalę.
-**Migrowanie maszyn wirtualnych funkcji Hyper-V na platformę Azure** | [Wypróbuj](tutorial-migrate-hyper-v.md) migrację do platformy Azure.
+**Migrowanie maszyn wirtualnych funkcji Hyper-V na platformę Azure** | [Wypróbuj](tutorial-migrate-hyper-v.md) migrację do platformy Azure. 
 
-
+Migracja serwerów funkcji Hyper-V zarządzanych przy użyciu programu System Center Virtual Machine Manager (VMM) nie jest obsługiwana przez migrację serwera Azure Migrate. 
 
 ## <a name="azure-migrate-projects"></a>Projekty Azure Migrate
 

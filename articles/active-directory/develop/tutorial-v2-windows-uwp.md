@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dae3f9f2f4a9f6966d3453123773887c244cf4e2
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 519a86bed6a3a09b476bce6435ae666d655dbe03
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334057"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852260"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Wywoływanie interfejsu API Microsoft Graph z aplikacji platforma uniwersalna systemu Windows (XAML)
 
@@ -255,7 +255,7 @@ Wywołanie `AcquireTokenInteractive` metody powoduje pojawienie się okna z moni
 
 ### <a name="more-information-on-making-a-rest-call-against-a-protected-api"></a>Więcej informacji na temat tworzenia wywołania REST w ramach chronionego interfejsu API
 
-W tej przykładowej aplikacji `GetHttpContentWithToken` Metoda jest używana do wykonania żądania HTTP `GET` względem chronionego zasobu, który wymaga tokenu. Następnie metoda zwraca zawartość do obiektu wywołującego. Ta metoda dodaje token uzyskany w nagłówku **autoryzacji http** . Dla tego przykładu zasób jest punktem końcowym usługi  Microsoft Graph API, który wyświetla informacje o profilu użytkownika.
+W tej przykładowej aplikacji `GetHttpContentWithToken` Metoda jest używana do wykonania żądania HTTP `GET` względem chronionego zasobu, który wymaga tokenu. Następnie metoda zwraca zawartość do obiektu wywołującego. Ta metoda dodaje token uzyskany w nagłówku **autoryzacji http** . Dla tego przykładu zasób jest punktem końcowym usługi Microsoft Graph API, który wyświetla informacje o profilu użytkownika.
 <!--end-collapse-->
 
 ## <a name="add-a-method-to-sign-out-the-user"></a>Dodawanie metody w celu wylogowania użytkownika
@@ -320,7 +320,7 @@ Aplikacja w tym przykładzie obsługuje jednego użytkownika. Ale MSAL obsługuj
 
 Tokeny identyfikatorów nabyte za pośrednictwem programu **OpenID Connect Connect** zawierają również niewielki podzbiór informacji przydatnych dla użytkownika. `DisplayBasicTokenInfo`Wyświetla podstawowe informacje zawarte w tokenie. Przykłady to nazwa wyświetlana i identyfikator użytkownika, Data wygaśnięcia tokenu oraz ciąg, który reprezentuje token dostępu. W przypadku wybrania przycisku **Wywołaj Microsoft Graph interfejsu API** kilka razy zobaczysz, że ten sam token został ponownie użyty dla kolejnych żądań. Można także zobaczyć datę wygaśnięcia rozszerzoną, gdy MSAL zdecyduje, że czas odnowienia tokenu.
 
-## <a name="register-your-application"></a>Rejestrowanie aplikacji
+## <a name="register-your-application"></a>Zarejestruj swoją aplikację
 
 Teraz musisz zarejestrować aplikację w portalu rejestracji aplikacji firmy Microsoft:
 
@@ -368,7 +368,7 @@ Gdy wszystko będzie gotowe do przetestowania, wybierz pozycję **Wywołaj Micro
 
 ![Strona logowania](./media/tutorial-v2-windows-uwp/sign-in-page.png)
 
-### <a name="consent"></a>Posiadacz
+### <a name="consent"></a>Wyraź zgodę
 
 Po pierwszym zalogowaniu się do aplikacji jest wyświetlany ekran zgody podobny do poniższego. Wybierz pozycję **tak** , aby jawnie wyrazić zgodę na dostęp:
 

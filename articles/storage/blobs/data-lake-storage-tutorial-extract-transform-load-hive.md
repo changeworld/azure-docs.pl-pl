@@ -1,7 +1,6 @@
 ---
 title: 'Samouczek: Wykonywanie operacji wyodrębniania, przekształcania i ładowania (ETL) przy użyciu technologii Apache Hive w usłudze Azure HDInsight'
 description: W ramach tego samouczka dowiesz się, jak wyodrębnić dane z zestawu danych pierwotnych w postaci pliku CSV, przekształcić je za pomocą technologii Apache Hive w usłudze Azure HDInsight, a następnie załadować przekształcone dane do bazy danych Azure SQL Database za pomocą narzędzia Sqoop.
-services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -9,12 +8,12 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: f28cae7ed56b694f4194adf78c288ffa87eb71d8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 344dddb4e16f23ae40028c090c499d210adb8837
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447741"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855450"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-apache-hive-on-azure-hdinsight"></a>Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu technologii Apache Hive w usłudze Azure HDInsight
 
@@ -340,7 +339,7 @@ W poprzednich sekcjach skopiowano przekształcone dane w lokalizacji `abfs://<fi
 
 Wszystkie zasoby używane w tym samouczku istniały już wcześniej. Oczyszczanie nie jest konieczne.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby poznać więcej sposobów pracy z danymi w usłudze HDInsight, zobacz następujący artykuł:
 

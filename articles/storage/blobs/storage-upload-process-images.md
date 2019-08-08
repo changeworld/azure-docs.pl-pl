@@ -1,34 +1,32 @@
 ---
 title: Przekazywanie danych obrazu do chmury za pomocą usługi Azure Storage | Microsoft Docs
 description: Przechowywanie danych aplikacji przy użyciu usługi Azure Blob Storage i aplikacji internetowej
-services: storage
 author: normesta
 ms.service: storage
-ms.devlang: dotnet
+ms.subservice: blobs
 ms.topic: tutorial
 ms.date: 11/26/2018
 ms.author: normesta
-ms.reviewer: seguler
-ms.custom: mvc
-ms.openlocfilehash: 612c0b48faac365623fe36d6d2435c1c79566d9b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.reviewer: dineshm
+ms.openlocfilehash: 7185d118c9f4419713ebe1291dd55c44635f0c56
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071321"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68844956"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Samouczek: Przekazywanie danych obrazu do chmury za pomocą usługi Azure Storage
 
 Niniejszy samouczek jest pierwszą częścią serii. W tym samouczku dowiesz się, jak wdrożyć aplikację internetową, która przekazuje obrazy do konta magazynu przy użyciu biblioteki klienta usługi Azure Storage. Po zakończeniu tego samouczka będziesz mieć aplikację internetową zapisującą obrazy w usłudze Azure Storage i wyświetlającą obrazy z tej usługi.
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
-![Zmiany rozmiaru obrazów aplikacji na platformie .NET](media/storage-upload-process-images/figure2.png)
+![Aplikacja do zmiany rozmiaru obrazu w programie .NET](media/storage-upload-process-images/figure2.png)
 
 # <a name="nodejs-v2-sdktabnodejs"></a>[Zestaw Node.js V2 SDK](#tab/nodejs)
-![Zmiany rozmiaru obrazu aplikacji Node.js w wersji 2](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![Aplikacja do zmiany rozmiaru obrazu w programie Node. js v2](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 # <a name="nodejs-v10-sdktabnodejsv10"></a>[Zestaw Node.js V10 SDK](#tab/nodejsv10)
-![Aplikacja zmiany rozmiaru obrazu w V10 środowiska Node.js](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![Aplikacja do zmiany rozmiaru obrazu w Node. js v10](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
 
@@ -131,7 +129,7 @@ az webapp create --name $webapp --resource-group myResourceGroup --plan myAppSer
 
 Usługa App Service obsługuje kilka metod wdrażania zawartości w aplikacji internetowej. W tym samouczku wdrażasz aplikację internetową z [publicznego repozytorium przykładów usługi GitHub](https://github.com/Azure-Samples/storage-blob-upload-from-webapp). Skonfiguruj wdrożenie usługi GitHub do aplikacji internetowej za pomocą polecenia [az webapp deployment source config](/cli/azure/webapp/deployment/source).
 
-Przykładowy projekt zawiera aplikację [ASP.NET MVC](https://www.asp.net/mvc). Akceptuje ona obraz, zapisuje go na koncie magazynu i wyświetla obrazy z kontenera miniatur. Aplikacja internetowa używa [Microsoft.Azure.Storage](/dotnet/api/overview/azure/storage), [Microsoft.Azure.Storage.Blob](/dotnet/api/microsoft.azure.storage.blob)i przestrzenie nazw Microsoft.Azure.Storage.Auth z biblioteki klienta usługi Azure Storage, aby wchodzić w interakcje z platformą Azure Magazyn.
+Przykładowy projekt zawiera aplikację [ASP.NET MVC](https://www.asp.net/mvc). Akceptuje ona obraz, zapisuje go na koncie magazynu i wyświetla obrazy z kontenera miniatur. Aplikacja sieci Web używa przestrzeni nazw [Microsoft. Azure. Storage](/dotnet/api/overview/azure/storage), [Microsoft. Azure. Storage. blob](/dotnet/api/microsoft.azure.storage.blob)i Microsoft. Azure. Storage. auth z biblioteki klienta usługi Azure Storage w celu współdziałania z usługą Azure Storage.
 
 ```azurecli-interactive
 az webapp deployment source config --name $webapp \
@@ -211,7 +209,7 @@ Aby przetestować aplikację internetową, przejdź pod adres URL Twojej opublik
 
 Wybierz region **Upload photos** (Przekazywanie zdjęć), aby wybrać i przekazać plik, lub przeciągnij plik na region. Obraz zniknie, jeśli zostanie pomyślnie przekazany. Sekcja **Generated Thumbnails** (Wygenerowane miniatury) pozostanie pusta, dopóki nie przetestujemy jej w dalszej części tego tematu.
 
-![Przekazywanie zdjęć na platformie .NET](media/storage-upload-process-images/figure1.png)
+![Przekazywanie zdjęć w programie .NET](media/storage-upload-process-images/figure1.png)
 
 W przykładowym kodzie zadanie `UploadFiletoStorage` w pliku *Storagehelper.cs* jest używane w celu przekazywania obrazów do kontenera *images* w obrębie konta magazynu za pomocą metody [UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync). Poniższy przykładowy kod zawiera zadanie `UploadFiletoStorage`.
 
@@ -254,7 +252,7 @@ W poprzednim zadaniu użyto następujących klas i metod:
 
 Wybierz pozycję **Choose File** (Wybierz plik), aby wybrać plik, a następnie kliknij przycisk **Upload Image** (Przekaż obraz). Sekcja **Generated Thumbnails** (Wygenerowane miniatury) pozostanie pusta, dopóki nie przetestujemy jej w dalszej części tego tematu. 
 
-![Prześlij zdjęcia w środowisku Node.js w wersji 2](media/storage-upload-process-images/upload-app-nodejs.png)
+![Przekazywanie zdjęć w programie Node. js v2](media/storage-upload-process-images/upload-app-nodejs.png)
 
 W kodzie przykładowym trasa `post` odpowiada za przekazanie obrazu do kontenera obiektów blob. Podczas przekazywania trasa korzysta z następujących modułów:
 
@@ -318,7 +316,7 @@ router.post('/', uploadStrategy, (req, res) => {
 
 Wybierz pozycję **Choose File** (Wybierz plik), aby wybrać plik, a następnie kliknij przycisk **Upload Image** (Przekaż obraz). Sekcja **Generated Thumbnails** (Wygenerowane miniatury) pozostanie pusta, dopóki nie przetestujemy jej w dalszej części tego tematu. 
 
-![Prześlij zdjęcia w V10 środowiska Node.js](media/storage-upload-process-images/upload-app-nodejs.png)
+![Przekazywanie zdjęć w programie Node. js v10](media/storage-upload-process-images/upload-app-nodejs.png)
 
 W kodzie przykładowym trasa `post` odpowiada za przekazanie obrazu do kontenera obiektów blob. Podczas przekazywania trasa korzysta z następujących modułów:
 
@@ -400,7 +398,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Z menu po lewe
 
 Sprawdź, czy obraz jest wyświetlany w kontenerze.
 
-![Azure Portal lista obrazów kontenera](media/storage-upload-process-images/figure13.png)
+![Lista kontenerów obrazów w witrynie Azure Portal](media/storage-upload-process-images/figure13.png)
 
 ## <a name="test-thumbnail-viewing"></a>Testowanie wyświetlania miniatur
 
@@ -413,13 +411,13 @@ Wybierz plik za pomocą selektora plików i wybierz pozycję **Przekaż**.
 Przejdź z powrotem do aplikacji, aby sprawdzić, czy obraz przekazany do kontenera **thumbnails** jest widoczny.
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
-![Aplikacji zmiany rozmiaru obrazu platformy .NET przy użyciu nowego obrazu wyświetlanego](media/storage-upload-process-images/figure2.png)
+![Aplikacja do zmiany rozmiaru obrazu platformy .NET z wyświetlonym nowym obrazem](media/storage-upload-process-images/figure2.png)
 
 # <a name="nodejs-v2-sdktabnodejs"></a>[Zestaw Node.js V2 SDK](#tab/nodejs)
-![Aplikacji zmiany rozmiaru obrazu node.js w wersji 2, za pomocą nowego obrazu wyświetlanego](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![Aplikacja do zmiany rozmiaru obrazu Node. js w wersji 2 z wyświetlonym nowym obrazem](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 # <a name="nodejs-v10-sdktabnodejsv10"></a>[Zestaw Node.js V10 SDK](#tab/nodejsv10)
-![Node.js V10 obrazu zmiany rozmiaru aplikacji za pomocą nowego obrazu wyświetlanego](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![Aplikacja do zmiany rozmiaru obrazu v10 Node. js z nowym obrazem](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
 

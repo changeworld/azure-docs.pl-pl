@@ -4,18 +4,18 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: f289da08c63f655006801d89f82640c6e3c6b7be
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 5c90d7b5eefdf8357c0f6f8efb619bd69af12b06
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68622862"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68843282"
 ---
 Ważne jest, aby zachować bezpieczeństwo maszyny wirtualnej dla aplikacji, które są uruchamiane. Zabezpieczanie maszyn wirtualnych może obejmować jedną lub więcej usług i funkcji platformy Azure, które obejmują bezpieczny dostęp do maszyn wirtualnych i bezpieczny magazyn danych. Ten artykuł zawiera informacje, które umożliwiają bezpieczne zachowanie maszyny wirtualnej i aplikacji.
 
 ## <a name="antimalware"></a>Oprogramowanie chroniące przed złośliwym kodem
 
-Nowoczesne zagrożenie w środowiskach chmury jest dynamiczne, zwiększając nacisk na konserwację efektywnej ochrony w celu spełnienia wymagań dotyczących zgodności i zabezpieczeń. [Oprogramowanie chroniące przed złośliwym oprogramowaniem firmy Microsoft dla systemu Azure](../articles/security/fundamentals/antimalware.md) to bezpłatna funkcja ochrony w czasie rzeczywistym, która pomaga identyfikować i usuwać wirusy, programy szpiegujące oraz inne złośliwe oprogramowanie. Alerty można skonfigurować w taki sposób, aby powiadamiać użytkownika o próbie instalacji lub uruchomienia na maszynie wirtualnej znanego złośliwego lub niechcianego oprogramowania.
+Nowoczesne zagrożenie w środowiskach chmury jest dynamiczne, zwiększając nacisk na konserwację efektywnej ochrony w celu spełnienia wymagań dotyczących zgodności i zabezpieczeń. [Oprogramowanie chroniące przed złośliwym oprogramowaniem firmy Microsoft dla systemu Azure](../articles/security/fundamentals/antimalware.md) to bezpłatna funkcja ochrony w czasie rzeczywistym, która pomaga identyfikować i usuwać wirusy, programy szpiegujące oraz inne złośliwe oprogramowanie. Alerty można skonfigurować w taki sposób, aby powiadamiać użytkownika o próbie instalacji lub uruchomienia na maszynie wirtualnej znanego złośliwego lub niechcianego oprogramowania. Nie jest obsługiwana na maszynach wirtualnych z systemem Linux lub Windows Server 2008.
 
 ## <a name="azure-security-center"></a>Azure Security Center
 
@@ -52,5 +52,5 @@ Funkcja tożsamości zarządzanych dla platformy Azure w usłudze Azure Active D
 Korzystając z [kontroli dostępu opartej na rolach (RBAC)](../articles/role-based-access-control/overview.md), można oddzielić cła w obrębie zespołu i przyznać dostęp tylko użytkownikom na maszynie wirtualnej, których potrzebują do wykonywania swoich zadań. Zamiast udzielać każdemu nieograniczonyemu uprawnienia do maszyny wirtualnej, można zezwolić tylko na niektóre akcje. Można skonfigurować kontrolę dostępu dla maszyny wirtualnej w [Azure Portal](../articles/role-based-access-control/role-assignments-portal.md)przy użyciu [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/role)lub[Azure PowerShell](../articles/role-based-access-control/role-assignments-powershell.md).
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - Zapoznaj się z instrukcjami dotyczącymi monitorowania zabezpieczeń maszyn wirtualnych przy użyciu Azure Security Center dla [systemu](../articles/virtual-machines/windows/tutorial-azure-security.md) [Linux](../articles/security/fundamentals/overview.md) lub Windows.

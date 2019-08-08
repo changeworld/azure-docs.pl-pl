@@ -3,16 +3,16 @@ title: Często zadawane pytania dotyczące Azure Files | Microsoft Docs
 description: Znajdź odpowiedzi na często zadawane pytania dotyczące Azure Files.
 author: roygara
 ms.service: storage
-ms.date: 01/02/2019
+ms.date: 07/30/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 622a033b73ace93e98cfa0d5179002c78ec49b35
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: e14fcbd81a562b8d6451bb89a479c6675569403a
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704484"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854536"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Często zadawane pytania dotyczące Azure Files
 [Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem standardowego [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Udziały plików platformy Azure można instalować jednocześnie w chmurze lub lokalnych wdrożeniach systemów Windows, Linux i macOS. Możesz również buforować udziały plików platformy Azure na maszynach z systemem Windows Server, używając Azure File Sync, aby szybko uzyskać dostęp do miejsca, w którym są używane dane.
@@ -75,7 +75,7 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące 
     Azure Files obsługuje dwie warstwy magazynowania: Premium i Standard. Standardowe udziały plików są tworzone na kontach magazynu ogólnego przeznaczenia (GPv1 lub GPv2), a udziały plików w warstwie Premium są tworzone na kontach magazynu FileStorage. Dowiedz się więcej na temat tworzenia [standardowych udziałów plików](storage-how-to-create-file-share.md) i [udziałów plików w warstwie Premium](storage-how-to-create-premium-fileshare.md). 
     
     > [!NOTE]
-    > Nie można tworzyć udziałów plików platformy Azure z kont magazynu obiektów blob lub ogólnego przeznaczenia (GPv1 lub GPv2) w *warstwie Premium* . Standardowe udziały plików platformy Azure muszą zostać utworzone wyłącznie w ramach *standardowych* kont ogólnego przeznaczenia, a udziały plików platformy Azure w warstwie Premium muszą zostać utworzone tylko na kontach magazynu FileStorage. Konta *magazynu ogólnego przeznaczenia* (GPv1 i GPv2) są przeznaczone tylko dla stron sieci Web w warstwie Premium. 
+    > Nie można tworzyć udziałów plików platformy Azure z kont magazynu obiektów blob lub ogólnego przeznaczenia (GPv1 lub GPv2) w *warstwie Premium* . Standardowe udziały plików platformy Azure muszą zostać utworzone wyłącznie w ramach *standardowych* kont ogólnego przeznaczenia, a udziały plików platformy Azure w warstwie Premium muszą zostać utworzone tylko na kontach magazynu FileStorage. Konta magazynu ogólnego przeznaczenia (GPv1 i GPv2) są przeznaczone tylko dla stron sieci Web w warstwie Premium. 
 
 * <a id="give-us-feedback"></a>
   **Chcemy zobaczyć konkretną funkcję dodaną do Azure Files. Czy można je dodać?**  
@@ -168,35 +168,27 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące 
     
 ## <a name="security-authentication-and-access-control"></a>Zabezpieczenia, uwierzytelnianie i kontrola dostępu
 * <a id="ad-support"></a>
-**Czy Active Directory uwierzytelniania i kontroli dostępu obsługiwanej przez Azure Files?**  
+**Czy uwierzytelnianie oparte na tożsamościach i kontrola dostępu są obsługiwane przez Azure Files?**  
     
-    Tak, Azure Files obsługuje uwierzytelnianie oparte na tożsamościach i kontrola dostępu przy użyciu Azure Active Directory (Azure AD) (wersja zapoznawcza). Uwierzytelnianie usługi Azure AD za pośrednictwem protokołu SMB dla Azure Files wykorzystuje Azure Active Directory Domain Services, aby umożliwić maszynom wirtualnym przyłączonym do domeny dostęp do udziałów, katalogów i plików przy użyciu poświadczeń usługi Azure AD. Aby uzyskać więcej informacji, zobacz [Omówienie uwierzytelniania Azure Active Directory za pośrednictwem protokołu SMB dla Azure Files (wersja zapoznawcza)](storage-files-active-directory-overview.md). 
+    Tak, Azure Files obsługuje uwierzytelnianie oparte na tożsamościach i kontrolę dostępu przy użyciu usługi Azure AD Domain Service (Azure AD DS). Usługa Azure AD DS Authentication za pośrednictwem protokołu SMB dla Azure Files umożliwia maszynom wirtualnym z systemem Windows przyłączonych do domeny usługi Azure AD DS dostęp do udziałów, katalogów i plików przy użyciu poświadczeń usługi Azure AD. Aby uzyskać więcej informacji, zobacz [Omówienie obsługi uwierzytelniania protokołu SMB w usługach Azure Files Azure Active Directory Domain Service (Azure AD DS)](storage-files-active-directory-overview.md). 
 
     Azure Files oferuje dwa dodatkowe sposoby zarządzania kontrolą dostępu:
 
     - Sygnatury dostępu współdzielonego (SAS) mogą być używane do generowania tokenów z określonymi uprawnieniami, które są prawidłowe przez określony przedział czasu. Na przykład można wygenerować token z dostępem tylko do odczytu do określonego pliku o 10-minutowym wygaśnięciu. Każda osoba, która posiada token, gdy token jest ważny, ma dostęp tylko do odczytu do tego pliku przez 10 minut. Obecnie klucze sygnatur dostępu współdzielonego są obsługiwane tylko za pośrednictwem interfejsu API REST lub bibliotek klienckich. Udział plików platformy Azure należy zainstalować za pośrednictwem protokołu SMB przy użyciu kluczy konta magazynu.
 
     - Azure File Sync zachowuje i replikuje wszystkie poufne listy kontroli dostępu lub listy DACL (niezależnie od tego, czy Active Directory lub lokalne) wszystkie punkty końcowe serwera, do których jest synchronizowana. Ponieważ system Windows Server może już być uwierzytelniany przy użyciu Active Directory, Azure File Sync jest efektywną opcją zatrzymania, dopóki nie zostanie wypełniona pełna obsługa uwierzytelniania opartego na Active Directory i obsługi list ACL.
-
-* <a id="ad-support-regions"></a>
-**Czy wersja zapoznawcza usługi Azure AD za pośrednictwem protokołu SMB dla Azure Files jest dostępna we wszystkich regionach świadczenia usługi Azure?**
-
-    Wersja zapoznawcza jest dostępna we wszystkich regionach publicznych.
-
-* <a id="ad-support-on-premises"></a>
-**Czy uwierzytelnianie usługi Azure AD za pośrednictwem protokołu SMB dla Azure Files (wersja zapoznawcza) obsługuje uwierzytelnianie przy użyciu usługi Azure AD z maszyn lokalnych?**
-
-    Nie, Azure Files nie obsługuje uwierzytelniania przy użyciu usługi Azure AD z maszyn lokalnych w wersji zapoznawczej.
+    
+    Aby uzyskać kompleksową reprezentację wszystkich protokołów obsługiwanych przez usługi Azure Storage, można przyjrzeć się do [autoryzacji dostępu do usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) . 
 
 * <a id="ad-support-devices"></a>
-**Czy uwierzytelnianie usługi Azure AD za pośrednictwem protokołu SMB dla Azure Files (wersja zapoznawcza) obsługuje dostęp do protokołu SMB przy użyciu poświadczeń usługi Azure AD z urządzeń przyłączonych do lub zarejestrowanych w usłudze Azure AD**
+**Czy usługa Azure Files Azure AD DS Authentication obsługuje dostęp do protokołu SMB przy użyciu poświadczeń usługi Azure AD z urządzeń przyłączonych do lub zarejestrowanych w usłudze Azure AD?**
 
     Nie, ten scenariusz nie jest obsługiwany.
 
 * <a id="ad-support-rest-apis"></a>
 **Czy istnieją interfejsy API REST obsługujące pobieranie/Ustawianie/kopiowanie katalogów/plików list ACL systemu plików NTFS?**
 
-    Wersja zapoznawcza nie obsługuje interfejsów API REST w celu pobierania, ustawiania lub kopiowania list ACL systemu plików NTFS dla katalogów lub plików.
+    Obecnie nie obsługujemy interfejsów API REST w celu pobierania, ustawiania lub kopiowania list ACL systemu plików NTFS dla katalogów lub plików.
 
 * <a id="ad-vm-subscription"></a>
 **Czy mogę uzyskać dostęp do Azure Files przy użyciu poświadczeń usługi Azure AD z poziomu maszyny wirtualnej w ramach innej subskrypcji?**
@@ -204,17 +196,17 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące 
     Jeśli subskrypcja, w ramach której wdrożono udział plików, jest skojarzona z tą samą dzierżawą usługi Azure AD, co wdrożenie Azure AD Domain Services, do którego jest przyłączona maszyna wirtualna, można uzyskać dostęp do Azure Files przy użyciu tych samych poświadczeń usługi Azure AD. Ograniczenie jest nakładane nie na subskrypcję, ale w skojarzonej dzierżawie usługi Azure AD.    
     
 * <a id="ad-support-subscription"></a>
-**Czy mogę włączyć uwierzytelnianie usługi Azure AD za pośrednictwem protokołu SMB dla Azure Files z dzierżawą usługi Azure AD, która różni się od głównej dzierżawy, z którą jest skojarzony udział plików?**
+**Czy mogę włączyć uwierzytelnianie Azure Files Azure AD DS z dzierżawą usługi Azure AD, która różni się od głównej dzierżawy, z którą jest skojarzony udział plików?**
 
-    Nie, Azure Files obsługuje tylko integrację z usługą Azure AD z dzierżawą usługi Azure AD, która znajduje się w tej samej subskrypcji co udział plików. Tylko jedna subskrypcja może być skojarzona z dzierżawą usługi Azure AD.
+    Nie, Azure Files obsługuje tylko integrację z usługą Azure AD DS z dzierżawą usługi Azure AD, która znajduje się w tej samej subskrypcji co udział plików. Tylko jedna subskrypcja może być skojarzona z dzierżawą usługi Azure AD.
 
 * <a id="ad-linux-vms"></a>
-**Czy uwierzytelnianie usługi Azure AD za pośrednictwem protokołu SMB dla Azure Files (wersja zapoznawcza) obsługuje maszyny wirtualne systemu Linux?**
+**Czy Azure Files Azure AD DS Authentication obsługuje maszyny wirtualne z systemem Linux?**
 
-    Nie, uwierzytelnianie z maszyn wirtualnych systemu Linux nie jest obsługiwane w wersji zapoznawczej.
+    Nie, uwierzytelnianie z maszyn wirtualnych systemu Linux nie jest obsługiwane.
 
 * <a id="ad-aad-smb-afs"></a>
-**Czy można korzystać z uwierzytelniania usługi Azure AD za pośrednictwem funkcji SMB w udziałach plików zarządzanych przez Azure File Sync?**
+**Czy można korzystać z Azure Files Azure AD DS Authentication w udziałach plików zarządzanych przez Azure File Sync?**
 
     Nie, Azure Files nie obsługuje zachowywania list ACL systemu plików NTFS w udziałach plików zarządzanych przez Azure File Sync. Listy ACL plików przenoszone z lokalnych serwerów plików są utrwalane przez Azure File Sync. Wszystkie listy ACL systemu NTFS skonfigurowane natywnie dla Azure Files zostaną zastąpione przez usługę Azure File Sync. Ponadto Azure Files nie obsługuje uwierzytelniania przy użyciu poświadczeń usługi Azure AD w celu uzyskania dostępu do udziałów plików zarządzanych przez usługę Azure File Sync.
 
@@ -289,7 +281,7 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące 
     Do migawki są stosowane standardowe transakcje i standardowe opłaty za magazyn. Migawki mają charakter przyrostowy. Podstawową migawką jest sam udział. Wszystkie kolejne migawki są przyrostowe i będą przechowywać różnice z poprzedniej migawki. Oznacza to, że zmiany różnicowe, które będą widoczne na rachunku, będą minimalne, jeśli obciążenie obciążeń jest minimalne. Informacje o cenach standardowych Azure Files można znaleźć na [stronie](https://azure.microsoft.com/pricing/details/storage/files/) z cennikiem. Dzisiaj, aby zobaczyć rozmiar używany przez migawkę udziału, można porównać rozliczane zdolności produkcyjne z zużywaną pojemnością. Pracujemy nad narzędziami, aby usprawnić raportowanie.
 
 * <a id="ntfs-acls-snaphsots"></a>
-**Czy listy ACL systemu NTFS dotyczą katalogów i plików utrwalonych w migawkach udziałów?**
+**Czy listy ACL systemu NTFS dotyczą katalogów i plików utrwalonych w migawkach udziałów?**  
     Listy ACL NTFS dotyczące katalogów i plików są utrwalane w migawkach udziałów.
 
 ### <a name="create-share-snapshots"></a>Tworzenie migawek udziałów

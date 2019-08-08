@@ -1,18 +1,18 @@
 ---
 title: Hostowanie statycznej witryny sieci Web w usłudze Azure Storage
 description: Dowiedz się, jak udostępniać zawartość statyczną (pliki HTML, CSS, JavaScript i Image) bezpośrednio z kontenera na koncie usługi Azure Storage GPv2.
-services: storage
 author: normesta
 ms.service: storage
-ms.topic: article
+ms.subservice: blobs
+ms.topic: conceptual
 ms.author: normesta
 ms.date: 05/28/2019
-ms.openlocfilehash: e53f8dd832b7f19692b9095e913330848e5b0330
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 591a62ebb6b83ea23d3ed6cf867c07b91e1596b3
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385765"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847036"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Hostowanie statycznej witryny sieci Web w usłudze Azure Storage
 
@@ -217,7 +217,7 @@ Po włączeniu metryk statystyki ruchu dla plików w kontenerze **$Web** są rap
 
    ![Metryki statycznych witryn sieci Web usługi Azure Storage GetWebContent](./media/storage-blob-static-website/storage-blob-static-website-metrics-getwebcontent.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Hostowanie statycznej witryny internetowej w usłudze Azure Storage](storage-blob-static-website.md)
 * [Użyj Azure CDN, aby uzyskać dostęp do obiektów BLOB za pomocą domen niestandardowych za pośrednictwem protokołu HTTPS](storage-https-custom-domain-cdn.md)

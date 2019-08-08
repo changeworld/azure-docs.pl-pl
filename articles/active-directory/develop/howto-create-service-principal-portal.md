@@ -14,16 +14,16 @@ ms.workload: na
 ms.date: 05/17/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.custom: aaddev, seoapril2019
+ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 825966fbb0db537aad8de39e69e17418e6432b44
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a28354f54978e8ba776d8b0da294652ff462a05f
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68324679"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853458"
 ---
-# <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Instrukcje: Korzystanie z portalu do tworzenia aplikacji usługi Azure AD i nazwy głównej usługi, która może uzyskiwać dostęp do zasobów
+# <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Instrukcje: używanie portalu do tworzenia aplikacji usługi Azure AD i jednostki usługi w celu uzyskiwania dostępu do zasobów
 
 W tym artykule opisano sposób tworzenia nowej aplikacji Azure Active Directory (Azure AD) i nazwy głównej usługi, która może być używana z kontrolą dostępu opartą na rolach. Jeśli masz kod wymagający dostępu lub modyfikacji zasobów, możesz utworzyć tożsamość dla aplikacji. Ta tożsamość jest określana jako jednostka usługi. Następnie można przypisać wymagane uprawnienia do nazwy głównej usługi. W tym artykule pokazano, jak utworzyć jednostkę usługi przy użyciu portalu. Koncentruje się na aplikacji z jedną dzierżawą, w której aplikacja jest przeznaczona do działania tylko w jednej organizacji. Zwykle używasz aplikacji z jedną dzierżawą dla aplikacji biznesowych, które działają w organizacji.
 

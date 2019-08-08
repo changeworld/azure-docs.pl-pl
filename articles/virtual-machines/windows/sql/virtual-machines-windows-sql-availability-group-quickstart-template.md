@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie zawsze włączonej grupy dostępności programu SQL Server na Maszynie wirtualnej platformy Azure przy użyciu szablonów szybkiego startu platformy Azure
-description: Szablony szybkiego startu platformy Azure umożliwia tworzenie klastra pracy awaryjnej Windows, Dołącz maszyny wirtualne SQL Server do klastra, utwórz odbiornik i konfigurowanie wewnętrznego modułu równoważenia obciążenia na platformie Azure.
+title: Użyj szablonów szybkiego startu platformy Azure, aby skonfigurować grupę dostępności zawsze włączone dla SQL Server na maszynie wirtualnej platformy Azure
+description: Użyj szablonów szybkiego startu platformy Azure, aby utworzyć klaster trybu failover systemu Windows, dołączyć do klastra SQL Server maszyny wirtualne, utworzyć odbiornik i skonfigurować wewnętrzny moduł równoważenia obciążenia na platformie Azure.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -15,185 +15,192 @@ ms.workload: iaas-sql-server
 ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 406bd11765e4b580849e8719939c3e11c19d99a8
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: f95d3487adecb17e0f4b79e81a08e16bafe4594f
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604566"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855250"
 ---
-# <a name="use-azure-quickstart-templates-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Konfigurowanie zawsze włączonej grupy dostępności programu SQL Server na Maszynie wirtualnej platformy Azure przy użyciu szablonów szybkiego startu platformy Azure
-W tym artykule opisano, jak częściowo zautomatyzować wdrożenia zawsze włączonej konfiguracji grupy dostępności dla maszyn wirtualnych serwera SQL na platformie Azure za pomocą szablonów szybkiego startu platformy Azure. Istnieją dwa szablony szybkiego startu platformy Azure, które są używane w ramach tego procesu. 
+# <a name="use-azure-quickstart-templates-to-configure-an-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Użyj szablonów szybkiego startu platformy Azure, aby skonfigurować grupę dostępności zawsze włączone dla SQL Server na maszynie wirtualnej platformy Azure
+W tym artykule opisano sposób korzystania z szablonów szybkiego startu platformy Azure w celu częściowo automatyzowania wdrożenia konfiguracji zawsze włączonych grup dostępności dla SQL Server maszyn wirtualnych na platformie Azure. W tym procesie są używane dwa szablony szybkiego startu platformy Azure: 
 
    | Szablon | Opis |
    | --- | --- |
-   | [101-sql-vm-ag-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-ag-setup) | Tworzy klaster pracy awaryjnej Windows i dołącza maszyny wirtualne programu SQL Server do niego. |
-   | [101-sql-vm-aglistener-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-aglistener-setup) | Tworzy odbiornika grupy dostępności i konfiguruje wewnętrznego modułu równoważenia obciążenia. Ten szablon należy używać tylko w przypadku klastra pracy awaryjnej Windows został utworzony za pomocą **101-sql-maszyny wirtualnej ag-setup** szablonu. |
+   | [101-sql-vm-ag-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-ag-setup) | Tworzy klaster trybu failover systemu Windows i dołącza do niego SQL Server maszyny wirtualne. |
+   | [101-sql-vm-aglistener-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-aglistener-setup) | Tworzy odbiornik grupy dostępności i konfiguruje wewnętrzny moduł równoważenia obciążenia. Tego szablonu można używać tylko wtedy, gdy klaster trybu failover systemu Windows został utworzony przy użyciu szablonu **101-SQL-VM-AG-Setup** . |
    | &nbsp; | &nbsp; |
 
-Inne części konfiguracji grupy dostępności musi być wykonywane ręcznie, takie jak tworzenie grupy dostępności i tworzenia wewnętrznego modułu równoważenia obciążenia. Ten artykuł zawiera sekwencję kroków automatycznych i ręcznych.
+Inne części konfiguracji grupy dostępności muszą zostać wykonane ręcznie, takie jak tworzenie grupy dostępności i tworzenie wewnętrznego modułu równoważenia obciążenia. Ten artykuł zawiera sekwencję zautomatyzowanych i ręcznych kroków.
  
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
-Aby zautomatyzować konfiguracji zawsze włączonej grupy dostępności przy użyciu szablonów szybkiego startu, musi już mieć następujące wymagania wstępne: 
+Aby zautomatyzować instalację zawsze włączonych grup dostępności przy użyciu szablonów szybkiego startu, należy spełnić następujące wymagania wstępne: 
 - [Subskrypcji platformy Azure](https://azure.microsoft.com/free/).
 - Grupa zasobów z kontrolerem domeny. 
-- Co najmniej jeden przyłączonych do domeny [maszyn wirtualnych na platformie Azure działającej wersji programu SQL Server 2016 (lub nowszego) przedsiębiorstwa](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) w ten sam zestaw lub dostępności strefę dostępności, które zostały [zarejestrowanego dostawcy zasobów maszyny Wirtualnej SQL](virtual-machines-windows-sql-register-with-resource-provider.md).  
-- Dwie dostępne (nie używane dla dowolnej jednostki) adresy IP, jeden dla wewnętrznego modułu równoważenia obciążenia i jeden dla odbiornika grupy dostępności w ramach tej samej podsieci co grupy dostępności. Jeśli istniejącego modułu równoważenia obciążenia jest używany, tylko jeden dostępny adres IP jest potrzebny.  
+- Co najmniej jedna maszyna wirtualna przyłączona [do domeny na platformie Azure z systemem SQL Server 2016 (lub nowszym) w wersji Enterprise](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) , która znajduje się w tym samym zestawie dostępności lub strefie dostępności i która została zarejestrowana [w dostawcy zasobów maszyny wirtualnej SQL](virtual-machines-windows-sql-register-with-resource-provider.md).  
+- Dwie dostępne adresy IP (nieużywane przez żadną jednostkę): jeden dla wewnętrznego modułu równoważenia obciążenia i jeden dla odbiornika grupy dostępności w tej samej podsieci co grupa dostępności. Jeśli jest używany istniejący moduł równoważenia obciążenia, wymagany jest tylko jeden dostępny adres IP.  
 
 ## <a name="permissions"></a>Uprawnienia
-Następujące uprawnienia są niezbędne do skonfigurowania zawsze włączonej grupy dostępności przy użyciu szablonów szybkiego startu platformy Azure: 
+Następujące uprawnienia są niezbędne do skonfigurowania grupy dostępności zawsze włączone przy użyciu szablonów szybkiego startu platformy Azure: 
 
-- Istniejące konto użytkownika domeny z uprawnieniami "Tworzenie obiektu komputera" w domenie.  Na przykład konto administratora domeny zazwyczaj ma wystarczające uprawnienia (np: account@domain.com). _To konto powinno być także częścią grupy administratorów lokalnych na każdej maszynie Wirtualnej, aby utworzyć klaster._
-- Konto użytkownika domeny, który kontroluje usługi SQL Server. 
+- Istniejące konto użytkownika domeny, które ma uprawnienie **Tworzenie obiektu komputera** w domenie.  Na przykład konto administratora domeny ma zwykle wystarczające uprawnienia (na przykład: account@domain.com). _To konto powinno być również częścią lokalnej grupy administratorów na każdej maszynie wirtualnej w celu utworzenia klastra._
+- Konto użytkownika domeny kontrolujące usługę SQL Server. 
 
 
-## <a name="step-1---create-the-wsfc-and-join-sql-server-vms-to-the-cluster-using-quickstart-template"></a>Krok 1 — Tworzenie usługi WSFC i dołączyć maszyny wirtualne SQL Server w klastrze za pomocą szablonu szybkiego startu 
-Gdy maszyny wirtualne programu SQL Server zostały zarejestrowane przy użyciu nowego dostawcę zasobów maszyny Wirtualnej SQL, możesz dołączyć do maszyn wirtualnych programu SQL Server do *SqlVirtualMachineGroups*. Ten zasób definiuje metadanych klastra pracy awaryjnej Windows, w tym wersji, wersji, w pełni kwalifikowanej nazwy domeny, konta usługi AD do zarządzania klastrem i usługę programu SQL Server i konta magazynu jako chmury monitora. Dodawanie maszyny wirtualne SQL Server do *SqlVirtualMachineGroups* grupy zasobów używa do ładowania usługi klastra pracy awaryjnej Windows do utworzenia klastra i następnie przyłącza tych maszyn wirtualnych serwera SQL do tego klastra. Ten krok jest automatycznym z funkcjami **101-sql-maszyny wirtualnej ag-setup** szablon szybkiego startu i może być implementowana w wykonaj następujące czynności:
+## <a name="step-1-create-the-failover-cluster-and-join-sql-server-vms-to-the-cluster-by-using-a-quickstart-template"></a>Krok 1: Tworzenie klastra trybu failover i dołączanie SQL Server maszyn wirtualnych do klastra przy użyciu szablonu szybkiego startu 
+Po zarejestrowaniu maszyn wirtualnych SQL Server z dostawcą zasobów maszyny wirtualnej SQL można przyłączyć SQL Server do maszyn wirtualnych do *SqlVirtualMachineGroups*. Ten zasób definiuje metadane klastra trybu failover systemu Windows. Metadane obejmują wersję, wydanie, w pełni kwalifikowaną nazwę domeny, Active Directory konta do zarządzania zarówno klastrem, jak i usługą SQL Server oraz kontem magazynu jako monitorem chmury. 
 
-1. Przejdź do [ **101-sql-maszyny wirtualnej ag-setup** ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-ag-setup) szablon szybkiego startu i wybierz **Wdróż na platformie Azure** Aby uruchomić szablon szybkiego startu w witrynie Azure portal.
-1. Wypełnij wymagane pola w celu skonfigurowania klastra pracy awaryjnej Windows metadanych. Opcjonalne pola może być puste.
+Dodanie SQL Server maszyn wirtualnych do grupy zasobów *SqlVirtualMachineGroups* powoduje uruchomienie usługi klastra trybu failover systemu Windows w celu utworzenia klastra, a następnie dołączenie tych SQL Server maszyn wirtualnych do tego klastra. Ten krok jest zautomatyzowany z szablonem szybkiego startu **101-SQL-VM-AG-Setup** . Można go zaimplementować, wykonując następujące czynności:
 
-    W poniższej tabeli przedstawiono wartości niezbędne do szablonu: 
+1. Przejdź do szablonu przewodnika Szybki Start [**101-SQL-VM-AG-Setup**](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-ag-setup) . Następnie wybierz pozycję **Wdróż na platformie Azure** , aby otworzyć szablon szybkiego startu w Azure Portal.
+1. Wypełnij pola wymagane, aby skonfigurować metadane dla klastra trybu failover systemu Windows. Pola opcjonalne można pozostawić puste.
 
-   | **Pole** | Value |
+   W poniższej tabeli przedstawiono wymagane wartości szablonu: 
+
+   | **Pole** | Wartość |
    | --- | --- |
-   | **Subskrypcja** |  Subskrypcja, w której maszyny wirtualne programu SQL Server istnieje. |
-   |**Grupa zasobów** | Grupa zasobów, w którym znajdują się Twoje maszyny wirtualne SQL Server. | 
-   |**Nazwa klastra trybu failover** | Nazwa nowego klastra pracy awaryjnej Windows. |
-   | **Istniejące listy maszyn wirtualnych** | Maszyny wirtualne SQL Server potrzebny do wzięcia udziału w grupie dostępności, a w efekcie należeć do tego nowego klastra. Te wartości należy oddzielać przecinkiem i spacją (np: SQLVM1, SQLVM2). |
-   | **Wersja programu SQL Server** | Wybierz maszyny wirtualne programu SQL Server w wersji programu SQL Server z listy rozwijanej. Obecnie tylko obrazy SQL 2016 oraz SQL 2017 są obsługiwane. |
-   | **Istniejące w pełni kwalifikowanej nazwy domeny** | Istniejące nazwę FQDN domeny, w którym znajdują się Twoje maszyny wirtualne SQL Server. |
-   | **Istniejące konto domeny** | Istniejącego konta użytkownika domeny, które ma uprawnienia "Tworzenie obiektu komputera" w domenie, co [CNO](/windows-server/failover-clustering/prestage-cluster-adds) jest tworzony podczas wdrażania szablonu. Na przykład konto administratora domeny zazwyczaj ma wystarczające uprawnienia (np: account@domain.com). *To konto powinno być także częścią grupy administratorów lokalnych na każdej maszynie Wirtualnej, aby utworzyć klaster.*| 
-   | **Hasło konta domeny** | Hasło dla konta użytkownika domeny wymienionych wcześniej. | 
-   | **Istniejące konto usługi programu Sql** | Konto użytkownika domeny, który kontroluje [usługi SQL Server](/sql/database-engine/configure-windows/configure-windows-service-accounts-and-permissions) podczas wdrażania grupy dostępności (np: account@domain.com). |
-   | **Hasło usługi SQL** | Hasło używane przez konto użytkownika domeny, który kontroluje usługi SQL Server. |
-   | **Nazwa monitora w chmurze** | Jest to nowe konto magazynu platformy Azure, który zostanie utworzony i używany do monitora w chmurze. Ta nazwa może być modyfikowany. |
-   | **\_Artefakty lokalizacji** | To pole jest domyślnie i nie powinien być modyfikowany. |
-   | **\_Artefakty tokenu sygnatury dostępu współdzielonego lokalizacji** | To pole jest puste celowo. |
+   | **Subskrypcja** |  Subskrypcja, w której znajdują się maszyny wirtualne SQL Server. |
+   |**Grupa zasobów** | Grupa zasobów, w której znajdują się maszyny wirtualne SQL Server. | 
+   |**Nazwa klastra trybu failover** | Nazwa, która ma być nowym klastrem trybu failover systemu Windows. |
+   | **Istniejąca lista maszyn wirtualnych** | SQL Server maszyny wirtualne, które chcesz wziąć udział w grupie dostępności, a które będą częścią tego nowego klastra. Oddziel te wartości przecinkami i spacjami (na przykład: *SQLVM1, SQLVM2*). |
+   | **Wersja SQL Server** | SQL Server wersja SQL Server maszyn wirtualnych. Wybierz ją z listy rozwijanej. Obecnie obsługiwane są tylko obrazy w SQL Server 2016 i SQL Server 2017. |
+   | **Istniejąca w pełni kwalifikowana nazwa domeny** | Istniejąca nazwa FQDN domeny, w której znajdują się maszyny wirtualne SQL Server. |
+   | **Istniejące konto domeny** | Istniejące konto użytkownika domeny, które ma uprawnienie **Tworzenie obiektu komputera** w domenie jako [obiekt nazwy klastra](/windows-server/failover-clustering/prestage-cluster-adds) jest tworzona podczas wdrażania szablonu. Na przykład konto administratora domeny ma zwykle wystarczające uprawnienia (na przykład: account@domain.com). *To konto powinno być również częścią lokalnej grupy administratorów na każdej maszynie wirtualnej w celu utworzenia klastra.*| 
+   | **Hasło konta domeny** | Hasło do wyżej wymienionego konta użytkownika domeny. | 
+   | **Istniejące konto usługi SQL** | Konto użytkownika domeny, które steruje [usługą SQL Server](/sql/database-engine/configure-windows/configure-windows-service-accounts-and-permissions) podczas wdrażania grupy dostępności (na przykład: account@domain.com). |
+   | **Hasło usługi SQL** | Hasło używane przez konto użytkownika domeny, które steruje usługą SQL Server. |
+   | **Nazwa monitora chmury** | Nowe konto usługi Azure Storage, które zostanie utworzone i użyte na potrzeby monitora w chmurze. Możesz zmodyfikować tę nazwę. |
+   | **\_Lokalizacja artefaktów** | To pole jest domyślnie ustawione i nie powinno być modyfikowane. |
+   | **\_Token SAS lokalizacji artefaktów** | To pole jest celowo pozostawione puste. |
    | &nbsp; | &nbsp; |
 
-1. Jeśli wyrażasz zgodę na warunki i postanowienia, zaznacz pole wyboru obok pozycji **zgodę na warunki i postanowienia, o których wspomniano** i wybierz **zakupu** aby zakończyć wdrożenie szablonu szybkiego startu. 
-1. Aby monitorować wdrożenie, wybierz wdrożenie z **powiadomienia** dzwonka ikony w górnym menu nawigacyjnym transparencie fizyczną lub przejdź do swojej **grupy zasobów** w witrynie Azure portal wybierz  **Wdrożenia** w **ustawienia** pola, a następnie wybierz opcję wdrażania "Microsoft.Template". 
+1. Jeśli akceptujesz warunki i postanowienia, zaznacz pole wyboru Zgadzam się na **warunki i postanowienia podane powyżej** . Następnie wybierz pozycję **Kup** , aby zakończyć wdrażanie szablonu szybkiego startu. 
+1. Aby monitorować wdrożenie, wybierz wdrożenie z ikony dzwonka **powiadomień** na górnym banerze nawigacji lub przejdź do **grupy zasobów** w Azure Portal. Wybierz pozycję **wdrożenia** w obszarze **Ustawienia**, a następnie wybierz pozycję **Microsoft. Template** Deployment. 
 
-   >[!NOTE]
-   > Poświadczenia podane podczas wdrażania szablonu są przechowywane tylko dla długości wdrożenia. Po zakończeniu wdrażania te hasła są usuwane, a użytkownik jest proszony o podać je ponownie powinien dodasz więcej maszyn wirtualnych programu SQL Server do klastra. 
+>[!NOTE]
+> Poświadczenia podane podczas wdrażania szablonu są przechowywane tylko dla długości wdrożenia. Po zakończeniu wdrażania te hasła zostaną usunięte. Jeśli dodasz więcej SQL Server maszyn wirtualnych do klastra, zostanie wyświetlony monit o ich podanie. 
 
 
-## <a name="step-2---manually-create-the-availability-group"></a>Krok 2 — ręcznie utworzyć grupy dostępności 
-Ręcznie utwórz grupę dostępności, tak jak zwykle, za pomocą [SQL Server Management Studio](/sql/database-engine/availability-groups/windows/use-the-availability-group-wizard-sql-server-management-studio), [PowerShell](/sql/database-engine/availability-groups/windows/create-an-availability-group-sql-server-powershell), lub [języka Transact-SQL](/sql/database-engine/availability-groups/windows/create-an-availability-group-transact-sql). 
+## <a name="step-2-manually-create-the-availability-group"></a>Krok 2: Ręcznie Utwórz grupę dostępności 
+Ręcznie Utwórz grupę dostępności jak zwykle za pomocą [SQL Server Management Studio](/sql/database-engine/availability-groups/windows/use-the-availability-group-wizard-sql-server-management-studio), [PowerShell](/sql/database-engine/availability-groups/windows/create-an-availability-group-sql-server-powershell)lub [Transact-SQL](/sql/database-engine/availability-groups/windows/create-an-availability-group-transact-sql). 
 
-  >[!IMPORTANT]
-  > Czy **nie** utworzyć odbiornik, w tym momencie, ponieważ to jest zautomatyzowane przez **101-sql-vm-aglistener — setup** szablon szybkiego startu w kroku 4. 
+>[!IMPORTANT]
+> *Nie* Twórz teraz odbiornika, ponieważ szablon **101-SQL-VM-aglistener-Setup** Start jest automatycznie w kroku 4. 
 
-## <a name="step-3---manually-create-the-internal-load-balancer-ilb"></a>Krok 3 — ręczne tworzenie wewnętrznego modułu równoważenia obciążenia (ILB)
-Zawsze włączone odbiornika grupy dostępności (grupy dostępności) wymaga wewnętrznego modułu równoważenia obciążenia platformy Azure (ILB). Wewnętrznego modułu równoważenia obciążenia zapewnia "pływający" adres IP dla odbiornika grupy dostępności, która umożliwia szybsze trybu failover i ponowne nawiązanie połączenia. Jeśli maszyny wirtualne SQL Server w grupie dostępności są częścią tego samego zestawu dostępności, wówczas można użyć podstawowego modułu równoważenia obciążenia; w przeciwnym razie należy użyć standardowego modułu równoważenia obciążenia.  **Wewnętrznego modułu równoważenia obciążenia musi należeć do tej samej sieci wirtualnej jako wystąpienia maszyny Wirtualnej programu SQL Server.** Wewnętrznego modułu równoważenia obciążenia tylko musi zostać utworzona pozostałą część konfiguracji (np. puli zaplecza, sondy kondycji i równoważenie obciążenia reguły) jest obsługiwany przez **101-sql-vm-aglistener — setup** szablon szybkiego startu w kroku 4. 
+## <a name="step-3-manually-create-the-internal-load-balancer"></a>Krok 3: Ręczne tworzenie wewnętrznego modułu równoważenia obciążenia
+Odbiornik grupy dostępności zawsze włączony wymaga wewnętrznego wystąpienia Azure Load Balancer. Wewnętrzny moduł równoważenia obciążenia udostępnia "przestawny" adres IP dla odbiornika grupy dostępności, który umożliwia szybsze przełączanie w tryb failover i ponowne łączenie. Jeśli SQL Server maszyny wirtualne w grupie dostępności są częścią tego samego zestawu dostępności, można użyć podstawowego modułu równoważenia obciążenia. W przeciwnym razie należy użyć standardowego modułu równoważenia obciążenia. 
 
-1. W witrynie Azure portal Otwórz grupę zasobów, która zawiera maszyny wirtualne programu SQL Server. 
-2. W grupie zasobów, kliknij przycisk **Dodaj**.
-3. Wyszukaj **moduł równoważenia obciążenia** , a następnie w wynikach wyszukiwania wybierz **usługi Load Balancer**, opublikowana przez **Microsoft**.
-4. Na **modułu równoważenia obciążenia** bloku kliknij **Utwórz**.
-5. W **Tworzenie modułu równoważenia obciążenia** okna dialogowego Skonfiguruj moduł równoważenia obciążenia w następujący sposób:
+> [!IMPORTANT]
+> Wewnętrzny moduł równoważenia obciążenia powinien znajdować się w tej samej sieci wirtualnej co SQL Server wystąpienia maszyn wirtualnych. 
+
+Wystarczy utworzyć wewnętrzny moduł równoważenia obciążenia. W kroku 4 szablon z przewodnikiem **101-SQL-VM-aglistener-Setup** obsługuje resztę konfiguracji (na przykład pulę zaplecza, sondę kondycji i reguły równoważenia obciążenia). 
+
+1. W Azure Portal Otwórz grupę zasobów zawierającą SQL Server maszyn wirtualnych. 
+2. W grupie zasobów wybierz pozycję **Dodaj**.
+3. Wyszukaj **moduł równoważenia obciążenia**. W wynikach wyszukiwania wybierz pozycję **Load Balancer**, która jest publikowana przez **firmę Microsoft**.
+4. W bloku **Load Balancer** wybierz pozycję **Utwórz**.
+5. W oknie dialogowym **Tworzenie usługi równoważenia obciążenia** Skonfiguruj moduł równoważenia obciążenia w następujący sposób:
 
    | Ustawienie | Value |
    | --- | --- |
-   | **Nazwa** |Nazwa tekst reprezentujący modułu równoważenia obciążenia. Na przykład **sqlLB**. |
-   | **Typ** |**Wewnętrzny**: Większość implementacji użyć wewnętrznego modułu równoważenia obciążenia, który umożliwia aplikacjom w ramach tej samej sieci wirtualnej do grupy dostępności.  </br> **Zewnętrzne**: Umożliwia aplikacjom połączyć się z grupy dostępności za pomocą publicznego połączenia internetowego. |
-   | **Sieć wirtualna** | Wybierz sieć wirtualną, które należą do wystąpienia programu SQL Server. |
-   | **Podsieć** | Wybierz podsieć, którą wystąpienia programu SQL Server znajdują się w. |
-   | **Przypisywanie adresów IP** |**Statyczne** |
-   | **Prywatny adres IP** | Podaj dostępny adres IP z podsieci. |
-   | **Subskrypcja** |Jeśli masz wiele subskrypcji, może pojawić się w tym polu. Wybierz subskrypcję, która ma być skojarzony z tym zasobem. Zwykle jest tej samej subskrypcji co wszystkie zasoby dla grupy dostępności. |
-   | **Grupa zasobów** |Wybierz grupę zasobów, które należą do wystąpienia programu SQL Server. |
-   | **Location** |Wybierz wystąpienia programu SQL Server znajdują się w lokalizacji platformy Azure. |
+   | **Nazwa** |Wprowadź nazwę tekstową, która reprezentuje moduł równoważenia obciążenia. Na przykład wprowadź **sqlLB**. |
+   | **Typ** |**Wewnętrzny**: Większość implementacji korzysta z wewnętrznego modułu równoważenia obciążenia, który umożliwia aplikacjom w ramach tej samej sieci wirtualnej łączenie się z grupą dostępności.  </br> **Zewnętrzny**: Zezwala aplikacjom na łączenie się z grupą dostępności za pomocą publicznego połączenia internetowego. |
+   | **Sieć wirtualna** | Wybierz sieć wirtualną, w której znajdują się wystąpienia SQL Server. |
+   | **Podsieć** | Wybierz podsieć, w której znajdują się wystąpienia SQL Server. |
+   | **Przypisanie adresu IP** |**Ruchom** |
+   | **Prywatny adres IP** | Określ dostępny adres IP z podsieci. |
+   | **Subskrypcja** |Jeśli masz wiele subskrypcji, to pole może się pojawić. Wybierz subskrypcję, którą chcesz skojarzyć z tym zasobem. Zwykle jest to taka sama subskrypcja jak wszystkie zasoby dla grupy dostępności. |
+   | **Grupa zasobów** |Wybierz grupę zasobów, w której znajdują się wystąpienia SQL Server. |
+   | **Location** |Wybierz lokalizację platformy Azure, w której znajdują się wystąpienia SQL Server. |
    | &nbsp; | &nbsp; |
 
 6. Wybierz pozycję **Utwórz**. 
 
 
-  >[!IMPORTANT]
-  > Publiczny zasób adresu IP dla każdej maszyny Wirtualnej serwera SQL powinien mieć standardowej jednostki SKU, aby zapewnić ich zgodność przy użyciu standardowego modułu równoważenia obciążenia. Aby określić jednostki SKU publicznego zasobu adresu IP maszyny Wirtualnej, przejdź do usługi **grupy zasobów**, wybierz opcję usługi **publiczny adres IP** zasób żądanego programu SQL Server maszyny Wirtualnej i Znajdź wartość w obszarze **jednostki SKU**  z **Przegląd** okienka. 
+>[!IMPORTANT]
+> Zasób publicznego adresu IP dla każdej maszyny wirtualnej SQL Server powinien mieć standardową jednostkę SKU zgodną z usługą równoważenia obciążenia w warstwie Standardowa. Aby określić jednostkę SKU publicznego adresu IP maszyny wirtualnej, przejdź do pozycji **Grupa zasobów**, wybierz zasób **publicznego adresu IP** dla maszyny wirtualnej SQL Server i Znajdź wartość w obszarze **jednostka SKU** w okienku **Przegląd** . 
 
-## <a name="step-4---create-the-ag-listener-and-configure-the-ilb-with-the-quickstart-template"></a>Krok 4 — tworzenie odbiornika grupy dostępności i konfigurowanie wewnętrznego modułu równoważenia obciążenia z szablonu szybkiego startu
+## <a name="step-4-create-the-availability-group-listener-and-configure-the-internal-load-balancer-by-using-the-quickstart-template"></a>Krok 4: Tworzenie odbiornika grupy dostępności i Konfigurowanie wewnętrznego modułu równoważenia obciążenia przy użyciu szablonu szybkiego startu
 
-Tworzenie odbiornika grupy dostępności i konfigurowanie wewnętrznego modułu równoważenia obciążenia (ILB) automatycznie za pomocą **101-sql-vm-aglistener — setup** szablon szybkiego startu w postaci, w jakiej aprowizuje Microsoft.SqlVirtualMachine/ Zasób SqlVirtualMachineGroups/AvailabilityGroupListener. **101-sql-vm-aglistener — setup** szablon szybkiego startu, za pośrednictwem dostawcy zasobów maszyny Wirtualnej SQL zapewnia następujące funkcje:
+Utworzenie odbiornika grupy dostępności i automatyczne skonfigurowanie wewnętrznego modułu równoważenia obciążenia przy użyciu szablonu **101-SQL-VM-aglistener-Setup — konfiguracja** szybkiego startu. Szablon inicjuje zasób Microsoft. SqlVirtualMachine/SqlVirtualMachineGroups/AvailabilityGroupListener. Szablon **101-SQL-VM-aglistener-Setup** Start, za pośrednictwem dostawcy zasobów maszyny wirtualnej SQL, wykonuje następujące czynności:
 
- - Tworzy nowy zasób adresu IP frontonu (oparte na wartość adresu IP, które są oferowane w trakcie wdrażania) dla odbiornika. 
- - Konfiguruje ustawienia sieciowe dla klastra i wewnętrznego modułu równoważenia obciążenia. 
- - Umożliwia skonfigurowanie puli zaplecza wewnętrznego modułu równoważenia obciążenia, sondy kondycji i równoważenie obciążenia reguły.
- - Umożliwia utworzenie odbiornika grupy dostępności z danego adresu IP i nazwy.
+- Tworzy nowy zasób adresu IP frontonu (na podstawie wartości adresu IP podanego podczas wdrażania) dla odbiornika. 
+- Konfiguruje ustawienia sieci dla klastra i wewnętrznego modułu równoważenia obciążenia. 
+- Konfiguruje pulę zaplecza dla wewnętrznego modułu równoważenia obciążenia, sondy kondycji i reguł równoważenia obciążenia.
+- Tworzy odbiornik grupy dostępności o podanym adresie IP i nazwie.
  
-   >[!NOTE]
-   > **101-sql-vm-aglistener — setup** można używać tylko w przypadku klastra pracy awaryjnej Windows został utworzony za pomocą **101-sql-maszyny wirtualnej ag-setup** szablonu.
+>[!NOTE]
+> Można użyć **101-SQL-VM-aglistener-Setup** tylko wtedy, gdy klaster trybu failover systemu Windows został utworzony przy użyciu szablonu **101-SQL-VM-AG-Setup** .
    
    
-Konfigurowanie wewnętrznego modułu równoważenia obciążenia i tworzenia odbiornika grupy dostępności, wykonaj następujące czynności:
-1. Przejdź do [ **101-sql-vm-aglistener — setup** ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-aglistener-setup) szablon szybkiego startu i wybierz **Wdróż na platformie Azure** Aby uruchomić szablon szybkiego startu w witrynie Azure portal.
-1. Wypełnij wymagane pola do konfigurowania wewnętrznego modułu równoważenia obciążenia, a następnie utwórz odbiornik grupy dostępności. Opcjonalne pola może być puste. 
+Aby skonfigurować wewnętrzny moduł równoważenia obciążenia i utworzyć odbiornik grupy dostępności, wykonaj następujące czynności:
+1. Przejdź do szablonu [101-SQL-VM-aglistener-Setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-aglistener-setup) Start i wybierz pozycję **Wdróż na platformie Azure** , aby uruchomić szablon szybkiego startu w Azure Portal.
+1. Wypełnij pola wymagane w celu skonfigurowania wewnętrznego modułu równoważenia obciążenia i Utwórz odbiornik grupy dostępności. Pola opcjonalne można pozostawić puste. 
 
-    W poniższej tabeli przedstawiono wartości niezbędne do szablonu: 
+   W poniższej tabeli przedstawiono wymagane wartości szablonu: 
 
    | **Pole** | Value |
    | --- | --- |
-   |**Grupa zasobów** | Grupa zasobów, jeśli Twoje maszyny wirtualne SQL Server i grupy dostępności istnieje. | 
-   |**Nazwę istniejącego klastra trybu Failover** | Nazwa maszyny wirtualne programu SQL Server są przyłączone do klastra. |
-   | **Istniejące grupy dostępności Sql**| Nazwa grupy dostępności, która maszyn wirtualnych serwera SQL są częścią. |
-   | **Istniejące listy maszyn wirtualnych** | Nazwy maszyn wirtualnych serwera SQL, które są częścią grupy dostępności wymienionych wcześniej. Nazwy powinny być oddzielone przecinkiem i spacją (np: SQLVM1, SQLVM2). |
-   | **Odbiornik** | Nazwa DNS, którą chcesz przypisać do odbiornika. Domyślnie ten szablon Określa nazwę aglistener, ale można go zmienić. Nazwa nie może przekraczać 15 znaków. |
-   | **Port odbiornika** | Portu używanego przez odbiornik do użycia. Zazwyczaj ten port musi być domyślnego portu 1433, a w efekcie jest to numer portu, określony przez ten szablon. Jednak jeśli została zmieniona z domyślnego portu, następnie port odbiornika należy użyć tej wartości. | 
-   | **Odbiornik IP** | Adres IP ma odbiornika do użycia.  Ten adres IP zostanie utworzony podczas wdrażania szablonu, dlatego podaj adres IP, który nie jest już używana.  |
-   | **Istniejącej podsieci** | *Nazwa* wewnętrznej podsieci maszyn wirtualnych programu SQL Server (np: domyślna). Tę wartość można określić, przechodząc do Twojej **grupy zasobów**, wybierając swoje **sieci wirtualnej**, wybierając opcję **podsieci** w obszarze **ustawienia**okienko i kopiowanie wartości w obszarze **nazwa**. |
-   | **Istniejące wewnętrznego modułu równoważenia obciążenia** | Nazwa wewnętrznego modułu równoważenia obciążenia, który został utworzony w kroku 3. |
-   | **Port sondy** | Port sondy, który będzie wewnętrznego modułu równoważenia obciążenia do użycia. Szablon używa 59999 domyślnie, ale można ją zmienić tę wartość. |
+   |**Grupa zasobów** | Grupa zasobów, w której istnieje SQL Server maszyny wirtualne i Grupa dostępności. | 
+   |**Istniejąca nazwa klastra trybu failover** | Nazwa klastra, do którego są przyłączone maszyny wirtualne SQL Server. |
+   | **Istniejąca Grupa dostępności SQL**| Nazwa grupy dostępności, do której należy SQL Server maszyny wirtualne. |
+   | **Istniejąca lista maszyn wirtualnych** | Nazwy maszyn wirtualnych SQL Server, które są częścią wspomnianej wcześniej grupy dostępności. Rozdziel nazwy przecinkami i spacjami (na przykład: *SQLVM1, SQLVM2*). |
+   | **Odbiornika** | Nazwa DNS, która ma zostać przypisana do odbiornika. Domyślnie ten szablon określa nazwę "aglistener", ale można ją zmienić. Nazwa nie powinna być dłuższa niż 15 znaków. |
+   | **Port odbiornika** | Port, który ma być używany przez odbiornik. Zazwyczaj ten port powinien być wartością domyślną 1433. Jest to numer portu określany przez szablon. Ale jeśli port domyślny został zmieniony, port odbiornika powinien używać tej wartości zamiast tego. | 
+   | **Adres IP odbiornika** | Adres IP, który ma być używany przez odbiornik. Ten adres zostanie utworzony podczas wdrażania szablonu, więc podaj taki, który nie jest jeszcze używany.  |
+   | **Istniejąca podsieć** | Nazwa wewnętrznej podsieci maszyn wirtualnych SQL Server (na przykład: *Domyślna*). Możesz określić tę wartość, przechodząc do **grupy zasobów**, wybierając sieć wirtualną, wybierając **podsieci** w okienku **Ustawienia** i kopiując wartość w polu **Nazwa**. |
+   | **Istniejąca Load Balancer wewnętrzna** | Nazwa wewnętrznego modułu równoważenia obciążenia, który został utworzony w kroku 3. |
+   | **Port sondy** | Port sondy, który ma być używany przez wewnętrzny moduł równoważenia obciążenia. Szablon domyślnie używa 59999, ale można zmienić tę wartość. |
    | &nbsp; | &nbsp; |
 
-1. Jeśli wyrażasz zgodę na warunki i postanowienia, zaznacz pole wyboru obok pozycji **zgodę na warunki i postanowienia, o których wspomniano** i wybierz **zakupu** aby zakończyć wdrożenie szablonu szybkiego startu. 
-1. Aby monitorować wdrożenie, wybierz wdrożenie z **powiadomienia** dzwonka ikony w górnym menu nawigacyjnym transparencie fizyczną lub przejdź do swojej **grupy zasobów** w witrynie Azure portal wybierz  **Wdrożenia** w **ustawienia** pola, a następnie wybierz opcję wdrażania "Microsoft.Template". 
+1. Jeśli akceptujesz warunki i postanowienia, zaznacz pole wyboru Zgadzam się na **warunki i postanowienia podane powyżej** . Wybierz pozycję **Kup** , aby zakończyć wdrażanie szablonu szybkiego startu. 
+1. Aby monitorować wdrożenie, wybierz wdrożenie z ikony dzwonka **powiadomień** na górnym banerze nawigacji lub przejdź do **grupy zasobów** w Azure Portal. Wybierz pozycję **wdrożenia** w obszarze **Ustawienia**, a następnie wybierz pozycję **Microsoft. Template** Deployment. 
 
-   >[!NOTE]
-   >Jeśli wdrożenie nie powiedzie się połowy za pośrednictwem, konieczne będzie ręczne [usunąć nowo utworzony odbiornik](#remove-availability-group-listener) przy użyciu programu PowerShell przed ponownego wdrażania **101-sql-vm-aglistener — setup** szablon szybkiego startu. 
+>[!NOTE]
+>Jeśli wdrożenie zakończy się niepowodzeniem w połowie, należy ręcznie [usunąć nowo utworzony odbiornik](#remove-the-availability-group-listener) przy użyciu programu PowerShell przed ponownym wdrożeniem szablonu z przewodnikiem szybki start **101-SQL-VM-aglistener-Setup** . 
 
-## <a name="remove-availability-group-listener"></a>Usuwanie odbiornika grupy dostępności
-Jeśli zechcesz później usunąć odbiornika grupy dostępności, które są skonfigurowane w szablonie, należy przejść przez dostawcę zasobów maszyny Wirtualnej SQL. Ponieważ odbiornika jest zarejestrowany za pośrednictwem dostawcy zasobów maszyny Wirtualnej SQL, po prostu usunięcie go za pomocą programu SQL Server Management Studio jest niewystarczająca. Którą faktycznie należy usunąć za pomocą dostawcy zasobów maszyny Wirtualnej SQL przy użyciu programu PowerShell. Ten sposób usuwa metadanych odbiornika grupy dostępności od dostawcy zasobów maszyny Wirtualnej SQL i fizycznie usuwa odbiornik z grupy dostępności. 
+## <a name="remove-the-availability-group-listener"></a>Usuń odbiornik grupy dostępności
+Jeśli później będzie konieczne usunięcie odbiornika grupy dostępności, który został skonfigurowany przez szablon, musisz przejść przez dostawcę zasobów maszyny wirtualnej SQL. Ponieważ odbiornik jest zarejestrowany za pośrednictwem dostawcy zasobów maszyny wirtualnej SQL, usunięcie go za pośrednictwem SQL Server Management Studio jest niewystarczające. 
 
-Poniższy fragment kodu usuwa odbiornika grupy dostępności SQL z obu dostawcy zasobu języka SQL, a z grupy dostępności: 
+Najlepszą metodą jest usunięcie go za pośrednictwem dostawcy zasobów maszyny wirtualnej SQL przy użyciu poniższego fragmentu kodu w programie PowerShell. Spowoduje to usunięcie metadanych odbiornika grupy dostępności z dostawcy zasobów maszyny wirtualnej SQL. Również fizycznie usuwa odbiornik z grupy dostępności. 
 
-```powershell
-# Remove the AG listener
+```PowerShell
+# Remove the availability group listener
 # example: Remove-AzResource -ResourceId '/subscriptions/a1a11a11-1a1a-aa11-aa11-1aa1a11aa11a/resourceGroups/SQLAG-RG/providers/Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups/Cluster/availabilitygrouplisteners/aglistener' -Force
 Remove-AzResource -ResourceId '/subscriptions/<SubscriptionID>/resourceGroups/<resource-group-name>/providers/Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups/<cluster-name>/availabilitygrouplisteners/<listener-name>' -Force
 ```
  
 ## <a name="common-errors"></a>Typowe błędy
-W tej sekcji omówiono niektóre znane problemy i ich możliwe rozwiązanie. 
+W tej sekcji omówiono niektóre znane problemy i ich możliwe rozwiązania. 
 
-### <a name="availability-group-listener-for-availability-group-ag-name-already-exists"></a>Odbiornik grupy dostępności dla grupy dostępności "\<AG-Name >' już istnieje
-Grupa dostępności wybranego już użyty w odbiornika grupy dostępności szablon szybkiego startu platformy Azure zawiera odbiornik fizycznie w obrębie grupy dostępności lub jako metadane w ramach dostawcy zasobów maszyny Wirtualnej SQL.  Usuwanie odbiornika przy użyciu [PowerShell](#remove-availability-group-listener) przed ponownego wdrażania **101-sql-vm-aglistener — setup** szablon szybkiego startu. 
+### <a name="availability-group-listener-for-availability-group-ag-name-already-exists"></a>Odbiornik grupy dostępności dla grupy dostępności "\<AG-Name >" już istnieje
+Wybrana grupa dostępności używana w szablonie szybkiego startu platformy Azure dla odbiornika grupy dostępności zawiera już odbiornik. Jest ona fizycznie w grupie dostępności lub jej metadane pozostają w ramach dostawcy zasobów maszyny wirtualnej SQL. Przed ponownym wdrożeniem szablonu szybkiego startu **101-SQL-VM-aglistener-Setup** należy usunąć odbiornik przy użyciu [programu PowerShell](#remove-the-availability-group-listener) . 
 
-### <a name="connection-only-works-from-primary-replica"></a>Połączenie działa tylko z repliki podstawowej
-To zachowanie jest prawdopodobnie po nieudanej **101-sql-vm-aglistener — setup** wdrożenia szablonu, pozostawiając konfiguracji wewnętrznego modułu równoważenia obciążenia w niespójnym stanie. Sprawdź, czy puli wewnętrznej bazy danych zawiera zestaw dostępności oraz istnieją reguły dla sondy kondycji i reguł równoważenia obciążenia. Jeśli brakuje niektórych elementów, konfiguracja wewnętrznego modułu równoważenia obciążenia jest niespójna. 
+### <a name="connection-only-works-from-primary-replica"></a>Połączenie działa tylko z repliką podstawową
+To zachowanie jest prawdopodobnie z niepowodzenia wdrożenia szablonu **101-SQL-VM-aglistener-Setup** , które pozostawiło konfigurację wewnętrznego modułu równoważenia obciążenia w stanie niespójnym. Sprawdź, czy pula zaplecza zawiera listę zestawu dostępności oraz czy istnieją reguły dla sondy kondycji i reguły równoważenia obciążenia. W przypadku braku jakichkolwiek elementów konfiguracja wewnętrznego modułu równoważenia obciążenia jest niespójna. 
 
-Aby rozwiązać ten problem, Usuń odbiornika przy użyciu [PowerShell](#remove-availability-group-listener), usunąć wewnętrznego modułu równoważenia obciążenia w witrynie Azure portal i rozpocznij ponownie od kroku 3. 
+Aby rozwiązać ten problem, Usuń odbiornik przy użyciu [programu PowerShell](#remove-the-availability-group-listener), Usuń wewnętrzny moduł równoważenia obciążenia za pośrednictwem Azure Portal i ponownie rozpocznij od kroku 3. 
 
-### <a name="badrequest---only-sql-virtual-machine-list-can-be-updated"></a>Element BadRequest — można aktualizować tylko listy maszyn wirtualnych SQL
-Ten błąd może wystąpić podczas wdrażania **101-sql-vm-aglistener — setup** szablonu, jeśli odbiornik został usunięty za pośrednictwem programu SQL Server Management Studio (SSMS), ale nie został usunięty z maszyny Wirtualnej SQL dostawcy zasobów. Usuwanie odbiornik za pomocą programu SSMS nie powoduje usunięcia metadanych odbiornika od dostawcy zasobów maszyny Wirtualnej SQL; odbiornik muszą zostać usunięte od dostawcy zasobów za pomocą [PowerShell](#remove-availability-group-listener). 
+### <a name="badrequest---only-sql-virtual-machine-list-can-be-updated"></a>Nieprawidłowego żądania — można zaktualizować tylko listę maszyn wirtualnych SQL
+Ten błąd może wystąpić podczas wdrażania szablonu **101-SQL-VM-aglistener-Setup** , jeśli odbiornik został usunięty za pośrednictwem SQL Server Management Studio (SSMS), ale nie został usunięty z dostawcy zasobów maszyny wirtualnej SQL. Usunięcie odbiornika za pomocą narzędzia SSMS nie powoduje usunięcia metadanych odbiornika z dostawcy zasobów maszyny wirtualnej SQL. Odbiornik musi zostać usunięty z dostawcy zasobów za pośrednictwem [programu PowerShell](#remove-the-availability-group-listener). 
 
-### <a name="domain-account-does-not-exist"></a>Konto domeny nie istnieje.
-Ten błąd może być spowodowany przez jedną z dwóch powodów. Konto domenowe określone tak naprawdę nie istnieje lub jego brak [główną nazwę użytkownika (UPN)](/windows/desktop/ad/naming-properties#userprincipalname) danych. **101-sql-maszyny wirtualnej ag-setup** szablonu oczekuje, że konto domeny w postaci głównej nazwy użytkownika (czyli user@domain.com), ale niektóre konta domeny może brakować go. Zazwyczaj można to zrobić, gdy użytkownik lokalny zostały poddane migracji, jest pierwsze konto administratora domeny, gdy serwer został podniesiony do poziomu kontrolera domeny lub użytkownika została utworzona za pomocą programu PowerShell. 
+### <a name="domain-account-does-not-exist"></a>Konto domeny nie istnieje
+Ten błąd może mieć dwie przyczyny. Podane konto domeny nie istnieje lub nie zawiera danych [głównej nazwy użytkownika (UPN)](/windows/desktop/ad/naming-properties#userprincipalname) . Szablon **101-SQL-VM-AG-Setup** oczekuje konta domeny w postaci nazwy UPN (czyli *user@domain.com* ), ale w niektórych kontach domeny może brakować go. Zwykle dzieje się tak, gdy użytkownik lokalny został zmigrowany do pierwszego konta administratora domeny, gdy serwer został podwyższony do kontrolera domeny lub gdy użytkownik został utworzony za pomocą programu PowerShell. 
 
- Sprawdź, że konto istnieje. Jeśli tak jest, może być uruchomiony w drugiej sytuacji. Aby rozwiązać ten problem, wykonaj następujące czynności:
+Sprawdź, czy konto istnieje. Jeśli tak, może się zdarzyć, że zadziała w drugiej sytuacji. Aby rozwiązać ten problem, wykonaj następujące czynności:
 
-1. Na kontrolerze domeny otwórz **użytkownicy usługi Active Directory i komputery** w oknie **narzędzia** opcji **Menedżera serwera**. 
-2. Przejdź do konta, wybierając **użytkowników** w okienku po lewej stronie.
-3. Kliknij prawym przyciskiem myszy odpowiednie konto, a następnie wybierz pozycję **właściwości**.
-4. Wybierz **konta** kartę i sprawdź, czy **nazwa logowania użytkownika** jest pusta. Jeśli tak jest, to stanowi przyczynę błędu. 
+1. Na kontrolerze domeny Otwórz okno **Active Directory Użytkownicy i komputery** przy użyciu opcji **Narzędzia** w **Menedżer serwera**. 
+2. Przejdź do konta, wybierając pozycję **Użytkownicy** w lewym okienku.
+3. Kliknij prawym przyciskiem myszy konto, a następnie wybierz polecenie **Właściwości**.
+4. Wybierz kartę **konto** . Jeśli pole **Nazwa logowania użytkownika** jest puste, jest to przyczyna błędu. 
 
-    ![Konto użytkownika puste wskazuje brak głównej nazwy użytkownika](media/virtual-machines-windows-sql-availability-group-quickstart-template/account-missing-upn.png)
+    ![Puste konto użytkownika wskazuje brakującą nazwę UPN](media/virtual-machines-windows-sql-availability-group-quickstart-template/account-missing-upn.png)
 
-5. Wypełnij **nazwa logowania użytkownika** aby pasować do nazwy użytkownika, a następnie wybierz odpowiednie domeny z listy rozwijanej. 
-6. Wybierz **Zastosuj** Aby zapisać zmiany i zamknąć okno dialogowe, wybierając **OK**. 
+5. Wypełnij pole **Nazwa logowania użytkownika** , aby dopasować nazwę użytkownika, a następnie wybierz odpowiednią domenę z listy rozwijanej. 
+6. Wybierz pozycję **Zastosuj** , aby zapisać zmiany, a następnie zamknij okno dialogowe, wybierając **przycisk OK**. 
 
-   Po dokonaniu tych zmian, spróbuj ponownie wdrożyć szablon szybkiego startu platformy Azure. 
+Po wprowadzeniu tych zmian spróbuj ponownie wdrożyć szablon szybkiego startu platformy Azure. 
 
 
 
@@ -201,11 +208,11 @@ Ten błąd może być spowodowany przez jedną z dwóch powodów. Konto domenowe
 
 Aby uzyskać więcej informacji zobacz następujące artykuły: 
 
-* [Omówienie programu SQL Server VM](virtual-machines-windows-sql-server-iaas-overview.md)
-* [Program SQL Server w maszynie Wirtualnej — często zadawane pytania](virtual-machines-windows-sql-server-iaas-faq.md)
-* [Wskazówki dotyczące cen maszyn wirtualnych serwera SQL](virtual-machines-windows-sql-server-pricing-guidance.md)
-* [Informacje o wersji maszyny Wirtualnej programu SQL Server](virtual-machines-windows-sql-server-iaas-release-notes.md)
-* [Przełączanie Modele licencjonowania maszynę Wirtualną programu SQL Server](virtual-machines-windows-sql-ahb.md)
+* [Przegląd SQL Server maszyn wirtualnych](virtual-machines-windows-sql-server-iaas-overview.md)
+* [Często zadawane pytania dotyczące SQL Server maszyn wirtualnych](virtual-machines-windows-sql-server-iaas-faq.md)
+* [Wskazówki dotyczące cen maszyn wirtualnych SQL Server](virtual-machines-windows-sql-server-pricing-guidance.md)
+* [Informacje o wersji dla maszyn wirtualnych SQL Server](virtual-machines-windows-sql-server-iaas-release-notes.md)
+* [Przełączanie modeli licencjonowania dla maszyny wirtualnej SQL Server](virtual-machines-windows-sql-ahb.md)
 
 
 

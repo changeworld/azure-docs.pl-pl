@@ -1,6 +1,6 @@
 ---
-title: Rozszerzenie maszyny Wirtualnej diagnostyki wydajności platformy Azure dla Windows | Dokumentacja firmy Microsoft
-description: Wprowadzono Windows rozszerzenie maszyny Wirtualnej diagnostyki wydajności platformy Azure.
+title: Rozszerzenie maszyny wirtualnej diagnostyki wydajności platformy Azure dla systemu Windows | Microsoft Docs
+description: Wprowadza rozszerzenie maszyny wirtualnej diagnostyki wydajności Azure dla systemu Windows.
 services: virtual-machines-windows'
 documentationcenter: ''
 author: genlin
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 769305cc3d838832f8f445ac9623a1724603f968
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f9a50b0e5dd4e96c9235348bbfaae1d8a6e54d53
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60307904"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846621"
 ---
-# <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Rozszerzenie maszyny Wirtualnej diagnostyki wydajności platformy Azure dla Windows
+# <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Rozszerzenie maszyny wirtualnej diagnostyki wydajności platformy Azure dla systemu Windows
 
-Usługa Azure rozszerzenie maszyny Wirtualnej diagnostyki wydajności pomaga diagnostycznych zbieranie danych dotyczących wydajności z maszyn wirtualnych Windows. Rozszerzenie wykonuje analizę i zapewnia raportu dotyczącego wyników i zalecenia, aby zidentyfikować i rozwiązać problemy z wydajnością dla maszyny wirtualnej. To rozszerzenie instaluje narzędzie rozwiązywania problemów, o nazwie [program PerfInsights](https://aka.ms/perfinsights).
+Rozszerzenie maszyny wirtualnej diagnostyki wydajności Azure ułatwia zbieranie danych diagnostycznych wydajności z maszyn wirtualnych z systemem Windows. Rozszerzenie wykonuje analizę i zawiera raport dotyczący wyników i zaleceń dotyczących identyfikowania i rozwiązywania problemów z wydajnością na maszynie wirtualnej. To rozszerzenie powoduje zainstalowanie narzędzia do rozwiązywania problemów o nazwie [że program perfinsights](https://aka.ms/perfinsights).
 
 > [!NOTE]
-> Jeśli chcesz uruchomić diagnostykę na maszynie Wirtualnej w witrynie Azure portal dla maszyn wirtualnych-classic, zaleca się używać nowego środowiska. Aby uzyskać więcej informacji, zobacz [Diagnostyka wydajności maszyn wirtualnych platformy Azure](performance-diagnostics.md) 
+> Jeśli chcesz uruchomić diagnostykę na maszynie wirtualnej z Azure Portal dla nieklasycznych maszyn wirtualnych, zaleca się korzystanie z nowego środowiska. Aby uzyskać więcej informacji, zobacz [Diagnostyka wydajności dla maszyn wirtualnych platformy Azure](performance-diagnostics.md) 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-To rozszerzenie można zainstalować na Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 i Windows Server 2016. Można go również zainstalować na Windows 8.1 i Windows 10.
+To rozszerzenie można zainstalować w systemie Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 i Windows Server 2016. Można go również zainstalować w systemach Windows 8.1 i Windows 10.
 
 ## <a name="extension-schema"></a>Schemat rozszerzenia
-Następujące dane JSON zawiera schemat dla rozszerzenia maszyny Wirtualnej diagnostyki wydajności platformy Azure. To rozszerzenie wymaga nazwy i klucza konta magazynu do przechowywania danych wyjściowych diagnostyki i raportu. Te wartości są poufne. Klucz konta magazynu powinny być przechowywane w chronionym konfiguracji. Dane rozszerzenie chronione ustawienia maszyny Wirtualnej platformy Azure są szyfrowane, a tylko jest odszyfrowywany docelowej maszyny wirtualnej. Należy pamiętać, że **storageAccountName** i **storageAccountKey** jest rozróżniana wielkość liter. Inne wymagane parametry są wymienione w poniższej sekcji.
+Poniższy kod JSON przedstawia schemat rozszerzenia maszyny wirtualnej diagnostyki wydajności Azure. To rozszerzenie wymaga nazwy i klucza konta magazynu do przechowywania danych wyjściowych i raportów diagnostycznych. Te wartości są poufne. Klucz konta magazynu powinien być przechowywany w konfiguracji chronionego ustawienia. Dane ustawienia chronionego rozszerzenia maszyny wirtualnej platformy Azure są szyfrowane i są odszyfrowywane tylko na docelowej maszynie wirtualnej. Należy pamiętać, że w **storageAccountName** i **storageAccountKey** jest rozróżniana wielkość liter. Inne wymagane parametry są wymienione w poniższej sekcji.
 
 ```JSON
     {
@@ -67,61 +67,61 @@ Następujące dane JSON zawiera schemat dla rozszerzenia maszyny Wirtualnej diag
 
 ### <a name="property-values"></a>Wartości właściwości
 
-|   **Nazwa**   |**Wartość / przykład**|       **Opis**      |
+|   **Nazwa**   |**Wartość/przykład**|       **Opis**      |
 |--------------|-------------------|----------------------------|
 |apiVersion|2015-06-15|Wersja interfejsu API.
 |publisher|Microsoft.Azure.Performance.Diagnostics|Przestrzeń nazw wydawcy dla rozszerzenia.
-|type|AzurePerformanceDiagnostics|Typ rozszerzenia maszyny Wirtualnej.
-|typeHandlerVersion|1.0|Wersja programu obsługi rozszerzenia.
-|performanceScenario|Podstawowe|Scenariusz wydajności, do których chcesz przechwytywać dane. Prawidłowe wartości to: **podstawowe**, **vmslow**, **migracji**, i **niestandardowe**.
-|traceDurationInSeconds|300|Czas trwania ślady, jeśli wybrano dowolne spośród opcji śledzenia.
-|perfCounterTrace|p|Możliwość włączenia śledzenia licznika wydajności. Prawidłowe wartości to **p** lub wartość pusta. Jeśli nie chcesz przechwycić ślad, pozostaw wartość jako pusty.
-|networkTrace|n|Opcję, aby włączyć śledzenie sieci. Prawidłowe wartości to **n** lub wartość pusta. Jeśli nie chcesz przechwycić ślad, pozostaw wartość jako pusty.
-|xperfTrace|x|Opcję, aby włączyć narzędzia XPerf śledzenia. Prawidłowe wartości to **x** lub wartość pusta. Jeśli nie chcesz przechwycić ślad, pozostaw wartość jako pusty.
-|storPortTrace|s|Opcja Włącz StorPort śledzenia. Prawidłowe wartości to **s** lub wartość pusta. Jeśli nie chcesz przechwycić ślad, pozostaw wartość jako pusty.
-|srNumber|123452016365929|Numer biletu pomocy technicznej, jeśli jest dostępny. Pozostaw wartość jako pusty, jeśli nie masz go.
-|requestTimeUtc|2017-09-28T22:08:53.736Z|Bieżąca data i godzina w formacie Utc. Jeśli są przy użyciu portalu, aby zainstalować to rozszerzenie, nie musisz podać tę wartość.
-|resourceId|/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}|Unikatowy identyfikator maszyny Wirtualnej.
-|storageAccountName|mystorageaccount|Nazwa konta magazynu do przechowywania dzienników diagnostycznych i wyników.
-|storageAccountKey|lDuVvxuZB28NNP…hAiRF3voADxLBTcc==|Klucz konta magazynu.
+|— typ|AzurePerformanceDiagnostics|Typ rozszerzenia maszyny wirtualnej.
+|typeHandlerVersion|1.0|Wersja procedury obsługi rozszerzenia.
+|performanceScenario|podstawowe|Scenariusz wydajności, dla którego mają zostać przechwycone dane. Prawidłowe wartości to: **Basic**, **vmslow**, **migracji pamięci**i **Custom**.
+|traceDurationInSeconds|300|Czas trwania śledzenia, jeśli wybrano dowolną z opcji śledzenia.
+|perfCounterTrace|p|Opcja włączenia śledzenia licznika wydajności. Prawidłowe wartości to **p** lub wartość pusta. Jeśli nie chcesz przechwytywać tego śledzenia, pozostaw wartość pustą.
+|networkTrace|n|Opcja włączania funkcji śledzenia sieci. Prawidłowe wartości to **n** lub wartość pusta. Jeśli nie chcesz przechwytywać tego śledzenia, pozostaw wartość pustą.
+|xperfTrace|x|Opcja włączania śledzenia XPerf. Prawidłowe wartości to **x** lub wartość pusta. Jeśli nie chcesz przechwytywać tego śledzenia, pozostaw wartość pustą.
+|storPortTrace|s|Opcja włączenia śledzenia StorPort. Prawidłowe wartości to **s** lub Empty. Jeśli nie chcesz przechwytywać tego śledzenia, pozostaw wartość pustą.
+|srNumber|123452016365929|Numer biletu pomocy technicznej, jeśli jest dostępny. Pozostaw wartość pustą, jeśli jej nie masz.
+|requestTimeUtc|2017-09-28T22:08:53.736Z|Bieżąca data i godzina w formacie UTC. Jeśli używasz portalu do zainstalowania tego rozszerzenia, nie musisz podawać tej wartości.
+|resourceId|/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}|Unikatowy identyfikator maszyny wirtualnej.
+|storageAccountName|mystorageaccount|Nazwa konta magazynu do przechowywania dzienników i wyników diagnostyki.
+|storageAccountKey|lDuVvxuZB28NNP…hAiRF3voADxLBTcc==|Klucz dla konta magazynu.
 
 ## <a name="install-the-extension"></a>Instalowanie rozszerzenia
 
-Wykonaj te instrukcje, aby zainstalować rozszerzenie na maszynach wirtualnych Windows:
+Postępuj zgodnie z tymi instrukcjami, aby zainstalować rozszerzenie na maszynach wirtualnych z systemem Windows:
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Wybierz maszynę wirtualną, w którym chcesz zainstalować to rozszerzenie.
+2. Wybierz maszynę wirtualną, w której chcesz zainstalować to rozszerzenie.
 
-    ![Zrzut ekranu usługi Azure portal, z maszynami wirtualnymi z wyróżnioną pozycją](media/performance-diagnostics-vm-extension/select-the-virtual-machine.png)
-3. Wybierz **rozszerzenia** bloku, a następnie wybierz **Dodaj**.
+    ![Zrzut ekranu przedstawiający Azure Portal z wyróżnionymi maszynami wirtualnymi](media/performance-diagnostics-vm-extension/select-the-virtual-machine.png)
+3. Wybierz blok **rozszerzenia** , a następnie wybierz pozycję **Dodaj**.
 
-    ![Zrzut ekranu rozszerzenia blok Dodaj wyróżnione](media/performance-diagnostics-vm-extension/select-extensions.png)
-4. Wybierz **Diagnostyka wydajności Azure**, zapoznaj się z warunkami i wybierz **Utwórz**.
+    ![Zrzut ekranu przedstawiający blok rozszerzeń z wyróżnioną pozycją Dodaj](media/performance-diagnostics-vm-extension/select-extensions.png)
+4. Wybierz pozycję **Diagnostyka wydajności Azure**, zapoznaj się z warunkami i postanowieniami, a następnie wybierz pozycję **Utwórz**.
 
-    ![Zrzut ekranu nowego zasobu ekran, podświetlony Diagnostyka wydajności platformy Azure](media/performance-diagnostics-vm-extension/create-azure-performance-diagnostics-extension.png)
-5. Podaj wartości parametrów dla instalacji, a następnie wybierz pozycję **OK** można zainstalować rozszerzenia. Aby uzyskać więcej informacji o obsługiwanych scenariuszach, zobacz [jak za pomocą programu PerfInsights](how-to-use-perfInsights.md#supported-troubleshooting-scenarios). 
+    ![Zrzut ekranu przedstawiający nowy ekran zasobów z wyróżnioną usługą Azure Performance Diagnostics](media/performance-diagnostics-vm-extension/create-azure-performance-diagnostics-extension.png)
+5. Podaj wartości parametrów instalacji, a następnie wybierz **przycisk OK** , aby zainstalować rozszerzenie. Aby uzyskać więcej informacji o obsługiwanych scenariuszach, zobacz [How to use że program perfinsights](how-to-use-perfinsights.md#supported-troubleshooting-scenarios). 
 
-    ![Zrzut ekranu zainstalować rozszerzenie okno dialogowe](media/performance-diagnostics-vm-extension/install-the-extension.png)
-6. Jeśli instalacja zakończy się pomyślnie, zobaczysz komunikat informujący o tym stanie.
+    ![Zrzut ekranu przedstawiający okno dialogowe rozszerzenia instalacji](media/performance-diagnostics-vm-extension/install-the-extension.png)
+6. Po pomyślnym zakończeniu instalacji zostanie wyświetlony komunikat z informacją o tym stanie.
 
-    ![Zrzut ekranu z inicjowania obsługi administracyjnej powiodło się. komunikat](media/performance-diagnostics-vm-extension/provisioning-succeeded-message.png)
+    ![Zrzut ekranu przedstawiający komunikat o pomyślnym aprowizacji](media/performance-diagnostics-vm-extension/provisioning-succeeded-message.png)
 
     > [!NOTE]
-    > Jest uruchamiane rozszerzenie podczas aprowizowania zakończyła się pomyślnie. W ciągu dwóch minut lub mniej, aby wykonać podstawowy scenariusz. W innych sytuacjach działa przez czas określony podczas instalacji.
+    > Rozszerzenie jest uruchamiane po pomyślnym zainicjowaniu obsługi administracyjnej. Ukończenie scenariusza podstawowego trwa dwa minuty lub mniej. W przypadku innych scenariuszy działa on przez czas trwania określony podczas instalacji.
 
 ## <a name="remove-the-extension"></a>Usuń rozszerzenie
 Aby usunąć rozszerzenie z maszyny wirtualnej, wykonaj następujące kroki:
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com), wybierz maszynę wirtualną, z którego chcesz usunąć to rozszerzenie, a następnie wybierz **rozszerzenia** bloku. 
-2. Wybierz ( **...** ) dla wpisu rozszerzenie diagnostyki wydajności z listy, a następnie wybierz pozycję **Odinstaluj**.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com), wybierz maszynę wirtualną, z której chcesz usunąć to rozszerzenie, a następnie wybierz blok **rozszerzenia** . 
+2. Wybierz pozycję ( **...** ) dla wpisu rozszerzenia Diagnostyka wydajności z listy, a następnie wybierz pozycję **Odinstaluj**.
 
-    ![Zrzut ekranu rozszerzenia blok Odinstaluj wyróżniony](media/performance-diagnostics-vm-extension/uninstall-the-extension.png)
+    ![Zrzut ekranu przedstawiający blok rozszerzeń z wyróżnioną opcją odinstalowania](media/performance-diagnostics-vm-extension/uninstall-the-extension.png)
 
     > [!NOTE]
-    > Można również wybrać wpis rozszerzenia i wybierz **Odinstaluj** opcji.
+    > Możesz również wybrać wpis rozszerzenia i wybrać opcję **Odinstaluj** .
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
-Rozszerzenia maszyny wirtualnej platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager. Schemat JSON szczegółowo opisane w poprzedniej sekcji może służyć w szablonie usługi Azure Resource Manager. To uruchamia rozszerzenie maszyny Wirtualnej diagnostyki wydajności platformy Azure podczas wdrażania szablonu usługi Azure Resource Manager. Poniżej przedstawiono przykładowy szablon:
+Rozszerzenia maszyny wirtualnej platformy Azure można wdrażać za pomocą szablonów Azure Resource Manager. Schemat JSON opisany w poprzedniej sekcji można użyć w szablonie Azure Resource Manager. Spowoduje to uruchomienie rozszerzenia maszyny wirtualnej usługi Azure Performance Diagnostics podczas wdrażania szablonu Azure Resource Manager. Oto przykładowy szablon:
 
 ```
 {
@@ -209,8 +209,8 @@ Rozszerzenia maszyny wirtualnej platformy Azure można wdrażać przy użyciu sz
 }
 ```
 
-## <a name="powershell-deployment"></a>Wdrożenie programu PowerShell
-`Set-AzVMExtension` Polecenie może służyć do wdrażania rozszerzenia maszyny Wirtualnej diagnostyki wydajności platformy Azure do istniejącej maszyny wirtualnej.
+## <a name="powershell-deployment"></a>Wdrażanie programu PowerShell
+Za `Set-AzVMExtension` pomocą polecenia można wdrożyć rozszerzenie maszyny wirtualnej diagnostyki wydajności platformy Azure dla istniejącej maszyny wirtualnej.
 
 PowerShell
 
@@ -229,31 +229,31 @@ Set-AzVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
     -Location WestUS
 ```
 
-## <a name="information-on-the-data-captured"></a>Informacje na temat danych przechwyconych
-Narzędzie to program PerfInsights zbiera różne dzienniki, konfiguracji i danych diagnostycznych, w zależności od wybranego scenariusza. Aby uzyskać więcej informacji, zobacz [dokumentacji program PerfInsights](https://aka.ms/perfinsights).
+## <a name="information-on-the-data-captured"></a>Informacje na temat przechwyconych danych
+Narzędzie że program perfinsights zbiera różne dzienniki, konfigurację i dane diagnostyczne w zależności od wybranego scenariusza. Aby uzyskać więcej informacji, zapoznaj się z [dokumentacją że program perfinsights](https://aka.ms/perfinsights).
 
 ## <a name="view-and-share-the-results"></a>Wyświetlanie i udostępnianie wyników
 
-Dane wyjściowe z rozszerzenia można znaleźć w pliku zip, który przekazywane na konto magazynu określone podczas instalacji i udostępniane przez 30 dni, przy użyciu funkcji [dostępu sygnatury Współdzielonego](../../storage/common/storage-dotnet-shared-access-signature-part-1.md). Ten plik zip zawiera dzienniki diagnostyczne i raport o wyniki i zalecenia. Linku sygnatury dostępu Współdzielonego do pliku zip, dane wyjściowe można znaleźć w pliku tekstowym o nazwie *zipfilename*_saslink.txt w folderze **C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics \\ \<wersji >** . Każdy, kto posiada ten link jest w stanie pobrać plik zip.
+Dane wyjściowe z rozszerzenia można znaleźć w pliku zip, który został przekazany do konta magazynu określonego podczas instalacji i jest udostępniany przez 30 dni przy użyciu [sygnatur dostępu współdzielonego (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md). Ten plik zip zawiera dzienniki diagnostyczne i Raport z wynikami i zaleceniami. Link sygnatury dostępu współdzielonego do wyjściowego pliku zip można znaleźć w pliku tekstowym o nazwie *zipfilename*_saslink. txt w **folderze\\ C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\< > wersji**. Każdy, kto ma ten link, może pobrać plik zip.
 
-Aby ułatwić ze specjalistą pomocy technicznej nad biletu pomocy technicznej, firma Microsoft może używać tego linku sygnatury dostępu Współdzielonego można pobrać danych diagnostycznych.
+Aby pomóc inżynierowi pomocy technicznej w pracy nad biletem pomocy technicznej, firma Microsoft może używać tego linku SAS do pobierania danych diagnostycznych.
 
-Aby wyświetlić raport, Wyodrębnij plik zip, a następnie otwórz **Report.html program PerfInsights** pliku.
+Aby wyświetlić raport, Wyodrębnij plik zip i Otwórz plik **że program perfinsights raportu. html** .
 
-Należy także można pobrać plik zip bezpośrednio z portalu, wybierając rozszerzenie.
+Należy również pobrać plik zip bezpośrednio z portalu, wybierając rozszerzenie.
 
-![Zrzut ekranu Diagnostyka wydajności szczegółowy stan](media/performance-diagnostics-vm-extension/view-detailed-status.png)
+![Zrzut ekranu przedstawiający szczegółowy stan diagnostyki wydajności](media/performance-diagnostics-vm-extension/view-detailed-status.png)
 
 > [!NOTE]
-> Linku sygnatury dostępu Współdzielonego, wyświetlana w portalu może nie działać czasami. Może to być spowodowane przez nieprawidłowo sformułowany adres URL podczas wykonywania operacji kodowania i dekodowania. Zamiast tego możesz uzyskać link bezpośrednio z pliku *_saslink.txt z maszyny Wirtualnej.
+> Link sygnatury dostępu współdzielonego wyświetlany w portalu może nie funkcjonować czasami. Przyczyną może być nieprawidłowo sformułowany adres URL podczas operacji kodowania i dekodowania. Zamiast tego możesz uzyskać link bezpośrednio z pliku * _saslink. txt z maszyny wirtualnej.
 
 ## <a name="troubleshoot-and-support"></a>Rozwiązywanie problemów i pomocy technicznej
 
-- Stan wdrożenia rozszerzenia (w obszarze powiadomień) może wyświetlać "Wdrażanie jest w toku", nawet jeśli rozszerzenie nie zostanie pomyślnie aprowizowane.
+- Stan wdrożenia rozszerzenia (w obszarze powiadomień) może wskazywać na "wdrożenie w toku", mimo że rozszerzenie zostało pomyślnie zainicjowane.
 
-    Ten problem można zignorować, tak długo, jak stan rozszerzenia wskazuje, czy rozszerzenia nie zostanie pomyślnie aprowizowane.
-- Można rozwiązać pewne problemy podczas instalacji przy użyciu dzienników rozszerzenia. Dane wyjściowe wykonywania rozszerzenia jest rejestrowany wpis pliki znajdujące się w następującym katalogu:
+    Ten problem można bezpiecznie zignorować, o ile stan rozszerzenia wskazuje, że rozszerzenie zostało pomyślnie zainicjowane.
+- Niektóre problemy można rozwiązać podczas instalacji przy użyciu dzienników rozszerzeń. Dane wyjściowe wykonania rozszerzenia są rejestrowane w plikach znalezionych w następującym katalogu:
 
         C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\<version>
 
-Jeśli potrzebujesz dodatkowej pomocy w dowolnym momencie, w tym artykule, możesz skontaktować się ze ekspertów platformy Azure na [forów platformy Azure z subskrypcją MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/). Alternatywnie mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/)i wybierz **uzyskać pomoc techniczną**. Aby uzyskać informacje o korzystaniu z pomocy technicznej platformy Azure, przeczytaj [pomocy technicznej Microsoft Azure — często zadawane pytania](https://azure.microsoft.com/support/faq/).
+Jeśli potrzebujesz dodatkowej pomocy w dowolnym momencie, w tym artykule, możesz skontaktować się ze ekspertów platformy Azure na [forów platformy Azure z subskrypcją MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/). Alternatywnie mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options/)i wybierz pozycję **Uzyskaj pomoc techniczną**. Aby uzyskać informacje o korzystaniu z pomocy technicznej platformy Azure, przeczytaj temat [Microsoft Azure support — często zadawane pytania](https://azure.microsoft.com/support/faq/).

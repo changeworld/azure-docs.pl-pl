@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 596020952fd02a414c050ac7fe7ab37d7137c391
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 4a745648f1b7abac7267d51cac9e1fe642ae13d8
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779661"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853687"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Wdrażanie ochrony haseł w usłudze Azure AD
 
@@ -280,7 +280,7 @@ Istnieją dwa wymagane Instalatory dla ochrony hasłem usługi Azure AD. Są one
 
    Usługę agenta DC można zainstalować na komputerze, który nie jest jeszcze kontrolerem domeny. W takim przypadku usługa zostanie uruchomiona i uruchomiona, ale pozostanie nieaktywna, dopóki komputer nie zostanie podwyższony do poziomu kontrolera domeny.
 
-   Instalację oprogramowania można zautomatyzować za pomocą standardowych procedur MSI. Przykład:
+   Instalację oprogramowania można zautomatyzować za pomocą standardowych procedur MSI. Na przykład:
 
    `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`
 
@@ -290,7 +290,9 @@ Instalacja zostanie zakończona po zainstalowaniu na kontrolerze domeny oprogram
 
 ## <a name="upgrading-the-proxy-agent"></a>Uaktualnianie agenta proxy
 
-Gdy jest dostępna nowsza wersja oprogramowania proxy ochrony hasłem usługi Azure AD, uaktualnienie jest wykonywane przez uruchomienie najnowszej wersji `AzureADPasswordProtectionProxySetup.exe` instalatora oprogramowania. Odinstalowywanie bieżącej wersji oprogramowania serwera proxy nie jest wymagane — Instalator wykona uaktualnienie w miejscu. Podczas uaktualniania oprogramowania serwera proxy nie powinno być wymagane ponowne uruchomienie komputera. Uaktualnienie oprogramowania może być zautomatyzowane przy użyciu standardowych procedur MSI, na przykład: `AzureADPasswordProtectionProxySetup.exe /quiet`.
+Gdy jest dostępna nowsza wersja oprogramowania proxy ochrony hasłem usługi Azure AD, uaktualnienie jest wykonywane przez uruchomienie najnowszej wersji `AzureADPasswordProtectionProxySetup.exe` instalatora oprogramowania. Najnowsza wersja oprogramowania jest dostępna w [Centrum pobierania Microsoft](https://www.microsoft.com/download/details.aspx?id=57071).
+
+Odinstalowywanie bieżącej wersji oprogramowania serwera proxy nie jest wymagane — Instalator wykona uaktualnienie w miejscu. Podczas uaktualniania oprogramowania serwera proxy nie powinno być wymagane ponowne uruchomienie komputera. Uaktualnienie oprogramowania może być zautomatyzowane przy użyciu standardowych procedur MSI, na przykład: `AzureADPasswordProtectionProxySetup.exe /quiet`.
 
 Agent proxy obsługuje automatyczne uaktualnianie. Automatyczne uaktualnianie Microsoft Azure AD używa usługi Aktualizator Connect Agent, która jest zainstalowana równolegle z usługą proxy. Automatyczne uaktualnianie jest domyślnie włączone i można je włączyć lub wyłączyć za pomocą polecenia cmdlet Set-AzureADPasswordProtectionProxyConfiguration. Bieżące ustawienie można wykonać przy użyciu polecenia cmdlet Get-AzureADPasswordProtectionProxyConfiguration. Firma Microsoft zaleca, aby funkcja automatycznego uaktualniania była włączona.
 
@@ -298,7 +300,9 @@ Agent proxy obsługuje automatyczne uaktualnianie. Automatyczne uaktualnianie Mi
 
 ## <a name="upgrading-the-dc-agent"></a>Uaktualnianie agenta DC
 
-Gdy jest dostępna nowsza wersja oprogramowania agenta DC ochrony hasłem w usłudze Azure AD, uaktualnienie jest wykonywane przez uruchomienie najnowszej wersji `AzureADPasswordProtectionDCAgentSetup.msi` pakietu oprogramowania. Odinstalowywanie bieżącej wersji oprogramowania agenta kontrolera domeny nie jest wymagane — Instalator wykona uaktualnienie w miejscu. Podczas uaktualniania oprogramowania agenta kontrolera domeny jest zawsze wymagane ponowne uruchomienie komputera — jest to spowodowane przez podstawowe zachowanie systemu Windows. 
+Gdy jest dostępna nowsza wersja oprogramowania agenta DC ochrony hasłem w usłudze Azure AD, uaktualnienie jest wykonywane przez uruchomienie najnowszej wersji `AzureADPasswordProtectionDCAgentSetup.msi` pakietu oprogramowania. Najnowsza wersja oprogramowania jest dostępna w [Centrum pobierania Microsoft](https://www.microsoft.com/download/details.aspx?id=57071).
+
+Odinstalowywanie bieżącej wersji oprogramowania agenta kontrolera domeny nie jest wymagane — Instalator wykona uaktualnienie w miejscu. Podczas uaktualniania oprogramowania agenta kontrolera domeny jest zawsze wymagane ponowne uruchomienie komputera — jest to spowodowane przez podstawowe zachowanie systemu Windows. 
 
 Uaktualnienie oprogramowania może być zautomatyzowane przy użyciu standardowych procedur MSI, na przykład: `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`.
 
@@ -320,7 +324,7 @@ Główną kwestią dostępności ochrony hasłem jest dostępność serwerów pr
 
 Projekt oprogramowania agenta kontrolera domeny ogranicza typowe problemy, które są związane z wysoką dostępnością. Agent DC obsługuje lokalną pamięć podręczną ostatnio pobranych zasad haseł. Nawet jeśli wszystkie zarejestrowane serwery proxy staną się niedostępne, agenci kontrolera domeny kontynuują wymuszanie zasad haseł w pamięci podręcznej. Rozsądna częstotliwość aktualizacji zasad haseł w dużych wdrożeniach to zwykle dni, nie więcej niż godz. W związku z tym krótkie przestoje serwerów proxy nie wpływają znacząco na ochronę hasłem usługi Azure AD.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Po zainstalowaniu usług potrzebnych do ochrony hasłem usługi Azure AD na serwerach lokalnych należy [przeprowadzić konfigurację po instalacji i zebrać informacje o raportowaniu](howto-password-ban-bad-on-premises-operations.md) w celu ukończenia wdrożenia.
 

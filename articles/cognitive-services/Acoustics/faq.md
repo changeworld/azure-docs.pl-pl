@@ -3,20 +3,20 @@ title: Często zadawane pytania dotyczące akustycznych projektów
 titlesuffix: Azure Cognitive Services
 description: Ta strona zawiera odpowiedzi na często zadawane pytania dotyczące akustycznych projektów, w tym instrukcji pobierania i procesu tworzenie.
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: a965fc020c5c534616459ad661b71ac67dbc2425
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: f0484fc9fc2af5514ba0f5b61277146a51757057
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704812"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855029"
 ---
 # <a name="project-acoustics-frequently-asked-questions"></a>Często zadawane pytania dotyczące akustycznych projektów
 
@@ -76,6 +76,6 @@ Funkcja akustyczna projektu zapewnia dokładne i niezawodne parametry akustyczne
 
 Tworzenie składa się z symulowanych fal akustycznych regionów symulacji Cuboid wyśrodkowanych przez każdą sondę odbiornika.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Wypróbuj [zawartość przykładową Unity](unity-quickstart.md) lub [Unreal przykładowej](unreal-quickstart.md) zawartości
 

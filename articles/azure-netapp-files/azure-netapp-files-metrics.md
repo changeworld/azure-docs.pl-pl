@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/07/2019
 ms.author: b-juche
-ms.openlocfilehash: 9a56fb27fdf9e196291942041d68b249d7f16648
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 7cf382f511d2ba8452d77bf207f36b749cb31e94
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839238"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848786"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Metryki dla usługi Azure NetApp Files
 
@@ -29,27 +29,40 @@ Azure NetApp Files dostarcza metryki przydziału magazynu, rzeczywistego użycia
 
 <!-- 
 - *Volume pool allocated size*  
-    This is the size (GiB) of the provisioned capacity pool.  
+    The size (GiB) of the provisioned capacity pool  
 --> 
 - *Użyte przydzieloną pulę woluminów*  
-    Jest to całkowita liczba przydziałów woluminu (GiB) w danej puli pojemności (czyli całkowita wielkość przyznanych woluminów w puli pojemności). Jest to rozmiar wybrany podczas tworzenia woluminu.  
+    Łączny limit przydziału woluminu (GiB) w danej puli pojemności (czyli łączny rozmiar zainicjowanych woluminów w puli pojemności)  
+    Jest to rozmiar wybrany podczas tworzenia woluminu.  
 - *Łączny rozmiar logiczny puli woluminów*  
-    Jest to całkowita ilość przestrzeni logicznej (GiB) używana między woluminami w puli pojemności.  
+    Całkowita ilość przestrzeni logicznej (GiB) używana między woluminami w puli pojemności  
 <!-- 
 - *Volume pool total snapshot size*  
-    This is the total of incremental logical space used by the snapshots.  
+    The total of incremental logical space used by the snapshots  
 -->
 
 ## <a name="volumes"></a>Metryki użycia dla woluminów
 
 <!-- 
 - *Volume allocated size*   
-    This is the volume size (quota) provisioned in GiB.  
+    The volume size (quota) provisioned in GiB  
 --> 
 - *Rozmiar logiczny woluminu*   
-    Jest to całkowite miejsce logiczne używane w woluminie (GiB). Ten rozmiar obejmuje przestrzeni logicznej używanej przez aktywne systemy plików i migawki.  
+    Całkowite miejsce logiczne używane w woluminie (GiB)  
+    Ten rozmiar obejmuje przestrzeni logicznej używanej przez aktywne systemy plików i migawki.  
 - *Rozmiar migawki woluminu*   
-    Jest to przyrostowe miejsce logiczne używane przez migawki w woluminie.  
+   Przyrostowe miejsce logiczne używane przez migawki w woluminie  
+
+## <a name="performance-metrics-for-volumes"></a>Metryki wydajności dla woluminów
+
+- *AverageReadLatency*   
+    Średni czas odczytu z woluminu w milisekundach
+- *AverageWriteLatency*   
+    Średni czas zapisu z woluminu w milisekundach
+- *ReadIops*   
+    Liczba odczytów do woluminu na sekundę
+- *WriteIops*   
+    Liczba zapisów w woluminie na sekundę
 
 ## <a name="next-steps"></a>Kolejne kroki
 

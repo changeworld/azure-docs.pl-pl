@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 6c58528aba29cbbc81694112815534a8fc525b8a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a8221de15dfa48b4eebcf0fe0df29ea0c3a1868e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565383"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854967"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Szybki start: Uruchamianie pierwszego zapytania usługi Resource Graph przy użyciu programu Azure PowerShell
 
@@ -27,7 +27,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="add-the-resource-graph-module"></a>Dodaj moduł usługi Resource Graph
 
-Aby włączyć program Azure PowerShell do wykonywania zapytań do usługi Azure Resource Graph, musisz dodać moduł. Ten moduł może być używany z lokalnie zainstalowanym programem PowerShell, [programem Azure Cloud Shell](https://shell.azure.com) lub [obrazem Docker programu Azure PowerShell](https://hub.docker.com/r/azuresdk/azure-powershell/).
+Aby włączyć program Azure PowerShell do wykonywania zapytań do usługi Azure Resource Graph, musisz dodać moduł. Tego modułu można używać z zainstalowanym lokalnie programem PowerShell, z [Azure Cloud Shell](https://shell.azure.com)lub z [obrazem platformy Docker programu PowerShell](https://hub.docker.com/_/microsoft-powershell).
 
 ### <a name="base-requirements"></a>Wymagania podstawowe
 
@@ -98,14 +98,17 @@ Gdy końcowe zapytanie zostanie uruchomione wielokrotnie, zakładając, że nic 
 Jeśli chcesz usunąć moduł usługi Resource Graph ze środowiska programu Azure PowerShell, możesz to zrobić za pomocą następującego polecenia:
 
 ```azurepowershell-interactive
-# Remove the Resource Graph module from the Azure PowerShell environment
+# Remove the Resource Graph module from the current session
 Remove-Module -Name 'Az.ResourceGraph'
+
+# Uninstall the Resource Graph module from the environment
+Uninstall-Module -Name 'Az.ResourceGraph'
 ```
 
 > [!NOTE]
 > Nie powoduje ono usunięcia wcześniej pobranego pliku modułu. Powoduje tylko usunięcie go z uruchomionej sesji programu PowerShell.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Uzyskaj więcej informacji na temat [języka zapytań](./concepts/query-language.md)
 - Dowiedz się, jak [eksplorować zasoby](./concepts/explore-resources.md)

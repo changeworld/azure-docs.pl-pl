@@ -1,99 +1,98 @@
 ---
-title: Metryki analizy usługi Azure Storage (wersja klasyczna)
-description: Dowiedz się, jak przy użyciu metryk w usłudze Azure Storage.
-services: storage
+title: Metryki usługi Azure Storage Analytics (klasyczne)
+description: Dowiedz się, jak używać metryk w usłudze Azure Storage.
 author: normesta
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 5fecced844b3580c83fd18d0c14c3a2083f7a4fc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: ca831fe66a0ce6a2dbfafc54a761b86473067b10
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165738"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846884"
 ---
-# <a name="azure-storage-analytics-metrics-classic"></a>Metryki analizy usługi Azure Storage (wersja klasyczna)
+# <a name="azure-storage-analytics-metrics-classic"></a>Metryki usługi Azure Storage Analytics (klasyczne)
 
-Usługa Storage Analytics może przechowywać metryki, które obejmują zagregowane transakcji statystyki oraz dane dyspozycyjności o żądaniach do usługi storage. Transakcje są zgłaszane zarówno na poziomie operacji interfejsu API, a także na poziomie usługi storage, a pojemność jest zgłaszany na poziomie usługi magazynu. Dane metryk można analizować użycie usługi magazynu, diagnozowanie problemów z żądania skierowanego do usługi storage i poprawić wydajność aplikacji, które używają usługi.  
+Analityka magazynu mogą przechowywać metryki, które obejmują zagregowane statystyki transakcji oraz dane pojemności dotyczące żądań do usługi magazynu. Transakcje są raportowane zarówno na poziomie operacji interfejsu API, jak i na poziomie usługi magazynu, a pojemność jest raportowana na poziomie usługi magazynu. Dane metryk umożliwiają analizowanie użycia usługi magazynu, diagnozowanie problemów z żądaniami dotyczącymi usługi Storage oraz Poprawianie wydajności aplikacji korzystających z usługi.  
 
- Metryk usługi Storage Analytics są domyślnie włączone dla nowych kont magazynu. Można skonfigurować metryki w [witryny Azure portal](https://portal.azure.com/); Aby uzyskać więcej informacji, zobacz [monitorowania na koncie magazynu w witrynie Azure portal](/azure/storage/storage-monitor-storage-account). Można również włączyć analizy programowo za pośrednictwem interfejsu API REST lub biblioteka klienta usługi Storage. Aby włączyć analityka magazynu dla każdej usługi, należy użyć operacji ustawiania właściwości usługi.  
+ Metryki analityka magazynu są domyślnie włączone dla nowych kont magazynu. Metryki można skonfigurować w [Azure Portal](https://portal.azure.com/); Aby uzyskać szczegółowe informacje, zobacz [Monitorowanie konta magazynu w Azure Portal](/azure/storage/storage-monitor-storage-account). Możesz również włączyć analityka magazynu programowo za pośrednictwem interfejsu API REST lub biblioteki klienta. Użyj operacji ustawiania właściwości usługi, aby włączyć analityka magazynu dla każdej usługi.  
 
 > [!NOTE]
-> Storage Analytics metryki są dostępne dla usług obiektów Blob, kolejka, tabela i plik.
-> Metryk usługi Storage Analytics są teraz metryki model klasyczny. Firma Microsoft zaleca używanie [metryk usługi Storage w usłudze Azure Monitor](storage-metrics-in-azure-monitor.md) zamiast metryk usługi Storage Analytics.
+> Metryki analityka magazynu są dostępne dla usług obiektów blob, kolejek, tabel i plików.
+> Metryki analityka magazynu są teraz metrykami klasycznymi. Firma Microsoft zaleca używanie [metryk magazynu w Azure monitor](storage-metrics-in-azure-monitor.md) zamiast metryk analityka magazynu.
 
 ## <a name="transaction-metrics"></a>Metryki transakcji  
- Niezawodny zestaw danych jest rejestrowana w odstępach co godzinę i minutę dla każdej usługi storage i żądanej operacji interfejsu API, łącznie z ruchem przychodzącym/wychodzącym, dostępności, błędy i kategorii wartości procentowych żądania. Można wyświetlić pełną listę szczegółów transakcji w [schemat tabeli metryk usługi Analytics magazynu](/rest/api/storageservices/storage-analytics-metrics-table-schema) tematu.  
+ Niezawodny zestaw danych jest rejestrowany w co godzinę lub w minutę interwałów dla każdej usługi magazynu i żądana operacja interfejsu API, w tym ruch przychodzący/wychodzący, dostępność, błędy i wartości procentowe żądań skategoryzowanych. Pełną listę szczegółów transakcji można znaleźć w temacie [schemat tabeli metryk analityka magazynu](/rest/api/storageservices/storage-analytics-metrics-table-schema) .  
 
- Dane transakcji są rejestrowane na dwóch poziomach — poziom usługi i poziom operacji interfejsu API. Na poziomie usługi statystyki podsumowujące wszystkie żądane operacje interfejsu API są zapisywane na jednostkę tabeli co godzinę nawet wtedy, gdy żadne żądania nie zostały wprowadzone do usługi. Na poziomie operacji interfejsu API statystyki są zapisywane tylko do jednostki, jeśli zażądano operacji w ciągu danej godziny.  
+ Dane transakcji są rejestrowane na dwóch poziomach — poziom usługi i poziom operacji interfejsu API. Na poziomie usługi Statystyka podsumowująca wszystkie żądane operacje interfejsu API są zapisywane w jednostce tabeli co godzinę, nawet jeśli żadne żądania nie zostały wysłane do usługi. Na poziomie operacji interfejsu API statystyki są zapisywane tylko w jednostce, jeśli zażądano tej operacji w danej godzinie.  
 
- Na przykład, jeśli wykonujesz **GetBlob** operacji w usłudze Blob Storage Analytics Metrics będzie rejestrować żądania i uwzględnić go w zagregowanych danych dla usługi Blob, jak również **GetBlob** Operacja. Jednakże jeśli nie **GetBlob** operacji jest wymagana w ciągu godziny, jednostki nie będą zapisywane do *$MetricsTransactionsBlob* dla tej operacji.  
+ Na przykład jeśli wykonujesz operację **GetBlob** na Blob service, analityka magazynu metryki będą rejestrować żądanie i uwzględniać je w zagregowanych danych dla zarówno BLOB Service jak i operacji GetBlob. Jeśli jednak w ciągu godziny nie zażądano żadnej operacji GetBlob, jednostka nie zostanie zapisywana w *$MetricsTransactionsBlob* dla tej operacji.  
 
- Metryki transakcji są rejestrowane dla żądań użytkowników i żądań wysyłanych przez analityka magazynu, sam. Na przykład żądania przez analityka magazynu do zapisywania dzienników i jednostek tablic są rejestrowane.
+ Metryki transakcji są rejestrowane zarówno dla żądań użytkowników, jak i żądań wykonywanych przez analityka magazynu samego siebie. Na przykład zarejestrowano żądania analityka magazynu do zapisu dzienników i jednostek tabel.
 
-## <a name="capacity-metrics"></a>Metryki wydajności  
+## <a name="capacity-metrics"></a>Metryki pojemności  
 
 > [!NOTE]
->  Obecnie metryki pojemności są dostępne tylko dla usługi Blob.
+>  Obecnie metryki pojemności są dostępne tylko dla Blob service.
 
- Dane dotyczące pojemności są rejestrowane codziennie dla konta magazynu usługi Blob, a dwie jednostki z tabeli są zapisywane. Jednej jednostki zawiera dane statystyczne danych przez użytkownika, a drugi zawiera dane statystyczne dotyczące `$logs` kontenera obiektów blob używane przez analityka magazynu. *$MetricsCapacityBlob* tabela zawiera następujące statystyki:  
+ Dane pojemności są rejestrowane codziennie dla Blob service konta magazynu, a dwie jednostki tabeli są zapisywane. Jedna jednostka zawiera statystyki dotyczące danych użytkownika, a drugi zawiera dane statystyczne dotyczące `$logs` kontenera obiektów BLOB używanych przez analityka magazynu. Tabela *$MetricsCapacityBlob* zawiera następujące statystyki:  
 
-- **Pojemność**: Ilość miejsca używanego przez usługę obiektów Blob konta magazynu, w bajtach.  
-- **ContainerCount**: Liczba kontenerów obiektów blob w usłudze obiektów Blob konta magazynu.  
-- **ObjectCount**: Liczba zatwierdzone i niezatwierdzone blokowy lub stronicowy obiekty BLOB w usłudze obiektów Blob konta magazynu.  
+- **Pojemność**: Ilość miejsca do magazynowania używanego przez Blob service konta magazynu w bajtach.  
+- **ContainerCount**: Liczba kontenerów obiektów BLOB na koncie magazynu Blob service.  
+- **ObjectCount**: Liczba przekazanych i niezatwierdzonych obiektów BLOB bloków lub stronicowej strony na koncie magazynu Blob service.  
 
-  Aby uzyskać więcej informacji na temat metryki pojemności, zobacz [schemat tabeli metryk usługi Analytics magazynu](/rest/api/storageservices/storage-analytics-metrics-table-schema).  
+  Aby uzyskać więcej informacji na temat metryk pojemności, zobacz [analityka magazynu metryk tabeli schematu](/rest/api/storageservices/storage-analytics-metrics-table-schema).  
 
 ## <a name="how-metrics-are-stored"></a>Jak są przechowywane metryki  
 
- Wszystkie dane metryk dla wszystkich usług magazynu są przechowywane w trzech tabelach zarezerwowane dla usługi: jednej tabeli, aby uzyskać informacje o transakcji, jednej tabeli, aby uzyskać informacje o transakcji na minutę i informacje o pojemności z innej tabeli. Informacje o transakcji transakcji i minutowe składa się z danych żądań i odpowiedzi, i informacje o pojemności składa się z magazynu danych użycia. Metryki godzin, metryki minut i pojemność magazynu, który jest możliwy obiektu Blob dla konta usługi jest w tabelach, które są nazwane zgodnie z opisem w poniższej tabeli.  
+ Wszystkie dane metryk dla każdej usługi magazynu są przechowywane w trzech tabelach zarezerwowanych dla tej usługi: jednej tabeli dla informacji o transakcji, jednej tabeli dla informacji o transakcji minutowej i innej tabeli, aby uzyskać informacje o pojemności. Informacje o transakcji i minucie zawierają dane dotyczące żądań i odpowiedzi, a informacje o pojemności składają się z danych użycia magazynu. W tabelach, które są opisane w poniższej tabeli, można uzyskać dostęp do metryk godzinowych, metryk minut i pojemności dla Blob service konta magazynu.  
 
-|Poziom metryki|Nazwy tabel|Obsługiwane w wersjach|  
+|Poziom metryk|Nazwy tabel|Obsługiwane w wersjach|  
 |-------------------|-----------------|----------------------------|  
-|Godzinowe metryki, Lokalizacja podstawowa|-   $MetricsTransactionsBlob<br />-   $MetricsTransactionsTable<br />-   $MetricsTransactionsQueue|Wersje przed 2013-08-15 tylko. Te nazwy są nadal obsługiwane, zaleca się przejście na poniższych tabel.|  
-|Godzinowe metryki, Lokalizacja podstawowa|-   $MetricsHourPrimaryTransactionsBlob<br />-   $MetricsHourPrimaryTransactionsTable<br />-   $MetricsHourPrimaryTransactionsQueue<br />-   $MetricsHourPrimaryTransactionsFile|Wszystkie wersje. Pomoc dotycząca metryk usług plików jest dostępne tylko w wersji 2015-04-05 i nowszych wersjach.|  
-|Metryki minut lokalizacji głównej|-   $MetricsMinutePrimaryTransactionsBlob<br />-   $MetricsMinutePrimaryTransactionsTable<br />-   $MetricsMinutePrimaryTransactionsQueue<br />-   $MetricsMinutePrimaryTransactionsFile|Wszystkie wersje. Pomoc dotycząca metryk usług plików jest dostępne tylko w wersji 2015-04-05 i nowszych wersjach.|  
-|Godzinowe metryki, lokalizacja pomocnicza|-   $MetricsHourSecondaryTransactionsBlob<br />-   $MetricsHourSecondaryTransactionsTable<br />-   $MetricsHourSecondaryTransactionsQueue|Wszystkie wersje. Musi być włączona replikacja geograficznie nadmiarowa geograficznie nadmiarowy.|  
-|Metryki minut dodatkowej lokalizacji|-   $MetricsMinuteSecondaryTransactionsBlob<br />-   $MetricsMinuteSecondaryTransactionsTable<br />-   $MetricsMinuteSecondaryTransactionsQueue|Wszystkie wersje. Musi być włączona replikacja geograficznie nadmiarowa geograficznie nadmiarowy.|  
-|Pojemność (tylko w przypadku usługi obiektów Blob)|$MetricsCapacityBlob|Wszystkie wersje.|  
+|Metryki godzinowe, podstawowa lokalizacja|-$MetricsTransactionsBlob<br />-$MetricsTransactionsTable<br />-   $MetricsTransactionsQueue|Wersje wcześniejsze niż 2013-08-15. Mimo że te nazwy są nadal obsługiwane, zaleca się przełączenie do korzystania z tabel wymienionych poniżej.|  
+|Metryki godzinowe, podstawowa lokalizacja|-$MetricsHourPrimaryTransactionsBlob<br />-$MetricsHourPrimaryTransactionsTable<br />-$MetricsHourPrimaryTransactionsQueue<br />-$MetricsHourPrimaryTransactionsFile|Wszystkie wersje. Obsługa metryk usługi plików jest dostępna tylko w wersji 2015-04-05 i nowszych.|  
+|Metryki minut, lokalizacja podstawowa|-$MetricsMinutePrimaryTransactionsBlob<br />-$MetricsMinutePrimaryTransactionsTable<br />-$MetricsMinutePrimaryTransactionsQueue<br />-$MetricsMinutePrimaryTransactionsFile|Wszystkie wersje. Obsługa metryk usługi plików jest dostępna tylko w wersji 2015-04-05 i nowszych.|  
+|Metryki godzinowe, lokacja dodatkowa|-$MetricsHourSecondaryTransactionsBlob<br />-$MetricsHourSecondaryTransactionsTable<br />-$MetricsHourSecondaryTransactionsQueue|Wszystkie wersje. Replikacja geograficznie nadmiarowa do odczytu musi być włączona.|  
+|Metryki minutowe, lokalizacja dodatkowa|-   $MetricsMinuteSecondaryTransactionsBlob<br />-   $MetricsMinuteSecondaryTransactionsTable<br />-   $MetricsMinuteSecondaryTransactionsQueue|Wszystkie wersje. Replikacja geograficznie nadmiarowa do odczytu musi być włączona.|  
+|Pojemność (tylko Blob service)|$MetricsCapacityBlob|Wszystkie wersje.|  
 
- Te tabele są tworzone automatycznie, gdy analityka magazynu jest włączona dla punktu końcowego usługi magazynu. Uzyskiwania do nich za pośrednictwem obszaru nazw konta magazynu, na przykład: `https://<accountname>.table.core.windows.net/Tables("$MetricsTransactionsBlob")`. Tabulky metrik nie występują na liście Operacja tworzenia listy i muszą być dostępne bezpośrednio za pomocą nazwy tabeli.  
+ Te tabele są tworzone automatycznie, gdy analityka magazynu jest włączona dla punktu końcowego usługi magazynu. Są one dostępne za pośrednictwem przestrzeni nazw konta magazynu, na przykład: `https://<accountname>.table.core.windows.net/Tables("$MetricsTransactionsBlob")`. Tabele metryk nie są wyświetlane w operacji tworzenia listy i muszą być dostępne bezpośrednio za pośrednictwem nazwy tabeli.  
 
-## <a name="enable-metrics-using-the-azure-portal"></a>Włącz metryki w witrynie Azure portal
-Wykonaj następujące kroki, aby włączyć metryki w [witryny Azure portal](https://portal.azure.com):
+## <a name="enable-metrics-using-the-azure-portal"></a>Włącz metryki przy użyciu Azure Portal
+Wykonaj następujące kroki, aby włączyć metryki w [Azure Portal](https://portal.azure.com):
 
 1. Przejdź do swojego konta magazynu.
-1. Wybierz **ustawienia diagnostyczne (klasyczne)** z **Menu** okienka.
-1. Upewnij się, że **stan** ustawiono **na**.
-1. Wybierz metryki dla usługi, które chcesz monitorować.
-1. Określ zasady przechowywania, aby wskazać, jak długo zachowuje metryki i rejestrowanie danych.
+1. Wybierz pozycję **Ustawienia diagnostyczne (klasyczne)** z okienka **menu** .
+1. Upewnij się, że **stan** jest ustawiony na wartość **włączone**.
+1. Wybierz metryki dla usług, które chcesz monitorować.
+1. Określ zasady przechowywania, aby określić, jak długo mają być przechowywane metryki i dane dziennika.
 1. Wybierz pozycję **Zapisz**.
 
-[Witryny Azure portal](https://portal.azure.com) nie obecnie umożliwiają skonfigurowanie metryki minut w ramach konta magazynu; należy włączyć metryki minut przy użyciu programu PowerShell lub programowo.
+[Azure Portal](https://portal.azure.com) obecnie nie umożliwia konfigurowania metryk minut na koncie magazynu. należy włączyć metryki minut przy użyciu programu PowerShell lub programowo.
 
 > [!NOTE]
->  Należy pamiętać, że witryny Azure portal nie obecnie umożliwiają skonfigurowanie metryki minut na koncie magazynu. Należy włączyć metryki minut przy użyciu programu PowerShell lub programowo.
+>  Należy pamiętać, że Azure Portal obecnie nie pozwala na konfigurowanie metryk minut na koncie magazynu. Należy włączyć metryki minut przy użyciu programu PowerShell lub programowo.
 
-## <a name="enable-storage-metrics-using-powershell"></a>Włączanie metryk usługi Storage przy użyciu programu PowerShell  
-PowerShell na komputerze lokalnym służy do konfigurowania metryk usługi Storage na koncie magazynu za pomocą polecenia cmdlet programu Azure PowerShell **Get AzureStorageServiceMetricsProperty** można pobrać bieżące ustawienia i polecenia cmdlet  **Zestaw AzureStorageServiceMetricsProperty** do zmiany bieżących ustawień.  
+## <a name="enable-storage-metrics-using-powershell"></a>Włącz metryki magazynu przy użyciu programu PowerShell  
+Aby skonfigurować metryki magazynu na koncie magazynu przy Azure PowerShell użyciu polecenia cmdlet **Get-AzureStorageServiceMetricsProperty** w programie PowerShell, można użyć narzędzia do pobierania bieżących ustawień, a polecenie cmdlet  **Set-AzureStorageServiceMetricsProperty** , aby zmienić bieżące ustawienia.  
 
-Polecenia cmdlet, które kontrolują metryk usługi Storage, użyj następujących parametrów:  
+Polecenia cmdlet kontrolujące metryki magazynu wykorzystują następujące parametry:  
 
-* **Typ ServiceType**, możliwe wartości są **Blob**, **kolejki**, **tabeli**, i **pliku**.
-* **MetricsType**, możliwe wartości to **godzinę** i **minutę**.  
+* **ServiceType**, możliwa wartość to **obiekt BLOB**, **Kolejka**, **tabela**i **plik**.
+* **Metrictype**, możliwe wartości to **Hour** i **minuta**.  
 * **MetricsLevel**, możliwe wartości to:
 * **Brak**: Wyłącza monitorowanie.
-* **Usługa**: Zbiera metryki, takie jak ruch przychodzący i wychodzący, dostępności, opóźnienia i procent powodzenia, które są agregowane dla obiektów blob, kolejek, tabel i usług plików.
-* **ServiceAndApi**: Oprócz metryk usług gromadzi informacje o ten sam zestaw metryk dla każdej operacji magazynu w interfejsie API usługi Azure Storage.
+* **Usługa**: Zbiera metryki, takie jak ruch przychodzący/ruch wychodzący, dostępność, opóźnienie i procent sukcesu, które są agregowane dla usług obiektów blob, kolejek, tabel i plików.
+* **ServiceAndApi**: Oprócz metryk usług program zbiera ten sam zestaw metryk dla każdej operacji magazynu w interfejsie API usługi Azure Storage.
 
-Na przykład następujące polecenie zmienia się na metryki minut dla usługi blob na koncie magazynu przechowywania ustawionej pięć dni: 
+Na przykład następujące polecenie przełącza metryki minut dla usługi BLOB Service na koncie magazynu z okresem przechowywania ustawionym na pięć dni: 
 
 > [!NOTE]
-> Tego polecenia przyjęto założenie, że zarejestrowano do subskrypcji platformy Azure przy użyciu `Connect-AzAccount` polecenia.
+> W tym poleceniu założono, że zalogowano się do subskrypcji platformy `Connect-AzAccount` Azure za pomocą polecenia.
 
 ```  
 $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
@@ -101,24 +100,24 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>
 Set-AzureStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5 -Context $storageAccount.Context
 ```  
 
-* Zastąp `<resource-group-name>` wartość symbolu zastępczego z nazwą grupy zasobów.
+* Zastąp `<resource-group-name>` wartość symbolu zastępczego nazwą grupy zasobów.
 
 * Zastąp wartość symbolu zastępczego `<storage-account-name>` nazwą konta magazynu.
 
 
 
-Następujące polecenie pobiera bieżący godzinowe metryki poziomu i przechowywania dni na usługę blob service na koncie magazynu domyślnego:  
+Następujące polecenie pobiera bieżące godzinowe poziomy metryk i dni przechowywania dla usługi BLOB na domyślnym koncie magazynu:  
 
 ```  
 Get-AzureStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob -Context $storagecontext.Context
 ```  
 
-Aby uzyskać informacje o sposobie konfigurowania poleceń cmdlet programu Azure PowerShell do pracy z subskrypcją platformy Azure i jak wybrać domyślne konto magazynu do użycia, zobacz: [Jak zainstalować i skonfigurować program Azure PowerShell](https://azure.microsoft.com/documentation/articles/install-configure-powershell/).  
+Informacje o sposobie konfigurowania Azure PowerShell poleceń cmdlet do pracy z subskrypcją platformy Azure i wybierania domyślnego konta magazynu do użycia można znaleźć w temacie: [Jak zainstalować i skonfigurować Azure PowerShell](https://azure.microsoft.com/documentation/articles/install-configure-powershell/).  
 
-## <a name="enable-storage-metrics-programmatically"></a>Programowe Włączanie metryk usługi Storage  
-Oprócz używania witryny Azure portal lub poleceń cmdlet programu Azure PowerShell do sterowania metryk usługi Storage, umożliwia także jeden z interfejsów API usługi Azure Storage. Na przykład jeśli używasz języka .NET przy użyciu biblioteki klienta magazynu.  
+## <a name="enable-storage-metrics-programmatically"></a>Programowo Włącz metryki magazynu  
+Oprócz używania Azure Portal lub Azure PowerShell poleceń cmdlet do kontrolowania metryk magazynu, można również użyć jednego z interfejsów API usługi Azure Storage. Jeśli na przykład używasz języka .NET, możesz użyć biblioteki klienta usługi Storage.  
 
-Klasy **CloudBlobClient**, **CloudQueueClient**, **CloudTableClient**, i **CloudFileClient** wszystkie mają metody takie jak  **SetServiceProperties** i **SetServicePropertiesAsync** o **ServiceProperties** obiektu jako parametr. Możesz użyć **ServiceProperties** obiektu, aby skonfigurować metryk usługi Storage. Na przykład następująca C# fragment kodu przedstawia sposób zmiany dni poziom i przechowywania metryki godzinowe metryki kolejki:  
+Klasy **CloudBlobClient**, **CloudQueueClient**, **CloudTableClient**i **CloudFileClient** mają takie metody jak **SetServiceProperties** i **SetServicePropertiesAsync** , które przyjmująObiekt serviceproperties jako parametr. Aby skonfigurować metryki magazynu, można użyć obiektu serviceproperties. Na przykład poniższy C# fragment kodu przedstawia sposób zmiany poziomu metryk i dni przechowywania dla metryk kolejki godzinowej:  
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);  
@@ -131,56 +130,56 @@ serviceProperties.HourMetrics.RetentionDays = 10;
 queueClient.SetServiceProperties(serviceProperties);  
 ```  
 
-Aby uzyskać więcej informacji na temat konfigurowania metryk usługi Storage za pomocą języka .NET, zobacz [biblioteki klienta usługi Storage dla platformy .NET](https://msdn.microsoft.com/library/azure/mt347887.aspx).  
+Aby uzyskać więcej informacji o korzystaniu z języka .NET do konfigurowania metryk magazynu, zobacz [Biblioteka klienta usługi Storage dla platformy .NET](https://msdn.microsoft.com/library/azure/mt347887.aspx).  
 
-Aby uzyskać ogólne informacje o konfigurowaniu metryk usługi Storage przy użyciu interfejsu API REST, zobacz [Włączanie i konfigurowanie Storage Analytics](/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics).  
+Aby uzyskać ogólne informacje na temat konfigurowania metryk magazynu za pomocą interfejsu API REST, zobacz [Włączanie i konfigurowanie analityka magazynu](/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics).  
 
-##  <a name="viewing-storage-metrics"></a>Wyświetlanie metryk usługi Storage  
-Po skonfigurowaniu metryki Storage Analytics do monitorowania konta magazynu, usługa Storage Analytics rejestruje metryki w dobrze znanych tabelach na koncie magazynu. Można skonfigurować wykresy, aby wyświetlić metryki godzinowe w [witryny Azure portal](https://portal.azure.com):
+##  <a name="viewing-storage-metrics"></a>Wyświetlanie metryk magazynu  
+Po skonfigurowaniu metryk analityka magazynu do monitorowania konta magazynu, analityka magazynu rejestruje metryki w zestawie dobrze znanych tabel na koncie magazynu. Można skonfigurować wykresy, aby wyświetlić metryki godzinowe w [Azure Portal](https://portal.azure.com):
 
-1. Przejdź do swojego konta magazynu w [witryny Azure portal](https://portal.azure.com).
-1. Wybierz **metryki (klasyczne)** w **Menu** bloku usługi metryki, którego chcesz wyświetlić.
+1. Przejdź do swojego konta magazynu w [Azure Portal](https://portal.azure.com).
+1. Wybierz pozycję **metryki (klasyczne)** w bloku **menu** dla usługi, której metryki chcesz wyświetlić.
 1. Kliknij wykres, który chcesz skonfigurować.
-1. W **Edytuj wykres** bloku wybierz **zakres czasu**, **typ wykresu**i metryk, które mają być wyświetlane na wykresie.
+1. W bloku **Edycja wykresu** wybierz **zakres czasu**, **Typ wykresu**i metryki, które mają być wyświetlane na wykresie.
 
-W **monitorowanie (wersja klasyczna)** sekcji bloku menu konta magazynu w witrynie Azure portal, można skonfigurować [reguły alertów](#metrics-alerts), takie jak wysyłanie wiadomości e-mail alertów, aby otrzymywać powiadomienia, jeśli określona Metryka osiągnie Określona wartość.
+W sekcji **monitorowanie (klasycznej)** w bloku menu konta magazynu w Azure Portal można skonfigurować [reguły alertów](#metrics-alerts), takie jak wysyłanie alertów e-mail w celu powiadomienia, gdy określona Metryka osiągnie określoną wartość.
 
-Jeśli chcesz pobrać metryk w celu przechowywania długoterminowego lub analizować je lokalnie, należy użyć narzędzia lub pisanie kodu służącego do odczytu w tabelach. Należy pobrać metryki minut do analizy. Tabele nie są wyświetlane, jeśli lista wszystkich tabel na koncie magazynu, ale można go wywołać bezpośrednio przez nazwę. Wiele narzędzi do przeglądania magazynu zdawali sobie sprawę z tych tabel i można wyświetlać je bezpośrednio (zobacz [usługi Azure Storage Client Tools](/azure/storage/storage-explorers) listę dostępnych narzędzi).
+Jeśli chcesz pobrać metryki dla magazynu długoterminowego lub przeanalizować je lokalnie, musisz użyć narzędzia lub napisać kod w celu odczytania tabel. Należy pobrać metryki minut na potrzeby analizy. Tabele nie są wyświetlane, jeśli zostaną wyświetlone wszystkie tabele na koncie magazynu, ale możesz uzyskać do nich dostęp bezpośrednio według nazwy. Wiele narzędzi do przeglądania magazynu jest świadomych tych tabel i umożliwia ich bezpośrednie wyświetlanie (zobacz [narzędzia klienckie usługi Azure Storage](/azure/storage/storage-explorers) , aby uzyskać listę dostępnych narzędzi).
 
 ||||  
 |-|-|-|  
 |**Metryki**|**Nazwy tabel**|**Uwagi**|  
-|Godzinowe metryki|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|W wersjach wcześniejszych niż 2013-08-15 te tabele były znane jako:<br /><br /> $MetricsTransactionsBlob<br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> Metryki dla usługi plików są dostępne od wersji 2015-04-05.|  
-|Metryki minut|$MetricsMinutePrimaryTransactionsBlob<br /><br /> $MetricsMinutePrimaryTransactionsTable<br /><br /> $MetricsMinutePrimaryTransactionsQueue<br /><br /> $MetricsMinutePrimaryTransactionsFile|Można włączyć tylko przy użyciu programu PowerShell lub programowo.<br /><br /> Metryki dla usługi plików są dostępne od wersji 2015-04-05.|  
-|Pojemność|$MetricsCapacityBlob|Tylko usługi obiektów blob.|  
+|Metryki godzinowe|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|W wersjach wcześniejszych niż 2013-08-15 te tabele były znane jako:<br /><br /> $MetricsTransactionsBlob<br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> Metryki dla usługi plików są dostępne począwszy od wersji 2015-04-05.|  
+|Metryki minut|$MetricsMinutePrimaryTransactionsBlob<br /><br /> $MetricsMinutePrimaryTransactionsTable<br /><br /> $MetricsMinutePrimaryTransactionsQueue<br /><br /> $MetricsMinutePrimaryTransactionsFile|Można ją włączyć tylko przy użyciu programu PowerShell lub programowo.<br /><br /> Metryki dla usługi plików są dostępne począwszy od wersji 2015-04-05.|  
+|Pojemność|$MetricsCapacityBlob|Tylko Blob service.|  
 
-Możesz znaleźć szczegółowe informacje ze schematów dla tych tabel w [schemat tabeli metryk usługi Analytics magazynu](/rest/api/storageservices/storage-analytics-metrics-table-schema). Poniższe wiersze przykładowe pokazują tylko podzestaw kolumn, które są dostępne, ale zilustrowania niektórych ważnych funkcji sposób, w jaki metryk usługi Storage zapisuje te metryki:  
+Wszystkie szczegóły schematów dla tych tabel można znaleźć w [schemacie tabeli metryk analityka magazynu](/rest/api/storageservices/storage-analytics-metrics-table-schema). W przykładowych wierszach poniżej przedstawiono tylko podzestaw dostępnych kolumn, ale zilustrowano kilka ważnych cech sposobu, w jaki metryki magazynu zapisują następujące metryki:  
 
 ||||||||||||  
 |-|-|-|-|-|-|-|-|-|-|-|  
-|**PartitionKey**|**RowKey**|**Sygnatura czasowa**|**TotalRequests**|**TotalBillableRequests**|**TotalIngress**|**TotalEgress**|**Dostępność**|**AverageE2ELatency**|**AverageServerLatency**|**PercentSuccess**|  
+|**PartitionKey**|**RowKey**|**Sygnatura czasowa**|**TotalRequests**|**TotalBillableRequests**|**TotalIngress**|**TotalEgress**|**Dostępność**|**Niską averagee2elatency**|**Wartość averageserverlatency**|**PercentSuccess**|  
 |20140522T1100|user;All|2014-05-22T11:01:16.7650250Z|7|7|4003|46801|100|104.4286|6.857143|100|  
-|20140522T1100|Użytkownik; QueryEntities|2014-05-22T11:01:16.7640250Z|5|5|2694|45951|100|143.8|7.8|100|  
+|20140522T1100|Użytkownicy QueryEntities|2014-05-22T11:01:16.7640250Z|5|5|2694|45951|100|143.8|7.8|100|  
 |20140522T1100|user;QueryEntity|2014-05-22T11:01:16.7650250Z|1|1|538|633|100|3|3|100|  
 |20140522T1100|user;UpdateEntity|2014-05-22T11:01:16.7650250Z|1|1|771|217|100|9|6|100|  
 
-W przykładowe dane metryki minut klucza partycji używa czasu w rozdzielczości minuty. Klucz wiersza określa typ informacji przechowywanych w wierszu i składa się z dwóch części informacji, typ dostępu i typ żądania:  
+W tym przykładowym czasie dane metryk są wykorzystywane przez klucz partycji. Klucz wiersza określa typ informacji przechowywanych w wierszu i składa się z dwóch informacji, typu dostępu i typu żądania:  
 
--   Typ dostępu jest **użytkownika** lub **systemu**, gdzie **użytkownika** odnosi się do wszystkich żądań użytkowników do usługi storage i **systemu** odwołuje się do żądań wysyłanych przez analityka magazynu.  
+-   Typem dostępu jest **użytkownik** lub **system**, gdzie **użytkownik** odwołuje się do wszystkich żądań użytkowników do usługi Storage, a **system** odnosi się do żądań wykonywanych przez analityka magazynu.  
 
--   Typ żądania jest **wszystkich** w którym to przypadku jest to wiersz podsumowania lub identyfikuje określonych interfejsów API takich jak **QueryEntity** lub **UpdateEntity**.  
+-   Typem żądania jest **wszystko** , co oznacza, że jest wierszem podsumowania lub identyfikuje określony interfejs API, taki jak **QueryEntity** lub **UpdateEntity**.  
 
-Powyższe przykładowe dane wyświetlane są wszystkie rekordy na minutę (rozpoczyna się od 11:00:00), więc liczba **QueryEntities** żądań oraz liczbę **QueryEntity** żądań oraz liczbę  **UpdateEntity** żądania Dodaj maksymalnie siedem, czyli sumę wyświetlane na **użytkownika: All** wiersza. Podobnie możesz wywodzić średnie opóźnienie end-to-end 104.4286 na **użytkownika: All** wiersza, obliczając ((143.8 * 5) + 3 + 9) / 7.  
+Powyższe dane przykładowe pokazują wszystkie rekordy przez pojedynczą minutę (począwszy od 11:10:00), więc liczbę żądań **QueryEntities** i liczbę żądań **QueryEntity** oraz liczbę żądań **UpdateEntity** dodają do siedmiu, co jest suma pokazywana na **użytkowniku: cały** wiersz. Analogicznie, można utworzyć średni czas oczekiwania na zakończenie na 104,4286 dla **użytkownika: cały** wiersz przez obliczenie ((143,8 * 5) + 3 + 9)/7.  
 
-## <a name="metrics-alerts"></a>Alerty metryki
-Należy rozważyć skonfigurowanie alertów w [witryny Azure portal](https://portal.azure.com) , dzięki czemu można będzie automatycznie powiadamiany o ważnych zmian w działaniu usług magazynu. Jeśli używasz narzędzia Eksploratora magazynu można pobrać te dane metryk w formacie rozdzielanym, można użyć programu Microsoft Excel do analizowania danych. Zobacz [usługi Azure Storage Client Tools](/azure/storage/storage-explorers) lista narzędzi Eksploratora dostępnego magazynu. Można skonfigurować alerty w **Alert (klasyczny)** bloku, dostępny w ramach **monitorowanie (wersja klasyczna)** w bloku menu konta magazynu.
+## <a name="metrics-alerts"></a>Alerty metryk
+Należy rozważyć skonfigurowanie alertów w [Azure Portal](https://portal.azure.com) , aby otrzymywać powiadomienia o ważnych zmianach w zachowaniu usług magazynu. W przypadku pobierania tych danych metryk przy użyciu narzędzia Eksplorator magazynu w formacie rozdzielanym można użyć programu Microsoft Excel do przeanalizowania danych. Zobacz [narzędzia klienckie usługi Azure Storage](/azure/storage/storage-explorers) , aby zapoznać się z listą dostępnych narzędzi Eksploratora magazynu. Alerty można skonfigurować w bloku **alertu (klasycznego)** dostępnym w obszarze **monitorowanie (klasyczne)** w bloku menu konto magazynu.
 
 > [!IMPORTANT]
-> Może to być opóźnienie między zdarzenia magazynu, a kiedy jest rejestrowany odpowiadające im dane metryk co godzinę lub minut. W przypadku metryki minut kilka minut danych mogą być zapisane tylko raz. Może to prowadzić do transakcji z wcześniejszych minuty są agregowane do transakcji w ciągu bieżącej minuty. W takiej sytuacji usługa alertu dotyczącego nie może mieć wszystkie dane dostępne metryki dla skonfigurowany interwał alertów, co może prowadzić do nieoczekiwanego wyzwalania alertów.
+> Może istnieć opóźnienie między zdarzeniem magazynu i w przypadku rejestrowania odpowiednich danych metryk godzinowych lub minutowych. W przypadku metryk minut można napisać kilka minut danych jednocześnie. Może to prowadzić do transakcji z wcześniejszych minut agregowania do transakcji przez bieżącą minutę. W takim przypadku usługa alertów może nie mieć wszystkich dostępnych danych metryk dla skonfigurowanego interwału alertów, co może prowadzić do nieoczekiwanego uruchamiania alertów.
 >
 
-## <a name="accessing-metrics-data-programmatically"></a>Programowe uzyskiwanie dostępu do danych metryk  
-Poniżej przedstawiono przykładowy kod C#, która uzyskuje dostęp do metryki minut dla zakresu minut, a następnie wyświetla wyniki w oknie konsoli. Przykładowy kod używa biblioteki klienta usługi Azure Storage w wersji 4.x lub nowszej, która obejmuje **CloudAnalyticsClient** klasy, która upraszcza dostęp do metryk tabel w magazynie.  
+## <a name="accessing-metrics-data-programmatically"></a>Programistyczne uzyskiwanie dostępu do danych metryk  
+Na poniższej liście przedstawiono przykładowy C# kod, który uzyskuje dostęp do metryk minut dla zakresu minut i wyświetla wyniki w oknie konsoli. Przykładowy kod używa biblioteki klienta usługi Azure Storage w wersji 4. x lub nowszej, która obejmuje klasę **CloudAnalyticsClient** , która upraszcza dostęp do tabel metryk w magazynie.  
 
 ```csharp
 private static void PrintMinuteMetrics(CloudAnalyticsClient analyticsClient, DateTimeOffset startDateTime, DateTimeOffset endDateTime)  
@@ -224,19 +223,19 @@ private static string MetricsString(MetricsEntity entity, OperationContext opCon
 }  
 ```  
 
-## <a name="billing-on-storage-metrics"></a>Rozliczenia na metryk usługi storage  
-Zapisu żądań w celu utworzenia tabeli jednostki dla metryk są naliczane zgodnie ze standardowymi stawkami mające zastosowanie do wszystkich operacji usługi Azure Storage.  
+## <a name="billing-on-storage-metrics"></a>Rozliczanie metryk magazynu  
+Żądania zapisu do tworzenia jednostek tabeli dla metryk są naliczone według standardowych stawek związanych ze wszystkimi operacjami usługi Azure Storage.  
 
-Żądania odczytu i usuwania danych metryk przez klienta także są płatne zgodnie ze standardowymi stawkami. Jeśli skonfigurowano zasady przechowywania danych nie są naliczane w przypadku usługi Azure Storage usuwa stare dane metryk. Jednak jeśli usuniesz analizy danych, Twoje konto jest rozliczane za operacje usuwania.  
+Żądania odczytu i usuwania danych metryk przez klienta są również obciążane według stawek standardowych. Jeśli skonfigurowano zasady przechowywania danych, nie są naliczone opłaty za usługę Azure Storage, która usuwa stare dane metryk. Jeśli jednak usuniesz dane analityczne, Twoje konto zostanie obciążone opłatą za operacje usuwania.  
 
-Pojemność posługują się tabulky metrik jest również płatne. Następujące umożliwia szacowanie ilości wydajności używany do przechowywania danych metryk:  
+Opłaty za użycie w tabelach metryk są również naliczane. Aby oszacować ilość pojemności używanej do przechowywania danych metryk, można użyć następujących elementów:  
 
--   Jeśli co godzinę usługa korzysta z każdego interfejsu API w każdej usługi, następnie 148KB danych są przechowywane w tabeli metryk transakcji na godzinę po włączeniu zarówno usługi interfejsu API poziomie i podsumowania.  
--   Jeśli w ciągu każdej godziny, usługa korzysta z każdego interfejsu API w usłudze, a następnie 12KB danych są przechowywane w tabeli metryk transakcji na godzinę, po włączeniu podsumowanie po prostu poziomu usług.  
--   Tabeli pojemności dla obiektów blob ma dwa wiersze dodane każdego dnia, pod warunkiem możesz mieć wyrażeniu zgody na uczestnictwo w dla dzienników. Oznacza to, że codziennie, rozmiar tej tabeli zwiększa się o około 300 bajtów.
+-   W przypadku każdej godziny usługa korzysta z każdego interfejsu API w każdej usłudze, a następnie około 148KB danych jest przechowywana co godzinę w tabelach transakcji metryk, jeśli włączono zarówno podsumowanie na poziomie usługi, jak i interfejsu API.  
+-   Jeśli w ciągu każdej godziny usługa korzysta z każdego interfejsu API w usłudze, wówczas około 12KB danych jest przechowywana co godzinę w tabelach transakcji metryk, jeśli włączono opcję tylko podsumowanie na poziomie usługi.  
+-   Tabela pojemności dla obiektów BLOB zawiera dwa wiersze, które zostały dodane każdego dnia, pod warunkiem, że zawarto dzienniki. Oznacza to, że w każdym dniu rozmiar tej tabeli rośnie o maksymalnie 300 bajtów.
 
-## <a name="next-steps"></a>Kolejne kroki
-* [Jak monitorować konta magazynu](https://www.windowsazure.com/manage/services/storage/how-to-monitor-a-storage-account/)   
-* [Schemat tabeli metryk usługi Analytics magazynu](/rest/api/storageservices/storage-analytics-metrics-table-schema)   
-* [Usługa Storage Analytics rejestrowane komunikaty o stanie i operacje](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)   
-* [Rejestrowanie danych analizy magazynu](storage-analytics-logging.md)
+## <a name="next-steps"></a>Następne kroki
+* [Jak monitorować konto magazynu](https://www.windowsazure.com/manage/services/storage/how-to-monitor-a-storage-account/)   
+* [Schemat tabeli metryk analityka magazynu](/rest/api/storageservices/storage-analytics-metrics-table-schema)   
+* [analityka magazynu zarejestrowane operacje i komunikaty o stanie](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)   
+* [Rejestrowanie analityka magazynu](storage-analytics-logging.md)

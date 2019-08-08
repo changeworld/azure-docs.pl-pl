@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 04/18/2019
 ms.author: twhitney
 ms.reviewer: jmprieur, saeeda
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e749e46a4a7398f7b862ce5d4dab7a1ba6d57c8f
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 6e6a9dab8a2a37d7fa312b525453683fe789269b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68813040"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852949"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>Szybki start: Logowanie użytkowników i wywołanie interfejsu API programu Microsoft Graph z aplikacji systemu iOS
 
@@ -246,7 +246,7 @@ applicationContext.acquireTokenSilent(with: parameters) { (result, error) in /* 
 > | `scopes` | Zawiera żądane zakresy (czyli `[ "user.read" ]` dla Microsoft Graph lub `[ "<Application ID URL>/scope" ]` niestandardowych interfejsów API sieci Web (`api://<Application ID>/access_as_user`) |
 > | `account` | Konto, dla którego jest żądany token. Ten przewodnik Szybki Start jest aplikacją o pojedynczym koncie, jeśli chcesz utworzyć aplikację wielokontową, aby określić, które konto ma być używane dla żądań tokenów`applicationContext.account(forHomeAccountId: self.homeAccountId)` |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Wypróbuj Samouczek systemu iOS, aby zapoznać się z kompletnym przewodnikiem krok po kroku dotyczącym tworzenia aplikacji, w tym pełnym objaśnieniem tego samouczka Szybki Start.
 

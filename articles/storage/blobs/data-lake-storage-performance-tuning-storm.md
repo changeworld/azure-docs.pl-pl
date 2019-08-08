@@ -1,7 +1,6 @@
 ---
-title: Usługa Azure Data Lake Storage Gen2 Storm wydajności, wytyczne dotyczące dostosowywania | Dokumentacja firmy Microsoft
-description: Usługa Azure Data Lake Storage Gen2 Storm wydajności, wytyczne dotyczące dostosowywania
-services: storage
+title: Wskazówki dotyczące dostrajania wydajności Azure Data Lake Storage Gen2 burzy | Microsoft Docs
+description: Wskazówki dotyczące dostrajania wydajności Azure Data Lake Storage Gen2 burzy
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -9,112 +8,112 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: aa3c942448be6444044981eacc2bbc3214b9c1b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ed13735b4da4818e969c4dddff68b55af6e71a15
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939403"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855423"
 ---
-# <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Wskazówki dotyczące systemu Storm w HDInsight i Azure Data Lake Storage Gen2 dostrajania wydajności
+# <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Wskazówki dotyczące dostrajania wydajności dotyczące burzy w usłudze HDInsight i Azure Data Lake Storage Gen2
 
-Uzyskaj informacje o czynnikach, które należy uwzględnić podczas dostrajania wydajności topologii systemu Storm w usłudze Azure. Na przykład ważne jest poznanie charakterystyki pracy wykonanej przez elementy spout i bolt (czy praca jest operacji We/Wy i pamięci). W tym artykule omówiono szereg wytycznych, w tym Rozwiązywanie typowych problemów dostrajania wydajności oprogramowania.
+Informacje o czynnikach, które należy wziąć pod uwagę podczas dostrajania wydajności topologii burzowej platformy Azure. Na przykład ważne jest zapoznanie się z charakterystyką pracy wykonywanej przez elementy Spout i Piorunów (czy liczba operacji we/wy lub intensywnym wykorzystaniu pamięci). W tym artykule opisano zakres wytycznych dotyczących dostrajania wydajności, w tym Rozwiązywanie typowych problemów.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Konto usługi Azure Data Lake Storage Gen2**. Aby uzyskać instrukcje na temat jej tworzenia, zobacz [Szybki Start: Tworzenie magazynu konto analityczne](data-lake-storage-quickstart-create-account.md).
-* **Klaster usługi Azure HDInsight** dzięki dostępowi do konta Data Lake Storage Gen2. Zobacz [Korzystanie z usługi Azure Data Lake Storage Gen2 w połączeniu z klastrami usługi Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2). Upewnij się, że włączenie pulpitu zdalnego dla klastra.
-* **Uruchomiony klaster systemu Storm na Data Lake Storage Gen2**. Aby uzyskać więcej informacji, zobacz [systemu Storm w HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview).
-* **Wytyczne dotyczące Data Lake Storage Gen2 dostrajania wydajności**.  Pojęcia związane z ogólnej wydajności, zobacz [Data Lake Storage Gen2 dostrajania wskazówki dotyczące wydajności](data-lake-storage-performance-tuning-guidance.md).   
+* **Konto Azure Data Lake Storage Gen2**. Aby uzyskać instrukcje dotyczące sposobu tworzenia takiego elementu, [zobacz Szybki Start: Utwórz konto magazynu dla analizy analitycznej](data-lake-storage-quickstart-create-account.md).
+* **Klaster usługi Azure HDInsight** z dostępem do konta Data Lake Storage Gen2. Zobacz [Korzystanie z usługi Azure Data Lake Storage Gen2 w połączeniu z klastrami usługi Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2). Upewnij się, że Pulpit zdalny dla klastra są włączone.
+* **Uruchamianie klastra burzy w Data Lake Storage Gen2**. Aby uzyskać więcej informacji, zobacz [burza w usłudze HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview).
+* **Wskazówki dotyczące dostrajania wydajności na Data Lake Storage Gen2**.  Ogólne pojęcia dotyczące wydajności znajdują się w temacie [Data Lake Storage Gen2 wskazówki dotyczące dostrajania wydajności](data-lake-storage-performance-tuning-guidance.md).   
 
-## <a name="tune-the-parallelism-of-the-topology"></a>Dostosować równoległość topologii
+## <a name="tune-the-parallelism-of-the-topology"></a>Dostrajanie równoległości topologii
 
-Dzięki temu można zwiększyć wydajność, zwiększając równocześnie z operacji We/Wy do i z Data Lake Storage Gen2. Topologii Storm ma zestaw konfiguracji, które określają równoległości:
-* Liczba procesów roboczych (pracownicy są dystrybuowane równomiernie na maszynach wirtualnych).
-* Liczba wystąpień funkcji wykonawczej spout.
-* Liczba wystąpień funkcji wykonawczej bolt.
-* Liczba zadań spout.
-* Liczba zadań bolt.
+Może być możliwe zwiększenie wydajności przez zwiększenie współbieżności operacji we/wy do i z Data Lake Storage Gen2. Topologia burzy ma zestaw konfiguracji, które określają równoległość:
+* Liczba procesów roboczych (procesy robocze są równomiernie rozłożone na maszyny wirtualne).
+* Liczba wystąpień programu wykonującego elementu Spout.
+* Liczba wystąpień programu wykonującego.
+* Liczba zadań elementu Spout.
+* Liczba zadań obiektu piorun.
 
-Na przykład w klastrze z 4 maszyn wirtualnych i 4 procesów roboczych, executors 32 spout i 32 spout zadania i 256 bolt executors i 512 bolt zadań, należy wziąć pod uwagę następujące czynności:
+Na przykład w klastrze z 4 maszynami wirtualnymi i 4 procesami roboczymi 32, elementu Spout wykonawcy i 32 elementu Spout zadania i 256ją zadania 512 i elementy wykonujące testy, należy wziąć pod uwagę następujące kwestie:
 
-Każdy nadzorcy, który jest węzłem procesu roboczego, ma pojedynczego procesu roboczego Java procesu maszyny wirtualnej (JVM). Tego procesu maszyny JVM zarządza 4 wątków spout i 64 wątki bolt. W każdym wątku zadania są uruchamiane sekwencyjnie. Za pomocą tej konfiguracji każdy wątek spout zawiera 1 zadanie, a każdy wątek bolt ma 2 zadania.
+Każdy kierownik, który jest węzłem procesu roboczego, ma jeden proces roboczy maszyny wirtualnej Java (JVM). Ten proces JVM służy do zarządzania 4 wątkami elementu Spout i 64 wątków. W każdym wątku zadania są uruchamiane sekwencyjnie. W powyższej konfiguracji każdy wątek elementu Spout ma 1 zadanie, a każdy wątek pioruna ma 2 zadania.
 
-W Storm poniżej przedstawiono różne składniki zaangażowane i ich wpływ na stopień równoległości, do których masz:
-* Węzeł główny (o nazwie Nimbus Storm) służy do przesyłania zadań i zarządzanie nimi. Węzły te nie mają wpływu na stopień równoległości.
-* Węzły nadzorcy. HDInsight to odpowiada węzłem procesu roboczego maszyn wirtualnych platformy Azure.
-* Zadania procesu roboczego są Storm procesy uruchomione na maszynach wirtualnych. Każde zadanie procesu roboczego odnosi się do wystąpienia maszyny wirtualnej Java. STORM dystrybuuje liczba procesów roboczych, Ciebie z węzłami procesu roboczego możliwie najbardziej równomiernie.
-* Spout i elementu bolt wystąpień funkcji wykonawczej. Każde wystąpienie funkcji wykonawczej odnosi się do wątku działającego w ramach procesów roboczych (JVMs).
-* Zadania STORM. Są to zadania logiczne, że każdy z nich wątki wykonywania. Nie ma to wpływu stopień równoległości, więc należy ocenić, jeśli potrzebujesz wielu zadań na wykonawcy.
+W obszarze burzy są dostępne różne składniki oraz ich wpływ na poziom równoległości:
+* Węzeł główny (o nazwie Nimbus w obszarze burza) służy do przesyłania zadań i zarządzania nimi. Te węzły nie mają wpływu na stopień równoległości.
+* Węzły nadzoru. W usłudze HDInsight odnosi się to do maszyny wirtualnej platformy Azure z węzłem roboczym.
+* Zadania procesu roboczego są procesami burzy uruchomionymi na maszynach wirtualnych. Każde zadanie procesu roboczego odpowiada wystąpieniu JVM. Burza dystrybuuje liczbę procesów roboczych określonych dla węzłów procesu roboczego tak, jak to możliwe.
+* Wystąpienia modułów wykonujących elementu Spout i piorunów. Każde wystąpienie programu wykonującego odpowiada wątkowi uruchomionemu w ramach procesów roboczych (JVMs).
+* Zadania burzowe. Są to zadania logiczne wykonywane przez każdy z tych wątków. Nie powoduje to zmiany poziomu równoległości, dlatego należy oszacować, czy potrzebujesz wielu zadań na wykonawcę.
 
-### <a name="get-the-best-performance-from-data-lake-storage-gen2"></a>Dla uzyskania optymalnej wydajności z Data Lake Storage Gen2
+### <a name="get-the-best-performance-from-data-lake-storage-gen2"></a>Uzyskaj najlepszą wydajność z Data Lake Storage Gen2
 
-Podczas pracy z Data Lake Storage Gen2, możesz uzyskać najlepszą wydajność, jeśli Wykonano następujące czynności:
-* COALESCE małe dołącza do większych rozmiarów.
-* Wykonaj dowolną liczbę jednoczesnych żądań, jak to możliwe. Ponieważ każdy wątek bolt robi blokowania odczytów, chcesz mieć gdzieś w zakresie 8 12 wątków na każdy rdzeń. Dzięki temu karta sieciowa i dobrze wykorzystania Procesora. Większe maszyny Wirtualnej umożliwia większą liczbę jednoczesnych żądań.  
+Podczas pracy z Data Lake Storage Gen2 można uzyskać najlepszą wydajność, jeśli wykonasz następujące czynności:
+* Łączenie małych dołączeń w większe rozmiary.
+* Wykonaj dowolną liczbę równoczesnych żądań. Ponieważ każdy wątek pioruna wykonuje odczyty blokujące, warto umieścić w zakresie 8-12 wątków na rdzeń. Dzięki temu karta sieciowa i użycie procesora CPU są ciągle wykorzystywane. Większa maszyna wirtualna umożliwia wykonywanie większej liczby równoczesnych żądań.  
 
-### <a name="example-topology"></a>Przykładową topologię
+### <a name="example-topology"></a>Przykładowa topologia
 
-Załóżmy, że masz klaster węzła procesu roboczego 8 z maszyną Wirtualną Azure wystąpienie D13v2. Ta maszyna wirtualna ma 8 rdzeni, więc między 8 węzłów procesu roboczego, musisz 64 łączna liczba rdzeni.
+Załóżmy, że masz 8-węzłowy klaster roboczy z maszyną wirtualną platformy Azure D13v2. Ta maszyna wirtualna ma 8 rdzeni, więc między 8 węzłami roboczymi jest 64 całkowitej liczby rdzeni.
 
-Załóżmy, że robimy 8 wątków bolt na każdy rdzeń. Podany 64 rdzeni oznacza to, że chcemy, aby 512 bolt łączna liczba wystąpień funkcji wykonawczej (oznacza to, wątki). W tym przypadku Załóżmy, że firma Microsoft Rozpoczęcie jednej maszyny JVM na maszynę Wirtualną, a przede wszystkim użyć współbieżności wątku w ramach maszyny JVM, aby osiągnąć współbieżności. Oznacza to, że potrzebujemy 8 zadania procesu roboczego (po jednej na maszynie Wirtualnej platformy Azure) i 512 bolt executors. W takiej konfiguracji system Storm podejmie próbę dystrybucji pracowników równomiernie między węzłami procesu roboczego (znany także jako węzły nadzorcy), dzięki czemu każdy węzeł procesu roboczego 1 maszyny JVM. Teraz w ramach opiekunów, Storm podejmie próbę dystrybucji executors równomiernie między nadzorców, dzięki czemu każdy nadzorcy (czyli JVM) 8 wątków każdego.
+Załóżmy, że 8 wątków piorunów na rdzeń. Podano 64 rdzeni, co oznacza, że chcemy 512 łączne wystąpienia modułu wykonującego (czyli wątki). W tym przypadku Załóżmy, że zaczynamy od jednego JVM na maszynę wirtualną, a głównie używają współbieżności wątków w JVM, aby osiągnąć współbieżność. Oznacza to, że potrzebujemy 8 zadań roboczych (jednej na maszynę wirtualną na platformie Azure) i modułów wykonujących 512. Zgodnie z tą konfiguracją, burza próbuje równomiernie rozpowszechnić pracowników w węzłach procesu roboczego (nazywanych również węzłami nadzorującymi), dając każdy węzeł procesu roboczego 1 JVM. Teraz w ramach nadzorcy, burza próbuje rozpowszechnić wykonawców jednocześnie między osobami nadzorującymi, zapewniając każdemu opiekunowi (czyli JVM) 8 wątków każdego z nich.
 
-## <a name="tune-additional-parameters"></a>Dostosuj parametry dodatkowe
-Po umieszczeniu podstawową topologię, można rozważyć, czy chcesz dostosować dowolny z parametrów:
-* **Liczba JVMs na węzeł procesu roboczego.** Jeśli masz strukturę dużych ilości danych (na przykład tabela odnośników) host w pamięci, każdej maszyny wirtualnej Java wymaga oddzielna kopia. Alternatywnie można użyć struktury danych w wielu wątkach, jeśli masz mniej JVMs. Dla elementu bolt we/wy liczba JVMs nie powoduje tyle różnica jako liczba wątków dodane w tych JVMs. Dla uproszczenia to dobry pomysł, aby mieć jeden JVM na proces roboczy. Zależności od tego, co robi Twoja bolt lub aplikacji przetwarzania możesz wymagać, chociaż może być konieczna zmiana tej liczby.
-* **Liczba spout executors.** Ponieważ w poprzednim przykładzie użyto elementów bolt do zapisywania Data Lake Storage Gen2, liczba elementów spout nie jest bezpośrednio dotyczą wydajności elementu bolt. Jednak w zależności od ilości przetwarzania lub operacji we/wy wykonywane w spout jest dobry pomysł, aby dostosować elementy spout, aby uzyskać najlepszą wydajność. Upewnij się, że masz wystarczająco dużo elementów spout aby można było zachować elementy bolt zajęty. Stawki danych wyjściowych elementów spout powinna odpowiadać przepływność elementów bolt. Rzeczywista konfiguracja zależy od spout.
-* **Liczba zadań.** Każdy element bolt działa jako pojedynczy wątek. Dodatkowe zadania na bolt nie oferują żadnych dodatkowych współbieżności. Jedyną sytuacją, w której są korzystne jest, jeśli proces o potwierdzenie krotki ma dużą część czasu wykonywania elementu bolt. To dobry pomysł, aby grupa czy wiele krotek do większego dołączyć zanim wyślesz do potwierdzenia od elementu bolt. W większości przypadków wielu zadań zapewniają tak, żadne dodatkowe korzyści.
-* **Lokalnego lub grupowanie losowa.** Jeśli to ustawienie jest włączone, spójne kolekcje są wysyłane do elementów bolt w obrębie tego samego procesu roboczego. Zmniejsza to wywołań między procesami łączności i sieci. Jest to zalecane dla większości topologii.
+## <a name="tune-additional-parameters"></a>Dostosuj dodatkowe parametry
+Po utworzeniu topologii podstawowej można rozważyć, czy chcesz dostosować dowolny z parametrów:
+* **Liczba JVMs na węzeł procesu roboczego.** Jeśli masz dużą strukturę danych (na przykład tabelę odnośników), która jest hostowana w pamięci, każda JVM wymaga oddzielnej kopii. Alternatywnie możesz użyć struktury danych w wielu wątkach, jeśli masz mniej JVMs. W przypadku operacji we/wy pioruna liczba JVMs nie jest tak duża jak liczba wątków dodanych w ramach tych JVMs. Dla uproszczenia dobrym pomysłem jest posiadanie jednego JVM na proces roboczy. W zależności od tego, co działa lub jakie jest wymagane przetwarzanie aplikacji, może być konieczna zmiana tej liczby.
+* **Liczba modułów wykonujących elementu Spout.** Ponieważ w powyższym przykładzie są wykorzystywane pioruny do zapisu w Data Lake Storage Gen2, liczba elementy Spout nie jest bezpośrednio istotna dla wydajności obiektu. Jednakże, w zależności od ilości przetwarzania lub operacji we/wy w elementu Spout, dobrym pomysłem jest dostrojenie elementy Spout w celu uzyskania najlepszej wydajności. Upewnij się, że masz wystarczająco dużo elementy Spout, aby zapewnić, że pioruny są zajęte. Stawki danych wyjściowych elementy Spout powinny odpowiadać przepływności piorunów. Rzeczywista konfiguracja zależy od elementu Spout.
+* **Liczba zadań.** Każdy obiekt piorun działa jako pojedynczy wątek. Dodatkowe zadania na piorun nie zapewniają żadnych dodatkowych współbieżności. Jedyną zaletą jest to, że proces potwierdzania spójnej kolekcji zajmuje dużą część czasu wykonywania obiektu. Dobrym pomysłem jest pogrupowanie wielu spójnych kolekcji przed wysłaniem potwierdzenia z pioruna. Dlatego w większości przypadków wiele zadań nie zapewnia dodatkowej korzyści.
+* **Grupowanie lokalne lub losowe.** Gdy to ustawienie jest włączone, krotki są wysyłane do piorunów w ramach tego samego procesu roboczego. Powoduje to zmniejszenie komunikacji między procesami i połączenia sieciowe. Jest to zalecane w przypadku większości topologii.
 
-Ten scenariusz podstawowy jest dobry punkt wyjścia. Testowanie z użyciem własnych danych, aby dostosować parametry poprzedni, aby osiągnąć optymalną wydajność.
+Ten podstawowy scenariusz jest dobrym punktem początkowym. Przetestuj swoje własne dane, aby dostosować poprzednie parametry w celu uzyskania optymalnej wydajności.
 
-## <a name="tune-the-spout"></a>Dostosowywanie spout
+## <a name="tune-the-spout"></a>Dostosuj elementu Spout
 
-Można zmodyfikować następujące ustawienia, aby dostroić spout.
+Możesz zmodyfikować następujące ustawienia, aby dostroić elementu Spout.
 
-- **Limit czasu krotki: topology.message.timeout.secs**. To ustawienie określa ilość czasu, wiadomość ma wykonać w celu odbierania potwierdzenie, jest uznawane za nie powiodło się.
+- **Limit czasu krotki: Topology. Message. Timeout. s**. To ustawienie określa czas, przez jaki komunikat jest potrzebny do ukończenia i otrzymuje potwierdzenie, zanim zostanie uznane za niepowodzenie.
 
-- **Maksymalny rozmiar pamięci dla procesu roboczego: worker.childopts**. To ustawienie umożliwia określenie dodatkowych parametrów wiersza polecenia dla pracowników języka Java. Najczęściej używane ustawienia w tym miejscu jest XmX, który określa maksymalnej pamięci przydzielonej do maszyny JVM sterty.
+- **Maksymalna ilość pamięci na proces roboczy: Worker. childopts**. To ustawienie umożliwia określenie dodatkowych parametrów wiersza polecenia dla procesów roboczych języka Java. Najczęściej używane ustawienie to XmX, które określa maksymalną ilość pamięci przydzieloną do sterty JVM.
 
-- **Spout maksymalna liczba oczekujących: topology.max.spout.pending**. To ustawienie określa liczbę krotek, które mogą być w locie (nie została jeszcze potwierdzony we wszystkich węzłach w topologii) na wątek spout w dowolnym momencie.
+- **Maksymalna liczba elementu Spout oczekujących: Topology. max. elementu Spout. Pending**. To ustawienie określa liczbę spójnych krotek (nie jest jeszcze potwierdzone we wszystkich węzłach w topologii) na wątek elementu Spout w dowolnym momencie.
 
-  Dobre obliczeń celu jest oszacować rozmiar każdego z krotek. Następnie określ ilość pamięci spout jeden wątek ma. Całkowita pamięć przydzielona do wątku, podzielona przez tę wartość, powinien zapewnić górną granicę dla max spout oczekujące parametru.
+  Dobrym obliczeniem jest oszacowanie rozmiaru poszczególnych krotek. Następnie ustal, ile pamięci ma jeden wątek elementu Spout. Łączna ilość pamięci przydzielonej do wątku, podzielona przez tę wartość, powinna stanowić górną granicę dla maksymalnego parametru oczekującego elementu Spout.
 
-Domyślny element bolt Data Lake Storage Gen2 Storm ma rozmiar synchronizacji zasad parametr (fileBufferSize) można dostrajanie tego parametru.
+Domyślny Data Lake Storage Gen2 burzy, który ma parametr zasad synchronizacji rozmiaru (fileBufferSize), który może służyć do dostrajania tego parametru.
 
-W topologii I/intensywnie wyjścia jest dobrze mieć każdy wątek bolt zapisu do własnego pliku i ustawiania zasad rotacji pliku (fileRotationSize). Gdy plik osiągnie określony rozmiar, strumień automatycznie jest opróżniany, i jest zapisywany nowy plik. Rozmiar plików zalecany dla obrotu jest 1 GB.
+W topologiach intensywnie korzystających z operacji we/wy dobrym pomysłem jest zapisanie każdego wątku piorunu do własnego pliku oraz ustawianie zasad rotacji plików (fileRotationSize). Gdy plik osiągnie określony rozmiar, strumień jest automatycznie opróżniany i nowy plik jest zapisywana w. Zalecany rozmiar pliku do rotacji to 1 GB.
 
-## <a name="monitor-your-topology-in-storm"></a>Monitorowanie topologii w Storm  
-Topologia jest uruchomiona, można go monitorować za pomocą interfejsu użytkownika platformy Storm. Poniżej przedstawiono główne parametry, aby przyjrzeć się:
+## <a name="monitor-your-topology-in-storm"></a>Monitorowanie topologii w burzach  
+Gdy topologia jest uruchomiona, można monitorować ją w interfejsie użytkownika burzy. Oto główne parametry do przeszukiwania:
 
-* **Opóźnienie wykonania całkowitej procesu.** Jest to Średni czas, jaki trwa po jednej krotce wyemitowane przez spout, przetwarzane przez elementy bolt i potwierdzone.
+* **Całkowite opóźnienie wykonania procesu.** Jest to średni czas, przez który jedna krotka będzie emitować przez elementu Spout, przetworzona przez pioruna i potwierdzona.
 
-* **Opóźnienie procesu całkowita bolt.** Jest to Średni czas spędzany przez krotki na elementy bolt, dopóki nie odbierze potwierdzenia.
+* **Całkowite opóźnienie procesu pioruna.** Jest to średni czas spędzony przez krotkę na piorunie do momentu otrzymania potwierdzenia.
 
-* **Opóźnienie wykonania całkowitej bolt.** Jest to Średni czas spędzony przez element bolt w metodzie execute.
+* **Całkowite opóźnienie wykonania pioruna.** Jest to średni czas spędzony przez piorun w metodzie Execute.
 
-* **Liczba błędów.** Dotyczy to liczba krotek, którego nie można w pełni przetworzony przed ich przekroczyło limit czasu.
+* **Liczba niepowodzeń.** Odnosi się to do liczby krotek, które nie zostały w pełni przetworzone przed upływem limitu czasu.
 
-* **Pojemność.** Jest to miara jest obciążenie systemu. Jeśli ta liczba wynosi 1, Twoje elementy bolt działają tak szybko, jak to możliwe. Jeśli jest mniejszy niż 1, należy zwiększyć równoległości. Jeśli jest większa niż 1, zmniejszenie równoległości.
+* **Pojemności.** Jest to miara, w jaki sposób jest zajęty system. Jeśli ta liczba wynosi 1, pioruny pracują tak szybko, jak to możliwe. Jeśli wartość jest mniejsza niż 1, zwiększ równoległość. Jeśli wartość jest większa niż 1, Zmniejsz równoległość.
 
 ## <a name="troubleshoot-common-problems"></a>Rozwiązywanie typowych problemów
 Poniżej przedstawiono kilka typowych scenariuszy rozwiązywania problemów.
-* **Wiele krotek przekraczają limit.** Spójrz na każdym węźle w topologii, aby określić, gdzie jest wąskie gardło. Najbardziej typową przyczyną tego jest, że elementy bolt nie będą mogli nadążyć za elementy spout. Prowadzi to do krotki zapychaniem bufory wewnętrzne oczekujących na przetworzenie. Należy rozważyć zwiększenie wartości limitu czasu lub Zmniejsz maksymalny spout oczekujące.
+* **Wiele krotek ma limit czasu.** Zapoznaj się z każdym węzłem w topologii, aby określić, gdzie wąskie gardło. Najbardziej typową przyczyną jest to, że pioruny nie mogą utrzymywać się w elementy Spout. Prowadzi to do krotek clogging bufory wewnętrzne podczas oczekiwania na przetworzenie. Należy rozważyć zwiększenie wartości limitu czasu lub zmniejszenie maksymalnej liczby oczekujących elementu Spout.
 
-* **Istnieje opóźnienie wykonywania wysokiej łączna liczba procesów, ale opóźnienie procesu niski bolt.** W tym przypadku jest to możliwe, że kolekcje nie są przyjęte wystarczająco szybko. Sprawdź, czy istnieje wystarczająca liczba acknowledgers. Inną możliwością jest, że są one oczekujących w kolejce zbyt długo, przed rozpoczęciem bolt, ich przetworzeniu. Zmniejsz maksymalny spout oczekujące.
+* **Istnieje wysokie całkowite opóźnienie wykonania procesu, ale opóźnienie niskiego procesu.** W takim przypadku istnieje możliwość, że krotki nie są potwierdzane wystarczająco szybko. Sprawdź, czy istnieje wystarczająca liczba potwierdzeń. Kolejną możliwością jest to, że oczekuje w kolejce przez zbyt długo przed rozpoczęciem przetwarzania przez piorunów. Zmniejsz maksymalną liczbę oczekujących elementu Spout.
 
-* **Występuje opóźnienie wykonania wysokiej bolt.** Oznacza to, że metoda execute() swoje bolt trwa zbyt długo. Optymalizuj kod, lub Przyjrzyj się rozmiaru operacji zapisu i opróżniania zachowanie.
+* **Istnieje duże opóźnienie wykonania.** Oznacza to, że metoda Execute () obiektu piorun trwa zbyt długo. Zoptymalizuj kod lub zapoznaj się z rozmiarem zapisu i zachowaniem opróżniania.
 
-### <a name="data-lake-storage-gen2-throttling"></a>Data Lake Storage Gen2 ograniczania
-Jeśli napotkasz limity przepustowości, dostarczone przez Data Lake Storage Gen2, można napotkać niepowodzeń zadań. Sprawdź dzienniki zadania, aby błędy ograniczania przepływności. Aby zmniejszyć równoległości, zwiększenie rozmiaru kontenera.    
+### <a name="data-lake-storage-gen2-throttling"></a>Ograniczanie Data Lake Storage Gen2
+W przypadku osiągnięcia limitów przepustowości zapewnianej przez Data Lake Storage Gen2 mogą pojawić się błędy zadań. Sprawdź dzienniki zadań pod kątem błędów ograniczania. Równoległość można zmniejszyć przez zwiększenie rozmiaru kontenera.    
 
-Aby sprawdzić, czy użytkownik jest ograniczany, Włącz debugowanie rejestrowania po stronie klienta:
+Aby sprawdzić, czy masz ograniczone ograniczenia, Włącz rejestrowanie debugowania po stronie klienta:
 
-1. W **Ambari** > **Storm** > **Config** > **zaawansowane storm-proces roboczy — log4j**, Zmień **&lt;poziom główny = "info"&gt;** do  **&lt;poziom główny = "debug"&gt;** . Uruchom ponownie wszystkie węzły/usługę konfiguracji zostały wprowadzone.
-2. Monitorowanie topologii systemu Storm dzienniki na węzłach procesu roboczego (w obszarze /var/log/storm/worker-artifacts /&lt;TopologyName&gt;/&lt;portu&gt;/worker.log) for Data Lake Storage Gen2 ograniczania wyjątków.
+1. W **Ambari** > **burzy** **&lt;&gt;** konfiguracji — Zaawansowana burza-proces roboczy-Log4J, zmiana poziomu głównego = "informacje" na poziom główny = >  >   **&lt; "Debugowanie"&gt;** . Uruchom ponownie wszystkie węzły/usługi, aby konfiguracja zaczęła obowiązywać.
+2. Monitoruj dzienniki topologii burzy w węzłach procesu roboczego&lt;(w&gt;obszarze&gt;/var/log/Storm/Worker-Artifacts//&lt;topologyname port/Worker.log), aby uzyskać Data Lake Storage Gen2 wyjątków ograniczania.
 
-## <a name="next-steps"></a>Kolejne kroki
-Dodatkową wydajność dostrajania dla systemu Storm można odwoływać się do [ten blog](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/).
+## <a name="next-steps"></a>Następne kroki
+W [tym blogu](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)można odwoływać się do dodatkowej dostrajania wydajności dla burzy.
 
-Dodatkowe przykład do uruchomienia, zobacz [wskazanego w serwisie GitHub](https://github.com/hdinsight/storm-performance-automation).
+Aby zapoznać się z dodatkowym przykładem, zobacz [ten temat w witrynie GitHub](https://github.com/hdinsight/storm-performance-automation).
