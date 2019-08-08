@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 001739d337d8c123023ccbf037933938113aaf2a
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 181d052501b9c418fad10a2069dde928a7ff9f38
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779595"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840239"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Samouczek: Korzystanie z systemu Apache Storm z platformą Apache Kafka w usłudze HDInsight
 
@@ -130,7 +130,7 @@ Ten samouczek obejmuje dwie topologie:
     >
     > Akcja skryptu znajduje się w lokalizacji [https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh](https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh) i jest stosowana do węzłów nadzorcy i Nimbus klastra burzy. Aby uzyskać więcej informacji dotyczących akcji skryptu, zobacz dokument [Dostosowywanie usługi HDInsight za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md).
 
-Topologie definiuje się przy użyciu struktury [Flux](https://storm.apache.org/releases/1.1.2/flux.html). Struktura Flux została wprowadzona w systemie Storm 0.10.x i umożliwia rozdzielenie konfiguracji topologii i kodu. Topologie wykorzystujące strukturę Flux są definiowane w pliku YAML. Plik YAML może sam być częścią topologii. Istnieje także możliwość użycia go jako pliku autonomicznego podczas przesyłania topologii. Struktura Flux obsługuje również podstawianie wartości zmiennych w czasie wykonywania, które jest używane w tym przykładzie.
+Topologie definiuje się przy użyciu struktury [Flux](https://storm.apache.org/releases/current/flux.html). Struktura Flux została wprowadzona w systemie Storm 0.10.x i umożliwia rozdzielenie konfiguracji topologii i kodu. Topologie wykorzystujące strukturę Flux są definiowane w pliku YAML. Plik YAML może sam być częścią topologii. Istnieje także możliwość użycia go jako pliku autonomicznego podczas przesyłania topologii. Struktura Flux obsługuje również podstawianie wartości zmiennych w czasie wykonywania, które jest używane w tym przykładzie.
 
 Następujące parametry są ustawiane w czasie wykonywania dla tych topologii:
 
@@ -144,7 +144,7 @@ Następujące parametry są ustawiane w czasie wykonywania dla tych topologii:
 
 * `${hdfs.write.dir}`: Katalog, w którym są zapisywane dane.
 
-Aby uzyskać więcej informacji dotyczących topologii struktury Flux, zobacz [https://storm.apache.org/releases/1.1.2/flux.html](https://storm.apache.org/releases/1.1.2/flux.html).
+Aby uzyskać więcej informacji dotyczących topologii struktury Flux, zobacz [https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html).
 
 ### <a name="kafka-writer"></a>Moduł zapisujący platformy Kafka
 
@@ -406,7 +406,7 @@ Aby utworzyć usługę Azure Virtual Network, a następnie utworzyć w niej klas
 
    1. Wypełnij pola w sekcji **Dostosowany szablon**, korzystając z poniższych informacji:
 
-      | Ustawienie | Value |
+      | Ustawienie | Wartość |
       | --- | --- |
       | Subscription | Twoja subskrypcja platformy Azure |
       | Resource group | Grupa zasobów zawierająca zasoby. |

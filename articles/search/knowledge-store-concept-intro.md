@@ -5,16 +5,17 @@ manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
+ms.subservice: cognitive-search
 ms.devlang: NA
 ms.topic: overview
 ms.date: 08/02/2019
 ms.author: heidist
-ms.openlocfilehash: 21530ca309a18c95e947a265b951fe78044aec93
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 107478f7e2d3c6726d3b8fb9c503ef13271c6571
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828491"
+ms.locfileid: "68840818"
 ---
 # <a name="what-is-knowledge-store-in-azure-search"></a>Co to jest sklep merytoryczny w Azure Search?
 
@@ -247,7 +248,7 @@ Możesz użyć REST `api-version=2019-05-06-Preview` , aby utworzyć potok opart
 
 Magazyn wiedzy oferuje różne korzyści, w tym, ale nie ogranicza się do korzystania z ulepszonych dokumentów w scenariuszach innych niż wyszukiwanie, kontrola kosztów i zarządzanie dryfem w procesie wzbogacania. Te funkcje są dostępne do użycia po prostu przez dodanie konta magazynu do zestawu umiejętności i użycie zaktualizowanego języka wyrażeń zgodnie z opisem w [artykule jak rozpocząć pracę z magazynem wiedzy](knowledge-store-howto.md). 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Najprostszym podejściem do tworzenia wzbogaconych dokumentów jest użycie kreatora **importu danych** .
 
