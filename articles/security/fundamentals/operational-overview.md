@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: tomsh
-ms.openlocfilehash: 7504fe890f9a7c0b282e2c2442307aeab27d6ff4
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: d863edba17b3dc688624e7095ee09744ca07192d
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726843"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780531"
 ---
 # <a name="azure-operational-security-overview"></a>Omówienie zabezpieczeń operacyjnych platformy Azure
 
-[Zabezpieczenia operacyjne platformy Azure](/azure/security/azure-operational-security) odnoszą się do usług, formantów i funkcji dostępnych dla użytkowników w celu ochrony danych, aplikacji i innych zasobów w Microsoft Azure. Jest to platforma, która obejmuje wiedzę uzyskaną za pomocą różnych możliwości, które są unikatowe dla firmy Microsoft. Te funkcje obejmują cykl programowania zabezpieczeń firmy Microsoft (SDL), program Microsoft Security Response Center oraz dogłębną świadomość zagrożeń cyberbezpieczeństwa.
+[Zabezpieczenia operacyjne platformy Azure] (/Azure/Security/Fundamentals/Operational-Security odnosi się do usług, formantów i funkcji dostępnych dla użytkowników w celu ochrony danych, aplikacji i innych zasobów w Microsoft Azure. Jest to platforma, która obejmuje wiedzę uzyskaną za pomocą różnych możliwości, które są unikatowe dla firmy Microsoft. Te funkcje obejmują cykl programowania zabezpieczeń firmy Microsoft (SDL), program Microsoft Security Response Center oraz dogłębną świadomość zagrożeń cyberbezpieczeństwa.
 
 ## <a name="azure-management-services"></a>Usługi zarządzania platformy Azure
 
@@ -185,7 +185,7 @@ Praktykujący lekarze DevOps przyjmuje kilka z poniższych praktyk. Te praktyki 
 - [Infrastruktura jako kod (IaC)](https://www.visualstudio.com/learn/what-is-infrastructure-as-code/) to rozwiązanie, które umożliwia automatyzację i sprawdzanie poprawności tworzenia i usuwania sieci oraz maszyn wirtualnych w celu ułatwienia dostarczania bezpiecznych, stabilnych platform hostingu aplikacji.
 - [](https://www.visualstudio.com/learn/what-are-microservices/) Architektura mikrousług służy do izolowania przypadków użycia biznesowego w małych usługach wielokrotnego użytku.  Ta architektura umożliwia skalowalność i wydajność.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się więcej na temat rozwiązania Security and Audit, zobacz następujące artykuły:
 

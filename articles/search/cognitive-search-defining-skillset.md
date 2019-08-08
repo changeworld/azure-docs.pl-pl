@@ -9,13 +9,13 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: eb85c4c56d8464d4078564c707efabf60dc5aa99
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.subservice: cognitive-search
+ms.openlocfilehash: 560bc7a7dc30dd1ed55727c4bcc3831a771ff69e
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501457"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841254"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Jak utworzyć zestawu umiejętności w potoku wzbogacania
 
@@ -277,6 +277,6 @@ Można zapisać wzbogacone dokumenty jako tabele z niehierarchicznymi relacjami 
 
 <a name="next-step"></a>
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Teraz, gdy znasz już potok wzbogacania i umiejętności, Kontynuuj, jak odwoływać się do [adnotacji w zestawu umiejętności](cognitive-search-concept-annotations-syntax.md) lub [Jak mapować dane wyjściowe do pól w indeksie](cognitive-search-output-field-mapping.md). 

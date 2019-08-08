@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: grgale
-ms.openlocfilehash: b68bdb6d1c349df67943889b511eac87c940b531
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f7f78dbde9810c8786e2344555444efabcc989b0
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68571889"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779320"
 ---
 # <a name="system-monitoring-for-security-in-azure-australia"></a>Monitorowanie systemu pod kątem zabezpieczeń w Australii platformy Azure
 
@@ -108,7 +108,7 @@ Dzienniki zebrane na platformie Azure należą do jednej z następujących trzec
 
 Monitorowanie maszyn wirtualnych platformy Azure jest rozszerzane przez wdrożenie agenta maszyny wirtualnej zarówno dla systemu Windows, jak i Linux. Znacząco zwiększa to zebrane informacje o rejestrowaniu. Wdrożenie tego agenta można skonfigurować tak, aby odbywało się automatycznie za pośrednictwem Azure Security Center.
 
-Firma Microsoft udostępnia szczegółowe informacje o dziennikach specyficznych dla zasobów [](https://docs.microsoft.com/azure/security/azure-log-audit)platformy Azure i ich schematach.
+Firma Microsoft udostępnia szczegółowe informacje o dziennikach specyficznych dla zasobów [](https://docs.microsoft.com/azure/security/fundamentals/log-audit)platformy Azure i ich schematach.
 
 ### <a name="log-retention-and-protection"></a>Przechowywanie i ochrona dzienników
 
@@ -149,6 +149,6 @@ Aby rozpocząć pracę z Azure Security Center i korzystać z usługi Azure Moni
 * Włącz automatyczną obsługę administracyjną Microsoft Monitoring Agent na obsługiwanych Virtual Machines platformy Azure
 * Przeglądanie, ustalanie priorytetów i łagodzenie zaleceń i alertów dotyczących zabezpieczeń na pulpicie nawigacyjnym Centrum zabezpieczeń
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Przeczytaj [Azure Policy i plany platformy Azure,](azure-policy.md) Aby uzyskać szczegółowe informacje na temat implementowania nadzoru i kontroli nad zasobami w Australii platformy Azure w celu zapewnienia zgodności zasad i przepisów.

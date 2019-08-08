@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 32da92fb3c5573d24eb18a01a4ede8fe6a0bf36a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3637676a330b324d5620885f0cbe50d4aa68ed51
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567446"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779045"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL Database często zadawane pytania dotyczące wystąpienia zarządzanego
 
@@ -79,9 +79,9 @@ Jeśli oba generacje sprzętowe nie są obsługiwane w tym samym regionie, zmian
 
 ## <a name="how-do-i-tune-performance-of-my-managed-instance"></a>Jak mogę dostosować wydajność wystąpienia zarządzanego? 
 
-Ogólnego przeznaczenia zarządzanym wystąpieniem używa magazynu zdalnego, ponieważ rozmiar danych i plików dziennika jest istotny dla wydajności. Aby dostroić Ogólnego przeznaczenia wydajności warstwy usług, postępuj zgodnie z instrukcjami zawartymi w tym wpisie w blogu.
+Ogólnego przeznaczenia zarządzanym wystąpieniem używa magazynu zdalnego, ponieważ rozmiar danych i plików dziennika jest istotny dla wydajności. Aby uzyskać więcej informacji, zobacz [wpływ rozmiaru pliku dziennika na wydajność wystąpienia zarządzanego ogólnego przeznaczenia](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e).
 
-W przypadku obciążeń intensywnie korzystających z operacji we/wy należy rozważyć użycie sprzętu generacji 5 w przeciwieństwie do generacji 4 obciążeń intensywnie korzystających z obliczeń. Aby uzyskać więcej informacji, zapoznaj się z sekcją często zadawanych pytań dotyczących wyboru generacji sprzętu.
+W przypadku obciążeń intensywnie korzystających z operacji we/wy należy rozważyć użycie sprzętu generacji 5 w przeciwieństwie do generacji 4 obciążeń intensywnie korzystających z obliczeń. Aby uzyskać więcej informacji, zobacz [Jak mogę wybrać między gen 4 i gen 5](#how-do-i-choose-between-gen-4-and-gen-5-hardware-generation-for-managed-instance).
 
 Jeśli obciążenie obejmuje wiele małych transakcji, rozważ przełączenie typu połączenia z serwera proxy do trybu przekierowania.
 

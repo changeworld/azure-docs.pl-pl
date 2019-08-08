@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 07/18/2019
 ms.author: bwren
 ms.openlocfilehash: b9a4a0a18e120a2843e23d44b03c0fe53b0d84fc
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 08/08/2019
 ms.locfileid: "68370674"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Standardowe właściwości w dziennikach Azure Monitor
@@ -26,7 +26,7 @@ Dane w dziennikach Azure Monitor są [przechowywane jako zestaw rekordów w obsz
 > Niektóre standardowe przeprowadzenie analizy PERT nie będą wyświetlane w widoku schematu ani IntelliSense w Log Analytics i nie będą wyświetlane w wynikach zapytania, chyba że jawnie określisz właściwość w danych wyjściowych.
 
 ## <a name="timegenerated-and-timestamp"></a>TimeGenerated i znacznik czasu
-Właściwości **TimeGenerated** (obszar roboczy log Analytics)  i sygnatura czasowa (aplikacja Application Insights Application) zawierają datę i godzinę utworzenia rekordu przez źródło danych. Aby uzyskać więcej informacji, zobacz czas pozyskiwania [danych dziennika w Azure monitor](data-ingestion-time.md) .
+Właściwości **TimeGenerated** (obszar roboczy log Analytics) i sygnatura czasowa (aplikacja Application Insights Application) zawierają datę i godzinę utworzenia rekordu przez źródło danych. Aby uzyskać więcej informacji, zobacz czas pozyskiwania [danych dziennika w Azure monitor](data-ingestion-time.md) .
 
 **TimeGenerated** i **sygnatura czasowa** zapewniają wspólną Właściwość służącą do filtrowania lub podsumowywania według czasu. Po wybraniu przedziału czasu dla widoku lub pulpitu nawigacyjnego w Azure Portal do filtrowania wyników służy TimeGenerated lub znacznik czasu. 
 
@@ -51,7 +51,7 @@ exceptions
 | sort by timestamp asc 
 ```
 
-## <a name="timereceived"></a>\_TimeReceived
+## <a name="_timereceived"></a>\_TimeReceived
 Właściwość TimeReceived zawiera datę i godzinę odebrania rekordu przez punkt pozyskiwania Azure monitor w chmurze platformy Azure.  **\_** Może to być przydatne do identyfikowania problemów opóźnienia między źródłem danych i chmurą. Przykładem może być problem z siecią, powodujący opóźnienie przesyłania danych z agenta. Aby uzyskać więcej informacji, zobacz czas pozyskiwania [danych dziennika w Azure monitor](data-ingestion-time.md) .
 
 Następujące zapytanie zwraca średni czas oczekiwania (według godziny) dla rekordów zdarzeń z agenta. Obejmuje to czas od agenta do chmury oraz całkowity czas dostępności rekordu dla zapytań dzienników.
@@ -77,11 +77,11 @@ search *
 | summarize count() by Type
 
 ```
-## <a name="itemid"></a>\_Elementów
+## <a name="_itemid"></a>\_Elementów
 Właściwość ItemId posiada unikatowy identyfikator rekordu.  **\_**
 
 
-## <a name="resourceid"></a>\_Identyfikator
+## <a name="_resourceid"></a>\_Identyfikator
 Właściwość ResourceID zawiera unikatowy identyfikator zasobu, z którym jest skojarzony rekord.  **\_** Zapewnia to standardową Właściwość służącą do określania zakresu zapytania tylko do rekordów z określonego zasobu lub do łączenia się z danymi powiązanymi między wieloma tabelami.
 
 W przypadku zasobów platformy Azure wartość **_ResourceId** jest [adresem URL identyfikatora zasobu platformy Azure](../../azure-resource-manager/resource-group-template-functions-resource.md). Właściwość jest obecnie ograniczona do zasobów platformy Azure, ale zostanie rozszerzona o zasoby spoza platformy Azure, takie jak komputery lokalne.
@@ -127,7 +127,7 @@ union withsource = tt *
 
 Te zapytania `union withsource = tt *` są oszczędnie zależą od tego, jak skanowanie między typami danych jest kosztowne.
 
-## <a name="isbillable"></a>\_Ismiliard
+## <a name="_isbillable"></a>\_Ismiliard
 Właściwość isbilled określa, czy są naliczane opłaty za pozyskiwane dane.  **\_** Dane z  **\_** ismiliardem równym _wartości false_ są zbierane bezpłatnie i nie są naliczane za Twoje konto platformy Azure.
 
 ### <a name="examples"></a>Przykłady
@@ -154,8 +154,8 @@ union withsource = tt *
 | summarize dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc
 ```
 
-## <a name="billedsize"></a>\_BilledSize
-Właściwość BilledSize określa rozmiar w bajtach danych, które będą rozliczane na konto platformy Azure  **\_, jeśli jest** to wartość true.  **\_**
+## <a name="_billedsize"></a>\_BilledSize
+Właściwość BilledSize określa rozmiar w bajtach danych, które będą rozliczane na konto platformy Azure, jeśli  **\_** jest to wartość true.  **\_**
 
 
 ### <a name="examples"></a>Przykłady

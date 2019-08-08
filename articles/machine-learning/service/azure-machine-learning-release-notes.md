@@ -10,18 +10,75 @@ ms.author: jmartens
 author: j-martens
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: ade107f51fabb133e8e4046bf645f4dff284102b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ec913133ef97a632b12db2859bd4ac32df70a1c5
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565114"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828622"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Informacje o wersji usługi Azure Machine Learning
 
 Ten artykuł zawiera informacje o wersji usługi Azure Machine Learning.  Aby uzyskać pełną zawartość referencyjną SDK, odwiedź stronę referencyjną [**głównego zestawu sdk Azure Machine Learning dla języka Python**](https://aka.ms/aml-sdk) .
 
 Zobacz [listę znanych problemów](resource-known-issues.md) informacje na temat znanych błędów i rozwiązania problemu.
+
+## <a name="2019-08-05"></a>2019-08-05
+
+### <a name="azure-machine-learning-sdk-for-python-v1055"></a>Zestaw Azure Machine Learning SDK dla języka Python v 1.0.55
+
++ **Nowe funkcje**
+  + Uwierzytelnianie oparte na tokenach jest teraz obsługiwane na potrzeby wywołań punktu końcowego oceniania wdrożonego w AKS. Będziemy nadal obsługiwać bieżące uwierzytelnianie oparte na kluczach, a użytkownicy mogą korzystać z jednego z tych mechanizmów uwierzytelniania jednocześnie.
+  + Możliwość zarejestrowania magazynu obiektów BLOB znajdującego się za siecią wirtualną (VNet) jako magazynem danych.
+  
++ **Poprawki i ulepszenia błędów**
+  + **Azure-automl-Core**
+    + Naprawia usterkę, w której rozmiar walidacji podziałów OKS jest mały i powoduje nieprawidłowe wykresy przewidywane a rzeczywiste dla regresji i prognozowania.
+    + Rejestrowanie zadań prognozowania w trakcie zdalnego działania zostało ulepszone, teraz użytkownik jest dostarczany z kompleksowym komunikatem o błędzie, Jeśli uruchomienie nie powiodło się.
+    + Rozwiązano błędy elementu szeregów czasowych, jeśli flaga preprocesora ma wartość true.
+    + Niektóre komunikaty o błędach sprawdzania poprawności danych prognozowania są bardziej funkcjonalne.
+    + Zmniejszone użycie pamięci przez AutoML jest uruchamiane przez porzucanie i/lub opóźnione ładowanie zestawów danych, w szczególności między zduplikowanymi procesami
+  + **Azure-contrib-opis-model**
+    + Dodano flagę model_task do objaśnień, aby umożliwić użytkownikowi przesłonięcie domyślnej automatycznej logiki wnioskowania dla typu modelu
+    + Zmiany widżetu: Jest automatycznie instalowany przy użyciu contrib, nie więcej nbextension instalacji/włączania
+    + Zmiany pulpitu nawigacyjnego:-Box i Violins poza wykresem beeswarm na stronie podsumowania — znacznie szybsze ponowne renderowanie wykresu beeswarm na podstawie zmiany suwaka "góra-k" — w tym celu Wyjaśnij, jak najwyższe-k jest obliczane i przydatne dostosowywalne komunikaty w miejscu wykresów, gdy nie podano danych
+  + **azureml-core**
+    + Dodano metodę model. Package () w celu utworzenia obrazów platformy Docker i wieloetapowe dockerfile, które hermetyzują modele i ich zależności.
+    + Zaktualizowano lokalne usługi WebService, aby akceptować InferenceConfigs zawierające obiekty środowiska.
+    + Naprawiono model. Register () podczas tworzenia nieprawidłowych modeli, gdy "." (dla bieżącego katalogu) jest przenoszona jako parametr model_path.
+    + Dodaj Run. submit_child, funkcja powoduje odbicie eksperymentu. Prześlij podczas określania uruchomienia jako elementu nadrzędnego przesłanego przebiegu podrzędnego.
+    + Obsługa opcji konfiguracji z metody model. Register w programie Run. register_model.
+    + Możliwość uruchamiania zadań JAR w istniejącym klastrze.
+    + Teraz obsługiwane są parametry instance_pool_id i cluster_log_dbfs_path.
+    + Dodano obsługę używania obiektu środowiska podczas wdrażania modelu w usłudze sieci Web. Obiekt środowiska można teraz dostarczyć jako część obiektu InferenceConfig.
+    + Dodawanie mapowania appinsifht dla nowych regionów — środkowe i zachodnie-northcentralus
+    + Dodano dokumentację dla wszystkich atrybutów we wszystkich klasach magazynu danych.
+    + Dodano parametr blob_cache_timeout do `Datastore.register_azure_blob_container`.
+    + Dodano metody save_to_directory i load_from_directory do programu Azure. Core. Environment. Environment.
+    + Dodano polecenia "AZ ml Download Environment" i "polecenie" AZ ml Environment Register "do interfejsu CLI.
+    + Dodano środowisko. Dodaj metodę _private_pip_wheel.
+  + **azureml-explain-model**
+    + Dodano śledzenie zestawu danych do wyjaśnień za pomocą usługi DataSet (wersja zapoznawcza).
+    + Zmniejszono domyślny rozmiar wsadu podczas przesyłania globalnych wyjaśnień z 10 000 do 100.
+    + Dodano flagę model_task do objaśnień, aby umożliwić użytkownikowi przesłonięcie domyślnej automatycznej logiki wnioskowania dla typu modelu.
+  + **azureml-mlflow**
+    + Naprawiono usterkę w mlflow. Azure. build_image, gdzie zagnieżdżone katalogi są ignorowane.
+  + **azureml-pipeline-steps**
+    + Dodano możliwość uruchamiania zadań JAR w istniejącym klastrze Azure Databricks.
+    + Dodano obsługę parametrów instance_pool_id i cluster_log_dbfs_path dla kroku DatabricksStep.
+    + Dodano obsługę parametrów potoku w kroku DatabricksStep.
+  + **azureml-train-automl**
+    + Dodano docstrings dla plików związanych z kompletem.
+    + Zaktualizowane dokumenty do bardziej odpowiedniego języka dla `max_cores_per_iteration` i`max_concurrent_iterations`
+    + Rejestrowanie zadań prognozowania w trakcie zdalnego działania zostało ulepszone, teraz użytkownik jest dostarczany z kompleksowym komunikatem o błędzie, Jeśli uruchomienie nie powiodło się.
+    + Usunięto get_data z notesu automlstep potoku.
+    + Uruchomiono obsługę w automlstep.
+
+### <a name="azure-machine-learning-data-prep-sdk-v1110"></a>Azure Machine Learning zestawu SDK 1.1.10 przygotowywania danych
+
++ **Nowe funkcje**
+  + Teraz możesz poprosić o wykonanie określonych inspektorów (np. histogramu, wykresu punktowego itp.) w określonych kolumnach.
+  + Dodano argument zrównoleglanie do `append_columns`elementu. Jeśli wartość jest równa true, dane zostaną załadowane do pamięci, ale wykonywanie zostanie uruchomione równolegle; w przypadku wartości false wykonywanie będzie przesyłane strumieniowo, ale pojedyncze wątki.
 
 ## <a name="2019-07-23"></a>2019-07-23
 
@@ -352,7 +409,7 @@ W Azure Portal można teraz:
 ### <a name="notebook-virtual-machine"></a>Maszyna wirtualna notesu 
 
 Użyj maszyny wirtualnej z notesem jako bezpiecznego, gotowego do użycia w przedsiębiorstwie środowiska hostingu dla notesów Jupyter, w których możesz programować eksperymenty uczenia maszynowego, wdrożyć modele jako punkty końcowe sieci Web i wykonać wszystkie inne operacje obsługiwane przez zestaw SDK Azure Machine Learning przy użyciu języka Python. Oferuje kilka możliwości:
-+ [Szybko przechodzenie do wstępnie skonfigurowanej maszyny wirtualnej](quickstart-run-cloud-notebook.md) notesu, która ma najnowszą wersję zestawu SDK Azure Machine Learning i powiązane pakiety.
++ [Szybko przechodzenie do wstępnie skonfigurowanej maszyny wirtualnej](tutorial-1st-experiment-sdk-setup.md) notesu, która ma najnowszą wersję zestawu SDK Azure Machine Learning i powiązane pakiety.
 + Dostęp jest zabezpieczony za pośrednictwem sprawdzonych technologii, takich jak HTTPS, Azure Active Directory uwierzytelniania i autoryzacji.
 + Niezawodny magazyn w chmurze dla notesów i kodu na koncie Obszar roboczy usługi Azure Machine Learning BLOB Storage. Możesz bezpiecznie usunąć maszynę wirtualną notesu bez utraty pracy.
 + Wstępnie zainstalowane przykładowe notesy umożliwiające eksplorowanie i eksperymentowanie z funkcjami usługi Azure Machine Learning Service.

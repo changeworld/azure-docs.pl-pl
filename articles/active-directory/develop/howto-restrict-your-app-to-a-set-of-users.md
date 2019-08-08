@@ -1,6 +1,6 @@
 ---
-title: Jak ograniczyć aplikacji zarejestrowanych w usłudze Azure Active Directory, grupy użytkowników
-description: Dowiedz się, jak ograniczyć dostęp do aplikacji zarejestrowanej w usłudze Azure AD w wybranej grupie użytkowników.
+title: Jak ograniczyć swoją zarejestrowaną przez Azure Active Directory aplikację do zbioru użytkowników
+description: Dowiedz się, jak ograniczyć dostęp do aplikacji zarejestrowanych w usłudze Azure AD do wybranego zestawu użytkowników.
 services: active-directory
 documentationcenter: ''
 author: kalyankrishna1
@@ -17,65 +17,82 @@ ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e07d9f0fa6ec6b4abc7ce96279b7b02faae298fa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a51c49633e68fdc5f9afd4bf0205adaa625940ff
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540196"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812961"
 ---
 # <a name="how-to-restrict-your-app-to-a-set-of-users"></a>Instrukcje: Ograniczanie aplikacji do zestawu użytkowników
 
-Aplikacje zarejestrowane w dzierżawie usługi Azure Active Directory (Azure AD) są domyślnie dostępne dla wszystkich użytkowników dzierżawy, którzy uwierzytelniają się pomyślnie.
+Aplikacje zarejestrowane w dzierżawie usługi Azure Active Directory (Azure AD) są domyślnie dostępne dla wszystkich użytkowników dzierżawy, którzy pomyślnie uwierzytelniają się.
 
-Podobnie w przypadku programu [wielodostępnych](howto-convert-app-to-be-multi-tenant.md) aplikacji, wszyscy użytkownicy w dzierżawie usługi Azure AD, w którym ta aplikacja jest aprowizowany będzie dostęp do tej aplikacji po pomyślnym uwierzytelnieniu, w ramach ich odpowiednich dzierżawy.
+Podobnie, w przypadku aplikacji wielodostępnej, wszyscy użytkownicy w dzierżawie usługi Azure AD, w której ta aplikacja jest obsługiwana, będą mogli uzyskiwać dostęp do tej aplikacji po pomyślnym uwierzytelnieniu w odpowiedniej dzierżawie. [](howto-convert-app-to-be-multi-tenant.md)
 
-Administratorzy dzierżawy i deweloperzy często mają wymagania gdzie aplikacji musi być określony zbiór użytkowników. Deweloperzy mogą wykonać takie same przy użyciu popularnych autoryzacji wzorców takich jak roli na podstawie kontroli dostępu (RBAC), ale takie podejście wymaga znacznej ilości pracy na części projektanta.
+Administratorzy dzierżawy i deweloperzy często mają wymagania, w przypadku których aplikacja musi być ograniczona do określonego zbioru użytkowników. Deweloperzy mogą osiągnąć ten sam sposób, korzystając ze popularnych wzorców autoryzacji, takich jak Access Control oparte na rolach (RBAC), ale takie podejście wymaga dużej ilości pracy na części dewelopera.
 
-Usługa Azure AD umożliwia dzierżawy, administratorów i deweloperów ograniczyć aplikację do określonej grupy użytkowników lub grup zabezpieczeń w ramach dzierżawy.
+Usługa Azure AD umożliwia administratorom dzierżawy i deweloperom ograniczenie aplikacji do określonego zestawu użytkowników lub grup zabezpieczeń w dzierżawie.
 
-## <a name="supported-app-configurations"></a>Konfiguracje obsługiwane aplikacji
+## <a name="supported-app-configurations"></a>Obsługiwane konfiguracje aplikacji
 
-Możliwość ograniczenia aplikacji do określonej grupy użytkowników lub grup zabezpieczeń w dzierżawie współpracuje z następujących typów aplikacji:
+Opcja ograniczenia aplikacji do określonego zestawu użytkowników lub grup zabezpieczeń w dzierżawie współpracuje z następującymi typami aplikacji:
 
-- Aplikacje skonfigurowane pod kątem federacyjnego logowania jednokrotnego przy użyciu uwierzytelniania opartego na SAML
-- Aplikacje serwera proxy aplikacji, które używają wstępnego uwierzytelniania usługi Azure AD
-- Aplikacje utworzone bezpośrednio na platformie aplikacji Azure AD, które używają protokołu OAuth 2.0/OpenID Connect uwierzytelniania po użytkownik lub administrator wyraził zgodę na tę aplikację.
+- Aplikacje skonfigurowane do federacyjnego logowania jednokrotnego przy użyciu uwierzytelniania opartego na protokole SAML
+- Aplikacje serwera proxy aplikacji korzystające z uwierzytelniania wstępnego usługi Azure AD
+- Aplikacje utworzone bezpośrednio na platformie aplikacji usługi Azure AD, która korzysta z uwierzytelniania OAuth 2.0/OpenID Connect, gdy użytkownik lub administrator wyraził zgodę na tę aplikację.
 
      > [!NOTE]
-     > Ta funkcja jest dostępna dla aplikacji sieci web sieci web i aplikacji interfejsu API i enterprise tylko. Aplikacje, które są zarejestrowane jako [natywnych](quickstart-v1-integrate-apps-with-azure-ad.md) nie może być ograniczone do zbiór użytkowników lub grup zabezpieczeń w ramach dzierżawy.
+     > Ta funkcja jest dostępna tylko dla aplikacji sieci Web/internetowego interfejsu API i aplikacje dla przedsiębiorstw. Aplikacje zarejestrowane jako natywne [](quickstart-v1-integrate-apps-with-azure-ad.md) nie mogą być ograniczone do zestawu użytkowników lub grup zabezpieczeń w dzierżawie.
 
-## <a name="update-the-app-to-enable-user-assignment"></a>Aktualizacja aplikacji, aby umożliwić przypisanie użytkownika
+## <a name="update-the-app-to-enable-user-assignment"></a>Aktualizowanie aplikacji w celu włączenia przypisania użytkownika
 
-1. Przejdź do [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
-1. Na górnym pasku wybierz konto logowania. 
-1. W obszarze **katalogu**, wybierz dzierżawę usługi Azure AD, w którym aplikacja zostanie zarejestrowana.
-1. W obszarze nawigacji po lewej stronie, wybierz **usługi Azure Active Directory**. Jeśli usługi Azure Active Directory nie jest dostępne w okienku nawigacji, następnie wykonaj następujące kroki:
+Istnieją dwa sposoby tworzenia aplikacji z włączonym przypisaniem użytkownika. Jeden z nich wymaga roli **administratora globalnego** , a druga nie.
 
-    1. Wybierz **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
-    1. Wpisz **usługi Azure Active Directory** w filtru pole wyszukiwania, a następnie wybierz **usługi Azure Active Directory** elementów z wynikiem.
+### <a name="enterprise-applications-requires-the-global-adminstrator-role"></a>Aplikacje dla przedsiębiorstw (wymaga roli administratora globalnego)
 
-1. W **usługi Azure Active Directory** okienku wybierz **aplikacje dla przedsiębiorstw** z **usługi Azure Active Directory** menu nawigacji po lewej stronie.
-1. Wybierz **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
+1. Przejdź do [**Azure Portal**](https://portal.azure.com/) i zaloguj się jako **administrator globalny**.
+1. Na górnym pasku wybierz konto zalogowane. 
+1. W obszarze **katalog**wybierz dzierżawę usługi Azure AD, w której aplikacja zostanie zarejestrowana.
+1. W obszarze nawigacji po lewej stronie wybierz pozycję **Azure Active Directory**. Jeśli Azure Active Directory nie jest dostępny w okienku nawigacji, wykonaj następujące kroki:
 
-     Jeśli nie widzisz aplikacji mają być wyświetlane tutaj użyć różnych filtrów w górnej części **wszystkie aplikacje** listy, aby ograniczyć listę lub przewiń w dół na liście, aby zlokalizować aplikację.
+    1. Wybierz pozycję **wszystkie usługi** u góry głównego menu nawigacji po lewej stronie.
+    1. Wpisz **Azure Active Directory** w polu wyszukiwania filtru, a następnie wybierz element **Azure Active Directory** z wyniku.
 
-1. Wybierz aplikację, którą chcesz przypisać użytkownika lub grupę zabezpieczeń z listy.
-1. Przy stosowaniu **Przegląd** wybierz opcję **właściwości** menu nawigacji po lewej stronie aplikacji.
-1. Znajdź ustawienie **wymagane przypisanie użytkownika?** i ustaw ją na **tak**. Jeśli ta opcja jest ustawiona **tak**, a następnie użytkownicy najpierw muszą być przypisani do tej aplikacji, zanim będzie mógł uzyskać do niego dostęp.
-1. Wybierz **Zapisz** Aby zapisać tę zmianę konfiguracji.
+1. W okienku **Azure Active Directory** wybierz pozycję **aplikacje dla przedsiębiorstw** z menu nawigacji po lewej stronie **Azure Active Directory** .
+1. Wybierz pozycję **wszystkie aplikacje** , aby wyświetlić listę wszystkich aplikacji.
+
+     Jeśli nie widzisz aplikacji, która ma być wyświetlana w tym miejscu, Użyj różnych filtrów w górnej części listy **wszystkie aplikacje** , aby ograniczyć listę, lub przewiń w dół listy, aby zlokalizować aplikację.
+
+1. Wybierz aplikację, do której chcesz przypisać użytkownika lub grupę zabezpieczeń.
+1. Na stronie **Przegląd** aplikacji wybierz pozycję **Właściwości** z menu nawigacji po lewej stronie aplikacji.
+1. Znajdź **wymagane przypisanie użytkownika?** i ustaw wartość **tak**. Jeśli ta opcja jest ustawiona na **tak**, użytkownicy muszą najpierw zostać przypisani do tej aplikacji, zanim będą mieli do niej dostęp.
+1. Wybierz pozycję **Zapisz** , aby zapisać tę zmianę konfiguracji.
+
+### <a name="app-registration"></a>Rejestracja aplikacji
+
+1. Przejdź do [**Azure Portal**](https://portal.azure.com/).
+1. Na górnym pasku wybierz konto zalogowane. 
+1. W obszarze **katalog**wybierz dzierżawę usługi Azure AD, w której aplikacja zostanie zarejestrowana.
+1. W obszarze nawigacji po lewej stronie wybierz pozycję **Azure Active Directory**.
+1. W okienku **Azure Active Directory** wybierz pozycję **rejestracje aplikacji** w menu nawigacji po lewej stronie **Azure Active Directory** .
+1. Utwórz lub wybierz aplikację, którą chcesz zarządzać. Musisz być **właścicielem** tej rejestracji aplikacji.
+1. Na stronie **Przegląd** aplikacji postępuj zgodnie z **aplikacją zarządzaną w katalogu lokalnym** w obszarze podstawy w górnej części strony. Spowoduje to przejście do _aplikacji zarządzanej dla przedsiębiorstw_ na potrzeby rejestracji aplikacji.
+1. W bloku nawigacji po lewej stronie wybierz pozycję **Właściwości**.
+1. Znajdź **wymagane przypisanie użytkownika?** i ustaw wartość **tak**. Jeśli ta opcja jest ustawiona na **tak**, użytkownicy muszą najpierw zostać przypisani do tej aplikacji, zanim będą mieli do niej dostęp.
+1. Wybierz pozycję **Zapisz** , aby zapisać tę zmianę konfiguracji.
 
 ## <a name="assign-users-and-groups-to-the-app"></a>Przypisywanie użytkowników i grup do aplikacji
 
-Po skonfigurowaniu aplikacji, aby umożliwić przypisanie użytkownika można Przejdź dalej i przypisać użytkowników i grup do aplikacji.
+Po skonfigurowaniu aplikacji do włączania przypisywania użytkowników można przypisywać użytkowników i grupy do aplikacji.
 
-1. Wybierz **użytkowników i grup** okienko w menu nawigacji po lewej stronie aplikacji.
-1. W górnej części **użytkowników i grup** listy wybierz **Dodaj użytkownika** przycisk, aby otworzyć **Dodaj przydziału** okienka.
-1. Wybierz **użytkowników** selektor z **Dodaj przydziału** okienka. 
+1. Wybierz okienko **Użytkownicy i grupy** w menu nawigacji po lewej stronie aplikacji.
+1. W górnej części listy **Użytkownicy i grupy** wybierz przycisk **Dodaj użytkownika** , aby otworzyć okienko **Dodaj przypisanie** .
+1. Wybierz selektor **użytkowników** w okienku **Dodaj przypisanie** . 
 
-     Lista użytkowników i grup zabezpieczeń będą wyświetlane wraz z pola tekstowego do wyszukiwania i Znajdź niektórych użytkownika lub grupy. Na tym ekranie można wybrać wielu użytkowników i grup w jednym z rzeczywistym użyciem.
+     Zostanie wyświetlona lista użytkowników i grup zabezpieczeń wraz z polem tekstowym umożliwiającym wyszukiwanie i lokalizowanie określonego użytkownika lub grupy. Ten ekran umożliwia wybranie wielu użytkowników i grup w jednym przejściu.
 
-1. Po zakończeniu wybierania użytkowników i grup, naciśnij klawisz **wybierz** przycisk na dole, aby przejść do następnej części.
-1. Naciśnij klawisz **przypisać** przycisk w dolnej części, aby zakończyć przypisań użytkowników i grup do aplikacji. 
-1. Upewnij się, że użytkownicy i grupy dodane są wyświetlane w zaktualizowanej **użytkowników i grup** listy.
+1. Po wybraniu opcji użytkownicy i grupy naciśnij przycisk **Wybierz** na dole, aby przejść do następnej części.
+1. Naciśnij przycisk **Assign (Przypisz** ) u dołu, aby zakończyć przydziały użytkowników i grup do aplikacji. 
+1. Upewnij się, że dodani Użytkownicy i grupy znajdują się na liście zaktualizowanych **użytkowników i grup** .
 

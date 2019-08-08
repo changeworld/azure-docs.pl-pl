@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 031367a8a05defad475ae077f9b38b7294837460
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ac3cb1d637eae1b4ee0a7db59efe631c7eb1ac6f
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559390"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815264"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>Obsługa języka i regionu dla usług mowy
 
@@ -31,12 +31,12 @@ Zarówno zestaw Microsoft Speech Recognition SDK, jak i interfejs API REST obsł
  ar EG | Arabski (Egipt), standard nowoczesne | Nie | Yes | Nie
  ES urzędu certyfikacji | Kataloński | Nie | Nie | Nie
  Akcelerator deweloperski w wersji DK | Duński (Dania) | Nie | Nie | Nie
- de-DE. | Niemiecki (Niemcy) | Yes | Yes | Nie
- EN-AU | Angielski (Australia) | Nie | Yes | Yes
- EN-CA | Angielski (Kanada) | Nie | Yes | Yes
- en-GB | Angielski (Zjednoczone Królestwo) | Nie | Yes | Yes
- EN-IN | English (India) | Yes | Yes | Yes
- EN NZ | Angielski (Nowa Zelandia) | Nie | Yes | Yes  
+ de-DE. | Niemiecki (Niemcy) | Yes | Yes | Tak
+ EN-AU | Angielski (Australia) | Nie | Yes | Nie
+ EN-CA | Angielski (Kanada) | Nie | Yes | Nie
+ en-GB | Angielski (Zjednoczone Królestwo) | Nie | Yes | Nie
+ EN-IN | English (India) | Yes | Yes | Nie
+ EN NZ | Angielski (Nowa Zelandia) | Nie | Yes | Nie 
  en-US | Angielski (Stany Zjednoczone) | Yes | Yes | Yes
  es-ES | Hiszpański (Hiszpania) | Yes | Yes | Nie
  es-MX | Hiszpański (Meksyk) | Nie | Yes | Nie

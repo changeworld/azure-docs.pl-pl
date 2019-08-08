@@ -1,5 +1,5 @@
 ---
-title: Samouczek tworzenia modułów Node.js dla systemu Linux — usługi Azure IoT Edge | Dokumentacja firmy Microsoft
+title: Samouczek opracowywania modułu Node. js dla systemu Linux — Azure IoT Edge | Microsoft Docs
 description: W tym samouczku pokazano, jak utworzyć moduł usługi IoT Edge za pomocą kodu Node.js i wdrożyć go na urządzeniu brzegowym
 services: iot-edge
 author: shizn
@@ -9,16 +9,16 @@ ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 6c94ca3a82095736ef7d242987d1fbf66a825950
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: f6304c554858a29e8c6c886bcdec3b51efd635b6
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306498"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840098"
 ---
-# <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-for-linux-devices"></a>Samouczek: Tworzenie i wdrażanie modułu usługi IoT Edge dla środowiska Node.js dla urządzeń z systemem Linux
+# <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-for-linux-devices"></a>Samouczek: Opracowywanie i wdrażanie modułu IoT Edge Node. js dla urządzeń z systemem Linux
 
-Użyj programu Visual Studio Code do tworzenia kodu w języku Node.js oraz wdrażania jej urządzeniem z systemem Linux z usługą Azure IoT Edge. 
+Użyj Visual Studio Code, aby opracować kod Node. js i wdrożyć go na urządzeniu z systemem Linux z Azure IoT Edge. 
 
 Moduły usługi IoT Edge umożliwiają wdrożenie kodu implementującego logikę biznesową bezpośrednio na urządzeniach usługi IoT Edge. W tym samouczku przedstawiono sposób tworzenia i wdrażania modułu usługi IoT Edge, w którym są filtrowane dane czujnika. Użyjesz symulowanego urządzenia usługi IoT Edge utworzonego w ramach przewodnika Szybki start. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:    
 
@@ -35,30 +35,30 @@ Utworzony w tym samouczku moduł usługi IoT Edge filtruje dane temperatury gene
 
 ## <a name="solution-scope"></a>Zakres rozwiązania
 
-Ten samouczek przedstawia sposób tworzenia modułu w **Node.js** przy użyciu **programu Visual Studio Code**oraz jak wdrożyć ją **urządzenia z systemem Linux**. W przypadku urządzeń Windows IoT Edge nie obsługuje modułów Node.js.
+W tym samouczku przedstawiono sposób tworzenia modułu w programie **Node. js** przy użyciu **Visual Studio Code**i sposobu wdrażania go na **urządzeniu z systemem Linux**. IoT Edge nie obsługuje modułów Node. js dla urządzeń z systemem Windows.
 
-Skorzystaj z poniższej tabeli, aby poznać opcje tworzenia i wdrażania modułów Node.js: 
+Skorzystaj z poniższej tabeli, aby poznać opcje tworzenia i wdrażania modułów Node. js: 
 
 | Node.js | Visual Studio Code | Visual Studio 2017/2019 | 
 | - | ------------------ | ------------------ |
-| **AMD64 systemu Linux** | ![Używanie programu VS Code dla modułów Node.js w systemie Linux AMD64](./media/tutorial-c-module/green-check.png) |  |
-| **ARM32 systemu Linux** | ![Używanie programu VS Code dla modułów Node.js w systemie Linux ARM32](./media/tutorial-c-module/green-check.png) |  |
+| **Linux AMD64** | ![Używanie VS Code dla modułów Node. js w systemie Linux AMD64](./media/tutorial-c-module/green-check.png) |  |
+| **ARM32 systemu Linux** | ![Używanie VS Code dla modułów Node. js w systemie Linux ARM32](./media/tutorial-c-module/green-check.png) |  |
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem tego samouczka, powinien wykonano za pomocą poprzedniego samouczka, aby skonfigurować środowisko programowania do tworzenia aplikacji kontenera systemu Linux: [Twórz moduły usługi IoT Edge dla urządzeń z systemem Linux](tutorial-develop-for-linux.md). Wykonując jedną z tych samouczków, musisz mieć następujące wymagania wstępne spełnione: 
+Przed rozpoczęciem pracy z tym samouczkiem należy zapoznać się z poprzednim samouczkiem dotyczącym konfigurowania środowiska deweloperskiego do tworzenia kontenerów systemu Linux: [Opracowywanie modułów IoT Edge dla urządzeń z systemem Linux](tutorial-develop-for-linux.md). Wykonując jeden z tych samouczków, należy spełnić następujące wymagania wstępne: 
 
 * Usługa [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) w warstwie Bezpłatna lub Standardowa na platformie Azure.
-* A [Linux urządzenia z usługą Azure IoT Edge](quickstart-linux.md)
-* Rejestr kontenera, takiej jak [usługi Azure Container Registry](https://docs.microsoft.com/azure/container-registry/).
-* [Visual Studio Code](https://code.visualstudio.com/) skonfigurowano [narzędzia IoT Azure](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
-* [Docker CE](https://docs.docker.com/install/) skonfigurowane do uruchamiania kontenerów systemu Linux.
+* [Urządzenie z systemem Linux Azure IoT Edge](quickstart-linux.md)
+* Rejestr kontenerów, taki jak [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/).
+* [Visual Studio Code](https://code.visualstudio.com/) skonfigurowany przy użyciu [narzędzi Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
+* Platforma [Docker ce](https://docs.docker.com/install/) skonfigurowana do uruchamiania kontenerów systemu Linux.
 
-Aby opracować moduł usługi IoT Edge w języku Node.js, należy zainstalować następujące dodatkowe wymagania wstępne na komputerze deweloperskim: 
+Aby utworzyć moduł IoT Edge w programie Node. js, Zainstaluj następujące dodatkowe wymagania wstępne na komputerze deweloperskim: 
 
 * [Node.js i npm](https://nodejs.org). Pakiet npm jest dystrybuowany wraz ze środowiskiem Node.js, co oznacza, że podczas pobierania środowiska Node.js program npm jest automatycznie instalowany na komputerze.
 
-## <a name="create-a-module-project"></a>Utwórz projekt modułu
+## <a name="create-a-module-project"></a>Tworzenie projektu modułu
 W następujących krokach przedstawiono sposób tworzenia modułu usługi IoT Edge w środowisku Node.js przy użyciu programu Visual Studio Code i narzędzi usługi Azure IoT.
 
 ### <a name="create-a-new-project"></a>Tworzenie nowego projektu
@@ -98,17 +98,17 @@ W pliku środowiska przechowywane są poświadczenia repozytorium kontenera, udo
 2. Zaktualizuj pola, używając **nazwy użytkownika** i **hasła**, które zostały skopiowane z usługi Azure Container Registry. 
 3. Zapisz ten plik. 
 
-### <a name="select-your-target-architecture"></a>Wybierz swoje Architektura docelowa
+### <a name="select-your-target-architecture"></a>Wybieranie architektury docelowej
 
-Obecnie usługa Visual Studio Code można tworzyć modułów Node.js dla urządzeń z AMD64 systemu Linux i ARM32v7 systemu Linux. Musisz wybrać architektury objęci za pomocą każdego rozwiązania, ponieważ skompilowane i uruchom w różny sposób dla każdego typu architektury kontenera. Wartość domyślna to AMD64 systemu Linux. 
+Obecnie Visual Studio Code mogą opracowywać Moduły Node. js dla urządzeń z systemem Linux AMD64 i Linux ARM32v7. Należy wybrać, która architektura ma być ukierunkowana na każde rozwiązanie, ponieważ kontener jest zbudowany i uruchamiany inaczej dla każdego typu architektury. Wartość domyślna to Linux AMD64. 
 
-1. Otwórz paletę poleceń i wyszukaj **usługi Azure IoT Edge: Ustaw domyślne platformę docelową dla nowoczesne rozwiązanie**, lub wybierz ikonę skrótu prowadzącą w pasku bocznym, w dolnej części okna. 
+1. Otwórz paletę poleceń i Wyszukaj **Azure IoT Edge: Ustaw domyślną platformę docelową**dla rozwiązania brzegowego lub wybierz ikonę skrótu na pasku bocznym u dołu okna. 
 
-2. W palecie poleceń Wybierz architektury docelowej z listy opcji. W tym samouczku używamy maszynę wirtualną Ubuntu jako urządzenie usługi IoT Edge, dzięki czemu będzie Zachowaj ustawienie domyślne **amd64**.
+2. W palecie poleceń wybierz architekturę docelową z listy opcji. W tym samouczku używamy maszyny wirtualnej Ubuntu jako urządzenia IoT Edge, co spowoduje zachowanie domyślnego **amd64**.
 
 ### <a name="update-the-module-with-custom-code"></a>Aktualizowanie modułu przy użyciu kodu niestandardowego
 
-Każdy szablon zawiera przykładowy kod, który przyjmuje symulowane dane czujnika z modułu **tempSensor** i kieruje je do centrum IoT Hub. W tej sekcji dodasz kod, aby umożliwić modułowi NodeModule analizowanie komunikatów przed ich wysłaniem. 
+Każdy szablon zawiera przykładowy dołączony kod, który wykonuje symulowane dane czujników z modułu **SimulatedTemperatureSensor** i kieruje go do IoT Hub. W tej sekcji dodasz kod, aby umożliwić modułowi NodeModule analizowanie komunikatów przed ich wysłaniem. 
 
 1. W eksploratorze programu VS Code otwórz kolejno pozycje **modules** > **NodeModule** > **app.js**.
 
@@ -182,37 +182,37 @@ Każdy szablon zawiera przykładowy kod, który przyjmuje symulowane dane czujni
 9. Zapisz plik deployment.template.json.
 
 
-## <a name="build-and-push-your-module"></a>Zbuduj i Wypchnij modułu
+## <a name="build-and-push-your-module"></a>Kompilowanie i wypychanie modułu
 
-W poprzedniej sekcji utworzyliśmy rozwiązanie IoT Edge i dodać kod do NodeModule, która będzie filtrować wiadomości, gdzie temperatury zgłoszonych maszyny wykracza poza dopuszczalne limity. Teraz należy skompilować to rozwiązanie jako obraz kontenera i wypchnąć go do rejestru kontenerów.
+W poprzedniej sekcji utworzono rozwiązanie IoT Edge i dodano kod do NodeModule, który będzie odfiltrować komunikaty, w przypadku których zgłoszona temperatura maszyny mieści się w dopuszczalnym limicie. Teraz należy skompilować to rozwiązanie jako obraz kontenera i wypchnąć go do rejestru kontenerów.
 
 1. Otwórz zintegrowany terminal programu VS Code, wybierając pozycję **View (Widok)**  > **Terminal**.
 
-1. Zaloguj się do platformy Docker, wprowadzając następujące polecenie w terminalu. Zaloguj się przy użyciu nazwy użytkownika, hasło i serwer logowania z usługi Azure container registry. Możesz pobrać te wartości z **klucze dostępu** sekcji rejestru w witrynie Azure portal.
+1. Zaloguj się do platformy Docker, wprowadzając następujące polecenie w terminalu. Zaloguj się przy użyciu nazwy użytkownika, hasła i serwera logowania z usługi Azure Container Registry. Te wartości można pobrać z sekcji **klucze dostępu** rejestru w Azure Portal.
      
    ```bash
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   Może pojawić się ostrzeżenie o zabezpieczeniach zalecające użycie `--password-stdin`. Gdy na tym najlepszym rozwiązaniem jest zalecane na potrzeby scenariuszy produkcyjnych, znajduje się poza zakres tego samouczka. Aby uzyskać więcej informacji, zobacz [docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) odwołania.
+   Może zostać wyświetlone ostrzeżenie dotyczące zabezpieczeń zalecające użycie programu `--password-stdin`. Chociaż najlepsze rozwiązanie jest zalecane w scenariuszach produkcyjnych, jest ono poza zakresem tego samouczka. Aby uzyskać więcej informacji, zobacz informacje dotyczące [logowania do platformy Docker](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) .
 
 2. W eksploratorze programu VS Code kliknij prawym przyciskiem myszy plik **deployment.template.json** i wybierz polecenie **Skompiluj i wypchnij rozwiązanie usługi IoT Edge**.
 
-   Polecenie kompilacji i wypychania uruchamia trzy operacje. Najpierw tworzy nowy folder w rozwiązaniu o nazwie **config** przechowuje pliki manifestu, wbudowanego się z informacjami o szablon wdrożenia i inne rozwiązania pełne wdrożenie. Po drugie, uruchamia `docker build` do utworzenia obrazu kontenera, w oparciu o plik dockerfile odpowiednie dla architektury docelowej. Następnie uruchamia `docker push` wypychanie repozytorium obrazów do rejestru kontenerów.
+   Polecenie Build i push uruchamia trzy operacje. Po pierwsze tworzy nowy folder w rozwiązaniu o nazwie **config** , który zawiera pełny manifest wdrożenia, z wbudowanymi informacjami w szablonie wdrożenia i innych plikach rozwiązania. Następnie jest uruchamiany `docker build` w celu skompilowania obrazu kontenera na podstawie odpowiednich pliku dockerfile dla architektury docelowej. Następnie jest uruchamiany `docker push` w celu wypchnięcia repozytorium obrazów do rejestru kontenerów.
 
 ## <a name="deploy-modules-to-device"></a>Wdrażanie modułów na urządzeniu
 
-Do wdrożenia projektu modułu do urządzenia usługi IoT Edge przy użyciu Eksploratora Visual Studio Code i rozszerzenia narzędzia IoT platformy Azure. Masz już manifest wdrożenia, jest przygotowane do scenariusza **deployment.json** pliku w folderze konfiguracji. Teraz wystarczy wybrać urządzenie, które ma otrzymać wdrożenie.
+Aby wdrożyć projekt modułu na urządzeniu IoT Edge, użyj rozszerzenia Eksploratora Visual Studio Code i narzędzia Azure IoT Tools. Masz już manifest wdrożenia przygotowany dla danego scenariusza, plik **Deployment. JSON** w folderze config. Teraz wystarczy wybrać urządzenie, które ma otrzymać wdrożenie.
 
-Upewnij się, że urządzenia usługi IoT Edge jest uruchomiona.
+Upewnij się, że urządzenie IoT Edge zostało uruchomione.
 
-1. W Eksploratorze programu Visual Studio Code rozwiń **Azure IoT Hub Devices** sekcję, aby wyświetlić listę urządzeń IoT.
+1. W Eksploratorze Visual Studio Code rozwiń sekcję **urządzenia IoT Hub platformy Azure** , aby wyświetlić listę urządzeń IoT.
 
 2. Kliknij prawym przyciskiem myszy nazwę urządzenia usługi IoT Edge, a następnie wybierz pozycję **Utwórz wdrożenie dla pojedynczego urządzenia**.
 
 3. Wybierz plik **deployment.json** w folderze **config**, a następnie kliknij pozycję **Wybierz manifest wdrożenia usługi Edge**. Nie używaj pliku deployment.template.json.
 
-4. Kliknij przycisk Odśwież. Powinien zostać wyświetlony nowy moduł **NodeModule** uruchomiony wraz z modułami **TempSensor**, **$edgeAgent** i **$edgeHub**.
+4. Kliknij przycisk Odśwież. Powinna zostać wyświetlona nowa **NodeModule** z uruchomionym modułem **SimulatedTemperatureSensor** oraz **$edgeAgent** i **$edgeHub**.
 
 ## <a name="view-generated-data"></a>Wyświetlanie wygenerowanych danych
 
@@ -220,25 +220,25 @@ Gdy zastosujesz manifest wdrożenia na urządzeniu usługi IoT Edge, środowisko
 
 Możesz wyświetlić stan urządzenia usługi IoT Edge w sekcji **Azure IoT Hub Devices** (Urządzenia usługi Azure IoT Hub) w eksploratorze programu Visual Studio Code. Rozwiń szczegóły urządzenia, aby wyświetlić listę wdrożonych i uruchomionych modułów.
 
-1. W Eksploratorze programu Visual Studio Code kliknij prawym przyciskiem myszy nazwę urządzenia usługi IoT Edge, a następnie wybierz **rozpocząć monitorowanie wbudowany zdarzeń punkt końcowy**.
+1. W Eksploratorze Visual Studio Code kliknij prawym przyciskiem myszy nazwę urządzenia IoT Edge i wybierz pozycję **Rozpocznij monitorowanie wbudowanego punktu końcowego zdarzenia**.
 
-2. Wyświetl wiadomości otrzymywanych z usługi IoT Hub. Może potrwać trochę wiadomości zostanie dostarczona, ponieważ urządzenia usługi IoT Edge do odbierania jego nowego wdrożenia i uruchamiania wszystkich modułów. Następnie zmiany wprowadzone do kodu NodeModule poczekaj, aż temperatury maszyny osiągnie 25 stopni przed wysłaniem wiadomości. Typ komunikatu dodaje także **alertu** na wszystkie komunikaty, w których progu temperatury. 
+2. Wyświetl komunikaty docierające do IoT Hub. Dostarczenie komunikatów może chwilę potrwać, ponieważ urządzenie IoT Edge musi odebrać nowe wdrożenie i uruchomić wszystkie moduły. Następnie zmiany wprowadzone w kodzie NodeModule zaczekają na 25 stopni przed wysłaniem komunikatów. Dodaje również **alert** typu komunikat do wszystkich komunikatów, które docierają do tego progu temperatury. 
 
-## <a name="edit-the-module-twin"></a>Edytuj bliźniaczą reprezentację modułu
+## <a name="edit-the-module-twin"></a>Edytuj sznurek modułu
 
-Użyliśmy NodeModule bliźniaczą reprezentację modułu w pliku manifestu wdrożenia, aby ustawić próg temperaturę w stopniach 25. Bliźniacza reprezentacja modułu można użyć w celu zmiany funkcji bez konieczności aktualizowania kodu modułu.
+W manifeście wdrożenia użyto sznurka modułu NodeModule w celu ustawienia progu temperatury na 25 stopni. Możesz użyć sznurka modułu, aby zmienić funkcjonalność bez konieczności aktualizowania kodu modułu.
 
-1. W programie Visual Studio Code rozwiń szczegóły w obszarze urządzenia usługi IoT Edge, aby wyświetlić uruchomione moduły. 
+1. W Visual Studio Code rozwiń Szczegóły na urządzeniu IoT Edge, aby zobaczyć uruchomione moduły. 
 
-2. Kliknij prawym przyciskiem myszy **NodeModule** i wybierz **bliźniaczą reprezentację modułu edycji**. 
+2. Kliknij prawym przyciskiem myszy pozycję **NodeModule** i wybierz pozycję **Edytuj sznurek modułu**. 
 
-3. Znajdź **TemperatureThreshold** w odpowiednich właściwości. Zmień jej wartość temperatury nowe 5 stopni do 10 stopni wyższa niż najnowszy zgłoszonych temperatury. 
+3. Znajdź **TemperatureThreshold** w odpowiednich właściwościach. Zmień jej wartość na nową temperaturę o 5 stopni do 10 stopni wyższych niż Najnowsza zgłoszona temperatura. 
 
-4. Zapisz plik bliźniaczej reprezentacji modułu.
+4. Zapisz plik splotu modułu.
 
-5. Kliknij prawym przyciskiem myszy w dowolnym miejscu w bliźniaczej reprezentacji modułu do edycji okienko, a następnie wybierz **bliźniaczą reprezentację modułu aktualizacji**. 
+5. Kliknij prawym przyciskiem myszy w dowolnym miejscu w okienku Edycja sznurka modułu i wybierz polecenie **Aktualizuj sznurek modułu**. 
 
-6. Monitorowanie przychodzących komunikatów przesyłanych z chmury do urządzenia. Powinien zostać wyświetlony wiadomości, Zatrzymaj, aż do osiągnięcia progu temperatury nowe. 
+6. Monitoruj przychodzące komunikaty z urządzenia do chmury. Komunikaty powinny zostać zatrzymane do momentu osiągnięcia nowego progu temperatury. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów 
 
@@ -248,12 +248,12 @@ W przeciwnym razie możesz usunąć konfigurację lokalną i zasoby platformy Az
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku został utworzony moduł usługi IoT Edge zawierający kod służący do filtrowania nieprzetworzonych danych wygenerowanych przez urządzenie usługi IoT Edge. Gdy wszystko będzie gotowe do tworzenia własnych modułach, możesz dowiedzieć się więcej [tworzenia własnych modułów usługi IoT Edge](module-development.md) lub jak [opracowanie modułów przy użyciu programu Visual Studio Code](how-to-vs-code-develop-module.md). Można przejść do następnego samouczki, aby dowiedzieć się, jak usługa Azure IoT Edge mogą pomóc Ci wdrażanie usług w chmurze platformy Azure do przetwarzania i analizowania danych na urządzeniach brzegowych.
+W tym samouczku został utworzony moduł usługi IoT Edge zawierający kod służący do filtrowania nieprzetworzonych danych wygenerowanych przez urządzenie usługi IoT Edge. Gdy wszystko będzie gotowe do tworzenia własnych modułów, możesz dowiedzieć się więcej na temat [opracowywania własnych modułów IoT Edge](module-development.md) lub tworzenia [modułów z Visual Studio Code](how-to-vs-code-develop-module.md). Możesz przejść do kolejnych samouczków, aby dowiedzieć się, jak Azure IoT Edge może pomóc w wdrażaniu usług Azure Cloud Services w celu przetwarzania i analizowania danych na krawędzi.
 
 > [!div class="nextstepaction"]
-> [Funkcje](tutorial-deploy-function.md)
-> [Stream Analytics](tutorial-deploy-stream-analytics.md)
-> [uczenia maszynowego](tutorial-deploy-machine-learning.md)
-> [Custom Vision Service](tutorial-deploy-custom-vision.md)
+> [](tutorial-deploy-function.md)
+> [Stream Analytics](tutorial-deploy-stream-analytics.md)[](tutorial-deploy-custom-vision.md) [](tutorial-deploy-machine-learning.md)funkcji Machine LearningCustomVisionService
+> 
+> 

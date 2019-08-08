@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 500ae75f9bf53c1633290e706e33165dd9d67a88
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 4e33b22c5bc931685f5848db55fc4b9b8fc6eafe
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726609"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780604"
 ---
 # <a name="azure-advanced-threat-detection"></a>Zaawansowane wykrywanie zagrożeń na platformie Azure
 
@@ -216,7 +216,7 @@ Te połączone wysiłki skutkująją się w nowych i ulepszonych wykryciach, z k
 
 ### <a name="virtual-machines-microsoft-antimalware"></a>Maszyny wirtualne: Oprogramowanie chroniące przed złośliwym kodem
 
-[Oprogramowanie chroniące przed złośliwym oprogramowaniem firmy Microsoft](https://docs.microsoft.com/azure/security/azure-security-antimalware) dla systemu Azure to rozwiązanie o pojedynczym agencie dla aplikacji i środowisk dzierżawców, przeznaczone do uruchamiania w tle bez interwencji człowieka. Ochronę można wdrożyć na podstawie potrzeb obciążeń aplikacji z podstawową, bezpieczną lub zaawansowaną konfiguracją niestandardową, w tym z monitorowaniem złośliwego oprogramowania. Usługa Azure chroniąca przed złośliwym kodem jest opcją zabezpieczeń dla maszyn wirtualnych platformy Azure, które są automatycznie instalowane na wszystkich maszynach wirtualnych usługi Azure PaaS.
+[Oprogramowanie chroniące przed złośliwym oprogramowaniem firmy Microsoft](https://docs.microsoft.com/azure/security/fundamentals/antimalware) dla systemu Azure to rozwiązanie o pojedynczym agencie dla aplikacji i środowisk dzierżawców, przeznaczone do uruchamiania w tle bez interwencji człowieka. Ochronę można wdrożyć na podstawie potrzeb obciążeń aplikacji z podstawową, bezpieczną lub zaawansowaną konfiguracją niestandardową, w tym z monitorowaniem złośliwego oprogramowania. Usługa Azure chroniąca przed złośliwym kodem jest opcją zabezpieczeń dla maszyn wirtualnych platformy Azure, które są automatycznie instalowane na wszystkich maszynach wirtualnych usługi Azure PaaS.
 
 #### <a name="microsoft-antimalware-core-features"></a>Podstawowe funkcje programu Microsoft chroniące przed złośliwym oprogramowaniem
 

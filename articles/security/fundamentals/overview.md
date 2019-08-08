@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 62fd2c3f46104fdf3193f105c234f1dae417b0fd
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 527c9cfa64eab9fe2286098d2c10186391bdde4d
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726863"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780571"
 ---
 # <a name="introduction-to-azure-security"></a>Wprowadzenie do zabezpieczeń platformy Azure
 ## <a name="overview"></a>Omówienie
@@ -114,7 +114,7 @@ Sekcja zawiera dodatkowe informacje dotyczące najważniejszych funkcji zabezpie
 Jednym z najprostszych sposobów rozpoczęcia testowania pod kątem luk w zabezpieczeniach [aplikacji App Service](https://docs.microsoft.com/azure/app-service/overview) jest użycie [integracji z zabezpieczeniami usługa TINFOIL](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) w celu wykonania skanowania w aplikacji za pomocą jednego kliknięcia. Możesz wyświetlić wyniki testów w łatwym w zrozumieniu raporcie i dowiedzieć się, jak rozwiązać każdą lukę w instrukcje krok po kroku.
 
 ### <a name="penetration-testing"></a>Testy penetracyjne
-Jeśli wolisz przeprowadzić własne testy penetracji lub chcesz użyć innego pakietu lub dostawcy skanera, musisz postępować zgodnie z [procesem zatwierdzania testowania w ramach platformy Azure](https://docs.microsoft.com/azure/security/azure-security-pen-testing ) i uzyskać wcześniejsze zatwierdzenie w celu przeprowadzenia żądanych testów penetracji.
+Jeśli wolisz przeprowadzić własne testy penetracji lub chcesz użyć innego pakietu lub dostawcy skanera, musisz postępować zgodnie z [procesem zatwierdzania testowania w ramach platformy Azure](https://docs.microsoft.com/azure/security/fundamentals/pen-testing ) i uzyskać wcześniejsze zatwierdzenie w celu przeprowadzenia żądanych testów penetracji.
 
 ### <a name="web-application-firewall"></a>Zapora aplikacji sieci Web
 Zapora aplikacji sieci Web (WAF) na [platformie Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) pomaga chronić aplikacje sieci Web przed typowymi atakami opartymi na sieci Web, takimi jak iniekcja SQL, ataki skryptów między lokacjami i przejmowanie sesji. Jest on wstępnie skonfigurowany z ochroną przed zagrożeniami określonymi przez [projekt Open Web Application Security Project (OWASP) jako 10 najczęściej spotykanych luk w](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)zabezpieczeniach.
@@ -313,7 +313,7 @@ Dostępne są następujące zalecenia dotyczące sieci:
 Sekcja zawiera dodatkowe informacje dotyczące najważniejszych funkcji w tym obszarze oraz informacje podsumowujące dotyczące tych możliwości.
 
 ### <a name="antimalware--antivirus"></a>Złośliwe oprogramowanie & antywirusowe
-Za pomocą usługi Azure IaaS można korzystać z oprogramowania chroniącego przed złośliwym kodem od dostawców zabezpieczeń, takich jak Microsoft, Symantec, Trend Micro, McAfee i Kaspersky pomogą, aby chronić maszyny wirtualne przed złośliwymi plikami, programami reklamujące i innymi zagrożeniami. [Program Microsoft chroniący przed złośliwym kodem](https://docs.microsoft.com/azure/security/azure-security-antimalware) dla platformy Azure Cloud Services i Virtual Machines to funkcja ochrony, która ułatwia identyfikowanie i usuwanie wirusów, programów szpiegujących i innego złośliwego oprogramowania. Oprogramowanie chroniące przed złośliwym oprogramowaniem firmy Microsoft zapewnia konfigurowalne alerty, gdy znane złośliwe lub niechciane oprogramowanie próbuje się zainstalować lub uruchomić w swoich systemach platformy Azure. Oprogramowanie chroniące przed złośliwym oprogramowaniem firmy Microsoft można również wdrożyć przy użyciu Azure Security Center
+Za pomocą usługi Azure IaaS można korzystać z oprogramowania chroniącego przed złośliwym kodem od dostawców zabezpieczeń, takich jak Microsoft, Symantec, Trend Micro, McAfee i Kaspersky pomogą, aby chronić maszyny wirtualne przed złośliwymi plikami, programami reklamujące i innymi zagrożeniami. [Program Microsoft chroniący przed złośliwym kodem](https://docs.microsoft.com/azure/security/fundamentals/antimalware) dla platformy Azure Cloud Services i Virtual Machines to funkcja ochrony, która ułatwia identyfikowanie i usuwanie wirusów, programów szpiegujących i innego złośliwego oprogramowania. Oprogramowanie chroniące przed złośliwym oprogramowaniem firmy Microsoft zapewnia konfigurowalne alerty, gdy znane złośliwe lub niechciane oprogramowanie próbuje się zainstalować lub uruchomić w swoich systemach platformy Azure. Oprogramowanie chroniące przed złośliwym oprogramowaniem firmy Microsoft można również wdrożyć przy użyciu Azure Security Center
 
 ### <a name="hardware-security-module"></a>Sprzętowy moduł zabezpieczeń
 Szyfrowanie i uwierzytelnianie nie zwiększa zabezpieczeń, chyba że same klucze są chronione. Można uprościć zarządzanie i zabezpieczanie kluczowych kluczy tajnych i kluczy, przechowując je w [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis). Key Vault udostępnia opcję przechowywania kluczy w sprzętowych modułach zabezpieczeń (sprzętowych modułów zabezpieczeń) certyfikowanych do standardów standardu FIPS 140-2 Level 2. Klucze szyfrowania SQL Server na potrzeby tworzenia kopii zapasowej lub [przezroczystego szyfrowania danych](https://msdn.microsoft.com/library/bb934049.aspx) mogą być przechowywane w Key Vault z użyciem dowolnych kluczy lub wpisów tajnych aplikacji. Uprawnienia i dostęp do tych chronionych elementów są zarządzane za poorednictwem [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/).

@@ -7,15 +7,15 @@ author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ''
-ms.topic: article
+ms.topic: overview
 ms.date: 04/19/2019
 ms.author: nitinme
-ms.openlocfilehash: dd93cd938539ae322e6344e0ce24cee6e34db27b
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 5337f2d3df395650c65ae4a12cbdf4f8ba90ca3d
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68594755"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840393"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Co to jest platforma Azure Cognitive Services?
 
@@ -80,7 +80,7 @@ Usługa Azure Cognitive Services to interfejsy API, zestawy SDK i usługi dostę
 
 ## <a name="subscription-management"></a>Zarządzanie subskrypcjami
 
-Po zalogowaniu się przy użyciu konta Microsoft możesz [uzyskać dostęp do]moich subskrypcji(https://www.microsoft.com/cognitive-services/subscriptions "Moje subskrypcje") , aby pokazać produkty, z których korzystasz, pozostały limit przydziału i możliwość dodawania dodatkowych produktów do subskrypcji.
+Po zalogowaniu się przy użyciu konta Microsoft możesz uzyskać dostęp do moich []subskrypcji(https://www.microsoft.com/cognitive-services/subscriptions "Moje subskrypcje") , aby pokazać produkty, z których korzystasz, pozostały limit przydziału i możliwość dodawania dodatkowych produktów do subskrypcji.
 
 ## <a name="upgrade-to-unlock-limits"></a>Uaktualnij do limitów odblokowania
 
@@ -113,6 +113,6 @@ Aby poznać prywatność i zarządzanie danymi, przejdź do [Centrum zaufania](h
 * Aby uzyskać pomoc techniczną i techniczną, Opublikuj [Stack Overflow](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
 * Aby uzyskać informacje zwrotne i żądania funkcji, przejdź do witryny [UserVoice](https://cognitive.uservoice.com/)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Utwórz konto Cognitive Services](cognitive-services-apis-create-account.md)

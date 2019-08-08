@@ -5,21 +5,22 @@ manager: cgronlun
 author: LuisCabrer
 services: search
 ms.service: search
+ms.subservice: cognitive-search
 ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 56453891289654e65f8077542fca40876099061e
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 1a8bf1eaf37dbbd4462b0ebd93f74502f89f9d7b
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347243"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841355"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Dołącz zasób Cognitive Services za pomocą zestawu umiejętności w Azure Search 
 
-Algorytmy AI dysku [potoki indeksowania poznawcze](cognitive-search-concept-intro.md) używane do wzbogacania dokumentów w Azure Search. Algorytmy te są oparte na zasobach Cognitive Services platformy Azure, w tym [Przetwarzanie obrazów](https://azure.microsoft.com/services/cognitive-services/computer-vision/) do analizy obrazów i optycznego rozpoznawania znaków (OCR) oraz [Analiza tekstu](https://azure.microsoft.com/services/cognitive-services/text-analytics/) do rozpoznawania jednostek, wyodrębniania kluczowych fraz i innych wzbogaceń . Jak używane przez Azure Search do wzbogacania dokumentów, algorytmy są opakowane w ramach *umiejętności*, umieszczane w *zestawu umiejętności*i odwołujące się  do indeksatora podczas indeksowania.
+Algorytmy AI dysku [potoki indeksowania poznawcze](cognitive-search-concept-intro.md) używane do wzbogacania dokumentów w Azure Search. Algorytmy te są oparte na zasobach Cognitive Services platformy Azure, w tym [Przetwarzanie obrazów](https://azure.microsoft.com/services/cognitive-services/computer-vision/) do analizy obrazów i optycznego rozpoznawania znaków (OCR) oraz [Analiza tekstu](https://azure.microsoft.com/services/cognitive-services/text-analytics/) do rozpoznawania jednostek, wyodrębniania kluczowych fraz i innych wzbogaceń . Jak używane przez Azure Search do wzbogacania dokumentów, algorytmy są opakowane w ramach *umiejętności*, umieszczane w *zestawu umiejętności*i odwołujące się do indeksatora podczas indeksowania.
 
 Możesz wzbogacić ograniczoną liczbę dokumentów bezpłatnie. Można też dołączyć zasób Cognitive Services rozliczany do *zestawu umiejętności* w celu uzyskania większych i bardziej częstych obciążeń. W tym artykule dowiesz się, jak dołączyć zasób Cognitive Services rozliczany do wzbogacania dokumentów podczas [indeksowania](search-what-is-an-index.md)Azure Search.
 
@@ -75,7 +76,7 @@ Opłata jest naliczana tylko za umiejętności, które wywołują interfejsy API
   
    + Na liście **Wybierz ofertę** upewnij się, że **Cognitive Services** jest zaznaczone.
    + W obszarze Funkcje **językowe** stawki dla **Analiza tekstu Standard** dotyczą indeksowania AI.
-   + W  obszarze Funkcje wizji obowiązują stawki za **Przetwarzanie obrazów S1** .
+   + W obszarze Funkcje wizji obowiązują stawki za **Przetwarzanie obrazów S1** .
 
 1. Wybierz pozycję **Utwórz** , aby udostępnić nowy zasób Cognitive Services.
 

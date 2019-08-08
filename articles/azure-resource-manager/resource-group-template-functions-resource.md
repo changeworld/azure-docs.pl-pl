@@ -4,14 +4,14 @@ description: Opisuje funkcje, aby użyć w szablonie usługi Azure Resource Mana
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 07/31/2019
+ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7548b75f201c896e3a5248cb9d0154a9a676a86f
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 2ec6e58438e7be953e1f672fb815ff3f68a7f252
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698194"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839260"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Funkcje zasobów dla szablonów usługi Azure Resource Manager
 
@@ -342,8 +342,8 @@ Zwraca obiekt reprezentujący stan czasu wykonywania zasobu.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| resourceName lub resourceIdentifier |Yes |ciąg |Nazwa lub identyfikator zasobu. |
-| apiVersion |Nie |ciąg |Wersja interfejsu API określonego zasobu. Ten parametr należy uwzględnić, jeśli zasób nie jest zainicjowana obsługa administracyjna w obrębie tego samego szablonu. Zazwyczaj w formacie **rrrr mm-dd**. |
+| resourceName lub resourceIdentifier |Yes |ciąg |Nazwa lub identyfikator zasobu. Podczas odwoływania się do zasobów w bieżącym szablonie, podaj nazwę zasobu jako parametr. W przypadku odwoływania się do wcześniej wdrożonego zasobu podaj identyfikator zasobu. |
+| apiVersion |Nie |ciąg |Wersja interfejsu API określonego zasobu. Ten parametr należy uwzględnić, jeśli zasób nie jest zainicjowana obsługa administracyjna w obrębie tego samego szablonu. Zazwyczaj w formacie **rrrr mm-dd**. Aby uzyskać prawidłowe wersje interfejsu API dla zasobu, zobacz [Dokumentacja szablonu](/azure/templates/). |
 | "Full" |Nie |ciąg |Wartość określająca, czy należy zwrócić obiekt wszystkich zasobów. Jeśli nie określisz `'Full'`, zwracany jest tylko obiekt do właściwości zasobu. Pełny obiekt zawiera wartości, takie jak identyfikator zasobu i lokalizacji. |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -352,17 +352,7 @@ Każdy typ zasobu zwraca różne właściwości odwołanie funkcji. Funkcja nie 
 
 ### <a name="remarks"></a>Uwagi
 
-Funkcja odwołanie pobiera stan środowiska uruchomieniowego wdrożonej wcześniej zasobów lub zasobu, wdrożonych w bieżącym szablonie. W tym artykule przedstawiono przykłady oba scenariusze. Podczas odwoływania się do zasobów w bieżącym szablonie, podaj nazwę zasobu jako parametr. Podczas odwoływania się do wcześniej wdrożony zasób, należy podać wersję interfejsu API i identyfikator zasobu dla zasobu. Należy określić prawidłowe wersje interfejsu API dla zasobu w [odwołanie do szablonu](/azure/templates/).
-
-Odwołanie funkcji należy używać tylko w właściwości definicji zasobu i sekcję danych wyjściowych szablonu lub wdrożenia. Gdy jest używany z [iteracją właściwości](resource-group-create-multiple.md#property-iteration), można użyć funkcji Reference dla `input` , ponieważ wyrażenie jest przypisane do właściwości Resource. Nie można jej użyć z `count` powodu, gdy liczba musi być określona przed rozwiązanym funkcją referencyjną.
-
-Nie można użyć funkcji Reference w danych wyjściowych [szablonu zagnieżdżonego](resource-group-linked-templates.md#nested-template) , aby zwrócić zasób wdrożony w szablonie zagnieżdżonym. Zamiast tego należy użyć [połączonego szablonu](resource-group-linked-templates.md#external-template-and-external-parameters).
-
-Za pomocą funkcji odwołania, niejawnie Deklarujesz, jeden zasób jest zależny od innego zasobu, jeśli przywoływany zasób jest obsługiwana w ramach tego samego szablonu i odwołania do zasobu według jego nazwy (a nie identyfikator zasobu). Nie musisz również użyć właściwości dependsOn. Funkcja nie jest obliczane, dopóki nie zakończy się przywoływany zasób wdrożenia.
-
-Jeśli używasz funkcji **Reference** w zasobie, który jest wdrażany warunkowo, funkcja jest oceniana, nawet jeśli zasób nie zostanie wdrożony.  Występuje błąd, jeśli funkcja **referencyjna** odwołuje się do zasobu, który nie istnieje. Użyj funkcji **if** , aby upewnić się, że funkcja jest obliczana tylko wtedy, gdy zasób jest wdrażany. Zobacz [funkcję if](resource-group-template-functions-logical.md#if) , aby zapoznać się z przykładowym szablonem, który używa if i Reference z wdrożonym warunkowo zasobem.
-
-Aby wyświetlić nazwy właściwości i wartości dla typu zasobu, należy utworzyć szablon, który zwraca obiekt, w sekcji danych wyjściowych. W przypadku istniejącego zasobu tego typu szablonu zwraca obiekt bez wdrażania wszystkie nowe zasoby. 
+Funkcja odwołanie pobiera stan środowiska uruchomieniowego wdrożonej wcześniej zasobów lub zasobu, wdrożonych w bieżącym szablonie. W tym artykule przedstawiono przykłady oba scenariusze.
 
 Zazwyczaj można użyć **odwołania** funkcja zwraca określoną wartość z obiektu, takie jak identyfikator URI punktu końcowego obiektu blob lub w pełni kwalifikowaną nazwę domeny.
 
@@ -403,7 +393,45 @@ Użyj `'Full'` potrzebne wartości zasobów, które nie są częścią schematu 
     ...
 ```
 
-Aby uzyskać kompletny przykład powyższy szablon, zobacz [Windows do usługi Key Vault](https://github.com/rjmax/AzureSaturday/blob/master/Demo02.ManagedServiceIdentity/demo08.msiWindowsToKeyvault.json). Podobny przykład jest dostępny dla [Linux](https://github.com/rjmax/AzureSaturday/blob/master/Demo02.ManagedServiceIdentity/demo07.msiLinuxToArm.json).
+### <a name="valid-uses"></a>Prawidłowe zastosowania
+
+Odwołanie funkcji należy używać tylko w właściwości definicji zasobu i sekcję danych wyjściowych szablonu lub wdrożenia. Gdy jest używany z [iteracją właściwości](resource-group-create-multiple.md#property-iteration), można użyć funkcji Reference dla `input` , ponieważ wyrażenie jest przypisane do właściwości Resource. Nie można jej użyć z `count` powodu, gdy liczba musi być określona przed rozwiązanym funkcją referencyjną.
+
+Nie można użyć funkcji Reference w danych wyjściowych [szablonu zagnieżdżonego](resource-group-linked-templates.md#nested-template) , aby zwrócić zasób wdrożony w szablonie zagnieżdżonym. Zamiast tego należy użyć [połączonego szablonu](resource-group-linked-templates.md#external-template-and-external-parameters).
+
+Jeśli używasz funkcji **Reference** w zasobie, który jest wdrażany warunkowo, funkcja jest oceniana, nawet jeśli zasób nie zostanie wdrożony.  Występuje błąd, jeśli funkcja **referencyjna** odwołuje się do zasobu, który nie istnieje. Użyj funkcji **if** , aby upewnić się, że funkcja jest obliczana tylko wtedy, gdy zasób jest wdrażany. Zobacz [funkcję if](resource-group-template-functions-logical.md#if) , aby zapoznać się z przykładowym szablonem, który używa if i Reference z wdrożonym warunkowo zasobem.
+
+### <a name="implicit-dependency"></a>Niejawna zależność
+
+Za pomocą funkcji odwołania, niejawnie Deklarujesz, jeden zasób jest zależny od innego zasobu, jeśli przywoływany zasób jest obsługiwana w ramach tego samego szablonu i odwołania do zasobu według jego nazwy (a nie identyfikator zasobu). Nie musisz również użyć właściwości dependsOn. Funkcja nie jest obliczane, dopóki nie zakończy się przywoływany zasób wdrożenia.
+
+### <a name="resource-name-or-identifier"></a>Nazwa lub identyfikator zasobu
+
+W przypadku odwoływania się do zasobu, który jest wdrożony w tym samym szablonie, podaj nazwę zasobu.
+
+```json
+"value": "[reference(parameters('storageAccountName'))]"
+```
+
+W przypadku odwoływania się do zasobu, który nie jest wdrożony w tym samym szablonie, podaj identyfikator zasobu.
+
+```json
+"value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"
+```
+
+Aby uniknąć niejednoznaczności dotyczącej danego zasobu, możesz podać w pełni kwalifikowaną nazwę zasobu.
+
+```json
+"value": "[reference(concat('Microsoft.Network/publicIPAddresses/', parameters('ipAddressName')))]"
+```
+
+W przypadku konstruowania w pełni kwalifikowanego odwołania do zasobu kolejność łączenia segmentów z typu i nazwy nie jest po prostu połączeniem obu. Zamiast tego, po przestrzeni nazw, należy użyć sekwencji par *typu/nazwa* od najmniej określonych do najbardziej szczegółowych:
+
+**{Resource-Provider-Namespace}/{Parent-Resource-Type}/{Parent-Resource-Name} [/{Child-Resource-Type}/{Child-resource-name}]**
+
+Na przykład:
+
+`Microsoft.Compute/virtualMachines/myVM/extensions/myExt`jest niepoprawny `Microsoft.Compute/virtualMachines/extensions/myVM/myExt`
 
 ### <a name="example"></a>Przykład
 
@@ -539,7 +567,9 @@ Zwrócony obiekt jest w następującym formacie:
 {
   "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}",
   "name": "{resourceGroupName}",
+  "type":"Microsoft.Resources/resourceGroups",
   "location": "{resourceGroupLocation}",
+  "managedBy": "{identifier-of-managing-resource}",
   "tags": {
   },
   "properties": {
@@ -547,6 +577,8 @@ Zwrócony obiekt jest w następującym formacie:
   }
 }
 ```
+
+Właściwość **zarządzane** jest zwracana tylko dla grup zasobów zawierających zasoby, które są zarządzane przez inną usługę. W przypadku aplikacji zarządzanych, datakostki i AKS wartość właściwości jest identyfikator zasobu zasobu zarządzania.
 
 ### <a name="remarks"></a>Uwagi
 
@@ -592,6 +624,7 @@ Powyższy przykład zwraca obiekt, w następującym formacie:
 {
   "id": "/subscriptions/{subscription-id}/resourceGroups/examplegroup",
   "name": "examplegroup",
+  "type":"Microsoft.Resources/resourceGroups",
   "location": "southcentralus",
   "properties": {
     "provisioningState": "Succeeded"
@@ -777,7 +810,7 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby uzyskać opis sekcje szablonu usługi Azure Resource Manager, zobacz [tworzenia usługi Azure Resource Manager](resource-group-authoring-templates.md).
 * Aby scalić wiele szablonów, zobacz [przy użyciu szablonów połączonych z usługą Azure Resource Manager](resource-group-linked-templates.md).

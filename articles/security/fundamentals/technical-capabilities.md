@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: 688492188bb8a29e33568011c2cf75439ca5f4af
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: fbce475e1f783595fb67e62e15d5a503a4c687ed
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726669"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780598"
 ---
 # <a name="azure-security-technical-capabilities"></a>Techniczne funkcje zabezpieczeń platformy Azure
 Ten artykuł zawiera wprowadzenie do usług zabezpieczeń na platformie Azure, które ułatwiają ochronę danych, zasobów i aplikacji w chmurze oraz zaspokajanie potrzeb firmy.
@@ -194,7 +194,7 @@ Celem szyfrowania w czasie spoczynku jest zaszyfrowanie wszystkich danych. Wykon
 > [!Note]
 > Nie tylko "dane aplikacji" lub "OSOBowe", ale wszelkie dane dotyczące aplikacji, w tym metadane konta (mapowania subskrypcji, informacje o kontrakcie, dane OSOBowe).
 
-Zastanów się, które sklepy są używane do przechowywania danych. Na przykład:
+Zastanów się, które sklepy są używane do przechowywania danych. Przykład:
 
 - Magazyn zewnętrzny (na przykład SQL Azure, baza danych dokumentów, HDInsight, Data Lake itd.)
 
@@ -331,7 +331,7 @@ Platforma Azure udostępnia również kilka łatwych w użyciu funkcji, które u
 
 - [Bezpiecznie łącz swoją aplikację z zasobami w sieci prywatnej przy użyciu Połączenia hybrydowe](https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections)
 
-Azure App Service korzysta z tego samego rozwiązania chroniącego przed złośliwym kodem, które jest używane przez usługę Azure Cloud Services i Virtual Machines. Aby dowiedzieć się więcej na ten temat, zapoznaj się z [dokumentacją ochrony przed złośliwym oprogramowaniem](https://docs.microsoft.com/azure/security/azure-security-antimalware).
+Azure App Service korzysta z tego samego rozwiązania chroniącego przed złośliwym kodem, które jest używane przez usługę Azure Cloud Services i Virtual Machines. Aby dowiedzieć się więcej na ten temat, zapoznaj się z [dokumentacją ochrony przed złośliwym oprogramowaniem](https://docs.microsoft.com/azure/security/fundamentals/antimalware).
 
 ## <a name="secure-your-network"></a>Zabezpieczanie sieci
 Microsoft Azure obejmuje niezawodną infrastrukturę sieciową do obsługi wymagań dotyczących łączności aplikacji i usług. Możliwe jest połączenie sieciowe między zasobami znajdującymi się na platformie Azure, między zasobami lokalnymi i hostowanymi przez platformę Azure oraz z Internetu i platformy Azure.
@@ -352,7 +352,7 @@ Platforma Azure obsługuje dedykowane połączenia WAN z siecią lokalną i Virt
 
 [Usługa Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/) umożliwia wdrażanie szerokiego zakresu rozwiązań obliczeniowych w sposób Agile. Dzięki obsłudze rozwiązań Microsoft Windows, Linux, Microsoft SQL Server, Oracle, IBM i SAP oraz usługi BizTalk Services na platformie Azure możesz wdrożyć dowolne obciążenie w dowolnym języku i w prawie każdym systemie operacyjnym.
 
-Na platformie Azure możesz używać [oprogramowania chroniącego przed złośliwym kodem](https://docs.microsoft.com/azure/security/azure-security-antimalware) od dostawców zabezpieczeń, takich jak Microsoft, Symantec, Trend Micro i Kaspersky pomogą, aby chronić maszyny wirtualne przed złośliwymi plikami, programami wywiadowczymi i innymi zagrożeniami.
+Na platformie Azure możesz używać [oprogramowania chroniącego przed złośliwym kodem](https://docs.microsoft.com/azure/security/fundamentals/antimalware) od dostawców zabezpieczeń, takich jak Microsoft, Symantec, Trend Micro i Kaspersky pomogą, aby chronić maszyny wirtualne przed złośliwymi plikami, programami wywiadowczymi i innymi zagrożeniami.
 
 Firma Microsoft chroniąca przed złośliwym kodem Cloud Services i Virtual Machines to funkcja ochrony w czasie rzeczywistym, która ułatwia identyfikowanie i usuwanie wirusów, programów szpiegujących i innego złośliwego oprogramowania. Oprogramowanie chroniące przed złośliwym oprogramowaniem firmy Microsoft zapewnia konfigurowalne alerty, gdy znane złośliwe lub niechciane oprogramowanie próbuje się zainstalować lub uruchomić w swoich systemach platformy Azure.
 
@@ -382,7 +382,7 @@ Ponadto lista kontrolna:
 
 ## <a name="azure-infrastructure-and-application-security-validation"></a>Sprawdzanie poprawności infrastruktury i zabezpieczeń aplikacji platformy Azure
 
-[Zabezpieczenia operacyjne platformy Azure](https://docs.microsoft.com/azure/security/azure-operational-security) odnoszą się do usług, formantów i funkcji dostępnych dla użytkowników w celu ochrony danych, aplikacji i innych zasobów w Microsoft Azure.
+[Zabezpieczenia operacyjne platformy Azure] (https://docs.microsoft.com/azure/security/fundamentals/operational-security dotyczy usług, formantów i funkcji dostępnych dla użytkowników w celu ochrony danych, aplikacji i innych zasobów w programie Microsoft Azure.
 
 ![Weryfikacja zabezpieczeń (wykrywanie)](./media/technical-capabilities/azure-security-technical-capabilities-fig7.png)
 

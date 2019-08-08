@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 6dc8fcc32d7f05063da15eb6ca6bf7a7d69baebb
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: f4d3a4d9a5785ae350874c400384477da1a6c22e
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663121"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774713"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Tworzenie i wyświetlanie alertów dzienników oraz zarządzanie nimi za pomocą Azure Monitor
 
@@ -58,7 +58,7 @@ Szczegółowe instrukcje zawiera przewodnik krok po kroku dotyczący używania a
 
    > [!NOTE]
    > 
-   > Listy alertów mogą zaimportować zapytanie analityczne jako typ sygnału **log (zapisane zapytanie)** , jak pokazano na powyższej ilustracji. Dzięki temu użytkownicy mogą uzyskać doskonałe wyniki zapytania w analizie, a następnie zapisać je do użycia w przyszłości w alertach — więcej szczegółowych informacji na temat używania zapytania w [dzienniku w Azure monitor](../log-query/log-query-overview.md) lub [udostępnione zapytanie w usłudze Application Insights Analytics](../log-query/log-query-overview.md).
+   > Listy alertów mogą zaimportować zapytanie analityczne jako typ sygnału **log (zapisane zapytanie)** , jak pokazano na powyższej ilustracji. Dzięki temu użytkownicy mogą uzyskać doskonałe wyniki zapytania w analizie, a następnie zapisać je do użycia w przyszłości w alertach — więcej szczegółowych informacji na temat używania zapytania w [dzienniku w Azure monitor](../log-query/log-query-overview.md) lub [udostępnione zapytanie w usłudze Application Insights Analytics](../app/app-insights-overview.md).
 
 1. *Alerty dziennika*: Po wybraniu zapytania dla alertów można podać w polu **zapytania wyszukiwania** . Jeśli Składnia zapytania jest niepoprawna, w polu czerwony zostanie wyświetlony komunikat o błędzie. Jeśli Składnia zapytania jest poprawna — w przypadku referencyjnych danych historycznych zapytania jest wyświetlany jako wykres z opcją dostosowywania przedziału czasu z ostatnich sześciu godzin do ostatniego tygodnia.
 
@@ -207,7 +207,7 @@ Przykładowy plik JSON powyżej można zapisać jako plik (powiedzieć) sampleSc
 
 ### <a name="log-alert-with-cross-resource-query-using-azure-resource-template"></a>Rejestruj alert za pomocą zapytania między zasobami przy użyciu szablonu zasobów platformy Azure
 
-Poniżej znajduje się struktura szablonów zasobów opartych na [tworzeniu zaplanowanych reguł zapytania](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) przy użyciu [kwerendy przeszukiwania dzienników wielu zasobów](../../azure-monitor/log-query/cross-workspace-query.md) [, z](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules)przykładowymi danymi ustawionymi jako zmienne.
+Poniżej znajduje się struktura szablonów zasobów opartych na [tworzeniu zaplanowanych reguł zapytania](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) przy użyciu kwerendy przeszukiwania [](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules) [dzienników wielu zasobów](../../azure-monitor/log-query/cross-workspace-query.md) , z przykładowymi danymi ustawionymi jako zmienne.
 
 ```json
 

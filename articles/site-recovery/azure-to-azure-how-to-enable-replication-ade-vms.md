@@ -8,19 +8,19 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 25f8c19ad1c574f6a3d84d50d911b4da6b52cfc3
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
-ms.translationtype: MT
+ms.openlocfilehash: 5e5ae11a00b2a3656deceeeaf928536238a325fc
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516502"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840636"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Replikowanie maszyn wirtualnych z obsługą Azure Disk Encryption w innym regionie platformy Azure
 
 W tym artykule opisano, jak replikować maszyny wirtualne z obsługą Azure Disk Encryption z jednego regionu platformy Azure do innego.
 
 >[!NOTE]
->Azure Site Recovery obecnie obsługuje tylko maszyny wirtualne platformy Azure z systemem operacyjnym Windows i obsługujące [szyfrowanie za pomocą Azure Active Directory (Azure AD)](https://aka.ms/ade-aad-app).
+>Azure Site Recovery obecnie obsługuje tylko maszyny wirtualne platformy Azure z systemem operacyjnym Windows.
 
 ## <a id="required-user-permissions"></a>Wymagane uprawnienia użytkownika
 Site Recovery wymaga, aby użytkownik miał uprawnienia do tworzenia magazynu kluczy w regionie docelowym i kopiowania kluczy z magazynu kluczy regionów źródłowych do magazynu kluczy regionu docelowego.
@@ -52,7 +52,7 @@ Aby zarządzać uprawnieniami, przejdź do zasobu magazynu kluczy w portalu. Dod
 
 Jeśli użytkownik, który włączył odzyskiwanie po awarii (DR) nie ma uprawnień do kopiowania kluczy, administrator zabezpieczeń, który ma odpowiednie uprawnienia, może użyć następującego skryptu w celu skopiowania kluczy tajnych szyfrowania i klucza do regionu docelowego.
 
-Rozwiązywanie problemów z uprawnieniami można znaleźć [w dalszej](#trusted-root-certificates-error-code-151066) części tego artykułu.
+Rozwiązywanie problemów z uprawnieniami można [](#trusted-root-certificates-error-code-151066) znaleźć w dalszej części tego artykułu.
 
 >[!NOTE]
 >Aby włączyć replikację maszyn wirtualnych z włączoną funkcją szyfrowania dysków z portalu, musisz mieć co najmniej uprawnienia "list" dotyczące magazynów kluczy, wpisów tajnych i kluczy.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 8ee7db3ade594958729deeb12007f528376d5179
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 4f06e579e8548f4220d8f3fb4b618902f18b538e
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442417"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774803"
 ---
 # <a name="api-management-access-restriction-policies"></a>Zasady ograniczeń dostępu API Management
 
@@ -34,6 +34,9 @@ Ten temat zawiera informacje dotyczące następujących zasad API Management. Ab
 -   [Ustawianie limitu przydziału użycia według subskrypcji](api-management-access-restriction-policies.md#SetUsageQuota) — umożliwia wymuszenie naliczania i/lub przydziału przepustowości dla każdej subskrypcji.
 -   [Ustawianie przydziału użycia według klucza](#SetUsageQuotaByKey) — umożliwia wymuszenie naliczania i/lub przydziału przepustowości dla każdego klucza.
 -   [Sprawdzanie poprawności tokenu JWT](api-management-access-restriction-policies.md#ValidateJWT) — wymusza istnienie i ważność tokenu JWT wyodrębnionego z albo określonego nagłówka HTTP lub określonego parametru zapytania.
+
+> [!TIP]
+> Zasad ograniczeń dostępu można używać w różnych zakresach w różnych celach. Na przykład można zabezpieczyć cały interfejs API z uwierzytelnianiem w usłudze AAD, stosując `validate-jwt` zasady na poziomie interfejsu API lub można zastosować go na poziomie operacji interfejsu API i użyć `claims` do dokładniejszego sterowania.
 
 ## <a name="CheckHTTPHeader"></a>Sprawdź nagłówek HTTP
 
@@ -60,7 +63,7 @@ Ten temat zawiera informacje dotyczące następujących zasad API Management. Ab
 
 | Name (Nazwa)         | Opis                                                                                                                                   | Wymagane |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| check-header | Element główny.                                                                                                                                 | Tak      |
+| check-header | Element główny.                                                                                                                                 | Yes      |
 | value        | Dozwolona wartość nagłówka HTTP. Gdy określono wiele elementów wartości, sprawdzanie jest uznawane za sukces, jeśli jedna z wartości jest zgodna. | Nie       |
 
 ### <a name="attributes"></a>Atrybuty
@@ -120,7 +123,7 @@ Tych zasad można używać w następujących sekcjach i [](https://azure.microso
 
 | Name (Nazwa)      | Opis                                                                                                                                                                                                                                                                                              | Wymagane |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| set-limit | Element główny.                                                                                                                                                                                                                                                                                            | Tak      |
+| set-limit | Element główny.                                                                                                                                                                                                                                                                                            | Yes      |
 | interfejs API       | Dodaj co najmniej jeden z tych elementów, aby nałożyć limit liczby wywołań na interfejsy API w ramach produktu. Limity szybkości wywołań produktu i interfejsu API są stosowane niezależnie. Do interfejsu API można odwoływać `name` się `id`za pośrednictwem lub. Jeśli podano oba atrybuty, `id` zostaną one użyte i `name` zostaną zignorowane.                    | Nie       |
 | operation | Dodaj jeden lub więcej z tych elementów, aby nałożyć limit liczby wywołań na operacje w interfejsie API. Limity szybkości wywołań produktu, interfejsu API i operacji są stosowane niezależnie. Operacji można przywoływać za `name` pośrednictwem `id`lub. Jeśli podano oba atrybuty, `id` zostaną one użyte i `name` zostaną zignorowane. | Nie       |
 
@@ -128,8 +131,8 @@ Tych zasad można używać w następujących sekcjach i [](https://azure.microso
 
 | Name (Nazwa)           | Opis                                                                                           | Wymagane | Domyślny |
 | -------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| name           | Nazwa interfejsu API, dla którego ma zostać zastosowany limit szybkości.                                                | Yes      | ND     |
-| wywołania          | Maksymalna całkowita liczba wywołań dozwolona w przedziale czasu określonym w `renewal-period`. | Yes      | ND     |
+| name           | Nazwa interfejsu API, dla którego ma zostać zastosowany limit szybkości.                                                | Tak      | ND     |
+| wywołania          | Maksymalna całkowita liczba wywołań dozwolona w przedziale czasu określonym w `renewal-period`. | Tak      | ND     |
 | Okres odnawiania | Czas (w sekundach), po upływie którego zostanie zresetowany przydział.                                              | Tak      | ND     |
 
 ### <a name="usage"></a>Użycie
@@ -191,8 +194,8 @@ W poniższym przykładzie Limit szybkości jest poprzedzony przez adres IP obiek
 
 | Name (Nazwa)                | Opis                                                                                           | Wymagane | Domyślny |
 | ------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| wywołania               | Maksymalna całkowita liczba wywołań dozwolona w przedziale czasu określonym w `renewal-period`. | Yes      | ND     |
-| klucz licznika         | Klucz, który ma być używany na potrzeby zasad limitu szybkości.                                                             | Yes      | ND     |
+| wywołania               | Maksymalna całkowita liczba wywołań dozwolona w przedziale czasu określonym w `renewal-period`. | Tak      | ND     |
+| klucz licznika         | Klucz, który ma być używany na potrzeby zasad limitu szybkości.                                                             | Tak      | ND     |
 | Zwiększ warunek | Wyrażenie logiczne określające, czy żądanie powinno być wliczane do limitu przydziału (`true`).        | Nie       | ND     |
 | Okres odnawiania      | Czas (w sekundach), po upływie którego zostanie zresetowany przydział.                                              | Tak      | ND     |
 
@@ -241,7 +244,7 @@ W poniższym przykładzie zasada zezwala tylko na żądania pochodzące z pojedy
 | Name (Nazwa)                                      | Opis                                                                                 | Wymagane                                           | Domyślny |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------- | ------- |
 | zakres adresów od = "Address" do = "Address" | Zakres adresów IP, dla których ma być dozwolony lub zablokowany dostęp.                                        | Wymagane, `address-range` gdy element jest używany. | ND     |
-| IP-Filter Action = "Zezwalaj &#124; na Zabroń"    | Określa, czy wywołania powinny być dozwolone czy nie dla określonych adresów IP i zakresów. | Tak                                                | ND     |
+| IP-Filter Action = "Zezwalaj &#124; na Zabroń"    | Określa, czy wywołania powinny być dozwolone czy nie dla określonych adresów IP i zakresów. | Yes                                                | ND     |
 
 ### <a name="usage"></a>Użycie
 
@@ -287,7 +290,7 @@ Tych zasad można używać w następujących sekcjach i [](https://azure.microso
 
 | Name (Nazwa)      | Opis                                                                                                                                                                                                                                                                                  | Wymagane |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| quota     | Element główny.                                                                                                                                                                                                                                                                                | Yes      |
+| quota     | Element główny.                                                                                                                                                                                                                                                                                | Tak      |
 | interfejs API       | Dodaj jeden lub więcej z tych elementów, aby nałożyć przydział wywołań na interfejsy API w ramach produktu. Przydziały wywołań produktu i interfejsu API są stosowane niezależnie. Do interfejsu API można odwoływać `name` się `id`za pośrednictwem lub. Jeśli podano oba atrybuty, `id` zostaną one użyte i `name` zostaną zignorowane.                    | Nie       |
 | operation | Dodaj jeden lub więcej z tych elementów, aby nałożyć przydział wywołań na operacje w interfejsie API. Przydziały produktu, interfejsu API i operacji wywołań są stosowane niezależnie. Operacji można przywoływać za `name` pośrednictwem `id`lub. Jeśli podano oba atrybuty, `id` zostaną one użyte i `name` zostaną zignorowane. | Nie       |
 
@@ -359,7 +362,7 @@ W poniższym przykładzie limit przydziału jest poprzedzony przez adres IP obie
 | wywołania               | Maksymalna całkowita liczba wywołań dozwolona w przedziale czasu określonym w `renewal-period`.     | `calls` Należy`bandwidth`określić oba jednocześnie. | ND     |
 | klucz licznika         | Klucz, który ma być używany dla zasad przydziału.                                                                      | Tak                                                              | ND     |
 | Zwiększ warunek | Wyrażenie logiczne określające, czy żądanie powinno być wliczane do limitu przydziału (`true`)             | Nie                                                               | ND     |
-| Okres odnawiania      | Czas (w sekundach), po upływie którego zostanie zresetowany przydział.                                                  | Yes                                                              | ND     |
+| Okres odnawiania      | Czas (w sekundach), po upływie którego zostanie zresetowany przydział.                                                  | Tak                                                              | ND     |
 
 ### <a name="usage"></a>Użycie
 
@@ -545,7 +548,7 @@ Ten przykład pokazuje, jak używać zasad [weryfikacji tokenu JWT](api-manageme
 | Wymagaj-schemat                  | Nazwa schematu tokenów, np. "Bearer". Gdy ten atrybut jest ustawiony, zasady zapewnią, że określony schemat jest obecny w wartości nagłówka autoryzacji.                                                                                                                                                                                                                                                                                    | Nie                                                                               | ND                                                                               |
 | Wymagaj-podpisane-tokeny           | Typu. Określa, czy token musi być podpisany.                                                                                                                                                                                                                                                                                                                                                                                           | Nie                                                                               | true                                                                              |
 | rozdzielając                       | Parametry. Określa separator (np. ","), który będzie używany do wyodrębniania zestawu wartości z roszczeń wielowartościowych.                                                                                                                                                                                                                                                                                                                                          | Nie                                                                               | ND                                                                               |
-| url                             | Otwórz adres URL punktu końcowego konfiguracji identyfikatora, z którego można uzyskać metadane konfiguracji otwartego identyfikatora. Odpowiedź powinna być zgodna ze specyfikacją zdefiniowaną w adresie URL`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`:. W przypadku Azure Active Directory użyj następującego adresu URL `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` : podstawianie nazwy dzierżawy katalogu, `contoso.onmicrosoft.com`np. | Tak                                                                              | ND                                                                               |
+| url                             | Otwórz adres URL punktu końcowego konfiguracji identyfikatora, z którego można uzyskać metadane konfiguracji otwartego identyfikatora. Odpowiedź powinna być zgodna ze specyfikacją zdefiniowaną w adresie URL`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`:. W przypadku Azure Active Directory użyj następującego adresu URL `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` : podstawianie nazwy dzierżawy katalogu, `contoso.onmicrosoft.com`np. | Yes                                                                              | ND                                                                               |
 Output-token-Variable-Name|Parametry. Nazwa zmiennej kontekstowej, która będzie otrzymywać wartość tokenu jako obiekt typu [`Jwt`](api-management-policy-expressions.md) po pomyślnym sprawdzeniu tokenu|Nie|ND
 
 ### <a name="usage"></a>Użycie
@@ -555,7 +558,7 @@ Tych zasad można używać w następujących sekcjach i [](https://azure.microso
 -   **Sekcje zasad:** przychodzące
 -   **Zakresy zasad:** wszystkie zakresy
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat pracy z zasadami, zobacz:
 

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: 50056d4d05d2426ff644518aea04a2c9f4d817f3
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 3aa3176b1d6d9e5665fd3a8988b71159a4fc20c0
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667166"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68735707"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Dokumentacja ustawień aplikacji dla usługi Azure Functions
 
@@ -25,7 +25,7 @@ Ustawienia aplikacji w aplikacji funkcji zawiera opcje konfiguracji globalne, kt
 
 Istnieją inne opcje konfiguracji globalnej w [host.json](functions-host-json.md) pliku i [local.settings.json](functions-run-local.md#local-settings-file) pliku.
 
-## <a name="appinsightsinstrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
+## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
 Klucz Instrumentacji usługi Application Insights, jeśli używasz usługi Application Insights. Zobacz [monitorowanie usługi Azure Functions](functions-monitoring.md).
 
@@ -33,7 +33,7 @@ Klucz Instrumentacji usługi Application Insights, jeśli używasz usługi Appli
 |---|------------|
 |APPINSIGHTS_INSTRUMENTATIONKEY|5dbdd5e9-af77-484b-9032-64f83bb83bb|
 
-## <a name="azurefunctionsenvironment"></a>AZURE_FUNCTIONS_ENVIRONMENT
+## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 
 W wersji 2. x środowiska uruchomieniowego funkcji Program konfiguruje zachowanie aplikacji na podstawie środowiska uruchomieniowego. Ta wartość jest [odczytywana podczas inicjalizacji](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43). Można ustawić `AZURE_FUNCTIONS_ENVIRONMENT` dowolną wartość, ale obsługiwane są [trzy wartości](/dotnet/api/microsoft.aspnetcore.hosting.environmentname) : [Opracowywanie](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [przemieszczanie](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging)i [produkcyjne](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production). Gdy `AZURE_FUNCTIONS_ENVIRONMENT` nie jest ustawiona, `Development` domyślnie w środowisku lokalnym i `Production` na platformie Azure. To ustawienie powinno być używane zamiast `ASPNETCORE_ENVIRONMENT` ustawiania środowiska uruchomieniowego. 
 
@@ -92,7 +92,7 @@ Określa repozytorium lub dostawca magazynu kluczy. Obecnie obsługiwane repozyt
 |---|------------|
 |AzureWebJobsStorage|DefaultEndpointsProtocol = https; AccountName = [nazwa]; AccountKey = [klucz]|
 
-## <a name="azurewebjobstypescriptpath"></a>AzureWebJobs_TypeScriptPath
+## <a name="azurewebjobs_typescriptpath"></a>AzureWebJobs_TypeScriptPath
 
 Ścieżka do kompilatora, używane do TypeScript. Pozwala zastąpić domyślne, jeśli potrzebujesz.
 
@@ -100,7 +100,7 @@ Określa repozytorium lub dostawca magazynu kluczy. Obecnie obsługiwane repozyt
 |---|------------|
 |AzureWebJobs_TypeScriptPath|%Home%\typescript|
 
-## <a name="functionappeditmode"></a>FUNKCJA\_APLIKACJI\_EDYTUJ\_TRYB
+## <a name="function_app_edit_mode"></a>FUNKCJA\_APLIKACJI\_EDYTUJ\_TRYB
 
 Określa, czy Edycja w Azure Portal jest włączona. Prawidłowe wartości to "readwrite" i "readonly".
 
@@ -108,7 +108,7 @@ Określa, czy Edycja w Azure Portal jest włączona. Prawidłowe wartości to "r
 |---|------------|
 |FUNKCJA\_APLIKACJI\_EDYTUJ\_TRYB|tylko do odczytu|
 
-## <a name="functionsextensionversion"></a>FUNKCJE\_ROZSZERZENIA\_WERSJI
+## <a name="functions_extension_version"></a>FUNKCJE\_ROZSZERZENIA\_WERSJI
 
 Wersja środowiska uruchomieniowego funkcji do użycia w tej aplikacji funkcji. Tylda za pomocą wersji głównej oznacza, użyj najnowszej wersji tej wersji głównej (na przykład, "~ 2"). Jeśli dla tej samej wersji głównej są dostępne nowe wersje, są instalowane automatycznie w aplikacji funkcji. Aby przypiąć ją do określonej wersji, należy użyć pełny numer wersji (na przykład "2.0.12345"). Domyślna to "~ 2". Wartość `~1` Przypina aplikacji do wersji 1.x środowiska uruchomieniowego.
 
@@ -116,7 +116,16 @@ Wersja środowiska uruchomieniowego funkcji do użycia w tej aplikacji funkcji. 
 |---|------------|
 |FUNKCJE\_ROZSZERZENIA\_WERSJI|~ 2|
 
-## <a name="functionsworkerruntime"></a>FUNKCJE\_PROCESU ROBOCZEGO\_ŚRODOWISKA URUCHOMIENIOWEGO
+## <a name="functions_worker_process_count"></a>LICZBA PROCESÓW\_\_ROBOCZYCH\_FUNKCJI
+
+Określa maksymalną liczbę procesów roboczych języka z wartością `1`domyślną. Maksymalna dozwolona wartość to `10`. Wywołania funkcji są równomiernie dystrybuowane między procesami roboczymi języka. Procesy robocze języka są duplikowane co 10 sekund do momentu osiągnięcia liczby ustawionej\_przez\_\_liczbę procesów roboczych. Używanie wielu procesów roboczych z wieloma językami nie jest [](functions-scale.md)takie samo jak skalowanie. Należy rozważyć użycie tego ustawienia, jeśli obciążenie ma połączenie z wywołaniami związanymi z PROCESORem i we/wy. To ustawienie ma zastosowanie do wszystkich języków non-.NET.
+
+|Klucz|Wartość przykładowa|
+|---|------------|
+|LICZBA PROCESÓW\_\_ROBOCZYCH\_FUNKCJI|2|
+
+
+## <a name="functions_worker_runtime"></a>FUNKCJE\_PROCESU ROBOCZEGO\_ŚRODOWISKA URUCHOMIENIOWEGO
 
 Proces roboczy CLR do załadowania w aplikacji funkcji.  Odpowiada to język używany w aplikacji (na przykład "dotnet"). Dla funkcji w wielu językach, musisz opublikować je w wiele aplikacji, z których każdy z odpowiedniej wartości środowiska uruchomieniowego procesu roboczego.  Prawidłowe wartości to `dotnet` (C#/F#), `node` (JavaScript/TypeScript), `java` (Java), `powershell` (PowerShell) i `python` (Python).
 
@@ -124,7 +133,7 @@ Proces roboczy CLR do załadowania w aplikacji funkcji.  Odpowiada to język uż
 |---|------------|
 |FUNKCJE\_PROCESU ROBOCZEGO\_ŚRODOWISKA URUCHOMIENIOWEGO|polecenia DotNet|
 
-## <a name="websitecontentazurefileconnectionstring"></a>WEBSITE_CONTENTAZUREFILECONNECTIONSTRING
+## <a name="website_contentazurefileconnectionstring"></a>WEBSITE_CONTENTAZUREFILECONNECTIONSTRING
 
 Do użycia tylko w planach Premium &. Parametry połączenia dla konta magazynu, w którym są przechowywane kod aplikacji funkcji i konfiguracji. Zobacz [tworzenie aplikacji funkcji](functions-infrastructure-as-code.md#create-a-function-app).
 
@@ -132,7 +141,7 @@ Do użycia tylko w planach Premium &. Parametry połączenia dla konta magazynu,
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol = https; AccountName = [nazwa]; AccountKey = [klucz]|
 
-## <a name="websitecontentshare"></a>WITRYNY SIECI WEB\_CONTENTSHARE
+## <a name="website_contentshare"></a>WITRYNY SIECI WEB\_CONTENTSHARE
 
 Do użycia tylko w planach Premium &. Ścieżka pliku kodu aplikacji funkcji i konfiguracji. Używane z WEBSITE_CONTENTAZUREFILECONNECTIONSTRING. Domyślna to unikatowy ciąg, który rozpoczyna się od nazwy aplikacji funkcji. Zobacz [tworzenie aplikacji funkcji](functions-infrastructure-as-code.md#create-a-function-app).
 
@@ -140,7 +149,7 @@ Do użycia tylko w planach Premium &. Ścieżka pliku kodu aplikacji funkcji i k
 |---|------------|
 |WEBSITE_CONTENTSHARE|functionapp091999e2|
 
-## <a name="websitemaxdynamicapplicationscaleout"></a>WITRYNY SIECI WEB\_MAX\_DYNAMICZNE\_APLIKACJI\_SKALOWANIA\_OUT
+## <a name="website_max_dynamic_application_scale_out"></a>WITRYNY SIECI WEB\_MAX\_DYNAMICZNE\_APLIKACJI\_SKALOWANIA\_OUT
 
 Maksymalna liczba wystąpień, które aplikacji funkcji można skalować do. Domyślnie nie ma żadnych ograniczeń.
 
@@ -151,7 +160,7 @@ Maksymalna liczba wystąpień, które aplikacji funkcji można skalować do. Dom
 |---|------------|
 |WITRYNY SIECI WEB\_MAX\_DYNAMICZNE\_APLIKACJI\_SKALOWANIA\_OUT|5|
 
-## <a name="websitenodedefaultversion"></a>WITRYNY SIECI WEB\_WĘZŁA\_DEFAULT_VERSION
+## <a name="website_node_default_version"></a>WITRYNY SIECI WEB\_WĘZŁA\_DEFAULT_VERSION
 
 Wartością domyślną jest "8.11.1".
 
@@ -159,7 +168,7 @@ Wartością domyślną jest "8.11.1".
 |---|------------|
 |WITRYNY SIECI WEB\_WĘZŁA\_DEFAULT_VERSION|8.11.1|
 
-## <a name="websiterunfrompackage"></a>WITRYNY SIECI WEB\_URUCHOM\_FROM\_PAKIETU
+## <a name="website_run_from_package"></a>WITRYNY SIECI WEB\_URUCHOM\_FROM\_PAKIETU
 
 Umożliwia aplikacji funkcji do uruchamiania z pliku zainstalowanego pakietu.
 
@@ -169,7 +178,7 @@ Umożliwia aplikacji funkcji do uruchamiania z pliku zainstalowanego pakietu.
 
 Prawidłowe wartości to URL, który jest rozpoznawany jako lokalizacja pliku wdrożenia pakietu lub `1`. Po ustawieniu `1`, pakiet musi znajdować się w `d:\home\data\SitePackages` folderu. Korzystając z pliku zip wdrożenia to ustawienie, pakiet jest automatycznie przekazywana do tej lokalizacji. W wersji zapoznawczej, to ustawienie nosiła nazwę `WEBSITE_RUN_FROM_ZIP`. Aby uzyskać więcej informacji, zobacz [uruchamiać swoje funkcje na podstawie pliku pakietu](run-functions-from-deployment-package.md).
 
-## <a name="azurefunctionproxydisablelocalcall"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
+## <a name="azure_function_proxy_disable_local_call"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
 
 Domyślnie skrót do wysyłania wywołania interfejsu API z serwerów proxy bezpośrednio do funkcji w tej samej aplikacji funkcji, zamiast tworzenia nowego żądania HTTP będzie korzystać z serwerów proxy usługi Functions. To ustawienie pozwala wyłączyć to zachowanie.
 
@@ -179,7 +188,7 @@ Domyślnie skrót do wysyłania wywołania interfejsu API z serwerów proxy bezp
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|Jest to wartość domyślna. Wywołania z adres url wewnętrznej funkcji lokalnej aplikacji funkcji zostaną przekazane bezpośrednio do tej funkcji|
 
 
-## <a name="azurefunctionproxybackendurldecodeslashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
+## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
 
 To ustawienie określa, czy % 2F jest zdekodowany jako ukośnikami w parametrów trasy, gdy są wstawiane URL wewnętrznej bazy danych. 
 

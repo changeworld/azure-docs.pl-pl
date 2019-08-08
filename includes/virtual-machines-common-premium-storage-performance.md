@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d3d4679703f6d98cb2062144cfde7d11fe44130c
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 8aeb32ecddc0ef368b615a201179f17178ececad
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386935"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68817238"
 ---
 ## <a name="application-performance-indicators"></a>Wskaźniki wydajności aplikacji
 
@@ -269,6 +269,9 @@ Konfigurując buforowanie w trybie tylko do odczytu na Premium Storage dyskach d
 *ReadWrite*  
 Domyślnie dyski systemu operacyjnego mają włączone buforowanie ReadWrite. Niedawno dodaliśmy obsługę buforowania ReadWrite na dyskach danych. Jeśli używasz buforowania ReadWrite, musisz mieć właściwy sposób zapisu danych z pamięci podręcznej na dyskach trwałych. Na przykład SQL Server obsługuje zapisywanie w pamięci podręcznej danych na trwałych dyskach magazynu. Używanie pamięci podręcznej ReadWrite z aplikacją, która nie obsługuje utrwalania wymaganych danych może spowodować utratę danych, jeśli maszyna wirtualna ulegnie awarii.
 
+*Brak*  
+Obecnie **żadna wartość nie** jest obsługiwana tylko na dyskach danych. Nie jest on obsługiwany na dyskach z systemem operacyjnym. Jeśli na dysku systemu operacyjnego nie zostanie ustawiona **żadna wartość Brak** , spowoduje to zastąpienie wewnętrznie i ustawienie wartości **tylko do odczytu**.
+
 Na przykład można zastosować te wytyczne do SQL Server uruchamiania na Premium Storage, wykonując następujące czynności:
 
 1. Skonfiguruj pamięć podręczną "ReadOnly" na dyskach usługi Premium Storage, na których znajdują się pliki danych.  
@@ -382,7 +385,7 @@ W przypadku woluminu rozłożonego należy zachować górną głębokość kolej
 
 Usługa Azure Premium Storage postanowił określoną liczbę operacji we/wy na sekundę i przepływności w zależności od wybranego rozmiaru maszyny wirtualnej i wybranego rozmiaru dysku. Gdy aplikacja próbuje zwiększyć liczbę operacji we/wy lub przepływności powyżej tych limitów, co może obsłużyć maszyna wirtualna lub dysk, Premium Storage będzie ograniczać ją. Te manifesty mają postać obniżonej wydajności aplikacji. Może to oznaczać większe opóźnienia, niższą przepływność lub mniejsze liczby operacji we/wy na sekundę. Jeśli Premium Storage nie jest ograniczana, aplikacja może zakończyć się niepowodzeniem, przekroczenie możliwości osiągania zasobów. Aby uniknąć problemów z wydajnością ze względu na ograniczenie przepustowości, zawsze Zapewnij odpowiednią ilość zasobów dla aplikacji. Weź pod uwagę to, co omówiono w sekcjach rozmiary maszyn wirtualnych i rozmiary dysków powyżej. Testy porównawcze to najlepszy sposób ustalania zasobów potrzebnych do hostowania aplikacji.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się więcej na temat dostępnych typów dysków:
 

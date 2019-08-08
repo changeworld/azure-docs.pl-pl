@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 67687e217372c17b007982ef99bf1f80c3e6be5f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e31db74807b850b3d8cb8fc057e94e98db18fca2
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728696"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780630"
 ---
 # <a name="design-secure-applications-on-azure"></a>Projektowanie bezpiecznych aplikacji na platformie Azure
 W tym artykule opisano działania związane z bezpieczeństwem i kontrolki, które należy wziąć pod uwagę podczas projektowania aplikacji w chmurze. Zasoby szkoleniowe wraz z pytaniami i pojęciami związanymi z bezpieczeństwem, które należy wziąć pod uwagę podczas wymagań i fazy projektowania [cyklu życia Microsoft Security Development (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) . Celem jest ułatwienie zdefiniowania działań i usług platformy Azure, których można użyć do zaprojektowania bezpieczniejszej aplikacji.
@@ -149,14 +149,14 @@ Modelowanie zagrożeń polega na zidentyfikowaniu potencjalnych zagrożeń bezpi
 
 Aby ułatwić proces modelowania zagrożeń, zaprojektowano [Threat Modeling Tool SDL](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool) z innymi ekspertami. To narzędzie ułatwia modelowanie zagrożeń dla wszystkich deweloperów, oferując jasne wskazówki dotyczące tworzenia i analizowania modeli zagrożeń.
 
-Modelowanie projektu aplikacji i wyliczanie [zagrożeń dotyczących](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) kroków — fałszowanie, manipulowanie, wyparcie, ujawnienie informacji, odmowa usługi i podniesienie uprawnień — we wszystkich granicach zaufania okazało się skutecznym sposobem przechwytywania błędów projektowania Wczesne. W poniższej tabeli przedstawiono listę zagrożeń i przedstawiono przykładowe środki zaradcze korzystające z funkcji oferowanych przez platformę Azure. Te środki zaradcze nie będą działały w każdej sytuacji.
+Modelowanie projektu aplikacji i wyliczanie [](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) zagrożeń dotyczących kroków — fałszowanie, manipulowanie, wyparcie, ujawnienie informacji, odmowa usługi i podniesienie uprawnień — we wszystkich granicach zaufania okazało się skutecznym sposobem przechwytywania błędów projektowania Wczesne. W poniższej tabeli przedstawiono listę zagrożeń i przedstawiono przykładowe środki zaradcze korzystające z funkcji oferowanych przez platformę Azure. Te środki zaradcze nie będą działały w każdej sytuacji.
 
 | Ważną | Właściwość zabezpieczeń | Potencjalne ograniczenia dotyczące platformy Azure |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Fałszowaniem               | Authentication        | [Wymagaj połączeń HTTPS](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
 | Manipulowanie              | Integralność             | Sprawdź poprawność certyfikatów SSL/TLS. Aplikacje korzystające z protokołu SSL/TLS muszą w pełni weryfikować certyfikaty X. 509 jednostek, z którymi się łączą. Użyj Azure Key Vault certyfikatów do [zarządzania certyfikatami x509](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates). |
 | Rzuca            | Weryfikacja tożsamości       | Włącz [monitorowanie i diagnostykę](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)platformy Azure.|
-| Ujawnianie informacji | Poufne       | Szyfruj [poufne dane przechowywane](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest) [i przesyłane](https://docs.microsoft.com/azure/security/azure-security-data-encryption-best-practices#protect-data-in-transit). |
+| Ujawnianie informacji | Poufne       | Szyfruj poufne dane [](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) przechowywane i przesyłane [](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices#protect-data-in-transit). |
 | Odmowa usługi      | Dostępność          | Monitoruj metryki wydajności pod kątem potencjalnych odmowy warunków usługi. Implementuj filtry połączeń. [Usługa Azure DDoS Protection](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview#next-steps), w połączeniu z najlepszymi rozwiązaniami dotyczącymi projektowania aplikacji, zapewnia ochronę przed atakami na DDoS.|
 | Podniesienie uprawnień | Authorization         | Użyj <span class="underline"></span> [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure)Azure Active Directory.|
 
@@ -267,7 +267,7 @@ Oznacz wszystkie odpowiednie dane jako poufne podczas projektowania formatów da
 #### <a name="use-encryption"></a>Użyj szyfrowania
 
 Ochrona danych powinna być istotną częścią strategii zabezpieczeń.
-Jeśli dane są przechowywane w bazie danych lub przenoszone z powrotem między lokalizacjami, użyj szyfrowania danych przechowywanych w [spoczynku](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest) (w bazie danych) i szyfrowania [danych w trakcie przesyłania](https://docs.microsoft.com/azure/security/azure-security-data-encryption-best-practices#protect-data-in-transit) (w drodze do i od użytkownika, bazy danych, interfejsu API lub punktu końcowego usługi). Zaleca się, aby do wymiany danych zawsze używać protokołów SSL/TLS. Upewnij się, że używasz najnowszej wersji protokołu TLS do szyfrowania (obecnie jest to wersja 1,2).
+Jeśli dane są przechowywane w bazie danych lub przenoszone z powrotem między lokalizacjami, użyj szyfrowania danych przechowywanych w [spoczynku](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) (w bazie danych) i szyfrowania [danych w trakcie przesyłania](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices#protect-data-in-transit) (w drodze do i od użytkownika, bazy danych, interfejsu API lub punktu końcowego usługi). Zaleca się, aby do wymiany danych zawsze używać protokołów SSL/TLS. Upewnij się, że używasz najnowszej wersji protokołu TLS do szyfrowania (obecnie jest to wersja 1,2).
 
 #### <a name="avoid-hard-coding"></a>Unikaj kodowania twardych
 
@@ -316,7 +316,7 @@ Sprawdź, czy nie są rejestrowane żadne poufne dane przesyłane przez użytkow
 
 Upewnij się, że aplikacja monitoruje zdarzenia zarządzania użytkownikami, takie jak pomyślne i nieudane logowania użytkowników, resetowanie haseł, zmiana hasła, blokada konta i Rejestracja użytkownika. Rejestrowanie tych zdarzeń ułatwia wykrywanie potencjalnie podejrzanych zachowań i reagowanie na nie. Pozwala również zbierać dane operacyjne, takie jak osoba, która uzyskuje dostęp do aplikacji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W poniższych artykułach zalecamy mechanizmy kontroli zabezpieczeń i działania, które mogą pomóc w tworzeniu i wdrażaniu bezpiecznych aplikacji.
 
 - [Opracowywanie bezpiecznych aplikacji](secure-develop.md)

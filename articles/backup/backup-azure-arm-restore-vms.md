@@ -9,14 +9,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: f961f472c0b00932bf5ee6302af58f39fa8421ed
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
-ms.translationtype: HT
+ms.openlocfilehash: 126e33d4bedb56eb479361f16c02e7e167e49392
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720445"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736690"
 ---
-# <a name="restore-azure-vms"></a>Przywracanie maszyn wirtualnych platformy Azure
+# <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Przywracanie danych maszyny wirtualnej platformy Azure w Azure Portal
 
 W tym artykule opisano sposób przywracania danych maszyny wirtualnej platformy Azure z punktów odzyskiwania przechowywanych w magazynach Recovery Services [Azure Backup](backup-overview.md) .
 
@@ -195,7 +195,7 @@ Po przywróceniu maszyny wirtualnej można pamiętać o kilku kwestiach:
 - W przypadku przywrócenia maszyny wirtualnej do tej samej grupy zasobów o takiej samej nazwie jak oryginalna kopia zapasowa maszyny wirtualnej kopia zapasowa jest kontynuowana na maszynie wirtualnej po przywróceniu.
 - Jeśli maszyna wirtualna została przywrócona do innej grupy zasobów lub została określona inna nazwa dla przywróconej maszyny wirtualnej, należy skonfigurować kopię zapasową przywróconej maszyny wirtualnej.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Jeśli wystąpią problemy podczas procesu przywracania, [Przejrzyj](backup-azure-vms-troubleshoot.md#restore) typowe problemy i błędy.
 - Po przywróceniu maszyny wirtualnej Dowiedz się więcej o [zarządzaniu maszynami wirtualnymi](backup-azure-manage-vms.md)

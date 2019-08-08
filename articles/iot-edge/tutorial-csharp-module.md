@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 305804682ede9833619837807d6f174ec670560e
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 7fca5709a1c7c3ecae11a5fc7de2109f1b20645e
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414246"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839580"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>Samouczek: Opracowywanie C# modułu IoT Edge dla urządzeń z systemem Linux
 
@@ -293,7 +293,7 @@ Upewnij się, że urządzenie IoT Edge zostało uruchomione.
 
 5. Wybierz plik **deployment.json** w folderze **config**, a następnie kliknij pozycję **Wybierz manifest wdrożenia usługi Edge**. Nie używaj pliku deployment.template.json. 
 
-6. Kliknij przycisk Odśwież. Nowy moduł **CSharpModule** powinien być teraz uruchomiony wraz z modułami **TempSensor**, **$edgeAgent** i **$edgeHub**.  
+6. Kliknij przycisk Odśwież. Powinna zostać wyświetlona nowa **CSharpModule** z uruchomionym modułem **SimulatedTemperatureSensor** oraz **$edgeAgent** i **$edgeHub**.  
 
 ## <a name="view-generated-data"></a>Wyświetlanie wygenerowanych danych
 
@@ -332,7 +332,7 @@ W przeciwnym razie możesz usunąć konfiguracje lokalne i zasoby platformy Azur
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku został utworzony moduł usługi IoT Edge zawierający kod służący do filtrowania nieprzetworzonych danych wygenerowanych przez urządzenie usługi IoT Edge. Gdy wszystko będzie gotowe do tworzenia własnych modułów, możesz dowiedzieć się więcej na temat [opracowywania własnych modułów IoT Edge](module-development.md) lub tworzenia [modułów z Visual Studio Code](how-to-vs-code-develop-module.md). Możesz przejść do kolejnych samouczków, aby dowiedzieć się, jak Azure IoT Edge może pomóc w wdrażaniu usług Azure Cloud Services w celu przetwarzania i analizowania danych na krawędzi.
 

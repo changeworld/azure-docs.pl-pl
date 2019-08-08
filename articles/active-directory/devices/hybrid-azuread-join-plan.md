@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee3309bdd3629057d174866dde58ffd95e9e5ca8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: HT
+ms.openlocfilehash: 49f8d0e418f43648665b95f5bf1f672e9f9dae28
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562139"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779451"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Instrukcje: Planowanie implementacji dołączania hybrydowego Azure Active Directory
 
@@ -111,12 +111,18 @@ Te scenariusze nie wymagają konfigurowania serwera federacyjnego na potrzeby uw
 
 ### <a name="federated-environment"></a>Środowisko federacyjne
 
-Środowisko federacyjne powinno mieć dostawcę tożsamości, który obsługuje następujące wymagania:
+Środowisko federacyjne powinno mieć dostawcę tożsamości, który obsługuje poniższe wymagania. Jeśli masz środowisko federacyjne wykorzystujące Active Directory Federation Services (AD FS), poniższe wymagania są już obsługiwane.
 
-- **Protokół WS-Trust:** Ten protokół jest wymagany do uwierzytelniania bieżących urządzeń przyłączonych hybrydowo usługi Azure AD za pomocą usługi Azure AD.
 - **WIAORMULTIAUTHN:** To żądanie jest wymagane do hybrydowego przyłączenia do usługi Azure AD dla urządzeń niższego poziomu systemu Windows.
+- **Protokół WS-Trust:** Ten protokół jest wymagany do uwierzytelniania bieżących urządzeń przyłączonych hybrydowo usługi Azure AD za pomocą usługi Azure AD. W przypadku korzystania z AD FS należy włączyć następujące punkty końcowe protokołu WS-Trust:`/adfs/services/trust/2005/windowstransport`  
+`/adfs/services/trust/13/windowstransport`  
+  `/adfs/services/trust/2005/usernamemixed` 
+  `/adfs/services/trust/13/usernamemixed`
+  `/adfs/services/trust/2005/certificatemixed` 
+  `/adfs/services/trust/13/certificatemixed` 
 
-Jeśli masz środowisko federacyjne wykorzystujące Active Directory Federation Services (AD FS), powyższe wymagania są już obsługiwane.
+> [!WARNING] 
+> **Usługi ADFS/Services/Trust/2005/windowstransport** lub **ADFS/Services/Trust/13/windowstransport** powinny być włączone tylko jako punkty końcowe dostępne dla intranetu i nie mogą być udostępniane jako punkty końcowe dla ekstranetu za pośrednictwem serwera proxy aplikacji sieci Web. Aby dowiedzieć się więcej na temat wyłączania punktów końcowych usługi WS-Trust systemu WIndows, zobacz temat [wyłączanie punktów końcowych systemu Windows WS-Trust na serwerze proxy](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Możesz zobaczyć, jakie punkty końcowe są włączone, za pomocą konsoli zarządzania usług AD FS w obszarze **Usługi** > **Punkty końcowe**.
 
 > [!NOTE]
 > Usługa Azure AD nie obsługuje kart inteligentnych ani certyfikatów w domenach zarządzanych.
@@ -130,7 +136,7 @@ W zależności od scenariusza, który jest zgodny z infrastrukturą tożsamości
 
 ## <a name="review-on-premises-ad-upn-support-for-hybrid-azure-ad-join"></a>Zapoznaj się z lokalną obsługą UPN usługi AD na potrzeby hybrydowego dołączania do usługi Azure AD
 
-Czasami lokalne UPN usługi AD mogą różnić się od nazw UPN usługi Azure AD. W takich przypadkach hybrydowe dołączenie usługi Azure AD systemu Windows 10 zapewnia ograniczoną obsługę lokalnych nazw UPN usługi AD na podstawie [metody uwierzytelniania](https://docs.microsoft.com/azure/security/azure-ad-choose-authn), typu domeny i wersji systemu Windows 10. Istnieją dwa typy lokalnych nazw UPN usługi AD, które mogą istnieć w Twoim środowisku:
+Czasami lokalne UPN usługi AD mogą różnić się od nazw UPN usługi Azure AD. W takich przypadkach hybrydowe dołączenie usługi Azure AD systemu Windows 10 zapewnia ograniczoną obsługę lokalnych nazw UPN usługi AD na podstawie [metody uwierzytelniania](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn), typu domeny i wersji systemu Windows 10. Istnieją dwa typy lokalnych nazw UPN usługi AD, które mogą istnieć w Twoim środowisku:
 
 - Nazwa UPN z obsługą routingu: Nazwa UPN z obsługą routingu ma poprawną zweryfikowaną domenę, która jest zarejestrowana w rejestratorze domeny. Na przykład jeśli contoso.com jest domeną podstawową w usłudze Azure AD, contoso.org jest domeną podstawową w lokalnej usłudze AD należącej do firmy Contoso i [zweryfikowaną w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)
 - Nazwa UPN bez obsługi routingu: Nazwa UPN bez obsługi routingu nie ma zweryfikowanej domeny. Ma to zastosowanie tylko w sieci prywatnej organizacji. Na przykład jeśli contoso.com jest domeną podstawową w usłudze Azure AD, contoso. local jest domeną podstawową w lokalnej usłudze AD, ale nie jest domeną zweryfikowaną w Internecie i używaną tylko w sieci firmy Contoso.
