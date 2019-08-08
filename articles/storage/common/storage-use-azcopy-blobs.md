@@ -1,19 +1,19 @@
 ---
 title: Transferowanie danych do lub z usługi Azure Blob Storage za pomocą AzCopy v10 | Microsoft Docs
 description: Ten artykuł zawiera kolekcję przykładowych poleceń AzCopy, które pomagają w tworzeniu kontenerów, kopiowaniu plików i synchronizowaniu katalogów między lokalnymi systemami plików i kontenerami.
-services: storage
 author: normesta
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 2ab561c387467086a40aa6676af347a107c2c452
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.reviewer: dineshm
+ms.openlocfilehash: d488189596fac4ae8fada3899d0b9c1bbe7900c6
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641119"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855309"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Transferowanie danych za pomocą AzCopy i magazynu obiektów BLOB
 
@@ -225,7 +225,7 @@ W takim przypadku lokalny system plików jest miejscem docelowym, a kontener jes
 | **Przykład** | `azcopy sync "https://mystorageaccount.blob.core.windows.net/mycontainer" "C:\myDirectory" --recursive` |
 |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Więcej przykładów znajdziesz w jednym z następujących artykułów:
 

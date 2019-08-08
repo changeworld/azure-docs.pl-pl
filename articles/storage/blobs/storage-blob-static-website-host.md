@@ -1,20 +1,19 @@
 ---
 title: 'Samouczek: Hostowanie statycznej witryny internetowej w usłudze Blob Storage — Azure Storage'
 description: Dowiedz się, w jaki sposób skonfigurować konto magazynu w celu hostowania statycznej witryny internetowej i wdrożyć statyczną witrynę internetową w usłudze Azure Storage.
-services: storage
 author: normesta
 ms.service: storage
+ms.subservice: blobs
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: normesta
-ms.reviewer: seguler
-ms.custom: seodec18
-ms.openlocfilehash: e3f2dd74d00b36016549cd33d76b866de241d977
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.reviewer: dineshm
+ms.openlocfilehash: 4cc38b952e773002e0b5f6b2311187f8d3d46400
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148480"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855384"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
@@ -55,7 +54,7 @@ Pierwszym krokiem jest skonfigurowanie konta magazynu na potrzeby hostowania sta
 1. Wybierz pozycję **Włączone**, aby umożliwić hostowanie statycznej witryny internetowej na koncie magazynu.
 1. W polu **Nazwa dokumentu indeksu** określ domyślną stronę indeksu *index.html*. Gdy użytkownik przejdzie do głównego elementu statycznej witryny internetowej, wyświetlona zostanie domyślna strona indeksu.  
 1. W polu **Ścieżka dokumentu błędu** określ domyślną stronę błędu *404. html*. Gdy użytkownik spróbuje przejść do strony, która nie istnieje w statycznej witrynie internetowej, wyświetlona zostanie domyślna strona błędu.
-1. Kliknij pozycję **Zapisz**. W witrynie Azure Portal jest teraz wyświetlany punkt końcowy statycznej witryny internetowej. 
+1. Kliknij polecenie **Zapisz**. W witrynie Azure Portal jest teraz wyświetlany punkt końcowy statycznej witryny internetowej. 
 
     ![Włączanie hostowania statycznej witryny internetowej na koncie magazynu](media/storage-blob-static-website-host/enable-static-website-hosting.png)
 

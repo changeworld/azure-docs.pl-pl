@@ -1,6 +1,6 @@
 ---
-title: Aplikacja klasyczna wywołuje interfejsy API (omówienie) — Platforma tożsamości usługi Microsoft sieci web
-description: Naucz się tworzyć aplikację klasyczną wywołuje interfejsy API (omówienie) sieci web
+title: Aplikacja klasyczna, która wywołuje interfejsy API sieci Web (omówienie) — platforma tożsamości firmy Microsoft
+description: Dowiedz się, jak utworzyć aplikację klasyczną wywołującą interfejsy API sieci Web (omówienie)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 476703b52813e6b3081dcfb3ab5a2fb4f3a7bfc5
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 5288fe57b2f83522b140f65fa62e08f9c63a7af5
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785633"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852681"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>Scenariusz: Aplikacja klasyczna wywołująca internetowe interfejsy API
 
-Dowiedz się, wszystko, czego potrzebujesz do tworzenia aplikacji pulpitu, która wywołuje interfejsy API sieci web
+Dowiedz się wszystkiego, co jest potrzebne do utworzenia aplikacji klasycznej, która wywołuje interfejsy API sieci Web
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -32,40 +32,40 @@ Dowiedz się, wszystko, czego potrzebujesz do tworzenia aplikacji pulpitu, któr
 
 ## <a name="getting-started"></a>Wprowadzenie
 
-Jeśli jeszcze nie, należy utworzyć swoją pierwszą aplikację, postępując zgodnie z przewodnika Szybki Start klasycznej platformy .NET lub szybkiego startu platformy uniwersalnej systemu Windows:
+Jeśli jeszcze tego nie zrobiono, Utwórz swoją pierwszą aplikację, postępując zgodnie z przewodnikiem Szybki Start dla programu .NET Desktop lub platformy UWP szybki start:
 
 > [!div class="nextstepaction"]
-> [Szybki start: Uzyskiwanie tokenu i wywołania interfejsu API Microsoft Graph z aplikacji klasycznej Windows](./quickstart-v2-windows-desktop.md)
+> [Szybki start: Uzyskiwanie tokenu i wywoływanie Microsoft Graph interfejsu API z aplikacji klasycznej systemu Windows](./quickstart-v2-windows-desktop.md)
 
 
 > [!div class="nextstepaction"]
-> [Szybki start: Uzyskiwanie tokenu i wywołania interfejsu API Microsoft Graph z poziomu aplikacji platformy uniwersalnej systemu Windows](./quickstart-v2-uwp.md)
+> [Szybki start: Uzyskiwanie tokenu i wywoływanie Microsoft Graph interfejsu API z poziomu aplikacji platformy UWP](./quickstart-v2-uwp.md)
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
-Pisanie aplikacji pulpitu, a chcesz logowania użytkowników do aplikacji i wywołań interfejsów API, takich jak Microsoft Graph, innych APIs firmy Microsoft lub własnych internetowy interfejs API sieci web. Istnieje kilka możliwości:
+Napisz aplikację klasyczną i chcesz zalogować użytkowników do aplikacji i wywoływać interfejsy API sieci Web, takie jak Microsoft Graph, inne interfejsy API firmy Microsoft lub własny internetowy interfejs API. Masz kilka możliwości:
 
-- Umożliwia interakcyjne uzyskanie tokenu:
+- Możesz użyć pozyskiwania tokenów interaktywnych:
 
-  - Jeśli swojej aplikacji klasycznej obsługuje formanty graficzny, na przykład jeśli jest aplikacją Windows.Form lub aplikacji WPF.
-  - O Jeśli jest to aplikacja platformy .NET Core i wyraża zgodę na mają interakcję uwierzytelniania w usłudze Azure AD odbywa się w przeglądarce systemu
+  - Jeśli aplikacja klasyczna obsługuje kontrolki graficzne, na przykład jeśli jest to aplikacja Windows. form lub aplikacja WPF.
+  - Jeśli jest to aplikacja platformy .NET Core i wyrażasz zgodę na interakcję uwierzytelniania z usługą Azure AD w przeglądarce systemowej
 
-- Dla aplikacji Windows, hostowane użytkownik może również dla aplikacji uruchamianych na komputerach dołączonych do domeny Windows lub usługi AAD przyłączone do uzyskać token w trybie dyskretnym przy użyciu zintegrowanego uwierzytelniania Windows.
-- Na koniec chociaż nie jest to zalecane, można użyć nazwy użytkownika i hasła w aplikacjach klienckich publicznych. Nadal jest konieczne w niektórych scenariuszach (np. DevOps), ale należy pamiętać, że korzystania z niego będzie nakładają ograniczenia dla aplikacji. Na przykład nie można zarejestrować użytkownika, która musi wykonywać uwierzytelnianie wieloskładnikowe (dostęp warunkowy). Ponadto aplikacji nie będzie korzystać z logowania jednokrotnego (SSO).
+- W przypadku aplikacji hostowanych w systemie Windows istnieje również możliwość, że aplikacje działające na komputerach przyłączonych do domeny systemu Windows lub usługi AAD są dołączone do dyskretnego uzyskiwania tokenu przy użyciu zintegrowanego uwierzytelniania systemu Windows.
+- Na koniec, chociaż nie jest to zalecane, możesz użyć nazwy użytkownika/hasła w publicznych aplikacjach klienckich. Nadal jest to konieczne w niektórych scenariuszach (takich jak DevOps), ale uważaj, że użycie go spowoduje nałożenie ograniczeń dotyczących aplikacji. Na przykład nie może zalogować użytkownika, który musi przeprowadzić uwierzytelnianie wieloskładnikowe (dostęp warunkowy). Ponadto aplikacja nie będzie korzystać z logowania jednokrotnego (SSO).
 
-  Jest również względem zasad nowoczesnego uwierzytelniania i jest dostępna wyłącznie dla starszych powodów.
+  Jest to również sprzeczne z zasadami nowoczesnego uwierzytelniania i są dostępne tylko dla starszych przyczyn.
 
-  ![Aplikacji klasycznej](media/scenarios/desktop-app.svg)
+  ![Aplikacja klasyczna](media/scenarios/desktop-app.svg)
 
-- Piszesz przenośne narzędzia wiersza polecenia — prawdopodobnie aplikacji .NET Core w systemie Linux lub Mac — i akceptujesz, że uwierzytelniania należy delegować domenę do przeglądarki systemu, można użyć przeprowadzić uwierzytelnianie interakcyjne. (.NET core nie zapewnia jeszcze [przeglądarki sieci Web](https://aka.ms/msal-net-uses-web-browser) i w związku z tym uwierzytelnianie odbywa się w przeglądarce systemu), w przeciwnym razie, najlepszym rozwiązaniem w takiej sytuacji jest użycie przepływu kodu urządzenia. Ten przepływ jest również używany do aplikacji bez przeglądarki, takich jak aplikacje IoT
+- W przypadku pisania przenośnego narzędzia wiersza polecenia — prawdopodobnie aplikacji platformy .NET Core działającej w systemie Linux lub Mac — w przypadku zaakceptowania, że uwierzytelnianie zostanie delegowane do przeglądarki systemowej, będzie można korzystać z uwierzytelniania interakcyjnego. (Platforma .NET Core nie udostępnia jeszcze [przeglądarki sieci Web](https://aka.ms/msal-net-uses-web-browser) , dlatego uwierzytelnianie odbywa się w przeglądarce systemowej), w przeciwnym razie najlepszą opcją w tym przypadku jest użycie przepływu kodu urządzenia. Ten przepływ jest również używany w przypadku aplikacji bez przeglądarki, takich jak aplikacje IoT
 
-  ![Browserless aplikacji](media/scenarios/device-code-flow-app.svg)
+  ![Aplikacja bezprzeglądarki](media/scenarios/device-code-flow-app.svg)
 
-## <a name="specifics"></a>Szczegółowe informacje
+## <a name="specifics"></a>Szczegółowych informacji
 
-Aplikacje klasyczne mają wiele specyfikę, zależy głównie od tego, czy Twoja aplikacja używa uwierzytelnianie interakcyjne, czy nie.
+Aplikacje klasyczne mają różne wartości, które są zależne od tego, czy aplikacja korzysta z uwierzytelniania interaktywnego, czy nie.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Aplikacja klasyczna — rejestrowanie aplikacji](scenario-desktop-app-registration.md)
+> [Aplikacja klasyczna — Rejestracja aplikacji](scenario-desktop-app-registration.md)

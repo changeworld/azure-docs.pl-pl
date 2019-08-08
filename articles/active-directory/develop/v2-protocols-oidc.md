@@ -16,14 +16,14 @@ ms.topic: conceptual
 ms.date: 04/12/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be7d4164bd1a412c69c3b5adfe20cf83d699d2b4
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 69aa2da29e18f99e75e09d8f21814b71cc95ef72
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304806"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852140"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft Identity platform i OpenID Connect Connect Protocol
 
@@ -91,7 +91,7 @@ Gdy aplikacja sieci Web wymaga uwierzytelnienia użytkownika, może kierować u�
 > [!IMPORTANT]
 > Aby pomyślnie zażądać tokenu identyfikatora z punktu końcowego/Authorization, Rejestracja aplikacji w [portalu rejestracji](https://portal.azure.com) musi mieć niejawny przydział id_tokens włączony na karcie uwierzytelnianie (która ustawia `oauth2AllowIdTokenImplicitFlow` flagę w [ manifest aplikacji](reference-app-manifest.md) do `true`). Jeśli nie jest włączona, `unsupported_response` zostanie zwrócony błąd: "Podana wartość parametru wejściowego" response_type "nie jest dozwolona dla tego klienta. Oczekiwana wartość to "Code" "
 
-Na przykład:
+Przykład:
 
 ```
 // Line breaks are for legibility only.

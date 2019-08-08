@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 55722c35dddcbf8a20f4f51958170938225e87e5
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 2b59797e60585876764e8c9e1276e4fd36571b18
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668388"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856016"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-service-preview"></a>Śledzenie metryk i wdrażanie modeli za pomocą usług MLflow i Azure Machine Learning (wersja zapoznawcza)
 
@@ -52,7 +52,9 @@ W tym artykule pokazano, jak włączyć śledzenie identyfikatorów URI MLflow i
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * [Zainstaluj MLflow.](https://mlflow.org/docs/latest/quickstart.html)
-* [Zainstaluj Azure Machine Learning Python SDK na komputerze lokalnym i utwórz obszar roboczy usługi Azure Machine Learning](setup-create-workspace.md#sdk). Zestaw SDK zapewnia łączność z usługą MLflow w celu uzyskania dostępu do obszaru roboczego.
+* [Zainstaluj zestaw sdk Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) na komputerze lokalnym, zestaw SDK zapewnia łączność z MLflow w celu uzyskania dostępu do obszaru roboczego.
+* [Utwórz obszar roboczy usługi Azure Machine Learning](how-to-manage-workspace.md).
+
 
 ## <a name="track-experiment-runs"></a>Śledź uruchomienia eksperymentów
 
@@ -154,7 +156,7 @@ W polu **pakiet** wpisz polecenie Azure-mlflow, a następnie kliknij przycisk In
 
 Po skonfigurowaniu klastra zaimportuj Notes eksperymentu, otwórz go i Dołącz do niego klaster.
 
-Poniższy kod powinien znajdować się w notesie eksperymentu. Spowoduje to pobranie szczegółów subskrypcji platformy Azure w celu utworzenia wystąpienia Twojego obszaru roboczego. Przyjęto założenie, że masz istniejącą grupę zasobów i obszar roboczy Azure Machine Learning, w przeciwnym razie można [je utworzyć](setup-create-workspace.md#portal). 
+Poniższy kod powinien znajdować się w notesie eksperymentu. Spowoduje to pobranie szczegółów subskrypcji platformy Azure w celu utworzenia wystąpienia Twojego obszaru roboczego. Przyjęto założenie, że masz istniejącą grupę zasobów i obszar roboczy Azure Machine Learning, w przeciwnym razie można [je utworzyć](how-to-manage-workspace.md). 
 
 ```python
 import mlflow

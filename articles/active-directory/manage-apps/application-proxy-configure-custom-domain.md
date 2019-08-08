@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d721e750ddb77ba293643ad978cecf4bd2dbac0
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 82b8dcfa02d21183a06fa510adb774338e72cb4e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618808"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851720"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Praca z domenami niestandardowymi na serwerze Proxy aplikacji usługi Azure AD
 
@@ -87,7 +87,7 @@ Obecnie wszystkich zarządzania certyfikatami jest stronach poszczególnych apli
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Włącz logowanie jednokrotne](application-proxy-configure-single-sign-on-with-kcd.md) do aplikacji opublikowanych przy użyciu uwierzytelniania usługi Azure AD.
-* [Włącz dostęp warunkowy](application-proxy-integrate-with-sharepoint-server.md) do opublikowanych aplikacji.
+* [Włącz dostęp warunkowy](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/technical-reference#cloud-apps-assignments) do opublikowanych aplikacji.
 * [Dodawanie niestandardowej nazwy domeny do usługi Azure AD](../fundamentals/add-custom-domain.md)
 
 

@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/19/2019
-ms.openlocfilehash: 4534f7e5bba2e34316be3376e2627c15c20ba81f
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: cbbfd5f7beb7270bf55e952c818b4802d9d9ecab
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694384"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847989"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning-service"></a>Korzystanie z istniejącego modelu z usługą Azure Machine Learning
 
@@ -32,14 +32,14 @@ Jeśli masz model uczenia maszynowego, który został przeszkolony poza usługą
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Obszar roboczy usługi Azure Machine Learning. Aby uzyskać więcej informacji, zobacz [Tworzenie obszaru roboczego](setup-create-workspace.md).
+* Obszar roboczy usługi Azure Machine Learning. Aby uzyskać więcej informacji, zobacz [Tworzenie obszaru roboczego](how-to-manage-workspace.md).
 
     > [!TIP]
     > W przykładach w języku Python w tym artykule `ws` założono, że zmienna jest ustawiona na obszar roboczy usługi Azure Machine Learning.
     >
     > Przykłady interfejsu wiersza polecenia wykorzystują symbol `myworkspace` zastępczy i `myresourcegroup`. Zamień je na nazwę obszaru roboczego i grupę zasobów, która ją zawiera.
 
-* Zestaw SDK Azure Machine Learning. Aby uzyskać więcej informacji, zobacz sekcję zestaw SDK języka Python w temacie [Tworzenie obszaru roboczego](setup-create-workspace.md#sdk).
+* [Zestaw SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).  
 
 * [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) i [Machine Learning rozszerzenia interfejsu wiersza polecenia](reference-azure-machine-learning-cli.md).
 
@@ -284,7 +284,7 @@ print(response.json())
 
 Aby uzyskać więcej informacji na temat korzystania ze wdrożonej usługi, zobacz [Tworzenie klienta](how-to-consume-web-service.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Monitoruj modele Azure Machine Learning przy użyciu Application Insights](how-to-enable-app-insights.md)
 * [Zbieranie danych dla modeli w środowisku produkcyjnym](how-to-enable-data-collection.md)

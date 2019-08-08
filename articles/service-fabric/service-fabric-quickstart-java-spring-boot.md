@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: f7cf3f4cc0ceba89c031f5c36e90bbd6ef3dd20a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 8bb25fc373ff0816154795d2ef25a44066c1acc1
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68327161"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847758"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-application-to-service-fabric"></a>Szybki start: Wdrażanie aplikacji Java Spring Boot w usłudze Service Fabric
 
@@ -149,7 +149,7 @@ Na tym etapie utworzono aplikację usługi Service Fabric dla przykładu Wprowad
     
     ![Klaster lokalny w dobrej kondycji](./media/service-fabric-quickstart-java-spring-boot/sfxlocalhost.png)
 
-1. Przejdź do folderu `gs-spring-boot/SpringServiceFabric`.
+1. Otwórz folder `gs-spring-boot/SpringServiceFabric`.
 1. Uruchom następujące polecenie, aby połączyć się z klastrem lokalnym.
 
     ```bash
@@ -176,13 +176,13 @@ Narzędzie Service Fabric Explorer działa we wszystkich klastrach usługi Servi
 Aby skalować usługę internetową frontonu, wykonaj następujące czynności:
 
 1. Otwórz narzędzie Service Fabric Explorer w klastrze — na przykład `http://localhost:19080`.
-1. Kliknij wielokropek (trzy kropki) obok węzła **fabric:/SpringServiceFabric/SpringGettingStarted** w widoku drzewa i wybierz pozycję **Skaluj usługę**.
+1. Wybierz wielokropek ( **...** ) obok węzła **Sieć szkieletowa:/SpringServiceFabric/SpringGettingStarted** w widoku drzewa i wybierz pozycję **Skaluj usługę**.
 
     ![Usługa skalowania narzędzia Service Fabric Explorer](./media/service-fabric-quickstart-java-spring-boot/sfxscaleservicehowto.png)
 
     Teraz możesz skalować liczbę wystąpień usługi.
 
-1. Zmień liczbę na **3** i kliknij pozycję **Skaluj usługę**.
+1. Zmień liczbę na **3** i wybierz pozycję **Skaluj usługę**.
 
     Alternatywny sposób skalowania usługi to użycie wiersza polecenia w następujący sposób.
 
@@ -194,7 +194,7 @@ Aby skalować usługę internetową frontonu, wykonaj następujące czynności:
     sfctl service update --service-id 'SpringServiceFabric~SpringGettingStarted' --instance-count 3 --stateless 
     ``` 
 
-1. Kliknij węzeł **fabric:/SpringServiceFabric/SpringGettingStarted** w widoku drzewa i rozwiń węzeł partycji (reprezentowany przez identyfikator GUID).
+1. Wybierz węzeł **Sieć szkieletowa:/SpringServiceFabric/SpringGettingStarted** w widoku drzewa i rozwiń węzeł partycji (reprezentowany przez identyfikator GUID).
 
     ![Usługa skalowania narzędzia Service Fabric Explorer — zakończone](./media/service-fabric-quickstart-java-spring-boot/sfxscaledservice.png)
 
@@ -207,7 +207,7 @@ Za pomocą tego prostego zadania zarządzania zostały podwojone zasoby dostępn
 Aby przedstawić przenoszenie usługi w tryb failover, ponowne uruchomienie węzła jest symulowane przy użyciu narzędzia Service Fabric Explorer. Upewnij się, że jest uruchomione tylko jedno wystąpienie usługi.
 
 1. Otwórz narzędzie Service Fabric Explorer w klastrze — na przykład `http://localhost:19080`.
-1. Kliknij wielokropek (trzy kropki) obok węzła, w którym uruchomiono wystąpienie usługi, i uruchom ponownie węzeł.
+1. Wybierz wielokropek ( **...** ) obok węzła, na którym działa wystąpienie usługi, a następnie uruchom ponownie węzeł.
 
     ![Service Fabric Explorer — ponowne uruchamianie węzła](./media/service-fabric-quickstart-java-spring-boot/sfxhowtofailover.png)
 1. Wystąpienie usługi zostanie przeniesione do innego węzła bez przestoju w działaniu aplikacji.

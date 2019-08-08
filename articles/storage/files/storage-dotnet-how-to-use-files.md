@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/22/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 35f29e425fc471e4df4a037ef312af0fd041dcd7
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: da8e82652b5406cb4e5fe6438f721e3394a4cd96
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699783"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854589"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Tworzenie oprogramowania dla usługi Azure Files przy użyciu platformy .NET
 
@@ -55,10 +55,11 @@ Wszystkie przykłady kodu w tym samouczku można dodać do metody `Main()` w pli
 Biblioteka klienta usługi Azure Storage może być używana w dowolnym typie aplikacji platformy .NET, w tym w usłudze w chmurze platformy Azure lub aplikacji sieci Web oraz aplikacji klasycznych i mobilnych. W tym przewodniku dla uproszczenia przedstawiono aplikację konsolową.
 
 ## <a name="use-nuget-to-install-the-required-packages"></a>Użycie pakietu NuGet w celu zainstalowania wymaganych pakietów
-Istnieją dwa pakiety, które trzeba przywołać w projekcie, aby ukończyć ten samouczek:
+Są to pakiety, które należy odwołać w projekcie, aby ukończyć ten samouczek:
 
 * [Microsoft Azure Storage wspólna biblioteka dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): Ten pakiet zapewnia programistyczny dostęp do wspólnych zasobów na koncie magazynu.
 * [Biblioteka obiektów Blob Microsoft Azure Storage dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/): Ten pakiet zapewnia programistyczny dostęp do zasobów obiektów BLOB na koncie magazynu.
+* [Biblioteka plików Microsoft Azure Storage dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/): Ten pakiet zapewnia programistyczny dostęp do zasobów plików na koncie magazynu.
 * [Biblioteka programu Microsoft Azure Configuration Manager dla środowiska .NET](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/): ten pakiet zawiera klasę do analizowania parametrów połączenia w pliku konfiguracji, niezależnie od tego, gdzie została uruchomiona aplikacja.
 
 Pakiet NuGet służy do pobrania obu pakietów. Wykonaj następujące kroki:
@@ -457,7 +458,7 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 
 Aby uzyskać kompleksowe wskazówki dotyczące rozwiązywania problemów, można zajrzeć do [artykułu na temat rozwiązywania problemów z usługą Azure Files](storage-troubleshoot-windows-file-connection-problems.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Poniższe linki umożliwiają uzyskanie dodatkowych informacji na temat usługi Azure Files.
 
 ### <a name="conceptual-articles-and-videos"></a>Artykuły koncepcyjne i filmy

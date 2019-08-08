@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów na urządzenie Azure Data Box, Azure Data Box mocno | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób rozwiązywania problemów występujących w usłudze Azure Data Box i Azure Data Box mocno podczas kopiowania danych na tych urządzeniach.
+title: Rozwiązywanie problemów dotyczących Azure Data Box, Azure Data Box Heavy | Microsoft Docs
+description: Opisuje sposób rozwiązywania problemów występujących w Azure Data Box i Azure Data Box Heavy podczas kopiowania danych na te urządzenia.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,241 +8,241 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: bc0681a8ea15f736a7b253d6bd7ba2f7928d2a32
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 83f6f7c7f8cd5155669f12fd6e426f86ef1c7baa
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439397"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848508"
 ---
-# <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Rozwiązywanie problemów związanych z usługi Azure Data Box i Azure Data Box duże
+# <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Rozwiązywanie problemów związanych z Azure Data Box i Azure Data Box Heavy
 
-W tym artykule zawiera szczegółowe informacje na temat rozwiązywania problemów, że może pojawić się podczas korzystania z usługi Azure Data Box lub Azure Data Box duże. Artykuł zawiera listę możliwych błędów, które występuje, gdy dane są kopiowane do urządzenia Data Box, lub gdy dane są przekazywane z urządzenia Data Box.
+Ten artykuł zawiera szczegółowe informacje dotyczące rozwiązywania problemów, które mogą wystąpić podczas korzystania z Azure Data Box lub Azure Data Box Heavy. Artykuł zawiera listę możliwych błędów, które pojawiają się, gdy dane są kopiowane do urządzenie Data Box lub gdy dane są przekazywane z urządzenie Data Box.
 
 ## <a name="error-classes"></a>Klasy błędów
 
-Błędy w urządzenia Data Box i duże pole danych są podsumować w następujący sposób:
+Błędy w urządzenie Data Box i Data Box Heavy zostały podsumowane w następujący sposób:
 
-| Błąd kategorii *        | Opis        | Zalecana akcja    |
+| Kategoria błędu *        | Opis        | Zalecana akcja    |
 |----------------------------------------------|---------|--------------------------------------|
-| Nazwy kontenerów lub udziału | Nazwy kontenerów lub udział nie wykonuj zasady nazewnictwa platformy Azure.  |Pobierz listy błędów. <br> Zmień nazwę, kontenerów lub udziałów. [Dowiedz się więcej](#container-or-share-name-errors).  |
-| Kontener lub udział limit rozmiaru | Łączna ilość danych w kontenerach lub udziały przekracza limit platformy Azure.   |Pobierz listy błędów. <br> Zmniejsz ogólny dane w kontenerze lub udziału. [Dowiedz się więcej](#container-or-share-size-limit-errors).|
-| Limit rozmiaru pliku lub obiektu | Obiekt lub pliki w kontenerach lub udziały przekracza limit platformy Azure.|Pobierz listy błędów. <br> Zmniejsz rozmiar pliku w kontenerze lub udziału. [Dowiedz się więcej](#object-or-file-size-limit-errors). |    
-| Typ danych lub plików | Format danych lub typ pliku nie jest obsługiwana. |Pobierz listy błędów. <br> Dla stronicowych obiektów blob i dyski zarządzane upewnij się, że dane są 512 bajtów wyrównane i kopiowane do wstępnie utworzonych folderów. [Dowiedz się więcej](#data-or-file-type-errors). |
-| Niekrytyczne błędy obiektów blob lub pliku  | Nazwy obiektów blob lub plik nie wykonuj zasady nazewnictwa platformy Azure lub typ pliku nie jest obsługiwany. | Nie można skopiować tych obiektów blob lub plików lub może zmieniać nazwy. [Dowiedz się, jak naprawić te błędy](#non-critical-blob-or-file-errors). |
+| Nazwy kontenerów lub udziałów | Nazwy kontenerów lub udziałów nie są zgodne z regułami nazewnictwa platformy Azure.  |Pobierz listy błędów. <br> Zmień nazwę kontenerów lub udziałów. [Dowiedz się więcej](#container-or-share-name-errors).  |
+| Limit rozmiaru kontenera lub udziału | Całkowita ilość danych w kontenerach lub udziałach przekracza limit platformy Azure.   |Pobierz listy błędów. <br> Zmniejsz ogólne dane w kontenerze lub udziale. [Dowiedz się więcej](#container-or-share-size-limit-errors).|
+| Limit rozmiaru obiektu lub pliku | Obiekt lub pliki w kontenerach lub udziałach przekraczają limit platformy Azure.|Pobierz listy błędów. <br> Zmniejsz rozmiar pliku w kontenerze lub udziale. [Dowiedz się więcej](#object-or-file-size-limit-errors). |    
+| Typ danych lub plików | Format danych lub typ pliku nie są obsługiwane. |Pobierz listy błędów. <br> W przypadku stronicowych obiektów blob lub dysków zarządzanych upewnij się, że dane są 512-bajtowe wyrównane i skopiowane do wstępnie utworzonych folderów. [Dowiedz się więcej](#data-or-file-type-errors). |
+| Niekrytyczne obiekty blob lub błędy plików  | Nazwy obiektów blob lub plików nie są zgodne z regułami nazewnictwa platformy Azure lub typ pliku nie jest obsługiwany. | Te obiekty blob lub pliki nie mogą być kopiowane lub można zmienić nazwy. [Dowiedz się, jak naprawić te błędy](#non-critical-blob-or-file-errors). |
 
-\* Pierwszy kategorii błędów cztery są błędy krytyczne i muszą zostać usunięte, zanim przejdziesz do przygotowywania do wysłania.
+\*Pierwsze cztery kategorie błędów są błędami krytycznymi i muszą zostać naprawione przed rozpoczęciem przygotowywania do wysłania.
 
 
-## <a name="container-or-share-name-errors"></a>Kontener lub udział błędy nazw
+## <a name="container-or-share-name-errors"></a>Błędy nazwy kontenera lub udziału
 
-Są to błędy związane z nazwy kontenera i udziału.
+Są to błędy związane z nazwami kontenerów i udziałów.
 
-### <a name="errorcontainerorsharenamelength"></a>ERROR_CONTAINER_OR_SHARE_NAME_LENGTH     
+### <a name="error_container_or_share_name_length"></a>ERROR_CONTAINER_OR_SHARE_NAME_LENGTH     
 
 **Opis błędu:** Nazwa kontenera lub udziału musi mieć długość od 3 do 63 znaków. 
 
-**Sugerowane rozwiązanie:** Folder w obszarze share(SMB/NFS) pola danych lub duże pole danych, do którego skopiowano danych staje się kontenerów platformy Azure, w ramach konta magazynu. 
+**Sugerowane rozwiązanie:** Folder w ramach udziału urządzenie Data Box lub Data Box Heavy (SMB/NFS), do którego skopiowane dane, jest kontenerem platformy Azure na koncie magazynu. 
 
-- Na **Połącz i skopiuj** stronie urządzenia lokalnego internetowego interfejsu użytkownika, pobieranie i przejrzyj pliki błędów, aby zidentyfikować folder nazwy z problemami.
-- Zmień nazwę folderu w udziale pola danych lub duże pole danych, aby upewnić się, że:
+- Na stronie **łączenie i kopiowanie** w lokalnym interfejsie użytkownika sieci Web na urządzeniu Pobierz i Przejrzyj pliki błędów, aby zidentyfikować nazwy folderów z problemami.
+- Zmień nazwę folderu w udziale urządzenie Data Box lub Data Box Heavy, aby upewnić się, że:
 
     - Nazwa ma od 3 do 63 znaków.
-    - Nazwy mogą mieć tylko litery, cyfry i łączniki.
-    - Nazwy nie może zaczynać się ani kończyć łączników.
-    - Nazwy nie może zawierać następujących po sobie łączników.
-    - Przykłady prawidłowych nazw: `my-folder-1`, `my-really-extra-long-folder-111`
-    - Przykłady nazw, które nie są prawidłowe: `my-folder_1`, `my`, `--myfolder`, `myfolder--`, `myfolder!`
+    - Nazwy mogą zawierać tylko litery, cyfry i łączniki.
+    - Nazwy nie mogą rozpoczynać się ani kończyć znakiem łączników.
+    - Nazwy nie mogą mieć kolejnych łączników.
+    - Przykłady prawidłowych nazw: `my-folder-1`,`my-really-extra-long-folder-111`
+    - Przykłady nieprawidłowych nazw `my-folder_1`:, `my`, `--myfolder` `myfolder--`,,`myfolder!`
 
-    Aby uzyskać więcej informacji, zobacz Azure konwencje nazewnictwa dla [nazwy kontenera](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) i [nazwy udziałów](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
+    Aby uzyskać więcej informacji, zobacz Konwencje nazewnictwa platformy Azure dla [nazw kontenerów](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) i [nazw udziałów](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
 
 
-### <a name="errorcontainerorsharenamealphanumericdash"></a>ERROR_CONTAINER_OR_SHARE_NAME_ALPHA_NUMERIC_DASH
+### <a name="error_container_or_share_name_alpha_numeric_dash"></a>ERROR_CONTAINER_OR_SHARE_NAME_ALPHA_NUMERIC_DASH
 
 **Opis błędu:** Nazwa kontenera lub udziału musi zawierać wyłącznie litery, cyfry lub łączniki.
 
-**Sugerowane rozwiązanie:** Folder w obszarze share(SMB/NFS) pola danych lub duże pole danych, do którego skopiowano danych staje się kontenerów platformy Azure, w ramach konta magazynu. 
+**Sugerowane rozwiązanie:** Folder w ramach udziału urządzenie Data Box lub Data Box Heavy (SMB/NFS), do którego skopiowane dane, jest kontenerem platformy Azure na koncie magazynu. 
 
-- Na **Połącz i skopiuj** stronie urządzenia lokalnego internetowego interfejsu użytkownika, pobieranie i przejrzyj pliki błędów, aby zidentyfikować folder nazwy z problemami.
-- Zmień nazwę folderu w udziale pola danych lub duże pole danych, aby upewnić się, że:
-
-    - Nazwa ma od 3 do 63 znaków.
-    - Nazwy mogą mieć tylko litery, cyfry i łączniki.
-    - Nazwy nie może zaczynać się ani kończyć łączników.
-    - Nazwy nie może zawierać następujących po sobie łączników.
-    - Przykłady prawidłowych nazw: `my-folder-1`, `my-really-extra-long-folder-111`
-    - Przykłady nazw, które nie są prawidłowe: `my-folder_1`, `my`, `--myfolder`, `myfolder--`, `myfolder!`
-
-    Aby uzyskać więcej informacji, zobacz Azure konwencje nazewnictwa dla [nazwy kontenera](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) i [nazwy udziałów](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
-
-### <a name="errorcontainerorsharenameimproperdash"></a>ERROR_CONTAINER_OR_SHARE_NAME_IMPROPER_DASH
-
-**Opis błędu:** Nie można uruchomić nazwy kontenera i nazwy udziału lub kończyć się znakiem łączniki oraz nie może zawierać następujących po sobie łączników.
-
-**Sugerowane rozwiązanie:** Folder w obszarze share(SMB/NFS) pola danych lub duże pole danych, do którego skopiowano danych staje się kontenerów platformy Azure, w ramach konta magazynu. 
-
-- Na **Połącz i skopiuj** stronie urządzenia lokalnego internetowego interfejsu użytkownika, pobieranie i przejrzyj pliki błędów, aby zidentyfikować folder nazwy z problemami.
-- Zmień nazwę folderu w udziale pola danych lub duże pole danych, aby upewnić się, że:
+- Na stronie **łączenie i kopiowanie** w lokalnym interfejsie użytkownika sieci Web na urządzeniu Pobierz i Przejrzyj pliki błędów, aby zidentyfikować nazwy folderów z problemami.
+- Zmień nazwę folderu w udziale urządzenie Data Box lub Data Box Heavy, aby upewnić się, że:
 
     - Nazwa ma od 3 do 63 znaków.
-    - Nazwy mogą mieć tylko litery, cyfry i łączniki.
-    - Nazwy nie może zaczynać się ani kończyć łączników.
-    - Nazwy nie może zawierać następujących po sobie łączników.
-    - Przykłady prawidłowych nazw: `my-folder-1`, `my-really-extra-long-folder-111`
-    - Przykłady nazw, które nie są prawidłowe: `my-folder_1`, `my`, `--myfolder`, `myfolder--`, `myfolder!`
+    - Nazwy mogą zawierać tylko litery, cyfry i łączniki.
+    - Nazwy nie mogą rozpoczynać się ani kończyć znakiem łączników.
+    - Nazwy nie mogą mieć kolejnych łączników.
+    - Przykłady prawidłowych nazw: `my-folder-1`,`my-really-extra-long-folder-111`
+    - Przykłady nieprawidłowych nazw `my-folder_1`:, `my`, `--myfolder` `myfolder--`,,`myfolder!`
 
-    Aby uzyskać więcej informacji, zobacz Azure konwencje nazewnictwa dla [nazwy kontenera](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) i [nazwy udziałów](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
+    Aby uzyskać więcej informacji, zobacz Konwencje nazewnictwa platformy Azure dla [nazw kontenerów](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) i [nazw udziałów](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
 
-## <a name="container-or-share-size-limit-errors"></a>Kontener lub udział błędy limit rozmiaru
+### <a name="error_container_or_share_name_improper_dash"></a>ERROR_CONTAINER_OR_SHARE_NAME_IMPROPER_DASH
 
-Są to błędy związane z danymi, przekracza rozmiar dane są dozwolone w kontenerze lub w udziale.
+**Opis błędu:** Nazwy kontenerów i nazw udziałów nie mogą rozpoczynać się ani kończyć łącznikiem i nie mogą mieć kolejnych łączników.
 
-### <a name="errorcontainerorsharecapacityexceeded"></a>ERROR_CONTAINER_OR_SHARE_CAPACITY_EXCEEDED
+**Sugerowane rozwiązanie:** Folder w ramach udziału urządzenie Data Box lub Data Box Heavy (SMB/NFS), do którego skopiowane dane, jest kontenerem platformy Azure na koncie magazynu. 
 
-**Opis błędu:** Udział plików platformy Azure ogranicza udział 5 TB danych. Ten limit został przekroczony dla niektórych udziałów.
+- Na stronie **łączenie i kopiowanie** w lokalnym interfejsie użytkownika sieci Web na urządzeniu Pobierz i Przejrzyj pliki błędów, aby zidentyfikować nazwy folderów z problemami.
+- Zmień nazwę folderu w udziale urządzenie Data Box lub Data Box Heavy, aby upewnić się, że:
 
-**Sugerowane rozwiązanie:** Na **Połącz i skopiuj** strony z lokalnego Interfejsu w przeglądarce, pobrać i przejrzeć plików błędów.
+    - Nazwa ma od 3 do 63 znaków.
+    - Nazwy mogą zawierać tylko litery, cyfry i łączniki.
+    - Nazwy nie mogą rozpoczynać się ani kończyć znakiem łączników.
+    - Nazwy nie mogą mieć kolejnych łączników.
+    - Przykłady prawidłowych nazw: `my-folder-1`,`my-really-extra-long-folder-111`
+    - Przykłady nieprawidłowych nazw `my-folder_1`:, `my`, `--myfolder` `myfolder--`,,`myfolder!`
 
-Określ foldery, które mają ten problem z dzienników błędów i upewnij się, że pliki w tym folderze znajdują się w sekcji 5 TB.
+    Aby uzyskać więcej informacji, zobacz Konwencje nazewnictwa platformy Azure dla [nazw kontenerów](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) i [nazw udziałów](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
+
+## <a name="container-or-share-size-limit-errors"></a>Błędy limitu rozmiaru kontenera lub udziału
+
+Są to błędy związane z danymi przekraczającymi rozmiar danych dozwolonych w kontenerze lub udziale.
+
+### <a name="error_container_or_share_capacity_exceeded"></a>ERROR_CONTAINER_OR_SHARE_CAPACITY_EXCEEDED
+
+**Opis błędu:** Udział plików platformy Azure ogranicza udział do 5 TB danych. Ten limit został przekroczony dla niektórych udziałów.
+
+**Sugerowane rozwiązanie:** Na stronie **łączenie i kopiowanie** w lokalnym interfejsie użytkownika sieci Web Pobierz i Przejrzyj pliki błędów.
+
+Zidentyfikuj foldery, których ten problem dotyczy, z dzienników błędów i upewnij się, że pliki w tym folderze znajdują się pod 5 TB.
 
 
-## <a name="object-or-file-size-limit-errors"></a>Obiekt lub plik błędy limit rozmiaru
+## <a name="object-or-file-size-limit-errors"></a>Błędy limitu rozmiaru obiektu lub pliku
 
-Są to błędy związane z danymi przekracza maksymalny rozmiar obiektu lub plik, który jest dozwolony na platformie Azure. 
+Są to błędy związane z danymi przekraczającymi maksymalny rozmiar obiektu lub plik, który jest dozwolony na platformie Azure. 
 
-### <a name="errorbloborfilesizelimit"></a>ERROR_BLOB_OR_FILE_SIZE_LIMIT
+### <a name="error_blob_or_file_size_limit"></a>ERROR_BLOB_OR_FILE_SIZE_LIMIT
 
 **Opis błędu:** Rozmiar pliku przekracza maksymalny rozmiar pliku do przekazania.
 
-**Sugerowane rozwiązanie:** Obiekt blob lub rozmiary plików przekraczają maksymalny limit dozwolony dla przekazywania.
+**Sugerowane rozwiązanie:** Rozmiar obiektu BLOB lub pliku przekracza maksymalny dozwolony limit przekazywania.
 
-- Na **Połącz i skopiuj** strony z lokalnego Interfejsu w przeglądarce, pobrać i przejrzeć plików błędów.
-- Upewnij się, że rozmiarów obiektów blob i plików nie przekraczają limity rozmiaru obiektów platformy Azure.
+- Na stronie **łączenie i kopiowanie** w lokalnym interfejsie użytkownika sieci Web Pobierz i Przejrzyj pliki błędów.
+- Upewnij się, że rozmiary obiektów blob i plików nie przekraczają limitów rozmiaru obiektu platformy Azure.
 
-## <a name="data-or-file-type-errors"></a>Błędy typu danych lub plików
+## <a name="data-or-file-type-errors"></a>Błędy danych lub typów plików
 
-Są to błędy związane z nieobsługiwany typ pliku lub typ danych znalezionych w kontenerze lub udziału. 
+Są to błędy związane z nieobsługiwanym typem pliku lub typem danych znalezionym w kontenerze lub udziale. 
 
-### <a name="errorbloborfilesizealignment"></a>ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT
+### <a name="error_blob_or_file_size_alignment"></a>ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT
 
 **Opis błędu:** Obiekt blob lub plik jest nieprawidłowo wyrównany.
 
-**Sugerowane rozwiązanie:** Powiązana udziału blob strony na urządzenie Data Box lub duże pole danych tylko obsługuje pliki, które są 512 bajtów (np. VHD/VHDX). Wszelkie dane skopiowane do udziału blob strony zostanie przekazany na platformę Azure jako stronicowe obiekty BLOB.
+**Sugerowane rozwiązanie:** Udział obiektu BLOB strony na urządzenie Data Box lub Data Box Heavy obsługuje tylko pliki o 512 bajtach (na przykład VHD/VHDX). Wszystkie dane skopiowane do udziału obiektu BLOB stronicowania są przekazywane do platformy Azure jako stronicowe obiekty blob.
 
-Usuń wszystkie dane bez do dysku VHD/VHDX z udziału blob strony. Można używać udziałów dla blokowych obiektów blob i plików platformy Azure dla danych typu ogólnego.
+Usuń wszystkie dane spoza dysku VHD/VHDX z udziału stronicowego obiektu BLOB. Możesz użyć udziałów do blokowych obiektów blob lub plików platformy Azure dla danych ogólnych.
 
-Aby uzyskać więcej informacji, zobacz [Przegląd stronicowe obiekty BLOB](../storage/blobs/storage-blob-pageblob-overview.md).
+Aby uzyskać więcej informacji, zobacz [Omówienie stronicowych obiektów BLOB](../storage/blobs/storage-blob-pageblob-overview.md).
 
-### <a name="errorbloborfiletypeunsupported"></a>ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED
+### <a name="error_blob_or_file_type_unsupported"></a>ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED
 
-**Opis błędu:** Nieobsługiwany typ pliku jest obecny w udziale dysku zarządzanego. Dozwolone są tylko stałych dysków VHD.
+**Opis błędu:** Nieobsługiwany typ pliku jest obecny w udziale dysku zarządzanego. Dozwolone są tylko stałe wirtualne dyski twarde.
 
 **Sugerowane rozwiązanie:**
 
-- Upewnij się, przekazać tylko stałych dysków VHD w celu utworzenia dysków zarządzanych.
-- Pliki VHDX lub **dynamiczne** i **różnicowych** wirtualne dyski twarde nie są obsługiwane.
+- Upewnij się, że do tworzenia dysków zarządzanych są przekazywane tylko stałe wirtualne dyski twarde.
+- Pliki VHDX lub **dynamiczne** i **różnicowe** dyski VHD nie są obsługiwane.
 
-### <a name="errordirectorydisallowedfortype"></a>ERROR_DIRECTORY_DISALLOWED_FOR_TYPE
+### <a name="error_directory_disallowed_for_type"></a>ERROR_DIRECTORY_DISALLOWED_FOR_TYPE
 
-**Opis błędu:** Katalog nie jest dozwolona w jakiekolwiek istniejące foldery za dyski zarządzane. W tych folderów, dozwolone są tylko stałych dysków VHD.
+**Opis błędu:** Katalog nie jest dozwolony w żadnym z istniejących wcześniej folderów dla dysków zarządzanych. W tych folderach można używać tylko stałych dysków VHD.
 
-**Sugerowane rozwiązanie:** W przypadku dysków zarządzanych w ramach każdego udziału następujące trzy foldery są tworzone, które odnoszą się do kontenerów w ramach konta magazynu: Premium SSD, standardowych dysków Twardych i SSD w warstwie standardowa. Te foldery odpowiadać warstwa wydajności dysku zarządzanego.
+**Sugerowane rozwiązanie:** W przypadku dysków zarządzanych w poszczególnych udziałach są tworzone następujące trzy foldery, które odnoszą się do kontenerów na koncie magazynu: SSD w warstwie Premium, HDD w warstwie Standardowa i SSD w warstwie Standardowa. Foldery te odpowiadają warstwie wydajności dysku zarządzanego.
 
-- Upewnij się, skopiuj dane obiektów blob strony (VHD) do jednego z tych istniejących folderów.
-- Folder lub katalog nie jest dozwolona w tych istniejących folderów. Usuń wszystkie foldery, które zostały utworzone wewnątrz istniejących folderów.
+- Upewnij się, że skopiujesz stronę danych obiektu BLOB (VHD) do jednego z tych istniejących folderów.
+- Folder lub katalog nie jest dozwolony w tych istniejących folderach. Usuń wszystkie foldery utworzone wewnątrz istniejących folderów.
 
-Aby uzyskać więcej informacji, zobacz [kopiowania do usługi managed disks](data-box-deploy-copy-data-from-vhds.md#connect-to-data-box).
+Aby uzyskać więcej informacji, zobacz [Kopiuj do dysków zarządzanych](data-box-deploy-copy-data-from-vhds.md#connect-to-data-box).
 
-### <a name="reparsepointerror"></a>REPARSE_POINT_ERROR
+### <a name="reparse_point_error"></a>REPARSE_POINT_ERROR
 
-**Opis błędu:** Łącza symbolicznego nie są dozwolone w systemie Linux. 
+**Opis błędu:** Linki symboliczne nie są dozwolone w systemie Linux. 
 
-**Sugerowane rozwiązanie:** Linki symboliczne są zazwyczaj łączy, potoki i inne takie pliki. Usuń łącza, lub Rozwiązywanie problemów z łączami i kopiowania danych.
-
-
-## <a name="non-critical-blob-or-file-errors"></a>Niekrytyczne błędy obiektów blob lub pliku
-
-Wszystkie błędy, które nie są widoczne podczas kopiowania danych podsumowano w poniższych sekcjach.
-
-### <a name="errorbloborfilenamecharactercontrol"></a>ERROR_BLOB_OR_FILE_NAME_CHARACTER_CONTROL
-
-**Opis błędu:** Nazwy obiektów blob lub plik zawierać znaków kontrolnych nieobsługiwany.
-
-**Sugerowane rozwiązanie:** Obiekty BLOB lub pliki, które zostały skopiowane zawierają dzięki nieobsługiwane znaki.
-
-Na **Połącz i skopiuj** strony z lokalnego Interfejsu w przeglądarce, pobrać i przejrzeć plików błędów.
-Usuń lub zmień nazwy plików, aby usunąć nieobsługiwane znaki.
-
-Aby uzyskać więcej informacji, zobacz Azure konwencje nazewnictwa dla [blob nazwy](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) i [nazwy plików](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names).
-
-### <a name="errorbloborfilenamecharacterillegal"></a>ERROR_BLOB_OR_FILE_NAME_CHARACTER_ILLEGAL
-
-**Opis błędu:** Nazwy obiektów blob lub pliku zawiera niedozwolone znaki.
-
-**Sugerowane rozwiązanie:** Obiekty BLOB lub pliki, które zostały skopiowane zawierają dzięki nieobsługiwane znaki.
-
-Na **Połącz i skopiuj** strony z lokalnego Interfejsu w przeglądarce, pobrać i przejrzeć plików błędów.
-Usuń lub zmień nazwy plików, aby usunąć nieobsługiwane znaki.
-
-Aby uzyskać więcej informacji, zobacz Azure konwencje nazewnictwa dla [blob nazwy](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) i [nazwy plików](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names).
+**Sugerowane rozwiązanie:** Linki symboliczne są zazwyczaj łączami, potokami i innymi plikami. Usuń linki lub Rozwiąż linki i skopiuj dane.
 
 
-### <a name="errorbloborfilenameending"></a>ERROR_BLOB_OR_FILE_NAME_ENDING
+## <a name="non-critical-blob-or-file-errors"></a>Niekrytyczne obiekty blob lub błędy plików
 
-**Opis błędu:** Nazwy obiektów blob lub plików kończą się przy użyciu nieprawidłowych znaków.
+Wszystkie Błędy niekrytyczne związane z nazwami obiektów blob, plików lub kontenerów, które są widoczne podczas kopiowania danych, zostały podsumowane w poniższej sekcji. Jeśli te błędy są obecne, nazwy zostaną zmodyfikowane, aby były zgodne z konwencjami nazewnictwa platformy Azure. Odpowiedni stan zamówienia przekazywania danych zostanie **ukończony z ostrzeżeniami**.  
 
-**Sugerowane rozwiązanie:** Obiekty BLOB lub pliki, które zostały skopiowane zawierają dzięki nieobsługiwane znaki.
+### <a name="error_blob_or_file_name_character_control"></a>ERROR_BLOB_OR_FILE_NAME_CHARACTER_CONTROL
 
-Na **Połącz i skopiuj** strony z lokalnego Interfejsu w przeglądarce, pobrać i przejrzeć plików błędów.
-Usuń lub zmień nazwy plików, aby usunąć nieobsługiwane znaki.
+**Opis błędu:** Nazwy obiektów blob lub plików zawierają nieobsługiwane znaki kontrolne.
 
-Aby uzyskać więcej informacji, zobacz Azure konwencje nazewnictwa dla [blob nazwy](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) i [nazwy plików](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names).
+**Sugerowane rozwiązanie:** Obiekty blob lub pliki, które zostały skopiowane, zawierają nazwy z nieobsługiwanymi znakami.
+
+Na stronie **łączenie i kopiowanie** w lokalnym interfejsie użytkownika sieci Web Pobierz i Przejrzyj pliki błędów.
+Usuń pliki lub zmień ich nazwy, aby usunąć nieobsługiwane znaki.
+
+Aby uzyskać więcej informacji, zobacz Konwencje nazewnictwa platformy Azure dla [nazw obiektów BLOB](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) i [nazw plików](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names).
+
+### <a name="error_blob_or_file_name_character_illegal"></a>ERROR_BLOB_OR_FILE_NAME_CHARACTER_ILLEGAL
+
+**Opis błędu:** Nazwa obiektu BLOB lub pliku zawiera niedozwolone znaki.
+
+**Sugerowane rozwiązanie:** Obiekty blob lub pliki, które zostały skopiowane, zawierają nazwy z nieobsługiwanymi znakami.
+
+Na stronie **łączenie i kopiowanie** w lokalnym interfejsie użytkownika sieci Web Pobierz i Przejrzyj pliki błędów.
+Usuń pliki lub zmień ich nazwy, aby usunąć nieobsługiwane znaki.
+
+Aby uzyskać więcej informacji, zobacz Konwencje nazewnictwa platformy Azure dla [nazw obiektów BLOB](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) i [nazw plików](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names).
 
 
-### <a name="errorbloborfilenamesegmentcount"></a>ERROR_BLOB_OR_FILE_NAME_SEGMENT_COUNT
+### <a name="error_blob_or_file_name_ending"></a>ERROR_BLOB_OR_FILE_NAME_ENDING
 
-**Opis błędu:** Nazwa obiektu blob lub plik zawiera zbyt wiele segmentów ścieżki.
+**Opis błędu:** Nazwy obiektów blob lub plików kończą się nieprawidłowymi znakami.
 
-**Sugerowane rozwiązanie:** Obiekty BLOB lub pliki, które zostały skopiowane przekroczyły maksymalną liczbę segmentów ścieżki. Segment ścieżki jest ciągiem od ogranicznika następujących po sobie znaków, na przykład ukośnik /.
+**Sugerowane rozwiązanie:** Obiekty blob lub pliki, które zostały skopiowane, zawierają nazwy z nieobsługiwanymi znakami.
 
-- Na **Połącz i skopiuj** strony z lokalnego Interfejsu w przeglądarce, pobrać i przejrzeć plików błędów.
-- Upewnij się, że [blob nazwy](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) i [nazwy plików](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) są zgodne z konwencjami nazewnictwa platformy Azure.
+Na stronie **łączenie i kopiowanie** w lokalnym interfejsie użytkownika sieci Web Pobierz i Przejrzyj pliki błędów.
+Usuń pliki lub zmień ich nazwy, aby usunąć nieobsługiwane znaki.
 
-### <a name="errorbloborfilenameaggregatelength"></a>ERROR_BLOB_OR_FILE_NAME_AGGREGATE_LENGTH
+Aby uzyskać więcej informacji, zobacz Konwencje nazewnictwa platformy Azure dla [nazw obiektów BLOB](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) i [nazw plików](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names).
+
+
+### <a name="error_blob_or_file_name_segment_count"></a>ERROR_BLOB_OR_FILE_NAME_SEGMENT_COUNT
+
+**Opis błędu:** Obiekt BLOB lub nazwa pliku zawiera zbyt wiele segmentów ścieżki.
+
+**Sugerowane rozwiązanie:** Obiekty blob lub pliki, które zostały skopiowane, przekraczają maksymalną liczbę segmentów ścieżki. Segment ścieżki jest ciągiem między kolejnymi znakami ograniczającymi, na przykład ukośnikiem/.
+
+- Na stronie **łączenie i kopiowanie** w lokalnym interfejsie użytkownika sieci Web Pobierz i Przejrzyj pliki błędów.
+- Upewnij się, że [nazwy obiektów BLOB](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) i [nazwy plików](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) są zgodne z konwencjami nazewnictwa platformy Azure.
+
+### <a name="error_blob_or_file_name_aggregate_length"></a>ERROR_BLOB_OR_FILE_NAME_AGGREGATE_LENGTH
 
 **Opis błędu:** Nazwa obiektu blob lub pliku jest za długa.
 
-**Sugerowane rozwiązanie:** Obiekt blob lub nazwy pliku przekracza maksymalną długość.
+**Sugerowane rozwiązanie:** Rozmiar obiektu BLOB lub nazwy pliku przekracza maksymalną długość.
 
-- Na **Połącz i skopiuj** strony z lokalnego Interfejsu w przeglądarce, pobrać i przejrzeć plików błędów.
-- Nazwa obiektu blob nie może przekraczać 1024 znaków.
-- Usuń lub zmień nazwę obiektu blob lub pliki, aby nazwy nie może przekraczać 1024 znaków.
+- Na stronie **łączenie i kopiowanie** w lokalnym interfejsie użytkownika sieci Web Pobierz i Przejrzyj pliki błędów.
+- Nazwa obiektu BLOB nie może przekraczać 1 024 znaków.
+- Usuń lub Zmień nazwę obiektu BLOB lub plików tak, aby nazwy nie przekraczały 1024 znaków.
 
-Aby uzyskać więcej informacji zobacz Azure konwencje nazewnictwa dla nazwy obiektu blob i plików.
+Aby uzyskać więcej informacji, zobacz Konwencje nazewnictwa platformy Azure dla nazw obiektów blob i nazw plików.
 
-### <a name="errorbloborfilenamecomponentlength"></a>ERROR_BLOB_OR_FILE_NAME_COMPONENT_LENGTH
+### <a name="error_blob_or_file_name_component_length"></a>ERROR_BLOB_OR_FILE_NAME_COMPONENT_LENGTH
 
 **Opis błędu:** Jeden z segmentów w nazwie obiektu blob lub pliku jest zbyt długi.
 
-**Sugerowane rozwiązanie:** Jeden z segmentów ścieżki w nazwie pliku lub obiektu blob przekracza maksymalną dopuszczalną liczbę znaków. Segment ścieżki jest ciągiem od ogranicznika następujących po sobie znaków, na przykład ukośnik /.
+**Sugerowane rozwiązanie:** Jeden z segmentów ścieżki w obiekcie blob lub nazwie pliku przekracza maksymalną liczbę znaków. Segment ścieżki jest ciągiem między kolejnymi znakami ograniczającymi, na przykład ukośnikiem/.
 
-- Na **Połącz i skopiuj** strony z lokalnego Interfejsu w przeglądarce, pobrać i przejrzeć plików błędów.
-- Upewnij się, że [blob nazwy](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) i [nazwy plików](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) są zgodne z konwencjami nazewnictwa platformy Azure.
-
-
-### <a name="errorcontainerorsharenamedisallowedfortype"></a>ERROR_CONTAINER_OR_SHARE_NAME_DISALLOWED_FOR_TYPE
-
-**Opis błędu:** Kontenera nieprawidłowej nazwy zostały określone dla dysków zarządzanych udziałów.
-
-**Sugerowane rozwiązanie:** W przypadku dysków zarządzanych w ramach każdego udziału tworzone są następujące foldery, które odnoszą się do kontenerów w ramach konta magazynu: Premium SSD, standardowych dysków Twardych i SSD w warstwie standardowa. Te foldery odpowiadać warstwa wydajności dysku zarządzanego.
-
-- Upewnij się, skopiuj dane obiektów blob strony (VHD) do jednego z tych istniejących folderów. Tylko dane z tych istniejących kontenerów zostanie przekazany na platformę Azure.
-- Inny folder, który jest tworzony na tym samym poziomie jak dysku Premium SSD, standardowych dysków Twardych i SSD w warstwie standardowa nie jest zgodny z warstwy wydajności prawidłowe i nie można używać.
-- Usuń pliki i foldery utworzone poza warstwy wydajności.
-
-Aby uzyskać więcej informacji, zobacz [kopiowania do usługi managed disks](data-box-deploy-copy-data-from-vhds.md#connect-to-data-box).
+- Na stronie **łączenie i kopiowanie** w lokalnym interfejsie użytkownika sieci Web Pobierz i Przejrzyj pliki błędów.
+- Upewnij się, że [nazwy obiektów BLOB](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) i [nazwy plików](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) są zgodne z konwencjami nazewnictwa platformy Azure.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+### <a name="error_container_or_share_name_disallowed_for_type"></a>ERROR_CONTAINER_OR_SHARE_NAME_DISALLOWED_FOR_TYPE
 
-- Dowiedz się więcej o [wymagania systemowe magazynu obiektów Blob pole danych](data-box-system-requirements-rest.md).
+**Opis błędu:** Określono nieprawidłową nazwę kontenera dla udziałów dysków zarządzanych.
+
+**Sugerowane rozwiązanie:** W przypadku dysków zarządzanych w poszczególnych udziałach są tworzone następujące foldery, które odpowiadają kontenerom na koncie magazynu: SSD w warstwie Premium, HDD w warstwie Standardowa i SSD w warstwie Standardowa. Foldery te odpowiadają warstwie wydajności dysku zarządzanego.
+
+- Upewnij się, że skopiujesz stronę danych obiektu BLOB (VHD) do jednego z tych istniejących folderów. Tylko dane z tych istniejących kontenerów są przekazywane do platformy Azure.
+- Wszystkie inne foldery, które są tworzone na tym samym poziomie co SSD w warstwie Premium, HDD w warstwie Standardowa i SSD w warstwie Standardowa, nie odpowiadają prawidłowym warstwom wydajności i nie mogą być używane.
+- Usuń pliki lub foldery utworzone poza warstwami wydajności.
+
+Aby uzyskać więcej informacji, zobacz [Kopiuj do dysków zarządzanych](data-box-deploy-copy-data-from-vhds.md#connect-to-data-box).
+
+
+## <a name="next-steps"></a>Następne kroki
+
+- Dowiedz się więcej o [wymaganiach systemowych magazynu obiektów Blob urządzenie Data Box](data-box-system-requirements-rest.md).

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 07/15/2019
+ms.date: 08/07/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 113e178d39ec776b63a0b38c55035f3493586ea2
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: f3aea108ed87debac56b18b5959d492f2bcb291d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233874"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853598"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Bezpośrednia Federacja z dostawcami AD FS i innych firm dla użytkowników-Gości (wersja zapoznawcza)
 |     |
@@ -46,7 +46,7 @@ W przypadku federacji bezpośredniej użytkownicy-Goście logują się do dzier�
 ## <a name="limitations"></a>Ograniczenia
 
 ### <a name="dns-verified-domains-in-azure-ad"></a>Domeny zweryfikowane przez usługę DNS w usłudze Azure AD
-Bezpośrednia Federacja jest dozwolona tylko w przypadku domen, które ***nie*** są weryfikowane przez system DNS w usłudze Azure AD. Bezpośrednia Federacja jest dozwolona dla niezarządzanych (zweryfikowanych przez e-mail lub "wirusowych") dzierżaw usługi Azure AD, ponieważ nie są one zweryfikowane przez usługę DNS.
+Domena, której chcesz sfederować, ***nie*** może być zweryfikowana przez system DNS w usłudze Azure AD. Istnieje możliwość skonfigurowania Federacji bezpośredniej z niezarządzanymi (zweryfikowanymi pocztą e-mail lub "wirusami") dzierżaw usługi Azure AD, ponieważ nie są one zweryfikowane przez system DNS.
 ### <a name="authentication-url"></a>Adres URL uwierzytelniania
 Federacja bezpośrednia jest dozwolona tylko w przypadku zasad, w których domena adresu URL uwierzytelniania jest zgodna z domeną docelową lub jeśli adres URL uwierzytelniania jest jednym z tych dozwolonych dostawców tożsamości (Ta lista może ulec zmianie):
 -   accounts.google.com
@@ -66,7 +66,7 @@ Jeśli określisz adres URL metadanych w ustawieniach dostawcy tożsamości, us�
 Obecnie obsługiwane są maksymalnie 1 000 relacje federacyjne. Ten limit obejmuje [wewnętrzne Federacji](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) i bezpośrednie Federacji.
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 ### <a name="can-i-set-up-direct-federation-with-a-domain-for-which-an-unmanaged-email-verified-tenant-exists"></a>Czy można skonfigurować bezpośrednią Federacji z domeną, dla której istnieje niezarządzana dzierżawa (zweryfikowana za pośrednictwem poczty e-mail)? 
-Tak. Jeśli domena nie została zweryfikowana i dzierżawa nie przeszła [przejęcia przez administratora](../users-groups-roles/domains-admin-takeover.md), można skonfigurować Federacji bezpośrednią. Niezarządzane lub zweryfikowane pocztą e-mail dzierżawy są tworzone, gdy użytkownik zrealizuje zaproszenie B2B lub wykonuje samoobsługowe Tworzenie konta w usłudze Azure AD przy użyciu domeny, która obecnie nie istnieje. Można skonfigurować bezpośrednią Federacji z tymi domenami. W przypadku próby skonfigurowania bezpośredniej Federacji z domeną zweryfikowaną przez system DNS w Azure Portal lub za pomocą programu PowerShell zostanie wyświetlony komunikat o błędzie.
+Tak. Jeśli domena nie została zweryfikowana i dzierżawa nie przeszła [przejęcia przez administratora](../users-groups-roles/domains-admin-takeover.md), można skonfigurować bezpośrednią Federacji z tą domeną. Niezarządzane lub zweryfikowane pocztą e-mail dzierżawy są tworzone, gdy użytkownik zrealizuje zaproszenie B2B lub wykonuje samoobsługowe Tworzenie konta w usłudze Azure AD przy użyciu domeny, która obecnie nie istnieje. Można skonfigurować bezpośrednią Federacji z tymi domenami. W przypadku próby skonfigurowania bezpośredniej Federacji z domeną zweryfikowaną przez system DNS w Azure Portal lub za pomocą programu PowerShell zostanie wyświetlony komunikat o błędzie.
 ### <a name="if-direct-federation-and-email-one-time-passcode-authentication-are-both-enabled-which-method-takes-precedence"></a>Jeśli w przypadku federacji bezpośredniej i poczty e-mail jednorazowe uwierzytelnianie kodu dostępu jest włączone, która metoda ma pierwszeństwo?
 W przypadku ustanowienia bezpośredniej Federacji z organizacją partnera ma ona wyższy priorytet niż jednorazowe uwierzytelnianie kodu dostępu do poczty e-mail dla nowych użytkowników-Gości z tej organizacji. Jeśli użytkownik-Gość wykorzystał zaproszenie przy użyciu jednorazowego uwierzytelniania kodu dostępu, przed skonfigurowaniem Federacji bezpośredniej będzie nadal korzystać z uwierzytelniania jednorazowego kodu dostępu. 
 ### <a name="does-direct-federation-address-sign-in-issues-due-to-a-partially-synced-tenancy"></a>Czy bezpośrednie problemy z logowaniem do adresu federacyjnego są spowodowane częściowo zsynchronizowaną dzierżawą?
@@ -90,16 +90,16 @@ W poniższych tabelach przedstawiono wymagania dotyczące określonych atrybutó
 
 Atrybuty wymagane dla odpowiedzi SAML 2,0 z dostawcy tożsamości:
 
-|Atrybut  |Value  |
+|Atrybut  |Wartość  |
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
-|Grupy odbiorców     |`urn:federation:MicrosoftOnline`         |
+|Odbiorcy     |`urn:federation:MicrosoftOnline`         |
 |Wystawca     |Identyfikator URI wystawcy partnera dostawcy tożsamości, na przykład`http://www.example.com/exk10l6w90DHM0yi...`         |
 
 
 Wymagane oświadczenia dla tokenu SAML 2,0 wystawionego przez dostawcy tożsamości:
 
-|Atrybut  |Value  |
+|Atrybut  |Wartość  |
 |---------|---------|
 |Format NameID     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
@@ -119,19 +119,19 @@ Wymagane atrybuty w wiadomości protokołu WS-pokarmowego z dostawcy tożsamośc
 |Atrybut  |Value  |
 |---------|---------|
 |PassiveRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
-|Grupy odbiorców     |`urn:federation:MicrosoftOnline`         |
+|Odbiorcy     |`urn:federation:MicrosoftOnline`         |
 |Wystawca     |Identyfikator URI wystawcy partnera dostawcy tożsamości, na przykład`http://www.example.com/exk10l6w90DHM0yi...`         |
 
 Wymagane oświadczenia dla tokenu protokołu WS-pokarmowego wydanego przez dostawcy tożsamości:
 
-|Atrybut  |Value  |
+|Atrybut  |Wartość  |
 |---------|---------|
 |ImmutableID     |`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`         |
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
 
 ## <a name="step-2-configure-direct-federation-in-azure-ad"></a>Krok 2: Konfigurowanie bezpośredniej Federacji w usłudze Azure AD 
 Następnie skonfigurujesz Federacji z dostawcą tożsamości skonfigurowanym w kroku 1 w usłudze Azure AD. Możesz użyć portalu usługi Azure AD lub programu PowerShell. Przed zastosowaniem bezpośrednich zasad Federacji może upłynąć 5-10 minut. W tym czasie nie należy próbować zrealizować zaproszenia dla domeny Federacji bezpośredniej. Wymagane są następujące atrybuty:
-- Identyfikator URI wystawcy partnera dostawcy tożsamości
+- Identyfikator URI wystawcy dostawcy tożsamości partnera
 - Punkt końcowy uwierzytelniania pasywnego dostawcy tożsamości partnera (obsługiwana jest tylko obsługa protokołu HTTPS)
 - Certyfikat
 
@@ -151,7 +151,7 @@ Następnie skonfigurujesz Federacji z dostawcą tożsamości skonfigurowanym w k
 6. Aby wypełnić szczegóły metadanych, można przekazać plik metadanych. Jeśli zdecydujesz się na ręczne wprowadzanie metadanych, wprowadź następujące informacje:
    - Nazwa domeny dostawcy tożsamości partnera
    - Identyfikator jednostki dostawcy tożsamości partnera
-   - Punkt końcowy żądania pasywnego dostawcy tożsamości partnera
+   - Punkt końcowy pasywnego obiektu żądającego dostawcy tożsamości partnera
    - Certyfikat
    > [!NOTE]
    > Adres URL metadanych jest opcjonalny, jednak zdecydowanie zalecamy. W przypadku podania adresu URL metadanych usługa Azure AD może automatycznie odnowić certyfikat podpisywania po jego wygaśnięciu. Jeśli certyfikat jest obrócony z dowolnego powodu przed upływem czasu wygaśnięcia lub jeśli nie podasz adresu URL metadanych, usługa Azure AD nie będzie mogła go odnowić. W takim przypadku należy ręcznie zaktualizować certyfikat podpisywania.

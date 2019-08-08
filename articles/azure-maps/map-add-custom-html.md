@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 65777a87cd042a4d8b3b14255dbf99241cd42e18
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: f8777a3d0eb9b97fff6f492f181a432d98d9341c
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638755"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68849303"
 ---
 # <a name="add-html-markers-to-the-map"></a>Dodawanie znaczników HTML do mapy
 
@@ -47,6 +47,9 @@ Domyślnym `htmlContent` znacznikiem HTML jest szablon SVG z folderami `{color}`
 
 <iframe height='500' scrolling='no' title='Znacznik HTML z niestandardowym szablonem SVG' src='//codepen.io/azuremaps/embed/LXqMWx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz <a href='https://codepen.io/azuremaps/pen/LXqMWx/'>znacznik HTML</a> pióra z niestandardowym szablonem SVG<a href='https://codepen.io/azuremaps'>@azuremaps</a>, Azure Maps () na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
+
+> [!TIP]
+> Zestaw SDK sieci Web Azure Maps udostępnia kilka szablonów obrazów SVG, które mogą być używane ze znacznikami HTML. Aby uzyskać więcej informacji, zobacz dokument [jak korzystać z szablonów obrazów](how-to-use-image-templates-web-sdk.md) .
 
 ## <a name="add-a-css-styled-html-marker"></a>Dodawanie znacznika HTML z stylem CSS
 
@@ -89,6 +92,9 @@ Dowiedz się więcej na temat klas i metod używanych w tym artykule:
 > [HtmlMarkerManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkermanager?view=azure-iot-typescript-latest)
 
 Aby uzyskać więcej przykładów kodu do dodania do usługi Maps, zobacz następujące artykuły:
+
+> [!div class="nextstepaction"]
+> [Jak używać szablonów obrazów](how-to-use-image-templates-web-sdk.md)
 
 > [!div class="nextstepaction"]
 > [Dodaj warstwę symboli](./map-add-pin.md)

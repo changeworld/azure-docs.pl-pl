@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 59ce6719c117db53b02ed6594de219010ee08ee6
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: e6f6c41e5de4f4a053748dfb08dc57e8acac32e5
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828237"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848240"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Jak działa usługa Azure Machine Learning: Architektura i pojęcia
 
@@ -231,10 +231,10 @@ Aby uzyskać więcej informacji na temat potoków uczenia maszynowego za pomocą
 
 Podczas opracowywania rozwiązania Użyj zestawu SDK języka Python Azure Machine Learning w skrypcie języka Python, aby rejestrować arbitralne metryki. Po uruchomieniu Zbadaj metryki, aby określić, czy przebieg został utworzony przez model, który chcesz wdrożyć.
 
-### <a name="next-steps"></a>Następne kroki
+### <a name="next-steps"></a>Kolejne kroki
 
 Aby rozpocząć pracę z usługą Azure Machine Learning, zobacz:
 
 * [Co to jest usługa Azure Machine Learning?](overview-what-is-azure-ml.md)
-* [Tworzenie obszaru roboczego usługi Azure Machine Learning](setup-create-workspace.md)
+* [Tworzenie obszaru roboczego usługi Azure Machine Learning](how-to-manage-workspace.md)
 * [Samouczek (część 1): trenowanie modelu](tutorial-train-models-with-aml.md)

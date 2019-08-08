@@ -1,5 +1,5 @@
 ---
-title: Rejestrowanie aplikacji z platformą tożsamości Microsoft — platforma tożsamości firmy Microsoft
+title: Rejestrowanie aplikacji na platformie tożsamości firmy Microsoft — platforma tożsamości firmy Microsoft
 description: Dowiedz się, jak dodawać i rejestrować aplikacje za pomocą platformy tożsamości firmy Microsoft.
 services: active-directory
 documentationcenter: ''
@@ -14,33 +14,33 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2019
 ms.author: ryanwi
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 541253cf3a8f2628ea0e76f1115ddc4a290daf62
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 80040aab0ea9d1444e1afd77d45d990f3d05f0de
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67655479"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853024"
 ---
-# <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Szybki start: Rejestrowanie aplikacji w usłudze Microsoft platformy tożsamości
+# <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Szybki start: Rejestrowanie aplikacji na platformie tożsamości firmy Microsoft
 
 Deweloperzy w przedsiębiorstwach i dostawcy oprogramowania jako usługi (SaaS) mogą tworzyć komercyjne usługi w chmurze lub aplikacje biznesowe i integrować je z platformą tożsamości firmy Microsoft, aby zapewnić bezpieczne logowanie i autoryzację dla swoich usług.
 
-Ten przewodnik Szybki Start dowiesz się, jak dodać i rejestrowanie aplikacji za pomocą **rejestracje aplikacji** środowisko w witrynie Azure portal, dzięki czemu aplikacja może zostać zintegrowany z platformą Microsoft identity. Aby dowiedzieć się więcej na temat nowych funkcji i ulepszeń w nowym środowisku rejestrowania aplikacji, zobacz [ten wpis w blogu](https://developer.microsoft.com/graph/blogs/new-app-registration/).
+Ten przewodnik Szybki Start przedstawia sposób dodawania i rejestrowania aplikacji przy użyciu **rejestracje aplikacji** środowiska w Azure Portal, dzięki czemu aplikacja będzie mogła zostać zintegrowana z platformą tożsamości firmy Microsoft. Aby dowiedzieć się więcej na temat nowych funkcji i ulepszeń w nowym środowisku rejestrowania aplikacji, zobacz [ten wpis w blogu](https://developer.microsoft.com/graph/blogs/new-app-registration/).
 
 ## <a name="register-a-new-application-using-the-azure-portal"></a>Rejestrowanie nowej aplikacji w witrynie Azure Portal
 
 1. Zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
 1. Jeśli Twoje konto umożliwia dostęp do więcej niż jednej dzierżawy, wybierz konto w prawym górnym rogu, a następnie ustaw sesję portalu na wybraną dzierżawę usługi Azure AD.
-1. W okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory** usługi, a następnie wybierz **rejestracji aplikacji > nowej rejestracji**.
+1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** a następnie wybierz pozycję **rejestracje aplikacji > Nowa rejestracja**.
 1. Po wyświetleniu strony **Rejestrowanie aplikacji** podaj informacje dotyczące rejestracji aplikacji:
 
    - **Nazwa** — podaj znaczącą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji.
    - **Obsługiwane typy konta** — wybierz konta, które aplikacja ma obsługiwać.
 
-       | Obsługiwane typy konta | Opis |
+       | Obsługiwane typy kont | Opis |
        |-------------------------|-------------|
        | **Konta tylko w tym katalogu organizacyjnym** | Wybierz tę opcję, jeśli kompilujesz aplikację biznesową. Ta opcja nie jest dostępna, jeśli aplikacja nie jest rejestrowana w katalogu.<br><br>Ta opcja mapuje do usługi Azure AD tylko aplikację jednodostępną.<br><br>Jest to opcja domyślna, chyba że rejestrujesz aplikację poza katalogiem. W przypadkach, gdy aplikacja jest rejestrowana poza katalogiem, wartość domyślna to aplikacja wielodostępna usługi Azure AD i konta osobiste Microsoft. |
        | **Konta w dowolnym katalogu organizacyjnym** | Wybierz tę opcję, jeśli aplikacja jest przeznaczona dla wszystkich klientów biznesowych i edukacyjnych.<br><br>Ta opcja mapuje do usługi Azure AD tylko aplikację wielodostępną.<br><br>Jeśli aplikacja jest zarejestrowana w usłudze Azure AD jako jednodostępna, możesz ją zaktualizować do aplikacji wielodostępnej usługi Azure AD i z powrotem za pomocą bloku **Uwierzytelnianie**. |
@@ -54,13 +54,13 @@ Ten przewodnik Szybki Start dowiesz się, jak dodać i rejestrowanie aplikacji z
 
 1. Po zakończeniu wybierz pozycję **Rejestruj**.
 
-    [![Pokazuje ekran, aby zarejestrować nową aplikację w witrynie Azure portal](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png#lightbox)
+    [![Wyświetla ekran, aby zarejestrować nową aplikację w Azure Portal](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png#lightbox)
 
 Usługa Azure AD przypisze do aplikacji unikatowy identyfikator (klienta), po czym nastąpi przeniesienie do strony **Przegląd** aplikacji. Aby dodać kolejne możliwości do aplikacji, możesz wybrać inne opcje konfiguracji, w tym znakowanie, certyfikaty i wpisy tajne, uprawnienia interfejsu API i więcej.
 
-[![Przykład strony Przegląd nowo zarejestrowana aplikacja](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png#lightbox)
+[![Przykład strony przeglądu nowo zarejestrowanej aplikacji](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png#lightbox)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się więcej o [uprawnieniach i zgodach](v2-permissions-and-consent.md).
 - Aby włączyć dodatkowe funkcje konfiguracji w rejestracji aplikacji — takie jak poświadczenia i uprawnienia — oraz włączyć logowanie dla użytkowników z innych dzierżaw, zobacz następujące przewodniki Szybki start:

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: automation
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 2f6dcbba8da314798b2e8de12a9fc5bf55f67a4a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3dece2d2bffc7bd2b9e0a3c2931b2038ebc3c77e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60738658"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850646"
 ---
 # <a name="create-an-azure-automation-runbook"></a>Tworzenie elementu runbook usługi Azure Automation
 
@@ -36,7 +36,7 @@ Najpierw utwórz element runbook. Przykładowy element runbook tworzony w tym pr
 
 1. Kliknij przycisk **Dodaj element runbook** znajdujący się w górnej części listy. Na stronie **Dodawanie elementu runbook** wybierz pozycję **Szybkie tworzenie**.
 
-1. W polu **Nazwa** elementu runbook wpisz „Hello World”, a w obszarze **Typ elementu runbook** wybierz pozycję **PowerShell**. Kliknij pozycję **Utwórz**.
+1. W polu **Nazwa** elementu runbook wpisz „Hello World”, a w obszarze **Typ elementu runbook** wybierz pozycję **PowerShell**. Kliknij przycisk **Utwórz**.
 
    ![Wprowadzanie na stronie informacji dotyczących elementu runbook usługi Automation](./media/automation-quickstart-create-runbook/automation-create-runbook-configure.png)
 
@@ -45,7 +45,7 @@ Najpierw utwórz element runbook. Przykładowy element runbook tworzony w tym pr
     ![Tworzenie skryptu programu PowerShell w edytorze elementów runbook](./media/automation-quickstart-create-runbook/automation-edit-runbook-empty.png)
 
 1. Wpisz lub skopiuj i wklej następujący kod do okienka edycji. Spowoduje to utworzenie dodatkowego parametru wejściowego o nazwie „Name” o domyślnej wartości „World” oraz wyświetlenie ciągu używającego następującej wartości wejściowej:
-   
+
    ```powershell-interactive
    param
    (
@@ -96,10 +96,9 @@ Po opublikowaniu elementu runbook zostanie wyświetlona strona przeglądu.
 
 Gdy element runbook nie będzie już potrzebny, usuń go. Aby to zrobić, zaznacz element runbook na liście i kliknij pozycję **Usuń**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start utworzono, edytowano, przetestowano i opublikowano element runbook oraz uruchomiono zadanie elementu runbook. Aby dowiedzieć się więcej o elementach runbook usługi Automation, przejdź do artykułu opisującego różne typy elementów runbook, które można tworzyć i z nich korzystać w usłudze Automation.
 
 > [!div class="nextstepaction"]
 > [Instrukcje dotyczące usługi Automation — typy elementów runbook](./automation-runbook-types.md)
-

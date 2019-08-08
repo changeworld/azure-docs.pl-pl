@@ -3,20 +3,20 @@ title: Dźwięk — Przewodnik Szybki Start z programem Unity
 titlesuffix: Azure Cognitive Services
 description: Korzystając z przykładowej zawartości, należy eksperymentować z kontrolkami projektu w środowisku Unity i wdrażać je na pulpicie systemu Windows.
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: quickstart
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 93eb44bf91bc2c8346660a4d770ee6d83501c3ae
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: a36a16b6cb64c300647d16695edfbb73f4884104
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706601"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854858"
 ---
 # <a name="project-acoustics-unity-quickstart"></a>Środowisko projektowe — Przewodnik Szybki Start
 Użyj zawartości przykładowej akustycznej projektu dla aparatu Unity, aby eksperymentować z kontrolkami projektu z symulacją.
@@ -59,7 +59,7 @@ Skrypt **AcousticsAdjust** jest dołączany do źródeł dźwięku w przykładow
 Poniżej przedstawiono niektóre efekty, które mogą zostać utworzone przy użyciu podanych kontrolek. Aby uzyskać szczegółowe informacje na temat poszczególnych kontrolek, zobacz Samouczek dotyczący środowiska projektowego dla [aparatu Unity](unreal-workflow.md).
 
 ### <a name="modify-distance-based-attenuation"></a>Modyfikuj tłumienie na podstawie odległości
-Procesor DSP audio, który jest dostarczany przez wtyczkę spatializera w **środowisku Unity,** uwzględnia tłumienie oparte na odległości dla poszczególnych źródeł wbudowane w Edytor aparatu Unity. Kontrolki przeciwstawnej na podstawie odległości znajdują się w składniku **Źródło Audio** znalezionym w panelu **inspektorów** źródeł dźwięku, w obszarze **Ustawienia dźwięku 3W**:
+Procesor DSP audio, który jest dostarczany przez wtyczkę spatializera w środowisku Unity, uwzględnia tłumienie oparte na odległości dla poszczególnych źródeł wbudowane w Edytor aparatu Unity. Kontrolki przeciwstawnej na podstawie odległości znajdują się w składniku **Źródło Audio** znalezionym w panelu **inspektorów** źródeł dźwięku, w obszarze **Ustawienia dźwięku 3W**:
 
 ![Zrzut ekranu przedstawiający panel Opcje tłumienia odległości aparatu Unity](media/distance-attenuation.png)
 
@@ -75,7 +75,7 @@ Akustyczne projektu wykonuje obliczenia w polu "region symulacji" na wyśrodkowa
 
 * Zwiększ czas zaniku w całym miejscu, dostosowując **skalę czasu zanikania**. Jeśli wynik symulacji dla określonej pary lokalizacji odbiornika źródła jest czasem o wartości 1,5 s, a **Skala czasu zaniku** jest ustawiona na 2, czas zaniku zastosowany do źródła to – 3 s.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Przeczytaj wszystkie szczegóły dotyczące kontrolek projektowych opartych na technologii [Unity](unity-workflow.md)
 * Więcej szczegółowych koncepcji związanych z [procesem projektowania](design-process.md)
 * [Utwórz konto platformy Azure](create-azure-account.md) , aby poznać procesy poprzedzające tworzenie i tworzenie

@@ -47,7 +47,8 @@
 - name: Przewodniki z instrukcjami
   items:
     - name: Obsługa wyróżniania trafień
-      href: hit-highlighting.md
+      href: ../Bing-Web-Search/hit-highlighting.md
+      maintainContext: true
     - name: Dzielenie wiadomości na strony
       href: paging-news.md
     - name: Zmiana rozmiaru i przycinanie miniatur

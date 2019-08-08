@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: 70ba6c5507cf31732d679a61c3e185a520b4c5f3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 94894126be98f0d3d4d404d97d0a4a39fff2e665
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566676"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847396"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Często zadawane pytania dotyczące baz danych usługi Azure SQL Database
 
@@ -44,7 +44,7 @@ Warstwy usług oparte na rdzeń wirtualny są szczególnie zróżnicowane w zale
 - Warstwa usługi Krytyczne dla działania firmy jest odpowiednia dla obciążeń firmowych, w których opóźnienie operacji we/wy jest priorytetem.
 
 | | Typ zasobu | Ogólne zastosowanie |  Hiperskala | Krytyczne dla działania firmy |
-|:---|:---:|:---:|:---:|:---:|:---:|
+|:---:|:---:|:---:|:---:|:---:|
 | **Najlepsze dla** |Wszyscy|  Większość obciążeń firmowych. Oferuje zorientowane na budżety Opcje obliczeniowe i magazynowe. | Aplikacje danych o dużych wymaganiach dotyczących pojemności danych oraz możliwość płynnego skalowania magazynu i skalowania w poziomie. | Aplikacje OLTP o dużej szybkości transakcji i najniższym opóźnieniu we/wy. Oferuje największą odporność na błędy przy użyciu kilku izolowanych replik.|
 |  **Typ zasobu** ||Pojedyncza baza danych/Pula elastyczna/wystąpienie zarządzane | Pojedyncza baza danych | Pojedyncza baza danych/Pula elastyczna/wystąpienie zarządzane |
 | **Rozmiar obliczeń**|Pojedyncza baza danych/Pula elastyczna * | od 1 do 80 rdzeni wirtualnych | od 1 do 80 rdzeni wirtualnych * | od 1 do 80 rdzeni wirtualnych |
@@ -55,7 +55,7 @@ Warstwy usług oparte na rdzeń wirtualny są szczególnie zróżnicowane w zale
 | **Przepływność we/wy** | Pojedyncza baza danych * * | 500 operacji we/wy na sekundę z 7000 maksymalną liczbą IOPS | Skalowanie jest architekturą wielowarstwową z buforowaniem na wielu poziomach. Efektywne operacje we/wy będą zależeć od obciążenia. | 5000 operacji we/wy z maksymalną liczbą IOPS 200 000|
 | | Wystąpienie zarządzane | Zależy od rozmiaru pliku | ND | Wystąpienie zarządzane: Zależy od rozmiaru pliku|
 |**Dostępność**|Wszyscy|1 replika, brak skali do odczytu, brak lokalnej pamięci podręcznej | Wiele replik, do 15-skali odczytu, częściowej lokalnej pamięci podręcznej | 3 repliki, 1 Skala odczytu, strefa nadmiarowa HA, pełna lokalna pamięć podręczna |
-|**Kopii zapasowych**|Wszyscy|RA-GRS, 7-35 dni (domyślnie 7 dni)| RA-GRS, 7-35 dni (domyślnie 7 dni), stała godzina do odzyskiwania w czasie (kopie) | RA-GRS, 7-35 dni (domyślnie 7 dni) |
+|**Kopii zapasowych**|Wszyscy|RA-GRS, 7-35 dni (domyślnie 7 dni)| RA-GRS, 7 dni, stałe odzyskiwanie do czasu w czasie (kopie) | RA-GRS, 7-35 dni (domyślnie 7 dni) |
 
 \*Pule elastyczne nie są obsługiwane w warstwie usługi w ramach skalowania
 
@@ -197,7 +197,7 @@ Nie
 
 ### <a name="is-database-compression-supported"></a>Czy kompresja bazy danych jest obsługiwana
 
-Tak
+Yes
 
 ### <a name="if-i-have-a-huge-table-does-my-table-data-get-spread-out-across-multiple-data-files"></a>Jeśli mam ogromną tabelę, dane tabeli są rozłożone na wiele plików danych
 
@@ -256,7 +256,7 @@ Dzięki domyślnemu podstawowemu i 1 pomocniczemu zapasowi jest dostępna umowa 
 
 ### <a name="are-the-database-backups-managed-for-me-by-the-azure-sql-database-service"></a>Są kopiami zapasowymi bazy danych zarządzanymi dla mnie przez usługę Azure SQL Database
 
-Tak
+Yes
 
 ### <a name="how-often-are-the-database-backups-taken"></a>Jak często wykonywane są kopie zapasowe bazy danych
 
@@ -386,6 +386,6 @@ Nie. Bazy danych w ramach skalowania mają magazyn udostępniony, co oznacza, ż
 
 Od momentu, gdy transakcja jest zatwierdzana na poziomie podstawowym, w zależności od szybkości generowania dziennika, może być chwilowo lub w niskiej wartości milisekund.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat warstwy usługi do skalowania, zobacz sekcję [skalowanie warstwy usług](sql-database-service-tier-hyperscale.md).

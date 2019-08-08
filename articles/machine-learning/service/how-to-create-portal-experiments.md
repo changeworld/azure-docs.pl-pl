@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: cgronlun
+ms.author: nibaccam
 author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/02/2019
-ms.openlocfilehash: eb6ae11bb4ffb39d9e9bcc692f17559fa2cde674
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: a5db2c1c40c9c6f5c05205b9b2c652d2e23cf229
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720234"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848244"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Twórz, eksploruj i wdrażaj automatyczne eksperymenty uczenia maszynowego w Azure Portal (wersja zapoznawcza)
 
@@ -28,7 +28,7 @@ ms.locfileid: "68720234"
 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
 
-* Obszar roboczy usługi Azure Machine Learning. Zobacz [Tworzenie obszaru roboczego usługi Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace).
+* Obszar roboczy usługi Azure Machine Learning. Zobacz [Tworzenie obszaru roboczego usługi Azure Machine Learning](how-to-manage-workspace.md).
 
 ## <a name="get-started"></a>Wprowadzenie
 
@@ -173,7 +173,7 @@ Automatyczna ML pomaga wdrożyć model bez pisania kodu:
     + Opcja 2: Aby wdrożyć określoną iterację modelu z tego eksperymentu, przejdź do szczegółów modelu, aby otworzyć stronę szczegółów uruchamiania, a następnie wybierz pozycję Wdróż model.
 1. Wypełnij okienko **Wdróż model** ,
 
-    Pole| Wartość
+    Pole| Value
     ----|----
     Nazwa wdrożenia| Wprowadź unikatową nazwę wdrożenia.
     Opis wdrożenia| Wprowadź opis, aby lepiej zidentyfikować to wdrożenie.
@@ -190,7 +190,7 @@ Automatyczna ML pomaga wdrożyć model bez pisania kodu:
 
 Teraz masz działającą usługę sieci Web do generowania prognoz!
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Wypróbuj kompleksowy samouczek dotyczący [tworzenia pierwszego zautomatyzowanego eksperymentu ml z Azure Machine Learning](tutorial-first-experiment-automated-ml.md). 
 * [Dowiedz się więcej o zautomatyzowanym uczeniu maszynowym](concept-automated-ml.md) i Azure Machine Learning.

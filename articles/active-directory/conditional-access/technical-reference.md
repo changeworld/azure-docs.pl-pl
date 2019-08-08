@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 316c5b6b52c30b51fb2f177a0ae2bd9758fc91d9
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 390c961eaa692e6ca5bf26e2954c0764207fc210
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442473"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853676"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory informacje o ustawieniach dostępu warunkowego
 
@@ -116,19 +116,20 @@ W zasadach dostępu warunkowego można wybrać **przeglądarki** jako aplikację
 
 To ustawienie działa ze wszystkimi przeglądarkami. Jednak w celu spełnienia zasad dotyczących urządzeń, takich jak zgodne wymagania dotyczące urządzeń, obsługiwane są następujące systemy operacyjne i przeglądarki:
 
-| OS                     | Przeglądarki                                      |
-| :--                    | :--                                           |
-| Windows 10             | Internet Explorer, Microsoft Edge, Chrome     |
-| Windows 8 / 8.1        | Internet Explorer, Chrome                     |
-| Windows 7              | Internet Explorer, Chrome                     |
-| iOS                    | Safari, Microsoft Edge, Intune Managed Browser |
-| Android                | Chrome, Microsoft Edge, Intune Managed Browser |
-| Windows Phone          | Internet Explorer, Microsoft Edge             |
-| Windows Server 2016    | Internet Explorer, Microsoft Edge             |
-| Windows Server 2016    | Chrome                                        |
-| Windows Server 2012 R2 | Internet Explorer, Chrome                     |
-| Windows Server 2008 R2 | Internet Explorer, Chrome                     |
-| macOS                  | Chrome, Safari                                |
+| OS                     | Przeglądarki                                        |
+| :--                    | :--                                             |
+| Windows 10             | Microsoft Edge, Internet Explorer, Chrome       |
+| Windows 8 / 8.1        | Internet Explorer, Chrome                       |
+| Windows 7              | Internet Explorer, Chrome                       |
+| iOS                    | Microsoft Edge, Intune Managed Browser, Safari  |
+| Android                | Microsoft Edge, Intune Managed Browser, Chrome  |
+| Windows Phone          | Microsoft Edge, Internet Explorer               |
+| Windows Server 2019    | Microsoft Edge, Internet Explorer, Chrome       |
+| Windows Server 2016    | Microsoft Edge, Internet Explorer               |
+| Windows Server 2012 R2 | Internet Explorer                       |
+| Windows Server 2008 R2 | Internet Explorer                       |
+| macOS                  | Chrome, Safari                                  |
+
 
 #### <a name="why-do-i-see-a-certificate-prompt-in-the-browser"></a>Dlaczego widzę monit dotyczący certyfikatu w przeglądarce
 
@@ -256,7 +257,7 @@ To ustawienie dotyczy następujących aplikacji klienckich:
 - Wymagania dotyczące wymagań **zasad ochrony aplikacji** :
     - Obsługuje tylko [warunek platformy](#device-platform-condition)dla systemów iOS i Android.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Aby zapoznać się z omówieniem dostępu warunkowego, zobacz [co to jest dostęp warunkowy w Azure Active Directory?](../active-directory-conditional-access-azure-portal.md)
 - Aby skonfigurować zasady dostępu warunkowego w danym środowisku, zapoznaj się z [zaleceniami zalecanymi dla dostępu warunkowego w Azure Active Directory](best-practices.md).

@@ -3,20 +3,20 @@ title: Zagadnienia dotyczące projektowania symulacji akustyki
 titlesuffix: Azure Cognitive Services
 description: W tym przeglądzie koncepcyjnym wyjaśniono, w jaki sposób akustyczne projektowe obejmuje symulację akustyczną w procesie projektowania dźwięku.
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: c7e6f17d3e7b9712dd853bcf309bb73fa10ac156
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 11e1e3f45b5198ddedb6c31fcd354185adef445d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704833"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854308"
 ---
 # <a name="project-acoustics-design-process-concepts"></a>Pojęcia związane z procesem projektowania akustycznego projektu
 
@@ -60,7 +60,7 @@ W tym modelu zadania projektanta zmieniają się przed wybraniem parametrów aku
 
 Pakiet akustyczny projektu integruje poszczególne składniki opisane powyżej: symulator, koder, który wyodrębnia parametry i kompiluje element zawartości akustycznej, DSP audio i wybór filtrów. Projekt dźwiękowy z Akustycznością projektu obejmuje wybór parametrów filtrów, które dostosowują parametry zamknięcia i reverberation wynikające z symulacji i stosowane do DSP audio, z kontrolkami dynamicznymi widocznymi w edytorze gier i aparacie audio.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Wypróbuj model projektowy, korzystając z [przewodnika Szybki Start dla środowiska Unity](unity-quickstart.md) lub [projektu — Przewodnik Szybki Start dla Unreal](unreal-quickstart.md)
 * Eksploruj kontrolki projektowe akustyczne projektu [dla aparatu Unity](unity-workflow.md) lub [formanty układu akustycznego projektu dla Unreal](unreal-workflow.md)
 

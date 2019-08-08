@@ -1,6 +1,6 @@
 ---
 title: Szybki start — Azure Application Insights | Microsoft Docs
-description: Przedstawiono instrukcje pozwalające szybko skonfigurować aplikację mobilną w celu monitorowania za pomocą usługi Application Insights i Centrum aplikacji
+description: Zawiera instrukcje umożliwiające szybkie skonfigurowanie aplikacji mobilnej do monitorowania za pomocą Application Insights i App Center
 services: application-insights
 keywords: ''
 author: mrbullwinkle
@@ -11,12 +11,12 @@ ms.reviewer: daviste
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: b8ce08c662e1615b62160e0c681a2fe8dbcb2be1
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 40b3e0260e08ab5a8870c726042d06d80393fb15
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447042"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68849077"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Rozpoczęcie analizowania aplikacji mobilnej za pomocą Centrum aplikacji i usługi Application Insights
 
@@ -33,7 +33,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="onboard-to-app-center"></a>Dodawanie do Centrum aplikacji
 
-Zanim użyjesz usługi Application Insights z aplikacją mobilną, musisz dodać aplikację do [Centrum aplikacji](https://docs.microsoft.com/mobile-center/). Usługa Application Insights nie odbiera danych telemetrycznych bezpośrednio z aplikacji mobilnej. Zamiast tego aplikacja wysyła dane telemetryczne zdarzeń niestandardowych do Centrum aplikacji. Następnie Centrum aplikacji w miarę odbierania zdarzeń niestandardowych stale eksportuje ich kopie do usługi Application Insights.
+Zanim użyjesz usługi Application Insights z aplikacją mobilną, musisz dodać aplikację do [Centrum aplikacji](https://docs.microsoft.com/mobile-center/). Usługa Application Insights nie odbiera danych telemetrycznych bezpośrednio z aplikacji mobilnej. Zamiast tego aplikacja wysyła dane telemetryczne zdarzeń niestandardowych do Centrum aplikacji. Następnie Centrum aplikacji w miarę odbierania zdarzeń niestandardowych stale eksportuje ich kopie do usługi Application Insights. (Ta wartość nie dotyczy [zestawu SDK Application INSIGHTS js](https://github.com/Microsoft/ApplicationInsights-JS) ani natywnej [wtyczki reagującej](https://github.com/Microsoft/ApplicationInsights-JS/tree/master/vNext/extensions/applicationinsights-react-native) , w której dane telemetryczne są wysyłane bezpośrednio do Application Insights.)
 
 Aby dodać aplikację, skorzystaj z opcji szybkiego startu Centrum aplikacji dla każdej platformy obsługiwanej przez Twoją aplikację. Utwórz oddzielne wystąpienie Centrum aplikacji dla każdej platformy:
 
@@ -71,25 +71,25 @@ Gdy aplikacja wysyła zdarzenia niestandardowe i są one odbierane przez Centrum
 2. Wybierz pozycję **Utwórz zasób** > **Narzędzia deweloperskie** > **Application Insights**.
 
     > [!NOTE]
-    > Jeśli po raz pierwszy tworzenie zasobu usługi Application Insights możesz dowiedzieć się więcej, odwiedzając [Utwórz zasób usługi Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) dokumentu.
+    > Jeśli tworzysz zasób Application Insights, możesz dowiedzieć się więcej, odwiedzając dokument [tworzenie Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) .
 
     Zostanie wyświetlone okno konfiguracji. Wypełnij pola wejściowe, używając poniższej tabeli.
 
-    | Ustawienia        |  Wartość           | Opis  |
+    | Ustawienia        |  Value           | Opis  |
    | ------------- |:-------------|:-----|
    | **Nazwa**      | Jakaś globalnie unikatowa wartość, na przykład „moja_aplikacja_iOS” | Nazwa identyfikująca monitorowaną aplikację |
      | **Grupa zasobów**     | Nowa grupa zasobów lub istniejąca grupa zasobów z menu | Grupa zasobów, w której ma zostać utworzony nowy zasób usługi Application Insights |
    | **Location** | Lokalizacja z menu | Wybierz lokalizację w pobliżu Ciebie lub w pobliżu miejsca hostowania aplikacji |
 
-3. Kliknij pozycję **Utwórz**.
+3. Kliknij przycisk **Utwórz**.
 
 Jeśli aplikacja obsługuje wiele platform (iOS, Android itp.), najlepiej utworzyć oddzielne zasoby usługi Application Insights, po jednym dla każdej platformy.
 
 ## <a name="export-to-application-insights"></a>Eksportowanie do usługi Application Insights
 
-W przypadku nowego zasobu usługi Application Insights na **Przegląd** strony. Skopiuj klucz Instrumentacji z zasobu.
+W nowym zasobie Application Insights na stronie **Przegląd** . Skopiuj klucz Instrumentacji z zasobu.
 
-W [platformy App Center](https://appcenter.ms/) wystąpienia aplikacji:
+W [App Center](https://appcenter.ms/) wystąpieniu aplikacji:
 
 1. Na stronie **Ustawienia** kliknij pozycję **Eksportuj**.
 2. Wybierz pozycję **Nowy eksport**, wybierz pozycję **Application Insights**, a następnie kliknij pozycję **Dostosuj**.
@@ -106,11 +106,11 @@ Aby przy pierwszym połączeniu dostarczyć większą ilość danych, do usługi
 
 Usługa Application Insights umożliwia wykonywanie zapytań, segmentowanie, filtrowanie i analizowanie danych telemetrycznych zdarzeń niestandardowych z aplikacji w sposób wykraczający poza możliwości narzędzi analitycznych dostępnych w Centrum aplikacji.
 
-1. **Wykonaj zapytanie względem danych telemetrycznych zdarzeń niestandardowych.** Z usługi Application Insights **Przegląd** wybierz **dzienniki (analiza)** .
+1. **Wykonaj zapytanie względem danych telemetrycznych zdarzeń niestandardowych.** Na stronie **przegląd** Application Insights wybierz pozycję **dzienniki (analiza)** .
 
-   Spowoduje to otwarcie portalu Application Insights Logs (analiza) skojarzony z zasobem usługi Application Insights. Portal dzienniki (analiza) pozwala na bezpośrednie wyszukiwanie danych przy użyciu języka zapytań usługi Log Analytics, dzięki czemu możesz zadawać dowolnie złożone pytania dotyczące aplikacji i jej użytkownikach.
+   Zostanie otwarty portal dzienników Application Insights (analiza) skojarzony z zasobem Application Insights. Portal dzienniki (analiza) umożliwia bezpośrednie wysyłanie zapytań do danych przy użyciu języka zapytań Log Analytics, dzięki czemu możesz zadawać arbitralnie złożone pytania dotyczące aplikacji i jej użytkowników.
    
-   Otwórz nową kartę w portalu dzienniki (analiza), a następnie wklej poniższe zapytanie. W jego wyniku zostanie zwrócona liczba unikatowych użytkowników, którzy wysłali poszczególne zdarzenia niestandardowe z aplikacji w ciągu ostatnich 24 godzin, posortowana według tych różnych liczb.
+   Otwórz nową kartę w portalu dzienniki (analiza), a następnie wklej ją w poniższym zapytaniu. W jego wyniku zostanie zwrócona liczba unikatowych użytkowników, którzy wysłali poszczególne zdarzenia niestandardowe z aplikacji w ciągu ostatnich 24 godzin, posortowana według tych różnych liczb.
 
    ```AIQL
    customEvents
@@ -119,7 +119,7 @@ Usługa Application Insights umożliwia wykonywanie zapytań, segmentowanie, fil
    | order by dcount_user_Id desc 
    ```
 
-   ![Portal dzienniki (analiza)](./media/mobile-center-quickstart/analytics-portal-001.png)
+   ![Portal dzienników (analiza)](./media/mobile-center-quickstart/analytics-portal-001.png)
 
    1. Wybierz zapytanie, klikając w dowolnym miejscu zapytania w edytorze tekstów.
    2. Następnie kliknij pozycję **Przejdź**, aby wykonać zapytanie. 
@@ -164,7 +164,7 @@ Aby usunąć zasób usługi Application Insights:
 1. W menu po lewej stronie portalu Azure kliknij pozycję **Grupy zasobów**, a następnie wybierz grupę zasobów, w której został utworzony zasób usługi Application Insights.
 2. Otwórz zasób usługi Application Insights, który chcesz usunąć. Następnie kliknij pozycję **Usuń** w menu u góry zasobu i potwierdź. Spowoduje to trwałe usunięcie kopii danych, które zostały wyeksportowane do usługi Application Insights.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Informacje o sposobie używania aplikacji przez klientów](../../azure-monitor/app/usage-overview.md)

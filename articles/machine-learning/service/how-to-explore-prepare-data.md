@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/23/2019
-ms.openlocfilehash: 31a367fcde909f393efa4fea65b25716f95c56ee
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: dbdd088e5a78a4f78eec27b5ee74856c6aecc209
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828435"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847901"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>Eksplorowanie i przygotowywanie danych za pomocą klasy DataSet (wersja zapoznawcza)
 
@@ -31,7 +31,7 @@ Aby eksplorować i przygotowywać dane, musisz:
 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
 
-* Obszar roboczy usługi Azure Machine Learning. Zobacz [Tworzenie obszaru roboczego usługi Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace).
+* Obszar roboczy usługi Azure Machine Learning. Zobacz [Tworzenie obszaru roboczego usługi Azure Machine Learning](how-to-manage-workspace.md).
 
 * Zestaw Azure Machine Learning SDK dla języka Python (wersja 1.0.21 lub nowsza), który obejmuje pakiet usługi Azure DataSets. Aby zainstalować lub zaktualizować najnowszą wersję zestawu SDK, zobacz [Instalowanie lub aktualizowanie zestawu SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
@@ -375,7 +375,7 @@ Zapisz ten krok grupowania rozmytego do najnowszej definicji zestawu danych za `
 dataset = dataset.update_definition(ds_def, 'fuzzy grouping')
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Zobacz [samouczek](tutorial-auto-train-models.md) zautomatyzowanej uczenia maszynowego, aby zapoznać się z przykładem modelu regresji.
 

@@ -1,6 +1,6 @@
 ---
-title: Rozwiązanie na platformie Azure Key Vault w usłudze Azure Monitor | Dokumentacja firmy Microsoft
-description: Rozwiązanie Azure Key Vault w usłudze Azure Monitor umożliwia przeglądanie dzienników usługi Azure Key Vault.
+title: Azure Key Vault rozwiązanie w Azure Monitor | Microsoft Docs
+description: Aby przejrzeć dzienniki Azure Key Vault, można użyć rozwiązania Azure Key Vault w Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,51 +13,51 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: bwren
-ms.openlocfilehash: 481b643f2f7201a2a1745c7aef9ddd81883da020
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b7d9ff760bac06602d8d770a358c8a2e22a72c81
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60498529"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68849193"
 ---
-# <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Rozwiązanie na platformie Azure Key Vault Analytics w usłudze Azure Monitor
+# <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Rozwiązanie Azure Key Vault Analytics w Azure Monitor
 
-![Symbol usługi Key Vault](media/azure-key-vault/key-vault-analytics-symbol.png)
+![Symbol Key Vault](media/azure-key-vault/key-vault-analytics-symbol.png)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Rozwiązanie Azure Key Vault w usłudze Azure Monitor umożliwia przeglądanie dzienników usługi Azure Key Vault AuditEvent.
+Możesz użyć rozwiązania Azure Key Vault w Azure Monitor do Azure Key Vault przeglądania dzienników AuditEvent.
 
-Aby skorzystać z rozwiązania, należy włączyć rejestrowanie diagnostyki usługi Azure Key Vault i kierują je bezpośrednio diagnostyki do obszaru roboczego usługi Log Analytics. Nie jest konieczne do zapisu w dziennikach do usługi Azure Blob storage.
+Aby użyć rozwiązania, należy włączyć rejestrowanie diagnostyki Azure Key Vault i skierować diagnostykę do Log Analytics obszaru roboczego. Nie jest konieczne zapisywanie dzienników w usłudze Azure Blob Storage.
 
 > [!NOTE]
-> W stycznia 2017 r. zmienić sposób obsługiwane przesyłania dzienników z usługi Key Vault do usługi Log Analytics. Jeśli używasz rozwiązania Key Vault pokazuje *(przestarzałe)* w tytule, zapoznaj się [migracji ze starego rozwiązania Key Vault](#migrating-from-the-old-key-vault-solution) kroki należy wykonać.
+> W styczniu 2017 obsługiwany sposób wysyłania dzienników z Key Vault do Log Analytics zmieniony. Jeśli używane rozwiązanie Key Vault jest widoczne *(przestarzałe)* w tytule, zapoznaj się z artykułem [Migrowanie ze starego rozwiązania Key Vault](#migrating-from-the-old-key-vault-solution) , aby zapoznać się z krokami, które należy wykonać.
 >
 >
 
 ## <a name="install-and-configure-the-solution"></a>Instalowanie i konfigurowanie rozwiązania
-Użyj poniższych instrukcji, aby zainstalować i skonfigurować rozwiązanie Azure Key Vault:
+Aby zainstalować i skonfigurować rozwiązanie Azure Key Vault, należy wykonać następujące instrukcje:
 
-1. Użyj procesu opisanego w [rozwiązań Dodaj usługi Azure Monitor z galerii rozwiązań](../../azure-monitor/insights/solutions.md) dodać rozwiązanie Azure Key Vault do obszaru roboczego usługi Log Analytics.
-2. Włączanie rejestrowania diagnostycznego dla zasobów usługi Key Vault monitorować, za pomocą [portal](#enable-key-vault-diagnostics-in-the-portal) lub [programu PowerShell](#enable-key-vault-diagnostics-using-powershell)
+1. Aby dodać rozwiązanie Azure Key Vault do obszaru roboczego Log Analytics, Użyj procesu opisanego w temacie [Dodawanie rozwiązań Azure monitor z Galeria rozwiązań](../../azure-monitor/insights/solutions.md) .
+2. Włącz rejestrowanie diagnostyczne dla zasobów Key Vault do monitorowania przy użyciu [portalu](#enable-key-vault-diagnostics-in-the-portal) lub [programu PowerShell](#enable-key-vault-diagnostics-using-powershell)
 
-### <a name="enable-key-vault-diagnostics-in-the-portal"></a>Włącz diagnostykę usługi Key Vault w portalu
+### <a name="enable-key-vault-diagnostics-in-the-portal"></a>Włączanie diagnostyki Key Vault w portalu
 
-1. W witrynie Azure portal przejdź do zasobu usługi Key Vault do monitorowania
-2. Wybierz *ustawień diagnostycznych* można otworzyć na następującej stronie
+1. W Azure Portal przejdź do zasobu Key Vault do monitorowania
+2. Wybierz pozycję *Ustawienia diagnostyczne* , aby otworzyć następującą stronę
 
-   ![Obraz przedstawiający Kafelek usługi Azure Key Vault](media/azure-key-vault/log-analytics-keyvault-enable-diagnostics01.png)
-3. Kliknij przycisk *Włącz diagnostykę* można otworzyć na następującej stronie
+   ![obraz kafelka Azure Key Vault](media/azure-key-vault/log-analytics-keyvault-enable-diagnostics01.png)
+3. Kliknij pozycję *Włącz diagnostykę* , aby otworzyć następującą stronę
 
-   ![Obraz przedstawiający Kafelek usługi Azure Key Vault](media/azure-key-vault/log-analytics-keyvault-enable-diagnostics02.png)
-4. Nadaj nazwę ustawienia diagnostyczne.
-5. Kliknij pole wyboru *wysyłanie do usługi Log Analytics*
-6. Wybierz istniejący obszar roboczy usługi Log Analytics lub Utwórz obszar roboczy
-7. Aby włączyć *AuditEvent* dzienniki, kliknij pole wyboru w obszarze dziennika
-8. Kliknij przycisk *Zapisz* Aby włączyć rejestrowanie diagnostyki do obszaru roboczego usługi Log Analytics.
+   ![obraz kafelka Azure Key Vault](media/azure-key-vault/log-analytics-keyvault-enable-diagnostics02.png)
+4. Nadaj nazwę dla ustawienia diagnostycznego.
+5. Kliknij pole wyboru *Wyślij do log Analytics*
+6. Wybierz istniejący obszar roboczy Log Analytics lub Utwórz obszar roboczy
+7. Aby włączyć dzienniki *AuditEvent* , kliknij pole wyboru w obszarze Dziennik.
+8. Kliknij przycisk *Zapisz* , aby włączyć rejestrowanie diagnostyki w log Analytics obszarze roboczym.
 
-### <a name="enable-key-vault-diagnostics-using-powershell"></a>Włącz diagnostykę usługi Key Vault przy użyciu programu PowerShell
-Poniższy skrypt programu PowerShell zawiera przykładowy sposób użycia `Set-AzDiagnosticSetting` Aby włączyć rejestrowanie diagnostyczne dla usługi Key Vault:
+### <a name="enable-key-vault-diagnostics-using-powershell"></a>Włączanie diagnostyki Key Vault przy użyciu programu PowerShell
+Poniższy skrypt programu PowerShell zawiera przykład użycia `Set-AzDiagnosticSetting` programu w celu włączenia rejestrowania diagnostycznego dla Key Vault:
 ```
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
@@ -68,89 +68,89 @@ Set-AzDiagnosticSetting -ResourceId $kv.ResourceId  -WorkspaceId $workspaceId -E
 
 
 
-## <a name="review-azure-key-vault-data-collection-details"></a>Przejrzyj szczegóły zbierania danych usługi Azure Key Vault
-Rozwiązanie Azure Key Vault zbiera dzienniki diagnostyczne bezpośrednio z usługi Key Vault.
-Nie jest konieczne do zapisu w dziennikach do usługi Azure Blob storage i agent nie jest wymagany do zbierania danych.
+## <a name="review-azure-key-vault-data-collection-details"></a>Przejrzyj szczegóły zbierania danych Azure Key Vault
+Azure Key Vault rozwiązanie zbiera dzienniki diagnostyczne bezpośrednio z Key Vault.
+Nie jest konieczne zapisywanie dzienników w usłudze Azure Blob Storage, a agent nie jest wymagany do zbierania danych.
 
-W poniższej tabeli przedstawiono metody zbierania danych i inne szczegóły dotyczące sposobu dane są zbierane dla usługi Azure Key Vault.
+W poniższej tabeli przedstawiono metody zbierania danych oraz inne szczegóły dotyczące sposobu zbierania danych dla Azure Key Vault.
 
-| Platforma | Agent bezpośredni | Systems Center Operations Manager agent | Azure | Wymagane programu Operations Manager? | Danych agenta programu Operations Manager wysyłane za pośrednictwem grupy zarządzania | Częstotliwość zbierania |
+| Platforma | Agent bezpośredni | Agent programu System Center Operations Manager | Azure | Operations Manager jest wymagane? | Dane agenta Operations Manager wysyłane przez grupę zarządzania | Częstotliwość zbierania |
 | --- | --- | --- | --- | --- | --- | --- |
-| Azure |  |  |&#8226; |  |  | Po dostarczeniu |
+| Azure |  |  |&#8226; |  |  | przy nadejściu |
 
 ## <a name="use-azure-key-vault"></a>Korzystanie z rozwiązania Azure Key Vault
-Po [zainstalować rozwiązanie](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview), Wyświetl dane usługi Key Vault, klikając **Key Vault Analytics** Kafelek z usługi Azure Monitor **Przegląd** strony. Otwórz tę stronę z **usługi Azure Monitor** menu, klikając **więcej** w obszarze **Insights** sekcji. 
+Po [zainstalowaniu rozwiązania](https://azuremarketplace.microsoft.com/en-usrketplace/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview)Wyświetl Key Vault dane, klikając kafelek **Key Vault Analytics** na stronie **Przegląd** Azure monitor. Otwórz Tę stronę z menu **Azure monitor** , klikając pozycję **więcej** w sekcji **szczegółowe informacje** . 
 
-![Obraz przedstawiający Kafelek usługi Azure Key Vault](media/azure-key-vault/log-analytics-keyvault-tile.png)
+![obraz kafelka Azure Key Vault](media/azure-key-vault/log-analytics-keyvault-tile.png)
 
-Po kliknięciu **Key Vault Analytics** Kafelek, możesz wyświetlić podsumowanie dzienników i następnie przejść do szczegółów w ramach następujących kategorii:
+Po kliknięciu kafelka **Key Vault Analytics** można wyświetlić podsumowania dzienników, a następnie przejść do szczegółów dla następujących kategorii:
 
-* Wolumin wszystkie operacje usługi key vault, wraz z upływem czasu
-* Nie powiodło się woluminy operacyjne wraz z upływem czasu
-* Średnie opóźnienie operacyjne przez operację
-* Jakość usług dla operacji na wartościach liczby operacji, które przyjmują więcej niż 1000 ms i listę operacji, które przyjmują więcej niż 1000 ms
+* Wolumin wszystkich operacji magazynu kluczy w czasie
+* Woluminy operacji zakończonych niepowodzeniem w czasie
+* Średnie opóźnienie operacyjne według operacji
+* Jakość usługi dla operacji z liczbą operacji, które mają więcej niż 1000 MS i listę operacji, które mają więcej niż 1000 MS
 
-![Obraz przedstawiający pulpit nawigacyjny usługi Azure Key Vault](media/azure-key-vault/log-analytics-keyvault01.png)
+![obraz pulpitu nawigacyjnego Azure Key Vault](media/azure-key-vault/log-analytics-keyvault01.png)
 
-![Obraz przedstawiający pulpit nawigacyjny usługi Azure Key Vault](media/azure-key-vault/log-analytics-keyvault02.png)
+![obraz pulpitu nawigacyjnego Azure Key Vault](media/azure-key-vault/log-analytics-keyvault02.png)
 
-### <a name="to-view-details-for-any-operation"></a>Aby wyświetlić szczegóły dotyczące każdej operacji
-1. Na **Przegląd** kliknij **Key Vault Analytics** kafelka.
-2. Na **usługi Azure Key Vault** pulpitu nawigacyjnego, przejrzyj dane podsumowania w jednym z bloków, a następnie kliknij je do wyświetlenia szczegółowych informacji na stronie wyszukiwania dziennika.
+### <a name="to-view-details-for-any-operation"></a>Aby wyświetlić szczegóły dla każdej operacji
+1. Na stronie **Przegląd** kliknij kafelek **Key Vault Analytics** .
+2. Na pulpicie nawigacyjnym **Azure Key Vault** Przejrzyj informacje podsumowujące w jednej z bloków, a następnie kliknij jeden, aby wyświetlić szczegółowe informacje na jego temat na stronie przeszukiwanie dzienników.
 
-    Na wszystkich stronach wyszukiwania dziennika możesz wyświetlić wyników według czasu, szczegółowe wyniki i historię wyszukiwania dziennika. Można również filtrować według zestawu reguł, aby zawęzić wyniki.
+    Na dowolnej stronie przeszukiwania dzienników można wyświetlać wyniki według czasu, szczegółowych wyników i historii przeszukiwania dzienników. Możesz również filtrować według aspektów, aby zawęzić wyniki.
 
-## <a name="azure-monitor-log-records"></a>Rekordy dziennika w usłudze Azure Monitor
-Rozwiązanie Azure Key Vault analizuje rekordy, które mają typ **KeyVaults** , są zbierane z [dzienniki AuditEvent](../../key-vault/key-vault-logging.md) w usłudze Diagnostyka Azure.  Właściwości te rekordy są w poniższej tabeli:  
+## <a name="azure-monitor-log-records"></a>Azure Monitor rekordy dziennika
+Azure Key Vault rozwiązanie analizuje rekordy, które mają typy magazynów kluczy , które są zbierane z [dzienników AuditEvent](../../key-vault/key-vault-logging.md) w Diagnostyka Azure.  Właściwości tych rekordów znajdują się w poniższej tabeli:  
 
 | Właściwość | Opis |
 |:--- |:--- |
-| Typ |*AzureDiagnostics* |
+| Type |*AzureDiagnostics* |
 | SourceSystem |*Azure* |
-| CallerIpAddress |Adres IP klienta, który wysłał żądanie |
-| Category | *AuditEvent* |
-| CorrelationId |Opcjonalny identyfikator GUID, który klient może przekazać w celu skorelowania dzienników po stronie klienta z dziennikami po stronie usługi (Key Vault). |
-| durationMs |Czas potrzebny do obsłużenia żądania interfejsu API REST podany w milisekundach. Tym razem nie obejmuje opóźnienia sieci, więc czas, który ma być mierzony po stronie klienta mogą być niezgodne z tym razem. |
-| httpStatusCode_d |Zwróconym przez żądanie jest kod stanu HTTP (na przykład *200*) |
+| CallerIpAddress |Adres IP klienta, który wykonał żądanie |
+| Kategoria | *AuditEvent* |
+| Identyfikator korelacji |Opcjonalny identyfikator GUID, który klient może przekazać w celu skorelowania dzienników po stronie klienta z dziennikami po stronie usługi (Key Vault). |
+| Milisekundach) |Czas potrzebny do obsłużenia żądania interfejsu API REST podany w milisekundach. Ta godzina nie obejmuje opóźnienia sieci, dlatego czas pomiaru po stronie klienta może nie być zgodny z tym czasem. |
+| httpStatusCode_d |Kod stanu HTTP zwrócony przez żądanie (na przykład *200*) |
 | id_s |Unikatowy identyfikator żądania |
-| identity_claim_appid_g | Identyfikator GUID dla Identyfikatora aplikacji |
-| OperationName |Nazwa operacji zgodnie z opisem w [rejestrowanie usługi Azure Key Vault](../../key-vault/key-vault-logging.md) |
-| OperationVersion |Wersja interfejsu API REST zażądane przez klienta (na przykład *2015-06-01*) |
+| identity_claim_appid_g | Identyfikator GUID dla identyfikatora aplikacji |
+| OperationName |Nazwa operacji, zgodnie z opisem w [Azure Key Vault rejestrowania](../../key-vault/key-vault-logging.md) |
+| OperationVersion |Wersja interfejsu API REST żądana przez klienta (na przykład *2015-06-01*) |
 | requestUri_s |Identyfikator URI żądania |
 | Resource |Nazwa magazynu kluczy |
-| ResourceGroup |Grupa zasobów magazynu kluczy |
-| ResourceId |Identyfikator zasobu usługi Azure Resource Manager W przypadku dzienników usługi Key Vault jest identyfikator zasobu usługi Key Vault |
+| Grupa zasobów |Grupa zasobów magazynu kluczy |
+| ResourceId |Identyfikator zasobu usługi Azure Resource Manager W przypadku dzienników Key Vault jest to Key Vault identyfikator zasobu. |
 | ResourceProvider |*MICROSOFT.KEYVAULT* |
 | ResourceType | *VAULTS* |
 | ResultSignature |Stan HTTP (na przykład *OK*) |
-| ResultType |Wynik żądania interfejsu API REST (na przykład *Powodzenie*) |
-| SubscriptionId |Identyfikator subskrypcji platformy Azure w subskrypcji zawierającej usługi Key Vault |
+| Result |Wynik żądania interfejsu API REST (na przykład *sukcesu*) |
+| SubscriptionId |Identyfikator subskrypcji platformy Azure dla subskrypcji zawierającej Key Vault |
 
-## <a name="migrating-from-the-old-key-vault-solution"></a>Migracja ze starego rozwiązania Key Vault
-W stycznia 2017 r. zmienić sposób obsługiwane przesyłania dzienników z usługi Key Vault do usługi Log Analytics. Te zmiany zapewniają następujące korzyści:
-+ Dzienniki są zapisywane bezpośrednio do obszaru roboczego usługi Log Analytics, bez konieczności używania konta magazynu
-+ Mniejszych opóźnień, od momentu, gdy są generowane dzienniki do nich są dostępne w usłudze Log Analytics
-+ Mniejszej liczby czynności konfiguracyjnych
-+ Wspólny format dla wszystkich typów diagnostyki platformy Azure
+## <a name="migrating-from-the-old-key-vault-solution"></a>Migrowanie ze starego rozwiązania Key Vault
+W styczniu 2017 obsługiwany sposób wysyłania dzienników z Key Vault do Log Analytics zmieniony. Te zmiany zapewniają następujące korzyści:
++ Dzienniki są zapisywane bezpośrednio w obszarze roboczym Log Analytics bez konieczności korzystania z konta magazynu
++ Mniejsze opóźnienie od momentu, w którym dzienniki są generowane w celu udostępnienia w Log Analytics
++ Mniej czynności konfiguracyjnych
++ Typowy format dla wszystkich typów diagnostyki platformy Azure
 
-Aby użyć zaktualizowane rozwiązanie:
+Aby użyć zaktualizowanego rozwiązania:
 
-1. [Konfigurowanie diagnostyki, wysyłane bezpośrednio do obszaru roboczego usługi Log Analytics z usługi Key Vault](#enable-key-vault-diagnostics-in-the-portal)  
-2. Włączanie rozwiązania usługi Azure Key Vault przy użyciu procesu opisanego w [rozwiązań Dodaj usługi Azure Monitor z galerii rozwiązań](../../azure-monitor/insights/solutions.md)
-3. Zaktualizuj wszelkie zapisane zapytania, pulpity nawigacyjne lub alerty, aby użyć nowego typu danych
-   + Typ jest zmiana: KeyVaults do AzureDiagnostics. Do filtrowania Key Vault dzienniki, można użyć typu zasobu.
-   + Zamiast: `KeyVaults`, użyj `AzureDiagnostics | where ResourceType'=="VAULTS"`
-   + Pola: (Nazwy pól jest rozróżniana wielkość liter)
-   + Dla dowolnego pola, które ma sufiks \_s, \_d, lub \_g nazwę, zmienić pierwszy znak na małe litery
-   + Dla dowolnego pola, które ma sufiks \_o w nazwie, dane zostanie podzielona na poszczególne pola na podstawie nazw pól zagnieżdżonych. Na przykład nazwy UPN obiektu wywołującego jest przechowywany w polu `identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s`
-   + Pole CallerIpAddress zmieniony na CallerIPAddress
-   + RemoteIPCountry pole nie jest już obecne
-4. Usuń *Key Vault Analytics (przestarzałe)* rozwiązania. Jeśli używasz programu PowerShell użyć `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false`
+1. [Skonfiguruj diagnostykę do wysłania bezpośrednio do obszaru roboczego Log Analytics z Key Vault](#enable-key-vault-diagnostics-in-the-portal)  
+2. Włącz rozwiązanie Azure Key Vault przy użyciu procesu opisanego w temacie [Dodawanie rozwiązań Azure monitor z Galeria rozwiązań](../../azure-monitor/insights/solutions.md)
+3. Zaktualizuj wszystkie zapisane zapytania, pulpity nawigacyjne lub alerty, aby użyć nowego typu danych
+   + Typ jest zmieniany z: Magazyny kluczy do AzureDiagnostics. Do filtrowania dzienników Key Vault można użyć elementu ResourceType.
+   + Zamiast: `KeyVaults`, użyj`AzureDiagnostics | where ResourceType'=="VAULTS"`
+   + Pola (Nazwy pól są rozróżniane wielkości liter)
+   + Dla każdego pola, które ma sufiks \_s, \_d lub \_g w nazwie, Zmień pierwszy znak na małe litery
+   + Dla każdego pola, które ma sufiks o \_wartości w nazwie, dane są dzielone na poszczególne pola na podstawie zagnieżdżonych nazw pól. Na przykład nazwa UPN obiektu wywołującego jest przechowywana w polu`identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s`
+   + Zmieniono CallerIpAddress pola na CallerIPAddress
+   + Pole RemoteIPCountry nie jest już obecne
+4. Usuń rozwiązanie *Key Vault Analytics (przestarzałe)* . Jeśli używasz programu PowerShell, użyj polecenia`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false`
 
-Dane zbierane, zanim zmiany nie jest widoczna w nowym rozwiązaniu. Można utworzyć zapytanie dotyczące tych danych za pomocą starego typu i nazwy pola.
+Dane zbierane przed zmianą nie będą widoczne w nowym rozwiązaniu. Można kontynuować zapytania o te dane przy użyciu starych typów i nazw pól.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
-* Użyj [rejestrowania zapytań w usłudze Azure Monitor](../../azure-monitor/log-query/log-query-overview.md) Aby przeglądać szczegółowe dane usługi Azure Key Vault.
+## <a name="next-steps"></a>Następne kroki
+* Użyj [zapytań dzienników w Azure monitor](../../azure-monitor/log-query/log-query-overview.md) , aby wyświetlić szczegółowe dane Azure Key Vault.

@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 08/05/2019
-ms.openlocfilehash: 7c4c4ff611b35cac9aa8be1a9697a0d11bc4dc8b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 9bd56984f088ab16fc5d80c588afce2cdc31240b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815964"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848113"
 ---
 # <a name="securely-run-experiments-and-inference-inside-an-azure-virtual-network"></a>Bezpieczne uruchamianie eksperymentów i wnioskowania wewnątrz sieci wirtualnej platformy Azure
 
@@ -27,7 +27,7 @@ Ten artykuł zawiera szczegółowe informacje na temat **zaawansowanych ustawie�
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Utwórz [obszar roboczy](setup-create-workspace.md) usługi Azure Machine Learning, jeśli jeszcze go nie masz. W tym dokumencie przyjęto założenie, że znasz usługi Azure Virtual Networks i sieć IP. W tym dokumencie założono również, że utworzono sieć wirtualną i podsieć, która ma być używana z zasobami obliczeniowymi. Jeśli nie znasz usługi Azure Virtual Networks, zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej o usłudze:
+Utwórz [obszar roboczy](how-to-manage-workspace.md) usługi Azure Machine Learning, jeśli jeszcze go nie masz. W tym dokumencie przyjęto założenie, że znasz usługi Azure Virtual Networks i sieć IP. W tym dokumencie założono również, że utworzono sieć wirtualną i podsieć, która ma być używana z zasobami obliczeniowymi. Jeśli nie znasz usługi Azure Virtual Networks, zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej o usłudze:
 
 * [Adresowanie IP](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)
 * [Grupy zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/security-overview)
@@ -36,7 +36,7 @@ Utwórz [obszar roboczy](setup-create-workspace.md) usługi Azure Machine Learni
 
 ## <a name="storage-account-for-your-workspace"></a>Konto magazynu dla obszaru roboczego
 
-Aby użyć domyślnego konta usługi Azure Storage dla obszaru roboczego w sieci wirtualnej, wykonaj następujące czynności:
+Aby użyć konta usługi Azure Storage dla obszaru roboczego w sieci wirtualnej, wykonaj następujące czynności:
 
 1. Tworzenie obliczeń eksperymentów przykładowych. Środowisko obliczeniowe usługi Machine Learning za siecią wirtualną lub dołączenie obliczeń eksperymentowania do obszaru roboczego. Klaster usługi HDInsight lub maszyna wirtualna. Aby uzyskać więcej informacji, zobacz [używanie środowisko obliczeniowe usługi Machine Learning](#use-machine-learning-compute) i [Używanie maszyny wirtualnej lub klastra usługi HDInsight](#use-a-virtual-machine-or-hdinsight-cluster) w tym dokumencie.
 2. Przejdź do magazynu dołączonego do obszaru roboczego. ![Obraz Azure Portal przedstawiający usługę Azure Storage dołączoną do obszaru roboczego usługi Azure Machine Learning](./media/how-to-enable-virtual-network/workspace-storage.png)
@@ -55,7 +55,9 @@ Aby użyć domyślnego konta usługi Azure Storage dla obszaru roboczego w sieci
 > [!IMPORTANT]
 > __Domyślne konto magazynu__ dla usługi Azure Machine Learning można umieścić w sieci wirtualnej __tylko podczas__przeprowadzania eksperymentów.
 >
-> W przypadku __kont magazynu innych niż domyślne na potrzeby eksperymentowania__lub jeśli używasz konta magazynu do wnioskowania, musisz mieć __nieograniczony dostęp do konta magazynu__.
+> __Konta magazynu inne niż domyślne__ można także umieścić w sieci wirtualnej, ale __tylko na potrzeby eksperymentowania__.
+>
+> Domyślne lub inne niż domyślne konta magazynu używane na potrzeby wnioskowania muszą mieć __nieograniczony dostęp do konta magazynu__.
 >
 > Jeśli nie masz pewności, czy zostały zmodyfikowane te ustawienia, zobacz __Zmiana domyślnej reguły dostępu do sieci__ w artykule [Konfigurowanie zapór i sieci wirtualnych usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security). Wykonaj kroki, aby zezwolić na dostęp ze wszystkich sieci podczas wnioskowania, lub ocenianie modelu.
 
@@ -268,7 +270,7 @@ Aby dodać usługę Azure Kubernetes w sieci wirtualnej do obszaru roboczego, wy
 
     - __Zakres adresów usługi Kubernetes__: Wybierz zakres adresów usługi Kubernetes. Ten zakres adresów używa zakresu adresów IP notacji CIDR do zdefiniowania adresów IP dostępnych dla tego klastra. Nie może się nakładać na żadne zakresy adresów IP podsieci. Na przykład: 10.0.0.0/16.
 
-    - __Kubernetes adres IP usługi DNS__: Wybierz adres IP usługi Kubernetes DNS. Ten adres IP jest przypisywany do usługi DNS Kubernetes. Musi znajdować się w zakresie adresów usługi Kubernetes. Przykład: 10.0.0.10.
+    - __Kubernetes adres IP usługi DNS__: Wybierz adres IP usługi Kubernetes DNS. Ten adres IP jest przypisywany do usługi DNS Kubernetes. Musi znajdować się w zakresie adresów usługi Kubernetes. Na przykład: 10.0.0.10.
 
     - __Adres mostka platformy Docker__: Wybierz adres mostka platformy Docker. Ten adres IP jest przypisany do mostka platformy Docker. Nie może być w żadnym z zakresów adresów IP podsieci ani zakresu adresów usługi Kubernetes. Na przykład: 172.17.0.1/16.
 
@@ -311,7 +313,7 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 Po zakończeniu procesu tworzenia można wywnioskować/uzyskać wynik w klastrze AKS za siecią wirtualną. Aby uzyskać więcej informacji, zobacz [How to Deploy to AKS](how-to-deploy-to-aks.md).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Konfigurowanie środowisk szkoleniowych](how-to-set-up-training-targets.md)
 * [Gdzie można wdrażać modele](how-to-deploy-and-where.md)

@@ -1,19 +1,19 @@
 ---
 title: 'Szybki start: Analizowanie danych usługi Azure Data Lake Storage Gen2 przy użyciu usługi Azure Databricks | Microsoft Docs'
 description: Dowiedz się, w jaki sposób uruchomić zadanie platformy Spark w usłudze Azure Databricks, korzystając z witryny Azure Portal oraz konta magazynu usługi Azure Data Lake Storage Gen2.
-services: storage
 author: normesta
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 02/15/2019
-ms.openlocfilehash: d27f89b5a6f6da0732b98fe7b15793e80d491038
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.reviewer: jeking
+ms.openlocfilehash: a1e7ee4f81f2b40b804ee69c8366ca87c377e6ac
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357494"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855496"
 ---
 # <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>Szybki start: Analizowanie danych usługi Azure Data Lake Storage Gen2 przy użyciu usługi Azure Databricks
 
@@ -38,7 +38,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
   > [!IMPORTANT]
   > Upewnij się, że przypisano rolę w zakresie konta magazynu usługi Data Lake Storage Gen2. Możesz przypisać rolę do nadrzędnej grupy zasobów lub subskrypcji, ale będzie zgłaszany błąd dotyczący uprawnień do momentu rozpropagowania przypisań roli do konta magazynu.
 
-  :heavy_check_mark: Wykonując kroki opisane w [pobieranie wartości do logowania](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) części artykułu, wklej identyfikator dzierżawy, identyfikator aplikacji i wartości hasła do pliku tekstowego. Wkrótce będą potrzebne.
+  :heavy_check_mark: Podczas wykonywania kroków opisanych w sekcji [pobieranie wartości dla logowania w](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) artykule wklej identyfikator dzierżawy, identyfikator aplikacji i hasło do pliku tekstowego. Wkrótce będą potrzebne.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Tworzenie obszaru roboczego usługi Azure Databricks
 
@@ -190,7 +190,7 @@ Aby uruchomić zadanie Spark SQL w danych, wykonaj poniższe zadania.
     - W obszarze **Wartości** ustaw wartość **level** (poziom).
     - W obszarze **Agregacja** ustaw wartość **LICZBA**.
 
-6. Kliknij przycisk **Zastosuj**.
+6. Kliknij przycisk **zastosować**.
 
 7. Wynikiem będzie reprezentacja wizualna przedstawiona na zrzucie ekranu:
 

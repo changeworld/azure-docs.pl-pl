@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5d8cd7799dd23dabc2cbb423e82b8c7203b7bed
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: c897d52c10efdb8824f676d7640dcc7275915a9e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834630"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851792"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Kontrolowana walidacja przyłączenia do hybrydowej usługi Azure AD
 
@@ -72,7 +72,7 @@ Użyj poniższego przykładu, aby utworzyć obiekt zasady grupy (GPO) w celu wdr
       1. Ścieżka klucza: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
       1. Nazwa wartości: **TenantName**
       1. Typ wartości: **REG_SZ**
-      1. Dane wartości: Zweryfikowana **nazwa domeny** , jeśli używasz środowiska federacyjnego, takiego jak AD FS. Zweryfikowano * * nazwę domeny "" lub nazwę domeny onmicrosoft.com na przykład `contoso.onmicrosoft.com` w przypadku korzystania ze środowiska zarządzanego
+      1. Dane wartości: Zweryfikowana **nazwa domeny** , jeśli używasz środowiska federacyjnego, takiego jak AD FS. Zweryfikowana **nazwa domeny** lub nazwa domeny onmicrosoft.com na przykład `contoso.onmicrosoft.com` w przypadku korzystania ze środowiska zarządzanego
    1. Kliknij przycisk **OK**.
 1. Zamknij Edytor dla nowo utworzonego obiektu zasad grupy
 1. Połącz nowo utworzony obiekt zasad grupy z odpowiednią jednostką organizacyjną zawierającą komputery przyłączone do domeny, które należą do kontrolowanej populacji wdrożenia

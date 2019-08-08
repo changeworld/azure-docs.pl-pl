@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bd6d3abc6080c0ab1b6137511af719b23e5bcd4
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: a763f15b57bf7f23eeb52c81dd48de7f02adc5e4
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736840"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853553"
 ---
 # <a name="azure-ad-password-protection-monitoring-and-logging"></a>Monitorowanie i rejestrowanie w usłudze Azure AD Password Protection
 
@@ -269,7 +269,7 @@ Zakres zapytania polecenia cmdlet może mieć wpływ na parametry — lasu lub �
 
 Jeśli wartość HeartbeatUTC jest przestarzała, może to być objawem, że Agent DC ochrony hasłem usługi Azure AD na tym kontrolerze domeny nie jest uruchomiony lub został odinstalowany lub że komputer został obniżony i nie jest już kontrolerem domeny.
 
-Jeśli wartość PasswordPolicyDateUTC jest przestarzała, może to być objawem, że Agent DC ochrony hasłem usługi Azure AD na tym komputerze nie działa prawidłowo.
+Jeśli wartość PasswordPolicyDateUTC jest nieaktualna, może to być objawem, że Agent DC ochrony hasłem usługi Azure AD na tym komputerze nie działa prawidłowo.
 
 ## <a name="dc-agent-newer-version-available"></a>Dostępna jest nowsza wersja agenta DC
 

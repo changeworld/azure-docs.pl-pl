@@ -1,19 +1,19 @@
 ---
 title: Scenariusze danych dotyczące Azure Data Lake Storage Gen2 | Microsoft Docs
 description: Poznaj różne scenariusze i narzędzia, za pomocą których dane mogą być pozyskiwane, przetwarzane, pobierane i wizualizowane w Data Lake Storage Gen2 (wcześniej znane jako Azure Data Lake Store)
-services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: normesta
-ms.openlocfilehash: 010b7bc38caf83c12dd0d8b8e731fdbad6e45256
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.reviewer: stewu
+ms.openlocfilehash: cafe761d2b566a7bddce503765c11bf9f8e00f2a
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422867"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847452"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Używanie Azure Data Lake Storage Gen2 do wymagań dotyczących danych Big Data
 
@@ -73,7 +73,7 @@ W tej tabeli przedstawiono sposób udzielania dostępu do poszczególnych usług
 |Apache DistCp | Przypisywanie roli do tożsamości zarządzanej przypisanej przez użytkownika | [Tworzenie klastra usługi HDInsight z Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
 |Azure Data Factory| Przypisywanie roli do tożsamości zarządzanej przypisanej przez użytkownika<br>**lub**<br> Przypisz roli do nazwy głównej usługi<br>**lub**<br> Korzystanie z klucza konta magazynu | [Właściwości połączonej usługi](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#linked-service-properties) |
 |Azure HDInsight| Przypisywanie roli do tożsamości zarządzanej przypisanej przez użytkownika | [Tworzenie klastra usługi HDInsight z Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)|
-|Azure Databricks| Przypisywanie roli do nazwy głównej usługi | [Instrukcje: Korzystanie z portalu do tworzenia aplikacji usługi Azure AD i nazwy głównej usługi, która może uzyskiwać dostęp do zasobów](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)|
+|Azure Databricks| Przypisywanie roli do nazwy głównej usługi | [Instrukcje: używanie portalu do tworzenia aplikacji usługi Azure AD i jednostki usługi w celu uzyskiwania dostępu do zasobów](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)|
 
 Aby udzielić dostępu do określonego pliku i folderów, zapoznaj się z tymi artykułami.
 

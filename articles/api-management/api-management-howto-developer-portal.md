@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 2756444db010e23f7114e99f474de9ce6614aaee
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 27d5dcc99db040036ba296911aa33d8a312bb23f
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68837906"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851506"
 ---
 # <a name="access-and-customize-the-new-developer-portal-in-azure-api-management"></a>Dostęp do nowego portalu dla deweloperów w usłudze Azure API Management i dostosowywanie go
 
@@ -96,11 +96,7 @@ Nadal pracujemy nad wyrównaniam tego procesu za pomocą zestawu API Management 
 
 Prawdopodobnie jest on związany z mechanizmem CORS. Konsola interaktywna wykonuje żądanie interfejsu API po stronie klienta z przeglądarki. Problem CORS można rozwiązać, dodając [zasady CORS](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS) w interfejsach API. Możesz określić wszystkie parametry ręcznie (na przykład źródło https://contoso.com) lub użyć wartości wieloznacznej `*` ).
 
-### <a name="where-can-i-file-bugs"></a>Gdzie mogę plików błędów?
-
-[W repozytorium GitHub](http://aka.ms/apimdevportal).
-
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się więcej o nowym portalu dla deweloperów:
 

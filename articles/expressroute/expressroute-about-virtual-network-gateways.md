@@ -8,17 +8,15 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: 18615cf737eedcd188fd59d2aa98482210b9333a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fc614626131236361246664a1bcef34f82b54ec5
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991584"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848466"
 ---
 # <a name="expressroute-virtual-network-gateway-and-fastpath"></a>Brama sieci wirtualnej usługi ExpressRoute i rozwiązanie FastPath
-Aby połączyć z siecią wirtualną platformy Azure i siecią lokalną za pośrednictwem usługi ExpressRoute, należy najpierw utworzyć bramę sieci wirtualnej. Brama sieci wirtualnej służy do dwóch celów: trasy IP programu exchange między sieciami i kierowanie ruchem sieciowym. W tym artykule opisano typy bram, jednostki SKU bramy i wydajności przez jednostkę SKU. W tym artykule opisano również ExpressRoute [FastPath](#fastpath), funkcja, która umożliwia ruch sieciowy z sieci lokalnej do pominięcia bramy sieci wirtualnej w celu zwiększenia wydajności.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Aby połączyć sieć wirtualną platformy Azure i sieć lokalną za pośrednictwem usługi ExpressRoute, najpierw należy utworzyć bramę sieci wirtualnej. Brama sieci wirtualnej służy do dwóch celów: trasy IP programu Exchange między sieciami i kierowanie ruchu sieciowego. W tym artykule opisano typy bram, jednostki SKU bramy i szacowaną wydajność według jednostki SKU. W tym artykule opisano również ExpressRoute [FastPath](#fastpath), funkcję, która umożliwia ruch sieciowy z sieci lokalnej w celu obejścia bramy sieci wirtualnej w celu zwiększenia wydajności.
 
 ## <a name="gateway-types"></a>Typy bram
 
@@ -33,7 +31,7 @@ Każda sieć wirtualna może mieć tylko jedną bramę sieci wirtualnej na typ b
 ## <a name="gwsku"></a>Jednostki SKU bramy
 [!INCLUDE [expressroute-gwsku-include](../../includes/expressroute-gwsku-include.md)]
 
-Jeśli chcesz uaktualnić brama jednostki SKU bramy bardziej wydajne, można użyć polecenia cmdlet programu PowerShell "Zmiany rozmiaru AzVirtualNetworkGateway" w większości przypadków. Będzie on działać w przypadku uaktualnień do Standard i Highperformance. Jednak aby przeprowadzić uaktualnienie do jednostki SKU UltraPerformance, należy ponownie utworzyć bramę. Ponowne tworzenie bramy wiąże się z przestojem.
+Jeśli chcesz uaktualnić bramę do bardziej zaawansowanej jednostki SKU bramy, w większości przypadków możesz użyć polecenia cmdlet programu PowerShell "Zmień rozmiar AzVirtualNetworkGateway". Będzie on działać w przypadku uaktualnień do Standard i Highperformance. Jednak aby przeprowadzić uaktualnienie do jednostki SKU UltraPerformance, należy ponownie utworzyć bramę. Ponowne tworzenie bramy wiąże się z przestojem.
 
 ### <a name="aggthroughput"></a>Szacowany wydajności według jednostek SKU bramy
 W poniższej tabeli przedstawiono typy bram i szacowaną parametrów. Ta tabela ma zastosowanie w obu modelach wdrażania — przy użyciu usługi Resource Manager i klasycznym.
@@ -60,13 +58,13 @@ Strefowo nadmiarowe bramy używają określonych nowej jednostki SKU bramy dla b
 Nowe jednostki SKU bramy obsługują także inne opcje wdrażania, aby możliwie najlepiej odpowiadały potrzebom użytkownika. Podczas tworzenia bramy sieci wirtualnej przy użyciu nowej jednostki SKU bramy, masz również możliwość wdrożenia bramy z określonej strefy. Jest to określane jako bramy strefowych. Podczas wdrażania bramy strefowych, wszystkie wystąpienia bramy są wdrażane w tej samej strefie dostępności.
 
 ## <a name="fastpath"></a>FastPath
-Brama sieci wirtualnej usługi ExpressRoute jest przeznaczony do wymiany tras sieciowych i kierować ruchem sieciowym. FastPath zaprojektowano w celu poprawy wydajność ścieżki danych między siecią lokalną i siecią wirtualną. Po włączeniu FastPath wysyła ruch sieciowy bezpośrednio do maszyn wirtualnych w sieci wirtualnej, z pominięciem bramy. 
+Brama sieci wirtualnej ExpressRoute jest przeznaczona do wymiany tras sieciowych i kierowania ruchu sieciowego. FastPath zaprojektowano w celu poprawienia wydajności ścieżki danych między siecią lokalną i siecią wirtualną. Po włączeniu FastPath wysyła ruch sieciowy bezpośrednio do maszyn wirtualnych w sieci wirtualnej, pomijając bramę. 
 
-FastPath jest dostępny na [ExpressRoute bezpośrednio](expressroute-erdirect-about.md) tylko. Innymi słowy, można włączyć funkcję tylko wtedy, gdy użytkownik [Połącz swoją sieć wirtualną](expressroute-howto-linkvnet-arm.md) z obwodem usługi ExpressRoute utworzony na porcie bezpośrednio z usługi ExpressRoute. FastPath nadal wymaga bramy sieci wirtualnej, który ma zostać utworzony w celu wymiany tras między siecią wirtualną i siecią lokalną. Brama sieci wirtualnej musi być największa wydajność lub ErGw3AZ.
+FastPath jest dostępna tylko w [ExpressRoute bezpośredniej](expressroute-erdirect-about.md) . Innymi słowy, tę funkcję można włączyć tylko wtedy, gdy [Sieć wirtualna](expressroute-howto-linkvnet-arm.md) jest podłączona do obwodu ExpressRoute utworzonego przy użyciu portu ExpressRoute Direct. FastPath nadal wymaga utworzenia bramy sieci wirtualnej w celu wymiany tras między siecią wirtualną i siecią lokalną. Brama sieci wirtualnej musi mieć wartość Ultra Performance lub ErGw3AZ.
 
-FastPath nie obsługuje następujące funkcje:
-* Trasa zdefiniowana przez użytkownika w podsieci bramy: Jeśli zastosujesz trasy zdefiniowanej przez użytkownika w podsieci bramy sieci wirtualnej ruch sieciowy z sieci lokalnych będą w dalszym ciągu wysyłane do bramy sieci wirtualnej.
-* Komunikacja równorzędna sieci wirtualnej: w przypadku innych sieci wirtualnych połączona z jedną, która jest połączona z usługą ExpressRoute ruch sieciowy z sieci lokalnej z innymi sieciami wirtualnymi (czyli tak zwane "typu Gwiazda" sieciami wirtualnymi) będzie w dalszym ciągu wysyłane do sieci wirtualnej brama. Obejście polega na bezpośrednio połączyć sieci wirtualne z obwodem usługi ExpressRoute.
+FastPath nie obsługuje następujących funkcji:
+* UDR w podsieci bramy: w przypadku zastosowania UDR do podsieci bramy sieci wirtualnej ruch sieciowy z sieci lokalnej będzie nadal wysyłany do bramy sieci wirtualnej.
+* Komunikacja równorzędna sieci wirtualnych: w przypadku komunikacji równorzędnej z drugą siecią wirtualną z tą, która jest połączona z usługą ExpressRoute ruch sieciowy z sieci lokalnej do innych sieci wirtualnych (tj. "szprych" sieci wirtualnych) będzie nadal wysyłane do sieci wirtualnej punkt. Obejście polega na połączeniu wszystkich sieci wirtualnych bezpośrednio do obwodu ExpressRoute.
 
 ## <a name="resources"></a>Polecenia cmdlet programu PowerShell i interfejsów API REST
 Aby uzyskać dodatkowe zasoby techniczne i wymagań określonej składni, korzystając z interfejsów API REST i poleceń cmdlet programu PowerShell dla konfiguracji bramy sieci wirtualnej zobacz następujące strony:
@@ -83,4 +81,4 @@ Zobacz [Tworzenie bramy sieci wirtualnej dla usługi ExpressRoute](expressroute-
 
 Zobacz [Tworzenie bramy sieci wirtualnej strefowo nadmiarowe](../../articles/vpn-gateway/create-zone-redundant-vnet-gateway.md) Aby uzyskać więcej informacji o konfigurowaniu bram strefowo nadmiarowe.
 
-Zobacz [łączy sieci wirtualnej usługi expressroute](expressroute-howto-linkvnet-arm.md) Aby uzyskać więcej informacji o sposobie włączania FastPath. 
+Aby uzyskać więcej informacji na temat włączania usługi FastPath [, zobacz Łączenie sieci wirtualnej z usługą ExpressRoute](expressroute-howto-linkvnet-arm.md) . 

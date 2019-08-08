@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/17/2019
 ms.author: ryanwi
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c22d93d39f086aaa6e2f103d3becbe9376b49b0
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 88a0f16a01a7e421558b5cea99daee6944adae11
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68324545"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853042"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Szybki start: logowanie użytkowników i wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji dla systemu Android
 
@@ -45,7 +45,7 @@ Ten przewodnik Szybki start zawiera przykładowy kod, który pokazuje, jak aplik
 > * [Ręcznie] [Opcja 2: zarejestrowanie i ręczne skonfigurowanie aplikacji oraz przykładowego kodu](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Opcja 1: zarejestrowanie i automatyczne skonfigurowanie aplikacji, a następnie pobranie przykładowego kodu
-> #### <a name="step-1-register-your-application"></a>Krok 1: Rejestrowanie aplikacji
+> #### <a name="step-1-register-your-application"></a>Krok 1: Zarejestruj swoją aplikację
 > Aby zarejestrować aplikację,
 > 1. Przejdź do nowego okienka [Azure Portal-rejestracje aplikacji](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AndroidQuickstartPage/sourceType/docs) .
 > 1. Wprowadź nazwę aplikacji i wybierz pozycję **Zarejestruj**.
@@ -53,7 +53,7 @@ Ten przewodnik Szybki start zawiera przykładowy kod, który pokazuje, jak aplik
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Opcja 2: zarejestrowanie i ręczne skonfigurowanie aplikacji oraz przykładowego kodu
 >
-> #### <a name="step-1-register-your-application"></a>Krok 1: Rejestrowanie aplikacji
+> #### <a name="step-1-register-your-application"></a>Krok 1: Zarejestruj swoją aplikację
 > Aby ręcznie zarejestrować aplikację i dodać informacje na temat rejestracji aplikacji do rozwiązania, wykonaj następujące czynności:
 >
 > 1. Przejdź do strony Microsoft Identity Platform for Developers [rejestracje aplikacji](https://aka.ms/MobileAppReg) .
@@ -87,7 +87,7 @@ Ten przewodnik Szybki start zawiera przykładowy kod, który pokazuje, jak aplik
 
 > [!div renderon="portal" class="sxs-lookup"]
 > 1. Wyodrębnij i otwórz projekt w programie Android Studio.
-> 1. W programie **App** > **src** Main res RAW Otwórz plik auth_config. JSON. >  >  > 
+> 1. W programie **App** > **src**Main res RAW Otwórz plik auth_config. JSON. >  >  > 
 > 1. Edytuj plik **auth_config. JSON** i zastąp go kodem json z Azure Portal. Jeśli zamiast tego chcesz ręcznie wprowadzić zmiany:
 >    ```javascript
 >    {
@@ -130,7 +130,7 @@ Ten przewodnik Szybki start zawiera przykładowy kod, który pokazuje, jak aplik
 
 > [!div renderon="docs"]
 > 1. Wyodrębnij i otwórz projekt w programie Android Studio.
-> 1. Wewnątrz **App** > **res** RAW Otwórz plik auth_config. JSON. > 
+> 1. Wewnątrz **App** > **res**RAW Otwórz plik auth_config. JSON. > 
 > 1. Edytuj plik **auth_config. JSON** i zastąp go kodem json z Azure Portal. Jeśli zamiast tego chcesz ręcznie wprowadzić te zmiany:
 >    ```javascript
 >    "client_id" : "ENTER_YOUR_APPLICATION_ID",
@@ -236,7 +236,7 @@ Aplikacje nie powinny wymagać od użytkowników logowania się za każdym razem
 > | `getAccounts(...)` | Zawiera konto, dla którego próbujesz uzyskać tokeny w trybie dyskretnym |
 > | `getAuthSilentCallback()` | Wywołanie zwrotne wykonywane, gdy kontrola zostanie przekazana z powrotem do aplikacji po uwierzytelnieniu |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 ### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Dowiedz się więcej na temat czynności, które są wymagane to utworzenia aplikacji użytej w tym przewodniku Szybki start
 

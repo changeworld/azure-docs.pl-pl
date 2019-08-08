@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6fe08c15de7ea388a5194054791eb394dc2f6e01
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: de0eb685e212b59705d8d659cbe9627338697e9d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840601"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854522"
 ---
 # <a name="deploy-azure-file-sync"></a>Wdrażanie usługi Azure File Sync
 Użyj Azure File Sync, aby scentralizować udziały plików w organizacji w Azure Files, utrzymując elastyczność, wydajność i zgodność lokalnego serwera plików. Azure File Sync przekształca system Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego protokołu, który jest dostępny w systemie Windows Server, aby uzyskać dostęp do danych lokalnie, w tym SMB, NFS i FTPS. Na całym świecie możesz mieć dowolną liczbę pamięci podręcznych.
@@ -94,7 +94,7 @@ if ($installType -ne "Server Core") {
 Wdrożenie Azure File Sync rozpoczyna się od umieszczenia zasobu **usługi synchronizacji magazynu** w grupie zasobów wybranej subskrypcji. Zalecamy obsługę administracyjną w razie konieczności. Zostanie utworzona relacja zaufania między serwerami a tym zasobem, a serwer może być zarejestrowany tylko w jednej usłudze synchronizacji magazynu. W związku z tym zaleca się wdrożenie programu jako wielu usług synchronizacji magazynu, co jest potrzebne do oddzielenia grup serwerów. Należy pamiętać, że serwery z różnych usług synchronizacji magazynu nie mogą się ze sobą synchronizować.
 
 > [!Note]
-> Usługa synchronizacji magazynu odziedziczyła uprawnienia dostępu z subskrypcji i grupy zasobów, w której została wdrożona. Zalecamy dokładne sprawdzenie, kto ma do niego dostęp. Jednostki z dostępem do zapisu mogą rozpocząć Synchronizowanie nowych zestawów plików z serwerów zarejestrowanych w tej usłudze synchronizacji magazynu i spowodować, że dane będą przepływać do usługi Azure Storage, która jest dla nich dostępna.
+> Usługa synchronizacji magazynu dziedziczy uprawnienia dostępu od subskrypcji i grupy zasobów, w której została wdrożona. Zalecamy dokładne sprawdzenie, kto ma do niego dostęp. Jednostki z dostępem do zapisu mogą rozpocząć Synchronizowanie nowych zestawów plików z serwerów zarejestrowanych w tej usłudze synchronizacji magazynu i spowodować, że dane będą przepływać do usługi Azure Storage, która jest dla nich dostępna.
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 Aby wdrożyć usługę synchronizacji magazynu, przejdź do [Azure Portal](https://portal.azure.com/), kliknij pozycję *Utwórz zasób* , a następnie wyszukaj Azure File Sync. W wynikach wyszukiwania wybierz pozycję **Azure File Sync**, a następnie wybierz pozycję **Utwórz** , aby otworzyć kartę **Wdróż magazyn synchronizacji** .

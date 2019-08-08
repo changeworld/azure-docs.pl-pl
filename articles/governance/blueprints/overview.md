@@ -1,26 +1,26 @@
 ---
 title: Omówienie usługi Azure Blueprints
-description: Dowiedz się, jak usługa plany usługi Azure umożliwia tworzenie, definiowanie i wdrażanie artefaktów w środowisku platformy Azure.
+description: Dowiedz się, w jaki sposób usługa Azure Plans umożliwia tworzenie, Definiowanie i wdrażanie artefaktów w środowisku platformy Azure.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 02/08/2019
 ms.topic: overview
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 5f403ee7d2bf4a0730ceaa9b5a95b3e7b11f3695
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: be7e3043172f988a429bbf02dec08bfbbc1a70b7
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67428772"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848435"
 ---
-# <a name="overview-of-the-azure-blueprints-service"></a>Omówienie usługi Azure plany
+# <a name="overview-of-the-azure-blueprints-service"></a>Omówienie usługi Azure Plans
 
 Usługę Azure Blueprints można porównać do planu, który pozwala inżynierowi lub architektowi naszkicować parametry projektu. Usługa ta umożliwia architektom chmury i centralnym grupom technologii informatycznych zdefiniowanie powtarzalnego zestawu zasobów platformy Azure, który implementuje standardy, wzorce i wymagania organizacji oraz jest z nimi zgodny. Usługa Azure Blueprints umożliwia zespołom programistów szybkie tworzenie i wdrażanie nowych środowisk z przekonaniem, że zostały one utworzone zgodnie z zasadami organizacji za pomocą zestawu wbudowanych składników — takich jak sieć — przyspieszających opracowywanie i dostarczanie.
 
 Usługa Blueprints umożliwia deklaratywne organizowanie i wdrażanie różnych szablonów zasobów i innych artefaktów, takich jak:
 
-- Przypisania ról
+- Przydziały ról
 - Przypisania zasad
 - Szablony usługi Azure Resource Manager
 - Grupy zasobów
@@ -54,7 +54,7 @@ Strategia składa się z _artefaktów_. Usługa Blueprints obsługuje obecnie na
 
 |Resource  | Opcje hierarchii| Opis  |
 |---------|---------|---------|
-|Grupy zasobów | Subskrypcja | Umożliwia utworzenie nowej grupy zasobów do użytku przez inne artefakty w ramach strategii.  Te zastępcze grupy zasobów umożliwiają organizowanie zasobów dokładnie w taką strukturę, jaka jest pożądana. Udostępniają one ogranicznik zakresu na potrzeby uwzględnionych zasad i artefakty przypisania roli oraz szablony usługi Azure Resource Manager. |
+|Grupy zasobów | Subscription | Umożliwia utworzenie nowej grupy zasobów do użytku przez inne artefakty w ramach strategii.  Te zastępcze grupy zasobów umożliwiają organizowanie zasobów dokładnie w taką strukturę, jaka jest pożądana. Udostępniają one ogranicznik zakresu na potrzeby uwzględnionych zasad i artefakty przypisania roli oraz szablony usługi Azure Resource Manager. |
 |Szablon usługi Azure Resource Manager | Subskrypcja, grupa zasobów | Szablony służą do tworzenia złożonych środowisk. Przykładowe środowiska: farma programu SharePoint, konfiguracja stanu usługi Azure Automation lub obszar roboczy usługi Log Analytics. |
 |Przypisanie zasad | Subskrypcja, grupa zasobów | Umożliwia przypisanie zasad lub inicjatywy do subskrypcji, do której przypisano strategię. Zasady lub inicjatywa muszą znajdować się w zakresie lokalizacji definicji strategii. Jeśli zasady lub inicjatywa mają parametry, są one przypisywane podczas tworzenia strategii bądź podczas jej przypisywania. |
 |Przypisanie roli | Subskrypcja, grupa zasobów | Dodawanie istniejącego użytkownika lub grupy do wbudowanej roli w celu zagwarantowania, że odpowiednie osoby zawsze będą mieć odpowiedni dostęp do zasobów. Przypisania ról mogą być definiowane dla całej subskrypcji lub mogą być zagnieżdżone w konkretnej grupie zasobów uwzględnionej w strategii. |
@@ -63,7 +63,7 @@ Strategia składa się z _artefaktów_. Usługa Blueprints obsługuje obecnie na
 
 Podczas tworzenia definicji strategii należy zdefiniować miejsce, w którym strategia zostanie zapisana. Strategie można zapisywać tylko w [grupie zarządzania](../management-groups/overview.md) lub subskrypcji, do której użytkownik ma dostęp jako **Współautor**. Jeśli lokalizacja znajduje się w grupie zarządzania, strategię można przypisać do dowolnej subskrypcji podrzędnej tej grupy zarządzania.
 
-### <a name="blueprint-parameters"></a>Parametry strategii
+### <a name="blueprint-parameters"></a>Parametry planu
 
 Usługa Blueprints może przekazywać parametry do zasad/inicjatywy lub szablonu usługi Azure Resource Manager.
 Podczas dodawania dowolnego _artefaktu_ do strategii autor decyduje o udostępnieniu zdefiniowanej wartości dla każdego przypisania strategii lub zezwoleniu, aby każde przypisanie strategii udostępniało wartość w czasie przypisywania. Dzięki tej elastyczności można zdefiniować wstępnie ustaloną wartość dla wszystkich zastosowań strategii lub umożliwić podjęcie decyzji w czasie przypisywania.
@@ -77,9 +77,9 @@ Aby uzyskać więcej informacji, zobacz [parametry strategii](./concepts/paramet
 
 Kiedy strategia jest tworzona po raz pierwszy, przyjmuje się, że jest w trybie **wersji roboczej**. Kiedy jest gotowa do przypisania, należy ją **opublikować**. Publikowanie wymaga zdefiniowania ciągu **wersji** (liter, cyfr i łączników o maksymalnej długości 20 znaków) wraz z opcjonalnymi **uwagami dotyczącymi zmian**. Dzięki zastosowaniu **wersji** przyszłe zmiany wprowadzone w strategii mogą być traktowane jako osobne wersje z możliwością ich przypisania. Obsługa wersji oznacza również, że różne **wersje** tej samej strategii można przypisać do jednej subskrypcji. Jeśli w strategii zostaną dokonane dodatkowe zmiany, **opublikowana** **wersja** będzie nadal istniała, podobnie jak **nieopublikowane zmiany**. Po zakończeniu wprowadzania zmian zaktualizowana strategia jest **publikowana** jako nowa unikatowa **wersja**, którą teraz również można przypisać.
 
-## <a name="blueprint-assignment"></a>Przypisywanie strategii
+## <a name="blueprint-assignment"></a>Przypisanie strategii
 
-Każdą **opublikowaną** **wersję** strategii można przypisać do istniejącej subskrypcji. W portalu domyślną **wersją** strategii jest ta, która została **opublikowana** jako ostatnia. Jeśli istnieją parametry artefaktów (lub parametry strategii), są one definiowane w procesie przypisania.
+Do istniejącej subskrypcji można przypisać każdą **opublikowaną** **wersję** planu (z maksymalną długością nazwy wynoszącą 90 znaków). W portalu domyślną **wersją** strategii jest ta, która została **opublikowana** jako ostatnia. Jeśli istnieją parametry artefaktów (lub parametry strategii), są one definiowane w procesie przypisania.
 
 ## <a name="permissions-in-azure-blueprints"></a>Uprawnienia w usłudze Azure Blueprints
 
@@ -109,7 +109,18 @@ Aby użytkownik mógł przypisywać strategie lub anulować ich przypisanie, jeg
 Wszystkie powyższe uprawnienia są uwzględnione w roli **Właściciel**. Rola **Współautor** ma uprawnienia do tworzenia i usuwania uprawnień planu, ale nie ma uprawnień do przypisywania planu. Jeśli te wbudowane role nie spełniają wymagań dotyczących zabezpieczeń, należy rozważyć utworzenie [roli niestandardowej](../../role-based-access-control/custom-roles.md).
 
 > [!NOTE]
-> Jeśli przy użyciu systemu przypisane tożsamości zarządzanej jednostki usługi dla planów usługi Azure wymaga **właściciela** roli przypisanej subskrypcji, aby można było włączyć wdrożenie. W przypadku korzystania z portalu ta rola jest automatycznie przyznawana i odwoływana dla wdrożenia. W przypadku korzystania z interfejsu API REST ta rola musi zostać ręcznie przyznana, ale jest automatycznie odwoływana po zakończeniu wdrożenia. Jeśli tożsamości zarządzanej przy użyciu przypisanych przez użytkownika, wymaga tylko użytkownik tworzący przypisanie planu **właściciela** uprawnienia.
+> W przypadku korzystania z tożsamości zarządzanej przypisanej do systemu jednostka usługi dla planów platformy Azure wymaga roli **właściciela** w przypisanej subskrypcji, aby można było włączyć wdrożenie. W przypadku korzystania z portalu ta rola jest automatycznie przyznawana i odwoływana dla wdrożenia. W przypadku korzystania z interfejsu API REST ta rola musi zostać ręcznie przyznana, ale jest automatycznie odwoływana po zakończeniu wdrożenia. Jeśli jest używana tożsamość zarządzana przypisana przez użytkownika, tylko użytkownik tworzący przypisanie planu wymaga uprawnień **właściciela** .
+
+## <a name="naming-limits"></a>Limity nazewnictwa
+
+Poniżej znajduje się lista ograniczeń istniejących dla niektórych pól:
+
+|Object|Pole|Dozwolone znaki|Maksymalnie z Długość|
+|-|-|-|-|
+|Plan|Name (Nazwa)|litery, cyfry, łączniki i kropki|48|
+|Plan|Version|litery, cyfry, łączniki i kropki|20|
+|Przypisanie strategii|Name (Nazwa)|litery, cyfry, łączniki i kropki|90|
+|Artefakt planu|Name (Nazwa)|litery, cyfry, łączniki i kropki|48|
 
 ## <a name="video-overview"></a>Omówienie wideo
 
@@ -117,7 +128,7 @@ Poniższy omówienie usługi Azure Blueprints pochodzi z witryny Azure Fridays. 
 
 > [!VIDEO https://www.youtube.com/embed/cQ9D-d6KkMY]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Tworzenie strategii — portal](create-blueprint-portal.md)
 - [Tworzenie strategii — interfejs API REST](create-blueprint-rest-api.md)

@@ -21,13 +21,13 @@
     - name: Tworzenie aplikacji przy użyciu interfejsu API strumieni platformy Apache Kafka
       href: apache-kafka-streams-api.md
     - name: Używanie przesyłania strumieniowego ze strukturą platformy Apache Spark
-      href: ../hdinsight-apache-kafka-spark-structured-streaming.md
+      href: ../hdinsight-apache-kafka-spark-structured-streaming.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
     - name: Zapisywanie/odczytywanie na platformie Apache Kafka za pomocą systemu Apache Storm
-      href: ../hdinsight-apache-storm-with-kafka.md
+      href: ../hdinsight-apache-storm-with-kafka.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
 - name: Pojęcia
   items:
     - name: Planowanie pojemności
-      href: ../hdinsight-capacity-planning.md
+      href: ../hdinsight-capacity-planning.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
     - name: Magazyn i skalowalność
       href: apache-kafka-scalability.md
     - name: Wysoka dostępność danych
@@ -35,9 +35,9 @@
     - name: Dostosowywanie wydajności
       href: apache-kafka-performance-tuning.md
     - name: Składniki usługi Apache Hadoop w usłudze HDInsight
-      href: ../hdinsight-component-versioning.md
+      href: ../hdinsight-component-versioning.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
     - name: HDInsight 4.0
-      href: ../hdinsight-version-release.md
+      href: ../hdinsight-version-release.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
 - name: Instrukcje
   items:
     - name: Włączanie automatycznego tworzenia tematów
@@ -45,7 +45,7 @@
     - name: Używanie usługi Apache Kafka z usługą IoT Hub
       href: apache-kafka-connector-iot-hub.md
     - name: Instalowanie aplikacji usługi HDInsight
-      href: ../hdinsight-apps-install-applications.md
+      href: ../hdinsight-apps-install-applications.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
     - name: Korzystanie z usługi Apache Kafka w sieci wirtualnej
       href: apache-kafka-connect-vpn-gateway.md
     - name: Replikowanie danych usługi Apache Kafka
@@ -55,53 +55,53 @@
     - name: Tworzenie potoków przesyłania strumieniowego
       items:
         - name: 'Apache Spark, Apache Kafka i Azure Cosmos DB'
-          href: ../apache-kafka-spark-structured-streaming-cosmosdb.md
+          href: ../apache-kafka-spark-structured-streaming-cosmosdb.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Apache Kafka i Apache Spark (DStream)
-          href: ../hdinsight-apache-spark-with-kafka.md
+          href: ../hdinsight-apache-spark-with-kafka.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Używanie usługi Apache Kafka z usługą Azure Container Service
           href: apache-kafka-azure-container-services.md
     - name: Programowanie
       items:
         - name: Używanie pustych węzłów brzegowych
-          href: ../hdinsight-apps-use-edge-node.md
+          href: ../hdinsight-apps-use-edge-node.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
     - name: Rozszerzanie klastrów
       items:
         - name: Dostosowywanie klastrów za pomocą narzędzia Bootstrap
-          href: ../hdinsight-hadoop-customize-cluster-bootstrap.md
+          href: ../hdinsight-hadoop-customize-cluster-bootstrap.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Dostosowywanie klastrów za pomocą akcji skryptu
-          href: ../hdinsight-hadoop-customize-cluster-linux.md
+          href: ../hdinsight-hadoop-customize-cluster-linux.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Opracowywanie akcji skryptu
-          href: ../hdinsight-hadoop-script-actions-linux.md
+          href: ../hdinsight-hadoop-script-actions-linux.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Tworzenie aplikacji usługi HDInsight
           items:
             - name: Instalowanie aplikacji niestandardowych
-              href: ../hdinsight-apps-install-custom-applications.md
+              href: ../hdinsight-apps-install-custom-applications.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
             - name: Instalowanie aplikacji przy użyciu architektury REST
               href: 'https://msdn.microsoft.com/library/mt706515.aspx'
             - name: Publikowanie aplikacji usługi HDInsight w portalu Azure Marketplace
-              href: ../hdinsight-apps-publish-applications.md
+              href: ../hdinsight-apps-publish-applications.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
     - name: Bezpieczeństwo
       items:
         - name: Używanie protokołu SSH z usługą HDInsight
-          href: ../hdinsight-hadoop-linux-use-ssh-unix.md
+          href: ../hdinsight-hadoop-linux-use-ssh-unix.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Korzystanie z tunelowania SSH
-          href: ../hdinsight-linux-ambari-ssh-tunnel.md
+          href: ../hdinsight-linux-ambari-ssh-tunnel.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Używanie własnego klucza
           href: apache-kafka-byok.md
         - name: Szyfrowanie SSL i uwierzytelnianie
           href: apache-kafka-ssl-encryption-authentication.md
         - name: Kontrola dostępu na podstawie ról platformy Apache Kafka z użyciem usługi Apache Ranger
-          href: ../domain-joined/apache-domain-joined-run-kafka.md
+          href: ../domain-joined/apache-domain-joined-run-kafka.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
     - name: Zarządzanie
       items:
         - name: Tworzenie klastrów usługi HDInsight
-          href: ../hdinsight-hadoop-provision-linux-clusters.md
+          href: ../hdinsight-hadoop-provision-linux-clusters.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
           items:
             - name: Korzystanie z witryny Azure Portal
-              href: ../hdinsight-hadoop-create-linux-clusters-portal.md
+              href: ../hdinsight-hadoop-create-linux-clusters-portal.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
             - name: Korzystanie z szablonów usługi Azure Resource Manager
               displayName: 'resource manager template, arm template, resource manager group'
-              href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
+              href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
             - name: "Korzystanie z\_zestawu SDK środowiska .NET"
               href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#create-a-cluster'
             - name: Korzystanie z zestawu SDK dla środowiska Python
@@ -109,15 +109,15 @@
             - name: "Korzystanie z\_zestawu SDK języka Java"
               href: 'https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable#create-a-cluster'
             - name: Korzystanie z programu Azure PowerShell
-              href: ../hdinsight-hadoop-create-linux-clusters-azure-powershell.md
+              href: ../hdinsight-hadoop-create-linux-clusters-azure-powershell.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
             - name: Korzystanie z programu cURL i interfejsu API REST platformy Azure
-              href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
+              href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
             - name: Używanie interfejsu wiersza polecenia platformy Azure
-              href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
+              href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
             - name: Tworzenie klastrów na żądanie
-              href: ../hdinsight-hadoop-create-linux-clusters-adf.md
+              href: ../hdinsight-hadoop-create-linux-clusters-adf.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
     - name: Zarządzanie klastrami usługi HDInsight
-      href: ../hdinsight-administer-use-portal-linux.md
+      href: ../hdinsight-administer-use-portal-linux.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
       items:
         - name: "Korzystanie z\_zestawu SDK środowiska .NET"
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#management'
@@ -128,53 +128,53 @@
         - name: Korzystanie z zestawu SDK języka Go (wersja zapoznawcza)
           href: 'https://docs.microsoft.com/azure/hdinsight/hdinsight-go-sdk-overview'
         - name: Korzystanie z programu Azure PowerShell
-          href: ../hdinsight-administer-use-powershell.md
+          href: ../hdinsight-administer-use-powershell.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Używanie interfejsu wiersza polecenia platformy Azure
-          href: ../hdinsight-administer-use-command-line.md
+          href: ../hdinsight-administer-use-command-line.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Zarządzanie klastrami za pomocą internetowego interfejsu użytkownika systemu Apache Ambari
-          href: ../hdinsight-hadoop-manage-ambari.md
+          href: ../hdinsight-hadoop-manage-ambari.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
           items:
             - name: Optymalizowanie klastrów za pomocą internetowego interfejsu użytkownika systemu Apache Ambari
-              href: ../hdinsight-changing-configs-via-ambari.md
+              href: ../hdinsight-changing-configs-via-ambari.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
             - name: Korzystanie z interfejsu API REST systemu Apache Ambari
-              href: ../hdinsight-hadoop-manage-ambari-rest-api.md
+              href: ../hdinsight-hadoop-manage-ambari-rest-api.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
             - name: Monitorowanie dostępności klastrów za pomocą dzienników usługi Azure Monitor
-              href: ../hdinsight-cluster-availability.md
+              href: ../hdinsight-cluster-availability.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Zarządzanie dziennikami klastra usługi HDInsight
-          href: ../hdinsight-log-management.md
+          href: ../hdinsight-log-management.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Dodawanie kont magazynu
-          href: ../hdinsight-hadoop-add-storage.md
+          href: ../hdinsight-hadoop-add-storage.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Przekazywanie danych na potrzeby zadań usługi Apache Hadoop
-          href: ../hdinsight-upload-data.md
+          href: ../hdinsight-upload-data.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Wiele klastrów usługi HDInsight z usługą Data Lake Store
-          href: ../hdinsight-multiple-clusters-data-lake-store.md
+          href: ../hdinsight-multiple-clusters-data-lake-store.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Identyfikatory URI oraz porty usługi i klastra
-          href: ../hdinsight-hadoop-port-settings-for-services.md
+          href: ../hdinsight-hadoop-port-settings-for-services.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: 'Dostępność i niezawodność '
-          href: ../hdinsight-high-availability-linux.md
+          href: ../hdinsight-high-availability-linux.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Uaktualnianie klastra usługi HDInsight do nowszej wersji
-          href: ../hdinsight-upgrade-cluster.md
+          href: ../hdinsight-upgrade-cluster.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Stosowanie poprawek systemu operacyjnego do klastra usługi HDInsight
-          href: ../hdinsight-os-patching.md
+          href: ../hdinsight-os-patching.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
     - name: Rozwiązywanie problemów
-      href: ../hdinsight-troubleshoot-guide.md
+      href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
       items:
         - name: Rozwiązywanie problemów dotyczących powolnego działania lub awarii klastra usługi HDInsight
-          href: ../hdinsight-troubleshoot-failed-cluster.md
+          href: ../hdinsight-troubleshoot-failed-cluster.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Rozwiązywanie problemów z systemem plików HDFS usługi Apache Hadoop
-          href: ../hdinsight-troubleshoot-hdfs.md
+          href: ../hdinsight-troubleshoot-hdfs.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Rozwiązywanie problemów z platformą YARN w usłudze Apache Hadoop
-          href: ../hdinsight-troubleshoot-yarn.md
+          href: ../hdinsight-troubleshoot-yarn.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Zasoby
           items:
             - name: Informacje dotyczące korzystania z usługi HDInsight w systemie Linux
-              href: ../hdinsight-hadoop-linux-information.md
+              href: ../hdinsight-hadoop-linux-information.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
             - name: Pamięć i wydajność usługi Apache Hadoop
-              href: ../hdinsight-hadoop-stack-trace-error-messages.md
+              href: ../hdinsight-hadoop-stack-trace-error-messages.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
             - name: Uzyskiwanie dostępu do dzienników aplikacji platformy YARN w usłudze Apache Hadoop w systemie Linux
-              href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md
+              href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
             - name: Włączanie zrzutów sterty dla usług Apache Hadoop
-              href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md
+              href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
 - name: Dokumentacja
   items:
     - name: Przykłady kodu
@@ -188,7 +188,7 @@
     - name: Zestaw SDK języka Java
       href: 'https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable'
     - name: Zestaw SDK dla języka Go
-      href: ../hdinsight-go-sdk-overview.md
+      href: ../hdinsight-go-sdk-overview.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
     - name: REST
       href: /rest/api/hdinsight/
     - name: REST (Apache Spark)
@@ -209,24 +209,24 @@
     - name: Kalkulator cen
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Narzędzia systemu Windows dla usługi HDInsight
-      href: ../hdinsight-hadoop-windows-tools.md
+      href: ../hdinsight-hadoop-windows-tools.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
 - name: Gotowość przedsiębiorstwa
   items:
     - name: Zabezpieczanie danych
-      href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
+      href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
     - name: Dostęp do sieci
       items:
         - name: Architektura sieci wirtualnej usługi HDInsight
-          href: ../hdinsight-virtual-network-architecture.md
+          href: ../hdinsight-virtual-network-architecture.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Ograniczanie ruchu wychodzącego za pomocą zapory
-          href: ../hdinsight-restrict-outbound-traffic.md
+          href: ../hdinsight-restrict-outbound-traffic.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Łączenie usługi HDInsight z siecią lokalną
-          href: ../connect-on-premises-network.md
+          href: ../connect-on-premises-network.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
     - name: Monitorowanie przy użyciu dzienników usługi Azure Monitor
       items:
         - name: Korzystanie z dzienników usługi Azure Monitor
-          href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
+          href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Używanie zapytań z dziennikami usługi Azure Monitor
-          href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
+          href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Monitorowanie wydajności klastra
-          href: ../hdinsight-key-scenarios-to-monitor.md
+          href: ../hdinsight-key-scenarios-to-monitor.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json

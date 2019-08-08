@@ -3,20 +3,20 @@ title: Samouczek dotyczący projektowania architektury Unity w projekcie
 titlesuffix: Azure Cognitive Services
 description: W tym samouczku opisano przepływ pracy projektowania pod kątem hałasu związanych z projektem w środowisku Unity.
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: f9ff4225e7e855ed666d3554631015b8ce51df37
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: fd00e4105ce4edae9d014df2a83c5ae3aaf778da
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706594"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854263"
 ---
 # <a name="project-acoustics-unity-design-tutorial"></a>Samouczek dotyczący projektowania architektury Unity w projekcie
 W tym samouczku opisano narzędzia projektowania i przepływ pracy dla hałasu projektu w środowisku Unity.
@@ -36,7 +36,7 @@ Funkcja akustyczna projektu korzysta ze wspólnych metod przetwarzania sygnałó
 Akustyczny projektowe zapewnia wiele kontroli charakterystycznych dla konkretnych źródeł. Dzięki temu można kontrolować mieszanie w scenie, podkreślając niektóre źródła i wyróżniać inne.
 
 ### <a name="adjust-distance-based-attenuation"></a>Dostosuj tłumienie na podstawie odległości
-Procesor DSP audio, który jest dostarczany przez wtyczkę spatializera w **środowisku Unity,** uwzględnia tłumienie oparte na odległości dla poszczególnych źródeł wbudowane w Edytor aparatu Unity. Kontrolki przeciwstawnej na podstawie odległości znajdują się w składniku **Źródło Audio** znalezionym w panelu **inspektorów** źródeł dźwięku, w obszarze **Ustawienia dźwięku 3W**:
+Procesor DSP audio, który jest dostarczany przez wtyczkę spatializera w środowisku Unity, uwzględnia tłumienie oparte na odległości dla poszczególnych źródeł wbudowane w Edytor aparatu Unity. Kontrolki przeciwstawnej na podstawie odległości znajdują się w składniku **Źródło Audio** znalezionym w panelu **inspektorów** źródeł dźwięku, w obszarze **Ustawienia dźwięku 3W**:
 
 ![Zrzut ekranu przedstawiający panel Opcje tłumienia odległości aparatu Unity](media/distance-attenuation.png)
 
@@ -56,7 +56,7 @@ Dołączanie skryptu **AcousticsAdjust** do źródła włącza parametry dostraj
 ### <a name="adjust-reverberation"></a>Dostosuj reverberation
 * **Wetness (DB)** — dostosowuje moc Reverb, w bazie danych, zgodnie z odległością od źródła. Wartości dodatnie sprawiają, że dźwięk jest bardziej reverberant, podczas gdy wartości ujemne sprawiają, że dźwięk jest bardziej suchy. Kliknij formant krzywej (zielona linia), aby wyświetlić Edytor krzywej. Zmodyfikuj krzywą przez kliknięcie lewym przyciskiem myszy, aby dodać punkty i przeciągnąć te punkty, aby utworzyć żądaną funkcję. Oś x jest odległości od źródła, a oś y jest korektą Reverb w bazie danych. Aby uzyskać więcej informacji na temat edytowania krzywych, zobacz ten [Podręcznik aparatu Unity](https://docs.unity3d.com/Manual/EditingCurves.html). Aby przywrócić domyślne krzywej, kliknij prawym przyciskiem myszy pozycję **wetness** i wybierz polecenie **Zresetuj**.
 * **Skala czasu zaniku** — dostosowuje mnożnik dla czasu zanikania. Na przykład, jeśli wynik tworzenie określa czas zaniku wynoszący 750 milisekund, ale ta wartość jest ustawiona na 1,5, czas zaniku zastosowany do źródła to 1 125 milisekund.
-* Niezależność **— dostosowanie** dodatku dla systemu akustycznego, na którym ma zostać określony dźwięk, reverberation na źródle. Ustawienie tej wartości na 1 spowoduje, że źródło zawsze będzie odtwarzane całkowicie na zewnątrz, podczas gdy ustawienie tego ustawienia na-1 spowoduje, że źródło dźwięku jest całkowicie niedrzwiowe.
+* Niezależność — dostosowanie dodatku dla systemu akustycznego, na którym ma zostać określony dźwięk, reverberation na źródle. Ustawienie tej wartości na 1 spowoduje, że źródło zawsze będzie odtwarzane całkowicie na zewnątrz, podczas gdy ustawienie tego ustawienia na-1 spowoduje, że źródło dźwięku jest całkowicie niedrzwiowe.
 
 Dołączenie skryptu **AcousticsAdjustExperimental** do źródła umożliwia wykonywanie dodatkowych doświadczalnych parametrów dostrajania dla tego źródła. Aby dołączyć skrypt, kliknij przycisk **Dodaj składnik** u dołu panelu **Inspektor** i przejdź do **skryptów, > akustyczne dostosowuje eksperymentalne**. Obecnie istnieje jedna kontrolka eksperymentalna:
 

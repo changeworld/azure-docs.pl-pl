@@ -1,20 +1,19 @@
 ---
-title: 'zarządzanie danymi w usłudze Azure Data Lake Storage Gen2 przy użyciu Eksploratora usługi Azure Storage '
+title: zarządzanie danymi w usłudze Azure Data Lake Storage Gen2 przy użyciu Eksploratora usługi Azure Storage
 description: W tym przewodniku szybki start dowiesz się, jak za pomocą Eksplorator usługi Azure Storage utworzyć system plików na koncie Azure Data Lake Storage Gen2, a także katalogu i pliku. Następnie dowiesz się, jak pobrać plik na komputer lokalny i jak wyświetlać widok wszystkich plików w katalogu.
-services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
-ms.custom: mvc
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: normesta
-ms.openlocfilehash: 38cc0533d3e993dd90a037ee6a504c2dcd575e6f
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.reviewer: stewu
+ms.openlocfilehash: 3450de26c12d91f4be00fe39bd5703564c786190
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360859"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855606"
 ---
 # <a name="use-azure-storage-explorer-to-manage-data-in-an-azure-data-lake-storage-gen2-account"></a>zarządzanie danymi na koncie usługi Azure Data Lake Storage Gen2 przy użyciu Eksploratora usługi Azure Storage
 

@@ -1,55 +1,54 @@
 ---
-title: Powrót po awarii podczas odzyskiwania po awarii przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera omówienie różnych typów powrotu po awarii i zastrzeżenia wziąć pod uwagę podczas przechodzenia wstecz do serwera lokalnego, podczas odzyskiwania po awarii przy użyciu usługi Azure Site Recovery.
-services: site-recovery
+title: Powrót po awarii podczas odzyskiwania po awarii przy użyciu Azure Site Recovery | Microsoft Docs
+description: Ten artykuł zawiera omówienie różnych typów powrotu po awarii i przeciwdziałań, które należy wziąć pod uwagę podczas awaryjnego powrotu po awarii w środowisku lokalnym w ramach usługi Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/19/2019
+ms.date: 08/07/2019
 ms.author: raynew
-ms.openlocfilehash: 1e5dc91018df822c72381e4a162c5af5d74ed83c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0eaf28f9aeb4050fd35a6036a53e3e91d00f3eb
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399476"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847482"
 ---
-# <a name="failback-after-disaster-recovery-of-vmware-vms"></a>Powrót po awarii po odzyskaniu po awarii maszyn wirtualnych programu VMware
+# <a name="failback-of-vmware-vms-after-disaster-recovery-to-azure"></a>Powrót po awarii maszyn wirtualnych VMware po odzyskiwaniu po awarii na platformie Azure
 
-Po użytkownik nie powiodło za pośrednictwem platformy Azure jako część procesu odzyskiwania po awarii, może zakończyć się niepowodzeniem, wróć do witryny w środowisku lokalnym. Istnieją dwa różne typy powrotu po awarii, które można wykonać za pomocą usługi Azure Site Recovery: 
+Po przejściu w tryb failover na platformę Azure w ramach procesu odzyskiwania po awarii można wrócić do lokacji lokalnej. Istnieją dwa różne typy powrotu po awarii, które są możliwe z Azure Site Recovery: 
 
 - Powrót po awarii do oryginalnej lokalizacji 
 - Powrót po awarii do lokalizacji alternatywnej
 
-W przypadku niepowodzenia przełączania maszyny wirtualnej programu VMware mogą powrotu po awarii do tej samej maszyny wirtualnej w środowisku lokalnym źródła Jeśli nadal istnieje. W tym scenariuszu tylko zmiany są replikowane z powrotem. Ten scenariusz jest nazywany **odzyskiwanie do oryginalnej lokalizacji**. Jeśli maszyna wirtualna w środowisku lokalnym nie istnieje, jest scenariusz **odzyskiwanie do lokalizacji alternatywnej**.
+Jeśli maszyna wirtualna VMware została przełączona w tryb failover, możesz wrócić do tej samej źródłowej maszyny wirtualnej, jeśli jeszcze nie istnieje. W tym scenariuszu tylko te zmiany są replikowane z powrotem. Ten scenariusz jest znany jako **odzyskiwanie do lokalizacji oryginalnej**. Jeśli lokalna maszyna wirtualna nie istnieje, scenariusz jest odzyskiwaniem do **lokalizacji alternatywnej**.
 
 > [!NOTE]
-> Można tylko powrotu po awarii do oryginalnej vCenter i serwerem konfiguracji. Nie można wdrożyć nowy serwer konfiguracji i zakończyć się niepowodzeniem, ponownie za pomocą. Ponadto nie można dodać nowego vCenter do istniejącego serwera konfiguracji i powrotu po awarii na nowy serwer vCenter.
+> Powrót po awarii do oryginalnego serwera vCenter i konfiguracji może zakończyć się niepowodzeniem. Nie można wdrożyć nowego serwera konfiguracji i ponownie go używać. Ponadto nie można dodać nowego programu vCenter do istniejącego serwera konfiguracji i powrotu po awarii do nowego programu vCenter.
 
 ## <a name="original-location-recovery-olr"></a>Odzyskiwanie do oryginalnej lokalizacji (OLR)
-Jeśli chcesz powrócić po awarii do oryginalnej maszyny wirtualnej muszą zostać spełnione następujące warunki:
+Jeśli zdecydujesz się na powrót po awarii do oryginalnej maszyny wirtualnej, muszą zostać spełnione następujące warunki:
 
-* Jeśli maszyna wirtualna jest zarządzana przez serwer vCenter, host ESX głównego elementu docelowego powinien mieć dostęp do magazynu danych maszyny wirtualnej.
-* Jeśli maszyna wirtualna znajduje się na hoście ESX, ale nie jest zarządzane przez program vCenter, dysk twardy maszyny wirtualnej musi być w magazynie danych, które mogą uzyskiwać dostęp do głównego elementu docelowego hosta.
-* Jeśli maszyna wirtualna znajduje się na hoście ESX, a nie używa serwera vCenter, następnie należy najpierw ukończyć odnajdowanie hosta ESX głównego elementu docelowego przed można ponownie włączyć ochronę. Ma to zastosowanie w przypadku zbyt przechodzenia powrotu po awarii fizycznych serwerów.
-* Powrót do wirtualnej sieci SAN (vSAN) lub dysk, który oparty na urządzenie niesformatowane mapping (RDM), jeśli dyski już istnieją i są połączone z lokalnej maszyny wirtualnej może zakończyć się niepowodzeniem.
+* Jeśli maszyna wirtualna jest zarządzana przez serwer vCenter, Host ESX głównego celu powinien mieć dostęp do magazynu danych maszyny wirtualnej.
+* Jeśli maszyna wirtualna znajduje się na hoście ESX, ale nie jest zarządzana przez program vCenter, dysk twardy maszyny wirtualnej musi znajdować się w magazynie danych, do którego może uzyskać dostęp Host głównego elementu docelowego.
+* Jeśli maszyna wirtualna znajduje się na hoście ESX i nie używa programu vCenter, przed ponownym włączeniem ochrony należy ukończyć odnajdywanie hosta ESX głównego obiektu docelowego. Dotyczy to również sytuacji, w której serwery fizyczne są błędne.
+* Można wrócić po awarii do wirtualnej sieci SAN (sieci vSAN) lub dysku opartego na mapowaniu RAW (RDM), jeśli dyski już istnieją i są połączone z lokalną maszyną wirtualną.
 
 > [!IMPORTANT]
-> Należy włączyć disk.enableUUID= wartość TRUE, aby usługa Azure Site Recovery podczas powrotu po awarii, jest w stanie zidentyfikować oryginalny dysk VMDK na maszynie wirtualnej, do której zostanie zapisany oczekujących zmian. Jeśli ta wartość nie jest równa mieć wartość PRAWDA, następnie usługa próbuje zidentyfikować odpowiedni VMDK w środowisku lokalnym na optymalne rozwiązanie. Jeśli odpowiednie VMDK nie zostanie znaleziony, tworzy dodatkowy dysk i napisane się, że dane.
+> Ważne jest włączenie opcji Disk. enableUUID = TRUE, aby podczas powrotu po awarii usługa Azure Site Recovery mogła identyfikować oryginalną maszynę wirtualną w maszynie wirtualnej, do której będą zapisywane oczekujące zmiany. Jeśli ta wartość nie jest ustawiona na wartość TRUE, usługa próbuje zidentyfikować odpowiednie lokalne VMDK na podstawie najlepszego wysiłku. Jeśli nie można znaleźć odpowiedniego dysku VMDK, tworzy dodatkowy dysk, a dane są zapisywane w tym pliku.
 
 ## <a name="alternate-location-recovery-alr"></a>Odzyskiwanie do lokalizacji alternatywnej (ALR)
-Jeśli nie ma maszyny wirtualnej w środowisku lokalnym przed ponowne włączanie ochrony maszyny wirtualnej, scenariusz jest nazywany odzyskiwania do lokalizacji alternatywnej. Ponowne włączanie ochrony przepływ pracy umożliwia utworzenie maszyny wirtualnej w środowisku lokalnym ponownie. Spowoduje to również pobierania pełnych danych.
+Jeśli lokalna maszyna wirtualna nie istnieje przed ponowną ochroną maszyny wirtualnej, scenariusz jest nazywany odzyskiwaniem do lokalizacji alternatywnej. Przepływ pracy ponownego włączania ochrony ponownie tworzy lokalną maszynę wirtualną. Spowoduje to również pobranie pełnych danych.
 
-* Po powrocie po awarii do innej lokalizacji, maszyna wirtualna jest odzyskiwana do tego samego hosta ESX, na którym została wdrożona na głównym serwerze docelowym. Magazyn danych, który jest używany do tworzenia dysku będzie tego samego magazynu danych, który został wybrany podczas ponowne włączanie ochrony maszyny wirtualnej.
-* Może zakończyć się niepowodzeniem z powrotem tylko w systemie plików maszyny wirtualnej (VMFS) lub magazyn danych sieci vSAN. W przypadku RDM ponowne włączanie ochrony i powrotu po awarii nie będzie działać.
-* Ponowne włączanie ochrony obejmuje jedną początkowy transfer dużej ilości danych następuje zmiany. Ten proces istnieje, ponieważ maszyna wirtualna nie istnieje w środowisku lokalnym. Kompletne dane, musi być replikowane z powrotem. To ponowne objęcie ochroną także zajmie więcej czasu niż odzyskiwanie do oryginalnej lokalizacji.
-* Do dysków z systemem od RDM nie może zakończyć się niepowodzeniem. W magazynie danych VMFS/sieci vSAN można tworzyć tylko nowe dyski maszyny wirtualnej (Vmdk).
+* Po powrocie po awarii do lokalizacji alternatywnej maszyna wirtualna jest odzyskiwana do tego samego hosta ESX, na którym wdrożono główny serwer docelowy. Magazyn danych użyty do utworzenia dysku będzie tym samym magazynem danych, który został wybrany podczas ponownej ochrony maszyny wirtualnej.
+* Można wrócić do trybu failover tylko w przypadku systemu plików maszyny wirtualnej (VMFS) lub magazynu danych sieci vSAN. Jeśli masz RDM, ponowne Włączanie ochrony i powrót po awarii nie będzie możliwe.
+* Ponowne włączanie ochrony obejmuje jeden duży początkowy transfer danych, po którym następuje zmiana. Ten proces istnieje, ponieważ maszyna wirtualna nie istnieje w środowisku lokalnym. Kompletne dane należy zreplikować z powrotem. To ponowne włączenie ochrony zajmie również więcej czasu niż odzyskiwanie oryginalnej lokalizacji.
+* Nie można wrócić do trybu powrotu do dysków opartych na RDM. W magazynie danych VMFS/sieci vSAN można tworzyć tylko nowe dyski maszyny wirtualnej (VMDK).
 
 > [!NOTE]
-> Fizyczny komputer, gdy przełączone w tryb failover Azure, można utworzyć kopię tylko jako maszynę wirtualną VMware. Wynika to tego samego przepływu pracy jako odzyskiwanie do lokalizacji alternatywnej. Upewnij się, można wykryć co najmniej jeden główny serwer docelowy i niezbędne hostów ESX/ESXi, do których należy wykonać powrotu po awarii.
+> Maszyna fizyczna, po przełączeniu w tryb failover na platformę Azure, może się nie powiódł tylko jako maszyna wirtualna VMware. Ten sam przepływ pracy jest zgodny z odzyskiwaniem lokalizacji alternatywnej. Upewnij się, że wykryjesz co najmniej jeden główny serwer docelowy i wymagane hosty ESX/ESXi, do których należy powrócić po awarii.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Postępuj zgodnie z instrukcjami, aby wykonać [operacji powrotu po awarii](vmware-azure-failback.md).
+Postępuj zgodnie z instrukcjami, aby wykonać [operację powrotu po awarii](vmware-azure-failback.md).
 
