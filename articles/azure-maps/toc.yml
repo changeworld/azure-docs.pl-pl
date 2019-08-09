@@ -133,12 +133,14 @@
       items:
         - name: Wprowadzenie do kontrolek mapy systemu Android
           href: how-to-use-android-map-control-library.md
+        - name: Zmienianie stylu mapy
+          href: set-android-map-styles.md
         - name: Dodawanie warstwy symboli
           href: how-to-add-symbol-to-android-map.md
         - name: Dodawanie kształtów
           href: how-to-add-shapes-to-android-map.md
-        - name: Zmienianie stylu mapy
-          href: set-android-map-styles.md
+        - name: Dodawanie warstwy kafelków
+          href: how-to-add-tile-layer-android-map.md
 - name: Dokumentacja
   items:
     - name: Rozszerzenia interfejsu API i parametrów

@@ -53,6 +53,8 @@ sections:
         style: cards
         className: cardsD
         items:
+          - title: Wiersz polecenia
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/managedservices?view=azure-cli-latest">Interfejs wiersza polecenia platformy Azure</a></p><p><a href="https://docs.microsoft.com/powershell/module/az.managedservices/?view=azps-2.4.0#managed_services">Azure PowerShell</a></p>'
           - title: Języki
             html: '<p><a href="/dotnet/api/Microsoft.Azure.Management.ManagedServices">Zestaw Azure SDK dla platformy .NET</a></p><p><a href="https://www.nuget.org/packages/Microsoft.Azure.Management.ManagedServices/">Zestaw Azure SDK dla platformy .NET (NuGet)</a></p><p><a href="https://docs.microsoft.com/python/api/azure-mgmt-managedservices">Zestaw Azure SDK dla środowiska Python</a></p><p><a href="https://pypi.org/project/azure-mgmt-managedservices/">Zestaw Azure SDK dla środowiska Python (PyPi)</a></p>'
           - title: REST

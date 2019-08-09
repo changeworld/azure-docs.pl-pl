@@ -14,7 +14,6 @@
     - name: Tworzenie klastra platformy Apache Spark — interfejs wiersza polecenia platformy Azure
       href: apache-spark-create-cluster-cli.md
     - name: Tworzenie klastra platformy Apache Spark — szablon
-      displayName: 'resource manager template, arm template, resource manager group'
       href: apache-spark-jupyter-spark-sql.md
 - name: Samouczki
   items:
@@ -50,30 +49,6 @@
       href: ../hdinsight-version-release.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
     - name: Monitorowanie dostępności klastrów za pomocą dzienników usług Ambari i Azure Monitor
       href: ../hdinsight-cluster-availability.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
-    - name: Rozwiązywanie problemów
-      items:
-        - name: Wyjątek OutOfMemoryError
-          href: ./apache-spark-troubleshoot-outofmemory.md
-        - name: Zadanie platformy Apache Spark kończy się niepowodzeniem — NoClassDefFoundError
-          href: ./apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
-        - name: Zadanie platformy Apache Spark kończy się niepowodzeniem — InvalidClassException
-          href: ./apache-spark-troubleshoot-job-fails-invalidclassexception.md
-        - name: Powolne zadania platformy Apache Spark — listStatus
-          href: ./apache-spark-troubleshoot-job-slowness-liststatus.md
-        - name: Powolne zadania platformy Apache Spark — kontener magazynu
-          href: ./apache-spark-troubleshoot-job-slowness-container.md
-        - name: Wyjątek IllegalArgumentException
-          href: ./apache-spark-troubleshoot-illegalargumentexception.md
-        - name: Zatrzymywanie aplikacji przesyłania strumieniowego na platformie Apache Spark
-          href: ./apache-spark-troubleshoot-application-stops.md
-        - name: Wyjątek RpcTimeoutException
-          href: ./apache-spark-troubleshoot-rpctimeoutexception.md
-        - name: Blokowanie interfejsu API między źródłami
-          href: ./apache-spark-troubleshoot-blocking-cross-origin.md
-        - name: Serializacja Kryo nie powiodła się
-          href: ./apache-spark-troubleshoot-sparkexception-kryo-serialization-failed.md
-        - name: Dziennik zdarzeń platformy Apache Spark — RequestBodyTooLarge
-          href: ./apache-spark-troubleshoot-event-log-requestbodytoolarge.md
 - name: Instrukcje
   items:
     - name: Korzystanie z magazynu klastra
@@ -226,7 +201,6 @@
                 - name: Korzystanie z witryny Azure Portal
                   href: ../hdinsight-hadoop-create-linux-clusters-portal.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
                 - name: Korzystanie z szablonów usługi Azure Resource Manager
-                  displayName: 'resource manager template, arm template, resource manager group'
                   href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
                 - name: "Korzystanie z\_zestawu SDK środowiska .NET"
                   href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#create-a-cluster'
@@ -329,6 +303,30 @@
                   href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
                 - name: Optymalizowanie zapytań technologii Apache Hive
                   href: ../hdinsight-hadoop-optimize-hive-query.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
+    - name: Rozwiązywanie problemów
+      items:
+        - name: Wyjątek OutOfMemoryError
+          href: ./apache-spark-troubleshoot-outofmemory.md
+        - name: Zadanie platformy Apache Spark kończy się niepowodzeniem — NoClassDefFoundError
+          href: ./apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
+        - name: Zadanie platformy Apache Spark kończy się niepowodzeniem — InvalidClassException
+          href: ./apache-spark-troubleshoot-job-fails-invalidclassexception.md
+        - name: Powolne zadania platformy Apache Spark — listStatus
+          href: ./apache-spark-troubleshoot-job-slowness-liststatus.md
+        - name: Powolne zadania platformy Apache Spark — kontener magazynu
+          href: ./apache-spark-troubleshoot-job-slowness-container.md
+        - name: Wyjątek IllegalArgumentException
+          href: ./apache-spark-troubleshoot-illegalargumentexception.md
+        - name: Zatrzymywanie aplikacji przesyłania strumieniowego na platformie Apache Spark
+          href: ./apache-spark-troubleshoot-application-stops.md
+        - name: Wyjątek RpcTimeoutException
+          href: ./apache-spark-troubleshoot-rpctimeoutexception.md
+        - name: Blokowanie interfejsu API między źródłami
+          href: ./apache-spark-troubleshoot-blocking-cross-origin.md
+        - name: Serializacja Kryo nie powiodła się
+          href: ./apache-spark-troubleshoot-sparkexception-kryo-serialization-failed.md
+        - name: Dziennik zdarzeń platformy Apache Spark — RequestBodyTooLarge
+          href: ./apache-spark-troubleshoot-event-log-requestbodytoolarge.md
 - name: Dokumentacja
   items:
     - name: Przykłady kodu
@@ -350,7 +348,6 @@
     - name: Interfejs API REST (Apache Spark)
       href: /rest/api/hdinsightspark/
     - name: Szablon usługi Resource Manager
-      displayName: 'resource manager template, arm template, resource manager group'
       href: /azure/templates/microsoft.hdinsight/allversions
 - name: Zasoby
   items:

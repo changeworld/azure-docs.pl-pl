@@ -26,7 +26,7 @@ Użyj biblioteki klienta wykrywania anomalii dla języka Python, aby:
 * Wykrywaj anomalie w zestawie danych szeregów czasowych jako żądanie wsadowe
 * Wykrywanie stanu anomalii najnowszego punktu danych w szeregach czasowych
 
-[](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector?view=azure-python) | [Przykłady](https://github.com/Azure-Samples/anomalydetector) pakietu | [Code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector)[](https://pypi.org/project/azure-cognitiveservices-anomalydetector/)Source Library (PyPi) biblioteki dokumentacji dotyczącej bibliotek | 
+[Biblioteki dokumentacji dotyczącej bibliotek](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector?view=azure-python) | [CodeSource Library](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector) | [pakietu (PyPi)](https://pypi.org/project/azure-cognitiveservices-anomalydetector/) | [Przykłady](https://github.com/Azure-Samples/anomalydetector)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
