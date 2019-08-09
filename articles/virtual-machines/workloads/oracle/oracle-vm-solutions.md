@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: rogirdh
 ms.custom: seodec18
-ms.openlocfilehash: f13c7e6db2bf13c0547ee8689e22c9f04fe6d511
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 44fb955c4539a3330386c38a7798c9f3c3fed2d9
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68826761"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846051"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Obrazy maszyn wirtualnych Oracle i ich wdrożenie na Microsoft Azure
 
@@ -91,7 +91,7 @@ Wysoką dostępność i odzyskiwanie po awarii dla Oracle Database Enterprise Ed
 
 Samouczek [implementujący funkcję Oracle Data Guard na platformie Azure](configure-oracle-dataguard.md) przeprowadzi Cię przez podstawową procedurę konfiguracji na platformie Azure.  
 
-Przy użyciu funkcji Oracle Data Guard można uzyskać wysoką dostępność przy użyciu podstawowej bazy danych na jednej maszynie wirtualnej, dodatkowej (w stanie gotowości) w innej maszynie wirtualnej i replikacji jednokierunkowej. Wynikiem jest dostęp do odczytu do kopii bazy danych programu. Za pomocą programu Oracle GoldenGate można skonfigurować dwukierunkową replikację między dwiema bazami danych. Aby dowiedzieć się, jak skonfigurować rozwiązanie wysokiej dostępności dla baz danych przy użyciu tych narzędzi, zobacz artykuł [Active Data Guard](https://www.oracle.com/technetwork/database/features/availability/data-guard-documentation-152848.html) i dokumentacja [GoldenGate](https://docs.oracle.com/goldengate/1212/gg-winux/index.html) w witrynie Oracle. Jeśli potrzebujesz dostępu do odczytu i zapisu do kopii bazy danych programu, możesz użyć usługi [Oracle Active Data Guard](https://www.oracle.com/uk/products/database/options/active-data-guard/overview/index.html).
+Przy użyciu funkcji Oracle Data Guard można uzyskać wysoką dostępność przy użyciu podstawowej bazy danych na jednej maszynie wirtualnej, dodatkowej (w stanie gotowości) w innej maszynie wirtualnej i replikacji jednokierunkowej. Wynikiem jest dostęp do odczytu do kopii bazy danych programu. Za pomocą programu Oracle GoldenGate można skonfigurować dwukierunkową replikację między dwiema bazami danych. Aby dowiedzieć się, jak skonfigurować rozwiązanie wysokiej dostępności dla baz danych przy użyciu tych narzędzi, zobacz artykuł [Active Data Guard](https://www.oracle.com/database/technologies/high-availability/dataguard.html) i dokumentacja [GoldenGate](https://docs.oracle.com/goldengate/1212/gg-winux/index.html) w witrynie Oracle. Jeśli potrzebujesz dostępu do odczytu i zapisu do kopii bazy danych programu, możesz użyć usługi [Oracle Active Data Guard](https://www.oracle.com/uk/products/database/options/active-data-guard/overview/index.html).
 
 Samouczek [implementacji programu Oracle GoldenGate na platformie Azure](configure-oracle-golden-gate.md) przeprowadzi Cię przez podstawową procedurę konfiguracji na platformie Azure.
 
@@ -131,7 +131,7 @@ Aby uzyskać powiązane informacje, zobacz artykuł **860340,1** w <https://supp
    JDK dostępne w obrazach JDK 6 i 7, a maszyny wirtualne i obrazy pochodzące od nich mogą być używane tylko na platformie Azure.
 * **64-bitowy JDK.** Obrazy maszyn wirtualnych programu Oracle WebLogic Server i obrazy maszyn wirtualnych Oracle JDK udostępniane przez platformę Azure zawierają 64-bitowe wersje systemów Windows Server i JDK.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Teraz masz przegląd bieżących rozwiązań firmy Oracle opartych na obrazach maszyn wirtualnych w Microsoft Azure. Następnym krokiem jest wdrożenie pierwszej bazy danych Oracle Database na platformie Azure.
 
 > [!div class="nextstepaction"]

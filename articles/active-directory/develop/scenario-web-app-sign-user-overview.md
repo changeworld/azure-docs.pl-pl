@@ -1,6 +1,6 @@
 ---
-title: Aplikacja sieci Web, logujący się użytkownicy (omówienie) — Platforma tożsamości firmy Microsoft
-description: Dowiedz się, jak utworzyć aplikację sieci web, logujący się użytkownicy (omówienie)
+title: Aplikacja internetowa, która loguje się do użytkowników (omówienie) — platforma tożsamości firmy Microsoft
+description: Dowiedz się, jak utworzyć aplikację internetową, która loguje się do użytkowników (omówienie)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ce534c6eeecba220fd829be829caa679df52055
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 95aeeacfd85dd79453bff4e365e5b050039f77b9
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65833101"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852467"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>Scenariusz: Aplikacja internetowa z możliwością logowania użytkowników
 
-Dowiedz się, wszystko, czego potrzebujesz do tworzenia aplikacji sieci web przez użytkowników logowania z platformą Microsoft identity.
+Dowiedz się, co należy zrobić, aby utworzyć aplikację sieci Web, która umożliwia użytkownikom logowanie się przy użyciu platformy tożsamości firmy Microsoft.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -32,34 +32,34 @@ Dowiedz się, wszystko, czego potrzebujesz do tworzenia aplikacji sieci web prze
 
 ## <a name="getting-started"></a>Wprowadzenie
 
-Jeśli chcesz utworzyć pierwszy przenośnego (platformy ASP.NET Core) aplikacji sieci web, które logują użytkowników tego przewodnika Szybki Start:
+Jeśli chcesz utworzyć pierwsze przenośne aplikacje sieci Web (ASP.NET Core), które logują użytkowników, wykonaj następujące czynności:
 
 > [!div class="nextstepaction"]
-> [Szybki start: Aplikacja internetowa platformy ASP.NET Core, przez logowania użytkowników](quickstart-v2-aspnet-core-webapp.md)
+> [Szybki start: ASP.NET Core aplikacji sieci Web, która loguje się do użytkowników](quickstart-v2-aspnet-core-webapp.md)
 
-Jeśli chcesz pozostać przy użyciu platformy ASP.NET, wypróbuj następującego samouczka:
+Jeśli wolisz pozostać z ASP.NET, wypróbuj następujący samouczek:
 
 > [!div class="nextstepaction"]
-> [Szybki start: Aplikacja sieci web platformy ASP.NET przez logowania użytkowników](quickstart-v2-aspnet-webapp.md)
+> [Szybki start: Aplikacja internetowa ASP.NET, która loguje użytkowników](quickstart-v2-aspnet-webapp.md)
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
-Możesz dodać do uwierzytelniania aplikacji sieci web, dzięki czemu można logowania użytkowników. Dodawanie uwierzytelniania umożliwia aplikacji dostęp do informacji o profilu ograniczona, a, na przykład Dostosowywanie doświadczenia z oferowanych swoim użytkownikom w sieci web. Aplikacje sieci Web uwierzytelnienia użytkownika w przeglądarce sieci web. W tym scenariuszu aplikacji sieci web poleca przeglądarkę użytkownika do logowania do usługi Azure AD. Usługa Azure AD, zwraca odpowiedź logowania za pośrednictwem przeglądarki przez użytkownika, który zawiera oświadczenia dotyczące użytkownika w tokenie zabezpieczającym. Korzystać z logowania użytkowników [Open ID Connect](./v2-protocols-oidc.md) standardowego protokołu sam upraszczane przez użycie oprogramowania pośredniczącego [biblioteki](scenario-web-app-sign-user-app-configuration.md#libraries-used-to-protect-web-apps).
+Należy dodać uwierzytelnianie do aplikacji sieci Web, aby umożliwić użytkownikom logowanie się. Dodanie uwierzytelniania umożliwia aplikacji sieci Web uzyskanie dostępu do ograniczonych informacji o profilu, a na przykład dostosowanie środowiska, które oferuje jego użytkownicy. Aplikacje sieci Web uwierzytelniają użytkownika w przeglądarce internetowej. W tym scenariuszu aplikacja sieci Web kieruje przeglądarkę użytkownika do podpisania ich w usłudze Azure AD. Usługa Azure AD zwraca odpowiedź logowania za pomocą przeglądarki użytkownika, która zawiera oświadczenia dotyczące użytkownika w tokenie zabezpieczającym. Logowanie użytkowników przy użyciu protokołu [Open ID Connect](./v2-protocols-oidc.md) Standard jest uproszczone przez użycie [bibliotek](scenario-web-app-sign-user-app-configuration.md#libraries-used-to-protect-web-apps)pośredniczących.
 
-![Aplikacja sieci Web logowania użytkowników](./media/scenario-webapp/scenario-webapp-signs-in-users.svg)
+![Użytkownicy z logowaniem aplikacji sieci Web](./media/scenario-webapp/scenario-webapp-signs-in-users.svg)
 
-Jako drugą fazę można również włączyć aplikację, aby wywoływać interfejsy API sieci Web w imieniu zalogowanego użytkownika. Ta kolejną fazą jest inny scenariusz znajdziesz w [aplikacji sieci Web wywołuje interfejsy API sieci Web](scenario-web-app-call-api-overview.md)
+W drugiej fazie można także umożliwić aplikacji wywoływanie interfejsów API sieci Web w imieniu zalogowanego użytkownika. Ta kolejna faza jest innym scenariuszem, który można znaleźć w [internetowych interfejsach API wywołań aplikacji sieci Web](scenario-web-app-call-api-overview.md)
 
 > [!NOTE]
-> Dodawanie logowania do sieci web aplikacja jest o ochronie aplikacji sieci web i sprawdzanie poprawności tokenu użytkownika, to znaczy, elementy **oprogramowania pośredniczącego** czy biblioteki. Ten scenariusz nie wymaga jeszcze Microsoft uwierzytelniania biblioteki (MSAL), które dotyczą uzyskiwania tokenu służącego do wywoływania chronionego interfejsów API. Biblioteki uwierzytelniania tylko zostaną wprowadzone w tym scenariuszu monitowania, gdy aplikacja sieci web musi wywoływać interfejsy API sieci web.
+> Dodawanie logowania do aplikacji sieci Web polega na ochronie aplikacji sieci Web i weryfikacji tokenu użytkownika, który jest biblioteką **oprogramowania pośredniczącego** . Ten scenariusz nie wymaga jeszcze bibliotek uwierzytelniania firmy Microsoft (MSAL), które mają na celu uzyskanie tokenu do wywołania chronionych interfejsów API. Biblioteki uwierzytelniania będą wprowadzane tylko w scenariuszu monitowania, gdy aplikacja sieci Web wymaga wywołania interfejsów API sieci Web.
 
-## <a name="specifics"></a>Szczegółowe informacje
+## <a name="specifics"></a>Szczegółowych informacji
 
-- Podczas rejestracji aplikacji, należy podać jedną kilka (Jeśli aplikacja jest wdrażana na kilku lokalizacjach) odpowiedzi oraz identyfikatorów URI. W niektórych przypadkach (rdzenie ASP.NET/ASP.NET) należy włączyć IDToken. Na koniec należy skonfigurować wylogowania identyfikatora URI, aby aplikacja reaguje na użytkowników logowania na poziomie.
-- W kodzie aplikacji musisz podać urząd, do której sieci web logowania delegatów aplikacji. Możesz chcieć dostosować walidacji tokenów (w szczególności w scenariuszach niezależnego dostawcy oprogramowania).
-- Aplikacje sieci Web obsługuje wszystkie typy kont. Aby uzyskać więcej informacji, zobacz [obsługiwane typy kont](v2-supported-account-types.md).
+- Podczas rejestracji aplikacji należy podać jedną lub kilka (Jeśli aplikacja jest wdrażana w kilku lokalizacjach) identyfikatorów URI odpowiedzi. W niektórych przypadkach (ASP.NET/ASP.NET rdzeń) należy włączyć IDToken. Na koniec należy skonfigurować identyfikator URI, aby aplikacja działała w celu wylogowania użytkowników.
+- W kodzie aplikacji należy podać uprawnienia do logowania delegatów aplikacji sieci Web. Możesz chcieć dostosować sprawdzanie poprawności tokenów (w szczególności w scenariuszach niezależnych dostawców oprogramowania).
+- Aplikacje sieci Web obsługują wszystkie typy kont. Aby uzyskać więcej informacji, zobacz [obsługiwane typy kont](v2-supported-account-types.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Rejestrowanie aplikacji](scenario-web-app-sign-user-app-registration.md)

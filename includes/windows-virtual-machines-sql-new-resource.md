@@ -4,12 +4,12 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 05/13/2019
 ms.author: mathoma
-ms.openlocfilehash: 90c85b97f0d2de359f9debda3703e9a2f2d41112
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5a9feb559a73fa16ae3e711151102f2d02dba5b4
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075756"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846109"
 ---
   > [!NOTE]
-  > Poniższe zrzuty ekranu są z **maszyn wirtualnych SQL** zasobów w witrynie Azure portal. Dla [zakończenia okresu objęcia wsparciem (EOS)](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-2008-eos-extend-support.md) maszyny wirtualne SQL server oraz maszyny wirtualne SQL Server, który nie został zarejestrowany za pomocą [dostawcy zasobów maszyny Wirtualnej SQL](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-ahb.md), użyj [Karta Konfiguracja programu SQL Server](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-manage-portal.md#access-sql-server-configuration-tab) do zamiast zarządzać maszyny Wirtualnej programu SQL Server. 
+  > Poniższe zrzuty ekranu pochodzą z zasobu **maszyny wirtualne SQL** w ramach Azure Portal. W przypadku maszyn wirtualnych z programem SQL Server [End-of-Support (EOS)](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-2008-eos-extend-support.md) i SQL Server maszyn wirtualnych, które nie zostały zarejestrowane w [dostawcy zasobów maszyny wirtualnej SQL](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-ahb.md), użyj [karty konfiguracja SQL Server](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-manage-portal.md#access-the-sql-server-configuration-tab) do zarządzania maszyną wirtualną SQL Server. 

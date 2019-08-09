@@ -2,29 +2,29 @@
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 05/24/2019
+ms.date: 08/06/2019
 ms.author: jingwang
-ms.openlocfilehash: 70ffc91477d4a77619ba7df3b2ab121fea5f8bac
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: a2815961f6afb0032aa6011cce5d59ab37f81303
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509895"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68843288"
 ---
-| Category | Magazyn danych | Obsługiwany jako [działanie kopiowania, które](../articles/data-factory/copy-activity-overview.md) źródła | Obsługiwany jako [działanie kopiowania, które](../articles/data-factory/copy-activity-overview.md) ujścia | Obsługiwane przez środowisko [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) | Obsługiwane przez [własne środowisko IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) | Obsługiwane przez [przepływu danych](../articles/data-factory/concepts-data-flow-overview.md)
+| Kategoria | Magazyn danych | Obsługiwane jako źródło [działania kopiowania](../articles/data-factory/copy-activity-overview.md) | Obsługiwane jako ujścia [działania kopiowania](../articles/data-factory/copy-activity-overview.md) | Obsługiwane przez środowisko [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) | Obsługiwane przez [własne środowisko IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) | Obsługiwane przez [przepływ danych](../articles/data-factory/concepts-data-flow-overview.md)
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **Azure** |[Azure Blob Storage](../articles/data-factory/connector-azure-blob-storage.md) |✓ |✓ |✓ |✓  | ✓ <br> <small>Obsługiwane formaty: Delimited Text, Parquet</small> |
+| **Azure** |[Azure Blob Storage](../articles/data-factory/connector-azure-blob-storage.md) |✓ |✓ |✓ |✓  | ✓ <br> <small>Obsługiwane formaty: Tekst rozdzielany, Parquet</small> |
 | &nbsp; |[Azure Cosmos DB (interfejs API SQL)](../articles/data-factory/connector-azure-cosmos-db.md) |✓ |✓ |✓ |✓  ||
-| &nbsp; |[Interfejs API usługi Azure Cosmos DB, bazy danych mongodb](../articles/data-factory/connector-azure-cosmos-db-mongodb-api.md) |✓ |✓ |✓ |✓  ||
-| &nbsp; |[Azure Data Explorer](../articles/data-factory/connector-azure-data-explorer.md) |✓ |✓ |✓ |✓ ||
-| &nbsp; |[Usługa Azure Data Lake Storage 1. generacji](../articles/data-factory/connector-azure-data-lake-store.md) |✓ |✓ |✓ |✓  |✓ <br> <small>Obsługiwane formaty: Delimited Text, Parquet</small> |
-| &nbsp; |[Azure Data Lake Storage Gen2](../articles/data-factory/connector-azure-data-lake-storage.md) |✓ |✓ |✓ |✓  |✓ <br> <small>Obsługiwane formaty: Delimited Text, Parquet</small> |
+| &nbsp; |[Interfejs API Azure Cosmos DB dla MongoDB](../articles/data-factory/connector-azure-cosmos-db-mongodb-api.md) |✓ |✓ |✓ |✓  ||
+| &nbsp; |[Eksplorator danych platformy Azure](../articles/data-factory/connector-azure-data-explorer.md) |✓ |✓ |✓ |✓ ||
+| &nbsp; |[Usługa Azure Data Lake Storage 1. generacji](../articles/data-factory/connector-azure-data-lake-store.md) |✓ |✓ |✓ |✓  |✓ <br> <small>Obsługiwane formaty: Tekst rozdzielany, Parquet</small> |
+| &nbsp; |[Azure Data Lake Storage Gen2](../articles/data-factory/connector-azure-data-lake-storage.md) |✓ |✓ |✓ |✓  |✓ <br> <small>Obsługiwane formaty: Tekst rozdzielany, Parquet</small> |
 | &nbsp; |[Azure Database for MariaDB](../articles/data-factory/connector-azure-database-for-mariadb.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Azure Database for MySQL](../articles/data-factory/connector-azure-database-for-mysql.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Azure File Storage](../articles/data-factory/connector-azure-file-storage.md) |✓ |✓ |✓ |✓  ||
 | &nbsp; |[Azure SQL Database](../articles/data-factory/connector-azure-sql-database.md) |✓ |✓ |✓ |✓  |✓  |
-| &nbsp; |[Wystąpienie zarządzane usługi Azure SQL Database](../articles/data-factory/connector-azure-sql-database-managed-insance.md) |✓ |✓ |✓ |✓  ||
+| &nbsp; |[Wystąpienie zarządzane usługi Azure SQL Database](../articles/data-factory/connector-azure-sql-database-managed-instance.md) |✓ |✓ |✓ |✓  ||
 | &nbsp; |[Azure SQL Data Warehouse](../articles/data-factory/connector-azure-sql-data-warehouse.md) |✓ |✓ |✓ |✓  |✓  |
 | &nbsp; |[Indeks usługi Azure Search](../articles/data-factory/connector-azure-search.md) | |✓ |✓ |✓  ||
 | &nbsp; |[Azure Table Storage](../articles/data-factory/connector-azure-table-storage.md) |✓ |✓ |✓ |✓  ||
@@ -36,19 +36,19 @@ ms.locfileid: "67509895"
 | &nbsp; |[HBase](../articles/data-factory/connector-hbase.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Hive](../articles/data-factory/connector-hive.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Apache Impala (wersja zapoznawcza)](../articles/data-factory/connector-impala.md) |✓ | |✓ |✓  ||
-| &nbsp; |[Informix](../articles/data-factory/connector-odbc.md#ibm-informix-source) |✓ | | |✓  ||
+| &nbsp; |[Informix](../articles/data-factory/connector-informix.md) |✓ | | |✓  ||
 | &nbsp; |[MariaDB](../articles/data-factory/connector-mariadb.md) |✓ | |✓ |✓  ||
-| &nbsp; |[Microsoft Access](../articles/data-factory/connector-odbc.md#microsoft-access-source) |✓ | | |✓  ||
+| &nbsp; |[Microsoft Access](../articles/data-factory/connector-microsoft-access.md) |✓ | | |✓  ||
 | &nbsp; |[MySQL](../articles/data-factory/connector-mysql.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Netezza](../articles/data-factory/connector-netezza.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Oracle](../articles/data-factory/connector-oracle.md) |✓ |✓ |✓ |✓  ||
 | &nbsp; |[Phoenix](../articles/data-factory/connector-phoenix.md) |✓ | |✓ |✓  ||
 | &nbsp; |[PostgreSQL](../articles/data-factory/connector-postgresql.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Presto (wersja zapoznawcza)](../articles/data-factory/connector-presto.md) |✓ | |✓ |✓  ||
-| &nbsp; |[SAP Business Warehouse Otwórz Centrum](../articles/data-factory/connector-sap-business-warehouse-open-hub.md) |✓ | | |✓  ||
-| &nbsp; |[SAP Business Warehouse przy użyciu wyrażeń MDX](../articles/data-factory/connector-sap-business-warehouse.md) |✓ | | |✓  ||
+| &nbsp; |[Oprogramowanie SAP Business Warehouse — otwarte centrum](../articles/data-factory/connector-sap-business-warehouse-open-hub.md) |✓ | | |✓  ||
+| &nbsp; |[SAP Business Warehouse za pośrednictwem MDX](../articles/data-factory/connector-sap-business-warehouse.md) |✓ | | |✓  ||
 | &nbsp; |[SAP HANA](../articles/data-factory/connector-sap-hana.md) |✓ |✓ | |✓  ||
-| &nbsp; |[SAP Table](../articles/data-factory/connector-sap-table.md) |✓ | | |✓  ||
+| &nbsp; |[Tabela SAP](../articles/data-factory/connector-sap-table.md) |✓ | | |✓  ||
 | &nbsp; |[Spark](../articles/data-factory/connector-spark.md) |✓ | |✓ |✓  ||
 | &nbsp; |[SQL Server](../articles/data-factory/connector-sql-server.md) |✓ |✓ |✓ |✓  ||
 | &nbsp; |[Sybase](../articles/data-factory/connector-sybase.md) |✓ | | |✓  ||
@@ -66,7 +66,7 @@ ms.locfileid: "67509895"
 | **Protokół ogólny** |[Ogólne HTTP](../articles/data-factory/connector-http.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Ogólne OData](../articles/data-factory/connector-odata.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Ogólne ODBC](../articles/data-factory/connector-odbc.md) |✓ |✓ | |✓  ||
-| &nbsp; |[Ogólny REST](../articles/data-factory/connector-rest.md) |✓ | |✓ |✓  ||
+| &nbsp; |[RESZTA ogólna](../articles/data-factory/connector-rest.md) |✓ | |✓ |✓  ||
 | **Usługi i aplikacje** |[Amazon Marketplace Web Service (wersja zapoznawcza)](../articles/data-factory/connector-amazon-marketplace-web-service.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Common Data Service for Apps](../articles/data-factory/connector-dynamics-crm-office-365.md) |✓ |✓ |✓ |✓  ||
 | &nbsp; |[Concur (wersja zapoznawcza)](../articles/data-factory/connector-concur.md) |✓ | |✓ |✓  ||
@@ -85,7 +85,7 @@ ms.locfileid: "67509895"
 | &nbsp; |[PayPal (wersja zapoznawcza)](../articles/data-factory/connector-paypal.md) |✓ | |✓ |✓  ||
 | &nbsp; |[QuickBooks (wersja zapoznawcza)](../articles/data-factory/connector-quickbooks.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Salesforce](../articles/data-factory/connector-salesforce.md) |✓ |✓ |✓ |✓  ||
-| &nbsp; |[Salesforce Service Cloud](../articles/data-factory/connector-salesforce.md) |✓ |✓ |✓ |✓  ||
+| &nbsp; |[Salesforce Service Cloud](../articles/data-factory/connector-salesforce-service-cloud.md) |✓ |✓ |✓ |✓  ||
 | &nbsp; |[Salesforce Marketing Cloud (wersja zapoznawcza)](../articles/data-factory/connector-salesforce-marketing-cloud.md) |✓ | |✓ |✓  ||
 | &nbsp; |[SAP Cloud for Customer (C4C)](../articles/data-factory/connector-sap-cloud-for-customer.md) |✓ |✓ |✓ |✓  ||
 | &nbsp; |[SAP ECC](../articles/data-factory/connector-sap-ecc.md) |✓ | |✓ |✓ ||

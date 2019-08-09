@@ -1,31 +1,31 @@
 ---
-title: 'Klasyfikacja: Prognozowanie ryzyka kredytowego (koszt poufnych)'
+title: Zmianę Przewidywanie ryzyka kredytowego (z uwzględnieniem kosztów)
 titleSuffix: Azure Machine Learning service
-description: W tym artykule pokazano, jak tworzyć złożone eksperymentu uczenia maszynowego za pomocą interfejsu wizualnego. Dowiesz się, jak implementować niestandardowe skrypty języka Python oraz porównanie różnych modeli można wybrać najlepsze rozwiązanie.
+description: W tym artykule przedstawiono sposób tworzenia złożonego eksperymentu uczenia maszynowego za pomocą interfejsu wizualnego. Dowiesz się, jak zaimplementować niestandardowe skrypty języka Python i porównać wiele modeli, aby wybrać najlepszą opcję.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: article
+ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: efed981b500ff14a66c2355a1d14bd762000622f
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 942d6fa6db7ee2fc07fd11d3448ac7ec96c3bd43
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606158"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845964"
 ---
-# <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>Przykład 4 - klasyfikacji: Prognozowanie ryzyka kredytowego (koszt poufnych)
+# <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>Przykład 4 — Klasyfikacja: Przewidywanie ryzyka kredytowego (z uwzględnieniem kosztów)
 
-W tym artykule pokazano, jak tworzyć złożone eksperymentu uczenia maszynowego za pomocą interfejsu wizualnego. Dowiesz się, jak implementować logikę niestandardową przy użyciu skryptów języka Python oraz porównanie różnych modeli można wybrać najlepsze rozwiązanie.
+W tym artykule przedstawiono sposób tworzenia złożonego eksperymentu uczenia maszynowego za pomocą interfejsu wizualnego. Dowiesz się, jak wdrożyć logikę niestandardową przy użyciu skryptów języka Python i porównać wiele modeli, aby wybrać najlepszą opcję.
 
-W tym przykładzie przygotowuje klasyfikatora przewidzieć ryzyko kredytowe, przy użyciu informacji o aplikacji środków, takich jak Historia kredytów, wiek i liczba kart kredytowych. Jednakże można zastosować koncepcji, w tym artykule do własnych uczenia maszynowego problemów.
+Ten przykład pociąga za niego klasyfikatora do przewidywania ryzyka kredytowego przy użyciu informacji o aplikacji kredytowej, takich jak historia kredytów, wiek i liczba kart kredytowych. Można jednak zastosować Koncepcje opisane w tym artykule, aby poznać własne problemy z uczeniem maszynowym.
 
-Jeśli po prostu rozpoczniesz pracę z usługą machine learning, może zająć się [przykładowe klasyfikatora podstawowego](ui-sample-classification-predict-credit-risk-basic.md) pierwszy.
+Jeśli dopiero zaczynasz pracę z uczeniem maszynowym, możesz najpierw zacząć korzystać z [przykładu klasyfikatora Basic](ui-sample-classification-predict-credit-risk-basic.md) .
 
-Oto wykres zakończone, w tym eksperymencie:
+Oto ukończony wykres dla tego eksperymentu:
 
 [![Wykres eksperymentu](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
@@ -33,24 +33,24 @@ Oto wykres zakończone, w tym eksperymencie:
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Wybierz **Otwórz** przycisku w eksperymencie przykład 4:
+4. Wybierz przycisk **Otwórz** dla przykładowego eksperymentu 4:
 
-    ![Otwórz eksperyment](media/ui-sample-classification-predict-credit-risk-cost-sensitive/open-sample4.png)
+    ![Otwieranie eksperymentu](media/ui-sample-classification-predict-credit-risk-cost-sensitive/open-sample4.png)
 
 ## <a name="data"></a>Data
 
-Używamy zestawu danych karty kredytowej niemiecki z repozytorium Irvine Unikatowości. Ten zestaw danych zawiera 1000 próbek z funkcjami 20 i 1 etykiety. Poszczególne przykładowe aplikacje przedstawiają osoby. 20 funkcje obejmują funkcje numeryczne i podzielonych na kategorie. Zobacz [UCI witryny sieci Web](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29) Aby uzyskać więcej informacji na temat zestawu danych. Ostatnia kolumna jest etykiety, który wskazuje ryzyko kredytowe, a ma tylko dwa możliwe wartości: ryzyko kredytowe wysoki = 2 i niskie ryzyko kredytowe = 1.
+Korzystamy z niemieckiego zestawu danych kart kredytowych z repozytorium UC Irvine. Ten zestaw danych zawiera 1 000 próbek z 20 funkcjami i 1 etykietą. Każdy przykład reprezentuje osobę. 20 funkcji obejmuje funkcje liczbowe i kategorii. Aby uzyskać więcej informacji na temat zestawu danych, zobacz [witrynę sieci Web UCI](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29) . Ostatnia kolumna to etykieta, która oznacza ryzyko kredytowe i ma tylko dwie możliwe wartości: wysokie ryzyko kredytowe = 2 i niskie ryzyko kredytowe = 1.
 
 ## <a name="experiment-summary"></a>Podsumowanie eksperymentu
 
-W tym eksperymencie porównamy dwa różne podejścia do generowania modeli, aby rozwiązać ten problem:
+W tym doświadczeniu porównamy dwa różne podejścia do generowania modeli w celu rozwiązania tego problemu:
 
-- Szkolenie przy użyciu oryginalnego zestawu danych.
-- Szkolenie przy użyciu replikowanego zestawu danych.
+- Szkolenie z oryginalnym zestawem danych.
+- Szkolenie z replikowanym zestawem danych.
 
-Za pomocą obu metod Oceniamy modele przy użyciu zestawu danych testowych za pomocą replikacji, aby upewnić się, że wyniki są wyrównane przy użyciu funkcji cost. Przetestowanie dwoma klasyfikatorami za pomocą obu metod: **Obsługa Two-Class wektor maszyny** i **Two-Class wzmocnione drzewo decyzyjnego**.
+W obu podejściach szacujemy modele przy użyciu zestawu danych testowych z replikacją, aby upewnić się, że wyniki są wyrównane przy użyciu funkcji koszt. Przetestujemy dwa klasyfikatory z obu metod: **Dwie klasy obsługują maszyny wektorowe** i **dwuklasowe drzewo decyzyjne**.
 
-Koszt misclassifying to przykład niskiego ryzyka jako wysokie wynosi 1, a misclassifying o wysokim ryzyku przykład jako niski koszt wynosi 5. Używamy **wykonanie skryptu Python** modułu dla tego błędu klasyfikacji kosztów.
+Koszt nieznacznego klasyfikowania przykładu niskiego ryzyka jest równy 1, a koszt nieznaczącego klasyfikowania przykładu wysokiego ryzyka wynosi 5. Używamy modułu **skryptu języka Python** w celu uwzględnienia tego kosztu nieprawidłowej klasyfikacji.
 
 Oto wykres eksperymentu:
 
@@ -58,20 +58,20 @@ Oto wykres eksperymentu:
 
 ## <a name="data-processing"></a>Przetwarzanie danych
 
-Rozpoczniemy pracę przy użyciu **Edytor metadanych** modułu, można dodać nazwy kolumn, aby zastąpić domyślne nazwy kolumn bardziej zrozumiałej nazwy uzyskany z witryny UCI opis zestawu danych. Firma Microsoft zapewnia nowe nazwy kolumny jako wartości rozdzielanych przecinkami w **nową kolumnę** pole Nazwa **Edytor metadanych**.
+Zaczynamy od używania modułu **edytora metadanych** do dodawania nazw kolumn w celu zastąpienia domyślnych nazw kolumn nazwami z bardziej zrozumiałymi nazwami uzyskanymi z opisu zestawu danych w witrynie UCI. W **nowej kolumnie Nazwa kolumny** w **edytorze metadanych**udostępniamy nowe nazwy kolumn jako wartości rozdzielane przecinkami.
 
-Następnie mogliśmy wygenerować szkolenia i testować zestawy służące do tworzenia modelu prognozowania ryzyka. Firma Microsoft dzielenie oryginalnego zestawu danych w zestawach szkolenie i testowanie tej samej wielkości za pomocą **podziału danych** modułu. Aby utworzyć zestawy w taki sam rozmiar, ustawiliśmy **ułamek wierszy w pierwszym zestawie danych wyjściowych** możliwość 0,5.
+Następnie generujemy zestawy szkoleniowe i testowe używane do tworzenia modelu przewidywania ryzyka. Ten sam zestaw danych został podzielony na zestawy szkoleniowe i testowe o takim samym rozmiarze przy użyciu modułu **Split Data** . Aby utworzyć zestawy o równym rozmiarze, ustawiamy **ułamek wierszy w pierwszej opcji wyjściowego zestawu danych** na 0,5.
 
 ### <a name="generate-the-new-dataset"></a>Generuj nowy zestaw danych
 
-Ponieważ koszty niedoszacowania o podwyższonym ryzyku są wysokie, możemy ustawić koszt błędu klasyfikacji w następujący sposób:
+Ze względu na to, że koszt podnoszenia ryzyka jest wysoki, ustawiamy koszt nieodpowiedniej klasyfikacji w następujący sposób:
 
-- Dla przypadków o wysokim ryzyku źle zakwalifikowane jako niskiego ryzyka: 5
-- Dla przypadków o niskim ryzyku źle zakwalifikowane jako wysokiego ryzyka: 1
+- W przypadku przypadków o wysokim ryzyku sklasyfikowanych jako niskie ryzyko: 5
+- W przypadku przypadków o niskim ryzyku sklasyfikowanych jako wysokie ryzyko: 1
 
-Aby uwzględnić tę funkcję, kosztów, możemy wygenerować nowy zestaw danych. W nowym zestawie danych każdy przykład o wysokim ryzyku są replikowane pięć razy, ale nie zmienia się wiele przykładów o niskim ryzyku. Możemy podzielić dane na szkolenie i testowanie zestawów danych, przed włączeniem replikacji, aby uniemożliwić tym samym wierszu w obu zestawach.
+Aby odzwierciedlić tę funkcję kosztu, generujemy nowy zestaw danych. W nowym zestawie danych każdy przykład wysokiego ryzyka jest replikowany pięć razy, ale liczba przykładów z niskim ryzykiem nie ulega zmianie. Dane są dzielone na szkolenia i testowe zestawy danych przed replikacją, aby zapobiec występowaniu tego samego wiersza w obu zestawach.
 
-Replikowanie danych o wysokim ryzyku, testujemy ten kod języka Python do **wykonanie skryptu Python** modułu:
+Aby replikować dane o wysokim ryzyku, ten kod w języku Python zostanie umieszczony w module **wykonywania skryptu języka Python** :
 
 ```Python
 import pandas as pd
@@ -85,42 +85,42 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
     return result,
 ```
 
-**Wykonanie skryptu Python** modułu replikuje zestawów danych szkoleniowych i testów.
+Moduł **wykonywania skryptu języka Python** replikuje zarówno zestaw danych szkoleniowych, jak i testowych.
 
 ### <a name="feature-engineering"></a>Inżynieria funkcji
 
-**Two-Class pomocy technicznej Vector Machine** algorytm wymaga danych znormalizowana. Dlatego używamy **normalizacji danych** modułu do normalizacji zakresy wszystkie funkcje numeryczne z `tanh` transformacji. A `tanh` przekształcania konwertuje wszystkie funkcje liczbowe wartości do zakresu od 0 do 1 przy jednoczesnym zachowaniu ogólny rozkład wartości.
+Algorytm **maszyny wektorowej obsługujący dwie klasy** wymaga znormalizowanych danych. Dlatego używamy modułu **normalizowanie danych** do normalizacji zakresów wszystkich funkcji liczbowych z `tanh` przekształceniem. `tanh` Transformacja konwertuje wszystkie funkcje liczbowe na wartości z zakresu od 0 do 1, zachowując ogólną dystrybucję wartości.
 
-**Two-Class pomocy technicznej Vector Machine** modułu obsługuje funkcje ciągu, konwertowania go na potrzeby podzielonych na kategorie i następnie do binarnych funkcje o wartości 0 lub 1. Więc nie potrzebujemy do normalizacji tych funkcji.
+Dwuklasowy moduł **maszyny wektorowej** obsługuje funkcje ciągów, konwertując je do funkcji kategorii, a następnie do funkcji binarnych o wartości 0 lub 1. Dlatego nie trzeba znormalizować tych funkcji.
 
 ## <a name="models"></a>Modele
 
-Ponieważ możemy zastosować dwoma klasyfikatorami **Two-Class pomocy technicznej Vector Machine** (SVM) i **Two-Class Boosted Decision drzewa**, a także korzystają z dwóch zestawów danych, wygenerowanie łącznie z czterech modeli:
+Ze względu na to, że stosujemy dwa klasyfikatory, **dwie klasy obsługują maszyny wektorowe** (SVM) i dwuklasowe **drzewo decyzyjne**, a także dwa zestawy danych generują łącznie cztery modele:
 
-- SVM uczony przy użyciu oryginalnych danych.
-- SVM uczony przy użyciu zreplikowanych danych.
-- Wzmocnione drzewo decyzyjne uczony przy użyciu oryginalnych danych.
-- Wzmocnione drzewo decyzyjne uczony przy użyciu zreplikowanych danych.
+- SVM z oryginalnymi danymi.
+- SVM z replikowanymi danymi.
+- Wzmocnione drzewo decyzyjne przeszkolone z oryginalnymi danymi.
+- Wzmocnione drzewo decyzyjne przeszkolone z replikowanymi danymi.
 
-Standardowa eksperymentalne przepływu pracy firma Microsoft umożliwia tworzenie, szkolenie i testowanie modeli:
+Używamy standardowego eksperymentalnego przepływu pracy do tworzenia, uczenia i testowania modeli:
 
-1. Inicjowanie algorytmów uczenia, za pomocą **Two-Class pomocy technicznej Vector Machine** i **Two-Class Boosted Decision drzewa**.
-1. Użyj **Train Model** zastosowanie algorytmu do danych i utworzyć model rzeczywistych.
-1. Użyj **Score Model** aby wygenerować wyniki przy użyciu przykładów testu.
+1. Zainicjuj algorytmy uczenia przy użyciu dwuklasowej **maszyny wektorowej** i dwuklasowego **drzewa decyzyjnego**.
+1. Użyj **modelu uczenia** , aby zastosować algorytm do danych i utworzyć rzeczywisty model.
+1. Użyj **modelu oceny** , aby wygenerować wyniki przy użyciu przykładów testowych.
 
-Na poniższym diagramie przedstawiono część tego eksperymentu, w którym zestawy szkolenia oryginalnego i replikowane są używane do trenowania dwa różne modele SVM. **Uczenie modelu** jest podłączony do zestawu szkoleniowego i **Score Model** jest połączony z zestawu testowego.
+Na poniższym diagramie przedstawiono część tego eksperymentu, w której oryginalne i zreplikowane zestawy szkoleniowe są używane do uczenia dwóch różnych modeli SVM. **Model uczenia** jest połączony z zestawem szkoleniowym, a **model oceny** jest połączony z zestawem testów.
 
 ![Wykres eksperymentu](media/ui-sample-classification-predict-credit-risk-cost-sensitive/score-part.png)
 
-Na etapie oceny eksperymentu możemy obliczyć dokładność każdego z czterech modeli. W tym eksperymencie używamy **Evaluate Model** do przykładów, które mają ten sam błędu klasyfikacji porównania kosztów.
+W fazie oceny eksperymentu obliczamy dokładność każdego z czterech modeli. Na potrzeby tego eksperymentu używamy do **szacowania modelu** , aby porównać przykłady, które mają ten sam koszt niesklasyfikowany.
 
-**Evaluate Model** modułu można obliczyć metryki wydajności dla maksymalnie dwa modele ocenami. Dlatego używamy jedno wystąpienie **Evaluate Model** ocena dwa modele SVM i inne wystąpienie **Evaluate Model** można obliczyć dwa modele wzmocnione drzewo decyzyjne.
+Moduł **oceny modelu** może obliczać metryki wydajności dla maksymalnie dwóch modeli ocenionych. W związku z tym korzystamy z jednego wystąpienia **Oceń model** do oszacowania dwóch modeli SVM i innego wystąpienia **Oceń model** , aby oszacować dwa podwyższane modele drzewa decyzyjnego.
 
-Należy zauważyć, że zestaw danych replikowanych testu jest używany jako dane wejściowe dla **Score Model**. Innymi słowy wyniki końcowe dokładność obejmują kosztu w celu uzyskania etykiety jest nieprawidłowy.
+Zwróć uwagę, że replikowany zestaw danych testu jest używany jako dane wejściowe dla **modelu oceny**. Innymi słowy, końcowe wyniki dokładności obejmują koszt uzyskania nieprawidłowych etykiet.
 
 ## <a name="combine-multiple-results"></a>Łączenie wielu wyników
 
-**Evaluate Model** modułu tworzy tabelę z jednego wiersza, który zawiera różne metryki. Aby utworzyć pojedynczy zestaw wyników, dokładności, najpierw używamy **Dodaj wiersze** do połączenia wyników w jedną tabelę. Następnie używamy poniższy skrypt języka Python w **wykonanie skryptu Python** modułu, aby dodać nazwę modelu i podejście szkolenia dla każdego wiersza w tabeli wyników:
+Moduł **Oceń model** tworzy tabelę z pojedynczym wierszem zawierającym różne metryki. Aby utworzyć pojedynczy zestaw wyników dokładności, najpierw użyjemy **Dodaj wiersze** , aby połączyć wyniki w jedną tabelę. Następnie użyjemy następującego skryptu języka Python w module **Wykonaj skrypt języka Python** , aby dodać nazwę modelu i metodę uczenia dla każdego wiersza w tabeli wyników:
 
 ```Python
 import pandas as pd
@@ -142,15 +142,15 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 ## <a name="results"></a>Wyniki
 
-Aby wyświetlić wyniki doświadczenia, kliknąć prawym przyciskiem myszy wyjściem Visualize ostatniego **Select Columns in Dataset** modułu.
+Aby wyświetlić wyniki eksperymentu, można kliknąć prawym przyciskiem myszy wizualizację danych wyjściowych ostatnio **wybranych kolumn w module DataSet** .
 
-![Wizualizowanie danych wyjściowych](media/ui-sample-classification-predict-credit-risk-cost-sensitive/result.png)
+![Wizualizacja danych wyjściowych](media/ui-sample-classification-predict-credit-risk-cost-sensitive/result.png)
 
-Pierwsza kolumna zawiera algorytm używany do generowania modelu uczenia maszynowego.
+W pierwszej kolumnie jest wyświetlany algorytm uczenia maszynowego używany do generowania modelu.
 Druga kolumna wskazuje typ zestawu szkoleniowego.
-Trzecia kolumna zawiera wartości kosztowej dokładności.
+Trzecia kolumna zawiera wartość dokładności z uwzględnieniem kosztów.
 
-Z tymi wynikami, widać, że najlepszej dokładności jest świadczona przez model, który został utworzony za pomocą **Two-Class pomocy technicznej Vector Machine** i przeszkolony szkolenia replikowanego zestawu danych.
+Z tych wyników można zobaczyć, że Najlepsza dokładność jest zapewniana przez model, który został utworzony z dwuklasową **maszyną wektorową** , i przeszkolony na zestawie danych szkolenia zreplikowane.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -158,10 +158,10 @@ Z tymi wynikami, widać, że najlepszej dokładności jest świadczona przez mod
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z innymi przykładami dostępne dla interfejsu wizualnego:
+Zapoznaj się z innymi przykładami dostępnymi dla interfejsu wizualizacji:
 
-- [Przykład 1 - regresji. Prognozowanie cen samochodów](ui-sample-regression-predict-automobile-price-basic.md)
-- [Przykład 2 - regresji. Porównaj algorytmy Prognozowanie cen samochodów](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
-- [Próba 3 — klasyfikacji: Prognozowanie ryzyka kredytowego](ui-sample-classification-predict-credit-risk-basic.md)
-- [Przykład 5 - klasyfikacji: Przewidywanie zmienności](ui-sample-classification-predict-churn.md)
-- [Przykład 6 - klasyfikacji: Prognozowanie opóźnień lotów](ui-sample-classification-predict-flight-delay.md)
+- [Przykład 1 — regresja: Przewidywanie ceny samochodów](ui-sample-regression-predict-automobile-price-basic.md)
+- [Przykład 2 — Regresja: Porównanie algorytmów do prognozowania cen samochodów](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
+- [Przykład 3 — Klasyfikacja: Przewidywanie ryzyka kredytowego](ui-sample-classification-predict-credit-risk-basic.md)
+- [Przykład 5 — Klasyfikacja: Prognozowanie zmian](ui-sample-classification-predict-churn.md)
+- [Przykład 6 — Klasyfikacja: Przewidywanie opóźnień lotów](ui-sample-classification-predict-flight-delay.md)

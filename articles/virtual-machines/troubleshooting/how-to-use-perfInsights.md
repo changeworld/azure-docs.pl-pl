@@ -1,6 +1,6 @@
 ---
-title: Jak za pomocą programu PerfInsights w systemie Microsoft Azure | Dokumentacja firmy Microsoft
-description: Uczy się, jak za pomocą programu PerfInsights Windows VM Rozwiązywanie problemów z wydajnością.
+title: Jak używać że program perfinsights w Microsoft Azure | Microsoft Docs
+description: Informacje na temat rozwiązywania problemów z wydajnością maszyn wirtualnych z systemem Windows przy użyciu programu że program perfinsights.
 services: virtual-machines-windows'
 documentationcenter: ''
 author: anandhms
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: cb414abcbbf2db7b7cd6a3d724e50010beeef647
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 26301e9a8aef29f1ff786f4fcd28b806eb10b8df
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60318419"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846796"
 ---
 # <a name="how-to-use-perfinsights"></a>Korzystanie z narzędzia PerfInsights
 
-[Program PerfInsights](https://aka.ms/perfinsightsdownload) to narzędzie diagnostyczne samodzielnej pomocy, które zbiera i analizuje dane diagnostyczne i udostępnia raport, aby ułatwić rozwiązywanie problemów z wydajnością maszyny wirtualnej Windows na platformie Azure. Program PerfInsights mogą być uruchamiane na maszynach wirtualnych jako autonomiczne narzędzie bezpośrednio z witryny portal przy użyciu [Diagnostyka wydajności maszyn wirtualnych platformy Azure](performance-diagnostics.md), lub dzięki zainstalowaniu [rozszerzenie maszyny Wirtualnej diagnostyki wydajności platformy Azure ](performance-diagnostics-vm-extension.md).
+[Że program perfinsights](https://aka.ms/perfinsightsdownload) to narzędzie do samodzielnego rozwiązywania problemów, które zbiera i analizuje dane diagnostyczne i zawiera raport, który pomaga rozwiązywać problemy z wydajnością maszyn wirtualnych systemu Windows na platformie Azure. Że program perfinsights można uruchamiać na maszynach wirtualnych jako autonomiczne narzędzie, bezpośrednio z portalu przy użyciu [diagnostyki wydajności dla maszyn wirtualnych platformy Azure](performance-diagnostics.md)lub przez zainstalowanie [rozszerzenia maszyny wirtualnej usługi Diagnostyka wydajności Azure](performance-diagnostics-vm-extension.md).
 
-Jeśli występują problemy z wydajnością z maszynami wirtualnymi, skontaktuj się z pomocą techniczną, uruchom to narzędzie.
+Jeśli występują problemy z wydajnością maszyn wirtualnych przed skontaktowaniem się z pomocą techniczną, Uruchom to narzędzie.
 
-## <a name="supported-troubleshooting-scenarios"></a>Obsługiwane scenariusze dotyczące rozwiązywania problemów
+## <a name="supported-troubleshooting-scenarios"></a>Obsługiwane scenariusze rozwiązywania problemów
 
-Program PerfInsights może zbierać i analizować kilka rodzajów informacji. W poniższych częściach omówiono typowe scenariusze.
+Że program perfinsights może zbierać i analizować kilka rodzajów informacji. W poniższych sekcjach omówiono typowe scenariusze.
 
-### <a name="quick-performance-analysis"></a>Analiza wydajności szybki
+### <a name="quick-performance-analysis"></a>Analiza szybkiej wydajności
 
-Ten scenariusz umożliwia zbieranie informacji o konfiguracji dysku i inne ważne informacje, w tym:
+W tym scenariuszu zbierane są informacje o konfiguracji dysku i inne istotne dane, takie jak:
 
 -   Dzienniki zdarzeń
 
@@ -43,276 +43,276 @@ Ten scenariusz umożliwia zbieranie informacji o konfiguracji dysku i inne ważn
 
 -   Lista zadań dla wszystkich aplikacji, które są aktualnie uruchomione w systemie
 
--   Ustawienia konfiguracji bazy danych programu Microsoft SQL Server (Jeśli maszyna wirtualna jest identyfikowany jako serwera, na którym działa program SQL Server)
+-   Microsoft SQL Server ustawienia konfiguracji bazy danych (jeśli maszyna wirtualna jest zidentyfikowana jako serwer z systemem SQL Server)
 
--   Liczniki niezawodność magazynu
+-   Liczniki niezawodności magazynu
 
--   Ważne poprawki Windows
+-   Ważne poprawki systemu Windows
 
--   Odfiltruj zainstalowane sterowniki
+-   Zainstalowane sterowniki filtrów
 
-Jest to zbiór pasywnym informacje, które nie powinny mieć wpływ na system. 
+Jest to pasywna kolekcja informacji, która nie powinna mieć wpływu na system. 
 
 >[!Note]
->Ten scenariusz jest automatycznie uwzględniany we wszystkich następujących scenariuszy:
+>Ten scenariusz jest automatycznie uwzględniany w każdym z następujących scenariuszy:
 
 ### <a name="benchmarking"></a>Benchmarking
 
-Ten scenariusz jest uruchamiany [narzędzia Diskspd](https://github.com/Microsoft/diskspd) testu (operacje We/Wy i MB/s) dla wszystkich dysków, które są dołączone do maszyny Wirtualnej. 
+W tym scenariuszu jest uruchamiany test testu porównawczego [Narzędzia diskspd](https://github.com/Microsoft/diskspd) (IOPS i MB/s) dla wszystkich dysków dołączonych do maszyny wirtualnej. 
 
 > [!Note]
-> W tym scenariuszu może mieć wpływ na system i nie powinny być uruchamiane w systemie produkcyjnym. Jeśli to konieczne, należy uruchomić w tym scenariuszu w oknie dedykowanej konserwacji, aby uniknąć problemów. Większe obciążenie jest spowodowane przez test ślad lub testów porównawczych może niekorzystnie wpłynąć na wydajność maszyny Wirtualnej.
+> Ten scenariusz może mieć wpływ na system i nie powinien być uruchamiany w działającym systemie produkcyjnym. W razie potrzeby Uruchom ten scenariusz w dedykowanym oknie obsługi, aby uniknąć jakichkolwiek problemów. Zwiększone obciążenie spowodowane przez test śledzenia lub testy porównawcze może niekorzystnie wpłynąć na wydajność maszyny wirtualnej.
 >
 
 ### <a name="performance-analysis"></a>Analiza wydajności
 
-Ten scenariusz jest uruchamiany [licznika wydajności](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx) śledzenia przy użyciu liczników, które są określone w pliku RuleEngineConfig.json. Jeśli maszyna wirtualna zostanie zidentyfikowana jako serwera, na którym działa program SQL Server, jest uruchamiana śledzenia licznika wydajności. Robi to przy użyciu liczników, które znajdują się w pliku RuleEngineConfig.json. Ten scenariusz obejmuje także dane dotyczące wydajności diagnostyki.
+W tym scenariuszu jest uruchamiany ślad [licznika wydajności](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx) przy użyciu liczników, które są określone w pliku RuleEngineConfig. JSON. Jeśli maszyna wirtualna zostanie zidentyfikowana jako serwer z uruchomionym SQL Server, zostanie uruchomione śledzenie licznika wydajności. Robi to przy użyciu liczników znalezionych w pliku RuleEngineConfig. JSON. Ten scenariusz obejmuje również dane diagnostyki wydajności.
 
-### <a name="azure-files-analysis"></a>Usługi Azure analysis plików
+### <a name="azure-files-analysis"></a>Analiza Azure Files
 
-Ten scenariusz jest uruchamiany przechwytywania wydajności specjalnych licznik wraz z śledzenia sieci. Przechwytywania zawiera wszystkie bloku komunikatów serwera (SMB) udziałów liczników klienta. Poniżej przedstawiono niektóre kluczowe klienta udziału liczniki wydajności protokołu SMB, które są częścią przechwytywania:
+W tym scenariuszu jest uruchamiany specjalny przechwycenie licznika wydajności wraz z funkcją śledzenia sieci. Przechwytywanie obejmuje wszystkie liczniki udziałów klienta bloku komunikatów serwera (SMB). Poniżej przedstawiono niektóre liczniki wydajności udziałów klienta SMB, które są częścią przechwytywania:
 
-| **Typ**     | **Licznik udziały klient SMB** |
+| **Typ**     | **Licznik udziałów klienta SMB** |
 |--------------|-------------------------------|
-| Operacje wejścia/wyjścia         | Data żądania/s             |
-|              | Liczba żądań odczytu/s             |
-|              | Zapisu żądania/s            |
-| Opóźnienie      | Średni czas żądania s/danych         |
-|              | Średni czas odczytu                 |
-|              | Średni czas zapisu                |
-| Rozmiar we/wy      | Średni Bajty/Data żądania       |
-|              | Średni Bajty odczytu               |
-|              | Średni Bajty/zapisu              |
+| IOPS         | Żądania danych/s             |
+|              | Żądania odczytu/s             |
+|              | Żądania zapisu/s            |
+| Opóźnienie      | Średnia liczba sekund/żądanie danych         |
+|              | Średni czas odczytu/odczyt                 |
+|              | Średni czas zapisu/s                |
+| Rozmiar we/wy      | Średni Bajty/żądanie danych       |
+|              | Średni Bajty/odczyt               |
+|              | Średni Bajty/zapis              |
 | Przepływność   | Bajty danych/s                |
-|              | Odczytane bajty/s                |
-|              | Zapisane bajty/s               |
+|              | Bajty odczytu/s                |
+|              | Bajty zapisu/s               |
 | Długość kolejki | Średni Długość kolejki odczytu        |
 |              | Średni Długość kolejki zapisu       |
 |              | Średni Długość kolejki danych        |
 
-### <a name="advanced-performance-analysis"></a>Analiza wydajności Zaawansowane
+### <a name="advanced-performance-analysis"></a>Zaawansowana analiza wydajności
 
-Po uruchomieniu analizy wydajności Zaawansowane, możesz wybrać informacje śledzenia do równoległego uruchamiania. Jeśli chcesz, można je też uruchamiać wszystkie (licznika wydajności, narzędzia Xperf, sieci i StorPort).  
+Po uruchomieniu zaawansowanej analizy wydajności Wybierz pozycję ślady do uruchomienia równolegle. Jeśli chcesz, możesz uruchomić je wszystkie (licznik wydajności, Xperf, Sieć i StorPort).  
 
 > [!Note]
-> W tym scenariuszu może mieć wpływ na system i nie powinny być uruchamiane w systemie produkcyjnym. Jeśli to konieczne, należy uruchomić w tym scenariuszu w oknie dedykowanej konserwacji, aby uniknąć problemów. Większe obciążenie jest spowodowane przez test ślad lub testów porównawczych może niekorzystnie wpłynąć na wydajność maszyny Wirtualnej.
+> Ten scenariusz może mieć wpływ na system i nie powinien być uruchamiany w działającym systemie produkcyjnym. W razie potrzeby Uruchom ten scenariusz w dedykowanym oknie obsługi, aby uniknąć jakichkolwiek problemów. Zwiększone obciążenie spowodowane przez test śledzenia lub testy porównawcze może niekorzystnie wpłynąć na wydajność maszyny wirtualnej.
 >
 
-## <a name="what-kind-of-information-is-collected-by-perfinsights"></a>Jakie informacje są zbierane przez program PerfInsights?
+## <a name="what-kind-of-information-is-collected-by-perfinsights"></a>Jakiego rodzaju informacje są zbierane przez że program perfinsights?
 
-Rejestruje informacje o maszynie Wirtualnej Windows, dyski lub konfigurację pule magazynu, liczniki wydajności, a różne ślady są zbierane. To zależy od scenariusza wydajności, którego używasz. Poniższa tabela zawiera szczegółowe informacje:
+Zbierane są informacje o konfiguracji maszyn wirtualnych systemu Windows, dysków lub pul magazynu, licznikach wydajności, dziennikach i różnych śledzenia. Jest to zależne od scenariusza wydajności, z którego korzystasz. Poniższa tabela zawiera szczegółowe informacje:
 
 |Zebrane dane                              |  |  | Scenariusze wydajności |  |  | |
 |----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|----------------------|
-|                               | Analiza wydajności szybki | Benchmarking | Analiza wydajności | Usługi Azure analysis plików | Analiza wydajności Zaawansowane |
-| Informacje z dzienników zdarzeń       | Tak                        | Yes                                | Yes                      | Yes                  | Yes                  |
+|                               | Analiza szybkiej wydajności | Benchmarking | Analiza wydajności | Analiza Azure Files | Zaawansowana analiza wydajności |
+| Informacje z dzienników zdarzeń       | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
 | Informacje o systemie                | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
-| Mapa woluminu                        | Yes                        | Yes                                | Yes                      | Yes                  | Tak                  |
-| Mapy dysku                          | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
-| Uruchomione zadania podrzędne                     | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
-| Liczniki niezawodność magazynu      | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
-| Informacje dotyczące magazynu               | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
-| Dane wyjściowe fsutil                     | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
-| Informacje dotyczące sterownika filtru                | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
-| Dane wyjściowe polecenia netstat                    | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
-| Konfiguracja sieci             | Tak                        | Yes                                | Yes                      | Yes                  | Yes                  |
-| Konfiguracja zapory            | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
-| Konfiguracja programu SQL Server          | Tak                        | Yes                                | Yes                      | Yes                  | Yes                  |
-| Ślady diagnostyki wydajności *  | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
-| Śledzenia licznika wydajności **      |                            |                                    | Tak                      |                      | Yes                  |
-| Protokół SMB licznik śledzenia **              |                            |                                    |                          | Yes                  |                      |
-| Śledzenie licznik programu SQL Server **       |                            |                                    | Tak                      |                      | Tak                  |
-| Ślad narzędzia XPerf                       |                            |                                    |                          |                      | Tak                  |
-| StorPort śledzenia                    |                            |                                    |                          |                      | Tak                  |
+| Mapa woluminów                        | Tak                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Mapa dysku                          | Tak                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Uruchamianie zadań                     | Tak                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Liczniki niezawodności magazynu      | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Informacje dotyczące magazynu               | Yes                        | Yes                                | Yes                      | Yes                  | Tak                  |
+| Fsutil Output                     | Tak                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Informacje o sterowniku filtru                | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
+| Dane wyjściowe polecenia netstat                    | Yes                        | Yes                                | Yes                      | Yes                  | Tak                  |
+| Konfiguracja sieci             | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
+| Konfiguracja zapory            | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
+| Konfiguracja SQL Server          | Yes                        | Yes                                | Yes                      | Yes                  | Tak                  |
+| Ślady diagnostyki wydajności *  | Tak                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Śledzenie licznika wydajności * *      |                            |                                    | Tak                      |                      | Tak                  |
+| Śledzenie licznika SMB * *              |                            |                                    |                          | Yes                  |                      |
+| Śledzenie licznika SQL Server * *       |                            |                                    | Tak                      |                      | Tak                  |
+| Śledzenie Xperf                       |                            |                                    |                          |                      | Yes                  |
+| Ślad StorPort                    |                            |                                    |                          |                      | Tak                  |
 | Śledzenie sieci                     |                            |                                    |                          | Yes                  | Tak                  |
-| Śledzenie testów porównawczych narzędzia Diskspd ***       |                            | Tak                                |                          |                      |                      |
+| Śledzenie testu porównawczego narzędzia diskspd * * *       |                            | Tak                                |                          |                      |                      |
 |       |                            |                         |                                                   |                      |                      |
 
-### <a name="performance-diagnostics-trace-"></a>Diagnostyka wydajności śledzenia (*)
+### <a name="performance-diagnostics-trace-"></a>Śledzenie diagnostyki wydajności (*)
 
-Działa to oparty na regułach aparat w tle, aby zbierać dane i diagnozować problemy z wydajnością ciągły. Obecnie obsługiwane są następujące reguły:
+Uruchamia aparat oparty na regułach w tle w celu zbierania danych i diagnozowania bieżących problemów z wydajnością. Obecnie obsługiwane są następujące reguły:
 
-- Reguła HighCpuUsage: Wykrywa wysokiej okresów użycia Procesora i przedstawia najwięcej użycia procesora CPU w tych okresach.
-- Reguła HighDiskUsage: Wykrywa okresów użycia dysku na dyskach fizycznych i przedstawiono najważniejsze dysku konsumentów użycia tych okresach.
-- Reguła HighResolutionDiskMetric: Pokazuje operacje We/Wy, przepustowości i operacji We/Wy metryki czas oczekiwania na 50 MS dla każdego dysku fizycznego. Ułatwia szybkie identyfikowanie dysku ograniczania okresów.
-- Reguła HighMemoryUsage: Wykrywa okresów użycia dużą ilość pamięci i przedstawiono najważniejsze pamięci konsumentów użycia tych okresach.
+- Reguła HighCpuUsage: Wykrywa duże okresy użycia procesora CPU i pokazuje klientów użycia procesora CPU w tych okresach.
+- Reguła HighDiskUsage: Wykrywa duże okresy użycia dysku na dyskach fizycznych i pokazuje klientów użycia dysku w tych okresach.
+- Reguła HighResolutionDiskMetric: Przedstawia metryki czasowe IOPS, przepływności i operacji we/wy na 50 milisekund dla każdego dysku fizycznego. Ułatwia ona szybkie identyfikowanie okresów ograniczania dysku.
+- Reguła HighMemoryUsage: Wykrywa duże okresy użycia pamięci i pokazuje klientów korzystających z pamięci najczęściej w tych okresach.
 
 > [!NOTE] 
-> Obecnie obsługiwane są wersje Windows, które obejmują .NET Framework 4.5 lub nowszy.
+> Obecnie obsługiwane są wersje systemu Windows, które zawierają .NET Framework 4,5 lub nowsze wersje.
 
-### <a name="performance-counter-trace-"></a>Śledzenia licznika wydajności (*)
+### <a name="performance-counter-trace-"></a>Ślad licznika wydajności (* *)
 
-Gromadzi informacje o następujących liczników wydajności:
+Zbiera następujące liczniki wydajności:
 
-- \Process, \Processor, \Memory \Thread, \PhysicalDisk i \LogicalDisk
-- \Server\Pool stron, \Cache\Lazy opróżnienia zapisu/s, \Cache\Dirty niestronicowanej, błędy i awarie \Server\Pool stronicowanej
-- Wybrane liczniki w obszarze \Network interfejsu, \IPv4\Datagrams \IPv6\Datagrams, \TCPv4\Segments, \TCPv6\Segments, \Network karty, \WFPv4\Packets, \WFPv6\Packets, \UDPv4\Datagrams, \UDPv6\Datagrams, \TCPv4\Connection, \TCPv6\Connection, \ QoS Policy\Packets sieci, \Per — działanie karty interfejsu sieci procesora i \Microsoft Winsock BSP
+- \Process, \Processor, \Memory, \Thread, \PhysicalDisk i \Dysk logiczny
+- \Cache\Dirty stron, \Cache\Lazy zapisu opróżnień/s, \Server\Pool niestronicowane, niepowodzenia i \Server\Pool błędów stronicowania
+- Wybrane liczniki w obszarze \Network Interface, \IPv4\Datagrams, \IPv6\Datagrams, \TCPv4\Segments, \TCPv6\Segments, \Network adapter, \WFPv4\Packets, \WFPv6\Packets, \UDPv4\Datagrams, \UDPv6\Datagrams, \TCPv4\Connection, \TCPv6\Connection, \ Policy\Packets QoS sieci, aktywność karty sieciowej procesora \Per i \Microsoft Winsock zestawu Winsock
 
-#### <a name="for-sql-server-instances"></a>Dla wystąpienia programu SQL Server
-- Menedżera serwera: buforów \SQL \SQLServer:Resource puli statystyki i \SQLServer:SQL Statistics\
-- \SQLServer:Locks, \SQLServer:General, statystyki
-- \SQLServer:Access Methods
+#### <a name="for-sql-server-instances"></a>Dla wystąpień SQL Server
+- Serwer \SQL: Menedżer buforów, \SQLServer: statystyki puli zasobów i \SQLServer: Statystyka SQL \
+- \SQLServer: Locks, \SQLServer: General, Statistics
+- \SQLServer: metody dostępu
 
-#### <a name="for-azure-files"></a>Dla usługi Azure Files
-Udziały klient \SMB
+#### <a name="for-azure-files"></a>Dla Azure Files
+\SMB udziały klientów
 
-### <a name="diskspd-benchmark-trace-"></a>Śledzenie testów porównawczych narzędzia Diskspd (*)
-Testy obciążenia We/Wy narzędzia Diskspd ([zapisu]. dysk systemu operacyjnego i dysków puli [odczytu/zapisu])
+### <a name="diskspd-benchmark-trace-"></a>Ślad testu porównawczego narzędzia diskspd (* * *)
+Narzędzia diskspd testów obciążenia wejścia/wyjścia (dysk systemu operacyjnego [zapis] i stacje puli [odczyt/zapis])
 
-## <a name="run-the-perfinsights-tool-on-your-vm"></a>Uruchom narzędzie program PerfInsights na maszynie Wirtualnej
+## <a name="run-the-perfinsights-tool-on-your-vm"></a>Uruchamianie narzędzia że program perfinsights na maszynie wirtualnej
 
-### <a name="what-do-i-have-to-know-before-i-run-the-tool"></a>Co trzeba wiedzieć przed rozpoczęciem I Uruchom narzędzie? 
+### <a name="what-do-i-have-to-know-before-i-run-the-tool"></a>Co muszę wiedzieć przed uruchomieniem narzędzia? 
 
-#### <a name="tool-requirements"></a>Wymagania dotyczące narzędzia
+#### <a name="tool-requirements"></a>Wymagania dotyczące narzędzi
 
--  To narzędzie należy uruchomić na maszynie Wirtualnej, która ma problem z wydajnością. 
+-  To narzędzie musi być uruchomione na maszynie wirtualnej, na której występuje problem z wydajnością. 
 
--  Obsługiwane są następujące systemy operacyjne: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 i systemu Windows Server 2016; Windows 8.1 i Windows 10.
+-  Obsługiwane są następujące systemy operacyjne: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 i Windows Server 2016; Windows 8.1 i Windows 10.
 
-#### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>Możliwe problemy po uruchomieniu narzędzia na maszynach wirtualnych w środowisku produkcyjnym
+#### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>Możliwe problemy podczas uruchamiania narzędzia na maszynach wirtualnych produkcji
 
--  Scenariusz porównawczych lub "Zaawansowana analiza wydajności" scenariusza, który jest skonfigurowany do używania narzędzia Xperf lub narzędzia Diskspd narzędzie może niekorzystnie wpłynąć na wydajność maszyny Wirtualnej. Te scenariusze nie powinna być uruchamiana w środowisku produkcyjnym.
+-  W przypadku scenariusza porównawczego lub scenariusza "Zaawansowana analiza wydajności", który jest skonfigurowany do korzystania z Xperf lub narzędzia diskspd, narzędzie może niekorzystnie wpłynąć na wydajność maszyny wirtualnej. Te scenariusze nie powinny być uruchamiane w środowisku produkcyjnym na żywo.
 
--  Scenariusz porównawczych lub "Zaawansowana analiza wydajności" scenariusza, który jest skonfigurowany do używania narzędzia Diskspd upewnij się, że nie inne operacje w tle zakłóca obciążenia We/Wy.
+-  W scenariuszu porównawczym lub w scenariuszu "Zaawansowana analiza wydajności" skonfigurowanym do korzystania z narzędzia diskspd upewnij się, że żadne inne działania w tle nie zakłócają obciążenia we/wy.
 
--  Domyślnie narzędzie używa dysku magazynu tymczasowego do zbierania danych. Jeśli śledzenie pozostaje włączone przez dłuższy czas, ilość zbieranych danych mogą być istotne. Może ograniczać dostępność miejsca na dysku tymczasowym, a w związku z tym może mieć wpływ na dowolnej aplikacji, która opiera się na tym dysku.
+-  Domyślnie narzędzie używa tymczasowego dysku magazynującego do zbierania danych. Jeśli śledzenie pozostaje włączone przez dłuższy czas, ilość zbieranych danych może być istotna. Może to zmniejszyć dostępność miejsca na dysku tymczasowym. w związku z tym może mieć wpływ na wszystkie aplikacje, które opierają się na tym dysku.
 
-### <a name="how-do-i-run-perfinsights"></a>Jak uruchomić program PerfInsights? 
+### <a name="how-do-i-run-perfinsights"></a>Jak mogę uruchomić że program perfinsights? 
 
-Program PerfInsights można uruchomić na maszynie wirtualnej, instalując [rozszerzenie maszyny Wirtualnej diagnostyki wydajności Azure](performance-diagnostics-vm-extension.md). Można również uruchomić jako samodzielnego narzędzia. 
+Program że program perfinsights można uruchomić na maszynie wirtualnej, instalując [rozszerzenie maszyny wirtualnej diagnostyki wydajności Azure](performance-diagnostics-vm-extension.md). Można go również uruchomić jako autonomiczne narzędzie. 
 
-**Zainstaluj i uruchom program PerfInsights w witrynie Azure portal**
+**Instalowanie i uruchamianie że program perfinsights z poziomu Azure Portal**
 
-Aby uzyskać więcej informacji na temat tej opcji, zobacz [zainstalować rozszerzenia maszyny Wirtualnej diagnostyki wydajności Azure](performance-diagnostics-vm-extension.md#install-the-extension).  
+Aby uzyskać więcej informacji na temat tej opcji, zobacz [Instalowanie rozszerzenia maszyny wirtualnej diagnostyki wydajności platformy Azure](performance-diagnostics-vm-extension.md#install-the-extension).  
 
-**Uruchom program PerfInsights w trybie autonomicznym**
+**Uruchom że program perfinsights w trybie autonomicznym**
 
-Aby uruchomić narzędzie program PerfInsights, wykonaj następujące kroki:
+Aby uruchomić narzędzie że program perfinsights, wykonaj następujące kroki:
 
 
-1. Pobierz [PerfInsights.zip](https://aka.ms/perfinsightsdownload).
+1. Pobierz plik [że program perfinsights. zip](https://aka.ms/perfinsightsdownload).
 
-2. Odblokować plik PerfInsights.zip. Aby to zrobić, kliknij prawym przyciskiem myszy plik PerfInsights.zip i wybierz **właściwości**. W **ogólne** zaznacz **odblokowanie**, a następnie wybierz pozycję **OK**. Daje to gwarancję, że narzędzie jest uruchamiane bez dodatkowych zabezpieczeń wyświetla monit o.  
+2. Odblokuj plik że program perfinsights. zip. Aby to zrobić, kliknij prawym przyciskiem myszy plik że program perfinsights. zip, a następnie wybierz pozycję **Właściwości**. Na karcie **Ogólne** wybierz opcję **odblokowywanie**, a następnie wybierz przycisk **OK**. Dzięki temu narzędzie zostanie uruchomione bez dodatkowych wskazówek dotyczących zabezpieczeń.  
 
-    ![Zrzut ekranu program PerfInsights właściwości, za pomocą odblokowanie wyróżniony](media/how-to-use-perfInsights/unlock-file.png)
+    ![Zrzut ekranu przedstawiający właściwości że program perfinsights z wyróżnionym odblokowywaniem](media/how-to-use-perfInsights/pi-unlock-file.png)
 
-3.  Rozwiń skompresowany plik PerfInsights.zip do dysku tymczasowego (domyślnie jest to zazwyczaj dysku D). 
+3.  Rozwiń skompresowany plik że program perfinsights. zip do dysku tymczasowego (domyślnie jest to dysk D). 
 
-4.  Otwórz okno wiersza polecenia Windows jako administrator, a następnie uruchom PerfInsights.exe w celu wyświetlania parametrów wiersza polecenia dostępne.
+4.  Otwórz wiersz polecenia systemu Windows jako administrator, a następnie uruchom program że program perfinsights. exe, aby wyświetlić dostępne parametry commandline.
 
     ```
     cd <the path of PerfInsights folder>
     PerfInsights
     ```
-    ![Zrzut ekranu program PerfInsights dane wyjściowe z wiersza polecenia](media/how-to-use-perfInsights/PerfInsightsCommandline.png)
+    ![Zrzut ekranu przedstawiający dane wyjściowe wiersza polecenia że program perfinsights](media/how-to-use-perfInsights/pi-commandline.png)
     
-    Podstawowa składnia do uruchamiania scenariuszy program PerfInsights jest:
+    Podstawowa składnia do uruchamiania scenariuszy że program perfinsights jest następująca:
     
     ```
     PerfInsights /run <ScenarioName> [AdditionalOptions]
     ```
 
-    Możesz użyć poniżej przykładu tak, aby uruchomić analizy wydajności scenariusz 5 minut:
+    Możesz użyć poniższego przykładu, aby uruchomić scenariusz analizy wydajności dla 5 minut:
     
     ```
     PerfInsights /run vmslow /d 300 /AcceptDisclaimerAndShareDiagnostics
     ```
 
-    Skorzystaj z następującego przykładu, aby uruchomić zaawansowanego scenariusza z śladów licznika wydajności i narzędzia Xperf 5 minut:
+    Poniższego przykładu można użyć do uruchomienia scenariusza zaawansowanego z wynikami śledzenia Xperf i licznika wydajności dla 5 minut:
     
     ```
     PerfInsights /run advanced xp /d 300 /AcceptDisclaimerAndShareDiagnostics
     ```
 
-    Możesz użyć poniższym przykładzie, aby uruchomić scenariuszowi analizy wydajności na 5 minut, a następnie przekaż plik zip wynik do konta magazynu:
+    Możesz użyć poniższego przykładu, aby uruchomić scenariusz analizy wydajności dla 5 minut i przekazać plik zip wynik do konta magazynu:
     
     ```
     PerfInsights /run vmslow /d 300 /AcceptDisclaimerAndShareDiagnostics /sa <StorageAccountName> /sk <StorageAccountKey>
     ```
 
-    Możesz wyszukać wszystkie dostępne scenariusze i opcje przy użyciu **/list** polecenia:
+    Wszystkie dostępne scenariusze i opcje można wyszukać za pomocą polecenia **/list** :
     
     ```
     PerfInsights /list
     ```
 
     >[!Note]
-    >Przed uruchomieniem scenariusza, program PerfInsights monituje użytkownika o zgodę na udostępnianie informacji diagnostycznych i zaakceptować umowę licencyjną. Użyj **/AcceptDisclaimerAndShareDiagnostics** opcję, aby pominąć te monity. 
+    >Przed uruchomieniem scenariusza że program perfinsights prosi użytkownika o zgodę na udostępnienie informacji diagnostycznych i zaakceptowanie umowy licencyjnej. Użyj opcji **/AcceptDisclaimerAndShareDiagnostics** , aby pominąć te komunikaty. 
     >
-    >Jeśli masz bilet aktywne pomocy technicznej z firmą Microsoft i uruchomiony program PerfInsights na żądanie inżynier pomocy technicznej, w którym pracujesz, upewnij się, że zapewnienia obsługi biletów numer za pomocą **/sr** opcji.
+    >Jeśli masz aktywny bilet pomocy technicznej firmy Microsoft i uruchomiono że program perfinsights na żądanie inżyniera pomocy technicznej, z którym pracujesz, upewnij się, że podano numer biletu pomocy technicznej przy użyciu opcji **/SR** .
     >
-    >Domyślnie program PerfInsights podejmie próbę sam aktualizowanie do najnowszej wersji, jeśli jest dostępny. Użyj **/SkipAutoUpdate** lub **/sau** parametru, aby pominąć aktualizacje automatyczne.  
+    >Domyślnie program że program perfinsights próbuje zaktualizować się do najnowszej wersji, jeśli jest dostępna. Użyj parametru **/SkipAutoUpdate** lub **/sau** , aby pominąć autoaktualizację.  
     >
-    >Jeśli przełącznik czas trwania **/d** nie zostanie określony, program PerfInsights spowoduje wyświetlenie monitu do odtworzenia problemu podczas uruchamiania vmslow, migracji i zaawansowanych scenariuszy. 
+    >Jeśli przełącznik czasu trwania **/d** nie zostanie określony, że program perfinsights wyświetli monit o Odtwórz problemu podczas uruchamiania vmslow, migracji pamięci i zaawansowanych scenariuszy. 
 
-Po ukończeniu śladów lub operacji w tym samym folderze, co program PerfInsights pojawi się nowy plik. Nazwa pliku jest **PerformanceDiagnostics\_RRRR MM-dd\_hh-mm-ss-fff.zip.** Można wysyłać ten plik z pracownikiem pomocy technicznej do analizy lub Otwórz raport w pliku zip, aby przejrzeć wyniki i zalecenia.
+Po zakończeniu śledzenia lub operacji, nowy plik zostanie wyświetlony w tym samym folderze co że program perfinsights. Nazwa pliku to **PerformanceDiagnostics\_rrrr-mm-dd\_HH-mm-SS-FFF. zip.** Możesz wysłać ten plik do agenta pomocy technicznej na potrzeby analizy lub otworzyć raport w pliku zip, aby przejrzeć wyniki i zalecenia.
 
 ## <a name="review-the-diagnostics-report"></a>Przejrzyj raport diagnostyczny
 
-W ramach **PerformanceDiagnostics\_RRRR MM-dd\_hh-mm-ss-fff.zip** pliku, można znaleźć raport HTML, która szczegółowo ustalenia program PerfInsights. Aby przejrzeć raport, należy rozwinąć **PerformanceDiagnostics\_RRRR MM-dd\_hh-mm-ss-fff.zip** pliku, a następnie otwórz **Report.html program PerfInsights** pliku.
+W pliku **PerformanceDiagnostics\_rrrr-mm-dd\_HH-mm-SS-FFF. zip** można znaleźć raport HTML, który zawiera szczegółowe informacje o wynikach że program perfinsights. Aby przejrzeć raport, rozwiń plik **PerformanceDiagnostics\_rrrr-mm-dd\_HH-mm-SS-FFF. zip** , a następnie otwórz plik **że program perfinsights Report. html** .
 
-Wybierz **ustalenia** kartę.
+Wybierz kartę **wnioski** .
 
-![Zrzut ekranu przedstawiający raport program PerfInsights](media/how-to-use-perfInsights/findingtab.png)
-![zrzut ekranu przedstawiający raport program PerfInsights](media/how-to-use-perfInsights/findings.PNG)
+![Zrzut ekranu przedstawiający](media/how-to-use-perfInsights/pi-finding-tab.png)
+![zrzut ekranu raportu że program perfinsights o że program perfinsights](media/how-to-use-perfInsights/pi-findings.png)
 
 > [!NOTE] 
-> Ustalenia kategorii wysokiej znane problemy, które mogą spowodować problemy z wydajnością. Ustalenia skategoryzowany jako średnie reprezentują optymalnej konfiguracji, które nie zawsze powodują problemy z wydajnością. Ustalenia kategorii niskie są tylko w instrukcjach zawierającego wiele użytecznych informacji.
+> Ustalenia sklasyfikowane jako duże są znanymi problemami, które mogą powodować problemy z wydajnością. Ustalenia sklasyfikowane jako średnie reprezentują nieoptymalne konfiguracje, które nie muszą powodować problemów z wydajnością. Ustalenia sklasyfikowane jako niskie są tylko w instrukcjach informacyjnych.
 
-Przejrzyj zalecenia i linki do wszystkich ustalenia wysokiej i średniej. Dowiedz się o ich wpływu na wydajność i najlepszymi rozwiązaniami dotyczącymi konfiguracji pod kątem wydajności.
+Przejrzyj zalecenia i linki dla wszystkich dużych i średnich wyników. Dowiedz się, jak mogą one wpływać na wydajność, a także najlepsze rozwiązania dotyczące konfiguracji zoptymalizowanych pod kątem wydajności.
 
-### <a name="storage-tab"></a>Karty Magazyn
+### <a name="storage-tab"></a>Karta magazyn
 
-**Ustalenia** sekcja wyświetla różne wyniki i zalecenia dotyczące magazynu.
+Sekcja **spostrzeżenia** zawiera różne wyniki i zalecenia dotyczące magazynu.
 
-**Mapy dysku** i **mapy woluminu** sekcjach opisano, jak logiczne woluminów i fizycznych dysków są powiązane ze sobą.
+W sekcjach **Mapa dysku** i **Mapa woluminu** opisano sposób, w jaki woluminy logiczne i dyski fizyczne są ze sobą powiązane.
 
-W perspektywie dysku fizycznego (dysk Map) w tabeli przedstawiono wszystkie woluminy logiczne, które są uruchomione na tym dysku. W poniższym przykładzie **PhysicalDrive2** jest uruchamiane dwa woluminy logiczne utworzone na wielu partycjach ("j" i H):
+W perspektywie dysku fizycznego (mapa dysku) w tabeli są wyświetlane wszystkie woluminy logiczne, które są uruchomione na dysku. W poniższym przykładzie **PhysicalDrive2** uruchamia dwa woluminy logiczne utworzone na wielu partycjach (J i H):
 
-![Zrzut ekranu przedstawiający kartę dysk](media/how-to-use-perfInsights/disktab.png)
+![Zrzut ekranu przedstawiający kartę dysk](media/how-to-use-perfInsights/pi-disk-tab.png)
 
-W perspektywie woluminu (Mapa woluminu) w tabelach przedstawiono wszystkie dyski fizyczne w ramach poszczególnych woluminów logicznych. Należy zauważyć, że w przypadku dysków RAID/dynamiczne, wolumin logiczny może działać na wielu dyskach fizycznych. W poniższym przykładzie *C:\\instalacji* punkt instalacji jest skonfigurowany jako *SpannedDisk* na dyskach fizycznych, 2 i 3:
+W perspektywie woluminu (mapa woluminu) w tabelach są wyświetlane wszystkie dyski fizyczne w poszczególnych woluminach logicznych. Należy zauważyć, że w przypadku dysków macierzy RAID/dynamicznych można uruchomić wolumin logiczny na wielu dyskach fizycznych. W poniższym przykładzie *C:\\Mount* jest punktem instalacji skonfigurowanym jako *SpannedDisk* na dyskach fizycznych 2 i 3:
 
-![Zrzut ekranu przedstawiający kartę woluminu](media/how-to-use-perfInsights/volumetab.png)
+![Zrzut ekranu przedstawiający kartę woluminu](media/how-to-use-perfInsights/pi-volume-tab.png)
 
 ### <a name="sql-tab"></a>Karta SQL
 
-Jeśli docelowa maszyna wirtualna hostuje żadnych wystąpień programu SQL Server, zobacz dodatkową kartę w raporcie o nazwie **SQL**:
+Jeśli docelowa maszyna wirtualna hostuje dowolne SQL Server wystąpienia, w raporcie zostanie wyświetlona dodatkowa karta o nazwie **SQL**:
 
-![Karta Zrzut ekranu SQL](media/how-to-use-perfInsights/sqltab.png)
+![Zrzut ekranu przedstawiający kartę SQL](media/how-to-use-perfInsights/pi-sql-tab.png)
 
-Ta sekcja zawiera **ustalenia** kartę, a także dodatkowe karty dla każdego wystąpienia programu SQL Server hostowana na maszynie Wirtualnej.
+Ta sekcja zawiera kartę **wyniki** i dodatkowe karty dla każdego wystąpienia SQL Server hostowanego na maszynie wirtualnej.
 
-**Ustalenia** karta zawiera listę wszystkich SQL dotyczące problemów z wydajnością, znaleziono wraz z zaleceniami.
+Karta **wyniki** zawiera listę wszystkich znalezionych problemów z wydajnością związanych z usługą SQL wraz z zaleceniami.
 
-W poniższym przykładzie **PhysicalDrive0** (uruchomionego na dysku C) jest wyświetlana. Jest to spowodowane zarówno **modeldev** i **modellog** pliki znajdują się na dysku C, a następnie są one różne typy (takie jak dziennik transakcji i plików danych, odpowiednio).
+W poniższym przykładzie zostanie wyświetlony komunikat **PhysicalDrive0** (uruchamianie dysku C). Wynika to z faktu, że pliki **modeldev** i **Modellog** znajdują się na dysku C i są różnymi typami (takimi jak plik danych i dziennik transakcji).
 
-![Zrzut ekranu przedstawiający informacje w Dzienniku](media/how-to-use-perfInsights/loginfo.png)
+![Zrzut ekranu przedstawiający informacje o dzienniku](media/how-to-use-perfInsights/pi-log-info.png)
 
-Karty dla konkretnych wystąpień programu SQL Server zawiera sekcja ogólne, który zawiera podstawowe informacje o wybranym wystąpieniu. Karty zawierają również dodatkowe sekcje, aby uzyskać zaawansowane informacje, w tym ustawienia, konfiguracje i opcje użytkownika.
+Karty dla określonych wystąpień SQL Server zawierają sekcję ogólne, która wyświetla podstawowe informacje o wybranym wystąpieniu. Karty zawierają również dodatkowe sekcje dotyczące zaawansowanych informacji, takich jak ustawienia, konfiguracje i opcje użytkownika.
 
-### <a name="diagnostic-tab"></a>Karta diagnostyki
-**Diagnostycznych** karta zawiera informacje o najwięcej Procesora, dysku i pamięci na komputerze, na czas trwania uruchomienia program PerfInsights. Można również znaleźć informacje o poprawkach krytycznych, system może być brak, listę zadań i zdarzenia systemowe. 
+### <a name="diagnostic-tab"></a>Karta Diagnostyka
+Karta **Diagnostyka** zawiera informacje na temat najważniejszych odbiorców procesora, dysku i pamięci na komputerze na czas trwania uruchamiania programu że program perfinsights. Możesz również znaleźć informacje o krytycznych poprawkach, których może brakować system, listę zadań i ważne zdarzenia systemowe. 
 
-## <a name="references-to-the-external-tools-used"></a>Odwołania do zewnętrznego narzędzia używane
+## <a name="references-to-the-external-tools-used"></a>Odwołania do zewnętrznych narzędzi
 
-### <a name="diskspd"></a>Narzędzia Diskspd
+### <a name="diskspd"></a>Narzędzia diskspd
 
-Narzędzia Diskspd to magazyn obciążenia generator i wydajności testu narzędzie firmy Microsoft. Aby uzyskać więcej informacji, zobacz [narzędzia Diskspd](https://github.com/Microsoft/diskspd).
+Narzędzia diskspd to narzędzie do generowania generatora obciążenia magazynu i testowania wydajności firmy Microsoft. Aby uzyskać więcej informacji, zobacz [Narzędzia diskspd](https://github.com/Microsoft/diskspd).
 
 ### <a name="xperf"></a>Xperf
 
-Narzędzia XPerf jest narzędziem wiersza polecenia do przechwytywania śladów z zestawu narzędzi wydajności Windows. Aby uzyskać więcej informacji, zobacz [Toolkit wydajności systemu Windows — narzędzia Xperf](https://blogs.msdn.microsoft.com/ntdebugging/2008/04/03/windows-performance-toolkit-xperf/).
+Xperf to narzędzie wiersza polecenia do przechwytywania śladów z zestawu narzędzi wydajności systemu Windows. Aby uzyskać więcej informacji, zobacz [Windows Performance Toolkit – Xperf](https://blogs.msdn.microsoft.com/ntdebugging/2008/04/03/windows-performance-toolkit-xperf/).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Możesz przekazać dzienniki diagnostyczne i raporty do firmy Microsoft Support do dalszej analizy. Obsługa może zażądać przesyłanych danych wyjściowych, który jest generowany przez program PerfInsights, aby ułatwić proces rozwiązywania problemów.
+Dzienniki diagnostyczne i raporty można przekazać do pomoc techniczna firmy Microsoft do dalszej analizy. Obsługa może wymagać wysłania danych wyjściowych generowanych przez że program perfinsights w celu uzyskania pomocy w procesie rozwiązywania problemów.
 
-Poniższy zrzut ekranu przedstawia komunikat podobny do może zostać wyświetlony:
+Poniższy zrzut ekranu przedstawia komunikat podobny do następującego:
 
-![Zrzut ekranu przedstawiający przykładowy komunikat z Microsoft Support](media/how-to-use-perfInsights/supportemail.png)
+![Zrzut ekranu przedstawiający przykładowy komunikat z pomoc techniczna firmy Microsoft](media/how-to-use-perfInsights/pi-support-email.png)
 
-Postępuj zgodnie z instrukcjami w komunikacie dostępu do obszaru roboczego transferu plików. Poziom zabezpieczeń musisz zmienić hasło przy pierwszym użyciu.
+Postępuj zgodnie z instrukcjami wyświetlanymi w komunikacie, aby uzyskać dostęp do obszaru roboczego transferu plików. Aby zwiększyć bezpieczeństwo, należy zmienić hasło przy pierwszym użyciu.
 
-Po zalogowaniu, można znaleźć okno dialogowe, aby przekazać **PerformanceDiagnostics\_RRRR MM-dd\_hh-mm-ss-fff.zip** plików, które zostały zebrane przez program PerfInsights.
+Po zalogowaniu zostanie wyświetlone okno dialogowe z przekazaniem pliku **\_PerformanceDiagnostics rrrr-mm-dd\_HH-mm-SS-FFF. zip** , który został zebrany przez że program perfinsights.
 

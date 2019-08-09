@@ -1,19 +1,19 @@
 ---
 title: Konfigurowanie, optymalizowanie i rozwiązywanie problemów z AzCopy za pomocą usługi Azure Storage | Microsoft Docs
 description: Konfigurowanie, optymalizowanie i rozwiązywanie problemów z AzCopy.
-services: storage
 author: normesta
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 3773f9a8464dc94436d6d2503b173d4674033ab1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.reviewer: dineshm
+ms.openlocfilehash: 8a96c5b2d39967c8ee82f48e880bac9270a58c36
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565036"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68844817"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurowanie, optymalizowanie i rozwiązywanie problemów z AzCopy
 

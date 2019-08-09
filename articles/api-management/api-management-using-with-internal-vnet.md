@@ -1,6 +1,6 @@
 ---
-title: Jak używać usługi Azure API Management przy użyciu wewnętrznej sieci wirtualnych | Dokumentacja firmy Microsoft
-description: Informacje o sposobie instalowania i konfigurowania usługi Azure API Management w wewnętrznej sieci wirtualnej
+title: Jak korzystać z usługi Azure API Management z wewnętrznymi sieciami wirtualnymi | Microsoft Docs
+description: Dowiedz się, jak skonfigurować i skonfigurować usługę Azure API Management w wewnętrznej sieci wirtualnej
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,125 +12,129 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 07/31/2019
 ms.author: apimpm
-ms.openlocfilehash: a5d8a724a0b4dd6899a71187176b9d444e5fe19c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a23572642df99f00e278b6ba74367a30b0604640
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051679"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851466"
 ---
-# <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Przy użyciu usługi Azure API Management z wewnętrzną siecią wirtualną
-Sieci wirtualnych platformy Azure usługi Azure API Management umożliwia zarządzanie interfejsami API nie jest dostępny w Internecie. Wiele technologii sieci VPN są dostępne do nawiązania połączenia. Usługa API Management można wdrożyć w dwa główne tryby wewnątrz sieci wirtualnej:
+# <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Korzystanie z usługi Azure API Management z wewnętrzną siecią wirtualną
+Usługa API Management Azure Virtual Networks umożliwia Zarządzanie interfejsami API, które nie są dostępne w Internecie. Do nawiązania połączenia są dostępne różne technologie sieci VPN. API Management można wdrożyć w dwóch głównych trybach wewnątrz sieci wirtualnej:
 * Zewnętrzne
 * Wewnętrzne
 
-Podczas wdrażania usługi API Management w trybie wewnętrznej sieci wirtualnej, wszystkie punkty końcowe usługi (bramy serwera proxy, Developer portal, zarządzanie bezpośrednie i Git) są widoczne tylko w obrębie sieci wirtualnej, która umożliwia kontrolę dostępu do. Brak punktów końcowych usługi są rejestrowane na publicznym serwerze DNS.
+W przypadku API Management wdrożenia w trybie wewnętrznej sieci wirtualnej wszystkie punkty końcowe usługi (Brama serwera proxy, Portal deweloperów, zarządzanie bezpośrednie i Git) są widoczne tylko w sieci wirtualnej, do której kontrolujesz dostęp. Żaden z punktów końcowych usługi nie jest zarejestrowany na publicznym serwerze DNS.
 
 > [!NOTE]
-> Ponieważ nie zawiera żadnych wpisów DNS dla punktów końcowych usługi, tych punktów końcowych nie są dostępne do momentu [system DNS jest skonfigurowany](#apim-dns-configuration) dla sieci wirtualnej.
+> Ponieważ nie ma żadnych wpisów DNS dla punktów końcowych usługi, te punkty końcowe nie będą dostępne do czasu [skonfigurowania usługi DNS](#apim-dns-configuration) dla sieci wirtualnej.
 
-Za pomocą usługi API Management w trybie wewnętrznego, można osiągnąć następujące scenariusze:
+Korzystając z API Management w trybie wewnętrznym, można osiągnąć następujące scenariusze:
 
-* Należy interfejsów API hostowanych w centrum danych prywatnych bezpiecznego zapewniania dostępu przez strony trzecie poza nim przy użyciu lokacja lokacja lub połączenia sieci VPN usługi ExpressRoute platformy Azure.
-* Udostępnianie Twoje interfejsy API oparte na chmurze i lokalnymi interfejsami API za pomocą wspólnej bramy, aby włączyć scenariuszy hybrydowych w chmurze.
-* Zarządzanie interfejsami API hostowanych w wielu lokalizacjach geograficznych przy użyciu punktu końcowego jednej bramy.
+* Interfejsy API hostowane w Twoim prywatnym centrum danych są bezpiecznie dostępne dla osób trzecich poza nią za pomocą połączeń sieci VPN typu lokacja-lokacja lub Azure ExpressRoute.
+* Scenariusze chmury hybrydowej umożliwiają udostępnianie opartych na chmurze interfejsów API i lokalnych interfejsów API za pośrednictwem wspólnej bramy.
+* Zarządzanie interfejsami API hostowanymi w wielu lokalizacjach geograficznych za pomocą pojedynczego punktu końcowego bramy.
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby wykonać kroki opisane w tym artykule, musisz mieć:
+Aby wykonać kroki opisane w tym artykule, musisz dysponować:
 
 + **Aktywna subskrypcja platformy Azure**.
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-+ **Wystąpienie usługi Azure API Management**. Aby uzyskać więcej informacji, zobacz [Utwórz wystąpienie usługi Azure API Management](get-started-create-service-instance.md).
-+ Po wdrożeniu usługi API Management w sieci wirtualnej, [listę portów](./api-management-using-with-vnet.md#required-ports) są używane i muszą być otwarte. 
++ **Wystąpienie usługi Azure API Management**. Aby uzyskać więcej informacji, zobacz [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
++ Po wdrożeniu usługi API Management w sieci wirtualnej jest używana [Lista portów](./api-management-using-with-vnet.md#required-ports) i należy ją otworzyć. 
 
-## <a name="enable-vpn"> </a>Tworzenie usługi API Management w wewnętrznej sieci wirtualnej
-Usługa API Management w wewnętrznej sieci wirtualnej znajduje się za zaporą [wewnętrznego modułu równoważenia obciążenia (klasyczny)](https://docs.microsoft.com/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud). To jest jedyna dostępna opcja i nie można jej zmienić.
+## <a name="enable-vpn"> </a>Tworzenie API Management w wewnętrznej sieci wirtualnej
+Usługa API Management w wewnętrznej sieci wirtualnej jest hostowana za [wewnętrznym modułem równoważenia obciążenia (klasycznym)](https://docs.microsoft.com/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud). Jest to jedyna dostępna opcja i nie można jej zmienić.
 
-### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>Włączanie połączenia z siecią wirtualną przy użyciu witryny Azure portal
+### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>Włączanie połączenia sieci wirtualnej przy użyciu Azure Portal
 
-1. Przejdź do swojego wystąpienia usługi Azure API Management w [witryny Azure portal](https://portal.azure.com/).
+1. Przejdź do wystąpienia usługi Azure API Management w [Azure Portal](https://portal.azure.com/).
 2. Wybierz pozycję **Sieć wirtualna**.
-3. Konfigurowanie wystąpienia usługi API Management, można wdrożyć w sieci wirtualnej.
+3. Skonfiguruj wystąpienie API Management, które ma zostać wdrożone w sieci wirtualnej.
 
-    ![Menu do konfigurowania usługi Azure API Management w wewnętrznej sieci wirtualnej][api-management-using-internal-vnet-menu]
+    ![Menu do konfigurowania API Management platformy Azure w wewnętrznej sieci wirtualnej][api-management-using-internal-vnet-menu]
 
 4. Wybierz pozycję **Zapisz**.
 
-Po pomyślnym zakończeniu wdrożenia powinien zostać wyświetlony **prywatnej** wirtualnego adresu IP i **publicznych** wirtualnego adresu IP w bloku przeglądu usługi API Management. **Prywatnej** wirtualny adres IP jest obciążenia o zrównoważonym obciążeniu adresu IP z w ramach usługi API Management delegowane podsieci, nad którym `gateway`, `portal`, `management` i `scm` punkty końcowe można uzyskać dostęp. **Publicznych** wirtualny adres IP jest używany **tylko** ruchu płaszczyznę kontroli dla `management` punkt końcowy ponad portu 3443 i może być zablokowany w dół do [ApiManagement] [ ServiceTags] servicetag.
+Po pomyślnym wdrożeniu należy zobaczyć **prywatny** wirtualny adres IP i **publiczny** wirtualny adres IP usługi API Management w bloku przegląd. **Prywatny** wirtualny adres IP to adres IP ze zrównoważonym obciążeniem z `gateway`API Management delegowanej podsieci, `portal` `management` `scm` w której można uzyskać dostęp do punktów końcowych. **Publiczny** wirtualny adres IP jest używany **tylko** dla ruchu płaszczyzny kontroli do `management` punktu końcowego przez port 3443 i można go zablokować do [ApiManagement][ServiceTags] servicetag.
 
-![Pulpit nawigacyjny usługi API Management, z wewnętrzną siecią wirtualną skonfigurowane][api-management-internal-vnet-dashboard]
+![API Management pulpit nawigacyjny z skonfigurowaną wewnętrzną siecią wirtualną][api-management-internal-vnet-dashboard]
 
 > [!NOTE]
-> Dostępne w witrynie Azure Portal konsoli testów nie będzie działać dla **wewnętrzne** sieci Wirtualnej wdrożono usługę, jak adres Url bramy nie jest zarejestrowany na publicznym serwerze DNS. Zamiast tego należy używać konsoli testów na **portalu dla deweloperów**.
+> Konsola testowa dostępna w witrynie Azure Portal nie będzie działała w przypadku **wewnętrznej** usługi wdrożonej sieci wirtualnej, ponieważ adres URL bramy nie jest zarejestrowany w publicznym systemie DNS. Zamiast tego należy użyć konsoli testowej dostępnej w **portalu dla deweloperów**.
 
 ### <a name="enable-a-virtual-network-connection-by-using-powershell-cmdlets"></a>Włączanie połączenia sieci wirtualnej przy użyciu poleceń cmdlet programu PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Połączenie sieci wirtualnej można również włączyć przy użyciu poleceń cmdlet programu PowerShell.
+Połączenie sieci wirtualnej można również włączyć za pomocą poleceń cmdlet programu PowerShell.
 
-* Tworzenie usługi API Management w sieci wirtualnej: Użyj polecenia cmdlet [New AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) Tworzenie usługi Azure API Management w sieci wirtualnej i skonfiguruj ją, aby użyć typu wewnętrznej sieci wirtualnej.
+* Utwórz usługę API Management wewnątrz sieci wirtualnej: Za pomocą polecenia cmdlet [New-AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) Utwórz usługę Azure API Management w sieci wirtualnej i skonfiguruj ją tak, aby korzystała z wewnętrznego typu sieci wirtualnej.
 
-* Aktualizacja istniejącego wdrożenia usługi API Management w sieci wirtualnej: Użyj polecenia cmdlet [AzApiManagementRegion aktualizacji](/powershell/module/az.apimanagement/update-azapimanagementregion) Aby przenieść istniejącą usługę API Management w sieci wirtualnej i skonfiguruj ją, aby użyć typu wewnętrznej sieci wirtualnej.
+* Zaktualizuj istniejące wdrożenie usługi API Management w sieci wirtualnej: Użyj polecenia cmdlet [Update-AzApiManagementRegion](/powershell/module/az.apimanagement/update-azapimanagementregion) , aby przenieść istniejącą usługę API Management wewnątrz sieci wirtualnej i skonfiguruj ją tak, aby korzystała z wewnętrznego typu sieci wirtualnej.
 
 ## <a name="apim-dns-configuration"></a>Konfiguracja DNS
-Gdy usługa API Management jest w trybie zewnętrzną sieć wirtualną, DNS jest zarządzane przez platformę Azure. Dla trybu wewnętrznej sieci wirtualnej, które istnieje konieczność zarządzania własnych routingu.
+Gdy API Management jest w trybie zewnętrznej sieci wirtualnej, system DNS jest zarządzany przez platformę Azure. W przypadku wewnętrznego trybu sieci wirtualnej należy zarządzać własnym routingiem.
 
 > [!NOTE]
-> Usługa API Management nie będzie nasłuchiwać żądań pochodzących z adresów IP. Odpowiadały na żądania dla nazwy hosta skonfigurowane na jego punktów końcowych usługi. Te punkty końcowe obejmują bramy, witryny Azure portal i portalu dla deweloperów, punkt końcowy zarządzania bezpośredniego i Git.
+> Usługa API Management nie nasłuchuje żądań przychodzących z adresów IP. Odpowiada tylko na żądania do nazwy hosta skonfigurowanej w punktach końcowych usługi. Te punkty końcowe obejmują bramę, Azure Portal i Portal deweloperów, punkt końcowy zarządzania bezpośredniego i git.
 
-### <a name="access-on-default-host-names"></a>Dostęp do domyślnej nazwy hostów
-Podczas tworzenia usługi API Management, o nazwie "contosointernalvnet", na przykład, następujące punkty końcowe usługi są konfigurowane domyślnie:
+### <a name="access-on-default-host-names"></a>Dostęp do domyślnych nazw hostów
+Podczas tworzenia usługi API Management o nazwie "contosointernalvnet" na przykład następujące punkty końcowe usługi są konfigurowane domyślnie:
 
-   * Brama lub serwer proxy: contosointernalvnet.azure-api.net.
+   * Brama lub serwer proxy: contosointernalvnet.azure-api.net
 
-   * Witryna Azure portal i portalu dla deweloperów: contosointernalvnet.portal.azure-api.net.
+   * Portal dla deweloperów: contosointernalvnet.portal.azure-api.net
 
-   * Punkt końcowy zarządzania bezpośredniego: contosointernalvnet.management.azure-api.net.
+   * Nowy portal dla deweloperów: contosointernalvnet.developer.azure-api.net
 
-   * Git: contosointernalvnet.scm.azure-api.net.
+   * Punkt końcowy zarządzania bezpośredniego: contosointernalvnet.management.azure-api.net
 
-Aby uzyskać dostęp do tych punktów końcowych usługi API Management, można utworzyć maszynę wirtualną w podsieci podłączone do sieci wirtualnej, w której jest wdrażany usługi API Management. Przy założeniu, że wewnętrznego wirtualnego adresu IP dla usługi jest 10.1.0.5, można mapować pliku hosts % SystemDrive%\drivers\etc\hosts, w następujący sposób:
+   * Git: contosointernalvnet.scm.azure-api.net
 
-   * 10.1.0.5 contosointernalvnet.azure-api.net.
+Aby uzyskać dostęp do tych punktów końcowych usługi API Management, można utworzyć maszynę wirtualną w podsieci połączonej z siecią wirtualną, w której API Management jest wdrożony. Zakładając, że wewnętrzny wirtualny adres IP usługi to 10.1.0.5, można zmapować plik hosts%SystemDrive%\drivers\etc\hosts w następujący sposób:
 
-   * 10.1.0.5 contosointernalvnet.portal.azure-api.net.
+   * 10.1.0.5 contosointernalvnet.azure-api.net
 
-   * 10.1.0.5 contosointernalvnet.management.azure-api.net.
+   * 10.1.0.5 contosointernalvnet.portal.azure-api.net
 
-   * 10.1.0.5 contosointernalvnet.scm.azure-api.net.
+   * 10.1.0.5 contosointernalvnet.developer.azure-api.net
 
-Mogą uzyskiwać dostęp do wszystkich punktów końcowych usługi z maszyny wirtualnej, który został utworzony.
+   * 10.1.0.5 contosointernalvnet.management.azure-api.net
+
+   * 10.1.0.5 contosointernalvnet.scm.azure-api.net
+
+Następnie można uzyskać dostęp do wszystkich punktów końcowych usługi z utworzonej maszyny wirtualnej.
 Jeśli używasz niestandardowego serwera DNS w sieci wirtualnej, możesz również utworzyć rekordy DNS i uzyskać dostęp do tych punktów końcowych z dowolnego miejsca w sieci wirtualnej.
 
 ### <a name="access-on-custom-domain-names"></a>Dostęp do niestandardowych nazw domen
 
-1. Jeśli nie chcesz uzyskać dostęp do usługi API Management z domyślnymi nazwami hostów, możesz skonfigurować niestandardowe nazwy domen dla wszystkich punktów końcowych usługi jak pokazano na poniższej ilustracji:
+1. Jeśli nie chcesz uzyskiwać dostępu do usługi API Management z domyślnymi nazwami hostów, możesz skonfigurować niestandardowe nazwy domen dla wszystkich punktów końcowych usługi, jak pokazano na poniższej ilustracji:
 
-   ![Konfigurowanie domeny niestandardowej dla usługi API Management][api-management-custom-domain-name]
+   ![Konfigurowanie domeny niestandardowej dla API Management][api-management-custom-domain-name]
 
-2. Następnie możesz utworzyć rekordy na serwerze DNS w celu dostępu do punktów końcowych, które są dostępne jedynie z w ramach sieci wirtualnej.
+2. Następnie można utworzyć rekordy na serwerze DNS, aby uzyskać dostęp do punktów końcowych, które są dostępne tylko w sieci wirtualnej.
 
-## <a name="routing"> </a> Routing
+## <a name="routing"></a> Routing
 
-* Ze zrównoważonym obciążeniem *prywatnej* wirtualnego adresu IP z zakresu podsieci zostanie zarezerwowane i umożliwiają dostęp do punktów końcowych usługi API Management z w ramach sieci wirtualnej. To *prywatnej* adres IP można znaleźć w bloku przeglądu usługi w witrynie Azure portal. Ten adres należy zarejestrować serwery DNS używane przez sieć wirtualną.
-* Ze zrównoważonym obciążeniem *publicznych* adresu IP (VIP) rezerwowane zapewniać dostęp do punktu końcowego programu service management za pośrednictwem portu 3443. To *publicznych* adres IP można znaleźć w bloku przeglądu usługi w witrynie Azure portal. *Publicznych* adres IP jest używany tylko w przypadku ruchu płaszczyzna kontroli `management` punkt końcowy ponad portu 3443 i może być zablokowany w dół do [ApiManagement] [ ServiceTags] servicetag .
-* Adresy IP z zakresu adresów IP podsieci (DIP) zostaną przypisane do każdej maszyny Wirtualnej w usłudze i będą używane do dostępu do zasobów w ramach sieci wirtualnej. Publiczny adres IP (VIP) będzie służyć do dostępu do zasobów spoza sieci wirtualnej. Listy ograniczeń adresów IP są używane do zabezpieczania zasobów w ramach sieci wirtualnej, cały zakres dla podsieci, w której wdrażana jest usługa API Management musi określić do przyznawanie lub ograniczanie dostępu z usługi.
-* Ze zrównoważonym obciążeniem: publiczne i prywatne adresy IP można znaleźć w bloku Przegląd w witrynie Azure portal.
-* Adresy IP przypisane do dostępu publiczne i prywatne mogą ulec zmianie, jeśli usługa jest usuwane z, a następnie ponowne ich dodanie do sieci wirtualnej. W takiej sytuacji może być konieczne zaktualizowanie rejestracji w usłudze DNS, reguły routingu i listy ograniczeń adresów IP w sieci wirtualnej.
+* *Prywatny* wirtualny adres IP ze zrównoważonym obciążeniem z zakresu podsieci zostanie zarezerwowany i będzie używany do uzyskiwania dostępu do punktów końcowych usługi API Management z poziomu sieci wirtualnej. Ten *prywatny* adres IP można znaleźć w bloku przegląd dla usługi w Azure Portal. Ten adres musi być zarejestrowany na serwerach DNS używanych przez sieć wirtualną.
+* *Publiczny* adres IP ze zrównoważonym obciążeniem (VIP) zostanie również zarezerwowany w celu zapewnienia dostępu do punktu końcowego usługi zarządzania przez port 3443. Ten *publiczny* adres IP można znaleźć w bloku przegląd dla usługi w Azure Portal. *Publiczny* adres IP jest używany tylko dla ruchu płaszczyzny kontroli do `management` punktu końcowego przez port 3443 i można go zablokować do [ApiManagement][ServiceTags] servicetag.
+* Adresy IP z zakresu adresów IP podsieci (DIP) zostaną przypisane do każdej maszyny wirtualnej w usłudze i będą używane do uzyskiwania dostępu do zasobów w sieci wirtualnej. Publiczny adres IP (VIP) będzie używany do uzyskiwania dostępu do zasobów spoza sieci wirtualnej. Jeśli listy ograniczeń adresów IP są używane do zabezpieczania zasobów w sieci wirtualnej, cały zakres dla podsieci, w której wdrożona jest usługa API Management, musi zostać określony w celu udzielenia lub ograniczenia dostępu do usługi.
+* Publiczne i prywatne adresy IP ze zrównoważonym obciążeniem można znaleźć w bloku przegląd w Azure Portal.
+* Adresy IP przypisane do publicznego i prywatnego dostępu mogą ulec zmianie, jeśli usługa zostanie usunięta z, a następnie dodana do sieci wirtualnej. W takim przypadku może być konieczne zaktualizowanie rejestracji DNS, reguł routingu i list ograniczeń adresów IP w ramach sieci wirtualnej.
 
 ## <a name="related-content"> </a>Powiązana zawartość
 Aby dowiedzieć się więcej, zobacz następujące artykuły:
 * [Typowe problemy z konfiguracją sieci podczas konfigurowania usługi Azure API Management w sieci wirtualnej][Common network configuration problems]
-* [Sieć wirtualna — często zadawane pytania](../virtual-network/virtual-networks-faq.md)
-* [Utworzenie rekordu DNS](/previous-versions/windows/it-pro/windows-2000-server/bb727018(v=technet.10))
+* [Często zadawane pytania dotyczące sieci wirtualnej](../virtual-network/virtual-networks-faq.md)
+* [Tworzenie rekordu w systemie DNS](/previous-versions/windows/it-pro/windows-2000-server/bb727018(v=technet.10))
 
 [api-management-using-internal-vnet-menu]: ./media/api-management-using-with-internal-vnet/api-management-using-with-internal-vnet.png
 [api-management-internal-vnet-dashboard]: ./media/api-management-using-with-internal-vnet/api-management-internal-vnet-dashboard.png

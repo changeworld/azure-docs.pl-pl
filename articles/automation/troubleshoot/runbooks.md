@@ -8,14 +8,30 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f732ab6ceb17dcd013c6d032ef3943f6ad9bef71
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: 759422ea8c327ae67278354217dac4c60b32f7a9
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782338"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850315"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Rozwiązywanie problemów z elementami Runbook
+
+W tym artykule opisano typowe problemy związane z elementami Runbook i sposoby ich rozwiązywania.
+
+## <a name="steps-to-troubleshoot-runbooks"></a>Kroki rozwiązywania problemów z elementami Runbook
+
+Jeśli występują błędy wykonywania elementów Runbook w Azure Automation, można wykonać następujące czynności, aby pomóc zdiagnozować problem.
+
+1. **Upewnij się, że skrypt elementu Runbook został pomyślnie wykonany na komputerze lokalnym:**  Zapoznaj się z dokumentacją dla modułów dokumentacji [programu PowerShell](/powershell/scripting/overview) lub języka [Python](https://docs.python.org/3/) .
+
+   Wykonywanie skryptu lokalnie może wykrywać i rozwiązywać typowe błędy, takie jak:
+
+   - **Brakujące moduły**
+   - **Błędy składniowe**
+   - **Błędy logiki**
+
+2. **Upewnij się, że węzły i obszar roboczy usługi Automation mają wymagane moduły:** Jeśli element Runbook importuje dowolne moduły, upewnij się, że są one dostępne na koncie usługi Automation, korzystając z procedury wymienionej w temacie [Import modules](../shared-resources/modules.md#import-modules). Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z modułami](shared-resources.md#modules).
 
 ## <a name="authentication-errors-when-working-with-azure-automation-runbooks"></a>Błędy uwierzytelniania podczas pracy z Azure Automation elementami Runbook
 

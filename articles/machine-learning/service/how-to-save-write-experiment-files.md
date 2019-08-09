@@ -9,14 +9,14 @@ ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: b0e0ef93b2782cd44eca3dc6023a7eb556cd3245
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: ea820536d93ec095f6f2929a9dc3b38d92779a58
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618391"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856050"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Miejsce zapisywania i zapisywania plików do Azure Machine Learning eksperymentów
 
@@ -71,7 +71,7 @@ Jeśli nie jest wymagane przechowywanie danych, Zapisz pliki w `./outputs` folde
 
 * **Aby zapisać zapisany plik jako dzienniki w historii uruchamiania,** Zapisz pliki w `./logs` folderze. Dzienniki są przekazywane w czasie rzeczywistym, więc ta metoda jest odpowiednia do przesyłania strumieniowego aktualizacji na żywo z przebiegu zdalnego.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Dowiedz się więcej o [uzyskiwaniu dostępu do danych z Twoich magazynów](how-to-access-data.md).
 

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6de348a19081eba685deafebd8a7c9b9d6556444
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 67e5364996be2945d67aa1a95cbc3ab8137e077e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688113"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850258"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Rozwiązywanie problemów z konfiguracją żądanego stanu (DSC)
 
@@ -24,23 +24,24 @@ Ten artykuł zawiera informacje dotyczące rozwiązywania problemów z konfigura
 
 Gdy wystąpią błędy podczas kompilowania lub wdrażania konfiguracji w usłudze Azure State Configuration, poniżej przedstawiono kilka kroków, które ułatwią zdiagnozowanie problemu.
 
-1. **Upewnij się, że konfiguracja została pomyślnie skompilowana na komputerze lokalnym:**  Konfiguracja stanu platformy Azure jest oparta na usłudze PowerShell DSC. Dokumentację dotyczącą języka i składni DSC można znaleźć w dokumentacji [DSC programu PowerShell](/powershell/dsc/overview/overview).
+1. **Upewnij się, że konfiguracja została pomyślnie skompilowana na komputerze lokalnym:**  Konfiguracja stanu platformy Azure jest oparta na usłudze PowerShell DSC. Dokumentację dotyczącą języka i składni DSC można znaleźć w dokumentacji [DSC programu PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/overview).
 
-   Przez skompilowanie konfiguracji DSC na komputerze lokalnym, można odnajdywać i rozwiązywać typowe błędy, takie jak:
+   Kompilując konfigurację DSC na komputerze lokalnym, można odkrywać i rozwiązywać typowe błędy, takie jak:
 
    - **Brakujące moduły**
    - **Błędy składniowe**
    - **Błędy logiki**
+
 2. **Wyświetlanie dzienników DSC w węźle:** Jeśli konfiguracja została pomyślnie skompilowana, ale nie powiedzie się w przypadku zastosowania do węzła, można znaleźć szczegółowe informacje w dziennikach. Informacje o lokalizacji dzienników DSC można znaleźć w temacie [gdzie znajdują się dzienniki zdarzeń DSC](/powershell/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs).
 
-   Futhermore, [xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics) może pomóc w analizie szczegółowych informacji z dzienników DSC. Jeśli skontaktujesz się z pomocą techniczną, te dzienniki będą wymagały dianose problemu.
+   Ponadto [xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics) może pomóc w analizie szczegółowych informacji z dzienników DSC. Jeśli skontaktujesz się z pomocą techniczną, będzie to wymagało tych dzienników do zdiagnozowania problemu.
 
    Możesz zainstalować **xDscDiagnostics** na komputerze lokalnym, korzystając z instrukcji znajdujących się w sekcji [Instalowanie stabilnej wersji modułu](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module).
 
    Aby zainstalować **xDscDiagnostics** na maszynie platformy Azure, możesz użyć [polecenia AZ VM Run-command](/cli/azure/vm/run-command) lub [Invoke-AzVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand). Można również użyć opcji **Uruchom polecenie** z portalu, wykonując czynności opisane w sekcji [Uruchamianie skryptów programu PowerShell na maszynie wirtualnej z systemem Windows za pomocą polecenia Uruchom](../../virtual-machines/windows/run-command.md).
 
    Aby uzyskać informacje na temat korzystania z programu **xDscDiagnostics**, zobacz [Używanie xDscDiagnostics do analizowania dzienników DSC](/powershell/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs), a także [poleceń cmdlet xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics#cmdlets).
-3. **Upewnij się, że węzły i obszar roboczy usługi Automation mają wymagane moduły:** Konfiguracja żądanego stanu zależy od modułów zainstalowanych w węźle.  W przypadku korzystania z konfiguracji stanu Azure Automation należy zaimportować wszystkie wymagane moduły do konta usługi Automation, korzystając z procedury wymienionej w temacie [Import modules](../shared-resources/modules.md#import-modules). Konfiguracje mogą również mieć zależność od określonych wersji modułów.  Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z modułami](shared-resources.md#modules).
+3. **Upewnij się, że węzły i obszar roboczy usługi Automation mają wymagane moduły:** Konfiguracja żądanego stanu zależy od modułów zainstalowanych w węźle.  W przypadku korzystania z konfiguracji stanu Azure Automation należy zaimportować wszystkie wymagane moduły do konta usługi Automation, korzystając z procedury wymienionej w temacie [Import modules](../shared-resources/modules.md#import-modules). Konfiguracje mogą również mieć zależność od określonych wersji modułów.  Aby uzyskać więcej informacji, zobacz temat [Rozwiązywanie problemów z modułami](shared-resources.md#modules).
 
 ## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>Typowe błędy podczas pracy z konfiguracją żądanego stanu (DSC)
 
@@ -123,14 +124,14 @@ Compilation completed successfully, but no node configuration.mofs were generate
 
 #### <a name="cause"></a>Przyczyna
 
-Gdy wyrażenie zgodne **z słowem** kluczowym "w konfiguracji DSC" ma `$null`wartość, konfiguracje węzłów nie są generowane.
+Gdy wyrażenie zgodne z słowem kluczowym "w konfiguracji DSC" ma `$null`wartość, konfiguracje węzłów nie są generowane.
 
 #### <a name="resolution"></a>Rozwiązanie
 
 Niektóre z poniższych rozwiązań rozwiązują ten problem:
 
 * Upewnij się, że wyrażenie obok słowa kluczowego **Node** w definicji konfiguracji nie ocenia się do $null.
-* Jeśli przekazujesz ConfigurationData podczas kompilowania konfiguracji, upewnij się, że przechodzą oczekiwane wartości wymagane przez konfigurację z [ConfigurationData](../automation-dsc-compile.md#configurationdata).
+* Jeśli przekazujesz ConfigurationData podczas kompilowania konfiguracji, upewnij się, że przechodzą oczekiwane wartości wymagane przez konfigurację z [ConfigurationData](../automation-dsc-compile.md).
 
 ### <a name="dsc-in-progress"></a>Scenariusz Raport węzła DSC zostanie zablokowany w stanie "w toku"
 
@@ -166,7 +167,7 @@ Użyto poświadczenia w konfiguracji, ale nie podano odpowiednich **Configuratio
 
 #### <a name="resolution"></a>Rozwiązanie
 
-* Upewnij się, że w odpowiedniej **ConfigurationData** **określono wartość** true dla każdej konfiguracji węzła, która została określona w konfiguracji. Aby uzyskać więcej informacji, zobacz [zasoby w Azure Automation DSC](../automation-dsc-compile.md#assets).
+* Upewnij się, że w odpowiedniej **ConfigurationData** określono wartość true dla każdej konfiguracji węzła, która została określona w konfiguracji. Aby uzyskać więcej informacji, zobacz [zasoby w Azure Automation DSC](../automation-dsc-compile.md#working-with-assets-in-azure-automation-during-compilation).
 
 ### <a name="failure-processing-extension"></a>Scenariusz Wystąpił błąd podczas dołączania z rozszerzenia DSC
 
@@ -199,11 +200,27 @@ This event indicates that failure happens when LCM is processing the configurati
 
 #### <a name="cause"></a>Przyczyna
 
-Klienci zidentyfikowali, że jeśli lokalizacja/tmp jest ustawiona na NOEXEC, bieżąca wersja DSC nie będzie stosowała konfiguracji.
+Klienci zidentyfikowali, że jeśli `/tmp` lokalizacja jest ustawiona na `noexec`, bieżąca wersja DSC nie będzie mogła zastosować konfiguracji.
 
 #### <a name="resolution"></a>Rozwiązanie
 
-* Usuń opcję NOEXEC z lokalizacji/tmp.
+* `noexec` Usuń opcję`/tmp` z lokalizacji.
+
+### <a name="compilation-node-name-overlap"></a>Scenariusz Nazwy konfiguracji węzłów, które pokrywają się, mogą spowodować utratę prawidłowej wersji
+
+#### <a name="issue"></a>Problem
+
+Jeśli jeden skrypt konfiguracji jest używany do generowania konfiguracji wielu węzłów, a niektóre konfiguracje węzłów mają nazwę, która jest podzbiorem innych, problem w usłudze kompilacji może skutkować przypisaniem niewłaściwej konfiguracji.  Dzieje się tak tylko w przypadku użycia jednego skryptu do generowania konfiguracji z danymi konfiguracyjnymi na węzeł i tylko wtedy, gdy nazwa się pokrywa na początku ciągu.
+
+Przykładowo, jeśli jeden skrypt konfiguracji jest używany do generowania konfiguracji na podstawie danych węzła przekazaną jako tablicę skrótów za pomocą poleceń cmdlet, a dane węzła zawierają serwer o nazwie "serwer" i "1server".
+
+#### <a name="cause"></a>Przyczyna
+
+Znany problem dotyczący usługi kompilacji.
+
+#### <a name="resolution"></a>Rozwiązanie
+
+Najlepszym rozwiązaniem jest skompilowanie lokalnie lub w potoku ciągłej integracji/ciągłego dostarczania i przekazanie plików MOF bezpośrednio do usługi.  Jeśli kompilacja w usłudze jest wymagana, następnym najlepszym rozwiązaniem jest podzielenie zadań kompilacji, aby nie nakładały się nazw.
 
 ## <a name="next-steps"></a>Następne kroki
 

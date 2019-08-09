@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 064fd0e2bf503d917c809aa576bbc332b5b18a77
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 3fb4d953f575dcf6582f9f1c8c2a725971134159
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742360"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856257"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co to jest automatyczna usługi machine learning?
 
@@ -66,6 +66,9 @@ Chociaż Kompilowanie modelu jest zautomatyzowane, można również [dowiedzieć
 ## <a name="preprocessing"></a>Przetwarzania wstępnego
 
 W każdym automatycznym doświadczeniu uczenia maszynowego Twoje dane są wstępnie przetwarzane przy użyciu metod domyślnych i opcjonalnie w ramach zaawansowanego przetwarzania wstępnego.
+
+> [!NOTE]
+> Zautomatyzowane kroki wstępnego przetwarzania w usłudze Machine Learning (normalizacja funkcji, obsługa brakujących danych, konwertowanie tekstu na liczbowe itp.) staje się częścią modelu źródłowego. Przy użyciu modelu dla prognoz te same kroki przetwarzania wstępnego zastosowane podczas uczenia są automatycznie stosowane do danych wejściowych.
 
 ### <a name="automatic-preprocessing-standard"></a>Automatyczne przetwarzanie wstępne (standard)
 
@@ -123,7 +126,7 @@ Zautomatyzowana ML jest również dostępna w innych rozwiązaniach firmy Micros
 |[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|Wywołaj modele uczenia maszynowego bezpośrednio w Power BI (wersja zapoznawcza).|
 |[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)|Twórz nowe modele uczenia maszynowego za pośrednictwem danych w klastrach danych Big Data w SQL Server 2019.|
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Zobacz przykłady i Dowiedz się, jak tworzyć modele przy użyciu automatycznego uczenia maszynowego:
 

@@ -8,161 +8,161 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: b993b34f81298b40c8849084380b2d1770708351
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 21fe92bf4a33dc44545f1bd54c718db6c0a38532
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66482248"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68843284"
 ---
-# <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Często zadawane pytania dotyczące dysków maszyn wirtualnych IaaS platformy Azure i dyski zarządzane i niezarządzane — wersja premium
+# <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Często zadawane pytania dotyczące dysków maszyn wirtualnych usługi Azure IaaS oraz zarządzanych i niezarządzanych dysków Premium
 
-Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania dotyczące dysków Azure Managed Disks i usługi Azure Premium SSD.
+W tym artykule przedstawiono kilka często zadawanych pytań dotyczących usługi Azure Managed Disks i Azure SSD w warstwie Premium Disks.
 
 ## <a name="managed-disks"></a>Dyski zarządzane
 
-**Co to jest Azure Managed Disks?**
+**Co to jest platforma Azure Managed Disks?**
 
-Managed Disks to funkcja, która upraszcza zarządzanie dyskami maszyn wirtualnych IaaS platformy Azure dzięki obsłudze Zarządzanie kontem magazynu za Ciebie. Aby uzyskać więcej informacji, zobacz [omówienie Managed Disks](../articles/virtual-machines/windows/managed-disks-overview.md).
+Managed Disks to funkcja, która upraszcza zarządzanie dyskami maszyn wirtualnych platformy Azure IaaS przez obsługę zarządzania kontami magazynu. Aby uzyskać więcej informacji, zobacz [omówienie Managed disks](../articles/virtual-machines/windows/managed-disks-overview.md).
 
-**Czy jeśli utworzę standardowa dysku zarządzanego z istniejącego dysku VHD, który jest 80 GB będzie, kosztem, jaki mnie?**
+**Jeśli utworzysz dysk zarządzany w warstwie Standardowa na podstawie istniejącego wirtualnego dysku twardego o 80 GB, ile to kosztuje?**
 
-Standardowa dysku zarządzanego utworzonego na podstawie 80 GB, wirtualny dysk twardy jest traktowany jako rozmiar dysku w warstwie standardowa dostępne następny dysk S10. Opłaty są naliczane zgodnie z cennikiem dysk S10. Aby uzyskać więcej informacji, odwiedź [stronę cennika](https://azure.microsoft.com/pricing/details/storage).
+Dysk zarządzany w warstwie Standardowa utworzony przy użyciu dysku VHD 80-GB jest traktowany jako następny dostępny standardowy rozmiar dysku, który jest dyskiem S10. Opłata jest naliczana zgodnie z cennikiem dysku S10. Aby uzyskać więcej informacji, odwiedź [stronę cennika](https://azure.microsoft.com/pricing/details/storage).
 
-**Czy istnieją wszystkie koszty transakcji dla dysków zarządzanych w warstwie standardowa?**
+**Czy istnieją jakieś koszty transakcji dla dysków zarządzanych w warstwie Standardowa?**
 
-Tak. Opłaty są naliczane za każdą transakcję. Aby uzyskać więcej informacji, odwiedź [stronę cennika](https://azure.microsoft.com/pricing/details/storage).
+Tak. Opłata jest naliczana za każdą transakcję. Aby uzyskać więcej informacji, odwiedź [stronę cennika](https://azure.microsoft.com/pricing/details/storage).
 
-**Dla standardowych dysków zarządzanych zostanie naliczona do rzeczywistego rozmiaru danych na dysku lub zaprowizowaną pojemnością dysku?**
+**Czy w przypadku dysku zarządzanego w warstwie Standardowa zostanie naliczona opłata za rzeczywisty rozmiar danych na dysku lub dla pojemności dysku?**
 
-Opłaty są naliczane na podstawie pojemności aprowizowanego dysku. Aby uzyskać więcej informacji, odwiedź [stronę cennika](https://azure.microsoft.com/pricing/details/storage).
+Opłata jest naliczana na podstawie zainicjowanej pojemności dysku. Aby uzyskać więcej informacji, odwiedź [stronę cennika](https://azure.microsoft.com/pricing/details/storage).
 
-**Jak jest ceny dysków zarządzanych w warstwie premium różni się od dysków niezarządzanych?**
+**Czym różnią się ceny dysków zarządzanych w warstwie Premium od dysków niezarządzanych?**
 
-Ceny dysków zarządzanych w warstwie premium jest taka sama jak dysków niezarządzanych w warstwie premium.
+Ceny dysków zarządzanych w warstwie Premium są takie same jak niezarządzane dyski Premium.
 
-**Czy można zmienić typ (standardowa / Premium) konta magazynu z dysków zarządzanych?**
+**Czy mogę zmienić typ konta magazynu (w warstwie Standardowa lub Premium) dla moich dysków zarządzanych?**
 
-Tak. Możesz zmienić typ konta magazynu z dysków zarządzanych przy użyciu witryny Azure portal, programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
+Tak. Typ konta magazynu dla dysków zarządzanych można zmienić przy użyciu Azure Portal, programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
 
-**Do utworzenia dysku zarządzanego z innej subskrypcji można użyć pliku VHD na koncie usługi Azure storage?**
+**Czy mogę użyć pliku VHD na koncie usługi Azure Storage, aby utworzyć dysk zarządzany z inną subskrypcją?**
 
 Tak.
 
-**Do utworzenia dysku zarządzanego w różnych regionach można używać pliku VHD na koncie usługi Azure storage?**
+**Czy mogę użyć pliku VHD na koncie usługi Azure Storage w celu utworzenia dysku zarządzanego w innym regionie?**
 
 Nie.
 
-**Czy istnieją jakiekolwiek ograniczenia skalowania w przypadku klientów, którzy korzystają z dysków zarządzanych?**
+**Czy istnieją jakieś ograniczenia skali dla klientów korzystających z usługi Managed disks?**
 
-Dyski zarządzane eliminuje limity skojarzone z kontami magazynu. Jednak maksymalny limit to 50 000 dyski zarządzane według regionu i typ dysku w ramach subskrypcji.
+Managed Disks eliminuje ograniczenia związane z kontami magazynu. Jednak maksymalny limit to 50 000 dysków zarządzanych na region i dla każdego typu dysku dla subskrypcji.
 
 **Czy można wykonać przyrostową migawkę dysku zarządzanego?**
 
-Nie. Bieżąca funkcja migawki sprawia, że pełna kopia dysku zarządzanego.
+Nie. Bieżąca możliwość tworzenia migawek tworzy pełną kopię dysku zarządzanego.
 
-**Maszyny wirtualne w zestawie dostępności może zawierać kombinację dysków zarządzanych i niezarządzanych?**
+**Czy maszyny wirtualne w zestawie dostępności składają się z kombinacji dysków zarządzanych i niezarządzanych?**
 
-Nie. Maszyn wirtualnych w zestawie dostępności muszą używać wszystkich dysków zarządzanych lub wszystkich dysków niezarządzanych. Podczas tworzenia zestawu dostępności, można wybrać typy dysków, w której chcesz użyć.
+Nie. Maszyny wirtualne w zestawie dostępności muszą używać wszystkich dysków zarządzanych lub wszystkich dysków niezarządzanych. Podczas tworzenia zestawu dostępności można wybrać typ dysków, które mają być używane.
 
-**Jest Managed Disks to opcja domyślna, w witrynie Azure portal?**
+**Czy Managed Disks domyślną opcją w Azure Portal?**
 
 Tak.
 
-**Można utworzyć pusty dysk zarządzany?**
+**Czy mogę utworzyć pusty dysk zarządzany?**
 
-Tak. Można utworzyć pusty dysk. Dysku zarządzanego można tworzyć niezależnie od maszyny Wirtualnej, na przykład, bez dołączania ich do maszyny Wirtualnej.
+Tak. Można utworzyć pusty dysk. Dysk zarządzany można utworzyć niezależnie od maszyny wirtualnej, na przykład bez dołączania go do maszyny wirtualnej.
 
-**Co to liczba domen błędów obsługiwanych dla dostępności ustawiono korzystającej z dysków zarządzanych?**
+**Jaka jest obsługiwana liczba domen błędów dla zestawu dostępności korzystającego z Managed Disks?**
 
-W zależności od regionu, w którym znajduje się zestaw dostępności, który korzysta z dysków zarządzanych liczba domen błędów obsługiwanych jest 2 lub 3.
+W zależności od regionu, w którym znajduje się zestaw dostępności, który używa Managed Disks, obsługiwana liczba domen błędów wynosi 2 lub 3.
 
-**Jak są standardowe konto magazynu diagnostyki skonfigurować?**
+**Jak jest skonfigurowane konto magazynu w warstwie Standardowa na potrzeby konfiguracji diagnostyki?**
 
-Możesz skonfigurować konto prywatnego magazynu dla maszyny Wirtualnej diagnostyki.
+Należy skonfigurować prywatne konto magazynu na potrzeby diagnostyki maszyn wirtualnych.
 
-**Jakiego rodzaju pomocy technicznej kontroli dostępu opartej na rolach jest dostępna dla dysków Managed Disks?**
+**Jakiego rodzaju obsługa Access Control oparta na rolach jest dostępna dla Managed Disks?**
 
-Managed Disks obsługuje trzy kluczy domyślne role:
+Managed Disks obsługuje trzy role domyślne klucza:
 
-* Właściciel: Może zarządzać wszystkim łącznie z dostępem
-* Współautor: Może zarządzać wszystkim oprócz dostępu
-* Czytnik: Może przeglądać wszystko, ale nie może wprowadzać zmian
+* Właociciela Może zarządzać wszystko, w tym dostępem
+* Trybu Może zarządzać wszystko z wyjątkiem dostępu
+* Czytnika Może wyświetlać wszystko, ale nie może wprowadzać zmian
 
-**Czy istnieje sposób, aby I kopiowanie lub eksportowanie dysku zarządzanego na koncie magazynu prywatnego?**
+**Czy istnieje sposób, aby można było skopiować lub wyeksportować dysk zarządzany do prywatnego konta magazynu?**
 
-Można wygenerować sygnaturę dostępu współdzielonego tylko do odczytu (SAS) identyfikator URI dla dysku zarządzanego i go użyć do kopiowania zawartości do magazynu prywatnego magazynu lub konta System lokalny. Można użyć identyfikatora URI sygnatury dostępu Współdzielonego, za pomocą witryny Azure portal, programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub [narzędzia AzCopy](../articles/storage/common/storage-use-azcopy.md)
+Można wygenerować identyfikator URI sygnatury dostępu współdzielonego (SAS) tylko do odczytu dla dysku zarządzanego i użyć go do skopiowania zawartości na prywatne konto magazynu lub magazyn lokalny. Identyfikatora URI sygnatury dostępu współdzielonego można użyć przy użyciu Azure Portal, Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub [AzCopy](../articles/storage/common/storage-use-azcopy.md)
 
-**Można utworzyć kopię dysku zarządzanego?**
+**Czy mogę utworzyć kopię dysku zarządzanego?**
 
-Klienci mogą migawki dysków zarządzanych i następnie utworzyć inny dysk zarządzany przy użyciu migawki.
+Klienci mogą wykonać migawkę zarządzanych dysków, a następnie użyć migawki do utworzenia innego dysku zarządzanego.
 
-**Czy dysków niezarządzanych są nadal obsługiwane?**
+**Czy dyski niezarządzane są nadal obsługiwane?**
 
-Tak, dyski zarządzane i niezarządzane są obsługiwane. Zaleca się, że korzystają z dysków zarządzanych dla nowych obciążeń i migracji bieżących obciążeń do usługi managed disks.
+Tak, obsługiwane są zarówno dyski niezarządzane, jak i zarządzane. Zalecamy używanie dysków zarządzanych do obsługi nowych obciążeń i migrowanie bieżących obciążeń do dysków zarządzanych.
 
-**Wspólnie znaleźć dysków niezarządzanych i zarządzanych w tej samej maszyny Wirtualnej?**
+**Czy mogę umieścić dyski niezarządzane i zarządzane na tej samej maszynie wirtualnej?**
 
 Nie.
 
-**Jeśli I Utwórz dysk 128 GB, a dopiero potem zwiększyć jej rozmiar na 130 gibibajtach (GiB), czy opłata dalej rozmiar dysku (256 GiB)?**
+**Jeśli tworzę dysk 128 GB, a następnie zwiększę rozmiar do 130 gibibajtach (GiB), zostanie naliczona opłata za następny rozmiar dysku (256 GiB)?**
 
 Tak.
 
-**Można utworzyć magazyn lokalnie nadmiarowy, Magazyn geograficznie nadmiarowy i Magazyn strefowo nadmiarowy dysków zarządzanych?**
+**Czy można utworzyć magazyn lokalnie nadmiarowy, magazyn Geograficznie nadmiarowy i dyski zarządzane przez strefowo nadmiarowe magazyny?**
 
-Usługa Azure Managed Disks obsługuje obecnie tylko lokalnie nadmiarowy magazyn zarządzane dyski.
+Usługa Azure Managed Disks obecnie obsługuje tylko lokalnie nadmiarowe dyski zarządzane magazynu.
 
-**Można zmniejszyć lub downsize Moje dyski zarządzane?**
+**Czy mogę zmniejszyć lub Downsize moje dyski zarządzane?**
 
 Nie. Ta funkcja nie jest obecnie obsługiwana.
 
-**Czy można przerwać dzierżawy, na tym dysku?**
+**Czy mogę przerwać dzierżawę na moim dysku?**
 
-Nie. To nie jest obecnie obsługiwana dzierżawy jest obecna, aby zapobiec przypadkowemu usunięciu, gdy dysk jest używany.
+Nie. Nie jest to obecnie obsługiwane w przypadku dzierżawy, aby zapobiec przypadkowemu usunięciu, gdy dysk jest używany.
 
-**Można zmienić właściwości Nazwa komputera w przypadku wyspecjalizowanego (nie utworzone przy użyciu narzędzia przygotowywania systemu lub uogólniony) dysk systemu operacyjnego używany w celu obsługi administracyjnej maszyny Wirtualnej?**
+**Czy można zmienić właściwość nazwy komputera, gdy jest używany specjalny (nieutworzony przy użyciu narzędzia przygotowania systemu lub uogólniony) dysk systemu operacyjnego do aprowizacji maszyny wirtualnej?**
 
-Nie. Nie można zaktualizować właściwości Nazwa komputera. Nowa maszyna wirtualna dziedziczy z elementu nadrzędnego maszyny Wirtualnej, który został użyty do utworzenia dysku systemu operacyjnego. 
+Nie. Nie można zaktualizować właściwości Nazwa komputera. Nowa maszyna wirtualna dziedziczy ją z nadrzędnej maszyny wirtualnej, która została użyta do utworzenia dysku systemu operacyjnego. 
 
-**Gdzie można znaleźć przykładowe szablony usługi Azure Resource Manager do tworzenia maszyn wirtualnych z dyskami zarządzanymi**
-* [Lista szablonów przy użyciu dysków Managed Disks](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
+**Gdzie można znaleźć przykładowe szablony Azure Resource Manager do tworzenia maszyn wirtualnych z dyskami zarządzanymi?**
+* [Lista szablonów przy użyciu Managed Disks](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
 * https://github.com/chagarw/MDPP
 
-**Podczas tworzenia dysku z obiektu blob, jest dowolnym stale istniejącą relację, z tym źródłowego obiektu blob?**
+**Czy podczas tworzenia dysku na podstawie obiektu BLOB istnieje ciągle istniejąca relacja z tym źródłowym obiektem BLOB?**
 
-Nie, gdy zostanie utworzony nowy dysk jest autonomiczny pełną kopię tego obiektu blob w tym czasie, nie ma połączenia między nimi. Jeśli chcesz po utworzeniu dysku źródłowego obiektu blob mogą zostać usunięte bez wywierania wpływu na nowo utworzonego dysku w dowolny sposób.
+Nie, podczas tworzenia nowego dysku jest w tej chwili pełną kopią autonomiczną tego obiektu BLOB i nie ma połączenia między nimi. Jeśli chcesz, po utworzeniu dysku źródłowy obiekt BLOB może zostać usunięty bez wpływu na nowo utworzony dysk w jakikolwiek sposób.
 
-**Dysków zarządzanych lub niezarządzanych można zmienić po jego utworzeniu?**
+**Czy mogę zmienić nazwę dysku zarządzanego lub niezarządzanego po jego utworzeniu?**
 
-Za dyski zarządzane nie można ich zmienić. Jednak tak długo, jak nie jest obecnie dołączony do maszyny Wirtualnej lub wirtualnego dysku twardego może zmienić nazwy dysku niezarządzanego.
+W przypadku dysków zarządzanych nie można zmienić ich nazw. Można jednak zmienić nazwę dysku niezarządzanego, o ile nie jest on obecnie dołączony do dysku VHD lub maszyny wirtualnej.
 
-**Można używać GPT partycji na dysku platformy Azure?**
+**Czy można używać partycjonowania GPT na dysku platformy Azure?**
 
-Partycjonowanie GPT może służyć tylko na dyskach danych, nie dyski systemu operacyjnego. Dyski systemu operacyjnego, należy użyć stylu partycji MBR.
+Partycjonowanie GPT może być używane tylko na dyskach danych, a nie na dyskach systemu operacyjnego. Dyski systemu operacyjnego muszą używać stylu partycji MBR.
 
-**Jakich typów dysków obsługuje migawki?**
+**Jakie typy dysków obsługują migawki?**
 
-Dysk SSD w warstwie Premium SSD w warstwie standardowa i standardowych dysków Twardych obsługuje migawek. Dla tych typów trzech dysków migawek są obsługiwane dla wszystkich rozmiarów dysków (w tym dysków, maksymalnie 32 TiB rozmiaru). Największa SSD nie obsługują migawki.
+SSD w warstwie Premium, standardowy dysk SSD i standardowe dyski twarde obsługują migawki. Dla tych trzech typów dysków migawki są obsługiwane dla wszystkich rozmiarów dysków (łącznie z dyskami o rozmiarze do 32 TiB). Niezwykle dysków SSD nie obsługują migawek.
 
-## <a name="standard-ssd-disks"></a>Dyski SSD w warstwie standardowa
+## <a name="standard-ssd-disks"></a>SSD w warstwie Standardowa dyski
 
-**Co to są dyski SSD w warstwie standardowa usługi Azure?**
-Dyski SSD w warstwie standardowa są wspierane przez nośnik SSD, zoptymalizowane pod kątem jako niskie koszty magazynowania dla obciążeń wymagających spójną wydajność na niższych poziomach operacji We/Wy dysków w warstwie standardowa.
+**Co to jest Azure SSD w warstwie Standardowa disks?**
+Dyski SSD w warstwie Standardowa są dyskami standardowymi, które są obsługiwane przez nośnik półprzewodnikowy, zoptymalizowane pod kątem oszczędnego magazynu dla obciążeń wymagających spójnej wydajności na niższych poziomach IOPS.
 
-<a id="standard-ssds-azure-regions"></a>**Co to są regiony obecnie obsługiwane w przypadku dysków SSD w warstwie standardowa?**
-Wszystkie regiony platformy Azure obsługują teraz dysków SSD w warstwie standardowa.
+<a id="standard-ssds-azure-regions"></a>**Jakie regiony są obecnie obsługiwane dla SSD w warstwie Standardowa dysków?**
+Wszystkie regiony platformy Azure obsługują teraz SSD w warstwie Standardowa dysków.
 
-**Przy użyciu standardowych dysków SSD jest dostępna usługa Azure Backup?**
-Tak, usługa Azure Backup jest teraz dostępna.
+**Czy jest Azure Backup dostępne w przypadku korzystania ze standardowego dysków SSD?**
+Tak, Azure Backup jest teraz dostępny.
 
-**Jak utworzyć dyski SSD w warstwie standardowa?**
-Można utworzyć dysków SSD w warstwie standardowa przy użyciu szablonów usługi Azure Resource Manager, zestawu SDK, programu PowerShell lub interfejsu wiersza polecenia. Poniżej przedstawiono parametry potrzebne w szablonie usługi Resource Manager do utworzenia dysków SSD w warstwie standardowa:
+**Jak mogę utworzyć dyski SSD w warstwie Standardowa?**
+SSD w warstwie Standardowa dysków można utworzyć przy użyciu szablonów Azure Resource Manager, zestawu SDK, programu PowerShell lub interfejsu wiersza polecenia. Poniżej znajdują się parametry, które są konieczne w szablonie Menedżer zasobów do tworzenia dysków SSD w warstwie Standardowa:
 
-* *wersja interfejsu API* dla dostawcy Microsoft.Compute musi być ustawiona jako `2018-04-01` (lub nowszy)
-* Określ *managedDisk.storageAccountType* jako `StandardSSD_LRS`
+* *apiVersion* dla Microsoft. COMPUTE musi być ustawiona jako `2018-04-01` (lub nowsza)
+* Określ *managedDisk. storageAccountType* jako`StandardSSD_LRS`
 
-W poniższym przykładzie przedstawiono *properties.storageProfile.osDisk* dotyczącej maszyny Wirtualnej, która korzysta z dysków SSD w warstwie standardowa:
+W poniższym przykładzie przedstawiono sekcję *Properties. obszarze storageprofile. osDisk* dla maszyny wirtualnej korzystającej z dysków SSD w warstwie Standardowa:
 
 ```json
 "osDisk": {
@@ -176,62 +176,62 @@ W poniższym przykładzie przedstawiono *properties.storageProfile.osDisk* dotyc
 }
 ```
 
-Aby uzyskać kompletny szablon przykład sposobu tworzenia dysku SSD w warstwie standardowa przy użyciu szablonu, zobacz [Utwórz Maszynę wirtualną z obrazu Windows przy użyciu standardowych dysków z danymi SSD](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/).
+Aby zapoznać się z kompletnym przykładem szablonu dotyczącego tworzenia dysku SSD w warstwie Standardowa z szablonem, zobacz [Tworzenie maszyny wirtualnej na podstawie obrazu systemu Windows z dyskami danych SSD w warstwie Standardowa](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/).
 
-**Czy mogę przekonwertować istniejące dysków do SSD w warstwie standardowa?**
-Tak, możesz. Zapoznaj się [przekonwertować zarządzanego usługi Azure dyski magazynu od planu standard do premium i na odwrót](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) ogólne wytyczne do konwertowania Managed Disks. Ponadto za pomocą następującej wartości w celu zaktualizowania typu dysku na SSD w warstwie standardowa.
+**Czy mogę przekonwertować istniejące dyski na SSD w warstwie Standardowa?**
+Tak, możesz. Zapoznaj się z tematem [konwertowanie magazynu Azure Managed disks z warstwy Standardowa na Premium i na odwrót,](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) Aby uzyskać ogólne wytyczne dotyczące konwersji Managed Disks. I użyj następującej wartości, aby zaktualizować typ dysku do SSD w warstwie Standardowa.
 -AccountType StandardSSD_LRS
 
-**Zaletą używania dysków SSD w warstwie standardowa zamiast HDD co to jest?**
-Dyski SSD w warstwie standardowa dostarczać lepsze opóźnienia, spójnością, dostępnością i niezawodnością w porównaniu do dysków HDD. Obciążenia aplikacji znacznie lepsze działanie na SSD w warstwie standardowa z tego powodu. Pamiętaj, że dyski SSD w warstwie Premium są zalecanym rozwiązaniem dla większości obciążeń produkcyjnych intensywnie korzystających z operacji We/Wy.
+**Jakie korzyści przynosi korzystanie z SSD w warstwie Standardowa dysków zamiast DYSKowych?**
+SSD w warstwie Standardowa dyski zapewniają lepsze opóźnienia, spójność, dostępność i niezawodność w porównaniu z dyskami TWARDYmi. Obciążenia aplikacji działają znacznie bardziej płynnie w SSD w warstwie Standardowa z tego powodu. Należy pamiętać, że dyski SSD w warstwie Premium są zalecanym rozwiązaniem dla większości obciążeń produkcyjnych intensywnie korzystających z operacji we/wy.
 
-**Czy można użyć standardowych dysków SSD, jako dyski niezarządzane?**
-Nie, dyski standardowe dyski SSD są dostępne tylko jako dyski Managed Disks.
+**Czy można używać standardowych dysków SSD jako dysków niezarządzanych?**
+Nie, standardowe dyski dysków SSD są dostępne tylko jako Managed Disks.
 
-**Dyski SSD w warstwie standardowa obsługują "SLA pojedynczego wystąpienia maszyny Wirtualnej"?**
-Nie, standardowe dyski SSD występuje pojedynczego wystąpienia maszyny Wirtualnej umowy SLA. Używanie dysków Premium SSD dla pojedynczego wystąpienia maszyny Wirtualnej umowy SLA.
+**Czy SSD w warstwie Standardowa dyski obsługują "umowę SLA maszyny wirtualnej o pojedynczym wystąpieniu"?**
+Nie, standardowa dysków SSD nie ma umowy SLA dotyczącej pojedynczego wystąpienia maszyny wirtualnej. Użyj SSD w warstwie Premium dysków dla umowy SLA dla pojedynczego wystąpienia maszyny wirtualnej.
 
-## <a name="migrate-to-managed-disks"></a>Migrowanie do funkcji Dyski zarządzane
+## <a name="migrate-to-managed-disks"></a>Przeprowadź migrację do funkcji Dyski zarządzane
 
-**Czy istnieje dowolnego wpływ migracji na wydajność dysków zarządzanych?**
+**Czy istnieje jakikolwiek wpływ migracji na wydajność Managed Disks?**
 
-Migracja dotyczy przenoszenia dysku z jednej lokalizacji magazynu do innego. Jest to zorganizowanych za pośrednictwem tła kopii danych, co może zająć kilka godzin, zazwyczaj mniej niż 24 godziny, w zależności od ilości danych na dyskach. W tym czasie aplikacji mogą występować wyższe niż zwykle opóźnienia odczytu niektórych odczyty mogą uzyskać przekierowane do oryginalnej lokalizacji i może potrwać dłużej. Nie ma to wpływu na opóźnienie zapisu w tym okresie.  
+Migracja obejmuje przenoszenie dysku z jednej lokalizacji magazynu do innej. Jest on zorganizowany za pośrednictwem kopii w tle danych, co może potrwać kilka godzin, zwykle krótszy niż 24 godziny, w zależności od ilości danych na dyskach. W tym czasie aplikacja może korzystać z wyższego poziomu niż zwykłe opóźnienie odczytu, ponieważ niektóre odczyty mogą zostać przekierowane do oryginalnej lokalizacji i może trwać dłużej. Nie ma to wpływu na opóźnienie zapisu w tym okresie.  
 
-**Jakie zmiany są wymagane w przypadku istniejących kopia zapasowa Azure usługi konfiguracji przed lub po migracji do usługi Managed Disks?**
+**Jakie zmiany są wymagane w istniejącej konfiguracji usługi Azure Backup przed migracją do Managed Disks?**
 
-Żadne zmiany nie są wymagane.
+Nie są wymagane żadne zmiany.
 
-**Moje kopie zapasowe maszyn wirtualnych utworzone za pomocą usługi Azure Backup przed migracją będzie działać?**
+**Czy moje kopie zapasowe maszyn wirtualnych utworzone za pośrednictwem usługi Azure Backup przed kontynuowaniem migracji?**
 
 Tak, kopie zapasowe działają bezproblemowo.
 
-**Jakie zmiany są wymagane w przypadku istniejących szyfrowania dysków Azure konfiguracji przed lub po migracji do usługi Managed Disks?**
+**Jakie zmiany są wymagane we wstępnie istniejącej konfiguracji szyfrowania dysków Azure przed migracją do Managed Disks?**
 
-Żadne zmiany nie są wymagane.
+Nie są wymagane żadne zmiany.
 
-**Jest automatycznej migracji skalowania maszyn wirtualnych z istniejącego zestawu z dysków niezarządzanych do usługi Managed Disks, które są obsługiwane?**
+**Czy zautomatyzowana migracja istniejącego zestawu skalowania maszyn wirtualnych z dysków niezarządzanych do Managed Disks obsługiwana?**
 
-Nie. Można utworzyć nowego zestawu skalowania z przy użyciu obrazu z swoje stare zestawu skalowania przy użyciu dysków niezarządzanych dysków Managed Disks.
+Nie. Nowy zestaw skalowania można utworzyć przy użyciu Managed Disks obrazu ze starego zestawu skalowania z dyskami niezarządzanymi.
 
-**Można utworzyć dysku zarządzanego z migawki obiektu blob strony przed migracją do usługi Managed Disks?**
+**Czy można utworzyć dysk zarządzany na podstawie migawki obiektu BLOB strony wykonanej przed migracją do Managed Disks?**
 
-Nie. Można wyeksportować strony migawki obiektu blob jako obiekt blob typu page i następnie tworzenie dysku zarządzanego na podstawie wyeksportowanego stronicowych obiektów blob.
+Nie. Migawkę obiektu BLOB stronicowania można wyeksportować jako elementowy obiekt BLOB, a następnie utworzyć dysk zarządzany na podstawie wyeksportowanego obiektu BLOB strony.
 
-**Czy mogę w trybie Failover moich maszyn w środowisku lokalnym, chronione przez usługę Azure Site Recovery do maszyny Wirtualnej z usługą Managed Disks?**
+**Czy mogę przejść do trybu failover maszyn lokalnych chronionych przez Azure Site Recovery na maszynę wirtualną z Managed Disks?**
 
-Tak, możesz przełączyć się awaryjnie na Maszynę wirtualną z usługą Managed Disks.
+Tak, możesz wybrać opcję przejścia do trybu failover z maszyną wirtualną przy użyciu Managed Disks.
 
-**Czy istnieje dowolnego wpływ migracji na maszyny wirtualne platformy Azure chronione przez usługę Azure Site Recovery za pomocą replikacji Azure – Azure?**
+**Czy istnieje jakikolwiek wpływ migracji na maszyny wirtualne platformy Azure chronione przez Azure Site Recovery za pośrednictwem platformy Azure do replikacji platformy Azure?**
 
-Tak. Obecnie usługa Azure lokacji odzyskiwania Azure do platformy Azure ochronę maszyn wirtualnych z usługą Managed Disks jest dostępna jako usługą Ogólnodostępną.
+Nie. Dostępne są Azure Site Recovery ochrony platformy Azure na platformie Azure dla maszyn wirtualnych z Managed Disks.
 
-**Można przeprowadzić migrację maszyn wirtualnych z dyskami niezarządzanymi, które znajdują się na kontach magazynu, które są lub wcześniej zostały zaszyfrowane do usługi managed disks**
+**Czy można migrować maszyny wirtualne z dyskami niezarządzanymi, które znajdują się na kontach magazynu, które zostały wcześniej zaszyfrowane do dysków zarządzanych?**
 
-Yes
+Tak
 
-## <a name="managed-disks-and-storage-service-encryption"></a>Zarządzane dyski i szyfrowanie usługi Storage
+## <a name="managed-disks-and-storage-service-encryption"></a>Managed Disks i szyfrowanie usługi Storage
 
-**Szyfrowanie usługi Azure Storage włączono domyślnie podczas tworzenia dysku zarządzanego?**
+**Czy usługa Azure szyfrowanie usługi Storage domyślnie włączona podczas tworzenia dysku zarządzanego?**
 
 Tak.
 
@@ -239,130 +239,130 @@ Tak.
 
 Firma Microsoft zarządza kluczami szyfrowania.
 
-**Mogę wyłączyć szyfrowanie usługi Storage dla dysków zarządzanych?**
+**Czy można wyłączyć szyfrowanie usługi Storage dla moich dysków zarządzanych?**
 
 Nie.
 
-**Jest szyfrowanie usługi Storage dostępna tylko w określonych regionach?**
+**Czy szyfrowanie usługi Storage jest dostępny tylko w określonych regionach?**
 
-Nie. Jest ona dostępna we wszystkich regionach, w której są dostępne dyski Managed Disks. Managed Disks jest dostępna we wszystkich regionach publicznych i Niemcy. Jest również dostępna w Chinach, jednak tylko w przypadku zarządzanych przez Microsoft klucze nie klucze zarządzane przez klienta.
+Nie. Jest ona dostępna we wszystkich regionach, w których Managed Disks są dostępne. Managed Disks jest dostępna we wszystkich regionach publicznych i Niemczech. Jest ona również dostępna w Chinach, ale tylko w przypadku kluczy zarządzanych przez firmę Microsoft, a nie kluczy zarządzanych przez klienta.
 
-**Jak mogę sprawdzić Mój dysk zarządzany są szyfrowane?**
+**Jak można sprawdzić, czy mój dysk zarządzany jest szyfrowany?**
 
-Godzina utworzenia dysku zarządzanego z witryny Azure portal, interfejsu wiersza polecenia platformy Azure i programu PowerShell można znaleźć. Gdy czas po 9 czerwca 2017 r. są szyfrowane na dysku.
+Możesz sprawdzić czas utworzenia dysku zarządzanego na podstawie Azure Portal, interfejsu wiersza polecenia platformy Azure i programu PowerShell. Jeśli czas jest po 9 czerwca 2017, dysk jest szyfrowany.
 
-**Jak mogę zaszyfrować moje istniejące dyski, które zostały utworzone przed 10 czerwca 2017 r.**
+**Jak mogę zaszyfrować istniejące dyski, które zostały utworzone przed 10 czerwca 2017?**
 
-Od 10 czerwca 2017 r. nowe dane zapisane na istniejących dyskach zarządzanych są automatycznie szyfrowane. Planujemy także szyfrowanie istniejących danych i szyfrowanie nastąpi asynchronicznie w tle. Jeśli teraz musisz zaszyfrować istniejących danych, należy utworzyć kopię dysku. Nowe dyski będą szyfrowane.
+Od 10 czerwca 2017 nowe dane zapisywane na istniejących dyskach zarządzanych są szyfrowane automatycznie. Planuje również szyfrowanie istniejących danych, a szyfrowanie zostanie wykonane asynchronicznie w tle. Jeśli musisz teraz zaszyfrować istniejące dane, Utwórz kopię dysku. Nowe dyski zostaną zaszyfrowane.
 
-* [Kopiowanie dysków zarządzanych przy użyciu wiersza polecenia platformy Azure](../articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
+* [Kopiowanie dysków zarządzanych przy użyciu interfejsu wiersza polecenia platformy Azure](../articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
 * [Kopiowanie dysków zarządzanych przy użyciu programu PowerShell](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
 
-**Czy na zarządzanych migawek i obrazów, szyfrowane?**
+**Czy zarządzane migawki i obrazy są szyfrowane?**
 
-Tak. Wszystkie zarządzane migawki i obrazy, utworzonych po 9 czerwca 2017 r. są automatycznie szyfrowane. 
+Tak. Wszystkie zarządzane migawki i obrazy utworzone po 9 czerwca 2017 są automatycznie szyfrowane. 
 
-**Czy mogę przekonwertować maszyny wirtualne z dyskami niezarządzanymi, które znajdują się na kontach magazynu, które są lub wcześniej zostały zaszyfrowane do usługi managed disks?**
+**Czy mogę przekonwertować maszyny wirtualne z dyskami niezarządzanymi, które znajdują się na kontach magazynu, które zostały wcześniej zaszyfrowane do dysków zarządzanych?**
 
-Yes
+Tak
 
-**Wyeksportowane wirtualnego dysku twardego z zarządzanego dysku lub migawkę także będą zaszyfrowane?**
+**Czy plik wirtualnego dysku twardego z dysku zarządzanego lub migawki zostanie również zaszyfrowany?**
 
-Nie. Ale jeśli eksportujesz kolekcję wirtualnego dysku twardego do zaszyfrowanego konta magazynu z zaszyfrowanego zarządzane dysku lub migawki, a następnie jest zaszyfrowany. 
+Nie. Jednak w przypadku eksportowania dysku VHD na zaszyfrowane konto magazynu z zaszyfrowanego dysku zarządzanego lub migawki jest on szyfrowany. 
 
 ## <a name="premium-disks-managed-and-unmanaged"></a>Dyski w warstwie Premium: Zarządzane i niezarządzane
 
-**Jeśli maszyna wirtualna używa serii rozmiar, który obsługuje dyski SSD w warstwie Premium, takich jak DSv2, można dołączyć dyski danych w warstwie standardowa i premium?** 
+**Jeśli maszyna wirtualna korzysta z serii rozmiarów, która obsługuje SSD w warstwie Premium dysków, takich jak DSv2, czy można dołączyć dyski danych w warstwie Premium i Standardowa?** 
 
 Tak.
 
-**Serii rozmiar, który nie obsługuje dysków w warstwie Premium SSD, takich jak seria D "," Dv2 "," G "lub" F można podłączyć disks w warstwach premium i danych w warstwie standardowa?**
+**Czy można dołączyć dyski danych w warstwie Premium i standardowa do serii rozmiarów, która nie obsługuje SSD w warstwie Premium dysków, takich jak D, Dv2, G czy Seria F?**
 
-Nie. Tylko dyski danych w warstwie standardowa można dołączać do maszyn wirtualnych, które nie używają serii rozmiar, który obsługuje dyski w warstwie Premium SSD.
+Nie. Do maszyn wirtualnych można dołączać tylko standardowe dyski danych, które nie używają serii rozmiaru obsługującej SSD w warstwie Premium dysków.
 
-**Czy jeśli utworzę dysku danych w warstwie premium z istniejącego dysku VHD, który był 80 GB, ile będzie tego koszt?**
+**Jeśli utworzysz dysk danych w warstwie Premium na podstawie istniejącego wirtualnego dysku twardego o 80 GB, ile będzie kosztować?**
 
-Utworzone na podstawie wirtualny dysk twardy 80 GB dysku danych premium jest traktowany jako rozmiar dysku premium dostępne dalej to dysk typu P10. Opłaty są naliczane zgodnie z cennikiem dysku P10.
+Dysk danych w warstwie Premium utworzony na podstawie dysku VHD 80 GB jest traktowany jako kolejny dostępny rozmiar dysku Premium, który jest dyskiem P10. Opłata jest naliczana zgodnie z cennikiem dysku P10.
 
-**Czy istnieją koszty transakcji, aby korzystać z dysków SSD w warstwie Premium?**
+**Czy istnieją koszty transakcji do korzystania z SSD w warstwie Premium dysków?**
 
-Brak kosztu stałego dla każdego rozmiaru dysku, który jest zainicjowana przy użyciu określonych ograniczeń na operacje We/Wy i przepływność. Innych kosztów są przepustowości wychodzącej i pojemność migawki, jeśli ma to zastosowanie. Aby uzyskać więcej informacji, odwiedź [stronę cennika](https://azure.microsoft.com/pricing/details/storage).
+Istnieje stały koszt dla każdego rozmiaru dysku, który jest dostarczany z określonymi limitami operacji we/wy i przepływności. Pozostałe koszty to wychodząca przepustowość i pojemność migawki, jeśli ma to zastosowanie. Aby uzyskać więcej informacji, odwiedź [stronę cennika](https://azure.microsoft.com/pricing/details/storage).
 
-**Jakie są limity dla operacji We/Wy i przepływność, którą można pobrać z pamięci podręcznej dysku?**
+**Jakie są limity dla operacji we/wy i przepływności, które mogę pobrać z pamięci podręcznej dysku?**
 
-Połączonej limitów pamięci podręcznej i lokalny dysk SSD dla serii DS są 4000 operacje We/Wy na rdzeń i 33 MiB na sekundę na podstawowe. Seria GS zapewnia 5000 operacji We/Wy na rdzeń procesora i 50 MiB na sekundę na podstawowe.
+Łączne limity dla pamięci podręcznej i lokalnego SSD dla serii DS są 4 000 operacji we/wy na rdzeń i 33 MiB na sekundę na rdzeń. Seria GS oferuje 5 000 operacji we/wy na rdzeń i 50 MiB na sekundę na rdzeń.
 
-**Lokalny dysk SSD obsługę zarządzane dyski maszyny Wirtualnej z systemem?**
+**Czy na maszynie wirtualnej Managed Disks jest obsługiwany lokalny dysk SSD?**
 
-Lokalny dysk SSD to magazyn tymczasowy, który jest dołączony zarządzane dyski maszyny Wirtualnej z systemem. Jest bez dodatkowych kosztów dla tego magazynu tymczasowego. Zaleca się, że należy używać tego lokalny dysk SSD do przechowywania danych aplikacji, ponieważ nie jest on utrwalonych w magazynie obiektów Blob platformy Azure.
+Lokalny dysk SSD jest magazynem tymczasowym, który jest dołączony do maszyny wirtualnej Managed Disks. Ten magazyn tymczasowy nie ma dodatkowych kosztów. Zalecamy, aby nie używać tego lokalnego dysku SSD do przechowywania danych aplikacji, ponieważ nie jest on utrwalany w usłudze Azure Blob Storage.
 
-**Czy istnieją wszystkie następstwa dla użytkowania TRIM dysków w warstwie premium?**
+**Czy istnieją jakiekolwiek konsekwencje użycia przycinania na dyskach w warstwie Premium?**
 
-Nie ma żadnych wadą wykorzystania PRZYCINANIEM na dyskach platformy Azure w wersji premium albo lub dyski w warstwie standardowa.
+Na dyskach w warstwie Premium lub standard nie ma Minusem do użycia opcji TRIM na dyskach platformy Azure.
 
 ## <a name="new-disk-sizes-managed-and-unmanaged"></a>Nowe rozmiary dysków: Zarządzane i niezarządzane
 
-**Co to jest największy rozmiar dysku zarządzanego, obsługiwane w przypadku systemu operacyjnego i dysków z danymi?**
+**Jaki jest największy obsługiwany rozmiar dysku zarządzanego dla systemu operacyjnego i dysków z danymi?**
 
-Typ partycji, które platforma Azure obsługuje dla dysku systemu operacyjnego jest głównym rekordem rozruchowym (MBR). MBR format obsługuje maksymalnie 2 TiB rozmiaru dysku. Największy rozmiar, jak platforma Azure obsługuje dla dysku systemu operacyjnego jest 2 TiB. Platforma Azure obsługuje maksymalnie 32 TiB dysków zarządzanych danych na platformie Azure globalnego 4 TiB w chmurach suwerennych platformy Azure.
+Typ partycji obsługiwanej przez platformę Azure dla dysku systemu operacyjnego jest głównym rekordem rozruchowym (MBR). Format MBR obsługuje rozmiar dysku do 2 TiB. Największym rozmiarem obsługiwanym przez platformę Azure w przypadku dysku z systemem operacyjnym jest 2 TiB. Platforma Azure obsługuje do 32 TiB dla zarządzanych dysków danych w globalnej platformie Azure, 4 TiB w ramach suwerennych chmur platformy Azure.
 
-**Co to jest największy rozmiar dysku niezarządzanego, obsługiwane w przypadku systemu operacyjnego i dysków z danymi?**
+**Jaki jest największy niezarządzany rozmiar dysku dla systemu operacyjnego i dysków z danymi?**
 
-Typ partycji, które platforma Azure obsługuje dla dysku systemu operacyjnego jest głównym rekordem rozruchowym (MBR). MBR format obsługuje maksymalnie 2 TiB rozmiaru dysku. Największy rozmiar, jak platforma Azure obsługuje dla dysku niezarządzanego systemu operacyjnego jest 2 TiB. Platforma Azure obsługuje maksymalnie 4 TiB dla niezarządzanych dysków z danymi.
+Typ partycji obsługiwanej przez platformę Azure dla dysku systemu operacyjnego jest głównym rekordem rozruchowym (MBR). Format MBR obsługuje rozmiar dysku do 2 TiB. Największym rozmiarem obsługiwanym przez platformę Azure w przypadku dysku niezarządzanego systemu operacyjnego jest 2 TiB. Platforma Azure obsługuje maksymalnie 4 TiB dla dysków niezarządzanych danych.
 
-**Co to jest największy rozmiar stronicowego obiektu blob, który jest obsługiwany?**
+**Jaki jest największy rozmiar obiektu BLOB stronicowania, który jest obsługiwany?**
 
-Największy rozmiar stronicowego obiektu blob platformy Azure obsługuje jest 8 TiB (8191 GiB). Rozmiar maksymalny stronicowego obiektu blob, gdy dołączony do maszyny Wirtualnej jako dane lub dyski systemu operacyjnego jest 4 TiB (4095 GiB).
+Największy rozmiar obiektu BLOB strony obsługiwany przez platformę Azure to 8 TiB (8 191 GiB). Maksymalny rozmiar obiektu BLOB strony w przypadku dołączenia do maszyny wirtualnej jako dysk z danymi lub systemem operacyjnym to 4 TiB (4 095 GiB).
 
-**Należy używać nowej wersji narzędzi platformy Azure do tworzenia, dołączania, zmienianie rozmiaru i przekaż dysków większych niż 1 TiB?**
+**Czy muszę używać nowej wersji narzędzi platformy Azure do tworzenia, dołączania, zmiany rozmiaru i przekazywania dysków większych niż 1 TiB?**
 
-Nie ma potrzeby uaktualniania z istniejącymi narzędziami platformy Azure do tworzenia, dołączania i zmienianie rozmiaru dysków większych niż 1 TiB. Aby przesłać plik wirtualnego dysku twardego ze środowiska lokalnego bezpośrednio na platformie Azure jako stronicowy obiekt blob lub dysk niezarządzany, należy użyć najnowszej zestawów narzędzi wymienione poniżej. Obsługiwany jest tylko przekazywanie wirtualnego dysku twardego z maksymalnie 8 TiB.
+Nie musisz uaktualniać istniejących narzędzi platformy Azure, aby tworzyć, dołączać lub zmieniać rozmiaru dysków większych niż 1 TiB. Aby przekazać plik VHD z lokalnego miejsca bezpośrednio do platformy Azure jako obiekt BLOB strony lub dysk niezarządzany, należy użyć najnowszych zestawów narzędzi wymienionych poniżej. Obsługujemy tylko przekazywanie wirtualnego dysku twardego do 8 TiB.
 
 |Narzędzia platformy Azure      | Obsługiwane wersje                                |
 |-----------------|---------------------------------------------------|
-|Azure PowerShell | Numer wersji 4.1.0: Wersji z czerwca 2017 r. lub nowszej|
-|Wiersza polecenia platformy Azure w wersji 1     | Numer wersji 0.10.13: Zwolnij maj 2017 lub nowszego|
-|Wiersza polecenia platformy Azure w wersji 2     | Numer wersji 2.0.12: Zwolnij lipca 2017 r. lub nowszej|
-|Narzędzie AzCopy           | Numer wersji 6.1.0: Wersji z czerwca 2017 r. lub nowszej|
+|Azure PowerShell | Numer wersji 4.1.0: Czerwiec 2017 lub nowszy|
+|Interfejs wiersza polecenia platformy Azure w wersji 1     | Numer wersji 0.10.13: Maj 2017 lub nowsza|
+|Interfejs wiersza polecenia platformy Azure w wersji 2     | Numer wersji 2.0.12: Wydanie 2017 lipca lub nowsze|
+|Narzędzie AzCopy           | Numer wersji 6.1.0: Czerwiec 2017 lub nowszy|
 
-**Rozmiary dysków P4 i P6 obsługujące dyski niezarządzane i stronicowe obiekty BLOB?**
+**Czy rozmiary dysków P4 i P6 są obsługiwane w przypadku dysków niezarządzanych lub stronicowych obiektów BLOB?**
 
-P4 (32 GiB) i P6 (64 GiB) rozmiary dysków nie są obsługiwane jako warstwy domyślne dysku w przypadku dysków niezarządzanych i stronicowe obiekty BLOB. Musisz jawnie [Ustawianie warstwy obiektu Blob](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) P4 i P6, mają dysk zamapowany do tych warstw. Jeśli wdrożono niezarządzanego dysku lub na stronie obiektu blob z mniej niż 32 GiB lub między 32 GiB na 64 GiB bez konieczności ustawiania warstwy obiektu Blob rozmiar dysku lub długość zawartości, będą w dalszym proponowany P10 500 operacji We/Wy i 100 MiB/s i mapowane warstwę cenową.
+Rozmiary dysków P4 (32 GiB) i P6 (64 GiB) nie są obsługiwane jako domyślne warstwy dysków dla dysków niezarządzanych i stronicowych obiektów BLOB. Należy jawnie [ustawić warstwę obiektów BLOB](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) na P4 i P6, aby dysk był mapowany na te warstwy. W przypadku wdrażania niezarządzanego dysku lub stronicowego obiektu BLOB przy użyciu rozmiaru dysku lub zawartości mniejszej niż 32 GiB lub między 32 GiB do 64 GiB bez ustawiania warstwy obiektów blob, będzie można nadal korzystać z P10 z usługami 500 IOPS i 100 MiB/s oraz z zamapowanej warstwy cenowej.
 
-**Jeśli Mój istniejący zarządzanych w warstwie premium dysku z mniej niż 64 GiB został utworzony przed włączeniem małego dysku (około 15 czerwca 2017 r.), jak jest rozliczany?**
+**Jeśli mój istniejący dysk zarządzany w warstwie Premium o rozmiarze mniejszym niż 64 GiB został utworzony przed włączeniem małego dysku (około 15 czerwca 2017), jak jest rozliczany?**
 
-Istniejące premium małe dyski mniejsze niż 64 GiB w dalszym ciągu naliczane zgodnie z warstwą cenową P10.
+Istniejące dyski małego Premium mniejsze niż 64 GiB nadal są rozliczane zgodnie z warstwą cenową P10.
 
-**Jak można przełączyć warstwy dysku dysków w warstwie premium małych krótsza niż 64 GiB z P10 P4 lub P6?**
+**Jak można zmienić warstwę dysku małych dysków Premium mniejszych niż 64 GiB z P10 na P4 lub P6?**
 
-Można migawki małych dysków, a następnie utworzyć automatyczne przełączanie warstwy cenowej P4 lub P6, w zależności od rozmiaru aprowizowanego dysku.
+Możesz wykonać migawkę małych dysków, a następnie utworzyć dysk w celu automatycznego przełączenia warstwy cenowej na P4 lub P6 na podstawie rozmiaru aprowizacji.
 
-**Można zmiany rozmiaru istniejących dysków zarządzanych z rozmiarów mniej niż 4 tebibajtów (TiB) do nowych rozmiarów dysków nowo wprowadzonych do 32 TiB?**
+**Czy można zmienić rozmiar istniejących Managed Disks od rozmiaru mniejszej niż 4 tebibajtów (TiB), aby nowe nowo wprowadzone rozmiary dysku do 32 TiB?**
 
 Tak.
 
-**Co to są największych rozmiary dysków obsługiwanych przez usługę Azure Backup i Azure Site Recovery?**
+**Jakie są największe rozmiary dysków obsługiwane przez usługi Azure Backup i Azure Site Recovery?**
 
-Największy rozmiar dysku obsługiwane przez usługę Azure Backup i usługi Azure Site Recovery jest 4 TiB. Dysków większych, maksymalnie 32 TiB nie jest jeszcze dostępna.
+Największy rozmiar dysku obsługiwany przez Azure Backup i Azure Site Recovery usługi to 4 TiB. Obsługa większych dysków do 32 TiB nie jest jeszcze dostępna.
 
-**Co to jest zalecaną maszynę Wirtualną o rozmiarach większych rozmiarów dysków (> 4 TiB) dla dysków standardowych dysków Twardych i SSD w warstwie standardowa w celu osiągnięcia zoptymalizowane pod kątem operacji We/Wy i przepustowości dysku?**
+**Jakie są zalecane rozmiary maszyn wirtualnych dla większych rozmiarów dysków (> 4 TiB) dla dysków SSD w warstwie Standardowa i HDD w warstwie Standardowa w celu osiągnięcia zoptymalizowanych operacji we/wy na dysku?**
 
-Aby osiągnąć przepływność dysku SSD w warstwie standardowa i standardowych dysków Twardych dyski o dużych rozmiarach (> 4 TiB) ponad 500 operacji We/Wy i 60 MiB/s, zaleca się wdrożyć nową maszynę Wirtualną z jednej z następujących rozmiarów maszyn wirtualnych w celu zoptymalizowania wydajności: Seria B, seria DSv2 serii Dsv3, serii ESv3 serii Fs, Fsv2 serii serii M serii GS serią NCv2, seria NCv3 lub maszyny wirtualne z serii Ls. Dołączanie dużych dysków do istniejących maszyn wirtualnych lub maszyn wirtualnych, które nie korzystają z zalecanych rozmiarów powyżej może wystąpić obniżenie wydajności.
+Aby osiągnąć przepływność dysków SSD w warstwie Standardowa i HDD w warstwie Standardowa duże rozmiary dysków (> 4 TiB) poza 500 IOPS i 60 MiB/s, zalecamy wdrożenie nowej maszyny wirtualnej z jednego z następujących rozmiarów maszyn wirtualnych w celu zoptymalizowania wydajności: Maszyny wirtualne serii B, DSv2, Dsv3 serii, serii ESv3, Seria FS, Seria Fsv2, serii M, Seria GS, serie serii, Seria z serii NCv2 lub z serii LS. Dołączanie dużych dysków do istniejących maszyn wirtualnych lub maszyn wirtualnych, które nie używają zalecanych rozmiarów, może obniżyć wydajność.
 
-**Jak uaktualnić Moje dyski (> 4 TiB) które zostały wdrożone zapoznawczej większe rozmiary dysków w celu uzyskania wyższej operacje We/Wy i przepustowości w wersji ogólnie dostępnej?**
+**Jak uaktualnić moje dyski (> 4 TiB), które zostały wdrożone podczas większego rozmiaru dysku w wersji zapoznawczej w celu uzyskania większej liczby operacji we/wy & przepustowości?**
 
-Można zatrzymać i uruchomić maszynę Wirtualną, która dysk jest podłączony do lub, odłącz i ponownie podłącz dysk. Elementy docelowe wydajności większe rozmiary dysków zostały zwiększone zarówno dla dysków SSD w warstwie premium i standardowa dysków SSD na zasadach dostępności ogólnej
+Można zatrzymać i uruchomić maszynę wirtualną, do której jest dołączony dysk, lub odłączyć i ponownie dołączyć dysk. Wydajność większych rozmiarów dysków została zwiększona zarówno w przypadku wersji Premium dysków SSD, jak i standardowej dysków SSD.
 
-**Jakie regiony są rozmiary dysków zarządzanych, 8 TiB, 16 TiB i 32 TiB obsługiwane w?**
+**Których regionów są rozmiary dysków zarządzanych 8 TiB, 16 TiB i 32 TiB obsługiwane w?**
 
-8 TiB 16 TiB, 32 TiB dysków jednostek SKU i są obsługiwane we wszystkich regionach w ramach globalnej platformy Azure, Microsoft Azure dla instytucji rządowych i platformy Azure China 21Vianet.
+8 TiB, 16 TiB i 32 jednostek SKU dysku TiB są obsługiwane we wszystkich regionach w ramach globalnych platform Azure, Microsoft Azure Government i Azure Chiny 21Vianet.
 
-**Czy firma Microsoft obsługuje włączenie buforowania hosta na wszystkie rozmiary dysków**
+**Czy obsługujemy Włączanie buforowania hosta dla wszystkich rozmiarów dysków?**
 
-Firma Microsoft obsługuje hosta pamięci podręcznej z tylko do odczytu/zapisu i odczytu na rozmiary dysków mniej niż 4 TiB. W przypadku rozmiarów dysków więcej niż 4 TiB nie obsługujemy ustawiania opcji innych niż Brak buforowania. Firma Microsoft zaleca korzystanie z buforowania dla mniejsze rozmiary dysków, w których można oczekiwać, że do obserwowania lepsze zwiększeniu wydajności przy użyciu danych z pamięci podręcznej do maszyny Wirtualnej.
+Obsługiwane jest buforowanie hosta dla odczytu i odczyt/zapis na dysku o rozmiarze mniejszym niż 4 TiB. W przypadku dysków o rozmiarze ponad 4 TiB nie obsługujemy ustawiania opcji buforowania innej niż none. Zalecamy korzystanie z pamięci podręcznej w przypadku mniejszych rozmiarów dysków, w których można oczekiwać, że lepsze zwiększenie wydajności w przypadku danych zapisanych w pamięci podręcznej do maszyny wirtualnej.
 
-## <a name="what-if-my-question-isnt-answered-here"></a>Co zrobić, jeśli moje pytanie nie ma tutaj odpowiedzi?
+## <a name="what-if-my-question-isnt-answered-here"></a>Co zrobić, jeśli w tym miejscu nie udzielono odpowiedzi na moje pytanie?
 
-Jeśli Twoje pytanie nie ma na liście, Daj nam znać, a my pomożemy Ci znaleźć odpowiedzi. Możesz zadać pytanie na końcu tego artykułu w komentarzach. Aby skontaktuj się z zespołem usługi Azure Storage i inni członkowie społeczności, informacje o tym artykule, należy użyć MSDN [forum usługi Azure Storage](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
+Jeśli pytania nie ma na liście, poinformuj nas o tym, a my pomożemy Ci znaleźć odpowiedź. W komentarzach można opublikować pytanie na końcu tego artykułu. Aby skontaktować się z zespołem usługi Azure Storage i innymi członkami społeczności dotyczącymi tego artykułu, Skorzystaj z forum MSDN dla [usługi Azure Storage](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
 
-Funkcje na żądanie, przesłać żądania i pomysłów dotyczących [forum opinii w usłudze Azure Storage](https://feedback.azure.com/forums/217298-storage).
+Aby zażądać funkcji, Prześlij swoje wnioski i pomysły do [forum opinii o usłudze Azure Storage](https://feedback.azure.com/forums/217298-storage).

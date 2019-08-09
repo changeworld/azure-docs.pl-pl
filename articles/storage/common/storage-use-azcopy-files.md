@@ -1,29 +1,28 @@
 ---
-title: Transfer danych do lub z usługi Azure Files za pomocą narzędzia AzCopy v10 | Dokumentacja firmy Microsoft
-description: Transferowanie danych za pomocą narzędzia AzCopy i pliku magazynu.
-services: storage
+title: Przesyłanie danych do lub z Azure Files przy użyciu AzCopy v10 | Microsoft Docs
+description: Transferowanie danych za pomocą AzCopy i magazynu plików.
 author: normesta
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 69d7136396c3d989e63b8956d3e703cc7f9666c8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eeac35cb96f5001e9ad318d8fe03927d0cd9394e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66687937"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68844816"
 ---
-# <a name="transfer-data-with-azcopy-and-file-storage"></a>Transferowanie danych za pomocą narzędzia AzCopy oraz plików magazynu 
+# <a name="transfer-data-with-azcopy-and-file-storage"></a>Transferowanie danych za pomocą AzCopy i magazynu plików 
 
-AzCopy to narzędzie wiersza polecenia używanej do kopiowania obiektów blob lub plików, do lub z konta magazynu. Ten artykuł zawiera przykładowe polecenia, które działają z usługą Azure Files.
+AzCopy to narzędzie wiersza polecenia, które służy do kopiowania obiektów blob lub plików do lub z konta magazynu. Ten artykuł zawiera przykładowe polecenia, które współpracują z Azure Files.
 
-Przed rozpoczęciem wykonywania tej procedury, zobacz [Rozpoczynanie pracy za pomocą narzędzia AzCopy](storage-use-azcopy-v10.md) artykuł, aby pobrać narzędzia AzCopy i zapoznać się z narzędziem.
+Przed rozpoczęciem Zobacz artykuł [wprowadzenie do AzCopy](storage-use-azcopy-v10.md) w celu pobrania AzCopy i zapoznaj się z narzędziem.
 
-## <a name="create-file-shares"></a>Tworzenie udziałów plików
+## <a name="create-file-shares"></a>Utwórz udziały plików
 
-Możesz użyć narzędzia AzCopy `make` polecenie, aby utworzyć udział plików. W przykładzie w tej sekcji tworzy udział plików o nazwie `myfileshare`.
+Można użyć polecenia AzCopy `make` , aby utworzyć udział plików. W przykładzie w tej sekcji jest tworzony udział plików o `myfileshare`nazwie.
 
 |    |     |
 |--------|-----------|
@@ -32,45 +31,45 @@ Możesz użyć narzędzia AzCopy `make` polecenie, aby utworzyć udział plików
 
 ## <a name="upload-files"></a>Przekazywanie plików
 
-Możesz użyć narzędzia AzCopy `copy` polecenie, aby przekazać pliki i katalogi z komputera lokalnego.
+Aby przekazać pliki i katalogi `copy` z komputera lokalnego, można użyć polecenia AzCopy.
 
 Ta sekcja zawiera następujące przykłady:
 
 > [!div class="checklist"]
-> * Przekazywanie pliku
-> * Przekaż katalogu
+> * Przekaż plik
+> * Przekaż katalog
 > * Przekazywanie plików przy użyciu symboli wieloznacznych
 
 > [!NOTE]
-> Narzędzie AzCopy nie automatycznie obliczyć i Zapisz wartość skrótu md5 pliku. Jeśli narzędzie AzCopy, aby to zrobić, należy następnie dołącz `--put-md5` Flaga każdego polecenia Kopiuj. W ten sposób podczas pobierania pliku narzędzia AzCopy oblicza Skrót MD5 dla pobranych danych i sprawdza, czy skrót MD5 przechowywane w pliku `Content-md5` właściwość odpowiada skrót obliczony.
+> AzCopy nie oblicza automatycznie ani nie zapisuje kodu skrótu MD5 pliku. Jeśli chcesz, aby AzCopy to zrobić, Dodaj `--put-md5` flagę do poszczególnych poleceń kopiowania. Dzięki temu, gdy plik zostanie pobrany, AzCopy oblicza skrót MD5 dla pobranych danych i sprawdza, czy skrót MD5 przechowywany we `Content-md5` właściwości pliku jest zgodny z obliczonym skrótem.
 
-### <a name="upload-a-file"></a>Przekazywanie pliku
+### <a name="upload-a-file"></a>Przekaż plik
 
 |    |     |
 |--------|-----------|
 | **Składnia** | `azcopy cp "<local-file-path>" "https://<storage-account-name>.file.core.windows.net/<file-share-name>/<file-name>?<SAS-token>"` |
 | **Przykład** | `azcopy copy "C:\myDirectory\myTextFile.txt" "https://mystorageaccount.file.core.windows.net/myfileshare/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D"` |
 
-### <a name="upload-a-directory"></a>Przekaż katalogu
+### <a name="upload-a-directory"></a>Przekaż katalog
 
-W tym przykładzie kopiuje katalog (i wszystkich plików w tym katalogu) do udziału plików. Wynik jest katalogiem w udziale plików o tej samej nazwie.
+Ten przykład kopiuje katalog (i wszystkie pliki w tym katalogu) do udziału plików. Wynik jest katalogiem w udziale plików o tej samej nazwie.
 
 |    |     |
 |--------|-----------|
 | **Składnia** | `azcopy copy "<local-directory-path>" "https://<storage-account-name>.file.core.windows.net/<file-share-name>?<SAS-token>" --recursive` |
 | **Przykład** | `azcopy copy "C:\myDirectory" "https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" --recursive` |
 
-Aby skopiować do katalogu w udziale plików, określ nazwę tego katalogu w ciągu polecenia.
+Aby skopiować do katalogu w udziale plików, po prostu podaj nazwę tego katalogu w ciągu polecenia.
 
 |    |     |
 |--------|-----------|
 | **Przykład** | `azcopy copy "C:\myDirectory" "https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" --recursive` |
 
-Jeśli określisz nazwę katalogu, który nie istnieje w udziale plików, narzędzia AzCopy tworzy nowy katalog o tej nazwie.
+W przypadku określenia nazwy katalogu, który nie istnieje w udziale plików, AzCopy tworzy nowy katalog o tej nazwie.
 
-### <a name="upload-the-contents-of-a-directory"></a>Przekazywanie zawartości katalogu
+### <a name="upload-the-contents-of-a-directory"></a>Przekaż zawartość katalogu
 
-Możesz przekazać zawartość katalogu bez kopiowania sam katalog zawierający za pomocą symbolu wieloznacznego (*).
+Zawartość katalogu można przekazać bez kopiowania samego katalogu zawierającego symbol wieloznaczny (*).
 
 |    |     |
 |--------|-----------|
@@ -78,23 +77,23 @@ Możesz przekazać zawartość katalogu bez kopiowania sam katalog zawierający 
 | **Przykład** | `azcopy copy "C:\myDirectory\*" "https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D"` |
 
 > [!NOTE]
-> Dołącz `--recursive` flagi, aby przekazać pliki we wszystkich katalogach podrzędnych.
+> `--recursive` Dołącz flagę do przekazywania plików we wszystkich podkatalogach.
 
 ## <a name="download-files"></a>Pobieranie plików
 
-Możesz użyć narzędzia AzCopy `copy` polecenie, aby pobrać pliki, katalogów i plików udziałów na komputerze lokalnym.
+Można użyć polecenia AzCopy `copy` , aby pobrać pliki, katalogi i udziały plików na komputer lokalny.
 
 Ta sekcja zawiera następujące przykłady:
 
 > [!div class="checklist"]
-> * Pobieranie pliku
+> * Pobierz plik
 > * Pobierz katalog
 > * Pobieranie plików przy użyciu symboli wieloznacznych
 
 > [!NOTE]
-> Jeśli `Content-md5` wartość właściwości pliku zawiera skrót, narzędzia AzCopy oblicza Skrót MD5 dla pobranych danych i sprawdza, czy skrót MD5 przechowywane w pliku `Content-md5` właściwość odpowiada skrót obliczony. Jeśli te wartości nie są zgodne, pliki do pobrania zakończy się niepowodzeniem, chyba że zastąpienia tego zachowania, dodając `--check-md5=NoCheck` lub `--check-md5=LogOnly` do polecenia Kopiuj.
+> Jeśli wartość `Content-md5` właściwości pliku zawiera skrót, AzCopy oblicza skrót MD5 dla pobranych danych i sprawdza, czy skrót MD5 przechowywany we właściwości pliku jest zgodny z obliczonym skrótem. `Content-md5` Jeśli te wartości nie są zgodne, pobieranie nie powiedzie się, o ile nie zastąpisz tego zachowania przez dołączenie `--check-md5=NoCheck` lub `--check-md5=LogOnly` do polecenia copy.
 
-### <a name="download-a-file"></a>Pobieranie pliku
+### <a name="download-a-file"></a>Pobierz plik
 
 |    |     |
 |--------|-----------|
@@ -108,11 +107,11 @@ Ta sekcja zawiera następujące przykłady:
 | **Składnia** | `azcopy copy "https://<storage-account-name>.file.core.windows.net/<file-share-name>/<directory-path>?<SAS-token>" "<local-directory-path>" --recursive` |
 | **Przykład** | `azcopy copy "https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" "C:\myDirectory"  --recursive` |
 
-Ten przykład powoduje zwrócenie katalog o nazwie `C:\myDirectory\myFileShareDirectory` zawierający wszystkie pobrane pliki.
+Ten przykład powoduje, że katalog o `C:\myDirectory\myFileShareDirectory` nazwie zawiera wszystkie pobrane pliki.
 
-### <a name="download-the-contents-of-a-directory"></a>Pobieranie zawartości katalogu
+### <a name="download-the-contents-of-a-directory"></a>Pobierz zawartość katalogu
 
-Bez kopiowania sam katalog zawierający za pomocą symbolu wieloznacznego (*), można pobrać zawartości katalogu.
+Zawartość katalogu można pobrać bez kopiowania samego katalogu zawierającego symbol wieloznaczny (*).
 
 |    |     |
 |--------|-----------|
@@ -120,16 +119,16 @@ Bez kopiowania sam katalog zawierający za pomocą symbolu wieloznacznego (*), m
 | **Przykład** | `azcopy copy "https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory/*?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" "C:\myDirectory"` |
 
 > [!NOTE]
-> Dołącz `--recursive` flagę, aby pobrać pliki we wszystkich katalogach podrzędnych.
+> `--recursive` Dołącz flagę do pobierania plików we wszystkich podkatalogach.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Znajdź więcej przykładów w dowolnym z następujących artykułów:
+Więcej przykładów znajdziesz w jednym z następujących artykułów:
 
-- [Rozpoczynanie pracy za pomocą narzędzia AzCopy](storage-use-azcopy-v10.md)
+- [Wprowadzenie do AzCopy](storage-use-azcopy-v10.md)
 
-- [Transferowanie danych za pomocą narzędzia AzCopy i blob storage](storage-use-azcopy-blobs.md)
+- [Transferowanie danych za pomocą AzCopy i magazynu obiektów BLOB](storage-use-azcopy-blobs.md)
 
-- [Transferowanie danych za pomocą narzędzia AzCopy i Amazon S3 przedziałów](storage-use-azcopy-s3.md)
+- [Transferowanie danych za pomocą zasobników AzCopy i Amazon S3](storage-use-azcopy-s3.md)
 
-- [Konfigurowanie optymalizacji i rozwiązywanie problemów z narzędzia AzCopy](storage-use-azcopy-configure.md)
+- [Konfigurowanie, optymalizowanie i rozwiązywanie problemów z AzCopy](storage-use-azcopy-configure.md)

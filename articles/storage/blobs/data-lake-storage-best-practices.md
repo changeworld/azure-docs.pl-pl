@@ -1,20 +1,19 @@
 ---
 title: Najlepsze rozwiązania dotyczące korzystania z Azure Data Lake Storage Gen2 | Microsoft Docs
 description: Zapoznaj się z najlepszymi rozwiązaniami dotyczącymi pozyskiwania danych, bezpieczeństwa i wydajności związanych z używaniem Azure Data Lake Storage Gen2 (wcześniej znanych jako Azure Data Lake Store)
-services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: c1a298584b2444d52f84c0e599462bc26c63a898
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 630d8f64b39888533aff4847dec64fa50fc43d7e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302617"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855588"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Najlepsze rozwiązania dotyczące korzystania z Azure Data Lake Storage Gen2
 
@@ -90,7 +89,7 @@ Istnieje istotny powód, aby umieścić datę na końcu struktury katalogów. Je
 
 Na wysokim poziomie często stosowane podejście do przetwarzania wsadowego polega na wykorzystaniu danych w katalogu "in". Następnie, po przetworzeniu danych, należy umieścić nowe dane w katalogu "out" dla procesów podrzędnych do użycia. Ta struktura katalogów jest czasami widoczna dla zadań wymagających przetwarzania poszczególnych plików i może nie wymagać masowego przetwarzania równoległego w dużych zestawach danych. Podobnie jak w przypadku zalecanej struktury IoT, dobrą strukturą katalogów są katalogi poziomu nadrzędnego dla elementów, takich jak region i zagadnienia dotyczące tematu (na przykład organizacja, produkt/producent). Ta struktura ułatwia zabezpieczanie danych w organizacji i lepsze zarządzanie danymi w obciążeniach. Ponadto należy rozważyć datę i godzinę w strukturze, aby umożliwić lepszą organizację, wyszukiwanie filtrowane, zabezpieczenia i automatyzację w przetwarzaniu. Poziom szczegółowości dla struktury daty zależy od interwału, w którym dane są przekazywane lub przetwarzane, na przykład co godzinę, codziennie lub nawet miesięcznie.
 
-Czasami przetwarzanie plików nie powiedzie się z powodu uszkodzenia danych lub nieoczekiwanych formatów. W takich przypadkach struktura katalogów może korzystać z folderu **/Bad** , aby przenieść pliki do dalszej inspekcji. Zadanie usługi Batch może także obsłużyć raportowanie lub powiadomienie o  tych nieprawidłowych plikach w ramach interwencji ręcznej. Weź pod uwagę następującą strukturę szablonów:
+Czasami przetwarzanie plików nie powiedzie się z powodu uszkodzenia danych lub nieoczekiwanych formatów. W takich przypadkach struktura katalogów może korzystać z folderu **/Bad** , aby przenieść pliki do dalszej inspekcji. Zadanie usługi Batch może także obsłużyć raportowanie lub powiadomienie o tych nieprawidłowych plikach w ramach interwencji ręcznej. Weź pod uwagę następującą strukturę szablonów:
 
     {Region}/{SubjectMatter(s)}/In/{yyyy}/{mm}/{dd}/{hh}/
     {Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/

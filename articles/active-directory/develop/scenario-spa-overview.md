@@ -1,6 +1,6 @@
 ---
-title: Omówienie scenariusza aplikacji jednostronicowej JavaScript — platforma tożsamości firmy Microsoft
-description: Informacje o sposobie tworzenia aplikacji jednostronicowych (omówienie scenariusza), która integruje się z platformą Microsoft identity.
+title: Omówienie scenariusza aplikacji obsługujących skrypty JavaScript — Microsoft Identity platform
+description: Dowiedz się, jak utworzyć aplikację jednostronicową (omówienie scenariusza), która integruje platformę tożsamości firmy Microsoft.
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07a21e83f304f3e1acc0ed4033d832dd8e901ac9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c3c4e671473ff6c6fecdc13fe61dbde1d3fb3809
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65076363"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852513"
 ---
 # <a name="scenario-single-page-application"></a>Scenariusz: Aplikacja jednostronicowa
 
-Dowiedz się, wszystko, czego potrzebujesz do tworzenia aplikacji jednostronicowej (SPA).
+Dowiedz się wszystkiego, co musisz zrobić, aby skompilować aplikację jednostronicową (SPA).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -32,28 +32,28 @@ Dowiedz się, wszystko, czego potrzebujesz do tworzenia aplikacji jednostronicow
 
 ## <a name="getting-started"></a>Wprowadzenie
 
-Można utworzyć swoją pierwszą aplikację, postępując zgodnie z tego przewodnika Szybki Start JavaScript SPA:
+Możesz utworzyć swoją pierwszą aplikację, postępując zgodnie z przewodnikiem Autostart JavaScript:
 
 > [!div class="nextstepaction"]
 > [Szybki start: Aplikacja jednostronicowa](./quickstart-v2-javascript.md)
 
 ## <a name="overview"></a>Omówienie
 
-Wiele nowoczesnych aplikacji sieci web są tworzone w aplikacji jednostronicowej po stronie klienta, napisane przy użyciu języka JavaScript lub SPA framework, takich jak Angular, Vue.js i React.js. Te aplikacje działają w przeglądarce sieci web i mają właściwości uwierzytelniania innego niż tradycyjne po stronie serwera sieci web aplikacji. Platforma tożsamości firmy Microsoft umożliwia aplikacji jednej strony logowania użytkowników i uzyskiwanie tokenów dostępu do usług zaplecza lub interfejsów API sieci web przy użyciu [niejawnego przepływu OAuth 2.0](./v2-oauth2-implicit-grant-flow.md). Niejawny przepływ umożliwia aplikacji w celu uzyskania tokenów Identyfikatora reprezentują uwierzytelnionego użytkownika, a także dostęp do tokenów potrzebnych do wywoływania interfejsów API chronionego.
+Wiele nowoczesnych aplikacji sieci Web jest zbudowanych jako aplikacje jednostronicowe po stronie klienta, które są zapisywane przy użyciu języka JavaScript lub środowiska SPA, takiego jak kątowy, Vue. js i reaguje. js. Aplikacje te działają w przeglądarce internetowej i mają różne cechy uwierzytelniania niż tradycyjne aplikacje sieci Web po stronie serwera. Platforma tożsamości firmy Microsoft umożliwia aplikacjom jednostronicowym Logowanie użytkowników i uzyskiwanie tokenów w celu uzyskania dostępu do usług zaplecza lub interfejsów API sieci Web przy użyciu niejawnego [przepływu OAuth 2,0](./v2-oauth2-implicit-grant-flow.md). Niejawny przepływ umożliwia aplikacji uzyskanie tokenów identyfikatora reprezentujących uwierzytelnionego użytkownika, a także dostęp do tokenów wymaganych do wywołania chronionych interfejsów API.
 
-![Aplikacje jednej strony](./media/scenarios/spa-app.svg)
+![Aplikacje jednostronicowe](./media/scenarios/spa-app.svg)
 
-Ten przebieg uwierzytelniania nie obejmuje scenariusze aplikacji przy użyciu platform JavaScript dla wielu platform, takich jak elektronów, React Native i tak dalej. ponieważ wymagają one więcej możliwości interakcji z natywnych platform.
+Ten przepływ uwierzytelniania nie obejmuje scenariuszy aplikacji wykorzystujących Międzyplatformowe platformy JavaScript, takie jak elektron, reagowanie na działania i tak dalej. ponieważ wymagają one dalszych możliwości interakcji z natywnymi platformami.
 
-## <a name="specifics"></a>Szczegółowe informacje
+## <a name="specifics"></a>Szczegółowych informacji
 
-Następujące aspekty są wymagane do realizacji tego scenariusza aplikacji:
+Aby włączyć ten scenariusz dla aplikacji, wymagane są następujące aspekty:
 
-* Rejestrowanie aplikacji w usłudze Azure AD obejmuje włączenie niejawny przepływ i ustawienia identyfikatora URI przekierowania, do którego są zwracane tokenów.
-* Konfiguracja aplikacji za pomocą właściwości zarejestrowanej aplikacji, takie jak identyfikator aplikacji.
-* Czy przepływu autoryzacji logować się i uzyskać tokeny przy użyciu biblioteki MSAL.
+* Rejestracja aplikacji w usłudze Azure AD obejmuje włączenie niejawnego przepływu i ustawienie identyfikatora URI przekierowania, do którego zwracane są tokeny.
+* Konfiguracja aplikacji ze zarejestrowanymi właściwościami aplikacji, takimi jak identyfikator aplikacji.
+* Używanie biblioteki MSAL do wykonywania przepływu uwierzytelniania w celu logowania i uzyskiwania tokenów.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Rejestrowanie aplikacji](scenario-spa-app-registration.md)

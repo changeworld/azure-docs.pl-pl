@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 1c12007e04ff8cd08ddb7afdf9a3c2add9638de3
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: d8e80594e0c56f57527d1703b0cf1323571cf351
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277445"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855705"
 ---
 # <a name="monitor-performance-and-storage-metrics-in-azure-cosmos-db"></a>Monitoruj metryki wydajności i magazynu w usłudze Azure Cosmos DB
 
@@ -50,7 +50,7 @@ Metryki można wyświetlić na stronie konta nową stronę metryk lub w usłudze
 ## <a name="set-up-alerts-in-the-portal"></a>Konfigurowanie alertów w portalu
 
 > [!NOTE]
-> Klasyczne alerty w Azure Monitor zostaną wycofane 31 sierpnia 2019. Azure Portal oferuje [Narzędzie migracji](../azure-monitor/platform/alerts-using-migration-tool.md) do migracji klasycznych reguł alertów. Nie można jednak migrować wszystkich klasycznych alertów dotyczących metryk Azure Cosmos DB, ale istnieją pewne wyjątki, zobacz artykuł dotyczący [usługi Azure monitor](../azure-monitor/platform/alerts-understand-migration.md#cosmos-db-metrics) , aby uzyskać listę alertów klasycznych, których nie można zmigrować. 
+> Klasyczne alerty w Azure Monitor zostaną wycofane wkrótce. Azure Portal oferuje [Narzędzie migracji](../azure-monitor/platform/alerts-using-migration-tool.md) do migracji klasycznych reguł alertów. Nie można jednak migrować wszystkich alertów klasycznych dotyczących metryk Azure Cosmos DB, ale istnieją pewne wyjątki, zobacz artykuł dotyczący [usługi Azure monitor](../azure-monitor/platform/alerts-understand-migration.md#cosmos-db-metrics) , aby uzyskać listę alertów klasycznych, których nie można zmigrować. 
 
 1. W [witryny Azure portal](https://portal.azure.com/), kliknij przycisk **wszystkich usług**, kliknij przycisk **usługi Azure Cosmos DB**, a następnie kliknij nazwę konta usługi Azure Cosmos DB, dla której chcesz skonfigurować wydajności alerty metryki.
 2. W menu zasobów kliknij pozycję **reguł alertów** aby otworzyć stronę reguł alertów.  

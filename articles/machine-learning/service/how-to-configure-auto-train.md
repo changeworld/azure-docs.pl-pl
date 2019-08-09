@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5dee966f8664bc14d81004e625ad9632066ffcb2
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: adca67152c33f4c6a3ec272b63c4c8157a777f36
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742304"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856186"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurowanie zautomatyzowanych eksperymentów ML w języku Python
 
@@ -215,6 +215,9 @@ Metryka podstawowa; jak pokazano w powyższych przykładach, określa metrykę, 
 W każdym automatycznym doświadczeniu uczenia maszynowego Twoje dane są [automatycznie skalowane i znormalizowane](concept-automated-ml.md#preprocess) w celu zapewnienia prawidłowego wykonywania algorytmów.  Można jednak włączyć dodatkowe przetwarzanie wstępne/cechowania, na przykład brakujące wartości, które nie przypisywania, kodowania i transformacji. [Dowiedz się więcej na temat tego, co obejmuje cechowania](how-to-create-portal-experiments.md#preprocess).
 
 Aby włączyć tę cechowania, określ `"preprocess": True` [ `AutoMLConfig` dla klasy](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
+
+> [!NOTE]
+> Zautomatyzowane kroki wstępnego przetwarzania w usłudze Machine Learning (normalizacja funkcji, obsługa brakujących danych, konwertowanie tekstu na liczbowe itp.) staje się częścią modelu źródłowego. Przy użyciu modelu dla prognoz te same kroki przetwarzania wstępnego zastosowane podczas uczenia są automatycznie stosowane do danych wejściowych.
 
 ### <a name="time-series-forecasting"></a>Prognozowanie szeregów czasowych
 W przypadku typu zadania prognozowania szeregów czasowych masz dodatkowe parametry do zdefiniowania.

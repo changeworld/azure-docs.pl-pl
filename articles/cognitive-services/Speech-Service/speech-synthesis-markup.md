@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 1bd1882218630aca0707a792d120045c06dea127
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 89b8b5f8c574de033fabf6861e24fc7d2b31e171
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552676"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855100"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>Język znaczników syntezy mowy (SSML)
 
@@ -134,7 +134,7 @@ Zmiany są stosowane na poziomie zdania i stylu różnią się w zależności od
 
 | Atrybut | Opis | Wymagane / opcjonalne |
 |-----------|-------------|---------------------|
-| type | Określa styl wymawiania. Obecnie style głosu są specyficzne dla głosu. | Wymagane, jeśli ustawienie stylu wymawiania dla głosu neuronowych. Jeśli używasz `mstts:express-as`, należy podać typ. Jeśli podano nieprawidłową wartość, ten element zostanie zignorowany. |
+| — typ | Określa styl wymawiania. Obecnie style głosu są specyficzne dla głosu. | Wymagane, jeśli ustawienie stylu wymawiania dla głosu neuronowych. Jeśli używasz `mstts:express-as`, należy podać typ. Jeśli podano nieprawidłową wartość, ten element zostanie zignorowany. |
 
 Użyj tej tabeli, aby określić, które style wymawiające są obsługiwane dla każdego głosu neuronowych.
 
@@ -413,8 +413,8 @@ Dozwolony jest tylko jeden plik audio w tle dla dokumentu SSML. Można jednak pr
 |-----------|-------------|---------------------|
 | SRC | Określa lokalizację/adres URL pliku dźwiękowego w tle. | Wymagany w przypadku używania dźwięku w tle w dokumencie SSML. |
 | wolumin | Określa wolumin pliku dźwiękowego w tle. **Akceptowane wartości**: `0` do `100` włącznie. Wartość domyślna to `1`. | Optional |
-| Rozjaśnianie | Określa czas trwania zanikania dźwięku w tle w programie. **Akceptowane wartości**: `0` do `10000` włącznie.  | Optional |
-| fadeout | Określa czas trwania zanikania dźwięku w tle. **Akceptowane wartości**: `0` do `10000` włącznie.  | Optional |
+| Rozjaśnianie | Określa czas zanikania dźwięku w tle w milisekundach. Wartość domyślna to `0`, która jest równoważna brak zanikania w. **Akceptowane wartości**: `0` do `10000` włącznie.  | Optional |
+| fadeout | Określa czas zanikania dźwięku w tle w milisekundach. Wartość domyślna to `0`, która jest równoważna brak zanikania. **Akceptowane wartości**: `0` do `10000` włącznie.  | Optional |
 
 **Przykład**
 

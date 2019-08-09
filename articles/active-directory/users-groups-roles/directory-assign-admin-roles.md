@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e139b274ab8a1f7d91d46ec56171b84db4f5025e
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: a4d692110a304cbfbbfda69bb2b10e3a065b2450
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812830"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851522"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Uprawnienia roli administratora w Azure Active Directory
 
@@ -159,7 +159,7 @@ Dostępne są następujące role administratorów:
   * Czytelnik Centrum wiadomości
   * Czytelnik raportów
   
-  <b>Ważne</b>: Użytkownicy z tą rolą mogą zmieniać hasła dla osób, które mogą mieć dostęp do poufnych lub prywatnych informacji lub konfiguracji krytycznej wewnątrz i na zewnątrz Azure Active Directory. Zmiana hasła użytkownika może oznaczać, że założono, że tożsamość i uprawnienia tego użytkownika. Na przykład:
+  <b>Ważne</b>: Użytkownicy z tą rolą mogą zmieniać hasła dla osób, które mogą mieć dostęp do poufnych lub prywatnych informacji lub konfiguracji krytycznej wewnątrz i na zewnątrz Azure Active Directory. Zmiana hasła użytkownika może oznaczać, że założono, że tożsamość i uprawnienia tego użytkownika. Przykład:
   * Rejestracja aplikacji i właściciele aplikacji przedsiębiorstwa, którzy mogą zarządzać poświadczeniami aplikacji, których są właścicielami. Aplikacje te mogą mieć uprawnienia uprzywilejowane w usłudze Azure AD i nie są przyznawane administratorom pomocy technicznej. Za pomocą tej ścieżki Administrator pomocy technicznej może być w stanie założyć tożsamość właściciela aplikacji, a następnie ponownie założyć tożsamość aplikacji uprzywilejowanej przez zaktualizowanie poświadczeń dla aplikacji.
   * Właściciele subskrypcji platformy Azure, którzy mogą mieć dostęp do poufnych lub prywatnych informacji lub konfiguracji krytycznej na platformie Azure.
   * Grupa zabezpieczeń i właściciele grupy Office 365, którzy mogą zarządzać członkostwem w grupie. Te grupy mogą udzielić dostępu do poufnych lub prywatnych informacji lub konfiguracji krytycznej w usłudze Azure AD i w innym miejscu.
@@ -200,9 +200,7 @@ Ponadto użytkownik może uzyskiwać dostęp do raportów związanych z wdrażan
   > [!NOTE]
   > W Microsoft Graph interfejsie API usługi Azure AD interfejs API programu Graph i Azure AD PowerShell ta rola jest identyfikowana jako "administrator usługi Power BI. W [Azure Portal](https://portal.azure.com)jest "Power BI administrator".
 
-* **[Administrator uprzywilejowanego uwierzytelniania](#privileged-authentication-administrator)** : Użytkownicy z tą rolą mogą ustawiać lub resetować poświadczenia bez hasła dla wszystkich użytkowników, w tym administratorów globalnych, a także aktualizować hasła dla wszystkich użytkowników. Administratorzy uprzywilejowanego uwierzytelniania mogą zmusić użytkowników do ponownego zarejestrowania istniejących poświadczeń niezwiązanych z hasłem (np. MFA, FIDO) i odwołać "Zapamiętaj usługę MFA na urządzeniu", monitując o usługę MFA przy następnym logowaniu wszystkich użytkowników. Administratorzy uprzywilejowanego uwierzytelniania mogą:
-  * Wymuś ponowne zarejestrowanie się użytkowników przed istniejącymi poświadczeniami niebędącymi hasłami (np. MFA, FIDO)
-  * Odwołaj opcję "Zapamiętaj usługę MFA na urządzeniu", monitując o usługę MFA przy następnym logowaniu
+* **[Administrator uprzywilejowanego uwierzytelniania](#privileged-authentication-administrator)** : Użytkownicy z tą rolą mogą ustawiać lub resetować poświadczenia bez hasła dla wszystkich użytkowników, w tym administratorów globalnych, a także aktualizować hasła dla wszystkich użytkowników. Administratorzy uprzywilejowanego uwierzytelniania mogą zmusić użytkowników do ponownego zarejestrowania istniejących poświadczeń niezwiązanych z hasłem (np. MFA, FIDO) i odwołać "Zapamiętaj usługę MFA na urządzeniu", monitując o usługę MFA przy następnym logowaniu wszystkich użytkowników.
 
 * **[Administrator ról uprzywilejowanych](#privileged-role-administrator)** : Użytkownicy z tą rolą mogą zarządzać przypisaniami ról w Azure Active Directory, a także w Azure AD Privileged Identity Management. Ponadto ta rola umożliwia zarządzanie wszystkimi aspektami Privileged Identity Management i jednostek administracyjnych.
 

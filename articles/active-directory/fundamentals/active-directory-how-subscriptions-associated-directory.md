@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a64bad11f5b83ddd7f6d7236ffed4ff4a6e39c2c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fb4fa92d8b3c174cdf9b3695f8564cc11c1ad291
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561864"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851747"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Skojarzyć lub dodać subskrypcję platformy Azure z dzierżawą usługi Azure Active Directory
 
@@ -66,7 +66,7 @@ Zanim można skojarzyć lub dodać subskrypcję, należy wykonać następujące 
     Zmianie katalogu subskrypcji, i otrzymujesz komunikat o powodzeniu.
 
     ![Komunikat o powodzeniu zmiany katalogu](media/active-directory-how-subscriptions-associated-directory/edit-directory-success.png)
-4. Użyj przełącznika **katalogu** , aby przejść do nowego katalogu. Poprawne wyświetlanie wszystkiego może potrwać kilka godzin. Jeśli wydaje się, że trwa zbyt długo, upewnij się, że zaznaczono **globalny filtr subskrypcji** dla przeniesionej subskrypcji, aby upewnić się, że nie jest on po prostu ukryty.
+4. Użyj przełącznika **katalogu** , aby przejść do nowego katalogu. Poprawne wyświetlanie wszystkiego może potrwać kilka godzin. Jeśli wydaje się, że trwa zbyt długo, sprawdź globalną subskrypcję **filtru** dla przeniesionej subskrypcji, aby upewnić się, że nie jest ukryta. Może być konieczne wylogowanie się z Azure Portal i ponowne zalogowanie się, aby można było zobaczyć nowy katalog. 
 
     ![Strona przełączników katalogów z przykładowymi informacjami](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 
