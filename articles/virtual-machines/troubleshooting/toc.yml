@@ -65,13 +65,19 @@
       href: detailed-troubleshoot-ssh-connection.md
 - name: Typowe komunikaty o błędach
   href: error-messages.md
-- name: Problemy z wydajnością maszyn wirtualnych z systemem Windows
+- name: Problemy z wydajnością maszyn wirtualnych
   href: performance-diagnostics.md
   items:
-    - name: Korzystanie z narzędzia PerfInsights
-      href: how-to-use-perfInsights.md
-    - name: Rozszerzenie do diagnostyki wydajności
-      href: performance-diagnostics-vm-extension.md
+    - name: Windows
+      items:
+        - name: Korzystanie z narzędzia PerfInsights
+          href: how-to-use-perfinsights.md
+        - name: Rozszerzenie do diagnostyki wydajności
+          href: performance-diagnostics-vm-extension.md
+    - name: Linux
+      items:
+        - name: Korzystanie z narzędzia PerfInsights
+          href: how-to-use-perfinsights-linux.md
 - name: Instalowanie agenta maszyny wirtualnej z systemem Windows w trybie offline
   href: install-vm-agent-offline.md
 - name: Ponowne wdrażanie maszyny wirtualnej

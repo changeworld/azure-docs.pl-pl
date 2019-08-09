@@ -60,6 +60,8 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2090370'
         - name: Node.js
           href: 'https://go.microsoft.com/fwlink/?linkid=2090788'
+    - name: Artykuł na temat algorytmu SR-CNN z konferencji KDD 2019
+      href: 'https://arxiv.org/abs/1906.03821'
 - name: Zasoby
   items:
     - name: Cennik
