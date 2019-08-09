@@ -56,7 +56,7 @@ Podobnie jak w przypadku dowolnego rozwiązania magazynu, staranna ocena wydajno
 StorSimple zaprojektowano w celu zapewnienia magazynu dla aplikacji, które działają na dobrze zdefiniowanym zestawie roboczym danych (gorącą dane). W tym modelu zestaw roboczy danych jest przechowywany w warstwach lokalnych, a pozostała część danych niepracujących/zimnych/zarchiwizowanych jest warstwą w chmurze. Ten model jest reprezentowany na poniższej ilustracji. Prawie płaski zielony wiersz reprezentuje dane przechowywane w warstwach lokalnych urządzenia StorSimple. Czerwona linia reprezentuje łączną ilość danych przechowywanych w rozwiązaniu StorSimple we wszystkich warstwach. Odstęp między płaską zieloną linią a wykładniczą czerwoną krzywą reprezentuje łączną ilość danych przechowywanych w chmurze.
 
 
-Diagram warstwowy![StorSimple warstw StorSimple](./media/storsimple-configure-backup-target-using-netbackup/image1.jpg)
+![Diagram warstwowy StorSimple warstw StorSimple](./media/storsimple-configure-backup-target-using-netbackup/image1.jpg)
 
 W tej architekturze należy zauważyć, że StorSimple idealnie nadaje się do działania jako miejsce docelowe kopii zapasowej. Możesz użyć StorSimple, aby:
 -   Wykonaj najczęstsze przywracanie z lokalnego zestawu roboczego danych.
