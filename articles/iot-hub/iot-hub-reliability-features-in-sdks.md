@@ -1,100 +1,100 @@
 ---
-title: Jak zarządzać łączności i niezawodna obsługa komunikatów za pomocą zestawów SDK urządzeń Azure IoT Hub
-description: Dowiedz się, jak poprawić łączności urządzeń i funkcji komunikatów przy użyciu zestawów SDK urządzeń Azure IoT Hub
+title: Jak zarządzać łącznością i niezawodną obsługą komunikatów przy użyciu zestawów SDK urządzeń IoT Hub platformy Azure
+description: Dowiedz się, jak ulepszyć łączność i komunikaty urządzeń przy użyciu zestawów SDK urządzeń usługi Azure IoT Hub
 services: iot-hub
-author: yzhong94
-ms.author: yizhon
+author: robinsh
+ms.author: robinsh
 ms.date: 07/07/2018
 ms.topic: article
 ms.service: iot-hub
-ms.openlocfilehash: 838d0cd4f40666bc3fced22a607b9f94f27b08d3
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: e881dffbd1f286047ffcff226eb3dede7a138a0c
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67535498"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884339"
 ---
-# <a name="manage-connectivity-and-reliable-messaging-by-using-azure-iot-hub-device-sdks"></a>Zarządzanie łącznością i niezawodna obsługa komunikatów za pomocą zestawów SDK urządzeń Azure IoT Hub
+# <a name="manage-connectivity-and-reliable-messaging-by-using-azure-iot-hub-device-sdks"></a>Zarządzanie łącznością i niezawodną obsługą komunikatów przy użyciu zestawów SDK urządzeń IoT Hub platformy Azure
 
-Ten artykuł zawiera ogólne wskazówki ułatwiające projektowanie aplikacji urządzenia, które są bardziej odporne na błędy. Prezentuje sposób korzystać z łączności i niezawodne funkcje obsługi komunikatów w zestawy SDK urządzeń Azure IoT. Celem tego przewodnika jest pomocne w zarządzaniu w następujących scenariuszach:
+Ten artykuł zawiera wskazówki wysokiego poziomu ułatwiające projektowanie aplikacji urządzeń, które są bardziej odporne na błędy. Pokazano, jak korzystać z funkcji łączności i niezawodnej obsługi komunikatów w zestawach SDK urządzeń Azure IoT. Celem tego przewodnika jest ułatwienie zarządzania następującymi scenariuszami:
 
-* Naprawianie połączenia sieciowego
+* Naprawianie porzuconego połączenia sieciowego
 
-* Przełączanie między różnych połączeń sieciowych
+* Przełączanie między różnymi połączeniami sieciowymi
 
-* Ponowne nawiązywanie połączenia z powodu błędów przejściowych połączenia usługi
+* Ponowne łączenie z powodu błędów przejściowych połączeń usługi
 
-Szczegóły implementacji, zależy od języka. Aby uzyskać więcej informacji zobacz dokumentację interfejsu API lub określonego zestawu SDK:
+Szczegóły implementacji mogą się różnić w zależności od języka. Aby uzyskać więcej informacji, zobacz dokumentację interfejsu API lub konkretny zestaw SDK:
 
-* [C/Python/iOS SDK](https://github.com/azure/azure-iot-sdk-c)
+* [Zestaw SDK języka C/Python/iOS](https://github.com/azure/azure-iot-sdk-c)
 
-* [Zestaw SDK platformy .NET](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/devdoc/requirements/retrypolicy.md)
+* [Zestaw SDK platformy .NET](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/devdoc/retrypolicy.md)
 
 * [Zestaw SDK Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/devdoc/requirement_docs/com/microsoft/azure/iothub/retryPolicy.md)
 
-* [Węzeł zestawu SDK](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them)
+* [Zestaw SDK węzła](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them)
 
 ## <a name="designing-for-resiliency"></a>Projektowanie pod kątem odporności
 
-Urządzenia IoT często polegają na — ciągły lub niestabilny połączeń sieciowych (na przykład GSM lub satelity). Gdy urządzenia interakcji z usługami w chmurze z powodu sporadycznych usługi dostępności i poziom infrastrukturą lub przejściowe błędy mogą wystąpić błędy. Aplikację, która działa na urządzeniu musi zarządzać mechanizmy połączenia, ponowne połączenie i Logika ponawiania do wysyłania i odbierania komunikatów. Ponadto wymagania strategii ponawiania prób zależą od intensywnie scenariusz IoT urządzenia, kontekst, możliwości.
+Urządzenia IoT często korzystają z nieciągłych lub niestabilnych połączeń sieciowych (na przykład GSM lub satelity). Błędy mogą wystąpić, gdy urządzenia współpracują z usługami w chmurze z powodu sporadycznej dostępności usługi i poziomu infrastruktury lub błędów przejściowych. Aplikacja działająca na urządzeniu musi zarządzać mechanizmami połączenia, ponownego połączenia i logiki ponowień w celu wysyłania i otrzymywania wiadomości. Ponadto wymagania dotyczące strategii ponawiania są zależne od scenariusza usługi IoT, kontekstu i możliwości.
 
-Zestawy SDK urządzeń Azure IoT Hub mają na celu uproszczenie łączenia i komunikacji z chmury do urządzenia i urządzenia do chmury. Te zestawy SDK zapewniają niezawodny sposób łączenia usługi Azure IoT Hub i kompleksowy zestaw opcji dla wysyłania i odbierania komunikatów. Deweloperzy można również zmodyfikować istniejącą implementacją dostosować lepszą strategię ponawiania dla danego scenariusza.
+Zestawy SDK urządzeń IoT Hub platformy Azure mają na celu uproszczenie nawiązywania połączeń i komunikacji z chmurą i urządzeniem oraz z urządzenia do chmury. Te zestawy SDK zapewniają niezawodny sposób łączenia się z usługą Azure IoT Hub i kompleksowego zestawu opcji wysyłania i otrzymywania wiadomości. Deweloperzy mogą również modyfikować istniejącą implementację, aby dostosować strategię ponawiania prób w danym scenariuszu.
 
-W poniższych sekcjach znajdują się odpowiednie funkcje zestawu SDK, obsługujące łączności i niezawodną obsługę komunikatów.
+Odpowiednie funkcje zestawu SDK, które obsługują łączność i niezawodne komunikaty, zostały omówione w poniższych sekcjach.
 
-## <a name="connection-and-retry"></a>Połączenie i spróbuj ponownie
+## <a name="connection-and-retry"></a>Połączenie i ponów próbę
 
-Ta sekcja zawiera omówienie dostępnych wzorców ponowne połączenie i spróbuj ponownie, związane z zarządzaniem połączeniami. Jego szczegóły implementacji wskazówki dotyczące korzystania z różnych zasad ponawiania w aplikacji urządzenia i wyświetla odpowiednie interfejsy API z zestawów SDK urządzeń.
+Ta sekcja zawiera omówienie wzorców ponownych połączeń i ponownych prób dostępnych podczas zarządzania połączeniami. Szczegółowe wskazówki dotyczące implementacji dotyczące korzystania z różnych zasad ponawiania prób w aplikacji urządzenia i wyświetlają odpowiednie interfejsy API z zestawów SDK urządzeń.
 
-### <a name="error-patterns"></a>Wzorców błędów
+### <a name="error-patterns"></a>Wzorce błędów
 
-Błędy połączenia może się zdarzyć na wielu poziomach:
+Błędy połączeń mogą wystąpić na wielu poziomach:
 
-* Błędy sieciowe: Rozłączono błędów rozpoznania gniazda i nazwę
+* Błędy sieci: rozłączone błędy i rozpoznawanie nazw
 
-* Protokół błędy na poziomie transportu HTTP, AMQP i MQTT: odłączyć łącza lub wygasłych sesji
+* Błędy poziomu protokołu dla protokołu HTTP, AMQP i transportu MQTT: odłączone linki lub wygasłe sesje
 
-* Błędy na poziomie aplikacji, wynikających z dowolnym lokalnym pomyłek: nieprawidłowe poświadczenia lub zachowanie usługi, (na przykład, przekroczenie limitu przydziału lub ograniczanie przepustowości)
+* Błędy na poziomie aplikacji wynikające z błędów lokalnych: Nieprawidłowe poświadczenia lub zachowanie usługi (na przykład przekraczanie limitu przydziału lub ograniczanie przepustowości)
 
-Zestawy SDK urządzeń wykrywania błędów na wszystkich trzech poziomach. Błędy związane z systemu operacyjnego i błędów sprzętu są wykrywane i nie obsługiwane przez zestawy SDK urządzeń. Projekt zestawu SDK będzie opierać się na [przejściowych błędów obsługi wskazówek dotyczących](/azure/architecture/best-practices/transient-faults#general-guidelines) z Centrum architektury platformy Azure.
+Zestawy SDK urządzeń wykrywają błędy na wszystkich trzech poziomach. Błędy związane z systemem operacyjnym i błędy sprzętu nie są wykrywane i obsługiwane przez zestawy SDK urządzeń. Projekt zestawu SDK jest oparty na [wskazówkach dotyczących obsługi błędów przejściowych](/azure/architecture/best-practices/transient-faults#general-guidelines) z centrum architektury platformy Azure.
 
-### <a name="retry-patterns"></a>Ponów próbę wykonania wzorców
+### <a name="retry-patterns"></a>Wzorce ponowień
 
-W poniższych krokach opisano proces ponawiania prób w przypadku wykrycia błędów połączenia:
+W poniższych krokach opisano proces ponawiania próby w przypadku wykrycia błędów połączenia:
 
-1. Zestaw SDK wykrywa błąd i skojarzony błąd w sieci, protokół i aplikacji.
+1. Zestaw SDK wykrywa błąd i związany z nim błąd w sieci, protokole lub aplikacji.
 
-2. Zestaw SDK używa filtra błąd, aby określić typ błędu i zdecydować, jeśli jest potrzebna ponowna próba.
+2. Zestaw SDK używa filtru błędów, aby określić typ błędu i zdecydować, czy wymagana jest ponowna próba.
 
-3. Jeśli zestaw SDK identyfikuje **nieodwracalny błąd**, operacje, takie jak połączenia, wysyłania i odbierania są zatrzymywane. Zestaw SDK powiadomi użytkownika. Przykładami nieodwracalne błędy błąd uwierzytelniania i błąd nieprawidłowy punkt końcowy.
+3. Jeśli zestaw SDK zidentyfikuje **nieodwracalny błąd**, operacje takie jak połączenie, wysyłanie i odbieranie są zatrzymane. Zestaw SDK powiadamia użytkownika. Przykładami nieodwracalnych błędów są błędy uwierzytelniania i błędny punkt końcowy.
 
-4. Jeśli zestaw SDK identyfikuje **nieodwracalny błąd**, ponowną próbą zgodnie z zasadami ponawiania określony, dopóki nie upłynie zdefiniowanego limitu czasu.  Należy zauważyć, że zestaw SDK używa **Wartość wykładnicza wycofywania z zakłócenia** zasady ponawiania domyślnie.
-5. Po wygaśnięciu limitu czasu zdefiniowanego zestawu SDK zatrzymuje próby połączenia lub wysyłania. Użytkownik otrzyma powiadomienie.
+4. Jeśli zestaw SDK identyfikuje **odwracalny błąd**, ponawia próbę zgodnie z określonymi zasadami ponawiania, dopóki nie upłynie zdefiniowany limit czasu.  Należy pamiętać, że zestaw SDK domyślnie stosuje wykładnicze zasady ponawiania.
+5. Po upływie zdefiniowanego limitu czasu zestaw SDK przerywa próbę nawiązania połączenia lub wysłania. Powiadamia użytkownika.
 
-6. Zestaw SDK pozwala użytkownikom na dołączanie wywołanie zwrotne w celu odbierania zmiany stanu połączenia.
+6. Zestaw SDK umożliwia użytkownikowi dołączenie wywołania zwrotnego w celu otrzymywania zmian stanu połączenia.
 
 Zestawy SDK udostępniają trzy zasady ponawiania:
 
-* **Wycofywanie Wykładnicze z zakłócenia**: Te domyślne zasady ponawiania są zwykle agresywne na początku i spowolnić wraz z upływem czasu, aż do napotkania Maksymalne opóźnienie. Projekt będzie opierać się na [wskazówki dotyczące z Centrum architektury platformy Azure ponawiania prób](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific). 
+* **Wycofywanie wykładnicze z wahaniem**: Te domyślne zasady ponawiania prób są agresywne na początku i spowalniają działanie, dopóki nie osiągnie on maksymalnego opóźnienia. Projekt jest oparty na wskazówkach dotyczących ponowień [w centrum architektury platformy Azure](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific). 
 
-* **Niestandardowe ponawiania**: W przypadku niektórych języków zestawu SDK można zaprojektować niestandardowe zasady ponawiania są lepiej dostosowane do danego scenariusza i wstawić go do RetryPolicy. Niestandardowe ponawiania jest niedostępna na zestawu SDK języka C.
+* **Ponawianie próby niestandardowej**: W przypadku niektórych języków zestawu SDK można zaprojektować niestandardowe zasady ponawiania, które są lepiej dopasowane do danego scenariusza, a następnie wstrzyknąć je do RetryPolicy. Niestandardowa ponowna próba nie jest dostępna w zestawie C SDK.
 
-* **Bez ponawiania**: Można ustawić zasady ponawiania, aby "bez ponawiania," co powoduje wyłączenie Logika ponawiania. Zestaw SDK próbuje połączyć jeden raz i wysłać wiadomość raz, przy założeniu, że połączenie zostanie nawiązane. Zasada ta jest zazwyczaj używana w scenariuszach z przepustowości lub koszt dotyczy. Jeśli wybierzesz tę opcję, wiadomości, których nie można wysłać zostaną utracone i nie można go odzyskać.
+* **Nie próbuj ponownie**: Zasady ponawiania można ustawić na "bez ponawiania", co spowoduje wyłączenie logiki ponawiania. Zestaw SDK próbuje nawiązać połączenie raz i wysłać komunikat raz, przy założeniu, że połączenie zostanie nawiązane. Te zasady są zwykle używane w scenariuszach z problemami dotyczącymi przepustowości lub kosztów. W przypadku wybrania tej opcji komunikaty, które nie są wysyłane, są tracone i nie można ich odzyskać.
 
-### <a name="retry-policy-apis"></a>Interfejsy API zasady ponawiania
+### <a name="retry-policy-apis"></a>Interfejsy API zasad ponawiania
 
-   | SDK | Metoda SetRetryPolicy | Implementacji zasad | Wytyczne dotyczące implementacji |
+   | SDK | SetRetryPolicy, Metoda | Implementacje zasad | Wytyczne dotyczące implementacji |
    |-----|----------------------|--|--|
-   |  C/Python/iOS  | [IOTHUB_CLIENT_RESULT IoTHubClient_SetRetryPolicy](https://github.com/Azure/azure-iot-sdk-c/blob/2018-05-04/iothub_client/inc/iothub_client.h#L188)        | **Domyślne**: [IOTHUB_CLIENT_RETRY_EXPONENTIAL_BACKOFF](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-retry-policies)<BR>**Niestandardowy:** użycia dostępnych [retryPolicy](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-retry-policies)<BR>**Bez ponawiania:** [IOTHUB_CLIENT_RETRY_NONE](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-retry-policies)  | [Implementacja języka C/Python/systemu iOS](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#)  |
-   | Java| [SetRetryPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclientconfig.setretrypolicy?view=azure-java-stable)        | **Domyślne**: [Klasa ExponentialBackoffWithJitter](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/NoRetry.java)<BR>**Niestandardowy:** zaimplementować [interfejsu RetryPolicy](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/RetryPolicy.java)<BR>**Bez ponawiania:** [NoRetry, klasa](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/NoRetry.java)  | [Implementacja języka Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/devdoc/requirement_docs/com/microsoft/azure/iothub/retryPolicy.md) |
-   | .NET| [DeviceClient.SetRetryPolicy](/dotnet/api/microsoft.azure.devices.client.deviceclient.setretrypolicy?view=azure-dotnet) | **Domyślne**: [Klasa ExponentialBackoff](/dotnet/api/microsoft.azure.devices.client.exponentialbackoff?view=azure-dotnet)<BR>**Niestandardowy:** zaimplementować [IRetryPolicy interfejsu](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.iretrypolicy?view=azure-dotnet)<BR>**Bez ponawiania:** [NoRetry, klasa](/dotnet/api/microsoft.azure.devices.client.noretry?view=azure-dotnet) | [Implementacja języka C#](https://github.com/Azure/azure-iot-sdk-csharp) | |
-   | Węzeł| [setRetryPolicy](/javascript/api/azure-iot-device/client?view=azure-iot-typescript-latest) | **Domyślne**: [Klasa ExponentialBackoffWithJitter](/javascript/api/azure-iot-common/exponentialbackoffwithjitter?view=azure-iot-typescript-latest)<BR>**Niestandardowy:** zaimplementować [interfejsu RetryPolicy](/javascript/api/azure-iot-common/retrypolicy?view=azure-iot-typescript-latest)<BR>**Bez ponawiania:** [NoRetry, klasa](/javascript/api/azure-iot-common/noretry?view=azure-iot-typescript-latest) | [Implementacja węzła](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them) |
+   |  C/Python/iOS  | [IOTHUB_CLIENT_RESULT IoTHubClient_SetRetryPolicy](https://github.com/Azure/azure-iot-sdk-c/blob/2018-05-04/iothub_client/inc/iothub_client.h#L188)        | **Domyślne**: [IOTHUB_CLIENT_RETRY_EXPONENTIAL_BACKOFF](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-retry-policies)<BR>**Niestandardowe:** Użyj dostępnych [retryPolicy](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-retry-policies)<BR>**Nie próbuj ponownie:** [IOTHUB_CLIENT_RETRY_NONE](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-retry-policies)  | [Implementacja C/Python/iOS](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#)  |
+   | Java| [SetRetryPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclientconfig.setretrypolicy?view=azure-java-stable)        | **Domyślne**: [Klasa ExponentialBackoffWithJitter](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/NoRetry.java)<BR>**Niestandardowe:** Implementuj [interfejs RetryPolicy](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/RetryPolicy.java)<BR>**Nie próbuj ponownie:** [NoRetry, Klasa](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/NoRetry.java)  | [Implementacja języka Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/devdoc/requirement_docs/com/microsoft/azure/iothub/retryPolicy.md) |
+   | .NET| [DeviceClient.SetRetryPolicy](/dotnet/api/microsoft.azure.devices.client.deviceclient.setretrypolicy?view=azure-dotnet) | **Domyślne**: [Klasa ExponentialBackoff](/dotnet/api/microsoft.azure.devices.client.exponentialbackoff?view=azure-dotnet)<BR>**Niestandardowe:** Implementuj [interfejs IRetryPolicy](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.iretrypolicy?view=azure-dotnet)<BR>**Nie próbuj ponownie:** [NoRetry, Klasa](/dotnet/api/microsoft.azure.devices.client.noretry?view=azure-dotnet) | [C#realizacji](https://github.com/Azure/azure-iot-sdk-csharp) | |
+   | Węzeł| [setRetryPolicy](/javascript/api/azure-iot-device/client?view=azure-iot-typescript-latest) | **Domyślne**: [Klasa ExponentialBackoffWithJitter](/javascript/api/azure-iot-common/exponentialbackoffwithjitter?view=azure-iot-typescript-latest)<BR>**Niestandardowe:** Implementuj [interfejs RetryPolicy](/javascript/api/azure-iot-common/retrypolicy?view=azure-iot-typescript-latest)<BR>**Nie próbuj ponownie:** [NoRetry, Klasa](/javascript/api/azure-iot-common/noretry?view=azure-iot-typescript-latest) | [Implementacja węzła](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them) |
 
-Poniższe przykłady kodu przedstawiają ten przepływ:
+Poniższy przykład kodu ilustruje ten przepływ:
 
-#### <a name="net-implementation-guidance"></a>Wytyczne dotyczące implementacji platformy .NET
+#### <a name="net-implementation-guidance"></a>Wskazówki dotyczące implementacji platformy .NET
 
-Poniższy przykład kodu pokazuje, jak zdefiniować i ustawić domyślną zasadę ponownych prób:
+Poniższy przykład kodu pokazuje, jak zdefiniować i ustawić domyślne zasady ponawiania prób:
 
    ```csharp
    // define/set default retry policy
@@ -102,9 +102,9 @@ Poniższy przykład kodu pokazuje, jak zdefiniować i ustawić domyślną zasad�
    SetRetryPolicy(retryPolicy);
    ```
 
-Aby uniknąć wysokie użycie procesora CPU, ponowne próby są ograniczone, jeśli kod natychmiast kończy się niepowodzeniem. Na przykład, kiedy nie ma sieci lub trasę do lokalizacji docelowej. Minimalny czas, aby wykonać następne ponowienie próby wynosi 1 s.
+Aby uniknąć wysokiego użycia procesora CPU, ponowne próby są ograniczone, jeśli kod zakończy się niepowodzeniem. Na przykład w przypadku braku sieci lub trasy do miejsca docelowego. Minimalny czas wykonywania następnej ponowienia próby to 1 sekunda.
 
-Jeśli usługa odpowiada za pomocą błędów ograniczania przepustowości, zasady ponawiania różni się i nie można zmienić za pośrednictwem publicznego interfejsu API:
+Jeśli usługa reaguje na błąd ograniczania przepustowości, zasady ponawiania są inne i nie można ich zmienić za pomocą publicznego interfejsu API:
 
    ```csharp
    // throttled retry policy
@@ -112,21 +112,21 @@ Jeśli usługa odpowiada za pomocą błędów ograniczania przepustowości, zasa
      TimeSpan.FromSeconds(60), TimeSpan.FromSeconds(5)); SetRetryPolicy(retryPolicy);
    ```
 
-Mechanizm ponawiania prób zatrzyma się po `DefaultOperationTimeoutInMilliseconds`, który jest obecnie ustawiona w ciągu 4 minut.
+Mechanizm ponawiania prób zostaje `DefaultOperationTimeoutInMilliseconds`zatrzymany po, który jest obecnie ustawiony na 4 minuty.
 
-#### <a name="other-languages-implementation-guidance"></a>Wytyczne dotyczące implementacji w innych językach
+#### <a name="other-languages-implementation-guidance"></a>Wskazówki dotyczące implementacji innych języków
 
-Aby uzyskać przykłady kodu w innych językach Przejrzyj następujące dokumenty implementacji. Repozytorium zawiera przykłady, które pokazują użycie zasady ponawiania interfejsów API.
+Aby zapoznać się z przykładami kodu w innych językach, zapoznaj się z następującymi dokumentami dotyczącymi implementacji. Repozytorium zawiera przykłady, które demonstrują korzystanie z interfejsów API zasad ponawiania.
 
-* [C/Python/iOS SDK](https://github.com/azure/azure-iot-sdk-c)
+* [Zestaw SDK języka C/Python/iOS](https://github.com/azure/azure-iot-sdk-c)
 
 * [Zestaw SDK platformy .NET](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/devdoc/retrypolicy.md)
 
 * [Zestaw SDK Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/devdoc/requirement_docs/com/microsoft/azure/iothub/retryPolicy.md)
 
-* [Węzeł zestawu SDK](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them)
+* [Zestaw SDK węzła](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Korzystanie z zestawów SDK urządzenia i usługi](./iot-hub-devguide-sdks.md)
 
@@ -136,4 +136,4 @@ Aby uzyskać przykłady kodu w innych językach Przejrzyj następujące dokument
 
 * [Opracowywanie zawartości dla urządzeń przenośnych](./iot-hub-how-to-develop-for-mobile-devices.md)
 
-* [Rozwiązywanie problemów z odłącza urządzenia](iot-hub-troubleshoot-connectivity.md)
+* [Rozwiązywanie problemów z rozłączemi urządzeń](iot-hub-troubleshoot-connectivity.md)

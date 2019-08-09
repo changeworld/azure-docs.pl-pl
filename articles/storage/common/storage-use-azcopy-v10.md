@@ -4,15 +4,15 @@ description: AzCopy to narzędzie wiersza polecenia, za pomocą którego można 
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 08/08/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 9dc53867cb780b2c40e76cc6f24f7e6cf882b407
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0c30225e9b5412fe1515e8503d1134dcad44871f
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68844869"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879980"
 ---
 # <a name="get-started-with-azcopy"></a>Wprowadzenie do narzędzia AzCopy
 
@@ -259,7 +259,9 @@ Aby znaleźć przykładowe polecenia, zapoznaj się z dowolnym z tych artykułó
 
 ## <a name="use-azcopy-in-a-script"></a>Używanie AzCopy w skrypcie
 
-W miarę upływu czasu [link pobierania](#download-and-install-azcopy) AzCopy będzie wskazywał nowe wersje AzCopy. Jeśli skrypt pobiera AzCopy, skrypt może przestać działać, jeśli nowsza wersja AzCopy modyfikuje funkcje, od których zależy skrypt. 
+### <a name="obtain-a-static-download-link"></a>Uzyskaj statyczny link pobierania
+
+W miarę upływu czasu [link pobierania](#download-and-install-azcopy) AzCopy będzie wskazywał nowe wersje AzCopy. Jeśli skrypt pobiera AzCopy, skrypt może przestać działać, jeśli nowsza wersja AzCopy modyfikuje funkcje, od których zależy skrypt.
 
 Aby uniknąć tych problemów, Uzyskaj statyczny (niezmieniony) link do bieżącej wersji AzCopy. Dzięki temu skrypt pobiera tę samą dokładną wersję AzCopy przy każdym uruchomieniu.
 
@@ -280,9 +282,13 @@ W danych wyjściowych tego polecenia zostanie wyświetlony adres URL. Skrypt mo�
 | **Linux** | `wget -O azcopyv10.tar https://azcopyvnext.azureedge.net/release20190301/azcopy_linux_amd64_10.0.8.tar.gz tar -xf azcopyv10.tar --strip-components=1 ./azcopy` |
 | **Windows** | `Invoke-WebRequest https://azcopyvnext.azureedge.net/release20190517/azcopy_windows_amd64_10.1.2.zip -OutFile azcopyv10.zip <<Unzip here>>` |
 
+### <a name="escape-special-characters-in-sas-tokens"></a>Znaki specjalne ucieczki w tokenach SAS
+
+W plikach wsadowych, które `.cmd` mają rozszerzenie, musisz `%` wprowadzić znaki, które pojawiają się w tokenach sygnatury dostępu współdzielonego. Można to zrobić przez dodanie znaku dodawania `%` obok istniejących `%` znaków w ciągu tokenu sygnatury dostępu współdzielonego.
+
 ## <a name="use-azcopy-in-storage-explorer"></a>Używanie AzCopy w Eksplorator usługi Storage
 
-Jeśli chcesz wykorzystać zalety wydajności AzCopy, ale wolisz używać Eksplorator usługi Storage, a nie wiersza polecenia, aby współdziałać z plikami, a następnie Włącz AzCopy w Eksplorator usługi Storage. 
+Jeśli chcesz wykorzystać zalety wydajności AzCopy, ale wolisz używać Eksplorator usługi Storage, a nie wiersza polecenia, aby współdziałać z plikami, a następnie Włącz AzCopy w Eksplorator usługi Storage.
 
 W Eksplorator usługi Storage wybierz pozycję **Podgląd**->**Użyj AzCopy, aby uzyskać ulepszone przekazywanie obiektów blob i pobieranie**.
 

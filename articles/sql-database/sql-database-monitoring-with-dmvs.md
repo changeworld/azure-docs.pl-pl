@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 5bddcb89d26566bd2024cbde086b6e35ddaf94ef
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a630ceb1748f38dc169a4ebabcbb4e021de4273c
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567179"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881556"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>Monitorowanie wydajności Azure SQL Database przy użyciu dynamicznych widoków zarządzania
 
@@ -28,7 +28,7 @@ SQL Database częściowo obsługuje trzy kategorie dynamicznych widoków zarząd
 - Dynamiczne widoki zarządzania powiązane z wykonywaniem.
 - Dynamiczne widoki zarządzania powiązane z transakcjami.
 
-Aby uzyskać szczegółowe informacje na temat dynamicznych widoków zarządzania, zobacz [dynamiczne widoki zarządzania i funkcje (Transact-SQL)](https://msdn.microsoft.com/library/ms188754.aspx) w SQL Server książki online.
+Aby uzyskać szczegółowe informacje na temat dynamicznych widoków zarządzania, zobacz [dynamiczne widoki zarządzania i funkcje (Transact-SQL)](https://msdn.microsoft.com/library/ms188754.aspx) w SQL Server książki online. 
 
 ## <a name="permissions"></a>Uprawnienia
 
@@ -334,7 +334,7 @@ ORDER BY start_time ASC;
 
 Jeśli typ oczekiwania to `RESOURCE_SEMAHPORE` i nie masz wysokiego problemu dotyczącego użycia procesora CPU, może wystąpić problem z przydzieleniem pamięci.
 
-### <a name="determine-if-a-resourcesemahpore-wait-is-a-top-wait"></a>Określanie, `RESOURCE_SEMAHPORE` czy oczekiwanie jest oczekiwanie na początku
+### <a name="determine-if-a-resource_semahpore-wait-is-a-top-wait"></a>Określanie, `RESOURCE_SEMAHPORE` czy oczekiwanie jest oczekiwanie na początku
 
 Użyj następującego zapytania, aby określić, czy `RESOURCE_SEMAHPORE` oczekiwanie jest oczekiwanie na początku
 
@@ -512,7 +512,7 @@ Możesz również monitorować użycie przy użyciu następujących dwóch widok
 - [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx)
 - [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
 
-### <a name="sysdmdbresourcestats"></a>sys.dm_db_resource_stats
+### <a name="sysdm_db_resource_stats"></a>sys.dm_db_resource_stats
 
 Widoku [sys. DM _db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) można użyć w każdej bazie danych SQL. W widoku **sys. DM _db_resource_stats** są wyświetlane ostatnie dane użycia względem warstwy usług. Średnia wartość procentowa dla procesora CPU, operacji we/wy danych, zapisów dziennika i pamięci są rejestrowane co 15 sekund i są przechowywane przez 1 godzinę.
 
@@ -533,7 +533,7 @@ FROM sys.dm_db_resource_stats;
 
 Inne zapytania można znaleźć w przykładach w tabeli [sys. DM _db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx).
 
-### <a name="sysresourcestats"></a>sys.resource_stats
+### <a name="sysresource_stats"></a>sys.resource_stats
 
 Widok [sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) w bazie danych **Master** zawiera dodatkowe informacje, które mogą pomóc w monitorowaniu wydajności bazy danych SQL w określonej warstwie usług i rozmiarze obliczeniowym. Dane są zbierane co 5 minut i są przechowywane przez około 14 dni. Ten widok jest przydatny do długoterminowej analizy historycznej, w jaki sposób baza danych SQL używa zasobów.
 

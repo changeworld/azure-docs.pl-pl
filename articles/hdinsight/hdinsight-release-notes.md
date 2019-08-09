@@ -1,26 +1,26 @@
 ---
-title: Informacje o wersji dla usługi Azure HDInsight
-description: Najnowsze informacje o wersji dla usługi Azure HDInsight. Pobierz porad programistycznych i szczegóły dla usługi Hadoop, Spark, R Server i programu Hive.
+title: Informacje o wersji usługi Azure HDInsight
+description: Najnowsze informacje o wersji usługi Azure HDInsight. Uzyskaj porady deweloperskie i szczegóły dotyczące usługi Hadoop, Spark, R Server, Hive i innych.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/15/2019
-ms.openlocfilehash: 1c8bdd0ca715b6dfd00dc9876a074c61711990af
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/08/2019
+ms.openlocfilehash: b6e9a340a1fdcbe3ee24b8c81d171ade04c63139
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67117820"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880031"
 ---
-# <a name="release-notes-for-azure-hdinsight"></a>Informacje o wersji dla usługi Azure HDInsight
+# <a name="release-notes-for-azure-hdinsight"></a>Informacje o wersji usługi Azure HDInsight
 
-Ten artykuł zawiera informacje na temat **najnowszych** aktualizacji wydania usługi Azure HDInsight. Aby uzyskać informacji o wcześniejszych wersjach, zobacz [HDInsight Release Notes archiwum](hdinsight-release-notes-archive.md).
+Ten artykuł zawiera informacje o najnowszych aktualizacjach wersji usługi Azure HDInsight. Aby uzyskać informacje dotyczące wcześniejszych wersji, zobacz [archiwum informacji o wersji usługi HDInsight](hdinsight-release-notes-archive.md).
 
 > [!IMPORTANT]  
-> Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz [artykułu versioning HDInsight](hdinsight-component-versioning.md).
+> Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz artykuł dotyczący obsługi [wersji usługi HDInsight](hdinsight-component-versioning.md).
 
 ## <a name="summary"></a>Podsumowanie
 
@@ -28,64 +28,64 @@ Azure HDInsight jest jedną z najpopularniejszych usług używanych przez klient
 
 ## <a name="new-features"></a>Nowe funkcje
 
-Aby uzyskać więcej informacji na temat ważnych zmian przy użyciu HDInsight w wersji 4.0., zobacz [co nowego w usłudze HDI w wersji 4.0?](../hdinsight/hdinsight-version-release.md).
+Aby uzyskać więcej informacji na temat ważnych zmian w usłudze HDInsight 4,0. zobacz [co nowego w HDI 4,0?](../hdinsight/hdinsight-version-release.md).
 
 ## <a name="component-versions"></a>Wersje składników
 
-Oficjalne wersje Apache wszystkie składniki HDInsight 4.0 są podane poniżej. Składniki wymienione są wersje najnowszej dostępnej wersji stabilne.
+Poniżej wymieniono oficjalne wersje oprogramowania Apache wszystkich składników usługi HDInsight 4,0. Wymienione składniki są wersjami najnowszych dostępnych wersji.
 
 - Apache Ambari 2.7.1
 - Apache Hadoop 3.1.1
 - Apache HBase 2.0.0
 - Apache Hive 3.1.0
-- Apache Kafka 1.1.1
-- Apache Mahout 0.9.0+
+- Apache Kafka 1.1.1, 2.1.0
+- Apache Mahout 0.9.0 +
 - Apache Oozie 4.2.0
 - Apache Phoenix 4.7.0
-- Apache Pig 0.16.0
-- Struktury Apache Ranger 0.7.0
+- Apache wieprz 0.16.0
+- Apache Ranger 0.7.0
 - Suwak Apache 0.92.0
-- Apache Spark 2.3.2
+- Apache Spark 2.3.1, 2.4.0
 - Apache Sqoop 1.4.7
-- Apache TEZ 0.9.1
+- Apache TEZ od 0.9.1
 - Apache Zeppelin 0.8.0
 - Apache ZooKeeper 3.4.6
 
-Nowsze wersje składników Apache czasami są połączone w dystrybucji HDP oprócz wymienionych powyżej. W tym przypadku te nowsze wersje są wymienione w tabeli wersji zapoznawczych Technical Preview i nie należy zastąpić wersje składników Apache powyższej listy w środowisku produkcyjnym.
+Nowsze wersje składników Apache są czasami powiązane z dystrybucją HDP oraz z wymienionymi powyżej wersjami. W takim przypadku te nowsze wersje są wymienione w tabeli wersji zapoznawczych Technical Preview i nie powinny podstawić na wersje składnika Apache powyższej listy w środowisku produkcyjnym.
 
-## <a name="apache-patch-information"></a>Informacje dotyczące poprawki Apache
+## <a name="apache-patch-information"></a>Informacje o poprawkach Apache
 
-Aby uzyskać więcej informacji na temat poprawek, dostępne w HDInsight w wersji 4.0 Zobacz poprawki dla każdego produktu w poniższej tabeli.
+Aby uzyskać więcej informacji na temat poprawek dostępnych w usłudze HDInsight 4,0, zapoznaj się z listą poprawek dla każdego produktu w poniższej tabeli.
 
-| Nazwa produktu | Informacje dotyczące poprawki |
+| Nazwa produktu | Informacje o poprawkach |
 |---|---|
-| Ambari | [Informacje dotyczące poprawki systemu Ambari](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.1.0/bk_ambari-release-notes/content/ambari_relnotes-2.7.1.0-patch-information.html) |
-| Hadoop | [Informacje dotyczące poprawki usługi Hadoop](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hadoop.html) |
-| HBase | [Informacje dotyczące poprawki bazy danych HBase](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hbase.html) |
-| Hive  | Ta wersja zawiera 3.1.0 z nie dodatkowe poprawki Apache Hive.  |
-| Kafka | Ta wersja zawiera 1.1.1 z nie dodatkowe poprawki Apache Kafka. |
-| Oozie | [Informacje dotyczące poprawki programu Oozie](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_oozie.html) |
-| Phoenix | [Informacje dotyczące poprawki Phoenix](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_phoenix.html) |
-| Pig | [Informacje dotyczące poprawki pig](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_pig.html) |
-| Ranger | [Informacje dotyczące poprawki platformy ranger](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_ranger.html) |
-| platforma Spark | [Informacje dotyczące poprawki platformy Spark](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_spark.html) |
-| Sqoop | Ta wersja zawiera 1.4.7 z nie dodatkowe poprawki Apache Sqoop. |
-| Tez | Ta wersja zawiera 0.9.1 z nie dodatkowe poprawki Apache Tez. |
-| Zeppelin | Ta wersja oferuje rozwiązania Zeppelin 0.8.0 z nie dodatkowe poprawki Apache. |
-| Dozorca | [Informacje dotyczące poprawki dozorcy](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_zookeeper.html) |
+| Ambari | [Informacje o poprawkach Ambari](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.1.0/bk_ambari-release-notes/content/ambari_relnotes-2.7.1.0-patch-information.html) |
+| Hadoop | [Informacje o poprawkach usługi Hadoop](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hadoop.html) |
+| HBase | [Informacje o poprawkach HBase](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hbase.html) |
+| Hive  | Ta wersja zawiera 3.1.0 Hive bez dodatkowych poprawek Apache.  |
+| Kafka | Ta wersja zawiera Kafka 1.1.1 bez dodatkowych poprawek Apache. |
+| Oozie | [Informacje o poprawkach Oozie](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_oozie.html) |
+| Phoenix | [Informacje o poprawkach w Phoenix](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_phoenix.html) |
+| Pig | [Informacje o poprawkach świń](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_pig.html) |
+| Ranger | [Informacje o poprawkach Ranger](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_ranger.html) |
+| platforma Spark | [Informacje o poprawkach platformy Spark](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_spark.html) |
+| Sqoop | Ta wersja udostępnia Sqoop 1.4.7 bez dodatkowych poprawek Apache. |
+| Tez | Ta wersja udostępnia tez od 0.9.1 bez dodatkowych poprawek Apache. |
+| Zeppelin | Ta wersja udostępnia Zeppelin 0.8.0 bez dodatkowych poprawek Apache. |
+| ZooKeeper | [Informacje o poprawkach dozorcy](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_zookeeper.html) |
 
-## <a name="fixed-common-vulnerabilities-and-exposures"></a>Naprawiono Common Vulnerabilities and Exposures
+## <a name="fixed-common-vulnerabilities-and-exposures"></a>Rozwiązano typowe luki w zabezpieczeniach i zagrożenia
 
-Aby uzyskać więcej informacji na temat zabezpieczeń problemy rozwiązane w tej wersji, zobacz zobowiązanie firmy Hortonworks [stały powszechnych luk w zabezpieczeniach i zagrożeń dla HDP 3.0.1](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/cve.html).
+Aby uzyskać więcej informacji na temat problemów z zabezpieczeniami rozwiązanych w tej wersji, zobacz Hortonworks " [stałe typowe luki w zabezpieczeniach i zagrożenia dla HDP 3.0.1](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/cve.html).
 
 ## <a name="known-issues"></a>Znane problemy
 
-### <a name="replication-is-broken-for-secure-hbase-with-default-installation"></a>Replikacja nie działa dla Zabezpieczanie bazy danych HBase przy użyciu domyślnej instalacji
+### <a name="replication-is-broken-for-secure-hbase-with-default-installation"></a>Replikacja jest uszkodzona dla bezpiecznego HBase z instalacją domyślną
 
-HDInsight 4.0 wykonaj następujące czynności:
+W przypadku usługi HDInsight 4,0 wykonaj następujące czynności:
 
-1. Zezwolenie na komunikację między klastrami.
-1. Zaloguj się do aktywnego węzła głównego.
+1. Włącz komunikację między klastrami.
+1. Zaloguj się do usługi Active węzła głównego.
 1. Pobierz skrypt, aby włączyć replikację za pomocą następującego polecenia:
 
     ```
@@ -97,9 +97,9 @@ HDInsight 4.0 wykonaj następujące czynności:
     ```
     sudo bash hdi_enable_replication.sh -m <hn0> -s <srclusterdns> -d <dstclusterdns> -sp <srcclusterpasswd> -dp <dstclusterpasswd> -copydata
     ```
-HDInsight 3.6 wykonaj następujące czynności:
+W przypadku usługi HDInsight 3,6 wykonaj następujące czynności:
 
-1. Zaloguj się do aktywnego serwera HMaster ZK.
+1. Zaloguj się do usługi Active serwera hmaster ZK.
 1. Pobierz skrypt, aby włączyć replikację za pomocą następującego polecenia:
     ```
     sudo wget https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh
@@ -111,32 +111,32 @@ HDInsight 3.6 wykonaj następujące czynności:
     sudo bash hdi_enable_replication.sh -s <srclusterdns> -d <dstclusterdns> -sp <srcclusterpasswd> -dp <dstclusterpasswd> -copydata
     ```
 
-### <a name="phoenix-sqlline-stops-working-after-migrating-hbase-cluster-to-hdinsight-40"></a>Phoenix Sqlline przestaje działać po przeprowadzeniu migracji klaster HBase HDInsight 4.0
+### <a name="phoenix-sqlline-stops-working-after-migrating-hbase-cluster-to-hdinsight-40"></a>Podczas migrowania klastra HBase do usługi HDInsight 4,0 w Phoenix nie działa zakończenie SqlLine
 
 Wykonaj następujące czynności:
 
-1. Upuść w poniższych tabelach Phoenix:
+1. Porzuć następujące tabele w Phoenix:
     1. `SYSTEM.FUNCTION`
     1. `SYSTEM.SEQUENCE`
     1. `SYSTEM.STATS`
     1. `SYSTEM.MUTEX`
     1. `SYSTEM.CATALOG`
-1. Jeśli nie można usunąć, tabele, należy ponownie uruchomić bazy danych HBase, aby wyczyścić wszystkie połączenia z tabelami.
-1. Uruchom ponownie polecenie `sqlline.py`. Phoenix utworzy go ponownie wszystkie tabele, które zostały usunięte w kroku 1.
-1. Ponowne generowanie Phoenix tabele i widoki danych HBase.
+1. Jeśli nie możesz usunąć żadnej z tabel, uruchom ponownie program HBase, aby wyczyścić wszystkie połączenia z tabelami.
+1. Uruchom ponownie polecenie `sqlline.py`. Phoenix utworzy ponownie wszystkie tabele, które zostały usunięte w kroku 1.
+1. Wygeneruj ponownie tabele i widoki usługi Phoenix dla danych HBase.
 
-### <a name="phoenix-sqlline-stops-working-after-replicating-hbase-phoenix-metadata-from-hdinsight-36-to-40"></a>Phoenix Sqlline przestaje działać po replikacji bazy danych HBase Phoenix metadanych z HDInsight 3.6 4.0
+### <a name="phoenix-sqlline-stops-working-after-replicating-hbase-phoenix-metadata-from-hdinsight-36-to-40"></a>Podczas replikowania metadanych HBase Phoenix z usługi HDInsight 3,6 do 4,0
 
 Wykonaj następujące czynności:
 
-1. Przed wykonaniem replikacji, przejdź do klastra docelowego 4.0 i wykonaj `sqlline.py`. To polecenie spowoduje wygenerowanie tabele Phoenix, takie jak `SYSTEM.MUTEX` i `SYSTEM.LOG` występujące w wersji 4.0.
-1. Usunięcie następujących tabel:
+1. Przed przeprowadzeniem replikacji przejdź do docelowego klastra 4,0 i wykonaj `sqlline.py`polecenie. To polecenie spowoduje wygenerowanie tabel Phoenix `SYSTEM.MUTEX` , `SYSTEM.LOG` takich jak i, które znajdują się tylko w 4,0.
+1. Porzuć następujące tabele:
     1. `SYSTEM.FUNCTION`
     1. `SYSTEM.SEQUENCE`
     1. `SYSTEM.STATS`
     1. `SYSTEM.CATALOG`
-1. Rozpoczyna się replikacja bazy danych HBase
+1. Uruchom replikację HBase
 
 ## <a name="deprecation"></a>Przestarzałe
 
-Apache Storm i uczenia Maszynowego usługi nie są dostępne w HDInsight w wersji 4.0.
+Usługi Apache Storm i l nie są dostępne w usłudze HDInsight 4,0.

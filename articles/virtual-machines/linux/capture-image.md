@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: ed9eb990fff3a0901f3fa26526b30e8cb8a2fe66
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 328748b9dd81834b9c69f81bc0bda60c9ad12cb0
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779397"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879970"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Jak utworzyć obraz maszyny wirtualnej lub wirtualnego dysku twardego
 
@@ -40,9 +40,9 @@ Przed utworzeniem obrazu potrzebne są następujące elementy:
 
 * Najnowszy [interfejs wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) został zainstalowany i być zalogowany do konta platformy Azure przy użyciu [AZ login](/cli/azure/reference-index#az-login).
 
-## <a name="quick-commands"></a>Szybkie polecenia
+## <a name="prefer-a-tutorial-instead"></a>Wolisz korzystać z samouczka?
 
-Aby uzyskać uproszczoną wersję tego artykułu oraz testowanie, ocenianie lub uczenie maszyn wirtualnych na platformie Azure, zobacz [Tworzenie niestandardowego obrazu maszyny wirtualnej platformy Azure przy użyciu interfejsu wiersza polecenia](tutorial-custom-images.md).
+Aby uzyskać uproszczoną wersję tego artykułu oraz testowanie, ocenianie lub uczenie maszyn wirtualnych na platformie Azure, zobacz [Tworzenie niestandardowego obrazu maszyny wirtualnej platformy Azure przy użyciu interfejsu wiersza polecenia](tutorial-custom-images.md).  W przeciwnym razie należy przeczytać tutaj, aby uzyskać pełny obraz.
 
 
 ## <a name="step-1-deprovision-the-vm"></a>Krok 1: Anulowanie aprowizacji maszyny wirtualnej
@@ -58,7 +58,7 @@ Najpierw należy anulować obsługę administracyjną maszyny wirtualnej przy u�
    > To polecenie można uruchomić tylko na maszynie wirtualnej, która zostanie przechwycona jako obraz. To polecenie nie gwarantuje, że obraz jest czyszczony dla wszystkich poufnych informacji lub jest odpowiedni do ponownej dystrybucji. Ten `+user` parametr usuwa także ostatnio zainicjowane konto użytkownika. Aby zachować poświadczenia konta użytkownika na maszynie wirtualnej, użyj tylko `-deprovision`.
  
 3. Wprowadź **y** , aby kontynuować. Można dodać `-force` parametr, aby uniknąć tego kroku potwierdzenia.
-4. Po zakończeniu wykonywania polecenia wpisz **Exit** , aby zamknąć klienta SSH.
+4. Po zakończeniu wykonywania polecenia wpisz **Exit** , aby zamknąć klienta SSH.  Maszyna wirtualna będzie nadal działać w tym momencie.
 
 ## <a name="step-2-create-vm-image"></a>Krok 2: Utwórz obraz maszyny wirtualnej
 Użyj interfejsu wiersza polecenia platformy Azure, aby oznaczyć maszynę wirtualną jako uogólnioną i przechwycić obraz. W poniższych przykładach Zastąp przykładowe nazwy parametrów własnymi wartościami. Przykładowe nazwy parametrów obejmują: *MyVnet*, i *myVM*.
@@ -71,7 +71,7 @@ Użyj interfejsu wiersza polecenia platformy Azure, aby oznaczyć maszynę wirtu
       --name myVM
     ```
     
-    Poczekaj na całkowite cofnięcie przydziału maszyny wirtualnej przed przejściem dalej. Może to potrwać kilka minut.
+    Poczekaj na całkowite cofnięcie przydziału maszyny wirtualnej przed przejściem dalej. Może to potrwać kilka minut.  Maszyna wirtualna jest zamykana podczas cofania alokacji.
 
 2. Oznacz maszynę wirtualną jako uogólnioną za pomocą [AZ VM generalize](/cli/azure/vm). Poniższy przykład oznacza maszynę wirtualną o nazwie *myVM* w grupie zasobów o nazwie Moja *resourceName* jako uogólniona.
    
@@ -80,6 +80,8 @@ Użyj interfejsu wiersza polecenia platformy Azure, aby oznaczyć maszynę wirtu
       --resource-group myResourceGroup \
       --name myVM
     ```
+
+    Nie można już ponownie uruchomić maszyny wirtualnej, która została uogólniona.
 
 3. Utwórz obraz zasobu maszyny wirtualnej za pomocą elementu [AZ Image Create](/cli/azure/image#az-image-create). Poniższy przykład umożliwia utworzenie obrazu o nazwie "Moja *ilustracja* " w grupie zasobów o nazwie Moja *resourceName* przy użyciu zasobu maszyny wirtualnej o nazwie *myVM*.
    
@@ -93,6 +95,8 @@ Użyj interfejsu wiersza polecenia platformy Azure, aby oznaczyć maszynę wirtu
    > Obraz jest tworzony w tej samej grupie zasobów co źródłowa maszyna wirtualna. Możesz tworzyć maszyny wirtualne w dowolnej grupie zasobów w ramach subskrypcji z tego obrazu. Z perspektywy zarządzania można utworzyć określoną grupę zasobów dla zasobów i obrazów maszyn wirtualnych.
    >
    > Jeśli chcesz przechowywać obraz w magazynie odpornym na strefy, musisz go utworzyć w regionie, który obsługuje [strefy dostępności](../../availability-zones/az-overview.md) i uwzględnić `--zone-resilient true` parametr.
+   
+To polecenie zwraca kod JSON opisujący obraz maszyny wirtualnej. Zapisz dane wyjściowe do późniejszego odwołania.
 
 ## <a name="step-3-create-a-vm-from-the-captured-image"></a>Krok 3: Tworzenie maszyny wirtualnej na podstawie przechwyconego obrazu
 Utwórz maszynę wirtualną przy użyciu obrazu utworzonego za pomocą polecenia [AZ VM Create](/cli/azure/vm). Poniższy przykład tworzy maszynę wirtualną o nazwie *myVMDeployed* z obrazu o nazwie "Moja *Image*".

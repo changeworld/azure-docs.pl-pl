@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: raynew
-ms.openlocfilehash: d0e24d7621218ccac23842072a5f08be94c80d9d
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 92bd53fd0426f896eff8dc63b690167db3ee700b
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840592"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884104"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Matryca obsługi replikacji maszyn wirtualnych platformy Azure z jednego regionu do innego
 
@@ -197,7 +197,7 @@ Nadmiarowość | Obsługiwane są LRS i GRS.<br/><br/> ZRS nie jest obsługiwana
 Chłodna i gorąca pamięć masowa | Nieobsługiwane | Dyski maszyn wirtualnych nie są obsługiwane w chłodnym i gorącym magazynie
 Miejsca do magazynowania | Obsługiwane |
 Szyfrowanie w spoczynku (SSE) | Obsługiwane | Funkcja SSE jest domyślnym ustawieniem na kontach magazynu.   
-Azure Disk Encryption (ADE) dla systemu operacyjnego Windows | Obsługiwane |
+Azure Disk Encryption (ADE) dla systemu operacyjnego Windows | Obsługiwane w przypadku maszyn wirtualnych z dyskami zarządzanymi. Maszyny wirtualne korzystające z dysków niezarządzanych nie są obsługiwane |
 Azure Disk Encryption (ADE) dla systemu operacyjnego Linux | Nieobsługiwane |
 Dodawanie gorące | Obsługiwane | W przypadku maszyn wirtualnych korzystających z dysków zarządzanych można włączyć replikację dla dysku danych dodawanego do zreplikowanej maszyny wirtualnej platformy Azure.
 Gorąca usuwanie dysku | Nieobsługiwane | Jeśli usuniesz dysk z danymi na maszynie wirtualnej, musisz wyłączyć replikację i ponownie włączyć replikację dla maszyny wirtualnej.
@@ -210,7 +210,7 @@ RA-GRS | Obsługiwane |
 ZRS | Nieobsługiwane |
 Chłodna i gorąca pamięć masowa | Nieobsługiwane | Dyski maszyny wirtualnej nie są obsługiwane w chłodnym i gorącym magazynie
 Zapory usługi Azure Storage dla sieci wirtualnych  | Obsługiwane | Jeśli Ogranicz dostęp do sieci wirtualnej do kont magazynu, Włącz opcję [Zezwalaj na zaufane usługi firmy Microsoft](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
-Konta magazynu ogólnego przeznaczenia w wersji 2 (warstwa gorąca i chłodna) | Yes | Koszty transakcji rosną znacznie w porównaniu z kontami magazynu ogólnego przeznaczenia w wersji 1
+Konta magazynu ogólnego przeznaczenia w wersji 2 (warstwa gorąca i chłodna) | Tak | Koszty transakcji rosną znacznie w porównaniu z kontami magazynu ogólnego przeznaczenia w wersji 1
 
 >[!IMPORTANT]
 > Aby uniknąć problemów z wydajnością, należy się upewnić, że są używane elementy docelowe skalowalności i wydajności dysków maszyny wirtualnej dla maszyn wirtualnych z systemem [Linux](../virtual-machines/linux/disk-scalability-targets.md) lub [Windows](../virtual-machines/windows/disk-scalability-targets.md) . Jeśli używasz ustawień domyślnych, Site Recovery tworzy wymagane dyski i konta magazynu na podstawie konfiguracji źródłowej. Jeśli dostosowujesz i wybierasz własne ustawienia, postępuj zgodnie z celami skalowalności i wydajności dysków dla źródłowych maszyn wirtualnych.
@@ -257,6 +257,6 @@ Przyspieszona sieć | Obsługiwane | Na źródłowej maszynie wirtualnej musi by
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - Odczytaj [wskazówki dotyczące sieci](site-recovery-azure-to-azure-networking-guidance.md) dotyczące replikacji maszyn wirtualnych platformy Azure.
 - Wdróż odzyskiwanie po awarii przez [replikowanie maszyn wirtualnych platformy Azure](site-recovery-azure-to-azure.md).

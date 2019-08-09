@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 5c156e30f4fa0270082cd1108958c3472130a460
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 1401e378daa0c0a9258858840653899e76c9421c
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640823"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881790"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Wprowadzenie do rejestrowania przepływu dla sieciowych grup zabezpieczeń
 
@@ -63,8 +63,8 @@ Dzienniki przepływów obejmują następujące właściwości:
                     * **Port źródłowy** — port źródłowy
                     * **Port docelowy** — port docelowy
                     * **Protokół** — protokół przepływu. Prawidłowe wartości to **T** dla protokołów TCP i **U** dla protokołu UDP
-                    * **Przepływ ruchu** — kierunek przepływu ruchu. Prawidłowe **wartości to dla** ruchu przychodzącego i **o** dla ruchu wychodzącego.
-                    * **Decyzja o ruchu** — czy ruch był dozwolony lub zabroniony. Prawidłowe **wartości to dozwolone** i **D** na odmowa.
+                    * **Przepływ ruchu** — kierunek przepływu ruchu. Prawidłowe wartości to dla ruchu przychodzącego i **o** dla ruchu wychodzącego.
+                    * **Decyzja o ruchu** — czy ruch był dozwolony lub zabroniony. Prawidłowe wartości to dozwolone i **D** na odmowa.
                     * **Stan przepływu — tylko wersja 2** — przechwytuje stan przepływu. Możliwe stany to **B**: początek — gdy zostanie utworzony przepływ. Statystyki nie są podawane. **C**: kontynuacja — dotyczy trwającego przepływu. Statystyki są podawane w 5-minutowych odstępach. **E**: koniec — gdy przepływ zostanie zakończony. Statystyki są podawane.
                     * **Pakiety-tylko do miejsca docelowego — wersja 2** Całkowita liczba pakietów TCP lub UDP wysłanych ze źródła do miejsca docelowego od momentu ostatniej aktualizacji.
                     * **Wysłane bajty — tylko źródło do wersji 2** Całkowita liczba bajtów pakietów TCP lub UDP wysłanych z lokalizacji źródłowej do docelowej od ostatniej aktualizacji. Liczba bajtów pakietu obejmuje nagłówek i ładunek pakietu.

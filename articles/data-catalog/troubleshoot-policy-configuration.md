@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: troubleshooting
 ms.date: 08/01/2019
-ms.openlocfilehash: f37110138ae62272e56b155b7e8a9aac2f80cdf8
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 84bd14f8ae18527b4f6e9d8509a12555baec8771
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68734582"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879551"
 ---
 # <a name="troubleshooting-azure-data-catalog"></a>Azure Data Catalog rozwiązywania problemów
 
@@ -21,7 +21,7 @@ W tym artykule opisano typowe problemy związane z rozwiązywaniem problemów do
 
 W przypadku korzystania z Azure Data Catalog następujące funkcje są ograniczone:
 
-- Konta typu **rola gościa** nie są obsługiwane. Nie można dodać kont Gości jako użytkowników Azure Data Catalog, a użytkownicy-Goście nie mogą korzystać z portalu w witrynie www.azuredatacatalog.com.
+- Konta typu **rola gościa** nie są obsługiwane. Nie można dodać kont Gości jako użytkowników Azure Data Catalog, a użytkownicy-Goście nie mogą korzystać z portalu [https://www.azuredatacatalog.com](https://www.azuredatacatalog.com)pod adresem.
 
 - Tworzenie Azure Data Catalog zasobów przy użyciu szablonów Azure Resource Manager lub poleceń Azure PowerShell nie jest obsługiwane.
 

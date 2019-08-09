@@ -1,24 +1,23 @@
 ---
 title: Instrukcje platformy Azure — Jak korzystać z różnych mechanizmów zaświadczania za pomocą zestawu SDK klienta usługi Device Provisioning Service na platformie Azure
 description: Instrukcje platformy Azure — Jak korzystać z różnych mechanizmów zaświadczania za pomocą zestawu SDK klienta usługi Device Provisioning Service na platformie Azure
-author: yzhong94
-ms.author: yizhon
+author: robinsh
+ms.author: robinsh
 ms.date: 03/30/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: arjmands
 ms.custom: mvc
-ms.openlocfilehash: af59ccc6d14dce49d06e178aac3ecafc29bd982c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7dd93298c96842e4e5417a0b2ba023bb71a4e7ba
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61248134"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884434"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>Instrukcje dotyczące korzystania z różnych mechanizmów zaświadczania za pomocą zestawu SDK klienta usługi Device Provisioning Service dla języka C
 
-W tym artykule przedstawiono sposób korzystania z różnych [mechanizmów zaświadczania](concepts-security.md#attestation-mechanism) przy użyciu zestawu SDK klienta usługi Device Provisioning Service dla języka C. Istnieje możliwość użycia urządzenia fizycznego lub symulatora. Usługa aprowizowania obsługuje uwierzytelnianie dwóch typów mechanizmów zaświadczania: X.509 i moduł zaufanej platformy (TPM).
+W tym artykule przedstawiono sposób korzystania z różnych [mechanizmów zaświadczania](concepts-security.md#attestation-mechanism) przy użyciu zestawu SDK klienta usługi Device Provisioning Service dla języka C. Istnieje możliwość użycia urządzenia fizycznego lub symulatora. Usługa aprowizacji obsługuje uwierzytelnianie dla dwóch typów mechanizmów zaświadczania: X. 509 i moduł TPM (TPM).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -28,9 +27,9 @@ Przygotuj środowisko deweloperskie zgodnie z sekcją „Prepare the development
 
 Jako producent urządzenia musisz najpierw wybrać mechanizm zaświadczania oparty na jednym z obsługiwanych typów. Aktualnie [zestaw SDK klienta usługi Device Provisioning Service dla języka C](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client) oferuje obsługę następujących mechanizmów zaświadczania: 
 
-- [Trusted Platform Module (TPM)](https://en.wikipedia.org/wiki/Trusted_Platform_Module): Moduł TPM to standard ustanowiony dla większości platform urządzeń z systemem Windows, a także kilka urządzeń z systemem Linux/Ubuntu. Jako producent urządzenia możesz wybrać ten mechanizm zaświadczania, jeśli na Twoich urządzeniach działa jeden z tych systemów operacyjnych i szukasz sprawdzonego standardu. Używając mikroukładów modułów TPM, możesz tylko rejestrować każde urządzenie indywidualnie w usłudze Device Provisioning. Do celów programistycznych można użyć symulatora modułu TPM na maszynie deweloperskiej z systemem Windows lub Linux.
+- [Moduł TPM (TPM)](https://en.wikipedia.org/wiki/Trusted_Platform_Module): Moduł TPM jest ustalonym standardem dla większości platform urządzeń opartych na systemie Windows, a także na kilku urządzeniach z systemem Linux/Ubuntu. Jako producent urządzenia możesz wybrać ten mechanizm zaświadczania, jeśli na Twoich urządzeniach działa jeden z tych systemów operacyjnych i szukasz sprawdzonego standardu. Używając mikroukładów modułów TPM, możesz tylko rejestrować każde urządzenie indywidualnie w usłudze Device Provisioning. Do celów programistycznych można użyć symulatora modułu TPM na maszynie deweloperskiej z systemem Windows lub Linux.
 
-- [X.509](https://cryptography.io/en/latest/x509/): Certyfikaty X.509 można przechowywać w stosunkowo nowszych mikroukładach nazywanych [sprzętowych modułów zabezpieczeń (HSM)](concepts-security.md#hardware-security-module). W firmie Microsoft trwa również praca nad mikroukładami RIoT i DICE, które implementują certyfikaty X.509. W przypadku mikroukładów X.509 można przeprowadzić zbiorczą rejestrację w portalu. Obsługuje ona również niektóre systemy operacyjne inne niż Windows, takie jak embedOS. Dla celów programistycznych zestaw SDK klienta usługi Device Provisioning obsługuje symulator urządzeń X.509. 
+- [X. 509](https://cryptography.io/en/latest/x509/): Certyfikaty X. 509 mogą być przechowywane w stosunkowo nowszych mikroukładach nazywanych [sprzętowymi modułami zabezpieczeń (HSM)](concepts-security.md#hardware-security-module). W firmie Microsoft trwa również praca nad mikroukładami RIoT i DICE, które implementują certyfikaty X.509. W przypadku mikroukładów X.509 można przeprowadzić zbiorczą rejestrację w portalu. Obsługuje ona również niektóre systemy operacyjne inne niż Windows, takie jak embedOS. Dla celów programistycznych zestaw SDK klienta usługi Device Provisioning obsługuje symulator urządzeń X.509. 
 
 Aby uzyskać więcej informacji, zobacz [pojęcia związane z zabezpieczeniami](concepts-security.md) i [pojęcia związane z automatyczną aprowizacją](/azure/iot-dps/concepts-auto-provisioning) dotyczące usługi IoT Hub Device Provisioning Service.
 
@@ -149,8 +148,8 @@ Jeśli korzystasz z modułu TPM, postępuj zgodnie z instrukcjami z sekcji [„C
       ./azure-iot-sdk-c/dps_client/tools/x509_device_provision/x509_device_provision.exe
       ```
 2. Zaloguj się w witrynie Azure Portal, kliknij przycisk **Wszystkie zasoby** w menu po lewej stronie i otwórz swoją usługę Device Provisioning.
-   - X **.** Rejestracja indywidualna 509: W bloku podsumowania usługi aprowizowania, wybierz **Zarządzanie rejestracjami**. Wybierz kartę **Indywidualne rejestracje** i kliknij u góry przycisk **Dodaj**. Wybierz wartość **X**.**509** dla pozycji *Mechanizm* zaświadczania tożsamości i przekaż certyfikat liścia zgodnie z wymaganiami bloku. Gdy skończysz, kliknij przycisk **Zapisz**. 
-   - X **.** Rejestrację grupową 509: W bloku podsumowania usługi aprowizowania, wybierz **Zarządzanie rejestracjami**. Wybierz kartę **Grupowe rejestracje** i kliknij u góry przycisk **Dodaj**. Wybierz wartość **X**.**509** dla pozycji *Mechanizm* zaświadczania tożsamości, podaj nazwę grupy i nazwę certyfikacji, a następnie przekaż certyfikat głównego urzędu certyfikacji lub pośredniczący zgodnie z wymaganiami bloku. Gdy skończysz, kliknij przycisk **Zapisz**. 
+   - X **.** 509 Rejestracja indywidualna: W bloku podsumowanie usługi aprowizacji wybierz pozycję **Zarządzaj rejestracjami**. Wybierz kartę **Indywidualne rejestracje** i kliknij u góry przycisk **Dodaj**. Wybierz wartość **X**.**509** dla pozycji *Mechanizm* zaświadczania tożsamości i przekaż certyfikat liścia zgodnie z wymaganiami bloku. Gdy skończysz, kliknij przycisk **Zapisz**. 
+   - X **.** Rejestracja grupy 509: W bloku podsumowanie usługi aprowizacji wybierz pozycję **Zarządzaj rejestracjami**. Wybierz kartę **Grupowe rejestracje** i kliknij u góry przycisk **Dodaj**. Wybierz wartość **X**.**509** dla pozycji *Mechanizm* zaświadczania tożsamości, podaj nazwę grupy i nazwę certyfikacji, a następnie przekaż certyfikat głównego urzędu certyfikacji lub pośredniczący zgodnie z wymaganiami bloku. Gdy skończysz, kliknij przycisk **Zapisz**. 
 
 ## <a name="enable-authentication-for-devices-using-a-custom-attestation-mechanism-optional"></a>Włączanie uwierzytelniania urządzeń przy użyciu niestandardowego mechanizmu zaświadczania (opcjonalnie)
 

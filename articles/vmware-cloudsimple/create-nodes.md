@@ -8,18 +8,23 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9eb02f04b5873e5906782a27ce833a724ceecfe3
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 898b07d05abf3bfad644fb590d90c7a90c5a1c0d
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812366"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883226"
 ---
 # <a name="provision-nodes-for-vmware-solution-by-cloudsimple---azure"></a>Inicjowanie obsługi węzłów dla rozwiązań VMware przez CloudSimple — Azure
 
 Inicjowanie obsługi węzłów w Azure Portal. Następnie możesz skonfigurować przepustowość zgodnie z rzeczywistym użyciem dla środowiska chmury prywatnej CloudSimple.
 
-## <a name="add-a-provisioned-node-to-your-cloudsimple-private-cloud"></a>Dodaj węzeł zainicjowany do prywatnej chmury CloudSimple
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+
+Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
+
+
+## <a name="add-a-node-to-your-cloudsimple-private-cloud"></a>Dodawanie węzła do prywatnej chmury CloudSimple
 
 1. Wybierz pozycję **Wszystkie usługi**.
 2. Wyszukaj **węzły CloudSimple**.
@@ -44,4 +49,4 @@ Inicjowanie obsługi węzłów w Azure Portal. Następnie możesz skonfigurować
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Utwórz chmurę prywatną](https://docs.azure.cloudsimple.com/create-private-cloud/)
+* [Utwórz chmurę prywatną](create-private-cloud.md)

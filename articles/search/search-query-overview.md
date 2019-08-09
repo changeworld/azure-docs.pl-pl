@@ -1,6 +1,6 @@
 ---
-title: Typy zapytań i kompozycji — usługa Azure Search
-description: Podstawy do tworzenia zapytań wyszukiwania w usłudze Azure Search przy użyciu parametrów, aby zastosować filtr, wybierz i sortować wyniki.
+title: Typy i kompozycje zapytań — Azure Search
+description: Podstawowe informacje na temat tworzenia zapytania wyszukiwania w Azure Search, przy użyciu parametrów do filtrowania, wybierania i sortowania wyników.
 author: HeidiSteen
 manager: cgronlun
 ms.author: heidist
@@ -9,33 +9,33 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 422e9209609eac19b7952557674c99789d9f6088
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: c2d40865857bc3ea8367199ed29e0220a0e7c557
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485185"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882592"
 ---
-# <a name="how-to-compose-a-query-in-azure-search"></a>Jak tworzyć zapytania w usłudze Azure Search
+# <a name="how-to-compose-a-query-in-azure-search"></a>Jak utworzyć zapytanie w Azure Search
 
-W usłudze Azure Search zapytania jest pełną specyfikację obustronne operacji. Parametry żądania podać kryteria dopasowania do znajdowania dokumentów w indeksie, instrukcje wykonywania dla aparatu i dyrektyw kształtowania odpowiedzi. 
+W Azure Search zapytanie jest pełną specyfikacją operacji rundy. Parametry żądania zawierają kryteria dopasowania do znajdowania dokumentów w indeksie, instrukcje wykonywania dla aparatu i dyrektywy służące do kształtowania odpowiedzi. 
 
-Żądanie zapytania jest zaawansowanych konstrukcji, określając pola, które są w zakresie, jak wyszukiwać, które pola, aby powrócić do sortowania lub filtrowania i tak dalej. Nie określono tego parametru, uruchomieniu zapytania względem wszystkie pola z możliwością wyszukiwania jako operacji wyszukiwania pełnotekstowego, zwracając wynik nie została ona oceniona zestawu w dowolnej kolejności.
+Żądanie zapytania to zaawansowana konstrukcja, określająca, które pola należą do zakresu, jak wyszukiwać, które pola mają być zwracane, czy sortować lub filtrować itd. Nieokreślony, zapytanie jest wykonywane dla wszystkich pól z możliwością wyszukiwania jako operacji wyszukiwania pełnotekstowego, zwracając nieoceniony zestaw wyników w dowolnej kolejności.
 
 ## <a name="apis-and-tools-for-testing"></a>Interfejsy API i narzędzia do testowania
 
-W poniższej tabeli wymieniono interfejsów API i oparte na narzędziu podejścia do przesyłania kwerend.
+W poniższej tabeli przedstawiono interfejsy API i oparte na narzędziach podejścia do przesyłania zapytań.
 
 | Metodologia | Opis |
 |-------------|-------------|
-| [Eksplorator wyszukiwania (portal)](search-explorer.md) | Zawiera pasek wyszukiwania i opcje dla opcji indeksu i interfejsu api-version. Wyniki są zwracane jako dokumenty JSON. <br/>[Dowiedz się więcej.](search-get-started-portal.md#query-index) | 
-| [Postman lub Fiddler](search-get-started-postman.md) | Narzędzia do testowania sieci Web są doskonałym wyborem dla opracowywania wywołania REST. Interfejs API REST obsługuje każda operacja możliwe w usłudze Azure Search. W tym artykule Dowiedz się, jak skonfigurować nagłówek żądania HTTP i treści wysyłania żądań do usługi Azure Search.  |
-| [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Klient, który może służyć do tworzenie zapytań względem indeksu usługi Azure Search.  <br/>[Dowiedz się więcej.](search-howto-dotnet-sdk.md#core-scenarios)  |
-| [Wyszukiwanie dokumentów (interfejs API REST)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | GET lub POST metod w indeksie, za pomocą parametrów zapytania, aby uzyskać dodatkowe dane wejściowe.  |
+| [Eksplorator wyszukiwania (Portal)](search-explorer.md) | Udostępnia pasek wyszukiwania i opcje dotyczące opcji indeks i wersja interfejsu API. Wyniki są zwracane jako dokumenty JSON. <br/>[Dowiedz się więcej.](search-get-started-portal.md#query-index) | 
+| [Poster lub programu Fiddler](search-get-started-postman.md) | Narzędzia do testowania sieci Web to doskonały wybór w zakresie opracowywania wywołań REST. Interfejs API REST obsługuje wszystkie możliwe operacje w Azure Search. W tym artykule dowiesz się, jak skonfigurować nagłówek i treść żądania HTTP w celu wysyłania żądań do Azure Search.  |
+| [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Klient, który może służyć do wykonywania zapytań względem indeksu Azure Search.  <br/>[Dowiedz się więcej.](search-howto-dotnet-sdk.md#core-scenarios)  |
+| [Wyszukaj dokumenty (interfejs API REST)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | Pobieranie lub OGŁASZAnie metod na indeksie przy użyciu parametrów zapytania dla dodatkowych danych wejściowych.  |
 
-## <a name="a-first-look-at-query-requests"></a>Pierwsze spojrzenie na żądań zapytań
+## <a name="a-first-look-at-query-requests"></a>Pierwsze spojrzenie na żądania zapytań
 
-Przykładami są przydatne w przypadku wprowadzenia nowych pojęć. Zgodnie z językiem zapytań skonstruowane w [interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/search-documents), w tym przykładzie obiekty docelowe [nieruchomości pokaz indeksu](search-get-started-portal.md) oraz typowe parametry.
+Przykłady są przydatne do wprowadzenia nowych koncepcji. Jako reprezentatywne zapytanie skonstruowane w [interfejsie API REST](https://docs.microsoft.com/rest/api/searchservice/search-documents), ten przykład wskazuje na [indeks demonstracyjny nieruchomości](search-get-started-portal.md) i zawiera wspólne parametry.
 
 ```
 {
@@ -49,62 +49,62 @@ Przykładami są przydatne w przypadku wprowadzenia nowych pojęć. Zgodnie z j�
 }
 ```
 
-+ **`queryType`** Ustawia analizator, co w usłudze Azure Search może być [domyślny prosty analizator zapytań](search-query-simple-examples.md) (optymalne w celu wyszukiwania pełnotekstowego) lub [pełnego analizatora zapytań Lucene](search-query-lucene-examples.md) używane dla zapytań zaawansowanych konstrukcji, takich jak wyrażeń regularnych , wyszukiwanie w sąsiedztwie, rozmyte i wyszukiwanie symboli wieloznacznych, kilka.
++ **`queryType`** Ustawia parser, który w Azure Search może być domyślnym, [prostym analizatorem zapytań](search-query-simple-examples.md) (optymalnym dla wyszukiwania pełnotekstowego) lub [pełnym analizatorem zapytań Lucene](search-query-lucene-examples.md) , używanym do zaawansowanych konstrukcji zapytań, takich jak wyrażenia regularne, wyszukiwanie w sąsiedztwie, rozmyte i wieloznaczny Wyszukaj, aby nawiązać kilka nazw.
 
-+ **`search`** zawiera dopasowanie kryteria, zwykle tekstu, ale często wraz z operatorami logicznymi. Postanowienia pojedynczą autonomiczną są *termin* zapytania. Są ujęte w cudzysłów wieloczęściowy kwerendy *kluczowych* zapytania. Wyszukiwanie może być Niezdefiniowany, podobnie jak w **`search=*`** , ale najprawdopodobniej składa się z warunków, wyrażenia i operatory, podobny do wyświetlanych w przykładzie.
++ **`search`** zawiera kryteria dopasowywania, zazwyczaj tekst, ale często towarzyszy operatorom logicznym. Pojedyncze warunki autonomiczne to zapytania warunkowe. Zapytania o wiele części zawarte w cudzysłowie są zapytaniami *fraz kluczowych* . Wyszukiwanie może być niezdefiniowane, jak **`search=*`** w, ale prawdopodobnie zawiera warunki, frazy i operatory podobne do tego, co jest wyświetlane w przykładzie.
 
-+ **`searchFields`** jest opcjonalny, używany do ograniczenia wykonywania zapytania w określonych polach.
++ **`searchFields`** jest opcjonalny, używany do ograniczania wykonywania zapytania do określonych pól.
 
-Odpowiedzi są również ukształtowane przez parametry, które należy uwzględnić w zapytaniu. W tym przykładzie zestawu wyników składa się z pól na liście **`select`** instrukcji. Najważniejsze 10 trafień są zwracane w tym zapytaniu, ale **`count`** informujący o tym, liczby dokumentów dopasowania ogólną. W tym zapytaniu wiersze są sortowane według daysOnMarket.
+Odpowiedzi są również dostosowane do parametrów, które zostały uwzględnione w zapytaniu. W przykładzie zestaw wyników zawiera pola wymienione w **`select`** instrukcji. Tylko 10 najważniejszych trafień jest zwracanych w tym zapytaniu **`count`** , ale informuje, ile dokumentów jest zgodnych z ogólnym. W tej kwerendzie wiersze są sortowane według daysOnMarket.
 
-W usłudze Azure Search wykonanie zapytania jest zawsze względem jednego indeksu, uwierzytelniony przy użyciu klucza api-key podany w żądaniu. W spoczynku oba są dostarczane w nagłówkach żądania.
+W Azure Search wykonywanie zapytania jest zawsze w odniesieniu do jednego indeksu uwierzytelnianego przy użyciu klucza API-Key dostarczonego w żądaniu. W pozostałych, oba są dostępne w nagłówkach żądania.
 
-### <a name="how-to-run-this-query"></a>Sposób wykonania tego zapytania
+### <a name="how-to-run-this-query"></a>Jak uruchomić to zapytanie
 
-Do wykonania tego zapytania, należy użyć [wyszukiwania Eksploratora i indeks pokaz nieruchomości](search-get-started-portal.md). 
+Aby wykonać to zapytanie, użyj [Eksploratora wyszukiwania i indeksu pokazu dla nieruchomości](search-get-started-portal.md). 
 
-W pasku wyszukiwania programu explorer można wkleić tego ciągu zapytania: `search=seattle townhouse +lake&searchFields=description, city&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket`
+Ten ciąg zapytania można wkleić do paska wyszukiwania Eksploratora:`search=seattle townhouse +lake&searchFields=description, city&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket`
 
-## <a name="how-query-operations-are-enabled-by-the-index"></a>Jak operacje zapytań są włączone przez indeks
+## <a name="how-query-operations-are-enabled-by-the-index"></a>Jak operacje zapytań są włączane przez indeks
 
-Projekt indeksu i zapytania projektu są ściśle powiązane w usłudze Azure Search. Podstawowe fakt wiedzieć na początku jest fakt, że *schemat indeksu*, za pomocą atrybutów w każdym polu, określa rodzaj zapytania można tworzyć. 
+Projekt indeksu i projekt zapytania są ściśle sprzężone w Azure Search. Podstawowym faktem, że wiadomo, że *schemat indeksu*, z atrybutami każdego pola, określa rodzaj zapytania, które można skompilować. 
 
-Atrybuty indeksu w polu Określ dozwolone operacje —, czy pole jest *wyszukiwanie* w indeksie, *pobieranie* w wynikach, *sortowanie*,  *można filtrować*, i tak dalej. W ciągu zapytania przykład `"$orderby": "daysOnMarket"` działa tylko, ponieważ pole daysOnMarket jest oznaczony jako *sortowanie* w schemacie indeksu. 
+Atrybuty indeksu w polu ustawiają dozwolone operacje — czy pole można wyszukiwać w indeksie, *pobrać* z wyników, do *sortowania*, *filtrować*i tak dalej. W przykładowym ciągu zapytania działa `"$orderby": "daysOnMarket"` tylko, ponieważ pole daysOnMarket jest oznaczone jako do *sortowania* w schemacie indeksu. 
 
-![Definicja dla przykładu nieruchomości indeksu](./media/search-query-overview/realestate-sample-index-definition.png "definicja przykład nieruchomości indeksu")
+![Definicja indeksu dla przykładu nieruchomości](./media/search-query-overview/realestate-sample-index-definition.png "Definicja indeksu dla przykładu nieruchomości")
 
-Powyższym zrzucie ekranu jest częściowa lista atrybuty indeksu dla przykładu nieruchomości. Schemat indeksu całego można wyświetlić w portalu. Aby uzyskać więcej informacji na temat atrybutów indeksu zobacz [utworzyć indeks interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/create-index).
+Powyższy zrzut ekranu jest częściową listą atrybutów indeksu dla przykładu wartości rzeczywistej. Cały schemat indeksu można wyświetlić w portalu. Aby uzyskać więcej informacji na temat atrybutów indeksu, zobacz [create index REST API](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
 > [!Note]
-> Niektóre funkcje zapytania włączono całego indeksu, a nie na poszczególnych pól. Te funkcje obejmują: [mapy synonimów](search-synonyms.md), [niestandardowe analizatory](index-add-custom-analyzers.md), [sugestora konstrukcje (na potrzeby automatycznego uzupełniania i sugerowane zapytania)](index-add-suggesters.md), [oceniania logiki do ustalania kolejności wyniki](index-add-scoring-profiles.md).
+> Niektóre funkcje zapytań są włączone na poziomie indeksu, a nie na podstawie poszczególnych pól. Te możliwości obejmują: [mapy synonimów](search-synonyms.md), [Niestandardowe analizatory](index-add-custom-analyzers.md), [konstrukcje sugerujące (dla autouzupełniania i sugerowanych zapytań)](index-add-suggesters.md), [logika oceniania dla wyników rankingu](index-add-scoring-profiles.md).
 
 ## <a name="elements-of-a-query-request"></a>Elementy żądania zapytania
 
-Zapytania są zawsze kierowane na jeden indeks. Nie można przyłączyć indeksów, lub utworzyć struktury danych niestandardowych lub tymczasowej jako element docelowy kwerendy. 
+Zapytania są zawsze kierowane w pojedynczym indeksie. Nie można przyłączyć indeksów ani tworzyć niestandardowych lub tymczasowych struktur danych jako obiektów docelowych zapytań. 
 
-Wymagane elementy na żądania zapytania obejmują następujące składniki:
+Wymagane elementy w żądaniu zapytania obejmują następujące składniki:
 
-+ Usługa punktu końcowego i indeks kolekcję documents wyrażone jako adres URL zawierający składniki stałych i zdefiniowanych przez użytkownika: **`https://<your-service-name>.search.windows.net/indexes/<your-index-name>/docs`**
-+ **`api-version`** (Tylko REST) jest niezbędne, ponieważ więcej niż jedna wersja interfejsu API jest dostępny przez cały czas. 
-+ **`api-key`** , zapytania lub administratora klucz api-key, uwierzytelnia żądanie do usługi.
-+ **`queryType`** , prostej lub pełnej, który można pominąć, jeśli używasz domyślnych wbudowanych prostą składnię.
-+ **`search`** lub **`filter`** zapewnia dopasowanie kryteria, które mogą być nieokreślony, jeśli chcesz wykonać to puste wyszukiwanie. Oba typy zapytań są rozważane w kontekście prosty analizator, ale nawet zaawansowane zapytania wymaga parametru wyszukiwania do przekazywania wyrażeń złożonych zapytań.
++ Punkt końcowy usługi i kolekcja dokumentów indeksu, wyrażone jako adres URL zawierający stałe i zdefiniowane przez użytkownika składniki: **`https://<your-service-name>.search.windows.net/indexes/<your-index-name>/docs`**
++ **`api-version`** (Tylko REST) jest konieczne, ponieważ wiele wersji interfejsu API jest dostępnych przez cały czas. 
++ **`api-key`** , zapytanie lub klucz API-Key, uwierzytelnia żądanie do usługi.
++ **`queryType`** — prosta lub pełna, która może zostać pominięta, jeśli używasz wbudowanej domyślnej składni prostej.
++ **`search`** lub **`filter`** zawiera kryteria dopasowania, które można określić, jeśli chcesz przeprowadzić puste wyszukiwanie. Oba typy zapytań są omówione w sekcji prostego analizatora, ale nawet zapytania zaawansowane wymagają parametru wyszukiwania do przekazywania złożonych wyrażeń zapytania.
 
-Wszystkie inne parametry wyszukiwania są opcjonalne. Aby uzyskać pełną listę atrybutów, zobacz [Tworzenie indeksu (REST)](https://docs.microsoft.com/rest/api/searchservice/create-index). Aby dokładniej poznać sposób parametry są używane podczas przetwarzania, zobacz [jak wyszukiwanie pełnotekstowe działa w usłudze Azure Search](search-lucene-query-architecture.md).
+Wszystkie inne parametry wyszukiwania są opcjonalne. Aby zapoznać się z pełną listą atrybutów, zobacz [create index (REST)](https://docs.microsoft.com/rest/api/searchservice/create-index). Aby lepiej sprawdzić, jak parametry są używane podczas przetwarzania, zobacz [jak wyszukiwanie pełnotekstowe działa w Azure Search](search-lucene-query-architecture.md).
 
-## <a name="choose-a-parser-simple--full"></a>Wybierz analizator: prosty | Pełna
+## <a name="choose-a-parser-simple--full"></a>Wybierz parser: prosty | szczegółowe
 
-Usługa Azure Search znajduje się na górze Apache Lucene i zapewnia wybór między dwa parsery zapytania dotyczące obsługi typowych, wyspecjalizowana zapytania. Żądania przy użyciu prostego analizatora są formułować za pomocą [prosta składnia zapytań](query-simple-syntax.md), wybrane jako domyślne dla szybkości i skuteczności w dowolnej postaci tekstu zapytania. Ta składnia obsługuje szereg typowych operatorów wyszukiwania, na przykład AND, OR, NOT, frazy, sufiks i pierwszeństwo operatorów.
+Azure Search znajduje się na szczycie Apache Lucene i umożliwia wybór między dwoma analizatorami zapytań obsługujących typowe i wyspecjalizowane zapytania. Żądania przy użyciu prostego analizatora są formułowane przy użyciu [prostej składni zapytania](query-simple-syntax.md), wybranej jako wartości domyślnej dla jego szybkości i skuteczności w bezpłatnych zapytaniach tekstowych formularza. Ta składnia obsługuje wiele typowych operatorów wyszukiwania, w tym operatory AND, OR, NOT, phrase, sufiks i pierwszeństwo.
 
-[Pełnej składni zapytań Lucene](query-Lucene-syntax.md#bkmk_syntax), włączone po dodaniu `queryType=full` na żądanie udostępnia powszechnie przyjętym i ekspresyjny język zapytań opracowany jako część [Apache Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). Pełna składnia rozszerza prostą składnię. Każde zapytanie, które piszesz prostą składnię działa pełna analizator Lucene. 
+[Pełna składnia zapytań Lucene](query-Lucene-syntax.md#bkmk_syntax), którą można włączyć po `queryType=full` dodaniu żądania, uwidacznia powszechnie przyjęty i wyraźny język zapytań opracowany w ramach oprogramowania [Apache Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). Pełna składnia rozszerza prostą składnię. Wszystkie zapytania zapisane dla prostej składni są uruchamiane w ramach pełnego analizatora Lucene. 
 
-Poniższe przykłady ilustrują punkt: sam zapytania, ale przy użyciu ustawień inny znak uzyskanie różne wyniki. W pierwszym zapytaniu `^3` jest traktowany jako część termin wyszukiwania.
+Poniższe przykłady ilustrują punkt: te same zapytania, ale z różnymi ustawieniami querytype, dają różne wyniki. W pierwszym zapytaniu `^3` jest traktowane jako część wyszukiwanego terminu.
 
 ```
 queryType=simple&search=mountain beach garden ranch^3&searchFields=description&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket
 ```
 
-Tego samego zapytania przy użyciu pełnego analizatora Lucene interpretuje boost w polu na "ranch", która zwiększa wyszukiwarkach wyników zawierających ten konkretny termin.
+To samo zapytanie korzystające z pełnego parsera Lucene interpretuje podwyższenie poziomu w polu "Ranch", co zwiększa rangę wyszukiwania wyników zawierających ten konkretny termin.
 
 ```
 queryType=full&search=mountain beach garden ranch^3&searchFields=description&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket
@@ -114,57 +114,57 @@ queryType=full&search=mountain beach garden ranch^3&searchFields=description&$co
 
 ## <a name="types-of-queries"></a>Typy zapytań
 
-Usługa Azure Search obsługuje szeroką gamę typów zapytań. 
+Azure Search obsługuje szeroką gamę typów zapytań. 
 
-| Typ zapytania | Sposób użycia | Więcej informacji i przykłady |
+| Typ zapytania | Użycie | Przykłady i więcej informacji |
 |------------|--------|-------------------------------|
-| Wyszukiwanie tekstowe w dowolnej postaci | Parametr wyszukiwania i albo analizatora| Wyszukiwanie pełnotekstowe skanowania pod kątem jednego lub większej liczby terminów, we wszystkich *wyszukiwanie* pola w indeksie i działa w sposób, jakiego oczekuje się aparat wyszukiwania, takich jak Google czy Bing. Przykładu we wprowadzeniu jest wyszukiwanie pełnotekstowe.<br/><br/>Wyszukiwanie pełnotekstowe ulega Analiza tekstu przy użyciu standardowy analizator Lucene (domyślnie) na małe, wszystkie warunki, Usuń słowa ignorowane, takich jak "". Można zastąpić domyślną z [analizatory innej niż angielska](index-add-language-analyzers.md#language-analyzer-list) lub [wyspecjalizowane analizatory niezależny od języka](index-add-custom-analyzers.md#AnalyzerTable) , które modyfikują Analiza tekstu. Na przykład [— słowo kluczowe](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) całą zawartość pola, które traktuje jako pojedynczy token. Jest to przydatne w przypadku danych, takich jak kodów pocztowych, identyfikatory i nazwy niektórych produktów. | 
-| Wyszukiwanie filtrowane | [Wyrażenie filtru OData](query-odata-filter-orderby-syntax.md) i albo analizatora | Zapytania filtru oceny wyrażenia logicznego wszystkich *filtrowanie* pól w indeksie. W przeciwieństwie do wyszukiwania zapytanie filtru dopasowuje dokładnie zawartość pola, w tym uwzględnianie wielkości liter w polach ciągu. Inna różnica polega na tym, że filtr zapytania są wyrażone w składnia OData. <br/>[Przykładowe wyrażenie filtru](search-query-simple-examples.md#example-3-filter-queries) |
-| Wyszukiwanie geograficzne | [Typ Edm.GeographyPoint](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) na pole, wyrażenie filtru i albo analizatora | Współrzędne przechowywane w polu o Edm.GeographyPoint są używane do "Znajdź w pobliżu" lub opartą na mapie Wyszukaj kontrolki. <br/>[Wyszukiwanie geograficzne przykład](search-query-simple-examples.md#example-5-geo-search)|
-| Zakres wyszukiwania | Wyrażenie filtru i prosty analizator składni | W usłudze Azure Search zapytania są tworzone za pomocą parametru filtru. <br/>[Przykład filtru zakresu](search-query-simple-examples.md#example-4-range-filters) | 
-| [Fielded wyszukiwania](query-lucene-syntax.md#bkmk_fields) | Parametr wyszukiwania i pełnego analizatora | Zbuduj wyrażenie złożonego zapytania, przeznaczone dla jednego pola. <br/>[Przykład fielded wyszukiwania](search-query-lucene-examples.md#example-2-fielded-search) |
-| [Wyszukiwanie rozmyte](query-lucene-syntax.md#bkmk_fuzzy) | Parametr wyszukiwania i pełnego analizatora | Dopasowań na warunkach o podobnych konstrukcja lub pisowni. <br/>[Przykład wyszukiwania rozmytego](search-query-lucene-examples.md#example-3-fuzzy-search) |
-| [Wyszukiwanie w sąsiedztwie](query-lucene-syntax.md#bkmk_proximity) | Parametr wyszukiwania i pełnego analizatora | Warunki znajduje znajdujące się blisko siebie nawzajem w dokumencie. <br/>[Przykładowe wyszukiwanie w sąsiedztwie](search-query-lucene-examples.md#example-4-proximity-search) |
-| [promowanie](query-lucene-syntax.md#bkmk_termboost) | Parametr wyszukiwania i pełnego analizatora | Szereguje wyższe dokumentu, jeśli zawiera on wzmocnione termin względem innych użytkowników, które nie. <br/>[Przykład zwiększenie termin](search-query-lucene-examples.md#example-5-term-boosting) |
-| [wyszukiwanie wyrażenia regularnego](query-lucene-syntax.md#bkmk_regex) | Parametr wyszukiwania i pełnego analizatora | Dopasowania na podstawie zawartości wyrażenia regularnego. <br/>[Przykładowe wyrażenie regularne](search-query-lucene-examples.md#example-6-regex) |
-|  [symbol wieloznaczny; Prefiks może też wyszukiwania](query-lucene-syntax.md#bkmk_wildcard) | Parametr wyszukiwania i pełnego analizatora | Dopasowania na podstawie prefiksu i tyldy (`~`) lub pojedynczy znak (`?`). <br/>[Przykład wyszukiwania symboli wieloznacznych](search-query-lucene-examples.md#example-7-wildcard-search) |
+| Wyszukiwanie tekstu w dowolnym formacie | Parametry wyszukiwania i parser| Wyszukiwanie pełnotekstowe skanuje jeden lub więcej terminów we wszystkich polach z *możliwością wyszukiwania* w indeksie i działa w taki sposób, aby aparat wyszukiwania, taki jak Google lub Bing, mógł działać. Przykład we wprowadzeniu jest wyszukiwaniem pełnotekstowym.<br/><br/>Wyszukiwanie pełnotekstowe jest poddawana analizie tekstu przy użyciu standardowego analizatora Lucene (domyślnie) w przypadku małych i średnich wyrazów, Usuń słowa Stop podobne do "". Wartość domyślną można zastąpić analizatorami w [językach innych niż angielski](index-add-language-analyzers.md#language-analyzer-list) lub [wyspecjalizowanymi analizatorami niezależny od](index-add-custom-analyzers.md#AnalyzerTable) , które modyfikują analizę tekstu. Przykładem jest [słowo kluczowe](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) , które traktuje całą zawartość pola jako pojedynczy token. Jest to przydatne w przypadku danych, takich jak kody ZIP, identyfikatory i nazwy produktów. | 
+| Wyszukiwanie filtrowane | [Wyrażenie filtru OData](query-odata-filter-orderby-syntax.md) i każdy parser | Zapytania filtrujące obliczają wyrażenie logiczne dla wszystkich pól z możliwością *filtrowania* w indeksie. W przeciwieństwie do wyszukiwania, zapytanie filtru dopasowuje dokładną zawartość pola, w tym uwzględnianie wielkości liter w polach ciągów. Inną różnicą jest to, że zapytania filtru są wyrażane w składni protokołu OData. <br/>[Przykład wyrażenia filtru](search-query-simple-examples.md#example-3-filter-queries) |
+| Wyszukiwanie geograficzne | [Typ EDM. geographyPoint względem](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) w polu, wyrażenie filtru i parser | Współrzędne przechowywane w polu z obiektem EDM. geographyPoint względem są używane dla kontrolek wyszukiwania "Znajdź w pobliżu" lub "mapowania". <br/>[Przykład wyszukiwania geograficznego](search-query-simple-examples.md#example-5-geo-search)|
+| Wyszukiwanie zakresu | wyrażenie filtru i prosty parser | W Azure Search, zapytania zakresu są kompilowane przy użyciu parametru filtru. <br/>[Przykład filtru zakresu](search-query-simple-examples.md#example-4-range-filters) | 
+| [Wyszukiwanie polowe](query-lucene-syntax.md#bkmk_fields) | Parametr wyszukiwania i pełny analizator składni | Utwórz złożone wyrażenie zapytania określające jedno pole. <br/>[Przykład wyszukiwania w polu](search-query-lucene-examples.md#example-2-fielded-search) |
+| [Wyszukiwanie rozmyte](query-lucene-syntax.md#bkmk_fuzzy) | Parametr wyszukiwania i pełny analizator składni | Dopasowuje się do warunków mających podobną konstrukcję lub pisownię. <br/>[Przykład wyszukiwania rozmytego](search-query-lucene-examples.md#example-3-fuzzy-search) |
+| [Wyszukiwanie w sąsiedztwie](query-lucene-syntax.md#bkmk_proximity) | Parametr wyszukiwania i pełny analizator składni | Znajduje terminy, które są blisko siebie w dokumencie. <br/>[Przykład wyszukiwania w sąsiedztwie](search-query-lucene-examples.md#example-4-proximity-search) |
+| [zwiększenie warunków](query-lucene-syntax.md#bkmk_termboost) | Parametr wyszukiwania i pełny analizator składni | Określa wyższy poziom dokumentu, jeśli zawiera on podwyższony termin względem innych, które nie są. <br/>[Przykład zwiększania warunków](search-query-lucene-examples.md#example-5-term-boosting) |
+| [Wyszukiwanie wyrażeń regularnych](query-lucene-syntax.md#bkmk_regex) | Parametr wyszukiwania i pełny analizator składni | Dopasowuje się w oparciu o zawartość wyrażenia regularnego. <br/>[Przykład wyrażenia regularnego](search-query-lucene-examples.md#example-6-regex) |
+|  [Wyszukiwanie przy użyciu symboli wieloznacznych lub prefiksów](query-lucene-syntax.md#bkmk_wildcard) | Parametr wyszukiwania i pełny analizator składni | Dopasowuje się na podstawie prefiksu i`~`tyldy () lub`?`pojedynczego znaku (). <br/>[Przykład wyszukiwania symboli wieloznacznych](search-query-lucene-examples.md#example-7-wildcard-search) |
 
 ## <a name="manage-search-results"></a>Zarządzanie wynikami wyszukiwania 
 
-Wyniki zapytania są przesyłane strumieniowo jako dokumenty JSON w interfejsie API REST, mimo, że użycie interfejsów API programu .NET serializacji jest wbudowany. Wyniki można przekształcić przez ustawienie parametrów dla kwerendy, wybranie określonych pól dla odpowiedzi.
+Wyniki zapytania są przesyłane strumieniowo jako dokumenty JSON w interfejsie API REST, ale jeśli korzystasz z interfejsów API platformy .NET, Serializacja jest wbudowana. Wyniki można kształtować przez ustawienie parametrów zapytania, wybierając określone pola dla odpowiedzi.
 
-Parametry zapytania może służyć do struktury zestawu wyników w następujący sposób:
+Parametry zapytania mogą służyć do tworzenia struktury zestawu wyników w następujący sposób:
 
-+ Ograniczanie lub adapterów przetwarzania wsadowego liczbę dokumentów w wynikach (50 domyślnie)
-+ Wybieranie pola do uwzględnienia w wynikach
-+ Ustawienie kolejności sortowania
-+ Dodawanie trafień zaznaczenie, aby zwrócić uwagę czytelnika na pasujące terminy w treści wyników wyszukiwania
++ Ograniczanie lub przetwarzanie wsadowe liczby dokumentów w wynikach (domyślnie 50)
++ Wybieranie pól do uwzględnienia w wynikach
++ Ustawianie kolejności sortowania
++ Dodawanie świateł trafień, aby zwrócić uwagę na pasujące warunki w treści wyników wyszukiwania
 
-### <a name="tips-for-unexpected-results"></a>Porady dotyczące nieoczekiwane wyniki
+### <a name="tips-for-unexpected-results"></a>Porady dotyczące nieoczekiwanych wyników
 
-Od czasu do czasu substancji i nie struktury wyników jest nieoczekiwany. Gdy niż oczekiwana zobaczyć wyniki zapytania, możesz spróbować tych modyfikacji kwerendy, aby sprawdzić, czy poprawić wyniki:
+Czasami substancja, a nie struktura wyników, nie są oczekiwane. Gdy wyniki zapytania nie są oczekiwane, możesz spróbować wykonać te modyfikacje kwerendy, aby zobaczyć, czy rezultaty rosną:
 
-+ Zmiana **`searchMode=any`** (domyślna), aby **`searchMode=all`** będą musieli dopasowanie wszystkie kryteria, a nie jakąkolwiek kryteriów. Jest to szczególnie istotne, gdy operatory logiczne są uwzględnione zapytania.
++ Zmień **`searchMode=any`** (domyślnie **`searchMode=all`** ), aby wymagać dopasowania wszystkich kryteriów zamiast kryteriów. Jest to szczególnie prawdziwe, gdy operatory logiczne są uwzględnione w zapytaniu.
 
-+ Zmień technika zapytania, jeśli tekst lub poddawać analizie leksykalnej, jest to konieczne, ale typ zapytania wyklucza językowej przetwarzania. Wyszukiwanie pełnotekstowe, tekst lub autocorrects poddawać analizie leksykalnej błędów pisowni, formularze programu word w liczbie pojedynczej niż liczby mnogiej i nawet nieregularne zlecenia lub rzeczowniki. Dla niektórych kwerend, takich jak rozmyte lub wyszukiwania symboli wieloznacznych, analiza tekstu nie jest częścią zapytania przetwarzania potoku. W niektórych scenariuszach wyrażeń regularnych zostały użyte jako obejście tego problemu. 
++ Zmień technikę zapytania, jeśli konieczne jest przeprowadzenie analizy tekstu lub leksykalnia, ale typ zapytania wyklucza przetwarzanie lingwistyczne. W wyszukiwaniu pełnotekstowym tekst lub analiza leksykalna są Autokorekty w przypadku błędów pisowni, formularzy wyrazów z pojedynczą plural, a nawet nieregularnych czasowników lub rzeczowników. W przypadku niektórych zapytań, takich jak rozmyte lub wyszukiwanie przy użyciu symboli wieloznacznych, analiza tekstu nie jest częścią potoku analizowania zapytań. W przypadku niektórych scenariuszy wyrażenia regularne zostały użyte jako obejście. 
 
 ### <a name="paging-results"></a>Stronicowanie wyników
-Usługa Azure Search ułatwia implementowanie stronicowania wyników wyszukiwania. Za pomocą **`top`** i **`skip`** parametry, można sprawnie wysyłać żądania wyszukiwania, które umożliwiają uzyskanie całego zbioru wyników wyszukiwania w zarządzanych, uporządkowanych podzbiorów, który pozwala łatwo stosować dobre wyszukiwania interfejsu użytkownika rozwiązania. Razem z mniejszymi podzbiorami wyników można również odbierać liczbę dokumentów w całym zbiorze wyników wyszukiwania.
+Usługa Azure Search ułatwia implementowanie stronicowania wyników wyszukiwania. Korzystając z **`top`** parametrów i **`skip`** , można bezproblemowo wystawiać żądania wyszukiwania, które umożliwiają otrzymanie całkowitego zestawu wyników wyszukiwania w sposób umożliwiający zarządzanie, uporządkowane podzestawy, które łatwo umożliwiają dobre metody interfejsu użytkownika wyszukiwania. Razem z mniejszymi podzbiorami wyników można również odbierać liczbę dokumentów w całym zbiorze wyników wyszukiwania.
 
 Więcej informacji o stronicowaniu wyników wyszukiwania można znaleźć w artykule [How to page search results in Azure Search](search-pagination-page-layout.md) (Sposoby stronicowania wyników wyszukiwania w usłudze Azure Search).
 
 ### <a name="ordering-results"></a>Porządkowanie wyników
 Usługa Azure Search udostępnia możliwość przekazania wyników zapytania wyszukiwania uporządkowanych według wartości w określonym polu. Domyślnie usługa Azure Search porządkuje wyniki w oparciu o rangę wyniku wyszukiwania poszczególnych dokumentów, który jest określany na podstawie wagi [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf).
 
-Jeśli chcesz, aby usługa Azure Search zwracała wyniki uporządkowane według wartości innej niż wynik wyszukiwania, możesz użyć **`orderby`** parametru wyszukiwania. Można określić wartość **`orderby`** parametr dołączając nazwy pól i wywołania [  **`geo.distance()` funkcja** ](query-odata-filter-orderby-syntax.md) przypadku wartości geoprzestrzennych. Każde wyrażenie może następować `asc` do wskazania, że wyniki są żądane w kolejności rosnącej, a **`desc`** do wskazania, że wyniki są sortowane w kolejności malejącej. Domyślnie jest stosowana kolejność rosnąca.
+Jeśli chcesz, aby Azure Search zwracał wyniki uporządkowane według wartości innej niż wynik wyszukiwania, możesz użyć **`orderby`** parametru wyszukiwania. Można określić wartość **`orderby`** parametru, aby uwzględnić nazwy pól i wywołania [ **`geo.distance()` funkcji**](query-odata-filter-orderby-syntax.md) dla wartości geoprzestrzennych. Po każdym wyrażeniu można następować `asc` , aby wskazać, że wyniki są żądane w kolejności rosnącej, i **`desc`** wskazywać, że wyniki są żądane w kolejności malejącej. Domyślnie jest stosowana kolejność rosnąca.
 
 
 ### <a name="hit-highlighting"></a>Wyróżnianie trafień
-W usłudze Azure Search, podkreślając części, w wynikach wyszukiwania, zgodne z zapytaniem wyszukiwania umożliwiają łatwe za pomocą **`highlight`** , **`highlightPreTag`** , i **`highlightPostTag`** parametrów. Można wskazać, w których polach *z możliwością wyszukiwania* ma zostać wyróżniony dopasowany tekst, a także dokładnie określić tagi ciągów, które mają zostać dodane na początku i na końcu dopasowanego tekstu zwracanego przez usługę Azure Search.
+W Azure Search, podkreślając dokładne części wyników wyszukiwania, które pasują do zapytania wyszukiwania **`highlight`** , przy użyciu parametrów, **`highlightPreTag`** i **`highlightPostTag`** . Można wskazać, w których polach *z możliwością wyszukiwania* ma zostać wyróżniony dopasowany tekst, a także dokładnie określić tagi ciągów, które mają zostać dodane na początku i na końcu dopasowanego tekstu zwracanego przez usługę Azure Search.
 
 ## <a name="see-also"></a>Zobacz także
 
-+ [Jak działa wyszukiwanie pełnotekstowe w usłudze Azure Search (zapytanie analizy architektury)](search-lucene-query-architecture.md)
++ [Jak działa wyszukiwanie pełnotekstowe w Azure Search (architektura analizy zapytań)](search-lucene-query-architecture.md)
 + [Eksplorator wyszukiwania](search-explorer.md)
-+ [Jak wykonywać zapytania na platformie .NET](search-query-dotnet.md)
-+ [Jak wykonywać zapytania w REST](search-create-index-rest-api.md)
++ [Jak wykonywać zapytania w programie .NET](search-query-dotnet.md)
++ [Jak wykonywać zapytania w usłudze REST](search-create-index-rest-api.md)

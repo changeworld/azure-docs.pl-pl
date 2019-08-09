@@ -1,6 +1,6 @@
 ---
-title: Licencja samoobsługowego resetowania haseł — Azure Active Directory
-description: Usługa Azure AD samoobsługowego resetowania haseł wymagania licencyjne
+title: Samoobsługowe resetowanie haseł licencji — Azure Active Directory
+description: Wymagania licencyjne dotyczące samoobsługowego resetowania haseł usługi Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,53 +11,53 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56b74e6a9f1d83798b557c48eb78242d70e85dfc
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 7463b86ea20a712937b8ccba7997c2551aae5be6
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612632"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879105"
 ---
-# <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Resetuj wymaganiach dotyczących licencjonowania dla samoobsługowego hasła usługi Azure AD
+# <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Wymagania licencyjne dotyczące funkcji samoobsługowego resetowania haseł w usłudze Azure AD
 
-Usługa Azure Active Directory (Azure AD) jest dostępna w czterech wersjach — Bezpłatna, Podstawowa, Premium P1 i Premium P2. Istnieje kilka różnych funkcji, składających się samoobsługowego resetowania haseł, zmiany, w tym resetowania, odblokuj i zapisywania zwrotnego, które są dostępne w różnych wersjach programu Azure AD. W tym artykule próbuje różnice zostały wyjaśnione w. Więcej szczegółów dotyczących funkcji dostępnych w poszczególnych wydaniach usługi Azure AD można znaleźć na [cennik usługi Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/).
+Azure Active Directory (Azure AD) znajduje się w kilku wersjach: Bezpłatna, Premium P1 i Premium P2. Istnieje kilka różnych funkcji, które składają się na Samoobsługowe resetowanie hasła, w tym zmiany, resetowanie, odblokowywanie i zapisywanie zwrotne, które są dostępne w różnych wersjach usługi Azure AD. Ten artykuł próbuje wyjaśnić różnice. Więcej informacji o funkcjach dostępnych w poszczególnych wersjach usługi Azure AD można znaleźć na [stronie cennika Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="compare-editions-and-features"></a>Porównanie wersji i funkcji
 
-Samoobsługowe haseł usługi Azure AD resetowania jest licencjonowany na użytkownika, aby zachować zgodność z organizacji są wymagane do przypisywania odpowiedniej licencji do użytkowników.
+Funkcja samoobsługowego resetowania hasła w usłudze Azure AD jest licencjonowana dla poszczególnych użytkowników, aby zachować odpowiednie licencje dla swoich użytkowników.
 
 * Samoobsługowa zmiana haseł użytkowników w chmurze
-   * Jestem **użytkowników tylko w chmurze** i swoje hasło.
-      * Chcę **zmienić** hasła do czegoś nowego.
-   * Ta funkcja znajduje się we wszystkich wersjach programu Azure AD.
+   * Jestem **użytkownikiem tylko w chmurze** i znają moje hasło.
+      * Chcę **zmienić** moje hasło na nowe.
+   * Ta funkcja jest uwzględniona we wszystkich wersjach usługi Azure AD.
 
 * Samoobsługowe resetowanie haseł użytkowników w chmurze
-   * Jestem **użytkowników tylko w chmurze** i zapomniane hasła.
-      * Chcę **resetowania** hasła na coś, co wiem.
-   * Ta funkcja znajduje się w usłudze Azure AD w wersji podstawowa, Premium P1 lub P2 lub Microsoft 365 Business.
+   * Jestem **użytkownikiem tylko w chmurze** i zapomniano mojego hasła.
+      * Chcę **zresetować** moje hasło do mnie.
+   * Ta funkcja jest uwzględniona w Azure AD — wersja Premium P1 lub P2 lub Microsoft 365 Business.
 
-* Samoobsługowe hasło Resetowanie/zmiana/odblokowywanie **przy użyciu funkcji zapisywania zwrotnego w środowisku lokalnym**
-   * Jestem **użytkownika hybrydowego** Moje konto użytkownika usługi Active Directory w środowisku lokalnym jest zsynchronizowany z moim kontem usługi Azure AD za pomocą usługi Azure AD Connect. Chcę zmienić hasło, mieć zapomniane hasła lub zostało zablokowane.
-      * Chcę zmienić hasło lub zresetować je coś o nim znać lub odblokowywanie mojego konta **i** ma czy zmiana zsynchronizowane z powrotem do lokalnej usługi Active Directory.
-   * Ta funkcja znajduje się w usłudze Azure AD Premium P1 lub P2 lub Microsoft 365 Business.
+* Samoobsługowe resetowanie/zmiana/odblokowanie hasła **przy użyciu lokalnego zapisywania zwrotnego**
+   * Jestem **użytkownikiem hybrydowym** mojego lokalnego Active Directory konto użytkownika jest synchronizowane z kontem usługi Azure AD przy użyciu Azure AD Connect. Chcę zmienić moje hasło, zapomniano moje hasło lub zostało zablokowane.
+      * Chcę zmienić moje hasło lub zresetować je do czegoś znanego lub Odblokuj moje konto, **a** następnie zmień synchronizację z powrotem do Active Directory lokalnego.
+   * Ta funkcja jest uwzględniona w Azure AD — wersja Premium P1 lub P2 lub Microsoft 365 Business.
 
 > [!WARNING]
-> Licencjonowanie plany usługi Office 365 autonomiczny *nie obsługują "Samoobsługi hasło Resetowanie/zmiana/odblokowywanie przy użyciu funkcji zapisywania zwrotnego w środowisku lokalnym"* i wymagają plan, który zawiera program Azure AD Premium P1, P2 — wersja Premium lub Microsoft 365 Business, w tym funkcje do pracy.
+> Autonomiczne plany licencjonowania pakietu Office 365 *nie obsługują funkcji samoobsługowego resetowania hasła/zmiany/odblokowywania przy użyciu lokalnego zapisywania zwrotnego* i wymagają planu, który obejmuje Azure AD — wersja Premium P1, Premium P2 lub Microsoft 365 Business, aby ta funkcja działała.
 >
 
-Dodatkowe informacje o licencjonowaniu, wraz z kosztami, można znaleźć na następujących stronach:
+Dodatkowe informacje o licencjonowaniu, w tym koszty, można znaleźć na następujących stronach:
 
-* [Usługa Azure Active Directory, cennik lokacji](https://azure.microsoft.com/pricing/details/active-directory/)
-* [Usługa Azure Active Directory funkcje i możliwości](https://www.microsoft.com/cloud-platform/azure-active-directory-features)
+* [Azure Active Directory witryna cenowa](https://azure.microsoft.com/pricing/details/active-directory/)
+* [Azure Active Directory funkcje i możliwości](https://www.microsoft.com/cloud-platform/azure-active-directory-features)
 * [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
 * [Microsoft 365 Enterprise](https://www.microsoft.com/microsoft-365/enterprise)
 * [Opis usługi Microsoft 365 Business](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)
 
-## <a name="enable-group-or-user-based-licensing"></a>Włącz grupy lub Licencjonowanie oparte na użytkownika
+## <a name="enable-group-or-user-based-licensing"></a>Włączanie licencjonowania grupowego lub użytkownika
 
-Teraz usługi Azure AD obsługuje Licencjonowanie na podstawie grupy. Administratorzy mogą przypisywać licencje zbiorcze do grupy użytkowników, a nie przypisując im pojedynczo. Aby uzyskać więcej informacji, zobacz [przypisania, sprawdź i rozwiązywanie problemów z licencjami](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses).
+Usługa Azure AD obsługuje teraz Licencjonowanie oparte na grupach. Administratorzy mogą przypisywać licencje zbiorczo do grupy użytkowników, a nie przypisywać ich pojedynczo. Aby uzyskać więcej informacji, zobacz [Przypisywanie, weryfikowanie i rozwiązywanie problemów z licencjami](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses).
 
-Nie wszystkie usługi firmy Microsoft są dostępne we wszystkich lokalizacjach. Aby można było przypisać licencję do użytkownika, administrator musi określić **lokalizacji użytkowania** właściwości użytkownika. Przypisanie licencji może odbywać się w obszarze **użytkownika** > **profilu** > **ustawienia** sekcji w witrynie Azure portal. *Gdy używasz przypisanie licencji do grupy, wszyscy użytkownicy bez określonej lokalizacji użytkowania dziedziczą lokalizację katalogu.*
+Nie wszystkie usługi firmy Microsoft są dostępne we wszystkich lokalizacjach. Aby można było przypisać licencję do użytkownika, administrator musi określić właściwość **Lokalizacja użycia** dla użytkownika. Przypisanie licencji można wykonać w sekcji**ustawień** **profilu** >  **użytkownika** > w Azure Portal. *W przypadku korzystania z przypisania licencji grupy Wszyscy użytkownicy bez określonej lokalizacji użycia dziedziczą lokalizację katalogu.*
 
 ## <a name="next-steps"></a>Kolejne kroki
 

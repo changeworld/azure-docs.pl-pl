@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 02/07/2019
-ms.openlocfilehash: 96571b55158733f8189ddf87402fb634330ca80d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3b76dc546b46718378d9b22ad80e17849eaf532d
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570453"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884081"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Konfigurowanie replikacji w Azure SQL Database bazie danych wystąpienia zarządzanego
 
@@ -59,7 +59,7 @@ Obsługuje:
 Następujące funkcje nie są obsługiwane w wystąpieniu zarządzanym w Azure SQL Database:
 
 - [Aktualizowalne subskrypcje](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication).
-- Jeśli skonfigurowano replikację transakcyjną, nie należy używać grup [aktywnej replikacji](sql-database-active-geo-replication.md) geograficznej i [autotrybu failover](sql-database-auto-failover-group.md) .
+- [Aktywna replikacja geograficzna](sql-database-active-geo-replication.md) z replikacją transakcyjną. Zamiast aktywnej replikacji geograficznej, należy użyć grup z obsługą [trybu failover](sql-database-auto-failover-group.md), ale należy pamiętać, że publikacja musi zostać [ręcznie usunięta](sql-database-managed-instance-transact-sql-information.md#replication) z głównego wystąpienia zarządzanego i ponownie utworzona na pomocniczym wystąpieniu zarządzanym po przejściu do trybu failover.  
  
 ## <a name="1---create-a-resource-group"></a>1 — Tworzenie grupy zasobów
 

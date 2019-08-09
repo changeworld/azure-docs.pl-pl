@@ -1,240 +1,173 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą BenSelect | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i BenSelect.
+title: 'Samouczek: Azure Active Directory integrację z usługą BenSelect | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i BenSelect.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: ffa17478-3ea1-4356-a289-545b5b9a4494
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/23/2017
+ms.topic: tutorial
+ms.date: 08/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 699afd4703efc5e8f63bb13fe1dd753a0c72594d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f5ca12f89615cd4b3110b0d67268c048b8e44561
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60282701"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879721"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-benselect"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą BenSelect
+# <a name="tutorial-integrate-benselect-with-azure-active-directory"></a>Samouczek: Integruj BenSelect z Azure Active Directory
 
-W tym samouczku dowiesz się, jak zintegrować BenSelect w usłudze Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować usługę BenSelect z usługą Azure Active Directory (Azure AD). Po zintegrowaniu usługi BenSelect z usługą Azure AD można:
 
-Integrowanie BenSelect z usługą Azure AD zapewnia następujące korzyści:
+* Kontrolka w usłudze Azure AD, która ma dostęp do BenSelect.
+* Zezwól użytkownikom na automatyczne logowanie się do usługi BenSelect przy użyciu kont w usłudze Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
 
-- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do BenSelect
-- Umożliwia użytkownikom automatyczne pobieranie zalogowanych do BenSelect (logowanie jednokrotne) przy użyciu konta usługi Azure AD
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą BenSelect, potrzebne są następujące elementy:
+Aby rozpocząć, potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- BenSelect logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
-
-- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
+* Subskrypcja z włączonym logowaniem jednokrotnym (SSO) BenSelect.
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie BenSelect z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym.
+
+* Usługa BenSelect obsługuje **dostawcy tożsamości** zainicjowane przez logowanie jednokrotne
 
 ## <a name="adding-benselect-from-the-gallery"></a>Dodawanie BenSelect z galerii
-Aby skonfigurować integrację BenSelect w usłudze Azure AD, należy dodać BenSelect z galerii z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać BenSelect z galerii, wykonaj następujące czynności:**
+Aby skonfigurować integrację programu BenSelect z usługą Azure AD, musisz dodać BenSelect z galerii do listy zarządzanych aplikacji SaaS.
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
+1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
+1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
+1. W sekcji **Dodaj z galerii** wpisz **BenSelect** w polu wyszukiwania.
+1. Wybierz pozycję **BenSelect** from panel wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-    ![Usługa Active Directory][1]
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-    ![Aplikacje][2]
-    
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą BenSelect przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w BenSelect.
 
-    ![Aplikacje][3]
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą BenSelect, wykonaj następujące bloki konstrukcyjne:
 
-1. W polu wyszukiwania wpisz **BenSelect**.
+1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj logowanie](#configure-benselect-sso)** jednokrotne w usłudze BenSelect, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+3. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
+4. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
+5. **[Utwórz użytkownika testowego BenSelect](#create-benselect-test-user)** , aby dysponować odpowiednikiem B. Simon w BenSelect, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Przetestuj logowanie](#test-sso)** jednokrotne — aby sprawdzić, czy konfiguracja działa.
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/benselect-tutorial/tutorial_benselect_search.png)
+### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
-1. W panelu wyników wybierz **BenSelect**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/benselect-tutorial/tutorial_benselect_addfromgallery.png)
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **BenSelect** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie**jednokrotne.
+1. Na stronie **Wybierz metodę logowania** jednokrotnego wybierz pozycję **SAML**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
-W tej sekcji Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą BenSelect w oparciu o użytkownika testu o nazwie "Britta Simon."
+   ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w BenSelect do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w BenSelect musi można ustanowić.
+1. W sekcji **Podstawowa konfiguracja języka SAML** wprowadź wartości dla następujących pól:
 
-W BenSelect, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
+    W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://www.benselect.com/enroll/login.aspx?Path=<tenant name>`
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą BenSelect, należy wykonać poniższe bloki konstrukcyjne:
+    > [!NOTE]
+    > Ta wartość nie jest prawdziwa. Zaktualizuj ją, stosując rzeczywisty adres URL odpowiedzi. Skontaktuj się z [zespołem obsługi klienta BenSelect](mailto:support@selerix.com) , aby uzyskać wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego BenSelect](#creating-a-benselect-test-user)**  — aby odpowiednikiem Britta Simon w BenSelect połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. Aplikacja BenSelect oczekuje potwierdzeń SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Atrybuty użytkownika**.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+    ![image](common/edit-attribute.png)
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji BenSelect.
+1. Kliknij ikonę **Edytuj** , aby edytować **wartość identyfikatora nazwy**.
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z BenSelect, wykonaj następujące czynności:**
+    ![image](media/benselect-tutorial/mail-prefix1.png)
 
-1. W witrynie Azure portal na **BenSelect** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W sekcji **Zarządzanie oświadczeniami użytkowników** wykonaj następujące czynności:
 
-    ![Konfigurowanie logowania jednokrotnego][4]
+    ![image](media/benselect-tutorial/mail-prefix2.png)
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Konfigurowanie logowania jednokrotnego](./media/benselect-tutorial/tutorial_benselect_samlbase.png)
+    a. Wybierz **transformację** jako **Źródło**.
 
-1. Na **BenSelect domena i adresy URL** sekcji, wykonaj następujące czynności:
+    b. Na liście rozwijanej **transformacja** wybierz pozycję **ExtractMailPrefix ()** .
 
-    ![Konfigurowanie logowania jednokrotnego](./media/benselect-tutorial/tutorial_benselect_url.png)
+    c. Na liście rozwijanej **parametr 1** wybierz pozycję **User. userPrincipalName**.
 
-    W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://www.benselect.com/enroll/login.aspx?Path=<tenant name>`
+    d. Kliknij polecenie **Zapisz**.
 
-    > [!NOTE] 
-    > Ta wartość nie jest prawdziwa. Zaktualizuj ją, stosując rzeczywisty adres URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej BenSelect](mailto:support@selerix.com) aby zyskać tę wartość.
- 
-1. Na **certyfikat podpisywania SAML** kliknij **Certificate(Raw)** , a następnie zapisz plik certyfikatu na komputerze.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **certyfikat (RAW)** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/benselect-tutorial/tutorial_benselect_certificate.png) 
+    ![Link pobierania certyfikatu](common/certificateraw.png)
 
-1. Aplikacja BenSelect oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Poniższy zrzut ekranu przedstawia przykład tego działania.
+1. W sekcji **Konfigurowanie BenSelect** skopiuj odpowiednie adresy URL na podstawie wymagania.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/benselect-tutorial/tutorial_benselect_06.png)
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-1. W **atrybutów użytkownika** sekcji na **logowanie jednokrotne** okno dialogowe:
+### <a name="configure-benselect-sso"></a>Konfigurowanie logowania jednokrotnego BenSelect
 
-    a. W **identyfikator użytkownika** listy rozwijanej wybierz **ExtractMailPrefix**.
+Aby skonfigurować Logowanie jednokrotne na stronie **BenSelect** , musisz wysłać pobrany **certyfikat (RAW)** i odpowiednie skopiowane adresy URL z Azure Portal do [zespołu pomocy technicznej BenSelect](mailto:support@selerix.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
-    b. W **poczty** listy rozwijanej wybierz **user.userprincipalname**.
+> [!NOTE]
+> Należy zauważyć, że ta integracja wymaga algorytmu SHA256 (SHA1 nie jest obsługiwana), aby ustawić Logowanie jednokrotne na odpowiednim serwerze, takim jak app2101 itp.
 
-1. Kliknij przycisk **Zapisz** przycisku.
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-    ![Konfigurowanie logowania jednokrotnego](./media/benselect-tutorial/tutorial_general_400.png)
+W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
-1. Na **konfiguracji BenSelect** , kliknij przycisk **skonfigurować BenSelect** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
+1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. Wybierz **nowego użytkownika** w górnej części ekranu.
+1. We właściwościach **użytkownika** wykonaj następujące kroki:
+   1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
+   1. W polu **Nazwa użytkownika** wprowadź wartość username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
+   1. Kliknij przycisk **Utwórz**.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/benselect-tutorial/tutorial_benselect_configure.png) 
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-1. Aby skonfigurować logowanie jednokrotne na **BenSelect** stronie, musisz wysłać pobrany **Certificate(Raw)** i **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL**do [zespołem pomocy technicznej BenSelect](mailto:support@selerix.com).
+W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do usługi BenSelect.
 
-   >[!NOTE]
-   >Trzeba wspomnieć, że ta integracja wymaga algorytm SHA256 (nie jest obsługiwany algorytm SHA1) można ustawić logowania jednokrotnego na odpowiednim serwerze, takich jak app2101 itp. 
-   
-> [!TIP]
-> Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji  **Konfiguracja** w dolnej części strony. Dalsze informacje o funkcji dokumentacji osadzonej można znaleźć tutaj: [Osadzona dokumentacja usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Na liście Aplikacje wybierz pozycję **BenSelect**.
+1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
-### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
 
-![Utwórz użytkownika usługi Azure AD][100]
+1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    ![Link Dodaj użytkownika](common/add-assign-user.png)
 
-1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/benselect-tutorial/create_aaduser_01.png) 
+### <a name="create-benselect-test-user"></a>Utwórz użytkownika testowego BenSelect
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
-    
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/benselect-tutorial/create_aaduser_02.png) 
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w BenSelect. Aby dodać użytkowników na platformie BenSelect, Pracuj z [zespołem pomocy technicznej BenSelect](mailto:support@selerix.com) . Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/benselect-tutorial/create_aaduser_03.png) 
+### <a name="test-sso"></a>Testuj Logowanie jednokrotne
 
-1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/benselect-tutorial/create_aaduser_04.png) 
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
-
-    c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
-
-    d. Kliknij pozycję **Utwórz**.
- 
-### <a name="creating-a-benselect-test-user"></a>Tworzenie użytkownika testowego BenSelect
-
-Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w BenSelect. Praca z [zespołem pomocy technicznej BenSelect](mailto:support@selerix.com) Aby dodać użytkowników w ramach konta BenSelect.
-
-### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
-
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do BenSelect.
-
-![Przypisz użytkownika][200] 
-
-**Aby przypisać Britta Simon BenSelect, wykonaj następujące czynności:**
-
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
-
-    ![Przypisz użytkownika][201] 
-
-1. Na liście aplikacji wybierz **BenSelect**.
-
-    ![Konfigurowanie logowania jednokrotnego](./media/benselect-tutorial/tutorial_benselect_app.png) 
-
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
-
-    ![Przypisz użytkownika][202] 
-
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
-
-    ![Przypisz użytkownika][203]
-
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
-
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
-
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
-### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
-
-W tej sekcji możesz przetestować konfigurację logowania jednokrotnego usługi Azure AD za pomocą panelu dostępu.
-
-Po kliknięciu kafelka BenSelect w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji BenSelect.
+Po kliknięciu kafelka BenSelect w panelu dostępu należy automatycznie zalogować się do BenSelect, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/benselect-tutorial/tutorial_general_01.png
-[2]: ./media/benselect-tutorial/tutorial_general_02.png
-[3]: ./media/benselect-tutorial/tutorial_general_03.png
-[4]: ./media/benselect-tutorial/tutorial_general_04.png
-
-[100]: ./media/benselect-tutorial/tutorial_general_100.png
-
-[200]: ./media/benselect-tutorial/tutorial_general_200.png
-[201]: ./media/benselect-tutorial/tutorial_general_201.png
-[202]: ./media/benselect-tutorial/tutorial_general_202.png
-[203]: ./media/benselect-tutorial/tutorial_general_203.png
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

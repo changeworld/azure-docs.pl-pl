@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 46e3780c7fc6e6a2481e774b89bfb69510865db3
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 5c0bc97e5a5b362ea78f82ea99bb967a9607093a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68734630"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882488"
 ---
 # <a name="document-data-sources"></a>Dokumentowanie źródeł danych
 ## <a name="introduction"></a>Wprowadzenie
@@ -23,7 +23,7 @@ W temacie [jak dodawać adnotacje do źródeł danych](data-catalog-how-to-annot
 
 Tagi i opisy doskonale sprawdzają się w przypadku prostych adnotacji. Jednak aby pomóc konsumentom danych lepiej zrozumieć użycie źródła danych i scenariusze biznesowe dla źródła danych, ekspert może dostarczyć kompletną, szczegółową dokumentację. Można łatwo udokumentować źródło danych. Wybierz element zawartości lub kontener danych, a następnie wybierz pozycję **Dokumentacja**.
 
-![](media/data-catalog-documentation/data-catalog-documentation.png)
+![Karta dokumentacja w Data Catalog](media/data-catalog-documentation/data-catalog-documentation.png)
 
 ## <a name="documenting-data-assets"></a>Dokumentowanie zasobów danych
 Korzystanie z dokumentacji **Azure Data Catalog** umożliwia korzystanie z Data Catalog jako repozytorium zawartości do tworzenia pełnych opisów zasobów danych. Możesz eksplorować szczegółową zawartość opisującą kontenery i tabele. Jeśli masz już zawartość w innym repozytorium zawartości, na przykład w programie SharePoint lub udziale plików, możesz dodać do linków do dokumentacji zasobów, aby odwołać się do istniejącej zawartości. Ta funkcja sprawia, że istniejące dokumenty są bardziej wykrywalne.
@@ -31,9 +31,8 @@ Korzystanie z dokumentacji **Azure Data Catalog** umożliwia korzystanie z Data 
 > [!NOTE]
 > Dokumentacja nie jest uwzględniona w indeksie wyszukiwania.
 >
->
 
-![](media/data-catalog-documentation/data-catalog-documentation2.png)
+![Karta dokumentacja i hiperłącze do linku sieci Web](media/data-catalog-documentation/data-catalog-documentation2.png)
 
 Poziom dokumentacji może się wahać od opisu charakterystyki i wartości kontenera zasobów danych do szczegółowego opisu schematu tabeli w kontenerze. Udostępniony poziom dokumentacji powinien być uzależniony od potrzeb Twojej firmy. Ogólnie rzecz biorąc, Oto kilka informatyków i wad dokumentujących zasoby danych:
 

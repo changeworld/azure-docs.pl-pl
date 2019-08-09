@@ -1,5 +1,5 @@
 ---
-title: Uwierzytelnianie wieloskładnikowe systemu Azure — jak działa - usługi Azure Active Directory
+title: Uwierzytelnianie wieloskładnikowe systemu Azure — jak działa — Azure Active Directory
 description: Usługa Azure Multi-Factor Authentication zabezpiecza dostęp do danych i aplikacji, a jednocześnie spełnia wymagania użytkowników dotyczące prostoty procesu logowania.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,49 +11,49 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff8f27d727768f3f1135f8929310d5cfeffe874b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0d4f19c16149dbed34c16d021ff7100cace9a06a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113535"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879139"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>Jak to działa: Azure Multi-Factor Authentication
 
-Zabezpieczenia weryfikacji dwuetapowej znajduje się w jego warstwowego podejścia. Naruszenie wiele składników uwierzytelniania przedstawia znaczące wyzwane dla osób atakujących. Nawet wtedy, gdy osoba atakująca zarządza się hasło użytkownika, jest bezcelowe również bez posiadania dodatkową metodę uwierzytelniania. To działa, wymagając dwie lub więcej z następujących metod uwierzytelniania:
+Bezpieczeństwo dwuetapowej weryfikacji polega na podejściu warstwowym. Naruszenie wielu czynników uwierzytelniania stanowi znaczące wyzwanie dla osób atakujących. Nawet jeśli osoba atakująca zarządza, aby poznać hasło użytkownika, jest bezużyteczne bez również posiadania dodatkowej metody uwierzytelniania. Działa przez wymaganie co najmniej dwóch następujących metod uwierzytelniania:
 
-* Coś, co wiesz (zwykle hasła)
-* Coś, co masz (zaufane urządzenie, którego nie można łatwo zduplikować, takie jak telefon)
-* Coś, co Ciebie cechuje (biometria)
+* Coś, co wiesz (zazwyczaj hasło)
+* Coś, co masz (zaufane urządzenie, które nie jest łatwo duplikowane, takie jak telefon)
+* Coś, co masz (biometria)
 
 <center>
 
-![Obraz metod uwierzytelniania koncepcyjne](./media/concept-mfa-howitworks/methods.png)</center>
+![Obraz metod uwierzytelniania koncepcyjnego](./media/concept-mfa-howitworks/methods.png)</center>
 
-Usługa Azure Multi-Factor Authentication (MFA) zabezpiecza dostęp do danych i aplikacji przy zachowaniu uproszczenia dla użytkowników. Zapewnia dodatkowe zabezpieczenia, wymagając od drugiej formy uwierzytelniania i zapewnia silne uwierzytelnianie za pomocą szeregu łatwy w użyciu [metod uwierzytelniania](concept-authentication-methods.md). Użytkownicy mogą lub nie mogą być kwestionowane usługi MFA, w oparciu o decyzji związanych z konfiguracją, wprowadzane przez administratora.
+Usługa Azure MFA Authentication umożliwia Zabezpieczanie dostępu do danych i aplikacji przy jednoczesnym zachowaniu prostoty dla użytkowników. Zapewnia dodatkowe zabezpieczenia, wymagając drugiej formy uwierzytelniania i zapewnia silne uwierzytelnianie za pośrednictwem różnych [metod uwierzytelniania](concept-authentication-methods.md). Użytkownicy mogą lub nie mogą zakwestionować usługi MFA w oparciu o decyzje konfiguracyjne wykonywane przez administratora.
 
 ## <a name="how-to-get-multi-factor-authentication"></a>Jak uzyskać uwierzytelnianie wieloskładnikowe?
 
-Uwierzytelnianie Multi-Factor Authentication jest dostępna w ramach następujących ofert:
+Uwierzytelnianie wieloskładnikowe jest dostępne w ramach następujących ofert:
 
-* **Usługa Azure Active Directory — wersja Premium** lub **Microsoft 365 Business** — w pełni funkcjonalne korzystanie z usługi Azure Multi-Factor Authentication za pomocą zasad dostępu warunkowego, aby wymagać uwierzytelniania wieloskładnikowego.
+* **Azure Active Directory — wersja Premium** lub **Microsoft 365 Business** — w pełni funkcjonalne użycie usługi Azure MFA Authentication przy użyciu zasad dostępu warunkowego, aby wymagać uwierzytelniania wieloskładnikowego.
 
-* **Azure AD bezpłatna**, **usługi Azure AD podstawowa**, lub autonomicznych **usługi Office 365** licencje — Użyj wstępnie utworzone [zasady ochrony linii bazowej dostępu warunkowego](../conditional-access/concept-baseline-protection.md) będą musieli uwierzytelnianie wieloskładnikowe dla użytkowników i administratorów.
+* **Azure AD — wersja bezpłatna** lub autonomiczne licencje **pakietu Office 365** — Użyj wstępnie utworzonych [zasad ochrony punktu odniesienia dostępu warunkowego](../conditional-access/concept-baseline-protection.md) , aby wymagać uwierzytelniania wieloskładnikowego dla użytkowników i administratorów.
 
-* **Azure Active Directory administratorzy globalni** — niektóre funkcje usługi Azure Multi-Factor Authentication są dostępne jako sposób na ochronę kont administratora globalnego.
+* **Azure Active Directory Administratorzy globalni** — podzbiór funkcji usługi Azure MFA Authentication jest dostępny jako środek do ochrony kont administratorów globalnych.
 
 > [!NOTE]
-> Nowi klienci nie mogą kupować usługi Azure Multi-Factor Authentication jako autonomiczny oferty od 1 września 2018 r. Uwierzytelnianie wieloskładnikowe będzie dostępna funkcja licencje usługi Azure AD Premium w.
+> Nowi klienci nie mogą już kupować usługi Azure MFA jako autonomicznej oferty obowiązującej 1 września, 2018. Uwierzytelnianie wieloskładnikowe będzie nadal mieć dostępną funkcję w Azure AD — wersja Premium licencji.
 
 ## <a name="supportability"></a>Możliwości obsługi
 
-Ponieważ większość użytkowników są przyzwyczajeni do korzystania z tylko hasła do uwierzytelniania, ważne jest, że Twoja organizacja komunikuje się do wszystkich użytkowników dotyczące tego procesu. Rozpoznawanie może zmniejszyć prawdopodobieństwo, że użytkownicy wywołania pomocy technicznej dla drobne problemy związane z usługi MFA. Jednak istnieją pewne scenariusze, w których tymczasowo wyłączyć uwierzytelnianie wieloskładnikowe jest konieczne. Skorzystaj z poniższych wskazówek, aby zrozumieć sposób obsługi tych scenariuszy:
+Ponieważ większość użytkowników jest przyzwyczajonych do korzystania tylko z haseł do uwierzytelniania, ważne jest, aby Twoja organizacja komunikuje się ze wszystkimi użytkownikami dotyczącymi tego procesu. Świadomość może zmniejszyć prawdopodobieństwo, że użytkownicy wywołują pomoc techniczną w przypadku drobnych problemów związanych z usługą MFA. Istnieją jednak sytuacje, w których konieczne jest tymczasowe wyłączenie usługi MFA. Skorzystaj z poniższych wskazówek, aby zrozumieć, jak obsługiwać te scenariusze:
 
-* Szkolenie z personelem pomocy technicznej do obsługi scenariuszy, w których użytkownik nie może zalogować, ponieważ nie mają dostępu do metody ich uwierzytelniania lub nie działają prawidłowo.
-   * Za pomocą zasad dostępu warunkowego dla usługi MFA Azure z personelem pomocy technicznej można dodać użytkownika do grupy, który jest wykluczony z zasad, wymaganie usługi MFA.
-* Należy wziąć pod uwagę przy użyciu dostępu warunkowego, lokalizacje z nazwą jak sposób, aby zminimalizować weryfikacji dwuetapowej monity. Dzięki tej funkcji, Administratorzy mogą pominięciu weryfikacji dwuetapowej dla użytkowników, którzy logują z lokalizacji bezpiecznej, zaufanej sieci, takiej jak sieć segmentu umożliwiający dołączanie nowych użytkowników.
-* Wdrażanie [usługi Azure AD Identity Protection](../active-directory-identityprotection.md) i wyzwolić weryfikację dwuetapową, w oparciu o zdarzenia o podwyższonym ryzyku.
+* Przeszkol personel pomocy technicznej, aby obsługiwał scenariusze, w których użytkownik nie może się zalogować, ponieważ nie ma dostępu do ich metod uwierzytelniania lub nie działa prawidłowo.
+   * Korzystając z zasad dostępu warunkowego dla usługi Azure MFA, pracownicy pomocy technicznej mogą dodać użytkownika do grupy, która jest wykluczona z zasad wymagających uwierzytelniania wieloskładnikowego.
+* Rozważ użycie dostępu warunkowego o nazwie Locations jako metody minimalizowania dwuetapowych wierszy weryfikacyjnych. Dzięki tej funkcji Administratorzy mogą ominąć weryfikację dwuetapową dla użytkowników, którzy logują się z bezpiecznej zaufanej lokalizacji sieciowej, takiej jak segment sieci używany na potrzeby dołączania do nowego użytkownika.
+* Wdróż [Azure AD Identity Protection](../active-directory-identityprotection.md) i Wyzwól weryfikację dwuetapową opartą na zdarzeniach o podwyższonym ryzyku.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Instrukcje krok po kroku wdrożenia usługi Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
+- [Wdrażanie usługi Azure wieloskładnikowej na poziomie krok po kroku](howto-mfa-getstarted.md)

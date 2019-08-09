@@ -1,6 +1,6 @@
 ---
-title: Dodaj do systemu Android kształty mapy w usługi Azure Maps | Dokumentacja firmy Microsoft
-description: Jak dodawać kształty do mapy, przy użyciu zestawu SDK usługi Azure Maps systemu Android
+title: Dodawanie kształtów do map systemu Android w Azure Maps | Microsoft Docs
+description: Jak dodać kształty do mapy przy użyciu Azure Maps Android SDK
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/26/2019
@@ -8,27 +8,27 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: c53a3e01d471f2ca9b0878c374b00ce83848ca28
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 53bc9f14b91bafd69d3c67745f6b981f4faea991
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64871005"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881661"
 ---
-# <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>Dodawanie kształtu do mapy, przy użyciu zestawu SDK usługi Azure Maps systemu Android
+# <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>Dodawanie kształtu do mapy przy użyciu Azure Maps Android SDK
 
-W tym artykule przedstawiono sposób renderowania kształtami na mapie za pomocą usługi Azure Maps Android SDK.
+W tym artykule przedstawiono sposób renderowania kształtów na mapie przy użyciu Azure Maps Android SDK.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć proces, w tym artykule, musisz zainstalować [zestawu SDK usługi Azure Maps Android](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) można załadować mapy.
+Aby ukończyć proces w tym artykule, należy zainstalować [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) w celu załadowania mapy.
 
 
-## <a name="add-a-line-to-the-map"></a>Dodaj wiersz do mapy
+## <a name="add-a-line-to-the-map"></a>Dodawanie linii do mapy
 
-Można dodać wiersz do mapy, przy użyciu **warstwę linii**, wykonaj poniższe kroki, aby dodać wiersz na mapie.
+Możesz dodać linię do mapy za pomocą **warstwy liniowej**, wykonując poniższe kroki, aby dodać linię na mapie.
 
-1. Edytuj **res > Układ > activity_main.xml** tak, aby wyglądał jak poniżej:
+1. Edytuj **układ > res > activity_main. XML** , tak aby wyglądał następująco:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -51,7 +51,7 @@ Można dodać wiersz do mapy, przy użyciu **warstwę linii**, wykonaj poniższe
     </FrameLayout>
     ```
 
-2. Skopiuj poniższy fragment kodu poniżej do **onCreate()** metody usługi `MainActivity.java` klasy.
+2. Skopiuj poniższy fragment kodu poniżej do metody `MainActivity.java` OnCreate **()** klasy.
 
     ```Java
     mapControl.onReady(map -> {
@@ -76,12 +76,13 @@ Można dodać wiersz do mapy, przy użyciu **warstwę linii**, wykonaj poniższe
 
     ```
     
-    Najpierw uzyskuje powyższym fragmencie kodu usługi Azure Maps mapy formantu wystąpienia za pomocą **onReady()** metody wywołania zwrotnego. Następnie tworzy źródła danych obiektu przy użyciu **DataSource** klasy i dodaje je do mapy. A następnie tworzy listę **punktu** obiektów. A **LineString** zostanie utworzony na liście punktów i dodany do źródła danych. A **warstwę linii** renderuje wiersz opakowane w źródle danych na mapie obiektów. Warstwa linii zostanie utworzony i źródło danych jest dodawane do niego.
+    Poniższy fragment kodu uzyskuje Azure Maps wystąpienia kontrolki mapy za pomocą metody wywołania zwrotnego **()** . Następnie tworzy obiekt źródła danych przy użyciu klasy **DataSource** i dodaje go do mapy. Następnie tworzy listę obiektów **punktu** . **LineString** jest tworzony na podstawie listy punktów i dodanych do źródła danych. **Warstwa linii** renderuje obiekty liniowe otoczone w źródle danych na mapie. Następnie zostanie utworzona warstwa linii i zostanie do niej dodane źródło danych.
 
-    Po dodaniu fragment kodu powyżej, Twoje `MainActivity.java` powinien wyglądać podobnie do poniższego:
+    Po dodaniu fragmentu kodu powyżej `MainActivity.java` powinien wyglądać tak jak poniżej:
     
     ```Java
     package com.example.myapplication;
+
     import android.app.Activity;
     import android.os.Bundle;
     import com.mapbox.geojson.LineString;
@@ -96,8 +97,7 @@ Można dodać wiersz do mapy, przy użyciu **warstwę linii**, wykonaj poniższe
     import com.microsoft.azure.maps.mapcontrol.MapControl;
     import static com.microsoft.azure.maps.mapcontrol.options.LineLayerOptions.strokeColor;
     import static com.microsoft.azure.maps.mapcontrol.options.LineLayerOptions.strokeWidth;
-    
-    
+        
     public class MainActivity extends AppCompatActivity {
     
         static{
@@ -133,8 +133,7 @@ Można dodać wiersz do mapy, przy użyciu **warstwę linii**, wykonaj poniższe
                 map.layers.add(new LineLayer(dataSource,
                     strokeColor("blue"),
                     strokeWidth(5f)));
-            });
-    
+            });    
         }
     
         @Override
@@ -171,23 +170,22 @@ Można dodać wiersz do mapy, przy użyciu **warstwę linii**, wykonaj poniższe
         protected void onSaveInstanceState(Bundle outState) {
             super.onSaveInstanceState(outState);
             mapControl.onSaveInstanceState(outState);
-        }
-    
+        }    
     }
     ```
 
-Jeśli uruchomisz aplikację teraz, powinien zostać wyświetlony wiersz na mapie, jak pokazano poniżej:
+Jeśli aplikacja zostanie uruchomiona teraz, na mapie powinna zostać wyświetlona następująca linia:
 
 <center>
 
-![Wiersz mapowania dla systemu android](./media/how-to-add-shapes-to-android-map/android-map-line.png)</center>
+![Linia mapy systemu Android](./media/how-to-add-shapes-to-android-map/android-map-line.png)</center>
 
 
-## <a name="add-a-polygon-to-the-map"></a>Dodaj wielokąta do mapy
+## <a name="add-a-polygon-to-the-map"></a>Dodawanie wielokąta do mapy
 
-**Warstwę wielokątów** Umożliwia renderowanie obszaru wielokąta do mapy. Wykonaj poniższe kroki, aby dodać wielokąta na mapie.
+**Warstwa Wielokąt** umożliwia renderowanie obszaru wielokąta do mapy. Wykonaj poniższe kroki, aby dodać wielokąt na mapie.
 
-1. Edytuj **res > Układ > activity_main.xml** tak, aby wyglądał jak poniżej:
+1. Edytuj **układ > res > activity_main. XML** , tak aby wyglądał następująco:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -210,7 +208,7 @@ Jeśli uruchomisz aplikację teraz, powinien zostać wyświetlony wiersz na mapi
     </FrameLayout>
     ```
 
-2. Skopiuj poniższy fragment kodu do **onCreate()** metody usługi `MainActivity.java` klasy.
+2. Skopiuj poniższy fragment kodu do metody `MainActivity.java` OnCreate **()** klasy.
 
     ```Java
     mapControl.onReady(map -> {
@@ -240,9 +238,9 @@ Jeśli uruchomisz aplikację teraz, powinien zostać wyświetlony wiersz na mapi
     });
     ```
 
-    Najpierw uzyskuje powyższym fragmencie kodu usługi Azure Maps mapy formantu wystąpienia za pomocą **onReady()** metody wywołania zwrotnego. Następnie tworzy źródła danych obiektu przy użyciu **DataSource** klasy i dodaje je do mapy. A **wielokąta** obiekt zostanie utworzony z listy **punktu** obiekty i zostanie dodany do źródła danych. A **warstwę wielokątów** powoduje wyświetlenie danych w źródle danych na mapie. Następnie tworzy warstwę wielokątów do renderowania powierzchni wielokąta i dodaje do źródła danych. A **warstwę linii** renderuje wiersz obiektów opakowane w źródle danych. Ostatnia część fragment kodu tworzy warstwę linii do renderowania zarys wielokąta i dodaje do źródła danych.
+    Poniższy fragment kodu uzyskuje Azure Maps wystąpienia kontrolki mapy za pomocą metody wywołania zwrotnego **()** . Następnie tworzy obiekt źródła danych przy użyciu klasy **DataSource** i dodaje go do mapy. Obiekt **wielokątny** jest następnie tworzony na podstawie listy obiektów **punktu** i jest dodawany do źródła danych. **Warstwa wielokątów** renderuje dane opakowane w źródle danych na mapie. Następnie tworzy warstwę wielokątów, aby renderować obszar wielokąta i dodaje do niego źródło danych. **Warstwa linii** renderuje obiekty liniowe otoczone w źródle danych. Ostatnia część fragmentu kodu tworzy warstwę linii w celu renderowania konspektu wielokąta i dodaje do niego źródło danych.
 
-    Po dodaniu fragment kodu powyżej, Twoje `MainActivity.java` powinien wyglądać podobnie do poniższego:
+    Po dodaniu fragmentu kodu powyżej `MainActivity.java` powinien wyglądać tak jak poniżej:
 
     ```Java
     package com.example.myapplication;
@@ -307,8 +305,7 @@ Jeśli uruchomisz aplikację teraz, powinien zostać wyświetlony wiersz na mapi
                 map.layers.add(new LineLayer(dataSource,
                     strokeColor("blue"),
                     strokeWidth(2f)));
-            });
-    
+            });    
         }
     
         @Override
@@ -345,21 +342,20 @@ Jeśli uruchomisz aplikację teraz, powinien zostać wyświetlony wiersz na mapi
         protected void onSaveInstanceState(Bundle outState) {
             super.onSaveInstanceState(outState);
             mapControl.onSaveInstanceState(outState);
-        }
-    
+        }    
     }
     ```
 
-Jeśli uruchomisz aplikację teraz, powinny zostać wyświetlone wielokąta na mapie, jak pokazano poniżej:
+Jeśli aplikacja zostanie uruchomiona teraz, na mapie powinien być widoczny Wielokąt, jak pokazano poniżej:
 
 <center>
 
-![Wielokątów mapy dla systemu android](./media/how-to-add-shapes-to-android-map/android-map-polygon.png)</center>
+![Wielokąt mapy dla systemu Android](./media/how-to-add-shapes-to-android-map/android-map-polygon.png)</center>
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zobacz następujący artykuł, aby dowiedzieć się więcej na temat sposobów style mapy
+Zapoznaj się z poniższym artykułem, aby dowiedzieć się więcej o sposobach ustawiania stylów mapy
 
 > [!div class="nextstepaction"]
-> [Zmień style mapy w społeczności maps dla systemu Android](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
+> [Dodaj warstwę kafelków](how-to-add-tile-layer-android-map.md)

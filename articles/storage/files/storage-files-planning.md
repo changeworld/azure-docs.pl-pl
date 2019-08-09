@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 287902c149fd3a8732ce9ce95b05b0d9fa36147b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: eece1520a4b7e3bf37e1d209c58b5019921fdb98
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816607"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884379"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
@@ -26,7 +26,7 @@ ms.locfileid: "68816607"
 
 * **Konto magazynu**: Cały dostęp do usługi Azure Storage odbywa się za pomocą konta magazynu. Aby uzyskać szczegółowe informacje na temat pojemności konta magazynu, zobacz [Cele dotyczące skalowalności i wydajności](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
-* **Udział**: Udział File Storage to udział plików SMB na platformie Azure. Wszystkie pliki i katalogi muszą być tworzone w udziale nadrzędnym. Konto może zawierać nieograniczoną liczbę udziałów, a udział może przechowywać nieograniczoną liczbę plików, do 5 TiB całkowitej pojemności udziału plików.
+* **Udział**: Udział File Storage to udział plików SMB na platformie Azure. Wszystkie pliki i katalogi muszą być tworzone w udziale nadrzędnym. Konto może zawierać nieograniczoną liczbę udziałów, a udział może przechowywać nieograniczoną liczbę plików, do całkowitej pojemności udziału plików. W przypadku standardowych udziałów plików całkowita pojemność jest równa 5 TiB (GA) lub 100 TiB (wersja zapoznawcza) dla udziałów plików w warstwie Premium, łączna pojemność to 100 TiB.
 
 * **Katalog**: Opcjonalna hierarchia katalogów.
 
@@ -210,9 +210,9 @@ Standardowe udziały plików są dostępne we wszystkich regionach do 5 TiB. W n
 |Australia Wschodnia  |LRS     |Nie    |Tak|
 |Francja Środkowa  |LRS     |Nie    |Jeszcze nie|
 |Francja Południowa    |LRS     |Nie    |Jeszcze nie|
-|Azja Południowo-Wschodnia  |LRS, ZRS|Nie    |Tak|
+|Azja Południowo-Wschodnia  |LRS, ZRS|Nie    |Yes|
 |Europa Zachodnia     |LRS, ZRS|Nie    |Yes|
-|Zachodnie stany USA 2       |LRS, ZRS|Nie    |Tak|
+|Zachodnie stany USA 2       |LRS, ZRS|Nie    |Yes|
 
 \* W przypadku regionów bez obsługi portalu można nadal używać programu PowerShell lub interfejsu wiersza polecenia platformy Azure do tworzenia większych udziałów TiB. Altenatively, Utwórz nowy udział za pośrednictwem portalu bez określania limitu przydziału. Spowoduje to utworzenie udziału o domyślnym rozmiarze 100 TiB, który można później zaktualizować za pomocą programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
 

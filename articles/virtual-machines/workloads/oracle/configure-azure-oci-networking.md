@@ -14,19 +14,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2019
 ms.author: rogirdh
-ms.openlocfilehash: 3b901f7aba40f3548a259d36b83fedca0ff2a5c2
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 18dbc60c1a29fbc26f4bbc73faa58aeafc66c32f
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781288"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880093"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Skonfiguruj bezpośrednie połączenie między platformą Azure a infrastrukturą chmurową Oracle  
 
 Aby utworzyć [zintegrowane środowisko z obsługą chmury](oracle-oci-overview.md) (wersja zapoznawcza), firma Microsoft i oprogramowanie Oracle oferują bezpośrednie połączenia między platformą Azure i usługą Oracle Cloud Infrastructure (OCI) za pośrednictwem usług [ExpressRoute](../../../expressroute/expressroute-introduction.md) i [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm). Za pośrednictwem połączeń ExpressRoute i FastConnect klienci mogą mieć małe opóźnienia, wysoką przepływność i prywatną łączność bezpośrednią między dwiema chmurami.
 
 > [!IMPORTANT]
-> Połączenie między Microsoft Azure i OCI jest na etapie wersji zapoznawczej. Aby włączyć łączność z niską opóźnieniami między platformą Azure a OCI, należy najpierw listy dozwolonych subskrypcję platformy Azure.
+> Połączenie między Microsoft Azure i OCI jest na etapie wersji zapoznawczej. Aby włączyć łączność z niską opóźnieniami między platformą Azure a OCI, należy najpierw listy dozwolonych subskrypcję platformy Azure. Musisz zarejestrować się w wersji zapoznawczej, wysyłając wiadomość oracleconnect@microsoft.com e-mail na adres przy użyciu identyfikatora subskrypcji. Gdy subskrypcja zostanie zarejestrowana, otrzymasz wiadomość e-mail. Nie możesz korzystać z tej możliwości, dopóki nie otrzymasz wiadomości e-mail z potwierdzeniem. Możesz również skontaktować się z przedstawicielem firmy Microsoft w celu włączenia tej wersji zapoznawczej. Ta wersja zapoznawcza jest świadczona bez umowy dotyczącej poziomu usług i nie powinna być używana na potrzeby obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości lub mogą nie być dostępne we wszystkich lokalizacjach platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [dodatkowe warunki użytkowania wersji](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) zapoznawczych Microsoft Azure.
 
 Na poniższej ilustracji przedstawiono ogólne omówienie połączeń:
 
@@ -38,7 +38,7 @@ Na poniższej ilustracji przedstawiono ogólne omówienie połączeń:
 
 * Połączenie jest możliwe tylko wtedy, gdy lokalizacja komunikacji równorzędnej usługi Azure ExpressRoute znajduje się w pobliżu lub w tej samej lokalizacji komunikacji równorzędnej co OCI FastConnect. Zobacz temat [ograniczenia wersji](oracle-oci-overview.md#preview-limitations)zapoznawczej.
 
-* Twoja subskrypcja platformy Azure musi być listy dozwolonych dla tej funkcji w wersji zapoznawczej. Skontaktuj się z przedstawicielem firmy Microsoft, aby włączyć tę funkcję w Twojej subskrypcji.
+* Twoja subskrypcja platformy Azure musi być listy dozwolonych dla tej funkcji w wersji zapoznawczej.
 
 ## <a name="configure-direct-connectivity-between-expressroute-and-fastconnect"></a>Konfigurowanie bezpośredniej łączności między ExpressRoute i FastConnect
 

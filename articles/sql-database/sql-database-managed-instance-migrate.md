@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
-ms.date: 11/07/2019
-ms.openlocfilehash: 19a7f749ffb1af4f712d23abcd52d91653ad4544
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 07/11/2019
+ms.openlocfilehash: 9508ce927ef03c83f1c4ef7bf28d2fc02b831a99
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567389"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879928"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>SQL Server migracji wystąpień do Azure SQL Database wystąpienia zarządzanego
 
@@ -196,7 +196,7 @@ Aby zwiększyć bezpieczeństwo, należy rozważyć użycie [uwierzytelniania Az
 
 Oprócz zaawansowanych funkcji zarządzania i zabezpieczeń, wystąpienie zarządzane udostępnia zestaw zaawansowanych narzędzi, które mogą ułatwić [monitorowanie i dostrajanie obciążenia](sql-database-monitor-tune-overview.md). [Usługa Azure SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) umożliwia monitorowanie dużego zestawu wystąpień zarządzanych i scentralizowanie monitorowania dużej liczby wystąpień i baz danych. [Dostrajanie automatyczne](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction) w wystąpieniu zarządzanym stale monitoruje wydajność statystyk wykonywania planu SQL i automatycznie naprawia zidentyfikowane problemy z wydajnością.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Aby uzyskać informacje o wystąpieniach zarządzanych, zobacz [co to jest wystąpienie zarządzane?](sql-database-managed-instance.md)
 - Aby zapoznać się z samouczkiem zawierającym przywracanie z kopii zapasowej, zobacz [Tworzenie wystąpienia zarządzanego](sql-database-managed-instance-get-started.md).

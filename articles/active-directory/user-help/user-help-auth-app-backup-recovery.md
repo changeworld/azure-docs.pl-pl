@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4148d8a3b44336677ba028807aadbae424b7223
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: ba99001159277d9d221910cafa4f5165ae2bd812
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382502"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880770"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Tworzenie kopii zapasowej i odzyskiwanie poświadczeń konta za pomocą aplikacji Microsoft Authenticator
 
@@ -93,6 +93,8 @@ W przypadku osobistych kont Microsoft można potwierdzić swoją tożsamość, w
     ![Aplikacja Microsoft Authenticator, dzięki której można skanować kod QR](./media/user-help-auth-app-backup-recovery/backup-and-recovery-scan-qr-code.png)
 
     >[!NOTE]
+    >Jeśli konfigurujesz aplikację Microsoft Authenticator po raz pierwszy, może zostać wyświetlony monit z pytaniem, czy zezwolić aplikacji na dostęp do aparatu (iOS), czy zezwolić aplikacji na wykonywanie zdjęć i nagrywanie wideo (Android). Musisz wybrać opcję **Zezwól** , aby aplikacja Authenticator mogła uzyskać dostęp do Twojego aparatu, aby w następnym kroku uzyskać zdjęcie kodu QR. Jeśli nie zezwolisz na korzystanie z aparatu, nadal możesz skonfigurować aplikację uwierzytelniającej, ale musisz ręcznie dodać informacje o kodzie. Aby dowiedzieć się, jak ręcznie dodać kod, zobacz temat [Ręczne dodawanie konta do aplikacji](user-help-auth-app-add-account-manual.md).
+    >
     >Aby uzyskać więcej informacji na temat sposobu uzyskiwania kodu QR, zobacz [Rozpoczynanie pracy z aplikacją Microsoft Authenticator](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install) lub [Konfigurowanie informacji zabezpieczających do korzystania z aplikacji Authenticator](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app)w zależności od tego, czy administrator włączył informacje zabezpieczające.
 
 ## <a name="troubleshooting-backup-and-recovery-problems"></a>Rozwiązywanie problemów z tworzeniem kopii zapasowej i odzyskiwaniem
@@ -107,7 +109,7 @@ Istnieje kilka powodów, dla których kopia zapasowa może być niedostępna:
 
 - **Istniejące konta Microsoft Authenticator.** Jeśli skonfigurowano już konta w aplikacji Microsoft Authenticator, aplikacja nie będzie mogła odzyskać kont z kopią zapasową. Uniemożliwianie odzyskiwania pomaga upewnić się, że szczegóły konta nie są zastępowane nieaktualnymi informacjami. W takiej sytuacji należy usunąć wszelkie istniejące informacje o koncie z istniejących kont skonfigurowanych w aplikacji uwierzytelniania, zanim będzie możliwe odzyskanie kopii zapasowej.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Teraz, po wykonaniu kopii zapasowej i odzyskaniu poświadczeń konta na nowym urządzeniu, możesz nadal używać aplikacji Microsoft Authenticator, aby zweryfikować swoją tożsamość. Aby uzyskać więcej informacji, zobacz [Logowanie do kont przy użyciu aplikacji Microsoft Authenticator](user-help-sign-in.md).
 

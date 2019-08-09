@@ -1,216 +1,145 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą SafeConnect | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i SafeConnect.
+title: 'Samouczek: Azure Active Directory integrację z usługą SafeConnect | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i SafeConnect.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: f9aaac2e-cdba-4f01-a57f-2c5c26287085
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/08/2018
+ms.topic: tutorial
+ms.date: 08/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbb94c28d56b0492fe3488d7c9e2e1257a8b9388
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 701e4ef37e9508923409a7ce65991b9174678f4f
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60624351"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880198"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-safeconnect"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą SafeConnect
+# <a name="tutorial-integrate-safeconnect-with-azure-active-directory"></a>Samouczek: Integruj SafeConnect z Azure Active Directory
 
-W tym samouczku dowiesz się, jak zintegrować SafeConnect w usłudze Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować usługę SafeConnect z usługą Azure Active Directory (Azure AD). Po zintegrowaniu usługi SafeConnect z usługą Azure AD można:
 
-Integrowanie SafeConnect z usługą Azure AD zapewnia następujące korzyści:
+* Kontrolka w usłudze Azure AD, która ma dostęp do SafeConnect.
+* Zezwól użytkownikom na automatyczne logowanie się do usługi SafeConnect przy użyciu kont w usłudze Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
 
-- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do SafeConnect.
-- Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych do SafeConnect (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą SafeConnect, potrzebne są następujące elementy:
+Aby rozpocząć, potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- SafeConnect logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
-
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
+* Subskrypcja z włączonym logowaniem jednokrotnym (SSO) SafeConnect.
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie SafeConnect z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym.
+
+* SafeConnect obsługuje logowanie jednokrotne w usłudze **SP**
 
 ## <a name="adding-safeconnect-from-the-gallery"></a>Dodawanie SafeConnect z galerii
-Aby skonfigurować integrację SafeConnect w usłudze Azure AD, należy dodać SafeConnect z galerii z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać SafeConnect z galerii, wykonaj następujące czynności:**
+Aby skonfigurować integrację programu SafeConnect z usługą Azure AD, musisz dodać SafeConnect z galerii do listy zarządzanych aplikacji SaaS.
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
-
-    ![Przycisk usługi Azure Active Directory][1]
-
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
-
-    ![W bloku aplikacji przedsiębiorstwa][2]
-    
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
-
-    ![Nowy przycisk aplikacji][3]
-
-4. W polu wyszukiwania wpisz **SafeConnect**, wybierz opcję **SafeConnect** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
-
-    ![SafeConnect na liście wyników](./media/safeconnect-tutorial/tutorial_safeconnect_addfromgallery.png)
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
+1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
+1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
+1. W sekcji **Dodaj z galerii** wpisz **SafeConnect** w polu wyszukiwania.
+1. Wybierz pozycję **SafeConnect** from panel wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą SafeConnect w oparciu o użytkownika testu o nazwie "Britta Simon".
+Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą SafeConnect przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w SafeConnect.
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w SafeConnect do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w SafeConnect musi można ustanowić.
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą SafeConnect, wykonaj następujące bloki konstrukcyjne:
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą SafeConnect, należy wykonać poniższe bloki konstrukcyjne:
+1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj logowanie](#configure-safeconnect-sso)** jednokrotne w usłudze SafeConnect, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+3. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
+4. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
+5. **[Utwórz użytkownika testowego SafeConnect](#create-safeconnect-test-user)** , aby dysponować odpowiednikiem B. Simon w SafeConnect, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Przetestuj logowanie](#test-sso)** jednokrotne — aby sprawdzić, czy konfiguracja działa.
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego SafeConnect](#create-a-safeconnect-test-user)**  — aby odpowiednikiem Britta Simon w SafeConnect połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji SafeConnect.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **SafeConnect** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie**jednokrotne.
+1. Na stronie **Wybierz metodę logowania** jednokrotnego wybierz pozycję **SAML**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z SafeConnect, wykonaj następujące czynności:**
+   ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. W witrynie Azure portal na **SafeConnect** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W sekcji **Podstawowa konfiguracja języka SAML** wprowadź wartości dla następujących pól:
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://portal.myweblogon.com:8443/saml/login`
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Okno dialogowe rejestracji jednokrotnej](./media/safeconnect-tutorial/tutorial_safeconnect_samlbase.png)
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **metadane XML** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
-3. Na **SafeConnect domena i adresy URL** sekcji, wykonaj następujące czynności:
+    ![Link pobierania certyfikatu](common/metadataxml.png)
 
-    ![SafeConnect domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/safeconnect-tutorial/tutorial_safeconnect_url.png)
+1. W sekcji **Konfigurowanie SafeConnect** skopiuj odpowiednie adresy URL na podstawie wymagania.
 
-     W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://portal.myweblogon.com:8443/saml/login`
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-4. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+### <a name="configure-safeconnect-sso"></a>Konfigurowanie logowania jednokrotnego SafeConnect
 
-    ![Link pobierania certyfikatu](./media/safeconnect-tutorial/tutorial_safeconnect_certificate.png) 
-
-5. Kliknij przycisk **Zapisz** przycisku.
-
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/safeconnect-tutorial/tutorial_general_400.png)
-
-6. Aby skonfigurować logowanie jednokrotne na **SafeConnect** stronie, musisz wysłać pobrany **XML metadanych** do [zespołem pomocy technicznej SafeConnect](mailto:support@impulse.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+Aby skonfigurować Logowanie jednokrotne na stronie **SafeConnect** , musisz wysłać pobrany **kod XML metadanych** i odpowiednie skopiowane adresy URL z Azure Portal do [zespołu pomocy technicznej SafeConnect](mailto:support@impulse.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
-   ![Tworzenie użytkownika testowego usługi Azure AD][100]
-
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
-
-1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
-
-    ![Przycisk usługi Azure Active Directory](./media/safeconnect-tutorial/create_aaduser_01.png)
-
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
-
-    !["Użytkownicy i grupy" i "All users" linki](./media/safeconnect-tutorial/create_aaduser_02.png)
-
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
-
-    ![Przycisk Dodaj](./media/safeconnect-tutorial/create_aaduser_03.png)
-
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
-
-    ![Okno dialogowe użytkownika](./media/safeconnect-tutorial/create_aaduser_04.png)
-
-    a. W **nazwa** wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
-
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
-
-    d. Kliknij pozycję **Utwórz**.
- 
-### <a name="create-a-safeconnect-test-user"></a>Tworzenie użytkownika testowego SafeConnect
-
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w SafeConnect. Praca z [zespołem pomocy technicznej SafeConnect](mailto:support@impulse.com) Aby dodać użytkowników na platformie SafeConnect. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego. 
+1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. Wybierz **nowego użytkownika** w górnej części ekranu.
+1. We właściwościach **użytkownika** wykonaj następujące kroki:
+   1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
+   1. W polu **Nazwa użytkownika** wprowadź wartość username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
+   1. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do SafeConnect.
+W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do usługi SafeConnect.
 
-![Przypisanie roli użytkownika][200] 
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Na liście Aplikacje wybierz pozycję **SafeConnect**.
+1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
-**Aby przypisać Britta Simon SafeConnect, wykonaj następujące czynności:**
+   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
-    ![Przypisz użytkownika][201] 
+    ![Link Dodaj użytkownika](common/add-assign-user.png)
 
-2. Na liście aplikacji wybierz **SafeConnect**.
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-    ![Link SafeConnect na liście aplikacji](./media/safeconnect-tutorial/tutorial_safeconnect_app.png)  
+### <a name="create-safeconnect-test-user"></a>Utwórz użytkownika testowego SafeConnect
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w SafeConnect. Aby dodać użytkowników na platformie SafeConnect, Pracuj z [zespołem pomocy technicznej SafeConnect](mailto:support@impulse.com) . Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
-    ![Link "Użytkownicy i grupy"][202]
-
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
-
-    ![Okienko Dodawanie przypisania][203]
-
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
-
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
-
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
+### <a name="test-sso"></a>Testuj Logowanie jednokrotne
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka SafeConnect w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji SafeConnect.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md). 
+Po kliknięciu kafelka SafeConnect w panelu dostępu należy automatycznie zalogować się do SafeConnect, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/safeconnect-tutorial/tutorial_general_01.png
-[2]: ./media/safeconnect-tutorial/tutorial_general_02.png
-[3]: ./media/safeconnect-tutorial/tutorial_general_03.png
-[4]: ./media/safeconnect-tutorial/tutorial_general_04.png
-
-[100]: ./media/safeconnect-tutorial/tutorial_general_100.png
-
-[200]: ./media/safeconnect-tutorial/tutorial_general_200.png
-[201]: ./media/safeconnect-tutorial/tutorial_general_201.png
-[202]: ./media/safeconnect-tutorial/tutorial_general_202.png
-[203]: ./media/safeconnect-tutorial/tutorial_general_203.png
-
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

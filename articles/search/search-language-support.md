@@ -6,15 +6,14 @@ manager: jlembicz
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 07/11/2019
+ms.date: 08/08/2019
 ms.author: jlembicz
-ms.custom: seodec2018
-ms.openlocfilehash: 403febfcb54194602051aaebe2952265c0675e9d
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 5383ad44f665ce809772143e23817932c3e2b7e6
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854418"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883887"
 ---
 # <a name="how-to-create-an-index-for-multiple-languages-in-azure-search"></a>Jak utworzyć indeks dla wielu języków w Azure Search
 
@@ -35,7 +34,7 @@ Analizator języka jest określany podczas tworzenia pola. Dodanie analizatora d
 
 ![Przypisz analizatory języka podczas definiowania pola](media/search-language-support/select-analyzer.png "Przypisz analizatory języka podczas definiowania pola")
 
-Domyślnie wszystkie pola z możliwością wyszukiwania korzystają ze [standardowego analizatora Lucene](https://lucene.apache.org/core/4_10_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) , który jest językiem niezależny od. Aby wyświetlić pełną listę obsługiwanych analizatorów, zobacz [Dodawanie analizatorów języka do indeksu Azure Search](index-add-language-analyzers.md).
+Domyślnie wszystkie pola z możliwością wyszukiwania korzystają ze [standardowego analizatora Lucene](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) , który jest językiem niezależny od. Aby wyświetlić pełną listę obsługiwanych analizatorów, zobacz [Dodawanie analizatorów języka do indeksu Azure Search](index-add-language-analyzers.md).
 
 Analizatory są przeznaczone do użycia w portalu. Jeśli wymagane jest dostosowanie lub określona konfiguracja filtrów i tokenizatory, należy [utworzyć Analizator niestandardowy](index-add-custom-analyzers.md) w kodzie. Portal nie obsługuje wybierania ani konfigurowania analizatorów niestandardowych.
 
@@ -64,6 +63,6 @@ Czasami język agenta wystawiającego zapytanie nie jest znany, w takim przypadk
 
 `https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2019-05-06`
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Jeśli jesteś deweloperem platformy .NET, pamiętaj, że możesz skonfigurować analizatory języka, korzystając z [Azure Search .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Search) i właściwości [Analizator](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet) . 

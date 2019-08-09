@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 4/3/2019
 ms.author: dacurwin
-ms.openlocfilehash: 71a33b7263cd7a3b2f5e39ce9d24df11a7d6283c
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 5c6e3ef74ea2d77ba03526e05145fe6faa61c050
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688599"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882054"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Tworzenie kopii zapasowej i przywracanie zaszyfrowanej maszyny wirtualnej platformy Azure
 
@@ -33,7 +33,7 @@ Azure Backup można tworzyć kopie zapasowe maszyn wirtualnych platformy Azure i
 **Typ dysku maszyny wirtualnej** | **ADE (klucz szyfrowania bloków/dm-crypt)** | **ADE i KEK**
 --- | --- | ---
 **Niepodlegającą** | Tak | Yes
-**Zarządzanych**  | Tak | Tak
+**Zarządzanych**  | Tak | Yes
 
 - Dowiedz się więcej na temat [ADE](../security/azure-security-disk-encryption-overview.md), [Key Vault](../key-vault/key-vault-overview.md)i [KEKs](https://blogs.msdn.microsoft.com/cclayton/2017/01/03/creating-a-key-encrypting-key-kek/).
 - Przeczytaj [często zadawane pytania](../security/azure-security-disk-encryption-faq.md) dotyczące szyfrowania dysków maszyn wirtualnych platformy Azure.
@@ -154,10 +154,11 @@ Zaszyfrowane maszyny wirtualne są przywracane w następujący sposób:
 2. Następnie wykonaj jedną z następujących czynności:
     - Użyj szablonu wygenerowanego podczas operacji przywracania, aby dostosować ustawienia maszyny wirtualnej i wyzwolić wdrożenie maszyny wirtualnej. [Dowiedz się więcej](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm).
     - Utwórz nową maszynę wirtualną na podstawie przywróconych dysków przy użyciu programu PowerShell. [Dowiedz się więcej](backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
+    - W przypadku maszyn wirtualnych z systemem Linux Zresetuj rozszerzenie ADE, aby dyski z danymi były otwarte i zainstalowane. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Jeśli napotkasz jakiekolwiek problemy, przejrzyj
+Jeśli napotkasz jakiekolwiek problemy, zapoznaj się z następującymi artykułami:
 
 - [Typowe błędy](backup-azure-vms-troubleshoot.md) podczas tworzenia kopii zapasowych i przywracania zaszyfrowanych maszyn wirtualnych platformy Azure.
 - Problemy z [agentem maszyny wirtualnej platformy Azure/rozszerzeniem kopii zapasowej](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md) .

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5dc1c3fb7ae12c36a8c1fe383290435c03ee0c4
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 906ab4da941c6a0e1bc98f2f724141c719d04b89
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741371"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879438"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Instrukcje: Planowanie implementacji dołączania do usługi Azure AD
 
@@ -75,6 +75,10 @@ W przypadku korzystania z AD FS należy włączyć następujące punkty końcowe
  `/adfs/services/trust/13/certificatemixed`
 
 Jeśli dostawca tożsamości nie obsługuje tych protokołów, usługa Azure AD Join nie działa w sposób natywny. Począwszy od systemu Windows 10 1809, użytkownicy mogą logować się do urządzenia dołączonego do usługi Azure AD przy użyciu dostawcy tożsamości opartego na protokole SAML za pośrednictwem [logowania w sieci Web w systemie Windows 10](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10). Obecnie logowanie w sieci Web jest funkcją w wersji zapoznawczej i nie jest zalecane w przypadku wdrożeń produkcyjnych.
+
+>[!NOTE]
+> Obecnie usługa Azure AD Join nie działa w przypadku [AD FS 2019 skonfigurowanego z zewnętrznymi dostawcami uwierzytelniania jako podstawową metodą uwierzytelniania](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary). Usługa Azure AD Join domyślnie przyjmuje uwierzytelnianie hasła jako podstawową metodę, która powoduje błędy uwierzytelniania w tym scenariuszu
+
 
 ### <a name="smartcards-and-certificate-based-authentication"></a>Karty inteligentne i uwierzytelnianie oparte na certyfikatach
 
@@ -287,7 +291,7 @@ Jeśli masz skonfigurowanego dostawcę MDM dla urządzeń przyłączonych do us�
 
 Za pomocą tej implementacji można wymagać, aby [zarządzane urządzenia dla dostępu do aplikacji w chmurze miały dostęp warunkowy](../conditional-access/require-managed-devices.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Dołącz nowe urządzenie z systemem Windows 10 przy użyciu usługi Azure AD podczas pierwszego uruchomienia](azuread-joined-devices-frx.md)

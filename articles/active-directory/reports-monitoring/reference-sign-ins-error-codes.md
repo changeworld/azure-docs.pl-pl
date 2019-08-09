@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 05/08/2019
+ms.date: 08/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6972c91a18f9deb240871d8c64a14647474d9d78
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: 4cbaa8f22335da083506a76ad1a791576b109a00
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377273"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879784"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Kody błędów raportów działań związanych z logowaniem 
 
@@ -40,7 +40,7 @@ Przejdź do [raportu logowania](https://portal.azure.com/#blade/Microsoft_AAD_IA
 
 ![Działania związane z logowaniem](./media/reference-sign-ins-error-codes/61.png "Działania związane z logowaniem")
 
-Przefiltruj raport, aby wyświetlić wszystkie nieudane logowania,  wybierając pozycję niepowodzenie w polu listy rozwijanej **Stan logowania** .
+Przefiltruj raport, aby wyświetlić wszystkie nieudane logowania, wybierając pozycję niepowodzenie w polu listy rozwijanej **Stan logowania** .
 
 ![Działania związane z logowaniem](./media/reference-sign-ins-error-codes/06.png "Działania związane z logowaniem")
 
@@ -127,6 +127,7 @@ Możesz również programowo uzyskać dostęp do danych logowania przy użyciu [
 |50177|Test zewnętrzny nie jest obsługiwany w przypadku użytkowników przekazujących.|
 |50178|Kontrolka sesji nie jest obsługiwana w przypadku użytkowników przekazujących.|
 |50180|Wymagane jest zintegrowane uwierzytelnianie systemu Windows. Włącz dzierżawę dla bezproblemowego logowania jednokrotnego.|
+|50201|Ten komunikat przerwania monitu zostanie wyświetlony użytkownikowi podczas logowania, jeśli do użytkownika mają zostać dostarczone dodatkowe informacje.|
 |51001|Nie ma wskazówki domeny z lokalnym identyfikatorem zabezpieczeń lokalnej nazwy użytkownika.|
 |51004|Konto użytkownika nie istnieje w katalogu.|
 |51006|Wymagane jest zintegrowane uwierzytelnianie systemu Windows. Użytkownik zalogował się przy użyciu tokenu sesji, którego brakuje za pośrednictwem żądania. Zażądaj od użytkownika, aby zalogował się ponownie.|
@@ -181,10 +182,13 @@ Możesz również programowo uzyskać dostęp do danych logowania przy użyciu [
 |500121| Uwierzytelnianie w trakcie silnego żądania uwierzytelniania nie powiodło się.|
 |500133| Potwierdzenie nie znajduje się w prawidłowym zakresie czasu. Upewnij się, że token dostępu nie wygasł przed użyciem go do potwierdzenia przez użytkownika lub zażądaj nowego tokenu.|
 |530021|Aplikacja nie spełnia wymagań dotyczących zatwierdzonej aplikacji dostępu warunkowego.|
+|530032|Zablokowane przez zasady zabezpieczeń.| 
+|700016|Nie znaleziono aplikacji o identyfikatorze "{appIdentifier}" w katalogu "{dzierżawcname}". Taka sytuacja może wystąpić, jeśli aplikacja nie została zainstalowana przez administratora dzierżawy lub nie została wysłana przez żadnego użytkownika w dzierżawie. Być może wysłano żądanie uwierzytelnienia do niewłaściwej dzierżawy.|
+|900432|Klient poufny nie jest obsługiwany w żądaniu między chmurą.|
 |7000218|Treść żądania musi zawierać następujący parametr: "client_assertion" lub "client_secret".|
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Raporty logowania — przegląd](concept-sign-ins.md)
 * [Programistyczny dostęp do raportów usługi Azure AD](concept-reporting-api.md)

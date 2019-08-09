@@ -1,274 +1,191 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą RunMyProcess | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i RunMyProcess.
+title: 'Samouczek: Azure Active Directory integrację z usługą RunMyProcess | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i RunMyProcess.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: d31f7395-048b-4a61-9505-5acf9fc68d9b
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/12/2017
+ms.topic: tutorial
+ms.date: 08/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfef1371b7ac61712c0f70efd48c0e791c4c729d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 46c31a209e8521b24e7f604dbe630f689fca484e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60518272"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880412"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-runmyprocess"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą RunMyProcess
+# <a name="tutorial-integrate-runmyprocess-with-azure-active-directory"></a>Samouczek: Integruj RunMyProcess z Azure Active Directory
 
-W tym samouczku dowiesz się, jak zintegrować RunMyProcess w usłudze Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować usługę RunMyProcess z usługą Azure Active Directory (Azure AD). Po zintegrowaniu usługi RunMyProcess z usługą Azure AD można:
 
-Integrowanie RunMyProcess z usługą Azure AD zapewnia następujące korzyści:
+* Kontrolka w usłudze Azure AD, która ma dostęp do RunMyProcess.
+* Zezwól użytkownikom na automatyczne logowanie się do usługi RunMyProcess przy użyciu kont w usłudze Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
 
-- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do RunMyProcess
-- Umożliwia użytkownikom automatyczne pobieranie zalogowanych do RunMyProcess (logowanie jednokrotne) przy użyciu konta usługi Azure AD
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą RunMyProcess, potrzebne są następujące elementy:
+Aby rozpocząć, potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- RunMyProcess logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
-
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięcznej wersji próbnej tutaj:[oferta wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
+* Subskrypcja z włączonym logowaniem jednokrotnym (SSO) RunMyProcess.
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie RunMyProcess z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym.
+
+* RunMyProcess obsługuje logowanie jednokrotne w usłudze **SP**
 
 ## <a name="adding-runmyprocess-from-the-gallery"></a>Dodawanie RunMyProcess z galerii
-Aby skonfigurować integrację RunMyProcess w usłudze Azure AD, należy dodać RunMyProcess z galerii z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać RunMyProcess z galerii, wykonaj następujące czynności:**
+Aby skonfigurować integrację programu RunMyProcess z usługą Azure AD, musisz dodać RunMyProcess z galerii do listy zarządzanych aplikacji SaaS.
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
+1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
+1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
+1. W sekcji **Dodaj z galerii** wpisz **RunMyProcess** w polu wyszukiwania.
+1. Wybierz pozycję **RunMyProcess** from panel wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-    ![Usługa Active Directory][1]
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą RunMyProcess przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w RunMyProcess.
 
-    ![Aplikacje][2]
-    
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą RunMyProcess, wykonaj następujące bloki konstrukcyjne:
 
-    ![Aplikacje][3]
+1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj logowanie](#configure-runmyprocess-sso)** jednokrotne w usłudze RunMyProcess, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+3. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
+4. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
+5. **[Utwórz użytkownika testowego RunMyProcess](#create-runmyprocess-test-user)** , aby dysponować odpowiednikiem B. Simon w RunMyProcess, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Przetestuj logowanie](#test-sso)** jednokrotne — aby sprawdzić, czy konfiguracja działa.
 
-1. W polu wyszukiwania wpisz **RunMyProcess**.
+### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/runmyprocess-tutorial/tutorial_runmyprocess_search.png)
+Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-1. W panelu wyników wybierz **RunMyProcess**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **RunMyProcess** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie**jednokrotne.
+1. Na stronie **Wybierz metodę logowania** jednokrotnego wybierz pozycję **SAML**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/runmyprocess-tutorial/tutorial_runmyprocess_addfromgallery.png)
+   ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
-W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą RunMyProcess w oparciu o użytkownika testu o nazwie "Britta Simon".
+1. W sekcji **Podstawowa konfiguracja języka SAML** wprowadź wartości dla następujących pól:
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w RunMyProcess do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w RunMyProcess musi można ustanowić.
+    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://live.runmyprocess.com/live/<tenant id>`
 
-W RunMyProcess, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
+    > [!NOTE]
+    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z [zespołem obsługi klienta RunMyProcess](mailto:support@runmyprocess.com) , aby uzyskać wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą RunMyProcess, należy wykonać poniższe bloki konstrukcyjne:
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **certyfikat (base64)** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego RunMyProcess](#creating-a-runmyprocess-test-user)**  — aby odpowiednikiem Britta Simon w RunMyProcess połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+    ![Link pobierania certyfikatu](common/certificatebase64.png)
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+1. W sekcji **Konfigurowanie RunMyProcess** skopiuj odpowiednie adresy URL na podstawie wymagania.
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji RunMyProcess.
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z RunMyProcess, wykonaj następujące czynności:**
+### <a name="configure-runmyprocess-sso"></a>Konfigurowanie logowania jednokrotnego RunMyProcess
 
-1. W witrynie Azure portal na **RunMyProcess** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W innym oknie przeglądarki sieci Web Zaloguj się do swojej dzierżawy RunMyProcess jako administrator.
 
-    ![Konfigurowanie logowania jednokrotnego][4]
+1. W okienku nawigacji po lewej stronie kliknij pozycję **konto** i wybierz pozycję **Konfiguracja**.
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Konfigurowanie logowania jednokrotnego](./media/runmyprocess-tutorial/tutorial_runmyprocess_samlbase.png)
-
-1. Na **RunMyProcess domena i adresy URL** sekcji, wykonaj następujące czynności:
-
-    ![Konfigurowanie logowania jednokrotnego](./media/runmyprocess-tutorial/tutorial_runmyprocess_url.png)
-
-    W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://live.runmyprocess.com/live/<tenant id>`
-
-    > [!NOTE] 
-    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta RunMyProcess](mailto:support@runmyprocess.com) można uzyskać wartość. 
-
-1. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
-
-    ![Konfigurowanie logowania jednokrotnego](./media/runmyprocess-tutorial/tutorial_runmyprocess_certificate.png) 
-
-1. Kliknij przycisk **Zapisz** przycisku.
-
-    ![Konfigurowanie logowania jednokrotnego](./media/runmyprocess-tutorial/tutorial_general_400.png)
-
-1. Na **konfiguracji RunMyProcess** , kliknij przycisk **skonfigurować RunMyProcess** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
-
-    ![Konfigurowanie logowania jednokrotnego](./media/runmyprocess-tutorial/tutorial_runmyprocess_configure.png) 
-
-1. W oknie przeglądarki internetowej innej logowanie jednokrotne do swojej dzierżawy RunMyProcess jako administrator.
-
-1. W okienku nawigacji po lewej stronie kliknij **konta** i wybierz **konfiguracji**.
-   
     ![Konfigurowanie logowania jednokrotnego po stronie aplikacji](./media/runmyprocess-tutorial/tutorial_runmyprocess_001.png)
 
-1. Przejdź do **metodę uwierzytelniania** sekcji, a następnie wykonaj następujące czynności:
-   
+1. Przejdź do sekcji **Metoda uwierzytelniania** i wykonaj następujące czynności:
+
     ![Konfigurowanie logowania jednokrotnego po stronie aplikacji](./media/runmyprocess-tutorial/tutorial_runmyprocess_002.png)
 
-    a. Jako **metoda**, wybierz opcję **logowanie Jednokrotne z Samlv2**. 
+    a. Jako **metodę**wybierz pozycję **SSO z Samlv2**.
 
-    b. W **przekierowania logowania jednokrotnego** pola tekstowego, Wklej wartość **SAML pojedynczego logowania jednokrotnego usługi adresu URL**, który skopiowano z witryny Azure portal.
+    b. W polu tekstowym **przekierowanie rejestracji** jednokrotnej wklej wartość **adresu URL logowania**, która została skopiowana z Azure Portal.
 
-    c. W **przekierowania wylogowania** pola tekstowego, Wklej wartość **adres URL wylogowania**, które zostały skopiowane z witryny Azure portal.
+    c. W polu tekstowym **przekierowanie wylogowania** wklej wartość **adresu URL wylogowania**, która została skopiowana z Azure Portal.
 
-    d. W **Format identyfikatora nazwy** polu tekstowym wpisz wartość **Format identyfikatora nazwy** jako **urn: oasis: nazwy: tc: SAML:1.1:nameid — format: emailAddress**.
+    d. W polu tekstowym **Format identyfikatora nazwy** wpisz wartość **Format identyfikatora nazwy** jako **urn: języka Oasis: names: TC: SAML: 1.1: NameID-format: EmailAddress**.
 
-    e. Skopiuj zawartość pliku pobranego certyfikatu, a następnie wklej go do **certyfikatu** pola tekstowego. 
- 
-    f. Kliknij przycisk **Zapisz** ikony.
+    e. Otwórz pobrany plik certyfikatu z Azure Portal w Notatniku, skopiuj zawartość pliku certyfikatu, a następnie wklej ją do pola tekstowego **certyfikatu** .
 
-> [!TIP]
-> Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji  **Konfiguracja** w dolnej części strony. Dalsze informacje o funkcji dokumentacji osadzonej można znaleźć tutaj: [Osadzona dokumentacja usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    f. Kliknij przycisk **Zapisz** ikonę.
 
-### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-![Utwórz użytkownika usługi Azure AD][100]
+W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. Wybierz **nowego użytkownika** w górnej części ekranu.
+1. We właściwościach **użytkownika** wykonaj następujące kroki:
+   1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
+   1. W polu **Nazwa użytkownika** wprowadź wartość username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
+   1. Kliknij przycisk **Utwórz**.
 
-1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/runmyprocess-tutorial/create_aaduser_01.png) 
+W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do usługi RunMyProcess.
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
-    
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/runmyprocess-tutorial/create_aaduser_02.png) 
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Na liście Aplikacje wybierz pozycję **RunMyProcess**.
+1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/runmyprocess-tutorial/create_aaduser_03.png) 
+   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
 
-1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/runmyprocess-tutorial/create_aaduser_04.png) 
+1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
-    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
+    ![Link Dodaj użytkownika](common/add-assign-user.png)
 
-    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-    c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
+### <a name="create-runmyprocess-test-user"></a>Utwórz użytkownika testowego RunMyProcess
 
-    d. Kliknij pozycję **Utwórz**.
- 
-### <a name="creating-a-runmyprocess-test-user"></a>Tworzenie użytkownika testowego RunMyProcess
-
-Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do RunMyProcess, musi być obsługiwana w RunMyProcess. W przypadku RunMyProcess Inicjowanie obsługi administracyjnej jest zadanie ręczne.
+Aby umożliwić użytkownikom usługi Azure AD logowanie się w usłudze RunMyProcess, muszą one być obsługiwane w RunMyProcess. W przypadku RunMyProcess, Inicjowanie obsługi administracyjnej jest zadaniem ręcznym.
 
 **Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
 
-1. Zaloguj się do witryny firmy RunMyProcess jako administrator.
+1. Zaloguj się do firmowej witryny RunMyProcess jako administrator.
 
-1. Kliknij przycisk **konta** i wybierz **użytkowników** w panelu nawigacyjnym po lewej stronie, następnie kliknij przycisk **nowego użytkownika**.
-   
+1. Kliknij pozycję **konto** i wybierz pozycję **Użytkownicy** w lewym panelu nawigacyjnym, a następnie kliknij pozycję **nowy użytkownik**.
+
     ![Nowy użytkownik](./media/runmyprocess-tutorial/tutorial_runmyprocess_003.png "Nowy użytkownik")
 
-1. W **ustawienia użytkownika** sekcji, wykonaj następujące czynności:
-   
-    ![Profil](./media/runmyprocess-tutorial/tutorial_runmyprocess_004.png "Profil") 
+1. W sekcji **Ustawienia użytkownika** wykonaj następujące czynności:
+
+    ![Profil](./media/runmyprocess-tutorial/tutorial_runmyprocess_004.png "Profil")
   
-    a. Typ **nazwa** i **E-mail** prawidłowe platformy Azure konto usługi AD do aprowizowania w powiązanych pól tekstowych. 
+    a. Wpisz **nazwę** i **adres E-mail** prawidłowego konta usługi Azure AD, które chcesz udostępnić do powiązanych pól tekstowych.
 
-    b. Wybierz **środowiska IDE języka**, **języka**, i **profilu**. 
+    b. Wybierz **język IDE**, **Język**i **profil**.
 
-    c. Wybierz **Wyślij wiadomość e-mail z tworzenia konta do mnie**. 
+    c. Wybierz opcję **Wyślij wiadomość e-mail do utworzenia konta**.
 
-    d. Kliknij pozycję **Zapisz**.
-   
-    >[!NOTE]
-    >Można użyć jakichkolwiek innych RunMyProcess użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez RunMyProcess do świadczenia usługi Azure Active Directory kont użytkowników. 
-    > 
+    d. Kliknij polecenie **Zapisz**.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
+    > [!NOTE]
+    > Do aprowizacji Azure Active Directory kontami użytkowników można używać innych narzędzi do tworzenia kont użytkowników lub interfejsów API udostępnionych przez program RunMyProcess.
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do RunMyProcess.
+### <a name="test-sso"></a>Testuj Logowanie jednokrotne 
 
-![Przypisz użytkownika][200] 
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-**Aby przypisać Britta Simon RunMyProcess, wykonaj następujące czynności:**
-
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
-
-    ![Przypisz użytkownika][201] 
-
-1. Na liście aplikacji wybierz **RunMyProcess**.
-
-    ![Konfigurowanie logowania jednokrotnego](./media/runmyprocess-tutorial/tutorial_runmyprocess_app.png) 
-
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
-
-    ![Przypisz użytkownika][202] 
-
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
-
-    ![Przypisz użytkownika][203]
-
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
-
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
-
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
-### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
-
-Celem tej sekcji jest test konfiguracji logowania jednokrotnego usługi Azure AD za pomocą panelu dostępu.
-
-Po kliknięciu kafelka RunMyProcess w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji RunMyProcess.
+Po kliknięciu kafelka RunMyProcess w panelu dostępu należy automatycznie zalogować się do RunMyProcess, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/runmyprocess-tutorial/tutorial_general_01.png
-[2]: ./media/runmyprocess-tutorial/tutorial_general_02.png
-[3]: ./media/runmyprocess-tutorial/tutorial_general_03.png
-[4]: ./media/runmyprocess-tutorial/tutorial_general_04.png
-
-[100]: ./media/runmyprocess-tutorial/tutorial_general_100.png
-
-[200]: ./media/runmyprocess-tutorial/tutorial_general_200.png
-[201]: ./media/runmyprocess-tutorial/tutorial_general_201.png
-[202]: ./media/runmyprocess-tutorial/tutorial_general_202.png
-[203]: ./media/runmyprocess-tutorial/tutorial_general_203.png
-
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

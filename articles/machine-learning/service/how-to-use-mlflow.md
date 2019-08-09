@@ -1,7 +1,7 @@
 ---
-title: Korzystanie z MLflow z usługą Azure Machine Learning
+title: Użyj MLflow z
 titleSuffix: Azure Machine Learning service
-description: Rejestruj metryki i artefakty oraz Wdrażaj modele w środowisku produkcyjnym za pomocą MLflow z usługą Azure Machine Learning.
+description: Skonfiguruj MLflow z Azure Machine Learning, aby rejestrować metryki & artefakty i wdrażać modele z zestawów danych, środowiska lokalnego lub środowiska maszyn wirtualnych.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
-ms.date: 07/15/2019
+ms.date: 08/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2b59797e60585876764e8c9e1276e4fd36571b18
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: dd451f4c7ada3c062862098d4cda5314152be0c0
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856016"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882009"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-service-preview"></a>Śledzenie metryk i wdrażanie modeli za pomocą usług MLflow i Azure Machine Learning (wersja zapoznawcza)
 
@@ -55,12 +55,9 @@ W tym artykule pokazano, jak włączyć śledzenie identyfikatorów URI MLflow i
 * [Zainstaluj zestaw sdk Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) na komputerze lokalnym, zestaw SDK zapewnia łączność z MLflow w celu uzyskania dostępu do obszaru roboczego.
 * [Utwórz obszar roboczy usługi Azure Machine Learning](how-to-manage-workspace.md).
 
+## <a name="track-local-runs"></a>Śledź uruchomienia lokalne
 
-## <a name="track-experiment-runs"></a>Śledź uruchomienia eksperymentów
-
-Śledzenie MLflow za pomocą usługi Azure Machine Learning umożliwia przechowywanie zarejestrowanych metryk i artefaktów z lokalnego i zdalnego uruchomienia w obszarze roboczym Azure Machine Learning.
-
-### <a name="local-runs"></a>Lokalne uruchomienia
+Śledzenie MLflow za pomocą usługi Azure Machine Learning umożliwia przechowywanie zarejestrowanych metryk i artefaktów z lokalnych przebiegów w obszarze roboczym Azure Machine Learning.
 
 Zainstaluj pakiet `azureml-contrib-run` , aby używać śledzenia MLflow z Azure Machine Learningami na eksperymentach lokalnie uruchamianych w Jupyter notebook lub edytorze kodu.
 
@@ -97,7 +94,9 @@ with mlflow.start_run():
     mlflow.log_metric('alpha', 0.03)
 ```
 
-### <a name="remote-runs"></a>Zdalne uruchomienia
+## <a name="track-remote-runs"></a>Śledź zdalne uruchomienia
+
+Śledzenie MLflow za pomocą usługi Azure Machine Learning umożliwia przechowywanie zarejestrowanych metryk i artefaktów z zdalnych przebiegów w obszarze roboczym Azure Machine Learning.
 
 Zdalne uruchomienia umożliwiają uczenie modeli przy większej liczbie zaawansowanych obliczeń, takich jak maszyny wirtualne obsługujące procesor GPU lub klastry środowisko obliczeniowe usługi Machine Learning. Zapoznaj się z tematem [Konfigurowanie elementów docelowych obliczeń dla szkolenia modeli](how-to-set-up-training-targets.md) , aby poznać różne opcje obliczeń.
 
@@ -138,11 +137,13 @@ W przypadku konfiguracji przebiegu obliczeń i szkoleń Użyj `Experiment.submit
 run = exp.submit(src)
 ```
 
-### <a name="mlflow-with-azure-databricks-runs"></a>MLflow z uruchomionymi Azure Databricks
+## <a name="track-azure-databricks-runs"></a>Śledź uruchomienia Azure Databricks
+
+Śledzenie MLflow za pomocą usługi Azure Machine Learning umożliwia przechowywanie zarejestrowanych metryk i artefaktów z poziomu kostki danych w obszarze roboczym Azure Machine Learning.
 
 Aby uruchamiać eksperymenty Mlflow z Azure Databricks, musisz najpierw utworzyć [Azure Databricks obszar roboczy i klaster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal). Upewnij się, że w klastrze została zainstalowana Biblioteka usługi *Azure mlflow* z poziomu programu PyPi, aby zapewnić, że klaster ma dostęp do wymaganych funkcji i klas.
 
-#### <a name="install-libraries"></a>Zainstaluj biblioteki
+### <a name="install-libraries"></a>Zainstaluj biblioteki
 
 Aby zainstalować biblioteki w klastrze, przejdź do karty **biblioteki** , a następnie kliknij pozycję **Instaluj nowe** .
 
@@ -152,7 +153,7 @@ W polu **pakiet** wpisz polecenie Azure-mlflow, a następnie kliknij przycisk In
 
  ![mlflow z diagramem usługi Azure Machine Learning](media/how-to-use-mlflow/install-libraries.png)
 
-#### <a name="notebook-and-workspace-set-up"></a>Konfiguracja notesu i obszaru roboczego
+### <a name="set-up-your-notebook-and-workspace"></a>Konfigurowanie notesu i obszaru roboczego
 
 Po skonfigurowaniu klastra zaimportuj Notes eksperymentu, otwórz go i Dołącz do niego klaster.
 
@@ -181,7 +182,7 @@ ws = Workspace.get(name=workspace_name,
                    resource_group=resource_group)
 
 ```
-#### <a name="set-mlflow-tracking-uri"></a>Ustaw identyfikator URI śledzenia MLflow
+### <a name="link-mlflow-tracking-to-your-workspace"></a>Łączenie śledzenia MLflow z obszarem roboczym
 Po utworzeniu wystąpienia obszaru roboczego ustaw identyfikator URI śledzenia MLflow. Dzięki temu można połączyć śledzenie MLflow z obszarem roboczym Azure Machine Learning. Po wykonaniu tych badań wszystkie eksperymenty będą gruntować w usłudze Managed Azure Machine Learning śledzenie.
 
 ```python

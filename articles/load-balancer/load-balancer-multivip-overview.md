@@ -1,7 +1,7 @@
 ---
-title: Wiele frontonów dla modułu równoważenia obciążenia platformy Azure
+title: Wiele frontonów dla Azure Load Balancer
 titlesuffix: Azure Load Balancer
-description: Omówienie wielu frontonów w module równoważenia obciążenia platformy Azure
+description: Przegląd wielu frontonów na Azure Load Balancer
 services: load-balancer
 documentationcenter: na
 author: chkuhtz
@@ -11,131 +11,131 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/22/2018
+ms.date: 08/07/2019
 ms.author: chkuhtz
-ms.openlocfilehash: b9a140314b8eba6386c37bdbcf2bb3de58589335
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b109e87a8fcbef0bfca356c83716509ebc6cecd4
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60594200"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884207"
 ---
-# <a name="multiple-frontends-for-azure-load-balancer"></a>Wiele frontonów dla modułu równoważenia obciążenia platformy Azure
+# <a name="multiple-frontends-for-azure-load-balancer"></a>Wiele frontonów dla Azure Load Balancer
 
-Usługa Azure Load Balancer pozwala załadować saldo usług na wielu portach i/lub wiele adresów IP. Public i internal load balancer definicje umożliwia obciążenia równoważenie przepływów zestawu maszyn wirtualnych.
+Azure Load Balancer umożliwia Równoważenie obciążenia usług na wielu portach, wielu adresach IP lub obu. W celu zrównoważenia przepływów między zestawem maszyn wirtualnych można użyć definicji publicznych i wewnętrznych modułów równoważenia obciążenia.
 
-W tym artykule opisano podstawowe informacje dotyczące tej możliwości, ważnych pojęć i ograniczeń. Jeśli zamierzasz udostępnić usługi na jeden adres IP, możesz znaleźć uproszczone instrukcje dotyczące [publicznych](load-balancer-get-started-internet-portal.md) lub [wewnętrzny](load-balancer-get-started-ilb-arm-portal.md) konfiguracji modułu równoważenia obciążenia. Dodawanie wielu frontonów jest dodawane do konfiguracji pojedynczego serwera sieci Web. Przy użyciu koncepcji, w tym artykule, można rozwinąć uproszczona konfiguracja w dowolnym momencie.
+W tym artykule opisano podstawowe informacje dotyczące tej możliwości, ważnych koncepcji i ograniczeń. Jeśli zamierzasz tylko uwidocznić usługi na jednym adresie IP, możesz znaleźć uproszczone instrukcje dotyczące konfiguracji [publicznych](load-balancer-get-started-internet-portal.md) lub [wewnętrznych](load-balancer-get-started-ilb-arm-portal.md) modułów równoważenia obciążenia. Dodawanie wielu frontonów jest przyrostem do jednej konfiguracji frontonu. Korzystając z koncepcji w tym artykule, można w dowolnym momencie rozszerzyć uproszczoną konfigurację.
 
-Podczas definiowania usługi Azure Load Balancer frontonu i konfigurację puli zaplecza są połączone z zasadami. Sonda kondycji przywoływanego przez regułę służy do określania sposobu nowych przepływów są wysyłane do węzłów w puli zaplecza. (Alias VIP) frontonu jest definiowany przez 3-krotka składające się z adresu IP (wewnętrznego lub publicznego), protokół transportu (UDP lub TCP) i numer portu z regułą równoważenia obciążenia. Pula zaplecza jest kolekcją konfiguracji adresu IP maszyny wirtualnej (część zasobów kart Sieciowych), które odwołują się do puli zaplecza modułu równoważenia obciążenia.
+Podczas definiowania Azure Load Balancer konfiguracja frontonu i puli zaplecza są połączone z regułami. Sonda kondycji, do której odwołuje się reguła, służy do określania, w jaki sposób Nowe przepływy są wysyłane do węzła w puli zaplecza. Fronton (alias VIP) jest definiowany przez 3-krotkę składającą się z adresu IP (publicznego lub wewnętrznego), protokołu transportowego (UDP lub TCP) i numeru portu z reguły równoważenia obciążenia. Pula zaplecza jest kolekcją konfiguracji protokołu IP maszyn wirtualnych (część zasobu karty sieciowej), która odwołuje się do puli zaplecza Load Balancer.
 
-Poniższa tabela zawiera niektóre przykładowe konfiguracje frontonu:
+Poniższa tabela zawiera kilka przykładowych konfiguracji frontonu:
 
-| Frontonu | Adres IP | protocol | port |
+| Fronton | Adres IP | protocol | port |
 | --- | --- | --- | --- |
 | 1 |65.52.0.1 |TCP |80 |
 | 2 |65.52.0.1 |TCP |*8080* |
 | 3 |65.52.0.1 |*UDP* |80 |
 | 4 |*65.52.0.2* |TCP |80 |
 
-W tabeli przedstawiono cztery różne frontonów. Frontonów nr 1, #2 i #3 są pojedynczego serwera sieci Web za pomocą wielu reguł. Ten sam adres IP jest używany, ale portu lub protokół różni się dla każdego frontonu. Frontonów nr 1 i #4 są przykładem wielu frontonów, gdy ten sam protokół frontonu i portu są ponownie używane przez wiele frontonów.
+W tabeli przedstawiono cztery różne frontony. Frontony #1, #2 i #3 są pojedynczymi frontonami z wieloma regułami. Ten sam adres IP jest używany, ale port lub protokół różni się dla każdego frontonu. Frontony #1 i #4 są przykładem wielu frontonów, w których ten sam protokół frontonu i port są ponownie używane dla wielu frontonów.
 
-Usługa Azure Load Balancer zapewnia elastyczność podczas definiowania reguły równoważenia obciążenia. Reguła deklaruje, jak adres i port we frontonie jest mapowany na docelowy adres i port zaplecza. Określa, czy porty wewnętrznej bazy danych są ponownie używane przez reguły zależy od typu reguły. Każdy typ reguły ma specyficzne wymagania, które mogą mieć wpływ na projekt konfiguracji i sondowania hosta. Istnieją dwa typy zasad:
+Azure Load Balancer zapewnia elastyczność w definiowaniu reguł równoważenia obciążenia. Reguła deklaruje, jak adres i port frontonu są mapowane na adres docelowy i port w zapleczu. Czy porty zaplecza są ponownie używane między regułami, zależy od typu reguły. Każdy typ reguły ma określone wymagania, które mogą mieć wpływ na konfigurację hosta i projekt sondy. Istnieją dwa typy reguł:
 
-1. Domyślną regułę za pomocą nie ponownego użycia portu wewnętrznej bazy danych
-2. Reguła pływającego adresu IP, gdzie są ponownie używane porty wewnętrznej bazy danych
+1. Reguła domyślna bez użycia portu zaplecza
+2. Reguła zmiennoprzecinkowych adresów IP, w której są ponownie używane porty zaplecza
 
-Usługa Azure Load Balancer można mieszać oba typy reguł w tej samej konfiguracji usługi równoważenia obciążenia. Moduł równoważenia obciążenia można ich używać jednocześnie danej maszyny Wirtualnej lub dowolnej kombinacji, tak długo, jak przestrzega ograniczeń reguły. Jakiego typu reguły, możesz wybrać zależy od wymagań aplikacji i złożoność obsługi tej konfiguracji. Należy ocenić, które typy reguł są najlepsze w przypadku danego scenariusza.
+Azure Load Balancer umożliwia mieszanie obu typów reguł w tej samej konfiguracji modułu równoważenia obciążenia. Moduł równoważenia obciążenia może używać ich jednocześnie dla danej maszyny wirtualnej lub dowolnej kombinacji, o ile są one przestrzegane przez ograniczenia reguły. Wybór typu reguły zależy od wymagań aplikacji i złożoności obsługi tej konfiguracji. Należy oszacować, które typy reguł najlepiej sprawdzają się w danym scenariuszu.
 
-Te scenariusze dalsze — omówimy, zaczynając od zachowanie domyślne.
+Te scenariusze są bardziej szczegółowe, zaczynając od zachowania domyślnego.
 
-## <a name="rule-type-1-no-backend-port-reuse"></a>Typ reguły #1: Nie ponownego użycia portu wewnętrznej bazy danych
+## <a name="rule-type-1-no-backend-port-reuse"></a>#1 typu reguły: Nie jest używany żaden port zaplecza
 
-![Wiele ilustrację frontonu zielony oraz purpurowej frontonu](./media/load-balancer-multivip-overview/load-balancer-multivip.png)
+![Ilustracja przedstawiająca wiele frontonów z zielonym i fioletowym frontonem](./media/load-balancer-multivip-overview/load-balancer-multivip.png)
 
-W tym scenariuszu frontonów są skonfigurowane w następujący sposób:
+W tym scenariuszu frontony są konfigurowane w następujący sposób:
 
-| Frontonu | Adres IP | protocol | port |
+| Fronton | Adres IP | protocol | port |
 | --- | --- | --- | --- |
-| ![zielony frontonu](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
-| ![purpurowa frontonu](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
+| ![zielony fronton](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
+| ![Purpurowy fronton](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
 
-DIP jest miejscem docelowym przepływu ruchu przychodzącego. W puli zaplecza każda maszyna wirtualna udostępnia żądanej usługi na porcie unikatowy DIP. Ta usługa jest skojarzony z serwera sieci Web za pośrednictwem definicji reguły.
+DIP jest miejscem docelowym przepływu przychodzącego. W puli zaplecza każda maszyna wirtualna uwidacznia żądaną usługę na unikatowym porcie dla adresu DIP. Ta usługa jest skojarzona z frontonem za pomocą definicji reguły.
 
-Zdefiniowano dwie reguły:
+Definiujemy dwie reguły:
 
-| Reguła | Mapowanie frontonu | Do puli zaplecza |
+| Reguła | Fronton mapy | Do puli zaplecza |
 | --- | --- | --- |
-| 1 |![zielony frontonu](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![zaplecze](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![zaplecze](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
+| 1 |![zielony fronton](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![zaplecze](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![zaplecze](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
 | 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![zaplecze](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![zaplecze](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
 
-Pełne mapowania w module równoważenia obciążenia Azure jest teraz w następujący sposób:
+Pełne mapowanie w Azure Load Balancer jest teraz następujące:
 
 | Reguła | Adres IP frontonu | protocol | port | Miejsce docelowe | port |
 | --- | --- | --- | --- | --- | --- |
-| ![Reguła zielony](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |Adres DIP |80 |
-| ![purpurowa reguły](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |Adres DIP |81 |
+| ![Zielona reguła](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |Adres IP DIP |80 |
+| ![Reguła purpurowa](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |Adres IP DIP |81 |
 
-Każda reguła musi utworzyć przepływu przy użyciu unikatowego połączenia docelowy adres IP i port docelowy. Przez zróżnicowanie portu docelowego przepływu, wiele reguł mogą dostarczać przepływy do tego samego adresu DIP na inne porty.
+Każda reguła musi generować przepływ z unikatową kombinacją docelowego adresu IP i portu docelowego. Przez zróżnicowanie portu docelowego przepływu, wiele reguł może dostarczać przepływy do tego samego DIP na różnych portach.
 
-Sondy kondycji są zawsze kierowane do DIP maszyny Wirtualnej. Należy upewnić się, możesz czy swoje badania odzwierciedlają kondycji maszyny Wirtualnej.
+Sondy kondycji są zawsze kierowane do dedykowanego adresu IP maszyny wirtualnej. Musisz się upewnić, że sonda odzwierciedla kondycję maszyny wirtualnej.
 
-## <a name="rule-type-2-backend-port-reuse-by-using-floating-ip"></a>Typ #2 reguły: ponowne użycie portu wewnętrznej bazy danych, za pomocą pływającego adresu IP
+## <a name="rule-type-2-backend-port-reuse-by-using-floating-ip"></a>Typ reguły #2: ponowne użycie portu zaplecza przy użyciu zmiennoprzecinkowego adresu IP
 
-Usługa Azure Load Balancer zapewnia elastyczność do ponownego użycia portu frontonu w wielu frontonów, niezależnie od typu reguły używane. Ponadto niektóre scenariusze aplikacji Preferuj lub wymagają tego samego portu, który będzie używany przez wiele wystąpień aplikacji na jednej maszynie Wirtualnej w puli zaplecza. Typowe przykłady ponowne użycie portu obejmują zapewniającymi wysoką dostępność, sieci wirtualnych urządzeń sieciowych i udostępnia wiele TLS punktów końcowych bez ponownego szyfrowania.
+Azure Load Balancer zapewnia elastyczność ponownego użycia portu frontonu dla wielu frontonów, niezależnie od użytego typu reguły. Ponadto niektóre scenariusze aplikacji wolą lub wymagają, aby ten sam port był używany przez wiele wystąpień aplikacji na jednej maszynie wirtualnej w puli zaplecza. Typowe przykłady ponownego użycia portów obejmują klastrowanie dla wysokiej dostępności, sieciowych urządzeń wirtualnych i udostępnianie wielu punktów końcowych protokołu TLS bez ponownego szyfrowania.
 
-Jeśli chcesz ponownie użyć portu wewnętrznej bazy danych między wieloma regułami, należy włączyć pływającego adresu IP w definicji reguły.
+Jeśli chcesz ponownie użyć portu zaplecza dla wielu reguł, musisz włączyć przestawne adresy IP w definicji reguły.
 
-"Pływającego adresu IP" jest terminologii platformy Azure przez pewną część co to jest znany jako bezpośrednie serwera Return (DSR). Żądanie praw podmiotu danych składa się z dwóch części: Topologia przepływu i adresów IP schemat mapowania. Na poziomie platformy Azure Load Balancer zawsze działa w topologii przepływu żądania podmiotu danych, niezależnie od tego, czy pływającego adresu IP jest włączony, czy nie. Oznacza to, że wychodzącego część przepływu jest zawsze poprawnie przepisany przepływ bezpośrednio do źródła.
+"Pływający adres IP" to terminologia platformy Azure dla części tego, co jest znane jako bezpośrednie zwrócenie serwera (DSR). DSR składa się z dwóch części: topologii przepływu i schematu mapowania adresów IP. Na poziomie platformy Azure Load Balancer zawsze działa w topologii przepływu DSR, niezależnie od tego, czy jest włączony swobodny adres IP. Oznacza to, że wychodząca część przepływu jest zawsze poprawnie zapisywana do przepływu bezpośrednio z powrotem do źródła.
 
-Z domyślnym typem reguły Azure udostępnia punkt tradycyjnych schemat mapowania adresów IP w celu ułatwienia z równoważeniem obciążenia. Włączanie pływającego adresu IP zmienia schemat mapowania adresu IP, aby umożliwić większą elastyczność, co zostało opisane poniżej.
+W przypadku domyślnego typu reguły platforma Azure udostępnia tradycyjny schemat mapowania adresów IP równoważenia obciążenia na potrzeby łatwego użytkowania. Włączenie pływającego adresu IP powoduje zmianę schematu mapowania adresów IP, aby umożliwić dodatkową elastyczność, jak wyjaśniono poniżej.
 
 Na poniższym diagramie przedstawiono tę konfigurację:
 
-![Wiele ilustrację frontonu zielony oraz purpurowej frontonu za pomocą DSR](./media/load-balancer-multivip-overview/load-balancer-multivip-dsr.png)
+![Ilustracja przedstawiająca wiele frontonów z zielonym i fioletowym frontonem przy użyciu DSR](./media/load-balancer-multivip-overview/load-balancer-multivip-dsr.png)
 
-W tym scenariuszu każda maszyna wirtualna w puli zaplecza ma trzy interfejsy sieciowe:
+W tym scenariuszu wszystkie maszyny wirtualne w puli zaplecza mają trzy interfejsy sieciowe:
 
-* DIP: wirtualnej karty Sieciowej skojarzonych z maszyną Wirtualną (konfiguracja adresu IP zasobu kart Sieciowych platformy Azure)
-* : 1 sprzężenia zwrotnego interfejsu frontonu w ramach systemu operacyjnego, który jest skonfigurowany przy użyciu adresu IP frontonu 1 gościa
-* Fronton 2: interfejsu sprzężenia zwrotnego w ramach systemu operacyjnego, który jest skonfigurowany przy użyciu adresu IP frontonu 2 gościa
+* DIP: wirtualna karta sieciowa skojarzona z MASZYNą wirtualną (Konfiguracja IP zasobu karty interfejsu sieciowego platformy Azure)
+* Fronton 1: interfejs sprzężenia zwrotnego w systemie operacyjnym gościa skonfigurowany przy użyciu adresu IP frontonu 1
+* Fronton 2: interfejs sprzężenia zwrotnego w systemie operacyjnym gościa skonfigurowany przy użyciu adresu IP frontonu 2
 
 > [!IMPORTANT]
-> Konfiguracja interfejsów sprzężenia zwrotnego jest wykonywane w ramach systemu operacyjnego gościa. Ta konfiguracja nie jest wykonywane lub zarządzane przez platformę Azure. Bez tej konfiguracji zasady nie będą działać. Definicje sondy kondycji używać DIP maszyny Wirtualnej, a nie interfejsu sprzężenia zwrotnego reprezentujący frontonu żądanie praw podmiotu danych. W związku z tym usługi, musisz podać odpowiedzi sond na porcie DIP, która odzwierciedla stan usługi oferowane na interfejsu sprzężenia zwrotnego reprezentujący frontonu żądanie praw podmiotu danych.
+> Konfiguracja interfejsów sprzężenia zwrotnego jest wykonywana w systemie operacyjnym gościa. Ta konfiguracja nie jest wykonywana ani zarządzana przez platformę Azure. Bez tej konfiguracji reguły nie będą działać. Definicje sond kondycji używają adresu DIP maszyny wirtualnej, a nie interfejsu sprzężenia zwrotnego reprezentującego fronton DSR. W związku z tym usługa musi dostarczyć odpowiedzi na port DIP, który odzwierciedla stan usługi oferowanej w interfejsie sprzężenia zwrotnego reprezentującym fronton DSR.
 
-Załóżmy, że taką samą konfigurację frontonu, jak w poprzednim scenariuszu:
+Załóżmy, że konfiguracja frontonu jest taka sama jak w poprzednim scenariuszu:
 
-| Frontonu | Adres IP | protocol | port |
+| Fronton | Adres IP | protocol | port |
 | --- | --- | --- | --- |
-| ![zielony frontonu](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
-| ![purpurowa frontonu](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
+| ![zielony fronton](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
+| ![Purpurowy fronton](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
 
-Zdefiniowano dwie reguły:
+Definiujemy dwie reguły:
 
-| Reguła | Frontonu | Mapowanie do puli zaplecza |
+| Reguła | Fronton | Mapowanie na pulę zaplecza |
 | --- | --- | --- |
-| 1 |![Reguły](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![zaplecze](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 (w VM1 i VM2) |
-| 2 |![Reguły](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![zaplecze](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 (w VM1 i VM2) |
+| 1 |![rule](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![zaplecze](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 (w VM1 i VM2) |
+| 2 |![rule](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![zaplecze](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 (w VM1 i VM2) |
 
-W poniższej tabeli przedstawiono pełną mapowania w module równoważenia obciążenia:
+W poniższej tabeli przedstawiono pełne mapowanie modułu równoważenia obciążenia:
 
 | Reguła | Adres IP frontonu | protocol | port | Miejsce docelowe | port |
 | --- | --- | --- | --- | --- | --- |
-| ![Reguła zielony](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |takie same jak serwera sieci Web (65.52.0.1) |takie same jak serwera sieci Web (80) |
-| ![purpurowa reguły](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |takie same jak serwera sieci Web (65.52.0.2) |takie same jak serwera sieci Web (80) |
+| ![Zielona reguła](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |Analogicznie jak fronton (65.52.0.1) |Analogicznie jak fronton (80) |
+| ![Reguła purpurowa](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |Analogicznie jak fronton (65.52.0.2) |Analogicznie jak fronton (80) |
 
-Miejsce docelowe w przepływie ruchu przychodzącego jest adres IP frontonu dla interfejsu sprzężenia zwrotnego na maszynie wirtualnej. Każda reguła musi utworzyć przepływu przy użyciu unikatowego połączenia docelowy adres IP i port docelowy. Przez zróżnicowanie docelowy adres IP przepływu, ponowne użycie portu jest możliwe w tej samej maszyny Wirtualnej. Usługa jest uwidaczniany do modułu równoważenia obciążenia przez powiązanie adresu IP frontonu i portu interfejsu sprzężenia zwrotnego odpowiedniego.
+Miejscem docelowym przepływu ruchu przychodzącego jest adres IP frontonu w interfejsie sprzężenia zwrotnego w maszynie wirtualnej. Każda reguła musi generować przepływ z unikatową kombinacją docelowego adresu IP i portu docelowego. Zmieniając docelowy adres IP przepływu, możliwe jest ponowne użycie portów na tej samej maszynie wirtualnej. Usługa jest udostępniana usłudze równoważenia obciążenia przez powiązanie jej z adresem IP i portem odpowiedniego interfejsu sprzężenia zwrotnego.
 
-Należy zauważyć, że w tym przykładzie nie zmienia się port docelowy. Mimo że jest to scenariusz pływającego adresu IP, usługi Azure Load Balancer obsługuje również zdefiniować regułę, aby ponownie zapisuje docelowy port zaplecza i odróżnia go od portu docelowego serwera sieci Web.
+Należy zauważyć, że w tym przykładzie nie jest zmieniany port docelowy. Mimo że jest to przepływający scenariusz IP, Azure Load Balancer obsługuje także Definiowanie reguły, aby ponownie zapisać port docelowy zaplecza i uczynić go innym względem portu docelowego frontonu.
 
-Typ reguły pływającego adresu IP jest podstawą kilka wzorców konfiguracji modułu równoważenia obciążenia. Przykładem, która jest obecnie dostępna jest [funkcji SQL AlwaysOn z wielu odbiorników](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) konfiguracji. Wraz z upływem czasu będzie udokumentowaliśmy kilka z tych scenariuszy.
+Typ reguły zmiennoprzecinkowy adres IP jest podstawą kilku wzorców konfiguracji usługi równoważenia obciążenia. Jednym z przykładów, które jest obecnie dostępne, jest funkcja [SQL AlwaysOn z wieloma odbiornikami](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) konfiguracji. W miarę upływu czasu będzie można udokumentować więcej takich scenariuszy.
 
 ## <a name="limitations"></a>Ograniczenia
 
-* Wiele konfiguracji frontonu są obsługiwane tylko maszyny wirtualne IaaS.
-* Z regułą pływającego adresu IP aplikacji należy użyć podstawowa konfiguracja adresu IP dla ruchu wychodzącego przepływów. Jeśli aplikacja tworzy powiązanie z adresu IP frontonu, które są skonfigurowane na sprzężenia zwrotnego interfejs w SNAT gościa systemu operacyjnego, platformy Azure nie jest dostępny do przepisania przepływu wychodzącego, a przepływ nie powiedzie się.
-* Publiczne adresy IP ma wpływ na rozliczenia. Aby uzyskać więcej informacji, zobacz [cennik adresów IP](https://azure.microsoft.com/pricing/details/ip-addresses/)
-* Mają zastosowanie limity subskrypcji. Aby uzyskać więcej informacji, zobacz [limitów usług](../azure-subscription-service-limits.md#networking-limits) Aby uzyskać szczegółowe informacje.
+* Wiele konfiguracji frontonu jest obsługiwanych tylko z maszynami wirtualnymi IaaS.
+* W przypadku reguły zmiennoprzecinkowych adresów IP aplikacja musi używać podstawowej konfiguracji protokołu IP dla przepływów ruchu wychodzącego. Jeśli aplikacja jest powiązana z adresem IP frontonu skonfigurowanym w interfejsie sprzężenia zwrotnego w systemie operacyjnym gościa, ruch wychodzący z platformy Azure nie jest dostępny do ponownego zapisania przepływu wychodzącego i przepływ kończy się niepowodzeniem.  Przejrzyj [scenariusze](load-balancer-outbound-connections.md)wychodzące.
+* Publiczne adresy IP mają wpływ na rozliczenia. Aby uzyskać więcej informacji, zobacz [cennik adresów IP](https://azure.microsoft.com/pricing/details/ip-addresses/)
+* Obowiązują limity subskrypcji. Aby uzyskać więcej informacji, zobacz [limity usług](../azure-subscription-service-limits.md#networking-limits) w celu uzyskania szczegółów.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Przegląd [połączeń wychodzących](load-balancer-outbound-connections.md) Aby zrozumieć wpływ wiele frontonów na zachowanie połączenia wychodzące.
+- Przejrzyj [połączenia](load-balancer-outbound-connections.md) wychodzące, aby zrozumieć wpływ wielu frontonów na zachowanie połączenia wychodzącego.

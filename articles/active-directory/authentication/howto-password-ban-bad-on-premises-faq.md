@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ccefec9e548b7981f696712bb4a983f4b577a9b
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 8ece7f93b5397db16e03c1eab1d2dc1e568113d9
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779647"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879257"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Ochrona hasłem w usłudze Azure AD — często zadawane pytania
 
@@ -33,6 +33,8 @@ Bieżące wskazówki dotyczące tego tematu firmy Microsoft można znaleźć w n
 **Pyt.: Czy lokalna Ochrona hasłem usługi Azure AD jest obsługiwana w chmurach niepublicznych?**
 
 Żadna lokalna Ochrona hasłem usługi Azure AD jest obsługiwana tylko w chmurze publicznej. Nie ogłoszono żadnych dat dla niepublicznej dostępności w chmurze.
+
+Portal usługi Azure AD umożliwia modyfikację konfiguracji specyficznej dla lokalnego "ochrony hasłem dla systemu Windows Server Active Directory", nawet w chmurach niepublicznych; takie zmiany zostaną utrwalone, ale w przeciwnym razie nie zostaną zastosowane. Rejestracja lokalnych agentów proxy lub lasów nie jest obsługiwana, gdy są używane poświadczenia chmury niepublicznej, a wszystkie takie próby rejestracji będą zawsze kończyć się niepowodzeniem.
 
 **Pyt.: Jak mogę zastosować korzyści z ochrony hasłem w usłudze Azure AD do podzbioru użytkowników lokalnych?**
 
@@ -64,7 +66,7 @@ Nieobsługiwane. Ochrona hasłem w usłudze Azure AD to funkcja platformy Azure,
 
 **Pyt.: Jak mogę zmodyfikować zawartość zasad na poziomie Active Directory?**
 
-Nieobsługiwane. Zasady można administrować tylko za pomocą portalu zarządzania usługi Azure AD. Zobacz również poprzednie pytanie.
+Nieobsługiwane. Zasady można administrować tylko za pomocą portalu usługi Azure AD. Zobacz również poprzednie pytanie.
 
 **Pyt.: Dlaczego Usługa DFSR jest wymagana na potrzeby replikacji folderu SYSVOL?**
 
@@ -118,15 +120,15 @@ Podsumowując, wdrożenie usługi agenta DC ochrony hasła usługi Azure AD na p
 
 **Pyt.: Dlaczego niestandardowa inteligentna blokada nie działa nawet po zainstalowaniu agentów w środowisku lokalnym Active Directory?**
 
-Niestandardowa blokada inteligentna jest obsługiwana tylko na platformie Azure. Zmiany niestandardowych ustawień inteligentnego blokowania w portalu zarządzania systemu Azure nie mają wpływu na lokalne środowisko Active Directory, nawet z zainstalowanymi agentami.
+Niestandardowa blokada inteligentna jest obsługiwana tylko w usłudze Azure AD. Zmiany niestandardowych ustawień inteligentnego blokowania w portalu usługi Azure AD nie mają wpływu na lokalne środowisko Active Directory, nawet z zainstalowanymi agentami.
 
 **Pyt.: Czy jest dostępny System Center Operations Manager pakiet administracyjny do ochrony hasłem usługi Azure AD?**
 
 Nie.
 
-**Pyt.: Dlaczego platforma Azure nadal odrzuca słabe hasła, mimo że skonfigurowano zasady tak, aby były w trybie inspekcji?**
+**Pyt.: Dlaczego usługa Azure AD nadal odrzuca słabe hasła, mimo że skonfigurowano zasady tak, aby były w trybie inspekcji?**
 
-Tryb inspekcji jest obsługiwany tylko w środowisku lokalnym Active Directory. Platforma Azure jest niejawnie zawsze w trybie "Wymuś" podczas obliczania haseł.
+Tryb inspekcji jest obsługiwany tylko w środowisku lokalnym Active Directory. Usługa Azure AD jest niejawnie zawsze w trybie "Wymuś" podczas obliczania haseł.
 
 ## <a name="additional-content"></a>Dodatkowa zawartość
 

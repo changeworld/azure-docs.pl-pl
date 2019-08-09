@@ -1,56 +1,56 @@
 ---
-title: Opracowywanie zawartości dla urządzeń przenośnych przy użyciu zestawów SDK usługi Azure IoT | Dokumentacja firmy Microsoft
-description: Dewelopera przewodnik dotyczący — więcej informacji na temat tworzenia aplikacji dla urządzeń przenośnych przy użyciu zestawów SDK usługi Azure IoT Hub.
-author: yzhong94
+title: Tworzenie aplikacji dla urządzeń przenośnych przy użyciu zestawów SDK usługi Azure IoT | Microsoft Docs
+description: Przewodnik dla deweloperów — informacje na temat tworzenia aplikacji dla urządzeń przenośnych przy użyciu zestawów SDK platformy Azure IoT Hub.
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/16/2018
-ms.author: yizhon
-ms.openlocfilehash: 5256a58a2b68584888abcac915392d8e389e9772
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: robinsh
+ms.openlocfilehash: 945b02003a443c04e692fdc06ca5714de362d074
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60399372"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883093"
 ---
-# <a name="develop-for-mobile-devices-using-azure-iot-sdks"></a>Opracowywanie zawartości dla urządzeń przenośnych przy użyciu zestawów SDK usługi Azure IoT
+# <a name="develop-for-mobile-devices-using-azure-iot-sdks"></a>Tworzenie aplikacji dla urządzeń przenośnych przy użyciu zestawów SDK usługi Azure IoT
 
-Elementy w Internecie rzeczy mogą odwoływać się do szerokiej gamy urządzeń z różnymi możliwościami: czujniki, mikrokontrolerów, inteligentnych urządzeń, przemysłowe bram i urządzeń przenośnych nawet.  Urządzenie przenośne może być urządzenie IoT, gdzie jest wysyłania danych telemetrycznych z urządzenia do chmury i zarządzane w chmurze.  Można też urządzenia z uruchomioną aplikacją usługi zaplecza, który zarządza innymi urządzeniami IoT.  W obu przypadkach [zestawami SDK Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) może służyć do tworzenia aplikacji, które działają dla urządzeń przenośnych.  
+Elementy w Internet rzeczy mogą odnosić się do szerokiego zakresu urządzeń z różnymi możliwościami: czujników, mikrokontrolerów, urządzeń inteligentnych, bram przemysłowych, a nawet urządzeń przenośnych.  Urządzenie przenośne może być urządzeniem IoT, które wysyła dane telemetryczne z urządzenia do chmury i zarządzane przez chmurę.  Może to być również urządzenie z uruchomioną aplikacją usługi zaplecza, która zarządza innymi urządzeniami IoT.  W obu przypadkach [usługi Azure IoT Hub SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) mogą służyć do tworzenia aplikacji, które działają dla urządzeń przenośnych.  
 
-## <a name="develop-for-native-ios-platform"></a>Opracowywanie zawartości dla platformy natywnej dla systemu iOS
+## <a name="develop-for-native-ios-platform"></a>Programowanie dla natywnej platformy systemu iOS
 
-Usługa Azure IoT Hub SDKs zapewniają obsługę platformy natywnych dla systemów iOS, za pomocą zestawu SDK usługi Azure IoT Hub C.  Można traktować go jako zestawu iOS SDK, które można zastosować w projekcie Swift i Objective C w środowisku XCode.  Istnieją dwa sposoby użycia zestawu SDK języka C w systemie iOS:
+Usługa Azure IoT Hub SDK zapewnia natywną obsługę platformy iOS za pomocą zestawu Azure IoT Hub C SDK.  Można go traktować jako zestaw SDK systemu iOS, który można uwzględnić w projekcie SWIFT lub XCode.  Istnieją dwa sposoby używania zestawu SDK języka C w systemie iOS:
 
-* Korzystanie z bibliotek CocoaPod, w projekcie XCode bezpośrednio.  
-* Pobierz kod źródłowy dla zestawu SDK języka C i tworzyć dla następujących platform iOS [kompilacji instrukcji](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) dla systemu MacOS.  
+* Bezpośrednio używaj bibliotek CocoaPod w projekcie XCode.  
+* Pobierz kod źródłowy dla zestawu C SDK i skompiluj dla platformy iOS, postępując zgodnie z [instrukcją kompilacji](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) dla MacOS.  
 
-Zestaw SDK usługi Azure IoT Hub C są zapisywane w C99 do uzyskania maksymalnej przenośności do różnych platform.  Proces przenoszenia wymaga zapisywania warstwę alokowania elastycznego wdrażania dla składników specyficzne dla platformy, które można znaleźć tutaj [iOS](https://github.com/Azure/azure-c-shared-utility/tree/master/pal/ios-osx).  Funkcje zestawu SDK języka C nadającego się na platformy iOS, w tym elementy podstawowe usługi Azure IoT Hub, obsługiwany i funkcjami specyficznymi dla zestawu SDK, takie jak zasady niezawodności sieci ponawiania.  Interfejs dla systemu iOS SDK przypomina również interfejs dla zestawu SDK usługi Azure IoT Hub C.  
+Usługa Azure IoT Hub C SDK jest zapisywana w C99 w celu uzyskania maksymalnej przenośności do różnych platform.  Proces przenoszenia polega na zapisaniu warstwy wdrażania elastycznego dla składników specyficznych dla platformy, które można znaleźć w tym miejscu dla [systemu iOS](https://github.com/Azure/azure-c-shared-utility/tree/master/pal/ios-osx).  Funkcje zestawu SDK języka C mogą być wykorzystywane na platformie iOS, w tym obsługiwane elementy podstawowe platformy Azure IoT Hub i funkcje specyficzne dla zestawu SDK, takie jak zasady ponawiania dla niezawodności sieci.  Interfejs dla zestawu iOS SDK jest również podobny do interfejsu dla zestawu Azure IoT Hub C SDK.  
 
-Te dokumenty przedstawiają sposób tworzenia aplikacji urządzenia lub aplikacji usługi na urządzeniu z systemem iOS:
+Te dokumenty przedstawiają sposób tworzenia aplikacji na urządzeniu lub aplikacji usługi na urządzeniu z systemem iOS:
 
-* [Szybki start: Wysyłanie danych telemetrycznych z urządzenia do usługi IoT hub](quickstart-send-telemetry-ios.md)  
-* [Wysyłanie komunikatów z chmury do urządzenia z usługą IoT hub](iot-hub-ios-swift-c2d.md) 
+* [Szybki start: Wysyłanie danych telemetrycznych z urządzenia do centrum IoT Hub](quickstart-send-telemetry-ios.md)  
+* [Wysyłanie komunikatów z chmury do urządzenia za pomocą usługi IoT Hub](iot-hub-ios-swift-c2d.md) 
 
-### <a name="develop-with-azure-iot-hub-cocoapod-libraries"></a>Programowanie z użyciem biblioteki Azure IoT Hub CocoaPod
+### <a name="develop-with-azure-iot-hub-cocoapod-libraries"></a>Tworzenie za pomocą bibliotek CocoaPod systemu IoT Hub Azure
 
-Usługa Azure IoT Hub SDKs zwalnia zestaw bibliotek języka Objective-C CocoaPod do tworzenia aplikacji dla systemu iOS.  Aby wyświetlić najnowszą listę bibliotek CocoaPod, zobacz [CocoaPods dla Microsoft Azure IoT](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/samples/ios/CocoaPods.md).  Gdy odpowiednie biblioteki są włączone w projekcie XCode, istnieją dwa sposoby zapisu usługi IoT Hub powiązanego kodu:
+Zestawy SDK platformy Azure IoT Hub udostępniają zestaw CocoaPodch dla projektowania dla systemu iOS.  Aby wyświetlić najnowszą listę bibliotek CocoaPod, zobacz [CocoaPods for Microsoft Azure IoT](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/samples/ios/CocoaPods.md).  Gdy odpowiednie biblioteki zostaną dołączone do projektu XCode, istnieją dwa sposoby zapisu IoT Hub pokrewnego kodu:
 
-* Język Objective C funkcji: Jeśli projekt został napisany w języku Objective-C, można bezpośrednio wywoływać interfejsy API z zestawu SDK usługi Azure IoT Hub C.  Jeśli projekt został napisany w języku Swift, można wywołać `@objc func` przed tworzenia funkcji i przejść do pisania wszystkie warunki logiczne związane z usługą Azure IoT Hub przy użyciu kodu C lub języka Objective-C.  Uzyskać zestaw przykładów zarówno ukazujące znajdują się w [przykładowego repozytorium](https://github.com/Azure-Samples/azure-iot-samples-ios).  
+* Funkcja C celu: Jeśli projekt jest zapisywana w zamierzeniu C, można bezpośrednio wywoływać interfejsy API z usługi Azure IoT Hub C SDK.  Jeśli projekt jest napisany w postaci SWIFT, możesz wywołać `@objc func` przed utworzeniem funkcji i dopisać wszystkie logike związane z platformą Azure IoT Hub przy użyciu kodu c lub Project-c.  Zestaw przykładów demonstrujących oba te elementy można znaleźć w przykładowym [repozytorium](https://github.com/Azure-Samples/azure-iot-samples-ios).  
 
-* Przykłady w języku C zawierały: Jeśli w języku C zastosowanie urządzenia, możesz odwołać je bezpośrednio w projekcie XCode:
-    * Dodaj plik sample.c do projektu XCode z narzędzia XCode.  
-    * Dodaj plik nagłówkowy, do Twojego zależności.  Plik nagłówka znajduje się w [przykładowego repozytorium](https://github.com/Azure-Samples/azure-iot-samples-ios) jako przykład. Aby uzyskać więcej informacji, odwiedź stronę dokumentacji firmy Apple dla [języka Objective-C](https://developer.apple.com/documentation/objectivec).
+* Uwzględnij próbki C: Jeśli Zapisano aplikację urządzenia C, można odwołać się do niej bezpośrednio w projekcie XCode:
+    * Dodaj plik Sample. c do projektu XCode z XCode.  
+    * Dodaj plik nagłówka do zależności.  Plik nagłówkowy jest zawarty w przykładowym [repozytorium](https://github.com/Azure-Samples/azure-iot-samples-ios) . Aby uzyskać więcej informacji, odwiedź stronę dokumentacji firmy Apple na potrzeby języka [C](https://developer.apple.com/documentation/objectivec).
 
-## <a name="develop-for-android-platform"></a>Opracowywanie zawartości dla platformy systemu Android
-Zestaw SDK usługi Azure IoT Hub Java obsługuje platformy systemu Android.  Dla określonej wersji interfejsu API, przetestowane, odwiedź nasz [stronę pomocy technicznej platformy](iot-hub-device-sdk-platform-support.md) najnowszych aktualizacji.
+## <a name="develop-for-android-platform"></a>Programowanie dla platformy Android
+Zestaw Azure IoT Hub Java SDK obsługuje platformę Android.  W przypadku przetestowanej wersji interfejsu API odwiedź naszą [stronę pomocy technicznej](iot-hub-device-sdk-platform-support.md) , aby uzyskać najnowszą aktualizację.
 
-Te dokumenty przedstawiają sposób tworzenia aplikacji urządzenia lub aplikacji usługi na urządzeniu z systemem Android przy użyciu narzędzia Gradle i Android Studio:
+Te dokumenty przedstawiają sposób opracowywania aplikacji lub aplikacji na urządzeniu z systemem Android przy użyciu usług Gradle i Android Studio:
 
-* [Szybki start: Wysyłanie danych telemetrycznych z urządzenia do usługi IoT hub](quickstart-send-telemetry-android.md)  
-* [Szybki start: Kontrolowanie urządzenia](quickstart-control-device-android.md) 
+* [Szybki start: Wysyłanie danych telemetrycznych z urządzenia do centrum IoT Hub](quickstart-send-telemetry-android.md)  
+* [Szybki start: Sterowanie urządzeniem](quickstart-control-device-android.md) 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Dokumentacja interfejsu API REST Centrum IoT](https://docs.microsoft.com/rest/api/iothub/)
-* [Kod źródłowy zestawu SDK C usługi IoT platformy Azure](https://github.com/Azure/azure-iot-sdk-c)
+* [Dokumentacja interfejsu API REST IoT Hub](https://docs.microsoft.com/rest/api/iothub/)
+* [Kod źródłowy zestawu SDK usługi Azure IoT C](https://github.com/Azure/azure-iot-sdk-c)

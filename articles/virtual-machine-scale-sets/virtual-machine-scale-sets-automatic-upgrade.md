@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/16/2019
 ms.author: manayar
-ms.openlocfilehash: eeb689f90197830dad98c213849b2e82ba43bbf1
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: ac754acd61700dc39ebc633da4274c74d8463824
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296356"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884185"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatyczne uaktualnienia obrazu systemu operacyjnego dla zestawu skalowania maszyn wirtualnych platformy Azure
 
@@ -56,7 +56,7 @@ Obecnie obsługiwane są tylko niektóre obrazy platformy systemu operacyjnego. 
 
 Następujące jednostki SKU są obecnie obsługiwane (i więcej jest dodawanych okresowo):
 
-| Wydawca               | Oferta systemu operacyjnego      |  SKU               |
+| Wydawca               | Oferta systemu operacyjnego      |  Numer SKU               |
 |-------------------------|---------------|--------------------|
 | Canonical               | UbuntuServer  | 16.04-LTS          |
 | Canonical               | UbuntuServer  | 18.04-LTS          |
@@ -128,7 +128,7 @@ az vmss update --name myScaleSet --resource-group myResourceGroup --set UpgradeP
 
 Podczas uaktualniania systemu operacyjnego wystąpienia maszyn wirtualnych w zestawie skalowania są uaktualniane po jednej partii jednocześnie. Uaktualnienie powinno być kontynuowane tylko wtedy, gdy aplikacja klienta jest w dobrej kondycji na uaktualnionych wystąpieniach maszyn wirtualnych. Zalecamy, aby aplikacja dostarcza sygnały kondycji do aparatu uaktualniania zestawu skalowania systemu operacyjnego. Domyślnie podczas uaktualniania systemu operacyjnego platforma rozważa stan stanu i aprowizacji maszyny wirtualnej, aby określić, czy wystąpienie maszyny wirtualnej jest w dobrej kondycji po uaktualnieniu. Podczas uaktualniania systemu operacyjnego wystąpienia maszyny wirtualnej dysk systemu operacyjnego w wystąpieniu maszyny wirtualnej jest zastępowany nowym dyskiem w oparciu o najnowszą wersję obrazu. Po zakończeniu uaktualniania systemu operacyjnego skonfigurowane rozszerzenia są uruchamiane na tych maszynach wirtualnych. Aplikacja jest traktowana jako w dobrej kondycji, gdy pomyślnie zainicjowano wszystkie rozszerzenia w wystąpieniu.
 
-Zestaw skalowania można opcjonalnie skonfigurować przy użyciu sond kondycji aplikacji, aby zapewnić platformę z dokładnymi informacjami o stanie trwającym aplikacji. Sondy kondycji aplikacji to niestandardowe sondy Load Balancer, które są używane jako sygnał kondycji. Aplikacja uruchomiona w wystąpieniu maszyny wirtualnej zestawu skalowania może odpowiadać na zewnętrzne żądania HTTP lub TCP, wskazując, czy jest w dobrej kondycji. Aby uzyskać więcej informacji na temat działania niestandardowych sond Load Balancer, zobacz Aby [zrozumieć sondy modułu równoważenia obciążenia](../load-balancer/load-balancer-custom-probe-overview.md). Sonda kondycji aplikacji nie jest wymagana w przypadku zestawów skalowania Service Fabric, ale jest to zalecane. Zestawy skalowania inne niż Service Fabric wymagają Load Balancer sond kondycji aplikacji lub [rozszerzenia kondycji aplikacji](virtual-machine-scale-sets-health-extension.md).
+Zestaw skalowania można opcjonalnie skonfigurować przy użyciu sond kondycji aplikacji, aby zapewnić platformę z dokładnymi informacjami o stanie trwającym aplikacji. Sondy kondycji aplikacji to niestandardowe sondy Load Balancer, które są używane jako sygnał kondycji. Aplikacja uruchomiona w wystąpieniu maszyny wirtualnej zestawu skalowania może odpowiadać na zewnętrzne żądania HTTP lub TCP, wskazując, czy jest w dobrej kondycji. Aby uzyskać więcej informacji na temat działania niestandardowych sond Load Balancer, zobacz Aby [zrozumieć sondy modułu równoważenia obciążenia](../load-balancer/load-balancer-custom-probe-overview.md). Sondy kondycji aplikacji nie są obsługiwane w przypadku zestawów skalowania Service Fabric. Zestawy skalowania inne niż Service Fabric wymagają Load Balancer sond kondycji aplikacji lub [rozszerzenia kondycji aplikacji](virtual-machine-scale-sets-health-extension.md).
 
 Jeśli zestaw skalowania jest skonfigurowany tak, aby korzystał z wielu grup umieszczania, sondy używające [Usługa Load Balancer w warstwie Standardowa](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) muszą być używane.
 
@@ -256,21 +256,21 @@ W przypadku określonych przypadków, w których nie chcesz czekać na zastosowa
 > Ręczne wyzwalacze uaktualnień obrazów systemu operacyjnego nie zapewniają możliwości automatycznego wycofywania. Jeśli wystąpienie nie odzyska jego kondycji po zakończeniu operacji uaktualniania, jego poprzedni dysk systemu operacyjnego nie może zostać przywrócony.
 
 ### <a name="rest-api"></a>Interfejs API REST
-Użyj wywołania interfejsu API [uruchamiania systemu operacyjnego](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade) , aby rozpocząć uaktualnianie stopniowe, aby przenieść wszystkie wystąpienia zestawu skalowania maszyn wirtualnych do najnowszej dostępnej wersji systemu operacyjnego obrazu platformy. Nie wpłynie to na wystąpienia, na których jest już uruchomiona najnowsza dostępna wersja systemu operacyjnego. Poniższy przykład zawiera szczegółowe informacje na temat sposobu uruchamiania stopniowego uaktualniania systemu operacyjnego w zestawie skalowania o nazwie *myScaleSet* w grupie zasobów o nazwie Moja *Grupa:*
+Użyj wywołania interfejsu API [uruchamiania systemu operacyjnego](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade) , aby rozpocząć uaktualnianie stopniowe, aby przenieść wszystkie wystąpienia zestawu skalowania maszyn wirtualnych do najnowszej dostępnej wersji systemu operacyjnego obrazu platformy. Nie wpłynie to na wystąpienia, na których jest już uruchomiona najnowsza dostępna wersja systemu operacyjnego. Poniższy przykład zawiera szczegółowe informacje na temat sposobu uruchamiania stopniowego uaktualniania systemu operacyjnego w zestawie skalowania o nazwie *myScaleSet* w grupiezasobów o nazwie Moja Grupa:
 
 ```
 POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osRollingUpgrade?api-version=2018-10-01`
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Użyj polecenia cmdlet [Start-AzVmssRollingOSUpgrade](/powershell/module/az.compute/Start-AzVmssRollingOSUpgrade) , aby sprawdzić historię uaktualnienia systemu operacyjnego dla zestawu skalowania. Poniższy przykład zawiera szczegółowe informacje na temat sposobu uruchamiania stopniowego uaktualniania systemu operacyjnego w zestawie skalowania o nazwie *myScaleSet* w grupie zasobów o nazwie Moja *Grupa:*
+Użyj polecenia cmdlet [Start-AzVmssRollingOSUpgrade](/powershell/module/az.compute/Start-AzVmssRollingOSUpgrade) , aby sprawdzić historię uaktualnienia systemu operacyjnego dla zestawu skalowania. Poniższy przykład zawiera szczegółowe informacje na temat sposobu uruchamiania stopniowego uaktualniania systemu operacyjnego w zestawie skalowania o nazwie *myScaleSet* w grupiezasobów o nazwie Moja Grupa:
 
 ```azurepowershell-interactive
 Start-AzVmssRollingOSUpgrade -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 ```
 
 ### <a name="azure-cli-20"></a>Interfejs wiersza polecenia platformy Azure 2.0
-Użyj [AZ VMSS krocząc-upgrade Start](/cli/azure/vmss/rolling-upgrade#az-vmss-rolling-upgrade-start) , aby sprawdzić historię uaktualnienia systemu operacyjnego dla zestawu skalowania. Użyj interfejsu wiersza polecenia platformy Azure 2.0.47 lub nowszego. Poniższy przykład zawiera szczegółowe informacje na temat sposobu uruchamiania stopniowego uaktualniania systemu operacyjnego w zestawie skalowania o nazwie *myScaleSet* w grupie zasobów o nazwie Moja *Grupa:*
+Użyj [AZ VMSS krocząc-upgrade Start](/cli/azure/vmss/rolling-upgrade#az-vmss-rolling-upgrade-start) , aby sprawdzić historię uaktualnienia systemu operacyjnego dla zestawu skalowania. Użyj interfejsu wiersza polecenia platformy Azure 2.0.47 lub nowszego. Poniższy przykład zawiera szczegółowe informacje na temat sposobu uruchamiania stopniowego uaktualniania systemu operacyjnego w zestawie skalowania o nazwie *myScaleSet* w grupiezasobów o nazwie Moja Grupa:
 
 ```azurecli-interactive
 az vmss rolling-upgrade start --resource-group "myResourceGroup" --name "myScaleSet" --subscription "subscriptionId"

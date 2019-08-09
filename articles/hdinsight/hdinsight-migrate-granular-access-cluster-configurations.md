@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: ebb1723a9a2b2d069a1766d4f78151f2b684c5b9
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 797caae3caaca14c10481cb58654c45b4bed55ae
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464661"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884316"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrowanie do szczegółowego dostępu opartego na rolach w przypadku konfiguracji klastrów
 
@@ -155,14 +155,14 @@ Aby uniknąć przerw, zaktualizuj program [PowerShell w wersji 2.0.0](https://ww
 
 ## <a name="add-the-hdinsight-cluster-operator-role-assignment-to-a-user"></a>Dodawanie przypisania roli operatora klastra usługi HDInsight do użytkownika
 
-Użytkownik z rolą [współautor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) lub [właściciela](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) może przypisać rolę [operatora klastra usługi HDInsight](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) użytkownikom, którzy chcą mieć dostęp do odczytu i zapisu do poufnych wartości konfiguracji klastra usługi HDInsight (na przykład poświadczenia bramy klastra i klucze konta magazynu).
+Użytkownik z rolą [właściciela](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) może przypisać rolę [operatora klastra usługi HDInsight](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) do użytkowników, którzy chcą mieć dostęp do odczytu i zapisu do poufnych wartości konfiguracji klastra usługi HDInsight (takich jak poświadczenia bramy klastra i klucze kont magazynu).
 
 ### <a name="using-the-azure-cli"></a>Korzystanie z interfejsu wiersza polecenia platformy Azure
 
 Najprostszym sposobem, aby dodać to przypisanie roli, jest użycie `az role assignment create` polecenia w usłudze Azure CLI.
 
 > [!NOTE]
-> To polecenie musi być uruchamiane przez użytkownika z rolami współautor lub właściciela, ponieważ tylko mogą udzielić tych uprawnień. `--assignee` Jest to adres e-mail użytkownika, do którego ma zostać przypisana rola operatora klastra usługi HDInsight.
+> To polecenie musi być uruchamiane przez użytkownika z rolą właściciela, ponieważ tylko mogą udzielić tych uprawnień. `--assignee` To nazwa nazwy głównej usługi lub adresu e-mail użytkownika, do którego chcesz przypisać rolę operatora klastra HDInsight. Jeśli wystąpi błąd niewystarczających uprawnień, zobacz często zadawane pytania poniżej.
 
 #### <a name="grant-role-at-the-resource-cluster-level"></a>Udziel roli na poziomie zasobów (klastra)
 
@@ -185,3 +185,23 @@ az role assignment create --role "HDInsight Cluster Operator" --assignee user@do
 ### <a name="using-the-azure-portal"></a>Korzystanie z witryny Azure Portal
 
 Możesz również użyć Azure Portal, aby dodać przypisanie roli operatora klastra usługi HDInsight do użytkownika. Zobacz dokumentację, [Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC i Azure Portal — Dodaj przypisanie roli](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment).
+
+## <a name="faq"></a>Często zadawane pytania
+
+### <a name="why-am-i-seeing-a-403-forbidden-response-after-updating-my-api-requests-andor-tool"></a>Dlaczego widzę odpowiedź 403 (dostęp zabroniony) po zaktualizowaniu żądań interfejsu API i/lub narzędziu?
+
+Konfiguracje klastra są teraz za szczegółowej kontroli dostępu opartej na rolach i `Microsoft.HDInsight/clusters/configurations/*` wymagają uprawnienia dostępu do nich. Aby uzyskać to uprawnienie, przypisz rolę operatora klastra usługi HDInsight, współautora lub właściciela do nazwy głównej użytkownika lub usług, próbując uzyskać dostęp do konfiguracji.
+
+### <a name="why-do-i-see-insufficient-privileges-to-complete-the-operation-when-running-the-azure-cli-command-to-assign-the-hdinsight-cluster-operator-role-to-another-user-or-service-principal"></a>Dlaczego widzę "niewystarczające uprawnienia do ukończenia tej operacji" podczas uruchamiania polecenia platformy Azure w celu przypisania roli operatora klastra usługi HDInsight do innego użytkownika lub jego nazwy głównej?
+
+Oprócz roli właściciela, użytkownik lub podmiot usługi wykonujące polecenie musi mieć wystarczające uprawnienia usługi AAD do wyszukiwania identyfikatorów obiektów osoby przydzielonej. Ten komunikat oznacza niewystarczające uprawnienia usługi AAD. Spróbuj zamienić `-–assignee` argument z `–assignee-object-id` i podaj identyfikator obiektu osoby przydzielonej jako parametr zamiast nazwy (lub identyfikatora podmiotu zabezpieczeń w przypadku tożsamości zarządzanej). Aby uzyskać więcej informacji, zobacz sekcję Parametry opcjonalne w sekcji [AZ role przypisanie Create Documentation](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) .
+
+Jeśli to jeszcze nie zadziała, skontaktuj się z administratorem usługi AAD, aby uzyskać odpowiednie uprawnienia.
+
+### <a name="what-will-happen-if-i-take-no-action"></a>Co się stanie, jeśli nie będę podejmować żadnych działań?
+
+I nie zwróci już żadnych informacji, a `GET /configurations/{configurationName}` wywołanie nie zwróci już poufnych parametrów, takich jak klucz konta magazynu lub hasło klastra. `POST /configurations/gateway` `GET /configurations` Ta sama wartość dotyczy odpowiednich metod zestawu SDK i poleceń cmdlet programu PowerShell.
+
+Jeśli używasz starszej wersji jednego z narzędzi dla programu Visual Studio, programu vscode, IntelliJ lub zaćmienie wymienione powyżej, nie będą one już działać do momentu aktualizacji.
+
+Aby uzyskać szczegółowe informacje, zapoznaj się z odpowiednią sekcją tego dokumentu w danym scenariuszu.

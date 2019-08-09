@@ -3,25 +3,22 @@ title: Wdróż moduł Blob Storage platformy Azure na urządzeniach — Azure Io
 description: Wdróż moduł usługi Azure Blob Storage do urządzenia usługi IoT Edge do przechowywania danych na urządzeniach brzegowych.
 author: arduppal
 ms.author: arduppal
-ms.date: 06/19/2019
+ms.date: 08/07/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
 ms.reviewer: arduppal
 manager: mchad
-ms.openlocfilehash: 86040020c8f9163a327b2029008e3648723b14ec
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 6cb50270eff779d7302a4676dab328046b1d50b4
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839690"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883189"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Wdrażanie Blob Storage platformy Azure w module IoT Edge na urządzeniu
 
 Istnieje kilka sposobów wdrażania modułów na urządzeniu IoT Edge i wszystkie z nich pracują na platformie Azure Blob Storage w modułach IoT Edge. Te dwie metody najprostszym mają używać witryny Azure portal lub szablonów programu Visual Studio Code.
-
-> [!NOTE]
-> Usługa Azure Blob Storage w usłudze IoT Edge jest w [publicznej wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -58,7 +55,7 @@ Manifest wdrożenia jest dokumentem JSON, który opisuje jakie moduły do wdroż
    > [!IMPORTANT]
    > W Azure IoT Edge jest rozróżniana wielkość liter podczas wykonywania wywołań do modułów, a zestaw SDK magazynu jest również domyślnie pisany małymi literami. Mimo że nazwa modułu w [witrynie Azure Marketplace](how-to-deploy-modules-portal.md#deploy-modules-from-azure-marketplace) to **AzureBlobStorageonIoTEdge**, zmiana nazwy na małe jest pomocne, aby upewnić się, że połączenia z usługą Azure Blob Storage na IoT Edge module nie zostaną przerwane.
 
-1. Wartości domyślne **opcji tworzenia kontenera** definiują powiązania portów wymagane przez kontener, ale trzeba również dodać informacje o koncie magazynu i powiązanie dla katalogu magazynu na urządzeniu. Zastąp domyślny kod JSON w portalu następującym kodem JSON:
+1. Wartości domyślne **opcji tworzenia kontenera** definiują powiązania portów wymagane przez kontener, ale konieczne jest również dodanie informacji o koncie magazynu i instalacji magazynu na urządzeniu. Zastąp domyślny kod JSON w portalu następującym kodem JSON:
 
    ```json
    {
@@ -68,10 +65,10 @@ Manifest wdrożenia jest dokumentem JSON, który opisuje jakie moduły do wdroż
      ],
      "HostConfig":{
        "Binds":[
-           "<storage directory bind>"
+           "<storage mount>"
        ],
-     "PortBindings":{
-       "11002/tcp":[{"HostPort":"11002"}]
+       "PortBindings":{
+         "11002/tcp":[{"HostPort":"11002"}]
        }
      }
    }
@@ -83,13 +80,18 @@ Manifest wdrożenia jest dokumentem JSON, który opisuje jakie moduły do wdroż
 
    - Zamień `<your storage account key>` na 64-bajtowy klucz Base64. Możesz wygenerować klucz za pomocą narzędzi, takich jak [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64). Użyjesz tych poświadczeń do uzyskania dostępu do magazynu obiektów blob z innych modułów.
 
-   - Zamień `<storage directory bind>` według systemu operacyjnego kontenera. Podaj nazwę [woluminu](https://docs.docker.com/storage/volumes/) bramy lub bezwzględna do katalogu na urządzeniu usługi IoT Edge, którego moduł obiektu blob do przechowywania swoich danych. Powiązanie katalogu magazynu mapuje lokalizację na urządzeniu dostarczaną do lokalizacji zestawu w module.
+   - Zamień `<storage mount>` według systemu operacyjnego kontenera. Podaj nazwę [woluminu](https://docs.docker.com/storage/volumes/) bramy lub bezwzględna do katalogu na urządzeniu usługi IoT Edge, którego moduł obiektu blob do przechowywania swoich danych. Instalacja magazynu mapuje lokalizację na urządzeniu dostarczaną do lokalizacji zestawu w module.
 
-     - W przypadku kontenerów systemu Linux format jest  *\<ścieżką magazynu >:/blobroot*. Na przykład **/SRV/containerdata:/blobroot** lub **My-Volume:/blobroot**.
-     - W przypadku kontenerów systemu Windows format jest  *\<ścieżką magazynu >: C:/BlobRoot*. Na przykład **c:/ContainerData: c:/BlobRoot** lub **My-Volume: C:/BlobRoot**. Zamiast korzystać z dysku lokalnego, można zmapować lokalizację sieciową SMB. Aby uzyskać więcej informacji, zobacz [Używanie udziału SMB jako magazynu lokalnego](how-to-store-data-blob.md#using-smb-share-as-your-local-storage) .
+     - W przypadku kontenerów systemu Linux format jest  *\<ścieżką magazynu lub woluminem >:/blobroot*. Na przykład:
+         - Użyj [instalacji woluminu](https://docs.docker.com/storage/volumes/): **My-Volume:/blobroot** 
+         - Użyj [instalacji bind](https://docs.docker.com/storage/bind-mounts/): **/SRV/containerdata:/blobroot**. Upewnij się, że postępuj zgodnie z instrukcjami, aby [udzielić dostępu do katalogu użytkownikowi kontenera](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux)
+     - W przypadku kontenerów systemu Windows format  *\<jest ścieżką do magazynu lub woluminem >: C:/BlobRoot*. Na przykład:
+         - Użyj [instalacji woluminu](https://docs.docker.com/storage/volumes/): **My-wolumin: C:/blobroot**. 
+         - Użyj [instalacji bind](https://docs.docker.com/storage/bind-mounts/): **C:/ContainerData: c:/BlobRoot**.
+         - Zamiast korzystać z dysku lokalnego, można zmapować lokalizację sieciową SMB. Aby uzyskać więcej informacji, zobacz [Używanie udziału SMB jako magazynu lokalnego](how-to-store-data-blob.md#using-smb-share-as-your-local-storage) .
 
      > [!IMPORTANT]
-     > Nie należy zmieniać drugiej połowy wartości powiązania katalogu magazynu, która wskazuje konkretną lokalizację w module. Powiązanie katalogu magazynu powinno zawsze kończyć się z **:/blobroot** dla kontenerów systemu Linux i **: C:/blobroot** for Windows Containers.
+     > Nie należy zmieniać drugiej połowy wartości instalacji magazynu, która wskazuje konkretną lokalizację w module. Instalacja magazynu powinna zawsze kończyć się z **:/blobroot** dla kontenerów systemu Linux i **: C:/blobroot** for Windows Containers.
 
 1. Ustaw właściwości [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) i [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) modułu przez SKOPIOWANIE poniższego kodu JSON i wklejenie go do okna **Ustaw odpowiednie właściwości sznurka modułu** . Skonfiguruj każdą właściwość z odpowiednią wartością, Zapisz ją i Kontynuuj wdrażanie.
 
@@ -178,7 +180,7 @@ Usługa Azure IoT Edge zapewnia szablony programu Visual Studio Code, aby pomóc
        "LOCAL_STORAGE_ACCOUNT_KEY=<your storage account key>"
       ],
       "HostConfig":{
-        "Binds": ["<storage directory bind>"],
+        "Binds": ["<storage mount>"],
         "PortBindings":{
           "11002/tcp": [{"HostPort":"11002"}]
         }
@@ -191,13 +193,19 @@ Usługa Azure IoT Edge zapewnia szablony programu Visual Studio Code, aby pomóc
 
 1. Zamień `<your storage account key>` na 64-bajtowy klucz Base64. Możesz wygenerować klucz za pomocą narzędzi, takich jak [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64). Użyjesz tych poświadczeń do uzyskania dostępu do magazynu obiektów blob z innych modułów.
 
-1. Zamień `<storage directory bind>` według systemu operacyjnego kontenera. Podaj nazwę [woluminu](https://docs.docker.com/storage/volumes/) bramy lub bezwzględna do katalogu na urządzeniu usługi IoT Edge, którego moduł obiektu blob do przechowywania swoich danych. Powiązanie katalogu magazynu mapuje lokalizację na urządzeniu dostarczaną do lokalizacji zestawu w module.  
+1. Zamień `<storage mount>` według systemu operacyjnego kontenera. Podaj nazwę [woluminu](https://docs.docker.com/storage/volumes/) bramy lub bezwzględna do katalogu na urządzeniu usługi IoT Edge, którego moduł obiektu blob do przechowywania swoich danych. Instalacja magazynu mapuje lokalizację na urządzeniu dostarczaną do lokalizacji zestawu w module.  
 
-      - W przypadku kontenerów systemu Linux format jest  *\<ścieżką magazynu >:/blobroot*. Na przykład **/SRV/containerdata:/blobroot** lub **My-Volume:/blobroot**.
-      - W przypadku kontenerów systemu Windows format jest  *\<ścieżką magazynu >: C:/BlobRoot*. Na przykład **c:/ContainerData: c:/BlobRoot** lub **My-Volume: C:/BlobRoot**.  Zamiast korzystać z dysku lokalnego, można zmapować lokalizację sieciową SMB. Aby uzyskać więcej informacji, zobacz [Używanie udziału SMB jako magazynu lokalnego](how-to-store-data-blob.md#using-smb-share-as-your-local-storage) .
+      
+     - W przypadku kontenerów systemu Linux format jest  *\<ścieżką magazynu lub woluminem >:/blobroot*. Na przykład:
+         - Użyj [instalacji woluminu](https://docs.docker.com/storage/volumes/): **My-Volume:/blobroot** 
+         - Użyj [instalacji bind](https://docs.docker.com/storage/bind-mounts/): **/SRV/containerdata:/blobroot**. Upewnij się, że postępuj zgodnie z instrukcjami, aby [udzielić dostępu do katalogu użytkownikowi kontenera](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux)
+     - W przypadku kontenerów systemu Windows format  *\<jest ścieżką do magazynu lub woluminem >: C:/BlobRoot*. Na przykład:
+         - Użyj [instalacji woluminu](https://docs.docker.com/storage/volumes/): **My-wolumin: C:/blobroot**. 
+         - Użyj [instalacji bind](https://docs.docker.com/storage/bind-mounts/): **C:/ContainerData: c:/BlobRoot**.
+         - Zamiast korzystać z dysku lokalnego, można zmapować lokalizację sieciową SMB. Aby uzyskać więcej informacji, zobacz [Używanie udziału SMB jako magazynu lokalnego](how-to-store-data-blob.md#using-smb-share-as-your-local-storage) .
 
-      > [!IMPORTANT]
-      > Nie należy zmieniać drugiej połowy wartości powiązania katalogu magazynu, która wskazuje konkretną lokalizację w module. Powiązanie katalogu magazynu powinno zawsze kończyć się z **:/blobroot** dla kontenerów systemu Linux i **: C:/blobroot** for Windows Containers.
+     > [!IMPORTANT]
+     > Nie należy zmieniać drugiej połowy wartości instalacji magazynu, która wskazuje konkretną lokalizację w module. Instalacja magazynu powinna zawsze kończyć się z **:/blobroot** dla kontenerów systemu Linux i **: C:/blobroot** for Windows Containers.
 
 1. Skonfiguruj [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) i [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) dla modułu, dodając następujący kod JSON do pliku *Deployment. Template. JSON* . Skonfiguruj każdą właściwość z odpowiednią wartością i Zapisz plik.
 
@@ -250,7 +258,5 @@ Po podłączeniu do modułów magazynu obiektów blob dodatkowe Zmiana punktu ko
 
 ## <a name="next-steps"></a>Następne kroki
 Dowiedz się więcej o [usłudze Azure Blob Storage w systemie IoT Edge](how-to-store-data-blob.md)
-
-Bądź na bieżąco z najnowszymi aktualizacjami i ogłoszeniami w [usłudze Azure Blob Storage na blogu IoT Edge](https://aka.ms/abs-iot-blogpost)
 
 Aby uzyskać więcej informacji dotyczących sposobu manifesty wdrożenia pracy i jak je utworzyć, zobacz [zrozumieć, jak moduły usługi IoT Edge mogą być używane, skonfigurowania i ponownie](module-composition.md).

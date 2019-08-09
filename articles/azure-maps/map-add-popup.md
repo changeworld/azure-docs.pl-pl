@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 92d44ef3d0db8e93d4babd7441238c7fa105dbd5
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: caf661faf00d1d32664b7958a14a8719a37ab36e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639008"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882110"
 ---
 # <a name="add-a-popup-to-the-map"></a>Dodawanie okna podręcznego do mapy
 
@@ -24,26 +24,40 @@ W tym artykule opisano sposób dodawania okna podręcznego do punktu na mapie.
 
 <a id="addAPopup"></a>
 
+Poniższy kod dodaje funkcję punktu, która ma `name` i `description` właściwości, do mapy za pomocą warstwy symboli. Wystąpienie [klasy popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) jest tworzone, ale nie jest wyświetlane. Zdarzenia myszy są dodawane do warstwy symboli, aby wyzwolić otwieranie i zamykanie okna podręcznego, gdy wskaźnik myszy zostanie zatrzymany i wyłączony na znaczniku symbolu. Gdy symbol `position` znacznika jest aktywowany, właściwość podręcznej jest aktualizowana przy użyciu pozycji znacznika, `content` a opcja jest aktualizowana przy użyciu niektórych `name` HTML, które zawijają właściwości `description` i funkcji punktów, które są przesuwane. Następnie zostanie wyświetlone okno podręczne na mapie przy użyciu `open` funkcji.
+
+<br/>
+
 <iframe height='500' scrolling='no' title='Dodawanie wyskakujących okienek przy użyciu Azure Maps' src='//codepen.io/azuremaps/embed/MPRPvz/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióro <a href='https://codepen.io/azuremaps/pen/MPRPvz/'>Dodaj wyskakujące okienko przy użyciu Azure Maps</a> przez<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () w witrynie <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-W powyższym kodzie pierwszy blok kodu konstruuje obiekt mapy. Aby uzyskać instrukcje, zobacz [Tworzenie mapy](./map-create.md) . Tworzy również zawartość HTML, która będzie wyświetlana w menu podręcznym.
-
-Drugi blok kodu tworzy obiekt źródła danych przy użyciu klasy [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) . Punkt jest [funkcją](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) klasy [Point](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) . Obiekt punktu o właściwościach nazwa i opis jest następnie tworzony i dodawany do źródła danych.
-
-[Warstwa symboli](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) używa tekstu lub ikon do renderowania danych opartych na punkcie [w postaci symboli](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) na mapie.  Warstwa symboli jest tworzona w trzecim bloku kodu. Źródło danych jest dodawane do warstwy symboli, która jest następnie dodawana do mapy.
-
-Czwarty blok kodu tworzy [obiekt podręczny](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) za pośrednictwem `new atlas.Popup()`. Właściwości podręczne, takie jak Position i pixelOffset, są częścią [PopupOptions](/javascript/api/azure-maps-control/atlas.popupoptions). PopupOptions można zdefiniować w konstruktorze popup lub za [](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) pomocą funkcji SetOptions klasy popup. Zostanie utworzony odbiornik zdarzeń dla warstwy symboli. `mouseover`
-
-Ostatni blok kodu tworzy funkcję, która jest wyzwalana przez `mouseover` odbiornik zdarzeń. Ustawia zawartość i właściwości okna podręcznego i dodaje obiekt podręczny do mapy.
-
 ## <a name="reusing-a-popup-with-multiple-points"></a>Używanie okna podręcznego z wieloma punktami
 
-Jeśli masz wiele punktów i chcesz wyświetlić tylko jedno podręczne, najlepszym rozwiązaniem jest utworzenie jednego podręcznego i ponowne użycie go zamiast tworzenia okna podręcznego dla każdej funkcji punktu. Dzięki temu liczba elementów DOM utworzonych przez aplikację jest znacznie zmniejszona, co może zapewnić lepszą wydajność. Ten przykład tworzy funkcje 3 punktów. Po kliknięciu dowolnego z nich zostanie wyświetlone okno podręczne z zawartością dla tej funkcji punktu.
+Jeśli masz dużą liczbę punktów i chcesz wyświetlić tylko jedno podręczne, najlepszym rozwiązaniem jest utworzenie jednego podręcznego i ponowne użycie go zamiast tworzenia okna podręcznego dla każdej funkcji punktu. Przy użyciu okna podręcznego, liczba elementów DOM utworzonych przez aplikację jest znacznie zmniejszona, co może zapewnić lepszą wydajność. Poniższy przykład tworzy funkcje 3 punktów. Po kliknięciu dowolnego z nich zostanie wyświetlone okno podręczne z zawartością dla tej funkcji punktu.
 
 <br/>
 
 <iframe height='500' scrolling='no' title='Używanie podręcznego z wieloma numerami PIN' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobaczysz piórem, <a href='https://codepen.io/azuremaps/pen/rQbjvK/'>korzystając z okna podręcznego z wieloma</a> numerami PIN przez Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+## <a name="customizing-a-popup"></a>Dostosowywanie okna podręcznego
+
+Domyślnie okno podręczne ma białe tło, strzałka wskaźnik u dołu i przycisk Zamknij w prawym górnym rogu. Poniższy przykład zmienia kolor tła na czarny przy użyciu `fillColor` opcji menu podręcznego. Przycisk Zamknij jest usuwany przez ustawienie `shoCloseButton` opcji na false. Zawartość HTML okna podręcznego używa dopełnianego 10 pikseli od krawędzi okna podręcznego, a tekst jest zmieniany, aby pokazywał dobrze na czarnym tle.  
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Niestandardowe okno podręczne" src="//codepen.io/azuremaps/embed/ymKgdg/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Zobacz <a href='https://codepen.io/azuremaps/pen/ymKgdg/'>niestandardowe podręczne</a> pióro, Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+## <a name="popup-events"></a>Zdarzenia wyskakujące
+
+Okienka wyskakujące mogą być otwierane, zamykane i przeciągane. Klasa popup zawiera zdarzenia dla deweloperów pomocy, którzy reagują na te akcje. W poniższym przykładzie przedstawiono zdarzenia, które są wyzwalane po otwarciu, zamknięciu lub przeciągnięciu menu podręcznego. 
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Zdarzenia wyskakujące" src="//codepen.io/azuremaps/embed/BXrpvB/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Zobacz <a href='https://codepen.io/azuremaps/pen/BXrpvB/'>zdarzenia</a> wyskakujące pióro według<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>Następne kroki

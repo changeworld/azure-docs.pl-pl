@@ -1,51 +1,53 @@
 ---
-title: Azure wirtualne sieci WAN w ramach której partnerzy lokalizacje | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera listę partnerów Azure wirtualnego WAN i lokalizacji Centrum.
+title: Lokalizacje partnerów sieci wirtualnej platformy Azure | Microsoft Docs
+description: Ten artykuł zawiera listę partnerów i lokalizacji centrów wirtualnych sieci WAN platformy Azure.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 08/08/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect find a Virtual WAN partner
-ms.openlocfilehash: f38cd0565b2e90fe0803d8e815c622e22e954a18
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a871a527a4f8440ea3e388b1a91c19355eab3676
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60459844"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879286"
 ---
-# <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Wirtualne sieci WAN partnerzy i lokalizacje koncentrator wirtualny
+# <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Wirtualne partnerzy sieci WAN i wirtualne lokalizacje koncentratora
 
-Ten artykuł zawiera informacji na temat wirtualnych sieci WAN obsługiwanych regionach oraz partnerów łączności do koncentratora wirtualnego.
+Ten artykuł zawiera informacje na temat regionów i partnerów obsługiwanych przez wirtualną sieć WAN na potrzeby łączności z koncentratorem wirtualnym.
 
-Azure Virtual WAN to usługa sieciowa zapewniająca zoptymalizowaną i zautomatyzowaną łączność między oddziałami za pośrednictwem platformy Azure. Usługa Virtual WAN umożliwia łączenie urządzeń w oddziałach z platformą Azure i konfigurowanie ich komunikacji. Można to zrobić ręcznie albo za pomocą dostawcy urządzeń za pośrednictwem wirtualnej sieci WAN partnera. Za pomocą urządzeń partnerów pozwala ułatwić użytkowania uproszczenia łączności i zarządzanie konfiguracją.
+Azure Virtual WAN to usługa sieciowa zapewniająca zoptymalizowaną i zautomatyzowaną łączność między oddziałami za pośrednictwem platformy Azure. Usługa Virtual WAN umożliwia łączenie urządzeń w oddziałach z platformą Azure i konfigurowanie ich komunikacji. Można to zrobić ręcznie lub za pomocą urządzeń dostawcy za pośrednictwem wirtualnego partnera sieci WAN. Korzystanie z urządzeń partnerskich umożliwia łatwe korzystanie z programu, uproszczenie łączności i zarządzanie konfiguracją.
 
-Połączenia z poziomu lokalnego urządzenia jest określana w zautomatyzowany sposób do koncentratora wirtualnego. Koncentrator wirtualny jest zarządzany przez firmę Microsoft sieci wirtualnej. Koncentrator zawiera różne punkty końcowe usług, umożliwiające łączność z siecią lokalną (zasobem vpnsite). Może mieć tylko jedno Centrum na region.
+Połączenie z urządzeniem lokalnym jest nawiązywane w zautomatyzowany sposób z koncentratorem wirtualnym. Koncentratorem wirtualnym jest sieć wirtualna zarządzana przez firmę Microsoft. Koncentrator zawiera różne punkty końcowe usług, umożliwiające łączność z siecią lokalną (zasobem vpnsite). Możesz mieć tylko jeden koncentrator na region.
 
-## <a name="automation"></a>Automatyzacja partnerów łączności
+## <a name="automation"></a>Automatyzacja z partnerów łączności
 
-Urządzenia łączące się Azure wirtualnego WAN ma wbudowane automatyzacji do łączenia z. Zazwyczaj jest ono ustawione w górę w zarządzania urządzeniami interfejsu użytkownika (lub odpowiednik), która konfiguruje łączności i konfiguracji zarządzania między urządzeniem sieci VPN gałęzi do punktu końcowego sieci VPN platformy Azure wirtualnego Centrum (Brama sieci VPN).
+Urządzenia łączące się z wirtualną siecią WAN platformy Azure mają wbudowaną automatyzację, aby nawiązać połączenie. Jest to zazwyczaj skonfigurowane w interfejsie użytkownika zarządzania urządzeniami (lub równoważne), które konfiguruje zarządzanie łącznością i konfiguracją między urządzeniem oddziału sieci VPN a punktem końcowym sieci VPN usługi Azure Virtual Hub (Brama sieci VPN).
 
-Następujące wysokiego poziomu automatyzacji jest skonfigurowana w Centrum konsoli/zarządzania urządzeniami:
+Następująca Automatyzacja wysokiego poziomu jest skonfigurowana w konsoli urządzenia/w centrum zarządzania:
 
-* Odpowiednie uprawnienia dla tego urządzenia do dostępu do wirtualnej sieci WAN grupy zasobów platformy Azure
-* Przekazywanie urządzenia gałęzi do platformy Azure, wirtualna sieć WAN
-* Automatyczne pobieranie informacji łączność platformy Azure
-* Konfiguracja lokalnej gałęzi urządzenia 
+* Odpowiednie uprawnienia dla urządzenia umożliwiającego dostęp do grupy zasobów wirtualnej sieci WAN platformy Azure
+* Przekazywanie urządzenia oddziału do wirtualnej sieci WAN platformy Azure
+* Automatyczne pobieranie informacji o łączności z platformą Azure
+* Konfiguracja lokalnego urządzenia rozgałęzienia 
 
-Niektórzy partnerzy łączności mogą rozszerzyć automatyzację, obejmują tworzenie sieci wirtualnej koncentratora wirtualnego platformy Azure i bramy sieci VPN. Jeśli chcesz dowiedzieć się więcej na temat automatyzacji, zobacz [Konfigurowanie automatyzacji — partnerzy WAN](virtual-wan-configure-automation-providers.md).
+Niektórzy partnerzy łączności mogą zwiększyć automatyzację, aby uwzględnić tworzenie sieci wirtualnej i VPN Gateway usługi Azure Virtual Hub. Jeśli chcesz dowiedzieć się więcej o automatyzacji, zobacz [Configure Automation-WAN Partners](virtual-wan-configure-automation-providers.md).
 
 ## <a name="partners"></a>Łączność za pośrednictwem partnerów
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-## <a name="locations"></a>lokalizacje
+Następujący partnerzy są styczeń na nasze plany w najbliższej przyszłości: Fortinet, Silver-szczyt, Velocloud, Verse i Nuage Nokia.
+
+## <a name="locations"></a>Miejsce
 
 [!INCLUDE [regions](../../includes/virtual-wan-regions-include.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby uzyskać więcej informacji na temat wirtualnych sieci WAN, zobacz [wirtualne sieci WAN — często zadawane pytania](virtual-wan-faq.md).
+* Aby uzyskać więcej informacji na temat wirtualnej sieci WAN, zobacz temat [często zadawane pytania dotyczące wirtualnej sieci WAN](virtual-wan-faq.md).
 
-* Aby uzyskać więcej informacji o tym, jak zautomatyzować połączenie WAN wirtualnych platformy Azure, zobacz [wirtualne sieci WAN partnerów — jak zautomatyzować](virtual-wan-configure-automation-providers.md).
+* Aby uzyskać więcej informacji na temat automatyzowania łączności z usługą Azure Virtual WAN, zobacz [wirtualne partnerzy sieci WAN — jak zautomatyzować](virtual-wan-configure-automation-providers.md).

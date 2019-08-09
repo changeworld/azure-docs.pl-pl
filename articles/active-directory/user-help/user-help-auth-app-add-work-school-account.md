@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a73500d17a0dd5d55e60700f7c0b6dbe92a3f96b
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 3be2ee662a061cdcb6acc58e47eda5feda3b9eee
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382530"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880795"
 ---
 # <a name="add-your-work-or-school-account"></a>Dodaj konto służbowe
 
@@ -40,6 +40,9 @@ Jeśli Twoja organizacja korzysta z weryfikacji dwuetapowej, możesz skonfigurow
     ![Ekran, który zawiera kod QR](./media/user-help-auth-app-download-install/auth-app-barcode.png)
 
 3. Otwórz aplikację Microsoft Authenticator, wybierz pozycję **Dodaj konto** na stronie ikona **Dostosowywanie i kontrola** w prawym górnym rogu, a następnie wybierz pozycję **konto służbowe**.
+
+    >[!Note]
+    >Jeśli konfigurujesz aplikację Microsoft Authenticator po raz pierwszy, może zostać wyświetlony monit z pytaniem, czy zezwolić aplikacji na dostęp do aparatu (iOS), czy zezwolić aplikacji na wykonywanie zdjęć i nagrywanie wideo (Android). Musisz wybrać opcję **Zezwól** , aby aplikacja Authenticator mogła uzyskać dostęp do Twojego aparatu, aby w następnym kroku uzyskać zdjęcie kodu QR. Jeśli nie zezwolisz na korzystanie z aparatu, nadal możesz skonfigurować aplikację uwierzytelniającej, ale musisz ręcznie dodać informacje o kodzie. Aby dowiedzieć się, jak ręcznie dodać kod, zobacz temat [Ręczne dodawanie konta do aplikacji](user-help-auth-app-add-account-manual.md).
 
 4. Za pomocą aparatu urządzenia Przeskanuj kod QR na ekranie **Konfigurowanie aplikacji mobilnej** na komputerze, a następnie wybierz pozycję **gotowe**.
 

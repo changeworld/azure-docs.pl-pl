@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: cfdc28486cf254c4dd808824ab167489818376ab
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 582e4d81851d570f99d25d626a1db8a9f5e98231
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619598"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881338"
 ---
 # <a name="monitor-azure-functions"></a>Monitorowanie usługi Azure Functions
 
@@ -607,14 +607,21 @@ Aby zgłosić problem związany z integracją Application Insights w usłudze Fu
 
 ## <a name="streaming-logs"></a>Dzienniki przesyłania strumieniowego
 
-Podczas tworzenia aplikacji często warto zobaczyć informacje o rejestrowaniu w czasie niemal rzeczywistym. Można wyświetlić strumień plików dziennika generowanych przez funkcje w Azure Portal lub w sesji wiersza polecenia na komputerze lokalnym.
+Podczas tworzenia aplikacji często zachodzi potrzeba zapisywania w dziennikach w czasie niemal rzeczywistym podczas uruchamiania na platformie Azure.
 
-Jest to równoznaczne z danymi wyjściowymi wyświetlanymi podczas debugowania funkcji podczas [lokalnego tworzenia](functions-develop-local.md). Aby uzyskać więcej informacji, zobacz [jak przesyłać dzienniki strumieniowo](../app-service/troubleshoot-diagnostic-logs.md#streamlogs).
+Istnieją dwa sposoby wyświetlania strumienia plików dziennika generowanych przez wykonania funkcji.
 
-> [!NOTE]
-> Dzienniki przesyłania strumieniowego obsługują tylko pojedyncze wystąpienie hosta funkcji. Gdy funkcja jest skalowana do wielu wystąpień, dane z innych wystąpień nie są wyświetlane w strumieniu dziennika. [Live Metrics Stream](../azure-monitor/app/live-stream.md) w Application Insights obsługuje wiele wystąpień. Ponadto w czasie niemal rzeczywistym Analiza przesyłania strumieniowego jest również oparta na [przykładowych danych](#configure-sampling).
+* **Wbudowane przesyłanie strumieniowe dzienników**: platforma App Service umożliwia wyświetlenie strumienia plików dziennika aplikacji. Jest to równoznaczne z danymi wyjściowymi wyświetlanymi podczas debugowania funkcji podczas [lokalnego tworzenia](functions-develop-local.md) i korzystania z karty **test** w portalu. Wyświetlane są wszystkie informacje oparte na dzienniku. Aby uzyskać więcej informacji, zobacz [jak przesyłać dzienniki strumieniowo](../app-service/troubleshoot-diagnostic-logs.md#streamlogs). Ta metoda przesyłania strumieniowego obsługuje tylko jedno wystąpienie i nie może być używana z aplikacją działającą w systemie Linux w planie zużycia.
+
+* **Live Metrics Stream**: gdy aplikacja funkcji jest [połączona z Application Insights](#enable-application-insights-integration), można wyświetlać dane dziennika i inne metryki w czasie niemal rzeczywistym w Azure Portal przy użyciu [Live Metrics Stream](../azure-monitor/app/live-stream.md). Użyj tej metody, gdy funkcje monitorowania działają w wielu wystąpieniach lub w systemie Linux w planie zużycia. Ta metoda używa [danych próbkowanych](#configure-sampling).
+
+Strumienie dzienników można wyświetlać zarówno w portalu, jak i w większości lokalnych środowisk programistycznych. 
 
 ### <a name="portal"></a>Portal
+
+Oba typy strumieni dzienników można wyświetlić w portalu.
+
+#### <a name="built-in-log-streaming"></a>Wbudowane przesyłanie strumieniowe dzienników
 
 Aby wyświetlić dzienniki przesyłania strumieniowego w portalu, wybierz kartę **funkcje platformy** w aplikacji funkcji. Następnie w obszarze **monitorowanie**wybierz pozycję **Rejestruj strumieniowo**.
 
@@ -624,9 +631,21 @@ Spowoduje to połączenie aplikacji z usługą przesyłania strumieniowego dzien
 
 ![Wyświetlanie dzienników przesyłania strumieniowego w portalu](./media/functions-monitoring/streaming-logs-window.png)
 
+#### <a name="live-metrics-stream"></a>Live Metrics Stream
+
+Aby wyświetlić Live Metrics Stream aplikacji, wybierz kartę **Przegląd** aplikacji funkcji. Gdy Application Insights włączasz, zobaczysz link **Application Insights** w obszarze **skonfigurowane funkcje**. Ten link prowadzi do strony Application Insights Twojej aplikacji.
+
+W Application Insights wybierz pozycję **Live Metrics Stream**. [Przykładowe wpisy dziennika](#configure-sampling) są wyświetlane w obszarze **przykładowe**dane telemetryczne.
+
+![Wyświetlanie Live Metrics Stream w portalu](./media/functions-monitoring/live-metrics-stream.png) 
+
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
 [!INCLUDE [functions-enable-log-stream-vs-code](../../includes/functions-enable-log-stream-vs-code.md)]
+
+### <a name="core-tools"></a>Narzędzia podstawowe
+
+[!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
@@ -656,7 +675,7 @@ Po włączeniu Application Insights Wyłącz wbudowane rejestrowanie korzystają
 
 Aby wyłączyć wbudowane rejestrowanie, Usuń `AzureWebJobsDashboard` ustawienie aplikacji. Aby uzyskać informacje dotyczące sposobu usuwania ustawień aplikacji w Azure Portal, zobacz sekcję **Ustawienia aplikacji** w temacie [jak zarządzać aplikacją funkcji](functions-how-to-use-azure-function-app-settings.md#settings). Przed usunięciem ustawienia aplikacji upewnij się, że żadne funkcje w tej samej aplikacji funkcji nie używają ustawienia dla wyzwalaczy lub powiązań usługi Azure Storage.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji, zobacz następujące zasoby:
 

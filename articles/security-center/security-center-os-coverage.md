@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/03/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 02d993d760338356fa29ee58a03215e14d6583f1
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 7cd1d451b49faf2f8e3ad38f4ff780256ef2dc5d
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295605"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883601"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformy i funkcje obsługiwane przez Azure Security Center
 
@@ -53,7 +53,7 @@ Obsługiwane są następujące systemy operacyjne Linux:
 > [!NOTE]
 > Ponieważ lista obsługiwanych systemów operacyjnych Linux jest ciągle zmieniana, kliknij [tutaj](https://github.com/microsoft/OMS-Agent-for-Linux#supported-linux-operating-systems) , aby wyświetlić najbardziej aktualną listę obsługiwanych wersji, na wypadek zmiany od momentu ostatniej publikacji tego tematu.
 
-64 — bit
+64-bitowa
 * CentOS 6 i 7
 * Amazon Linux 2017,09
 * Oracle Linux 6 i 7
@@ -62,7 +62,7 @@ Obsługiwane są następujące systemy operacyjne Linux:
 * Ubuntu Linux 14,04 LTS, 16,04 LTS i 18,04 LTS
 * SUSE Linux Enterprise Server 12
 
-32 — bit
+32-bitowa
 * CentOS 6
 * Oracle Linux 6
 * Red Hat Enterprise Linux Server 6
@@ -89,7 +89,7 @@ Obsługiwane są również maszyny wirtualne, które są uruchomione w usłudze 
 |Konfiguracje zabezpieczeń|✔|✔|✔|✔|✔|✔|Wolne|
 |Ocena programu Endpoint Protection|✔|✔|✔|X|X|X|Wolne|
 |Dostęp JIT do maszyny wirtualnej|✔|X|X|✔|X|X|Standardowa (Standard)|
-|Funkcje adaptacyjnego sterowania aplikacjami|✔|X|✔|✔|X|✔|Standardowa (Standard)|
+|Adaptacyjne kontrole aplikacji|✔|X|✔|✔|X|✔|Standardowa (Standard)|
 |KOD|✔|✔|✔|✔|✔|✔|Standardowa (Standard)|
 |Ocena szyfrowania dysku|✔|✔|X|✔|✔|X|Wolne|
 |Wdrożenie innych firm|✔|X|X|✔|X|X|Wolne|
@@ -108,15 +108,17 @@ Poniższa tabela zawiera macierz:
 
 Aby uzyskać informacje o tym, kiedy są generowane zalecenia dla każdej z tych ochrony, zobacz [Endpoint Protection oceny i rekomendacji](security-center-endpoint-protection.md).
 
-| Ochrona punktów końcowych| Platformy | Instalacja usługi Security Center | Odnajdywanie usługi Security Center |
+| Endpoint Protection| Platformy | Instalacja usługi Security Center | Odnajdywanie usługi Security Center |
 |------|------|-----|-----|
-| Windows Defender (oprogramowanie firmy Microsoft chroniące przed złośliwym kodem)| Windows Server 2016| Nie, wbudowana w system operacyjny| Tak |
-| System Center Endpoint Protection (oprogramowanie firmy Microsoft chroniące przed złośliwym kodem) | Windows Server 2012 R2, 2012, 2008 R2 (Zobacz uwagi poniżej) | Za pomocą rozszerzenia | Tak |
-| Trend Micro — wszystkie wersje | Rodzina systemów Windows Server  | Nie | Yes |
-| Symantec — w wersji co najmniej 12.1.1100| Rodzina systemów Windows Server  | Nie | Yes |
+| Windows Defender (oprogramowanie firmy Microsoft chroniące przed złośliwym kodem)| Windows Server 2016| Nie, wbudowana w system operacyjny| Yes |
+| System Center Endpoint Protection (oprogramowanie firmy Microsoft chroniące przed złośliwym kodem) | Windows Server 2012 R2, 2012, 2008 R2 (Zobacz uwagi poniżej) | Za pomocą rozszerzenia | Yes |
+| Trend Micro — wszystkie wersje | Rodzina systemów Windows Server  | Nie | Tak |
+| Symantec — w wersji co najmniej 12.1.1100| Rodzina systemów Windows Server  | Nie | Tak |
 | McAfee — w wersji co najmniej 10 | Rodzina systemów Windows Server  | Nie | Yes |
-| Kaspersky| Rodzina systemów Windows Server  | Nie | Nie  |
-| Sophos| Rodzina systemów Windows Server  | Nie | Nie  |
+| McAfee — w wersji co najmniej 10 | Rodzina serwerów z systemem Linux  | Nie | Opcję **\*** |
+| Sophos V9 +| Rodzina serwerów z systemem Linux  | Nie | Opcję **\***  |
+
+ **\*** Stan pokrycia i dane pomocnicze są obecnie dostępne tylko w obszarze roboczym Log Analytics skojarzonym z chronionymi subskrypcjami i nie są odzwierciedlone w portalu Azure Security Center.
 
 > [!NOTE]
 > - Wykrywanie programu System Center Endpoint Protection (SCEP) na maszynie wirtualnej z systemem Windows Server 2008 R2 wymaga zainstalowania protokołu SCEP po wystąpieniu programu PowerShell 3,0 (lub w górnej wersji).
@@ -132,17 +134,17 @@ Aby uzyskać informacje o tym, kiedy są generowane zalecenia dla każdej z tych
 |Konta usługi Azure Blob Storage|✔| ✔|
 |Usługi aplikacji|✔| ✔|
 |Usługi w chmurze|✔| X|
-|Sieci wirtualnych|✔| Nie dotyczy|
+|Sieci wirtualne|✔| Nie dotyczy|
 |Podsieci|✔| Nie dotyczy|
 |Karty interfejsów sieciowych|✔| Nie dotyczy|
-|Sieciowe grupy zabezpieczeń|✔| Nie dotyczy|
+|sieciowych grup zabezpieczeń|✔| Nie dotyczy|
 |Subscription|✔ **| ✔|
 |Batch|✔| Nie dotyczy|
 |Service Fabric|✔| Nie dotyczy|
 |Konto usługi Automation|✔| Nie dotyczy|
 |Moduł równoważenia obciążenia|✔| Nie dotyczy|
 |Wyszukaj|✔| Nie dotyczy|
-|Service Bus|✔| Nie dotyczy|
+|Magistrala usług|✔| Nie dotyczy|
 |Stream Analytics|✔| Nie dotyczy|
 |Centrum zdarzeń|✔| Nie dotyczy|
 |Aplikacje logiki|✔| Nie dotyczy|
@@ -160,7 +162,7 @@ Aby uzyskać informacje o tym, kiedy są generowane zalecenia dla każdej z tych
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, jak [planować i zrozumieć zagadnienia dotyczące projektowania, aby przyjąć Azure Security Center](security-center-planning-and-operations-guide.md).
 - Dowiedz się więcej o [analizie behawioralnej maszyn wirtualnych i analizie pamięci zrzutu awaryjnego w Security Center](security-center-alerts-type.md#virtual-machine-behavioral-analysis).

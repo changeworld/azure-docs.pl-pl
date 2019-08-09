@@ -5,24 +5,25 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 03/04/2019
+ms.date: 08/08/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: de9bc91e438ff694c96966486908c54562e93902
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e95000f068d2ab36292a7c5d0440fab01cb44bb5
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183136"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879302"
 ---
-Możesz sprawdzić linki w tej sekcji, aby uzyskać więcej informacji o usługach oferowanych przez partnerów. Jeśli partner urządzenia gałęzi nie znajduje się w dalszej części tego artykułu, należy mieć dostawcą urządzenia gałęzi, skontaktuj się z nami. Kontaktowania się z nami, wysyłając wiadomość e-mail na adres azurevirtualwan@microsoft.com.
+Możesz sprawdzić linki w tej sekcji, aby uzyskać więcej informacji na temat usług oferowanych przez partnerów. Jeśli partner urządzenia rozgałęzienia nie jest wymieniony w poniższej sekcji, skontaktuj się z nami w celu skontaktowania się z firmą. Mogą skontaktować się z nami, wysyłając wiadomość azurevirtualwan@microsoft.come-mail na adres.
 
 |Partnerzy|
 |---|
-|[Barracuda Networks](https://www.barracuda.com/AzurevWAN)|
-| [Check Point](https://www.checkpoint.com/solutions/microsoft-azure-virtual-wan/) |
+|[Sieci Barracuda](https://www.barracuda.com/AzurevWAN)|
+| [Punkt kontrolny](https://www.checkpoint.com/solutions/microsoft-azure-virtual-wan/) |
 | [Citrix](https://www.citrix.com/global-partners/microsoft/sd-wan-for-azure-virtual-wan.html)|
-|[Netfoundry](https://netfoundry.io/solutions/netfoundry-for-microsoft-azure-virtual-wan/)|
+| [Cloudgenix](https://www.cloudgenix.com/microsoft-azure/) |
+|[Znaleźliśmy](https://netfoundry.io/solutions/netfoundry-for-microsoft-azure-virtual-wan/)|
 |[Palo Alto Networks](https://researchcenter.paloaltonetworks.com/2018/09/azure-vwan-integration/) |
-|[Technologia riverbed](https://www.riverbed.com/go/steelconnect-azurewan.html)|
-|[Technologia 128](https://www.128technology.com/partners/azure) |
+|[Technologia Riverbed](https://www.riverbed.com/go/steelconnect-azurewan.html)|
+|[128 technologia](https://www.128technology.com/partners/azure) |

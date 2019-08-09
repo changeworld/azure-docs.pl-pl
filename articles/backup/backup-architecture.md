@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: dacurwin
-ms.openlocfilehash: 3165183d4a5e0dcfecee62b128ee8cfa9d94209b
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 9e67e063ed37c706ba172703f0a5483d8d4f68ca
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736719"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881868"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup architektura i składniki
 
@@ -101,7 +101,7 @@ Poniższa tabela zawiera podsumowanie obsługiwanych funkcji dla różnych typó
 Tworzenie kopii zapasowej w magazynie | ![Tak][green] | ![Yes][green] | ![Tak][green] 
 Utwórz kopię zapasową na dysku programu DPM/serwera usługi MAB, a następnie na platformie Azure | | | ![Tak][green] 
 Kompresuj dane wysyłane do kopii zapasowej | ![Tak][green] | Podczas przesyłania danych nie jest używana kompresja. Magazyn jest nieco nieznacznie napompowany, ale przywracanie jest szybsze.  | ![Tak][green] 
-Uruchom przyrostową kopię zapasową |![Tak][green] |![Yes][green] |![Tak][green] 
+Uruchom przyrostową kopię zapasową |![Yes][green] |![Yes][green] |![Yes][green] 
 Tworzenie kopii zapasowej deduplikowanych dysków | | | ![Częściowo][yellow]<br/><br/> W przypadku serwerów DPM/serwera usługi MAB wdrożonych tylko lokalnie. 
 
 ![Klucz tabeli](./media/backup-architecture/table-key.png)
@@ -120,7 +120,7 @@ Tworzenie kopii zapasowej deduplikowanych dysków | | | ![Częściowo][yellow]<b
     - Kopiowane są tylko bloki danych, które uległy zmianie od momentu utworzenia ostatniej kopii zapasowej.
     - Dane nie są szyfrowane. Azure Backup można utworzyć kopie zapasowe maszyn wirtualnych platformy Azure, które zostały zaszyfrowane przy użyciu Azure Disk Encryption.
     - Dane migawki mogą nie być od razu kopiowane do magazynu. W godzinach szczytu kopia zapasowa może trwać kilka godzin. Łączny czas wykonywania kopii zapasowej maszyny wirtualnej będzie krótszy niż 24 godziny dla codziennych zasad tworzenia kopii zapasowych.
-1. Po wysłaniu danych do magazynu migawka zostanie usunięta i zostanie utworzony punkt odzyskiwania.
+1. Po wysłaniu danych do magazynu zostanie utworzony punkt odzyskiwania. Domyślnie migawki są zachowywane przez dwa dni przed ich usunięciem. Ta funkcja umożliwia przywracanie z tych migawek, a tym samym wycinanie czasów przywracania. Skraca czas wymagany do przekształcania i kopiowania danych z magazynu. Zobacz [Azure Backup możliwości przywracania natychmiastowego](https://docs.microsoft.com/en-us/azure/backup/backup-instant-restore-capability).
 
 Maszyny wirtualne platformy Azure wymagają dostępu do Internetu dla poleceń sterowania. Jeśli wykonujesz kopię zapasową obciążeń wewnątrz maszyny wirtualnej (na przykład SQL Server kopie zapasowe bazy danych), dane zaplecza również wymagają dostępu do Internetu. 
 

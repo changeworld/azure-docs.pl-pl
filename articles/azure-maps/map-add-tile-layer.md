@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: e288e03b9e2c02ba963595f192dea7225c6d5762
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: d872cd78b3fd04512fcaee706e54bffa1cf9fcc1
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638989"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882081"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>Dodawanie warstwy kafelków do mapy
 
 W tym artykule pokazano, jak można nałożyć warstwę kafelków na mapie. Warstwy kafelków umożliwiają nakładanie obrazów na kafelkach mapy podstawowej Azure Maps. Więcej informacji o Azure Maps systemie rozmieszczania można znaleźć w dokumentacji [poziomów powiększenia i siatki kafelków](zoom-levels-and-tile-grid.md) .
 
-Załadowanie warstwy kafelka do kafelków z serwera. Te obrazy mogą być wstępnie renderowane i przechowywane jak każdy inny obraz na serwerze przy użyciu konwencji nazewnictwa, która jest rozpoznawana przez warstwę kafelków, lub usługi dynamicznej, która generuje obrazy na bieżąco. Istnieją trzy różne konwencje nazewnictwa usługi kafelków obsługiwane przez Azure Maps klasy [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) ; 
+Warstwa kafelków jest ładowana na kafelkach z serwera. Te obrazy mogą być wstępnie renderowane i przechowywane jak każdy inny obraz na serwerze przy użyciu konwencji nazewnictwa, która jest rozpoznawana przez warstwę kafelków, lub usługi dynamicznej, która generuje obrazy na bieżąco. Istnieją trzy różne konwencje nazewnictwa usługi kafelków obsługiwane przez Azure Maps [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) klasy: 
 
 * X, Y, z notacją powiększenia w oparciu o poziom powiększenia, x to kolumna, a Y to pozycja w wierszu kafelka w siatce kafelków.
 * Quadkey-kombinacja x, y, Powiększ informacje w postaci pojedynczej wartości ciągu, która jest unikatowym identyfikatorem dla kafelka.
@@ -40,7 +40,7 @@ Adres URL kafelka przesłany do warstwy kafelków musi być adresem URL protoko�
 
 ## <a name="add-a-tile-layer"></a>Dodawanie warstwy kafelków
 
- Ten przykład pokazuje, jak utworzyć warstwę kafelków, która wskazuje zestaw kafelków korzystających z systemu dzielenia x, y. Źródłem tej warstwy kafelków jest nałożenie radaru pogody z [Iowa środowiska Mesonet Iowa University](https://mesonet.agron.iastate.edu/ogc/).
+ Ten przykład pokazuje, jak utworzyć warstwę kafelków, która wskazuje zestaw kafelków korzystających z systemu dzielenia x, y. Źródłem tej warstwy kafelków jest nałożenie radaru pogody z [Iowa środowiska Mesonet Iowa University](https://mesonet.agron.iastate.edu/ogc/). 
 
 <br/>
 
@@ -53,14 +53,14 @@ W drugim bloku kodu [TileLayer](https://docs.microsoft.com/javascript/api/azure-
 
 ## <a name="customize-a-tile-layer"></a>Dostosowywanie warstwy kafelków
 
-Warstwa kafelków ma tylko wiele opcji stylów. Oto narzędzie do wypróbowania.
+Klasa kafelków ma wiele opcji stylów. Oto narzędzie do wypróbowania.
 
 <br/>
 
 <iframe height='700' scrolling='no' title='Opcje warstwy kafelków' src='//codepen.io/azuremaps/embed/xQeRWX/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz <a href='https://codepen.io/azuremaps/pen/xQeRWX/'>Opcje warstwy kafelków</a> pióra według Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej na temat klas i metod używanych w tym artykule:
 

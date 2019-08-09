@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 02/08/2019
-ms.openlocfilehash: db295f7644cae96eb00670cecf6e4eeba9bb6bed
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 86bd479eff48a7feb42557eb1d175345728f0a69
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567231"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879055"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Replikacja transakcyjna z pojedynczymi, w puli i wystąpieniami baz danych w Azure SQL Database
 
@@ -29,7 +29,7 @@ Replikacja transakcyjna jest przydatna w następujących scenariuszach:
 - Utrzymuj synchronizację kilku rozproszonych baz danych.
 - Migrowanie baz danych z jednego SQL Server lub wystąpienia zarządzanego do innej bazy danych przez ciągłe publikowanie zmian.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Najważniejsze składniki replikacji transakcyjnej przedstawiono na poniższej ilustracji:  
 
@@ -53,7 +53,7 @@ Najważniejsze składniki replikacji transakcyjnej przedstawiono na poniższej i
 | :----| :------------- | :--------------- |
 | **Publisher** | Nie | Tak | 
 | **Dystrybutor** | Nie | Tak|
-| **Subskrybent ściągania** | Nie | Tak|
+| **Subskrybent ściągania** | Nie | Yes|
 | **Wypychanie subskrybenta**| Tak | Tak|
 | &nbsp; | &nbsp; | &nbsp; |
 
@@ -65,11 +65,11 @@ Istnieją różne [typy replikacji](https://docs.microsoft.com/sql/relational-da
 
 | Replikacja | Pojedyncze i w puli baz danych | Wystąpienia baz danych|
 | :----| :------------- | :--------------- |
-| [**Standardowa transakcyjna**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Tak (tylko jako subskrybent) | Yes | 
+| [**Standardowa transakcyjna**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Tak (tylko jako subskrybent) | Tak | 
 | [**Zdjęcie**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Tak (tylko jako subskrybent) | Tak|
 | [**Replikacja scalająca**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Nie | Nie|
 | [**Peer-to-peer**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nie | Nie|
-| [**Kierunk**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nie | Tak|
+| [**Kierunk**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nie | Yes|
 | [**Aktualizowalne subskrypcje**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Nie | Nie|
 | &nbsp; | &nbsp; | &nbsp; |
 
@@ -96,8 +96,10 @@ Istnieją różne [typy replikacji](https://docs.microsoft.com/sql/relational-da
 - Port 445 (ruch wychodzący TCP) musi być otwarty w regułach zabezpieczeń podsieci wystąpienia zarządzanego w celu uzyskania dostępu do udziału plików platformy Azure. 
 - Port 1433 (ruch wychodzący TCP) musi zostać otwarty, jeśli Wydawca/dystrybutor znajduje się w wystąpieniu zarządzanym, a subskrybent jest w środowisku lokalnym.
 
-  >[!NOTE]
-  > W przypadku nawiązywania połączenia z plikiem usługi Azure Storage może wystąpić błąd 53, jeśli port wychodzącej grupy zabezpieczeń (sieciowej grupy zabezpieczeń) 445 jest blokowany, gdy dystrybutor jest bazą danych wystąpienia, a subskrybent jest w środowisku lokalnym. Aby rozwiązać ten problem [, zaktualizuj sieciowej grupy zabezpieczeń sieci wirtualnej](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) . 
+
+>[!NOTE]
+> - W przypadku nawiązywania połączenia z plikiem usługi Azure Storage może wystąpić błąd 53, jeśli port wychodzącej grupy zabezpieczeń (sieciowej grupy zabezpieczeń) 445 jest blokowany, gdy dystrybutor jest bazą danych wystąpienia, a subskrybent jest w środowisku lokalnym. Aby rozwiązać ten problem [, zaktualizuj sieciowej grupy zabezpieczeń sieci wirtualnej](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) . 
+> - Jeśli bazy danych wydawcy i dystrybutora w wystąpieniach zarządzanych używają [grup Autotryb failover](sql-database-auto-failover-group.md), administrator wystąpienia zarządzanego musi [usunąć wszystkie publikacje na starym serwerze podstawowym i skonfigurować je ponownie na nowym serwerze podstawowym po przejściu w tryb failover](sql-database-managed-instance-transact-sql-information.md#replication).
 
 ### <a name="compare-data-sync-with-transactional-replication"></a>Porównywanie synchronizacji danych z replikacją transakcyjną
 
@@ -115,7 +117,7 @@ Ogólnie rzecz biorąc, Wydawca i dystrybutor musi znajdować się w chmurze lub
 
 ![Pojedyncze wystąpienie jako Wydawca i dystrybutora](media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
 
-Wydawca i dystrybutor są konfigurowane w ramach jednego wystąpienia zarządzanego i dystrybuowanie zmian do innych wystąpień zarządzanych, pojedynczej bazy danych, puli baz danych lub SQL Server lokalnych. W tej konfiguracji wystąpienie zarządzane wydawcy/dystrybutora nie może być skonfigurowane z [replikacją geograficzną i funkcją automatycznej pracy awaryjnej](sql-database-auto-failover-group.md).
+Wydawca i dystrybutor są konfigurowane w ramach jednego wystąpienia zarządzanego i dystrybuowanie zmian do innych wystąpień zarządzanych, pojedynczej bazy danych, puli baz danych lub SQL Server lokalnych. 
 
 ### <a name="publisher-with-remote-distributor-on-a-managed-instance"></a>Wydawca z dystrybutorem zdalnym w wystąpieniu zarządzanym
 
@@ -123,11 +125,11 @@ W tej konfiguracji jedno wystąpienie zarządzane publikuje zmiany dystrybutora 
 
 ![Oddziel wystąpienia wydawcy i dystrybutora](media/replication-with-sql-database-managed-instance/02-separate-instances-asdbmi-pubdist.png)
 
-Wydawca i dystrybutor są konfigurowane w dwóch zarządzanych wystąpieniach. W tej konfiguracji
+Wydawca i dystrybutor są konfigurowane w dwóch zarządzanych wystąpieniach. Istnieją pewne ograniczenia dotyczące tej konfiguracji: 
 
 - Oba wystąpienia zarządzane znajdują się w tej samej sieci wirtualnej.
 - Oba wystąpienia zarządzane znajdują się w tej samej lokalizacji.
-- Wystąpienia zarządzane, które obsługują publikowane i bazy danych dystrybutorów, nie mogą być [replikowane geograficznie przy użyciu grupy autotrybu failover](sql-database-auto-failover-group.md).
+
 
 ### <a name="publisher-and-distributor-on-premises-with-a-subscriber-on-a-single-pooled-and-instance-database"></a>Wydawca i dystrybutor w środowisku lokalnym z subskrybentem w jednej, puli i wystąpieniu bazy danych 
 
@@ -141,11 +143,13 @@ W tej konfiguracji Azure SQL Database (pojedyncza, w puli i baza danych wystąpi
 1. [Skonfiguruj replikację między dwoma wystąpieniami zarządzanymi](replication-with-sql-database-managed-instance.md). 
 1. [Utwórz publikację](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
 1. [Utwórz subskrypcję wypychaną](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) , używając nazwy serwera Azure SQL Database jako subskrybenta (na przykład `N'azuresqldbdns.database.windows.net` i nazwy Azure SQL Database jako docelowej bazy danych (na przykład **AdventureWorks**. )
+1. Informacje o [ograniczeniach replikacji transakcyjnej dla wystąpienia zarządzanego](sql-database-managed-instance-transact-sql-information.md#replication)
 
 
 
 ## <a name="see-also"></a>Zobacz też  
 
+- [Replikacja za pomocą MI i grupy trybu failover](sql-database-managed-instance-transact-sql-information.md#replication)
 - [Replikacja do bazy danych SQL](replication-to-sql-database.md)
 - [Replikacja do wystąpienia zarządzanego](replication-with-sql-database-managed-instance.md)
 - [Tworzenie publikacji](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)

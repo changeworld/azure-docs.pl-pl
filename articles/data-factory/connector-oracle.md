@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 0a71c7ffe9040c3002b1f5378ce298a047554b15
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 079a0721e77174215c7256eecbe9bc522256f0b8
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640194"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881476"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopiowanie danych z i do programu Oracle przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -165,8 +165,8 @@ Aby skopiować dane z i do programu Oracle, należy ustawić Właściwość Type
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type zestawu danych musi być ustawiona na `OracleTable`wartość. | Tak |
-| tableName |Nazwa tabeli w bazie danych Oracle, do której odwołuje się połączona usługa. | Yes |
+| — typ | Właściwość Type zestawu danych musi być ustawiona na `OracleTable`wartość. | Tak |
+| tableName |Nazwa tabeli w bazie danych Oracle, do której odwołuje się połączona usługa. | Tak |
 
 **Przykład:**
 
@@ -248,7 +248,7 @@ Aby skopiować dane do programu Oracle, należy ustawić typ ujścia w działani
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type ujścia działania Copy musi być ustawiona na `OracleSink`wartość. | Tak |
+| type | Właściwość Type ujścia działania Copy musi być ustawiona na `OracleSink`wartość. | Yes |
 | writeBatchSize | Wstawia dane do tabeli SQL, gdy rozmiar buforu osiągnie `writeBatchSize`wartość.<br/>Dozwolone wartości to liczba całkowita (liczba wierszy). |Nie (domyślnie 10 000) |
 | writeBatchTimeout | Czas oczekiwania na zakończenie operacji wstawiania partii przed przekroczeniem limitu czasu.<br/>Dozwolone wartości to TimeSpan. Przykładem jest 00:30:00 (30 minut). | Nie |
 | preCopyScript | Określ zapytanie SQL dla działania kopiowania, które ma zostać uruchomione przed zapisaniem danych w programie Oracle w każdym przebiegu. Ta właściwość służy do czyszczenia wstępnie załadowanych danych. | Nie |
@@ -340,7 +340,7 @@ Podczas kopiowania danych z programu i do programu Oracle są stosowane następu
 |:--- |:--- |
 | BFILE |Byte[] |
 | TWORZENIA |Byte[]<br/>(obsługiwane tylko w systemach Oracle 10g i nowszych) |
-| DELIKATN |String |
+| DELIKATN |Ciąg |
 | OBIEKTÓW CLOB |String |
 | DATE |Datetime |
 | FLOAT |Decimal, String (jeśli dokładności > 28) |
@@ -350,15 +350,15 @@ Podczas kopiowania danych z programu i do programu Oracle są stosowane następu
 | NCHAR |String |
 | NCLOB |String |
 | NUMBER |Decimal, String (jeśli dokładności > 28) |
-| NVARCHAR2 |Ciąg |
+| NVARCHAR2 |String |
 | RAW |Byte[] |
 | WŁAŚCIWOŚĆ |String |
 | TIMESTAMP |Datetime |
-| TIMESTAMP WITH LOCAL TIME ZONE |Ciąg |
+| TIMESTAMP WITH LOCAL TIME ZONE |String |
 | TIMESTAMP WITH TIME ZONE |String |
 | UNSIGNED INTEGER |Number |
-| VARCHAR2 |String |
-| XML |String |
+| VARCHAR2 |Ciąg |
+| XML |Ciąg |
 
 > [!NOTE]
 > Typy danych INTERWAŁu od roku do miesiąca oraz INTERWAŁu od dnia do sekundy nie są obsługiwane.

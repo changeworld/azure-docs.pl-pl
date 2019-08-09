@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 05/31/2019
+ms.date: 08/08/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seoapril2019
-ms.openlocfilehash: bb170b53946a014d4aa69ce628c2e4bef7459b93
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: a1433139695eb59fa3fd721852fae3181b8f892b
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595582"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882476"
 ---
 # <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>Najlepsze rozwiązania dotyczące ładowania danych do usługi Azure SQL Data Warehouse
 
@@ -38,7 +38,7 @@ Duże pliki skompresowane można podzielić na mniejsze.
 
 Aby uzyskać większą szybkość ładowania, uruchamiaj tylko jedno zadanie ładowania naraz. Jeśli nie jest to możliwe, uruchamiaj jak najmniejszą liczbę zadań ładowania jednocześnie. Jeśli spodziewasz się dużego zadania ładowania, rozważ skalowanie w górę magazynu danych przed uruchomieniem tego zadania.
 
-Aby uruchamiać zadania ładowania przy użyciu odpowiednich zasobów obliczeniowych, utwórz użytkowników ładujących na potrzeby uruchamiania ładowania. Przypisz każdego użytkownika ładującego do określonej klasy zasobów. Aby uruchomić ładowanie, zaloguj się jako jeden z użytkowników ładujących, a następnie uruchom ładowanie. Ładowanie zostanie uruchomione przy użyciu klasy zasobów przypisanej do użytkownika.  Jest to prostsza metoda niż zmienianie klasy zasobów użytkownika odpowiednio do bieżących potrzeb.
+Aby uruchamiać zadania ładowania przy użyciu odpowiednich zasobów obliczeniowych, utwórz użytkowników ładujących na potrzeby uruchamiania ładowania. Przypisz każdego użytkownika ładującego do określonej klasy zasobów. Aby uruchomić ładowanie, zaloguj się jako jeden z użytkowników ładujących, a następnie uruchom obciążenie. Ładowanie zostanie uruchomione przy użyciu klasy zasobów przypisanej do użytkownika.  Jest to prostsza metoda niż zmienianie klasy zasobów użytkownika odpowiednio do bieżących potrzeb.
 
 ### <a name="example-of-creating-a-loading-user"></a>Przykład tworzenia użytkownika ładującego
 
@@ -58,19 +58,19 @@ Nawiąż połączenie z bazą danych magazynu danych i utwórz użytkownika. W p
    EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
 ```
 
-Aby uruchomić ładowanie z zasobami należącymi do klasy zasobów staticRC20, zaloguj się jako użytkownik LoaderRC20 i uruchomić obciążenia.
+Aby uruchomić obciążenie za pomocą zasobów dla klas zasobów staticRC20, zaloguj się jako LoaderRC20 i uruchom obciążenie.
 
-Lepszym rozwiązaniem jest uruchamianie ładowania przy użyciu statycznych, a nie dynamicznych klas zasobów. Przy użyciu statycznych klas zasobów gwarantuje te same zasoby niezależnie od swojej [jednostkami magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md). W przypadku użycia dynamicznej klasy zasobów zasoby różnią się w zależności od poziomu usług. W przypadku dynamicznych klas zasobów niższy poziom usług oznacza, że prawdopodobnie konieczne będzie użycie większej klasy zasobów na potrzeby użytkownika ładującego.
+Lepszym rozwiązaniem jest uruchamianie ładowania przy użyciu statycznych, a nie dynamicznych klas zasobów. Korzystanie z klas zasobów statycznych gwarantuje te same zasoby, niezależnie od [jednostek magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md). W przypadku użycia dynamicznej klasy zasobów zasoby różnią się w zależności od poziomu usług. W przypadku dynamicznych klas zasobów niższy poziom usług oznacza, że prawdopodobnie konieczne będzie użycie większej klasy zasobów na potrzeby użytkownika ładującego.
 
 ## <a name="allowing-multiple-users-to-load"></a>Umożliwianie ładowania danych wielu użytkownikom
 
-Często istnieje potrzeba umożliwienia ładowania danych do magazynu danych wielu użytkownikom. Ładowanie za pomocą [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) wymaga uprawnień kontroli bazy danych.  Uprawnienia kontrolne (CONTROL) zapewniają dostęp z prawem kontroli do wszystkich schematów. Być może nie chcesz, aby wszyscy użytkownicy, którzy wykonują zadania ładowania, mieli dostęp z prawem kontroli do wszystkich schematów. Aby ograniczyć uprawnienia, użyj instrukcji DENY CONTROL.
+Często istnieje potrzeba umożliwienia ładowania danych do magazynu danych wielu użytkownikom. Ładowanie przy użyciu [CREATE TABLE jako Select (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) wymaga uprawnień kontroli bazy danych.  Uprawnienia kontrolne (CONTROL) zapewniają dostęp z prawem kontroli do wszystkich schematów. Być może nie chcesz, aby wszyscy użytkownicy, którzy wykonują zadania ładowania, mieli dostęp z prawem kontroli do wszystkich schematów. Aby ograniczyć uprawnienia, użyj instrukcji DENY CONTROL.
 
 Rozważmy na przykład dwa schematy bazy danych, schema_A dla działu A i schema_B dla działu B. Załóżmy, że użytkownicy bazy danych o nazwie user_A i user_B są użytkownikami ładującymi technologii PolyBase w działach A i B. Obaj użytkownicy otrzymali uprawnienia CONTROL do bazy danych. Osoby, które utworzyły schematy A i B, teraz blokują swoje schematy przy użyciu instrukcji DENY:
 
 ```sql
-   DENY CONTROL ON SCHEMA :: schema_A TO user_B;
-   DENY CONTROL ON SCHEMA :: schema_B TO user_A;
+   DENY CONTROL ON SCHEMA :: schema_A TO user_B;
+   DENY CONTROL ON SCHEMA :: schema_B TO user_A;
 ```
 
 Użytkownicy user_A i user_B nie mają teraz dostępu do schematu drugiego działu.
@@ -88,6 +88,9 @@ Indeksy magazynu kolumn wymagają dużej ilości pamięci w celu skompresowania 
 - Aby mieć pewność, że użytkownik ładujący ma wystarczająco dużo pamięci do uzyskania maksymalnej szybkości kompresji, korzystaj z użytkowników ładujących będących członkami średnich lub dużych klas zasobów. 
 - Załaduj wystarczającą liczbę wierszy, aby całkowicie wypełnić nowe grupy wierszy. Podczas ładowania zbiorczego każde 1 048 576 wierszy jest kompresowanych bezpośrednio do magazynu kolumn jako pełna grupa wierszy. W przypadku zadań ładowania z liczbą wierszy mniejszą niż 102 400 wiersze są przekazywane do magazynu delta, gdzie są przechowywane w indeksie b-drzewa. W przypadku załadowania zbyt małej liczby wierszy wszystkie wiersze mogą zostać przekazane do magazynu delta, a nie natychmiast skompresowane do formatu magazynu kolumn.
 
+## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>Zwiększ rozmiar wsadu podczas korzystania z interfejsu API SQLBulkCopy lub BCP
+Jak wspomniano wcześniej, ładowanie z bazą Base będzie zapewniać największą przepływność z SQL Data Warehouse. Jeśli nie można użyć wielobase do załadowania i należy użyć interfejsu API SQLBulkCopy (lub BCP), należy rozważyć zwiększenie rozmiaru wsadu w celu uzyskania lepszej przepływności. 
+
 ## <a name="handling-loading-failures"></a>Postępowanie w przypadku błędów ładowania
 
 Ładowanie z użyciem tabeli zewnętrznej może zakończyć się wystąpieniem błędu *Zapytanie zostało przerwane — osiągnięto maksymalny próg odrzuceń podczas odczytu ze źródła zewnętrznego*. Ten komunikat wskazuje, że dane zewnętrzne zawierają zanieczyszczone rekordy. Rekord danych jest uznawany za zanieczyszczony, jeśli typy danych i liczba kolumn nie odpowiadają definicjom kolumn w tabeli zewnętrznej lub jeśli dane nie są zgodne z określonym zewnętrznym formatem pliku. 
@@ -102,9 +105,9 @@ Jeśli w ciągu dnia wykonujesz kilka tysięcy lub więcej wstawień, utwórz pa
 
 ## <a name="creating-statistics-after-the-load"></a>Tworzenie statystyk po załadowaniu
 
-Aby poprawić wydajność zapytań, należy utworzyć statystyki dla wszystkich kolumn wszystkich tabel po pierwszym załadowaniu danych, a następnie po każdej istotnej zmianie danych.  Można to zrobić ręcznie lub można włączyć [automatyczne tworzenie statystyk](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic).
+Aby poprawić wydajność zapytań, należy utworzyć statystyki dla wszystkich kolumn wszystkich tabel po pierwszym załadowaniu danych, a następnie po każdej istotnej zmianie danych.  Można to zrobić ręcznie lub włączyć funkcję AutoCreate [Statistics](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic).
 
-Aby zapoznać się ze szczegółowym opisem statystyk, zobacz temat [Statystyki](sql-data-warehouse-tables-statistics.md). Poniższy przykład pokazuje, jak ręcznie utworzyć statystyk dotyczących pięciu kolumn tabeli Customer_Speed.
+Aby zapoznać się ze szczegółowym opisem statystyk, zobacz temat [Statystyki](sql-data-warehouse-tables-statistics.md). Poniższy przykład pokazuje, jak ręcznie utworzyć statystyki dla pięciu kolumn tabeli Customer_Speed.
 
 ```sql
 create statistics [SensorKey] on [Customer_Speed] ([SensorKey]);
@@ -128,7 +131,7 @@ Został utworzony klucz oryginalny
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SECRET = 'key1'
-``` 
+```
 
 Zamień klucz 1 na klucz 2
 
@@ -138,11 +141,8 @@ ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SE
 
 Nie są potrzebne żadne inne zmiany podstawowych zewnętrznych źródeł danych.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby dowiedzieć się więcej na temat technologii PolyBase oraz projektowania procesu wyodrębniania, ładowania i transformacji (ELT, Extract, Load, and Transform), zobacz [Design ELT for SQL Data Warehouse (Projektowanie procesu ELT dla usługi SQL Data Warehouse)](design-elt-data-loading.md).
 - Aby zapoznać się z samouczkiem dotyczącym ładowania, zobacz [Use PolyBase to load data from Azure blob storage to Azure SQL Data Warehouse (Ładowanie danych z usługi Azure Blob Storage do usługi Azure SQL Data Warehouse przy użyciu technologii PolyBase)](load-data-from-azure-blob-storage-using-polybase.md).
 - Aby dowiedzieć się, jak monitorować ładowanie danych, zobacz [Monitor your workload using DMVs](sql-data-warehouse-manage-monitor.md) (Monitorowanie obciążenia przy użyciu widoków DMV).
-
-
-

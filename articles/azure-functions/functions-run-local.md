@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 16e12021a65a09376293f28efe9a6e9ef74ef5c2
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: f0f00745f2f7781bda0e636167b1cf1a4045f7cd
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839567"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881370"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Pracuj z Azure Functions Core Tools
 
@@ -446,11 +446,25 @@ Dostępne są następujące opcje wdrożenia kontenera niestandardowego:
 
 ## <a name="monitoring-functions"></a>Funkcje monitorowania
 
-Zalecanym sposobem monitorowania wykonywania funkcji jest integracja z usługą Azure Application Insights. Po utworzeniu aplikacji funkcji w Azure Portal Ta integracja jest domyślnie wykonywana. Jednak podczas tworzenia aplikacji funkcji przy użyciu interfejsu wiersza polecenia platformy Azure integracja w aplikacji funkcji na platformie Azure nie jest wykonywana.
+Zalecanym sposobem monitorowania wykonywania funkcji jest integracja z usługą Azure Application Insights. Dzienniki wykonywania można przesyłać strumieniowo na komputer lokalny. Aby dowiedzieć się więcej, zobacz [Monitor Azure Functions](functions-monitoring.md).
+
+### <a name="enable-application-insights-integration"></a>Włącz integrację Application Insights
+
+Po utworzeniu aplikacji funkcji w Azure Portal integracja Application Insights jest wykonywana domyślnie. Jednak podczas tworzenia aplikacji funkcji przy użyciu interfejsu wiersza polecenia platformy Azure integracja w aplikacji funkcji na platformie Azure nie jest wykonywana.
 
 [!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 
-Aby dowiedzieć się więcej, zobacz [Monitor Azure Functions](functions-monitoring.md).
+### <a name="enable-streaming-logs"></a>Włączanie dzienników przesyłania strumieniowego
+
+Można wyświetlić strumień plików dziennika generowanych przez funkcje w sesji wiersza polecenia na komputerze lokalnym. 
+
+#### <a name="native-streaming-logs"></a>Natywne dzienniki przesyłania strumieniowego
+
+[!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
+
+Ten typ dzienników przesyłania strumieniowego wymaga [włączenia Application Insights integracji](#enable-application-insights-integration) dla aplikacji funkcji.   
+
+
 ## <a name="next-steps"></a>Następne kroki
 
 Azure Functions Core Tools to środowisko [Open Source i jest hostowane w witrynie GitHub](https://github.com/azure/azure-functions-cli).  

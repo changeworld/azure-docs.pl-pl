@@ -1,98 +1,98 @@
 ---
-title: Konfigurowanie maszyn wirtualnych hostowanych na platformie Azure firmy Microsoft dla witryny Azure Marketplace
-description: Wyjaśnia, jak rozmiar, aktualizowanie i uogólnianie maszyny Wirtualnej hostowanej na platformie Azure.
+title: Skonfiguruj maszynę wirtualną hostowaną na Microsoft Azure dla portalu Azure Marketplace
+description: Wyjaśnia, jak zmieniać rozmiar, aktualizować i uogólniać maszynę wirtualną hostowaną na platformie Azure.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: 0637491a1d7799bcaef594123aab53f89690c86f
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 1270dff0bcb8de117247a454ab9c144250cfb17c
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67654032"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880359"
 ---
-# <a name="configure-the-azure-hosted-vm"></a>Konfigurowanie maszyny Wirtualnej hostowanej na platformie Azure
+# <a name="configure-the-azure-hosted-vm"></a>Konfigurowanie maszyny wirtualnej hostowanej na platformie Azure
 
-W tym artykule wyjaśniono, jak rozmiar, aktualizowanie i uogólnianie maszyny wirtualnej (VM), hostowanej na platformie Azure.  Te kroki są niezbędne w celu przygotowania jej do wdrożenia w portalu Azure Marketplace.
+W tym artykule wyjaśniono, jak zmieniać rozmiar, aktualizować i uogólniać maszynę wirtualną hostowaną na platformie Azure.  Te kroki są niezbędne, aby przygotować maszynę wirtualną do wdrożenia z portalu Azure Marketplace.
 
 
-## <a name="sizing-the-vhds"></a>Zmiany rozmiaru wirtualnych dysków twardych
+## <a name="sizing-the-vhds"></a>Ustalanie wielkości dysków VHD
 
 <!--TD: Check if the following assertion is true. I didn't understand the original content. -->
-Jeśli wybrano maszyn wirtualnych, wstępnie skonfigurowane przy użyciu systemu operacyjnego (i opcjonalnie dodatkowych usług), a następnie zostały już pobrane standardowy rozmiar maszyny Wirtualnej platformy Azure, zgodnie z opisem w [jednostki SKU maszyny wirtualnej karcie](./cpp-skus-tab.md).  Uruchamianie rozwiązania z wstępnie skonfigurowanym systemem operacyjnym jest zalecanym podejściem.  Jednak w przypadku ręcznego instalowania systemu operacyjnego następnie musi rozmiaru głównej wirtualnego dysku twardego w obrazie maszyny Wirtualnej:
+W przypadku wybrania jednej z wstępnie skonfigurowanych maszyn wirtualnych z systemem operacyjnym (i opcjonalnie dodatkowymi usługami) wybrano już standardowy rozmiar maszyny wirtualnej platformy Azure, zgodnie z opisem na [karcie jednostki SKU maszyny wirtualnej](./cpp-skus-tab.md).  Zalecanym podejściem jest uruchomienie rozwiązania ze wstępnie skonfigurowanym systemem operacyjnym.  Jeśli jednak instalujesz system operacyjny ręcznie, należy zmienić rozmiar podstawowego wirtualnego dysku twardego w obrazie maszyny wirtualnej:
 
-- Dla Windows, system operacyjny dysku VHD powinien zostać utworzony jako dysk o rozmiarze 127 128 GB wirtualnego dysku twardego w stałym formacie. 
-- W przypadku systemu Linux ten wirtualny dysk twardy powinien zostać utworzony jako dysk o rozmiarze 30 – 50 GB wirtualnego dysku twardego w stałym formacie.
+- Dla systemu Windows dysk VHD systemu operacyjnego powinien być utworzony jako dysk o stałym formacie 127-128 GB. 
+- W przypadku systemu Linux ten wirtualny dysk twardy powinien zostać utworzony jako dysk VHD o stałym rozmiarze 30-50 GB.
 
-Jeśli rozmiar fizyczny jest mniejszy niż 127 128 GB, wirtualny dysk twardy powinien być rozrzedzony. Podstawowe obrazy Windows i program SQL Server, podano już spełniają te wymagania, więc nie zmieniaj format lub rozmiar wirtualnego dysku twardego. 
+Jeśli rozmiar fizyczny jest mniejszy niż 127-128 GB, wirtualny dysk twardy powinien być rozrzedzony. Podstawowe obrazy systemu Windows i SQL Server podane już spełniają te wymagania, dlatego nie należy zmieniać formatu ani rozmiaru wirtualnego dysku twardego. 
 
-Dyski danych może być większy niż 1 TB. Podczas ustawiania ich rozmiar, należy pamiętać, że klienci nie mogą zmieniać rozmiarów wirtualnych dysków twardych w ramach obrazu po ich wdrożeniu. Twarde z danymi powinny zostać utworzone jako dyski VHD w stałym formacie. Również powinien być rozrzedzony. Dyski z danymi początkowo może być pusty ani zawierać dane.
+Dyski danych mogą mieć rozmiar maksymalnie 1 TB. Podczas wybierania ich rozmiaru należy pamiętać, że klienci nie mogą zmieniać rozmiarów wirtualnych dysków twardych w ramach obrazu w czasie wdrażania. Wirtualne dyski twarde z danymi powinny zostać utworzone jako dyski VHD o stałym formacie. Powinny one również być rozrzedzone. Dyski danych mogą początkowo być puste lub zawierać dane.
 
 
 ## <a name="install-the-most-current-updates"></a>Zainstaluj najnowsze aktualizacje
 
-Podstawowe obrazy systemu operacyjnego maszyn wirtualnych zawierają najnowsze aktualizacje wydane do dnia opublikowania. Przed opublikowaniem utworzonego wirtualnego dysku twardego systemu operacyjnego, upewnij się, aktualizacji systemu operacyjnego i wszystkich zainstalowanych usług za pomocą wszystkie najnowsze poprawki zabezpieczeń i konserwacji.
+Podstawowe obrazy maszyn wirtualnych systemu operacyjnego zawierają najnowsze aktualizacje do daty ich opublikowania. Przed opublikowaniem utworzonego wirtualnego dysku twardego systemu operacyjnego upewnij się, że zaktualizowano system operacyjny i wszystkie zainstalowane usługi ze wszystkimi najnowszymi poprawkami zabezpieczeń i konserwacji.
 
-Windows Server 2016, można uruchomić **sprawdzać dostępność aktualizacji** polecenia.  W przeciwnym razie dla starszych wersji systemu Windows, zobacz [sposób uzyskiwania aktualizacji za pośrednictwem usługi Windows Update](https://support.microsoft.com/help/3067639/how-to-get-an-update-through-windows-update).  Windows update będzie automatycznie instalować aktualizacje najnowsze zabezpieczenia krytyczne i ważne.
+W przypadku systemu Windows Server 2016 Uruchom polecenie **Check for Updates** .  W przeciwnym razie w przypadku starszych wersji systemu Windows Zapoznaj [się z tematem jak uzyskać aktualizację za Windows Update](https://support.microsoft.com/help/3067639/how-to-get-an-update-through-windows-update).  Windows Update automatycznie zainstaluje najnowsze krytyczne i ważne aktualizacje zabezpieczeń.
 
-Dystrybucje systemu Linux aktualizacje są często pobierane i instalowane za pomocą narzędzia wiersza polecenia lub graficznego narzędzia.  Na przykład, Ubuntu Linux udostępnia [polecenia apt-get](https://manpages.ubuntu.com/manpages/cosmic/man8/apt-get.8.html) polecenia i [Menedżera aktualizacji](https://manpages.ubuntu.com/manpages/cosmic/man8/update-manager.8.html) narzędzia do aktualizowania systemu operacyjnego.
-
-
-## <a name="perform-additional-security-checks"></a>Wykonaj dodatkowe kontrole zabezpieczeń
-
-Powinno to Ty masz wysoki poziom zabezpieczeń dla obrazów rozwiązania w portalu Azure Marketplace.  Następujący artykuł zawiera listę kontrolną konfiguracji zabezpieczeń i procedur, aby pomóc w przypadku tego celu: [Zalecenia dotyczące zabezpieczeń dla obrazów z witryny Azure Marketplace](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images).  Niektóre z tych zaleceń są specyficzne dla obrazów opartych na systemie Linux, ale najbardziej zastosować do dowolnego obrazu maszyny Wirtualnej. 
+W przypadku dystrybucji systemu Linux aktualizacje są często pobierane i instalowane za pomocą narzędzia wiersza polecenia lub narzędzia graficznego.  Na przykład Ubuntu Linux udostępnia polecenie [apt-get](https://manpages.ubuntu.com/manpages/cosmic/man8/apt-get.8.html) oraz narzędzie [Update Manager](https://manpages.ubuntu.com/manpages/cosmic/man8/update-manager.8.html) do aktualizowania systemu operacyjnego.
 
 
-## <a name="perform-custom-configuration-and-scheduled-tasks"></a>Wykonywanie niestandardowej konfiguracji i zaplanowanych zadań
+## <a name="perform-additional-security-checks"></a>Wykonaj dodatkowe sprawdzenia zabezpieczeń
 
-Jeśli wymagane jest dodatkowe czynności konfiguracyjne, zalecanym podejściem jest używać zaplanowane zadanie, które jest uruchamiane podczas uruchamiania, aby wprowadzić zmiany końcowy do maszyny Wirtualnej, po jej wdrożeniu.  Ponadto należy wziąć pod uwagę następujące zalecenia:
-- Jeśli jest to zadanie uruchamiane jednokrotnie, zaleca się, że zadanie usunięte po pomyślnym ukończeniu.
-- Konfiguracje nie należy polegać na dyskach innych niż C i D, ponieważ tylko te dwa dyski, które są zawsze musi istnieć. Dysk C jest dysk systemu operacyjnego i dysk D to tymczasowy dysk lokalny.
+Należy zachować wysoki poziom zabezpieczeń obrazów rozwiązań w portalu Azure Marketplace.  Poniższy artykuł zawiera listę kontrolną konfiguracji i procedur zabezpieczeń, które pomagają w tym celu: [Zalecenia dotyczące zabezpieczeń obrazów portalu Azure Marketplace](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images).  Niektóre z tych zaleceń dotyczą obrazów opartych na systemie Linux, ale większość obrazów maszyn wirtualnych. 
 
-Aby uzyskać więcej informacji na temat dostosowywania systemu Linux, zobacz [rozszerzenia maszyn wirtualnych i funkcji dla systemu Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/features-linux).
+
+## <a name="perform-custom-configuration-and-scheduled-tasks"></a>Wykonywanie konfiguracji niestandardowej i zaplanowanych zadań
+
+Jeśli wymagana jest dodatkowa konfiguracja, Zalecanym podejściem jest użycie zaplanowanego zadania uruchamianego przy uruchamianiu w celu wprowadzenia ostatecznych zmian w maszynie wirtualnej po jej wdrożeniu.  Należy również wziąć pod uwagę następujące zalecenia:
+- Jeśli jest to zadanie uruchamiane raz, zalecane jest, aby zadanie zostało usunięte po pomyślnym zakończeniu.
+- Konfiguracje nie powinny polegać na dyskach innych niż C lub D, ponieważ tylko te dwa dyski, które zawsze są spełnione. Dysk C jest dyskiem systemu operacyjnego, a dysk D jest tymczasowym dyskiem lokalnym.
+
+Aby uzyskać więcej informacji na temat dostosowań systemu Linux, zobacz [rozszerzenia i funkcje maszyny wirtualnej dla systemu Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/features-linux).
 
 
 ## <a name="generalize-the-image"></a>Uogólnianie obrazu
 
-Wszystkie obrazy w portalu Azure Marketplace muszą być wielokrotnego użytku w ogólny sposób. Aby osiągnąć ten możliwość ponownego wykorzystania, system operacyjny dysku VHD musi być *uogólniony*, operacja, która usuwa wszystkie wystąpienia określonych identyfikatorów i sterowników oprogramowania z maszyny Wirtualnej.
+Wszystkie obrazy w portalu Azure Marketplace muszą być wielokrotnego użytku w ogólny sposób. Aby osiągnąć tę możliwość, należy uogólniony wirtualny dysk twardy systemuoperacyjnego, operacji, która usuwa wszystkie identyfikatory specyficzne dla wystąpienia i sterowniki oprogramowania z maszyny wirtualnej.
 
 ### <a name="windows"></a>Windows
 
-Dyski systemu operacyjnego Windows są uogólniony za pomocą [narzędzia sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview). Jeśli później zaktualizować lub zmienić konfigurację systemu operacyjnego, należy ponownie uruchomić program sysprep. 
+Dyski systemu operacyjnego Windows są uogólnione za pomocą [narzędzia Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview). Jeśli później zaktualizujesz lub ponownie skonfigurujesz system operacyjny, musisz ponownie uruchomić program Sysprep. 
 
 > [!WARNING]
->  Ponieważ aktualizacje może być uruchamiane automatycznie, po uruchomieniu programu sysprep, należy wyłączyć maszynę Wirtualną, dopóki nie jest ona wdrożona.  Zamknięcie zapobiegnie kolejnych aktualizacji, możliwość dokonywania zmian danego wystąpienia wirtualnego dysku twardego systemu operacyjnego lub zainstalowane usługi.
+>  Ponieważ aktualizacje mogą być uruchamiane automatycznie, po uruchomieniu programu Sysprep należy wyłączyć maszynę wirtualną do momentu jej wdrożenia.  To zamknięcie spowoduje uniknięcie kolejnych aktualizacji w przypadku wprowadzania zmian specyficznych dla wystąpienia w systemie operacyjnym VHD lub zainstalowanych usługach.
 
-Aby uzyskać więcej informacji na temat uruchamiania polecenia sysprep, zobacz [kroki, aby uogólnić wirtualnego dysku twardego](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep)
+Aby uzyskać więcej informacji na temat uruchamiania programu Sysprep, zobacz [procedura uogólniania wirtualnego dysku twardego](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep)
 
 ### <a name="linux"></a>Linux
 
-Następujący dwuetapowy proces uogólniania maszyny Wirtualnej z systemem Linux i ponownie wdrożyć go jako oddzielne maszyny Wirtualnej.  Aby uzyskać więcej informacji, zobacz [Jak utworzyć obraz maszyny wirtualnej lub wirtualnego dysku twardego](../../../virtual-machines/linux/capture-image.md). 
+Poniższy dwuetapowy proces uogólni maszynę wirtualną z systemem Linux i ponownie wdraża ją jako oddzielną maszynę wirtualną. Te dwa kroki stanowią jedynie podstawowe informacje o procesie. Aby uzyskać więcej informacji na temat tych dwóch kroków i przyczyn, które należy wykonać, zobacz [jak utworzyć obraz maszyny wirtualnej lub wirtualnego dysku twardego](../../../virtual-machines/linux/capture-image.md). Na potrzeby tworzenia wirtualnego dysku twardego dla oferty portalu Azure Marketplace można zatrzymać, gdy dojdziesz do sekcji "Tworzenie maszyny wirtualnej z przechwyconego obrazu".
 
-#### <a name="remove-the-azure-linux-agent"></a>Usuń agenta systemu Linux platformy Azure
-1.  Łączenie z maszyną wirtualną z systemem Linux przy użyciu klienta SSH.
+#### <a name="remove-the-azure-linux-agent"></a>Usuwanie agenta systemu Linux platformy Azure
+1.  Nawiązywanie połączenia z maszyną wirtualną z systemem Linux przy użyciu klienta SSH.
 2.  W oknie SSH wpisz następujące polecenie: <br/>
     `sudo waagent -deprovision+user`
-3.  Typ `y` aby kontynuować. (Można dodać `-force` do poprzedniego polecenia uniknąć tego kroku potwierdzenia.)
-4.  Po wykonaniu polecenia, wpisz `exit` zamknąć klienta SSH.
+3.  Wpisz `y` , aby kontynuować. (Można dodać `-force` parametr do poprzedniego polecenia, unikając tego kroku potwierdzenia).
+4.  Po zakończeniu wykonywania polecenia wpisz `exit` polecenie, aby zamknąć klienta SSH.
 
 <!-- TD: I need to add meat and/or references to the following steps -->
-#### <a name="capture-the-image"></a>Przechwycenie obrazu
-1.  Przejdź do witryny Azure portal, wybierz grupę zasobów (RG) i cofnąć przydziału maszyny Wirtualnej.
-2.  Wirtualnego dysku twardego jest teraz uogólniony, a następnie można utworzyć nową maszynę Wirtualną przy użyciu tego wirtualnego dysku twardego.
+#### <a name="capture-the-image"></a>Przechwyć obraz
+1.  Przejdź do Azure Portal, wybierz grupę zasobów (RG), a następnie usuń przydział maszyny wirtualnej.
+2.  Wirtualny dysk twardy został uogólniony teraz i można utworzyć nową maszynę wirtualną za pomocą tego wirtualnego dysku twardego.
 
 
-## <a name="create-one-or-more-copies"></a>Utwórz jedną lub więcej kopii
+## <a name="create-one-or-more-copies"></a>Utwórz co najmniej jedną kopię
 
-Tworzenie kopii maszyny Wirtualnej jest często przydatne w przypadku tworzenia kopii zapasowej, testowania, dostosowane pracy awaryjnej lub równoważenia obciążenia, oferują różne konfiguracje rozwiązania i tak dalej. Aby uzyskać informacji na temat zduplikowane i Pobierz podstawowy dysk VHD zapewnienie niezarządzanym klonowania zobacz:
+Tworzenie kopii maszyny wirtualnej jest często przydatne w przypadku tworzenia kopii zapasowych, testowania, dostosowywania trybu failover lub równoważenia obciążenia, w celu oferowania różnych konfiguracji rozwiązania i tak dalej. Aby uzyskać informacje na temat duplikowania i pobierania podstawowego wirtualnego dysku twardego, aby utworzyć niezarządzany klon, zobacz:
 
-- Maszyny Wirtualnej systemu Linux: [Pobieranie wirtualnego dysku twardego systemu Linux na platformie Azure](../../../virtual-machines/linux/download-vhd.md)
-- Windows maszyny Wirtualnej: [Pobierz Windows wirtualnego dysku twardego z platformy Azure](../../../virtual-machines/windows/download-vhd.md)
+- Maszyna wirtualna z systemem Linux: [Pobieranie wirtualnego dysku twardego z systemem Linux z platformy Azure](../../../virtual-machines/linux/download-vhd.md)
+- Maszyna wirtualna z systemem Windows: [Pobieranie wirtualnego dysku twardego systemu Windows z platformy Azure](../../../virtual-machines/windows/download-vhd.md)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Po skonfigurowaniu maszyny Wirtualnej można przystąpić do [wdrożyć maszynę wirtualną z wirtualnego dysku twardego](./cpp-deploy-vm-vhd.md).
+Gdy maszyna wirtualna zostanie wycofana, zostanie cofnięta alokacja i utworzono obraz maszyny wirtualnej. Możesz teraz [wdrożyć maszynę wirtualną na podstawie wirtualnego dysku twardego](./cpp-deploy-vm-vhd.md).

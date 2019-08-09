@@ -1,74 +1,74 @@
 ---
-title: Query Performance Insight w usłudze Azure Database for MySQL
-description: W tym artykule opisano funkcję Query Performance Insight w usłudze Azure Database for MySQL
+title: Szczegółowe informacje o wydajności zapytań w Azure Database for MySQL
+description: W tym artykule opisano funkcję Szczegółowe informacje o wydajności zapytań w programie Azure Database for MySQL
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 8f142933ebf955cbe3aa119f42779109fb6ef7db
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 05d6de31dbc3ff5bbf9365098ceae4c840bf116b
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67589068"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882806"
 ---
-# <a name="query-performance-insight-in-azure-database-for-mysql"></a>Query Performance Insight w usłudze Azure Database for MySQL
+# <a name="query-performance-insight-in-azure-database-for-mysql"></a>Szczegółowe informacje o wydajności zapytań w Azure Database for MySQL
 
-**Dotyczy:**  Azure Database for MySQL 5.7
+**Dotyczy:** Azure Database for MySQL 5,7
 
 > [!NOTE]
-> Query Performance Insight jest w wersji zapoznawczej.
+> Szczegółowe informacje o wydajności zapytań jest w wersji zapoznawczej.
 
-Query Performance Insight ułatwia szybkie identyfikowanie najdłużej działających zapytań są, jak zmieniają się wraz z upływem czasu i czeka, które mają wpływ na ich.
+Szczegółowe informacje o wydajności zapytań pomaga szybko określić, co najdłuższe uruchomione zapytania, jak zmieniają się wraz z upływem czasu i co czeka na ich wpływ.
 
 ## <a name="common-scenarios"></a>Typowe scenariusze
 
 ### <a name="long-running-queries"></a>Długotrwałe zapytania
 
-- Identyfikowanie najdłuższy uruchamianie zapytań w przeszłości X godzin
+- Identyfikowanie najdłuższych uruchomionych zapytań w ciągu ostatnich X godzin
 - Identyfikowanie pierwszych N zapytań, które oczekują na zasoby
  
-### <a name="wait-statistics"></a>Statystyki oczekiwania
+### <a name="wait-statistics"></a>Statystyka oczekiwania
 
-- Omówienie charakteru oczekiwania dla zapytania
-- Zrozumienie trendów dla zasobów w tym czasie czeka i której istnieje rywalizacji o zasoby
+- Zrozumienie charakteru oczekiwania zapytania
+- Zrozumienie trendów dotyczących zasobów i miejsce, w którym istnieje rywalizacja o zasoby
 
 ## <a name="permissions"></a>Uprawnienia
 
-**Właściciel** lub **Współautor** uprawnień wymaganych do wyświetlenia tekstu zapytania w Query Performance Insight. ** Czytnik** mogą przeglądać wykresy i tabele, ale nie tekst zapytania.
+Uprawnienia **Właściciel** lub **Współautor** są wymagane do wyświetlania tekstu zapytań w widoku Szczegółowe informacje o wydajności zapytań. **Czytelnik** może wyświetlać wykresy i tabele, ale nie tekst zapytań.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby uzyskać szczegółowe informacje o wydajności zapytań funkcji, dane muszą istnieć w [Query Store](concepts-query-store.md).
+Aby Szczegółowe informacje o wydajności zapytań do funkcji, dane muszą znajdować się w [magazynie zapytań](concepts-query-store.md).
 
-## <a name="viewing-performance-insights"></a>Przeglądanie szczegółowe informacje o wydajności
+## <a name="viewing-performance-insights"></a>Wyświetlanie szczegółowych informacji o wydajności
 
 W widoku [Szczegółowe informacje o wydajności zapytań](concepts-query-performance-insight.md) w witrynie Azure Portal będą ujawniane wizualizacje kluczowych informacji z magazynu zapytań.
 
-Na stronie portalu usługi Azure Database for MySQL server, wybierz **Query Performance Insight** w obszarze **inteligentne wydajności** części paska menu.
+Na stronie portalu serwera Azure Database for MySQL wybierz pozycję **szczegółowe informacje o wydajności zapytań** w sekcji **Intelligent Performance** na pasku menu.
 
 ### <a name="long-running-queries"></a>Długotrwałe zapytania
 
- **Długotrwałych zapytań** karta przedstawia zapytania top 5, Średni czas trwania w oparciu o wykonanie, przedstawiona w oparciu o 15-minutowych interwałach. Możesz wyświetlić więcej zapytań, wybierając z **liczby zapytań** listy rozwijanej. Gdy to zrobisz, kolory wykresu dla określonego identyfikatora zapytania mogą ulec zmianie.
+Karta **długotrwałe zapytania** przedstawia 5 pierwszych zapytań według średniego czasu trwania na wykonanie, zagregowane w odstępach 15-minutowych. Więcej zapytań można wyświetlić, wybierając pozycję z listy rozwijanej **Liczba zapytań** . Gdy to zrobisz, kolory wykresu dla określonego identyfikatora zapytania mogą ulec zmianie.
 
-Klikając i przeciągając na wykresie, możesz zawęzić go do konkretnego przedziału czasu. Alternatywnie użyj powiększenia in i out ikony, aby wyświetlić mniejszy lub większy okres odpowiednio.
+Klikając i przeciągając na wykresie, możesz zawęzić go do konkretnego przedziału czasu. Alternatywnie możesz użyć ikon powiększenia i powiększania, aby wyświetlić odpowiednio krótszy lub dłuższy okres.
 
-![Query Performance Insight długotrwałe zapytania](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png) 
+![Szczegółowe informacje o wydajności zapytań długotrwałych zapytań](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png) 
 
-### <a name="wait-statistics"></a>Statystyki oczekiwania
+### <a name="wait-statistics"></a>Statystyka oczekiwania
 
 > [!NOTE]
-> Statystyki oczekiwania są przeznaczony do rozwiązywania problemów z wydajnością zapytań. Zalecane jest włączone tylko na potrzeby rozwiązywania problemów.
+> Statystyki oczekiwania są przeznaczone do rozwiązywania problemów z wydajnością zapytań. Zaleca się włączenie tylko do celów związanych z rozwiązywaniem problemów.
 
-Statystyki oczekiwania zawiera widok zdarzeń oczekiwania, które występują podczas wykonywania określonej kwerendy. Dowiedz się więcej na temat typów zdarzeń oczekiwania w [dokumentację aparatu MySQL](https://go.microsoft.com/fwlink/?linkid=2098206).
+Statystyka oczekiwania zawiera widok zdarzeń oczekiwania występujących podczas wykonywania określonego zapytania. Dowiedz się więcej o typach zdarzeń oczekiwania w [dokumentacji aparatu MySQL](https://go.microsoft.com/fwlink/?linkid=2098206).
 
-Wybierz **statystyki oczekiwania** kartę, aby wyświetlić odpowiednie wizualizacje w tym czasie czeka na serwerze.
+Wybierz kartę **Statystyki oczekiwania**, aby wyświetlić odpowiednie wizualizacje oczekiwań na serwerze.
 
-Wyświetlane w widoku statystyki oczekiwania zapytania są pogrupowane według zapytania, które wykazują największych czeka w określonym interwale.
+Zapytania wyświetlane w widoku Statystyka oczekiwania są pogrupowane według zapytań, które wykazują największe oczekiwania w określonym przedziale czasu.
 
-![Query Performance Insight czeka statystyki](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
+![Dane statystyczne Szczegółowe informacje o wydajności zapytań czeka](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [monitorowania i dostrajania](concepts-monitoring.md) w usłudze Azure Database for MySQL.
+- Dowiedz się więcej o [monitorowaniu i dostrajania](concepts-monitoring.md) w Azure Database for MySQL.

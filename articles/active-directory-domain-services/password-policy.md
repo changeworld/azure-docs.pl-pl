@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2019
 ms.author: iainfou
-ms.openlocfilehash: 8829f16e580d0b926781ce0a3e9f8e6a63cf3110
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 30f4558339bbfddd2296cd1cb918c6ef8999b67e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853772"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879191"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Zasady blokowania haseł i kont w domenach zarządzanych
 W tym artykule opisano domyślne zasady dotyczące haseł w domenie zarządzanej. Opisano w nim również, jak można skonfigurować te zasady.
@@ -38,7 +38,8 @@ Następujące ustawienia hasła można skonfigurować przy użyciu szczegółowy
     * Czas trwania blokady konta
     * Liczba dozwolonych nieudanych prób logowania
     * Resetowanie liczby nieudanych prób logowania po
-
+    
+SZCZEGÓŁOWYCH zasad haseł ma wpływ tylko na użytkowników utworzonych bezpośrednio w usłudze Azure AD DS. Ustawienia złożoności haseł mają wpływ na użytkowników chmury i użytkowników domeny zsynchronizowanych z domeną zarządzaną AD DS platformy Azure z usługi Azure AD. SZCZEGÓŁOWYCH zasad haseł jest dystrybuowany za pomocą skojarzenia grup w domenie zarządzanej platformy Azure AD DS i wszelkie wprowadzone zmiany są stosowane podczas następnego logowania użytkownika. Zmiana zasad nie powoduje odblokowania konta użytkownika, które jest już zablokowane.
 
 ## <a name="default-fine-grained-password-policy-settings-on-a-managed-domain"></a>Domyślne szczegółowe ustawienia zasad haseł w domenie zarządzanej
 Poniższy zrzut ekranu ilustruje domyślne szczegółowe zasady haseł skonfigurowane w Azure AD Domain Services domenie zarządzanej.
@@ -117,6 +118,6 @@ Aby utworzyć niestandardową szczegółowych zasad haseł w domenie zarządzane
 >
 >
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Dowiedz się więcej o Active Directory szczegółowych zasadach haseł](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770394(v=ws.10))
 * [Konfigurowanie szczegółowych zasad haseł przy użyciu Centrum administracyjnego usługi AD](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/adac/introduction-to-active-directory-administrative-center-enhancements--level-100-#fine_grained_pswd_policy_mgmt)
