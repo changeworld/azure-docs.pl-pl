@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd03e2b98b1fd1a2a45b5feecc963bcfc7bfe83c
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 489ff1824c4bc45ee7ed31e9c96377975a32baa4
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499875"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879243"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory inteligentnego blokowania
 
@@ -31,7 +31,7 @@ Inteligentna blokada śledzi ostatnie trzy niewłaściwe skróty haseł, aby uni
 
 Wdrożenia federacyjne wykorzystujące AD FS 2016 i AF FS 2019 mogą zapewnić podobne korzyści [AD FS przy użyciu blokady ekstranetu i](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection)blokady inteligentnej w ekstranecie.
 
-Inteligentna blokada jest zawsze włączona dla wszystkich klientów usługi Azure AD z tymi domyślnymi ustawieniami, które oferują odpowiednie połączenie zabezpieczeń i użyteczności. Dostosowanie ustawień blokady inteligentnej przy użyciu wartości specyficznych dla Twojej organizacji wymaga Azure AD — wersja Podstawowa lub wyższych licencji dla użytkowników.
+Inteligentna blokada jest zawsze włączona dla wszystkich klientów usługi Azure AD z tymi domyślnymi ustawieniami, które oferują odpowiednie połączenie zabezpieczeń i użyteczności. Dostosowanie ustawień blokady inteligentnej przy użyciu wartości specyficznych dla Twojej organizacji wymaga płatnych licencji usługi Azure AD dla użytkowników.
 
 Korzystanie z funkcji inteligentnej blokady nie gwarantuje, że oryginalny użytkownik nigdy nie będzie zablokowany. Po zablokowaniu konta użytkownika przez inteligentną blokadę firma Microsoft zaleca, aby nie zablokować oryginalnego użytkownika. Usługa blokowania próbuje upewnić się, że niewłaściwe podmioty nie mogą uzyskać dostępu do oryginalnego konta użytkownika.  
 
@@ -63,7 +63,7 @@ Aby sprawdzić lokalne zasady blokady konta Active Directory, należy wykonać n
 
 ## <a name="manage-azure-ad-smart-lockout-values"></a>Zarządzanie wartościami inteligentnych blokad usługi Azure AD
 
-W zależności od wymagań organizacyjnych może być konieczne dostosowanie wartości blokady inteligentnej. Dostosowanie ustawień blokady inteligentnej przy użyciu wartości specyficznych dla Twojej organizacji wymaga Azure AD — wersja Podstawowa lub wyższych licencji dla użytkowników.
+W zależności od wymagań organizacyjnych może być konieczne dostosowanie wartości blokady inteligentnej. Dostosowanie ustawień blokady inteligentnej przy użyciu wartości specyficznych dla Twojej organizacji wymaga płatnych licencji usługi Azure AD dla użytkowników.
 
 Aby sprawdzić lub zmodyfikować wartości blokady inteligentnej dla organizacji, wykonaj następujące czynności:
 
@@ -82,7 +82,7 @@ Po wyzwoleniu progu inteligentnego blokowania zostanie wyświetlony następując
 
 **Twoje konto jest tymczasowo zablokowane, aby zapobiec nieautoryzowanemu użyciu. Spróbuj ponownie później, a jeśli nadal masz problemy, skontaktuj się z administratorem.**
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Dowiedz się, jak zablokować złe hasła w organizacji przy użyciu usługi Azure AD.](howto-password-ban-bad.md)
 * [Skonfiguruj Samoobsługowe resetowanie haseł, aby umożliwić użytkownikom odblokowywanie własnych kont.](quickstart-sspr.md)
