@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: 382f43156ab450600ff0d2e5e2db763cd6bd94df
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: fe71f4e89fb7e1b6ff3e4f59894a933fbb011692
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875047"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881415"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurowanie zestawu SDK usługi Application Insights za pomocą pliku ApplicationInsights.config lub xml
 Zestaw SDK Application Insights platformy .NET składa się z kilku pakietów NuGet. [Pakiet Core](https://www.nuget.org/packages/Microsoft.ApplicationInsights) udostępnia interfejs API do wysyłania danych telemetrycznych do Application Insights. [Dodatkowe pakiety](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) udostępniają *moduły* telemetrii i *inicjatory* umożliwiające automatyczne śledzenie danych telemetrycznych z aplikacji i jej kontekstu. Dostosowując plik konfiguracji, można włączać lub wyłączać moduły telemetrii i inicjatory oraz ustawiać parametry dla niektórych z nich.
 
-Plik konfiguracji ma nazwę `ApplicationInsights.config` lub `ApplicationInsights.xml`, w zależności od typu aplikacji. Jest on automatycznie dodawany do projektu podczas [instalowania większości wersji zestawu SDK][start]. Jest ona również dodawana do aplikacji sieci Web przez [Monitor stanu na serwerze IIS][redfield]. Plik konfiguracji jest ignorowany, jeśli jest używane [rozszerzenie witryny sieci Web platformy Azure](azure-web-apps.md) lub [rozszerzenia dla maszyny wirtualnej platformy Azure i zestawu skalowania maszyn wirtualnych](azure-vm-vmss-apps.md) .
+Plik konfiguracji ma nazwę `ApplicationInsights.config` lub `ApplicationInsights.xml`, w zależności od typu aplikacji. Jest on automatycznie dodawany do projektu podczas [instalowania większości wersji zestawu SDK][start]. Zestaw SDK tworzy `ApplicationInsights.config` plik w folderze głównym projektu i, gdy jest zgodny, jest kopiowany do folderu bin. Jest ona również dodawana do aplikacji sieci Web przez [Monitor stanu na serwerze IIS][redfield]. Plik konfiguracji jest ignorowany, jeśli jest używane [rozszerzenie witryny sieci Web platformy Azure](azure-web-apps.md) lub [rozszerzenia dla maszyny wirtualnej platformy Azure i zestawu skalowania maszyn wirtualnych](azure-vm-vmss-apps.md) .
 
 Nie istnieje odpowiedni plik do sterowania zestawem [SDK na stronie sieci Web][client].
 
@@ -186,7 +186,7 @@ Liczba elementów telemetrycznych, które mogą być przechowywane w magazynie w
 
 * Długości 1
 * Maksymalny 1000
-* Wartooć 500
+* Domyślne: 500
 
 ```
 
@@ -204,7 +204,7 @@ Określa, jak często dane przechowywane w magazynie w pamięci powinny być opr
 
 * Długości 1
 * Maksymalny 300
-* Wartooć 5
+* Domyślne: 5
 
 ```
 
@@ -222,7 +222,7 @@ Określa maksymalny rozmiar w MB przydzielony do magazynu trwałego na dysku lok
 
 * Długości 1
 * Maksymalny 100
-* Wartooć 10
+* Domyślne: 10
 
 ```
 
@@ -376,7 +376,7 @@ TelemetryConfiguration.Active.ApplicationIdProvider = new DictionaryApplicationI
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 [Dowiedz się więcej o interfejsie API][api].
 
 <!--Link references-->

@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 3ac9d8d64e4f16a4d6268606e723b14e32d8c16e
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: e4460dd7131e35ee8b3f3112977099276da2d4ce
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261783"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68849420"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Dokumentacja C# dla deweloperów skryptów Azure Functions (CSX)
 
@@ -122,7 +122,7 @@ Klasa POCO musi mieć zdefiniowaną metodę pobierającą i setter dla każdej w
 
 ## <a name="reusing-csx-code"></a>Używanie kodu. CSX
 
-Można użyć klas i metod zdefiniowanych w innych plikach *. CSX* w pliku *Run. CSX* . W tym celu należy użyć `#load` dyrektyw w pliku *Run. CSX* . W poniższym przykładzie procedura rejestrowania o `MyLogger` nazwie jest udostępniana w elemencie webrejestratoru *. CSX* i załadowana do polecenia  `#load` Run. CSX przy użyciu dyrektywy:
+Można użyć klas i metod zdefiniowanych w innych plikach *. CSX* w pliku *Run. CSX* . W tym celu należy użyć `#load` dyrektyw w pliku *Run. CSX* . W poniższym przykładzie procedura rejestrowania o `MyLogger` nazwie jest udostępniana w elemencie webrejestratoru *. CSX* i załadowana do polecenia `#load` Run. CSX przy użyciu dyrektywy:
 
 Przykład *Run. CSX*:
 
@@ -206,10 +206,10 @@ public class Order
     public override String ToString()
     {
         return "\n{\n\torderId : " + orderId +
-                  "\n\tcustName : " + custName +             
-                  "\n\tcustAddress : " + custAddress +             
-                  "\n\tcustEmail : " + custEmail +             
-                  "\n\tcartId : " + cartId + "\n}";             
+                  "\n\tcustName : " + custName +
+                  "\n\tcustAddress : " + custAddress +
+                  "\n\tcustEmail : " + custEmail +
+                  "\n\tcartId : " + cartId + "\n}";
     }
 }
 ```
@@ -383,19 +383,19 @@ Aby używać pakietów NuGet w funkcji 2. x C# , Przekaż plik *. proj* do folde
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
     </PropertyGroup>
-    
+
     <ItemGroup>
         <PackageReference Include="Microsoft.ProjectOxford.Face" Version="1.1.0" />
     </ItemGroup>
 </Project>
 ```
 
-Aby użyć niestandardowego źródła danych NuGet, Określ źródło w pliku *NuGet. config* w katalogu głównym aplikacja funkcji. Aby uzyskać więcej informacji, zobacz [Konfigurowanie zachowania NuGet](/nuget/consume-packages/configuring-nuget-behavior). 
+Aby użyć niestandardowego źródła danych NuGet, Określ źródło w pliku *NuGet. config* w katalogu głównym aplikacja funkcji. Aby uzyskać więcej informacji, zobacz [Konfigurowanie zachowania NuGet](/nuget/consume-packages/configuring-nuget-behavior).
 
 > [!NOTE]
 > W funkcjach 1 C# . x pakiety NuGet są przywoływane przy użyciu pliku *Project. JSON* zamiast pliku *Function. proj* .
 
-W przypadku funkcji 1. x zamiast tego należy użyć pliku *Project. JSON* . Oto przykładowy plik *Project. JSON* : 
+W przypadku funkcji 1. x zamiast tego należy użyć pliku *Project. JSON* . Oto przykładowy plik *Project. JSON* :
 
 ```json
 {
@@ -446,11 +446,11 @@ public static string GetEnvironmentVariable(string name)
 }
 ```
 
-<a name="imperative-bindings"></a> 
+<a name="imperative-bindings"></a>
 
 ## <a name="binding-at-runtime"></a>Powiązanie w czasie wykonywania
 
-W C# programie i innych językach .NET można użyć [wzorca powiązania,](https://en.wikipedia.org/wiki/Imperative_programming) a nie do powiązań [deklaratywnych](https://en.wikipedia.org/wiki/Declarative_programming) w *funkcji Function. JSON*. Bezwzględne powiązanie jest przydatne, gdy parametry powiązania muszą być obliczane w czasie wykonywania, a nie w czasie projektowania. Za pomocą tego wzorca można powiązać z obsługiwanymi powiązaniami wejściowymi i wyjściowymi na bieżąco w kodzie funkcji.
+W C# programie i innych językach .NET można użyć wzorca powiązania [](https://en.wikipedia.org/wiki/Imperative_programming) , a nie do powiązań [deklaratywnych](https://en.wikipedia.org/wiki/Declarative_programming) w *funkcji Function. JSON*. Bezwzględne powiązanie jest przydatne, gdy parametry powiązania muszą być obliczane w czasie wykonywania, a nie w czasie projektowania. Za pomocą tego wzorca można powiązać z obsługiwanymi powiązaniami wejściowymi i wyjściowymi na bieżąco w kodzie funkcji.
 
 Zdefiniuj bezwzględne powiązanie w następujący sposób:
 
@@ -465,7 +465,7 @@ using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
 }
 ```
 
-`BindingTypeAttribute`jest atrybutem platformy .NET, który definiuje powiązanie `T` i jest typem wejściowym lub wyjściowym obsługiwanym przez ten typ powiązania. `T`nie może być `out` typem parametru (na przykład `out JObject`). Na przykład powiązanie danych wyjściowych tabeli Mobile Apps obsługuje [sześć typów wyjściowych](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), ale można używać tylko [ICollector\<t >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) lub [IAsyncCollector\<> t](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) dla `T`.
+`BindingTypeAttribute`jest atrybutem platformy .NET, który definiuje powiązanie `T` i jest typem wejściowym lub wyjściowym obsługiwanym przez ten typ powiązania. `T`nie może być `out` typem parametru (na przykład `out JObject`). Na przykład powiązanie danych wyjściowych tabeli Mobile Apps obsługuje [sześć typów wyjściowych](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), ale można używać tylko [ICollector\<T >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) lub [`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) dla `T`.
 
 ### <a name="single-attribute-example"></a>Przykład pojedynczego atrybutu
 
@@ -488,7 +488,7 @@ public static async Task Run(string input, Binder binder)
 
 ### <a name="multiple-attribute-example"></a>Przykład wielu atrybutów
 
-W poprzednim przykładzie jest pobierane ustawienie aplikacji dla głównych parametrów połączenia konta magazynu aplikacji funkcji (co to jest `AzureWebJobsStorage`). Możesz określić niestandardowe ustawienie aplikacji do użycia dla konta magazynu, dodając [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) i przekazując tablicę atrybutów do `BindAsync<T>()`. Użyj parametru `Binder` , a nie `IBinder`.  Na przykład:
+W poprzednim przykładzie jest pobierane ustawienie aplikacji dla głównych parametrów połączenia konta magazynu aplikacji funkcji (co to jest `AzureWebJobsStorage`). Możesz określić niestandardowe ustawienie aplikacji do użycia dla konta magazynu, dodając [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) i przekazując tablicę atrybutów do `BindAsync<T>()`. Użyj parametru `Binder` , a nie `IBinder`.  Przykład:
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -497,7 +497,7 @@ using Microsoft.Azure.WebJobs.Host.Bindings.Runtime;
 public static async Task Run(string input, Binder binder)
 {
     var attributes = new Attribute[]
-    {    
+    {
         new BlobAttribute("samples-output/path"),
         new StorageAccountAttribute("MyStorageAccount")
     };
@@ -516,7 +516,7 @@ Poniższa tabela zawiera listę atrybutów .NET dla każdego typu powiązania i 
 > |------|------|------|
 > | Cosmos DB | [`Microsoft.Azure.WebJobs.DocumentDBAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.CosmosDB"` |
 > | Event Hubs | [`Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.Jobs.ServiceBus"` |
-> | Mobile Apps | [`Microsoft.Azure.WebJobs.MobileTableAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.MobileApps"` |
+> | Aplikacje mobilne | [`Microsoft.Azure.WebJobs.MobileTableAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.MobileApps"` |
 > | Notification Hubs | [`Microsoft.Azure.WebJobs.NotificationHubAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.NotificationHubs"` |
 > | Service Bus | [`Microsoft.Azure.WebJobs.ServiceBusAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.WebJobs.ServiceBus"` |
 > | Kolejka magazynu | [`Microsoft.Azure.WebJobs.QueueAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |

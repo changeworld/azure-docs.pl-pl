@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 0696eba4f3cca7beedc2efcda0182ab82b3d69d9
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 377cfbf93e45872e34242f9cd2432195b6ba6f92
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638693"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68849115"
 ---
 # <a name="add-a-shape-to-a-map"></a>Dodawanie kształtu do mapy
 
@@ -46,6 +46,9 @@ Ten przykład pokazuje, jak dodać ikony strzałek wzdłuż linii na mapie. W pr
 <iframe height="500" style="width: 100%;" scrolling="no" title="Pokaż strzałkę wzdłuż linii" src="//codepen.io/azuremaps/embed/drBJwX/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Zobacz <a href='https://codepen.io/azuremaps/pen/drBJwX/'>strzałka Pokaż strzałkę obok pozycji</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
+
+> [!TIP]
+> Zestaw SDK sieci Web Azure Maps udostępnia kilka dostosowywalnych szablonów obrazów, których można używać z warstwą symboli. Aby uzyskać więcej informacji, zobacz dokument [jak korzystać z szablonów obrazów](how-to-use-image-templates-web-sdk.md) .
 
 ### <a name="line-stroke-gradient"></a>Dodawanie gradientu obrysu do linii
 
@@ -113,6 +116,10 @@ Oprócz wypełniania wielokątów kolorem można również użyć wzorca obrazu.
 Zobacz <a href='https://codepen.io/azuremaps/pen/JzQpYX/'>wzorzec wypełnienia wielokąta</a> piórem Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
+
+> [!TIP]
+> Zestaw SDK sieci Web Azure Maps udostępnia kilka dostosowywalnych szablonów obrazów, których można użyć jako wzorców wypełnienia. Aby uzyskać więcej informacji, zobacz dokument [jak korzystać z szablonów obrazów](how-to-use-image-templates-web-sdk.md) .
+
 ### <a name="customize-a-polygon-layer"></a>Dostosowywanie warstwy wielokątów
 
 Warstwa wielokątów zawiera tylko kilka opcji stylów. Oto narzędzie do wypróbowania.
@@ -126,7 +133,7 @@ Warstwa wielokątów zawiera tylko kilka opcji stylów. Oto narzędzie do wypró
 
 ## <a name="add-a-circle-to-the-map"></a>Dodaj okrąg do mapy
 
-Azure Maps używa rozszerzonej wersji schematu GEOJSON, który zawiera definicję okręgów, jak pokazano [tutaj](extend-geojson.md#circle). Okrąg może być renderowany `Point` na mapie przez utworzenie funkcji, która `subType` ma `"Circle"` właściwość o wartości i `radius` właściwość, która ma liczbę reprezentującą promień w licznikach. Na przykład:
+Azure Maps używa rozszerzonej wersji schematu GEOJSON, który zawiera definicję okręgów, jak pokazano [tutaj](extend-geojson.md#circle). Okrąg może być renderowany `Point` na mapie przez utworzenie funkcji, która `subType` ma `"Circle"` właściwość o wartości i `radius` właściwość, która ma liczbę reprezentującą promień w licznikach. Przykład:
 
 ```javascript
 {
@@ -173,9 +180,12 @@ W czwartym bloku kodu obiekt źródła danych jest tworzony przy użyciu klasy [
 
 [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) renderuje dane opakowane w [źródle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) danych na mapie. Trzeci blok kodu tworzy warstwę wielokątów. Zobacz właściwości warstwy wielokąta w [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest). Źródło danych, program obsługi zdarzeń kliknięcia i warstwa wielokątów są tworzone i dodawane do mapy w ramach [programu obsługi zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) , aby upewnić się, że punkt jest wyświetlany po całkowitym załadowaniu mapy.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej przykładów kodu do dodania do usługi Maps, zobacz następujące artykuły:
 
 > [!div class="nextstepaction"]
 > [Używanie wyrażeń stylów opartych na danych](data-driven-style-expressions-web-sdk.md)
+
+> [!div class="nextstepaction"]
+> [Jak używać szablonów obrazów](how-to-use-image-templates-web-sdk.md)

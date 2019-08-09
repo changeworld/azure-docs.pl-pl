@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 99217106c456adcc338138190be2060b0c9a195b
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
-ms.translationtype: HT
+ms.openlocfilehash: 2fe3e222da265614ff64e3d913f6514398abf32b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772673"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847673"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>Uczenie modeli Pytorch głębokie uczenie na dużą skalę dzięki Azure Machine Learning
 
@@ -39,8 +39,8 @@ Uruchom ten kod w dowolnym z następujących środowisk:
  
  - Własny serwer Jupyter Notebook
 
-    - [Instalowanie zestawu SDK Azure Machine Learning dla języka Python](setup-create-workspace.md#sdk)
-    - [Utwórz plik konfiguracji obszaru roboczego](setup-create-workspace.md#write-a-configuration-file)
+    - [Zainstaluj zestaw SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+    - [Utwórz plik konfiguracji obszaru roboczego](how-to-configure-environment.md#workspace).
     - [Pobierz pliki przykładowego skryptu](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch)`pytorch_train.py`
      
     Ukończoną [wersję Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch/train-hyperparameter-tune-deploy-with-pytorch.ipynb) tego przewodnika można również znaleźć na stronie przykładów usługi GitHub. Notes obejmuje rozwinięte sekcje obejmujące dostrajanie inteligentnego parametru, wdrożenie modelu i widżety notesu.

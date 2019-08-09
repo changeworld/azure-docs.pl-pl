@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: b7bf9943afa2a79f98fd28d15e5ea46fa63af732
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 6a929359c0e4e0a5c64eadbf41f565dfeb56a233
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688643"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854110"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Tworzenie kopii zapasowych baz danych programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -177,7 +177,7 @@ Jak odnajdywać bazy danych uruchomione na maszynie wirtualnej:
 
     ![Włącz funkcję autoochrony dla grupy dostępności Always On](./media/backup-azure-sql-database/enable-auto-protection.png)
 
-5. W obszarze **zasady tworzenia kopii zapasowych**wybierz zasady, a następnie wybierz przycisk **OK**.
+5. W obszarze **zasady tworzenia kopii zapasowych**wybierz zasady, a następnie wybierz przycisk **OK**.
 
    - Wybierz zasady domyślne jako HourlyLogBackup.
    - Wybrać istniejące zasady kopii zapasowych utworzone wcześniej dla środowiska SQL.
@@ -185,11 +185,11 @@ Jak odnajdywać bazy danych uruchomione na maszynie wirtualnej:
 
      ![Wybieranie pozycji Zasady kopii zapasowych](./media/backup-azure-sql-database/select-backup-policy.png)
 
-6. W obszarze **kopia zapasowa**wybierz pozycję **Włącz kopię zapasową**.
+6. W obszarze **kopia zapasowa**wybierz pozycję **Włącz kopię zapasową**.
 
     ![Włączanie wybranych zasad kopii zapasowych](./media/backup-azure-sql-database/enable-backup-button.png)
 
-7. Śledź postęp konfiguracji w obszarze **powiadomienia** portalu.
+7. Śledź postęp konfiguracji w obszarze **Powiadomienia** portalu.
 
     ![Obszar powiadomień](./media/backup-azure-sql-database/notifications-area.png)
 
@@ -273,7 +273,7 @@ Można włączyć automatyczną ochronę, aby automatycznie tworzyć kopie zapas
 
 - Nie ma żadnego limitu liczby baz danych, które można wybrać do ochrony w tym samym czasie.
 - Nie można wybiórczo chronić ani wykluczać baz danych z ochrony w wystąpieniu w momencie włączenia ochrony autoprotection.
-- Jeśli wystąpienie zawiera już pewne chronione bazy danych, pozostaną one chronione w ramach odpowiednich zasad nawet po włączeniu ochrony autoprotection. Wszystkie niechronione bazy danych dodane później będą mieć tylko pojedyncze zasady zdefiniowane w momencie włączania ochrony automatycznie, wymienione w obszarze **Konfiguruj kopię zapasową**. Można jednak później zmienić zasady skojarzone z chronioną bazą danych.  
+- Jeśli wystąpienie zawiera już pewne chronione bazy danych, pozostaną one chronione w ramach odpowiednich zasad nawet po włączeniu ochrony autoprotection. Wszystkie niechronione bazy danych dodane później będą mieć tylko pojedyncze zasady zdefiniowane w momencie włączania ochrony automatycznie, wymienione w obszarze **Konfiguruj kopię zapasową**. Można jednak później zmienić zasady skojarzone z chronioną bazą danych.  
 
 Aby włączyć ochronę autoprotection:
 
@@ -288,8 +288,8 @@ Jeśli musisz wyłączyć funkcję autoochrony, wybierz nazwę wystąpienia w ob
 
 ![Wyłącz autoochronę dla tego wystąpienia](./media/backup-azure-sql-database/disable-auto-protection.png)
 
- 
-## <a name="next-steps"></a>Następne kroki
+ 
+## <a name="next-steps"></a>Kolejne kroki
 
 Instrukcje:
 

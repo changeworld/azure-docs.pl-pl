@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 150c41dce06c81f2e9e07605ab6d5afa9e424453
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: a836e4cf66bf1e957f7b3779e21ec6a0296f7abe
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494485"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881439"
 ---
 # <a name="multi-step-web-tests"></a>Wieloetapowe testy sieci Web
 
 Można monitorować zarejestrowane sekwencje adresów URL i interakcji z witryną internetową za pomocą wieloetapowych testów sieci Web. Ten artykuł przeprowadzi Cię przez proces tworzenia wieloetapowego testu sieci Web za pomocą Visual Studio Enterprise.
 
 > [!NOTE]
-> Wieloetapowe testy sieci Web zależą od plików WebTest programu Visual Studio. Zostało [ogłoszone](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/) , że program Visual Studio 2019 będzie ostatnią wersją z funkcjonalnością WebTest. Ważne jest, aby zrozumieć, że podczas gdy nie zostaną dodane żadne nowe funkcje, funkcja WebTest w programie Visual Studio 2019 nadal jest obsługiwana i będzie nadal obsługiwana w ramach cyklu życia produktu. Azure Monitor zespół produkcyjny zakwestionuje pytania dotyczące przyszłościowych [testów dostępności](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)wieloetapowej.  
+> Wieloetapowe testy sieci Web zależą od plików WebTest programu Visual Studio. Zostało [ogłoszone](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/) , że program Visual Studio 2019 będzie ostatnią wersją z funkcjonalnością WebTest. Ważne jest, aby zrozumieć, że podczas gdy nie zostaną dodane żadne nowe funkcje, funkcja WebTest w programie Visual Studio 2019 nadal jest obsługiwana i będzie nadal obsługiwana w ramach cyklu życia produktu. Azure Monitor zespół produkcyjny zakwestionuje pytania dotyczące przyszłościowych testów dostępności wieloetapowej [](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101).  
 
 ## <a name="pre-requisites"></a>Wymagania wstępne
 
@@ -136,7 +136,18 @@ We wszystkich przypadkach należy utworzyć konto w ramach aplikacji tylko na po
 
 **Prosta nazwa użytkownika i hasło** Zarejestruj test sieci Web w zwykły sposób. Najpierw usuń pliki cookie.
 
-**Uwierzytelnianie SAML** Użyj wtyczki SAML, która jest dostępna do testów sieci Web. Uzyskaj dostęp do wtyczki przez...
+**Uwierzytelnianie SAML**
+
+|Nazwa właściwości| Opis|
+|----|-----|
+| Identyfikator URI odbiorców | Identyfikator URI odbiorców dla tokenu SAML.  Jest to identyfikator URI dla Access Control Service (ACS) — w tym przestrzeni nazw ACS i nazwy hosta. |
+| Hasło certyfikatu | Hasło certyfikatu klienta, które przyznaje dostęp do osadzonego klucza prywatnego. |
+| Certyfikat klienta  | Wartość certyfikatu klienta z kluczem prywatnym w formacie kodowanym algorytmem Base64. |
+| Identyfikator nazwy | Identyfikator nazwy dla tokenu |
+| Nie później niż | Przedział czasu, dla którego token będzie prawidłowy.  Wartość domyślna to 5 minut. |
+| Nie przed | Obiekt TimeSpan, dla którego token utworzony w przeszłości będzie prawidłowy (do rozróżniania czasu).  Wartość domyślna to (wartość ujemna) 5 minut. |
+| Nazwa parametru kontekstowego elementu docelowego | Parametr kontekstowy, który będzie otrzymywał wygenerowane potwierdzenie. |
+
 
 **Klucz tajny klienta** Jeśli aplikacja ma trasę logowania, która obejmuje klucz tajny klienta, Użyj tej trasy. Azure Active Directory (AAD) to przykład usługi, która umożliwia logowanie za pomocą klucza tajnego klienta. W usłudze AAD klucz tajny klienta jest kluczem aplikacji.
 

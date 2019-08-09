@@ -1,6 +1,6 @@
 ---
-title: Rozszerzanie geometrii GeoJSON w usługi Azure Maps | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak rozszerzyć geometrii GeoJSON w usługi Azure Maps
+title: Rozszerzony geometrie GEOJSON w Azure Maps | Microsoft Docs
+description: Dowiedz się, jak zwiększyć geometrie GEOJSON w Azure Maps
 author: sataneja
 ms.author: sataneja
 ms.date: 05/17/2018
@@ -8,51 +8,53 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: be3c31951c4721a861f9239c5220419dec11b6bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 52325248d21a5d5112c9a7f9497c3e03fdf102a4
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60799151"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881983"
 ---
-# <a name="extending-geojson-geometries"></a>Rozszerzanie GeoJSON geometrii
+# <a name="extended-geojson-geometries"></a>Rozszerzony geometrie GEOJSON
 
-Usługi Azure Maps zawiera listę zaawansowanych interfejsów API do wyszukiwania wewnątrz/wzdłuż funkcji geograficznego.
-Standaryzuj te interfejsy API [Specyfikacja GeoJSON] [ 1] reprezentująca funkcji geograficznego (na przykład: stan granice, trasy).  
+Azure Maps zawiera listę zaawansowanych interfejsów API do przeszukiwania wewnątrz i wzdłużnych funkcji geograficznych.
+Te interfejsy API służą do standaryzacji [specyfikacji GEOJSON][1] dla reprezentowania funkcji geograficznych (na przykład granic stanu, tras).  
 
-[Specyfikacja GeoJSON] [ 1] obsługuje tylko następujące geometrii:
+[Specyfikacja GEOJSON][1] obsługuje tylko następujące geometrie:
 
 * GeometryCollection
 * LineString
 * MultiLineString
-* MultiPoint
+* Usług
 * MultiPolygon
-* Punkt
-* Polygon
+* Moment
+* Tworząc
 
-Niektóre interfejsy API usługi mapy platformy Azure (na przykład: [Wyszukiwania wewnątrz geometrii](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)) Zaakceptuj geometrii, np. "Okrąg", które nie są częścią [Specyfikacja GeoJSON][1].
+Niektóre Azure Maps interfejsy API (na przykład: [Wyszukiwanie wewnątrz geometrii](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)) Zaakceptuj geometrie, takie jak "Circle", które nie są częścią [specyfikacji GEOJSON][1].
 
-Ten artykuł zawiera szczegółowy opis sposobu rozszerza usługi Azure Maps [Specyfikacja GeoJSON] [ 1] do reprezentowania niektórych geometrii.
+Ten artykuł zawiera szczegółowy opis sposobu, w jaki Azure Maps rozszerza [specyfikację GEOJSON][1] , aby reprezentować niektóre geometrie.
 
-### <a name="circle"></a>Okrąg
+## <a name="circle"></a>Okrąg
 
-`Circle` Geometrii nie jest obsługiwana przez [Specyfikacja GeoJSON][1]. Używamy `GeoJSON Feature` obiektu do reprezentowania okrąg.
+Geometria nie jest obsługiwana przez specyfikację GEOJSON. [][1] `Circle` Używamy `GeoJSON Point Feature` obiektu do reprezentowania okręgu.
 
-A `Circle` geometrii reprezentowane za pomocą `GeoJSON Feature` obiektu __musi__ zawiera następujące czynności:
+Geometria reprezentowana `GeoJSON Feature` przy użyciu obiektu __musi__ zawierać następujące elementy: `Circle`
 
-1. Centrum
-   >Centrum koła jest reprezentowane za pomocą `GeoJSON Point` typu.
+- Do środka
 
-2. Usługi RADIUS
-   >Koła `radius` jest reprezentowane za pomocą `GeoJSON Feature`jego właściwości. Wartość radius ma _liczniki_ i musi być typu `double`.
+    Środek okręgu jest reprezentowany przy użyciu `GeoJSON Point` obiektu.
 
-3. SubType
-   >Geometria koła musi również zawierać właściwość `subType`. Właściwość ta musi wchodzić w skład właściwości elementu `GeoJSON Feature` i mieć wartość _Circle_
+- RADIUS
 
+    Okrąg `radius` jest przedstawiany przy użyciu `GeoJSON Feature`właściwości. Wartość promienia jest w _metrach_ i musi być typu `double`.
+
+- SubType
+
+    Geometria koła musi również zawierać właściwość `subType`. Ta właściwość musi być częścią `GeoJSON Feature`właściwości, a jej wartością powinna być _koło_
 
 #### <a name="example"></a>Przykład
 
-Oto jak będzie reprezentować koła o centralnym (szerokość geograficzna: 47.639754 i długości geograficznej:-122.126986) z protokołem radius równa 100 liczniki, za pomocą `GeoJSON Feature` obiektu:
+Poniżej przedstawiono sposób reprezentowania okręgu w środku (Szerokość geograficzna: 47,639754, Długość geograficzna:-122,126986) z promień równą 100 mierników, `GeoJSON Feature` przy użyciu obiektu:
 
 ```json            
 {
@@ -67,5 +69,46 @@ Oto jak będzie reprezentować koła o centralnym (szerokość geograficzna: 47.
     }
 }          
 ```
+
+## <a name="rectangle"></a>Prostokąt
+
+Geometria nie jest obsługiwana przez specyfikację GEOJSON. [][1] `Rectangle` Używamy `GeoJSON Polygon Feature` obiektu do reprezentowania prostokąta. Rozszerzenie prostokąta jest używane głównie przez moduł narzędzi do rysowania zestawu SDK sieci Web.
+
+Geometria reprezentowana `GeoJSON Polygon Feature` przy użyciu obiektu __musi__ zawierać następujące elementy: `Rectangle`
+
+- Rogi
+
+    Rogi prostokąta są reprezentowane za pomocą współrzędnych `GeoJSON Polygon` obiektu. Powinna istnieć pięć współrzędnych, jeden dla każdego rogu i piąta Współrzędna, która jest taka sama jak wartość 1, aby zamknąć pierścień wielokąta. Współrzędne te zostaną zamierzone i obrócone odpowiednio przez dewelopera.
+
+- SubType
+
+    Geometria prostokąta musi również zawierać `subType` właściwość. Ta właściwość musi być częścią `GeoJSON Feature`właściwości, a jej wartością powinna być _prostokąt_
+
+### <a name="example"></a>Przykład
+
+```json
+{
+    "type": "Feature",
+    "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[5,25],[14,25],[14,29],[5,29],[5,25]]]
+    },
+    "properties": {
+        "subType": "Rectangle"
+    }
+}
+
+```
+## <a name="next-steps"></a>Kolejne kroki
+
+Dowiedz się więcej o danych GEOJSON w Azure Maps:
+
+> [!div class="nextstepaction"]
+> [Format geonotacji GEOJSON](geofence-geojson.md)
+
+Zapoznaj się ze słownikiem typowych warunków technicznych związanych z aplikacjami do analizy Azure Maps i lokalizacji:
+
+> [!div class="nextstepaction"]
+> [Azure Maps słownik](glossary.md)
 
 [1]: https://tools.ietf.org/html/rfc7946

@@ -122,8 +122,8 @@ Aby uruchamiać aplikacje CUDA w puli węzłów systemu Windows NC, należy zain
 Aby uruchamiać aplikacje CUDA w puli węzłów systemu Linux NC, należy zainstalować niezbędne sterowniki procesora GPU NVIDIA Tesla z poziomu zestawu narzędzi CUDA. Poniższe przykładowe kroki tworzą i wdrażają niestandardowy obraz Ubuntu 16,04 LTS z użyciem sterowników procesora GPU:
 
 1. Wdróż maszynę wirtualną z serii NC platformy Azure z systemem Ubuntu 16,04 LTS. Na przykład utwórz maszynę wirtualną w regionie Południowo-środkowe stany USA. 
-2. Dodajrozszerzenie](../virtual-machines/extensions/hpccompute-gpu-linux.md
-) sterowników procesora GPU NVIDIAdomaszynywirtualnejprzyużyciuAzurePortal,komputeraklienckiego,któryłączysięzsubskrypcjąplatformyAzurelubAzureCloudShell.[ Alternatywnie wykonaj kroki, aby połączyć się z maszyną wirtualną i ręcznie [zainstalować sterowniki cuda](../virtual-machines/linux/n-series-driver-setup.md) .
+2. [Dodajrozszerzenie](../virtual-machines/extensions/hpccompute-gpu-linux.md
+) sterowników procesora GPU NVIDIAdomaszynywirtualnejprzyużyciuAzurePortal,komputeraklienckiego,któryłączysięzsubskrypcjąplatformyAzurelubAzureCloudShell. Alternatywnie wykonaj kroki, aby połączyć się z maszyną wirtualną i ręcznie [zainstalować sterowniki cuda](../virtual-machines/linux/n-series-driver-setup.md) .
 3. Postępuj zgodnie z instrukcjami, aby utworzyć [migawkę i niestandardowy obraz maszyny wirtualnej z systemem Linux](batch-custom-images.md) dla usługi Batch.
 4. Utwórz konto w usłudze Batch w regionie, który obsługuje maszyny wirtualne NC.
 5. Korzystając z interfejsów API usługi Batch lub Azure Portal, Utwórz pulę [przy użyciu obrazu niestandardowego](batch-custom-images.md) oraz żądaną liczbę węzłów i skalowania. W poniższej tabeli przedstawiono przykładowe ustawienia puli dla obrazu:

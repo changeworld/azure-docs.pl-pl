@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: f95a7efd8b9303db0a9ba98c1be32e13d0c5e984
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
-ms.translationtype: HT
+ms.openlocfilehash: 91ac8b596373963aeba00c1932dfde5d76f27bd0
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780883"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856040"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning-service"></a>Uczenie i rejestrowanie modeli łańcucha na dużą skalę za pomocą usługi Azure Machine Learning
 
@@ -38,9 +38,9 @@ Uruchom ten kod w dowolnym z następujących środowisk:
 
 - Własny serwer Jupyter Notebook
 
-    - [Instalowanie zestawu SDK Azure Machine Learning dla języka Python](setup-create-workspace.md#sdk)
-    - [Utwórz plik konfiguracji obszaru roboczego](setup-create-workspace.md#write-a-configuration-file)
-    - Pobierz przykładowy plik skryptu [chainer_mnist. PR](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/chainer_mnist.py)
+    - [Zainstaluj zestaw SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+    - [Utwórz plik konfiguracji obszaru roboczego](how-to-configure-environment.md#workspace).
+    - Pobierz przykładowy plik skryptu [chainer_mnist. PR](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/chainer_mnist.py).
      - Możesz również znaleźć kompletną [wersję Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb) tego przewodnika na stronie przykładów w serwisie GitHub. Notes obejmuje rozwinięte sekcje obejmujące dostrajanie inteligentnego parametru, wdrożenie modelu i widżety notesu.
 
 ## <a name="set-up-the-experiment"></a>Konfigurowanie eksperymentu

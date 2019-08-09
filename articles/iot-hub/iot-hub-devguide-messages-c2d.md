@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: b0057815bee46d6708886302ff5b598c89b47e8f
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 4b8df538110f6c0b17a1ed37a2a6063a5b89a6e4
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335734"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880978"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>Wysyłanie komunikatów z chmury do urządzeń z Centrum IoT Hub
 
@@ -43,9 +43,9 @@ Urządzenie może również:
 
 * *Porzuć* komunikat, co spowoduje, że Centrum IoT przeniesie komunikat z powrotem do kolejki, a stan ustawi jako umieszczony na *kolejce*. Urządzenia, które nawiązują połączenie za pośrednictwem protokołu MQTT, nie mogą zrezygnować z komunikatów z chmury do urządzenia.
 
-Wątek nie może przetworzyć komunikatu bez powiadomienia centrum IoT Hub. W takim przypadku komunikaty są automatycznie przenoszone z *niewidocznego* stanu po  przekroczeniu limitu czasu *widoczności* (lub przekroczenia limitu czasu *blokady* ). Wartość tego limitu czasu wynosi jedna minuta i nie można jej zmienić.
+Wątek nie może przetworzyć komunikatu bez powiadomienia centrum IoT Hub. W takim przypadku komunikaty są automatycznie przenoszone z *niewidocznego* stanu po przekroczeniu limitu czasu *widoczności* (lub przekroczenia limitu czasu *blokady* ). Wartość tego limitu czasu wynosi jedna minuta i nie można jej zmienić.
 
-Właściwość **Maksymalna liczba dostaw** w centrum IoT określa maksymalną liczbę przypadków przejścia komunikatu między podstanem w *kolejce* i niewidocznym  stanie. Po tej liczbie zmian Centrum IoT ustawia stan wiadomości na *utracony*. Podobnie Centrum IoT określa stan wiadomości, które mają zostać *utracone* po upływie czasu wygaśnięcia. Aby uzyskać więcej informacji, zobacz [Time to Live](#message-expiration-time-to-live).
+Właściwość **Maksymalna liczba dostaw** w centrum IoT określa maksymalną liczbę przypadków przejścia komunikatu między podstanem w *kolejce* i niewidocznym stanie. Po tej liczbie zmian Centrum IoT ustawia stan wiadomości na *utracony*. Podobnie Centrum IoT określa stan wiadomości, które mają zostać *utracone* po upływie czasu wygaśnięcia. Aby uzyskać więcej informacji, zobacz [Time to Live](#message-expiration-time-to-live).
 
 [Informacje o sposobie wysyłania komunikatów z chmury do urządzenia z IoT Hub](iot-hub-csharp-csharp-c2d.md) artykułu pokazują, jak wysyłać komunikaty z chmury do urządzenia z chmury i odbierać je na urządzeniu.
 
@@ -77,10 +77,14 @@ Po wysłaniu komunikatu z chmury do urządzenia usługa może zażądać dostarc
 | ------------ | -------- |
 | brak     | Centrum IoT nie generuje wiadomości z opiniami (domyślne zachowanie). |
 | pozytywna | Jeśli komunikat z chmury do urządzenia osiągnie stan *ukończono* , usługa IoT Hub generuje wiadomość z opinią. |
-| poziomem | Jeśli komunikat z chmury do urządzenia osiągnie stan utraconych  wiadomości, usługa IoT Hub generuje wiadomość z opinią. |
+| poziomem | Jeśli komunikat z chmury do urządzenia osiągnie stan utraconych wiadomości, usługa IoT Hub generuje wiadomość z opinią. |
 | pełne     | W obu przypadkach w usłudze IoT Hub jest generowany komunikat z opinią. |
 
 Jeśli wartość **ACK** jest *pełna*i nie otrzymasz wiadomości z opinią, oznacza to, że wiadomość dotycząca opinii wygasła. Usługa nie może znać, co się stało z oryginalnym komunikatem. W tym przypadku usługa powinna upewnić się, że może przetworzyć opinię przed jej wygaśnięciem. Maksymalny czas wygaśnięcia wynosi dwa dni, co pozostawia czas na ponowne uruchomienie usługi w przypadku wystąpienia błędu.
+
+> [!NOTE]
+> Gdy urządzenie zostanie usunięte, wszystkie oczekujące Opinie również zostaną usunięte.
+>
 
 Jak wyjaśniono [](iot-hub-devguide-endpoints.md)w punktach końcowych, usługa IoT Hub dostarcza informacje zwrotne za pomocą punktu końcowego opartego na usłudze, */messages/servicebound/feedback*jako komunikatów. Semantyka do otrzymywania opinii jest taka sama jak w przypadku komunikatów z chmury do urządzenia. Zawsze, gdy jest to możliwe, informacja zwrotna wiadomości jest przetwarzana w jednej wiadomości, w następującym formacie:
 
@@ -98,7 +102,7 @@ Treść jest serializowaną w formacie JSON tablicą rekordów, z których każd
 | OriginalMessageId  | Identyfikator *MessageID* komunikatu z chmury do urządzenia, do którego odnoszą się informacje o opinii |
 | StatusCode         | Wymagany ciąg używany w wiadomościach zwrotnych, które są generowane przez Centrum IoT: <br/> *Prawnego* <br/> *Przeterminowanych* <br/> *DeliveryCountExceeded* <br/> *Odrzucono* <br/> *Przeczyszczane* |
 | Opis        | Wartości ciągu dla elementu *StatusCode* |
-| DeviceId           | Identyfikator  urządzenia docelowego komunikatu z chmury do urządzenia, do którego odnosi się ten element opinii |
+| DeviceId           | Identyfikator urządzenia docelowego komunikatu z chmury do urządzenia, do którego odnosi się ten element opinii |
 | DeviceGenerationId | *DeviceGenerationId* urządzenia docelowego komunikatu z chmury do urządzenia, do którego odnosi się ten element opinii |
 
 Aby komunikat z chmury do urządzenia mógł skorelować swoją opinię z oryginalnym komunikatem, usługa musi określić wartość *MessageID*.
@@ -135,7 +139,7 @@ Każde Centrum IoT Hub udostępnia następujące opcje konfiguracji obsługi kom
 
 Aby uzyskać więcej informacji na temat sposobu ustawiania tych opcji konfiguracji, zobacz [Tworzenie centrów IoT](iot-hub-create-through-portal.md).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać informacje o zestawach SDK, których można użyć do odbierania komunikatów z chmury do urządzeń, zobacz [zestawy SDK usługi Azure IoT](iot-hub-devguide-sdks.md).
 

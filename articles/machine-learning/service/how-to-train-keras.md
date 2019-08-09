@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: bfe7f975539c76c1d369d111729820f4d0ada470
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
-ms.translationtype: HT
+ms.openlocfilehash: b4f2bf5c762b6f93c2d23714d860e8261f6756d1
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775078"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847689"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning-service"></a>Uczenie i rejestrowanie modelu klasyfikacji Keras za pomocą usługi Azure Machine Learning
 
@@ -39,8 +39,8 @@ Uruchom ten kod w dowolnym z następujących środowisk:
 
  - Własny serwer Jupyter Notebook
 
-     - [Instalowanie zestawu SDK Azure Machine Learning dla języka Python](setup-create-workspace.md#sdk)
-    - [Utwórz plik konfiguracji obszaru roboczego](setup-create-workspace.md#write-a-configuration-file)
+    - [Zainstaluj zestaw SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+    - [Utwórz plik konfiguracji obszaru roboczego](how-to-configure-environment.md#workspace).
     - [Pobierz pliki przykładowego skryptu](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras) `mnist-keras.py` i`utils.py`
 
     Ukończoną [wersję Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras/train-hyperparameter-tune-deploy-with-keras.ipynb) tego przewodnika można również znaleźć na stronie przykładów usługi GitHub. Notes obejmuje rozwinięte sekcje obejmujące dostrajanie inteligentnego parametru, wdrożenie modelu i widżety notesu.

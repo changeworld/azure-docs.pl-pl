@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 98c04c50bc4a52e9b2e4e267895fdd94888885f5
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
-ms.translationtype: HT
+ms.openlocfilehash: e76a747f7e1d7ca7056edf5b69df0677aeff96a1
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775162"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855996"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning-service"></a>Kompiluj scikit — Poznaj modele na dużą skalę za pomocą usługi Azure Machine Learning
 
@@ -35,8 +35,8 @@ Uruchom ten kod w dowolnym z następujących środowisk:
 
  - Własny serwer Jupyter Notebook
 
-    - [Instalowanie zestawu SDK Azure Machine Learning dla języka Python](setup-create-workspace.md#sdk)
-    - [Utwórz plik konfiguracji obszaru roboczego](setup-create-workspace.md#write-a-configuration-file)
+    - [Zainstaluj zestaw SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+    - [Utwórz plik konfiguracji obszaru roboczego](how-to-configure-environment.md#workspace).
     - Pobierz zestaw danych i przykładowy plik skryptu 
         - [zestaw danych Iris](https://archive.ics.uci.edu/ml/datasets/iris)
         - [`train_iris.py`](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/train-hyperparameter-tune-deploy-with-sklearn)
@@ -133,7 +133,7 @@ Aby uzyskać więcej informacji na temat obiektów docelowych obliczeń, zobacz 
 
 ## <a name="create-a-scikit-learn-estimator"></a>Tworzenie scikit — uczenie się szacowania
 
-[Scikit — uczenie szacowania](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.sklearn?view=azure-ml-py) zapewnia prostą metodę uruchamiania zadania szkoleniowego scikit-uczenia na obiekcie docelowym obliczeń. Jest implementowana za pomocą [`SKLearn`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) klasy, która może być używana do obsługi szkolenia procesora jednowęzłowego.
+[Scikit — uczenie szacowania](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn?view=azure-ml-py) zapewnia prostą metodę uruchamiania zadania szkoleniowego scikit-uczenia na obiekcie docelowym obliczeń. Jest implementowana za pomocą [`SKLearn`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) klasy, która może być używana do obsługi szkolenia procesora jednowęzłowego.
 
 Jeśli do uruchomienia skryptu szkoleniowego wymagane są dodatkowe pakiety PIP lub Conda, można je zainstalować na powstającym obrazie Docker, przekazując ich nazwy za pomocą `pip_packages` argumentów i. `conda_packages`
 

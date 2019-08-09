@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54146927bf344eed63e24a3df073aa13f7fa0676
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 98a339f3fe9d5318b71ef60ac916bc4dcc6112fb
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68319912"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853733"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Jak wymagać weryfikacji dwuetapowej dla użytkownika
 
@@ -45,11 +45,11 @@ Konta użytkowników w usłudze Azure MFA Authentication mają następujące trz
 |:---:|:---:|:---:|:--:|:--:|
 | Wyłączone |Stan domyślny dla nowego użytkownika, który nie jest zarejestrowany w usłudze Azure MFA. |Nie |Nie |Nie |
 | Włączono |Użytkownik został zarejestrowany w usłudze Azure MFA, ale nie została zarejestrowana. Otrzymują monit o zarejestrowanie się przy następnym logowaniu. |Nie.  Nadal działają do momentu zakończenia procesu rejestracji. | Tak. Po wygaśnięciu sesji wymagana jest rejestracja w usłudze Azure MFA.| Tak. Po wygaśnięciu tokenu dostępu wymagana jest rejestracja w usłudze Azure MFA. |
-| Enforced (Wymuszony) |Użytkownik został zarejestrowany i ukończył proces rejestracji w usłudze Azure MFA. |Tak. Aplikacje wymagają haseł aplikacji. |Tak. Usługa Azure MFA jest wymagana podczas logowania. | Tak. Usługa Azure MFA jest wymagana podczas logowania. |
+| Wymuszono |Użytkownik został zarejestrowany i ukończył proces rejestracji w usłudze Azure MFA. |Tak. Aplikacje wymagają haseł aplikacji. |Tak. Usługa Azure MFA jest wymagana podczas logowania. | Tak. Usługa Azure MFA jest wymagana podczas logowania. |
 
 Stan użytkownika wskazuje, czy administrator zarejestrował je w usłudze Azure MFA, oraz czy ukończył proces rejestracji.
 
-Wszyscy użytkownicy zaczynają ** wyłączać. Po zarejestrowaniu użytkowników w usłudze Azure MFA ich stan zmieni się na *włączone*. Gdy użytkownicy będą mogli się zalogować i zakończyć proces rejestracji, ich stan zmieni ** się na wymuszone.  
+Wszyscy użytkownicy zaczynająwyłączać. Po zarejestrowaniu użytkowników w usłudze Azure MFA ich stan zmieni się na *włączone*. Gdy użytkownicy będą mogli się zalogować i zakończyć proces rejestracji, ich stan zmienisię na wymuszone.  
 
 ### <a name="view-the-status-for-a-user"></a>Wyświetlanie stanu użytkownika
 
@@ -72,7 +72,7 @@ Wykonaj następujące kroki, aby uzyskać dostęp do strony, na której można w
    ![Włącz wybranego użytkownika, klikając pozycję Włącz w menu szybkie kroki](./media/howto-mfa-userstates/user1.png)
 
    > [!TIP]
-   > *Włączone* użytkownicy są automatycznie przełączane ** w celu wymuszenia rejestracji w usłudze Azure MFA. Nie zmieniaj ręcznie stanu użytkownika na *wymuszone*.
+   > *Włączone* użytkownicy są automatycznie przełączane w celu wymuszenia rejestracji w usłudze Azure MFA. Nie zmieniaj ręcznie stanu użytkownika na *wymuszone*.
 
 5. Potwierdź wybór w otwartym oknie podręcznym.
 
@@ -142,11 +142,7 @@ Poniższy program PowerShell może pomóc w konwersji do usługi Azure MFA na po
 # Disable MFA for all users, keeping their MFA methods intact
 Get-MsolUser -All | Disable-MFA -KeepMethods
 
-# Enforce MFA for all users
-Get-MsolUser -All | Set-MfaState -State Enforced
-
-# Wrapper to disable MFA with the option to keep the MFA
-# methods (to avoid having to proof-up again later)
+# Wrapper to disable MFA with the option to keep the MFA methods (to avoid having to proof-up again later)
 function Disable-Mfa {
 
     [CmdletBinding()]

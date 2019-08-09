@@ -11,10 +11,10 @@ ms.date: 07/23/2018
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.openlocfilehash: 4348a634fd5b2b33f36d8e79f28caf659b82ccf4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 08/09/2019
 ms.locfileid: "67626149"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-june-2018"></a>Co nowego w Azure SQL Data Warehouse? Czerwiec 2018 r.
@@ -38,7 +38,7 @@ New-AzSqlDatabaseRestorePoint
 ## <a name="column-level-security"></a>Zabezpieczenia na poziomie kolumny
 Zarządzanie dostępem do danych i zabezpieczeniami w hurtowni danych ma kluczowe znaczenie dla tworzenia relacji zaufania z klientami i partnerami. SQL Data Warehouse [obsługuje teraz zabezpieczenia na poziomie kolumny (CLS)](https://azure.microsoft.com/blog/column-level-security-is-now-supported-in-azure-sql-data-warehouse/) , które pozwala na dostosowanie uprawnień do wyświetlania poufnych danych przez ograniczenie dostępu użytkowników do określonych kolumn w tabelach bez konieczności ponownego projektowania magazynu danych.
 
-CLS pozwala kontrolować dostęp do kolumn tabeli na podstawie kontekstu wykonywania użytkownika lub ich przynależności do grupy przy [użyciu standardowej instrukcji](https://docs.microsoft.com/azure/sql-data-warehouse/column-level-security) T-SQL. Logika ograniczeń dostępu znajduje się w warstwie bazy danych, a nie z danych w innej aplikacji, upraszczając ogólną implementację zabezpieczeń.
+CLS pozwala kontrolować dostęp do kolumn tabeli na podstawie kontekstu wykonywania użytkownika lub ich przynależności do grupy przy użyciu standardowej instrukcji T- [](https://docs.microsoft.com/azure/sql-data-warehouse/column-level-security) SQL. Logika ograniczeń dostępu znajduje się w warstwie bazy danych, a nie z danych w innej aplikacji, upraszczając ogólną implementację zabezpieczeń.
 
 
 ```sql
@@ -51,7 +51,7 @@ Msg 230, Level 14, State 1, Line 12
 The SELECT permission was denied on the column 'SSN' of the object 'Membership', database 'CLS_TestDW', schema 'dbo'.
 ```
 
-## <a name="objectschemaname"></a>OBJECT_SCHEMA_NAME
+## <a name="object_schema_name"></a>OBJECT_SCHEMA_NAME
 Funkcja [OBJECT_SCHEMA_NAME ()](https://docs.microsoft.com/sql/t-sql/functions/object-schema-name-transact-sql) zwraca nazwę schematu bazy danych dla obiektów należących do zakresu schematu. Ta funkcja stała się wspólna w narzędziach ETL, gdy jest sprawdzana poprawność schematu obiektu. 
 
 ```sql
@@ -72,7 +72,7 @@ dbo               nation
 dbo               orders
 ```
 
-## <a name="support-for-the-systimezoneinfo-view"></a>Obsługa widoku sys. time_zone_info
+## <a name="support-for-the-systime_zone_info-view"></a>Obsługa widoku sys. time_zone_info
 Widok [sys. time_zone_info](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) zwraca informacje o obsługiwanych strefach czasowych w ramach Azure SQL Data Warehouse.
 
 ```sql
@@ -89,7 +89,7 @@ Mountain Standard Time (Mexico)   -06:00               1
 Central Standard Time             -05:00               1
 ```
 
-## <a name="auto-stats-operations-appear-in-sysdmpdwexecrequests-behavior-change"></a>Operacje dotyczące automatycznych statystyk pojawiają się w widoku sys. DM _pdw_exec_requests (zmiana zachowania)
+## <a name="auto-stats-operations-appear-in-sysdm_pdw_exec_requests-behavior-change"></a>Operacje dotyczące automatycznych statystyk pojawiają się w widoku sys. DM _pdw_exec_requests (zmiana zachowania)
 
 Po wprowadzeniu [statystyk AutoCreate](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic)Azure SQL Data Warehouse generuje statystykę w celu zoptymalizowania wykonywania zapytań. Wydanie z czerwca 2018 dodaje możliwość monitorowania, kiedy statystyki są generowane automatycznie przez dodanie rekordu do widoku [sys. DM _pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) , gdy jest wykonywana jakakolwiek operacja [tworzenia statystyk](https://docs.microsoft.com/sql/t-sql/statements/create-statistics-transact-sql) .
 

@@ -7,12 +7,12 @@ ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 5e707fb004af7bbce915baf4b059514fcae8e52b
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 7dd053e3a9824ac0817db528b8b053666e1ded04
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725927"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881813"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Jak utworzyć zasady konfiguracji gościa
 
@@ -321,6 +321,14 @@ Po opublikowaniu niestandardowego Azure Policy przy użyciu niestandardowego pak
 
 Najprostszym sposobem zwolnienia zaktualizowanego pakietu jest powtórzenie procesu opisanego w tym artykule i udostępnienie zaktualizowanego numeru wersji.
 Spowoduje to zagwarantowanie, że wszystkie właściwości zostały prawidłowo zaktualizowane.
+
+## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Konwertowanie zawartości systemu Windows zasady grupy na konfigurację Azure Policy gościa
+
+Konfiguracja gościa podczas inspekcji maszyn z systemem Windows jest implementacją składni konfiguracji żądanego stanu programu PowerShell.
+Społeczność DSC opublikowała narzędzia do konwertowania wyeksportowanych szablonów zasady grupy w formacie DSC.
+Korzystając z tego narzędzia wraz z poleceniami cmdlet konfiguracji gościa opisanymi powyżej, można skonwertować zawartość systemu Windows zasady grupy i pakiet/opublikować ją Azure Policy do inspekcji.
+Aby uzyskać szczegółowe informacje na temat korzystania z tego narzędzia [, zobacz artykuł Szybki Start: Przekonwertuj zasady grupy na](/powershell/dsc/quickstarts/gpo-quickstart)DSC.
+Po przeprowadzeniu konwersji zawartości należy wykonać kroki opisane powyżej, aby utworzyć pakcage i opublikować ją jako Azure Policy będzie taka sama jak w przypadku dowolnej zawartości DSC.
 
 ## <a name="optional-signing-guest-configuration-packages"></a>OBOWIĄZKOWE Podpisywanie pakietów konfiguracji gościa
 

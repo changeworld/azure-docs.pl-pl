@@ -4,23 +4,22 @@ description: Używanie Visual Studio Code do tworzenia, kompilowania i debugowan
 services: iot-edge
 keywords: ''
 author: shizn
-manager: philmea
 ms.author: xshi
-ms.date: 07/23/2019
+ms.date: 08/07/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 39b8485ac3f98cb7ca6739fe31378726bea3452b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2efda0e506cf0525b1a8ea868acca48a929f8f41
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565351"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848277"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Użyj Visual Studio Code do tworzenia i debugowania modułów dla Azure IoT Edge
 
 Logikę biznesową można przekształcić w moduły, dla usługi Azure IoT Edge. W tym artykule przedstawiono sposób użycia Visual Studio Code jako głównego narzędzia do tworzenia i debugowania modułów.
 
-W przypadku modułów pisanych C#w języku Node. js lub Java istnieją dwa sposoby debugowania modułu w Visual Studio Code: Możesz dołączyć proces do kontenera modułów lub uruchomić kod modułu w trybie debugowania. W przypadku modułów pisanych w języku Python lub C mogą one być debugowane tylko przez dołączenie do procesu w kontenerach systemu Linux amd64.
+Istnieją dwa sposoby debugowania modułów pisanych w programie C#, Node. js lub Java w Visual Studio Code: Możesz dołączyć proces do kontenera modułów lub uruchomić kod modułu w trybie debugowania. Aby debugować moduły w języku Python lub C, można dołączyć tylko do procesu w kontenerach z systemem Linux amd64.
 
 Jeśli nie znasz możliwości debugowania Visual Studio Code, przeczytaj informacje o debugowaniu. [](https://code.visualstudio.com/Docs/editor/debugging)
 
@@ -43,7 +42,7 @@ Najpierw zainstaluj [Visual Studio Code](https://code.visualstudio.com/) a nast�
   - Java: [Pakiet rozszerzeń Java dla Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
   - S [Rozszerzenie CC++ /](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
 
-Musisz również zainstalować kilka dodatkowych narzędzi specyficznych dla języka, aby opracować moduł:
+Należy również zainstalować kilka dodatkowych narzędzi specyficznych dla języka w celu opracowania modułu:
 
 - C#, w tym Azure Functions: [zestaw SDK programu .NET Core 2,1](https://www.microsoft.com/net/download)
 
@@ -53,7 +52,7 @@ Musisz również zainstalować kilka dodatkowych narzędzi specyficznych dla ję
 
 - Java: [Java SE Development Kit 10](https://aka.ms/azure-jdks) i [Maven](https://maven.apache.org/). Należy [ustawić zmienną środowiskową tak `JAVA_HOME` ,](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) aby wskazywała instalację JDK.
 
-W celu skompilowania i wdrożenia obrazu modułu należy zainstalować platformę Docker, aby utworzyć obraz modułu i rejestr kontenerów w celu przechowywania obrazu modułu:
+Do kompilowania i wdrażania obrazu modułu potrzebna jest platforma Docker umożliwiająca utworzenie obrazu modułu i rejestru kontenerów w celu przechowywania obrazu modułu:
 
 - Platforma [Docker Community Edition](https://docs.docker.com/install/) na komputerze deweloperskim.
 
@@ -107,7 +106,7 @@ W rozwiązaniu znajdują się cztery elementy:
   > [!NOTE]
   > Plik środowiska jest tworzony tylko wtedy, gdy podajesz repozytorium obrazu dla modułu. Jeśli ustawienia domyślne hosta lokalnego zostały zaakceptowane do testowania i debugowania lokalnego, nie trzeba deklarować zmiennych środowiskowych.
 
-- Plik **Deployment. Template. JSON** zawiera listę nowego modułu wraz z przykładowym modułem **tempSensor** , który symuluje dane, których można użyć do testowania. Aby uzyskać więcej informacji o działaniu manifestów wdrożenia, zobacz temat [jak używać manifestów wdrożenia do wdrażania modułów i ustanawiania tras](module-composition.md).
+- Plik **Deployment. Template. JSON** zawiera listę nowego modułu wraz z przykładowym modułem **SimulatedTemperatureSensor** , który symuluje dane, których można użyć do testowania. Aby uzyskać więcej informacji o działaniu manifestów wdrożenia, zobacz temat [jak używać manifestów wdrożenia do wdrażania modułów i ustanawiania tras](module-composition.md).
 
 ## <a name="add-additional-modules"></a>Dodawanie dodatkowych modułów
 
@@ -124,7 +123,7 @@ Domyślny kod modułu dostarczany wraz z rozwiązaniem znajduje się w następuj
 - Java: **moduły >  *&lt;&gt; nazwą modułu* > src > Main > Java > com > edgemodulemodules > App. Java**
 - C: **moduły >  *&lt;nazwą&gt; modułu* > Main. c**
 
-W module, plik deployment.template.json są konfigurowane tak, aby skompilować rozwiązanie, Wypchnij go do rejestru kontenerów i wdrożyć ją na urządzeniu do rozpoczęcia testowania bez dotykania żadnego kodu. Moduł został opracowany pod kątem wystarczy pobrać dane wejściowe ze źródła (w tym przypadku moduł tempSensor, która symuluje sieć danych) i przekazać go do usługi IoT Hub.
+W module, plik deployment.template.json są konfigurowane tak, aby skompilować rozwiązanie, Wypchnij go do rejestru kontenerów i wdrożyć ją na urządzeniu do rozpoczęcia testowania bez dotykania żadnego kodu. Moduł jest zbudowany, aby po prostu przejąć dane wejściowe ze źródła (w tym przypadku moduł SimulatedTemperatureSensor, który symuluje dane) i potok do IoT Hub.
 
 Gdy wszystko jest gotowe do dostosowania szablonu przy użyciu własnego kodu, użyj [zestawów sdk IoT Hub platformy Azure](../iot-hub/iot-hub-devguide-sdks.md) do kompilowania modułów, które zaspokoją kluczowe potrzeby rozwiązań IoT, takich jak zabezpieczenia, zarządzanie urządzeniami i niezawodność.
 
@@ -227,7 +226,7 @@ Na komputerze deweloperskim można uruchomić symulator IoT Edge zamiast instalo
 
 1. W widoku Eksploratora Visual Studio Code kliknij prawym przyciskiem `deployment.debug.template.json` myszy plik rozwiązania, a następnie wybierz polecenie **Kompiluj i uruchom rozwiązanie IoT Edge w symulatorze**. Wszystkie dzienniki kontenerów modułów można obejrzeć w tym samym oknie. Możesz również przejść do widoku platformy Docker, aby obserwować stan kontenera.
 
-   ![Obserwuj zmienne](media/how-to-develop-csharp-module/view-log.png)
+   ![Obserwuj zmienne](media/how-to-vs-code-develop-module/view-log.png)
 
 1. Przejdź do widoku debugowania Visual Studio Code i wybierz plik konfiguracyjny debugowania dla modułu. Nazwa opcji debugowania powinna być podobna do   ***&lt;nazwy&gt; modułu* debugowanie zdalne**
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: magoedte
-ms.openlocfilehash: 05b022be3bd460809de77945710ed0bdcd275648
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: c6fa4df1fb2fc7559f706d81621ea198f5ca7cdc
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839313"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881423"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Zarządzanie danymi dziennika i obszarami roboczymi w Azure Monitor
 
@@ -32,7 +32,17 @@ W tym artykule opisano sposób zarządzania dostępem do dzienników i zarządza
 
 * Jak udzielić dostępu użytkownikom, którzy potrzebują dostępu do danych dziennika w określonej tabeli w obszarze roboczym przy użyciu funkcji RBAC platformy Azure.
 
-## <a name="define-access-control-mode-in-azure-portal"></a>Zdefiniuj tryb kontroli dostępu w Azure Portal
+## <a name="define-access-control-mode"></a>Zdefiniuj tryb kontroli dostępu
+
+Tryb kontroli dostępu skonfigurowany w obszarze roboczym można wyświetlić z poziomu Azure Portal lub Azure PowerShell.  To ustawienie można zmienić przy użyciu jednej z następujących obsługiwanych metod:
+
+* Azure Portal
+
+* Azure PowerShell
+
+* Szablon usługi Azure Resource Manager
+
+### <a name="configure-from-the-azure-portal"></a>Skonfiguruj z poziomu Azure Portal
 
 Bieżący tryb kontroli dostępu obszaru roboczego można wyświetlić na stronie **Przegląd** obszaru roboczego w menu **log Analytics obszaru roboczego** . 
 
@@ -45,7 +55,7 @@ To ustawienie można zmienić na stronie **Właściwości** obszaru roboczego. Z
 
 ![Zmień tryb dostępu obszaru roboczego](media/manage-access/change-access-control-mode.png)
 
-## <a name="define-access-control-mode-using-powershell"></a>Definiowanie trybu kontroli dostępu przy użyciu programu PowerShell
+### <a name="configure-using-powershell"></a>Konfigurowanie przy użyciu programu PowerShell
 
 Użyj następującego polecenia, aby przeanalizować tryb kontroli dostępu dla wszystkich obszarów roboczych w subskrypcji:
 
@@ -89,7 +99,7 @@ else
 Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 ```
 
-## <a name="define-access-mode-using-resource-manager-template"></a>Definiowanie trybu dostępu przy użyciu szablonu Menedżer zasobów
+### <a name="configure-using-a-resource-manager-template"></a>Konfigurowanie przy użyciu szablonu Menedżer zasobów
 
 Aby skonfigurować tryb dostępu w szablonie Azure Resource Manager, Ustaw flagę funkcji **enableLogAccessUsingOnlyResourcePermissions** w obszarze roboczym na jedną z następujących wartości.
 

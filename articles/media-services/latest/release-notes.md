@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 06/07/2019
 ms.author: juliako
-ms.openlocfilehash: c730f41d1dbc48c6622d0a2ba43c32dd1a96c24c
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: f4a859f1e63866a50167031569dca05de3e9af27
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311807"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856309"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Informacje o wersji Azure Media Services v3
 
@@ -33,6 +33,14 @@ Aby uzyskać najnowsze informacje o najnowszych zmianach, w tym artykule przedst
 > Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-sdk), interfejsu wiersza polecenia lub jednego z obsługiwanych zestawów SDK.
 
 Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące migracji dotyczące przenoszenia z Media Services V2 do wersji v3](migrate-from-v2-to-v3.md#known-issues).
+
+## <a name="august-2019"></a>2019 sierpnia
+
+### <a name="south-africa-regional-pair-is-open-for-media-services"></a>Para regionalna w Republice Południowej Afryki jest otwarta dla Media Services 
+
+Media Services jest teraz dostępna w regionach Północna Republika Południowej Afryki i Zachodnia Republika Południowej Afryki.
+
+Aby uzyskać więcej informacji, zobacz [chmury i regiony, w których istnieje Media Services v3](azure-clouds-regions.md).
 
 ## <a name="july-2019"></a>Lipiec 2019
 
@@ -224,7 +232,7 @@ Można wyświetlić następujące ulepszenia Event Grid wsparcia:
 
 Obsługa szyfrowania CMAF i "cbcs" dla odtwarzaczy Apple HLS (iOS 11 +) i MPEG-PAUZ, które obsługują CMAF.
 
-### <a name="video-indexer"></a>Indeksator wideo
+### <a name="video-indexer"></a>Video Indexer
 
 Video Indexer wersja GA została ogłoszona w sierpniu. Aby uzyskać nowe informacje o aktualnie obsługiwanych funkcjach, zobacz [co to jest Video Indexer](../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json). 
 

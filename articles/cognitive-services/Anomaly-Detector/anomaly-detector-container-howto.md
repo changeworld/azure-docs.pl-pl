@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 8d107aed75904c27b9ed231d50c884f96318a324
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: e3f6ad4338863fcbb35bad4f286b71993cf6fa2a
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321430"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854829"
 ---
 # <a name="install-and-run-anomaly-detector-containers"></a>Instalowanie i uruchamianie kontenerów wykrywania anomalii
 
@@ -98,7 +98,7 @@ Gdy kontener znajduje się na [komputerze hosta](#the-host-computer), użyj nast
 
 Użyj polecenia [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) , aby uruchomić jeden z trzech kontenerów. Polecenie używa następujących parametrów:
 
-| Symbol zastępczy | Wartość |
+| Symbol zastępczy | Value |
 |-------------|-------|
 |{API_KEY} | Ten klucz jest używany do uruchamiania kontenera i jest dostępny na stronie klucze wykrywania anomalii Azure Portal.  |
 |{ENDPOINT_URI} | Wartość identyfikatora URI punktu końcowego rozliczenia jest dostępna na stronie omówienia wykrywania anomalii Azure Portal.|
@@ -168,7 +168,7 @@ Użyj hosta, https://localhost:5000, dla interfejsów API kontenerów.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Jeśli uruchamiasz kontener z [instalacją wyjściową](anomaly-detector-container-configuration.md#mount-settings) i włączono rejestrowanie, kontener generuje pliki dziennika, które są przydatne do rozwiązywania problemów występujących podczas uruchamiania lub uruchamiania kontenera. 
+Jeśli uruchamiasz kontener z instalacją wyjściową [](anomaly-detector-container-configuration.md#mount-settings) i włączono rejestrowanie, kontener generuje pliki dziennika, które są przydatne do rozwiązywania problemów występujących podczas uruchamiania lub uruchamiania kontenera. 
 
 ## <a name="billing"></a>Rozliczenia
 
@@ -198,4 +198,5 @@ W tym artykule przedstawiono koncepcje i przepływ pracy służące do pobierani
 ## <a name="next-steps"></a>Następne kroki
 
 * Przegląd [skonfigurować kontenery](anomaly-detector-container-configuration.md) ustawień konfiguracji
+* [Wdróż kontener wykrywania anomalii w Azure Container Instances](how-to/deploy-anomaly-detection-on-container-instances.md)
 * [Dowiedz się więcej o usłudze interfejsu API wykrywania anomalii](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

@@ -3,20 +3,20 @@ title: Unrealość projektu i integracja z Wwise
 titlesuffix: Azure Cognitive Services
 description: W tym artykule opisano integrację projektów akustycznych Unreal i Wwise w projekcie.
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5511dd6b9a7d77c0988a94fef747a30d25bb4fc3
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 3fe9a28a99ea8becbfc40e1e64d1f5b109caace3
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706621"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854367"
 ---
 # <a name="project-acoustics-unreal-and-wwise-integration"></a>Unrealość projektu i integracja z Wwise
 Ta instrukcja zapewnia szczegółowe kroki integracji pakietu wtyczki akustycznej projektu do istniejącego projektu gier Unreal i Wwise. 

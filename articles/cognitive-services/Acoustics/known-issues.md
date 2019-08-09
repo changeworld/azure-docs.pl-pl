@@ -3,20 +3,20 @@ title: Znane problemy z wtyczką akustyczną projektu
 titlesuffix: Azure Cognitive Services
 description: W przypadku korzystania z wersji zapoznawczej projektanta w celu wystawiania problemów z projektem mogą wystąpić następujące znane problemy.
 services: cognitive-services
-author: kylestorck
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: kylsto
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: df5a4ce62af0405ffab8f711fb40b3d92083a3a4
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: a70d9ea1090f1c518f804dd28f3461918af965cd
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706658"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854280"
 ---
 # <a name="project-acoustics-known-issues"></a>Znane problemy akustyczne projektu
 W przypadku korzystania z wersji zapoznawczej projektanta w celu wystawiania problemów z projektem mogą wystąpić następujące znane problemy.
@@ -31,7 +31,7 @@ W najnowszej wersji aparatu Unity (2018.2 +) występuje znana usterka, w której
 
 ## <a name="deploying-to-android-from-some-unity-versions"></a>Wdrażanie w systemie Android z niektórych wersji aparatu Unity
 
-Niektóre wersje aparatu Unity mają usterkę z wdrażaniem wtyczek audio w systemie Android. Upewnij się, że nie używasz wersji, której dotyczy [problem.](https://issuetracker.unity3d.com/issues/android-ios-audiosource-playing-through-google-resonance-audio-sdk-with-spatializer-enabled-does-not-play-on-built-player)
+Niektóre wersje aparatu Unity mają usterkę z wdrażaniem wtyczek audio w systemie Android. Upewnij się, że nie używasz wersji, której [](https://issuetracker.unity3d.com/issues/android-ios-audiosource-playing-through-google-resonance-audio-sdk-with-spatializer-enabled-does-not-play-on-built-player)dotyczy problem.
 
 ## <a name="i-get-an-error-that-could-not-find-metadata-file-systemsecuritydll"></a>Otrzymuję komunikat o błędzie "nie można znaleźć pliku metadanych system. Security. dll"
 
@@ -44,6 +44,6 @@ Sprawdź, czy użyto poprawnych poświadczeń dla Twojego konta platformy Azure,
 ## <a name="canceling-a-bake-leaves-the-bake-tab-in-deleting-state"></a>Anulowanie tworzenie pozostawia kartę tworzenie w stanie "Usuwanie"
 Akustyczne projektu spowoduje oczyszczenie wszystkich zasobów platformy Azure dla zadania po pomyślnym zakończeniu lub anulowaniu. Może to potrwać do 5 minut.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Wypróbuj zawartość przykładową [aparatu Unity](unity-quickstart.md) lub [Unreal](unreal-quickstart.md)
 

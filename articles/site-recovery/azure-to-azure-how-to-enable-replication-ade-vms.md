@@ -6,21 +6,24 @@ author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 08/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 5e5ae11a00b2a3656deceeeaf928536238a325fc
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
-ms.translationtype: HT
+ms.openlocfilehash: 1bb94b70510be30d676ad707ab2fbfbbcbf50833
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840636"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884124"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Replikowanie maszyn wirtualnych z obsługą Azure Disk Encryption w innym regionie platformy Azure
 
 W tym artykule opisano, jak replikować maszyny wirtualne z obsługą Azure Disk Encryption z jednego regionu platformy Azure do innego.
 
 >[!NOTE]
->Azure Site Recovery obecnie obsługuje tylko maszyny wirtualne platformy Azure z systemem operacyjnym Windows.
+>Azure Site Recovery obecnie obsługuje tylko maszyny wirtualne z włączoną obsługą Azure Disk Encryption, na których działa system operacyjny Windows. Maszyny wirtualne z obsługą Azure Disk Encryption bez aplikacji usługi Azure AD są obsługiwane tylko wtedy, gdy używają dysków zarządzanych. Maszyny wirtualne z dyskami niezarządzanymi nie są obsługiwane.
+
+>[!NOTE]
+>Jeśli przełączysz się z ADE V1 (z aplikacją usługi Azure AD) do wersji ADE v2 (bez aplikacji usługi Azure AD), musisz wyłączyć replikację i włączyć replikację po włączeniu programu ADE v2.
 
 ## <a id="required-user-permissions"></a>Wymagane uprawnienia użytkownika
 Site Recovery wymaga, aby użytkownik miał uprawnienia do tworzenia magazynu kluczy w regionie docelowym i kopiowania kluczy z magazynu kluczy regionów źródłowych do magazynu kluczy regionu docelowego.
@@ -155,6 +158,6 @@ Wymagane uprawnienie w [magazynie kluczy docelowych](#required-user-permissions)
 
 **Jak naprawić:** Przejdź do pozycji **Główne** > **magazyny** > kluczy**ContosotargetKeyvault** > **zasady dostępu** i Dodaj odpowiednie uprawnienia.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 [Dowiedz się więcej](site-recovery-test-failover-to-azure.md) o uruchamianiu testowej pracy w trybie failover.

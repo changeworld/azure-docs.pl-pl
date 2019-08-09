@@ -1,73 +1,72 @@
 ---
-title: Jak zaplanować indeksatory — usługa Azure Search
-description: Zaplanuj indeksatorów usługi Azure Search na indeksowanie zawartości, okresowo lub w określonym czasie.
+title: Jak zaplanować indeksatory — Azure Search
+description: Zaplanuj Azure Search indeksatory, aby okresowo indeksować zawartość lub w określonych godzinach.
 ms.date: 05/31/2019
-author: RobDixon22
+author: HeidiSteen
 manager: HeidiSteen
-ms.author: v-rodixo
+ms.author: heidist
 services: search
 ms.service: search
-ms.devlang: rest-api
+ms.devlang: ''
 ms.topic: conceptual
-ms.custom: seodec2018
-ms.openlocfilehash: 4bf931b19b7490a94f30afde49038cdc7573fab3
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 245a2139aae0910ea1415811234667f2c06500ec
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67302244"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855793"
 ---
-# <a name="how-to-schedule-indexers-for-azure-search"></a>Jak zaplanować indeksatorów usługi Azure Search
-Indeksator zwykle jest uruchamiane jeden raz, natychmiast, po jego utworzeniu. Można uruchomić go ponownie na żądanie przy użyciu portalu, interfejsu API REST lub zestawu .NET SDK. Można również skonfigurować indeksator okresowe uruchamianie zgodnie z harmonogramem.
+# <a name="how-to-schedule-indexers-for-azure-search"></a>Jak zaplanować indeksatory dla Azure Search
+Indeksator jest zwykle uruchamiany jednokrotnie, natychmiast po jego utworzeniu. Można uruchomić je ponownie na żądanie przy użyciu portalu, interfejsu API REST lub zestawu .NET SDK. Można również skonfigurować indeksator do uruchamiania okresowo zgodnie z harmonogramem.
 
-Sytuacje, gdzie planowanie indeksatora jest przydatne:
+Niektóre sytuacje, w których planowanie indeksatora jest przydatne:
 
-* Źródło danych zmieni się wraz z upływem czasu i chcesz, aby indeksatorów usługi Azure Search, aby automatycznie przetwarzać zmienionych danych.
-* Indeks zostaną wypełnione z wielu źródeł danych, a użytkownik chce upewnij się, że indeksatorów, uruchom w różnym czasie, aby zmniejszyć konflikty.
-* Źródło danych jest bardzo duży i chcesz się indeksatora przetwarzania wraz z upływem czasu. Aby uzyskać więcej informacji dotyczących indeksowania dużych ilości danych, zobacz [jak indeksować dużych zestawów danych w usłudze Azure Search](search-howto-large-index.md).
+* Dane źródłowe ulegną zmianie z upływem czasu i chcesz, aby indeksatory Azure Search automatycznie przetwarzać zmienione dane.
+* Indeks zostanie wypełniony z wielu źródeł danych i chcesz się upewnić, że Indeksatory są uruchamiane w różnych porach, aby zmniejszyć liczbę konfliktów.
+* Dane źródłowe są bardzo duże i chcesz rozłożyć przetwarzanie indeksatora w czasie. Aby uzyskać więcej informacji na temat indeksowania dużych ilości danych, zobacz [jak indeksować duże zestawy danych w Azure Search](search-howto-large-index.md).
 
-Harmonogram jest wbudowana funkcja usługi Azure Search. Zewnętrzny harmonogram nie można użyć do kontrolowania indeksatory wyszukiwania.
+Harmonogram jest wbudowaną funkcją Azure Search. Nie można użyć zewnętrznego harmonogramu do kontrolowania indeksatorów wyszukiwania.
 
-## <a name="define-schedule-properties"></a>Zdefiniuj właściwości harmonogramu
+## <a name="define-schedule-properties"></a>Definiowanie właściwości harmonogramu
 
-Planowanie uruchamiania indeksatora ma dwie właściwości:
-* **Interwał**, czas, który definiuje między zaplanowane wykonań indeksatora. Najmniejsza dozwolony interwał wynosi 5 minut, a największa wynosi 24 godziny.
-* **Rozpocznij czasu (UTC)** , co oznacza indeksator powinien zostać uruchomiony po raz pierwszy.
+Harmonogram indeksatora ma dwie właściwości:
+* **Interwał**, który określa ilość czasu między wykonaniami zaplanowanego indeksatora. Najmniejszy dozwolony interwał wynosi 5 minut, a największe to 24 godziny.
+* **Godzina rozpoczęcia (UTC)** , która wskazuje czas pierwszego uruchomienia indeksatora.
 
-Można określić harmonogramu, tworząc po raz pierwszy indeksatora lub aktualizując właściwości indeksatora w dalszej części. Indeksator harmonogramy można ustawić za pomocą [portal](#portal), [interfejsu API REST](#restApi), lub [zestawu .NET SDK](#dotNetSdk).
+Możesz określić harmonogram podczas pierwszego tworzenia indeksatora lub przez aktualizację właściwości indeksatora później. Harmonogramy indeksatorów można ustawiać przy użyciu [portalu](#portal), [interfejsu API REST](#restApi)lub [zestawu .NET SDK](#dotNetSdk).
 
-Tylko jedno wykonywanie indeksatora można uruchamiać jednocześnie. Jeśli indeksatora jest już uruchomiona, podczas jego następnego wykonania jest zaplanowane, tego wykonania jest odroczone do czasu następnego zaplanowanego czasu.
+Tylko jedno wykonanie indeksatora może być uruchamiane w danym momencie. Jeśli indeksator jest już uruchomiony po zaplanowaniu następnego wykonania, to wykonanie jest odroczone do czasu następnego zaplanowanego czasu.
 
-Rozważmy przykład się to bardziej konkretne. Załóżmy, że możemy skonfigurować harmonogram indeksatora **interwał** programu co godzinę i **czas rozpoczęcia** od 1 czerwca 2019, 8:00:00 czasu UTC. Oto, co może się zdarzyć, gdy uruchomienie indeksatora trwa dłużej niż godzinę:
+Rozważmy przykład, aby zwiększyć tę liczbę. Załóżmy, że skonfigurowano harmonogram indeksatora z **interwałem** co godzinę i godziną **rozpoczęcia** od 1 czerwca 2019 8:00:00 o godz. UTC. Oto, co się dzieje, gdy działanie indeksatora trwa dłużej niż godzinę:
 
-* Pierwsze wykonanie indeksatora rozpoczyna się o lub około 1 czerwca 2019, 8:00 czasu UTC. Załóżmy, że to wykonywanie trwa 20 minut (lub w dowolnej chwili mniejsza niż 1 godzina).
-* Wykonanie drugiej rozpoczyna się o lub około 1 czerwca 2019 9:00:00 czasu UTC. Załóżmy, że to wykonanie zajmuje 70 minut — więcej niż jedna godzina —, a nie zakończy się aż do 10:10:00 czasu UTC.
-* Trzeci wykonywania jest zaplanowane na 10:00 czasu UTC, ale w tym czasie wykonywania jest nadal uruchomiona. To zaplanowane wykonanie następnie zostało pominięte. Kolejne wykonanie indeksatora nie zostaną uruchomione aż do 11:00 czasu UTC.
+* Pierwsze wykonanie indeksatora rozpocznie się o 1 czerwca 2019 o godzinie 8:00 czasu UTC. Załóżmy, że wykonanie tej operacji trwa 20 minut (lub w dowolnym czasie krótszym niż 1 godzina).
+* Drugie wykonanie jest uruchamiane o lub około 1 czerwca 2019 9:00 czasu UTC. Załóżmy, że to wykonanie trwa 70 minut — więcej niż godzinę — i nie zostanie ukończone do 10:10 czasu UTC.
+* Zaplanowano rozpoczęcie trzeciego wykonania o godzinie 10:00 czasu UTC, ale w tym momencie poprzednie wykonanie jest nadal uruchomione. To zaplanowane wykonanie jest następnie pomijane. Następne wykonanie indeksatora nie zostanie uruchomione do czasu 11:00 czasu UTC.
 
 > [!NOTE]
-> Jeśli indeksatora jest ustawiona na niektórych harmonogramu, ale wielokrotnie kończy się niepowodzeniem, w tym samym dokumentu wielokrotnie każdorazowo jego uruchomienia, rozpocznie się indeksatora uruchomione na dłuższe interwały interwału (maksymalnie do co najmniej raz na 24 godziny), dopóki nie jest pomyślnie sprawia, że aga postępu w programie.  Jeśli uważasz, że rozwiązaniu niezależnie od rodzaju problemu, który powodował indeksatora zostać zatrzymane w pewnym momencie, możesz wykonać na żądanie uruchomienia indeksatora, i jeśli pomyślnie sprawia to, że postęp, indeksator powróci do jego ustaw interwał harmonogramu ponownie.
+> Jeśli indeksator jest ustawiony na określony harmonogram, ale wielokrotnie powtarza się w tym samym dokumencie za każdym razem, gdy zostanie on uruchomiony, indeksator zacznie działać w krótszym interwale (maksymalnie co 24 godziny), aż do pomyślnego przekroczenia postępu Aga podczas.  Jeśli uważasz, że Rozwiązano problem, który spowodował zablokowanie indeksatora w określonym punkcie, można wykonać uruchomienie na żądanie indeksatora, a jeśli ten proces pomyślnie przejdzie, indeks ponownie powróci do jego ustawionego interwału harmonogramu.
 
 <a name="portal"></a>
 
-## <a name="define-a-schedule-in-the-portal"></a>Zdefiniowanie harmonogramu w portalu
+## <a name="define-a-schedule-in-the-portal"></a>Definiowanie harmonogramu w portalu
 
-Kreatora importu danych w witrynie portal pozwala zdefiniować harmonogram dla indeksatora w czasie jego tworzenia. Ustawieniem domyślnym harmonogramem jest **godzinowe**, co oznacza, że indeksator jest uruchamiane jeden raz po utworzeniu i jest uruchamiany ponownie co godzinę później.
+Kreator importu danych w portalu umożliwia zdefiniowanie harmonogramu indeksatora podczas tworzenia. Domyślne ustawienie harmonogramu jest **co godzinę**, co oznacza, że indeksator jest uruchamiany po utworzeniu i ponownie uruchamiany co godzinę.
 
-Można zmienić ustawienie harmonogramu, aby **po** Jeśli nie chcesz indeksatora, aby automatycznie ponownie uruchomić lub **codzienne** do uruchamiania raz dziennie. Ustaw ją na **niestandardowe** Jeśli chcesz określić inny interwał lub określonych Start przyszłości.
+Jeśli nie chcesz, aby indeksator był uruchamiany automatycznie lub **codziennie** do uruchamiania raz dziennie, możesz zmienić ustawienie harmonogramu na **jeden raz** . Ustaw wartość na **Custom** , jeśli chcesz określić inny interwał lub określony przyszły czas rozpoczęcia.
 
-Po ustawieniu harmonogramu na **niestandardowe**, pola są wyświetlane, aby określić **interwał** i **Start Time (UTC)** . Jak najkrótszy czas, dozwolony interwał to 5 minut, a najdłuższej jest 1440 minut (24 godziny).
+Po ustawieniu harmonogramu na **niestandardowy**, pola są wyświetlane, aby umożliwić określenie interwału i **godziny rozpoczęcia (UTC)** . Najkrótszy dozwolony interwał wynosi 5 minut, a najdłuższy czas to 1440 minut (24 godziny).
 
-   ![Planowanie uruchamiania indeksatora ustawienia w Kreatorze importu danych](media/search-howto-schedule-indexers/schedule-import-data.png "planowanie uruchamiania indeksatora ustawienia w Kreatorze importu danych")
+   ![Ustawianie harmonogramu indeksatora w Kreatorze importu danych](media/search-howto-schedule-indexers/schedule-import-data.png "Ustawianie harmonogramu indeksatora w Kreatorze importu danych")
 
-Po utworzeniu indeksatora, można zmienić ustawienia harmonogramu, za pomocą panelu edycji indeksatora. Pola harmonogramu są takie same jak Kreatora importu danych.
+Po utworzeniu indeksatora można zmienić ustawienia harmonogramu za pomocą panelu edycji indeksatora. Pola harmonogramu są takie same jak w Kreatorze importu danych.
 
-   ![Ustawianie harmonogramu w panelu edycji indeksatora](media/search-howto-schedule-indexers/schedule-edit.png "ustawienie harmonogramu w panelu edycji indeksatora")
+   ![Ustawianie harmonogramu w panelu edytowania indeksatora](media/search-howto-schedule-indexers/schedule-edit.png "Ustawianie harmonogramu w panelu edytowania indeksatora")
 
 <a name="restApi"></a>
 
-## <a name="define-a-schedule-using-the-rest-api"></a>Zdefiniowanie harmonogramu przy użyciu interfejsu API REST
+## <a name="define-a-schedule-using-the-rest-api"></a>Definiowanie harmonogramu przy użyciu interfejsu API REST
 
-Można zdefiniować harmonogram dla indeksatora przy użyciu interfejsu API REST. Aby to zrobić, należy dołączyć **harmonogram** właściwości podczas tworzenia lub aktualizowania indeksatora. W poniższym przykładzie przedstawiono żądanie PUT, aby zaktualizować istniejącego indeksatora:
+Można zdefiniować harmonogram dla indeksatora przy użyciu interfejsu API REST. W tym celu należy uwzględnić Właściwość **Schedule** podczas tworzenia lub aktualizowania indeksatora. Poniższy przykład przedstawia żądanie PUT, aby zaktualizować istniejący indeksator:
 
     PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2019-05-06
     Content-Type: application/json
@@ -79,19 +78,19 @@ Można zdefiniować harmonogram dla indeksatora przy użyciu interfejsu API REST
         "schedule" : { "interval" : "PT10M", "startTime" : "2015-01-01T00:00:00Z" }
     }
 
-**Interwał** parametr jest wymagany. Interwał odnosi się do czasu między rozpoczęciem dwóch następujących po sobie indeksatora wykonań. Najmniejszy dozwolony interwał wynosi 5 minut; najdłuższej to jeden dzień. Musi być sformatowany jako wartość XSD "dayTimeDuration" (ograniczony podzestaw [czas trwania ISO 8601](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) wartości). Jest to wzorzec: `P(nD)(T(nH)(nM))`. Przykłady: `PT15M` co 15 minut `PT2H` co 2 godziny.
+Parametr **interwału** jest wymagany. Interwał odnosi się do czasu między rozpoczęciem dwóch kolejnych wykonań indeksatora. Najmniejszy dozwolony interwał wynosi 5 minut; Najdłuższa wartość to jeden dzień. Musi być sformatowana jako wartość XSD "dayTimeDuration" (ograniczony podzbiór wartości [Duration ISO 8601](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) ). Wzorzec dla tego elementu to: `P(nD)(T(nH)(nM))`. Przykłady: `PT15M` co 15 minut, `PT2H` przez co 2 godziny.
 
-Opcjonalny **startTime** wskazuje rozpoczęcia zaplanowanego wykonania. Jeśli zostanie pominięty, używany jest bieżący czas UTC. Tym razem mogą znajdować się w przeszłości, w których przypadku pierwszego wykonania jest zaplanowane tak, jakby indeksatora działał nieprzerwanie od oryginalnego **startTime**.
+Opcjonalny parametr **StartTime** wskazuje, kiedy mają zostać rozpoczęte zaplanowane wykonania. W przypadku pominięcia jest używany bieżący czas UTC. Ten czas może znajdować się w przeszłości, w tym przypadku pierwsze wykonanie jest zaplanowane tak, jakby indeksator działał w sposób ciągły od pierwotnego czasu **rozpoczęcia**.
 
-Można również uruchomić indeksatora na żądanie w dowolnym momencie za pomocą wywołania uruchomienia indeksatora. Aby uzyskać więcej informacji o uruchamianiu indeksatory i ustawianie harmonogramów indeksatora, zobacz [uruchomić indeksator](https://docs.microsoft.com/rest/api/searchservice/run-indexer), [uzyskać indeksatora](https://docs.microsoft.com/rest/api/searchservice/get-indexer), i [indeksatora aktualizacji](https://docs.microsoft.com/rest/api/searchservice/update-indexer) w dokumentacji interfejsu API REST.
+Indeksator można również uruchomić na żądanie w dowolnym momencie przy użyciu wywołania Uruchom indeksator. Aby uzyskać więcej informacji o uruchamianiu indeksatorów i ustawianiu harmonogramów indeksatora, zobacz [Uruchamianie indeksatora](https://docs.microsoft.com/rest/api/searchservice/run-indexer), [pobieranie indeksatora](https://docs.microsoft.com/rest/api/searchservice/get-indexer)i [Aktualizowanie indeksatora](https://docs.microsoft.com/rest/api/searchservice/update-indexer) w dokumentacji interfejsu API REST.
 
 <a name="dotNetSdk"></a>
 
-## <a name="define-a-schedule-using-the-net-sdk"></a>Zdefiniowanie harmonogramu przy użyciu zestawu .NET SDK
+## <a name="define-a-schedule-using-the-net-sdk"></a>Definiowanie harmonogramu przy użyciu zestawu .NET SDK
 
-Można zdefiniować harmonogram dla indeksatora przy użyciu zestawu .NET SDK usługi Azure Search. Aby to zrobić, należy dołączyć **harmonogram** właściwości podczas tworzenia lub aktualizowania indeksatora.
+Można zdefiniować harmonogram dla indeksatora przy użyciu zestawu SDK platformy .NET Azure Search. W tym celu należy uwzględnić Właściwość **Schedule** podczas tworzenia lub aktualizowania indeksatora.
 
-Następujące C# przykład tworzy indeksatora, przy użyciu indeksu i źródła danych wstępnie zdefiniowanych i ustawia jego harmonogram, aby uruchomić jeden raz każdego dnia, od 30 minut od teraz:
+Poniższy C# przykład tworzy indeksator przy użyciu wstępnie zdefiniowanego źródła danych i indeksu i ustawia jego harmonogram do uruchomienia raz dziennie od 30 minut od teraz:
 
 ```
     Indexer indexer = new Indexer(
@@ -105,14 +104,14 @@ Następujące C# przykład tworzy indeksatora, przy użyciu indeksu i źródła 
         );
     await searchService.Indexers.CreateOrUpdateAsync(indexer);
 ```
-Jeśli **harmonogram** parametr zostanie pominięty, indeksator będzie uruchamiane tylko jeden raz natychmiast, po jego utworzeniu.
+Jeśli parametr **Schedule** zostanie pominięty, indeksator zostanie uruchomiony tylko natychmiast po jego utworzeniu.
 
-**StartTime** parametr może być ustawiony na godzinę w przeszłości. W takim przypadku pierwszego wykonania jest zaplanowane tak, jakby indeksatora działał nieprzerwanie od danego **startTime**.
+Parametr **StartTime** można ustawić na godzinę w przeszłości. W takim przypadku pierwsze wykonanie jest zaplanowane tak, jakby indeksator działał w sposób ciągły od danego momentu **rozpoczęcia**.
 
-Harmonogram jest definiowana za pomocą [IndexingSchedule](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexingschedule?view=azure-dotnet) klasy. **IndexingSchedule** Konstruktor wymaga **interwał** określony za pomocą parametru **TimeSpan** obiektu. Najmniejsza dozwolona wartość interwału wynosi 5 minut, a największa to 24 godziny. Drugi **startTime** określono jako parametr **DateTimeOffset** obiektu, jest opcjonalny.
+Harmonogram jest definiowany przy użyciu klasy [IndexingSchedule](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexingschedule?view=azure-dotnet) . Konstruktor **IndexingSchedule** wymaga parametru **interwału** określonego przy użyciu obiektu **TimeSpan** . Najmniejsza dozwolona wartość interwału wynosi 5 minut, a największe to 24 godziny. Drugi parametr **StartTime** określony jako obiekt **DateTimeOffset** jest opcjonalny.
 
-Zestaw SDK platformy .NET umożliwia Operacje indeksatora kontroli przy użyciu [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) klasy i jego [indeksatory](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.indexers) właściwość, która implementuje metody z **IIndexersOperations**interfejsu. 
+Zestaw SDK platformy .NET umożliwia kontrolowanie operacji indeksatora przy użyciu klasy [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) i [](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.indexers) jej właściwości indeksatorów, która implementuje metody z interfejsu **IIndexersOperations** . 
 
-Indeksator można uruchomić na żądanie w dowolnym momencie przy użyciu jednej z [Uruchom](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexersoperationsextensions.run), [RunAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexersoperationsextensions.runasync), lub [RunWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations.runwithhttpmessagesasync) metody.
+Indeksator można uruchomić na żądanie w dowolnym momencie przy użyciu jednej z metod [Run](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexersoperationsextensions.run), [RunAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexersoperationsextensions.runasync)lub [RunWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations.runwithhttpmessagesasync) .
 
-Aby uzyskać więcej informacji na temat tworzenia aktualizacji i systemem indeksatorów, zobacz [IIindexersOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations?view=azure-dotnet).
+Aby uzyskać więcej informacji na temat tworzenia, aktualizowania i uruchamiania indeksatorów, zobacz [IIindexersOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations?view=azure-dotnet).

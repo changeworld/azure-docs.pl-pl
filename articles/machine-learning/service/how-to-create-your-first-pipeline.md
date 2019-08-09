@@ -11,16 +11,20 @@ ms.author: sanpil
 author: sanpil
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3f0b764b16c1b550c9afa4107449c1b02815e8d1
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 497c4d9708a7b67bf0b5433c455d90dd277297d7
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668502"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68873609"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Tworzenie i uruchamianie potoku uczenia maszynowego przy użyciu zestawu SDK Azure Machine Learning
 
-Ten artykuł zawiera informacje na temat tworzenia, publikowania, uruchamiania i śledzenia potoku uczenia [maszynowego](concept-ml-pipelines.md) przy użyciu [zestawu SDK Azure Machine Learning](https://aka.ms/aml-sdk).  Te potoki pomagają tworzyć i zarządzać nimi przepływy pracy, które łączyć różnych machine learning faz. Każdej fazy potoku, takich jak przygotowywanie danych i szkoleń modelowych może zawierać jeden lub więcej kroków.
+Ten artykuł zawiera informacje na temat tworzenia, publikowania, uruchamiania i śledzenia potoku uczenia [maszynowego](concept-ml-pipelines.md) przy użyciu [zestawu SDK Azure Machine Learning](https://aka.ms/aml-sdk).  Użyj **potoków ml** , aby utworzyć przepływ pracy, który jest połączony z różnymi etapami ml, a następnie opublikuj ten potok w obszarze roboczym Azure Machine Learning, aby uzyskać dostęp do niego w przyszłości lub udostępnić innym użytkownikom.  
+
+Możesz również użyć potoku [platformy Azure](https://docs.microsoft.com/en-us/azure/devops/pipelines/targets/azure-machine-learning?context=azure%2Fmachine-learning%2Fservice%2Fcontext%2Fml-context&view=azure-devops&tabs=yaml) do automatyzowania zadań w sieci (Ci/CD) ml, ale ten typ potoku nie jest przechowywany w obszarze roboczym. [Porównaj te typy potoków](concept-ml-pipelines.md#which-azure-pipeline-technology-should-i-use).
+
+Każdej fazy potoku, takich jak przygotowywanie danych i szkoleń modelowych może zawierać jeden lub więcej kroków.
 
 Potoki tworzenia są widoczne dla członków usługi Azure Machine Learning [obszaru roboczego](how-to-manage-workspace.md). 
 

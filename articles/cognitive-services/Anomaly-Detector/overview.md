@@ -1,7 +1,7 @@
 ---
 title: Co to jest interfejs API narzędzia do wykrywania anomalii?
 titleSuffix: Azure Cognitive Services
-description: Użyj zaawansowanych algorytmów API wykrywanie anomalii, aby identyfikować anomalie w danych szeregów czasowych.
+description: Użyj zaawansowanych algorytmów interfejsu API wykrywania anomalii, aby identyfikować anomalie w danych szeregów czasowych.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,61 +10,75 @@ ms.subservice: anomaly-detector
 ms.topic: overview
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 80e0984deff83726fd96a462a1ae8a4375db9d2e
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 70cb4a008391ad55562bc55fb45d877988e68643
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721605"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854774"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Co to jest interfejs API narzędzia do wykrywania anomalii?
 
-Interfejs API usługi Wykrywanie anomalii pozwala na monitorowanie i wykrywanie nieprawidłowości w danych szeregów czasowych z usługą machine learning. Interfejs API usługi Wykrywanie anomalii dostosowuje się automatycznie identyfikując i stosowanie najlepszego dopasowania modeli danych, niezależnie od branży, scenariusz i ilości danych. Przy użyciu danych szeregów czasowych, interfejs API określa granic na potrzeby wykrywania anomalii, oczekiwane wartości i punkty danych, które są anomalie.
+Interfejs API wykrywania anomalii umożliwia monitorowanie i wykrywanie anomalii w danych szeregów czasowych przy użyciu uczenia maszynowego. Interfejs API wykrywania anomalii dostosowuje się przez automatyczne identyfikowanie i stosowanie modeli najlepiej dopasowane do danych, niezależnie od wielkości branżowej, scenariusza lub ilości danych. Korzystając z danych szeregów czasowych, interfejs API określa granice wykrywania anomalii, oczekiwane wartości i które punkty danych są anomaliami.
 
-![Wykrywanie zmian wzorców w żądaniach usługi](./media/anomaly_detection2.png)
+![Wykrywanie zmian wzorca w żądaniach obsługi](./media/anomaly_detection2.png)
 
-Korzystanie z wykrywanie anomalii nie wymaga żadnych doświadczenie w uczenia maszynowego i interfejsu API RESTful pozwala łatwo zintegrować usługę w aplikacje sieci Web i procesów.
+Korzystanie z detektora anomalii nie wymaga wcześniejszego doświadczenia w uczeniu maszynowym, a interfejs API RESTful umożliwia łatwą integrację usługi z aplikacjami i procesami.
 
 ## <a name="features"></a>Funkcje
 
-Za pomocą wykrywania anomalii, mogą automatycznie wykrywać anomalie w danych szeregów czasowych, lub, w jakiej występują w czasie rzeczywistym. 
+Dzięki detektorowi anomalii można automatycznie wykrywać anomalie w danych szeregów czasowych lub w miarę ich występowania w czasie rzeczywistym. 
 
 |Cecha  |Opis  |
 |---------|---------|
-|Wykrywanie anomalii, w jakiej występują w czasie rzeczywistym. | Wykrycia anomalii w danych przesyłania strumieniowego za pomocą punktów danych widoczna poprzednio do określenia, czy Twojego najnowszego anomalii. Ta operacja generuje model przy użyciu punktów danych, wysyłania i określa, czy dany punkt docelowy anomalii. Przez wywołanie interfejsu API z każdego nowego punktu danych, wygenerowane przez Ciebie, możesz monitorować dane podczas jego tworzenia. |
-|Wykrywanie anomalii w całym zestawie danych jako zadania wsadowego. | Użyj serii czasu, aby wykryć wszelkie anomalie, które mogą istnieć w całym danych. Ta operacja generuje model przy użyciu całej szeregami czasowymi, z każdym punkcie analizowane za pomocą tego samego modelu.         |
-| Uzyskaj dodatkowe informacje na temat danych. | Uzyskaj przydatne szczegółowe informacje o danych i zaobserwowanego anomalii, w tym oczekiwanych wartości, granice anomalii i pozycji. |
-| Dostosuj granice wykrywania anomalii. | Interfejs API usługi Wykrywanie anomalii automatycznie tworzyć granice dla wykrywania anomalii. Dostosuj te granice, aby zwiększyć lub zmniejszyć wrażliwość interfejsu API na anomalie danych i lepszego dopasowania danych. |
+|Wykrywaj anomalie w czasie rzeczywistym. | Wykrywaj anomalie w danych przesyłanych strumieniowo, używając wcześniej zaobserwowanych punktów danych w celu ustalenia, czy Najnowsza z nich jest nieaktualna. Ta operacja generuje model przy użyciu wysyłanych punktów danych i określa, czy punkt docelowy jest anomalią. Wywołując interfejs API z każdym wygenerowanym nowym punktem danych, można monitorować dane w miarę ich tworzenia. |
+|Wykrywaj anomalie w zestawie danych jako Partia zadań. | Skorzystaj z szeregów czasowych, aby wykryć ewentualne anomalie, które mogą istnieć w danych. Ta operacja generuje model przy użyciu wszystkich danych szeregów czasowych, przy czym każdy punkt jest analizowany z tym samym modelem.         |
+| Uzyskaj dodatkowe informacje na temat danych. | Uzyskaj przydatne szczegóły dotyczące danych i wszelkich obserwowanych anomalii, w tym oczekiwanych wartości, granic anomalii i pozycji. |
+| Dostosuj granice wykrywania anomalii. | Interfejs API wykrywania anomalii automatycznie tworzy granice na potrzeby wykrywania anomalii. Dostosuj te granice, aby zwiększyć lub zmniejszyć czułość interfejsu API na anomalie danych i lepiej dopasować dane. |
 
-## <a name="demo"></a>Demonstracja
+## <a name="demo"></a>Pokaz
 
-Aby szybko rozpocząć korzystanie z interfejsu API wykrywanie anomalii, spróbuj [prezentację online](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector) , mogą być uruchamiane w przeglądarce. Ten pokaz działa w notesu programu Jupyter hostowanych w sieci web i dowiesz się, jak wysyłać żądania interfejsu API i Wizualizuj wyniki.
+Zapoznaj się [](https://aka.ms/adDemo) z tą interaktywną prezentacją, aby dowiedzieć się, jak działa detektor anomalii.
+Aby uruchomić demonstrację, należy utworzyć zasób wykrywania anomalii i uzyskać klucz interfejsu API i punkt końcowy.
 
-Aby uruchomić wersję demonstracyjną, wykonaj następujące czynności:
+## <a name="notebook"></a>Notes
 
-1. Uzyskaj prawidłowy klucz subskrypcji dla interfejsu API wykrywanie anomalii i punkt końcowy interfejsu API. Poniższa sekcja zawiera instrukcje dotyczące rejestracji. 
-2. Zaloguj się, a następnie kliknąć sklonowania, w prawym górnym rogu.
-3. Kliknij przycisk **systemem wolnej mocy obliczeniowej**
-4. Wybierz jeden z notesów dla tego przykładu.
-5. Dodaj prawidłowy interfejs API wykrywanie anomalii subskrypcji klucza `subscription_key` zmiennej. Zmiana `endpoint` zmiennej do punktu końcowego usługi. Na przykład: `https://westus2.api.cognitive.microsoft.com`
-1. Na pasku menu u góry kliknij **komórki**, następnie **Uruchom wszystkie**.
+Aby dowiedzieć się, jak wywołać interfejs API wykrywania anomalii, Wypróbuj ten [Notes platformy Azure](https://aka.ms/adNotebook). Ta Jupyter Notebook hostowana w sieci Web pokazuje, jak wysłać żądanie interfejsu API i wizualizować wynik.
+
+Aby uruchomić Notes, wykonaj następujące czynności:
+
+1. Pobierz prawidłowy klucz subskrypcji interfejsu API wykrywania anomalii i punkt końcowy interfejsu API. W poniższej sekcji znajdują się instrukcje dotyczące rejestrowania się.
+1. Zaloguj się, a następnie kliknij pozycję Klonuj w prawym górnym rogu.
+1. Usuń zaznaczenie opcji "publiczny" w oknie dialogowym przed ukończeniem operacji klonowania, w przeciwnym razie Notes, w tym wszystkie klucze subskrypcji, będzie publiczny.
+1. Kliknij pozycję **Uruchom przy bezpłatnej obliczeń**
+1. Wybierz jeden z notesów.
+1. Dodaj do `subscription_key` zmiennej prawidłowy klucz subskrypcji interfejsu API wykrywania anomalii. 
+1. `endpoint` Zmień zmienną na punkt końcowy. Na przykład: `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
+1. Na górnym pasku menu kliknij **komórkę**, a następnie **Uruchom wszystkie**.
 
 ## <a name="workflow"></a>Przepływ pracy
 
-Interfejs API usługi Wykrywanie anomalii jest to usługa sieci web typu RESTful, co ułatwia wywołać z dowolnego języka programowania, który może wysyłać żądania HTTP i Przeanalizuj dane JSON.
+Interfejs API wykrywania anomalii to usługa sieci Web RESTful, ułatwiająca wywoływanie z dowolnego języka programowania, który może wykonywać żądania HTTP i analizować dane JSON.
 
 [!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
 
 [!INCLUDE [cognitive-services-anomaly-detector-signup-requirements](../../../includes/cognitive-services-anomaly-detector-signup-requirements.md)]
 
-Po zarejestrowaniu się:
+Po zarejestrowaniu:
 
-1. Pobrać danych szeregów czasowych i przekonwertować go na prawidłowy format JSON. Użyj [najlepsze praktyki](concepts/anomaly-detection-best-practices.md) podczas przygotowywania danych w celu uzyskania najlepszych wyników.
-1. Wyślij żądanie do interfejsu API wykrywanie anomalii ze swoimi danymi.
+1. Zrób dane szeregów czasowych i Przekształć je w prawidłowy format JSON. Podczas przygotowywania danych należy stosować [najlepsze rozwiązania](concepts/anomaly-detection-best-practices.md) w celu uzyskania najlepszych wyników.
+1. Wyślij żądanie do interfejsu API wykrywania anomalii z danymi.
 1. Przetwórz odpowiedź interfejsu API, analizując zwrócony komunikat JSON.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="algorithms"></a>Algorytmy
 
-* [Szybki start: Wykrywanie anomalii w danych szeregów czasowych za pomocą interfejsu API REST wykrywanie anomalii](quickstarts/detect-data-anomalies-csharp.md)
-* Interfejs API usługi Wykrywanie anomalii [prezentację online](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector)
-* Wykrywanie anomalii [dokumentacja interfejsu API REST](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect)
+* Zapoznaj się z tym blogiem technicznym dotyczącym [interfejsu API wykrywania anomalii platformy Azure](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162) na temat algorytmów pod okapem.
+* Zapoznaj się z tym papierem [usługi wykrywania anomalii w szeregach czasowych w firmie Microsoft](https://arxiv.org/abs/1906.03821) (zaakceptowanej przez KDD 2019) dla algorytmów SR-CNN opracowanych przez firmę Microsoft.
+
+> [!VIDEO https://www.youtube.com/embed/ERTaAnwCarM]
+
+## <a name="next-steps"></a>Następne kroki
+
+* [Szybki start: Wykrywaj anomalie w danych szeregów czasowych przy użyciu interfejsu API REST usługi wykrywania anomalii](quickstarts/detect-data-anomalies-csharp.md)
+* [Demonstracja online](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector) interfejsu API wykrywania anomalii
+* [Dokumentacja interfejsu API REST](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect) usługi wykrywania anomalii

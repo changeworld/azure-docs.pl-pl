@@ -1,7 +1,7 @@
 ---
-title: Jak używać znaczników dekoracji aby wyróżnić tekst — API wyszukiwania w Internecie Bing
+title: Jak wyróżnić tekst interfejs API wyszukiwania w sieci Web Bing przy użyciu znaczników dekoracji
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak używać dekoracje tekstu i wyróżnianie w wynikach wyszukiwania przy użyciu interfejsu API wyszukiwania w sieci Web Bing trafień.
+description: Dowiedz się, jak używać dekoracji tekstu i wyróżniania trafień w wynikach wyszukiwania przy użyciu interfejs API wyszukiwania w sieci Web Bing.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -9,15 +9,74 @@ ms.assetid: 5365B568-EA55-4D97-8FBE-0AF60158D4D5
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
-ms.date: 03/17/2019
+ms.date: 07/30/2019
 ms.author: scottwhi
-ms.openlocfilehash: bde3ec0aab954defa31ca667283e6413716a3b42
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a6d394fec6e7cf0a230f61ad05c236a1f84dad9d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61431450"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854007"
 ---
-# <a name="using-decoration-markers-to-highlight-text"></a>Wyróżnianie tekstu przy użyciu znaczników dekorację
+# <a name="using-decoration-markers-to-highlight-text"></a>Używanie znaczników dekoracji do wyróżniania tekstu
 
-[!INCLUDE [cognitive-services-bing-hit-highlighting](../../../includes/cognitive-services-bing-hit-highlighting.md)]
+Bing obsługuje wyróżnianie trafień, co oznacza terminy zapytania (lub inne warunki, które znajdują się w usłudze Bing) w ciągu wyświetlania ciągów niektórych odpowiedzi. Na przykład, `name` `displayUrl`, i `snippet` pola w postaci strony sieci Web mogą zawierać oznaczone terminy zapytania. 
+
+Domyślnie usługi Bing nie uwzględniają znaczników wyróżniania w ciągach wyświetlanych. Aby włączyć znaczniki, Dołącz `textDecorations` parametr zapytania w żądaniu i ustaw go na `true`wartość.
+
+## <a name="hit-highlighting-example"></a>Przykład wyróżniania trafień
+
+Poniższy przykład pokazuje wynik sieci Web dla `Sailing Dinghy`. Usługi Bing oznaczono początkową i końcową okresu kwerendy przy użyciu znaków Unicode E000 i E001.
+  
+![Podświetlanie trafień](./media/cognitive-services-bing-web-api/bing-hit-highlighting.png) 
+
+Przed wyświetleniem wyniku w interfejsie użytkownika, należy zamienić znaki Unicode na te, które są odpowiednie dla Twojego formatu wyświetlania.
+
+## <a name="marker-formatting"></a>Formatowanie znaczników
+
+Bing oferuje opcję użycia znaków Unicode lub tagów HTML jako znaczników. Aby określić, które znaczniki mają być używane, [](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#textformat) Dołącz parametr zapytania TextFormat: 
+
+| Value             | Obrys                       |
+|-------------------|------------------------------|
+| `textFormat=Raw`  | Znaki Unicode (domyślnie) |
+| `textFormat=HTML` | Znaki HTML              |
+
+## <a name="additional-text-decorations"></a>Dodatkowe dekoracje tekstu
+
+Bing może zwracać kilka różnych dekoracji tekstu. Na przykład `Computation` odpowiedź może zawierać znaczniki indeksu dolnego dla terminu `log(2)` zapytania w `expression` polu.
+
+![znaczniki obliczeń](./media/cognitive-services-bing-web-api/bing-markers-computation.png) 
+
+Jeśli żądanie nie określiło dekoracji, `expression` pole będzie zawierać. `log10(2)` 
+
+Jeśli `textDecorations` jest`true`, Bing może zawierać następujące znaczniki w wyświetlanych ciągach odpowiedzi. Jeśli nie ma odpowiedniego tagu HTML, komórka tabeli jest pusta.
+
+|Unicode|HTML|Opis
+|-|-|-
+|U+E000|\<b>|Oznacza początek okresu kwerendy (wyróżnianie trafień)
+|U+E001|\</b>|Oznacza koniec terminu zapytania
+|U+E002|\<i>|Oznacza początek zawartości z kursywą 
+|U+E003|\</i>|Oznacza koniec zawartości z kursywą
+|U+E004|\<br/>|Oznacza podział wiersza
+|U+E005||Oznacza początek numeru telefonu
+|U+E006||Oznacza koniec numeru telefonu
+|U+E007||Oznacza początek adresu
+|U+E008||Oznacza koniec adresu
+|U+E009|\&nbsp;|Oznacza nieprzerwaną przestrzeń
+|U+E00C|\<mocne >|Oznacza początek pogrubionej zawartości
+|U+E00D|\</strong >|Oznacza koniec pogrubionej zawartości
+|U+E00E||Oznacza początek zawartości, której tło powinno być jaśniejsze niż otaczające tło
+|U+E00F||Oznacza koniec zawartości, której tło powinno być jaśniejsze niż otaczające tło.
+|U+E010||Oznacza początek zawartości, której tło powinno być ciemne niż otaczające tło
+|U+E011||Oznacza koniec zawartości, której tło powinno być ciemne niż otaczające tło
+|U+E012|\<del>|Oznacza początek zawartości, która powinna zostać przekreślona
+|U+E013|\</del >|Oznacza koniec zawartości, która powinna zostać przekreślona
+|U+E016|\<> podrzędne|Oznacza początek zawartości indeksu dolnego
+|U+E017|\</Sub. >|Oznacza koniec zawartości indeksu dolnego
+|U+E018|\<sup >|Oznacza początek zawartości indeksu górnego
+|U+E019|\</sup >|Oznacza koniec zawartości indeksu górnego
+
+## <a name="next-steps"></a>Następne kroki
+
+* [Co to jest interfejs API wyszukiwania w sieci Web Bing?](overview.md) 
+* [Zmień rozmiar i Przytnij miniatury](resize-and-crop-thumbnails.md)

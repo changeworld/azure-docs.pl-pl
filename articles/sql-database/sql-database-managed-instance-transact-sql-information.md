@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 07/07/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: fd029c1e7b67d308e3e1fdbedbdc90ea430b4f5b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 822b8bd1d0f5be854b6d345d68fcdb680b2ef1c4
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567242"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882561"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database różnice T-SQL wystąpienia zarządzanego w programie SQL Server
 
@@ -399,13 +399,44 @@ Tabele zewnętrzne odwołujące się do plików w systemie HDFS lub Azure Blob S
 
 ### <a name="replication"></a>Replikacja
 
-[Replikacja transakcyjna](sql-database-managed-instance-transactional-replication.md) jest dostępna dla publicznej wersji zapoznawczej w wystąpieniu zarządzanym z pewnymi ograniczeniami:
-- Al typy uczestników replikacji (wydawcy, dystrybutora, subskrybent ściągania i wypychania) mogą być umieszczane w wystąpieniu zarządzanym, ale Wydawca i dystrybutor nie mogą być umieszczane w różnych wystąpieniach.
-- Obsługiwane są typy replikacji transakcyjnej, migawki i analizy dwukierunkowej. Replikacja scalająca, replikacja równorzędna i aktualizowalne subskrypcje nie są obsługiwane.
-- Wystąpienie zarządzane może komunikować się z najnowszymi wersjami SQL Server. Zapoznaj się z obsługiwanymi wersjami [tutaj](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems).
-- Replikacja transakcyjna ma [dodatkowe wymagania dotyczące sieci](sql-database-managed-instance-transactional-replication.md#requirements).
+- Obsługiwane są migawki i dwukierunkowe typy replikacji. Replikacja scalająca, replikacja równorzędna i aktualizowalne subskrypcje nie są obsługiwane.
+- [Replikacja transakcyjna](sql-database-managed-instance-transactional-replication.md) jest dostępna dla publicznej wersji zapoznawczej w wystąpieniu zarządzanym z pewnymi ograniczeniami:
+    - Wszystkie typy uczestników replikacji (wydawcy, dystrybutora, subskrybent ściągania i wypychania) mogą być umieszczane w wystąpieniach zarządzanych, ale Wydawca i dystrybutor nie mogą być umieszczane w różnych wystąpieniach.
+    - Wystąpienia zarządzane mogą komunikować się z najnowszymi wersjami SQL Server. Zapoznaj się z obsługiwanymi wersjami [tutaj](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems).
+    - Replikacja transakcyjna ma [dodatkowe wymagania dotyczące sieci](sql-database-managed-instance-transactional-replication.md#requirements).
 
-Aby uzyskać informacje o konfigurowaniu replikacji, zobacz [samouczek replikacji](replication-with-sql-database-managed-instance.md).
+Informacje o konfigurowaniu replikacji znajdują się w samouczku dotyczącym [replikacji](replication-with-sql-database-managed-instance.md).
+
+
+Jeśli replikacja jest włączona w bazie danych w [grupie trybu failover](sql-database-auto-failover-group.md), administrator wystąpienia zarządzanego musi oczyścić wszystkie publikacje na starym serwerze podstawowym i ponownie skonfigurować je na nowym serwerze podstawowym po przejściu w tryb failover. W tym scenariuszu są niezbędne następujące działania:
+
+1. Zatrzymaj wszystkie zadania replikacji uruchomione w bazie danych, jeśli istnieją.
+2. Porzuć metadane subskrypcji z wydawcą, uruchamiając następujący skrypt w bazie danych wydawcy:
+
+   ```sql
+   EXEC sp_dropsubscription @publication='<name of publication>', @article='all',@subscriber='<name of subscriber>'
+   ```             
+ 
+1. Usuwanie metadanych subskrypcji z subskrybenta. Uruchom następujący skrypt w wystąpieniu bazy danych subskrypcji na subskrybencie:
+
+   ```sql
+   EXEC sp_subscription_cleanup
+      @publisher = N'<full DNS of publisher, e.g. example.ac2d23028af5.database.windows.net>', 
+      @publisher_db = N'<publisher database>', 
+      @publication = N'<name of publication>'; 
+   ```                
+
+1. Wymuszone porzucenie wszystkich obiektów replikacji z wydawcy przez uruchomienie następującego skryptu w opublikowanej bazie danych:
+
+   ```sql
+   EXEC sp_removedbreplication
+   ```
+
+1. Wymuszone porzucanie starego dystrybutora z oryginalnego wystąpienia podstawowego (w przypadku powrotu po awarii do starego elementu głównego, który używa dystrybutora). Uruchom następujący skrypt w bazie danych Master w starym wystąpieniu zarządzanym dystrybutora:
+
+   ```sql
+   EXEC sp_dropdistributor 1,1
+   ```
 
 ### <a name="restore-statement"></a>Instrukcja RESTORE 
 
@@ -467,7 +498,7 @@ Broker usług dla wielu wystąpień nie jest obsługiwany:
 ## <a name="Environment"></a>Ograniczenia środowiska
 
 ### <a name="subnet"></a>Subnet
-- W podsieci zarezerwowanej dla wystąpienia zarządzanego nie można umieścić żadnych innych zasobów (np. maszyn wirtualnych). Umieść te zasoby w innych podsieciach.
+-  Nie można umieścić żadnych innych zasobów (np. maszyn wirtualnych) w podsieci, w której wdrożono wystąpienie zarządzane. Wdróż te zasoby przy użyciu innej podsieci.
 - Podsieć musi mieć wystarczającą liczbę dostępnych [adresów IP](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Wartość minimalna to 16, podczas gdy zalecenie ma mieć co najmniej 32 adresów IP w podsieci.
 - [Punktów końcowych usługi nie można kojarzyć z podsiecią wystąpienia zarządzanego](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Upewnij się, że opcja punkty końcowe usługi jest wyłączona podczas tworzenia sieci wirtualnej.
 - Liczba rdzeni wirtualnych i typy wystąpień, które można wdrożyć w regionie, mają pewne [ograniczenia i](sql-database-managed-instance-resource-limits.md#regional-resource-limitations)ograniczenia.
@@ -476,7 +507,7 @@ Broker usług dla wielu wystąpień nie jest obsługiwany:
 ### <a name="vnet"></a>Sieć wirtualna
 - Sieć wirtualną można wdrożyć przy użyciu modelu zasobów — model klasyczny dla sieci wirtualnej nie jest obsługiwany.
 - Po utworzeniu wystąpienia zarządzanego przeniesienie wystąpienia zarządzanego lub sieci wirtualnej do innej grupy zasobów lub subskrypcji nie jest obsługiwane.
-- Niektóre usługi, takie jak środowiska App Service, Aplikacje logiki i wystąpienia zarządzane (używane na potrzeby replikacji geograficznej, replikacji transakcyjnej lub połączonych serwerów) nie mogą uzyskać dostępu do wystąpień zarządzanych w różnych regionach, jeśli ich sieci wirtualnych są połączone przy użyciu [globalnego Komunikacja równorzędna](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). Możesz nawiązać połączenie z tym zasobem za pośrednictwem ExpressRoute lub sieci VNet-to-VNet za pośrednictwem bram sieci wirtualnej.
+- Niektóre usługi, takie jak środowiska App Service, Aplikacje logiki i wystąpienia zarządzane (używane na potrzeby replikacji geograficznej, replikacji transakcyjnej lub połączonych serwerów) nie mogą uzyskać dostępu do wystąpień zarządzanych w różnych regionach, jeśli ich sieci wirtualnych są połączone przy użyciu [globalnego Komunikacja równorzędna](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). Możesz połączyć się z tymi zasobami za pośrednictwem ExpressRoute lub sieci VNet-to-VNet za pośrednictwem bram sieci wirtualnej.
 
 ## <a name="Changes"></a>Zmiany zachowania
 
@@ -494,11 +525,11 @@ Następujące zmienne, funkcje i widoki zwracają różne wyniki:
 
 ### <a name="tempdb-size"></a>Rozmiar bazy danych TEMPDB
 
-Maksymalny rozmiar `tempdb` pliku nie może być większy niż 24 GB na rdzeń w warstwie ogólnego przeznaczenia. Maksymalny `tempdb` rozmiar w warstwie krytyczne dla działania firmy jest ograniczony do rozmiaru magazynu wystąpień. `tempdb`rozmiar pliku dziennika jest ograniczony do 120 GB zarówno w warstwach Ogólnego przeznaczenia i Krytyczne dla działania firmy. `tempdb` Baza danych jest zawsze podzielona na 12 plików danych. Nie można zmienić maksymalnego rozmiaru pliku i nie można dodać do `tempdb`niego nowych plików. Niektóre zapytania mogą zwrócić błąd, jeśli potrzebują ponad 24 GB na rdzeń w `tempdb` lub, jeśli generują więcej niż 120 USD dziennika. `tempdb`zawsze jest tworzona jako pusta baza danych, gdy wystąpienie zostanie uruchomione lub działa w trybie failover, a zmiany wprowadzone w `tempdb` programie nie zostaną zachowane. 
+Maksymalny rozmiar `tempdb` pliku nie może być większy niż 24 GB na rdzeń w warstwie ogólnego przeznaczenia. Maksymalny `tempdb` rozmiar w warstwie krytyczne dla działania firmy jest ograniczony przez rozmiar magazynu wystąpień. `Tempdb`rozmiar pliku dziennika jest ograniczony do 120 GB zarówno w warstwach Ogólnego przeznaczenia i Krytyczne dla działania firmy. `tempdb` Baza danych jest zawsze podzielona na 12 plików danych. Nie można zmienić maksymalnego rozmiaru pliku i nie można dodać do `tempdb`niego nowych plików. Niektóre zapytania mogą zwrócić błąd, jeśli potrzebują ponad 24 GB na rdzeń w `tempdb` lub, jeśli generują więcej niż 120 GB danych dziennika. `Tempdb`zawsze jest tworzona jako pusta baza danych, gdy wystąpienie zostanie uruchomione lub działa w trybie failover, a wszelkie zmiany wprowadzone `tempdb` w programie nie zostaną zachowane. 
 
 ### <a name="cant-restore-contained-database"></a>Nie można przywrócić zawartej bazy danych
 
-Wystąpienie zarządzane nie może przywrócić [zawartych baz danych](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases). Przywracanie do punktu w czasie istniejących zawartych baz danych nie działa w wystąpieniu zarządzanym. Ten problem zostanie rozwiązany wkrótce. W międzyczasie zalecamy usunięcie opcji zawierania z baz danych, które są umieszczane na zarządzanym wystąpieniu. Nie używaj opcji zawierania dla produkcyjnych baz danych. 
+Wystąpienie zarządzane nie może przywrócić [zawartych baz danych](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases). Przywracanie do punktu w czasie istniejących zawartych baz danych nie działa w wystąpieniu zarządzanym. W międzyczasie zalecamy usunięcie opcji zawierania z baz danych, które są umieszczane na zarządzanym wystąpieniu. Nie używaj opcji zawierania dla produkcyjnych baz danych. 
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Przekraczanie miejsca do magazynowania z małymi plikami bazy danych
 
@@ -506,7 +537,7 @@ Wystąpienie zarządzane nie może przywrócić [zawartych baz danych](https://d
 
 Każde Ogólnego przeznaczenia wystąpienia zarządzanego ma do 35 TB pamięci zarezerwowanej dla miejsca na dysku w warstwie Premium. Każdy plik bazy danych jest umieszczany na osobnym dysku fizycznym. Rozmiary dysków mogą być 128 GB, 256 GB, 512 GB, 1 TB lub 4 TB. Nieużywane miejsce na dysku jest nieobciążone, ale całkowita suma rozmiarów dysków w warstwie Premium platformy Azure nie może przekroczyć 35 TB. W niektórych przypadkach wystąpienie zarządzane, które nie wymaga 8 TB w sumie, może przekroczyć limit 35 TB platformy Azure dla rozmiaru magazynu z powodu wewnętrznej fragmentacji.
 
-Na przykład wystąpienie zarządzane Ogólnego przeznaczenia może mieć jeden plik o rozmiarze 1,2 TB umieszczony na dysku o pojemności 4 TB. Może również zawierać 248 plików o rozmiarze 1 GB, które są umieszczane na oddzielnych dyskach 128 GB. W tym przykładzie:
+Na przykład wystąpienie zarządzane Ogólnego przeznaczenia może mieć jeden plik Big o rozmiarze 1,2 TB umieszczony na dysku o pojemności 4 TB. Może również mieć 248 plików o rozmiarze 1 GB, które są umieszczane na oddzielnych dyskach 128 GB. W tym przykładzie:
 
 - Łączny rozmiar magazynu dyskowego to 1 x 4 TB + 248 x 128 GB = 35 TB.
 - Całkowite zarezerwowane miejsce dla baz danych w wystąpieniu to 1 x 1,2 TB + 248 x 1 GB = 1,4 TB.
@@ -547,7 +578,7 @@ Dzienniki błędów dostępne w wystąpieniu zarządzanym nie są utrwalane, a i
 
 ### <a name="error-logs-are-verbose"></a>Dzienniki błędów są pełne
 
-Wystąpienie zarządzane umieszcza pełne informacje w dziennikach błędów i większość z nich nie ma znaczenia. Ilość informacji w dziennikach błędów zostanie zmniejszona w przyszłości.
+Wystąpienie zarządzane umieszcza pełne informacje w dziennikach błędów i większość z nich nie ma znaczenia. 
 
 **Poprawkę** Użyj niestandardowej procedury, aby odczytać dzienniki błędów, które filtrują pewne nieistotne wpisy. Aby uzyskać więcej informacji, zobacz [wystąpienie zarządzane — sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
 

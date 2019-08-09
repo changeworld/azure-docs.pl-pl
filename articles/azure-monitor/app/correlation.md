@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: 743f15c13a2e4fe7215229145b49fd87a32a1f18
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 1c6a0ce3e4e8d098d2bc048a331b0ae0cb5c6b13
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663280"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881385"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelacja telemetrii w Application Insights
 
@@ -145,6 +145,39 @@ public void ConfigureServices(IServiceCollection services)
 > [!IMPORTANT]
 > Upewnij się, że konfiguracje przychodzące i wychodzące są dokładnie takie same.
 
+#### <a name="enable-w3c-distributed-tracing-support-for-web-apps"></a>Włącz obsługę rozproszonego śledzenia W3C dla aplikacji sieci Web
+
+Ta funkcja jest dostępna `Microsoft.ApplicationInsights.JavaScript`w programie. Jest on domyślnie wyłączony. Aby ją włączyć, użyj `distributedTracingMode` konfiguracji. AI_AND_W3C zapewnia zgodność z poprzednimi wersjami z dowolnymi starszymi usługami Application Insights Instrumentacji:
+
+- **Instalator NPM (zignoruj, jeśli użyto Instalatora wstawek)**
+
+  ```javascript
+  import { ApplicationInsights, DistributedTracingModes } from '@microsoft/applicationinsights-web';
+
+  const appInsights = new ApplicationInsights({ config: {
+    instrumentationKey: 'YOUR_INSTRUMENTATION_KEY_GOES_HERE',
+    distributedTracingMode: DistributedTracingModes.W3C
+    /* ...Other Configuration Options... */
+  } });
+  appInsights.loadAppInsights();
+  ```
+  
+- **Instalator fragmentu kodu (zignoruj, jeśli jest używany Instalator NPM)**
+
+  ```
+  <script type="text/javascript">
+  var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){i[e]=function(){var n=arguments;i.queue.push(function(){i[e].apply(i,n)})}}var i={config:e};i.initialize=!0;var a=document,t=window;setTimeout(function(){var n=a.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",a.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{i.cookie=a.cookie}catch(e){}i.queue=[],i.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var o="Track"+r[0];if(n("start"+o),n("stop"+o),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var s=t[r];t[r]=function(e,n,a,t,o){var c=s&&s(e,n,a,t,o);return!0!==c&&i["_"+r]({message:e,url:n,lineNumber:a,columnNumber:t,error:o}),c},e.autoExceptionInstrumented=!0}return i}
+  (
+    {
+      instrumentationKey:"INSTRUMENTATION_KEY",
+      distributedTracingMode: 2 // DistributedTracingModes.W3C
+      /* ...Other Configuration Options... */
+    }
+  );
+  window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+  </script>
+  ```
+
 ## <a name="opentracing-and-application-insights"></a>OpenTracing i Application Insights
 
 [Specyfikacja modelu danych OpenTracing](https://opentracing.io/) i Application Insights modele danych są mapowane w następujący sposób:
@@ -222,7 +255,7 @@ Czasami można dostosować sposób wyświetlania nazw składników na [mapie apl
   telemetryClient.getContext().getCloud().setRole("My Component Name");
   ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Napisz [](../../azure-monitor/app/api-custom-events-metrics.md)niestandardową telemetrię.
 - Dowiedz się więcej o [ustawianiu cloud_RoleName](../../azure-monitor/app/app-map.md#set-cloud-role-name) dla innych zestawów SDK.

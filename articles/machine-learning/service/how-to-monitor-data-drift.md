@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 07/08/2019
-ms.openlocfilehash: 9852ec450b6da3814a3bd2bfc6aae7d19acaf584
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: c5484c37d89cc9ae880bbe17987bb47f3114b8a4
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68370389"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847894"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Wykrywaj dryfowanie danych (wersja zapoznawcza) dla modeli wdrożonych w usłudze Azure Kubernetes Service (AKS)
 
@@ -40,18 +40,20 @@ Za pomocą usługi Azure Machine Learning można monitorować dane wejściowe mo
 
 ### <a name="how-data-drift-is-monitored-in-azure-machine-learning-service"></a>Jak jest monitorowane przedryfowanie danych w usłudze Azure Machine Learning
 
-Przy użyciu usługi Azure Machine Learning, dryfowanie danych jest monitorowane za pośrednictwem zestawów danych lub wdrożeń. Aby monitorować do dryfowania danych, bazowy zestaw danych — zwykle jest to zestaw danych szkoleniowych dla modelu — jest określony. Drugi zestaw danych — zwykle dane wejściowe modelu zebrane z wdrożenia — są testowane względem bazowego zestawu danych. Oba zestawy danych są [profilowane i są](how-to-explore-prepare-data.md#explore-with-summary-statistics) danymi wejściowymi do usługi monitorowania dryfowania danych. Model uczenia maszynowego jest szkolony w celu wykrywania różnic między dwoma zestawami danych. Wydajność modelu jest konwertowana na współczynnik dryfu, który mierzy wielkość dryfu między dwoma zestawami danych. Przy użyciu funkcji [interpretacji modelu](machine-learning-interpretability-explainability.md)są obliczane funkcje, które przyczyniają się do współczynnika dryfu. W profilu zestawu danych są śledzone informacje statystyczne dotyczące każdej funkcji. 
+Przy użyciu usługi Azure Machine Learning, dryfowanie danych jest monitorowane za pośrednictwem zestawów danych lub wdrożeń. Aby monitorować do dryfowania danych, bazowy zestaw danych — zwykle jest to zestaw danych szkoleniowych dla modelu — jest określony. Drugi zestaw danych — zwykle dane wejściowe modelu zebrane z wdrożenia — są testowane względem bazowego zestawu danych. Oba zestawy danych są [](how-to-explore-prepare-data.md#explore-with-summary-statistics) profilowane i są danymi wejściowymi do usługi monitorowania dryfowania danych. Model uczenia maszynowego jest szkolony w celu wykrywania różnic między dwoma zestawami danych. Wydajność modelu jest konwertowana na współczynnik dryfu, który mierzy wielkość dryfu między dwoma zestawami danych. Przy użyciu funkcji [interpretacji modelu](machine-learning-interpretability-explainability.md)są obliczane funkcje, które przyczyniają się do współczynnika dryfu. W profilu zestawu danych są śledzone informacje statystyczne dotyczące każdej funkcji. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Subskrypcja platformy Azure. Jeśli go nie masz, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
 
-- Obszar roboczy usługi Azure Machine Learning i Azure Machine Learning SDK dla język Python jest zainstalowany. Skorzystaj z instrukcji w [obszarze Tworzenie obszaru roboczego usługi Azure Machine Learning](setup-create-workspace.md#sdk) , aby wykonać następujące czynności:
+- Azure Machine Learning zestawu SDK dla języka Python. Użyj instrukcji w [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) , aby wykonać następujące czynności:
 
     - Tworzenie środowiska Miniconda
     - Instalowanie zestawu SDK Azure Machine Learning dla języka Python
-    - Tworzenie obszaru roboczego
-    - Napisz plik konfiguracji obszaru roboczego (aml_config/config. JSON).
+
+- [Obszar roboczy usługi Azure Machine Learning](how-to-manage-workspace.md).
+
+- [Plik konfiguracji](how-to-configure-environment.md#workspace)obszaru roboczego.
 
 - Zainstaluj zestaw SDK dryfowania danych przy użyciu następującego polecenia:
 
@@ -193,8 +195,8 @@ Na podstawie danych wyjściowych poprzedniego kodu można chcieć ponownie przep
 * Oceń wydajność nowo wygenerowanego modelu.
 * Wdróż nowy model, jeśli wydajność jest lepsza niż model produkcyjny.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Aby zapoznać się z pełnym przykładem korzystania z funkcji dryfowania danych, zobacz [Notes dryfowania danych w usłudze Azure ml](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/data-drift/azure-ml-datadrift.ipynb). Ten Jupyter Notebook ilustruje użycie [otwartego zestawu danych platformy Azure](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) do uczenia modelu, aby przewidzieć Pogoda, wdrożyć go w usłudze AKS oraz monitorować dane dotyczące dryfowania danych. 
+* Aby zapoznać się z pełnym przykładem korzystania z funkcji dryfowania danych, zobacz [Notes dryfowania danych w usłudze Azure ml](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/monitor-models/data-drift/azure-ml-datadrift.ipynb). Ten Jupyter Notebook ilustruje użycie [otwartego zestawu danych platformy Azure](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) do uczenia modelu, aby przewidzieć Pogoda, wdrożyć go w usłudze AKS oraz monitorować dane dotyczące dryfowania danych. 
 
 * Znacznie doceniamy Twoje pytania, komentarze lub sugestie, ponieważ dryf danych zbliża się do ogólnej dostępności. Skorzystaj z przycisku opinii o produkcie poniżej. 

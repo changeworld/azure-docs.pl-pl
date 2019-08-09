@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69c4c9b2470960a3d0b2fa337f2d8d3542c1242d
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
-ms.translationtype: HT
+ms.openlocfilehash: ad3cd612200dc33fe37036146b00f52073403ecc
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834657"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852037"
 ---
 # <a name="supported-account-types"></a>Obsługiwane typy kont
 
@@ -58,7 +58,7 @@ Niektórych typów kont nie można używać w przypadku niektórych przepływów
 
  Aplikacje mogą również logować użytkowników w [chmurach narodowych](authentication-national-cloud.md). Konta osobiste firmy Microsoft nie są jednak obsługiwane w tych chmurach (z definicji tych chmur). Dlatego obsługiwane typy kont są ograniczone, w przypadku tych chmur, do organizacji (pojedynczej dzierżawy) lub wszelkich organizacji (aplikacje wielodostępne).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej o [dzierżawie w Azure Active Directory](./single-and-multi-tenant-apps.md)
 - Dowiedz się [](./authentication-national-cloud.md) więcej o chmurach narodowych

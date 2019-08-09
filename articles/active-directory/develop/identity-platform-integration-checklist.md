@@ -1,6 +1,6 @@
 ---
-title: Integracja z platformą Microsoft identity | Azure
-description: Dowiedz się więcej o najlepszych rozwiązań i wspólne przeoczeń podczas integracji z platformą tożsamości Microsoft (w wersji 2.0).
+title: Integracja z platformą tożsamości firmy Microsoft | Azure
+description: Zapoznaj się z najlepszymi rozwiązaniami i typowymi szczegółowymi informacjami na temat integracji z platformą tożsamości firmy Microsoft (v 2.0).
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -15,95 +15,95 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
-ms.custom: aaddev
-ms.openlocfilehash: 0acef783b4877b5b1787f142aec6cc3588293f83
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: aaddev, identityplatformtop40
+ms.openlocfilehash: 33128cbece3b217778182b3831b02e2f3f654f3b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111471"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853214"
 ---
-# <a name="microsoft-identity-platform-integration-checklist"></a>Lista kontrolna dotycząca programu Microsoft tożsamości platformy integracji
+# <a name="microsoft-identity-platform-integration-checklist"></a>Lista kontrolna integracji z platformą Microsoft Identity
 
-Lista kontrolna dotycząca programu Microsoft identity platformy integracji jest przeznaczona do wskazówki dotyczące przejścia do integracji wysokiej jakości i bezpieczne. Zawiera opis najlepszych rozwiązań typowych przeoczeń podczas integracji z platformą tożsamości Microsoft więc zapoznać się z listą w regularnych odstępach czasu, aby upewnić się, że obsługa jakość i bezpieczeństwo aplikacji integracji z platformą tożsamości. Lista kontrolna nie jest przeznaczone do przeglądania całej aplikacji. Zawartość listy kontrolnej mogą ulec zmianie w miarę wprowadzania ulepszeń do korzystania z platformy.
+Lista kontrolna integracji z platformą Microsoft Identity została zaprojektowana w celu zapewnienia wysokiej jakości i bezpiecznej integracji. Wyróżnia ona najlepsze rozwiązania i często występujące szczegółowe informacje podczas integrowania z platformą tożsamości firmy Microsoft, co pozwala na regularne zapoznanie się z listą w celu zapewnienia jakości i bezpieczeństwa integracji aplikacji z platformą tożsamości. Lista kontrolna nie ma na celu przejrzenia całej aplikacji. Zawartość listy kontrolnej może ulec zmianie w miarę wprowadzania ulepszeń na platformie.
 
-Jeśli po prostu rozpoczynasz pracę, zapoznaj się z [dokumentacji](index.yml) Aby dowiedzieć się więcej na temat podstawowe informacje dotyczące uwierzytelniania, scenariuszy aplikacji na platformie tożsamości firmy Microsoft i innych.
+Jeśli dopiero zaczynasz, zapoznaj się z [dokumentacją](index.yml) , aby dowiedzieć się więcej na temat podstawowych informacji dotyczących uwierzytelniania, scenariuszy aplikacji na platformie tożsamości firmy Microsoft i innych.
 
-## <a name="testing-your-integration"></a>Testowanie integracji usługi
+## <a name="testing-your-integration"></a>Testowanie integracji
 
-Użyj poniższej listy kontrolnej, aby upewnić się, że aplikacja efektywnie jest zintegrowana z usługą [platforma tożsamości usługi Microsoft](https://docs.microsoft.com/azure/active-directory/develop/).
+Użyj poniższej listy kontrolnej, aby upewnić się, że aplikacja jest efektywnie zintegrowana z [platformą tożsamości firmy Microsoft](https://docs.microsoft.com/azure/active-directory/develop/).
 
-### <a name="basics"></a>Podstawy
-
-|   |   |
-|---|---|
-| ![Zaznacz pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Dokładnie zapoznaj się [zasady platformy firmy Microsoft](https://go.microsoft.com/fwlink/?linkid=2090497&clcid=0x409). Upewnij się, że aplikacja działa zgodnie z warunki opisane, ponieważ służą one do ochrony użytkowników i platformy. |
-
-### <a name="ownership"></a>Własność
+### <a name="basics"></a>Ustawienia podstawowe
 
 |   |   |
 |---|---|
-| ![Zaznacz pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Upewnij się, że informacje skojarzone z kontem służące do rejestrowania aplikacji i zarządzanie nimi jest aktualny. |
+| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Przeczytaj i zapoznaj się z [zasadami platformy firmy Microsoft](https://go.microsoft.com/fwlink/?linkid=2090497&clcid=0x409). Upewnij się, że aplikacja jest zgodna z warunkami, które zostały zaprojektowane w celu ochrony użytkowników i platformy. |
+
+### <a name="ownership"></a>Wyniku
+
+|   |   |
+|---|---|
+| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Upewnij się, że informacje skojarzone z kontem używanym do rejestrowania aplikacji i zarządzania nimi są aktualne. |
 
 ### <a name="branding"></a>Znakowanie
 
 |   |   |
 |---|---|
-| ![Zaznacz pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Przestrzegać [znakowania wskazówki dotyczące aplikacji](howto-add-branding-in-azure-ad-apps.md). |
-| ![Zaznacz pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Podaj nazwę opisową i logo aplikacji. Te informacje są wyświetlane na monit o wyrażenie zgody aplikacji. Upewnij się, że nazwy i logo są przedstawiciel firmy/product tak, aby użytkownicy mogą wprowadzać świadomych decyzji. Upewnij się, masz wszystkie znaki towarowe bez naruszania. |
+| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Przestrzeganie [wytycznych dotyczących znakowania aplikacji](howto-add-branding-in-azure-ad-apps.md). |
+| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Podaj opisową nazwę i logo dla swojej aplikacji. Te informacje są wyświetlane w monicie o zgodę aplikacji. Upewnij się, że Twoja nazwa i logo są reprezentatywne dla Twojej firmy/produktu, aby użytkownicy mogli podejmować świadome decyzje. Upewnij się, że nie są naruszane żadne znaki towarowe. |
 
 ### <a name="privacy"></a>Ochrona prywatności
 
 |   |   |
 |---|---|
-| ![Zaznacz pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Zawierają linki do warunków aplikacji usługi i zasady zachowania poufności. |
+| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Podaj linki do warunków użytkowania i zasad zachowania poufności informacji aplikacji. |
 
 ### <a name="security"></a>Bezpieczeństwo
 
 |   |   |
 |---|---|
-| ![Zaznacz pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Obsługa własności wszystkie swoje identyfikatory URI przekierowań i Aktualizuj rekordy DNS dla nich. Nie używaj symboli wieloznacznych (*) w swojej identyfikatorów URI. W przypadku aplikacji sieci web upewnij się, wszystkie identyfikatory URI jest bezpieczna i szyfrowana (na przykład przy użyciu protokołu https, schematy). Klientów publicznych identyfikatory URI przekierowania użycia specyficznego dla platformy, jeśli ma to zastosowanie (głównie dla systemów iOS i Android). W przeciwnym razie użyj przekierowania URI z dużej ilości losowości w celu uniknięcia kolizji w przypadku, gdy wywołań zwrotnych do aplikacji. Jeśli aplikacja jest używana z agenta izolowanych sieci web, można użyć https://login.microsoftonline.com/nativeclient. Przejrzyj i Przytnij wszystkie nieużywane i niepotrzebne identyfikatory URI przekierowań w regularnych odstępach czasu. |
-| ![Zaznacz pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Jeśli aplikacja zostanie zarejestrowana w katalogu, należy zminimalizować i ręcznie monitorować listy właścicieli rejestracji aplikacji. |
-| ![Zaznacz pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Nie włączaj obsługę [niejawne protokołu OAuth2 udzielić przepływ](v2-oauth2-implicit-grant-flow.md) , chyba że wyraźnie wymagane. Dowiedz się więcej o prawidłowe scenariusza [tutaj](v1-oauth2-implicit-grant-flow.md#suitable-scenarios-for-the-oauth2-implicit-grant). |
-| ![Zaznacz pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Nie używaj [przepływ poświadczeń hasła właściciela zasobu (ROPC)](v2-oauth-ropc.md), które bezpośrednio obsługuje haseł użytkowników. Ten przepływ wymaga wysokiego stopnia narażenia zaufania i użytkownika i należy używać tylko, gdy nie można użyć innych, bardziej bezpiecznymi przepływów. |
-| ![Zaznacz pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Ochrona poświadczeń i zarządzania nimi Twojej aplikacji. Użyj [certyfikatu poświadczeń](active-directory-certificate-credentials.md), nie poświadczeń haseł (wpisy tajne klienta). Jeśli musisz użyć poświadczeń hasła, nie należy ustawiać go ręcznie. Nie przechowuje poświadczeń w kodzie lub konfiguracji i umożliwiających nigdy nie są obsługiwane przez ludzi. Jeśli to możliwe, używaj [zarządzanych tożsamości dla zasobów platformy Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) lub [usługi Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) do przechowywania i regularnie Obróć swoje poświadczenia. |
-| ![Zaznacz pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Upewnij się, że Twoja aplikacja żąda najniższych uprawnień uprawnień. Tylko zadawać pytania dotyczące uprawnień, absolutnie wymaganych przez aplikację i tylko wtedy, gdy ich potrzebujesz. Zrozumienie różnic [typy uprawnień](v1-permissions-and-consent.md#types-of-permissions). Używać tylko uprawnienia aplikacji, w razie potrzeby; Jeśli jest to możliwe, należy użyć uprawnień delegowanych. Aby uzyskać pełną listę uprawnień programu Microsoft Graph, zobacz ten [informacje o uprawnieniach](https://docs.microsoft.com/graph/permissions-reference). |
-| ![Zaznacz pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Jeśli zabezpieczasz interfejs API przy użyciu platformy tożsamości firmy Microsoft, należy dokładnie przemyślenie uprawnienia, które powinien ujawniać. Należy wziąć pod uwagę, co to jest odpowiednim poziomie szczegółowości dla rozwiązania i uprawnień, które wymagają zgody administratora. Sprawdź, czy oczekiwany uprawnień w tokenach przychodzących przed podjęciem decyzji o autoryzacji. |
+| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Zachować własność wszystkich identyfikatorów URI przekierowania i zachować Aktualności rekordów DNS. Nie używaj symboli wieloznacznych (*) w identyfikatorach URI. W przypadku usługi Web Apps upewnij się, że wszystkie identyfikatory URI są bezpieczne i szyfrowane (na przykład przy użyciu schematów https). W przypadku klientów publicznych Użyj identyfikatorów URI przekierowania specyficznych dla platformy, jeśli są odpowiednie (głównie dla systemów iOS i Android). W przeciwnym razie Użyj identyfikatorów URI przekierowania z dużą ilością losowości, aby zapobiec kolizjom podczas wywoływania z powrotem do aplikacji. Jeśli aplikacja jest używana przez izolowanego agenta sieci Web, można użyć https://login.microsoftonline.com/nativeclient programu. Regularnie Przeglądaj i przycinaj wszystkie nieużywane lub niepotrzebne identyfikatory URI przekierowań. |
+| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Jeśli Twoja aplikacja jest zarejestrowana w katalogu, Zminimalizuj i ręcznie Monitoruj listę właścicieli rejestracji aplikacji. |
+| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Nie włączaj obsługi niejawnego [przepływu OAuth2](v2-oauth2-implicit-grant-flow.md) , chyba że jest to wymagane jawnie. Zapoznaj się z prawidłowym scenariuszem. [](v1-oauth2-implicit-grant-flow.md#suitable-scenarios-for-the-oauth2-implicit-grant) |
+| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Nie używaj [przepływu poświadczeń hasła właściciela zasobu (ROPC)](v2-oauth-ropc.md), który bezpośrednio obsługuje hasła użytkowników. Ten przepływ wymaga wysokiego stopnia zaufania i zagrożeń użytkownika i powinien być używany tylko wtedy, gdy inne, bezpieczniejsze, nie można używać przepływów. |
+| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Ochrona poświadczeń aplikacji i zarządzanie nimi. Użyj [poświadczeń certyfikatu](active-directory-certificate-credentials.md), a nie poświadczeń hasła (kluczy tajnych klienta). Jeśli musisz użyć poświadczenia hasła, nie ustawiaj go ręcznie. Nie należy przechowywać poświadczeń w kodzie ani w konfiguracji, a nigdy nie zezwalać na ich obsługę przez człowieka. Jeśli to możliwe, użyj [zarządzanych tożsamości dla zasobów platformy Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) lub [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) do przechowywania i regularnego rotacji Twoich poświadczeń. |
+| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Upewnij się, że aplikacja żąda najniższych uprawnień. Tylko Poproś o uprawnienia wymagane przez aplikację i tylko wtedy, gdy są one potrzebne. Zapoznaj się z różnymi [rodzajami uprawnień](v1-permissions-and-consent.md#types-of-permissions). W razie potrzeby używaj uprawnień aplikacji; Użyj uprawnień delegowanych, jeśli jest to możliwe. Aby uzyskać pełną listę uprawnień Microsoft Graph, zobacz to [odwołanie do uprawnień](https://docs.microsoft.com/graph/permissions-reference). |
+| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | W przypadku zabezpieczania interfejsu API przy użyciu platformy tożsamości firmy Microsoft należy uważnie zastanowić się nad uprawnieniami, które powinien ujawnić. Weź pod uwagę, jaki jest poziom szczegółowości rozwiązania i jakie uprawnienia wymagają zgody administratora. Przed podjęciem decyzji o autoryzacji Sprawdź, czy w tokenach przychodzących są oczekiwane uprawnienia. |
 
-### <a name="implementation"></a>Wdrażanie
+### <a name="implementation"></a>Implementacja
 
 |   |   |
 |---|---|
-| ![Zaznacz pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Korzystanie z rozwiązań nowoczesnego uwierzytelniania (OAuth 2.0 [OpenID Connect](v2-protocols-oidc.md)) do bezpiecznego logowania użytkowników. |
-| ![Zaznacz pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Nie implementują protokoły samodzielnie — użyj [bibliotek uwierzytelniania obsługiwane przez firmę Microsoft](reference-v2-libraries.md) (MSAL, oprogramowanie pośredniczące serwera). Upewnij się, że używasz najnowszej wersji biblioteki uwierzytelniania, która została zintegrowana z usługą. |
-| ![Zaznacz pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Jeśli danych wymaganych przez aplikację jest dostępna za pośrednictwem [programu Microsoft Graph](https://developer.microsoft.com/graph), zażądać uprawnień dla tych danych przy użyciu punktu końcowego programu Microsoft Graph, a nie poszczególnych interfejsów API. |
+| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Używaj nowoczesnych rozwiązań uwierzytelniania (OAuth 2,0, [OpenID Connect Connect](v2-protocols-oidc.md)) do bezpiecznego logowania użytkowników. |
+| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Nie Wdrażaj samodzielnie protokołów — Użyj [bibliotek uwierzytelniania obsługiwanych przez firmę Microsoft](reference-v2-libraries.md) (MSAL, oprogramowanie pośredniczące serwera). Upewnij się, że używasz najnowszej wersji biblioteki uwierzytelniania zintegrowanej z programem. |
+| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Jeśli dane wymagane przez aplikację są dostępne za pośrednictwem [Microsoft Graph](https://developer.microsoft.com/graph), zażądaj uprawnień dla tych danych przy użyciu punktu końcowego Microsoft Graph, a nie do poszczególnych interfejsów API. |
 
 ### <a name="end-user-experience"></a>Środowisko użytkownika końcowego
 
 |   |   |
 |---|---|
-| ![Zaznacz pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | [Omówienie środowiska zgody](application-consent-experience.md) i konfigurować elementy monit o wyrażenie zgody aplikacji tak, aby użytkownicy końcowi i Administratorzy mają informacje wystarczające do wyznaczenia, jeśli są zaufane aplikacji. |
-| ![Zaznacz pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Ogranicz liczbę razy, użytkownik musi podać poświadczenia logowania podczas korzystania z aplikacji, próbując dyskretnej uwierzytelniania (dyskretnej uzyskanie tokenu) przed interaktywne przepływów. |
-| ![Zaznacz pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Nie używaj "Monituj = zgodę" podczas każdego logowania. Użyj tylko wiersza = zgody, nawet jeśli trzeba Pytaj o zgodę na dodatkowe uprawnienia (na przykład, jeśli zmieniono wymagane uprawnienia aplikacji). |
-| ![Zaznacz pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Gdy to stosowne, wzbogacanie aplikacji przy użyciu danych użytkownika. Użyj [interfejsu API Microsoft Graph](https://developer.microsoft.com/graph) łatwy sposób, aby to zrobić. [Graph explorer](https://developer.microsoft.com/graph/graph-explorer) narzędzie, które mogą pomóc Ci rozpocząć pracę. |
-| ![Zaznacz pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Zarejestruj pełny zestaw uprawnień wymaganych przez aplikację, dzięki czemu administratorzy mogą wyrazić zgody łatwe do swojej dzierżawy. Użyj [przyrostowe zgody](azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent) w czasie wykonywania, aby ułatwić użytkownikom zrozumienie, dlaczego aplikacja żąda uprawnień, które mogą dotyczyć lub mylić użytkowników zleconą przy pierwszym uruchomieniu. |
-| ![Zaznacz pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Implementowanie [wyczyścić pojedyncze środowisko wylogowania](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-6-SignOut). To wymaganie dotyczące zabezpieczeń i poufności informacji i sprawia, że środowisko użytkownika. |
+| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | [Zapoznaj się z](application-consent-experience.md) tematem zgody i skonfiguruj fragmenty monitu o zgodę aplikacji, aby użytkownicy końcowi i administratorzy mieli wystarczającą ilość informacji, aby określić, czy ufają aplikacji. |
+| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Zminimalizuj, ile razy użytkownik musi wprowadzić poświadczenia logowania podczas korzystania z aplikacji, próbując przeprowadzić uwierzytelnianie dyskretne (dyskretny token) przed interaktywnymi przepływami. |
+| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Nie używaj "Prompt = zgody" przy każdym logowaniu. Należy używać monitu = wyrażanie zgody, jeśli określono, że należy zażądać zgody na dodatkowe uprawnienia (na przykład jeśli zmieniono wymagane uprawnienia aplikacji). |
+| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Jeśli ma to zastosowanie, Wzbogacaj aplikację o dane użytkownika. Aby to zrobić, użyj [interfejsu API Microsoft Graph](https://developer.microsoft.com/graph) . Narzędzie [Eksplorator grafów](https://developer.microsoft.com/graph/graph-explorer) ułatwiające rozpoczęcie pracy. |
+| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Zarejestruj pełny zestaw uprawnień wymaganych przez aplikację, aby administratorzy mogli łatwo udzielić zgody na dostęp do swojej dzierżawy. Używaj [przyrostowej zgody](azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent) w czasie wykonywania, aby ułatwić użytkownikom zrozumienie, Dlaczego aplikacja żąda uprawnień, które mogą mieć problemy lub mylić użytkowników, gdy są żądane podczas pierwszego uruchomienia. |
+| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Zaimplementuj [czyste środowisko logowania](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-6-SignOut)jednokrotnego. Jest to ochrona prywatności i wymagania dotyczące zabezpieczeń oraz zapewnia dobre środowisko użytkownika. |
 
 ### <a name="testing"></a>Testowanie
 
 |   |   |
 |---|---|
-| ![Zaznacz pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Test dla [zasady dostępu warunkowego](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-6-SignOut) mogą wpływać na zdolność użytkowników do korzystania z aplikacji. |
-| ![Zaznacz pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Przetestuj aplikację za pomocą wszystkich możliwych kont, które planujesz obsługiwać (na przykład, pracy lub konta służbowe, osobiste konta Microsoft, kont dzieci i kont należących do suwerennej). |
+| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Przetestuj [zasady dostępu warunkowego](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-6-SignOut) , które mogą mieć wpływ na możliwość korzystania z aplikacji przez użytkowników. |
+| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Przetestuj swoją aplikację ze wszystkimi możliwymi kontami, które planujesz obsługiwać (na przykład konta służbowe, osobiste konta Microsoft, konta podrzędne i suwerenne konta). |
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 Uzyskaj szczegółowe informacje na temat wersji 2.0:
 
-* [Platforma tożsamości firmy Microsoft (w wersji 2.0 — omówienie)](v2-overview.md)
-* [Odwołanie protokołów platforma tożsamości firmy Microsoft](active-directory-v2-protocols.md)
+* [Microsoft Identity platform (wersja 2.0 — omówienie)](v2-overview.md)
+* [Informacje o protokołach Microsoft Identity platform](active-directory-v2-protocols.md)
 * [Dokumentacja tokenów dostępu](access-tokens.md)
 * [Dokumentacja tokenów identyfikatorów](id-tokens.md)
-* [Dokumentacja biblioteki uwierzytelniania](reference-v2-libraries.md)
-* [Uprawnienia i zgody w platformie tożsamości firmy Microsoft](v2-permissions-and-consent.md)
+* [Dokumentacja bibliotek uwierzytelniania](reference-v2-libraries.md)
+* [Uprawnienia i zgoda na platformie tożsamości firmy Microsoft](v2-permissions-and-consent.md)
 * [Interfejs API programu Microsoft Graph](https://developer.microsoft.com/graph)

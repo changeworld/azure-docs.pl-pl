@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: 34902aa23339b62920f918ae19b410a99e226a0e
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 793474495f3ab3ef06a17b48d15c2f91d0677365
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358796"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848162"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Autouczenie modelu prognozowania szeregów czasowych
 
@@ -27,18 +27,18 @@ W tym artykule dowiesz się, jak szkolić model regresji prognozowania szeregów
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GW]
 
-Możesz użyć zautomatyzowanej ML do łączenia technik i podejścia i uzyskania zalecanej wysokiej jakości prognozy szeregów czasowych. Zautomatyzowany eksperyment szeregów czasowych jest traktowany jako problem z regresją wieloczynnikowa. Poprzednie wartości serii czasowych są "przestawne", aby stać się dodatkowymi wymiarami regresor wraz z innymi predykcyjnymi. 
+Możesz użyć zautomatyzowanej ML do łączenia technik i podejścia i uzyskania zalecanej wysokiej jakości prognozy szeregów czasowych. Zautomatyzowany eksperyment szeregów czasowych jest traktowany jako problem z regresją wieloczynnikowa. Poprzednie wartości serii czasowych są "przestawne", aby stać się dodatkowymi wymiarami regresor wraz z innymi predykcyjnymi.
 
 Takie podejście, w przeciwieństwie do klasycznych metod szeregów czasowych, ma zaletę naturalnie dołączania wielu zmiennych kontekstowych i ich relacji do siebie podczas uczenia się. W rzeczywistych aplikacjach do prognozowania można mieć wpływ na prognozę. Na przykład podczas prognozowania sprzedaży, interakcji z tendencjami historycznymi, kursów wymiany i ceny wszystkie wspólnie łączą wynik sprzedaży. Dodatkową korzyścią jest to, że wszystkie najnowsze innowacje w modelach regresji natychmiast stosują się do prognozowania.
 
-Można [skonfigurować](#config) , jak daleko w przyszłość Prognoza powinna zostać rozszerzona (horyzont prognoz), a także spowolnienia i nie tylko. Zautomatyzowana ML zdobywa pojedynczy, ale często wewnętrznie rozgałęzienie modelu dla wszystkich elementów w zestawie danych i prognozowanie Horizons. W tym celu można uzyskać więcej danych w celu oszacowania parametrów modelu i generalizacji do niewidocznej serii. 
+Można [skonfigurować](#config) , jak daleko w przyszłość Prognoza powinna zostać rozszerzona (horyzont prognoz), a także spowolnienia i nie tylko. Zautomatyzowana ML zdobywa pojedynczy, ale często wewnętrznie rozgałęzienie modelu dla wszystkich elementów w zestawie danych i prognozowanie Horizons. W tym celu można uzyskać więcej danych w celu oszacowania parametrów modelu i generalizacji do niewidocznej serii.
 
-Funkcje wyodrębnione z danych szkoleniowych odgrywają rolę krytyczną. I, zautomatyzowana ML wykonuje standardowe kroki przetwarzania wstępnego i generuje dodatkowe funkcje szeregów czasowych do przechwytywania efektów sezonowych i maksymalizuje dokładność predykcyjną. 
+Funkcje wyodrębnione z danych szkoleniowych odgrywają rolę krytyczną. I, zautomatyzowana ML wykonuje standardowe kroki przetwarzania wstępnego i generuje dodatkowe funkcje szeregów czasowych do przechwytywania efektów sezonowych i maksymalizuje dokładność predykcyjną.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Obszar roboczy usługi Azure Machine Learning. Aby utworzyć obszar roboczy, zobacz [Tworzenie obszaru roboczego usługi Azure Machine Learning](setup-create-workspace.md).
-* W tym artykule założono podstawową wiedzę na temat konfigurowania zautomatyzowanego eksperymentu uczenia maszynowego. Postępuj [](tutorial-auto-train-models.md) zgodnie z [samouczkiem lub](how-to-configure-auto-train.md) poradami, aby zobaczyć podstawowe wzorce projektowe eksperymentu w usłudze Machine Learning.
+* Obszar roboczy usługi Azure Machine Learning. Aby utworzyć obszar roboczy, zobacz [Tworzenie obszaru roboczego usługi Azure Machine Learning](how-to-manage-workspace.md).
+* W tym artykule założono podstawową wiedzę na temat konfigurowania zautomatyzowanego eksperymentu uczenia maszynowego. Postępuj zgodnie z [](how-to-configure-auto-train.md) [samouczkiem](tutorial-auto-train-models.md) lub poradami, aby zobaczyć podstawowe wzorce projektowe eksperymentu w usłudze Machine Learning.
 
 ## <a name="preparing-data"></a>Przygotowywanie danych
 
@@ -106,9 +106,13 @@ time_series_settings = {
     "grain_column_names": ["store"],
     "max_horizon": 50,
     "target_lags": 2,
-    "target_rolling_window_size": 10
+    "target_rolling_window_size": 10,
+    "preprocess": True,
 }
 ```
+
+> [!NOTE]
+> Zautomatyzowane kroki wstępnego przetwarzania w usłudze Machine Learning (normalizacja funkcji, obsługa brakujących danych, konwertowanie tekstu na liczbowe itp.) staje się częścią modelu źródłowego. Przy użyciu modelu dla prognoz te same kroki przetwarzania wstępnego zastosowane podczas uczenia są automatycznie stosowane do danych wejściowych.
 
 Teraz można utworzyć obiekt `AutoMLConfig` standardowy, `forecasting` określić typ zadania i przesłać eksperyment. Po zakończeniu działania modelu Pobierz iterację najlepszego przebiegu.
 
