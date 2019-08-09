@@ -289,7 +289,7 @@ Ten ogólny łącznik REST obsługuje następujące wzorce dzielenia na strony:
 |:--- |:--- |
 | AbsoluteUrl | Określa adres URL następnego żądania. Może być **bezwzględny adres URL lub względny adres URL**. |
 | QueryParameters.*request_query_parameter* OR QueryParameters['request_query_parameter'] | "request_query_parameter" jest zdefiniowana przez użytkownika odwołujące się jedną nazwę parametru zapytania w następnym adresu URL żądania HTTP. |
-| Nagłówki. *request_header* lub nagłówków [request_header] | "request_header" jest zdefiniowana przez użytkownika które odwołują się do jednej nazwy nagłówka w następnym żądaniu HTTP. |
+| Headers.*request_header* lub Headers['request_header'] | "request_header" jest zdefiniowana przez użytkownika które odwołują się do jednej nazwy nagłówka w następnym żądaniu HTTP. |
 
 **Obsługiwane wartości** w regułach dzielenia na strony:
 
