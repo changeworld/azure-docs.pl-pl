@@ -62,7 +62,7 @@ Dla połączonej usługi Salesforce są obsługiwane następujące właściwośc
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ |Właściwość Type musi być ustawiona na wartość **Salesforce**. |Tak |
+| type |Właściwość Type musi być ustawiona na wartość **Salesforce**. |Tak |
 | environmentUrl | Określ adres URL wystąpienia usługi Salesforce. <br> -Wartość domyślna `"https://login.salesforce.com"`to. <br> -Aby skopiować dane z piaskownicy, `"https://test.salesforce.com"`Określ. <br> -Aby skopiować dane z domeny niestandardowej, określ, na przykład `"https://[domain].my.salesforce.com"`,. |Nie |
 | username |Określ nazwę użytkownika dla konta użytkownika. |Yes |
 | password |Określ hasło dla konta użytkownika.<br/><br/>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
