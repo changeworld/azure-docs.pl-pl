@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 08/08/2019
 ms.author: sajagtap
-ms.openlocfilehash: 9bfe5f21da6418f82b2099a5da4ba8c3c32c25f3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2a4726357e35fa123355d9ba450f7c6d8624fe78
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564494"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946230"
 ---
 # <a name="quickstart-analyze-images-for-objectionable-content-in-c"></a>Szybki start: Analizuj obrazy dla niepożądanych treści wC#
 
@@ -49,22 +49,22 @@ Następnie skopiujesz kod z tego przewodnika i wkleisz go do projektu, aby zaimp
 
 Dodaj następujące instrukcje `using` na początku pliku *Program.cs*.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=1-8)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=1-7)]
 
 ### <a name="create-the-content-moderator-client"></a>Tworzenie klienta usługi Content Moderator
 
 Dodaj następujący kod do pliku *Program.cs*, aby utworzyć dostawcę klienta usługi Content Moderator dla subskrypcji. W tej samej przestrzeni nazw dodaj kod wraz z klasą **Program**. Następnie trzeba będzie zaktualizować pola **AzureRegion** i **CMSubscriptionKey** przy użyciu wartości identyfikatora regionu i klucza subskrypcji.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=84-107)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=83-106)]
 
 
 ### <a name="set-up-input-and-output-targets"></a>Konfigurowanie wejściowych i wyjściowych elementów docelowych
 
-Dodaj następujące pola statyczne do klasy **Program** w pliku _Program.cs_. Te pola określają pliki dla wejściowej zawartości obrazu i wyjściowej zawartości JSON.
+Dodaj następujące pola statyczne do klasy **Program** w pliku _Program.cs_ . Te pola określają pliki dla wejściowej zawartości obrazu i wyjściowej zawartości JSON.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=49-53)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=48-52)]
 
-Musisz utworzyć plik wejściowy *_ImageFiles.txt*, a następnie odpowiednio zaktualizować jego ścieżkę (ścieżki względne są względne wobec katalogu wykonywania). Otwórz plik _ImageFiles.txt_ i dodaj adresy URL obrazów do moderowania. Ten przewodnik Szybki start używa następujących adresów URL jako przykładowych danych wejściowych.
+Należy utworzyć plik wejściowy *ImageFiles. txt* i odpowiednio zaktualizować jego ścieżkę (ścieżki względne są względne dla katalogu wykonywania). Otwórz plik _ImageFiles.txt_ i dodaj adresy URL obrazów do moderowania. Ten przewodnik Szybki start używa następujących adresów URL jako przykładowych danych wejściowych.
 
 ```
 https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
@@ -75,24 +75,24 @@ https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
 Dodaj następujący kod do pliku *Program.cs* wraz z klasą **Program** w tej samej przestrzeni nazw. Użyjesz wystąpienia tej klasy, aby zarejestrować wyniki moderowania poszczególnych przeglądanych obrazów.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=109-124)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=108-123)]
 
 
 ### <a name="define-the-image-evaluation-method"></a>Definiowanie metody oceny obrazu
 
 Dodaj następującą metodę do klasy **Program**. Ta metoda ocenia pojedynczy obraz na trzy różne sposoby i zwraca wyniki oceny. Jeśli chcesz dowiedzieć się więcej o sposobie działania poszczególnych operacji, kliknij link w sekcji [Następne kroki](#next-steps).
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=55-81)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=54-80)]
 
 ### <a name="load-the-input-images"></a>Ładowanie obrazów wejściowych
 
 Dodaj następujący kod do metody **Main** w klasie **Program**. Ten kod konfiguruje program do pobierania danych oceny dla każdego adresu URL obrazu w pliku wejściowym. Te dane są następnie zapisywane w pojedynczym pliku wyjściowym.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=17-46)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=16-45)]
 
 ## <a name="run-the-program"></a>Uruchamianie programu
 
-Program zapisze dane ciągu JSON w pliku _ModerationOutput.json_. Przykładowe obrazy używane w tym przewodniku Szybki start powodują wygenerowanie następujących danych wyjściowych. Każdy obraz ma różne sekcje dla `ImageModeration`, `FaceDetection`i `TextDetection`, które odpowiadają trzem wywołaniem interfejsu API w metodzie **EvaluateImage** .
+Program zapisze dane ciągu JSON w pliku _ModerationOutput.json_ . Przykładowe obrazy używane w tym przewodniku Szybki start powodują wygenerowanie następujących danych wyjściowych. Każdy obraz ma różne sekcje dla `ImageModeration`, `FaceDetection`i `TextDetection`, które odpowiadają trzem wywołaniem interfejsu API w metodzie **EvaluateImage** .
 
 ```json
 [{
@@ -276,7 +276,7 @@ Program zapisze dane ciągu JSON w pliku _ModerationOutput.json_. Przykładowe o
 }]
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start utworzono prostą aplikację platformy .NET, która zwraca odpowiednie informacje o danym obrazie przykładowym dzięki użyciu usługi Content Moderator. Następnie dowiedz się więcej na temat znaczenia różnych flag i klasyfikacji, aby móc podejmować decyzje dotyczące potrzebnych danych oraz sposobu ich obsługi przez aplikację.
 

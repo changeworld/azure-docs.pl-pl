@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą OnTrack | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i OnTrack.
+title: 'Samouczek: Azure Active Directory integrację z usługą OnTrack | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i OnTrack.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: c1da9ec6098864d4f17ac668db6411c1dd0e3afe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 371ad2a8530de7b20427327d939bf164d871ab74
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67095657"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68944037"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ontrack"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą OnTrack
+# <a name="tutorial-azure-active-directory-integration-with-ontrack"></a>Samouczek: Integracja Azure Active Directory z usługą OnTrack
 
-W tym samouczku dowiesz się, jak zintegrować OnTrack w usłudze Azure Active Directory (Azure AD).
-Integrowanie OnTrack z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować usługę OnTrack z usługą Azure Active Directory (Azure AD).
+Integracja OnTrack z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do OnTrack.
-* Aby umożliwić użytkownikom można automatycznie zalogowany do OnTrack (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
+* Możesz kontrolować usługę Azure AD, która ma dostęp do usługi OnTrack.
+* Możesz pozwolić użytkownikom na automatyczne logowanie do OnTrack (Logowanie jednokrotne) przy użyciu kont usługi Azure AD.
 * Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -36,20 +36,20 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą OnTrack, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z usługą OnTrack, potrzebne są następujące elementy:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* OnTrack logowanie jednokrotne włączone subskrypcji
+* Subskrypcja z włączonym logowaniem jednokrotnym w OnTrack
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Obsługuje OnTrack **tożsamości** jednokrotne logowanie inicjowane przez
+* Usługa OnTrack obsługuje **dostawcy tożsamości** zainicjowane przez logowanie jednokrotne
 
 ## <a name="adding-ontrack-from-the-gallery"></a>Dodawanie OnTrack z galerii
 
-Aby skonfigurować integrację OnTrack w usłudze Azure AD, należy dodać OnTrack z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację programu OnTrack z usługą Azure AD, musisz dodać OnTrack z galerii do listy zarządzanych aplikacji SaaS.
 
 **Aby dodać OnTrack z galerii, wykonaj następujące czynności:**
 
@@ -65,31 +65,31 @@ Aby skonfigurować integrację OnTrack w usłudze Azure AD, należy dodać OnTra
 
     ![Nowy przycisk aplikacji](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **OnTrack**, wybierz opcję **OnTrack** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **Ontrack**, wybierz pozycję **Ontrack** from panel wyników, a następnie kliknij przycisk **Dodaj** , aby dodać aplikację.
 
      ![OnTrack na liście wyników](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą OnTrack w oparciu o użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w OnTrack musi zostać ustanowione.
+Ta sekcja umożliwia skonfigurowanie i przetestowanie logowania jednokrotnego usługi Azure AD za pomocą OnTrack na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w OnTrack.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą OnTrack, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi OnTrack, należy wykonać następujące bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie OnTrack logowania jednokrotnego](#configure-ontrack-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+2. **[Skonfiguruj logowanie](#configure-ontrack-single-sign-on)** jednokrotne w usłudze Ontrack, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
 4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego OnTrack](#create-ontrack-test-user)**  — aby odpowiednikiem Britta Simon w OnTrack połączonego z usługi Azure AD reprezentacja użytkownika.
+5. **[Utwórz użytkownika testowego Ontrack](#create-ontrack-test-user)** , aby uzyskać odpowiednik Britta Simon w Ontrack, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
 6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z OnTrack, wykonaj następujące czynności:
+Aby skonfigurować Logowanie jednokrotne usługi Azure AD za pomocą OnTrack, wykonaj następujące czynności:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **OnTrack** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **Ontrack** wybierz pozycję **Logowanie**jednokrotne.
 
     ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
@@ -103,36 +103,36 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z OnTrack, wykonaj na
 
 4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** wykonaj następujące kroki:
 
-    ![OnTrack domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-intiated.png)
+    ![OnTrack domenę i adresy URL Logowanie jednokrotne](common/idp-intiated.png)
 
-    a. W **identyfikator** pola tekstowego:
+    a. W polu tekstowym **Identyfikator** :
 
-    Środowisko testowe wpisz adres URL: `https://staging.insigniagroup.com/sso`
+    W środowisku testowym wpisz adres URL:`https://staging.insigniagroup.com/sso`
 
-    W środowisku produkcyjnym wpisz adres URL: `https://oeaccessories.com/sso`
+    W środowisku produkcyjnym wpisz adres URL:`https://oeaccessories.com/sso`
 
-    b. W **adres URL odpowiedzi** pola tekstowego:
+    b. W polu tekstowym **adres URL odpowiedzi** :
 
-    Środowisko testowe wpisz adres URL: `https://indie.staging.insigniagroup.com/sso/autonation.aspx`
+    W środowisku testowym wpisz adres URL:`https://indie.staging.insigniagroup.com/sso/autonation.aspx`
 
-    W środowisku produkcyjnym wpisz adres URL: `https://igaccessories.com/sso/autonation.aspx`
+    W środowisku produkcyjnym wpisz adres URL:`https://igaccessories.com/sso/autonation.aspx`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zastąp te wartości rzeczywistymi wartościami identyfikatora i adresu URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta OnTrack](mailto:CustomerService@insigniagroup.com) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zastąp te wartości rzeczywistymi wartościami identyfikatora i adresu URL odpowiedzi. Skontaktuj się z [zespołem obsługi klienta Ontrack](mailto:CustomerService@insigniagroup.com) , aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-5. Aplikacja OnTrack oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę  **Edytuj** , aby otworzyć okno dialogowe  **Atrybuty użytkownika** .
+5. Aplikacja OnTrack oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij przycisk **Edytuj** ikonę, aby otworzyć okno dialogowe **atrybuty użytkownika** .
 
     ![image](common/edit-attribute.png)
 
-6. Ponadto powyżej OnTrack aplikacja oczekuje kilka więcej atrybutów, które mają być przekazywane w odpowiedzi SAML. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** wykonaj następujące czynności, aby dodać atrybut tokenu SAML, jak pokazano w poniższej tabeli:
+6. Oprócz powyższych, aplikacja OnTrack oczekuje kilku atrybutów do przekazania z powrotem w odpowiedzi SAML. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** wykonaj następujące czynności, aby dodać atrybut tokenu SAML, jak pokazano w poniższej tabeli:
 
     | Name (Nazwa) | Atrybut źródłowy|
     | -------------- | ----------------|    
     | Rola użytkownika      | "42F432" |
-    | Hyperion kodu  | "12345" |
+    | Hyperion — kod  | "12345" |
 
     > [!NOTE]
-    > **Rola użytkownika** i **kodu Hyperion** atrybuty są mapowane z rolą użytkownika Autonation i Dealer kod odpowiednio. Te wartości są jedynie przykładowe, należy użyć poprawny kod dla integracji usługi. Możesz skontaktować się ze [obsługi Autonation](mailto:CustomerService@insigniagroup.com) dla tych wartości.
+    > Atrybuty **role użytkownika** i **Hyperion-Code** są mapowane odpowiednio do roli użytkownika i kodu sprzedawcy. Te wartości są tylko przykładowe. Użyj poprawnego kodu do integracji. Można skontaktować się z działem [pomocy technicznej](mailto:CustomerService@insigniagroup.com) dla tych wartości.
 
     a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
 
@@ -150,13 +150,13 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z OnTrack, wykonaj na
 
     f. Kliknij przycisk **OK**.
 
-    g. Kliknij pozycję **Zapisz**.
+    g. Kliknij polecenie **Zapisz**.
 
 7. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
     ![Link pobierania certyfikatu](common/metadataxml.png)
 
-8. Na **Konfigurowanie OnTrack** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+8. W sekcji **Konfigurowanie Ontrack** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -166,9 +166,9 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z OnTrack, wykonaj na
 
     c. Adres URL wylogowywania
 
-### <a name="configure-ontrack-single-sign-on"></a>Konfigurowanie OnTrack logowanie jednokrotne
+### <a name="configure-ontrack-single-sign-on"></a>Konfigurowanie logowania jednokrotnego OnTrack
 
-Aby skonfigurować logowanie jednokrotne na **OnTrack** stronie, musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowany adresy URL z portalu Azure, aby [zespołem pomocy technicznej OnTrack](mailto:CustomerService@insigniagroup.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+Aby skonfigurować Logowanie jednokrotne na stronie **Ontrack** , musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowane adresy URL z Azure Portal do [zespołu pomocy technicznej Ontrack](mailto:CustomerService@insigniagroup.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -197,13 +197,13 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do OnTrack.
+W tej sekcji Britta Simon do korzystania z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do usługi OnTrack.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **OnTrack**.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, wybierz pozycję **wszystkie aplikacje**, a następnie wybierz pozycję **Ontrack**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **OnTrack**.
+2. Na liście Aplikacje wybierz pozycję **Ontrack**.
 
     ![Link OnTrack na liście aplikacji](common/all-applications.png)
 
@@ -221,15 +221,15 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-ontrack-test-user"></a>Tworzenie użytkownika testowego OnTrack
+### <a name="create-ontrack-test-user"></a>Utwórz użytkownika testowego OnTrack
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w OnTrack. Praca z [zespołem pomocy technicznej OnTrack](mailto:CustomerService@insigniagroup.com) Aby dodać użytkowników na platformie OnTrack. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w OnTrack. Aby dodać użytkowników na platformie OnTrack, Pracuj z [zespołem pomocy technicznej Ontrack](mailto:CustomerService@insigniagroup.com) . Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka OnTrack w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze OnTrack, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka OnTrack w panelu dostępu należy automatycznie zalogować się do OnTrack, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
@@ -237,5 +237,5 @@ Po kliknięciu kafelka OnTrack w panelu dostępu, powinien zostać automatycznie
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

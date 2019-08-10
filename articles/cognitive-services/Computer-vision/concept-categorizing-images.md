@@ -1,7 +1,7 @@
 ---
-title: Kategoryzowanie obrazów — przetwarzanie obrazów
+title: Kategoryzacja obrazu — przetwarzanie obrazów
 titleSuffix: Azure Cognitive Services
-description: Pojęcia związane z funkcji kategoryzacji obrazu z interfejsu API przetwarzania obrazów.
+description: Poznaj koncepcje związane z funkcją kategoryzacji obrazu interfejs API przetwarzania obrazów.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,26 +11,26 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 257da397e11843ee96e93f7b3e9bc5ada29822cf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2b9b8da550d80b027da919ba0834e43e2c83d4b4
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60203326"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945306"
 ---
-# <a name="categorize-images-by-subject-matter"></a>Kategoryzowanie obrazów według tematów
+# <a name="categorize-images-by-subject-matter"></a>Klasyfikowanie obrazów według tematu
 
-Oprócz tagów i opis przetwarzania obrazów zwraca kategorie na podstawie taksonomii wykryte na obrazie. W przeciwieństwie do tagów kategorie są zorganizowane w hierarchii dziedzicznym nadrzędne/podrzędne, wiąże się z ich (w przeciwieństwie do tysięcy tagi 86). Wszystkie nazwy kategorii są w języku angielskim. Kategoryzacja może odbywać się oddzielnie lub razem nowy model tagów.
+Oprócz tagów i opisu, przetwarzanie obrazów zwraca Kategorie oparte na taksonomii wykrytych w obrazie. W przeciwieństwie do tagów, kategorie są zorganizowane w hierarchii Hereditary nadrzędny/podrzędny i są mniejsze z nich (86, w przeciwieństwie do tysięcy tagów). Wszystkie nazwy kategorii są w języku angielskim. Kategoryzacja może być wykonywana przez siebie lub obok nowszej modelu znaczników.
 
 ## <a name="the-86-category-concept"></a>Koncepcja 86 kategorii
 
-Przetwarzanie obrazów umożliwia klasyfikowanie obrazu szeroko lub ściślej mówiąc, przy użyciu listy kategorii 86 na poniższym diagramie. Aby uzyskać informacje dotyczące pełnej taksonomii w formacie tekstowym, zobacz temat [Taksonomia kategorii](category-taxonomy.md).
+W przypadku komputerów można w szerokim stopniu klasyfikować obraz przy użyciu listy kategorii 86 na poniższym diagramie. Aby uzyskać informacje dotyczące pełnej taksonomii w formacie tekstowym, zobacz temat [Taksonomia kategorii](category-taxonomy.md).
 
-![zgrupowane listy wszystkie kategorie Taksonomia kategorii](./Images/analyze_categories-v2.png)
+![Pogrupowane listy wszystkich kategorii w taksonomii kategorii](./Images/analyze_categories-v2.png)
 
-## <a name="image-categorization-examples"></a>Przykłady kategoryzacji obrazu
+## <a name="image-categorization-examples"></a>Przykłady kategoryzacji obrazów
 
-Następującą odpowiedź JSON przedstawiono co przetwarzania obrazów zwraca, gdy kategoryzowanie przykładowy obraz na podstawie jego visual funkcji.
+Poniższa odpowiedź JSON ilustruje, co przetwarzanie obrazów zwracać podczas kategoryzowania przykładowego obrazu na podstawie jego funkcji wizualizacji.
 
 ![Kobieta na dachu budynku apartamentu](./Images/woman_roof.png)
 
@@ -51,15 +51,15 @@ Następującą odpowiedź JSON przedstawiono co przetwarzania obrazów zwraca, g
 }
 ```
 
-W poniższej tabeli przedstawiono zestaw typowych obrazu i kategorii zwrócony przez wizualizacji komputerowej dla każdego obrazu.
+W poniższej tabeli przedstawiono typowy zestaw obrazów oraz kategorię zwracaną przez przetwarzanie obrazów dla każdego obrazu.
 
-| Image | Category |
+| Image | Kategoria |
 |-------|----------|
-| ![Czterech osób związane ze sobą jako rodzina](./Images/family_photo.png) | people_group |
-| ![Puppy, znajdują się w polu grassy](./Images/cute_dog.png) | animal_dog |
-| ![Osoba stojących na rock górski zachodzie słońca](./Images/mountain_vista.png) | outdoor_mountain |
-| ![Wiele ról chleb na tabelę](./Images/bread.png) | food_bread |
+| ![Cztery osoby powodowane jako rodzina](./Images/family_photo.png) | people_group |
+| ![Puppy siedzący w polu trawy](./Images/cute_dog.png) | animal_dog |
+| ![Osoba stojąca na skałie górskim o zachodzie słońca](./Images/mountain_vista.png) | outdoor_mountain |
+| ![Stos ról chleba w tabeli](./Images/bread.png) | food_bread |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Pojęcia dotyczące [tagowanie obrazów](concept-tagging-images.md) i [opisujące obrazów](concept-describing-images.md).
+Poznaj koncepcje dotyczące [tagowania obrazów](concept-tagging-images.md) i [opisywania obrazów](concept-describing-images.md).

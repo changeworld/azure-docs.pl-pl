@@ -16,50 +16,50 @@ ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07341c1ad30f1242bdff430826fdc82c45e09dac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 07b0f8112f724c857ffb46378f7aa7ef605b9bbb
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67086066"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943292"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>Samouczek: integracja usługi Azure Active Directory z usługą Zscaler Beta
 
 Z tego samouczka dowiesz się, jak zintegrować usługę Zscaler Beta z usługą Azure Active Directory (Azure AD).
-Po zintegrowaniu rozwiązania Zscaler w wersji Beta z usługą Azure AD, możesz wykonywać następujące czynności:
+W przypadku integracji rozwiązania Zscaler beta z usługą Azure AD można:
 
-* Kontrolowanie w usłudze Azure AD, kto ma dostęp do rozwiązania Zscaler w wersji Beta.
-* Umożliwia użytkownikom automatyczne logowanie do rozwiązania Zscaler Beta za pomocą kont usługi Azure AD. Ta kontrola dostępu do nosi nazwę logowania jednokrotnego (SSO).
-* Zarządzanie Twoimi kontami, w jednej centralnej lokalizacji, za pomocą witryny Azure portal.
+* Kontrolka w usłudze Azure AD, która ma dostęp do rozwiązania Zscaler beta.
+* Zezwól użytkownikom na automatyczne logowanie do rozwiązania Zscaler beta przy użyciu kont usługi Azure AD. Ta kontrola dostępu jest nazywana logowaniem jednokrotnym (SSO).
+* Zarządzaj kontami w jednej centralnej lokalizacji przy użyciu Azure Portal.
 
-Aby uzyskać więcej informacji na temat oprogramowania jako usługi (SaaS) integracji aplikacji z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Aby uzyskać więcej informacji na temat integracji aplikacji SaaS (Software as a Service) z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Do skonfigurowania integracji usługi Azure AD z usługą Zscaler Beta są potrzebne następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/).
-* Subskrypcja rozwiązania Zscaler w wersji Beta, która korzysta z logowania jednokrotnego.
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
+* Subskrypcja rozwiązania Zscaler beta, która korzysta z rejestracji jednokrotnej.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Rozwiązania Zscaler Beta obsługuje logowanie Jednokrotne zainicjowane przez SP.
-* Rozwiązania Zscaler Beta obsługę użytkownika just-in-time.
+* Rozwiązania Zscaler beta obsługuje logowanie jednokrotne zainicjowane przez usługę SP.
+* Rozwiązania Zscaler beta obsługuje Inicjowanie obsługi użytkowników just in Time.
 
-## <a name="add-zscaler-beta-from-the-azure-marketplace"></a>Dodaj rozwiązania Zscaler w wersji Beta w portalu Azure Marketplace
+## <a name="add-zscaler-beta-from-the-azure-marketplace"></a>Dodawanie rozwiązania Zscaler beta z witryny Azure Marketplace
 
-Aby skonfigurować integrację rozwiązania Zscaler w wersji Beta w usłudze Azure AD, należy dodać rozwiązania Zscaler w wersji Beta w portalu Azure Marketplace z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację programu rozwiązania Zscaler beta z usługą Azure AD, Dodaj rozwiązania Zscaler beta z witryny Azure Marketplace do listy zarządzanych aplikacji SaaS.
 
-Aby dodać rozwiązania Zscaler w wersji Beta w portalu Azure Marketplace, wykonaj następujące kroki.
+Aby dodać rozwiązania Zscaler beta z portalu Azure Marketplace, wykonaj następujące kroki.
 
-1. W [witryny Azure portal](https://portal.azure.com), w okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory**.
+1. W [Azure Portal](https://portal.azure.com)w okienku nawigacji po lewej stronie wybierz pozycję **Azure Active Directory**.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+2. Przejdź do pozycji **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
@@ -67,56 +67,56 @@ Aby dodać rozwiązania Zscaler w wersji Beta w portalu Azure Marketplace, wykon
 
     ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wprowadź **Beta rozwiązania Zscaler**. Wybierz **Beta rozwiązania Zscaler** z panelu wyników, a następnie wybierz **Dodaj**.
+4. W polu wyszukiwania wprowadź **rozwiązania Zscaler beta**. Wybierz pozycję **rozwiązania Zscaler beta** z panelu wyników, a następnie wybierz pozycję **Dodaj**.
 
      ![Usługa Zscaler Beta na liście wyników](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji można skonfigurować, i test usługi Azure AD logowanie jednokrotne za pomocą rozwiązania Zscaler Beta oparte na użytkownika testowego Britta Simon.
-Dla logowania jednokrotnego do pracy należy ustanowić relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w wersji Beta rozwiązania Zscaler.
+Ta sekcja umożliwia skonfigurowanie i przetestowanie logowania jednokrotnego usługi Azure AD za pomocą programu rozwiązania Zscaler beta w oparciu o test użytkownika Britta Simon.
+Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w programie rozwiązania Zscaler beta.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą rozwiązania Zscaler w wersji Beta, wykonaj poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą programu rozwiązania Zscaler beta, wykonaj następujące bloki konstrukcyjne:
 
 - [Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on) — aby umożliwić użytkownikom korzystanie z tej funkcji.
-- [Konfigurowanie rozwiązania Zscaler Beta logowania jednokrotnego](#configure-zscaler-beta-single-sign-on) do konfigurowania pojedynczego ustawień logowania jednokrotnego na stronie aplikacji.
+- Skonfiguruj Logowanie jednokrotne w [wersji beta rozwiązania Zscaler](#configure-zscaler-beta-single-sign-on) , aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
 - [Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user) — aby przetestować logowanie jednokrotne usługi Azure AD za pomocą użytkownika Britta Simon.
 - [Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user) — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
-- [Tworzenie użytkownika testowego Beta rozwiązania Zscaler](#create-a-zscaler-beta-test-user) mieć odpowiednikiem Britta Simon w wersji Beta rozwiązania Zscaler, połączonego z usługi Azure AD reprezentacja użytkownika.
+- [Utwórz użytkownika testowego rozwiązania Zscaler beta](#create-a-zscaler-beta-test-user) , aby dysponować odpowiednikiem Britta Simon w rozwiązania Zscaler beta, który jest połączony z reprezentacją usługi Azure AD.
 - [Testowanie logowania jednokrotnego](#test-single-sign-on) — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą rozwiązania Zscaler w wersji Beta, wykonaj następujące kroki.
+Aby skonfigurować Logowanie jednokrotne usługi Azure AD za pomocą programu rozwiązania Zscaler beta, wykonaj następujące kroki.
 
 1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji usługi **Zscaler Beta** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+    ![Skonfiguruj link logowania jednokrotnego](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
     ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-3. Na **Ustaw się logowanie jednokrotne z SAML** wybierz opcję **Edytuj** otworzyć **podstawową konfigurację protokołu SAML** okno dialogowe.
+3. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** wybierz pozycję **Edytuj** , aby otworzyć okno dialogowe **Podstawowa konfiguracja SAML** .
 
     ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-4. W **podstawową konfigurację protokołu SAML** sekcji, wykonaj poniższe czynności:
+4. W sekcji **Podstawowa konfiguracja języka SAML** wykonaj następujące czynności:
 
-    ![Rozwiązania Zscaler w wersji Beta, domena i adresy URL pojedynczy informacje logowania jednokrotnego](common/sp-intiated.png)
+    ![Informacje o rejestracji jednokrotnej w programie rozwiązania Zscaler beta i adresach URL](common/sp-intiated.png)
 
-    - W **adres URL logowania** wprowadź adres URL używany przez użytkowników do logowania do aplikacji rozwiązania Zscaler w wersji Beta.
+    - W polu **adres URL logowania** wprowadź adres URL używany przez użytkowników do logowania się do aplikacji rozwiązania Zscaler beta.
 
     > [!NOTE]
-    > Wartość nie jest prawdziwe. Zaktualizuj wartość za pomocą rzeczywistych logowanie jednokrotne wartość adresu URL. Aby uzyskać wartość, skontaktuj się z pomocą [zespołem pomocy technicznej klienta Beta rozwiązania Zscaler](https://www.zscaler.com/company/contact).
+    > Wartość nie jest rzeczywista. Zaktualizuj wartość za pomocą rzeczywistej wartości adresu URL logowania. Aby uzyskać wartość, skontaktuj się z [zespołem pomocy technicznej rozwiązania Zscaler beta Client](https://www.zscaler.com/company/contact).
 
-5. Aplikacja rozwiązania Zscaler Beta oczekuje twierdzenia SAML w określonym formacie. Mapowania atrybutów niestandardowych należy dodać do konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Wybierz **Edytuj** otworzyć **atrybutów użytkownika** okno dialogowe.
+5. Aplikacja rozwiązania Zscaler beta oczekuje potwierdzeń SAML w określonym formacie. Należy dodać niestandardowe mapowania atrybutów do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Wybierz pozycję **Edytuj** , aby otworzyć okno dialogowe **atrybuty użytkownika** .
 
-    ![Atrybuty użytkownika, okno dialogowe](common/edit-attribute.png)
+    ![Okno dialogowe Atrybuty użytkownika](common/edit-attribute.png)
 
-6. Aplikacja rozwiązania Zscaler Beta oczekuje kilka więcej atrybutów, które mają być przekazywane w odpowiedzi SAML. W **oświadczenia użytkownika** sekcji **atrybutów użytkownika** okno dialogowe, wykonaj poniższe kroki, aby dodać atrybut tokenu SAML, jak pokazano w poniższej tabeli.
+6. Aplikacja rozwiązania Zscaler beta oczekuje, że kilka atrybutów jest przekazanie z powrotem w odpowiedzi SAML. W sekcji **oświadczenia użytkownika** w oknie dialogowym **atrybuty użytkownika** wykonaj następujące kroki, aby dodać atrybut tokenu SAML, jak pokazano w poniższej tabeli.
     
     | Name (Nazwa) | Atrybut źródłowy | 
     | ---------------| --------------- |
@@ -130,9 +130,9 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą rozwiązan
 
     b. W polu tekstowym **Nazwa** podaj nazwę atrybutu pokazanego dla tego wiersza.
 
-    c. Pozostaw **Namespace** puste pole.
+    c. Pozostaw puste pole **obszar nazw** .
 
-    d. Aby uzyskać **źródła**, wybierz opcję **atrybutu**.
+    d. W obszarze **Źródło**wybierz pozycję **atrybut**.
 
     e. Na liście **Atrybut źródłowy** podaj wartość atrybutu pokazanego dla tego wiersza.
 
@@ -141,13 +141,13 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą rozwiązan
     g. Wybierz pozycję **Zapisz**.
 
     > [!NOTE]
-    > Aby dowiedzieć się, jak skonfigurować role w usłudze Azure AD, zobacz [Konfigurowanie oświadczenia roli](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management).
+    > Aby dowiedzieć się, jak skonfigurować role w usłudze Azure AD, zobacz [Konfigurowanie roszczeń ról](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management).
 
-7. Na **Ustaw się logowanie jednokrotne z SAML** strony w **certyfikat podpisywania SAML** zaznacz **Pobierz** można pobrać **certyfikat (Base64)** . Zapisz go na komputerze.
+7. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** wybierz pozycję **Pobierz** , aby pobrać **certyfikat (base64)** . Zapisz go na komputerze.
 
     ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-8. W **konfigurowanie rozwiązania Zscaler Beta** sekcji, skopiuj adresy URL muszą zgodnie z wymaganiami dotyczącymi:
+8. W sekcji **Konfigurowanie programu rozwiązania Zscaler beta** Skopiuj adresy URL, które są potrzebne do spełnienia wymagań:
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -155,157 +155,157 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą rozwiązan
     - Identyfikator usługi Azure AD
     - Adres URL wylogowywania
 
-### <a name="configure-zscaler-beta-single-sign-on"></a>Konfigurowanie rozwiązania Zscaler Beta logowania jednokrotnego
+### <a name="configure-zscaler-beta-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w wersji beta rozwiązania Zscaler
 
-1. Aby zautomatyzować konfigurację w ramach rozwiązania Zscaler w wersji Beta, należy zainstalować **rozszerzenia przeglądarki do bezpiecznego Moje aplikacje logowania** , wybierając **zainstalować rozszerzenie**.
+1. Aby zautomatyzować konfigurację w programie rozwiązania Zscaler beta, zainstaluj **Moje aplikacje bezpieczne logowanie do przeglądarki** , wybierając pozycję **Zainstaluj rozszerzenie**.
 
-    ![Moje rozszerzenie aplikacji](common/install-myappssecure-extension.png)
+    ![Rozszerzenie moje aplikacje](common/install-myappssecure-extension.png)
 
-2. Po dodaniu rozszerzenia do przeglądarki, wybierając **konfigurowanie rozwiązania Zscaler Beta** kieruje użytkownika do aplikacji rozwiązania Zscaler w wersji Beta. W tym miejscu podaj poświadczenia administratora do logowania do rozwiązania Zscaler w wersji Beta. Rozszerzenie przeglądarki automatycznie konfiguruje aplikację dla Ciebie i automatyzuje kroki od 3 do 6.
+2. Po dodaniu rozszerzenia do przeglądarki wybierz pozycję Skonfiguruj program **rozwiązania Zscaler beta** kieruje do aplikacji rozwiązania Zscaler w wersji beta. W tym miejscu podaj poświadczenia administratora, aby zalogować się do programu rozwiązania Zscaler beta. Rozszerzenie przeglądarki automatycznie konfiguruje aplikację dla Ciebie i automatyzuje kroki od 3 do 6.
 
-    ![Konfiguracja instalacji](common/setup-sso.png)
+    ![Konfiguracja konfiguracji](common/setup-sso.png)
 
-3. Aby ręcznie skonfigurować rozwiązania Zscaler w wersji Beta, Otwórz nowe okno przeglądarki sieci web. Zaloguj się do witryny rozwiązania Zscaler Beta firmy jako administrator, a następnie wykonaj następujące kroki.
+3. Aby ręcznie skonfigurować rozwiązania Zscaler beta, Otwórz nowe okno przeglądarki sieci Web. Zaloguj się do witryny firmowej rozwiązania Zscaler beta jako administrator i wykonaj następujące kroki.
 
-4. Przejdź do **administracji** > **uwierzytelniania** > **ustawienia uwierzytelniania**i wykonaj następujące czynności.
+4. Przejdź do pozycji **Administracja** >  > **Ustawienia uwierzytelniania**uwierzytelniania i wykonaj następujące kroki.
    
     ![Administracja](./media/zscaler-beta-tutorial/ic800206.png "Administracja")
 
-    a. W obszarze **typ uwierzytelniania**, wybierz opcję **SAML**.
+    a. W obszarze **Typ uwierzytelniania**wybierz pozycję **SAML**.
 
-    b. Wybierz **skonfigurować SAML**.
+    b. Wybierz pozycję **Konfiguruj SAML**.
 
-5. W **Edytuj SAML** okna, wykonaj następujące kroki: 
+5. W oknie **Edycja języka SAML** wykonaj następujące kroki: 
             
     ![Zarządzanie użytkownikami i uwierzytelnianiem](./media/zscaler-beta-tutorial/ic800208.png "Zarządzanie użytkownikami i uwierzytelnianiem")
     
-    a. W **adres URL portalu SAML** pole, Wklej w **adres URL logowania** skopiowaną z witryny Azure portal.
+    a. W polu **adres URL portalu SAML** wklej **adres URL logowania** skopiowany z Azure Portal.
 
-    b. W **atrybutu nazwy logowania** wprowadź **NameID**.
+    b. W polu **atrybut nazwy logowania** wprowadź **NameID**.
 
-    c. W **publicznego certyfikatu SSL** wybierz opcję **przekazywanie** można przekazać certyfikatu podpisywania SAML platformy Azure, pobrany z witryny Azure portal.
+    c. W polu **publiczny certyfikat SSL** wybierz pozycję **Przekaż** , aby przekazać certyfikat podpisywania SAML platformy Azure pobrany z Azure Portal.
 
-    d. Przełącz **Włącz SAML automatycznej aprowizacji**.
+    d. Przełącz **opcję Włącz funkcję autoaprowizacji SAML**.
 
-    e. W **atrybutu Nazwa wyświetlana użytkownika** wprowadź **displayName** Jeśli chcesz włączyć autoprovisioning SAML dla atrybutów displayName.
+    e. W polu **atrybut Nazwa wyświetlana użytkownika** wpisz **DisplayName** , jeśli chcesz włączyć autoudostępnianie SAML dla atrybutów DisplayName.
 
-    f. W **atrybutu nazwy grupy** wprowadź **memberOf** Jeśli chcesz włączyć autoprovisioning SAML memberOf atrybutów.
+    f. W polu **atrybut nazwy grupy** wprowadź wartość **memberOf** , jeśli chcesz włączyć funkcję autozastrzegania SAML dla atrybutów memberOf.
 
-    g. W **atrybutu nazwy działu** wprowadź **działu** Jeśli chcesz włączyć autoprovisioning SAML dla działu atrybutów.
+    g. W polu **atrybut nazwy działu** wprowadź **dział** , jeśli chcesz włączyć funkcję autoaprowizacji SAML dla atrybutów działu.
 
     h. Wybierz pozycję **Zapisz**.
 
-6. Na **Konfigurowanie uwierzytelniania użytkownika** okna dialogowego strony, wykonaj następujące kroki:
+6. Na stronie **Konfigurowanie uwierzytelniania użytkownika** wykonaj następujące czynności:
 
-    ![Menu aktywacji i przycisk Aktywuj](./media/zscaler-beta-tutorial/ic800207.png)
+    ![Menu aktywacja i przycisk Aktywuj](./media/zscaler-beta-tutorial/ic800207.png)
 
-    a. Umieść kursor nad **aktywacji** menu w lewym dolnym rogu.
+    a. Umieść kursor nad menu **Aktywacja** w lewym dolnym rogu.
 
-    b. Wybierz **aktywować**.
+    b. Wybierz pozycję **Aktywuj**.
 
-## <a name="configure-proxy-settings"></a>Skonfiguruj ustawienia serwera proxy
+## <a name="configure-proxy-settings"></a>Konfigurowanie ustawień serwera proxy
 Aby skonfigurować ustawienia serwera proxy w programie Internet Explorer, wykonaj następujące kroki.
 
 1. Uruchom program **Internet Explorer**.
 
-2. Wybierz **Opcje internetowe** z **narzędzia** menu, aby otworzyć **Opcje internetowe** okno dialogowe. 
+2. Wybierz **Opcje internetowe** z menu **Narzędzia** , aby otworzyć okno dialogowe **Opcje internetowe** . 
     
-     ![Okno dialogowe Opcje internetowe](./media/zscaler-beta-tutorial/ic769492.png "Opcje internetowe")
+     ![Opcje internetowe] — okno dialogowe (./media/zscaler-beta-tutorial/ic769492.png "Opcje internetowe")
 
-3. Wybierz **połączeń** kartę. 
+3. Wybierz kartę **połączenia** . 
   
-     ![Karta połączenia](./media/zscaler-beta-tutorial/ic769493.png "połączeń")
+     ![Karta połączenia](./media/zscaler-beta-tutorial/ic769493.png "Połączenia")
 
-4. Wybierz **ustawienia sieci LAN** otworzyć **ustawienia sieci lokalnej (LAN)** okno dialogowe.
+4. Wybierz pozycję **Ustawienia sieci LAN** , aby otworzyć okno dialogowe **Ustawienia sieci lokalnej (LAN)** .
 
-5. W **serwera Proxy** sekcji, wykonaj następujące kroki: 
+5. W sekcji **serwer proxy** wykonaj następujące kroki: 
    
-    ![Sekcja serwera proxy](./media/zscaler-beta-tutorial/ic769494.png "serwera Proxy")
+    ![Sekcja serwera proxy](./media/zscaler-beta-tutorial/ic769494.png "Serwer proxy")
 
-    a. Wybierz **Użyj serwera proxy dla sieci LAN** pole wyboru.
+    a. Zaznacz pole wyboru **Użyj serwera proxy dla sieci LAN** .
 
-    b. W **adres** wprowadź **bramy. Rozwiązania Zscaler Beta.net**.
+    b. W polu **adres** wprowadź bramę **. Rozwiązania Zscaler Beta.net**.
 
-    c. W **portu** wprowadź **80**.
+    c. W polu **port** wprowadź **80**.
 
-    d. Wybierz **używaj serwera proxy dla adresów lokalnych** pole wyboru.
+    d. Zaznacz pole wyboru **Obejdź serwer proxy dla adresów lokalnych** .
 
-    e. Wybierz **OK** zamknąć **ustawienia sieci lokalnej (LAN)** okno dialogowe.
+    e. Wybierz **przycisk OK** , aby zamknąć okno dialogowe **Ustawienia sieci lokalnej (LAN)** .
 
-6. Wybierz **OK** zamknąć **Opcje internetowe** okno dialogowe.
+6. Wybierz **przycisk OK** , aby zamknąć okno dialogowe **Opcje internetowe** .
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
-Tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+Utwórz użytkownika testowego w Azure Portal o nazwie Britta Simon.
 
 1. W witrynie Azure Portal w okienku po lewej wybierz kolejno pozycje **Azure Active Directory** > **Użytkownicy** > **Wszyscy użytkownicy**.
 
-    ![Użytkownicy i wszystkie linki użytkowników](common/users.png)
+    ![Użytkownicy i wszyscy użytkownicy — linki](common/users.png)
 
 2. Wybierz **nowego użytkownika** w górnej części ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
-3. W **użytkownika** okna dialogowego pole, wykonaj następujące kroki:
+3. W oknie dialogowym **użytkownik** wykonaj następujące kroki:
 
     ![Okno dialogowe użytkownika](common/user-properties.png)
 
     a. W polu **Nazwa** wpisz **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** wprowadź `brittasimon@yourcompanydomain.extension`. Może to być na przykład BrittaSimon@contoso.com.
+    b. W polu **Nazwa użytkownika** wprowadź `brittasimon@yourcompanydomain.extension`wartość. Może to być na przykład BrittaSimon@contoso.com.
 
-    c. Wybierz **hasło Show** pole wyboru. Zanotuj wartość, która wyświetla w **hasło** pole.
+    c. Zaznacz pole wyboru **Pokaż hasło** . Zapisz wartość wyświetlaną w polu **hasło** .
 
     d. Wybierz pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-Włącz Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do rozwiązania Zscaler w wersji Beta.
+Włącz logowanie jednokrotne w usłudze Britta Simon, przyznając dostęp do rozwiązania Zscaler beta.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje** > **Beta rozwiązania Zscaler**.
+1. W Azure Portal wybierz pozycję **aplikacje** > dla przedsiębiorstw**wszystkie aplikacje** > **rozwiązania Zscaler beta**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji, wprowadź i wybierz **Beta rozwiązania Zscaler**.
+2. Na liście Aplikacje wprowadź i wybierz pozycję **rozwiązania Zscaler beta**.
 
-    ![Łącze rozwiązania Zscaler Beta na liście aplikacji](common/all-applications.png)
+    ![Link rozwiązania Zscaler beta na liście aplikacji](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Łączy użytkowników i grup](common/users-groups-blade.png)
+    ![Link Użytkownicy i grupy](common/users-groups-blade.png)
 
-4. Wybierz przycisk **Dodaj użytkownika**. W **Dodaj przydziału** okno dialogowe, wybierz opcję **użytkowników i grup**.
+4. Wybierz przycisk **Dodaj użytkownika**. W oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy**.
 
     ![Przycisk Dodaj użytkownika](common/add-assign-user.png)
 
-5. W **użytkowników i grup** okno dialogowe, wybierz użytkownika, takie jak **Britta Simon** z listy. Następnie wybierz **wybierz** w dolnej części ekranu.
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz z listy użytkownika, np. **Britta Simon** . Następnie wybierz **pozycję zaznacz** w dolnej części ekranu.
 
-    ![Okno dialogowe Użytkownicy i grupy](./media/zscaler-beta-tutorial/tutorial_zscalerbeta_users.png)
+    ![Użytkownicy i grupy — okno dialogowe](./media/zscaler-beta-tutorial/tutorial_zscalerbeta_users.png)
 
-6. W **wybierz rolę** okna dialogowego Wybierz odpowiedniej roli użytkownika na liście. Następnie wybierz **wybierz** w dolnej części ekranu.
+6. W oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę użytkownika na liście. Następnie wybierz **pozycję zaznacz** w dolnej części ekranu.
 
-    ![Okno dialogowe Wybierz rolę](./media/zscaler-beta-tutorial/tutorial_zscalerbeta_roles.png)
+    ![Okno dialogowe Wybieranie roli](./media/zscaler-beta-tutorial/tutorial_zscalerbeta_roles.png)
 
 7. W oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Przypisz**.
 
-    ![Dodaj przypisanie, okno dialogowe](./media/zscaler-beta-tutorial/tutorial_zscalerbeta_assign.png)
+    ![Okno dialogowe Dodawanie przypisania](./media/zscaler-beta-tutorial/tutorial_zscalerbeta_assign.png)
 
-### <a name="create-a-zscaler-beta-test-user"></a>Tworzenie użytkownika testowego Beta rozwiązania Zscaler
+### <a name="create-a-zscaler-beta-test-user"></a>Tworzenie użytkownika testowego rozwiązania Zscaler beta
 
-W tej sekcji użytkownika Britta Simon jest tworzony w wersji Beta rozwiązania Zscaler. Usługa Zscaler Beta obsługuje **aprowizację użytkowników typu just in time**, która jest domyślnie włączona. Nie ma nic robić w tej sekcji. Jeśli użytkownik jeszcze nie istnieje w usłudze Zscaler Beta, to zostanie utworzony po uwierzytelnieniu.
+W tej sekcji użytkownik Britta Simon jest tworzony w rozwiązania Zscaler beta. Usługa Zscaler Beta obsługuje **aprowizację użytkowników typu just in time**, która jest domyślnie włączona. Nie ma niczego do wykonania w tej sekcji. Jeśli użytkownik jeszcze nie istnieje w usłudze Zscaler Beta, to zostanie utworzony po uwierzytelnieniu.
 
 >[!Note]
->Aby ręcznie utworzyć użytkownika, skontaktuj się z [zespołem pomocy technicznej rozwiązania Zscaler Beta](https://www.zscaler.com/company/contact).
+>Aby ręcznie utworzyć użytkownika, skontaktuj się z [zespołem pomocy technicznej rozwiązania Zscaler beta](https://www.zscaler.com/company/contact).
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-Testowanie konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+Przetestuj konfigurację logowania jednokrotnego usługi Azure AD za pomocą panelu dostępu.
 
-Po wybraniu kafelka rozwiązania Zscaler w wersji Beta w panelu dostępu użytkownik powinien automatyczne logowanie do rozwiązania Zscaler wersji Beta, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po wybraniu kafelka rozwiązania Zscaler beta w panelu dostępu należy automatycznie zalogować się do rozwiązania Zscaler beta, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

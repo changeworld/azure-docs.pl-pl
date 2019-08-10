@@ -1,7 +1,7 @@
 ---
-title: Wykrywanie twarzy — przetwarzanie obrazów
+title: Wykrywanie czołowe — przetwarzanie obrazów
 titleSuffix: Azure Cognitive Services
-description: Pojęcia związane z funkcji wykrywania twarzy interfejs API przetwarzania obrazów.
+description: Zapoznaj się z pojęciami dotyczącymi funkcji wykrywania kroju interfejs API przetwarzania obrazów.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,23 +11,23 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 699192aba87bb009d7dbddddcc9579883bb71db9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3675acf59c6889dd00c8f26089f509bbcd3c724e
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60368139"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945244"
 ---
-# <a name="face-detection-with-computer-vision"></a>Wykrywanie twarzy przy użyciu przetwarzania obrazów
+# <a name="face-detection-with-computer-vision"></a>Wykrywanie kroju przy użyciu przetwarzanie obrazów
 
-Przetwarzanie obrazów można wykrywanie ludzkich twarzy na obrazie i wygenerować wiek, płeć i prostokąt dla każdej twarzy wykryte. 
+Przetwarzanie obrazów mogą wykrywać ludzkie twarze na obrazie i generować wiek, płeć oraz prostokąt dla każdej wykrytej twarzy. 
 
 > [!NOTE]
-> Ta funkcja jest również oferowana przez Azure [twarzy](/azure/cognitive-services/face/) usługi. Zobacz tej alternatywy dla bardziej szczegółowe analizy, włącznie z rozpoznawania twarzy twarzy i stanowić wykrywania. 
+> Ta funkcja jest również oferowana przez usługę [](/azure/cognitive-services/face/) Azure Site. Zapoznaj się z tą alternatywą w celu uzyskania bardziej szczegółowej analizy, w tym identyfikacji i wykrywania ułożenia. 
 
-## <a name="face-detection-examples"></a>Przykłady wykrywania twarzy
+## <a name="face-detection-examples"></a>Przykłady wykrywania kroju
 
-W poniższym przykładzie pokazano odpowiedź JSON zwrócony przez wizualizacji komputerowej dla obrazu zawierającego pojedynczego ludzkich twarzy.
+Poniższy przykład demonstruje odpowiedź JSON zwracaną przez przetwarzanie obrazów obrazu zawierającego pojedynczy człowiek.
 
 ![Analiza obrazu — kobieta, dach, twarz](./Images/woman_roof_face.png)
 
@@ -54,9 +54,9 @@ W poniższym przykładzie pokazano odpowiedź JSON zwrócony przez wizualizacji 
 }
 ```
 
-Następny przykład pokazuje odpowiedź JSON zwracany w przypadku obrazu zawierającego wiele twarze.
+W następnym przykładzie pokazano odpowiedź JSON zwracaną dla obrazu zawierającego wiele twarzy.
 
-![Wizja analizowanie rodziny fotografii twarzy](./Images/family_photo_face.png)
+![Wzrokowa analiza kroju zdjęcia rodziny](./Images/family_photo_face.png)
 
 ```json
 {
@@ -111,6 +111,6 @@ Następny przykład pokazuje odpowiedź JSON zwracany w przypadku obrazu zawiera
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zobacz [analizowanie obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) dokumentacji, aby dowiedzieć się więcej o tym, jak używać funkcji wykrywania twarzy.
+Zapoznaj się z dokumentacją dotyczącą [analizy obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) , aby dowiedzieć się więcej na temat korzystania z funkcji wykrywania kroju.

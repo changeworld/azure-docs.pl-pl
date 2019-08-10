@@ -8,15 +8,15 @@ ms.custom: seodec18
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 5122a5a88f5a0d67799930999236f2993bc43f8f
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: b80c32fea0d62bb5800a677ff30cb0787e83afa2
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609762"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945841"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding często zadawane pytania
 
@@ -110,7 +110,7 @@ System powinien używać najwyższy intencji oceniania niezależnie od jego wart
 ### <a name="why-dont-i-see-my-endpoint-hits-in-my-apps-dashboard"></a>Dlaczego nie widzę mojego trafienia punktu końcowego na pulpicie nawigacyjnym mojej aplikacji?
 Trafienia punktu końcowego całkowita na pulpicie nawigacyjnym aplikacji są okresowo aktualizowane, ale metryki skojarzone z klucza punktu końcowego usługi LUIS w witrynie Azure portal są aktualizowane częściej.
 
-Jeśli na pulpicie nawigacyjnym nie widzisz zaktualizowanych trafień punktów końcowych, zaloguj się do Azure Portal i Znajdź zasób skojarzony z kluczem punktu końcowego LUIS,  a następnie otwórz metryki, aby wybrać metrykę **całkowitej liczby wywołań** . Jeśli klucza punktu końcowego jest używana do więcej niż jedną aplikacją usługi LUIS, metryki w witrynie Azure portal pokazuje łączna liczba wywołań ze wszystkich aplikacji usługi LUIS, które go używają.
+Jeśli na pulpicie nawigacyjnym nie widzisz zaktualizowanych trafień punktów końcowych, zaloguj się do Azure Portal i Znajdź zasób skojarzony z kluczem punktu końcowego LUIS, a następnie otwórz metryki, aby wybrać metrykę **całkowitej liczby wywołań** . Jeśli klucza punktu końcowego jest używana do więcej niż jedną aplikacją usługi LUIS, metryki w witrynie Azure portal pokazuje łączna liczba wywołań ze wszystkich aplikacji usługi LUIS, które go używają.
 
 ### <a name="is-there-a-powershell-command-get-to-the-endpoint-quota"></a>Czy istnieje polecenie programu PowerShell z przydziałem punktów końcowych?
 
@@ -254,7 +254,7 @@ Jeśli używasz Azure bot Service, a problem polega na tym, że **test w usłudz
 1. Otwórz Edytor kodu online. 
 1. Na górnym, niebieskim pasku nawigacyjnym wybierz nazwę bot (drugi element w prawo).
 1. Z listy rozwijanej wyniki wybierz pozycję **Otwórz konsolę kudu**.
-1. Wybierz pozycję LogFiles, a następnie wybierz pozycję **aplikacja**. Przejrzyj wszystkie pliki dziennika. Jeśli błąd nie jest widoczny w folderze aplikacji, przejrzyj wszystkie pliki dziennika w **pliku dziennika**. 
+1. Wybierzpozycję LogFiles, a następnie wybierz pozycję **aplikacja**. Przejrzyj wszystkie pliki dziennika. Jeśli błąd nie jest widoczny w folderze aplikacji, przejrzyj wszystkie pliki dziennika w **pliku dziennika**. 
 1. Pamiętaj, aby ponownie skompilować projekt, jeśli używasz skompilowanego języka, takiego C#jak.
 
 > [!Tip] 

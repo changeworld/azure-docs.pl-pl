@@ -1,7 +1,7 @@
 ---
-title: Wykrywanie typy obrazów — przetwarzanie obrazów
+title: Wykrywanie typu obrazu — przetwarzanie obrazów
 titleSuffix: Azure Cognitive Services
-description: Pojęcia związane z funkcji wykrywania typu obrazu, interfejs API przetwarzania obrazów.
+description: Pojęcia związane z funkcją wykrywania typu obrazu interfejs API przetwarzania obrazów.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,33 +11,33 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 37cdac16a51a30bdaf1ba0266bab7fdd1f2990f0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e89fd977129113fa88af1acccd6b05f0bbe90243
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60368327"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945211"
 ---
-# <a name="detecting-image-types-with-computer-vision"></a>Wykrywanie typy obrazów za pomocą wizualizacji komputerowej
+# <a name="detecting-image-types-with-computer-vision"></a>Wykrywanie typów obrazów przy użyciu przetwarzanie obrazów
 
-Za pomocą [analizowanie obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) interfejsu API, przetwarzania obrazów może analizować typu zawartości obrazów, wskazującą, czy obraz jest clipart lub rysowanie linii.
+Korzystając z interfejsu API [analizy obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) , przetwarzanie obrazów może analizować typ zawartości obrazów, wskazując, czy obraz jest obiektem clipart czy rysunkiem.
 
-## <a name="detecting-clip-art"></a>Wykrywanie clipart
+## <a name="detecting-clip-art"></a>Wykrywanie grafiki clipart
 
-Przetwarzania obrazów analizuje obrazu i ocenia prawdopodobieństwo obrazu clipart w skali od 0 do 3, zgodnie z opisem w poniższej tabeli.
+Przetwarzanie obrazów analizuje obraz i ocenia prawdopodobieństwo, że obraz jest przycinania na skalę od 0 do 3, zgodnie z opisem w poniższej tabeli.
 
-| Wartość | Znaczenie |
+| Value | Znaczenie |
 |-------|---------|
 | 0 | Obiekt inny niż clipart |
-| 1 | Ambiguous |
-| 2 | Normal-clip-art |
+| 1 | Udziel |
+| 2 | Normalne — clipart |
 | 3 | Good-clip-art |
 
-### <a name="clip-art-detection-examples"></a>Clip art wykrywanie przykładów
+### <a name="clip-art-detection-examples"></a>Przykłady wykrywania obiektów clipart
 
-Następujące odpowiedzi JSON przedstawiono co przetwarzania obrazów zwraca, gdy klasyfikacja prawdopodobieństwo obrazów przykład trwa clipart.
+Poniższe odpowiedzi JSON przedstawiają, co przetwarzanie obrazów zwraca, gdy ocenia prawdopodobieństwo, że przykładowe obrazy są przycinania.
 
-![Obraz wycinka ser](./Images/cheese_clipart.png)
+![Obraz clipart wycinka sera](./Images/cheese_clipart.png)
 
 ```json
 {
@@ -54,7 +54,7 @@ Następujące odpowiedzi JSON przedstawiono co przetwarzania obrazów zwraca, gd
 }
 ```
 
-![Niebieski dom i yard frontonu](./Images/house_yard.png)
+![Niebieska i czołowa Jard](./Images/house_yard.png)
 
 ```json
 {
@@ -71,15 +71,15 @@ Następujące odpowiedzi JSON przedstawiono co przetwarzania obrazów zwraca, gd
 }
 ```
 
-## <a name="detecting-line-drawings"></a>Wykrywanie rysunkach
+## <a name="detecting-line-drawings"></a>Wykrywanie rysunków liniowych
 
-Przetwarzania obrazów analizuje obrazu i zwraca wartość logiczną wskazującą, czy obraz jest obiektem.
+Przetwarzanie obrazów analizuje obraz i zwraca wartość logiczną wskazującą, czy obraz jest rysunkiem liniowym.
 
-### <a name="line-drawing-detection-examples"></a>Rysowanie linii wykrywanie przykładów
+### <a name="line-drawing-detection-examples"></a>Przykłady wykrywania rysowania linii
 
-Następujące odpowiedzi JSON przedstawiono co przetwarzania obrazów zwraca, gdy wskazujące, czy obrazy przykład rysunki.
+Poniższe odpowiedzi JSON przedstawiają, co przetwarzanie obrazów zwraca, gdy wskazuje, czy przykładowe obrazy są ilustracjami linii.
 
-![Rysowanie linii obraz lion](./Images/lion_drawing.png)
+![Obraz przedstawiający rysowanie linii elementu Lion](./Images/lion_drawing.png)
 
 ```json
 {
@@ -96,7 +96,7 @@ Następujące odpowiedzi JSON przedstawiono co przetwarzania obrazów zwraca, gd
 }
 ```
 
-![Białe Kwiatek zielonym tłem](./Images/flower.png)
+![Biały kwiat z zielonym tłem](./Images/flower.png)
 
 ```json
 {
@@ -113,6 +113,6 @@ Następujące odpowiedzi JSON przedstawiono co przetwarzania obrazów zwraca, gd
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zobacz [analizowanie obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) dokumentacji, aby dowiedzieć się, jak wykryć typy obrazów.
+Zapoznaj się z dokumentacją dotyczącą [analizy obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) , aby dowiedzieć się, jak wykrywać typy obrazów.

@@ -10,16 +10,16 @@ ms.date: 07/31/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eda457747a6a3e374e7fdea571f64446e15ded21
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: a52b9ee26aac20d95356db6a280c5feb40023fed
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774177"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68942803"
 ---
 # <a name="what-is-azure-active-directory"></a>Co to jest usługa Azure Active Directory?
 
-Azure Active Directory (Azure AD) to usługa zarządzania tożsamościami i dostępem opartymi na chmurze firmy Microsoft, która ułatwia logowanie pracownika i dostęp do zasobów w programie:
+Azure Active Directory (Azure AD) to usługa zarządzania tożsamościami i dostępem opartymi na chmurze firmy Microsoft, która ułatwia pracownikom logowanie się i dostęp do zasobów w programie:
 
 - Zasoby zewnętrzne, takie jak usługa Microsoft Office 365, witryna Azure Portal i tysiące innych aplikacji SaaS.
 
@@ -50,9 +50,9 @@ Aby ulepszyć implementację usługi Azure AD, możesz również dodać płatne 
 
 - **Azure Active Directory — wersja Bezpłatna.** Umożliwia zarządzanie użytkownikami i grupami, synchronizację katalogów lokalnych, podstawowe raporty, samoobsługowe zmiany haseł użytkowników w chmurze oraz logowanie jednokrotne na platformie Azure, Office 365 i wielu popularnych aplikacjach SaaS.
 
-- **Azure Active Directory — wersja Premium P1.** Oprócz funkcji wersji Bezpłatna i Podstawowa, wersja P1 umożliwia też użytkownikom hybrydowym dostęp zarówno do zasobów lokalnych, jak i w chmurze. Obsługuje ona również zaawansowaną administrację, taką jak grupy dynamiczne, samoobsługowe zarządzanie grupami, usługa Microsoft Identity Manager (lokalny pakiet do zarządzania tożsamościami i dostępem) oraz funkcje zapisu zwrotnego, które umożliwiają samoobsługowe resetowanie haseł przez użytkowników lokalnych.
+- **Azure Active Directory — wersja Premium P1.** Oprócz bezpłatnych funkcji P1 umożliwia również użytkownikom hybrydowym dostęp do zasobów lokalnych i w chmurze. Obsługuje ona również zaawansowaną administrację, taką jak grupy dynamiczne, samoobsługowe zarządzanie grupami, usługa Microsoft Identity Manager (lokalny pakiet do zarządzania tożsamościami i dostępem) oraz funkcje zapisu zwrotnego, które umożliwiają samoobsługowe resetowanie haseł przez użytkowników lokalnych.
 
-- **Azure Active Directory — wersja Premium P2.** Oprócz funkcji Free, Basic i P1 firma P2 oferuje również [Azure Active Directory Identity Protection](../identity-protection/enable.md) , aby pomóc w dostarczaniu warunkowego dostępu do aplikacji i krytycznych danych firmy, a także [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md) do ułatwienia odnajdywania , ograniczać i monitorować administratorów oraz ich dostęp do zasobów oraz zapewniać dostęp just in Time w razie potrzeby.
+- **Azure Active Directory — wersja Premium P2.** Oprócz funkcji wolnych i P1 firma P2 oferuje również [Azure Active Directory Identity Protection](../identity-protection/enable.md) w celu zapewnienia na podstawie ryzyka dostępu warunkowego do aplikacji i kluczowych danych firmy, a [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md) w celu uzyskania pomocy. Ogranicz i monitoruj administratorów oraz ich dostęp do zasobów i zapewniaj dostęp just in Time w razie potrzeby.
 
 - **Licencje funkcji „Płatność zgodnie z rzeczywistym użyciem”.** Istnieje też możliwość uzyskania licencji dodatkowych funkcji, takich jak usługa Azure Active Directory Business-to-Customer (B2C). Usługa B2C może ułatwić zapewnianie rozwiązań do zarządzania tożsamościami i dostępem dla aplikacji udostępnianych klientom. Aby uzyskać więcej informacji, zobacz [dokumentację usługi Azure Active Directory B2C](../../active-directory-b2c/index.yml).
 

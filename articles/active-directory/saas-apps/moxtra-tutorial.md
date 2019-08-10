@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Moxtra | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Moxtra.
+title: 'Samouczek: Azure Active Directory integrację z usługą Moxtra | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i Moxtra.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: f22f70c587556793c2b02fc79fa6175584b0c5cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f64597d8da183a24bcf87543a448442052e5f77
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67096634"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68944262"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-moxtra"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Moxtra
+# <a name="tutorial-azure-active-directory-integration-with-moxtra"></a>Samouczek: Integracja Azure Active Directory z usługą Moxtra
 
-W tym samouczku dowiesz się, jak zintegrować Moxtra w usłudze Azure Active Directory (Azure AD).
-Integrowanie Moxtra z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować usługę Moxtra z usługą Azure Active Directory (Azure AD).
+Integracja Moxtra z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Moxtra.
-* Aby umożliwić użytkownikom można automatycznie zalogowany do Moxtra (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
+* Możesz kontrolować usługę Azure AD, która ma dostęp do usługi Moxtra.
+* Możesz pozwolić użytkownikom na automatyczne logowanie do Moxtra (Logowanie jednokrotne) przy użyciu kont usługi Azure AD.
 * Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -35,20 +35,20 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą Moxtra, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z usługą Moxtra, potrzebne są następujące elementy:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* Moxtra logowanie jednokrotne włączone subskrypcji
+* Subskrypcja z włączonym logowaniem jednokrotnym w Moxtra
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Obsługuje Moxtra **SP** jednokrotne logowanie inicjowane przez
+* Moxtra obsługuje logowanie jednokrotne w usłudze **SP**
 
 ## <a name="adding-moxtra-from-the-gallery"></a>Dodawanie Moxtra z galerii
 
-Aby skonfigurować integrację Moxtra w usłudze Azure AD, należy dodać Moxtra z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację programu Moxtra z usługą Azure AD, musisz dodać Moxtra z galerii do listy zarządzanych aplikacji SaaS.
 
 **Aby dodać Moxtra z galerii, wykonaj następujące czynności:**
 
@@ -64,31 +64,31 @@ Aby skonfigurować integrację Moxtra w usłudze Azure AD, należy dodać Moxtra
 
     ![Nowy przycisk aplikacji](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **Moxtra**, wybierz opcję **Moxtra** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **Moxtra**, wybierz pozycję **Moxtra** from panel wyników, a następnie kliknij przycisk **Dodaj** , aby dodać aplikację.
 
      ![Moxtra na liście wyników](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą Moxtra w oparciu o użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Moxtra musi zostać ustanowione.
+Ta sekcja umożliwia skonfigurowanie i przetestowanie logowania jednokrotnego usługi Azure AD za pomocą Moxtra na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w Moxtra.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Moxtra, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi Moxtra, należy wykonać następujące bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie Moxtra logowania jednokrotnego](#configure-moxtra-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+2. **[Skonfiguruj logowanie](#configure-moxtra-single-sign-on)** jednokrotne w usłudze Moxtra, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
 4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego Moxtra](#create-moxtra-test-user)**  — aby odpowiednikiem Britta Simon w Moxtra połączonego z usługi Azure AD reprezentacja użytkownika.
+5. **[Utwórz użytkownika testowego Moxtra](#create-moxtra-test-user)** , aby uzyskać odpowiednik Britta Simon w Moxtra, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
 6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z Moxtra, wykonaj następujące czynności:
+Aby skonfigurować Logowanie jednokrotne usługi Azure AD za pomocą Moxtra, wykonaj następujące czynności:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **Moxtra** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **Moxtra** wybierz pozycję **Logowanie**jednokrotne.
 
     ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
@@ -102,24 +102,24 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Moxtra, wykonaj nas
 
 4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    ![Moxtra domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/sp-signonurl.png)
+    ![Moxtra domenę i adresy URL Logowanie jednokrotne](common/sp-signonurl.png)
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://www.moxtra.com/service/#login`
 
-5. Aplikacja Moxtra oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę  **Edytuj** , aby otworzyć okno dialogowe  **Atrybuty użytkownika** .
+5. Aplikacja Moxtra oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij przycisk **Edytuj** ikonę, aby otworzyć okno dialogowe **atrybuty użytkownika** .
 
     ![image](common/edit-attribute.png)
 
-6. Ponadto powyżej Moxtra aplikacja oczekuje kilka więcej atrybutów, które mają być przekazywane w odpowiedzi SAML. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** wykonaj następujące czynności, aby dodać atrybut tokenu SAML, jak pokazano w poniższej tabeli: 
+6. Oprócz powyższych, aplikacja Moxtra oczekuje kilku atrybutów do przekazania z powrotem w odpowiedzi SAML. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** wykonaj następujące czynności, aby dodać atrybut tokenu SAML, jak pokazano w poniższej tabeli: 
 
     | Name (Nazwa) | Atrybut źródłowy|
     | ------------------- | -------------------- |    
     | firstname | user.givenname |
     | lastname | user.surname |
-    | idpid    | < Identyfikator usługi azure AD >
+    | idpid    | < Identyfikator usługi Azure AD >
 
     > [!Note]
-    > Wartość **idpid** atrybut nie jest prawdziwe. Można uzyskać wartości rzeczywiste z **Konfigurowanie Moxtra** sekcji krok 8. 
+    > Wartość atrybutu **idpid** nie jest prawdziwa. Wartość rzeczywistą można uzyskać z sekcji **Konfiguracja Moxtra** w kroku nr 8. 
 
     a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
 
@@ -143,7 +143,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Moxtra, wykonaj nas
 
     ![Link pobierania certyfikatu](common/certificatebase64.png)
 
-8. Na **Konfigurowanie Moxtra** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+8. W sekcji **Konfigurowanie Moxtra** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -153,34 +153,34 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Moxtra, wykonaj nas
 
     c. Adres URL wylogowywania
 
-### <a name="configure-moxtra-single-sign-on"></a>Konfigurowanie Moxtra logowanie jednokrotne
+### <a name="configure-moxtra-single-sign-on"></a>Konfigurowanie logowania jednokrotnego Moxtra
 
 1. W innym oknie przeglądarki Zaloguj się do witryny firmy Moxtra jako administrator.
 
-2. Na pasku narzędzi po lewej stronie kliknij pozycję **konsoli administracyjnej > SAML logowania jednokrotnego**, a następnie kliknij przycisk **New**.
+2. Na pasku narzędzi po lewej stronie kliknij kolejno pozycje **Konsola administracyjna > protokół SAML logowanie**jednokrotne, a następnie kliknij pozycję **Nowy**.
    
     ![Konfigurowanie logowania jednokrotnego](./media/moxtra-tutorial/tutorial_moxtra_06.png) 
 
-3. Na **SAML** strony, wykonaj następujące czynności:
+3. Na stronie **SAML** wykonaj następujące czynności:
    
     ![Konfigurowanie logowania jednokrotnego](./media/moxtra-tutorial/tutorial_moxtra_08.png)   
  
-    a. W **nazwa** polu tekstowym wpisz nazwę dla danej konfiguracji (np.: *SAML*). 
+    a. W polu tekstowym **Nazwa** wpisz nazwę konfiguracji (np.: *SAML*). 
   
-    b. W **identyfikator jednostki tożsamości** pola tekstowego, Wklej wartość **usługi Azure AD identyfikator** skopiowanej w witrynie Azure portal. 
+    b. W polu tekstowym **Identyfikator jednostki dostawcy tożsamości** wklej wartość **identyfikatora usługi Azure AD** , który został skopiowany z Azure Portal. 
  
     c. W polu tekstowym **Login URL** (Adres URL logowania) wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal. 
  
-    d. W **AuthnContextClassRef** polu tekstowym wpisz **urn: oasis: nazwy: tc: SAML:2.0:ac:classes:Password**. 
+    d. W polu tekstowym **AuthnContextClassRef** wpisz **urn: języka Oasis: names: TC: SAML: 2.0: AC: Classes: Password**. 
  
-    e. W **Format identyfikatora NameID** polu tekstowym wpisz **urn: oasis: nazwy: tc: SAML:1.1:nameid — format: emailAddress**. 
+    e. W polu tekstowym **Format NameID** wpisz **urn: języka Oasis: names: TC: SAML: 1.1: NameID-format: EmailAddress**. 
  
-    f. Otwórz certyfikat, który został pobrany z witryny Azure portal w programie Notatnik, skopiuj zawartość, a następnie wklej go do **certyfikatu** pola tekstowego.    
+    f. Otwórz certyfikat pobrany z Azure Portal w Notatniku, skopiuj zawartość, a następnie wklej ją do pola tekstowego **certyfikatu** .    
  
-    g. W polu tekstowym domeny poczty e-mail protokołu SAML wpisz domeny poczty e-mail protokołu SAML.    
+    g. W polu tekstowym domena e-mail protokołu SAML wpisz swoją domenę poczty e-mail protokołu SAML.    
   
     >[!NOTE]
-    >Aby zobaczyć kroki, aby zweryfikować domenę, kliknij przycisk "**i**" poniżej.
+    >Aby wyświetlić kroki weryfikacji domeny, kliknij przycisk "**i**" poniżej.
 
     h. Kliknij przycisk **Update** (Aktualizuj).
 
@@ -202,7 +202,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -211,13 +211,13 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do Moxtra.
+W tej sekcji Britta Simon do korzystania z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do usługi Moxtra.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **Moxtra**.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, wybierz pozycję **wszystkie aplikacje**, a następnie wybierz pozycję **Moxtra**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **Moxtra**.
+2. Na liście Aplikacje wybierz pozycję **Moxtra**.
 
     ![Link Moxtra na liście aplikacji](common/all-applications.png)
 
@@ -235,15 +235,15 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-moxtra-test-user"></a>Tworzenie użytkownika testowego Moxtra
+### <a name="create-moxtra-test-user"></a>Utwórz użytkownika testowego Moxtra
 
-Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Moxtra.
+Celem tej sekcji jest utworzenie użytkownika o nazwie Britta Simon w Moxtra.
 
-**Aby utworzyć użytkownika o nazwie Britta Simon w Moxtra, wykonaj następujące czynności:**
+**Aby utworzyć użytkownika o nazwie Britta Simon in Moxtra, wykonaj następujące czynności:**
 
-1. Zaloguj się do witryny firmy Moxtra jako administrator.
+1. Zaloguj się do firmowej witryny Moxtra jako administrator.
 
-1. Na pasku narzędzi po lewej stronie kliknij pozycję **konsoli administracyjnej > Zarządzanie użytkownikami**, a następnie **Dodaj użytkownika**.
+1. Na pasku narzędzi po lewej stronie kliknij pozycję **Konsola administracyjna > zarządzanie użytkownikami**, a następnie **Dodaj użytkownika**.
    
     ![Konfigurowanie logowania jednokrotnego](./media/moxtra-tutorial/tutorial_moxtra_10.png) 
 
@@ -253,21 +253,21 @@ Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Moxtra
   
     b. W polu tekstowym **Last Name** (Nazwisko) wpisz **Simon**.
   
-    c. W **E-mail** pole tekstowe, wpisz adres e-mail Britty takie same jak w witrynie Azure portal.
+    c. W polu tekstowym adres e-mail wpisz adres e-mail Britta, który jest taki sam jak na Azure Portal.
   
-    d. W **dzielenia** polu tekstowym wpisz **Dev**.
+    d. W polu tekstowym **dzielenie** wpisz **dev**.
   
-    e. W **działu** polu tekstowym wpisz **IT**.
+    e. W polu tekstowym **dział** wpisz **ją**.
   
-    f. Wybierz **administratora**.
+    f. Wybierz pozycję **administrator**.
   
-    g. Kliknij pozycję **Add** (Dodaj).
+    g. Kliknij przycisk **Dodaj**.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Moxtra w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze Moxtra, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka Moxtra w panelu dostępu należy automatycznie zalogować się do Moxtra, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
@@ -275,5 +275,5 @@ Po kliknięciu kafelka Moxtra w panelu dostępu, powinien zostać automatycznie 
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

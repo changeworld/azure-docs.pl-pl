@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą GetThere | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i GetThere.
+title: 'Samouczek: Azure Active Directory integrację z Get| Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i get.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 499b7f5761c97f6986ca0291af2242d694b609d2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a7c1a59e3b0650badd75a1170a4daaa6561bd23c
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67101735"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945063"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-getthere"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą GetThere
+# <a name="tutorial-azure-active-directory-integration-with-getthere"></a>Samouczek: Azure Active Directory integrację z
 
-W tym samouczku dowiesz się, jak zintegrować GetThere w usłudze Azure Active Directory (Azure AD).
-Integrowanie GetThere z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować Getz Azure Active Directory (Azure AD).
+Integracja z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do GetThere.
-* Aby umożliwić użytkownikom można automatycznie zalogowany do GetThere (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
+* Możesz kontrolować usługę Azure AD, która ma dostęp do tej metody.
+* Możesz umożliwić użytkownikom automatyczne logowanie do usługi Getin (Logowanie jednokrotne) przy użyciu kont w usłudze Azure AD.
 * Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -35,22 +35,22 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą GetThere, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD za pomocą elementu getw, potrzebne są następujące elementy:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* GetThere logowanie jednokrotne włączone subskrypcji
+* Wykorzystaj subskrypcję z włączoną rejestracją jednokrotną
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Obsługuje GetThere **tożsamości** jednokrotne logowanie inicjowane przez
+* Getdostawcy tożsamości obsługuje Logowanie jednokrotne zainicjowane przez usługę
 
-## <a name="adding-getthere-from-the-gallery"></a>Dodawanie GetThere z galerii
+## <a name="adding-getthere-from-the-gallery"></a>Dodawanie do programu Getz galerii
 
-Aby skonfigurować integrację GetThere w usłudze Azure AD, należy dodać GetThere z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację do usługi Azure AD, musisz dodać do niej polecenie Getz galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać GetThere z galerii, wykonaj następujące czynności:**
+**Aby dodać Getz galerii, wykonaj następujące czynności:**
 
 1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
@@ -64,31 +64,31 @@ Aby skonfigurować integrację GetThere w usłudze Azure AD, należy dodać GetT
 
     ![Nowy przycisk aplikacji](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **GetThere**, wybierz opcję **GetThere** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz Getin, wybierz pozycję Getz w panelu wyników, a następnie kliknij przycisk **Dodaj** , aby dodać aplikację.
 
-     ![GetThere na liście wyników](common/search-new-app.png)
+     ![Getna liście wyników](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą GetThere w oparciu o użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w GetThere musi zostać ustanowione.
+W tej sekcji konfigurujesz i testujesz Logowanie jednokrotne w usłudze Azure AD za pomocą elementu getw oparciu o użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD a użytkownikiem powiązanym.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą GetThere, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą Get, należy wykonać następujące bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie GetThere logowania jednokrotnego](#configure-getthere-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+2. **[Skonfiguruj funkcję GetSingle Sign-on](#configure-getthere-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
 4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego GetThere](#create-getthere-test-user)**  — aby odpowiednikiem Britta Simon w GetThere połączonego z usługi Azure AD reprezentacja użytkownika.
+5. **[Utwórz użytkownika testowego](#create-getthere-test-user)** , aby uzyskać odpowiednik Britta Simon, który jest powiązany z reprezentacją użytkownika w usłudze Azure AD.
 6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z GetThere, wykonaj następujące czynności:
+Aby skonfigurować Logowanie jednokrotne w usłudze Azure AD za pomocą getw, wykonaj następujące czynności:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **GetThere** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [Azure Portal](https://portal.azure.com/)na stronie getna integrację aplikacji wybierz pozycję **Logowanie**jednokrotne.
 
     ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
@@ -102,7 +102,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z GetThere, wykonaj n
 
 4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** wykonaj następujące kroki:
 
-    ![GetThere domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-intiated.png)
+    ![Informowanie informacji o rejestracji jednokrotnej w domenach i adresach URL](common/idp-intiated.png)
 
     a. W polu tekstowym **Identyfikator** wpisz adres URL:
 
@@ -111,7 +111,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z GetThere, wykonaj n
     | `getthere.com` |
     | `http://idp.getthere.com` |
 
-    b. W **adres URL odpowiedzi** tekstu wpisz jeden z poniższych adresów URL:
+    b. W polu tekstowym **adres URL odpowiedzi** wpisz jeden z poniższych adresów URL:
     
     | |
     |--|
@@ -120,15 +120,15 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z GetThere, wykonaj n
     | `https://gtx2-gcte2.getthere.net/login/saml/ssoaasvalidate.act` |
     | `https://wx1.getthere.net/login/saml/ssoaavalidate.act` |
 
-5. Aplikacja GetThere oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę  **Edytuj** , aby otworzyć okno dialogowe Atrybuty użytkownika.
+5. Aplikacja oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania mapowań atrybutów niestandardowych do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe Atrybuty użytkownika.
 
     ![image](common/edit-attribute.png)
 
-6. Ponadto powyżej GetThere aplikacja oczekuje kilka więcej atrybutów, które mają być przekazywane w odpowiedzi SAML. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** wykonaj następujące czynności, aby dodać atrybut tokenu SAML, jak pokazano w poniższej tabeli:
+6. Oprócz powyższych, getw aplikacji oczekuje kilku atrybutów do przekazania z powrotem w odpowiedzi SAML. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** wykonaj następujące czynności, aby dodać atrybut tokenu SAML, jak pokazano w poniższej tabeli:
 
     | Name (Nazwa) |  Atrybut źródłowy |  Przestrzeń nazw |
     | ---------------| --------------- | --------------- |
-    | Nazwa witryny | "Podaj wartość zgodnie z organizacji" | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sitename |
+    | Sitename | "Podaj wartość jak dla organizacji" | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sitename |
     | Nazwa użytkownika |  user.mail | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/username |
 
     a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
@@ -139,7 +139,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z GetThere, wykonaj n
 
     b. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
 
-    c. W **Namespace** polu tekstowym wpisz przestrzeń nazw atrybutów wyświetlanego dla tego wiersza.
+    c. W polu tekstowym **przestrzeń nazw** wpisz przestrzeń nazw atrybutu wyświetlaną dla tego wiersza.
 
     d. Dla opcji Źródło wybierz wartość **Atrybut**.
 
@@ -153,7 +153,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z GetThere, wykonaj n
 
     ![Link pobierania certyfikatu](common/certificatebase64.png)
 
-8. Na **Konfigurowanie GetThere** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+8. Na stronie **Konfigurowanie** geton skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -163,9 +163,9 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z GetThere, wykonaj n
 
     d. Adres URL wylogowywania
 
-### <a name="configure-getthere-single-sign-on"></a>Konfigurowanie GetThere logowanie jednokrotne
+### <a name="configure-getthere-single-sign-on"></a>Skonfiguruj funkcję getlogowania jednokrotnego
 
-Aby skonfigurować logowanie jednokrotne na **GetThere** stronie, musisz wysłać pobrany **certyfikat (Base64)** i odpowiednie skopiowany adresy URL z portalu Azure, aby [zespołem pomocy technicznej GetThere](mailto:dataintegration@sabre.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+Aby skonfigurować Logowanie jednokrotne na tej stronie, musisz wysłać pobrany **certyfikat (base64)** i odpowiednie skopiowane adresy URL z Azure Portal do programu. [](mailto:dataintegration@sabre.com) Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -185,7 +185,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W **nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** wpisz **brittasimon\@yourcompanydomain.extension**  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -194,15 +194,15 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do GetThere.
+W tej sekcji Britta Simon do korzystania z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do tej usługi.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **GetThere**.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, wybierz pozycję **wszystkie aplikacje**, anastępnie wybierz pozycję Get.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **GetThere**.
+2. Na liście Aplikacje wybierz pozycję **gettam**.
 
-    ![Link GetThere na liście aplikacji](common/all-applications.png)
+    ![Link getw na liście aplikacji](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -218,15 +218,15 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-getthere-test-user"></a>Tworzenie użytkownika testowego GetThere
+### <a name="create-getthere-test-user"></a>Utwórz użytkownika testowego
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w GetThere. Praca z [zespołem pomocy technicznej GetThere](mailto:dataintegration@sabre.com) Aby dodać użytkowników na platformie GetThere. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon. Współpracuj z [zespołem pomocy technicznej](mailto:dataintegration@sabre.com) , aby dodać użytkowników na platformie get. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka GetThere w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze GetThere, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka getw w panelu dostępu należy automatycznie zalogować się do elementu Get, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
@@ -234,5 +234,5 @@ Po kliknięciu kafelka GetThere w panelu dostępu, powinien zostać automatyczni
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

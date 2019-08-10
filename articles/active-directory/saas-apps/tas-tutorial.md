@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą zadań | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i TAS.
+title: 'Samouczek: Azure Active Directory integrację z usługą zadania | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i ZADANIAmi.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 279f6970c34acbfea645366f7e965c830873fdbf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: efd64830c0d9afa83838adef96cf1c103b4485e8
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67089174"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943271"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-tas"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą zadań
+# <a name="tutorial-azure-active-directory-integration-with-tas"></a>Samouczek: Azure Active Directory integrację z usługą
 
-W tym samouczku dowiesz się, jak zintegrować zadań za pomocą usługi Azure Active Directory (Azure AD).
-Integrowanie zadań z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować zadanie z usługą Azure Active Directory (Azure AD).
+Integracja z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować w usłudze Azure AD, kto ma dostęp do TAS.
-* Aby umożliwić użytkownikom można automatycznie zalogowany do zadań (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
+* Możesz kontrolować usługę Azure AD, która ma dostęp do zadania.
+* Możesz umożliwić użytkownikom automatyczne logowanie do konta usługi Azure AD przy użyciu logowania jednokrotnego.
 * Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -36,20 +36,20 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą zadań, potrzebne są następujące elementy:
+Aby skonfigurować integrację z usługą Azure AD za pomocą zadania, potrzebne są następujące elementy:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* Zadanie logowanie jednokrotne włączone subskrypcji
+* Subskrypcja z włączonym logowaniem jednokrotnym
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Zadanie obsługuje **dodatkiem SP oraz dostawców tożsamości** jednokrotne logowanie inicjowane przez
+* Obsługa dostawcy tożsamości zainicjowana przez usługę **SP i** usługa SSO
 
-## <a name="adding-tas-from-the-gallery"></a>Dodawanie zadań z galerii
+## <a name="adding-tas-from-the-gallery"></a>Dodawanie zadania z galerii
 
-Aby skonfigurować integrację z zadań w usłudze Azure AD, należy dodać zadanie z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację zadania z usługą Azure AD, należy dodać do listy zarządzanych aplikacji SaaS zadania z galerii.
 
 **Aby dodać zadanie z galerii, wykonaj następujące czynności:**
 
@@ -65,31 +65,31 @@ Aby skonfigurować integrację z zadań w usłudze Azure AD, należy dodać zada
 
     ![Nowy przycisk aplikacji](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **zadań**, wybierz opcję **zadań** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz "zadanie", wybierz pozycję zadanie z panelu wyników, a następnie kliknij przycisk **Dodaj** , aby dodać aplikację.
 
-     ![Zadanie na liście wyników](common/search-new-app.png)
+     ![ZADANIA na liście wyników](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą zadań w oparciu o użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w zadanie musi zostać nawiązane.
+W tej sekcji należy skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD przy użyciu zadania na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w ramach zadania.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą zadań, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD przy użyciu zadania, należy wykonać następujące bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie zadań logowania jednokrotnego](#configure-tas-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+2. **[Skonfiguruj logowanie](#configure-tas-single-sign-on)** jednokrotne w celu skonfigurowania ustawień logowania jednokrotnego na stronie aplikacji.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
 4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Utwórz zadanie użytkownika testowego](#create-tas-test-user)**  — aby odpowiednikiem Britta Simon w zadanie, połączonego z usługi Azure AD reprezentacja użytkownika.
+5. **[Utwórz użytkownika testowego zadania](#create-tas-test-user)** — Aby uzyskać odpowiednik Britta Simon w usłudze, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
 6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą zadań, wykonaj następujące czynności:
+Aby skonfigurować Logowanie jednokrotne usługi Azure AD przy użyciu zadania, wykonaj następujące czynności:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **zadań** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji z zadaniami wybierz pozycję **Logowanie**jednokrotne.
 
     ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
@@ -103,7 +103,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą zadań, wy
 
 4. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
 
-    ![Zadanie domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-intiated.png)
+    ![Informacje logowania jednokrotnego domen i adresów URL zadania](common/idp-intiated.png)
 
     a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://taseu.combtas.com/<DOMAIN>`
 
@@ -111,18 +111,18 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą zadań, wy
 
 5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
-    ![Zadanie domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/metadata-upload-additional-signon.png)
+    ![Informacje logowania jednokrotnego domen i adresów URL zadania](common/metadata-upload-additional-signon.png)
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://taseu.combtas.com/<DOMAIN>`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Spowoduje zaktualizowanie ich z rzeczywistego identyfikatora, adres URL odpowiedzi i logowania jednokrotnego adresu URL, który zostało wyjaśnione w dalszej części tego samouczka. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Te aktualizacje zostaną zaktualizowane przy użyciu rzeczywistego identyfikatora, adresu URL odpowiedzi i adresu URL logowania, co zostało wyjaśnione w dalszej części tego samouczka. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 6. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
     ![Link pobierania certyfikatu](common/certificatebase64.png)
 
-7. Na **skonfigurować zadanie** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+7. W sekcji **Konfigurowanie zadania** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -132,36 +132,36 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą zadań, wy
 
     c. Adres URL wylogowywania
 
-### <a name="configure-tas-single-sign-on"></a>Konfigurowanie zadań logowanie jednokrotne
+### <a name="configure-tas-single-sign-on"></a>Konfigurowanie logowania jednokrotnego dla zadania
 
-1. W oknie przeglądarki internetowej innej, zaloguj się do zadań jako Administrator.
+1. W innym oknie przeglądarki sieci Web Zaloguj się do zadania jako administrator.
 
-2. W lewej części menu, kliknij **ustawienia** i przejdź do **administratora** a następnie kliknij polecenie **Zarządzanie logowanie jednokrotne**.
+2. Po lewej stronie menu kliknij pozycję **Ustawienia** i przejdź do strony **administrator** , a następnie kliknij pozycję **Zarządzaj logowaniem**jednokrotnym.
 
     ![Konfiguracja zadania](./media/tas-tutorial/configure01.png)
 
-3. Na **Zarządzanie logowanie jednokrotne** strony, wykonaj następujące czynności:
+3. Na stronie **Zarządzanie logowaniem** jednokrotnym wykonaj następujące czynności:
 
     ![Konfiguracja zadania](./media/tas-tutorial/configure02.png)
 
-    a. W **nazwa** polu tekstowym wpisz nazwę środowiska.
+    a. W polu tekstowym **Nazwa** wpisz nazwę środowiska.
     
-    b. Wybierz **SAML2** jako **typ uwierzytelniania**.
+    b. Wybierz pozycję **SAML2** jako **Typ uwierzytelniania**.
 
-    c. W **wprowadź adres URL** pola tekstowego, Wklej wartość **adres URL logowania** skopiowanej w witrynie Azure portal.
+    c. W polu tekstowym **wprowadź adres URL** wklej wartość **adresu URL logowania** skopiowanego z Azure Portal.
 
-    d. W programie Notatnik, otwórz certyfikat zakodowany base-64, pobrany z witryny Azure portal, skopiuj jego zawartość i następnie wklej go do **wprowadź certyfikacji** pole.
+    d. W Notatniku otwórz certyfikat z kodowaniem Base-64 pobrany z Azure Portal, skopiuj jego zawartość, a następnie wklej go w polu **wprowadź certyfikat** .
 
-    e. W **wprowadź nowy adres IP** pole tekstowe, wpisz adres IP.
+    e. W polu tekstowym **Wprowadź nowy adres IP** wpisz adres IP.
 
     >[!NOTE]
-    > Skontaktuj się z pomocą [obciążenie zespołu pomocy technicznej](mailto:support@combtas.com) można pobrać adresu IP.
+    > Skontaktuj się z [zespołem pomocy technicznej](mailto:support@combtas.com) , aby uzyskać adres IP.
 
-    f. Kopiuj **Single Sign On** adresu url i wklej go w **identyfikator jednostki** i **adres URL logowania** pole tekstowe z **podstawową konfigurację protokołu SAML** w Witryna Azure portal. Należy pamiętać, że adres url jest uwzględniana wielkość liter i musi kończyć się znakiem ukośnika (/).
+    f. Skopiuj adres URL **logowania** jednokrotnego i wklej go do pola **Identyfikator (identyfikator jednostki)** i **adres URL logowania** w temacie **Podstawowa konfiguracja SAML** w Azure Portal. Należy pamiętać, że w adresie URL jest rozróżniana wielkość liter i musi kończyć się ukośnikiem (/).
 
-    g. Kopiuj **usługi Assertion** adresu url w konfiguracji strony i wklej go do **adres URL odpowiedzi** pole tekstowe z **podstawową konfigurację protokołu SAML** w witrynie Azure portal.
+    g. Skopiuj adres URL **usługi potwierdzenia** na stronie Instalatora i wklej go do pola tekstowego **adres URL odpowiedzi** w temacie **Podstawowa konfiguracja SAML** w Azure Portal.
 
-    h. Kliknij przycisk **SSO Wstaw wiersz**.
+    h. Kliknij pozycję **Wstaw wiersz rejestracji**jednokrotnej.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -190,15 +190,15 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji należy włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do TAS.
+Ta sekcja umożliwia włączenie usługi Britta Simon w celu korzystania z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do zadania.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **zadań**.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, wybierz pozycję **wszystkie aplikacje**, anastępnie wybierz pozycję zadanie.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **zadań**.
+2. Na liście Aplikacje wybierz pozycję zadanie.
 
-    ![Link zadanie na liście aplikacji](common/all-applications.png)
+    ![Link do zadania na liście aplikacji](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -214,15 +214,15 @@ W tej sekcji należy włączyć Britta Simon do używania usługi Azure logowani
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-tas-test-user"></a>Utwórz zadanie użytkownika testowego
+### <a name="create-tas-test-user"></a>Utwórz użytkownika testowego zadania
 
-W tej sekcji opisano tworzenie użytkownika o nazwie Britta Simon w TAS. Praca z [obciążenie zespołu pomocy technicznej](mailto:support@combtas.com) Aby dodać użytkowników na platformie zadań. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w obszarze zadania. Pracuj z [zespołem pomocy technicznej](mailto:support@combtas.com) , aby dodać użytkowników na platformie zadań. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka zadania w panelu dostępu, możesz powinny być automatycznie zalogowany do zadań, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka zadania w panelu dostępu należy automatycznie zalogować się do zadania, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
@@ -230,5 +230,5 @@ Po kliknięciu kafelka zadania w panelu dostępu, możesz powinny być automatyc
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

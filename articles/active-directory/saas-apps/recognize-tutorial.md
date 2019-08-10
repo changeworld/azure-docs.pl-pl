@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą rozpoznawaj | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Rozpoznaj.
+title: 'Samouczek: Integracja Azure Active Directory z rozpoznawaniem | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory a rozpoznawaniem.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 82d231eff4690dc060c01d41356933693d08c443
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0a513ad8fe772839813615d065616f2c911a031
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67093258"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943341"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-recognize"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Rozpoznaj
+# <a name="tutorial-azure-active-directory-integration-with-recognize"></a>Samouczek: Integracja Azure Active Directory z rozpoznawaniem
 
-W tym samouczku dowiesz się, jak zintegrować rozpoznawanie przy użyciu usługi Azure Active Directory (Azure AD).
-Integrowanie rozpoznawaj z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować program z usługą Azure Active Directory (Azure AD).
+Integracja z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do uznania.
-* Aby umożliwić użytkownikom można automatycznie zalogowany rozpoznawaj (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
+* Możesz kontrolować usługę Azure AD, która ma dostęp do rozpoznawania.
+* Możesz włączyć automatyczne logowanie użytkowników, aby rozpoznawać (Logowanie jednokrotne) przy użyciu kont usługi Azure AD.
 * Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -36,20 +36,20 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą rozpoznawaj, potrzebne są następujące elementy:
+Aby skonfigurować integrację z usługą Azure AD przy użyciu rozpoznawania, potrzebne są następujące elementy:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* Rozpoznaje logowanie jednokrotne włączone subskrypcja pojedyncza
+* Rozpoznaj subskrypcję obsługującą Logowanie jednokrotne
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Rozpoznaje obsługuje **SP** jednokrotne logowanie inicjowane przez
+* Rozpoznawanie obsługuje logowanie jednokrotne zainicjowane przez usługę **SP**
 
-## <a name="adding-recognize-from-the-gallery"></a>Dodawanie rozpoznawaj z galerii
+## <a name="adding-recognize-from-the-gallery"></a>Dodawanie rozpoznawania z galerii
 
-Aby skonfigurować integrację Rozpoznaj w usłudze Azure AD, należy dodać rozpoznawanie z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację rozpoznawania z usługą Azure AD, należy dodać rozpoznawanie z galerii do listy zarządzanych aplikacji SaaS.
 
 **Aby dodać rozpoznawanie z galerii, wykonaj następujące czynności:**
 
@@ -65,31 +65,31 @@ Aby skonfigurować integrację Rozpoznaj w usłudze Azure AD, należy dodać roz
 
     ![Nowy przycisk aplikacji](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **rozpoznawaj**, wybierz opcję **rozpoznawaj** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz ciąg,wybierz opcję Rozpoznaj z poziomu panelu wyników, a następnie kliknij przycisk **Dodaj** , aby dodać aplikację.
 
-     ![Rozpoznaje na liście wyników](common/search-new-app.png)
+     ![Rozpoznawanie na liście wyników](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą Rozpoznaj w oparciu o użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w rozpoznawaj musi zostać nawiązane.
+W tej sekcji należy skonfigurować i przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą rozpoznawania na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w ramach rozpoznawania.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą rozpoznawaj, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD przy użyciu rozpoznawania, należy wykonać następujące bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Skonfiguruj rozpoznawanie logowania jednokrotnego](#configure-recognize-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+2. **[Konfigurowanie rozpoznawania logowania](#configure-recognize-single-sign-on)** jednokrotnego — w celu skonfigurowania ustawień logowania jednokrotnego na stronie aplikacji.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
 4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego rozpoznawaj](#create-recognize-test-user)**  — aby odpowiednikiem Britta Simon w rozpoznawaj połączonego z usługi Azure AD reprezentacja użytkownika.
+5. **[Tworzenie rozpoznawania użytkownika testowego](#create-recognize-test-user)** — Aby uzyskać odpowiednik Britta Simon w rozpoznawaniu, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
 6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z rozpoznawaj, wykonaj następujące czynności:
+Aby skonfigurować Logowanie jednokrotne usługi Azure AD przy użyciu rozpoznawania, wykonaj następujące czynności:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **rozpoznawaj** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [Azure Portal](https://portal.azure.com/)na stronie Rozpoznaj integrację aplikacji wybierz pozycję **Logowanie**jednokrotne.
 
     ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
@@ -101,10 +101,10 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z rozpoznawaj, wykona
 
     ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-4. Na **podstawową konfigurację protokołu SAML** sekcji, jeśli masz **plik metadanych usługodawcy**, wykonaj następujące czynności:
+4. W sekcji **Podstawowa konfiguracja protokołu SAML**, jeśli masz **plik metadanych dostawcy usługi**, wykonaj następujące kroki:
 
     >[!NOTE]
-    >Zostanie wyświetlony **plik metadanych usługodawcy** z **skonfiguruj rozpoznawanie logowania jednokrotnego** części samouczka.
+    >**Plik metadanych dostawcy usług** zostanie pobrany z sekcji **Konfigurowanie rozpoznawania logowania** jednokrotnego w samouczku.
 
     a. Kliknij pozycję **Przekaż plik metadanych**.
 
@@ -114,20 +114,20 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z rozpoznawaj, wykona
 
     ![wybierz plik metadanych](common/browse-upload-metadata.png)
 
-    c. Po pomyślnym przekazaniu pliku metadanych **identyfikator** wartość Uzyskaj automatycznie wypełnione w sekcji podstawową konfigurację protokołu SAML.
+    c. Po pomyślnym przekazaniu pliku metadanych wartość **identyfikatora** zostanie wypełniona automatycznie w sekcji Podstawowa konfiguracja SAML.
 
-    ![Rozpoznawanie domena i adresy URL pojedynczego logowania jednokrotnego](common/sp-identifier.png)
+    ![Rozpoznawanie informacji o rejestracji jednokrotnej w domenach i adresach URL](common/sp-identifier.png)
 
      W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://recognizeapp.com/<your-domain>/saml/sso`
 
     > [!Note]
-    > Jeśli **identyfikator** wartości nie są automatycznie wypełniane, otrzymasz wartość identyfikatora, otwierając adres URL metadanych dostawcy usług w sekcji ustawień logowania jednokrotnego, która została wyjaśniona później w **skonfiguruj rozpoznawanie pojedynczego Logowanie jednokrotne** części samouczka. Wartość adresu URL logowania nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta rozpoznaje](mailto:support@recognizeapp.com) można uzyskać wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Jeśli wartość **identyfikatora** nie zostanie wypełniona automatycznie, otrzymasz wartość identyfikatora, otwierając adres URL metadanych dostawcy usług z sekcji Ustawienia logowania jednokrotnego, która została omówiona w dalszej części sekcji **Konfigurowanie rozpoznawania logowania** jednokrotnego w temacie. Ręczny. Wartość adresu URL logowania nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z [zespołem obsługi klienta](mailto:support@recognizeapp.com) , aby uzyskać wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
     ![Link pobierania certyfikatu](common/certificatebase64.png)
 
-6. Na **skonfiguruj rozpoznawanie** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+6. W sekcji **Konfiguracja Rozpoznaj** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -137,11 +137,11 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z rozpoznawaj, wykona
 
     c. Adres URL wylogowywania
 
-### <a name="configure-recognize-single-sign-on"></a>Skonfiguruj rozpoznawanie logowania jednokrotnego
+### <a name="configure-recognize-single-sign-on"></a>Konfigurowanie rozpoznawania logowania jednokrotnego
 
-1. W oknie przeglądarki internetowej innej Zaloguj się do dzierżawy rozpoznawaj jako administrator.
+1. W innym oknie przeglądarki sieci Web Zaloguj się do swojej dzierżawy jako administrator.
 
-2. W prawym górnym rogu kliknij **Menu**. Przejdź do **firmy administratora**.
+2. W prawym górnym rogu kliknij **menu**. Przejdź do pozycji **administrator firmy**.
    
     ![Konfigurowanie logowania jednokrotnego po stronie aplikacji](./media/recognize-tutorial/tutorial_recognize_000.png)
 
@@ -149,27 +149,27 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z rozpoznawaj, wykona
    
     ![Konfigurowanie logowania jednokrotnego po stronie aplikacji](./media/recognize-tutorial/tutorial_recognize_001.png)
 
-4. Wykonaj następujące czynności na **ustawień logowania jednokrotnego** sekcji.
+4. Wykonaj następujące kroki w sekcji **Ustawienia logowania** jednokrotnego.
    
     ![Konfigurowanie logowania jednokrotnego po stronie aplikacji](./media/recognize-tutorial/tutorial_recognize_002.png)
     
-    a. Jako **włączyć logowanie Jednokrotne**, wybierz opcję **ON**.
+    a. Jako **włączenie logowania**jednokrotnego wybierz pozycję **włączone**.
 
-    b. W **identyfikator jednostki tożsamości** pola tekstowego, Wklej wartość **usługi Azure AD identyfikator** skopiowanej w witrynie Azure portal.
+    b. W polu tekstowym **Identyfikator jednostki dostawcy tożsamości** wklej wartość **identyfikatora usługi Azure AD** , który został skopiowany z Azure Portal.
     
-    c. W **logowania jednokrotnego, docelowy adres url** pola tekstowego, Wklej wartość **adres URL logowania** skopiowanej w witrynie Azure portal.
+    c. W polu tekstowym **adres URL elementu docelowego logowania** jednokrotnego wklej wartość **adresu URL logowania** skopiowanego z Azure Portal.
     
-    d. W **Slo docelowy adres url** pola tekstowego, Wklej wartość **adres URL wylogowania** skopiowanej w witrynie Azure portal. 
+    d. W polu tekstowym **adres URL celu SLO** wklej wartość **adresu URL wylogowywania** skopiowanego z Azure Portal. 
     
-    e. Otwórz swoje pobrany **certyfikat (Base64)** w Notatniku plik, skopiuj jego zawartość do Schowka, a następnie wklej go do **certyfikatu** pola tekstowego.
+    e. Otwórz pobrany plik **certyfikatu (base64)** w Notatniku, skopiuj jego zawartość do schowka, a następnie wklej go do pola tekstowego **certyfikatu** .
     
-    f. Kliknij przycisk **Zapisz ustawienia** przycisku. 
+    f. Kliknij przycisk **Zapisz ustawienia** . 
 
-5. Obok pozycji **ustawień logowania jednokrotnego** sekcji, skopiuj adres URL, pod **adres url usługi dostawcy metadanych**.
+5. W sekcji **Ustawienia rejestracji** jednokrotnej Skopiuj adres URL w polu **adres URL metadanych dostawcy usług**.
    
     ![Konfigurowanie logowania jednokrotnego po stronie aplikacji](./media/recognize-tutorial/tutorial_recognize_003.png)
 
-6. Otwórz **link z adresem URL metadanych** w obszarze puste przeglądarki, aby pobrać dokumentu metadanych. Następnie skopiuj EntityDescriptor value(entityID) z pliku i wklej go w **identyfikator** polu tekstowym w **podstawową konfigurację protokołu SAML** w witrynie Azure portal.
+6. Otwórz **link adresu URL metadanych** w pustej przeglądarce, aby pobrać dokument metadanych. Następnie skopiuj wartość elementem EntityDescriptor (entityID) z pliku i wklej ją w polu tekstowym **Identyfikator** w **podstawowej konfiguracji SAML** na Azure Portal.
     
     ![Konfigurowanie logowania jednokrotnego po stronie aplikacji](./media/recognize-tutorial/tutorial_recognize_004.png)
 
@@ -191,7 +191,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola brittasimon@yourcompanydomain.extension. Na przykład: BrittaSimon@contoso.com
+    b. W polu **Nazwa użytkownika** wpisz brittasimon@yourcompanydomain.extension. Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
@@ -199,15 +199,15 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do uznania.
+W tej sekcji Britta Simon do korzystania z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do rozpoznawania.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **rozpoznawaj**.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, wybierz pozycję **wszystkie aplikacje**, a następnie wybierz pozycję Rozpoznaj.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **rozpoznawaj**.
+2. Na liście Aplikacje wybierz pozycję **Rozpoznaj**.
 
-    ![Rozpoznaj łącze na liście aplikacji](common/all-applications.png)
+    ![Link rozpoznawania na liście aplikacji](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -223,35 +223,35 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-recognize-test-user"></a>Tworzenie użytkownika testowego Rozpoznaj
+### <a name="create-recognize-test-user"></a>Utwórz użytkownika testowego rozpoznawania
 
-Aby umożliwić użytkownikom usługi Azure AD zalogować się do uznania, musi być obsługiwana do uznania. W przypadku uznania Inicjowanie obsługi administracyjnej jest zadanie ręczne.
+Aby umożliwić użytkownikom usługi Azure AD logowanie się w rozpoznawaniu, muszą one być obsługiwane do rozpoznawania. W przypadku rozpoznawania, Inicjowanie obsługi jest zadaniem ręcznym.
 
-Ta aplikacja nie obsługuje standard SCIM inicjowania obsługi administracyjnej, ale ma synchronizacji alternatywne użytkownika, która aprowizuje użytkowników. 
+Ta aplikacja nie obsługuje aprowizacji Standard scim, ale ma alternatywną synchronizację użytkowników, która inicjuje obsługę użytkowników. 
 
 **Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
 
-1. Zaloguj się do witryny firmy rozpoznawaj jako administrator.
+1. Zaloguj się do strony firmy rozpoznawania jako administrator.
 
-2. W prawym górnym rogu kliknij **Menu**. Przejdź do **firmy administratora**.
+2. W prawym górnym rogu kliknij **menu**. Przejdź do pozycji **administrator firmy**.
 
 3. W okienku nawigacji po lewej stronie kliknij pozycję **Settings** (Ustawienia).
 
-4. Wykonaj następujące czynności na **synchronizacja użytkownika** sekcji.
+4. Wykonaj następujące kroki w sekcji **Synchronizacja użytkownika** .
    
     ![Nowy użytkownik](./media/recognize-tutorial/tutorial_recognize_005.png "Nowy użytkownik")
    
-    a. Jako **z włączoną funkcją synchronizacji**, wybierz opcję **ON**.
+    a. Gdy **Synchronizacja jest włączona**, wybierz pozycję **włączone**.
    
-    b. Jako **dostawcy synchronizacji wybierz**, wybierz opcję **Microsoft / usługi Office 365**.
+    b. Jako **Wybierz dostawcę synchronizacji**wybierz pozycję **Microsoft/Office 365**.
    
-    c. Kliknij przycisk **Uruchom synchronizację użytkowników**.
+    c. Kliknij pozycję **Uruchom synchronizację użytkowników**.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Rozpoznaj w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze rozpoznawaj, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka Rozpoznaj w panelu dostępu należy automatycznie zalogować się do rozpoznania, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
@@ -259,5 +259,5 @@ Po kliknięciu kafelka Rozpoznaj w panelu dostępu, powinien zostać automatyczn
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

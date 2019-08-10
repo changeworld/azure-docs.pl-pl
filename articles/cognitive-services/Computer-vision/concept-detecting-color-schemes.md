@@ -1,7 +1,7 @@
 ---
-title: Wykrywanie schematy kolorów — przetwarzanie obrazów
+title: Wykrywanie schematu kolorów — przetwarzanie obrazów
 titleSuffix: Azure Cognitive Services
-description: Pojęcia dotyczące wykrywania schemat kolorów na obrazach za pomocą interfejsu API przetwarzania obrazów.
+description: Pojęcia związane z wykrywaniem schematu kolorów w obrazach przy użyciu interfejs API przetwarzania obrazów.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,26 +11,26 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ff7af2204f9e05a1ba4ef800c63c3ad462242350
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e0fa85b8a90ea57d9b81bd2eeaa6d080b7582acd
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60368591"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945274"
 ---
-# <a name="detect-color-schemes-in-images"></a>Wykrywanie schematy kolorów na obrazach
+# <a name="detect-color-schemes-in-images"></a>Wykryj schematy kolorów w obrazach
 
-Przetwarzania obrazów analizuje kolory na obrazie, aby zapewnić trzech różnych atrybutów: dominujący kolor, kolor tła dominujący i zestaw kolory dominujące obrazu jako całości. Zwrócone, kolory, należy do zestawu: czarny, niebieski, brown, szary, zielony, orange, różowy, fioletowy, czerwony, zielonomodrym, biały i żółty. 
+Przetwarzanie obrazów analizuje kolory w obrazie, aby zapewnić trzy różne atrybuty: kolor pierwszego planu, kolor tła, a także zestaw kolorów dla obrazu jako całości. Zwrócone kolory należą do zestawu: czerń, niebieska, brązowy, szary, zielony, pomarańczowy, różowy, purpurowy, czerwony, turkusowy, biały i żółty. 
 
-Przetwarzania obrazów wyodrębnia również kolor akcentu, który reprezentuje kolor najbardziej aktywny na obrazie, oparte na kombinacji kolory dominujące Nasycenie. Kolor akcentu jest zwracana jako kod szesnastkowy koloru HTML. 
+Przetwarzanie obrazów również wyodrębnia kolor akcentu, który reprezentuje najbardziej żywe kolory obrazu, na podstawie kombinacji dominujących kolorów i nasycenia. Kolor akcentu jest zwracany jako szesnastkowy kod HTML. 
 
-Przetwarzania obrazów zwraca również wartość logiczną wskazującą, czy obraz jest czarno biały.
+Przetwarzanie obrazów zwraca również wartość logiczną wskazującą, czy obraz jest czarno biały.
 
-## <a name="color-scheme-detection-examples"></a>Przykłady wykrywania schemat kolorów
+## <a name="color-scheme-detection-examples"></a>Przykłady wykrywania schematu kolorów
 
-Poniższy przykład ilustruje odpowiedź JSON zwróciło przetwarzania obrazów podczas wykrywania schemat kolorów na przykładowym obrazie. W takim przypadku przykładowy obraz jest czarno-biały obrazu, jednak dominujący pierwszego planu i tła kolorów są czarne oraz kolory dominujące obrazu jako całość czarno-biały.
+Poniższy przykład ilustruje odpowiedź JSON zwracaną przez przetwarzanie obrazów podczas wykrywania schematu kolorów przykładowego obrazu. W takim przypadku przykładowym obrazem nie jest czarny i biały obraz, ale dominujący kolor pierwszego planu i tła są czarne, a dominujące kolory obrazu jako całości są czarne i białe.
 
-![Górski możliwością zachodzie słońca z nakładające osoby](./Images/mountain_vista.png)
+![Górski grunty na zachód słońca i Silhouette osoby](./Images/mountain_vista.png)
 
 ```json
 {
@@ -50,34 +50,34 @@ Poniższy przykład ilustruje odpowiedź JSON zwróciło przetwarzania obrazów 
 }
 ```
 
-### <a name="dominant-color-examples"></a>Dominujący kolor przykłady
+### <a name="dominant-color-examples"></a>Przykłady kolorów dominujących
 
-W poniższej tabeli przedstawiono zwrócone pierwszego planu, tła i kolory z obrazu dla każdego obrazu próbki.
+W poniższej tabeli przedstawiono zwrócone kolory pierwszego planu, tła i obrazu dla każdego przykładowego obrazu.
 
 | Image | Kolory dominujące |
 |-------|-----------------|
-|![Białe Kwiatek zielonym tłem](./Images/flower.png)| Na pierwszy plan: Czarny<br/>Tło: Biały<br/>Kolory: Czarny, biały i zielony|
-![Szkolenie z za pośrednictwem stacji](./Images/train_station.png) | Na pierwszy plan: Czarny<br/>Tło: Czarny<br/>Kolory: Czarny |
+|![Biały kwiat z zielonym tłem](./Images/flower.png)| Pierwszego planu Czarny<br/>Tle Biały<br/>Świat Czarny, biały, zielony|
+![Pociąg działający za pomocą stacji](./Images/train_station.png) | Pierwszego planu Czarny<br/>Tle Czarny<br/>Świat Czarny |
 
-### <a name="accent-color-examples"></a>Przykłady kolor akcentu
+### <a name="accent-color-examples"></a>Przykłady koloru akcentu
 
- W poniższej tabeli przedstawiono kolor akcentu zwracane jako wartość szesnastkową kolor HTML, dla każdego obrazu przykładu.
+ W poniższej tabeli przedstawiono zwrócony kolor akcentu jako szesnastkową wartość koloru HTML dla każdego przykładowego obrazu.
 
 | Image | Kolor wiodący |
 |-------|--------------|
-|![Osoba stojących na rock górski zachodzie słońca](./Images/mountain_vista.png) | #BB6D10 |
-|![Białe Kwiatek zielonym tłem](./Images/flower.png) | #C6A205 |
-|![Szkolenie z za pośrednictwem stacji](./Images/train_station.png) | #474A84 |
+|![Osoba stojąca na skałie górskim o zachodzie słońca](./Images/mountain_vista.png) | #BB6D10 |
+|![Biały kwiat z zielonym tłem](./Images/flower.png) | #C6A205 |
+|![Pociąg działający za pomocą stacji](./Images/train_station.png) | #474A84 |
 
-### <a name="black--white-detection-examples"></a>Przykłady wykrywania czarno-biały
+### <a name="black--white-detection-examples"></a>Przykłady czerni & białych
 
-W poniższej tabeli przedstawiono oceny czarno-biały przetwarzania obrazów w przykładowe obrazy.
+W poniższej tabeli przedstawiono czarną i białą ocenę przetwarzanie obrazów na przykładowych obrazach.
 
-| Image | Czarno -biały? |
+| Image | Czarny & biały? |
 |-------|----------------|
-|![Czarno-biały obraz budynki w Manhattan](./Images/bw_buildings.png) | true |
-|![Niebieski dom i yard frontonu](./Images/house_yard.png) | false |
+|![Czarno-białe zdjęcie budynków w Manhattan](./Images/bw_buildings.png) | true |
+|![Niebieska i czołowa Jard](./Images/house_yard.png) | false |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Pojęcia dotyczące [wykrywanie typy obrazów](concept-detecting-image-types.md).
+Poznaj koncepcje dotyczące [wykrywania typów obrazów](concept-detecting-image-types.md).

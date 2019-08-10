@@ -1,5 +1,5 @@
 ---
-title: Rozpoznawaj tekst drukowany/odręczny, przetwarzanie obrazów
+title: Wydrukowane, rozpoznawanie tekstu odręcznego — przetwarzanie obrazów
 titleSuffix: Azure Cognitive Services
 description: Koncepcje dotyczące rozpoznawania wydrukowanych i odręcznych tekstu w obrazach przy użyciu interfejs API przetwarzania obrazów.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: cfbbd0b353699c4b04ede07df0450e66bd59612f
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: e37b4c02692575f76582e8f62c3aff00b57424ed
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311967"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946303"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>Rozpoznawanie tekstu drukowanego i pisma odręcznego
 
@@ -92,6 +92,6 @@ Dokładność operacji rozpoznawania tekstu zależy od jakości obrazów. Nastę
 * Na początku wyrazów lub brakuje wielkich liter.
 * Indeks dolny, indeks górny lub tekst przekreślony.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Postępuj zgodnie z przewodnikiem Szybki Start wydrukowanym [tekstem (OCR)](./quickstarts/csharp-print-text.md) , C# aby zaimplementować rozpoznawanie tekstu w prostej aplikacji.

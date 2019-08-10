@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0725988ff88baea2458f0a5e459440874e66088
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 579a553f151cf34215af3188cfddada6da42e691
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596424"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943628"
 ---
 # <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>Samouczek: Integruj konsolę infrastruktury chmurowej Oracle z Azure Active Directory
 
@@ -101,15 +101,15 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
    ![Link pobierania certyfikatu](common/metadataxml.png)
 
-1. Aplikacja konsolowa usługi Oracle Cloud Infrastructure oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę  **Edytuj** , aby otworzyć okno dialogowe Atrybuty użytkownika.
+1. Aplikacja konsolowa usługi Oracle Cloud Infrastructure oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe Atrybuty użytkownika.
 
    ![image](common/edit-attribute.png)
 
-1. Oprócz powyższych, Aplikacja konsolowa infrastruktury w chmurze firmy Oracle oczekuje kilku atrybutów do przekazania z powrotem do odpowiedzi SAML. W sekcji **atrybuty użytkownika & oświadczenia** w oknie dialogowym **oświadczenia grupy (wersja zapoznawcza)**  wykonaj następujące czynności:
+1. Oprócz powyższych, Aplikacja konsolowa infrastruktury w chmurze firmy Oracle oczekuje kilku atrybutów do przekazania z powrotem do odpowiedzi SAML. W sekcji **atrybuty użytkownika & oświadczenia** w oknie dialogowym **oświadczenia grupy (wersja zapoznawcza)** wykonaj następujące czynności:
 
    1. Kliknij **pióro** obok pozycji **Nazwa identyfikator wartość**.
 
-   1. Wybierz  pozycję trwały jako **Wybierz format identyfikatora nazwy**.
+   1. Wybierz pozycję trwały jako **Wybierz format identyfikatora nazwy**.
  
    1. Kliknij polecenie **Zapisz**.
 
@@ -125,7 +125,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
    1. Zaznacz pole wyboru **Dostosuj nazwę tego żądania**.
 
-   1. W polu tekstowym **Nazwa** wpisz GroupName .
+   1. W polu tekstowym **Nazwa** wpisz GroupName.
 
    1. W polu tekstowym **przestrzeń nazw (opcjonalnie)** wpisz `https://auth.oraclecloud.com/saml/claims`polecenie.
 

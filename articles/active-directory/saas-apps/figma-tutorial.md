@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 6b91ab53ba7b5ce30c1dfa4a2bd90390875b8615
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1bcf3964fb289be9b7410938f9e2eac843e795d4
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67102690"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945199"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-figma"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Figma
 
@@ -41,7 +41,7 @@ Do skonfigurowania integracji usługi Azure AD z aplikacją Figma potrzebne są 
 * Plan organizacji Figma
 
 >[!NOTE]
->Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego. Nowych klientów i aktywni subskrybenci Figma Professional zespół może kontaktować się z Figma uaktualnić swoją subskrypcję do [Figma organizacji planu.](https://www.figma.com/pricing/)
+>Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego. Nowi klienci i aktywni subskrybenci zespołu Figma Professional mogą skontaktować się z Figma, aby uaktualnić swoją subskrypcję do [planu organizacji Figma.](https://www.figma.com/pricing/)
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
@@ -120,9 +120,9 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Figma, wyk
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://www.figma.com/saml/<TENANT ID>/start`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Należy je zastąpić rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Zostanie wyświetlony `TENANT ID` z kroku nr 11 artykułu firmy Figma [proces konfigurowania usługi Azure Active Directory logowania jednokrotnego SAML](https://help.figma.com/article/243-configure-azure-active-directory-saml-sso).
+    > Te wartości nie są prawdziwe. Należy je zastąpić rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Uzyskasz instrukcje od kroku `TENANT ID` nr 11 z Figma, aby [skonfigurować proces Azure Active Directory SAML SSO](https://help.figma.com/article/243-configure-azure-active-directory-saml-sso).
 
-6. Aplikacja Figma oczekuje asercji SAML w określonym formacie, który wymaga dodania mapowań atrybutów niestandardowych do konfiguracji atrybutów tokenów języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij pozycję **Edytuj** ikonę, aby otworzyć **atrybutów użytkownika** okna dialogowego.
+6. Aplikacja Figma oczekuje asercji SAML w określonym formacie, który wymaga dodania mapowań atrybutów niestandardowych do konfiguracji atrybutów tokenów języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę **Edytuj** , aby otworzyć okno dialogowe **atrybuty użytkownika** .
 
     ![image](common/edit-attribute.png)
 
@@ -154,7 +154,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Figma, wyk
 
     f. Kliknij przycisk **OK**.
 
-    g. Kliknij pozycję **Zapisz**.
+    g. Kliknij polecenie **Zapisz**.
 
 8. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij przycisk kopiowania, aby skopiować **adres URL metadanych federacji aplikacji** i zapisać go na komputerze.
 
@@ -162,7 +162,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Figma, wyk
   
 ### <a name="configure-figma-single-sign-on"></a>Konfigurowanie logowania jednokrotnego aplikacji Figma
 
-Aby skonfigurować logowanie jednokrotne na stronie Figma, należy wykonać artykułu Figma [proces konfigurowania usługi Azure Active Directory logowania jednokrotnego SAML](https://help.figma.com/article/243-configure-azure-active-directory-saml-sso).
+Aby skonfigurować Logowanie jednokrotne na stronie Figma, należy postępować zgodnie z artykułem Figma [Konfigurowanie procesu rejestracji jednokrotnej protokołu SAML Azure Active Directory](https://help.figma.com/article/243-configure-azure-active-directory-saml-sso).
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -182,7 +182,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W **nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** wpisz **brittasimon\@yourcompanydomain.extension**  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -231,5 +231,5 @@ Po kliknięciu kafelka Figma w panelu dostępu powinno nastąpić automatyczne z
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
