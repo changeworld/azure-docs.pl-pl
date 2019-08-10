@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: vanto, carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: 7adced4088b1e155d6776f71e8f23a9eceae2297
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d13ee8c46df9433530df1d26a86978daab709a52
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566785"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883054"
 ---
 # <a name="quickstart-create-a-server-level-firewall-rule-for-single-and-pooled-databases-using-the-azure-portal"></a>Szybki start: Tworzenie reguły zapory na poziomie serwera dla pojedynczych baz danych i baz danych w puli za pomocą witryny Azure Portal
 
@@ -37,7 +37,7 @@ Usługa SQL Database tworzy zaporę na poziomie serwera bazy danych dla pojedync
 > [!NOTE]
 > Usługa SQL Database nawiązuje komunikację na porcie 1433. Jeśli próbujesz nawiązać połączenie z sieci firmowej, ruch wychodzący na porcie 1433 może być blokowany przez zaporę sieciową. Jeśli wystąpi taka sytuacja, nie będzie można nawiązać połączenia z serwerem usługi Azure SQL Database, chyba że dział IT otworzy port 1433.
 > [!IMPORTANT]
-> Reguła zapory 0.0.0.0 zapewnia wszystkim usługom platformy Azure zgodność z regułami zapory na poziomie serwera i podejmowanie próby nawiązania połączenia z pojedynczą bazą danych lub bazą danych w puli za pośrednictwem serwera. Aby dowiedzieć się więcej o korzystaniu z reguł sieci wirtualnej, zobacz [Reguły sieci wirtualnej jako alternatywa dla reguły IP](sql-database-firewall-configure.md#virtual-network-rules-as-alternatives-to-ip-rules).
+> Reguła zapory 0.0.0.0 zapewnia wszystkim usługom platformy Azure zgodność z regułami zapory na poziomie serwera i podejmowanie próby nawiązania połączenia z pojedynczą bazą danych lub bazą danych w puli za pośrednictwem serwera. 
 
 Wykonaj następujące kroki, aby utworzyć regułę zapory bazującą na adresach IP na poziomie serwera dla podanego adresu IP klienta i włączyć zewnętrzną łączność przez zaporę usługi SQL Database wyłącznie dla konkretnego adresu IP.
 

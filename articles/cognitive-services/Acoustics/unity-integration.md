@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: dffef5062e89ef725abcfda187f5e6159c676b9c
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 54bc98e0ddba0292c6a5dbb07f2bbdfce6a1cb45
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854323"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933143"
 ---
 # <a name="project-acoustics-unity-integration"></a>Integracja środowiska Unity w projekcie
 W tym instruktażu wyjaśniono integrację wtyczki aparatu Unity z dźwiękiem w projekcie aparatu Unity.
@@ -32,6 +32,10 @@ Zaimportuj UnityPackage akustyczne do projektu.
     ![Zrzut ekranu przedstawiający menu pakiet importowania aparatu Unity](media/import-package.png)  
 
 * Wybierz **ProjectAcoustics. UNITYPACKAGE**
+
+* Kliknij przycisk **Importuj** , aby zintegrować pakiet Unity z projektem  
+
+    ![Zrzut ekranu okna dialogowego pakietu importowania środowiska Unity](media/import-dialog.png)  
 
 Jeśli importujesz wtyczkę do istniejącego projektu, projekt może już mieć plik **MCS. rsp** w katalogu głównym projektu, który określa opcje C# kompilatora. Należy scalić zawartość tego pliku z plikiem MCS. rsp, który jest dostarczany z wtyczką akustyczną projektu.
 
@@ -63,7 +67,7 @@ Dołącz skrypt **AcousticsAdjust** do źródła dźwięku w scenie, aby włącz
 
 ![Zrzut ekranu przedstawiający skrypt AcousticsAdjust środowiska Unity](media/acoustics-adjust.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Tworzenie scenę przy użyciu akustycznych projektu dla aparatu Unity](unity-baking.md)
 * [Utwórz konto Azure Batch](create-azure-account.md) , aby tworzenie swoją scenę w chmurze
 * Zapoznaj się z [procesem projektowania aparatu Unity](unity-workflow.md)w środowisku projektowym.

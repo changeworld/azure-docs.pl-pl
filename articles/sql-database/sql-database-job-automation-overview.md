@@ -10,12 +10,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 01/25/2019
-ms.openlocfilehash: 1b8d4965edb446235e28f47a0226c82b89c73e0b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f4d2afd65ec06c331498ce974e933fe08c8e67dd
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845061"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935189"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Automatyzowanie zadań zarządzania za pomocą zadań bazy danych
 
@@ -44,7 +44,7 @@ Istnieje kilka scenariuszy, w których można używać funkcji automatyzacji zad
 W usłudze Azure SQL Database są dostępne następujące technologie planowania zadań:
 
 - **Zadania agenta SQL** to klasyczny i przetestowany w wielu sytuacjach składnik służący do planowania zadań programu SQL Server, który jest dostępny w wystąpieniu zarządzanym. Zadania agenta SQL nie są dostępne w pojedynczych bazach danych.
-- **Zadania Elastic Database** to usługi planowania zadań, które wykonują zadania niestandardowe w jednej lub wielu bazach danych SQL Azure.
+- **Zadania Elastic Database (wersja zapoznawcza)** to usługi planowania zadań, które wykonują zadania niestandardowe w jednej lub wielu bazach danych SQL Azure.
 
 Warto zauważyć kilka różnic między agentem SQL (dostępnym lokalnie i w ramach wystąpienia zarządzanego usługi SQL Database) i agentem zadań elastycznej bazy danych (dostępnym na potrzeby pojedynczych baz danych Azure SQL Database i baz danych w usłudze SQL Data Warehouse).
 
@@ -168,7 +168,7 @@ Niektóre funkcje agenta SQL dostępne w programie SQL Server nie są obsługiwa
 
 Aby uzyskać informacje na temat agenta programu SQL Server, zobacz [SQL Server Agent (Agent programu SQL Server)](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent).
 
-## <a name="elastic-database-jobs"></a>Zadania Elastic Database
+## <a name="elastic-database-jobs-preview"></a>Zadania Elastic Database (wersja zapoznawcza)
 
 **Zadania Elastic Database** umożliwiają równoległe uruchamianie wielu skryptów T-SQL względem wielu baz danych na podstawie harmonogramu lub na żądanie.
 
@@ -279,7 +279,7 @@ Wersja zapoznawcza jest obecnie ograniczona do 100 współbieżnych zadań.
 
 Aby zapewnić, że zasoby nie będą przeciążone podczas uruchamiania zadań w ramach baz danych w elastycznej puli SQL, możliwe jest skonfigurowanie zadań w taki sposób, aby ograniczana była liczba baz danych, w ramach których mogą one być jednocześnie uruchamiane.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [What is SQL Server Agent (Co to jest agent programu SQL Server)](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) 
 - [How to create and manage elastic jobs (Jak tworzyć zadania elastyczne i zarządzać nimi)](elastic-jobs-overview.md) 

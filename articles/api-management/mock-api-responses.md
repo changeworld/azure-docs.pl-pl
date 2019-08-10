@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 9b9a691cb2bce2357d184420912ab340aee534e8
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 8840c85e35a371b8c7a0a76dbee6353a20b212be
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205316"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881125"
 ---
 # <a name="mock-api-responses"></a>Pozorowanie odpowiedzi interfejsu API
 
@@ -79,7 +79,7 @@ Kroki opisane w tej sekcji pokazują, jak utworzyć pusty interfejs API bez zapl
 5. Wybierz z listy pozycję **200 OK**.
 6. Pod nagłówkiem **Reprezentacje** po prawej stronie wybierz pozycję **+ Dodaj reprezentację**.
 7. Wprowadź tekst „*application/json*” w polu wyszukiwania i wybierz typ zawartości **application/json**.
-8. W polu tekstowym **Przykład** wprowadź tekst `{ 'sampleField' : 'test' }`.
+8. W polu tekstowym **Przykład** wprowadź tekst `{ "sampleField" : "test" }`.
 9. Wybierz pozycję **Utwórz**.
 
 ## <a name="enable-response-mocking"></a>Włączanie pozorowania odpowiedzi
@@ -98,7 +98,7 @@ Kroki opisane w tej sekcji pokazują, jak utworzyć pusty interfejs API bez zapl
 
     ![Włączanie pozorowania odpowiedzi](./media/mock-api-responses/mock-api-responses-set-mocking.png)
 
-7. Kliknij pozycję **Zapisz**.
+7. Kliknij polecenie **Zapisz**.
 
 ## <a name="test-the-mocked-api"></a>Testowanie pozorowanego interfejsu API
 
@@ -120,7 +120,7 @@ Kroki opisane w tej sekcji pokazują, jak utworzyć pusty interfejs API bez zapl
 
 > [!VIDEO https://www.youtube.com/embed/i9PjUAvw7DQ]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

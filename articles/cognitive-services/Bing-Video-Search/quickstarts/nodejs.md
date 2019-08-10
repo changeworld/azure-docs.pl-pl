@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 06/26/2019
 ms.author: aahi
-ms.openlocfilehash: ab3d1e71515df80b5bdba1edf8cd16ba3ed6b0a9
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 786302b882fbd59932af17ccc6a390fa41b30ac9
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500116"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932953"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>Szybki start: Wyszukiwanie wideo za pomocą interfejsu API REST wyszukiwania wideo Bing i języka Node.js
 
@@ -75,7 +75,7 @@ Ten przewodnik Szybki start umożliwia wykonanie pierwszego wywołania interfejs
        });
        ```
 
-# <a name="create-and-send-the-search-request"></a>Tworzenie i wysyłanie żądania wyszukiwania
+## <a name="create-and-send-the-search-request"></a>Tworzenie i wysyłanie żądania wyszukiwania
 
 1. Utwórz funkcję o nazwie `bing_video_search()`. Dodaj parametry na potrzeby żądania, w tym nazwę hosta i nagłówki. Zakoduj termin wyszukiwania, a następnie dołącz go do parametru ścieżki za pomocą parametru `?q=`. Następnie wyślij żądanie za pomocą funkcji `req.end()`.
 
@@ -205,7 +205,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie jednostronicowej aplikacji internetowej](../tutorial-bing-video-search-single-page-app.md)

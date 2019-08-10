@@ -1,37 +1,37 @@
 ---
-title: " Tworzenie aplikacji sieci Web jednej strony — wyszukiwania wizualnego Bing"
+title: " Tworzenie jednostronicowej aplikacji sieci Web — wyszukiwanie wizualne Bing"
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak zintegrować API wyszukiwania wizualnego Bing jednostronicowa aplikacja sieci Web.
+description: Dowiedz się, jak zintegrować interfejs API wyszukiwania wizualnego Bing w jednostronicowej aplikacji sieci Web.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: aahi
-ms.openlocfilehash: 084aad5540a2bd56d98e343639a45c16f786e599
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e0370be1c10bc0f5813bec833be78ad31a3d61a7
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60829603"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880643"
 ---
-# <a name="create-a-visual-search-single-page-web-app"></a>Tworzenie aplikacji internetowej z jednej strony wyszukiwania wizualnego
+# <a name="create-a-visual-search-single-page-web-app"></a>Tworzenie wyszukiwanie wizualne jednostronicowej aplikacji sieci Web
 
-Interfejs API wyszukiwania wizualnego Bing zwraca szczegółowe informacje o obrazie. Możesz przekazać obraz lub podaj adres URL do jednego. Szczegółowe informacje będą podobnych obrazach, źródła zakupów, stron sieci Web, który zawiera obraz i nie tylko. Szczegółowe informacje zwrócone przez interfejs API wyszukiwania wizualnego Bing są podobne do takich, które jest wyświetlane na Bing.com/images.
+Interfejs API wyszukiwania wizualnego Bing zwraca szczegółowe informacje o obrazie. Możesz przekazać obraz lub podać adres URL. Szczegółowe dane są wizualnie podobnymi obrazami, źródłami zakupów, stronami sieci Web, które zawierają obraz i nie tylko. Szczegółowe informacje zwracane przez interfejs API wyszukiwania wizualnego Bing są podobne do pokazanych w Bing.com/images.
 
-W tym samouczku wyjaśniono, jak rozszerzyć aplikacji jednej strony sieci web dla interfejsu API wyszukiwania obrazów Bing. Aby wyświetlić ten samouczek lub pobrać kodu źródłowego użytego w tym miejscu, zobacz [samouczka: Tworzenie aplikacji jednostronicowej dla interfejsu API wyszukiwania obrazów Bing](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md).
+W tym samouczku wyjaśniono, jak rozciągnąć jednostronicową aplikację sieci Web dla interfejs API wyszukiwania obrazów Bing. Aby wyświetlić ten samouczek lub uzyskać użyty kod źródłowy, zobacz [samouczek: Utwórz jednostronicową aplikację dla interfejs API wyszukiwania obrazów Bing](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md).
 
-Pełny kod źródłowy dla tej aplikacji (po rozszerzeniu go do korzystania z interfejsu API wyszukiwania wizualnego Bing), jest dostępna w [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchApp.html).
+Pełny kod źródłowy dla tej aplikacji (po rozszerzeniu go na korzystanie z interfejs API wyszukiwania wizualnego Bing) jest dostępny w witrynie [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchApp.html).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
-## <a name="call-the-bing-visual-search-api-and-handle-the-response"></a>Wywołaj interfejs API wyszukiwania wizualnego Bing i obsługiwać odpowiedzi
+## <a name="call-the-bing-visual-search-api-and-handle-the-response"></a>Wywołaj interfejs API wyszukiwania wizualnego Bing i obsługuj odpowiedź
 
-Edytuj samouczek wyszukiwania obrazów Bing i Dodaj następujący kod na końcu `<script>` — element (i przed zamknięciem `</script>` tagu). Poniższy kod obsługuje odpowiedzi z interfejsu API wyszukiwania wizualnego, wykonuje iteracje przez wyniki i wyświetla je:
+Edytuj samouczek wyszukiwanie obrazów Bing i Dodaj następujący kod na końcu `<script>` elementu (i przed tagiem zamykającym `</script>` ). Poniższy kod obsługuje odpowiedź wyszukiwania wizualnego z interfejsu API, wykonuje iterację w wyniku i wyświetla je:
 
 ``` javascript
 function handleVisualSearchResponse(){
@@ -63,7 +63,7 @@ function handleVisualSearchResponse(){
 }
 ```
 
-Poniższy kod wysyła żądanie wyszukiwania do interfejsu API przy użyciu odbiornik zdarzeń do wywołania `handleVisualSearchResponse()`:
+Poniższy kod wysyła żądanie wyszukiwania do interfejsu API przy użyciu odbiornika zdarzeń do wywołania `handleVisualSearchResponse()`:
 
 ```javascript
 function bingVisualSearch(insightsToken){
@@ -109,7 +109,7 @@ html.push("<a href='javascript:bingVisualSearch(\"" + item.imageInsightsToken + 
 
 ## <a name="display-similar-images"></a>Wyświetlenie podobnych obrazów
 
-Dodaj następujący kod HTML w wierszu 601. Ten kod znaczników dodaje element, aby wyświetlić wyniki wywołań interfejsu API wyszukiwania wizualnego Bing:
+Dodaj następujący kod HTML w wierszu 601. Ten kod znaczników dodaje element, aby wyświetlić wyniki wywołania interfejs API wyszukiwania wizualnego Bing:
 
 ``` html
 <div id="insights">
@@ -120,7 +120,7 @@ Dodaj następujący kod HTML w wierszu 601. Ten kod znaczników dodaje element, 
 
 Po umieszczeniu na miejscu całego nowego kodu JavaScript i wszystkich elementów HTML wyniki wyszukiwania są wyświetlane z linkiem **znajdź podobne**. Kliknij ten link, aby wypełnić sekcję **Podobne** obrazami podobnymi do obrazu wybranego przez Ciebie. W celu wyświetlenia tych obrazów może być konieczne rozwinięcie sekcji **Podobne**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek: Przytnij obraz za pomocą usługi Bing wyszukiwania zestawu SDK programu Visual dlaC#](tutorial-visual-search-crop-area-results.md)
+> [Samouczek: Przytnij obraz z zestawem SDK wyszukiwanie wizualne Bing dlaC#](tutorial-visual-search-crop-area-results.md)

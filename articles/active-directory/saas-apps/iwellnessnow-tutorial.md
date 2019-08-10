@@ -1,242 +1,176 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą iWellnessNow | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i iWellnessNow.
+title: 'Samouczek: Azure Active Directory integrację z usługą iWellnessNow | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i iWellnessNow.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 24ffc841-7a77-481c-9cc4-6f8bda58fe66
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/16/2018
+ms.topic: tutorial
+ms.date: 08/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02b831df98db5b9d63873a0da93e603cd7cbf308
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8ff8fd2eb14f1af5133669ad20f303d36ff5af80
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60269453"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931819"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-iwellnessnow"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą iWellnessNow
+# <a name="tutorial-integrate-iwellnessnow-with-azure-active-directory"></a>Samouczek: Integruj iWellnessNow z Azure Active Directory
 
-W tym samouczku dowiesz się, jak zintegrować iWellnessNow w usłudze Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować usługę iWellnessNow z usługą Azure Active Directory (Azure AD). Po zintegrowaniu usługi iWellnessNow z usługą Azure AD można:
 
-Integrowanie iWellnessNow z usługą Azure AD zapewnia następujące korzyści:
+* Kontrolka w usłudze Azure AD, która ma dostęp do iWellnessNow.
+* Zezwól użytkownikom na automatyczne logowanie się do usługi iWellnessNow przy użyciu kont w usłudze Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
 
-- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do iWellnessNow.
-- Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych do iWellnessNow (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą iWellnessNow, potrzebne są następujące elementy:
+Aby rozpocząć, potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- IWellnessNow logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
-
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
+* subskrypcja z włączonym logowaniem jednokrotnym (SSO) iWellnessNow.
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie iWellnessNow z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym.
+
+* iWellnessNow obsługuje usługę **SP i dostawcy tożsamości** zainicjowano Logowanie jednokrotne
 
 ## <a name="adding-iwellnessnow-from-the-gallery"></a>Dodawanie iWellnessNow z galerii
-Aby skonfigurować integrację iWellnessNow w usłudze Azure AD, należy dodać iWellnessNow z galerii z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać iWellnessNow z galerii, wykonaj następujące czynności:**
+Aby skonfigurować integrację programu iWellnessNow z usługą Azure AD, musisz dodać iWellnessNow z galerii do listy zarządzanych aplikacji SaaS.
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
-
-    ![Przycisk usługi Azure Active Directory][1]
-
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
-
-    ![W bloku aplikacji przedsiębiorstwa][2]
-    
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
-
-    ![Nowy przycisk aplikacji][3]
-
-1. W polu wyszukiwania wpisz **iWellnessNow**, wybierz opcję **iWellnessNow** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
-
-    ![iWellnessNow na liście wyników](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_addfromgallery.png)
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
+1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
+1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
+1. W sekcji **Dodaj z galerii** wpisz **iWellnessNow** w polu wyszukiwania.
+1. Wybierz pozycję **iWellnessNow** from panel wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą iWellnessNow w oparciu o użytkownika testu o nazwie "Britta Simon".
+Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą iWellnessNow przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w iWellnessNow.
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w iWellnessNow do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w iWellnessNow musi można ustanowić.
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą iWellnessNow, wykonaj następujące bloki konstrukcyjne:
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą iWellnessNow, należy wykonać poniższe bloki konstrukcyjne:
+1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj logowanie](#configure-iwellnessnow-sso)** jednokrotne w usłudze iWellnessNow, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+3. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
+4. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
+5. **[Utwórz użytkownika testowego iWellnessNow](#create-iwellnessnow-test-user)** , aby dysponować odpowiednikiem B. Simon w iWellnessNow, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Przetestuj logowanie](#test-sso)** jednokrotne — aby sprawdzić, czy konfiguracja działa.
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego iWellnessNow](#create-an-iwellnessnow-test-user)**  — aby mają odpowiednika w pozycji Britta simon w iWellnessNow połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji iWellnessNow.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **IWellnessNow** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie**jednokrotne.
+1. Na stronie **Wybierz metodę logowania** jednokrotnego wybierz pozycję **SAML**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z iWellnessNow, wykonaj następujące czynności:**
+   ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. W witrynie Azure portal na **iWellnessNow** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W sekcji **Podstawowa konfiguracja protokołu SAML** , jeśli masz **plik metadanych dostawcy usług** i chcesz skonfigurować w trybie zainicjowania programu **dostawcy tożsamości** , wykonaj następujące czynności:
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+    a. Kliknij pozycję **Przekaż plik metadanych**.
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Okno dialogowe rejestracji jednokrotnej](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_samlbase.png)
+    ![Przekazywanie pliku metadanych](common/upload-metadata.png)
 
-1. Na **iWellnessNow domena i adresy URL** sekcji, jeśli masz **plik metadanych dostawcy usług** i chcesz skonfigurować aplikację w **dostawcy tożsamości** zainicjowano tryb wykonywania następujące kroki:
+    b. Kliknij **logo folderu**, aby wybrać plik metadanych, a następnie kliknij pozycję **Przekaż**.
 
-    ![przekazywanie iWellnessNow domena i adresy URL logowania jednokrotnego](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_upload.png)
+    ![wybierz plik metadanych](common/browse-upload-metadata.png)
 
-    a. Kliknij przycisk **przekazywania pliku metadanych**.
+    c. Po pomyślnym przekazaniu pliku metadanych wartości **identyfikatorów** i **adresów URL odpowiedzi** są automatycznie wypełniane w sekcji Podstawowa konfiguracja SAML.
 
-    ![uploadconfig iWellnessNow domena i adresy URL logowania jednokrotnego](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_uploadconfig.png)
+    ![image](common/idp-intiated.png)
 
-    b. Kliknij pozycję **logo folderu** wybierz plik metadanych, a następnie kliknij przycisk **przekazywanie**.
-    
-    c. Po pomyślnym ukończeniu przekazywania **plik metadanych usługodawcy** **identyfikator** i **adres URL odpowiedzi** wartości Uzyskaj automatycznie wypełnione w  **iWellnessNow domena i adresy URL** sekcji pola tekstowego, jak pokazano poniżej:
+    > [!Note]
+    > Jeśli wartości **Identyfikator** i **Adres URL odpowiedzi** nie zostaną automatycznie wypełnione, wpisz te wartości ręcznie zgodnie z wymaganiami.
 
-    ![iWellnessNow domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_url3.png)
+1. Jeśli nie masz **pliku metadanych dostawcy usług** i chcesz skonfigurować aplikację w trybie inicjalizacji **dostawcy tożsamości** , wykonaj następujące czynności:
 
-1. Jeśli nie masz **plik metadanych usługodawcy** i chcesz skonfigurować aplikację w **dostawcy tożsamości** zainicjowano tryb, wykonaj następujące czynności:
-
-    ![iWellnessNow domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_url.png)
+    ![iWellnessNow domenę i adresy URL Logowanie jednokrotne](common/idp-intiated.png)
 
     a. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `http://<CustomerName>.iwellnessnow.com`
 
     b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<CustomerName>.iwellnessnow.com/ssologin`
 
-1. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
+1. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
-    ![iWellnessNow domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_url1.png)
+    ![image](common/metadata-upload-additional-signon.png)
 
-    W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<CustomerName>.iwellnessnow.com/`
-     
-    > [!NOTE] 
-    > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta iWellnessNow](mailto:info@iwellnessnow.com) do uzyskania tych wartości.
+    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<CustomerName>.iwellnessnow.com/`
 
-1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+    > [!NOTE]
+    > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami adresu URL logowania, identyfikatora i adresu URL odpowiedzi. Skontaktuj się z [zespołem obsługi klienta iWellnessNow](mailto:info@iwellnessnow.com) , aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-    ![Link pobierania certyfikatu](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_certificate.png) 
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **metadane XML** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
-1. Kliknij przycisk **Zapisz** przycisku.
+    ![Link pobierania certyfikatu](common/metadataxml.png)
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/iwellnessnow-tutorial/tutorial_general_400.png)
-    
-1. Aby skonfigurować logowanie jednokrotne na **iWellnessNow** stronie, musisz wysłać pobrany **XML metadanych** do [zespołem pomocy technicznej iWellnessNow](mailto:info@iwellnessnow.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+1. W sekcji **Konfigurowanie iWellnessNow** skopiuj odpowiednie adresy URL na podstawie wymagania.
+
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
+
+### <a name="configure-iwellnessnow-sso"></a>Konfigurowanie logowania jednokrotnego iWellnessNow
+
+Aby skonfigurować Logowanie jednokrotne na stronie **iWellnessNow** , musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowane adresy URL z Azure Portal do [zespołu pomocy technicznej iWellnessNow](mailto:info@iwellnessnow.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
-   ![Tworzenie użytkownika testowego usługi Azure AD][100]
-
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
-
-1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
-
-    ![Przycisk usługi Azure Active Directory](./media/iwellnessnow-tutorial/create_aaduser_01.png)
-
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
-
-    !["Użytkownicy i grupy" i "All users" linki](./media/iwellnessnow-tutorial/create_aaduser_02.png)
-
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
-
-    ![Przycisk Dodaj](./media/iwellnessnow-tutorial/create_aaduser_03.png)
-
-1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
-
-    ![Okno dialogowe użytkownika](./media/iwellnessnow-tutorial/create_aaduser_04.png)
-
-    a. W **nazwa** wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
-
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
-
-    d. Kliknij pozycję **Utwórz**.
- 
-### <a name="create-an-iwellnessnow-test-user"></a>Tworzenie użytkownika testowego iWellnessNow
-
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w iWellnessNow. Praca z [zespołem pomocy technicznej iWellnessNow](mailto:info@iwellnessnow.com) Aby dodać użytkowników na platformie iWellnessNow. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
+1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. Wybierz **nowego użytkownika** w górnej części ekranu.
+1. We właściwościach **użytkownika** wykonaj następujące kroki:
+   1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
+   1. W polu **Nazwa użytkownika** wprowadź wartość username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
+   1. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do iWellnessNow.
+W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do usługi iWellnessNow.
 
-![Przypisanie roli użytkownika][200] 
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Na liście Aplikacje wybierz pozycję **iWellnessNow**.
+1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
-**Aby przypisać Britta Simon iWellnessNow, wykonaj następujące czynności:**
+   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
-    ![Przypisz użytkownika][201] 
+    ![Link Dodaj użytkownika](common/add-assign-user.png)
 
-1. Na liście aplikacji wybierz **iWellnessNow**.
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-    ![Link iWellnessNow na liście aplikacji](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_app.png)  
+### <a name="create-iwellnessnow-test-user"></a>Utwórz użytkownika testowego iWellnessNow
 
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w iWellnessNow. Aby dodać użytkowników na platformie iWellnessNow, Pracuj z [zespołem pomocy technicznej iWellnessNow](mailto:info@iwellnessnow.com) . Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
-    ![Link "Użytkownicy i grupy"][202]
-
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
-
-    ![Okienko Dodawanie przypisania][203]
-
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
-
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
-
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
+### <a name="test-sso"></a>Testuj Logowanie jednokrotne
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka iWellnessNow w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji iWellnessNow.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
+Po kliknięciu kafelka iWellnessNow w panelu dostępu należy automatycznie zalogować się do iWellnessNow, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/iwellnessnow-tutorial/tutorial_general_01.png
-[2]: ./media/iwellnessnow-tutorial/tutorial_general_02.png
-[3]: ./media/iwellnessnow-tutorial/tutorial_general_03.png
-[4]: ./media/iwellnessnow-tutorial/tutorial_general_04.png
-
-[100]: ./media/iwellnessnow-tutorial/tutorial_general_100.png
-
-[200]: ./media/iwellnessnow-tutorial/tutorial_general_200.png
-[201]: ./media/iwellnessnow-tutorial/tutorial_general_201.png
-[202]: ./media/iwellnessnow-tutorial/tutorial_general_202.png
-[203]: ./media/iwellnessnow-tutorial/tutorial_general_203.png
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

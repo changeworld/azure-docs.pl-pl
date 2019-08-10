@@ -6,15 +6,15 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: 36d87ee9db68c47ee96519cb6b04ff24478427d6
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 9030d85ff5bc83bb54f4a67a9f319a1670a6c2ad
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423405"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881843"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Dokumentacja wersji 7 interfejsu API wyszukiwania lokalnego usługi Bing
 
@@ -72,14 +72,14 @@ Poniżej znajdują się nagłówki, których może dotyczyć żądanie i odpowie
   
 |Name (Nazwa)|Value|Type|Wymagane|  
 |----------|-----------|----------|--------------|
-|<a name="count" />liczbą|Liczba wyników do zwrócenia, rozpoczynając od indeksu określonego przez `offset` parametr.|Ciąg|Nie|   
+|<a name="count" />liczbą|Liczba wyników do zwrócenia, rozpoczynając od indeksu określonego przez `offset` parametr.|String|Nie|   
 |<a name="localCategories" />localCategories|Lista opcji definiujących wyszukiwanie według kategorii biznesowej.  Zobacz [Wyszukiwanie lokalnych kategorii firmowych](local-categories.md)|String|Nie|  
 |<a name="mkt" />mkt|Rynek, z którego pochodzą wyniki. <br /><br />Aby uzyskać listę możliwych wartości rynkowych, zobacz Kody rynku.<br /><br /> **UWAGA:** Lokalny interfejs API wyszukiwania biznesowego obecnie obsługuje tylko rynek en-us i język.<br /><br />|String|Tak|
 |<a name="offset"/>Przesunięcie|Indeks do uruchamiania wyników określonego przez `count` parametr.|Liczba całkowita|Nie|  
 |<a name="query" />pytania|Termin wyszukiwania użytkownika.|String|Nie|  
 |<a name="responseformat" />responseFormat|Typ nośnika, który ma być używany na potrzeby odpowiedzi. Poniżej przedstawiono możliwe wartości bez uwzględniania wielkości liter.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Wartość domyślna to JSON. Aby uzyskać informacje na temat obiektów JSON zawartych w odpowiedzi, zobacz temat [obiekty odpowiedzi](#response-objects).<br /><br />  Jeśli określisz JsonLd, treść odpowiedzi zawiera obiekty JSON-LD, które zawierają wyniki wyszukiwania. Aby uzyskać informacje na temat JSON-LD, zobacz [JSON-LD](https://json-ld.org/).|String|Nie|  
-|<a name="safesearch" />safeSearch|Filtr używany do odfiltrowania zawartości dla dorosłych. Poniżej przedstawiono możliwe wartości filtru bez uwzględniania wielkości liter.<br /><ul><li>Wyłącz&mdash;zwracanie stron sieci Web z tekstem dla dorosłych, obrazami lub klipami wideo.<br /><br/></li><li>Umiarkowanie&mdash;zwracaj strony sieci Web z tekstem dla dorosłych, ale nie z obrazami lub wideo dla dorosłych.<br /><br/></li><li>Ścisłe&mdash;nie zwracają stron internetowych z tekstem dla dorosłych, obrazami lub klipami wideo.</li></ul><br /> Wartość domyślna to Moderate.<br /><br /> **UWAGA:** Jeśli żądanie pochodzi ze rynku, że zasady dla dorosłych usługi Bing wymagają `safeSearch` ustawienia Strict, Bing `safeSearch` ignoruje wartość i używa rygorystyczne.<br/><br/>**UWAGA:** Jeśli używasz `site:` operatora zapytania, istnieje możliwość, że odpowiedź może zawierać treści dla dorosłych niezależnie od tego, `safeSearch` co parametr zapytania jest ustawiony na. Operatora `site:` używaj tylko wtedy, gdy znasz zawartość witryny i w swoim scenariuszu uwzględniasz możliwość pojawienia się zawartości dla dorosłych. |Ciąg|Nie|  
-|<a name="setlang" />setLang|Język ciągów interfejsu użytkownika. Określ język przy użyciu 2-literowego kodu języka w standardzie ISO 639-1. Na przykład kod języka dla języka angielskiego to EN. Wartość domyślna to EN (język angielski).<br /><br /> Mimo, że jest to opcjonalne, należy zawsze określić język. Na ogół dla parametru `setLang` ustawia się język określony przez parametr `mkt`, chyba że użytkownik chce, aby ciągi interfejsu użytkownika były wyświetlane w innym języku.<br /><br /> Ten parametr i nagłówek [Accept-Language](#acceptlanguage) wykluczają się wzajemnie&mdash;nie określaj ich jednocześnie.<br /><br /> Ciąg interfejsu użytkownika to ciąg, który jest używany jako etykieta w interfejsie użytkownika. W obiektach odpowiedzi JSON istnieje kilka ciągów interfejsu użytkownika. Ponadto wszelkie linki do właściwości witryny Bing.com w obiektach odpowiedzi także stosują określony język.|Ciąg|Nie| 
+|<a name="safesearch" />safeSearch|Filtr używany do odfiltrowania zawartości dla dorosłych. Poniżej przedstawiono możliwe wartości filtru bez uwzględniania wielkości liter.<br /><ul><li>Wyłącz&mdash;zwracanie stron sieci Web z tekstem dla dorosłych, obrazami lub klipami wideo.<br /><br/></li><li>Umiarkowanie&mdash;zwracaj strony sieci Web z tekstem dla dorosłych, ale nie z obrazami lub wideo dla dorosłych.<br /><br/></li><li>Ścisłe&mdash;nie zwracają stron internetowych z tekstem dla dorosłych, obrazami lub klipami wideo.</li></ul><br /> Wartość domyślna to Moderate.<br /><br /> **UWAGA:** Jeśli żądanie pochodzi ze rynku, że zasady dla dorosłych usługi Bing wymagają `safeSearch` ustawienia Strict, Bing `safeSearch` ignoruje wartość i używa rygorystyczne.<br/><br/>**UWAGA:** Jeśli używasz `site:` operatora zapytania, istnieje możliwość, że odpowiedź może zawierać treści dla dorosłych niezależnie od tego, `safeSearch` co parametr zapytania jest ustawiony na. Operatora `site:` używaj tylko wtedy, gdy znasz zawartość witryny i w swoim scenariuszu uwzględniasz możliwość pojawienia się zawartości dla dorosłych. |String|Nie|  
+|<a name="setlang" />setLang|Język ciągów interfejsu użytkownika. Określ język przy użyciu 2-literowego kodu języka w standardzie ISO 639-1. Na przykład kod języka dla języka angielskiego to EN. Wartość domyślna to EN (język angielski).<br /><br /> Mimo, że jest to opcjonalne, należy zawsze określić język. Na ogół dla parametru `setLang` ustawia się język określony przez parametr `mkt`, chyba że użytkownik chce, aby ciągi interfejsu użytkownika były wyświetlane w innym języku.<br /><br /> Ten parametr i nagłówek [Accept-Language](#acceptlanguage) wykluczają się wzajemnie&mdash;nie określaj ich jednocześnie.<br /><br /> Ciąg interfejsu użytkownika to ciąg, który jest używany jako etykieta w interfejsie użytkownika. W obiektach odpowiedzi JSON istnieje kilka ciągów interfejsu użytkownika. Ponadto wszelkie linki do właściwości witryny Bing.com w obiektach odpowiedzi także stosują określony język.|String|Nie| 
 
 
 ## <a name="response-objects"></a>Obiekty odpowiedzi  
@@ -98,7 +98,7 @@ Określa błąd, który wystąpił.
 |-------------|-----------------|----------|  
 |<a name="error-code" />kodu|Kod błędu, który identyfikuje kategorię błędu. Listę możliwych kodów można znaleźć w temacie [kody błędów](#error-codes).|String|  
 |<a name="error-message" />Komunikat|Opis błędu.|String|  
-|<a name="error-moredetails" />moreDetails|Opis, który zawiera dodatkowe informacje o błędzie.|Ciąg|  
+|<a name="error-moredetails" />moreDetails|Opis, który zawiera dodatkowe informacje o błędzie.|String|  
 |<a name="error-parameter" />konstruktora|Parametr zapytania w żądaniu, który spowodował błąd.|String|  
 |<a name="error-subcode" />podkod|Kod błędu, który identyfikuje błąd. Na przykład jeśli `code` jest InvalidRequest, `subCode` może to być ParameterInvalid lub ParameterInvalidValue. |String|  
 |<a name="error-value" />wartościami|Wartość parametru zapytania, która jest nieprawidłowa.|String|  
@@ -109,7 +109,7 @@ Obiekt najwyższego poziomu, który odpowiedź zawiera, gdy żądanie nie powied
   
 |Name (Nazwa)|Value|Type|  
 |----------|-----------|----------|  
-|_type|Wskazówka dotycząca typu.|Ciąg|  
+|_type|Wskazówka dotycząca typu.|String|  
 |<a name="errors" />Błędy|Lista błędów opisujących przyczyny niepowodzenia żądania.|[Błąd](#error) []|  
 
   
@@ -117,9 +117,9 @@ Obiekt najwyższego poziomu, który odpowiedź zawiera, gdy żądanie nie powied
 ### <a name="license"></a>Licencja  
 Definiuje licencję, pod którą można używać tekstu lub fotografii.  
   
-|Name (Nazwa)|Wartość|Type|  
+|Name (Nazwa)|Value|Type|  
 |----------|-----------|----------|  
-|name|Nazwa licencji.|Ciąg|  
+|name|Nazwa licencji.|String|  
 |url|Adres URL witryny sieci Web, w której użytkownik może uzyskać więcej informacji na temat licencji.<br /><br /> Użyj nazwy i adresu URL, aby utworzyć hiperłącze.|String|  
 
 
@@ -140,9 +140,9 @@ Definiuje wydawcę.
   
 Należy pamiętać, że Wydawca może podać jego nazwę lub witrynę sieci Web.  
   
-|Name (Nazwa)|Wartość|Type|  
+|Name (Nazwa)|Value|Type|  
 |----------|-----------|----------|  
-|name|Nazwa wydawcy.|Ciąg|  
+|name|Nazwa wydawcy.|String|  
 |url|Adres URL witryny sieci Web wydawcy.<br /><br /> Zwróć uwagę, że Wydawca może nie dostarczyć witryny sieci Web.|String|  
   
   
@@ -154,11 +154,11 @@ Definiuje informacje o lokalnej firmie, np. w restauracji lub hotelu.
 |----------|-----------|----------|  
 |_type|Wskazówkę typu, która może być ustawiona na jedną z następujących wartości:<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>Restauracja</ul><li>|String|  
 |adres|Adres pocztowy miejsca, w którym znajduje się jednostka.|PostalAddress|  
-|entityPresentationInfo|Dodatkowe informacje na temat jednostki, takie jak wskazówki, których można użyć do określenia typu jednostki. Na przykład niezależnie od tego, czy jest to restauracja, czy Hotel. `entityScenario` Pole jest ustawione na wartość ListItem.|entityPresentationInfo|  
+|entityPresentationInfo|Dodatkowe informacje na temat jednostki, takie jak wskazówki, których można użyć do określenia typu jednostki. Na przykład niezależnie od tego, czy jest to restauracja, czy Hotel. `entityScenario` Pole jest ustawione na wartość ListItem.|EntityPresentationInfo|  
 |name|Nazwa jednostki.|String|  
 |Central|Numer telefonu jednostki.|String|  
-|url|Adres URL witryny sieci Web jednostki.<br /><br /> Użyj tego adresu URL wraz z nazwą jednostki, aby utworzyć hiperłącze, które po kliknięciu przenosi użytkownika do witryny sieci Web jednostki.|Ciąg|  
-|webSearchUrl|Adres URL dla tego miejsca wyszukiwania w usłudze Bing.|Ciąg| 
+|url|Adres URL witryny sieci Web jednostki.<br /><br /> Użyj tego adresu URL wraz z nazwą jednostki, aby utworzyć hiperłącze, które po kliknięciu przenosi użytkownika do witryny sieci Web jednostki.|String|  
+|webSearchUrl|Adres URL dla tego miejsca wyszukiwania w usłudze Bing.|String| 
   
   
 ### <a name="querycontext"></a>Kontekst zapytania  
@@ -170,7 +170,7 @@ Definiuje kontekst zapytania, który jest używany przez usługę Bing dla żąd
 |alterationOverrideQuery|Ciąg zapytania, który ma zostać użyty w celu wymuszenia użycia oryginalnego ciągu przez usługę Bing. Na przykład jeśli ciąg zapytania to *Saling downwind*, przesłonięcie ciągu zapytania będzie *+ Saling downwind*. Pamiętaj, aby zakodować ciąg zapytania, którego wynikiem jest *% 2Bsaling + downwind*.<br /><br /> To pole jest dostępne tylko wtedy, gdy pierwotny ciąg zapytania zawiera błąd pisowni.|String|  
 |alteredQuery|Ciąg zapytania używany przez usługę Bing do wykonania zapytania. Bing używa zmienionego ciągu zapytania, jeśli oryginalny ciąg zapytania zawiera błędy pisowni. Na przykład jeśli ciąg zapytania to `saling downwind`, zmieniony ciąg zapytania `sailing downwind`będzie.<br /><br /> To pole jest dostępne tylko wtedy, gdy pierwotny ciąg zapytania zawiera błąd pisowni.|String|  
 |askUserForLocation|Wartość logiczna wskazująca, czy Bing wymaga lokalizacji użytkownika, aby zapewnić dokładne wyniki. Jeśli określono lokalizację użytkownika przy użyciu nagłówków [x-MSEdge-ClientIP](#clientip) i [X-Search-Location](#location) , można zignorować to pole.<br /><br /> W przypadku zapytań dotyczących lokalizacji, takich jak "Pogoda dzisiaj" lub "Restauracje w pobliżu", które potrzebują lokalizacji użytkownika, aby zapewnić dokładne wyniki, to pole jest ustawione na **wartość true**.<br /><br /> W przypadku zapytań dotyczących lokalizacji, które zawierają lokalizację (na przykład "Pogoda pogodowa"), to pole jest ustawione na **wartość false**. To pole jest również ustawiane na **wartość false** dla zapytań, które nie obsługują lokalizacji, takich jak "Najlepsza sprzedaż".|Boolean|  
-|originalQuery|Ciąg zapytania określony w żądaniu.|Ciąg|  
+|originalQuery|Ciąg zapytania określony w żądaniu.|String|  
 
 ### <a name="identifiable"></a>Identyfikowan
 
@@ -188,7 +188,7 @@ Definiuje grupę wyników wyszukiwania, taką jak linii głównej.
 ### <a name="rankingitem"></a>RankingItem
 Definiuje element wyników wyszukiwania do wyświetlenia.
 
-|Name (Nazwa)|Wartość|Type|  
+|Name (Nazwa)|Value|Type|  
 |-------------|-----------------|----------|
 |resultIndex|Indeks (liczony od zera) elementu w odpowiedzi, który ma być wyświetlany. Jeśli element nie zawiera tego pola, Wyświetl wszystkie elementy w odpowiedzi. Na przykład Wyświetl wszystkie artykuły z wiadomościami w odpowiedzi na wiadomości.|Liczba całkowita|
 |odpowiedź|Odpowiedź zawierająca element do wyświetlenia. Na przykład wiadomości.<br /><br />Użyj typu, aby znaleźć odpowiedź w obiekcie SearchResponse. Typ jest nazwą pola SearchResponse.<br /><br /> Należy jednak użyć typu odpowiedzi tylko wtedy, gdy ten obiekt zawiera pole Value; w przeciwnym razie zignoruj ją.|String|
@@ -209,10 +209,10 @@ Definiuje obiekt najwyższego poziomu, który odpowiedź zawiera, gdy żądanie 
   
 Należy pamiętać, że jeśli usługa podejrzewa atak typu "odmowa usługi", żądanie zakończy się pomyślnie (kod stanu HTTP to 200 OK); Jednakże treść odpowiedzi będzie pusta.  
   
-|Name (Nazwa)|Wartość|Type|  
+|Name (Nazwa)|Value|Type|  
 |----------|-----------|----------|  
 |_type|Wskazówka dotycząca typu, która jest ustawiona na SearchResponse.|String|  
-|Nabywc|Lista jednostek, które są istotne dla zapytania wyszukiwania.|Obiekt JSON|  
+|nabywc|Lista jednostek, które są istotne dla zapytania wyszukiwania.|Obiekt JSON|  
 |Kontekst zapytania|Obiekt, który zawiera ciąg zapytania, który jest używany przez usługę Bing dla żądania.<br /><br /> Ten obiekt zawiera ciąg zapytania wprowadzony przez użytkownika. Może również zawierać zmieniony ciąg zapytania, który jest używany przez usługę Bing dla zapytania, jeśli ciąg zapytania zawiera błąd pisowni.|[Kontekst zapytania](#querycontext)|  
 
 
@@ -268,7 +268,7 @@ Poniżej przedstawiono możliwy kod błędu i wartości kodu błędu podrzędneg
 |InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|Bing zwraca InvalidAuthorization, gdy Bing nie może uwierzytelnić obiektu wywołującego. Na przykład `Ocp-Apim-Subscription-Key` brakuje nagłówka lub klucz subskrypcji jest nieprawidłowy.<br/><br/>Nadmiarowość występuje, jeśli określono więcej niż jedną metodę uwierzytelniania.<br/><br/>Jeśli błąd to InvalidAuthorization, kod stanu HTTP to 401.
 |InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|Usługa Bing zwraca InsufficientAuthorization, gdy obiekt wywołujący nie ma uprawnień dostępu do zasobu. Taka sytuacja może wystąpić, jeśli klucz subskrypcji został wyłączony lub wygasł. <br/><br/>Jeśli błąd to InsufficientAuthorization, kod stanu HTTP to 403.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - [Lokalne wyszukiwanie biznesowe — Szybki Start](quickstarts/local-quickstart.md)
 - [Lokalne wyszukiwanie biznesowe w języku Java — Szybki Start](quickstarts/local-search-java-quickstart.md)
 - [Lokalny węzeł wyszukiwania biznesowego — Szybki Start](quickstarts/local-search-node-quickstart.md)

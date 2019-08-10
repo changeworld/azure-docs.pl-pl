@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 54c295c353e83c5d7068c30952d1cbf125788f60
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 1805f6f7a61f7e0b0a6e4d5bd6931c0a7d1f1b6f
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404990"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883704"
 ---
 # <a name="searching-for-entities-with-the-bing-entity-api"></a>Wyszukiwanie jednostek za pomocą interfejsu API jednostek Bing
 
@@ -331,6 +331,6 @@ Jeśli nie masz pewności, czy Twoje środowisko można uznać za środowisko cz
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../../includes/cognitive-services-bing-throttling-requests.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Użyj tego poradnika [Szybki start](../quickstarts/csharp.md), aby zacząć wyszukiwać jednostki za pomocą interfejsu API wyszukiwania jednostek Bing.

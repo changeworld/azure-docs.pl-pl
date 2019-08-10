@@ -1,6 +1,6 @@
 ---
-title: Przewodnik Szybki Start — zestaw i pobierania klucza tajnego z usługi Azure Key Vault za pomocą aplikacji internetowej w języku Node | Dokumentacja firmy Microsoft
-description: W tym przewodniku Szybki Start ustaw i pobierania klucza tajnego z usługi Azure Key Vault za pomocą aplikacji internetowej w języku Node
+title: Szybki Start — Ustawianie i pobieranie klucza tajnego z Azure Key Vault przy użyciu aplikacji sieci Web w węźle | Microsoft Docs
+description: W tym przewodniku szybki start ustawisz i pobrano klucz tajny z Azure Key Vault przy użyciu aplikacji sieci Web Node
 services: key-vault
 author: msmbaldwin
 manager: sumedhb
@@ -9,25 +9,25 @@ ms.topic: quickstart
 ms.date: 09/05/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 5e8c29e033d895e24047754e686420fb4db86142
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 5ca6289b1af02a54d8c66d5a9835e24f61c58559
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236647"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934454"
 ---
-# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>Szybki start: Ustawianie i pobieranie wpisu tajnego z usługi Azure Key Vault przy użyciu aplikacji sieci web Node 
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>Szybki start: Ustawianie i pobieranie wpisu tajnego z Azure Key Vault przy użyciu aplikacji sieci Web Node 
 
-Ten przewodnik Szybki Start pokazano, jak przechowywać klucz tajny w usłudze Azure Key Vault oraz jak pobierać je za pomocą aplikacji sieci web. Usługa Key Vault pomaga zabezpieczać informacje. Aby wyświetlić wartość wpisu tajnego, trzeba uruchamiać ten przewodnik Szybki Start na platformie Azure. Samouczek Szybki start używa środowiska Node.js i zarządzanych tożsamości na potrzeby zasobów platformy Azure. Omawiane kwestie:
+W tym przewodniku szybki start przedstawiono sposób przechowywania wpisu tajnego w Azure Key Vault i sposobu pobierania go przy użyciu aplikacji sieci Web. Usługa Key Vault pomaga zabezpieczać informacje. Aby wyświetlić wartość wpisu tajnego, należy uruchomić ten przewodnik Szybki Start na platformie Azure. Samouczek Szybki start używa środowiska Node.js i zarządzanych tożsamości na potrzeby zasobów platformy Azure. Omawiane kwestie:
 
 * Tworzenie magazynu kluczy.
 * Zapisywanie wpisu tajnego w magazynie kluczy.
 * Pobieranie wpisu tajnego z magazynu kluczy.
 * Tworzenie aplikacji internetowej platformy Azure.
-* Włączanie [tożsamości zarządzanej](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) dla aplikacji internetowej.
+* Włączanie [tożsamości zarządzanej](../active-directory/managed-service-identity/overview.md) dla aplikacji internetowej.
 * Przyznawanie wymaganych uprawnień w celu umożliwienia aplikacji internetowej odczytu danych z magazynu kluczy.
 
-Przed kontynuowaniem upewnij się, że znasz [podstawowe pojęcia usługi Key Vault](key-vault-whatis.md#basic-concepts).
+Przed kontynuowaniem upewnij się, że znasz [podstawowe pojęcia dotyczące Key Vault](key-vault-whatis.md#basic-concepts).
 
 > [!NOTE]
 > Usługa Key Vault to centralne repozytorium do programistycznego przechowywania wpisów tajnych. W tym celu aplikacje i użytkownicy muszą najpierw uwierzytelnić się w usłudze Key Vault — czyli podać wpis tajny. Aby zastosować najlepsze rozwiązania dotyczące bezpieczeństwa, pierwszy wpis tajny musi być okresowo obracany. 
@@ -38,7 +38,7 @@ Przed kontynuowaniem upewnij się, że znasz [podstawowe pojęcia usługi Key Va
 
 * [Node.js](https://nodejs.org/en/)
 * [Usługa Git](https://www.git-scm.com/)
-* [Interfejs wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 2.0.4 lub nowszej. Ten przewodnik Szybki Start będzie wymagał interfejsu wiersza polecenia platformy Azure lokalnie. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja wiersza polecenia lub jego uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](https://review.docs.microsoft.com/en-us/cli/azure/install-azure-cli?branch=master&view=azure-cli-latest).
+* [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 2.0.4 lub nowszy. Ten przewodnik Szybki Start wymaga lokalnego uruchomienia interfejsu wiersza polecenia platformy Azure. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja wiersza polecenia lub jego uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](https://review.docs.microsoft.com/en-us/cli/azure/install-azure-cli?branch=master&view=azure-cli-latest).
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
@@ -54,7 +54,7 @@ az login
 Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az-group-create). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
 
 Wybierz nazwę grupy zasobów i wypełnij symbol zastępczy.
-Poniższy przykład tworzy grupę zasobów w lokalizacji wschodnie stany USA.
+Poniższy przykład tworzy grupę zasobów w lokalizacji Wschodnie stany USA.
 
 ```azurecli
 # To list locations: az account list-locations --output table
@@ -65,7 +65,7 @@ W tym artykule jest używana właśnie utworzona grupa zasobów.
 
 ## <a name="create-a-key-vault"></a>Tworzenie magazynu kluczy
 
-Następnie należy utworzyć magazyn kluczy przy użyciu grupy zasobów, który został utworzony w poprzednim kroku. Mimo że w tym artykule używa "ContosoKeyVault" jako nazwy, musisz Użyj unikatowej nazwy. Podaj następujące informacje:
+Następnie utworzysz Magazyn kluczy za pomocą grupy zasobów utworzonej w poprzednim kroku. Chociaż w tym artykule użyto nazwy "ContosoKeyVault", musisz użyć unikatowej nazwy. Podaj następujące informacje:
 
 * Nazwa magazynu kluczy.
 * Nazwa grupy zasobów. nazwa musi być ciągiem od 3 do 24 znaków i może zawierać tylko znaki 0–9, a–z, A–Z i myślnik (-).
@@ -112,16 +112,16 @@ cd key-vault-node-quickstart
 npm install
 ```
 
-Ten projekt używa dwóch modułów węzła: [ms rest platformy azure](https://www.npmjs.com/package/ms-rest-azure) i [azure keyvault](https://www.npmjs.com/package/azure-keyvault).
+W tym projekcie są używane dwa moduły węzłów: [MS-REST-Azure](https://www.npmjs.com/package/ms-rest-azure) i [Azure-](https://www.npmjs.com/package/azure-keyvault)kluczy.
 
 ## <a name="publish-the-web-app-to-azure"></a>Publikowanie aplikacji internetowej na platformie Azure
 
-Tworzenie [usługi Azure App Service](https://azure.microsoft.com/services/app-service/) planu. Ten plan pozwala na przechowywanie wielu aplikacji internetowych.
+Utwórz plan [Azure App Service](https://azure.microsoft.com/services/app-service/) . Ten plan pozwala na przechowywanie wielu aplikacji internetowych.
 
     ```
     az appservice plan create --name myAppServicePlan --resource-group myResourceGroup
     ```
-Następnie należy utworzyć aplikację sieci web. W poniższym przykładzie Zastąp `<app_name>` globalnie unikatową nazwą aplikacji (prawidłowe znaki to a-z, 0-9 i -). Środowisko uruchomieniowe ma ustawioną wartość NODE|6.9. Aby wyświetlić wszystkie obsługiwane środowiska uruchomieniowe, uruchom `az webapp list-runtimes`.
+Następnie Utwórz aplikację sieci Web. W poniższym przykładzie Zastąp `<app_name>` wartość globalnie unikatową nazwą aplikacji (prawidłowe znaki to a-z, 0-9 i-). Środowisko uruchomieniowe ma ustawioną wartość NODE|6.9. Aby wyświetlić wszystkie obsługiwane środowiska uruchomieniowe, `az webapp list-runtimes`Uruchom polecenie.
 
     ```
     # Bash
@@ -143,14 +143,14 @@ Po utworzeniu aplikacji internetowej w interfejsie wiersza polecenia platformy A
       < JSON data removed for brevity. >
     }
     ```
-Przejdź do swojej nowo utworzoną aplikację internetową, a zobaczysz, że działa on. Zastąp `<app_name>` unikatową nazwą aplikacji.
+Przejdź do nowo utworzonej aplikacji sieci Web i sprawdź, czy działa. Zastąp `<app_name>` unikatową nazwą aplikacji.
 
     ```
     http://<app name>.azurewebsites.net
     ```
-Poprzednie polecenie tworzy również włączone Git aplikacji, która umożliwia wdrażanie na platformie Azure ze swojego lokalnego repozytorium Git. Lokalne repozytorium Git jest skonfigurowana z tym adresem URL: `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git`.
+Powyższe polecenie tworzy również aplikację obsługującą git, która umożliwia wdrażanie na platformie Azure z lokalnego repozytorium git. Lokalne repozytorium git jest skonfigurowane przy użyciu tego adresu URL `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git`:.
 
-Po zakończeniu wprowadzania zmian poprzednim poleceniu, możesz Dodaj zdalną platformę Azure do lokalnego repozytorium Git. Zastąp `<url>` adres URL repozytorium Git.
+Po zakończeniu poprzedniego polecenia możesz dodać zdalne Azure do lokalnego repozytorium git. Zamień `<url>` na adres URL repozytorium git.
 
     ```
     git remote add azure <url>
@@ -170,7 +170,7 @@ To polecenie odpowiada przejściu do portalu i przełączeniu ustawienia **Przyp
 
 ### <a name="assign-permissions-to-your-application-to-read-secrets-from-key-vault"></a>Przypisywanie do aplikacji uprawnień odczytu wpisów tajnych z usługi Key Vault
 
-Zanotuj danych wyjściowych poprzedniego polecenia. Powinny one mieć następujący format:
+Zanotuj dane wyjściowe poprzedniego polecenia. Powinny one mieć następujący format:
         
         {
           "principalId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
@@ -178,13 +178,13 @@ Zanotuj danych wyjściowych poprzedniego polecenia. Powinny one mieć następuj�
           "type": "SystemAssigned"
         }
         
-Następnie uruchom następujące polecenie przy użyciu nazwy magazynu kluczy i wartości **principalId**:
+Następnie uruchom następujące polecenie, używając nazwy magazynu kluczy i wartości **principalId**:
 
 ```azurecli
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --secret-permissions get set
 ```
 
-## <a name="deploy-the-node-app-to-azure-and-retrieve-the-secret-value"></a>Wdrażanie aplikacji węzłów na platformie Azure i pobrać wartość wpisu tajnego
+## <a name="deploy-the-node-app-to-azure-and-retrieve-the-secret-value"></a>Wdróż aplikację węzła na platformie Azure i Pobierz wartość klucza tajnego
 
 Uruchom następujące polecenie, aby wdrożyć aplikację na platformie Azure:
 
@@ -192,9 +192,9 @@ Uruchom następujące polecenie, aby wdrożyć aplikację na platformie Azure:
 git push azure master
 ```
 
-Później, po przejściu do `https://<app_name>.azurewebsites.net`, możesz zobaczyć wartość wpisu tajnego. Upewnij się, że został zastąpiony nazwą `<YourKeyVaultName>` nazwą magazynu.
+Po przejściu do `https://<app_name>.azurewebsites.net`sekcji można zobaczyć wartość klucza tajnego. Upewnij się, że nazwa `<YourKeyVaultName>` została zamieniona na nazwę magazynu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Zestaw Azure SDK dla platformy Node](https://docs.microsoft.com/javascript/api/overview/azure/key-vault)

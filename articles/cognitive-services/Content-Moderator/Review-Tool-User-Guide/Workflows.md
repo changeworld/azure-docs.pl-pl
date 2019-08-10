@@ -7,15 +7,15 @@ author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: sajagtap
-ms.openlocfilehash: 9b87529014a0eeb5561cd166a29f2309198733b5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ca223735e64e5499313872ba0508bfb0d8ec7ed2
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565626"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882694"
 ---
 # <a name="define-and-use-moderation-workflows"></a>Definiowanie przepływów pracy moderowania i korzystanie z nich
 
@@ -39,7 +39,7 @@ Nadaj nazwę przepływowi pracy, wprowadź opis, a następnie wybierz, czy przep
 
 ### <a name="define-evaluation-criteria"></a>Zdefiniuj kryteria oceny
 
-Na następnym ekranie przejdź do sekcji **Jeśli** . W górnym menu rozwijanym wybierz pozycję **warunek**. Umożliwi to skonfigurowanie warunku działania przepływu pracy. Jeśli chcesz użyć wielu warunków, wybierz kombinację  . 
+Na następnym ekranie przejdź do sekcji **Jeśli** . W górnym menu rozwijanym wybierz pozycję **warunek**. Umożliwi to skonfigurowanie warunku działania przepływu pracy. Jeśli chcesz użyć wielu warunków, wybierz kombinację . 
 
 Następnie wybierz łącznik. Ten przykład używa **Content moderator**. W zależności od wybranego łącznika uzyskasz różne opcje danych wyjściowych. Zobacz sekcję [Łączniki](./configure.md#connectors) przewodnika po ustawieniach narzędzia do przeglądu, aby dowiedzieć się, jak skonfigurować inne łączniki.
 

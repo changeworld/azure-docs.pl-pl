@@ -1,130 +1,130 @@
 ---
-title: Zmień rozmiar i przyciąć obraz miniatury - API wyszukiwania w Internecie Bing
+title: Zmień rozmiar i Przytnij miniatury obrazów — interfejs API wyszukiwania w sieci Web Bing
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak zmienić rozmiar i przycinany, miniatury, dostarczone przez interfejsy API wyszukiwania Bing.
+description: Dowiedz się, jak zmienić rozmiar i przyciąć miniatury udostępniane przez interfejsy API wyszukiwania Bing.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.assetid: 05A08B01-89FF-4781-AFE7-08DA92F25047
 ms.service: cognitive-services
 ms.subservice: bing-web-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: aahi
-ms.openlocfilehash: 6a5b2dada254a0bfc7fa60172f56221ba67ad279
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: ecc6eb86e7115143fa63b44f9191b1fe8d3703b8
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868033"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881798"
 ---
-# <a name="resize-and-crop-thumbnail-images"></a>Zmienianie rozmiaru i przycinanie obrazów miniatur
+# <a name="resize-and-crop-thumbnail-images"></a>Zmień rozmiar i Przytnij miniatury obrazów
 
-Niektóre odpowiedzi z interfejsów API wyszukiwania Bing uwzględniają adresy URL miniatur przez Bing, którego rozmiar można zmieniać i przycinanie i może zawierać parametrów zapytań. Przykład:
+Niektóre odpowiedzi z interfejsy API wyszukiwania Bing obejmują adresy URL dla miniaturowych obrazów obsługiwanych przez usługę Bing, których rozmiar i kadrowanie mogą zawierać parametry zapytania. Na przykład:
 
 `https://<host>/th?id=AMMS_92772df988...&w=110&h=73&rs=1&qlt=80&cdv=1&pid=16.1`
 
-Jeśli możesz wyświetlić podzbiór tych miniatury, podaj opcję, aby wyświetlić pozostałe obrazy.
+Jeśli zostanie wyświetlony podzbiór tych miniatur, podaj opcję wyświetlania pozostałych obrazów.
 
 > [!NOTE]
-> Pamiętaj, że scenariusz wyszukiwania, który uwzględnia prawa innych firm, zgodnie z wymaganiami interfejsu API wyszukiwania Bing zapewni przycinanie i zmienianie rozmiaru obrazów miniatur [użycia i wyświetlają wymagania dotyczące](use-display-requirements.md).
+> Należy upewnić się, że obrazy miniatur i zmiany rozmiarów będą zawierać scenariusz wyszukiwania, który szanuje prawa innych firm, zgodnie z wymaganiami Wyszukiwanie Bing interfejsu API [i wyświetla wymagania](use-display-requirements.md).
 
-## <a name="resize-a-thumbnail"></a>Zmiana rozmiaru miniatur 
+## <a name="resize-a-thumbnail"></a>Zmień rozmiar miniatury 
 
-Aby zmienić rozmiar miniatury, Bing zaleca się określić tylko jeden `w` (szerokość) lub `h` (wysokość) parametry zapytania w adresie URL miniatury. Określanie tylko wysokość lub szerokość umożliwia Bing zachować proporcje oryginalnego obrazu. Określ szerokość i wysokość w pikselach. 
+Aby zmienić rozmiar miniatury, w adresie URL miniatury należy `w` określić tylko jedną z `h` parametrów zapytania (szerokość) lub (wysokość). Określenie tylko wysokości lub szerokości umożliwia usłudze Bing zachowanie oryginalnego aspektu obrazu. Określ szerokość i wysokość w pikselach. 
 
-Na przykład, jeśli jest miniatura oryginalnego 480 x 620:
+Na przykład jeśli oryginalna miniatura to 480x620:
 
 `https://<host>/th?id=JN.5l3yzwy%2f%2fHj59U6XhssIQ&pid=Api&w=480&h=620`
 
-I chcesz zmniejszyć jego rozmiar, ustaw `w` parametru na nową wartość (na przykład `336`) i Usuń `h` parametru:
+Aby zmniejszyć jego rozmiar, należy ustawić `w` dla parametru nową wartość (na przykład `336` `h` ), a następnie usunąć parametr:
 
 `https://<host>/th?id=JN.5l3yzwy%2f%2fHj59U6XhssIQ&pid=Api&w=336`
 
-Jeśli określisz tylko wysokość i szerokość miniatury oryginalny współczynnik proporcji obrazu zostanie zachowana. Jeśli jest określenie obydwu parametrów i współczynnik proporcji nie jest obsługiwane, Bing doda dopełnienie białe obramowanie obrazu.
+Jeśli określisz tylko wysokość lub szerokość miniatury, zostanie zachowany oryginalny współczynnik proporcji obrazu. Jeśli określisz oba parametry i współczynnik proporcji nie zostanie zachowany, Bing doda białe dopełnienie do obramowania obrazu.
 
-Na przykład jeżeli zmienisz rozmiar obrazu 480 x 359 do 200 x 200 bez przycinania, całą szerokość będzie zawierać obraz, ale wysokość będzie zawierać 25 pikseli biały dopełnienie u góry i u dołu obrazu. Jeśli obraz był 359 x 480, obramowania lewy i prawy zawierałoby dopełnienie białe. Jeśli przycinasz obraz dopełnienie biały nie został dodany.  
+Na przykład jeśli zmienisz rozmiar obrazu 480x359 na 200x200 bez przycinania, Pełna szerokość będzie zawierać obraz, ale wysokość będzie zawierać 25 pikseli białego wypełnienia u góry i u dołu obrazu. Jeśli obraz został 359x480, lewe i prawe obramowanie będzie zawierać białe uzupełnienie. W przypadku przycinania obrazu białe uzupełnienie nie zostanie dodane.  
 
-Na poniższej ilustracji przedstawiono oryginalnego rozmiaru obraz miniatury (480 x 300).  
+Na poniższej ilustracji przedstawiono oryginalny rozmiar obrazu miniatury (480x300).  
   
-![Oryginalny obraz pozioma](./media/resize-crop/bing-resize-crop-landscape.png)  
+![Oryginalny obraz krajobrazu](./media/resize-crop/bing-resize-crop-landscape.png)  
   
-Na poniższej ilustracji przedstawiono obrazu, rozmiar 200 x 200. Obsługiwany współczynnik proporcji, obramowania górny i dolny są dopełniane przy użyciu biały (czarne obramowanie, w tym miejscu jest dołączony do wyświetlenia uzupełnienie).  
+Na poniższej ilustracji przedstawiono rozmiar obrazu zmieniony na 200x200. Współczynnik proporcji jest zachowywany, a obramowanie górne i dolne jest dopełniane kolorem białym (szare obramowanie jest dołączone, aby pokazać uzupełnienie).  
   
-![Obraz o zmienionym rozmiarze pozioma](./media/resize-crop/bing-resize-crop-landscape-resized.png)  
+![Obraz o zmienionym rozmiarze](./media/resize-crop/bing-resize-crop-landscape-resized.png)  
 
-Jeśli określisz wymiarów, które są większe niż szerokość i wysokość oryginalnego obrazu, Bing doda białe dopełnienie po lewej stronie i górnej krawędzi.  
+Jeśli określisz wymiary, które są większe niż oryginalna szerokość i wysokość obrazu, Bing doda białe uzupełnienie do lewej i górnego obramowania.  
 
-## <a name="request-different-thumbnail-sizes"></a>Żądanie różne rozmiary miniatury
+## <a name="request-different-thumbnail-sizes"></a>Żądaj różnych rozmiarów miniatur
 
-Aby poprosić o rozmiarze innego obraz miniatury, Usuń wszystkie parametry zapytania z adresu URL miniatury, z wyjątkiem `id` i `pid` parametrów. Następnie dodaj albo `&w` (szerokość) lub `&h` parametr zapytania (wysokość) o rozmiarze odpowiedni obraz w pikselach, ale nie oba. Bing zachowają oryginalny współczynnik proporcji obrazu. 
+Aby zażądać innego rozmiaru obrazu miniatury, Usuń wszystkie parametry zapytania z adresu URL miniatury, z `id` wyjątkiem `pid` parametrów i. Następnie należy dodać `&w` parametr zapytania (Width) `&h` lub (Height) o żądanym rozmiarze obrazu w pikselach, ale nie oba. W usłudze Bing zostanie zachowany oryginalny współczynnik proporcji obrazu. 
 
-Aby zwiększyć szerokość obrazu określonego przez powyższy adres URL do 165 pikseli, należy użyć następującego adresu URL:
+Aby zwiększyć szerokość obrazu określonego przez powyższy adres URL do 165 pikseli, użyj następującego adresu URL:
 
 `https://<host>/th?id=AMMS_92772df988...&w=165&pid=16.1`
 
-Jeśli żądania obrazu, który jest większy niż rozmiar oryginalnego obrazu Bing dodaje białe wypełnienia wokół obrazu zgodnie z potrzebami. Na przykład, jeśli oryginalny obraz, rozmiar to 474 x 316 i ustawisz `&w` na 500, Bing zwróci obraz 500 x 333. Ten obraz będzie mieć szerokość 8,5 piksele białe dopełnienie wzdłuż górnej i dolnej krawędzi i 13 piksele dopełnienie po lewej i prawej krawędzi.
+Jeśli zażądasz obrazu, który jest większy niż oryginalny rozmiar obrazu, Bing dodaje białe uzupełnienie obrazu w razie konieczności. Na przykład jeśli oryginalny rozmiar obrazu to 474x316, a wartość `&w` 500, Bing zwróci obraz 500x333. Ten obraz będzie miał 8,5 pikseli białego wypełnienia wzdłuż górnej i dolnej krawędzi oraz 13 pikseli wypełnienia po lewej i prawej krawędzi.
 
-Aby zapobiec sytuacji, w której Bing Dodawanie białego dopełnienie, jeśli żądany rozmiar jest większy niż rozmiar oryginalnego obrazu, należy ustawić `&p` zapytania parametr na wartość 0. Na przykład Jeśli dołączysz `&p=0` parametru w powyższy adres URL usługi Bing zwróci obrazem 474 x 316 zamiast obrazu 500 x 333:
+Aby zapobiec dodawaniu bieli przez usługę Bing, jeśli żądany rozmiar jest większy niż oryginalny rozmiar obrazu, ustaw `&p` parametr zapytania na 0. Na przykład jeśli `&p=0` parametr zostanie uwzględniony w powyższym adresie URL, Bing zwróci obraz 474x316 zamiast obrazu 500x333:
 
 `https://<host>/th?id=AMMS_92772df988...&w=500&p=0&pid=16.1`
 
-Jeśli określisz zarówno `&w` i `&h` parametrów zapytania, Bing, zachowa współczynnik proporcji obrazu i dodaje dopełnienie białe, zgodnie z potrzebami. Na przykład jeśli oryginalny obraz, rozmiar to 474 x 316 i Ustaw szerokość i wysokość parametrów do 200 x 200 (`&w=200&h=200`), Wyszukiwarka Bing zwróci obrazu zawierającego 33 piksele białe dopełnienie u góry i u dołu. Jeśli dołączysz `&p` parametr zapytania Wyszukiwarka Bing zwraca 200 x 134 obrazu.
+Jeśli określisz `&w` parametry i `&h` parametrów zapytania, Bing będzie zachować współczynnik proporcji obrazu i dodaje białe uzupełnienie, zgodnie z wymaganiami. Na przykład jeśli oryginalny rozmiar obrazu to 474x316 i ustawisz parametry width i Height na 200x200 (`&w=200&h=200`), Bing zwróci obraz zawierający 33 pikseli białego wypełnienia u góry i u dołu. Jeśli dołączysz `&p` parametr zapytania, Bing zwróci obraz 200x134.
 
-## <a name="crop-a-thumbnail"></a>Przytnij miniatury 
+## <a name="crop-a-thumbnail"></a>Kadrowanie miniatury 
 
-Aby przyciąć obraz, należy dołączyć `c` parametr zapytania (przycinanie). Można użyć następujących wartości:
+Aby przyciąć obraz, należy uwzględnić `c` parametr zapytania (przycinanie). Można użyć następujących wartości:
   
-- `4` &mdash; Stosunku niewidomych  
-- `7` &mdash; Inteligentny wskaźnik  
+- `4`&mdash; Wskaźnik niewidomy  
+- `7`&mdash; Inteligentny współczynnik  
 
-### <a name="smart-ratio-cropping"></a>Inteligentne przycinanie współczynnik
+### <a name="smart-ratio-cropping"></a>Inteligentne przecinanie proporcji
 
-Jeśli żądanie jest współczynnik inteligentne przycinanie (przez ustawienie `c` parametr `7`), Bing będzie przyciąć obraz ze środka w jego regionu zainteresowania na zewnątrz, przy zachowaniu współczynnika proporcji obrazu. Obszar jest obszar obrazu, określająca Bing zawiera większość części importu. Na poniższym obrazie przedstawiono przykład regionu zainteresowania.  
+Jeśli zażądasz przycinania inteligentnego współczynnika ( `c` poprzez ustawienie `7`parametru na), usługa Bing przywróci obraz z środkowej części swojego regionu na zewnątrz, zachowując współczynnik proporcji obrazu. Regionem zainteresowania jest obszar obrazu, który jest określany przez usługę Bing, zawierający większość części importu. Poniżej przedstawiono przykładowy region zainteresowania.  
   
-![Regionu zainteresowania](./media/resize-crop/bing-resize-crop-regionofinterest.png)
+![Region zainteresowania](./media/resize-crop/bing-resize-crop-regionofinterest.png)
 
-Jeśli rozmiar obrazu i żądania, współczynnik inteligentne przycinanie Bing zmniejsza obraz do żądanego rozmiaru przy zachowaniu współczynnika proporcji. Bing następnie Przycina obraz, w oparciu o zmienionym rozmiarze wymiarów. Na przykład jeśli szerokość o zmienionym rozmiarze jest mniejsza lub równa wysokość, Bing przyciąć obraz w lewo i prawo do środka regionu zainteresowania. W przeciwnym razie Bing będzie zbioru go do górnej i dolnej części środek regionu zainteresowania.  
+W przypadku zmiany rozmiaru obrazu i zażądania przycinania inteligentnego wskaźnika usługa Bing zmniejsza obraz do żądanego rozmiaru przy zachowaniu współczynnika proporcji. Następnie usługa Bing przycina obraz na podstawie wymiarów o zmienionym rozmiarze. Na przykład, jeśli szerokość o zmienionym rozmiarze jest mniejsza lub równa wysokości, Bing obraz zostanie przycięty do lewej i prawej strony środka zainteresowania. W przeciwnym razie usługi Bing przydzielą ją do góry i u dołu środka zainteresowania.  
   
  
-Na poniższym obrazie przedstawiono obraz skrócony do 200 x 200 za pomocą przycięcie inteligentny wskaźnik. Ponieważ Bing mierzy obrazu w lewym górnym rogu, w dolnej części obrazu jest obcinane. 
+Poniżej przedstawiono obraz zredukowany do 200x200 przy użyciu inteligentnego przycinania proporcji. Ponieważ Bing mierzy obraz w lewym górnym rogu, Dolna część obrazu jest obcinana. 
   
-![Obraz pozioma przycięte do 200 x 200](./media/resize-crop/bing-resize-crop-landscape200x200c7.png) 
+![Obraz poziomy przycięty do 200x200](./media/resize-crop/bing-resize-crop-landscape200x200c7.png) 
   
-Na poniższym obrazie przedstawiono obraz skrócony do 200 x 100, za pomocą przycięcie inteligentny wskaźnik. Ponieważ Bing mierzy obrazu w lewym górnym rogu, w dolnej części obrazu jest obcinane. 
+Poniżej przedstawiono obraz zredukowany do 200x100 przy użyciu inteligentnego przycinania proporcji. Ponieważ Bing mierzy obraz w lewym górnym rogu, Dolna część obrazu jest obcinana. 
    
-![Obraz pozioma przycięte do 200 x 100](./media/resize-crop/bing-resize-crop-landscape200x100c7.png)
+![Obraz poziomy przycięty do 200x100](./media/resize-crop/bing-resize-crop-landscape200x100c7.png)
   
-Na poniższym obrazie przedstawiono obraz ograniczona do 100 x 200 za pomocą przycięcie inteligentny wskaźnik. Ponieważ Bing mierzy obrazu z witryny Centrum, części lewego i prawego obrazu są obcinane.
+Poniżej przedstawiono obraz zredukowany do 100x200 przy użyciu inteligentnego przycinania proporcji. Ponieważ Bing mierzy obraz z centrum, lewa i prawa część obrazu są przycinane.
   
-![Obraz pozioma przycięte do 100 x 200](./media/resize-crop/bing-resize-crop-landscape100x200c7.png) 
+![Obraz poziomy przycięty do 100x200](./media/resize-crop/bing-resize-crop-landscape100x200c7.png) 
 
-Jeśli Bing nie może określić region obrazu interesujące, będzie używane przez usługę, stosunku niewidomych przycinania.  
+Jeśli Bing nie może określić regionu obrazu, usługa będzie używać przycinania Niewidzącego wskaźnika.  
 
-### <a name="blind-ratio-cropping"></a>Przycinanie stosunku niewidomych
+### <a name="blind-ratio-cropping"></a>Nieniewidomy współczynnik przycinania
 
-Jeśli żądanie jest przycinanie stosunku niewidomych (przez ustawienie `c` parametr `4`), usługa Bing używa następujących reguł, aby przyciąć obraz.  
+Jeśli zażądasz przycinania wskaźnika niewidomego (przez `c` ustawienie parametru `4`na), Bing Przycinanie obrazu przy użyciu poniższych reguł.  
   
-- Jeśli `(Original Image Width / Original Image Height) < (Requested Image Width / Requested Image Height)`, obraz jest mierzony od lewego górnego rogu oraz przycięte u dołu.  
-- Jeśli `(Original Image Width / Original Image Height) > (Requested Image Width / Requested Image Height)`, mierzone w Centrum i przycięte do lewej i prawej stronie obrazu.  
+- Jeśli `(Original Image Width / Original Image Height) < (Requested Image Width / Requested Image Height)`obraz jest mierzony od lewego górnego rogu i przycięty u dołu.  
+- Jeśli `(Original Image Width / Original Image Height) > (Requested Image Width / Requested Image Height)`obraz jest mierzony od środka i przycięty do lewej i prawej strony.  
 
-Na poniższym obrazie przedstawiono obrazu pionowa, który jest 225 x 300.  
+Poniżej przedstawiono obraz w pionie, który jest 225x300.  
   
 ![Oryginalny obraz słonecznika](./media/resize-crop/bing-resize-crop-sunflower.png)
   
-Na poniższym obrazie przedstawiono obraz skrócony do 200 x 200 za pomocą przycięcie stosunku niewidomych. Obraz jest mierzony od lewego górnego rogu, co w dolnej części obrazu jest obcinane.  
+Poniżej przedstawiono obraz zredukowany do 200x200 przy użyciu przycinania niewidomych wskaźników. Obraz jest mierzony od lewego górnego rogu, w dolnej części obrazu, który zostanie przycięty.  
   
-![Obraz słonecznika przycięte do 200 x 200](./media/resize-crop/bing-resize-crop-sunflower200x200c4.png)
+![Obraz słonecznika przycięty do 200x200](./media/resize-crop/bing-resize-crop-sunflower200x200c4.png)
   
-Na poniższym obrazie przedstawiono obraz skrócony do 200 x 100, za pomocą przycięcie stosunku niewidomych. Obraz jest mierzony od lewego górnego rogu, co w dolnej części obrazu jest obcinane.  
+Poniżej przedstawiono obraz zredukowany do 200x100 przy użyciu przycinania niewidomych wskaźników. Obraz jest mierzony od lewego górnego rogu, w dolnej części obrazu, który zostanie przycięty.  
   
-![Obraz słonecznika przycięte do 200 x 100](./media/resize-crop/bing-resize-crop-sunflower200x100c4.png)
+![Obraz słonecznika przycięty do 200x100](./media/resize-crop/bing-resize-crop-sunflower200x100c4.png)
   
-Na poniższym obrazie przedstawiono obraz ograniczona do 100 x 200 za pomocą przycięcie stosunku niewidomych. Obraz jest mierzony z Centrum skutkuje części lewego i prawego obrazu jest obcinane.  
+Poniżej przedstawiono obraz zredukowany do 100x200 przy użyciu przycinania niewidomych wskaźników. Obraz jest mierzony od środka, co powoduje wycinanie lewej i prawej części obrazu.  
   
-![Obraz słonecznika przycięte do 100 x 200](./media/resize-crop/bing-resize-crop-sunflower100x200c4.png)
+![Obraz słonecznika przycięty do 100x200](./media/resize-crop/bing-resize-crop-sunflower100x200c4.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Co to są interfejsy API wyszukiwania Bing?](bing-api-comparison.md)
-* [Użyj interfejsu API wyszukiwania Bing i wyświetlają wymagania dotyczące](use-display-requirements.md)
+* [Co to jest interfejsy API wyszukiwania Bing?](bing-api-comparison.md)
+* [Użycie interfejsu API Wyszukiwanie Bing i wymagania dotyczące wyświetlania](use-display-requirements.md)

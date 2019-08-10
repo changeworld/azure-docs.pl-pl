@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: 66a0c625d300a74787e3640992675d5a3f31610c
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a3db70925d59f9d0e2793b04824b2e8606719dd4
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828560"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934233"
 ---
 # <a name="tutorial-train-your-first-model"></a>Samouczek: Trenowanie pierwszego modelu
 
@@ -23,6 +23,7 @@ Ten samouczek jest **drugą częścią dwuczęściowej serii samouczków**. W po
 
 W tym samouczku nauczysz się wykonywać następujące zadania:
 
+> [!div class="checklist"]
 > * Łączenie obszaru roboczego i tworzenie eksperymentu
 > * Ładowanie danych i uczenie modeli scikit — uczenie się
 > * Wyświetlanie wyników szkoleniowych w portalu

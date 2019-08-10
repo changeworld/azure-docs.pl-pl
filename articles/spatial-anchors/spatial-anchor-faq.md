@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 435ad986a9f0b96d42c88d450f40e5900ad33b7c
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 06936a196813dacfc1fc9d02945bee4119b7eea8
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653248"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927510"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Często zadawane pytania dotyczące usługi Azure Spatial Anchors
 
@@ -120,12 +120,8 @@ Programowanie [rozpocznij w tym miejscu](index.yml).
 
 **Pyt.: Czy ta usługa współpracuje z aparatem Unreal?**
 
-**Odp.:** Obsługa Unreal będą uznawane za w przyszłości.
+**Odp.:** Pomoc techniczna dla Unreal zostanie uwzględniona w przyszłości.
 
-**Pyt.: Czy ta usługa współpracuje z platformą Xamarin?**
+**Pyt.: Jakie porty i protokoły są używane przez kotwice przestrzenne platformy Azure?**
 
-**Odp.:** Obsługa platformy Xamarin będą uznawane za w przyszłości.
-
-**Pyt.: Jakie porty i protokoły czy kotwice przestrzenne Azure?**
-
-**Odp.:** Azure kotwic przestrzenne komunikuje się za pośrednictwem portu TCP 443, za pomocą protokołu zaszyfrowane. W przypadku uwierzytelniania używa [usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/), który komunikuje się przy użyciu protokołu HTTPS za pośrednictwem portu 443.
+**Odp.:** Kotwice przestrzenne platformy Azure komunikują się za pośrednictwem portu TCP 443 przy użyciu protokołu szyfrowanego. W przypadku uwierzytelniania używa [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/), które komunikuje się za pośrednictwem protokołu HTTPS przez port 443.

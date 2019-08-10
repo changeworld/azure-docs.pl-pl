@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 382d4febed98b53a469ac2788e6e8c8cbf064c23
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f0685b65ce9204221e93a1ea4aa47a5e09eaac9f
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854809"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932979"
 ---
 # <a name="what-is-project-acoustics"></a>Co to jest akustyka projektu?
 Akustyczny projekt jest aparatem akustycznym Wave dla interaktywnych środowisk 3W. Modele it to efekty Wave, takie jak diffraction, portale i Reverb, w złożonych scenach, bez konieczności ręcznego znaczników strefy. Obejmuje to także integrację aparatu gier i oprogramowania pośredniczącego. Funkcja "akustyczne projektu" jest podobna do statycznego oświetlenia: Tworzenie szczegółowej fizyki w trybie offline, aby zapewnić fizyczną linię bazową, i korzystać z uproszczonego środowiska uruchomieniowego z kontrolkami projektowymi, aby zaspokoić cele artystyczne.
@@ -40,11 +40,17 @@ Kluczowe innowacje w projekcie polegają na połączeniu symulacji akustycznej z
 * **Tworzenie** Krok analizy jest uruchamiany lokalnie, co oznacza, że voxelization i inne analizy geometryczne sceny na podstawie powyższych opcji. Wyniki są wizualizowane w edytorze, aby sprawdzić konfigurację sceny. W przypadku przesyłania tworzenie dane Voxel są wysyłane na platformę Azure i są odbierane przez użytkownika.
 * **Środowiska uruchomieniowego** Załaduj zasób do swojego poziomu i wszystko jest gotowe do nasłuchiwania obciążeń akustycznych na poziomie. Zaprojektuj na żywo akustyczne w edytorze, używając szczegółowych kontroli dla poszczególnych źródeł. Formanty mogą być również sterowane na poziomie skryptów.
 
-## <a name="platforms"></a>Platformy
+## <a name="runtime-platforms"></a>Platformy środowiska uruchomieniowego
 Wtyczki środowiska uruchomieniowego akustyczne projektu można obecnie wdrożyć na następujących platformach:
 * Windows
+* MacOS
 * Android
 * Xbox One
+
+## <a name="editor-platforms"></a>Platformy edytora
+Wtyczka edytora akustycznego projektu jest dostępna dla następujących platform:
+* Windows
+* MacOS (tylko aparat Unity)
 
 ## <a name="download"></a>Do pobrania
 * [Wtyczka i przykłady w środowisku Unity](https://www.microsoft.com/en-us/download/details.aspx?id=57346)

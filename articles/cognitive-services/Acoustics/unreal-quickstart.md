@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8809c80f2ecba4ea2b3e3d280be0c4ad81d78d37
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 927ce403130460c302f546038ff3a0c3a16e0368
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854853"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933024"
 ---
 # <a name="project-acoustics-unrealwwise-quickstart"></a>Akustyczny projekt Unreal/Wwise — Szybki Start
 W tym przewodniku szybki start Poeksperymentujesz z kontrolkami projektu akustycznego projektu przy użyciu dostarczonej zawartości przykładowej dla aparatu Unreal i Wwise.
 
-Wymagania dotyczące oprogramowania:
-* [Aparat Unreal](https://www.unrealengine.com/) 4,21
-* [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2018.1.6
+Wymagania programowe dotyczące korzystania z przykładowej zawartości:
+* [Aparat Unreal](https://www.unrealengine.com/) 4,22
+* [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2019.1.2
 
 ## <a name="download-the-sample-package"></a>Pobierz pakiet przykładowy
 Pobierz [pakiet "Unreal + Wwise](https://www.microsoft.com/download/details.aspx?id=58090)" w projekcie. Przykładowy pakiet zawiera projekt aparatu Unreal, projekt Wwise dla tego projektu Unreal oraz wtyczkę Wwiseą dla projektu.
@@ -55,12 +55,16 @@ Wtyczka Unreal akustyczna projektu wymaga, aby dodatkowe zachowanie było widocz
 
     ![Zrzut ekranu edytora kodu pokazujący DXSDK z komentarzem](media/directx-sdk-comment.png)
 
+* W przypadku kompilowania z programem Visual Studio 2019, aby obejść błąd łączenia z Wwise, ręcznie Edytuj wartość `VSVersion` domyślną `vc150`w `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs` :
+
+    ![Zrzut ekranu edytora kodu pokazujący VSVersion zmieniony na vc150](media/vsversion-comment.png)
+
 ### <a name="open-the-unreal-project"></a>Otwórz projekt Unreal. 
 Zostanie zaproszony o ponowne skompilowanie modułów; Kliknij przycisk Tak.
 
 >Jeśli otwarcie projektu zakończy się niepowodzeniem w przypadku niepowodzeń kompilacji, sprawdź, czy zainstalowano wtyczkę Wwise akustyczną projektu do tej samej wersji Wwise, która jest używana w przykładowym projekcie.
 
->Jeśli nie korzystasz z [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2018.1.6, musisz ponownie wygenerować banki dźwięku, zanim dźwięk będzie odtwarzany w przykładowym projekcie.
+>W przypadku korzystania z wersji [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) starszej niż 2019,1 nie można generować banków dźwiękowych z przykładowym projektem akustycznym projektu.  Należy zintegrować Wwise w wersji 2019,1 z przykładowym projektem w celu właściwego użycia.
 
 ## <a name="experiment-with-project-acoustics-design-controls"></a>Eksperymentowanie z kontrolkami projektu
 Nasłuchiwanie dźwięku sceny przez kliknięcie przycisku Odtwórz w edytorze Unreal. Aby poruszać się na pulpicie, użyj W, a, S, D i myszy. Aby wyświetlić skróty klawiaturowe zapewniające większą liczbę kontrolek, naciśnij klawisz **F1**. Poniżej przedstawiono niektóre czynności projektowe do wypróbowania:

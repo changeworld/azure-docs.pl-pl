@@ -1,33 +1,33 @@
 ---
-title: Obsługa języków — przetwarzanie obrazów
+title: Obsługa języka — przetwarzanie obrazów
 titleSuffix: Azure Cognitive Services
-description: Lista języków naturalnych obsługiwanych przez funkcje przetwarzania obrazów.
+description: Lista języków naturalnych obsługiwana przez funkcje przetwarzanie obrazów.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 1a70d1b2ea504d0ccfba925810a2d19d0c7583cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 516d21bc69bbc20f924a3bdf39eda7245fc08a28
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60759609"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882963"
 ---
-# <a name="language-support-for-computer-vision"></a>Obsługa języka dla przetwarzania obrazów
+# <a name="language-support-for-computer-vision"></a>Obsługa języka dla przetwarzanie obrazów
 
-Niektóre funkcje przetwarzania obrazów w obsłudze wielu języków; wszystkie funkcje, które nie są wymienione w tym miejscu obsługują tylko język angielski.
+Niektóre funkcje przetwarzanie obrazów obsługują wiele języków; wszystkie funkcje, które nie są wymienione w tym miejscu, obsługują tylko język angielski.
 
 ## <a name="text-recognition"></a>Rozpoznawanie tekstu
 
-Przetwarzanie obrazów może rozpoznawać tekst w wielu językach. W szczególności [optyczne rozpoznawanie znaków](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) interfejs API obsługuje różne języki, natomiast [odczytu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) interfejsu API i [Rozpoznaj tekst](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) interfejs API obsługuje tylko język angielski. Zobacz [rozpoznawanie tekstu drukowanego i pisma odręcznego](concept-recognizing-text.md) Aby uzyskać więcej informacji na temat tej funkcji i zalet każdego interfejsu API.
+Przetwarzanie obrazów może rozpoznawać tekst w wielu językach. Interfejs API [OCR](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) obsługuje wiele języków, podczas gdy interfejs API [odczytu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) i interfejs API [rozpoznawanie tekstu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) obsługują tylko język angielski. Aby uzyskać więcej informacji na temat tej funkcji oraz zalety poszczególnych interfejsów API, zobacz [rozpoznawanie wydrukowanych i pisanych tekstu](concept-recognizing-text.md) .
 
-Optyczne rozpoznawanie znaków automatycznie wykrywa język wprowadzania materiału, dlatego nie ma potrzeby określania kod języka w wywołaniu interfejsu API. Jednak kod języka zawsze są zwracane jako wartość `"language"` węzła w odpowiedzi JSON.
+OCR automatycznie wykrywa język materiału wejściowego, dlatego nie trzeba określać kodu języka w wywołaniu interfejsu API. Jednak kody języków są zawsze zwracane jako wartość `"language"` węzła w odpowiedzi JSON.
 
-|Język| Kod języka | INTERFEJS API OPTYCZNE ROZPOZNAWANIE ZNAKÓW |
+|Język| Kod języka | INTERFEJS API OCR |
 |:-----|:----:|:-----:|
 |Arabski | `ar`|✔ |
 |Chiński (uproszczony) | `zh-Hans`|✔ |
@@ -35,7 +35,7 @@ Optyczne rozpoznawanie znaków automatycznie wykrywa język wprowadzania materia
 |Czeski | `cs` |✔ |
 |Duński | `da` |✔ |
 |Holenderski | `nl` |✔ |
-|Polski | `en` |✔ |
+|Angielski | `en` |✔ |
 |Fiński | `fi` |✔ |
 |Francuski | `fr` |✔ |
 |Niemiecki | `de` |✔ |
@@ -58,19 +58,19 @@ Optyczne rozpoznawanie znaków automatycznie wykrywa język wprowadzania materia
 
 ## <a name="image-analysis"></a>Analiza obrazu
 
-Niektóre akcje [analizowanie — obraz](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) interfejsu API może zwrócić wyniki w różnych językach, określony za pomocą `language` parametr zapytania. Inne akcje zwracają wyniki w języku angielskim niezależnie od tego, jaki język jest określony, a inne zgłoszenie wyjątku dla języków nieobsługiwanych. Akcje są określane za pomocą `visualFeatures` i `details` parametry zapytania; zobacz [Przegląd](home.md) listę wszystkich działań, które można zrobić za pomocą analizy obrazów.
+Niektóre akcje interfejsu API [analizy obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) mogą zwracać wyniki w innych językach, określone za pomocą `language` parametru zapytania. Inne akcje zwracają wyniki w języku angielskim niezależnie od tego, jaki język jest określony, a inne zgłaszają wyjątek dla nieobsługiwanych języków. Akcje są określone za pomocą `visualFeatures` parametrów `details` i. Zapoznaj się z [omówieniem](home.md) listy wszystkich akcji, które można wykonać za pomocą analizy obrazów.
 
-|Język | Kod języka | Categories | `Tags` | Opis | Dla dorosłych | Marki | Kolor | Twarze | Typ obrazu | Obiekty | Celebryci | Charakterystycznych elementów krajobrazu |
+|Język | Kod języka | Categories | `Tags` | Opis | Dorośli | Marki | Kolor | Twarze | Typ obrazu | Obiekty | Celebryci | Charakterystycznych elementów krajobrazu |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |Chiński | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
-|Polski | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|
+|Angielski | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|
 |Japoński | `ja`   | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Portugalski | `pt` | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Hiszpański | `es`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Rozpocznij pracę, korzystając z funkcji przetwarzania obrazów, wymienione w tym przewodniku.
+Zacznij korzystać z funkcji przetwarzanie obrazów wymienionych w tym przewodniku.
 
-* [Analizowanie lokalny obraz (REST)](./quickstarts/csharp-analyze.md)
-* [Wyodrębnianie drukowanych tekstu (REST)](./quickstarts/csharp-print-text.md)
+* [Analizowanie obrazu lokalnego (REST)](./quickstarts/csharp-analyze.md)
+* [Wyodrębnij drukowany tekst (REST)](./quickstarts/csharp-print-text.md)

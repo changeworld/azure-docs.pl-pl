@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 08/09/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 9de7a6fdddf732f13c8dc7ab50fd151d9f90dc20
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0649fea0b598ffaaaf2611c9d1324174105ee5d4
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855870"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931536"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Tworzenie usługi Azure Search w portalu
 
@@ -44,7 +44,7 @@ Możesz również [aktywować korzyści dla subskrybentów MSDN](https://azure.m
 
 Jeśli masz więcej niż jedną subskrypcję, wybierz tę, która obejmuje usługi magazynu danych lub plików. Azure Search mogą automatycznie wykrywać usługę Azure Table i BLOB Storage, SQL Database i Azure Cosmos DB do indeksowania [](search-indexer-overview.md)za pośrednictwem indeksatorów, ale tylko dla usług w ramach tej samej subskrypcji.
 
-## <a name="select-a-resource-group"></a>Wybierz grupę zasobów
+## <a name="set-a-resource-group"></a>Ustawianie grupy zasobów
 
 Grupa zasobów jest wymagana i jest przydatna do zarządzania zasobami, w tym zarządzania kosztami. Grupa zasobów może składać się z jednej usługi lub wielu używanych jednocześnie usług. Na przykład, jeśli używasz Azure Search do indeksowania bazy danych Azure Cosmos DB, można utworzyć obie usługi należące do tej samej grupy zasobów na potrzeby zarządzania. 
 
@@ -57,7 +57,7 @@ Gdy korzystasz z usługi, możesz śledzić bieżące i przewidywane koszty wszy
 > [!TIP]
 > Usunięcie grupy zasobów powoduje usunięcie zawartych w niej usług. Umieszczenie w tej samej grupie zasobów wszystkich projektów będących prototypami korzystającymi z wielu usług ułatwia proces czyszczenia po zakończeniu projektu.
 
-## <a name="name-the-service-and-url-endpoint"></a>Tworzenie nazwy usługi i punktu końcowego adresu URL
+## <a name="name-the-service"></a>Nazwij usługę
 
 W obszarze Szczegóły wystąpienia Podaj nazwę usługi w polu **adres URL** . Nazwa jest częścią punktu końcowego adresu URL, względem którego są wydawane wywołania `https://your-service-name.search.windows.net`interfejsu API:. Na przykład jeśli chcesz, aby punkt końcowy znajdował się pod adresem `https://myservice.search.windows.net`, wpisz `myservice`.
 
@@ -72,7 +72,7 @@ Wymagania dotyczące nazwy usługi:
 > [!TIP]
 > Jeśli uważasz, że będziesz korzystać z wielu usług, zalecamy uwzględnienie regionu (lub lokalizacji) w nazwie usługi jako konwencji nazewnictwa. Usługi w tym samym regionie mogą bezpłatnie wymieniać dane, więc jeśli Azure Search jest w regionie zachodnie stany USA, a inne usługi znajdują się również w regionie zachodnie `mysearchservice-westus` stany USA, nazwa taka jak może zaoszczędzić na stronie właściwości podczas decydowania o sposobie łączenia lub dołączania zasobów.
 
-## <a name="select-a-location"></a>Wybierz lokalizację
+## <a name="choose-a-location"></a>Wybierz lokalizację
 
 W związku z tym, że usługa Azure Search należy do usług platformy Azure, może być hostowana w centrach danych na całym świecie. Listę obsługiwanych regionów można znaleźć na [stronie](https://azure.microsoft.com/pricing/details/search/)z cennikiem. 
 
@@ -83,11 +83,11 @@ Ponadto, jeśli korzystasz z wzbogacania plików AI do wyszukiwania poznawczego,
 > [!Note]
 > Indie Środkowe nie są obecnie dostępne dla nowych usług. W przypadku usług już znajdujących się w centralnym Indiach można skalować w górę bez ograniczeń, a usługa jest w pełni obsługiwana w tym regionie. Ograniczenie w tym regionie jest tymczasowe i ograniczone tylko do nowych usług. Ta uwaga zostanie usunięta, jeśli ograniczenie nie zostanie już zastosowane.
 
-## <a name="select-a-pricing-tier-sku"></a>Wybieranie warstwy cenowej (jednostek SKU)
+## <a name="choose-a-pricing-tier-sku"></a>Wybierz warstwę cenową (SKU)
 
 [Usługa Azure Search jest obecnie dostępna w wielu warstwach cenowych](https://azure.microsoft.com/pricing/details/search/): bezpłatnej, podstawowej i standardowej. Poszczególne warstwy różnią się między sobą [pojemnością i limitami](search-limits-quotas-capacity.md). Aby uzyskać wskazówki, zobacz [Choose a pricing tier or SKU](search-sku-tier.md) (Wybieranie warstwy cenowej lub jednostek SKU).
 
-Podstawowa i Standardowa są najbardziej typowymi opcjami dotyczącymi obciążeń produkcyjnych, ale większość klientów zaczyna się od bezpłatnej usługi.
+Podstawowa i Standardowa są najbardziej typowymi opcjami dotyczącymi obciążeń produkcyjnych, ale większość klientów zaczyna się od bezpłatnej usługi. Najważniejsze różnice między warstwami to rozmiar partycji i szybkość oraz limity dotyczące liczby obiektów, które można utworzyć.
 
 Należy pamiętać, że nie można zmienić warstwy cenowej po utworzeniu usługi. W razie konieczności przejścia do warstwy wyższej lub niższej należy ponownie utworzyć usługę.
 

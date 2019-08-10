@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Costpoint | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Costpoint.
+title: 'Samouczek: Azure Active Directory integrację z usługą Costpoint | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i Costpoint.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,137 +13,156 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/28/2019
+ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f21c7896f0ed2afba3a302b4686289cf331ba510
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 6c1a8b916feb2ad67623434f2b63468be72bf1aa
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67536837"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879597"
 ---
-# <a name="tutorial-integrate-costpoint-with-azure-active-directory"></a>Samouczek: Integracja Costpoint za pomocą usługi Azure Active Directory
+# <a name="tutorial-integrate-costpoint-with-azure-active-directory"></a>Samouczek: Integruj Costpoint z Azure Active Directory
 
-W tym samouczku dowiesz się, jak zintegrować Costpoint w usłudze Azure Active Directory (Azure AD). W ramach Costpoint integracji z usługą Azure AD, możesz wykonywać następujące czynności:
+W tym samouczku dowiesz się, jak zintegrować usługę Costpoint z usługą Azure Active Directory (Azure AD). Po zintegrowaniu usługi Costpoint z usługą Azure AD można:
 
-* Kontrolowanie w usłudze Azure AD, kto ma dostęp do Costpoint.
-* Umożliwianie użytkownikom można automatycznie zalogowany do Costpoint za pomocą kont usługi Azure AD.
-* Zarządzanie Twoimi kontami w jednej centralnej lokalizacji — witryny Azure portal.
+* Kontrolka w usłudze Azure AD, która ma dostęp do Costpoint.
+* Zezwól użytkownikom na automatyczne logowanie się do usługi Costpoint przy użyciu kont w usłudze Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
 
-Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby rozpocząć pracę, potrzebne są następujące elementy:
+Aby rozpocząć, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/).
-* Costpoint logowania jednokrotnego (SSO) włączone subskrypcji.
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
+* Subskrypcja z włączonym logowaniem jednokrotnym (SSO) usługi Costpoint.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku, skonfiguruj i przetestuj logowania jednokrotnego usługi Azure AD w środowisku testowym. Obsługuje Costpoint **dodatkiem SP oraz dostawców tożsamości** jednokrotne logowanie inicjowane przez.
+W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym. Usługa Costpoint obsługuje funkcję SSO zainicjowaną przez usługę **SP i dostawcy tożsamości** .
 
 ## <a name="adding-costpoint-from-the-gallery"></a>Dodawanie Costpoint z galerii
 
-Aby skonfigurować integrację Costpoint w usłudze Azure AD, należy dodać Costpoint z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację programu Costpoint z usługą Azure AD, musisz dodać Costpoint z galerii do listy zarządzanych aplikacji SaaS.
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
-1. W okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory** usługi.
-1. Przejdź do **aplikacje dla przedsiębiorstw** , a następnie wybierz **wszystkie aplikacje**.
-1. Aby dodać nową aplikację, wybierz **nową aplikację**.
-1. W **Dodaj z galerii** sekcji, wpisz **Costpoint** w polu wyszukiwania.
-1. Wybierz **Costpoint** z wyników panelu, a następnie dodać aplikację. Odczekaj kilka sekund, podczas gdy aplikacja zostanie dodany do Twojej dzierżawy.
+1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
+1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
+1. W sekcji **Dodaj z galerii** wpisz **Costpoint** w polu wyszukiwania.
+1. Wybierz pozycję **Costpoint** from panel wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-Konfiguracja i testowanie logowania jednokrotnego usługi Azure AD za pomocą Costpoint za pomocą użytkownika testu o nazwie **B.Simon**. Logowanie Jednokrotne do pracy musisz ustanowić relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w Costpoint.
+Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą Costpoint przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w Costpoint.
 
-Aby skonfigurować i przetestować logowania jednokrotnego usługi Azure AD za pomocą Costpoint, wykonaj poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą Costpoint, wykonaj następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-sso)**  aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie Costpoint](#configure-costpoint)**  do konfigurowania ustawień logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  do testowania usługi Azure AD logowanie jednokrotne za pomocą B.Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  umożliwiające B.Simon do użycia usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego Costpoint](#create-costpoint-test-user)**  mieć odpowiednikiem B.Simon Costpoint połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-sso)**  Aby sprawdzić, czy konfiguracja działa.
+1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj Costpoint](#configure-costpoint)** , aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+3. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** , aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
+4. **[Przypisz użytkownika testowego usługi Azure AD,](#assign-the-azure-ad-test-user)** aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Utwórz użytkownika testowego Costpoint](#create-costpoint-test-user)** , aby miał odpowiednik B. Simon w Costpoint, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Przetestuj logowanie](#test-sso)** jednokrotne, aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
-Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azure AD w witrynie Azure portal.
+Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **Costpoint** strona integracji aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **logowanie jednokrotne**.
-1. Na **wybierz jedną metodę logowania jednokrotnego** wybierz **SAML**.
-1. Na **Ustaw się logowanie jednokrotne z SAML** kliknij ikonę edycji/pióra **podstawową konfigurację protokołu SAML** edytować ustawienia.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **Costpoint** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie**jednokrotne.
+1. Na stronie **Wybierz metodę logowania** jednokrotnego wybierz pozycję **SAML**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-4. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
-
-    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<CostpointURI>`
-
-    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<CostpointURI>/LoginServlet.cps`
-
-    c. Kliknij pozycję **Ustaw dodatkowe adresy URL**.
-
-    d. W **tan przekaźnika** pole tekstowe, wpisz wartość przy użyciu następującego wzorca:`<SYSTEM VALUE>`
+1. W sekcji **Podstawowa konfiguracja protokołu SAML**, jeśli masz **plik metadanych dostawcy usługi**, wykonaj następujące kroki:
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora, adres URL odpowiedzi i stan przekazywania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Costpoint](https://www.deltek.com/about/contact-us) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Plik metadanych dostawcy usług zostanie pobrany z sekcji **generowanie metadanych Costpoint** , która została omówiona w dalszej części tego samouczka.
+ 
+    1. Kliknij przycisk **przekazywania pliku metadanych**.
+    
+    1. Kliknij pozycję **logo folderu** wybierz plik metadanych, a następnie kliknij przycisk **przekazywanie**.
+    
+    1. Po pomyślnym przekazaniu pliku metadanych wartości **identyfikatorów** i **adresów URL odpowiedzi** są automatycznie wypełniane w polu textCostpoint sekcji
 
-5. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę usług**, wykonaj następujący krok:
+        > [!Note]
+        > Jeśli wartości **Identyfikator** i **Adres URL odpowiedzi** nie zostaną automatycznie wypełnione, wpisz te wartości ręcznie zgodnie z wymaganiami. Sprawdź, czy **Identyfikator (identyfikator jednostki)** i **adres URL odpowiedzi (adres URL usługi potwierdzenia odbiorcy)** są poprawnie ustawione i czy **adres URL ACS** jest prawidłowym adresem URL Costpoint kończącym się **/LoginServlet.CPS**.
 
+    1. Kliknij pozycję **Ustaw dodatkowe adresy URL**.
+
+    1. W polu tekstowym **stan przekaźnika** wpisz wartość przy użyciu następującego wzorca:`system=[your system], (for example, **system=DELTEKCP**)`
+
+1. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę usług**, wykonaj następujący krok:
+    
     W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://costpointteea.deltek.com/cpweb/cploginform.htm`
 
-1. Na **Ustaw się logowanie jednokrotne z SAML** strony w **certyfikat podpisywania SAML** sekcji, kliknij przycisk kopiowania, aby skopiować **adres Url metadanych Federacji aplikacji** i zapisz go na swoje Notatnik .
+    > [!NOTE]
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora, adresu URL odpowiedzi i stanu przekazywania. Skontaktuj się z [zespołem obsługi klienta Costpoint](https://www.deltek.com/about/contact-us) , aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** w sekcji **certyfikat podpisywania SAML** kliknij ikonę kopiowania, aby skopiować **adres URL metadanych federacji aplikacji** i zapisać go w Notatniku.
 
    ![Link pobierania certyfikatu](common/copy-metadataurl.png)
 
-1. Na **Konfigurowanie Costpoint** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+### <a name="generate-costpoint-metadata"></a>Generuj metadane Costpoint
 
-   ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
+Konfiguracja logowania jednokrotnego w usłudze Costpoint SAML została omówiona w przewodniku **DeltekCostpoint711Security. PDF** . W tym celu należy zapoznać się z tematem Konfiguracja logowania jednokrotnego **SAML — > skonfigurować Logowanie jednokrotne SAML między Costpoint i usługą Azure AD** . Postępuj zgodnie z instrukcjami i Generuj plik **XML metadanych Federacji COSTPOINT Sp** . Użyj tego elementu w **podstawowej konfiguracji SAML** w Azure Portal.
+
+![Narzędzie konfiguracji Costpoint](./media/costpoint-tutorial/config02.png)
+
+> [!NOTE]
+> Przewodnik **DeltekCostpoint711Security. PDF** zostanie pobrany z [zespołu obsługi klienta Costpoint](https://www.deltek.com/about/contact-us). Jeśli nie masz tego pliku, skontaktuj się z nim, aby uzyskać ten plik.
 
 ### <a name="configure-costpoint"></a>Konfigurowanie Costpoint
 
-Aby skonfigurować logowanie jednokrotne na **Costpoint** stronie, musisz wysłać **adres Url metadanych Federacji aplikacji** do [zespołem pomocy technicznej klienta Costpoint](https://www.deltek.com/about/contact-us). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+Wróć do **Narzędzia konfiguracji Costpoint** i wklej **adres URL metadanych federacji aplikacji** do pola tekstowego **XML metadanych Federacji dostawcy tożsamości** i Kontynuuj instrukcje z przewodnika **DeltekCostpoint711Security. PDF** , aby zakończyć Costpoint konfigurację SAML. 
+
+![Narzędzie konfiguracji Costpoint](./media/costpoint-tutorial/config01.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji utworzymy użytkownika testowego w witrynie Azure portal, o nazwie B.Simon.
+W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
-1. W okienku po lewej stronie w witrynie Azure portal wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
+1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 1. Wybierz **nowego użytkownika** w górnej części ekranu.
-1. W **użytkownika** właściwości, wykonaj następujące kroki:
+1. We właściwościach **użytkownika** wykonaj następujące kroki:
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
-   1. W **nazwa_użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. W polu **Nazwa użytkownika** wprowadź wartość username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij pozycję **Utwórz**.
+   1. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można udostępnić B.Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do Costpoint.
+W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure przez przyznanie usłudze B. Simon dostępu do usługi Costpoint.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
-1. Na liście aplikacji wybierz **Costpoint**.
-1. Na stronie Przegląd usługi aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **użytkowników i grup**.
+1. W Azure Portal wybierz pozycję **aplikacje** > dla przedsiębiorstw**wszystkie aplikacje**.
+1. Na liście Aplikacje wybierz pozycję **Costpoint**.
+1. W sekcji **Zarządzanie** na stronie Przegląd aplikacji wybierz pozycję **Użytkownicy i grupy**.
 
    ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
 
-1. Wybierz **Dodaj użytkownika**, a następnie wybierz **użytkowników i grup** w **Dodaj przydziału** okna dialogowego.
+1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
-    ![Łącze Dodaj użytkownika](common/add-assign-user.png)
+    ![Link Dodaj użytkownika](common/add-assign-user.png)
 
-1. W **użytkowników i grup** okno dialogowe, wybierz opcję **B.Simon** z listy użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
-1. Jeśli oczekujesz wszelkie wartości roli dla asercji SAML w **wybierz rolę** okno dialogowe, wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
-1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **Britta Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. W oknie dialogowym **Dodaj przypisanie** kliknij przycisk **Przypisz** .
 
-### <a name="create-costpoint-test-user"></a>Tworzenie użytkownika testowego Costpoint
+### <a name="create-costpoint-test-user"></a>Utwórz użytkownika testowego Costpoint
 
-W tej sekcji utworzysz użytkownika o nazwie B.Simon w Costpoint. Praca z [zespołem pomocy technicznej klienta Costpoint](https://www.deltek.com/about/contact-us) Aby dodać użytkowników na platformie Costpoint. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego. 
+W tej sekcji utworzysz użytkownika w Costpoint. Załóżmy, że **Identyfikator użytkownika** to **b. Simon** i nazwa **B. Simon**. Współpracuj z [zespołem obsługi klienta Costpoint](https://www.deltek.com/about/contact-us) , aby dodać użytkownika na platformie Costpoint. Użytkownik musi zostać utworzony i aktywowany przed użyciem rejestracji jednokrotnej.
+ 
+Po utworzeniu wybór **metody uwierzytelniania** użytkownika musi być **Active Directory**, należy zaznaczyć pole wyboru protokołu **SAML logowania** jednokrotnego, a nazwa użytkownika Azure Active Directory musi być **Active Directory lub identyfikatorem certyfikatu** . (jak pokazano poniżej).
 
-### <a name="test-sso"></a>Test SSO
+![Costpoint użytkownika](./media/costpoint-tutorial/user01.png)
 
-Po wybraniu kafelka Costpoint w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze Costpoint, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+### <a name="test-sso"></a>Testuj Logowanie jednokrotne
+
+Po wybraniu kafelka Costpoint w panelu dostępu należy automatycznie zalogować się do Costpoint, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/06/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 7bd18ab0cedf94f0ecc08c3523a608a8d554e6b2
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 2ef207a14582e6ba0d9f8a25c0314c5ec639c7cb
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827921"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882843"
 ---
 # <a name="what-is-azure-security-center"></a>Co to jest Centrum zabezpieczeń Azure?
 
@@ -32,9 +32,9 @@ Azure Security Center rozwiązuje trzy najbardziej pilne problemy związane z za
 
 -   **Szybko zmieniające się obciążenia** — jest to mocna strona rozwiązań chmurowych, a jednocześnie wyzwanie. Z jednej strony przed użytkownikami końcowymi otwiera się więcej możliwości. Z drugiej jednak pojawia się problem — jak sprawić, by ciągle zmieniające się usługi, które tworzą i wykorzystują użytkownicy, spełniały standardy bezpieczeństwa i były zgodne z najlepszymi rozwiązaniami dotyczącymi bezpieczeństwa?
 
--   **Coraz bardzie zaawansowane ataki** — wszędzie tam, gdzie pracujesz, ataki stają się coraz bardziej wyrafinowane. Trzeba zabezpieczyć pracę w chmurze publicznej, która jest połączona z Internetem, co sprawia, że jest jeszcze bardziej narażona na ataki w przypadku braku zastosowania najlepszych zabezpieczeń.
+-   **Coraz bardziej zaawansowane ataki** — wszędzie, gdzie uruchamiasz obciążenia, ataki są bardziej zaawansowane. Trzeba zabezpieczyć pracę w chmurze publicznej, która jest połączona z Internetem, co sprawia, że jest jeszcze bardziej narażona na ataki w przypadku braku zastosowania najlepszych zabezpieczeń.
 
--   **Umiejętność zabezpieczeń jest w krótkim dostawie** — liczba alertów zabezpieczeń i systemów zgłaszających alerty pozwala uzyskać pewność, że Twoje środowiska są chronione. Bycie na bieżąco z najnowszymi atakami jest dużym wyzwaniem. Nie można stać w miejscu, gdy sytuacja w zakresie zabezpieczeń ciągle się zmienia.
+-   **Umiejętność zabezpieczeń jest w krótkim dostawie** — liczba alertów zabezpieczeń i systemów zgłaszających alerty pozwala uzyskać pewność, że Twoje środowiska są chronione. Bycie na bieżąco z najnowszymi atakami jest dużym wyzwaniem. Nie można stać w miejscu, gdy sytuacja w zakresie zabezpieczeń ciągle się zmienia.
 
 Aby sprostać tym wyzwaniom, Security Center oferuje narzędzia umożliwiające:
 
@@ -60,15 +60,15 @@ Usługa Azure Security Center umożliwia zwiększanie poziomu bezpieczeństwa. O
 
 ### <a name="manage-organization-security-policy-and-compliance"></a>Zarządzanie zasadami zabezpieczeń oraz zgodnością w organizacji
 
-Podstawową sprawą jest zapewnienie, że działające obciążenia są bezpieczne. Aby to osiągnąć, trzeba wdrożyć dostosowane zasady zabezpieczeń. Ponieważ wszystkie zasady w usłudze Security Center są oparte na zasadach platformy Azure, otrzymujesz kompleksowe i elastyczne ** rozwiązanie na światowym poziomie**. W usłudze Security Center można ustawić uruchamianie zasad bezpieczeństwa na poziomie grupy zarządzania, subskrypcji lub nawet dla jednego dzierżawcy.
+Podstawową sprawą jest zapewnienie, że działające obciążenia są bezpieczne. Aby to osiągnąć, trzeba wdrożyć dostosowane zasady zabezpieczeń. Ze względu na to, że wszystkie zasady w Security Center są zbudowane na podstawie kontroli zasad platformy Azure, uzyskujesz pełen zakres i elastyczność **rozwiązań opartych na światowej klasie**. W usłudze Security Center można ustawić uruchamianie zasad bezpieczeństwa na poziomie grupy zarządzania, subskrypcji lub nawet dla jednego dzierżawcy.
 
 ![Pulpit nawigacyjny usługi Security Center](media/security-center-intro/sc-dashboard.png)
 
-Usługa Security Center ułatwia **identyfikowanie subskrypcji niezatwierdzonych przez dział IT**. Sprawdzając subskrypcje oznaczone na pulpicie nawigacyjnym etykietą **Nieobjęte**, można dowiedzieć się natychmiast, że zostały utworzone nowe subskrypcje, i upewnić się, że są objęte zasadami oraz chronione przez usługę Azure Security Center.
+Security Center pomaga **identyfikować subskrypcje IT w tle**. Sprawdzając subskrypcje oznaczone na pulpicie nawigacyjnym etykietą **Nieobjęte**, można dowiedzieć się natychmiast, że zostały utworzone nowe subskrypcje, i upewnić się, że są objęte zasadami oraz chronione przez usługę Azure Security Center.
 
 ![Pulpit nawigacyjny z zasadami w usłudze Security Center](media/security-center-intro/sc-policy-dashboard.png)
 
-Zaawansowane możliwości monitorowania w usłudze Security Center pozwalają również **na śledzenie zgodności i ładu oraz zarządzanie nimi w czasie**. Opcja **Ogólna zgodność** dostarcza dane na temat tego, ile subskrypcji jest zgodnych z zasadami skojarzonymi z danym obciążeniem. 
+Zaawansowane możliwości monitorowania w Security Center umożliwiają również **śledzenie zgodności i zarządzania oraz zarządzanie nimi**wraz z upływem czasu. **Ogólna zgodność** zapewnia miarę zgodności subskrypcji z zasadami związanymi z obciążeniem. 
 
 ![Zasady w usłudze Security Center w czasie](media/security-center-intro/sc-policy-time.png)
 
@@ -76,11 +76,11 @@ Zaawansowane możliwości monitorowania w usłudze Security Center pozwalają r�
 
 Usługa Security Center ciągle wykrywa nowe zasoby wdrażane w różnych obciążeniach i ocenia, czy są one skonfigurowane zgodnie z najlepszymi rozwiązaniami w zakresie zabezpieczeń. Zasoby, które nie spełniają tego wymogu, są oznaczane, a przy tym generowana jest lista zaleceń z określonymi priorytetami. Zalecenia wskazują, co należy zrobić, aby chronić maszyny.
 
- **Mapa sieci** jest jednym z najbardziej zaawansowanych narzędzi w usłudze Security Center umożliwiającym stałe monitorowanie stanu zabezpieczeń sieci. Mapa umożliwia wyświetlenie topologii obciążeń, aby sprawdzić, czy każdy węzeł jest odpowiednio skonfigurowany. Można zobaczyć, jak węzły są połączone, co pomaga blokować niechciane połączenia, które mogą potencjalnie ułatwić osobie atakującej dostanie się do sieci.
+Jednym z najbardziej zaawansowanych narzędzi Security Center zapewnia stałe monitorowanie stanu zabezpieczeń sieci to **Mapa sieciowa**. Mapa umożliwia wyświetlenie topologii obciążeń, aby sprawdzić, czy każdy węzeł jest odpowiednio skonfigurowany. Można zobaczyć, jak węzły są połączone, co pomaga blokować niechciane połączenia, które mogą potencjalnie ułatwić osobie atakującej dostanie się do sieci.
 
 ![Mapa sieci w usłudze Security Center](media/security-center-intro/sc-net-map.png)
 
-Usługa Security Center umożliwia lepsze radzenie sobie z alertami bezpieczeństwa dzięki dodaniu funkcji **Wskaźnik bezpieczeństwa**. Wskaźniki bezpieczeństwa są teraz skojarzone z każdym zaleceniem, co pozwala lepiej zrozumieć ważność danego zalecenia dla ogólnego poziomu bezpieczeństwa. Ma to kluczowe znaczenie przy **określaniu priorytetów pracy nad zabezpieczeniami**.
+Security Center upraszczają alerty zabezpieczeń w jednym kroku, przez dodanie **bezpiecznego wyniku**. Wskaźniki bezpieczeństwa są teraz skojarzone z każdym zaleceniem, co pozwala lepiej zrozumieć ważność danego zalecenia dla ogólnego poziomu bezpieczeństwa. Jest to kluczowe znaczenie w umożliwieniu **określania priorytetów pracy**w zabezpieczeniach.
 
 ![Wskaźnik bezpieczeństwa w usłudze Security Center](media/security-center-intro/sc-secure-score.png)
 

@@ -16,100 +16,100 @@ ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6640708905abc266b07b7b66f5da09aeb890f01
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: d0ed4cd677392a6a48038eed80c36664ccef9494
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68823866"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879879"
 ---
 # <a name="tutorial-integrate-amazon-web-services-aws-with-azure-active-directory"></a>Samouczek: Integruj Amazon Web Services (AWS) z Azure Active Directory
 
-W tym samouczku dowiesz się, jak zintegrować usługę Amazon Web Services (AWS) z usługą Azure Active Directory (Azure AD). Podczas integrowania Amazon Web Services (AWS) z usługą Azure AD można:
+W tym samouczku dowiesz się, jak zintegrować usługę Amazon Web Services (AWS) z usługą Azure Active Directory (Azure AD). Po zintegrowaniu usługi AWS z usługą Azure AD można:
 
-* Kontrolka w usłudze Azure AD, która ma dostęp do Amazon Web Services (AWS).
-* Zezwól użytkownikom na automatyczne logowanie do Amazon Web Services (AWS) przy użyciu kont usługi Azure AD.
-* Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
+* Kontrolka w usłudze Azure AD, która ma dostęp do AWS.
+* Zezwól użytkownikom na automatyczne logowanie się do usługi AWS przy użyciu kont w usłudze Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji, Azure Portal.
 
 Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-![Amazon Web Services (AWS)](./media/amazon-web-service-tutorial/tutorial_amazonwebservices_image.png)
+![Diagram relacji usług Azure AD i AWS](./media/amazon-web-service-tutorial/tutorial_amazonwebservices_image.png)
 
-Dla wielu wystąpień można skonfigurować wiele identyfikatorów, tak jak pokazano poniżej.
+Można skonfigurować wiele identyfikatorów dla wielu wystąpień. Na przykład:
 
 * `https://signin.aws.amazon.com/saml#1`
 
 * `https://signin.aws.amazon.com/saml#2`
 
-Korzystając z tych wartości, usługa Azure AD usunie wartość **#** i wyśle poprawną wartość `https://signin.aws.amazon.com/saml` jako adres URL odbiorcy w tokenie SAML.
+Za pomocą tych wartości usługa Azure AD usuwa wartość **#** i wysyła poprawną wartość `https://signin.aws.amazon.com/saml` jako adres URL odbiorców w tokenie SAML.
 
-**Zalecamy użycie tego podejścia z następujących względów:**
+Zalecamy to podejście z następujących powodów:
 
-a. Każda aplikacja zapewni unikatowy certyfikat x509. Każde wystąpienie wystąpienia aplikacji AWS może następnie mieć inną datę wygaśnięcia certyfikatu, która może być zarządzana na poszczególnych kontach AWS. Ogólnie Przerzucanie certyfikatów będzie łatwiejsze w tym przypadku.
+- Każda aplikacja zapewnia unikatowy certyfikat x509. Każde wystąpienie wystąpienia aplikacji AWS może następnie mieć inną datę wygaśnięcia certyfikatu, która może być zarządzana na poszczególnych kontach AWS. Ogólnie Przerzucanie certyfikatów jest w tym przypadku łatwiejsze.
 
-b. Istnieje możliwość włączenia aprowizowania użytkowników za pomocą aplikacji usług AWS w usłudze Azure AD. Nasza usługa pobierze wtedy wszystkie role z konta usług AWS. Nie trzeba ręcznie dodawać ani aktualizować ról usług AWS dla aplikacji.
+- Możesz włączyć Inicjowanie obsługi użytkowników przy użyciu aplikacji AWS w usłudze Azure AD, a następnie Nasza usługa pobiera wszystkie role z tego konta AWS. Nie trzeba ręcznie dodawać ani aktualizować ról usług AWS dla aplikacji.
 
-c. Właściciela aplikacji można przypisać dla konkretnej aplikacji. Może on wtedy zarządzać tą aplikacją bezpośrednio w usłudze Azure AD.
+- Właściciela aplikacji można przypisać osobno dla aplikacji. Ta osoba może zarządzać aplikacją bezpośrednio w usłudze Azure AD.
 
 > [!Note]
-> Upewnij się, że używasz tylko aplikacji z galerii.
+> Upewnij się, że używasz tylko aplikacji w galerii.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby rozpocząć, potrzebne są następujące elementy:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
-* Amazon Web Services (AWS) subskrypcja z włączonym logowaniem jednokrotnym (SSO).
+* Subskrypcja z włączonym logowaniem jednokrotnym (SSO) usługi AWS.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym. Amazon Web Services (AWS) obsługuje zainicjowanie logowania jednokrotnego **z użyciem SP i dostawcy tożsamości** .
+W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym. Usługa AWS obsługuje funkcję SSO zainicjowaną przez usługę **SP i dostawcy tożsamości** .
 
-## <a name="adding-amazon-web-services-aws-from-the-gallery"></a>Dodawanie usług Amazon Web Services (AWS) z galerii
+## <a name="add-aws-from-the-gallery"></a>Dodaj AWS z galerii
 
-Aby skonfigurować integrację usług Amazon Web Services (AWS) z usługą Azure AD, należy dodać usługi Amazon Web Services (AWS) z galerii do listy zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację programu AWS z usługą Azure AD, musisz dodać AWS z galerii do listy zarządzanych aplikacji SaaS.
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
-1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
-1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com) przy użyciu konta służbowego lub konto Microsoft prywatnego.
+1. W okienku po lewej stronie wybierz usługę **Azure Active Directory** .
+1. Przejdź do pozycji **Aplikacje dla przedsiębiorstw** i wybierz pozycję **Wszystkie aplikacje**.
 1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
 1. W sekcji **Dodaj z galerii** wpisz **Amazon Web Services (AWS)** w polu wyszukiwania.
-1. Wybierz pozycję **Amazon Web Services (AWS)** z panelu wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
+1. Wybierz pozycję **Amazon Web Services (AWS)** z panelu wyniki, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą Amazon Web Services (AWS) przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację łącza między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w Amazon Web Services (AWS).
+Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą AWS przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy nawiązać relację między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w AWS.
 
-Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą Amazon Web Services (AWS), wykonaj następujące bloki konstrukcyjne:
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą AWS, wykonaj następujące bloki konstrukcyjne:
 
-1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
-2. **[Skonfiguruj Amazon Web Services (AWS)](#configure-amazon-web-services-aws)** , aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
-3. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** , aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
-4. **[Przypisz użytkownika testowego usługi Azure AD,](#assign-the-azure-ad-test-user)** aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego usługi Azure AD.
-5. **[Utwórz użytkownika testowego Amazon Web Services (AWS)](#create-amazon-web-services-aws-test-user)** , aby miał odpowiednik B. Simon w Amazon Web Services (AWS), który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
-6. **[Przetestuj logowanie](#test-sso)** jednokrotne, aby sprawdzić, czy konfiguracja działa.
+1. **Skonfiguruj Logowanie jednokrotne usługi Azure AD** , aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **Skonfiguruj AWS** , aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **Utwórz użytkownika testowego usługi Azure AD** w celu przetestowania logowania jednokrotnego usługi Azure AD za pomocą B. Simon.
+4. **Przypisz użytkownika testowego usługi Azure AD,** aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
+5. **Utwórz użytkownika testowego AWS** , aby miał odpowiednik B. Simon w AWS, który jest połączony z reprezentacją usługi Azure AD.
+6. **Przetestuj logowanie** jednokrotne, aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
 Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-1. Na [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **Amazon Web Services (AWS)** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie**jednokrotne.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **Amazon Web Services (AWS)** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie**jednokrotne.
 1. Na stronie **Wybierz metodę logowania** jednokrotnego wybierz pozycję **SAML**.
-1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** wybierz ikonę pióra dla **podstawowej konfiguracji SAML** , aby edytować ustawienia.
 
-   ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
+   ![Zrzut ekranu przedstawiający Konfigurowanie logowania jednokrotnego przy użyciu strony SAML z wyróżnioną ikoną pióra](common/edit-urls.png)
 
-4. W sekcji **Podstawowa konfiguracja języka SAML** aplikacja została wstępnie skonfigurowana i wymagane adresy URL są już wstępnie wypełnione na platformie Azure. Użytkownik musi zapisać konfigurację, klikając przycisk **Zapisz** .
+4. W sekcji **Podstawowa konfiguracja SAML** aplikacja została wstępnie skonfigurowana, a wymagane adresy URL są już wstępnie wypełnione na platformie Azure. Użytkownik musi zapisać konfigurację, wybierając pozycję **Zapisz**.
 
-5. W przypadku konfigurowania wielu wystąpień podaj wartość identyfikatora. Dla drugiego i kolejnych wystąpień podaj wartość identyfikatora w następującym formacie. Użyj znaku **#** , aby określić unikatową główną nazwę usługi.
+5. W przypadku konfigurowania więcej niż jednego wystąpienia podaj wartość identyfikatora. W drugim wystąpieniu, użyj następującego formatu, łącznie **#** ze znakiem, aby określić unikatową wartość SPN.
 
     `https://signin.aws.amazon.com/saml#2`
 
-6. Aplikacja Amazon Web Services (AWS) oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania mapowań atrybutów niestandardowych do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę  **Edytuj** , aby otworzyć okno dialogowe Atrybuty użytkownika.
+6. Aplikacja AWS oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Wybierz ikonę pióra, aby otworzyć okno dialogowe atrybuty użytkownika.
 
-    ![image](common/edit-attribute.png)
+    ![Zrzut ekranu przedstawiający okno dialogowe atrybuty użytkownika z wyróżnioną ikoną pióra](common/edit-attribute.png)
 
-7. Oprócz powyższych, aplikacja Amazon Web Services (AWS) oczekuje kilku atrybutów do przekazania z powrotem do odpowiedzi SAML. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** wykonaj następujące czynności, aby dodać atrybut tokenu SAML, jak pokazano w poniższej tabeli:
+7. Oprócz powyższych atrybutów aplikacja AWS oczekuje kilku atrybutów do przekazania z powrotem w odpowiedzi SAML. W sekcji **oświadczenia użytkownika** w oknie dialogowym **atrybuty użytkownika** wykonaj następujące kroki, aby dodać atrybut tokenu SAML.
 
     | Name (Nazwa)  | Atrybut źródłowy  | Przestrzeń nazw |
     | --------------- | --------------- | --------------- |
@@ -117,117 +117,117 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
     | Role            | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
     | SessionDuration             | „podaj wartość z zakresu od 900 sekund (15 minut) do 43200 sekund (12 godzin)” |  https://aws.amazon.com/SAML/Attributes |
 
-    a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
+    a. Wybierz pozycję **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
 
-    ![image](common/new-save-attribute.png)
+    ![Zrzut ekranu sekcji oświadczenia użytkowników z opcją Dodaj nowe oświadczenie i Zapisz wyróżniony](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![Zrzut ekranu przedstawiający okno dialogowe Zarządzanie oświadczeniami użytkowników](common/new-attribute-details.png)
 
-    b. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
+    b. W polu **Nazwa**wpisz nazwę atrybutu wyświetlanego dla tego wiersza.
 
-    c. W polu tekstowym **Przestrzeń nazw** wpisz wartość przestrzeni nazw pokazaną dla tego wiersza.
+    c. W polu **przestrzeń nazw**wpisz wartość przestrzeni nazw wyświetlaną dla tego wiersza.
 
-    d. Dla opcji Źródło wybierz wartość **Atrybut**.
+    d. W obszarze **Źródło**wybierz pozycję **atrybut**.
 
     e. Na liście **Atrybut źródłowy** wpisz wartość atrybutu pokazaną dla tego wiersza.
 
-    f. Kliknij przycisk **OK**.
+    f. Wybierz przycisk **OK**.
 
-    g. Kliknij polecenie **Zapisz**.
+    g. Wybierz pozycję **Zapisz**.
 
-1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **plik XML metadanych Federacji** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **plik XML metadanych Federacji**. Wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
-   ![Link pobierania certyfikatu](common/metadataxml.png)
+   ![Zrzut ekranu przedstawiający sekcję certyfikat podpisywania SAML z wyróżnioną pozycją Pobierz](common/metadataxml.png)
 
 1. W sekcji **konfigurowanie Amazon Web Services (AWS)** skopiuj odpowiednie adresy URL na podstawie wymagań.
 
-   ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
+   ![Zrzut ekranu przedstawiający sekcję Konfigurowanie Amazon Web Services (AWS) z wyróżnionymi adresami URL konfiguracji](common/copy-configuration-urls.png)
 
-### <a name="configure-amazon-web-services-aws"></a>Konfigurowanie Amazon Web Services (AWS)
+### <a name="configure-aws"></a>Konfigurowanie AWS
 
-1. W innym oknie przeglądarki zaloguj się do usług Amazon Web Services (AWS) jako administrator.
+1. W innym oknie przeglądarki Zaloguj się do witryny firmy AWS jako administrator.
 
-2. Kliknij pozycję **AWS Home** (Strona główna usług AWS).
+2. Wybierz pozycję **AWS Home**.
 
-    ![Konfigurowanie logowania jednokrotnego — strona główna][11]
+    ![Zrzut ekranu przedstawiający witrynę firmy AWS z wyróżnioną ikoną główną AWS][11]
 
-3. Kliknij pozycję **Identity and Access Management** (Zarządzanie tożsamościami i dostępem).
+3. Wybierz pozycję **Zarządzanie tożsamościami i dostępem**.
 
-    ![Konfigurowanie logowania jednokrotnego — tożsamość][12]
+    ![Zrzut ekranu przedstawiający stronę usług AWS Services z wyróżnioną pozycją IAM][12]
 
-4. Kliknij pozycję **Identity Providers** (Dostawcy tożsamości), a następnie pozycję **Create Provider** (Utwórz dostawcę).
+4. Wybierz pozycję **dostawcy** > tożsamości**Utwórz dostawcę**.
 
-    ![Konfigurowanie logowania jednokrotnego — dostawca][13]
+    ![Zrzut ekranu przedstawiający stronę mapy][13]
 
-5. Na stronie okna dialogowego **Configure Provider** (Konfigurowanie dostawcy) wykonaj następujące kroki:
+5. Na stronie **Konfiguruj dostawcę** wykonaj następujące czynności:
 
-    ![Okno dialogowe Configure Single Sign-On (Konfigurowanie logowania jednokrotnego)][14]
+    ![Zrzut ekranu przedstawiający konfigurację dostawcy][14]
 
-    a. Dla pozycji **Provider Type** (Typ dostawcy) wybierz opcję **SAML**.
+    a. W obszarze **Typ dostawcy**wybierz pozycję **SAML**.
 
-    b. W polu tekstowym **Provider Name** (Nazwa dostawcy) wpisz nazwę dostawcy (na przykład: *WAAD*).
+    b. W obszarze **Nazwa dostawcy**wpisz nazwę dostawcy (na przykład: *WAAD*).
 
-    c. Aby przekazać **plik metadanych** pobrany z witryny Azure Portal, kliknij pozycję **Choose File** (Wybierz plik).
+    c. Aby przekazać pobrany **plik metadanych** z Azure Portal, wybierz pozycję **Wybierz plik**.
 
-    d. Kliknij pozycję **Next Step** (Następny krok).
+    d. Wybierz **Następny krok**.
 
-6. Na stronie okna dialogowego **Verify Provider Information** (Weryfikowanie informacji o dostawcy) kliknij pozycję **Create** (Utwórz).
+6. Na stronie **Weryfikowanie informacji o dostawcy** wybierz pozycję **Utwórz**.
 
-    ![Konfigurowanie logowania jednokrotnego — weryfikowanie][15]
+    ![Zrzut ekranu przedstawiający Weryfikowanie informacji o dostawcy, z wyróżnioną pozycją Utwórz][15]
 
-7. Kliknij pozycję **Roles** (Role), a następnie **Create role** (Utwórz rolę).
+7. Wybierz pozycję **role** > **Utwórz rolę**.
 
-    ![Konfigurowanie logowania jednokrotnego — role][16]
+    ![Zrzut ekranu strony ról][16]
 
 8. Na stronie **Create role** (Tworzenie roli) wykonaj następujące kroki:  
 
-    ![Konfigurowanie logowania jednokrotnego — zaufanie][19]
+    ![Zrzut ekranu przedstawiający stronę tworzenie roli][19]
 
-    a. Wybierz pozycję **SAML 2.0 federation** (Federacja SAML 2.0) w obszarze **Select type of trusted entity** (Wybierz typ zaufanej jednostki).
+    a. W obszarze **Wybierz typ zaufanej jednostki**wybierz pozycję **SAML 2,0 Federation**.
 
-    b. W **sekcji Choose a SAML 2.0 Provider (Wybierz dostawcę SAML 2.0)** określ utworzonego wcześniej **dostawcę SAML** (na przykład: *WAAD*)
+    b. W obszarze **Wybierz dostawcę saml 2,0**wybierz wcześniej utworzony **dostawca SAML** (na przykład: *WAAD*).
 
     c. Wybierz pozycję **Allow programmatic and AWS Management Console access** (Zezwalaj na dostęp programowy i za pomocą konsoli AWS Management Console).
   
-    d. Kliknij pozycję **Next: Permissions** (Dalej: uprawnienia).
+    d. Wybierz opcję **Dalej: Permissions** (Dalej: uprawnienia).
 
-9. W oknie dialogowym **Attach Permissions Policies** (Dołączanie zasad uprawnień) dołącz zasady odpowiednie dla Twojej organizacji. Kliknij pozycję **Next: Review** (Dalej: przegląd).  
+9. W oknie dialogowym **Dołącz zasady uprawnień** Dołącz odpowiednie zasady dla swojej organizacji. Następnie wybierz **pozycję Dalej: Review** (Dalej: przegląd).  
 
-    ![Konfigurowanie logowania jednokrotnego — zasady][33]
+    ![Zrzut ekranu przedstawiający okno dialogowe zasady dołączania uprawnień][33]
 
-10. W oknie dialogowym **Review** (Przegląd) wykonaj następujące kroki:
+10. W oknie dialogowym **Przegląd** wykonaj następujące czynności:
 
-    ![Konfigurowanie logowania jednokrotnego — przegląd][34]
+    ![Zrzut ekranu przedstawiający okno dialogowe przegląd][34]
 
-    a. W polu tekstowym **Role name** (Nazwa roli) podaj nazwę roli.
+    a. W polu **Nazwa roli**wprowadź nazwę roli.
 
-    b. W polu tekstowym **Role description** (Opis roli) podaj opis.
+    b. W polu **Opis roli**wprowadź opis.
 
-    c. Kliknij pozycję **Create Role** (Utwórz rolę).
+    c. Wybierz pozycję **Utwórz rolę**.
 
-    d. Utwórz potrzebną liczbę ról i zamapuj je na dostawcę tożsamości.
+    d. Utwórz dowolną liczbę ról zgodnie z potrzebami i zamapuj je na dostawcę tożsamości.
 
-11. Użyj poświadczeń konta usług AWS do pobrania ról z konta usług AWS na potrzeby aprowizacji użytkowników usługi Azure AD. W tym celu otwórz stronę główną konsoli usług AWS.
+11. Użyj poświadczeń konta usługi AWS, aby pobrać role z konta AWS w ramach aprowizacji użytkowników usługi Azure AD. W tym celu otwórz stronę główną konsoli usług AWS.
 
-12. Kliknij pozycję **Services** -> **Security, Identity& Compliance** -> **IAM** (Usługi -> Zabezpieczenia, tożsamość i zgodność -> Zarządzanie dostępem i tożsamościami).
+12. Wybierz pozycję **usługi**. W obszarze **zabezpieczenia, tożsamość & zgodność**, wybierz pozycję **IAM**.
 
-    ![pobieranie ról z konta usług AWS](./media/amazon-web-service-tutorial/fetchingrole1.png)
+    ![Zrzut ekranu przedstawiający stronę główną konsoli programu AWS z wyróżnionymi usługami i usługą IAM](./media/amazon-web-service-tutorial/fetchingrole1.png)
 
-13. Wybierz kartę **Policies (Zasady)** w sekcji IAM (Zarządzanie dostępem i tożsamościami).
+13. W sekcji IAM wybierz pozycję **zasady**.
 
-    ![pobieranie ról z konta usług AWS](./media/amazon-web-service-tutorial/fetchingrole2.png)
+    ![Zrzut ekranu sekcji IAM z wyróżnionymi zasadami](./media/amazon-web-service-tutorial/fetchingrole2.png)
 
-14. Utwórz nowe zasady, klikając pozycję **Create policy** (Utwórz zasady) w celu pobrania ról z konta usług AWS na potrzeby aprowizacji użytkowników usługi Azure AD.
+14. Utwórz nowe zasady, wybierając pozycję **Utwórz zasady** , aby pobrać role z konta AWS w ramach aprowizacji użytkowników usługi Azure AD.
 
-    ![Tworzenie nowych zasad](./media/amazon-web-service-tutorial/fetchingrole3.png)
+    ![Zrzut ekranu przedstawiający stronę tworzenie roli z wyróżnionymi zasadami tworzenia zasad](./media/amazon-web-service-tutorial/fetchingrole3.png)
 
-15. Utwórz własne zasady, aby pobrać wszystkie role z kont usług AWS, wykonując następujące kroki:
+15. Utwórz własne zasady, aby pobrać wszystkie role z kont AWS.
 
-    ![Tworzenie nowych zasad](./media/amazon-web-service-tutorial/policy1.png)
+    ![Zrzut ekranu przedstawiający stronę Tworzenie zasad z wyróżnioną pozycją JSON](./media/amazon-web-service-tutorial/policy1.png)
 
-    a. W sekcji **„Create policy”** („Utwórz zasady”) kliknij kartę **„JSON”** .
+    a. W obszarze **Tworzenie zasad**wybierz kartę **JSON** .
 
-    b. Dodaj poniższy kod JSON do dokumentu zasad.
+    b. W dokumencie zasad Dodaj następujący kod JSON:
 
     ```json
     {
@@ -244,135 +244,135 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
     }
     ```
 
-    c. Kliknij **przycisk Review Policy (Przejrzyj zasady)** , aby zweryfikować zasady.
+    c. Wybierz pozycję **Przejrzyj zasady** , aby sprawdzić poprawność zasad.
 
-    ![Definiowanie nowych zasad](./media/amazon-web-service-tutorial/policy5.png)
+    ![Zrzut ekranu przedstawiający stronę Tworzenie zasad](./media/amazon-web-service-tutorial/policy5.png)
 
-16. Zdefiniuj **nowe zasady**, wykonując następujące kroki:
+16. Zdefiniuj nowe zasady.
 
-    ![Definiowanie nowych zasad](./media/amazon-web-service-tutorial/policy2.png)
+    ![Zrzut ekranu przedstawiający stronę Tworzenie zasad z wyróżnionymi polami nazwa i opis](./media/amazon-web-service-tutorial/policy2.png)
 
-    a. W polu **Policy Name** (Nazwa zasad) podaj wartość **AzureAD_SSOUserRole_Policy**.
+    a. W obszarze **Nazwa**wprowadź **AzureAD_SSOUserRole_Policy**.
 
-    b. W polu **Description** (Opis) możesz wpisać opis: **Te zasady umożliwiają pobranie ról z kont usług AWS**.
+    b. W polu **Opis**wprowadź następujące zasady umożliwią **pobranie ról z kont usługi AWS**.
 
-    c. Kliknij przycisk **„Create Policy”** („Utwórz zasady”).
+    c. Wybierz pozycję **Utwórz zasady**.
 
-17. Utwórz nowe konto użytkownika w usłudze zarządzania dostępem i tożsamościami usług AWS, wykonując następujące kroki:
+17. Utwórz nowe konto użytkownika w usłudze IAM AWS.
 
-    a. Kliknij element nawigacji **Users** (Użytkownicy) w konsoli usługi zarządzania dostępem i tożsamościami usług AWS.
+    a. W konsoli AWS IAM wybierz pozycję **Użytkownicy**.
 
-    ![Definiowanie nowych zasad](./media/amazon-web-service-tutorial/policy3.png)
+    ![Zrzut ekranu przedstawiający konsolę AWS IAM z wyróżnionymi użytkownikami](./media/amazon-web-service-tutorial/policy3.png)
 
-    b. Kliknij przycisk **Add user** (Dodaj użytkownika), aby utworzyć nowego użytkownika.
+    b. Aby utworzyć nowego użytkownika, wybierz pozycję **Dodaj użytkownika**.
 
-    ![Dodaj użytkownika](./media/amazon-web-service-tutorial/policy4.png)
+    ![Zrzut ekranu przedstawiający przycisk Dodaj użytkownika](./media/amazon-web-service-tutorial/policy4.png)
 
-    c. W sekcji **Add user** (Dodaj użytkownika) wykonaj następujące kroki:
+    c. W sekcji **Dodawanie użytkownika** :
 
-    ![Dodaj użytkownika](./media/amazon-web-service-tutorial/adduser1.png)
+    ![Zrzut ekranu przedstawiający stronę Dodawanie użytkownika z wyróżnioną nazwą użytkownika i typem dostępu](./media/amazon-web-service-tutorial/adduser1.png)
 
     * Podaj nazwę użytkownika: **AzureADRoleManager**.
 
-    * W polu Access type (Typ dostępu) wybierz opcję **Programmatic access** (Dostęp programowy). Dzięki temu użytkownik może wywołać interfejsy API i pobrać role z konta usług AWS.
+    * W polu Typ dostępu wybierz pozycję **dostęp programistyczny**. Dzięki temu użytkownik może wywołać interfejsy API i pobrać role z konta AWS.
 
-    * Kliknij przycisk **Next Permissions** (Dalej: uprawnienia) w prawym dolnym rogu.
+    * Wybierz pozycję **następne uprawnienia**.
 
-18. Teraz utwórz nowe zasady dla tego użytkownika, wykonując następujące kroki:
+18. Utwórz nowe zasady dla tego użytkownika.
 
-    ![Dodaj użytkownika](./media/amazon-web-service-tutorial/adduser2.png)
+    ![Zrzut ekranu przedstawiający Dodawanie użytkownika](./media/amazon-web-service-tutorial/adduser2.png)
 
-    a. Kliknij przycisk **Attach existing policies directly** (Dołącz istniejące zasady bezpośrednio).
+    a. Wybierz pozycję **Dołącz istniejące zasady bezpośrednio**.
 
     b. Wyszukaj nowo utworzone zasady w sekcji **AzureAD_SSOUserRole_Policy** filtru.
 
-    c. Wybierz pozycję **policy** (zasady), a następnie kliknij przycisk **Next: Review** (Dalej: przegląd).
+    c. Wybierz zasady, a następnie wybierz pozycję **dalej: Review** (Dalej: przegląd).
 
-19. Przejrzyj zasady dołączonego użytkownika, wykonując następujące kroki:
+19. Zapoznaj się z zasadami dla dołączonego użytkownika.
 
-    ![Dodaj użytkownika](./media/amazon-web-service-tutorial/adduser3.png)
+    ![Zrzut ekranu przedstawiający stronę Dodawanie użytkownika z wyróżnioną pozycją Utwórz użytkownika](./media/amazon-web-service-tutorial/adduser3.png)
 
     a. Przejrzyj nazwę użytkownika, typ dostępu i zasady zamapowane do użytkownika.
 
-    b. Kliknij przycisk **Create user** (Utwórz użytkownika) w prawym dolnym rogu, aby utworzyć użytkownika.
+    b. Wybierz pozycję **Utwórz użytkownika**.
 
-20. Pobierz poświadczenia użytkownika, wykonując następujące kroki:
+20. Pobierz poświadczenia użytkownika.
 
-    ![Dodaj użytkownika](./media/amazon-web-service-tutorial/adduser4.png)
+    ![Zrzut ekranu przedstawiający Dodawanie użytkownika](./media/amazon-web-service-tutorial/adduser4.png)
 
     a. Skopiuj **identyfikator klucza dostępu** i **klucz dostępu wpisu tajnego**.
 
-    b. Podaj te poświadczenia w sekcji aprowizacji użytkowników usługi Azure AD, aby pobrać role z konsoli usług AWS.
+    b. Wprowadź te poświadczenia w sekcji aprowizacji użytkowników usługi Azure AD, aby pobrać role z konsoli AWS.
 
-    c. Kliknij przycisk **Close** (Zamknij) znajdujący się u dołu.
+    c. Wybierz polecenie **Zamknij**.
 
-21. Przejdź do sekcji **User Provisioning** (Aprowizacja użytkowników) dla aplikacji usług Amazon Web Services w portalu zarządzania usługi Azure AD.
+21. W portalu zarządzania usługi Azure AD w aplikacji AWS przejdź do obszaru **udostępniania**.
 
-    ![Dodaj użytkownika](./media/amazon-web-service-tutorial/provisioning.png)
+    ![Zrzut ekranu aplikacji AWS z wyróżnioną obsługą administracyjną](./media/amazon-web-service-tutorial/provisioning.png)
 
-22. Podaj **klucz dostępu** i **wpis tajny** odpowiednio w polach **Client Secret** (Wpis tajny klienta) i **Secret Token** (Token wpisu tajnego).
+22. Wprowadź odpowiednio klucz dostępu i wpis tajny w polach **clientsecret** i **Secret** .
 
-    ![Dodaj użytkownika](./media/amazon-web-service-tutorial/provisioning1.png)
+    ![Zrzut ekranu przedstawiający okno dialogowe poświadczenia administratora](./media/amazon-web-service-tutorial/provisioning1.png)
 
     a. Podaj klucz dostępu użytkownika usług AWS w polu **clientsecret**.
 
     b. Podaj wpis tajny użytkownika usług AWS w polu **Secret Token** (Token wpisu tajnego).
 
-    c. Kliknij przycisk **Test Connection** (Testuj połączenie). Testowanie połączenia powinno zakończyć się pomyślnie.
+    c. Wybierz pozycję **Testuj połączenie**.
 
-    d. Zapisz ustawienie, klikając przycisk **Save** (Zapisz) znajdujący się u góry.
+    d. Zapisz ustawienie, wybierając pozycję **Zapisz**.
 
-23. Teraz upewnij się, że aprowizacja jest **włączona**: w sekcji Settings (Ustawienia) ustaw przełącznik w pozycji On (Włączone), a następnie kliknij przycisk **Save** (Zapisz) znajdujący się u góry.
+23. W sekcji **Ustawienia** w obszarze **stan aprowizacji**wybierz pozycję **włączone**. Następnie wybierz pozycję **Zapisz**.
 
-    ![Dodaj użytkownika](./media/amazon-web-service-tutorial/provisioning2.png)
+    ![Zrzut ekranu przedstawiający sekcję ustawień z wyróżnioną pozycją](./media/amazon-web-service-tutorial/provisioning2.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
+W tej sekcji utworzysz użytkownika testowego, B. Simon, w Azure Portal.
 
-1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory** > **Użytkownicy** > **Wszyscy użytkownicy**.
 1. Wybierz **nowego użytkownika** w górnej części ekranu.
 1. We właściwościach **użytkownika** wykonaj następujące kroki:
-   1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
-   1. W polu **Nazwa użytkownika** wprowadź wartość username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
-   1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij przycisk **Utwórz**.
+   
+   a. W polu **Nazwa** wprowadź wartość `B.Simon`.  
+   b. W polu **Nazwa użytkownika** wprowadź wartość username@companydomain.extension. Na przykład `B.Simon@contoso.com`.   
+   c. Wybierz pozycję **Pokaż hasło**i Zapisz ją. Następnie wybierz przycisk **Create** (Utwórz).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure, przyznając dostęp do Amazon Web Services (AWS).
+W tej sekcji należy włączyć usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do usługi AWS.
 
 1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 1. Na liście Aplikacje wybierz pozycję **Amazon Web Services (AWS)** .
 1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
-   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
+   ![Zrzut ekranu przedstawiający sekcję Zarządzanie z wyróżnionymi użytkownikami i grupami](common/users-groups-blade.png)
 
-1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
+1. Wybierz przycisk **Dodaj użytkownika**. W oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Link Dodaj użytkownika](common/add-assign-user.png)
+    ![Zrzut ekranu przedstawiający Dodawanie użytkownika](common/add-assign-user.png)
 
-1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
-1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
-1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon**. Następnie wybierz **pozycję Wybierz**.
+1. Jeśli oczekujesz, że jakakolwiek wartość roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz z listy odpowiednią rolę dla użytkownika. Następnie wybierz **pozycję Wybierz**.
+1. W oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Przypisz**.
 
-### <a name="create-amazon-web-services-aws-test-user"></a>Tworzenie użytkownika testowego usług Amazon Web Services (AWS)
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-Celem tej sekcji jest utworzenie użytkownika o nazwie B. Simon w Amazon Web Services (AWS). Usługi Amazon Web Services (AWS) nie wymagają utworzenia użytkownika w swoim systemie logowania jednokrotnego, więc w tym miejscu nie trzeba wykonywać żadnych działań.
-
-### <a name="test-sso"></a>Testuj Logowanie jednokrotne
-
-Po wybraniu kafelka Amazon Web Services (AWS) w panelu dostępu należy automatycznie zalogować się do Amazon Web Services (AWS), dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po wybraniu kafelka AWS w panelu dostępu należy automatycznie zalogować się do AWS, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="known-issues"></a>Znane problemy
 
- * W sekcji **Aprowizacja** w podsekcji **Mapowania** będzie wyświetlany komunikat „Trwa ładowanie...” i nigdy nie będą wyświetlane mapowania atrybutów. Jedyny obsługiwany obecnie przepływ pracy aprowizacji to importowanie ról z usług AWS do usługi Azure AD w celu wyboru podczas przypisywania użytkownika/grupy. Mapowania atrybutów na te potrzeby są wstępnie zdefiniowane i nie można ich konfigurować.
+ * W sekcji dotyczącej **aprowizacji** w podsekcji **mapowania** jest wyświetlana wartość "ładowanie..." i nigdy nie wyświetla mapowań atrybutów. Jedyną obsługiwaną obsługą przepływu pracy jest importowanie ról z AWS do usługi Azure AD w celu wyboru podczas przypisywania użytkowników lub grup. Mapowania atrybutów dla tego elementu są wstępnie określone i nie można ich konfigurować.
  
- * Sekcja **Aprowizacja** obsługuje wprowadzanie tylko jednego zestawu poświadczeń jednocześnie dla jednej dzierżawy usług AWS. Wszystkie zaimportowane role są zapisywane w ramach właściwości appRoles [obiektu servicePrincipal](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) usługi Azure AD dla dzierżawy usług AWS. Z poziomu galerii do usługi Azure AD można dodać wiele dzierżaw usług AWS (reprezentowanych przez obiekty servicePrincipal) służących do aprowizacji, jednak istnieje znany problem związany z brakiem możliwości automatycznego zapisywania wszystkich zaimportowanych ról z wielu obiektów servicePrincipal usług AWS używanych do aprowizacji do pojedynczego obiektu servicePrincipal używanego do logowania jednokrotnego. Jako obejście można użyć [interfejsu API programu Microsoft Graph](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) do wyodrębnienia wszystkich zaimportowanych ról aplikacji do poszczególnych obiektów servicePrincipal usług AWS, dla których skonfigurowano aprowizację. Te ciągi ról można następnie dodawać do obiektu servicePrincipal usług AWS, dla którego skonfigurowano logowanie jednokrotne.
+ * Sekcja **Aprowizacja** obsługuje wprowadzanie tylko jednego zestawu poświadczeń jednocześnie dla jednej dzierżawy usług AWS. Wszystkie zaimportowane role są zapisywane `appRoles` we właściwości [ `servicePrincipal` obiektu](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) usługi Azure AD dla dzierżawy AWS. 
+ 
+   Wiele dzierżawców AWS (reprezentowane przez `servicePrincipals`) można dodać do usługi Azure AD z galerii w celu aprowizacji. Istnieje jednak znany problem, ale nie jest możliwe automatyczne zapisanie wszystkich zaimportowanych ról z wielu AWS `servicePrincipals` używanych do aprowizacji w `servicePrincipal` ramach logowania jednokrotnego. 
+   
+   Jako obejście można użyć [interfejsu API Microsoft Graph](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) , aby wyodrębnić wszystkie `appRoles` zaimportowane do każdego AWSu `servicePrincipal` , w którym skonfigurowano Inicjowanie obsługi. Następnie można dodać te ciągi ról do AWS `servicePrincipal` , w którym skonfigurowano Logowanie jednokrotne.
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Samouczków dotyczących integrowania aplikacji SaaS przy użyciu usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

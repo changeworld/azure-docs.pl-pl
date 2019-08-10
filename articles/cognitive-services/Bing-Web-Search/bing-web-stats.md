@@ -7,16 +7,16 @@ author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 40a5e03f4149381f096f71243361eacbdc7c16c2
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 5d1b0b19523eb37aa83aa59b24114be9f76ffa55
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667617"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882772"
 ---
 # <a name="add-analytics-to-the-bing-search-apis"></a>Dodawanie analizy do interfejsy API wyszukiwania Bing
 
@@ -100,7 +100,7 @@ Dostępne są następujące metryki i ograniczenia punktów końcowych.
 
 - **Dystrybucja serwera odpowiedzi**: Serwer aplikacji, który obsłużył żądania interfejsu API. Możliwe wartości to Bing.com (dla ruchu obsługiwanego z urządzeń stacjonarnych i laptopów) oraz Bing.com-Mobile (dla ruchu obsługiwanego z urządzeń przenośnych). Serwer jest określany przy użyciu wartości nagłówka User-Agent żądania. Jeśli żądanie nie zawiera nagłówka User-Agent, Bing próbuje uzyskać dostęp do serwera z innych sygnałów.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Co to jest interfejsy API wyszukiwania Bing?](bing-api-comparison.md)
 * [Użycie interfejsu API Wyszukiwanie Bing i wymagania dotyczące wyświetlania](use-display-requirements.md)

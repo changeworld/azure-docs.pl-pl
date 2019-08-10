@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 3bc06a8903fbc431d991e6ef2a4aad8fbaff2365
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: f254572f5c26a809f401e99f527ccd3d30451c3d
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736868"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931585"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Samouczek: rejestrowanie przepływu ruchu sieciowego do i z maszyny wirtualnej przy użyciu witryny Azure Portal
 
@@ -108,6 +108,11 @@ Rejestrowanie przepływu sieciowej grupy zabezpieczeń wymaga dostawcy **Microso
    ![Wybieranie wersji dzienników przepływów](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
 
 9. Wybierz konto usługi Storage utworzone w kroku 3.
+   > [!NOTE]
+   > Dzienniki przepływu sieciowej grupy zabezpieczeń nie działają w przypadku kont magazynu, jeśli:
+   > * Na kontach magazynu jest włączona Zapora.
+   > * Konta magazynu mają włączoną [hierarchiczną przestrzeń nazw](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) .
+1. W lewym górnym rogu portalu wybierz pozycję **Wszystkie usługi**. W polu **Filtr** wpisz ciąg *Network Watcher*. Gdy w wynikach wyszukiwania pojawi się nazwa **Network Watcher**, wybierz ją.
 10. Ustaw pozycję **Przechowywanie (dni)** na 5, a następnie wybierz pozycję **Zapisz**.
 
 ## <a name="download-flow-log"></a>Pobieranie dziennika przepływu
@@ -212,10 +217,10 @@ Wartość elementu **mac** w poprzednich danych wyjściowych to adres MAC interf
 | A            | Action                 | Określa, czy ruch był dozwolony (A), czy odrzucony (D).  
 | C            | Stan przepływu **tylko w wersji 2** | Rejestruje stan przepływu. Możliwe stany to **B**: początek — gdy zostanie utworzony przepływ. Statystyki nie są podawane. **C**: kontynuacja — dotyczy trwającego przepływu. Statystyki są podawane w 5-minutowych odstępach. **E**: koniec — gdy przepływ zostanie zakończony. Statystyki są podawane. |
 | 30 | Wysłane pakiety — ze źródła do miejsca docelowego **tylko w wersji 2** | Całkowita liczba pakietów TCP lub UDP przesłanych ze źródła do miejsca docelowego od czasu ostatniej aktualizacji. |
-| 16978 | Wysłane bajty — ze źródła do miejsca docelowego **tylko w wersji 2** | Całkowita liczba bajtów pakietów TCP lub UDP przesłanych ze źródła do miejsca docelowego od czasu ostatniej aktualizacji. Liczba bajtów pakietu obejmuje nagłówek i ładunek pakietu. | 
+| 16978 | Wysłane bajty — ze źródła do miejsca docelowego **tylko w wersji 2** | Całkowita liczba bajtów pakietów TCP lub UDP przesłanych ze źródła do miejsca docelowego od czasu ostatniej aktualizacji. Liczba bajtów pakietu obejmuje nagłówek i ładunek pakietu. |
 | 24 | Wysłane pakiety — z miejsca docelowego do źródła **tylko w wersji 2** | Całkowita liczba pakietów TCP lub UDP przesłanych z miejsca docelowego do źródła od czasu ostatniej aktualizacji. |
 | 14008| Wysłane bajty — z miejsca docelowego do źródła **tylko w wersji 2** | Całkowita liczba bajtów pakietów TCP i UDP przesłanych z miejsca docelowego do źródła od czasu ostatniej aktualizacji. Liczba bajtów pakietu obejmuje nagłówek i ładunek pakietu.|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono sposób włączania rejestrowania przepływu sieciowej grupy zabezpieczeń dla danej grupy. Przedstawiono również sposób pobierania i wyświetlania danych rejestrowanych w pliku. Nieprzetworzone dane w pliku JSON mogą być trudne do zinterpretowania. W celu zwizualizowania danych można użyć [analizy ruchu](traffic-analytics.md) w usłudze Network Watcher, usługi Microsoft [PowerBI](network-watcher-visualize-nsg-flow-logs-power-bi.md) i innych narzędzi.

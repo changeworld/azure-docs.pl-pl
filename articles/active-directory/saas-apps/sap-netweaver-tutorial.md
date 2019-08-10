@@ -4,97 +4,86 @@ description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usł
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
+manager: mtillman
+ms.reviewer: celested
 ms.assetid: 1b9e59e3-e7ae-4e74-b16c-8c1a7ccfdef3
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/11/2019
+ms.date: 08/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01a70bfbb169090fbdf4b5f8e00af6895f69c964
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c6cce23194025a68eec055fe45b806c3d28434a1
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67091915"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880496"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sap-netweaver"></a>Samouczek: integracja usługi Azure Active Directory z oprogramowaniem SAP NetWeaver
+# <a name="tutorial-integrate-sap-netweaver-with-azure-active-directory"></a>Samouczek: Integracja oprogramowania SAP NetWeaver z usługą Azure Active Directory
 
-Z tego samouczka dowiesz się, jak zintegrować oprogramowanie SAP NetWeaver z usługą Azure Active Directory (Azure AD).
-Zintegrowanie oprogramowania SAP NetWeaver z usługą Azure AD daje następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować oprogramowanie SAP NetWeaver z usługą Azure Active Directory (Azure AD). Po zintegrowaniu integracji oprogramowania SAP NetWeaver z usługą Azure AD można:
 
-* Możliwość kontrolowania dostępu do oprogramowania SAP NetWeaver za pomocą usługi Azure AD.
-* Możliwość skonfigurowania użytkowników pod kątem automatycznego logowania do oprogramowania SAP NetWeaver przy użyciu kont usługi Azure AD (logowanie jednokrotne).
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Kontrolka w usłudze Azure AD, która ma dostęp do rozwiązania SAP NetWeaver.
+* Zezwól użytkownikom na automatyczne logowanie do oprogramowania SAP NetWeaver przy użyciu kont usługi Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z oprogramowaniem SAP NetWeaver, potrzebujesz następujących elementów:
+Aby rozpocząć, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* Subskrypcja oprogramowania SAP NetWeaver z obsługą logowania jednokrotnego
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
+* Subskrypcja z włączonym logowaniem jednokrotnym (SSO) w systemie SAP NetWeaver.
 * Oprogramowanie SAP NetWeaver w wersji co najmniej 7.20
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
+Rozwiązanie SAP NetWeaver obsługuje zarówno protokół **SAML** (**SSO zainicjowany przez usługę Sp**), jak i **OAuth**. W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym. 
 
-* Oprogramowanie SAP NetWeaver obsługuje logowanie jednokrotne inicjowane przez **dostawcę usługi**
+> [!NOTE]
+> Skonfiguruj aplikację w języku SAML lub OAuth zgodnie z wymaganiami organizacji. 
 
 ## <a name="adding-sap-netweaver-from-the-gallery"></a>Dodawanie oprogramowania SAP NetWeaver z galerii
 
 Aby skonfigurować integrację oprogramowania SAP NetWeaver z usługą Azure AD, należy dodać oprogramowanie SAP NetWeaver z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać oprogramowanie SAP NetWeaver z galerii, wykonaj następujące kroki:**
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
+1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
+1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
+1. W sekcji **Dodaj z galerii** wpisz **SAP NetWeaver** w polu wyszukiwania.
+1. Wybierz pozycję **SAP NetWeaver** z panelu wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-sap-netweaver"></a>Skonfiguruj i przetestuj Logowanie jednokrotne w usłudze Azure AD dla oprogramowania SAP NetWeaver
 
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
+Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą oprogramowania SAP NetWeaver przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w oprogramowaniu SAP NetWeaver.
 
-2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą oprogramowania SAP NetWeaver, wykonaj następujące bloki konstrukcyjne:
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
+    1. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** , aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
+    1. **[Przypisz użytkownika testowego usługi Azure AD,](#assign-the-azure-ad-test-user)** aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+1. **[Skonfiguruj rozwiązanie SAP NetWeaver przy użyciu protokołu SAML](#configure-sap-netweaver-using-saml)** , aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+    1. **[Utwórz użytkownika testowego SAP NetWeaver](#create-sap-netweaver-test-user)** , aby miał odpowiednik B. Simon w oprogramowaniu SAP NetWeaver, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
+1. **[Przetestuj logowanie](#test-sso)** jednokrotne, aby sprawdzić, czy konfiguracja działa.
+1. **[Skonfiguruj rozwiązanie SAP NetWeaver na potrzeby uwierzytelniania OAuth](#configure-sap-netweaver-for-oauth)** , aby skonfigurować ustawienia protokołu OAuth po stronie aplikacji.
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
-
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
-
-4. W polu wyszukiwania wpisz ciąg **SAP NetWeaver**, wybierz pozycję **SAP NetWeaver** z panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
-
-     ![Oprogramowanie SAP NetWeaver na liście wyników](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
-
-W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w oprogramowaniu SAP NetWeaver, korzystając z danych użytkownika testowego **Britta Simon**.
-Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem oprogramowania SAP NetWeaver.
-
-Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD w oprogramowaniu SAP NetWeaver, należy wykonać czynności opisane w poniższych blokach konstrukcyjnych:
-
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie logowania jednokrotnego oprogramowania SAP NetWeaver](#configure-sap-netweaver-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego oprogramowania SAP NetWeaver](#create-sap-netweaver-test-user)** — aby udostępnić w oprogramowaniu SAP NetWeaver odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
 Aby skonfigurować logowanie jednokrotne usługi Azure AD w oprogramowaniu SAP NetWeaver, wykonaj następujące kroki:
 
-1. Otwórz nowe okno przeglądarki internetowej i zaloguj się do firmowej witryny oprogramowania SAP NetWeaver jako administrator.
+1. Otwórz nowe okno przeglądarki sieci Web i zaloguj się w witrynie firmy SAP NetWeaver jako administrator
 
 2. Upewnij się, że usługi **http** i **https** są aktywne i że w kodzie transakcji **SMICM** są przypisane odpowiednie porty.
 
-3. Zaloguj się do klienta biznesowego systemu SAP (T01), w którym jest wymagane logowanie jednokrotne, i aktywuj zarządzanie sesją zabezpieczeń protokołu HTTP.
+3. Zaloguj się do klienta biznesowego systemu SAP system (T01), w którym jest wymagane logowanie jednokrotne i aktywuj zarządzanie sesjami zabezpieczeń protokołu HTTP.
 
     a. Przejdź do sekcji **SICF_SESSIONS** kodu transakcji. Pokazuje ona wszystkie odpowiednie parametry profilu z bieżącymi wartościami. Wyglądają one podobnie do poniższych:-
     ```
@@ -111,9 +100,9 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w oprogramowaniu SAP N
     >[!NOTE]
     > Dostosuj te parametry zgodnie z wymaganiami organizacji — powyższe parametry są tu podane jedynie jako przykład.
 
-    b. W razie potrzeby dostosuj parametry w profilu wystąpienia/profilu domyślnym systemu SAP i uruchom ponownie systemu SAP.
+    b. W razie potrzeby skoryguj parametry w profilu wystąpienie/domyślny system SAP i uruchom ponownie system SAP.
 
-    c. Kliknij dwukrotnie odpowiedniego klienta, aby włączyć sesję zabezpieczeń protokołu HTTP.
+    c. Kliknij dwukrotnie odpowiedni klient, aby włączyć sesję zabezpieczeń protokołu HTTP.
 
     ![Link pobierania certyfikatu](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_profileparameter.png)
 
@@ -135,7 +124,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w oprogramowaniu SAP N
 6. W polu **Provider Name** (Nazwa dostawcy) zastąp ciąg T01122 ciągiem `http://T01122` i kliknij pozycję **Save** (Zapisz).
 
     > [!NOTE]
-    > Nazwa domyślnego dostawcy uszkodzonym `<sid><client>` formatowanie, ale usługa Azure AD oczekuje nazwy w formacie `<protocol>://<name>`, zalecających, aby zachować nazwę dostawcy, jak `https://<sid><client>` umożliwia wielu aparatów SAP NetWeaver ABAP do skonfigurowania w usłudze Azure AD.
+    > Domyślna nazwa dostawcy jest uznawana `<sid><client>` za format `<protocol>://<name>`, ale usługa Azure AD oczekuje nazwy w formacie, zaleca się, aby zachować nazwę dostawcy `https://<sid><client>` , tak aby zezwalała na konfigurowanie wielu aparatów ABAP SAP NetWeaver w usłudze Azure AD.
 
     ![Link pobierania certyfikatu](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_providername.png)
 
@@ -147,33 +136,23 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w oprogramowaniu SAP N
 
     b. Kliknij pozycję **Metadata** (Metadane).
 
-    c. Zapisz wygenerowany **pliku XML metadanych** na komputerze i przekaż go w **podstawową konfigurację protokołu SAML** sekcji, aby automatycznie wypełniać **identyfikator** i  **Adres URL odpowiedzi** wartości w witrynie Azure portal.
+    c. Zapisz wygenerowany **plik XML metadanych** na komputerze i przekaż go w sekcji **Podstawowa konfiguracja SAML** , aby automatycznie wypełnić wartości **identyfikatorów** i **adresów URL odpowiedzi** w Azure Portal.
 
-8. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji oprogramowania **SAP NetWeaver** wybierz pozycję **Logowanie jednokrotne**.
+Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **SAP NetWeaver** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie**jednokrotne.
+1. Na stronie **Wybierz metodę logowania** jednokrotnego wybierz pozycję **SAML**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
-9. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
+   ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
+4. Jeśli chcesz skonfigurować aplikację w trybie inicjalizacji **dostawcy tożsamości** , w sekcji **Podstawowa konfiguracja SAML** wykonaj następujące czynności:
 
-10. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
+    a. Kliknij przycisk **Przekaż plik metadanych** , aby przekazać **plik metadanych dostawcy usług**, który został uzyskany wcześniej.
 
-    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
-
-11. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
-
-    a. Kliknij pozycję **Przekaż plik metadanych**, aby przekazać uzyskany wcześniej **plik metadanych dostawcy usług**.
-
-    ![Przekazywanie pliku metadanych](common/upload-metadata.png)
-
-    b. Kliknij **logo folderu**, aby wybrać plik metadanych, a następnie kliknij pozycję **Przekaż**.
-
-    ![wybierz plik metadanych](common/browse-upload-metadata.png)
+    b. Kliknij pozycję **logo folderu** wybierz plik metadanych, a następnie kliknij przycisk **przekazywanie**.
 
     c. Po pomyślnym przekazaniu pliku metadanych wartości **Identyfikator** i **Adres URL odpowiedzi** zostaną automatycznie wypełnione w polach tekstowych sekcji **Podstawowa konfiguracja protokołu SAML**, jak pokazano poniżej:
-
-    ![Informacje o domenie i adresach URL logowania jednokrotnego oprogramowania SAP NetWeaver](common/sp-identifier-reply.png)
 
     d. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<your company instance of SAP NetWeaver>`
 
@@ -184,7 +163,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w oprogramowaniu SAP N
     > ``` 
     > Identyfikator obiektu ServicePrincipal musisz najpierw ustawić samodzielnie lub możesz również przekazać go w tym miejscu.
 
-12. Aplikacja SAP NetWeaver oczekuje asercji SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Atrybuty użytkownika**.
+1. Aplikacja SAP NetWeaver oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę  **Edytuj** , aby otworzyć okno dialogowe Atrybuty użytkownika.
 
     ![image](common/edit-attribute.png)
 
@@ -200,25 +179,49 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w oprogramowaniu SAP N
 
     c. Z listy **Parametr 1** wybierz pozycję **user.userprinicipalname**.
 
-    d. Kliknij pozycję **Zapisz**.
+    d. Kliknij polecenie **Zapisz**.
 
-14. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **plik XML metadanych Federacji** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/metadataxml.png)
+   ![Link pobierania certyfikatu](common/metadataxml.png)
 
-15. W sekcji **Konfigurowanie aplikacji SAP NetWeaver** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
+1. W sekcji **Konfigurowanie rozwiązania SAP NetWeaver** skopiuj odpowiednie adresy URL na podstawie wymagań.
 
-    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
+   ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-    a. Adres URL logowania
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-    b. Identyfikator usługi Azure AD
+W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
-    d. Adres URL wylogowywania
+1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. Wybierz **nowego użytkownika** w górnej części ekranu.
+1. We właściwościach **użytkownika** wykonaj następujące kroki:
+    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
+    1. W polu **Nazwa użytkownika** wprowadź wartość username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
+    1. Kliknij przycisk **Utwórz**.
 
-### <a name="configure-sap-netweaver-single-sign-on"></a>Konfigurowanie logowania jednokrotnego oprogramowania SAP NetWeaver
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-1. Zaloguj się do systemu SAP i przejdź do protokołu SAML2 kodu transakcji. Spowoduje to otwarcie nowego okna przeglądarki z ekranem konfiguracji protokołu SAML.
+W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do rozwiązania SAP NetWeaver.
+
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Na liście aplikacji wybierz pozycję **SAP NetWeaver**.
+1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
+
+    ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
+
+1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
+
+    ![Link Dodaj użytkownika](common/add-assign-user.png)
+
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+
+## <a name="configure-sap-netweaver-using-saml"></a>Konfigurowanie rozwiązania SAP NetWeaver przy użyciu protokołu SAML
+
+1. Zaloguj się do systemu SAP i przejdź do kodu transakcji SAML2. Spowoduje to otwarcie nowego okna przeglądarki z ekranem konfiguracji protokołu SAML.
 
 2. Aby skonfigurować punkty końcowe dla zaufanego dostawcy tożsamości (Azure AD), przejdź na kartę **Trusted Providers** (Zaufani dostawcy).
 
@@ -232,7 +235,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w oprogramowaniu SAP N
 
     ![Konfigurowanie logowania jednokrotnego](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_metadatafile.png)
 
-5. Na następnym ekranie wpisz nazwę aliasu. Może to być na przykład „aadsts”. Następnie naciśnij pozycję **Next** (Dalej), aby kontynuować.
+5. Na następnym ekranie wpisz nazwę aliasu. Na przykład aadsts i naciśnij przycisk **dalej** , aby kontynuować.
 
     ![Konfigurowanie logowania jednokrotnego](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_aliasname.png)
 
@@ -264,7 +267,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w oprogramowaniu SAP N
 
     ![Konfigurowanie logowania jednokrotnego](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_addidentityprovider.png)
 
-13. W oknie podręcznym wybierz opcję **Unspecified** (Nieokreślone) w polu **Supported NameID formats** (Obsługiwane formaty identyfikatora nazwy) i kliknij przycisk OK.
+13. W oknie podręcznym wybierz opcję **nieokreślone** w **obsługiwanych formatach NameID** , a następnie kliknij przycisk OK.
 
     ![Konfigurowanie logowania jednokrotnego](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_nameid.png)
 
@@ -298,62 +301,11 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w oprogramowaniu SAP N
 
     ![Konfigurowanie logowania jednokrotnego](./media/sapnetweaver-tutorial/configuration2.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+    ### <a name="create-sap-netweaver-test-user"></a>Tworzenie użytkownika testowego oprogramowania SAP NetWeaver
 
-W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
+    W tej sekcji utworzysz użytkownika o nazwie B. Simon w oprogramowaniu SAP NetWeaver. Aby dodać użytkownika na platformie SAP NetWeaver, skontaktuj się z zespołem ekspertów ds. systemu SAP w swojej organizacji lub z odpowiednim partnerem firmy SAP.
 
-1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
-
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
-
-    ![Przycisk Nowy użytkownik](common/new-user.png)
-
-3. We właściwościach użytkownika wykonaj następujące kroki.
-
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
-
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
-  
-    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
-    Na przykład: BrittaSimon@contoso.com
-
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
-
-    d. Kliknij pozycję **Utwórz**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
-
-W tej sekcji udostępnisz użytkownikowi Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do oprogramowania SAP NetWeaver.
-
-1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw** i **Wszystkie aplikacje**, a następnie pozycję**SAP NetWeaver**.
-
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
-
-2. Na liście aplikacji wybierz pozycję **SAP NetWeaver**.
-
-    ![Link oprogramowania SAP NetWeaver na liście Aplikacje](common/all-applications.png)
-
-3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
-
-    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
-
-4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
-
-    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
-
-5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
-
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
-
-7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
-
-### <a name="create-sap-netweaver-test-user"></a>Tworzenie użytkownika testowego oprogramowania SAP NetWeaver
-
-W tej sekcji utworzysz użytkownika Britta Simon w oprogramowaniu SAP NetWeaver. Aby dodać użytkownika na platformie SAP NetWeaver, skontaktuj się z zespołem ekspertów ds. systemu SAP w swojej organizacji lub z odpowiednim partnerem firmy SAP.
-
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
+## <a name="test-sso"></a>Testuj Logowanie jednokrotne
 
 1. Po aktywowaniu usługi Azure AD jako dostawcy tożsamości spróbuj uzyskać dostęp do poniższego adresu URL, aby sprawdzić działanie logowania jednokrotnego (nie zostanie wyświetlony monit o nazwę użytkownika i hasło)
 
@@ -373,6 +325,64 @@ W tej sekcji utworzysz użytkownika Britta Simon w oprogramowaniu SAP NetWeaver.
 3. Jeśli zostanie wyświetlony monit o nazwę użytkownika i hasło, zdiagnozuj problem, włączając śledzenie przy użyciu poniższego adresu URL
 
     `https://<sapurl>/sap/bc/webdynpro/sap/sec_diag_tool?sap-client=122&sap-language=EN#`
+
+## <a name="configure-sap-netweaver-for-oauth"></a>Konfigurowanie oprogramowania SAP NetWeaver na potrzeby uwierzytelniania OAuth
+
+1. Proces udokumentowanych rozwiązań SAP jest dostępny w lokalizacji: [Tworzenie zakresu i uwierzytelnianie OAuth 2,0 usługi bramy NetWeaver](https://wiki.scn.sap.com/wiki/display/Security/NetWeaver+Gateway+Service+Enabling+and+OAuth+2.0+Scope+Creation)
+
+2. Przejdź do SPRO i Znajdź pozycję **Aktywuj i obsługuj usługi**.
+
+    ![Konfigurowanie logowania jednokrotnego](./media/sapnetweaver-tutorial/oauth01.png)
+
+3. W tym przykładzie chcemy połączyć usługę OData: `DAAG_MNGGRP` z uwierzytelnianiem OAuth na potrzeby rejestracji jednokrotnej usługi Azure AD. Użyj nazwy usługi technicznej Wyszukaj usługę `DAAG_MNGGRP` i aktywuj ją, jeśli jeszcze nie jest aktywna, lub `green` Wyszukaj stan na karcie węzły zapory ICF). Upewnij się, że alias systemowy (podłączony system wewnętrznej bazy danych, gdzie usługa jest rzeczywiście uruchomiona) jest poprawny.
+
+    ![Konfigurowanie logowania jednokrotnego](./media/sapnetweaver-tutorial/oauth02.png)
+
+    * Następnie kliknij pozycję przycisk **uwierzytelniania OAuth** na górnym pasku przycisków `scope` i przypisz (Zachowaj nazwę domyślną jako oferowaną).
+
+4. W naszym przykładzie zakres jest `DAAG_MNGGRP_001`generowany na podstawie nazwy usługi przez automatyczne dodanie numeru. Można `/IWFND/R_OAUTH_SCOPES` użyć raportu, aby zmienić nazwę zakresu lub utworzyć ręcznie.
+
+    ![Konfigurowanie logowania jednokrotnego](./media/sapnetweaver-tutorial/oauth03.png)
+
+    > [!NOTE]
+    > Message `soft state status is not supported` — można zignorować, ponieważ nie ma problemu. Więcej informacji można znaleźć [tutaj](https://help.sap.com/doc/saphelp_nw74/7.4.16/1e/c60c33be784846aad62716b4a1df39/content.htm?no_cache=true)
+
+### <a name="create-a-service-user-for-the-oauth-20-client"></a>Tworzenie użytkownika usługi dla klienta OAuth 2,0
+
+1. OAuth2 używa elementu `service ID` , aby uzyskać token dostępu dla użytkownika końcowego w jego imieniu. Ważne ograniczenie przez projektowanie protokołu OAuth: `OAuth 2.0 Client ID` musi być taka sama jak `username` w przypadku logowania przy użyciu klienta OAuth 2,0 podczas żądania tokenu dostępu. W związku z tym w naszym przykładzie będziemy rejestrować klienta protokołu OAuth 2,0 o nazwie KLIENT1, a w systemie SAP musi istnieć użytkownik o tej samej nazwie (KLIENT1), a użytkownik zostanie skonfigurowany do użycia przez określoną aplikację. 
+
+2. Podczas rejestrowania klienta OAuth korzystamy z programu `SAML Bearer Grant type`.
+
+    >[!NOTE]
+    >Aby uzyskać więcej informacji, zapoznaj się z artykułem rejestracja klienta OAuth 2,0 dla typu dotacji elementu SAML w [tym miejscu](https://wiki.scn.sap.com/wiki/display/Security/OAuth+2.0+Client+Registration+for+the+SAML+Bearer+Grant+Type)
+
+3. tcod: SU01/Utwórz użytkownika KLIENT1 jako `System type` i Przypisz hasło, Zapisz go jako wymagające podania poświadczeń do programisty interfejsu API, który powinien go nagrać przy użyciu nazwy użytkownika do kodu wywołującego. Nie należy przypisywać profilu ani roli.
+
+### <a name="register-the-new-oauth-20-client-id-with-the-creation-wizard"></a>Rejestrowanie nowego identyfikatora klienta OAuth 2,0 przy użyciu Kreatora tworzenia
+
+1. Aby zarejestrować nowy **SOAUTH2**Transaction **klienta OAuth 2,0** . Zostanie wyświetlona informacja o klientach OAuth 2,0, które zostały już zarejestrowane. Wybierz pozycję **Utwórz** , aby uruchomić kreatora dla nowego klienta OAuth o nazwie "CLIENT1" w tym przykładzie.
+
+2. Przejdź do kodu T: **SOAUTH2** i podaj opis, a następnie kliknij przycisk **dalej**.
+
+    ![Konfigurowanie logowania jednokrotnego](./media/sapnetweaver-tutorial/oauth04.png)
+
+    ![Konfigurowanie logowania jednokrotnego](./media/sapnetweaver-tutorial/oauth05.png)
+
+3. Wybierz już dodany **SAML2 dostawcy tożsamości — Azure AD** z listy rozwijanej i Zapisz.
+
+    ![Konfigurowanie logowania jednokrotnego](./media/sapnetweaver-tutorial/oauth06.png)
+
+    ![Konfigurowanie logowania jednokrotnego](./media/sapnetweaver-tutorial/oauth07.png)
+
+    ![Konfigurowanie logowania jednokrotnego](./media/sapnetweaver-tutorial/oauth08.png)
+
+4. Kliknij pozycję **Dodaj** w obszarze przypisanie zakresu, aby dodać wcześniej utworzony zakres:`DAAG_MNGGRP_001`
+
+    ![Konfigurowanie logowania jednokrotnego](./media/sapnetweaver-tutorial/oauth09.png)
+
+    ![Konfigurowanie logowania jednokrotnego](./media/sapnetweaver-tutorial/oauth10.png)
+
+5. Kliknij przycisk **Zakończ**.
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 

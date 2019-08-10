@@ -11,16 +11,16 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 03/13/2019
-ms.openlocfilehash: 064d55b96c8817f4b7ccc5f0925eeecfaf310424
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0d64bd150a43666679253f8244d80411e25dfdcd
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68550517"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935057"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>Tworzenie agenta zadań elastycznych za pomocą programu PowerShell
 
-[Zadania elastyczne](sql-database-job-automation-overview.md#elastic-database-jobs) umożliwiają uruchamianie jednego lub większej liczby skryptów języka Transact-SQL (T-SQL) równolegle w wielu bazach danych.
+[Zadania elastyczne](sql-database-job-automation-overview.md#elastic-database-jobs-preview) umożliwiają uruchamianie jednego lub większej liczby skryptów języka Transact-SQL (T-SQL) równolegle w wielu bazach danych.
 
 W tym samouczku przedstawiono kroki wymagane do uruchomienia zapytania w wielu bazach danych:
 

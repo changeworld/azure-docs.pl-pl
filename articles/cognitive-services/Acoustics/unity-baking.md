@@ -11,18 +11,18 @@ ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: e26df58de08d0941b5e3165852ed0b26f8890f66
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b7249c3048ba3af3adbaac01f43770482a0d38ad
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854932"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933262"
 ---
 # <a name="project-acoustics-unity-bake-tutorial"></a>Tworzenie — samouczek dotyczący hałasu w projekcie
 W tym samouczku opisano akustyczne pieczenie przy użyciu akustycznych projektów w środowisku Unity.
 
 Wymagania dotyczące oprogramowania:
-* [Unity 2018.2 +](https://unity3d.com) dla systemu Windows
+* [Unity 2018.2 +](https://unity3d.com) dla systemu Windows lub MacOS
 * [Wtyczka akustyczna projektu zintegrowana w projekcie Unity](unity-integration.md) lub [Przykładowa zawartość aparatu Unity w projekcie](unity-quickstart.md)
 * Opcjonalnie: [Konto Azure Batch](create-azure-account.md) umożliwiające przyspieszenie tworzony przy użyciu chmury obliczeniowej
 
@@ -179,6 +179,25 @@ Po rozpoczęciu tworzenie można zamknąć środowisko Unity. W zależności od 
 
 Poświadczenia platformy Azure są bezpiecznie przechowywane na komputerze lokalnym i powiązane z edytorem aparatu Unity. Są one używane wyłącznie w celu nawiązania bezpiecznego połączenia z platformą Azure.
 
+## <a name="to-find-the-status-of-a-running-job-on-the-azure-portal"></a>Aby znaleźć stan uruchomionego zadania na Azure Portal
+
+1. Znajdź identyfikator zadania tworzenie na karcie Tworzenie:
+
+![Zrzut ekranu przedstawiający identyfikator zadania Tworzenie środowiska Unity](media/unity-job-id.png)  
+
+2. Otwórz [Azure Portal](https://portal.azure.com), przejdź do konta usługi Batch używanego dla Tworzenie i wybierz **zadania**
+
+![Zrzut ekranu przedstawiający link zadania](media/azure-batch-jobs.png)  
+
+3. Wyszukaj identyfikator zadania na liście zadań
+
+![Zrzut ekranu przedstawiający stan zadania tworzenie](media/azure-bake-job-status.png)  
+
+4. Kliknij identyfikator zadania, aby wyświetlić stan powiązanych zadań i ogólny stan zadania
+
+![Zrzut ekranu przedstawiający stan zadania tworzenie](media/azure-batch-task-state.png)  
+
+
 ### <a name="Estimating-bake-cost"></a>Szacowanie kosztu usługi Azure tworzenie
 
 Aby oszacować, jakie dane tworzenie będzie kosztować, należy uzyskać wartość pokazaną dla **szacowanego kosztu obliczeniowego**, czyli czas trwania, i pomnożyć ją przez koszt godzinowy w lokalnej walucie wybranego **typu węzła maszyny wirtualnej** . Wynik nie będzie zawierać czasu węzła wymaganego do uruchomienia węzłów. Jeśli na przykład wybierzesz pozycję **Standard_F8s_v2** dla typu węzła, który ma koszt $0.40/hr, a szacowany koszt obliczeń wynosi 3 godziny i 57 minut, szacowany koszt uruchomienia zadania będzie $0,40 * ~ 4 godziny = ~ $1,60. Rzeczywisty koszt będzie prawdopodobnie nieco większy z powodu dodatkowego czasu na rozpoczęcie uruchamiania węzłów. Koszt węzła "co godzinę" można znaleźć na stronie [cennika Azure Batch](https://azure.microsoft.com/pricing/details/virtual-machines/linux) (wybierz pozycję "obliczenia zoptymalizowane" lub "obliczenia o wysokiej wydajności" dla kategorii).
@@ -188,6 +207,7 @@ Swoją scenę można tworzenie na własnym komputerze. Może to być przydatne w
 
 ### <a name="minimum-hardware-requirements"></a>Minimalne wymagania sprzętowe
 * Procesor x86-64 z co najmniej 8 rdzeniami i 32 GB pamięci RAM
+* [Funkcja Hyper-V włączona](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) do uruchomienia platformy Docker
 
 Przykładowo w naszym testowaniu na maszynie 8 Core z technologią Intel Xeon E5-1660 @ 3 GHz i 32 GB pamięci RAM —
 * Niewielka scena z 100 sondami może potrwać około 2 godzin przez bardzo duże Tworzenie lub 32 godz. Tworzenie.
@@ -195,13 +215,15 @@ Przykładowo w naszym testowaniu na maszynie 8 Core z technologią Intel Xeon E5
 
 ### <a name="setup-docker"></a>Skonfiguruj platformę Docker
 Zainstaluj i skonfiguruj platformę Docker na komputerze, który będzie przetwarzać symulację —
-1. Zainstaluj zestaw [narzędzi platformy Docker](https://www.docker.com/products/docker-desktop).
-2. Uruchom ustawienia platformy Docker, przejdź do opcji Zaawansowane i skonfiguruj zasoby, aby mieć co najmniej 8 GB pamięci RAM. Im więcej procesorów CPU można przydzielić do platformy Docker, tym szybciej tworzenie zostanie ukończona. ![Zrzut ekranu przykładu ustawień platformy Docker](media/docker-settings.png)
-3. Przejdź do "dyski udostępnione" i Włącz udostępnianie dysku używanego do przetwarzania.![Zrzut ekranu opcji udostępnionego dysku platformy Docker](media/docker-shared-drives.png)
+1. Zainstaluj program [Docker Desktop](https://www.docker.com/products/docker-desktop).
+2. Uruchom ustawienia platformy Docker, przejdź do opcji Zaawansowane i skonfiguruj zasoby, aby mieć co najmniej 8 GB pamięci RAM. Im więcej procesorów CPU można przydzielić do platformy Docker, tym szybciej tworzenie zostanie ukończona.  
+![Zrzut ekranu przykładu ustawień platformy Docker](media/docker-settings.png)
+1. Przejdź do "dyski udostępnione" i Włącz udostępnianie dysku używanego do przetwarzania.  
+![Zrzut ekranu opcji udostępnionego dysku platformy Docker](media/docker-shared-drives.png)
 
 ### <a name="run-local-bake"></a>Uruchamianie lokalnego tworzenie
 1. Kliknij przycisk "Przygotuj lokalny tworzenie" na karcie **Tworzenie** i wybierz folder, w którym zostaną zapisane pliki wejściowe i skrypty wykonywania. Następnie można uruchomić tworzenie na dowolnym komputerze, o ile spełnia minimalne wymagania sprzętowe i ma zainstalowany Aparat Docker, kopiując folder na tę maszynę.
-2. Uruchom symulację przy użyciu skryptu "runlocalbake. bat". Ten skrypt pobierze obraz platformy Docker z projektorem, który jest niezbędny do przetwarzania symulacji i uruchamiania symulacji. 
+2. Uruchom symulację przy użyciu skryptu "runlocalbake. bat" w systemie Windows lub używając skryptu "runlocalbake.sh" na MacOS. Ten skrypt pobierze obraz platformy Docker z projektorem, który jest niezbędny do przetwarzania symulacji i uruchamiania symulacji. 
 3. Po zakończeniu symulacji Skopiuj powstały plik ACE z powrotem do projektu aparatu Unity. Aby upewnić się, że aparat Unity rozpoznaje ten element jako plik binarny, należy dołączyć ". b" do rozszerzenia pliku (na przykład "Scene1. asa. Bytes"). Szczegółowe dzienniki symulacji są przechowywane w "AcousticsLog. txt". Jeśli napotkasz jakiekolwiek problemy, Udostępnij ten plik, aby ułatwić diagnostykę.
 
 ## <a name="Data-Files"></a>Pliki danych dodane przez proces tworzenie

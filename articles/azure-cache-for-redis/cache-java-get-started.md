@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: jak korzystać z usługi Azure Cache for Redis przy użyciu języka Java | Microsoft Docs'
+title: 'Szybki start: Korzystanie z usługi Azure cache for Redis w języku Java'
 description: W tym przewodniku Szybki start utworzysz nową aplikację Java, która korzysta z pamięci podręcznej Azure Cache for Redis.
 services: cache
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/23/2018
 ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: d1a90df07d1973272193f9d01b5d26aaf329166e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.custom: mvc, seo-java-august2019
+ms.openlocfilehash: 230bd4c0d53404ca5ac8d7e1385e8b0533880ca7
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849935"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881132"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-java"></a>Szybki start: Korzystanie z usługi Azure cache for Redis w języku Java
 
@@ -157,7 +157,7 @@ W przeciwnym razie po zakończeniu pracy z przykładową aplikacją poradnika Sz
 
 Po krótkim czasie grupa zasobów i wszystkie zawarte w niej zasoby zostaną usunięte.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start pokazano, jak korzystać z usługi Azure Cache for Redis z poziomu aplikacji Java. Przejdź do kolejnego Szybkiego startu, w którym wyjaśniono, jak używać usługi Microsoft Azure Cache for Redis z poziomu aplikacji internetowej ASP.NET.
 

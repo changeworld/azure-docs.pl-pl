@@ -7,19 +7,19 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: 25cb4845de9b23b04aa25140fae88f50e77cc72c
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 0788b220f2612170fdea974a8bb27e8374a0b3be
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542800"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879205"
 ---
 # <a name="sending-search-requests-to-the-bing-entity-search-api"></a>Wysyłanie żądań wyszukiwania do interfejsu API wyszukiwania jednostek Bing
 
-Interfejs API wyszukiwania jednostek Bing wysyła zapytanie wyszukiwania do usługi Bing i pobiera wyniki, które zawierają jednostki i miejsca. Wyniki dotyczące miejsc to między innymi restauracje, hotele i inne lokalne firmy. W zapytaniu można na przykład określić nazwę lokalnej firmy lub zadać pytanie o listę miejsc (na przykład „restaurants near me” — restauracje w pobliżu). Wyniki dotyczące jednostek to między innymi osoby, miejsca i rzeczy. Miejsce, w tym kontekście jest atrakcji, Stany, kraje/regiony itp.
+Interfejs API wyszukiwania jednostek Bing wysyła zapytanie wyszukiwania do usługi Bing i pobiera wyniki, które zawierają jednostki i miejsca. Wyniki dotyczące miejsc to między innymi restauracje, hotele i inne lokalne firmy. W zapytaniu można na przykład określić nazwę lokalnej firmy lub zadać pytanie o listę miejsc (na przykład „restaurants near me” — restauracje w pobliżu). Wyniki dotyczące jednostek to między innymi osoby, miejsca i rzeczy. Miejsce w tym kontekście to attractions, Stany, kraje/regiony itd.
 
 ## <a name="the-endpoint"></a>Punkt końcowy
 
@@ -132,7 +132,7 @@ BingAPIs-Market: en-US
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Wyszukiwanie jednostek za pomocą interfejsu API jednostek Bing](search-for-entities.md)
 * [Wymagania dotyczące użycia i wyświetlania interfejsu API Bing](../use-display-requirements.md)

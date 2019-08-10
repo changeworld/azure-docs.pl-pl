@@ -7,13 +7,13 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 02/28/2018
-ms.openlocfilehash: f1059fac4d44138a4e9bc04c858501234974dc43
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 08/08/2019
+ms.openlocfilehash: 5d7414d13b3fb1390b12084f0480e0549a380264
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60526248"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931620"
 ---
 # <a name="azure-database-for-mysql-use-python-to-connect-and-query-data"></a>Azure Database for MySQL: Nawiązywanie połączeń i wykonywanie zapytań na danych przy użyciu języka Python
 Ten przewodnik Szybki start przedstawia sposób nawiązywania połączeń z usługą Azure Database for MySQL za pomocą języka [Python](https://python.org). Pokazano w nim, jak używać instrukcji języka SQL w celu wysyłania zapytań o dane oraz wstawiania, aktualizowania i usuwania danych w bazie danych na platformach Mac OS, Ubuntu Linux i Windows. W tym temacie założono, że wiesz już, jak opracowywać zawartość za pomocą języka Python, i dopiero zaczynasz pracę z usługą Azure Database for MySQL.
@@ -31,8 +31,8 @@ Zainstaluj język [Python](https://www.python.org/downloads/) i [łącznik progr
 >
 
 ### <a name="windows"></a>Windows
-1. Pobierz i zainstaluj język Python w wersji 2.7 z witryny [python.org](https://www.python.org/downloads/windows/). 
-2. Sprawdź instalację języka Python, uruchamiając wiersz polecenia. Uruchom polecenie `C:\python27\python.exe -V`, używając przełącznika V, aby wyświetlić numer wersji.
+1. Pobierz i zainstaluj środowisko Python 3,7 z [Python.org](https://www.python.org/downloads/windows/). 
+2. Sprawdź instalację języka Python, uruchamiając wiersz polecenia. Uruchom polecenie `C:\python37\python.exe -V`, używając przełącznika V, aby wyświetlić numer wersji.
 3. Zainstaluj łącznik języka Python dla programu MySQL z witryny [mysql.com](https://dev.mysql.com/downloads/connector/python/) odpowiadający danej wersji języka Python.
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
@@ -221,7 +221,7 @@ else:
   print("Done.")
 ```
 
-## <a name="delete-data"></a>Usuwanie danych
+## <a name="delete-data"></a>Usuń dane
 Użyj poniższego kodu, aby nawiązać połączenie i usunąć dane za pomocą instrukcji **DELETE** języka SQL. 
 
 W kodzie importowana jest biblioteka mysql.connector.  Funkcja [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) jest używana do nawiązania połączenia z usługą Azure Database for MySQL przy użyciu [argumentów połączenia](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) w kolekcji config. Kod używa kursora w połączeniu, a metoda [cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) wykonuje zapytanie SQL w bazie danych MySQL. 
@@ -265,6 +265,6 @@ else:
   print("Done.")
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"]
 > [Migrowanie bazy danych przy użyciu funkcji eksportowania i importowania](./concepts-migrate-import-export.md)

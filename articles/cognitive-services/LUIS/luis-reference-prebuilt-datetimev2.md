@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 1a19ab6e02249bad689f1a05c5761150b7a817df
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c4e83ed15c2b15ccb3339ff775b08c8d2dab4c32
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560275"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932514"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>DatetimeV2 prekompilowaną jednostkę dla aplikacji LUIS
 
@@ -82,7 +82,7 @@ Każdy element obiektu `values` macierzy może zawierać następujące pola:
 |Nazwa właściwości|Opis właściwości|
 |--|--|
 |Timex|Godzina, data lub zakresu dat wyrażonych w formacie TIMEX, który następuje po [standardem ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) i atrybuty TIMEX3 przy użyciu języka TimeML adnotacji. Ta adnotacja jest opisana w [wytycznych TIMEX](http://www.timeml.org/tempeval2/tempeval2-trial/guidelines/timex3guidelines-072009.pdf).|
-|— typ|Podtyp, który może być jednym z następujących elementów: `datetime`, `date` `datetimerange` `daterange` `timerange` `time`,,,,, `set` ,.`duration`|
+|type|Podtyp, który może być jednym z następujących elementów: `datetime`, `date` `datetimerange` `daterange` `timerange` `time`,,,,, `set` ,.`duration`|
 |value|**Opcjonalnie.** Obiekt daty/godziny w formacie yyyy:MM:dd (Data): mm: ss (czas) yyyy:MM:dd: mm: ss (Data/godzina). Jeśli `type` jest `duration`, wartość jest to liczba sekund (czas trwania) <br/> Używany tylko, jeśli `type` jest `datetime` lub `date`, `time`, lub "czas trwania.|
 
 ## <a name="valid-date-values"></a>Wartości prawidłowej daty

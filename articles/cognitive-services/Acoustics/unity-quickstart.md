@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: a36a16b6cb64c300647d16695edfbb73f4884104
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0ea020ca76381a4ae5d6b6e480c94e63f9aa2dab
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854858"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933133"
 ---
 # <a name="project-acoustics-unity-quickstart"></a>Środowisko projektowe — Przewodnik Szybki Start
 Użyj zawartości przykładowej akustycznej projektu dla aparatu Unity, aby eksperymentować z kontrolkami projektu z symulacją.
@@ -38,16 +38,35 @@ Zaimportuj przykładowy pakiet do nowego projektu środowiska Unity.
 
 * Wybierz **ProjectAcoustics. UNITYPACKAGE**
 
+* Kliknij przycisk **Importuj** , aby zintegrować pakiet Unity z projektem  
+  
+    ![Zrzut ekranu okna dialogowego pakietu importowania środowiska Unity](media/import-dialog.png)  
+
 W przypadku importowania pakietu do istniejącego projektu zapoznaj się z tematem [integracja aparatu Unity](unity-integration.md) w celu uzyskania dodatkowych kroków i notatek.
+
+>[!NOTE] 
+>Po zakończeniu importowania zostanie wyświetlony komunikat o kilku błędach w dzienniku konsoli.  Przejdź do następnego kroku i ponownie uruchom środowisko Unity.
 
 ## <a name="restart-unity"></a>Uruchom ponownie środowisko Unity
 Część Tworzenie zestawu narzędzi akustycznych wymaga wersji środowiska uruchomieniowego obsługi skryptów .NET 4. x. Importowanie pakietu zaktualizuje ustawienia odtwarzacza Unity. Uruchom ponownie środowisko Unity, aby to ustawienie zaczęło obowiązywać.
 
 Aby sprawdzić, czy to ustawienie zostało wykonane, można otworzyć **Ustawienia odtwarzacza**:
 
-![Zrzut ekranu przedstawiający panel ustawień odtwarzacza Unity](media/player-settings.png)
+![Zrzut ekranu przedstawiający panel ustawień odtwarzacza Unity](media/player-settings.png)  
 
-![Zrzut ekranu przedstawiający panel ustawień odtwarzacza Unity z wybranym programem .NET 4,5](media/net45.png)
+![Zrzut ekranu przedstawiający panel ustawień odtwarzacza Unity z wybranym programem .NET 4,5](media/net45.png)  
+
+>[!NOTE]
+>Zrzut ekranu jest pobierany z aparatu Unity 2018 r. x. Nowsze wersje środowiska Unity mogą się różnić.
+
+## <a name="open-the-project-acoustics-bake-window"></a>Otwórz okno Tworzenie akustyczne projektu
+Wybierz **okno > akustyczne** z menu aparatu Unity:
+
+![Zrzut ekranu edytora Unity z opcją menu okna akustyczne](media/window-acoustics.png)
+
+Zostanie wyświetlone nowe okno przestawne o nazwie akustyczne.  To okno służy do ustawiania właściwości symulacji akustycznej.
+
+![Zrzut ekranu edytora Unity z otwartym oknem akustycznym](media/unity-editor-plugin-window.png)  
 
 ## <a name="experiment-with-design-controls"></a>Eksperymentowanie z kontrolkami projektu
 Otwórz przykładową scenę w folderze **ProjectAcousticsSample** , a następnie kliknij przycisk Odtwórz w edytorze aparatu Unity. Użyj W, a, S, D i myszy, aby poruszać się. Aby porównać, jak brzmi scena z akustyką i bez niej, naciskaj przycisk **R** do momentu, w którym tekst nakładki zmieni się na czerwony i będzie wyświetlany komunikat „Akustyka: wyłączona”. Aby wyświetlić skróty klawiaturowe zapewniające większą liczbę kontrolek, naciśnij klawisz **F1**. Kontrolki są również użyteczne przez kliknięcie prawym przyciskiem myszy w celu wybrania akcji do wykonania, a następnie kliknięcie lewym przyciskiem w celu wykonania akcji.
@@ -56,7 +75,7 @@ Skrypt **AcousticsAdjust** jest dołączany do źródeł dźwięku w przykładow
 
 ![Zrzut ekranu przedstawiający skrypt AcousticsAdjust środowiska Unity](media/acoustics-adjust.png)
 
-Poniżej przedstawiono niektóre efekty, które mogą zostać utworzone przy użyciu podanych kontrolek. Aby uzyskać szczegółowe informacje na temat poszczególnych kontrolek, zobacz Samouczek dotyczący środowiska projektowego dla [aparatu Unity](unreal-workflow.md).
+Poniżej przedstawiono niektóre efekty, które mogą zostać utworzone przy użyciu podanych kontrolek. Aby uzyskać szczegółowe informacje na temat poszczególnych kontrolek, zobacz Samouczek dotyczący środowiska projektowego dla [aparatu Unity](unity-workflow.md).
 
 ### <a name="modify-distance-based-attenuation"></a>Modyfikuj tłumienie na podstawie odległości
 Procesor DSP audio, który jest dostarczany przez wtyczkę spatializera w środowisku Unity, uwzględnia tłumienie oparte na odległości dla poszczególnych źródeł wbudowane w Edytor aparatu Unity. Kontrolki przeciwstawnej na podstawie odległości znajdują się w składniku **Źródło Audio** znalezionym w panelu **inspektorów** źródeł dźwięku, w obszarze **Ustawienia dźwięku 3W**:

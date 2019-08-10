@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: diberry
-ms.openlocfilehash: 42dfe4af56149e4305d076b0427f15038a01fadc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a5c60a4c7d4f1b441ec5e8444b10594a1e67d7db
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563626"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932715"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Jak ulepszyć aplikację przy użyciu pulpitu nawigacyjnego
 
@@ -169,6 +169,6 @@ Co to jest wiarygodny wynik do przewidywania? Na początku opracowywania aplikac
 
 Te dwa filtry umożliwiają znalezienie wyrażenia długości w wybranym zasobie poza progiem. Te dwie wartości procentowe można traktować jako procent błędów. Jeśli masz doświadczenie ze stawką błędów 10-15% dla prognoz, ustaw próg filtru na 15%, aby znaleźć wszystkie wyrażenia długości powyżej tej wartości. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Zarządzanie zasobami platformy Azure](luis-how-to-azure-subscription.md)

@@ -17,12 +17,12 @@ ms.date: 07/25/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 946eb0343c2858e275e40b7a581fd48e1713accd
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 507758831885bff7f61677ebae0224cc828dcb2e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853512"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879272"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Przepływy uwierzytelniania i scenariusze aplikacji
 
@@ -143,7 +143,7 @@ Aby uzyskać więcej informacji, zapoznaj się [z aplikacją mobilną, która wy
 
 ### <a name="protected-web-api"></a>Chroniony internetowy interfejs API
 
-Możesz użyć punktu końcowego platformy tożsamości firmy Microsoft do zabezpieczenia usług sieci Web, takich jak internetowy interfejs API aplikacji RESTful. Chroniony internetowy interfejs API jest wywoływany przy użyciu tokenu dostępu w celu zabezpieczania danych i uwierzytelniania żądań przychodzących. Obiekt wywołujący internetowy interfejs API dołącza token dostępu w nagłówku autoryzacji żądania HTTP. Jeśli chcesz chronić ASP.NET internetowy interfejs API lub ASP.NET Core, musisz sprawdzić poprawność tokenu dostępu. W tym celu należy użyć oprogramowania pośredniczącego JWT ASP.NET. Sprawdzanie poprawności jest wykonywane przez [rozszerzenia IdentityModel dla biblioteki .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) , a nie MSAL.NET
+Możesz użyć punktu końcowego platformy tożsamości firmy Microsoft do zabezpieczenia usług sieci Web, takich jak internetowy interfejs API aplikacji RESTful. Chroniony internetowy interfejs API jest wywoływany przy użyciu tokenu dostępu w celu zabezpieczania danych i uwierzytelniania żądań przychodzących. Obiekt wywołujący internetowy interfejs API dołącza token dostępu w nagłówku autoryzacji żądania HTTP. Jeśli chcesz chronić internetowy interfejs API usługi ASP.NET lub ASP.NET Core, musisz sprawdzić poprawność tokenu dostępu. W tym celu należy użyć oprogramowania pośredniczącego JWT ASP.NET. Sprawdzanie poprawności jest wykonywane przez [rozszerzenia IdentityModel dla biblioteki .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) , a nie MSAL.NET
 
 Aby uzyskać więcej informacji, Przeczytaj [chroniony internetowy interfejs API](scenario-protected-web-api-overview.md).
 

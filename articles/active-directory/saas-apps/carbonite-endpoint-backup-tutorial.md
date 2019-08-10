@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/30/2019
+ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf5bf49538823ea50bca197a78ec54d4ddcae1ff
-ms.sourcegitcommit: 6ad03fa28a0f60cb6dce6144f728c2ceb56ff6e2
+ms.openlocfilehash: e078cb7daa787b9fe5e8bc996b36f0fef198f41c
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68708284"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879667"
 ---
 # <a name="tutorial-integrate-carbonite-endpoint-backup-with-azure-active-directory"></a>Samouczek: Integrowanie kopii zapasowych punktu końcowego Carbonite z Azure Active Directory
 
@@ -125,27 +125,35 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
 ### <a name="configure-carbonite-endpoint-backup-sso"></a>Konfigurowanie rejestracji jednokrotnej Carbonite punktu końcowego
 
-1. W innym oknie przeglądarki sieci Web Zaloguj się do witryny sieci firmowej punktu końcowego Carbonite jako administrator.
+1. Aby zautomatyzować konfigurację w ramach kopii zapasowej Carbonite Endpoint, należy zainstalować **Moje aplikacje bezpieczne logowanie do przeglądarki** , klikając pozycję **Zainstaluj rozszerzenie**.
 
-1. Kliknij **firmę** w okienku po lewej stronie.
+    ![Rozszerzenie moje aplikacje](common/install-myappssecure-extension.png)
+
+2. Po dodaniu rozszerzenia do przeglądarki kliknij kolejno pozycje **Konfiguracja Carbonite kopia zapasowa punktu końcowego** spowoduje przekierowanie do aplikacji do tworzenia kopii zapasowych Carbonite. W tym miejscu podaj poświadczenia administratora, aby zalogować się do usługi Kopia zapasowa punktu końcowego Carbonite. Rozszerzenie przeglądarki automatycznie skonfiguruje aplikację i zautomatyzuje kroki 3–7.
+
+    ![Konfiguracja konfiguracji](common/setup-sso.png)
+
+3. Jeśli chcesz ręcznie skonfigurować Carbonite kopii zapasowej punktu końcowego, Otwórz nowe okno przeglądarki sieci Web i zaloguj się do kopii zapasowej punktu końcowego Carbonite jako administrator i wykonaj następujące czynności:
+
+4. Kliknij **firmę** w okienku po lewej stronie.
 
     ![Konfiguracja kopii zapasowej punktu końcowego Carbonite ](media/carbonite-endpoint-backup-tutorial/configure1.png)
 
-1. Kliknij pozycjęLogowanie jednokrotne.
+5. Kliknij pozycjęLogowanie jednokrotne.
 
     ![Konfiguracja kopii zapasowej punktu końcowego Carbonite ](media/carbonite-endpoint-backup-tutorial/configure2.png)
 
-1. Kliknij pozycję **Włącz** , a następnie kliknij pozycję **Edytuj ustawienia** do skonfigurowania.
+6. Kliknij pozycję **Włącz** , a następnie kliknij pozycję **Edytuj ustawienia** do skonfigurowania.
 
     ![Konfiguracja kopii zapasowej punktu końcowego Carbonite ](media/carbonite-endpoint-backup-tutorial/configure3.png)
 
-1. Na stronie ustawienia **rejestracji** jednokrotnej wykonaj następujące czynności:
+7. Na stronie ustawienia **rejestracji** jednokrotnej wykonaj następujące czynności:
 
     ![Konfiguracja kopii zapasowej punktu końcowego Carbonite ](media/carbonite-endpoint-backup-tutorial/configure4.png)
 
-    1. W polu tekstowym **Nazwa dostawcy tożsamości** wprowadź nazwę dostawcy tożsamości, na przykład **Microsoft Azure AD**.
+    1. W polu tekstowym **Nazwa dostawcy tożsamości** wklej wartość **identyfikatora usługi Azure AD** , która została skopiowana z Azure Portal.
 
-    1. W polu tekstowym **adres URL dostawcy tożsamości** wklej wartość **identyfikatora usługi Azure AD** , która została skopiowana z Azure Portal.
+    1. W polu tekstowym **adres URL dostawcy tożsamości** wklej wartość **adresu URL logowania** , która została skopiowana z Azure Portal.
 
     1. Kliknij pozycję **Wybierz plik** , aby przekazać pobrany plik **certyfikatu (Base64)** z Azure Portal.
 

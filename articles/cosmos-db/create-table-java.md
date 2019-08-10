@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: interfejs API tabel za pomocą języka Java — Azure Cosmos DB'
+title: Używanie interfejs API tabel i języka Java do kompilowania aplikacji Azure Cosmos DB
 description: Ten przewodnik szybkiego startu przedstawia wykorzystanie interfejsu API tabeli usługi Azure Cosmos DB do tworzenia aplikacji przy użyciu witryny Azure Portal i języka Java
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,12 +8,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
-ms.openlocfilehash: daaf7db2ac75cec6cb5a305e994a7cbe558c83fc
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.custom: seo-java-august2019
+ms.openlocfilehash: d1eade1b5bdbbce2bc47c5e6177d21c7ff835936
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854665"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933953"
 ---
 # <a name="quickstart-build-a-table-api-app-with-java-and-azure-cosmos-db"></a>Szybki start: tworzenie aplikacji interfejsu API tabel przy użyciu języka Java i usługi Azure Cosmos DB
 

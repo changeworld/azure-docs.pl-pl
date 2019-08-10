@@ -7,15 +7,15 @@ author: anrothMSFT
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: anroth
-ms.openlocfilehash: 8564095cc84a3f124ca41efd2e19787cd16902ab
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 22955ba4b885b264210dc8788f2a410b785b28b4
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564126"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883980"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Korzystanie z modelu za pomocą interfejsu API przewidywania
 
@@ -26,7 +26,7 @@ Po nauczeniu modelu możesz programowo przetestować obrazy przez przesłanie ic
 
 ## <a name="publish-your-trained-iteration"></a>Publikowanie przeszkolonej iteracji
 
-Na stronie [Custom Vision ](https://customvision.ai) wybierz swój projekt, a następnie kartę __Wydajność__.
+Na stronie [Custom Vision ](https://customvision.ai) wybierz swój projekt, a następnie kartę __Wydajność__ .
 
 Aby przesłać obrazy do interfejsu API przewidywania, najpierw musisz opublikować iterację do prognozowania, którą można wykonać, wybierając pozycję __Publikuj__ i podając nazwę opublikowanej iteracji. Dzięki temu Twój model będzie dostępny dla interfejsu API przewidywania zasobów Custom Vision platformy Azure.
 
@@ -38,7 +38,7 @@ Po pomyślnym opublikowaniu modelu zobaczysz etykietę "Opublikowano" obok itera
 
 ## <a name="get-the-url-and-prediction-key"></a>Pobieranie adresu URL i klucza predykcyjnego
 
-Po opublikowaniu modelu możesz pobrać wymagane informacje, wybierając pozycję __adres URL przewidywania__. Spowoduje to otwarcie okna dialogowego z informacjami dotyczącymi korzystania z interfejsu API przewidywania, w tym __adres URL przewidywania__ i __klucz predykcyjny__.
+Po opublikowaniu modelu możesz pobrać wymagane informacje, wybierając pozycję __adres URL przewidywania__ . Spowoduje to otwarcie okna dialogowego z informacjami dotyczącymi korzystania z interfejsu API przewidywania, w tym __adres URL przewidywania__ i __klucz predykcyjny__ .
 
 ![Karta wydajność jest pokazywana z czerwonym prostokątem otaczającym przycisk prognozowanego adresu URL.](./media/use-prediction-api/published-iteration-prediction-url.png)
 
@@ -53,7 +53,7 @@ W tym przewodniku użyjesz lokalnego obrazu, więc Skopiuj adres URL w obszarze 
 
 1. W programie Visual Studio Utwórz nową C# aplikację konsolową.
 
-1. Użyj poniższego kodu jako treści pliku __Program.cs__.
+1. Użyj poniższego kodu jako treści pliku __Program.cs__ .
 
     ```csharp
     using System;

@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 07/22/2019
+ms.date: 08/06/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c46c11ead645b93d7710d1e11636037e4dcaf8e7
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 8a4bbe92cc1b34801abffa1e905d873d4382025a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444573"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68912452"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Jaka jest różnica między bramą sieci wirtualnej platformy Azure (VPN Gateway) i Azure bramą VPN Gateway wirtualnej sieci WAN platformy Azure?
 
@@ -103,7 +103,7 @@ Prostą konfigurację jednej wirtualnej sieci WAN z jednym koncentratorem i jedn
 
 Tak. Łączność między oddziałami jest dostępna w usłudze Virtual WAN dla sieci VPN i od sieci VPN do usługi ExpressRoute. W przypadku sieci VPN lokacja-lokacja jest obecnie dostępna w wersji zapoznawczej ExpressRoute.
 
-### <a name="does-branch-to-branch-traffic-traverse-through-the-azure-virtual-wan"></a>Czy ruch zachodzący między oddziałami przechodzi przez usługę Azure Virtual WAN?
+### <a name="does-branch-to-branch-traffic-traverse-through-the-azure-virtual-wan"></a>Czy ruch rozgałęzienia jest przechodzący przez wirtualną sieć WAN platformy Azure?
 
 Tak.
 
@@ -122,6 +122,10 @@ Nie. Usługa Virtual WAN nie wymaga usługi ExpressRoute w każdej lokacji. Uży
 ### <a name="is-there-a-network-throughput-limit-when-using-azure-virtual-wan"></a>Czy istnieje limit przepływności sieci podczas korzystania z usługi Azure Virtual WAN?
 
 Liczba oddziałów jest ograniczona do 1000 połączeń na Hub/region, a łączna 20 GB/s w centrum.
+
+### <a name="i-dont-see-the-20-gbps-setting-for-the-virtual-hub-in-the-portal-how-do-i-configure-that"></a>Nie widzę ustawienia 20 GB/s dla koncentratora wirtualnego w portalu. Jak mogę skonfigurować?
+
+Obecnie można skonfigurować jednostki skalowania bramy dla 20 GB/s przy użyciu polecenia cmdlet [Update-AzVpnGateway](https://docs.microsoft.com/powershell/module/az.network/update-azvpngateway) . To ustawienie ma dostęp do planu, który jest dostępny w portalu.
 
 ### <a name="how-many-vpn-connections-does-a-virtual-wan-hub-support"></a>Ile połączeń sieci VPN jest obsługiwana przez wirtualną koncentrator sieci WAN?
 

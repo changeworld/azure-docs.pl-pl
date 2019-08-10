@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: b3851b572dedde48540444873590f7a682a4853c
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 184677589b3aa777ec556215455f8018e0d71f3f
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595213"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934052"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>Interfejs API tłumaczenia tekstu w usłudze Translator 3,0: BreakSentence
 
@@ -172,11 +172,7 @@ Jeśli wystąpi błąd, żądanie zwróci także odpowiedź na błąd JSON. Kod 
 
 Poniższy przykład pokazuje, jak uzyskać granice zdania dla pojedynczego zdania. Język zdania jest automatycznie wykrywany przez usługę.
 
-# <a name="curltabcurl"></a>[odsłon](#tab/curl)
-
-```
+```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'How are you? I am fine. What did you do today?'}]"
 ```
-
----
 

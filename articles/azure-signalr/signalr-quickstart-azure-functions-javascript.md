@@ -1,5 +1,5 @@
 ---
-title: Azure SignalR Service bez użycia serwera Przewodnik Szybki Start — JavaScript
+title: Usługa Azure Signal Service — szybki start — JavaScript
 description: Przewodnik Szybki start pokazujący, jak za pomocą usług Azure SignalR Service i Azure Functions utworzyć pokój czatu.
 author: sffamily
 ms.service: signalr
@@ -7,12 +7,12 @@ ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
-ms.openlocfilehash: b096a6c7bb5b1fedaa5d2963dddae03df9fe6954
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: c234324bf76f9d944037a411ed8bb3b7e4841cbe
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66494055"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882543"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-javascript"></a>Szybki start: tworzenie pokoju czatu za pomocą usług Azure Functions i SignalR Service przy użyciu języka JavaScript
 
@@ -25,6 +25,8 @@ Czynności przedstawione w tym przewodniku Szybki start można wykonywać w syst
 Upewnij się, że masz zainstalowany edytor kodu, taki jak [Visual Studio Code](https://code.visualstudio.com/).
 
 Zainstaluj [podstawowe narzędzia usługi Azure Functions (w wersji 2)](https://github.com/Azure/azure-functions-core-tools#installing), aby móc lokalnie uruchamiać aplikacje funkcji platformy Azure.
+
+Azure Functions wymaga środowiska [Node. js](https://nodejs.org/en/download/) w wersji 8 lub 10.
 
 Aby możliwe było instalowanie rozszerzeń, podstawowe narzędzia usługi Azure Functions wymagają zainstalowanego [zestawu .NET Core SDK](https://www.microsoft.com/net/download). Do tworzenia aplikacji funkcji platformy Azure dla w języku JavaScript nie jest jednak wymagana jakakolwiek wiedza dotycząca platformy .NET.
 
@@ -50,7 +52,7 @@ Zaloguj się do witryny Azure Portal pod adresem <https://portal.azure.com/> prz
 
     ![Tworzenie usługi SignalR Service](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
-1. W edytorze kodu, otwórz *rozmowy/src/javascript* folderu w repozytorium sklonowane.
+1. W edytorze kodu Otwórz folder *src/Chat/JavaScript* w sklonowanym repozytorium.
 
 1. Zmień nazwę pliku *local.settings.sample.json* na *local.settings.json*.
 
@@ -61,7 +63,7 @@ Zaloguj się do witryny Azure Portal pod adresem <https://portal.azure.com/> prz
     - **negotiate** — ta funkcja generuje i zwraca ważne informacje o połączeniu przy użyciu danych wejściowych powiązania *SignalRConnectionInfo*.
     - **messages** — ta funkcja otrzymuje wiadomość czatu w treści żądania i używa powiązania danych wyjściowych *SignalR* do rozgłoszenia wiadomości do wszystkich połączonych aplikacji klienckich.
 
-1. W terminalu, upewnij się, że jesteś w *rozmowy/src/javascript* folderu. Użyj podstawowych narzędzi usługi Azure Functions, aby zainstalować rozszerzenia wymagane do uruchomienia aplikacji.
+1. Upewnij się, że jesteś w folderze *src/Chat/JavaScript* . Użyj podstawowych narzędzi usługi Azure Functions, aby zainstalować rozszerzenia wymagane do uruchomienia aplikacji.
 
     ```bash
     func extensions install
@@ -79,9 +81,9 @@ Zaloguj się do witryny Azure Portal pod adresem <https://portal.azure.com/> prz
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki Start, skompilowane i uruchomione w czasie rzeczywistym aplikacji bez użycia serwera w programie VS Code. Teraz dowiedz się więcej o sposobie wdrażania usługi Azure Functions z programu VS Code.
+W tym przewodniku szybki start utworzono i uruchomiono aplikację bezserwerową w czasie rzeczywistym w VS Code. Teraz dowiedz się więcej o sposobie wdrażania usługi Azure Functions z programu VS Code.
 
 > [!div class="nextstepaction"]
-> [Wdrażanie usługi Azure Functions za pomocą programu VS Code](https://docs.microsoft.com/azure/azure-functions/tutorial-javascript-vscode-get-started)
+> [Wdrażanie usługi Azure Functions za pomocą programu VS Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started)

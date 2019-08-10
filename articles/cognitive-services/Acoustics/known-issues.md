@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: a70d9ea1090f1c518f804dd28f3461918af965cd
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 37084480423de90f50beced187eda202b39f8bf1
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854280"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933060"
 ---
 # <a name="project-acoustics-known-issues"></a>Znane problemy akustyczne projektu
 W przypadku korzystania z wersji zapoznawczej projektanta w celu wystawiania problemów z projektem mogą wystąpić następujące znane problemy.
@@ -24,10 +24,6 @@ W przypadku korzystania z wersji zapoznawczej projektanta w celu wystawiania pro
 ## <a name="acoustic-parameters-are-lost-when-you-rename-a-scene"></a>Parametry akustyczne są tracone po zmianie nazwy sceny
 
 Jeśli zmienisz nazwę sceny, wszystkie parametry akustyczne należące do tej sceny nie będą automatycznie przenoszone do nowej sceny. Jednak nadal istnieją w starym pliku zasobu. Znajdź plik **SceneName_AcousticParameters. Asset** w katalogu **edytora** obok pliku sceny. Zmień nazwę pliku, aby odzwierciedlał nazwę nowej sceny.
-
-## <a name="unity-crashes-when-closing-project"></a>Awaria aparatu Unity podczas zamykania projektu
-
-W najnowszej wersji aparatu Unity (2018.2 +) występuje znana usterka, w której środowisko Unity ulegnie awarii po zamknięciu projektu. Jest to śledzone przez [ten problem aparatu Unity](https://issuetracker.unity3d.com/issues/crash-on-assetdatabase-getassetimporterversions-when-closing-a-specific-unity-project).
 
 ## <a name="deploying-to-android-from-some-unity-versions"></a>Wdrażanie w systemie Android z niektórych wersji aparatu Unity
 

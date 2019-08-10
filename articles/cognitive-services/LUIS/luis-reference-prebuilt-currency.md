@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 369e8f94a4733a7c9e21fee98c72aa447802e943
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 867e8f830542aab712b2bfe32f05dd9469c0da49
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563487"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932533"
 ---
 # <a name="currency-prebuilt-entity-for-a-luis-app"></a>Wstępnie utworzona jednostka waluty dla aplikacji LUIS
 Wstępnie utworzona jednostka waluty wykrywa waluty w wielu nominałach i krajach/regionach, niezależnie od kultury aplikacji LUIS. Ponieważ przeprowadzono już uczenie tej jednostki, nie musisz Dodawanie wypowiedzi przykład zawierający Waluta intencji aplikacji. Jednostkę waluty jest obsługiwana w [wiele kultur](luis-reference-prebuilt-entities.md). 
@@ -128,6 +128,6 @@ Poniższy kod JSON jest z `verbose` parametrem ustawionym na: `true`
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o [datetimeV2](luis-reference-prebuilt-datetimev2.md), [wymiaru](luis-reference-prebuilt-dimension.md), i [e-mail](luis-reference-prebuilt-email.md) jednostek. 

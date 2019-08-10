@@ -5,12 +5,12 @@ ms.subservice: single-database
 ms.topic: include
 ms.date: 06/19/2019
 ms.author: mathoma
-ms.openlocfilehash: dd511375c6b007222185f25610aecbd9931a742b
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: ffa48d55703347883edf96a0a27ee52d19189976
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640058"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935036"
 ---
 W tym kroku utworzysz grupę zasobów i Azure SQL Database pojedynczą bazę danych.
 
@@ -19,7 +19,7 @@ W tym kroku utworzysz grupę zasobów i Azure SQL Database pojedynczą bazę dan
 >
 > Aby uzyskać więcej informacji, zobacz [Tworzenie reguły zapory na poziomie bazy danych](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) lub Określanie adresu IP używanego dla reguły zapory na poziomie serwera dla komputera, zobacz [Tworzenie zapory na poziomie serwera](../sql-database-server-level-firewall-rule.md).  
 
-# <a name="azure-portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu Azure Portal.
 
@@ -75,7 +75,7 @@ Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu Azure Portal.
 
 9. W formularzu **SQL Database** wybierz opcję **Utwórz**, aby wdrożyć i aprowizować grupę zasobów, serwer i bazę danych.
 
-# <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -141,7 +141,7 @@ Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu programu PowerSh
    $database
    ```
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
 Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu polecenia AZ CLI.
 

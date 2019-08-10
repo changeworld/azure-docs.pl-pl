@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 07/11/2019
 ms.author: heidist
-ms.openlocfilehash: 5ad1708475200475669c5de8f4fbd316f04ebd04
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: e3912e90762977bc801279fde481fc26516e51a6
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840790"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882640"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>Szybki start: Tworzenie indeksu Azure Search w programie Poster przy użyciu interfejsów API REST
 > [!div class="op_single_selector"]
@@ -80,7 +80,7 @@ Aby to zrobić w programie Poster:
 
 1. Zmień czasownik na wartość **Put**.
 
-2. Kopiuj w tym adresie URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels?api-version=2019-05-06`.
+2. Kopiuj w tym adresie URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart?api-version=2019-05-06`.
 
 3. Podaj definicję indeksu (kod przygotowany do kopiowania jest podany poniżej) w treści żądania.
 
@@ -298,6 +298,7 @@ Jeśli używasz bezpłatnej usługi, pamiętaj, że masz ograniczone do trzech i
 
 ## <a name="next-steps"></a>Następne kroki
 
-Klienci interfejsu REST są nieocenieni dla spontanicznej eksploracji, ale teraz, gdy wiesz, jak działają interfejsy API REST, możesz pójść dalej, używając kodu. Aby zapoznać się z następnym krokiem, zobacz następujący link:
+Teraz, gdy wiesz już, jak wykonywać podstawowe zadania, możesz przejść do przodu z dodatkowymi wywołaniami interfejsu API REST, aby uzyskać bardziej zaawansowane funkcje, takie jak indeksatory, lub [skonfigurować potok wyszukiwania poznawczego](cognitive-search-tutorial-blob.md). W następnym kroku zalecamy następujące łącze:
 
-+ [Szybki start: Tworzenie indeksu przy użyciu zestawu .NET SDK](search-get-started-dotnet.md)
+> [!div class="nextstepaction"]
+> [Samouczek REST: Indeksowanie i przeszukiwanie danych z częściową strukturą (obiekty blob JSON) w Azure Search](search-semi-structured-data.md)

@@ -1,21 +1,21 @@
 ---
 title: Uwierzytelnianie Azure Active Directory (Azure AD)
 titleSuffix: Azure Cognitive Services
-description: Dokumentacja zestawu SDK czytnika immersyjny
+description: W tym artykule pokazano, jak utworzyć nowy zasób czytnika immersyjny z niestandardową domeną poddomeny, a następnie skonfigurować usługę Azure AD w dzierżawie platformy Azure.
 services: cognitive-services
 author: rwaller
 manager: guillasi
 ms.service: cognitive-services
 ms.subservice: immersive-reader
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: de6a29e1c4c102aa7d4038185c1635544ba9dfe2
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 5a03c377a275fff489f1fb8371f9905411b67960
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688793"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881544"
 ---
 # <a name="use-azure-active-directory-azure-ad-authentication-with-the-immersive-reader-service"></a>Używanie uwierzytelniania Azure Active Directory (Azure AD) z usługą czytnika immersyjny
 
