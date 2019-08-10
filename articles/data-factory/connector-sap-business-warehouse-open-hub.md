@@ -211,14 +211,14 @@ Podczas kopiowania danych z Centrum Otwórz programu SAP BW, następujące mapow
 
 | Typ ABAP SAP | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
-| C (ciąg) | String |
-| Czy mogę (liczba całkowita) | Int32 |
-| F (zmiennoprzecinkowego) | Double |
-| D (Data) | String |
-| T (czas) | String |
-| P (BCD spakowane, waluty, Decimal, ilość) | Decimal |
+| C (String) | String |
+| I (integer) | Int32 |
+| F (Float) | Double |
+| D (Date) | String |
+| T (Time) | String |
+| P (BCD Packed, Currency, Decimal, Qty) | Decimal |
 | N (Numc) | String |
-| X (binarnych i Raw) | String |
+| X (Binary and Raw) | String |
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
