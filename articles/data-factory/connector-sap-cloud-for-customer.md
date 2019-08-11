@@ -156,7 +156,7 @@ Aby skopiować dane do chmury SAP dla klienta, ustaw typ ujścia w działaniu Co
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | Właściwość Type musi mieć ustawioną wartość: **SapCloudForCustomerSink**  | Tak |
+| type | Właściwość Type musi mieć ustawioną wartość: **SapCloudForCustomerSink**  | Tak |
 | writeBehavior | Zachowanie zapisu operacji. Może to być "INSERT", "Update". | Nie. Domyślne "INSERT". |
 | writeBatchSize | Rozmiar wsadu operacji zapisu. Rozmiar wsadu w celu uzyskania najlepszej wydajności może być różny dla różnych tabel lub serwerów. | Nie. Wartość domyślna to 10. |
 
