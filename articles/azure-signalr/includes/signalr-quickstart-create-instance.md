@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 09/14/2018
 ms.author: antchu
 ms.custom: include file
-ms.openlocfilehash: 4e8bdc63daa7450a88c2fcf4b7e878e18cea260d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: ac77f0b6a1d90fd78db64618c1e03ade198a67c0
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183599"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882130"
 ---
 ## <a name="create-an-azure-signalr-service-instance"></a>Tworzenie wystąpienia usługi Azure SignalR Service
 
@@ -34,9 +34,10 @@ Twoja aplikacja nawiąże połączenie z wystąpieniem usługi SignalR na platfo
     | **Location** | Zachodnie stany USA | Wybierz [region](https://azure.microsoft.com/regions/) blisko siebie. |
     | **Warstwa cenowa** | Wolne | Wypróbuj bezpłatnie usługę Azure SignalR Service. |
     | **Liczba jednostek** |  Nie dotyczy | Liczba jednostek określa liczbę połączeń, które może akceptować wystąpienie usługi SignalR Service. Można to skonfigurować tylko w warstwie Standardowa. |
+    | **Tryb usługi** |  Bezserwerowe | Do użytku z interfejsem API REST Azure Functions lub. |
 
     ![Tworzenie usługi SignalR Service](../media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-create.png)
 
 1. Wybierz pozycję **Utwórz**, aby rozpocząć wdrażanie wystąpienia usługi SignalR Service.
 
-1. Po wdrożeniu wystąpienie otworzyć go w portalu i Znajdź jego strona ustawień. Zmień ustawienie tryb usługi na *aplikacje niewymagające użycia serwera* tylko wtedy, gdy używasz usługi Azure SignalR Service za pomocą usługi Azure Functions powiązania lub interfejsu API REST. Pozostaw je w *klasycznego* lub *domyślne* inaczej.
+1. Po wdrożeniu wystąpienia otwórz je w portalu i Znajdź jego stronę ustawień. Zmień ustawienie trybu usługi na bezserwerowe tylko wtedy, gdy korzystasz z usługi Azure Signal Service za pośrednictwem Azure Functions powiązania lub interfejsu API REST. Pozostaw je w trybie klasycznym lub *domyślnym* , w przeciwnym razie.
