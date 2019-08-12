@@ -61,7 +61,7 @@ Następujące właściwości są obsługiwane przez oprogramowanie SAP Business 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa: **SapBw** | Yes |
-| serwer | Nazwa serwera, na którym znajduje się wystąpienie systemu SAP BW. | Yes |
+| server | Nazwa serwera, na którym znajduje się wystąpienie systemu SAP BW. | Yes |
 | systemNumber | Numer systemu systemu SAP BW.<br/>Dozwolone wartości: liczba dziesiętna dwucyfrowy reprezentowane jako ciąg. | Yes |
 | clientId | Identyfikator klienta klienta w SAP W systemie.<br/>Dozwolone wartości: liczba dziesiętna trzy cyfry, reprezentowane jako ciąg. | Yes |
 | userName | Nazwa użytkownika, który ma dostęp do serwera SAP. | Yes |
