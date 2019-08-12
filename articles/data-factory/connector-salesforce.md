@@ -235,7 +235,7 @@ Aby skopiować dane do usługi Salesforce, ustaw typ ujścia w działaniu Copy n
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | Właściwość Type ujścia działania Copy musi być ustawiona na wartość **SalesforceSink**. | Yes |
+| type | Właściwość Type ujścia działania Copy musi być ustawiona na wartość **SalesforceSink**. | Yes |
 | writeBehavior | Zachowanie zapisu dla operacji.<br/>Dozwolone wartości to **INSERT** i **upsert**. | Nie (wartość domyślna to Insert) |
 | externalIdFieldName | Nazwa pola identyfikatora zewnętrznego dla operacji upsert. Określone pole musi być zdefiniowane jako "pole identyfikatora zewnętrznego" w obiekcie usługi Salesforce. Nie może mieć wartości NULL w odpowiednich danych wejściowych. | Tak dla "upsert" |
 | writeBatchSize | Liczba wierszy danych zapisywana w usłudze Salesforce w każdej partii. | Nie (domyślnie 5 000) |
@@ -306,7 +306,7 @@ Po określeniu zapytania SOQL lub SQL należy zwrócić uwagę na różnice w fo
 * **Przykład SOQL**:`SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
 * **Przykład SQL**:`SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`
 
-### <a name="error-of-malformedquerytruncated"></a>Błąd MALFORMED_QUERY: obcięty
+### <a name="error-of-malformed_querytruncated"></a>Błąd MALFORMED_QUERY: obcięty
 
 Jeśli wystąpi błąd elementu "MALFORMED_QUERY: Obcięty ", zwykle jest to spowodowane tym, że masz kolumnę typu JunctionIdList w danych, a w usłudze Salesforce obowiązuje ograniczenie obsługi takich danych o dużej liczbie wierszy. Aby wyeliminować problem, spróbuj wykluczyć kolumnę JunctionIdList lub ograniczyć liczbę wierszy do skopiowania (można podzielić na wiele uruchomień działania kopiowania).
 

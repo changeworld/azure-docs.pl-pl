@@ -182,7 +182,7 @@ Aby Prometheus zbieranie metryk z samego, zastosuj uprawnienia w projekcie prome
 
 ## <a name="optional-deploy-example-application"></a>Opcjonalnie: Wdrażanie przykładowej aplikacji
 
-Wszystko działa, ale brak źródeł metryki. Przejdź do adresu URL Prometheus (https://prom-prometheus-project.apps. *losowy identyfikator*. *region*.azmosa.io/). Możesz go znaleźć za pomocą następującego polecenia:
+Wszystko działa, ale brak źródeł metryki. Przejdź do adresu URL Prometheus (https://prom-prometheus-project.apps.*losowy identyfikator*.*region*.azmosa.io/). Możesz go znaleźć za pomocą następującego polecenia:
 
 ```
 oc get route prom -n prometheus-project
