@@ -58,7 +58,7 @@ Następujące właściwości są obsługiwane dla SAP HANA połączonej usługi:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | Właściwość Type musi mieć ustawioną wartość: **SapHana** | Tak |
+| type | Właściwość Type musi mieć ustawioną wartość: **SapHana** | Tak |
 | connectionString | Określ informacje, które są konieczne do nawiązania połączenia z SAP HANA przy użyciu **uwierzytelniania podstawowego** lub **uwierzytelniania systemu Windows**. Zapoznaj się z poniższymi przykładami.<br>W parametrach połączenia wymagany jest serwer/port (port domyślny to 30015), a nazwa użytkownika i hasło są wymagane w przypadku uwierzytelniania podstawowego. Aby uzyskać dodatkowe ustawienia zaawansowane, zapoznaj się z tematem [SAP HANA właściwości połączenia ODBC](<https://help.sap.com/viewer/0eec0d68141541d1b07893a39944924e/2.0.02/en-US/7cab593774474f2f8db335710b2f5c50.html>)<br/>Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć konfigurację hasła z parametrów połączenia. Aby uzyskać więcej informacji, zobacz artykuł [przechowywanie poświadczeń w Azure Key Vault](store-credentials-in-key-vault.md) artykule. | Tak |
 | userName | Określ nazwę użytkownika w przypadku korzystania z uwierzytelniania systemu Windows. Przykład: `user@domain.com` | Nie |
 | password | Określ hasło dla konta użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
@@ -221,31 +221,31 @@ Podczas kopiowania danych z SAP HANA następujące mapowania są używane z SAP 
 | ------------------ | ------------------------------ |
 | ALPHANUM           | String                         |
 | BIGINT             | Int64                          |
-| BINARNY             | Byte[]                         |
-| DWUNTEXT            | String                         |
-| TWORZENIA               | Byte[]                         |
-| LOGICZNA               | Byte                           |
-| OBIEKTÓW CLOB               | String                         |
-| DATE               | Datetime                       |
+| BINARY             | Byte[]                         |
+| BINTEXT            | String                         |
+| BLOB               | Byte[]                         |
+| BOOL               | Byte                           |
+| CLOB               | String                         |
+| DATE               | DateTime                       |
 | DECIMAL            | Decimal                        |
 | DOUBLE             | Double                         |
 | FLOAT              | Double                         |
-| CAŁKOWITĄ            | Int32                          |
+| INTEGER            | Int32                          |
 | NCLOB              | String                         |
 | NVARCHAR           | String                         |
 | REAL               | Single                         |
-| SECONDDATE         | Datetime                       |
+| SECONDDATE         | DateTime                       |
 | SHORTTEXT          | String                         |
 | SMALLDECIMAL       | Decimal                        |
 | SMALLINT           | Int16                          |
 | STGEOMETRYTYPE     | Byte[]                         |
 | STPOINTTYPE        | Byte[]                         |
-| TEXT               | Ciąg                         |
+| TEXT               | String                         |
 | TIME               | TimeSpan                       |
 | TINYINT            | Byte                           |
-| VARCHAR            | Ciąg                         |
-| TIMESTAMP          | Datetime                       |
-| LICZBY          | Byte[]                         |
+| VARCHAR            | String                         |
+| TIMESTAMP          | DateTime                       |
+| VARBINARY          | Byte[]                         |
 
 ## <a name="next-steps"></a>Następne kroki
 Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
