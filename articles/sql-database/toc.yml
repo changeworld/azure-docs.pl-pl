@@ -2,9 +2,9 @@
   href: index.yml
 - name: Usługa SQL Database
   items:
-    - name: Co to jest SQL Database
+    - name: Co to jest SQL Database?
       href: sql-database-technical-overview.md
-    - name: Wybierz wersję języka SQL dla platformy Azure
+    - name: Którą opcję SQL należy wybrać?
       href: sql-database-paas-vs-sql-server-iaas.md
     - name: Informacje o wersji
       href: sql-database-release-notes.md
@@ -280,14 +280,18 @@
               href: sql-vulnerability-assessment.md
             - name: Zaawansowana ochrona przed zagrożeniami
               href: sql-database-threat-detection-overview.md
-        - name: Reguły zapory bazujące na adresach IP na poziomie serwera
+        - name: Bezpieczeństwo sieci
           items:
-            - name: Tworzenie i zarządzanie
+            - name: Omówienie mechanizmów kontroli dostępu do sieci
+              href: sql-database-networkaccess-overview.md
+            - name: Zapora oparta na protokole IP
               href: sql-database-firewall-configure.md
-            - name: Punkty końcowe sieci wirtualnej
-              href: sql-database-vnet-service-endpoint-rule-overview.md
-            - name: Punkty końcowe sieci wirtualnej — PowerShell
-              href: sql-database-vnet-service-endpoint-rule-powershell.md
+            - name: Reguły zapory sieci wirtualnej
+              items:
+                - name: Punkty końcowe sieci wirtualnej
+                  href: sql-database-vnet-service-endpoint-rule-overview.md
+                - name: Punkty końcowe sieci wirtualnej — PowerShell
+                  href: sql-database-vnet-service-endpoint-rule-powershell.md
         - name: Kontrola dostępu
           items:
             - name: Kontrola dostępu

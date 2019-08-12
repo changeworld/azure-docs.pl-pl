@@ -166,6 +166,8 @@
       items:
         - name: Wizualne tworzenie fabryk danych
           href: author-visually.md
+        - name: Kontrola źródła
+          href: source-control.md
         - name: Ciągła integracja i ciągłe dostarczanie
           href: continuous-integration-deployment.md
         - name: Debugowanie i programowanie iteracyjne

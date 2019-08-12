@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3fe9a28a99ea8becbfc40e1e64d1f5b109caace3
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 47f39e8dcd96ea3bdba564df348e9b89a6b036ba
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854367"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933161"
 ---
 # <a name="project-acoustics-unreal-and-wwise-integration"></a>Unrealość projektu i integracja z Wwise
 Ta instrukcja zapewnia szczegółowe kroki integracji pakietu wtyczki akustycznej projektu do istniejącego projektu gier Unreal i Wwise. 
 
 Wymagania dotyczące oprogramowania:
-* [Silnik Unreal](https://www.unrealengine.com/) 4,20 lub 4,21
+* [Aparat Unreal](https://www.unrealengine.com/) 4.20 +
 * [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2018,1.\*
 * [Wtyczka Wwise dla Unreal](https://www.audiokinetic.com/library/?source=UE4&id=index.html)
   * Jeśli używasz bezpośredniej integracji zestawu SDK Wwise zamiast korzystania z wtyczek Unreal Wwise, zapoznaj się z wtyczką "akustyczne projektu Unreal" i Dostosuj wywołania interfejsu API Wwise.
@@ -52,7 +52,7 @@ Istnieją następujące podstawowe kroki, które należy wykonać, aby zainstalo
 
 * `AcousticsWwisePlugin\ProjectAcoustics` Wybierz katalog, który został dołączony do pobranego pakietu. Zawiera pakiet wtyczki miksera Wwise.
 
-* Program Wwise zainstaluje wtyczkę. W programie Wwise na liście zainstalowanych wtyczek powinna być teraz wyświetlana wartość akustyczna projektu.
+* Program Wwise zainstaluje wtyczkę. W programie Wwise na liście zainstalowanych wtyczek powinna być teraz wyświetlana wartość akustyczna projektu.  
 ![Zrzut ekranu przedstawiający listę wtyczek programu Wwise po instalacji hałasu projektu](media/unreal-integration-post-mixer-plugin-install.png)
 
 ## <a name="2-redeploy-wwise-into-your-game"></a>2. (Re) Wdróż Wwise w grze
@@ -81,9 +81,13 @@ Ponownie Wdróż Wwise w grze, nawet jeśli już masz integrację Wwise. Spowodu
 
     ![Zrzut ekranu przedstawiający okno Eksplorator Windows z wyróżnionym skryptem do poprawki Wwise](media/patch-wwise-script.png)
 
-* Jeśli nie masz zainstalowanego zestawu SDK programu DirectX, musisz dodać komentarz do wiersza zawierającego DXSDK_DIR w`[UProject]\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs`
+* Jeśli nie masz zainstalowanego zestawu SDK programu DirectX, w zależności od używanej wersji programu Wwise może być konieczne komentowanie wiersza zawierającego `DXSDK_DIR` w: `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs`
 
     ![Zrzut ekranu edytora kodu pokazujący DXSDK z komentarzem](media/directx-sdk-comment.png)
+
+* W przypadku kompilowania z programem Visual Studio 2019, aby obejść błąd łączenia z Wwise, ręcznie Edytuj wartość `VSVersion` domyślną `vc150`w `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs` :
+
+    ![Zrzut ekranu edytora kodu pokazujący VSVersion zmieniony na vc150](media/vsversion-comment.png)
 
 ## <a name="5-build-game-and-check-python-is-enabled"></a>5. Kompilacja gier i sprawdzanie języka Python jest włączona
 
@@ -117,7 +121,7 @@ Przykładowy projekt Wwise jest dołączany do pobierania próbek. Zalecamy zapo
 
 * Następnie przejdź do karty wtyczka miksera i Dodaj wtyczkę Mieszarki do zestawu akustycznego projektu do magistrali
 
-    ![Screenshow magistrali Wwise, która pokazuje, jak dodać wtyczkę miksera projektu](media/add-mixer-plugin.png)
+    ![Zrzut ekranu przedstawiający magistralę Wwise](media/add-mixer-plugin.png)
 
 ### <a name="actor-mixer-hierarchy-setup"></a>Konfiguracja hierarchii dla miksera
 * Ze względu na wydajność, akustyczne projektu stosuje procesor DSP audio do wszystkich źródeł jednocześnie. Wymaga to, aby wtyczka działała jako wtyczka miksera. Wwise wymaga, aby wtyczki miksera były przechowywane na magistrali wyjściowej, mimo że magistrala wyjściowa zwykle przenosi suchy sygnał wyjściowy. Akustyczne projektowe wymaga, aby suchy sygnał był kierowany przez Busses AUX, podczas gdy `Project Acoustics Bus`na. Następujący proces obsługuje stopniowe Migrowanie do tego przepływu sygnałów.
@@ -159,7 +163,7 @@ Niestety, w tej chwili nie można obsługiwać innych wtyczek spatializer oparty
 
 * Teraz Przypisz zasób danych akustycznych rozszerzania do miejsca na dane akustyczne aktora obszaru. Twoja scena ma teraz akustyczne!
 
-    ![Zrzut ekranu przedstawiający przypisanie zasobów Unreal Edytor s howing](media/acoustics-asset-assign.png)
+    ![Zrzut ekranu edytora Unreal pokazujący akustyczne przypisanie zasobów](media/acoustics-asset-assign.png)
 
 * Teraz Dodaj pusty aktor i wykonaj następujące czynności:
 
@@ -167,7 +171,7 @@ Niestety, w tej chwili nie można obsługiwać innych wtyczek spatializer oparty
 
 1. Dodaj składnik audio akustyczny do aktora. Ten składnik rozszerza składnik audio Wwise z funkcjonalnością dla akustycznych projektu.
 2. Pole rozpoczęcie odtwarzania jest domyślnie zaznaczone, co spowoduje wyzwolenie skojarzonego zdarzenia Wwise na poziomie uruchamiania.
-3. Pole wyboru Pokaż parametry akustyczne służy do drukowania informacji o debugowaniu na ekranie.
+3. Pole wyboru Pokaż parametry akustyczne służy do drukowania informacji o debugowaniu na ekranie.  
     ![Zrzut ekranu przedstawiający panel akustyczny edytora Unreal w źródle dźwięku z włączonymi wartościami debugowania](media/debug-values.png)
 4. Przypisywanie zdarzenia Wwise na typowym przepływie pracy Wwise
 5. Upewnij się, że funkcja use audio przestrzenny jest wyłączona. W tej chwili, jeśli używasz akustycznych projektów dla określonego składnika audio, nie można jednocześnie używać Wwiseego aparatu audio dla hałasu.

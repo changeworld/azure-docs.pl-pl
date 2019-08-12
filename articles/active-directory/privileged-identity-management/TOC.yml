@@ -53,6 +53,16 @@
           href: pim-how-to-change-default-settings.md
         - name: Konfigurowanie alertów
           href: pim-how-to-configure-security-alerts.md
+        - name: Role niestandardowe (wersja zapoznawcza)
+          items:
+            - name: Aktywowanie roli niestandardowej
+              href: azure-ad-custom-roles-activate.md
+            - name: Przypisywanie roli niestandardowej
+              href: azure-ad-custom-roles-assign.md
+            - name: Usuwanie przypisania roli
+              href: azure-ad-custom-roles-update-remove.md
+            - name: Konfigurowanie ról niestandardowych
+              href: azure-ad-custom-roles-configure.md
         - name: Wyświetlanie historii inspekcji
           href: pim-how-to-use-audit-log.md
     - name: Zarządzanie rolami zasobów platformy Azure

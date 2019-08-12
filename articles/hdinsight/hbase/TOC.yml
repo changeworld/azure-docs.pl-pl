@@ -25,14 +25,6 @@
       href: ../hdinsight-component-versioning.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
     - name: HDInsight 4.0
       href: ../hdinsight-version-release.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
-    - name: Rozwiązywanie problemów
-      items:
-        - name: Interfejs REST Apache HBase nie odpowiada
-          href: ./hbase-troubleshoot-rest-not-spending.md
-        - name: Wysokie użycie procesora CPU na serwerze regionalnym
-          href: ./hbase-troubleshoot-pegged-cpu-region-server.md
-        - name: Limity czasu dla polecenia „hbase hbck”
-          href: ./hbase-troubleshoot-timeouts-hbase-hbck.md
 - name: Instrukcje
   items:
     - name: Korzystanie z magazynu klastra
@@ -167,8 +159,25 @@
         - name: Stosowanie poprawek systemu operacyjnego do klastra usługi HDInsight
           href: ../hdinsight-os-patching.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
     - name: Rozwiązywanie problemów
-      href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
       items:
+        - name: Rozwiązywanie problemów z zasobami
+          href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
+        - name: Brak danych w widokach usługi Apache Phoenix
+          href: ./hbase-troubleshoot-phoenix-no-data.md
+        - name: Wyjątek BindException — adres w użyciu
+          href: ./hbase-troubleshoot-bindexception-address-use.md
+        - name: Nie można uruchomić usługi Apache HBase
+          href: ./hbase-troubleshoot-start-fails.md
+        - name: Problemy z serwerami regionów
+          href: ./hbase-troubleshoot-unassigned-regions.md
+        - name: Problemy dotyczące łączności z usługą Apache Phoenix
+          href: ./hbase-troubleshoot-phoenix-connectivity.md
+        - name: Interfejs REST Apache HBase nie odpowiada
+          href: ./hbase-troubleshoot-rest-not-spending.md
+        - name: Wysokie użycie procesora CPU na serwerze regionalnym
+          href: ./hbase-troubleshoot-pegged-cpu-region-server.md
+        - name: Limity czasu dla polecenia „hbase hbck”
+          href: ./hbase-troubleshoot-timeouts-hbase-hbck.md
         - name: Rozwiązywanie problemów dotyczących powolnego działania lub awarii klastra usługi HDInsight
           href: ../hdinsight-troubleshoot-failed-cluster.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
         - name: Rozwiązywanie problemów z systemem plików HDFS usługi Apache Hadoop

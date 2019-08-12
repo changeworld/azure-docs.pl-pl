@@ -62,6 +62,8 @@
           items:
             - name: Aprowizowanie węzłów
               href: create-nodes.md
+            - name: Usuwanie węzłów
+              href: delete-nodes.md
         - name: Zarządzanie zasobami chmury prywatnej
           items:
             - name: Tworzenie chmury prywatnej
@@ -76,6 +78,8 @@
               href: azure-subscription-mapping.md
             - name: Podwyższanie poziomu uprawnień
               href: escalate-private-cloud-privileges.md
+            - name: Usuwanie chmury prywatnej
+              href: delete-private-cloud.md
         - name: Monitorowanie działań firmy CloudSimple
           href: 'https://docs.azure.cloudsimple.com/activity/'
         - name: Konfigurowanie sieci chmury prywatnej

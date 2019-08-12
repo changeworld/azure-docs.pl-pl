@@ -156,6 +156,9 @@
     - name: 'Rozpoznawanie intencji mowy przy użyciu usługi LUIS i środowiska C#'
       href: how-to-recognize-intents-from-speech-csharp.md
       displayName: 'recognize intent, intent recognition, language understanding service, luis'
+    - name: 'Dodawanie obsługi głosu do bota przy użyciu zestawu SDK rozpoznawania mowy i języka C#'
+      href: tutorial-voice-enable-your-bot-speech-sdk.md
+      displayName: 'voice assistant, voice enable a bot, bot speech SDK'
     - name: 'Tworzenie aplikacji Flask do tłumaczenia i syntezowania tekstu, REST'
       href: ../translator/tutorial-build-flask-app-translation-synthesis.md?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json
 - name: Pojęcia

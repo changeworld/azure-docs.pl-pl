@@ -107,29 +107,29 @@
       href: Tutorials/storage-lab-tutorial.md
 - name: Pojęcia
   items:
-    - name: Tagowanie obrazów
+    - name: Tagi zawartości
       href: concept-tagging-images.md
     - name: Wykrywanie obiektów
       href: concept-object-detection.md
     - name: Wykrywanie marek
       href: concept-brand-detection.md
-    - name: Kategoryzowanie obrazów
+    - name: Kategoryzacja obrazów
       href: concept-categorizing-images.md
-    - name: Opisywanie obrazów
+    - name: Opisy obrazów
       href: concept-describing-images.md
     - name: Wykrywanie twarzy
       href: concept-detecting-faces.md
-    - name: Wykrywanie typów obrazów
+    - name: Wykrywanie typu obrazów
       href: concept-detecting-image-types.md
-    - name: Wykrywanie zawartości specyficznej dla domeny
+    - name: Zawartość specyficzna dla domeny
       href: concept-detecting-domain-content.md
-    - name: Wykrywanie schematów kolorów
+    - name: Wykrywanie schematu kolorów
       href: concept-detecting-color-schemes.md
-    - name: Generowanie miniatur
+    - name: Inteligentnie przycinane miniatury
       href: concept-generating-thumbnails.md
-    - name: Rozpoznawanie tekstu drukowanego i pisma odręcznego
+    - name: Rozpoznawanie tekstu drukowanego i odręcznego
       href: concept-recognizing-text.md
-    - name: Wykrywanie zawartości dla dorosłych
+    - name: Wykrywanie zawartości nieprzyzwoitej i przeznaczonej dla dorosłych
       href: concept-detecting-adult-content.md
 - name: Przewodniki z instrukcjami
   items:

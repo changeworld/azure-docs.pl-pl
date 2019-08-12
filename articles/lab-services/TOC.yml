@@ -247,11 +247,11 @@
               href: devtest-lab-mandatory-artifacts.md
         - name: Integrowanie z ciągłą integracją/ciągłym dostarczaniem
           items:
-            - name: Integrowanie laboratoriów z potokiem ciągłej integracji/ciągłego wdrażania usługi Azure DevOps
-              href: devtest-lab-integrate-ci-cd-vsts.md
-            - name: Integrowanie środowisk z potokiem ciągłej integracji/ciągłego wdrażania usługi Azure DevOps
+            - name: Integrowanie laboratoriów z potokiem ciągłej integracji/ciągłego wdrażania usługi Azure Pipelines
+              href: devtest-lab-integrate-ci-cd.md
+            - name: Integrowanie środowisk z potokiem ciągłej integracji/ciągłego wdrażania usługi Azure Pipelines
               href: integrate-environments-devops-pipeline.md
-            - name: Używanie usługi DevTest Labs w potokach kompilacji i wydania usługi Azure DevOps
+            - name: Używanie usługi DevTest Labs w potokach kompilacji i wydań usługi Azure Pipelines
               href: use-devtest-labs-build-release-pipelines.md
         - name: Raportowanie użycia laboratoriów
           href: report-usage-across-multiple-labs-subscriptions.md

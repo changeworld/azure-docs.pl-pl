@@ -41,30 +41,6 @@
       href: ../hdinsight-hadoop-compare-storage-options.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
     - name: Omówienie tożsamości zarządzanych
       href: ../hdinsight-managed-identities.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
-    - name: Rozwiązywanie problemów
-      items:
-        - name: Niepowodzenia tworzenia klastra
-          href: ./hdinsight-troubleshoot-cluster-creation-fails.md
-        - name: Brak miejsca na dysku
-          href: ./hdinsight-troubleshoot-out-disk-space.md
-        - name: Blokowanie programowe — procesor CPU
-          href: ./hdinsight-troubleshoot-soft-lockup-cpu.md
-        - name: InvalidNetworkConfigurationErrorCode — tworzenie klastra kończy się niepowodzeniem
-          href: ./troubleshoot-invalidnetworkconfigurationerrorcode-cluster-creation-fails.md
-        - name: InvalidNetworkSecurityGroupSecurityRules — tworzenie klastra kończy się niepowodzeniem
-          href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
-        - name: Nie można zalogować się do klastra usługi HDInsight
-          href: ./hdinsight-troubleshoot-unable-log-in-cluster.md
-        - name: Nie można dodać węzłów do klastra usługi HDInsight
-          href: ./hdinsight-troubleshoot-unable-add-nodes.md
-        - name: Konwertowanie certyfikatu jednostki usługi
-          href: ./hdinsight-troubleshoot-converting-service-principal-certificate.md
-        - name: Lokalny system plików HDFS zablokowany w trybie awaryjnym
-          href: ./hdinsight-hdfs-troubleshoot-safe-mode.md
-        - name: Problemy z pulsem usługi Apache Ambari
-          href: ./apache-ambari-troubleshoot-heartbeat-issues.md
-        - name: W usłudze Apache Ambari są pokazywane niedziałające hosty i usługi
-          href: ./apache-ambari-troubleshoot-down-hosts-services.md
 - name: Instrukcje
   items:
     - name: Korzystanie z piaskownicy usługi Apache Hadoop
@@ -310,6 +286,30 @@
     - name: Rozwiązywanie problemów
       href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
       items:
+        - name: Niepowodzenia tworzenia klastra
+          href: ./hdinsight-troubleshoot-cluster-creation-fails.md
+        - name: Brak miejsca na dysku
+          href: ./hdinsight-troubleshoot-out-disk-space.md
+        - name: Blokowanie programowe — procesor CPU
+          href: ./hdinsight-troubleshoot-soft-lockup-cpu.md
+        - name: InvalidNetworkConfigurationErrorCode — tworzenie klastra kończy się niepowodzeniem
+          href: ./troubleshoot-invalidnetworkconfigurationerrorcode-cluster-creation-fails.md
+        - name: InvalidNetworkSecurityGroupSecurityRules — tworzenie klastra kończy się niepowodzeniem
+          href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
+        - name: Nie można zalogować się do klastra usługi HDInsight
+          href: ./hdinsight-troubleshoot-unable-log-in-cluster.md
+        - name: Nie można dodać węzłów do klastra usługi HDInsight
+          href: ./hdinsight-troubleshoot-unable-add-nodes.md
+        - name: Konwertowanie certyfikatu jednostki usługi
+          href: ./hdinsight-troubleshoot-converting-service-principal-certificate.md
+        - name: Lokalny system plików HDFS zablokowany w trybie awaryjnym
+          href: ./hdinsight-hdfs-troubleshoot-safe-mode.md
+        - name: Problemy z pulsem usługi Apache Ambari
+          href: ./apache-ambari-troubleshoot-heartbeat-issues.md
+        - name: Błąd 502 interfejsu użytkownika usługi Apache Ambari
+          href: ./apache-ambari-troubleshoot-fivezerotwo-error.md
+        - name: W usłudze Apache Ambari są pokazywane niedziałające hosty i usługi
+          href: ./apache-ambari-troubleshoot-down-hosts-services.md
         - name: Rozwiązywanie problemów dotyczących powolnego działania lub awarii klastra usługi HDInsight
           href: ../hdinsight-troubleshoot-failed-cluster.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: Rozwiązywanie problemów z systemem plików HDFS usługi Apache Hadoop

@@ -155,6 +155,8 @@
           items:
             - name: Przygotowywanie sieci na potrzeby odzyskiwania po awarii maszyny wirtualnej platformy Azure
               href: azure-to-azure-about-networking.md
+            - name: Dostosowywanie konfiguracji sieci dla docelowej maszyny wirtualnej platformy Azure
+              href: azure-to-azure-customize-networking.md
             - name: Konfigurowanie mapowania sieci i zachowywanie adresów IP po przełączeniu do trybu failover
               href: azure-to-azure-network-mapping.md
             - name: Przykłady zachowywania adresów IP po przełączeniu do trybu failover
