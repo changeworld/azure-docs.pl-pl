@@ -137,6 +137,8 @@
           items:
             - name: Poziomy dostępu
               href: storage-blob-storage-tiers.md
+            - name: Ponowne wypełnianie danych z usługi Archive Storage
+              href: storage-blob-rehydration.md
             - name: Zarządzanie cyklem życia magazynu usługi Azure Blob Storage
               href: storage-lifecycle-management-concepts.md
         - name: Wydajność i skalowanie

@@ -9,10 +9,14 @@
   items:
     - name: 'Przy użyciu języka C#'
       href: Quickstart.md
+    - name: Korzystanie z języka Swift (iOS)
+      href: ios-quickstart.md
 - name: Samouczki
   items:
     - name: Uruchamianie czytnika immersyjnego (Node.js)
       href: tutorial.md
+    - name: Obraz w czytniku immersyjnym (Swift)
+      href: ios-picture-immersive-reader-tutorial.md
 - name: Instrukcje
   items:
     - name: Uwierzytelnianie za pomocą usługi Azure Active Directory
@@ -21,6 +25,8 @@
   items:
     - name: Dokumentacja zestawu SDK
       href: reference.md
+    - name: Dokumentacja zestawu SDK systemu iOS
+      href: ios-reference.md
 - name: Zasoby
   items:
     - name: Harmonogram działania dla platformy Azure

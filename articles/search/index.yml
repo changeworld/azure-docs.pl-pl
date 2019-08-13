@@ -11,10 +11,10 @@ metadata:
   ms.service: search
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 05/02/2019
+  ms.date: 08/12/2019
   ms.author: heidist
 abstract:
-  description: 'Dowiedz się, jak przy użyciu usługi Azure Search utworzyć rozwiązanie wyszukiwania dla przedsiębiorstw obsługujące prywatną, heterogeniczną zawartość. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiają sposób konsolidowania zawartości, którą można przeszukiwać, w jeden, szybki indeks umożliwiający wykonywanie zapytań za pomocą składni o różnej złożoności (od podstawowej po zaawansowaną) w szerokim zakresie scenariuszy. <p/><a href="/azure/search/cognitive-search-concept-intro"><b>Wyszukiwanie poznawcze</b></a> jest teraz ogólnie dostępne, z obsługą wzbogacania o sztuczną inteligencję dla scenariuszy produkcyjnych.<p/>Funkcja <a href="/azure/search/knowledge-store-concept-intro"><b>Magazyn wiedzy (wersja zapoznawcza)</b></a> rozszerza wyszukiwanie poznawcze. Umożliwia zapisanie wzbogaceń o sztuczną inteligencję w magazynie, w którym możesz wyświetlać i przekształcać wzbogacenia oraz korzystać z nich w innych aplikacjach poza usługą Azure Search. <a href="/azure/search/knowledge-store-howto"><b>Zacznij z niej korzystać</b></a> już dziś.'
+  description: 'Dowiedz się, jak przy użyciu usługi Azure Search utworzyć rozwiązanie wyszukiwania dla przedsiębiorstw obsługujące prywatną, heterogeniczną zawartość. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiają sposób konsolidowania zawartości, którą można przeszukiwać, w jeden, szybki indeks umożliwiający wykonywanie zapytań za pomocą składni o różnej złożoności (od podstawowej po zaawansowaną) w szerokim zakresie scenariuszy. <p/><a href="/azure/search/cognitive-search-concept-intro"><b>Wyszukiwanie poznawcze</b></a> jest funkcją usługi Azure Search, która dołącza procesy AI do indeksowania, wykrywania tekstu i cech w plikach obrazów oraz znajdowania wzorców w dużych blokach tekstu bez struktury.<p/>Funkcja <a href="/azure/search/knowledge-store-concept-intro"><b>Magazyn wiedzy (wersja zapoznawcza)</b></a> rozszerza wyszukiwanie poznawcze. Umożliwia zapisanie wzbogaceń o sztuczną inteligencję w magazynie, w którym możesz wyświetlać i przekształcać wzbogacenia oraz korzystać z nich w aplikacjach klienckich lub procesach podrzędnych. <a href="/azure/search/knowledge-store-howto"><b>Zacznij z niej korzystać</b></a> już dziś.'
   aside:
     image:
       alt: null

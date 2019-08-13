@@ -162,6 +162,8 @@
       items:
         - name: Rozwiązywanie problemów z zasobami
           href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
+        - name: Wyjątek magazynu po zresetowaniu połączenia
+          href: ./hbase-troubleshoot-storage-exception-reset.md
         - name: Brak danych w widokach usługi Apache Phoenix
           href: ./hbase-troubleshoot-phoenix-no-data.md
         - name: Wyjątek BindException — adres w użyciu

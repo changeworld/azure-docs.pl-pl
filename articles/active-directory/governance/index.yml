@@ -1,56 +1,69 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentacja usługi Azure AD Identity Governance
+### YamlMime:Landing
+title: Dokumentacja usługi Azure Active Directory Identity Governance
+summary: Usługa Azure Active Directory (Azure AD) Identity Governance pozwala chronić i monitorować dostęp do krytycznych zasobów oraz dokonywać ich inspekcji, zapewniając jednocześnie produktywność pracowników.
 metadata:
-  document_id: null
-  title: Dokumentacja usługi Azure Active Directory Identity Governance | Microsoft Docs
-  description: 'Uzyskaj informacje na temat nadzoru nad cyklem życia tożsamości, nadzoru nad cyklem życia dostępu oraz bezpiecznego administrowania pracownikami i partnerami.'
-  services: active-directory
   author: msaburnley
+  description: Dowiedz się, jak chronić i monitorować dostęp do krytycznych zasobów oraz dokonywać ich inspekcji, zapewniając jednocześnie produktywność pracowników.
   manager: daveba
-  ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.topic: landing-page
-  ms.date: 04/18/2019
   ms.author: ajburnle
-abstract:
-  description: 'Usługa Azure Active Directory (Azure AD) Identity Governance umożliwia organizacjom nadzór nad cyklem życia tożsamości, nadzór nad cyklem życia dostępu oraz bezpieczne administrowanie pracownikami i partnerami.'
-  aside:
-    image:
-      alt: null
-      height: 112
-      src: media/index/video-thumb-identity-governance.png
-      width: 200
-    title: 'Nadzorowanie dostępu do zasobów (1: 17:24)'
-    href: 'https://www.youtube.com/embed/aY7A0Br8u5M'
-    width: 200
-sections:
-  - title: Nadzór nad tożsamościami
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/governance/identity-governance-overview">Co to jest nadzór nad tożsamościami?</a>
-  - title: Zarządzanie upoważnieniami (wersja zapoznawcza)
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/governance/entitlement-management-overview">Co to jest zarządzanie upoważnieniami w usłudze Azure AD?</a>
-          - html: <a href="/azure/active-directory/governance/entitlement-management-access-package-first">Samouczek — Tworzenie pierwszego pakietu dostępu</a>
-          - html: <a href="/azure/active-directory/governance/entitlement-management-access-package-edit">Edytowanie istniejącego pakietu dostępu i zarządzanie nim</a>
-  - title: Przeglądy dostępu
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/governance/access-reviews-overview">Co to są przeglądy dostępu w usłudze Azure AD?</a>
-          - html: <a href="/azure/active-directory/governance/create-access-review">Tworzenie przeglądu dostępu grup lub aplikacji</a>
-          - html: <a href="/azure/active-directory/governance/perform-access-review">Przeglądanie dostępu do grupy lub aplikacji</a>
-  - title: Warunki użytkowania
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/conditional-access/terms-of-use">Czy wymagać warunków użytkowania?</a>
+  ms.collection: na
+  ms.date: 08/08/2019
+  ms.service: active-directory
+  ms.subservice: na
+  ms.topic: landing-page
+  services: active-directory
+  ms.openlocfilehash: fa7577ea7ef212242a903b20d44db80c22c55842
+  ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 08/12/2019
+  ms.locfileid: "68949545"
+landingContent:
+- title: Informacje na temat nadzoru nad tożsamościami
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest usługa Azure AD Identity Governance?
+      url: identity-governance-overview.md
+  - linkListType: learn
+    links:
+    - text: Nadzorowanie dostępu do zasobów
+      url: https://www.youtube.com/watch?v=bFfowdpApu4&list=PLQXpv_NQsPIBg3op2xONM9KgwlayFDue6
+- title: Nadzorowanie cyklu życia dostępu do grup, aplikacji i witryn
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest zarządzanie upoważnieniami w usłudze Azure AD? (Wersja zapoznawcza)
+      url: entitlement-management-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Tworzenie pierwszego pakietu dostępu ułatwiającego użytkownikom żądanie dostępu
+      url: entitlement-management-access-package-first.md
+  - linkListType: how-to-guide
+    links:
+    - text: Edytowanie istniejącego pakietu dostępu i zarządzanie nim
+      url: entitlement-management-access-package-edit.md
+- title: Ponowne certyfikowanie dostępu do grup, aplikacji i ról uprzywilejowanych
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to są przeglądy dostępu w usłudze Azure AD?
+      url: access-reviews-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Tworzenie przeglądu dostępu w celu upewnienia się, że użytkownicy nie zachowają nadmiernego dostępu
+      url: create-access-review.md
+    - text: Przeglądanie dostępu do grupy lub aplikacji
+      url: perform-access-review.md
+- title: Przyznawanie użytkownikom uprawnień do ról uprzywilejowanych
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest usługa Azure AD Privileged Identity Management?
+      url: ../privileged-identity-management/pim-configure.md
+- title: Upewnianie się, że użytkownicy widzą zastrzeżenia
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Wymaganie, aby użytkownicy zgadzali się na warunki użytkowania w przypadku korzystania z aplikacji
+      url: ../conditional-access/terms-of-use.md

@@ -58,6 +58,8 @@
           href: create-cloudsimple-service.md
         - name: Uzyskiwanie dostępu do portalu CloudSimple
           href: access-cloudsimple-portal.md
+        - name: Lokalna konfiguracja zapory
+          href: on-premises-firewall-configuration.md
         - name: Zarządzanie węzłami
           items:
             - name: Aprowizowanie węzłów

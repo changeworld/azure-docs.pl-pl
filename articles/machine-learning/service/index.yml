@@ -11,7 +11,7 @@ metadata:
   manager: jhubbard
   author: j-martens
   ms.author: jmartens
-  ms.date: 05/14/2019
+  ms.date: 08/13/2019
   ms.custom: seodec18
   ms.tgt_pltfrm: na
   ms.devlang: na
@@ -46,6 +46,7 @@ sections:
           - html: <a href="tutorial-1st-experiment-sdk-setup">Konfigurowanie środowiska i trenowanie pierwszego eksperymentu uczenia maszynowego.</a>
           - html: <a href="tutorial-train-models-with-aml">Trenowanie i wdrażanie modeli klasyfikacji obrazów</a>.
           - html: <a href="tutorial-data-prep">Przygotowywanie danych i używanie zautomatyzowanego uczenia maszynowego do przewidywania opłat za taksówkę</b>.</a>
+          - html: <a href="how-to-run-batch-predictions">Uruchamianie przewidywań zbiorczych w dużych zestawach danych przy użyciu potoków uczenia maszynowego</b>.</a>
   - title: Przykłady
     items:
       - type: paragraph
