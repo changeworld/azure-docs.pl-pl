@@ -78,7 +78,7 @@ Aby skopiować dane z Shopify, należy ustawić właściwość typu zestawu dany
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na wartość: **ShopifyObject** | Yes |
-| tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
+| tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "query" w źródle działania) |
 
 **Przykład**
 
