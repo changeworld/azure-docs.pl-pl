@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Ustawianie i pobieranie wpisu tajnego z usługi Azure Key Vault za pomocą aplikacji internetowej platformy .NET — usługa Azure Key Vault | Dokumentacja firmy Microsoft'
+title: 'Szybki start: Ustawianie i pobieranie wpisu tajnego z Azure Key Vault przy użyciu aplikacji sieci Web platformy .NET Azure Key Vault | Microsoft Docs'
 description: W tym przewodniku Szybki start ustawisz i pobierzesz wpis tajny z usługi Azure Key Vault przy użyciu aplikacji internetowej .NET
 services: key-vault
 author: msmbaldwin
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 4f9fff41e4b9043c271d656583fb8b9a11ff3a7a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9ddb1db9b39ac942a3476f50aad39c98198b2a18
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052788"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68958612"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>Szybki start: Konfigurowanie i pobieranie wpisów tajnych z usługi Azure Key Vault przy użyciu aplikacji internetowej .NET
 
@@ -39,7 +39,7 @@ Zanim przejdziesz dalej, zapoznaj się z [podstawowymi pojęciami dotyczącymi u
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * W systemie Windows:
-  * [Visual Studio 2019](https://www.microsoft.com/net/download/windows) z następującymi pakietami roboczymi:
+  * [Program Visual Studio 2019](https://www.microsoft.com/net/download/windows) z następującymi obciążeniami:
     * ASP.NET i tworzenie aplikacji internetowych
     * Programowanie dla wielu platform .NET core
   * [Zestaw .NET Core 2.1 SDK lub nowszy](https://www.microsoft.com/net/download/windows)
@@ -119,14 +119,14 @@ git clone https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart.git
 Edytuj plik program.cs, aby uruchomić przykład z określoną nazwą magazynu kluczy:
 
 1. Przejdź do folderu key-vault-dotnet-core-quickstart.
-2. Otwórz plik klucz magazynu dotnet-core-quickstart.sln w Visual Studio 2019 r.
+2. Otwórz plik Key-Vault-dotnet-Core-quickstart. sln w programie Visual Studio 2019.
 3. Otwórz plik Program.cs i zaktualizuj symbol zastępczy *YourKeyVaultName* przy użyciu nazwy utworzonego wcześniej magazynu kluczy.
 
 To rozwiązanie używa bibliotek NuGet [AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) i [KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault).
 
 ## <a name="run-the-app"></a>Uruchamianie aplikacji
 
-Wybierz z menu głównego programu Visual Studio 2019 **debugowania** > **Uruchom bez debugowania**. Gdy pojawi się przeglądarka, przejdź do strony **Informacje**. Wyświetlona zostanie wartość wpisu **AppSecret**.
+Z menu głównego programu Visual Studio 2019 wybierz polecenie **Debuguj** > **Uruchom bez debugowania**. Gdy pojawi się przeglądarka, przejdź do strony **Informacje**. Wyświetlona zostanie wartość wpisu **AppSecret**.
 
 ## <a name="publish-the-web-application-to-azure"></a>Publikowanie aplikacji internetowej na platformie Azure
 
@@ -171,10 +171,10 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --s
 
 ```
 
-Teraz, po uruchomieniu aplikacji, powinna pojawić się pobrana wartość wpisu tajnego. W poprzednim poleceniu przygotowujesz tożsamość aplikacji usługi uprawnień do wykonywania **uzyskać** i **listy** operacji na magazynie kluczy.
+Teraz, po uruchomieniu aplikacji, powinna pojawić się pobrana wartość wpisu tajnego. W poprzednim poleceniu otrzymujesz tożsamość uprawnień usługi App Service, aby wykonywać operacje **pobierania** i **wyświetlania listy** w magazynie kluczy.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Gdy grupa zasobów, maszyna wirtualna i wszystkie powiązane zasoby nie będą już potrzebne, można je usunąć. Aby to zrobić, wybierz grupę zasobów dla usługi key vault, a następnie wybierz **Usuń**.
+Gdy grupa zasobów, maszyna wirtualna i wszystkie powiązane zasoby nie będą już potrzebne, można je usunąć. Aby to zrobić, wybierz grupę zasobów dla magazynu kluczy i wybierz pozycję **Usuń**.
 
 Usuń magazyn kluczy przy użyciu polecenia [az keyvault delete](https://docs.microsoft.com/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-delete):
 
@@ -184,7 +184,7 @@ az keyvault delete --name
                    [--subscription]
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o usłudze Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)
+> [Dowiedz się więcej o usłudze Key Vault](key-vault-whatis.md)

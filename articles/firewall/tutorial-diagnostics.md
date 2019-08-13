@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/24/2018
 ms.author: victorh
 ms.openlocfilehash: 393441e7ff620f3795e42c2cb376f99f8763f25b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "60193212"
 ---
 # <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>Samouczek: Monitorowanie dzienników i metryk usługi Azure Firewall
@@ -44,7 +44,7 @@ Przed rozpoczęciem tego samouczka należy przeczytać sekcję dotyczącą [dzie
 Od wykonania tej procedury w celu włączenia rejestrowania diagnostycznego może upłynąć kilka minut, zanim dane pojawią się w dziennikach. Jeśli na początku nie widzisz żadnych danych, sprawdź ponownie za kilka minut.
 
 1. W witrynie Azure Portal otwórz grupę zasobów zapory, a następnie kliknij zaporę.
-2. W obszarze **monitorowanie**, kliknij przycisk **ustawień diagnostycznych**.
+2. W obszarze **monitorowanie**kliknij pozycję **Ustawienia diagnostyczne**.
 
    W przypadku usługi Azure Firewall są dostępne dwa dzienniki specyficzne dla usługi:
 
@@ -63,7 +63,7 @@ Od wykonania tej procedury w celu włączenia rejestrowania diagnostycznego moż
    ![Uruchamianie procesu konfiguracji][1] Obszary robocze OMS są teraz nazywane obszarami roboczymi usługi Log Analytics.  
 12. W obszarze **Dziennik** kliknij pozycję **AzureFirewallApplicationRule** i **AzureFirewallNetworkRule**, aby zbierać dzienniki dla reguł aplikacji i sieci.
    ![Zapisywanie ustawień diagnostycznych][2]
-13. Kliknij pozycję **Zapisz**.
+13. Kliknij polecenie **Zapisz**.
 
 ## <a name="enable-logging-with-powershell"></a>Włączanie rejestrowania przy użyciu programu PowerShell
 
@@ -71,11 +71,11 @@ Rejestrowanie aktywności jest automatycznie włączone dla wszystkich zasobów 
 
 Aby włączyć rejestrowanie diagnostyczne, wykonaj następujące kroki:
 
-1. Zanotuj identyfikator zasobu konta magazynu, w ramach którego są przechowywane dane dzienników. Ta wartość ma postać: */subscriptions/\<identyfikatorSubskrypcji\>/resourceGroups/\<nazwa grupy zasobów\>/providers/Microsoft.Storage/storageAccounts/\<nazwa konta magazynu\>*.
+1. Zanotuj identyfikator zasobu konta magazynu, w ramach którego są przechowywane dane dzienników. Ta wartość ma postać: */subscriptions/\<identyfikatorSubskrypcji\>/resourceGroups/\<nazwa grupy zasobów\>/providers/Microsoft.Storage/storageAccounts/\<nazwa konta magazynu\>* .
 
    Użyć możesz dowolnego konta magazynu w ramach subskrypcji. Te informacje możesz znaleźć w witrynie Azure Portal. Znajdują się one na stronie **Właściwości** zasobu.
 
-2. Zanotuj identyfikator zasobu zapory, dla której rejestrowanie jest włączane. Ta wartość ma postać: */subscriptions/\<identyfikatorSubskrypcji\>/resourceGroups/\<nazwa grupy zasobów\>/providers/Microsoft.Network/azureFirewalls/\<nazwa zapory\>*.
+2. Zanotuj identyfikator zasobu zapory, dla której rejestrowanie jest włączane. Ta wartość ma postać: */subscriptions/\<identyfikatorSubskrypcji\>/resourceGroups/\<nazwa grupy zasobów\>/providers/Microsoft.Network/azureFirewalls/\<nazwa zapory\>* .
 
    Te informacje możesz znaleźć w portalu.
 
@@ -111,7 +111,7 @@ Ponadto możesz połączyć się z kontem magazynu i pobrać wpisy dziennika JSO
 ## <a name="view-metrics"></a>Wyświetlanie metryk
 Przejdź do usługi Azure Firewall, a następnie w obszarze **Monitorowanie** kliknij pozycję **Metryki**. Aby wyświetlić dostępne wartości, wybierz listę rozwijaną **METRYKA**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Teraz, gdy skonfigurowano zaporę na potrzeby zbierania dzienników, możesz eksplorować dzienniki usługi Azure Monitor, aby wyświetlać dane.
 

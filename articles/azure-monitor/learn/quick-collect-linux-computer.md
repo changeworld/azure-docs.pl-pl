@@ -15,16 +15,16 @@ ms.date: 06/14/2019
 ms.author: magoedte
 ms.custom: mvc
 ms.openlocfilehash: 4484269194aa3d637101a6a0b83eacb268d4c16e
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67147286"
 ---
 # <a name="configure-log-analytics-agent-for-linux-computers-in-a-hybrid-environment"></a>Konfigurowanie agenta usługi Log Analytics na komputerach z systemem Linux w środowisku hybrydowym
 Usługa [Azure Log Analytics](../platform/agent-windows.md) umożliwia zbieranie danych bezpośrednio z fizycznych i wirtualnych komputerów z systemem Linux w centrum danych lub innym środowisku w chmurze do pojedynczego repozytorium na potrzeby szczegółowej analizy i korelacji. W tym przewodniku Szybki start opisano, jak w kilku prostych krokach skonfigurować i rozpocząć zbieranie danych z komputera z systemem Linux.  Aby uzyskać informacje dotyczące maszyn wirtualnych platformy Azure z systemem Linux, zobacz następujący temat [Zbieranie danych dotyczących infrastruktury Azure Virtual Machines](quick-collect-azurevm.md).  
 
-Zanim przejdziesz dalej, musisz najpierw przejrzeć agenta usługi Log Analytics [Przegląd](../platform/log-analytics-agent.md) artykuł, aby zrozumieć, jakie konfiguracje są obsługiwane, [obsługiwane systemy operacyjne Linux](../platform/log-analytics-agent.md#supported-linux-operating-systems) i [ Konfiguracja zapory sieciowej](../platform/log-analytics-agent.md#network-firewall-requirements). 
+Przed kontynuowaniem należy zapoznać się z artykułem [Omówienie](../platform/log-analytics-agent.md) agenta log Analytics, aby dowiedzieć się, jakie konfiguracje są obsługiwane, [obsługiwane systemy operacyjne Linux](../platform/log-analytics-agent.md#supported-linux-operating-systems) i [Konfiguracja zapory sieciowej](../platform/log-analytics-agent.md#network-firewall-requirements). 
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -44,7 +44,7 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
    * W polu **Lokalizacja** wybierz lokalizację, w której wdrożono maszyny wirtualne.  Aby uzyskać dodatkowe informacje, sprawdź, w których [regionach jest dostępna usługa Log Analytics](https://azure.microsoft.com/regions/services/).  
    * W przypadku tworzenia obszaru roboczego w nowej subskrypcji utworzonej po 2 kwietnia 2018 r. zostanie automatycznie użyty plan cenowy *Na GB*, a opcja wyboru warstwy cenowej będzie niedostępna.  W przypadku tworzenia obszaru roboczego dla istniejącej subskrypcji utworzonej przed 2 kwietnia lub dla subskrypcji powiązanej z istniejącą rejestracją umowy EA wybierz preferowaną warstwę cenową.  Aby uzyskać dodatkowe informacje dotyczące konkretnej warstwy, zobacz [Log Analytics — cennik](https://azure.microsoft.com/pricing/details/log-analytics/).
 
-        ![Tworzenie bloku zasobów usługi Log Analytics](media/quick-collect-linux-computer/create-loganalytics-workspace-02.png)<br>  
+        ![Utwórz blok zasobów Log Analytics](media/quick-collect-linux-computer/create-loganalytics-workspace-02.png)<br>  
 
 3. Po podaniu wymaganych informacji w okienku **Obszar roboczy usługi Log Analytics** kliknij przycisk **OK**.  
 
@@ -142,7 +142,7 @@ Aby usunąć obszar roboczy, wybierz utworzony wcześniej obszar roboczy usługi
 
 ![Usuwanie zasobu usługi Log Analytics](media/quick-collect-linux-computer/log-analytics-portal-delete-resource.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Teraz, kiedy są zbierane dane operacyjne i dane wydajności z lokalnego komputera z systemem Linux, możesz w prosty sposób rozpocząć eksplorowanie i analizowanie danych oraz wykonywanie działań na *bezpłatnie* zebranych danych.  
 
 Aby dowiedzieć się, jak wyświetlać i analizować dane, przejdź do następnego samouczka.   

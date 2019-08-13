@@ -5,11 +5,11 @@ ms.service: log-analytics
 ms.topic: include
 ms.date: 08/14/2018
 ms.openlocfilehash: e8f93a1c16481f00d78a2d335020b2eb91d80ce8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67122551"
 ---
 >[!NOTE]
->W ramach ciągłego przejście od pakietu Microsoft Operations Management Suite do usługi Azure Monitor Operations Management Suite Agent dla Windows lub Linux zostanie określone jako funkcja agentów usługi Log Analytics dla Windows i usługi Log Analytics agent dla systemu Linux.
+>W ramach trwającego przejścia z Microsoft Operations Management Suite do Azure Monitor, Agent usługi Operations Management Suite dla systemu Windows lub Linux będzie określany jako agent Log Analytics dla systemu Windows i agenta Log Analytics for Linux.
