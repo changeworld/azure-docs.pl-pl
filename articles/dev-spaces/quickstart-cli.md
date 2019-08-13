@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie aplikacji na platformie Kubernetes przy użyciu usługi Azure Dev miejsca do magazynowania
+title: Wdróż aplikację w usłudze Kubernetes przy użyciu Azure Dev Spaces
 titleSuffix: Azure Dev Spaces
 author: zr-msft
 services: azure-dev-spaces
@@ -7,39 +7,39 @@ ms.service: azure-dev-spaces
 ms.author: zarhoads
 ms.date: 07/08/2019
 ms.topic: quickstart
-description: Wdrażanie mikrousług w usłudze AKS za pomocą usługi Azure Dev miejsca do magazynowania
-keywords: Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s
+description: Wdrażanie mikrousługi na AKS z Azure Dev Spaces
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s
 manager: gwallace
 ms.openlocfilehash: 39fb7658140a2eda948cd0dc0e58d71b0b9a053b
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67706269"
 ---
-# <a name="quickstart-develop-an-application-on-kubernetes-using-azure-dev-spaces"></a>Szybki start: Tworzenie aplikacji na platformie Kubernetes przy użyciu usługi Azure Dev miejsca do magazynowania
+# <a name="quickstart-develop-an-application-on-kubernetes-using-azure-dev-spaces"></a>Szybki start: Opracowywanie aplikacji na Kubernetes przy użyciu Azure Dev Spaces
 Ten przewodnik zawiera informacje na temat wykonywania następujących czynności:
 
 - Konfigurowanie usługi Azure Dev Spaces za pomocą zarządzanego klastra Kubernetes na platformie Azure.
-- Twórz i uruchamiaj kod w kontenerach przy użyciu wiersza polecenia.
+- Opracowywanie i uruchamianie kodu w kontenerach przy użyciu wiersza polecenia.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free).
 - [Zainstalowany interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Utwórz klaster Azure Kubernetes Service
+## <a name="create-an-azure-kubernetes-service-cluster"></a>Tworzenie klastra usługi Azure Kubernetes Service
 
-Musisz utworzyć klaster usługi AKS w [obsługiwany region][supported-regions]. Poniższe polecenia Utwórz grupę zasobów o nazwie *MyResourceGroup* i klaster AKS, o nazwie *MyAKS*.
+Należy utworzyć klaster AKS w [obsługiwanym regionie][supported-regions]. Poniższe polecenia tworzą grupę zasobów o nazwie Moja *zasobów* i klaster AKS o nazwie *MyAKS*.
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
 az aks create -g MyResourceGroup -n MyAKS --location eastus --node-vm-size Standard_DS2_v2 --node-count 1 --disable-rbac --generate-ssh-keys
 ```
 
-## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Włączanie usługi Azure Dev miejsca do magazynowania w klastrze usługi AKS
+## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Włączanie Azure Dev Spaces w klastrze AKS
 
-Użyj `use-dev-spaces` polecenie, aby włączyć Dev miejsca do magazynowania w klastrze usługi AKS i postępuj zgodnie z monitami. Poniższe polecenie powoduje włączenie tworzenia miejsca do magazynowania na *MyAKS* klastra w systemie *MyResourceGroup* grupy i tworzy *domyślne* dev miejsca.
+`use-dev-spaces` Użyj polecenia, aby włączyć miejsca deweloperskie w klastrze AKS i postępuj zgodnie z monitami. Poniższe polecenie włącza miejsca deweloperskie w klastrze *MyAKS* w grupie Grupa *zasobów* i tworzy *domyślny* obszar dev.
 
 ```cmd
 $ az aks use-dev-spaces -g MyResourceGroup -n MyAKS
@@ -61,9 +61,9 @@ Managed Kubernetes cluster 'MyAKS' in resource group 'MyResourceGroup' is ready 
 
 ## <a name="get-sample-application-code"></a>Pobierz przykładowy kod aplikacji
 
-W tym artykule używasz [miejsca do magazynowania Azure Dev Przykładowa aplikacja](https://github.com/Azure/dev-spaces) celu pokazanie sposobu używania usługi Azure Dev miejsca do magazynowania.
+W tym artykule użyto [Azure dev Spaces przykładowej aplikacji](https://github.com/Azure/dev-spaces) do zademonstrowania przy użyciu Azure dev Spaces.
 
-Klonowanie aplikacji z usługi GitHub i przejdź do *dev-miejsca do magazynowania/samples/nodejs/wprowadzenie — pracę/webfrontend* katalogu:
+Sklonuj aplikację z witryny GitHub i przejdź do katalogu *dev Spaces/Samples/NodeJS/Start-Started/* webfrontonu:
 
 ```cmd
 git clone https://github.com/Azure/dev-spaces
@@ -72,19 +72,19 @@ cd dev-spaces/samples/nodejs/getting-started/webfrontend
 
 ## <a name="prepare-the-application"></a>Przygotowywanie aplikacji
 
-Aby uruchomić aplikację na Azure Dev miejsca do magazynowania, należy wykres pliku Dockerfile i Helm. W przypadku niektórych języków takich jak [Java][java-quickstart], [.NET core][netcore-quickstart], i [Node.js][nodejs — Szybki Start], klient usługi Azure Dev miejsca do magazynowania narzędzi można wygenerować wszystkie zasoby, które są potrzebne. W przypadku wielu innych języków takich jak z rzeczywistym użyciem, PHP i Python klienta narzędzi można wygenerować wykresu Helm, tak długo, jak możesz podać prawidłowy plik Dockerfile.
+Aby można było uruchomić aplikację na Azure Dev Spaces, wymagany jest wykres pliku dockerfile i Helm. W przypadku niektórych języków, takich jak [Java][java-quickstart], [.NET Core][netcore-quickstart]i [Node. js][nodejs-quickstart], narzędzia klienta Azure dev Spaces mogą generować wszystkie potrzebne zasoby. W przypadku wielu innych języków, takich jak go, PHP i Python, narzędzia klienckie mogą generować wykres Helm, o ile można podać prawidłowy pliku dockerfile.
 
-Generuj zasoby wykresu platformy Docker i Helm do uruchamiania aplikacji przy użyciu rozwiązania Kubernetes `azds prep` polecenia:
+Wygeneruj elementy zawartości wykresu Docker i Helm na potrzeby uruchamiania aplikacji w programie Kubernetes `azds prep` przy użyciu polecenia:
 
 ```cmd
 azds prep --public
 ```
 
-Należy uruchomić `prep` polecenia *dev-miejsca do magazynowania/samples/nodejs/wprowadzenie — pracę/webfrontend* katalogu można prawidłowo wygenerować zasoby wykresu platformy Docker i narzędzia Helm.
+Należy uruchomić `prep` polecenie z katalogu *dev-Spaces/Samples/NodeJS/Data-Start/webfronton* , aby poprawnie wygenerować zasoby wykresu Docker i Helm.
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Kompilowanie i uruchamianie kodu na platformie Kubernetes
 
-Kompilowanie i uruchamianie kodu w usłudze AKS za pomocą `azds up` polecenia:
+Kompiluj i uruchamiaj kod w AKS przy użyciu `azds up` polecenia:
 
 ```cmd
 $ azds up
@@ -108,23 +108,23 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:54256
 ...
 ```
 
-Możesz zobaczyć usługi uruchomione przez otwarcie publicznego adresu URL, który jest wyświetlany w danych wyjściowych `azds up` polecenia. W tym przykładzie jest publiczny adres URL *http://webfrontend.1234567890abcdef1234.eus.azds.io/* .
+Możesz zobaczyć, że usługa jest uruchomiona, otwierając publiczny adres URL, który jest wyświetlany w danych wyjściowych `azds up` polecenia. W tym przykładzie publiczny adres URL to *http://webfrontend.1234567890abcdef1234.eus.azds.io/* .
 
-Jeśli użytkownik zaprzestanie `azds up` polecenie, używając *Ctrl + c*, usługa będzie w dalszym ciągu uruchamiać w usłudze AKS i publiczny adres URL, pozostaną dostępne.
+Jeśli zatrzymasz `azds up` polecenie za pomocą *klawiszy CTRL + c*, usługa będzie nadal działać w AKS, a publiczny adres URL pozostanie dostępny.
 
 ## <a name="update-code"></a>Aktualizowanie kodu
 
-Aby wdrożyć zaktualizowaną wersję usługi, zaktualizuj dowolny plik w projekcie i ponownie uruchom `azds up` polecenia. Przykład:
+Aby wdrożyć zaktualizowaną wersję usługi, możesz zaktualizować dowolny plik w projekcie i ponownie uruchomić `azds up` polecenie. Przykład:
 
-1. Jeśli `azds up` jest nadal uruchomione, naciśnij klawisz *Ctrl + c*.
-1. Aktualizacja [wiersz 13 w `server.js` ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) do:
+1. Jeśli `azds up` nadal działa, naciśnij *klawisze CTRL + c*.
+1. Aktualizuj [wiersz 13 w `server.js` programie](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) do:
     
     ```javascript
         res.send('Hello from webfrontend in Azure');
     ```
 
 1. Zapisz zmiany.
-1. Uruchom ponownie `azds up` polecenia:
+1. Uruchom ponownie `azds up` polecenie:
 
     ```cmd
     $ azds up
@@ -135,10 +135,10 @@ Aby wdrożyć zaktualizowaną wersję usługi, zaktualizuj dowolny plik w projek
     ...    
     ```
 
-1. Przejdź do usługi uruchomione i obserwować zmiany.
-1. Naciśnij klawisz *Ctrl + c* przestanie `azds up` polecenia.
+1. Przejdź do działającej usługi i obserwuj wprowadzone zmiany.
+1. Naciśnij *klawisze CTRL + c* , aby `azds up` zatrzymać polecenie.
 
-## <a name="clean-up-your-azure-resources"></a>Oczyszczanie zasobów platformy Azure
+## <a name="clean-up-your-azure-resources"></a>Czyszczenie zasobów platformy Azure
 
 ```cmd
 az group delete --name MyResourceGroup --yes --no-wait
@@ -146,10 +146,10 @@ az group delete --name MyResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak usługi Azure Dev miejsca do magazynowania ułatwia tworzenie bardziej złożonych aplikacji w wielu kontenerach i jak można uprościć programowanie zespołowe przy pracy z różnymi wersjami lub gałęzi kodu w różnych miejsc do magazynowania.
+Dowiedz się, jak Azure Dev Spaces ułatwiają tworzenie bardziej złożonych aplikacji w wielu kontenerach i jak można uprościć programowanie do współpracy, pracując z różnymi wersjami lub gałęziami kodu w różnych miejscach.
 
 > [!div class="nextstepaction"]
-> [Programowanie zespołowe w obszarach deweloperów platformy Azure][team-quickstart]
+> [Programowanie zespołowe w Azure Dev Spaces][team-quickstart]
 
 [java-quickstart]: quickstart-java.md
 [nodejs-quickstart]: quickstart-nodejs.md

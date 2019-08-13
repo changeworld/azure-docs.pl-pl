@@ -65,8 +65,6 @@
       href: ../samples-powershell.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
 - name: Pojęcia
   items:
-    - name: Jak działa usługa App Service
-      href: ../app-service-how-works-readme.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Plany usługi App Service
       href: ../overview-hosting-plans.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Środowisko usługi App Service

@@ -12,12 +12,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 625fcda4b612fdeda940f9219238ac79354dd056
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 4e65abdb500d61aa72b142f598a17e4cb8fb05f8
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444664"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68949978"
 ---
 # <a name="create-your-first-function-from-the-command-line"></a>Tworzenie pierwszej funkcji z poziomu wiersza polecenia
 
@@ -29,7 +29,7 @@ Poniższe kroki możesz wykonać przy użyciu komputera z systemem Mac, Windows 
 
 Przed uruchomieniem tego przykładu należy dysponować następującymi elementami:
 
-+ Zainstaluj [podstawowych narzędzi usługi Azure Functions](./functions-run-local.md#v2) wersji 2.6.666 lub nowszej.
++ Zainstaluj program [Azure Functions Core Tools](./functions-run-local.md#v2) w wersji 2.6.666 lub nowszej.
 
 + Zainstaluj [interfejs wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli). Ten artykuł wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, z jakiej wersji korzystasz. Możesz również użyć usługi [Azure Cloud Shell](https://shell.azure.com/bash).
 
@@ -37,35 +37,9 @@ Przed uruchomieniem tego przykładu należy dysponować następującymi elementa
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-the-local-function-app-project"></a>Tworzenie lokalnego projektu aplikacji funkcji
+[!INCLUDE [functions-create-function-app-cli](../../includes/functions-create-function-app-cli.md)]
 
-Uruchom następujące polecenie w wierszu polecenia, aby utworzyć projekt aplikacji funkcji w folderze `MyFunctionProj` bieżącego katalogu lokalnego. Ponadto w folderze `MyFunctionProj` jest tworzone repozytorium GitHub.
-
-```bash
-func init MyFunctionProj
-```
-
-Po wyświetleniu monitu wybierz środowisko uruchomieniowe procesu roboczego z następujących opcji języka:
-
-+ `dotnet`: tworzy projekt biblioteki klas platformy .NET (csproj).
-+ `node`: tworzy projekt w języku JavaScript.
-
-Gdy polecenie zostanie wykonane, zostaną zwrócone dane wyjściowe podobne do następujących:
-
-```output
-Writing .gitignore
-Writing host.json
-Writing local.settings.json
-Initialized empty Git repository in C:/functions/MyFunctionProj/.git/
-```
-
-Użyj następującego polecenia, aby przejść do nowego folderu projektu `MyFunctionProj`.
-
-```bash
-cd MyFunctionProj
-```
-
-## <a name="enable-extension-bundles"></a>Włącz rozszerzenie pakiety
+## <a name="enable-extension-bundles"></a>Włącz zbiory rozszerzeń
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 

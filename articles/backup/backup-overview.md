@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/24/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: a4fbfeb96d2316ce6af100cb16fcbf0d13f230f2
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 526c60916854d4918607a1fd1b887ac9d27cd1c7
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737122"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950025"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Co to jest usługa Azure Backup?
 
@@ -55,7 +55,7 @@ Użyj punktów w tabeli, aby łatwiej ustalić wymagania w zakresie strategii BC
 
 **Cel** | **Szczegóły** | **Porównanie**
 --- | --- | ---
-**Wykonywanie kopii zapasowej/przechowywanie danych** | Dane kopii zapasowej można przechowywać przez wiele dni, miesięcy lub nawet lat, jeśli jest to konieczne pod względem zgodności. | Rozwiązania do wykonywania kopii zapasowych, takie jak Azure Backup, umożliwiają precyzyjne wybieranie danych, dla których chcesz wykonać kopię zapasową, oraz precyzyjne dostosowywanie zasad wykonywania kopii zapasowych i przechowywania.<br/><br/> Site Recovery nie zezwala na takie samo dostrajanie.
+**Wykonywanie kopii zapasowej/przechowywanie danych** | Dane kopii zapasowej można przechowywać i przechowywać przez dni, miesiące lub nawet lata, jeśli jest to konieczne z perspektywy zgodności. | Rozwiązania do wykonywania kopii zapasowych, takie jak Azure Backup, umożliwiają precyzyjne wybieranie danych, dla których chcesz wykonać kopię zapasową, oraz precyzyjne dostosowywanie zasad wykonywania kopii zapasowych i przechowywania.<br/><br/> Site Recovery nie zezwala na takie samo dostrajanie.
 **Cel punktu odzyskiwania** | Dopuszczalna ilość utraconych danych, jeśli wymagane jest odzyskiwanie. | Kopie zapasowe mają bardziej zmienny cel punktu odzyskiwania.<br/><br/> Kopie zapasowe maszyn wirtualnych mają zwykle cel punktu odzyskiwania na poziomie jednego dnia, natomiast kopie zapasowe baz danych mają cel punktu odzyskiwania o wartości 15 minut.<br/><br/> Usługa Site Recovery ma ustawiony niski cel punktu odzyskiwania, ponieważ replikacja jest przeprowadzana ciągle lub często, aby zachować małą różnicę między źródłem i kopią repliki.
 **Cel czasu odzyskiwania** |Ilość czasu potrzebnego do ukończenia odzyskiwania lub przywracania. | Ilość danych, które musi przetworzyć rozwiązanie kopii zapasowych, jest zwykle znacznie wyższa (ze względu na większą wartość RPO), a to prowadzi do większych wartości RTO. Na przykład przywrócenie danych z taśmy może potrwać kilka dni, zależnie od czasu potrzebnego do przetransportowania taśmy z oddalonej lokalizacji.
 
@@ -66,7 +66,7 @@ Usługa Azure Backup umożliwia wykonywanie kopii zapasowych maszyn lokalnych i 
 **Maszyna** | **Scenariusz wykonywania kopii zapasowej**
 --- | ---
 **Lokalna kopia zapasowa** |  (1) Uruchom agenta usługi Microsoft Azure Recovery Services (MARS) w usłudze Azure Backup na lokalnych maszynach z systemem Windows, aby tworzyć kopię zapasową poszczególnych plików i stanu systemu. <br/><br/>2) wykonaj kopię zapasową maszyn lokalnych na serwerze kopii zapasowych (program System Center Data Protection Manager (DPM) lub Microsoft Azure Backup Server (serwera usługi MAB)), a następnie skonfiguruj serwer zapasowy do tworzenia kopii zapasowych w magazynie Azure Backup Recovery Services na platformie Azure.
-**Maszyny wirtualne platformy Azure** | (1) Włącz tworzenie kopii zapasowych dla poszczególnych maszyn wirtualnych platformy Azure. Przy włączaniu tworzenia kopii zapasowych usługa Azure Backup instaluje rozszerzenie agenta maszyny wirtualnej platformy Azure, który działa na maszynie wirtualnej. Agent tworzy kopię zapasową całej maszyny wirtualnej.<br/><br/> (2) Uruchom agenta MARS na maszynie wirtualnej platformy Azure. Jest to przydatne, jeśli chcesz tworzyć kopie zapasowe poszczególnych plików i folderów na maszynie wirtualnej.<br/><br/> (3) Utwórz kopię zapasową maszyny wirtualnej platformy Azure na serwerze programu DPM lub usługi MABS na platformie Azure. Następnie utwórz kopię zapasową serwera programu DPM lub usługi MABS w magazynie przy użyciu usługi Azure Backup.
+**Maszyny wirtualne platformy Azure** | (1) Włącz tworzenie kopii zapasowych dla poszczególnych maszyn wirtualnych platformy Azure. Przy włączaniu tworzenia kopii zapasowych usługa Azure Backup instaluje rozszerzenie agenta maszyny wirtualnej platformy Azure, który działa na maszynie wirtualnej. Agent tworzy kopię zapasową całej maszyny wirtualnej.<br/><br/> (2) Uruchom agenta MARS na maszynie wirtualnej platformy Azure. Jest to przydatne, jeśli chcesz tworzyć kopie zapasowe poszczególnych plików i folderów na maszynie wirtualnej.<br/><br/> 
 
 
 ## <a name="why-use-a-backup-server"></a>Dlaczego warto używać serwera kopii zapasowych?
@@ -116,7 +116,7 @@ W usłudze Azure Backup obowiązuje limit wynoszący 9999 punktów odzyskiwania,
 - Chronione wystąpienie to komputer, serwer (fizyczny lub wirtualny) albo obciążenie, które skonfigurowano do tworzenia kopii zapasowych na platformie Azure. Wystąpienie jest chronione po zapisaniu kopii zapasowej danych.
 - Kopia zapasowa danych stanowi ochronę. Jeśli dane źródłowe zostaną utracone lub uszkodzone, za pomocą kopii zapasowej możesz je przywrócić.
 
-W poniższej tabeli przedstawiono maksymalną częstotliwość wykonywania kopii zapasowych dla każdego składnika. Konfiguracja zasad tworzenia kopii zapasowych określa, jak szybko zużywać punkty odzyskiwania. Jeśli na przykład tworzysz punkt odzyskiwania codziennie, to możesz zachować punkty odzyskiwania przez 27 lat, zanim wyczerpie się ich liczba. Jeśli natomiast używasz jednego punktu odzyskiwania na miesiąc, to punkty odzyskiwania wyczerpią się po upływie 833 lat i do tego czasu będzie je można przechowywać. W usłudze Backup punktom odzyskiwania nie jest przypisywany limit czasu wygaśnięcia.
+W poniższej tabeli przedstawiono maksymalną częstotliwość wykonywania kopii zapasowych dla każdego składnika. Konfiguracja zasad kopii zapasowych określa, jak szybko są zużywane punkty odzyskiwania. Jeśli na przykład tworzysz punkt odzyskiwania codziennie, to możesz zachować punkty odzyskiwania przez 27 lat, zanim wyczerpie się ich liczba. Jeśli natomiast używasz jednego punktu odzyskiwania na miesiąc, to punkty odzyskiwania wyczerpią się po upływie 833 lat i do tego czasu będzie je można przechowywać. W usłudze Backup punktom odzyskiwania nie jest przypisywany limit czasu wygaśnięcia.
 
 |  | Agent usługi Azure Backup | System Center DPM | Azure Backup Server | Usługa Backup dla maszyn wirtualnych IaaS platformy Azure |
 | --- | --- | --- | --- | --- |
@@ -135,7 +135,7 @@ W poniższej tabeli przedstawiono maksymalną częstotliwość wykonywania kopii
 Szyfrowanie w spoczynku<br/> (Szyfrowanie danych, w których są utrwalane/przechowywane) | Hasło określone przez klienta służy do szyfrowania danych | Usługa Azure [szyfrowanie usługi Storage (SSE)](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) służy do szyfrowania danych przechowywanych w magazynie.<br/><br/> Kopia zapasowa automatycznie szyfruje dane przed ich zapisaniem. Usługa Azure Storage odszyfrowuje dane przed ich pobraniem. Użycie kluczy zarządzanych przez klienta dla funkcji SSE nie jest obecnie obsługiwane.<br/><br/> Można utworzyć kopię zapasową maszyn wirtualnych korzystających z [usługi Azure Disk Encryption (ADE)](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview) do szyfrowania dysków systemu operacyjnego i danych. Azure Backup obsługuje maszyny wirtualne zaszyfrowane tylko za pomocą klucz szyfrowania bloków, a zarówno klucz szyfrowania bloków, jak i [KEK](https://blogs.msdn.microsoft.com/cclayton/2017/01/03/creating-a-key-encrypting-key-kek/). Zapoznaj [](backup-azure-vms-encryption.md#encryption-support)się z ograniczeniami. | Azure Backup obsługuje tworzenie kopii zapasowych SQL Server baz danych lub serwera z włączonym [TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) . Usługa Backup obsługuje TDE z kluczami zarządzanymi przez platformę Azure lub z kluczami zarządzanymi przez klienta (BYOK).<br/><br/> W ramach procesu tworzenia kopii zapasowej nie jest wykonywane żadne szyfrowanie SQL.
 Szyfrowanie podczas przesyłania<br/> (Szyfrowanie danych przenoszonych z jednej lokalizacji do innej) | Dane są szyfrowane przy użyciu AES256 i wysyłane do magazynu na platformie Azure za pośrednictwem protokołu HTTPS | W ramach platformy Azure dane między usługą Azure Storage i magazynem są chronione za pośrednictwem protokołu HTTPS. Te dane pozostają w sieci szkieletowej platformy Azure.<br/><br/> W przypadku odzyskiwania plików iSCSI zabezpiecza dane przesyłane między magazynem a maszyną wirtualną platformy Azure. Zabezpieczanie tunelowania chroni kanał iSCSI. | W ramach platformy Azure dane między usługą Azure Storage i magazynem są chronione za pośrednictwem protokołu HTTPS.<br/><br/> Odzyskiwanie plików nie jest istotne dla języka SQL.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Przejrzyj](backup-architecture.md) architekturę i składniki w różnych scenariuszach wykonywania kopii zapasowych.
 - [Sprawdź](backup-support-matrix.md) wymagania dotyczące pomocy technicznej i ograniczenia dotyczące kopii zapasowych oraz [Utwórz kopię zapasową maszyny wirtualnej platformy Azure](backup-support-matrix-iaas.md).

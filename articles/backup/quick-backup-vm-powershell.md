@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 04/16/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: e7a343e257a926f010b52f9833d7acb321c8aeb6
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 67e539d3c0d906685f5d05e37a6d9a838e4a014d
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639463"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951825"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Tworzenie kopii zapasowej maszyny wirtualnej za pomocą programu PowerShell
 
@@ -49,7 +49,7 @@ Ten przewodnik Szybki Start wymaga Azure PowerShell AZ module w wersji 1.0.0 lub
 Podczas tworzenia magazynu:
 
 - W polu Grupa zasobów i lokalizacja określ grupę zasobów i lokalizację maszyny wirtualnej, dla której chcesz utworzyć kopię zapasową.
-- Jeśli użyto tego [przykładowego skryptu](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json) do utworzenia maszyny wirtualnej, Grupa **zasobów jest**grupą zasobów, maszyna wirtualna to ***myVM**, a zasoby znajdują się w regionie **WestEurope** .
+- Jeśli użyto tego [przykładowego skryptu](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json) do utworzenia maszyny wirtualnej, Grupa zasobów jest grupą zasobów, maszyna wirtualna to ***myVM**, a zasoby znajdują się w regionie **WestEurope** .
 - Azure Backup automatycznie obsługuje magazyn do przechowywania kopii zapasowych danych. Domyślnie magazyn używa [magazynu geograficznie nadmiarowego (GRS)](../storage/common/storage-redundancy-grs.md). Nadmiarowość geograficzna gwarantuje, że kopia zapasowa danych jest replikowana do pomocniczego regionu platformy Azure, a setki kilometrów od regionu podstawowego.
 
 Teraz Utwórz magazyn:
@@ -103,7 +103,6 @@ Włącz kopię zapasową w następujący sposób:
         -Name "myVM" `
         -Policy $policy
     ```
-
 
 ## <a name="start-a-backup-job"></a>Uruchamianie zadania tworzenia kopii zapasowej
 

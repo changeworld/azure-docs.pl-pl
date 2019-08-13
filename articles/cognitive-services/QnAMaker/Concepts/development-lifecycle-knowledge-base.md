@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 6ffc8931f23835f096c99480b286422fc6e20119
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 97a4673be2a611149806855e792c5bf1f7a0942a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447618"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955175"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>Cykl życia wiedzy, w usługi QnA Maker
 Usługa QnA Maker uczy się najlepiej w iteracyjny cykl zmiany modelu, przykłady wypowiedź, publikowanie oraz zbieranie danych z punktu końcowego zapytań. 
@@ -28,14 +28,14 @@ Usługa QnA Maker punktu końcowego z bazy wiedzy knowledge base (KB) zapewnia n
 
 ## <a name="testing-and-updating-the-knowledge-base"></a>Testowanie i aktualizowanie bazy wiedzy
 
-Baza wiedzy jest gotowe do testowania, gdy jest on wypełniany zawartości, przez jej tradycyjne zredagowanie lub za pomocą automatycznego wyodrębniania. Interaktywne testowania może odbywać się w portalu narzędzia QnA Maker za pośrednictwem **testu** panelu, wprowadzając typowych zapytań użytkownika i weryfikowanie, czy zwrócone odpowiedzi z prawidłową odpowiedź i współczynnik ufności wystarczające. 
+Baza wiedzy jest gotowe do testowania, gdy jest on wypełniany zawartości, przez jej tradycyjne zredagowanie lub za pomocą automatycznego wyodrębniania. Testy interaktywne można wykonać w portalu QnA Maker za pomocą panelu **test** , wprowadzając typowe zapytania użytkownika i sprawdzając, czy odpowiedzi zwrócone z prawidłową odpowiedzią i odpowiednim wynikiem pewności. 
 
-* **Aby rozwiązać problem niskiej ufności wyniki**: Dodaj alternatywne pytania. 
-* **Jeśli zapytanie zwraca niepoprawnie [Domyślna odpowiedź](confidence-score.md#change-default-answer)** : Dodaj nowe odpowiedzi na prawidłowe zapytania. 
+* **Aby naprawić oceny o niskim poziomie pewności**: Dodaj alternatywne pytania. 
+* **Gdy zapytanie niepoprawnie zwróci [domyślną odpowiedź](confidence-score.md#change-default-answer)** : Dodaj nowe odpowiedzi do poprawnego pytania. 
 
 Tej pętli aktualizacji testu będzie kontynuowane, dopóki nie jesteś zadowolony z wyników. Dowiedz się, jak [test bazy wiedzy](../How-To/test-knowledge-base.md).
 
-Dla dużych artykułów bazy wiedzy, należy korzystać z automatycznych testów z [generateAnswer API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) i `isTest` treści właściwości, które zapytania `test` wiedzy zamiast opublikowanych bazy wiedzy knowledge base. 
+W przypadku dużych artykułów bazy wiedzy Użyj testów automatycznych z [interfejsem API generateAnswer](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) i `isTest` właściwością Body, która `test` wysyła zapytanie do bazy wiedzy zamiast opublikowanej bazy wiedzy. 
 
 ```json
 {
@@ -51,7 +51,7 @@ Gdy skończysz testowanie bazy wiedzy knowledge base, możesz ją opublikować. 
 
 Dzięki temu wszelkie zmiany zostaną wprowadzone do wersji testu w bazie wiedzy knowledge base nie wpływają na opublikowanej wersji, które mogą okazać się na żywo w aplikacji produkcyjnej.
 
-Każda z tych baz wiedzy można zastosować do testowania oddzielnie. Korzystając z interfejsów API, możesz wybrać docelową wersją testową bazy wiedzy przy użyciu `isTest` właściwość w wywołaniu generateAnswer treści.
+Każda z tych baz wiedzy można zastosować do testowania oddzielnie. Korzystając z interfejsów API, można wskazać wersję testową bazy wiedzy z `isTest` właściwością Body w wywołaniu generateAnswer.
 
 Dowiedz się, jak [Opublikuj bazę wiedzy](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base).
 

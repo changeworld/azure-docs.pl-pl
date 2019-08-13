@@ -11,16 +11,16 @@ ms.service: azure-functions
 ms.custom: mvc, fasttrack-edit
 ms.devlang: javascript
 manager: jeconnoc
-ms.openlocfilehash: 857646bb1b9b317f1e51218d258616e775056b43
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 84e05b7afa2746587f2ea5008d493730ccbfad7e
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442283"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950034"
 ---
 # <a name="create-your-first-function-hosted-on-linux-using-core-tools-and-the-azure-cli-preview"></a>Tworzenie pierwszej funkcji hostowanej w systemie Linux za pomocą narzędzi Core Tools i interfejsu wiersza polecenia platformy Azure (wersja zapoznawcza)
 
-Usługa Azure Functions umożliwia wykonywanie kodu w środowisku [bezserwerowym](https://azure.com/serverless) systemu Linux bez konieczności uprzedniego tworzenia maszyny wirtualnej lub publikowania aplikacji internetowej. Hosting systemu Linux wymaga [funkcje w wersji 2.0 środowisko uruchomieniowe](functions-versions.md). Pomocy technicznej, aby uruchomić aplikację funkcji w systemie Linux w bez użycia serwera [planu zużycie](functions-scale.md#consumption-plan) jest obecnie dostępna w wersji zapoznawczej. Aby dowiedzieć się więcej, zobacz [w tym artykule uwagi dotyczące wersji zapoznawczej](https://aka.ms/funclinux).
+Usługa Azure Functions umożliwia wykonywanie kodu w środowisku [bezserwerowym](https://azure.com/serverless) systemu Linux bez konieczności uprzedniego tworzenia maszyny wirtualnej lub publikowania aplikacji internetowej. Hosting w systemie Linux wymaga [środowiska uruchomieniowego 2,0](functions-versions.md). Obsługa uruchamiania aplikacji funkcji w systemie Linux w [planie zużycia](functions-scale.md#consumption-plan) bezserwerowego jest obecnie w wersji zapoznawczej. Aby dowiedzieć się więcej, zobacz artykuł dotyczący [zagadnień dotyczących wersji](https://aka.ms/funclinux)zapoznawczej.
 
 W tym artykule Szybki start przedstawiono sposób użycia interfejsu wiersza polecenia platformy Azure w celu utworzenia pierwszej aplikacji funkcji działającej w systemie Linux. Kod funkcji jest tworzony lokalnie, a następnie wdrażany na platformie Azure za pomocą narzędzi [Azure Functions Core Tools](functions-run-local.md).
 
@@ -30,7 +30,7 @@ Poniższe kroki można wykonać na komputerze Mac, w systemie Windows lub w syst
 
 Przed uruchomieniem tego przykładu należy dysponować następującymi elementami:
 
-- Zainstaluj [podstawowych narzędzi usługi Azure Functions](./functions-run-local.md#v2) wersji 2.6.666 lub nowszej.
+- Zainstaluj [Azure Functions Core Tools](./functions-run-local.md#v2) w wersji 2.6.666 lub nowszej.
 
 + Zainstaluj [interfejs wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli). Ten artykuł wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, z jakiej wersji korzystasz. Możesz również użyć usługi [Azure Cloud Shell](https://shell.azure.com/bash).
 
@@ -38,36 +38,9 @@ Przed uruchomieniem tego przykładu należy dysponować następującymi elementa
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-the-local-function-app-project"></a>Tworzenie lokalnego projektu aplikacji funkcji
+[!INCLUDE [functions-create-function-app-cli](../../includes/functions-create-function-app-cli.md)]
 
-Uruchom następujące polecenie w wierszu polecenia, aby utworzyć projekt aplikacji funkcji w folderze `MyFunctionProj` bieżącego katalogu lokalnego. Ponadto w folderze `MyFunctionProj` jest tworzone repozytorium GitHub.
-
-```bash
-func init MyFunctionProj
-```
-
-Po wyświetleniu monitu użyj klawiszy strzałek, aby wybrać środowisko uruchomieniowe procesu roboczego z następujących opcji języka:
-
-+ `dotnet`: tworzy projekt biblioteki klas platformy .NET (csproj).
-+ `node`: tworzy projekt języka JavaScript lub TypeScript. Po wyświetleniu monitu wybierz `JavaScript`.
-+ `python`: tworzy projekt w języku Python. Aby uzyskać informacje na temat języka Python, zobacz [przewodnik Szybki start dla języka Python](functions-create-first-function-python.md).
-
-Gdy polecenie zostanie wykonane, zostaną zwrócone dane wyjściowe podobne do następujących:
-
-```output
-Writing .gitignore
-Writing host.json
-Writing local.settings.json
-Initialized empty Git repository in C:/functions/MyFunctionProj/.git/
-```
-
-Użyj następującego polecenia, aby przejść do nowego folderu projektu `MyFunctionProj`.
-
-```bash
-cd MyFunctionProj
-```
-
-## <a name="enable-extension-bundles"></a>Włącz rozszerzenie pakiety
+## <a name="enable-extension-bundles"></a>Włącz zbiory rozszerzeń
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
@@ -83,7 +56,7 @@ cd MyFunctionProj
 
 Do obsługi wykonywania funkcji w systemie Linux potrzebna jest aplikacja funkcji. Aplikacja funkcji zapewnia bezserwerowe środowisko do wykonywania kodu funkcji. Umożliwia ona grupowanie funkcji w ramach jednostki logicznej, co ułatwia wdrażanie i udostępnianie zasobów oraz zarządzanie nimi. Utwórz aplikację funkcji działającą w systemie Linux przy użyciu polecenia [az functionapp create](/cli/azure/functionapp#az-functionapp-create).
 
-W poniższym poleceniu zamiast symbolu zastępczego `<app_name>` użyj unikatowej nazwy aplikacji funkcji, a zamiast symbolu zastępczego `<storage_name>` użyj nazwy konta magazynu. `<app_name>` jest również domyślną domeną DNS aplikacji funkcji. Ta nazwa musi być unikatowa dla wszystkich aplikacji na platformie Azure. Należy również ustawić `<language>` środowisko uruchomieniowe dla aplikacji funkcji z `dotnet` (C#), `node` (języka JavaScript/TypeScript) lub `python`.
+W poniższym poleceniu zamiast symbolu zastępczego `<app_name>` użyj unikatowej nazwy aplikacji funkcji, a zamiast symbolu zastępczego `<storage_name>` użyj nazwy konta magazynu. `<app_name>` jest również domyślną domeną DNS aplikacji funkcji. Ta nazwa musi być unikatowa dla wszystkich aplikacji na platformie Azure. Należy `<language>` również ustawić środowisko uruchomieniowe dla aplikacji funkcji, z `python` `dotnet` (C#), `node` (JavaScript/TypeScript) lub.
 
 ```azurecli-interactive
 az functionapp create --resource-group myResourceGroup --consumption-plan-location westus --os-type Linux \

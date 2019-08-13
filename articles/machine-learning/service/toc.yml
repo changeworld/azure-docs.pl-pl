@@ -258,7 +258,7 @@
     - name: Tworzenie przepływów danych wielokrotnego użytku
       displayName: pipelines
       items:
-        - name: 'Potoki uczenia maszynowego: partia, obliczenia, ponowne używanie, udostępnianie'
+        - name: Potoki uczenia maszynowego
           href: how-to-create-your-first-pipeline.md
         - name: Potoki platformy Azure dla ciągłej integracji/ciągłego wdrażania
           displayName: 'continuous, integration, delivery'

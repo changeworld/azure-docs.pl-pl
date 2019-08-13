@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 07/31/2019
-ms.openlocfilehash: 7be5b0dbe4bbfba30ea469eec662877c1ef56c7c
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 0a497ce506e1aa3b0f9afc47bf1ab8382c9c0405
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689607"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951441"
 ---
 1. Zaloguj się do [Azure Portal](https://portal.azure.com/) przy użyciu poświadczeń dla używanej subskrypcji platformy Azure. 
 
@@ -30,7 +30,7 @@ ms.locfileid: "68689607"
 
     ![Tworzenie obszaru roboczego](./media/aml-create-in-portal/workspace-create-main-tab.png)
 
-   Pole|Opis
+   Pole|Opis 
    ---|---
    Nazwa obszaru roboczego |Wprowadź unikatową nazwę identyfikującą obszar roboczy. W tym przykładzie używamy **dokumentów-WS**. Nazwy muszą być unikatowe w ramach grupy zasobów. Użyj nazwy, która jest łatwa do odzyskania i odróżniania od obszarów roboczych utworzonych przez inne osoby.  
    Subscription |Wybierz subskrypcję platformy Azure, której chcesz użyć.
@@ -44,3 +44,11 @@ ms.locfileid: "68689607"
    Po zakończeniu procesu zostanie wyświetlony komunikat o powodzeniu wdrożenia. Znajduje się również w sekcji powiadomienia. Aby wyświetlić nowy obszar roboczy, wybierz pozycję **Przejdź do zasobu**.
 
    ![Stan tworzenia obszaru roboczego](./media/aml-create-in-portal/notifications.png)
+
+1. Jeśli kod odwołuje się do tego obszaru roboczego ze środowiska lokalnego, wybierz pozycję **Pobierz plik config. JSON** z sekcji **Przegląd** w obszarze roboczym.  
+
+   ![Pobierz plik config.json](./media/aml-create-in-portal/configure.png)
+
+    Umieść ten plik JSON w strukturze katalogów zawierającej skrypty języka Python lub notesy Jupyter. Może znajdować się w tym samym katalogu, podkatalogu o nazwie *. Azure*lub w katalogu nadrzędnym.
+
+   Jeśli będziesz korzystać z [maszyny wirtualnej notesu](../articles/machine-learning/service/tutorial-1st-experiment-sdk-setup.md#azure) , nie musisz pobierać tego pliku, zostanie ona dodana do poprawnego katalogu na maszynie wirtualnej.

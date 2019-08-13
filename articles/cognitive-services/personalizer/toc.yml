@@ -8,9 +8,12 @@
       displayName: 'loop, context, feature, action, rank, reward, developer, use case'
 - name: Przewodniki Szybki start
   items:
-    - name: Tworzenie i używanie sprzężenia zwrotnego
+    - name: 'Przy użyciu języka C#'
       href: csharp-quickstart-commandline-feedback-loop.md
       displayName: 'code, sample, quickstart, c#'
+    - name: Korzystanie z języka Python
+      href: python-quickstart-commandline-feedback-loop.md
+      displayName: 'code, sample, quickstart, python'
 - name: Pojęcia
   items:
     - name: Jak działa usługa Personalizacja

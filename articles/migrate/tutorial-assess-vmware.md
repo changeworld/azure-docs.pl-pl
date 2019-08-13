@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: hamusa
-ms.openlocfilehash: 7b27637ca63ec69d7f4c33f05e7c037d67676b2d
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 04162f074dba05ac6492c16acb446912296cd673
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828301"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952099"
 ---
 # <a name="assess-vmware-vms-with-azure-migrate-server-assessment"></a>Ocenianie maszyn wirtualnych VMware przy użyciu Azure Migrate: Server Assessment
 
@@ -180,8 +180,39 @@ Spowoduje to uruchomienie odnajdywania. Metadane wykrytych maszyn wirtualnych b�
 
 ### <a name="scoping-discovery"></a>Odnajdowanie zakresu
 
-Odnajdywanie może być ograniczone przez ograniczenie dostępu do konta vCenter używanego do odnajdywania. Można ustawić zakres do vCenter Server centrów danych, klastrów, folderze klastrów, hostów, folderu hostów lub poszczególnych maszyn wirtualnych. 
+Odnajdywanie może być ograniczone przez ograniczenie dostępu do konta vCenter używanego do odnajdywania. Można ustawić zakres do vCenter Server centrów danych, klastrów, folderze klastrów, hostów, folderu hostów lub poszczególnych maszyn wirtualnych.
 
+Aby ustawić zakres, należy wykonać następujące czynności:
+1.  Utwórz konto użytkownika vCenter.
+2.  Zdefiniuj nową rolę z wymaganymi uprawnieniami. (<em>wymagane w przypadku migracji serwera bez agentów</em>)
+3.  Przypisywanie uprawnień do konta użytkownika w obiektach vCenter.
+
+**Tworzenie konta użytkownika vCenter**
+1.  Zaloguj się do klienta sieci Web vSphere jako administrator vCenter Server.
+2.  Kliknij kolejno pozycje **Administracja** > **Użytkownicy logowania jednokrotnego i grupy** > **Użytkownicy** .
+3.  Kliknij ikonę **nowego użytkownika** .
+4.  Wprowadź wymagane informacje, aby utworzyć nowego użytkownika, a następnie kliknij przycisk **OK**.
+
+**Zdefiniuj nową rolę z wymaganymi uprawnieniami** (<em>wymagane w przypadku migracji serwera bez agentów</em>)
+1.  Zaloguj się do klienta sieci Web vSphere jako administrator vCenter Server.
+2.  Przejdź do**menadżera roli** **Administracja** > .
+3.  Wybierz vCenter Server z menu rozwijanego.
+4.  Kliknij pozycję **Utwórz akcję roli** .
+5.  Wpisz nazwę nowej roli. (na przykład <em>Azure_Migrate</em>).
+6.  Przypisz te [uprawnienia](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) do nowo zdefiniowanej roli.
+7.  Kliknij przycisk **OK**.
+
+**Przypisywanie uprawnień do obiektów vCenter**
+
+Istnieją 2 podejścia do przypisywania uprawnień do obiektów spisu w programie vCenter do konta użytkownika vCenter z przypisaną rolą.
+- W celu oceny serwera należy zastosować rolę **tylko do odczytu** dla konta użytkownika vCenter dla wszystkich obiektów nadrzędnych, w których są hostowane maszyny wirtualne, które mają zostać odnalezione. Wszystkie obiekty nadrzędne — host, folder hostów, klaster, folder klastrów w hierarchii do centrum danych. Te uprawnienia są propagowane do obiektów podrzędnych w hierarchii. 
+
+    Podobnie w przypadku migracji serwera rola zdefiniowana przez użytkownika (może mieć nazwę <em>Azure _Migrate</em>) z tymi przypisanymi [uprawnieniami](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) musi być stosowana do konta użytkownika vCenter dla wszystkich obiektów nadrzędnych, w których są hostowane maszyny wirtualne do migracji.
+
+![Przypisywanie uprawnień](./media/tutorial-assess-vmware/assign-perms.png)
+
+- Alternatywnym podejściem jest przypisanie konta użytkownika i roli na poziomie centrum danych i propagowanie ich do obiektów podrzędnych. Następnie nadaj kontu rolę **Brak dostępu** dla każdego obiektu (takiego jak maszyny wirtualne), które nie mają być odnajdywane/migrowane. Ta konfiguracja jest nieposkomplikowana. Udostępnia on przypadkowe kontrole dostępu, ponieważ każdy nowy obiekt podrzędny ma również automatycznie udzielony dostęp Dziedziczony z elementu nadrzędnego. W związku z tym zalecamy korzystanie z pierwszej metody.
+ 
 > [!NOTE]
 > Obecnie Ocena serwera nie umożliwia odnajdywania maszyn wirtualnych, jeśli konto vCenter ma dostęp udzielony na poziomie folderu vCenter VM. Jeśli chcesz przeznaczyć zakres odnajdywania według folderów maszyn wirtualnych, możesz to zrobić, upewniając się, że konto vCenter ma dostęp tylko do odczytu na poziomie maszyny wirtualnej.  Poniżej znajdują się instrukcje, jak to zrobić:
 >
@@ -212,7 +243,7 @@ Istnieją dwa typy ocen, które można utworzyć przy użyciu Azure Migrate: Ser
 
 Uruchom ocenę w następujący sposób:
 
-1. Zapoznaj [](best-practices-assessment.md) się z najlepszymi rozwiązaniami dotyczącymi tworzenia ocen.
+1. Zapoznaj się z [najlepszymi rozwiązaniami](best-practices-assessment.md) dotyczącymi tworzenia ocen.
 2. Na karcie **serwery** w **Azure Migrate: Kafelek Ocena** serwera, kliknij przycisk **Oceń**.
 
     ![Oceń](./media/tutorial-assess-vmware/assess.png)

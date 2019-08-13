@@ -7,12 +7,12 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: c2e78f6925ae8ff72e7f603c886376b32e40cd94
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 03b65c71201ba125cb3924a52e8760a088374aa6
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737255"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954735"
 ---
 # <a name="back-up-and-restore-azure-file-shares"></a>Tworzenie kopii zapasowej i przywracanie udziałów plików platformy Azure
 W tym artykule opisano sposób tworzenia kopii zapasowej i przywracania [udziałów plików platformy Azure](../storage/files/storage-files-introduction.md) przy użyciu witryny Azure Portal.
@@ -188,7 +188,7 @@ Aby wznowić ochronę udziału plików, przejdź do elementu kopii zapasowej, a 
 
 ### <a name="delete-backup-data"></a>Usuwanie danych kopii zapasowej
 
-Możliwe jest usunięcie kopii zapasowej lub udziału plików podczas zadania zatrzymywania tworzenia kopii zapasowych lub w dowolnym momencie po zatrzymaniu ochrony. Wstrzymanie się z usunięciem punktów odzyskiwania przez określoną liczbę dni lub tygodni może być nawet korzystne. W odróżnieniu od przywracania punktów odzyskiwania podczas usuwania danych kopii zapasowej nie można wybrać konkretnych punktów odzyskiwania do usunięcia. Jeśli zdecydujesz się usunąć dane kopii zapasowych, wszystkie skojarzone z tym elementem punkty odzyskiwania zostaną usunięte.
+Kopię zapasową udziału plików można usunąć podczas zadania zatrzymania tworzenia kopii zapasowej lub w dowolnym momencie po zatrzymaniu ochrony. Wstrzymanie się z usunięciem punktów odzyskiwania przez określoną liczbę dni lub tygodni może być nawet korzystne. W odróżnieniu od przywracania punktów odzyskiwania podczas usuwania danych kopii zapasowej nie można wybrać konkretnych punktów odzyskiwania do usunięcia. Jeśli zdecydujesz się usunąć dane kopii zapasowych, wszystkie skojarzone z tym elementem punkty odzyskiwania zostaną usunięte.
 
 Na potrzeby poniższej procedury przyjęto założenie, że zadanie tworzenia kopii zapasowej dla maszyny wirtualnej zostało zatrzymane. Po zatrzymaniu zadania tworzenia kopii zapasowej opcje Wznów tworzenie kopii zapasowej i Usuń dane kopii zapasowej są dostępne na pulpicie nawigacyjnym elementu kopii zapasowej. Kliknij pozycję Usuń dane kopii zapasowej, a następnie wpisz nazwę udziału plików, aby potwierdzić usunięcie. Opcjonalnie podaj przyczynę usunięcia lub dodaj komentarz.
 
