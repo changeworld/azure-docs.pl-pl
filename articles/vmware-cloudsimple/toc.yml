@@ -83,7 +83,7 @@
             - name: Usuwanie chmury prywatnej
               href: delete-private-cloud.md
         - name: Monitorowanie działań firmy CloudSimple
-          href: 'https://docs.azure.cloudsimple.com/activity/'
+          href: monitor-activity.md
         - name: Konfigurowanie sieci chmury prywatnej
           items:
             - name: Tworzenie sieci VLAN i podsieci oraz zarządzanie nimi

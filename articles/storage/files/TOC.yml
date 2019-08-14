@@ -62,7 +62,7 @@
         - name: Uwierzytelnianie klucza wspólnego
           href: /rest/api/storageservices/Authorization-for-the-Azure-Storage-Services
         - name: Sygnatury dostępu współdzielonego (SAS)
-          href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+          href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Monitorowanie i rozwiązywanie problemów
       items:
         - name: 'Monitorowanie, diagnozowanie i rozwiązywanie problemów'

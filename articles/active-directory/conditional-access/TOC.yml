@@ -19,10 +19,6 @@
 - name: Pojęcia
   expanded: false
   items:
-    - name: Wdrażanie dostępu warunkowego
-      href: howto-conditional-access-adoption-kit.md
-    - name: Zasady ochrony punktu odniesienia
-      href: concept-baseline-protection.md
     - name: Warunki
       href: conditions.md
     - name: Warunki lokalizacji
@@ -33,6 +29,8 @@
       href: service-dependencies.md
     - name: Narzędzie analizy warunkowej
       href: what-if-tool.md
+    - name: Zasady ochrony punktu odniesienia
+      href: concept-baseline-protection.md
 - name: Przewodniki z instrukcjami
   expanded: true
   items:
@@ -40,16 +38,6 @@
       href: plan-conditional-access.md
     - name: Najlepsze praktyki
       href: best-practices.md
-    - name: Zasady punktu odniesienia
-      items:
-        - name: Wymaganie uwierzytelniania MFA dla administratorów
-          href: howto-baseline-protect-administrators.md
-        - name: Ochrona użytkowników końcowych
-          href: howto-baseline-protect-end-users.md
-        - name: Blokowanie starszego uwierzytelniania
-          href: howto-baseline-protect-legacy-auth.md
-        - name: Wymaganie uwierzytelniania MFA do zarządzania usługami
-          href: howto-baseline-protect-azure.md
     - name: Blokowanie starszego uwierzytelniania
       href: block-legacy-authentication.md
     - name: Dostęp warunkowy na potrzeby rejestracji uwierzytelniania wieloskładnikowego
@@ -68,6 +56,18 @@
       href: howto-conditional-access-session-lifetime.md
     - name: Migrowanie zasad klasycznych
       href: policy-migration.md
+    - name: Zasady punktu odniesienia
+      items:
+        - name: Wymaganie uwierzytelniania MFA dla administratorów
+          href: howto-baseline-protect-administrators.md
+        - name: Ochrona użytkowników końcowych
+          href: howto-baseline-protect-end-users.md
+        - name: Blokowanie starszego uwierzytelniania
+          href: howto-baseline-protect-legacy-auth.md
+        - name: Wymaganie uwierzytelniania MFA do zarządzania usługami
+          href: howto-baseline-protect-azure.md
+    - name: Wdrażanie dostępu warunkowego
+      href: howto-conditional-access-adoption-kit.md
     - name: Rozwiązywanie problemów
       items:
         - name: Rozwiązywanie problemów przy użyciu narzędzia What If

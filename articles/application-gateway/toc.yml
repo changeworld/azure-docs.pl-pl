@@ -35,6 +35,8 @@
       href: powershell-samples.md
     - name: Interfejs wiersza polecenia platformy Azure
       href: cli-samples.md
+    - name: Szablony usługi Resource Manager
+      href: resource-manager-template-samples.md
 - name: Pojęcia
   items:
     - name: Podstawy
@@ -95,9 +97,6 @@
           href: tutorial-manage-web-traffic-powershell.md
         - name: Interfejs wiersza polecenia platformy Azure
           href: tutorial-manage-web-traffic-cli.md
-        - name: Szablon
-          displayName: 'ARM, Resource Manager, template'
-          href: create-vmss-template.md
     - name: Konfigurowanie wewnętrznego modułu równoważenia obciążenia
       items:
         - name: Portal Azure
