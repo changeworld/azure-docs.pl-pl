@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: dacurwin
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 7a69fc7c9077fa10ddf808f1cd953f6739eabe20
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 701972c32f3e80682e2a20d04b02bcd555532e08
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688723"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954976"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Tworzenie kopii zapasowej maszyny wirtualnej platformy Azure przy użyciu Azure Backup za pośrednictwem interfejsu API REST
 
-W tym artykule opisano sposób zarządzania kopiami zapasowymi maszyny wirtualnej platformy Azure przy użyciu Azure Backup za pośrednictwem interfejsu API REST. Skonfiguruj ochronę po raz pierwszy w przypadku wcześniej niechronionej maszyny wirtualnej platformy Azure, wyzwól kopię zapasową na żądanie dla chronionej maszyny wirtualnej platformy Azure i zmodyfikuj właściwości kopii zapasowej maszyny wirtualnej w trybie REST, jak wyjaśniono tutaj.
+W tym artykule opisano sposób zarządzania kopiami zapasowymi maszyny wirtualnej platformy Azure przy użyciu Azure Backup za pośrednictwem interfejsu API REST. Skonfiguruj ochronę po raz pierwszy w przypadku wcześniej niechronionej maszyny wirtualnej platformy Azure, wyzwól kopię zapasową na żądanie dla chronionej maszyny wirtualnej platformy Azure i Modyfikuj właściwości kopii zapasowej maszyny wirtualnej z kopią zapasową za pośrednictwem interfejsu API REST, jak wyjaśniono tutaj.
 
 Zapoznaj się z artykułem [Tworzenie magazynu](backup-azure-arm-userestapi-createorupdatevault.md) i tworzenie SAMOUCZKÓW interfejsu API REST [zasad](backup-azure-arm-userestapi-createorupdatepolicy.md) , które umożliwiają tworzenie nowych magazynów i zasad.
 
@@ -98,7 +98,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="selecting-the-relevant-azure-vm"></a>Wybieranie odpowiedniej maszyny wirtualnej platformy Azure
 
- Aby potwierdzić, że "buforowanie" jest wykonywane, należy wyświetlić [listę wszystkich elementów](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list) podlegających ochronie w ramach subskrypcji i zlokalizować ŻĄDAną maszynę wirtualną w odpowiedzi. [Odpowiedź tej operacji](#example-responses-1) zawiera również informacje dotyczące sposobu, w jaki usługi odzyskiwania IDENTYFIKUJą maszynę wirtualną.  Po zapoznaniu się ze wzorcem możesz pominąć ten krok i bezpośrednio przejść do włączania [ochrony](#enabling-protection-for-the-azure-vm).
+ Aby potwierdzić, że "buforowanie" jest wykonywane, należy wyświetlić [listę wszystkich elementów](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list) podlegających ochronie w ramach subskrypcji i zlokalizować ŻĄDAną maszynę wirtualną w odpowiedzi. [Odpowiedź tej operacji](#example-responses-1) zawiera również informacje dotyczące sposobu, w jaki Recovery Services identyfikuje maszynę wirtualną.  Po zapoznaniu się ze wzorcem możesz pominąć ten krok i bezpośrednio przejść do włączania [ochrony](#enabling-protection-for-the-azure-vm).
 
 Ta operacja jest operacją *pobierania* .
 
@@ -393,7 +393,7 @@ Ponieważ zadanie tworzenia kopii zapasowej jest długotrwałą operacją, musi 
 
 ### <a name="changing-the-policy-of-protection"></a>Zmiana zasad ochrony
 
-Aby zmienić zasady, za pomocą których maszyna wirtualna jest chroniona, można użyć tego samego formatu co [włączenie ochrony](#enabling-protection-for-the-azure-vm). Po prostu podaj nowy identyfikator zasad w [treści żądania](#example-request-body) i prześlij żądanie. Na przykład: Aby zmienić zasady testVM z "DefaultPolicy" na "ProdPolicy", podaj identyfikator "ProdPolicy" w treści żądania.
+Aby zmienić zasady, za pomocą których maszyna wirtualna jest chroniona, można użyć tego samego formatu co [włączenie ochrony](#enabling-protection-for-the-azure-vm). Po prostu podaj nowy identyfikator zasad w [treści żądania](#example-request-body) i prześlij żądanie. Przykład: Aby zmienić zasady testVM z "DefaultPolicy" na "ProdPolicy", podaj identyfikator "ProdPolicy" w treści żądania.
 
 ```http
 {
@@ -450,7 +450,7 @@ Zwraca dwie odpowiedzi: 202 (zaakceptowane) po utworzeniu innej operacji, a nast
 |204 NoContent     |         |  NoContent       |
 |202 zaakceptowane     |         |     Zaakceptowany    |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Przywróć dane z kopii zapasowej maszyny wirtualnej platformy Azure](backup-azure-arm-userestapi-restoreazurevms.md).
 

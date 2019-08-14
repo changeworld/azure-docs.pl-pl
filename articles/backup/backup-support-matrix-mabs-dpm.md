@@ -7,12 +7,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: c4d01c3c72669f7fbfd5b2d8df0678cc0675ccde
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 7f890ddf7aff63189a720f3d604b00610af7a933
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639562"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68949845"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Macierz obsługi dla tworzenia kopii zapasowych za pomocą serwera Microsoft Azure Backup lub programu System Center DPM
 
@@ -55,7 +55,7 @@ Informacje dodatkowe:
 **Scenariusz** | **Agent** | **Location**
 --- | --- | ---
 **Tworzenie kopii zapasowych maszyn/obciążeń lokalnych** | Na maszynach, dla których chcesz utworzyć kopię zapasową, działa Agent ochrony programu DPM/serwera usługi MAB.<br/><br/> Agent MARS na serwerze DPM/serwera usługi MAB.<br/> Minimalna wersja agenta Microsoft Azure Recovery Services lub agenta Azure Backup, wymagana do włączenia tej funkcji, to 2.0.8719.0.  | Program DPM/serwera usługi MAB musi działać lokalnie.
-**Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure/obciążeń** | Agent ochrony programu DPM/serwera usługi MAB na komputerze chronionym.<br/><br/> Agent MARS na serwerze DPM/serwera usługi MAB. | Program DPM/serwera usługi MAB musi działać na maszynie wirtualnej platformy Azure.
+
 
 ## <a name="supported-deployments"></a>Obsługiwane wdrożenia
 
@@ -166,9 +166,9 @@ Poniższa tabela zawiera podsumowanie elementów, których kopia zapasowa ma zos
 **Windows Server 2012 R2 (Datacenter i standard)**<br/><br/> 64/32-bitowy | SERWERA usługi MAB v3, wersja 2 | Lokalna/maszyna wirtualna platformy Azure. | **Ochrona lokalna**: Wolumin/udział/folder/plik; System-stan/bez systemu operacyjnego.<br/><br/> **VMprotection Azure**: Wolumin/udział/folder/plik.<br/><br/> Woluminy z deduplikacją są obsługiwane. |
 **Windows Server 2012 z dodatkiem SP1 (Datacenter i standard)**<br/><br/> 64/32-bitowy | SERWERA usługi MAB v3, wersja 2 <br/><br/> Należy zainstalować [pakiet Windows Management Framework 4,0](https://www.microsoft.com/download/details.aspx?id=40855) . | Lokalna/maszyna wirtualna platformy Azure. | **Ochrona lokalna**: Wolumin/udział/folder/plik; System-stan/bez systemu operacyjnego.<br/><br/> **Ochrona maszyny wirtualnej platformy Azure**: Wolumin/udział/folder/plik.<br/><br/> Woluminy z deduplikacją są obsługiwane. |
 **Windows 2008 R2 z dodatkiem SP1 (wersje Standard i Enterprise)**<br/><br/> 64/32-bitowy | Obsługiwane przez serwera usługi MAB v3, v2.<br/><br/> Należy zainstalować [pakiet Windows Management Framework 4,0](https://www.microsoft.com/download/details.aspx?id=40855) . | Lokalna/maszyna wirtualna platformy Azure. |   **Ochrona lokalna**: Wolumin/udział/folder/plik; System-stan/bez systemu operacyjnego.<br/><br/> **Ochrona maszyny wirtualnej platformy Azure**: Wolumin/udział/folder/plik.<br/><br/> Woluminy z deduplikacją są obsługiwane. |
-**Windows 2008 R2 (wersje Standard i Enterprise)**<br/><br/> 64/32-bitowy | W przypadku serwera usługi MAB v2/v3 system operacyjny musi mieć uruchomiony program SP1. | Lokalna/maszyna wirtualna platformy Azure. | **Ochrona lokalna**: Wolumin/udział/folder/plik; System-stan/bez systemu operacyjnego.<br/><br/> **Ochrona maszyny wirtualnej platformy Azure**: Wolumin/udział/folder/plik.<br/><br/> Woluminy z deduplikacją są obsługiwane. |
-**Windows Server 2008 z dodatkiem SP2**<br/><br/> 64/32-bitowy | SERWERA usługi MAB v2, v3 | SERWERA usługi MAB v2, wersja v3 jest obsługiwana, gdy serwera usługi MAB jest wdrożony jako maszyna wirtualna VMware.<br/><br/> Nieobsługiwane w przypadku serwera usługi MAB uruchomionego na maszynie wirtualnej platformy Azure. | Wolumin/udział/folder/plik; System-stan/bez systemu operacyjnego. |
-**Windows Storage Server 2008** | SERWERA usługi MAB v2, v3 | SERWERA usługi MAB jako lokalny serwer fizyczny/maszynę wirtualną funkcji Hyper-V. <br/><br/> Nieobsługiwane w przypadku serwera usługi MAB uruchomionego na maszynie wirtualnej platformy Azure. | Wolumin/udział/folder/plik; System-stan/bez systemu operacyjnego.
+**Windows 2008 R2 (wersje Standard i Enterprise)**<br/><br/> 64/32-bitowy | W przypadku wersji serwera usługi MAB V3 w systemie operacyjnym musi być uruchomiony program SP1. | Lokalna/maszyna wirtualna platformy Azure. | **Ochrona lokalna**: Wolumin/udział/folder/plik; System-stan/bez systemu operacyjnego.<br/><br/> **Ochrona maszyny wirtualnej platformy Azure**: Wolumin/udział/folder/plik.<br/><br/> Woluminy z deduplikacją są obsługiwane. |
+**Windows Server 2008 z dodatkiem SP2**<br/><br/> 64/32-bitowy | SERWERA usługi MAB v3, wersja 2 | SERWERA usługi MAB v2, wersja v3 jest obsługiwana, gdy serwera usługi MAB jest wdrożony jako maszyna wirtualna VMware.<br/><br/> Nieobsługiwane w przypadku serwera usługi MAB uruchomionego na maszynie wirtualnej platformy Azure. | Wolumin/udział/folder/plik; System-stan/bez systemu operacyjnego. |
+**Windows Storage Server 2008** | SERWERA usługi MAB v3, wersja 2 | SERWERA usługi MAB jako lokalny serwer fizyczny/maszynę wirtualną funkcji Hyper-V. <br/><br/> Nieobsługiwane w przypadku serwera usługi MAB uruchomionego na maszynie wirtualnej platformy Azure. | Wolumin/udział/folder/plik; System-stan/bez systemu operacyjnego.
 **SQL Server 2017** | SERWERA usługi MAB v3 | Lokalna/maszyna wirtualna platformy Azure.| Utwórz kopię zapasową bazy danych SQL Server.<br/><br/> Obsługa kopii zapasowych klastra SQL Server.<br/><br/>Bazy danych przechowywane w CSV nie są obsługiwane. |
 **SQL Server 2016/2016 z dodatkiem SP1** | SERWERA usługi MAB v3, wersja 2 | Lokalna/maszyna wirtualna platformy Azure.| Utwórz kopię zapasową bazy danych SQL Server.<br/><br/> Obsługa kopii zapasowych klastra SQL Server.<br/><br/>Bazy danych przechowywane w CSV nie są obsługiwane. |
 **SQL Server 2014**<br/><br/> **SQL Server 2012/SP1/SP2**<br/><br/> **SQL Server 2008 R2**<br/><br/> **SQL Server 2008** | SERWERA usługi MAB v3, wersja 2 | Lokalna/maszyna wirtualna platformy Azure.| Utwórz kopię zapasową bazy danych SQL Server.<br/><br/> Obsługa kopii zapasowych klastra SQL Server.<br/><br/>Bazy danych przechowywane w CSV nie są obsługiwane. |
@@ -195,7 +195,7 @@ Poniższa tabela zawiera podsumowanie elementów, których kopię zapasową moż
 **Windows 2008 R2 (wersje Standard i Enterprise)**<br/><br/> 64/32-bitowy | Lokalnie.<br/><br/> Nie można zainstalować programu DPM jako maszyny wirtualnej VMware.<br/><br/> Program DPM działający na maszynie wirtualnej platformy Azure nie jest obsługiwany. | **Ochrona lokalna**: Wolumin/udział/folder/plik; System-stan/bez systemu operacyjnego.
 **Windows Server 2008 z dodatkiem SP2**<br/><br/> 64/32-bitowy | Tylko lokalnie.<br/><br/> Program DPM jest obsługiwany, gdy działa jako maszyna wirtualna VMware. Uruchamianie jako serwer fizyczny lub maszyna wirtualna funkcji Hyper-V nie jest obsługiwana. | Wolumin/udział/folder/plik; System-stan/bez systemu operacyjnego.
 **Windows Storage Server 2008** | Program DPM działający lokalnie jako serwer fizyczny lub maszyna wirtualna funkcji Hyper-V. | Wolumin/udział/folder/plik; System-stan/bez systemu operacyjnego.
-**SQL Server 2017** | KONSOLA SAC PROGRAMU DPM; Program DPM 2016 z uruchomioną aktualizacją Update 5 lub nowszą.<br/><br/> Lokalna/maszyna wirtualna platformy Azure.| Utwórz kopię zapasową bazy danych SQL Server.<br/><br/> Obsługa kopii zapasowych klastra SQL Server.<br/><br/>Bazy danych przechowywane w CSV nie są obsługiwane.
+**SQL Server 2017** | KONSOLA SAC PROGRAMU DPM; Program DPM 2016 z uruchomionym pakietem zbiorczym aktualizacji 5 lub nowszym.<br/><br/> Lokalna/maszyna wirtualna platformy Azure.| Utwórz kopię zapasową bazy danych SQL Server.<br/><br/> Obsługa kopii zapasowych klastra SQL Server.<br/><br/>Bazy danych przechowywane w CSV nie są obsługiwane.
 **SQL Server 2016 z dodatkiem SP1** | Nieobsługiwane w przypadku programu DPM 2012 R2; Obsługiwane przez program DPM SAC, DPM 2016 z uruchomionym pakietem zbiorczym aktualizacji 4 lub nowszym.<br/><br/> Lokalna/maszyna wirtualna platformy Azure.| Utwórz kopię zapasową bazy danych SQL Server.<br/><br/> Obsługa kopii zapasowych klastra SQL Server.<br/><br/>Bazy danych przechowywane w CSV nie są obsługiwane.
 **SQL Server 2016** | Nieobsługiwane w przypadku programu DPM 2012 R2. Obsługiwane w przypadku konsoli SAC programu DPM, programu DPM 2016 z pakietu zbiorczego aktualizacji 2 i nowszych wersji.<br/><br/> Lokalna/maszyna wirtualna platformy Azure.| Utwórz kopię zapasową bazy danych SQL Server.<br/><br/> Obsługa kopii zapasowych klastra SQL Server.<br/><br/>Bazy danych przechowywane w CSV nie są obsługiwane.
 **SQL Server 2014**<br/><br/> **SQL Server 2012/SP1/SP2**<br/><br/> **SQL Server 2008 R2**<br/><br/> **SQL Server 2008** | SQL Server 2014 z programem DPM 2012 R2 z uruchomionym pakietem zbiorczym aktualizacji 4 lub nowszym.<br/><br/> Lokalna/maszyna wirtualna platformy Azure.| Utwórz kopię zapasową bazy danych SQL Server.<br/><br/> Obsługa kopii zapasowych klastra SQL Server.<br/><br/>Bazy danych przechowywane w CSV nie są obsługiwane.
@@ -210,7 +210,7 @@ Poniższa tabela zawiera podsumowanie elementów, których kopię zapasową moż
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Dowiedz się więcej](backup-architecture.md#architecture-back-up-to-dpmmabs) o architekturze serwera usługi MAB.
 - [Sprawdź](backup-support-matrix-mars-agent.md) , co jest obsługiwane przez agenta Mars.

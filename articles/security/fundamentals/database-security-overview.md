@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: TomSh
-ms.openlocfilehash: dc4c36735ade8a094acbf897ee040a239a1bed48
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 9053866b76ec1cc409c3f00d0af59bf3761d3936
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727412"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927981"
 ---
 # <a name="azure-database-security-overview"></a>Omówienie zabezpieczeń usługi Azure Database
 
@@ -206,7 +206,7 @@ SQL Advanced Threat Protection (ATP) oferuje zestaw zaawansowanych funkcji zabez
 
 Usługa [Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/) pomaga w zapobieganiu zagrożeniom, wykrywaniu ich i reagowaniu na nie. Zapewnia zintegrowane monitorowanie zabezpieczeń i zarządzanie zasadami w ramach subskrypcji platformy Azure. Pomaga wykrywać zagrożenia, które w przeciwnym razie mogłyby być niezauważalne, i współpracuje z szeroką ekosystemem rozwiązań w zakresie zabezpieczeń.
 
-[Security Center](https://docs.microsoft.com/azure/security-center/security-center-sql-database) pomaga chronić dane w SQL Database, zapewniając wgląd w zabezpieczenia wszystkich serwerów i baz danych. Za pomocą Security Center można:
+[Security Center](../../security-center/security-center-sql-database.md) pomaga chronić dane w SQL Database, zapewniając wgląd w zabezpieczenia wszystkich serwerów i baz danych. Za pomocą Security Center można:
 
 - Zdefiniuj zasady dla SQL Database szyfrowania i inspekcji.
 - Monitoruj zabezpieczenia SQL Database zasobów we wszystkich Twoich subskrypcjach.
@@ -228,7 +228,7 @@ Ponadto oblicza on czułość zestawu wyników zapytań SQL, tak aby zapytania, 
 Portal Azure Marketplace to rynek aplikacji i usług w trybie online, który umożliwia początkującym i niezależnym dostawcom oprogramowania oferowanie swoich rozwiązań klientom platformy Azure na całym świecie.
 Portal Azure Marketplace łączy ekosystemy partnerów Microsoft Azure na ujednoliconą platformę w celu lepszego obsłużynia klientów i partnerów. Możesz [uruchomić wyszukiwanie](https://azuremarketplace.microsoft.com/marketplace/apps?search=Database%20Security&page=1) , aby wyświetlić produkty zabezpieczeń bazy danych dostępne w portalu Azure Marketplace.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Zabezpieczanie bazy danych Azure SQL Database](/azure/sql-database/sql-database-security-tutorial)
 - [Usługa Azure Security Center i Azure SQL Database](/azure/security-center/security-center-sql-database)

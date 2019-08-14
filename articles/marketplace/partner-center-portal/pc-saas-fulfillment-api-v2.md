@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: a8196370a93a6ce8eed83002397c2f09efbc777f
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 276699b9316a0c4fd428038f2c967bdf934f449c
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358584"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016040"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>Interfejsy API realizacji SaaS w wersji 2 
 
@@ -282,7 +282,7 @@ Response Body:
           "term": { //This gives the free trial term start and end date
             "startDate": "2019-05-31",
             "endDate": "2019-06-29",
-            "termUnit": "P1M"
+            "termUnit": "P1M" //where P1M: Monthly, P1Y: Yearly 
         },
 }
 ```
@@ -476,7 +476,7 @@ Wewnętrzny błąd serwera.
 ```
 
 >[!Note]
->Jednocześnie można poprawić tylko plan lub ilość, ale nie oba naraz. Edytowanie subskrypcji z aktualizacją  nie jest w `allowedCustomerOperations`.
+>Jednocześnie można poprawić tylko plan lub ilość, ale nie oba naraz. Edytowanie subskrypcji z aktualizacją nie jest w `allowedCustomerOperations`.
 
 #### <a name="change-the-quantity-on-the-subscription"></a>Zmiana ilości w subskrypcji
 
@@ -543,7 +543,7 @@ Wewnętrzny błąd serwera.
 ```
 
 >[!Note]
->Jednocześnie można poprawić tylko plan lub ilość, ale nie oba naraz. Edytowanie subskrypcji z aktualizacją  nie jest w `allowedCustomerOperations`.
+>Jednocześnie można poprawić tylko plan lub ilość, ale nie oba naraz. Edytowanie subskrypcji z aktualizacją nie jest w `allowedCustomerOperations`.
 
 #### <a name="delete-a-subscription"></a>Usuwanie subskrypcji
 
@@ -790,6 +790,8 @@ Kod: 500<br> Wewnętrzny błąd serwera.
 
 Wydawca musi zaimplementować element webhook w tej usłudze SaaS, aby aktywnie powiadamiać użytkowników o zmianach w swojej usłudze. Usługa SaaS powinna wywołać interfejs API operacji w celu weryfikacji i autoryzacji przed wykonaniem akcji na powiadomieniu elementu webhook.
 
+Aby zapewnić bezpieczną komunikację, firma Microsoft zawiera token JWT Azure Active Directory w nagłówku autoryzacji w ramach wywołania. Dostawcy SaaS są zachęcani do sprawdzania poprawności tokenu JWT zgodnie z opisem w artykule [tokeny dostępu platformy tożsamości firmy Microsoft](https://docs.microsoft.com/azure/active-directory/develop/access-tokens) w celu upewnienia się, że akceptowane są tylko prawidłowe wywołania.
+
 ```json
 {
   "id": "<this is a GUID operation id, you can call operations API with this to get status>",
@@ -819,7 +821,7 @@ Stan może mieć jedną z następujących wartości:
 - **Niepowodzenie** <br>
 - **Kolizj** <br>
 
-W powiadomieniu elementu webhook Stany akcji zostały **wykonane pomyślnie** i zakończyły **się niepowodzeniem**. Cykl życia operacji pochodzi z **NotStarted** do stanu terminalu, takiego jak **sukces**, Niepowodzenie lub **konflikt**. Jeśli otrzymasz **NotStarted** lub w **toku**, Kontynuuj Zażądaj stanu za pomocą interfejsu API Get, dopóki operacja nie osiągnie stanu terminalu przed podjęciem działania. 
+W powiadomieniu elementu webhook Stany akcji zostały **wykonane pomyślnie** i zakończyły **się niepowodzeniem**. Cykl życia operacji pochodzi z **NotStarted** do stanu terminalu, takiego jak **sukces**, Niepowodzenielub **konflikt**. Jeśli otrzymasz **NotStarted** lub w **toku**, Kontynuuj Zażądaj stanu za pomocą interfejsu API Get, dopóki operacja nie osiągnie stanu terminalu przed podjęciem działania. 
 
 ## <a name="mock-apis"></a>Makiety interfejsów API
 

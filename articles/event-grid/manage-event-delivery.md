@@ -1,31 +1,33 @@
 ---
-title: Utraconych wiadomości i zasady ponawiania prób dla subskrypcji usługi Azure Event Grid
-description: W tym artykule opisano, jak dostosować opcje dostarczania zdarzeń usługi Event Grid. Zestaw docelowy utraconych wiadomości i określić, jak długo próbę dostarczania.
+title: Utracony komunikat i zasady ponawiania dla subskrypcji Azure Event Grid
+description: Opisuje sposób dostosowywania opcji dostarczania zdarzeń dla Event Grid. Ustaw miejsce docelowe utraconych wiadomości, a następnie określ, jak długo ma być ponawiane dostarczanie.
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/06/2019
 ms.author: spelluru
-ms.openlocfilehash: a1b49fd3a2a85377a56c92aefd1b0056f91895b1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 63bae62ed89bd0bbc167a88274002d1fa1e9b86d
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66119564"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933369"
 ---
-# <a name="dead-letter-and-retry-policies"></a>Utraconych wiadomości i zasady ponawiania prób
+# <a name="dead-letter-and-retry-policies"></a>Utracony i ponawianie zasad
 
-Podczas tworzenia subskrypcji zdarzeń, można dostosować ustawienia dostarczania zdarzeń. W tym artykule przedstawiono sposób ustawiania lokalizacji utraconych wiadomości i Dostosuj ustawienia ponawiania prób. Aby uzyskać informacje o tych funkcjach, zobacz [dostarczanie komunikatów usługi Event Grid i ponów próbę](delivery-and-retry.md).
+Podczas tworzenia subskrypcji zdarzeń można dostosować ustawienia dostarczania zdarzeń. W tym artykule opisano sposób konfigurowania martwej lokalizacji i dostosowywania ustawień ponownych prób. Aby uzyskać informacje o tych funkcjach, zobacz [Event Grid dostarczania komunikatów i ponów próbę](delivery-and-retry.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="set-dead-letter-location"></a>Ustaw lokalizację utraconych wiadomości
+## <a name="set-dead-letter-location"></a>Ustaw lokalizację wiadomości utraconych
 
-Aby ustawić lokalizację utraconych wiadomości, potrzebne jest konto magazynu do przechowywania zdarzeń, których nie można dostarczyć do punktu końcowego. Przykłady Pobierz identyfikator zasobu istniejącego konta magazynu. Tworzą subskrypcji zdarzeń, która używa kontener na tym koncie magazynu dla punktu końcowego utraconych wiadomości.
+Aby ustawić pustą lokalizację, musisz mieć konto magazynu do przechowywania zdarzeń, których nie można dostarczyć do punktu końcowego. Przykłady pobierają identyfikator zasobu istniejącego konta magazynu. Tworzą subskrypcję zdarzeń, która używa kontenera w tym koncie magazynu dla punktu końcowego utraconych wiadomości.
 
 > [!NOTE]
-> Utwórz konto magazynu i kontener obiektów blob w magazynie, przed uruchomieniem polecenia w tym artykule.
+> - Utwórz konto magazynu i kontener obiektów BLOB w magazynie przed uruchomieniem poleceń w tym artykule.
+> - Usługa Event Grid tworzy obiekty blob w tym kontenerze. Nazwy obiektów BLOB będą mieć nazwę subskrypcji Event Grid ze wszystkimi literami w Wielkiej litery. Na przykład, jeśli nazwa subskrypcji to my-BLOB-Subscription, nazwy obiektów blob z utraconą listą będą mieć wartość MY-BLOB-SUBSCRIPTION (myblobcontainer/MY-BLOB-SUBSCRIPTION/2019/8/8/5/111111111-1111-1111-1111 -111111111111. JSON). Takie zachowanie ma na celu ochronę przed różnicami w przypadku obsługi w przypadku korzystania z usług platformy Azure.
+
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
@@ -42,7 +44,7 @@ az eventgrid event-subscription create \
   --deadletter-endpoint $storageid/blobServices/default/containers/$containername
 ```
 
-Aby wyłączyć Obsługa utraconych komunikatów, uruchom ponownie polecenie, aby utworzyć subskrypcję zdarzeń, ale nie zapewniają wartość dla `deadletter-endpoint`. Nie ma potrzeby usuwania subskrypcji zdarzeń.
+Aby wyłączyć obsługę utraconych wiadomości, należy ponownie uruchomić polecenie, aby utworzyć subskrypcję zdarzeń, ale nie podawać wartości `deadletter-endpoint`dla. Nie musisz usuwać subskrypcji zdarzeń.
 
 > [!NOTE]
 > Jeśli używasz interfejsu wiersza polecenia platformy Azure na komputerze lokalnym, powinien on być w wersji co najmniej 2.0.56. Aby uzyskać instrukcje na temat instalowania najnowszej wersji interfejsu wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
@@ -62,20 +64,20 @@ New-AzEventGridSubscription `
   -DeadLetterEndpoint "$storageid/blobServices/default/containers/$containername"
 ```
 
-Aby wyłączyć Obsługa utraconych komunikatów, uruchom ponownie polecenie, aby utworzyć subskrypcję zdarzeń, ale nie zapewniają wartość dla `DeadLetterEndpoint`. Nie ma potrzeby usuwania subskrypcji zdarzeń.
+Aby wyłączyć obsługę utraconych wiadomości, należy ponownie uruchomić polecenie, aby utworzyć subskrypcję zdarzeń, ale nie podawać wartości `DeadLetterEndpoint`dla. Nie musisz usuwać subskrypcji zdarzeń.
 
 > [!NOTE]
-> Jeśli używasz Poweshell platformy Azure na komputerze lokalnym, użyj programu Azure PowerShell w wersji 1.1.0 lub nowszej. Pobierz i zainstaluj najnowszą wersję programu Azure PowerShell z [pliki do pobrania Azure](https://azure.microsoft.com/downloads/).
+> Jeśli używasz usługi Azure PowerShell na komputerze lokalnym, użyj Azure PowerShell w wersji 1.1.0 lub nowszej. Pobierz i zainstaluj najnowszą Azure PowerShell z [usługi Azure downloads](https://azure.microsoft.com/downloads/).
 
-## <a name="set-retry-policy"></a>Ustawianie zasad ponawiania prób
+## <a name="set-retry-policy"></a>Ustaw zasady ponawiania
 
-Podczas tworzenia subskrypcji usługi Event Grid, można ustawić wartości dla ile usługi Event Grid należy dążyć do dostarczenia zdarzeń. Domyślnie usługi Event Grid próbuje przez 24 godziny (1440 minut) lub 30-krotnie. Możesz ustawić te wartości dla swojej subskrypcji usługi event grid. Wartość dla zdarzenia, czas wygaśnięcia musi być liczbą całkowitą z zakresu od 1 do 1440. Wartość maksymalną liczbę ponownych prób musi być liczbą całkowitą z zakresu od 1 do 30.
+Podczas tworzenia subskrypcji Event Grid można ustawić wartości, o ile długo Event Grid powinna próbować dostarczyć zdarzenia. Domyślnie program Event Grid próbuje wykonać przez 24 godziny (1440 minut) lub 30 razy. Można ustawić jedną z tych wartości dla subskrypcji usługi Event Grid. Wartość czasu wygaśnięcia zdarzenia musi być liczbą całkowitą z przedziału od 1 do 1440. Wartość maksymalna liczba ponownych prób musi być liczbą całkowitą z przedziału od 1 do 30.
 
-Nie można skonfigurować [harmonogram ponownych prób](delivery-and-retry.md#retry-schedule-and-duration).
+Nie można skonfigurować [harmonogramu ponownych prób](delivery-and-retry.md#retry-schedule-and-duration).
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Aby ustawić zdarzenia time to live wartość inna niż 1440 minut, należy użyć:
+Aby ustawić czas wygaśnięcia zdarzenia na żywo na wartość inną niż 1440 minut, użyj:
 
 ```azurecli-interactive
 az eventgrid event-subscription create \
@@ -86,7 +88,7 @@ az eventgrid event-subscription create \
   --event-ttl 720
 ```
 
-Aby ustawić maksymalną liczbę ponownych prób na wartość inną niż 30, należy użyć:
+Aby ustawić maksymalną liczbę ponownych prób na wartość inną niż 30, użyj:
 
 ```azurecli-interactive
 az eventgrid event-subscription create \
@@ -97,11 +99,11 @@ az eventgrid event-subscription create \
   --max-delivery-attempts 18
 ```
 
-Jeśli ustawisz zarówno `event-ttl` i `max-deliver-attempts`, korzysta z usługi Event Grid pierwszy na wygaśnięcie, aby określić, kiedy przestać dostarczania zdarzeń.
+Po ustawieniu obu tych `event-ttl` opcji `max-deliver-attempts`i, Event Grid używa pierwszej do wygaśnięcia, aby określić, kiedy należy zatrzymać dostarczanie zdarzeń.
 
 ### <a name="powershell"></a>PowerShell
 
-Aby ustawić zdarzenia time to live wartość inna niż 1440 minut, należy użyć:
+Aby ustawić czas wygaśnięcia zdarzenia na żywo na wartość inną niż 1440 minut, użyj:
 
 ```azurepowershell-interactive
 $topicid = (Get-AzEventGridTopic -ResourceGroupName gridResourceGroup -Name demoTopic).Id
@@ -113,7 +115,7 @@ New-AzEventGridSubscription `
   -EventTtl 720
 ```
 
-Aby ustawić maksymalną liczbę ponownych prób na wartość inną niż 30, należy użyć:
+Aby ustawić maksymalną liczbę ponownych prób na wartość inną niż 30, użyj:
 
 ```azurepowershell-interactive
 $topicid = (Get-AzEventGridTopic -ResourceGroupName gridResourceGroup -Name demoTopic).Id
@@ -125,11 +127,11 @@ New-AzEventGridSubscription `
   -MaxDeliveryAttempt 18
 ```
 
-Jeśli ustawisz zarówno `EventTtl` i `MaxDeliveryAttempt`, korzysta z usługi Event Grid pierwszy na wygaśnięcie, aby określić, kiedy przestać dostarczania zdarzeń.
+Po ustawieniu obu tych `EventTtl` opcji `MaxDeliveryAttempt`i, Event Grid używa pierwszej do wygaśnięcia, aby określić, kiedy należy zatrzymać dostarczanie zdarzeń.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dla przykładowej aplikacji, która używa aplikacji funkcji platformy Azure do przetwarzania zdarzeń utraconych wiadomości, zobacz [przykładów utraconych siatki zdarzeń dla platformy Azure dla platformy .NET](https://azure.microsoft.com/resources/samples/event-grid-dotnet-handle-deadlettered-events/).
+* Aby zapoznać się z przykładową aplikacją, która używa aplikacji funkcji platformy Azure do przetwarzania zdarzeń utraconych wiadomości, zobacz [Azure Event Grid utraconych próbek dla platformy .NET](https://azure.microsoft.com/resources/samples/event-grid-dotnet-handle-deadlettered-events/).
 * Informacje o dostarczanie zdarzeń i ponownych prób [dostarczanie komunikatów usługi Event Grid i ponów próbę](delivery-and-retry.md).
 * Aby zapoznać się z wprowadzeniem do usługi Event Grid, zobacz [Wprowadzenie do usługi Azure Event Grid](overview.md).
 * Aby szybko rozpocząć pracę, przy użyciu usługi Event Grid, zobacz [Utwórz i wyznaczać trasy zdarzeń niestandardowych za pomocą usługi Azure Event Grid](custom-event-quickstart.md).

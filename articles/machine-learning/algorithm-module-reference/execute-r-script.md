@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 710d64b445953ae3124830931c8cbb9315d32b83
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 3594d9670e8fb94b053479352fb88997caa16db6
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875710"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016488"
 ---
 # <a name="execute-r-script"></a>Wykonywanie skryptu języka R
 
@@ -76,8 +76,7 @@ Zestawy danych przechowywane w interfejsie wizualizacji są automatycznie konwer
 
 1.  Dodaj moduł **wykonywania skryptu języka R** do Twojego eksperymentu.
 
-    > [!NOTE]
-    > Wszystkie dane przesłane do modułu **skryptu Execute języka r** są konwertowane na format języka `data.frame` r.
+  
 
 1. Połącz wszystkie dane wejściowe, które są potrzebne przez skrypt. Wejścia są opcjonalne i mogą zawierać dane oraz dodatkowy kod R.
 
@@ -90,10 +89,33 @@ Zestawy danych przechowywane w interfejsie wizualizacji są automatycznie konwer
 1. W polu tekstowym **skrypt języka r** wpisz lub wklej prawidłowy skrypt języka r.
 
     Aby ułatwić rozpoczęcie pracy, pole tekstowe **skryptu języka R** jest wstępnie wypełnione z przykładowym kodem, który można edytować lub zamienić.
+    
+```R
+# R version: 3.5.1
+# The script MUST contain a function named azureml_main
+# which is the entry point for this module.
 
-    * Skrypt musi zawierać funkcję o nazwie `azureml_main`, która jest punktem wejścia dla tego modułu.
+# The entry point function can contain up to two input arguments:
+#   Param<dataframe1>: a R DataFrame
+#   Param<dataframe2>: a R DataFrame
+azureml_main <- function(dataframe1, dataframe2){
+  print("R script run.")
 
-    * Funkcja punktu wejścia może zawierać maksymalnie dwa argumenty wejściowe: `Param<dataframe1>` i`Param<dataframe2>`
+  # If a zip file is connected to the third input port, it is
+  # unzipped under "./Script Bundle". This directory is added
+  # to sys.path.
+
+  # Return datasets as a Named List
+  return(list(dataset1=dataframe1, dataset2=dataframe2))
+}
+```
+
+ * Skrypt musi zawierać funkcję o nazwie `azureml_main`, która jest punktem wejścia dla tego modułu.
+
+ * Funkcja punktu wejścia może zawierać maksymalnie dwa argumenty wejściowe: `Param<dataframe1>` i`Param<dataframe2>`
+ 
+   > [!NOTE]
+    > Dane przesłane do modułu **wykonywania skryptu języka R** są przywoływane `dataframe1` jako `dataframe2`i, które różnią się od Azure Machine Learning Studio (Studio `dataset1`Reference `dataset2`AS,). Upewnij się, że dane wejściowe są poprawnie referneced w skrypcie.  
  
     > [!NOTE]
     >  Istniejący kod R może potrzebować drobnych zmian do uruchomienia w eksperymentie interfejsu wizualizacji. Na przykład dane wejściowe, które podano w formacie CSV, powinny być jawnie konwertowane na zestaw danych, zanim będzie można używać go w kodzie. Typy danych i kolumn używane w języku R również różnią się w zależności od typu danych i kolumn używanych w interfejsie wizualizacji.
@@ -244,7 +266,7 @@ Bieżąca lista wstępnie zainstalowanych pakietów języka R dostępnych do uż
 | bindrcpp     | 0.2.2      | 
 | co górne       | 1.0-6      | 
 | rozruch         | 1.3 — 22     | 
-| Broom        | 0.5.2      | 
+| broom        | 0.5.2      | 
 | wywołujący        | 3.2.0      | 
 | użyciu        | 6.0 — 84     | 
 | caTools      | 1.17.1.2   | 
@@ -252,7 +274,7 @@ Bieżąca lista wstępnie zainstalowanych pakietów języka R dostępnych do uż
 | class        | 7.3-15     | 
 | Interfejs          | 1.1.0      | 
 | Program Cliper        | 0.6.0      | 
-| Hosta      | 2.0.7-1    | 
+| klaster      | 2.0.7-1    | 
 | codetools    | 0,2 – 16     | 
 | colorspace   | 1.4-1      | 
 | Compiler     | 3.5.1      | 
@@ -280,7 +302,7 @@ Bieżąca lista wstępnie zainstalowanych pakietów języka R dostępnych do uż
 | gplots       | 3.0.1.1    | 
 | elementów     | 3.5.1      | 
 | grDevices    | 3.5.1      | 
-| Siatki         | 3.5.1      | 
+| siatka         | 3.5.1      | 
 | gtable       | 0.3.0      | 
 | gtools       | 3.8.1      | 
 | haven        | 2.1.0      | 
@@ -377,6 +399,6 @@ Bieżąca lista wstępnie zainstalowanych pakietów języka R dostępnych do uż
 | zeallot      | 0.1.0      | 
 | Zoo          | 1.8 – 6      | 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 

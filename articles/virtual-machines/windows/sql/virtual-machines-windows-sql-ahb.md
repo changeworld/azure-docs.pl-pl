@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2b961b855c7a0bb08c31b4e7ea8deb7f82ebb77c
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: fb13cd65142214ccf852c591ae081e7e633e1a4d
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846190"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935327"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Zmień model licencji dla SQL Server maszyny wirtualnej na platformie Azure
 W tym artykule opisano, jak zmienić model licencji dla SQL Server maszyny wirtualnej (VM) na platformie Azure przy użyciu nowego dostawcy zasobów maszyny wirtualnej SQL, **Microsoft. SqlVirtualMachine**.
@@ -52,7 +52,7 @@ Użycie dostawcy zasobów maszyny wirtualnej SQL wymaga rozszerzenia SQL Server 
 
 ## <a name="change-the-license-for-vms-already-registered-with-the-resource-provider"></a>Zmiana licencji dla maszyn wirtualnych już zarejestrowanych w dostawcy zasobów 
 
-# <a name="azure-portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
@@ -66,7 +66,7 @@ Możesz zmodyfikować model licencji bezpośrednio z portalu:
 ![Korzyść użycia hybrydowego platformy Azure w portalu](media/virtual-machines-windows-sql-ahb/ahb-in-portal.png)
 
 
-# <a name="azure-clitabbash"></a>[Interfejs wiersza polecenia platformy Azure](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
 Aby zmienić model licencji, możesz użyć interfejsu wiersza polecenia platformy Azure.  
 
@@ -88,7 +88,7 @@ Poniższy fragment kodu umożliwia przełączenie modelu "Przenieś własną lic
 az sql vm update -n <VMName> -g <ResourceGroupName> --license-type PAYG
 ```
 
-# <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 Aby zmienić model licencji, możesz użyć programu PowerShell.
 
 Poniższy fragment kodu zmienia model licencji z płatność zgodnie z rzeczywistym użyciem, aby zapewnić własną licencję (lub za pomocą Korzyść użycia hybrydowego platformy Azure):

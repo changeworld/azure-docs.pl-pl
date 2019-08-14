@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2019
 ms.author: barclayn
-ms.openlocfilehash: 46850ad430aa5fb8ad25a71515bdd640855350c2
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 371c3b9fde17bba33fb6f2526be68fe89aec6b01
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727256"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934690"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Najlepsze rozwiązania dotyczące zabezpieczeń usługi Azure Identity Management i kontroli dostępu
 W tym artykule omówiono zbieranie najlepszych rozwiązań dotyczących zabezpieczeń usługi Azure Identity Management i kontroli dostępu. Te najlepsze rozwiązania wynikają z naszych doświadczeń związanych z [usługą Azure AD](../../active-directory/fundamentals/active-directory-whatis.md) i środowiskami klientów.
@@ -84,8 +84,8 @@ Aby uzyskać więcej informacji, zobacz [implementowanie synchronizacji skrótó
 **Szczegóły**: Użyj odpowiednich funkcji do obsługi uwierzytelniania:
 
   - Usługa Azure AD dla pracowników
-  - [Usługa Azure AD B2B](https://docs.microsoft.com/azure/active-directory/b2b/) dla użytkowników-Gości i partnerów zewnętrznych
-  - [Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/) , aby kontrolować sposób tworzenia konta, logowania i zarządzania profilami klientów podczas korzystania z aplikacji
+  - [Usługa Azure AD B2B](../../active-directory/b2b/index.yml) dla użytkowników-Gości i partnerów zewnętrznych
+  - [Azure AD B2C](../../active-directory-b2c/index.yml) , aby kontrolować sposób tworzenia konta, logowania i zarządzania profilami klientów podczas korzystania z aplikacji
 
 Organizacje, które nie integrują swojej tożsamości lokalnej z tożsamościami w chmurze, mogą mieć większy narzut na zarządzanie kontami. Ten koszt zwiększa prawdopodobieństwo wystąpienia błędów i naruszeń zabezpieczeń.
 

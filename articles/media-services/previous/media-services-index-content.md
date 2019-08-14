@@ -1,6 +1,6 @@
 ---
-title: Indeksowaniu plików multimedialnych za pomocą usługi Azure Media Indexer
-description: Usługa Azure Media Indexer umożliwia Dodaj zawartości multimediów jako możliwej do multimedialnej możliwość wyszukiwania oraz generowanie pełnotekstowej transkrypcji na podpisy kodowane oraz słowa kluczowe. W tym temacie pokazano, jak używać Media Indexer.
+title: Indeksowanie plików multimedialnych za pomocą Azure Media Indexer
+description: Azure Media Indexer umożliwia przeszukiwanie zawartości plików multimedialnych oraz generowanie pełnotekstowego transkrypcji napisów i słów kluczowych. W tym temacie pokazano, jak używać Media Indexer.
 services: media-services
 documentationcenter: ''
 author: Asolanki
@@ -13,47 +13,48 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: adsolank;juliako;johndeu
-ms.openlocfilehash: a11ae0414d6737f1588515ec19524bcf499f0c74
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.reviewer: johndeu
+ms.openlocfilehash: a51774a1db76086440742abd5aedce3fbd26c270
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61215809"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69016085"
 ---
-# <a name="indexing-media-files-with-azure-media-indexer"></a>Indeksowaniu plików multimedialnych za pomocą usługi Azure Media Indexer
-Usługa Azure Media Indexer umożliwia Dodaj zawartości multimediów jako możliwej do multimedialnej możliwość wyszukiwania oraz generowanie pełnotekstowej transkrypcji na podpisy kodowane oraz słowa kluczowe. Możesz przetwarzać jeden plik multimediów lub wiele plików multimediów w partii.  
+# <a name="indexing-media-files-with-azure-media-indexer"></a>Indeksowanie plików multimedialnych za pomocą Azure Media Indexer
+Azure Media Indexer umożliwia przeszukiwanie zawartości plików multimedialnych oraz generowanie pełnotekstowego transkrypcji napisów i słów kluczowych. Możesz przetwarzać jeden plik multimediów lub wiele plików multimediów w partii.  
 
 > [!IMPORTANT]
-> Podczas indeksowania zawartości, upewnij się, że wykorzystywaniu plików multimedialnych, które mają wyraźne mowy (bez muzyki w tle, hałasu, efekty i szumów mikrofon). Niektóre przykłady odpowiedniej zawartości to: rejestrowane spotkań, kursach i prezentacji. Następująca zawartość może nie być odpowiednie dla indeksowania: filmy, programy telewizyjne, wszystko za pomocą mieszanego audio i efekty dźwiękowe źle nagranej zawartości przy użyciu hałas w tle (szumów).
+> Podczas indeksowania zawartości upewnij się, że używasz plików multimedialnych z jasną mową (bez muzyki w tle, szumu, efektów lub HISS mikrofonu). Oto kilka przykładów odpowiedniej zawartości: zarejestrowane spotkania, wykłady lub prezentacje. Następująca zawartość może nie być odpowiednia do indeksowania: filmy, programy telewizyjne, wszystko z mieszaniem dźwięku i dYwiękiem, źle zarejestrowano zawartość z hałasem w tle (HISS).
 > 
 > 
 
-Zadania można generować następujące dane wyjściowe:
+Zadanie indeksowania może generować następujące dane wyjściowe:
 
-* Plików z napisami w następujących formatach: **LAPOŃSKI**, **TTML**, i **WebVTT**.
+* Pliki napisów w następujących formatach: **Sami**, **ttml**i **WebVTT**.
   
-    Plików z napisami include — tag o nazwie Recognizability, których wyniki zadania na podstawie informacji o jak rozpoznać mowy w źródłowy plik wideo.  Wartość Recognizability służy do plików wyjściowych ekranu dla użyteczności. Niskim wynikiem będzie oznaczać niską indeksowania wyniki ze względu na jakość dźwięku.
+    Pliki napisów kodowanych zawierają tag o nazwie rozpoznawalność, który ocenia zadanie indeksowania w zależności od tego, jak rozpoznawalna jest mowa w źródłowym wideo.  Można użyć wartości rozpoznawalność do wygenerowania plików wyjściowych na ekranie w celu zapewnienia użyteczności. Niska ocena oznacza niską wyniki indeksowania z powodu jakości audio.
 * Plik słów kluczowych (XML).
-* Dźwięk indeksowanie obiektów blob, plik (AIB) do użytku z programem SQL server.
+* Plik BLOB indeksowania audio (AIB) do użycia z programem SQL Server.
   
-    Aby uzyskać więcej informacji, zobacz [przy użyciu plików AIB, za pomocą usługi Azure Media Indexer i programu SQL Server](https://azure.microsoft.com/blog/2014/11/03/using-aib-files-with-azure-media-indexer-and-sql-server/).
+    Aby uzyskać więcej informacji, zobacz [Używanie plików AIB z Azure Media Indexer i SQL Server](https://azure.microsoft.com/blog/2014/11/03/using-aib-files-with-azure-media-indexer-and-sql-server/).
 
-W tym artykule przedstawiono sposób tworzenia zadania indeksowania do **indeksu zasobów** i **indeksu w wielu plikach**.
+W tym artykule przedstawiono sposób tworzenia zadań indeksowania do **indeksowania elementu zawartości** i **indeksowania wielu plików**.
 
-Aby uzyskać najnowsze aktualizacje usługi Azure Media Indexer, zobacz [blogi dotyczące usługi Media Services](#preset).
+Najnowsze aktualizacje Azure Media Indexer można znaleźć w sekcji [Media Services blogAs](#preset).
 
-## <a name="using-configuration-and-manifest-files-for-indexing-tasks"></a>Za pomocą plików konfiguracji i manifestu dla zadania indeksowania
-Więcej szczegółów można określić dla indeksowania zadań podrzędnych przy użyciu konfiguracji zadania. Na przykład można określić które metadanych do użycia dla pliku multimedialnego. Te metadane używane przez aparat języka, aby rozwinąć jego słownictwa i znacznie zwiększa dokładność rozpoznawania mowy.  Możesz się również określić pliki żądaną produktu wyjściowego.
+## <a name="using-configuration-and-manifest-files-for-indexing-tasks"></a>Korzystanie z plików konfiguracji i manifestów dla zadań indeksowania
+Można określić więcej szczegółów dotyczących zadań indeksowania przy użyciu konfiguracji zadania. Można na przykład określić, które metadane mają być używane dla pliku multimedialnego. Te metadane są używane przez Aparat języka do rozwinięcia słownika i znacznie poprawiają dokładność rozpoznawania mowy.  Można również określić żądane pliki wyjściowe.
 
-Wiele plików multimediów może także przetwarzać tylko raz, korzystając z pliku manifestu.
+Można również przetwarzać wiele plików multimedialnych jednocześnie przy użyciu pliku manifestu.
 
-Aby uzyskać więcej informacji, zobacz [zadanie ustawienie wstępne dla usługi Azure Media Indexer](https://msdn.microsoft.com/library/dn783454.aspx).
+Aby uzyskać więcej informacji, zobacz [Ustawienia wstępne zadania dla Azure Media Indexer](https://msdn.microsoft.com/library/dn783454.aspx).
 
-## <a name="index-an-asset"></a>Indeks elementu zawartości
-Następującą metodę przekazuje plik multimedialny jako zasobu i tworzy zadanie do indeksowania elementu zawartości.
+## <a name="index-an-asset"></a>Indeksowanie elementu zawartości
+Poniższa metoda przekazuje plik multimedialny jako element zawartości i tworzy zadanie indeksowania elementu zawartości.
 
-Jeśli plik konfiguracji nie zostanie określony, plik multimedialny jest indeksowana przy użyciu wszystkich ustawień domyślnych.
+Jeśli plik konfiguracji nie zostanie określony, plik multimedialny jest indeksowany ze wszystkimi ustawieniami domyślnymi.
 
 ```csharp
     static bool RunIndexingJob(string inputMediaFilePath, string outputFolder, string configurationFile = "")
@@ -146,23 +147,23 @@ Jeśli plik konfiguracji nie zostanie określony, plik multimedialny jest indeks
 
 <!-- __ -->
 ### <a id="output_files"></a>Pliki wyjściowe
-Domyślnie zadania generuje następujące pliki wyjściowe. Pliki są przechowywane w pierwszym elementu zawartości wyjściowej.
+Domyślnie zadanie indeksowania generuje następujące pliki wyjściowe. Pliki są przechowywane w pierwszym elemencie zawartości wyjściowej.
 
-W przypadku więcej niż jeden plik wejściowy media indeksator generuje plik manifestu dla danych wyjściowych zadania, o nazwie "JobResult.txt". Dla każdego wejściowy plik multimedialny, wynikowy AIB, SAMI, TTML, WebVTT i pliki — słowo kluczowe są sekwencyjnie ponumerowane i o nazwie "aliasu."
+Jeśli istnieje więcej niż jeden plik nośnika wejściowego, indeksator generuje plik manifestu dla danych wyjściowych zadania o nazwie "wynik zadania. txt". Dla każdego pliku nośnika wejściowego, wyniki AIB, SAMI, TTML, WebVTT i słowo kluczowe, są numerowane sekwencyjnie i nazwane przy użyciu "alias".
 
 | Nazwa pliku | Opis |
 | --- | --- |
-| **InputFileName.aib** |Plik blob indeksowanie audio. <br/><br/> Plik dźwiękowy indeksowanie obiektów Blob (AIB) jest plikiem binarnym, które mogą być wyszukiwane w programie Microsoft SQL server przy użyciu wyszukiwania pełnotekstowego.  Plik AIB jest bardziej wydajne niż pliki proste podpisu, ponieważ zawiera alternatywy dla każdego wyrazu, co znacznie bardziej zaawansowane środowisko wyszukiwania. <br/> <br/>Wymaga instalacji dodatku SQL indeksatora na komputerze uruchomionych usług Microsoft SQL server 2008 lub nowszym. Wyszukiwanie AIB przy użyciu programu Microsoft SQL wyszukiwanie pełnotekstowe server zapewnia bardziej precyzyjne wyniki wyszukiwania niż wyszukiwanie plików z napisami generowane przez WAMI. Jest to spowodowane AIB zawiera słowa zastępcze, które brzmią podobnie, plików z napisami zawierają słowo najwyższy zaufania dla każdego segmentu audio. Jeśli wyszukiwanie wypowiadanych słów jest upmost znaczenie, zaleca się używać AIB w połączeniu z programem Microsoft SQL Server.<br/><br/> Aby pobrać dodatek, kliknij przycisk <a href="https://aka.ms/indexersql">Azure Media Indexer SQL dodatek</a>. <br/><br/>Jest również możliwe korzystanie z innych aparatów wyszukiwania, takie jak Apache Lucene/Solr po prostu indeksować wideo na podstawie napisów i pliki XML — słowo kluczowe, ale spowoduje to mniej dokładne wyniki wyszukiwania. |
-| **InputFileName.smi**<br/>**InputFileName.ttml**<br/>**InputFileName.vtt** |Zamknięte pliki transkrypcji (DW) w formacie SAMI TTML i WebVTT.<br/><br/>Mogą one używane, aby udostępnić pliki audio i wideo dla osób z wadami słuchu niepełnosprawności.<br/><br/>Zamkniętych plikach podpis zawierać tag o nazwie <b>Recognizability</b> który ocenia indeksowania zadania, w oparciu o sposób rozpoznawalnych mowy w źródłowy plik wideo.  Można użyć wartości <b>Recognizability</b> do plików wyjściowych ekranu dla użyteczności. Niskim wynikiem będzie oznaczać niską indeksowania wyniki ze względu na jakość dźwięku. |
-| **InputFileName.kw.xml<br/>InputFileName.info** |Pliki — słowo kluczowe i informacji. <br/><br/>Plik — słowo kluczowe jest plik XML, który zawiera słowa kluczowe wyodrębnione z zawartości mówionej o częstotliwości i przesunięciu informacji. <br/><br/>Informacje o pliku jest plik zwykły tekst, który zawiera szczegółowe informacje o każdym okresie został rozpoznany. Pierwszy wiersz jest szczególna i zawiera wynik Recognizability. Każdy kolejny wiersz jest listę rozdzielanych tabulatorami następujące dane: start czasu, czas zakończenia, słowo lub dana fraza, zaufanie. Czas, w którym znajdują się w ciągu kilku sekund i zaufania jest podawana jako liczbę z zakresu od 0-1. <br/><br/>Przykład wiersz: "wysokości 1.20 1,45 word 0,67" <br/><br/>Te pliki można używane dla liczby celów, takich jak do przeprowadzenia analizy mowy, lub udostępniane dla aparatów wyszukiwania, takie jak Bing, Google lub Microsoft SharePoint, aby pliki multimedialne mogą szybciej odnajdywać, lub nawet używane do dostarczania istotniejsze reklam. |
-| **JobResult.txt** |Manifeście danych wyjściowych tylko wtedy, gdy indeksowanie wielu plików, zawierający następujące informacje:<br/><br/><table border="1"><tr><th>Wejściowy</th><th>Alias</th><th>MediaLength</th><th>Błąd</th></tr><tr><td>a.mp4</td><td>Media_1</td><td>300</td><td>0</td></tr><tr><td>b.mp4</td><td>Media_2</td><td>0</td><td>3000</td></tr><tr><td>c.mp4</td><td>Media_3</td><td>600</td><td>0</td></tr></table><br/> |
+| **InputFileName.aib** |Plik BLOB indeksowania audio. <br/><br/> Plik BLOB indeksowania audio (AIB) to plik binarny, który można wyszukać w programie Microsoft SQL Server przy użyciu wyszukiwania pełnotekstowego.  Plik AIB jest bardziej wydajny niż proste pliki Caption, ponieważ zawiera alternatywy dla każdego wyrazu, co pozwala na znacznie bogatsze środowisko wyszukiwania. <br/> <br/>Wymaga instalacji dodatku indeksatora SQL na maszynie z uruchomionym programem Microsoft SQL Server 2008 lub nowszym. Wyszukiwanie AIB przy użyciu wyszukiwania pełnotekstowego w programie Microsoft SQL Server zapewnia dokładniejsze wyniki wyszukiwania niż wyszukiwanie plików napisów wygenerowanych przez WAMI. Wynika to z faktu, że AIB zawiera alternatywy wyrazów, które wyglądają podobnie jak w przypadku plików napisów o największej pewności dla każdego segmentu dźwięku. Jeśli wyszukiwanie wyrazów mówionych jest największe, zaleca się użycie AIB w połączeniu z Microsoft SQL Server.<br/><br/> Aby pobrać dodatek, kliknij <a href="https://aka.ms/indexersql">Azure Media Indexer dodatek SQL</a>. <br/><br/>Istnieje również możliwość użycia innych aparatów wyszukiwania, takich jak Apache Lucene/Solr, do zwykłego indeksowania filmu wideo opartego na zamkniętym podpisie i plikach XML słów kluczowych, ale spowoduje to mniej dokładne wyniki wyszukiwania. |
+| **InputFileName.smi**<br/>**InputFileName.ttml**<br/>**InputFileName.vtt** |Pliki napisów (DW) w formatach SAMI, TTML i WebVTT.<br/><br/>Mogą one służyć do udostępniania plików audio i wideo osobom niepełnosprawnym.<br/><br/>Pliki napisów kodowanych zawierają tag <b></b> o nazwie rozpoznawalny, który ocenia zadanie indeksowania w zależności od tego, jak rozpoznawalna jest mowa w źródłowym wideo.  Można użyć wartości rozpoznawalność do <b></b> wygenerowania plików wyjściowych na ekranie w celu zapewnienia użyteczności. Niska ocena oznacza niską wyniki indeksowania z powodu jakości audio. |
+| **InputFileName.kw.xml<br/>InputFileName.info** |Pliki słów kluczowych i informacji. <br/><br/>Plik słów kluczowych to plik XML, który zawiera słowa kluczowe wyodrębnione z zawartości mowy i informacje o częstotliwości i przesunięciu. <br/><br/>Plik info to zwykły plik tekstowy, który zawiera szczegółowe informacje dotyczące każdego rozpoznanego terminu. Pierwszy wiersz jest specjalny i zawiera wynik rozpoznania. Każdy kolejny wiersz jest rozdzielaną tabulatorami listą następujących danych: czas rozpoczęcia, czas zakończenia, słowo/fraza, pewność. Czasy są wyrażone w sekundach, a poziom pewności jest podawany jako liczba z przedziału od 0-1. <br/><br/>Przykładowy wiersz: "1,20 1,45 Word 0,67" <br/><br/>Te pliki mogą być używane w wielu celach, na przykład w celu przeprowadzenia analizy mowy lub udostępnienia aparatów wyszukiwania, takich jak Bing, Google lub Microsoft SharePoint, aby pliki multimedialne mogły być bardziej wykrywalne lub nawet wykorzystane do dostarczenia bardziej przydatnych reklam. |
+| **JobResult.txt** |Manifest wyjściowy, obecny tylko podczas indeksowania wielu plików, zawierający następujące informacje:<br/><br/><table border="1"><tr><th>Plik_wejściowy</th><th>Alias</th><th>MediaLength</th><th>Błąd</th></tr><tr><td>a.mp4</td><td>Media_1</td><td>300</td><td>0</td></tr><tr><td>b.mp4</td><td>Media_2</td><td>0</td><td>3000</td></tr><tr><td>c. mp4</td><td>Media_3</td><td>600</td><td>0</td></tr></table><br/> |
 
-Jeśli nie wszystkie multimedialnych plików wejściowych są indeksowane pomyślnie, indeksowania zadanie zakończy się niepowodzeniem z kodem błędu 4000. Aby uzyskać więcej informacji, zobacz [kody błędów](#error_codes).
+Jeśli nie wszystkie pliki multimediów wejściowych są indeksowane pomyślnie, zadanie indeksowania kończy się niepowodzeniem z kodem błędu 4000. Aby uzyskać więcej informacji, zobacz [kody błędów](#error_codes).
 
-## <a name="index-multiple-files"></a>Indeks wielu plików
-Następującą metodę przesyła wiele plików multimediów jako zasobu i tworzy zadanie, aby indeksować te pliki w zadaniu wsadowym.
+## <a name="index-multiple-files"></a>Indeksowanie wielu plików
+Poniższa metoda przekazuje wiele plików multimedialnych jako element zawartości i tworzy zadanie indeksowania wszystkich plików w partii.
 
-Plik manifestu z rozszerzeniem ".lst" jest utworzony i przekazywania do niego. Plik manifestu zawiera listę wszystkich plików zasobów. Aby uzyskać więcej informacji, zobacz [zadanie ustawienie wstępne dla usługi Azure Media Indexer](https://msdn.microsoft.com/library/dn783454.aspx).
+Plik manifestu z rozszerzeniem ". lst" jest tworzony i przekazywany do elementu zawartości. Plik manifestu zawiera listę wszystkich plików zasobów. Aby uzyskać więcej informacji, zobacz [Ustawienia wstępne zadania dla Azure Media Indexer](https://msdn.microsoft.com/library/dn783454.aspx).
 
 ```csharp
     static bool RunBatchIndexingJob(string[] inputMediaFiles, string outputFolder)
@@ -239,38 +240,38 @@ Plik manifestu z rozszerzeniem ".lst" jest utworzony i przekazywania do niego. P
     }
 ```
 
-### <a name="partially-succeeded-job"></a>Częściowo udanej zadania
-Jeśli nie wszystkie multimedialnych plików wejściowych są indeksowane pomyślnie, indeksowania zadanie zakończy się niepowodzeniem z kodem błędu 4000. Aby uzyskać więcej informacji, zobacz [kody błędów](#error_codes).
+### <a name="partially-succeeded-job"></a>Zadanie częściowo zakończone powodzeniem
+Jeśli nie wszystkie pliki multimediów wejściowych są indeksowane pomyślnie, zadanie indeksowania zakończy się niepowodzeniem z kodem błędu 4000. Aby uzyskać więcej informacji, zobacz [kody błędów](#error_codes).
 
-Tych samych danych wyjściowych (jako zadania zakończyło się powodzeniem) są generowane. Mogą odwoływać się do pliku manifestu danych wyjściowych, aby dowiedzieć się, które pliki wejściowe są nie kończy się zgodnie z wartości w kolumnach błędu. Dla plików wejściowych, które nie powiodło się, wynikowy AIB, SAMI, TTML, WebVTT i słowo kluczowe pliki nie będą generowane.
+Generowane są te same dane wyjściowe (zgodnie z zakończonymi pomyślnie zadaniami). Można odwołać się do pliku manifestu wyjściowego, aby dowiedzieć się, które pliki wejściowe nie powiodły się, zgodnie z wartościami kolumny błędu. W przypadku plików wejściowych, które nie powiodły się, powstałe pliki AIB, SAMI, TTML, WebVTT i Keywords nie będą generowane.
 
-### <a id="preset"></a> Ustawienie zadań wstępne dla usługi Azure Media Indexer
-Przetwarzanie z usługi Azure Media Indexer można dostosować, podając ustawienie wstępne zadania wraz z zadaniem opcjonalnym.  Poniżej opisano, w formacie xml tej konfiguracji.
+### <a id="preset"></a>Ustawienia wstępne zadania dla Azure Media Indexer
+Przetwarzanie z Azure Media Indexer może być dostosowane przez udostępnienie opcjonalnego ustawienia wstępnego zadania obok zadania.  Poniżej opisano Format tego pliku XML konfiguracji.
 
 | Name (Nazwa) | Wymagane | Opis |
 | --- | --- | --- |
-| **Dane wejściowe** |false |Pliki zasobów, które mają być indeksowane.</p><p>Usługa Azure Media Indexer obsługuje następujące formaty plików multimediów: MP4, WMV, MP3, M4A, WMA, AAC, WAV.</p><p>Można określić nazwę pliku (s) w **nazwa** lub **listy** atrybutu **wejściowych** — element (jak pokazano poniżej). Jeśli nie określisz plik zasobu, który indeks, jest pobierany plik podstawowy. Jeśli nie podstawowego pliku zasobu jest ustawiona, pierwszego pliku wejściowego elementu jest indeksowana.</p><p>Aby jawnie określić nazwę pliku zasobów, należy wykonać:<br/>`<input name="TestFile.wmv">`<br/><br/>Można również indeks wiele zasobów pliki jednocześnie (maksymalnie 10). W tym celu:<br/><br/><ol class="ordered"><li><p>Utwórz plik tekstowy (plik manifestu) i nadaj mu rozszerzenie .lst. </p></li><li><p>Dodaj listę wszystkich nazw plików zasobów w danych wejściowych elementów zawartości do tego pliku manifestu. </p></li><li><p>Dodaj plik (przekazywanie) manifestu do zasobu.  </p></li><li><p>Określ nazwę pliku manifestu w atrybucie listy danych wejściowych.<br/>`<input list="input.lst">`</li></ol><br/><br/>Uwaga: Jeśli dodasz więcej niż 10 plików do pliku manifestu indeksowania zadanie zakończy się niepowodzeniem z kodem błędu 2006. |
-| **metadata** |false |Metadane dla plików określonym zasobie używane na potrzeby dostosowania słownictwa.  Warto przygotować indeksator do rozpoznawania niestandardowych słownictwa słów, takich jak nazwy własne.<br/>`<metadata key="..." value="..."/>` <br/><br/>Możesz podać **wartości** dla wstępnie zdefiniowane **klucze**. Obecnie obsługiwane są następujące klucze:<br/><br/>"title" i "description" - używane na potrzeby dostosowania słownictwa celu dostosowanie język modelu dla zadania i zwiększenia dokładności rozpoznawania mowy.  Wartości zapełnić internetowych wyszukiwania można znaleźć dokumentów kontekstowe odpowiedni tekst, za pomocą zawartość, rozszerzyć słownik wewnętrzny dla czasu trwania zadania indeksowania.<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
-| **Funkcje** <br/><br/> Dodane w wersji 1.2. Obecnie jedyną obsługiwaną funkcją jest rozpoznawanie mowy ("ASR"). |false |Funkcja rozpoznawania mowy ma następujące klucze ustawień:<table><tr><th><p>Klucz</p></th>        <th><p>Opis</p></th><th><p>Przykładowa wartość</p></th></tr><tr><td><p>Język</p></td><td><p>Język naturalny rozpoznawany w pliku multimedialnego.</p></td><td><p>Angielski, hiszpański</p></td></tr><tr><td><p>CaptionFormats</p></td><td><p>rozdzieloną średnikami listę formatów podpisu żądaną produktu wyjściowego (jeśli istnieje)</p></td><td><p>ttml;sami;webvtt</p></td></tr><tr><td><p>GenerateAIB</p></td><td><p>Flaga wartości logicznej, określając, czy plik AIB jest wymagana (do użytku z programem SQL Server i klienta IFilter indeksatora).  Aby uzyskać więcej informacji, zobacz <a href="https://azure.microsoft.com/blog/2014/11/03/using-aib-files-with-azure-media-indexer-and-sql-server/">przy użyciu plików AIB, za pomocą usługi Azure Media Indexer i programu SQL Server</a>.</p></td><td><p>True; False</p></td></tr><tr><td><p>GenerateKeywords</p></td><td><p>Flaga wartości logicznej określenie, czy plik XML — słowo kluczowe jest wymagana.</p></td><td><p>True; False. </p></td></tr><tr><td><p>ForceFullCaption</p></td><td><p>Flaga wartości logicznej, określając, czy chce wymusić pełne podpisy (niezależnie od tego, poziom ufności).  </p><p>Domyślna to false, w którym to przypadku słów i fraz, które mają mniej niż 50% ufności są pomijane w danych wyjściowych podpisem ostatecznego i zastąpione przez wielokropek ("...").  Wielokropek są przydatne do kontroli jakości podpisu i inspekcji.</p></td><td><p>True; False. </p></td></tr></table> |
+| **klawiatur** |false |Pliki zasobów, które mają być indeksowane.</p><p>Azure Media Indexer obsługuje następujące formaty plików multimedialnych: MP4, WMV, MP3, M4A, WMA, AAC, WAV.</p><p>Można określić nazwy plików w atrybucie **nazwy** lub **listy** elementu wejściowego (jak pokazano poniżej) . Jeśli nie określisz pliku zasobów do indeksowania, plik podstawowy jest wybierany. Jeśli nie ustawiono podstawowego pliku zasobów, pierwszy plik w wejściowym elemencie zawartości jest indeksowany.</p><p>Aby jawnie określić nazwę pliku zasobu, wykonaj następujące czynności:<br/>`<input name="TestFile.wmv">`<br/><br/>Można również indeksować wiele plików zasobów jednocześnie (do 10 plików). W tym celu:<br/><br/><ol class="ordered"><li><p>Utwórz plik tekstowy (plik manifestu) i nadaj mu rozszerzenie. lst. </p></li><li><p>Dodaj listę wszystkich nazw plików zasobów w danych wejściowych do tego pliku manifestu. </p></li><li><p>Dodaj (Przekaż) plik manifestu do elementu zawartości.  </p></li><li><p>Określ nazwę pliku manifestu w atrybucie listy danych wejściowych.<br/>`<input list="input.lst">`</li></ol><br/><br/>Uwaga: Jeśli dodasz więcej niż 10 plików do pliku manifestu, zadanie indeksowania zakończy się niepowodzeniem z kodem błędu 2006. |
+| **metadata** |false |Metadane dla określonych plików zasobów używanych na potrzeby adaptacji słownika.  Przydatne do przygotowania indeksatora do rozpoznawania niestandardowych słów słownika, takich jak poprawne rzeczowniki.<br/>`<metadata key="..." value="..."/>` <br/><br/>Można podać **wartości** wstępnie zdefiniowanych **kluczy**. Obecnie obsługiwane są następujące klucze:<br/><br/>"title" i "Description" — służy do adaptacji słownictwa w celu dostosowania modelu języka dla zadania i poprawiania dokładności rozpoznawania mowy.  Wartości odnoszą się do wyszukiwania w Internecie, aby znaleźć kontekstowe dokumenty tekstowe, przy użyciu zawartości, aby rozszerzyć wewnętrzny słownik na czas trwania zadania indeksowania.<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
+| **oferowanych** <br/><br/> Dodano w wersji 1,2. Obecnie jedyną obsługiwaną funkcją jest rozpoznawanie mowy ("ASR"). |false |Funkcja rozpoznawania mowy ma następujące klucze ustawień:<table><tr><th><p>Klucz</p></th>        <th><p>Opis</p></th><th><p>Przykładowa wartość</p></th></tr><tr><td><p>Język</p></td><td><p>Język naturalny, który ma zostać rozpoznany w pliku multimedialnym.</p></td><td><p>Angielski, hiszpański</p></td></tr><tr><td><p>CaptionFormats</p></td><td><p>rozdzielana średnikami lista formatów żądanych napisów wyjściowych (jeśli istnieją)</p></td><td><p>ttml;sami;webvtt</p></td></tr><tr><td><p>GenerateAIB</p></td><td><p>Flaga logiczna określająca, czy plik AIB jest wymagany (do użycia z SQL Server i IFilter klienta indeksatora).  Aby uzyskać więcej informacji, zobacz <a href="https://azure.microsoft.com/blog/2014/11/03/using-aib-files-with-azure-media-indexer-and-sql-server/">Używanie plików AIB z Azure Media Indexer i SQL Server</a>.</p></td><td><p>Oznacza False</p></td></tr><tr><td><p>GenerateKeywords</p></td><td><p>Flaga logiczna określająca, czy plik XML jest wymagany.</p></td><td><p>Oznacza False. </p></td></tr><tr><td><p>ForceFullCaption</p></td><td><p>Flaga logiczna określająca, czy wymuszać pełne podpisy (niezależnie od poziomu ufności).  </p><p>Wartość domyślna to false. w takim przypadku wyrazy i frazy, które mają mniej niż 50% poziomu ufności, są pomijane na podstawie końcowych etykiet wyjściowych i zastępowane przez wielokropek ("...").  Elipsy są przydatne do kontroli jakości napisów i inspekcji.</p></td><td><p>Oznacza False. </p></td></tr></table> |
 
 ### <a id="error_codes"></a>Kody błędów
-W przypadku błąd powinien wysyłać raporty usługi Azure Media Indexer ponownie następujące kody błędów:
+W przypadku błędu, Azure Media Indexer powinien zgłosić jeden z następujących kodów błędów:
 
 | Kod | Name (Nazwa) | Możliwe przyczyny |
 | --- | --- | --- |
 | 2000 |Nieprawidłowa konfiguracja |Nieprawidłowa konfiguracja |
-| 2001 |Nieprawidłowe zasoby danych wejściowych |Brak danych wejściowych zasobów lub zasobu puste. |
-| 2002 |Nieprawidłowy manifest |Manifest jest pusta lub manifest zawiera nieprawidłowe elementy. |
-| 2003 |Nie można pobrać plik multimedialny |Nieprawidłowy adres URL w pliku manifestu. |
-| 2004 |Nieobsługiwany protokół |Protokół Adres URL multimediów nie jest obsługiwana. |
-| 2005 |Nieobsługiwany typ pliku |Typ pliku wejściowego nośnika nie jest obsługiwany. |
-| 2006 |Zbyt wiele plików wejściowych |W manifeście danych wejściowych jest większa niż 10 plików. |
-| 3000 |Nie można zdekodować pliku multimedialnego |Nieobsługiwana kodera <br/>lub<br/> Uszkodzony plik <br/>lub<br/> Nie strumienia audio w wejściowych nośnika. |
-| 4000 |Indeksowanie Batch częściowo powiodło się. |Niektóre z plików wejściowych multimediów są nie mają być indeksowane. Aby uzyskać więcej informacji, zobacz <a href="#output_files">pliki wyjściowe</a>. |
-| inne |Błędy wewnętrzne |Skontaktuj się z zespołem pomocy technicznej. indexer@microsoft.com |
+| 2001 |Nieprawidłowe zasoby wejściowe |Brak zawartości wejściowej lub pustego elementu zawartości. |
+| 2002 |Nieprawidłowy manifest |Manifest jest pusty lub manifest zawiera nieprawidłowe elementy. |
+| 2003 |Nie można pobrać pliku multimedialnego |Nieprawidłowy adres URL w pliku manifestu. |
+| 2004 |Nieobsługiwany protokół |Protokół URL protokołu nie jest obsługiwany. |
+| 2005 |Nieobsługiwany typ pliku |Typ pliku nośnika danych wejściowych nie jest obsługiwany. |
+| 2006 |Zbyt wiele plików wejściowych |Manifest wejściowy zawiera więcej niż 10 plików. |
+| 3000 |Dekodowanie pliku nośnika nie powiodło się |Nieobsługiwany koder-dekoder multimediów <br/>lub<br/> Uszkodzony plik multimedialny <br/>lub<br/> Brak strumienia audio w nośniku wejściowym. |
+| 4000 |Indeksowanie wsadowe częściowo powiodło się |Nie można indeksować niektórych plików multimediów wejściowych. Aby uzyskać więcej informacji, zobacz <a href="#output_files">pliki wyjściowe</a>. |
+| inne |Błędy wewnętrzne |Skontaktuj się z zespołem pomocy technicznej. [https://doi.org/10.13012/J8PN93H8](indexer@microsoft.com) |
 
 ## <a id="supported_languages"></a>Obsługiwane języki
-Obecnie są obsługiwane w językach angielskim i hiszpańskim. Aby uzyskać więcej informacji, zobacz [wpis w blogu wersji 1.2](https://azure.microsoft.com/blog/2015/04/13/azure-media-indexer-spanish-v1-2/).
+Obecnie obsługiwane są języki w języku angielskim i hiszpańskim. Aby uzyskać więcej informacji, zobacz [wpis w blogu dotyczący wersji v 1.2](https://azure.microsoft.com/blog/2015/04/13/azure-media-indexer-spanish-v1-2/).
 
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -278,10 +279,10 @@ Obecnie są obsługiwane w językach angielskim i hiszpańskim. Aby uzyskać wi�
 ## <a name="provide-feedback"></a>Przekazywanie opinii
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="related-links"></a>Powiązane linki
-[Przegląd Analityki usługi Azure Media Services](media-services-analytics-overview.md)
+## <a name="related-links"></a>Linki pokrewne
+[Omówienie Azure Media Services Analytics](media-services-analytics-overview.md)
 
-[Przy użyciu plików AIB za pomocą usługi Azure Media Indexer i programu SQL Server](https://azure.microsoft.com/blog/2014/11/03/using-aib-files-with-azure-media-indexer-and-sql-server/)
+[Korzystanie z plików AIB z Azure Media Indexer i SQL Server](https://azure.microsoft.com/blog/2014/11/03/using-aib-files-with-azure-media-indexer-and-sql-server/)
 
-[Indeksowanie plików multimedialnych za pomocą usługi Azure Media Indexer 2 w wersji zapoznawczej](media-services-process-content-with-indexer2.md)
+[Indeksowanie plików multimedialnych z Azure Media Indexer 2 wersja zapoznawcza](media-services-process-content-with-indexer2.md)
 
