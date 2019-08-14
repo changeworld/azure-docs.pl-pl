@@ -14,9 +14,11 @@
 - name: Samouczki
   items:
     - name: Uruchamianie czytnika immersyjnego (Node.js)
-      href: tutorial.md
+      href: tutorial-nodejs.md
+    - name: Uruchamianie czytnika immersyjnego (Python)
+      href: tutorial-python.md
     - name: Obraz w czytniku immersyjnym (Swift)
-      href: ios-picture-immersive-reader-tutorial.md
+      href: tutorial-ios-picture-immersive-reader.md
 - name: Instrukcje
   items:
     - name: Uwierzytelnianie za pomocą usługi Azure Active Directory

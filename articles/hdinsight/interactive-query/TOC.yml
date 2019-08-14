@@ -191,6 +191,12 @@
     - name: Rozwiązywanie problemów
       href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/interactive-query/toc.json&bc=/azure/hdinsight/interactive-query/breadcrumb/toc.json
       items:
+        - name: Aplikacja rozwiązania Apache Tez zawiesza się
+          href: ./interactive-query-troubleshoot-tez-hangs.md
+        - name: Wydajność zapytań LLAP usługi Apache Hive
+          href: ./interactive-query-troubleshoot-query-performance.md
+        - name: Powolny reduktor
+          href: ./interactive-query-troubleshoot-slow-reducer.md
         - name: Przekroczenie limitu czasu widoku w usłudze Apache Hive
           href: ./interactive-query-troubleshoot-view-time-out.md
         - name: Błąd uprawnień podczas tworzenia tabeli

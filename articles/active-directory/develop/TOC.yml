@@ -295,6 +295,8 @@
               href: v2-oauth2-device-code.md
             - name: Przyznawanie poświadczeń hasła właściciela zasobu OAuth 2.0
               href: v2-oauth-ropc.md
+            - name: Przepływ asercji elementów nośnych SAML w protokole OAuth 2.0
+              href: v2-saml-bearer-assertion.md
             - name: Przerzucanie klucza podpisywania
               href: active-directory-signing-key-rollover.md
             - name: Tokeny identyfikatorów

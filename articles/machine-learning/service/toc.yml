@@ -98,9 +98,6 @@
     - name: Możliwość interpretowania modelu
       displayName: explainability
       href: machine-learning-interpretability-explainability.md
-    - name: FPGA a CPU GPU ASIC
-      displayName: 'field, programmable, arrays'
-      href: concept-accelerate-with-fpgas.md
     - name: ONNX
       href: concept-onnx.md
     - name: Bezpieczeństwo
@@ -260,7 +257,7 @@
       items:
         - name: Potoki uczenia maszynowego
           href: how-to-create-your-first-pipeline.md
-        - name: Potoki platformy Azure dla ciągłej integracji/ciągłego wdrażania
+        - name: Potoki platformy Azure dla ciągłej integracji i ciągłego wdrażania
           displayName: 'continuous, integration, delivery'
           href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context
     - name: Zarządzanie przydziałami zasobów

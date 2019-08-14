@@ -58,6 +58,12 @@
   items:
     - name: Tworzenie klastrów ESP i synchronizowanie ich ze środowiskiem lokalnym
       href: apache-domain-joined-create-configure-enterprise-security-cluster.md
+    - name: Rozwiązywanie problemów
+      items:
+        - name: Problemy z uwierzytelnianiem
+          href: ./domain-joined-authentication-issues.md
+        - name: Nie można zalogować się do rozwiązania Zeppelin
+          href: ./domain-joined-zeppelin-signin.md
 - name: Dokumentacja
   items:
     - name: Przykłady kodu

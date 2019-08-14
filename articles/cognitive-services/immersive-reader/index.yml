@@ -51,7 +51,9 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: <a href="tutorial.md">Uruchamianie czytnika immersyjnego przy użyciu platformy Node.js</a>
+          - html: <a href="tutorial-nodejs.md">Uruchamianie czytnika immersyjnego przy użyciu platformy Node.js</a>
+          - html: <a href="tutorial-python.md">Uruchamianie czytnika immersyjnego przy użyciu języka Python</a>
+          - html: <a href="tutorial-ios-picture-immersive-reader.md">Uruchamianie czytnika immersyjnego przy użyciu języka Swift</a>
   - title: Dokumentacja
     items:
       - type: list

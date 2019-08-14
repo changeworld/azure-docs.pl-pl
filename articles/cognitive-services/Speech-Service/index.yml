@@ -45,7 +45,7 @@ sections:
     items:
       - type: paragraph
         text: |
-          Zestaw SDK mowy (<a href="releasenotes.md">informacje o wersji</a>) umożliwia dodawanie do aplikacji następujących funkcji (i nie tylko)&colon; 
+          Zestaw SDK mowy (<a href="releasenotes.md">informacje o wersji</a>) umożliwia dodawanie do aplikacji następujących funkcji (i nie tylko)&colon;
           <div class="row"><div class="column"><ul>
           <li><b><a href="speech-to-text.md">Zamiana mowy na tekst</a></b> (rozpoznawanie mowy/SR)</li>
           <li><b><a href="speech-devices-sdk-create-kws.md">Niestandardowe słowo aktywujące</a></b> (wykrywanie słów kluczowych/KWS)</li>
@@ -253,10 +253,9 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: <a href="speech-to-text-sample.md">Zamiana mowy na tekst (SR)</a><br/>
-          - html: <a href="intent.md">Rozpoznawanie intencji mowy</a><br/>
-          - html: <a href="translation.md">Tłumaczenie</a>
-          - html: <a href="quickstart-text-to-speech-dotnet-windows.md">Zamiana tekstu na mowę</a><br/>
+          - html: '<a href="how-to-recognize-intents-from-speech-csharp.md">Rozpoznawanie intencji mowy przy użyciu usługi LUIS i języka C#</a><br/>'
+          - html: '<a href="tutorial-voice-enable-your-bot-speech-sdk.md">Dodawanie obsługi głosu do bota przy użyciu zestawu SDK rozpoznawania mowy i języka C#</a><br/>'
+          - html: '<a href="../translator/tutorial-build-flask-app-translation-synthesis.md?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json">Tworzenie aplikacji Flask do tłumaczenia tekstu i syntezowania mowy, REST</a><br/>'
   - title: Przykłady
     items:
       - type: paragraph

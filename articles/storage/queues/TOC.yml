@@ -38,12 +38,12 @@
         - name: Autoryzacja
           href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
           items:
-            - name: Uwierzytelnianie za pomocą usługi Azure AD
+            - name: Uwierzytelnianie i autoryzacja przy użyciu usługi Azure AD
               href: ../common/storage-auth-aad.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: Autoryzacja przy użyciu klucza wspólnego
               href: /rest/api/storageservices/authorize-with-shared-key
             - name: Autoryzacja przy użyciu sygnatury dostępu współdzielonego
-              href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+              href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Zaawansowana ochrona przed zagrożeniami
           href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Wspólne atrybuty zabezpieczeń platformy Azure
@@ -118,11 +118,11 @@
                   href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
                 - name: Interfejs wiersza polecenia platformy Azure
                   href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-            - name: Uwierzytelnianie za pomocą usługi Azure AD
+            - name: Uwierzytelnianie i autoryzacja przy użyciu usługi Azure AD
               items:
-                - name: Uwierzytelnianie przy użyciu tożsamości zarządzanej
+                - name: Autoryzacja przy użyciu tożsamości zarządzanej
                   href: ../common/storage-auth-aad-msi.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-                - name: Uwierzytelnianie przy użyciu aplikacji
+                - name: Autoryzacja z poziomu aplikacji
                   href: ../common/storage-auth-aad-app.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: Autoryzacja przy użyciu klucza wspólnego
               items:

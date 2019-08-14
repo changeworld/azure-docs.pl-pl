@@ -91,23 +91,27 @@
               href: choose-map-style.md
             - name: Dodawanie kontrolek do mapy
               href: map-add-controls.md
+            - name: Tworzenie źródła danych
+              href: create-data-source-web-sdk.md
             - name: Dodawanie warstwy symboli
               href: map-add-pin.md
-            - name: Dodawanie menu podręcznego
-              href: map-add-popup.md
             - name: Dodawanie warstwy bąbelkowej
               href: map-add-bubble-layer.md
-            - name: Dodawanie kształtów
+            - name: Dodawanie warstwy linii
+              href: map-add-line-layer.md
+            - name: Dodawanie warstwy wielokąta
               href: map-add-shape.md
             - name: Dodawanie warstwy mapy cieplnej
               href: map-add-heat-map-layer.md
+            - name: Dodawanie menu podręcznego
+              href: map-add-popup.md
             - name: Dane punktu klastra
               href: clustering-point-data-web-sdk.md
             - name: Korzystanie z wyrażeń stylu opartych na danych
               href: data-driven-style-expressions-web-sdk.md
             - name: Jak używać szablonów obrazów
               href: how-to-use-image-templates-web-sdk.md
-            - name: Nakładka obrazu
+            - name: Dodawanie warstwy obrazów
               href: map-add-image-layer.md
             - name: Dodawanie warstw kafelków
               href: map-add-tile-layer.md
@@ -139,6 +143,8 @@
           href: how-to-add-symbol-to-android-map.md
         - name: Dodawanie kształtów
           href: how-to-add-shapes-to-android-map.md
+        - name: Wyświetlanie informacji o funkcjach
+          href: display-feature-information-android.md
         - name: Dodawanie warstwy kafelków
           href: how-to-add-tile-layer-android-map.md
 - name: Dokumentacja
