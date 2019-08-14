@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 07/19/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 2803b316585228fc6e4e6fd48d67f235e27f0a65
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f7c83e67c2162561aa579d38116f8ce01fceda9a
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847320"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014375"
 ---
 # <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>Tworzenie konta usługi Azure Data Lake Storage 2. generacji
 
@@ -125,7 +125,7 @@ Rozpocznij od otwarcia sesji programu PowerShell z podwyższonym poziomem uprawn
 Instalacja modułu Az.Storage
 
 ```powershell
-Install-Module Az.Storage -Repository PSGallery -AllowPrerelease -AllowClobber -Force
+Install-Module Az.Storage -Repository PSGallery -AllowClobber -Force
 ```
 
 ### <a name="sign-in-to-your-azure-subscription"></a>Zaloguj się do subskrypcji platformy Azure
@@ -225,7 +225,7 @@ Aby usunąć grupę zasobów i skojarzone z nią zasoby, w tym nowe konto magazy
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start utworzono konto magazynu z funkcjami usługi Data Lake Storage Gen2. Aby dowiedzieć się, jak przekazywać i pobierać obiekty blob z konta magazynu i do niego, zobacz następujący temat.
 
