@@ -15,13 +15,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/16/2018
-ms.openlocfilehash: 8a19f414f31c307111edad876ed973ff4027d907
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.date: 08/13/2019
+ms.openlocfilehash: 6d79bfa8f390d145bfd963b40497030140a3d135
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68591918"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013588"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Aprowizowanie maszyny wirtualnej do nauki o danych dla systemu Linux (Ubuntu)
 
@@ -86,32 +86,35 @@ Przed utworzeniem maszyny wirtualnej do nauki o danych dla systemu Linux, musi m
 Poniżej przedstawiono kroki, aby utworzyć wystąpienie maszyny wirtualnej do nauki o danych dla systemu Linux:
 
 1. Przejdź do maszyny wirtualnej, w witrynie [witryny Azure portal](https://portal.azure.com/#create/microsoft-dsvm.linux-data-science-vm-ubuntulinuxdsvmubuntu). Jeśli użytkownik nie jest jeszcze zalogowany, może zostać wyświetlony monit o zalogowanie się do konta platformy Azure. 
-1. Kliknij przycisk **Utwórz** (u dołu), aby wywołać Kreatora.![ Konfigurowanie — — — maszyna wirtualna analizy danych](./media/dsvm-ubuntu-intro/configure-data-science-virtual-machine.png)
-1. Dane wejściowe dla każdej z czynności w Kreatorze (wyliczany na poprzednim rysunku po prawej stronie) użyty do utworzenia maszyny wirtualnej do nauki o danych firmy Microsoft można znaleźć w poniższych sekcjach. Poniżej przedstawiono dane wejściowe wymagane do skonfigurowania każdego z następujących czynności:
+1. Kliknij przycisk **Utwórz** , aby wyświetlić Kreatora.
+    ![Konfigurowanie maszyny wirtualnej do analizy danych](./media/dsvm-ubuntu-intro/configure-data-science-virtual-machine.png)
+1. Poniższe sekcje zawierają dane wejściowe dla każdego kroku kreatora użytego do utworzenia Data Science Virtual Machine firmy Microsoft. Poniżej przedstawiono dane wejściowe wymagane do skonfigurowania każdego z następujących czynności:
 
-   a. **Podstawy**:
-
-   * **Nazwa**: Nazwa tworzonego serwera analizy danych.
-   * **Typ dysku maszyny wirtualnej**: Wybierz **SSD w warstwie Premium** , jeśli wolisz dysk SSD (SSD). W przeciwnym razie wybierz **standardowych dysków Twardych**. 
-   * **Nazwa użytkownika**: Identyfikator logowania pierwszego konta.
-   * **Hasło**: Hasło pierwszego konta (można użyć klucza publicznego SSH zamiast hasła).
-   * **Subskrypcja**: Jeśli masz więcej niż jedną subskrypcję, wybierz ten, na którym maszyna ma zostać utworzona i rozliczane. Musisz mieć uprawnienia do tworzenia zasobów dla tej subskrypcji.
-   * **Grupa zasobów**: Możesz utworzyć nową lub użyj istniejącej grupy.
-   * **Lokalizacja**: Wybierz centrum danych, które jest najbardziej odpowiednie. Zazwyczaj jest centrum danych, który zawiera większość danych lub znajduje się najbliżej Twojej lokalizacji fizycznej najszybszy dostęp do sieci.
-
-   b. **Rozmiar**:
-
-   * Wybierz jeden z typów serwerów, które spełnia Twoje wymagania funkcjonalne i ograniczenia kosztów. Wybierz maszynę wirtualną o klasie NC lub ND dla wystąpień maszyn wirtualnych opartych na procesorze GPU. [Dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/) strona zawiera listę regionów za pomocą procesorów GPU.
-
-   c. **Ustawienia**:
-
-   * W większości przypadków można po prostu użyć wartości domyślne. Aby uwzględnić wartości innych niż domyślne, umieść kursor informacyjny łącze, aby uzyskać pomoc dotyczącą określonych pól.
-
-   d. **Podsumowanie**:
-
-   * Sprawdź, czy wszystkie wprowadzone informacje jest poprawna. Link znajduje się na warunki użytkowania. Maszyna wirtualna nie ma żadnych dodatkowych kosztów poza obliczenia rozmiaru serwera wybranej w ramach **rozmiar** kroku. Aby rozpocząć, aprowizacja, kliknij przycisk **Utwórz**. 
-
-Aprowizacja powinno zająć około 5 minut. Stan aprowizacji jest wyświetlany w witrynie Azure portal.
+    a. **Podstawy**:
+    
+    * **Subskrypcja**: Jeśli masz więcej niż jedną subskrypcję, wybierz ten, na którym maszyna ma zostać utworzona i rozliczane. Musisz mieć uprawnienia do tworzenia zasobów dla tej subskrypcji.
+    * **Grupa zasobów**: Możesz utworzyć nową lub użyj istniejącej grupy.
+    * **Nazwa maszyny wirtualnej**: Nazwa tworzonego serwera analizy danych.
+    * **Region**: Wybierz centrum danych, które jest najbardziej odpowiednie. Zazwyczaj jest centrum danych, który zawiera większość danych lub znajduje się najbliżej Twojej lokalizacji fizycznej najszybszy dostęp do sieci.
+    * **Opcje dostępności**: Ustaw tę opcję, jeśli chcesz używać tej maszyny wirtualnej w zestawach dostępności/strefach, w przeciwnym razie pozostaw wartość domyślną.
+    * **Obraz**: Pozostaw wartość domyślną.
+    * **Rozmiar**: Wybierz jeden z typów serwerów, które spełnia Twoje wymagania funkcjonalne i ograniczenia kosztów. Wybierz maszynę wirtualną z serii NC lub ND dla wystąpień maszyn wirtualnych opartych na procesorze GPU. 
+    * **Nazwa użytkownika**: Nazwa użytkownika administratora
+    * **Klucz publiczny SSH**: Klucz publiczny RSA w formacie pojedynczego wiersza (można użyć hasła zamiast klucza SSH).
+    
+    b. **Dyski**:
+    
+    * **Typ dysku systemu operacyjnego**: Wybierz **SSD w warstwie Premium** , jeśli wolisz dysk SSD (SSD). W przeciwnym razie wybierz **standardowych dysków Twardych**.
+    
+    c. W pozostałych ustawieniach można używać wartości domyślnych. Aby uwzględnić wartości innych niż domyślne, umieść kursor informacyjny łącze, aby uzyskać pomoc dotyczącą określonych pól.
+    
+    Na koniec wybierz pozycję **Przegląd + Utwórz** .
+    
+    d. **Przejrzyj i Utwórz**:
+    
+    * Po zakończeniu walidacji Sprawdź, czy wszystkie wprowadzone informacje są poprawne. Link znajduje się na warunki użytkowania. Na maszynie wirtualnej nie są naliczane dodatkowe opłaty wykraczające poza obliczenia dla rozmiaru serwera wybranego w danych wejściowych rozmiaru. Aby rozpocząć, aprowizacja, kliknij przycisk **Utwórz**.
+    
+    Aprowizacja powinno zająć około 5 minut. Stan aprowizacji jest wyświetlany w witrynie Azure portal.
 
 ## <a name="how-to-access-the-data-science-virtual-machine-for-linux"></a>Jak uzyskiwać dostęp do maszyny wirtualnej do nauki o danych dla systemu Linux
 

@@ -1,6 +1,6 @@
 ---
-title: Dodaj zaporę następnej generacji w usłudze Azure Security Center | Dokumentacja firmy Microsoft
-description: W tym dokumencie przedstawiono sposób implementowania zaleceń Centrum zabezpieczeń Azure **Dodaj zaporę następnej generacji** i **kierowania ruchu przez zaporę nowej generacji tylko**.
+title: Dodawanie zapory nowej generacji w Azure Security Center | Microsoft Docs
+description: W tym dokumencie przedstawiono sposób wdrażania Azure Security Center zalecenia **Dodaj zaporę nowej generacji** i **Roześlij ruch tylko przez zapory następnej generacji**.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -15,60 +15,60 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: 731102037b596091b80fbdfa02a8ff3c111b556e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "60707078"
 ---
-# <a name="add-a-next-generation-firewall-in-azure-security-center"></a>Dodaj zaporę następnej generacji w usłudze Azure Security Center
-Usługa Azure Security Center może zalecić sytuacja: dodajesz zaporę nowej generacji (nowej NGFW) od partnera firmy Microsoft, aby zwiększyć Twoje zabezpieczenia. Ten dokument zawiera opis przykładu przekonamy się jak to zrobić.
+# <a name="add-a-next-generation-firewall-in-azure-security-center"></a>Dodawanie zapory nowej generacji w Azure Security Center
+W Azure Security Center może być zalecane dodanie zapory nowej generacji (zapory następnej generacji) od partnera firmy Microsoft w celu zwiększenia bezpieczeństwa. W tym dokumencie przedstawiono przykład sposobu wykonania tej czynności.
 
 > [!NOTE]
 > Informacje na temat usługi przedstawiono w tym dokumencie za pomocą przykładowego wdrożenia.  Nie jest to przewodnik krok po kroku.
 >
 >
 
-## <a name="implement-the-recommendation"></a>Zaimplementuj zalecenia
-1. W **zalecenia** bloku wybierz **Dodaj zaporę następnej generacji**.
+## <a name="implement-the-recommendation"></a>Implementowanie zalecenia
+1. W bloku **zalecenia** wybierz pozycję **Dodaj zaporę nowej generacji**.
    ![Dodawanie zapory nowej generacji][1]
-2. W **Dodaj zaporę następnej generacji** bloku, wybierz punkt końcowy.
+2. W bloku **Dodaj zaporę nowej generacji** wybierz punkt końcowy.
    ![Wybierz punkt końcowy][2]
-3. Sekundy **Dodaj zaporę następnej generacji** zostanie otwarty blok. Możesz użyć istniejącego rozwiązania, jeśli jest dostępny, lub można utworzyć nowy. W tym przykładzie Brak dostępnych nie istniejących rozwiązań, dzięki czemu możemy utworzyć zapory nowej generacji.
-   ![Tworzenie zapory nowej generacji][3]
-4. Aby utworzyć zapory nowej generacji, wybierz rozwiązanie z listy zintegrowanych partnerów. W tym przykładzie wybierzemy **Check Point**.
+3. Zostanie otwarty drugi blok **Zapora nowej generacji** . Możesz wybrać użycie istniejącego rozwiązania, jeśli jest dostępne lub można utworzyć nowe. W tym przykładzie nie ma dostępnych istniejących rozwiązań, więc tworzymy zapory następnej generacji.
+   ![Utwórz zaporę nowej generacji][3]
+4. Aby utworzyć zapory następnej generacji, wybierz rozwiązanie z listy zintegrowanych partnerów. W tym przykładzie wybieramy pozycję **Check Point**.
    ![Wybierz rozwiązanie zapory nowej generacji][4]
-5. **Check Point** zostanie otwarty blok udostępnia informacji na temat rozwiązania partnerskiego. Wybierz **Utwórz** w bloku informacji.
-   ![Blok informacji Zapora][5]
-6. **Utwórz maszynę wirtualną** zostanie otwarty blok. W tym miejscu można wprowadzić informacje wymagane do uruchomienia maszyny wirtualnej (VM), uruchomionym zapory nowej generacji. Postępuj zgodnie z instrukcjami i podaj wymagane informacje zapory nowej generacji. Wybierz przycisk OK, aby zastosować.
-   ![Tworzenie maszyny wirtualnej, aby uruchomić zapory nowej generacji][6]
+5. Zostanie otwarty blok **punktu kontroli** z informacjami o rozwiązaniu partnerskim. Wybierz pozycję **Utwórz** w bloku informacje.
+   ![Blok informacji o zaporze][5]
+6. Zostanie otwarty blok **Utwórz maszynę wirtualną** . W tym miejscu możesz wprowadzić informacje wymagane do uruchomienia maszyny wirtualnej, na której działa zapory następnej generacji. Wykonaj kroki i podaj wymagane informacje dotyczące zapory następnej generacji. Wybierz przycisk OK, aby zastosować.
+   ![Utwórz maszynę wirtualną do uruchomienia zapory następnej generacji][6]
 
-## <a name="route-traffic-through-ngfw-only"></a>Kierowanie ruchu sieciowego tylko za pośrednictwem zapory następnej generacji
-Wróć do **zalecenia** bloku. Wygenerowano nowy wpis, po dodaniu zapory nowej generacji za pośrednictwem Centrum zabezpieczeń, o nazwie **kierowania ruchu przez zaporę nowej generacji tylko**. To zalecenie jest tworzone tylko wtedy, gdy zainstalowano usługi zapory nowej generacji za pomocą usługi Security Center. Jeśli masz punktami końcowymi połączone z Internetem, usługa Security Center zaleca, aby skonfigurować reguły sieciowej grupy zabezpieczeń, które wymuszają ruch przychodzący do maszyny Wirtualnej za pośrednictwem swojej zapory nowej generacji.
+## <a name="route-traffic-through-ngfw-only"></a>Kieruj ruch tylko przez zaporę nowej generacji
+Wróć do bloku **rekomendacje** . Nowy wpis został wygenerowany po dodaniu zapory następnej generacji za pośrednictwem Security Center, nazywanego **ruchem tras przez zapory następnej generacji**. To zalecenie jest tworzone tylko wtedy, gdy zainstalowano zapory następnej generacji za Security Center. Jeśli masz punkty końcowe dostępne z Internetu, Security Center zaleca się skonfigurowanie reguł sieciowej grupy zabezpieczeń, które wymuszą ruch przychodzący do maszyny wirtualnej za poorednictwem zapory następnej generacji.
 
-1. W **blok zalecenia**, wybierz opcję **kierowania ruchu przez zaporę nowej generacji tylko**.
+1. W **bloku zalecenia**wybierz pozycję **kierowanie ruchu tylko przez zapory następnej generacji**.
    ![Kierowanie ruchu sieciowego tylko za pośrednictwem zapory następnej generacji][7]
-2. Spowoduje to otwarcie bloku **kierowania ruchu przez zaporę nowej generacji tylko**, który zawiera listę maszyn wirtualnych, które może kierować ruch do. Wybierz maszynę wirtualną z listy.
-   ![Wybierz maszynę Wirtualną][8]
-3. Zostanie otwarty blok dla wybranej maszyny Wirtualnej zawierający powiązane reguły dla ruchu przychodzącego. Opis zapewnia więcej informacji na temat wykonać następujące czynności. Wybierz **Edytuj reguły dla ruchu przychodzącego** kontynuować edytowanie reguły ruchu przychodzącego. Oczekuje się, że **źródła** nie jest ustawiony na **wszelkie** dla punktów końcowych dostępnego z Internetu, połączone za pomocą zapory nowej generacji. Aby dowiedzieć się więcej na temat właściwości reguły dla ruchu przychodzącego, zobacz [reguły zabezpieczeń](../virtual-network/security-overview.md#security-rules).
-   ![Skonfiguruj reguły, aby ograniczyć dostęp][9]
-   ![Edytuj reguły dla ruchu przychodzącego][10]
+2. Spowoduje to otwarcie bloku **tylko ruch przez zapory następnej generacji**, w którym znajdują się maszyny wirtualne, do których można kierować ruch. Wybierz maszynę wirtualną z listy.
+   ![Wybierz maszynę wirtualną][8]
+3. Zostanie otwarty blok dla wybranej maszyny wirtualnej, w którym wyświetlane są powiązane reguły ruchu przychodzącego. Opis zawiera więcej informacji na temat możliwych kolejnych kroków. Wybierz pozycję **Edytuj reguły ruchu przychodzącego** , aby kontynuować Edytowanie reguły ruchu przychodzącego. Oczekuje się, że **Źródło** nie jest ustawione na **żadne** dla punktów końcowych dostępnych z Internetu połączonych z zapory następnej generacji. Aby dowiedzieć się więcej o właściwościach reguły ruchu przychodzącego, zobacz [reguły zabezpieczeń](../virtual-network/security-overview.md#security-rules).
+   ![Konfigurowanie reguł do ograniczania][9]
+   dostępu![Edytowanie reguły ruchu przychodzącego][10]
 
 ## <a name="see-also"></a>Zobacz także
-W tym dokumencie pokazano sposób implementacji zalecenia usługi Security Center "Dodaj zaporę następnej generacji". Aby dowiedzieć się więcej na temat NGFWs i rozwiązania partnerskiego Check Point, zobacz następujące tematy:
+W tym dokumencie przedstawiono sposób implementacji zalecenia Security Center "Dodawanie zapory nowej generacji". Aby dowiedzieć się więcej na temat rozwiązań NGFWs i partnera Check Point, zobacz następujące tematy:
 
-* [Zapory następnej generacji](https://en.wikipedia.org/wiki/Next-Generation_Firewall)
+* [Zapora nowej generacji](https://en.wikipedia.org/wiki/Next-Generation_Firewall)
 * [Check Point vSEC](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/checkpoint.vsec)
 
 Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
-* [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](tutorial-security-policy.md) — informacje o sposobie konfigurowania zasad zabezpieczeń.
-* [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w usłudze Azure Security Center](security-center-recommendations.md) — Dowiedz się, w jaki sposób zalecenia ułatwiają ochronę zasobów platformy Azure.
-* [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md) — informacje o sposobie monitorowania kondycji zasobów platformy Azure.
+* [Ustawianie zasad zabezpieczeń w Azure Security Center](tutorial-security-policy.md) --Dowiedz się, jak skonfigurować zasady zabezpieczeń.
+* [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w Azure Security Center](security-center-recommendations.md) — Dowiedz się, jak zalecenia ułatwiają ochronę zasobów platformy Azure.
+* [Monitorowanie kondycji zabezpieczeń w Azure Security Center](security-center-monitoring.md) — informacje na temat monitorowania kondycji zasobów platformy Azure.
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md) — informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi.
 * [Monitorowanie rozwiązań partnerskich w Centrum zabezpieczeń Azure](security-center-partner-solutions.md) — informacje na temat monitorowania stanu kondycji rozwiązań partnerskich.
 * [Azure Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
-* [Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) — wpisy na blogu dotyczące zabezpieczeń platformy Azure i zgodności.
+* [Blog dotyczący zabezpieczeń platformy Azure](https://blogs.msdn.com/b/azuresecurity/) — zawiera wpisy w blogu dotyczące zabezpieczeń i zgodności platformy Azure.
 
 <!--Image references-->
 [1]: ./media/security-center-add-next-gen-firewall/add-next-gen-firewall.png

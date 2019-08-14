@@ -1,7 +1,7 @@
 ---
 title: Architektura & kluczowe pojęcia
 titleSuffix: Azure Machine Learning service
-description: Poznaj architekturę, terminy, koncepcje i przepływ pracy, które tworzą Azure Machine Learning usługi.
+description: Poznaj architekturę, terminy, koncepcje i przepływy pracy wchodzące w skład usługi Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: e6f6c41e5de4f4a053748dfb08dc57e8acac32e5
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ea5e476680b07a6a7ba2b57e94f1f0b99cc10987
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848240"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990097"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Jak działa usługa Azure Machine Learning: Architektura i pojęcia
 
@@ -49,12 +49,16 @@ Użyj tych narzędzi dla Azure Machine Learning:
 + Napisz kod w Visual Studio Code z [rozszerzeniem Azure Machine Learning vs Code](how-to-vscode-tools.md)
 + Użyj [interfejsu wizualizacji (wersja zapoznawcza) usługi Azure Machine Learning](ui-concept-visual-interface.md) , aby wykonać etapy przepływu pracy bez pisania kodu.
 
-## <a name="glossary-of-concepts"></a>Słownik pojęć
+> [!NOTE]
+> Chociaż w tym artykule opisano warunki i pojęcia używane przez usługę Azure Machine Learning, nie definiujemy warunków i koncepcji dla platformy Azure. Aby uzyskać więcej informacji na temat terminologii platformy Azure, zobacz [słownik Microsoft Azure](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology).
+
+## <a name="glossary"></a>Słownik
 
 + <a href="#workspaces">Workspace</a>
 + <a href="#experiments">Eksperymenty</a>
 + <a href="#models">Przykładów</a>
 + <a href="#run-configurations">Uruchom konfigurację</a>
++ [Szacowania](#estimators)
 + <a href="#datasets-and-datastores">& Magazynów danych</a>
 + <a href="#compute-targets">Cele obliczeń</a>
 + <a href="#training-scripts">Skrypt szkoleniowy</a>
@@ -69,19 +73,9 @@ Użyj tych narzędzi dla Azure Machine Learning:
 + <a href="#ml-pipelines">Potoki ML</a>
 + <a href="#logging">Logging</a>
 
-> [!NOTE]
-> Chociaż w tym artykule opisano warunki i pojęcia używane przez usługę Azure Machine Learning, nie definiujemy warunków i koncepcji dla platformy Azure. Aby uzyskać więcej informacji na temat terminologii platformy Azure, zobacz [słownik Microsoft Azure](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology).
-
-
 ### <a name="workspaces"></a>Obszary robocze
 
-[Obszar roboczy](concept-workspace.md) jest zasobem najwyższego poziomu dla usługi Azure Machine Learning. Zapewnia centralne miejsce do pracy ze wszystkimi artefaktami tworzonymi podczas korzystania z usługi Azure Machine Learning.
-
-Taksonomia obszaru roboczego przedstawiono na poniższym diagramie:
-
-[![Taksonomia obszaru roboczego](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
-
-Aby uzyskać więcej informacji na temat obszarów roboczych, zobacz [co to jest obszar roboczy Azure Machine Learning?](concept-workspace.md).
+[Obszar roboczy](concept-workspace.md) jest zasobem najwyższego poziomu dla usługi Azure Machine Learning. Zapewnia centralne miejsce do pracy ze wszystkimi artefaktami tworzonymi podczas korzystania z usługi Azure Machine Learning. Obszar roboczy można udostępniać innym osobom. Aby uzyskać szczegółowy opis obszarów roboczych, zobacz [co to jest obszar roboczy Azure Machine Learning?](concept-workspace.md)
 
 ### <a name="experiments"></a>Eksperymenty
 
@@ -97,7 +91,7 @@ Model jest generowany przez uruchomienie w usłudze Azure Machine Learning. Moż
 
 Usługa Azure Machine Learning jest platformą niezależny od. Podczas tworzenia modelu można użyć dowolnej popularnej platformy uczenia maszynowego, takiej jak Scikit-Learning, XGBoost, PyTorch, TensorFlow i łańcucha.
 
-Aby zapoznać się z przykładem szkoleń dotyczących modelu [, zobacz Samouczek: uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md).
+Aby zapoznać się z przykładem szkoleń dotyczących modelu przy użyciu Scikit — uczenie i [szacowania, zobacz Samouczek: uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md).
 
 **Rejestr modelu** śledzi wszystkie modele w obszarze roboczym usługi Azure Machine Learning.
 
@@ -119,6 +113,19 @@ Konfiguracja przebiegu to zestaw instrukcji, które definiują sposób uruchamia
 Konfigurację przebiegu można utrwalić do pliku znajdującego się w katalogu, który zawiera skrypt szkoleniowy lub który może być skonstruowany jako obiekt w pamięci i użyty do przesłania uruchomienia.
 
 Na przykład Uruchom konfiguracje, zobacz [Wybieranie i używanie elementu docelowego obliczeń do uczenia modelu](how-to-set-up-training-targets.md).
+
+### <a name="estimators"></a>Szacowania
+
+Aby ułatwić uczenie modeli przy użyciu popularnych struktur, Klasa szacowania umożliwia łatwe konstruowanie konfiguracji uruchomieniowych. Można utworzyć i użyć generycznej [szacowania](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) do przesyłania skryptów szkoleniowych, które korzystają z wybranej platformy szkoleniowej (na przykład scikit-Learning).
+
+W przypadku zadań PyTorch, TensorFlow i łańcucha, Azure Machine Learning również udostępnia odpowiednie [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)i [łańcucha](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) szacowania, aby uprościć korzystanie z tych platform.
+
+Aby uzyskać więcej informacji zobacz następujące artykuły:
+
+* [Uczenie modeli ml z szacowania](how-to-train-ml-models.md).
+* [Pytorch modele uczenia głębokiego na dużą skalę w Azure Machine Learning](how-to-train-pytorch.md).
+* [Uczenie i rejestrowanie modeli TensorFlow na dużą skalę dzięki usłudze Azure Machine Learning](how-to-train-tensorflow.md).
+* [Uczenie i rejestrowanie modeli łańcucha na dużą skalę dzięki usłudze Azure Machine Learning](how-to-train-chainer.md).
 
 ### <a name="datasets-and-datastores"></a>Zestawy danych i magazyny datastores
 
@@ -152,7 +159,6 @@ Przebieg jest rekord, który zawiera następujące informacje:
 * Migawka katalogu, który zawiera skrypty, przed przebiegu
 
 Podczas przesyłania skryptu w celu uczenia modelu należy utworzyć przebieg. Uruchom może mieć zero lub więcej uruchomień podrzędnych. Na przykład uruchomienie najwyższego poziomu może mieć dwa uruchomienia podrzędne, z których każdy może mieć własne uruchomienie podrzędne.
-
 
 ### <a name="github-tracking-and-integration"></a>Śledzenie i integracja z usługą GitHub
 
@@ -231,7 +237,7 @@ Aby uzyskać więcej informacji na temat potoków uczenia maszynowego za pomocą
 
 Podczas opracowywania rozwiązania Użyj zestawu SDK języka Python Azure Machine Learning w skrypcie języka Python, aby rejestrować arbitralne metryki. Po uruchomieniu Zbadaj metryki, aby określić, czy przebieg został utworzony przez model, który chcesz wdrożyć.
 
-### <a name="next-steps"></a>Kolejne kroki
+### <a name="next-steps"></a>Następne kroki
 
 Aby rozpocząć pracę z usługą Azure Machine Learning, zobacz:
 

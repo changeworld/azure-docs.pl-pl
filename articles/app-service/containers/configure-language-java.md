@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 1488dbdcc042b29880560e7255de96b8d0409779
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 825379c04c22b3f13e651455c490a58ad47169d8
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498502"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967163"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurowanie aplikacji Java dla systemu Linux dla Azure App Service
 
@@ -243,9 +243,6 @@ Aby wstrzyknąć te wpisy tajne w pliku konfiguracji wiosennej lub Tomcat, użyj
 
 W tej sekcji przedstawiono sposób łączenia aplikacji Java wdrożonych w systemie Azure App Service w systemie Linux z platformami NewRelic i AppDynamics Application Performance Monitoring (APM).
 
-[Konfiguruj nowe Relic](#configure-new-relic)
-[Konfigurowanie AppDynamics](#configure-appdynamics)
-
 ### <a name="configure-new-relic"></a>Konfiguruj nowe Relic
 
 1. Utwórz konto NewRelic na [newrelic.com](https://newrelic.com/signup)
@@ -258,7 +255,6 @@ W tej sekcji przedstawiono sposób łączenia aplikacji Java wdrożonych w syste
     - Jeśli aplikacja używa **języka Java SE**, Utwórz zmienną środowiskową o nazwie `JAVA_OPTS` z wartością. `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`
     - Jeśli używasz **Tomcat**, Utwórz zmienną środowiskową o nazwie `CATALINA_OPTS` z wartością. `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`
     - Jeśli używasz programu **WildFly**, zobacz nową dokumentację Relic w [tym miejscu](https://docs.newrelic.com/docs/agents/java-agent/additional-installation/wildfly-version-11-installation-java) , aby uzyskać wskazówki dotyczące instalowania agenta Java i konfiguracji JBoss.
-    - Jeśli masz już zmienną środowiskową dla `JAVA_OPTS` lub `CATALINA_OPTS`, Dołącz `javaagent` opcję do końca bieżącej wartości.
 
 ### <a name="configure-appdynamics"></a>Konfigurowanie AppDynamics
 
@@ -269,7 +265,9 @@ W tej sekcji przedstawiono sposób łączenia aplikacji Java wdrożonych w syste
 5. W Azure Portal przejdź do aplikacji w App Service i Utwórz nowe ustawienie aplikacji.
     - Jeśli używasz **języka Java SE**, Utwórz zmienną środowiskową o nazwie `JAVA_OPTS` przy użyciu wartości `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` , `<app-name>` gdzie to nazwa App Service.
     - Jeśli używasz **Tomcat**, Utwórz zmienną środowiskową o nazwie `CATALINA_OPTS` przy użyciu wartości `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` , gdzie `<app-name>` to nazwa App Service.
-    - Jeśli używasz **WildFly**, zapoznaj się [z dokumentacją AppDynamics](https://docs.appdynamics.com/display/PRO45/JBoss+and+Wildfly+Startup+Settings) w celu uzyskania wskazówek dotyczących instalowania agenta Java i konfiguracji JBoss.
+    - Jeśli używasz **WildFly**, zapoznaj się z dokumentacją AppDynamics [](https://docs.appdynamics.com/display/PRO45/JBoss+and+Wildfly+Startup+Settings) w celu uzyskania wskazówek dotyczących instalowania agenta Java i konfiguracji JBoss.
+
+>  Jeśli masz już zmienną środowiskową dla `JAVA_OPTS` lub `CATALINA_OPTS`, Dołącz `-javaagent:/...` opcję do końca bieżącej wartości.
 
 ## <a name="configure-jar-applications"></a>Konfigurowanie aplikacji JAR
 

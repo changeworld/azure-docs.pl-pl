@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33704c3392726ccd12ca0fd74f26465a54697e11
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 178f81cf42e5c57be4a0b69ada6560d46951a3a3
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722144"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68942845"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Przechowywanie danych tożsamości na potrzeby klientów w Europie w usłudze Azure Active Directory
 Dane tożsamości są przechowywane w usłudze Azure AD w lokalizacji geograficznej na podstawie adresu dostarczonego przez organizację w przypadku subskrybowania usługi online firmy Microsoft, takiej jak Office 365 i Azure. Aby uzyskać informacje o tym, gdzie są przechowywane dane tożsamości, możesz użyć sekcji [gdzie znajdują się Twoje dane?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) Centrum zaufania Microsoft.
@@ -43,6 +43,15 @@ Usługa Azure AD B2B zapisuje zaproszenia przy użyciu linku Zrealizuj i przekie
 ## <a name="microsoft-azure-active-directory-domain-services-azure-ad-ds"></a>Microsoft Azure Active Directory usługi domenowe (Azure AD DS)
 
 Usługa Azure AD DS przechowuje dane użytkowników w tej samej lokalizacji, co wybrana przez klienta sieć wirtualna Azure. Dlatego jeśli sieć znajduje się poza Europą, dane są replikowane i przechowywane poza kontynentem europejskim.
+
+## <a name="federation-in-microsoft-exchange-server-2013"></a>Federacja w programie Microsoft Exchange Server 2013
+    
+- Identyfikator aplikacji (AppID) — unikatowy numer wygenerowany przez system uwierzytelniania Azure Active Directory w celu identyfikowania organizacji programu Exchange.
+- Lista zatwierdzonych domen federacyjnych dla aplikacji
+- Klucz publiczny podpisywania tokenu aplikacji 
+
+Aby uzyskać więcej informacji na temat Federacji w programie Microsoft Exchange Server [, zapoznaj się z Federacją: Artykuł pomocy](https://docs.microsoft.com/exchange/federation-exchange-2013-help) programu Exchange 2013.
+
 
 ## <a name="other-considerations"></a>Inne zagadnienia
 

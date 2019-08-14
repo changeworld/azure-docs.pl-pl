@@ -1,6 +1,6 @@
 ---
 title: Dodawanie znacznika HTML do Azure Maps | Microsoft Docs
-description: Jak dodać znacznik HTML do mapy JavaScript
+description: Jak dodać znacznik HTML do Azure Maps Web SDK.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: f8777a3d0eb9b97fff6f492f181a432d98d9341c
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ff18b8646a3845d029e9826c0895b9d3eb16bdde
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849303"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976201"
 ---
 # <a name="add-html-markers-to-the-map"></a>Dodawanie znaczników HTML do mapy
 
@@ -28,16 +28,36 @@ W tym artykule opisano sposób dodawania niestandardowego kodu HTML, takiego jak
 
 ## <a name="add-an-html-marker"></a>Dodawanie znacznika HTML
 
-Klasa HtmlMarker ma styl domyślny. Znacznik można dostosować, ustawiając opcje koloru i tekstu znacznika. Domyślny styl klasy HtmlMarker to szablon SVG, który ma kolor i symbol zastępczy tekstu. Ustaw właściwości koloru i tekstu w opcjach HtmlMarker na potrzeby szybkiego dostosowywania. 
+Klasa [HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest) ma styl domyślny. Znacznik można dostosować, ustawiając opcje koloru i tekstu znacznika. Domyślny styl klasy znaczników HTML jest szablon SVG, który ma `{color}` symbol zastępczy i. `{text}` Ustaw właściwości koloru i tekstu w opcjach znacznika HTML, aby szybko dostosowywać. 
+
+Poniższy kod tworzy znacznik HTML i ustawia właściwość Color na wartość "DodgerBlue" i właściwość Text na "10". Do znacznika i `click` zdarzenia służy do przełączania widoczności okna podręcznego.
+
+```javascript
+//Create a HTML marker and add it to the map.
+var marker = new atlas.HtmlMarker({
+    color: 'DodgerBlue',
+    text: '10',
+    position: [0, 0],
+    popup: new atlas.Popup({
+        content: '<div style="padding:10px">Hello World</div>',
+        pixelOffset: [0, -30]
+    })
+});
+
+map.markers.add(marker);
+
+//Add a click event to toggle the popup.
+map.events.add('click',marker, () => {
+    marker.togglePopup();
+});
+```
+
+Poniżej znajduje się kompletny przykładowy kod wykonywany z powyższymi funkcjami.
 
 <br/>
 
 <iframe height='500' scrolling='no' title='Dodawanie znacznika HTML do mapy' src='//codepen.io/azuremaps/embed/MVoeVw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióro <a href='https://codepen.io/azuremaps/pen/MVoeVw/'>Dodaj znacznik HTML do mapy</a> według Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
-
-W powyższym kodzie pierwszy blok kodu konstruuje obiekt mapy. Aby uzyskać instrukcje, zobacz [Tworzenie mapy](./map-create.md) .
-
-Drugi blok kodu dodaje [HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest) do mapy przy użyciu właściwości [znaczniki](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#markers) klasy [map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) . HtmlMarker jest dodawany do mapy w funkcji detektora [zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) , aby upewnić się, że jest ona wyświetlana po całkowitym załadowaniu mapy.
 
 ## <a name="create-svg-templated-html-marker"></a>Tworzenie znacznika HTML z szablonem SVG
 
@@ -62,7 +82,7 @@ Jedną z zalet znaczników HTML jest to, że istnieje wiele doskonałych dostoso
 
 ## <a name="draggable-html-markers"></a>Przeciągnięte znaczniki HTML
 
-Ten przykład pokazuje, jak sprawić, aby można było przeciągnąć znacznik HTML. Obsługa `drag` znacznikówHTML`dragend`izdarzeń. `dragstart`
+Ten przykład pokazuje, jak sprawić, aby można było przeciągnąć znacznik HTML. Znaczniki HTML obsługują `drag`zdarzenia `dragstart`, i `dragend` .
 
 <br/>
 

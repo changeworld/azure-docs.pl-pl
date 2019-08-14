@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Konfigurowanie usługi ServiceNow dla automatycznej aprowizacji użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie automatycznego aprowizowania lub cofania aprowizacji kont użytkowników z usługi Azure AD do usługi ServiceNow.
+title: 'Samouczek: Konfigurowanie usługi ServiceNow na potrzeby automatycznego aprowizacji użytkowników przy użyciu Azure Active Directory | Microsoft Docs'
+description: Dowiedz się, jak automatycznie udostępniać i cofać obsługę administracyjną kont użytkowników z usługi Azure AD do usługi ServiceNow.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,22 +13,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19b3e4cc5ba4bc0173721947bd1e1a680ca7b3a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 85783339c7d1348f598f924f14d9b40cd0c8cd22
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60869844"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967178"
 ---
-# <a name="tutorial-configure-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>Samouczek: Konfigurowanie usługi ServiceNow dla automatycznej aprowizacji użytkowników z usługą Azure Active Directory
+# <a name="tutorial-configure-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>Samouczek: Konfigurowanie usługi ServiceNow na potrzeby automatycznej aprowizacji użytkowników przy użyciu Azure Active Directory
 
-Celem tego samouczka jest pokazanie czynności, które należy wykonać w usługi ServiceNow i Azure AD w celu automatycznego aprowizowania lub cofania aprowizacji kont użytkowników z usługi Azure AD do usługi ServiceNow.
+Celem tego samouczka jest przedstawienie czynności, które należy wykonać w usługi ServiceNow i usłudze Azure AD w celu automatycznego aprowizacji i cofania aprowizacji kont użytkowników z usługi Azure AD do usługi ServiceNow.
 
 > [!NOTE]
-> W tym samouczku opisano łącznika, który został zbudowany na podstawie usługi aprowizacji użytkownika usługi Azure AD. Ważne szczegółowe informacje na temat tej usługi nie, jak działa i często zadawane pytania, [Automatyzowanie aprowizacji użytkowników i anulowania obsługi do aplikacji SaaS w usłudze Azure Active Directory](../manage-apps/user-provisioning.md).
+> Ten samouczek zawiera opis łącznika utworzonego na podstawie usługi Azure AD User Provisioning. Aby uzyskać ważne informacje o tym, jak działa ta usługa, jak ona dotyczy, i często zadawanych pytań, zobacz [Automatyzowanie aprowizacji użytkowników i Anulowanie udostępniania aplikacji SaaS przy użyciu programu Azure Active Directory](../manage-apps/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -44,68 +44,68 @@ Aby skonfigurować integrację usługi Azure AD z usługą ServiceNow, potrzebuj
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
 - Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
-
+- Jeśli nie masz środowiska w wersji próbnej usługi Azure AD, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="assigning-users-to-servicenow"></a>Przypisywanie użytkowników do usługi ServiceNow
 
-Usługa Azure Active Directory używa koncepcji o nazwie "przypisania", aby określić, użytkowników, którzy otrzymają dostęp do wybranych aplikacji. W kontekście Inicjowanie obsługi administracyjnej konta użytkowników są synchronizowane tylko użytkowników i grup, które "przypisano" do aplikacji w usłudze Azure AD.
+Azure Active Directory używa koncepcji o nazwie "przydziały", aby określić, którzy użytkownicy powinni otrzymywać dostęp do wybranych aplikacji. W kontekście automatycznego inicjowania obsługi kont użytkowników są synchronizowane tylko użytkownicy i grupy, które zostały przypisane do aplikacji w usłudze Azure AD.
 
-Przed Skonfiguruj i włącz usługę aprowizacji, musisz zdecydować, jakie użytkowników i/lub grup w usłudze Azure AD reprezentują użytkowników, którzy potrzebują dostępu do aplikacji usługi ServiceNow. Po decyzję, możesz przypisać użytkowników do aplikacji usługi ServiceNow, zgodnie z instrukcjami w tym miejscu: [Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+Przed skonfigurowaniem i włączeniem usługi aprowizacji należy zdecydować, którzy użytkownicy i/lub grupy w usłudze Azure AD reprezentują użytkowników, którzy potrzebują dostępu do aplikacji usługi ServiceNow. Po ustaleniu tych użytkowników możesz przypisać je do aplikacji usługi ServiceNow, postępując zgodnie z poniższymi instrukcjami: [Przypisywanie użytkownika lub grupy do aplikacji dla przedsiębiorstw](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
 
 > [!IMPORTANT]
->*   Zalecane jest, pojedynczego użytkownika usługi Azure AD jest przypisany do usługi ServiceNow do testowania konfiguracji aprowizacji. Później można przypisać dodatkowych użytkowników i/lub grup.
->*   Podczas przypisywania użytkowników do usługi ServiceNow, należy wybrać poprawnej roli użytkownika. Rola "Domyślnego dostępu" nie działa w przypadku inicjowania obsługi administracyjnej.
+>*   Zaleca się, aby jeden użytkownik usługi Azure AD został przypisany do usługi ServiceNow w celu przetestowania konfiguracji aprowizacji. Dodatkowych użytkowników i/lub grupy można przypisywać później.
+>*   Podczas przypisywania użytkownika do usługi ServiceNow należy wybrać prawidłową rolę użytkownika. Rola "dostęp domyślny" nie działa w przypadku aprowizacji.
+>*   Aby uzyskać więcej informacji na temat tworzenia i konfigurowania ról w usłudze Azure AD, Skorzystaj z [](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management) tego linku
 
-## <a name="enable-automated-user-provisioning"></a>Włączanie użytkownika automatyczne Inicjowanie obsługi administracyjnej.
+## <a name="enable-automated-user-provisioning"></a>Włącz automatyczne Inicjowanie obsługi użytkowników
 
-Ta sekcja przeprowadzi Cię przez połączenie usługi Azure AD do konta użytkownika usługi ServiceNow firmy aprowizujący interfejs API i konfigurowanie inicjowania obsługi usługi do tworzenia, aktualizacji, a następnie wyłącz konta użytkowników przypisane w usługi ServiceNow na podstawie przypisania użytkowników i grup w usłudze Azure AD.
+Ta sekcja przeprowadzi Cię przez proces łączenia się z interfejsem API aprowizacji usługi Azure AD do konta użytkownika usługi ServiceNow, a następnie Konfigurując usługę aprowizacji do tworzenia, aktualizowania i wyłączania przypisanych kont użytkowników w usłudze usługi ServiceNow na podstawie przypisywania użytkowników i grup w usłudze Azure AD.
 
 > [!TIP]
->Można też włączyć opartej na SAML logowania jednokrotnego dla usługi ServiceNow, wykonując instrukcje podane w [witryny Azure portal](https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatyczną aprowizację, chociaż te dwie funkcje uzupełnienie siebie nawzajem.
+>Możesz również włączyć funkcję logowania jednokrotnego opartego na protokole SAML dla usługi ServiceNow, postępując zgodnie z instrukcjami podanymi w [Azure Portal](https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatycznej aprowizacji, chociaż te dwie funkcje napadają nawzajem.
 
-### <a name="configure-automatic-user-account-provisioning"></a>Konfigurowanie automatycznej konta aprowizacji użytkowników
+### <a name="configure-automatic-user-account-provisioning"></a>Konfigurowanie automatycznego inicjowania obsługi konta użytkownika
 
-1. W [witryny Azure portal](https://portal.azure.com), przejdź do **usługi Azure Active Directory > aplikacje dla przedsiębiorstw > wszystkie aplikacje** sekcji.
+1. W [Azure Portal](https://portal.azure.com)przejdź do sekcji **Azure Active Directory > aplikacje dla przedsiębiorstw > Wszystkie aplikacje** .
 
-1. Jeśli już skonfigurowano usługi ServiceNow dla logowania jednokrotnego, wyszukiwania dla swojego wystąpienia usługi ServiceNow przy użyciu pola wyszukiwania. W przeciwnym razie wybierz **Dodaj** i wyszukaj **ServiceNow** w galerii aplikacji. Wybierz usługi ServiceNow z wyników wyszukiwania, a następnie dodaj go do listy aplikacji.
+1. Jeśli już skonfigurowano usługi ServiceNow do logowania jednokrotnego, Wyszukaj wystąpienie elementu usługi ServiceNow przy użyciu pola wyszukiwania. W przeciwnym razie wybierz pozycję **Dodaj** i Wyszukaj **usługi ServiceNow** w galerii aplikacji. Wybierz pozycję usługi ServiceNow z wyników wyszukiwania, a następnie dodaj ją do listy aplikacji.
 
-1. Wybierz wystąpienie usługi ServiceNow, a następnie wybierz **aprowizacji** kartę.
+1. Wybierz wystąpienie elementu usługi ServiceNow, a następnie wybierz kartę **Inicjowanie obsługi** .
 
-1. Ustaw **aprowizacji** tryb **automatyczne**. 
+1. Ustaw tryb **aprowizacji** na **automatyczny**. 
 
-    ![Inicjowanie obsługi administracyjnej](./media/servicenow-provisioning-tutorial/provisioning.png)
+    ![aprowizowanie](./media/servicenow-provisioning-tutorial/provisioning.png)
 
 1. W sekcji poświadczenia administratora wykonaj następujące czynności:
    
-    a. W **nazwa wystąpienia usługi ServiceNow** polu tekstowym wpisz nazwę wystąpienia usługi ServiceNow.
+    a. W polu tekstowym **Nazwa wystąpienia usługi ServiceNow** wpisz nazwę wystąpienia usługi ServiceNow.
 
-    b. W **nazwy użytkownika administratora usługi ServiceNow** polu tekstowym wpisz nazwę użytkownika administratora.
+    b. W polu tekstowym **Nazwa użytkownika administratora usługi ServiceNow** wpisz nazwę użytkownika administratora.
 
-    c. W **usługi ServiceNow, hasło administratora** pola tekstowego, hasło administratora.
+    c. W polu tekstowym **hasło administratora usługi ServiceNow** hasło administratora.
 
-1. W witrynie Azure portal kliknij pozycję **Testuj połączenie** aby zapewnić usłudze Azure AD można połączyć się z aplikacji usługi ServiceNow. Jeśli połączenie nie powiedzie się, upewnij się, Twoje konto usługi ServiceNow ma uprawnienia administratora zespołu i spróbuj **"Poświadczeń administratora"** krok ponownie.
+1. W Azure Portal kliknij pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może nawiązać połączenie z aplikacją usługi ServiceNow. Jeśli połączenie nie powiedzie się, upewnij się, że konto usługi ServiceNow ma uprawnienia administratora zespołu, a następnie spróbuj ponownie wykonać krok **"poświadczenia administratora"** .
 
-1. Wprowadź adres e-mail osoby lub grupy, który powinien zostać wyświetlony inicjowania obsługi administracyjnej powiadomienia o błędach w **wiadomość E-mail z powiadomieniem** pola, a następnie zaznacz pole wyboru.
-
-1. Kliknij przycisk **Zapisz.**
-
-1. W sekcji mapowania, wybierz **synchronizacji Azure użytkownicy usługi Active Directory do usługi ServiceNow.**
-
-1. W **mapowania atrybutów** Przejrzyj atrybutów użytkowników, które są synchronizowane z usługi Azure AD z usługą ServiceNow. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania kont użytkowników w usługi ServiceNow dla operacji aktualizacji. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
-
-1. Aby włączyć usługi Azure AD, inicjowania obsługi usługi dla usługi ServiceNow, zmień **stanie aprowizacji** do **na** w sekcji Ustawienia
+1. Wprowadź adres e-mail osoby lub grupy, które powinny otrzymywać powiadomienia o błędach aprowizacji w polu **E-mail powiadomienia** , i zaznacz pole wyboru.
 
 1. Kliknij przycisk **Zapisz.**
 
-Rozpoczyna się wstępna synchronizacja użytkowników i/lub grupy przypisane do usługi ServiceNow w sekcji Użytkownicy i grupy. Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które występują co około 40 minut, tak długo, jak usługa jest uruchomiona. Możesz użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do inicjowania obsługi dzienników aktywności, które opisują każdą akcję wykonaną przez usługę aprowizacji w aplikacji usługi ServiceNow.
+1. W sekcji mapowania wybierz pozycję **synchronizuj Azure Active Directory użytkowników do usługi ServiceNow.**
+
+1. W sekcji **mapowania atrybutów** Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD do usługi ServiceNow. Atrybuty wybrane jako **pasujące** właściwości są używane do dopasowania kont użytkowników w programie usługi ServiceNow for Updates. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
+
+1. Aby włączyć usługę Azure AD Provisioning dla usługi usługi ServiceNow, Zmień **stan aprowizacji** na **włączone** w sekcji Ustawienia.
+
+1. Kliknij przycisk **Zapisz.**
+
+Rozpocznie się początkową synchronizację wszystkich użytkowników i/lub grup przypisanych do usługi ServiceNow w sekcji Użytkownicy i grupy. Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które występują co około 40 minut, tak długo, jak usługa jest uruchomiona. Za pomocą sekcji **szczegóły synchronizacji** można monitorować postęp i wykonywać linki do dzienników aktywności aprowizacji, które opisują wszystkie akcje wykonywane przez usługę aprowizacji w aplikacji usługi ServiceNow.
 
 Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](tutorial-list.md)
+* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 * [Konfigurowanie logowania jednokrotnego](servicenow-tutorial.md)
 
