@@ -3,7 +3,7 @@ title: Instalowanie pakietu zawartości Azure AD Power BI | Microsoft Docs
 description: Dowiedz się, jak zainstalować pakiet zawartości Azure AD Power BI.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 ms.assetid: fd5604eb-1334-4bd8-bfb5-41280883e2b5
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69a69732d8cb42c248fa954ef9047e5876f40837
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f088c8b49fa6485a21b630738149078b7ff45b7d
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60285933"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68988101"
 ---
 # <a name="quickstart-install-azure-active-directory-power-bi-content-pack"></a>Szybki start: Instalowanie pakietu zawartości usługi Power BI dla usługi Azure Active Directory
 
@@ -38,7 +38,7 @@ Z tego przewodnika Szybki start dowiesz się, jak zainstalować pakiet zawartoś
 
 Aby ukończyć ten przewodnik Szybki Start, musisz spełnić następujące warunki:
 
-* Konto usługi Power BI. To jest to samo konto, co konto usługi O365 lub Azure AD. 
+* A Power BI account. To jest to samo konto, co konto usługi O365 lub Azure AD. 
 * Identyfikator dzierżawy usługi Azure AD. To jest **Identyfikator katalogu** ze [strony właściwości](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) w witrynie Azure Portal.
 * Licencja usługi Azure AD Premium (P1/P2). Aby uaktualnić swoją wersję usługi Azure Active Directory, zobacz [Wprowadzenie do usługi Azure Active Directory w wersji Premium](../fundamentals/active-directory-get-started-premium.md).
 
@@ -58,7 +58,7 @@ Aby ukończyć ten przewodnik Szybki Start, musisz spełnić następujące warun
 
    ![Pakiet zawartości usługi Power BI dla usługi Azure Active Directory](./media/quickstart-install-power-bi-content-pack/dashboard.png) 
     
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Korzystanie z pakietu zawartości usługi Power BI](howto-power-bi-content-pack.md).
 * [Rozwiązywanie problemów z błędami pakietu zawartości](troubleshoot-content-pack.md).

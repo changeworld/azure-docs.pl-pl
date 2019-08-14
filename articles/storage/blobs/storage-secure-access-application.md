@@ -9,12 +9,12 @@ ms.date: 05/30/2018
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.custom: mvc
-ms.openlocfilehash: 8e56b02b84c0324f723ead1bbf156c847edbbeb5
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 2cd7a83b597d656ddbb0210aacfe96f6c056248b
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787989"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986698"
 ---
 # <a name="secure-access-to-an-applications-data-in-the-cloud"></a>Zabezpieczanie dostępu do danych aplikacji w chmurze
 
@@ -27,11 +27,11 @@ Część trzecia serii zawiera informacje na temat wykonywania następujących c
 > * Włączanie szyfrowania po stronie serwera
 > * Włączanie transportu tylko przy użyciu protokołu HTTPS
 
-Usługa [Azure Blob Storage](../common/storage-introduction.md#blob-storage) to niezawodna usługa do przechowywania plików dla aplikacji. Ten samouczek uzupełnia informacje zawarte w [poprzednim temacie][previous-tutorial] i pokazuje, jak zabezpieczyć dostęp do konta magazynu z poziomu aplikacji internetowej. Po zakończeniu obrazy będą szyfrowane, a aplikacja internetowa będzie używać tokenów SAS w celu uzyskania dostępu do obrazów miniatury.
+Usługa [Azure Blob Storage](../common/storage-introduction.md#blob-storage) to niezawodna usługa do przechowywania plików dla aplikacji. Ten samouczek rozszerza [Poprzedni temat,][previous-tutorial] aby pokazać, jak zabezpieczyć dostęp do konta magazynu z aplikacji sieci Web. Po zakończeniu obrazy będą szyfrowane, a aplikacja internetowa będzie używać tokenów SAS w celu uzyskania dostępu do obrazów miniatury.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten samouczek, konieczne jest ukończenie poprzedniego samouczka na temat usługi Storage: [Automatyzowanie zmiany rozmiaru przekazanych obrazów za pomocą usługi Event Grid][previous-tutorial]. 
+Aby ukończyć ten samouczek, konieczne jest ukończenie poprzedniego samouczka na temat usługi Storage: [Automatyzuj zmianę rozmiarów załadowanych obrazów przy użyciu Event Grid][previous-tutorial]. 
 
 ## <a name="set-container-public-access"></a>Włączanie dostępu publicznego do kontenera
 
@@ -49,7 +49,7 @@ az storage container set-permission \ --account-name $blobStorageAccount \ --acc
 
 ## <a name="configure-sas-tokens-for-thumbnails"></a>Konfigurowanie tokenów SAS dla miniatur
 
-W części pierwszej serii tej serii samouczków aplikacja internetowa wyświetlała obrazy z publicznego kontenera. W tej części użyjesz tokenów [sygnatury dostępu współdzielonego (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md#what-is-a-shared-access-signature), aby pobrać obrazy miniatur. Tokeny SAS umożliwiają ograniczenie dostępu do kontenera lub obiektu blob na podstawie adresu IP, protokołu, interwałów czasowych lub przyznanych uprawnień.
+W części pierwszej serii tej serii samouczków aplikacja internetowa wyświetlała obrazy z publicznego kontenera. W tej części serii są używane tokeny sygnatur dostępu współdzielonego (SAS) do pobierania obrazów miniatur. Tokeny SAS umożliwiają ograniczenie dostępu do kontenera lub obiektu blob na podstawie adresu IP, protokołu, interwałów czasowych lub przyznanych uprawnień. Aby uzyskać więcej informacji na temat SAS, zobacz [udzielanie ograniczonego dostępu do zasobów usługi Azure Storage za pomocą sygnatur dostępu współdzielonego (SAS)](../common/storage-sas-overview.md).
 
 W tym przykładzie repozytorium kodu źródłowego korzysta z gałęzi `sasTokens`, która zawiera zaktualizowany kod przykładowy. Usuń istniejące wdrożenie kodu z usługi GitHub za pomocą polecenia [az webapp deployment source delete](/cli/azure/webapp/deployment/source). Następnie skonfiguruj wdrożenie aplikacji internetowej z usługi GitHub za pomocą polecenia [az webapp deployment source config](/cli/azure/webapp/deployment/source).  
 
@@ -165,7 +165,7 @@ Teraz, gdy wymagany jest bezpieczny transfer, otrzymasz następujący komunikat:
 HTTP/1.1 400 The account being accessed does not support http.
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W trzeciej części serii przedstawiono, sposób zabezpieczania dostępu do konta magazynu, w tym następujące czynności:
 

@@ -3,7 +3,7 @@ title: Konfigurowanie nazwanych lokalizacji w usłudze Azure Active Directory | 
 description: Dowiedz się, jak konfigurować nazwane lokalizacje.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 ms.assetid: f56e042a-78d5-4ea3-be33-94004f2a0fc3
 ms.service: active-directory
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d12991813f68a42f9846c1c9c9c31c01d371d1d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 540bc8a4dbfda83ff6e0480bc216a38742bbef2b
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107636"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68988078"
 ---
 # <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>Szybki start: konfigurowanie nazwanych lokalizacji w usłudze Azure Active Directory
 
 Za pomocą nazwanych lokalizacji możesz oznaczać etykietą zakresy zaufanych adresów IP w Twojej organizacji. Usługa Azure AD używa nazwanych lokalizacji w następujących celach:
 - Wykrywanie wyników fałszywie dodatnich w przypadku [zdarzeń o podwyższonym ryzyku](concept-risk-events.md). Logowanie z zaufanej lokalizacji obniża ryzyko użytkownika związane z logowaniem.   
-- Konfigurowanie [dostępu warunkowego na podstawie lokalizacji](../conditional-access/location-condition.md).
+- Konfigurowanie [dostępu warunkowego opartego na lokalizacji](../conditional-access/location-condition.md).
 
 W tym przewodniku Szybki start dowiesz się, jak skonfigurować nazwane lokalizacje w swoim środowisku.
 
@@ -43,7 +43,7 @@ Aby ukończyć ten przewodnik Szybki Start, musisz spełnić następujące warun
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. W okienku po lewej stronie wybierz **usługi Azure Active Directory**, a następnie wybierz **dostępu warunkowego** z **zabezpieczeń** sekcji.
+2. W lewym okienku wybierz pozycję **Azure Active Directory**, a następnie wybierz pozycję **dostęp warunkowy** z sekcji **zabezpieczenia** .
 
     ![Karta dostęp warunkowy](./media/quickstart-configure-named-locations/entrypoint.png)
 
@@ -55,14 +55,14 @@ Aby ukończyć ten przewodnik Szybki Start, musisz spełnić następujące warun
 
    * W polu **Nazwa** wpisz nazwę dla nazwanej lokalizacji.
    * W polu **Zakresy adresów IP** wpisz zakres adresów IP w formacie CIDR.  
-   * Kliknij pozycję **Utwórz**.
+   * Kliknij przycisk **Utwórz**.
     
      ![Blok Nowy](./media/quickstart-configure-named-locations/61.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji, zobacz:
 
 - [Dostęp warunkowy usługi Azure AD](../active-directory-conditional-access-azure-portal.md).
-- [Warunki lokalizacji w funkcji dostępu warunkowego usługi Azure AD](../conditional-access/location-condition.md)
+- [Warunki lokalizacji w dostępie warunkowym usługi Azure AD](../conditional-access/location-condition.md)
 - [Raport dotyczący ryzykownych logowań](concept-risky-sign-ins.md)  

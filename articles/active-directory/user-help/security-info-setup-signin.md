@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 08/05/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86c9368785bb28f27df599c8b9cbe09c1fa5dee2
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 705e3818aef0338d9b34da7b0320b99594573fca
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880773"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985978"
 ---
 # <a name="set-up-your-security-info-preview-from-the-sign-in-page-prompt"></a>Konfigurowanie informacji zabezpieczających (wersja zapoznawcza) z monitu na stronie logowania
 
@@ -68,7 +68,7 @@ Wykonaj następujące kroki, aby skonfigurować informacje zabezpieczające dla 
 
 6. Zeskanuj podany kod przy użyciu czytnika kodów QR aplikacji Microsoft Authenticator, który pojawił się na urządzeniu mobilnym po utworzeniu konta służbowego w kroku 5.
 
-    Aplikacja Authenticator powinna pomyślnie dodać konto służbowe bez konieczności podawania żadnych dodatkowych informacji przez użytkownika. Jednak jeśli czytnik kodów QR nie może odczytać kodu, możesz wybrać **link Nie mogę zeskanować kodu QR** oraz ręcznie podać kod i adres URL w aplikacji Microsoft Authenticator. Aby uzyskać więcej informacji na temat ręcznego dodawania kodu, zobacz [Ręcznie dodawanie konta do aplikacji](user-help-auth-app-add-account-manual.md).
+    Aplikacja Authenticator powinna pomyślnie dodać konto służbowe bez konieczności podawania żadnych dodatkowych informacji przez użytkownika. Jeśli jednak czytnik kodu QR nie może odczytać kodu, możesz wybrać opcję **nie można zeskanować obrazu QR** i ręcznie wprowadzić kod i adres URL do aplikacji Microsoft Authenticator. Aby uzyskać więcej informacji na temat ręcznego dodawania kodu, zobacz [Ręcznie dodawanie konta do aplikacji](user-help-auth-app-add-account-manual.md).
 
 7. Wybierz pozycję **Dalej** na stronie **Zeskanuj kod QR** na komputerze.
 

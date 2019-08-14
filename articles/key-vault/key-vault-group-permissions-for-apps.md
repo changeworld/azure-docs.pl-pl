@@ -1,41 +1,41 @@
 ---
-title: Przyznanie uprawnień do wielu aplikacjom dostęp do usługi Azure key vault — usługi Azure Key Vault | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak przyznać uprawnienia do wielu aplikacjom dostęp do magazynu kluczy
+title: Udziel uprawnień do wielu aplikacjom dostępu do magazynu kluczy platformy Azure — Azure Key Vault | Microsoft Docs
+description: Dowiedz się, jak udzielić uprawnienia wielu aplikacjom dostępu do magazynu kluczy
 services: key-vault
 author: amitbapat
-manager: barbkess
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
-ms.topic: conceptual
-ms.date: 01/07/2019
+ms.topic: tutorial
+ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: b1d0b0948e089d41f460ac2a54150ee51333f87c
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 07ee544057ffeb0a5859cc771b124523ec79c9c0
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "64721983"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976399"
 ---
-# <a name="grant-several-applications-access-to-a-key-vault"></a>Przyznaj kilka aplikacji, dostęp do magazynu kluczy
+# <a name="grant-several-applications-access-to-a-key-vault"></a>Udzielanie wielu aplikacjom dostępu do magazynu kluczy
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Zasady kontroli dostępu mogą służyć do udzielenia kilka aplikacji, dostęp do magazynu kluczy. Zasady kontroli dostępu może obsłużyć maksymalnie 1024 aplikacji i jest skonfigurowany w następujący sposób:
+Zasady kontroli dostępu mogą służyć do udzielania dostępu do magazynu kluczy kilku aplikacjom. Zasady kontroli dostępu mogą obsługiwać do 1024 aplikacji i konfiguruje się w następujący sposób:
 
-1. Utwórz grupę zabezpieczeń usługi Azure Active Directory. 
-2. Dodaj wszystkie aplikacje skojarzoną z jednostki usługi do grupy zabezpieczeń.
-3. Przyznaj grupy zabezpieczeń dostęp do usługi Key Vault.
+1. Utwórz Azure Active Directory grupę zabezpieczeń. 
+2. Dodaj wszystkie skojarzone jednostki usługi aplikacji do grupy zabezpieczeń.
+3. Przyznaj grupie zabezpieczeń dostęp do Key Vault.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Poniżej przedstawiono wymagania wstępne:
 * [Zainstalowanie programu Azure PowerShell](/powershell/azure/overview).
-* [Instalowanie modułu programu PowerShell usługi Azure Active Directory w wersji 2](https://www.powershellgallery.com/packages/AzureAD).
-* Uprawnienia do tworzenia/edycji grup w dzierżawie usługi Azure Active Directory. Jeśli nie masz uprawnień, może być konieczne skontaktuj się z administratorem usługi Azure Active Directory. Zobacz [klucze, wpisy tajne i certyfikaty usługi Azure Key Vault](about-keys-secrets-and-certificates.md) szczegółowe informacje na temat usługi Key Vault zasady uprawnień dostępu.
+* [Zainstaluj moduł Azure Active Directory v2 PowerShell](https://www.powershellgallery.com/packages/AzureAD).
+* Uprawnienia do tworzenia/edytowania grup w dzierżawie Azure Active Directory. Jeśli nie masz uprawnień, może być konieczne skontaktowanie się z administratorem Azure Active Directory. Aby uzyskać szczegółowe informacje o uprawnieniach dostępu Key Vault [, zobacz temat informacje o kluczach, wpisach tajnych i certyfikatach Azure Key Vault](about-keys-secrets-and-certificates.md) .
 
-## <a name="granting-key-vault-access-to-applications"></a>Udzielanie dostępu do magazynu kluczy do aplikacji
+## <a name="granting-key-vault-access-to-applications"></a>Udzielanie Key Vault dostępu do aplikacji
 
-W programie PowerShell, uruchom następujące polecenia:
+Uruchom następujące polecenia w programie PowerShell:
 
 ```powershell
 # Connect to Azure AD 
@@ -60,8 +60,8 @@ Set-AzKeyVaultAccessPolicy –VaultName ContosoVault –ObjectId $aadGroup.Objec
 # Of course you can adjust the permissions as required 
 ```
 
-Jeśli musisz przyznać inny zestaw uprawnień do grupy aplikacji, należy utworzyć osobne grupy zabezpieczeń usługi Azure Active Directory na potrzeby takich aplikacji.
+Jeśli musisz udzielić różnego zestawu uprawnień dla grupy aplikacji, utwórz oddzielną Azure Active Directory grupę zabezpieczeń dla takich aplikacji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat [zabezpieczanie własnego magazynu kluczy](key-vault-secure-your-key-vault.md).
+Dowiedz się więcej na temat [zabezpieczania magazynu kluczy](key-vault-secure-your-key-vault.md).

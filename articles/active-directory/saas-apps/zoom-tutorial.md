@@ -4,46 +4,45 @@ description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usł
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 0ebdab6c-83a8-4737-a86a-974f37269c31
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/05/2019
+ms.date: 07/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 597c05e7018b1eb9dd20555458e67b515113ca2d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8e36d1bb91e70e21ee1940e189bfedaebafa4412
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67086379"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68975945"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zoom"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Zoom
+# <a name="tutorial-integrate-zoom-with-azure-active-directory"></a>Samouczek: Integruj powiększenie z Azure Active Directory
 
-Z tego samouczka dowiesz się, jak zintegrować aplikację Zoom z usługą Azure Active Directory (Azure AD).
-Zintegrowanie aplikacji Zoom z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować powiększenie z Azure Active Directory (Azure AD). Po zintegrowaniu powiększania z usługą Azure AD można:
 
-* W usłudze Azure AD możesz kontrolować, kto ma dostęp do aplikacji Zoom.
-* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji Zoom (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Kontrolka w usłudze Azure AD, która ma dostęp do powiększenia.
+* Umożliwia użytkownikom automatyczne logowanie się w celu powiększania przy użyciu kont usługi Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do skonfigurowania integracji usługi Azure AD z aplikacją są potrzebne następujące elementy:
+Aby rozpocząć, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* Subskrypcja aplikacji Zoom z obsługą logowania jednokrotnego
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
+* Powiększ subskrypcję obsługującą Logowanie jednokrotne (SSO).
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
+W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
 * Aplikacja Zoom obsługuje logowanie jednokrotne inicjowane przez **SP**
 
@@ -51,59 +50,37 @@ W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azu
 
 Aby skonfigurować integrację aplikacji Zoom w usłudze Azure AD, należy dodać aplikację Zoom z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać aplikację Zoom z galerii, wykonaj następujące czynności:**
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
+1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
+1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
+1. W sekcji **Dodaj z galerii** wpisz **zoom** w polu wyszukiwania.
+1. Wybierz pozycję Powiększ w panelu wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-zoom"></a>Skonfiguruj i przetestuj Logowanie jednokrotne w usłudze Azure AD w celu powiększania
 
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
+Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą powiększenia przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w powiększeniu.
 
-2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD przy użyciu powiększenia, wykonaj następujące bloki konstrukcyjne:
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
+    1. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
+    1. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
+2. **[Skonfiguruj powiększenie logowanie](#configure-zoom-sso)** jednokrotne — w celu skonfigurowania ustawień logowania jednokrotnego na stronie aplikacji.
+    1. **[Tworzenie użytkownika testowego powiększenia](#create-zoom-test-user)** — Aby uzyskać odpowiednik elementu B. Simon w powiększeniu, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
+3. **[Przetestuj logowanie](#test-sso)** jednokrotne — aby sprawdzić, czy konfiguracja działa.
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-4. W polu wyszukiwania wpisz **Zoom**, wybierz pozycję **Zoom** z panelu wyników i kliknij przycisk **Dodaj**, aby dodać aplikację.
+1. W [Azure Portal](https://portal.azure.com/)na stronie Powiększ integrację aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie**jednokrotne.
+1. Na stronie **Wybierz metodę logowania** jednokrotnego wybierz pozycję **SAML**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
-     ![Aplikacja Zoom na liście wyników](common/search-new-app.png)
+   ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
-
-W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją Zoom, korzystając z danych testowego użytkownika **Britta Simon**.
-Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji Zoom.
-
-Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD przy użyciu aplikacji Zoom, należy wykonać następujące bloki konstrukcyjne:
-
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie logowania jednokrotnego w aplikacji Zoom](#configure-zoom-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego aplikacji Zoom](#create-zoom-test-user)** — aby w aplikacji Zoom utworzyć odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
-
-W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
-
-Aby skonfigurować logowanie jednokrotne usługi Azure AD przy użyciu aplikacji Zoom, wykonaj następujące czynności:
-
-1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Zoom** wybierz pozycję **Logowanie jednokrotne**.
-
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
-
-2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
-
-    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
-
-3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
-
-    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
-
-4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
-
-    ![Domena i adresy URL aplikacji Zoom — informacje dotyczące logowania jednokrotnego](common/sp-identifier.png)
+1. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<companyname>.zoom.us`
 
@@ -112,12 +89,12 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD przy użyciu aplikacji
     > [!NOTE]
     > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z [zespołem pomocy technicznej klienta Zoom](https://support.zoom.us/hc/en-us) w celu uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-5. Powiększenie aplikacja oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij przycisk **Edytuj** ikonę, aby otworzyć **atrybutów użytkownika** okna dialogowego.
+5. Aplikacja zoom oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę  **Edytuj** , aby otworzyć okno dialogowe  **Atrybuty użytkownika** .
 
     ![image](common/edit-attribute.png)
 
-6. Ponadto powyżej, Powiększ aplikacja oczekuje, że kilka więcej atrybutów, które mają być przekazywane w odpowiedzi SAML. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** wykonaj następujące czynności, aby dodać atrybut tokenu SAML, jak pokazano w poniższej tabeli:
-    
+6. Oprócz powyższych, aplikacja zoom wymaga, aby kilka atrybutów zostało przekazywać z powrotem do odpowiedzi SAML. W sekcji **oświadczenia** użytkownika w oknie dialogowym **atrybuty** użytkownika wykonaj następujące kroki, aby dodać atrybut tokenu SAML, jak pokazano w poniższej tabeli: 
+
     | Name (Nazwa) | Przestrzeń nazw  |  Atrybut źródłowy|
     | ---------------| --------------- | --------- |
     | Adres e-mail  | user.mail  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mail` |
@@ -128,7 +105,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD przy użyciu aplikacji
     | rola |    user.assignedrole |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/role` |
 
     > [!NOTE]
-    > Kliknij [tutaj](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), aby dowiedzieć się, jak skonfigurować rolę w usłudze Azure AD
+    > Kliknij [tutaj](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management), aby dowiedzieć się, jak skonfigurować rolę w usłudze Azure AD
 
     a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
 
@@ -144,28 +121,52 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD przy użyciu aplikacji
 
     e. Kliknij przycisk **Ok**
 
-    f. Kliknij pozycję **Zapisz**.
+    f. Kliknij polecenie **Zapisz**.
 
     > [!NOTE]
     > Aplikacja Zoom może oczekiwać oświadczenia grupy w ładunku SAML, dlatego jeśli utworzono dowolną grupę, skontaktuj się z [zespołem pomocy technicznej klienta Zoom](https://support.zoom.us/hc/en-us) i podaj informacje dotyczące grupy, aby zespół ten mógł również skonfigurować te informacje po swojej stronie. Musisz również podać [zespołowi pomocy technicznej klienta Zoom](https://support.zoom.us/hc/en-us) identyfikator obiektu, aby członkowie zespołu mogli go skonfigurować po swojej stronie. W celu uzyskania identyfikatora obiektu postępuj zgodnie z opisem w tym [dokumencie](https://support.zoom.us/hc/en-us/articles/115005887566).
 
-7. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+4. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **certyfikat (base64)** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
     ![Link pobierania certyfikatu](common/certificatebase64.png)
 
-8. W sekcji **Konfigurowanie aplikacji Zoom** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
+6. W sekcji **Konfigurowanie powiększenia** skopiuj odpowiednie adresy URL na podstawie wymagania.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-    a. Adres URL logowania
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-    b. Identyfikator usługi Azure AD
+W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
-    c. Adres URL wylogowywania
+1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. Wybierz **nowego użytkownika** w górnej części ekranu.
+1. We właściwościach **użytkownika** wykonaj następujące kroki:
+    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
+    1. W polu **Nazwa użytkownika** wprowadź wartość username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
+    1. Kliknij przycisk **Utwórz**.
 
-### <a name="configure-zoom-single-sign-on"></a>Konfigurowanie logowania jednokrotnego aplikacji Zoom
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-1. W innym oknie przeglądarki internetowej zaloguj się do firmowej witryny aplikacji Zoom jako administrator.
+W tej sekcji włączysz funkcję B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do powiększenia.
+
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Na liście Aplikacje wybierz pozycję **powiększenie**.
+1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
+
+    ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
+
+1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
+
+    ![Link Dodaj użytkownika](common/add-assign-user.png)
+
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+
+## <a name="configure-zoom-sso"></a>Skonfiguruj powiększenie Logowanie jednokrotne
+
+1. W innym oknie przeglądarki sieci Web Zaloguj się do witryny firmy Powiększ jako administrator.
 
 2. Kliknij kartę **Single Sign-On** (Logowanie jednokrotne).
 
@@ -179,85 +180,34 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD przy użyciu aplikacji
 
     a. W polu tekstowym **Sign-in page URL** (Adres URL strony logowania) wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
 
-    b. Dla **adres URL strony wylogowania** wartości, należy przejść do witryny Azure portal i kliknij **usługi Azure Active Directory** po lewej stronie przejdź do **rejestracje aplikacji**.
+    b. W polu **adres URL strony wylogowania** należy przejść do Azure Portal i kliknąć pozycję **Azure Active Directory** po lewej stronie, a następnie przejść do pozycji **rejestracje aplikacji**.
 
     ![Przycisk usługi Azure Active Directory](./media/zoom-tutorial/appreg.png)
 
-    c. Kliknij pozycję **punktów końcowych**
+    c. Kliknij **punkty końcowe**
 
     ![Przycisk punktu końcowego](./media/zoom-tutorial/endpoint.png)
 
-    d. Kopiuj **punkt końcowy wylogowania protokołu SAML-P** i wklej go w **adres URL strony wylogowania** pola tekstowego.
+    d. Skopiuj **punkt końcowy wylogowania protokołu SAML-P** i wklej go do pola tekstowego **adres URL strony wylogowania** .
 
-    ![Przycisk punkt końcowy kopiowania](./media/zoom-tutorial/endpoint1.png)
+    ![Przycisk kopiowania punktu końcowego](./media/zoom-tutorial/endpoint1.png)
 
     e. Otwórz certyfikat kodowany algorytmem base-64 w Notatniku, skopiuj jego zawartość do schowka, a następnie wklej ją w zawartość w polu tekstowym **Certyfikat dostawcy tożsamości**.
 
-    f. W **wystawcy** pola tekstowego, Wklej wartość **usługi Azure AD identyfikator** skopiowanej w witrynie Azure portal. 
+    f. W polu tekstowym wystawca wklej wartość identyfikatora usługi **Azure AD** , który został skopiowany z Azure Portal. 
 
-    g. Kliknij pozycję **Zapisz**.
+    g. Kliknij polecenie **Zapisz**.
 
     > [!NOTE]
     > Aby dowiedzieć się więcej, zapoznaj się z dokumentacją aplikacji Zoom pod adresem [https://zoomus.zendesk.com/hc/articles/115005887566](https://zoomus.zendesk.com/hc/articles/115005887566)
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-
-W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
-
-1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
-
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
-
-    ![Przycisk Nowy użytkownik](common/new-user.png)
-
-3. We właściwościach użytkownika wykonaj następujące kroki.
-
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
-
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
-  
-    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
-    Na przykład: BrittaSimon@contoso.com
-
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
-
-    d. Kliknij pozycję **Utwórz**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
-
-W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji Zoom.
-
-1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **Zoom**.
-
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
-
-2. Na liście aplikacji wpisz i wybierz ciąg **Zoom**.
-
-    ![Link aplikacji Zoom na liście aplikacji](common/all-applications.png)
-
-3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
-
-    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
-
-4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
-
-    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
-
-5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
-
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
-
-7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
-
 ### <a name="create-zoom-test-user"></a>Tworzenie użytkownika testowego aplikacji Zoom
 
-Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Zoom, należy aprowizować ich w aplikacji Zoom. W przypadku aplikacji Zoom aprowizowanie to zadanie wykonywane ręcznie.
+Aby umożliwić użytkownikom usługi Azure AD logowanie się w celu powiększania, muszą one być obsługiwane w celu powiększania. W przypadku aplikacji Zoom aprowizowanie to zadanie wykonywane ręcznie.
 
 ### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Aby aprowizować konto użytkownika, wykonaj następujące czynności:
 
-1. Zaloguj się do firmowej witryny aplikacji **Zoom** jako administrator.
+1. Zaloguj się do witryny firmy Powiększ jako administrator.
 
 2. Kliknij kartę **Account Management** (Zarządzanie kontami), a następnie kliknij pozycję **User Management** (Zarządzanie użytkownikami).
 
@@ -273,12 +223,12 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Zoom,
 
     b. W polu tekstowym **Emails** (Adresy e-mail) wpisz adres e-mail prawidłowego konta usługi Azure AD, które chcesz aprowizować.
 
-    c. Kliknij pozycję **Add** (Dodaj).
+    c. Kliknij przycisk **Dodaj**.
 
 > [!NOTE]
 > Do aprowizowania kont użytkowników usługi Azure Active Directory możesz użyć dowolnego innego interfejsu API lub narzędzia do tworzenia kont użytkowników aplikacji Zoom oferowanego przez tę aplikację.
 
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
+## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
@@ -286,8 +236,9 @@ Po kliknięciu kafelka Zoom w panelu dostępu powinno nastąpić automatyczne za
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+

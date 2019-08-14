@@ -1,9 +1,9 @@
 ---
-title: Samouczek — archiwum usługi Azure Active Directory loguje się do konta magazynu | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak konfigurowanie diagnostyki platformy Azure w celu wypchnięcia dzienników usługi Azure Active Directory do konta magazynu
+title: Samouczek — archiwizowanie dzienników Azure Active Directory na koncie magazynu | Microsoft Docs
+description: Dowiedz się, jak skonfigurować Diagnostyka Azure do wypychania dzienników Azure Active Directory do konta magazynu
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 045f94b3-6f12-407a-8e9c-ed13ae7b43a3
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0198fe1ce61c8f78e315d1166a7ea03aae20d592
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d98fb0677b864fccfb5abd2b08381db1bd1c9c8f
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60437566"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989737"
 ---
-# <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>Samouczek: Archiwizuj dzienniki usługi Azure AD do konta usługi Azure storage
+# <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>Samouczek: Archiwizowanie dzienników usługi Azure AD na koncie usługi Azure Storage
 
 W tym samouczku dowiesz się, jak skonfigurować ustawienia diagnostyki usługi Azure Monitor w celu kierowania dzienników usługi Azure Active Directory (Azure AD) do konta usługi Azure Storage.
 
@@ -49,7 +49,7 @@ Aby używać tej funkcji, potrzebujesz następujących elementów:
    * Aby dodać nowe ustawienie, wybierz polecenie **Dodaj ustawienia diagnostyki**.  
      Możesz mieć maksymalnie trzy ustawienia. 
 
-     ![Eksportowanie ustawień](./media/quickstart-azure-monitor-route-logs-to-storage-account/ExportSettings.png)
+     ![Eksportuj ustawienia](./media/quickstart-azure-monitor-route-logs-to-storage-account/ExportSettings.png)
 
 5. Wprowadź przyjazną nazwę ustawienia, która będzie przypominała o jego przeznaczeniu (na przykład *Wyślij na konto usługi Azure Storage*). 
 
@@ -73,7 +73,7 @@ Aby używać tej funkcji, potrzebujesz następujących elementów:
 
     ![Konto magazynu](./media/quickstart-azure-monitor-route-logs-to-storage-account/StorageAccount.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Interpret audit logs schema in Azure Monitor (Interpretowanie schematu dzienników inspekcji w usłudze Azure Monitor)](reference-azure-monitor-audit-log-schema.md)
 * [Interpret sign-in logs schema in Azure Monitor (Interpretowanie schematu dzienników logowania w usłudze Azure Monitor)](reference-azure-monitor-sign-ins-log-schema.md)

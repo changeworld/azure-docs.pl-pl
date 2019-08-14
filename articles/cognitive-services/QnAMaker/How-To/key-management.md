@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b9be1db9be1d4dd57994e101c07ed430425a5912
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b0b82f37b76a6bca6d84a05bc48b7ae9986fb76b
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447436"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967682"
 ---
 # <a name="how-to-manage-keys-in-qna-maker"></a>Jak zarządzać kluczami w usługi QnA Maker
 
@@ -24,9 +24,9 @@ Usługa QnA Maker obsługuje dwa rodzaje kluczy **klucze subskrypcji** i **klucz
 
 ![Zarządzanie kluczami](../media/qnamaker-how-to-key-management/key-management.png)
 
-1. **Klucze subskrypcji**: Te klucze są używane do dostępu [interfejsami API usługi zarządzania usługi QnA Maker](https://go.microsoft.com/fwlink/?linkid=2092179). Te interfejsy API umożliwiają wykonywanie edycji bazy wiedzy.  
+1. **Klucze subskrypcji**: Te klucze są używane w celu uzyskania dostępu do [interfejsów API usługi zarządzania QNA Maker](https://go.microsoft.com/fwlink/?linkid=2092179). Te interfejsy API umożliwiają przeprowadzenie edycji bazy wiedzy.  
 
-2. **Punkt końcowy klucze**: Te klucze są używane do dostępu do punktu końcowego bazy wiedzy knowledge base, można uzyskać odpowiedzi na pytania użytkowników. Zazwyczaj należy użyć tego punktu końcowego czatbot lub kodem aplikacji klienta, który wykorzystuje usługę QnA Maker.
+2. **Klucze punktów końcowych**: Te klucze są używane do uzyskiwania dostępu do punktu końcowego bazy wiedzy w celu uzyskania odpowiedzi na pytanie użytkownika. Zazwyczaj ten punkt końcowy jest używany w bot rozmowy lub kodzie aplikacji klienta, który korzysta z usługi QnA Maker.
  
 ## <a name="subscription-keys"></a>Klucze subskrypcji
 Można przeglądać i zresetować klucze subskrypcji w witrynie Azure portal, w której utworzono zasób usługi QnA Maker. 
@@ -42,7 +42,7 @@ Można przeglądać i zresetować klucze subskrypcji w witrynie Azure portal, w 
 
 Klucze punkt końcowy, można zarządzać przy użyciu [portalu narzędzia QnA Maker](https://qnamaker.ai).
 
-1. Zaloguj się do [portalu narzędzia QnA Maker](https://qnamaker.ai), przejdź do swojego profilu, a następnie kliknij **ustawienia usługi**.
+1. Zaloguj się do [portalu QNA Maker](https://qnamaker.ai), przejdź do swojego profilu, a następnie kliknij pozycję **Ustawienia usługi**.
 
     ![Klucz punktu końcowego](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
 
@@ -51,9 +51,9 @@ Klucze punkt końcowy, można zarządzać przy użyciu [portalu narzędzia QnA M
     ![Menedżer klucza punktu końcowego](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)
 
     >[!NOTE]
-    >Jeśli uważasz, że zostały naruszone, należy odświeżyć klucze. Może to wymagać odpowiednie zmiany do kodu bot lub aplikacja kliencka.
+    >Jeśli uważasz, że zostały naruszone, należy odświeżyć klucze. Może to wymagać odpowiednich zmian w aplikacji klienckiej lub kodzie bot.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie bazy wiedzy w różnych językach](./language-knowledge-base.md)

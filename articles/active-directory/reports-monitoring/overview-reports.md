@@ -3,7 +3,7 @@ title: Co to są raporty usługi Azure Active Directory? | Microsoft Docs
 description: Zawiera ogólne omówienie raportów usługi Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 6141a333-38db-478a-927e-526f1e7614f4
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66ccf8014938e813676e9338e9bfc4eaa18f63f9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8cf5770cf052a478ea56f906efc19698554a1cd0
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60286485"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989717"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Co to są raporty usługi Azure Active Directory?
 
@@ -99,7 +99,7 @@ Aby uzyskać dostęp do raportu działań związanych z logowaniem, dzierżawa m
 
 Oprócz interfejsu użytkownika usługa Azure AD zapewnia [dostęp programowy](concept-reporting-api.md) do danych raportów za pomocą zestawu interfejsów API opartych na protokole REST. Te interfejsy API można wywoływać przy użyciu różnych języków i narzędzi do programowania. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Raport dotyczący ryzykownych logowań](concept-risky-sign-ins.md)
 - [Raport dotyczący dzienników inspekcji](concept-audit-logs.md)

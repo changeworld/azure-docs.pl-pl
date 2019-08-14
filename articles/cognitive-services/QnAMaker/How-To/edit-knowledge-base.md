@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 006170b2030b6511ba732a1b12aa5b5b811d8900
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 1342616a0d32d8ac68965bc04f1fd3ca60146369
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447475"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966766"
 ---
 # <a name="edit-a-knowledge-base-in-qna-maker"></a>Edytowanie wiedzy w usługi QnA Maker
 
@@ -54,7 +54,7 @@ Usługa QnA Maker umożliwia zarządzanie zawartość bazy wiedzy, zapewniając 
 
 ## <a name="add-a-qna-pair"></a>Dodawanie pary pytań i odpowiedzi
 
-Na **ustawienia** wybierz opcję **pary dodawanie pytań i odpowiedzi** Aby dodać nowy wiersz do tabeli w bazie wiedzy knowledge base.
+Na stronie **Ustawienia** wybierz pozycję **Dodaj parę QNA** , aby dodać nowy wiersz do tabeli bazy wiedzy.
 
 ![Dodaj parę pytań i odpowiedzi](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
 
@@ -72,7 +72,7 @@ Dodaj alternatywne pytania do istniejącej pary pytań i odpowiedzi, aby zwięks
 
 ## <a name="add-metadata"></a>Dodawanie metadanych
 
-Dodaj pary metadanych, wybierając najpierw **wyświetlić opcje**, a następnie wybierając pozycję **Pokaż metadanych**. Spowoduje to wyświetlenie kolumny metadanych. Następnie wybierz pozycję **+** Zaloguj się dodać parę metadanych. Ta para składa się z jednego klucza i jedną wartość.
+Dodaj pary metadanych, zaznaczając najpierw **Opcje widoku**, a następnie wybierając **Pokaż metadane**. Spowoduje to wyświetlenie kolumny metadanych. Następnie wybierz **+** znak, aby dodać parę metadanych. Ta para składa się z jednego klucza i jednej wartości.
 
 ![Dodawanie metadanych](../media/qnamaker-how-to-edit-kb/add-metadata.png)
 
@@ -81,17 +81,17 @@ Dodaj pary metadanych, wybierając najpierw **wyświetlić opcje**, a następnie
 
 ## <a name="manage-large-knowledge-bases"></a>Zarządzanie bazami wiedzy duże
 
-* **Źródła danych grup**: Znacznie są pogrupowane według źródła danych, w którym zostały wyodrębnione. Można rozwinąć lub zwinąć źródła danych.
+* **Grupy źródeł danych**: Bazami są pogrupowane według źródła danych, z którego zostały wyodrębnione. Można rozwinąć lub zwinąć źródła danych.
 
-    ![Za pomocą paska źródła danych usługi QnA Maker zwijać i rozwijać danych źródłowych pytań i odpowiedzi](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
+    ![Użyj paska źródła danych QnA Maker, aby zwinąć i rozwinąć pytania i odpowiedzi ze źródła danych](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
 
-* **Wyszukiwanie w bazie wiedzy knowledge base**: Użytkownik może przeszukiwać bazę wiedzy, wpisując w polu tekstowym w górnej części w tabeli w bazie wiedzy Knowledge Base. Naciśnij klawisz enter, wyszukiwanie zawartości zapytania, odpowiedzi lub metadanych. Kliknij ikonę X, aby usunąć filtr wyszukiwania.
+* **Baza wiedzy wyszukiwania**: Bazę wiedzy można wyszukać, wpisując w polu tekstowym w górnej części tabeli bazy wiedzy. Naciśnij klawisz enter, wyszukiwanie zawartości zapytania, odpowiedzi lub metadanych. Kliknij ikonę X, aby usunąć filtr wyszukiwania.
 
-    ![Użyj pola wyszukiwania usługi QnA Maker powyższe pytania i odpowiedzi, aby zmniejszyć widoku tylko elementów pasujących do filtru](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
+    ![Użyj pola wyszukiwania QnA Maker powyżej pytań i odpowiedzi, aby zmniejszyć widok tylko do elementów zgodnych z filtrem](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
 
-* **Podział na strony**: Szybko przejść przez źródeł danych, aby zarządzać dużych baz wiedzy
+* **Podział na strony**: Szybkie przechodzenie między źródłami danych w celu zarządzania dużymi bazami wiedzy
 
-    ![Przechodzenie między stronami pytań i odpowiedzi za pomocą funkcji dzielenia na strony usługi QnA Maker powyższe pytania i odpowiedzi](../media/qnamaker-how-to-edit-kb/pagination.png)
+    ![Użyj QnA Maker funkcji stronicowania nad pytaniami i odpowiedziami, aby poruszać się po stronach pytań i odpowiedzi](../media/qnamaker-how-to-edit-kb/pagination.png)
 
 ## <a name="delete-knowledge-bases"></a>Usuń z bazy wiedzy
 

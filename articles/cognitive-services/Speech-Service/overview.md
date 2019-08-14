@@ -1,7 +1,7 @@
 ---
-title: Czym jest usługa rozpoznawania mowy?
+title: Co to są usługi mowy?
 titleSuffix: Azure Cognitive Services
-description: Usługa mowy to zjednoczenie zamiany mowy na tekst, zamiany tekstu na mowę i Tłumaczenie mowy na pojedynczą subskrypcję platformy Azure. Można łatwo dodawać mowę dla aplikacji, narzędzi i urządzeń za pomocą zestawu Speech SDK, zestawu Speech Devices SDK lub interfejsów API REST. Dodaj funkcję mowy do istniejącej bot rozmowy, Konwertuj tekst na mowę w aplikacji do translacji lub transkrypcja duże ilości danych centrum połączeń.
+description: Usługi mowy to zjednoczenie zamiany mowy na tekst, zamiany tekstu na mowę i Tłumaczenie mowy na pojedynczą subskrypcję platformy Azure. Można łatwo dodawać mowę dla aplikacji, narzędzi i urządzeń za pomocą zestawu Speech SDK, zestawu Speech Devices SDK lub interfejsów API REST. Dodaj funkcję mowy do istniejącej bot rozmowy, Konwertuj tekst na mowę w aplikacji do translacji lub transkrypcja duże ilości danych centrum połączeń.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 1d722d7e2886008aa5aa3acff8095fcf35ac38d8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4ea6f04dbfd18a6e561a255988ba0465b9e017be
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68554183"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967612"
 ---
 # <a name="what-are-the-speech-services"></a>Co to są usługi mowy?
 
-Usługi Azure Speech Services to zjednoczenie zamiany mowy na tekst, zamiany tekstu na mowę i Tłumaczenie mowy na pojedynczą subskrypcję platformy Azure. Można łatwo włączyć mowę dla aplikacji, narzędzi i urządzeń za pomocą [zestawu Speech SDK](speech-sdk-reference.md), [zestawu Speech Devices SDK](https://aka.ms/sdsdk-quickstart)lub [interfejsów API REST](rest-apis.md).
+Usługi mowy to zjednoczenie zamiany mowy na tekst i zamiany tekstu na mowę oraz Tłumaczenie mowy na pojedynczą subskrypcję platformy Azure. Można łatwo włączyć mowę dla aplikacji, narzędzi i urządzeń za pomocą [zestawu Speech SDK](speech-sdk-reference.md), [zestawu Speech Devices SDK](https://aka.ms/sdsdk-quickstart)lub [interfejsów API REST](rest-apis.md).
 
 > [!IMPORTANT]
 > Usługi mowy zostały zastąpione interfejs API rozpoznawania mowy Bing, tłumaczenie mowy w usłudze Translator i Custom Speech. Aby uzyskać instrukcje dotyczące migracji *, zobacz przewodniki dotyczące > migracji* .
@@ -30,7 +30,7 @@ Te funkcje składają się na usługi Azure Speech Services. Skorzystaj z łącz
 |---------|---------|-------------|-----|------|
 | [Zamiana mowy na tekst](speech-to-text.md) | Zamiany mowy na tekst | Funkcja zamiany mowy na tekst przekształca strumienie audio do tekstu w czasie rzeczywistym, które mogą być używane przez aplikacje, narzędzia lub urządzenia. Używaj zamiany mowy na tekst za pomocą [Language Understanding (Luis)](https://docs.microsoft.com/azure/cognitive-services/luis/) , aby uzyskać intencje użytkownika z uzyskanego mowy i korzystać z poleceń głosowych. | [Tak](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Tak](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [Transkrypcja partii](batch-transcription.md) | Transkrypcja partii umożliwia asynchroniczne transkrypcja mowy na tekst w dużych ilościach danych. Jest to usługa oparta na protokole REST, która używa tego samego punktu końcowego jako dostosowania i zarządzania modelami. | Nie | [Tak](https://westus.cris.ai/swagger/ui/index) |
-| | [Transkrypcja konwersacji](conversation-transcription-service.md) | Włącza rozpoznawanie mowy w czasie rzeczywistym, identyfikację głosu i diarization. Doskonale nadaje się do jego przepisywaniach spotkań osób z możliwością odróżniania głośników. | Yes | Nie |
+| | [Transkrypcja konwersacji](conversation-transcription-service.md) | Włącza rozpoznawanie mowy w czasie rzeczywistym, identyfikację głosu i diarization. Doskonale nadaje się do jego przepisywaniach spotkań osób z możliwością odróżniania głośników. | Tak | Nie |
 | | [Tworzenie modeli Custom Speech](#customize-your-speech-experience) | Jeśli używasz funkcji zamiany mowy na tekst do rozpoznawania i transkrypcji w unikatowym środowisku, możesz tworzyć i uczenia niestandardowych modeli akustycznych, językowych i wymowych w celu obsługi szumów otoczenia lub słownictwa specyficznego dla branż. | Nie | [Tak](https://westus.cris.ai/swagger/ui/index) |
 | [Zamiana tekstu na mowę](text-to-speech.md) | Zamiana tekstu na mowę | Zamiana tekstu na mowę polega na konwertowaniu tekstu wejściowego na wymowę przez człowieka, który używa [języka SSML (Speech syntezing Language)](text-to-speech.md#speech-synthesis-markup-language-ssml). Wybieraj spośród standardowych głosów i głosów neuronowych (zobacz [Obsługa języka](language-support.md)). | [Tak](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Tak](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [Tworzenie niestandardowych głosów](#customize-your-speech-experience) | Twórz niestandardowe czcionki głosowe, które są unikatowe dla danej marki lub produktu. | Nie | [Tak](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
@@ -41,14 +41,14 @@ Te funkcje składają się na usługi Azure Speech Services. Skorzystaj z łącz
 
 Dowiedz się, co nowego w usłudze Azure Speech Services.
 
+* 2019 sierpnia
+  * **Nowy samouczek**: [Bote głosowe za pomocą zestawu Speech SDK,C#](tutorial-voice-enable-your-bot-speech-sdk.md)
 * Czerwiec 2019
-    * Wydano 1.6.0 zestawu mowy SDK. Aby zapoznać się z pełną listą aktualizacji, ulepszeń i znanych problemów, zobacz [Informacje o wersji](releasenotes.md).
+  * Wydano 1.6.0 zestawu mowy SDK. Aby zapoznać się z pełną listą aktualizacji, ulepszeń i znanych problemów, zobacz [Informacje o wersji](releasenotes.md).
 * 2019 — dokumentacja jest teraz dostępna na potrzeby [transkrypcji konwersacji](conversation-transcription-service.md), [transkrypcji centrum połączeń](call-center-transcription.md)i [wirtualnych asystentów głosowych](voice-first-virtual-assistants.md).
 * 2019 maja
-    * Wydano 1.5.1 zestawu mowy SDK. Aby zapoznać się z pełną listą aktualizacji, ulepszeń i znanych problemów, zobacz [Informacje o wersji](releasenotes.md).
-    * Wydano 1.5.0 zestawu mowy SDK. Aby zapoznać się z pełną listą aktualizacji, ulepszeń i znanych problemów, zobacz [Informacje o wersji](releasenotes.md).
-* Kwiecień 2019 — wydanie zestawu Speech SDK 1.4.0 z obsługą funkcji zamiany tekstu na mowę (beta C++) C#dla systemów, i Java w systemach Windows i Linux. Ponadto zestaw SDK obsługuje teraz formaty audio MP3 i Opus/Ogg w C++ systemach i C# w systemie Linux. Aby zapoznać się z pełną listą aktualizacji, ulepszeń i znanych problemów, zobacz [Informacje o wersji](releasenotes.md).
-* Marzec 2019 — nowy punkt końcowy dla zamiany tekstu na mowę (TTS), który zwraca pełną listę głosów dostępnych w określonym regionie, jest teraz dostępny. Ponadto w przypadku usługi TTS są teraz obsługiwane nowe regiony. Aby uzyskać więcej informacji, zobacz informacje o [interfejsie API zamiany tekstu na mowę (REST)](rest-text-to-speech.md).
+  * Wydano 1.5.1 zestawu mowy SDK. Aby zapoznać się z pełną listą aktualizacji, ulepszeń i znanych problemów, zobacz [Informacje o wersji](releasenotes.md).
+  * Wydano 1.5.0 zestawu mowy SDK. Aby zapoznać się z pełną listą aktualizacji, ulepszeń i znanych problemów, zobacz [Informacje o wersji](releasenotes.md).
 
 ## <a name="try-speech-services"></a>Wypróbuj usługi mowy
 
@@ -67,6 +67,7 @@ Oferujemy Przewodniki Szybki Start w najpopularniejszych językach programowania
 Jeśli masz szansę na korzystanie z usług mowy, wypróbuj nasz samouczek, który uczy się, jak rozpoznać intencje z mowy przy użyciu zestawu Speech SDK i LUIS.
 
 * [Samouczek: Rozpoznawanie intencji z mowy przy użyciu zestawu Speech SDK i LUIS,C#](how-to-recognize-intents-from-speech-csharp.md)
+* [Samouczek: Bote głosowe za pomocą zestawu Speech SDK,C#](tutorial-voice-enable-your-bot-speech-sdk.md)
 * [Samouczek: Tworzenie aplikacji do kolby do tłumaczenia tekstu, analizowanie tonacji i syntezowanie przetłumaczonego tekstu na mowę, REST](https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json&toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fspeech-service%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
 
 ## <a name="get-sample-code"></a>Pobieranie przykładowego kodu
@@ -76,6 +77,7 @@ Przykładowy kod jest dostępny w witrynie GitHub dla każdej usługi Azure Spee
 * [Przykłady zamiany mowy na tekst, zamiany tekstu na mowę i tłumaczenia mowy (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 * [Przykłady transkrypcji partii (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
 * [Przykłady zamiany tekstu na mowę (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
+* [Przykłady wirtualnego asystenta głosowego (SDK)](https://aka.ms/csspeech/samples)
 
 ## <a name="customize-your-speech-experience"></a>Dostosowywanie środowiska mowy
 

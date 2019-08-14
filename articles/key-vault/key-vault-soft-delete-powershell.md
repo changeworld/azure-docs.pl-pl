@@ -1,58 +1,62 @@
 ---
-title: Usługa Azure Key Vault — jak używać usuwania nietrwałego za pomocą programu PowerShell
-description: Wielkość przykłady usuwania nietrwałego za pomocą wycinki kodu programu PowerShell
+title: Azure Key Vault — jak używać nietrwałego usuwania przy użyciu programu PowerShell
+description: Przykłady użycia nietrwałego usuwania przy użyciu wycinków kodu programu PowerShell
+services: key-vault
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 ms.service: key-vault
-ms.topic: conceptual
-ms.date: 03/19/2019
+ms.topic: tutorial
+ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: ecc87e03a80ce10bedbe26b3ebb452ec704eefcb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6a24f2dd52c3ac3c51df54bf5c01c7b31ca16147
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60461369"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985756"
 ---
-# <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Jak używać usuwania nietrwałego w usłudze Key Vault przy użyciu programu PowerShell
+# <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Jak używać nietrwałego usuwania Key Vault za pomocą programu PowerShell
 
-Funkcja usuwania nietrwałego w usłudze Azure Key Vault umożliwia odzyskiwanie usuniętych magazynów i obiektów magazynu. W szczególności opcji soft-delete adresów w następujących scenariuszach:
+Funkcja usuwania nietrwałego Azure Key Vault umożliwia Odzyskiwanie usuniętych magazynów i obiektów magazynu. W przypadku usuwania nietrwałego są stosowane następujące scenariusze:
 
-- Obsługa do usunięcia możliwych do odzyskania magazynu kluczy
-- Obsługa możliwe do odzyskania usuwanie obiektów usługi key vault; kluczy i wpisów tajnych oraz ich, a certyfikaty
+- Obsługa odwracalnego usuwania magazynu kluczy
+- Obsługa odwracalnego usuwania obiektów magazynu kluczy; klucze, wpisy tajne i certyfikaty
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- Program Azure PowerShell 1.0.0 lub nowsze wersje — Jeśli nie skonfigurowano tym już, zainstaluj program Azure PowerShell i skojarzyć go z subskrypcją platformy Azure, zobacz [jak zainstalować i skonfigurować program Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview). 
+- Azure PowerShell 1.0.0 lub nowszy — Jeśli nie masz już tej konfiguracji, Zainstaluj Azure PowerShell i skojarz ją z subskrypcją platformy Azure, zobacz [jak zainstalować i skonfigurować Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview). 
 
 >[!NOTE]
-> Brak pliku nieaktualną wersją naszych formatowanie danych wyjściowych programu PowerShell dla Key Vault, który **może** być załadowane do środowiska zamiast poprawnej wersji. Firma Microsoft są przewidywania zaktualizowanej wersji programu PowerShell, które zawierają potrzebne korekty do formatowania danych wyjściowych i aktualizacja nastąpi w tym temacie w tym czasie. Bieżące obejście problemu należy napotkasz ten problem formatowania, jest:
-> - Użyj następującego zapytania, jeśli nie widzisz opcji soft-delete włączone właściwości opisanych w tym temacie: `$vault = Get-AzKeyVault -VaultName myvault; $vault.EnableSoftDelete`.
+> Istnieje nieaktualna wersja Key Vault naszego pliku formatowania danych wyjściowych programu PowerShell, który **może** zostać załadowany do środowiska, a nie w poprawnej wersji. Przewidujemy, że zaktualizowana wersja programu PowerShell będzie zawierać wymaganą poprawkę dla formatowania danych wyjściowych i zaktualizuje ten temat w tym czasie. Bieżące obejście, jeśli wystąpi ten problem z formatowaniem, to:
+> - Jeśli zauważysz, że nie widzisz właściwości Enabled z włączonym usuwaniem w tym temacie, użyj następującego zapytania `$vault = Get-AzKeyVault -VaultName myvault; $vault.EnableSoftDelete`:.
 
 
-Dla usługi Key Vault szczegółowe informacje dotyczące programu PowerShell, zobacz [dokumentacja programu PowerShell dla usługi Azure Key Vault](/powershell/module/az.keyvault).
+Aby uzyskać szczegółowe informacje dotyczące Key Vault programu PowerShell, zobacz [Azure Key Vault Dokumentacja programu PowerShell](/powershell/module/az.keyvault).
 
 ## <a name="required-permissions"></a>Wymagane uprawnienia
 
-Operacje usługi Key Vault oddzielnie odbywa się za pośrednictwem uprawnień kontroli dostępu opartej na rolach w następujący sposób:
+Operacje Key Vault są zarządzane oddzielnie za pośrednictwem uprawnień kontroli dostępu opartej na rolach (RBAC) w następujący sposób:
 
-| Operacja | Opis | Uprawnienia użytkownika |
+| Operacja | Opis | Uprawnienie użytkownika |
 |:--|:--|:--|
-|List|Listy usunięte magazynów kluczy.|Microsoft.KeyVault/deletedVaults/read|
-|Recover|Przywrócenie usuniętego magazynu kluczy.|Microsoft.KeyVault/vaults/write|
-|Purge|Trwale usuwa usunięty magazyn kluczy i całą jego zawartość.|Microsoft.KeyVault/locations/deletedVaults/purge/action|
+|List|Wyświetla listę usuniętych magazynów kluczy.|Microsoft.KeyVault/deletedVaults/read|
+|Odzyskaj|Przywraca usunięty Magazyn kluczy.|Microsoft.KeyVault/vaults/write|
+|Przeczyść|Trwale usuwa usunięty Magazyn kluczy i całą jego zawartość.|Microsoft.KeyVault/locations/deletedVaults/purge/action|
 
-Aby uzyskać więcej informacji na temat uprawnień i kontroli dostępu, zobacz [zabezpieczanie własnego magazynu kluczy](key-vault-secure-your-key-vault.md).
+Aby uzyskać więcej informacji na temat uprawnień i kontroli dostępu, zobacz temat [Zabezpieczanie magazynu kluczy](key-vault-secure-your-key-vault.md).
 
-## <a name="enabling-soft-delete"></a>Włączenie opcji soft-delete
+## <a name="enabling-soft-delete"></a>Włączanie usuwania nietrwałego
 
-Możesz włączyć "opcji soft-delete" umożliwić odzyskiwanie usuniętych usługi key vault lub obiektów przechowywanych w magazynie kluczy.
+Włączenie "nietrwałe usuwanie" pozwala na odzyskanie usuniętego magazynu kluczy lub obiektów przechowywanych w magazynie kluczy.
 
-### <a name="existing-key-vault"></a>Istniejącego magazynu kluczy
+> [!IMPORTANT]
+> Włączenie elementu "usuwanie nietrwałe" w magazynie kluczy jest akcją nieodwracalną. Po ustawieniu właściwości nietrwałego usuwania na wartość "true" nie można jej zmienić ani usunąć.  
 
-Dla istniejącego magazynu kluczy o nazwie ContosoVault Włącz opcji soft-delete w następujący sposób. 
+### <a name="existing-key-vault"></a>Istniejący magazyn kluczy
+
+W przypadku istniejącego magazynu kluczy o nazwie ContosoVault Włącz program unsoft-DELETE w następujący sposób. 
 
 ```powershell
 ($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "ContosoVault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"
@@ -62,68 +66,68 @@ Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
 
 ### <a name="new-key-vault"></a>Nowy magazyn kluczy
 
-Włączenie opcji soft-delete dla nowego magazynu kluczy jest wykonywane w czasie jego tworzenia, dodając Flaga włączenia opcji soft-delete, aby Twoje polecenia create.
+Włączenie usuwania nietrwałego dla nowego magazynu kluczy odbywa się w czasie tworzenia przez dodanie flagi Enable Soft-Delete do polecenia CREATE.
 
 ```powershell
 New-AzKeyVault -Name "ContosoVault" -ResourceGroupName "ContosoRG" -Location "westus" -EnableSoftDelete
 ```
 
-### <a name="verify-soft-delete-enablement"></a>Sprawdź włączenie opcji soft-delete
+### <a name="verify-soft-delete-enablement"></a>Weryfikuj Włączanie usuwania nietrwałego
 
-Aby sprawdzić, czy magazyn kluczy ma włączone opcji soft-delete, uruchom *Pokaż* poleceń i poszukaj "nietrwałego usuwania włączony?" Atrybut:
+Aby sprawdzić, czy w magazynie kluczy jest włączona funkcja usuwania nietrwałego, uruchom polecenie *Pokaż* i poszukaj "nietrwałego usuwania włączonego?". przypisane
 
 ```powershell
 Get-AzKeyVault -VaultName "ContosoVault"
 ```
 
-## <a name="deleting-a-soft-delete-protected-key-vault"></a>Usuwanie opcji soft-delete chronionego magazynu kluczy
+## <a name="deleting-a-soft-delete-protected-key-vault"></a>Usuwanie nietrwałego chronionego magazynu kluczy
 
-Polecenie Usuń zmiany usługi key vault, zachowanie w zależności od tego, czy usuwania nietrwałego jest włączona.
+Polecenie usuwania zmian w magazynie kluczy w zależności od tego, czy jest włączone usuwanie nietrwałe.
 
 > [!IMPORTANT]
->Jeśli uruchomisz następujące polecenie dla magazynu kluczy, który nie ma opcji soft-delete, włączone, spowoduje trwałe usunięcie tego magazynu kluczy i całej jego zawartości, bez żadnych opcji odzyskiwania!
+>W przypadku uruchomienia następującego polecenia dla magazynu kluczy, który nie ma włączonej opcji usuwania nietrwałego, ten magazyn kluczy zostanie trwale usunięty i cała jego zawartość nie będzie dostępna w ramach odzyskiwania.
 
 ```powershell
 Remove-AzKeyVault -VaultName 'ContosoVault'
 ```
 
-### <a name="how-soft-delete-protects-your-key-vaults"></a>Sposób usuwania nietrwałego ochrony Twoich magazynów kluczy
+### <a name="how-soft-delete-protects-your-key-vaults"></a>Jak usuwanie nietrwałe chroni Twoje magazyny kluczy
 
-Przy użyciu opcji soft-delete włączone:
+Z włączonym niemiękkim usuwaniem:
 
-- Usunięty magazyn kluczy jest usuwane z grupy zasobów i umieszczone w przestrzeni nazw zastrzeżonych, skojarzona z lokalizacją, w której został utworzony. 
-- Usunięte obiekty, takie jak klucze, wpisy tajne i certyfikaty, są niedostępne, tak długo, jak ich zawierającą magazyn kluczy jest w stanie usunięty. 
-- Nazwy DNS, który ma być usunięty magazyn kluczy jest zarezerwowana uniemożliwia Trwa tworzenie nowego magazynu kluczy o takiej samej nazwie.  
+- Usunięty Magazyn kluczy zostanie usunięty z grupy zasobów i umieszczony w zarezerwowanej przestrzeni nazw skojarzonej z lokalizacją, w której została utworzona. 
+- Usunięte obiekty, takie jak klucze, wpisy tajne i certyfikaty, są niedostępne, o ile ich Magazyn kluczy jest w stanie usunięty. 
+- Nazwa DNS usuniętego magazynu kluczy jest zastrzeżona, uniemożliwiając utworzenie nowego magazynu kluczy o tej samej nazwie.  
 
-Możesz wyświetlić stan usunięto magazynów kluczy, powiązaną z Twoją subskrypcją za pomocą następującego polecenia:
+Można wyświetlić usunięte magazyny kluczy stanu skojarzone z subskrypcją za pomocą następującego polecenia:
 
 ```powershell
 Get-AzKeyVault -InRemovedState 
 ```
 
-- *Identyfikator* może służyć do identyfikacji zasobu podczas odzyskiwania lub czyszczenia. 
-- *Identyfikator zasobu* jest oryginalny identyfikator zasobu tego magazynu. Ponieważ ten magazyn kluczy jest obecnie w stanie usunięty, żaden zasób istnieje przy użyciu tego identyfikatora zasobu. 
-- *Planowana data przeczyścić* sytuacja, w magazynie zostaną trwale usunięte, jeśli nie podjęto żadnej akcji. Domyślny okres przechowywania, używany do obliczania *zaplanowana data przeczyścić*, wynosi 90 dni.
+- *Identyfikatora* można użyć do zidentyfikowania zasobu podczas odzyskiwania lub przeczyszczania. 
+- *Identyfikator zasobu* to oryginalny identyfikator zasobu tego magazynu. Ponieważ ten magazyn kluczy jest teraz w stanie usunięty, nie istnieje żaden zasób z tym IDENTYFIKATORem zasobu. 
+- *Zaplanowana data przeczyszczania* oznacza, że magazyn zostanie trwale usunięty, jeśli nie zostanie podjęta żadna akcja. Domyślny okres przechowywania używany do obliczania *zaplanowanej daty przeczyszczania*to 90 dni.
 
 ## <a name="recovering-a-key-vault"></a>Odzyskiwanie magazynu kluczy
 
-Aby odzyskać magazynu kluczy, określ nazwę usługi key vault, grupy zasobów i lokalizacji. Należy pamiętać, lokalizacji i grupie zasobów usunięty magazyn kluczy, gdy ich potrzebujesz w procesie odzyskiwania.
+Aby odzyskać Magazyn kluczy, należy określić nazwę magazynu kluczy, grupę zasobów i lokalizację. Zanotuj lokalizację i grupę zasobów usuniętego magazynu kluczy, ponieważ są one potrzebne do procesu odzyskiwania.
 
 ```powershell
 Undo-AzKeyVaultRemoval -VaultName ContosoVault -ResourceGroupName ContosoRG -Location westus
 ```
 
-Po odzyskaniu magazynu kluczy przy użyciu oryginalnego identyfikatora zasobu usługi key vault jest tworzony nowy zasób Jeśli oryginalnej grupy zasobów zostanie usunięty, jeden musi zostać utworzona z tej samej nazwie przed podjęciem próby wykonania odzyskiwania.
+Po odzyskaniu magazynu kluczy zostanie utworzony nowy zasób z oryginalnym IDENTYFIKATORem zasobu magazynu kluczy. Jeśli oryginalna Grupa zasobów zostanie usunięta, przed podjęciem próby odzyskania należy utworzyć jedną z nich o tej samej nazwie.
 
-## <a name="deleting-and-purging-key-vault-objects"></a>Usuwanie i usuwanie obiektów magazynu kluczy
+## <a name="deleting-and-purging-key-vault-objects"></a>Usuwanie i przeczyszczanie obiektów magazynu kluczy
 
-Następujące polecenie spowoduje usunięcie klucza "ContosoFirstKey", w usłudze key vault o nazwie "ContosoVault", która ma włączoną opcji soft-delete:
+Następujące polecenie spowoduje usunięcie klucza "ContosoFirstKey" w magazynie kluczy o nazwie "ContosoVault", który ma włączony program Undelete:
 
 ```powershell
 Remove-AzKeyVaultKey -VaultName ContosoVault -Name ContosoFirstKey
 ```
 
-Za pomocą usługi key vault włączone dla opcji soft-delete usunięty klucz nadal pojawia się do usunięcia, chyba że jawnie listy usuniętych kluczy. Większość operacji na kluczu w stanie usunięty zakończy się niepowodzeniem z wyjątkiem wyświetlania listy, odzyskiwanie, czyszczenia usuniętych klucza. 
+Jeśli magazyn kluczy został włączony do usuwania nietrwałego, usunięty klucz nadal wydaje się zostać usunięty, chyba że jawnie wyświetlona zostanie lista usuniętych kluczy. Większość operacji na kluczu w stanie usuniętych zakończy się niepowodzeniem, z wyjątkiem tworzenia listy, odzyskiwania, przeczyszczania usuniętego klucza. 
 
 Na przykład następujące polecenie wyświetla listę usuniętych kluczy w magazynie kluczy "ContosoVault":
 
@@ -133,116 +137,116 @@ Get-AzKeyVaultKey -VaultName ContosoVault -InRemovedState
 
 ### <a name="transition-state"></a>Stan przejścia 
 
-Po usunięciu klucz w magazynie kluczy przy użyciu opcji soft-delete, włączone, może potrwać kilka sekund przejścia. Podczas tego przejścia może pojawić się, że klucz nie jest w stanie aktywnym lub w stanie usunięty. 
+Po usunięciu klucza w magazynie kluczy z włączonym nieaktywnym usuwaniem, ukończenie przejścia może potrwać kilka sekund. W trakcie tego przejścia może pojawić się, że klucz nie jest w stanie aktywnym lub został usunięty. 
 
-### <a name="using-soft-delete-with-key-vault-objects"></a>Używanie opcji soft-delete z obiektów magazynu kluczy
+### <a name="using-soft-delete-with-key-vault-objects"></a>Używanie nietrwałego usuwania z obiektami magazynu kluczy
 
-Podobnie jak magazyny kluczy usunięty klucz, hasło lub certyfikat, pozostaje w stanie usunięty przez 90 dni, chyba że je odzyskać lub je Wyczyść. 
+Podobnie jak w przypadku magazynów kluczy, usunięty klucz, wpis tajny lub certyfikat, pozostaje w stanie usunięte przez maksymalnie 90 dni, chyba że zostanie odzyskany lub przeczyszczony. 
 
 #### <a name="keys"></a>Klucze
 
-Aby odzyskać wszystkie usunięte nietrwale klucza:
+Aby odzyskać klucz nietrwały:
 
 ```powershell
 Undo-AzKeyVaultKeyRemoval -VaultName ContosoVault -Name ContosoFirstKey
 ```
 
-Aby trwale skasować (czyszczenie) wszystkie usunięte nietrwale klucza:
+Aby trwale usunąć (nazywane także przeczyszczaniem) klucz nietrwałego:
 
 > [!IMPORTANT]
-> Przeczyszczanie klucza spowoduje trwałe usunięcie go, a nie będzie możliwe do odzyskania! 
+> Przeczyszczanie klucza spowoduje jego trwałe usunięcie i nie będzie można go odzyskać. 
 
 ```powershell
 Remove-AzKeyVaultKey -VaultName ContosoVault -Name ContosoFirstKey -InRemovedState
 ```
 
-**Odzyskać** i **przeczyścić** akcji ma własne uprawnienia skojarzone zasady dostępu magazynu kluczy. Dla użytkownika lub nazwa główna usługi, aby można było wykonać **odzyskać** lub **przeczyścić** akcji, muszą mieć odpowiednie uprawnienia dla tego klucza lub klucza tajnego. Domyślnie **przeczyścić** nie została dodana do zasad dostępu magazynu kluczy, gdy "all" skrótu służy do udzielania wszystkie uprawnienia. W szczególności należy przyznać **przeczyścić** uprawnień. 
+Akcje odzyskania i **przeczyszczania** mają własne uprawnienia skojarzone z zasadami dostępu magazynu kluczy. Aby użytkownik lub usługa mogła wykonać akcję odzyskania lub przeczyszczania , muszą mieć odpowiednie uprawnienia do tego klucza lub wpisu tajnego. Domyślnie przeczyszczanie nie jest dodawane do zasad dostępu magazynu kluczy, gdy skrót "wszystkie" jest używany do udzielania wszystkich uprawnień. Musisz jawnie udzielić uprawnienia do przeczyszczania. 
 
-#### <a name="set-a-key-vault-access-policy"></a>Ustawianie zasad dostępu magazynu kluczy
+#### <a name="set-a-key-vault-access-policy"></a>Ustawianie zasad dostępu do magazynu kluczy
 
-Następujące polecenie przyznaje user@contoso.com uprawnienia do korzystania z kilku operacji dotyczących kluczy w *ContosoVault* tym **przeczyścić**:
+Następujące polecenie przyznaje user@contoso.com uprawnienia do korzystania z kilku operacji na kluczach w *ContosoVault* , w tym **przeczyszczania**:
 
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName ContosoVault -UserPrincipalName user@contoso.com -PermissionsToKeys get,create,delete,list,update,import,backup,restore,recover,purge
 ```
 
 >[!NOTE] 
-> W przypadku istniejącego magazynu kluczy, który miał tylko opcji soft-delete, włączone, możesz nie mieć **odzyskać** i **przeczyścić** uprawnienia.
+> Jeśli masz już Magazyn kluczy, który ma włączoną opcję usuwania nietrwałego, możesz nie mieć uprawnień do **odzyskiwania** i **przeczyszczania** .
 
 #### <a name="secrets"></a>Wpisy tajne
 
-Takie jak klucze wpisy tajne są zarządzane za pomocą ich własnych poleceń:
+Podobnie jak klucze, wpisy tajne są zarządzane przy użyciu własnych poleceń:
 
-- Usuń klucz tajny o nazwie SQLPassword: 
+- Usuń wpis tajny o nazwie SQLPassword: 
   ```powershell
   Remove-AzKeyVaultSecret -VaultName ContosoVault -name SQLPassword
   ```
 
-- Wyświetl wszystkie usunięte wpisów tajnych w magazynie kluczy: 
+- Wyświetl listę wszystkich usuniętych wpisów tajnych w magazynie kluczy: 
   ```powershell
   Get-AzKeyVaultSecret -VaultName ContosoVault -InRemovedState
   ```
 
-- Aby odzyskać wpisu tajnego w stanie usunięty: 
+- Odzyskaj wpis tajny w stanie usunięte: 
   ```powershell
   Undo-AzKeyVaultSecretRemoval -VaultName ContosoVault -Name SQLPAssword
   ```
 
-- Wyczyść wpis tajny w stanie usunięty: 
+- Przeczyszczanie wpisu tajnego w stanie usunięte: 
 
   > [!IMPORTANT]
-  > Trwałe usuwanie wpisu tajnego spowoduje trwałe usunięcie go, a nie będzie możliwe do odzyskania!
+  > Przeczyszczanie wpisu tajnego spowoduje jego trwałe usunięcie i nie będzie można go odzyskać.
 
   ```powershell
   Remove-AzKeyVaultSecret -VaultName ContosoVault -InRemovedState -name SQLPassword
   ```
 
-## <a name="purging-a-soft-delete-protected-key-vault"></a>Trwałe usuwanie opcji soft-delete chronionego magazynu kluczy
+## <a name="purging-a-soft-delete-protected-key-vault"></a>Przeczyszczanie nietrwałego, chronionego magazynu kluczy
 
 > [!IMPORTANT]
-> Trwałe usuwanie magazynu kluczy lub jeden zawartych w nim obiektów, spowoduje to trwałe usunięcie go, co oznacza, że nie będzie możliwe do odzyskania!
+> Przeczyszczanie magazynu kluczy lub jednego z zawartych w nim obiektów spowoduje trwałe usunięcie go, co oznacza, że nie będzie można go odzyskać.
 
-Funkcja przeczyszczania umożliwia trwałe usunięcie obiektu usługi key vault lub całego magazynu kluczy, który został wcześniej wszystkie usunięte nietrwale. Jak pokazano w poprzedniej sekcji, obiekty przechowywane w magazynie kluczy przy użyciu funkcji usuwania nietrwałego, włączone, można przejść przez różne stany:
-- **Aktywne**: przed usunięciem.
-- **Wszystkie usunięte nietrwale**: po jego usunięciu stanie się na liście i odzyskany do stanu aktywna.
-- **Trwale usunięte**: po przeczyszczenie nie można go odzyskać.
+Funkcja przeczyszczania służy do trwałego usuwania obiektu magazynu kluczy lub całego magazynu kluczy, który został wcześniej usunięty. Jak pokazano w poprzedniej sekcji, obiekty przechowywane w magazynie kluczy z włączoną funkcją usuwania nietrwałego mogą przechodzić przez wiele stanów:
+- **Aktywny**: przed usunięciem.
+- **Nietrwałe usunięte**: po usunięciu można je wyświetlić i odzyskać z powrotem do stanu aktywnego.
+- **Trwale usunięto**: po przeczyszczeniu, nie można odzyskać.
 
 
-To samo dotyczy magazynu key Vault. Aby trwale usunąć wszystkie usunięte nietrwale magazyn kluczy i jego zawartość, można przeczyścić sam magazyn kluczy.
+Ta sama wartość dotyczy magazynu kluczy. W celu trwałego usunięcia nietrwałego magazynu kluczy i jego zawartości należy przeczyścić sam magazyn kluczy.
 
-### <a name="purging-a-key-vault"></a>Trwałe usuwanie magazynu kluczy
+### <a name="purging-a-key-vault"></a>Przeczyszczanie magazynu kluczy
 
-Podczas przeczyszczania magazynu kluczy jego całą zawartość są trwale usuwane, w tym kluczy, wpisów tajnych i certyfikatów. Aby Przeczyść usunięty nietrwale magazyn kluczy, należy użyć `Remove-AzKeyVault` polecenia z opcją `-InRemovedState` i, określając lokalizację usunięto magazyn kluczy przy użyciu `-Location location` argumentu. Można znaleźć lokalizacji usunięty magazyn, za pomocą polecenia `Get-AzKeyVault -InRemovedState`.
+Po przeczyszczeniu magazynu kluczy jego cała zawartość jest trwale usuwana, w tym kluczy, wpisów tajnych i certyfikatów. Aby przeczyścić usunięty nietrwale Magazyn kluczy, użyj `Remove-AzKeyVault` polecenia z opcją `-InRemovedState` i określając lokalizację `-Location location` usuniętego magazynu kluczy z argumentem. Lokalizację usuniętego magazynu można znaleźć za pomocą polecenia `Get-AzKeyVault -InRemovedState`.
 
 ```powershell
 Remove-AzKeyVault -VaultName ContosoVault -InRemovedState -Location westus
 ```
 
-### <a name="purge-permissions-required"></a>Wyczyść wymagane uprawnienia
-- Aby przeczyścić usunięty magazyn kluczy, użytkownik potrzebuje uprawnień RBAC do *Microsoft.KeyVault/locations/deletedVaults/purge/action* operacji. 
-- Aby wyświetlić listę usuniętych usługi key vault, użytkownik potrzebuje uprawnień RBAC do *Microsoft.KeyVault/deletedVaults/read* operacji. 
+### <a name="purge-permissions-required"></a>Wymagane uprawnienia przeczyszczania
+- Aby przeczyścić usunięty Magazyn kluczy, użytkownik musi mieć uprawnienia RBAC do operacji *Microsoft. Key/Locations/deletedVaults/przeczyszczania/akcji* . 
+- Aby wyświetlić usunięty Magazyn kluczy, użytkownik musi mieć uprawnienia RBAC do operacji *Microsoft. Key/deletedVaults/Read* . 
 - Domyślnie tylko administrator subskrypcji ma te uprawnienia. 
 
-### <a name="scheduled-purge"></a>Przeczyszczanie zaplanowane
+### <a name="scheduled-purge"></a>Zaplanowane przeczyszczanie
 
-Wyświetlanie listy obiektów usuniętych usługi key vault pokazuje również, gdy są zaplanowane zostaną usunięte przez usługę Key Vault. *Planowana data przeczyścić* wskazuje, kiedy obiekt magazynu kluczy zostaną trwale usunięte, jeśli nie podjęto żadnej akcji. Domyślnie okres przechowywania dla obiektu usunięty magazyn kluczy jest 90 dni.
+Wyświetlanie listy usuniętych obiektów magazynu kluczy również pokazuje, kiedy mają być przeczyszczone przez Key Vault. *Zaplanowana data przeczyszczania* wskazuje, kiedy obiekt magazynu kluczy zostanie trwale usunięty, jeśli nie zostanie podjęta żadna akcja. Domyślnie okres przechowywania usuniętego obiektu magazynu kluczy wynosi 90 dni.
 
 >[!IMPORTANT]
->Obiekt magazynu przeczyszczone wyzwolone przez jego *zaplanowana data przeczyścić* polu, zostaną trwale usunięte. Nie jest możliwe do odzyskania!
+>Przeczyszczony obiekt magazynu wyzwalany przez zaplanowaną wartość pola *Data przeczyszczania* zostanie trwale usunięty. Nie jest możliwe do odzyskania!
 
-## <a name="enabling-purge-protection"></a>Włączenie ochrony przeczyszczania
+## <a name="enabling-purge-protection"></a>Włączanie ochrony przed czyszczeniem
 
-Gdy ochrona przed czyszczeniem jest włączona, magazynu lub obiektu w usuniętej stanu nie można przeczyścić, dopóki minął okres przechowywania 90 dni. Nadal można odzyskać taki magazyn lub obiektu. Ta funkcja zapewnia dodano pewność, że magazyn lub obiektu nigdy nie można trwale usunąć, dopóki przechowywania okres został przekazany.
+Po włączeniu ochrony przed przeczyszczeniem nie można czyścić magazynu ani obiektu w stanie usuniętym, dopóki nie zostanie przekroczony okres przechowywania 90 dni. Taki magazyn lub obiekt nadal można odzyskać. Ta funkcja zapewnia dodatkową gwarancję, że magazyn lub obiekt nigdy nie można trwale usunąć, dopóki nie upłynie okres przechowywania.
 
-Ochrona przed czyszczeniem można włączyć tylko wtedy, gdy włączona jest również opcji soft-delete. 
+Ochronę przeczyszczania można włączyć tylko wtedy, gdy jest również włączona funkcja usuwania nietrwałego. 
 
-Aby włączyć zarówno usuwanie nietrwałe i przeczyścić ochrony podczas tworzenia magazynu, należy użyć [New AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault?view=azps-1.5.0) polecenia cmdlet:
+Aby włączyć zarówno usuwanie trwałe, jak i przeczyszczanie podczas tworzenia magazynu, użyj polecenia cmdlet [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault?view=azps-1.5.0) :
 
 ```powershell
 New-AzKeyVault -Name ContosoVault -ResourceGroupName ContosoRG -Location westus -EnableSoftDelete -EnablePurgeProtection
 ```
 
-Aby dodać ochrona przed czyszczeniem do istniejącego magazynu (który jest już włączone usuwanie nietrwałe), użyj [Get AzKeyVault](/powershell/module/az.keyvault/Get-AzKeyVault?view=azps-1.5.0), [Get AzResource](/powershell/module/az.resources/get-azresource?view=azps-1.5.0), i [AzResource zestaw](/powershell/module/az.resources/set-azresource?view=azps-1.5.0) poleceń cmdlet:
+Aby dodać ochronę przed przeczyszczeniem do istniejącego magazynu (który ma już włączone usuwanie nietrwałe), Użyj poleceń cmdlet [Get-AzKeyVault](/powershell/module/az.keyvault/Get-AzKeyVault?view=azps-1.5.0), [Get-AzResource](/powershell/module/az.resources/get-azresource?view=azps-1.5.0)i [Set-AzResource](/powershell/module/az.resources/set-azresource?view=azps-1.5.0) :
 
 ```
 ($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "ContosoVault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true"
@@ -252,5 +256,5 @@ Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
 
 ## <a name="other-resources"></a>Inne zasoby
 
-- Aby uzyskać omówienie funkcji usuwania nietrwałego w usłudze Key Vault, zobacz [omówienie usuwania nietrwałego w usłudze Azure Key Vault](key-vault-ovw-soft-delete.md).
-- Aby uzyskać ogólne omówienie użycia usługi Azure Key Vault, zobacz [co to jest usługa Azure Key Vault?](key-vault-overview.md). Utwórz = Powodzenie}
+- Omówienie funkcji usuwania nietrwałego Key Vault można znaleźć w temacie [Azure Key Vault unsoft-Delete Overview](key-vault-ovw-soft-delete.md).
+- Aby uzyskać ogólne omówienie użycia Azure Key Vault, zobacz [co to jest Azure Key Vault?](key-vault-overview.md). wartość daty = sukces =

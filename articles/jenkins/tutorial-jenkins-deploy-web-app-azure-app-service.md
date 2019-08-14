@@ -1,5 +1,5 @@
 ---
-title: Samouczek — wdrażanie z usługi GitHub do usługi Azure App Service przy użyciu narzędzia Jenkins
+title: 'Samouczek: Wdrażanie z usługi GitHub w Azure App Service z usługą Jenkins'
 description: Konfigurowanie narzędzia Jenkins pod kątem ciągłej integracji z usługi GitHub i ciągłego wdrażania w usłudze Azure App Service dla aplikacji internetowych w języku Java
 services: jenkins
 ms.service: jenkins
@@ -8,18 +8,19 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: 51ca9602ff155bf61eb28a59a97faa7a06322c7a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.custom: seo-java-august2019
+ms.openlocfilehash: 955ce9724d576e56766ab3d87a374a65e4ca5c0e
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855172"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967119"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Samouczek: Wdrażanie z usługi GitHub do usługi Azure App Service przy użyciu funkcji ciągłej integracji i ciągłego wdrażania narzędzia Jenkins
 
 W tym samouczku wdrożysz przykładową internetową aplikację Java z usługi GitHub do [usługi Azure App Service w systemie Linux](/azure/app-service/containers/app-service-linux-intro), konfigurując ciągłą integrację i ciągłe wdrażanie w narzędziu Jenkins. Po zaktualizowaniu aplikacji przez wypchnięcie zatwierdzeń do usługi GitHub narzędzie Jenkins automatycznie skompiluje i opublikuje ponownie aplikację w usłudze Azure App Service. Przykładowa aplikacja w tym samouczku została opracowana przy użyciu struktury [Spring Boot](https://projects.spring.io/spring-boot/). 
 
-![Przegląd](media/tutorial-jenkins-deploy-web-app-azure-app-service/overview.png)
+![Omówienie](media/tutorial-jenkins-deploy-web-app-azure-app-service/overview.png)
 
 W tym samouczku wykonasz następujące zadania:
 
@@ -325,7 +326,7 @@ Następnie skompiluj i wdróż aplikację w usłudze Azure App Service.
 
 Jeśli napotkasz jakiekolwiek usterki we wtyczkach narzędzia Jenkins, prześlij zgłoszenie za pomocą narzędzia [Jenkins JIRA](https://issues.jenkins-ci.org/) dla określonego składnika.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Use Azure VMs as build agents (Używanie maszyn wirtualnych platformy Azure)](/azure/jenkins/jenkins-azure-vm-agents)

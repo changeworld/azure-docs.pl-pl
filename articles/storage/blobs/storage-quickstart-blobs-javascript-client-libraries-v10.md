@@ -11,12 +11,12 @@ ms.reviewer: seguler
 ms.date: 05/20/2019
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 742e270ae84604e8d5389c0b2982642f56105fcc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: ea5dfe2261be4512d4ba8edda1e7fbd5219a50c0
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828212"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986876"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -59,7 +59,7 @@ Następnie utworzymy token zabezpieczający za pomocą usługi Azure Cloud Shell
 
 ## <a name="create-a-shared-access-signature"></a>Tworzenie sygnatury dostępu współdzielonego
 
-Sygnatura dostępu współdzielonego (SAS, Shared Access Signature) jest używana przez kod uruchomiony w przeglądarce do autoryzowania żądań w usłudze Blob Storage. Sygnatura dostępu współdzielonego umożliwia klientowi autoryzację dostępu do zasobów magazynu bez użycia klucza dostępu konta ani parametrów połączenia. Zobacz [Using shared access signatures (SAS) (Używanie sygnatur dostępu współdzielonego)](../common/storage-dotnet-shared-access-signature-part-1.md), aby uzyskać więcej informacji.
+Sygnatura dostępu współdzielonego (SAS, Shared Access Signature) jest używana przez kod uruchomiony w przeglądarce do autoryzowania żądań w usłudze Blob Storage. Sygnatura dostępu współdzielonego umożliwia klientowi autoryzację dostępu do zasobów magazynu bez użycia klucza dostępu konta ani parametrów połączenia. Zobacz [Using shared access signatures (SAS) (Używanie sygnatur dostępu współdzielonego)](../common/storage-sas-overview.md), aby uzyskać więcej informacji.
 
 Sygnaturę dostępu współdzielonego można utworzyć przy użyciu interfejsu wiersza polecenia platformy Azure za pośrednictwem usługi Azure Cloud Shell lub z Azure Portal lub Eksplorator usługi Azure Storage. W poniższej tabeli opisano parametry, które należy podać wartości w celu wygenerowania sygnatury dostępu współdzielonego za pomocą interfejsu wiersza polecenia.
 
@@ -358,7 +358,7 @@ W tym momencie możesz uruchomić stronę i eksperyment, aby poznać sposób dzi
 
 Aby wyczyścić zasoby utworzone w ramach tego przewodnika Szybki Start, przejdź do [Azure Portal](https://portal.azure.com) i Usuń grupę zasobów utworzoną w sekcji wymagania wstępne.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku szybki start utworzono prostą witrynę sieci Web, która uzyskuje dostęp do usługi BLOB Storage z poziomu języka JavaScript opartego na przeglądarce. Aby dowiedzieć się, jak można hostować witrynę internetową w usłudze BLOB Storage, przejdź do następującego samouczka:
 

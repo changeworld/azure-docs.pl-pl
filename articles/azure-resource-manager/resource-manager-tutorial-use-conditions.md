@@ -13,20 +13,20 @@ ms.devlang: na
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0d27eef8ee2c70449bacaced0de89bdc5e6989ff
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: b997451a25f8a093491a322376db95ea53165893
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357811"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989155"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Samouczek: Używanie warunków w szablonach usługi Azure Resource Manager
 
 Dowiedz się, jak wdrażać zasoby platformy Azure na podstawie warunków.
 
-W samouczku [Ustawianie kolejności wdrażania zasobów](./resource-manager-tutorial-create-templates-with-dependent-resources.md) tworzysz maszynę wirtualną, sieć wirtualną i kilka innych zasobów zależnych, w tym konto magazynu. Zamiast za każdym razem tworzyć nowe konto magazynu, zezwalasz użytkownikom na utworzenie nowego konta magazynu lub użycie istniejącego. Aby osiągnąć ten cel, definiujesz dodatkowy parametr. Jeśli wartość parametru to „new”, jest tworzone nowe konto magazynu. W przeciwnym razie służy istniejące konto magazynu o podanej nazwie.
+W samouczku [Ustawianie kolejności wdrażania zasobów](./resource-manager-tutorial-create-templates-with-dependent-resources.md) tworzysz maszynę wirtualną, sieć wirtualną i kilka innych zasobów zależnych, w tym konto magazynu. Zamiast za każdym razem tworzyć nowe konto magazynu, zezwalasz użytkownikom na utworzenie nowego konta magazynu lub użycie istniejącego. Aby osiągnąć ten cel, definiujesz dodatkowy parametr. Jeśli wartość parametru to „new”, jest tworzone nowe konto magazynu. W przeciwnym razie używane jest istniejące konto magazynu o podanej nazwie.
 
-![Diagram warunek użycia szablonu usługi Resource Manager](./media/resource-manager-tutorial-use-conditions/resource-manager-template-use-condition-diagram.png)
+![Diagram warunków używania szablonu Menedżer zasobów](./media/resource-manager-tutorial-use-conditions/resource-manager-template-use-condition-diagram.png)
 
 Ten samouczek obejmuje następujące zadania:
 
@@ -39,9 +39,9 @@ Ten samouczek obejmuje następujące zadania:
 Ten samouczek obejmuje tylko podstawowy scenariusz użycia warunków. Aby uzyskać więcej informacji, zobacz:
 
 * [Struktura pliku szablonu: Warunek](./resource-group-authoring-templates.md#condition).
-* [Warunkowe wdrażanie zasobu w szablonie usługi Azure Resource Manager](/azure/architecture/building-blocks/extending-templates/conditional-deploy).
+* [Warunkowego wdrażania zasobu w szablonie Azure Resource Manager](/azure/architecture/building-blocks/extending-templates/conditional-deploy).
 * [Funkcja szablonu: Jeśli](./resource-group-template-functions-logical.md#if).
-* [Funkcje porównania dla szablonów usługi Azure Resource Manager](./resource-group-template-functions-comparison.md)
+* [Funkcje porównania dla Azure Resource Manager szablonów](./resource-group-template-functions-comparison.md)
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
@@ -86,15 +86,15 @@ Szablony szybkiego startu platformy Azure to repozytorium na potrzeby szablonów
 Wprowadź dwie zmiany do istniejącego szablonu:
 
 * Dodaj parametr nazwy konta magazynu. Użytkownicy mogą określić nazwę nowego lub istniejącego konta magazynu.
-* Dodaj nowy parametr o nazwie **newOrExisting**. Ten parametr jest używany przy wdrożeniu do określenia, czy utworzyć nowe konto magazynu, czy użyć istniejącego.
+* Dodaj nowy parametr o nazwie **newOrExisting**. Wdrożenie używa tego parametru, aby określić, czy należy utworzyć nowe konto magazynu, czy użyć istniejącego konta magazynu.
 
 Poniżej przedstawiono procedurę wprowadzania zmian:
 
 1. Otwórz plik **azuredeploy.json** w programie Visual Studio Code.
-2. Zastąp trzy **variables('storageAccountName')** z **parameters('storageAccountName')** całego szablonu.
+2. Zastąp trzy **zmienne ("storageAccountName")** **parametrami ("storageAccountName")** w całym szablonie.
 3. Usuń następującą definicję zmiennej:
 
-    ![Diagram warunek użycia szablonu usługi Resource Manager](./media/resource-manager-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
+    ![Diagram warunków używania szablonu Menedżer zasobów](./media/resource-manager-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
 
 4. Dodaj następujące dwa parametry do szablonu:
 
@@ -126,7 +126,7 @@ Poniżej przedstawiono procedurę wprowadzania zmian:
     Zaktualizowana definicja konta magazynu wygląda następująco:
 
     ![Warunek użycia w usłudze Resource Manager](./media/resource-manager-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
-6. Aktualizacja **storageUri** właściwości definicji zasobu maszyny wirtualnej przy użyciu następujących wartości:
+6. Zaktualizuj Właściwość **storageUri** definicji zasobu maszyny wirtualnej, korzystając z następującej wartości:
 
     ```json
     "storageUri": "[concat('https://', parameters('storageAccountName'), '.blob.core.windows.net')]"
@@ -138,7 +138,7 @@ Poniżej przedstawiono procedurę wprowadzania zmian:
 
 ## <a name="deploy-the-template"></a>Wdrożenie szablonu
 
-Postępuj zgodnie z instrukcjami w [wdrożenia szablonu](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) Otwórz usługę Cloud shell Przekaż szablon i następnie uruchom skrypt programu PowerShell, aby wdrożyć szablon postępuj zgodnie z.
+Postępuj zgodnie z instrukcjami w temacie [Wdrażanie szablonu](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) , aby otworzyć usługę Cloud Shell i przekazać poprawiony szablon, a następnie uruchom następujący skrypt programu PowerShell, aby wdrożyć szablon.
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name"
@@ -163,18 +163,18 @@ New-AzResourceGroupDeployment `
 > [!NOTE]
 > Wdrożenie zakończy się niepowodzeniem, jeśli parametr **newOrExisting** będzie mieć wartość **new**, ale konto magazynu o podanej nazwie będzie już istnieć.
 
-Spróbuj przeprowadzić kolejne wdrożenie, tym razem z parametrem **newOrExisting** ustawionym na wartość „existing”, i podaj nazwę istniejącego konta magazynu. Aby wcześniej utworzyć konto magazynu, zobacz [Tworzenie konta magazynu](../storage/common/storage-quickstart-create-account.md).
+Spróbuj wprowadzić inne wdrożenie z **newOrExistingem** ustawionym na wartość "istniejący" i określ istniejące konto magazynu. Aby wcześniej utworzyć konto magazynu, zobacz [Tworzenie konta magazynu](../storage/common/storage-quickstart-create-account.md).
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy zasoby platformy Azure nie będą już potrzebne, wyczyść wdrożone zasoby, usuwając grupę zasobów. Aby usunąć grupę zasobów, wybierz **wypróbuj** do Otwórz usługę Cloud shell. Wklej skrypt programu PowerShell, kliknij prawym przyciskiem myszy w okienku shell, a następnie wybierz **Wklej**.
+Gdy zasoby platformy Azure nie będą już potrzebne, wyczyść wdrożone zasoby, usuwając grupę zasobów. Aby usunąć grupę zasobów, wybierz pozycję **Wypróbuj** , aby otworzyć usługę Cloud Shell. Aby wkleić skrypt programu PowerShell, kliknij prawym przyciskiem myszy okienko powłoki, a następnie wybierz polecenie **Wklej**.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the same resource group name you used in the last procedure"
 Remove-AzResourceGroup -Name $resourceGroupName
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku utworzono szablon, który pozwala użytkownikom wybrać między utworzeniem nowego konta magazynu a użyciem istniejącego konta magazynu. Aby dowiedzieć się, jak pobierać wpisy tajne z usługi Azure Key Vault i używać ich jako haseł przy wdrożeniach na podstawie szablonu, zobacz:
 

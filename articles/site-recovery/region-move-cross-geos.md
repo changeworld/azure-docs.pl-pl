@@ -1,6 +1,6 @@
 ---
-title: Przenoszenie maszyn wirtualnych IaaS platformy Azure między Azure dla instytucji rządowych i regionach świadczenia publicznej za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: Umożliwia przenoszenie maszyn wirtualnych IaaS platformy Azure między Azure Government i regionach świadczenia publicznej usługi Azure Site Recovery.
+title: Przenieś maszyny wirtualne IaaS platformy Azure między Azure Government a publicznymi regionami przy użyciu usługi Azure Site Recovery | Microsoft Docs
+description: Użyj Azure Site Recovery, aby przenieść maszyny wirtualne IaaS platformy Azure między Azure Government & regiony publiczne.
 services: site-recovery
 author: rajani-janaki-ram
 ms.service: site-recovery
@@ -8,20 +8,20 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: fe2620c7a07389b2a86d36420eadd2ef5883f5da
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 63150b8924438df8d77fdd088811d9fbe3ec2d84
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62119635"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967308"
 ---
-# <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Przenoszenie maszyn wirtualnych platformy Azure między Azure dla instytucji rządowych i regionach świadczenia publicznej 
+# <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Przenoszenie maszyn wirtualnych platformy Azure między Azure Government i regionami publicznymi 
 
-Możesz chcieć przenieść maszyny wirtualne IaaS między Azure dla instytucji rządowych i regionach świadczenia publicznej w celu zwiększenia dostępności istniejących maszyn wirtualnych i ulepszanie możliwości zarządzania lub ze względu na zarządzanie zgodnie z opisem [tutaj](azure-to-azure-move-overview.md).
+Możesz chcieć przenieść maszyny wirtualne IaaS między Azure Governmentami i publicznymi regionami, aby zwiększyć dostępność istniejących maszyn wirtualnych, poprawić możliwości zarządzania lub z powodów związanych z zarządzaniem, jak [opisano tutaj](azure-to-azure-move-overview.md).
 
 Oprócz używania usługi [Azure Site Recovery](site-recovery-overview.md) do zarządzania odzyskiwaniem maszyn lokalnych i maszyn wirtualnych platformy Azure po awarii oraz ich organizowania dla celów zapewniania ciągłości działania i odzyskiwania po awarii (BCDR, business continuity and disaster recovery) można ją stosować również do zarządzania przenoszeniem maszyn wirtualnych platformy Azure do regionu pomocniczego.       
 
-W tym samouczku dowiesz się, jak przenieść maszyny wirtualne platformy Azure między Azure dla instytucji rządowych i regionach świadczenia publicznej przy użyciu usługi Azure Site Recovery. Aby przenieść maszyny wirtualne między par regionów, które nie są w tym samym klastrze geograficznych można rozszerzyć takie same. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+W tym samouczku pokazano, jak przenieść maszyny wirtualne platformy Azure między Azure Government a publicznymi regionami przy użyciu Azure Site Recovery. Ten sam można rozszerzyć, aby przenieść maszyny wirtualne między parami regionów, które nie znajdują się w tym samym klastrze geograficznym. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Weryfikowanie wymagań wstępnych
@@ -33,42 +33,42 @@ W tym samouczku dowiesz się, jak przenieść maszyny wirtualne platformy Azure 
 > * Odrzucanie zasobów w regionie źródłowym
 
 > [!IMPORTANT]
-> W tym samouczku dowiesz się, jak przenieść maszyny wirtualne platformy Azure między Azure dla instytucji rządowych i regionach świadczenia publicznej lub między par regionów, które nie są obsługiwane przez rozwiązanie odzyskiwania po awarii w regularnych maszyn wirtualnych platformy Azure. W przypadku usługi pary regiony źródłowe i docelowe są [obsługiwane](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support), skontaktuj się z tym [dokumentu](azure-to-azure-tutorial-migrate.md) na czas przeprowadzki. Jeśli zgodnie z wymaganiami potrzebna jest aby zwiększyć dostępność, przenosząc maszyn wirtualnych w zestawie do przypięte w strefie maszyn wirtualnych w różnych regionach dostępności, zapoznaj się z samouczkiem [tutaj](move-azure-VMs-AVset-Azone.md).
+> W tym samouczku pokazano, jak przenieść maszyny wirtualne platformy Azure między Azure Governmentami i publicznymi regionami lub między parami regionów, które nie są obsługiwane przez zwykłe rozwiązanie do odzyskiwania po awarii dla maszyn wirtualnych platformy Azure. W przypadku, gdy pary regionów źródłowej i docelowej są [obsługiwane](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support), zapoznaj się z tym [dokumentem](azure-to-azure-tutorial-migrate.md) , aby przenieść. Jeśli wymagasz poprawy dostępności przez przeniesienie maszyn wirtualnych w zestawie dostępności do obszaru maszyny wirtualne przypięte do strefy w innym regionie, zapoznaj się z samouczkiem [tutaj](move-azure-VMs-AVset-Azone.md).
 
 > [!IMPORTANT]
-> Nie zaleca się ta metoda służy do konfigurowania odzyskiwania po awarii między parami nieobsługiwany region pary są zdefiniowane, pamiętając o opóźnieniu przesyłania danych, co jest szczególnie ważne w scenariuszu odzyskiwania po awarii.
+> Nie zaleca się korzystania z tej metody, aby skonfigurować odzyskiwanie po awarii między nieobsługiwanymi parami regionów, ponieważ pary są zdefiniowane, zachowując opóźnienie danych, co jest niezwykle ważne w przypadku scenariusza odzyskiwania po awarii.
 
 ## <a name="verify-prerequisites"></a>Weryfikowanie wymagań wstępnych
 
 > [!NOTE]
-> Upewnij się, że rozumiesz [składnikach i architekturze](physical-azure-architecture.md) dla tego scenariusza. Ta architektura będzie służyć do przenoszenia maszyn wirtualnych platformy Azure, **traktując maszyny wirtualne jako serwery fizyczne**.
+> Upewnij się, że rozumiesz [architekturę i składniki](physical-azure-architecture.md) w tym scenariuszu. Ta architektura będzie służyć do przenoszenia maszyn wirtualnych platformy Azure, **traktując maszyny wirtualne jako serwery fizyczne**.
 
 - Zapoznaj się z [wymaganiami dotyczącymi obsługi](vmware-physical-secondary-support-matrix.md) wszystkich składników.
-- Upewnij się, że chcesz replikować serwery spełniają [wymagania maszyny Wirtualnej platformy Azure](vmware-physical-secondary-support-matrix.md#replicated-vm-support).
-- Przygotowywanie konta do automatycznej instalacji usługi mobilności na każdym serwerze, który chcesz replikować.
+- Upewnij się, że serwery, które chcesz replikować, są zgodne z [wymaganiami maszyny wirtualnej platformy Azure](vmware-physical-secondary-support-matrix.md#replicated-vm-support).
+- Przygotuj konto do automatycznej instalacji usługi mobilności na każdym serwerze, który chcesz replikować.
 
-- Należy pamiętać, że po awarii do regionu docelowego na platformie Azure nie można bezpośrednio wykonywać awarii do regionu źródłowego. Należy skonfigurować replikację ponownie do obiektu docelowego.
+- Pamiętaj, że po przełączeniu w tryb failover do regionu docelowego na platformie Azure nie można bezpośrednio przeprowadzić powrotu po awarii do regionu źródłowego. Należy ponownie skonfigurować replikację do celu.
 
-### <a name="verify-azure-account-permissions"></a>Sprawdzanie uprawnień konta platformy Azure
+### <a name="verify-azure-account-permissions"></a>Weryfikowanie uprawnień konta platformy Azure
 
-Upewnij się, że Twoje konto platformy Azure ma uprawnienia do replikacji maszyn wirtualnych na platformie Azure.
+Upewnij się, że Twoje konto platformy Azure ma uprawnienia do replikacji maszyn wirtualnych na platformę Azure.
 
-- Przegląd [uprawnienia](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) wymaganą do replikowania maszyn na platformę Azure.
-- Sprawdź i zmodyfikuj [dostępu opartej na rolach](../role-based-access-control/role-assignments-portal.md) uprawnienia. 
+- Przejrzyj [uprawnienia](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) wymagane do replikowania maszyn na platformę Azure.
+- Weryfikowanie i modyfikowanie uprawnień [dostępu opartych na rolach](../role-based-access-control/role-assignments-portal.md) . 
 
 ### <a name="set-up-an-azure-network"></a>Konfiguracja sieci platformy Azure
 
-Konfigurowanie docelowego [sieci platformy Azure](../virtual-network/quick-create-portal.md).
+Skonfiguruj docelową [Sieć platformy Azure](../virtual-network/quick-create-portal.md).
 
-- Maszyny wirtualne platformy Azure są umieszczane w tej sieci po ich utworzeniu po włączeniu trybu failover.
-- Sieć powinna znajdować się w tym samym regionie co magazyn usługi Recovery Services
+- Maszyny wirtualne platformy Azure są umieszczane w tej sieci, gdy są tworzone po przejściu w tryb failover.
+- Sieć powinna znajdować się w tym samym regionie co magazyn Recovery Services
 
 
 ### <a name="set-up-an-azure-storage-account"></a>Konfigurowanie konta usługi Azure Storage
 
-Konfigurowanie [konta usługi Azure storage](../storage/common/storage-quickstart-create-account.md).
+Skonfiguruj [konto usługi Azure Storage](../storage/common/storage-quickstart-create-account.md).
 
-- Usługa Site Recovery replikuje maszyn lokalnych do usługi Azure storage. Maszyny wirtualne platformy Azure są tworzone na podstawie magazynu po przejściu do trybu failover.
+- Site Recovery replikuje maszyny lokalne do usługi Azure Storage. Maszyny wirtualne platformy Azure są tworzone na podstawie magazynu po przejściu do trybu failover.
 - Konto magazynu musi znajdować się w tym samym regionie, co magazyn usługi Recovery Services.
 
 
@@ -76,12 +76,12 @@ Konfigurowanie [konta usługi Azure storage](../storage/common/storage-quickstar
 
 ### <a name="prepare-an-account-for-mobility-service-installation"></a>Przygotowywanie konta do instalacji usługi Mobility
 
-Usługa Mobility musi być zainstalowana na każdym serwerze, który chcesz replikować. Usługa Site Recovery automatycznie instaluje tę usługę po włączeniu replikacji dla serwera. Aby automatycznie zainstalować, należy przygotować konta, które Site Recovery będzie uzyskiwać dostęp do serwera.
+Na każdym serwerze, który ma zostać zreplikowany, musi być zainstalowana usługa mobilności. Site Recovery automatycznie instaluje tę usługę po włączeniu replikacji dla serwera. Aby automatycznie zainstalować program, należy przygotować konto, które będzie używane przez Site Recovery do uzyskiwania dostępu do serwera.
 
-- Można użyć konta domeny lub lokalnego
-- For Windows VMs, jeśli nie używasz konta domeny, wyłącz kontrolę dostępu użytkowników zdalnych na maszynie lokalnej. Aby to zrobić, w kluczu rejestru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System**, Dodaj wpis DWORD **LocalAccountTokenFilterPolicy**, o wartości 1.
-- Aby dodać wpis rejestru, aby wyłączyć to ustawienie z interfejsu wiersza polecenia, wpisz:       ``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
-- W przypadku systemu Linux konto powinno być użytkownikiem głównym na serwerze źródłowym w systemie Linux.
+- Możesz użyć domeny lub konta lokalnego
+- W przypadku maszyn wirtualnych z systemem Windows, jeśli nie korzystasz z konta domeny, wyłącz kontrolę dostępu użytkowników zdalnych na komputerze lokalnym. W tym celu w rejestrze w obszarze **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System**Dodaj wpis DWORD **LocalAccountTokenFilterPolicy**o wartości 1.
+- Aby dodać wpis rejestru w celu wyłączenia ustawienia z interfejsu wiersza polecenia, wpisz:``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
+- W przypadku systemu Linux konto powinno być kontem głównym na źródłowym serwerze z systemem Linux.
 
 
 ## <a name="prepare-the-target-region"></a>Przygotowywanie regionu docelowego
@@ -90,7 +90,7 @@ Usługa Mobility musi być zainstalowana na każdym serwerze, który chcesz repl
 
 2. Upewnij się, że zasoby subskrypcji są wystarczające do obsługi maszyn wirtualnych o rozmiarach odpowiadających źródłowym maszynom wirtualnym. Jeśli dane są kopiowane do miejsca docelowego przy użyciu usługi Site Recovery, usługa sama wybiera ten sam lub najbardziej zbliżony rozmiar dla docelowej maszyny wirtualnej.
 
-3. Upewnij się, że utworzono zasób docelowy dla każdego składnika zidentyfikowanego w układzie sieci źródłowej. Jest to ważne upewnić się, że, Opublikuj cuttinga za pośrednictwem region docelowy, maszyny wirtualne mają wszystkie funkcje i funkcje, które masz w źródle.
+3. Upewnij się, że utworzono zasób docelowy dla każdego składnika zidentyfikowanego w układzie sieci źródłowej. Jest to ważne, aby upewnić się, że po przeniesieniu do docelowego obszaru maszyny wirtualne mają wszystkie funkcje i funkcje, które były dostępne w źródle.
 
     > [!NOTE]
     > Usługa Azure Site Recovery automatycznie odnajduje i tworzy sieć wirtualną po włączeniu replikacji dla źródłowej maszyny wirtualnej. Można również wstępnie utworzyć sieć i przypisać ją do maszyny wirtualnej w ramach czynności włączania replikacji. Jednak pozostałe zasoby należy utworzyć ręcznie w regionie docelowym, jak wspomniano poniżej.
@@ -115,48 +115,48 @@ Poniżej przedstawiono procedurę kopiowania danych do regionu docelowego przy u
 3. W polu **Nazwa** podaj przyjazną nazwę **ContosoVMVault**. Jeśli masz więcej niż jedną subskrypcję, wybierz odpowiednią z nich.
 4. Utwórz grupę zasobów **ContosoRG**.
 5. Określ region platformy Azure. Aby sprawdzić obsługiwane regiony, zobacz sekcję dotyczącą dostępności geograficznej w temacie [Szczegóły cennika usługi Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/).
-6. Magazyny usługi Recovery Services kliknij **Przegląd** > **ConsotoVMVault** > **+ Replikuj**
-7. Wybierz **na platformę Azure** > **bez wirtualizacji/inne**.
+6. W obszarze magazyny Recovery Services kliknij pozycję **Przegląd** > **ConsotoVMVault** >  **+ replikacja**
+7.  > Wybierz **platformę Azure, która** **nie jest Zwirtualizowana/inna**.
 
-### <a name="set-up-the-configuration-server-to-discover-vms"></a>Skonfiguruj serwer konfiguracji do odnalezienia maszyn wirtualnych.
+### <a name="set-up-the-configuration-server-to-discover-vms"></a>Skonfiguruj serwer konfiguracji w celu odnajdywania maszyn wirtualnych.
 
 
-Konfigurowanie serwera konfiguracji, zarejestruj go w magazynie i odnajdywanie maszyn wirtualnych.
+Skonfiguruj serwer konfiguracji, zarejestruj go w magazynie i odnajdź maszyny wirtualne.
 
-1. Kliknij przycisk **Site Recovery** > **przygotowanie infrastruktury** > **źródła**.
+1. Kliknij pozycję **Site Recovery** > **Przygotuj** > **Źródło**infrastruktury.
 2. Jeśli nie masz serwera konfiguracji, kliknij przycisk **+ serwer konfiguracji**.
-3. W **Dodaj serwer**, sprawdź, czy **serwera konfiguracji** pojawia się w **typ serwera**.
-4. Pobierz plik instalacyjny Site Recovery Unified Setup.
-5. Pobierz klucz rejestracji magazynu. Jest to potrzebne po uruchomieniu ujednoliconego Instalatora. Klucz jest ważny przez pięć dni po jego wygenerowaniu.
+3. W obszarze **Dodawanie serwera**Sprawdź, czy **serwer konfiguracji** jest wyświetlany w polu **Typ serwera**.
+4. Pobierz plik instalacyjny programu Site Recovery Unified Setup.
+5. Pobierz klucz rejestracji magazynu. Jest on potrzebny po uruchomieniu ujednoliconej konfiguracji. Klucz jest ważny przez pięć dni po jego wygenerowaniu.
 
    ![Konfiguracja źródła](./media/physical-azure-disaster-recovery/source-environment.png)
 
 
 ### <a name="register-the-configuration-server-in-the-vault"></a>Rejestrowanie serwera konfiguracji w magazynie
 
-Przed rozpoczęciem, wykonaj następujące czynności: 
+Wykonaj następujące czynności przed rozpoczęciem: 
 
-#### <a name="verify-time-accuracy"></a>Sprawdź czas dokładności
-Na komputerze z serwerem konfiguracji, upewnij się, że zegar systemowy jest zsynchronizowany z [serwer czasu](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service). Powinien on odpowiadać. Jeśli jest 15 minut z przodu lub tyłu, instalacja może zakończyć się niepowodzeniem.
+#### <a name="verify-time-accuracy"></a>Sprawdź dokładność czasu
+Na komputerze serwera konfiguracji upewnij się, że zegar systemowy jest zsynchronizowany z [serwerem czasu](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service). Powinien być zgodny. Jeśli jest to 15 minut przed lub za, instalacja może zakończyć się niepowodzeniem.
 
-#### <a name="verify-connectivity"></a>Zweryfikuj łączność
-Upewnij się, że komputer ma dostęp do tych adresów URL, w zależności od używanego środowiska: 
+#### <a name="verify-connectivity"></a>Sprawdź łączność
+Upewnij się, że komputer może uzyskać dostęp do tych adresów URL w oparciu o środowisko: 
 
 [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]  
 
-Reguły zapory oparte na adresie IP powinien zezwalać na komunikację do wszystkich adresów URL usługi Azure, które są wymienione powyżej za pośrednictwem portu HTTPS (443). Aby uprościć i ograniczać zakresy adresów IP, zalecane jest, że filtrowanie adresów URL można zrobić.
+Reguły zapory oparte na adresach IP powinny zezwalać na komunikację ze wszystkimi adresami URL platformy Azure wymienionymi powyżej za pośrednictwem portu HTTPS (443). Aby uprościć i ograniczyć zakres adresów IP, zalecane jest filtrowanie adresów URL.
 
-- **Adresy IP komercyjnych** — Zezwalaj na [zakresów adresów IP centrum danych Azure](https://www.microsoft.com/download/confirmation.aspx?id=41653)oraz portu HTTPS (443). Zezwalaj na zakresy adresów IP dla regionu platformy Azure Twojej subskrypcji, do obsługi usługi AAD, kopia zapasowa, replikacji i adresy URL magazynu.  
-- **Dla instytucji rządowych adresy IP** — Zezwalaj na [zakresów IP centrum danych platformy Azure dla instytucji rządowych](https://www.microsoft.com/en-us/download/details.aspx?id=57063)oraz portu HTTPS (443) we wszystkich regionach USGov (Wirginia, Teksasie, Arizona i Iowa) do obsługi usługi AAD, kopia zapasowa, replikacji i adresy URL magazynu.  
+- **Komercyjne adresy** IP — Zezwalaj na przedziały [adresów IPv4 centrum danych platformy Azure](https://www.microsoft.com/download/confirmation.aspx?id=41653)oraz port HTTPS (443). Zezwalaj na zakresy adresów IP dla regionu platformy Azure Twojej subskrypcji, aby obsługiwać adresy URL usługi AAD, kopii zapasowej, replikacji i magazynu.  
+- **Adresy IP instytucji rządowych** — zezwalaj na [Azure Government zakresy adresów URL centrum](https://www.microsoft.com/en-us/download/details.aspx?id=57063)danych oraz port HTTPS (443) dla wszystkich regionów USGov (Wirginia, Texas, Arizona i Iowa) do obsługi usługi AAD, kopii zapasowych, replikacji i adresów URL magazynu.  
 
 #### <a name="run-setup"></a>Uruchamianie instalatora
-Uruchom ujednoliconego Instalatora jako administratora lokalnego, aby zainstalować serwer konfiguracji. Serwer przetwarzania i głównym serwerze docelowym są również instalowane domyślnie na serwerze konfiguracji.
+Uruchom ujednoliconą konfigurację jako administrator lokalny, aby zainstalować serwer konfiguracji. Serwer przetwarzania oraz główny serwer docelowy są również instalowane domyślnie na serwerze konfiguracji.
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
-Po zakończeniu rejestracji serwer konfiguracji jest wyświetlany na **ustawienia** > **serwerów** strony w magazynie.
+Po zakończeniu rejestracji serwer konfiguracji zostanie wyświetlony na stronie **Ustawienia** > **serwery** w magazynie.
 
-### <a name="configure-target-settings-for-replication"></a>Skonfigurować ustawienia środowiska docelowego dla replikacji
+### <a name="configure-target-settings-for-replication"></a>Skonfiguruj ustawienia docelowe dla replikacji
 
 Wybierz i zweryfikuj zasoby docelowe.
 
@@ -164,46 +164,46 @@ Wybierz i zweryfikuj zasoby docelowe.
 2. Określ docelowy model wdrażania.
 3. Usługa Site Recovery sprawdza, czy masz co najmniej jedno zgodne konto magazynu Azure i co najmniej jedną sieć platformy Azure.
 
-   ![Środowisko docelowe](./media/physical-azure-disaster-recovery/network-storage.png)
+   ![Cel](./media/physical-azure-disaster-recovery/network-storage.png)
 
 
 ### <a name="create-a-replication-policy"></a>Tworzenie zasad replikacji
 
-1. Aby utworzyć nowe zasady replikacji, kliknij pozycję **Infrastruktura usługi Site Recovery** > **Zasady replikacji** > **+Zasady replikacji**.
+1. Aby utworzyć nowe zasady replikacji, kliknij pozycję **Infrastruktura usługi Site Recovery** > **Zasady replikacji** >  **+Zasady replikacji**.
 2. W obszarze **Tworzenie zasad replikacji** określ nazwę zasad.
-3. W obszarze **Wartość progowa celu punktu odzyskiwania** określ limit celu punktu odzyskiwania. Ta wartość określa częstość tworzenia punktów odzyskiwania danych. Przekroczenie tego limitu przez replikację ciągłą spowoduje wygenerowanie alertu.
+3. W obszarze **Wartość progowa celu punktu odzyskiwania** określ limit celu punktu odzyskiwania. Ta wartość określa, jak często są tworzone punkty odzyskiwania danych. Przekroczenie tego limitu przez replikację ciągłą spowoduje wygenerowanie alertu.
 4. W obszarze **Przechowywanie punktu odzyskiwania** określ (w godzinach), jak długie jest okno przechowywania dla każdego punktu odzyskiwania. Replikowane maszyny wirtualne można odzyskać do dowolnego punktu w tym oknie. Przechowywanie do 24 godzin jest obsługiwane dla maszyn replikowanych do magazynu w warstwie Premium, zaś do 72 godzin dla magazynu w warstwie Standardowa.
-5. W **częstotliwość migawek spójności aplikacji**, określić, jak często (w minutach) będą tworzone punkty odzyskiwana zawierające migawki spójne z aplikacjami. Kliknij przycisk **OK**, aby utworzyć zasady.
+5. W obszarze **częstotliwość tworzenia migawek**na poziomie aplikacji Określ, jak często (w minutach) będą tworzone punkty odzyskiwania zawierające migawki spójne z aplikacjami. Kliknij przycisk **OK**, aby utworzyć zasady.
 
     ![Zasady replikacji](./media/physical-azure-disaster-recovery/replication-policy.png)
 
 
-Zasady zostaną automatycznie skojarzone z serwerem konfiguracji. Domyślnie są też automatycznie tworzone odpowiadające im zasady powrotu po awarii. Na przykład, jeśli zasady replikacji **rep-policy** następnie zasady powrotu po awarii **rep-policy-failback** zostanie utworzony. Te zasady są używane wyłącznie po zainicjowaniu powrotu po awarii z platformy Azure.
+Zasady zostaną automatycznie skojarzone z serwerem konfiguracji. Domyślnie są też automatycznie tworzone odpowiadające im zasady powrotu po awarii. Na przykład jeśli zasady replikacji są typu **"przedstawiciel"** , zostanie utworzona zasada powrotu po awarii nr **przedstawiciel-zasady-powrót** po awarii. Te zasady są używane wyłącznie po zainicjowaniu powrotu po awarii z platformy Azure.
 
 ### <a name="enable-replication"></a>Włączanie replikacji
 
-- Usługa Site Recovery zainstaluje usługę mobilności, po włączeniu replikacji.
-- Po włączeniu replikacji dla serwera, może to potrwać 15 minut lub dłużej, aby zmiany zaczęły obowiązywać i wyświetlane w portalu.
+- Site Recovery zainstaluje usługę mobilności po włączeniu replikacji.
+- Po włączeniu replikacji dla serwera może upłynąć 15 minut lub dłużej, aby zmiany zaczęły obowiązywać i pojawiają się w portalu.
 
 1. Kliknij kolejno pozycje **Replikowanie aplikacji** > **Źródło**.
 2. W obszarze **Źródło** wybierz serwer konfiguracji.
-3. W **typ maszyny**, wybierz opcję **maszyn fizycznych**.
+3. W obszarze **Typ maszyny**wybierz pozycję **maszyny fizyczne**.
 4. Wybierz serwer przetwarzania (serwer konfiguracji). Następnie kliknij przycisk **OK**.
-5. W **docelowej**, wybierz subskrypcję i grupę zasobów, w której chcesz utworzyć maszyny wirtualne platformy Azure po włączeniu trybu failover. Wybierz model wdrażania, który chcesz użyć na platformie Azure (Model Klasyczny lub zasobu).
+5. W obszarze **cel**wybierz subskrypcję i grupę zasobów, w której chcesz utworzyć maszyny wirtualne platformy Azure po przejściu do trybu failover. Wybierz model wdrażania, którego chcesz użyć na platformie Azure (wersja klasyczna lub zarządzanie zasobami).
 6. Wybierz konto usługi Azure Storage, którego chcesz użyć na potrzeby replikacji danych. 
 7. Wybierz sieć platformy Azure i podsieć, z którą nawiążą połączenie maszyny wirtualne platformy Azure, gdy zostaną uruchomione po przejściu do trybu failover.
 8. Wybierz opcję **Konfiguruj teraz dla wybranych maszyn**, aby zastosować ustawienia sieci do wszystkich maszyn wybranych do ochrony. Wybierz opcję **Konfiguruj później**, aby wybrać sieć platformy Azure dla poszczególnych maszyn. 
-9. W **maszyn fizycznych**i kliknij przycisk **+ maszyna fizyczna**. Określ nazwę i adres IP. Wybierz system operacyjny maszyny, którą chcesz replikować. Trwa kilka minut na serwerach, aby być wykrywane i wyświetlane. 
+9. W obszarze **maszyny fizyczne**i kliknij pozycję **+ maszyna fizyczna**. Określ nazwę i adres IP. Wybierz system operacyjny maszyny, którą chcesz replikować. Odnajdywanie i wykrycie serwerów może potrwać kilka minut. 
 
    > [!WARNING]
-   > Należy wprowadzić adres IP maszyny Wirtualnej platformy Azure, które zamierzają przenieść
+   > Należy wprowadzić adres IP maszyny wirtualnej platformy Azure, która ma zostać przeniesiona
 
-10. W **właściwości** > **skonfigurować właściwości**, wybierz konto które będzie używane przez serwer przetwarzania do automatycznego instalowania usługi mobilności na maszynie.
+10. W obszarze **Właściwości** > **Konfigurowanie właściwości**wybierz konto, które będzie używane przez serwer przetwarzania w celu automatycznego zainstalowania usługi mobilności na maszynie.
 11. W obszarze **Ustawienia replikacji** > **Konfigurowanie ustawień replikacji** sprawdź, czy wybrano właściwe zasady replikacji. 
 12. Kliknij pozycję **Włącz replikację**. Możesz śledzić postęp zadania **Włącz ochronę** w pozycji **Ustawienia** > **Zadania** > **Zadania usługi Site Recovery**. Po uruchomieniu zadania **Sfinalizuj ochronę** maszyna jest gotowa do przejścia w tryb failover.
 
 
-Aby monitorować serwery, które możesz dodać, można sprawdzić czas ostatniego odnalezienia ich w **serwery konfiguracji** > **ostatni kontakt**. W celu dodania maszyn, bez czekania na okres zaplanowane odnajdowanie, wyróżnij serwer konfiguracji (nie należy kliknąć ją) i kliknij przycisk **Odśwież**.
+Aby monitorować dodawane serwery, można sprawdzić czas ostatniego wykrycia dla nich w obszarze **serwery** > konfiguracji**ostatni kontakt na stronie**. Aby dodać maszyny bez oczekiwania na zaplanowaną godzinę odnajdywania, wyróżnij serwer konfiguracji (nie klikaj go), a następnie kliknij przycisk **Odśwież**.
 
 ## <a name="test-the-configuration"></a>Testowanie konfiguracji
 
@@ -218,7 +218,7 @@ Aby monitorować serwery, które możesz dodać, można sprawdzić czas ostatnie
 3. Wybierz docelową sieć wirtualną platformy Azure, do której chcesz przenieść maszyny wirtualne platformy Azure, aby przetestować konfigurację. 
 
    > [!IMPORTANT]
-   > Zalecamy użycie oddzielnej sieci maszyn wirtualnych platformy Azure do testowania trybu failover, a nie sieci produkcyjnej, do którego chcesz przenieść maszyny wirtualne po pewnym czasie, które zostały skonfigurowane podczas włączania replikacji.
+   > Zalecamy używanie oddzielnej sieci maszyn wirtualnych platformy Azure do testowania pracy w trybie failover, a nie sieci produkcyjnej, w której chcesz przenieść maszyny wirtualne ostatecznie skonfigurowane po włączeniu replikacji.
 
 4. Aby rozpocząć testowanie przenoszenia, kliknij przycisk **OK**. Aby śledzić postępy, kliknij maszynę wirtualną w celu otwarcia jej właściwości. Możesz też kliknąć zadanie **Test pracy w trybie failover** w obszarze nazwy magazynu > **Ustawienia** > **Zadania** > **Zadania usługi Site Recovery**.
 5. Po zakończeniu trybu failover w obszarze Azure Portal > **Maszyny wirtualne** będzie widoczna replika maszyny wirtualnej platformy Azure. Upewnij się, że maszyna wirtualna jest uruchomiona, ma właściwy rozmiar i została połączona z odpowiednią siecią.
@@ -246,7 +246,7 @@ Jeśli nie zamierzasz już używać zasobów źródłowych, przejdź do następn
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przeniesiono maszynę wirtualną platformy Azure do innego regionu świadczenia usługi Azure. Teraz możesz skonfigurować odzyskiwanie po awarii dla przeniesionej maszyny wirtualnej.
 

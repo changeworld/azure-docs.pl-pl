@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: nacharya1
 ms.author: nilesha
 ms.reviewer: trbye
-ms.date: 04/11/2019
+ms.date: 08/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 70a95cdba2a8b41c7b2fc3ee4b2664f049a84e95
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 060257ef144309e37208db80c7731ed96b995b2c
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846010"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990478"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Samouczek: Kompilowanie modelu regresji przy użyciu zautomatyzowanego uczenia maszynowego
 
@@ -1211,7 +1211,7 @@ Z metryk dokładności prognozowania końcowego widać, że model dość dobrze 
 
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku zautomatyzowanego uczenia maszynowego wykonano następujące czynności:
 

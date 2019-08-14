@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 06/24/2019
+ms.date: 08/13/2019
 ms.author: diberry
-ms.openlocfilehash: 1960856ce2f15945d1b1bfa093f349771d481ffc
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: db54a71a6bd252c1ca60ae356cbf340bc660d142
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663838"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989082"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Funkcje to informacje o akcjach i kontekście
 
@@ -25,7 +25,7 @@ Personalizacja używa **funkcji**, które są informacjami o **bieżącym kontek
 
 Na przykład może być dostępna **Funkcja** :
 
-* _Użytkownik_ , taki jak `UserID`. 
+* _Osoba użytkownika_ , taka jak `Sports_Shopper`. Nie powinna to być indywidualny identyfikator użytkownika. 
 * _Zawartość_ , taka jak w przypadku filmu wideo `Documentary`, `Movie`a lub `TV Series`lub czy element detaliczny jest dostępny w sklepie.
 * _Bieżący_ okres, taki jak dzień tygodnia.
 
@@ -133,7 +133,7 @@ Sztuczna inteligencja i gotowe do uruchomienia Cognitive Services mogą być bar
 
 Wstępnie przetwarzając elementy przy użyciu sztucznych usług analizy, można automatycznie wyodrębniać informacje, które mogą być odpowiednie do personalizacji.
 
-Na przykład:
+Przykład:
 
 * Plik filmowy można uruchomić za pomocą [Video Indexer](https://azure.microsoft.com/services/media-services/video-indexer/) , aby wyodrębnić elementy sceny, tekst, tonacji i wiele innych atrybutów. Te atrybuty mogą następnie stać się bardziej gęste w celu odzwierciedlenia cech, które nie miały metadanych oryginalnego elementu. 
 * Obrazy można uruchamiać za poorednictwem wykrywania obiektów, twarzy przez tonacji itp.
@@ -150,7 +150,7 @@ Możesz użyć kilku innych [Cognitive Services platformy Azure](https://www.mic
 
 Każda akcja:
 
-* Ma identyfikator.
+* Ma identyfikator _zdarzenia_ . Jeśli masz już identyfikator zdarzenia, należy go przesłać. Jeśli nie masz identyfikatora zdarzenia, nie wysyłaj go, Personalizujer tworzy go dla Ciebie i zwraca go w odpowiedzi na żądanie rangi. Identyfikator jest skojarzony ze zdarzeniem rangi, a nie użytkownikiem. W przypadku utworzenia identyfikatora identyfikator GUID działa najlepiej. 
 * Zawiera listę funkcji.
 * Lista funkcji może być duża (setki), ale zalecamy ocenę skuteczności funkcji w celu usunięcia funkcji, które nie przyczyniają się do uzyskania korzyści. 
 * Funkcje w akcjach mogą lub nie mają żadnej korelacji z funkcjami w **kontekście** używanym przez program personalizujer.

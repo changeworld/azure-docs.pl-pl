@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 6a512098d5dfda47b7755e24b286aabf83aa7e69
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2b9c6f96cc351831bb784bb89db1bce76b01190b
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563063"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966671"
 ---
 # <a name="test-your-knowledge-base-interactively-in-qna-maker"></a>Testowanie bazy wiedzy interaktywnie w usługi QnA Maker
 
@@ -76,7 +76,7 @@ Opublikowaną wersję bazy wiedzy można testować w okienku testów. Po opublik
 
 ![Testuj względem opublikowanej bazy wiedzy](../media/qnamaker-how-to-test-kb/test-against-published-kb.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Publikowanie bazy wiedzy](./publish-knowledge-base.md)

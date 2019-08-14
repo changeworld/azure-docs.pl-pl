@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
-ms.openlocfilehash: 977b59c3344eaf2c4877f51afea176455d22ecc9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 45925b1c4252b0ff0080a2c287e7ed2fae444168
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130521"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986277"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Jak korzystać z usługi Azure Table Storage lub interfejsu API tabel usługi Azure Cosmos DB przy użyciu platformy Node.js
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -365,7 +365,7 @@ dc.table.queryEntities(tableName,
 
 Jeśli sprawdzasz obiekt `continuationToken`, znajdziesz właściwości, takie jak `nextPartitionKey`, `nextRowKey` i `targetLocation`, które mogą służyć do iterowania w obrębie wszystkich wyników.
 
-Można również użyć `top` wraz z `continuationToken` można ustawić rozmiar strony. 
+Można również użyć `top` programu razem z `continuationToken` programem, aby ustawić rozmiar strony. 
 
 ## <a name="work-with-shared-access-signatures"></a>Praca z sygnaturami dostępu współdzielonego
 Sygnatury dostępu współdzielonego (SAS) to bezpieczny sposób zapewnienia szczegółowego dostępu do tabel bez podawania kluczy ani nazwy konta usługi Storage. Sygnatury dostępu współdzielonego są często używane do udzielania ograniczonych praw dostępu do danych, takich jak zezwalanie aplikacji mobilnej na wykonywanie zapytań dotyczących rekordów.
@@ -394,7 +394,7 @@ var host = tableSvc.host;
 
 Należy również pamiętać o podaniu informacji o hoście, ponieważ są one wymagane, gdy właściciel sygnatury dostępu współdzielonego próbuje uzyskać dostęp do tabeli.
 
-Następnie aplikacja kliencka używa sygnatury dostępu współdzielonego z elementem **TableServiceWithSAS** w celu wykonywania operacji względem tabeli. W poniższym przykładzie następuje połączenie z tabelą i wykonanie zapytania. Zobacz artykuł dotyczący [używania sygnatur dostępu współdzielonego](../storage/common/storage-dotnet-shared-access-signature-part-1.md#examples-of-sas-uris), aby uzyskać informacje na temat formatu sygnatury dostępu współdzielonego tabeli. 
+Następnie aplikacja kliencka używa sygnatury dostępu współdzielonego z elementem **TableServiceWithSAS** w celu wykonywania operacji względem tabeli. W poniższym przykładzie następuje połączenie z tabelą i wykonanie zapytania. Zobacz [udzielanie ograniczonego dostępu do zasobów usługi Azure Storage za pomocą sygnatury dostępu współdzielonego (SAS)](../storage/common/storage-sas-overview.md) w formacie tableSAS. 
 
 ```javascript
 // Note in the following command, host is in the format: `https://<your_storage_account_name>.table.core.windows.net` and the tableSAS is in the format: `sv=2018-03-28&si=saspolicy&tn=mytable&sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D`;

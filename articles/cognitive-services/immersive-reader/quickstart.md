@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: quickstart
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 978b56f5c38a154c79544c7deb5d49396b1deff9
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 0d67385975db13539c28745eede4fb288a0daedd
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688862"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989140"
 ---
 # <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-c"></a>Szybki start: Tworzenie aplikacji sieci Web, która uruchamia czytnik immersyjny (C#)
 
@@ -221,7 +221,9 @@ Po kliknięciu przycisku "czytnik immersyjny" zobaczysz czytnik immersyjny uruch
 
 ![Czytnik immersyjny](./media/quickstart-immersive-reader.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Wyświetl [samouczek](./tutorial.md) , aby zobaczyć, co jeszcze można zrobić za pomocą zestawu SDK czytnika immersyjny
+* Obejrzyj [samouczek środowiska Node. js](./tutorial-nodejs.md) , aby zobaczyć, co jeszcze można zrobić z zestawem SDK "dbreader" przy użyciu środowiska Node. js
+* Obejrzyj [samouczek języka Python](./tutorial-python.md) , aby zobaczyć, co jeszcze można zrobić z zestawem SDK dla czytnika immersyjny przy użyciu języka Python
+* Wyświetl [Samouczek systemu iOS](./tutorial-ios-picture-immersive-reader.md) , aby zobaczyć, co jeszcze można zrobić z zestawem SDK programu immersyjny przy użyciu SWIFT
 * Poznaj [zestaw SDK czytnika immersyjny](https://github.com/microsoft/immersive-reader-sdk) i [Kompendium zestawu SDK czytnika immersyjny](./reference.md)

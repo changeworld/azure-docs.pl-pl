@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 5a03c377a275fff489f1fb8371f9905411b67960
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e4b792a04b4926fdb56f37c089e73b90cde905d3
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881544"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990139"
 ---
 # <a name="use-azure-active-directory-azure-ad-authentication-with-the-immersive-reader-service"></a>Używanie uwierzytelniania Azure Active Directory (Azure AD) z usługą czytnika immersyjny
 
@@ -134,5 +134,7 @@ Alternatywnie można uwierzytelnić jednostkę usługi przy użyciu certyfikatu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Wyświetl [samouczek](./tutorial.md) , aby zobaczyć, co jeszcze można zrobić za pomocą zestawu SDK czytnika immersyjny
+* Obejrzyj [samouczek środowiska Node. js](./tutorial-nodejs.md) , aby zobaczyć, co jeszcze można zrobić z zestawem SDK "dbreader" przy użyciu środowiska Node. js
+* Obejrzyj [samouczek języka Python](./tutorial-python.md) , aby zobaczyć, co jeszcze można zrobić z zestawem SDK dla czytnika immersyjny przy użyciu języka Python
+* Obejrzyj [samouczek SWIFT](./tutorial-ios-picture-immersive-reader.md) , aby zobaczyć, co jeszcze można zrobić z zestawem SDK "immersyjny" przy użyciu SWIFT
 * Poznaj [zestaw SDK czytnika immersyjny](https://github.com/microsoft/immersive-reader-sdk) i [Kompendium zestawu SDK czytnika immersyjny](./reference.md)

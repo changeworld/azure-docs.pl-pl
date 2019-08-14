@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 07/17/2019
+ms.date: 08/12/2019
 ms.author: diberry
-ms.openlocfilehash: 19eeb396536925d9667c8dddb09bea779de79555
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 11f40d99a36493272cb6cd51e4a339c19cd0358b
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707181"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966737"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library-for-net"></a>Szybki start: Language Understanding (LUIS) Tworzenie biblioteki klienta dla platformy .NET
 
@@ -75,7 +75,7 @@ Utwórz nową aplikację platformy .NET Core w preferowanym edytorze lub środow
 W katalogu aplikacji zainstaluj bibliotekę klienta tworzenia Language Understanding (LUIS) dla platformy .NET przy użyciu następującego polecenia:
 
 ```console
-dotnet add package Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring -Version 3.0.0
+dotnet add package Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring --version 3.0.0
 ```
 
 Jeśli używasz środowiska IDE programu Visual Studio, Biblioteka kliencka jest dostępna jako pakiet NuGet do pobrania.
@@ -91,8 +91,8 @@ Po utworzeniu klienta Użyj tego klienta, aby uzyskać dostęp do funkcji, w tym
 * Przykład wyrażenia długości — [Dodaj przez partię](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.examplesextensions.batchasync?view=azure-dotnet), [Usuń według identyfikatora](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.examplesextensions.deleteasync?view=azure-dotnet) 
 * Funkcje — zarządzanie [listami fraz](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.featuresextensions.addphraselistasync?view=azure-dotnet) 
 * Model — zarządzanie [intencjami](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.modelextensions?view=azure-dotnet) i jednostkami
-* Wzorce [— Zarządzanie](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.patternextensions?view=azure-dotnet) wzorcami
-* Uczenie aplikacji i sondowanie [jej pod](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.trainextensions.trainversionasync?view=azure-dotnet) kątem [stanu szkolenia](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.trainextensions.getstatusasync?view=azure-dotnet)
+* Wzorce — zarządzanie [](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.patternextensions?view=azure-dotnet) wzorcami
+* Uczenie [](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.trainextensions.trainversionasync?view=azure-dotnet) aplikacji i sondowanie jej pod kątem [stanu szkolenia](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.trainextensions.getstatusasync?view=azure-dotnet)
 * [Wersje](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.versionsextensions?view=azure-dotnet) — zarządzanie przy użyciu klonowania, eksportowania i usuwania
 
 
@@ -168,7 +168,7 @@ Wywołaj [przykłady. BatchAsync](https://docs.microsoft.com/dotnet/api/microsof
 
 [!code-csharp[Add example utterances to a specific intent](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/LUIS/LUIS.cs?name=AuthoringBatchAddUtterancesForIntent)]
     
-Metody **tworzenia i** etykietowania są metodami narzędzi, które ułatwiają tworzenie obiektów.
+Metody tworzenia i etykietowania są metodami narzędzi, które ułatwiają tworzenie obiektów.
 
 ## <a name="train-the-app"></a>Uczenie aplikacji
 

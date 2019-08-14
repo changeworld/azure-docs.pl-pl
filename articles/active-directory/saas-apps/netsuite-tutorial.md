@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2600989273d6ebfe4319a048cc65c8c3ff9ecdbc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e462197bac854004aaf2d2f0f96e121ed081581a
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67096317"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967235"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netsuite"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją NetSuite
 
@@ -122,7 +122,7 @@ Aby skonfigurować funkcję logowania jednokrotnego usługi Azure AD z aplikacj�
     `https://<tenant-name>.na2.sandbox.NetSuite.com/saml2/acs`
 
     > [!NOTE]
-    > Ta wartość nie jest prawdziwa. Zaktualizuj ją, stosując rzeczywisty adres URL odpowiedzi. Skontaktuj się z [zespołem pomocy technicznej klienta aplikacji NetSuite](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml), aby uzyskać tę wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Ta wartość nie jest prawdziwa. Zaktualizuj ją, stosując rzeczywisty adres URL odpowiedzi. Skontaktuj się z [zespołem pomocy technicznej klienta aplikacji NetSuite](https://www.netsuite.com/portal/services/support-services/suitesupport.shtml), aby uzyskać tę wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 5. Aplikacja NetSuite oczekuje asercji SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Atrybuty użytkownika**.
 
@@ -132,7 +132,7 @@ Aby skonfigurować funkcję logowania jednokrotnego usługi Azure AD z aplikacj�
     
     | Name (Nazwa) | Atrybut źródłowy | 
     | ---------------| --------------- |
-    | account  | `account id` |
+    | konto  | `account id` |
 
     a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
 
@@ -150,7 +150,7 @@ Aby skonfigurować funkcję logowania jednokrotnego usługi Azure AD z aplikacj�
 
     f. Kliknij przycisk **OK**.
 
-    g. Kliknij pozycję **Zapisz**.
+    g. Kliknij polecenie **Zapisz**.
 
     >[!NOTE]
     >Wartość atrybutu konta nie jest prawdziwa. Zaktualizujesz tę wartość, co zostanie wyjaśnione w dalszej części tego samouczka.
@@ -173,19 +173,19 @@ Aby skonfigurować funkcję logowania jednokrotnego usługi Azure AD z aplikacj�
 
 1. Otwórz nową kartę w przeglądarce i zaloguj się do witryny firmowej w aplikacji NetSuite jako administrator.
 
-2. Na pasku narzędzi w górnej części strony kliknij **instalacji**, a następnie przejdź do **firmy** i kliknij przycisk **Włączanie funkcji**.
+2. Na pasku narzędzi w górnej części strony kliknij pozycję **Instalator**, a następnie przejdź do opcji **firma** , a następnie kliknij pozycję **Włącz funkcje**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/ns-setupsaml.png)
 
-3. Na pasku narzędzi w środkowej części strony kliknij **SuiteCloud**.
+3. Na pasku narzędzi w środku strony kliknij pozycję **SuiteCloud**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/ns-suitecloud.png)
 
-4. W obszarze **Zarządzanie uwierzytelniania** zaznacz **SAML logowanie Jednokrotne** Aby włączyć opcję SAML logowanie Jednokrotne w NetSuite.
+4. W obszarze **Zarządzanie uwierzytelnianiem** wybierz pozycję **SAML logowanie** jednokrotne, aby włączyć opcję logowania jednokrotnego protokołu SAML w zestawie.
 
     ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/ns-ticksaml.png)
 
-5. Na pasku narzędzi w górnej części strony kliknij **Instalatora**.
+5. Na pasku narzędzi w górnej części strony kliknij pozycję **Konfiguracja**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/ns-setup.png)
 
@@ -233,7 +233,7 @@ Aby skonfigurować funkcję logowania jednokrotnego usługi Azure AD z aplikacj�
 
     ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/ns-new-role.png)
 
-    e. Kliknij pozycję **Zapisz**.
+    e. Kliknij polecenie **Zapisz**.
 
     f. W menu u góry kliknij pozycję **Permissions** (Uprawnienia). Następnie kliknij pozycję **Setup** (Konfiguracja).
 
@@ -241,7 +241,7 @@ Aby skonfigurować funkcję logowania jednokrotnego usługi Azure AD z aplikacj�
 
     g. Wybierz opcję **SAML Single Sign-on** (Logowanie jednokrotne SAML), a następnie kliknij przycisk **Add** (Dodaj).
 
-    h. Kliknij pozycję **Zapisz**.
+    h. Kliknij polecenie **Zapisz**.
 
     i. W górnym menu nawigacyjnym kliknij pozycję **Setup** (Konfiguracja), następnie kliknij pozycję **Setup Manager** (Menedżer instalacji).
 
@@ -259,7 +259,7 @@ Aby skonfigurować funkcję logowania jednokrotnego usługi Azure AD z aplikacj�
 
     ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/ns-add-role.png)
 
-    m. Kliknij pozycję **Zapisz**.
+    m. Kliknij polecenie **Zapisz**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -279,7 +279,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -328,7 +328,7 @@ Po kliknięciu kafelka NetSuite w panelu dostępu powinno nastąpić automatyczn
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Konfigurowanie aprowizacji użytkowników](NetSuite-provisioning-tutorial.md)
 

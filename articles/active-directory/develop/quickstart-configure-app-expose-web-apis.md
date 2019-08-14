@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie aplikacji w celu udostępnienia interfejsy API — platforma tożsamości firmy Microsoft w sieci web
+title: Konfigurowanie aplikacji w celu udostępnienia interfejsów API sieci Web — platforma tożsamości firmy Microsoft
 description: Dowiedz się, jak skonfigurować aplikację tak, aby uwidocznić nowe uprawnienie/zakres i rolę umożliwiające udostępnienie aplikacji dla aplikacji klienckich.
 services: active-directory
 documentationcenter: ''
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/08/2019
+ms.date: 08/14/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f770539e2f60a960a52a877dd4eaa79c60a1af4a
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: f9c8e4a2e5dadf64312481f33993911177c90bc7
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482668"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989271"
 ---
-# <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Szybki start: Konfigurowanie aplikacji w celu udostępnienia interfejsów API sieci web
+# <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Szybki start: Konfigurowanie aplikacji w celu udostępnienia interfejsów API sieci Web
 
 Opracowane internetowe interfejsy API można udostępniać aplikacjom klienckim przez uwidocznienie [uprawnień/zakresów](developer-glossary.md#scopes) i [ról](developer-glossary.md#roles). Prawidłowo skonfigurowany internetowy interfejs API jest udostępniany podobnie jak inne internetowe interfejsy API firmy Microsoft, w tym interfejs API programu Graph i interfejsy API usługi Office 365.
 
@@ -44,7 +44,7 @@ Przed skonfigurowaniem aplikacji wykonaj następujące kroki:
 
 1. Zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
 1. Jeśli Twoje konto umożliwia dostęp do więcej niż jednej dzierżawy, wybierz konto w prawym górnym rogu, a następnie ustaw sesję portalu na odpowiednią dzierżawę usługi Azure AD.
-1. W okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory** usługi, a następnie wybierz pozycję **rejestracje aplikacji**.
+1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** a następnie wybierz pozycję **rejestracje aplikacji**.
 1. Znajdź i wybierz aplikację do skonfigurowania. Po wybraniu aplikacji zobaczysz stronę **Przegląd** aplikacji lub główną stronę rejestracji.
 1. Wybierz metodę do użycia (interfejs użytkownika lub manifest aplikacji) w celu uwidocznienia nowego zakresu:
     * [Uwidacznianie nowego zakresu za pomocą interfejsu użytkownika](#expose-a-new-scope-through-the-ui)
@@ -52,7 +52,7 @@ Przed skonfigurowaniem aplikacji wykonaj następujące kroki:
 
 ## <a name="expose-a-new-scope-through-the-ui"></a>Uwidacznianie nowego zakresu za pomocą interfejsu użytkownika
 
-[![Pokazuje, jak udostępnić interfejs API przy użyciu interfejsu użytkownika](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png#lightbox)
+[![Pokazuje, jak uwidocznić interfejs API przy użyciu interfejsu użytkownika](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png#lightbox)
 
 Aby uwidocznić nowy zakres za pomocą interfejsu użytkownika:
 
@@ -116,8 +116,9 @@ Aby uwidocznić nowy zakres za pomocą manifestu aplikacji:
 ## <a name="verify-the-web-api-is-exposed-to-other-applications"></a>Weryfikowanie, czy internetowy interfejs API został uwidoczniony dla innych aplikacji
 
 1. Wróć do dzierżawy usługi Azure AD, wybierz pozycję **Rejestracje aplikacji**, a następnie znajdź i wybierz aplikację kliencką, którą chcesz skonfigurować.
-1. Powtórz kroki opisane w sekcji Konfigurowanie aplikacji klienckiej na potrzeby uzyskiwania dostępu do internetowych interfejsów API.
-1. Po przejściu do kroku **wyboru interfejsu API** wybierz zasób. Powinien zostać wyświetlony nowy zakres dostępny dla żądań uprawnień klienta.
+1. Powtórz kroki opisane w sekcji [Konfigurowanie aplikacji klienckiej na potrzeby uzyskiwania dostępu do internetowych interfejsów API](quickstart-configure-app-access-web-apis.md).
+1. Po przekroczeniu kroku, aby [wybrać interfejs API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis
+), wybierz zasób. Powinien zostać wyświetlony nowy zakres dostępny dla żądań uprawnień klienta.
 
 ## <a name="more-on-the-application-manifest"></a>Więcej informacji na temat manifestu aplikacji
 
@@ -128,7 +129,7 @@ Manifest aplikacji pełni rolę mechanizmu aktualizowania jednostki Application,
 
 Aby uzyskać więcej informacji na temat ogólnych pojęć dotyczących manifestu aplikacji, zobacz [Omówienie manifestu aplikacji usługi Azure Active Directory](reference-app-manifest.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej na temat innych powiązanych przewodników Szybki start dotyczących zarządzania aplikacjami:
 

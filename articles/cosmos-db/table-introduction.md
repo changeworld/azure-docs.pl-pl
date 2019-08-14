@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-table
 ms.topic: overview
 ms.date: 07/26/2019
 ms.author: sngun
-ms.openlocfilehash: be6a402673fd2d3ba01451c6ea04e723cbdfa292
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 5b2e2c51eaa878ba0ce8bc31c001575acebe6919
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597511"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967547"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Wprowadzenie do usługi Azure Cosmos DB: Interfejs API tabel
 
@@ -58,8 +58,8 @@ Oto kilka wskazówek ułatwiających rozpoczęcie pracy:
 * [Opracowywanie zawartości przy użyciu interfejsu API tabel na platformie .NET](tutorial-develop-table-dotnet.md)
 * [Wykonywanie zapytań dotyczących danych tabel przy użyciu interfejsu API tabel](tutorial-query-table.md)
 * [Dowiedz się, jak skonfigurować dystrybucję globalną usługi Azure Cosmos DB przy użyciu interfejsu API tabel](tutorial-global-distribution-table.md)
-* [Azure Cosmos DB — interfejs API tabel dla platformy .NET](table-sdk-dotnet.md)
-* [Azure Cosmos DB — interfejs API tabel dla platformy Java](table-sdk-java.md)
-* [Azure Cosmos DB — interfejs API tabel dla platformy Node.js](table-sdk-nodejs.md)
+* [Zestaw SDK tabeli Azure Cosmos DB .NET Standard](table-sdk-dotnet-standard.md)
+* [Zestaw SDK tabeli Azure Cosmos DB dla platformy .NET](table-sdk-dotnet.md)
+* [Zestaw SDK języka Java dla tabeli Azure Cosmos DB](table-sdk-java.md)
+* [Azure Cosmos DB tabeli SDK Node. js](table-sdk-nodejs.md)
 * [Azure Cosmos DB — zestaw SDK tabel dla języka Python](table-sdk-python.md)
-

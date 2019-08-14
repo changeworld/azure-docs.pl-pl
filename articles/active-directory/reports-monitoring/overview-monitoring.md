@@ -3,7 +3,7 @@ title: Co to jest funkcja monitorowania usługi Azure Active Directory? | Micros
 description: Zawiera ogólne omówienie funkcji monitorowania usługi Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: e2b3d8ce-708a-46e4-b474-123792f35526
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d63f8440ca527a746f73574bc156037d85fc3599
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 21102a52c6aa7ae97f3b1c2d671a341f19615a8e
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60286654"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68988206"
 ---
 # <a name="what-is-azure-active-directory-monitoring"></a>Co to jest funkcja monitorowania usługi Azure Active Directory?
 
@@ -44,11 +44,11 @@ Aby skonfigurować ustawienia monitorowania dla dzienników aktywności usługi 
 
 * Wybierz pozycję **Ustawienia diagnostyczne** w sekcji **Monitorowanie**.
 
-    ![Ustawienia diagnostyczne](./media/overview-monitoring/diagnostic-settings.png)
+    ![Ustawienia diagnostyki](./media/overview-monitoring/diagnostic-settings.png)
     
 * Wybierz pozycję **Dzienniki inspekcji** lub **Logowania**, a następnie wybierz pozycję **Eksportuj ustawienia**. 
 
-    ![Eksportowanie ustawień](./media/overview-monitoring/export-settings.png)
+    ![Eksportuj ustawienia](./media/overview-monitoring/export-settings.png)
 
 
 ## <a name="route-logs-to-storage-account"></a>Przekierowywanie dzienników do konta magazynu
@@ -65,7 +65,7 @@ Przekierowywanie dzienników do centrum zdarzeń platformy Azure umożliwia inte
 
 Możesz także zainstalować wstępnie utworzone widoki dla dzienników aktywności usługi Azure AD, aby monitorować typowe scenariusze obejmujące logowania i zdarzenia inspekcji. Dowiedz się, jak [zainstalować widoki analizy dzienników dla dzienników aktywności usługi Azure AD i używać ich](howto-install-use-log-analytics-views.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Dzienniki aktywności w usłudze Azure Monitor](concept-activity-logs-azure-monitor.md)
 * [Przesyłanie strumieniowe dzienników do centrum zdarzeń](tutorial-azure-monitor-stream-logs-to-event-hub.md)

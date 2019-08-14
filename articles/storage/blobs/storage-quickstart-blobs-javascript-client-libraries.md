@@ -8,12 +8,12 @@ ms.date: 11/14/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: c9951a5fcfb30ed229b2bc7286b6d274649e6136
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: a759a7638f5c960fd69ce86896cfdf53615241c9
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722078"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985506"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -50,7 +50,7 @@ Następnie utworzymy token zabezpieczający za pomocą usługi Azure Cloud Shell
 [!INCLUDE [Open the Azure cloud shell](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-shared-access-signature"></a>Tworzenie sygnatury dostępu współdzielonego
-Sygnatura dostępu współdzielonego (SAS, Shared Access Signature) jest używana przez kod uruchomiony w przeglądarce do autoryzowania żądań w usłudze Blob Storage. Sygnatura dostępu współdzielonego umożliwia klientowi autoryzację dostępu do zasobów magazynu bez użycia klucza dostępu konta ani parametrów połączenia. Zobacz [Using shared access signatures (SAS) (Używanie sygnatur dostępu współdzielonego)](../common/storage-dotnet-shared-access-signature-part-1.md), aby uzyskać więcej informacji.
+Sygnatura dostępu współdzielonego (SAS, Shared Access Signature) jest używana przez kod uruchomiony w przeglądarce do autoryzowania żądań w usłudze Blob Storage. Sygnatura dostępu współdzielonego umożliwia klientowi autoryzację dostępu do zasobów magazynu bez użycia klucza dostępu konta ani parametrów połączenia. Zobacz [Using shared access signatures (SAS) (Używanie sygnatur dostępu współdzielonego)](../common/storage-sas-overview.md), aby uzyskać więcej informacji.
 
 Sygnaturę dostępu współdzielonego można utworzyć w usłudze Azure Cloud Shell przy użyciu interfejsu wiersza polecenia platformy Azure lub Eksploratora usługi Azure Storage. W poniższej tabeli opisano parametry, których wartości musisz podać, aby wygenerować sygnaturę dostępu współdzielonego za pomocą interfejsu wiersza polecenia.
 
@@ -76,7 +76,7 @@ az storage account generate-sas
 ```
 Serie wartości występujące po każdym parametrze mogą wydawać się niezrozumiałe. Te wartości parametrów odpowiadają pierwszym literom odpowiednich uprawnień. W poniższej tabeli wyjaśniono pochodzenie tych wartości: 
 
-| Parametr        | Wartość   | Opis  |
+| Parametr        | Value   | Opis  |
 |------------------|---------|---------|
 | *uprawnienia*    | racwdl  | Ta sygnatura dostępu współdzielonego umożliwia używanie poleceń *read*, *append*, *create*, *write*, *delete* i *list*. |
 | *resource-types* | sco     | Ta sygnatura dostępu współdzielonego dotyczy następujących zasobów: *usługa*, *kontener* i *obiekt*. |
@@ -251,7 +251,7 @@ document.getElementById('delete-button').addEventListener('click', () => {
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 Aby wyczyścić zasoby utworzone podczas pracy z tym przewodnikiem Szybki start, wróć do witryny [Azure Portal](https://portal.azure.com) i wybierz konto magazynu. Po wybraniu konta magazynu możesz je usunąć, wybierając pozycję: **Przegląd > Usuń konto magazynu**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Zapoznaj się z przykładami, aby dowiedzieć się, jak pobrać obiekty blob oraz wyświetlić informację o postępie przekazywania plików.
 
 > [!div class="nextstepaction"]

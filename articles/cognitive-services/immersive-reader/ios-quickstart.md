@@ -9,18 +9,18 @@ ms.subservice: immersive-reader
 ms.topic: quickstart
 ms.date: 08/01/2019
 ms.author: t-meroa
-ms.openlocfilehash: 4b2bdc1a2babadbe5cb7f12135de0eaef8557a97
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 64b3cab857a541d0bede88e7fdf21c00526b9a43
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950800"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965146"
 ---
 # <a name="quickstart-create-an-ios-app-that-launches-the-immersive-reader-swift"></a>Szybki start: Tworzenie aplikacji dla systemu iOS, która uruchamia czytnik immersyjny (SWIFT)
 
 [Czytnik immersyjny](https://www.onenote.com/learningtools) jest specjalnie zaprojektowanym narzędziem, które implementuje sprawdzone techniki w celu zwiększenia czytelności.
 
-W tym przewodniku szybki start utworzysz aplikację dla systemu iOS od podstaw i zintegrujesz czytnik immersyjny przy użyciu zestawu SDK czytnika immersyjny. Pełny przykład pracy tego przewodnika Szybki Start jest dostępny [tutaj](https://github.com/microsoft/immersive-reader-sdk/iOS/samples/quickstart-swift).
+W tym przewodniku szybki start utworzysz aplikację dla systemu iOS od podstaw i zintegrujesz czytnik immersyjny przy użyciu zestawu SDK czytnika immersyjny. Pełny przykład pracy tego przewodnika Szybki Start jest dostępny [tutaj](https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/samples/quickstart-swift).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -43,7 +43,7 @@ Wybierz **aplikację z pojedynczym widokiem**.
 Najprostszym sposobem korzystania z zestawu SDK czytnika immersyjny jest za pośrednictwem CocoaPods. Aby zainstalować za pośrednictwem Cocoapods:
 1. [Install Cocoapods](http://guides.cocoapods.org/using/getting-started.html) — postępuj zgodnie z przewodnikiem wprowadzenie, aby zainstalować Cocoapods.
 2. Utwórz element plik podfile, uruchamiając `pod init` w katalogu głównym projektu Xcode.
-3.  Dodaj CocoaPod do plik podfile przez dodanie `pod 'immersive-reader-sdk', :path => 'https://github.com/microsoft/immersive-reader-sdk/iOS/immersive-reader-sdk'`. Twoja Pofile powinna wyglądać podobnie do poniższego, przy użyciu nazwy elementu docelowego z zastępowaniem szybkiego startu:
+3.  Dodaj CocoaPod do plik podfile przez dodanie `pod 'immersive-reader-sdk', :path => 'https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/immersive-reader-sdk'`. Twoja Pofile powinna wyglądać podobnie do poniższego, przy użyciu nazwy elementu docelowego z zastępowaniem szybkiego startu:
  ```ruby
   platform :ios, '9.0'
 
@@ -102,4 +102,4 @@ Po kliknięciu przycisku "czytnik immersyjny" zobaczysz czytnik immersyjny uruch
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Zapoznaj się z [zestawem SDK programu immersyjny dla systemu iOS](https://github.com/microsoft/immersive-reader-sdk/iOS) i [Kompendium zestawu SDK systemu iOS dla czytnika immersyjny](./ios-reference.md)
+* Zapoznaj się z [zestawem SDK programu immersyjny dla systemu iOS](https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS) i [Kompendium zestawu SDK systemu iOS dla czytnika immersyjny](./ios-reference.md)

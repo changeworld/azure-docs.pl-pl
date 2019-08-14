@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 07/23/2019
+ms.date: 08/12/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: ca42532fe6ba954180ce06ed0e3561e42f1fb447
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 9e3159a083d21e4a7a81df2fcf7a7d5db882b757
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424240"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976910"
 ---
 ::: zone target="docs"
 
@@ -109,12 +109,9 @@ Centra danych platformy Azure w Australii mają dodatkowe powiadomienie o zabezp
 1. Zapisz nazwę firmy i informacje o adresie na liście wysyłkowej jako informacje o nadawcy.
 2. Quantium rozwiązanie e-mail przy użyciu następującego szablonu wiadomości e-mail.
 
-    - Jeśli nie dołączono lub nie ma żadnej adnotacji w języku Japonia post Chakubarai, należy pamiętać, że w tej wiadomości e-mail. Rozwiązania Quantium w Japonii zażądają opublikowania przesyłki w języku Japonia.
-    - Jeśli masz wiele zamówień, Wyślij wiadomość e-mail, aby zapewnić indywidualne odbiór.
-
     ```
     To: Customerservice.JP@quantiumsolutions.com
-    Subject: Pickup request for Azure Data Box Disk｜Job Name： 
+    Subject: Pickup request for Microsoft Azure Data Box Disk｜Job Name： 
     Body: 
     - Japan Post Yu-Pack tracking number (reference number)：
     - Requested pickup date：mmdd (Select a requested time slot from below).
@@ -123,6 +120,9 @@ Centra danych platformy Azure w Australii mają dodatkowe powiadomienie o zabezp
         c. 15：00-17：00 
         d. 17：00-19：00 
     ```
+    - **W przypadku pobierania w ramach Osaka**należy zmodyfikować temat w szablonie wiadomości e-mail na: `Pickup request for Microsoft Azure OSA`.
+    - Jeśli nie dołączono lub nie ma żadnej adnotacji w języku Japonia post Chakubarai, należy pamiętać, że w tej wiadomości e-mail. Rozwiązania Quantium w Japonii zażądają opublikowania przesyłki w języku Japonia.
+    - Jeśli masz wiele zamówień, Wyślij wiadomość e-mail, aby zapewnić indywidualne odbiór.
 
 3. Otrzymuj potwierdzenie e-mail z rozwiązań Quantium po zapisaniu odbioru. Potwierdzenie wiadomości e-mail obejmuje również informacje dotyczące Chakubarai wysyłki.
 

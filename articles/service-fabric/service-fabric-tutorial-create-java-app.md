@@ -1,5 +1,5 @@
 ---
-title: Tworzenie aplikacji Java w usłudze Service Fabric na platformie Azure | Microsoft Docs
+title: 'Samouczek: Tworzenie aplikacji Java na platformie Azure Service Fabric'
 description: W tym samouczku znajdziesz informacje o sposobie tworzenia aplikacji usługi Reliable Service za pomocą frontonu, tworzenia bezstanowego zaplecza usług Reliable Services, a także o sposobie wdrażania aplikacji w klastrze.
 services: service-fabric
 documentationcenter: java
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
-ms.custom: mvc
-ms.openlocfilehash: 0a937fcb3b603a6bed97ba12533ebc965c2c8089
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.custom: mvc, seo-java-august2019
+ms.openlocfilehash: 3601bcfbb812dc9f8ee893cc1c88eb8eebce485f
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847635"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963962"
 ---
 # <a name="tutorial-create-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service-on-service-fabric"></a>Samouczek: Tworzenie aplikacji przy użyciu usługi frontonu Java z internetowym interfejsem API oraz stanowej usługi zaplecza w usłudze Service Fabric
 

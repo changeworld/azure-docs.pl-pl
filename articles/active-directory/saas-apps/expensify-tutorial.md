@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/29/2019
+ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37eb989f49593570aa9fcc2ee6f2e5863b59fbc1
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: fe57c0655cf01f8dfa0f9cd0d75584fd4f130c0a
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68637764"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976104"
 ---
 # <a name="tutorial-integrate-expensify-with-azure-active-directory"></a>Samouczek: Integruj Expensify z Azure Active Directory
 
@@ -36,7 +36,7 @@ Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zo
 
 Aby rozpocząć, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz skorzystać z miesięcznej bezpłatnej wersji próbnej [](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
 * Subskrypcja z włączonym logowaniem jednokrotnym (SSO) Expensify.
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -56,20 +56,20 @@ Aby skonfigurować integrację aplikacji Expensify z usługą Azure AD, należy 
 1. W sekcji **Dodaj z galerii** wpisz **Expensify** w polu wyszukiwania.
 1. Wybierz pozycję **Expensify** from panel wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on-for-expensify"></a>Skonfiguruj i przetestuj Logowanie jednokrotne w usłudze Azure AD dla Expensify
 
 Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą Expensify przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w Expensify.
 
 Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą Expensify, wykonaj następujące bloki konstrukcyjne:
 
 1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
+    1. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
+    1. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
 2. **[Skonfiguruj logowanie](#configure-expensify-sso)** jednokrotne w usłudze Expensify, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
-4. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
-5. **[Utwórz użytkownika testowego Expensify](#create-expensify-test-user)** , aby dysponować odpowiednikiem B. Simon w Expensify, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
+    1. **[Utwórz użytkownika testowego Expensify](#create-expensify-test-user)** , aby dysponować odpowiednikiem B. Simon w Expensify, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
 6. **[Przetestuj logowanie](#test-sso)** jednokrotne — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
 Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
@@ -83,10 +83,12 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://www.expensify.com/authentication/saml/login`
 
-    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://www.<companyname>.expensify.com`
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL: `https://www.expensify.com`
+
+    c. b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://www.expensify.com/authentication/saml/loginCallback?domain=<yourdomain>`
 
     > [!NOTE]
-    > Wartość identyfikatora nie jest prawdziwe. Zaktualizuj tę wartość za pomocą rzeczywistego identyfikatora. Aby uzyskać tę wartość, skontaktuj się z [zespołem pomocy technicznej klienta aplikacji Expensify](mailto:help@expensify.com). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Wartość adresu URL odpowiedzi nie jest prawdziwa. Zaktualizuj ją, stosując rzeczywisty adres URL odpowiedzi. Aby uzyskać tę wartość, skontaktuj się z [zespołem pomocy technicznej klienta aplikacji Expensify](mailto:help@expensify.com). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **metadane XML** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
@@ -95,20 +97,6 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 1. W sekcji **Konfigurowanie Expensify** skopiuj odpowiednie adresy URL na podstawie wymagania.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
-
-### <a name="configure-expensify-sso"></a>Konfigurowanie logowania jednokrotnego Expensify
-
-Aby włączyć logowanie jednokrotne w aplikacji Expensify, należy najpierw włączyć **kontrolę domeny** w aplikacji. Kontrolę domeny można włączyć w aplikacji, wykonując kroki opisane [tutaj](https://help.expensify.com/domain-control). Aby uzyskać dodatkową pomoc, skontaktuj się z [zespołem obsługi klienta aplikacji Expensify](mailto:help@expensify.com). Po włączeniu kontroli domeny wykonaj następujące kroki:
-
-![Konfigurowanie logowania jednokrotnego](./media/expensify-tutorial/tutorial_expensify_51.png)
-
-1. Zaloguj się do aplikacji Expensify.
-
-2. W okienku po lewej stronie kliknij pozycję **Settings** (Ustawienia), a następnie przejdź do sekcji **SAML**.
-
-3. Przełącz wartość opcji **SAML Login** (Logowanie protokołu SAML) na wartość **Enabled** (Włączone).
-
-4. W Notatniku otwórz metadane federacji pobrane z usługi Azure AD, skopiuj ich zawartość, a następnie wklej je do pola tekstowego **Identity Provider Metadata** (Metadane dostawcy tożsamości).
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -140,11 +128,25 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
 1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
+## <a name="configure-expensify-sso"></a>Konfigurowanie logowania jednokrotnego Expensify
+
+Aby włączyć logowanie jednokrotne w aplikacji Expensify, należy najpierw włączyć **kontrolę domeny** w aplikacji. Kontrolę domeny można włączyć w aplikacji, wykonując kroki opisane [tutaj](https://help.expensify.com/domain-control). Aby uzyskać dodatkową pomoc, skontaktuj się z [zespołem obsługi klienta aplikacji Expensify](mailto:help@expensify.com). Po włączeniu kontroli domeny wykonaj następujące kroki:
+
+![Konfigurowanie logowania jednokrotnego](./media/expensify-tutorial/tutorial_expensify_51.png)
+
+1. Zaloguj się do aplikacji Expensify.
+
+2. W okienku po lewej stronie kliknij pozycję **Settings** (Ustawienia), a następnie przejdź do sekcji **SAML**.
+
+3. Przełącz wartość opcji **SAML Login** (Logowanie protokołu SAML) na wartość **Enabled** (Włączone).
+
+4. W Notatniku otwórz metadane federacji pobrane z usługi Azure AD, skopiuj ich zawartość, a następnie wklej je do pola tekstowego **Identity Provider Metadata** (Metadane dostawcy tożsamości).
+
 ### <a name="create-expensify-test-user"></a>Tworzenie użytkownika testowego aplikacji Expensify
 
 W tej sekcji utworzysz użytkownika o nazwie B. Simon w Expensify. Skontaktuj się z [zespołem obsługi klienta aplikacji Expensify](mailto:help@expensify.com), aby dodać użytkowników na platformie Expensify.
 
-### <a name="test-sso"></a>Testuj Logowanie jednokrotne
+## <a name="test-sso"></a>Testuj Logowanie jednokrotne
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
