@@ -1,5 +1,5 @@
 ---
-title: Strumieniowa na żywo ze strumieniami o różnych szybkościach transmisji bitów przy użyciu witryny Azure portal przy użyciu usługi Azure Media Services | Dokumentacja firmy Microsoft
+title: Wykonaj transmisję strumieniową na żywo za pomocą Azure Media Services, aby utworzyć strumienie o szybkości transmisji bitów z Azure Portal | Microsoft Docs
 description: Ten samouczek przedstawia tworzenie kanału, który odbiera strumień na żywo o jednej szybkości transmisji bitów i koduje go jako strumień o różnych szybkościach transmisji bitów przy użyciu witryny Azure Portal.
 services: media-services
 documentationcenter: ''
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: daab3c3b2a5b756686a4867350478faaa1142279
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3217a2d5ba3d45a069eacdb67a8d69e9abc674b8
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64726855"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "69015209"
 ---
-# <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>Strumieniowa na żywo ze strumieniami o różnych szybkościach transmisji bitów przy użyciu witryny Azure portal przy użyciu usługi Media Services  
+# <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>Wykonaj transmisję strumieniową na żywo za pomocą Media Services, aby utworzyć strumienie o szybkości transmisji bitów z Azure Portal  
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
-> * [Interfejs API REST](https://docs.microsoft.com/rest/api/media/operations/channel)
+> * [REST API](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 
 > [!NOTE]
-> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
+> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówki dotyczące migracji od wersji 2 do V3](../latest/migrate-from-v2-to-v3.md)
 
 Ten samouczek przedstawia kroki tworzenia **kanału**, który odbiera strumień na żywo o pojedynczej szybkości transmisji bitów i koduje go jako strumień o wielokrotnej szybkości transmisji bitów.
 
@@ -39,12 +39,12 @@ Aby uzyskać więcej informacji o pojęciach związanych z kanałami obsługują
 Poniżej przedstawiono ogólne etapy tworzenia typowych aplikacji transmisji strumieniowej na żywo.
 
 > [!NOTE]
-> Obecnie maksymalny zalecany czas trwania wydarzenia na żywo wynosi 8 godzin. Napisz na adres amslived@microsoft.com, jeśli potrzebujesz uruchomić kanał na dłuższy czas.
+> Obecnie maksymalny zalecany czas trwania wydarzenia na żywo wynosi 8 godzin. Napisz na adres amshelp@microsoft.com, jeśli potrzebujesz uruchomić kanał na dłuższy czas.
 
-1. Podłącz kamerę wideo do komputera. <br/>Zapoznać się z pomysłami instalacji, zapoznaj się z [konfiguracja sprzętu wideo zdarzenia przenośne i proste]( https://link.medium.com/KNTtiN6IeT).
+1. Podłącz kamerę wideo do komputera. <br/>Aby zapoznać się z pomysłami dotyczącymi konfiguracji, zapoznaj się z [konfiguracją prostego i przenośnego sprzętu wideo]( https://link.medium.com/KNTtiN6IeT).
 
-    Jeśli nie masz dostępu do aparatu fotograficznego, narzędzia takie jak [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) może służyć Generowanie Kanał informacyjny na żywo na podstawie pliku wideo.
-1. Uruchom i skonfiguruj lokalny koder na żywo, który wysyła strumień o pojedynczej szybkości transmisji bitów przy użyciu jednego z następujących protokołów: RTMP lub Smooth Streaming. Aby uzyskać więcej informacji, zobacz temat [Obsługa protokołu RTMP i kodery na żywo w usłudze Azure Media Services](https://go.microsoft.com/fwlink/?LinkId=532824). <br/>Ponadto zapoznaj się z tym blogu: [Na żywo przesyłania strumieniowego w środowisku produkcyjnym za pomocą systemu bankowości Internetowej](https://link.medium.com/ttuwHpaJeT).
+    Jeśli nie masz dostępu do aparatu, można użyć narzędzi, takich jak [Wirecast usługi NetStream](https://www.telestream.net/wirecast/overview.htm) , wygenerowania na żywo kanału informacyjnego z pliku wideo.
+1. Uruchom i skonfiguruj lokalny koder na żywo, który wysyła strumień o pojedynczej szybkości transmisji bitów przy użyciu jednego z następujących protokołów: RTMP lub Smooth Streaming. Aby uzyskać więcej informacji, zobacz temat [Obsługa protokołu RTMP i kodery na żywo w usłudze Azure Media Services](https://go.microsoft.com/fwlink/?LinkId=532824). <br/>Zapoznaj się również z tym blogiem: [Produkcja strumieniowa na żywo z obs](https://link.medium.com/ttuwHpaJeT).
 
     Ten krok można również wykonać po utworzeniu kanału.
 1. Utwórz i uruchom kanał. 
@@ -186,7 +186,7 @@ Aby zarządzać elementami zawartości, wybierz pozycję **Ustawienie** i klikni
 ![Elementy zawartości](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-assets.png)
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
-* Obecnie maksymalny zalecany czas trwania wydarzenia na żywo wynosi 8 godzin. Napisz na adres amslived@microsoft.com, jeśli potrzebujesz uruchomić kanał na dłuższy czas.
+* Obecnie maksymalny zalecany czas trwania wydarzenia na żywo wynosi 8 godzin. Napisz na adres amshelp@microsoft.com, jeśli potrzebujesz uruchomić kanał na dłuższy czas.
 * Upewnij się, że punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać swoją zawartość, ma stan **Uruchomiony**.
 
 ## <a name="next-step"></a>Następny krok

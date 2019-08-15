@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: hrasheed
-ms.openlocfilehash: 301ad4f940e6bd4eedb3a4df64e4740d29effe03
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 5836dda186c7bd9baeafa193052b0b75d63e291b
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68406222"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019619"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Zarządzanie klastrami usługi HDInsight przy użyciu interfejsu API REST usługi Apache Ambari
 
@@ -42,6 +42,8 @@ Platforma [Apache Ambari](https://ambari.apache.org) upraszcza zarządzanie i mo
 ## <a name="authentication"></a>Authentication
 
 Połączenie z usługą Ambari w usłudze HDInsight wymaga protokołu HTTPS. Użyj nazwy konta administratora (wartość domyślna to **admin**) i hasła podanego podczas tworzenia klastra.
+
+W przypadku klastrów pakiet Enterprise Security zamiast `admin`tego należy użyć w pełni kwalifikowanej nazwy użytkownika, takiej jak. `username@domain.onmicrosoft.com`
 
 ## <a name="examples"></a>Przykłady
 
@@ -380,7 +382,7 @@ Ten przykład zwraca dokument JSON zawierający bieżącą konfigurację `livy2-
     $resp.Content
     ```  
 
-    Te polecenia przesyłają zawartość pliku **newconfig. JSON** do klastra jako nową pożądaną konfigurację. Żądanie zwraca dokument JSON. Element **versionTag** w tym dokumencie powinien odpowiadać przesłanej wersji, a obiekt configs  zawiera żądane zmiany konfiguracji.
+    Te polecenia przesyłają zawartość pliku **newconfig. JSON** do klastra jako nową pożądaną konfigurację. Żądanie zwraca dokument JSON. Element **versionTag** w tym dokumencie powinien odpowiadać przesłanej wersji, a obiekt configs zawiera żądane zmiany konfiguracji.
 
 ### <a name="restart-a-service-component"></a>Ponowne uruchamianie składnika usługi
 

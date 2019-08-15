@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 323470adfe56ee20fe0fb64aeba38b6af4330351
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: c456dfec72f98dc4ae06f1d7d5d9fb461182d579
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827602"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018981"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Rozwiązywanie problemów z kopiami zapasowymi SQL Server Database przy użyciu Azure Backup
 
@@ -163,7 +163,7 @@ W powyższych scenariuszach zalecamy wyzwolenie operacji ponownego zarejestrowan
 
 Łączny rozmiar ciągu plików zależy nie tylko od liczby plików, ale również na ich nazwach i ścieżkach. Dla każdego pliku bazy danych Pobierz nazwę pliku logicznego i ścieżkę fizyczną. Możesz użyć tej kwerendy SQL:
 
-```
+```sql
 SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files mf
                INNER JOIN sys.databases db ON db.database_id = mf.database_id
                WHERE db.name = N'<Database Name>'"
@@ -171,13 +171,13 @@ SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files m
 
 Teraz Rozmieść je w następującym formacie:
 
-```
+```json
 [{"path":"<Location>","logicalName":"<LogicalName>","isDir":false},{"path":"<Location>","logicalName":"<LogicalName>","isDir":false}]}
 ```
 
 Oto przykład:
 
-```
+```json
 [{"path":"F:\\Data\\TestDB12.mdf","logicalName":"TestDB12","isDir":false},{"path":"F:\\Log\\TestDB12_log.ldf","logicalName":"TestDB12_log","isDir":false}]}
 ```
 
@@ -188,7 +188,7 @@ Jeśli rozmiar ciągu zawartości przekracza 20 000 bajtów, pliki bazy danych s
 Docelową ścieżkę pliku przywracania można zastąpić podczas operacji przywracania, umieszczając plik JSON zawierający mapowanie pliku bazy danych do docelowej ścieżki przywracania. Utwórz plik i umieść go w lokalizacji *C:\Program Files\Azure obciążenia Backup\bin\plugins\SQL.* `database_name.json`
 
 Zawartość pliku powinna mieć następujący format:
-```
+```json
 [
   {
     "Path": "<Restore_Path>",
@@ -205,7 +205,7 @@ Zawartość pliku powinna mieć następujący format:
 
 Oto przykład:
 
-```
+```json
 [
   {
    "Path": "F:\\Data\\testdb2_1546408741449456.mdf",
@@ -222,7 +222,7 @@ Oto przykład:
 
 W poprzedniej zawartości można pobrać logiczną nazwę pliku bazy danych za pomocą następującego zapytania SQL:
 
-```
+```sql
 SELECT mf.name AS LogicalName FROM sys.master_files mf
                 INNER JOIN sys.databases db ON db.database_id = mf.database_id
                 WHERE db.name = N'<Database Name>'"

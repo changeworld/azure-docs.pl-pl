@@ -1,6 +1,6 @@
 ---
-title: Do prowadzenia transmisji strumieniowych na żywo za pomocą koderów lokalnych przy użyciu platformy .NET | Dokumentacja firmy Microsoft
-description: W tym temacie pokazano, jak kodowanie na żywo za pomocą koderów lokalnych przy użyciu platformy .NET.
+title: Jak wykonać transmisję strumieniową na żywo za pomocą koderów lokalnych przy użyciu platformy .NET | Microsoft Docs
+description: W tym temacie pokazano, jak używać programu .NET do wykonywania kodowania na żywo za pomocą koderów lokalnych.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: cenkdin;juliako
-ms.openlocfilehash: 8baff356e1a4916bcc21b28f422a6e98342c0d34
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.openlocfilehash: bc7c8a059e1e17b7b280a7061206b10ed6c530aa
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64869444"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "69015836"
 ---
-# <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>Do prowadzenia transmisji strumieniowych na żywo za pomocą koderów lokalnych przy użyciu platformy .NET
+# <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>Jak wykonać transmisję strumieniową na żywo za pomocą koderów lokalnych przy użyciu platformy .NET
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
@@ -29,9 +29,9 @@ ms.locfileid: "64869444"
 > 
 
 > [!NOTE]
-> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
+> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówki dotyczące migracji od wersji 2 do V3](../latest/migrate-from-v2-to-v3.md)
 
-Ten samouczek przeprowadzi Cię przez kroki przy użyciu usługi Azure Media Services .NET SDK do tworzenia **kanału** skonfigurowanego dla konfigurowanego do dostarczania. 
+Ten samouczek przeprowadzi Cię przez kroki dotyczące korzystania z zestawu SDK programu Azure Media Services .NET w celu utworzenia **kanału** , który jest skonfigurowany do dostarczania przekazywania. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do wykonania czynności przedstawionych w tym samouczku są niezbędne następujące elementy:
@@ -39,10 +39,10 @@ Do wykonania czynności przedstawionych w tym samouczku są niezbędne następuj
 * Konto platformy Azure.
 * Konto usługi Media Services. Aby utworzyć konto usługi Media Services, zobacz temat [Jak utworzyć konto usługi Media Services](media-services-portal-create-account.md).
 * Upewnij się, że punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać zawartość, ma stan **Uruchomiony**. 
-* Konfigurowanie środowiska deweloperskiego. Aby uzyskać więcej informacji, zobacz [służą do konfigurowania środowiska](media-services-set-up-computer.md).
+* Skonfiguruj środowisko deweloperskie. Aby uzyskać więcej informacji, zobacz [Konfigurowanie środowiska](media-services-set-up-computer.md).
 * Kamera internetowa. Na przykład [koder Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm).
 
-Zaleca, aby zapoznać się z następującymi artykułami:
+Zalecane do przejrzenia następujących artykułów:
 
 * [Obsługa protokołu RTMP i kodery na żywo w usłudze Azure Media Services](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)
 * [Transmisja strumieniowa na żywo za pomocą koderów lokalnych tworzących strumienie o różnej szybkości transmisji bitów](media-services-live-streaming-with-onprem-encoders.md)
@@ -53,23 +53,23 @@ Skonfiguruj środowisko projektowe i wypełnij plik app.config przy użyciu info
 
 ## <a name="example"></a>Przykład
 
-Poniższy przykład kodu pokazuje, jak wykonać następujące zadania:
+Poniższy przykład kodu ilustruje sposób osiągnięcia następujących zadań:
 
 * Łączenie się z usługą Media Services
 * Tworzenie kanału
-* Kanał aktualizacji
-* Pobierz wejściowego punktu końcowego kanału. Wejściowy punkt końcowy należy przekazać do kodera na żywo w środowisku lokalnym. Koder na żywo konwertuje sygnały z aparatu fotograficznego do strumieni, które są wysyłane do tego kanału danych wejściowych (odbieranie) punktu końcowego.
-* Pobieranie punktu końcowego podglądu kanału
+* Aktualizowanie kanału
+* Pobierz wejściowy punkt końcowy kanału. Wejściowy punkt końcowy powinien być dostarczany do lokalnego kodera na żywo. Koder na żywo konwertuje sygnały z aparatu do strumieni, które są wysyłane do punktu końcowego wejścia (pozyskiwania) kanału.
+* Pobierz punkt końcowy podglądu kanału
 * Tworzenie i uruchamianie programu
-* Tworzenie lokalizatora potrzebnych do dostępu do programu
+* Tworzenie lokalizatora wymaganego do uzyskania dostępu do programu
 * Tworzenie i uruchamianie StreamingEndpoint
-* Aktualizacja punktu końcowego przesyłania strumieniowego
-* Zamknij zasobów
+* Aktualizowanie punktu końcowego przesyłania strumieniowego
+* Zamykanie zasobów
     
 >[!NOTE]
 >Limit różnych zasad usługi AMS wynosi 1 000 000 (na przykład zasad lokalizatorów lub ContentKeyAuthorizationPolicy). Należy używać tego samego identyfikatora zasad, jeśli zawsze są używane uprawnienia dotyczące tych samych dni lub tego samego dostępu, na przykład dla lokalizatorów przeznaczonych do długotrwałego stosowania (nieprzekazywanych zasad). Więcej informacji znajduje się w [tym](media-services-dotnet-manage-entities.md#limit-access-policies) artykule.
 
-Aby uzyskać informacje na temat konfigurowania koder na żywo, zobacz [pomocy technicznej systemu Azure Media Services protokołu RTMP i kodery na żywo](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/).
+Aby uzyskać informacje na temat konfigurowania kodera na żywo, zobacz [Azure Media Services obsługa protokołu RTMP i kodery na żywo](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/).
 
 ```csharp
 using System;
@@ -400,7 +400,7 @@ namespace AMSLiveTest
 ```
 
 ## <a name="next-step"></a>Następny krok
-Przegląd usługi Media Services ścieżki szkoleniowe
+Przejrzyj ścieżki szkoleniowe Media Services
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

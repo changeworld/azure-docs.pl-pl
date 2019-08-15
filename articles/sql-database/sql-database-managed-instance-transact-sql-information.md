@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
-ms.date: 07/07/2019
+ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 822b8bd1d0f5be854b6d345d68fcdb680b2ef1c4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 1581a62f0999cf502feaad31d2c884f4d171e770
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882561"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019660"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database różnice T-SQL wystąpienia zarządzanego w programie SQL Server
 
@@ -309,12 +309,12 @@ Aby uzyskać informacje na temat agenta programu SQL Server, zobacz [SQL Server 
 
 ### <a name="tables"></a>Tabele
 
-Następujące tabele nie są obsługiwane:
+Następujące typy tabel nie są obsługiwane:
 
-- `FILESTREAM`
-- `FILETABLE`
-- `EXTERNAL TABLE`
-- `MEMORY_OPTIMIZED` 
+- [STRUMIENI](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server)
+- [OBIEKTU](https://docs.microsoft.com/sql/relational-databases/blob/filetables-sql-server)
+- [tabela zewnętrzna](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) PolyBase
+- [MEMORY_OPTIMIZED](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables) (nieobsługiwane tylko w warstwie Ogólnego przeznaczenia)
 
 Aby uzyskać informacje o sposobach tworzenia i modyfikowania tabel, zobacz [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) i [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql).
 
@@ -468,10 +468,13 @@ Następujące opcje bazy danych są ustawiane lub zastępowane i nie można ich 
 
 Ograniczenia: 
 
+- Kopie zapasowe uszkodzonych baz danych mogą zostać przywrócone w zależności od typu uszkodzenia, ale automatyczne kopie zapasowe nie będą pobierane do momentu, gdy uszkodzenie nie zostanie naprawione. Upewnij się, że uruchomiono `DBCC CHECKDB` w wystąpieniu źródłowym, i Użyj kopii zapasowej `WITH CHECKSUM` , aby uniknąć tego problemu.
+- Przywracanie pliku bazy danych zawierającej jakiekolwiek ograniczenie opisane w tym dokumencie (na `FILESTREAM` przykład lub `FILETABLE` obiekty) nie może zostać przywrócone w wystąpieniu zarządzanym. `.BAK`
 - `.BAK`nie można przywrócić plików zawierających wiele zestawów kopii zapasowych. 
 - `.BAK`nie można przywrócić plików zawierających wiele plików dziennika.
-- Przywracanie kończy się niepowodzeniem, `FILESTREAM` Jeśli. bak zawiera dane.
-- Kopie zapasowe, które zawierają bazy danych, które mają aktywne obiekty w pamięci, nie mogą zostać przywrócone w wystąpieniu Ogólnego przeznaczenia. Aby uzyskać informacje na temat przywracania instrukcji, zobacz [przywracanie instrukcji](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql).
+- Kopie zapasowe zawierające bazy danych o rozmiarze większym niż 8TB, aktywne obiekty OLTP w pamięci lub więcej niż 280 plików nie mogą zostać przywrócone w wystąpieniu Ogólnego przeznaczenia. 
+- Kopie zapasowe zawierające bazy danych 4 TB lub obiektów OLTP w pamięci o łącznym rozmiarze większym niż rozmiar opisany w [limitach zasobów](sql-database-managed-instance-resource-limits.md) nie mogą zostać przywrócone w wystąpieniu krytyczne dla działania firmy.
+Aby uzyskać informacje na temat przywracania instrukcji, zobacz [przywracanie instrukcji](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql).
 
 ### <a name="service-broker"></a>Broker usług
 
@@ -548,11 +551,6 @@ W tym przykładzie istniejące bazy danych nadal pracują i mogą wzrosnąć bez
 
 [Liczbę pozostałych plików można określić](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1) za pomocą widoków systemu. Jeśli osiągnięto ten limit, spróbuj [opróżnić i usunąć niektóre z mniejszych plików przy użyciu instrukcji DBCC SHRINKFILE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file) lub przełączyć się do [warstwy krytyczne dla działania firmy, która nie ma tego ograniczenia](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
 
-### <a name="incorrect-configuration-of-the-sas-key-during-database-restore"></a>Nieprawidłowa konfiguracja klucza sygnatury dostępu współdzielonego podczas przywracania bazy danych
-
-`RESTORE DATABASE`odczytywanie pliku. bak może ciągle próbować odczytać plik. bak i zwrócić błąd po długim czasie, jeśli sygnatura dostępu współdzielonego w programie `CREDENTIAL` jest niepoprawna. Wykonaj przywracanie ARGUMENTEM HEADERONLY przed przystąpieniem do przywracania bazy danych, aby upewnić się, że klucz sygnatury dostępu współdzielonego jest poprawny.
-Upewnij się, że usunięto interlinię `?` od klucza sygnatury dostępu współdzielonego, który został wygenerowany przy użyciu Azure Portal.
-
 ### <a name="tooling"></a>Narzędzi
 
 Narzędzia danych SQL Server Management Studio i SQL Server mogą mieć pewne problemy, gdy uzyskują dostęp do wystąpienia zarządzanego.
@@ -624,11 +622,6 @@ Moduły CLR umieszczane w wystąpieniu zarządzanym oraz połączone serwery lub
 Nie można wykonać `BACKUP DATABASE ... WITH COPY_ONLY` na bazie danych, która jest zaszyfrowana za pomocą transparent Data Encryption zarządzanej przez usługę (TDE). TDE zarządzane przez usługę wymusza szyfrowanie kopii zapasowych przy użyciu wewnętrznego klucza TDE. Nie można wyeksportować klucza, dlatego nie można przywrócić kopii zapasowej.
 
 **Poprawkę** Użyj funkcji automatycznego tworzenia kopii zapasowych oraz przywracania do punktu w czasie lub zamiast tego użyj [zarządzanego przez klienta (BYOK) TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key) . Można również wyłączyć szyfrowanie bazy danych.
-
-### <a name="point-in-time-restore-follows-time-by-the-time-zone-set-on-the-source-instance"></a>Przywracanie do określonego momentu według strefy czasowej ustawionej w wystąpieniu źródłowym
-
-Przywracanie do punktu w czasie obecnie interpretuje czas przywracania do programu przez następującą strefę czasową wystąpienia źródłowego, a nie przy użyciu czasu UTC.
-Sprawdź [znane problemy ze strefą czasową wystąpienia zarządzanego](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone#known-issues) , aby uzyskać więcej szczegółów.
 
 ## <a name="next-steps"></a>Następne kroki
 
