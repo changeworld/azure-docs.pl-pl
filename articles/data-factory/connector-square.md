@@ -111,7 +111,7 @@ Aby skopiować dane z kwadratowych, należy ustawić typ źródła w działaniu 
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **SquareSource** | Tak |
+| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **SquareSource** | Tak |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Business"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**
