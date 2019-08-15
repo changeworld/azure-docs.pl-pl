@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/18/2019
 ms.author: bwren
-ms.openlocfilehash: cdd1c8348acac37acbe8ad15199f3953bfe95a8e
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: e07a436ee18a216bab569d299e534e729996db19
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68370664"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990155"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Czas pozyskiwania danych dziennika w Azure Monitor
 Azure Monitor to usługa danych o dużej skali, która umożliwia tysiącom klientów wysyłanie terabajtów danych co miesiąc w coraz większej tempie. Często zadawane pytania dotyczące czasu potrzebnego do uzyskania danych dziennika stają się dostępne po ich zebraniu. W tym artykule wyjaśniono różne czynniki wpływające na to opóźnienie.
@@ -90,7 +90,7 @@ Czas pozyskiwania może różnić się w zależności od różnych zasobów w r�
 ### <a name="ingestion-latency-delays"></a>Opóźnienia w czasie przyjmowania
 Można mierzyć opóźnienie określonego rekordu, porównując wynik funkcji [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) z właściwością _TimeGenerated_ . Te dane mogą być używane z różnymi agregacjami, aby dowiedzieć się, jak działa opóźnienie pozyskiwania. Zapoznaj się z informacjami o percentylu czasu pozyskiwania, aby uzyskać szczegółowe informacje dotyczące dużej ilości danych. 
 
-Na przykład następujące zapytanie pokazuje, które komputery mają największy czas pozyskiwania w bieżącym dniu: 
+Na przykład następujące zapytanie pokazuje, które komputery mają największy czas pozyskiwania w ciągu poprzednich 8 godzin: 
 
 ``` Kusto
 Heartbeat
@@ -101,7 +101,7 @@ Heartbeat
 | top 20 by percentile_E2EIngestionLatency_95 desc
 ```
  
-Aby przejść do szczegółów czasu pozyskiwania dla określonego komputera w danym okresie, należy użyć następującego zapytania, które również wizualizuje dane w grafie: 
+Aby przejść do szczegółów czasu pozyskiwania dla określonego komputera w danym okresie, użyj następującego zapytania, które również wizualizuje dane z ostatniego dnia na wykresie: 
 
 ``` Kusto
 Heartbeat 

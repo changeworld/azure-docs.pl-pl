@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: ae8b2bb7cce545ab9c0aa0c9d4d682089cc482ab
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a8265496c475566ec7a87a19eab6d975838e9da4
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827459"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966384"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Działanie kopiowania w usłudze Azure Data Factory
 
@@ -33,7 +33,7 @@ W usłudze Azure Data Factory działanie kopiowania służy do kopiowania danych
 
 Działanie kopiowania jest wykonywane na [środowiska Integration Runtime](concepts-integration-runtime.md). Dla różnych scenariuszy kopiowania danych można wykorzystać różne rodzaje Integration Runtime:
 
-* Jeśli kopiowanie danych między danymi przechowuje oba są dostępne publicznie, działanie kopiowania może upoważnionego przez **Azure Integration Runtime**, co jest bezpieczne, niezawodne i skalowalne i [dostępnie](concepts-integration-runtime.md#integration-runtime-location).
+* W przypadku kopiowania danych między magazynami danych, które są publicznie dostępne za pośrednictwem Internetu z dowolnych adresów IP, działanie Copy może być upoważnione przez **Azure Integration Runtime**, które jest bezpieczne, niezawodne, skalowalne i [globalnie dostępne](concepts-integration-runtime.md#integration-runtime-location).
 * Podczas kopiowania danych z/do magazynów danych działającego lokalnie lub w sieci przy użyciu kontroli dostępu (na przykład, Azure Virtual Network), musisz skonfigurować **może być samodzielnie hostowane zintegrowanego środowiska uruchomieniowego** umożliwiające kopiowanie danych.
 
 Środowisko Integration Runtime musi być skojarzone z każdego źródła i ujścia magazynu danych. Dowiedz się więcej informacji na temat działania kopiowania [Określa, które środowisko IR wybrać](concepts-integration-runtime.md#determining-which-ir-to-use).
@@ -130,7 +130,7 @@ Następujący szablon działania kopiowania zawiera stanowi wyczerpującej listy
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | Właściwość Type działania Copy musi mieć ustawioną wartość: **Kopiuj** | Tak |
+| type | Właściwość Type działania Copy musi mieć ustawioną wartość: **Kopiuj** | Tak |
 | inputs | Określ zestaw danych utworzony wskazującą na źródło danych. Działanie kopiowania obsługuje tylko jednego danych wejściowych. | Yes |
 | outputs | Określ zestaw danych został utworzony, które punkty danych ujścia. Działanie kopiowania obsługuje tylko pojedynczego wyjścia. | Yes |
 | typeProperties | Grupa właściwości, aby skonfigurować działanie kopiowania. | Yes |
@@ -193,7 +193,7 @@ Szczegóły wykonania działania kopiowania i charakterystyki wydajności są r�
 | usedDataIntegrationUnits | Skuteczne jednostek integracji danych podczas kopiowania. | Wartość Int32 |
 | usedParallelCopies | Skuteczne parallelCopies podczas kopiowania. | Wartość Int32 |
 | redirectRowPath | Ścieżka do dziennika pominięto niezgodnych wierszy w magazynie obiektów blob, należy skonfigurować w elemencie "redirectIncompatibleRowSettings". Poniżej przedstawiono przykład. | Tekst (ciąg) |
-| executionDetails | Szczegółowe informacje na temat poszczególnych etapów działania kopiowania przechodzi przez, i odpowiadających jej krokach, czas trwania, konfiguracje używane, itp. Nie zaleca się przeanalizować w tej sekcji, ponieważ mogą ulec zmianie.<br/><br/>Na stronie ADF są również raportowane szczegółowe czasy trwania (w sekundach), w `detailedDurations`których są wykonywane następujące czynności:<br/>- **Czas trwania kolejkowania** (`queuingDuration`): Czas do momentu rozpoczęcia działania kopiowania w środowisku Integration Runtime. Jeśli używasz samoobsługowego środowiska IR, a ta wartość jest duża, Sugeruj, aby sprawdzić pojemność i użycie IR oraz skalować w górę i w dół zgodnie z obciążeniem. <br/>- **Czas trwania skryptu sprzed kopiowania** (`preCopyScriptDuration`): Czas poświęcony na wykonanie skryptu sprzed kopiowania w magazynie danych ujścia. Zastosuj podczas konfigurowania skryptu przed kopiowaniem. <br/>- **Czas do pierwszego bajtu** (`timeToFirstByte`): Czas odebrania pierwszego bajtu przez środowisko Integration Runtime od źródłowego magazynu danych. Zastosuj do źródła nieopartego na plikach. Jeśli ta wartość jest duża, Sugeruj, aby sprawdzić i zoptymalizować zapytanie lub serwer.<br/>- **Czas trwania transferu** (`transferDuration`): Czas, w którym środowisko Integration Runtime transferuje wszystkie dane ze źródła do ujścia po uzyskaniu pierwszego bajtu. | Array |
+| executionDetails | Szczegółowe informacje na temat poszczególnych etapów działania kopiowania przechodzi przez, i odpowiadających jej krokach, czas trwania, konfiguracje używane, itp. Nie zaleca się przeanalizować w tej sekcji, ponieważ mogą ulec zmianie.<br/><br/>Na stronie ADF są również raportowane szczegółowe czasy trwania (w sekundach), w `detailedDurations`których podano poszczególne kroki. Czasy trwania tych kroków są wyłączne i tylko te, które dotyczą danego uruchomienia działania kopiowania, zostaną wyświetlone:<br/>- **Czas trwania kolejkowania** (`queuingDuration`): Czas, który upłynął do momentu rzeczywistego uruchomienia działania kopiowania w środowisku Integration Runtime. Jeśli używasz samoobsługowego środowiska IR, a ta wartość jest duża, Sugeruj, aby sprawdzić pojemność i użycie IR oraz skalować w górę i w dół zgodnie z obciążeniem. <br/>- **Czas trwania skryptu sprzed kopiowania** (`preCopyScriptDuration`): Upłynęło czasu między działaniem kopiowania, rozpoczynającym się od działania funkcji IR i kopiowania, kończący wykonywanie skryptu przed kopiowaniem w magazynie danych ujścia. Zastosuj podczas konfigurowania skryptu przed kopiowaniem. <br/>- **Czas do pierwszego bajtu** (`timeToFirstByte`): Czas, który upłynął między końcem poprzedniego kroku a IR otrzymuje pierwszy bajt z magazynu danych źródłowych. Zastosuj do źródła nieopartego na plikach. Jeśli ta wartość jest duża, Sugeruj, aby sprawdzić i zoptymalizować zapytanie lub serwer.<br/>- **Czas trwania transferu** (`transferDuration`): Czas, który upłynął między końcem poprzedniego kroku a środowiskiem IR transferu wszystkie dane ze źródła do ujścia. | Array |
 | perfRecommendation | Kopiuj wskazówki dotyczące dostrajania wydajności. Zobacz sekcję dotyczącą [wydajności i dostrajania,](#performance-and-tuning) Aby uzyskać szczegółowe informacje. | Array |
 
 ```json

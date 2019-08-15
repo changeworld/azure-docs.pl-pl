@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/05/2019
 ms.author: barclayn
-ms.openlocfilehash: 5e449ae33b19b27c3ea50d982ed84f681a0beb8f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c04d5fc5b455c798ffc8cb4a88948deaea0cf348
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727273"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927925"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Najlepsze rozwiązania dotyczące zabezpieczeń dla obciążeń IaaS na platformie Azure
 W tym artykule opisano najlepsze rozwiązania w zakresie zabezpieczeń dotyczące maszyn wirtualnych i systemów operacyjnych.
@@ -79,7 +79,7 @@ Należy zainstalować ochronę przed złośliwym oprogramowaniem, aby ułatwić 
 
 Oprogramowanie chroniące przed złośliwym oprogramowaniem firmy Microsoft oferuje takie funkcje jak ochrona w czasie rzeczywistym, zaplanowane skanowanie, korygowanie złośliwego oprogramowania, aktualizacje sygnatur, aktualizacje aparatu, raportowanie przykładów i zbieranie zdarzeń wykluczania. W przypadku środowisk, które są hostowane niezależnie od środowiska produkcyjnego, można użyć rozszerzenia chroniącego przed złośliwym kodem, aby chronić maszyny wirtualne i usługi w chmurze.
 
-Możesz zintegrować rozwiązania firmy Microsoft chroniące przed złośliwym oprogramowaniem i partnerzy [Azure Security Center](https://docs.microsoft.com/azure/security-center/) , aby ułatwić wdrażanie i wbudowane wykrywanie (alerty i zdarzenia).
+Możesz zintegrować rozwiązania firmy Microsoft chroniące przed złośliwym oprogramowaniem i partnerzy [Azure Security Center](../../security-center/index.yml) , aby ułatwić wdrażanie i wbudowane wykrywanie (alerty i zdarzenia).
 
 **Najlepsze rozwiązanie**: Zainstaluj rozwiązanie chroniące przed złośliwym kodem, aby chronić przed złośliwym oprogramowaniem.   
 **Szczegóły**: [Zainstaluj rozwiązanie partnerskie firmy Microsoft lub oprogramowanie chroniące przed złośliwym kodem](../../security-center/security-center-install-endpoint-protection.md)
@@ -187,7 +187,7 @@ Monitorowanie i ograniczanie łączności z Internetem bezpośrednio z maszyn wi
 **Najlepsze rozwiązanie**: Ogranicz porty zarządzania (RDP, SSH).   
 **Szczegóły**: [Dostęp z maszyn wirtualnych just-in-Time (JIT)](../../security-center/security-center-just-in-time.md) może służyć do blokowania ruchu przychodzącego do maszyn wirtualnych platformy Azure, co zmniejsza narażenie na ataki, zapewniając łatwy dostęp do łączenia się z maszynami wirtualnymi w razie potrzeby. Po włączeniu JIT Security Center blokuje ruch przychodzący do maszyn wirtualnych platformy Azure przez utworzenie reguły sieciowej grupy zabezpieczeń. Wybierasz porty na maszynie wirtualnej, do której zostanie zablokowany ruch przychodzący. Te porty są kontrolowane przez rozwiązanie JIT.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Zobacz [najlepsze rozwiązania i wzorce dotyczące zabezpieczeń platformy Azure](best-practices-and-patterns.md) , aby uzyskać więcej najlepszych rozwiązań w zakresie zabezpieczeń, które są używane podczas projektowania i wdrażania rozwiązań w chmurze oraz zarządzania nimi przy użyciu platformy Azure.
 
 Dostępne są następujące zasoby umożliwiające dostarczenie bardziej ogólnych informacji na temat zabezpieczeń platformy Azure i powiązanych usług firmy Microsoft:

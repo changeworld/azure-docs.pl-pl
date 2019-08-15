@@ -1,72 +1,72 @@
 ---
 title: Użycie usługi Azure Backup do zastąpienia infrastruktury taśmy
-description: Dowiedz się, jak usługa Azure Backup udostępnia semantykę przypominającej taśm, co pozwala na wykonywanie kopii zapasowych i przywracania danych na platformie Azure
+description: Dowiedz się, jak Azure Backup zapewnia semantykę podobną do taśmy, która umożliwia tworzenie kopii zapasowych i przywracanie danych na platformie Azure
 author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 04/30/2017
 ms.author: dacurwin
-ms.openlocfilehash: d768f0fae9487a555f6ace12303f8a4bd7cb8bd1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3be3a2e3355793a8d0b4fcaf0e7f62668f78f0c8
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65146020"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954874"
 ---
-# <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>Przenieś swoje długoterminowego z taśmy do chmury platformy Azure
-Klienci platformy Azure i kopii zapasowych programu System Center Data Protection Manager wykonywać następujące czynności:
+# <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>Przenoszenie długoterminowego magazynu z taśmy do chmury platformy Azure
+Klienci Azure Backup i System Center Data Protection Manager mogą:
 
 * Utwórz kopię zapasową danych w harmonogramach, które najlepiej odpowiadają potrzebom organizacji.
-* Zachowaj dane kopii zapasowej przez dłuższy czas
-* Należy ich długoterminowego przechowywania danych wymagających (zamiast taśm) platformy Azure.
+* Przechowuj dane kopii zapasowej przez dłuższe okresy
+* Ustaw platformę Azure jako część długoterminowych potrzeb przechowywania (zamiast taśm).
 
-W tym artykule wyjaśniono, jak klienci można włączyć zasady tworzenia kopii zapasowej i przechowywania. Klienci, którzy taśmy były używane w celu ich długo-długoterminową zachowywania musi już zaawansowane i możliwego do użycia zamiast dzięki dostępności tej funkcji. Ta funkcja jest włączona w najnowszej wersji usługi Azure Backup (który jest dostępny [tutaj](https://aka.ms/azurebackup_agent)). System Center DPM klienci muszą przeprowadzić aktualizację do, co najmniej programu DPM 2012 R2 pakiet zbiorczy aktualizacji 5 przed rozpoczęciem korzystania z programu DPM przy użyciu usługi Azure Backup.
+W tym artykule wyjaśniono, jak klienci mogą włączyć zasady tworzenia kopii zapasowych i przechowywania danych. Klienci, którzy wykorzystują taśmy do rozwiązywania długoterminowych potrzeb związanych z przechowywaniem, mają teraz zaawansowaną i wydajną alternatywę w zakresie dostępności tej funkcji. Ta funkcja jest włączona w najnowszej wersji Azure Backup (która jest dostępna w [tym miejscu](https://aka.ms/azurebackup_agent)). Przed rozpoczęciem korzystania z programu DPM z usługą Azure Backup klienci programu System Center DPM muszą zaktualizować program do wersji co najmniej programu DPM 2012 R2 UR5.
 
 ## <a name="what-is-the-backup-schedule"></a>Co to jest harmonogram tworzenia kopii zapasowych?
-Harmonogram tworzenia kopii zapasowych wskazuje częstotliwość operacji tworzenia kopii zapasowej. Na przykład ustawienia na poniższym ekranie wskazują podjęcie kopie zapasowe codziennie o godzinie 18: 00 i o północy.
+Harmonogram tworzenia kopii zapasowych wskazuje częstotliwość operacji tworzenia kopii zapasowej. Na przykład ustawienia na poniższym ekranie wskazują, że kopie zapasowe są wykonywane codziennie o godzinie 18:00 i północy.
 
 ![Dzienny harmonogram](./media/backup-azure-backup-cloud-as-tape/dailybackupschedule.png)
 
-Klientów można także zaplanować cotygodniowej kopii zapasowej. Na przykład ustawienia na poniższym ekranie wskazują kopie zapasowe podjęcie każdej alternatywny niedziela & środa 9:30:00 i 1:00:00.
+Klienci mogą również zaplanować cotygodniowe wykonywanie kopii zapasowych. Na przykład ustawienia na poniższym ekranie wskazują, że kopie zapasowe są pobierane dla każdej alternatywnej niedzieli & środę o godzinie 9:10:30 i 1:10:00.
 
 ![Harmonogram tygodniowy](./media/backup-azure-backup-cloud-as-tape/weeklybackupschedule.png)
 
 ## <a name="what-is-the-retention-policy"></a>Co to są zasady przechowywania?
-Zasady przechowywania określają czas trwania, dla której muszą być przechowywane kopii zapasowej. Zamiast określać "wspólne zasady" dla wszystkich punktów kopii zapasowej, klienci mogą określać różne zasady przechowywania na podstawie, gdy jest wykonywana kopia zapasowa. Na przykład punktu kopii zapasowej być pobierane raz dziennie, która służy jako punkt odzyskiwania operacyjnego, są zachowywane przez 90 dni. Punktu kopii zapasowej, wykonywane na końcu każdego kwartału w celach związanych z inspekcją są zachowywane przez dłuższy czas.
+Zasady przechowywania określają czas przechowywania kopii zapasowej. Zamiast określania "zasad płaskich" dla wszystkich punktów kopii zapasowych, klienci mogą określić różne zasady przechowywania na podstawie czasu wykonywania kopii zapasowej. Na przykład punkt kopii zapasowej dziennie, który służy jako punkt odzyskiwania, jest zachowywany przez 90 dni. Punkt kopii zapasowej wykonany na końcu każdego kwartału na potrzeby inspekcji jest zachowywany przez dłuższy czas.
 
 ![Zasady przechowywania](./media/backup-azure-backup-cloud-as-tape/retentionpolicy.png)
 
-Łączna liczba "punkty przechowywania" określone w tej zasadzie to 90 (punkty dzienny) + 40 (jeden kwartał przez okres 10 lat) = 130.
+Łączna liczba "punktów przechowywania" określonych w tych zasadach to 90 (dzienne punkty) + 40 (jeden kwartał przez 10 lat) = 130.
 
-## <a name="example--putting-both-together"></a>Przykład — zarówno zestawiania
+## <a name="example--putting-both-together"></a>Przykład — umieszczenie obu jednocześnie
 ![Przykładowy ekran](./media/backup-azure-backup-cloud-as-tape/samplescreen.png)
 
-1. **Zasady przechowywania codziennych**: Wykonywane codzienne kopie zapasowe są przechowywane przez siedem dni.
-2. **Sady przechowywania**: Kopie zapasowe wykonywane codziennie o północy i 18: 00 Sobota są zachowywane przez 4 tygodnie
-3. **Zasady przechowywania miesięczne**: Kopii zapasowych wykonanych o północy i 18: 00 w sobotę ostatniego dnia każdego miesiąca są zachowywane przez 12 miesięcy
-4. **Roczne zasady przechowywania**: Kopii zapasowych wykonanych o północy w ostatnią sobotę co marca są zachowywane przez okres 10 lat
+1. **Zasady dziennego przechowywania**: Kopie zapasowe wykonywane codziennie są przechowywane przez siedem dni.
+2. **Zasady przechowywania tygodniowego**: Kopie zapasowe wykonywane codziennie o północy i 18:00 soboty są zachowywane przez cztery tygodnie
+3. **Zasady przechowywania miesięcznie**: Kopie zapasowe wykonane o północy i 18:00 w ostatniej sobotę każdego miesiąca są zachowywane przez 12 miesięcy
+4. **Zasady przechowywania rocznego**: Kopie zapasowe wykonane o północy w ostatniej sobotę każdej marca są zachowywane przez 10 lat
 
-Całkowita liczba "punkty przechowywania" (punkty, w których klient może przywrócić dane) na powyższym diagramie jest obliczana w następujący sposób:
+Całkowita liczba "punktów przechowywania" (punkty, z których klient może przywrócić dane) na powyższym diagramie jest obliczana w następujący sposób:
 
-* dwa punkty dziennie w przypadku siedmiu dni = 14 punktów odzyskiwania
-* dwa punkty tygodniowo cztery tygodnie = 8 punktów odzyskiwania
-* dwa punkty miesięcznie przez 12 miesięcy = 24 punktów odzyskiwania
-* wskazuje jeden punkt rocznie na 10 lat = 10 odzyskiwania
+* dwa punkty na dzień przez siedem dni = 14 punktów odzyskiwania
+* dwa punkty na tydzień przez cztery tygodnie = 8 punktów odzyskiwania
+* dwa punkty miesięcznie przez 12 miesięcy = 24 punkty odzyskiwania
+* jeden punkt na rok na 10 lat = 10 punktów odzyskiwania
 
-Całkowita liczba punktów odzyskiwania jest 56.
+Łączna liczba punktów odzyskiwania to 56.
 
 > [!NOTE]
-> Za pomocą usługi Azure Backup można utworzyć maksymalnie 9999 punktów odzyskiwania na chronione wystąpienie. Chronione wystąpienie to komputer, serwer (fizyczny lub wirtualny) lub obciążenia, który tworzy kopie zapasowe na platformie Azure.
+> Za pomocą Azure Backup można utworzyć maksymalnie 9999 punktów odzyskiwania dla każdego chronionego wystąpienia. Chronione wystąpienie jest komputerem, serwerem (fizycznym lub wirtualnym) lub obciążeniem, które tworzy kopię zapasową na platformie Azure.
 >
 
 ## <a name="advanced-configuration"></a>Konfiguracja zaawansowana
-Klikając **Modyfikuj** na poprzednim ekranie klienci mają bardziej elastyczną określenie harmonogramu przechowywania.
+Klikając przycisk **Modyfikuj** na poprzednim ekranie, klienci mają większą elastyczność w określaniu harmonogramów przechowywania.
 
 ![Modyfikuj](./media/backup-azure-backup-cloud-as-tape/modify.png)
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać więcej informacji na temat usługi Azure Backup zobacz:
+Aby uzyskać więcej informacji na temat Azure Backup, zobacz:
 
 * [Wprowadzenie do usługi Azure Backup](backup-introduction-to-azure-backup.md)
-* [Wypróbuj usługę Azure Backup](backup-try-azure-backup-in-10-mins.md)
+* [Wypróbuj Azure Backup](backup-try-azure-backup-in-10-mins.md)

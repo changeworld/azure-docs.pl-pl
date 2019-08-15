@@ -1,6 +1,6 @@
 ---
-title: Projektowanie pod kątem wysokiej dostępności przy użyciu usługi Azure ExpressRoute | Dokumentacja firmy Microsoft
-description: Ta strona zawiera architektury zalecenia dotyczące wysokiej dostępności, podczas korzystania z usługi Azure ExpressRoute.
+title: Projektowanie pod kątem wysokiej dostępności dzięki usłudze Azure ExpressRoute | Microsoft Docs
+description: Ta strona zawiera zalecenia dotyczące architektury w celu zapewnienia wysokiej dostępności podczas korzystania z usługi Azure ExpressRoute.
 documentationcenter: na
 services: networking
 author: rambk
@@ -11,85 +11,85 @@ ms.workload: infrastructure-services
 ms.date: 06/28/2019
 ms.author: rambala
 ms.openlocfilehash: 4984b30daf6170873cad9472bfed2d879af57efe
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67466645"
 ---
-# <a name="designing-for-high-availability-with-expressroute"></a>Projektowanie pod kątem wysokiej dostępności przy użyciu usługi ExpressRoute
+# <a name="designing-for-high-availability-with-expressroute"></a>Projektowanie pod kątem wysokiej dostępności dzięki ExpressRoute
 
-Usługa ExpressRoute jest przeznaczona dla wysokiej dostępności zapewnić operatora połączenie sieci prywatnej klasy korporacyjnej z zasobami firmy Microsoft. Innymi słowy nie ma żadnego pojedynczego punktu awarii w ścieżce usługi ExpressRoute w sieci firmy Microsoft. Aby zmaksymalizować dostępność, klienta i segment dostawcy usługi obwód usługi ExpressRoute powinien również być zaprojektowana z myślą o wysokiej dostępności. W tym artykule, najpierw Przyjrzyjmy zapozna sieci architektury informacje dotyczące tworzenia niezawodnej łączności przy użyciu usługi ExpressRoute, a następnie Przyjrzyjmy się dostosowawczych funkcje, które ułatwiają poprawić wysoką dostępność obwód usługi ExpressRoute.
+ExpressRoute jest przeznaczona do wysokiej dostępności w celu zapewnienia poufności łączności sieci prywatnej z zasobami firmy Microsoft. Innymi słowy, w ścieżce ExpressRoute w sieci firmy Microsoft nie ma single point of failure. Aby zmaksymalizować dostępność, segment klienta i usługodawcy obwodu usługi ExpressRoute powinien być również zaprojektowany w celu zapewnienia wysokiej dostępności. W tym artykule najpierw Przyjrzyjmy się zagadnieniom dotyczącym architektury sieci w przypadku tworzenia niezawodnej łączności sieciowej przy użyciu ExpressRoute, a następnie Przyjrzyjmy się funkcjom dostrajania, które pomogą Ci w zwiększeniu wysokiej dostępności obwodu usługi ExpressRoute.
 
 
 ## <a name="architecture-considerations"></a>Zagadnienia dotyczące architektury
 
-Na poniższym rysunku przedstawiono zalecany sposób połączyć się przy użyciu obwodu usługi ExpressRoute do maksymalizacji dostępności obwodu usługi ExpressRoute.
+Na poniższej ilustracji przedstawiono zalecany sposób nawiązywania połączenia przy użyciu obwodu usługi ExpressRoute w celu zmaksymalizowania dostępności obwodu usługi ExpressRoute.
 
  [![1]][1]
 
-Wysoką dostępność jest niezbędne do obsługi nadmiarowości obwodu usługi ExpressRoute w całej sieci end-to-end. Innymi słowy trzeba utrzymywać nadmiarowości w sieci lokalnej, a nie może naruszyć bezpieczeństwo nadmiarowość w ramach sieci dostawcy usług. Utrzymywanie nadmiarowości co najmniej oznacza uniknięcia pojedynczego punktu awarii sieci. Istnienie nadmiarowe zasilanie i chłodzenie sieci, z którego urządzenia będzie dalsze poprawić wysoką dostępność.
+Aby zapewnić wysoką dostępność, niezbędne jest zachowanie nadmiarowości obwodu usługi ExpressRoute w całej sieci. Innymi słowy, konieczna jest obsługa nadmiarowości w sieci lokalnej i nie należy naruszać nadmiarowości w sieci dostawcy usług. Utrzymywanie nadmiarowości na minimalnym poziomie oznacza uniknięcie pojedynczych punktów awarii sieci. Zapewnienie nadmiarowej mocy i chłodzenia urządzeń sieciowych zwiększy wysoką dostępność.
 
-### <a name="first-mile-physical-layer-design-considerations"></a>Pierwszy zagadnienia dotyczące projektowania w warstwie fizycznej ogniw w łańcuchu
+### <a name="first-mile-physical-layer-design-considerations"></a>Zagadnienia dotyczące projektowania warstwy fizycznej pierwszego przebiegu
 
- Jeżeli klient zakończy się zarówno połączeń podstawowych i pomocniczych obwodów usługi ExpressRoute na tych samych urządzeń lokalnych klienta (CPE), masz naruszenie wysokiej dostępności w ramach sieci lokalnej. Ponadto jeśli konfigurujesz zarówno podstawowego i pomocniczego połączeń za pomocą tego samego portu CPE (albo zapobieżenia dwóch połączeń w ramach różnych interfejsy podrzędne scalania dwóch połączeń w ramach sieci partnerów), wymuszono partnera do naruszenia bezpieczeństwa, wysokiej dostępności w ich segmencie sieci. To naruszenie zilustrowano na poniższym rysunku.
+ W przypadku przerwania zarówno podstawowego, jak i dodatkowego połączenia obwodów usługi ExpressRoute na tym samym urządzeniu lokalnym klienta (CPE), nastąpi naruszenie wysokiej dostępności w sieci lokalnej. Ponadto w przypadku skonfigurowania zarówno połączenia podstawowego, jak i pomocniczego za pośrednictwem tego samego portu CPE (przez zakończenie dwóch połączeń w ramach różnych podinterfejsów lub przez scalenie dwóch połączeń w ramach sieci partnerskiej) wymuszenie partnera Aby naruszyć wysoką dostępność w segmencie sieci. Ten kompromis został przedstawiony na poniższej ilustracji.
 
 [![2]][2]
 
-Z drugiej strony Jeżeli klient zakończy podstawowej i dodatkowej połączeń obwodów usługi ExpressRoute w różnych lokalizacjach geograficznych, następnie użytkownik może być utraty wydajności sieci połączenia. Jeśli ruch jest aktywnie równoważone między podstawowym i dodatkowych połączeń, które kończą się w różnych lokalizacjach geograficznych, potencjalnych istotne różnice w opóźnienie sieci między tych dwóch ścieżek mogłoby spowodować panującymi w sieci wydajność. 
+Z drugiej strony, jeśli zakończy się podstawowe i pomocnicze połączenia obwodów usługi ExpressRoute w różnych lokalizacjach geograficznych, nastąpi naruszenie wydajności sieci łączności. Jeśli ruch jest aktywnie zrównoważony przez podstawowy i pomocnicze połączenia, które kończą się w różnych lokalizacjach geograficznych, potencjalna znaczna różnica opóźnienia sieci między dwiema ścieżkami spowoduje nieoptymalną sieć. skuteczności. 
 
-Zagadnienia dotyczące projektowania magazynu geograficznie nadmiarowego, można zobaczyć [projektowanie pod kątem odzyskiwania po awarii dzięki usłudze ExpressRoute][DR].
+Zagadnienia dotyczące projektowania geograficznie nadmiarowego znajdują się w temacie [projektowanie na potrzeby odzyskiwania po awarii za pomocą ExpressRoute][DR].
 
-### <a name="active-active-connections"></a>Połączeń typu aktywne aktywne
+### <a name="active-active-connections"></a>Połączenia aktywne-aktywne
 
-Sieć firmy Microsoft jest skonfigurowany do obsługi połączeń podstawowych i pomocniczych obwodów usługi ExpressRoute w trybie aktywny aktywny. Jednak za pośrednictwem usługi anonsy tras, możesz wymusić nadmiarowe połączenia obwodu usługi ExpressRoute do pracy w trybie aktywny / pasywny. Anonsuje bardziej specyficzne tras i protokołu BGP, dołączania ścieżki AS są typowe metody używane do tworzenia ścieżek preferowany nad innymi.
+Sieć firmy Microsoft jest skonfigurowana do obsługi połączeń podstawowych i pomocniczych obwodów usługi ExpressRoute w trybie aktywny-aktywny. Jednak za pomocą anonsów tras można wymusić, aby nadmiarowe połączenia obwodu usługi ExpressRoute działały w trybie aktywny-pasywny. Anonsowanie bardziej konkretnych tras i protokołu BGP jako ścieżki w oczekiwany sposób są typowymi technikami używanymi do udostępniania jednej ścieżki.
 
-Aby poprawić wysoką dostępność, zaleca się działać połączenia obwodu usługi ExpressRoute w trybie aktywny aktywny. Jeśli wybierzesz opcję połączenia działają w trybie aktywny / aktywny, sieci firmy Microsoft zostaną załadowane saldo ruch przez połączenia na podstawie przepływów.
+Aby zwiększyć wysoką dostępność, zaleca się przeprowadzenie obu połączeń obwodu usługi ExpressRoute w trybie aktywny-aktywny. Jeśli zezwolisz na połączenia działające w trybie aktywny-aktywny, Sieć Microsoft Network będzie równoważyć obciążenie ruchu przez połączenia na podstawie poszczególnych przepływów.
 
-Uruchamianie połączeń podstawowych i pomocniczych obwodu usługi ExpressRoute w trybie aktywny / pasywny twarzy ryzyko połączenia kończy się niepowodzeniem po awarii w ścieżce aktywnej. Typowe przyczyny niepowodzenia przełączania za pośrednictwem są braku zarządzania aktywnego połączenia pasywne i pasywnych połączeń anonsowanie tras starych.
+Uruchamianie podstawowych i pomocniczych połączeń obwodu usługi ExpressRoute w trybie aktywny-pasywny jest ryzykowne w przypadku niepowodzenia połączeń w aktywnej ścieżce. Typowymi przyczynami niepowodzenia przełączania jest brak aktywnego zarządzania połączeniem pasywnym, a połączenie pasywne anonsuje stare trasy.
 
-Alternatywnie wynikiem działania połączenia podstawowego i pomocniczego obwodu usługi ExpressRoute w trybie aktywny aktywny tylko około połowie przepływów, kończy się niepowodzeniem i wprowadzenie przekierowane, zgodnie z błędem połączenia usługi ExpressRoute. W związku z tym tryb aktywny aktywny będzie znacznie zwiększyć czas do odzyskania (MTTR).
+Alternatywnie, uruchamianie podstawowych i pomocniczych połączeń obwodu usługi ExpressRoute w trybie aktywny-aktywny powoduje, że tylko połowa przepływów kończy się niepowodzeniem i przekierowania następuje po błędzie połączenia ExpressRoute. W ten sposób Tryb aktywny-aktywny znacznie pomaga zwiększyć średni czas odzyskiwania (MTTR).
 
-### <a name="nat-for-microsoft-peering"></a>Translator adresów Sieciowych dla komunikacji równorzędnej firmy Microsoft 
+### <a name="nat-for-microsoft-peering"></a>Translator adresów sieciowych dla komunikacji równorzędnej firmy Microsoft 
 
-Komunikacja równorzędna firmy Microsoft jest przeznaczona do komunikacji między publicznych punktów końcowych. Tak często lokalne punkty końcowe prywatne są sieci translacji adresów (NATed) z publicznym adresem IP na klientów lub partner network przed komunikują się za pośrednictwem komunikacji równorzędnej firmy Microsoft. Przy założeniu, że używasz połączeń podstawowych i pomocniczych w trybie aktywny / aktywny, gdzie i jak możesz translatora adresów Sieciowych ma wpływ na sposób szybkiego odzyskiwania po awarii w jednym z połączeń usługi ExpressRoute. Dwie różne opcje translatora adresów Sieciowych są przedstawione na poniższym rysunku:
+Komunikacja równorzędna firmy Microsoft jest przeznaczona do komunikacji między publicznymi punktami końcowymi. Często lokalne, prywatne punkty końcowe to adresy sieci tłumaczone (z identyfikatorem firmy) z publicznym adresem IP w sieci klienta lub partnera, zanim będą komunikować się za pośrednictwem komunikacji równorzędnej firmy Microsoft. Zakładając, że używane są zarówno podstawowe, jak i pomocnicze połączenia w trybie aktywny-aktywny, gdzie i w jaki sposób translator adresów sieciowych ma wpływ na sposób szybkiego odzyskiwania po awarii w jednym z połączeń ExpressRoute. Dwie różne opcje NAT przedstawiono na poniższej ilustracji:
 
 [![3]][3]
 
-W przypadku opcji 1 translatora adresów Sieciowych są stosowane po rozdzielenie ruchu między głównych i dodatkowych połączeń usługi ExpressRoute. Do spełnienia wymagań stanowych translatora adresów Sieciowych, niezależnie od pule translatora adresów Sieciowych są używane między podstawowego i pomocniczego urządzenia tak, aby ruch powrotny może pojawić się na tym samym urządzeniu usługi edge za pośrednictwem którego egressed przepływ.
+W opcji 1 jest stosowane translator adresów sieciowych po rozdzieleniu ruchu między podstawowymi i pomocniczymi połączeniami ExpressRoute. Aby spełnić wymagania stanowe dotyczące translatora adresów sieciowych, na urządzeniach podstawowych i pomocniczych są używane niezależne pule NAT, dzięki czemu ruch powrotny dociera do tego samego urządzenia brzegowego, za pomocą którego przepływ egressed.
 
-W przypadku opcji 2 wspólnej puli translatora adresów Sieciowych jest używana przed rozdzielenie ruchu między głównych i dodatkowych połączeń usługi ExpressRoute. Należy wprowadzić rozróżnienia, wspólnej puli translatora adresów Sieciowych przed dzielenia ruch oznacza wprowadzenie pojedynczego punktu awarii, w tym samym naruszania wysokiej dostępności.
+W opcji 2 jest używana wspólna Pula NAT przed podziałem ruchu między podstawowe i pomocnicze połączenia ExpressRoute. Ważne jest, aby rozróżniać, że wspólna Pula NAT przed podziałem ruchu nie oznacza wprowadzenia pojedynczego punktu awarii w celu uzyskania wysokiego poziomu dostępności.
 
-Za pomocą opcji 1, po awarii połączenia usługi ExpressRoute uzyskanie dostępu do odpowiedniej puli translatora adresów Sieciowych jest uszkodzona. W związku z tym, wszystkie przepływy przerwany, konieczne będzie nawiązane ponownie przez protokół TCP lub warstwie aplikacji po odpowiedni limit czasu okna. Jeśli albo pule translatora adresów Sieciowych są używane do serwera sieci Web dowolnego z serwerów lokalnych i były odpowiednie połączenie nie powiedzie się, serwerów lokalnych nie można nawiązać połączenia z platformy Azure do czasu naprawienia połączenia.
+W przypadku opcji 1, po błędzie połączenia ExpressRoute, możliwość osiągnięcia odpowiedniej puli translatora adresów sieciowych zostanie przerwana. W związku z tym wszystkie uszkodzone przepływy muszą być ponownie nawiązane przez TCP lub warstwę aplikacji po odpowiednim limicie czasu okna. Jeśli jedna z pul NAT jest używana do frontonu dowolnego serwera lokalnego i jeśli nastąpi awaria połączenia, serwery lokalne nie są dostępne na platformie Azure, dopóki nie zostanie naprawiona łączność.
 
-Przy użyciu opcji 2 translatora adresów Sieciowych jest dostępny nawet po awarii połączenia podstawowy lub pomocniczy. W związku z tym warstwy sieciowej, sama można przekierować pakietów i pomocy szybsze odzyskiwanie po awarii. 
+W przypadku opcji 2 translator adresów sieciowych jest dostępny nawet po awarii połączenia podstawowego lub pomocniczego. W związku z tym warstwa sieci może przekierować pakiety i przyspieszyć odzyskiwanie po awarii. 
 
 > [!NOTE]
-> Jeśli korzystasz z translatora adresów Sieciowych, opcja 1 (niezależnie od pule translatora adresów Sieciowych dla połączeń usługi ExpressRoute podstawowych i pomocniczych) i mapują port adresu IP z jednej puli translatora adresów Sieciowych na serwerze lokalnym, serwer nie będzie dostępny za pośrednictwem usługi ExpressRoute circuit, gdy odpowiedni połączenie nie powiodło się.
+> W przypadku używania opcji translatora adresów sieciowych (niezależnych pul NAT dla podstawowych i pomocniczych połączeń ExpressRoute) i mapowania portu adresu IP z jednej puli translatora adresów sieciowych na serwer lokalny, serwer nie będzie dostępny za pośrednictwem obwodu usługi ExpressRoute, gdy odpowiadające im połączenie nie powiodło się.
 > 
 
-## <a name="fine-tuning-features-for-private-peering"></a>Dostrajanie funkcje dla prywatnej komunikacji równorzędnej
+## <a name="fine-tuning-features-for-private-peering"></a>Funkcje dostrajania dla prywatnej komunikacji równorzędnej
 
-W tej sekcji Powiadom nas przeglądu opcjonalne (w zależności od wdrożenie systemu Azure i ile poufna jest do MTTR) funkcje Pomóż nam w usprawnianiu wysokiej dostępności obwód usługi ExpressRoute. Ściślej mówiąc Omówmy uwzględniających strefy wdrażanie bramy sieci wirtualnej usługi ExpressRoute i dwukierunkowe przesyłanie dalej wykrywania (BFD).
+W tej sekcji poinformuj nas o opcjonalnych (w zależności od wdrożenia platformy Azure oraz o tym, jak poufne dane są MTTR), które ułatwiają zwiększenie wysokiej dostępności obwodu usługi ExpressRoute. Zapoznaj się z tym tematem, aby zapoznać się z tematem Wdrażanie bram sieci wirtualnej ExpressRoute oraz funkcji wykrywania dwukierunkowego przekazywania (BFD).
 
-### <a name="availability-zone-aware-expressroute-virtual-network-gateways"></a>Strefa dostępności pamiętać bramy sieci wirtualnej usługi ExpressRoute
+### <a name="availability-zone-aware-expressroute-virtual-network-gateways"></a>ExpressRoute bramy sieci wirtualnej z obsługą stref dostępności
 
-Strefa dostępności w regionie świadczenia usługi Azure jest kombinacją domeny błędów i domeny aktualizacji. Jeśli postanowisz strefowo nadmiarowe wdrożenia infrastruktury IaaS platformy Azure można również skonfigurować bramy sieci wirtualnej strefowo nadmiarowe, kończące prywatnej komunikacji równorzędnej usługi ExpressRoute. Aby dowiedzieć się więcej, zobacz [o bramach sieci wirtualnej strefowo nadmiarowy w strefach dostępności platformy Azure][zone redundant vgw]. To configure zone-redundant virtual network gateway, see [Create a zone-redundant virtual network gateway in Azure Availability Zones][conf zone redundant vgw].
+Strefa dostępności w regionie świadczenia usługi Azure jest kombinacją domeny błędów i domeny aktualizacji. W przypadku wybrania dla Strefowo nadmiarowego wdrożenia platformy Azure IaaS można również skonfigurować strefowo nadmiarowe bramy sieci wirtualnej, które kończą ExpressRoute prywatnej komunikacji równorzędnej. Aby dowiedzieć się więcej, zobacz [about Zone-nadmiarowe bramy sieci wirtualnej w strefy dostępności platformy Azure][zone redundant vgw]. Aby skonfigurować strefowo nadmiarową bramę sieci wirtualnej, zobacz [Tworzenie strefy nadmiarowej bramy sieci wirtualnej w strefy dostępności platformy Azure][conf zone redundant vgw].
 
-### <a name="improving-failure-detection-time"></a>Zwiększanie czasu wykrycia awarii
+### <a name="improving-failure-detection-time"></a>Poprawianie czasu wykrywania awarii
 
-Usługa ExpressRoute obsługuje BFD za pośrednictwem prywatnej komunikacji równorzędnej. BFD redukuje czas wykrycia awarii za pośrednictwem sieci warstwy 2 między przeglądarki Microsoft Edge Enterprise (Msee) i jego sąsiadami protokołu BGP stronie lokalnych z około 3 minutach (ustawienie domyślne) do niecałej sekundy. Czas wykrycia awarii szybkie pomaga hastening odzyskiwanie po awarii. Aby dowiedzieć się więcej, zobacz [skonfigurować BFD za pośrednictwem usługi ExpressRoute][BFD].
+ExpressRoute obsługuje BFD za pośrednictwem prywatnej komunikacji równorzędnej. BFD zmniejsza czas wykrywania awarii w sieci warstwy 2 między Microsoft Enterprise Edge (MSEE) i ich sąsiadów BGP w miejscu lokalnym od około 3 minut (wartość domyślna) do mniej niż sekundy. Czas wykrywania krótkich błędów ułatwia hastening odzyskiwania po awarii. Aby dowiedzieć się więcej, zobacz [Konfigurowanie BFD na ExpressRoute][BFD].
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule omówiono sposób projektowania w celu zapewnienia wysokiej dostępności połączenia obwodu usługi ExpressRoute. Punkt komunikacji równorzędnej obwodu usługi ExpressRoute jest przypięta do lokalizacji geograficznej i dlatego może mieć wpływ poważnej awarii, która ma wpływ na cały lokalizacji. 
+W tym artykule omówiono sposób projektowania pod kątem wysokiej dostępności łączności obwodu usługi ExpressRoute. Punkt komunikacji równorzędnej obwodu ExpressRoute jest przypięty do lokalizacji geograficznej, w związku z czym może mieć wpływ Katastrofalny błąd, który ma wpływ na całą lokalizację. 
 
-Zagadnienia dotyczące tworzenia połączenia sieciowego magazynu geograficznie nadmiarowego sieci szkieletowej firmy Microsoft, która może wytrzymać katastrofalnych awarii, które mają wpływ na cały region, można zobaczyć [projektowanie pod kątem odzyskiwania po awarii przy użyciu prywatnegokomunikacjirównorzędnejusługiExpressRoute][DR].
+Aby poznać zagadnienia dotyczące projektowania w celu utworzenia geograficznie nadmiarowej łączności sieciowej z siecią szkieletową firmy Microsoft, która może wytrzymywać błędy krytyczne, które mają wpływ na cały region, zobacz [projektowanie pod kątem odzyskiwania po awarii za pomocą prywatnej komunikacji równorzędnej][DR]
 
 <!--Image References-->
-[1]: ./media/designing-for-high-availability-with-expressroute/exr-reco.png "zalecany sposób na połączenie przy użyciu usługi ExpressRoute"
-[2]: ./media/designing-for-high-availability-with-expressroute/suboptimal-lastmile-connectivity.png "Suboptimal ostatnich ogniw w łańcuchu łączności"
-[3]: ./media/designing-for-high-availability-with-expressroute/nat-options.png "opcji translatora adresów Sieciowych"
+[1]: ./media/designing-for-high-availability-with-expressroute/exr-reco.png  "Zalecany sposób nawiązywania połączenia przy użyciu ExpressRoute"
+[2]: ./media/designing-for-high-availability-with-expressroute/suboptimal-lastmile-connectivity.png  "Nieoptymalna łączność z ostatnim kilometrem"
+[3]: ./media/designing-for-high-availability-with-expressroute/nat-options.png  "Opcje NAT"
 
 
 <!--Link References-->

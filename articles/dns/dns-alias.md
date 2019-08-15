@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 08/09/2019
 ms.author: victorh
-ms.openlocfilehash: 89b50cff2d46f8c92c09653aeaac49551c97e9c6
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: 9a3cdb846921c2d73dd2cca5d679663c1ba9e192
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314470"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946900"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Omówienie rekordów aliasów Azure DNS
 
@@ -29,7 +29,7 @@ Zestaw rekordów aliasu jest obsługiwany dla następujących typów rekordów w
 
 ## <a name="capabilities"></a>Możliwości
 
-- **Wskaż zasób publicznego adresu IP z zestawu rekordów A/AAAA systemu DNS.** Można utworzyć zestaw rekordów A/AAAA i ustawić dla niego rekord aliasu, aby wskazywał na zasób publicznego adresu IP. Zestaw rekordów DNS zmienia się automatycznie w przypadku zmiany lub usunięcia publicznego adresu IP. Zawieszonego rekordy DNS wskazujące na niepoprawne adresy IP.
+- **Wskaż zasób publicznego adresu IP z zestawu rekordów A/AAAA systemu DNS.** Można utworzyć zestaw rekordów A/AAAA i ustawić dla niego rekord aliasu, aby wskazywał na publiczny zasób IP (Standard lub Basic). Zestaw rekordów DNS zmienia się automatycznie w przypadku zmiany lub usunięcia publicznego adresu IP. Zawieszonego rekordy DNS wskazujące na niepoprawne adresy IP.
 
    Istnieje bieżący limit 20 rekordów aliasów na zasób.
 

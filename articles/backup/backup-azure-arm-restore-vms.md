@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: 126e33d4bedb56eb479361f16c02e7e167e49392
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 41e01531535fe41fa894f8de3181a56885ab3bcf
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736690"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955069"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Przywracanie danych maszyny wirtualnej platformy Azure w Azure Portal
 
@@ -45,8 +45,8 @@ Niektóre szczegóły dotyczące kont magazynu:
 - **Utwórz maszynę wirtualną**: Gdy tworzysz nową maszynę wirtualną, maszyna wirtualna zostanie umieszczona na określonym koncie magazynu.
 - **Przywróć dysk**: Po przywróceniu dysku dysk jest kopiowany na określone konto magazynu. Zadanie przywracania generuje szablon, który można pobrać i użyć do określenia niestandardowych ustawień maszyny wirtualnej. Ten szablon zostanie umieszczony na określonym koncie magazynu.
 - **Zastąp dysk**: Podczas zastępowania dysku na istniejącej maszynie wirtualnej, Azure Backup wykonuje migawkę istniejącej maszyny wirtualnej przed zastąpieniem dysku. Migawka jest przechowywana w lokalizacji przemieszczania (konto magazynu), którą określisz. To konto magazynu jest używane do tymczasowego przechowywania migawki podczas procesu przywracania i zalecamy utworzenie nowego konta w tym celu, które można łatwo usunąć.
-- **Lokalizacja konta magazynu** : Konto magazynu musi znajdować się w tym samym regionie co magazyn. Wyświetlane są tylko te konta. Jeśli w lokalizacji nie ma żadnych kont magazynu, należy ją utworzyć.
-- **Typ magazynu** : Magazyn obiektów BLOB nie jest obsługiwany.
+- **Lokalizacja konta magazynu**: Konto magazynu musi znajdować się w tym samym regionie co magazyn. Wyświetlane są tylko te konta. Jeśli w lokalizacji nie ma żadnych kont magazynu, należy ją utworzyć.
+- **Typ magazynu**: Magazyn obiektów BLOB nie jest obsługiwany.
 - **Nadmiarowość magazynu**: Magazyn strefowo nadmiarowy (ZRS) nie jest obsługiwany. Informacje o replikacji i nadmiarowości dla konta są wyświetlane w nawiasach po nazwie konta. 
 - Usługa **Premium Storage**:
     - Podczas przywracania maszyn wirtualnych z systemem innym niż Premium konta magazynu w warstwie Premium nie są obsługiwane.
@@ -55,7 +55,7 @@ Niektóre szczegóły dotyczące kont magazynu:
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
-Aby przywrócić maszynę wirtualną (Utwórz nową maszynę wirtualną), upewnij się, że masz poprawne [uprawnienia](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) kontroli dostępu opartej na ROLACH (RBAC) dla operacji przywracania maszyny wirtualnej.
+Aby przywrócić maszynę wirtualną (utworzyć nową maszynę wirtualną), upewnij się, że masz poprawne [uprawnienia](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) kontroli dostępu opartej na ROLACH (RBAC) dla operacji przywracania maszyny wirtualnej.
 
 Jeśli nie masz uprawnień, możesz [przywrócić dysk](#restore-disks), a następnie po przywróceniu dysku można [użyć szablonu](#use-templates-to-customize-a-restored-vm) , który został wygenerowany w ramach operacji przywracania, aby utworzyć nową maszynę wirtualną.
 
@@ -174,7 +174,7 @@ Po zainicjowaniu operacji przywracania usługa Backup tworzy zadanie śledzenia.
 
     ![Lista maszyn wirtualnych w magazynie](./media/backup-azure-arm-restore-vms/restore-job-in-progress1.png)
 
-2. Aby monitorować postęp przywracania, kliknij dowolne zadanie przywracania ze stanem **w toku**. Zostanie wyświetlony pasek postępu, który wyświetla informacje o postępie przywracania:
+2. Aby monitorować postęp przywracania, kliknij dowolne zadanie przywracania ze stanem **w toku**. Spowoduje to wyświetlenie paska postępu, który wyświetla informacje o postępie przywracania:
 
     - **Szacowany czas przywracania**: Początkowo zapewnia czas potrzebny do ukończenia operacji przywracania. W miarę postępów operacji czas trwania jest zmniejszany i dociera do zera po zakończeniu operacji przywracania.
     - **Procent przywracania**. Przedstawia wartość procentową wykonywanej operacji przywracania.

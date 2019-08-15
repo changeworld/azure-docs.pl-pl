@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych z usługi Azure Database dla serwera MariaDB przy użyciu usługi Azure Data Factory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skopiować dane z usługi Azure Database dla serwera MariaDB do magazynów danych ujścia obsługiwane za pomocą działania kopiowania w potoku usługi Azure Data Factory.
+title: Kopiowanie danych z Azure Database for MariaDB przy użyciu Azure Data Factory | Microsoft Docs
+description: Informacje o kopiowaniu danych z Azure Database for MariaDB do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,22 +10,22 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: cd46e99b89b4081dcf0d67509edaabf168da4ba0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cb783630b32b4cc28d4e4f1cfb33027da3b8d2e0
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60387888"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966560"
 ---
-# <a name="copy-data-from-azure-database-for-mariadb-using-azure-data-factory"></a>Kopiowanie danych z usługi Azure Database dla serwera MariaDB przy użyciu usługi Azure Data Factory 
+# <a name="copy-data-from-azure-database-for-mariadb-using-azure-data-factory"></a>Kopiowanie danych z Azure Database for MariaDB przy użyciu Azure Data Factory 
 
-W tym artykule opisano sposób użycia działania kopiowania w usłudze Azure Data Factory, aby skopiować dane z usługi Azure Database dla serwera MariaDB. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z Azure Database for MariaDB. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
-Możesz skopiować dane z usługi Azure Database dla serwera MariaDB do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
+Dane z Azure Database for MariaDB można kopiować do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
 Usługa Azure Data Factory udostępnia wbudowanego sterownika, aby umożliwić łączność, dlatego nie trzeba ręcznie zainstalować dowolnego sterownika, za pomocą tego łącznika.
 
@@ -33,17 +33,17 @@ Usługa Azure Data Factory udostępnia wbudowanego sterownika, aby umożliwić �
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, które są używane do definiowania jednostek usługi fabryka danych określonej do usługi Azure Database dla łącznika MariaDB.
+Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania Data Factory jednostek specyficznych dla łącznika Azure Database for MariaDB.
 
 ## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 
-Następujące właściwości są obsługiwane dla usługi Azure Database dla MariaDB połączone usługi:
+Następujące właściwości są obsługiwane dla Azure Database for MariaDB połączonej usługi:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **MariaDB** | Yes |
-| connectionString | Parametry połączenia do łączenia z usługą Azure Database dla serwera MariaDB. Użytkownik może -> Znajdź je w witrynie Azure portal -> Azure Database dla MariaDB -> Parametry połączenia ADO.NET, jeden. <br/>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory. Można również wprowadzić hasło w usłudze Azure Key Vault i ściągania `pwd` konfiguracji poza parametry połączenia. Zobacz poniższe przykłady i [Store poświadczeń w usłudze Azure Key Vault](store-credentials-in-key-vault.md) artykułu z bardziej szczegółowymi informacjami. | Yes |
-| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Używając środowiskiem Integration Runtime lub Azure Integration Runtime (Jeśli magazyn danych jest publicznie dostępny). Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
+| type | Właściwość Type musi mieć ustawioną wartość: **MariaDB** | Tak |
+| connectionString | Parametry połączenia w celu nawiązania połączenia z Azure Database for MariaDB. Można go znaleźć z Azure Portal-> parametry połączenia Azure Database for MariaDB->-> ADO.NET. <br/>Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory. Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć `pwd` konfigurację z parametrów połączenia. Zapoznaj się z poniższymi przykładami i [Zapisz poświadczenia w Azure Key Vault](store-credentials-in-key-vault.md) artykule, aby uzyskać więcej szczegółów. | Tak |
+| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
 **Przykład:**
 
@@ -66,7 +66,7 @@ Następujące właściwości są obsługiwane dla usługi Azure Database dla Mar
 }
 ```
 
-**Przykład: przechowywanie haseł w usłudze Azure Key Vault**
+**Przykład: Przechowuj hasło w Azure Key Vault**
 
 ```json
 {
@@ -97,13 +97,13 @@ Następujące właściwości są obsługiwane dla usługi Azure Database dla Mar
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez usługę Azure Database dla zestawu danych MariaDB.
+Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych Azure Database for MariaDB.
 
-Aby skopiować dane z usługi Azure Database dla serwera MariaDB, należy ustawić właściwość typu zestawu danych na **MariaDBTable**. Obsługiwane są następujące właściwości:
+Aby skopiować dane z Azure Database for MariaDB, ustaw właściwość Type zestawu danych na **MariaDBTable**. Obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa: **MariaDBTable** | Yes |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **MariaDBTable** | Tak |
 | tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
@@ -124,15 +124,15 @@ Aby skopiować dane z usługi Azure Database dla serwera MariaDB, należy ustawi
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez usługę Azure Database dla źródła MariaDB.
+Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez Azure Database for MariaDB źródło.
 
-### <a name="azure-database-for-mariadb-as-source"></a>Azure Database dla serwera MariaDB jako źródło
+### <a name="azure-database-for-mariadb-as-source"></a>Azure Database for MariaDB jako źródło
 
-Aby skopiować dane z usługi Azure Database dla serwera MariaDB, należy ustawić typ źródłowego w działaniu kopiowania, aby **MariaDBSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
+Aby skopiować dane z Azure Database for MariaDB, ustaw typ źródła w działaniu Copy na **MariaDBSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi być równa wartości właściwości type źródło działania kopiowania: **MariaDBSource** | Yes |
+| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **MariaDBSource** | Tak |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**

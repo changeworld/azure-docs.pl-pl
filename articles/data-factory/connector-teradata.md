@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: ce326d7284e22a8734f6be671a277795ba659522
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 6cbddfc5e529bc48e08407796024e5232d1a22e8
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720523"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966371"
 ---
 # <a name="copy-data-from-teradata-by-using-azure-data-factory"></a>Kopiowanie danych z programu Teradata przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -43,7 +43,9 @@ W każdym przypadku ten łącznik programu Teradata obsługuje:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Jeśli Twój program Teradata nie jest publicznie dostępny, musisz skonfigurować [własne środowisko Integration Runtime](create-self-hosted-integration-runtime.md). Środowisko Integration Runtime zapewnia wbudowaną wersję sterownika Teradata rozpoczynającą się od wersji 3,18. Nie musisz ręcznie instalować żadnego sterownika. Sterownik wymaga "Visual C++ redystrybucyjny 2012 Update 4" na własnym komputerze Integration Runtime. Jeśli jeszcze tego nie zainstalowano, Pobierz go z tego [miejsca](https://www.microsoft.com/en-sg/download/details.aspx?id=30679).
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+
+Środowisko Integration Runtime zapewnia wbudowaną wersję sterownika Teradata rozpoczynającą się od wersji 3,18. Nie musisz ręcznie instalować żadnego sterownika. Sterownik wymaga "Visual C++ redystrybucyjny 2012 Update 4" na własnym komputerze Integration Runtime. Jeśli jeszcze tego nie zainstalowano, Pobierz go z tego [miejsca](https://www.microsoft.com/en-sg/download/details.aspx?id=30679).
 
 W przypadku dowolnego środowiska Integration Runtime w wersji starszej niż 3,18 zainstaluj [dostawca danych .NET dla programu Teradata](https://go.microsoft.com/fwlink/?LinkId=278886), wersję 14 lub nowszą na komputerze Integration Runtime. 
 
@@ -59,11 +61,11 @@ Połączona usługa programu Teradata obsługuje następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | Właściwość Type musi być ustawiona na wartość **Teradata**. | Tak |
-| connectionString | Określa informacje, które są konieczne do nawiązania połączenia z wystąpieniem bazy danych programu Teradata. Zapoznaj się z poniższymi przykładami.<br/>Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć `password` konfigurację z parametrów połączenia. Aby uzyskać więcej informacji, zobacz temat [poświadczenia sklepu w Azure Key Vault](store-credentials-in-key-vault.md) . | Yes |
+| type | Właściwość Type musi być ustawiona na wartość **Teradata**. | Tak |
+| connectionString | Określa informacje, które są konieczne do nawiązania połączenia z wystąpieniem bazy danych programu Teradata. Zapoznaj się z poniższymi przykładami.<br/>Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć `password` konfigurację z parametrów połączenia. Aby uzyskać więcej informacji, zobacz temat [poświadczenia sklepu w Azure Key Vault](store-credentials-in-key-vault.md) . | Tak |
 | username | Określ nazwę użytkownika, aby nawiązać połączenie z bazą danych programu Teradata. Ma zastosowanie w przypadku korzystania z uwierzytelniania systemu Windows. | Nie |
 | password | Określ hasło dla konta użytkownika określonego dla nazwy użytkownika. Możesz również wybrać odwołanie do [wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). <br>Ma zastosowanie w przypadku korzystania z uwierzytelniania systemu Windows lub odwoływania się do hasła w Key Vault na potrzeby uwierzytelniania podstawowego. | Nie |
-| connectVia | [Środowiska integration runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Wymagane jest samodzielne środowisko Integration Runtime, jak wspomniano w [wymaganiach wstępnych](#prerequisites). |Tak |
+| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Tak |
 
 **Przykład użycia uwierzytelniania podstawowego**
 
@@ -139,7 +141,7 @@ Aby skopiować dane z programu Teradata, obsługiwane są następujące właści
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | Właściwość Type zestawu danych musi być ustawiona na `TeradataTable`wartość. | Yes |
+| type | Właściwość Type zestawu danych musi być ustawiona na `TeradataTable`wartość. | Tak |
 | database | Nazwa bazy danych programu Teradata. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 | table | Nazwa tabeli w bazie danych programu Teradata. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
@@ -184,11 +186,10 @@ Aby skopiować dane z programu Teradata, obsługiwane są następujące właści
 
 Ta sekcja zawiera listę właściwości obsługiwanych przez źródło programu Teradata. Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz [potoki](concepts-pipelines-activities.md). 
 
-### <a name="teradata-as-a-source-type"></a>Teradata jako typ źródła
+### <a name="teradata-as-source"></a>Teradata jako źródło
 
-> [!TIP]
->
-> Aby efektywnie załadować dane z programu Teradata przy użyciu partycjonowania danych, zapoznaj się z sekcją [Kopiowanie równoległe z programu Teradata](#parallel-copy-from-teradata) .
+>[!TIP]
+>Aby efektywnie załadować dane z programu Teradata przy użyciu partycjonowania danych, zapoznaj się z sekcją [Kopiowanie równoległe z programu Teradata](#parallel-copy-from-teradata) .
 
 Aby skopiować dane z programu Teradata, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
@@ -200,7 +201,7 @@ Aby skopiować dane z programu Teradata, w sekcji **Źródło** działania kopio
 | partitionSettings | Określ grupę ustawień partycjonowania danych. <br>Zastosuj, gdy opcja partycji `None`nie jest. | Nie |
 | partitionColumnName | Określ nazwę kolumny źródłowej **w typie liczb całkowitych** , która będzie używana przez partycjonowanie zakresu do kopiowania równoległego. Jeśli nie zostanie określony, klucz podstawowy tabeli zostanie wykryty i użyty jako kolumna partycji. <br>Zastosuj, gdy opcja partycji to `Hash` lub `DynamicRange`. Jeśli używasz zapytania, aby pobrać dane źródłowe, hak `?AdfHashPartitionCondition` lub `?AdfRangePartitionColumnName` w klauzuli WHERE. Zobacz przykład w sekcji [Kopiowanie równoległe z programu Teradata](#parallel-copy-from-teradata) . | Nie |
 | partitionUpperBound | Maksymalna wartość kolumny partycji, w której mają zostać skopiowane dane. <br>Zastosuj, gdy opcja partycji `DynamicRange`jest. Jeśli używasz zapytania do pobierania danych źródłowych, hak `?AdfRangePartitionUpbound` w klauzuli WHERE. Aby zapoznać się z przykładem, zobacz sekcję [Kopiowanie równoległe z programu Teradata](#parallel-copy-from-teradata) . | Nie |
-| PartitionLowerBound | Minimalna wartość kolumny partycji, w której mają zostać skopiowane dane. <br>Zastosuj, gdy opcja partycji to `DynamicRange`. Jeśli używasz zapytania do pobierania danych źródłowych, hak `?AdfRangePartitionLowbound` w klauzuli WHERE. Aby zapoznać się z przykładem, zobacz sekcję [Kopiowanie równoległe z programu Teradata](#parallel-copy-from-teradata) . | Nie |
+| partitionLowerBound | Minimalna wartość kolumny partycji, w której mają zostać skopiowane dane. <br>Zastosuj, gdy opcja partycji to `DynamicRange`. Jeśli używasz zapytania do pobierania danych źródłowych, hak `?AdfRangePartitionLowbound` w klauzuli WHERE. Aby zapoznać się z przykładem, zobacz sekcję [Kopiowanie równoległe z programu Teradata](#parallel-copy-from-teradata) . | Nie |
 
 > [!NOTE]
 >
@@ -294,7 +295,7 @@ Podczas kopiowania danych z programu Teradata są stosowane następujące mapowa
 | ByteInt |Int16 |
 | Char |String |
 | Clob |String |
-| Date |Datetime |
+| Date |DateTime |
 | Decimal |Decimal |
 | Double |Double |
 | Graphic |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
@@ -321,13 +322,13 @@ Podczas kopiowania danych z programu Teradata są stosowane następujące mapowa
 | SmallInt |Int16 |
 | Time |TimeSpan |
 | Time With Time Zone |TimeSpan |
-| Timestamp |Datetime |
-| Timestamp With Time Zone |Datetime |
+| Timestamp |DateTime |
+| Timestamp With Time Zone |DateTime |
 | VarByte |Byte[] |
 | VarChar |String |
 | VarGraphic |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
 | Xml |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

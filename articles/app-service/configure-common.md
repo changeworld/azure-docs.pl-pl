@@ -1,11 +1,11 @@
 ---
-title: Konfigurowanie aplikacji w portalu — usłudze Azure App Service
-description: Dowiedz się skonfigurować typowych ustawień dla aplikacji usługi App Service w witrynie Azure portal.
-keywords: Aplikacja sieci web, ustawienia aplikacji, zmienne środowiskowe w usłudze Azure app service
+title: Konfigurowanie aplikacji w portalu — Azure App Service
+description: Dowiedz się, jak skonfigurować typowe ustawienia aplikacji App Service w Azure Portal.
+keywords: Azure App Service, aplikacja sieci Web, ustawienia aplikacji, zmienne środowiskowe
 services: app-service\web
 documentationcenter: ''
 author: cephalin
-manager: erikre
+manager: gwallace
 editor: ''
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.service: app-service
@@ -13,29 +13,31 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2017
+ms.date: 08/13/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: bcc970375120f76e4ec8a90f487d251296f92dba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bb4ac9953bcadd9e49cee5b7b99e853705b6567c
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65957913"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990285"
 ---
-# <a name="configure-an-app-service-app-in-the-azure-portal"></a>Konfigurowanie aplikacji usługi App Service w witrynie Azure portal
+# <a name="configure-an-app-service-app-in-the-azure-portal"></a>Skonfiguruj aplikację App Service w Azure Portal
 
-W tym temacie opisano sposób konfigurowania typowych ustawień dla aplikacji sieci web, zapleczem aplikacji mobilnej lub aplikacji interfejsu API za pomocą [Azure Portal].
+W tym temacie opisano sposób konfigurowania typowych ustawień aplikacji sieci Web, zaplecza mobilnego lub aplikacji interfejsu API przy użyciu [Azure Portal].
 
 ## <a name="configure-app-settings"></a>Konfigurowanie ustawień aplikacji
 
-W usłudze App Service możesz użyć ustawienia aplikacji, takie jak zmienne środowiskowe. W [Azure Portal], przejdź do strony zarządzania aplikacji. W menu po lewej stronie aplikacji, kliknij przycisk **konfiguracji** > **ustawienia aplikacji**.
+W App Service ustawienia aplikacji są zmienne, które są przesyłane jako zmienne środowiskowe do kodu aplikacji. W przypadku aplikacji systemu Linux i kontenerów niestandardowych App Service przekazuje ustawienia aplikacji do kontenera przy `--env` użyciu flagi, aby ustawić zmienną środowiskową w kontenerze.
+
+W [Azure Portal]przejdź do strony zarządzania aplikacji. W menu po lewej stronie aplikacji kliknij pozycję**Ustawienia aplikacji** **konfiguracji** > .
 
 ![Ustawienia aplikacji](./media/configure-common/open-ui.png)
 
-Dla deweloperów platformy ASP.NET i ASP.NET Core, ustawienie ustawienia aplikacji w usłudze App Service są podobne do ustawiania ich w `<appSettings>` w *Web.config*, ale wartości w usłudze App Service przesłonięte w *Web.config*. Ustawienia środowiska deweloperskiego (np. lokalne hasło MySQL) można przechowywać w *Web.config*, ale tajemnice produkcji (np. hasło bazy danych Azure MySQL) bezpieczne w usłudze App Service. Ten sam kod używa ustawienia środowiska deweloperskiego, gdy debugujesz lokalnie i używa tajnych produkcji podczas wdrażania na platformie Azure.
+W przypadku deweloperów ASP.NET i ASP.NET Core ustawienia aplikacji w App Service są takie jak `<appSettings>` ustawienia w *pliku Web. config* lub *appSettings. JSON*, ale wartości w App Service przesłaniają te elementy w *pliku Web. config* lub  *appSettings. JSON*. Ustawienia programistyczne (na przykład lokalne hasło MySQL) można zachować w *pliku Web. config* lub *appSettings. JSON*, ale klucze tajne produkcji (na przykład hasło bazy danych Azure mysql) bezpiecznie w App Service. Ten sam kod używa ustawień programistycznych podczas debugowania lokalnego i korzysta z wpisów tajnych produkcji w przypadku wdrożenia na platformie Azure.
 
-Inne stosy języka podobnie, uzyskaj ustawienia aplikacji jako zmienne środowiskowe w czasie wykonywania. Aby poznać konkretne kroki stos języka zobacz:
+Inne stosy języka, podobnie, pobierają ustawienia aplikacji jako zmienne środowiskowe w czasie wykonywania. Aby zapoznać się z procedurami specyficznymi dla stosu, zobacz:
 
 - [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
 - [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
@@ -43,34 +45,34 @@ Inne stosy języka podobnie, uzyskaj ustawienia aplikacji jako zmienne środowis
 - [Python](containers/how-to-configure-python.md#access-environment-variables)
 - [Java](containers/configure-language-java.md#data-sources)
 - [Ruby](containers/configure-language-ruby.md#access-environment-variables)
-- [Kontenerów niestandardowych](containers/configure-custom-container.md#configure-environment-variables)
+- [Kontenery niestandardowe](containers/configure-custom-container.md#configure-environment-variables)
 
-Ustawienia aplikacji są zawsze szyfrowane, gdy przechowywany (zaszyfrowanych danych w spoczynku).
+Ustawienia aplikacji są zawsze szyfrowane, gdy są przechowywane (szyfrowane w trybie REST).
 
 > [!NOTE]
-> Ustawienia aplikacji może być również rozwiązana z [usługi Key Vault](/azure/key-vault/) przy użyciu [odwołuje się do usługi Key Vault](app-service-key-vault-references.md).
+> Ustawienia aplikacji mogą być również rozwiązywane z [Key Vault](/azure/key-vault/) przy użyciu [Key Vault odwołań](app-service-key-vault-references.md).
 
 ### <a name="show-hidden-values"></a>Pokaż ukryte wartości
 
-Domyślnie wartości ustawień aplikacji są ukryte w portalu dla zabezpieczeń. Aby wyświetlić ukryte wartości ustawienia aplikacji, kliknij **wartość** pola tego ustawienia. Aby wyświetlić wartości wszystkich ustawień aplikacji, kliknij przycisk **Pokaż wartość** przycisku.
+Domyślnie wartości ustawień aplikacji są ukrywane w portalu w celu zabezpieczenia. Aby wyświetlić ukrytą wartość ustawienia aplikacji, kliknij pole **wartość** tego ustawienia. Aby wyświetlić wartości wszystkich ustawień aplikacji, kliknij przycisk **Pokaż wartość** .
 
-### <a name="add-or-edit"></a>Dodawanie lub edytowanie
+### <a name="add-or-edit"></a>Dodaj lub edytuj
 
-Aby dodać nowe ustawienie aplikacji, kliknij **nowe ustawienie aplikacji**. W oknie dialogowym możesz [się działać zgodnie z ustawieniem bieżącym gnieździe](deploy-staging-slots.md#which-settings-are-swapped).
+Aby dodać nowe ustawienie aplikacji, kliknij pozycję **nowe ustawienie aplikacji**. W oknie dialogowym można przykleić [ustawienie do bieżącego gniazda](deploy-staging-slots.md#which-settings-are-swapped).
 
-Aby zmodyfikować to ustawienie, kliknij **Edytuj** przycisk po prawej stronie.
+Aby edytować ustawienia, kliknij przycisk **Edytuj** po prawej stronie.
 
-Po zakończeniu kliknij przycisk **aktualizacji**. Nie zapomnij kliknąć **Zapisz** w **konfiguracji** strony.
+Po zakończeniu kliknij przycisk **Aktualizuj**. Nie zapomnij kliknąć pozycję **Zapisz** ponownie na stronie **Konfiguracja** .
 
 > [!NOTE]
-> Domyślny kontener systemu Linux lub niestandardowego kontenera systemu Linux, wszelkie zagnieżdżone JSON struktury klucza w Nazwa ustawienia aplikacji, takich jak `ApplicationInsights:InstrumentationKey` musi być skonfigurowana w usłudze App Service jako `ApplicationInsights__InstrumentationKey` jako nazwę klucza. Innymi słowy, dowolnej `:` powinna zostać zastąpiona przez `__` (podwójne podkreślenie).
+> W domyślnym kontenerze systemu Linux lub dla niestandardowego kontenera systemu Linux każda zagnieżdżona struktura klucza JSON w nazwie ustawienia aplikacji `ApplicationInsights:InstrumentationKey` , tak jak musi być skonfigurowana w `ApplicationInsights__InstrumentationKey` App Service jak dla nazwy klucza. Innymi słowy, wszystkie `:` powinny zostać zastąpione przez `__` (podwójne podkreślenie).
 >
 
-### <a name="edit-in-bulk"></a>Edytuj zbiorczo
+### <a name="edit-in-bulk"></a>Edytuj luzem
 
-Aby dodać lub edytować ustawienia aplikacji w trybie zbiorczym, kliknij przycisk **Zaawansowane edytowanie** przycisku. Po zakończeniu kliknij przycisk **aktualizacji**. Nie zapomnij kliknąć **Zapisz** w **konfiguracji** strony.
+Aby dodać lub edytować ustawienia aplikacji w trybie zbiorczym, kliknij przycisk **Edytuj zaawansowane** . Po zakończeniu kliknij przycisk **Aktualizuj**. Nie zapomnij kliknąć pozycję **Zapisz** ponownie na stronie **Konfiguracja** .
 
-Ustawienia aplikacji są następujące formatowanie JSON:
+Ustawienia aplikacji mają następujące formatowanie JSON:
 
 ```json
 [
@@ -90,22 +92,22 @@ Ustawienia aplikacji są następujące formatowanie JSON:
 
 ## <a name="configure-connection-strings"></a>Konfigurowanie parametrów połączenia
 
-W [Azure Portal], przejdź do strony zarządzania aplikacji. W menu po lewej stronie aplikacji, kliknij przycisk **konfiguracji** > **ustawienia aplikacji**.
+W [Azure Portal]przejdź do strony zarządzania aplikacją. W menu po lewej stronie aplikacji kliknij pozycję**Ustawienia aplikacji** **konfiguracji** > .
 
 ![Ustawienia aplikacji](./media/configure-common/open-ui.png)
 
-Dla deweloperów platformy ASP.NET i ASP.NET Core, ustawienie parametrów połączenia w usłudze App Service są podobne do ustawiania ich w `<connectionStrings>` w *Web.config*, ale wartościami ustawionymi w usłudze App Service przesłonięte w *wplikuWeb.config*. Ustawienia środowiska deweloperskiego (np. plik bazy danych) można przechowywać w *Web.config* i produkcji wpisów tajnych, (np. poświadczenia bazy danych SQL) bezpieczne w usłudze App Service. Ten sam kod używa ustawienia środowiska deweloperskiego, gdy debugujesz lokalnie i używa tajnych produkcji podczas wdrażania na platformie Azure.
+W przypadku deweloperów ASP.NET i ASP.NET Core, ustawianie parametrów połączenia w App Service przypomina Ustawianie ich w `<connectionStrings>` *pliku Web. config*, ale wartości ustawionych w App Service przesłaniają te ustawienia w *pliku Web. config*. Ustawienia programistyczne (na przykład plik bazy danych) można zachować w pliku *Web. config* i w tajemnicach produkcyjnych (na przykład SQL Database poświadczenia) bezpiecznie w App Service. Ten sam kod używa ustawień programistycznych podczas debugowania lokalnego i korzysta z wpisów tajnych produkcji w przypadku wdrożenia na platformie Azure.
 
-Dla innych stosów język jest lepiej używać [ustawienia aplikacji](#configure-app-settings) zamiast tego, ponieważ parametry połączenia wymagają specjalne formatowanie w zmiennej kluczy w, aby uzyskać dostęp do wartości. W tym miejscu jest jednak jeden wyjątek: niektóre typy bazy danych Azure kopie zapasowe są tworzone wraz z jej konfigurowania ich parametrów połączenia w aplikacji. Aby uzyskać więcej informacji, zobacz [kopiami zapasowymi](manage-backup.md#what-gets-backed-up). Jeśli nie potrzebujesz zautomatyzowane tworzenie kopii zapasowej, użyj ustawień aplikacji.
+W przypadku innych stosów języka lepiej jest używać [ustawień aplikacji](#configure-app-settings) , ponieważ parametry połączeń wymagają specjalnego formatowania w kluczach zmiennych w celu uzyskania dostępu do wartości. Poniżej przedstawiono jeden wyjątek: w przypadku konfigurowania parametrów połączenia w aplikacji kopie zapasowe niektórych typów baz danych platformy Azure są tworzone razem z aplikacją. Aby uzyskać więcej informacji, zobacz [co to jest kopia zapasowa](manage-backup.md#what-gets-backed-up). Jeśli ta zautomatyzowana kopia zapasowa nie jest potrzebna, Użyj ustawień aplikacji.
 
-W czasie wykonywania parametry połączenia są dostępne jako zmienne środowiskowe, prefiks z następujących typów połączeń:
+W czasie wykonywania parametry połączenia są dostępne jako zmienne środowiskowe poprzedzone prefiksem następujących typów połączeń:
 
-* Program SQL Server: `SQLCONNSTR_`
+* SQL Server:`SQLCONNSTR_`
 * MySQL: `MYSQLCONNSTR_`
-* Baza danych SQL: `SQLAZURECONNSTR_`
-* Niestandardowy: `CUSTOMCONNSTR_`
+* SQL Database:`SQLAZURECONNSTR_`
+* Celnej`CUSTOMCONNSTR_`
 
-Na przykład parametry połączenia MySql o nazwie *connectionstring1* może być dostępna jako zmienną środowiskową `MYSQLCONNSTR_connectionString1`. Aby poznać konkretne kroki stos języka zobacz:
+Na przykład parametry połączenia MySql o nazwie *connectionstring1* są dostępne jako zmienne `MYSQLCONNSTR_connectionString1`środowiskowe. Aby zapoznać się z procedurami specyficznymi dla stosu, zobacz:
 
 - [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
 - [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
@@ -113,28 +115,28 @@ Na przykład parametry połączenia MySql o nazwie *connectionstring1* może by�
 - [Python](containers/how-to-configure-python.md#access-environment-variables)
 - [Java](containers/configure-language-java.md#data-sources)
 - [Ruby](containers/configure-language-ruby.md#access-environment-variables)
-- [Kontenerów niestandardowych](containers/configure-custom-container.md#configure-environment-variables)
+- [Kontenery niestandardowe](containers/configure-custom-container.md#configure-environment-variables)
 
-Parametry połączenia są zawsze szyfrowane, gdy przechowywany (zaszyfrowanych danych w spoczynku).
+Parametry połączenia są zawsze szyfrowane, gdy są przechowywane (szyfrowane w trybie REST).
 
 > [!NOTE]
-> Parametry połączenia można również rozwiązana z [usługi Key Vault](/azure/key-vault/) przy użyciu [odwołuje się do usługi Key Vault](app-service-key-vault-references.md).
+> Parametry połączenia można również rozpoznać z [Key Vault](/azure/key-vault/) przy użyciu [Key Vault odwołań](app-service-key-vault-references.md).
 
 ### <a name="show-hidden-values"></a>Pokaż ukryte wartości
 
-Domyślnie wartości dla parametrów połączeń są ukryte w portalu dla zabezpieczeń. Aby wyświetlić ukryte wartość parametrów połączenia, wystarczy kliknąć **wartość** pola tego ciągu. Aby wyświetlić wartości wszystkich parametrów połączenia, kliknij przycisk **Pokaż wartość** przycisku.
+Domyślnie wartości parametrów połączenia są ukryte w portalu w celu zabezpieczenia. Aby wyświetlić ukrytą wartość parametrów połączenia, po prostu kliknij pole **wartość** tego ciągu. Aby wyświetlić wartości wszystkich parametrów połączenia, kliknij przycisk **Pokaż wartość** .
 
-### <a name="add-or-edit"></a>Dodawanie lub edytowanie
+### <a name="add-or-edit"></a>Dodaj lub edytuj
 
-Aby dodać nowe parametry połączenia, kliknij **nowe parametry połączenia**. W oknie dialogowym możesz [używany ciąg połączenia w bieżącym gnieździe](deploy-staging-slots.md#which-settings-are-swapped).
+Aby dodać nowe parametry połączenia, kliknij przycisk **nowe parametry połączenia**. W oknie dialogowym można przykleić [Parametry połączenia do bieżącego gniazda](deploy-staging-slots.md#which-settings-are-swapped).
 
-Aby zmodyfikować to ustawienie, kliknij **Edytuj** przycisk po prawej stronie.
+Aby edytować ustawienia, kliknij przycisk **Edytuj** po prawej stronie.
 
-Po zakończeniu kliknij przycisk **aktualizacji**. Nie zapomnij kliknąć **Zapisz** w **konfiguracji** strony.
+Po zakończeniu kliknij przycisk **Aktualizuj**. Nie zapomnij kliknąć pozycję **Zapisz** ponownie na stronie **Konfiguracja** .
 
-### <a name="edit-in-bulk"></a>Edytuj zbiorczo
+### <a name="edit-in-bulk"></a>Edytuj luzem
 
-Aby dodać lub edytować parametrów połączenia w trybie zbiorczym, kliknij przycisk **Zaawansowane edytowanie** przycisku. Po zakończeniu kliknij przycisk **aktualizacji**. Nie zapomnij kliknąć **Zapisz** w **konfiguracji** strony.
+Aby dodać lub edytować parametry połączenia zbiorczo, kliknij przycisk **Edytuj zaawansowane** . Po zakończeniu kliknij przycisk **Aktualizuj**. Nie zapomnij kliknąć pozycję **Zapisz** ponownie na stronie **Konfiguracja** .
 
 Parametry połączenia mają następujące formatowanie JSON:
 
@@ -159,81 +161,81 @@ Parametry połączenia mają następujące formatowanie JSON:
 <a name="platform"></a>
 <a name="alwayson"></a>
 
-## <a name="configure-general-settings"></a>Konfigurowanie ogólnych ustawień
+## <a name="configure-general-settings"></a>Konfigurowanie ustawień ogólnych
 
-W [Azure Portal], przejdź do strony zarządzania aplikacji. W menu po lewej stronie aplikacji, kliknij przycisk **konfiguracji** > **ustawienia aplikacji**.
+W [Azure Portal]przejdź do strony zarządzania aplikacją. W menu po lewej stronie aplikacji kliknij pozycję**Ustawienia aplikacji** **konfiguracji** > .
 
 ![Ustawienia ogólne](./media/configure-common/open-general.png)
 
-W tym miejscu można skonfigurować niektóre typowe ustawienia dla aplikacji. Niektóre ustawienia wymagają [skalowanie w górę do wyższej warstwy cenowej](web-sites-scale.md).
+Tutaj można skonfigurować niektóre typowe ustawienia dla aplikacji. Niektóre ustawienia wymagają skalowania [do wyższych warstw cenowych](web-sites-scale.md).
 
-- **Stack — ustawienia**: Stos oprogramowania, aby uruchomić aplikację, w tym języku i za pomocą wersji zestawu SDK. W przypadku aplikacji systemu Linux i aplikacji kontenera niestandardowego można również ustawić opcjonalny uruchamiania polecenia lub pliku.
-- **Ustawienia platformy**: Umożliwia skonfigurowanie ustawień dla platformy hostingowej, w tym:
-    - **Liczba bitów**: 32-bitową lub 64-bitowych.
-    - **Protokół WebSocket**: Aby uzyskać [ASP.NET SignalR] lub [biblioteki socket.io](https://socket.io/), na przykład.
-    - **Zawsze włączone**: Zachowaj ją załadować nawet wtedy, gdy nie występuje ruch. Należy ją włączyć w przypadku ciągłych zadań Webjob lub zadań Webjob, które są wyzwalane za pomocą wyrażeń CRON.
-    - **Wersja potoku zarządzanego**: Usługi IIS [tryb potokowy]. Ustaw ją na **klasycznego** w przypadku starszych aplikacji, która wymaga starszej wersji usług IIS.
-    - **Wersja HTTP**: Ustaw **2.0** włączyć obsługę [HTTPS/2](https://wikipedia.org/wiki/HTTP/2) protokołu.
+- **Ustawienia stosu**: Stos oprogramowania do uruchamiania aplikacji, w tym wersje język i zestaw SDK. W przypadku aplikacji systemu Linux i niestandardowych aplikacji kontenerów można również ustawić opcjonalne lub plik startowy.
+- **Ustawienia platformy**: Umożliwia skonfigurowanie ustawień platformy hostingu, w tym:
+    - Liczba **bitów**: 32-bit lub 64-bitowy.
+    - **Protokół WebSocket**: Na przykład dla [ASP.NET sygnalizujący] lub [Socket.IO](https://socket.io/).
+    - **Zawsze włączone**: Pamiętaj, aby aplikacja została załadowana nawet wtedy, gdy nie ma ruchu. Jest to wymagane w przypadku ciągłych zadań WebJob lub zadań WebJob, które są wyzwalane przy użyciu wyrażenia firmy cronus.
+    - **Wersja potoku zarządzanego**: [Tryb potokowy]usług IIS. Ustaw ją na **klasyczny** , jeśli masz starszą aplikację, która wymaga starszej wersji usług IIS.
+    - **Wersja protokołu HTTP**: Ustaw na **2,0** , aby włączyć obsługę protokołu [https/2](https://wikipedia.org/wiki/HTTP/2) .
     > [!NOTE]
-    > Większość nowoczesnych przeglądarek obsługuje protokół HTTP/2 za pośrednictwem protokołu TLS tylko wtedy, gdy niezaszyfrowane ruch w dalszym ciągu używa protokołu HTTP/1.1. Aby upewnić się, że klient przeglądarki połączyć się z aplikacji przy użyciu protokołu HTTP/2 albo [zakup certyfikatu usługi App Service](web-sites-purchase-ssl-web-site.md) dla domeny niestandardowej aplikacji lub [powiązać certyfikat innej](app-service-web-tutorial-custom-ssl.md).
-    - **Koligacja ARR**: W przypadku wdrożenia w wielu wystąpieniach upewnij się, że klient jest kierowane do tego samego wystąpienia, przez cały okres istnienia sesji. Można ustawić tę opcję, **poza** dla aplikacji bezstanowych.
-- **Debugowanie**: Włączanie debugowania zdalnego dla [ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug), [platformy ASP.NET Core](/visualstudio/debugger/remote-debugging-azure), lub [Node.js](containers/configure-language-nodejs.md#debug-remotely) aplikacji. Ta opcja powoduje wyłączenie automatycznie po upływie 48 godzin.
-- **Przychodzące certyfikaty klientów**: Wymagaj certyfikatów klienta w [wzajemnego uwierzytelniania](app-service-web-configure-tls-mutual-auth.md).
+    > Większość nowoczesnych przeglądarek obsługuje protokół HTTP/2 tylko w przypadku protokołu TLS, podczas gdy ruch nieszyfrowany nadal używa protokołu HTTP/1.1. Aby upewnić się, że przeglądarki klienta nawiązują połączenie z aplikacją za pomocą protokołu HTTP/2, należy [kupić certyfikat usługi App Service](web-sites-purchase-ssl-web-site.md) dla domeny niestandardowej aplikacji lub [powiązać certyfikat innej firmy](app-service-web-tutorial-custom-ssl.md).
+    - **Koligacja ARR**: W przypadku wdrożenia obejmującego wiele wystąpień upewnij się, że klient jest kierowany do tego samego wystąpienia w okresie istnienia sesji. Tę opcję można ustawić na wartość **off** dla bezstanowych aplikacji.
+- **Debugowanie**: Włącz debugowanie zdalne dla aplikacji [ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug), [ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)lub [Node. js](containers/configure-language-nodejs.md#debug-remotely) . Ta opcja jest włączana automatycznie po 48 godzinach.
+- **Przychodzące certyfikaty klienta**: Wymagaj certyfikatów klienta w ramach [uwierzytelniania wzajemnego](app-service-web-configure-tls-mutual-auth.md).
 
 ## <a name="configure-default-documents"></a>Konfigurowanie dokumentów domyślnych
 
-To ustawienie dotyczy tylko aplikacji Windows.
+To ustawienie dotyczy tylko aplikacji systemu Windows.
 
-W [Azure Portal], przejdź do strony zarządzania aplikacji. W menu po lewej stronie aplikacji, kliknij przycisk **konfiguracji** > **domyślne dokumenty**.
+W [Azure Portal]przejdź do strony zarządzania aplikacją. W menu po lewej stronie aplikacji kliknij pozycję **Konfiguracja** > **dokumenty domyślne**.
 
 ![Ustawienia ogólne](./media/configure-common/open-documents.png)
 
-Dokument domyślny jest strony sieci web, która jest wyświetlana na główny adres URL witryny sieci Web. Pierwszy plik dopasowania na liście jest używany. Aby dodać nowy dokument domyślny, kliknij **nowy dokument**. Nie zapomnij kliknąć **Zapisz**.
+Dokument domyślny jest stroną sieci Web, która jest wyświetlana na głównym adresie URL witryny sieci Web. Używany jest pierwszy pasujący plik na liście. Aby dodać nowy dokument domyślny, kliknij pozycję **Nowy dokument**. Nie zapomnij kliknąć przycisk **Zapisz**.
 
-Jeśli aplikacja korzysta z modułów, które kierują na podstawie adresu URL zamiast obsługująca zawartość statyczną, nie ma potrzeby dla dokumentów domyślnych.
+Jeśli aplikacja używa modułów, które są oparte na adresie URL zamiast obsługiwać zawartość statyczną, nie ma potrzeby stosowania dokumentów domyślnych.
 
-## <a name="configure-path-mappings"></a>Skonfiguruj mapowania ścieżki
+## <a name="configure-path-mappings"></a>Konfiguruj mapowania ścieżek
 
-W [Azure Portal], przejdź do strony zarządzania aplikacji. W menu po lewej stronie aplikacji, kliknij przycisk **konfiguracji** > **mapowania ścieżki**.
+W [Azure Portal]przejdź do strony zarządzania aplikacją. W menu po lewej stronie aplikacji kliknij pozycję > **mapowania ścieżek**konfiguracyjnych.
 
 ![Ustawienia ogólne](./media/configure-common/open-path.png)
 
-**Ścieżka mapowania** strona zawiera różnych rzeczy, w zależności od typu systemu operacyjnego.
+Na stronie **mapowania ścieżki** są wyświetlane różne elementy w oparciu o typ systemu operacyjnego.
 
-### <a name="windows-apps-uncontainerized"></a>Aplikacje Windows (uncontainerized)
+### <a name="windows-apps-uncontainerized"></a>Aplikacje systemu Windows (niekontenery)
 
-Dla aplikacji Windows można dostosować mapowania programu obsługi usług IIS i wirtualne aplikacje i katalogi.
+W przypadku aplikacji systemu Windows można dostosować mapowania programu obsługi usług IIS i wirtualne aplikacje i katalogi.
 
-Mapowania obsługi umożliwiają dodawanie procesorów skryptu niestandardowego do obsługi żądań dla określonych rozszerzeń plików. Aby dodać niestandardowy program obsługi, kliknij **nowy program obsługi**. Skonfiguruj program obsługi w następujący sposób:
+Mapowania obsługi umożliwiają dodawanie niestandardowych procesorów skryptów do obsługi żądań dla określonych rozszerzeń plików. Aby dodać niestandardową procedurę obsługi, kliknij pozycję **Nowy program obsługi**. Skonfiguruj procedurę obsługi w następujący sposób:
 
-- **Rozszerzenie**. Rozszerzenie pliku, które mają być obsługiwane, takich jak  *\*PHP* lub *handler.fcgi*.
-- **Procesor skryptów**. Ścieżka bezwzględna procesora skryptów do Ciebie. Żądania dostępu do plików, zgodne z rozszerzeniem pliku są przetwarzane przez procesora skryptów. Użyj ścieżki `D:\home\site\wwwroot` do odwoływania się do katalogu głównego aplikacji.
+- **Rozszerzenie**. Rozszerzenie pliku, które ma być obsługiwane, np  *\*. php* lub *Handler. FCGI*.
+- **Procesor skryptu**. Ścieżka bezwzględna procesora skryptu do użytkownika. Żądania do plików, które pasują do rozszerzenia pliku, są przetwarzane przez procesor skryptów. Użyj ścieżki `D:\home\site\wwwroot` , aby odwołać się do katalogu głównego aplikacji.
 - **Argumenty**. Opcjonalne argumenty wiersza polecenia dla procesora skryptów.
 
-Każda aplikacja ma domyślna ścieżka katalogu głównego (`/`) mapowany do `D:\home\site\wwwroot`, których Twój kod jest wdrażany domyślnie. Jeśli bezpieczeństwo głównego aplikacji znajduje się w innym folderze lub repozytorium ma więcej niż jedną aplikację, można edytować lub dodawać wirtualne aplikacje i katalogi, w tym miejscu. Kliknij przycisk **nową wirtualną aplikację lub katalog**.
+Każda aplikacja ma domyślną ścieżkę katalogu głównego (`/`) zamapowana `D:\home\site\wwwroot`na, gdzie kod jest wdrażany domyślnie. Jeśli katalog główny aplikacji znajduje się w innym folderze lub jeśli repozytorium zawiera więcej niż jedną aplikację, możesz w tym miejscu edytować lub dodać wirtualne aplikacje i katalogi. Kliknij pozycję **Nowa aplikacja wirtualna lub katalog**.
 
-Aby skonfigurować wirtualne aplikacje i katalogi, określ każdy katalog wirtualny i jego odpowiedniego ścieżka fizyczna względem katalogu głównego witryny sieci Web (`D:\home`). Opcjonalnie można wybrać **aplikacji** pole wyboru, aby oznaczyć katalog wirtualny jako aplikacja.
+Aby skonfigurować aplikacje i katalogi wirtualne, określ każdy katalog wirtualny i odpowiadającą mu ścieżkę fizyczną względem katalogu głównego witryny sieci`D:\home`Web (). Opcjonalnie możesz zaznaczyć pole wyboru **aplikacji** , aby oznaczyć katalog wirtualny jako aplikację.
 
-### <a name="containerized-apps"></a>Konteneryzowanych aplikacji
+### <a name="containerized-apps"></a>Aplikacje w kontenerze
 
-Możesz [Dodaj niestandardowy magazyn dla aplikacji konteneryzowanych](containers/how-to-serve-content-from-azure-storage.md). Konteneryzowanych aplikacji obejmują wszystkie aplikacje systemu Linux, a także Windows i Linux niestandardowe kontenery działające w usłudze App Service. Kliknij przycisk **instalacji nowego magazynu Azure** i skonfiguruj magazyn niestandardowy w następujący sposób:
+Możesz [dodać niestandardowy magazyn dla aplikacji w kontenerze](containers/how-to-serve-content-from-azure-storage.md). Aplikacje z kontenerami obejmują wszystkie aplikacje systemu Linux, a także kontenery niestandardowe z systemami Windows i Linux działające na App Service. Kliknij pozycję **Nowa instalacja usługi Azure Storage** i skonfiguruj własny magazyn w następujący sposób:
 
 - **Nazwa**: Nazwa wyświetlana.
-- **Opcje konfiguracji**: **Podstawowe** lub **zaawansowane**.
-- **Konta magazynu**: Konto magazynu z kontenerem, który chcesz.
-- **Typ magazynu**: **Obiekty BLOB platformy Azure** lub **usługi Azure Files**.
+- **Opcje konfiguracji**: **Podstawowa** lubzaawansowana.
+- **Konta magazynu**: Konto magazynu z żądanym kontenerem.
+- **Typ magazynu**: **Obiekty blob platformy Azure** lub **Azure Files**.
   > [!NOTE]
-  > Aplikacje kontenerów Windows obsługuje tylko usługi Azure Files.
-- **Kontener magazynu**: Podstawowa konfiguracja kontenera ma.
-- **Nazwa udziału**: Aby konfigurować ustawienia zaawansowane nazwa udziału pliku.
-- **Klucz dostępu**: Aby konfigurować ustawienia zaawansowane, klucz dostępu.
-- **Ścieżkę instalacji**: Ścieżka bezwzględna w Twoim kontenerze, aby zainstalować magazynu niestandardowego.
+  > Aplikacje kontenera systemu Windows obsługują tylko Azure Files.
+- **Kontener magazynu**: W przypadku konfiguracji podstawowej należy użyć żądanego kontenera.
+- **Nazwa udziału**: W przypadku konfiguracji zaawansowanej nazwa udziału plików.
+- **Klucz dostępu**: Aby uzyskać konfigurację zaawansowaną, klucz dostępu.
+- **Ścieżka instalacji**: Ścieżka bezwzględna w kontenerze, w której ma zostać zainstalowany magazyn niestandardowy.
 
-Aby uzyskać więcej informacji, zobacz [obsługiwać zawartość z usługi Azure Storage w usłudze App Service w systemie Linux](containers/how-to-serve-content-from-azure-storage.md).
+Aby uzyskać więcej informacji, zobacz temat [obsługiwanie zawartości z usługi Azure Storage w App Service w systemie Linux](containers/how-to-serve-content-from-azure-storage.md).
 
-## <a name="configure-language-stack-settings"></a>Konfigurowanie ustawień stos języka
+## <a name="configure-language-stack-settings"></a>Konfigurowanie ustawień stosu języka
 
-Dla aplikacji systemu Linux zobacz:
+W przypadku aplikacji systemu Linux Zobacz:
 
 - [ASP.NET Core](containers/configure-language-dotnetcore.md)
 - [Node.js](containers/configure-language-nodejs.md)
@@ -244,26 +246,26 @@ Dla aplikacji systemu Linux zobacz:
 
 ## <a name="configure-custom-containers"></a>Konfigurowanie kontenerów niestandardowych
 
-Zobacz [Konfigurowanie niestandardowego kontenera systemu Linux dla usługi Azure App Service](containers/configure-custom-container.md)
+Zobacz [Konfigurowanie niestandardowego kontenera systemu Linux dla Azure App Service](containers/configure-custom-container.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Konfigurowanie niestandardowej nazwy domeny w usłudze Azure App Service]
 - [Konfigurowanie środowisk przejściowych w usłudze Azure App Service]
-- [Włącz protokół HTTPS dla aplikacji w usłudze Azure App Service]
+- [Włącz protokół HTTPS dla aplikacji w Azure App Service]
 - [Włączanie dzienników diagnostycznych](troubleshoot-diagnostic-logs.md)
-- [Skalowanie aplikacji w usłudze Azure App Service]
-- [Podstawy monitorowania w usłudze Azure App Service]
-- [Zmień ustawienia applicationHost.config z applicationHost.xdt](https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples)
+- [Skalowanie aplikacji w Azure App Service]
+- [Podstawowe informacje o monitorowaniu w Azure App Service]
+- [Zmień ustawienia pliku applicationHost. config za pomocą programu applicationHost. XDT](https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples)
 
 <!-- URL List -->
 
-[ASP.NET SignalR]: https://www.asp.net/signalr
+[ASP.NET sygnalizujący]: https://www.asp.net/signalr
 [Azure Portal]: https://portal.azure.com/
 [Konfigurowanie niestandardowej nazwy domeny w usłudze Azure App Service]: ./app-service-web-tutorial-custom-domain.md
 [Konfigurowanie środowisk przejściowych w usłudze Azure App Service]: ./deploy-staging-slots.md
-[Włącz protokół HTTPS dla aplikacji w usłudze Azure App Service]: ./app-service-web-tutorial-custom-ssl.md
+[Włącz protokół HTTPS dla aplikacji w Azure App Service]: ./app-service-web-tutorial-custom-ssl.md
 [How to: Monitor web endpoint status]: https://go.microsoft.com/fwLink/?LinkID=279906
-[Podstawy monitorowania w usłudze Azure App Service]: ./web-sites-monitor.md
-[Tryb potokowy]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
-[Skalowanie aplikacji w usłudze Azure App Service]: ./web-sites-scale.md
+[Podstawowe informacje o monitorowaniu w Azure App Service]: ./web-sites-monitor.md
+[tryb potokowy]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
+[Skalowanie aplikacji w Azure App Service]: ./web-sites-scale.md

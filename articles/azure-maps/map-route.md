@@ -1,6 +1,6 @@
 ---
 title: Pokaż kierunki z Azure Maps | Microsoft Docs
-description: Jak wyświetlić wskazówki między dwiema lokalizacjami na mapie JavaScript
+description: Jak wyświetlić wskazówki między dwiema lokalizacjami na mapie za pomocą zestawu Azure Maps Web SDK.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: 65f8337585e0a4d1077897274fd07505024af22c
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: cf997d4ae120f3e9309892b112f9954bde97bc76
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638947"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976488"
 ---
 # <a name="show-directions-from-a-to-b"></a>Wyświetlanie instrukcji dotyczących trasy z punktu A do punktu B
 
@@ -37,9 +37,9 @@ Czwarty blok kodu tworzy obiekty [punktów](https://docs.microsoft.com/javascrip
 
 Wiersz jest [funkcją](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) LineString. [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) renderuje obiekty liniowe otoczone w [źródle danych](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako linie na mapie. Czwarty blok kodu tworzy i dodaje warstwę linii do mapy. Zobacz właściwości warstwy linii pod adresem [LinestringLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest).
 
-[Warstwa symboli](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) używa tekstu lub ikon do renderowania danych opartych na punkcie [w postaci symboli](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) na mapie. Piąty blok kodu tworzy i dodaje warstwę symboli do mapy.
+[Warstwa symboli](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) używa tekstu lub ikon do renderowania danych opartych na punkcie w postaci symboli [](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) na mapie. Piąty blok kodu tworzy i dodaje warstwę symboli do mapy.
 
-Szósty blok kodu wysyła zapytania do usługi routingu Azure Maps, która jest częścią [modułu usługi](how-to-use-services-module.md). Metoda [CalculateRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-iot-typescript-latest#methods) RouteURL jest używana do uzyskiwania trasy między punktem początkowym i końcowym. Kolekcja funkcji GEOJSON z odpowiedzi jest wyodrębniana przy użyciu `geojson.getFeatures()` metody i jest dodawana do źródła danych. Następnie renderuje odpowiedź jako trasę na mapie. Aby uzyskać więcej informacji na temat dodawania linii do mapy, zobacz [Dodawanie linii na mapie](./map-add-shape.md#addALine).
+Szósty blok kodu wysyła zapytania do usługi routingu Azure Maps, która jest częścią [modułu usługi](how-to-use-services-module.md). Metoda [CalculateRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-iot-typescript-latest#methods) RouteURL jest używana do uzyskiwania trasy między punktem początkowym i końcowym. Kolekcja funkcji GEOJSON z odpowiedzi jest wyodrębniana przy użyciu `geojson.getFeatures()` metody i jest dodawana do źródła danych. Następnie renderuje odpowiedź jako trasę na mapie. Aby uzyskać więcej informacji na temat dodawania linii do mapy, zobacz [Dodawanie linii na mapie](map-add-line-layer.md).
 
 Ostatni blok kodu ustawia granice mapy przy użyciu właściwości [Setcamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) mapy.
 
@@ -58,11 +58,11 @@ Trzeci blok kodu tworzy punkty początkowy i docelowy dla trasy i dodaje je do �
 
 [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) renderuje obiekty liniowe otoczone w [źródle danych](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako linie na mapie. Czwarty blok kodu tworzy i dodaje warstwę linii do mapy. Zobacz właściwości warstwy linii pod adresem [LineLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest).
 
-[Warstwa symboli](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) używa tekstu lub ikon do renderowania danych opartych na punkcie [w postaci symboli](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) na mapie. Piąty blok kodu tworzy i dodaje warstwę symboli do mapy. Zobacz właściwości warstwy symboli w [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions?view=azure-iot-typescript-latest).
+[Warstwa symboli](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) używa tekstu lub ikon do renderowania danych opartych na punkcie w postaci symboli [](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) na mapie. Piąty blok kodu tworzy i dodaje warstwę symboli do mapy. Zobacz właściwości warstwy symboli w [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions?view=azure-iot-typescript-latest).
 
 Następny blok kodu tworzy `SouthWest` i `NorthEast` wskazuje od punktów początkowych i docelowych oraz określa granice mapy za pomocą właściwości setcamera mapy. [](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-)
 
-Ostatni blok kodu używa [interfejsu API pobierania](https://fetch.spec.whatwg.org/) do żądania wyszukiwania do [Azure Maps interfejsu API tras](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Odpowiedź jest następnie analizowana. Jeśli odpowiedź zakończyła się pomyślnie, informacje o szerokości i długości geograficznej są używane do tworzenia tablicy a linii przez połączenie tych punktów. Dane wiersza są następnie dodawane do źródła danych w celu renderowania trasy na mapie. Aby uzyskać instrukcje, można zobaczyć [, jak dodać wiersz na mapie](./map-add-shape.md#addALine) .
+Ostatni blok kodu używa [interfejsu API pobierania](https://fetch.spec.whatwg.org/) do żądania wyszukiwania do [Azure Maps interfejsu API tras](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Odpowiedź jest następnie analizowana. Jeśli odpowiedź zakończyła się pomyślnie, informacje o szerokości i długości geograficznej są używane do tworzenia tablicy a linii przez połączenie tych punktów. Dane wiersza są następnie dodawane do źródła danych w celu renderowania trasy na mapie. Aby uzyskać instrukcje, można zobaczyć [, jak dodać wiersz na mapie](map-add-line-layer.md) .
 
 Kwerenda trasy, źródło danych, symbol i warstwy linii oraz granice aparatu są tworzone i ustawiane w [odbiorniku zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) mapy, aby upewnić się, że wyniki są wyświetlane po całkowitym załadowaniu mapy.
 

@@ -1,29 +1,29 @@
 ---
-title: Uczenie i rejestrowanie modeli TensorFlow
+title: Uczenie sieci neuronowych uczenie głębokie z TensorFlow
 titleSuffix: Azure Machine Learning service
-description: W tym artykule przedstawiono sposób uczenia i rejestrowania modelu TensorFlow przy użyciu usługi Azure Machine Learning.
+description: Dowiedz się, jak uruchamiać skrypty szkoleniowe TensorFlow na dużą skalę za pomocą usługi Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: maxluk
 author: maxluk
-ms.date: 06/10/2019
+ms.date: 08/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: a5d281598bc905914b71f40d556cfa0b16a46485
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 41ebca7bd4ea299bda7e2d7a95edced583866527
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847649"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966807"
 ---
-# <a name="train-and-register-tensorflow-models-at-scale-with-azure-machine-learning-service"></a>Uczenie i rejestrowanie modeli TensorFlow na dużą skalę za pomocą usługi Azure Machine Learning
+# <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Twórz TensorFlow model uczenia głębokiego na dużą skalę dzięki Azure Machine Learning
 
-W tym artykule przedstawiono sposób uczenia i rejestrowania modelu TensorFlow przy użyciu usługi Azure Machine Learning. Używa popularnego [zestawu danych mnist ręcznie](http://yann.lecun.com/exdb/mnist/) do klasyfikowania ręcznych cyfr przy użyciu głębokiej sieci neuronowych utworzonej przy użyciu [biblioteki języka Python TensorFlow](https://www.tensorflow.org/overview).
+W tym artykule pokazano, jak uruchamiać skrypty szkoleniowe [TensorFlow](https://www.tensorflow.org/overview) na dużą skalę przy użyciu klasy [TensorFlow szacowania](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) Azure Machine Learning. Ten przykład pociąga za siebie i rejestruje model TensorFlow do klasyfikowania cyfr pisanych ręcznie przy użyciu sieci głębokiej neuronowych (DNN).
 
-TensorFlow to platforma obliczeniowa Open Source często używana do tworzenia sieci głębokiej neuronowych (DNN). Usługa Azure Machine Learning umożliwia szybkie skalowanie zadań szkoleniowych "open source" przy użyciu elastycznych zasobów obliczeniowych w chmurze. Możesz również śledzić przebiegi szkoleniowe, modele wersji, wdrażać modele i wiele innych.
+Bez względu na to, czy tworzysz model TensorFlow z podstaw, czy przenosisz [istniejący model](how-to-deploy-existing-model.md) do chmury, możesz użyć Azure Machine Learning, aby skalować zadania szkoleniowe typu "open source" do kompilowania, wdrażania, wersji i monitorowania modeli klasy produkcyjnej .
 
-Bez względu na to, czy tworzysz model TensorFlow z podstaw, czy przenosisz [istniejący model](how-to-deploy-existing-model.md) do chmury, usługa Azure Machine Learning może pomóc w tworzeniu modeli gotowych do produkcji.
+Dowiedz się [](concept-deep-learning-vs-machine-learning.md)więcej na temat uczenia głębokiego i uczenia maszynowego.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -32,7 +32,7 @@ Uruchom ten kod w dowolnym z następujących środowisk:
  - Maszyna wirtualna w Azure Machine Learning Notes — nie jest wymagane pobieranie ani instalacja
 
      - Wykonaj kroki z artykułu [Samouczek: Zainstaluj środowisko i obszar](tutorial-1st-experiment-sdk-setup.md) roboczy, aby utworzyć dedykowany serwer notesu wstępnie załadowany z zestawem SDK i przykładowym repozytorium.
-    - W folderze Samples na serwerze notesu Znajdź ukończony i rozwinięty Notes, przechodząc do tego katalogu: How to- **use-azure > Training-with-Learning-uczenie > uczenie** ----------tensorflow. 
+    - W folderze przykłady głębokiego uczenia na serwerze notesu Znajdź ukończony i rozwinięty Notes, przechodząc do tego katalogu: How to- **use-azure > Training-with-Learning-uczenie >** uczenie-tensorflow system32\drivers\etc. 
  
  - Własny serwer Jupyter Notebook
 
@@ -73,7 +73,7 @@ Utwórz obiekt obszaru roboczego z `config.json` pliku utworzonego w [sekcji wym
 ws = Workspace.from_config()
 ```
 
-### <a name="create-an-experiment"></a>Tworzenie eksperymentu
+### <a name="create-a-deep-learning-experiment"></a>Utwórz eksperyment uczenia głębokiego
 
 Utwórz eksperyment i folder do przechowywania skryptów szkoleniowych. W tym przykładzie Utwórz eksperyment o nazwie "TF-mnist ręcznie".
 
@@ -292,5 +292,9 @@ cluster_spec = tf.train.ClusterSpec(cluster)
 
 W tym artykule został przeszkolony i zarejestrowany model TensorFlow. Aby dowiedzieć się, jak wdrożyć model w klastrze z obsługą procesora GPU, przejdź do artykułu Wdrażanie modelu procesora GPU.
 
-[Jak wdrożyć program inferencing z procesorami GPU](how-to-deploy-inferencing-gpus.md)
-[, jak monitorować za pomocą Tensorboard](how-to-monitor-tensorboard.md)
+> [!div class="nextstepaction"]
+> [Jak i gdzie wdrażać modele](how-to-deploy-and-where.md)
+* [Śledzenie metryk są uruchamiane podczas szkolenia](how-to-track-experiments.md)
+* [Dostosowywanie hiperparametrów](how-to-tune-hyperparameters.md)
+* [Wdrażanie uczonego modelu](how-to-deploy-and-where.md)
+* [Architektura referencyjna na potrzeby rozproszonego szkolenia uczenia głębokiego na platformie Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)

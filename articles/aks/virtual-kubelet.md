@@ -1,6 +1,6 @@
 ---
-title: Uruchom rozwiązania Virtual Kubelet w klastrze usługi Azure Kubernetes Service (AKS)
-description: Dowiedz się, jak za pomocą rozwiązania Virtual Kubelet za pomocą usługi Azure Kubernetes Service (AKS) uruchamianie kontenerów systemu Linux i Windows w usłudze Azure Container Instances.
+title: Uruchamianie Kubelet wirtualnych w klastrze usługi Azure Kubernetes Service (AKS)
+description: Dowiedz się, jak używać wirtualnej usługi Kubelet z usługą Azure Kubernetes Service (AKS) do uruchamiania kontenerów systemów Linux i Windows w systemie Azure Container Instances.
 services: container-service
 author: mlearned
 manager: jeconnoc
@@ -9,40 +9,40 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
 ms.openlocfilehash: f18992be353d2d6cc739412d98ccd97d5e78d4c7
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67613854"
 ---
-# <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Rozwiązania Virtual Kubelet za pomocą usługi Azure Kubernetes Service (AKS)
+# <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Korzystanie z wirtualnego Kubelet z usługą Azure Kubernetes Service (AKS)
 
-Usługa Azure Container Instances (ACI) zapewniają hostowanej środowisko do uruchamiania kontenerów na platformie Azure. Korzystając z usługi ACI, nie ma konieczności zarządzania podstawową infrastrukturą obliczeń, Azure obsługuje zarządzania dla Ciebie. Uruchamianie kontenerów w usłudze ACI, opłaty są naliczane za sekundę dla każdego uruchomionego kontenera.
+Azure Container Instances (ACI) zapewniają hostowane środowisko do uruchamiania kontenerów na platformie Azure. W przypadku korzystania z ACI nie ma potrzeby zarządzania podstawową infrastrukturą obliczeniową. platforma Azure obsługuje to zarządzanie za Ciebie. W przypadku korzystania z kontenerów w programie ACI opłata jest naliczana na sekundę dla każdego uruchomionego kontenera.
 
-W przypadku używania dostawcy rozwiązania Virtual Kubelet dla usługi Azure Container Instances, kontenerów systemów Linux i Windows można zaplanować na wystąpienie kontenera tak, jakby była standardowy węzeł rozwiązania Kubernetes. Ta konfiguracja umożliwia korzystanie z zalet możliwości platformy Kubernetes i korzyści wartość i kosztów zarządzania wystąpienia kontenera.
+W przypadku korzystania z dostawcy wirtualnego Kubelet dla Azure Container Instances, można zaplanować zarówno kontenery systemu Linux, jak i Windows w przypadku wystąpienia kontenera, tak jakby był to standardowy węzeł Kubernetes. Ta konfiguracja pozwala korzystać z zalet Kubernetes oraz wartości zarządzania i kosztów usługi Container Instances.
 
 > [!NOTE]
-> AKS ma teraz wbudowaną obsługę planowania kontenerów w usłudze ACI, o nazwie *wirtualnych węzłów*. Te węzły wirtualny obsługuje obecnie wystąpień kontenera systemu Linux. Jeśli potrzebujesz do zaplanowania Windows container instances, możesz kontynuować używanie rozwiązania Virtual Kubelet. W przeciwnym razie należy użyć wirtualnych węzłów zamiast ręcznego instrukcji rozwiązania Virtual Kubelet wymienionych w tym artykule. Możesz rozpocząć pracę z wirtualnych węzłów przy użyciu [wiersza polecenia platformy Azure][virtual-nodes-cli] or [Azure portal][virtual-nodes-portal].
+> AKS teraz ma wbudowaną obsługę planowania kontenerów w usłudze ACI, nazywanej *węzłami wirtualnymi*. Te węzły wirtualne obecnie obsługują wystąpienia kontenera systemu Linux. Jeśli musisz zaplanować wystąpienia kontenera systemu Windows, możesz kontynuować korzystanie z wirtualnego Kubelet. W przeciwnym razie należy użyć węzłów wirtualnych zamiast ręcznie instrukcji wirtualnego Kubelet zanotowanych w tym artykule. Możesz rozpocząć pracę z węzłami wirtualnymi za pomocą [interfejsu wiersza polecenia platformy Azure][virtual-nodes-cli] lub [Azure Portal][virtual-nodes-portal].
 >
-> Rozwiązania Virtual Kubelet jest projektem eksperymentalne "open source" i powinna być używana w związku z tym. Aby współtworzyć, problemów z plików i Przeczytaj więcej na temat rozwiązania virtual kubelet, zobacz [projektu wirtualnego GitHub agenta Kubelet][vk-github].
+> Virtual Kubelet to eksperymentalny projekt typu "open source", który powinien być używany jako taki. Aby współtworzyć, rozwiązywać problemy z plikami i dowiedzieć się więcej na temat usługi Virtual kubelet, zobacz [Virtual Kubelet GitHub Project][vk-github].
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W tym dokumencie przyjęto założenie, iż klaster AKS. Jeśli potrzebujesz klastra AKS, zobacz [szybkiego startu usługi Azure Kubernetes Service (AKS)][aks-quick-start].
+W tym dokumencie przyjęto założenie, że masz klaster AKS. Jeśli potrzebujesz klastra AKS, zapoznaj się z [przewodnikiem Szybki Start dotyczącym usługi Azure Kubernetes Service (AKS)][aks-quick-start].
 
-Należy również wiersza polecenia platformy Azure w wersji **2.0.65** lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
+Wymagany jest również interfejs wiersza polecenia platformy Azure w wersji **2.0.65** lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 
-Aby zainstalować rozwiązania Virtual Kubelet, zainstaluj i skonfiguruj [Helm][aks-helm] w klastrze AKS. Upewnij się, że Twoje Tiller znajduje się [skonfigurowane do użycia z usługą Kubernetes RBAC](#for-rbac-enabled-clusters), jeśli to konieczne.
+Aby zainstalować wirtualną Kubelet, zainstaluj i skonfiguruj [Helm][aks-helm] w klastrze AKS. Upewnij się, że do korzystania z usługi Kubernetes RBAC, w razie potrzeby, został [skonfigurowany do użycia w programie](#for-rbac-enabled-clusters).
 
 ### <a name="register-container-instances-feature-provider"></a>Zarejestruj dostawcę funkcji Container Instances
 
-Jeśli wcześniej nie używano usługi wystąpienia kontenera platformy Azure (ACI), należy zarejestrować dostawcę usług w ramach subskrypcji. Możesz sprawdzić stan usługi ACI dostawcy rejestracji za pomocą [az provider list][az-provider-list] polecenia, jak pokazano w poniższym przykładzie:
+Jeśli nie korzystano wcześniej z usługi Azure Container Instance (ACI), zarejestruj dostawcę usług w ramach subskrypcji. Stan rejestracji dostawcy ACI można sprawdzić za pomocą polecenia [AZ Provider list][az-provider-list] , jak pokazano w następującym przykładzie:
 
 ```azurecli-interactive
 az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" -o table
 ```
 
-*Microsoft.ContainerInstance* dostawca powinien wysyłać raporty jako *zarejestrowanej*, jak pokazano w następujących przykładowych danych wyjściowych:
+Dostawca *Microsoft. ContainerInstance* powinien raportować jako *zarejestrowane*, jak pokazano w następujących przykładowych danych wyjściowych:
 
 ```console
 Namespace                    RegistrationState
@@ -50,15 +50,15 @@ Namespace                    RegistrationState
 Microsoft.ContainerInstance  Registered
 ```
 
-Jeśli dostawca jest wyświetlany jako *NotRegistered*, zarejestruj dostawcę przy użyciu [az provider register][az-provider-register] jak pokazano w poniższym przykładzie:
+Jeśli dostawca jest wyświetlany jako *NotRegistered*, zarejestruj dostawcę przy użyciu polecenia [AZ Provider Register][az-provider-register] , jak pokazano w następującym przykładzie:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerInstance
 ```
 
-### <a name="for-rbac-enabled-clusters"></a>W przypadku klastrów z obsługą kontroli RBAC
+### <a name="for-rbac-enabled-clusters"></a>W przypadku klastrów z obsługą kontroli dostępu RBAC
 
-W przypadku klastra usługi AKS z obsługą funkcji RBAC, należy utworzyć konta usługi i roli powiązania do użycia z Tiller. Aby uzyskać więcej informacji, zobacz [kontroli dostępu opartej na rolach Helm][helm-rbac]. Aby utworzyć konto usługi i powiązania roli, Utwórz plik o nazwie *rbac wirtualnego — kubelet.yaml* i wklej następującą definicję:
+Jeśli klaster AKS jest włączony przez funkcję RBAC, należy utworzyć konto usługi i powiązanie roli do użycia z tym itd. Aby uzyskać więcej informacji, zobacz [Helm kontroli dostępu opartej na rolach][helm-rbac]. Aby utworzyć konto usługi i powiązanie roli, Utwórz plik o nazwie *RBAC-Virtual-kubelet. YAML* i wklej następującą definicję:
 
 ```yaml
 apiVersion: v1
@@ -81,7 +81,7 @@ subjects:
     namespace: kube-system
 ```
 
-Zastosuj konta usługi i powiązania z [zastosować kubectl][kubectl-apply] i określ swoje *rbac wirtualnego — kubelet.yaml* pliku, jak pokazano w poniższym przykładzie:
+Zastosuj konto usługi i powiązanie z [polecenia kubectl Zastosuj][kubectl-apply] i określ plik *RBAC-Virtual-kubelet. YAML* , jak pokazano w następującym przykładzie:
 
 ```console
 $ kubectl apply -f rbac-virtual-kubelet.yaml
@@ -89,17 +89,17 @@ $ kubectl apply -f rbac-virtual-kubelet.yaml
 clusterrolebinding.rbac.authorization.k8s.io/tiller created
 ```
 
-Konfigurowanie narzędzia Helm, aby użyć konta usługi programu tiller:
+Skonfiguruj Helm do korzystania z konta usługi do obsługi:
 
 ```console
 helm init --service-account tiller
 ```
 
-Teraz można kontynuować instalowania rozwiązania Virtual Kubelet w klastrze AKS.
+Teraz można nadal instalować wirtualne Kubelet w klastrze AKS.
 
 ## <a name="installation"></a>Instalacja
 
-Użyj [az aks install-connector][aks-install-connector] polecenie, aby zainstalować rozwiązania Virtual Kubelet. Poniższy przykład służy do wdrażania łącznika z systemem Linux i Windows.
+Użyj polecenia [AZ AKS Install-Connector][aks-install-connector] , aby zainstalować wirtualną Kubelet. Poniższy przykład służy do wdrażania łącznika Linux i Windows.
 
 ```azurecli-interactive
 az aks install-connector \
@@ -109,24 +109,24 @@ az aks install-connector \
     --os-type Both
 ```
 
-Te argumenty są dostępne dla [az aks install-connector][aks-install-connector] polecenia.
+Te argumenty są dostępne dla polecenia [AZ AKS Install-Connector][aks-install-connector] .
 
-| Argument: | Opis | Wymagane |
+| Argument | Opis | Wymagane |
 |---|---|:---:|
-| `--connector-name` | Nazwa łącznika usługi ACI.| Yes |
-| `--name``-n` | Nazwa zarządzanego klastra. | Yes |
+| `--connector-name` | Nazwa łącznika ACI.| Tak |
+| `--name``-n` | Nazwa zarządzanego klastra. | Tak |
 | `--resource-group``-g` | Nazwa grupy zasobów. | Tak |
-| `--os-type` | Typ systemu operacyjnego wystąpienia kontenera. Dozwolone wartości: Oba, Linux oraz Windows. Wartość domyślna: Linux. | Nie |
-| `--aci-resource-group` | Grupa zasobów, w której chcesz utworzyć grup kontenerów usługi ACI. | Nie |
-| `--location``-l` | Lokalizacja do tworzenia grup kontenerów usługi ACI. | Nie |
-| `--service-principal` | Jednostki usługi używany do uwierzytelniania do interfejsów API platformy Azure. | Nie |
-| `--client-secret` | Klucz tajny skojarzony z jednostką usługi. | Nie |
+| `--os-type` | Typ systemu operacyjnego wystąpień kontenerów. Dozwolone wartości: Oba systemy, Linux i Windows. Domyślne: Linux. | Nie |
+| `--aci-resource-group` | Grupa zasobów, w której mają zostać utworzone grupy kontenerów ACI. | Nie |
+| `--location``-l` | Lokalizacja, w której mają zostać utworzone grupy kontenerów ACI. | Nie |
+| `--service-principal` | Nazwa główna usługi używana na potrzeby uwierzytelniania w interfejsach API platformy Azure. | Nie |
+| `--client-secret` | Wpis tajny skojarzony z jednostką usługi. | Nie |
 | `--chart-url` | Adres URL wykresu Helm, który instaluje łącznik ACI. | Nie |
-| `--image-tag` | Tag obrazu rozwiązania virtual kubelet obrazu kontenera. | Nie |
+| `--image-tag` | Tag obrazu wirtualnego obrazu kontenera kubelet. | Nie |
 
-## <a name="validate-virtual-kubelet"></a>Sprawdź poprawność rozwiązania Virtual Kubelet
+## <a name="validate-virtual-kubelet"></a>Weryfikuj wirtualną Kubelet
 
-Aby sprawdzić, czy zainstalowano rozwiązania Virtual Kubelet, powróci do listy węzłów rozwiązania Kubernetes za pomocą [kubectl get-węzły][kubectl-get] polecenia:
+Aby sprawdzić, czy zainstalowano wirtualną Kubelet, zwróć listę węzłów Kubernetes przy użyciu polecenia [polecenia kubectl Get nodes][kubectl-get] :
 
 ```console
 $ kubectl get nodes
@@ -139,7 +139,7 @@ virtual-kubelet-virtual-kubelet-windows-eastus   Ready    agent   37s   v1.13.1-
 
 ## <a name="run-linux-container"></a>Uruchamianie kontenera systemu Linux
 
-Utwórz plik o nazwie `virtual-kubelet-linux.yaml` i skopiuj do poniższego kodu YAML. Zwróć uwagę, że [nodeSelector][node-selector] and [toleration][toleration] są używane do zaplanowania kontenerów w węźle.
+Utwórz plik o nazwie `virtual-kubelet-linux.yaml` i skopiuj w następującym YAML. Należy zauważyć, że [nodeSelector][node-selector] i [tolerowanie][toleration] są używane do zaplanowania kontenera w węźle.
 
 ```yaml
 apiVersion: apps/v1
@@ -172,13 +172,13 @@ spec:
         effect: NoSchedule
 ```
 
-Uruchom aplikację za pomocą [tworzenie kubectl][kubectl-create] polecenia.
+Uruchom aplikację za pomocą polecenia [polecenia kubectl Create][kubectl-create] .
 
 ```console
 kubectl create -f virtual-kubelet-linux.yaml
 ```
 
-Użyj [kubectl get pods-][kubectl-get] polecenia `-o wide` argument służący do wypełniania wyjściowego listę zasobników w węźle zaplanowane. Należy zauważyć, że `aci-helloworld` zasobnika została zaplanowana na `virtual-kubelet-virtual-kubelet-linux` węzła.
+Użyj [polecenia kubectl Get][kubectl-get] — polecenie z `-o wide` argumentem, aby wypróbować listę zasobników z zaplanowanym węzłem. Zwróć uwagę `aci-helloworld` `virtual-kubelet-virtual-kubelet-linux` na to, że zgodnie z harmonogramem zaplanowano w węźle.
 
 ```console
 $ kubectl get pods -o wide
@@ -189,7 +189,7 @@ aci-helloworld-7b9ffbf946-rx87g   1/1     Running   0          22s     52.224.14
 
 ## <a name="run-windows-container"></a>Uruchamianie kontenera systemu Windows
 
-Utwórz plik o nazwie `virtual-kubelet-windows.yaml` i skopiuj do poniższego kodu YAML. Zwróć uwagę, że [nodeSelector][node-selector] and [toleration][toleration] są używane do zaplanowania kontenerów w węźle.
+Utwórz plik o nazwie `virtual-kubelet-windows.yaml` i skopiuj w następującym YAML. Należy zauważyć, że [nodeSelector][node-selector] i [tolerowanie][toleration] są używane do zaplanowania kontenera w węźle.
 
 ```yaml
 apiVersion: apps/v1
@@ -222,13 +222,13 @@ spec:
         effect: NoSchedule
 ```
 
-Uruchom aplikację za pomocą [tworzenie kubectl][kubectl-create] polecenia.
+Uruchom aplikację za pomocą polecenia [polecenia kubectl Create][kubectl-create] .
 
 ```console
 kubectl create -f virtual-kubelet-windows.yaml
 ```
 
-Użyj [kubectl get pods-][kubectl-get] polecenia `-o wide` argument służący do wypełniania wyjściowego listę zasobników w węźle zaplanowane. Należy zauważyć, że `nanoserver-iis` zasobnika została zaplanowana na `virtual-kubelet-virtual-kubelet-windows` węzła.
+Użyj [polecenia kubectl Get][kubectl-get] — polecenie z `-o wide` argumentem, aby wypróbować listę zasobników z zaplanowanym węzłem. Zwróć uwagę `nanoserver-iis` `virtual-kubelet-virtual-kubelet-windows` na to, że zgodnie z harmonogramem zaplanowano w węźle.
 
 ```console
 $ kubectl get pods -o wide
@@ -237,9 +237,9 @@ NAME                              READY   STATUS    RESTARTS   AGE     IP       
 nanoserver-iis-5d999b87d7-6h8s9   1/1     Running   0          47s     52.224.143.39    virtual-kubelet-virtual-kubelet-windows-eastus
 ```
 
-## <a name="remove-virtual-kubelet"></a>Usuwanie rozwiązania Virtual Kubelet
+## <a name="remove-virtual-kubelet"></a>Usuń wirtualną Kubelet
 
-Użyj [az aks remove-connector][aks-remove-connector] polecenie, aby usunąć rozwiązania Virtual Kubelet. Zastąp wartości argumentu z nazwą łącznika, klaster AKS i grupa zasobów klastra usługi AKS.
+Użyj polecenia [AZ AKS Remove-Connector][aks-remove-connector] , aby usunąć wirtualną Kubelet. Zastąp wartości argumentów nazwą łącznika, klastrem AKS i grupą zasobów klastra AKS.
 
 ```azurecli-interactive
 az aks remove-connector \
@@ -250,13 +250,13 @@ az aks remove-connector \
 ```
 
 > [!NOTE]
-> Wystąpiły błędy usuwania oba łączniki systemu operacyjnego, czy chcesz usunąć tylko Windows lub systemu operacyjnego Linux łącznika, można ręcznie określić typ systemu operacyjnego. Dodaj `--os-type` parametru do poprzedniego `az aks remove-connector` polecenia, a następnie określ `Windows` lub `Linux`.
+> Jeśli wystąpią błędy podczas usuwania obu łączników systemu operacyjnego lub chcesz usunąć tylko łącznik systemu operacyjnego Windows lub Linux, możesz ręcznie określić typ systemu operacyjnego. Dodaj parametr do poprzedniego `az aks remove-connector` polecenia i określ `Windows` lub `Linux`. `--os-type`
 
 ## <a name="next-steps"></a>Następne kroki
 
-W przypadku możliwych problemów za pomocą rozwiązania Virtual Kubelet, zobacz [znane Osobliwości wraz z ich obejściami][vk-troubleshooting]. To report problems with the Virtual Kubelet, [open a GitHub issue][vk-issues].
+Aby uzyskać możliwe problemy z wirtualną Kubelet, zobacz [znane osobliwości i obejścia][vk-troubleshooting]. Aby zgłosić problemy z wirtualną Kubelet, [Otwórz problem][vk-issues]z usługą GitHub.
 
-Przeczytaj więcej na temat rozwiązania Virtual Kubelet w [projektu wirtualnego GitHub agenta Kubelet][vk-github].
+Przeczytaj więcej na temat wirtualnego Kubelet w [projekcie usługi Kubelet][vk-github]w witrynie GitHub.
 
 <!-- LINKS - internal -->
 [aks-quick-start]: ./kubernetes-walkthrough.md

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: c3cd734380e2a3e3fbf35439ff807738c549a086
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: a59b36fbbde2bf0941ee61f523555824d28a7a98
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726144"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967017"
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>Kopiowanie danych z Couchbase przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -31,6 +31,10 @@ W tym artykule opisano sposób używania działania kopiowania w usłudze Azure 
 Możesz skopiować dane z Couchbase, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
 Usługa Azure Data Factory udostępnia wbudowanego sterownika, aby umożliwić łączność, dlatego nie trzeba ręcznie zainstalować dowolnego sterownika, za pomocą tego łącznika.
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="getting-started"></a>Wprowadzenie
 
@@ -46,7 +50,7 @@ Następujące właściwości są obsługiwane w przypadku Couchbase połączone 
 |:--- |:--- |:--- |
 | type | Właściwość Type musi mieć ustawioną wartość: **Couchbase** | Tak |
 | connectionString | Ciąg połączenia ODBC, aby nawiązać połączenie Couchbase. <br/>Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory. Można również umieścić ciąg poświadczeń w Azure Key Vault i ściągnąć `credString` konfigurację z parametrów połączenia. Zapoznaj się z poniższymi przykładami i [Zapisz poświadczenia w Azure Key Vault](store-credentials-in-key-vault.md) artykule, aby uzyskać więcej szczegółów. | Tak |
-| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Używając środowiskiem Integration Runtime lub Azure Integration Runtime (Jeśli magazyn danych jest publicznie dostępny). Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
+| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
 **Przykład:**
 
@@ -106,7 +110,7 @@ Aby skopiować dane z Couchbase, należy ustawić właściwość typu zestawu da
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **CouchbaseTable** | Yes |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **CouchbaseTable** | Tak |
 | tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 

@@ -8,26 +8,13 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 438f450efe207999947795878a9815fca64f45ca
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: a627592bdfcbebc3c7fcda911e31c0ae6f4a630f
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68702958"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976615"
 ---
-Dedykowany Host platformy Azure to usługa, która zapewnia serwerom fizycznym możliwość hostowania co najmniej jednej maszyny wirtualnej — dedykowanej dla jednej subskrypcji platformy Azure. Dedykowane hosty to te same serwery fizyczne, które są używane w centrach danych, udostępniane jako zasób. Można udostępnić dedykowane hosty w obrębie regionu, strefy dostępności i domeny błędów. Następnie można umieścić maszyny wirtualne bezpośrednio na hostach, w których konfiguracja najlepiej odpowiada Twoim potrzebom.
-
-> [!IMPORTANT]
-> Dedykowane hosty platformy Azure są obecnie dostępne w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-> **Ograniczenia znanej wersji zapoznawczej**
-> - Zestawy skalowania maszyn wirtualnych nie są obecnie obsługiwane na dedykowanych hostach.
-> - Początkowa wersja zapoznawcza obsługuje następującą serię maszyn wirtualnych: DSv3 i ESv3. 
-> - W trakcie okresu zapoznawczego nie można zmienić rozmiaru maszyny wirtualnej wdrożonej na dedykowanym hoście.
-> - Kontrola nad możliwościami konserwacji znajduje się w ograniczonej wersji zapoznawczej. Zacznij od wykonania tej [ankiety nominacji](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6lJf7DwiQxNmz51ksQvxV9UNUM3UllWUjBMTFZQUFhHUDI0VTBPQlJFNS4u) , aby wypróbować ją.  
-> W wersji zapoznawczej nie będziemy oferować opcji zarezerwowanej pojemności. 
-
 ## <a name="benefits"></a>Korzyści 
 
 Rezerwowanie całego hosta zapewnia następujące korzyści:
@@ -126,6 +113,6 @@ Platforma Azure monitoruje stan kondycji hostów i zarządza nim. Podczas wykony
 |----------|----------------|
 | Dostępne hosty     | Nie ma żadnych znanych problemów z hostem.   |
 | Host objęty badaniem  | Mamy problemy z hostem, do którego chcemy. Jest to stan przejściowy wymagany przez platformę Azure do wypróbowania i zidentyfikowania zakresu oraz głównej przyczyny zidentyfikowanego problemu. Może to mieć wpływ na maszyny wirtualne działające na hoście. |
-| Host oczekujący na cofnięcie alokacji   | Platforma Azure nie może przywrócić kondycji hosta z powrotem do stanu prawidłowego i poprosił o ponowne wdrożenie maszyn wirtualnych poza tym hostem. Jeśli `autoHealingOnFailure` ta funkcja jest włączona, Twoje maszyny *wirtualne są w* dobrej kondycji. W przeciwnym razie maszyna wirtualna może działać na hoście, który kończy się niepowodzeniem.|
+| Host oczekujący na cofnięcie alokacji   | Platforma Azure nie może przywrócić kondycji hosta z powrotem do stanu prawidłowego i poprosił o ponowne wdrożenie maszyn wirtualnych poza tym hostem. Jeśli `autoHealingOnFailure` ta funkcja jest włączona, Twoje maszyny wirtualne są w dobrej kondycji. W przeciwnym razie maszyna wirtualna może działać na hoście, który kończy się niepowodzeniem.|
 | Cofnięto przydział hosta  | Wszystkie maszyny wirtualne zostały usunięte z hosta. Nie są już naliczane opłaty za tego hosta, ponieważ sprzęt nie został przetworzony.   |
 

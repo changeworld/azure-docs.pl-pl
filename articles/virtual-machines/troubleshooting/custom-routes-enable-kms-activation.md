@@ -1,6 +1,6 @@
 ---
-title: Użyj trasy niestandardowe platformy Azure, aby włączyć aktywacji usługi KMS przy wymuszonego tunelowania | Dokumentacja firmy Microsoft
-description: Pokazuje, jak włączyć aktywacji usługi KMS, gdy używanie wymuszonego tunelowania na platformie Azure za pomocą platformy Azure tras niestandardowych.
+title: Używanie tras niestandardowych platformy Azure w celu włączenia aktywacji usługi KMS z wymuszonym tunelowaniem | Microsoft Docs
+description: Pokazuje, jak używać niestandardowych tras platformy Azure, aby włączyć aktywację usługi KMS podczas korzystania z wymuszonego tunelowania na platformie Azure.
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: genlin
@@ -14,46 +14,49 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: 6557649eb1b97ad4d88876906737f8249e18b958
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2877fae66584ec24fb6e62b20d66ded36157b824
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399804"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990350"
 ---
-# <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>Windows activation zakończy się niepowodzeniem w scenariuszu tunelowania wymuszonego
+# <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>Aktywacja systemu Windows kończy się niepowodzeniem w scenariuszu wymuszonego tunelowania
 
-W tym artykule opisano, jak rozwiązać problem aktywacji usługi KMS, który może wystąpić po włączeniu wymuszonego tunelowania, połączenie sieci VPN typu lokacja lokacja lub ExpressRoute scenariuszy.
+W tym artykule opisano sposób rozwiązywania problemu z aktywacją usługi KMS, który może wystąpić po włączeniu wymuszonego tunelowania w scenariuszach połączenia sieci VPN typu lokacja-lokacja lub ExpressRoute.
 
 ## <a name="symptom"></a>Objaw
 
-Możesz włączyć [wymuszonego tunelowania](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) na platformie Azure podsieci sieci wirtualnej w celu przekierowania całego ruchu skierowanego do Internetu z powrotem do sieci lokalnej. W tym scenariuszu maszyn wirtualnych (VM) z systemem Windows Server 2012 R2 (lub nowszych wersjach systemu Windows) można pomyślnie aktywować Windows. Jednak maszyn wirtualnych z systemem wcześniejszej wersji programu Windows zakończyć się niepowodzeniem do aktywowania Windows.
+Wymuszone [tunelowanie](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) można włączyć w podsieciach sieci wirtualnej platformy Azure, aby skierować cały ruch związany z Internetem z powrotem do sieci lokalnej. W tym scenariuszu usługi Azure Virtual Machines (VM) z systemem Windows Server 2012 R2 (lub nowszym) mogą pomyślnie aktywować system Windows. Jednak maszyny wirtualne, na których działa wcześniejsza wersja systemu Windows, nie mogą aktywować systemu Windows.
 
 ## <a name="cause"></a>Przyczyna
 
-Maszyny wirtualne Windows Azure należy połączyć się z serwerem usługi zarządzania Kluczami Azure Windows aktywacji. Aktywacja wymaga, że żądanie aktywacji pochodzą z platformy Azure, publiczny adres IP. W tym scenariuszu do tunelowania wymuszonego aktywacja nie działa, ponieważ żądanie aktywacji pochodzi z siecią lokalną a nie z platformy Azure, publiczny adres IP.
+Maszyny wirtualne z systemem Windows Azure muszą nawiązać połączenie z serwerem usługi Azure KMS w celu aktywacji systemu Windows. Aktywacja wymaga, aby żądanie aktywacji pochodzi z publicznego adresu IP platformy Azure. W scenariuszu wymuszonego tunelowania aktywacja nie powiedzie się, ponieważ żądanie aktywacji pochodzi z sieci lokalnej zamiast z publicznego adresu IP platformy Azure.
 
 ## <a name="solution"></a>Rozwiązanie
 
-Aby rozwiązać ten problem, należy użyć ruch aktywacji systemu Azure trasę lub trasy niestandardowe do serwera Azure usługi zarządzania Kluczami.
+Aby rozwiązać ten problem, Użyj niestandardowej trasy platformy Azure do kierowania ruchu aktywacji do serwera usługi Azure KMS.
 
-Adres IP serwera usługi KMS dla chmury globalnej platformy Azure jest 23.102.135.246. Nazwy DNS jest kms.core.windows.net. Jeśli używasz innych platform Azure, takich jak Azure (Niemcy), musisz podać adres IP serwera usługi KMS, odpowiednie. Aby uzyskać więcej informacji zobacz w poniższej tabeli:
+Adres IP serwera usługi KMS dla chmury globalnej platformy Azure to 23.102.135.246. Nazwa DNS to kms.core.windows.net. Jeśli używasz innych platform platformy Azure, takich jak Azure (Niemcy), musisz użyć adresu IP odpowiedniego serwera usługi KMS. Aby uzyskać więcej informacji, zobacz następującą tabelę:
 
-|Platforma| KMS DNS|KMS IP|
+|Platforma| USŁUGA KMS DNS|ADRES IP USŁUGI KMS|
 |------|-------|-------|
-|Globalna platforma Azure|kms.core.windows.net|23.102.135.246|
+|Globalne platformy Azure|kms.core.windows.net|23.102.135.246|
 |Azure (Niemcy)|kms.core.cloudapi.de|51.4.143.248|
 |Wersja platformy Azure dla administracji USA|kms.core.usgovcloudapi.net|23.97.0.13|
 |Azure w Chinach — 21Vianet|kms.core.chinacloudapi.cn|42.159.7.249|
 
 
-Aby dodać trasy niestandardowej, wykonaj następujące kroki:
+Aby dodać trasę niestandardową, wykonaj następujące kroki:
 
-### <a name="for-resource-manager-vms"></a>W przypadku maszyn wirtualnych usługi Resource Manager
+### <a name="for-resource-manager-vms"></a>Dla maszyn wirtualnych Menedżer zasobów
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
-1. Otwórz program Azure PowerShell, a następnie [Zaloguj się do subskrypcji platformy Azure](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+> [!NOTE] 
+> Aktywacja używa publicznych adresów IP i ma wpływ na konfigurację Load Balancer standardowej jednostki SKU. Uważnie Przejrzyj [połączenia wychodzące na platformie Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) , aby dowiedzieć się więcej o wymaganiach.
+
+1. Otwórz Azure PowerShell, a następnie [Zaloguj się do swojej subskrypcji platformy Azure](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 2. Uruchom następujące polecenia:
 
     ```powershell
@@ -75,15 +78,15 @@ Aby dodać trasy niestandardowej, wykonaj następujące kroki:
 
     Set-AzVirtualNetwork -VirtualNetwork $vnet
     ```
-3. Przejdź do maszyny Wirtualnej, która ma problemy z aktywacją. Użyj [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) do testowania, jeśli mogą uzyskać dostęp do serwera usługi zarządzania Kluczami:
+3. Przejdź do maszyny wirtualnej, która ma problemy z aktywacją. Użyj [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) , aby sprawdzić, czy może nawiązać połączenie z serwerem KMS:
 
         psping kms.core.windows.net:1688
 
-4. Spróbuj uaktywnić Windows i zobacz, czy problem został rozwiązany.
+4. Spróbuj aktywować system Windows i sprawdź, czy problem został rozwiązany.
 
 ### <a name="for-classic-vms"></a>Dla klasycznych maszyn wirtualnych
 
-1. Otwórz program Azure PowerShell, a następnie [Zaloguj się do subskrypcji platformy Azure](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+1. Otwórz Azure PowerShell, a następnie [Zaloguj się do swojej subskrypcji platformy Azure](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 2. Uruchom następujące polecenia:
 
     ```powershell
@@ -101,15 +104,15 @@ Aby dodać trasy niestandardowej, wykonaj następujące kroki:
     -RouteTableName "VNet-DM-KmsRouteTable"
     ```
 
-3. Przejdź do maszyny Wirtualnej, która ma problemy z aktywacją. Użyj [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) do testowania, jeśli mogą uzyskać dostęp do serwera usługi zarządzania Kluczami:
+3. Przejdź do maszyny wirtualnej, która ma problemy z aktywacją. Użyj [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) , aby sprawdzić, czy może nawiązać połączenie z serwerem KMS:
 
         psping kms.core.windows.net:1688
 
-4. Spróbuj uaktywnić Windows i zobacz, czy problem został rozwiązany.
+4. Spróbuj aktywować system Windows i sprawdź, czy problem został rozwiązany.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Klucze instalacji klienta usługi KMS](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys
 )
-- [Przejrzyj i metod aktywacji wybierz](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134256(v=ws.11)
+- [Przeglądanie i wybieranie metod aktywacji](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134256(v=ws.11)
 )

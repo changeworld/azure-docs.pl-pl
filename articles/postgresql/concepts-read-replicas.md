@@ -1,57 +1,79 @@
 ---
-title: Odczytu replik w usłudze Azure Database for PostgreSQL — pojedynczy serwer
-description: W tym artykule opisano funkcję odczytu repliki, w usłudze Azure Database for PostgreSQL — pojedynczy serwer.
+title: Odczytaj repliki w Azure Database for PostgreSQL — pojedynczy serwer
+description: W tym artykule opisano funkcję Read Replica w Azure Database for PostgreSQL — pojedynczy serwer.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/14/2019
-ms.openlocfilehash: c98247b0ba8b670a59dec9aa3ec87e949f1dda78
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.date: 08/12/2019
+ms.openlocfilehash: 928a85c9d03148198fe3e965636740812ce732f7
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147927"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976282"
 ---
-# <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Odczytu replik w usłudze Azure Database for PostgreSQL — pojedynczy serwer
+# <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Odczytaj repliki w Azure Database for PostgreSQL — pojedynczy serwer
 
-Funkcja odczytu replik pozwala na replikowanie danych z usługi Azure Database for postgresql w warstwie serwera na serwer tylko do odczytu. Można replikować z głównego serwera do maksymalnie pięciu replik. Repliki są aktualizowane asynchronicznie przy użyciu technologii replikacji natywnego aparatu PostgreSQL.
+Funkcja Read Replica umożliwia replikowanie danych z serwera Azure Database for PostgreSQL do serwera tylko do odczytu. Z serwera głównego można replikować maksymalnie pięć replik. Repliki są aktualizowane asynchronicznie z technologią natywnej replikacji aparatu PostgreSQL.
+
+Repliki to nowe serwery, którymi można zarządzać podobnie jak regularne Azure Database for PostgreSQL serwery. Dla każdej repliki odczytu są naliczane opłaty za zasoby obliczeniowe rdzeni wirtualnych i magazyn w GB/miesiąc.
+
+Dowiedz się [, jak tworzyć repliki i zarządzać nimi](howto-read-replicas-portal.md).
+
+## <a name="when-to-use-a-read-replica"></a>Kiedy używać repliki odczytu
+Funkcja odczytu repliki pomaga zwiększyć wydajność i skalowalność obciążeń intensywnie korzystających z odczytu. Obciążenia odczytu mogą być odizolowane dla replik, podczas gdy obciążenia zapisu mogą być kierowane do wzorca.
+
+Typowy scenariusz polega na tym, że obciążenia analizy biznesowej i analizy używają repliki odczytu jako źródła danych do raportowania.
+
+Ponieważ repliki są tylko do odczytu, nie zmniejszają bezpośrednio obciążeń związanych z pojemnością zapisu na serwerze głównym. Ta funkcja nie jest przeznaczona dla obciążeń intensywnie korzystających z pisania.
+
+Funkcja Read Replica używa replikacji asynchronicznej PostgreSQL. Ta funkcja nie jest przeznaczona do scenariuszy replikacji synchronicznej. Nastąpi wymierne opóźnienie między serwerem głównym a repliką. Dane z repliki ostatecznie staną się spójne z danymi na serwerze głównym. Użyj tej funkcji dla obciążeń, które mogą obsłużyć to opóźnienie.
+
+## <a name="cross-region-replication"></a>Replikacja między regionami
+Replikę odczytu można utworzyć w innym regionie niż serwer główny. Replikacja między regionami może być przydatna w scenariuszach takich jak planowanie odzyskiwania po awarii lub umieszczenie danych bliżej użytkowników.
 
 > [!IMPORTANT]
-> Można utworzyć odczytu repliki, w tym samym regionie co serwer główny lub w innym regionie platformy Azure wybranym. Replikacja w wielu regionach jest obecnie w publicznej wersji zapoznawczej.
+> Replikacja między regionami jest obecnie dostępna w publicznej wersji zapoznawczej.
 
-Repliki są nowe serwery zarządzania podobne do regularnego — Azure Database for postgresql w warstwie serwerów. Dla każdego odczytu repliki, opłaty są naliczane dla zainicjowanych zasobów obliczeniowych w rdzeniach wirtualnych zasoby i magazynu w GB / miesiąc.
+Serwer główny może być w dowolnym [regionie Azure Database for PostgreSQL](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql).  Serwer główny może mieć replikę w osobnym regionie lub regionach uniwersalnej repliki.
 
-Dowiedz się, jak [tworzenie i zarządzanie nimi replik](howto-read-replicas-portal.md).
+### <a name="universal-replica-regions"></a>Regiony uniwersalnej repliki
+Można zawsze utworzyć replikę odczytu w jednym z następujących regionów, niezależnie od tego, gdzie znajduje się serwer główny. Są to uniwersalne regiony repliki:
 
-## <a name="when-to-use-a-read-replica"></a>Kiedy należy używać odczytu repliki
-Funkcja odczytu replik pomaga zwiększyć wydajność i skalę intensywnie odczytujących obciążeń. Odczyt obciążenia mogą być izolowane w replikach, podczas obciążenia zapisu może zostać skierowany do poziomu głównego.
+Australia Wschodnia, Australia Wschodnia, środkowe stany USA, Azja Wschodnia, Wschodnie stany USA, Wschodnie stany USA 2, Japonia Wschodnia, Japonia Zachodnia, Korea środkowa, Korea Południowa, Ameryka Północna, Południowe stany USA, Europa Północna, Południowo-środkowe stany USA, Zachodnie Zjednoczone Królestwo Południowe Zjednoczone Królestwo Azja Południowo-Wschodnia
 
-Typowy scenariusz polega na zapewnienie Power BI i obciążeń analitycznych pełnić odczytu repliki źródła danych do raportowania.
 
-Ponieważ repliki są tylko do odczytu, nie bezpośrednio zmniejszyć obciążenia pojemności zapisu we wzorcu. Ta funkcja nie jest przeznaczone dla obciążeń intensywnie korzystających z zapisu.
+### <a name="paired-regions"></a>Sparowane regiony
+Oprócz regionów uniwersalnej repliki można utworzyć replikę odczytu w sparowanym regionie platformy Azure serwera głównego. Jeśli nie znasz pary regionów, możesz dowiedzieć się więcej z [artykułu z sparowanymi regionami platformy Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
-Funkcja odczytu replik używa replikacji asynchronicznej PostgreSQL. Ta funkcja nie jest przeznaczona dla scenariuszy replikacji synchronicznej. Będzie mierzalne opóźnienie między główną i repliką. Dane w replice ostatecznie staje się spójne z danymi na głównym. Użyj tej funkcji dla obciążeń, które można uwzględnić to opóźnienie.
+Jeśli używasz replik między regionami do planowania odzyskiwania po awarii, zalecamy utworzenie repliki w sparowanym regionie, a nie w jednym z innych regionów. Sparowane regiony umożliwiają uniknięcie jednoczesnych aktualizacji i określanie priorytetów fizycznej izolacji i miejsca zamieszkania danych.  
 
-Odczytu replik można zwiększyć, plan odzyskiwania po awarii. Najpierw musisz mieć repliki w innym regionie platformy Azure z poziomu głównego. W przypadku awarii regionu, możesz zatrzymać replikację tę replikę i przekierować obciążenie do niego. Zatrzymywanie replikacji umożliwia replikę tak, aby rozpocząć, akceptując zapisów, a także odczytuje. Dowiedz się więcej w [zatrzymać replikację](#stop-replication) sekcji. 
+Istnieją jednak ograniczenia, które należy wziąć pod uwagę: 
+
+* Dostępność w regionach: Azure Database for PostgreSQL jest dostępny w regionie zachodnie stany USA 2, Francja środkowa, Zjednoczone Emiraty Arabskie i Niemcy środkowe. Jednak ich sparowane regiony nie są dostępne.
+    
+* Pary jednokierunkowe: Niektóre regiony platformy Azure są sparowane tylko w jednym kierunku. Regiony te obejmują Indie Zachodnie, Brazylia Południowa i US Gov Wirginia. 
+   Oznacza to, że serwer główny w regionie zachodnie Indie może utworzyć replikę w Indiach Południowej. Jednak główny serwer nie może utworzyć repliki w Indiach zachodnim. Jest to spowodowane tym, że region pomocniczy w zachodniej Indiach to Indie Południowe, ale region pomocniczy w Republice Południowej Indie nie jest Indie Zachodnie.
+
 
 ## <a name="create-a-replica"></a>Tworzenie repliki
-Na serwerze głównym musi być `azure.replication_support` parametr **REPLIKI**. Po zmianie tego parametru ponownego uruchomienia serwera jest wymagany, aby zmiana zaczęła obowiązywać. ( `azure.replication_support` Parametr dotyczy tylko warstw ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci).
+Serwer główny musi mieć `azure.replication_support` ustawiony parametr rereplica. Gdy ten parametr zostanie zmieniony, wymagane jest ponowne uruchomienie serwera, aby zmiany zaczęły obowiązywać. `azure.replication_support` (Parametr dotyczy tylko ogólnego przeznaczenia i warstw zoptymalizowanych pod kątem pamięci).
 
-Po uruchomieniu przepływu pracy tworzenia repliki, pustą bazę danych Azure dla serwera PostgreSQL jest tworzony. Nowy serwer jest wypełniony danymi, która znajdowała się na serwerze głównym. Godzina utworzenia zależy od ilości danych na wzorcu i czas od ostatniej pełnej cotygodniowej kopii zapasowej. Czas może wynosić od kilku minut do kilku godzin.
+Po uruchomieniu przepływu pracy tworzenia repliki zostanie utworzony pusty serwer Azure Database for PostgreSQL. Nowy serwer jest wypełniony danymi znajdującymi się na serwerze głównym. Czas utworzenia zależy od ilości danych na serwerze głównym oraz czasu od ostatniego cotygodniowej pełnej kopii zapasowej. Czas może się wahać od kilku minut do kilku godzin.
 
-Każdej repliki jest włączony dla magazynu [automatyczne powiększanie](concepts-pricing-tiers.md#storage-auto-grow). Funkcja auto-grow umożliwia replikę tak, aby nadążyć za dane replikowane do niego i uniknąć przerwy w replikacji spowodowane przez Brak błędów magazynu.
+Każda replika ma włączoną [](concepts-pricing-tiers.md#storage-auto-grow)funkcję autowzrostu magazynu. Funkcja autozwiększania umożliwia replikom przechowywanie danych replikowanych do nich i uniemożliwia przerwanie replikacji spowodowane błędami magazynowania.
 
-Funkcję odczytu repliki korzysta z replikacji postgresql w warstwie fizycznej, replikacji nie logiczne. Przesyłanie strumieniowe replikacji przy użyciu miejsc replikacji to domyślny tryb działania. Gdy jest to konieczne, wysyłania dziennika jest używany do zapoznać się z nimi.
+Funkcja Read Replica używa replikacji fizycznej PostgreSQL, a nie replikacji logicznej. Replikacja strumieniowa przy użyciu miejsc replikacji jest domyślnym trybem operacji. W razie potrzeby wysyłanie dziennika służy do wykrycia.
 
-Dowiedz się, jak [utworzyć odczytu replik w witrynie Azure portal](howto-read-replicas-portal.md).
+Dowiedz się [, jak utworzyć replikę odczytu w Azure Portal](howto-read-replicas-portal.md).
 
-## <a name="connect-to-a-replica"></a>Połącz się z repliką.
-Podczas tworzenia repliki nie dziedziczy, reguły zapory lub serwera głównego, punkt końcowy usługi sieci wirtualnej. Te reguły można skonfigurować niezależnie dla repliki.
+## <a name="connect-to-a-replica"></a>Nawiązywanie połączenia z repliką
+Podczas tworzenia repliki nie są dziedziczone reguły zapory ani punkt końcowy usługi sieci wirtualnej serwera głównego. Te reguły należy skonfigurować niezależnie dla repliki.
 
-Repliki dziedziczy konta administratora serwera głównego. Wszystkie konta użytkowników na serwerze głównym są replikowane do odczytu replik. Odczytu repliki można połączyć tylko przy użyciu konta użytkownika, które są dostępne na serwerze głównym.
+Replika dziedziczy konto administratora z serwera głównego. Wszystkie konta użytkowników na serwerze głównym są replikowane do replik odczytu. Można nawiązać połączenie z repliką odczytu tylko przy użyciu kont użytkowników, które są dostępne na serwerze głównym.
 
-Możesz połączyć do repliki przy użyciu jego nazwy hosta i prawidłowe konto użytkownika, tak jak w regularnym — Azure Database for postgresql w warstwie serwera. Na serwerze o nazwie **repliki** przy użyciu nazwy użytkownika administratora **myadmin**, repliki można nawiązać za pomocą narzędzia psql:
+Możesz połączyć się z repliką przy użyciu nazwy hosta i prawidłowego konta użytkownika, tak jak w przypadku zwykłego serwera Azure Database for PostgreSQL. W przypadku serwera o nazwie **moja** replika znazwą administratora administrator można nawiązać połączenie z repliką przy użyciu PSQL:
 
 ```
 psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
@@ -59,29 +81,29 @@ psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
 
 W wierszu polecenia wprowadź hasło dla konta użytkownika.
 
-## <a name="monitor-replication"></a>Monitorowanie replikacji
-Usługa Azure Database for PostgreSQL udostępnia dwie metryki monitorowania replikacji. Dwie metryki są **opóźnienie między maksymalna liczba replik** i **Lag repliki**. Aby dowiedzieć się, jak wyświetlić tych metryk, zobacz **monitorowanie repliki** części [zapoznaj się z artykułami porad repliki](howto-read-replicas-portal.md).
+## <a name="monitor-replication"></a>Monitoruj replikację
+Azure Database for PostgreSQL udostępnia dwie metryki do monitorowania replikacji. Dwie metryki to **maksymalne opóźnienie między** replikami i **zwłoką repliki**. Aby dowiedzieć się, jak wyświetlić te metryki, zobacz sekcję **monitorowanie repliki** w [artykule Jak uzyskać informacje o replikacji](howto-read-replicas-portal.md).
 
-**Opóźnienie między maksymalna liczba replik** Metryka przedstawia opóźnienie w bajtach między główną i repliką większość opóźnione. Ta metryka jest dostępna na serwerze głównym tylko.
+Metryka **maks. opóźnienie między** replikami pokazuje opóźnienie w bajtach między wzorcem a repliką najbardziej opóźnioną. Ta Metryka jest dostępna tylko na serwerze głównym.
 
-**Lag repliki** pomiar przedstawia czas od czasu ostatniego powtórzone transakcji. Jeśli nie ma żadnych transakcji, pojawiają się na serwerze głównym, metryki odzwierciedla to opóźnienie czasowe. Ta metryka jest dostępna dla tylko serwerów repliki. Opóźnienie repliki jest obliczana na podstawie `pg_stat_wal_receiver` widoku:
+Metryka **opóźnienia repliki** przedstawia czas od ostatniego odtworzonej transakcji. Jeśli na serwerze głównym nie ma żadnych transakcji, Metryka uwzględnia ten czas opóźnienia. Ta Metryka jest dostępna tylko dla serwerów repliki. Opóźnienie repliki jest obliczane na podstawie `pg_stat_wal_receiver` widoku:
 
 ```SQL
 EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp());
 ```
 
-Ustaw alert informujący o tym, gdy opóźnienie repliki osiągnie wartość, która nie jest dopuszczalne dla obciążenia. 
+Ustaw Alert, aby poinformować Cię, gdy zwłoka repliki osiągnie wartość, która nie jest akceptowalna dla obciążenia. 
 
-Aby uzyskać dodatkowe informacje na ten temat kwerendy serwera głównego bezpośrednio po to, aby uzyskać opóźnienie replikacji w bajtach wszystkich replik.
+Aby uzyskać dodatkowe informacje, wykonaj bezpośrednie zapytanie do serwera głównego, aby uzyskać opóźnienie replikacji w bajtach we wszystkich replikach.
 
-W wersji 10 PostgreSQL:
+W programie PostgreSQL w wersji 10:
 
 ```SQL
 select pg_wal_lsn_diff(pg_current_wal_lsn(), stat.replay_lsn) 
 AS total_log_delay_in_bytes from pg_stat_replication;
 ```
 
-W wersji 9.6 lub starszej PostgreSQL:
+W programie PostgreSQL w wersji 9,6 i starszej:
 
 ```SQL
 select pg_xlog_location_diff(pg_current_xlog_location(), stat.replay_location) 
@@ -89,48 +111,48 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 ```
 
 > [!NOTE]
-> Jeśli ponowne uruchomienie serwera głównego lub odczytu repliki, czas, jaki zajmuje ponowne uruchomienie i zapoznać się z nimi jest widoczny w metryki Lag repliki.
+> Jeśli serwer główny lub replika do odczytu zostanie ponownie uruchomiony, czas potrzebny do ponownego uruchomienia i przechwycenia zostanie odzwierciedlony w metryce zwłoki repliki.
 
-## <a name="stop-replication"></a>Zatrzymywanie replikacji
-Można zatrzymać replikacji między serwerem głównym i repliki. Akcja zatrzymania powoduje, że repliki, aby ponownie uruchomić i usunąć jego ustawienia replikacji. Po zatrzymaniu replikacji między głównym serwerem i odczytu repliki, replika staje się serwerem autonomicznym. Dane na serwerze autonomicznym są dane, która była dostępna w replice w momencie uruchomienia polecenia zatrzymania replikacji. Serwer autonomiczny nie zapoznaj się z serwerem głównym.
+## <a name="stop-replication"></a>Zatrzymaj replikację
+Można zatrzymać replikację między serwerem głównym a repliką. Akcja zatrzymania powoduje ponowne uruchomienie repliki i usunięcie jej ustawień replikacji. Po zatrzymaniu replikacji między serwerem głównym a repliką odczytu replika stanie się serwerem autonomicznym. Dane na serwerze autonomicznym to dane, które były dostępne w replice w momencie uruchomienia polecenia Zatrzymaj replikację. Serwer autonomiczny nie jest przechwytywany z serwerem głównym.
 
 > [!IMPORTANT]
-> Serwer autonomiczny nie wprowadzać ponownie do repliki.
-> Przed zatrzymaniem replikacji tylko do odczytu repliki, upewnij się, że replika zawiera wszystkie dane, których potrzebujesz.
+> Serwer autonomiczny nie może zostać ponownie utworzony w replice.
+> Przed zatrzymaniem replikacji w replice odczytu upewnij się, że replika ma wszystkie wymagane dane.
 
-Po zatrzymaniu replikacji replika utraci wszystkie łącza do jego poprzedniego główny i innymi replikami. Brak automatycznego trybu failover między głównego i repliką. 
+Gdy zatrzymasz replikację, replika utraci wszystkie linki do poprzednich i innych replik. Między wzorcem i repliką nie ma automatycznej pracy awaryjnej. 
 
 Dowiedz się, jak [zatrzymać replikację do repliki](howto-read-replicas-portal.md).
 
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 
-Ta sekcja zawiera podsumowanie zagadnień dotyczących funkcji odczytu replik.
+Ta sekcja zawiera podsumowanie zagadnień dotyczących funkcji odczytu repliki.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
-Przed utworzeniem odczytu repliki, `azure.replication_support` parametru musi być równa **REPLIKI** na serwerze głównym. Po zmianie tego parametru ponownego uruchomienia serwera jest wymagany, aby zmiana zaczęła obowiązywać. `azure.replication_support` Parametr dotyczy tylko warstw ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci.
+Przed utworzeniem repliki odczytu, `azure.replication_support` parametr musi być ustawiony na replikę na serwerze głównym. Gdy ten parametr zostanie zmieniony, wymagane jest ponowne uruchomienie serwera, aby zmiany zaczęły obowiązywać. Ten `azure.replication_support` parametr ma zastosowanie tylko do warstw ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci.
 
-### <a name="new-replicas"></a>Nowej repliki
-Odczytu repliki jest tworzona jako nowego serwera Azure Database for PostgreSQL. Nie można dokonać istniejący serwer do repliki. Nie można utworzyć replikę innej repliki do odczytu.
+### <a name="new-replicas"></a>Nowe repliki
+Replika odczytu jest tworzona jako nowy serwer Azure Database for PostgreSQL. Nie można wykonać istniejącego serwera w replice. Nie można utworzyć repliki innej repliki odczytu.
 
-### <a name="replica-configuration"></a>Konfiguracji repliki
-Replika jest tworzona przy użyciu tej samej konfiguracji serwera jako wzorzec. Po utworzeniu repliki, niektóre ustawienia można zmienić niezależnie z serwera głównego: obliczenia generacji, rdzenie wirtualne, Magazyn i okres przechowywania kopii zapasowej. Warstwę cenową można zmienić niezależnie, z wyjątkiem do lub z warstwy podstawowa.
+### <a name="replica-configuration"></a>Konfiguracja repliki
+Replika jest tworzona przy użyciu tej samej konfiguracji serwera co serwer główny. Po utworzeniu repliki można zmienić kilka ustawień niezależnie od serwera głównego: generowanie obliczeń, rdzeni wirtualnych, magazyn i okres przechowywania kopii zapasowych. Warstwę cenową można także zmienić niezależnie, z wyjątkiem warstwy Podstawowa lub z niej.
 
 > [!IMPORTANT]
-> Konfiguracja serwera głównego jest aktualizowany do nowych wartości, aktualizacja konfiguracji repliki większa lub równa wartości. Ta akcja zagwarantuje, że repliki może nadążyć za wszelkie zmiany wprowadzone do poziomu głównego.
+> Przed zaktualizowaniem konfiguracji serwera głównego do nowych wartości, zaktualizuj konfigurację repliki do wartości równej lub wyższej. Ta akcja zapewnia, że replika może być zachowywana wraz ze wszystkimi zmianami wprowadzonymi do wzorca.
 
-PostgreSQL wymaga wartości `max_connections` parametru odczytu repliki, być większa lub równa wartości wzorca; w przeciwnym repliki nie będą naliczane. W usłudze Azure Database for PostgreSQL `max_connections` wartość parametru opiera się na jednostkę SKU. Aby uzyskać więcej informacji, zobacz [limity w usłudze Azure Database for PostgreSQL](concepts-limits.md). 
+PostgreSQL wymaga, aby wartość `max_connections` parametru w replice odczytu była większa lub równa wartości głównej; w przeciwnym razie replika nie zostanie uruchomiona. W Azure Database for PostgreSQL `max_connections` wartość parametru jest określana na podstawie jednostki SKU. Aby uzyskać więcej informacji, zobacz [limity w Azure Database for PostgreSQL](concepts-limits.md). 
 
-Jeśli spróbuj zaktualizować wartości serwera, ale nie jest zgodna z limitami, otrzymasz komunikat o błędzie.
+Jeśli spróbujesz zaktualizować wartości serwera, ale nie przestrzegasz limitów, zostanie wyświetlony komunikat o błędzie.
 
-### <a name="maxpreparedtransactions"></a>max_prepared_transactions
-[PostgreSQL wymaga](https://www.postgresql.org/docs/10/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS) wartość `max_prepared_transactions` parametru odczytu repliki, być większa lub równa wartości wzorca; w przeciwnym repliki nie będą naliczane. Jeśli chcesz zmienić `max_prepared_transactions` we wzorcu, najpierw zmień go na replikach.
+### <a name="max_prepared_transactions"></a>max_prepared_transactions
+[PostgreSQL wymaga](https://www.postgresql.org/docs/10/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS) , aby wartość `max_prepared_transactions` parametru w replice odczytu była większa lub równa wartości głównej; w przeciwnym razie replika nie zostanie uruchomiona. Jeśli chcesz zmienić `max_prepared_transactions` wzorzec, najpierw zmień go na repliki.
 
-### <a name="stopped-replicas"></a>Zatrzymano repliki
-Zatrzymanie replikacji między głównym serwerem i odczytu repliki, replikę powoduje ponowne uruchomienie do zastosowania zmiany. Zatrzymano replika staje się serwer autonomiczny, który akceptuje odczytów i zapisów. Serwer autonomiczny nie wprowadzać ponownie do repliki.
+### <a name="stopped-replicas"></a>Repliki zatrzymane
+Jeśli zatrzymasz replikację między serwerem głównym a repliką odczytu, replika zostanie ponownie uruchomiona w celu zastosowania zmiany. Zatrzymana replika stanie się serwerem autonomicznym, który akceptuje zarówno operacje odczytu, jak i zapisu. Serwer autonomiczny nie może zostać ponownie utworzony w replice.
 
-### <a name="deleted-master-and-standalone-servers"></a>Usunięto głównego i autonomicznych serwerów
-Po usunięciu serwera głównego, wszystkie jego odczytu repliki stają się serwerów autonomicznych. Repliki zostaną ponownie uruchomione w celu odzwierciedlenia tej zmiany.
+### <a name="deleted-master-and-standalone-servers"></a>Usunięto serwery główne i autonomiczne
+Po usunięciu serwera głównego wszystkie jego repliki odczytu stają się serwerami autonomicznymi. Repliki są ponownie uruchamiane w celu odzwierciedlenia tej zmiany.
 
-## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się, jak [tworzenie i zarządzanie nimi odczytu replik w witrynie Azure portal](howto-read-replicas-portal.md).
+## <a name="next-steps"></a>Następne kroki
+Dowiedz się, jak [tworzyć repliki odczytu i zarządzać nimi w Azure Portal](howto-read-replicas-portal.md).

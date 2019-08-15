@@ -1,6 +1,6 @@
 ---
 title: Tworzenie mapy za pomocą Azure Maps | Microsoft Docs
-description: Jak utworzyć mapę JavaScript
+description: Jak utworzyć mapę z zestawem SDK sieci Web Azure Maps.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/26/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 9f1188fcf2aa24791ca5181f5c94a1b0f6b15dc1
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 932c244ff41e757413a05cde019ee7ee1a82232d
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882065"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976117"
 ---
 # <a name="create-a-map"></a>Tworzenie mapy
 
@@ -22,7 +22,7 @@ W tym artykule pokazano, jak utworzyć mapę i animować mapę.
 
 ## <a name="loading-a-map"></a>Ładowanie mapy
 
-Aby załadować mapę, Utwórz nowe wystąpienie [klasy map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest). Podczas inicjowania mapowania elementu mapy a DIV w celu renderowania mapy i zestawu opcji do użycia podczas ładowania mapy są przesyłane. Jeśli w `atlas` przestrzeni nazw nie określono domyślnych informacji o uwierzytelnianiu, te informacje muszą być określone w opcjach mapy podczas ładowania mapy. Mapa ładuje wiele zasobów asynchronicznie dla wydajności. W związku z tym po utworzeniu wystąpienia mapy należy dołączyć `ready` zdarzenie lub `load` do mapy, a następnie dodać dowolny dodatkowy kod, który współdziała z mapą w tym obsłudze zdarzeń. `ready` Zdarzenie zostało wyzwolone, gdy tylko mapa ma wystarczającą liczbę zasobów, z których załadowano program programowo. `load` Zdarzenie wyzwalane po całkowitym załadowaniu widoku mapy początkowej. 
+Aby załadować mapę, Utwórz nowe wystąpienie [klasy map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest). Podczas inicjowania mapy, identyfikator elementu DIV służący do renderowania mapy i zestaw opcji do użycia podczas ładowania mapy są przesyłane. Jeśli w `atlas` przestrzeni nazw nie określono domyślnych informacji o uwierzytelnianiu, te informacje muszą być określone w opcjach mapy podczas ładowania mapy. Mapa ładuje wiele zasobów asynchronicznie dla wydajności. W związku z tym po utworzeniu wystąpienia mapy należy dołączyć `ready` zdarzenie lub `load` do mapy, a następnie dodać dowolny dodatkowy kod, który współdziała z mapą w tym obsłudze zdarzeń. `ready` Zdarzenie zostało wyzwolone, gdy tylko mapa ma wystarczającą liczbę zasobów, z których załadowano program programowo. `load` Zdarzenie wyzwalane po całkowitym załadowaniu widoku mapy początkowej. 
 
 <br/>
 
@@ -104,3 +104,6 @@ Zobacz przykłady kodu, aby dodać funkcje do aplikacji:
 
 > [!div class="nextstepaction"]
 > [Dodawanie formantów do mapy](map-add-controls.md)
+
+> [!div class="nextstepaction"]
+> [Przykłady kodu](https://docs.microsoft.com/samples/browse/?products=azure-maps)

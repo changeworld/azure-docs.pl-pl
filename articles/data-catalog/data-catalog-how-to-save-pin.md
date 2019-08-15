@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 8e2a98748f4fef69b4fd6e3b32d15560641a6336
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: a8545939fd027989519e0f7a161f750ec676749a
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737054"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976820"
 ---
 # <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>Zapisywanie wyszukiwań i Przypinanie zasobów danych w Azure Data Catalog
 ## <a name="introduction"></a>Wprowadzenie
@@ -37,7 +37,7 @@ Aby utworzyć zapisane wyszukiwanie, wykonaj następujące czynności:
 ### <a name="manage-saved-searches"></a>Zarządzanie zapisanymi wyszukiwaniami
 Po zapisaniu co najmniej jednego wyszukiwania opcja **zapisane wyszukiwania** jest wyświetlana poniżej **bieżącego pola wyszukiwania** . Gdy lista zostanie rozwinięta, wyświetlane są wszystkie zapisane wyszukiwania.
 
- ![Lista zapisanych wyszukiwań](./media/data-catalog-how-to-save-pin/03-list.png)
+ ![Data Catalog — Lista zapisanych wyszukiwań](./media/data-catalog-how-to-save-pin/03-list.png)
 
 Wykonaj jedną z następujących czynności:
 
@@ -56,18 +56,18 @@ Wykonaj jedną z następujących czynności:
 ### <a name="organizational-saved-searches"></a>Zapisane wyszukiwania w organizacji
 Wszyscy użytkownicy w organizacji mogą zapisywać wyszukiwania do użycia. Administratorzy Data Catalog mogą także zapisywać wyszukiwania dla wszystkich użytkowników w organizacji. Gdy administratorzy zapisują wyszukiwanie, są one prezentowane z **udziałem w opcji firmy** . Wybranie tej opcji udostępnia zapisane wyszukiwanie dla wszystkich użytkowników w organizacji.
 
- ![Zapisane wyszukiwania w organizacji](./media/data-catalog-how-to-save-pin/08-organizational-saved-search.png)
+ ![Data Catalog — zapisane wyszukiwania w organizacji](./media/data-catalog-how-to-save-pin/08-organizational-saved-search.png)
 
 ## <a name="pinned-data-assets"></a>Przypięte zasoby danych
 Dzięki zapisane wyszukiwania można zapisywać i ponownie używać definicji wyszukiwania. Zasoby danych zwracane przez wyszukiwania mogą ulec zmianie w czasie, ponieważ zawartość katalogu zostanie zmieniona. W przypadku przypinania zasobów danych można jawnie zidentyfikować konkretne zasoby danych, aby ułatwić im dostęp bez konieczności wyszukiwania.
 
 Przypinanie zasobów danych jest proste. Aby dodać zasób danych do listy przypiętej, wystarczy kliknąć ikonę **pinezki** . Ikona zostanie wyświetlona w rogu kafelka zasobu w widoku kafelków, a w kolumnie najwyższego poziomu w widoku listy w portalu Azure Data Catalog.
 
-![Ikona numeru PIN zasobu dane](./media/data-catalog-how-to-save-pin/05-pinning.png)
+![Data Catalog — ikona numeru PIN elementu dane](./media/data-catalog-how-to-save-pin/05-pinning.png)
 
 Odpięcie zasobu danych jest równie proste. Po prostu kliknij ikonę **Odepnij** , aby przełączyć ustawienie dla wybranego elementu zawartości.
 
-![Ikona odpinania danych](./media/data-catalog-how-to-save-pin/06-unpinning.png)
+![Data Catalog — ikona odpinania danych](./media/data-catalog-how-to-save-pin/06-unpinning.png)
 
 ## <a name="the-my-assets-section"></a>Sekcja my Assets
 Na stronie głównej portalu Data Catalog znajdują się sekcje **My Assets** , w których są wyświetlane zasoby istotne dla bieżącego użytkownika. Ta sekcja zawiera elementy przypięte i zapisane wyszukiwania.

@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/07/2019
 ms.author: dacurwin
-ms.openlocfilehash: c41381dd3e53c80e74da3dc0d0a08e1ac83daec6
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 415a25dbe63b8942509827cd8434cc0f50fde87a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827637"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954809"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup — często zadawane pytania
 W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące usługi Azure Backup.
@@ -27,7 +27,7 @@ Możesz zarejestrować do 1000 maszyn wirtualnych platformy Azure na magazyn. Je
 
 ### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>Ile źródeł danych/elementów można chronić w magazynie? 
 Można chronić maksymalnie 2000 źródeł danych/elementów we wszystkich obciążeniach (IaaS VM, SQL, AFS itp.) w magazynie.<br>  
-Na przykład jeśli masz już chronione maszyny wirtualne 500 i udziały 400 Azure Files w magazynie, możesz chronić tylko do 1100 baz danych SQL. 
+Jeśli na przykład masz już chronione 500 maszyn wirtualnych i 400 Azure Files w magazynie, możesz chronić tylko do 1100 baz danych SQL. 
 
 ### <a name="how-many-policies-can-i-create-per-vault"></a>Ile zasad można utworzyć dla każdego magazynu? 
 Na magazyn można korzystać tylko z maksymalnie 200 zasad.
@@ -36,7 +36,7 @@ Na magazyn można korzystać tylko z maksymalnie 200 zasad.
 Dane serwera, które mają zostać odzyskane, powinny używać tego samego hasła podczas konfigurowania kopii zapasowej. Jeśli chcesz odizolować odzyskiwanie do określonego serwera lub serwerów, Użyj hasła tylko dla tego serwera lub serwerów. Na przykład serwery zarządzania zasobami ludzkimi mogą korzystać z jednego hasła szyfrowania, serwery księgowości z drugiego, a serwery pamięci masowej z trzeciego.
 
 ### <a name="can-i-move-my-vault-between-subscriptions"></a>Czy mogę przenieść magazyn między subskrypcjami?
-Tak. Aby przenieść magazyn Recovery Services, zapoznaj [](backup-azure-move-recovery-services-vault.md) się z tym artykułem
+Tak. Aby przenieść magazyn Recovery Services, zapoznaj się [](backup-azure-move-recovery-services-vault.md) z tym artykułem
 
 ### <a name="can-i-move-backup-data-to-another-vault"></a>Czy mogę przenieść dane kopii zapasowej do innego magazynu?
 Nie. Nie można przenieść danych kopii zapasowej przechowywanych w magazynie do innego magazynu.
@@ -54,7 +54,7 @@ Nie. Magazyn Recovery Services może zmienić opcje magazynu tylko przed zapisan
 ### <a name="where-can-i-find-common-questions-about-the-azure-backup-agent-for-azure-vm-backup"></a>Gdzie mogę znaleźć często zadawane pytania dotyczące agenta Azure Backup dla kopii zapasowej maszyny wirtualnej platformy Azure?
 
 - Przeczytaj [często zadawane pytania](backup-azure-vm-backup-faq.md)dotyczące agenta uruchomionego na maszynach wirtualnych platformy Azure.
-- Przeczytaj [często zadawane pytania](backup-azure-file-folder-backup-faq.md)dotyczące agenta używanego do tworzenia kopii zapasowych folderów plików platformy Azure.
+- Zapoznaj się z tematem [często zadawanych pytań](backup-azure-file-folder-backup-faq.md)dotyczących agenta używanego do tworzenia kopii zapasowych folderów plików platformy Azure.
 
 
 ## <a name="general-backup"></a>Ogólna kopia zapasowa
@@ -125,7 +125,7 @@ Nie. Wszystkie dane, które zostały przesłane do magazynu przed anulowaniem za
 
 - Usługa Azure Backup używa mechanizmu, który podczas tworzenia kopii zapasowej co pewien czas dodaje punkty kontrolne do danych kopii zapasowej.
 - Ponieważ w danych kopii zapasowej umieszczone są punkty kontrolne, następny proces kopii zapasowej może sprawdzić integralność plików.
-- Następnym zadaniem kopii zapasowej będzie przyrostowa kopia zapasowa tworzona w oparciu o wcześniej utworzoną kopię zapasową danych. Przyrostowe kopie zapasowe przesyłają tylko nowe lub zmienione dane, dzięki czemu zapewnia się lepsze wykorzystanie przepustowości.
+- Następnym zadaniem kopii zapasowej będzie przyrostowa kopia zapasowa tworzona w oparciu o wcześniej utworzoną kopię zapasową danych. Przyrostowe kopie zapasowe przesyłają tylko nowe lub zmienione dane, które są równe w celu lepszego wykorzystania przepustowości.
 
 Jeśli anulujesz zadanie kopii zapasowej dla maszyny wirtualnej platformy Azure, wszelkie przesłane dane zostaną zignorowane. Następne zadanie kopii zapasowej przesyła przyrostowe dane z ostatniego wykonanego zadania kopii zapasowej.
 
@@ -138,7 +138,7 @@ Tak, oba mają dzienne, tygodniowe, miesięczne i roczne zasady przechowywania.
 Tak, masz dostosowane zasady. Można na przykład skonfigurować cotygodniowe i codzienne wymagania dotyczące przechowywania, ale nie co rok i co miesiąc.
 
 ### <a name="can-i-use-different-times-for-backup-scheduling-and-retention-policies"></a>Czy mogę używać różnych godzin do zasad planowania i przechowywania kopii zapasowych?
-Nie. Zasady przechowywania mogą być stosowane wyłącznie w punktach kopii zapasowej. Na przykład obrazy te przedstawiają zasady przechowywania dla kopii zapasowych wykonanych w 0 i 18:00.
+Nie. Zasady przechowywania mogą być stosowane wyłącznie w punktach kopii zapasowej. Na przykład ten obraz przedstawia zasady przechowywania dla kopii zapasowych wykonanych w 0 i 18:00.
 
 ![Harmonogram tworzenia kopii zapasowej i przechowywania](./media/backup-azure-backup-faq/Schedule.png)
 
@@ -191,7 +191,7 @@ Klucz szyfrowania powinien składać się z co najmniej 16 znaków, gdy używasz
 ### <a name="what-happens-if-i-misplace-the-encryption-key-can-i-recover-the-data-can-microsoft-recover-the-data"></a>Co się stanie, jeśli klucz szyfrowania zostanie zgubiony przez użytkownika? Czy mogę odzyskać dane? Czy firma Microsoft może odzyskać dane?
 Klucz używany do szyfrowania danych kopii zapasowej znajduje się tylko w witrynie. Firma Microsoft nie przechowuje kopii klucza na platformie Azure i nie ma do niego dostępu. Jeśli klucz nie zostanie umieszczony, firma Microsoft nie może odzyskać danych kopii zapasowej.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Zapoznaj się z innymi często zadawanymi NZP:
 

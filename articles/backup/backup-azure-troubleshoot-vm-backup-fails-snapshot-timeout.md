@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7fc288ad9e33088b1b5248c1b61ed439ac95a9c4
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: f47afd450350226aa944287e756b73f61b15b32d
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688976"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952040"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z błędem Azure Backup: Problemy z agentem lub rozszerzeniem
 
@@ -29,12 +29,10 @@ W tym artykule opisano kroki rozwiązywania problemów, które mogą pomóc w ro
 **Kod błędu**: UserErrorGuestAgentStatusUnavailable <br>
 **Komunikat o błędzie**: Agent maszyny wirtualnej nie może komunikować się z Azure Backup<br>
 
-Po zarejestrowaniu i zaplanowaniu maszyny wirtualnej dla usługi tworzenia kopii zapasowej program Backup inicjuje zadanie, komunikując się z agentem maszyny wirtualnej w celu przejęcia migawki określonego momentu. Jeden z następujących warunków może uniemożliwić wyzwolenie migawki. Gdy migawka nie zostanie wyzwolona, tworzenie kopii zapasowej może zakończyć się niepowodzeniem. Wykonaj następujące kroki rozwiązywania problemów w podanej kolejności, a następnie ponów próbę wykonania operacji:<br>
-**Przyczyna 1: [Agent jest zainstalowany na maszynie wirtualnej, ale nie odpowiada (dla maszyn wirtualnych z systemem Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     
-**Przyczyna 2: [Agent zainstalowany na maszynie wirtualnej jest nieaktualny (dla maszyn wirtualnych z systemem Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**Przyczyna 3: [Nie można pobrać stanu migawki lub nie można wykonać migawki](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**     
-**Przyczyna 4: [Aktualizacja lub załadowanie rozszerzenia kopii zapasowej nie powiodło się](#the-backup-extension-fails-to-update-or-load)**  
-**Przyczyna 5: [Maszyna wirtualna nie ma dostępu do Internetu](#the-vm-has-no-internet-access)**
+Agent maszyny wirtualnej platformy Azure może zostać zatrzymany, nieaktualny, w stanie niespójnym lub nie został zainstalowany i uniemożliwiał Azure Backup usługę do wyzwalania migawek.  
+    
+- Jeśli Agent maszyny wirtualnej został zatrzymany lub jest w stanie niespójnym, **Uruchom go ponownie** , a następnie spróbuj ponownie wykonać operację tworzenia kopii zapasowej (spróbuj utworzyć kopię zapasową ad hoc). Aby uzyskać instrukcje dotyczące ponownego uruchomienia agenta, zobacz maszyny [wirtualne z systemem Windows](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) lub [maszyny wirtualne](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)z systemem Linux. 
+- Jeśli Agent maszyny wirtualnej nie został zainstalowany lub jest przestarzały, zainstaluj/zaktualizuj agenta maszyny wirtualnej i spróbuj ponownie wykonać operację tworzenia kopii zapasowej. Aby uzyskać instrukcje dotyczące instalowania/aktualizowania agenta, zobacz maszyny [wirtualne z systemem Windows](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) lub [maszyny wirtualne](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)z systemem Linux.  
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError — nie można skomunikować się z agentem maszyny wirtualnej w celu uzyskania stanu migawki
 
@@ -44,7 +42,8 @@ Po zarejestrowaniu i zaplanowaniu maszyny wirtualnej dla usługi tworzenia kopii
 Po zarejestrowaniu i zaplanowaniu maszyny wirtualnej dla usługi Azure Backup backup inicjuje zadanie, komunikując się z rozszerzeniem kopii zapasowej maszyny wirtualnej w celu przeprowadzenia migawki w danym momencie. Jeden z następujących warunków może uniemożliwić wyzwolenie migawki. Jeśli migawka nie zostanie wyzwolona, może wystąpić błąd kopii zapasowej. Wykonaj następujące kroki rozwiązywania problemów w podanej kolejności, a następnie ponów próbę wykonania operacji:  
 **Przyczyna 1: [Agent jest zainstalowany na maszynie wirtualnej, ale nie odpowiada (dla maszyn wirtualnych z systemem Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
 **Przyczyna 2: [Agent zainstalowany na maszynie wirtualnej jest nieaktualny (dla maszyn wirtualnych z systemem Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**Przyczyna 3: [Maszyna wirtualna nie ma dostępu do Internetu](#the-vm-has-no-internet-access)**
+**Przyczyna 3: [Nie można pobrać stanu migawki lub nie można wykonać migawki](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**     
+**Przyczyna 4: [Aktualizacja lub załadowanie rozszerzenia kopii zapasowej nie powiodło się](#the-backup-extension-fails-to-update-or-load)** 
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached — Osiągnięto maksymalny limit kolekcji punktów przywracania
 
@@ -107,7 +106,7 @@ Po zarejestrowaniu i zaplanowaniu maszyny wirtualnej dla usługi Azure Backup ba
 **Kod błędu**: UserErrorUnsupportedDiskSize <br>
 **Komunikat o błędzie**: Obecnie Azure Backup nie obsługuje dysków o rozmiarach większych niż 4095 GB <br>
 
-Operacja tworzenia kopii zapasowej może zakończyć się niepowodzeniem podczas tworzenia kopii zapasowej maszyny wirtualnej o rozmiarze dysku większym niż 4095 GB. Aby zarejestrować się w celu uzyskania prywatnej wersji zapoznawczej Azure Backup duże wsparcie dla dysków o rozmiarze większym niż 4 TB do 30TB, Wróć AskAzureBackupTeam@microsoft.comdo nas.
+Operacja tworzenia kopii zapasowej może zakończyć się niepowodzeniem podczas tworzenia kopii zapasowej maszyny wirtualnej o rozmiarze dysku większym niż 4 095 GB. Aby zarejestrować się w celu uzyskania ograniczonej publicznej wersji zapoznawczej Azure Backup dużych dyskach o pojemności większej niż 4 TB i maksymalnie 30 TB, zobacz [Omówienie kopii zapasowej maszyny wirtualnej platformy Azure](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress — nie można zainicjować kopii zapasowej, ponieważ trwa inna operacja tworzenia kopii zapasowej
 

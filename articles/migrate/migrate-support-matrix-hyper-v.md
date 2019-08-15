@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: 105cbf173a9abe1adf0999f63740d47b3da51a29
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 00f222472a9b41c7f95ae90bdca57f13175b2b5d
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856285"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952140"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Macierz obsługi dotycząca oceny i migracji środowiska funkcji Hyper-V
 
@@ -61,8 +61,8 @@ Współrzędne geograficzne | Możesz tworzyć Azure Migrate projekty w wielu lo
 | **Pomoc techniczna**                | **Szczegóły**               
 | :-------------------       | :------------------- |
 | **Wdrożenie hosta**       | Host funkcji Hyper-V może być autonomiczny lub wdrożony w klastrze. |
-| **Uprawnienia**           | Wymagane są uprawnienia administratora na hoście funkcji Hyper-V. |
-| **System operacyjny hosta** | Windows Server 2016 lub Windows Server 2012 R2.<br/> Nie można ocenić maszyn wirtualnych znajdujących się na hostach funkcji Hyper-V z systemem Windows Server 2019. |
+| **Uprawnienia**           | Wymagane są uprawnienia administratora na hoście funkcji Hyper-V. <br/> Alternatywnie, jeśli nie chcesz przypisywać uprawnień administratora, Utwórz konto użytkownika lokalnego lub domeny i Dodaj tego użytkownika do tych grup — Użytkownicy zarządzania zdalnego, Administratorzy funkcji Hyper-V i użytkownicy monitora wydajności. |
+| **System operacyjny hosta** | Windows Server 2019, Windows Server 2016 lub Windows Server 2012 R2.<br/> Nie można ocenić maszyn wirtualnych znajdujących się na hostach funkcji Hyper-V z systemem Windows Server 2012. |
 | **Komunikacja zdalna programu PowerShell**   | Musi być włączona na każdym hoście. |
 | **Funkcja Hyper-V Replica**       | W przypadku korzystania z funkcji Hyper-V Replica (lub korzystania z wielu maszyn wirtualnych z tymi samymi identyfikatorami maszyn wirtualnych) i odnajdywania zarówno oryginalnej, jak i zreplikowanej maszyny wirtualnej przy użyciu Azure Migrate, Ocena wygenerowana przez Azure Migrate może być niedokładna. |
 
@@ -72,13 +72,8 @@ Współrzędne geograficzne | Możesz tworzyć Azure Migrate projekty w wielu lo
 | **Pomoc techniczna**                  | **Szczegóły**               
 | :----------------------------- | :------------------- |
 | **System operacyjny** | Wszystkie systemy operacyjne [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) i [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) , które są obsługiwane przez platformę Azure. |
-| **Uprawnienia**           | Musisz mieć uprawnienia administratora na wszystkich maszynach wirtualnych funkcji Hyper-V, które chcesz ocenić. |
 | **Usługi integracji**       | [Usługi integracji funkcji Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services) muszą być uruchomione na maszynach wirtualnych, które oceniasz, aby przechwycić informacje o systemie operacyjnym. |
-| **Rozruch z interfejsem UEFI**                  | Maszyny wirtualne z rozruchem UEFI nie są obsługiwane w przypadku migracji. |
-| **Zaszyfrowane dyski/woluminy**    | Maszyny wirtualne z szyfrowanymi dyskami/woluminami nie są obsługiwane na potrzeby migracji. |
-| **RDM/przekazywanie dysków**      | Jeśli maszyny wirtualne mają dyski RDM lub przekazujących, te dyski nie będą replikowane do platformy Azure. |
-| **NFS**                        | Woluminy NFS zainstalowane jako woluminy na maszynach wirtualnych nie zostaną zreplikowane. |
-| **Dysk docelowy**                | Azure Migrate oceny zalecają migrację do maszyn wirtualnych platformy Azure tylko z dyskami zarządzanymi. |
+
 
 
 ## <a name="assessment-appliance-requirements"></a>Ocena — wymagania dotyczące urządzenia
@@ -103,8 +98,8 @@ Do oceny maszyn wirtualnych urządzenie Azure Migrate musi mieć łączność z 
 **Adres URL** | **Szczegóły**  
 --- | ---
 *.portal.azure.com | Nawigacja do Azure Portal
-*.windows.net | Zaloguj się do swojej subskrypcji platformy Azure
-*.microsoftonline.com | Tworzenie aplikacji Azure Active Directory na potrzeby komunikacji urządzeń z usługą.
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Zaloguj się do swojej subskrypcji platformy Azure
+*.microsoftonline.com <br/> *.microsoftonline-p.com | Tworzenie aplikacji Azure Active Directory na potrzeby komunikacji urządzeń z usługą.
 management.azure.com | Tworzenie aplikacji Azure Active Directory na potrzeby komunikacji urządzeń z usługą.
 dc.services.visualstudio.com | Rejestrowanie i monitorowanie
 *.vault.azure.net | Zarządzaj wpisami tajnymi w Azure Key Vault podczas komunikacji między urządzeniem i usługą.
@@ -119,7 +114,7 @@ Poniższa tabela zawiera podsumowanie wymagań dotyczących portów dla oceny.
 
 **urządzenia** | **połączenia**
 --- | ---
-**Wprowadzony** | Połączenia przychodzące na porcie TCP 3389, aby zezwolić na połączenia pulpitu zdalnego z urządzeniem.<br/> Połączenia przychodzące na porcie 44368 do zdalnego dostępu do aplikacji do zarządzania urządzeniami przy użyciu adresu URL:``` https://<appliance-ip-or-name>:44368 ```<br/> Połączenia wychodzące na porcie 443 do wysyłania metadanych odnajdywania i wydajności do Azure Migrate.
+**Wprowadzony** | Połączenia przychodzące na porcie TCP 3389, aby zezwolić na połączenia pulpitu zdalnego z urządzeniem.<br/> Połączenia przychodzące na porcie 44368 do zdalnego dostępu do aplikacji do zarządzania urządzeniami przy użyciu adresu URL:``` https://<appliance-ip-or-name>:44368 ```<br/> Połączenia wychodzące na portach 443, 5671 i 5672 do wysyłania metadanych odnajdywania i wydajności do Azure Migrate.
 **Host/klaster funkcji Hyper-V** | Połączenia przychodzące na portach usługi WinRM 5985 (HTTP) i 5986 (HTTPS) do ściągania metadanych konfiguracji i wydajności maszyn wirtualnych funkcji Hyper-V przy użyciu sesji model wspólnych informacji (CIM).
 
 ## <a name="migration-hyper-v-host-requirements"></a>Migracja — wymagania dotyczące hosta funkcji Hyper-V

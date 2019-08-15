@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 4df024f9ff37121df4d9be51ae1fa540028ddd3d
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 83b4f2fce3dbae2168627194a45e62a2d4479936
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727435"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934745"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Najlepsze rozwiązania z zakresu zabezpieczeń i szyfrowania danych platformy Azure
 W tym artykule opisano najlepsze rozwiązania dotyczące zabezpieczeń i szyfrowania danych.
@@ -97,7 +97,7 @@ Organizacje, które nie wymuszają szyfrowania danych, są bardziej narażone na
 
 Ochrona danych w tranzycie powinna być istotną częścią strategii ochrony danych. Ponieważ dane są przenoszone z wielu lokalizacji, zazwyczaj zalecamy używanie protokołów SSL/TLS do wymiany danych w różnych lokalizacjach. W niektórych sytuacjach może być konieczne odizolowanie całego kanału komunikacyjnego między infrastrukturami lokalnymi i chmurowymi przy użyciu sieci VPN.
 
-W przypadku danych przenoszonych między infrastrukturą lokalną i platformą Azure należy wziąć pod uwagę odpowiednie zabezpieczenia, takie jak HTTPS lub VPN. W przypadku wysyłania zaszyfrowanego ruchu między siecią wirtualną platformy Azure a lokalizacją lokalną za pośrednictwem publicznej sieci Internet Użyj [usługi Azure VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/).
+W przypadku danych przenoszonych między infrastrukturą lokalną i platformą Azure należy wziąć pod uwagę odpowiednie zabezpieczenia, takie jak HTTPS lub VPN. W przypadku wysyłania zaszyfrowanego ruchu między siecią wirtualną platformy Azure a lokalizacją lokalną za pośrednictwem publicznej sieci Internet Użyj [usługi Azure VPN Gateway](../../vpn-gateway/index.yml).
 
 Poniżej przedstawiono najlepsze rozwiązania dotyczące korzystania z usługi Azure VPN Gateway, protokołu SSL/TLS i protokołu HTTPS.
 

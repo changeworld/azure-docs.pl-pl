@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: dacurwin
-ms.openlocfilehash: 7a19b97e36bc28e5e629391f799b69370cf0fa38
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: e31c875f31f118716feea0c73bc2ca70a4ecd9a5
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737274"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954830"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>Tworzenie kopii zapasowej farmy programu SharePoint na platformie Azure za pomocą usługi serwera usługi MAB
 Można utworzyć kopię zapasową farmy programu SharePoint w celu Microsoft Azure przy użyciu programu Microsoft Azure Backup Server (serwera usługi MAB) w taki sam sposób, jak w przypadku tworzenia kopii zapasowych innych źródeł danych. Azure Backup zapewnia elastyczność harmonogramu tworzenia kopii zapasowych w celu tworzenia codziennych, cotygodniowych, comiesięcznych i corocznych punktów kopii zapasowych oraz zapewnia opcje zasad przechowywania dla różnych punktów kopii zapasowych. Oferuje również możliwość przechowywania kopii dysków lokalnych w celu szybkiego zamierzania czasu odzyskiwania (RTO) oraz przechowywania kopii na platformie Azure w celu zapewnienia ekonomicznego i długoterminowego przechowywania.
@@ -43,7 +43,7 @@ Azure Backup Server jest uruchamiany jako konto LocalSystem. Aby utworzyć kopi�
 Jeśli farma programu SharePoint ma SQL Server baz danych, które są skonfigurowane przy użyciu aliasów SQL Server, Zainstaluj składniki klienta SQL Server na serwerze frontonu sieci Web, który będzie chroniony przez serwera usługi MAB.
 
 ### <a name="sharepoint-server"></a>Oprogramowanie SharePoint Server
-Chociaż wydajność zależy od wielu czynników, takich jak rozmiar farmy programu SharePoint, ponieważ ogólne wskazówki serwera usługi MAB mogą chronić witrynę sieciową o 25 TB.
+Chociaż wydajność jest zależna od wielu czynników, takich jak rozmiar farmy programu SharePoint, ponieważ ogólne wskazówki serwera usługi MAB mogą chronić witrynę programu SharePoint z 25 TB.
 
 ### <a name="whats-not-supported"></a>Jakie operacje nie są obsługiwane
 * SERWERA usługi MAB chroniące farmę programu SharePoint nie chroni indeksów wyszukiwania lub baz danych usług aplikacji. Należy osobno skonfigurować ochronę tych baz danych.

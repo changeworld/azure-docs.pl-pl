@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 905d208dccf54ac34e3f832d4d0c5b98a6121757
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 2b4d636737dbd75829c9555e340f79c3c867910d
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827511"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967557"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Kopiowanie danych do lub z Azure SQL Database przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję Azure Data Factory:"]
@@ -60,8 +60,8 @@ Te właściwości są obsługiwane dla Azure SQL Database połączonej usługi:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość **Type** musi być ustawiona na wartość **AzureSqlDatabase**. | Yes |
-| connectionString | Określ informacje, które są konieczne do nawiązania połączenia z wystąpieniem Azure SQL Database dla właściwości **ConnectionString** . <br/>Oznacz to pole jako **SecureString** , aby bezpiecznie przechowywać je w Azure Data Factory. Możesz również umieścić hasło lub klucz jednostki usługi w Azure Key Vault. Jeśli jest to uwierzytelnianie SQL, należy ściągnąć `password` konfigurację z parametrów połączenia. Aby uzyskać więcej informacji, zobacz przykład JSON po zalogowaniu do tabeli i [przechowywania w Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| type | Właściwość **Type** musi być ustawiona na wartość **AzureSqlDatabase**. | Tak |
+| connectionString | Określ informacje, które są konieczne do nawiązania połączenia z wystąpieniem Azure SQL Database dla właściwości **ConnectionString** . <br/>Oznacz to pole jako **SecureString** , aby bezpiecznie przechowywać je w Azure Data Factory. Możesz również umieścić hasło lub klucz jednostki usługi w Azure Key Vault. Jeśli jest to uwierzytelnianie SQL, należy ściągnąć `password` konfigurację z parametrów połączenia. Aby uzyskać więcej informacji, zobacz przykład JSON po zalogowaniu do tabeli i [przechowywania w Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
 | servicePrincipalId | Określ identyfikator klienta aplikacji. | Tak, w przypadku korzystania z uwierzytelniania usługi Azure AD za pomocą nazwy głównej usługi |
 | servicePrincipalKey | Określ klucz aplikacji. Oznacz to pole jako element **SecureString** , aby bezpiecznie przechowywać go w Azure Data Factory lub odwołać się do [wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Tak, w przypadku korzystania z uwierzytelniania usługi Azure AD za pomocą nazwy głównej usługi |
 | tenant | Określ informacje o dzierżawie, takie jak nazwa domeny lub identyfikator dzierżawy, w której znajduje się aplikacja. Pobierz ją przez umieszczenie kursora myszy w prawym górnym rogu Azure Portal. | Tak, w przypadku korzystania z uwierzytelniania usługi Azure AD za pomocą nazwy głównej usługi |
@@ -262,18 +262,18 @@ Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania 
 
 ### <a name="azure-sql-database-as-the-source"></a>Azure SQL Database jako źródło
 
-Aby skopiować dane z Azure SQL Database, ustaw właściwość **Type** w źródle działania Copy na wartość **sqlsource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
+Aby skopiować dane z Azure SQL Database, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość **Type** źródła działania Copy musi być ustawiona na wartość sqlsource. | Yes |
+| type | Właściwość **Type** źródła działania Copy musi być ustawiona na wartość **AzureSqlSource**. Typ "sqlsource" jest nadal obsługiwany w celu zapewnienia zgodności z poprzednimi wersjami. | Tak |
 | sqlReaderQuery | Ta właściwość używa niestandardowego zapytania SQL do odczytywania danych. Może to być na przykład `select * from MyTable`. | Nie |
 | sqlReaderStoredProcedureName | Nazwa procedury składowanej, która odczytuje dane z tabeli źródłowej. Ostatnią instrukcję SQL musi być instrukcja SELECT w procedurze składowanej. | Nie |
 | storedProcedureParameters | Parametry procedury składowanej.<br/>Dozwolone wartości to pary nazw ani wartości. Nazwy i wielkość liter parametrów muszą być zgodne z nazwami i wielkością liter parametrów procedury składowanej. | Nie |
 
 **Punkty do uwagi:**
 
-- Jeśli **sqlReaderQuery** jest określony dlaelementu sqlsource, działanie Copy uruchamia to zapytanie względem źródła Azure SQL Database, aby uzyskać dane. Można również określić procedurę składowaną, określając **sqlReaderStoredProcedureName** i **storedProcedureParameters** , jeśli procedura składowana pobiera parametry.
+- Jeśli **sqlReaderQuery** jest określony dla **AzureSqlSource**, działanie Copy uruchamia to zapytanie względem źródła Azure SQL Database, aby uzyskać dane. Można również określić procedurę składowaną, określając **sqlReaderStoredProcedureName** i **storedProcedureParameters** , jeśli procedura składowana pobiera parametry.
 - Jeśli nie określisz opcji **sqlReaderQuery** ani **sqlReaderStoredProcedureName**, kolumny zdefiniowane w sekcji "Structure" w kodzie JSON zestawu danych są używane do konstruowania zapytania. Zapytanie `select column1, column2 from mytable` jest uruchamiane względem Azure SQL Database. Jeśli definicja zestawu danych nie ma "struktury", wszystkie kolumny są wybierane z tabeli.
 
 #### <a name="sql-query-example"></a>Przykład zapytania SQL
@@ -297,7 +297,7 @@ Aby skopiować dane z Azure SQL Database, ustaw właściwość **Type** w źród
         ],
         "typeProperties": {
             "source": {
-                "type": "SqlSource",
+                "type": "AzureSqlSource",
                 "sqlReaderQuery": "SELECT * FROM MyTable"
             },
             "sink": {
@@ -329,7 +329,7 @@ Aby skopiować dane z Azure SQL Database, ustaw właściwość **Type** w źród
         ],
         "typeProperties": {
             "source": {
-                "type": "SqlSource",
+                "type": "AzureSqlSource",
                 "sqlReaderStoredProcedureName": "CopyTestSrcStoredProcedureWithParameters",
                 "storedProcedureParameters": {
                     "stringData": { "value": "str3" },
@@ -368,11 +368,11 @@ GO
 > [!TIP]
 > Dowiedz się więcej o obsługiwanych zachowaniach zapisu, konfiguracjach i najlepszych rozwiązaniach od [najlepszych rozwiązań dotyczących ładowania danych do Azure SQL Database](#best-practice-for-loading-data-into-azure-sql-database).
 
-Aby skopiować dane do Azure SQL Database, ustaw właściwość **Type** w ujścia działania Copy na sqlsink. Następujące właściwości są obsługiwane w działaniu kopiowania **ujścia** sekcji:
+Aby skopiować dane do Azure SQL Database, w sekcji **ujścia** działania kopiowania są obsługiwane następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość **Type** ujścia działania Copy musi być ustawiona na wartość sqlsink. | Tak |
+| type | Właściwość **Type** ujścia działania Copy musi być ustawiona na wartość **AzureSqlSink**. Typ "sqlsink" jest nadal obsługiwany w celu zapewnienia zgodności z poprzednimi wersjami. | Tak |
 | writeBatchSize | Liczba wierszy do wstawienia do tabeli SQL *na partię*.<br/> Dozwolone wartości to **całkowitą** (liczba wierszy). Domyślnie Azure Data Factory dynamicznie określa odpowiedni rozmiar wsadu na podstawie rozmiaru wiersza. | Nie |
 | writeBatchTimeout | Czas oczekiwania na zakończenie operacji wstawiania wsadowego przed przekroczeniem limitu czasu.<br/> Dozwolone wartości to **timespan**. Przykładem jest "00:30:00" (30 minut). | Nie |
 | preCopyScript | Określ zapytanie SQL dla działania kopiowania, które ma zostać uruchomione przed zapisaniem danych w Azure SQL Database. Jest on wywoływany tylko raz dla każdego przebiegu kopiowania. Ta właściwość służy do oczyszczania załadowanych danych. | Nie |
@@ -405,7 +405,7 @@ Aby skopiować dane do Azure SQL Database, ustaw właściwość **Type** w ujśc
                 "type": "<source type>"
             },
             "sink": {
-                "type": "SqlSink",
+                "type": "AzureSqlSink",
                 "writeBatchSize": 100000
             }
         }
@@ -439,7 +439,7 @@ Dowiedz się więcej szczegółowo od [wywołania procedury składowanej z ujśc
                 "type": "<source type>"
             },
             "sink": {
-                "type": "SqlSink",
+                "type": "AzureSqlSink",
                 "sqlWriterStoredProcedureName": "CopyTestStoredProcedureWithParameters",
                 "storedProcedureTableTypeParameterName": "MyTable",
                 "sqlWriterTableType": "MyTableType",
@@ -553,7 +553,7 @@ Poniższy przykład przedstawia sposób użycia procedury składowanej do wykona
 
     ```json
     "sink": {
-        "type": "SqlSink",
+        "type": "AzureSqlSink",
         "SqlWriterStoredProcedureName": "spOverwriteMarketing",
         "storedProcedureTableTypeParameterName": "Marketing",
         "SqlWriterTableType": "MarketingType",

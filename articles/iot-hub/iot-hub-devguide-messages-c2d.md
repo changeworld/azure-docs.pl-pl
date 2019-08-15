@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 4b8df538110f6c0b17a1ed37a2a6063a5b89a6e4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: d4a51a44b48e94669e92a9d525c1b0966df53c18
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880978"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68964133"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>Wysyłanie komunikatów z chmury do urządzeń z Centrum IoT Hub
 
@@ -82,10 +82,6 @@ Po wysłaniu komunikatu z chmury do urządzenia usługa może zażądać dostarc
 
 Jeśli wartość **ACK** jest *pełna*i nie otrzymasz wiadomości z opinią, oznacza to, że wiadomość dotycząca opinii wygasła. Usługa nie może znać, co się stało z oryginalnym komunikatem. W tym przypadku usługa powinna upewnić się, że może przetworzyć opinię przed jej wygaśnięciem. Maksymalny czas wygaśnięcia wynosi dwa dni, co pozostawia czas na ponowne uruchomienie usługi w przypadku wystąpienia błędu.
 
-> [!NOTE]
-> Gdy urządzenie zostanie usunięte, wszystkie oczekujące Opinie również zostaną usunięte.
->
-
 Jak wyjaśniono [](iot-hub-devguide-endpoints.md)w punktach końcowych, usługa IoT Hub dostarcza informacje zwrotne za pomocą punktu końcowego opartego na usłudze, */messages/servicebound/feedback*jako komunikatów. Semantyka do otrzymywania opinii jest taka sama jak w przypadku komunikatów z chmury do urządzenia. Zawsze, gdy jest to możliwe, informacja zwrotna wiadomości jest przetwarzana w jednej wiadomości, w następującym formacie:
 
 | Właściwość     | Opis |
@@ -126,6 +122,12 @@ Treść wiadomości z opiniami jest pokazana w poniższym kodzie:
 ]
 ```
 
+**Oczekiwanie na opinię na temat usuniętych urządzeń**
+
+Gdy urządzenie zostanie usunięte, wszystkie oczekujące Opinie również zostaną usunięte. Opinie urządzeń są wysyłane w partiach. Jeśli urządzenie zostanie usunięte w wąskim oknie (często mniej niż 1 sekunda), gdy urządzenie potwierdzi otrzymanie wiadomości i gdy zostanie przygotowana Następna partia informacji zwrotnych, opinia nie zostanie wyprowadzona.
+
+Możesz rozwiązać ten problem, czekając na przeprowadzenie przez pewien czas oczekiwanej opinii przed usunięciem urządzenia. Po usunięciu urządzenia należy założyć, że zwrotne wiadomości powinny zostać utracone.
+
 ## <a name="cloud-to-device-configuration-options"></a>Opcje konfiguracji chmury do urządzenia
 
 Każde Centrum IoT Hub udostępnia następujące opcje konfiguracji obsługi komunikatów między chmurą i urządzeniem:
@@ -139,7 +141,7 @@ Każde Centrum IoT Hub udostępnia następujące opcje konfiguracji obsługi kom
 
 Aby uzyskać więcej informacji na temat sposobu ustawiania tych opcji konfiguracji, zobacz [Tworzenie centrów IoT](iot-hub-create-through-portal.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać informacje o zestawach SDK, których można użyć do odbierania komunikatów z chmury do urządzeń, zobacz [zestawy SDK usługi Azure IoT](iot-hub-devguide-sdks.md).
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: dacurwin
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 6525be97d9317791f39cb51a8fa819d38bd49c73
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: bdbceec2f1d0a900ffdb392d8a0505ce11419036
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689446"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954905"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Przywracanie maszyn wirtualnych platformy Azure przy użyciu interfejsu API REST
 
@@ -43,7 +43,7 @@ Identyfikator URI *Get* zawiera wszystkie wymagane parametry. Nie ma potrzeby do
 
 #### <a name="example-response"></a>Przykładowa odpowiedź
 
-Po przesłaniu *identyfikatora URI* zostanie zwrócona odpowiedź 200 (ok).
+Po przesłaniu identyfikatora URI zostanie zwrócona odpowiedź 200 (OK).
 
 ```http
 HTTP/1.1 200 OK
@@ -177,7 +177,7 @@ Zwraca dwie odpowiedzi: 202 (zaakceptowane) podczas tworzenia innej operacji, a 
 
 #### <a name="example-responses"></a>Przykładowe odpowiedzi
 
-Po przesłaniu identyfikatora *URI* dla wyzwalania dysków przywracania początkowa odpowiedź to 202 (zaakceptowane) z nagłówkiem lokalizacji lub z nagłówkiem Azure-Async-header.
+Po przesłaniu identyfikatora URI dla wyzwalania dysków przywracania początkowa odpowiedź to 202 (zaakceptowane) z nagłówkiem lokalizacji lub z nagłówkiem Azure-Async-header.
 
 ```http
 HTTP/1.1 202 Accepted

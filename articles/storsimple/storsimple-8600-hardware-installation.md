@@ -1,6 +1,6 @@
 ---
-title: Instalowanie programu Microsoft Azure StorSimple 8600 urządzenia | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób Rozpakowywanie, montowanie i Podłączanie kabli do urządzenia StorSimple 8600, aby wdrożyć i skonfigurować oprogramowanie.
+title: Zainstaluj urządzenie Microsoft Azure StorSimple 8600 | Microsoft Docs
+description: W tym artykule opisano sposób rozpakowywania, montowania w stojaku i kabla urządzenia z StorSimple 8600 przed wdrożeniem i skonfigurowaniem oprogramowania.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,258 +14,261 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: be3f68a00647840801e7c205d7abb34b718bd61c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 571c8b729408d7b9e805b875baccfd9ac8d6b9be
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60630941"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965267"
 ---
-# <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>Je rozpakować, zamontować w stojaku i Podłączanie kabli do urządzenia StorSimple 8600
-## <a name="overview"></a>Omówienie
-Usługi Microsoft Azure StorSimple 8600 urządzenia podwójną obudowy i składa się z podstawowym i obudowy EBOD. W tym samouczku wyjaśniono, jak rozpakować, zamontować w stojaku i StorSimple 8600 kabel urządzeń sprzętowych przed należy skonfigurować oprogramowanie StorSimple.
+# <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>Rozpakowywanie, montowanie w stojaku i Podłączanie kabli do urządzenia z systemem StorSimple 8600
 
-## <a name="unpack-your-storsimple-8600-device"></a>Rozpakowywanie urządzenia StorSimple 8600
-W poniższych krokach przedstawiono wyraźne, szczegółowe instrukcje dotyczące rozpakowania urządzenia magazynu StorSimple 8600. To urządzenie jest dostarczany w dwóch polach: jeden dla podstawowego obudowy i inny wpis dla obudowy EBOD. Następnie umieścić te dwa pola w jednym polu.
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
-### <a name="prepare-to-unpack-your-device"></a>Przygotowanie do rozpakowywania urządzenia
-Zanim można rozpakować urządzenie, przejrzyj następujące informacje.
+## <a name="overview"></a>Przegląd
+Microsoft Azure StorSimple 8600 to urządzenie dwuobudówowe, które składa się z podstawowej i EBOD obudowy. W tym samouczku wyjaśniono, jak rozpakować sprzęt urządzenia z systemem StorSimple 8600 i podłączyć go do niego przed skonfigurowaniem oprogramowania StorSimple.
 
-![Ikona ostrzeżenia](./media/storsimple-safety/IC740879.png)![ikonę ciężki](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **ostrzeżenie!**
+## <a name="unpack-your-storsimple-8600-device"></a>Rozpakowywanie urządzenia z urządzeniem z StorSimple 8600
+Poniższe kroki zawierają szczegółowe instrukcje dotyczące rozpakowywania urządzenia magazynującego z systemem StorSimple 8600. To urządzenie jest dostarczane w dwóch polach — jeden dla obudowy podstawowej i drugi dla obudowy EBOD. Te dwa pola są następnie umieszczane w jednym polu.
 
-1. Upewnij się, że dwie osoby dostępne na potrzeby zarządzania wagę urządzenia, jeśli są obsługującą go ręcznie. W pełni skonfigurowany obudowy można porównać do 32 kg (70 lbs.).
+### <a name="prepare-to-unpack-your-device"></a>Przygotowanie do rozpakowania urządzenia
+Przed rozpakowaniem urządzenia zapoznaj się z poniższymi informacjami.
+
+![Ostrzeżenie ikony](./media/storsimple-safety/IC740879.png)![](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) dużej grubości ikony ostrzeżenia **!**
+
+1. Upewnij się, że masz dwie osoby, aby zarządzać wagą urządzenia, jeśli jest ono obsługiwane ręcznie. W pełni skonfigurowana obudowa może ważyć do 32 kg (70 funtów).
 2. Umieść pudełko na płaskiej, poziomej powierzchni.
 
-Następnie wykonaj poniższe kroki, aby rozpakować urządzenie.
+Następnie wykonaj następujące kroki, aby rozpakować urządzenie.
 
 #### <a name="to-unpack-your-device"></a>Aby rozpakować urządzenie
-1. Sprawdź, czy na pudełku i na piance opakowaniowej znajdują się naderwania, zarysowania, przecięcia, uszkodzenia od wody lub inne widoczne uszkodzenia. Jeśli pudełko lub opakowanie jest poważnie uszkodzone, nie należy go otwierać. Proszę [skontaktuj się z Microsoft Support](storsimple-8000-contact-microsoft-support.md) ułatwią Ci ocenić, czy urządzenie jest w dobrym stanie.
-2. Otwórz okno zewnętrzny, a następnie podjęcia się dwa pola odpowiadające podstawową i obudowy EBOD. Można teraz Rozpakuj podstawową i EBOD obudowy. Na poniższej ilustracji przedstawiono nierozpakowane widok jednego obudowy.
+1. Sprawdź, czy na pudełku i na piance opakowaniowej znajdują się naderwania, zarysowania, przecięcia, uszkodzenia od wody lub inne widoczne uszkodzenia. Jeśli pudełko lub opakowanie jest poważnie uszkodzone, nie należy go otwierać. [Skontaktuj się z pomocą techniczną pomoc techniczna firmy Microsoft](storsimple-8000-contact-microsoft-support.md) , aby ocenić, czy urządzenie jest w dobrym stanie.
+2. Otwórz pole zewnętrzne, a następnie wypełnij dwa pola odpowiadające podstawowym i EBOD obudów. Teraz można rozpakować obudowy podstawowe i EBOD. Na poniższej ilustracji przedstawiono niepakowany widok jednej z obudów.
    
-    ![Rozpakowywanie urządzenia magazynu](./media/storsimple-8600-hardware-installation/HCSUnpackyour4Udevice.png)
+    ![Rozpakowywanie urządzenia magazynującego](./media/storsimple-8600-hardware-installation/HCSUnpackyour4Udevice.png)
    
-    **Wczytaj widok urządzenia magazynu**
+    **Niepakowany widok urządzenia magazynującego**
    
-   | Label | Opis |
+   | Etykieta | Opis |
    | --- | --- |
-   |   1 |Okno dokumentu |
-   |   2 |Kabli SAS (w zasobniku kable i akcesoriów) |
-   |   3 |Dolny maskotkę witryny |
+   |   1 |Pole pakowania |
+   |   2 |Kable SAS (w akcesoriach i zasobniku kabli) |
+   |   3 |Dolna pianka |
    |   4 |Urządzenie |
-   |   5 |Najważniejsze maskotkę witryny |
+   |   5 |Górna pianka |
    |   6 |Pole akcesoriów |
-3. Po rozpakowaniu dwa pola, upewnij się, że masz:
+3. Po rozpakowaniu dwóch pól upewnij się, że masz:
    
-   * 1 obudowy podstawowej (głównej obudowy i obudowy EBOD znajdują się w dwóch oddzielnych pól)
-   * 1 obudowy EBOD
-   * kable 4, 2, w każdym polu
-   * 2 kable sygnatury dostępu Współdzielonego (nawiązać głównej obudowy obudowy EBOD)
-   * 1 skrzyżowanego kabla Ethernet
-   * 2 kable konsoli szeregowej
-   * Konwerter USB seryjny 1 dostęp szeregowy
-   * 4 QSFP-do-SFP + kart do użycia z interfejsów sieciowych 10 GbE
-   * 2 stojak zestawów (4 po stronie platformy rails za pomocą zainstalowanie sprzętu, 2 dla podstawowego obudowy i obudowy EBOD), 1 w każdym polu
-   * Wprowadzenie dokumentacji wprowadzenie
+   * 1 obudowa podstawowa (obudowa podstawowa i obudowa EBOD znajdują się w dwóch oddzielnych ramkach)
+   * 1 obudowa EBOD
+   * 4 przewody zasilające, 2 w każdym polu
+   * 2 kable SAS (aby połączyć podstawową obudowę z obudową EBOD)
+   * 1 kabel sieci Ethernet typu skrzyżowanie
+   * 2 okablowania konsoli szeregowej
+   * 1 konwerter szeregowy USB na potrzeby dostępu szeregowego
+   * 4 karty/QSFP-SFP + do użycia z interfejsami sieciowymi 10 GbE
+   * 2 zestawy instalacji stojaków (4 szyny boczne z montażem sprzętu, 2 każdy dla obudowy podstawowej i obudowy EBOD), 1 w każdym polu
+   * Wprowadzenie — dokumentacja
      
-     Jeśli nie masz żadnych elementów wymienionych powyżej, [skontaktuj się z Microsoft Support](storsimple-8000-contact-microsoft-support.md).  
+     Jeśli nie otrzymano żadnego z wymienionych powyżej elementów, [skontaktuj się z pomoc techniczna firmy Microsoft](storsimple-8000-contact-microsoft-support.md).  
 
 Następnym krokiem jest zamontowanie urządzenia na stojaku.
 
-## <a name="rack-mount-your-storsimple-8600-device"></a>Urządzenie StorSimple 8600 zamontować w stojaku
-Wykonaj poniższe czynności, aby zainstalować urządzenia magazynu StorSimple 8600 w standardowym stelażu 19-calowy z przodu i wpisy na tylnej. To urządzenie jest dostarczany z dwa załączniki: podstawowy obudowy i obudowy EBOD. Oba te muszą być montowane w stojaku.
+## <a name="rack-mount-your-storsimple-8600-device"></a>Stojak — Instalowanie urządzenia z systemem StorSimple 8600
+Postępuj zgodnie z poniższymi instrukcjami, aby zainstalować urządzenie magazynujące z systemem StorSimple 8600 w standardowym stojaku 19-calowym z przodu i z tyłu. To urządzenie zawiera dwie obudowy: obudowę podstawową i obudowę EBOD. Oba te elementy muszą być zainstalowane w stojaku.
 
-Instalacja składa się z wielu kroków, z których każdy jest omówione w poniższych procedurach.
+Instalacja składa się z wielu kroków, z których każda została omówiona w poniższych procedurach.
 
 > [!IMPORTANT]
-> Urządzenia StorSimple musi być montowane w stojaku do prawidłowego działania.
+> Urządzenia StorSimple muszą być zainstalowane w stojaku w celu zapewnienia odpowiedniej operacji.
 > 
 > 
 
-### <a name="site-preparation"></a>Przygotowanie miejsca
-Obudowach musi być zainstalowany w standardowych stojaku 19-calowy, która ma zarówno frontonu, jak i tylnej wpisów. Poniższa procedura umożliwia przygotowanie do instalacji stojaka.
+### <a name="site-preparation"></a>Przygotowanie witryny
+Obudowy muszą być zainstalowane w standardowym stojaku 19-calowym, które ma zarówno wpisy przód, jak i tylne. Aby przygotować się do instalacji stelażowej, należy wykonać poniższą procedurę.
 
-#### <a name="to-prepare-the-site-for-rack-installation"></a>Aby przygotować lokacji stojak instalacji
-1. Upewnij się, że podstawowy i obudów EBOD są nieaktywnych bezpiecznie na powierzchni Praca stała stabilne i poziomu (lub podobny).
-2. Sprawdź, czy witryny, na którym zamierzasz skonfigurować ma standardowy Przywrócenie zasilania sieciowego z niezależne źródło lub stojak jednostki dystrybucji zasilania (PDU) przy użyciu zasilacz awaryjny (UPS).
-3. Upewnij się, że jeden 4U gniazdo (2 X 2U) jest dostępna w stojaku, w którym zamierzasz zainstalować obudowach.
+#### <a name="to-prepare-the-site-for-rack-installation"></a>Aby przygotować lokację do instalacji stojaka
+1. Upewnij się, że obudowy podstawowe i EBOD są bezpiecznie przechowywane na płaskiej, stabilnej i poziomej powierzchni roboczej (lub podobnej).
+2. Upewnij się, że lokacja, w której zamierzasz skonfigurować, ma moc standardową AC od niezależnego źródła lub z jednostki dystrybucji zasilania w stojaku (PDU) z zasilaczem UPS.
+3. Upewnij się, że jedno gniazdo 4U (2 X 2U) jest dostępne w stojaku, w którym zamierzasz zainstalować obudowy.
 
-![Ikona ostrzeżenia](./media/storsimple-safety/IC740879.png)![ikonę ciężki](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **ostrzeżenie!**
+![Ostrzeżenie ikony](./media/storsimple-safety/IC740879.png)![](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) dużej grubości ikony ostrzeżenia **!**
 
- Upewnij się, że dwie osoby dostępne na potrzeby zarządzania wagi, jeśli są w nim Obsługa konfiguracji urządzenia ręcznie. W pełni skonfigurowany obudowy można porównać do 32 kg (70 lbs.).
+ Upewnij się, że masz dwie osoby, które mają być dostępne do zarządzania wagą, jeśli ręcznie obsługujesz konfigurację urządzenia. W pełni skonfigurowana obudowa może ważyć do 32 kg (70 funtów).
 
-### <a name="rack-prerequisites"></a>Wymagania wstępne stojak
-Obudowach są przeznaczone do instalacji w standardowym stelażu 19-calowy cabinet za pomocą:
+### <a name="rack-prerequisites"></a>Wymagania wstępne dotyczące stojaka
+Obudowy są przeznaczone do instalacji w standardowym pliku w języku 19 cala z:
 
-* Minimalna głębokość 27.84 cala od regału post do wpisu
-* Waga maksymalny 32 kg dla urządzenia
-* Maksymalna ciśnienia z 5 Pascal (0,5 mm wody miernika)
+* Minimalna głębokość 27,84 cala z wpisu stojaka do opublikowania
+* Maksymalna waga 32 kg dla urządzenia
+* Maksymalne ciśnienie z 5 Pascalów (miernik wody 0,5 mm)
 
-### <a name="rack-mounting-rail-kit"></a>Instalowanie w stelażu szyny kit
-Instalowanie platformy rails zestaw zapewnia się do użytku z pliku cabinet 19-calowy stojaka. Do obsługi wagi maksymalna obudowy zostały przetestowane szyny. Te platformy rails będzie również umożliwiać instalację wielu obudowach bez utraty miejsca w stojaku. Najpierw zainstaluj obudowy EBOD.
+### <a name="rack-mounting-rail-kit"></a>Montaż zestawu szynowego w stojaku
+Zestaw szyn montażowych zostanie udostępniony do użycia z 19-calowym szafą w stojaku. Szyny zostały przetestowane w celu obsłużenia maksymalnej wagi obudowy. Te szyny umożliwiają również instalację wielu obudów bez utraty miejsca w stojaku. Najpierw zainstaluj obudowę EBOD.
 
-#### <a name="to-install-the-ebod-enclosure-on-the-rails"></a>Aby zainstalować obudowy EBOD na szyny
-1. Ten krok należy wykonać tylko wtedy, gdy rails wewnętrzne nie są zainstalowane na urządzeniu. Zazwyczaj rails wewnętrzne są instalowane na etapie produkcji. Jeśli nie zainstalowano platformy rails, zainstaluj slajdy szyny po lewej stronie i szyny po prawej stronie na stronach obudowy obudowy. Dołącz one, przy użyciu sześciu śruby metryki na każdej stronie. Aby ułatwić orientacji, slajdy szyny są oznaczone **LH — przód** i **RH — przód**, i zakończenia, który jest dołączony do tyłu obudowa ma końcem.
+#### <a name="to-install-the-ebod-enclosure-on-the-rails"></a>Aby zainstalować obudowę EBOD na szynach
+1. Wykonaj ten krok tylko wtedy, gdy na urządzeniu nie zainstalowano wewnętrznych szyn. Zazwyczaj szyny wewnętrzne są instalowane w fabryce. Jeśli szyny nie są zainstalowane, a następnie zainstaluje slajdy z lewej szyną i z prawej strony szyny po bokach obudowy obudowy. Dołączą one przy użyciu sześciu wkrętów metryk na każdej stronie. Aby pomóc w orientacji, slajdy szyny są oznaczone jako **LH – Front** i **RH – Front**, a koniec, który jest umieszczany w tylnej części obudowy, ma zbieżny koniec.
    
-    ![Dołączanie slajdy szyny do obudowy obudowy](./media/storsimple-8600-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
+    ![Dołączanie slajdów szyny do obudowy obudowy](./media/storsimple-8600-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
    
-    **Dołączanie szyny slajdów na stronach obudowa**
+    **Dołączanie slajdów szyny do boków obudowy**
    
-   | Label | Opis |
+   | Etykieta | Opis |
    | --- | --- |
-   |  1 |M 3 x 4 śruby przycisk główny |
-   |  2 |Podstawa montażowa slajdów |
-2. Dołącz szyny po lewej stronie i zestawów po prawej stronie do stojak cabinet pionowej elementy członkowskie. Nawiasy są oznaczone **LH**, **RH**, i **ta strona się** przeprowadzenie Cię przez proces poprawnej orientacji.
-3. Znajdź bolce szyny z przodu i z tyłu zestawu prowadnic. Rozszerz szyny mieści się między wpisów w stojaku i wstawianie numery PIN frontonu i wpis w stojaku tyłu składowej pionowej luki. Pamiętaj, że zestaw szyny jest poziom.
-4. Zabezpiecz zestawu szyny w stojaku pionowej elementy członkowskie, używając dwóch śrub metryki udostępniane. Użyj jednej śrubie na frontonu i jednej z tyłu.
-5. Powtórz te kroki dla innych zestawów szyny.
+   |  1 |M 3x4 — wkręty z przyciskiem |
+   |  2 |Slajdy obudowy |
+2. Dołącz lewe szyny i zespoły kolejek z prawej strony do szafy stelażowej w pionie. Nawiasy są oznaczone jako **LH**, **RH**i **tej samej strony** , aby poprowadzić Cię przez właściwą orientację.
+3. Znajdź bolce szyny z przodu i z tyłu zestawu prowadnic. Zwiększ poziom szyny, aby dopasować się do wpisów w stojaku i wstawić numery PIN do elementów członkowskich publikowania w stojaku do przodu i do tyłu. Upewnij się, że zestaw szyny jest poziom.
+4. Zabezpiecz zestaw szyny do pionowych elementów członkowskich stojaka, używając dwóch z dostarczonych wartości. Użyj jednego gwintu na wierzchu i po jednym z tyłu.
+5. Powtórz te kroki dla drugiego zestawu szyn.
    
-     ![Dołączanie slajdy szyny stojaku cabinet](./media/storsimple-8600-hardware-installation/HCSAttachingRailSlidestoRackCabinet.png)
+     ![Dołączanie slajdów szyny do szafy stelażowej](./media/storsimple-8600-hardware-installation/HCSAttachingRailSlidestoRackCabinet.png)
    
-    **Dołączanie szyny zestawów w stojaku**
+    **Dołączanie zestawów szyn do stojaka**
    
-   | Label | Opis |
+   | Etykieta | Opis |
    | --- | --- |
-   |   1 |Granica gwintowanym |
-   |   2 |Gwintowanym wpis w stojaku frontonu dziura kwadrat |
-   |   3 |LEFT numerów PIN lokalizacji frontonu szyny |
-   |   4 |Granica gwintowanym |
-   |   5 |Numery PIN lokalizacji po lewej stronie tylnej szyny |
+   |   1 |Zawężanie złącza |
+   |   2 |Otwór na stojaku w stelażu |
+   |   3 |Numery PIN z lewej strony |
+   |   4 |Zawężanie złącza |
+   |   5 |Numery PIN z lewej strony do przodu |
 
 ### <a name="mounting-the-ebod-enclosure-in-the-rack"></a>Instalowanie obudowy EBOD w stojaku
-Za pomocą stojaku, które właśnie zostały zainstalowane, wykonaj następujące kroki, aby zainstalować obudowy EBOD w stojaku.
+Przy użyciu szyn stojaków, które zostały właśnie zainstalowane, wykonaj następujące kroki, aby zainstalować obudowę EBOD w stojaku.
 
-#### <a name="to-mount-the-ebod-enclosure"></a>Aby zainstalować obudowy EBOD
-1. Z Asystentem Podnieś obudowa i dostosować ją przy użyciu platformy rails stojaka.
-2. Dokładnie Wstawianie obudowa platformy rails, a następnie Wypchnij je całkowicie w stojaku cabinet.
+#### <a name="to-mount-the-ebod-enclosure"></a>Aby zainstalować obudowę EBOD
+1. Przy użyciu Asystenta Unieś obudowę i Wyrównaj ją do szyn stojaków.
+2. Starannie wkładaj obudowę do szyn, a następnie Wypchnij ją całkowicie do szafy stelażowej.
    
     ![Wstawianie urządzenia w stojaku](./media/storsimple-8600-hardware-installation/HCSInsertingDeviceintheRack.png)
    
     **Instalowanie obudowy w stojaku**
-3. Ściąganie bezpłatne limity, aby usunąć limity kołnierza po lewej i prawej frontonu. Limity kołnierza po prostu przyciąganie do stopka.
-4. Zabezpiecz obudowa w stojaku, instalując jednej podanej śrubie Phillips head za pośrednictwem każdej kołnierza, lewy i prawy.
-5. Zainstaluj caps kołnierza, naciskając je w określonej pozycji i przyciąganie ich w miejscu.
+3. Usuń lewe i prawe czołowe kołnierze, pobierając bezpłatnie wielkie litery. Naciśnięcia kołnierza po prostu Przyciągnij na kołnierze.
+4. Zabezpiecz obudowę w stojaku, instalując jeden z Phillipsych w każdym kołnierzu, w lewo i w prawo.
+5. Zainstaluj naciski na siebie, naciskając je do położenia i przyciągania do miejsca.
    
-     ![Instalowanie caps kołnierza](./media/storsimple-8600-hardware-installation/HCSInstallingFlangeCaps.png)
+     ![Instalowanie Cap kołnierza](./media/storsimple-8600-hardware-installation/HCSInstallingFlangeCaps.png)
    
-    **Instalowanie caps kołnierza**
+    **Instalowanie Cap kołnierza**
    
-   | Label | Opis |
+   | Etykieta | Opis |
    | --- | --- |
-   |   1 |Gwintowanym zaczepienia obudowy |
+   |   1 |Złączenie mocujące obudowy |
 
-### <a name="mounting-the-primary-enclosure-in-the-rack"></a>Instalowanie podstawowego obudowy w stojaku
-Po zakończeniu instalowania obudowy EBOD należy zainstalować podstawowy obudowy, wykonując czynności.
+### <a name="mounting-the-primary-enclosure-in-the-rack"></a>Instalowanie obudowy podstawowej w stojaku
+Po zakończeniu instalowania obudowy EBOD konieczne będzie zainstalowanie podstawowej obudowy, wykonując te same kroki.
 
 > [!NOTE]
-> * Użytkownik może mieć kilka pustych miejsc w stojaku między podstawowym obudowy i obudowy EBOD.
-> * Przy użyciu kabla sygnatury dostępu Współdzielonego podana 2 mln nawiązać obudowy EBOD obudowy podstawowego.
-> * Nie ma żadnych ograniczeń względne położenie głównego jednostki do jednostki EBOD. W związku z tym, obudowy podstawowego można umieścić w górnym miejsca i obudowy EBOD poniżej — i odwrotnie.
+> * Istnieje możliwość, że w stojaku między obudową podstawową a obudową EBOD istnieje kilka pustych gniazd.
+> * Użyj dostarczonego kabla SAS 2 mln, aby połączyć podstawową obudowę z obudową EBOD.
+> * Brak ograniczeń względem względnego położenia jednostki głównej do jednostki EBOD. W związku z tym obudowa podstawowa może zostać umieszczona w górnym gnieździe i w EBOD poniżej — lub odwrotnie.
 > 
 > 
 
-Następnym krokiem jest Podłączanie kabli do urządzenia do zasilania, sieci i dostęp szeregowy.
+Następnym krokiem jest podłączenie urządzenia do sieci i dostępu szeregowego.
 
-## <a name="cable-your-storsimple-8600-device"></a>Podłączanie kabli do urządzenia StorSimple 8600
-Poniższe procedury dotyczą sposobu podłączanie kabli do urządzenia StorSimple 8600 zasilania, sieci i połączenia szeregowe.
+## <a name="cable-your-storsimple-8600-device"></a>Podłączanie kabla do urządzenia z StorSimple 8600
+Poniższe procedury wyjaśniają, jak podłączyć urządzenie z StorSimple 8600 do połączeń z urządzeniami, sieciami i połączeniami seryjnymi.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
-Przed rozpoczęciem Podłączanie kabli do urządzenia, będą potrzebne:
+Przed rozpoczęciem nawiązać połączenia z urządzeniem należy:
 
-* Całkowicie rozpakowane swojej głównej obudowy i obudowa EBOD
-* 4 kable zasilania (2 dla podstawowej i obudowy EBOD), które są dołączone do urządzenia
-* 2 kabli SAS dostarczone z urządzeniem, aby połączyć obudowy EBOD głównej obudową
-* Dostęp do 2 jednostki dystrybucji zasilania (PDU) (zalecane)
+* Obudowa podstawowa i obudowa EBOD, całkowicie rozpakowane
+* 4 kable zasilające (2 każdy dla obudowy podstawowej i EBOD) dołączonego do urządzenia
+* 2 kable SAS dostarczone z urządzeniem w celu połączenia obudowy EBOD z obudową podstawową
+* Dostęp do 2 jednostek dystrybucji (zalecane)
 * Kable sieciowe
-* Podany kable szeregowe
-* Konwerter seryjny-USB z odpowiedniego sterownika, które są zainstalowane na komputerze (w razie potrzeby)
-* Podany 4 QSFP-do-SFP + kart do użycia z interfejsów sieciowych 10 GbE
-* [Obsługiwany sprzęt dla interfejsów sieciowych 10 GbE na urządzeniu StorSimple](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
+* Dostarczone kable szeregowe
+* Konwerter serial-USB z odpowiednim sterownikiem zainstalowanym na komputerze (w razie potrzeby)
+* Dostarczone karty 4 QSFP-SFP + do użycia z interfejsami sieciowymi 10 GbE
+* [Sprzęt obsługiwany w przypadku interfejsów sieciowych 10 GbE na urządzeniu StorSimple](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
 
-### <a name="sas-and-power-cabling"></a>Sygnatury dostępu Współdzielonego i okablowanie zasilania
-Urządzenie ma podstawowy obudowy i obudowy EBOD. Wymaga to jednostki, które można ze sobą rozpakowane Serial Attached SCSI (SAS) łączność i zasilania.
+### <a name="sas-and-power-cabling"></a>SAS i okablowanie
+Urządzenie ma zarówno obudowę podstawowy, jak i obudowę EBOD. Wymaga to okablowania połączonego z łącznością SAS (Serial Attached SCSI) i mocą.
 
-Podczas konfigurowania tego urządzenia po raz pierwszy, sygnatury dostępu Współdzielonego okablowania najpierw wykonaj kroki, a następnie wykonaj kroki odpowiednie dla przewody zasilania.
+Konfigurując to urządzenie po raz pierwszy, najpierw wykonaj kroki dla okablowania SAS, a następnie wykonaj kroki dla okablowania.
 
 [!INCLUDE [storsimple-cable-8600-for-SAS](../../includes/storsimple-sas-cable-8600.md)]
 
 [!INCLUDE [storsimple-cable-8600-for-power](../../includes/storsimple-cable-8600-for-power.md)]
 
-### <a name="network-cabling"></a>Okablowanie sieci
-Urządzenie jest w konfiguracji aktywne-w gotowości: w dowolnym momencie jeden moduł kontrolera jest aktywny, a przetwarzanie wszystkich operacji dysku i sieci podczas moduł kontroler jest w stanie wstrzymania. W przypadku awarii kontrolera kontroler zapasowy natychmiast aktywuje i kontynuuje wszystkie operacje dysku i sieci.
+### <a name="network-cabling"></a>Okablowanie sieciowe
+Urządzenie jest w konfiguracji aktywnego stanu gotowości: w dowolnym momencie jeden moduł kontrolera jest aktywny i przetwarza wszystkie operacje na dyskach i sieciach, gdy drugi moduł kontrolera jest w stanie wstrzymania. Jeśli wystąpi awaria kontrolera, kontroler gotowości natychmiast aktywuje i kontynuuje wszystkie operacje na dyskach i w sieci.
 
-Aby zapewnić obsługę pracy w trybie failover nadmiarowe kontrolera, musisz okablowanie sieci urządzeń, jak pokazano w poniższych krokach.
+Aby można było obsługiwać ten nadmiarowy kontroler przełączania do trybu failover, należy podłączyć sieć urządzenia, jak pokazano w poniższych krokach.
 
-#### <a name="to-cable-for-network-connection"></a>Aby kabel dla połączenia sieciowego
-1. Urządzenie ma sześć interfejsów sieciowych na każdym kontrolerze: cztery 1 GB/s i 10 dwa porty Ethernet GB/s. Odnoszą się do poniższej ilustracji w celu identyfikowania portów danych na płyty montażowej urządzenia.
+#### <a name="to-cable-for-network-connection"></a>Do kabla dla połączenia sieciowego
+1. Urządzenie ma sześć interfejsów sieciowych na każdym kontrolerze: cztery 1 GB/s i porty Ethernet 2 10 GB/s. Zapoznaj się z poniższą ilustracją, aby zidentyfikować porty danych na urządzeniu.
    
-     ![Płyty montażowej urządzenia 8600](./media/storsimple-8600-hardware-installation/HCSBackplaneof2UDevicewithPortsLabeled.jpg)
+     ![Płyta montażowa urządzeń z 8600](./media/storsimple-8600-hardware-installation/HCSBackplaneof2UDevicewithPortsLabeled.jpg)
    
-    **Tylnej stronie urządzenia przedstawiający porty danych**
+    **Tył urządzenia z informacjami o portach danych**
    
-   | Label | Opis |
+   | Etykieta | Opis |
    | --- | --- |
-   |   0,1,4,5 |Interfejsy sieciowe w usłudze 1 GbE |
-   |   2,3 |Interfejsów sieciowych 10 GbE |
+   |   0,1,4,5 |1 GbE interfejsów sieciowych |
+   |   2,3 |Interfejsy sieciowe 10 GbE |
    |   6 |Porty szeregowe |
-2. Zobacz poniższy diagram okablowanie sieci. (Konfiguracja minimalna sieci jest reprezentowany przez niebieska linia ciągła. Aby uzyskać wysoką dostępność i wydajność dodatkowej konfiguracji znajduje się za pomocą linii kropkowanej.)
+2. Na poniższym diagramie przedstawiono okablowanie sieciowe. (Minimalna konfiguracja sieci jest pokazywana przez pełne niebieskie linie. Aby zapewnić wysoką dostępność i wydajność, wymagana jest dodatkowa konfiguracja, która jest wyświetlana przez kropkowane linie.)
 
-![Podłączanie kabli do urządzenia 4U sieci](./media/storsimple-8600-hardware-installation/HCSCableYour4UDeviceforNetwork.png)
+![Podłączanie urządzenia w postaci kabla do sieci](./media/storsimple-8600-hardware-installation/HCSCableYour4UDeviceforNetwork.png)
 
-**Okablowania dla urządzenia sieciowego**
+**Okablowanie sieci dla urządzenia**
 
-| Label | Opis |
+| Etykieta | Opis |
 | --- | --- |
 | A |Sieć LAN z dostępem do Internetu |
 | B |Kontroler 0 |
 | C |PCM 0 |
 | D |Kontroler 1 |
 | E |PCM 1 |
-| F |Kontrolera EBOD 0 |
-| G |Kontrolera EBOD 1 |
-| GODZ., I |Hosty (na przykład serwery plików) |
+| P |Kontroler EBOD 0 |
+| G |Kontroler EBOD 1 |
+| H, I |Hosty (na przykład serwery plików) |
 | 0-5 |Interfejsy sieciowe |
-| 6 |Podstawowy obudowy |
+| 6 |Obudowa podstawowa |
 | 7 |Obudowa EBOD |
 
-W przypadku okablowania urządzenia, wymaga minimalnej konfiguracji:
+W przypadku okablowania urządzenia wymagana jest minimalna konfiguracja:
 
-* Co najmniej dwa interfejsy sieciowe podłączone na każdym kontrolerze przy użyciu jednego, aby uzyskać dostęp do chmury i jeden dla interfejsu iSCSI. DANE 0 portu jest automatycznie włączona i skonfigurowana za pośrednictwem konsoli szeregowej urządzenia. Oprócz interfejs DATA 0 inny port danych wymaga także można skonfigurować za pomocą klasycznego portalu Azure. W tym przypadku łącz dane 0 port do podstawowej sieci LAN (sieci z dostępem do Internetu). Inne porty dane mogą być połączone do segmentu sieci, w zależności od tego, ma pełnić SAN/iSCSI sieci LAN (VLAN).
-* Identyczne interfejsy na każdym kontrolerze połączone z tą samą siecią, aby zapewnić dostępność w przypadku przejścia do trybu failover kontrolera. Na przykład jeśli chcesz połączyć interfejs DATA 0 i DATA 3 na jeden z kontrolerów należy połączyć odpowiadające im dane 0 i DATA 3 na drugim kontrolerze.
+* Co najmniej dwa interfejsy sieciowe połączone na każdym kontrolerze z jednym na potrzeby dostępu do chmury i jeden dla iSCSI. Port DATA 0 jest automatycznie włączany i konfigurowany za pośrednictwem konsoli szeregowej urządzenia. Oprócz danych 0 inny port danych należy również skonfigurować za pośrednictwem klasycznego portalu Azure. W takim przypadku Połącz port DATA 0 z podstawową siecią LAN (sieć z dostępem do Internetu). Inne porty danych mogą być połączone z segmentem sieci SAN/iSCSI (VLAN), w zależności od zamierzonej roli.
+* Identyczne interfejsy na każdym kontrolerze podłączonym do tej samej sieci w celu zapewnienia dostępności w przypadku przejścia do trybu failover kontrolera. Na przykład jeśli zdecydujesz się połączyć dane 0 i 3 dla jednego z kontrolerów, musisz połączyć odpowiednie dane 0 i 3 na drugim kontrolerze.
 
-Należy pamiętać o wysokiej dostępności i wydajności:
+Pamiętaj o wysokiej dostępności i wydajności:
 
-* Jeśli to możliwe, należy skonfigurować parę interfejsu sieciowego, aby uzyskać dostęp do chmury (1 GbE) i kolejną parę iSCSI (zalecane 10 GbE) na każdym kontrolerze.
-* Jeśli to możliwe, interfejsy sieciowe z każdego kontrolera połączyć się z dwóch różnych przełączników, aby zapewnić dostępność awariami przełącznika. Na rysunku przedstawiono dwa 10 GbE interfejsy sieciowe, dane 2 i DATA 3 z każdego kontrolera podłączone do dwóch różnych przełączników. Aby uzyskać więcej informacji, zobacz **interfejsy sieciowe** w obszarze [wymaganiami wysokiej dostępności dla urządzenia StorSimple](storsimple-8000-system-requirements.md#high-availability-requirements-for-storsimple).
+* Jeśli to możliwe, należy skonfigurować parę interfejsów sieciowych na potrzeby dostępu do chmury (1 GbE) i inną parę dla iSCSI (zalecane 10 GbE) na każdym kontrolerze.
+* Jeśli to możliwe, podłącz interfejsy sieciowe z każdego kontrolera do dwóch różnych przełączników, aby zapewnić dostępność przed awarią przełącznika. Na rysunku przedstawiono interfejsy sieciowe 2 10 GbE, dane 2 i dane 3 z każdego kontrolera podłączonego do dwóch różnych przełączników. Aby uzyskać więcej informacji, zapoznaj się z interfejsami sieciowymi w [wymaganiach dotyczących wysokiej dostępności dla urządzenia StorSimple](storsimple-8000-system-requirements.md#high-availability-requirements-for-storsimple).
 
 > [!NOTE]
-> Korzystania SFP + należy za pomocą usługi interfejsów sieciowych 10 GbE, użyj podanego QSFP-SFP + kart. Aby uzyskać więcej informacji, przejdź do [obsługiwany sprzęt dla interfejsów sieciowych 10 GbE na urządzeniu StorSimple](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
+> W przypadku używania SFP + nadajników z interfejsami sieciowymi 10 GbE Użyj dostarczonych kart QSFP-SFP +. Aby uzyskać więcej informacji, przejdź do [obsługiwanego sprzętu dla interfejsów sieciowych 10 GbE na urządzeniu StorSimple](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
 > 
 > 
 
-### <a name="serial-port-cabling"></a>Okablowanie portu szeregowego
-Wykonaj poniższe kroki, aby podłączyć do portu szeregowego.
+### <a name="serial-port-cabling"></a>Okablowanie portów szeregowych
+Aby nawiązać połączenie z portem szeregowym, wykonaj następujące czynności.
 
-#### <a name="to-cable-for-serial-connection"></a>Aby kabel szeregowy połączenia
-1. Urządzenie ma portu szeregowego na każdym kontrolerze, który jest identyfikowany przez ikona klucza. Aby zlokalizować portów szeregowych, zapoznaj się z ilustracją, na której przedstawiono dane porty na odwrocie podkładki urządzenia.
-2. Identyfikowanie aktywnego kontrolera na płyty montażowej Twojego urządzenia. Migająca dioda niebieski wskazuje, czy kontroler jest aktywny.
-3. Podana kabla szeregowego (jeśli jest to konieczne, konwerter szeregowego USB na komputerze przenośnym) i podłączyć konsoli lub komputera (przy użyciu emulacji terminala na urządzeniu) do portu szeregowego aktywnego kontrolera.
-4. Na komputerze, należy zainstalować sterowniki USB seryjny (dostarczane z urządzeniem).
+#### <a name="to-cable-for-serial-connection"></a>Do kabla dla połączenia szeregowego
+1. Urządzenie ma port szeregowy na każdym kontrolerze, który jest identyfikowany przez ikonę klucza. Aby zlokalizować porty szeregowe, zapoznaj się z ilustracją przedstawiającą porty danych z tyłu urządzenia.
+2. Zidentyfikuj aktywny kontroler na urządzeniu. Migające niebieskie diody LED wskazują, że kontroler jest aktywny.
+3. Użyj dostarczonego kabla szeregowego (jeśli to konieczne, konwertera USB-Serial dla laptopa) i Podłącz konsolę lub komputer (z emulacją terminalu do urządzenia) do portu szeregowego aktywnego kontrolera.
+4. Zainstaluj sterowniki serial-USB (dostarczane z urządzeniem) na komputerze.
 5. Skonfiguruj połączenie szeregowe w następujący sposób:
    
-   * 115 200 transmisji
+   * 115 200 bodów
    * 8 bitów danych
    * 1 bit stopu
-   * Brak parzystości
-   * Ustaw na sterowanie przepływem **None**
-6. Sprawdź, czy połączenie działa, naciskając klawisz Enter w konsoli. Powinny być wyświetlane menu konsoli szeregowej.
+   * Bez parzystości
+   * Sterowanie przepływem ustawione na **wartość None**
+6. Sprawdź, czy połączenie działa, naciskając klawisz ENTER w konsoli programu. Powinien pojawić się menu konsoli szeregowej.
 
 > [!NOTE]
-> **Zarządzanie obsługą technologii lights-Out:** Gdy urządzenie jest zainstalowane w zdalnym centrum danych lub w pomieszczeniu o ograniczonym dostępie, komputerów, upewnij się, czy połączenia szeregowe na obu kontrolerach zawsze są podłączone do konsoli szeregowej lub podobnego sprzętu. Dzięki temu out-of-band zdalnego sterowania i pomocy technicznej operacji w przypadku przerwy w działaniu sieci lub nieoczekiwanych awarii.
+> **Zarządzanie światłami:** Gdy urządzenie jest zainstalowane w zdalnym centrum danych lub w pokoju komputerowym z ograniczonym dostępem, należy się upewnić, że połączenia szeregowe z obydwoma kontrolerami są zawsze połączone z przełącznikiem konsoli szeregowej lub podobnym sprzętem. Umożliwia to poza pasmem zdalne sterowanie i obsługę operacji w przypadku przerw w działaniu sieci lub nieoczekiwanych awarii.
 > 
 > 
 
-Ukończono okablowania urządzenia pod kątem mocy obliczeniowej, dostępu do sieci i połączenie szeregowe. Następnym krokiem jest skonfigurowanie oprogramowania na urządzeniu.
+Zakończono okablowanie urządzenia w celu uzyskania dostępu do sieci i połączenia szeregowego. Następnym krokiem jest skonfigurowanie oprogramowania na urządzeniu.
 
-## <a name="next-steps"></a>Kolejne kroki
-Teraz można przystąpić do [wdrożyć i skonfigurować urządzenie StorSimple w środowisku lokalnym](storsimple-8000-deployment-walkthrough-u2.md).
+## <a name="next-steps"></a>Następne kroki
+Teraz możesz przystąpić do [wdrażania i konfigurowania lokalnego urządzenia StorSimple](storsimple-8000-deployment-walkthrough-u2.md).
 

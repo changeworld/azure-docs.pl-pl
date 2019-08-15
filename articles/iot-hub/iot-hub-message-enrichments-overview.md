@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 8e24489ad2909879b035a08316e66788034e99bc
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: 5ef1749217dd8980892d7bf933cbe1412929fbbd
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377201"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976993"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>Wzbogacanie komunikatów dla komunikatów IoT Hub między urządzeniami a chmurą (wersja zapoznawcza)
 
@@ -29,7 +29,7 @@ Wzbogacanie komunikatów ma trzy kluczowe elementy:
 
 * Co najmniej jeden [punkt końcowy](iot-hub-devguide-endpoints.md) , dla którego ma zostać zastosowane wzbogacanie.
 
-Klucz może być dowolnym ciągiem.
+**Klucz** jest ciągiem. Klucz może zawierać tylko znaki alfanumeryczne lub znaki specjalne: Łącznik (`-`), podkreślenie (`_`) i kropka (`.`).
 
 Może to być dowolny z następujących przykładów:
 

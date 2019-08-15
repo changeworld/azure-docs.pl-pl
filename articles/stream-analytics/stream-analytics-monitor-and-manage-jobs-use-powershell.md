@@ -10,10 +10,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
 ms.openlocfilehash: cdc09973a192924c5b9a81cd4ed49b9f36fc0eb1
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67612301"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Monitorowanie i zarządzanie nimi zadania usługi Stream Analytics za pomocą poleceń cmdlet programu Azure PowerShell
@@ -52,13 +52,13 @@ New-AzResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
 
 
 > [!NOTE]
-> Zadania usługi Stream Analytics utworzone programowo monitorowanie jest włączone domyślnie nie jest konieczne.  Można ręcznie włączyć monitorowanie w witrynie Azure Portal, przechodząc do strony Monitor zadania i klikając przycisk Włącz lub programowo to zrobić, wykonując kroki znajdujące się na [Azure Stream Analytics — Monitor zadania usługi Stream Analytics Programowe](stream-analytics-monitor-jobs.md).
+> Zadania usługi Stream Analytics utworzone programowo monitorowanie jest włączone domyślnie nie jest konieczne.  Monitorowanie można włączyć ręcznie w witrynie Azure Portal, przechodząc do strony monitorowanie zadania i klikając przycisk Włącz. można to zrobić programowo, wykonując kroki opisane w temacie [Azure Stream Analytics-monitoring Stream Analytics zadania Programowo](stream-analytics-monitor-jobs.md).
 > 
 > 
 
 ## <a name="azure-powershell-cmdlets-for-stream-analytics"></a>Poleceń cmdlet programu PowerShell platformy Azure dla usługi Stream Analytics
 Następujące polecenia cmdlet programu Azure PowerShell może służyć do monitorowania i zarządzania zadań usługi Azure Stream Analytics. Należy pamiętać, że programu Azure PowerShell ma różne wersje. 
-**W przykładach wymienionych pierwsze polecenie jest dla programu Azure PowerShell 0.9.8, drugie polecenie to dla programu Azure PowerShell w wersji 1.0.** Polecenia programu Azure PowerShell w wersji 1.0 będzie zawsze w poleceniu "Az".
+**W przykładach wymienionych pierwsze polecenie jest dla programu Azure PowerShell 0.9.8, drugie polecenie to dla programu Azure PowerShell w wersji 1.0.** Polecenia Azure PowerShell 1,0 zawsze będą mieć "AZ" w poleceniu.
 
 ### <a name="get-azurestreamanalyticsjob--get-azstreamanalyticsjob"></a>Get-AzureStreamAnalyticsJob | Get-AzStreamAnalyticsJob
 Wyświetla listę wszystkich zadań usługi Stream Analytics, zdefiniowana w określonej grupie zasobów lub subskrypcji platformy Azure lub pobiera informacje o zadaniu o konkretnym zadaniu w grupie zasobów.
@@ -228,7 +228,7 @@ Jeśli Określ dane wejściowe, która już istnieje i nie zostanie określony p
 
 Jeśli określisz wymusić parametru i określ istniejącą, wprowadź nazwę, danych wejściowych zostanie zastąpiony bez potwierdzenia.
 
-Aby uzyskać szczegółowe informacje o strukturze pliku JSON i zawartość, zobacz [utworzyć dane wejściowe (usługi Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-input] section of the [Stream Analytics Management REST API Reference Library][stream.analytics.rest.api.reference].
+Aby uzyskać szczegółowe informacje na temat struktury i zawartości pliku JSON, zapoznaj się z sekcją [Tworzenie danych wejściowych (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-input] w [bibliotece dokumentacja interfejsu API REST zarządzania Stream Analytics][stream.analytics.rest.api.reference].
 
 **Przykład 1**
 
@@ -287,7 +287,7 @@ Możesz określić nazwę zadania, która już istnieje i nie zostanie określon
 
 Jeśli określisz Force parametru i określ istniejącą nazwę zadania, definicja zadania zostanie zastąpiony bez potwierdzenia.
 
-Aby uzyskać szczegółowe informacje o strukturze pliku JSON i zawartość, zobacz [Utwórz zadanie usługi Stream Analytics][msdn-rest-api-create-stream-analytics-job] section of the [Stream Analytics Management REST API Reference Library][stream.analytics.rest.api.reference].
+Aby uzyskać szczegółowe informacje na temat struktury i zawartości pliku JSON, zapoznaj się z sekcją [tworzenie Stream Analytics zadania][msdn-rest-api-create-stream-analytics-job] w [bibliotece dokumentacja interfejsu API REST zarządzania Stream Analytics][stream.analytics.rest.api.reference].
 
 **Przykład 1**
 
@@ -330,7 +330,7 @@ Możesz określić danych wyjściowych, który już istnieje i nie zostanie okre
 
 Jeśli określisz wymusić parametru i określ istniejące dane wyjściowe nazwy, dane wyjściowe zostanie zastąpiony bez potwierdzenia.
 
-Aby uzyskać szczegółowe informacje o strukturze pliku JSON i zawartość, zobacz [Tworzenie danych wyjściowych (usługi Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-output] section of the [Stream Analytics Management REST API Reference Library][stream.analytics.rest.api.reference].
+Aby uzyskać szczegółowe informacje na temat struktury i zawartości pliku JSON, zapoznaj się z sekcją [Tworzenie danych wyjściowych (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-output] w [bibliotece referencyjnej interfejsu API REST zarządzania Stream Analytics][stream.analytics.rest.api.reference].
 
 **Przykład 1**
 
@@ -373,7 +373,7 @@ Możesz określić transformacji, która już istnieje i nie zostanie określony
 
 Jeśli określisz wymusić parametru i określ istniejącą nazwę transformacji, przekształcenie zostanie zastąpiony bez potwierdzenia.
 
-Aby uzyskać szczegółowe informacje o strukturze pliku JSON i zawartość, zobacz [tworzenie transformacji (usługi Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-transformation] section of the [Stream Analytics Management REST API Reference Library][stream.analytics.rest.api.reference].
+Aby uzyskać szczegółowe informacje na temat struktury i zawartości pliku JSON, zapoznaj się z sekcją [Tworzenie transformacji (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-transformation] w [bibliotece referencyjnej interfejsu API REST zarządzania Stream Analytics][stream.analytics.rest.api.reference].
 
 **Przykład 1**
 

@@ -1,58 +1,83 @@
 ---
-title: Przeczytaj replik w usłudze Azure Database for MySQL.
-description: W tym artykule opisano odczytu replik dla usługi Azure Database for MySQL.
+title: Odczytaj repliki w Azure Database for MySQL.
+description: W tym artykule opisano Odczytaj repliki dla Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 04/30/2019
-ms.openlocfilehash: 2d70e1b5434b2fb263d1f4587888d4758fac2828
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/12/2019
+ms.openlocfilehash: 00cace13a1d3db2bca45791960ca9bf2fb9260bd
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66225363"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976903"
 ---
-# <a name="read-replicas-in-azure-database-for-mysql"></a>Odczytu replik w usłudze Azure Database for MySQL
+# <a name="read-replicas-in-azure-database-for-mysql"></a>Repliki do odczytu w usłudze Azure Database for MySQL
 
-Funkcja odczytu replik umożliwia replikowanie danych z usługi Azure Database for MySQL server do serwera tylko do odczytu. Można replikować z głównego serwera do maksymalnie pięciu replik. Repliki są aktualizowane, asynchronicznie za pomocą technologii replikacji na podstawie położenia pliku natywnych dziennik binarny (binlog) aparatu MySQL. Aby dowiedzieć się więcej na temat replikacji binlog, zobacz [Omówienie replikacji usługi MySQL binlog](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).
+Funkcja repliki do odczytu umożliwia replikowanie danych z serwera usługi Azure Database for MySQL do serwera tylko do odczytu. Z serwera głównego można replikować maksymalnie pięć replik. Repliki są aktualizowane asynchronicznie przy użyciu natywnej technologii replikacji aparatu programu MySQL opartej na pozycji w pliku dziennika binarnego (binlog). Aby dowiedzieć się więcej na temat replikacji binlog, zobacz [Omówienie replikacji MySQL binlog](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).
 
 > [!IMPORTANT]
-> Można utworzyć odczytu repliki, w tym samym regionie co serwer główny lub w innym regionie platformy Azure wybranym. Replikacja w wielu regionach jest obecnie w publicznej wersji zapoznawczej.
+> Replikę odczytu można utworzyć w tym samym regionie, w którym znajduje się serwer główny, lub w dowolnym innym wybranym regionie świadczenia usługi Azure. Replikacja między regionami jest obecnie dostępna w publicznej wersji zapoznawczej.
 
-Repliki są nowe serwery zarządzania podobne do regularnego — Azure Database for MySQL serwerów. Dla każdego odczytu repliki, opłaty są naliczane dla zainicjowanych zasobów obliczeniowych w rdzeniach wirtualnych zasoby i magazynu w GB / miesiąc.
+Repliki to nowe serwery, którymi można zarządzać podobnie jak regularne Azure Database for MySQL serwery. Dla każdej repliki odczytu są naliczane opłaty za zasoby obliczeniowe rdzeni wirtualnych i magazyn w GB/miesiąc.
 
-Aby dowiedzieć się więcej na temat funkcji replikacji MySQL i problemów, zobacz [dokumentacji replikacji MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html).
+Aby dowiedzieć się więcej na temat funkcji i problemów związanych z replikacją MySQL, zobacz [dokumentację dotyczącą replikacji MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html).
 
-## <a name="when-to-use-a-read-replica"></a>Kiedy należy używać odczytu repliki
+## <a name="when-to-use-a-read-replica"></a>Kiedy używać repliki odczytu
 
-Funkcja odczytu replik pomaga zwiększyć wydajność i skalę intensywnie odczytujących obciążeń. Odczyt obciążenia mogą być izolowane w replikach, podczas obciążenia zapisu może zostać skierowany do poziomu głównego.
+Funkcja odczytu repliki pomaga zwiększyć wydajność i skalowalność obciążeń intensywnie korzystających z odczytu. Obciążenia odczytu mogą być odizolowane dla replik, podczas gdy obciążenia zapisu mogą być kierowane do wzorca.
 
-Typowy scenariusz polega na zapewnienie Power BI i obciążeń analitycznych pełnić odczytu repliki źródła danych do raportowania.
+Typowy scenariusz polega na tym, że obciążenia analizy biznesowej i analizy używają repliki odczytu jako źródła danych do raportowania.
 
-Ponieważ repliki są tylko do odczytu, nie bezpośrednio zmniejszyć obciążenia pojemności zapisu we wzorcu. Ta funkcja nie jest przeznaczone dla obciążeń intensywnie korzystających z zapisu.
+Ponieważ repliki są tylko do odczytu, nie zmniejszają bezpośrednio obciążeń związanych z pojemnością zapisu na serwerze głównym. Ta funkcja nie jest przeznaczona dla obciążeń intensywnie korzystających z pisania.
 
-Funkcja odczytu replik używa replikacji asynchronicznej MySQL. Ta funkcja nie jest przeznaczona dla scenariuszy replikacji synchronicznej. Będzie mierzalne opóźnienie między główną i repliką. Dane w replice ostatecznie staje się spójne z danymi na głównym. Użyj tej funkcji dla obciążeń, które można uwzględnić to opóźnienie.
+Funkcja odczytu repliki korzysta z replikacji asynchronicznej MySQL. Ta funkcja nie jest przeznaczona do scenariuszy replikacji synchronicznej. Nastąpi wymierne opóźnienie między serwerem głównym a repliką. Dane z repliki ostatecznie staną się spójne z danymi na serwerze głównym. Użyj tej funkcji dla obciążeń, które mogą obsłużyć to opóźnienie.
 
-Odczytu replik można zwiększyć, plan odzyskiwania po awarii. Jeśli serwer główny jest niedostępny w przypadku regionalnej awarii, można kierować obciążenia, aby repliki w innym regionie. W tym celu należy najpierw umożliwić repliki akceptuje zapisu przy użyciu funkcji replikacji zatrzymania. Następnie można przekierować aplikację, aktualizując parametry połączenia. Dowiedz się więcej w [zatrzymać replikację](#stop-replication) sekcji.
+## <a name="cross-region-replication"></a>Replikacja między regionami
+Replikę odczytu można utworzyć w innym regionie niż serwer główny. Replikacja między regionami może być przydatna w scenariuszach takich jak planowanie odzyskiwania po awarii lub umieszczenie danych bliżej użytkowników.
+
+> [!IMPORTANT]
+> Replikacja między regionami jest obecnie dostępna w publicznej wersji zapoznawczej.
+
+Serwer główny może być w dowolnym [regionie Azure Database for MySQL](https://azure.microsoft.com/global-infrastructure/services/?products=mysql).  Serwer główny może mieć replikę w osobnym regionie lub regionach uniwersalnej repliki.
+
+### <a name="universal-replica-regions"></a>Regiony uniwersalnej repliki
+Można zawsze utworzyć replikę odczytu w jednym z następujących regionów, niezależnie od tego, gdzie znajduje się serwer główny. Są to uniwersalne regiony repliki:
+
+Australia Wschodnia, Australia Wschodnia, środkowe stany USA, Azja Wschodnia, Wschodnie stany USA, Wschodnie stany USA 2, Japonia Wschodnia, Japonia Zachodnia, Korea środkowa, Korea Południowa, Ameryka Północna, Południowe stany USA, Europa Północna, Południowo-środkowe stany USA, Zachodnie Zjednoczone Królestwo Południowe Zjednoczone Królestwo Azja Południowo-Wschodnia
+
+
+### <a name="paired-regions"></a>Sparowane regiony
+Oprócz regionów uniwersalnej repliki można utworzyć replikę odczytu w sparowanym regionie platformy Azure serwera głównego. Jeśli nie znasz pary regionów, możesz dowiedzieć się więcej z [artykułu z sparowanymi regionami platformy Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+
+Jeśli używasz replik między regionami do planowania odzyskiwania po awarii, zalecamy utworzenie repliki w sparowanym regionie, a nie w jednym z innych regionów. Sparowane regiony umożliwiają uniknięcie jednoczesnych aktualizacji i określanie priorytetów fizycznej izolacji i miejsca zamieszkania danych.  
+
+Istnieją jednak ograniczenia, które należy wziąć pod uwagę: 
+
+* Dostępność w regionach: Azure Database for MySQL jest dostępny w regionie zachodnie stany USA 2, Francja środkowa, Zjednoczone Emiraty Arabskie i Niemcy środkowe. Jednak ich sparowane regiony nie są dostępne.
+    
+* Pary jednokierunkowe: Niektóre regiony platformy Azure są sparowane tylko w jednym kierunku. Regiony te obejmują Indie Zachodnie, Brazylia Południowa i US Gov Wirginia. 
+   Oznacza to, że serwer główny w regionie zachodnie Indie może utworzyć replikę w Indiach Południowej. Jednak główny serwer nie może utworzyć repliki w Indiach zachodnim. Jest to spowodowane tym, że region pomocniczy w zachodniej Indiach to Indie Południowe, ale region pomocniczy w Republice Południowej Indie nie jest Indie Zachodnie.
+
 
 ## <a name="create-a-replica"></a>Tworzenie repliki
 
-Jeśli serwer główny nie ma żadnych istniejących serwerów repliki, wzorzec najpierw zostanie uruchomiony ponownie przygotować się do replikacji.
+Jeśli serwer główny nie ma istniejących serwerów repliki, wzorzec zostanie najpierw uruchomiony ponownie w celu samodzielnego przygotowania do replikacji.
 
-Po uruchomieniu przepływu pracy tworzenia repliki, puste serwera Azure Database for MySQL jest tworzony. Nowy serwer jest wypełniony danymi, która znajdowała się na serwerze głównym. Godzina utworzenia zależy od ilości danych na wzorcu i czas od ostatniej pełnej cotygodniowej kopii zapasowej. Czas może wynosić od kilku minut do kilku godzin.
+Po uruchomieniu przepływu pracy tworzenia repliki zostanie utworzony pusty serwer Azure Database for MySQL. Nowy serwer jest wypełniony danymi znajdującymi się na serwerze głównym. Czas utworzenia zależy od ilości danych na serwerze głównym oraz czasu od ostatniego cotygodniowej pełnej kopii zapasowej. Czas może się wahać od kilku minut do kilku godzin.
 
-Każdej repliki jest włączony dla magazynu [automatyczne powiększanie](concepts-pricing-tiers.md#storage-auto-grow). Funkcja auto-grow umożliwia replikę tak, aby nadążyć za dane replikowane do niego i uniknąć przerwy w replikacji spowodowane przez Brak błędów magazynu.
+Każda replika ma włączoną [](concepts-pricing-tiers.md#storage-auto-grow)funkcję autowzrostu magazynu. Funkcja autozwiększania umożliwia replikom przechowywanie danych replikowanych do nich i uniemożliwia przerwanie replikacji spowodowane błędami magazynowania.
 
-Dowiedz się, jak [utworzyć odczytu replik w witrynie Azure portal](howto-read-replicas-portal.md).
+Dowiedz się [, jak utworzyć replikę odczytu w Azure Portal](howto-read-replicas-portal.md).
 
-## <a name="connect-to-a-replica"></a>Połącz się z repliką.
+## <a name="connect-to-a-replica"></a>Nawiązywanie połączenia z repliką
 
-Podczas tworzenia repliki nie dziedziczy, reguły zapory lub serwera głównego, punkt końcowy usługi sieci wirtualnej. Te reguły można skonfigurować niezależnie dla repliki.
+Podczas tworzenia repliki nie są dziedziczone reguły zapory ani punkt końcowy usługi sieci wirtualnej serwera głównego. Te reguły należy skonfigurować niezależnie dla repliki.
 
-Repliki dziedziczy konta administratora serwera głównego. Wszystkie konta użytkowników na serwerze głównym są replikowane do odczytu replik. Odczytu repliki można połączyć tylko przy użyciu konta użytkownika, które są dostępne na serwerze głównym.
+Replika dziedziczy konto administratora z serwera głównego. Wszystkie konta użytkowników na serwerze głównym są replikowane do replik odczytu. Można nawiązać połączenie z repliką odczytu tylko przy użyciu kont użytkowników, które są dostępne na serwerze głównym.
 
-Możesz połączyć do repliki przy użyciu jego nazwy hosta i prawidłowe konto użytkownika, tak jak w regularnym serwera Azure Database for MySQL. Na serwerze o nazwie **myreplica** przy użyciu nazwy użytkownika administratora **myadmin**, można połączyć się z repliką przy użyciu interfejsu wiersza polecenia mysql:
+Możesz połączyć się z repliką przy użyciu nazwy hosta i prawidłowego konta użytkownika, tak jak w przypadku zwykłego serwera Azure Database for MySQL. W przypadku serwera o nazwie Moja replika znazwą administratora administrator można nawiązać połączenie z repliką przy użyciu interfejsu wiersza polecenia MySQL:
 
 ```bash
 mysql -h myreplica.mysql.database.azure.com -u myadmin@myreplica -p
@@ -60,78 +85,78 @@ mysql -h myreplica.mysql.database.azure.com -u myadmin@myreplica -p
 
 W wierszu polecenia wprowadź hasło dla konta użytkownika.
 
-## <a name="monitor-replication"></a>Monitorowanie replikacji
+## <a name="monitor-replication"></a>Monitoruj replikację
 
-Azure Database for MySQL oferuje **opóźnienie replikacji w ciągu kilku sekund** metryki w usłudze Azure Monitor. Ta metryka jest dostępna tylko replik.
+Azure Database for MySQL zapewnia wartość **opóźnienia replikacji w sekundach** w Azure monitor. Ta Metryka jest dostępna tylko dla replik.
 
-Ta metryka jest obliczany przy użyciu `seconds_behind_master` dostępnych w bazie danych MySQL firmy metryk `SHOW SLAVE STATUS` polecenia.
+Ta Metryka jest obliczana przy `seconds_behind_master` użyciu metryki dostępnej w `SHOW SLAVE STATUS` poleceniu programu MySQL.
 
-Ustaw alert informujący o tym, gdy opóźnienie replikacji osiągnie wartość, która nie jest dopuszczalne dla obciążenia.
+Ustaw Alert, aby poinformować Cię, gdy zwłoka replikacji osiągnie wartość, która nie jest akceptowalna dla obciążenia.
 
-## <a name="stop-replication"></a>Zatrzymywanie replikacji
+## <a name="stop-replication"></a>Zatrzymaj replikację
 
-Można zatrzymać replikacji między serwerem głównym i repliki. Po zatrzymaniu replikacji między głównym serwerem i odczytu repliki, replika staje się serwerem autonomicznym. Dane na serwerze autonomicznym są dane, która była dostępna w replice w momencie uruchomienia polecenia zatrzymania replikacji. Serwer autonomiczny nie zapoznaj się z serwerem głównym.
+Można zatrzymać replikację między serwerem głównym a repliką. Po zatrzymaniu replikacji między serwerem głównym a repliką odczytu replika stanie się serwerem autonomicznym. Dane na serwerze autonomicznym to dane, które były dostępne w replice w momencie uruchomienia polecenia Zatrzymaj replikację. Serwer autonomiczny nie jest przechwytywany z serwerem głównym.
 
-W przypadku zatrzymania replikacji do repliki utraci wszystkie łącza do jego poprzedniego główny i innymi replikami. Nie ma żadnych automatycznego trybu failover między wzorzec i jego repliką.
+Gdy zdecydujesz się zatrzymać replikację do repliki, utraci ona wszystkie linki do poprzedniego wzorca i innych replik. Między wzorcem a jego repliką nie ma automatycznej pracy awaryjnej.
 
 > [!IMPORTANT]
-> Serwer autonomiczny nie wprowadzać ponownie do repliki.
-> Przed zatrzymaniem replikacji tylko do odczytu repliki, upewnij się, że replika zawiera wszystkie dane, których potrzebujesz.
+> Serwer autonomiczny nie może zostać ponownie utworzony w replice.
+> Przed zatrzymaniem replikacji w replice odczytu upewnij się, że replika ma wszystkie wymagane dane.
 
 Dowiedz się, jak [zatrzymać replikację do repliki](howto-read-replicas-portal.md).
 
-## <a name="considerations-and-limitations"></a>Istotne zagadnienia i ograniczenia
+## <a name="considerations-and-limitations"></a>Zagadnienia i ograniczenia
 
 ### <a name="pricing-tiers"></a>Warstwy cenowe
 
-Repliki do odczytu są obecnie dostępne tylko w warstw cenowych ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci.
+Repliki odczytu są obecnie dostępne tylko w warstwach cenowych Ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci.
 
-### <a name="master-server-restart"></a>Ponowne uruchomienie serwera głównego
+### <a name="master-server-restart"></a>Ponowne uruchamianie serwera głównego
 
-Po utworzeniu repliki dla serwera głównego, który nie ma istniejących replik wzorzec najpierw zostanie uruchomiony ponownie przygotować się do replikacji. Wziąć pod uwagę i wykonywać te operacje podczas okresu poza godzinami.
+Gdy tworzysz replikę dla wzorca, który nie ma istniejących replik, wzorzec zostanie najpierw uruchomiony ponownie w celu przygotowania się do replikacji. Weź pod uwagę i wykonaj te operacje w okresie poza szczytem.
 
-### <a name="new-replicas"></a>Nowej repliki
+### <a name="new-replicas"></a>Nowe repliki
 
-Odczytu repliki jest tworzona jako nowego serwera Azure Database for MySQL. Nie można dokonać istniejący serwer do repliki. Nie można utworzyć replikę innej repliki do odczytu.
+Replika odczytu jest tworzona jako nowy serwer Azure Database for MySQL. Nie można wykonać istniejącego serwera w replice. Nie można utworzyć repliki innej repliki odczytu.
 
-### <a name="replica-configuration"></a>Konfiguracji repliki
+### <a name="replica-configuration"></a>Konfiguracja repliki
 
-Replika jest tworzona przy użyciu tej samej konfiguracji serwera jako wzorzec. Po utworzeniu repliki, niektóre ustawienia można zmienić niezależnie z serwera głównego: obliczenia generacji, rdzeni wirtualnych, magazynu, okres przechowywania kopii zapasowej i wersja aparatu MySQL. Warstwę cenową można zmienić niezależnie, z wyjątkiem do lub z warstwy podstawowa.
+Replika jest tworzona przy użyciu tej samej konfiguracji serwera co serwer główny. Po utworzeniu repliki kilka ustawień można zmienić niezależnie od serwera głównego: generowanie obliczeń, rdzeni wirtualnych, magazyn, okres przechowywania kopii zapasowej i wersja aparatu MySQL. Warstwę cenową można także zmienić niezależnie, z wyjątkiem warstwy Podstawowa lub z niej.
 
 > [!IMPORTANT]
-> Konfiguracja serwera głównego jest aktualizowany do nowych wartości, aktualizacja konfiguracji repliki większa lub równa wartości. Ta akcja zagwarantuje, że repliki może nadążyć za wszelkie zmiany wprowadzone do poziomu głównego.
+> Przed zaktualizowaniem konfiguracji serwera głównego do nowych wartości, zaktualizuj konfigurację repliki do wartości równej lub wyższej. Ta akcja zapewnia, że replika może być zachowywana wraz ze wszystkimi zmianami wprowadzonymi do wzorca.
 
-### <a name="stopped-replicas"></a>Zatrzymano repliki
+### <a name="stopped-replicas"></a>Repliki zatrzymane
 
-Zatrzymanie replikacji między głównym serwerem i odczytu repliki, zatrzymania replika staje się serwer autonomiczny, który akceptuje odczytów i zapisów. Serwer autonomiczny nie wprowadzać ponownie do repliki.
+Jeśli zatrzymasz replikację między serwerem głównym a repliką odczytu, zatrzymana replika stanie się autonomicznym serwerem, który akceptuje oba operacje odczytu i zapisu. Serwer autonomiczny nie może zostać ponownie utworzony w replice.
 
-### <a name="deleted-master-and-standalone-servers"></a>Usunięto głównego i autonomicznych serwerów
+### <a name="deleted-master-and-standalone-servers"></a>Usunięto serwery główne i autonomiczne
 
-Po usunięciu serwera głównego replikacja jest zatrzymana, aby wszystkie repliki do odczytu. Tych replik stają się serwerów autonomicznych. Sam serwer główny jest usuwany.
+Po usunięciu serwera głównego replikacja zostaje zatrzymana dla wszystkich replik odczytu. Te repliki stają się serwerami autonomicznymi. Sam serwer główny jest usuwany.
 
 ### <a name="user-accounts"></a>Konta użytkowników
 
-Użytkownicy na serwerze głównym są replikowane do odczytu replik. Tekst można połączyć tylko do odczytu repliki, przy użyciu konta użytkownika dostępne na serwerze głównym.
+Użytkownicy na serwerze głównym są replikowana do replik odczytu. Można nawiązać połączenie z repliką odczytu tylko przy użyciu kont użytkowników dostępnych na serwerze głównym.
 
 ### <a name="server-parameters"></a>Parametry serwera
 
-Aby zapobiec danych zsynchronizowane i uniknąć potencjalnych utraty lub uszkodzenia danych, niektórych parametrów serwera są zablokowane z aktualizowana przy użyciu odczytu replik.
+Aby zapobiec synchronizacji danych i uniknąć utraty lub uszkodzenia danych, niektóre parametry serwera są blokowane przed aktualizacją podczas korzystania z replik odczytu.
 
-Następujące parametry serwera są zablokowane na serwerach zarówno węzła głównego, jak i repliki:
+Następujące parametry serwera są blokowane na serwerach głównych i repliki:
 - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/5.7/en/innodb-multiple-tablespaces.html) 
 - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators)
 
-[ `event_scheduler` ](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) Parametru jest zablokowany na serwerach repliki. 
+[`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) Parametr jest zablokowany na serwerach repliki. 
 
 ### <a name="other"></a>Inne
 
-- Identyfikatory transakcji globalnej (GTID) nie są obsługiwane.
+- Globalne identyfikatory transakcji (GTID) nie są obsługiwane.
 - Tworzenie repliki repliki nie jest obsługiwane.
-- Tabele w pamięci, może spowodować replik zsynchronizowany. Jest to ograniczenie technologii replikacji MySQL. Dowiedz się więcej w [dokumentację referencyjną MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) Aby uzyskać więcej informacji.
-- Upewnij się, że tabele serwera głównego kluczy podstawowych. Brak kluczy podstawowych może spowodować opóźnienie replikacji między węzłem głównym i repliki.
-- Zapoznaj się z pełną listą programu MySQL ograniczenia replikacji w [MySQL — dokumentacja](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)
+- Tabele w pamięci mogą spowodować, że repliki nie zostaną zsynchronizowane. Jest to ograniczenie technologii replikacji MySQL. Więcej informacji można znaleźć w [dokumentacji programu MySQL Reference](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) .
+- Upewnij się, że tabele serwera głównego mają klucze podstawowe. Brak kluczy podstawowych może spowodować opóźnienia replikacji między serwerem głównym a replikami.
+- Zapoznaj się z pełną listą ograniczeń replikacji MySQL w [dokumentacji programu MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się, jak [tworzenie i zarządzanie nimi odczytu replik w witrynie Azure portal](howto-read-replicas-portal.md)
-- Dowiedz się, jak [tworzenie i zarządzanie nimi odczytu repliki przy użyciu wiersza polecenia platformy Azure](howto-read-replicas-cli.md)
+- Dowiedz się [, jak tworzyć repliki odczytu i zarządzać nimi przy użyciu Azure Portal](howto-read-replicas-portal.md)
+- Dowiedz się, jak [tworzyć repliki odczytu i zarządzać nimi za pomocą interfejsu wiersza polecenia platformy Azure](howto-read-replicas-cli.md)

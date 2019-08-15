@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: 630d8f64b39888533aff4847dec64fa50fc43d7e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a5bfc664c412c93bbf3e522b01528e8247be3291
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855588"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016054"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Najlepsze rozwiązania dotyczące korzystania z Azure Data Lake Storage Gen2
 
@@ -49,7 +49,7 @@ Podczas tworzenia architektury systemu przy użyciu Data Lake Storage Gen2 lub d
 
 ### <a name="high-availability-and-disaster-recovery"></a>Wysoka dostępność i odzyskiwanie po awarii
 
-Wysoką dostępność (HA) i odzyskiwanie po awarii (DR) może być czasami połączone ze sobą, Chociaż każda z nich ma nieco inną strategię, szczególnie w przypadku, gdy zawiera dane. Data Lake Storage Gen2 już obsługuje replikację 3. pod okapem, aby chronić przed zlokalizowanymi awariami sprzętowymi. Ponadto inne opcje replikacji, takie jak ZRS, zwiększają HA, podczas gdy GRS & RA-GRS ulepszają program DR. Podczas kompilowania planu o wysokiej dostępności w przypadku przerwania działania usługi obciążenie musi mieć dostęp do najnowszych danych tak szybko, jak to możliwe, przez przełączenie na lokalnie lub w nowym regionie.
+Wysoką dostępność (HA) i odzyskiwanie po awarii (DR) może być czasami połączone ze sobą, Chociaż każda z nich ma nieco inną strategię, szczególnie w przypadku, gdy zawiera dane. Data Lake Storage Gen2 już obsługuje replikację 3. pod okapem, aby chronić przed zlokalizowanymi awariami sprzętowymi. Ponadto inne opcje replikacji, takie jak ZRS lub GZRS (wersja zapoznawcza), zwiększają HA, podczas gdy GRS & RA-GRS ulepszają program DR. Podczas kompilowania planu o wysokiej dostępności w przypadku przerwania działania usługi obciążenie musi mieć dostęp do najnowszych danych tak szybko, jak to możliwe, przez przełączenie na lokalnie lub w nowym regionie.
 
 W strategii odzyskiwania po awarii, aby przygotować się do mało prawdopodobnego uszkodzenia regionu, ważne jest również, aby dane były replikowane do innego regionu przy użyciu replikacji GRS lub RA-GRS. Należy również wziąć pod uwagę wymagania dotyczące przypadków granicznych, takich jak uszkodzenie danych, w przypadku których warto utworzyć okresowe migawki, aby wrócić do programu. W zależności od ważności i rozmiaru danych należy rozważyć stopniowe przyrostowe migawki z 1-, 6-i 24-godzinnego okresu, zgodnie z tolerancją ryzyka.
 

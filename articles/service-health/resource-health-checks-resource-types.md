@@ -1,198 +1,228 @@
 ---
-title: Obsługiwane typy zasobów w usłudze Azure Resource Health | Dokumentacja firmy Microsoft
-description: Obsługiwane typy zasobów w usłudze Azure Resource health
+title: Obsługiwane typy zasobów za poorednictwem Azure Resource Health | Microsoft Docs
+description: Obsługiwane typy zasobów za pomocą usługi Azure Resource Health
 author: stephbaron
 ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 01/29/2019
-ms.openlocfilehash: 0f79a1eed044814d6c2e27f4eadb5ba68a47303f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1692e8acda88a51173eb0eabcd90c377b431a3c3
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60622287"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955031"
 ---
-# <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy zasobów i kontrole kondycji w usłudze Azure resource health
-Poniżej znajduje się pełna lista wszystkich testów, które są wykonywane w usłudze resource health według typów zasobów.
+# <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy zasobów i kontrole kondycji w usłudze Azure Resource Health
+Poniżej znajduje się kompletna lista wszystkich testów wykonywanych przez zasoby według typów zasobów.
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
-|Wykonane testy|
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>Jest serwerem pracę?</li><li>Serwer zabrakło pamięci?</li><li>Serwer uruchamiania?</li><li>Odzyskuje serwer</li></ul>|
+|<ul><li>Czy serwer jest uruchomiony i działa?</li><li>Czy na serwerze zabrakło pamięci?</li><li>Czy serwer jest uruchamiany?</li><li>Czy serwer jest odzyskiwany?</li></ul>|
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
-|Wykonane testy|
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>Działa usługa Api Management, a następnie uruchomiona?</li></ul>|
+|<ul><li>Czy usługa API Management jest uruchomiona i działa?</li></ul>|
+
+## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
+|Wykonane sprawdzenia|
+|---|
+|<ul><li>Czy konto w usłudze Batch jest uruchomione?</li><li>Czy limit przydziału puli został przekroczony dla tego konta usługi Batch?</li></ul>|
 
 ## <a name="microsoftcacheredisredis"></a>Microsoft.CacheRedis/Redis
-|Wykonane testy|
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>Czy wszystkie węzły w pamięci podręcznej działa?</li><li>Pamięć podręczna jest osiągalna z w obrębie centrum danych?</li><li>Pamięć podręczna osiągnęła maksymalną liczbę połączeń?</li><li> Pamięć podręczna wyczerpało jego dostępnej pamięci? </li><li>Pamięć podręczna występuje duża liczba błędów strony?</li><li>Jest to pamięć podręczna pod dużym obciążeniem?</li></ul>|
+|<ul><li>Czy wszystkie węzły pamięci podręcznej działają i działają?</li><li>Czy można uzyskać dostęp do pamięci podręcznej z poziomu centrum danych?</li><li>Czy pamięć podręczna osiągnęła maksymalną liczbę połączeń?</li><li> Czy pamięć podręczna przekroczyła dostępną pamięć? </li><li>Czy w pamięci podręcznej występuje duża liczba błędów stron?</li><li>Czy pamięć podręczna jest mocno obciążona?</li></ul>|
 
 ## <a name="microsoftcdnprofile"></a>Microsoft.CDN/profile
-|Wykonane testy|
+|Wykonane sprawdzenia|
 |---|
-|<ul> <li>Portal dodatkowy jest dostępny dla operacji konfiguracji sieci CDN?</li><li>Czy istnieją problemy ciągłego dostarczania z punktami końcowymi usługi CDN?</li><li>Użytkownicy konfigurację można zmienić ich zasobów sieci CDN?</li><li>Są zmiany w konfiguracji propagowanie zgodnie ze stawką oczekiwanego?</li><li>Użytkownicy, można zarządzać konfiguracji sieci CDN, za pomocą witryny Azure portal, programu PowerShell lub interfejsu API?</li> </ul>|
+|<ul> <li>Czy dostępny jest dodatkowy Portal dla operacji konfiguracji sieci CDN?</li><li>Czy istnieją jakieś problemy z dostarczaniem punktów końcowych usługi CDN?</li><li>Czy użytkownicy mogą zmieniać konfigurację swoich zasobów usługi CDN?</li><li>Czy zmiany konfiguracji są propagowane z oczekiwaną szybkością?</li><li>Czy użytkownicy mogą zarządzać konfiguracją usługi CDN przy użyciu Azure Portal, programu PowerShell lub interfejsu API?</li> </ul>|
 
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.classiccompute/virtualmachines
-|Wykonane testy|
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>Serwer hosta należy została uruchomiona i działa?</li><li>Rozruch systemu operacyjnego hosta zakończonych?</li><li>Są aprowizowane kontenera maszyny wirtualnej i włączone?</li><li>Czy istnieje połączenie sieciowe między hostem i konto magazynu?</li><li>Rozruch systemu operacyjnego gościa zakończonych?</li><li>Czy istnieje planowanej konserwacji?</li></ul>|
+|<ul><li>Czy serwer hosta jest uruchomiony?</li><li>Czy ukończono rozruch systemu operacyjnego hosta?</li><li>Czy kontener maszyny wirtualnej został zainicjowany i włączony?</li><li>Czy istnieje połączenie sieciowe między hostem a kontem magazynu?</li><li>Czy ukończono rozruch systemu operacyjnego gościa?</li><li>Czy nadal trwa planowana konserwacja?</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.cognitiveservices/accounts
-|Wykonane testy|
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>To konto jest osiągalna z w obrębie centrum danych?</li><li>Dostawca zasobów usługi Cognitive Services jest dostępna?</li><li>Cognitive Service jest dostępna w regionie odpowiednie?</li><li>Może odczytywać można wykonać operacji na koncie magazynu, zawierający metadane zasobu?</li><li>Został osiągnięty limit przydziału wywołania interfejsu API?</li><li>Wywołanie interfejsu API odczytu limit zostanie osiągnięty?</li></ul>|
+|<ul><li>Czy konto można połączyć z poziomu centrum danych?</li><li>Czy dostawca zasobów Cognitive Services jest dostępny?</li><li>Czy usługa poznawcze jest dostępna w odpowiednim regionie?</li><li>Czy operacje odczytu mogą być wykonywane na koncie magazynu zawierającym metadane zasobu?</li><li>Czy osiągnięto limit przydziału wywołań interfejsu API?</li><li>Czy osiągnięto limit odczytu wywołania interfejsu API?</li></ul>|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.compute/virtualmachines
-|Wykonane testy|
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>Ma serwera hostingu tej maszyny wirtualnej w górę i uruchomiona</li><li>Rozruch systemu operacyjnego hosta zakończonych?</li><li>Są aprowizowane kontenera maszyny wirtualnej i włączone?</li><li>Czy istnieje połączenie sieciowe między hostem i konto magazynu?</li><li>Rozruch systemu operacyjnego gościa zakończonych?</li><li>Czy istnieje planowanej konserwacji?</li></ul>|
+|<ul><li>Czy serwer hostujący tę maszynę wirtualną w górę i w działaniu?</li><li>Czy ukończono rozruch systemu operacyjnego hosta?</li><li>Czy kontener maszyny wirtualnej został zainicjowany i włączony?</li><li>Czy istnieje połączenie sieciowe między hostem a kontem magazynu?</li><li>Czy ukończono rozruch systemu operacyjnego gościa?</li><li>Czy nadal trwa planowana konserwacja?</li></ul>|
 
-## <a name="microsoftdatafactoryfactories"></a>Microsoft.datafactory/factories
-|Wykonane testy|
+## <a name="microsoftdatafactoryfactories"></a>Microsoft. DataFactory/fabryki
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>Zostały niepowodzenia uruchomienia potoku?</li><li>Klaster hostuje usługi Data Factory dobrej kondycji?</li></ul>|
+|<ul><li>Czy istnieją błędy przebiegu potoku?</li><li>Czy klaster obsługuje Data Factory w dobrej kondycji?</li></ul>|
 
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.datalakeanalytics/accounts
-|Wykonane testy|
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>Masz problemy doświadczonym użytkownikom przesyłania lub wyświetlania listy zadań usługi Data Lake Analytics?</li><li>Są w stanie ukończyć z powodu błędów systemowych zadań usługi Data Lake Analytics?</li></ul>|
+|<ul><li>Czy użytkownicy napotykali problemy z przesyłaniem i wyświetlaniem ich Data Lake Analytics zadań?</li><li>Czy nie można wykonać zadań Data Lake Analytics z powodu błędów systemu?</li></ul>|
 
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.datalakestore/accounts
-|Wykonane testy|
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>Użytkownicy wystąpiły problemy z przekazywaniem danych do usługi Data Lake Store?</li><li>Użytkownicy wystąpiły problemy, pobieranie danych z programu Data Lake Store?</li></ul>|
+|<ul><li>Czy użytkownicy napotykali problemy z przekazywaniem danych do Data Lake Store?</li><li>Czy użytkownicy napotykali problemy z pobieraniem danych z Data Lake Store?</li></ul>|
 
-## <a name="microsoftdatamigrationservices"></a>Microsoft.datamigration/services
-|Wykonane testy|
+## <a name="microsoftdatamigrationservices"></a>Microsoft. datamigration/Services
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>Usługa migracji bazy danych nie może aprowizować?</li><li>Usługa migracji bazy danych zatrzymał ze względu na nieaktywności lub żądania użytkownika?</li></ul>|
+|<ul><li>Czy nie można zainicjować obsługi administracyjnej usługi migracji bazy danych?</li><li>Czy usługa migracji bazy danych została zatrzymana z powodu nieaktywności lub żądania użytkownika?</li></ul>|
+
+## <a name="microsoftdatashareaccounts"></a>Microsoft. dataudział/konta
+|Wykonane sprawdzenia|
+|---|
+|<ul><li>Czy konto udostępniania danych jest uruchomione?</li><li>Czy klaster obsługujący udział danych jest dostępny?</li></ul>|
 
 ## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
-|Wykonane testy|
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>Serwer jest niedostępny z powodu konserwacji?</li><li>Serwer jest niedostępny z powodu ponownej konfiguracji?</li></ul>|
+|<ul><li>Czy serwer jest niedostępny z powodu konserwacji?</li><li>Czy serwer jest niedostępny z powodu ponownej konfiguracji?</li></ul>|
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
-|Wykonane testy|
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>Serwer jest niedostępny z powodu konserwacji?</li><li>Serwer jest niedostępny z powodu ponownej konfiguracji?</li></ul>|
+|<ul><li>Czy serwer jest niedostępny z powodu konserwacji?</li><li>Czy serwer jest niedostępny z powodu ponownej konfiguracji?</li></ul>|
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
-|Wykonane testy|
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>Serwer jest niedostępny z powodu konserwacji?</li><li>Serwer jest niedostępny z powodu ponownej konfiguracji?</li></ul>|
+|<ul><li>Czy serwer jest niedostępny z powodu konserwacji?</li><li>Czy serwer jest niedostępny z powodu ponownej konfiguracji?</li></ul>|
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.devices/iothubs
-|Wykonane testy|
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>Jest usługa IoT hub działa?</li></ul>|
+|<ul><li>Czy Centrum IoT jest uruchomione?</li></ul>|
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.documentdb/databaseAccounts
-|Wykonane testy|
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>Zostały wszystkie żądania bazy danych lub kolekcji nie jest obsługiwany z powodu niedostępności usługi Azure Cosmos DB?</li><li>Zostały wszystkie żądania dokumentu nie jest obsługiwany z powodu niedostępności usługi Azure Cosmos DB?</li></ul>|
+|<ul><li>Czy nie zostały obsłużone żadne żądania bazy danych lub kolekcji z powodu niedostępności usługi Azure Cosmos DB?</li><li>Czy nie zostały obsłużone żadne żądania dokumentu z powodu niedostępności usługi Azure Cosmos DB?</li></ul>|
 
-## <a name="microsofteventhubnamespaces"></a>Microsoft.eventhub/Namespaces
-|Wykonane testy|
+## <a name="microsofteventhubnamespaces"></a>Microsoft. eventhub/przestrzenie nazw
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>Przestrzeń nazw usługi Event Hubs występują błędy wygenerowane przez użytkowników?</li><li>Jest przestrzeń nazw usługi Event Hubs jest obecnie uaktualniana?</li></ul>|
+|<ul><li>Czy Event Hubs przestrzeni nazw występują błędy wygenerowane przez użytkownika?</li><li>Czy Event Hubs przestrzeń nazw jest obecnie uaktualniana?</li></ul>|
 
 ## <a name="microsofthdinsightclusters"></a>Microsoft.hdinsight/clusters
-|Wykonane testy|
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>Dostępne są również podstawowe usługi w klastrze HDInsight?</li><li>Klaster HDInsight dostęp klucz dla funkcji BYOK szyfrowanie w spoczynku?</li></ul>|
+|<ul><li>Czy usługi podstawowe są dostępne w klastrze HDInsight?</li><li>Czy klaster usługi HDInsight może uzyskać dostęp do klucza szyfrowania BYOK w spoczynku?</li></ul>|
 
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
-|Wykonane testy|
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>Czy żądania do usługi key vault kończy się niepowodzeniem z powodu problemów z platformy Azure KeyVault?</li><li>Są ograniczane ze względu na zbyt wiele żądań podjęte przez klienta żądania do usługi key vault?</li></ul>|
+|<ul><li>Czy żądania do magazynu kluczy kończą się niepowodzeniem ze względu na problemy z platformą Azure Key magazynu?</li><li>Czy żądania kierowane do magazynu kluczy są ograniczone ze względu na zbyt wiele żądań wykonywanych przez klienta?</li></ul>|
 
-## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.network/applicationgateways
-|Wykonane testy|
+## <a name="microsoftmachinelearningwebservices"></a>Microsoft. MachineLearning/WebServices
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>Czy wydajność bramy Application Gateway, negatywny wpływ na dostępność?</li><li>Application Gateway jest dostępny?</li></ul>|
+|<ul><li>Czy usługa sieci Web jest uruchomiona?</li></ul>|
+
+## <a name="microsoftmediamediaservices"></a>Microsoft. Media/MediaServices
+|Wykonane sprawdzenia|
+|---|
+|<ul><li>Czy usługa Media Service jest uruchomiona?</li></ul>|
+
+## <a name="microsoftnetworkapplicationgateways"></a>Microsoft. Network/applicationgateways
+|Wykonane sprawdzenia|
+|---|
+|<ul><li>Czy wydajność Application Gateway obniżana?</li><li>Czy Application Gateway jest dostępna?</li></ul>|
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft.network/connections
-|Wykonane testy|
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>Tunel VPN jest podłączony?</li><li>Czy istnieją konflikty konfiguracji połączenia?</li><li>Klucze wstępne prawidłowo skonfigurowano?</li><li>Lokalne urządzenie sieci VPN jest dostępny?</li><li>Zasady zabezpieczeń protokołu IPSec/IKE są niezgodności?</li><li>Czy połączenia sieci VPN S2S poprawnie udostępniane w stanie niepowodzenia?</li><li>Czy połączenia sieć wirtualna-sieć wirtualna poprawnie udostępniane w stanie niepowodzenia?</li></ul>|
+|<ul><li>Czy jest podłączony tunel VPN?</li><li>Czy istnieją konflikty konfiguracji w ramach połączenia?</li><li>Czy wstępnie udostępnione klucze są poprawnie skonfigurowane?</li><li>Czy urządzenie sieci VPN jest osiągalne?</li><li>Czy istnieją niezgodności w zasadach zabezpieczeń protokołu IPSec/IKE?</li><li>Czy połączenie sieci VPN S2S zostało prawidłowo zainicjowane lub w stanie niepowodzenia?</li><li>Czy połączenie między sieciami WIRTUALNYmi zostało prawidłowo zainicjowane lub w stanie awarii?</li></ul>|
 
 ## <a name="microsoftnetworkexpressreoutecircuits"></a>Microsoft.network/expressreoutecircuits
-|Wykonane testy|
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>Obwód usługi ExpressRoute jest w dobrej kondycji?</li></ul>|
+|<ul><li>Czy obwód ExpressRoute jest w dobrej kondycji?</li></ul>|
 
-## <a name="microsoftnetworkfrontdoors"></a>Microsoft.network/frontdoors
-|Wykonane testy|
+## <a name="microsoftnetworkfrontdoors"></a>Microsoft. Network/usługi frontdoor
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>Drzwiami frontowymi zaplecza odpowiadają z błędami na sond kondycji?</li><li>Zmiany konfiguracji są opóźnione?</li></ul>|
+|<ul><li>Czy frontony drzwi reagują na błędy w sondach kondycji?</li><li>Czy zmiany konfiguracji są opóźnione?</li></ul>|
+
+## <a name="microsoftnetworkloadbalancers"></a>Microsoft. Network/LoadBalancers
+|Wykonane sprawdzenia|
+|---|
+|<ul><li>Czy punkty końcowe równoważenia obciążenia są dostępne?</li></ul>|
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.network/virtualNetworkGateways
-|Wykonane testy|
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>Bramy sieci VPN jest dostępny z Internetu?</li><li>Bramy sieci VPN jest w trybie rezerwy?</li><li>Usługa VPN działa w ramach bramy?</li></ul>|
+|<ul><li>Czy Brama sieci VPN jest dostępna z Internetu?</li><li>Czy VPN Gateway jest w trybie wstrzymania?</li><li>Czy usługa sieci VPN jest uruchomiona na bramie?</li></ul>|
 
 ## <a name="microsoftnotificationhubsnamespace"></a>Microsoft.NotificationHubs/namespace
-|Wykonane testy|
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>Można wykonać operacji środowiska uruchomieniowego, takich jak rejestracji, instalacji lub wysyłania w przestrzeni nazw?</li></ul>|
+|<ul><li>Czy w przestrzeni nazw mogą być wykonywane operacje, takie jak rejestracja, instalacja czy wysyłanie?</li></ul>|
 
-## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft.operationalinsights/workspaces
-|Wykonane testy|
+## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft. operationalinsights/obszary robocze
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>Istnieją indeksowania opóźnienia dla obszaru roboczego?</li></ul>|
+|<ul><li>Czy istnieją opóźnienia indeksowania dla obszaru roboczego?</li></ul>|
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/Capacities
-|Wykonane testy|
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>Jest zasobem pojemności pracę?</li><li>Czy wszystkie obciążenia działa?</li></ul>|
+|<ul><li>Czy zasób wydajności jest uruchomiony i działa?</li><li>Czy wszystkie obciążenia są uruchomione i działają?</li></ul>|
 
 ## <a name="microsoftpowerbiworkspacecollections"></a>Microsoft.PowerBI/workspaceCollections
-|Wykonane testy|
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>Jest system operacyjny hosta działa?</li><li>WorkspaceCollection jest osiągalny z poza centrum danych?</li><li>Dostawca zasobów usługi Power BI jest dostępny?</li><li>Usługa Power BI jest dostępna w regionie odpowiednie?</li></ul>|
+|<ul><li>Czy system operacyjny hosta jest uruchomiony?</li><li>Czy obszar roboczycollection jest dostępny spoza centrum danych?</li><li>Czy dostawca zasobów Power BI jest dostępny?</li><li>Czy usługa Power BI jest dostępna w odpowiednim regionie?</li></ul>|
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.search/searchServices
-|Wykonane testy|
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>Można wykonać operacji diagnostyki w klastrze?</li></ul>|
+|<ul><li>Czy w klastrze można wykonywać operacje diagnostyczne?</li></ul>|
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/namespaces
-|Wykonane testy|
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>Klienci występują błędy usługi Service Bus wygenerowane przez użytkowników?</li><li>Użytkownicy występują wzrost liczby błędów przejściowych, z powodu uaktualnienia przestrzeni nazw usługi Service Bus?</li></ul>|
+|<ul><li>Czy klienci napotykali błędy wygenerowane przez użytkownika Service Bus?</li><li>Czy użytkownicy napotykają wzrost błędów przejściowych ze względu na uaktualnienie Service Bus przestrzeni nazw?</li></ul>|
 
-## <a name="microsoftsqlserverdatabase"></a>Microsoft.SQL/Server/database
-|Wykonane testy|
+## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft. SQL/managedInstances/bazy danych
+|Wykonane sprawdzenia|
 |---|
-|<ul><li> Zostały logowania do bazy danych?</li></ul>|
+|<ul><li>Czy baza danych jest w pełni uruchomiona?</li></ul>|
+
+## <a name="microsoftsqlserverdatabases"></a>Microsoft. SQL/serwer/bazy danych
+|Wykonane sprawdzenia|
+|---|
+|<ul><li>Czy wystąpiły logowania do bazy danych?</li></ul>|
 
 ## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
-|Wykonane testy|
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>Czy żądania odczytu danych z konta magazynu kończy się niepowodzeniem z powodu problemów z platformy Azure Storage?</li><li>Czy żądania zapisu danych do konta magazynu kończy się niepowodzeniem z powodu problemów z platformy Azure Storage?</li><li>Klaster magazynu, w której znajduje się konto magazynu jest niedostępne?</li></ul>|
+|<ul><li>Czy żądania odczytu danych z konta magazynu kończą się niepowodzeniem z powodu problemów z platformą Azure Storage?</li><li>Czy żądania zapisu danych na koncie magazynu kończą się niepowodzeniem z powodu problemów z platformą Azure Storage?</li><li>Czy klaster magazynu, w którym znajduje się konto magazynu, jest niedostępny?</li></ul>|
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
-|Wykonane testy|
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>Czy wszystkie hosty, których wykonanie się i uruchamianie zadania?</li><li>Nie można uruchomić zadania?</li><li>Czy istnieją bieżące środowisko uruchomieniowe uaktualnienia?</li><li>To zadanie w oczekiwanym stanie (na przykład uruchomiona lub zatrzymana przez klienta)?</li><li>Zadanie napotkał się wyjątków pamięci?</li><li>Dostępne są aktualizacje bieżące zaplanowane obliczeniowych?</li><li>Menedżera wykonywania (planu kontroli) jest dostępny?</li></ul>|
+|<ul><li>Czy wszystkie hosty, na których wykonywane jest zadanie, są uruchamiane?</li><li>Czy nie można uruchomić zadania?</li><li>Czy istnieją bieżące uaktualnienia środowiska uruchomieniowego?</li><li>Czy zadanie jest w oczekiwanym stanie (na przykład uruchomione lub zatrzymane przez klienta)?</li><li>Czy podczas wykonywania zadania brakuje wyjątków pamięci?</li><li>Czy są planowane aktualizacje obliczeń?</li><li>Czy Menedżer wykonywania (plan kontroli) jest dostępny?</li></ul>|
 
 ## <a name="microsoftwebserverfarms"></a>Microsoft.web/serverFarms
-|Wykonane testy|
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>Serwer hosta należy została uruchomiona i działa?</li><li>Internet Information Services jest uruchomiona?</li><li>Moduł równoważenia obciążenia jest uruchomiona?</li><li>Plan usługi App Service jest osiągalna z w obrębie centrum danych?</li><li>Konto magazynu obsługuje zawartość witryny serverFarm dostępne?</li></ul>|
+|<ul><li>Czy serwer hosta jest uruchomiony?</li><li>Czy Internet Information Services jest uruchomiona?</li><li>Czy jest uruchomiony moduł równoważenia obciążenia?</li><li>Czy plan App Service można osiągnąć z poziomu centrum danych?</li><li>Czy jest dostępne konto magazynu obsługujące zawartość witryn dla farma serwerów?</li></ul>|
 
 ## <a name="microsoftwebsites"></a>Microsoft.web/sites
-|Wykonane testy|
+|Wykonane sprawdzenia|
 |---|
-|<ul><li>Serwer hosta należy została uruchomiona i działa?</li><li>Internet Information server jest uruchomiona?</li><li>Moduł równoważenia obciążenia jest uruchomiona?</li><li>Aplikacja sieci Web jest osiągalna z w obrębie centrum danych?</li><li>Konto magazynu obsługuje zawartość witryny?</li></ul>|
+|<ul><li>Czy serwer hosta jest uruchomiony?</li><li>Czy jest uruchomiony internetowy serwer informacyjny?</li><li>Czy jest uruchomiony moduł równoważenia obciążenia?</li><li>Czy można uzyskać dostęp do aplikacji sieci Web z poziomu centrum danych?</li><li>Czy konto magazynu obsługujące zawartość witryny jest dostępne?</li></ul>|
 
-# <a name="next-steps"></a>Następne kroki
--  Zobacz [wprowadzenie do pulpitu nawigacyjnego usługi Azure Service Health](service-health-overview.md) i [wprowadzenie do usługi Azure Resource Health](resource-health-overview.md) Aby dowiedzieć się więcej o nich. 
--  [Często zadawane pytania dotyczące usługi Azure Resource Health](resource-health-faq.md)
-- Konfigurowanie alertów, dzięki czemu użytkownik jest powiadamiany o problemów z kondycją. Aby uzyskać więcej informacji, zobacz [skonfigurować alerty dla zdarzeń kondycji usługi](../azure-monitor/platform/alerts-activity-log-service-notifications.md). 
+## <a name="next-steps"></a>Następne kroki
+-  Zobacz [wprowadzenie do Azure Service Health pulpitu nawigacyjnego](service-health-overview.md) i [wprowadzenie do Azure Resource Health](resource-health-overview.md) , aby dowiedzieć się więcej o nich. 
+-  [Często zadawane pytania dotyczące Azure Resource Health](resource-health-faq.md)
+- Skonfiguruj alerty, aby otrzymywać powiadomienia o problemach z kondycją. Aby uzyskać więcej informacji, zobacz [Konfigurowanie alertów dla zdarzeń usługi Service Health](../azure-monitor/platform/alerts-activity-log-service-notifications.md). 

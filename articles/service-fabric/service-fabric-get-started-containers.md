@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 01/25/2019
 ms.author: atsenthi
 ms.openlocfilehash: 9ef1dad0e90ec3e48a4bf22325cba0beb197d290
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "68599533"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Tworzenie pierwszej aplikacji kontenera usługi Service Fabric w systemie Windows
@@ -489,7 +489,7 @@ Kontenery systemu Windows Server nie są zgodne ze wszystkimi wersjami systemu o
  
 Aby dowiedzieć się więcej, zobacz [zgodność wersji kontenera systemu Windows](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
-Podczas kompilowania i wdrażania kontenerów w klastrze Service Fabric należy wziąć pod uwagę zgodność systemu operacyjnego hosta i systemu operacyjnego kontenera. Przykład:
+Podczas kompilowania i wdrażania kontenerów w klastrze Service Fabric należy wziąć pod uwagę zgodność systemu operacyjnego hosta i systemu operacyjnego kontenera. Na przykład:
 
 - Upewnij się, że wdrożono kontenery z systemem operacyjnym zgodnym z systemem operacyjnym w węzłach klastra.
 - Upewnij się, że tryb izolacji określony dla aplikacji kontenera jest zgodny z obsługą systemu operacyjnego kontenera w węźle, w którym jest wdrażany.

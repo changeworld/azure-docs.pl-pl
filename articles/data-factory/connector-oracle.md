@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 079a0721e77174215c7256eecbe9bc522256f0b8
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 142c99b2471a9010a00bf9b5d50549c5e84548f1
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881476"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966466"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopiowanie danych z i do programu Oracle przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -33,11 +33,13 @@ Dane z bazy danych programu Oracle można kopiować do dowolnego obsługiwanego 
 W przypadku tego łącznika Oracle obsługuje:
 
 - Następujące wersje bazy danych Oracle:
-  - Oracle 12c R1 (12,1)
-  - Oracle 11g R1, R2 (11,1, 11,2)
-  - Oracle 10g R1, R2 (10,1, 10,2)
-  - Oracle 9i R1, R2 (9.0.1, 9,2)
-  - Oracle 8i R3 (8.1.7)
+    - Oracle 18c R1 (18,1) i nowsze
+    - Oracle 12c R1 (12,1) i nowsze
+    - Oracle 11g R1 (11,1) i nowsze
+    - Oracle 10g R1 (10,1) i nowsze
+    - Oracle 9i R2 (9,2) i nowsze
+    - Oracle 8i R3 (8.1.7) i nowsze
+    - Oracle Database usługi Cloud Exadata
 - Kopiowanie danych przy użyciu uwierzytelniania podstawowego lub identyfikatora OID.
 - Równoległe kopiowanie ze źródła programu Oracle. Aby uzyskać szczegółowe informacje, zobacz sekcję [copy Parallel from Oracle](#parallel-copy-from-oracle) .
 
@@ -46,7 +48,9 @@ W przypadku tego łącznika Oracle obsługuje:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skopiować dane z i do bazy danych Oracle, która nie jest publicznie dostępna, należy skonfigurować [własne środowisko Integration Runtime](create-self-hosted-integration-runtime.md). Środowisko Integration Runtime zapewnia wbudowany sterownik Oracle. W związku z tym nie trzeba ręcznie instalować sterownika podczas kopiowania danych z programu i do programu Oracle.
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)] 
+
+Środowisko Integration Runtime zapewnia wbudowany sterownik Oracle. W związku z tym nie trzeba ręcznie instalować sterownika podczas kopiowania danych z programu i do programu Oracle.
 
 ## <a name="get-started"></a>Wprowadzenie
 
@@ -61,8 +65,8 @@ Połączona usługa Oracle obsługuje następujące właściwości:
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type musi mieć wartość **Oracle**. | Tak |
-| connectionString | Określa informacje, które są konieczne do nawiązania połączenia z wystąpieniem Oracle Database. <br/>Oznacz to pole jako `SecureString` , aby bezpiecznie przechowywać je w Data Factory. Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć `password` konfigurację z parametrów połączenia. Zapoznaj się z poniższymi przykładami i [Zapisz poświadczenia w Azure Key Vault](store-credentials-in-key-vault.md) , aby uzyskać więcej szczegółów. <br><br>**Obsługiwany typ połączenia**: Aby zidentyfikować bazę danych, można użyć **identyfikatora SID Oracle** lub **nazwy usługi Oracle** :<br>— Jeśli używasz identyfikatora SID:`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>— Jeśli używasz nazwy usługi:`Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Yes |
-| connectVia | [Środowiska integration runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Możesz użyć własnego środowiska Integration Runtime lub Azure Integration Runtime (Jeśli magazyn danych jest publicznie dostępny). Jeśli nie zostanie określony, ta właściwość używa domyślnego środowiska Azure Integration Runtime. |Nie |
+| connectionString | Określa informacje, które są konieczne do nawiązania połączenia z wystąpieniem Oracle Database. <br/>Oznacz to pole jako `SecureString` , aby bezpiecznie przechowywać je w Data Factory. Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć `password` konfigurację z parametrów połączenia. Zapoznaj się z poniższymi przykładami i [Zapisz poświadczenia w Azure Key Vault](store-credentials-in-key-vault.md) , aby uzyskać więcej szczegółów. <br><br>**Obsługiwany typ połączenia**: Aby zidentyfikować bazę danych, można użyć **identyfikatora SID Oracle** lub **nazwy usługi Oracle** :<br>— Jeśli używasz identyfikatora SID:`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>— Jeśli używasz nazwy usługi:`Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Tak |
+| connectVia | [Środowiska integration runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określona, używana jest domyślna Azure Integration Runtime. |Nie |
 
 >[!TIP]
 >Jeśli wystąpi błąd, "ORA-01025: Parametr UPI poza zakresem ", a wersja Oracle to 8i, Dodaj `WireProtocolMode=1` do parametrów połączenia. Następnie spróbuj ponownie.
@@ -165,7 +169,7 @@ Aby skopiować dane z i do programu Oracle, należy ustawić Właściwość Type
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | Właściwość Type zestawu danych musi być ustawiona na `OracleTable`wartość. | Tak |
+| type | Właściwość Type zestawu danych musi być ustawiona na `OracleTable`wartość. | Tak |
 | tableName |Nazwa tabeli w bazie danych Oracle, do której odwołuje się połączona usługa. | Tak |
 
 **Przykład:**
@@ -191,17 +195,16 @@ Aby skopiować dane z i do programu Oracle, należy ustawić Właściwość Type
 
 Ta sekcja zawiera listę właściwości obsługiwanych przez źródło i ujścia programu Oracle. Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz [potoki](concepts-pipelines-activities.md). 
 
-### <a name="oracle-as-a-source-type"></a>Oracle jako typ źródła
+### <a name="oracle-as-source"></a>Oracle as Source
 
-> [!TIP]
->
-> Aby efektywnie ładować dane z programu Oracle przy użyciu partycjonowania danych, zobacz [Kopiowanie równoległe z programu Oracle](#parallel-copy-from-oracle).
+>[!TIP]
+>Aby efektywnie ładować dane z programu Oracle przy użyciu partycjonowania danych, zobacz [Kopiowanie równoległe z programu Oracle](#parallel-copy-from-oracle).
 
 Aby skopiować dane z programu Oracle, należy ustawić typ źródła w działaniu kopiowania `OracleSource`na. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji.
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type źródła działania Copy musi być ustawiona na `OracleSource`wartość. | Yes |
+| type | Właściwość Type źródła działania Copy musi być ustawiona na `OracleSource`wartość. | Tak |
 | oracleReaderQuery | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Może to być na przykład `"SELECT * FROM MyTable"`.<br>Po włączeniu obciążenia partycjonowanego należy podłączyć wszystkie odpowiednie wbudowane parametry partycji w zapytaniu. Przykłady można znaleźć w sekcji [Kopiowanie równoległe z programu Oracle](#parallel-copy-from-oracle) . | Nie |
 | partitionOptions | Określa opcje partycjonowania danych używane do ładowania danych z programu Oracle. <br>Dozwolone wartości to: **Brak** (wartość domyślna), **PhysicalPartitionsOfTable** i **DynamicRange**.<br>Gdy opcja partycji jest włączona (to nie `None`jest), należy również [`parallelCopies`](copy-activity-performance.md#parallel-copy) skonfigurować ustawienie dla działania kopiowania. Określa to równoległy stopień, który umożliwia współbieżne ładowanie danych z bazy danych programu Oracle. Można na przykład ustawić wartość 4. | Nie |
 | partitionSettings | Określ grupę ustawień partycjonowania danych. <br>Zastosuj, gdy opcja partycji nie `None`jest. | Nie |
@@ -242,13 +245,13 @@ Aby skopiować dane z programu Oracle, należy ustawić typ źródła w działan
 ]
 ```
 
-### <a name="oracle-as-a-sink-type"></a>Oracle jako typ ujścia
+### <a name="oracle-as-sink"></a>Oracle as sink
 
 Aby skopiować dane do programu Oracle, należy ustawić typ ujścia w działaniu kopiowania `OracleSink`na. W sekcji **ujścia** działania kopiowania są obsługiwane następujące właściwości.
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type ujścia działania Copy musi być ustawiona na `OracleSink`wartość. | Yes |
+| type | Właściwość Type ujścia działania Copy musi być ustawiona na `OracleSink`wartość. | Tak |
 | writeBatchSize | Wstawia dane do tabeli SQL, gdy rozmiar buforu osiągnie `writeBatchSize`wartość.<br/>Dozwolone wartości to liczba całkowita (liczba wierszy). |Nie (domyślnie 10 000) |
 | writeBatchTimeout | Czas oczekiwania na zakończenie operacji wstawiania partii przed przekroczeniem limitu czasu.<br/>Dozwolone wartości to TimeSpan. Przykładem jest 00:30:00 (30 minut). | Nie |
 | preCopyScript | Określ zapytanie SQL dla działania kopiowania, które ma zostać uruchomione przed zapisaniem danych w programie Oracle w każdym przebiegu. Ta właściwość służy do czyszczenia wstępnie załadowanych danych. | Nie |
@@ -339,13 +342,13 @@ Podczas kopiowania danych z programu i do programu Oracle są stosowane następu
 | Typ danych Oracle | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
 | BFILE |Byte[] |
-| TWORZENIA |Byte[]<br/>(obsługiwane tylko w systemach Oracle 10g i nowszych) |
-| DELIKATN |Ciąg |
-| OBIEKTÓW CLOB |String |
-| DATE |Datetime |
+| BLOB |Byte[]<br/>(obsługiwane tylko w systemach Oracle 10g i nowszych) |
+| DELIKATN |String |
+| CLOB |String |
+| DATE |DateTime |
 | FLOAT |Decimal, String (jeśli dokładności > 28) |
-| CAŁKOWITĄ |Decimal, String (jeśli dokładności > 28) |
-| LONG |Ciąg |
+| INTEGER |Decimal, String (jeśli dokładności > 28) |
+| LONG |String |
 | LONG RAW |Byte[] |
 | NCHAR |String |
 | NCLOB |String |
@@ -353,12 +356,12 @@ Podczas kopiowania danych z programu i do programu Oracle są stosowane następu
 | NVARCHAR2 |String |
 | RAW |Byte[] |
 | WŁAŚCIWOŚĆ |String |
-| TIMESTAMP |Datetime |
+| TIMESTAMP |DateTime |
 | TIMESTAMP WITH LOCAL TIME ZONE |String |
 | TIMESTAMP WITH TIME ZONE |String |
 | UNSIGNED INTEGER |Number |
-| VARCHAR2 |Ciąg |
-| XML |Ciąg |
+| VARCHAR2 |String |
+| XML |String |
 
 > [!NOTE]
 > Typy danych INTERWAŁu od roku do miesiąca oraz INTERWAŁu od dnia do sekundy nie są obsługiwane.

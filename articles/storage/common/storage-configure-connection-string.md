@@ -1,6 +1,6 @@
 ---
 title: Konfigurowanie parametrów połączenia dla usługi Azure Storage
-description: Skonfiguruj parametry połączenia dla konta usługi Azure storage. Parametry połączenia zawierają informacje wymagane do autoryzowania dostępu do konta magazynu z poziomu aplikacji w czasie wykonywania za pomocą klucza wspólnego autoryzacji.
+description: Skonfiguruj parametry połączenia dla konta usługi Azure Storage. Parametry połączenia zawierają informacje potrzebne do autoryzacji dostępu do konta magazynu z aplikacji w czasie wykonywania przy użyciu autoryzacji klucza współużytkowanego.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,20 +9,20 @@ ms.date: 06/20/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7c83b382f8aca3d8fda1c0de4785c51f3f3b1fc5
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 0f73871d8248b2f52bab5934eef03d883c72ed79
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67302518"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985408"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Konfiguracja parametrów połączenia usługi Azure Storage
 
-Parametry połączenia zawiera informacje o uwierzytelnianiu wymagane dla aplikacji na dostęp do danych na koncie usługi Azure Storage w czasie wykonywania za pomocą klucza wspólnego autoryzacji. Można skonfigurować parametry połączenia do:
+Parametry połączenia zawierają informacje o uwierzytelnianiu wymagane przez aplikację do uzyskiwania dostępu do danych na koncie usługi Azure Storage w środowisku uruchomieniowym przy użyciu autoryzacji klucza współużytkowanego. Parametry połączenia można skonfigurować w taki sposób, aby:
 
-* Połącz z emulatorem usługi Azure storage.
-* Dostęp do konta magazynu na platformie Azure.
-* Dostęp do określonych zasobów na platformie Azure przy użyciu sygnatury dostępu współdzielonego (SAS).
+* Nawiązywanie połączenia z emulatorem usługi Azure Storage.
+* Uzyskaj dostęp do konta magazynu na platformie Azure.
+* Dostęp do określonych zasobów na platformie Azure za pośrednictwem sygnatury dostępu współdzielonego (SAS).
 
 [!INCLUDE [storage-recommend-azure-ad-include](../../../includes/storage-recommend-azure-ad-include.md)]
 
@@ -32,47 +32,47 @@ Parametry połączenia zawiera informacje o uwierzytelnianiu wymagane dla aplika
 
 [!INCLUDE [storage-view-keys-include](../../../includes/storage-view-keys-include.md)]
 
-## <a name="store-a-connection-string"></a>Store parametry połączenia
+## <a name="store-a-connection-string"></a>Przechowywanie parametrów połączenia
 
-Aplikacja ma dostęp do parametrów połączenia w czasie wykonywania, aby autoryzować żądania wysyłane do usługi Azure Storage. Istnieje kilka opcji do przechowywania parametrów połączenia:
+Aplikacja musi uzyskać dostęp do parametrów połączenia w czasie wykonywania, aby autoryzować żądania kierowane do usługi Azure Storage. Istnieje kilka opcji przechowywania parametrów połączenia:
 
 * Parametry połączenia można przechowywać w zmiennej środowiskowej.
-* Uruchamianie aplikacji na pulpicie lub na urządzeniu mogą przechowywać parametry połączenia w **app.config** lub **web.config** pliku. Dodaj parametry połączenia do **AppSettings** sekcji w tych plikach.
-* Aplikacja działająca w usłudze w chmurze platformy Azure można przechowywać parametry połączenia w [plik schematu (cscfg) konfiguracji usługi platformy Azure](https://msdn.microsoft.com/library/ee758710.aspx). Dodaj parametry połączenia do **appSettings** sekcję pliku konfiguracji usługi.
+* Aplikacja działająca na komputerze stacjonarnym lub na urządzeniu może przechowywać parametry połączenia w pliku **App. config** lub **Web. config** . Dodaj parametry połączenia do sekcji **AppSettings** w tych plikach.
+* W aplikacji uruchomionej w usłudze w chmurze platformy Azure można przechowywać parametry połączenia w [pliku schematu konfiguracji usługi platformy Azure (cscfg)](https://msdn.microsoft.com/library/ee758710.aspx). Dodaj parametry połączenia do sekcji **ConfigurationSettings** w pliku konfiguracji usługi.
 
-Przechowywanie parametrów połączenia w pliku konfiguracji można łatwo zaktualizować parametry połączenia, aby przełączać się między emulatora magazynu i konto magazynu platformy Azure w chmurze. Należy zmodyfikować parametry połączenia, aby wskazywał środowisku docelowym.
+Przechowywanie parametrów połączenia w pliku konfiguracji ułatwia aktualizowanie parametrów połączenia w celu przełączania się między emulatorem magazynu a kontem usługi Azure Storage w chmurze. Wystarczy edytować parametry połączenia, aby wskazywały na środowisko docelowe.
 
-Możesz użyć [Microsoft Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) na dostęp do parametrów połączenia w czasie wykonywania, niezależnie od tego, gdzie aplikacja jest uruchomiona.
+Możesz użyć [Configuration Manager Microsoft Azure](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) , aby uzyskać dostęp do parametrów połączenia w czasie wykonywania, niezależnie od miejsca, w którym działa aplikacja.
 
 ## <a name="configure-a-connection-string-for-the-storage-emulator"></a>Konfigurowanie parametrów połączenia dla emulatora magazynu
 
 [!INCLUDE [storage-emulator-connection-string-include](../../../includes/storage-emulator-connection-string-include.md)]
 
-Aby uzyskać więcej informacji na temat emulatora magazynu, zobacz [korzystanie z emulatora usługi Azure storage do programowania i testowania](storage-use-emulator.md).
+Aby uzyskać więcej informacji na temat emulatora magazynu, zobacz [Używanie emulatora usługi Azure Storage do programowania i testowania](storage-use-emulator.md).
 
-## <a name="configure-a-connection-string-for-an-azure-storage-account"></a>Konfigurowanie parametrów połączenia dla konta usługi Azure storage
+## <a name="configure-a-connection-string-for-an-azure-storage-account"></a>Konfigurowanie parametrów połączenia dla konta usługi Azure Storage
 
-Aby utworzyć parametry połączenia dla konta usługi Azure storage, użyj następującego formatu. Wskazuje, czy chcesz się połączyć z kontem magazynu za pośrednictwem protokołu HTTPS (zalecane) lub HTTP, Zastąp `myAccountName` nazwą konta magazynu, i Zastąp `myAccountKey` swoim kluczem dostępu konta:
+Aby utworzyć parametry połączenia dla konta usługi Azure Storage, użyj następującego formatu. Wskaż, czy chcesz nawiązać połączenie z kontem magazynu za pośrednictwem protokołu HTTPS (zalecane) lub `myAccountName` http, Zastąp ciąg nazwą konta magazynu i Zastąp `myAccountKey` ciąg kluczem dostępu do konta:
 
 `DefaultEndpointsProtocol=[http|https];AccountName=myAccountName;AccountKey=myAccountKey`
 
-Na przykład parametry połączenia mogą wyglądać podobnie do:
+Na przykład parametry połączenia mogą wyglądać podobnie do następujących:
 
 `DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=<account-key>`
 
-Mimo że usługa Azure Storage obsługuje protokołów HTTP i HTTPS, w ciągu połączenia *zdecydowanie zaleca się HTTPS*.
+Mimo że usługa Azure Storage obsługuje zarówno protokół HTTP, jak i HTTPS w parametrach połączenia, *zdecydowanie zaleca się użycie protokołu HTTPS*.
 
 > [!TIP]
-> Można znaleźć parametrów połączenia konta magazynu w [witryny Azure portal](https://portal.azure.com). Przejdź do **ustawienia** > **klucze dostępu** w bloku menu konta magazynu, aby wyświetlić parametry połączenia dla obu kluczy dostępu do podstawowego i pomocniczego.
+> Parametry połączenia konta magazynu można znaleźć w [Azure Portal](https://portal.azure.com). Przejdź do **ustawień** > **klucze dostępu** w bloku menu konta magazynu, aby wyświetlić parametry połączenia dla podstawowych i pomocniczych kluczy dostępu.
 >
 
 ## <a name="create-a-connection-string-using-a-shared-access-signature"></a>Tworzenie parametrów połączenia przy użyciu sygnatury dostępu współdzielonego
 
 [!INCLUDE [storage-use-sas-in-connection-string-include](../../../includes/storage-use-sas-in-connection-string-include.md)]
 
-## <a name="create-a-connection-string-for-an-explicit-storage-endpoint"></a>Utwórz ciąg połączenia dla punktu końcowego magazynu jawne
+## <a name="create-a-connection-string-for-an-explicit-storage-endpoint"></a>Utwórz parametry połączenia dla jawnego punktu końcowego magazynu
 
-Punkty końcowe usługi jawne można określić w ciągu połączenia zamiast domyślnych punktów końcowych. Aby utworzyć parametry połączenia, który określa jawny punkt końcowy, należy określić punkt końcowy usługi ukończone dla każdej usługi, w tym specyfikacji protokołu (HTTP lub HTTPS (zalecane)), w następującym formacie:
+Możesz określić jawne punkty końcowe usługi w parametrach połączenia zamiast korzystać z domyślnych punktów końcowych. Aby utworzyć parametry połączenia określające jawny punkt końcowy, określ kompletny punkt końcowy usługi dla każdej usługi, w tym specyfikację protokołu (HTTPS (zalecane) lub HTTP), w następującym formacie:
 
 ```
 DefaultEndpointsProtocol=[http|https];
@@ -84,9 +84,9 @@ AccountName=myAccountName;
 AccountKey=myAccountKey
 ```
 
-Jeden scenariusz, gdzie użytkownik może chcieć określić jawny punkt końcowy jest, gdy został zamapowany na punkt końcowy usługi Blob storage do [domeny niestandardowej](../blobs/storage-custom-domain-name.md). W takim przypadku można określić niestandardowego punktu końcowego usługi Blob storage w ciągu połączenia. Opcjonalnie można określić domyślne punkty końcowe dla innych usług, jeśli aplikacja korzysta z nich.
+Jednym z scenariuszy, w którym można określić jawny punkt końcowy, jest zamapowanie punktu końcowego magazynu obiektów BLOB na [domenę](../blobs/storage-custom-domain-name.md)niestandardową. W takim przypadku można określić niestandardowy punkt końcowy dla magazynu obiektów BLOB w parametrach połączenia. Opcjonalnie można określić domyślne punkty końcowe dla innych usług, jeśli są one używane przez aplikację.
 
-Oto przykład parametrów połączenia, który określa jawny punkt końcowy usługi Blob:
+Oto przykład parametrów połączenia, które określają jawny punkt końcowy dla Blob service:
 
 ```
 # Blob endpoint only
@@ -96,7 +96,7 @@ AccountName=storagesample;
 AccountKey=<account-key>
 ```
 
-W tym przykładzie określa jawne punkty końcowe dla wszystkich usług, w tym domeny niestandardowej dla usługi Blob:
+W tym przykładzie określono jawne punkty końcowe dla wszystkich usług, w tym domenę niestandardową dla Blob service:
 
 ```
 # All service endpoints
@@ -109,17 +109,17 @@ AccountName=storagesample;
 AccountKey=<account-key>
 ```
 
-Wartości punktu końcowego w parametrach połączenia są używane do konstruowania identyfikatorów URI żądania do usług magazynu i dyktowania formularza wszystkie identyfikatory URI, które są zwracane do kodu.
+Wartości punktów końcowych w parametrach połączenia są używane do konstruowania identyfikatorów URI żądań do usług magazynu, a także do podyktowania formy identyfikatorów URI zwracanych do kodu.
 
-Jeśli zamapowany na domenę niestandardową punktu końcowego magazynu, a pominięto tego punktu końcowego z parametrów połączenia, następnie nie będzie mógł używać tego ciągu połączenia dostępu do danych w tej usłudze w kodzie.
+Jeśli punkt końcowy magazynu został zamapowany na domenę niestandardową i pominięto ten punkt końcowy z parametrów połączenia, nie będzie można używać tych parametrów połączenia do uzyskiwania dostępu do danych w tej usłudze z kodu.
 
 > [!IMPORTANT]
-> Wartości punktu końcowego usługi w parametry połączenia muszą być poprawnie sformułowany identyfikatory URI, w tym `https://` (zalecane) lub `http://`. Ponieważ Magazyn Azure nie obsługuje jeszcze HTTPS dla domen niestandardowych możesz *musi* określ `http://` dla dowolnego punktu końcowego identyfikatora URI, który wskazuje na domenę niestandardową.
+> Wartości punktu końcowego usługi w parametrach połączenia muszą mieć poprawnie sformułowane identyfikatory URI `https://` , w tym ( `http://`zalecane) lub. Ponieważ usługa Azure Storage nie obsługuje jeszcze protokołu HTTPS dla domen niestandardowych, *należy* określić `http://` dla dowolnego identyfikatora URI punktu końcowego, który wskazuje na domenę niestandardową.
 >
 
-### <a name="create-a-connection-string-with-an-endpoint-suffix"></a>Utwórz ciąg połączenia za pomocą sufiksu punktu końcowego
+### <a name="create-a-connection-string-with-an-endpoint-suffix"></a>Tworzenie parametrów połączenia przy użyciu sufiksu punktu końcowego
 
-Aby utworzyć parametry połączenia dla usługi storage w regionach lub wystąpień z innym punktem końcowym sufiksy, takich jak Azure China 21Vianet lub platformy Azure dla instytucji rządowych, użyj następującego formatu ciągu połączenia. Wskazuje, czy chcesz się połączyć z kontem magazynu za pośrednictwem protokołu HTTPS (zalecane) lub HTTP, Zastąp `myAccountName` nazwą konta magazynu, należy zastąpić `myAccountKey` przy użyciu klucza dostępu do konta i Zastąp `mySuffix` sufiks identyfikatora URI:
+Aby utworzyć parametry połączenia dla usługi magazynu w regionach lub wystąpieniach z różnymi sufiksami punktów końcowych, takimi jak Azure Chiny 21Vianet lub Azure Government, użyj następującego formatu parametrów połączenia. Wskaż, czy chcesz nawiązać połączenie z kontem magazynu za pośrednictwem protokołu HTTPS (zalecane) lub `myAccountName` protokołu HTTP, Zastąp ciąg nazwą konta magazynu `myAccountKey` , Zastąp ciąg kluczem dostępu do konta `mySuffix` i Zastąp ciąg identyfikatorem URI:
 
 ```
 DefaultEndpointsProtocol=[http|https];
@@ -128,7 +128,7 @@ AccountKey=myAccountKey;
 EndpointSuffix=mySuffix;
 ```
 
-Oto przykładowe parametry połączenia dla usługi storage w Azure China 21Vianet:
+Oto przykładowe parametry połączenia dla usług magazynu na platformie Azure (Chiny):
 
 ```
 DefaultEndpointsProtocol=https;
@@ -137,13 +137,12 @@ AccountKey=<account-key>;
 EndpointSuffix=core.chinacloudapi.cn;
 ```
 
-## <a name="parsing-a-connection-string"></a>Analizowania parametrów połączenia
+## <a name="parsing-a-connection-string"></a>Analizowanie parametrów połączenia
 
 [!INCLUDE [storage-cloud-configuration-manager-include](../../../includes/storage-cloud-configuration-manager-include.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Korzystanie z emulatora usługi Azure storage do programowania i testowania](storage-use-emulator.md)
+* [Korzystanie z emulatora usługi Azure Storage na potrzeby tworzenia i testowania](storage-use-emulator.md)
 * [Eksploratory usługi Azure Storage](storage-explorers.md)
-* [Używanie sygnatur dostępu współdzielonego (SAS)](storage-dotnet-shared-access-signature-part-1.md)
-
+* [Używanie sygnatur dostępu współdzielonego (SAS)](storage-sas-overview.md)

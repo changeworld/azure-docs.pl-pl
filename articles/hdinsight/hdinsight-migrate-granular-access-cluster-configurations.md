@@ -6,13 +6,13 @@ ms.author: tyfox
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: 797caae3caaca14c10481cb58654c45b4bed55ae
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.date: 08/09/2019
+ms.openlocfilehash: 1e5eb1e363ac9e282a72a9c1430c3f80c825bb91
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884316"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945073"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrowanie do szczegółowego dostępu opartego na rolach w przypadku konfiguracji klastrów
 
@@ -20,8 +20,9 @@ Wprowadzamy pewne ważne zmiany, aby obsługiwać bardziej szczegółowy dostęp
 
 ## <a name="what-is-changing"></a>Co się zmieni?
 
-Wcześniej wpisy tajne mogą być uzyskiwane za pośrednictwem interfejsu API usługi HDInsight przez użytkowników klastrów, którzy posiadają [role](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)właściciela, współautora lub czytelnika, ponieważ były `*/read` dostępne dla wszystkich osób z uprawnieniami.
-W przód dostęp do tych kluczy tajnych będzie `Microsoft.HDInsight/clusters/configurations/*` wymagał uprawnień, co oznacza, że użytkownicy z rolą czytelnik nie będą już mieli do nich dostępu. Wpisy tajne są definiowane jako wartości, które mogą być używane do uzyskania bardziej podwyższonego poziomu dostępu, niż powinna zezwalać rola użytkownika. Obejmują one wartości, takie jak poświadczenia HTTP bramy klastra, klucze konta magazynu i poświadczenia bazy danych.
+Wcześniej wpisy tajne mogą być uzyskiwane za pośrednictwem interfejsu API usługi HDInsight przez użytkowników klastrów, którzy posiadają [role](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)właściciela, współautora lub czytelnika, ponieważ były `*/read` dostępne dla wszystkich osób z uprawnieniami. Wpisy tajne są definiowane jako wartości, które mogą być używane do uzyskania bardziej podwyższonego poziomu dostępu, niż powinna zezwalać rola użytkownika. Obejmują one wartości, takie jak poświadczenia HTTP bramy klastra, klucze konta magazynu i poświadczenia bazy danych.
+
+W przód dostęp do tych kluczy tajnych będzie `Microsoft.HDInsight/clusters/configurations/action` wymagał uprawnień, co oznacza, że użytkownicy z rolą czytelnik nie będą już mieli do nich dostępu. Role, które mają to uprawnienie, to współautor, właściciel i Nowa rola operatora klastra usługi HDInsight (więcej informacji znajduje się poniżej).
 
 Wprowadzamy również nową rolę [operatora klastra usługi HDInsight](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) , która będzie mogła pobierać wpisy tajne bez przyznawania uprawnień administracyjnych współautora lub właściciela. Aby podsumować:
 
@@ -128,7 +129,7 @@ Aktualizacja do [wersji 1.0.0](https://pypi.org/project/azure-mgmt-hdinsight/1.0
 
 ### <a name="sdk-for-java"></a>Zestaw SDK dla języka Java
 
-Aktualizacja do [wersji 1.0.0](https://search.maven.org/artifact/com.microsoft.azure.hdinsight.v2018_06_01_preview/azure-mgmt-hdinsight/) lub nowszej zestawu HDInsight SDK dla języka Java. Jeśli używasz metody, której dotyczą te zmiany, mogą być wymagane minimalne modyfikacje kodu:
+Aktualizacja do [wersji 1.0.0](https://search.maven.org/artifact/com.microsoft.azure.hdinsight.v2018_06_01_preview/azure-mgmt-hdinsight/1.0.0/jar) lub nowszej zestawu HDInsight SDK dla języka Java. Jeśli używasz metody, której dotyczą te zmiany, mogą być wymagane minimalne modyfikacje kodu:
 
 - [`ConfigurationsInner.get`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.get)**nie będą już zwracać poufnych parametrów** , takich jak klucze magazynu (lokacja podstawowa) lub poświadczenia http (brama).
     - Aby pobrać wszystkie konfiguracje, w tym poufne parametry, [`ConfigurationsInner.list`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.configurationsinner.list?view=azure-java-stable) Użyj przechodzenia do przodu.  Należy pamiętać, że użytkownicy z rolą "czytelnik" nie będą mogli korzystać z tej metody. Pozwala to na szczegółową kontrolę nad tym, którzy użytkownicy mogą uzyskać dostęp do poufnych informacji dotyczących klastra. 

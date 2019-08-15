@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: dacurwin
-ms.openlocfilehash: e3d38e9b5e1b9b9f827476acf7e2e2ecab632424
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 0a6d1fd73d99cf15137e937dbfe2336d49a63d90
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688816"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955057"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Odzyskiwanie danych z usługi Azure Backup Server
 Za pomocą Azure Backup Server można odzyskać dane, których kopię zapasową utworzono w magazynie Recovery Services. Ten proces jest zintegrowany z konsolą zarządzania Azure Backup Server i jest podobny do przepływu pracy odzyskiwania dla innych składników Azure Backup.
@@ -45,7 +45,7 @@ Aby odzyskać dane z Azure Backup Server:
     W dolnym okienku zostanie wyświetlona lista plików i folderów, które mogą być przeglądane i odzyskiwane do dowolnej lokalizacji.
 
     ![Punkty odzyskiwania zewnętrznego serwera DPM](./media/backup-azure-alternate-dpm-server/external-dpm-recoverypoint.png)
-5. Kliknij prawym przyciskiem myszy odpowiedni elementi kliknij polecenie Odzyskaj.
+5. Kliknij prawym przyciskiem myszy odpowiedni element,a następnie kliknij polecenie Odzyskaj.
 
     ![Zewnętrzne odzyskiwanie programu DPM](./media/backup-azure-alternate-dpm-server/recover.png)
 6. Przejrzyj **zaznaczenie opcji Odzyskaj**. Sprawdź dane i czas odzyskiwania kopii zapasowej, a także źródło, z którego została utworzona kopia zapasowa. Jeśli zaznaczenie jest nieprawidłowe, kliknij przycisk **Anuluj** , aby przejść z powrotem do karty odzyskiwanie, aby wybrać odpowiedni punkt odzyskiwania. Jeśli zaznaczenie jest poprawne, kliknij przycisk **dalej**.
@@ -57,7 +57,7 @@ Aby odzyskać dane z Azure Backup Server:
 8. Wybierz opcję powiązaną z poleceniem **Utwórz kopię**, **Pomiń**lub Zastąp.
 
    * **Utwórz kopię** — tworzy kopię pliku w przypadku kolizji nazw.
-   * **Pomiń** — Jeśli występuje kolizja nazw, program nie odzyska pliku, który opuszcza oryginalny plik.
+   * **Pomiń** — Jeśli występuje kolizja nazw, program nie odzyska pliku, co pozostawia oryginalny plik.
    * **Zastąp** — Jeśli występuje kolizja nazw, zastępuje istniejącą kopię pliku.
 
      Wybierz odpowiednią opcję, aby **przywrócić zabezpieczenia**. Można zastosować ustawienia zabezpieczeń komputera docelowego, na którym dane są odzyskiwane, lub ustawienia zabezpieczeń, które mają zastosowanie do produktu w momencie utworzenia punktu odzyskiwania.

@@ -4,7 +4,7 @@ description: Informacje koncepcyjne i Omówienie funkcji uwierzytelniania/autory
 services: app-service
 documentationcenter: ''
 author: cephalin
-manager: erikre
+manager: gwallace
 editor: ''
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.service: app-service
@@ -12,16 +12,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 08/24/2018
+ms.date: 08/12/2019
 ms.author: cephalin
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 53733774968f94ac95d9b3fea6d8fcb422b4e02c
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 12ad82b0dda628c3a8cef7712322500c7a33517c
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515187"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68953826"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Uwierzytelnianie i autoryzacja w usłudze Azure App Service
 
@@ -119,29 +119,23 @@ W przypadku przeglądarek klienta App Service może automatycznie kierować wszy
 
 ## <a name="authorization-behavior"></a>Zachowanie autoryzacji
 
-W [Azure Portal](https://portal.azure.com)można skonfigurować autoryzację App Service z użyciem wielu zachowań.
+W [Azure Portal](https://portal.azure.com)można skonfigurować autoryzację App Service z liczbą zachowań, gdy żądanie przychodzące nie zostanie uwierzytelnione.
 
 ![](media/app-service-authentication-overview/authorization-flow.png)
 
 Poniższe nagłówki opisują opcje.
 
-### <a name="allow-all-requests-default"></a>Zezwalaj na wszystkie żądania (wartość domyślna)
+### <a name="allow-anonymous-requests-no-action"></a>Zezwalaj na żądania anonimowe (brak działania)
 
-Uwierzytelnianie i autoryzacja nie są zarządzane przez App Service (wyłączone). 
+Ta opcja umożliwia rozliczanie autoryzacji nieuwierzytelnionego ruchu do kodu aplikacji. W przypadku żądań uwierzytelnionych App Service również przekazuje informacje o uwierzytelnianiu w nagłówkach HTTP. 
 
-Wybierz tę opcję, jeśli nie potrzebujesz uwierzytelniania i autoryzacji, lub jeśli chcesz napisać własny kod uwierzytelniania i autoryzacji.
+Ta opcja zapewnia większą elastyczność obsługi żądań anonimowych. Na przykład umożliwia prezentowanie użytkownikom [wielu dostawców logowania](app-service-authentication-how-to.md#use-multiple-sign-in-providers) . Jednak należy napisać kod. 
 
 ### <a name="allow-only-authenticated-requests"></a>Zezwalaj tylko na uwierzytelnione żądania
 
 Opcja ta umożliwia **zalogowanie się \<przy użyciu > dostawcy**. App Service przekierowuje wszystkie anonimowe żądania do `/.auth/login/<provider>` wybranego dostawcy. Jeśli żądanie anonimowe pochodzi z natywnej aplikacji mobilnej, zwrócona odpowiedź to `HTTP 401 Unauthorized`.
 
 W przypadku tej opcji nie trzeba pisać kodu uwierzytelniania w aplikacji. Bardziej precyzyjne uwierzytelnianie, takie jak autoryzacja specyficzna dla ról, może być obsługiwane przez sprawdzenie oświadczeń użytkownika (zobacz [dostęp do oświadczeń użytkowników](app-service-authentication-how-to.md#access-user-claims)).
-
-### <a name="allow-all-requests-but-validate-authenticated-requests"></a>Zezwalaj na wszystkie żądania, ale Weryfikuj uwierzytelnione żądania
-
-Opcja **zezwala na żądania anonimowe**. Ta opcja umożliwia włączenie uwierzytelniania i autoryzacji w App Service, ale w celu zastosowania decyzji dotyczących autoryzacji w kodzie aplikacji. W przypadku żądań uwierzytelnionych App Service również przekazuje informacje o uwierzytelnianiu w nagłówkach HTTP. 
-
-Ta opcja zapewnia większą elastyczność obsługi żądań anonimowych. Na przykład umożliwia prezentowanie użytkownikom [wielu dostawców logowania](app-service-authentication-how-to.md#use-multiple-sign-in-providers) . Jednak należy napisać kod. 
 
 ## <a name="more-resources"></a>Więcej zasobów
 

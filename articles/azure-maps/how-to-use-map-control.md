@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 5fdbd8092abcc51fc03e8b00106b7e25ec4be905
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: a152f32ef7d68686539b7d6edee57db8a5da9553
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839388"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976240"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Korzystanie z kontrolki mapy Azure Maps
 
@@ -102,7 +102,7 @@ Mapę można osadzić na stronie sieci Web przy użyciu kontrolka mapy bibliotek
     </script>
     ```
 
-    Aby uzyskać więcej informacji, zobacz [uwierzytelnianie za pomocą Azure Maps](azure-maps-authentication.md) , aby uzyskać więcej szczegółów.
+    Aby uzyskać więcej informacji, zobacz artykuł [uwierzytelnianie w programie Azure Maps](azure-maps-authentication.md) .
 
 6. Opcjonalnie można dowiedzieć się, jak dodać następujące elementy meta tag do nagłówka strony przydatne:
 
@@ -203,7 +203,7 @@ Poniżej znajduje się przykład Azure Maps z językiem ustawionym na "fr-FR" i 
 
 Pełna lista obsługiwanych języków i widoków regionalnych została udokumentowana [tutaj](supported-languages.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się, jak utworzyć mapę i korzystać z niej:
 
@@ -214,3 +214,11 @@ Dowiedz się, jak stylować mapę:
 
 > [!div class="nextstepaction"]
 > [Wybieranie stylu mapy](choose-map-style.md)
+
+Aby dodać więcej danych do mapy:
+
+> [!div class="nextstepaction"]
+> [Tworzenie mapy](map-create.md)
+
+> [!div class="nextstepaction"]
+> [Przykłady kodu](https://docs.microsoft.com/samples/browse/?products=azure-maps)

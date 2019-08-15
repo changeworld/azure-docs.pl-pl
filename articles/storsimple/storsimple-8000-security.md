@@ -1,6 +1,6 @@
 ---
-title: StorSimple 8000 series zabezpieczeń | Dokumentacja firmy Microsoft
-description: W tym artykule opisano funkcje zabezpieczeń i prywatności, które chronią usługi StorSimple, urządzenia i danych lokalnie i w chmurze.
+title: Zabezpieczenia z serii StorSimple 8000 | Microsoft Docs
+description: W tym artykule opisano funkcje zabezpieczeń i ochrony prywatności, które chronią usługę StorSimple, urządzenie i dane w środowisku lokalnym i w chmurze.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,276 +14,278 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
-ms.openlocfilehash: 734b0cf9373ea98ab33c06b45ad53b46a3355dd6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 31c432b884ce92c508dd7f893c12ba13acff28e8
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62117029"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963513"
 ---
-# <a name="storsimple-security-and-data-protection"></a>Usługa StorSimple zabezpieczeń i ochrony danych
+# <a name="storsimple-security-and-data-protection"></a>StorSimple zabezpieczeń i ochrony danych
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 ## <a name="overview"></a>Omówienie
 
-Zabezpieczenia są głównym problemem dla każdego, kto wdraża nowe technologie, szczególnie w przypadku, gdy jest to technologia używana przy użyciu danych poufnych lub zastrzeżonych. Jak można ocenić różne technologie, należy wziąć pod uwagę zwiększone ryzyko i koszty związane z ochroną danych. Usługa Microsoft Azure StorSimple oferuje zarówno rozwiązanie zabezpieczenia i ochrona prywatności dotyczące ochrony danych w celu zapewnienia:
+Bezpieczeństwo jest głównym problemem dla każdego, kto przyjmuje nową technologię, szczególnie gdy technologia jest używana z danymi poufnymi lub zastrzeżonymi. Podczas obliczania różnych technologii należy wziąć pod uwagę zwiększone ryzyko i koszty ochrony danych. Microsoft Azure StorSimple zapewnia zarówno rozwiązanie zabezpieczeń, jak i ochronę prywatności w zakresie ochrony danych, pomagając w zapewnieniu:
 
-* **Poufność** — tylko do autoryzowanych jednostek mogą wyświetlać dane.
-* **Integralność** — tylko autoryzowanym jednostki można zmodyfikować lub usunąć swoje dane.
+* **Poufność** — tylko autoryzowane jednostki mogą wyświetlać dane.
+* **Integralność** — tylko autoryzowane jednostki mogą modyfikować lub usuwać dane.
 
-Rozwiązanie Microsoft Azure StorSimple składa się z czterech głównych składników, które współdziałają ze sobą:
+Microsoft Azure StorSimple rozwiązanie składa się z czterech głównych składników, które współpracują ze sobą:
 
-* **Usługa Menedżer urządzeń StorSimple hostowanych na platformie Microsoft Azure** — Usługa zarządzania, która służy do konfigurowania i aprowizacji urządzenia StorSimple.
-* **Urządzenie StorSimple** — urządzenie fizyczne zainstalowana w Twoim centrum danych. Wszystkie hosty i klientów, które generują dane połączyć się z urządzeniem StorSimple, urządzenie i zarządza danymi przenosi je do chmury platformy Azure odpowiednio.
-* **Klienci/hosty są połączone z urządzeniem** — klientów w infrastrukturze, które łączą się z urządzeniem StorSimple oraz generować dane, które muszą być chronione.
+* **Usługa StorSimple Menedżer urządzeń hostowana w Microsoft Azure** — usługa zarządzania, która służy do konfigurowania i aprowizacji urządzenia StorSimple.
+* **Urządzenie StorSimple** — urządzenie fizyczne zainstalowane w centrum danych. Wszystkie hosty i klienci generujący dane nawiązują połączenie z urządzeniem StorSimple, a urządzenie zarządza danymi i przenosi je do chmury platformy Azure zgodnie z potrzebami.
+* **Klienci/hosty połączeni z urządzeniem** — klienci w infrastrukturze, którzy łączą się z urządzeniem StorSimple i generują dane, które muszą być chronione.
 * **Magazyn w chmurze** — lokalizacja w chmurze platformy Azure, w której są przechowywane dane.
 
-W poniższych sekcjach opisano funkcje zabezpieczeń StorSimple, które pomagają w ochronie każdego z tych składników oraz danych przechowywanych na nich. Zawiera także listę pytań, które mogą się pojawić w zabezpieczeń Microsoft Azure StorSimple i odpowiednich odpowiedzi.
+W poniższych sekcjach opisano funkcje zabezpieczeń StorSimple, które ułatwiają ochronę każdego z tych składników oraz przechowywanych na nich danych. Zawiera również listę pytań, które mogą mieć Microsoft Azure StorSimple zabezpieczenia i odpowiadające im odpowiedzi.
 
-## <a name="storsimple-device-manager-service-protection"></a>Ochrona usługi Menedżer urządzeń StorSimple
+## <a name="storsimple-device-manager-service-protection"></a>Ochrona usługi StorSimple Menedżer urządzeń
 
-Usługa Menedżer urządzeń StorSimple to usługa zarządzania hostowanych na platformie Microsoft Azure i umożliwia zarządzanie wszystkimi urządzeniami StorSimple, które Twoja organizacja ma zakupu. Przy użyciu poświadczeń organizacyjnych do logowania się do witryny Azure portal za pośrednictwem przeglądarki sieci web, uzyskać dostęp do usługi Menedżer urządzeń StorSimple.
+Usługa StorSimple Menedżer urządzeń to usługa zarządzania hostowana w usłudze Microsoft Azure i służąca do zarządzania wszystkimi urządzeniami StorSimple, które zostały zamówione w organizacji. Możesz uzyskać dostęp do usługi StorSimple Menedżer urządzeń przy użyciu poświadczeń organizacji, aby zalogować się do Azure Portal za pośrednictwem przeglądarki sieci Web.
 
-Dostęp do usługi Menedżer urządzeń StorSimple wymaga, że Twoja organizacja ma subskrypcję platformy Azure, która obejmuje usługi StorSimple. Subskrypcja określa funkcje, do których masz dostęp w witrynie Azure Portal. Jeśli Twoja organizacja ma subskrypcję platformy Azure i chcesz dowiedzieć się więcej o nich, zobacz [konta na platformie Azure jako organizacja](../active-directory/fundamentals/sign-up-organization.md).
+Dostęp do usługi StorSimple Menedżer urządzeń wymaga, aby Twoja organizacja miała subskrypcję platformy Azure obejmującą StorSimple. Subskrypcja określa funkcje, do których masz dostęp w witrynie Azure Portal. Jeśli Twoja organizacja nie ma subskrypcji platformy Azure i chcesz dowiedzieć się więcej na ich temat, zobacz [Rejestrowanie się w usłudze Azure jako organizacja](../active-directory/fundamentals/sign-up-organization.md).
 
-Ponieważ usługa Menedżer urządzeń StorSimple jest hostowana na platformie Azure, jest chroniony przy użyciu funkcji zabezpieczeń platformy Azure. Aby uzyskać więcej informacji na temat funkcji zabezpieczeń platformy Microsoft Azure, zobacz [Centrum zaufania Microsoft Azure](https://azure.microsoft.com/support/trust-center/security/).
+Ponieważ Usługa StorSimple Menedżer urządzeń jest hostowana na platformie Azure, jest chroniona przez funkcje zabezpieczeń platformy Azure. Aby uzyskać więcej informacji na temat funkcji zabezpieczeń platformy Microsoft Azure, zobacz [Centrum zaufania Microsoft Azure](https://azure.microsoft.com/support/trust-center/security/).
 
-## <a name="storsimple-device-protection"></a>Ochrona urządzeń StorSimple
+## <a name="storsimple-device-protection"></a>Ochrona urządzenia StorSimple
 
-Urządzenie StorSimple jest urządzenie magazynujące hybrydowych w środowisku lokalnym, który zawiera dyski półprzewodnikowe (SSD) i dysków twardych (HDD), nadmiarowe kontrolery i funkcje automatycznej pracy awaryjnej. Kontrolery zarządzania magazynem warstw, umieszczania aktualnie używane (lub gorąca) danych w magazynie lokalnym (w StorSimple urządzenia lub lokalnych serwerów), podczas przenoszenia rzadziej używanych danych do chmury.
+Urządzenie StorSimple to lokalne hybrydowe urządzenie magazynujące, które zawiera dyski półprzewodnikowe (dysków SSD) i dyski twarde (HDD), a także nadmiarowe kontrolery i automatyczne przełączanie w tryb failover. Kontrolery zarządzają warstwami magazynowania, umieszczając aktualnie używane (lub gorącą) dane w lokalnym magazynie (na urządzeniu StorSimple lub na serwerach lokalnych), jednocześnie przenosząc rzadziej używane dane do chmury.
 
-Tylko autoryzowanym StorSimple, urządzenia będą mogły do dołączenia do usługi Menedżer urządzeń StorSimple, który został utworzony w ramach subskrypcji platformy Azure. Aby autoryzować urządzenia, należy zarejestrować go za pomocą usługi Menedżer urządzeń StorSimple, zapewniając klucz rejestracji usługi. Klucz rejestracji usługi jest 128-bitowego losowy klucz generowany w witrynie Azure portal.
+Tylko autoryzowane urządzenia StorSimple mogą dołączać do usługi StorSimple Menedżer urządzeń utworzonej w ramach subskrypcji platformy Azure. Aby autoryzować urządzenie, należy je zarejestrować w usłudze StorSimple Menedżer urządzeń, podając klucz rejestracji usługi. Klucz rejestracji usługi jest 128-bitowym kluczem losowym wygenerowanym w Azure Portal.
 
-![klucz rejestracji usługi](./media/storsimple-security/ServiceRegistrationKey.png)
+![Klucz rejestracji usługi](./media/storsimple-security/ServiceRegistrationKey.png)
 
-Aby dowiedzieć się, jak uzyskać klucz rejestracji usługi, przejdź do [krok 2: Pobierz klucz rejestracji usługi](storsimple-8000-deployment-walkthrough-u2.md#step-2-get-the-service-registration-key).
+Aby dowiedzieć się, jak uzyskać klucz rejestracji usługi, [przejdź do kroku 2: Pobierz klucz](storsimple-8000-deployment-walkthrough-u2.md#step-2-get-the-service-registration-key)rejestracji usługi.
 
-Klucz rejestracji usługi jest długa klucz, który zawiera ponad 100 znaków. Można skopiować klucz i zapisz go w pliku tekstowym w bezpiecznej lokalizacji, aby można go autoryzować dodatkowych urządzeń zgodnie z potrzebami. Jeśli klucz rejestracji usługi zostaną utracone po zarejestrowaniu pierwszego urządzenia, należy wygenerować nowy klucz w usłudze Menedżer urządzeń StorSimple. Nie ma to wpływu na działanie istniejących urządzeń.
+Klucz rejestracji usługi jest długim kluczem zawierającym 100 znaków. Możesz skopiować klucz i zapisać go w pliku tekstowym w bezpiecznej lokalizacji, aby można było go użyć do autoryzowania dodatkowych urządzeń w razie potrzeby. Jeśli klucz rejestracji usługi zostanie utracony po zarejestrowaniu pierwszego urządzenia, można wygenerować nowy klucz z usługi StorSimple Menedżer urządzeń. Nie ma to wpływu na działanie istniejących urządzeń.
 
-Po zarejestrowaniu urządzenia, używane są tokeny do komunikowania się z platformą Microsoft Azure. Klucz rejestracji usługi nie jest używany po zarejestrowaniu urządzenia.
+Po zarejestrowaniu urządzenia używa on tokenów do komunikowania się z Microsoft Azure. Klucz rejestracji usługi nie jest używany po rejestracji urządzeń.
 
 > [!NOTE]
-> Firma Microsoft zaleca ponowne generowanie klucza rejestracji usługi po każdym użyciu.
+> Zalecamy ponowne wygenerowanie klucza rejestracji usługi po każdym użyciu.
 
 
-## <a name="protect-your-storsimple-solution-via-passwords"></a>Ochrona rozwiązania StorSimple przy użyciu haseł
+## <a name="protect-your-storsimple-solution-via-passwords"></a>Ochrona rozwiązania StorSimple za pośrednictwem haseł
 
-Hasła są istotnym elementem zabezpieczenia komputera i są często używane w ramach rozwiązania StorSimple aby mieć pewność, że Twoje dane są dostępne tylko dla autoryzowanych użytkowników. Magazyn StorSimple pozwala skonfigurować następujące hasła:
+Hasła są ważnym aspektem zabezpieczeń komputera i są używane w szerokim stopniu w rozwiązaniu StorSimple, aby zagwarantować, że dane są dostępne tylko dla autoryzowanych użytkowników. StorSimple umożliwia skonfigurowanie następujących haseł:
 
 * Hasło administratora urządzenia StorSimple
-* Rzuć wyzwanie hasła inicjatora i docelowy protokołu uwierzytelniania Handshake (CHAP)
+* Inicjator protokołu uwierzytelniania typu Challenge Handshake (CHAP) i hasła docelowe
 * Hasło programu StorSimple Snapshot Manager
 
-### <a name="windows-powershell-for-storsimple-and-the-storsimple-device-administrator-password"></a>Program Windows PowerShell dla magazynu StorSimple i hasło administratora urządzenia StorSimple
+### <a name="windows-powershell-for-storsimple-and-the-storsimple-device-administrator-password"></a>program Windows PowerShell dla usługi StorSimple i hasło administratora urządzenia StorSimple
 
-Program Windows PowerShell dla usługi StorSimple jest interfejs wiersza polecenia, który służy do zarządzania urządzeniem StorSimple. Program Windows PowerShell dla usługi StorSimple zawiera funkcje, które umożliwiają zarejestrować urządzenie, skonfiguruj interfejs sieciowy na urządzeniu, zainstalować niektórych typów aktualizacji, problemów z urządzeniem, uzyskując dostęp do sesji pomocy technicznej i zmiany stanu urządzenia. Program Windows PowerShell dostęp dla urządzenia StorSimple przez łączenie z konsolą szeregową urządzenia lub przy użyciu komunikacji zdalnej programu Windows PowerShell.
+Program Windows PowerShell dla usługi StorSimple jest interfejs wiersza polecenia, którego można użyć do zarządzania urządzeniem StorSimple. Program Windows PowerShell dla usługi StorSimple zawiera funkcje, które umożliwiają rejestrowanie urządzenia, Konfigurowanie interfejsu sieciowego na urządzeniu, instalowanie niektórych typów aktualizacji, rozwiązywanie problemów z urządzeniem przez uzyskanie dostępu do sesji pomocy technicznej i zmiana stanu urządzenia. Dostęp do program Windows PowerShell dla usługi StorSimple można uzyskać, łącząc się z konsolą szeregową na urządzeniu lub przy użyciu funkcji komunikacji zdalnej programu Windows PowerShell.
 
-Komunikacja zdalna programu PowerShell może odbywać się za pośrednictwem protokołu HTTP lub HTTPS. Jeśli włączono zdalne zarządzanie przy użyciu protokołu HTTPS, należy pobrać certyfikat zdalnego zarządzania z urządzenia i zainstalować ją na kliencie zdalnym. Aby uzyskać więcej informacji na temat komunikacji zdalnej programu PowerShell, przejdź do [nawiązywanie połączenia zdalnego urządzenia StorSimple](storsimple-8000-remote-connect.md).
+Komunikacja zdalna programu PowerShell może odbywać się za pośrednictwem protokołu HTTPS lub HTTP. Jeśli zdalne zarządzanie za pośrednictwem protokołu HTTPS jest włączone, należy pobrać certyfikat zdalnego zarządzania z urządzenia i zainstalować go na kliencie zdalnym. Aby uzyskać więcej informacji na temat komunikacji zdalnej programu PowerShell, przejdź do obszaru [Połącz zdalnie z urządzeniem StorSimple](storsimple-8000-remote-connect.md).
 
-Po nawiązania połączenia z urządzeniem przy użyciu programu Windows PowerShell dla usługi StorSimple, należy podać hasło administratora urządzenia do logowania się do urządzenia.
+Po użyciu program Windows PowerShell dla usługi StorSimple do nawiązania połączenia z urządzeniem należy podać hasło administratora urządzenia, aby zalogować się na urządzeniu.
 
 ![Hasło administratora urządzenia](./media/storsimple-security/DeviceAdminPW.png)
 
-Należy pamiętać poniższe najlepsze rozwiązania:
+Należy pamiętać o następujących najlepszych rozwiązaniach:
 
-* Zdalne zarządzanie jest domyślnie wyłączona. Usługi Menedżer urządzeń StorSimple można użyć, aby go włączyć. Ze względów bezpieczeństwa dostępu zdalnego powinna być włączona tylko podczas okres czasu, który jest faktycznie potrzebny.
-* Jeśli zmienisz hasło, pamiętaj powiadomić wszystkich użytkowników dostępu zdalnego tak, aby nie będą dotykać utracie łączności nieoczekiwany.
-* Usługa Menedżer urządzeń StorSimple nie można pobrać istniejących haseł: tylko można zresetować je. Zaleca się przechowywanie wszystkie hasła w bezpiecznym miejscu, tak, aby nie trzeba zresetować hasło, zapomnienia jest. Jeśli potrzebujesz zresetować hasło, pamiętaj powiadomić wszystkich użytkowników, zanim je zresetować.
+* Zdalne zarządzanie jest domyślnie wyłączone. Aby ją włączyć, można użyć usługi StorSimple Menedżer urządzeń. Najlepszym rozwiązaniem w zakresie zabezpieczeń jest włączenie dostępu zdalnego tylko w czasie, gdy jest to konieczne.
+* Jeśli zmienisz hasło, pamiętaj o poinformowaniu wszystkich użytkowników dostępu zdalnego, aby nie napotykali nieoczekiwanej utraty łączności.
+* Usługa StorSimple Menedżer urządzeń nie może pobrać istniejących haseł: można je zresetować tylko. Zalecamy przechowywanie wszystkich haseł w bezpiecznym miejscu, aby nie trzeba było resetować hasła, jeśli jest ono zapomniane. Jeśli musisz zresetować hasło, pamiętaj o poinformowaniu wszystkich użytkowników przed jego zresetowaniem.
 
-Za pomocą połączenia szeregowego do urządzenia mogą uzyskać dostęp do interfejsu programu Windows PowerShell. Możesz również do niego dostęp zdalnie przy użyciu protokołu HTTP lub HTTPS, które zapewniają dodatkowe zabezpieczenia. Protokół HTTPS oferuje wyższy poziom zabezpieczeń niż seryjny lub połączenia HTTP. Jednak do używania protokołu HTTPS, użytkownik musi najpierw zainstalować certyfikat na komputerze klienckim, który będzie miał dostęp urządzenia. Na stronie konfiguracji urządzenia w usłudze Menedżer urządzeń StorSimple, możesz pobrać certyfikat dostępu zdalnego. W przypadku utraty certyfikatu do dostępu zdalnego należy pobrać nowy certyfikat i jego są propagowane do wszystkich klientów, które są autoryzowane do używania zdalnego zarządzania.
+Dostęp do interfejsu programu Windows PowerShell można uzyskać przy użyciu połączenia szeregowego z urządzeniem. Możesz również uzyskać do niego dostęp zdalnie przy użyciu protokołu HTTP lub HTTPS, który zapewnia dodatkowe zabezpieczenia. Protokół HTTPS zapewnia wyższy poziom zabezpieczeń niż połączenie szeregowe lub HTTP. Aby jednak korzystać z protokołu HTTPS, należy najpierw zainstalować certyfikat na komputerze klienckim, który będzie miał dostęp do urządzenia. Certyfikat dostępu zdalnego można pobrać ze strony Konfiguracja urządzenia w usłudze StorSimple Menedżer urządzeń. Jeśli certyfikat dostępu zdalnego zostanie utracony, należy pobrać nowy certyfikat i propagować go do wszystkich klientów uprawnionych do korzystania z zdalnego zarządzania.
 
-### <a name="challenge-handshake-authentication-protocol-chap-initiator-and-target-passwords"></a>Rzuć wyzwanie hasła inicjatora i docelowy protokołu uwierzytelniania Handshake (CHAP)
+### <a name="challenge-handshake-authentication-protocol-chap-initiator-and-target-passwords"></a>Inicjator protokołu uwierzytelniania typu Challenge Handshake (CHAP) i hasła docelowe
 
-Protokół CHAP jest schematu uwierzytelniania używany przez urządzenia StorSimple do weryfikacji tożsamości klientów zdalnych. Weryfikacja opiera się na wspólne hasło. Protokół CHAP mogą być jednokierunkowe (jednokierunkowe) lub wzajemne (dwukierunkowe). Przy użyciu jednokierunkowego CHAP inicjatora (host) uwierzytelniany element docelowy (urządzenia StorSimple). Wzajemnego lub wstecznego protokołu CHAP wymaga, aby obiekt docelowy uwierzytelniania inicjatora, a następnie inicjatora uwierzytelniania obiektu docelowego. Usługi StorSimple można skonfigurować tak, aby użyć jednej z metod.
+Protokół CHAP jest schematem uwierzytelniania używanym przez urządzenie StorSimple do weryfikowania tożsamości klientów zdalnych. Weryfikacja jest oparta na udostępnionym haśle. Protokół CHAP może być jednokierunkowe (jednokierunkowe) lub wzajemnie (dwukierunkowe). Mając jednokierunkowe uwierzytelnianie CHAP, obiekt docelowy (Urządzenie StorSimple) uwierzytelnia inicjatora (hosta). Wzajemny lub odwrotny protokół CHAP wymaga, aby element docelowy uwierzytelniał inicjator, a następnie inicjator uwierzytelniał element docelowy. StorSimple można skonfigurować do korzystania z dowolnej metody.
 
-Konfigurowanie protokołu CHAP, należy pamiętać o następujących:
+Podczas konfigurowania protokołu CHAP należy pamiętać o następujących kwestiach:
 
 * Nazwa użytkownika protokołu CHAP musi zawierać mniej niż 233 znaków.
-* Hasło CHAP musi mieć długość od 12 do 16 znaków. Podjęto próbę użyć dłuższej nazwy użytkownika lub hasła spowoduje niepowodzenie uwierzytelniania na hoście Windows.
-* Nie można użyć tego samego hasła, zarówno dla inicjatora protokołu CHAP i obiektu docelowego protokołu CHAP.
-* Po ustawieniu hasła, można go zmienić, ale nie można pobrać. Jeśli hasło zostało zmienione, pamiętaj powiadomić wszystkich użytkowników dostępu zdalnego, aby pomyślnie umożliwić im połączenie z urządzeniem StorSimple.
+* Hasło protokołu CHAP musi mieć długość od 12 do 16 znaków. Próba użycia dłuższej nazwy użytkownika lub hasła spowoduje niepowodzenie uwierzytelniania na hoście z systemem Windows.
+* Nie można użyć tego samego hasła dla inicjatora protokołu CHAP i obiektu docelowego protokołu CHAP.
+* Po ustawieniu hasła można je zmienić, ale nie można go pobrać. Jeśli hasło zostanie zmienione, należy powiadomić wszystkich użytkowników dostępu zdalnego, aby mogli pomyślnie nawiązać połączenie z urządzeniem StorSimple.
 
-Aby uzyskać więcej informacji dotyczących protokołu CHAP i sposobie konfigurowania go dla rozwiązania StorSimple, przejdź do [Konfigurowanie protokołu CHAP dla urządzenia StorSimple](storsimple-8000-configure-chap.md).
+Aby uzyskać więcej informacji na temat protokołu CHAP i sposobu konfigurowania go dla rozwiązania StorSimple, przejdź do pozycji [Konfigurowanie protokołu CHAP dla urządzenia StorSimple](storsimple-8000-configure-chap.md).
 
 ### <a name="storsimple-snapshot-manager-password"></a>Hasło programu StorSimple Snapshot Manager
 
-Przystawki StorSimple Snapshot Manager jest przystawką Microsoft Management Console (MMC), korzystającą z grupami woluminów i usługi kopiowania w tle woluminów Windows do generowania spójnych z aplikacją kopii zapasowych. Ponadto można użyć przystawki StorSimple Snapshot Manager do tworzenia harmonogramów tworzenia kopii zapasowych oraz klonowania lub Przywróć woluminy.
+StorSimple Snapshot Manager jest przystawką programu Microsoft Management Console (MMC), która używa grup woluminów i Usługa kopiowania woluminów w tle Windows do generowania kopii zapasowych spójnych na poziomie aplikacji. Ponadto można użyć Snapshot Manager StorSimple do tworzenia harmonogramów tworzenia kopii zapasowych i klonowania lub przywracania woluminów.
 
-Po skonfigurowaniu na urządzeniu za pomocą Menedżera migawek StorSimple, trzeba będzie podać hasło programu StorSimple Snapshot Manager. To hasło jest najpierw ustawić w programie Windows PowerShell dla usługi StorSimple podczas rejestracji. Można również ustawić hasło i zmieniła się z usługą Menedżera urządzeń StorSimple. To hasło uwierzytelnia urządzenie za pomocą przystawki StorSimple Snapshot Manager.
+W przypadku skonfigurowania urządzenia do korzystania z Snapshot Manager StorSimple wymagane będzie podanie hasła Snapshot Manager StorSimple. To hasło jest najpierw ustawione w program Windows PowerShell dla usługi StorSimple podczas rejestracji. Hasło można także ustawić i zmienić z usługi StorSimple Menedżer urządzeń. To hasło służy do uwierzytelniania urządzenia za pomocą StorSimple Snapshot Manager.
 
 ![Hasło programu StorSimple Snapshot Manager](./media/storsimple-security/SnapshotMgrPassword.png)
 
-Hasło programu StorSimple Snapshot Manager musi mieć od 14 do 15 znaków i musi zawierać 3 lub więcej z kombinacji wielkie litery, małe litery, cyfry i znaki specjalne. Po ustawieniu hasło programu StorSimple Snapshot Manager można zmienić, ale nie można pobrać. Jeśli zmienisz hasło, pamiętaj powiadomić wszystkich użytkowników zdalnych.
+Hasło Snapshot Manager StorSimple musi zawierać od 14 do 15 znaków i musi składać się z co najmniej 3 kombinacji małych i wielkich liter, cyfr i znaków specjalnych. Po ustawieniu hasła Snapshot Manager StorSimple można je zmienić, ale nie można go pobrać. Jeśli zmienisz hasło, pamiętaj o poinformowaniu wszystkich użytkowników zdalnych.
 
-Aby uzyskać więcej informacji na temat programu StorSimple Snapshot Manager, przejdź do [co to jest StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md)
+Aby uzyskać więcej informacji na temat StorSimple Snapshot Manager, przejdź do [co to jest StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md)
 
 ### <a name="password-best-practices"></a>Najlepsze rozwiązania dotyczące haseł
 
-Firma Microsoft zaleca, skorzystaj z poniższych wskazówek w celu zapewnienia, że haseł usługi StorSimple silnych i dobrze chronione:
+Zalecamy użycie następujących wytycznych, aby zapewnić, że hasła StorSimple są mocne i dobrze chronione:
 
-* Zmień hasła co trzy miesiące. Zmiana hasła jest wymuszana rocznie.
-* Należy używać silnych haseł. Aby uzyskać więcej informacji, przejdź do [tworzyć silniejsze hasła i chronić je](https://cloudblogs.microsoft.com/microsoftsecure/2014/08/25/create-stronger-passwords-and-protect-them/).
-* Zawsze używaj różnych haseł dla dostępu z różnych mechanizmów; Każdy z haseł, które określisz powinny być unikatowe.
-* Nie należy udostępniać hasła każdemu użytkownikowi, który nie ma uprawnień do uzyskania dostępu do urządzenia StorSimple.
-* Nie mówić o hasło przed innymi ani nie podpowiedzi na format hasła.
-* Jeśli podejrzewasz, że konto lub hasło bezpieczeństwo zostało naruszone, należy zgłosić zdarzenie, aby dział bezpieczeństwa informacji.
-* Wszystkie hasła należy traktować jako wielkość liter, poufne informacje. 
+* Zmień hasła co trzy miesiące. Zmiana hasła jest wymuszana corocznie.
+* Używaj silnych haseł. Aby uzyskać więcej informacji, przejdź do obszaru [Tworzenie silniejszych haseł i ich ochrona](https://cloudblogs.microsoft.com/microsoftsecure/2014/08/25/create-stronger-passwords-and-protect-them/).
+* Zawsze używaj różnych haseł dla różnych mechanizmów dostępu; Każde z określonych haseł powinno być unikatowe.
+* Nie udostępniaj nikomu hasła osobom, które nie mają uprawnień dostępu do urządzenia StorSimple.
+* Nie mów na temat hasła przed innymi lub wskazówki w formacie hasła.
+* Jeśli podejrzewasz, że zabezpieczenia konta lub hasła zostały naruszone, zgłoś zdarzenie do działu zabezpieczeń informacji.
+* Traktuj wszystkie hasła jako poufne informacje. 
 
-## <a name="storsimple-data-protection"></a>Ochrona danych usługi StorSimple
+## <a name="storsimple-data-protection"></a>Ochrona danych StorSimple
 
-W tej sekcji opisano funkcje zabezpieczeń usługi StorSimple, służących do ochrony danych przesyłanych i przechowywanych danych.
+W tej sekcji opisano funkcje zabezpieczeń StorSimple chroniące dane przesyłane i przechowywane.
 
-Zgodnie z opisem w innych częściach, hasła są używane do autoryzowanie i uwierzytelnianie użytkowników, zanim uzyskają dostęp do rozwiązania StorSimple. Inną ważną kwestią zabezpieczeń ochrony danych przed nieautoryzowanymi użytkownikami, podczas gdy są przesyłane między systemami magazynowania i gdy jest magazynowana. W poniższych sekcjach opisano funkcje ochrony danych, które są dostarczane za pomocą usługi StorSimple.
+Zgodnie z opisem w innych sekcjach hasła są używane do autoryzacji i uwierzytelniania użytkowników, zanim będą mogły uzyskać dostęp do rozwiązania StorSimple. Innym zagadnieniem dotyczącym zabezpieczeń jest ochrona danych przed nieautoryzowanymi użytkownikami, gdy jest ona przesyłana między systemami magazynu i w trakcie ich przechowywania. W poniższych sekcjach opisano funkcje ochrony danych dostępne w programie StorSimple.
 
 > [!NOTE]
-> Funkcja deduplikacji udostępnia dodatkową ochronę danych przechowywanych na urządzeniu StorSimple i usługi Microsoft Azure storage. Gdy dane są deduplikowane, obiekty danych są przechowywane oddzielnie od metadane używane do mapowania i uzyskiwać do nich dostęp: Brak dostępnych kontekstu poziom miejsca do magazynowania można odtworzyć dane na podstawie struktury woluminu, system plików lub nazwę pliku.
+> Deduplikacja zapewnia dodatkową ochronę danych przechowywanych na urządzeniu StorSimple i w magazynie Microsoft Azure. Gdy dane są deduplikowane, obiekty danych są przechowywane niezależnie od metadanych używanych do ich mapowania i uzyskiwania do nich dostępu: Brak dostępnego kontekstu na poziomie magazynu do odtworzenia danych w oparciu o strukturę woluminu, system plików lub nazwę pliku.
 
 
-## <a name="protect-data-flowing-through-the-service"></a>Chroń dane przepływają przez usługę
+## <a name="protect-data-flowing-through-the-service"></a>Ochrona danych przepływających przez usługę
 
-Głównym celem usługi Menedżer urządzeń StorSimple jest zarządzanie i konfigurowanie urządzenia StorSimple. Usługa Menedżer urządzeń StorSimple jest uruchamiana w systemie Microsoft Azure. Wprowadź dane konfiguracji urządzenia za pomocą witryny Azure portal, a następnie Microsoft Azure korzysta z usługi Menedżer urządzeń StorSimple do wysyłania danych do urządzenia. Usługa StorSimple używa systemu par kluczy asymetrycznych, aby mieć pewność, że naruszenia zabezpieczeń usługi Azure nie powoduje naruszenie przechowywane informacje.
+Głównym celem usługi StorSimple Menedżer urządzeń jest zarządzanie i Konfigurowanie urządzenia StorSimple. Usługa StorSimple Menedżer urządzeń działa w Microsoft Azure. Użyj Azure Portal, aby wprowadzić dane konfiguracji urządzenia, a następnie Microsoft Azure za pomocą usługi StorSimple Menedżer urządzeń wysłać dane do urządzenia. StorSimple używa systemu par kluczy asymetrycznych, aby pomóc w zapewnieniu, że naruszenie usługi platformy Azure nie spowoduje naruszenia przechowywanych informacji.
 
 ![Szyfrowanie danych w locie](./media/storsimple-security/DataEncryption.png)
 
-System klucza asymetrycznego pomaga w ochronie danych przesyłanych za pośrednictwem usługi:
+System klucza asymetrycznego pomaga chronić dane przesyłane za pomocą usługi w następujący sposób:
 
-1. Certyfikat szyfrowania danych, który używa publicznego i prywatnego klucza asymetrycznego pary jest generowany na urządzeniu i jest używana do ochrony danych. Klucze są generowane podczas rejestrowania pierwszego urządzenia.
-2. Klucze certyfikatu szyfrowania danych są eksportowane do pliku wymiany informacji osobistych (pfx), który jest chroniony przez klucz szyfrowania danych usługi, która jest silnego klucza 128-bitowego, losowo wygenerowany przez pierwsze urządzenie podczas rejestracji.
-3. Klucz publiczny certyfikatu jest bezpiecznie udostępniany w usłudze Menedżer urządzeń StorSimple, a klucz prywatny pozostaje z urządzeniem.
-4. Data rozpoczęcia pracy są szyfrowane przy użyciu publicznego klucza i odszyfrowane przy użyciu klucza prywatnego przechowywanych na urządzeniu, zapewniając, że usługi platformy Azure nie można odszyfrować danych przepływających do urządzenia.
+1. Certyfikat szyfrowania danych, który używa pary kluczy publicznych i prywatnych, jest generowany na urządzeniu i służy do ochrony danych. Klucze są generowane, gdy pierwsze urządzenie jest zarejestrowane.
+2. Klucze certyfikatu szyfrowania danych są eksportowane do pliku wymiany informacji osobistych (pfx), który jest chroniony przez klucz szyfrowania danych usługi, który jest silnym kluczem 128-bitowym, który jest generowany losowo przez pierwsze urządzenie podczas rejestracji.
+3. Klucz publiczny certyfikatu jest bezpiecznie dostępny dla usługi StorSimple Menedżer urządzeń, a klucz prywatny pozostaje na urządzeniu.
+4. Dane wprowadzane do usługi są szyfrowane przy użyciu klucza publicznego i odszyfrowywane przy użyciu klucza prywatnego przechowywanego na urządzeniu, co zapewnia, że usługa platformy Azure nie może odszyfrować danych przepływających na urządzenie.
 
-Klucz szyfrowania danych usługi jest generowany na tylko pierwsze urządzenie zarejestrowane w usłudze. Wszystkie kolejne urządzenia, które są zarejestrowane w usłudze, należy użyć tego samego klucza szyfrowania danych usługi.
+Klucz szyfrowania danych usługi jest generowany tylko na pierwszym urządzeniu zarejestrowanym w usłudze. Wszystkie kolejne urządzenia zarejestrowane w usłudze muszą używać tego samego klucza szyfrowania danych usługi.
 
 > [!IMPORTANT]
-> Jest to bardzo ważne, aby utworzyć kopię klucza szyfrowania danych usługi i zapisz go w bezpiecznym miejscu. Kopię klucza szyfrowania danych usługi powinny być przechowywane w taki sposób, że może zostać oceniony przez osobę upoważnioną i może być łatwo przekazywane administratora urządzenia.
+> Bardzo ważne jest, aby utworzyć kopię klucza szyfrowania danych usługi i zapisać ją w bezpiecznej lokalizacji. Kopia klucza szyfrowania danych usługi powinna być przechowywana w taki sposób, aby można było uzyskać do niego dostęp przez autoryzowaną osobę i można ją łatwo przekazywać do administratora urządzenia.
 > 
-> W przypadku utraty klucza szyfrowania danych usługi pomocy technicznej firmy Microsoft mogą ułatwić go pobrać, pod warunkiem, że masz co najmniej jedno urządzenie w stanie online. Firma Microsoft zaleca, możesz zmienić klucz szyfrowania danych usługi po jej pobraniu.
+> Jeśli klucz szyfrowania danych usługi zostanie utracony, osoba odpowiedzialna za pomoc techniczną firmy Microsoft może pomóc Ci w jego pobraniu, pod warunkiem, że masz co najmniej jedno urządzenie w stanie online. Zalecamy zmianę klucza szyfrowania danych usługi po jego pobraniu.
 
-Aby zmienić klucz szyfrowania danych usługi i odpowiedni certyfikat szyfrowania danych, wykonaj kroki opisane w [Zmień klucz szyfrowania danych usługi dla usługi Menedżer urządzeń StorSimple](storsimple-8000-manage-service.md#change-the-service-data-encryption-key). Zmiana kluczy szyfrowania wymaga, aby wszystkie urządzenia można zaktualizować przy użyciu nowego klucza. Dlatego zaleca się zmiany klucza, jeśli wszystkie urządzenia są w trybie online. Jeśli urządzenia są w trybie offline, można zmienić ich klucze w innym czasie. Urządzenia z nieaktualnymi kluczy nadal będzie można wykonywać kopie zapasowe, ale nie będzie mógł przywrócić dane do czasu zaktualizowania klucza.
+Aby zmienić klucz szyfrowania danych usługi i odpowiedni certyfikat szyfrowania danych, wykonaj kroki opisane w temacie [Zmiana klucza szyfrowania danych usługi dla usługi StorSimple Menedżer urządzeń](storsimple-8000-manage-service.md#change-the-service-data-encryption-key). Zmiana kluczy szyfrowania wymaga, aby wszystkie urządzenia były aktualizowane przy użyciu nowego klucza. W związku z tym zalecamy zmianę klucza, gdy wszystkie urządzenia są w trybie online. Jeśli urządzenia są w trybie offline, ich klucze można zmienić w innym czasie. Urządzenia z nieaktualnymi kluczami nadal będą mogły uruchamiać kopie zapasowe, ale nie będą mogły przywracać danych do momentu zaktualizowania klucza.
 
-Klucz szyfrowania danych usługi i certyfikat szyfrowania danych nie wygasa. Jednak zaleca się zmiany klucza szyfrowania danych usługi, co roku, aby zapobiec złamania klucza.
+Klucz szyfrowania danych usługi i certyfikat szyfrowania danych nie wygasną. Zaleca się jednak, aby zmienić klucz szyfrowania danych usługi co rok, aby zapobiec złamania klucza.
 
-## <a name="protect-data-at-rest"></a>Ochrona magazynowanych danych
+## <a name="protect-data-at-rest"></a>Ochrona danych magazynowanych
 
-Urządzenie StorSimple zarządza danymi dzięki przechowywaniu go w warstwach, lokalnie i w chmurze, w zależności od częstości używania. Wszystkie maszyny hosta, które są połączone z urządzeniem wysyłać dane do urządzenia, które przenosi dane w chmurze, zgodnie z potrzebami. Dane są przesyłane z urządzenia do chmury bezpiecznie za pośrednictwem Internetu. Każde urządzenie ma jeden obiekt docelowy iSCSI, który wyświetla wszystkie udostępnione woluminy na tym urządzeniu. Wszystkie dane są szyfrowane przed wysłaniem go do magazynu w chmurze. 
+Urządzenie StorSimple zarządza danymi przez przechowywanie ich w warstwach lokalnie i w chmurze, w zależności od częstotliwości użytkowania. Wszystkie maszyny, które są podłączone do urządzenia, wysyłają dane do urządzenia, które następnie przenosi dane do chmury, zgodnie z potrzebami. Dane są przesyłane z urządzenia do chmury bezpiecznie przez Internet. Każde urządzenie ma jeden obiekt docelowy iSCSI, który obejmuje wszystkie woluminy udostępnione na tym urządzeniu. Wszystkie dane są szyfrowane przed wysłaniem ich do magazynu w chmurze. 
 
-![klucz szyfrowania magazynu w chmurze](./media/storsimple-security/CloudStorageEncryption.png)
+![Klucz szyfrowania magazynu w chmurze](./media/storsimple-security/CloudStorageEncryption.png)
 
-Aby ułatwić zapewnienie bezpieczeństwa i integralności danych przeniesione do chmury, StorSimple umożliwia definiowanie kluczy szyfrowania magazynu w chmurze w następujący sposób:
+Aby zapewnić bezpieczeństwo i integralność danych przenoszonych do chmury, StorSimple umożliwia definiowanie kluczy szyfrowania magazynu w chmurze w następujący sposób:
 
-* Klucz szyfrowania magazynu w chmurze można określić po utworzeniu kontenera woluminów. Klucz nie może być zmodyfikowanie lub dodanie później.
-* Wszystkie woluminy w kontenerze woluminów współużytkować ten sam klucz szyfrowania. Jeśli chcesz, aby różne formy szyfrowania dla określonego woluminu, zaleca się tworzenia nowego kontenera woluminów w celu obsługi tego woluminu.
-* Po wprowadzeniu klucz szyfrowania magazynu w chmurze w usłudze Menedżer urządzeń StorSimple, klucz jest zaszyfrowany przy użyciu publicznej części klucza szyfrowania danych usługi, a następnie wysyłane do urządzenia.
-* Klucz szyfrowania magazynu w chmurze nie są przechowywane w dowolnym miejscu w usłudze a jest znane tylko na urządzeniu.
-* Określenie klucz szyfrowania magazynu w chmurze jest opcjonalne. Umożliwia wysyłanie danych, które zostały zaszyfrowane na hoście, na urządzeniu.
+* Klucz szyfrowania magazynu w chmurze jest określany podczas tworzenia kontenera woluminów. Nie można później zmodyfikować lub dodać klucza.
+* Wszystkie woluminy w kontenerze woluminów mają ten sam klucz szyfrowania. Jeśli chcesz użyć innej formy szyfrowania dla określonego woluminu, zalecamy utworzenie nowego kontenera woluminów na potrzeby hostowania tego woluminu.
+* Po wprowadzeniu klucza szyfrowania magazynu w chmurze w usłudze StorSimple Menedżer urządzeń klucz jest szyfrowany przy użyciu publicznej części klucza szyfrowania danych usługi, a następnie wysyłany do urządzenia.
+* Klucz szyfrowania magazynu w chmurze nie jest przechowywany w żadnym miejscu usługi i jest znany tylko dla urządzenia.
+* Określenie klucza szyfrowania magazynu w chmurze jest opcjonalne. Na urządzeniu można wysyłać dane, które zostały zaszyfrowane na hoście.
 
-### <a name="additional-security-best-practices"></a>Najlepsze rozwiązania dotyczące zabezpieczeń dodatkowe
+### <a name="additional-security-best-practices"></a>Dodatkowe najlepsze rozwiązania w zakresie zabezpieczeń
 
-* Dzielenie ruchu: izolowania sieci SAN iSCSI ruchu użytkowników w sieci lokalnej firmy przez wdrożenie całkowicie rozdzielonych sieci i przy użyciu sieci VLAN, gdzie izolacja na fizycznego nie jest opcją. Dedykowanej sieci w przypadku magazynu iSCSI gwarantuje bezpieczeństwa i wydajności danych o kluczowym znaczeniu dla firmy. Mieszanie ruch magazynu i użytkownika w firmowej sieci LAN nie jest zalecane, można zwiększyć opóźnienie i powodować awarie sieci.
-* W przypadku zabezpieczeń sieci po stronie hosta Użyj interfejsów sieciowych, które obsługują protokół TCP/IP odciążania aparatu (KÓŁKO). KÓŁKO zmniejsza obciążenie procesora CPU przez przetwarzanie protokołu TCP dla karty sieciowej.
+* Ruch podzielony: izolowanie sieci SAN iSCSI od ruchu użytkowników w firmowej sieci LAN przez wdrożenie całkowicie oddzielonej podsieci i używanie sieci VLAN, w których izolacja fizyczna nie jest opcją. Dedykowana sieć dla magazynu iSCSI gwarantuje bezpieczeństwo i wydajność danych o kluczowym znaczeniu dla firmy. Mieszanie magazynu i ruchu użytkowników za pośrednictwem firmowej sieci LAN nie jest zalecane i może zwiększyć opóźnienia i spowodować awarie sieci.
+* W przypadku zabezpieczeń sieci po stronie hosta należy używać interfejsów sieciowych, które obsługują aparat odciążania protokołu TCP/IP (TOE). Funkcja TOE zmniejsza obciążenie procesora CPU przez przetwarzanie protokołu TCP na karcie sieciowej.
 
-## <a name="protect-data-via-storage-accounts"></a>Ochrona danych za pomocą konta magazynu
+## <a name="protect-data-via-storage-accounts"></a>Ochrona danych za pomocą kont magazynu
 
-Każda subskrypcja Microsoft Azure można utworzyć co najmniej jedno konto magazynu. (Konto magazynu zapewnia unikatową przestrzeń nazw do pracy z danymi przechowywanymi w chmurze platformy Azure). Dostęp do konta magazynu jest kontrolowana przez subskrypcję i kluczy dostępu skojarzone z tym kontem magazynu.
+Każda subskrypcja Microsoft Azure może utworzyć co najmniej jedno konto magazynu. (Konto magazynu zapewnia unikatową przestrzeń nazw do pracy z danymi przechowywanymi w chmurze platformy Azure). Dostęp do konta magazynu jest kontrolowany przez klucze subskrypcji i dostępu skojarzone z tym kontem magazynu.
 
-Podczas tworzenia konta magazynu Microsoft Azure generuje dwa klucze dostępu do magazynu 512-bitowy, z których jeden jest używany do uwierzytelniania, gdy urządzenie StorSimple uzyskuje dostęp do konta magazynu. Należy zauważyć, że tylko jeden z tych kluczy jest używany. Drugi klucz jest przechowywany w rezerwie, dzięki czemu możesz okresowo wymiany kluczy. Wymiany kluczy, uaktywnić klucza pomocniczego, a następnie usuń klucz podstawowy. Następnie można utworzyć nowego klucza do użycia podczas kolejnej rotacji. (Ze względów bezpieczeństwa wiele centrów danych wymagają wymiany kluczy).
+Podczas tworzenia konta magazynu Microsoft Azure generuje 2 512-bitowe klucze dostępu do magazynu, z których jeden jest używany do uwierzytelniania, gdy urządzenie StorSimple uzyskuje dostęp do konta magazynu. Należy zauważyć, że tylko jeden z tych kluczy jest używany. Drugi klucz jest przechowywany w rezerwie, co pozwala na okresowe obracanie kluczy. Aby obrócić klucze, Ustaw klucz pomocniczy jako aktywny, a następnie Usuń klucz podstawowy. Następnie można utworzyć nowy klucz do użycia podczas kolejnego obrotu. (Ze względów bezpieczeństwa wiele centrów danych wymaga rotacji kluczy).
 
-Firma Microsoft zaleca, aby wykonać te najlepsze praktyki dotyczące wymiany kluczy:
+Zalecamy przestrzeganie następujących najlepszych rozwiązań dotyczących rotacji kluczy:
 
-* Należy obrócić kluczy konta magazynu, regularnie, aby pomóc w zapewnieniu, że konto magazynu nie jest używane przez nieautoryzowanych użytkowników.
-* Okresowo administratorem platformy Azure, należy zmienić lub ponownie wygenerować klucz podstawowy lub pomocniczy przy użyciu sekcji magazyn w witrynie Azure Portal na bezpośredni dostęp do konta magazynu.
+* Należy regularnie obrócić klucze konta magazynu, aby pomóc w zapewnieniu, że konto magazynu nie jest dostępne dla nieautoryzowanych użytkowników.
+* Okresowo administrator platformy Azure powinien zmienić lub ponownie wygenerować klucz podstawowy lub pomocniczy przy użyciu sekcji Magazyn Azure Portal, aby uzyskać bezpośredni dostęp do konta magazynu.
 
 ## <a name="protect-data-via-encryption"></a>Ochrona danych za pomocą szyfrowania
 
-Usługa StorSimple używa następujących algorytmów szyfrowania w celu ochrony danych przechowywanych w podróży między składnikami rozwiązania StorSimple.
+StorSimple używa następujących algorytmów szyfrowania do ochrony danych przechowywanych w lub podróżujących między składnikami rozwiązania StorSimple.
 
-| Algorytm | Długość klucza | Protokoły/applications/komentarzy |
+| Algorytm | Długość klucza | Protokoły/aplikacje/Komentarze |
 | --- | --- | --- |
-| RSA |2048 |RSA PKCS 1 w wersji 1.5 służy do szyfrowania danych konfiguracji, które są wysyłane do urządzenia w portalu Azure: na przykład magazyn poświadczeń, konfiguracji urządzenia StorSimple, konta i klucze szyfrowania magazynu w chmurze. |
-| AES |256 |AES z CBC jest używany do szyfrowania publicznej części klucza szyfrowania danych usługi, przed wysłaniem go do witryny Azure portal z urządzenia StorSimple. Również służy przez urządzenia StorSimple do szyfrowania danych przed wysłaniem danych do konta magazynu w chmurze. |
+| RSA |2048 |Algorytm RSA PKCS 1 v 1.5 jest używany przez Azure Portal do szyfrowania danych konfiguracyjnych wysyłanych do urządzenia: na przykład poświadczenia konta magazynu, Konfiguracja urządzenia StorSimple oraz klucze szyfrowania magazynu w chmurze. |
+| AES |256 |Algorytm AES with CBC służy do szyfrowania publicznej części klucza szyfrowania danych usługi przed wysłaniem do Azure Portal z urządzenia StorSimple. Jest on także używany przez urządzenie StorSimple do szyfrowania danych przed wysłaniem danych do konta magazynu w chmurze. |
 
-## <a name="storsimple-cloud-appliance-security"></a>Bezpieczeństwo urządzenia StorSimple w chmurze
+## <a name="storsimple-cloud-appliance-security"></a>Zabezpieczenia urządzenia w chmurze StorSimple
 
 [!INCLUDE [storsimple Cloud Appliance security](../../includes/storsimple-virtual-device-security.md)]
 
-## <a name="managing-personal-information"></a>Zarządzanie informacji osobistych
+## <a name="managing-personal-information"></a>Zarządzanie informacjami osobistymi
 
-Menedżer urządzeń StorSimple dla serii fizycznych i wirtualnych zbiera informacje osobiste w następujących przypadkach klucza:
+StorSimple Menedżer urządzeń dla serii fizycznej i wirtualnej zbiera dane osobowe w następujących kluczowych wystąpieniach:
 
-- Zgłoś alert, ustawienia użytkownika, w którym skonfigurowano adres e-mail użytkowników. Te informacje można wyświetlać i wyczyszczone przez administratora. Dotyczy to zarówno urządzeń z serii StorSimple 8000 oraz macierzy wirtualnych StorSimple.
-  * Aby wyświetlić i wyczyścić ustawienia dla serii StorSimple 8000, wykonaj kroki opisane w [widoku StorSimple alerty i zarządzaj nimi](storsimple-8000-manage-alerts.md#configure-alert-settings)
-  * Aby wyświetlić i wyczyścić ustawienia dla rozwiązania StorSimple Virtual Array, wykonaj kroki opisane w [widoku StorSimple alerty i zarządzaj nimi](storsimple-virtual-array-manage-alerts.md#configure-alert-settings)
-- Użytkownicy, którzy mają dostęp do danych znajdujących się w udziałach. Lista użytkowników, którzy mają dostęp do danych udziału jest wyświetlany i mogą być wyświetlane. Ta lista są także usuwane w momencie usunięcia akcji. Dotyczy to tylko macierze wirtualne StorSimple.
-  * Aby wyświetlić listę użytkowników, kto może uzyskać dostęp lub aby usunąć udział, wykonaj kroki opisane w [Zarządzanie udziałami w ramach macierzy wirtualnej StorSimple](storsimple-virtual-array-manage-shares.md)
+- Alert ustawienia użytkownika, w którym skonfigurowano adresy e-mail użytkowników. Te informacje mogą być wyświetlane i wyczyszczone przez administratora. Dotyczy to zarówno urządzeń z serii StorSimple 8000, jak i macierzy wirtualnych StorSimple.
+  * Aby wyświetlić i wyczyścić ustawienia dla serii StorSimple 8000, wykonaj kroki opisane w temacie [Wyświetlanie alertów StorSimple i zarządzanie nimi](storsimple-8000-manage-alerts.md#configure-alert-settings)
+  * Aby wyświetlić i wyczyścić ustawienia macierzy wirtualnej StorSimple, wykonaj kroki opisane w temacie [Wyświetlanie alertów StorSimple i zarządzanie nimi](storsimple-virtual-array-manage-alerts.md#configure-alert-settings)
+- Użytkownicy, którzy mogą uzyskiwać dostęp do danych znajdujących się w udziałach. Zostanie wyświetlona lista użytkowników, którzy mogą uzyskiwać dostęp do danych udziału. Ta lista jest również usuwana po usunięciu udziałów. Dotyczy to tylko tablic wirtualnych StorSimple.
+  * Aby wyświetlić listę użytkowników, którzy mają dostęp do lub usunąć udział, wykonaj kroki opisane w sekcji [Zarządzanie udziałami w macierzy wirtualnej StorSimple](storsimple-virtual-array-manage-shares.md)
 
 Aby uzyskać więcej informacji, zapoznaj się z Zasadami ochrony prywatności firmy Microsoft w [Centrum zaufania](https://www.microsoft.com/trustcenter).
 
 ## <a name="frequently-asked-questions-faq"></a>Często zadawane pytania
 
-Poniżej przedstawiono niektóre pytania i odpowiedzi na pytania dotyczące bezpieczeństwa i Microsoft Azure StorSimple.
+Poniżej przedstawiono kilka pytań i odpowiedzi dotyczących zabezpieczeń i Microsoft Azure StorSimple.
 
-**Pyt.:** Moja usługa zostanie naruszone. Czymś co powinno być następne kroki należy wykonać?
+**Pyt.:** Zabezpieczenia mojej usługi zostały naruszone. Co należy zrobić?
 
-**Odp.:** Natychmiast należy zmienić klucz szyfrowania danych usługi i klucze konta magazynu dla konta magazynu, który jest używany w przypadku warstw danych. Aby uzyskać instrukcje przejdź do:
-
-* [Zmień klucz szyfrowania danych usługi](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
-* [Wymiana kluczy kont magazynu](storsimple-8000-manage-storage-accounts.md#key-rotation-of-storage-accounts)
-
-**Pyt.:** Masz nowe urządzenie StorSimple, który pyta o klucz rejestracji usługi. Jak pobrać go
-
-**Odp.:** Ten klucz został utworzony podczas pierwszego utworzenia usługi Menedżer urządzeń StorSimple. Korzystając z usługi Menedżer urządzeń StorSimple do nawiązania połączenia z urządzeniem, można użyć strony szybki start usługi, aby wyświetlić lub ponownie wygenerować klucz rejestracji usługi. Generowanie nowego klucza rejestracji usługi nie wpłyną na istniejące zarejestrowane urządzenia. Aby uzyskać instrukcje przejdź do:
-
-* [Wyświetlić lub ponownie wygenerować klucz rejestracji usługi](storsimple-8000-manage-service.md##regenerate-the-service-registration-key)
-
-**Pyt.:** Utratą mój klucz szyfrowania danych usługi. Co mam zrobić?
-
-**Odp.:** Contact Microsoft Support. Mogą oni się zalogować do sesji pomocy technicznej na urządzeniu i pomocy pobierania klucza (pod warunkiem co najmniej jedno urządzenie jest w trybie online). Po uzyskaniu klucza szyfrowania danych usługi, należy zmienić go, aby upewnić się, że nowy klucz jest znane tylko dla Ciebie. Aby uzyskać instrukcje przejdź do:
+**Odp.:** Należy natychmiast zmienić klucz szyfrowania danych usługi i klucze konta magazynu dla konta magazynu używanego do obsługi danych warstwowych. Aby uzyskać instrukcje, przejdź do:
 
 * [Zmień klucz szyfrowania danych usługi](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
+* [Kluczowe rotacja kont magazynu](storsimple-8000-manage-storage-accounts.md#key-rotation-of-storage-accounts)
 
-**Pyt.:**  Autoryzacji urządzenia dla usługi zmiany klucza szyfrowania danych, ale nie zostały uruchomione proces zmiany klucza. Co mam zrobić?
+**Pyt.:** Mam nowe urządzenie StorSimple z prośbą o klucz rejestracji usługi. Jak mogę ją pobrać?
 
-**Odp.:** Jeśli upłynął limit czasu, należy ponownie autoryzować urządzenia do zmiany klucza szyfrowania danych usługi, a następnie uruchom ponownie proces.
+**Odp.:** Ten klucz został utworzony podczas pierwszego tworzenia usługi StorSimple Menedżer urządzeń. W przypadku korzystania z usługi StorSimple Menedżer urządzeń do nawiązywania połączenia z urządzeniem można użyć strony szybki start usługi, aby wyświetlić lub ponownie wygenerować klucz rejestracji usługi. Generowanie nowego klucza rejestracji usługi nie będzie miało wpływu na istniejące zarejestrowane urządzenia. Aby uzyskać instrukcje, przejdź do:
 
-**Pyt.:**  Czy mogę zmienić klucza szyfrowania danych usługi, ale nie udało mi się aktualizacji na innych urządzeniach w ciągu 4 godzin. Czy muszę ponownie uruchomić?
+* [Wyświetl lub ponownie Wygeneruj klucz rejestracji usługi](storsimple-8000-manage-service.md##regenerate-the-service-registration-key)
 
-**Odp.:** 4-godzinnego okresu jest tylko w przypadku inicjowania zmiany. Po uruchomieniu procesu aktualizacji na urządzeniu StorSimple autoryzowanych autoryzacji jest prawidłowy, dopóki wszystkie urządzenia są aktualizowane.
+**Pyt.:** Klucz szyfrowania danych usługi został utracony. Co mam zrobić?
 
-**Pyt.:** Nasze administratora usługi StorSimple opuścił firmę. Co mam zrobić?
+**Odp.:** Skontaktuj się z działem pomocy technicznej firmy Microsoft. Mogą oni zalogować się do sesji pomocy technicznej na urządzeniu i pomóc Ci w pobraniu klucza (jeśli co najmniej jedno urządzenie jest w trybie online). Natychmiast po uzyskaniu klucza szyfrowania danych usługi należy go zmienić, aby upewnić się, że nowy klucz jest znany tylko dla użytkownika. Aby uzyskać instrukcje, przejdź do:
 
-**Odp.:** Zmień resetowania haseł, które umożliwiają dostęp do urządzenia StorSimple i Zmień klucz szyfrowania danych usługi, aby upewnić się, że nowych informacji nie jest znany nieautoryzowanym próbom. Aby uzyskać instrukcje przejdź do:
+* [Zmień klucz szyfrowania danych usługi](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 
-* [Zmienianie haseł usługi storsimple przy użyciu usługi Menedżer urządzeń StorSimple](storsimple-8000-change-passwords.md)
+**Pyt.:**  Przyznało urządzenie do zmiany klucza szyfrowania danych usługi, ale nie uruchomiono procesu zmiany klucza. Co mam zrobić?
+
+**Odp.:** Jeśli limit czasu upłynął, konieczne będzie ponowne autoryzowanie urządzenia pod kątem zmiany klucza szyfrowania danych usługi, a następnie ponowne uruchomienie procesu.
+
+**Pyt.:**  Klucz szyfrowania danych usługi został zmieniony, ale nie można zaktualizować innych urządzeń w ciągu 4 godzin. Czy muszę zacząć ponownie?
+
+**Odp.:** Okres 4-godzinny jest tylko w przypadku inicjowania zmiany. Po rozpoczęciu procesu aktualizacji na autoryzowanym urządzeniu StorSimple Autoryzacja jest ważna do momentu zaktualizowania wszystkich urządzeń.
+
+**Pyt.:** Nasz administrator StorSimple opuścił firmę. Co mam zrobić?
+
+**Odp.:** Zmień i zresetuj hasła zezwalające na dostęp do urządzenia StorSimple, a następnie Zmień klucz szyfrowania danych usługi, aby upewnić się, że nowe informacje nie są znane osobom nieupoważnionym. Aby uzyskać instrukcje, przejdź do:
+
+* [Zmienianie haseł StorSimple przy użyciu usługi StorSimple Menedżer urządzeń](storsimple-8000-change-passwords.md)
 * [Zmień klucz szyfrowania danych usługi](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 * [Konfigurowanie protokołu CHAP dla urządzenia StorSimple](storsimple-8000-configure-chap.md)
 
-**Pyt.:** Chcę podać hasło programu StorSimple Snapshot Manager do hosta, który nawiązuje połączenie z urządzeniem StorSimple, ale hasło nie jest dostępna. Co mogę zrobić?
+**Pyt.:** Chcę podać StorSimple Snapshot Manager hasło do hosta, który nawiązuje połączenie z urządzeniem StorSimple, ale hasło jest niedostępne. Co mogę zrobić?
 
-**Odp.:** Jeśli pamiętasz hasła, należy utworzyć nową. Następnie Pamiętaj wszyscy istniejący użytkownicy informuje, że hasło zostało zmienione i czy powinny one aktualizowane swoich klientów do korzystania z nowego hasła. Aby uzyskać instrukcje przejdź do:
+**Odp.:** Jeśli hasło zostało zapomniane, należy utworzyć nowe. Następnie należy poinformować wszystkich istniejących użytkowników o tym, że hasło zostało zmienione i że powinni zaktualizować swoich klientów tak, aby korzystały z nowego hasła. Aby uzyskać instrukcje, przejdź do:
 
-* [Zmień hasło programu StorSimple Snapshot Manager](storsimple-8000-change-passwords.md#set-the-storsimple-snapshot-manager-password)
-* [Uwierzytelnienia urządzenia](storsimple-snapshot-manager-manage-devices.md#authenticate-a-device)
+* [Zmiana hasła Snapshot Manager StorSimple](storsimple-8000-change-passwords.md#set-the-storsimple-snapshot-manager-password)
+* [Uwierzytelnianie urządzenia](storsimple-snapshot-manager-manage-devices.md#authenticate-a-device)
 
-**Pyt.:** Certyfikat zdalny dostęp do programu Windows PowerShell dla usługi StorSimple została zmieniona na urządzeniu. Jak zaktualizować moich klientów dostępu zdalnego?
+**Pyt.:** Certyfikat dostępu zdalnego do program Windows PowerShell dla usługi StorSimple został zmieniony na urządzeniu. Jak mogę zaktualizować moich klientów dostępu zdalnego?
 
-**Odp.:** Możesz pobrać nowy certyfikat z usługi Menedżer urządzeń StorSimple, a następnie podać go do zainstalowania w magazynie certyfikatów klientów dostępu zdalnego. Aby uzyskać instrukcje przejdź do:
+**Odp.:** Nowy certyfikat można pobrać z usługi StorSimple Menedżer urządzeń, a następnie udostępnić go w magazynie certyfikatów klientów dostępu zdalnego. Aby uzyskać instrukcje, przejdź do:
 
-* [Polecenia cmdlet Import-Certificate](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate)
+* [Polecenie cmdlet Import-Certificate](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate)
 
-**Pyt.:** Jest Moje chronionych danych, jeśli zostanie naruszony usługi Menedżer urządzeń StorSimple?
+**Pyt.:** Czy moje dane są chronione w przypadku naruszenia zabezpieczeń usługi StorSimple Menedżer urządzeń?
 
-**Odp.:** Dane konfiguracji usługi są zawsze szyfrowane kluczem publicznym, podczas wyświetlania w przeglądarce sieci web. Ponieważ usługa nie ma dostępu do klucza prywatnego, usługa nie będzie można zobaczyć wszystkie dane. W przypadku naruszenia zabezpieczeń usługi Menedżer urządzeń StorSimple nie ma to wpływu, ponieważ brak kluczy przechowywanych w usłudze Menedżer urządzeń StorSimple.
+**Odp.:** Dane konfiguracji usługi są zawsze szyfrowane przy użyciu klucza publicznego podczas wyświetlania go w przeglądarce sieci Web. Ponieważ usługa nie ma dostępu do klucza prywatnego, usługa nie będzie mogła wyświetlać żadnych danych. W przypadku naruszenia zabezpieczeń usługi StorSimple Menedżer urządzeń nie ma żadnego wpływu, ponieważ nie ma kluczy przechowywanych w usłudze StorSimple Menedżer urządzeń.
 
-**Pyt.:** Jeśli osoba uzyska dostęp do certyfikatu szyfrowania danych, dane może stwarzać zagrożenie?
+**Pyt.:** Jeśli ktoś uzyska dostęp do certyfikatu szyfrowania danych, czy moje dane zostaną naruszone?
 
-**Odp.:** Microsoft Azure przechowuje klucz szyfrowania danych przez klienta (plik pfx) w postaci zaszyfrowanej. Ponieważ plik PFX jest zaszyfrowany i usługę StorSimple nie ma klucza szyfrowania danych usługi do odszyfrowania pliku PFX, po prostu uzyskiwanie dostępu do pliku .pfx nie udostępni żadnych wpisów tajnych.
+**Odp.:** Microsoft Azure przechowuje klucz szyfrowania danych klienta (plik PFX) w zaszyfrowanym formacie. Ponieważ plik PFX jest szyfrowany i Usługa StorSimple nie ma klucza szyfrowania danych usługi do odszyfrowania pliku PFX, po prostu uzyskanie dostępu do pliku PFX nie spowoduje ujawnienia żadnych wpisów tajnych.
 
-**Pyt.:** Co się stanie, jeśli jednostek administracji rządowej prosi firmy Microsoft dla moich danych?
+**Pyt.:** Co się stanie, jeśli jednostka rządowa prosi firmę Microsoft o moje dane?
 
-**Odp.:** Ponieważ wszystkie dane są szyfrowane na komputerze usługi i klucz prywatny jest przechowywany z urządzeniem, jednostek administracji rządowej muszą uzyskać dane klienta.
+**Odp.:** Ze względu na to, że wszystkie dane są szyfrowane w usłudze, a klucz prywatny jest przechowywany na urządzeniu, jednostka rządowa musi podawać klientowi dane.
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Wdrażanie urządzenia StorSimple](storsimple-8000-deployment-walkthrough-u2.md).
+[Wdróż Urządzenie StorSimple](storsimple-8000-deployment-walkthrough-u2.md).
 

@@ -1,5 +1,5 @@
 ---
-title: 'Potoki: Optymalizowanie przepływów pracy uczenia maszynowego'
+title: Co to są potoki ML
 titleSuffix: Azure Machine Learning service
 description: Ten artykuł zawiera informacje na temat potoków, które można tworzyć z zestawem Azure Machine Learning SDK dla języka Python i zalety korzystania z potoków uczenia maszynowego. Machine learning (ML) potoki są używane przez analityków danych kompilacji, optymalizowanie i zarządzanie ich usługi machine learning przepływów pracy.
 services: machine-learning
@@ -11,18 +11,16 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: a9965dbbca939f566048312af921061a188ee50d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 22d1da4c194b392993b37b16ab20673120c3362e
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884242"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951794"
 ---
-# <a name="build-reusable-ml-pipelines-in-azure-machine-learning-service"></a>Kompilowanie potoków ML wielokrotnego użytku w usłudze Azure Machine Learning
+# <a name="what-are-ml-pipelines-in-azure-machine-learning-service"></a>Co to są potoki ML w usłudze Azure Machine Learning?
 
-W tym artykule dowiesz się więcej na temat potoków uczenia maszynowego, które można skompilować za pomocą zestawu SDK Azure Machine Learning dla języka Python, oraz zalety korzystania z potoków.
-
-## <a name="what-are-machine-learning-pipelines"></a>Co to są potokach uczenia maszynowego?
+Dowiedz się, jak można tworzyć potoki usługi Machine Learning i zarządzać nimi za pomocą usług Azure Machine Learning. 
 
 Za pomocą machine learning (ML) potoki, analitykami danych, inżynierami danych i informatycy mogą współpracować przy etapy:
 + Przygotowywanie danych, takich jak normalizations i przekształcenia
@@ -30,7 +28,7 @@ Za pomocą machine learning (ML) potoki, analitykami danych, inżynierami danych
 + Ocena modelu
 + Wdrożenie
 
-Na poniższym diagramie przedstawiono przykładowy proces potoku:
+Dowiedz się, jak [Tworzenie pierwszego potoku](how-to-create-your-first-pipeline.md).
 
 ![Potoki uczenia maszynowego w usłudze Azure Machine Learning](./media/concept-ml-pipelines/pipeline-flow.png)
 
@@ -47,9 +45,7 @@ Chmura systemu Azure udostępnia kilka innych potoków, z których każdy ma inn
 
 ## <a name="why-build-pipelines-with-azure-machine-learning"></a>Dlaczego warto tworzyć potoki za pomocą usługi Azure Machine Learning?
 
-Możesz użyć [zestawu SDK Azure Machine Learning dla języka Python](#the-python-sdk-for-pipelines) , aby utworzyć potoki ml, a także przesłać i śledzić pojedyncze uruchomienia potoku.
-
-W przypadku potoków można zoptymalizować przepływ pracy prostotę, szybkość, przenoszenia i ponownego użycia. Podczas kompilowania potoków z Azure Machine Learning możesz skupić się na wiedzy, uczeniu maszynowym, a nie na infrastrukturze i automatyzacji.
+Potoki usługi Machine Learning optymalizują przepływ pracy przy użyciu szybkości, przenośności i ponownego wykorzystania, dzięki czemu możesz skupić się na wiedzy, uczeniu maszynowym, a nie na infrastrukturze i automatyzacji.
 
 Potoki są zbudowane z wielu **kroków**, które są odrębnymi jednostkami obliczeniowymi w potoku. Każdy krok można uruchamiać niezależnie i używać izolowanych zasobów obliczeniowych. Dzięki temu wiele analityków danych może współdziałać w tym samym potoku bez nadmiernie nieopodatkowanych zasobów obliczeniowych, a także ułatwia korzystanie z różnych typów i rozmiarów obliczeniowych dla każdego kroku.
 
@@ -73,20 +69,20 @@ Najważniejsze zalety używania potoków dla przepływów pracy usługi Machine 
 
 ## <a name="the-python-sdk-for-pipelines"></a>Zestaw SDK języka Python dla potoków
 
-Za pomocą języka Python do tworzenia potoków uczenia Maszynowego. Zestaw SDK usługi Azure Machine Learning oferuje imperatywne konstrukcje sekwencyjne i przekształcają kroki potoków, gdy obecny jest niezależne danych. Możesz korzystać z niego w notesach Jupyter lub w innym preferowanym środowisku IDE.
+[Użyj zestawu SDK języka Python](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) , aby utworzyć potoki ml w preferowanych notesach IDE lub Jupyter. Zestaw SDK usługi Azure Machine Learning oferuje imperatywne konstrukcje sekwencyjne i przekształcają kroki potoków, gdy obecny jest niezależne danych. 
 
-Dane deklaratywne zależności można zoptymalizować swoje zadania. Zestaw SDK zawiera strukturę wstępnie utworzonych modułów dla typowych zadań, takich jak transfer danych i publikowanie modeli. Można zwiększyć strukturę w celu modelowania własnych Konwencji, implementując niestandardowe kroki, które są wielokrotnego użytku między potokami. Można także zarządzać elementami docelowymi obliczeń i zasobami magazynu bezpośrednio z zestawu SDK.
+Dane deklaratywne zależności można zoptymalizować swoje zadania. Zestaw SDK zawiera strukturę wstępnie utworzonych modułów dla typowych zadań, takich jak transfer danych i publikowanie modeli. Można zwiększyć strukturę w celu modelowania własnych Konwencji przez implementację niestandardowych kroków wielokrotnego użytku między potokami. Można także zarządzać elementami docelowymi obliczeń i zasobami magazynu bezpośrednio z zestawu SDK.
 
-Potoki można zapisywać jako szablony i wdrażać je w punkcie końcowym REST, aby można było zaplanować zadania wsadowe lub przeszkolenie.
+Zapisz potoki jako szablony i wdróż je w punkcie końcowym REST dla zadań wsadowych lub do ponownego szkolenia.
 
-Aby dowiedzieć się, jak utworzyć własne, zobacz [Dokumentacja zestawu SDK języka Python dla potoków](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) i notesu w następnej sekcji.
+Istnieją dwa pakiety języka Python dla potoków z Azure Machine Learning: [potoki usługi Azure-Core](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) i uczenie maszynowe — [etapy](https://docs.microsoft.com/en-us/python/api/azureml-pipeline-steps/?view=azure-ml-py).
 
-## <a name="example-notebooks"></a>Przykład notesów
+## <a name="next-steps"></a>Następne kroki
 
-Następujące notesów pokazują potoków przy użyciu usługi Azure Machine Learning: [how-to-use-azureml/machine-learning-pipelines](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines).
++ Dowiedz się, jak [Tworzenie pierwszego potoku](how-to-create-your-first-pipeline.md).
 
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
++ Dowiedz się, jak [uruchamiać przewidywania wsadowe w przypadku dużych ilości danych](how-to-run-batch-predictions.md).
 
-## <a name="next-steps"></a>Kolejne kroki
++ Przeczytaj [dokumenty referencyjne zestawu SDK dla potoków](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py)
 
-Dowiedz się, jak [Tworzenie pierwszego potoku](how-to-create-your-first-pipeline.md).
++ Wypróbuj przykładowe notesy Jupyter, które przedstawiają [potoki Azure Machine Learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines). Dowiedz się, jak [uruchamiać notesy w celu eksplorowania tej usługi](samples-notebooks.md).

@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: e76a747f7e1d7ca7056edf5b69df0677aeff96a1
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 5c44f4ed5cd6488520bf6dd99f502f33049b9b17
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855996"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68962997"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning-service"></a>Kompiluj scikit — Poznaj modele na dużą skalę za pomocą usługi Azure Machine Learning
 
@@ -192,12 +192,12 @@ model = run.register_model(model_name='sklearn-iris', model_path='model.joblib')
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym artykule opisano uczenie i rejestrację usługi Machine Learning, modelu klasyfikacji przy użyciu scikit — Dowiedz się więcej o usłudze Azure Machine Learning.
 
-* Aby dowiedzieć się, jak wdrożyć model, przejdź do naszego artykułu [wdrożenia modelu](how-to-deploy-and-where.md) .
+W tym artykule został przeszkolony i zarejestrowany model Keras w usłudze Azure Machine Learning. Aby dowiedzieć się, jak wdrożyć model, przejdź do naszego artykułu wdrożenia modelu.
 
-* [Dostrajanie parametrów](how-to-tune-hyperparameters.md).
-
-* [Śledź pomiary uruchamiania podczas szkoleń](how-to-track-experiments.md).
-
-* Dowiedz się [](concept-deep-learning-vs-machine-learning.md)więcej na temat uczenia głębokiego i uczenia maszynowego.
+> [!div class="nextstepaction"]
+> [Jak i gdzie wdrażać modele](how-to-deploy-and-where.md)
+* [Śledzenie metryk są uruchamiane podczas szkolenia](how-to-track-experiments.md)
+* [Dostosowywanie hiperparametrów](how-to-tune-hyperparameters.md)
+* [Wdrażanie uczonego modelu](how-to-deploy-and-where.md)
+* [Architektura referencyjna na potrzeby rozproszonego szkolenia uczenia głębokiego na platformie Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)

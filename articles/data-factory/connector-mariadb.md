@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 1fdaef319235b90d05dc6ddc6d8eb1c5bb7ba294
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 1374f2f819c0c5704ecf01f4d8412fd78c8560c3
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720705"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966948"
 ---
 # <a name="copy-data-from-mariadb-using-azure-data-factory"></a>Kopiowanie danych z MariaDB przy użyciu usługi Azure Data Factory
 
@@ -30,6 +30,10 @@ Możesz skopiować dane z MariaDB, do dowolnego obsługiwanego magazynu danych u
 Usługa Azure Data Factory udostępnia wbudowanego sterownika, aby umożliwić łączność, dlatego nie trzeba ręcznie zainstalować dowolnego sterownika, za pomocą tego łącznika.
 
 Ten łącznik obsługuje obecnie MariaDB wersja 10.0 10.2.
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="getting-started"></a>Wprowadzenie
 
@@ -45,7 +49,7 @@ Następujące właściwości są obsługiwane w przypadku MariaDB połączone us
 |:--- |:--- |:--- |
 | type | Właściwość Type musi mieć ustawioną wartość: **MariaDB** | Tak |
 | connectionString | Ciąg połączenia ODBC, aby nawiązać połączenie MariaDB. <br/>Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory. Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć `pwd` konfigurację z parametrów połączenia. Zapoznaj się z poniższymi przykładami i [Zapisz poświadczenia w Azure Key Vault](store-credentials-in-key-vault.md) artykule, aby uzyskać więcej szczegółów. | Tak |
-| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Używając środowiskiem Integration Runtime lub Azure Integration Runtime (Jeśli magazyn danych jest publicznie dostępny). Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
+| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
 **Przykład:**
 

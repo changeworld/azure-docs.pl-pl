@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 18b5b941716fd2c6664c37f9e7c1ab2a37d07a88
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: da7dbdee4a376d88219a7a621ed7e3867873a37c
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720641"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967388"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Kopiowanie danych z tabeli SAP przy użyciu Azure Data Factory
 
@@ -76,7 +76,7 @@ Następujące właściwości są obsługiwane dla SAP BW połączonej usługi:
 | `logonGroup` | Grupa logowania dla systemu SAP.<br/>Służy do nawiązywania połączenia z serwerem komunikatów SAP. | Nie |
 | `clientId` | Identyfikator klienta w systemie SAP.<br/>Dozwolona wartość: 3-cyfrowa liczba dziesiętna reprezentowana jako ciąg. | Tak |
 | `language` | Język, którego używa System SAP.<br/>Wartość domyślna to `EN`.| Nie |
-| `userName` | Nazwa użytkownika, który ma dostęp do serwera SAP. | Yes |
+| `userName` | Nazwa użytkownika, który ma dostęp do serwera SAP. | Tak |
 | `password` | Hasło użytkownika. Oznacz to pole typem, `SecureString` aby bezpiecznie przechowywać je w Data Factory, lub odwoływać się do [wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
 | `sncMode` | Wskaźnik aktywacji SNC w celu uzyskania dostępu do serwera SAP, na którym znajduje się tabela.<br/>Użyj, jeśli chcesz używać SNC do nawiązywania połączenia z serwerem SAP.<br/>Dozwolone wartości to `0` (wyłączone, domyślne) lub `1` (włączone). | Nie |
 | `sncMyName` | Nazwa SNC inicjatora do uzyskania dostępu do serwera SAP, na którym znajduje się tabela.<br/>Ma zastosowanie `sncMode` , gdy jest włączony. | Nie |
@@ -175,7 +175,7 @@ Aby można było skopiować dane z i do SAP BW połączonej z usługą Open Hub,
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| `type` | Właściwość musi być ustawiona na `SapTableResource`wartość. `type` | Yes |
+| `type` | Właściwość musi być ustawiona na `SapTableResource`wartość. `type` | Tak |
 | `tableName` | Nazwa tabeli SAP, z której mają zostać skopiowane dane. | Tak |
 
 ### <a name="example"></a>Przykład
@@ -201,7 +201,7 @@ Aby można było skopiować dane z i do SAP BW połączonej z usługą Open Hub,
 
 Aby zapoznać się z pełną listą sekcji i właściwości definiowania działań, zobacz [potoki](concepts-pipelines-activities.md). Poniższa sekcja zawiera listę właściwości obsługiwanych przez źródło tabeli SAP.
 
-### <a name="sap-table-as-a-source"></a>Tabela SAP jako źródło
+### <a name="sap-table-as-source"></a>Tabela SAP jako źródło
 
 Aby skopiować dane z tabeli SAP, obsługiwane są następujące właściwości:
 
@@ -223,7 +223,7 @@ Aby skopiować dane z tabeli SAP, obsługiwane są następujące właściwości:
 <br/>
 >`maxPartitionsNumber` `partitionLowerBound` `partitionUpperBound` Przykładowo liczba wierszy w każdej partycji jest obliczana z następującą formułą: (łącznie wierszy między i)/. `partitionOption` `partitionOnInt`<br/>
 <br/>
->Aby uruchamiać partycje równolegle w celu przyspieszenia kopiowania, zdecydowanie zalecamy utworzenie `maxPartitionsNumber` wielokrotności wartości `parallelCopies` właściwości. Aby uzyskać więcej informacji, zobacz [Kopiowanie równoległe](copy-activity-performance.md#parallel-copy).
+>Aby równolegle ładować partycje danych w celu przyspieszenia kopiowania, stopień równoległy jest kontrolowany przez [`parallelCopies`](copy-activity-performance.md#parallel-copy) ustawienie dla działania kopiowania. Jeśli na przykład ustawisz `parallelCopies` cztery, Data Factory współbieżnie generuje i uruchamia cztery zapytania w oparciu o określoną opcję partycji i ustawienia, a każde zapytanie pobiera część danych z tabeli SAP. Zdecydowanie zalecamy utworzenie `maxPartitionsNumber` wielokrotności wartości `parallelCopies` właściwości.
 
 W `rfcTableOptions`programie można użyć następujących typowych operatorów zapytań SAP do filtrowania wierszy:
 
@@ -269,7 +269,8 @@ W `rfcTableOptions`programie można użyć następujących typowych operatorów 
             },
             "sink": {
                 "type": "<sink type>"
-            }
+            },
+            "parallelCopies": 4
         }
     }
 ]

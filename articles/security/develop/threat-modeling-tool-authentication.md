@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: d7fb9fadcfac0b57fb98dc54f40ff0d2f07c6827
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: eb4f0e26d1795abc3392e9736e71093fab79aae2
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728393"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967944"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Ramka zabezpieczeń: Uwierzytelnianie | Środki zaradcze 
 
@@ -435,7 +435,7 @@ Należy pamiętać, że w celu przetestowania skuteczności tej konfiguracji zal
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Wołują**              | [ADAL](https://azure.microsoft.com/documentation/articles/active-directory-authentication-libraries/) |
-| **Kroki** | <p>Biblioteka Azure AD Authentication Library (ADAL) umożliwia deweloperom aplikacji klienckich łatwe uwierzytelnianie użytkowników w chmurze lub Active Directory lokalnych (AD), a następnie uzyskanie tokenów dostępu w celu zabezpieczania wywołań interfejsu API.</p><p>Biblioteka ADAL ma wiele funkcji, które ułatwiają uwierzytelnianie dla deweloperów, takich jak obsługa asynchroniczna, konfigurowalna pamięć podręczna tokenów, która przechowuje tokeny dostępu i odświeżanie tokenów, automatyczne odświeżanie tokenów, gdy token dostępu wygasa i dostępny jest token odświeżania. szczegółowe.</p><p>Dzięki obsłudze większości złożoności Biblioteka ADAL może ułatwić deweloperom skoncentrowanie się na logice biznesowej w swojej aplikacji i łatwe Zabezpieczanie zasobów bez konieczności eksperta w zakresie zabezpieczeń. Dostępne są osobne biblioteki dla platform .NET, JavaScript (Client i Node. js), iOS, Android i Java.</p>|
+| **Kroki** | <p>Biblioteka Azure AD Authentication Library (ADAL) umożliwia deweloperom aplikacji klienckich łatwe uwierzytelnianie użytkowników w chmurze lub Active Directory lokalnych (AD), a następnie uzyskanie tokenów dostępu w celu zabezpieczania wywołań interfejsu API.</p><p>Biblioteka ADAL ma wiele funkcji, które ułatwiają uwierzytelnianie dla deweloperów, takich jak obsługa asynchroniczna, konfigurowalna pamięć podręczna tokenów, która przechowuje tokeny dostępu i odświeżanie tokenów, automatyczne odświeżanie tokenów, gdy token dostępu wygasa i dostępny jest token odświeżania. szczegółowe.</p><p>Dzięki obsłudze większości złożoności Biblioteka ADAL może ułatwić deweloperom skoncentrowanie się na logice biznesowej w swojej aplikacji i łatwe Zabezpieczanie zasobów bez konieczności eksperta w zakresie zabezpieczeń. Dostępne są osobne biblioteki dla platform .NET, JavaScript (Client i Node. js), Python, iOS, Android i Java.</p>|
 
 ## <a id="authn-devices-field"></a>Uwierzytelnianie urządzeń łączących się z bramą pola
 

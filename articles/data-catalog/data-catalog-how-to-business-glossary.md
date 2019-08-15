@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 6ecb481245484332221e45b8f27c776291ea532d
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 1065abecb1f0ef57eb13b1ec3f194f07ae01eaee
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736408"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976788"
 ---
 # <a name="set-up-the-business-glossary-for-governed-tagging"></a>Konfigurowanie słownika biznesowego dla tagowania regulowanego
 
@@ -36,11 +36,11 @@ Słownik biznesowy jest dostępny tylko w wersji Standard programu Azure Data Ca
 
 Możesz uzyskać dostęp do słownika biznesowego za pośrednictwem opcji **słownik** w menu nawigacji portalu Data Catalog.  
 
-![Uzyskiwanie dostępu do słownika biznesowego](./media/data-catalog-how-to-business-glossary/01-portal-menu.png)
+![Data Catalog — dostęp do słownika biznesowego](./media/data-catalog-how-to-business-glossary/01-portal-menu.png)
 
 Data Catalog Administratorzy i członkowie roli Administratorzy słownika mogą tworzyć, edytować i usuwać warunki słownika w słowniku biznesowym. Wszyscy użytkownicy Data Catalog mogą przeglądać definicje terminów i Tagi zawartości za pomocą terminów słownika.
 
-![Dodawanie nowego terminu słownika](./media/data-catalog-how-to-business-glossary/02-new-term.png)
+![Data Catalog — Dodaj nowy termin słownika](./media/data-catalog-how-to-business-glossary/02-new-term.png)
 
 ## <a name="creating-glossary-terms"></a>Tworzenie terminów słownika
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: b245a80967d91b793fcf360772c0dec758f8f252
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9bfa5aca56352f616b3527e65eec26fa635d1771
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60808908"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967005"
 ---
 # <a name="copy-data-from-hive-using-azure-data-factory"></a>Kopiowanie danych z programu Hive przy użyciu usługi Azure Data Factory 
 
@@ -28,6 +28,10 @@ W tym artykule opisano sposób używania działania kopiowania w usłudze Azure 
 Możesz skopiować dane z programu Hive, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
 Usługa Azure Data Factory udostępnia wbudowanego sterownika, aby umożliwić łączność, dlatego nie trzeba ręcznie zainstalować dowolnego sterownika, za pomocą tego łącznika.
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="getting-started"></a>Wprowadzenie
 
@@ -41,12 +45,12 @@ Następujące właściwości są obsługiwane w przypadku gałęzi połączone u
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **Hive** | Yes |
+| type | Właściwość Type musi mieć ustawioną wartość: **Hive** | Tak |
 | host | Adres IP lub hosta nazwę serwera programu Hive, rozdzielone znakiem ";" na wielu hostach, (tylko wtedy, gdy serviceDiscoveryMode jest włączona).  | Yes |
 | port | Port TCP używany przez serwer programu Hive do nasłuchiwania połączeń klientów. Jeśli łączysz się Azure HDInsights, należy określić port ustawiony na 443. | Yes |
-| serverType | Typ serwera Hive. <br/>Dozwolone wartości to: **HiveServer1**, **HiveServer2**, **HiveThriftServer** | Nie |
+| serverType | Typ serwera Hive. <br/>Dozwolone wartości to: **HiveServer1**, **serwera hiveserver2**, **HiveThriftServer** | Nie |
 | thriftTransportProtocol | Protokół transportu do użycia w warstwie Thrift. <br/>Dozwolone wartości to: **Binary**, **SASL**, **HTTP** | Nie |
-| authenticationType | Metoda uwierzytelniania używany do uzyskiwania dostępu do serwera programu Hive. <br/>Dozwolone wartości to: **Anonimowe**, **Username**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Yes |
+| authenticationType | Metoda uwierzytelniania używany do uzyskiwania dostępu do serwera programu Hive. <br/>Dozwolone wartości to: **Anonimowe**, **username**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Tak |
 | serviceDiscoveryMode | wartość true, aby wskazać, za pomocą usługi ZooKeeper false nie.  | Nie |
 | zooKeeperNameSpace | Przestrzeń nazw w dozorcy w ramach której Hive Server 2 dodawania węzłów.  | Nie |
 | useNativeQuery | Określa, czy sterownik używa zapytania natywne HiveQL, konwertuje je do formularza w HiveQL.  | Nie |
@@ -58,7 +62,7 @@ Następujące właściwości są obsługiwane w przypadku gałęzi połączone u
 | useSystemTrustStore | Określa, czy ma być używany certyfikat urzędu certyfikacji z magazynu zaufania systemu lub z określonego pliku PEM. Wartość domyślna to false.  | Nie |
 | allowHostNameCNMismatch | Określa, czy wymagają nazwy certyfikatów wystawionych przez urząd certyfikacji SSL Period z nazwą hosta serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to false.  | Nie |
 | allowSelfSignedServerCert | Określa, czy zezwalać na certyfikaty z podpisem własnym z serwera. Wartość domyślna to false.  | Nie |
-| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Używając środowiskiem Integration Runtime lub Azure Integration Runtime (Jeśli magazyn danych jest publicznie dostępny). Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
+| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
 **Przykład:**
 
@@ -89,7 +93,7 @@ Aby skopiować dane z programu Hive, należy ustawić właściwość typu zestaw
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa: **HiveObject** | Yes |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **Gałąź programu Hive** | Tak |
 | tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
@@ -118,7 +122,7 @@ Aby skopiować dane z programu Hive, należy ustawić typ źródła w działaniu
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi być równa wartości właściwości type źródło działania kopiowania: **HiveSource** | Yes |
+| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **HiveSource** | Tak |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**

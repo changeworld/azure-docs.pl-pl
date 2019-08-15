@@ -9,14 +9,14 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 08/01/2019
+ms.date: 08/12/2019
 ms.author: apimpm
-ms.openlocfilehash: b3513ab2583939943ff188b582f57f49530e5ded
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 45e1ad6bd757ec5acaf784c94e4cfb5e487ce9ba
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736256"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68975736"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurowanie niestandardowej nazwy domeny
 
@@ -34,7 +34,8 @@ Aby wykonać kroki opisane w tym artykule, musisz dysponować:
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 -   Wystąpienie API Management. Aby uzyskać więcej informacji, zobacz [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
--   Niestandardowa nazwa domeny, do której należy użytkownik. Niestandardowa nazwa domeny, której chcesz użyć, musi być pozyskana osobno i hostowana na serwerze DNS. Ten temat nie zawiera instrukcji dotyczących obsługi niestandardowej nazwy domeny.
+-   Niestandardowa nazwa domeny, do której należy użytkownik lub Twoja organizacja. Ten temat nie zawiera instrukcji dotyczących sposobu pozyskiwania niestandardowej nazwy domeny.
+-   Rekord CNAME hostowany na serwerze DNS, który mapuje niestandardową nazwę domeny na domyślną nazwę domeny wystąpienia API Management. Ten temat nie zawiera instrukcji dotyczących hostowania rekordu CNAME.
 -   Musisz mieć prawidłowy certyfikat z kluczem publicznym i prywatnym (. PFX). Podmiot lub alternatywna nazwa podmiotu (SAN) musi być zgodna z nazwą domeny (umożliwia API Management wystąpieniu bezpiecznego ujawniania adresów URL za pośrednictwem protokołu SSL).
 
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name"></a>Użyj Azure Portal, aby ustawić niestandardową nazwę domeny
@@ -52,13 +53,17 @@ Aby wykonać kroki opisane w tym artykule, musisz dysponować:
     > [!NOTE]
     > Tylko punkt końcowy **bramy** dostępny do konfiguracji w warstwie zużycia.
     > Można zaktualizować wszystkie punkty końcowe lub niektóre z nich. Często klienci aktualizują **bramę** (ten adres URL jest używany do wywoływania interfejsu API uwidocznionego za pomocą API Management) i **portalu** (adres URL portalu dla deweloperów).
-    > Punkty końcowe **zarządzania** i **SCM** są używane wewnętrznie przez właścicieli wystąpień API Management i w ten sposób rzadziej przypisywana jest niestandardowa nazwa domeny. Warstwa **Premium** obsługuje ustawianie wielu nazw hostów dla punktu końcowego **bramy** .
+    > Punkty końcowe **zarządzania** i **SCM** są używane wewnętrznie przez właścicieli wystąpień API Management i w ten sposób rzadziej przypisywana jest niestandardowa nazwa domeny.
+    > Warstwa **Premium** obsługuje ustawianie wielu nazw hostów dla punktu końcowego **bramy** .
 
 1. Wybierz punkt końcowy, który chcesz zaktualizować.
 1. W oknie po prawej stronie kliknij pozycję **niestandardowy**.
 
-    - W polu **nazwa domeny niestandardowej**Określ nazwę, której chcesz użyć. Na przykład `api.contoso.com`. Nazwy domen symboli wieloznacznych ( \*na przykład. domain.com) są również obsługiwane.
+    - W polu **nazwa domeny niestandardowej**Określ nazwę, której chcesz użyć. Na przykład `api.contoso.com`.
     - W obszarze **certyfikat**wybierz certyfikat z Key Vault. Można również przekazać prawidłowy. Plik PFX i podaj jego **hasło**, jeśli certyfikat jest chroniony hasłem.
+
+    > [!NOTE]
+    > Nazwy domen wieloznacznych, `*.contoso.com` np., są obsługiwane we wszystkich warstwach poza warstwą zużycia.
 
     > [!TIP]
     > Zalecamy używanie Azure Key Vault do zarządzania certyfikatami i ustawiania ich na automatyczne obracanie.
@@ -71,7 +76,7 @@ Aby wykonać kroki opisane w tym artykule, musisz dysponować:
 1. Kliknij przycisk Zastosuj.
 
     > [!NOTE]
-    > Proces przypisywania certyfikatu może potrwać 15 minut lub dłużej w zależności od rozmiaru wdrożenia. Jednostka SKU dla deweloperów ma przestój, podstawowa i wyższa jednostka SKU nie mają przestojów.
+    > Proces przypisywania certyfikatu może potrwać 15 minut lub dłużej w zależności od rozmiaru wdrożenia. Jednostka SKU dla deweloperów ma przestoje, a w przypadku wersji podstawowa i wyższa nie ma przestojów.
 
 [!INCLUDE [api-management-custom-domain](../../includes/api-management-custom-domain.md)]
 
@@ -79,8 +84,8 @@ Aby wykonać kroki opisane w tym artykule, musisz dysponować:
 
 Podczas konfigurowania usługi DNS dla niestandardowej nazwy domeny dostępne są dwie opcje:
 
-- Skonfiguruj rekord CNAME, który wskazuje punkt końcowy skonfigurowanej niestandardowej nazwy domeny.
-- Skonfiguruj rekord A, który wskazuje adres IP bramy API Management.
+-   Skonfiguruj rekord CNAME, który wskazuje punkt końcowy skonfigurowanej niestandardowej nazwy domeny.
+-   Skonfiguruj rekord A, który wskazuje adres IP bramy API Management.
 
 > [!NOTE]
 > Mimo że adres IP wystąpienia zarządzania interfejsem API jest statyczny, może on ulec zmianie w kilku scenariuszach. Z tego powodu zaleca się użycie rekordu CNAME podczas konfigurowania domeny niestandardowej. Weź pod uwagę podczas wybierania metody konfiguracji DNS. Przeczytaj więcej na temat [często zadawanych pytań dotyczących interfejsu API Mananagement](https://docs.microsoft.com/azure/api-management/api-management-faq#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules).

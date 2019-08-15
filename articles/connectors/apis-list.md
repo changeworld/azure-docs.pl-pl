@@ -10,10 +10,10 @@ ms.suite: integration
 ms.topic: article
 ms.date: 05/08/2019
 ms.openlocfilehash: 126c3fb348b1d53769a818ae4b21fcdbbef65615
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "68517233"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Łączniki dla Azure Logic Apps
@@ -198,7 +198,7 @@ Aby udostępnić niestandardowe API Apps lub łączniki dla wszystkich użytkown
 >
 > Aby uzyskać więcej informacji na temat tworzenia ISEs, zobacz [nawiązywanie połączenia z sieciami wirtualnymi platformy Azure z Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Znajdź [pełną listę łączników](https://docs.microsoft.com/connectors)
 * [Tworzenie pierwszej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)

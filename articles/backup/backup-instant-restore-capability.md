@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dacurwin
-ms.openlocfilehash: 0f31320a638dd4741d940d0b459575b66149b829
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: f2485786f323bc6d19d39f4da6ffa7cab14bbb4c
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698405"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951839"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Uzyskiwanie ulepszonej wydajności tworzenia kopii zapasowych i przywracania dzięki funkcji Azure Backup natychmiastowego przywracania
 
@@ -24,7 +24,7 @@ Nowy model do natychmiastowego przywracania zapewnia następujące udoskonalenia
 
 * Możliwość korzystania z migawek wykonanych w ramach zadania tworzenia kopii zapasowej, które jest dostępne do odzyskania bez oczekiwania na zakończenie transferu danych do magazynu. Skraca czas oczekiwania na skopiowanie migawek do magazynu przed wyzwoleniem przywracania.
 * Skraca czas wykonywania kopii zapasowej i przywracania przez zachowywanie migawek lokalnie, domyślnie przez dwa dni. Domyślna wartość przechowywania migawek jest konfigurowalna dla dowolnej wartości z zakresu od 1 do 5 dni.
-* Obsługuje rozmiary dysków do 4 TB. Nie zaleca się zmiany rozmiarów dysku Azure Backup.
+* Obsługuje rozmiary dysków do 4 TB. Nie zaleca się zmiany rozmiarów dysków Azure Backup. Aby zarejestrować się w celu uzyskania ograniczonej publicznej wersji zapoznawczej Azure Backup dużych dyskach o pojemności większej niż 4 TB i maksymalnie 30 TB, zobacz [Omówienie kopii zapasowej maszyny wirtualnej platformy Azure](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
 * Program obsługuje dyski SSD w warstwie Standardowa razem z dyskami HDD w warstwie Standardowa i dyskami SSD w warstwie Premium.
 * Możliwość korzystania z niezarządzanych maszyn wirtualnych (na dysku) podczas przywracania. Ta możliwość istnieje nawet wtedy, gdy maszyna wirtualna zawiera dyski rozproszone na kontach magazynu. Przyspiesza operacje przywracania w różnych konfiguracjach maszyn wirtualnych.
 * W przypadku tworzenia kopii zapasowych maszyn wirtualnych korzystających z usługi Premium Storage z natychmiastowym przywróceniem zaleca się alokowanie *50%* wolnego miejsca w łącznym przydzielonym miejscu do magazynowania, które jest wymagane **tylko** dla pierwszej kopii zapasowej. Ilość wolnego miejsca na 50% nie jest wymagana w przypadku kopii zapasowych po wykonaniu pierwszej kopii zapasowej.

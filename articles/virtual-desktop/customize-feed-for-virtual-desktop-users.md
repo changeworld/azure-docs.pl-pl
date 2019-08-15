@@ -1,64 +1,64 @@
 ---
-title: Dostosuj Kanał informacyjny dla użytkowników pulpitu wirtualnego Windows - Azure
-description: Dostosowywanie źródła danych dla użytkowników pulpitu wirtualnego Windows za pomocą poleceń cmdlet programu PowerShell.
+title: Dostosowywanie kanału informacyjnego dla użytkowników pulpitu wirtualnego systemu Windows — Azure
+description: Jak dostosować źródło danych dla użytkowników pulpitu wirtualnego systemu Windows za pomocą poleceń cmdlet programu PowerShell.
 services: virtual-desktop
-author: v-hevem
+author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.author: v-hevem
-ms.openlocfilehash: 5fe2a8b8ee5870ff7986ca2d91739f82a5128882
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.author: helohr
+ms.openlocfilehash: 40fd863d9ad92b91b8e691fbb7be233e16b82c17
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618995"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950747"
 ---
 # <a name="customize-feed-for-windows-virtual-desktop-users"></a>Dostosowywanie kanału informacyjnego dla użytkowników usługi Windows Virtual Desktop
 
-Źródło danych można dostosować tak, programów RemoteApp i zasoby usług pulpitu zdalnego są wyświetlane w sposób rozpoznawalny dla użytkowników.
+Możesz dostosować źródło danych, tak aby zasoby usługi RemoteApp i pulpitu zdalnego pojawiały się w rozpoznawanym sposobie dla użytkowników.
 
-Po pierwsze, [Pobierz i zaimportuj moduł programu PowerShell pulpitu wirtualnego Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) do użycia w sesji programu PowerShell, jeśli jeszcze go.
+Najpierw [Pobierz i zaimportuj moduł programu PowerShell dla pulpitu wirtualnego systemu Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , który ma być używany w sesji programu PowerShell, jeśli jeszcze tego nie zrobiono.
 
-## <a name="customize-the-display-name-for-a-remoteapp"></a>Dostosowywanie nazwy wyświetlanej usługi RemoteApp
+## <a name="customize-the-display-name-for-a-remoteapp"></a>Dostosowywanie nazwy wyświetlanej dla usługi RemoteApp
 
-Możesz zmienić nazwę wyświetlaną usługi RemoteApp opublikowanych przez ustawianie przyjaznej nazwy. Domyślnie przyjazna nazwa jest taka sama jak nazwa programu RemoteApp.
+Można zmienić nazwę wyświetlaną opublikowanych programów RemoteApp, ustawiając przyjazną nazwę. Domyślnie przyjazna nazwa jest taka sama jak nazwa programu RemoteApp.
 
-Uruchom następujące polecenie cmdlet programu PowerShell, aby pobrać listę opublikowanych RemoteApps dla grupy aplikacji:
+Aby pobrać listę opublikowanych programów RemoteApp dla grupy aplikacji, uruchom następujące polecenie cmdlet programu PowerShell:
 
 ```powershell
 Get-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname>
 ```
-![Zrzut ekranu przedstawiający polecenia cmdlet programu PowerShell Get-RDSRemoteApp przy użyciu nazwy i FriendlyName wyróżnione.](media/get-rdsremoteapp.png)
+![Zrzut ekranu poleceń cmdlet programu PowerShell Get-RDSRemoteApp z wyróżnioną nazwą i przyjaznymi nazwami.](media/get-rdsremoteapp.png)
 
-Aby przypisać przyjazną nazwę do programów RemoteApp, uruchom następujące polecenie cmdlet programu PowerShell:
+Aby przypisać przyjazną nazwę do usługi RemoteApp, uruchom następujące polecenie cmdlet programu PowerShell:
 
 ```powershell
 Set-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -Name <existingappname> -FriendlyName <newfriendlyname>
 ```
-![Zrzut ekranu przedstawiający polecenia cmdlet programu PowerShell Set-RDSRemoteApp przy użyciu nazwy i nowego FriendlyName wyróżnione.](media/set-rdsremoteapp.png)
+![Zrzut ekranu poleceń cmdlet programu PowerShell Set-RDSRemoteApp o nazwie i nowej FriendlyName wyróżniony.](media/set-rdsremoteapp.png)
 
-## <a name="customize-the-display-name-for-a-remote-desktop"></a>Dostosowywanie nazwy wyświetlanej za pomocą pulpitu zdalnego
+## <a name="customize-the-display-name-for-a-remote-desktop"></a>Dostosuj nazwę wyświetlaną dla Pulpit zdalny
 
-Możesz zmienić nazwę wyświetlaną dla opublikowanych usług pulpitu zdalnego, ustawiając przyjazną nazwę. Jeśli ręcznie utworzono hosta, puli i grupy aplikacji klasycznej przy użyciu programu PowerShell, przyjazna nazwa domyślna to "Sesji pulpitu". Jeśli host został utworzony w puli i grupy aplikacji klasycznej przy użyciu szablonu usługi GitHub usługi Azure Resource Manager lub oferty w portalu Azure Marketplace, przyjazna nazwa domyślna jest taka sama jak nazwa hosta w puli.
+Można zmienić nazwę wyświetlaną opublikowanego pulpitu zdalnego, ustawiając przyjazną nazwę. Jeśli utworzono ręcznie pulę hostów i grupę aplikacji klasycznych za pomocą programu PowerShell, domyślną przyjazną nazwą będzie "sesja pulpitu". Jeśli utworzono pulę hostów i grupę aplikacji klasycznych za pomocą szablonu Azure Resource Manager GitHub lub oferty portalu Azure Marketplace, domyślna przyjazna nazwa jest taka sama jak nazwa puli hostów.
 
-Aby pobrać zasobu usług pulpitu zdalnego, uruchom następujące polecenia cmdlet programu PowerShell:
+Aby pobrać zasób pulpitu zdalnego, uruchom następujące polecenie cmdlet programu PowerShell:
 
 ```powershell
 Get-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname>
 ```
-![Zrzut ekranu przedstawiający polecenia cmdlet programu PowerShell Get-RDSRemoteApp przy użyciu nazwy i FriendlyName wyróżnione.](media/get-rdsremotedesktop.png)
+![Zrzut ekranu poleceń cmdlet programu PowerShell Get-RDSRemoteApp z wyróżnioną nazwą i przyjaznymi nazwami.](media/get-rdsremotedesktop.png)
 
-Aby przypisać przyjazną nazwę do zasobu usług pulpitu zdalnego, uruchom następujące polecenie cmdlet programu PowerShell:
+Aby przypisać przyjazną nazwę do zasobu pulpitu zdalnego, uruchom następujące polecenie cmdlet programu PowerShell:
 
 ```powershell
 Set-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -FriendlyName <newfriendlyname>
 ```
-![Zrzut ekranu przedstawiający polecenia cmdlet programu PowerShell Set-RDSRemoteApp przy użyciu nazwy i nowego FriendlyName wyróżnione.](media/set-rdsremotedesktop.png)
+![Zrzut ekranu poleceń cmdlet programu PowerShell Set-RDSRemoteApp o nazwie i nowej FriendlyName wyróżniony.](media/set-rdsremotedesktop.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz czy dostosowaniu źródła danych dla użytkowników, możesz zalogować się do klienta pulpitu wirtualnego Windows Aby przetestować działanie. Aby to zrobić, przejdź do nawiązywania połączenia z wirtualnego How-tos pulpitu Windows:
+Teraz, po dostosowaniu źródła danych dla użytkowników, możesz zalogować się do klienta pulpitu wirtualnego systemu Windows w celu przetestowania go. Aby to zrobić, przejdź do programu Windows Virtual Desktop how-Toss:
     
  * [Łączenie z systemem Windows 10 lub Windows 7](connect-windows-7-and-10.md)
- * [Łączenie z przeglądarki sieci web](connect-web.md) 
+ * [Nawiązywanie połączenia z przeglądarki sieci Web](connect-web.md) 

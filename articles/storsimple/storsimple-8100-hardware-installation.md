@@ -1,6 +1,6 @@
 ---
-title: Instalowanie programu Microsoft Azure StorSimple 8100 urządzenia | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób Rozpakowywanie, montowanie i Podłączanie kabli do urządzenia StorSimple 8100, aby wdrożyć i skonfigurować oprogramowanie.
+title: Zainstaluj urządzenie Microsoft Azure StorSimple 8100 | Microsoft Docs
+description: W tym artykule opisano sposób rozpakowywania, montowania w stojaku i kabla urządzenia z StorSimple 8100 przed wdrożeniem i skonfigurowaniem oprogramowania.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,238 +14,241 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: b367b6e7126a442dc68646ff52a29c955f50b798
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0b2301c1c9b846e2ea005f049c5aadb3d4634a81
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60631230"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963580"
 ---
-# <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>Je rozpakować, zamontować w stojaku i Podłączanie kabli do urządzenia StorSimple 8100
+# <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>Rozpakowywanie, montowanie w stojaku i Podłączanie kabli do urządzenia z systemem StorSimple 8100
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
+
 ## <a name="overview"></a>Omówienie
-Usługi Microsoft Azure StorSimple 8100 to obudowy pojedynczego urządzenia montowane w stojaku. W tym samouczku wyjaśniono, jak rozpakować, zamontować w stojaku i kabel StorSimple 8100 urządzeń sprzętowych przed skonfigurowaniem i wdrażanie urządzenia StorSimple.
+Microsoft Azure StorSimple 8100 to jedno obudowa, czyli urządzenie zainstalowane w stojaku. W tym samouczku wyjaśniono, jak rozpakować sprzęt urządzenia z systemem StorSimple 8100 i podłączyć go do niego przed skonfigurowaniem i wdrożeniem urządzenia StorSimple.
 
-## <a name="unpack-your-storsimple-8100-device"></a>Rozpakowywanie urządzenia StorSimple 8100
-W poniższych krokach przedstawiono wyraźne, szczegółowe instrukcje dotyczące rozpakowania urządzenia StorSimple 8100 magazynu. To urządzenie jest dostarczane w jednym pudełku.
+## <a name="unpack-your-storsimple-8100-device"></a>Rozpakowywanie urządzenia z urządzeniem z StorSimple 8100
+Poniższe kroki zawierają szczegółowe instrukcje dotyczące rozpakowywania urządzenia magazynującego z usługą StorSimple 8100. To urządzenie jest dostarczane w jednym pudełku.
 
-### <a name="prepare-to-unpack-your-device"></a>Przygotowanie do rozpakowywania urządzenia
-Zanim można rozpakować urządzenie, przejrzyj następujące informacje.
+### <a name="prepare-to-unpack-your-device"></a>Przygotowanie do rozpakowania urządzenia
+Przed rozpakowaniem urządzenia zapoznaj się z poniższymi informacjami.
 
-![Ikona ostrzeżenia](./media/storsimple-safety/IC740879.png)![ikonę ciężki](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **ostrzeżenie!**
+![Ostrzeżenie ikony](./media/storsimple-safety/IC740879.png)![](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) dużej grubości ikony ostrzeżenia **!**
 
-1. Upewnij się, że dwie osoby dostępne na potrzeby zarządzania wagę obudowa, jeśli są obsługującą go ręcznie. W pełni skonfigurowany obudowy można porównać do 32 kg (70 lbs.).
+1. Upewnij się, że masz dwie osoby, aby zarządzać wagą obudowy, jeśli jest ona obsługiwana ręcznie. W pełni skonfigurowana obudowa może ważyć do 32 kg (70 funtów).
 2. Umieść pudełko na płaskiej, poziomej powierzchni.
 
-Następnie wykonaj poniższe kroki, aby rozpakować urządzenie.
+Następnie wykonaj następujące kroki, aby rozpakować urządzenie.
 
 #### <a name="to-unpack-your-device"></a>Aby rozpakować urządzenie
-1. Sprawdź, czy na pudełku i na piance opakowaniowej znajdują się naderwania, zarysowania, przecięcia, uszkodzenia od wody lub inne widoczne uszkodzenia. Jeśli pudełko lub opakowanie jest poważnie uszkodzone, nie należy go otwierać. Proszę [skontaktuj się z Microsoft Support](storsimple-8000-contact-microsoft-support.md) ułatwią Ci ocenić, czy urządzenie jest w dobrym stanie.
-2. Rozpakuj zawartość pudełka. Na poniższej ilustracji przedstawiono widok nierozpakowane urządzenia StorSimple.
+1. Sprawdź, czy na pudełku i na piance opakowaniowej znajdują się naderwania, zarysowania, przecięcia, uszkodzenia od wody lub inne widoczne uszkodzenia. Jeśli pudełko lub opakowanie jest poważnie uszkodzone, nie należy go otwierać. [Skontaktuj się z pomocą techniczną pomoc techniczna firmy Microsoft](storsimple-8000-contact-microsoft-support.md) , aby ocenić, czy urządzenie jest w dobrym stanie.
+2. Rozpakuj zawartość pudełka. Na poniższej ilustracji przedstawiono niepakowany widok urządzenia StorSimple.
    
-     ![Rozpakowywanie urządzenia magazynu](./media/storsimple-8100-hardware-installation/HCSUnpackyour2Udevice.png)
+     ![Rozpakowywanie urządzenia magazynującego](./media/storsimple-8100-hardware-installation/HCSUnpackyour2Udevice.png)
    
-    **Wczytaj widok urządzenia magazynu**
+    **Niepakowany widok urządzenia magazynującego**
    
-   | Label | Opis |
+   | Etykieta | Opis |
    | --- | --- |
-   |   1 |Okno dokumentu |
-   |   2 |Dolny maskotkę witryny |
+   |   1 |Pole pakowania |
+   |   2 |Dolna pianka |
    |   3 |Urządzenie |
-   |   4 |Najważniejsze maskotkę witryny |
+   |   4 |Górna pianka |
    |   5 |Pole akcesoriów |
 3. Po rozpakowaniu upewnij się, że masz:
    
-   * 1 urządzenie pojedynczego obudowy
-   * 2 przewodów zasilania
-   * 1 skrzyżowanego kabla Ethernet
-   * 2 kable konsoli szeregowej
-   * Konwerter USB seryjny 1 dostęp szeregowy
-   * 1 śrubokręt T10 odporną na manipulacje
-   * 4 QSFP-do-SFP + kart do użycia z interfejsów sieciowych 10 GbE
-   * 1-zamontować w stojaku kit (2 po stronie rails z instalowania sprzętu)
-   * Getting Started dokumentacji
+   * 1 pojedyncze urządzenie obudów
+   * 2 przewody zasilające
+   * 1 kabel sieci Ethernet typu skrzyżowanie
+   * 2 okablowania konsoli szeregowej
+   * 1 konwerter szeregowy USB na potrzeby dostępu szeregowego
+   * 1 Śrubokręt T10
+   * 4 karty/QSFP-SFP + do użycia z interfejsami sieciowymi 10 GbE
+   * 1 zestaw do montażu w stojaku (dwie szyny boczne z sprzętem montażowym)
+   * Dokumentacja Wprowadzenie
      
-     Jeśli nie masz żadnych elementów wymienionych powyżej, [skontaktuj się z Microsoft Support](storsimple-8000-contact-microsoft-support.md).
+     Jeśli nie otrzymano żadnego z wymienionych powyżej elementów, [skontaktuj się z pomoc techniczna firmy Microsoft](storsimple-8000-contact-microsoft-support.md).
 
 Następnym krokiem jest zamontowanie urządzenia na stojaku.
 
-## <a name="rack-mount-your-storsimple-8100-device"></a>Urządzenie StorSimple 8100 zamontować w stojaku
-Wykonaj poniższe czynności, aby zainstalować urządzenia magazynu StorSimple 8100 w standardowym stelażu 19-calowy z przodu i wpisy na tylnej. Urządzenie StorSimple 8100 ma jednej podstawowej obudowie.
+## <a name="rack-mount-your-storsimple-8100-device"></a>Stojak — Instalowanie urządzenia z systemem StorSimple 8100
+Postępuj zgodnie z poniższymi instrukcjami, aby zainstalować urządzenie magazynujące z systemem StorSimple 8100 w standardowym stojaku 19-calowym z przodu i z tyłu. Urządzenie z systemem StorSimple 8100 ma jeden podstawowy załącznik.
 
-Instalacja składa się z wielu kroków, z których każdy jest omówione w poniższych procedurach.
+Instalacja składa się z wielu kroków, z których każda została omówiona w poniższych procedurach.
 
 > [!IMPORTANT]
-> Urządzenia StorSimple musi być montowane w stojaku do prawidłowego działania.
+> Urządzenia StorSimple muszą być zainstalowane w stojaku w celu zapewnienia odpowiedniej operacji.
 > 
 > 
 
-### <a name="prepare-the-site"></a>Przygotowanie lokacji
-Urządzenie musi być zainstalowany w standardowych stojaku 19-calowy, która ma zarówno frontonu, jak i tylnej wpisów. Poniższa procedura umożliwia przygotowanie do instalacji stojaka.
+### <a name="prepare-the-site"></a>Przygotuj lokację
+Urządzenie musi być zainstalowane w standardowym stojaku 19-calowym, które ma zarówno wpisy frontonu, jak i tyłu. Aby przygotować się do instalacji stelażowej, należy wykonać poniższą procedurę.
 
-#### <a name="to-prepare-the-site-for-rack-installation"></a>Aby przygotować lokacji stojak instalacji
+#### <a name="to-prepare-the-site-for-rack-installation"></a>Aby przygotować lokację do instalacji stojaka
 1. Upewnij się, że urządzenie zostało bezpiecznie umieszczone na płaskiej, stabilnej i poziomej powierzchni roboczej (lub podobnej).
-2. Sprawdź, czy witryny, na którym zamierzasz skonfigurować ma standardowy zasilacza niezależne źródło lub stojak jednostki dystrybucji zasilania (PDU) przy użyciu zasilacz awaryjny (UPS).
-3. Upewnij się, że ten jedno gniazdo 2U jest dostępna w stojaku, w którym zamierzasz zainstalować na urządzeniu.
+2. Upewnij się, że lokacja, w której zamierzasz skonfigurować, ma moc standardową AC od niezależnego źródła lub z jednostki dystrybucji zasilania w stojaku (PDU) z zasilaczem UPS.
+3. Upewnij się, że jedno gniazdo 2U jest dostępne w stojaku, w którym zamierzasz zainstalować urządzenie.
 
-![Ikona ostrzeżenia](./media/storsimple-safety/IC740879.png)![ikonę ciężki](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **ostrzeżenie!**
+![Ostrzeżenie ikony](./media/storsimple-safety/IC740879.png)![](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) dużej grubości ikony ostrzeżenia **!**
 
-Upewnij się, że dwie osoby dostępne na potrzeby zarządzania wagi, jeśli są w nim Obsługa konfiguracji urządzenia ręcznie. W pełni skonfigurowany obudowy można porównać do 32 kg (70 lbs.).
+Upewnij się, że masz dwie osoby, które mają być dostępne do zarządzania wagą, jeśli ręcznie obsługujesz konfigurację urządzenia. W pełni skonfigurowana obudowa może ważyć do 32 kg (70 funtów).
 
-### <a name="rack-prerequisites"></a>Wymagania wstępne stojak
-Obudowa 8100 jest przeznaczona dla instalacji w standardowym stelażu 19-calowy cabinet za pomocą:
+### <a name="rack-prerequisites"></a>Wymagania wstępne dotyczące stojaka
+Obudowa 8100 została zaprojektowana do instalacji w standardowym szafie montażowym 19 cali z:
 
-* Minimalna głębokość 27.84 cala od regału post do wpisu.
-* Waga maksymalny 32 kg dla urządzenia
-* Maksymalne wykorzystanie wstecz Pascal 5 (0,5 mm wody miernika).
+* Minimalna głębokość 27,84 cala od wpisu stojaka do opublikowania.
+* Maksymalna waga 32 kg dla urządzenia
+* Maksymalne ciśnienie powrotu 5 Pascalów (0,5 mm).
 
-### <a name="rack-mounting-rail-kit"></a>Instalowanie w stelażu szyny kit
-Do użytku z pliku cabinet stojak 19-calowy jest dostępny zestaw zainstalowania platformy rails. Do obsługi wagi maksymalna obudowy zostały przetestowane szyny. Te platformy rails będzie również umożliwiać instalację wielu obudowach bez utraty miejsca w stojaku.
+### <a name="rack-mounting-rail-kit"></a>Montaż zestawu szynowego w stojaku
+Zestaw szyn montażowych jest dostępny do użycia z 19-calowym szafą w stojaku. Szyny zostały przetestowane w celu obsłużenia maksymalnej wagi obudowy. Te szyny umożliwiają również instalację wielu obudów bez utraty miejsca w stojaku.
 
-#### <a name="to-install-the-device-on-the-rails"></a>Do zainstalowania na urządzeniu na szyny
-1. Ten krok należy wykonać tylko wtedy, gdy rails wewnętrzne nie są zainstalowane na urządzeniu. Zazwyczaj rails wewnętrzne są instalowane na etapie produkcji. Jeśli nie zainstalowano platformy rails, zainstaluj slajdy szyny po lewej stronie i szyny po prawej stronie na stronach obudowy obudowy. Dołącz one, przy użyciu sześciu śruby metryki na każdej stronie. Aby ułatwić orientacji, slajdy szyny są oznaczone **LH — przód** i **RH — przód**, i zakończenia, który jest dołączony do tyłu obudowa ma końcem.<br/>
+#### <a name="to-install-the-device-on-the-rails"></a>Aby zainstalować urządzenie na szynach
+1. Wykonaj ten krok tylko wtedy, gdy na urządzeniu nie zainstalowano wewnętrznych szyn. Zazwyczaj szyny wewnętrzne są instalowane w fabryce. Jeśli szyny nie są zainstalowane, a następnie zainstaluje slajdy z lewej szyną i z prawej strony szyny po bokach obudowy obudowy. Dołączą one przy użyciu sześciu wkrętów metryk na każdej stronie. Aby pomóc w orientacji, slajdy szyny są oznaczone jako **LH – Front** i **RH – Front**, a koniec, który jest umieszczany w tylnej części obudowy, ma zbieżny koniec.<br/>
    
-    ![Dołączanie slajdy szyny do obudowy obudowy](./media/storsimple-8100-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
+    ![Dołączanie slajdów szyny do obudowy obudowy](./media/storsimple-8100-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
 
-    **Dołączanie wewnętrzny szyny slajdów na stronach obudowa**
+    **Dołączanie wewnętrznych slajdów szyny do boków obudowy**
    
-    Label | Opis
+    Etykieta | Opis
     ----- | -----------
-    1     | M 3 x 4 śruby przycisk główny
-    2     | Podstawa montażowa slajdów
+    1     | M 3x4 — wkręty z przyciskiem
+    2     | Slajdy obudowy
 
-2. Dołączanie zewnętrznej szyny po lewej stronie i zestawy zewnętrzne po prawej stronie do stojak cabinet pionowej elementy członkowskie. Nawiasy są oznaczone **LH**, **RH**, i **ta strona się** przeprowadzenie Cię przez proces poprawnej orientacji.
-3. Znajdź bolce szyny z przodu i z tyłu zestawu prowadnic. Rozszerz szyny mieści się między wpisów w stojaku i wstawianie numery PIN przedniej i tylnej stojak wpis składowej pionowej luki. Pamiętaj, że zestaw szyny jest poziom.
-4. Zapewnienie pionowej elementy członkowskie zestawu szyny w stojaku, użyj dwóch podanych śruby metryki. Użyj jednej śrubie na frontonu i jednej z tyłu.
-5. Powtórz te kroki dla innych zestawów szyny.<br/>
+2. Dołączaj zewnętrzne i zewnętrzne zespoły kolejek do szafy w stojaku do pionowej składowej szafy. Nawiasy są oznaczone jako **LH**, **RH**i **tej samej strony** , aby przekierować użytkownika do odpowiedniej orientacji.
+3. Znajdź bolce szyny z przodu i z tyłu zestawu prowadnic. Zwiększ poziom szyny, aby dopasować się do wpisów w stojaku i wstawić numery PIN do elementów członkowskich publikowania w stojaku do przodu i do tyłu. Upewnij się, że zestaw szyny jest poziom.
+4. Aby zabezpieczyć zestaw szyny do pionowych elementów członkowskich stojaka, należy użyć dwóch z dostarczonych wartości. Użyj jednego gwintu na wierzchu i po jednym z tyłu.
+5. Powtórz te kroki dla drugiego zestawu szyn.<br/>
    
-     ![Dołączanie slajdy szyny stojaku cabinet](./media/storsimple-8100-hardware-installation/HCSAttachingRailSlidestoRackCabinet.png)
+     ![Dołączanie slajdów szyny do szafy stelażowej](./media/storsimple-8100-hardware-installation/HCSAttachingRailSlidestoRackCabinet.png)
    
-    **Dołączanie zestawy zewnętrzne szyny w stojaku**
+    **Dołączanie zewnętrznych zestawów szyn do stojaka**
    
-   | Label | Opis |
+   | Etykieta | Opis |
    | --- | --- |
-   |   1 |Granica gwintowanym |
-   |   2 |Gwintowanym wpis w stojaku frontonu dziura kwadrat |
-   |   3 |Numery PIN przednim lokalizacji szyny po lewej stronie |
-   |   4 |Granica gwintowanym |
-   |   5 |Numery PIN tylnej lokalizacji po lewej stronie szyny |
+   |   1 |Zawężanie złącza |
+   |   2 |Otwór na stojaku w stelażu |
+   |   3 |Numery PIN z lewej strony szyny |
+   |   4 |Zawężanie złącza |
+   |   5 |Numery PIN z lewej strony szyny |
 
 ### <a name="mounting-the-device-in-the-rack"></a>Instalowanie urządzenia w stojaku
-Za pomocą stojaku, które właśnie zostały zainstalowane, wykonaj następujące kroki, aby zainstalować urządzenia w stojaku.
+Przy użyciu szyn stojaków, które zostały właśnie zainstalowane, wykonaj następujące kroki, aby zainstalować urządzenie w stojaku.
 
-#### <a name="to-mount-the-device"></a>Do zainstalowania na urządzeniu
-1. Z Asystentem Podnieś obudowa i dostosować ją przy użyciu platformy rails stojaka.
-2. Dokładnie Wstawianie urządzenia platformy rails, a następnie Wypchnij urządzenie całkowicie w stojaku cabinet.<br/>
+#### <a name="to-mount-the-device"></a>Aby zainstalować urządzenie
+1. Przy użyciu Asystenta Unieś obudowę i Wyrównaj ją do szyn stojaków.
+2. Starannie wkładaj urządzenie do szyn, a następnie wypchnij je całkowicie do szafy stelażowej.<br/>
    
     ![Wstawianie urządzenia w stojaku](./media/storsimple-8100-hardware-installation/HCSInsertingDeviceintheRack.png)
    
     **Instalowanie urządzenia w stojaku**
-3. Ściąganie bezpłatne limity, aby usunąć limity kołnierza po lewej i prawej frontonu. Limity kołnierza po prostu przyciąganie do stopka.
-4. Zabezpiecz obudowy w stojaku, co podane gwintowanym Phillips head za pośrednictwem każdej kołnierza, lewy i prawy instalowanie.
-5. Zainstaluj caps kołnierza, naciskając je w określonej pozycji i przyciąganie ich w miejscu.<br/>
+3. Usuń lewe i prawe czołowe kołnierze, pobierając bezpłatnie wielkie litery. Naciśnięcia kołnierza po prostu Przyciągnij na kołnierze.
+4. Zabezpiecz obudowę w stojaku, instalując jeden z podanych Phillips, po lewej stronie i w prawo.
+5. Zainstaluj naciski na siebie, naciskając je do położenia i przyciągania w miejscu.<br/>
    
-     ![Instalowanie caps kołnierza](./media/storsimple-8100-hardware-installation/HCSInstallingFlangeCaps.png)
+     ![Instalowanie Cap kołnierza](./media/storsimple-8100-hardware-installation/HCSInstallingFlangeCaps.png)
    
-    **Instalowanie caps kołnierza**
+    **Instalowanie Cap kołnierza**
    
-   | Label | Opis |
+   | Etykieta | Opis |
    | --- | --- |
-   |   1 |Gwintowanym zaczepienia obudowy |
+   |   1 |Złączenie mocujące obudowy |
 
-Następnym krokiem jest Podłączanie kabli do urządzenia do zasilania, sieci i dostęp szeregowy.
+Następnym krokiem jest podłączenie urządzenia do sieci i dostępu szeregowego.
 
-## <a name="cable-your-storsimple-8100-device"></a>Podłączanie kabli do urządzenia StorSimple 8100
-Poniższe procedury dotyczą sposobu podłączanie kabli do urządzenia StorSimple 8100 zasilania, sieci i połączenia szeregowe.
+## <a name="cable-your-storsimple-8100-device"></a>Podłączanie kabla do urządzenia z StorSimple 8100
+Poniższe procedury wyjaśniają, jak podłączyć urządzenie z StorSimple 8100 do połączeń z urządzeniami, sieciami i połączeniami seryjnymi.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 Przed rozpoczęciem podłączania kabli urządzenia będą potrzebne następujące elementy:
 
-* Urządzenie magazynujące, całkowicie rozpakowane i stojaku.
-* 2 kable zasilania, które są dołączone do urządzenia
-* Dostęp do 2 jednostki dystrybucji zasilania (zalecane).
+* Urządzenie magazynujące, całkowicie rozpakowane i zamontowane w stojaku.
+* 2 kable zasilające dołączone do urządzenia
+* Dostęp do 2 jednostek dystrybucji (zalecane).
 * Kable sieciowe
-* Podany kable szeregowe
-* Serial Konwerter USB przy użyciu odpowiedniego sterownika, które są zainstalowane na komputerze (w razie potrzeby)
-* Podany 4 QSFP-do-SFP + kart do użycia z interfejsów sieciowych 10 GbE
-* [Obsługiwany sprzęt dla interfejsów sieciowych 10 GbE na urządzeniu StorSimple](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
+* Dostarczone kable szeregowe
+* Konwerter szeregowy USB z odpowiednim sterownikiem zainstalowanym na komputerze (w razie potrzeby)
+* Dostarczone karty 4 QSFP-SFP + do użycia z interfejsami sieciowymi 10 GbE
+* [Sprzęt obsługiwany w przypadku interfejsów sieciowych 10 GbE na urządzeniu StorSimple](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
 
-### <a name="power-cabling"></a>Przewody zasilania
-Urządzenia zawiera nadmiarowe zasilania i chłodzenia modułów (PCMs). Zarówno PCMs musi być zainstalowane i połączone z różnymi źródłami zasilania aby zapewnić wysoką dostępność.
+### <a name="power-cabling"></a>Okablowanie sieciowe
+Urządzenie obejmuje nadmiarowe moduły mocy i chłodzenia (PCMs). Aby zapewnić wysoką dostępność, muszą być zainstalowane i połączone z różnymi źródłami zasilanymi przez PCMs.
 
-Wykonaj poniższe kroki, aby Podłączanie kabli do urządzenia zasilania.
+Wykonaj następujące kroki, aby podłączyć urządzenie do urządzeń.
 
 [!INCLUDE [storsimple-cable-8100-for-power](../../includes/storsimple-cable-8100-for-power.md)]
 
-### <a name="network-cabling"></a>Okablowanie sieci
-Urządzenie jest w konfiguracji aktywne-w gotowości: w dowolnym momencie jeden moduł kontrolera jest aktywny, a przetwarzanie wszystkich operacji dysku i sieci podczas moduł kontroler jest w stanie wstrzymania. Jeśli kontrolera nie powiedzie się, kontroler zapasowy jest aktywowany bezpośrednio i kontynuuje, dysku i sieci operacji.
+### <a name="network-cabling"></a>Okablowanie sieciowe
+Urządzenie jest konfiguracją aktywnego stanu gotowości: w dowolnym momencie jeden moduł kontrolera jest aktywny i przetwarza wszystkie operacje na dyskach i sieciach, gdy drugi moduł kontrolera jest w stanie wstrzymania. Jeśli kontroler zakończy się niepowodzeniem, kontroler gotowości zostanie aktywowany natychmiast i będzie kontynuował wszystkie operacje na dyskach i w sieci.
 
-Aby zapewnić obsługę pracy w trybie failover nadmiarowe kontrolera, musisz okablowanie sieci urządzenia, zgodnie z opisem w poniższych krokach.
+Aby można było obsługiwać ten nadmiarowy kontroler przełączania do trybu failover, należy podłączyć sieć urządzenia zgodnie z opisem w poniższych krokach.
 
-#### <a name="to-cable-for-network-connection"></a>Aby kabel dla połączenia sieciowego
-1. Urządzenie ma sześć interfejsów sieciowych na każdym kontrolerze: cztery 1 GB/s i dwa 10 GB/s Ethernet portów. Identyfikowanie różnych portów danych płyty montażowej urządzenia.
+#### <a name="to-cable-for-network-connection"></a>Do kabla dla połączenia sieciowego
+1. Urządzenie ma sześć interfejsów sieciowych na każdym kontrolerze: cztery 1 GB/s i porty Ethernet 2 10 GB/s. Zidentyfikuj różne porty danych na planie dla urządzenia.
    
-    ![Płyty montażowej urządzenia 8100](./media/storsimple-8100-hardware-installation/HCSBackplaneof2UDevicewithPortsLabeled.jpg)
+    ![Płyta montażowa urządzeń z 8100](./media/storsimple-8100-hardware-installation/HCSBackplaneof2UDevicewithPortsLabeled.jpg)
    
-    **Tylnej stronie urządzeń przedstawiający porty danych**
+    **Z tyłu urządzenia pokazującego porty danych**
    
-   | Label | Opis |
+   | Etykieta | Opis |
    | --- | --- |
-   |   0,1,4,5 |Interfejsy sieciowe w usłudze 1 GbE |
-   |   2,3 |Interfejsów sieciowych 10 GbE |
+   |   0,1,4,5 |1 GbE interfejsów sieciowych |
+   |   2,3 |Interfejsy sieciowe 10 GbE |
    |   6 |Porty szeregowe |
-2. Zobacz poniższy diagram okablowanie sieci. (Konfiguracja minimalna sieci jest reprezentowany przez niebieska linia ciągła. Dodatkowych czynności konfiguracyjnych wymaganych na potrzeby wysokiej dostępności i wydajności znajduje się za pomocą linii kropkowanej).
+2. Na poniższym diagramie przedstawiono okablowanie sieciowe. (Minimalna konfiguracja sieci jest pokazywana przez pełne niebieskie linie. Dodatkowa konfiguracja wymagana w celu zapewnienia wysokiej dostępności i wydajności jest pokazywana przez linie kropkowane.)
 
-    ![Podłączanie kabli do urządzenia 2U sieci](./media/storsimple-8100-hardware-installation/HCSCableYour2UDeviceforNetwork.png)
+    ![Podłączanie urządzenia do 2U w sieci](./media/storsimple-8100-hardware-installation/HCSCableYour2UDeviceforNetwork.png)
 
-    **Okablowania dla urządzenia sieciowego**
+    **Okablowanie sieci dla urządzenia**
 
-   |Label | Opis |
+   |Etykieta | Opis |
    |----- | ----------- |
    | A    | Sieć LAN z dostępem do Internetu |
    | B    | Kontroler 0 |
    | C    | PCM 0 |
    | D    | Kontroler 1 |
    | E    | PCM 1 |
-   | F, G | Hosts |
+   | F, G | Hosty |
    | 0-5  | Interfejsy sieciowe |
 
 
 
-W przypadku okablowania urządzenia, wymaga minimalnej konfiguracji:
+W przypadku okablowania urządzenia wymagana jest minimalna konfiguracja:
 
-* Co najmniej dwa interfejsy sieciowe podłączone na każdym kontrolerze przy użyciu jednego, aby uzyskać dostęp do chmury i jeden dla interfejsu iSCSI. DANE 0 portu jest automatycznie włączona i skonfigurowana za pośrednictwem konsoli szeregowej urządzenia. Oprócz interfejs DATA 0 inny port danych wymaga także można skonfigurować za pomocą klasycznego portalu Azure. W tym przypadku łącz dane 0 port do podstawowej sieci LAN (sieci z dostępem do Internetu). Inne porty dane mogą być połączone do segmentu sieci, w zależności od tego, ma pełnić SAN/iSCSI sieci LAN (VLAN).
-* Identyczne interfejsy na każdym kontrolerze połączone z tą samą siecią, aby zapewnić dostępność w przypadku przejścia do trybu failover kontrolera. Na przykład jeśli chcesz połączyć interfejs DATA 0 i DATA 3 na jeden z kontrolerów należy połączyć odpowiadające im dane 0 i DATA 3 na drugim kontrolerze.
+* Co najmniej dwa interfejsy sieciowe połączone na każdym kontrolerze z jednym na potrzeby dostępu do chmury i jeden dla iSCSI. Port DATA 0 jest automatycznie włączany i konfigurowany za pośrednictwem konsoli szeregowej urządzenia. Oprócz danych 0 inny port danych należy również skonfigurować za pośrednictwem klasycznego portalu Azure. W takim przypadku Połącz port DATA 0 z podstawową siecią LAN (sieć z dostępem do Internetu). Inne porty danych mogą być połączone z segmentem sieci SAN/iSCSI (VLAN), w zależności od zamierzonej roli.
+* Identyczne interfejsy na każdym kontrolerze podłączonym do tej samej sieci w celu zapewnienia dostępności w przypadku przejścia do trybu failover kontrolera. Na przykład jeśli zdecydujesz się połączyć dane 0 i 3 dla jednego z kontrolerów, musisz połączyć odpowiednie dane 0 i 3 na drugim kontrolerze.
 
-Należy pamiętać o wysokiej dostępności i wydajności:
+Pamiętaj o wysokiej dostępności i wydajności:
 
-* Jeśli to możliwe, należy skonfigurować parę interfejsu sieciowego, aby uzyskać dostęp do chmury (1 GbE) i kolejną parę iSCSI (zalecane 10 GbE) na każdym kontrolerze.
-* Jeśli to możliwe, interfejsy sieciowe z każdego kontrolera połączyć się z dwóch różnych przełączników, aby zapewnić dostępność awariami przełącznika. Na rysunku przedstawiono dwa 10 GbE interfejsy sieciowe, dane 2 i DATA 3 z każdego kontrolera podłączone do dwóch różnych przełączników.
+* Jeśli to możliwe, należy skonfigurować parę interfejsów sieciowych na potrzeby dostępu do chmury (1 GbE) i inną parę dla iSCSI (zalecane 10 GbE) na każdym kontrolerze.
+* Jeśli to możliwe, podłącz interfejsy sieciowe z każdego kontrolera do dwóch różnych przełączników, aby zapewnić dostępność przed awarią przełącznika. Na rysunku przedstawiono interfejsy sieciowe 2 10 GbE, dane 2 i dane 3 z każdego kontrolera podłączonego do dwóch różnych przełączników.
 
-Aby uzyskać więcej informacji, zobacz **interfejsy sieciowe** w obszarze [wymaganiami wysokiej dostępności dla urządzenia StorSimple](storsimple-8000-system-requirements.md#high-availability-requirements-for-storsimple).
-
-> [!NOTE]
-> Jeśli SFP + należy za pomocą usługi interfejsów sieciowych 10 GbE, użyj podanego QSFP-SFP + kart. Aby uzyskać więcej informacji, przejdź do [obsługiwany sprzęt dla interfejsów sieciowych 10 GbE na urządzeniu StorSimple](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
-> 
-> 
-
-### <a name="serial-port-cabling"></a>Okablowanie portu szeregowego
-Wykonaj poniższe kroki, aby podłączyć do portu szeregowego.
-
-#### <a name="to-cable-for-serial-connection"></a>Aby kabel szeregowy połączenia
-1. Urządzenie ma portu szeregowego na każdym kontrolerze, który jest identyfikowany przez ikona klucza. Można znaleźć na ilustracji w [okablowanie sieci](#network-cabling) sekcji, aby zlokalizować portów szeregowych płyty montażowej urządzenia.
-2. Identyfikowanie aktywnego kontrolera na płyty montażowej Twojego urządzenia. Migająca dioda niebieski wskazuje, czy kontroler jest aktywny.
-3. Użyj podanych kable szeregowe (jeśli jest to konieczne, konwerter szeregowego USB na komputerze przenośnym), a następnie podłączyć konsoli lub komputerze (przy użyciu emulacji terminala na urządzeniu) do portu szeregowego aktywny kontroler.
-4. Na komputerze, należy zainstalować sterowniki USB seryjny (dostarczane z urządzeniem).
-5. Skonfiguruj połączenie szeregowe w następujący sposób: 115 200 transmisji 8 bitów danych, 1 bit zatrzymania, bez parzystości i przepływ sterowania Ustaw na wartość None.
-6. Sprawdź, czy połączenie działa, naciskając klawisz Enter w konsoli. Powinny być wyświetlane menu konsoli szeregowej.
+Aby uzyskać więcej informacji, zapoznaj się z interfejsami sieciowymi w [wymaganiach dotyczących wysokiej dostępności dla urządzenia StorSimple](storsimple-8000-system-requirements.md#high-availability-requirements-for-storsimple).
 
 > [!NOTE]
-> **Zarządzanie obsługą technologii lights-Out**: Gdy urządzenie jest zainstalowane w zdalnym centrum danych lub w pomieszczeniu o ograniczonym dostępie, komputerów, upewnij się, czy połączenia szeregowe na obu kontrolerach zawsze są podłączone do konsoli szeregowej lub podobnego sprzętu. Dzięki temu out-of-band zdalnego sterowania i pomocy technicznej operacji w przypadku zakłócenia w sieci lub nieoczekiwanych awarii.
+> Jeśli używasz urządzeń nadawczych SFP + z interfejsami sieciowymi 10 GbE, Użyj dostarczonych kart QSFP-SFP +. Aby uzyskać więcej informacji, przejdź do [obsługiwanego sprzętu dla interfejsów sieciowych 10 GbE na urządzeniu StorSimple](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
 > 
 > 
 
-Urządzenie jest teraz rozpakowane dla mocy obliczeniowej, dostępu do sieci i połączenie szeregowe. Następnym krokiem jest skonfigurowanie oprogramowania i wdrożyć urządzenie.
+### <a name="serial-port-cabling"></a>Okablowanie portów szeregowych
+Aby nawiązać połączenie z portem szeregowym, wykonaj następujące czynności.
 
-## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się, jak [wdrożyć i skonfigurować urządzenie StorSimple w środowisku lokalnym](storsimple-8000-deployment-walkthrough-u2.md).
+#### <a name="to-cable-for-serial-connection"></a>Do kabla dla połączenia szeregowego
+1. Urządzenie ma port szeregowy na każdym kontrolerze, który jest identyfikowany przez ikonę klucza. Zapoznaj się z ilustracją w sekcji [okablowanie sieciowe](#network-cabling) , aby znaleźć porty szeregowe na urządzeniu.
+2. Zidentyfikuj aktywny kontroler na urządzeniu. Migające niebieskie diody LED wskazują, że kontroler jest aktywny.
+3. Użyj dostarczonych kabli szeregowych (jeśli to konieczne, konwertera USB-Serial dla laptopa) i Podłącz konsolę lub komputer (z emulacją terminalu do urządzenia) do portu szeregowego aktywnego kontrolera.
+4. Zainstaluj sterowniki serial-USB (dostarczane z urządzeniem) na komputerze.
+5. Skonfiguruj połączenie szeregowe w następujący sposób: 115 200 bodów, 8 bitów danych, 1 bit stop, bez parzystości i sterowanie przepływem ustawione na none.
+6. Sprawdź, czy połączenie działa, naciskając klawisz ENTER w konsoli programu. Powinien pojawić się menu konsoli szeregowej.
+
+> [!NOTE]
+> **Zarządzanie światłami**: Gdy urządzenie jest zainstalowane w zdalnym centrum danych lub w pokoju komputerowym z ograniczonym dostępem, należy się upewnić, że połączenia szeregowe z obydwoma kontrolerami są zawsze połączone z przełącznikiem konsoli szeregowej lub podobnym sprzętem. Umożliwia to poza pasmem zdalne sterowanie i obsługę operacji, jeśli występują zakłócenia sieci lub nieoczekiwane awarie.
+> 
+> 
+
+Urządzenie jest teraz przewodowe w celu zapewnienia mocy, dostępu do sieci i połączenia szeregowego. Następnym krokiem jest skonfigurowanie oprogramowania i wdrożenie urządzenia.
+
+## <a name="next-steps"></a>Następne kroki
+Dowiedz się [, jak wdrożyć i skonfigurować lokalne urządzenie StorSimple](storsimple-8000-deployment-walkthrough-u2.md).
 

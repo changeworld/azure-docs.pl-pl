@@ -1,9 +1,9 @@
 ---
-title: Dzienniki aktywności usługi platformy Azure Active Directory w usłudze Azure Monitor | Dokumentacja firmy Microsoft
-description: Wprowadzenie do usługi Azure Active Directory działania dzienników w usłudze Azure Monitor
+title: Azure Active Directory dzienników aktywności w Azure Monitor | Microsoft Docs
+description: Wprowadzenie do Azure Active Directory dzienników aktywności w Azure Monitor
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/22/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d38035031c32c512a55293ba125fdcc4535b9833
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: e8fb570d328c7391c269d4a2aa91c69003b1cfc8
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204377"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989885"
 ---
-# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Dzienniki aktywności usługi platformy Azure AD w usłudze Azure Monitor
+# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Dzienniki aktywności usługi Azure AD w Azure Monitor
 
-Dzienniki aktywności usługi Azure Active Directory (Azure AD) można kierować do kilku punktów końcowych długi okres przechowywania i danych szczegółowych informacji. Ta funkcja umożliwia:
+Dzienniki aktywności usługi Azure Active Directory (Azure AD) można kierować do kilku punktów końcowych w celu długoterminowego przechowywania i wglądu w dane. Ta funkcja umożliwia:
 
-* Archiwum usługi Azure AD dzienników aktywności do konta usługi Azure storage, aby zachować dane przez długi czas.
-* Stream usługi Azure AD Dzienniki aktywności do Centrum zdarzeń platformy Azure na potrzeby analizy, za pomocą popularnych narzędzi Security Information and Event Management (SIEM), takie jak Splunk i QRadar.
-* Integrowanie usługi Azure AD dzienników aktywności z własnych rozwiązań dziennika niestandardowego przez przesyłanie strumieniowe je do Centrum zdarzeń.
-* Wyślij usługi Azure AD dzienników aktywności do usługi Azure Monitor dzienniki, aby umożliwić rozbudowane wizualizacje, monitorowania i alertów dla połączonych danych.
+* Archiwizuj dzienniki aktywności usługi Azure AD na koncie usługi Azure Storage, aby zachować dane przez długi czas.
+* Przesyłaj strumieniowo dzienniki aktywności usługi Azure AD do centrum zdarzeń platformy Azure w celu analizy przy użyciu popularnych narzędzi do zarządzania informacjami i zdarzeniami zabezpieczeń (SIEM), takich jak Splunk i QRadar.
+* Integrowanie dzienników aktywności usługi Azure AD z własnymi niestandardowymi rozwiązaniami dzienników przez przesyłanie strumieniowe do centrum zdarzeń.
+* Wyślij dzienniki aktywności usługi Azure AD do dzienników Azure Monitor, aby umożliwić rozbudowane wizualizacje, monitorowanie i zgłaszanie alertów dotyczących połączonych danych.
 
 > [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
 
@@ -39,10 +39,10 @@ Dzienniki aktywności usługi Azure Active Directory (Azure AD) można kierować
 
 ## <a name="supported-reports"></a>Obsługiwane raporty
 
-Może kierować usługi Azure AD inspekcji dzienników i dzienników logowania do konta magazynu platformy Azure, Centrum zdarzeń, dzienniki usługi Azure Monitor lub niestandardowe rozwiązania przy użyciu tej funkcji. 
+Dzienniki inspekcji usługi Azure AD i dzienniki logowania można kierować do konta usługi Azure Storage, centrum zdarzeń, dzienników Azure Monitor lub niestandardowego rozwiązania za pomocą tej funkcji. 
 
-* **Dzienniki inspekcji**: [Raport działań dotyczący dzienników inspekcji](concept-audit-logs.md) zapewnia dostęp do historii wszystkich zadań, która jest wykonywana w dzierżawie.
-* **Dzienniki logowania**: Za pomocą [raport aktywności logowania](concept-sign-ins.md), można określić, kto wykonał zadania, które są zgłaszane w dziennikach inspekcji.
+* **Dzienniki inspekcji**: [Raport działania dzienników inspekcji](concept-audit-logs.md) umożliwia dostęp do historii każdego zadania, które jest wykonywane w dzierżawie.
+* **Dzienniki logowania**: [Raport dotyczący działań](concept-sign-ins.md)związanych z logowaniem pozwala określić, kto wykonał zadania zgłaszane w dziennikach inspekcji.
 
 > [!NOTE]
 > Dzienniki aktywności inspekcji i logowania związane z funkcjami B2C nie są obecnie obsługiwane.
@@ -62,7 +62,7 @@ W zależności od tego, gdzie chcesz przekierować dane dziennika inspekcji, bę
 
 * Konto usługi Azure Storage, do którego masz uprawnienia *ListKeys*. Zalecamy używanie konta magazynu ogólnego, a nie konta magazynu obiektów blob. Aby uzyskać informacje o cenach magazynu, zobacz [kalkulator cen usługi Azure Storage](https://azure.microsoft.com/pricing/calculator/?service=storage). 
 * Przestrzeń nazw usługi Azure Event Hubs potrzeby integracji z rozwiązaniami innych firm.
-* Obszar roboczy usługi Azure Log Analytics do wysyłania dzienników do dzienników usługi Azure Monitor.
+* Obszar roboczy usługi Azure Log Analytics do wysyłania dzienników do Azure Monitor dzienników.
 
 ## <a name="cost-considerations"></a>Kwestie związane z kosztami
 
@@ -106,15 +106,15 @@ Poniższa tabela zawiera szacowany koszt na miesiąc dla podstawowego centrum zd
 | Inspekcja | 1000 | 0.1 | 52 | 104 KB | 1 | 8640 | 10,80 USD |
 | Logowania | 1000 | 178 | 53 400 | 106,8&nbsp;MB | 418 | 3 611 520 | 11,06 USD |  
 
-### <a name="azure-monitor-logs-cost-considerations"></a>Usługa Azure Monitor rejestruje zagadnienia dotyczące kosztów
+### <a name="azure-monitor-logs-cost-considerations"></a>Zagadnienia dotyczące kosztów Azure Monitor dzienników
 
 
 
-| Kategoria dziennika       | Liczba użytkowników | Zdarzenia dziennie | Liczba zdarzeń miesięcznie: (30 dni) | Koszt na miesiąc w USD (est). |
+| Kategoria dziennika       | Liczba użytkowników | Zdarzenia dziennie | Liczba zdarzeń miesięcznie (30 dni) | Koszt miesięcznie w USD (EST.) |
 | :--                | ---             | ---            | ---                        | --:                          |
-| Inspekcja oraz operacje logowania | 100,000         | 16,500,000     | 495,000,000                |  $1093.00                       |
-| Inspekcja              | 100,000         | 1,500,000      | 45,000,000                 |  $246.66                     |
-| Logowania           | 100,000         | 15,000,000     | 450,000,000                |  $847.28                     |
+| Inspekcja i logowania | 100,000         | 16 500 000     | 495 000 000                |  $1093,00                       |
+| Inspekcja              | 100,000         | 1 500 000      | 45,000,000                 |  $246,66                     |
+| Logowania           | 100,000         | 15,000,000     | 450 000 000                |  $847,28                     |
 
 
 
@@ -125,49 +125,49 @@ Poniższa tabela zawiera szacowany koszt na miesiąc dla podstawowego centrum zd
 
 
 
-Aby przejrzeć koszty związane z zarządzaniem dzienniki usługi Azure Monitor, zobacz [Zarządzanie kosztami przez kontrolowanie ilości danych i przechowywania w dziennikach w usłudze Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-cost-storage).
+Aby zapoznać się z kosztami związanymi z zarządzaniem dziennikami Azure Monitor, zobacz [Zarządzanie kosztami, kontrolując ilość danych i przechowywanie w dziennikach Azure monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-cost-storage).
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
 Ta sekcja zawiera odpowiedzi na często zadawane pytania i znane problemy z dziennikami usługi Azure AD w usłudze Azure Monitor.
 
-**Pyt.: Dzienniki, które są uwzględnione?**
+**Pyt.: Które dzienniki są uwzględniane?**
 
-**Odp.:** Dzienniki aktywności logowania i dzienników inspekcji są dostępne dla routingu za pomocą tej funkcji, mimo że zdarzeń inspekcji związanych z B2C nie są obecnie uwzględniane. Aby dowiedzieć się, jakie typy dzienników i które oparte na funkcjach dzienniki są obecnie obsługiwane, zapoznaj się ze [schematem dziennika inspekcji](reference-azure-monitor-audit-log-schema.md) i [schematem dziennika logowania](reference-azure-monitor-sign-ins-log-schema.md). 
-
----
-
-**Pyt.: Jak najszybciej po wykonaniu akcji odpowiednimi dziennikami pojawią się w mojej Centrum zdarzeń?**
-
-**Odp.:** Dzienniki powinny być widoczne w Centrum zdarzeń w 2 do 5 minut po wykonaniu akcji. Aby uzyskać więcej informacji na temat usługi Event Hubs, zobacz [Co to jest usługa Azure Event Hubs?](../../event-hubs/event-hubs-about.md)
+**Odp.:** Dzienniki aktywności logowania i dzienniki inspekcji są dostępne dla routingu za pomocą tej funkcji, mimo że zdarzenia inspekcji powiązane z B2Cem nie są obecnie uwzględniane. Aby dowiedzieć się, jakie typy dzienników i które oparte na funkcjach dzienniki są obecnie obsługiwane, zapoznaj się ze [schematem dziennika inspekcji](reference-azure-monitor-audit-log-schema.md) i [schematem dziennika logowania](reference-azure-monitor-sign-ins-log-schema.md). 
 
 ---
 
-**Pyt.: Jak najszybciej po wykonaniu akcji odpowiednimi dziennikami pojawi się na moim koncie usługi storage?**
+**Pyt.: Jak wkrótce po akcji zostaną wyświetlone odpowiednie dzienniki w centrum zdarzeń?**
 
-**Odp.:** Dla konta usługi Azure storage opóźnienie jest dowolnym z zakresu od 5 do 15 minut po wykonaniu akcji.
-
----
-
-**Pyt.: Co się stanie, jeśli Administrator może zmienić okres przechowywania ustawienie diagnostyczne?**
-
-**Odp.:** Nowe zasady przechowywania zostaną zastosowane do dzienników zebranych po zmianie. Zebrane dzienniki, zanim zmiany zasad będzie to miało wpływu.
+**Odp.:** Dzienniki powinny być wyświetlane w centrum zdarzeń w ciągu dwóch do pięciu minut po wykonaniu akcji. Aby uzyskać więcej informacji na temat usługi Event Hubs, zobacz [Co to jest usługa Azure Event Hubs?](../../event-hubs/event-hubs-about.md)
 
 ---
 
-**Pyt.: Ile będzie kosztować przechowywane Moje dane?**
+**Pyt.: Jak wkrótce po akcji zostaną wyświetlone odpowiednie dzienniki na koncie magazynu?**
 
-**Odp.:** Koszty magazynowania zależą od rozmiaru dzienników i okres przechowywania, które wybierzesz. Aby uzyskać listę szacowanych kosztów dzierżaw, które zależą od woluminu wygenerowanych dzienników, przejdź do sekcji [Rozmiar magazynu dla dzienników aktywności](#storage-size-for-activity-logs).
-
----
-
-**Pyt.: Ile będzie kosztować przesyłanie strumieniowe danych do Centrum zdarzeń?**
-
-**Odp.:** Przesyłania strumieniowego koszty zależą od liczby wiadomości, które otrzymujesz za minutę. W tym artykule omówiono sposób obliczania kosztów i przedstawiono listę szacowanych kosztów w oparciu o liczbę komunikatów. 
+**Odp.:** W przypadku kont usługi Azure Storage opóźnienie jest w dowolnym miejscu od 5 do 15 minut po wykonaniu akcji.
 
 ---
 
-**Pyt.: Jak zintegrować usługę Azure AD dzienników aktywności z moim systemem SIEM?**
+**Pyt.: Co się stanie, jeśli administrator zmieni okres przechowywania ustawienia diagnostycznego?**
+
+**Odp.:** Nowe zasady przechowywania zostaną zastosowane do dzienników zebranych po zmianie. Nie dotyczy to dzienników zebranych przed zmianą zasad.
+
+---
+
+**Pyt.: Ile będzie kosztować przechowywanie moich danych?**
+
+**Odp.:** Koszty magazynowania zależą od rozmiaru dzienników i wybranego okresu przechowywania. Aby uzyskać listę szacowanych kosztów dzierżaw, które zależą od woluminu wygenerowanych dzienników, przejdź do sekcji [Rozmiar magazynu dla dzienników aktywności](#storage-size-for-activity-logs).
+
+---
+
+**Pyt.: Ile będzie kosztować przesyłanie strumieniowe danych do centrum zdarzeń?**
+
+**Odp.:** Koszty przesyłania strumieniowego są zależne od liczby odbieranych komunikatów na minutę. W tym artykule omówiono sposób obliczania kosztów i przedstawiono listę szacowanych kosztów w oparciu o liczbę komunikatów. 
+
+---
+
+**Pyt.: Jak mogę zintegrować dzienniki aktywności usługi Azure AD z moim systemem SIEM?**
 
 **Odp.:** Można to zrobić na dwa sposoby:
 
@@ -179,31 +179,31 @@ Ta sekcja zawiera odpowiedzi na często zadawane pytania i znane problemy z dzie
 
 **Pyt.: Jakie narzędzia SIEM są obecnie obsługiwane?** 
 
-**Odp.:** Obecnie usługa Azure Monitor jest obsługiwana przez [Splunk](tutorial-integrate-activity-logs-with-splunk.md), QRadar, i [logiki Sumo](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory). Aby uzyskać więcej informacji na temat sposobu działania łączników, zobacz [Stream Azure monitoring data to an event hub for consumption by an external tool (Przesyłanie strumieniowe danych monitorowania platformy Azure do centrum zdarzeń do użycia przez zewnętrzne narzędzie)](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
+**Odp.:** Obecnie Azure Monitor jest obsługiwany przez logikę [Splunk](tutorial-integrate-activity-logs-with-splunk.md), QRadar i [Sumo](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory). Aby uzyskać więcej informacji na temat sposobu działania łączników, zobacz [Stream Azure monitoring data to an event hub for consumption by an external tool (Przesyłanie strumieniowe danych monitorowania platformy Azure do centrum zdarzeń do użycia przez zewnętrzne narzędzie)](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
 
 ---
 
-**Pyt.: Jak zintegrować usługę Azure AD dzienników aktywności z Moje wystąpienie Splunk?**
+**Pyt.: Jak mogę zintegrować dzienniki aktywności usługi Azure AD z moim wystąpieniem Splunk?**
 
-**Odp.:** Po pierwsze, [trasy usługi Azure AD dzienników aktywności do Centrum zdarzeń](quickstart-azure-monitor-stream-logs-to-event-hub.md), następnie postępuj zgodnie z instrukcjami, aby [zintegrować Dzienniki aktywności z Splunk](tutorial-integrate-activity-logs-with-splunk.md).
-
----
-
-**Pyt.: Jak zintegrować usługę Azure AD dzienników aktywności w logice Sumo?** 
-
-**Odp.:** Po pierwsze, [trasy usługi Azure AD dzienników aktywności do Centrum zdarzeń](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Collect_Logs_for_Azure_Active_Directory), następnie postępuj zgodnie z instrukcjami, aby [instalowanie aplikacji usługi Azure AD i wyświetlać pulpity nawigacyjne w SumoLogic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards).
+**Odp.:** Najpierw należy [skierować dzienniki aktywności usługi Azure AD do centrum zdarzeń](quickstart-azure-monitor-stream-logs-to-event-hub.md), a następnie postępować zgodnie z instrukcjami [dotyczącymi integrowania dzienników aktywności z Splunk](tutorial-integrate-activity-logs-with-splunk.md).
 
 ---
 
-**Pyt.: Można uzyskać dostęp do danych z Centrum zdarzeń bez użycia zewnętrznego narzędzia SIEM?** 
+**Pyt.: Jak mogę zintegrować dzienniki aktywności usługi Azure AD z logiką Sumo?** 
+
+**Odp.:** Najpierw należy [skierować dzienniki aktywności usługi Azure AD do centrum zdarzeń](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Collect_Logs_for_Azure_Active_Directory), a następnie postępować zgodnie z instrukcjami, aby [zainstalować aplikację usługi Azure AD i wyświetlić pulpity nawigacyjne w SumoLogic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards).
+
+---
+
+**Pyt.: Czy mogę uzyskać dostęp do danych z centrum zdarzeń bez użycia zewnętrznego narzędzia SIEM?** 
 
 **Odp.:** Tak. Aby uzyskać dostęp do dzienników z aplikacji niestandardowej, możesz użyć [interfejsu API usługi Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md). 
 
 ---
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Archiwizowanie dzienników aktywności na koncie magazynu](quickstart-azure-monitor-route-logs-to-storage-account.md)
 * [Kierowanie dzienników aktywności do centrum zdarzeń](quickstart-azure-monitor-stream-logs-to-event-hub.md)
-* [Integrowanie dzienników aktywności z usługą Azure Monitor](howto-integrate-activity-logs-with-log-analytics.md)
+* [Integrowanie dzienników aktywności z Azure Monitor](howto-integrate-activity-logs-with-log-analytics.md)

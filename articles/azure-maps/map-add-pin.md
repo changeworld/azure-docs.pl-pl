@@ -1,6 +1,6 @@
 ---
 title: Dodaj warstwę symboli do Azure Maps | Microsoft Docs
-description: Jak dodać symbole do mapy JavaScript
+description: Jak dodać symbole do Azure Maps Web SDK.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,32 +9,52 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 3bce4922a33648f5d7c0d211dba126f35603239b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 10f6a7ef92bfd6558ed93e7fb40df9e48e1b92f5
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849282"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976173"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>Dodawanie warstwy symboli do mapy
 
-W tym artykule pokazano, jak można renderować dane punktu ze źródła danych jako warstwę symboli na mapie. Warstwy symboli są renderowane przy użyciu WebGL i obsługują znacznie większe zestawy punktów niż znaczniki HTML, ale nie obsługują tradycyjnych stylów CSS i HTML do ustawiania stylów.  
+Symbol można połączyć ze źródłem danych i służy do renderowania ikony i/lub tekstu w danym punkcie. Warstwy symboli są renderowane przy użyciu WebGL i mogą być używane do renderowania dużych kolekcji punktów na mapie. Ta warstwa może renderować wiele większej ilości danych na mapie, z dobrą wydajnością, niż to, co jest osiągalne przy użyciu znaczników HTML. Jednak warstwa symboli nie obsługuje tradycyjnych stylów CSS i HTML do ustawiania stylów.  
 
 > [!TIP]
 > Warstwy symboli domyślnie będą renderować współrzędne wszystkich geometrie w źródle danych. Aby ograniczyć warstwę w taki sposób, że renderuje tylko funkcje geometrii punktów `filter` , ustawia właściwość warstwy na `['==', ['geometry-type'], 'Point']` lub `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` Jeśli chcesz również uwzględnić funkcje MultiPoint.
 
 ## <a name="add-a-symbol-layer"></a>Dodawanie warstwy symboli
 
+Aby dodać warstwę symboli do mapy i renderować dane, najpierw należy utworzyć źródło danych i dodać je do mapy. Warstwę symboli można następnie utworzyć i przesłać do źródła danych w celu pobrania danych z programu. Na koniec dane muszą zostać dodane do źródła danych, aby było możliwe renderowanie. Poniższy kod przedstawia kod, który należy dodać do mapy po załadowaniu, aby renderować pojedynczy punkt na mapie przy użyciu warstwy symboli. 
+
+```javascript
+//Create a data source and add it to the map.
+var dataSource = new atlas.source.DataSource();
+map.sources.add(dataSource);
+
+//Create a symbol layer to render icons and/or text at points on the map.
+var layer = new atlas.layer.SymbolLayer(dataSource);
+
+//Add the layer to the map.
+map.layers.add(layer);
+
+//Create a point and add it to the data source.
+dataSource.add(new atlas.data.Point([0, 0]));
+```
+
+Istnieją cztery różne typy danych punktowych, które można dodać do mapy:
+
+- Geometria punktu GEOJSON — ten obiekt zawiera tylko współrzędną punktu i nic innego. Klasy `atlas.data.Point` pomocnika można użyć do łatwego tworzenia tych obiektów.
+- Geometria GEOJSON MultiPoint — ten obiekt zawiera współrzędne wielu punktów, ale nic innego. Klasy `atlas.data.MultiPoint` pomocnika można użyć do łatwego tworzenia tych obiektów.
+- Funkcja GEOJSON — ten obiekt składa się z geometrii GEOJSON oraz zestawu właściwości, które zawierają metadane skojarzone z geometrią. Klasy `atlas.data.Feature` pomocnika można użyć do łatwego tworzenia tych obiektów.
+- `atlas.Shape`Klasa jest podobna do funkcji GEOJSON, która składa się z geometrii GEOJSON oraz zestawu właściwości, które zawierają metadane skojarzone z geometrią. Jeśli obiekt GEOJSON zostanie dodany do źródła danych, można go łatwo renderować w warstwie, jednak jeśli właściwość współrzędnej tego obiektu GEOJSON zostanie zaktualizowana, źródło danych i mapa nie zmienią się, ponieważ nie ma żadnego mechanizmu w obiekcie JSON do wyzwolenia aktualizacji. Klasa Shape zawiera funkcje służące do aktualizowania danych, które zawiera, a po dokonaniu zmiany źródło danych i mapa są automatycznie powiadamiane i aktualizowane. 
+
+Poniższy przykład kodu tworzy geometrię punktu GEOJSON i przekazuje go do `atlas.Shape` klasy, aby ułatwić jego aktualizowanie. Środek mapy jest początkowo używany do renderowania symbolu. Zdarzenie kliknięcia jest dodawane do mapy, w taki sposób, że gdy zostanie ona wyzwolona, współrzędne miejsca kliknięcia myszą są używane z funkcją `setCoordinates` Shapes, która aktualizuje lokalizację symbolu na mapie.
+
+<br/>
+
 <iframe height='500' scrolling='no' title='Przełącz lokalizację numeru PIN' src='//codepen.io/azuremaps/embed/ZqJjRP/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Sprawdź <a href='https://codepen.io/azuremaps/pen/ZqJjRP/'>lokalizację numeru PIN przełączania</a> piórem Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
-
-Pierwszy blok kodu powyżej konstruuje obiekt mapy. Aby uzyskać instrukcje, zobacz [Tworzenie mapy](./map-create.md) .
-
-W drugim bloku kodu obiekt źródła danych jest tworzony przy użyciu klasy [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) . [Funkcja](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature) GEOJSON zawierająca geometrię [punktu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) jest opakowana przez klasę [Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) , aby ułatwić jej aktualizowanie, a następnie utworzenie i dodanie do źródła danych.
-
-Trzeci blok kodu tworzy [odbiornik zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) i aktualizuje współrzędne punktu po kliknięciu myszą za pomocą metody setwspółrzędnej klasy kształtu [](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) .
-
-[Warstwa symboli](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) używa tekstu lub ikon do renderowania danych opartych na punkcie w postaci symboli [](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) na mapie.  Źródło danych, odbiornik zdarzeń kliknięcia i warstwa symbol są tworzone i dodawane do mapy w ramach `ready` funkcji detektora [zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) , aby upewnić się, że punkt jest wyświetlany po załadowaniu mapy i gotowości do uzyskania dostępu.
 
 > [!TIP]
 > Domyślnie w przypadku wydajności warstwy symboli optymalizują renderowanie symboli, ukrywając symbole, które nakładają się na siebie. Podczas powiększania ukrytych symboli stają się widoczne. Aby wyłączyć tę funkcję i renderować wszystkie symbole przez cały czas, ustaw `allowOverlap` Właściwość `iconOptions` opcji na `true`.
@@ -49,7 +69,7 @@ Warstwy symboli są renderowane przy użyciu WebGL. Ponieważ wszystkie zasoby, 
 </iframe>
 
 > [!TIP]
-> Zestaw SDK sieci Web Azure Maps udostępnia kilka dostosowywalnych szablonów obrazów, których można używać z warstwą symboli. Aby uzyskać więcej informacji, zobacz dokument [jak korzystać z szablonów obrazów](how-to-use-image-templates-web-sdk.md) .
+> Zestaw SDK sieci Web Azure Maps udostępnia kilka dostosowywalnych szablonów obrazów, których można używać z warstwą symboli. Więcej informacji można znaleźć w dokumencie [jak korzystać z szablonów obrazów](how-to-use-image-templates-web-sdk.md) .
 
 ## <a name="customize-a-symbol-layer"></a>Dostosowywanie warstwy symboli 
 
@@ -60,7 +80,10 @@ Warstwa symboli ma dostępne wiele opcji stylów. Oto narzędzie do testowania r
 <iframe height='700' scrolling='no' title='Opcje warstwy symboli' src='//codepen.io/azuremaps/embed/PxVXje/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz <a href='https://codepen.io/azuremaps/pen/PxVXje/'>Opcje warstwy symboli</a> pióra według Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="next-steps"></a>Kolejne kroki
+> [!TIP]
+> Jeśli chcesz tylko renderować tekst za pomocą warstwy symboli, możesz ukryć ikonę przez ustawienie `image` właściwości opcji ikony na. `'none'`
+
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej na temat klas i metod używanych w tym artykule:
 
@@ -74,9 +97,12 @@ Dowiedz się więcej na temat klas i metod używanych w tym artykule:
 > [IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [TexTOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions?view=azure-iot-typescript-latest)
+> [TextOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions?view=azure-iot-typescript-latest)
 
 Zapoznaj się z następującymi artykułami, aby uzyskać więcej przykładów kodu do dodania do Twoich map:
+
+> [!div class="nextstepaction"]
+> [Tworzenie źródła danych](create-data-source-web-sdk.md)
 
 > [!div class="nextstepaction"]
 > [Dodawanie okna podręcznego](map-add-popup.md)
@@ -88,7 +114,10 @@ Zapoznaj się z następującymi artykułami, aby uzyskać więcej przykładów k
 > [Jak używać szablonów obrazów](how-to-use-image-templates-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [Dodawanie kształtu](map-add-shape.md)
+> [Dodaj warstwę linii](map-add-line-layer.md)
+
+> [!div class="nextstepaction"]
+> [Dodaj warstwę wielokątów](map-add-shape.md)
 
 > [!div class="nextstepaction"]
 > [Dodaj warstwę bąbelkową](map-add-bubble-layer.md)

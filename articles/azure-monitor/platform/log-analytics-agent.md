@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 08/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 653355af7dcb0b30c3deb444fcfe4b4ff76e7e77
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 6c8f9c98d645f60ea9281d1ca2aa15731c9c1e80
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424121"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955007"
 ---
 # <a name="collect-log-data-with-the-log-analytics-agent"></a>Zbieranie danych dziennika za pomocą agenta Log Analytics
 
@@ -34,13 +34,21 @@ Przed analizowaniem i działaniem zebranych danych należy najpierw zainstalowa�
 
 Agent dla systemów Linux i Windows komunikuje się z usługą Azure Monitor za pośrednictwem portu TCP 443, a jeśli komputer nawiązuje połączenie za pośrednictwem zapory lub serwera proxy w celu komunikowania się za pośrednictwem Internetu, przejrzyj poniższe wymagania, aby poznać konfigurację sieci Wymagane. Jeśli zasady zabezpieczeń IT nie zezwalają komputerom w sieci na łączenie się z Internetem, można skonfigurować [bramę log Analytics](gateway.md) , a następnie skonfigurować agenta do nawiązywania połączeń za pomocą bramy do Azure monitor dzienników. Agent może następnie odbierać informacje o konfiguracji i wysyłać zebrane dane w zależności od tego, jakie reguły zbierania danych i rozwiązania monitorowania, które zostały włączone w obszarze roboczym. 
 
-Jeśli monitorowany jest komputer z System Center Operations Manager 2012 R2 lub nowszym, może to być wieloadresowy z usługą Azure Monitor do zbierania danych i przekazywania ich do usługi i nadal monitorowany przez [Operations Manager](../../azure-monitor/platform/om-agents.md). W przypadku komputerów z systemem Linux Agent nie zawiera składnika usługi kondycji jako agenta systemu Windows, a informacje są zbierane i przetwarzane przez serwer zarządzania w jego imieniu. Ze względu na to, że komputery z systemem Linux są monitorowane inaczej przy użyciu Operations Manager, nie odbierają one konfiguracji ani nie zbierają danych bezpośrednio i przekazują je za pomocą grupy zarządzania, takiej jak system zarządzany przez agenta systemu Windows. W związku z tym ten scenariusz nie jest obsługiwany w przypadku komputerów z systemem Linux zgłaszanych do Operations Manager i należy skonfigurować komputer z systemem Linux do [raportowania do grupy zarządzania Operations Manager](../platform/agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group) i obszaru roboczego log Analytics w dwóch krokach.
+Korzystając z Log Analytics agentów do zbierania danych, należy zrozumieć następujące kwestie w celu zaplanowania wdrożenia agenta:
 
-Windows agent może raportować do czterech obszarów roboczych usługi Log Analytics, a agenta systemu Linux obsługuje tylko raporty do jednego obszaru roboczego.  
+* Aby zbierać dane z agentów systemu Windows, można [skonfigurować każdego agenta w celu raportowania do co najmniej jednego obszaru roboczego](agent-windows.md), nawet gdy jest on raportowany do System Center Operations Manager grupy zarządzania. Agent systemu Windows może zgłosić do czterech obszarów roboczych.
+* Agent systemu Linux nie obsługuje wiele multihostingu i może być raportowany tylko do jednego obszaru roboczego.
+
+Jeśli używasz System Center Operations Manager 2012 R2 lub nowszego:
+
+* Każda Operations Manager grupy zarządzania może być [połączona tylko z jednym obszarem roboczym](om-agents.md).
+* Komputery z systemem Linux, które są zgłaszane do grupy zarządzania, muszą być skonfigurowane do bezpośredniego raportowania do obszaru roboczego Log Analytics. Jeśli komputery z systemem Linux są już zgłaszane bezpośrednio do obszaru roboczego i chcesz monitorować je za pomocą Operations Manager, wykonaj następujące kroki, aby [zgłosić Operations Manager do grupy zarządzania](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group).
+* Program Log Analytics Agent systemu Windows można zainstalować na komputerze z systemem Windows i mieć do niego raport Operations Manager zintegrowany z obszarem roboczym i innym obszarze roboczym.
 
 Agent dla systemów Linux i Windows nie tylko do łączenia się z Azure Monitor, obsługuje także Azure Automation do hostowania roli hybrydowego procesu roboczego elementu Runbook i innych usług, takich jak [Change Tracking](../../automation/change-tracking.md), [Update Management](../../automation/automation-update-management.md)i [Azure Security Center ](../../security-center/security-center-intro.md). Aby uzyskać więcej informacji na temat roli hybrydowego procesu roboczego Runbook zobacz [usługi Azure Automation hybrydowego Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
 
 ## <a name="supported-windows-operating-systems"></a>Obsługiwane systemy operacyjne Windows
+
 Windows agent oficjalnie obsługuje następujące wersje systemu operacyjnego Windows:
 
 * Windows Server 2019
@@ -106,7 +114,7 @@ W poniższych informacjach znajdują się informacje o konfiguracji serwera prox
 |*.ods.opinsights.azure.com |Port 443 |Wychodzące|Tak |  
 |*.oms.opinsights.azure.com |Port 443 |Wychodzące|Tak |  
 |*.blob.core.windows.net |Port 443 |Wychodzące|Tak |  
-|*.azure-automation.net |Port 443 |Wychodzące|Yes |  
+|*.azure-automation.net |Port 443 |Wychodzące|Tak |  
 
 Informacje dotyczące zapory wymagane do Azure Government można znaleźć w temacie [Azure Government Management](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs). 
 
@@ -145,7 +153,7 @@ Na przykład: `https://user01:password@proxy01.contoso.com:30443`
 | Hybrydowy komputer z systemem Linux| [Instalacja ręczna](../../azure-monitor/learn/quick-collect-linux-computer.md)|Zainstaluj agenta dla systemu Linux w serwisie GitHub skrypt otoki podczas wywoływania. | 
 | System Center Operations Manager|[Integrowanie programu Operations Manager z usługą Log Analytics](../../azure-monitor/platform/om-agents.md) | Skonfiguruj integrację między dziennikami Operations Manager i Azure Monitor, aby przekazywać zebrane dane z komputerów z systemem Windows do grupy zarządzania.|  
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Przegląd [źródeł danych](../../azure-monitor/platform/agent-data-sources.md) zrozumienie źródła danych, których można zbierać dane z systemu Windows lub Linux. 
 

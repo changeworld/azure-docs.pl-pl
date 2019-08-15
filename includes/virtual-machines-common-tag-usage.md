@@ -5,26 +5,26 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 17778b3edf1845d85302a0bcdf72a1ebc3919cea
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67183169"
 ---
-## <a name="viewing-your-tags-in-the-usage-details"></a>Wyświetlanie tagów w szczegóły użycia
-Tagi umieszczone na mocy obliczeniowej, sieci i zasobów magazynu w modelu wdrażania usługi Resource Manager zostanie wypełniony w szczegółów użycia w [portalu rozliczeń](https://account.windowsazure.com/).
+## <a name="viewing-your-tags-in-the-usage-details"></a>Wyświetlanie tagów w szczegółach użycia
+Tagi umieszczane w zasobach obliczeniowych, sieciowych i magazynowych w Menedżer zasobów modelu wdrażania zostaną wypełnione szczegółami użytkowania w [portalu](https://account.windowsazure.com/)rozliczeń.
 
-Kliknij pozycję **Pobierz szczegółowe zestawienie użycia** Aby wyświetlić szczegóły użycia w Twojej subskrypcji.
+Kliknij pozycję **Pobierz szczegóły użycia** , aby wyświetlić szczegóły użycia w ramach subskrypcji.
 
-![Szczegóły użycia w witrynie Azure portal](./media/virtual-machines-common-tag-usage/azure-portal-tags-usage-details.png)
+![Szczegóły użycia w Azure Portal](./media/virtual-machines-common-tag-usage/azure-portal-tags-usage-details.png)
 
-Wybierz zestawienie rozliczeniowe i **w wersji 2** szczegóły użycia:
+Wybierz swoje zestawienie rozliczeniowe i szczegóły użycia w **wersji 2** :
 
-![Szczegóły użycia (wersja zapoznawcza) w wersji 2 w witrynie Azure portal](./media/virtual-machines-common-tag-usage/azure-portal-version2-usage-details.png)
+![Szczegóły dotyczące użycia wersji 2 programu Preview w Azure Portal](./media/virtual-machines-common-tag-usage/azure-portal-version2-usage-details.png)
 
-Z szczegóły użycia można wyświetlić wszystkie tagi w **tagi** kolumny:
+Ze szczegółowych informacji o użyciu można zobaczyć wszystkie Tagi w kolumnie **Tagi** :
 
-![Kolumny tagów w witrynie Azure portal](./media/virtual-machines-common-tag-usage/azure-portal-tags-column.png)
+![Kolumna tagów w Azure Portal](./media/virtual-machines-common-tag-usage/azure-portal-tags-column.png)
 
-Analizując te znaczniki wraz z użycia, organizacji będą mogli nowy wgląd w swoje dane dotyczące zużycia.
+Analizując te Tagi wraz z użyciem, organizacje będą mogły uzyskać nowe informacje dotyczące ich zużycia.
 

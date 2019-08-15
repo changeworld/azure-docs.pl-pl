@@ -1,80 +1,80 @@
 ---
-title: Migrowanie z usługi Azure Application Gateway i zapory aplikacji z v1 na v2
-description: W tym artykule dowiesz się, jak przeprowadzić migrację usługi Azure Application Gateway i zapory aplikacji sieci Web z v1 na v2
+title: Migrowanie usługi Azure Application Gateway i zapory aplikacji sieci Web z wersji 1 do wersji 2
+description: W tym artykule opisano sposób migrowania usługi Azure Application Gateway i zapory aplikacji sieci Web z wersji 1 do wersji 2
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 6/18/2019
+ms.date: 08/10/2019
 ms.author: victorh
-ms.openlocfilehash: 0fd605d7d502970dccd37da1f3f70fdadb1094a1
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: c4bc0ec2bf15a29962909f14f55854c06f0a6561
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67550448"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932503"
 ---
-# <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrowanie z usługi Azure Application Gateway i zapory aplikacji z v1 na v2
+# <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrowanie usługi Azure Application Gateway i zapory aplikacji sieci Web z wersji 1 do wersji 2
 
-[Usługa Azure Application Gateway i zapory aplikacji sieci Web (WAF) w wersji 2](application-gateway-autoscaling-zone-redundant.md) jest teraz dostępna, oferuje dodatkowe funkcje, takie jak skalowanie automatyczne i strefy dostępności nadmiarowości. Jednak istniejących bram z v1 nie są automatycznie uaktualnione do wersji 2. Jeśli chcesz przeprowadzić migrację z v1 na v2, wykonaj kroki opisane w tym artykule.
+[Usługa Azure Application Gateway i Zapora aplikacji sieci Web (WAF) v2](application-gateway-autoscaling-zone-redundant.md) jest teraz dostępna, oferując dodatkowe funkcje, takie jak Skalowanie automatyczne i nadmiarowość stref dostępności. Jednak istniejące bramy w wersji 1 nie są automatycznie uaktualniane do wersji 2. Jeśli chcesz przeprowadzić migrację z wersji 1 do wersji 2, wykonaj kroki opisane w tym artykule.
 
-W przypadku migracji, istnieją dwa etapy:
+Migracja obejmuje dwa etapy:
 
-1. Migracja konfiguracji
-2. Migrowanie ruchu klientów
+1. Migrowanie konfiguracji
+2. Migrowanie ruchu klienta
 
-W tym artykule opisano migrację konfiguracji. Migracja danych klienta zależy od określonego środowiska. Jednak niektóre ogólny, ogólne zalecenia dotyczące [znajdują się](#migrate-client-traffic).
+W tym artykule opisano migrację konfiguracji. Migracja ruchu klienta różni się w zależności od konkretnego środowiska. [Dostępne są](#migrate-client-traffic)jednak pewne ogólne zalecenia dotyczące wysokiego poziomu.
 
 ## <a name="migration-overview"></a>Migrowanie — omówienie
 
-Skrypt programu Azure PowerShell jest dostępny, wykonuje następujące czynności:
+Dostępny jest skrypt Azure PowerShell, który wykonuje następujące czynności:
 
-* Tworzy nową bramę Standard_v2 lub WAF_v2 w podsieci sieci wirtualnej, który określisz.
-* Bezproblemowo kopiuje konfiguracji skojarzone z bramy Standard lub zapory aplikacji sieci Web w wersji 1 do nowo utworzonej bramie Standard_V2 lub WAF_V2.
+* Tworzy nową bramę Standard_v2 lub WAF_v2 w określonej podsieci sieci wirtualnej.
+* Bezproblemowo kopiuje konfigurację skojarzoną z bramą standardu v1 lub WAF do nowo utworzonej bramy Standard_V2 lub WAF_V2.
 
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
-* Nowa brama v2 ma nowe publiczne i prywatne adresy IP. Nie można przenieść adresy IP skojarzone z istniejącą bramą v1 bezproblemowo do wersji 2. Jednakże możesz przydzielić istniejącego (nieprzydzielone) publicznego lub prywatnego adresu IP do nowej bramy w wersji 2.
-* Musisz podać przestrzeń adresów IP w innej podsieci w ramach sieci wirtualnej, w którym znajduje się brama v1. Skrypt nie można utworzyć bramy v2 w istniejących podsieci, które mają już bramy v1. Jednak jeśli już istniejącą podsieć bramy w wersji 2, mogą nadal działać pod warunkiem, że jest wystarczająco dużo przestrzeni adresów IP.
-* Aby przeprowadzić migrację konfiguracji protokołu SSL, należy określić certyfikatów SSL używany w bramie v1.
-* Jeśli masz włączony dla bramy V1 tryb ze standardem FIPS, nie będzie można migrować do nowej bramy w wersji 2. Tryb FIPS nie jest obsługiwana w wersji 2.
-* w wersji 2 nie obsługuje protokołu IPv6, dlatego bram v1 włączony protokół IPv6 nie są migrowane. Jeśli skrypt zostanie uruchomiony, może nie zakończyć.
-* Jeśli brama v1 zawiera tylko prywatny adres IP, skrypt tworzy publiczny adres IP i prywatnego adresu IP do nowej bramy w wersji 2. bram w wersji 2 nie obsługują obecnie tylko prywatnych adresów IP.
+* Nowa brama V2 ma nowe publiczne i prywatne adresy IP. Nie można przenieść adresów IP skojarzonych z istniejącą bramą w wersji 1 do wersji 2. Istnieje jednak możliwość przydzielenia istniejącego (nieprzydzielony) publicznego lub prywatnego adresu IP do nowej bramy v2.
+* Musisz podać przestrzeń adresów IP dla innej podsieci w sieci wirtualnej, w której znajduje się Brama v1. Skrypt nie może utworzyć bramy v2 w żadnej istniejącej podsieci, która ma już bramę w wersji 1. Jeśli jednak istniejąca podsieć ma już bramę w wersji 2, to może nadal mieć miejsce, gdzie jest wystarczająca przestrzeń adresów IP.
+* Aby przeprowadzić migrację konfiguracji protokołu SSL, należy określić wszystkie certyfikaty SSL używane w bramie w wersji 1.
+* Jeśli włączono tryb FIPS dla bramy V1, nie zostanie on zmigrowany do nowej bramy v2. Tryb FIPS nie jest obsługiwany w wersji 2.
+* V2 nie obsługuje protokołu IPv6, więc nie są migrowane bramy w wersji 1 obsługującej protokół IPv6. Uruchomienie skryptu może nie być możliwe.
+* Jeśli Brama V1 ma tylko prywatny adres IP, skrypt tworzy publiczny adres IP i prywatny adres IP dla nowej bramy v2. bramy v2 obecnie nie obsługują tylko prywatnych adresów IP.
 
 ## <a name="download-the-script"></a>Pobierz skrypt
 
-Pobierz skrypt migracji z [galerii programu PowerShell](https://www.powershellgallery.com/packages/AzureAppGWMigration).
+Pobierz skrypt migracji z [Galeria programu PowerShell](https://www.powershellgallery.com/packages/AzureAppGWMigration).
 
-## <a name="use-the-script"></a>Użyj skryptu
+## <a name="use-the-script"></a>Używanie skryptu
 
-Istnieją dwie opcje dla Ciebie w zależności od preferencji i konfigurowanie lokalnego środowiska PowerShell:
+W zależności od konfiguracji i preferencji lokalnego środowiska programu PowerShell dostępne są dwie opcje:
 
-* Jeśli nie masz zainstalowane moduły Az platformy Azure lub nie mieć nic przeciwko, odinstalowywanie modułów Azure Az, najlepszym rozwiązaniem jest użycie `Install-Script` opcję, aby uruchomić skrypt.
-* Jeśli musisz zachować modułów Azure Az usługi najlepiej pobrać skrypt i uruchom go bezpośrednio.
+* Jeśli nie masz zainstalowanych modułów platformy Azure AZ lub nie chcesz odinstalować modułów Azure AZ modules, najlepszą opcją jest użycie `Install-Script` opcji do uruchomienia skryptu.
+* Jeśli zachodzi potrzeba zachowania usługi Azure AZ modules, najlepszym trafieniem jest pobranie skryptu i uruchomienie go bezpośrednio.
 
-Aby ustalić, czy masz zainstalowane moduły Az platformy Azure, uruchom `Get-InstalledModule -Name az`. Jeśli nie widzisz żadnych zainstalowanych modułów Az, a następnie można użyć `Install-Script` metody.
+Aby określić, czy masz zainstalowane moduły Azure AZ, uruchom `Get-InstalledModule -Name az`polecenie. Jeśli nie widzisz żadnych zainstalowanych modułów AZ, możesz użyć `Install-Script` metody.
 
-### <a name="install-using-the-install-script-method"></a>Instalowanie przy użyciu metody Install-Script
+### <a name="install-using-the-install-script-method"></a>Instalowanie przy użyciu metody install-Script
 
-Aby użyć tej opcji, nie może mieć modułów Azure Az zainstalowana na danym komputerze. Jeśli są one zainstalowane, następujące polecenie wyświetla komunikat o błędzie. Możesz odinstalować modułów Azure Az lub użyj innych opcji, aby ręcznie pobrać skrypt i uruchom go.
+Aby można było użyć tej opcji, na komputerze nie trzeba mieć zainstalowanych modułów platformy Azure. Jeśli są zainstalowane, następujące polecenie wyświetla błąd. Możesz odinstalować usługę Azure AZ module lub użyć innej opcji, aby ręcznie pobrać skrypt i uruchomić go.
   
 Uruchom skrypt za pomocą następującego polecenia:
 
 `Install-Script -Name AzureAppGWMigration`
 
-To polecenie instaluje także wymagane moduły Az.  
+To polecenie instaluje również wymagane AZ modules.  
 
-### <a name="install-using-the-script-directly"></a>Zainstaluj bezpośrednio za pomocą skryptu
+### <a name="install-using-the-script-directly"></a>Instalowanie przy użyciu skryptu bezpośrednio
 
-Jeśli masz niektórych modułów Azure Az zainstalowany i nie można odinstalować je (lub nie chcesz je odinstalować), możesz ręcznie pobrać skrypt, używając **pobieranie ręczne** karcie link pobierania skryptu. Skrypt jest pobierana jako plik raw nupkg. Aby zainstalować skrypt z tego pliku nupkg, zobacz [Pobieranie pakietu ręczne](https://docs.microsoft.com/powershell/gallery/how-to/working-with-packages/manual-download).
+Jeśli zainstalowano kilka modułów na platformie Azure i nie można ich odinstalować (lub nie chcesz ich odinstalować), możesz ręcznie pobrać skrypt, korzystając z karty **pobranej ręcznie** w linku pobierania skryptu. Skrypt zostanie pobrany jako plik pierwotny NUPKG. Aby zainstalować skrypt z tego pliku NUPKG, zobacz [ręczne pobieranie pakietu](https://docs.microsoft.com/powershell/gallery/how-to/working-with-packages/manual-download).
 
 Aby uruchomić skrypt:
 
-1. Użyj `Connect-AzAccount` do połączenia z platformą Azure.
+1. Użyj `Connect-AzAccount` , aby nawiązać połączenie z platformą Azure.
 
-1. Użyj `Import-Module Az` Aby zaimportować moduły Az.
+1. Użyj `Import-Module Az` do zaimportowania AZ modules.
 
-1. Uruchom `Get-Help AzureAppGWMigration.ps1` zbadanie wymagane parametry:
+1. Uruchom `Get-Help AzureAppGWMigration.ps1` , aby przeanalizować wymagane parametry:
 
    ```
    AzureAppGwMigration.ps1
@@ -84,25 +84,25 @@ Aby uruchomić skrypt:
     -sslCertificates <comma-separated SSLCert objects as above>
     -trustedRootCertificates <comma-separated Trusted Root Cert objects as above>
     -privateIpAddress <private IP string>
-    -publicIpResourceName <public IP name string>
+    -publicIpResourceId <public IP name string>
     -validateMigration -enableAutoScale
    ```
 
    Parametry skryptu:
-   * **resourceId: [String]: Wymagane** — jest to Identyfikatora zasobu platformy Azure dla istniejącego v1 standardowe lub bramy v1 zapory aplikacji sieci Web. Aby znaleźć tę wartość ciągu, przejdź do witryny Azure portal, wybierz swój bramy aplikacji lub zasobów zapory aplikacji sieci Web i kliknij przycisk **właściwości** link dla bramy. Identyfikator zasobu znajduje się na tej stronie.
+   * **resourceId: [ciąg]: Wymagane** — jest to identyfikator zasobu platformy Azure dla istniejącej standardowej bramy v1 lub WAF v1. Aby znaleźć tę wartość ciągu, przejdź do Azure Portal, wybierz pozycję Brama aplikacji lub zasób WAF, a następnie kliknij link **Właściwości** dla bramy. Identyfikator zasobu znajduje się na tej stronie.
 
-     Można również uruchomić następujące polecenia programu Azure PowerShell, aby uzyskać identyfikator zasobu:
+     Aby uzyskać identyfikator zasobu, można również uruchomić następujące polecenia Azure PowerShell:
 
      ```azurepowershell
      $appgw = Get-AzApplicationGateway -Name <v1 gateway name> -ResourceGroupName <resource group Name> 
      $appgw.Id
      ```
 
-   * **subnetAddressRange: [String]:  Wymagane** — jest to przestrzeń adresów IP, która została przydzielona (lub chcesz przydzielić) dla nowej podsieci, która zawiera nowe bramy w wersji 2. To musi być określona w notacji CIDR. Na przykład: 10.0.0.0/24. Nie trzeba tworzyć wcześniej tej podsieci. Skrypt utworzy go dla Ciebie, jeśli nie istnieje.
-   * **appgwName: [String]: Opcjonalnie**. Jest to ciąg, który określa się użycie jako nazwę nowej bramy Standard_v2 lub WAF_v2. Jeśli ten parametr nie jest podany, nazwę istniejącej bramy v1 będzie używany wraz z sufiksem *_v2* dołączane.
-   * **sslCertificates: [PSApplicationGatewaySslCertificate]: Opcjonalnie**.  Rozdzielana przecinkami listy obiektów PSApplicationGatewaySslCertificate, które tworzysz do reprezentowania certyfikatów SSL z bramy w wersji 1 muszą być przesłane do nowej bramy w wersji 2. Dla każdego z certyfikatów SSL skonfigurowane dla standardowych v1 lub bramy v1 zapory aplikacji sieci Web, można utworzyć nowy obiekt PSApplicationGatewaySslCertificate za pośrednictwem `New-AzApplicationGatewaySslCertificate` przedstawionego w tym miejscu polecenia. Należy ścieżkę do pliku certyfikatu SSL i hasło.
+   * **subnetAddressRange: [ciąg]:  Wymagane** — jest to przestrzeń adresów IP, która została przydzielona (lub która ma zostać przydzielona) dla nowej podsieci, która zawiera nową bramę w wersji 2. Ta wartość musi być określona w notacji CIDR. Na przykład: 10.0.0.0/24. Nie musisz tworzyć tej podsieci z góry. Skrypt tworzy go, jeśli nie istnieje.
+   * **appgwName: [ciąg]: Opcjonalne**. Jest to ciąg określony do użycia jako Nazwa nowej bramy Standard_v2 lub WAF_v2. Jeśli ten parametr nie zostanie podany, Nazwa istniejącej bramy V1 zostanie użyta z dołączonym sufiksem *_v2* .
+   * **sslCertificates: [PSApplicationGatewaySslCertificate]: Opcjonalne**.  Rozdzielana przecinkami lista obiektów PSApplicationGatewaySslCertificate, które tworzysz do reprezentowania certyfikatów SSL z bramy V1, musi zostać przekazana do nowej bramy v2. Dla każdego certyfikatu SSL skonfigurowanego dla standardowej bramy v1 lub WAF V1 można utworzyć nowy obiekt PSApplicationGatewaySslCertificate za pomocą `New-AzApplicationGatewaySslCertificate` polecenia pokazanego tutaj. Wymagana jest ścieżka do pliku certyfikatu SSL i hasła.
 
-       Ten parametr jest tylko opcjonalne, jeśli nie masz odbiorników HTTPS skonfigurowany dla bramy w wersji 1 lub zapory aplikacji sieci Web. Jeśli masz co najmniej jeden Konfiguracja odbiornika protokołu HTTPS, należy określić ten parametr.
+       Ten parametr jest opcjonalny tylko wtedy, gdy nie masz skonfigurowanych odbiorników HTTPS dla bramy v1 lub WAF. Jeśli masz co najmniej jedną konfigurację odbiornika HTTPS, musisz określić ten parametr.
 
       ```azurepowershell  
       $password = ConvertTo-SecureString <cert-password> -AsPlainText -Force
@@ -114,16 +114,16 @@ Aby uruchomić skrypt:
         -Password $password
       ```
 
-      Możesz przekazać `$mySslCert1, $mySslCert2` (rozdzielana przecinkami) w poprzednim przykładzie jako wartości tego parametru w skrypcie.
-   * **trustedRootCertificates: [PSApplicationGatewayTrustedRootCertificate]: Opcjonalnie**. Rozdzielana przecinkami lista PSApplicationGatewayTrustedRootCertificate obiektów, które tworzysz do reprezentowania [zaufanych certyfikatów głównych](ssl-overview.md) uwierzytelniania wystąpień wewnętrznej bazy danych z bramy w wersji 2.  
+      W poprzednim przykładzie można `$mySslCert1, $mySslCert2` przekazać (rozdzielone przecinkami) jako wartości tego parametru w skrypcie.
+   * **trustedRootCertificates: [PSApplicationGatewayTrustedRootCertificate]: Opcjonalne**. Rozdzielana przecinkami lista obiektów PSApplicationGatewayTrustedRootCertificate, które są tworzone w celu reprezentowania [zaufanych certyfikatów głównych](ssl-overview.md) na potrzeby uwierzytelniania wystąpień zaplecza z poziomu bramy v2.  
 
-      Aby utworzyć listę obiektów PSApplicationGatewayTrustedRootCertificate, zobacz [New AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0).
-   * **privateIpAddress: [String]: Opcjonalnie**. Określony prywatny adres IP, którą chcesz skojarzyć do nowej bramy w wersji 2.  Musi to być w tej samej sieci wirtualnej, można przydzielić nowej bramy w wersji 2. Jeśli to nie jest określona, skrypt przydziela prywatny adres IP dla bramy w wersji 2.
-    * **publicIpResourceId: [String]: Opcjonalnie**. ResourceId publicznego zasobu adresu (standardowej jednostki SKU) adresu IP w ramach subskrypcji, którą chcesz przydzielić do nowej bramy w wersji 2. Jeśli to nie jest określona, skrypt przydziela nowy publiczny adres IP w tej samej grupie zasobów. Nazwa jest nazwą bramy v2 z *- IP* dołączane.
-   * **validateMigration: [Przełącz]: Opcjonalnie**. Użyj tego parametru, jeśli chcesz, aby przez skrypt niektórych konfiguracji podstawowej porównywania, sprawdzania poprawności po utworzenie bramy w wersji 2 i kopii konfiguracji. Domyślnie nie jest sprawdzana.
-   * **enableAutoScale: [Przełącz]: Opcjonalnie**. Użyj tego parametru, jeśli chcesz, aby skrypt, aby włączyć Skalowanie automatyczne na nową bramę v2, po jego utworzeniu. Domyślnie automatyczne skalowanie jest wyłączone. Można zawsze ręcznie włączyć go później bramy nowo utworzoną w wersji 2.
+      Aby utworzyć listę obiektów PSApplicationGatewayTrustedRootCertificate, zobacz [New-AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0).
+   * **privateIpAddress: [ciąg]: Opcjonalne**. Określony prywatny adres IP, który ma zostać skojarzony z nową bramą w wersji 2.  Ta wartość musi należeć do tej samej sieci wirtualnej, która została przydzielona dla nowej bramy v2. Jeśli ta wartość nie zostanie określona, skrypt przydziela prywatny adres IP dla bramy v2.
+    * **publicIpResourceId: [String]: Opcjonalne**. Identyfikator resourceId zasobu publicznego adresu IP (standardowej jednostki SKU) w subskrypcji, który ma zostać przydzielony do nowej bramy v2. Jeśli ta wartość nie zostanie określona, skrypt przydziela nowy publiczny adres IP w tej samej grupie zasobów. Nazwa to nazwa bramy w wersji 2 z dołączoną opcją *-IP* .
+   * **validateMigration: [przełącznik]: Opcjonalne**. Użyj tego parametru, jeśli chcesz, aby skrypt wykonał pewne podstawowe operacje porównujące konfigurację po utworzeniu bramy v2 i kopii konfiguracji. Domyślnie żadna weryfikacja nie jest wykonywana.
+   * **enableAutoScale: [przełącznik]: Opcjonalne**. Użyj tego parametru, jeśli chcesz, aby skrypt umożliwiał automatyczne skalowanie w nowej bramie v2 po jej utworzeniu. Domyślnie Skalowanie automatyczne jest wyłączone. Zawsze można włączyć ją później na nowo utworzonej bramie w wersji 2.
 
-1. Uruchom skrypt, za pomocą odpowiednich parametrów. Może potrwać 5 – 7 minut na zakończenie.
+1. Uruchom skrypt przy użyciu odpowiednich parametrów. Ukończenie tego procesu może potrwać od 5 do siedmiu minut.
 
     **Przykład**
 
@@ -139,55 +139,59 @@ Aby uruchomić skrypt:
       -validateMigration -enableAutoScale
    ```
 
-## <a name="migrate-client-traffic"></a>Migrowanie ruchu klientów
+## <a name="migrate-client-traffic"></a>Migruj ruch klienta
 
-Po pierwsze Sprawdź skrypt pomyślnie utworzono nową bramę v2 z dokładną konfiguracją migrowane z bramy w wersji 1. Można to sprawdzić, w witrynie Azure portal.
+Najpierw należy sprawdzić, czy skrypt pomyślnie utworzył nową bramę v2 o dokładnej konfiguracji migrowanej z bramy w wersji 1. Można to sprawdzić z poziomu Azure Portal.
 
-Ponadto Wyślij niewielką ilość ruchu za pośrednictwem bramy v2 jako testu ręcznego.
+Należy również wysłać mały ruch przez bramę w wersji 2 jako test ręczny.
   
-Poniżej przedstawiono kilka scenariuszy, w którym Twojej bieżącej bramy application gateway (warstwa standardowa) może pojawić się ruch klientów i naszymi zaleceniami dotyczącymi każdego z nich:
+Poniżej przedstawiono kilka scenariuszy, w których bieżąca Brama Application Gateway (standardowa) może odbierać ruch klienta i nasze zalecenia dotyczące każdego z nich:
 
-* **Niestandardowa strefa DNS (np. contoso.com) wskazujący na adres IP serwera sieci Web (przy użyciu rekordu A) skojarzone z Standard w wersji 1 lub bramy v1 zapory aplikacji sieci Web**.
+* **Niestandardowa strefa DNS (na przykład contoso.com), która wskazuje adres IP frontonu (przy użyciu rekordu A) skojarzone ze standardową bramą v1 lub WAF V1**.
 
-    Możesz zaktualizować rekord DNS, aby wskazywał etykiety DNS lub adresu IP frontonu skojarzonej z Twojej bramy application gateway Standard_v2. W zależności od czasu wygaśnięcia skonfigurowane na rekord DNS może upłynąć trochę czasu cały ruch z klienta do migracji do nowej bramy w wersji 2.
-* **Niestandardowe strefy DNS (np. contoso.com) wskazujący Etykieta DNS (na przykład: *myappgw.eastus.cloudapp.azure.com* przy użyciu rekordu CNAME) skojarzony z bramą v1**.
+    Rekord DNS można zaktualizować tak, aby wskazywał adres IP frontonu lub etykietę DNS skojarzoną z bramą aplikacji Standard_v2. W zależności od czasu wygaśnięcia skonfigurowanego w rekordzie DNS może upłynąć trochę czasu, aż cały ruch klienta zostanie zmigrowany do nowej bramy w wersji 2.
+* **Niestandardowa strefa DNS (na przykład contoso.com), która wskazuje na etykietę DNS (na przykład: *myappgw.eastus.cloudapp.Azure.com* przy użyciu rekordu CNAME) skojarzonego z bramą V1**.
 
    Dostępne są dwie opcje:
 
-  * Jeśli używasz publiczne adresy IP na Twojej bramy application gateway, możesz to zrobić kontrolowanego, szczegółową migracji przyrostowo kierowania ruchu (metody routingu ważonego ruchu) do nowej bramy w wersji 2 przy użyciu profilu usługi Traffic Manager.
+  * W przypadku używania publicznych adresów IP na bramie aplikacji można przeprowadzić kontrolowanej, szczegółowej migracji przy użyciu profilu Traffic Manager, aby przyrostowo kierować ruchem (metodą routingu ruchu ważonego) do nowej bramy v2.
 
-    Można to zrobić poprzez dodanie etykiet DNS v1 i v2 bram aplikacji, aby [profilu usługi Traffic Manager](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method)i CNAMEing niestandardowe rekord DNS (np. www.contoso.com) do domeny usługi Traffic Manager (na przykład contoso.trafficmanager.NET).
-  * Lub można zaktualizować rekord DNS domeny niestandardowej wskaż etykietą DNS nową bramę aplikacji w wersji 2. W zależności od czasu wygaśnięcia skonfigurowane na rekord DNS może upłynąć trochę czasu cały ruch z klienta do migracji do nowej bramy w wersji 2.
-* **Usługi klienci łączą się z frontonu adres IP bramy application gateway**.
+    Można to zrobić, dodając etykiety DNS zarówno bramy aplikacji V1, jak i V2 do [profilu Traffic Manager](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method), a także CNAME niestandardowy rekord DNS (na przykład www.contoso.com) do domeny Traffic Manager (na przykład contoso.trafficmanager.NET). .
+  * Można też zaktualizować rekord DNS domeny niestandardowej, aby wskazywał etykietę DNS nowej bramy aplikacji w wersji 2. W zależności od czasu wygaśnięcia skonfigurowanego w rekordzie DNS może upłynąć trochę czasu, aż cały ruch klienta zostanie zmigrowany do nowej bramy w wersji 2.
+* **Klienci łączą się z adresem IP frontonu bramy aplikacji**.
 
-   Zaktualizuj klientom na używanie adresy IP skojarzone z bramą aplikacji nowo utworzoną w wersji 2. Zaleca się, że nie używasz adresów IP bezpośrednio. Należy rozważyć użycie etykiety nazwy DNS (na przykład yourgateway.eastus.cloudapp.azure.com) skojarzony z bramą aplikacji można CNAME do własnych niestandardowych strefy DNS (np. contoso.com).
+   Zaktualizuj klientów tak, aby korzystał z adresów IP skojarzonych z nowo utworzoną bramą aplikacji w wersji 2. Zalecamy, aby adresy IP nie były używane bezpośrednio. Rozważ użycie etykiety nazwy DNS (na przykład yourgateway.eastus.cloudapp.azure.com) skojarzonej z bramą aplikacji, która może być CNAME do własnej niestandardowej strefy DNS (na przykład contoso.com).
 
 ## <a name="common-questions"></a>Często zadawane pytania
 
-### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Czy istnieją jakiekolwiek ograniczenia, za pomocą skryptu programu Azure PowerShell do migracji konfiguracji z v1 na v2?
+### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Czy istnieją jakieś ograniczenia dotyczące skryptu Azure PowerShell w celu migrowania konfiguracji z wersji od 1 do v2?
 
-Tak. Zobacz [ostrzeżenia/ograniczenia](#caveatslimitations).
+Tak. Zobacz [zastrzeżenia/ograniczenia](#caveatslimitations).
 
-### <a name="is-this-article-and-the-azure-powershell-script-applicable-for-application-gateway-waf-product-as-well"></a>Ma zastosowanie także produktu brama aplikacji zapory aplikacji internetowych w tym artykule i skrypt programu Azure PowerShell? 
+### <a name="is-this-article-and-the-azure-powershell-script-applicable-for-application-gateway-waf-product-as-well"></a>Czy ten artykuł i skrypt Azure PowerShell dotyczą także Application Gateway produktu WAF? 
 
 Tak.
 
-### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-v1-gateway-to-the-newly-created-v2-gateway"></a>Skrypt programu Azure PowerShell również przyjmie nad ruchem między bramą v1 Moje bramy nowo utworzoną w wersji 2?
+### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-v1-gateway-to-the-newly-created-v2-gateway"></a>Czy skrypt Azure PowerShell przełączać się także przez ruch z bramy V1 do nowo utworzonej bramy v2?
 
-Nie. Skrypt programu Azure PowerShell migruje wyłącznie konfiguracji. Rzeczywisty ruch migracji jest odpowiedzialny za i w kontrolce.
+Nie. Skrypt Azure PowerShell tylko migruje konfigurację. Rzeczywista migracja ruchu jest odpowiedzialna i w Twoim formancie.
 
-### <a name="is-the-new-v2-gateway-created-by-the-azure-powershell-script-sized-appropriately-to-handle-all-of-the-traffic-that-is-currently-served-by-my-v1-gateway"></a>Ma nową bramę v2, utworzone przez skrypt programu Azure PowerShell odpowiedni rozmiar do obsługi całego ruchu, który jest aktualnie obsługiwany przez mojej bramy v1?
+### <a name="is-the-new-v2-gateway-created-by-the-azure-powershell-script-sized-appropriately-to-handle-all-of-the-traffic-that-is-currently-served-by-my-v1-gateway"></a>Czy nowa brama v2 utworzona przez skrypt Azure PowerShell ma odpowiednio rozmiar, aby obsługiwać cały ruch, który jest obecnie obsługiwany przez bramę w wersji 1?
 
-Skrypt programu Azure PowerShell tworzy nową bramę v2 z rozmiarem odpowiedniego do obsługi ruchu w istniejącej bramie v1. Automatyczne skalowanie jest domyślnie wyłączona, ale można włączyć Skalowanie automatyczne, po uruchomieniu skryptu.
+Skrypt Azure PowerShell tworzy nową bramę v2 o odpowiednim rozmiarze do obsługi ruchu w istniejącej bramie w wersji 1. Skalowanie automatyczne jest domyślnie wyłączone, ale podczas uruchamiania skryptu można włączyć skalowanie automatyczne.
 
-### <a name="i-configured-my-v1-gateway--to-send-logs-to-azure-storage-does-the-script-replicate-this-configuration-for-v2-as-well"></a>Po skonfigurowaniu mojej bramy w wersji 1, aby wysłać dzienniki do usługi Azure storage. Czy skrypt jest replikowany tej konfiguracji, a także w wersji 2?
+### <a name="i-configured-my-v1-gateway--to-send-logs-to-azure-storage-does-the-script-replicate-this-configuration-for-v2-as-well"></a>Mam skonfigurowaną bramę V1 do wysyłania dzienników do usługi Azure Storage. Czy skrypt replikuje tę konfigurację również w wersji 2?
 
-Nie. Skrypt nie są replikowane tej konfiguracji w wersji 2. Konfigurację dziennika należy dodać do bramy w wersji 2 migrowanych oddzielnie.
+Nie. Skrypt nie replikuje tej konfiguracji w wersji 2. Konfigurację dziennika należy dodać oddzielnie do zmigrowanej bramy v2.
 
-### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Czy mogę napotkał problemy przy użyciu tego skryptu. Jak uzyskać pomoc?
+### <a name="does-this-script-support-certificates-uploaded-to-azure-keyvault-"></a>Czy ten skrypt obsługuje certyfikaty przekazane do magazynu kluczy platformy Azure?
+
+Nie. Obecnie skrypt nie obsługuje certyfikatów w magazynie kluczy. Jest to jednak brane pod uwagę w przyszłej wersji.
+
+### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Wystąpił problem z używaniem tego skryptu. Jak uzyskać pomoc?
   
-Możesz wysłać wiadomość e-mail na adres appgwmigrationsup@microsoft.com, otwórz zgłoszenie do pomocy technicznej z pomocy technicznej platformy Azure lub wykonać obie czynności.
+Możesz wysłać wiadomość e-mail na appgwmigrationsup@microsoft.comadres, otworzyć sprawę pomocy technicznej w ramach pomocy technicznej platformy Azure lub obie te czynności.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Dowiedz się więcej o aplikacji bramy w wersji 2](application-gateway-autoscaling-zone-redundant.md)
+[Informacje o Application Gateway v2](application-gateway-autoscaling-zone-redundant.md)

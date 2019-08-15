@@ -12,10 +12,10 @@ ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: b6414ac41b1bb43e3fe1470a7ae2b1358126003a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "68569675"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurowanie i Zarządzanie uwierzytelnianiem Azure Active Directory przy użyciu programu SQL
@@ -418,7 +418,7 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net  -G
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyAADPassword -G -l 30
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dostęp i kontrola w usłudze SQL Database zostały omówione w temacie [Kontrola dostępu w usłudze SQL Database](sql-database-control-access.md).
 - Dane logowania, użytkownicy i role bazy danych w usłudze SQL Database zostały omówione w temacie [Logins, users, and database roles](sql-database-manage-logins.md) (Dane logowania, użytkownicy i role bazy danych).

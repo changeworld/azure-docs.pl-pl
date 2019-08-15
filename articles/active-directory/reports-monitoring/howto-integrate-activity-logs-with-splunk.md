@@ -1,9 +1,9 @@
 ---
-title: Integrowanie dzienników usługi Azure Active Directory za pomocą Splunk przy użyciu usługi Azure Monitor | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zintegrować dzienniki usługi Azure Active Directory z usługą SumoLogic przy użyciu usługi Azure Monitor
+title: Integrowanie dzienników Azure Active Directory z usługą Splunk przy użyciu Azure Monitor | Microsoft Docs
+description: Dowiedz się, jak zintegrować dzienniki Azure Active Directory z usługą SumoLogic przy użyciu Azure Monitor
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 2c3db9a8-50fa-475a-97d8-f31082af6593
@@ -14,45 +14,45 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 05/13/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f30e19a351f7b25f995a85cfd566bcba091ac27
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a26df2b37a249f808cc044b41960ca1e210a311a
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65597824"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68988217"
 ---
-# <a name="how-to-integrate-azure-active-directory-logs-with-splunk-using-azure-monitor"></a>Instrukcje: Integrowanie dzienników usługi Azure Active Directory za pomocą Splunk przy użyciu usługi Azure Monitor
+# <a name="how-to-integrate-azure-active-directory-logs-with-splunk-using-azure-monitor"></a>Instrukcje: Integrowanie dzienników Azure Active Directory z usługą Splunk przy użyciu Azure Monitor
 
-W tym artykule dowiesz się, jak zintegrować dzienniki usługi Azure Active Directory (Azure AD) przy użyciu Splunk przy użyciu usługi Azure Monitor. Skierować dzienniki do usługi Azure event hub, a następnie zintegrować Centrum zdarzeń za pomocą Splunk.
+W tym artykule dowiesz się, jak zintegrować dzienniki usługi Azure Active Directory (Azure AD) z usługą Splunk przy użyciu Azure Monitor. Najpierw należy skierować dzienniki do centrum zdarzeń platformy Azure, a następnie zintegrować centrum zdarzeń z Splunk.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby używać tej funkcji, potrzebujesz następujących elementów:
-* Dzienniki Centrum zdarzeń platformy Azure, który zawiera działania usługi Azure AD. Dowiedz się, jak [przesyłanie strumieniowe dzienników aktywności do Centrum zdarzeń](quickstart-azure-monitor-stream-logs-to-event-hub.md). 
-* Dodatek usługi Azure Monitor dla Splunk. [Pobierz i skonfiguruj wystąpienie usługi Splunk](https://github.com/Microsoft/AzureMonitorAddonForSplunk/blob/master/README.md).
+* Centrum zdarzeń platformy Azure, które zawiera dzienniki aktywności usługi Azure AD. Dowiedz się, jak [przesyłać strumieniowo dzienniki aktywności do centrum zdarzeń](quickstart-azure-monitor-stream-logs-to-event-hub.md). 
+* Dodatek Azure Monitor dla Splunk. [Pobierz i skonfiguruj wystąpienie Splunk](https://github.com/Microsoft/AzureMonitorAddonForSplunk/blob/master/README.md).
 
-## <a name="integrate-azure-active-directory-logs"></a>Integrowanie dzienników usługi Azure Active Directory 
+## <a name="integrate-azure-active-directory-logs"></a>Integrowanie dzienników Azure Active Directory 
 
-1. Otwórz swoje wystąpienie Splunk, a następnie wybierz pozycję **danych — Podsumowanie**.
+1. Otwórz wystąpienie programu Splunk i wybierz pozycję **podsumowanie danych**.
 
-    ![Przycisk "Podsumowanie danych"](./media/howto-integrate-activity-logs-with-splunk/DataSummary.png)
+    ![Przycisk "podsumowanie danych"](./media/howto-integrate-activity-logs-with-splunk/DataSummary.png)
 
-2. Wybierz **Sourcetypes** , a następnie wybierz pozycję **amal: aadal:audit**
+2. Wybierz kartę **Sourcetypes** , a następnie wybierz pozycję **Amal: aadal: Audit**
 
-    ![Na karcie Sourcetypes podsumowanie danych](./media/howto-integrate-activity-logs-with-splunk/sourcetypeaadal.png)
+    ![Karta Sourcetypes podsumowania danych](./media/howto-integrate-activity-logs-with-splunk/sourcetypeaadal.png)
 
-    Działanie usługi Azure AD, dzienniki są wyświetlane na poniższej ilustracji:
+    Dzienniki aktywności usługi Azure AD przedstawiono na poniższej ilustracji:
 
     ![Dzienniki aktywności](./media/howto-integrate-activity-logs-with-splunk/activitylogs.png)
 
 > [!NOTE]
-> Jeśli nie możesz zainstalować dodatek w wystąpieniu usługi Splunk (na przykład, jeśli jest używany serwer proxy lub działające w chmurze Splunk), możesz przekazywać te zdarzenia do modułu zbierającego zdarzenia HTTP Splunk. Aby to zrobić, użyj tego [funkcji platformy Azure](https://github.com/Microsoft/AzureFunctionforSplunkVS), który jest wyzwalany przez nowych komunikatów w Centrum zdarzeń. 
+> Jeśli nie można zainstalować dodatku w wystąpieniu usługi Splunk (na przykład jeśli używasz serwera proxy lub działającego w chmurze Splunk), możesz przekazać te zdarzenia do modułu zbierającego zdarzenia w Splunk HTTP. W tym celu należy użyć tej [funkcji platformy Azure](https://github.com/Microsoft/AzureFunctionforSplunkVS), która jest wyzwalana przez nowe komunikaty w centrum zdarzeń. 
 >
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Interpret audit logs schema in Azure Monitor (Interpretowanie schematu dzienników inspekcji w usłudze Azure Monitor)](reference-azure-monitor-audit-log-schema.md)
 * [Interpret sign-in logs schema in Azure Monitor (Interpretowanie schematu dzienników logowania w usłudze Azure Monitor)](reference-azure-monitor-sign-ins-log-schema.md)

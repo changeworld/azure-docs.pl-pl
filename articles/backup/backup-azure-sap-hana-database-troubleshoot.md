@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/03/2019
 ms.author: dacurwin
-ms.openlocfilehash: 0512facbdf5f2222aee1e9bb5d2be64e22bf1a69
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 00e37030417da97d2c57b0fb5872422e7048a2bc
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774629"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954449"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Rozwiązywanie problemów z tworzeniem kopii zapasowych baz danych SAP HANA na platformie Azure
 
@@ -63,7 +63,7 @@ Po wybraniu bazy danych do wykonania kopii zapasowej usługa Azure Backup konfig
 
 Weź pod uwagę dane wejściowe podczas przywracania pojedynczej bazy danych kontenerów (SDC) dla platformy HANA na inną maszynę SDC. Nazwa bazy danych powinna być połączona małymi literami z literą "SDC" w nawiasach. Wystąpienie HANA będzie wyświetlane w Wielkiej litery.
 
-Załóżmy, że utworzono kopię zapasową wystąpienia SDC HANA "H21". Na stronie elementy kopii zapasowej będzie wyświetlana nazwa elementu kopii zapasowej jako **"H21 (SDC)"** . Jeśli podjęto próbę przywrócenia tej bazy danych do innego obiektu docelowego SDC, powiedz H11, a następnie należy podać następujące dane wejściowe.
+Załóżmy, że utworzono kopię zapasową wystąpienia SDC HANA "H21". Na stronie elementy kopii zapasowej będzie wyświetlana nazwa elementu kopii zapasowej jako **"H21 (SDC)"** . Jeśli próbujesz przywrócić tę bazę danych do innego obiektu docelowego SDC, powiedz H11, a następnie należy podać następujące dane wejściowe.
 
 ![SDC przywracania danych wejściowych](media/backup-azure-sap-hana-database/hana-sdc-restore.png)
 
@@ -71,7 +71,7 @@ Zwróć uwagę na następujące kwestie
 - Domyślnie przywrócona Nazwa bazy danych zostanie uzupełniona nazwą elementu kopii zapasowej, np., H21 (SDC)
 - Wybranie elementu docelowego jako H11 nie spowoduje automatycznej zmiany przywróconej nazwy bazy danych. **Powinien być edytowany w H11 (SDC)** . W przypadku SDC nazwa przywróconej bazy danych będzie IDENTYFIKATORem wystąpienia docelowego z małymi literami i "SDC" dołączonym w nawiasach.
 - Ponieważ SDC może mieć tylko jedną bazę danych, należy również kliknąć pole wyboru, aby umożliwić przesłonięcie istniejących danych bazy danych z użyciem danych punktu odzyskiwania.
-- W systemie Linux jest rozróżniana wielkość liter, dlatego należy zachować wielkość liter.
+- W systemie Linux jest rozróżniana wielkość liter, dlatego pamiętaj, aby zachować wielkość liter.
 
 ### <a name="multiple-container-database-mdc-restore"></a>Przywracanie wielu baz danych (MDC)
 

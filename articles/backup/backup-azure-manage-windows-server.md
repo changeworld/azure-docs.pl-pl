@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: 4ce6ef67c24bd623a4162329442693ed1628dae2
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 7e7312f942103125217c1f61ae8fe8007a49529b
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639867"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954758"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Monitorowanie magazynów usługi Recovery Services i zarządzanie nimi
 
@@ -175,7 +175,7 @@ Lista maszyn wirtualnych ma przydatne dane: Grupa zasobów skojarzonych, poprzed
 
 Kafelek **zadania tworzenia kopii zapasowej** na pulpicie nawigacyjnym magazynu pokazuje liczbę zadań, które są w toku lub zakończyły się niepowodzeniem w ciągu ostatnich 24 godzin. Kafelek zawiera możliwość wypróbowania innowacyjnego w menu zadania tworzenia kopii zapasowej.
 
-![Utwórz kopię zapasową elementów z ustawień](./media/backup-azure-manage-windows-server/backup-jobs-tile.png)
+![Tworzenie kopii zapasowych elementów z ustawień](./media/backup-azure-manage-windows-server/backup-jobs-tile.png)
 
 Aby wyświetlić dodatkowe szczegóły dotyczące zadań, kliknij pozycję **w toku** lub **nie można** otworzyć menu zadania tworzenia kopii zapasowej odfiltrowanego dla tego stanu.
 
@@ -185,11 +185,11 @@ W menu **zadania tworzenia kopii zapasowej** są wyświetlane informacje o typie
 
 Aby otworzyć menu zadania tworzenia kopii zapasowej, w menu głównym magazynu kliknij pozycję **zadania tworzenia kopii zapasowej**.
 
-![Utwórz kopię zapasową elementów z ustawień](./media/backup-azure-manage-windows-server/backup-jobs-menu-item.png)
+![Tworzenie kopii zapasowych elementów z ustawień](./media/backup-azure-manage-windows-server/backup-jobs-menu-item.png)
 
 Zostanie wyświetlona lista zadań tworzenia kopii zapasowej.
 
-![Utwórz kopię zapasową elementów z ustawień](./media/backup-azure-manage-windows-server/backup-jobs-list.png)
+![Tworzenie kopii zapasowych elementów z ustawień](./media/backup-azure-manage-windows-server/backup-jobs-list.png)
 
 Menu zadania tworzenia kopii zapasowej pokazuje stan wszystkich operacji dla wszystkich typów kopii zapasowych w ciągu ostatnich 24 godzin. Użyj **filtru** , aby zmienić filtry. Filtry zostały wyjaśnione w poniższych sekcjach.
 
@@ -197,11 +197,11 @@ Aby zmienić filtry:
 
 1. W menu zadania tworzenia kopii zapasowej magazynu kliknij przycisk **Filtruj**.
 
-   ![Utwórz kopię zapasową elementów z ustawień](./media/backup-azure-manage-windows-server/vault-backup-job-menu-filter.png)
+   ![Tworzenie kopii zapasowych elementów z ustawień](./media/backup-azure-manage-windows-server/vault-backup-job-menu-filter.png)
 
     Zostanie otwarte menu filtr.
 
-   ![Utwórz kopię zapasową elementów z ustawień](./media/backup-azure-manage-windows-server/filter-menu-backup-jobs.png)
+   ![Tworzenie kopii zapasowych elementów z ustawień](./media/backup-azure-manage-windows-server/filter-menu-backup-jobs.png)
 
 2. Wybierz ustawienia filtru, a następnie kliknij przycisk **gotowe**. Lista filtrowanych odświeża się na podstawie nowych ustawień.
 
@@ -274,7 +274,7 @@ Kafelek magazyn kopii zapasowych na pulpicie nawigacyjnym pokazuje Magazyn używ
    `<AzureBackup_agent_install_folder>\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*`Na przykład:<br/>
    `C:\Program Files\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider0.errlog`
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Przywracanie systemu Windows Server lub klienta systemu Windows z platformy Azure](backup-azure-restore-windows-server.md)
 * Aby dowiedzieć się więcej na temat Azure Backup, zobacz [omówienie Azure Backup](backup-introduction-to-azure-backup.md)
 * Odwiedź [Forum Azure Backup](https://go.microsoft.com/fwlink/p/?LinkId=290933)

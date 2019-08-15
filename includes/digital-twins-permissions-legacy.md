@@ -5,21 +5,21 @@ services: digital-twins
 author: alinamstanciu
 ms.service: digital-twins
 ms.topic: include
-ms.date: 06/26/2019
+ms.date: 08/12/2019
 ms.author: alinast
 ms.custom: include file
-ms.openlocfilehash: 9a5b3b04287a8b732d01bd8fe4610e073332da0d
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 9f4bf6fb92b590e274e8880b5f900e5469f85727
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478968"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "69012226"
 ---
 1. W witrynie [Azure Portal](https://portal.azure.com) otwórz usługę **Azure Active Directory** w okienku po lewej stronie, a następnie otwórz okienko **Właściwości**. Skopiuj wartość **identyfikatora katalogu** do pliku tymczasowego. Użyjesz tej wartości, aby skonfigurować aplikację przykładową w następnej sekcji.
 
     ![Identyfikator katalogu usługi Azure Active Directory](./media/digital-twins-permissions-legacy/aad-app-reg-tenant.png)
 
-1. W [witryny Azure portal](https://portal.azure.com), otwórz **usługi Azure Active Directory** z okienka po lewej stronie, a następnie otwórz **rejestracje aplikacji (starsza wersja)** okienka. Wybierz **rejestrowanie nowej aplikacji** przycisku.
+1. W [Azure Portal](https://portal.azure.com)Otwórz **Azure Active Directory** z okienka po lewej stronie, a następnie otwórz okienko **rejestracje aplikacji (starsza wersja)** . Wybierz przycisk **rejestracja nowej aplikacji** .
 
 1. Wprowadź przyjazną nazwę tej rejestracji aplikacji w polu **Nazwa**. W polu **Typ aplikacji** wybierz opcję **Natywna** a w polu **Identyfikator URI przekierowania** opcję `https://microsoft.com`. Wybierz pozycję **Utwórz**.
 
@@ -41,7 +41,7 @@ ms.locfileid: "67478968"
 
    e. Wybierz przycisk **Gotowe** w okienku **Dodaj dostęp do interfejsu API**.
 
-   f. W okienku **Wymagane uprawnienia** wybierz przycisk **Udziel uprawnień**, a następnie zaakceptuj wyświetlone potwierdzenie. Jeśli dla tego interfejsu API nie zostało udzielone uprawnienie, skontaktuj się z administratorem.
+   f. W okienku **Wymagane uprawnienia** wybierz przycisk **Udziel uprawnień**, a następnie zaakceptuj wyświetlone potwierdzenie. Jeśli uprawnienie nie zostanie przyznane dla tego interfejsu API, skontaktuj się z administratorem.
 
       ![Okienko Wymagane uprawnienia](./media/digital-twins-permissions-legacy/aad-app-req-permissions.png)
 

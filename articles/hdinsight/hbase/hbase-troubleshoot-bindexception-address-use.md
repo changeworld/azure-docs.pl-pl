@@ -1,0 +1,65 @@
+---
+title: Bindexception — adres jest już używany w usłudze Azure HDInsight
+description: Bindexception — adres jest już używany w usłudze Azure HDInsight
+ms.service: hdinsight
+ms.topic: troubleshooting
+author: hrasheed-msft
+ms.author: hrasheed
+ms.date: 08/08/2019
+ms.openlocfilehash: 8851a4dfb7deafab7ad77ef80619dd49ca46ed71
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947853"
+---
+# <a name="scenario-bindexception---address-already-in-use-in-azure-hdinsight"></a>Scenariusz: Bindexception — adres jest już używany w usłudze Azure HDInsight
+
+W tym artykule opisano kroki rozwiązywania problemów oraz możliwe rozwiązania problemów występujących w przypadku współpracy z klastrami usługi Azure HDInsight.
+
+## <a name="issue"></a>Problem
+
+Nie można wykonać operacji ponownego uruchamiania na serwerze regionu Apache HBase. W katalogu `/var/log/hbase` w w węzłach procesu roboczego, w którym nie można uruchomić serwera regionów, może zostać wyświetlony komunikat o błędzie podobny do poniższego: `region-server.log`
+
+```
+Caused by: java.net.BindException: Problem binding to /10.2.0.4:16020 : Address already in use
+...
+
+Caused by: java.net.BindException: Address already in use
+...
+```
+
+## <a name="cause"></a>Przyczyna
+
+Ponowne uruchamianie serwerów regionów HBase podczas dużego obciążenia. Poniżej znajdują się informacje o tym, co się stanie w tle, gdy użytkownik inicjuje operację ponownego uruchamiania na serwerze regionu HBase z poziomu interfejsu użytkownika Ambari:
+
+1. Agent Ambari wyśle żądanie zatrzymania do serwera regionu.
+
+1. Agent Ambari następnie czeka 30 sekund, aż serwer regionu zostanie bezpiecznie zamknięty.
+
+1. Jeśli aplikacja nadal nawiązuje połączenie z serwerem regionu, nie zostanie ona natychmiast ZAMKNIĘTA, a więc limit czasu 30 sekund wygaśnie wkrótce.
+
+1. Po upływie 30 sekund Agent Ambari wyśle wymuszenie wybicia (Kill-9) do serwera regionu.
+
+1. Ze względu na to nieoczekiwane zamknięcie, chociaż proces serwera regionu zostanie zamknięty, port skojarzony z procesem może nie zostać wyrzucony, który ostatecznie `AddressBindException`prowadzi do.
+
+## <a name="resolution"></a>Rozwiązanie
+
+Przed zainicjowaniem ponownego uruchomienia Zmniejsz obciążenie serwerów regionów HBase.
+
+Alternatywnie Wypróbuj i ręcznie uruchom ponownie serwery regionów w węzłach procesu roboczego, używając następujących poleceń:
+
+```bash
+sudo su - hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh stop regionserver"
+sudo su - hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh start regionserver"
+```
+
+## <a name="next-steps"></a>Następne kroki
+
+Jeśli problem nie został wyświetlony lub nie można rozwiązać problemu, odwiedź jeden z następujących kanałów, aby uzyskać więcej pomocy:
+
+* Uzyskaj odpowiedzi od ekspertów platformy Azure za pośrednictwem [pomocy technicznej dla społeczności platformy Azure](https://azure.microsoft.com/support/community/).
+
+* Połącz się [@AzureSupport](https://twitter.com/azuresupport) z programem — oficjalnego konta Microsoft Azure, aby zwiększyć komfort obsługi klienta. Połączenie społeczności platformy Azure z właściwymi zasobami: odpowiedziami, wsparciem i ekspertami.
+
+* Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na pasku menu wybierz pozycję **Obsługa** , a następnie otwórz Centrum **pomocy i obsługi technicznej** . Aby uzyskać szczegółowe informacje, zapoznaj [się z tematem jak utworzyć żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Dostęp do pomocy w zakresie zarządzania subskrypcjami i rozliczeń jest dostępny w ramach subskrypcji Microsoft Azure, a pomoc techniczna jest świadczona za pomocą jednego z [planów pomocy technicznej systemu Azure](https://azure.microsoft.com/support/plans/).

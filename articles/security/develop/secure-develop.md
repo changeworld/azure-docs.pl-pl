@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 1b2e6e0aa74c06afea09a67dbdf65ca47727b72e
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: c1c7dd0bd017852144139a841ff609dabf0f1a27
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780566"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68928068"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Opracowywanie bezpiecznych aplikacji na platformie Azure
 W tym artykule opisano działania związane z bezpieczeństwem i kontrolki, które należy wziąć pod uwagę podczas opracowywania aplikacji w chmurze. Pytania zabezpieczające i pojęcia, które należy wziąć pod uwagę podczas fazy wdrażania i weryfikacji [cyklu życia programu Microsoft Security Development (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) . Celem jest ułatwienie zdefiniowania działań i usług platformy Azure, których można użyć do tworzenia bezpieczniejszej aplikacji.
@@ -89,7 +89,7 @@ Oznacza to, że mniejsza liczba osób ma dostęp do Twoich prawdziwych danych, c
 
 Aby chronić przed rozłożeniem i zgadywaniem na podstawie słownika, należy zaimplementować zasady silnego hasła, aby upewnić się, że użytkownicy tworzą złożone hasło (na przykład 12 znaków i wymagające znaków alfanumerycznych i specjalnych).
 
-Możesz użyć struktury tożsamości do tworzenia i wymuszania zasad haseł. Azure AD B2C ułatwia zarządzanie hasłami, zapewniając [wbudowane zasady](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows#create-a-password-reset-user-flow), samoobsługowe [resetowanie haseł](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-sspr)i wiele innych.
+Możesz użyć struktury tożsamości do tworzenia i wymuszania zasad haseł. Azure AD B2C ułatwia zarządzanie hasłami, zapewniając [wbudowane zasady](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow), samoobsługowe [resetowanie haseł](../../active-directory-b2c/active-directory-b2c-reference-sspr.md)i wiele innych.
 
 Aby chronić przed atakami na kontach domyślnych, należy sprawdzić, czy wszystkie klucze i hasła są wymienne i czy są one generowane lub zastępowane po zainstalowaniu zasobów.
 
@@ -99,9 +99,9 @@ Jeśli aplikacja musi automatycznie generować hasła, należy się upewnić, ż
 
 Jeśli aplikacja zezwala na [przekazywanie plików](https://www.owasp.org/index.php/Unrestricted_File_Upload), należy wziąć pod uwagę środki ostrożności, które można podjąć w celu zapewnienia ryzykownej aktywności. Pierwszym krokiem w wielu atakach jest uzyskanie złośliwego kodu w systemie, który jest w trakcie ataku. Zastosowanie przekazywania plików pomaga atakującemu. OWASP oferuje rozwiązania do walidacji pliku, aby upewnić się, że przekazywany plik jest bezpieczny.
 
-Ochrona przed złośliwym oprogramowaniem pomaga identyfikować i usuwać wirusy, programy szpiegujące oraz inne złośliwe oprogramowanie. Można zainstalować [oprogramowanie Microsoft chroniące przed złośliwym kodem](https://docs.microsoft.com/azure/security/fundamentals/antimalware) lub rozwiązanie Endpoint Protection partnera firmy Microsoft ([Trend Micro](https://www.trendmicro.com/azure/), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)i [System Center Endpoint Protection](https://docs.microsoft.com/sccm/protect/deploy-use/endpoint-protection)).
+Ochrona przed złośliwym oprogramowaniem pomaga identyfikować i usuwać wirusy, programy szpiegujące oraz inne złośliwe oprogramowanie. Można zainstalować [oprogramowanie Microsoft chroniące przed złośliwym kodem](../fundamentals/antimalware.md) lub rozwiązanie Endpoint Protection partnera firmy Microsoft ([Trend Micro](https://www.trendmicro.com/azure/), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)i [System Center Endpoint Protection](https://docs.microsoft.com/sccm/protect/deploy-use/endpoint-protection)).
 
-[Oprogramowanie chroniące przed złośliwym oprogramowaniem firmy Microsoft](https://docs.microsoft.com/azure/security/fundamentals/antimalware) oferuje takie funkcje jak ochrona w czasie rzeczywistym, zaplanowane skanowanie, korygowanie złośliwego oprogramowania, aktualizacje sygnatur, aktualizacje aparatu, raportowanie przykładów i zbieranie zdarzeń wykluczania. Możesz zintegrować rozwiązania firmy Microsoft chroniące przed złośliwym oprogramowaniem i partnerzy [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-partner-integration) , aby ułatwić wdrażanie i wbudowane wykrywanie (alerty i zdarzenia).
+[Oprogramowanie chroniące przed złośliwym oprogramowaniem firmy Microsoft](../fundamentals/antimalware.md) oferuje takie funkcje jak ochrona w czasie rzeczywistym, zaplanowane skanowanie, korygowanie złośliwego oprogramowania, aktualizacje sygnatur, aktualizacje aparatu, raportowanie przykładów i zbieranie zdarzeń wykluczania. Możesz zintegrować rozwiązania firmy Microsoft chroniące przed złośliwym oprogramowaniem i partnerzy [Azure Security Center](../../security-center/security-center-partner-integration.md) , aby ułatwić wdrażanie i wbudowane wykrywanie (alerty i zdarzenia).
 
 ### <a name="dont-cache-sensitive-content"></a>Nie Buforuj zawartości poufnej
 
@@ -117,7 +117,7 @@ Przeskanujesz aplikację i jej biblioteki zależne, aby zidentyfikować wszystki
 Skanowanie luk w zabezpieczeniach obsługiwane przez [Usługa TINFOIL Security](https://www.tinfoilsecurity.com/) jest dostępne dla Web Apps Azure App Service. [Usługa TINFOIL skanowania zabezpieczeń dzięki App Service](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) oferuje deweloperom i administratorom szybki, zintegrowany i ekonomiczny sposób odnajdywania i rozwiązywania luk w zabezpieczeniach, zanim złośliwy aktor nie będzie mógł korzystać z nich.
 
 > [!NOTE]
-> Możesz także [zintegrować zabezpieczenia usługa TINFOIL z usługą Azure AD](https://docs.microsoft.com/azure/active-directory/saas-apps/tinfoil-security-tutorial). Integracja zabezpieczeń usługa TINFOIL z usługą Azure AD zapewnia następujące korzyści:
+> Możesz także [zintegrować zabezpieczenia usługa TINFOIL z usługą Azure AD](../../active-directory/saas-apps/tinfoil-security-tutorial.md). Integracja zabezpieczeń usługa TINFOIL z usługą Azure AD zapewnia następujące korzyści:
 >  - W usłudze Azure AD można kontrolować, kto ma dostęp do zabezpieczeń usługa TINFOIL.
 >  - Użytkownicy mogą być automatycznie zarejestrowani w usłudze Usługa TINFOIL Security (Logowanie jednokrotne) za pomocą swoich kont usługi Azure AD.
 >  - Kontami można zarządzać w jednej, centralnej lokalizacji, Azure Portal.
@@ -128,7 +128,7 @@ Dynamiczne testowanie zabezpieczeń aplikacji (DAST) to proces testowania aplika
 
 DAST różni się od statycznego testowania zabezpieczeń aplikacji (SAST). Narzędzia SAST analizują kod źródłowy lub skompilowane wersje kodu, gdy kod nie jest wykonywany, aby znaleźć wady zabezpieczeń.
 
-Realizuj DAST, najlepiej z pomocą specjalisty ds. zabezpieczeń ( [testera penetracji](https://docs.microsoft.com/azure/security/fundamentals/pen-testing) lub oceniania luk w zabezpieczeniach). Jeśli specjalista ds. zabezpieczeń nie jest dostępny, możesz samodzielnie wykonać DAST z użyciem skanera internetowego serwera proxy i niektórych szkoleń. Przede wszystkim Podłącz skaner DAST, aby upewnić się, że w kodzie nie wprowadzono oczywistych problemów z zabezpieczeniami. Zobacz witrynę [OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools) , aby uzyskać listę skanerów luk w zabezpieczeniach aplikacji sieci Web.
+Realizuj DAST, najlepiej z pomocą specjalisty ds. zabezpieczeń ( [testera penetracji](../fundamentals/pen-testing.md) lub oceniania luk w zabezpieczeniach). Jeśli specjalista ds. zabezpieczeń nie jest dostępny, możesz samodzielnie wykonać DAST z użyciem skanera internetowego serwera proxy i niektórych szkoleń. Przede wszystkim Podłącz skaner DAST, aby upewnić się, że w kodzie nie wprowadzono oczywistych problemów z zabezpieczeniami. Zobacz witrynę [OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools) , aby uzyskać listę skanerów luk w zabezpieczeniach aplikacji sieci Web.
 
 ### <a name="perform-fuzz-testing"></a>Wykonaj testy rozmyte
 
@@ -144,13 +144,13 @@ Możesz utworzyć zdjęcie obszaru ataków, skanując aplikację. Firma Microsof
 
 ### <a name="perform-security-penetration-testing"></a>Przeprowadź testowanie penetracji zabezpieczeń
 
-Upewnienie się, że aplikacja jest zabezpieczona, jest tak ważne jak testowanie wszelkich innych funkcji. Przetestowanie [penetracji](https://docs.microsoft.com/azure/security/fundamentals/pen-testing) standardowej części procesu kompilowania i wdrażania. Zaplanuj regularne testy zabezpieczeń i skanowania w poszukiwaniu wdrożonych aplikacji oraz monitoruj otwarte porty, punkty końcowe i ataki.
+Upewnienie się, że aplikacja jest zabezpieczona, jest tak ważne jak testowanie wszelkich innych funkcji. Przetestowanie [penetracji](../fundamentals/pen-testing.md) standardowej części procesu kompilowania i wdrażania. Zaplanuj regularne testy zabezpieczeń i skanowania w poszukiwaniu wdrożonych aplikacji oraz monitoruj otwarte porty, punkty końcowe i ataki.
 
 ### <a name="run-security-verification-tests"></a>Uruchom testy weryfikacyjne zabezpieczeń
 
 [Secure DevOps Kit dla platformy Azure](https://azsk.azurewebsites.net/index.html) (AzSK) zawiera SVTs dla wielu usług platformy Azure. Te SVTs są uruchamiane okresowo, aby mieć pewność, że Twoja subskrypcja platformy Azure i różne zasoby wchodzące w skład Twojej aplikacji są w stanie bezpiecznym. Możesz również zautomatyzować te testy przy użyciu funkcji rozszerzeń ciągłej integracji/ciągłego wdrażania (CI/CD) AzSK, która sprawia, że SVTs jest dostępna jako rozszerzenie programu Visual Studio.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W poniższych artykułach zalecamy mechanizmy kontroli zabezpieczeń i działania, które mogą pomóc w projektowaniu i wdrażaniu bezpiecznych aplikacji.
 
 - [Projektowanie bezpiecznych aplikacji](secure-design.md)

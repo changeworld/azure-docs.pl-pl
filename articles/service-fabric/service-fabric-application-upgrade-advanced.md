@@ -1,6 +1,6 @@
 ---
-title: Zaawansowane tematy związane z uaktualnieniami aplikacji | Dokumentacja firmy Microsoft
-description: W tym artykule omówiono niektóre zaawansowane tematy dotyczące uaktualniania aplikacji usługi Service Fabric.
+title: Zaawansowane tematy dotyczące uaktualniania aplikacji | Microsoft Docs
+description: W tym artykule omówiono niektóre zaawansowane tematy dotyczące uaktualniania aplikacji Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,45 +14,45 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 3cdddac74552b56dfe3567adf30f1a05b6eb8e24
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a3d0d6077da4df9a7f0d1b246c9752d38488a175
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60616538"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963816"
 ---
-# <a name="service-fabric-application-upgrade-advanced-topics"></a>Uaktualnianie aplikacji usługi Service Fabric: Tematy zaawansowane
+# <a name="service-fabric-application-upgrade-advanced-topics"></a>Uaktualnianie aplikacji Service Fabric: Tematy zaawansowane
 ## <a name="adding-or-removing-service-types-during-an-application-upgrade"></a>Dodawanie lub usuwanie typów usług podczas uaktualniania aplikacji
-Jeśli nowy typ usługi jest dodawany do opublikowanej aplikacji w ramach uaktualnienia, nowy typ usługi zostanie dodany do wdrożonej aplikacji. Takie uaktualnienie nie wpływa na wystąpień usługi, które zostały już część aplikacji, ale można utworzyć wystąpienia typu usługi, który został dodany, dla nowego typu usługi w aktywnej (zobacz [New-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)).
+Jeśli nowy typ usługi zostanie dodany do opublikowanej aplikacji w ramach uaktualnienia, nowy typ usługi zostanie dodany do wdrożonej aplikacji. Takie uaktualnienie nie ma wpływu na żadne wystąpienia usługi, które już należały do aplikacji, ale wystąpienie typu usługi, który został dodany, musi zostać utworzone dla nowego typu usługi, który ma być aktywny (zobacz [New-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)).
 
-Podobnie można usunąć typy usług z aplikacji w ramach uaktualnienia. Jednak przed przystąpieniem do uaktualniania należy usunąć wszystkich wystąpień usługi typu usunięte być to usługi (zobacz [ServiceFabricService Usuń](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps)).
+Podobnie typy usług można usunąć z aplikacji w ramach uaktualnienia. Jednak przed kontynuowaniem uaktualniania należy usunąć wszystkie wystąpienia usługi typu, które mają zostać usunięte (zobacz [Remove-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps)).
 
 ## <a name="manual-upgrade-mode"></a>Tryb uaktualniania ręcznego
 > [!NOTE]
-> *Monitorowanej* tryb uaktualniania jest zalecane w przypadku wszystkich uaktualnień usługi Service Fabric.
-> *UnmonitoredManual* tryb uaktualniania, tylko mają być uwzględniane w uaktualnienia nie powiodło się lub został wstrzymany. 
+> W przypadku wszystkich uaktualnień Service Fabric zalecany jest monitorowany tryb uaktualniania.
+> Tryb uaktualniania *UnmonitoredManual* powinien być uwzględniany tylko w przypadku uaktualnień zakończonych niepowodzeniem lub wstrzymane. 
 >
 >
 
-W *monitorowanej* trybie, Usługa Service Fabric mają zastosowanie zasady dotyczące kondycji, aby upewnić się, że aplikacja jest w dobrej kondycji, w miarę postępów uaktualnienia. Naruszenia zasad dotyczących kondycji, a następnie uaktualnienia jest zawieszone lub automatycznie wycofana w zależności od określonego *FailureAction*.
+W trybie monitorowanym Service Fabric stosuje zasady kondycji, aby upewnić się, że aplikacja jest w dobrej kondycji w miarę postępu uaktualniania. Jeśli zasady kondycji zostały naruszone, uaktualnienie jest zawieszone lub automatycznie wycofywane w zależności od określonej *FailureAction*.
 
-W *UnmonitoredManual* tryb, administrator aplikacji ma całkowitej kontroli nad postęp uaktualnienia. Ten tryb jest przydatny w przypadku stosowania zasad oceny kondycji niestandardowych lub wykonywanie nietypowe uaktualnień, aby pominąć całkowicie monitorowania kondycji (np. aplikacja jest już utraty danych). Uaktualnienie w tym trybie spowoduje wstrzymanie po wykonaniu każdego UD i musi być jawnie wznowić, przy użyciu [ServiceFabricApplicationUpgrade Wznów](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps). Podczas uaktualniania jest wstrzymana, a chcesz być wznowione przez użytkownika, wyświetli jego stan uaktualnienia *RollforwardPending* (zobacz [UpgradeState](https://docs.microsoft.com/dotnet/api/system.fabric.applicationupgradestate?view=azure-dotnet)).
+W trybie *UnmonitoredManual* administrator aplikacji ma całkowitą kontrolę nad postępem uaktualniania. Ten tryb jest przydatny w przypadku stosowania niestandardowych zasad oceny kondycji lub przeprowadzania niekonwencjonalnych uaktualnień w celu obejścia całkowitego monitorowania kondycji (np. aplikacja jest już w utracie danych). Uaktualnienie uruchomione w tym trybie zostanie zawieszone po ukończeniu każdego UDu i musi zostać jawnie wznowione przy użyciu polecenia [Resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps). Gdy uaktualnienie zostanie wstrzymane i będzie gotowe do wznowienia przez użytkownika, jego stan uaktualnienia zostanie wyświetlony *RollforwardPending* (zobacz [UpgradeState](https://docs.microsoft.com/dotnet/api/system.fabric.applicationupgradestate?view=azure-dotnet)).
 
-Na koniec *UnmonitoredAuto* tryb jest przydatne w przypadku wykonywania uaktualnienia szybkie iteracje podczas tworzenia usług i testowania, ponieważ dane wejściowe użytkownika nie jest wymagane, a żadne zasady dotyczące kondycji aplikacji są oceniane.
+Na koniec tryb *UnmonitoredAuto* jest przydatny do przeprowadzania szybkich iteracji uaktualniania podczas tworzenia lub testowania usług, ponieważ nie są wymagane żadne dane wejściowe użytkownika i nie są oceniane żadne zasady dotyczące kondycji aplikacji.
 
-## <a name="upgrade-with-a-diff-package"></a>Uaktualnienie z pakietem różnic
-Zamiast aprowizacji pakietu kompletnej aplikacji, uaktualnienia można również przeprowadzić przez diff pakietów, które zawierają tylko zaktualizowane pakiety danych/config/kodu wraz z manifestu kompletnej aplikacji, a następnie Zakończ manifestów usługi aprowizacji. Kompletna aplikacja pakiety są tylko wymaganych dla początkowej instalacji aplikacji do klastra. Kolejne uaktualnienia może być z kompletnej aplikacji, pakietów lub pakietów różnic.  
+## <a name="upgrade-with-a-diff-package"></a>Uaktualnianie przy użyciu pakietu różnicowego
+Zamiast aprowizacji kompletnego pakietu aplikacji, uaktualnienia mogą być również wykonywane przez inicjowanie obsługi pakietów różnicowych, które zawierają tylko zaktualizowany kod/konfiguracja/pakiety danych wraz z kompletnym manifestem aplikacji i kompletnymi manifestami usługi. Kompletne pakiety aplikacji są wymagane tylko w przypadku początkowej instalacji aplikacji w klastrze. Kolejne uaktualnienia mogą pochodzić z pełnych pakietów aplikacji lub pakietów różnicowych.  
 
-Wszystkie odwołania w manifest aplikacji i manifestów usługi pakietu różnic, którego nie można znaleźć w pakiecie aplikacji jest automatycznie zastępowany przy użyciu wersji obecnie ustanowione.
+Wszelkie odwołania do manifestu aplikacji lub manifestów usługi pakietu różnicowego, których nie można znaleźć w pakiecie aplikacji, są automatycznie zastępowane aktualnie zainicjowaną wersją.
 
-Scenariusze dotyczące korzystania z pakietu różnice są następujące:
+Scenariusze korzystania z pakietu różnicowego są następujące:
 
-* Jeśli masz pakiet dużych aplikacji, który odwołuje się do kilku plików manifestu usługi i/lub kilka pakiety kodu, konfiguracji pakietów lub pakietów danych.
-* W przypadku procesu kompilacji system wdrożenia, który generuje układ kompilacji bezpośrednio z poziomu aplikacji. W tym przypadku nawet, jeśli kod nie została zmieniona, nowo skompilowany zestaw nie uzyskać różne sumy kontrolnej. Przy użyciu pakietu pełnej aplikacji wymaga zaktualizowania wersji na wszystkie pakiety kodu. Przy użyciu pakietu różnicowego, należy podać tylko zmienione pliki i pliki manifestu, w których uległa zmianie wersji.
+* Jeśli masz duży pakiet aplikacji, który odwołuje się do kilku plików manifestu usługi i/lub kilku pakietów kodu, pakietów konfiguracyjnych lub pakietów danych.
+* W przypadku systemu wdrażania, który generuje układ kompilacji bezpośrednio z procesu kompilacji aplikacji. W tym przypadku, chociaż kod nie został zmieniony, nowo skompilowane zestawy uzyskują inną sumę kontrolną. Korzystanie z pełnego pakietu aplikacji wymaga zaktualizowania wersji we wszystkich pakietach kodu. Przy użyciu pakietu różnicowego można podać tylko zmienione pliki i pliki manifestu, w których wersja została zmieniona.
 
-Po uaktualnieniu aplikacji przy użyciu programu Visual Studio, pakiet różnic została opublikowana automatycznie. Aby ręcznie utworzyć pakiet diff, manifest aplikacji i manifestów usługi muszą zostać zaktualizowane, ale tylko zmienione pakiety powinny być uwzględnione w pakiet końcowy aplikacji.
+Gdy aplikacja zostanie uaktualniona przy użyciu programu Visual Studio, pakiet diff jest publikowany automatycznie. Aby ręcznie utworzyć pakiet diff, należy zaktualizować manifest aplikacji i manifesty usługi, ale tylko zmienione pakiety powinny być zawarte w końcowym pakiecie aplikacji.
 
-Na przykład Zacznijmy od następującej aplikacji (podany w celu ułatwienia zrozumienia numery wersji):
+Na przykład Zacznijmy od następującej aplikacji (numery wersji podane w celu łatwiejszego poznania):
 
 ```text
 app1           1.0.0
@@ -64,7 +64,7 @@ app1           1.0.0
     config     1.0.0
 ```
 
-Załóżmy, że chcesz zaktualizować tylko pakiet kodu klasy service1 przy użyciu pakietu różnic. Zaktualizowano aplikacja ma następujące zmiany wersji:
+Załóżmy, że chcemy zaktualizować tylko pakiet kodu Service1 przy użyciu pakietu diff. Zaktualizowana aplikacja ma następujące zmiany w wersji:
 
 ```text
 app1           2.0.0      <-- new version
@@ -76,7 +76,7 @@ app1           2.0.0      <-- new version
     config     1.0.0
 ```
 
-W takim przypadku należy zaktualizować manifest aplikacji 2.0.0 i manifestu usługi service1 odzwierciedlały aktualizacji pakietu kodu. Folder dla pakietu aplikacji będzie mieć następującą strukturę:
+W takim przypadku należy zaktualizować manifest aplikacji do 2.0.0 i manifestu usługi dla Service1 w celu odzwierciedlenia aktualizacji pakietu kodu. Folder pakietu aplikacji będzie miał następującą strukturę:
 
 ```text
 app1/
@@ -84,23 +84,61 @@ app1/
     code/
 ```
 
-Innymi słowy zwykle Utwórz pakiet kompletnej aplikacji, a następnie usuń wszystkie foldery pakietów kodu/config/danych, dla których wersja nie zmienił się.
+Innymi słowy, Utwórz cały pakiet aplikacji, a następnie usuń wszystkie foldery kodu/konfiguracji/pakietu danych, dla których wersja nie została zmieniona.
 
-## <a name="rolling-back-application-upgrades"></a>Wycofywanie uaktualnienia aplikacji
+## <a name="upgrade-application-parameters-independently-of-version"></a>Uaktualnij parametry aplikacji niezależnie od wersji
 
-Podczas uaktualnienia może być przeniesiona do przodu w jednym z trzech trybów (*monitorowanej*, *UnmonitoredAuto*, lub *UnmonitoredManual*), są tylko można cofnąć w dowolnym *UnmonitoredAuto* lub *UnmonitoredManual* trybu. Stopniowe ponownie *UnmonitoredAuto* tryb działa tak samo jak stopniowego do przodu, z wyjątkiem, wartością domyślną *UpgradeReplicaSetCheckTimeout* różni się — zobacz [aplikacji Parametry uaktualniania](service-fabric-application-upgrade-parameters.md). Stopniowe ponownie *UnmonitoredManual* tryb działa tak samo jak stopniowego do przodu — wycofywanie spowoduje wstrzymanie po wykonaniu każdego UD i musi być jawnie wznowić, przy użyciu [ Wznów ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) kontynuować wycofywania.
+Czasami należy zmienić parametry aplikacji Service Fabric bez zmiany wersji manifestu. Można to zrobić wygodnie przy użyciu flagi **-ApplicationParameter** z poleceniem cmdlet **Start-ServiceFabricApplicationUpgrade** platformy Azure Service Fabric PowerShell. Załóżmy, że aplikacja Service Fabric o następujących właściwościach:
 
-Wycofywanie zmian może być wyzwalane automatycznie kiedy zasady dotyczące kondycji dla uaktualnienie w *monitorowanej* tryb z *FailureAction* z *wycofywania* naruszenia (zobacz [Parametry uaktualniania aplikacji](service-fabric-application-upgrade-parameters.md)) lub jawnie przy użyciu [Start ServiceFabricApplicationRollback](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationrollback?view=azureservicefabricps).
+```PowerShell
+PS C:\> Get-ServiceFabricApplication -ApplicationName fabric:/Application1
 
-Podczas wycofywania, wartość *UpgradeReplicaSetCheckTimeout* i nadal można zmienić trybu w każdej chwili [ServiceFabricApplicationUpgrade aktualizacji](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricapplicationupgrade?view=azureservicefabricps).
+ApplicationName        : fabric:/Application1
+ApplicationTypeName    : Application1Type
+ApplicationTypeVersion : 1.0.0
+ApplicationStatus      : Ready
+HealthState            : Ok
+ApplicationParameters  : { "ImportantParameter" = "1"; "NewParameter" = "testBefore" }
+```
 
-## <a name="next-steps"></a>Kolejne kroki
-[Uaktualnienie z aplikacji przy użyciu programu Visual Studio](service-fabric-application-upgrade-tutorial.md) przeprowadzi uaktualnienie aplikacji przy użyciu programu Visual Studio.
+Teraz Uaktualnij aplikację za pomocą polecenia cmdlet **Start-ServiceFabricApplicationUpgrade** . W tym przykładzie przedstawiono monitorowane uaktualnienie, ale można również użyć niemonitorowanego uaktualnienia. Aby wyświetlić pełen opis flag zaakceptowanych przez to polecenie cmdlet, zobacz [informacje dotyczące modułu Azure Service Fabric PowerShell](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps#parameters)
 
-[Uaktualnienie z aplikacji przy użyciu programu Powershell](service-fabric-application-upgrade-tutorial-powershell.md) przeprowadzi uaktualnienie aplikacji przy użyciu programu PowerShell.
+```PowerShell
+PS C:\> $appParams = @{ "ImportantParameter" = "2"; "NewParameter" = "testAfter"}
 
-Kontrolować, jak uaktualnić aplikację przy użyciu [parametry uaktualniania](service-fabric-application-upgrade-parameters.md).
+PS C:\> Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/Application1 -ApplicationTypeVers
+ion 1.0.0 -ApplicationParameter $appParams -Monitored
 
-Uzyskania uaktualnień aplikacji zgodnych poznanie sposobu używania [serializacja danych](service-fabric-application-upgrade-data-serialization.md).
+```
 
-Rozwiązywanie typowych problemów podczas uaktualniania aplikacji korzystając z procedury opisanej w [Rozwiązywanie problemów z uaktualnieniami aplikacji](service-fabric-application-upgrade-troubleshooting.md).
+Po uaktualnieniu upewnij się, że aplikacja ma zaktualizowane parametry i tę samą wersję:
+
+```PowerShell
+PS C:\> Get-ServiceFabricApplication -ApplicationName fabric:/Application1
+
+ApplicationName        : fabric:/Application1
+ApplicationTypeName    : Application1Type
+ApplicationTypeVersion : 1.0.0
+ApplicationStatus      : Ready
+HealthState            : Ok
+ApplicationParameters  : { "ImportantParameter" = "2"; "NewParameter" = "testAfter" }
+```
+
+## <a name="rolling-back-application-upgrades"></a>Wycofywanie uaktualnień aplikacji
+
+Podczas gdy uaktualnienia można przekazywać w jednym z trzech trybów (*monitorowane*, *UnmonitoredAuto*lub *UnmonitoredManual*), można je wycofać tylko w trybie *UnmonitoredAuto* lub *UnmonitoredManual* . Wycofywanie w trybie *UnmonitoredAuto* działa tak samo jak w przypadku przenoszonej do przodu z wyjątkiem, że wartość domyślna *UpgradeReplicaSetCheckTimeout* jest różna — zobacz [Parametry uaktualnienia aplikacji](service-fabric-application-upgrade-parameters.md). Wycofywanie w trybie *UnmonitoredManual* działa tak samo jak w przypadku przenoszonego do przodu — wycofywanie zostanie zawieszone po ukończeniu każdego ud i musi zostać jawnie wznowione przy użyciu [Resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) , aby kontynuować wycofywania.
+
+Wycofywanie może być wyzwalane automatycznie w przypadku naruszenia zasad kondycji uaktualnienia w trybie monitorowanym z FailureAction *wycofania* (zobacz [Parametry uaktualnienia aplikacji](service-fabric-application-upgrade-parameters.md)) lub jawnie przy użyciu [ Start-ServiceFabricApplicationRollback](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationrollback?view=azureservicefabricps).
+
+W trakcie wycofywania wartość *UpgradeReplicaSetCheckTimeout* i tryb można nadal zmieniać w dowolnym momencie za pomocą polecenia [Update-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricapplicationupgrade?view=azureservicefabricps).
+
+## <a name="next-steps"></a>Następne kroki
+[Uaktualnianie aplikacji przy użyciu programu Visual Studio](service-fabric-application-upgrade-tutorial.md) przeprowadzi Cię przez proces uaktualniania aplikacji przy użyciu programu Visual Studio.
+
+[Uaktualnianie aplikacji przy użyciu programu PowerShell](service-fabric-application-upgrade-tutorial-powershell.md) przeprowadzi Cię przez proces uaktualniania aplikacji przy użyciu programu PowerShell.
+
+Kontroluj sposób uaktualniania aplikacji przy użyciu [parametrów uaktualnienia](service-fabric-application-upgrade-parameters.md).
+
+Aby uaktualnić aplikacje, należy się upewnić, jak używać [serializacji danych](service-fabric-application-upgrade-data-serialization.md).
+
+Rozwiązywanie typowych problemów dotyczących uaktualnień aplikacji, w odniesieniu do kroków w [temacie Troubleshooting Upgrades Applications](service-fabric-application-upgrade-troubleshooting.md).

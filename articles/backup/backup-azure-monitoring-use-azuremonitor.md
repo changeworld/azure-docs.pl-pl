@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: dacurwin
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: de13518173f21a0a802c37eb7be3cd6c4926d884
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: ffc245402965cdcd62bb210d79bd95db5444f964
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689203"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954622"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Monitorowanie na dużą skalę przy użyciu Azure Monitor
 
@@ -212,7 +212,7 @@ Dane diagnostyczne z magazynu są napompowane do obszaru roboczego Log Analytics
 - W przypadku wszystkich rozwiązań zadania tworzenia kopii zapasowych ad hoc i zadania przywracania są wypychane zaraz po *zakończeniu*.
 - W przypadku wszystkich rozwiązań z wyjątkiem kopii zapasowej SQL zaplanowane zadania tworzenia kopii zapasowej są wypychane zaraz po *zakończeniu*.
 - W przypadku kopii zapasowej SQL, ponieważ kopie zapasowe dzienników mogą odbywać się co 15 minut, informacje dotyczące wszystkich ukończonych zadań tworzenia kopii zapasowej, w tym dzienników, są przetwarzane wsadowe i wypychane co 6 godzin.
-- W przypadku wszystkich rozwiązań inne informacje, takie jak element kopii zapasowej, zasady, punkty odzyskiwania, magazyn i tak dalej, są wypychane co najmniej *raz dziennie.*
+- W przypadku wszystkich rozwiązań, inne informacje, takie jak element kopii zapasowej, zasady, punkty odzyskiwania, magazyn itd., są wypychane co najmniej *raz dziennie.*
 - Zmiana konfiguracji kopii zapasowej (na przykład zmiana zasad lub zasad edycji) wyzwala wypychanie wszystkich powiązanych informacji o kopii zapasowej.
 
 ## <a name="using-the-recovery-services-vaults-activity-logs"></a>Korzystanie z dzienników aktywności magazynu Recovery Services
@@ -238,7 +238,7 @@ Aby zidentyfikować odpowiedni dziennik i utworzyć alert:
 
    ![Nowa reguła alertu](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
 
-W tym miejscu zasób jest magazynem Recovery Services. Należy powtórzyć te same kroki dla wszystkich magazynów, w których chcesz otrzymywać powiadomienia za pomocą dzienników aktywności. Warunek nie będzie miał wartości progowej, kropki lub częstotliwości, ponieważ ten alert jest oparty na zdarzeniach. Po wygenerowaniu odpowiedniego dziennika aktywności zostanie zgłoszony alert.
+W tym miejscu zasób jest magazynem Recovery Services. Powtórz te same kroki dla wszystkich magazynów, w których chcesz otrzymywać powiadomienia za pomocą dzienników aktywności. Warunek nie będzie miał wartości progowej, kropki lub częstotliwości, ponieważ ten alert jest oparty na zdarzeniach. Po wygenerowaniu odpowiedniego dziennika aktywności zostanie zgłoszony alert.
 
 ## <a name="using-log-analytics-to-monitor-at-scale"></a>Monitorowanie na dużą skalę przy użyciu Log Analytics
 
@@ -252,6 +252,6 @@ Mimo że można otrzymywać powiadomienia za pośrednictwem dzienników aktywno�
 
 Użyj Log Analytics obszaru roboczego do monitorowania i generowania alertów na dużą skalę dla wszystkich obciążeń chronionych przez Azure Backup.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby utworzyć niestandardowe zapytania, zobacz [log Analytics model danych](backup-azure-log-analytics-data-model.md).

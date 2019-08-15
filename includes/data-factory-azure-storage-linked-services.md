@@ -4,22 +4,22 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: b8585b62b0728d1ba6e010e42b44840903c46833
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: ee368b58195d61a1c6792a3a3655122af7104d58
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183699"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "69012220"
 ---
 ### <a name="azure-storage-linked-service"></a>Połączona usługa Azure Storage
-**Połączonej usługi Azure Storage** umożliwia połączenie konta usługi Azure storage do usługi Azure data factory przy użyciu **klucz konta**, co umożliwia usługi data factory z globalnego dostępu do usługi Azure Storage. Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla połączonej usługi Azure Storage.
+**Połączona usługa Azure Storage** umożliwia łączenie konta usługi Azure Storage z usługą Azure Data Factory przy użyciu **klucza konta**, który zapewnia fabrykę danych z dostępem globalnym do usługi Azure Storage. Poniższa tabela zawiera opis elementów JSON specyficznych dla połączonej usługi Azure Storage.
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type |Właściwość type musi być równa: **AzureStorage** |Tak |
-| connectionString |Określ informacje potrzebne do łączenia z usługą Azure storage dla właściwości connectionString. |Tak |
+| type |Właściwość Type musi mieć ustawioną wartość: **AzureStorage** |Tak |
+| connectionString |Określ informacje, które są konieczne do nawiązania połączenia z usługą Azure Storage dla właściwości connectionString. |Tak |
 
-Zobacz następującą sekcję, wykonując czynności przedstawione widok/kopiowania klucza konta usługi Azure Storage: [Klucze dostępu](../articles/storage/common/storage-account-manage.md#access-keys).
+Zapoznaj się z sekcją w poniższej sekcji, aby wyświetlić/skopiować klucz konta dla usługi Azure Storage: [Klucze dostępu](../articles/storage/common/storage-account-manage.md#access-keys).
 
 **Przykład:**  
 
@@ -35,22 +35,22 @@ Zobacz następującą sekcję, wykonując czynności przedstawione widok/kopiowa
 }
 ```
 
-### <a name="azure-storage-sas-linked-service"></a>Azure Storage Sas Linked Service
-Sygnatury dostępu współdzielonego (SAS) zapewnia delegowany dostęp do zasobów na koncie magazynu. Umożliwia on przyznanie klientowi ograniczonych uprawnień do obiektów na koncie magazynu w określonym przedziale czasu i z określonym zestawem uprawnień bez konieczności udostępniania kluczy dostępu do Twojego konta. Sygnatura dostępu Współdzielonego to identyfikator URI, który obejmuje jego parametry zapytań, wszystkie informacje niezbędne do uwierzytelnionego dostępu do zasobu magazynu. Aby uzyskać dostęp do zasobów magazynu przy użyciu sygnatury dostępu Współdzielonego, klient musi tylko przekazanej sygnatury dostępu Współdzielonego do odpowiedniego konstruktora lub metody. Aby uzyskać szczegółowe informacje na temat sygnatury dostępu Współdzielonego, zobacz [sygnatur dostępu współdzielonego: Opis modelu sygnatur dostępu Współdzielonego](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md)
+### <a name="azure-storage-sas-linked-service"></a>Połączona usługa Azure Storage SAS
+Sygnatura dostępu współdzielonego (SAS) zapewnia delegowany dostęp do zasobów na koncie magazynu. Umożliwia przyznanie klientowi ograniczonych uprawnień do obiektów na koncie magazynu przez określony czas i z określonym zestawem uprawnień bez konieczności udostępniania kluczy dostępu do konta. Sygnatura dostępu współdzielonego to identyfikator URI, który obejmuje parametry zapytania, wszystkie informacje niezbędne do uzyskania uwierzytelniony dostęp do zasobu magazynu. Aby uzyskać dostęp do zasobów magazynu z sygnaturą dostępu współdzielonego, klient musi przekazać sygnaturę dostępu współdzielonego tylko do odpowiedniego konstruktora lub metody. Aby uzyskać więcej informacji na temat SAS, zobacz [udzielanie ograniczonego dostępu do zasobów usługi Azure Storage za pomocą sygnatur dostępu współdzielonego (SAS)](../articles/storage/common/storage-sas-overview.md).
 
 > [!IMPORTANT]
-> Usługa Azure Data Factory obsługuje teraz tylko **sygnatury dostępu Współdzielonego usługi** , ale nie sygnatury dostępu Współdzielonego konta. Zobacz [typów z sygnatury dostępu współdzielonego](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures) szczegółowe informacje na temat tych dwóch typów oraz sposobu konstruowania. Zanotuj adres URL sygnatury dostępu Współdzielonego generable z witryny Azure portal lub Eksplorator usługi Storage to konto sygnatury dostępu Współdzielonego, który nie jest obsługiwany.
+> Azure Data Factory teraz obsługuje tylko sygnatury dostępu współdzielonego **usługi** , ale nie konta SAS. Zwróć uwagę na adres URL sygnatury dostępu współdzielonego generable z Azure Portal lub Eksplorator usługi Storage jest to konto SAS, które nie jest obsługiwane.
 
 > [!TIP]
-> Można wykonać poniższych poleceń programu PowerShell, aby wygenerować sygnaturę dostępu Współdzielonego usługi dla konta usługi storage (Zastąp zastępcze i Udziel uprawnienia potrzebne): `$context = New-AzStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
+> Możesz wykonać poniższe polecenia programu PowerShell, aby wygenerować sygnaturę dostępu współdzielonego usługi dla konta magazynu (Zastąp symbol zastępczy i Udziel wymaganych uprawnień):`$context = New-AzStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
 > `New-AzStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
-Usługa połączona sygnatury dostępu Współdzielonego Azure Storage pozwala połączyć konto usługi Azure Storage do usługi Azure data factory przy użyciu sygnatury dostępu współdzielonego (SAS). Usługi data factory zapewnia ograniczony/czasowo dostęp do wszystkich/dla zasobów (obiekt blob/kontenera) w magazynie. Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla usługi połączonej usługi Azure Storage sygnatury dostępu Współdzielonego. 
+Połączona usługa Azure Storage SAS umożliwia łączenie konta usługi Azure Storage z fabryką danych platformy Azure przy użyciu sygnatury dostępu współdzielonego (SAS). Zapewnia ona fabrykę danych z ograniczonym dostępnym przez czas dostępem do wszystkich/konkretnych zasobów (BLOB/Container) w magazynie. Poniższa tabela zawiera opis elementów JSON specyficznych dla połączonej usługi Azure Storage SAS. 
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type |Właściwość type musi być równa: **AzureStorageSas** |Tak |
-| sasUri |Określ udostępniony URI podpisu dostępu do zasobów usługi Azure Storage, np. obiektów blob, kontenerów lub tabeli.  |Tak |
+| type |Właściwość Type musi mieć ustawioną wartość: **AzureStorageSas** |Tak |
+| sasUri |Określ identyfikator URI sygnatury dostępu współdzielonego do zasobów usługi Azure Storage, takich jak obiekt BLOB, kontener lub tabela.  |Tak |
 
 **Przykład:**
 
@@ -66,9 +66,9 @@ Usługa połączona sygnatury dostępu Współdzielonego Azure Storage pozwala p
 }
 ```
 
-Podczas tworzenia **identyfikatora URI połączenia SAS**, biorąc pod uwagę następujące czynności:  
+Podczas tworzenia **identyfikatora URI sygnatury**dostępu współdzielonego Rozważ następujące kwestie:  
 
-* Ustaw odpowiednie odczytu/zapisu **uprawnienia** na obiekty w zależności od sposobu połączonej usługi (Odczyt, zapis, Odczyt/zapis) jest używany w fabryce danych.
-* Ustaw **czas wygaśnięcia** odpowiednio. Upewnij się, że dostęp do obiektów usługi Azure Storage nie wygaśnie w aktywnym okresie potoku.
-* Identyfikator URI powinny być tworzone na poziomie tabeli oparte na potrzeby lub kontener prawym/obiekt blob. Identyfikator Uri sygnatury dostępu Współdzielonego obiektu blob platformy Azure umożliwia usłudze Data Factory dostęp do tego konkretnego obiektu blob. Identyfikator Uri sygnatury dostępu Współdzielonego do kontenera obiektów blob platformy Azure umożliwia usłudze Data Factory do iteracji przez obiekty BLOB w kontenerze. Jeśli trzeba zapewnić dostęp później obiektów innych/mniejszej lub zaktualizować identyfikatora URI sygnatury dostępu Współdzielonego, pamiętaj, aby zaktualizować połączoną usługę o nowy identyfikator URI.   
+* Ustaw odpowiednie **uprawnienia** do odczytu/zapisu dla obiektów na podstawie sposobu używania połączonej usługi (odczyt, zapis, odczyt/zapis) w fabryce danych.
+* Ustaw **czas wygaśnięcia** odpowiednio. Upewnij się, że dostęp do obiektów usługi Azure Storage nie wygasa w aktywnym okresie potoku.
+* Identyfikator URI należy utworzyć na odpowiednim poziomie kontenera/obiektu BLOB lub tabeli na podstawie potrzeb. Identyfikator URI sygnatury dostępu współdzielonego do obiektu blob platformy Azure umożliwia usłudze Data Factory dostęp do tego określonego obiektu BLOB. Identyfikator URI sygnatury dostępu współdzielonego do kontenera obiektów blob platformy Azure umożliwia usłudze Data Factory Iterowanie za pomocą obiektów BLOB w tym kontenerze. Jeśli chcesz zapewnić dostęp do więcej/mniej obiektów później, lub zaktualizuj identyfikator URI sygnatury dostępu współdzielonego, pamiętaj, aby zaktualizować połączoną usługę nowym identyfikatorem URI.   
 

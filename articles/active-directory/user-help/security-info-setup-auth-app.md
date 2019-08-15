@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20d5131c773e2a9f7b6830725ccd934786d6dd67
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: a5fff27094881ffbada2bda7937fa714ffc07133
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880947"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954348"
 ---
 # <a name="set-up-security-info-preview-to-use-an-authenticator-app"></a>Skonfiguruj informacje zabezpieczające (wersja zapoznawcza) w celu korzystania z aplikacji uwierzytelniania
 
@@ -78,7 +78,7 @@ W zależności od ustawień organizacji może być możliwe użycie aplikacji uw
 
     Aplikacja Authenticator powinna pomyślnie dodać konto służbowe bez konieczności podawania żadnych dodatkowych informacji przez użytkownika. Jednak jeśli czytnik kodów QR nie może odczytać kodu, możesz wybrać **link Nie mogę zeskanować kodu QR** oraz ręcznie podać kod i adres URL w aplikacji Microsoft Authenticator. Aby uzyskać więcej informacji na temat ręcznego dodawania kodu, zobacz [Ręcznie dodawanie konta do aplikacji](user-help-auth-app-add-account-manual.md).
 
-9. Wybierz pozycję **dalej** na stronie **Skanuj kod QR** na urządzeniu.
+9. Wybierz pozycję **Dalej** na stronie **Zeskanuj kod QR** na komputerze.
 
     Do aplikacji Microsoft Authenticator na urządzeniu przenośnym zostanie wysłane powiadomienie o konieczności przetestowania konta.
 

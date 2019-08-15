@@ -1,6 +1,6 @@
 ---
-title: Tworzenie środowisk z wieloma Maszynami wirtualnymi i zasobów PaaS za pomocą szablonów usługi Azure Resource Manager | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak tworzenie środowisk z wieloma Maszynami wirtualnymi i zasobów PaaS w usłudze Azure DevTest Labs przy użyciu szablonu usługi Azure Resource Manager
+title: Tworzenie środowisk z obsługą wielu maszyn wirtualnych i zasobów PaaS za pomocą szablonów Azure Resource Manager | Microsoft Docs
+description: Dowiedz się, jak tworzyć środowiska wielu maszyn wirtualnych i PaaS zasoby w Azure DevTest Labs z szablonu Azure Resource Manager
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,276 +12,290 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2018
+ms.date: 08/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 144fd11e9c1ee3e00412320840e864a3190ccdb0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51c699f9b392be5f2e2bc16b5729d6567ace7f17
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65833983"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016232"
 ---
-# <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Tworzenie środowisk z wieloma Maszynami wirtualnymi i zasobów PaaS za pomocą szablonów usługi Azure Resource Manager
+# <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Tworzenie środowisk z obsługą wielu maszyn wirtualnych i zasobów PaaS za pomocą szablonów Azure Resource Manager
 
-[Witryny Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) pozwala na łatwe [Dodaj jedną maszynę Wirtualną w czasie do laboratorium](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-add-vm). Jednak jeśli środowisko zawiera wiele maszyn wirtualnych, każda maszyna wirtualna musi indywidualnie utworzone. W takich scenariuszach wielowarstwową aplikację sieci Web lub farmy programu SharePoint mechanizm jest wymagane w celu umożliwienia tworzenia wielu maszyn wirtualnych w jednym kroku. Za pomocą szablonów usługi Azure Resource Manager, możesz teraz zdefiniować infrastruktury i konfiguracji rozwiązania platformy Azure i wielokrotnie wdrażać wiele maszyn wirtualnych w spójnym stanie. Ta funkcja zapewnia następujące korzyści:
+Środowiska Azure DevTest Labs pozwalają użytkownikom łatwo wdrażać złożone infrastruktury w spójny sposób w ramach dostrojenia laboratorium. Za pomocą [szablonów Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) można tworzyć środowiska z zestawami zasobów w DevTest Labs. Te środowiska mogą zawierać dowolne zasoby platformy Azure, które mogą być tworzone przez Menedżer zasobów szablonów. 
 
-- Szablony usługi Azure Resource Manager są ładowane bezpośrednio z repozytorium kontroli źródła (GitHub lub repozytorium Git usługi Azure DevOps Services).
-- Po skonfigurowaniu użytkownicy mogą tworzyć środowiska, wybierając szablon usługi Azure Resource Manager w witrynie Azure portal, tak samo jak z innymi rodzajami [bazami maszyn wirtualnych](./devtest-lab-comparing-vm-base-image-types.md).
-- Zasoby usługi Azure PaaS mogą być udostępniane w środowisku przy użyciu szablonu usługi Azure Resource Manager oprócz maszyn wirtualnych IaaS.
-- Koszty środowisk można śledzić w laboratorium, oprócz poszczególne maszyny wirtualne utworzone przez innych typów baz.
-- Zasoby PaaS są tworzone i pojawi się na śledzenie; kosztów Wyłączenie automatycznego maszyny Wirtualnej nie ma zastosowania do zasobów PaaS.
+Do laboratorium można łatwo [dodać jedną maszynę wirtualną (VM)](devtest-lab-add-vm.md) , korzystając z [Azure Portal](https://portal.azure.com). Jednak scenariusze, takie jak wielowarstwowe aplikacje internetowe lub farma programu SharePoint, wymagają mechanizmu tworzenia wielu maszyn wirtualnych w jednym kroku. Za pomocą szablonów Azure Resource Manager można zdefiniować infrastrukturę i konfigurację rozwiązania platformy Azure oraz wielokrotnie wdrożyć wiele maszyn wirtualnych w spójnym stanie. 
 
-Dowiedz się więcej o wiele [korzyści z używania szablonów usługi Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#the-benefits-of-using-resource-manager) do wdrożenia, aktualizowanie lub usuwanie wszystkich zasobów laboratorium w ramach jednej operacji.
+Szablony Azure Resource Manager również zapewniają następujące korzyści:
+
+- Szablony Azure Resource Manager są ładowane bezpośrednio z repozytorium kontroli źródła w serwisie GitHub lub Azure Repos.
+- Użytkownicy mogą utworzyć środowisko poprzez wybranie skonfigurowanego szablonu Azure Resource Manager z Azure Portal, podobnie jak w przypadku innych typów [baz maszyn wirtualnych](devtest-lab-comparing-vm-base-image-types.md).
+- Zasoby PaaS platformy Azure oraz maszyny wirtualne IaaS w środowisku można udostępniać przy użyciu szablonu Azure Resource Manager.
+- Możesz śledzić koszt środowisk w laboratorium, oprócz pojedynczych maszyn wirtualnych utworzonych przez inne typy baz. Zasoby PaaS są tworzone i będą wyświetlane w usłudze śledzenia kosztów. Jednak automatyczne zamknięcie maszyny wirtualnej nie dotyczy zasobów PaaS.
+
+Aby dowiedzieć się więcej na temat korzyści z używania szablonów Menedżer zasobów do wdrażania, aktualizowania lub usuwania wielu zasobów laboratorium w ramach jednej operacji, zobacz [zalety korzystania z szablonów Menedżer zasobów](../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager).
 
 > [!NOTE]
-> Gdy używasz szablonu usługi Resource Manager jako podstawy do tworzenia laboratorium więcej maszyn wirtualnych, istnieją pewne różnice, o których należy pamiętać, czy tworzysz Multi-maszyn wirtualnych lub maszyn wirtualnych na jednym. [Użyj szablonu usługi Azure Resource Manager maszynę wirtualną](devtest-lab-use-resource-manager-template.md) wyjaśnia różnice te bardziej szczegółowo.
+> Jeśli używasz szablonu Menedżer zasobów jako bazy do tworzenia maszyn wirtualnych laboratorium, istnieją pewne różnice między tworzeniem wielu maszyn wirtualnych lub pojedynczą maszyną wirtualną. Aby uzyskać więcej informacji, zobacz [Użyj szablonu Azure Resource Manager maszyny wirtualnej](devtest-lab-use-resource-manager-template.md).
 >
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+## <a name="use-devtest-labs-public-environments"></a>Korzystanie z środowisk publicznych DevTest Labs
+Azure DevTest Labs ma [publiczne repozytorium szablonów Azure Resource Manager](https://github.com/Azure/azure-devtestlab/tree/master/Environments) , których można użyć do tworzenia środowisk bez konieczności samodzielnego łączenia się z zewnętrznym źródłem usługi GitHub. To publiczne repozytorium jest podobne do publicznego repozytorium artefaktów, które są dostępne w Azure Portal dla każdego tworzonego laboratorium. Repozytorium środowiska pozwala szybko rozpocząć pracę z szablonami wstępnie utworzonych środowisk, które mają kilka parametrów wejściowych. Te szablony zapewniają bezproblemowe środowisko uruchamiania dla zasobów PaaS w ramach laboratoriów. 
 
-## <a name="devtest-labs-public-environments"></a>Środowiskach publicznych DevTest Labs
-Usługa Azure DevTest Labs ma [publicznego repozytorium szablonów usługi Azure Resource Manager](https://github.com/Azure/azure-devtestlab/tree/master/Environments) używanego do tworzenia środowisk bez konieczności nawiązywania połączenia z zewnętrznym źródłem GitHub samodzielnie. To repozytorium zawiera często używane szablony, takich jak Azure Web Apps, klaster usługi Service Fabric i Programowanie w środowisku farmy programu SharePoint. Ta funkcja jest podobne do publicznego repozytorium artefaktów, które jest uwzględniany w przypadku każdego tworzenia laboratorium. Repozytorium środowiska umożliwia szybkie rozpoczynanie pracy z szablonami wstępnie przygotowane środowiska minimalne parametrów wejściowych do przedstawienia bezproblemowe środowisko dla zasobów PaaS w labs. Aby uzyskać więcej informacji, zobacz [Konfigurowanie i używanie środowiskach publicznych w usłudze DevTest Labs](devtest-lab-configure-use-public-environments.md).
+W repozytorium publicznym zespół usługi DevTest Labs i inne osoby utworzyły i udostępnili często używane szablony, takie jak Azure Web Apps, klaster Service Fabric i programowanie środowiska farmy programu SharePoint. Możesz użyć tych szablonów bezpośrednio lub dostosować je do swoich potrzeb. Aby uzyskać więcej informacji, zobacz [Konfigurowanie i używanie środowisk publicznych w programie DevTest Labs](devtest-lab-configure-use-public-environments.md). Po utworzeniu własnych szablonów można je zapisać w tym repozytorium, aby udostępnić je innym osobom, lub skonfigurować własne repozytorium git.
 
-## <a name="configure-your-own-template-repositories"></a>Konfigurowanie repozytoriów szablonu
-Jako jedna z najlepszych rozwiązań przy użyciu infrastruktury jako kodu i konfiguracji jako kodu szablonów środowiska powinny być zarządzane w kontroli źródła. Usługa Azure DevTest Labs następuje tej praktyką i ładuje wszystkie szablony usługi Azure Resource Manager bezpośrednio z repozytoriami GitHub lub Git usług DevOps platformy Azure. W rezultacie szablonów usługi Resource Manager może służyć cyklu całego procesu zarządzania wersjami ze środowiska testowego do środowiska produkcyjnego.
+<a name="configure-your-own-template-repositories"></a> 
+## <a name="create-your-own-template-repositories"></a>Tworzenie własnych repozytoriów szablonów
 
-Zapoznaj się z szablonów utworzonych przez zespół usługi DevTest Labs w [publicznego repozytorium GitHub](https://github.com/Azure/azure-devtestlab/tree/master/Environments). W tym publicznym repozytorium można wyświetlić szablony udostępnione przez innych użytkowników można używać bezpośrednio lub dostosować je do swoich potrzeb. Po utworzeniu szablonu, należy go przechowywać w repozytorium, aby udostępnić go innym osobom. Można też skonfigurować własne repozytorium Git przy użyciu szablonów, które mogą służyć do konfigurowania środowisk w chmurze. 
+Zgodnie z najlepszymi rozwiązaniami dotyczącymi infrastruktury jako kodu i konfiguracji jako kodu, należy zarządzać szablonami środowisk w kontroli źródła. Azure DevTest Labs postępuj zgodnie z tą procedurą i ładuje wszystkie szablony Azure Resource Manager bezpośrednio z repozytorium GitHub lub Azure Repos repozytoriów. W związku z tym można używać szablonów Menedżer zasobów w całym cyklu wydania, ze środowiska testowego do środowiska produkcyjnego.
 
-Istnieje kilka reguł, które trzeba wykonać, aby zorganizować szablonów usługi Azure Resource Manager w repozytorium:
+Istnieje kilka reguł, które należy wykonać, aby zorganizować szablony Azure Resource Manager w repozytorium:
 
-- Plik szablonu musi mieć nazwę `azuredeploy.json`. 
-
-    ![Pliki szablonów klucza usługi Azure Resource Manager](./media/devtest-lab-create-environment-from-arm/master-template.png)
-
-- Jeśli chcesz użyć wartości parametrów zdefiniowanych w pliku parametrów, musi mieć nazwę pliku parametrów `azuredeploy.parameters.json`.
-- Można używać parametrów `_artifactsLocation` i `_artifactsLocationSasToken` do konstruowania parametersLink wartość identyfikatora URI, dzięki czemu usługa DevTest Labs do automatycznego zarządzania zagnieżdżonych szablonów. Aby uzyskać więcej informacji, zobacz [wdrażanie zagnieżdżonych szablonów usługi Azure Resource Manager w środowiskach testowych](deploy-nested-template-environments.md).
-- Można zdefiniować metadane, aby określić nazwę wyświetlaną szablonu i opis. Te metadane musi znajdować się w pliku o nazwie `metadata.json`. Następujący przykład pliku metadanych przedstawia sposób określić nazwę wyświetlaną i opis: 
-
-    ```json
-    { 
-        "itemDisplayName": "<your template name>", 
-        "description": "<description of the template>" 
-    }
-    ```
-
-Poniższe kroki prowadzą przez proces dodawania repozytorium do laboratorium przy użyciu witryny Azure portal. 
-
-1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Wybierz **wszystkich usług**, a następnie wybierz pozycję **DevTest Labs** z listy.
-1. Z listy labs wybierz żądane laboratorium.   
-1. W laboratorium **Przegląd** okienku wybierz **konfiguracji i zasad**.
-
-    ![Konfiguracja i zasady](./media/devtest-lab-create-environment-from-arm/configuration-and-policies-menu.png)
-
-1. Z **konfiguracji i zasad** Ustawienia wybierz pozycję **repozytoriów**. **Repozytoriów** okienku są wyświetlane repozytoria, które zostały dodane do laboratorium. Repozytorium o nazwie `Public Repo` jest generowane automatycznie dla wszystkich labs i łączy się z [repozytorium GitHub laboratoria DevTest](https://github.com/Azure/azure-devtestlab) zawiera kilka artefaktów maszyny Wirtualnej do użycia.
-
-    ![Publiczne repozytorium](./media/devtest-lab-create-environment-from-arm/public-repo.png)
-
-1. Wybierz **Dodaj +** dodać repozytorium szablonów usługi Azure Resource Manager.
-1. Podczas drugiego **repozytoriów** zostanie otwarte okienko, wprowadź wymagane informacje w następujący sposób:
-    - **Nazwa** — wprowadź nazwę repozytorium, która jest używana w środowisku laboratoryjnym.
-    - **Adres URL klonowania Git** — wprowadź adres URL klonowania GIT HTTPS z usługi GitHub lub usługom DevOps platformy Azure.  
-    - **Gałąź** — wprowadź nazwę gałęzi, aby uzyskiwać dostęp do definicji szablonu usługi Azure Resource Manager. 
-    - **Osobisty token dostępu** -osobisty token dostępu jest używany do bezpiecznego dostępu do repozytorium. Aby uzyskać token z usługi DevOps platformy Azure, wybierz pozycję  **&lt;twojanazwa >> Mój profil > Zabezpieczenia > token dostępu publicznego**. Aby uzyskać token z usługi GitHub, wybierz swój awatar, a następnie wybierając **Ustawienia > token dostępu publicznego**. 
-    - **Ścieżka folderu** — przy użyciu jednej z dwóch pól danych wejściowych, wpisz ścieżkę do folderu, rozpoczyna się od ukośnika, - i -, która jest względem usługi Git clone URI do jednej definicji artefaktu (pierwsze pole wejściowe) lub do definicji szablonu usługi Azure Resource Manager .   
-    
-        ![Publiczne repozytorium](./media/devtest-lab-create-environment-from-arm/repo-values.png)
-
-
-1. Gdy wszystkie wymagane pola są wprowadzane i pomyślnie weryfikacji, wybierz **Zapisz**.
-
-Następna sekcja przeprowadzi Cię tworzenie środowisk przy użyciu szablonu usługi Azure Resource Manager.
-
-## <a name="create-an-environment-from-a-resource-manager-template-using-the-azure-portal"></a>Utwórz środowisko na podstawie szablonu usługi Resource Manager przy użyciu witryny Azure portal
-
-Po skonfigurowaniu repozytorium szablonów usługi Azure Resource Manager w środowisku laboratoryjnym użytkownicy laboratorium mogą tworzyć środowiska przy użyciu witryny Azure portal wykonując następujące kroki:
-
-1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Wybierz **wszystkich usług**, a następnie wybierz pozycję **DevTest Labs** z listy.
-1. Z listy labs wybierz żądane laboratorium.   
-1. W okienku laboratorium wybierz **Dodaj +** .
-1. **Wybierz podstawowej** okienko Wyświetla podstawowe obrazy za pomocą szablonów usługi Azure Resource Manager wymienione jako pierwsze. Wybierz żądany szablon usługi Azure Resource Manager.
-
-    ![Wybieranie bazy](./media/devtest-lab-create-environment-from-arm/choose-a-base.png)
+- Należy nazwać plik szablonu głównego *azuredeploy. JSON*. 
   
-1. Na **Dodaj** okienku, wprowadź **Nazwa środowiska** wartość. Nazwa środowiska to, co jest wyświetlane użytkownikom w środowisku laboratoryjnym. Pozostałe pola wejściowe są zdefiniowane w szablonie usługi Azure Resource Manager. Jeśli wartości domyślne są zdefiniowane w szablonie lub `azuredeploy.parameter.json` pliku, wartości domyślne są wyświetlane w tych pól wejściowych. Dla parametrów typu *bezpieczny ciąg*, można użyć kluczy tajnych przechowywanych w magazynie kluczy Azure. Aby dowiedzieć się więcej na temat zapisywania wpisów tajnych w magazynie kluczy i korzystanie z nich podczas tworzenia zasobów laboratorium, zobacz [Store wpisów tajnych w usłudze Azure Key Vault](devtest-lab-store-secrets-in-key-vault.md).  
+- Jeśli chcesz użyć wartości parametrów zdefiniowanych w pliku parametrów, plik parametru musi mieć nazwę *azuredeploy. Parameters. JSON*.
+  
+  Możesz użyć parametrów `_artifactsLocation` i `_artifactsLocationSasToken` w celu skonstruowania wartości identyfikatora URI parametersLink, co umożliwi DevTest laboratoriom automatyczne zarządzanie szablonami zagnieżdżonymi. Aby uzyskać więcej informacji, zobacz [wdrażanie zagnieżdżonych szablonów Azure Resource Manager dla środowisk testowych](deploy-nested-template-environments.md).
+  
+- Można zdefiniować metadane, aby określić nazwę wyświetlaną i opis szablonu w pliku o nazwie *Metadata. JSON*w następujący sposób:
+  
+  ```json
+  { 
+    "itemDisplayName": "<your template name>", 
+    "description": "<description of the template>" 
+  }
+  ```
 
-    ![Dodawanie okienek](./media/devtest-lab-create-environment-from-arm/add.png)
+![Pliki szablonów Azure Resource Manager klucza](./media/devtest-lab-create-environment-from-arm/master-template.png)
 
-    > [!NOTE]
-    > Istnieje kilka wartości parametrów, które — nawet jeśli określona — są wyświetlane jako puste wartości. W związku z tym jeśli użytkownicy przypisywać te wartości parametrów w szablonie usługi Azure Resource Manager, usługa DevTest Labs nie wyświetla wartości. Zamiast tego puste pola wejściowe są wyświetlane, gdy użytkownicy laboratorium należy wprowadzić wartość podczas tworzenia środowiska.
-    > 
-    > - GEN-UNIQUE
-    > - GEN-UNIQUE-[N]
-    > - GEN-SSH-PUB-KEY
-    > - GEN-PASSWORD 
- 
-1. Wybierz **Dodaj** do tworzenia środowiska. Środowisko rozpoczyna się natychmiast aprowizacji z wyświetlaniem stanu w **Moje maszyny wirtualne** listy. Nowa grupa zasobów jest automatycznie tworzona przez laboratorium, aby aprowizować wszystkie zasoby, które są zdefiniowane w szablonie usługi Azure Resource Manager.
-1. Po utworzeniu środowiska wybierz środowisko, które w **Moje maszyny wirtualne** listy, aby otworzyć okienko grupy zasobów, a następnie przejdź do wszystkich zasobów aprowizowanych w środowisku.
-    
-    ![Moja lista maszyn wirtualnych](./media/devtest-lab-create-environment-from-arm/all-environment-resources.png)
+## <a name="add-template-repositories-to-the-lab"></a>Dodawanie repozytoriów szablonów do laboratorium
+
+Po utworzeniu i skonfigurowaniu repozytorium możesz dodać je do laboratorium przy użyciu Azure Portal: 
+
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Wybierz pozycję **wszystkie usługi**, a następnie z listy wybierz pozycję **DevTest Labs** .
+1. Z listy laboratoriów wybierz odpowiednie laboratorium. 
+1. W okienku **Przegląd** laboratorium wybierz pozycję **Konfiguracja i zasady**.
    
-   Można również rozwinąć środowisko Aby wyświetlić tylko listy maszyn wirtualnych, które są udostępniane w środowisku.
+   ![Konfiguracja i zasady](./media/devtest-lab-create-environment-from-arm/configuration-and-policies-menu.png)
+   
+1. Z listy ustawienia **konfiguracji i zasad** wybierz pozycję **repozytoria**. Repozytorium **publicznych** repozytoriów artefaktów jest generowane automatycznie dla wszystkich laboratoriów i nawiązuje połączenie z [publicznym repozytorium GitHub w witrynie DevTest Labs](https://github.com/Azure/azure-devtestlab).
+   
+1. Aby dodać repozytorium szablonów Azure Resource Manager, wybierz pozycję **Dodaj**.
+   
+   ![Repozytorium publiczne](./media/devtest-lab-create-environment-from-arm/public-repo.png)
+   
+1. W okienku **repozytoria** wprowadź następujące informacje:
+   
+   - **Nazwa**: Wprowadź nazwę repozytorium do użycia w laboratorium.
+   - **Adres URL klonowania git**: Wprowadź adres URL klonowania HTTPS usługi git z witryny GitHub lub Azure Repos. 
+   - **Gałąź** (opcjonalnie): Wprowadź nazwę gałęzi, aby uzyskać dostęp do definicji szablonów Azure Resource Manager.
+   - **Osobisty token dostępu**: Wprowadź osobisty token dostępu, który służy do bezpiecznego uzyskiwania dostępu do repozytorium.
+     - Aby uzyskać token z Azure Repos, w obszarze Profil wybierz pozycję **Ustawienia** > użytkownika**zabezpieczenia** > **osobiste tokeny dostępu**.
+     - Aby uzyskać token z usługi GitHub, w obszarze Twój profil wybierz kolejno pozycje **Ustawienia** > ustawienia**deweloper** > **osobiste tokeny dostępu**.
+   - **Ścieżki folderów**: Wprowadź ścieżkę folderu względem identyfikatora URI klonowania git dla definicji artefaktów lub definicji szablonu Azure Resource Manager. 
+   
+1. Wybierz pozycję **Zapisz**.
+   
+   ![Dodaj nowe repozytorium](./media/devtest-lab-create-environment-from-arm/repo-values.png)
+
+Po dodaniu szablonu Azure Resource Manager do laboratorium użytkownicy laboratorium mogą tworzyć środowiska przy użyciu szablonu. 
+
+## <a name="configure-access-rights-for-lab-users"></a>Konfigurowanie praw dostępu dla użytkowników laboratorium
+
+Użytkownicy laboratorium domyślnie mają rolę **czytelnik** , więc nie mogą zmieniać zasobów w grupie zasobów środowiska. Na przykład nie mogą zatrzymywać ani uruchamiać zasobów. 
+
+Aby nadać użytkownikom laboratorium rolę **współautor** , aby mogli edytować zasoby w swoich środowiskach, wykonaj następujące kroki:
+
+1. W [Azure Portal](https://portal.azure.com)w okienku **Przegląd** laboratorium wybierz pozycję **Konfiguracja i zasady**, a następnie wybierz pozycję **Ustawienia laboratorium**.
+   
+1. W okienku **Ustawienia laboratorium** wybierz pozycję **współautor**, a następnie wybierz pozycję **Zapisz** , aby przyznać użytkownikom laboratorium uprawnienia do zapisu.
+   
+   ![Konfigurowanie praw dostępu użytkownika laboratorium](./media/devtest-lab-create-environment-from-arm/config-access-rights.png)
+
+Następna sekcja przeprowadzi Cię przez proces tworzenia środowisk z szablonu Azure Resource Manager.
+
+## <a name="create-environments-from-templates-in-the-azure-portal"></a>Twórz środowiska na podstawie szablonów w Azure Portal
+
+Po dodaniu szablonu Azure Resource Manager do laboratorium użytkownicy laboratorium mogą tworzyć środowiska w Azure Portal, wykonując następujące czynności:
+
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+   
+1. Wybierz pozycję **wszystkie usługi**, a następnie z listy wybierz pozycję **DevTest Labs** .
+   
+1. Z listy laboratoriów wybierz odpowiednie laboratorium. 
+   
+1. Na stronie laboratorium wybierz pozycję **Dodaj**.
+   
+1. W okienku **Wybierz podstawowe** są wyświetlane podstawowe obrazy, których można użyć, z szablonami Azure Resource Manager wymienionymi w pierwszej kolejności. Wybierz szablon Azure Resource Manager, który chcesz.
+   
+   ![Wybieranie bazy](./media/devtest-lab-create-environment-from-arm/choose-a-base.png)
+   
+1. W okienku **Dodaj** wprowadź wartość **Nazwa środowiska** , która ma być wyświetlana użytkownikom środowiska. 
+   
+   Szablon Azure Resource Manager definiuje resztę pól wejściowych. Jeśli plik template *azuredeploy. Parameter. JSON* definiuje wartości domyślne, pola wejściowe zawierają te wartości. 
+   
+   Dla parametrów typu *Secure ciąg*można użyć wpisów tajnych z Azure Key Vault. Aby dowiedzieć się więcej o przechowywaniu wpisów tajnych w magazynie kluczy i korzystaniu z nich podczas tworzenia zasobów laboratorium, zobacz [zapisywanie wpisów tajnych w Azure Key Vault](devtest-lab-store-secrets-in-key-vault.md).  
+   
+   ![Dodaj okienko](./media/devtest-lab-create-environment-from-arm/add.png)
+   
+   > [!NOTE]
+   > Następujące wartości parametrów nie są wyświetlane w polach wejściowych, nawet jeśli szablon je określa. Zamiast tego formularz pokazuje puste pola wejściowe, w których użytkownicy laboratorium muszą wprowadzać wartości podczas tworzenia środowiska.
+   > 
+   > - GEN-UNIQUE
+   > - GEN-UNIQUE-[N]
+   > - GEN-SSH-PUB-KEY
+   > - GEN-PASSWORD 
+   
+1. Wybierz pozycję **Dodaj** , aby utworzyć środowisko. 
+   
+   Środowisko natychmiast rozpoczyna inicjowanie obsługi przy użyciu stanu wyświetlanego na liście **moje maszyny wirtualne** . Laboratorium automatycznie tworzy nową grupę zasobów, aby udostępnić wszystkie zasoby zdefiniowane w szablonie Azure Resource Manager.
+   
+1. Po utworzeniu środowiska Wybierz środowisko na liście **moje maszyny wirtualne** , aby otworzyć okienko Grupa zasobów i przeglądać wszystkie zasoby, które zostały zainicjowane przez środowisko.
+   
+   ![Zasoby środowiska](./media/devtest-lab-create-environment-from-arm/all-environment-resources.png)
+   
+   Można również rozszerzyć środowisko, aby wyświetlić listę maszyn wirtualnych, dla których zainicjowano środowisko.
+   
+   ![Lista moich maszyn wirtualnych](./media/devtest-lab-create-environment-from-arm/my-vm-list.png)
+   
+1. Wybierz dowolne środowisko, aby wyświetlić dostępne akcje, takie jak zastosowanie artefaktów, dołączenie dysków danych, zmiana czasu automatycznego zamykania i inne.
+   
+   ![Akcje środowiska](./media/devtest-lab-create-environment-from-arm/environment-actions.png)
+
+<a name="automate-deployment-of-environments"></a> 
+## <a name="automate-environment-creation-with-powershell"></a>Automatyzowanie tworzenia środowiska przy użyciu programu PowerShell
+
+Możliwe jest użycie Azure Portal, aby dodać jedno środowisko do laboratorium, ale gdy scenariusz programowania lub testowania musi tworzyć wiele środowisk, zautomatyzowane wdrażanie jest lepszym rozwiązaniem. 
+
+Przed kontynuowaniem upewnij się, że masz szablon Azure Resource Manager, który definiuje zasoby do utworzenia. [Dodaj i skonfiguruj szablon w repozytorium git](#configure-your-own-template-repositories)i [Dodaj repozytorium do laboratorium](#add-template-repositories-to-the-lab).
+
+Poniższy przykładowy skrypt tworzy środowisko w środowisku laboratoryjnym. Komentarze ułatwiają zrozumienie lepszego skryptu. 
+
+1. Zapisz następujący przykładowy skrypt programu PowerShell na dysku twardym jako *deployenv. ps1*. 
+  
+   [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+   
+   ```powershell
+   #Requires -Module Az.Resources
+   
+   [CmdletBinding()]
+   
+   param (
+   # ID of the Azure Subscription for the lab
+   [string] [Parameter(Mandatory=$true)] $SubscriptionId,
+   
+   # Name of the existing lab in which to create the environment
+   [string] [Parameter(Mandatory=$true)] $LabName,
+   
+   # Name of the connected repository in the lab 
+   [string] [Parameter(Mandatory=$true)] $RepositoryName,
+   
+   # Name of the template (folder name in the Git repository)
+   [string] [Parameter(Mandatory=$true)] $TemplateName,
+   
+   # Name of the environment to be created in the lab
+   [string] [Parameter(Mandatory=$true)] $EnvironmentName,
+   
+   # The parameters to be passed to the template. Each parameter is prefixed with "-param_". 
+   # For example, if the template has a parameter named "TestVMName" with a value of "MyVMName", 
+   # the string in $Params will have the form: -param_TestVMName MyVMName. 
+   # This convention allows the script to dynamically handle different templates.
+   [Parameter(ValueFromRemainingArguments=$true)]
+       $Params
+   )
+   
+   # Sign in to Azure. 
+   # Comment out the following statement to completely automate the environment creation. 
+   Connect-AzAccount
+   
+   # Select the subscription that has the lab.  
+   Set-AzContext -SubscriptionId $SubscriptionId | Out-Null
+   
+   # Get information about the user, specifically the user ID, which is used later in the script.  
+   $UserId = $((Get-AzADUser -UserPrincipalName (Get-AzContext).Account).Id.Guid)
+           
+   # Get information about the lab, such as lab location. 
+   $lab = Get-AzResource -ResourceType "Microsoft.DevTestLab/labs" -Name $LabName -ResourceGroupName $ResourceGroupName 
+   if ($lab -eq $null) { throw "Unable to find lab $LabName in subscription $SubscriptionId." } 
+       
+   # Get information about the repository in the lab. 
+   $repository = Get-AzResource -ResourceGroupName $lab.ResourceGroupName `
+       -ResourceType 'Microsoft.DevTestLab/labs/artifactsources' `
+       -ResourceName $LabName `
+       -ApiVersion 2016-05-15 `
+       | Where-Object { $RepositoryName -in ($_.Name, $_.Properties.displayName) } `
+       | Select-Object -First 1
+   if ($repository -eq $null) { throw "Unable to find repository $RepositoryName in lab $LabName." } 
+   
+   # Get information about the Resource Manager template base for the environment. 
+   $template = Get-AzResource -ResourceGroupName $lab.ResourceGroupName `
+       -ResourceType "Microsoft.DevTestLab/labs/artifactSources/armTemplates" `
+       -ResourceName "$LabName/$($repository.Name)" `
+       -ApiVersion 2016-05-15 `
+       | Where-Object { $TemplateName -in ($_.Name, $_.Properties.displayName) } `
+       | Select-Object -First 1
+   if ($template -eq $null) { throw "Unable to find template $TemplateName in lab $LabName." } 
+   
+   # Build the template parameters with parameter name and values.  
+   $parameters = Get-Member -InputObject $template.Properties.contents.parameters -MemberType NoteProperty | Select-Object -ExpandProperty Name
+   $templateParameters = @()
+   
+   # Extract the custom parameters from $Params and format as name/value pairs.
+   $Params | ForEach-Object {
+       if ($_ -match '^-param_(.*)' -and $Matches[1] -in $parameters) {
+           $name = $Matches[1]                
+       } elseif ( $name ) {
+           $templateParameters += @{ "name" = "$name"; "value" = "$_" }
+           $name = $null #reset name variable
+       }
+   }
+   
+   # Once name/value pairs are isolated, create an object to hold the necessary template properties.
+   $templateProperties = @{ "deploymentProperties" = @{ "armTemplateId" = "$($template.ResourceId)"; "parameters" = $templateParameters }; } 
+   
+   # Now, create or deploy the environment in the lab by using the New-AzResource command. 
+   New-AzResource -Location $Lab.Location `
+       -ResourceGroupName $lab.ResourceGroupName `
+       -Properties $templateProperties `
+       -ResourceType 'Microsoft.DevTestLab/labs/users/environments' `
+       -ResourceName "$LabName/$UserId/$EnvironmentName" `
+       -ApiVersion '2016-05-15' -Force 
     
-    ![Moja lista maszyn wirtualnych](./media/devtest-lab-create-environment-from-arm/my-vm-list.png)
+   Write-Output "Environment $EnvironmentName completed."
+   ```
+   
+1. Uruchom skrypt w następujący sposób, korzystając z określonych wartości identyfikatora subskrypcji, LabName, ResourceGroupName, Repositoryname, templateName (folder w repozytorium Git) i Środowiskaname.
+   
+   ```powershell
+   ./deployenv.ps1 -SubscriptionId "000000000-0000-0000-0000-0000000000000" -LabName "mydevtestlab" -ResourceGroupName "mydevtestlabRG000000" -RepositoryName "myRepository" -TemplateName "My Environment template name" -EnvironmentName "myGroupEnv" 
+   ```
 
-1. Kliknij dowolny z tych środowisk, aby wyświetlić dostępne akcje — takich jak stosowanie artefaktów i dołączanie dysków danych, zmiany czasu automatycznego zamykania i nie tylko.
-
-    ![Akcje środowiska](./media/devtest-lab-create-environment-from-arm/environment-actions.png)
-
-## <a name="automate-deployment-of-environments"></a>Automatyzowanie wdrażania środowisk
-Usługa Azure DevTest Labs oferuje możliwość używania [szablonu usługi Azure Resource Management Manager](../azure-resource-manager/resource-group-authoring-templates.md) utworzyć środowiska przy użyciu zestawu zasobów w środowisku laboratoryjnym. Te środowiska mogą zawierać dowolnych zasobów platformy Azure, które mogą być tworzone przy użyciu szablonów usługi Resource Manager. Środowiska usługi DevTest Labs umożliwiają użytkownikom łatwo wdrożyć złożonych infrastruktur w spójny sposób w obrębie laboratorium. Obecnie dodawanie środowiska do laboratorium przy użyciu witryny Azure portal jest możliwe, podczas tworzenia go jeden raz, ale w rozwoju lub testowania sytuacji, w których wystąpić wiele Tworzenie automatycznego wdrażania umożliwia udoskonalony interfejs użytkownika.
-
-Wykonaj następujące kroki w [skonfigurować repozytoriów szablonu](#configure-your-own-template-repositories) sekcji przed kontynuacją: 
-
-1. Utwórz szablon usługi Resource Manager, który definiuje tworzone zasoby. 
-2. Konfigurowanie szablonu usługi Resource Manager w usłudze Git repozytorium. 
-3. Podłącz repozytorium Git do laboratorium. 
-
-### <a name="powershell-script-to-deploy-the-resource-manager-template"></a>Skrypt programu PowerShell w celu wdrożenia szablonu usługi Resource Manager
-Zapisz skrypt programu PowerShell w następnej sekcji na dysku twardym (na przykład: deployenv.ps1) i uruchomić skrypt po określeniu wartości dla identyfikatora SubscriptionId, ResourceGroupName, LabName RepositoryName, TemplateName (folder) w repozytorium Git, EnvironmentName.
-
-```powershell
-./deployenv.ps1 -SubscriptionId "000000000-0000-0000-0000-0000000000000" -LabName "mydevtestlab" -ResourceGroupName "mydevtestlabRG994248" -RepositoryName "SP Repository" -TemplateName "My Environment template name" -EnvironmentName "SPResourceGroupEnv"  
-```
-
-#### <a name="sample-script"></a>Przykładowy skrypt
-Poniżej przedstawiono przykładowy skrypt, aby utworzyć środowisko w środowisku laboratoryjnym. Komentarzy w skrypcie pomóc lepiej zrozumieć skryptu. 
-
-```powershell
-#Requires -Module Az.Resources
-
-[CmdletBinding()]
-
-param (
-# ID of the Azure Subscription where the lab is created.
-[string] [Parameter(Mandatory=$true)] $SubscriptionId,
-
-# Name of the lab (existing) in which to create the environment.
-[string] [Parameter(Mandatory=$true)] $LabName,
-
-# Name of the connected repository in the lab. 
-[string] [Parameter(Mandatory=$true)] $RepositoryName,
-
-# Name of the template (folder name in the Git repository) based on which the environment will be created.
-[string] [Parameter(Mandatory=$true)] $TemplateName,
-
-# Name of the environment to be created in the lab.
-[string] [Parameter(Mandatory=$true)] $EnvironmentName,
-
-# The parameters to be passed to the template. Each parameter is prefixed with “-param_”. 
-# For example, if the template has a parameter named “TestVMName” with a value of “MyVMName”, the string in $Params will have the form: `-param_TestVMName MyVMName`. 
-# This convention allows the script to dynamically handle different templates.
-[Parameter(ValueFromRemainingArguments=$true)]
-    $Params
-)
-
-# Save this script as the deployenv.ps1 file
-# Run the script after you specify values for SubscriptionId, ResourceGroupName, LabName, RepositoryName, TemplateName (folder) in the Git repo, EnvironmentName
-# ./deployenv.ps1 -SubscriptionId "000000000-0000-0000-0000-0000000000000" -LabName "mydevtestlab" -ResourceGroupName "mydevtestlabRG994248" -RepositoryName "SP Repository" -TemplateName "My Environment template name" -EnvironmentName "SPResourceGroupEnv"    
-
-# Comment this statement to completely automate the environment creation.    
-# Sign in to Azure. 
-Connect-AzAccount
-
-# Select the subscription that has the lab.  
-Set-AzContext -SubscriptionId $SubscriptionId | Out-Null
-
-# Get information about the user, specifically the user ID, which is used later in the script.  
-$UserId = $((Get-AzADUser -UserPrincipalName (Get-AzContext).Account).Id.Guid)
-        
-# Get information about the lab such as lab location. 
-$lab = Get-AzResource -ResourceType "Microsoft.DevTestLab/labs" -Name $LabName -ResourceGroupName $ResourceGroupName 
-if ($lab -eq $null) { throw "Unable to find lab $LabName in subscription $SubscriptionId." } 
-    
-# Get information about the repository in the lab. 
-$repository = Get-AzResource -ResourceGroupName $lab.ResourceGroupName `
-    -ResourceType 'Microsoft.DevTestLab/labs/artifactsources' `
-    -ResourceName $LabName `
-    -ApiVersion 2016-05-15 `
-    | Where-Object { $RepositoryName -in ($_.Name, $_.Properties.displayName) } `
-    | Select-Object -First 1
-if ($repository -eq $null) { throw "Unable to find repository $RepositoryName in lab $LabName." } 
-
-# Get information about the Resource Manager template based on which the environment will be created. 
-$template = Get-AzResource -ResourceGroupName $lab.ResourceGroupName `
-    -ResourceType "Microsoft.DevTestLab/labs/artifactSources/armTemplates" `
-    -ResourceName "$LabName/$($repository.Name)" `
-    -ApiVersion 2016-05-15 `
-    | Where-Object { $TemplateName -in ($_.Name, $_.Properties.displayName) } `
-    | Select-Object -First 1
-if ($template -eq $null) { throw "Unable to find template $TemplateName in lab $LabName." } 
-
-# Build the template parameters with parameter name and values.     
-$parameters = Get-Member -InputObject $template.Properties.contents.parameters -MemberType NoteProperty | Select-Object -ExpandProperty Name
-$templateParameters = @()
-
-# The custom parameters need to be extracted from $Params and formatted as name/value pairs.
-$Params | ForEach-Object {
-    if ($_ -match '^-param_(.*)' -and $Matches[1] -in $parameters) {
-        $name = $Matches[1]                
-    } elseif ( $name ) {
-        $templateParameters += @{ "name" = "$name"; "value" = "$_" }
-        $name = $null #reset name variable
-    }
-}
-
-# Once name/value pairs are isolated, create an object to hold the necessary template properties
-$templateProperties = @{ "deploymentProperties" = @{ "armTemplateId" = "$($template.ResourceId)"; "parameters" = $templateParameters }; } 
-
-# Now, create or deploy the environment in the lab by using the New-AzResource command. 
-New-AzResource -Location $Lab.Location `
-    -ResourceGroupName $lab.ResourceGroupName `
-    -Properties $templateProperties `
-    -ResourceType 'Microsoft.DevTestLab/labs/users/environments' `
-    -ResourceName "$LabName/$UserId/$EnvironmentName" `
-    -ApiVersion '2016-05-15' -Force 
- 
-Write-Output "Environment $EnvironmentName completed."
-```
-
-Wiersza polecenia platformy Azure umożliwia również wdrażanie zasobów przy użyciu szablonów usługi Resource Manager. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu wiersza polecenia Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli).
+Możesz również użyć interfejsu wiersza polecenia platformy Azure do wdrożenia zasobów przy użyciu szablonów Menedżer zasobów. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów Menedżer zasobów i interfejsu wiersza polecenia platformy Azure](../azure-resource-manager/resource-group-template-deploy-cli.md).
 
 > [!NOTE]
-> Tylko użytkownik z uprawnieniami właściciela laboratorium można tworzyć maszyny wirtualne za pomocą szablonu usługi Resource Manager przy użyciu programu Azure PowerShell. Jeśli chcesz zautomatyzować tworzenie maszyny Wirtualnej przy użyciu szablonu usługi Resource Manager i masz tylko uprawnienia użytkownika, możesz użyć [ **tworzenie az lab vm** polecenia interfejsu wiersza polecenia w pliku](https://docs.microsoft.com/cli/azure/lab/vm#az-lab-vm-create).
+> Tylko użytkownik z uprawnieniami właściciela laboratorium może tworzyć maszyny wirtualne na podstawie szablonu Menedżer zasobów przy użyciu Azure PowerShell. Jeśli chcesz zautomatyzować tworzenie maszyny wirtualnej przy użyciu szablonu Menedżer zasobów i masz tylko uprawnienia użytkownika, możesz użyć polecenia [AZ Lab VM Create](/cli/azure/lab/vm#az-lab-vm-create).
 
-### <a name="general-limitations"></a>Ogólne ograniczenia 
+## <a name="resource-manager-template-limitations-in-devtest-labs"></a>Ograniczenia dotyczące szablonów Menedżer zasobów w laboratoriach DevTest Labs 
 
-Gdy w usłudze DevTest Labs przy użyciu szablonu usługi Resource Manager, należy wziąć pod uwagę następujące ograniczenia:
+Te ograniczenia należy wziąć pod uwagę podczas korzystania z szablonów Menedżer zasobów w DevTest Labs:
 
-- Wszelkie tworzonego szablonu usługi Resource Manager nie może odwoływać się do istniejących zasobów. może odnosić się tylko do nowych zasobów. Ponadto jeśli masz istniejący szablon usługi Resource Manager, zwykle wdrożyć poza DevTest Labs, i zawiera odwołania do istniejących zasobów, nie można użyć w środowisku laboratoryjnym.
+- Szablony Menedżer zasobów nie mogą odwoływać się do większości istniejących zasobów. Mogą tworzyć tylko nowe zasoby. Jeśli masz Menedżer zasobów szablonów, których używasz poza laboratoriami DevTest, które odwołują się do istniejących zasobów, nie można ich używać w DevTest Labs. Jedynym wyjątkiem jest to, że można odwołać się do istniejącej sieci wirtualnej. 
+  
+- Nie można tworzyć formuł ani obrazów niestandardowych z maszyn wirtualnych programu Lab utworzonych na podstawie szablonu Menedżer zasobów. 
+  
+- Większość zasad nie jest oceniana podczas wdrażania szablonów Menedżer zasobów.
+  
+  Na przykład mogą istnieć zasady laboratorium, które użytkownik może utworzyć tylko pięć maszyn wirtualnych. Jednak użytkownik może wdrożyć szablon Menedżer zasobów, który tworzy dziesiątki maszyn wirtualnych. Zasady, które nie są oceniane, obejmują:
+  
+  - Liczba maszyn wirtualnych na użytkownika
+    
+  - Liczba maszyn wirtualnych w warstwie Premium na użytkownika laboratorium
+    
+  - Liczba dysków w warstwie Premium na użytkownika laboratorium
 
-   Jedynym wyjątkiem jest to, że możesz **można** odwoływać się do istniejącej sieci wirtualnej. 
-
-- Nie można utworzyć formuły z laboratorium, maszyny wirtualne, które zostały utworzone przy użyciu szablonu usługi Resource Manager. 
-
-- Nie można utworzyć niestandardowe obrazy z laboratorium, maszyny wirtualne, które zostały utworzone przy użyciu szablonu usługi Resource Manager. 
-
-- Większość zasad nie są oceniane podczas wdrażania szablonów usługi Resource Manager.
-
-   Na przykład Niewykluczone, że zasady z laboratorium określenie, czy użytkownika można tworzyć tylko pięciu maszyn wirtualnych. Jednak użytkownika można wdrożyć szablon usługi Resource Manager, który tworzy kilkadziesiąt maszyn wirtualnych. Zasady, które nie są sprawdzane obejmują:
-
-   - Liczba maszyn wirtualnych na użytkownika
-   - Liczba maszyn wirtualnych usługi premium dla poszczególnych użytkowników laboratorium
-   - Liczba dysków w warstwie premium dla poszczególnych użytkowników laboratorium
-
-
-### <a name="configure-environment-resource-group-access-rights-for-lab-users"></a>Konfigurowanie praw dostępu grupy zasobów środowisko dla użytkowników laboratorium
-
-Użytkownicy laboratorium mogą wdrażać szablon usługi Resource Manager. Jednak domyślnie mają oni uprawnienia dostępu czytnika, co oznacza, że nie mogą zmieniać zasoby w grupie zasobów w środowisku. Na przykład nie można zatrzymać lub uruchomić ich zasobów.
-
-Wykonaj następujące kroki, aby zapewnić użytkownikom laboratorium prawa dostępu współautora. Następnie po wdrożeniu przez nich szablon usługi Resource Manager, będą mogli edytować zasoby w tym środowisku. 
-
-
-1. W środowisku laboratoryjnym **Przegląd** okienku wybierz **konfiguracji i zasad**.
-1. Wybierz **ustawienia Lab**.
-1. W okienku ustawienia Lab wybierz **Współautor** udzielenia uprawnienia do zapisu dla użytkowników w laboratorium.
-
-    ![Konfigurowanie praw użytkownika, dostęp do laboratorium](./media/devtest-lab-create-environment-from-arm/configure-access-rights.png)
-
-1. Wybierz pozycję **Zapisz**.
-
-## <a name="next-steps"></a>Kolejne kroki
-* Po utworzeniu maszyny Wirtualnej można nawiązać maszyny Wirtualnej, wybierając **Connect** w okienku zarządzania maszyny Wirtualnej.
-* Wyświetlanie zasobów i zarządzanie nimi w środowisku, wybierając środowiska w **Moje maszyny wirtualne** listy w środowisku laboratoryjnym. 
-* Zapoznaj się z [szablony usługi Azure Resource Manager z galerii szablonów szybkiego startu platformy Azure](https://github.com/Azure/azure-quickstart-templates).
+## <a name="next-steps"></a>Następne kroki
+- Po utworzeniu maszyny wirtualnej można nawiązać połączenie z maszyną wirtualną, wybierając pozycję **Połącz** w okienku zarządzanie maszyną wirtualną.
+- Wyświetlaj zasoby w środowisku i zarządzaj nimi, wybierając środowisko na liście **moje maszyny wirtualne** w laboratorium. 
+- Zapoznaj się [z szablonami Azure Resource Manager w galerii szablonów szybkiego startu platformy Azure](https://github.com/Azure/azure-quickstart-templates).

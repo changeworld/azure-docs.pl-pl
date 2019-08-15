@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a745648f1b7abac7267d51cac9e1fe642ae13d8
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c0b15c9730f7e469fde8fabd1bc4cbcd28efa66c
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853687"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68953009"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Wdrażanie ochrony haseł w usłudze Azure AD
 
@@ -60,6 +60,7 @@ Po uruchomieniu funkcji w trybie inspekcji przez rozsądny okres można zmienić
     |`https://login.microsoftonline.com`|Żądania uwierzytelniania|
     |`https://enterpriseregistration.windows.net`|Funkcja ochrony hasłem w usłudze Azure AD|
 
+* Wszystkie komputery, na których jest hostowana usługa serwera proxy dla ochrony haseł, muszą być skonfigurowane tak, aby zezwalać kontrolerom domeny na logowanie do usługi proxy. Jest to kontrolowane przez przypisanie przywileju "uzyskaj dostęp do tego komputera z sieci".
 * Wszystkie maszyny, na których jest hostowana usługa serwera proxy dla ochrony haseł, muszą być skonfigurowane tak, aby zezwalały na ruch HTTP 1,2 ruchu przychodzącego TLS.
 * Konto administratora globalnego do zarejestrowania usługi proxy na potrzeby ochrony hasłem i lasu w usłudze Azure AD.
 * Konto, które ma Active Directory uprawnienia administratora domeny w domenie głównej lasu do zarejestrowania lasu systemu Windows Server Active Directory z usługą Azure AD.

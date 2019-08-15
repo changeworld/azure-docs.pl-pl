@@ -5,20 +5,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 11/04/2018
+ms.date: 06/28/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: d25efa8c666fa91c7bd652a7cf931ea6ca379aa2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9326e6dac88fa23a7bb2bc489064aca5ef52980b
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67133104"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69015936"
 ---
-Magazyn strefowo nadmiarowy (ZRS) replikuje Twoje dane synchronicznie w trzech klastrach magazynu w jednym regionie. Każdy klaster magazynu są fizycznie oddzielone od innych i znajduje się w jego własnej strefie dostępności (AZ). Każda strefa dostępności&mdash;i klastra magazynu ZRS w nim&mdash;jest autonomicznym i zawiera osobne narzędzia i funkcje sieciowe. Żądania zapisu do konta magazynu ZRS wróci pomyślnie tylko wtedy, gdy dane są zapisywane do wszystkich replik w trzech klastrach.
+Magazyn strefowo nadmiarowy (ZRS) replikuje dane synchronicznie przez trzy klastry magazynu w jednym regionie. Każdy klaster magazynu jest fizycznie oddzielony od innych i znajduje się w jego własnej strefie dostępności (AZ). Każda strefa&mdash;dostępności i klaster ZRS w nim&mdash;są autonomiczne i zawierają oddzielne narzędzia i funkcje sieciowe. Żądanie zapisu do konta magazynu ZRS zwraca się pomyślnie dopiero po zapisaniu danych we wszystkich replikach w trzech klastrach.
 
-Gdy dane są przechowywane na koncie magazynu przy użyciu replikacji magazynu ZRS, można nadal dostęp do danych i zarządzanie nimi Jeśli strefa dostępności staje się niedostępny. Magazyn ZRS zapewnia doskonałą wydajność i małe opóźnienia. Magazyn ZRS zapewnia takie same [cele skalowalności](../articles/storage/common/storage-scalability-targets.md) jako [magazyn lokalnie nadmiarowy (LRS)](../articles/storage/common/storage-redundancy-lrs.md).
+Gdy dane są przechowywane na koncie magazynu za pomocą replikacji ZRS, można nadal uzyskiwać dostęp do danych i zarządzać nimi, jeśli strefa dostępności stanie się niedostępna. ZRS zapewnia doskonałą wydajność i małe opóźnienia. ZRS oferuje takie same [elementy docelowe skalowalności](../articles/storage/common/storage-scalability-targets.md) jak [Magazyn lokalnie nadmiarowy (LRS)](../articles/storage/common/storage-redundancy-lrs.md).
 
-Magazyn ZRS należy wziąć pod uwagę scenariusze, które wymagają spójności, trwałości i wysokiej dostępności. Nawet w przypadku awarii lub klęski żywiołowej renderuje strefie dostępności niedostępny, Magazyn ZRS zapewnia trwałość obiektów magazynu co najmniej 99,9999999999% (12 9) w danym roku.
+Weź pod uwagę ZRS scenariusze, które wymagają spójności, trwałości i wysokiej dostępności. Nawet jeśli awaria lub klęska żywiołowa nie jest dostępna dla niedostępności strefy dostępności, ZRS oferuje trwałość dla obiektów magazynu co najmniej 99,9999999999% (12 9) w danym roku.
 
-Aby uzyskać więcej informacji o strefach dostępności, zobacz [Przegląd stref dostępności](https://docs.microsoft.com/azure/availability-zones/az-overview).
+Magazyn strefowo nadmiarowy (GZRS) (wersja zapoznawcza) replikuje dane synchronicznie w trzech strefach dostępności platformy Azure w regionie podstawowym, a następnie replikuje dane asynchronicznie do regionu pomocniczego. GZRS zapewnia wysoką dostępność wraz z maksymalną trwałością. GZRS zaprojektowano w celu udostępnienia co najmniej 99.99999999999999% (16 9) trwałości obiektów w danym roku. Aby uzyskać dostęp do odczytu do danych w regionie pomocniczym, Włącz strefę geograficzną z dostępem do odczytu (RA-GZRS). Aby uzyskać więcej informacji na temat GZRS, zobacz Geograficznie nadmiarowy [Magazyn w celu zapewnienia wysokiej dostępności i maksymalnej trwałości (wersja zapoznawcza)](../articles/storage/common/storage-redundancy-lrs.md).
+
+Aby uzyskać więcej informacji na temat stref dostępności, zobacz [strefy dostępności Omówienie](https://docs.microsoft.com/azure/availability-zones/az-overview).

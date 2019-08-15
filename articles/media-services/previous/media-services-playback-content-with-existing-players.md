@@ -1,6 +1,6 @@
 ---
-title: Użyj istniejącego odtwarzacze do odtwarzania zawartości — Azure | Dokumentacja firmy Microsoft
-description: W tym temacie wymieniono istniejącego odtwarzacze służącego do odtwarzania zawartości.
+title: Korzystanie z istniejących odtwarzaczy do odtwarzania zawartości — Azure | Microsoft Docs
+description: Ten temat zawiera listę istniejących odtwarzaczy, których można użyć do odtwarzania zawartości.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,57 +14,60 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: c96710d6dcca9f5ef99b3a02a0bc875d433f814d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0da8ce396ce07b7c9859fcfccb5cb524c0ce21c1
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61463425"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "69015291"
 ---
-# <a name="playing-your-content-with-existing-players"></a>Odtwarzanie zawartości za pomocą istniejących odtwarzaczy
-Usługa Azure Media Services obsługuje wiele popularnych formatów przesyłania strumieniowego, takich jak Smooth Streaming, HTTP Live Streaming i MPEG-Dash. W tym temacie wskazuje istniejącego odtwarzacze, które można użyć do testowania strumienie.
+# <a name="playing-your-content-with-existing-players"></a>Odtwarzanie zawartości za pomocą istniejących graczy
+Azure Media Services obsługuje wiele popularnych formatów przesyłania strumieniowego, takich jak Smooth Streaming, HTTP Live Streaming i MPEG-kreska. Ten temat prowadzi do istniejących graczy, których można użyć do testowania strumieni.
 
-### <a name="the-azure-portal-media-services-content-player"></a>Azure portal odtwarzacz zawartości Media Services
-**Azure** portal udostępnia odtwarzacz zawartości, który służy do testowania pliku wideo.
+### <a name="the-azure-portal-media-services-content-player"></a>Azure Portal Media Services odtwarzacz zawartości
+Witryna **Azure** Portal udostępnia odtwarzacz zawartości, którego można użyć do testowania wideo.
 
-Kliknij wybrany film wideo (Upewnij się, było [opublikowane](media-services-portal-publish.md)) i kliknij przycisk **Odtwórz** znajdujący się u dołu portalu.
+Kliknij żądany film wideo (Upewnij się, że został [opublikowany](media-services-portal-publish.md)), a następnie kliknij przycisk **Odtwórz** w dolnej części portalu.
 
 Zagadnienia do rozważenia:
 
-* **Odtwarzacz zawartości MEDIA SERVICES** odtwarza z domyślnego punktu końcowego przesyłania strumieniowego. Do odtwarzania z punktu końcowego przesyłania strumieniowego innego niż domyślny należy użyć innego odtwarzacza Na przykład [usługi Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html).
+* **Odtwarzacz zawartości MEDIA SERVICES** odtwarza z domyślnego punktu końcowego przesyłania strumieniowego. Do odtwarzania z punktu końcowego przesyłania strumieniowego innego niż domyślny należy użyć innego odtwarzacza Na przykład [Azure Media Player](https://aka.ms/azuremediaplayer).
 
 ![AMSPlayer][AMSPlayer]
 
 ### <a name="azure-media-player"></a>Azure Media Player
-Użyj [usługi Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html) do odtwarzania zawartości (Wyczyść lub protected) w dowolnej z następujących formatów:
+
+Użyj [Azure Media Player](https://aka.ms/azuremediaplayer) do odtwarzania zawartości (wyczyść lub chroniona) w jednym z następujących formatów:
 
 * Smooth Streaming
 * MPEG DASH
 * HLS
-* Progressive MP4
+* Pliki MP4 progresywne
 
-### <a name="flash-player"></a>Odtwarzacza w środowisku Flash
-#### <a name="aes-encrypted-with-token"></a>Z szyfrowaniem AES przy użyciu tokenu
+### <a name="flash-player"></a>Program Flash Player
+
+#### <a name="aes-encrypted-with-token"></a>AES — szyfrowany przy użyciu tokenu
+
 [https://aestoken.azurewebsites.net](https://aestoken.azurewebsites.net)
 
-### <a name="silverlight-players"></a>Odtwarzaczy programu Silverlight
-
 #### <a name="playready-with-token"></a>PlayReady z tokenem
+
 [https://sltoken.azurewebsites.net](https://sltoken.azurewebsites.net)
 
-### <a name="dash-players"></a>Odtwarzacze kreska
+### <a name="dash-players"></a>Odtwarzacze PAUZ
+
 [https://dashplayer.azurewebsites.net](https://dashplayer.azurewebsites.net)
 
 [https://dashif.org](https://dashif.org)
 
 ### <a name="other"></a>Inne
-Aby przetestować HLS adresów URL, możesz również użyć:
+Aby przetestować adresy URL HLS, można również użyć:
 
-* **Safari** na urządzeniu z systemem iOS lub
-* **Odtwarzacz HLS 3ivx** na Windows.
+* **Przeglądarka Safari** na urządzeniu z systemem iOS lub
+* **3ivx HLS Player** w systemie Windows.
 
-## <a name="developing-video-players"></a>Tworzenie odtwarzaczy wideo
-Aby uzyskać informacje o sposobie tworzenia własnych graczy, zobacz [tworzenie odtwarzaczy wideo](media-services-develop-video-players.md)
+## <a name="developing-video-players"></a>Opracowywanie odtwarzaczy wideo
+Aby uzyskać informacje o sposobach tworzenia własnych odtwarzaczy, zobacz [opracowywanie odtwarzaczy wideo](media-services-develop-video-players.md)
 
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

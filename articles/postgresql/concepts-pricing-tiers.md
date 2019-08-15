@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 376620459a0ab2f0f170b0743c0ab51a51bca9c4
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 2f6be256801983924cc794d6c8b8fa31e39959e1
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698949"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967854"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Warstwy cenowe w Azure Database for PostgreSQL — pojedynczy serwer
 
@@ -107,6 +107,9 @@ Usługa automatycznie pobiera kopie zapasowe serwera. Minimalny okres przechowyw
 ## <a name="scale-resources"></a>Skalowanie zasobów
 
 Po utworzeniu serwera można niezależnie zmienić rdzeni wirtualnych, generowanie sprzętu, warstwę cenową (poza i z warstwy Podstawowa), ilość miejsca do magazynowania oraz okres przechowywania kopii zapasowych. Po utworzeniu serwera nie można zmienić typu magazynu kopii zapasowej. Liczbę rdzeni wirtualnych można skalować w górę lub w dół. Okres przechowywania kopii zapasowej można skalować w górę lub w dół od 7 do 35 dni. Rozmiar magazynu można zwiększyć tylko. Skalowanie zasobów można przeprowadzić za pomocą portalu lub interfejsu wiersza polecenia platformy Azure. Aby zapoznać się z przykładem skalowania przy użyciu interfejsu wiersza polecenia platformy Azure, zobacz [monitorowanie i skalowanie serwera Azure Database for PostgreSQL przy użyciu interfejsu wiersza polecenia platformy Azure](scripts/sample-scale-server-up-or-down.md).
+
+> [!NOTE] 
+> Rozmiar magazynu można zwiększyć tylko. Po zwiększeniu nie można wrócić do mniejszego rozmiaru magazynu.
 
 W przypadku zmiany liczby rdzeni wirtualnych, wygenerowania sprzętu lub warstwy cenowej kopia oryginalnego serwera zostanie utworzona przy użyciu nowej alokacji obliczeniowej. Gdy nowy serwer zostanie uruchomiony, połączenia zostaną przełączone na nowy serwer. Podczas przełączania systemu do nowego serwera nie można nawiązywać nowych połączeń, a wszystkie niezatwierdzone transakcje zostaną wycofane. Długość tego okresu może być różna, lecz w większości przypadków jest to mniej niż minuta.
 

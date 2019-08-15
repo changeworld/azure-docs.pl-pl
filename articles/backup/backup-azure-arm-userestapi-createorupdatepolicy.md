@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: dacurwin
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: d81d8aa299333890de61cf0c8ee75be76ca31bf2
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 8b812ea053cb8e9da7cd3ef021ab6b74196d36ca
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688739"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954967"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Tworzenie zasad usługi Kopia zapasowa Azure Recovery Services przy użyciu interfejsu API REST
 
@@ -36,7 +36,7 @@ Kroki tworzenia zasad tworzenia kopii zapasowych dla magazynu usługi Azure Reco
 - Przechowywanie można zdefiniować dla punktów kopii zapasowych "dziennych", "cotygodniowych", "Monthly", "rocznie".
 - "tydzień" odnosi się do kopii zapasowej w określonym dniu tygodnia, "miesięcznie" oznacza, że kopia zapasowa w określonym dniu miesiąca i "corocznie" odnosi się do kopii zapasowej w określonym dniu roku.
 - Przechowywanie "miesięcznie", "rocznie" punktów kopii zapasowych jest określane jako "LongTermRetention".
-- Po utworzeniu magazynu zostanie również utworzona zasada dla kopii zapasowych maszyny wirtualnej platformy Azure o nazwie "DefaultPolicy" i może służyć do tworzenia kopii zapasowych maszyn wirtualnych platformy Azure.
+- Po utworzeniu magazynu tworzone są również zasady tworzenia kopii zapasowych maszyny wirtualnej platformy Azure o nazwie "DefaultPolicy" i mogą służyć do tworzenia kopii zapasowych maszyn wirtualnych platformy Azure.
 
 Aby utworzyć lub zaktualizować zasady Azure Backup, użyj następującej operacji *Put*
 

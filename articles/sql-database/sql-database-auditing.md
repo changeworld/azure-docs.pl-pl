@@ -12,10 +12,10 @@ ms.author: arib
 ms.reviewer: vanto
 ms.date: 04/16/2019
 ms.openlocfilehash: 69fe3287083523a3a47975a3db51d7241681f5c4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "68569509"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
@@ -58,7 +58,7 @@ Zasady inspekcji można zdefiniować dla konkretnej bazy danych lub jako domyśl
 
 - Jeśli *Inspekcja obiektów BLOB serwera jest włączona*, *zawsze ma zastosowanie do bazy danych programu*. Baza danych będzie poddawana inspekcji, niezależnie od ustawień inspekcji bazy danych.
 
-- Włączenie inspekcji obiektów BLOB w bazie danych lub hurtowni danych (oprócz włączenia jej na serwerze) *nie przesłania ani* nie zmienia żadnych ustawień inspekcji obiektów BLOB serwera. Obie inspekcje będą istnieć obok siebie. Inaczej mówiąc, baza danych jest monitorowana dwukrotnie. raz przez zasady serwera i jeden raz przez zasady bazy danych.
+- Włączenie inspekcji obiektów BLOB w bazie danych lub hurtowni danych (oprócz włączenia jej na serwerze) nie przesłania ani nie zmienia żadnych ustawień inspekcji obiektów BLOB serwera. Obie inspekcje będą istnieć obok siebie. Inaczej mówiąc, baza danych jest monitorowana dwukrotnie. raz przez zasady serwera i jeden raz przez zasady bazy danych.
 
    > [!NOTE]
    > Należy unikać jednoczesnego włączania inspekcji obiektów BLOB serwera i inspekcji obiektów BLOB bazy danych, chyba że:

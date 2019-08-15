@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8163b2261601b701913e07d703f5db0ac6fa7c0
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 13c9003baaca11dce5a2192a8183674faddfa6dc
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688073"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967297"
 ---
 # <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>Przypisywanie użytkowników i grup do aplikacji w usłudze Azure Active Directory
 W tym artykule pokazano, jak przypisać użytkowników lub grup do aplikacji w usłudze Azure Active Directory (Azure AD). Użytkownicy najpierw muszą być przypisani do aplikacji, zanim administrator może nadać im dostęp do następujących:
@@ -82,7 +82,7 @@ Aby przypisać co najmniej jednego użytkownika do aplikacji bezpośrednio, wyko
 
 15. Kliknij przycisk **przypisać** przycisk, aby przypisać aplikację do wybranych użytkowników.
 
-Po krótkim czasie użytkowników, dla których wybrano mogli uruchamiać te aplikacje za pomocą metod opisanych w sekcji Opis rozwiązania.
+Po krótkim czasie wybrane przez Ciebie użytkownicy będą mogli uruchamiać te aplikacje za pomocą metod opisanych w sekcji opis rozwiązania.
 
 ## <a name="assign-groups"></a>Przypisywanie grup
 
@@ -120,7 +120,7 @@ Aby przypisać co najmniej jedną grupę aplikacji bezpośrednio, wykonaj nastę
 
 15. Kliknij przycisk **przypisać** przycisk, aby przypisać aplikację do wybranych grup.
 
-Po krótkim czasie użytkowników w grupach, który wybrano mogli uruchamiać te aplikacje za pomocą metod opisanych w sekcji Opis rozwiązania. Jeśli te są grupami dynamicznymi, w tych przydziałów dla użytkowników w ramach tych przypisanych grup może istnieć pewne opóźnienie dodatkowego przetwarzania.
+Po krótkim czasie użytkownicy należący do wybranych grup będą mogli uruchamiać te aplikacje za pomocą metod opisanych w sekcji opis rozwiązania. Jeśli te są grupami dynamicznymi, w tych przydziałów dla użytkowników w ramach tych przypisanych grup może istnieć pewne opóźnienie dodatkowego przetwarzania.
 
 ## <a name="enable-self-service-application-access"></a>Włącz samoobsługowego dostępu do aplikacji
 
@@ -165,7 +165,7 @@ Aby włączyć samoobsługowego dostępu do aplikacji do aplikacji, wykonaj nast
 
 Po ukończeniu konfiguracji samoobsługowego aplikacji użytkownicy mogą przejść do ich [panelu dostępu do aplikacji](https://myapps.microsoft.com/) i kliknij przycisk **+ Dodaj** przycisk, aby znaleźć aplikacje, dla których włączono Samoobsługowe dostęp. Osoby zatwierdzające w firmie również wyświetlone powiadomienie w ich [panelu dostępu do aplikacji](https://myapps.microsoft.com/). Można włączyć wiadomość e-mail z powiadomieniem je, gdy użytkownik poprosi o dostęp do aplikacji, która wymaga zatwierdzenia. 
 
-Te zatwierdzenia obsługuje pojedynczy przepływów pracy, co oznacza, że jeśli określisz wiele osób zatwierdzających, wszelkie jedną osobą zatwierdzającą może osoba zatwierdzająca dostęp do aplikacji.
+Te zatwierdzenia obsługują tylko jednorazowe przepływy pracy zatwierdzania, co oznacza, że jeśli określisz wiele osób zatwierdzających, każda osoba zatwierdzająca może zatwierdzić dostęp do aplikacji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 [Udostępnij logowanie jednokrotne do aplikacji serwera Proxy aplikacji](application-proxy-configure-single-sign-on-with-kcd.md)

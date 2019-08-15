@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ee216bd4d6994179e347465c30039f2f8e293c85
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 48a5484e2b2b663d0046fc628c02e656c5bd7a25
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233017"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985165"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Lista kontrolna wydajności i skalowalności Microsoft Azure Storage
 
@@ -172,7 +172,7 @@ Obie te technologie mogą pomóc uniknąć niepotrzebnego obciążenia (i wąski
 
 #### <a name="useful-resources"></a>Przydatne zasoby
 
-Aby uzyskać więcej informacji na temat SAS [, zobacz sygnatury dostępu współdzielonego, część 1: Omówienie modelu](../storage-dotnet-shared-access-signature-part-1.md)SAS.  
+Aby uzyskać więcej informacji na temat SAS, zobacz [udzielanie ograniczonego dostępu do zasobów usługi Azure Storage za pomocą sygnatur dostępu współdzielonego (SAS)](storage-sas-overview.md).  
 
 Aby uzyskać więcej informacji na temat mechanizmu CORS, zobacz temat [Obsługa udostępniania zasobów między źródłami (CORS) dla usług Azure Storage](https://msdn.microsoft.com/library/azure/dn535601.aspx).  
 
@@ -313,7 +313,7 @@ Aby szybko przekazać wiele obiektów blob, należy przekazać obiekty blob rów
 
 ### <a name="subheading23"></a>Wybieranie poprawnego typu obiektu BLOB
 
-Usługa Azure Storage obsługuje dwa typy obiektów BLOB ** : stronicowe obiekty blob i *blokowe* obiekty blob. Dla danego scenariusza użycia wybór typu obiektu BLOB będzie miał wpływ na wydajność i skalowalność rozwiązania. Blokowe obiekty blob są odpowiednie, gdy chcesz efektywnie przekazywać duże ilości danych: na przykład aplikacja kliencka może wymagać przeładowania zdjęć lub wideo do usługi BLOB Storage. Stronicowe obiekty blob są odpowiednie, jeśli aplikacja musi wykonywać losowe operacje zapisu na danych: na przykład dyski VHD platformy Azure są przechowywane jako stronicowe obiekty blob.  
+Usługa Azure Storage obsługuje dwa typy obiektów BLOB : stronicowe obiekty blob i *blokowe* obiekty blob. Dla danego scenariusza użycia wybór typu obiektu BLOB będzie miał wpływ na wydajność i skalowalność rozwiązania. Blokowe obiekty blob są odpowiednie, gdy chcesz efektywnie przekazywać duże ilości danych: na przykład aplikacja kliencka może wymagać przeładowania zdjęć lub wideo do usługi BLOB Storage. Stronicowe obiekty blob są odpowiednie, jeśli aplikacja musi wykonywać losowe operacje zapisu na danych: na przykład dyski VHD platformy Azure są przechowywane jako stronicowe obiekty blob.  
 
 Aby uzyskać więcej informacji, zobacz [Omówienie blokowych obiektów blob, dołączanie obiektów blob i stronicowych obiektów BLOB](https://msdn.microsoft.com/library/azure/ee691964.aspx).  
 

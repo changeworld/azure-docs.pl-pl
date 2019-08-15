@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: b819a990b9f607aaf70bf2e16a5857de3f7306cc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 320e92e45f319e394b5a38b3f1e8ef3f314920b8
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827496"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966340"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Działanie pobierania metadanych w Azure Data Factory
 
@@ -136,10 +136,10 @@ Obecnie działanie GetMetadata może pobrać następujące typy informacji o met
 
 Właściwość | Opis | Wymagane
 -------- | ----------- | --------
-fieldList | Wyświetla listę typów wymaganych informacji metadanych. Zobacz szczegóły w sekcji [Opcje metadanych](#metadata-options) w temacie obsługiwane metadane. | Yes 
+fieldList | Wyświetla listę typów wymaganych informacji metadanych. Zobacz szczegóły w sekcji [Opcje metadanych](#metadata-options) w temacie obsługiwane metadane. | Tak 
 zestawu | Zestaw danych referencyjnych, którego aktywność metadanych ma zostać pobrana przez działanie GetMetadata. Zobacz sekcję [obsługiwane możliwości](#supported-capabilities) na obsługiwanych łącznikach i zapoznaj się z tematem łącznika w temacie Szczegóły składni zestawu danych. | Tak
-formatSettings | Zastosuj przy użyciu zestawu danych typu format (Parquet, DelimitedText). | Nie
-storeSettings | Zastosuj przy użyciu zestawu danych typu format (Parquet, DelimitedText). | Nie
+formatSettings | Zastosuj przy użyciu zestawu danych typu format. | Nie
+storeSettings | Zastosuj przy użyciu zestawu danych typu format. | Nie
 
 ## <a name="sample-output"></a>Przykładowe dane wyjściowe
 

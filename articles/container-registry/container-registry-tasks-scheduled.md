@@ -8,16 +8,16 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/27/2019
 ms.author: danlep
-ms.openlocfilehash: 680f0268e85d41f8061dc96db1779ab6c22b944a
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 6237b8056262abe1f8cea28bebd6b3bad97e0f7e
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310540"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967581"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>Uruchamianie zadania ACR zgodnie ze zdefiniowanym harmonogramem
 
-W tym artykule przedstawiono sposób uruchamiania [zadania ACR](container-registry-tasks-overview.md) zgodnie z harmonogramem. Zaplanuj zadanie, konfigurując jeden lub więcej *wyzwalaczy czasomierza*. 
+W tym artykule przedstawiono sposób uruchamiania [zadania ACR](container-registry-tasks-overview.md) zgodnie z harmonogramem. Zaplanuj zadanie, konfigurując jeden lub więcej *wyzwalaczy czasomierza*.
 
 Planowanie zadania jest przydatne w scenariuszach takich jak następujące:
 
@@ -29,18 +29,18 @@ Możesz użyć Azure Cloud Shell lub lokalnej instalacji interfejsu wiersza pole
 
 ## <a name="about-scheduling-a-task"></a>Informacje o planowaniu zadania
 
-* **Wyzwalacz z wyrażeniem firmy CRONUS** — wyzwalacz czasomierza dla zadania używa *wyrażenia firmy CRONUS*. Wyrażenie jest ciągiem zawierającym pięć pól określające minuty, godzinę, dzień, miesiąc i dzień tygodnia, w których ma zostać wyzwolone zadanie. Obsługiwane są częstotliwości do raz na minutę. 
+* **Wyzwalacz z wyrażeniem firmy CRONUS** — wyzwalacz czasomierza dla zadania używa *wyrażenia firmy CRONUS*. Wyrażenie jest ciągiem zawierającym pięć pól określające minuty, godzinę, dzień, miesiąc i dzień tygodnia, w których ma zostać wyzwolone zadanie. Obsługiwane są częstotliwości do raz na minutę.
 
   Na przykład wyrażenie `"0 12 * * Mon-Fri"` wyzwala zadanie o godzinie UTC dla każdego dnia tygodnia. Zobacz [szczegóły](#cron-expressions) w dalszej części tego artykułu.
-* **Wyzwalacze wielu czasomierzy** — Dodawanie wielu czasomierzy do zadania jest dozwolone, o ile harmonogramy różnią się. 
+* **Wyzwalacze wielu czasomierzy** — Dodawanie wielu czasomierzy do zadania jest dozwolone, o ile harmonogramy różnią się.
     * Określ wyzwalacze wielu czasomierzy podczas tworzenia zadania lub Dodaj je później.
     * Opcjonalnie Nazwij wyzwalacze, aby ułatwić zarządzanie, lub ACR zadania będą podawać domyślne nazwy wyzwalaczy.
-    * Jeśli harmonogramy czasomierze nakładają się na siebie, ACR zadania wyzwalają zadanie w zaplanowanym czasie dla każdego czasomierza. 
+    * Jeśli harmonogramy czasomierze nakładają się na siebie, ACR zadania wyzwalają zadanie w zaplanowanym czasie dla każdego czasomierza.
 * **Inne Wyzwalacze zadań** — w zadaniu wyzwalanym czasomierzem można również włączyć wyzwalacze na podstawie zatwierdzeń [kodu źródłowego](container-registry-tutorial-build-task.md) lub [aktualizacji obrazu podstawowego](container-registry-tutorial-base-image-update.md). Podobnie jak w przypadku innych zadań ACR, można także [ręcznie wyzwolić][az-acr-task-run] zaplanowane zadanie.
 
 ## <a name="create-a-task-with-a-timer-trigger"></a>Tworzenie zadania z wyzwalaczem czasomierza
 
-Podczas tworzenia zadania za pomocą polecenia [AZ ACR Task Create][az-acr-task-create] można opcjonalnie dodać wyzwalacz czasomierza. `--schedule` Dodaj parametr i przekaż wyrażenie firmy CRONUS dla czasomierza. 
+Podczas tworzenia zadania za pomocą polecenia [AZ ACR Task Create][az-acr-task-create] można opcjonalnie dodać wyzwalacz czasomierza. `--schedule` Dodaj parametr i przekaż wyrażenie firmy CRONUS dla czasomierza.
 
 W prostym przykładzie następujące polecenie wyzwala uruchamianie `hello-world` obrazu z usługi Docker Hub codziennie o godzinie 21:00 czasu UTC. Zadanie jest uruchamiane bez kontekstu kodu źródłowego.
 
@@ -86,8 +86,8 @@ This message shows that your installation appears to be working correctly.
 Po upływie zaplanowanego czasu Uruchom polecenie [AZ ACR Task List-][az-acr-task-list-runs] Run, aby sprawdzić, czy czasomierz wyzwolił zadanie zgodnie z oczekiwaniami:
 
 ```azurecli
-az acr task list runs --name mytask --registry myregistry --output table
-``` 
+az acr task list-runs --name mytask --registry myregistry --output table
+```
 
 Po pomyślnym zakończeniu czasomierza dane wyjściowe są podobne do następujących:
 
@@ -98,7 +98,7 @@ RUN ID    TASK     PLATFORM    STATUS     TRIGGER    STARTED               DURAT
 cf2b      mytask   linux       Succeeded  Timer      2019-06-28T21:00:23Z  00:00:06
 cf2a      mytask   linux       Succeeded  Manual     2019-06-28T20:53:23Z  00:00:06
 ```
-            
+
 ## <a name="manage-timer-triggers"></a>Zarządzaj wyzwalaczami czasomierza
 
 Użyj polecenia [AZ ACR Task Timer][az-acr-task-timer] , aby zarządzać wyzwalaczami czasomierza dla zadania ACR.
@@ -150,7 +150,7 @@ Przykładowe dane wyjściowe:
 ]
 ```
 
-### <a name="remove-a-timer-trigger"></a>Usuwanie wyzwalacza czasomierza 
+### <a name="remove-a-timer-trigger"></a>Usuwanie wyzwalacza czasomierza
 
 Użyj polecenia [AZ ACR Task Timer Remove][az-acr-task-timer-remove] , aby usunąć wyzwalacz czasomierza z zadania. Poniższy przykład usuwa wyzwalacz *timer2* z *zadania*:
 
@@ -178,7 +178,7 @@ Każde pole może mieć jeden z następujących typów wartości:
 |---------|---------|---------|
 |Określona wartość |<nobr>"5 * * * *"</nobr>|co godzinę w ciągu 5 minut od godziny|
 |Wszystkie wartości (`*`)|<nobr>"* 5 * * *"</nobr>|co minutę godziny od 5:00 czasu UTC (60 razy dziennie)|
-|Zakres (`-` operator)|<nobr>"0 1-3 * * *"</nobr>|3 razy dziennie, o godzinie 1:00, 2:00 i 3:00 UTC|  
+|Zakres (`-` operator)|<nobr>"0 1-3 * * *"</nobr>|3 razy dziennie, o godzinie 1:00, 2:00 i 3:00 UTC|
 |Zestaw wartości (`,` operator)|<nobr>"20, 30, 40 * * * *"</nobr>|3 razy na godzinę, co 20 minut, 30 minut i 40 minut po godzinie|
 |Wartość interwału (`/` operator)|<nobr>"*/10 * * * *"</nobr>|6 razy na godzinę, przy 10 minutach, 20 minutach itd., Ostatnia godzina
 

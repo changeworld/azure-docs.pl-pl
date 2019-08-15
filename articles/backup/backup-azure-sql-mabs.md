@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: dacurwin
-ms.openlocfilehash: 5e91d63f4479d0677c57342cb1b726e33a45bb86
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 72de5857786f284bfc4afda1db093d5343bd7a43
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689085"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954474"
 ---
 # <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>Tworzenie kopii zapasowych SQL Server na platformie Azure przy użyciu Azure Backup Server
 Ten artykuł przeprowadzi Cię przez kroki konfiguracji tworzenia kopii zapasowych baz danych SQL Server przy użyciu programu Microsoft Azure Backup Server (serwera usługi MAB).
@@ -44,7 +44,7 @@ Przed rozpoczęciem upewnij się, że zainstalowano [i przygotowano Azure Backup
     ![Metoda ochrony danych — dysk krótkoterminowy & online Azure](./media/backup-azure-backup-sql/pg-name.png)
 7. Na ekranie **Określ cele krótkoterminowe** Uwzględnij niezbędne dane wejściowe, aby utworzyć punkty kopii zapasowej na dysku.
 
-    W tym miejscu widać, że **Zakres przechowywania** jest ustawiony na *5 dni*, **częstotliwość synchronizacji** jest ustawiona na co *15 minut* , która jest częstotliwością wykonywania kopii zapasowej. **Ekspresowa pełna kopia zapasowa** jest ustawiona na *8:00 P. M*.
+    W tym miejscu widać, że **Zakres przechowywania** jest ustawiony na *5 dni*, **częstotliwość synchronizacji** jest ustawiana co *15 minut*, która jest częstotliwością wykonywania kopii zapasowej. **Ekspresowa pełna kopia zapasowa** jest ustawiona na *8:00 P. M*.
 
     ![Cele krótkoterminowe](./media/backup-azure-backup-sql/pg-shortterm.png)
 
@@ -129,7 +129,7 @@ Podczas poprzednich kroków zostały utworzone zasady tworzenia kopii zapasowych
 ## <a name="recover-a-sql-server-database-from-azure"></a>Odzyskiwanie bazy danych SQL Server z platformy Azure
 Poniższe kroki są wymagane do odzyskania chronionej jednostki (SQL Server Database) z platformy Azure.
 
-1. Otwórz konsolę zarządzania serwerem programu DPM. Przejdź do obszaru roboczego **odzyskiwania** , w którym można zobaczyć serwery z kopią zapasową programu DPM. Przeglądaj wymaganą bazę danych (w tym przypadku ReportServer $ MSDPM2012). Wybierz **odzyskiwanie od** momentu, w którym kończą się w **trybie online**.
+1. Otwórz konsolę zarządzania serwerem programu DPM. Przejdź do obszaru roboczego **odzyskiwania** , w którym można zobaczyć serwery z kopią zapasową programu DPM. Przeglądaj wymaganą bazę danych (w tym przypadku ReportServer $ MSDPM2012). Wybierz **odzyskiwanie z** czasu kończącego się w **trybie online**.
 
     ![Wybierz punkt odzyskiwania](./media/backup-azure-backup-sql/sqlbackup-restorepoint.png)
 2. Kliknij prawym przyciskiem myszy nazwę bazy danych, a następnie kliknij polecenie Odzyskaj.

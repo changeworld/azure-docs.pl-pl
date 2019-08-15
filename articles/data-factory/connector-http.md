@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 8d6cc131c0c2baf7cc0a6600946870615d99e030
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: a6fa08596f5778b2c188fe3402801cf487b32ae4
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839801"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966984"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Kopiowanie danych z punktu końcowego HTTP przy użyciu Azure Data Factory
 
@@ -46,6 +46,10 @@ Tego łącznika protokołu HTTP można użyć do:
 > [!TIP]
 > Aby przetestować żądanie HTTP na potrzeby pobierania danych przed skonfigurowaniem łącznika HTTP w Data Factory, Dowiedz się więcej na temat specyfikacji interfejsu API dla wymagań dotyczących nagłówka i treści. Aby sprawdzić poprawność, można użyć narzędzi, takich jak program Poster lub przeglądarka sieci Web.
 
+## <a name="prerequisites"></a>Wymagania wstępne
+
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+
 ## <a name="get-started"></a>Wprowadzenie
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
@@ -58,11 +62,11 @@ Dla połączonej usługi HTTP są obsługiwane następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość **Type** musi być ustawiona na wartość **HttpServer**. | Yes |
+| type | Właściwość **Type** musi być ustawiona na wartość **HttpServer**. | Tak |
 | url | Podstawowy adres URL serwera sieci Web. | Tak |
 | enableServerCertificateValidation | Określ, czy włączyć weryfikację certyfikatu protokołu SSL serwera podczas łączenia się z punktem końcowym HTTP. Jeśli serwer HTTPS używa certyfikatu z podpisem własnym, ustaw dla tej właściwości **wartość false**. | Nie<br /> (wartość domyślna to **true**) |
 | authenticationType | Określa typ uwierzytelniania. Dozwolone wartości to **anonimowe**, **podstawowe**, **szyfrowane**, **Windows**i **ClientCertificate**. <br><br> Zapoznaj się z sekcjami w poniższej tabeli, aby uzyskać więcej właściwości i przykładów JSON dla tych typów uwierzytelniania. | Tak |
-| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) nawiązywania połączenia z magazynem danych. Możesz użyć Azure Integration Runtime lub samodzielnego Integration Runtime (Jeśli magazyn danych znajduje się w sieci prywatnej). Jeśli nie zostanie określony, ta właściwość używa Azure Integration Runtime domyślnego. |Nie |
+| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) nawiązywania połączenia z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określona, używana jest domyślna Azure Integration Runtime. |Nie |
 
 ### <a name="using-basic-digest-or-windows-authentication"></a>Korzystanie z uwierzytelniania podstawowego, szyfrowanego lub systemu Windows
 
@@ -70,7 +74,7 @@ Ustaw właściwość **AuthenticationType** na wartość **Basic**, **Digest**lu
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| userName | Nazwa użytkownika, która ma być używana do uzyskiwania dostępu do punktu końcowego HTTP. | Yes |
+| userName | Nazwa użytkownika, która ma być używana do uzyskiwania dostępu do punktu końcowego HTTP. | Tak |
 | password | Hasło użytkownika (wartość **username** ). Oznacz to pole jako **SecureString** typ, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
 
 **Przykład**
@@ -171,7 +175,7 @@ Aby skopiować dane do i z **Parquet, rozdzielonego tekstu lub formatu binarnego
 
 | Właściwość    | Opis                                                  | Wymagane |
 | ----------- | ------------------------------------------------------------ | -------- |
-| type        | Właściwość `location` Type w elemencie DataSet musi być ustawiona na wartość **HttpServerLocation**. | Yes      |
+| type        | Właściwość `location` Type w elemencie DataSet musi być ustawiona na wartość **HttpServerLocation**. | Tak      |
 | relativeUrl | Względny adres URL do zasobu, który zawiera dane.       | Nie       |
 
 > [!NOTE]
@@ -212,7 +216,7 @@ Aby skopiować dane z protokołu HTTP w **formacie Orc/Avro/JSON**, obsługiwane
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość **Type** zestawu danych musi być ustawiona na wartość **HttpFile**. | Yes |
+| type | Właściwość **Type** zestawu danych musi być ustawiona na wartość **HttpFile**. | Tak |
 | relativeUrl | Względny adres URL do zasobu, który zawiera dane. Jeśli ta właściwość nie jest określona, używana jest tylko adres URL określony w definicji połączonej usługi. | Nie |
 | requestMethod | Metoda HTTP. Dozwolone wartości to **Get** (default) i **post**. | Nie |
 | additionalHeaders | Dodatkowe nagłówki żądań HTTP. | Nie |
@@ -279,7 +283,7 @@ Aby skopiować dane z **Parquet, rozdzielonego tekstu lub formatu binarnego**, z
 
 | Właściwość                 | Opis                                                  | Wymagane |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | Właściwość Type w obszarze `storeSettings` musi być ustawiona na wartość **HttpReadSetting**. | Yes      |
+| type                     | Właściwość Type w obszarze `storeSettings` musi być ustawiona na wartość **HttpReadSetting**. | Tak      |
 | requestMethod            | Metoda HTTP. <br>Dozwolone wartości to **Get** (default) i **post**. | Nie       |
 | addtionalHeaders         | Dodatkowe nagłówki żądań HTTP.                             | Nie       |
 | Elemencie requestbody              | Treść żądania HTTP.                               | Nie       |
@@ -372,6 +376,6 @@ Aby skopiować dane z protokołu HTTP w **formacie Orc/Avro/JSON**, w sekcji **�
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać listę magazynów danych, które działania kopiowania obsługuje jako źródła i sink w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych i formatów](copy-activity-overview.md#supported-data-stores-and-formats).

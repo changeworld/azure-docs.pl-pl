@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 18d8f2a974fb192578163f71a57d00824ae6b0fa
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 507af54b8b4c2e7c67538a1a25a040c7ee5fdfd5
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839460"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976320"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Wyrażenia stylów oparte na danych (zestaw SDK sieci Web)
 
@@ -65,7 +65,8 @@ We wszystkich przykładach w tym dokumencie zostanie użyta następująca funkcj
         "type": "Point",
         "coordinates": [-122.13284, 47.63699]
     },
-    "properties": {     
+    "properties": { 
+        "id": 123,
         "entityType": "restaurant",
         "revenue": 12345,
         "subTitle": "Building 40", 
@@ -310,6 +311,28 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
         //Specify a default value to return if no match is found.
         'black'
+    ]
+});
+```
+
+W poniższym przykładzie używane jest wyrażenie Match do wykonania filtru typu "in Array" lub "Array Contains", w tym przypadku filtrowanie danych mających wartość identyfikatora, który znajduje się na liście dozwolonych identyfikatorów. W przypadku używania wyrażeń z filtrami wynik musi być wartością logiczną.
+
+```javascript
+var layer = new atlas.layer.BubbleLayer(datasource, null, {
+    filter: [
+        'match',  
+
+        //Get the property to match.
+        ['get', 'id'],  
+
+         //List of values to match.
+        [24, 53, 98], 
+
+        //If there is a match, return true.
+        true,
+    
+        //Otherwise return false.
+        false
     ]
 });
 ```
@@ -634,7 +657,7 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
 });
 ```
 
-[Zobacz przykład na żywo](map-add-shape.md#line-stroke-gradient)
+[Zobacz przykład na żywo](map-add-line-layer.md#line-stroke-gradient)
 
 ### <a name="text-field-format-expression"></a>Wyrażenie formatu pola tekstowego
 
@@ -816,8 +839,11 @@ Zobacz następujące artykuły, aby uzyskać więcej przykładów kodu, które i
 > [!div class="nextstepaction"] 
 > [Dodaj warstwę bąbelkową](map-add-bubble-layer.md)
 
-> [!div class="nextstepaction"] 
-> [Dodaj kształty](map-add-shape.md)
+> [!div class="nextstepaction"]
+> [Dodaj warstwę linii](map-add-line-layer.md)
+
+> [!div class="nextstepaction"]
+> [Dodaj warstwę wielokątów](map-add-shape.md)
 
 > [!div class="nextstepaction"] 
 > [Dodaj warstwę mapy cieplnej](map-add-heat-map-layer.md)

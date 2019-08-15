@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych z PostgreSQL za pomocą usługi Azure Data Factory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skopiować dane z PostgreSQL do magazynów danych ujścia obsługiwane za pomocą działania kopiowania w potoku usługi Azure Data Factory.
+title: Kopiowanie danych z PostgreSQL za pomocą Azure Data Factory | Microsoft Docs
+description: Informacje o kopiowaniu danych z programu PostgreSQL do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,49 +10,49 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 0cad0895b63e8c201183284e9d754a482669c48d
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 0efb884de9deaa2784e160785c26d78179da6567
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312020"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966889"
 ---
-# <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>Kopiowanie danych z PostgreSQL za pomocą usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
+# <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>Kopiowanie danych z PostgreSQL za pomocą Azure Data Factory
+> [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
 > * [Wersja 1](v1/data-factory-onprem-postgresql-connector.md)
 > * [Bieżąca wersja](connector-postgresql.md)
 
-W tym artykule opisano sposób użycia działania kopiowania w usłudze Azure Data Factory, aby skopiować dane z bazy danych PostgreSQL. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z bazy danych PostgreSQL. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
-Możesz skopiować dane z bazy danych PostgreSQL, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
+Dane z bazy danych PostgreSQL można kopiować do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
-W szczególności ten łącznik PostgreSQL obsługuje PostgreSQL **wersji 7.4 lub nowszej**.
+Ten łącznik PostgreSQL obsługuje PostgreSQL w **wersji 7,4 lub nowszej**.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Jeśli bazy danych PostgreSQL nie jest dostępny publicznie, należy skonfigurować środowiskiem Integration Runtime. Aby dowiedzieć się więcej na temat środowisk Self-Hosted integration Runtime, zobacz [własne środowisko IR](create-self-hosted-integration-runtime.md) artykułu. Infrastruktura Integration Runtime zapewnia wbudowane sterownik PostgreSQL, począwszy od wersji 3.7, dlatego nie trzeba ręcznie zainstalować dowolnego sterownika.
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-Własne środowisko IR w wersji niższej niż 3.7, trzeba instalować [Ngpsql dostawca danych dla PostgreSQL](https://go.microsoft.com/fwlink/?linkid=282716) przy użyciu wersji między 2.0.12 i 3.1.9 na komputerze środowisko Integration Runtime.
+W przypadku samodzielnej wersji środowiska IR starszej niż 3,7 należy zainstalować [dostawcę danych Ngpsql dla PostgreSQL](https://go.microsoft.com/fwlink/?linkid=282716) z wersją między 2.0.12 i 3.1.9 na maszynie Integration Runtime.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, które są używane do definiowania jednostek usługi Data Factory określonych łącznikiem PostgreSQL.
+Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek Data Factory specyficznych dla łącznika PostgreSQL.
 
 ## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 
-Następujące właściwości są obsługiwane dla PostgreSQL, połączone usługi:
+Dla połączonej usługi PostgreSQL są obsługiwane następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **PostgreSql** | Yes |
-| connectionString | Ciąg połączenia ODBC, nawiązać połączenia z usługi Azure Database for PostgreSQL. <br/>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory. Można również wprowadzić hasło w usłudze Azure Key Vault i ściągania `password` konfiguracji poza parametry połączenia. Zobacz poniższe przykłady i [Store poświadczeń w usłudze Azure Key Vault](store-credentials-in-key-vault.md) artykułu z bardziej szczegółowymi informacjami. | Yes |
-| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Używając środowiskiem Integration Runtime lub Azure Integration Runtime (Jeśli magazyn danych jest publicznie dostępny). Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
+| type | Właściwość Type musi mieć ustawioną wartość: **PostgreSql** | Tak |
+| connectionString | Ciąg połączenia ODBC, nawiązać połączenia z usługi Azure Database for PostgreSQL. <br/>Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory. Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć `password` konfigurację z parametrów połączenia. Zapoznaj się z poniższymi przykładami i [Zapisz poświadczenia w Azure Key Vault](store-credentials-in-key-vault.md) artykule, aby uzyskać więcej szczegółów. | Tak |
+| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
 Typowe parametry połączenia jest `Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`. Więcej właściwości, które można ustawić dla tej sprawy:
 
@@ -82,7 +82,7 @@ Typowe parametry połączenia jest `Server=<server>;Database=<database>;Port=<po
 }
 ```
 
-**Przykład: przechowywanie haseł w usłudze Azure Key Vault**
+**Przykład: Przechowuj hasło w Azure Key Vault**
 
 ```json
 {
@@ -111,9 +111,9 @@ Typowe parametry połączenia jest `Server=<server>;Database=<database>;Port=<po
 }
 ```
 
-Jeśli była używana usługa PostgreSQL połączone przy użyciu następujących ładunku, nadal jest obsługiwany jako — jest, chociaż zaleca się użyć nowego przyszłości.
+Jeśli używasz połączonej usługi PostgreSQL z następującym ładunkiem, nadal jest ona obsługiwana w stanie takim, w jakim będziesz mieć możliwość użycia nowego.
 
-**Poprzednie ładunek:**
+**Poprzedni ładunek:**
 
 ```json
 {
@@ -141,12 +141,12 @@ Jeśli była używana usługa PostgreSQL połączone przy użyciu następującyc
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych zobacz artykuł zestawów danych. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych PostgreSQL.
 
-Aby skopiować dane z PostgreSQL, ustaw właściwość typu zestawu danych na **RelationalTable**. Obsługiwane są następujące właściwości:
+Aby skopiować dane z PostgreSQL, ustaw właściwość Typ zestawu danych na relacyjny. Obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa: **RelationalTable** | Yes |
-| tableName | Nazwa tabeli w bazie danych programu PostgreSQL. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **Obiekt relacyjny** | Tak |
+| tableName | Nazwa tabeli w bazie danych PostgreSQL. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
 
@@ -171,15 +171,15 @@ Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania dz
 
 ### <a name="postgresql-as-source"></a>PostgreSQL jako źródło
 
-Aby skopiować dane z PostgreSQL, należy ustawić typ źródła w działanie kopiowania w celu **RelationalSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
+Aby skopiować dane z PostgreSQL, ustaw typ źródła w działaniu Copy na **RelationalSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi być równa wartości właściwości type źródło działania kopiowania: **RelationalSource** | Yes |
+| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **RelationalSource** | Tak |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"query": "SELECT * FROM \"MySchema\".\"MyTable\""`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 > [!NOTE]
-> Nazwy schematu i tabeli jest rozróżniana wielkość liter. Ujmij ją w `""` (podwójne cudzysłowy) w zapytaniu.
+> W nazwach schematu i tabeli jest rozróżniana wielkość liter. Ujmij je w `""` (podwójne cudzysłowy) w zapytaniu.
 
 **Przykład:**
 

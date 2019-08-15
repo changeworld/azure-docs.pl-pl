@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 3/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: 524d0854e8691428738cee321e394f572ea80112
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 67ba9ba9bc85213ec479a90d205ed9570c62bf8c
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689189"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954606"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Odzyskiwanie plików z kopii zapasowej maszyny wirtualnej platformy Azure
 
@@ -231,7 +231,7 @@ Jeśli występują problemy podczas odzyskiwania plików z maszyn wirtualnych, z
 | Na komputerze, na którym jest uruchamiany plik wykonywalny: Nowe woluminy nie są odinstalowywane po kliknięciu przycisku Odinstaluj | Inicjator iSCSI na komputerze nie odpowiada/nie odświeża połączenia z elementem docelowym i utrzymuje pamięć podręczną. |  Po kliknięciu przycisku **Odinstaluj**odczekaj kilka minut. Jeśli nowe woluminy nie zostaną odinstalowane, przejrzyj wszystkie woluminy. Przeglądanie wszystkich woluminów zmusza inicjatora do odświeżenia połączenia, a wolumin zostanie odinstalowany z komunikatem o błędzie, że dysk nie jest dostępny.|
 | Plik wyjściowy exe: Skrypt jest uruchamiany pomyślnie, ale w danych wyjściowych skryptu nie jest wyświetlany nowy wolumin. |    Jest to błąd przejściowy    | Woluminy byłyby już dołączone. Otwórz Eksploratora, aby przeglądać. Jeśli używasz tego samego komputera do uruchamiania skryptów za każdym razem, Rozważ ponowne uruchomienie komputera, a lista powinna zostać wyświetlona w kolejnych uruchomieniach programu exe. |
 | Specyficzne dla systemu Linux: Nie można wyświetlić żądanych woluminów | System operacyjny maszyny, na której jest uruchamiany skrypt, może nie rozpoznać podstawowego systemu plików chronionej maszyny wirtualnej | Sprawdź, czy punkt odzyskiwania jest spójny pod kątem awarii lub spójny z plikiem. Jeśli plik jest spójny, uruchom skrypt na innym komputerze, którego system operacyjny rozpozna system plików chronionej maszyny wirtualnej |
-| Specyficzne dla systemu Windows: Nie można wyświetlić żądanych woluminów | Dyski mogły zostać dołączone, ale nie skonfigurowano woluminów | Na ekranie Zarządzanie dyskami Zidentyfikuj dodatkowe dyski związane z punktem odzyskiwania. Jeśli którykolwiek z tych dysków znajduje się w stanie offline, spróbuj przełączyć je w tryb online, klikając dysk prawym przyciskiem myszy, a następnie kliknij pozycję "online".|
+| Specyficzne dla systemu Windows: Nie można wyświetlić żądanych woluminów | Dyski mogły zostać dołączone, ale nie skonfigurowano woluminów | Na ekranie Zarządzanie dyskami Zidentyfikuj dodatkowe dyski związane z punktem odzyskiwania. Jeśli którykolwiek z tych dysków jest w stanie offline, spróbuj przełączyć je w tryb online, klikając dysk prawym przyciskiem myszy, a następnie kliknij pozycję "online".|
 
 ## <a name="security"></a>Bezpieczeństwo
 
@@ -257,11 +257,11 @@ Wygenerowany skrypt jest podpisany za pomocą oficjalnego certyfikatu firmy Micr
 
 Tylko administrator może uruchomić skrypt i powinien działać w trybie podniesionych uprawnień. Skrypt uruchamia tylko wstępnie wygenerowany zestaw kroków i nie akceptuje danych wejściowych ze źródła zewnętrznego.
 
-Aby uruchomić skrypt, jeden wymaga hasła, które jest widoczne tylko dla autoryzowanego użytkownika w czasie generowania skryptu w Azure Portal lub PowerShell/CLI. Ma to na celu upewnienie się, że autoryzowany użytkownik, który pobiera ten skrypt, jest również odpowiedzialny za uruchamianie skryptu.
+Aby uruchomić skrypt, jeden wymaga hasła, które jest wyświetlane tylko dla autoryzowanego użytkownika w czasie generowania skryptu w Azure Portal lub PowerShell/CLI. Ma to na celu upewnienie się, że autoryzowany użytkownik, który pobiera ten skrypt, jest również odpowiedzialny za uruchamianie skryptu.
 
 #### <a name="browse-files-and-folders"></a>Przeglądanie plików i folderów
 
-Aby przeglądać pliki i foldery, skrypt używa inicjatora iSCSI na komputerze i nawiązuje połączenie z punktem odzyskiwania skonfigurowanym jako obiekt docelowy iSCSI. W tym miejscu można założyć scenariusze, w których jeden próbuje imitację/fałszowanie/wszystkie składniki.
+Aby przeglądać pliki i foldery, skrypt używa inicjatora iSCSI na komputerze i łączy się z punktem odzyskiwania skonfigurowanym jako obiekt docelowy iSCSI. W tym miejscu można założyć scenariusze, w których jeden próbuje imitację/fałszowanie/wszystkie składniki.
 
 Używamy mechanizmu uwierzytelniania wzajemnego CHAP, aby każdy składnik uwierzytelniał inne. Oznacza to, że jest niezwykle trudne dla fałszywego inicjatora, aby połączyć się z obiektem docelowym iSCSI i nieprawidłowym miejscem docelowym do połączenia z maszyną, na której uruchomiono skrypt.
 

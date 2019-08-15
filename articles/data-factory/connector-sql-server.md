@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 5dcbb2c25511277eaf46d6c9f4afc007a180f8a6
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: f5ddd9928194c477d8f8b6f4c9569a8fe58f39d3
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827876"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967375"
 ---
 # <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>Kopiowanie danych do i z SQL Server przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję Azure Data Factory:"]
@@ -44,7 +44,7 @@ W SQL Server ten łącznik obsługuje:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby użyć funkcji kopiowania danych z bazy danych SQL Server, która nie jest publicznie dostępna, należy skonfigurować własne środowisko Integration Runtime. Aby uzyskać więcej informacji, zobacz [samodzielne środowisko Integration Runtime](create-self-hosted-integration-runtime.md). Środowisko Integration Runtime zapewnia wbudowany sterownik bazy danych SQL Server. Nie trzeba ręcznie instalować żadnego sterownika podczas kopiowania danych z lub do bazy danych SQL Server.
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="get-started"></a>Wprowadzenie
 
@@ -60,9 +60,9 @@ Następujące właściwości są obsługiwane dla SQL Server połączonej usług
 |:--- |:--- |:--- |
 | type | Właściwość Type musi być ustawiona na wartość **SqlServer**. | Tak |
 | connectionString |Określ informacje o **ConnectionString** , które są konieczne do nawiązania połączenia z bazą danych SQL Server przy użyciu uwierzytelniania SQL lub uwierzytelniania systemu Windows. Zapoznaj się z poniższymi przykładami.<br/>Oznacz to pole jako **SecureString** , aby bezpiecznie przechowywać je w Azure Data Factory. Można również umieścić hasło w Azure Key Vault. Jeśli jest to uwierzytelnianie SQL, należy ściągnąć `password` konfigurację z parametrów połączenia. Aby uzyskać więcej informacji, zobacz przykład JSON po zalogowaniu do tabeli i [przechowywania w Azure Key Vault](store-credentials-in-key-vault.md). |Tak |
-| userName |Określ nazwę użytkownika, jeśli używasz uwierzytelniania systemu Windows. Przykładem jest **domainname\\username**. |Nie |
+| userName |Określ nazwę użytkownika, jeśli używasz uwierzytelniania systemu Windows. Przykładem jest **\\nazwa domeny username**. |Nie |
 | password |Określ hasło dla konta użytkownika określonego dla nazwy użytkownika. Oznacz to pole jako **SecureString** , aby bezpiecznie przechowywać je w Azure Data Factory. Lub można odwołać [się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). |Nie |
-| connectVia | To [środowisko Integration Runtime](concepts-integration-runtime.md) służy do nawiązywania połączenia z magazynem danych. Jeśli Twój magazyn danych jest publicznie dostępny, możesz użyć własnego środowiska Integration Runtime lub Azure Integration Runtime. Jeśli nie zostanie określony, zostanie użyta domyślna usługa Azure Integration Runtime. |Nie |
+| connectVia | To [środowisko Integration Runtime](concepts-integration-runtime.md) służy do nawiązywania połączenia z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określony, zostanie użyta domyślna usługa Azure Integration Runtime. |Nie |
 
 >[!TIP]
 >Jeśli wystąpi błąd z kodem błędu "UserErrorFailedToConnectToSqlServer" i komunikatem "limit sesji dla bazy danych to XXX i został osiągnięty," Dodaj `Pooling=false` do parametrów połączenia i spróbuj ponownie.
@@ -184,7 +184,7 @@ Aby skopiować dane z SQL Server, ustaw typ źródła w działaniu Copy na **sql
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | Właściwość Type źródła działania Copy musi być ustawiona na wartość sqlsource. | Yes |
+| type | Właściwość Type źródła działania Copy musi być ustawiona na wartość sqlsource. | Tak |
 | sqlReaderQuery |Umożliwia odczytywanie danych niestandardowe zapytania SQL. Może to być na przykład `select * from MyTable`. |Nie |
 | sqlReaderStoredProcedureName |Ta właściwość jest nazwą procedury składowanej, która odczytuje dane z tabeli źródłowej. Ostatnią instrukcję SQL musi być instrukcja SELECT w procedurze składowanej. |Nie |
 | storedProcedureParameters |Te parametry dotyczą procedury składowanej.<br/>Dozwolone wartości to pary nazw ani wartości. Nazwy i wielkość liter parametrów muszą być zgodne z nazwami i wielkością liter parametrów procedury składowanej. |Nie |
@@ -290,7 +290,7 @@ Aby skopiować dane do SQL Server, ustaw typ ujścia w działaniu Copy na **sqls
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | Właściwość Type ujścia działania Copy musi być ustawiona na wartość sqlsink. | Tak |
+| type | Właściwość Type ujścia działania Copy musi być ustawiona na wartość sqlsink. | Tak |
 | writeBatchSize |Liczba wierszy do wstawienia do tabeli SQL *na partię*.<br/>Dozwolone wartości to liczby całkowite dla liczby wierszy. Domyślnie Azure Data Factory dynamicznie określa odpowiedni rozmiar wsadu na podstawie rozmiaru wiersza. |Nie |
 | writeBatchTimeout |Ta właściwość określa czas oczekiwania na zakończenie operacji wstawiania wsadowego przed upływem limitu czasu.<br/>Dozwolone wartości są dla przedziału czasu. Przykładem jest "00:30:00" w ciągu 30 minut. |Nie |
 | preCopyScript |Ta właściwość określa zapytanie SQL dla działania kopiowania, które ma zostać uruchomione przed zapisaniem danych w SQL Server. Jest on wywoływany tylko raz dla każdego przebiegu kopiowania. Ta właściwość służy do czyszczenia wstępnie załadowanych danych. |Nie |

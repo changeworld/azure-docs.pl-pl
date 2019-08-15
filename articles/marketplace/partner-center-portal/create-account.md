@@ -7,12 +7,12 @@ ms.author: parthp
 ms.service: marketplace
 ms.topic: guide
 ms.date: 07/05/2019
-ms.openlocfilehash: 16ed52aa2b56a97469ae8fc47299f09593b19c45
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: d6a0fec6e2efbd943a9b240df0db2c270a1b7e45
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668343"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955586"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Utwórz komercyjne konto witryny Marketplace w centrum partnerskim
 
@@ -71,7 +71,7 @@ Dziękujemy za utworzenie konta w centrum partnerskim. Nastąpi przekierowanie d
 
 Jeśli Twoje konto zostało zmigrowane z [Portal Cloud partner (CPP)](https://cloudpartner.azure.com), nie musisz tworzyć nowego konta Centrum partnerskiego, ale otrzymasz dostosowany link do nowego konta Centrum partnerskiego za pośrednictwem poczty e-mail i w powiadomieniu o banerze wyświetlonym po Logowanie do istniejącego konta CPP.
 
-Po włączeniu nowego konta Centrum partnerskiego, odwiedzając ten dostosowany link, możesz wrócić do swojego konta, odwiedzając [komercyjny pulpit nawigacyjny Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/) w centrum partnerskim.
+Po włączeniu nowego konta Centrum partnerskiego, odwiedzając ten dostosowany link, możesz wrócić do swojego konta, odwiedzając [komercyjny pulpit nawigacyjny Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) w centrum partnerskim.
 
 Informacje o umowie dotyczące publikowania i profilu firmy zostaną zmigrowane do nowego konta Centrum partnerskiego wraz z wcześniej skonfigurowanymi informacjami o profilu wypłaty konta, kontami użytkowników i uprawnieniami oraz aktywnymi ofertami skojarzonymi z kontem CPP. 
 
@@ -98,6 +98,6 @@ Inny użytkownik z tej samej dzierżawy Azure Active Directory może dodać nowe
 
 1. Po zakończeniu procesu możesz zarządzać nowo utworzonym wydawcą, przechodząc do komercyjnego programu w **portalu Marketplace** wymienionym w menu nawigacji po lewej stronie. Jeśli nie widzisz komercyjnego programu **Marketplace** , Odśwież stronę.  Nowy Wydawca zostanie wyświetlony na liście **wydawcy** .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Zarządzanie kontem komercyjnej witryny Marketplace w centrum partnerskim](./manage-account.md) 

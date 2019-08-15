@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 267872f2036a0e697f4b2da65064805a0cfbd2b7
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 72155e072acb8006b48f6951fc60081126c80691
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358742"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990463"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Konfigurowanie celów obliczeń do trenowania modelu 
 
@@ -47,7 +47,7 @@ Usługa Azure Machine Learning ma różne wsparcie dla różnych obiektów docel
 
 Podczas szkolenia często rozpoczyna się na komputerze lokalnym, a następnie uruchamia ten skrypt szkoleniowy na innym miejscu docelowym obliczeń. Za pomocą usługi Azure Machine Learning można uruchomić skrypt na różnych obiektach docelowych obliczeń bez konieczności zmiany skryptu. 
 
-Wystarczy zdefiniować środowisko dla każdego elementu docelowego obliczeń z **konfiguracją uruchomieniową**.  Następnie, gdy chcesz uruchomić eksperyment szkoleniowy w innym miejscu docelowym obliczeń, określ konfigurację uruchamiania dla tego obliczenia. 
+Wystarczy zdefiniować środowisko dla każdego elementu docelowego obliczeń z **konfiguracją uruchomieniową**.  Następnie, gdy chcesz uruchomić eksperyment szkoleniowy w innym miejscu docelowym obliczeń, określ konfigurację uruchamiania dla tego obliczenia.
 
 Dowiedz się [](#submit) więcej o przesyłaniu eksperymentów na końcu tego artykułu.
 
@@ -74,7 +74,26 @@ W przypadku środowiska zarządzanego przez użytkownika użytkownik jest odpowi
 Poniższy kod przedstawia przykład konfigurowania przebiegów szkoleniowych dla środowiska zarządzanego przez użytkownika:
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/runconfig.py?name=run_user_managed)]
-  
+
+## <a name="whats-an-estimator"></a>Co to jest szacowania?
+
+Aby ułatwić uczenie modeli przy użyciu popularnych platform, zestaw SDK języka Python, Azure Machine Learning, zawiera alternatywne abstrakcyjne streszczenie, klasy szacowania. Ta klasa umożliwia łatwe konstruowanie konfiguracji uruchomieniowych. Można utworzyć i użyć generycznej [szacowania](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) do przesyłania skryptów szkoleniowych, które korzystają z wybranej platformy szkoleniowej (na przykład scikit-Learning).
+
+W przypadku zadań PyTorch, TensorFlow i łańcucha, Azure Machine Learning również udostępnia odpowiednie [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)i [łańcucha](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) szacowania, aby uprościć korzystanie z tych platform.
+
+Aby uzyskać więcej informacji, zobacz [uczenie modeli ml z szacowania](how-to-train-ml-models.md).
+
+## <a name="whats-an-ml-pipeline"></a>Co to jest potok ML?
+
+Potoki ML umożliwiają optymalizację przepływu pracy dzięki prostoty, szybkości, przenośności i ponownego użycia. Podczas kompilowania potoków z Azure Machine Learning możesz skupić się na wiedzy, uczeniu maszynowym, a nie na infrastrukturze i automatyzacji.
+
+Potoki ML są zbudowane z wielu **kroków**, które są odrębnymi jednostkami obliczeniowymi w potoku. Każdy krok można uruchamiać niezależnie i używać izolowanych zasobów obliczeniowych. Dzięki temu wiele analityków danych może współdziałać w tym samym potoku bez nadmiernie nieopodatkowanych zasobów obliczeniowych, a także ułatwia korzystanie z różnych typów i rozmiarów obliczeniowych dla każdego kroku.
+
+> [!TIP]
+> Potoki ML mogą korzystać z konfiguracji uruchamiania lub szacowania podczas uczenia modeli.
+
+Chociaż potoki ML mogą szkolić modele, mogą również przygotowywać dane przed szkoleniem i wdrażać modele po szkoleniu. Jednym z głównych przypadków użycia potoków jest ocenianie wsadowe. Aby uzyskać więcej informacji, [Zobacz potoki: Optymalizuj przepływy pracy](concept-ml-pipelines.md)uczenia maszynowego.
+
 ## <a name="set-up-in-python"></a>Konfiguracja w języku Python
 
 Skorzystaj z poniższych sekcji, aby skonfigurować te elementy docelowe obliczeń:
@@ -430,7 +449,7 @@ Zobacz te notesy, aby poznać przykłady szkoleń z różnymi obiektami docelowy
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Samouczek: Uczenie modelu](tutorial-train-models-with-aml.md) używa zarządzanego obiektu docelowego obliczeń do uczenia modelu.
 * Dowiedz się, jak [efektywnie dostrajać parametry](how-to-tune-hyperparameters.md) , aby tworzyć lepsze modele.

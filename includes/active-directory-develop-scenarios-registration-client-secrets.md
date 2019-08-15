@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/18/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: cd37880be6d518105e880b93a0bd748f7c729d88
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 8f98808aa0f8a2c32e2117447824114747091a82
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68286206"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68912446"
 ---
 ## <a name="registration-of-secrets-or-certificates"></a>Rejestracja wpisów tajnych lub certyfikatów
 
@@ -29,7 +29,7 @@ Podobnie jak w przypadku każdej poufnej aplikacji klienckiej, należy zarejestr
 
 Zarządzanie poświadczeniami klienta odbywa się na stronie **certyfikaty &** wpisy tajne aplikacji:
 
-![image](../articles/active-directory/develop/media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets-expanded.png)
+![image](../articles/active-directory/develop/media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets.png)
 
 - wpis tajny aplikacji (nazywany także kluczem tajnym klienta) jest generowany przez usługę Azure AD podczas rejestracji poufnej aplikacji klienckiej. Ta generacja ma miejsce w przypadku wybrania **nowego klucza tajnego klienta**. W tym momencie należy skopiować ciąg tajny w schowku do użycia w aplikacji przed wybraniem opcji **Zapisz**. Ten ciąg nie zostanie już przedstawiony.
 - certyfikat zostanie przekazany do rejestracji aplikacji przy użyciu przycisku **Przekaż certyfikat** . Usługa Azure AD obsługuje tylko certyfikaty, które są bezpośrednio zarejestrowane w aplikacji, i nie Śledź łańcuchów certyfikatów.

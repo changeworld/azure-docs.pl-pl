@@ -9,12 +9,12 @@ ms.date: 07/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 80ab896e1393d6c68b22a61d1b96acd507aa6994
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: d6a85d0f9480418bd840786e17ee258dbdb90c48
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249906"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985208"
 ---
 # <a name="run-azure-cli-or-powershell-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>Uruchamianie interfejsu wiersza polecenia platformy Azure lub poleceń programu PowerShell przy użyciu poświadczeń usługi Azure AD w celu uzyskania dostępu do danych obiektu BLOB lub kolejki
 
@@ -82,15 +82,17 @@ Zmienna środowiskowa skojarzona z `--auth-mode` parametrem `AZURE_STORAGE_AUTH_
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Aby użyć Azure PowerShell do logowania się i uruchamiania kolejnych operacji w usłudze Azure Storage przy użyciu poświadczeń usługi Azure AD, Utwórz kontekst magazynu, aby odwołać się do konta `-UseConnectedAccount` magazynu, i łącznie z parametrem.
+Aby użyć Azure PowerShell do logowania się i uruchamiania kolejnych operacji w usłudze Azure Storage przy użyciu poświadczeń usługi Azure AD, Utwórz kontekst magazynu, aby odwołać się do konta `-UseConnectedAccount` magazynu, i Uwzględnij parametr.
 
 Poniższy przykład pokazuje, jak utworzyć kontener na nowym koncie magazynu z Azure PowerShell przy użyciu poświadczeń usługi Azure AD. Pamiętaj, aby zastąpić wartości symboli zastępczych w nawiasach ostrych własnymi wartościami:
 
-1. Zaloguj się do subskrypcji platformy Azure za pomocą `Connect-AzAccount` polecenia i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie, aby wprowadzić swoje poświadczenia usługi Azure AD: 
+1. Zaloguj się do konta platformy Azure za pomocą polecenia [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) :
 
     ```powershell
     Connect-AzAccount
     ```
+
+    Aby uzyskać więcej informacji na temat logowania się do platformy Azure przy użyciu programu PowerShell, zobacz [Logowanie za pomocą Azure PowerShell](/powershell/azure/authenticate-azureps).
 
 1. Utwórz grupę zasobów platformy Azure, wywołując metodę [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). 
 

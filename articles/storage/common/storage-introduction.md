@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 51255bc4a93fbe3719eec96f00940a765644bbfe
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 04c49b78d948884a9bcccfa949518d25a3dac9c1
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312867"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986568"
 ---
 # <a name="introduction-to-azure-storage"></a>Wprowadzenie do usługi Azure Storage
 
@@ -23,7 +23,7 @@ Usługa Azure Storage to rozwiązanie do magazynowania w chmurze firmy Microsoft
 - **Bezpieczeństwo.** Wszystkie dane zapisane w usłudze Azure Storage są przez nią szyfrowane. Usługa Azure Storage zapewnia precyzyjną kontrolę tego, kto ma dostęp do danych.
 - **Skalowalność.** Usługa Azure Storage została zaprojektowana jako wysoce skalowalne rozwiązanie spełniające potrzeby związane z magazynowaniem danych i wydajnością współczesnych aplikacji. 
 - **Zarządzanie.** Platforma Microsoft Azure obsługuje konserwację sprzętu, aktualizacje i krytyczne problemy za Ciebie.
-- **Dostępność.** Dane w usłudze Azure Storage są dostępne z dowolnego miejsca na świecie za pośrednictwem protokołu HTTP lub HTTPS. Firma Microsoft oferuje biblioteki klienta usługi Azure Storage w różnych językach, takich jak .NET, Java, Node.js, Python, PHP, Ruby, Go i inne, a także dojrzały interfejs API REST. Usługa Azure Storage obsługuje skrypty programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. Witryna Azure Portal oraz Eksplorator usługi Azure Storage oferują proste rozwiązania wizualne do pracy z danymi.  
+- **Dostępność.** Dane w usłudze Azure Storage są dostępne z dowolnego miejsca na świecie za pośrednictwem protokołu HTTP lub HTTPS. Firma Microsoft udostępnia biblioteki klienckie usługi Azure Storage w różnych językach, takich jak .NET, Java, Node. js, Python, PHP, Ruby, go i inne, a także interfejs API REST. Usługa Azure Storage obsługuje skrypty programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. Witryna Azure Portal oraz Eksplorator usługi Azure Storage oferują proste rozwiązania wizualne do pracy z danymi.  
 
 ## <a name="azure-storage-services"></a>Usługi Azure Storage
 
@@ -74,7 +74,7 @@ Aby uzyskać więcej informacji na temat usługi Azure Files, zobacz [Wprowadzen
 
 Usługa Azure Queue jest używana do przechowywania i pobierania komunikatów. Komunikaty kolejek mogą mieć rozmiar do 64 KB, a jedna kolejka może zawierać miliony komunikatów. Kolejki są zazwyczaj używane do przechowywania list komunikatów, które mają zostać przetworzone asynchronicznie.
 
-Przykładowo załóżmy, że chcesz, aby klienci mogli przekazywać obrazy, i chcesz utworzyć miniatury dla każdego obrazu. Klient może poczekać, aż utworzysz miniatury podczas przekazywania zdjęcia. Alternatywą jest zastosowanie kolejki. Gdy klient zakończy przekazywanie ich, napisz wiadomość do kolejki. Następnie funkcja usługi Azure Functions pobierze ten komunikat z kolejki i utworzy miniatury. Każdą część tego przetwarzania można skalować oddzielnie, co daje większą kontrolę podczas dostosowywania.
+Przykładowo załóżmy, że chcesz, aby klienci mogli przekazywać obrazy, i chcesz utworzyć miniatury dla każdego obrazu. Klient może poczekać, aż utworzysz miniatury podczas przekazywania zdjęcia. Alternatywą jest zastosowanie kolejki. Po zakończeniu przekazywania przez klienta Napisz komunikat do kolejki. Następnie funkcja usługi Azure Functions pobierze ten komunikat z kolejki i utworzy miniatury. Każdą część tego przetwarzania można skalować oddzielnie, co daje większą kontrolę podczas dostosowywania.
 
 Aby uzyskać więcej informacji na temat usługi Azure Queues, zobacz [Wprowadzenie do usługi Azure Queues](../queues/storage-queues-introduction.md).
 
@@ -86,9 +86,9 @@ Aby uzyskać więcej informacji na temat usługi Table Storage, zobacz [Omówien
 
 ## <a name="disk-storage"></a>Przechowywanie na dysku
 
-Zarządzane przez platformę Azure dysk jest wirtualny dysk twardy (VHD). Można traktować je jak dysk fizyczny na serwerze w środowisku lokalnym, ale zwirtualizowanych. Usługi Azure managed disks są przechowywane jako stronicowe obiekty BLOB, które są losowych operacji We/Wy obiektu magazynu na platformie Azure. Nazywamy dysku zarządzanego "zarządzana", ponieważ jest klasą abstrakcyjną za pośrednictwem stronicowe obiekty BLOB i kontenery obiektów blob oraz konta usługi Azure storage. W przypadku dysków zarządzanych wszystko, co należy zrobić to aprowizowanie dysku, a platforma Azure zajmie się resztą.
+Dysk zarządzany przez platformę Azure to wirtualny dysk twardy (VHD). Można traktować go jako dysk fizyczny na serwerze lokalnym, ale zwirtualizowany. Azure Managed disks są przechowywane jako stronicowe obiekty blob, które są losowym obiektem magazynu we/wy na platformie Azure. Nazywamy zarządzany dysk zarządzany, ponieważ jest to Abstrakcja dla stronicowych obiektów blob, kontenerów obiektów blob i kont usługi Azure Storage. W przypadku dysków zarządzanych wszystkie czynności, które należy wykonać, udostępniają dysk, a platforma Azure zajmie się resztą.
 
-Aby uzyskać więcej informacji na temat dysków zarządzanych, zobacz [wprowadzenie do usługi Azure managed disks w](../../virtual-machines/windows/managed-disks-overview.md).
+Aby uzyskać więcej informacji o dyskach zarządzanych, zobacz [wprowadzenie do usługi Azure Managed disks](../../virtual-machines/windows/managed-disks-overview.md).
 
 ## <a name="types-of-storage-accounts"></a>Typy kont magazynu
 
@@ -96,15 +96,15 @@ Aby uzyskać więcej informacji na temat dysków zarządzanych, zobacz [wprowadz
 
 Aby uzyskać więcej informacji dotyczących typów kont magazynu, zobacz temat [Przegląd konta usługi Azure Storage](storage-account-overview.md).
 
-## <a name="securing-access-to-storage-accounts"></a>Zabezpieczanie dostępu do konta magazynu
+## <a name="securing-access-to-storage-accounts"></a>Zabezpieczanie dostępu do kont magazynu
 
-Musi być autoryzowana każde żądanie do usługi Azure Storage. Usługa Azure Storage obsługuje następujące metody autoryzacji:
+Każde żądanie do usługi Azure Storage musi być autoryzowane. Usługa Azure Storage obsługuje następujące metody autoryzacji:
 
-- **Integracja usługi Azure Active Directory (Azure AD) danych obiektów blob i kolejek.** Usługa Azure Storage obsługuje uwierzytelnianie i autoryzacja w usłudze Azure AD dla obiektów Blob i kolejek usługi za pomocą kontroli dostępu opartej na rolach (RBAC). Autoryzowanie żądań z usługą Azure AD jest zalecana dla wyższego poziomu zabezpieczeń i łatwość użycia. Aby uzyskać więcej informacji, zobacz [Autoryzuj dostęp do platformy Azure, obiekty BLOB i kolejki przy użyciu usługi Azure Active Directory](storage-auth-aad.md).
-- **Autoryzacja usłudze Azure AD przy użyciu protokołu SMB dla usługi Azure Files (wersja zapoznawcza).** Usługa pliki systemu Azure obsługuje uwierzytelnianie oparte na tożsamości za pośrednictwem protokołu SMB (Server Message Block) za pośrednictwem usługi Azure Active Directory Domain Services. Przyłączone do domeny Windows maszyn wirtualnych (VM) mają dostęp do udziałów plików platformy Azure przy użyciu poświadczeń usługi Azure AD. Aby uzyskać więcej informacji, zobacz [autoryzacja — Omówienie programu Azure Active Directory za pośrednictwem protokołu SMB dla usługi Azure Files (wersja zapoznawcza)](../files/storage-files-active-directory-overview.md).
-- **Uwierzytelnianie za pomocą klucza współużytkowanego.** Usługi Azure Storage Blob, kolejki i tabeli i usługi Azure Files obsługuje autoryzacji za pomocą klienta Key.A udostępnione za pomocą klucza wspólnego autoryzacji przekazuje nagłówek z każdym żądaniem, który jest podpisany przy użyciu klucza dostępu konta magazynu. Aby uzyskać więcej informacji, zobacz [autoryzacji za pomocą klucza wspólnego](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key).
-- **Autoryzacja przy użyciu udostępnionych access signatures (SAS).** Sygnatury dostępu współdzielonego (SAS) jest ciąg zawierający token zabezpieczający, który można dołączyć do identyfikatora URI dla zasobu magazynu. Token zabezpieczający hermetyzuje ograniczeń, takich jak uprawnienia oraz zakres dostępu. Aby uzyskać więcej informacji, zobacz [przy użyciu dostępu współdzielonego Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md).
-- **Anonimowy dostęp do kontenerów i obiektów blob.** Kontenera i jego obiektów blob może być dostępne publicznie. Po określeniu, kontenera lub obiektu blob jest publiczny, każda osoba może go anonimowo odczytać; nie jest wymagane uwierzytelnienie. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem anonimowym w trybie odczytu do kontenerów i obiektów blob](../blobs/storage-manage-access-to-resources.md)
+- **Azure Active Directory (Azure AD) integracja dla danych obiektów blob i kolejek.** Usługa Azure Storage obsługuje uwierzytelnianie i autoryzację w usłudze Azure AD dla usług obiektów blob i kolejek za pośrednictwem kontroli dostępu opartej na rolach (RBAC). Autoryzacja żądań za pomocą usługi Azure AD jest zalecana w celu zapewnienia bezpieczeństwa i łatwość użycia. Aby uzyskać więcej informacji, zobacz [Autoryzuj dostęp do obiektów blob i kolejek platformy Azure przy użyciu Azure Active Directory](storage-auth-aad.md).
+- **Autoryzacja usługi Azure AD za pośrednictwem protokołu SMB dla Azure Files (wersja zapoznawcza).** Azure Files obsługuje autoryzację opartą na tożsamościach za pośrednictwem protokołu SMB (Server Message Block) za pośrednictwem Azure Active Directory Domain Services. Przyłączone do domeny maszyny wirtualne z systemem Windows mogą uzyskiwać dostęp do udziałów plików platformy Azure przy użyciu poświadczeń usługi Azure AD. Aby uzyskać więcej informacji, zobacz [Omówienie autoryzacji Azure Active Directory za pośrednictwem protokołu SMB dla Azure Files (wersja zapoznawcza)](../files/storage-files-active-directory-overview.md).
+- **Autoryzacja za pomocą klucza współużytkowanego.** Usługi Azure Storage Blob, Queue i Table i Azure Files obsługują autoryzację za pomocą klucza współużytkowanego. klient korzystający z autoryzacji klucza współużytkowanego przekazuje nagłówek z każdym żądaniem podpisanym przy użyciu klucza dostępu do konta magazynu. Aby uzyskać więcej informacji, zobacz [Autoryzuj przy użyciu klucza](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)współużytkowanego.
+- **Autoryzacja przy użyciu sygnatur dostępu współdzielonego (SAS).** Sygnatura dostępu współdzielonego (SAS) jest ciągiem zawierającym token zabezpieczający, który może być dołączany do identyfikatora URI zasobu magazynu. Token zabezpieczający hermetyzuje ograniczenia, takie jak uprawnienia i interwał dostępu. Aby uzyskać więcej informacji, zobacz [Używanie sygnatur dostępu współdzielonego (SAS)](storage-sas-overview.md).
+- **Anonimowy dostęp do kontenerów i obiektów BLOB.** Kontener i jego obiekty blob mogą być publicznie dostępne. Po określeniu, że kontener lub obiekt BLOB jest publiczny, każda osoba może ją odczytać anonimowo; nie jest wymagane żadne uwierzytelnianie. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem anonimowym w trybie odczytu do kontenerów i obiektów blob](../blobs/storage-manage-access-to-resources.md)
 
 ## <a name="encryption"></a>Szyfrowanie
 
@@ -112,11 +112,11 @@ W przypadku usług Storage dostępne są dwa podstawowe rodzaje szyfrowania. Aby
 
 ### <a name="encryption-at-rest"></a>Szyfrowanie w spoczynku
 
-Szyfrowanie usługi Azure Storage chroni i zabezpiecza dane zgodnie z wymaganiami bezpieczeństwa i zgodności obowiązującymi w organizacji. Usługa Azure Storage automatycznie szyfruje wszystkie dane przed utrwaleniem ich konta magazynu i odszyfrowuje je przed pobraniem. Szyfrowanie, odszyfrowywanie i procesy zarządzania kluczami jest całkowicie przezroczyste dla użytkowników. Klienci mogą również wybrać zarządzać właściwymi dla nich kluczami za pomocą usługi Azure Key Vault. Aby uzyskać więcej informacji, zobacz [szyfrowanie usługi Azure Storage dla danych magazynowanych](storage-service-encryption.md).
+Szyfrowanie usługi Azure Storage chroni i zabezpiecza dane zgodnie ze zobowiązaniami dotyczącymi zabezpieczeń i zgodności w organizacji. Usługa Azure Storage automatycznie szyfruje wszystkie dane przed utrwaleniem do konta magazynu i odszyfrowuje je przed pobraniem. Procesy szyfrowania, odszyfrowywania i zarządzania kluczami są całkowicie niewidoczne dla użytkowników. Klienci mogą również zdecydować się na zarządzanie własnymi kluczami przy użyciu Azure Key Vault. Aby uzyskać więcej informacji, zobacz [szyfrowanie usługi Azure Storage dla danych magazynowanych](storage-service-encryption.md).
 
 ### <a name="client-side-encryption"></a>Szyfrowania po stronie klienta
 
-Biblioteki klienta usługi Azure Storage zapewnia metody do szyfrowania danych z biblioteki klienta przed wysłaniem ich podczas transmisji i odszyfrowywania odpowiedzi. Dane są szyfrowane za pomocą szyfrowania po stronie klienta jest również są szyfrowane w stanie spoczynku przez usługę Azure Storage. Aby uzyskać więcej informacji o szyfrowaniu po stronie klienta, zobacz [szyfrowania po stronie klienta przy użyciu platformy .NET dla usługi Azure Storage](storage-client-side-encryption.md).
+Biblioteki klienta usługi Azure Storage zapewniają metody szyfrowania danych z biblioteki klienta przed wysłaniem ich przez sieć i Odszyfrowanie odpowiedzi. Dane szyfrowane za pomocą szyfrowania po stronie klienta są również szyfrowane przez usługę Azure Storage. Aby uzyskać więcej informacji o szyfrowaniu po stronie klienta, zobacz [szyfrowanie po stronie klienta za pomocą platformy .NET dla usługi Azure Storage](storage-client-side-encryption.md).
 
 ## <a name="redundancy"></a>Nadmiarowość
 
@@ -142,12 +142,12 @@ Zasoby usługi Azure Storage są dostępne za pomocą dowolnego języka, który 
 
 - [Interfejs API REST usługi Azure Storage](https://docs.microsoft.com/rest/api/storageservices/)
 - [Biblioteka klienta usługi Azure Storage dla platformy .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
-- [Biblioteka klienta usługi Azure Storage dla języka Java w systemie Android](https://docs.microsoft.com/java/api/overview/azure/storage)
-- [Biblioteka klienta usługi Azure Storage dla środowiska Node.js](https://docs.microsoft.com/javascript/api/azure-storage)
+- [Biblioteka klienta usługi Azure Storage dla środowiska Java/Android](https://docs.microsoft.com/java/api/overview/azure/storage)
+- [Biblioteka klienta usługi Azure Storage dla środowiska Node. js](https://docs.microsoft.com/javascript/api/azure-storage)
 - [Biblioteka klienta usługi Azure Storage dla języka Python](https://github.com/Azure/azure-storage-python)
 - [Biblioteka klienta usługi Azure Storage dla języka PHP](https://github.com/Azure/azure-storage-php)
 - [Biblioteka klienta usługi Azure Storage dla języka Ruby](https://github.com/Azure/azure-storage-ruby)
-- [Biblioteka klienta usługi Azure Storage dlaC++](https://github.com/Azure/azure-storage-cpp)
+- [Biblioteka klienta usługi Azure Storage dla programuC++](https://github.com/Azure/azure-storage-cpp)
 
 ### <a name="azure-storage-management-api-and-library-references"></a>Dokumentacja bibliotek i interfejsów API zarządzania usługi Azure Storage
 
@@ -169,6 +169,6 @@ Zasoby usługi Azure Storage są dostępne za pomocą dowolnego języka, który 
 - [Azure Storage Client Tools](../storage-explorers.md)
 - [Narzędzia deweloperskie platformy Azure](https://azure.microsoft.com/tools/)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby rozpocząć pracę z usługą Azure Storage, zobacz [Tworzenie konta magazynu](storage-quickstart-create-account.md).

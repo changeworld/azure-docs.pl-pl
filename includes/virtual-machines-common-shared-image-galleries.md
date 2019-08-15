@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: e43b8c951d8c7d5d60904fe49d8639efaba5c89f
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 529a8b6136a5d9c69b044df2614644bdbd4fd4f4
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775908"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "69012218"
 ---
 Udostępniona Galeria obrazów to usługa, która ułatwia tworzenie struktury i organizacji na całym zarządzanym obrazie. Udostępnione Galerie obrazów zapewniają następujące:
 
@@ -73,7 +73,7 @@ Poniżej znajdują się inne parametry, które można ustawić w definicji obraz
 
 ## <a name="regional-support"></a>Obsługa regionalna
 
-Regiony źródłowe są wymienione w poniższej tabeli. Wszystkie regiony publiczne mogą być regionami docelowymi, ale w celu replikowania do Australii Środkowej i Australii środkowej 2 trzeba mieć subskrypcję listy dozwolonych. Aby zażądać listy dozwolonych, przejdź do: https://azure.microsoft.com/en-au/global-infrastructure/australia/contact/
+Regiony źródłowe są wymienione w poniższej tabeli. Wszystkie regiony publiczne mogą być regionami docelowymi, ale w celu replikowania do Australii Środkowej i Australii środkowej 2 trzeba mieć subskrypcję listy dozwolonych. Aby zażądać listy dozwolonych, przejdź do: https://azure.microsoft.com/global-infrastructure/australia/contact/
 
 
 | Regiony źródłowe |
@@ -140,7 +140,7 @@ Jako Galeria obrazów udostępnionych, definicja obrazu i wersja obrazu są wszy
 | Udostępnione użytkownikowi     | Galeria obrazów udostępnionych | Definicja obrazu | Wersja graficzna |
 |----------------------|----------------------|--------------|----------------------|
 | Galeria obrazów udostępnionych | Tak                  | Yes          | Tak                  |
-| Definicja obrazu     | Nie                   | Yes          | Yes                  |
+| Definicja obrazu     | Nie                   | Yes          | Tak                  |
 
 Zalecamy udostępnianie na poziomie galerii w celu uzyskania najlepszego środowiska. Nie zaleca się udostępniania poszczególnych wersji obrazu. Aby uzyskać więcej informacji na temat RBAC, zobacz [Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC](../articles/role-based-access-control/role-assignments-portal.md).
 
@@ -179,7 +179,7 @@ Następujące zestawy SDK obsługują Tworzenie udostępnionych galerii obrazów
 - [Java](https://docs.microsoft.com/java/azure/?view=azure-java-stable)
 - [Node.js](https://docs.microsoft.com/javascript/api/azure-arm-compute/?view=azure-node-latest)
 - [Python](https://docs.microsoft.com/python/api/overview/azure/virtualmachines?view=azure-python)
-- [Go](https://docs.microsoft.com/go/azure/)
+- [Go](https://docs.microsoft.com/azure/go/)
 
 ## <a name="templates"></a>Szablony
 

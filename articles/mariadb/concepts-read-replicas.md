@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 07/12/2019
-ms.openlocfilehash: 8d4a7a1b176a0c232c4461c7a8cfc2b1e3faddd6
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.date: 08/12/2019
+ms.openlocfilehash: a01f6cbb20d084864d3a7f64aa8c90d2bc3405f2
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638381"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68977066"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Odczytaj repliki w Azure Database for MariaDB
 
@@ -34,7 +34,33 @@ Ponieważ repliki są tylko do odczytu, nie zmniejszają bezpośrednio obciąże
 
 Funkcja odczytu repliki korzysta z replikacji asynchronicznej. Ta funkcja nie jest przeznaczona do scenariuszy replikacji synchronicznej. Nastąpi wymierne opóźnienie między serwerem głównym a repliką. Dane z repliki ostatecznie staną się spójne z danymi na serwerze głównym. Użyj tej funkcji dla obciążeń, które mogą obsłużyć to opóźnienie.
 
-Odczyt replik może usprawnić plan odzyskiwania po awarii. Jeśli wystąpi awaria regionalna, a serwer główny jest niedostępny, można skierować obciążenie do repliki w innym regionie. Aby to zrobić, najpierw Zezwól na zapisanie przez replikę za pomocą funkcji Zatrzymaj replikację. Następnie można przekierować aplikację, aktualizując parametry połączenia. Więcej informacji znajduje się w sekcji [Zatrzymaj replikację](#stop-replication) .
+
+## <a name="cross-region-replication"></a>Replikacja między regionami
+Replikę odczytu można utworzyć w innym regionie niż serwer główny. Replikacja między regionami może być przydatna w scenariuszach takich jak planowanie odzyskiwania po awarii lub umieszczenie danych bliżej użytkowników.
+
+> [!IMPORTANT]
+> Replikacja między regionami jest obecnie dostępna w publicznej wersji zapoznawczej.
+
+Serwer główny może być w dowolnym [regionie Azure Database for MariaDB](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb).  Serwer główny może mieć replikę w osobnym regionie lub regionach uniwersalnej repliki.
+
+### <a name="universal-replica-regions"></a>Regiony uniwersalnej repliki
+Można zawsze utworzyć replikę odczytu w jednym z następujących regionów, niezależnie od tego, gdzie znajduje się serwer główny. Są to uniwersalne regiony repliki:
+
+Australia Wschodnia, Australia Wschodnia, środkowe stany USA, Azja Wschodnia, Wschodnie stany USA, Wschodnie stany USA 2, Japonia Wschodnia, Japonia Zachodnia, Korea środkowa, Korea Południowa, Ameryka Północna, Południowe stany USA, Europa Północna, Południowo-środkowe stany USA, Zachodnie Zjednoczone Królestwo Południowe Zjednoczone Królestwo Azja Południowo-Wschodnia
+
+
+### <a name="paired-regions"></a>Sparowane regiony
+Oprócz regionów uniwersalnej repliki można utworzyć replikę odczytu w sparowanym regionie platformy Azure serwera głównego. Jeśli nie znasz pary regionów, możesz dowiedzieć się więcej z [artykułu z sparowanymi regionami platformy Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+
+Jeśli używasz replik między regionami do planowania odzyskiwania po awarii, zalecamy utworzenie repliki w sparowanym regionie, a nie w jednym z innych regionów. Sparowane regiony umożliwiają uniknięcie jednoczesnych aktualizacji i określanie priorytetów fizycznej izolacji i miejsca zamieszkania danych.  
+
+Istnieją jednak ograniczenia, które należy wziąć pod uwagę: 
+
+* Dostępność w regionach: Azure Database for MariaDB jest dostępny w regionie zachodnie stany USA 2, Francja środkowa, Zjednoczone Emiraty Arabskie i Niemcy środkowe. Jednak ich sparowane regiony nie są dostępne.
+    
+* Pary jednokierunkowe: Niektóre regiony platformy Azure są sparowane tylko w jednym kierunku. Regiony te obejmują Indie Zachodnie, Brazylia Południowa i US Gov Wirginia. 
+   Oznacza to, że serwer główny w regionie zachodnie Indie może utworzyć replikę w Indiach Południowej. Jednak główny serwer nie może utworzyć repliki w Indiach zachodnim. Jest to spowodowane tym, że region pomocniczy w zachodniej Indiach to Indie Południowe, ale region pomocniczy w Republice Południowej Indie nie jest Indie Zachodnie.
+
 
 ## <a name="create-a-replica"></a>Tworzenie repliki
 

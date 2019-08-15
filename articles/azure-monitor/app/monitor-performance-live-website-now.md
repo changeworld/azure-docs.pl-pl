@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: mbullwin
 ms.openlocfilehash: ea324d616928b0d517c00dc9cab3e282f1e3415e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67876434"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Instrumentacja aplikacji sieci Web w środowisku uruchomieniowym z dołączaniem bez kodu Application Insights
@@ -49,7 +49,7 @@ Poniżej przedstawiono podsumowanie tego, co można uzyskać, korzystając z dan
 | [Bardziej szczegółowe wyjątki](../../azure-monitor/app/asp-net-exceptions.md) | |Yes |
 | [Diagnostyka zależności](../../azure-monitor/app/asp-net-dependencies.md) |Na platformie .NET 4.6 +, ale mniej szczegółów |Tak, kompletne szczegóły: kody wyników, tekst polecenia SQL, czasownik HTTP|
 | [Liczniki wydajności sytemu](../../azure-monitor/app/performance-counters.md) |Yes |Tak |
-| [Interfejs API dla telemetrii niestandardowej][api] |Yes |Nie |
+| [Interfejs API dla telemetrii niestandardowej][api] |Tak |Nie |
 | [Integracja dziennika śledzenia](../../azure-monitor/app/asp-net-trace-logs.md) |Yes |Nie |
 | [Widok strony i dane użytkownika](../../azure-monitor/app/javascript.md) |Yes |Nie |
 | Konieczność ponownej kompilacji kodu |Yes | Nie |

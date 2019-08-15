@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 9bf90c9d3ce593ba5bf6339cd9cec31bb49f14f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c3c179cfbf86c2dddfb34b46540aba8898038751
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61399931"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966487"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Kopiowanie danych z Netezza za pomocą usługi Azure Data Factory
 
@@ -29,7 +29,11 @@ Możesz skopiować dane z Netezza do dowolnego obsługiwanego magazynu danych uj
 
 Usługa Azure Data Factory udostępnia wbudowane sterowników, aby włączyć łączność. Nie trzeba ręcznie zainstalować dowolnego sterownika, aby użyć tego łącznika.
 
-## <a name="get-started"></a>Rozpoczęcie pracy
+## <a name="prerequisites"></a>Wymagania wstępne
+
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+
+## <a name="get-started"></a>Wprowadzenie
 
 Można utworzyć potoku, który używa działania kopiowania przy użyciu zestawu .NET SDK, zestaw SDK języka Python, programu Azure PowerShell, interfejsu API REST lub szablonu usługi Azure Resource Manager. Zobacz [samouczka działania kopiowania](quickstart-create-data-factory-dot-net.md) instrukcje krok po kroku dotyczące sposobu tworzenia potoku, który zawiera działania kopiowania.
 
@@ -42,14 +46,14 @@ Usługi połączone Netezza obsługiwane są następujące właściwości:
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | **Typu** właściwość musi być równa **Netezza**. | Yes |
-| connectionString | Ciąg połączenia ODBC, aby nawiązać połączenie Netezza. <br/>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory. Można również wprowadzić hasło w usłudze Azure Key Vault i ściągania `pwd` konfiguracji poza parametry połączenia. Zobacz poniższe przykłady i [Store poświadczeń w usłudze Azure Key Vault](store-credentials-in-key-vault.md) artykułu z bardziej szczegółowymi informacjami. | Yes |
-| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) nawiązywania połączenia z magazynem danych. Możesz samodzielnie hostowanego produktu Integration Runtime lub Azure Integration Runtime (Jeśli magazyn danych jest publicznie dostępny). Jeśli nie zostanie określona, używana jest domyślna Azure Integration Runtime. |Nie |
+| connectionString | Ciąg połączenia ODBC, aby nawiązać połączenie Netezza. <br/>Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory. Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć `pwd` konfigurację z parametrów połączenia. Zapoznaj się z poniższymi przykładami i [Zapisz poświadczenia w Azure Key Vault](store-credentials-in-key-vault.md) artykule, aby uzyskać więcej szczegółów. | Tak |
+| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) nawiązywania połączenia z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określona, używana jest domyślna Azure Integration Runtime. |Nie |
 
 Typowe parametry połączenia jest `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>`. W poniższej tabeli opisano więcej właściwości, które można ustawić:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| SecurityLevel | Poziom zabezpieczeń (SSL/TLS), sterownik używany dla połączenia z magazynem danych. Przykład: `SecurityLevel=preferredSecured`. Obsługiwane są następujące wartości:<br/>- **Tylko niezabezpieczone** (**onlyUnSecured**): Sterownik nie używa protokołu SSL.<br/>- **Preferowane niezabezpieczone (preferredUnSecured) (ustawienie domyślne)** : Jeśli serwer umożliwia wybranie, sterownik nie używa protokołu SSL. <br/>- **Preferowane zabezpieczone (preferredSecured)** : Jeśli serwer umożliwia wybranie, sterownik używa protokołu SSL. <br/>- **Tylko zabezpieczane (onlySecured)** : Sterownik nie połączyć, o ile nie jest dostępne połączenie SSL. | Nie |
+| SecurityLevel | Poziom zabezpieczeń (SSL/TLS), sterownik używany dla połączenia z magazynem danych. Przykład: `SecurityLevel=preferredSecured`. Obsługiwane są następujące wartości:<br/>- **Tylko niezabezpieczone** (**onlyUnSecured**): Sterownik nie używa protokołu SSL.<br/>- **Preferowana niezabezpieczona (preferredUnSecured) (domyślnie)** : Jeśli serwer zawiera wybór, sterownik nie używa protokołu SSL. <br/>- **Preferowany zabezpieczony (preferredSecured)** : Jeśli serwer zawiera wybór, sterownik używa protokołu SSL. <br/>- **Tylko zabezpieczone (onlySecured)** : Sterownik nie nawiązuje połączenia, o ile nie jest dostępne połączenie SSL. | Nie |
 | CaCertFile | Pełna ścieżka do certyfikatu SSL, który jest używany przez serwer. Przykład: `CaCertFile=<cert path>;`| Tak, jeśli jest włączony protokół SSL |
 
 **Przykład**
@@ -73,7 +77,7 @@ Typowe parametry połączenia jest `Server=<server>;Port=<port>;Database=<databa
 }
 ```
 
-**Przykład: przechowywanie haseł w usłudze Azure Key Vault**
+**Przykład: Przechowuj hasło w Azure Key Vault**
 
 ```json
 {
@@ -112,7 +116,7 @@ Aby skopiować dane z Netezza, ustaw **typu** właściwości zestawu danych na *
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa: **NetezzaTable** | Yes |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **NetezzaTable** | Tak |
 | tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**

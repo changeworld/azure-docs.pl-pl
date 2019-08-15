@@ -12,25 +12,25 @@ ms.date: 06/05/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
 ms.openlocfilehash: 16f13cd4ad580ea2f163fe87b5924c1462890972
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "64926187"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>W usłudze Machine Learning interfejs API wykrywania anomalii
 
 > [!NOTE]
-> Ten element jest w trakcie konserwacji. Firma Microsoft zachęca do użycia [usługi interfejsu API wykrywanie anomalii](https://azure.microsoft.com/services/cognitive-services/anomaly-detector/) obsługiwane przez algorytmy galerię usługi Machine Learning, w ramach usługi Azure Cognitive Services w celu wykrycia anomalii z biznesowe i operacyjne i metryki IoT.
+> Ten element jest w trakcie konserwacji. Zachęcamy do używania [usługi interfejsu API wykrywania anomalii](https://azure.microsoft.com/services/cognitive-services/anomaly-detector/) obsługiwanej przez galerię Machine Learning algorytmów w usłudze Azure Cognitive Services w celu wykrywania anomalii z metryk biznesowych, operacyjnych i IoT.
 
 ## <a name="overview"></a>Omówienie
 [Interfejs API wykrywania anomalii](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) znajduje się przykład utworzonych za pomocą usługi Azure Machine Learning, która wykrywa anomalie w danych szeregów czasowych za pomocą wartości liczbowe, które są równomiernie rozłożone w czasie.
 
 Ten interfejs API może wykryć następujące rodzaje nietypowe wzorce w danych szeregów czasowych:
 
-* **Trendy pozytywne i negatywne**: Na przykład podczas monitorowania użycia pamięci w obliczeniowej trend wzrostowy może być przedmiotem zainteresowania as może być wskazuje przeciek pamięci
-* **Zmiany w dynamicznym zakresie wartości**: Na przykład podczas monitorowania wyjątki generowane przez usługę w chmurze, wszystkie zmiany wprowadzone w dynamicznym zakresie wartości może wskazywać niestabilność kondycję usługi, i
-* **Gwałtowne wzrosty i spadki**: Na przykład podczas monitorowania liczby nieudanych prób zalogowania w usłudze lub liczbę wyewidencjonowań w witrynie handlu elektronicznego, wzrostów lub spadku może wskazywać nietypowego zachowania.
+* **Trendy dodatnie i ujemne**: Na przykład, gdy monitorowanie użycia pamięci podczas obliczania trendu w górę może być przydatne, ponieważ może to wskazywać przeciek pamięci,
+* **Zmiany w dynamicznym zakresie wartości**: Na przykład podczas monitorowania wyjątków zgłoszonych przez usługę w chmurze wszelkie zmiany w dynamicznym zakresie wartości mogą wskazywać na niestabilność w zakresie kondycji usługi, a także
+* Wartości graniczne **i wartości DIP**: Na przykład podczas monitorowania liczby niepowodzeń logowania w usłudze lub liczby wyewidencjonowania w witrynie handlu elektronicznego, skoki lub wartości DIP mogą wskazywać na nietypowe zachowanie.
 
 Detektory learning te maszyny śledzić takie zmiany w wartościach przez raport i czas zmiany zachodzące w ich wartości jako wyniki anomalii. Nie wymaga to dostosowywania progu ad hoc i ich oceny może służyć do kontrolowania wyników fałszywie dodatnich. Wykrywanie anomalii, interfejs API jest przydatne w kilku scenariuszach, takich jak monitorowanie usług, śledząc kluczowe wskaźniki wydajności wraz z upływem czasu, monitorowania użycia za pomocą metryk, takich jak Liczba wyszukiwań, liczby kliknięć, monitorowanie wydajności za pośrednictwem liczników, takich jak pamięć, procesor CPU, odczytuje plik itp. wraz z upływem czasu.
 
@@ -46,7 +46,7 @@ Oferta wykrywania anomalii jest dostarczany z przydatnymi narzędziami, które u
 -->
 
 ## <a name="api-deployment"></a>Wdrażanie interfejsu API
-Aby można było używać interfejsu API, należy wdrożyć je do subskrypcji platformy Azure, w którym będzie obsługiwana jako usługi sieci web Azure Machine Learning.  Można to zrobić z [galerii Azure AI](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2).  Wdroży to dwie usługi Azure Machine Learning studio w sieci Web usługi (i ich powiązane zasoby) do subskrypcji platformy Azure — jeden dla wykrywanie anomalii przy użyciu wykrywania sezonowości i jedną bez wykrycia sezonowość.  Po zakończeniu wdrożenia można zarządzać z interfejsów API [usługi sieci web usługi Azure Machine Learning studio](https://services.azureml.net/webservices/) strony.  Na tej stronie można znaleźć swoje lokalizacje punktów końcowych, klucze interfejsu API, a także przykładowego kodu dla wywołania interfejsu API.  Bardziej szczegółowe instrukcje są dostępne [tutaj](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice).
+Aby można było używać interfejsu API, należy wdrożyć je do subskrypcji platformy Azure, w którym będzie obsługiwana jako usługi sieci web Azure Machine Learning.  Można to zrobić z [galerii Azure AI](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2).  Spowoduje to wdrożenie dwóch usług sieci Web programu Azure Machine Learning Studio (i powiązanych z nimi zasobów) w ramach subskrypcji platformy Azure — jednej do wykrywania anomalii z wykrywaniem sezonowości i jednego bez wykrywania sezonowości.  Po zakończeniu wdrożenia będzie można zarządzać interfejsami API na stronie [usług sieci web Azure Machine Learning Studio](https://services.azureml.net/webservices/) .  Na tej stronie można znaleźć swoje lokalizacje punktów końcowych, klucze interfejsu API, a także przykładowego kodu dla wywołania interfejsu API.  Bardziej szczegółowe instrukcje są dostępne [tutaj](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice).
 
 ## <a name="scaling-the-api"></a>Skalowanie interfejsu API
 Domyślnie wdrożenie będzie bezpłatne tworzenie i testowanie planu rozliczeniowego zawierającego 1000 transakcji miesięcznie i obliczeń 2 godz. / miesiąc.  Można uaktualnić do innego planu, zgodnie z potrzebami.  Dostępne są szczegółowe informacje na temat cen różne plany [tutaj](https://azure.microsoft.com/pricing/details/machine-learning/) w obszarze "Cennik produkcyjnego interfejsu API sieci Web".
@@ -58,7 +58,7 @@ Możesz zarządzać planem rozliczeniowym [tutaj](https://services.azureml.net/p
 Usługa sieci web udostępnia interfejs API oparty na protokole REST przy użyciu protokołu HTTPS, które mogą być używane na różne sposoby, w tym sieci web lub aplikacji mobilnej, R, Python, Excel, itp.  Wysyłanie danych szeregów czasowych do tej usługi za pośrednictwem wywołania interfejsu API REST i uruchomieniu kombinacji typów anomalii trzy opisane poniżej.
 
 ## <a name="calling-the-api"></a>Wywołanie interfejsu API
-Aby można było wywołać interfejs API, należy znać lokalizację punktu końcowego i klucz interfejsu API.  Oba te, wraz z przykładowego kodu do wywoływania interfejsu API, są dostępne z [usługi sieci web usługi Azure Machine Learning studio](https://services.azureml.net/webservices/) strony.  Przejdź do żądanego interfejsu API, a następnie kliknij kartę "Wykorzystania", aby je znaleźć.  Należy pamiętać, wywołując interfejs API jako interfejsu API struktury Swagger (tj. z parametru adresu URL `format=swagger`) lub jako innego niż - interfejsu API struktury Swagger (czyli bez `format` parametr adresu URL).  Przykładowy kod korzysta z formatu Swagger.  Poniżej znajduje przykład żądań i odpowiedzi w formacie bez struktury Swagger.  Te przykłady są do endpoint sezonowość.  Punkt końcowy sezonowość nie jest podobny.
+Aby można było wywołać interfejs API, należy znać lokalizację punktu końcowego i klucz interfejsu API.  Oba te elementy wraz z przykładowym kodem służącym do wywoływania interfejsu API są dostępne na stronie [usług sieci web Azure Machine Learning Studio](https://services.azureml.net/webservices/) .  Przejdź do żądanego interfejsu API, a następnie kliknij kartę "Wykorzystania", aby je znaleźć.  Należy pamiętać, wywołując interfejs API jako interfejsu API struktury Swagger (tj. z parametru adresu URL `format=swagger`) lub jako innego niż - interfejsu API struktury Swagger (czyli bez `format` parametr adresu URL).  Przykładowy kod korzysta z formatu Swagger.  Poniżej znajduje przykład żądań i odpowiedzi w formacie bez struktury Swagger.  Te przykłady są do endpoint sezonowość.  Punkt końcowy sezonowość nie jest podobny.
 
 ### <a name="sample-request-body"></a>Treść żądania próbki
 Żądanie zawiera dwa obiekty: `Inputs` i `GlobalParameters`.  W przykładzie żądanie poniżej, niektóre parametry są wysyłane jawnie a inne nie (Przewiń w dół Aby uzyskać pełną listę parametrów dla każdego punktu końcowego).  Parametry, które nie są jawnie wysyłane w żądaniu użyje wartości domyślnych podanych poniżej.
@@ -113,10 +113,10 @@ Interfejs API wykrywania anomalii obsługuje detektory 3 szerokie kategorie. W p
 
 | Wykrywanie kategorii | Wykrywanie | Opis | Parametry wejściowe | Dane wyjściowe |
 | --- | --- | --- | --- | --- |
-| Detektory kolekcji |Wykrywanie TSpike |Wykrywanie, wzrostów i spadków, na podstawie daleko wartości pochodzą z Kwartyle pierwszy i trzeci |*tspikedetector.sensitivity:* przyjmuje wartość całkowitą z zakresu 1-10, domyślny: 3; Wyższe wartości będzie przechwytywać więcej wartości skrajnych co mniej poufnych |TSpike: wartości binarne — "1", w przypadku wykrycia kolekcji/dip, "0" w przeciwnym razie |
-| Detektory kolekcji | Wykrywanie ZSpike |Wykrywanie wzrostów i spadków, oparte na to, jak daleko są punktów danych od ich średniej |*zspikedetector.sensitivity:* zająć wartość całkowitą z zakresu 1-10, domyślny: 3; Wyższe wartości będzie przechwytywać więcej wartości skrajnych co mniej poufnych |ZSpike: wartości binarne — "1", w przypadku wykrycia kolekcji/dip, "0" w przeciwnym razie |
-| Wykrywanie powolnego trendu |Wykrywanie powolnego trendu |Wykrywanie powolne trend dodatnią zgodnie z czułości zestawu |*trenddetector.sensitivity:* progu na wykrywanie wynik (domyślne: 3,25, 3,25 — 5 jest uzasadnione zakresu, aby wybrać ten program z; Im wyższa mniej wrażliwe) |tscore: liczbą zmiennoprzecinkową reprezentujący wyniku anomalii na tendencji |
-| Detektory zmiany poziomu | Wykrywanie zmian poziom dwukierunkowego |Wykrywanie zmiany poziomu zarówno w górę, jak i w dół zgodnie z czułości zestawu |*bileveldetector.sensitivity:* progu na wykrywanie wynik (domyślne: 3,25, 3,25 — 5 jest uzasadnione zakresu, aby wybrać ten program z; Im wyższa mniej wrażliwe) |rpscore: liczbą zmiennoprzecinkową reprezentujący wyniku anomalii w górę i w dół zmiany poziomu |
+| Detektory kolekcji |Wykrywanie TSpike |Wykrywanie, wzrostów i spadków, na podstawie daleko wartości pochodzą z Kwartyle pierwszy i trzeci |*tspikedetector. czułość:* Pobiera wartość całkowitą z zakresu 1-10, domyślnie: r.3 Wyższe wartości będą przechwytywać bardziej rygorystyczne wartości w taki sposób, aby była mniej wrażliwa |TSpike: wartości binarne — "1", w przypadku wykrycia kolekcji/dip, "0" w przeciwnym razie |
+| Detektory kolekcji | Wykrywanie ZSpike |Wykrywanie wzrostów i spadków, oparte na to, jak daleko są punktów danych od ich średniej |*zspikedetector. czułość:* przejęcie wartości całkowitej z zakresu 1-10, wartość domyślna: r.3 Wyższe wartości spowodują przechwycenie bardziej rygorystycznych wartości, co zmniejsza ich czułość |ZSpike: wartości binarne — "1", w przypadku wykrycia kolekcji/dip, "0" w przeciwnym razie |
+| Wykrywanie powolnego trendu |Wykrywanie powolnego trendu |Wykrywanie powolne trend dodatnią zgodnie z czułości zestawu |*trenddetector. czułość:* próg w wyniku czujnika (wartość domyślna: 3,25, 3,25 – 5 to rozsądny zakres, z którego można wybrać wartość z; Im wyższa mniejsza czułość) |tscore: liczbą zmiennoprzecinkową reprezentujący wyniku anomalii na tendencji |
+| Detektory zmiany poziomu | Wykrywanie zmian poziom dwukierunkowego |Wykrywanie zmiany poziomu zarówno w górę, jak i w dół zgodnie z czułości zestawu |*bileveldetector. czułość:* próg w wyniku czujnika (wartość domyślna: 3,25, 3,25 – 5 to rozsądny zakres, z którego można wybrać wartość z; Im wyższa mniejsza czułość) |rpscore: liczbą zmiennoprzecinkową reprezentujący wyniku anomalii w górę i w dół zmiany poziomu |
 
 ### <a name="parameters"></a>Parametry
 W poniższej tabeli znajduje się bardziej szczegółowych informacji na temat tych parametrów wejściowych:
