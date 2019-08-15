@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 08/07/2019
-ms.openlocfilehash: 4b66d015e8a182e305a36dacaa2e082288a3e19e
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 186ba03142e01c4b9340fc5b492621cc17575104
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840544"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934289"
 ---
 # <a name="introduction-to-deep-learning-vs-machine-learning"></a>Wprowadzenie do uczenia głębokiego i uczenia maszynowego
 
@@ -78,7 +78,7 @@ Jednym z ważnych zadań, które może wykonać uczenie głębokie, jest odnajdy
 
 ## <a name="what-are-artificial-neural-networks"></a>Co to są sztuczne sieci neuronowych?
 
-Sztuczna sieć neuronowych to model uczenia głębokiego inspirowany sposobem biologicznej sieci neuronowych w informacjach o procesie mózgów ludzkich. Istnieje wiele typów sztucznych sieci neuronowych, które są obecnie używane. Najpopularniejsze typologies sieci sztucznej neuronowych zostały omówione poniżej.
+Sztuczne sieci neuronowych są tworzone przez warstwy połączonych węzłów. Modele uczenia głębokiego używają sieci neuronowych z bardzo dużą liczbą warstw. Najpopularniejsze typologies sieci sztucznej neuronowych zostały omówione poniżej.
 
 ### <a name="feedforward-neural-network"></a>Sieć feedforward neuronowych
 

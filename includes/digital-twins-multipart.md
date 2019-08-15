@@ -5,34 +5,34 @@ services: digital-twins
 author: kingdomofends
 ms.service: digital-twins
 ms.topic: include
-ms.date: 01/11/2019
-ms.author: adgera
+ms.date: 08/12/2019
+ms.author: v-adgera
 ms.custom: include file
-ms.openlocfilehash: ac6b008597b6d6e557a0cc412c00c2202231bc3d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f9b1b32775393196a77bef3aa2257f6fb66afdcb
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183871"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "69012224"
 ---
 > [!NOTE]
-> Wieloczęściowy żądań zwykle wymagają trzy części:
-> * A **Content-Type** nagłówka:
+> Żądania wieloczęściowe wymagają zwykle trzech kawałków:
+> * Nagłówek **Content-Type** :
 >   * `application/json; charset=utf-8`
 >   * `multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`
-> * A **Content-Disposition**:
+> * **Dyspozycja zawartości**:
 >   * `form-data; name="metadata"`
 > * Zawartość pliku do przekazania
 >
-> **Content-Type** i **Content-Disposition** różnią się w zależności od scenariusza użycia.
+> **Typ zawartości** i **Dyspozycja zawartości** będą się różnić w zależności od scenariusza użycia.
 
-Wieloczęściowy żądań jest możliwe programowo (za pośrednictwem C#), za pomocą klienta REST lub narzędzia, takie jak [Postman](https://docs.microsoft.com/azure/digital-twins/how-to-configure-postman#multi). Narzędzia klienta REST mogą mieć różne poziomy pomocy technicznej w przypadku złożonych żądań wieloczęściową. Ustawienia konfiguracji mogą się także różnić nieco od do narzędzia. Sprawdź, które narzędzia najlepiej nadaje się do własnych potrzeb.
+Wieloczęściowe żądania można wprowadzać programowo ( C#przez) za pomocą klienta REST lub narzędzia, takiego jak [](https://docs.microsoft.com/azure/digital-twins/how-to-configure-postman#multi)program. Narzędzia klienta REST mogą mieć różne poziomy obsługi złożonych żądań wieloczęściowych. Ustawienia konfiguracji mogą być również nieco inne niż narzędzia do narzędzia. Sprawdź, które narzędzie jest najlepiej dopasowane do Twoich potrzeb.
 
 > [!IMPORTANT]
-> Wieloczęściowy żądań do cyfrowego Twins zarządzania interfejsów API usługi Azure zazwyczaj ma dwie części:
-> * Metadane obiektu blob (np. skojarzony typ MIME), która jest zadeklarowana za **Content-Type** i/lub **Content-Disposition**
-> * Zawartość obiektu blob, obejmujących bez określonej struktury zawartość pliku do przekazania
+> Wieloczęściowe żądania interfejsów API usługi Azure Digital bliźniaczych reprezentacji Management mają zwykle dwie części:
+> * Metadane obiektu BLOB (takie jak skojarzony typ MIME) zadeklarowane przez **Typ zawartości** i/lub dyspozycję **zawartości**
+> * Zawartość obiektu BLOB, która obejmuje zawartość bez struktury pliku do przekazania
 >
-> Żadna z dwóch części nie jest wymagana dla **PATCH** żądań. Oba są wymagane dla **WPIS** lub operacji tworzenia.
+> Żadna z tych dwóch części nie jest wymagana w przypadku żądań **patch** . Oba są wymagane dla operacji **post** lub CREATE.
 
-[Szybki Start zajętość kodu źródłowego](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/api/update.cs) zawiera pełną C# przykłady pokazujące sposób wprowadzania wieloczęściowego żądań cyfrowego Twins zarządzania interfejsów API usługi Azure.
+[Kod źródłowy przewodnika Szybki Start](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/api/update.cs) zawiera C# pełne przykłady przedstawiające sposób tworzenia wieloczęściowych żądań względem interfejsów API usługi Azure Digital bliźniaczych reprezentacji Management.

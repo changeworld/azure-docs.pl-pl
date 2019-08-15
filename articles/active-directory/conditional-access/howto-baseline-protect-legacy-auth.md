@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91cc2707034eabf85afae70278f2448b77d3ee14
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 413df402d5acc878130a47821efd5fa3a512257d
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608077"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931932"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>Zasady linii bazowej: Blokuj starsze uwierzytelnianie (wersja zapoznawcza)
 
@@ -37,7 +37,7 @@ Przed zablokowaniem starszego uwierzytelniania w katalogu należy najpierw zrozu
 
 1. Przejdź do **Azure Portal** > **Azure Active Directory** > **logowania**.
 1. Dodaj kolumnę aplikacji klienckiej, jeśli nie jest ona wyświetlana po kliknięciu pozycji **kolumny** > **aplikacja kliencka**.
-1. Filtruj według**innych klientów** **aplikacji** > klienckiej, a następnie kliknij przycisk **Zastosuj**.
+1. **Dodaj filtry** > **aplikacje klienckie** > Zaznacz wszystkie opcje dla **innych klientów** i kliknij przycisk **Zastosuj**.
 
 Filtrowanie będzie zawierać tylko próby logowania, które zostały wykonane przez starsze protokoły uwierzytelniania. Kliknięcie każdej próby logowania spowoduje wyświetlenie dodatkowych szczegółów. Pole **aplikacji klienckiej** na karcie **Informacje podstawowe** wskazuje, który z starszych wersji protokołu uwierzytelniania był używany.
 

@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/15/2018
+ms.date: 08/09/2019
 ms.author: mbullwin
-ms.openlocfilehash: 567163a5d5ce37eeffb5ef2bc6f9adb7c5b027ec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ed6df8b4724dbb297a0c64fd869d3377545a7595
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66255718"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932330"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Monitorowanie użycia i wydajności klasycznych aplikacji systemu Windows
 
@@ -37,10 +37,11 @@ Wszystkie aplikacje hostowane lokalnie, na platformie Azure i w innych chmurach 
    
     Jeśli używasz pliku ApplicationInsights.config, upewnij się, że jego właściwości w Eksploratorze rozwiązań zostały ustawione na **Akcja kompilacji = Zawartość, Kopiuj do katalogu wyjściowego = Kopiuj**.
 5. [Użyj interfejsu API](../../azure-monitor/app/api-custom-events-metrics.md), aby wysłać telemetrię.
-6. Uruchom aplikację i wyświetlić dane telemetryczne w zasobie, który utworzono w witrynie Azure portal.
+6. Uruchom aplikację i Wyświetl dane telemetryczne w zasobie utworzonym w Azure Portal.
 
 ## <a name="telemetry"></a>Przykładowy kod
 ```csharp
+using Microsoft.ApplicationInsights;
 
     public partial class Form1 : Form
     {
@@ -52,7 +53,6 @@ Wszystkie aplikacje hostowane lokalnie, na platformie Azure i w innych chmurach 
             tc.InstrumentationKey = "key copied from portal";
 
             // Set session data:
-            tc.Context.User.Id = Environment.UserName;
             tc.Context.Session.Id = Guid.NewGuid().ToString();
             tc.Context.Device.OperatingSystem = Environment.OSVersion.ToString();
 
@@ -61,9 +61,10 @@ Wszystkie aplikacje hostowane lokalnie, na platformie Azure i w innych chmurach 
             ...
         }
 
-        protected override void OnClosing(CancelEventArgs e)
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
-            stop = true;
+            e.Cancel = true;
+
             if (tc != null)
             {
                 tc.Flush(); // only for desktop apps
@@ -76,7 +77,7 @@ Wszystkie aplikacje hostowane lokalnie, na platformie Azure i w innych chmurach 
 
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Tworzenie pulpitu nawigacyjnego](../../azure-monitor/app/overview-dashboard.md)
 * [Wyszukiwanie diagnostyczne](../../azure-monitor/app/diagnostic-search.md)
 * [Eksplorowanie metryk](../../azure-monitor/app/metrics-explorer.md)

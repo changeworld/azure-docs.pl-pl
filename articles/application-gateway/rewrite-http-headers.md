@@ -1,167 +1,169 @@
 ---
-title: Ponownie zapisuje nagłówki HTTP za pomocą usługi Azure Application Gateway | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera omówienie ponownego zapisywania adresów nagłówków HTTP w usłudze Azure Application Gateway
+title: Napisz ponownie nagłówki HTTP za pomocą usługi Azure Application Gateway | Microsoft Docs
+description: Ten artykuł zawiera omówienie zapisywania nagłówków HTTP w usłudze Azure Application Gateway
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 04/29/2019
+ms.date: 08/08/2019
 ms.author: absha
-ms.openlocfilehash: 9160d300270bf1ab5043bee632d27bcc4b7bf332
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6f26eca0592017306eaefd3f5fecb544dc6fb36
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66476035"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932188"
 ---
-# <a name="rewrite-http-headers-with-application-gateway"></a>Ponownie zapisuje nagłówki HTTP z usługą Application Gateway
+# <a name="rewrite-http-headers-with-application-gateway"></a>Zapisz ponownie nagłówki HTTP przy użyciu Application Gateway
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Zezwalaj na nagłówki HTTP, klienta i serwera przekazać dodatkowe informacje z żądania lub odpowiedzi. Zapisując je ponownie tych nagłówków, można wykonywać ważne zadania, takie jak dodawanie pola nagłówka związanych z zabezpieczeniami, takich jak HSTS / X XSS ochrony, usunięcie pola nagłówka odpowiedzi, które może ujawnić informacje poufne i usuwanie informacji o porcie X-Forwarded-dla nagłówków.
+Nagłówki HTTP umożliwiają klientowi i serwerowi przekazywanie dodatkowych informacji z żądaniem lub odpowiedzią. Pisząc te nagłówki, można wykonywać ważne zadania, takie jak dodawanie pól nagłówków związanych z zabezpieczeniami, takich jak HSTS/X-XSS-Protection, usuwanie pól nagłówka odpowiedzi, które mogą ujawniać poufne informacje i usuwania informacji o porcie z X-Forwarded-For Headers.
 
 Usługa Application Gateway umożliwia dodawanie, usuwanie lub aktualizowanie nagłówków żądań i odpowiedzi HTTP podczas przenoszenia pakietów żądań i odpowiedzi między pulami klientów i zaplecza. Pozwala ona również na dodawanie warunków w celu zapewnienia, że określone nagłówki będą ponownie zapisywane tylko po spełnieniu pewnych warunków.
 
-Usługa Application Gateway obsługuje również kilka [zmiennych serwera](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#server-variables) ułatwiające przechowywać dodatkowe informacje na temat żądań i odpowiedzi. Ułatwia tworzenie reguły ponownego zapisywania zaawansowane.
+Application Gateway obsługuje również kilka [zmiennych serwera](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#server-variables) , które ułatwiają przechowywanie dodatkowych informacji na temat żądań i odpowiedzi. Ułatwia to tworzenie zaawansowanych reguł ponownego zapisywania.
 
 > [!NOTE]
 >
-> Obsługa ponownego napisania nagłówka HTTP jest dostępna tylko dla [Standard_V2 i jednostki SKU WAF_v2](application-gateway-autoscaling-zone-redundant.md).
+> Obsługa ponownego zapisywania nagłówka HTTP jest dostępna tylko dla [jednostki SKU Standard_V2 i WAF_v2](application-gateway-autoscaling-zone-redundant.md).
 
-![Ponowne napisanie nagłówki](media/rewrite-http-headers/rewrite-headers.png)
+![Ponowne zapisywanie nagłówków](media/rewrite-http-headers/rewrite-headers.png)
 
-## <a name="supported-headers"></a>Nagłówki obsługiwane
+## <a name="supported-headers"></a>Obsługiwane nagłówki
 
-Można napisać ponownie wszystkie nagłówki żądania i odpowiedzi, z wyjątkiem nagłówki hosta, połączenia i uaktualnianie. Brama aplikacji umożliwia również tworzenie niestandardowych nagłówków i dodać je do żądania i odpowiedzi jest kierowany przez nią.
+Można ponownie napisać wszystkie nagłówki w żądaniach i odpowiedziach, z wyjątkiem nagłówków host, Connection i upgrade. Za pomocą bramy aplikacji można także tworzyć niestandardowe nagłówki i dodawać je do żądań i odpowiedzi przesyłanych przez nią.
 
-## <a name="rewrite-conditions"></a>Warunki ponownego napisania
+## <a name="rewrite-conditions"></a>Warunki ponownego zapisu
 
-Warunki ponownego napisania można użyć do oceny treści żądania HTTP (S) i odpowiedzi i wykonywania nagłówka Napisz ponownie tylko wtedy, gdy jest to jeden lub więcej warunki są spełnione. Bramy aplikacji używa tego rodzaju zmienne do oceny, zawartość i odpowiedzi na żądania HTTP (S):
+Możesz użyć warunku ponownego zapisu, aby oszacować zawartość żądań HTTP (S) i odpowiedzi, i wykonać ponowne zapisywanie nagłówka tylko wtedy, gdy spełnione są co najmniej jeden warunek. Brama aplikacji używa tych typów zmiennych do oszacowania zawartości żądań HTTP (S) i odpowiedzi:
 
 - Nagłówki HTTP w żądaniu.
 - Nagłówki HTTP w odpowiedzi.
-- Zmienne serwera bramy aplikacji.
+- Zmienne serwera Application Gateway.
 
-Warunku można użyć do oceny, czy określona zmienna jest obecny, czy określona zmienna odpowiada określonej wartości, czy określona zmienna jest zgodny ze wzorcem określonym. Możesz użyć [biblioteki Perl zgodne regularne wyrażenia (PCRE)](https://www.pcre.org/) skonfigurować wzorzec wyrażenia regularnego dopasowania w warunkach. Aby dowiedzieć się więcej na temat składni wyrażeń regularnych, zobacz [strona główna wyrażeń regularnych języka Perl](https://perldoc.perl.org/perlre.html).
+Można użyć warunku, aby oszacować, czy określona zmienna jest obecna, czy określona zmienna jest zgodna z określoną wartością lub czy określona zmienna jest zgodna z określonym wzorcem. Aby skonfigurować dopasowanie wzorca wyrażenia regularnego w warunkach, należy użyć [biblioteki wyrażeń regularnych zgodnej z językiem Perl (PCRE)](https://www.pcre.org/) . Aby dowiedzieć się więcej na temat składni wyrażeń regularnych, zobacz [stronę główną wyrażeń regularnych języka Perl](https://perldoc.perl.org/perlre.html).
 
-## <a name="rewrite-actions"></a>Akcje ponownego napisania
+## <a name="rewrite-actions"></a>Akcje ponownego zapisu
 
-Akcje ponownego napisania umożliwia określenie nagłówki żądania i odpowiedzi, które chcesz ponownie zapisać i nową wartość dla nagłówków. Można albo utworzyć nowy nagłówek, zmodyfikuj wartość istniejący nagłówek lub usuń istniejący nagłówek. Wartość nagłówka nowy lub istniejący nagłówek można ustawić do tych typów wartości:
+Aby określić nagłówki żądania i odpowiedzi, które mają zostać ponownie zapisane, i nową wartość dla nagłówków, należy użyć akcji ponownego zapisywania. Można utworzyć nowy nagłówek, zmodyfikować wartość istniejącego nagłówka lub usunąć istniejący nagłówek. Wartość nowego nagłówka lub istniejącego nagłówka można ustawić na następujące typy wartości:
 
-- Tekst.
-- Nagłówek żądania. Aby określić nagłówek żądania, należy użyć składni {http_req_*headerName*}.
-- Nagłówek odpowiedzi. Aby określić nagłówek odpowiedzi, należy użyć składni {http_resp_*headerName*}.
-- Zmienna serwera. Aby określić zmienną serwera, należy użyć składni {var_*serverVariable*}.
-- Kombinacja tekstu, nagłówek żądania, nagłówek odpowiedzi i Zmienna serwera.
+- Opis.
+- Nagłówek żądania. Aby określić nagłówek żądania, należy użyć składni {http_req_ headerName}.
+- Nagłówek odpowiedzi. Aby określić nagłówek odpowiedzi, należy użyć składni {http_resp_ headerName}.
+- Zmienna serwera. Aby określić zmienną serwera, należy użyć składni {var_collection}.
+- Kombinacja tekstu, nagłówka żądania, nagłówka odpowiedzi i zmiennej serwerowej.
 
 ## <a name="server-variables"></a>Zmienne serwera
 
-Usługa Application Gateway używa zmiennych serwera do przechowywania przydatnych informacji o serwerze, połączenie z klientem a bieżącego żądania połączenia. Przykładami informacji przechowywanych adres IP klienta i typ przeglądarki sieci web. Zmienne serwera zmieniać dynamicznie, na przykład po załadowaniu nowej strony lub po opublikowaniu formularza. Tych zmiennych można użyć do oceny warunków ponownego zapisywania i ponownego zapisywania nagłówków.
+Application Gateway używa zmiennych serwera do przechowywania użytecznych informacji o serwerze, połączeniu z klientem i bieżącym żądaniu połączenia. Przykłady przechowywanych informacji obejmują adres IP klienta i typ przeglądarki sieci Web. Zmienne serwera zmieniają się dynamicznie, na przykład po załadowaniu nowej strony lub po opublikowaniu formularza. Możesz użyć tych zmiennych do oszacowania warunków ponownego zapisu i ponownego zapisywania nagłówków.
 
-Usługa Application gateway obsługuje te zmienne serwera:
+Brama aplikacji obsługuje te zmienne serwera:
 
 | Nazwa zmiennej | Opis                                                  |
 | -------------------------- | :----------------------------------------------------------- |
-| add_x_forwarded_for_proxy  | Pola nagłówka żądania X-Forwarded-dla klientów z `client_ip` zmiennej (patrz wyjaśnienia później w tej tabeli) dołączone do niego w formacie IP1, IP2, IP3 i tak dalej. Jeśli X przekazany do pole nie znajduje się w nagłówku żądania klienta `add_x_forwarded_for_proxy` zmienna jest równa `$client_ip` zmiennej. Ta zmienna jest szczególnie przydatne, jeśli chcesz ponownie zapisać nagłówek X-Forwarded-dla ustawione przez usługę Application Gateway, tak więc nagłówek zawiera tylko adres IP bez informacji o porcie. |
-| ciphers_supported          | Listę szyfrów obsługiwanych przez klienta.          |
-| ciphers_used               | Ciąg mechanizmów szyfrowania używany do ustanowionego połączenia SSL. |
-| client_ip                  | Adres IP klienta, z którego bramy application gateway odebrał żądanie. Jeśli zwrotny serwer proxy przed bramy aplikacji i klient źródłowy *client_ip* zwróci adres IP zwrotnego serwera proxy. |
+| add_x_forwarded_for_proxy  | Wartość pola nagłówka żądania X-Forward-for Client ze `client_ip` zmienną (zobacz wyjaśnienie w dalszej części tej tabeli), w formacie IP1, IP2, IP3 i tak dalej. Jeśli pole X-Forward-for nie znajduje się w nagłówku żądania klienta, `add_x_forwarded_for_proxy` zmienna jest równa `$client_ip` zmiennej. Ta zmienna jest szczególnie przydatna w przypadku ponownego zapisania nagłówka X-forwardd-for, który jest ustawiony przez Application Gateway tak, aby nagłówek zawierał tylko adres IP bez informacji o porcie. |
+| ciphers_supported          | Lista szyfrów obsługiwanych przez klienta.          |
+| ciphers_used               | Ciąg szyfrów użyty dla ustanowionego połączenia SSL. |
+| client_ip                  | Adres IP klienta, z którego Brama aplikacji otrzymała żądanie. Jeśli istnieje zwrotny serwer proxy przed bramą aplikacji a klientem inicjującym, *client_ip* zwróci adres IP zwrotnego serwera proxy. |
 | client_port                | Port klienta.                                                  |
-| client_tcp_rtt             | Informacje o kliencie połączenia TCP. Dostępne w systemach, które obsługują TCP_INFO opcję gniazda. |
-| client_user                | Gdy jest używane uwierzytelnianie HTTP, nazwa użytkownika dostarczony do uwierzytelniania. |
-| host                       | W następującej kolejności: nazwę hosta z wiersz, nazwy hosta z pola nagłówka żądania hosta lub nazwę serwera, dopasowywanie na żądanie. |
-| cookie_*nazwy*              | *Nazwa* pliku cookie.                                            |
-| http_method                | Metoda użyta do utworzenia adresu URL żądania. Na przykład GET lub POST. |
+| client_tcp_rtt             | Informacje o połączeniu TCP klienta. Dostępne w systemach, które obsługują opcję gniazda TCP_INFO. |
+| client_user                | Gdy używane jest uwierzytelnianie przy użyciu protokołu HTTP, nazwa użytkownika podana na potrzeby uwierzytelniania. |
+| host                       | W tej kolejności pierwszeństwa: Nazwa hosta w wierszu żądania, nazwa hosta z pola nagłówka żądania hosta lub nazwa serwera zgodna z żądaniem. |
+| *Nazwa* cookie_              | *Nazwa* pliku cookie.                                            |
+| http_method                | Metoda używana do żądania adresu URL. Na przykład Pobierz lub Opublikuj. |
 | http_status                | Stan sesji. Na przykład 200, 400 lub 403.                       |
-| http_version               | Protokół żądania. Zazwyczaj HTTP/1.0, HTTP/1.1 lub protokołu HTTP/2.0. |
-| QUERY_STRING               | Następująca lista zmiennej/pary wartości, "?" w żądanego adresu URL. |
-| received_bytes             | Długość żądania (w tym wierszu żądania, nagłówek i treść żądania). |
+| http_version               | Protokół żądania. Zazwyczaj HTTP/1.0, HTTP/1.1 lub HTTP/2.0. |
+| query_string               | Lista par zmienna/wartość, które następuje po "?" w żądanym adresie URL. |
+| received_bytes             | Długość żądania (w tym wiersza żądania, nagłówka i treści żądania). |
 | request_query              | Argumenty w wierszu żądania.                                |
 | request_scheme             | Schemat żądania: http lub https.                            |
-| request_uri                | Pełne oryginalne żądanie identyfikatora URI (z argumentów).                   |
+| request_uri                | Pełny identyfikator URI żądania (z argumentami).                   |
 | sent_bytes                 | Liczba bajtów wysłanych do klienta.                             |
-| server_port                | Port serwera, na którym zaakceptowane żądanie.                 |
+| server_port                | Port serwera, który zaakceptował żądanie.                 |
 | ssl_connection_protocol    | Protokół ustanowionego połączenia SSL.        |
-| ssl_enabled                | "Włączone", jeśli połączenie działa w trybie SSL. W przeciwnym razie pusty ciąg. |
+| ssl_enabled                | "Włączone", jeśli połączenie działa w trybie protokołu SSL. W przeciwnym razie pusty ciąg. |
 
-## <a name="rewrite-configuration"></a>Konfiguracja ponownego napisania
+## <a name="rewrite-configuration"></a>Zapisz ponownie konfigurację
 
-Aby skonfigurować ponownego napisania nagłówka HTTP, należy wykonać następujące czynności.
+Aby skonfigurować ponowne zapisywanie nagłówka HTTP, należy wykonać te kroki.
 
-1. Tworzenie obiektów, które są wymagane do ponownego napisania nagłówka HTTP:
+1. Utwórz obiekty wymagane do ponownego zapisania nagłówka HTTP:
 
-   - **Ponowne zapisywanie adresów akcji**: Służy do określania żądania i pola nagłówka żądania, które chcesz ponownie zapisać i nową wartość dla nagłówków. Można skojarzyć jedną lub więcej warunków za pomocą akcji ponownego napisania ponowne zapisywanie adresów.
+   - **Akcja ponownego zapisu**: Służy do określania pól żądania i nagłówka żądania, które mają być ponownie zapisane, oraz do nowej wartości dla nagłówków. Możliwe jest skojarzenie jednego lub więcej warunków ponownego zapisu z akcją ponownego zapisu.
 
-   - **Ponowne zapisywanie adresów warunek**: Konfiguracja opcjonalna. Ponowne zapisywanie adresów warunki zostaną obliczone treści żądania HTTP (S) i odpowiedzi. Akcja ponownego napisania wystąpi, jeśli żądania HTTP (S) lub odpowiedzi dopasowuje warunek ponownego zapisywania.
+   - **Warunek ponownego zapisu**: Opcjonalna konfiguracja. Warunki ponownego zapisu sprawdzają zawartość żądań i odpowiedzi HTTP (S). Akcja ponownego zapisu zostanie wykonana, jeśli żądanie HTTP (S) lub odpowiedź pasuje do warunku ponownego zapisu.
 
-     Jeśli więcej niż jeden warunek jest skojarzona z akcją, akcja jest wykonywana tylko wtedy, gdy są spełnione wszystkie warunki. Innymi słowy operacja jest operacją i logicznych.
+     Jeśli powiążesz więcej niż jeden warunek z akcją, Akcja występuje tylko wtedy, gdy wszystkie warunki są spełnione. Innymi słowy, operacja jest operacją logiczną i.
 
-   - **Napisz ponownie reguły**: Zawiera wiele akcji ponownego napisania / ponownego zapisywania kombinacje warunku.
+   - **Ponownie Napisz regułę**: Zawiera wielokrotne kombinacje warunku akcji ponownego zapisu/ponownego zapisywania.
 
-   - **Reguła sekwencji**: Ułatwia określenie kolejności, w którym wykonywanie reguły ponownego zapisywania. Ta konfiguracja jest przydatne, jeśli masz wiele reguł ponownego zapisywania w zestawie ponownego zapisywania. Reguły ponownego pisania, który ma mniejszą wartość kolejności reguły jest uruchamiany w pierwszy. Jeśli przypiszesz tę samą sekwencję regułę na dwie reguły ponownego zapisywania kolejność wykonywania jest niedeterministyczny.
+   - **Sekwencja reguł**: Pomaga określić kolejność wykonywania reguł ponownego zapisywania. Ta konfiguracja jest przydatna, jeśli masz wiele reguł ponownego zapisywania w zestawie do wielokrotnego zapisu. Reguła ponownego zapisu, która ma niższą wartość sekwencji reguł, jest uruchamiana jako pierwsza. Jeśli ta sama sekwencja reguł zostanie przypisana do dwóch reguł ponownego zapisywania, kolejność wykonywania nie jest deterministyczna.
 
-   - **Napisz ponownie zestaw**: Zawiera wiele reguł ponownego zapisywania, które mają zostać skojarzone z regułą routingu żądania.
+   - Ponowne **Zapisywanie zestawu**: Zawiera wiele reguł ponownego zapisywania, które zostaną skojarzone z regułą routingu żądania.
 
-2. Dołącz zestaw ponownego napisania (*rewriteRuleSet*) do reguły routingu. Konfiguracja ponownego zapisywania jest dołączony do odbiornika źródła za pomocą reguły routingu. Korzystając z podstawową regułę routingu, konfiguracja ponownego napisania nagłówka jest skojarzony z odbiornika źródła i nadpisania globalnego nagłówka. Gdy używasz regułę routingu opartego na ścieżkach, konfiguracja ponownego napisania nagłówka został zdefiniowany w Mapa ścieżki adresu URL. W takim przypadku zastosowanie tylko do określonej ścieżki obszaru lokacji.
+2. Dołącz zestaw do ponownego zapisu (*rewriteRuleSet*) do reguły routingu. Konfiguracja ponownego zapisywania jest dołączona do odbiornika źródłowego za pośrednictwem reguły routingu. W przypadku korzystania z podstawowej reguły routingu, konfiguracja ponownego zapisywania nagłówka jest skojarzona z odbiornikiem źródłowym i jest ponownym zapisem nagłówka globalnego. W przypadku korzystania z reguły routingu opartej na ścieżce, konfiguracja ponownego zapisywania nagłówka jest definiowana na mapie ścieżki URL. W takim przypadku ma zastosowanie tylko do obszaru określonej ścieżki w lokacji.
+   > [!NOTE]
+   > Ponowne zapisywanie adresów URL zmiana nagłówków; nie powoduje zmiany adresu URL ścieżki.
 
-Można utworzyć wiele zestawów ponownego napisania nagłówka HTTP i stosować każdego Napisz ponownie ustawić do wielu odbiorników. Jednak można zastosować tylko do jednego ponownego zapisywania zestawu do określonego odbiornika.
+Można utworzyć wiele zestawów wielokrotnego zapisu nagłówka HTTP i zastosować każdy ponowny zapis ustawiony dla wielu odbiorników. Można jednak zastosować tylko jeden wielokrotny zapis do określonego odbiornika.
 
 ## <a name="common-scenarios"></a>Typowe scenariusze
 
-Poniżej przedstawiono niektóre typowe scenariusze dotyczące przy użyciu nagłówka ponowne zapisywanie adresów.
+Poniżej przedstawiono niektóre typowe scenariusze używania ponownego zapisywania nagłówka.
 
-### <a name="remove-port-information-from-the-x-forwarded-for-header"></a>Usuń informacje o porcie z nagłówka X-Forwarded-dla
+### <a name="remove-port-information-from-the-x-forwarded-for-header"></a>Usuń informacje o porcie z nagłówka X-forwardd-for
 
-Usługa Application Gateway Wstawia nagłówek X-Forwarded-dla do wszystkich żądań przed przekazuje żądania do zaplecza. Tego pliku nagłówkowego jest rozdzielana przecinkami lista portów IP. Mogą istnieć scenariusze, w których serwery zaplecza wystarczy te nagłówki, aby zawierać adresy IP. Napisz ponownie nagłówek służy do usuwania informacji o porcie nagłówek X-Forwarded-dla. Jednym ze sposobów, w tym celu jest równa nagłówek add_x_forwarded_for_proxy zmienna serwera:
+Application Gateway wstawia do nagłówka X-forwardd-for wszystkie żądania przed przekazaniem żądań do zaplecza. Ten nagłówek jest rozdzielaną przecinkami listą portów IP. Mogą istnieć scenariusze, w których serwery zaplecza potrzebują tylko nagłówków, aby zawierały adresy IP. Aby usunąć informacje o porcie z nagłówka X-Forwarded-For, można użyć zapisu w nagłówku. Jednym ze sposobów jest ustawienie dla nagłówka zmiennej serwera add_x_forwarded_for_proxy:
 
 ![Usuń port](media/rewrite-http-headers/remove-port.png)
 
-### <a name="modify-a-redirection-url"></a>Modyfikowanie adresem URL przekierowania
+### <a name="modify-a-redirection-url"></a>Modyfikowanie adresu URL przekierowania
 
-W przypadku aplikacji zaplecza są wysyłane odpowiedzi przekierowania, możesz chcieć przekierowuje klienta do innego adresu URL niż określona w aplikacji zaplecza. Na przykład można to zrobić, gdy usługi app service znajduje się za bramą aplikacji wymaga od klienta w celu przekierowania do swojej ścieżki względnej. (Na przykład przekierowanie z contoso.azurewebsites.net/path1 contoso.azurewebsites.net/path2.)
+Gdy aplikacja zaplecza wysyła odpowiedź przekierowania, możesz chcieć przekierować klienta na inny adres URL niż określony przez aplikację zaplecza. Można na przykład wykonać tę czynność, gdy usługa App Service jest hostowana za bramą aplikacji i wymaga, aby klient przetworzył przekierowanie do swojej ścieżki względnej. (Na przykład przekierowanie z contoso.azurewebsites.net/path1 do contoso.azurewebsites.net/path2).
 
-Ponieważ usługi App Service jest usługą z wieloma dzierżawcami, używa nagłówka hosta w żądaniu przekierowywać żądania do właściwego punktu końcowego. Aplikacja usług ma domyślną nazwę domeny *. azurewebsites.net (np. contoso.azurewebsites.net), która różni się od nazwy domeny bramy aplikacji (np. contoso.com). Ponieważ oryginalne żądanie od klienta ma application gateway nazwę domeny (contoso.com) jako nazwę hosta, bramy application gateway contoso.azurewebsites.net zmiany nazwy hosta. Wprowadza zmianę, tak aby usługi app service może kierować żądania do właściwego punktu końcowego.
+Ponieważ App Service jest usługą wielodostępnym, używa nagłówka hosta w żądaniu, aby skierować żądanie do właściwego punktu końcowego. Usługa App Services ma domyślną nazwę domeny *. azurewebsites.net (Powiedz contoso.azurewebsites.net), która różni się od nazwy domeny bramy aplikacji (Powiedz contoso.com). Ponieważ oryginalne żądanie od klienta ma nazwę hosta usługi Application Gateway (contoso.com), Brama aplikacji zmienia nazwy hosta na contoso.azurewebsites.net. Wprowadza tę zmianę, dzięki czemu usługa App Service może kierować żądanie do właściwego punktu końcowego.
 
-Gdy usługa aplikacji wysyła odpowiedź przekierowania, używa tej samej nazwy hosta w nagłówku location odpowiedzi przez punkt końcowy, w żądaniu otrzymywanych z bramy aplikacji. Dlatego klient spowoduje, że żądania bezpośrednio do contoso.azurewebsites.net/path2 zamiast przechodzenia przez bramy application gateway (contoso.com/path2). Pomijanie bramy application gateway nie jest pożądane.
+Gdy usługa App Service wyśle odpowiedź przekierowania, używa tej samej nazwy hosta w nagłówku lokalizacji swojej odpowiedzi jako tej w żądaniu odbieranym od bramy aplikacji. Klient wyśle żądanie bezpośrednio do contoso.azurewebsites.net/path2 zamiast przechodzenia przez bramę Application Gateway (contoso.com/path2). Pomijanie bramy aplikacji nie jest pożądane.
 
-Aby rozwiązać ten problem, należy ustawienie nazwy hosta w nagłówku location na nazwę domeny bramy aplikacji.
+Ten problem można rozwiązać przez ustawienie nazwy hosta w nagłówku lokalizacji na nazwę domeny bramy aplikacji.
 
-Poniżej przedstawiono kroki, aby wymienić nazwy hosta:
+Poniżej przedstawiono procedurę zamieniania nazwy hosta:
 
-1. Utwórz reguły ponownego pisania z warunek, który ocenia, czy nagłówek lokalizacji, w odpowiedzi zawiera azurewebsites.net. Wprowadź wzorzec `(https?):\/\/.*azurewebsites\.net(.*)$`.
-1. Wykonaj akcję do przepisania nagłówek lokalizacji tak, aby miało nazwę hosta bramy aplikacji. To zrobić, wprowadzając `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` jako wartość nagłówka.
+1. Utwórz regułę ponownego zapisywania z warunkiem, który oblicza, czy nagłówek lokalizacji w odpowiedzi zawiera azurewebsites.net. Wprowadź wzorzec `(https?):\/\/.*azurewebsites\.net(.*)$`.
+1. Wykonaj akcję, aby ponownie zapisać nagłówek lokalizacji tak, aby miał nazwę hosta bramy aplikacji. Zrób to, wprowadzając `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` jako wartość nagłówka.
 
-![Modyfikowanie nagłówek lokalizacji](media/rewrite-http-headers/app-service-redirection.png)
+![Modyfikowanie nagłówka lokalizacji](media/rewrite-http-headers/app-service-redirection.png)
 
-### <a name="implement-security-http-headers-to-prevent-vulnerabilities"></a>Implementowanie nagłówki zabezpieczeń protokołu HTTP, aby zapobiec luk w zabezpieczeniach
+### <a name="implement-security-http-headers-to-prevent-vulnerabilities"></a>Zaimplementuj nagłówki HTTP zabezpieczeń, aby zapobiec występowaniu luk w zabezpieczeniach
 
-Można naprawić kilka luk w zabezpieczeniach, implementując niezbędne nagłówki odpowiedzi aplikacji. Te nagłówki zabezpieczeń obejmują X XSS ochrony, ścisłe transportu zabezpieczeniami i zawartości-Security-Policy. Usługa Application Gateway służy do ustawiania tych nagłówków na wszystkie odpowiedzi.
+Można naprawić kilka luk w zabezpieczeniach, implementując niezbędne nagłówki w odpowiedzi aplikacji. Te nagłówki zabezpieczeń obejmują X-XSS-Protection, rygorystyczne Transport-Security i Content-Security-Policy. Możesz użyć Application Gateway, aby ustawić te nagłówki dla wszystkich odpowiedzi.
 
-![Nagłówka zabezpieczeń](media/rewrite-http-headers/security-header.png)
+![Nagłówek zabezpieczeń](media/rewrite-http-headers/security-header.png)
 
-### <a name="delete-unwanted-headers"></a>Usuwanie niepożądanych nagłówków
+### <a name="delete-unwanted-headers"></a>Usuń niechciane nagłówki
 
-Możesz chcieć usunąć nagłówki, które ujawniają poufne informacje z odpowiedzi HTTP. Na przykład możesz usunąć informacje, takie jak nazwa serwera zaplecza, system operacyjny lub szczegóły biblioteki. Aby usunąć te nagłówki, można użyć bramy application gateway:
+Możesz chcieć usunąć nagłówki, które ujawniają poufne informacje z odpowiedzi HTTP. Na przykład możesz chcieć usunąć informacje, takie jak nazwa serwera zaplecza, system operacyjny lub szczegóły biblioteki. Możesz użyć bramy aplikacji, aby usunąć następujące nagłówki:
 
-![Usunięcie nagłówka](media/rewrite-http-headers/remove-headers.png)
+![Usuwanie nagłówka](media/rewrite-http-headers/remove-headers.png)
 
-### <a name="check-for-the-presence-of-a-header"></a>Sprawdzanie obecności nagłówka
+### <a name="check-for-the-presence-of-a-header"></a>Sprawdź obecność nagłówka
 
-Możesz ocenić nagłówka żądania lub odpowiedzi HTTP na obecność zmiennej nagłówka lub serwera. Ocena jest przydatne, gdy chcesz wykonać nadpisania nagłówka, tylko wtedy, gdy występuje niektórych nagłówka.
+Można oszacować żądanie HTTP lub nagłówek odpowiedzi dla obecności nagłówka lub zmiennej serwerowej. Ta ocena jest przydatna, gdy chcesz wykonać ponowne zapisywanie nagłówka tylko wtedy, gdy jest obecny określony nagłówek.
 
 ![Sprawdzanie obecności nagłówka](media/rewrite-http-headers/check-presence.png)
 
 ## <a name="limitations"></a>Ograniczenia
 
-- Jeśli odpowiedź ma więcej niż jeden nagłówki o takiej samej nazwie, wpisz ponownie wartość jednej z tych nagłówków spowoduje usunięcie innych nagłówków odpowiedzi. Zazwyczaj można to zrobić przy użyciu nagłówka Set-Cookie, ponieważ może mieć więcej niż jeden nagłówka Set-Cookie odpowiedzi. Taki scenariusz jest, gdy za pomocą usługi app service z usługą application gateway i skonfigurowano koligacja sesji na podstawie plików cookie w usłudze application gateway. W tym przypadku odpowiedź będzie zawierać 2 nagłówki Set-Cookie: używany przez usługę app service, czyli `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` i inny wpis dla koligacji bramy aplikacji, czyli `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/`. Ponowne napisanie jeden z nagłówków Set-Cookie, w tym scenariuszu może spowodować usunięcie innych nagłówka Set-Cookie z odpowiedzi.
+- Jeśli odpowiedź ma więcej niż jeden nagłówek o tej samej nazwie, wówczas zapisanie wartości jednego z tych nagłówków spowoduje porzucenie pozostałych nagłówków w odpowiedzi. Może to być spowodowane zwykle z nagłówkiem Set-cookie, ponieważ w odpowiedzi można mieć więcej niż jeden nagłówek Set-cookie. Taki scenariusz ma zastosowanie w przypadku korzystania z usługi App Service z bramą aplikacji i skonfigurowania koligacji sesji na podstawie plików cookie na bramie aplikacji. W takim przypadku odpowiedź będzie zawierać dwa nagłówki Set-Cookie: jeden używany przez usługę App Service, na przykład: `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` i drugi dla koligacji bramy aplikacji, na `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/`przykład. Ponowne zapisanie jednego z nagłówków zestawu plików cookie w tym scenariuszu może spowodować usunięcie innego nagłówka deplika cookie z odpowiedzi.
 
-- Ponowne napisanie nagłówki połączenia, uaktualniania i hosta nie jest obecnie obsługiwane.
+- Ponowne zapisywanie nagłówków połączenia, uaktualnienia i hosta nie jest obecnie obsługiwane.
 
-- Nazwy nagłówków może zawierać żadnych znaków alfanumerycznych i określone symbole, zgodnie z definicją w [RFC 7230](https://tools.ietf.org/html/rfc7230#page-27). Obecnie nie obsługujemy znaku podkreślenia (\_) znaków specjalnych w nazwy nagłówków.
+- Nazwy nagłówków mogą zawierać dowolne znaki alfanumeryczne i określone symbole, zgodnie z definicją w [dokumencie RFC 7230](https://tools.ietf.org/html/rfc7230#page-27). Obecnie nie obsługujemy znaku podkreślenia (\_) w nazwach nagłówków.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się, jak ponownie zapisuje nagłówki HTTP, zobacz:
+Aby dowiedzieć się, jak ponownie napisać nagłówki HTTP, zobacz:
 
-- [Ponownie zapisuje nagłówki HTTP przy użyciu witryny Azure portal](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)
-- [Ponownie zapisuje nagłówki HTTP przy użyciu programu Azure PowerShell](add-http-header-rewrite-rule-powershell.md)
+- [Zapisz ponownie nagłówki HTTP przy użyciu Azure Portal](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)
+- [Zapisz ponownie nagłówki HTTP przy użyciu Azure PowerShell](add-http-header-rewrite-rule-powershell.md)

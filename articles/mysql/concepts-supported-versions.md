@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 7/25/2019
-ms.openlocfilehash: 3d4bab4558ebfd0f6031ef00a0b67bb0d5b61120
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.date: 08/09/2019
+ms.openlocfilehash: 28d635dc5042799790d032ef4b46bf28118cb326
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501440"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947171"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>Obsługiwane wersje serwera Azure Database for MySQL
 
@@ -38,8 +38,8 @@ Zapoznaj się z [informacjami o wersji](https://dev.mysql.com/doc/relnotes/mysql
 
 ## <a name="mysql-version-80"></a>Baza danych MySQL w wersji 8,0
 
-> [!NOTE]
-> Baza danych MySQL 8,0 jest obecnie dostępna w wersji zapoznawczej. Jeśli nie widzisz programu MySQL 8,0 w Azure Portal, wdrożenie mogło nie zostać ukończone w Twoim regionie. 
+> [!IMPORTANT]
+> Baza danych MySQL 8,0 jest obecnie dostępna w wersji zapoznawczej.
 
 Wydanie poprawki usterek: 8.0.15
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: ca0067090924428a50ad2360f23a86576fff6cd3
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 5efd82a2cb0652f6dd2aab621c578ff90aca0111
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727018"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927868"
 ---
 # <a name="security-management-in-azure"></a>Zarządzanie zabezpieczeniami na platformie Azure
 Subskrybenci platformy Azure mogą zarządzać środowiskami chmury przy użyciu wielu urządzeń, łącznie ze stacjami roboczymi do zarządzania, komputerami deweloperów, a nawet urządzeniami uprzywilejowanych użytkowników końcowych, którzy mają uprawnienia specyficzne dla zadania. W niektórych przypadkach funkcje administracyjne są wykonywane za pośrednictwem konsol sieci Web, takich jak [Azure Portal](https://azure.microsoft.com/features/azure-portal/). W innych przypadkach mogą istnieć bezpośrednie połączenia z platformą Azure z systemów lokalnych za pośrednictwem wirtualnych sieci prywatnych (VPN), usług terminalowych, protokołów aplikacji klienckich lub (programowo) interfejsu API zarządzania usługami Azure (SMAPI, Service Management API). Ponadto punkty końcowe klienta mogą być przyłączone do domeny lub odizolowane i niezarządzane (np. tablety lub smartfony).
@@ -94,7 +94,7 @@ Wzmocnienie zabezpieczeń stacji roboczej gwarantuje, że administrator korzysta
 * Ograniczenie wykonywania. Zezwalanie na uruchamianie tylko wstępnie zdefiniowanych plików wykonywalnych wymaganych do zarządzania (zwane „odmową domyślną”). Należy domyślnie odmawiać użytkownikom uprawnienia do uruchamiania programów, które nie zostały uwzględnione na liście dozwolonych programów.
 * Stosowanie najniższych uprawnień. Użytkownicy stacji roboczej używanej do zarządzania nie powinni mieć żadnych uprawnień administracyjnych na tym komputerze. Dzięki temu nie mogą oni zmieniać konfiguracji systemu ani plików systemowych, celowo lub przypadkowo.
 
-Wszystkie te zasady można wymusić przy użyciu [obiektów zasad grupy](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-administer-group-policy) w usłudze Active Directory Domain Services (AD DS), stosując je za pośrednictwem (lokalnej) domeny zarządzania do wszystkich kont związanych z zarządzaniem.
+Wszystkie te zasady można wymusić przy użyciu [obiektów zasad grupy](../../active-directory-domain-services/manage-group-policy.md) w usłudze Active Directory Domain Services (AD DS), stosując je za pośrednictwem (lokalnej) domeny zarządzania do wszystkich kont związanych z zarządzaniem.
 
 ### <a name="managing-services-applications-and-data"></a>Zarządzanie usługami, aplikacjami i danymi
 Usługi w chmurze Azure są konfigurowane przy użyciu witryny Azure Portal, interfejsu SMAPI, interfejsu wiersza polecenia programu Windows PowerShell lub aplikacji niestandardowej, która korzysta z tych interfejsów RESTful. Z tych mechanizmów korzystają usługi takie jak Azure Active Directory (Azure AD), Azure Storage, Azure Websites, Azure Virtual Network i inne.

@@ -6,15 +6,15 @@ author: ashannon7
 manager: cshankar
 ms.service: time-series-insights
 ms.topic: article
-ms.date: 05/09/2019
+ms.date: 08/09/2019
 ms.author: dpalled
 ms.custom: seodec18
-ms.openlocfilehash: 421e25570cd4c4495769530e4072cd8e0219f752
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 48e09a64812f7552bd79c529138db693df283790
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68666263"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947145"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>Shape JSON w celu zmaksymalizowania wydajności zapytań 
 
@@ -193,7 +193,7 @@ Dla właściwości o dużej liczbie możliwych wartości najlepiej wysyłać jak
   - W pierwszym przykładzie kilka właściwości ma kilka wartości, więc należy wykonać każdą odrębną właściwość.
   - W drugim przykładzie miary nie są określone jako pojedyncze właściwości. Zamiast tego są one tablicą wartości lub miar we właściwości typowej serii. Zostanie wysłany nowy klucz **tagId** , który tworzy nową kolumnę serie **. tagId** w spłaszczonej tabeli. Nowy **Typ** i **Jednostka** właściwości są tworzone przy użyciu danych referencyjnych, dzięki czemu limit właściwości nie zostanie osiągnięty.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Przeczytaj [Azure Time Series Insights składnię zapytania](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-syntax) , aby dowiedzieć się więcej o składni zapytań dla interfejsu API REST Time Series Insights dostępu do danych.
 - Dowiedz się [, jak kształtować zdarzenia](./time-series-insights-send-events.md).

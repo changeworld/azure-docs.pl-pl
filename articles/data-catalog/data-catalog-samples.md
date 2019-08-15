@@ -6,18 +6,18 @@ author: JasonWHowell
 ms.author: jasonh
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: cdf90029d02680de4ce55e33b3ed0fe810d70b4c
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 7d0e27802745dda62f87e412053650907e9b812c
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775251"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950155"
 ---
 # <a name="azure-data-catalog-developer-samples"></a>Przykłady dla deweloperów Azure Data Catalog
 
 Zacznij opracowywać aplikacje Azure Data Catalog przy użyciu interfejsu API REST Data Catalog. Interfejs API REST Data Catalog to interfejs API oparty na protokole REST, który zapewnia programistyczny dostęp do zasobów Data Catalog do programowego rejestrowania, dodawania adnotacji i wyszukiwania zasobów danych.
 
-Oto przykłady w serwisie GitHub:
+## <a name="samples-available-on-githubcom"></a>Przykłady dostępne na GitHub.com
 
 * [Rozpoczynanie pracy z usługą Azure Data Catalog](https://github.com/Azure-Samples/data-catalog-dotnet-get-started/)
   
@@ -47,5 +47,5 @@ Oto przykłady w serwisie GitHub:
 
    Ten przykład pokazuje, jak programowo publikować informacje o relacji do wykazu danych.
    
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 [Dokumentacja interfejsu API REST Azure Data Catalog](/rest/api/datacatalog/)

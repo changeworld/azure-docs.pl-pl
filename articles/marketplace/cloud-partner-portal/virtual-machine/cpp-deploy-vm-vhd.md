@@ -1,35 +1,35 @@
 ---
-title: Wdrażanie maszyny Wirtualnej z sieci wirtualnych dysków twardych z rynku platformy Azure
-description: Wyjaśnia, jak zarejestrować Maszynę wirtualną z wirtualnego dysku twardego wdrożonych przez usługę Azure.
+title: Wdrażanie maszyny wirtualnej z poziomu wirtualnych dysków twardych dla portalu Azure Marketplace
+description: Wyjaśnia, jak zarejestrować maszynę wirtualną na podstawie wirtualnego dysku twardego wdrożonego na platformie Azure.
 services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 11/30/2018
-ms.author: pabutler
-ms.openlocfilehash: a393620f28d45ec494c4e899f01e7e9a92b3ceba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/08/2019
+ms.author: evansma
+ms.openlocfilehash: 1aa946c813de41423d4fb2ba5b3aa5274db90f39
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938290"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934964"
 ---
-# <a name="deploy-a-vm-from-your-vhds"></a>Wdrażanie maszyny Wirtualnej z sieci wirtualnych dysków twardych
+# <a name="deploy-a-vm-from-your-vhds"></a>Wdróż maszynę wirtualną na podstawie Twoich dysków VHD
 
-W tej sekcji wyjaśniono, jak wdrożyć maszynę wirtualną (VM) z wdrożonych przez usługę Azure wirtualnego dysku twardego (VHD).  Wyświetla listę wymagane narzędzia i jak ich używać do tworzenia obrazu maszyny Wirtualnej użytkownika, a następnie wdrożyć ją na platformie Azure za pomocą skryptów programu PowerShell.
+W tej sekcji opisano sposób wdrażania maszyny wirtualnej na podstawie wirtualnego dysku twardego (VHD) wdrożonego na platformie Azure.  Zawiera listę wymaganych narzędzi oraz sposób ich użycia w celu utworzenia obrazu maszyny wirtualnej użytkownika, a następnie wdrożenia go na platformie Azure przy użyciu skryptów programu PowerShell.
 
-Po przekazaniu wirtualnych dysków twardych (VHD) — uogólnionego wirtualnego dysku twardego systemu operacyjnego i zero lub więcej danych na dysku VHD — do swojego konta usługi Azure storage można zarejestrować je jako obraz maszyny Wirtualnej użytkownika. Następnie można przetestować tego obrazu. Ponieważ wirtualny dysk twardy systemu operacyjnego jest uogólniony, nie można bezpośrednio wdrożyć maszynę Wirtualną, podając adres URL wirtualnego dysku twardego.
+Po przekazaniu wirtualnych dysków twardych (VHD) — uogólniony wirtualny dysk twardy systemu operacyjnego i zero lub więcej dysków z danymi — na konto usługi Azure Storage możesz zarejestrować je jako obraz maszyny wirtualnej użytkownika. Następnie możesz przetestować ten obraz. Ponieważ wirtualny dysk twardy systemu operacyjnego jest uogólniony, nie można bezpośrednio wdrożyć maszyny wirtualnej, podając adres URL dysku VHD.
 
-Aby dowiedzieć się więcej na temat obrazów maszyn wirtualnych, zobacz następujące wpisy na blogu:
+Aby dowiedzieć się więcej o obrazach maszyn wirtualnych, zobacz następujące wpisy w blogu:
 
-- [Obraz maszyny Wirtualnej](https://azure.microsoft.com/blog/vm-image-blog-post/)
-- [Obraz maszyny Wirtualnej w programie PowerShell "Jak"](https://azure.microsoft.com/blog/vm-image-powershell-how-to-blog-post/)
+- [Obraz maszyny wirtualnej](https://azure.microsoft.com/blog/vm-image-blog-post/)
+- [Obraz maszyny wirtualnej programu PowerShell "jak to zrobić"](https://azure.microsoft.com/blog/vm-image-powershell-how-to-blog-post/)
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="prerequisite-install-the-necessary-tools"></a>Wymagania wstępne: Instalacja niezbędne narzędzia
+## <a name="prerequisite-install-the-necessary-tools"></a>Wymaganie wstępne: Zainstaluj niezbędne narzędzia
 
-Jeśli jeszcze tego nie zrobiono, należy zainstalować programu Azure PowerShell i wiersza polecenia platformy Azure, korzystając z następujących instrukcji:
+Jeśli jeszcze tego nie zrobiono, Zainstaluj Azure PowerShell i interfejs wiersza polecenia platformy Azure, wykonując następujące instrukcje:
 
 - [Instalowanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)
 - [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli)
@@ -37,21 +37,21 @@ Jeśli jeszcze tego nie zrobiono, należy zainstalować programu Azure PowerShel
 
 ## <a name="deployment-steps"></a>Kroki wdrażania
 
-Poniższe kroki zostaną umożliwia tworzenie i wdrażanie obrazu użytkownika maszyny Wirtualnej:
+Aby utworzyć i wdrożyć obraz maszyny wirtualnej użytkownika, należy wykonać następujące czynności:
 
-1. Tworzenie obrazu maszyny Wirtualnej użytkownika, co pociąga za sobą przechwytywania i uogólnianie obrazu. 
-2. Tworzenie certyfikatów i przechowywać je w nowej usłudze Azure Key Vault. Certyfikat jest wymagany do ustanawiania bezpiecznego połączenia usługi WinRM na maszynie wirtualnej.  Szablon usługi Azure Resource Manager i skrypt programu Azure PowerShell są dostarczane. 
-3. Wdróż maszynę Wirtualną z obrazu maszyny Wirtualnej użytkownika, przy użyciu dostarczonego szablonu i skryptu.
+1. Utwórz obraz maszyny wirtualnej użytkownika, który wymaga przechwytywania i uogólniania obrazu. 
+2. Utwórz certyfikaty i Zapisz je w nowym Azure Key Vault. Certyfikat jest wymagany do nawiązania bezpiecznego połączenia usługi WinRM z maszyną wirtualną.  Podano szablon Azure Resource Manager i skrypt Azure PowerShell. 
+3. Wdróż maszynę wirtualną z obrazu maszyny wirtualnej użytkownika przy użyciu dostarczonego szablonu i skryptu.
 
-Po wdrożeniu maszyny Wirtualnej można przystąpić do [certyfikować swój obraz maszyny Wirtualnej](./cpp-certify-vm.md).
+Po wdrożeniu maszyny wirtualnej możesz przeprowadzić [certyfikowanie obrazu maszyny wirtualnej](./cpp-certify-vm.md).
 
-1. Kliknij przycisk **New** i wyszukaj **wdrożenie szablonu**, a następnie wybierz **Utwórz własny szablon w edytorze**.  <br/>
-   ![Tworzenie szablonu wdrożenia wirtualnego dysku twardego w witrynie Azure portal](./media/publishvm_021.png)
+1. Kliknij kolejno pozycje **Nowy** i Wyszukaj **wdrożenie szablonu**, a następnie wybierz opcję **Kompiluj własny szablon w edytorze**.  <br/>
+   ![Kompiluj szablon wdrożenia wirtualnego dysku twardego w Azure Portal](./media/publishvm_021.png)
 
-1. Skopiuj i Wklej to [szablon JSON](./cpp-deploy-json-template.md) w edytorze i kliknij przycisk **Zapisz**. <br/>
-   ![Zapisz szablon wdrożenia wirtualnego dysku twardego w witrynie Azure portal](./media/publishvm_022.png)
+1. Skopiuj i wklej ten [szablon JSON](./cpp-deploy-json-template.md) do edytora, a następnie kliknij przycisk **Zapisz**. <br/>
+   ![Zapisz szablon wdrożenia wirtualnego dysku twardego w Azure Portal](./media/publishvm_022.png)
 
-1. Podaj wartości parametrów dla wyświetlonych **wdrożenie niestandardowe** strony właściwości.
+1. Podaj wartości parametrów dla wyświetlanych stron właściwości **wdrożenia niestandardowego** .
 
    <table> <tr> <td valign="top"> <img src="./media/publishvm_023.png" alt="Custom deployment property page 1"> </td> <td valign="top"> <img src="./media/publishvm_024.png" alt="Custom deployment property page 2"> </td> </tr> </table> <br/> 
 
@@ -59,28 +59,28 @@ Po wdrożeniu maszyny Wirtualnej można przystąpić do [certyfikować swój obr
    |  -------------              |   ---------------                                                            |
    | Nazwa konta magazynu użytkownika   | Nazwa konta magazynu, w którym znajduje się uogólniony wirtualny dysk twardy                    |
    | Nazwa kontenera magazynu użytkownika | Nazwa kontenera, w którym znajduje się uogólniony wirtualny dysk twardy                          |
-   | Nazwa DNS dla publicznego adresu IP      | Publiczna nazwa DNS adresu IP                                                           |
-   | Nazwa użytkownika administratora             | Nazwa użytkownika konta administratora, dla nowej maszyny Wirtualnej                                  |
-   | Hasło administratora              | Hasło do konta administratora dla nowej maszyny Wirtualnej                                  |
-   | Typ systemu operacyjnego                     | System operacyjny maszyny Wirtualnej: `Windows` \| `Linux`                                    |
+   | Nazwa DNS dla publicznego adresu IP      | Nazwa DNS publicznego adresu IP. Nazwa DNS jest maszyną wirtualną, która zostanie zdefiniowana w witrynie Azure Portal po wdrożeniu oferty.  |
+   | Nazwa użytkownika administratora             | Nazwa użytkownika konta administratora dla nowej maszyny wirtualnej                                  |
+   | Hasło administratora              | Hasło konta administratora dla nowej maszyny wirtualnej                                  |
+   | Typ systemu operacyjnego                     | System operacyjny maszyny wirtualnej `Windows` : \|`Linux`                                    |
    | Identyfikator subskrypcji             | Identyfikator wybranej subskrypcji                                      |
-   | Lokalizacja                    | Geograficzna lokalizacja wdrożenia                                        |
-   | Rozmiar maszyny wirtualnej                     | [Rozmiar maszyny Wirtualnej platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes), na przykład `Standard_A2` |
-   | Nazwę publicznego adresu IP      | Nazwa publicznego adresu IP                                               |
-   | Nazwa maszyny Wirtualnej                     | Nazwa nowej maszyny Wirtualnej                                                           |
-   | Nazwa sieci wirtualnej        | Nazwa sieci wirtualnej używane przez maszynę Wirtualną                                   |
-   | Nazwa karty interfejsu Sieciowego                    | Nazwa karty interfejsu sieciowego z usługi virtual network               |
-   | ADRES URL WIRTUALNEGO DYSKU TWARDEGO                     | Wykonaj adres URL wirtualnego dysku twardego dysku systemu operacyjnego                                                     |
+   | Location                    | Lokalizacja geograficzna wdrożenia                                        |
+   | Rozmiar maszyny wirtualnej                     | [Rozmiar maszyny wirtualnej platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes), na przykład`Standard_A2` |
+   | Nazwa publicznego adresu IP      | Nazwa publicznego adresu IP                                               |
+   | Nazwa maszyny Wirtualnej                     | Nazwa nowej maszyny wirtualnej                                                           |
+   | Nazwa sieci wirtualnej        | Nazwa sieci wirtualnej używanej przez MASZYNę wirtualną                                   |
+   | Nazwa karty sieciowej                    | Nazwa karty sieciowej z uruchomioną siecią wirtualną               |
+   | ADRES URL WIRTUALNEGO DYSKU TWARDEGO                     | Pełny adres URL dysku VHD systemu operacyjnego                                                     |
    |  |  |
             
-1. Po podaniu tych wartości, kliknij przycisk **zakupu**. 
+1. Po podaniu tych wartości kliknij pozycję **Kup**. 
 
-Azure rozpocznie się wdrażanie: tworzy nową maszynę Wirtualną przy użyciu określonego niezarządzanego dysku VHD, w Ścieżka konta magazynu określony.  Możesz śledzić postęp w witrynie Azure portal, klikając **maszyn wirtualnych** po lewej stronie portalu.  Podczas tworzenia maszyny Wirtualnej stan zmieni się z `Starting` do `Running`. 
+Platforma Azure rozpocznie wdrażanie: tworzy nową maszynę wirtualną z określonym niezarządzanym wirtualnym dyskiem twardym w określonej ścieżce konta magazynu.  Postęp można śledzić w Azure Portal, klikając pozycję **Virtual Machines** po lewej stronie portalu.  Po utworzeniu maszyny wirtualnej stan zmieni się z `Starting` na. `Running` 
 
 
-### <a name="deploy-a-vm-from-powershell"></a>Wdrażanie maszyny Wirtualnej za pomocą programu PowerShell
+### <a name="deploy-a-vm-from-powershell"></a>Wdrażanie maszyny wirtualnej przy użyciu programu PowerShell
 
-Aby wdrożyć dużą maszynę Wirtualną z obrazu uogólnionej maszyny Wirtualnej właśnie utworzony, użyj następujących poleceń cmdlet.
+Aby wdrożyć dużą maszynę wirtualną na podstawie utworzonego właśnie uogólnionego obrazu maszyny wirtualnej, użyj następujących poleceń cmdlet.
 
 ``` powershell
     $img = Get-AzureVMImage -ImageName "myVMImage"
@@ -91,7 +91,7 @@ Aby wdrożyć dużą maszynę Wirtualną z obrazu uogólnionej maszyny Wirtualne
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Następnie zostanie [utworzenie obrazu maszyny Wirtualnej użytkownika](cpp-create-user-image.md) dla Twojego rozwiązania.
+Następnie utworzysz [obraz maszyny wirtualnej użytkownika](cpp-create-user-image.md) dla swojego rozwiązania.
 

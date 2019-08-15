@@ -9,18 +9,18 @@ ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: c0b4a83b2c950683926be7fb3be3b0cbe977fef8
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 06e1d881a14367c579bd58ffae04dc0970eb041a
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618395"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68941955"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Przechowywanie danych o krytycznym znaczeniu dla firmy w usłudze Azure Blob Storage
 
 Niezmienny magazyn usługi Azure Blob Storage umożliwia użytkownikom przechowywanie obiektów danych o kluczowym znaczeniu dla firmy w ROBAKu (zapis jeden raz, odczyt wielu). Ten stan sprawia, że dane nie są wymazywane i nie są modyfikowane dla interwału określonego przez użytkownika. Obiekty blob można tworzyć i odczytywać, ale nie modyfikować ani usuwać, na czas trwania interwału przechowywania. Niezmienny magazyn jest włączony dla kont Ogólnego przeznaczenia v2 i Blob Storage we wszystkich regionach świadczenia usługi Azure.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Niezmienny magazyn ułatwia organizacjom opieki zdrowotnej, instytucjom finansowym i pokrewnym branżom, a w szczególności organizację dealerów — w celu bezpiecznego przechowywania danych. Można go również wykorzystać w każdym scenariuszu, aby chronić krytyczne dane przed modyfikacją lub usunięciem. 
 
@@ -175,7 +175,7 @@ Tak. Aby udokumentować zgodność, firma Microsoft zachowała wiodące niezale�
 
 **Czy funkcja ma zastosowanie tylko do blokowych obiektów blob, czy też do stron i dołączania obiektów BLOB?**
 
-Niezmienny magazyn może być używany z dowolnym typem obiektu BLOB, ale zalecamy użycie go głównie w przypadku blokowych obiektów BLOB. W przeciwieństwie do blokowych obiektów blob, stronicowych obiektów blob i dołączania obiektów BLOB należy utworzyć poza kontenerem ROBAKa, a następnie skopiować go do programu. Po skopiowaniu tych obiektów BLOB do kontenera WORM nie są dozwolone żadne dalsze dołączenie do dołączanego obiektu BLOB lub zmiany w obiekcie blob strony.
+Niezmienny magazyn może być używany z dowolnym typem obiektu BLOB ustawionym na poziomie kontenera, ale zalecamy używanie ROBAKa dla kontenerów, które głównie przechowują blokowe obiekty blob. W przeciwieństwie do blokowych obiektów blob, wszelkie nowe, stronicowe obiekty blob i dołączanie obiektów BLOB muszą być tworzone poza kontenerem ROBAKa, a następnie kopiowane w. Po skopiowaniu tych obiektów BLOB do kontenera WORM nie są dozwolone żadne dalsze dołączenie do dołączanego obiektu BLOB lub zmiany w obiekcie blob strony. W związku z tym, ustawienie zasad ROBAKa w kontenerze, w którym są przechowywane wirtualne dyski twarde (stronicowe obiekty blob) dla dowolnego aktywnego Virtual Machines jest zdecydowanie odradzane, ponieważ spowoduje to zablokowanie dysku maszyny wirtualnej.
 
 **Czy muszę utworzyć nowe konto magazynu, aby użyć tej funkcji?**
 

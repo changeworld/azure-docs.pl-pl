@@ -2,14 +2,14 @@
 author: blackmist
 ms.service: machine-learning
 ms.topic: include
-ms.date: 05/10/2019
+ms.date: 08/08/2019
 ms.author: larryfr
-ms.openlocfilehash: 04e3b95f0c5c3ea840a095a8803ff91fa8eea803
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 7b42ac110fffc0397d75138155ddfb84f0a00098
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183324"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68912445"
 ---
 > [!IMPORTANT]
-> Należy używać tylko modeli, które można tworzyć lub uzyskać z zaufanego źródła. Zserializowany modeli powinny być traktowane jako kod, jak luk w zabezpieczeniach zostały odnalezione w wielu popularnych formatach. Ponadto modeli może być celowo wyszkolonego przy wyrządzenia zapewnienie obciążonej lub niedokładne dane wyjściowe.
+> Należy używać tylko modeli tworzonych lub pobieranych z zaufanego źródła. Modele serializowane powinny być traktowane jako kod, ponieważ luki w zabezpieczeniach zostały wykryte w wielu popularnych formatach. Dodatkowo modele mogą być celowo przeszkolone ze złośliwym zamiarem, aby zapewnić niedokładne lub nieprawidłowe wyniki.

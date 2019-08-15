@@ -1,6 +1,6 @@
 ---
-title: Określanie punktów końcowych usługi Service Fabric | Dokumentacja firmy Microsoft
-description: Jak do opisania punktu końcowego zasobów w manifeście usługi, w tym sposób konfigurowania punktów końcowych HTTPS
+title: Określanie punktów końcowych usługi Service Fabric | Microsoft Docs
+description: Jak opisać zasoby punktu końcowego w manifeście usługi, w tym sposób konfigurowania punktów końcowych HTTPS
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,19 +14,23 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 8707a9cb90afe1bf72f3aef6377f8ada409a1c64
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 82b6e701a5f76aa4c2cea78417ca9bcbeeb10308
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837763"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927692"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Określanie zasobów w manifeście usługi
-## <a name="overview"></a>Omówienie
-Manifest usługi umożliwia zasoby, które są używane przez usługę do można zadeklarować/zmienić bez konieczności zmieniania kodu skompilowanego. Usługa Azure Service Fabric obsługuje konfigurację zasobów punktu końcowego usługi. Dostęp do zasobów, które są określone w manifeście usługi mogą być kontrolowane za pośrednictwem grupy SecurityGroup w manifeście aplikacji. Deklaracja zasobów umożliwia następujące zasoby, aby zmienić w czasie wdrażania, co oznacza, że nie trzeba wprowadzić nowy mechanizm konfiguracji usługi. Definicja schematu dla pliku ServiceManifest.xml jest instalowany z programem Service Fabric SDK i narzędzi do *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*.
+## <a name="overview"></a>Przegląd
+Manifest usługi umożliwia deklarowanie/zmianę zasobów używanych przez usługę bez konieczności zmiany skompilowanego kodu. Usługa Azure Service Fabric obsługuje konfigurację zasobów punktu końcowego dla usługi. Dostęp do zasobów określonych w manifeście usługi można kontrolować za pośrednictwem funkcji zabezpieczeń w manifeście aplikacji. Deklaracja zasobów pozwala na zmianę tych zasobów w czasie wdrażania, co oznacza, że usługa nie musi wprowadzać nowego mechanizmu konfiguracji. Definicja schematu dla pliku servicemanifest. XML jest instalowana z zestawem SDK Service Fabric i narzędziami do *folderu C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*.
 
 ## <a name="endpoints"></a>Punkty końcowe
-Gdy zasób punktu końcowego jest zdefiniowany w manifeście usługi, usługi Service Fabric przypisuje porty z zakresu portów zarezerwowanych aplikacji, jeśli port nie jest jawnie określona. Na przykład wyglądać w punkcie końcowym *ServiceEndpoint1* określony we fragmencie manifestu po tego akapitu. Ponadto usługi również poprosić o określonym porcie w zasobie. Repliki usługi uruchomione w węzłach innego klastra można przypisać różne numery portów, natomiast repliki usługi uruchomionej na tym samym węźle Udostępnianie portów. Repliki usługi można następnie użyć tych portów zgodnie z potrzebami, podczas replikacji i nasłuchuje żądań klienta.
+Gdy zasób punktu końcowego jest zdefiniowany w manifeście usługi, Service Fabric przypisuje porty z zakresu portów aplikacji zastrzeżonej, gdy port nie jest jawnie określony. Na przykład poszukaj w punkcie końcowym *ServiceEndpoint1* określonym we fragmencie kodu manifestu dostarczonym po tym akapicie. Ponadto usługi mogą również zażądać określonego portu w zasobie. Do replik usługi uruchomionych w różnych węzłach klastra można przypisać różne numery portów, natomiast repliki usługi uruchomionej w tym samym węźle współużytkują port. Repliki usług mogą następnie używać tych portów w razie potrzeby replikacji i nasłuchiwania żądań klientów.
+
+> [!WARNING] 
+> Przez projektowanie portów statycznych nie należy nakładać się na zakres portów aplikacji określony w ClusterManifest. Jeśli określisz port statyczny, przypisz go poza zakresem portów aplikacji, w przeciwnym razie spowoduje to konflikty portów. Za pomocą programu Release 6.5 ZASTOSUJESZ pakietu CU2 zostanie **wyświetlone ostrzeżenie** o kondycji, gdy wykryjesz taki konflikt, ale zezwolisz na synchronizację wdrożenia z przesłanym zachowaniem 6,5. Jednak firma Microsoft może uniemożliwić wdrożenie aplikacji z następnych głównych wersji.
+>
 
 ```xml
 <Resources>
@@ -38,7 +42,7 @@ Gdy zasób punktu końcowego jest zdefiniowany w manifeście usługi, usługi Se
 </Resources>
 ```
 
-Jeśli istnieje wiele pakietów kodu w pakiecie pojedynczą usługę, a następnie pakietu kodu również musi odwoływać się do **punktów końcowych** sekcji.  Na przykład jeśli **ServiceEndpoint2a** i **ServiceEndpoint2b** to punkty końcowe z tego samego pakietu usługi odwołuje się do pakietów inny kod pakietu kodu odpowiadający każdego punktu końcowego wyjaśniono, w następujący sposób:
+W przypadku wielu pakietów kodu w jednym pakiecie usługi, w sekcji **punkty końcowe** należy również odwołać się do pakietu kodu.  Jeśli na przykład **ServiceEndpoint2a** i **ServiceEndpoint2b** są punktami końcowymi z tego samego pakietu usługi, które odwołują się do różnych pakietów kodu, pakiet kodu odpowiadający każdemu punktowi końcowemu jest wyjaśniony w następujący sposób:
 
 ```xml
 <Resources>
@@ -49,12 +53,12 @@ Jeśli istnieje wiele pakietów kodu w pakiecie pojedynczą usługę, a następn
 </Resources>
 ```
 
-Zapoznaj się [Konfigurowanie stanowych usług Reliable Services](service-fabric-reliable-services-configuration.md) można odczytać pliku więcej informacji na temat odwołujące się do punktów końcowych przy użyciu ustawień konfiguracji pakietu (settings.xml).
+Zapoznaj się z tematem [konfigurowanie Reliable Services stanowych](service-fabric-reliable-services-configuration.md) , aby dowiedzieć się więcej na temat odwołań do punktów końcowych z pliku ustawień pakietu konfiguracji (Settings. xml).
 
-## <a name="example-specifying-an-http-endpoint-for-your-service"></a>Przykład: określenie punktu końcowego HTTP usługi
-Następujące manifest usługi definiuje jeden zasób punktu końcowego TCP i dwa zasoby punkt końcowy HTTP w &lt;zasobów&gt; elementu.
+## <a name="example-specifying-an-http-endpoint-for-your-service"></a>Przykład: Określanie punktu końcowego HTTP dla usługi
+Poniższy manifest usługi definiuje jeden zasób punktu końcowego TCP i dwa zasoby punktu końcowego HTTP w &lt;elemencie&gt; Resources.
 
-Punktów końcowych HTTP są wykonywane automatycznie listy ACL, czy przez usługę Service Fabric.
+Punkty końcowe HTTP są automatycznie listą ACL pochodzącą przez Service Fabric.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -100,18 +104,18 @@ Punktów końcowych HTTP są wykonywane automatycznie listy ACL, czy przez usłu
 </ServiceManifest>
 ```
 
-## <a name="example-specifying-an-https-endpoint-for-your-service"></a>Przykład: określenie punktu końcowego HTTPS dla usługi
-Protokół HTTPS zapewnia uwierzytelnianie serwera i służy także do szyfrowania komunikacji klient serwer. Aby włączyć protokół HTTPS w usłudze Service Fabric, należy określić protokół w *zasobów -> punkty końcowe -> punktu końcowego* części manifestu usługi, jak pokazano wcześniej dla punktu końcowego *ServiceEndpoint3*.
+## <a name="example-specifying-an-https-endpoint-for-your-service"></a>Przykład: Określanie punktu końcowego HTTPS dla usługi
+Protokół HTTPS zapewnia uwierzytelnianie serwera i jest również używany do szyfrowania komunikacji klient-serwer. Aby włączyć obsługę protokołu HTTPS w usłudze Service Fabric, określ protokół w sekcji *> punkty końcowe zasobów — > punkt końcowy* manifestu usługi, jak pokazano wcześniej dla punktu końcowego *ServiceEndpoint3*.
 
 > [!NOTE]
-> Nie można zmienić Protokół usługi podczas uaktualniania aplikacji. Jeśli zostanie on zmieniony podczas uaktualniania, jest istotną zmianę.
+> Nie można zmienić protokołu usługi podczas uaktualniania aplikacji. Jeśli zostanie ona zmieniona podczas uaktualniania, jest to istotna zmiana.
 > 
 
 > [!WARNING] 
-> Przy użyciu protokołu HTTPS, nie należy używać tych samych portów i certyfikatu dla wystąpień różne usługi (niezależnie od aplikacji), które zostały wdrożone na tym samym węźle. Uaktualnianie dwóch różnych usług za pomocą tego samego portu w różne wystąpienia aplikacji spowoduje niepowodzenia uaktualnienia. Aby uzyskać więcej informacji, zobacz [uaktualniania wielu aplikacji za pomocą punktów końcowych HTTPS ](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints).
+> W przypadku korzystania z protokołu HTTPS nie należy używać tego samego portu i certyfikatu dla różnych wystąpień usługi (niezależnie od aplikacji) wdrożonych w tym samym węźle. Uaktualnienie dwóch różnych usług przy użyciu tego samego portu w różnych wystąpieniach aplikacji spowoduje niepowodzenie uaktualnienia. Aby uzyskać więcej informacji, zobacz [Uaktualnianie wielu aplikacji za pomocą punktów końcowych https ](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints).
 >
 
-Oto przykład ApplicationManifest, które należy ustawić dla protokołu HTTPS. Musi być podany odcisk palca certyfikatu. EndpointRef jest odwołaniem do EndpointResource w pliku ServiceManifest, dla której jest ustawiony protokołu HTTPS. Możesz dodać więcej niż jeden EndpointCertificate.  
+Oto przykład ApplicationManifest, który należy ustawić dla protokołu HTTPS. Należy podać odcisk palca certyfikatu. EndpointRef jest odwołaniem do EndpointResource w servicemanifest, dla którego ustawiono protokół HTTPS. Można dodać więcej niż jeden EndpointCertificate.  
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -153,16 +157,16 @@ Oto przykład ApplicationManifest, które należy ustawić dla protokołu HTTPS.
 </ApplicationManifest>
 ```
 
-W przypadku klastrów systemu Linux **MY** przechowywanie wartości domyślne w folderze **/var/lib/sfcerts**.
+W przypadku klastrów systemu Linux magazyn **My** default jest domyślnie używany w folderze **/var/lib/sfcerts**.
 
 
-## <a name="overriding-endpoints-in-servicemanifestxml"></a>Zastępowanie punktów końcowych w ServiceManifest.xml
+## <a name="overriding-endpoints-in-servicemanifestxml"></a>Zastępowanie punktów końcowych w pliku servicemanifest. XML
 
-W pliku ApplicationManifest Dodaj sekcji ResourceOverrides będzie równorzędny ConfigOverrides sekcji. W tej sekcji można określić zastąpienie sekcji punktów końcowych w sekcji zasobów określone w manifeście usługi. Przesłanianie punktów końcowych jest obsługiwane w środowisku uruchomieniowym 5.7.217/SDK 2.7.217 lub nowszy.
+W sekcji ApplicationManifest Dodaj ResourceOverrides, która będzie częścią elementu równorzędnego do ConfigOverrides. W tej sekcji można określić przesłonięcie dla sekcji punktów końcowych w sekcji Resources (zasoby) określonej w manifeście usługi. Przesłanianie punktów końcowych jest obsługiwane w środowisku uruchomieniowym 5.7.217/SDK 2.7.217 i wyższym.
 
-Aby zastąpić punktu końcowego w pliku ServiceManifest przy użyciu zmian ApplicationParameters ApplicationManifest następujący:
+Aby przesłonić punkt końcowy w elemencie servicemanifest przy użyciu elementu applicationparameters, Zmień ApplicationManifest w następujący sposób:
 
-W sekcji ServiceManifestImport dodania nowej sekcji "ResourceOverrides".
+W sekcji ServiceManifestImport Dodaj nową sekcję "ResourceOverrides".
 
 ```xml
 <ServiceManifestImport>
@@ -180,7 +184,7 @@ W sekcji ServiceManifestImport dodania nowej sekcji "ResourceOverrides".
   </ServiceManifestImport>
 ```
 
-W parametrach dodać poniżej:
+W poniższej tabeli Dodaj następujące parametry:
 
 ```xml
   <Parameters>
@@ -192,17 +196,17 @@ W parametrach dodać poniżej:
   </Parameters>
 ```
 
-Podczas wdrażania aplikacji można przekazać te wartości jako ApplicationParameters.  Na przykład:
+Podczas wdrażania aplikacji można przekazać te wartości jako elementu applicationparameters.  Przykład:
 
 ```powershell
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
 ```
 
-Uwaga: Jeśli wartości są podane ApplicationParameters jest pusta, wrócimy do wartości domyślnej, przewidzianych w pliku ServiceManifest Nazwapunktukoncowego odpowiednie.
+Uwaga: Jeśli wartości podane dla elementu applicationparameters są puste, wracamy do wartości domyślnej podanej w elemencie servicemanifest dla odpowiadającego punktu Końcowegoname.
 
 Na przykład:
 
-Jeśli w pliku ServiceManifest wskazana
+Jeśli w określonym elemencie servicemanifest
 
 ```xml
   <Resources>
@@ -212,6 +216,6 @@ Jeśli w pliku ServiceManifest wskazana
   </Resources>
 ```
 
-I Port1 i Protocol1 wartości parametrów aplikacji o wartości null ani być pusta. Numer portu jest nadal decyzji ServiceFabric. I protokołu tcp będzie.
+A wartość PORT1 i Protocol1 dla parametrów aplikacji ma wartość null lub jest pusta. Port jest nadal ustalany przez servicefabric. Protokół będzie TCP.
 
-Załóżmy, że określono nieprawidłową wartość. Podobnie jak dla portu określona wartość ciągu "Foo" zamiast int.  Nowe ServiceFabricApplication polecenie zakończy się niepowodzeniem z powodu błędu: Parametr przesłonięcie z atrybutem "ServiceEndpoint1" name "Port1" w sekcji "ResourceOverrides" jest nieprawidłowy. Określona wartość jest "Foo" i wymagane jest "int".
+Załóżmy, że określono nieprawidłową wartość. Podobnie jak w przypadku portu określono wartość ciągu "foo" zamiast int.  Polecenie New-ServiceFabricApplication zakończy się niepowodzeniem z powodu błędu: Parametr override o nazwie "ServiceEndpoint1" w sekcji "ResourceOverrides" jest nieprawidłowy. Określona wartość to "foo", a wymagane jest "int".

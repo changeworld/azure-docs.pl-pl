@@ -103,7 +103,7 @@
     - name: Bezpieczeństwo
       items:
         - name: Przegląd zabezpieczeń przedsiębiorstwa
-          displayName: authorization authentication encryption
+          displayName: authorization authentication encryption aad azure active directory
           href: concept-enterprise-security.md
         - name: Zarządzanie użytkownikami i rolami
           href: how-to-assign-roles.md
@@ -216,8 +216,10 @@
         - name: Maszyny wirtualne notesu
           href: how-to-deploy-local-container-notebook-vm.md
         - name: Azure Container Instances
+          displayName: aci
           href: how-to-deploy-azure-container-instance.md
         - name: Azure Kubernetes Service
+          displayName: 'aks, aad, authentication, azure active directory'
           href: how-to-deploy-azure-kubernetes-service.md
         - name: Interfejs GPU
           href: how-to-deploy-inferencing-gpus.md

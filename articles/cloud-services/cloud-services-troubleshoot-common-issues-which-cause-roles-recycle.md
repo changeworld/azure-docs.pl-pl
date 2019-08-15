@@ -1,6 +1,6 @@
 ---
-title: Typowe przyczyny powtarzania cykli ról usługi w chmurze | Dokumentacja firmy Microsoft
-description: Rola usługi w chmurze nagle odtwarzania może być przyczyną znaczących przestojów. Poniżej przedstawiono niektóre typowe problemy, które powodują recyklingowi, ról, które mogą pomóc ograniczyć przestoje.
+title: Typowe przyczyny odtwarzania przez role usługi w chmurze | Microsoft Docs
+description: Rola usługi w chmurze, która nagle odtwarza może spowodować znaczny Przestój. Poniżej przedstawiono niektóre typowe problemy, które powodują odtworzenie ról, co może pomóc w zmniejszeniu przestojów.
 services: cloud-services
 documentationcenter: ''
 author: simonxjx
@@ -9,62 +9,61 @@ editor: ''
 tags: top-support-issue
 ms.assetid: 533930d1-8035-4402-b16a-cf887b2c4f85
 ms.service: cloud-services
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 2a9214b918883e493ebe5c93fc7f56e7ce9c77ec
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 37abdae07c1b0ecc11d39c57b550b1c7f60c73cd
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60652217"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945417"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>Typowe problemy, które powodują odtwarzanie ról
-W tym artykule omówiono niektóre typowe przyczyny problemów z wdrażaniem i wskazówki dotyczące rozwiązywania problemów, aby rozwiązać te problemy. Wskazanie, że istnieje problem z aplikacją jest, gdy wystąpienie roli nie można uruchomić lub jego cykli między Stanami inicjowanie, zajęta i zatrzymywanie.
+W tym artykule omówiono niektóre typowe przyczyny problemów z wdrażaniem i przedstawiono wskazówki dotyczące rozwiązywania problemów, aby pomóc w rozwiązaniu tych problemów. Wskazanie, że problem występuje w przypadku aplikacji, gdy uruchomienie wystąpienia roli nie powiedzie się lub przechodzi między stanem inicjowania, zajętości i zatrzymywania.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="missing-runtime-dependencies"></a>Brak zależności środowiska uruchomieniowego
-Jeśli roli w aplikacji, który opiera się na dowolnym zestawie, który nie jest częścią oprogramowania .NET Framework lub Azure zarządzanej biblioteki, należy jawnie przypisać tego zestawu w pakiecie aplikacji. Należy pamiętać innych platform firmy Microsoft nie są domyślnie dostępne na platformie Azure. Jeśli rola użytkownika opiera się na takie struktury, należy dodać te zestawy do pakietu aplikacji.
+## <a name="missing-runtime-dependencies"></a>Brakujące zależności środowiska uruchomieniowego
+Jeśli rola w aplikacji korzysta z dowolnego zestawu, który nie jest częścią .NET Framework lub biblioteki zarządzanej platformy Azure, musisz jawnie dołączyć ten zestaw do pakietu aplikacji. Pamiętaj, że inne platformy firmy Microsoft nie są domyślnie dostępne na platformie Azure. Jeśli rola zależy od takiej struktury, należy dodać te zestawy do pakietu aplikacji.
 
-Zanim kompilacji i pakietów aplikacji, sprawdź następujące informacje:
+Przed skompilowaniem i spakowaniem aplikacji sprawdź następujące kwestie:
 
-* Jeśli używasz programu Visual studio, upewnij się, **Kopiuj lokalnie** właściwość jest ustawiona na **True** dla każdego zestawu odwołania w projekcie, który nie jest częścią zestawu Azure SDK ani programu .NET Framework.
-* Upewnij się, że plik web.config nie odwołuje się do wszystkich zestawów nieużywane w elemencie kompilacji.
-* **Build Action** .cshtml każdego pliku jest ustawiony na wartość **zawartości**. Gwarantuje to, że pliki zostaną poprawnie wyświetlone w pakiecie i umożliwia innych przywoływanych plików, które pojawią się w pakiecie.
+* Jeśli używasz programu Visual Studio, upewnij się, że właściwość **copy Local** jest ustawiona na **wartość true** dla każdego przywoływanego zestawu w projekcie, który nie jest częścią zestawu Azure SDK lub .NET Framework.
+* Upewnij się, że plik Web. config nie odwołuje się do żadnych nieużywanych zestawów w elemencie compilation.
+* **Akcja kompilacji** każdego pliku. cshtml ma ustawioną **zawartość**. Daje to pewność, że pliki będą prawidłowo wyświetlane w pakiecie i umożliwią wyświetlanie innych plików, do których istnieją odwołania w pakiecie.
 
-## <a name="assembly-targets-wrong-platform"></a>Zestaw obiektów docelowych nieprawidłowej platformie
-Platforma Azure jest 64-bitowego środowiska. W związku z tym zestawów platformy .NET skompilowanych dla elementu docelowego 32-bitowe nie będą działać na platformie Azure.
+## <a name="assembly-targets-wrong-platform"></a>Niewłaściwa platforma dla zestawu
+Platforma Azure to środowisko 64-bitowe. W związku z tym zestawy .NET skompilowane dla elementu docelowego 32-bitowego nie będą działały na platformie Azure.
 
-## <a name="role-throws-unhandled-exceptions-while-initializing-or-stopping"></a>Rola zgłasza nieobsługiwane wyjątki podczas inicjowania lub zatrzymywania
-Wszelkie wyjątki wyrzucane przez metody [RoleEntryPoint] klasy, która obejmuje [OnStart], [OnStop], i [Run] metody, są nieobsługiwane wyjątki. Jeśli nieobsługiwany wyjątek występuje w jednej z następujących metod, będzie odtwarzanie roli. Jeśli roli jest odtwarzane wielokrotnie, może być zgłaszanie Wystąpił nieobsługiwany wyjątek w każdym razem, gdy spróbuje uruchomić.
+## <a name="role-throws-unhandled-exceptions-while-initializing-or-stopping"></a>Rola zgłasza Nieobsłużone wyjątki podczas inicjowania lub zatrzymywania
+Wszystkie wyjątki, które są zgłaszane przez metody klasy [RoleEntryPoint] , które obejmują metody OnStart [], [OnStop]i [Run] , są Nieobsłużone wyjątki. Jeśli wystąpił nieobsługiwany wyjątek w jednej z tych metod, rola zostanie odtworzona. Jeśli rola jest odtwarzana wielokrotnie, może wystąpić nieobsłużony wyjątek przy każdym próbie uruchomienia.
 
-## <a name="role-returns-from-run-method"></a>Rola wraca z metody uruchamiania
-[Run] metoda jest przeznaczona do uruchamiania na czas nieokreślony. Jeśli Twój kod zastępuje [Run] metody jej uśpienia na czas nieokreślony. Jeśli [Run] metoda zwróci wartość, rola jest odtwarzana.
+## <a name="role-returns-from-run-method"></a>Rola zwraca z metody Run
+Metoda [Run] jest przeznaczona do uruchamiania na czas nieokreślony. Jeśli kod zastępuje metodę [Run] , powinien on być uśpiony w nieskończoność. Jeśli metoda [Run] zwraca metodę, odtwarzana jest rola.
 
 ## <a name="incorrect-diagnosticsconnectionstring-setting"></a>Nieprawidłowe ustawienie DiagnosticsConnectionString
-Jeśli aplikacja używa usługi Azure Diagnostics, należy określić plik konfiguracji usługi `DiagnosticsConnectionString` ustawienia konfiguracji. To ustawienie należy określić połączenia HTTPS do swojego konta magazynu na platformie Azure.
+Jeśli aplikacja używa Diagnostyka Azure, plik konfiguracji usługi musi określać `DiagnosticsConnectionString` ustawienie konfiguracji. To ustawienie powinno określać połączenie HTTPS z kontem magazynu na platformie Azure.
 
-Aby upewnić się, że Twoje `DiagnosticsConnectionString` ustawienia jest poprawna, przed wdrożeniem pakietu aplikacji na platformie Azure, sprawdź poniższe:  
+Aby upewnić się `DiagnosticsConnectionString` , że Twoje ustawienie jest poprawne przed wdrożeniem pakietu aplikacji na platformie Azure, sprawdź następujące kwestie:  
 
-* `DiagnosticsConnectionString` Ustawienie punktów na prawidłowe konto magazynu na platformie Azure.  
-  Domyślnie to ustawienie wskazuje konta magazynu emulowanej, aby jawnie musi zmienić to ustawienie, przed wdrożeniem pakietu aplikacji. Jeśli nie możesz zmienić to ustawienie, wyjątek jest generowany, gdy wystąpienie roli próbuje uruchomić monitora diagnostycznego. Może to spowodować wystąpienie roli odzyskać na czas nieokreślony.
-* Ciąg połączenia jest określona w następującym [format](../storage/common/storage-configure-connection-string.md). (Protokół, muszą być określone jako HTTPS). Zastąp *MyAccountName* nazwą konta magazynu i *MyAccountKey* swoim kluczem dostępu:    
+* `DiagnosticsConnectionString` Ustawienie wskazuje na prawidłowe konto magazynu na platformie Azure.  
+  Domyślnie to ustawienie wskazuje na emulowane konto magazynu, dlatego należy jawnie zmienić to ustawienie przed wdrożeniem pakietu aplikacji. Jeśli to ustawienie nie zostanie zmienione, wyjątek jest zgłaszany, gdy wystąpienie roli podejmie próbę uruchomienia monitora diagnostycznego. Może to spowodować, że wystąpienie roli będzie odtwarzane w nieskończoność.
+* Parametry połączenia są określone w następującym [formacie](../storage/common/storage-configure-connection-string.md). (Protokół musi być określony jako HTTPS). Zastąp ciąg moje *AccountName* nazwą konta magazynu i *MyAccountKey* z kluczem dostępu:    
 
         DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
 
-  Jeśli tworzysz aplikację za pomocą narzędzia Azure Tools dla programu Microsoft Visual Studio, można użyć strony właściwości można ustawić tę wartość.
+  Jeśli tworzysz aplikację przy użyciu narzędzi platformy Azure dla Microsoft Visual Studio, możesz użyć stron właściwości do ustawienia tej wartości.
 
 ## <a name="exported-certificate-does-not-include-private-key"></a>Wyeksportowany certyfikat nie zawiera klucza prywatnego
-Aby uruchomić rolę sieci web w ramach protokołu SSL, upewnij się, że certyfikat wyeksportowany zarządzania zawiera klucz prywatny. Jeśli używasz *Windows Menedżer certyfikatów* można wyeksportować certyfikatu, należy wybrać **tak** dla **Eksportuj klucz prywatny** opcji. Certyfikat musi być eksportowany w formacie PFX, który jest jedynym formatem, które są obecnie obsługiwane.
+Aby uruchomić rolę sieci Web w ramach protokołu SSL, należy się upewnić, że wyeksportowany certyfikat zarządzania zawiera klucz prywatny. W przypadku eksportowania certyfikatu przy użyciu *Menedżera certyfikatów systemu Windows* należy wybrać opcję **tak** dla opcji **Eksportuj klucz prywatny** . Certyfikat musi zostać wyeksportowany w formacie PFX, który jest obecnie obsługiwany.
 
-## <a name="next-steps"></a>Kolejne kroki
-Wyświetl więcej [artykuły dotyczące rozwiązywania problemów](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) dla usług w chmurze.
+## <a name="next-steps"></a>Następne kroki
+Zobacz więcej [artykułów do rozwiązywania problemów](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) dotyczących usług Cloud Services.
 
-Wyświetl jedna rola odtwarzanie scenariuszy w [serię wpisów w blogu Kevina Williamson](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
+Zobacz więcej scenariuszy tworzenia ról na [seriach blogów Jan Williamson](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
 
 [RoleEntryPoint]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx
 [OnStart]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx

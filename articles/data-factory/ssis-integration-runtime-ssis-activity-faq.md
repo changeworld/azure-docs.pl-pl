@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z wykonanie pakietu w środowiska SSIS integration runtime | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera wskazówki dotyczące rozwiązywania problemów dla wykonanie pakietu SSIS w środowiska SSIS integration runtime
+title: Rozwiązywanie problemów z wykonywaniem pakietów w środowisku SSIS Integration Runtime | Microsoft Docs
+description: Ten artykuł zawiera wskazówki dotyczące rozwiązywania problemów z wykonaniem pakietu SSIS w środowisku SSIS Integration Runtime
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,143 +12,150 @@ author: wenjiefu
 ms.author: wenjiefu
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: 05723a90725992e6b955524a2d35c82d3378ee3d
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a7ad0f3be754029c654b04d19750aab7bbcd210d
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621854"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933632"
 ---
-# <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Rozwiązywanie problemów z wykonanie pakietu w środowiska SSIS integration runtime
+# <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Rozwiązywanie problemów z wykonywaniem pakietów w środowisku SSIS Integration Runtime
 
-Ten artykuł zawiera najbardziej typowych błędów, które może się okazać, gdy wykonujesz pakiety usług SQL Server Integration Services (SSIS) w środowiska SSIS integration runtime. Opisano w nim potencjalne przyczyny i akcje problemów.
+Ten artykuł zawiera najczęstsze błędy, które można napotkać podczas wykonywania pakietów SQL Server Integration Services (SSIS) w programie SSIS Integration Runtime. Opisuje potencjalne przyczyny i akcje rozwiązywania błędów.
 
 ## <a name="where-to-find-logs-for-troubleshooting"></a>Gdzie można znaleźć dzienniki do rozwiązywania problemów
 
-Aby sprawdzić wynik działania wykonywania pakietów SSIS za pomocą portalu usługi Azure Data Factory. Dane wyjściowe obejmują wynik wykonywania, komunikaty o błędach i identyfikator operacji. Aby uzyskać więcej informacji, zobacz [monitorowanie potoku](how-to-invoke-ssis-package-ssis-activity.md#monitor-the-pipeline).
+Użyj portalu Azure Data Factory, aby sprawdzić dane wyjściowe działania wykonywania pakietu SSIS. Dane wyjściowe obejmują wyniki wykonywania, komunikaty o błędach i identyfikator operacji. Aby uzyskać szczegółowe informacje, zobacz [monitorowanie potoku](how-to-invoke-ssis-package-ssis-activity.md#monitor-the-pipeline).
 
-Użyj katalogu usług SSIS (SSISDB), aby sprawdzić dzienniki szczegółów uruchomienia. Aby uzyskać więcej informacji, zobacz [pakiety uruchamiania monitora i inne operacje](https://docs.microsoft.com/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017).
+Użyj wykazu usług SSIS (SSISDB), aby sprawdzić dzienniki szczegółów wykonania. Aby uzyskać szczegółowe informacje, zobacz [monitorowanie uruchomionych pakietów i innych operacji](https://docs.microsoft.com/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017).
 
 ## <a name="common-errors-causes-and-solutions"></a>Typowe błędy, przyczyny i rozwiązania
 
-### <a name="error-message-connection-timeout-expired-or-the-service-has-encountered-an-error-processing-your-request-please-try-again"></a>Komunikat o błędzie: "Upłynął limit czasu połączenia" lub "usługi napotkał błąd podczas przetwarzania Twojego żądania. Spróbuj ponownie."
+### <a name="error-message-connection-timeout-expired-or-the-service-has-encountered-an-error-processing-your-request-please-try-again"></a>Komunikat o błędzie: "Upłynął limit czasu połączenia" lub "usługa napotkała błąd podczas przetwarzania żądania. Spróbuj ponownie. "
 
-Poniżej przedstawiono potencjalne przyczyny i zalecane akcje:
-* Źródło danych lub miejsce docelowe jest przeciążony. Sprawdź obciążenie źródła danych lub docelowym i czy ma wystarczające moce przerobowe. Na przykład jeśli używasz usługi Azure SQL Database, należy rozważyć skalowanie w górę, jeśli baza danych jest prawdopodobnie przekroczenie limitu czasu.
-* Sieć między środowiska SSIS integration runtime i źródła danych lub miejsce docelowe jest niestabilny, szczególnie w przypadku, gdy połączenie jest między regionami lub między lokalną i platformą Azure. Zastosuj wzorzec ponawiania pakietu SSIS, wykonaj następujące czynności:
-  * Upewnij się, że pakiety usług SSIS, można uruchomić w przypadku niepowodzenia bez efektów ubocznych (na przykład utraty danych lub duplikacji danych).
-  * Konfigurowanie **ponów** i **interwał ponawiania** z **wykonywanie pakietu SSIS** działania na **ogólne** kartę. ![Ustaw właściwości na karcie Ogólne](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
-  * W przypadku ADO.NET i OLE DB źródłowy lub docelowy składnika, ustawić **ConnectRetryCount** i **ConnectRetryInterval** w Menedżerze połączeń w pakietu SSIS lub działania SSIS.
+Oto potencjalne przyczyny i zalecane akcje:
+* Źródło danych lub miejsce docelowe są przeciążone. Sprawdź obciążenie źródła danych lub miejsca docelowego i zobacz, czy ma ono wystarczającą pojemność. Na przykład jeśli używasz Azure SQL Database, rozważ skalowanie w górę, jeśli baza danych prawdopodobnie przekroczy limit czasu.
+* Sieć między środowiskiem programu SSIS Integration Runtime a źródłem danych lub miejscem docelowym jest niestabilna, szczególnie w przypadku, gdy połączenie jest w wielu regionach lub między środowiskiem lokalnym i platformą Azure. Zastosuj wzorzec ponawiania prób w pakiecie SSIS, wykonując następujące czynności:
+  * Upewnij się, że pakiety SSIS mogą być ponownie uruchamiane po awarii bez efektów ubocznych (na przykład utrata danych lub duplikowanie danych).
+  * Skonfiguruj **ponowną próbę** i **interwał ponawiania próby** **wykonania pakietu SSIS** na karcie **Ogólne** . ![Ustawianie właściwości na karcie Ogólne](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
+  * W przypadku składnika ADO.NET i źródła OLE DB lub docelowego ustaw wartość **ConnectRetryCount** i **ConnectRetryInterval** w Menedżerze połączeń w ramach pakietu SSIS lub działania SSIS.
 
-### <a name="error-message-ado-net-source-has-failed-to-acquire-the-connection--with-a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-sql-server-the-server-was-not-found-or-was-not-accessible"></a>Komunikat o błędzie: "ADO NET źródłowy ma nie można uzyskać połączenia"..."" za pomocą "Wystąpił błąd związany z siecią lub wystąpieniem podczas nawiązywania połączenia z programem SQL Server. Serwer nie został znaleziony lub jest on niedostępny. "
+### <a name="error-message-ado-net-source-has-failed-to-acquire-the-connection--with-a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-sql-server-the-server-was-not-found-or-was-not-accessible"></a>Komunikat o błędzie: "Źródło sieci ADO nie może uzyskać połączenia"... " podczas ustanawiania połączenia z usługą SQL Server Wystąpił błąd dotyczący sieci lub wystąpienia. Serwer nie został odnaleziony lub był niedostępny.
 
-Ten problem zazwyczaj oznacza to źródło danych lub docelowy jest niedostępny z środowiska SSIS integration runtime. Przyczyny mogą się różnić. Spróbuj wykonać następujące akcje:
-* Upewnij się, przechodząc do źródła danych lub przeznaczenia nazwa/adres IP poprawnie.
-* Upewnij się, że Zapora jest skonfigurowana poprawnie.
-* Upewnij się, że Twoja sieć wirtualna jest skonfigurowany prawidłowo, jeśli źródło danych lub miejsce docelowe jest w środowisku lokalnym:
-  * Aby sprawdzić, czy problem jest z konfiguracji sieci wirtualnej przez udostępnienie Maszynie wirtualnej platformy Azure w tej samej sieci wirtualnej. Sprawdź, czy źródło danych lub docelowy jest dostępny z maszyny Wirtualnej platformy Azure.
-  * Można znaleźć szczegółowe informacje o użyciu sieci wirtualnej przy użyciu środowiska SSIS integration runtime w [dołączyć środowisko Azure-SSIS integration runtime do sieci wirtualnej](join-azure-ssis-integration-runtime-virtual-network.md).
+Ten problem zwykle oznacza, że źródło danych lub miejsce docelowe są niedostępne z poziomu środowiska SSIS Integration Runtime. Przyczyny mogą być różne. Wypróbuj następujące czynności:
+* Upewnij się, że źródło danych lub nazwa/adres IP zostały prawidłowo przeszukane.
+* Upewnij się, że Zapora jest prawidłowo ustawiona.
+* Upewnij się, że sieć wirtualna jest prawidłowo skonfigurowana, jeśli źródło danych lub miejsce docelowe są lokalne:
+  * Możesz sprawdzić, czy problem pochodzi z konfiguracji sieci wirtualnej, udostępniając MASZYNę wirtualną platformy Azure w tej samej sieci wirtualnej. Następnie sprawdź, czy można uzyskać dostęp do źródła danych lub miejsca docelowego z maszyny wirtualnej platformy Azure.
+  * Więcej szczegółów na temat używania sieci wirtualnej z usługą SSIS Integration runtime można znaleźć w przyłączeniu [do sieci wirtualnej środowiska Azure-SSIS Integration Runtime](join-azure-ssis-integration-runtime-virtual-network.md).
 
-### <a name="error-message-ado-net-source-has-failed-to-acquire-the-connection--with-could-not-create-a-managed-connection-manager"></a>Komunikat o błędzie: "ADO NET źródłowy ma nie można uzyskać połączenia"..."" za pomocą "Nie można utworzyć połączenia zarządzanego menedżera."
+### <a name="error-message-ado-net-source-has-failed-to-acquire-the-connection--with-could-not-create-a-managed-connection-manager"></a>Komunikat o błędzie: "Źródło sieci ADO nie może uzyskać połączenia"... " za pomocą "nie można utworzyć zarządzanego Menedżera połączeń".
 
-Potencjalną przyczyną jest to, że dostawca ADO.NET, użyte w pakiecie nie jest zainstalowany w środowiska SSIS integration runtime. Za pomocą niestandardowego Instalatora można zainstalować dostawcę. Można znaleźć więcej szczegółów na temat instalacji niestandardowej w [dostosować instalację środowiska Azure-SSIS integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md).
+Potencjalną przyczyną jest to, że dostawca ADO.NET używany w pakiecie nie jest zainstalowany w środowisku SSIS Integration Runtime. Dostawcę można zainstalować przy użyciu konfiguracji niestandardowej. Więcej informacji na temat konfiguracji niestandardowej można znaleźć w temacie [Dostosowywanie konfiguracji dla środowiska Azure-SSIS Integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md).
 
-### <a name="error-message-the-connection--is-not-found"></a>Komunikat o błędzie: "Połączenie"..." Nie znaleziono"
+### <a name="error-message-the-connection--is-not-found"></a>Komunikat o błędzie: "Połączenie"... " nie znaleziono "
 
-Ten błąd mógł wystąpić znany problem w starszych wersjach programu SQL Server Management Studio (SSMS). Jeśli pakiet zawiera składnik niestandardowej (na przykład składniki usług SSIS Azure Feature Pack lub partnera), który nie jest zainstalowany na komputerze, gdzie SSMS jest używany w celu wdrożenia, SSMS usunie składnika i spowodować wystąpienie błędu. Uaktualnij [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) do najnowszej wersji, która ma problemu.
+Ten błąd może powodować znany problem w starszych wersjach programu SQL Server Management Studio (SSMS). Jeśli pakiet zawiera składnik niestandardowy (na przykład dodatek SSIS Azure Feature Pack lub składniki partnera), który nie jest zainstalowany na maszynie, na której przeprowadzane jest wdrożenie za pomocą programu SSMS, program SSMS usunie ten składnik i spowoduje wystąpienie błędu. Uaktualnij narzędzie [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) do najnowszej wersji o rozwiązanym problemie.
 
-### <a name="error-messagessis-executor-exit-code--1073741819"></a>Komunikat o błędzie: "kod zakończenia wykonywania usług SSIS: -1073741819."
+### <a name="error-messagessis-executor-exit-code--1073741819"></a>Komunikat o błędzie: "kod zakończenia modułu SSIS:-1073741819".
 
-* Potencjalną przyczyną & Zalecana akcja:
-  * Ten błąd może być ze względu na ograniczenia dla programu Excel źródłowym i docelowym, gdy wiele źródeł programu Excel lub miejsca docelowe są wykonywane równolegle w wielu wątków. Możesz to zrobić obejście tego ograniczenia, zmień składników programu Excel, aby wykonywanie było sekwencyjne lub oddzielić je do różnych pakietach i wyzwalacza za pośrednictwem "Wykonanie pakietu Task" ExecuteOutOfProcess ustawiona jako PRAWDA.
+* Potencjalna przyczyna & zalecanej akcji:
+  * Przyczyną tego błędu może być ograniczenie źródłowej i docelowej programu Excel, gdy wiele źródeł lub miejsc docelowych programu Excel jest wykonywanych równolegle w wielu wątkach. To ograniczenie można obejść przez zmianę składników programu Excel na wykonywanie w sekwencji lub oddzielenie ich na różne pakiety i wyzwalacze za pomocą właściwości ExecuteOutOfProcess o wartości true.
 
-### <a name="error-message-there-is-not-enough-space-on-the-disk"></a>Komunikat o błędzie: "Nie ma wystarczającej ilości miejsca na dysku"
+### <a name="error-message-there-is-not-enough-space-on-the-disk"></a>Komunikat o błędzie: "Za mało miejsca na dysku"
 
-Ten błąd oznacza, że dysk lokalny jest używany w w węzeł środowiska SSIS integration runtime. Sprawdź, czy Twoje pakietu lub instalacja niestandardowa zużywa dużo miejsca na dysku:
-* Jeśli dysk jest używany przez pakiet, nastąpi zwolnienie się po zakończeniu wykonywania pakietu.
-* Jeśli dysk jest używany przez ustawienia niestandardowe, można będzie muszą można zatrzymać środowiska SSIS integration runtime zmodyfikować skrypt i uruchom ponownie środowisko integration runtime. Kontener całej usługi Azure blob, który określonym dla instalacji niestandardowej zostaną skopiowane do węzeł środowiska SSIS integration runtime, więc sprawdza, czy jest niepotrzebne zawartości w ramach tego kontenera.
+Ten błąd oznacza, że dysk lokalny jest używany w węźle SSIS Integration Runtime. Sprawdź, czy pakiet lub Konfiguracja niestandardowa zużywa dużo miejsca na dysku:
+* Jeśli dysk jest zużywany przez pakiet, zostanie zwolniony po zakończeniu wykonywania pakietu.
+* Jeśli dysk jest używany przez konfigurację niestandardową, należy zatrzymać program SSIS Integration Runtime, zmodyfikować skrypt i ponownie uruchomić środowisko Integration Runtime. Cały kontener obiektów blob platformy Azure określony dla konfiguracji niestandardowej zostanie skopiowany do węzła SSIS Integration Runtime, dlatego sprawdź, czy w tym kontenerze nie ma żadnej niepotrzebnej zawartości.
 
-### <a name="error-message-failed-to-retrieve-resource-from-master-microsoftsqlserverintegrationservicesscalescaleoutcontractcommonmasterresponsefailedexception-code300004-descriptionload-file--failed"></a>Komunikat o błędzie: "Nie można pobrać zasobu z głównej. Microsoft.SqlServer.IntegrationServices.Scale.ScaleoutContract.Common.MasterResponseFailedException: Code:300004. Opis: Załaduj plik "***" nie powiodło się. "
+### <a name="error-message-failed-to-retrieve-resource-from-master-microsoftsqlserverintegrationservicesscalescaleoutcontractcommonmasterresponsefailedexception-code300004-descriptionload-file--failed"></a>Komunikat o błędzie: "Nie można pobrać zasobu z serwera głównego. Microsoft.SqlServer.IntegrationServices.Scale.ScaleoutContract.Common.MasterResponseFailedException: Kod: 300004. Opis: nie można załadować pliku "* * *".
 
-* Potencjalną przyczyną & Zalecana akcja:
-  * Jeśli działania SSIS jest wykonywane pakietu z systemu plików (plik pakietu lub pliku projektu), ten błąd wystąpi, jeśli plik projektu, pakietu lub konfiguracji nie jest dostępny za pomocą poświadczeń dostępu do pakietu, podane w działaniu usług SSIS
-    * Jeśli używasz plików platformy Azure:
-      * Ścieżka pliku powinien zaczynać się znakiem \\ \\ \<nazwa konta magazynu\>. file.core.windows.net\\\<ścieżka udziału plików\>
-      * Domena powinna być "Azure"
-      * Nazwa użytkownika powinna być \<nazwa konta magazynu\>
-      * Hasło powinno mieć \<klucz dostępu do magazynu\>
-    * Jeśli jesteś przy użyciu pliku lokalnego, sprawdź, czy jeśli sieć wirtualną, poświadczenia dostępu do pakietu i uprawnienia są prawidłowo skonfigurowane czemu środowiska Azure-SSIS integration runtime można uzyskiwać dostęp do udziału plików w środowisku lokalnym
+* Potencjalna przyczyna & zalecanej akcji:
+  * Jeśli działanie programu SSIS wykonuje pakiet z systemu plików (plik pakietu lub plik projektu), ten błąd wystąpi, jeśli projekt, pakiet lub plik konfiguracji nie będą dostępne z poświadczeniami dostępu do pakietu dostarczonymi w działaniu usług SSIS.
+    * Jeśli używasz usługi Azure File:
+      * Ścieżka pliku powinna rozpoczynać się \\od\> \< \\nazwy konta magazynu.\\File.Core.Windows.NET\<ścieżka udziału plików\>
+      * Domena powinna mieć wartość "Azure"
+      * Nazwa użytkownika powinna być \<nazwą konta magazynu\>
+      * Hasło powinno być \<kluczem dostępu do magazynu\>
+    * Jeśli używasz pliku lokalnego, sprawdź, czy sieć wirtualna, poświadczenia dostępu do pakietu i uprawnienia są prawidłowo skonfigurowane, aby środowisko Azure-SSIS Integration Runtime mogły uzyskać dostęp do lokalnego udziału plików
 
-### <a name="error-message-the-file-name--specified-in-the-connection-was-not-valid"></a>Komunikat o błędzie: "Nazwa pliku"..." określonych w połączenia jest nieprawidłowy "
+### <a name="error-message-the-file-name--specified-in-the-connection-was-not-valid"></a>Komunikat o błędzie: "Nazwa pliku"... " określone w połączeniu nie są prawidłowe "
 
-* Potencjalną przyczyną & Zalecana akcja:
+* Potencjalna przyczyna & zalecanej akcji:
   * Określono nieprawidłową nazwę pliku
-  * Upewnij się, że używasz nazwy FQDN (w pełni kwalifikowana nazwa domeny) zamiast krótki czas w Menedżera połączeń
+  * Upewnij się, że używasz nazwy FQDN (w pełni kwalifikowanej nazwy domeny) zamiast godziny krótkiej w Menedżerze połączeń
 
-### <a name="error-message-cannot-open-file-"></a>Komunikat o błędzie: "Nie można otworzyć pliku"...""
+### <a name="error-message-cannot-open-file-"></a>Komunikat o błędzie: "Nie można otworzyć pliku"... "
 
-Ten błąd występuje, gdy wykonanie pakietu nie może znaleźć pliku na dysku lokalnym w środowiska SSIS integration runtime. Spróbuj wykonać następujące akcje:
-* Nie używaj ścieżki bezwzględnej w pakiecie, który jest wykonywany w środowiska SSIS integration runtime. Użyj do bieżącego katalogu roboczego wykonywania (.) lub folderu tymczasowego (% TEMP %) Zamiast tego.
-* Jeśli musisz utrwalić niektóre pliki z węzły środowiska SSIS integration runtime, przygotuj plików zgodnie z opisem w [dostosować instalację](how-to-configure-azure-ssis-ir-custom-setup.md). Wszystkie pliki w katalogu roboczym zostaną wyczyszczone po zakończeniu wykonywania.
-* Użyj usługi Azure Files zamiast przechowywać plik w węźle środowiska SSIS integration runtime. Aby uzyskać więcej informacji, zobacz [udziałów plików platformy Azure użyj](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-files-file-shares?view=sql-server-2017#use-azure-file-shares).
+Ten błąd występuje, gdy wykonanie pakietu nie może znaleźć pliku na dysku lokalnym w programie SSIS Integration Runtime. Wypróbuj następujące czynności:
+* Nie używaj ścieżki bezwzględnej w pakiecie, który jest wykonywany w programie SSIS Integration Runtime. Użyj bieżącego katalogu roboczego wykonywania (.) lub folderu tymczasowego (% TEMP%) INSTEAD.
+* Aby zachować niektóre pliki w węzłach SSIS Integration Runtime, przygotuj pliki zgodnie z opisem w temacie [Dostosowywanie Instalatora](how-to-configure-azure-ssis-ir-custom-setup.md). Wszystkie pliki w katalogu roboczym zostaną oczyszczone po zakończeniu wykonywania.
+* Użyj Azure Files zamiast przechowywania pliku w węźle SSIS Integration Runtime. Aby uzyskać szczegółowe informacje, zobacz [Korzystanie z udziałów plików platformy Azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-files-file-shares?view=sql-server-2017#use-azure-file-shares).
 
-### <a name="error-message-the-database-ssisdb-has-reached-its-size-quota"></a>Komunikat o błędzie: "Bazy danych"SSISDB"osiągnęła limit przydziału rozmiaru"
+### <a name="error-message-the-database-ssisdb-has-reached-its-size-quota"></a>Komunikat o błędzie: "SSISDB bazy danych" osiągnął limit przydziału rozmiaru "
 
-Potencjalną przyczyną jest to, czy baza danych SSISDB, utworzone w bazie danych Azure SQL lub wystąpienia zarządzanego, podczas tworzenia środowiska SSIS integration runtime osiągnęła limit przydziału. Spróbuj wykonać następujące akcje:
-* Należy rozważyć zwiększenie liczby jednostek DTU bazy danych. Można znaleźć szczegółowe informacje w [limity zasobów bazy danych SQL dla serwera usługi Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server).
-* Sprawdź, czy pakiet wygeneruje wiele dzienników. Jeśli tak, można skonfigurować zadania elastycznego, aby wyczyścić te dzienniki. Aby uzyskać więcej informacji, zobacz [czyszczenie dzienników bazy danych SSISDB za pomocą zadania elastycznych baz danych Azure](how-to-clean-up-ssisdb-logs-with-elastic-jobs.md).
+Możliwą przyczyną jest osiągnięcie przydziału rozmiaru przez bazę danych SSISDB, która została utworzona w bazie danych Azure SQL Database lub wystąpieniu zarządzanym podczas tworzenia środowiska SSIS Integration Runtime. Wypróbuj następujące czynności:
+* Rozważ zwiększenie liczby jednostek DTU bazy danych. Aby uzyskać więcej informacji, zobacz [Limity zasobów bazy danych SQL Database dla serwera usługi Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server).
+* Sprawdź, czy pakiet wygeneruje wiele dzienników. Jeśli tak, możesz skonfigurować zadanie elastyczne, które oczyści te dzienniki. Aby uzyskać szczegółowe informacje, zobacz [Oczyszczanie dzienników SSISDB za pomocą zadań Azure Elastic Database](how-to-clean-up-ssisdb-logs-with-elastic-jobs.md)
 
-### <a name="error-message-the-request-limit-for-the-database-is--and-has-been-reached"></a>Komunikat o błędzie: "Limit żądań dla bazy danych jest... i został osiągnięty."
+### <a name="error-message-the-request-limit-for-the-database-is--and-has-been-reached"></a>Komunikat o błędzie: "Limit żądań dla bazy danych to... i został osiągnięty. "
 
-Jeśli wiele pakietów działają równolegle w środowiska SSIS integration runtime, ten błąd może wystąpić, ponieważ bazy danych SSISDB osiągnie limit żądań. Należy rozważyć zwiększenie DTC SSISDB, aby rozwiązać ten problem. Można znaleźć szczegółowe informacje w [limity zasobów bazy danych SQL dla serwera usługi Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server).
+Jeśli wiele pakietów jest uruchomionych równolegle w programie SSIS Integration Runtime, ten błąd może wystąpić, ponieważ SSISDB osiągnął limit żądań. Aby rozwiązać ten problem, należy rozważyć zwiększenie poziomu usługi DTC SSISDB. Aby uzyskać więcej informacji, zobacz [Limity zasobów bazy danych SQL Database dla serwera usługi Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server).
 
-### <a name="error-message-ssis-operation-failed-with-unexpected-operation-status-"></a>Komunikat o błędzie: "SSIS operacja nie powiodła się operacja nieoczekiwany stan:..."
+### <a name="error-message-ssis-operation-failed-with-unexpected-operation-status-"></a>Komunikat o błędzie: "Operacja SSIS nie powiodła się z nieoczekiwanym stanem operacji:..."
 
-Błąd najczęściej jest spowodowany przez problem przejściowy, więc spróbuj ponownie uruchomić wykonanie pakietu. Zastosuj wzorzec ponawiania pakietu SSIS, wykonaj następujące czynności:
+Ten błąd jest głównie spowodowany przez przejściowy problem, dlatego spróbuj ponownie uruchomić wykonywanie pakietu. Zastosuj wzorzec ponawiania prób w pakiecie SSIS, wykonując następujące czynności:
 
-* Upewnij się, że pakiety usług SSIS, można uruchomić w przypadku niepowodzenia bez efektów ubocznych (na przykład utraty danych lub duplikacji danych).
-* Konfigurowanie **ponów** i **interwał ponawiania** z **wykonywanie pakietu SSIS** działania na **ogólne** kartę. ![Ustaw właściwości na karcie Ogólne](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
-* W przypadku ADO.NET i OLE DB źródłowy lub docelowy składnika, ustawić **ConnectRetryCount** i **ConnectRetryInterval** w Menedżerze połączeń w pakietu SSIS lub działania SSIS.
+* Upewnij się, że pakiety SSIS mogą być ponownie uruchamiane po awarii bez efektów ubocznych (na przykład utrata danych lub duplikowanie danych).
+* Skonfiguruj **ponowną próbę** i **interwał ponawiania próby** **wykonania pakietu SSIS** na karcie **Ogólne** . ![Ustawianie właściwości na karcie Ogólne](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
+* W przypadku składnika ADO.NET i źródła OLE DB lub docelowego ustaw wartość **ConnectRetryCount** i **ConnectRetryInterval** w Menedżerze połączeń w ramach pakietu SSIS lub działania SSIS.
 
-### <a name="error-message-there-is-no-active-worker"></a>Komunikat o błędzie: "Nie jest Brak aktywnych procesów roboczych".
+### <a name="error-message-there-is-no-active-worker"></a>Komunikat o błędzie: "Nie ma aktywnego procesu roboczego".
 
-Ten błąd zazwyczaj oznacza, że środowiska SSIS integration runtime jest komunikat o złej kondycji. Sprawdź portalu Azure dotyczące stanu i szczegółowe informacje o błędach. Aby uzyskać więcej informacji, zobacz [środowiska Azure-SSIS integration runtime](https://docs.microsoft.com/azure/data-factory/monitor-integration-runtime#azure-ssis-integration-runtime).
+Ten błąd zazwyczaj oznacza, że środowisko SSIS Integration Runtime ma stan złej kondycji. Sprawdź Azure Portal stanu i szczegółowe błędy. Aby uzyskać więcej informacji, zobacz [Azure-SSIS Integration Runtime](https://docs.microsoft.com/azure/data-factory/monitor-integration-runtime#azure-ssis-integration-runtime).
 
-### <a name="error-message-your-integration-runtime-cannot-be-upgraded-and-will-eventually-stop-working-since-we-cannot-access-the-azure-blob-container-you-provided-for-custom-setup"></a>Komunikat o błędzie: "Środowiska integration runtime nie może zostać uaktualniony i ostatecznie przestanie działać, ponieważ firma Microsoft nie może uzyskać dostępu w kontenerze obiektów Blob platformy Azure parametru instalacji niestandardowej."
+### <a name="error-message-your-integration-runtime-cannot-be-upgraded-and-will-eventually-stop-working-since-we-cannot-access-the-azure-blob-container-you-provided-for-custom-setup"></a>Komunikat o błędzie: "Środowisko Integration Runtime nie może zostać uaktualnione i ostatecznie przestanie działać, ponieważ nie można uzyskać dostępu do kontenera obiektów blob platformy Azure podanego dla konfiguracji niestandardowej".
 
-Ten błąd występuje, gdy środowiska SSIS integration runtime nie może uzyskać dostępu magazyn skonfigurowany do instalacji niestandardowej. Sprawdź, czy sygnatury dostępu współdzielonego (SAS) podany identyfikator URI jest prawidłowa i czy nie upłynął.
+Ten błąd występuje, gdy środowisko SSIS Integration Runtime nie może uzyskać dostępu do magazynu skonfigurowanego na potrzeby instalacji niestandardowej. Sprawdź, czy podany identyfikator URI sygnatury dostępu współdzielonego (SAS) jest prawidłowy i nie wygasł.
 
-### <a name="error-message-microsoft-ole-db-provider-for-analysis-services-hresult-0x80004005-description-com-error-com-error-mscorlib-exception-has-been-thrown-by-the-target-of-an-invocation"></a>Komunikat o błędzie: "Dostawca Microsoft OLE DB usług Analysis Services. "Hresult: 0x80004005 opis: " Błąd modelu COM: Błąd modelu COM: mscorlib; Obiekt docelowy wywołania zgłosił wyjątek"
+### <a name="error-message-microsoft-ole-db-provider-for-analysis-services-hresult-0x80004005-description-com-error-com-error-mscorlib-exception-has-been-thrown-by-the-target-of-an-invocation"></a>Komunikat o błędzie: "Dostawca OLE DB firmy Microsoft dla Analysis Services. Wynik Opis 0x80004005: ' Błąd modelu COM: Błąd modelu COM: mscorlib; Element docelowy wywołania zgłosił wyjątek.
 
-Jeden potencjalną przyczyną jest, że nazwa użytkownika lub hasło, za pomocą usługi Azure Multi-Factor Authentication, włączone jest skonfigurowany do uwierzytelniania usługi Azure Analysis Services. Uwierzytelnianie nie jest obsługiwana w środowiska SSIS integration runtime. Spróbuj użyć jednostki usługi do uwierzytelniania usługi Azure Analysis Services:
-1. Przygotowywanie jednostki usługi, zgodnie z opisem w [automatyzacji za pomocą jednostki usługi](https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal).
-2. Konfigurowanie Menedżera połączeń **Użyj określonej nazwy użytkownika i hasła**: Ustaw **AppID** jako nazwa użytkownika i **clientSecret** jako hasło.
+Jedną z potencjalnych przyczyn jest to, że nazwa użytkownika lub hasło z włączonym uwierzytelnianiem usługi Azure MFA jest skonfigurowane pod kątem uwierzytelniania Azure Analysis Services. To uwierzytelnianie nie jest obsługiwane w programie SSIS Integration Runtime. Spróbuj użyć jednostki usługi do uwierzytelniania Azure Analysis Services:
+1. Przygotuj jednostkę usługi zgodnie z opisem w temacie [Automatyzacja przy użyciu jednostek usługi](https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal).
+2. W Menedżerze połączeń Skonfiguruj **użycie określonej nazwy użytkownika i hasła**: Ustaw **Identyfikator aplikacji** jako nazwę użytkownika i **clientSecret** jako hasło.
 
-### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-a-managed-identity"></a>Komunikat o błędzie: "ADONET źródła nie powiodło się, można uzyskać połączenia {GUID} z następujący komunikat o błędzie: Logowanie użytkownika "NT\LOGOWANIE" powiodło się "podczas korzystania z tożsamości zarządzanej
+### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-a-managed-identity"></a>Komunikat o błędzie: "ADONET źródła nie powiodło się uzyskanie połączenia {GUID} z następującym komunikatem o błędzie: Logowanie użytkownika "NT AUTHORITY\ANONYMOUS LOGON" "przy użyciu tożsamości zarządzanej nie powiodło się
 
-Upewnij się, nie Konfiguruj metodę uwierzytelniania Menedżera połączeń jako **uwierzytelnianie hasłem usługi Active Directory** gdy parametr *ConnectUsingManagedIdentity* jest **True** . Możesz skonfigurować go jako **uwierzytelniania SQL** zamiast tego, która jest ignorowana, jeśli *ConnectUsingManagedIdentity* jest ustawiona.
+Upewnij się, że nie skonfigurowano metody uwierzytelniania Menedżera połączeń jako **Active Directory uwierzytelniania hasła** , gdy parametr *ConnectUsingManagedIdentity* ma **wartość true**. Zamiast tego można skonfigurować go jako **uwierzytelnianie SQL** , który jest ignorowany, jeśli ustawiono *ConnectUsingManagedIdentity* .
+
+### <a name="multiple-package-executions-are-triggered-unexpectedly"></a>Nieoczekiwane wyzwolenie wielu wykonań pakietów
+
+* Potencjalna przyczyna & zalecanej akcji:
+  * Działanie procedury składowanej ADF służy do wyzwalania wykonywania pakietów SSIS. Polecenie t-SQL może napotkać przejściowy problem i wyzwolić ponowne uruchomienie, co może spowodować wykonanie wielu pakietów.
+  * Zamiast tego użyj działania ExecuteSSISPackage, aby zapewnić, że wykonanie pakietu nie zostanie uruchomione ponownie, chyba że w działaniu zostanie określona liczba ponownych prób Szczegóły można znaleźć pod adresem[https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
 
 ### <a name="package-execution-takes-too-long"></a>Wykonanie pakietu trwa zbyt długo
 
-Poniżej przedstawiono potencjalne przyczyny i zalecane akcje:
-* Zbyt wiele wykonań pakietu zostało zaplanowane na środowiska SSIS integration runtime. Wszystkie te wykonań będzie czekał w kolejce ich Włącz.
-  * Określ maksymalną za pomocą następującej formuły: 
-    
-    Liczba wykonań maksymalna liczba równoległych na środowisko IR = liczba węzłów * maksymalna liczba równoległych wykonywania na węzeł
-  * Aby dowiedzieć się, jak ustawić liczbę węzłów i maksymalna wykonywanie równoległe w każdym węźle, zobacz [tworzenie środowiska Azure-SSIS integration runtime w usłudze Azure Data Factory](create-azure-ssis-integration-runtime.md).
-* Środowiska SSIS integration runtime został zatrzymany lub ma stan złej kondycji. Aby dowiedzieć się, jak sprawdzić stan środowiska uruchomieniowego integracji usług SSIS i błędów, zobacz [środowiska Azure-SSIS integration runtime](monitor-integration-runtime.md#azure-ssis-integration-runtime).
+Oto potencjalne przyczyny i zalecane akcje:
 
-Zalecamy również ustawić limitu czasu na **ogólne** karty: ![Ustaw właściwości na karcie Ogólne](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png).
+* Zaplanowano zbyt wiele wykonań pakietów w programie SSIS Integration Runtime. Wszystkie te wykonania będą oczekiwać w kolejce na ich włączenie.
+  * Określ maksymalną wartość przy użyciu tej formuły:
+
+    Maksymalna liczba równoległych wykonań na IR = liczba węzłów * maksymalne wykonywanie równoległe na węzeł
+  * Aby dowiedzieć się, jak ustawić liczbę węzłów i maksymalne wykonywanie równoległe na węzeł, zobacz temat [Tworzenie środowiska Azure-SSIS Integration Runtime w Azure Data Factory](create-azure-ssis-integration-runtime.md).
+* Środowisko uruchomieniowe środowiska SSIS zostało zatrzymane lub ma stan złej kondycji. Aby dowiedzieć się, jak sprawdzić stan i błędy programu SSIS Integration Runtime, zobacz [Azure-SSIS Integration Runtime](monitor-integration-runtime.md#azure-ssis-integration-runtime).
+
+Zalecamy również ustawienie limitu czasu na karcie **Ogólne** : ![Ustaw właściwości na karcie](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)ogólne.
 
 ### <a name="poor-performance-in-package-execution"></a>Niska wydajność podczas wykonywania pakietu
 
-Spróbuj wykonać następujące akcje:
+Wypróbuj następujące czynności:
 
-* Upewnij się, że środowiska SSIS integration runtime jest w tym samym regionie, co dane źródłowe i docelowe.
+* Upewnij się, że środowisko w środowisku SSIS Integration Runtime znajduje się w tym samym regionie, co źródło danych i miejsce docelowe.
 
-* Ustaw poziom rejestrowania wykonanie pakietu do **wydajności** do zbierania informacji o czasie trwania dla każdego składnika podczas wykonywania. Aby uzyskać więcej informacji, zobacz [rejestrowania Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/performance/integration-services-ssis-logging).
+* Ustaw poziom rejestrowania wykonania pakietu na **wydajność** , aby zbierać informacje o czasie trwania dla każdego składnika w ramach wykonywania. Aby uzyskać szczegółowe informacje, zobacz [Rejestrowanie usług Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/performance/integration-services-ssis-logging).
 
-* Sprawdź wydajność węzła IR w witrynie Azure portal:
-  * Aby uzyskać informacje o sposobie monitorowania środowiska SSIS integration runtime, zobacz [środowiska Azure-SSIS integration runtime](monitor-integration-runtime.md#azure-ssis-integration-runtime).
-  * Historia Procesora/pamięci można znaleźć środowiska SSIS integration Runtime, wyświetlając metryki usługi data factory w witrynie Azure portal.
-    ![Monitorowanie metryk środowiska SSIS integration Runtime](media/ssis-integration-runtime-ssis-activity-faq/monitor-metrics-ssis-integration-runtime.png)
+* Sprawdź wydajność węzłów IR w Azure Portal:
+  * Aby uzyskać informacje o sposobach monitorowania środowiska usług SSIS Integration Runtime, zobacz [Azure-SSIS Integration Runtime](monitor-integration-runtime.md#azure-ssis-integration-runtime).
+  * Historię procesora CPU/pamięci dla środowiska SSIS Integration runtime można znaleźć, wyświetlając metryki fabryki danych w Azure Portal.
+    ![Monitoruj metryki programu SSIS Integration Runtime](media/ssis-integration-runtime-ssis-activity-faq/monitor-metrics-ssis-integration-runtime.png)

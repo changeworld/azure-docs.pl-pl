@@ -6,15 +6,15 @@ manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 06/05/2019
+ms.date: 08/12/2019
 ms.author: stegaw
 ms.custom: seodec18
-ms.openlocfilehash: 577467a6322b7f6d3cd7f199d80963f2f1a98ed6
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 61c3f033fbe3febe7b0d048b247cc1fe8d597698
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849325"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014168"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Jak debugować funkcje zdefiniowane przez użytkownika w usłudze Azure Digital bliźniaczych reprezentacji
 
@@ -45,7 +45,7 @@ Aby śledzić dane telemetryczne czujnika, sprawdź, czy ustawienia diagnostyczn
 
 Aby dopasować komunikat telemetrii czujnika do odpowiednich dzienników, można określić identyfikator korelacji dla wysyłanych danych zdarzenia. Aby to zrobić, należy ustawić `x-ms-client-request-id` właściwość na identyfikator GUID.
 
-Po wysłaniu telemetrii Otwórz usługę log Analytics, aby wykonać zapytanie dotyczące dzienników przy użyciu zestawu identyfikator korelacji:
+Po wysłaniu telemetrii Otwórz Azure Monitor Log Analytics, aby wykonać zapytanie dotyczące dzienników przy użyciu zestawu identyfikator korelacji:
 
 ```Kusto
 AzureDiagnostics
@@ -205,7 +205,7 @@ W przypadku włączenia ustawień diagnostycznych mogą wystąpić następujące
 
 1. **Nie autoryzowane**: Jeśli zdefiniowana przez użytkownika funkcja nie ma ustawionego przypisania roli lub nie ma wystarczających uprawnień dostępu do określonych metadanych z topologii, operacja kończy się niepowodzeniem.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, jak włączyć [monitorowanie i dzienniki](./how-to-configure-monitoring.md) w usłudze Azure Digital bliźniaczych reprezentacji.
 

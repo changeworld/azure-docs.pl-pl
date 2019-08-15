@@ -1,6 +1,6 @@
 ---
-title: Tworzenie zaawansowanych przepływów pracy kodowania za pomocą projektanta przepływu pracy | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o sposobie tworzenia zaawansowanych przepływów pracy kodowania za pomocą projektanta przepływu pracy.
+title: Tworzenie zaawansowanych przepływów pracy kodowania za pomocą Projektant przepływu pracy | Microsoft Docs
+description: Dowiedz się, jak tworzyć zaawansowane przepływy pracy kodowania przy użyciu Projektant przepływu pracy.
 services: media-services
 documentationcenter: ''
 author: anilmur
@@ -13,65 +13,66 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
-ms.author: juliako;johndeu;anilmur
-ms.openlocfilehash: 0ade52d3ae9714f2b370308253e455bcde7ac7a5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: anilmur
+ms.reviewer: juliako;johndeu
+ms.openlocfilehash: 246a1461973dba129a5b1d12be8a09703eb99267
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60825136"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69015971"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Tworzenie zaawansowanych przepływów pracy kodowania za pomocą projektanta przepływu pracy  
 ## <a name="overview"></a>Omówienie
-**Projektanta przepływów pracy** to narzędzie pulpitu Windows, która umożliwia projektowanie i tworzenie niestandardowych przepływów pracy kodowania za pomocą **Media Encoder Premium Workflow**.
-Korzystając z możliwości narzędzie projektanta przepływu pracy, można projektować i tworzyć złożone przepływy pracy, które będą uruchamiane w **Media Encoder Premium**.  
+**Projektant przepływu pracy** to narzędzie pulpitu systemu Windows, które służy do projektowania i tworzenia niestandardowych przepływów pracy dla kodowania z **Media Encoder Premium Workflow**.
+Korzystając z możliwości narzędzia Projektant przepływu pracy, można projektować i tworzyć złożone przepływy pracy, które będą uruchamiane w usłudze **Media Encoder Premium**.  
 
-Przepływy pracy mogą zawierać logiki wyboru klientów i rozgałęzień na podstawie pliku źródła danych wejściowych właściwości. Możesz utworzyć przepływy pracy z możliwym do zastąpienia właściwości i wartości dynamiczne nawet najbardziej złożonych zadań kodowania ułatwia Powtórz i dostosowania dostępnych w chmurze.
+Przepływy pracy mogą obejmować logikę decyzyjną klienta i rozgałęzianie na podstawie właściwości wejściowego pliku źródłowego. Możesz tworzyć przepływy pracy z właściwościami i wartościami dynamicznymi, aby ułatwić powtarzanie i dostosowywanie bardziej złożonych zadań kodowania w chmurze.
 
-Przykład przepływów pracy, które można utworzyć, obejmują:
+Przykładowe przepływy pracy, które można utworzyć, obejmują:
 
-* Decyzji na podstawie przepływów pracy, które sprawdzić zawartość źródłową do rozpoznawania i kodowanie tylko ścieżki żądaną produktu wyjściowego.  Jest to przydatne, eliminując nieużywanego ścieżek, które może zostać wygenerowany przez przypadkowo upscaling zawartość źródłową.
-* Wiele plików wejściowych może służyć do obsługi transkrypcji, nakładki i łączenie razem zawartości. 
+* Przepływy pracy oparte na decyzjach, które sprawdzają zawartość źródłową do rozpoznawania i kodują tylko żądane ścieżki wyjściowe.  Jest to przydatne w wyniku wyeliminowania niepowstających ścieżek, które zostałyby wygenerowane przez skalowanie zawartości źródłowej przypadkowo.
+* Wiele plików wejściowych może służyć do obsługi podpisów, nakładania i łączenia się z zawartością. 
 
-To narzędzie może również modyfikować żadnego z naszych [opublikowane przepływów pracy](media-services-workflow-designer.md#existing_workflows). 
+Tego narzędzia można również użyć do zmodyfikowania dowolnego z [opublikowanych przepływów pracy](media-services-workflow-designer.md#existing_workflows). 
 
 > [!NOTE]
-> Aby uzyskać swoją kopię narzędzia projektanta przepływów pracy, skontaktuj się z pomocą mepd@microsoft.com.
+> Aby uzyskać kopię narzędzia Projektant przepływu pracy, skontaktuj się z firmą mepd@microsoft.com.
 
-Po utworzeniu pliku przepływu pracy można przekazać jako zasób usługi, a następnie używane do kodowania plików multimedialnych. Aby uzyskać informacje na temat kodowania za pomocą **Media Encoder Premium Workflow** przy użyciu **.NET**, zobacz [Zaawansowane kodowanie za pomocą Media Encoder Premium Workflow](media-services-encode-with-premium-workflow.md).
+Po utworzeniu pliku przepływu pracy można go przekazać jako zasób, a następnie użyć do kodowania plików multimedialnych. Aby uzyskać informacje na temat kodowania za pomocą **Media Encoder Premium Workflow** przy użyciu **platformy .NET**, zobacz [Zaawansowane kodowanie z Media Encoder Premium Workflow](media-services-encode-with-premium-workflow.md).
 
-## <a id="existing_workflows"></a>Modyfikowanie istniejących przepływów pracy
-Wartość domyślna [opublikowane przepływy pracy](media-services-workflow-designer.md#existing_workflows) można modyfikować przy użyciu narzędzia Projektant. Domyślnie można uzyskać pliki przepływu pracy [tutaj](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows). Folder zawiera również opis tych plików.
+## <a id="existing_workflows"></a>Modyfikuj istniejące przepływy pracy
+Domyślne [opublikowane przepływy pracy](media-services-workflow-designer.md#existing_workflows) można modyfikować za pomocą narzędzia Projektant. Domyślne pliki przepływu pracy można uzyskać [tutaj](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows). Folder zawiera również opis tych plików.
 
-Następujące filmy wideo pokazują, jak używać projektanta.
+Poniższe wideo pokazują, jak używać projektanta.
 
-### <a name="day-1--getting-started"></a>Dzień 1 — wprowadzenie
-1\. dnia wideo obejmuje:
+### <a name="day-1--getting-started"></a>Dzień 1 — Wprowadzenie
+:
 
 * Omówienie projektanta
-* Podstawowych przepływów pracy — "Hello World"
-* Tworzenie wielu danych wyjściowych plików MP4 do użycia z usługą przesyłania strumieniowego usługi Azure Media Services
+* Podstawowe przepływy pracy — "Hello world"
+* Tworzenie wielu wyjściowych plików MP4 do użycia z Azure Media Services Streaming
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-1/player]
 > 
 > 
 
 ### <a name="day-2"></a>2 dni
-2 dni wideo obejmuje:
+Okładka wideo:
 
-* Różne scenariusze pliku źródłowego — Obsługa audio
-* Przepływy pracy za pomocą zaawansowanych logiki
+* Różne scenariusze dotyczące pliku źródłowego — obsługa dźwięku
+* Przepływy pracy z logiką zaawansowaną
 * Etapy wykresu
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-2/player]
 > 
 > 
 
-### <a name="day-3"></a>3 dni
-Wideo w dniu 3 obejmuje:
+### <a name="day-3"></a>Dzień 3
+Okładka wideo:
 
-* Wykonywanie skryptów w przepływach pracy/plany
-* Ograniczenia z użyciem kodera w bieżącym
+* Obsługa skryptów w przepływach pracy/planach
+* Ograniczenia z bieżącym koderem
 * PYTANIA I ODPOWIEDZI
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-3/player]
@@ -86,8 +87,8 @@ Przejrzyj ścieżki szkoleniowe dotyczące usługi Media Services.
 ## <a name="provide-feedback"></a>Przekazywanie opinii
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-Jeśli potrzebujesz pomocy technicznej lub pytań dotyczących tworzenia niestandardowych przepływów pracy w narzędziu Projektant przepływu pracy, Wyślij wiadomość e-mail do mepd@microsoft.com.
+Jeśli potrzebujesz pomocy technicznej lub masz pytania dotyczące tworzenia niestandardowych przepływów pracy w narzędziu Projektant przepływów pracy, mepd@microsoft.comWyślij wiadomość e-mail na adres.
 
 ## <a name="see-also"></a>Zobacz też
-[Filmy szkoleniowe projektanta systemu Azure w warstwie Premium Encoder przepływu pracy](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)
+[Wideo szkoleniowe dotyczące usługi Azure Premium Encoder Projektant przepływu pracy](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)
 

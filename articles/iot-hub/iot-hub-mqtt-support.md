@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 9b1f0042f501cefc99343d53bbf2ad39f0ae1f4c
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 9a6b3a538304f2d09941650e3087130c21422dc0
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640466"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946345"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikacja z Centrum IoT Hub przy użyciu protokołu MQTT
 
@@ -77,7 +77,7 @@ Jeśli urządzenie nie może użyć zestawów SDK urządzeń, nadal może nawią
   `SharedAccessSignature sig={signature-string}&se={expiry}&sr={URL-encoded-resourceURI}`
 
   > [!NOTE]
-  > Jeśli używasz uwierzytelniania certyfikatu X. 509, hasła tokenu sygnatury dostępu współdzielonego nie są wymagane. Aby uzyskać więcej informacji, zobacz [Konfigurowanie zabezpieczeń X. 509 w usłudze Azure IoT Hub](iot-hub-security-x509-get-started.md)
+  > Jeśli używasz uwierzytelniania certyfikatu X. 509, hasła tokenu sygnatury dostępu współdzielonego nie są wymagane. Aby uzyskać więcej informacji, zobacz [Konfigurowanie zabezpieczeń X. 509 w usłudze Azure IoT Hub](iot-hub-security-x509-get-started.md) i postępuj zgodnie z [poniższymi](#tlsssl-configuration)instrukcjami.
 
   Więcej informacji o sposobach generowania tokenów SAS znajduje się w sekcji Device of [Using IoT Hub tokeny zabezpieczające](iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app).
 
@@ -113,7 +113,7 @@ Jeśli urządzenie nie może użyć zestawów SDK urządzeń, nadal może nawią
 
 W przypadku pakietów MQTT Connect i Disconnect IoT Hub wystawić zdarzenie w kanale **monitorowania operacji** . To zdarzenie zawiera dodatkowe informacje, które mogą pomóc w rozwiązywaniu problemów z łącznością.
 
-Aplikacja urządzenia może **określić komunikat w** pakiecie **Connect** . Aplikacja `devices/{device_id}/messages/events/` urządzenia powinna używać lub jako `devices/{device_id}/messages/events/{property_bag}` nazwa tematu **,** aby określić, czy komunikaty będą przekazywane jako komunikat telemetrii. W takim przypadku, jeśli połączenie sieciowe zostało zamknięte, ale pakiet rozłączenia nie został wcześniej odebrany z urządzenia, IoT Hub wyśle komunikat **o** podanej w pakiecie **Connect** do kanału telemetrii. Kanał telemetrii może być domyślnym punktem końcowym **zdarzeń** lub niestandardowym punktem końcowym zdefiniowanym przez IoT Hub Routing. Komunikat ma właściwość **iothub-MessageType** o wartości, która **zostanie** do niej przypisana.
+Aplikacja urządzenia może określić komunikat w pakiecie **Connect** . Aplikacja urządzenia powinna używać `devices/{device_id}/messages/events/` lub jako `devices/{device_id}/messages/events/{property_bag}` nazwa tematu, aby określić, czy komunikaty będą przekazywane jako komunikat telemetrii. W takim przypadku, jeśli połączenie sieciowe zostało zamknięte, ale pakiet rozłączenia nie został wcześniej odebrany z urządzenia, IoT Hub wyśle komunikat o podanej w pakiecie **Connect** do kanału telemetrii. Kanał telemetrii może być domyślnym punktem końcowym **zdarzeń** lub niestandardowym punktem końcowym zdefiniowanym przez IoT Hub Routing. Komunikat ma właściwość **iothub-MessageType** o wartości, która **zostanie** do niej przypisana.
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>Bezpośrednie używanie protokołu MQTT (jako modułu)
 
@@ -159,7 +159,7 @@ Następnie Zaimplementuj klienta w skrypcie języka Python. Zastąp symbole zast
 from paho.mqtt import client as mqtt
 import ssl
 
-path_to_root_cert = "<local path to digicert.cer>"
+path_to_root_cert = "<local path to digicert.cer file>"
 device_id = "<device id from device registry>"
 sas_token = "<generated SAS token>"
 iot_hub_name = "<iot hub name>"
@@ -200,9 +200,29 @@ Poniżej przedstawiono instrukcje instalacji dotyczące wymagań wstępnych.
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
+Aby uwierzytelnić się przy użyciu certyfikatu urządzenia, zaktualizuj Powyższy fragment kodu z następującymi zmianami (Zobacz artykuł [jak uzyskać certyfikat certyfikatu X. 509 urzędu certyfikacji](./iot-hub-x509ca-overview.md#how-to-get-an-x509-ca-certificate) , aby przygotować się do uwierzytelniania opartego na certyfikatach):
+
+```python
+# Create the client as before
+# ...
+
+# Set the username but not the password on your client
+client.username_pw_set(username=iot_hub_name+".azure-devices.net/" +
+                       device_id + "/?api-version=2018-06-30", password=None)
+
+# Set the certificate and key paths on your client
+cert_file = "<local path to your certificate file>"
+key_file = "<local path to your device key file>"
+client.tls_set(ca_certs=path_to_root_cert, certfile=cert_file, keyfile=key_file,
+               cert_reqs=ssl.CERT_REQUIRED, tls_version=ssl.PROTOCOL_TLSv1, ciphers=None)
+
+# Connect as before
+client.connect(iot_hub_name+".azure-devices.net", port=8883)
+```
+
 ## <a name="sending-device-to-cloud-messages"></a>Wysyłanie komunikatów z urządzenia do chmury
 
-Po pomyślnym nawiązaniu połączenia urządzenie może wysyłać komunikaty do IoT Hub przy `devices/{device_id}/messages/events/` użyciu `devices/{device_id}/messages/events/{property_bag}` lub jako **nazwy tematu**. `{property_bag}` Element umożliwia urządzeniu wysyłanie komunikatów z dodatkowymi właściwościami w formacie zakodowanym w adresie URL. Na przykład:
+Po pomyślnym nawiązaniu połączenia urządzenie może wysyłać komunikaty do IoT Hub przy `devices/{device_id}/messages/events/` użyciu `devices/{device_id}/messages/events/{property_bag}` lub jako **nazwy tematu**. `{property_bag}` Element umożliwia urządzeniu wysyłanie komunikatów z dodatkowymi właściwościami w formacie zakodowanym w adresie URL. Przykład:
 
 ```text
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
@@ -313,7 +333,7 @@ Aby uzyskać więcej informacji, zobacz [przewodnik dewelopera urządzenia bliź
 
 ## <a name="receiving-desired-properties-update-notifications"></a>Otrzymywanie powiadomień o aktualizacji żądanych właściwości
 
-Gdy urządzenie jest połączone, IoT Hub wysyła powiadomienia do tematu `$iothub/twin/PATCH/properties/desired/?$version={new version}`, który zawiera zawartość aktualizacji wykonywanej przez zaplecze rozwiązania. Na przykład:
+Gdy urządzenie jest połączone, IoT Hub wysyła powiadomienia do tematu `$iothub/twin/PATCH/properties/desired/?$version={new version}`, który zawiera zawartość aktualizacji wykonywanej przez zaplecze rozwiązania. Przykład:
 
 ```json
 {
@@ -342,7 +362,7 @@ Aby uzyskać więcej informacji, zobacz [przewodnik dewelopera metody bezpośred
 
 W związku z tym jeśli trzeba będzie dostosować zachowanie protokołu MQTT po stronie chmury, należy zapoznać się z [bramą protokołu Azure IoT](iot-hub-protocol-gateway.md). To oprogramowanie umożliwia wdrożenie niestandardowej bramy protokołu o wysokiej wydajności, która jest bezpośrednio oparta na IoT Hub. Brama protokołu Azure IoT umożliwia dostosowanie protokołu urządzenia w celu uwzględnienia wdrożeń brownfield MQTT lub innych niestandardowych protokołów. To podejście wymaga jednak uruchomienia i obsługi niestandardowej bramy protokołu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Więcej informacji na temat protokołu MQTT można znaleźć w [dokumentacji MQTT](https://mqtt.org/documentation).
 

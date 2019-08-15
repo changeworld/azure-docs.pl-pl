@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: roiyz
-ms.openlocfilehash: 43da116753723470efddc92bffc11038a80a35fb
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 700d8c6ea1527598591aa4300a977f80085e04b0
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827056"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990362"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-windows"></a>Azure Monitor rozszerzenie maszyny wirtualnej dla systemu Windows
 
@@ -166,7 +166,7 @@ Za `Set-AzVMExtension` pomocą polecenia można wdrożyć rozszerzenie maszyny w
 $PublicSettings = @{"workspaceId" = "myWorkspaceId"}
 $ProtectedSettings = @{"workspaceKey" = "myWorkspaceKey"}
 
-Set-AzVMExtension -ExtensionName "Microsoft.EnterpriseCloud.Monitoring" `
+Set-AzVMExtension -ExtensionName "MicrosoftMonitoringAgent" `
     -ResourceGroupName "myResourceGroup" `
     -VMName "myVM" `
     -Publisher "Microsoft.EnterpriseCloud.Monitoring" `

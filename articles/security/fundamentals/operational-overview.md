@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: tomsh
-ms.openlocfilehash: d863edba17b3dc688624e7095ee09744ca07192d
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 31e59f913fa29c92bc1b97029d8712bbd9b68ab8
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780531"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934658"
 ---
 # <a name="azure-operational-security-overview"></a>Omówienie zabezpieczeń operacyjnych platformy Azure
 
@@ -87,7 +87,7 @@ Dzięki Azure Active Directory wszystkie aplikacje publikowane dla partnerów i 
 - Walidacja szyfrowania dysku.
 - Ataki sieciowe.
 
-Security Center używa [Access Control opartego na rolach (RBAC)](/azure/role-based-access-control/role-assignments-portal). RBAC zawiera [wbudowane role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) , które można przypisać do użytkowników, grup i usług na platformie Azure.
+Security Center używa [Access Control opartego na rolach (RBAC)](/azure/role-based-access-control/role-assignments-portal). RBAC zawiera [wbudowane role](../../role-based-access-control/built-in-roles.md) , które można przypisać do użytkowników, grup i usług na platformie Azure.
 
 Usługa Security Center ocenia konfigurację zasobów, aby zidentyfikować problemy dotyczące zabezpieczeń i luki w zabezpieczeniach. W Security Center informacje dotyczące zasobu są wyświetlane tylko wtedy, gdy przypiszesz rolę właściciela, współautora lub czytelnika dla subskrypcji lub grupy zasobów, do której należy zasób.
 
@@ -185,7 +185,7 @@ Praktykujący lekarze DevOps przyjmuje kilka z poniższych praktyk. Te praktyki 
 - [Infrastruktura jako kod (IaC)](https://www.visualstudio.com/learn/what-is-infrastructure-as-code/) to rozwiązanie, które umożliwia automatyzację i sprawdzanie poprawności tworzenia i usuwania sieci oraz maszyn wirtualnych w celu ułatwienia dostarczania bezpiecznych, stabilnych platform hostingu aplikacji.
 - [](https://www.visualstudio.com/learn/what-are-microservices/) Architektura mikrousług służy do izolowania przypadków użycia biznesowego w małych usługach wielokrotnego użytku.  Ta architektura umożliwia skalowalność i wydajność.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się więcej na temat rozwiązania Security and Audit, zobacz następujące artykuły:
 

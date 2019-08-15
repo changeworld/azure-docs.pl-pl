@@ -5,30 +5,30 @@ services: digital-twins
 author: kingdomofends
 ms.service: digital-twins
 ms.topic: include
-ms.date: 12/28/2018
-ms.author: adgera
+ms.date: 08/12/2019
+ms.author: v-adgera
 ms.custom: include file
-ms.openlocfilehash: e81b8fb06240d566e46ca0b45a0910e014dee329
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: fa88bf7f8db9b4fea63429dbfd18f84ee84ccda1
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183865"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "69012231"
 ---
-Kontrola dostępu oparta na rolach jest strategia zabezpieczeń opartych na dziedziczenie zarządzania dostępu, uprawnień i ról. Role podrzędny dziedziczą uprawnienia z nadrzędnego ról. Ponadto można przypisać uprawnienia nie są dziedziczone z roli nadrzędnej. Mogą również można przypisać do roli dostosowywać, odpowiednio do potrzeb.
+Kontrola dostępu oparta na rolach jest strategią zabezpieczeń opartą na dziedziczeniu służącą do zarządzania dostępem, uprawnieniami i rolami. Role elementów potomnych dziedziczą uprawnienia z ról nadrzędnych. Uprawnienia można także przypisać bez dziedziczenia z roli nadrzędnej. Mogą być również przypisane do dostosowywania roli w razie potrzeby.
 
-Na przykład Administrator miejsca może być konieczne globalny dostęp do uruchomienia wszystkie operacje dla określonego obszaru. Uwzględniane są wszystkie węzły poniżej lub w obrębie przestrzeni. Instalator urządzenia może być konieczne tylko *odczytu* i *aktualizacji* uprawnienia dla urządzeń i czujników.
+Na przykład administrator przestrzeni może potrzebować globalnego dostępu do uruchamiania wszystkich operacji w określonym miejscu. Dostęp obejmuje wszystkie węzły znajdujące się poniżej lub wewnątrz obszaru. Instalator urządzenia może potrzebować tylko uprawnień *odczytu* i *aktualizacji* dla urządzeń i czujników.
 
-W każdym przypadku rolom nadaje się *dokładnie i nie więcej niż wymagany dostęp do* do zrealizowania ich zadań na zasadzie najmniejszych uprawnień. Zgodnie z tą zasadą otrzymuje tożsamość *tylko*:
+W każdym przypadku role są przyznawane *dokładnie i nie są wymagane* do realizacji zadań zgodnie z zasadą najniższych uprawnień. Zgodnie z tą zasadą tożsamość jest udzielana *tylko*:
 
-* Ilość dostępu wymagane do wykonania swojego zadania.
-* Rola, odpowiedni i ograniczone do wykonywania swoich zadań.
+* Ilość dostępu wymagana do ukończenia zadania.
+* Rola odpowiednia i ograniczona do realizacji zadania.
 
 >[!IMPORTANT]
-> Zawsze postępuj zgodnie z zasadą najniższych uprawnień.
+> Zawsze stosuj zasadę najniższych uprawnień.
 
-Dwie inne ważne opartej na rolach kontroli dostępu w praktyki do naśladowania:
+Dwie inne ważne praktyki kontroli dostępu opartej na rolach, które należy wykonać:
 
 > [!div class="checklist"]
-> * Przeprowadzaj okresowe inspekcje przypisań ról, aby sprawdzić, czy każda rola ma odpowiednie uprawnienia.
-> * Wyczyść ról i przypisań użytkowników indywidualnych zmiany ról lub przypisania.
+> * Okresowe inspekcje przypisań ról w celu sprawdzenia, czy każda rola ma odpowiednie uprawnienia.
+> * Wyczyść role i przypisania, gdy użytkownicy zmieniają role lub przypisania.

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 619a4de993f052f143e4117f0100ed1e0aa77b03
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: bde4572ec72286be7d845f4e83bf9c0fe3bff6f1
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498590"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932391"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Jak zaimplementować odzyskiwanie po awarii przy użyciu kopii zapasowej i przywracania usługi na platformie Azure API Management
 
@@ -121,7 +121,7 @@ namespace GetTokenResourceManagerRequests
     ![Punkty końcowe][api-management-endpoint]
 
 2. Zamień `{application id}` na wartość, którą otrzymujesz, przechodząc do strony **ustawień** .
-3. Zastąp wartość wartością z karty URI przekierowania w aplikacji Azure Active Directory.  `{redirect uri}`
+3. Zastąp wartość wartością z karty URI przekierowania w aplikacji Azure Active Directory. `{redirect uri}`
 
     Po określeniu wartości, przykład kodu powinien zwrócić token podobny do następującego:
 
@@ -176,6 +176,7 @@ Podczas wykonywania żądania kopii zapasowej należy pamiętać o następujący
 -   Gdy trwa wykonywanie kopii zapasowej, należy **unikać zmian w zarządzaniu usługami** , takich jak uaktualnianie lub obniżanie poziomu jednostki SKU, zmiana nazwy domeny i nie tylko.
 -   Przywracanie **kopii zapasowej jest gwarantowane tylko przez 30 dni** od momentu jego utworzenia.
 -   **Dane użycia** używane do tworzenia raportów analitycznych **nie są uwzględnione** w kopii zapasowej. Użyj [interfejsu API REST usługi Azure API Management][azure api management rest api] , aby okresowo pobierać raporty analityczne w celu zabezpieczenia.
+-   Ponadto następujące elementy nie są częścią danych kopii zapasowej: niestandardowe certyfikaty SSL domen i wszystkie pośrednich lub głównych certyfikatów przekazanych przez klienta, zawartość portalu deweloperów i ustawienia integracji sieci wirtualnej.
 -   Częstotliwość wykonywania kopii zapasowych usługi ma wpływ na cel punktu odzyskiwania. Aby zminimalizować, zalecamy wdrożenie zwykłych kopii zapasowych i wykonywanie kopii zapasowych na żądanie po wprowadzeniu zmian w usłudze API Management.
 -   **Zmiany** wprowadzone w konfiguracji usługi (na przykład dotyczące interfejsów API, zasad i wyglądu portalu deweloperów), gdy operacja tworzenia kopii zapasowej jest w toku, **mogą zostać wykluczone z kopii zapasowej i zostaną utracone**.
 -   **Zezwalaj na** dostęp z płaszczyzny kontroli do konta usługi Azure Storage. Aby utworzyć kopię zapasową, klient powinien otworzyć następujący zestaw przychodzących adresów IP na koncie magazynu. 
@@ -220,7 +221,7 @@ Przywracanie to długotrwała operacja, której ukończenie może potrwać do 30
 > [!NOTE]
 > Operacje tworzenia kopii zapasowych i przywracania można także wykonać przy użyciu poleceń programu PowerShell _Backup-AzApiManagement_ i _Restore-AzApiManagement_ .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Zapoznaj się z poniższymi zasobami, aby zapoznać się z różnymi przewodnikami procesu tworzenia kopii zapasowej/przywracania.
 

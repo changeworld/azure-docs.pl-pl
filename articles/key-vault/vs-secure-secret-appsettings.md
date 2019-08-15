@@ -1,6 +1,6 @@
 ---
-title: Bezpiecznie zapisywanie ustawień klucza tajnego aplikacji dla aplikacji sieci web — usługi Azure Key Vault | Dokumentacja firmy Microsoft
-description: W jaki sposób można bezpiecznie zapisać ustawienia klucza tajnego aplikacji takich jak poświadczenia platformy Azure lub innych firm interfejsu API kluczy przy użyciu platformy ASP.NET core dostawcy magazynu kluczy, tajemnicy użytkownika lub .NET 4.7.1 Konstruktorzy konfiguracji
+title: Bezpieczne Zapisywanie ustawień tajnych aplikacji dla aplikacji sieci Web — Azure Key Vault | Microsoft Docs
+description: Sposób bezpiecznego zapisywania ustawień tajnych aplikacji, takich jak poświadczenia platformy Azure lub klucze interfejsu API innych firm za pomocą ASP.NET Core Key Vault Provider, klucza tajnego użytkownika lub konstruktorów konfiguracji programu .NET 4.7.1
 services: visualstudio
 author: cawaMS
 manager: paulyuk
@@ -9,48 +9,48 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: cawa
-ms.openlocfilehash: 9763a14e84d88be1d6f09fb9f16b6b7c9eeffd2d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3f5196c81550446221a4524330e355c595b65c6a
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65506425"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934367"
 ---
-# <a name="securely-save-secret-application-settings-for-a-web-application"></a>Bezpiecznie zapisać ustawienia klucza tajnego aplikacji dla aplikacji sieci web
+# <a name="securely-save-secret-application-settings-for-a-web-application"></a>Bezpieczne Zapisywanie ustawień tajnych aplikacji dla aplikacji sieci Web
 
 ## <a name="overview"></a>Omówienie
-W tym artykule opisano, jak bezpiecznie zapisać ustawienia konfiguracji wpisu tajnego aplikacji dla aplikacji platformy Azure.
+W tym artykule opisano sposób bezpiecznego zapisywania ustawień konfiguracji tajnych aplikacji dla aplikacji platformy Azure.
 
-Tradycyjnie wszystkie sieci web konfiguracji aplikacji, które ustawienia są zapisywane w plikach konfiguracji, takich jak plik Web.config. Praktyka ta prowadzi do zaewidencjonowania ustawień tajnych, takich jak poświadczenia w chmurze dla systemów kontroli źródła publicznych, takich jak GitHub. W tym samym czasie może być trudno postępuj zgodnie z zaleceniami dotyczącymi zabezpieczeń ze względu na obciążenie, trzeba zmienić kod źródłowy i ponownie skonfigurować ustawienia środowiska deweloperskiego.
+Tradycyjnie wszystkie ustawienia konfiguracji aplikacji sieci Web są zapisywane w plikach konfiguracji, takich jak Web. config. To rozwiązanie prowadzi do sprawdzania ustawień tajnych, takich jak poświadczenia w chmurze, do publicznych systemów kontroli źródła, takich jak GitHub. W tym czasie może być trudne przestrzeganie najlepszych rozwiązań w zakresie zabezpieczeń z powodu obciążenia wymaganego do zmiany kodu źródłowego i ponownego skonfigurowania ustawień deweloperskich.
 
-Aby upewnić się, że proces tworzenia aplikacji jest bezpieczna, narzędzia i struktury bibliotek są tworzone można zapisać ustawień klucza tajnego aplikacji bezpiecznego przy minimalnym i żadne zmiany kodu źródłowego.
+Aby upewnić się, że proces opracowywania jest bezpieczny, biblioteki narzędzi i struktur struktury są tworzone w celu bezpiecznego zapisywania ustawień tajnych aplikacji przy minimalnym lub niezmienionym kodzie źródłowym.
 
-## <a name="aspnet-and-net-core-applications"></a>ASP.NET i .NET core z aplikacji
+## <a name="aspnet-and-net-core-applications"></a>Aplikacje ASP.NET i .NET Core
 
-### <a name="save-secret-settings-in-user-secret-store-that-is-outside-of-source-control-folder"></a>Zapisuj ustawień tajnych w magazynie tajemnicy użytkownika, który znajduje się poza folder kontroli źródła
-Jeśli macie szybkiego prototypu lub nie masz dostępu do Internetu, rozpoczynać przenoszenie ustawień klucza tajnego poza folder kontroli źródła do magazynu tajemnicy użytkownika. Magazynu wpisów tajnych użytkownika jest plikiem, który został zapisany w folderze Program profilujący użytkownika, więc klucze tajne nie zostały zaewidencjonowane do kontroli źródła. Poniższy diagram przedstawia sposób [tajemnicy użytkownika](https://docs.microsoft.com/aspnet/core/security/app-secrets?tabs=visual-studio) działa.
+### <a name="save-secret-settings-in-user-secret-store-that-is-outside-of-source-control-folder"></a>Zapisz ustawienia tajne w magazynie kluczy tajnych użytkownika, który znajduje się poza folderem kontroli źródła
+Jeśli wykonujesz szybki prototyp lub nie masz dostępu do Internetu, Rozpocznij od przeniesienia ustawień tajnych poza folder kontroli źródła do magazynu kluczy tajnych użytkownika. Magazyn kluczy tajnych użytkownika to plik zapisany w folderze profilera użytkownika, więc wpisy tajne nie są zaewidencjonowane do kontroli źródła. Na poniższym diagramie przedstawiono sposób działania [klucza tajnego użytkownika](https://docs.microsoft.com/aspnet/core/security/app-secrets?tabs=visual-studio) .
 
-![Tajemnicy użytkownika utrzymuje ustawień tajnych poza kontrolą źródła](./media/vs-secure-secret-appsettings/aspnetcore-usersecret.PNG)
+![Klucz tajny użytkownika utrzymuje ustawienia tajne poza kontrolą źródła](./media/vs-secure-secret-appsettings/aspnetcore-usersecret.PNG)
 
-Jeśli korzystasz z aplikacji konsoli .NET core, użyj usługi Key Vault można bezpiecznie zapisać klucz tajny.
+W przypadku korzystania z aplikacji konsolowej programu .NET Core należy bezpiecznie zapisać tajne hasło przy użyciu Key Vault.
 
-### <a name="save-secret-settings-in-azure-key-vault"></a>Zapisuj ustawień tajnych w usłudze Azure Key Vault
-Jeśli tworzysz projekt i trzeba bezpiecznie udostępniać kod źródłowy, użyj [usługi Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
+### <a name="save-secret-settings-in-azure-key-vault"></a>Zapisz ustawienia tajne w Azure Key Vault
+Jeśli opracowujesz projekt i chcesz bezpiecznie udostępniać kod źródłowy, użyj [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
 
-1. Utwórz magazyn kluczy w subskrypcji platformy Azure. Wypełnij wszystkie wymagane pola w interfejsie użytkownika, a następnie kliknij *Utwórz* w dolnej części bloku
+1. Utwórz Key Vault w ramach subskrypcji platformy Azure. Wypełnij wszystkie wymagane pola w interfejsie użytkownika, a następnie kliknij pozycję *Utwórz* w dolnej części bloku.
 
-    ![Tworzenie usługi Azure Key Vault](./media/vs-secure-secret-appsettings/create-keyvault.PNG)
+    ![Utwórz Azure Key Vault](./media/vs-secure-secret-appsettings/create-keyvault.PNG)
 
-2. Udziel wszystkich członków zespołu, dostęp do usługi Key Vault. Jeśli masz duży zespół, można utworzyć [grupy usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-groups-create-azure-portal) i Dodaj grupy zabezpieczeń, że dostęp do usługi Key Vault. W *uprawnienia klucza tajnego* listy rozwijanej wyboru *uzyskać* i *listy* w obszarze *operacji zarządzania wpisu tajnego*.
+2. Udziel użytkownikowi i członkom zespołu dostępu do Key Vault. Jeśli masz duży zespół, możesz utworzyć [grupę Azure Active Directory](../active-directory/active-directory-groups-create-azure-portal.md) i dodać tę grupę zabezpieczeń do Key Vault. Na liście rozwijanej *uprawnienia* do wpisów tajnych Sprawdź pozycję *Pobierz* i *wystaw* w obszarze *operacje zarządzania kluczami tajnymi*.
 
-    ![Dodawanie zasad dostępu magazynu kluczy](./media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
+    ![Dodawanie zasad dostępu Key Vault](./media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
 
-3. Dodaj klucz tajny do usługi Key Vault w witrynie Azure portal. Dla ustawień konfiguracji zagnieżdżonych, zastąp ":" z "—", nazwa wpisu tajnego usługi Key Vault jest prawidłowy. ":" nie może mieć nazwę usługi Key Vault wpisu tajnego.
+3. Dodaj klucz tajny do Key Vault na Azure Portal. W przypadku zagnieżdżonych ustawień konfiguracji Zastąp ciąg ":" "--", aby nazwa tajnego Key Vault była prawidłowa. znak ":" nie może być nazwą wpisu tajnego Key Vault.
 
-    ![Dodawanie wpisu tajnego usługi Key Vault](./media/vs-secure-secret-appsettings/add-keyvault-secret.png)
+    ![Dodaj Key Vault tajny](./media/vs-secure-secret-appsettings/add-keyvault-secret.png)
 
     > [!NOTE] 
-    > Przed Visual Studio 2017 V15.6 użyliśmy zaleca się zainstalowanie rozszerzenia uwierzytelniania usług platformy Azure dla programu Visual Studio. Jest przestarzały, ale teraz funcionality jest zintegrowana w programie Visual Studio. Dlatego jeśli masz starszą wersję programu visual Studio 2017, zalecamy jej aktualizacji do co najmniej programu VS 2017 15.6 lub wyższej, dzięki czemu mogą natywnie korzystać z tej funkcji i uzyskać dostęp do usługi Key vault z przy użyciu programu Visual Studio logowania tożsamości sam.
+    > Przed rozpoczęciem korzystania z programu Visual Studio 2017 15.6 w wersji zazalecamy zainstalowanie rozszerzenia uwierzytelniania usług platformy Azure dla programu Visual Studio. Jest to jednak przestarzałe, ponieważ Funcionality jest zintegrowany w programie Visual Studio. W związku z tym, jeśli używasz starszej wersji programu Visual Studio 2017, Zalecamy zaktualizowanie do programu VS 2017 15,6 lub w taki sposób, aby można było używać tych funkcji natywnie i uzyskać dostęp do magazynu kluczy z użyciem tożsamości logowania programu Visual Studio.
     >
  
 4. Dodaj następujące pakiety NuGet do projektu:
@@ -81,26 +81,26 @@ Jeśli tworzysz projekt i trzeba bezpiecznie udostępniać kod źródłowy, uży
 
         private static string GetKeyVaultEndpoint() => Environment.GetEnvironmentVariable("KEYVAULT_ENDPOINT");
     ```
-6. Dodaj adres URL usługi Key Vault do pliku launchsettings.json. Nazwa zmiennej środowiskowej *KEYVAULT_ENDPOINT* jest definiowana w kodzie dodanym w kroku 6.
+6. Dodaj adres URL Key Vault do pliku profilu launchsettings. JSON. Nazwa zmiennej środowiskowej *KEYVAULT_ENDPOINT* jest zdefiniowana w kodzie dodanym w kroku 6.
 
-    ![Dodaj adres URL magazynu Key jako zmienną środowiskową projektu](./media/vs-secure-secret-appsettings/add-keyvault-url.png)
+    ![Dodaj adres URL Key Vault jako zmienną środowiskową projektu](./media/vs-secure-secret-appsettings/add-keyvault-url.png)
 
-7. Uruchom debugowanie projektu. Należy uruchomić pomyślnie.
+7. Rozpocznij debugowanie projektu. Powinien zostać uruchomiony pomyślnie.
 
 ## <a name="aspnet-and-net-applications"></a>Aplikacje ASP.NET i .NET
 
-.NET 4.7.1 obsługuje Konstruktorzy konfiguracji magazynu kluczy oraz klucz tajny, który gwarantuje, że wpisy tajne można przenosić poza folder kontroli źródła bez zmian w kodzie.
-Aby kontynuować, [Pobierz .NET 4.7.1](https://www.microsoft.com/download/details.aspx?id=56115) i migracji aplikacji, jeśli wykorzystywana jest starsza wersja programu .NET framework.
+Platforma .NET 4.7.1 obsługuje konstruktory konfiguracji Key Vault i wpisów tajnych, co gwarantuje, że wpisy tajne mogą być przenoszone poza folder kontroli źródła bez wprowadzania zmian w kodzie.
+Aby to zrobić, [Pobierz program .NET 4.7.1](https://www.microsoft.com/download/details.aspx?id=56115) i Migruj swoją aplikację, jeśli używasz starszej wersji programu .NET Framework.
 
-### <a name="save-secret-settings-in-a-secret-file-that-is-outside-of-source-control-folder"></a>Zapisuj ustawień tajnych w pliku klucza tajnego, który znajduje się poza folder kontroli źródła
-Jeśli piszesz szybkiego prototypu i nie chcesz aprowizowania zasobów platformy Azure, ta opcja zawsze pod ręką.
+### <a name="save-secret-settings-in-a-secret-file-that-is-outside-of-source-control-folder"></a>Zapisz ustawienia tajne w pliku tajnym, który znajduje się poza folderem kontroli źródła
+Jeśli piszesz krótki prototyp i nie chcesz udostępniać zasobów platformy Azure, przejdź do tej opcji.
 
-1. Zainstaluj następujący pakiet NuGet do projektu
+1. Zainstaluj następujący pakiet NuGet w projekcie
     ```
     Microsoft.Configuration.ConfigurationBuilders.Basic
     ```
 
-2. Utwórz plik, który jest podobny do działaniami. Zapisz go w lokalizacji poza folderem projektu.
+2. Utwórz plik podobny do poniższego. Zapisz ją w lokalizacji poza folderem projektu.
 
     ```xml
     <root>
@@ -111,7 +111,7 @@ Jeśli piszesz szybkiego prototypu i nie chcesz aprowizowania zasobów platformy
     </root>
     ```
 
-3. Zdefiniuj plik wpisów tajnych do konstruktora konfiguracji w pliku Web.config. Umieść tę sekcję przed *appSettings* sekcji.
+3. Zdefiniuj plik tajny jako konstruktora konfiguracji w pliku Web. config. Umieść tę sekcję przed sekcją *AppSettings* .
 
     ```xml
     <configBuilders>
@@ -123,7 +123,7 @@ Jeśli piszesz szybkiego prototypu i nie chcesz aprowizowania zasobów platformy
     </configBuilders>
     ```
 
-4. Określ sekcji appSettings jest za pomocą konstruktora tajny konfiguracji. Upewnij się, że istnieje wpis dla klucza tajnego ustawienia o wartości.
+4. Określ sekcję appSettings przy użyciu programu Secret Configuration Builder. Upewnij się, że dla ustawienia tajnego istnieje wpis z wartością fikcyjną.
 
     ```xml
         <appSettings configBuilders="Secrets">
@@ -135,17 +135,17 @@ Jeśli piszesz szybkiego prototypu i nie chcesz aprowizowania zasobów platformy
         </appSettings>
     ```
 
-5. Debugowanie aplikacji. Należy uruchomić pomyślnie.
+5. Debuguj aplikację. Powinien zostać uruchomiony pomyślnie.
 
-### <a name="save-secret-settings-in-an-azure-key-vault"></a>Zapisuj ustawień tajnych w usłudze Azure Key Vault
-Wykonaj instrukcje z platformy ASP.NET core sekcji, aby skonfigurować usługę Key Vault dla Twojego projektu.
+### <a name="save-secret-settings-in-an-azure-key-vault"></a>Zapisywanie ustawień tajnych w Azure Key Vault
+Postępuj zgodnie z instrukcjami w sekcji ASP.NET Core, aby skonfigurować Key Vault dla projektu.
 
-1. Zainstaluj następujący pakiet NuGet do projektu
+1. Zainstaluj następujący pakiet NuGet w projekcie
    ```
    Microsoft.Configuration.ConfigurationBuilders.UserSecrets
    ```
 
-2. Definiowanie konstruktora konfiguracji usługi Key Vault w pliku Web.config. Umieść tę sekcję przed *appSettings* sekcji. Zastąp *vaultName* jako nazwę usługi Key Vault, jeśli usługi Key Vault jest w publicznej platformy Azure lub pełny identyfikator URI, jeśli używasz należących do suwerennej chmury.
+2. Zdefiniuj konstruktora konfiguracji Key Vault w pliku Web. config. Umieść tę sekcję przed sekcją *AppSettings* . Zastąp wartość Nazwa *magazynu* nazwą Key Vault, jeśli key Vault znajduje się na publicznej platformie Azure, lub pełny identyfikator URI w przypadku korzystania z chmury suwerennej.
 
     ```xml
     <configSections>
@@ -157,7 +157,7 @@ Wykonaj instrukcje z platformy ASP.NET core sekcji, aby skonfigurować usługę 
         </builders>
     </configBuilders>
     ```
-3. Określ, że używa konstruktora konfiguracji usługi Key Vault w sekcji appSettings. Upewnij się, że istnieje wpis dla klucza tajnego ustawienia o wartości.
+3. Określ sekcję appSettings przy użyciu konstruktora konfiguracji Key Vault. Upewnij się, że dla ustawienia tajnego istnieje wpis z wartością fikcyjną.
 
    ```xml
    <appSettings configBuilders="AzureKeyVault">
@@ -169,4 +169,4 @@ Wykonaj instrukcje z platformy ASP.NET core sekcji, aby skonfigurować usługę 
    </appSettings>
    ```
 
-4. Uruchom debugowanie projektu. Należy uruchomić pomyślnie.
+4. Rozpocznij debugowanie projektu. Powinien zostać uruchomiony pomyślnie.

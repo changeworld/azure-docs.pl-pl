@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 14bf7dc62bb97cb14232660db6d0649e3d77d4fa
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 2c43a3c046243c4802fb433f3b755cee158002b6
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662941"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950557"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integracja rozwiązań zabezpieczeń w usłudze Azure Security Center
 Ten dokument ułatwia zarządzanie rozwiązaniami zabezpieczeń już połączonymi z usługą Azure Security Center i dodawanie nowych.
@@ -56,7 +56,7 @@ Rozwiązania zabezpieczeń platformy Azure, które zostały wdrożone z usługi 
 
    ![Security Center — Przegląd](./media/security-center-partner-integration/overview.png)
 
-W obszarze **Rozwiązania w zakresie bezpieczeństwa** możesz wyświetlić informacje o kondycji zintegrowanych rozwiązań zabezpieczeń platformy Azure i wykonać podstawowe zadania zarządzania. Możesz też połączyć inne typy źródeł danych zabezpieczeń, takie jak alerty usługi Azure Active Directory Identity Protection, i dzienniki zapory w formacie CEF.
+W obszarze **Rozwiązania w zakresie bezpieczeństwa** możesz wyświetlić informacje o kondycji zintegrowanych rozwiązań zabezpieczeń platformy Azure i wykonać podstawowe zadania zarządzania.
 
 ### <a name="connected-solutions"></a>Rozwiązania połączone
 
@@ -97,8 +97,6 @@ Usługa Security Center automatycznie odnajduje rozwiązania w zakresie zabezpie
 Wybierz pozycję **POŁĄCZ** w obszarze rozwiązania, aby zintegrować je z usługą Security Center i otrzymywać powiadomienia o alertach zabezpieczeń.
 
 ![Odnalezione rozwiązania](./media/security-center-partner-integration/security-center-partner-integration-fig5.png)
-
-Usługa Security Center odnajduje również rozwiązania wdrożone w ramach subskrypcji, które mogą przekazywać dalej Dzienniki w formacie Common Event Format (CEF). Dowiedz się, jak [połączyć rozwiązanie w zakresie zabezpieczeń](quick-security-solutions.md), które używa dzienników CEF, z usługą Security Center.
 
 ### <a name="add-data-sources"></a>Dodawanie źródeł danych
 
@@ -149,7 +147,7 @@ Oto kilka zapytań Splunk, których można użyć do ściągania danych alertu:
 | Pobierz informacje o alertach: Godzina, nazwa, stan, identyfikator i subskrypcja | index = Main Microsoft. Security/Locations/ \| Alerts tabela \_czas, właściwości. EventName, State, Properties. operationId, am_subscriptionId |
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym artykule przedstawiono sposób zintegrowania rozwiązania partnerskiego w usłudze Security Center. Aby dowiedzieć się więcej na temat usługi Security Center, zobacz następujące artykuły:
 

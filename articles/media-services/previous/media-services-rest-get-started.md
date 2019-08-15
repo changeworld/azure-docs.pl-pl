@@ -1,6 +1,6 @@
 ---
-title: Wprowadzenie do dostarczania zawartości na żądanie przy użyciu usługi REST | Dokumentacja firmy Microsoft
-description: Ten samouczek przeprowadzi Cię przez kroki wdrażania aplikacji dostarczania zawartości na żądanie przy użyciu usługi Azure Media Services przy użyciu interfejsu API REST.
+title: Wprowadzenie do dostarczania zawartości na żądanie przy użyciu usługi REST | Microsoft Docs
+description: Ten samouczek przeprowadzi Cię przez kroki wdrażania aplikacji do dostarczania zawartości na żądanie z Azure Media Services przy użyciu interfejsu API REST.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 76eae5fa049ed1fbf7195277613867aca63c1082
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f0f9b2c974c0a095719973b1c6173d682718dbbf
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64867632"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "69014867"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Wprowadzenie do dostarczania zawartości na żądanie przy użyciu usługi REST  
 
 > [!NOTE]
-> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
+> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówki dotyczące migracji od wersji 2 do V3](../latest/migrate-from-v2-to-v3.md)
 
 Ten przewodnik Szybki Start przeprowadzi Cię przez kroki wdrażania aplikacji do dostarczania zawartości wideo na żądanie (VoD) przy użyciu interfejsów API REST usługi Azure Media Services (AMS).
 
-Samouczek przedstawia podstawowy przepływ pracy usług Media Services oraz najczęściej występujące obiekty i zadania programowania wymagane w celu projektowania usług Media Services. Po ukończeniu tego samouczka możesz się strumieniowo lub pobrać progresywnie przykładowy plik nośnika, który przekazany, zakodowany i pobrane.
+Samouczek przedstawia podstawowy przepływ pracy usług Media Services oraz najczęściej występujące obiekty i zadania programowania wymagane w celu projektowania usług Media Services. Po zakończeniu samouczka można przesłać strumieniowo lub pobrać progresywnie przykładowy plik multimedialny, który został przekazany, zakodowany i pobrany.
 
 Na poniższym obrazie przedstawiono niektóre z najczęściej używanych obiektów podczas tworzenia aplikacji VoD w modelu Media Services OData.
 
@@ -37,33 +37,33 @@ Kliknij obraz, aby go wyświetlić w pełnym rozmiarze.
 <a href="./media/media-services-rest-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-rest-get-started/media-services-overview-object-model-small.png"></a> 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Następujące wymagania wstępne są wymagane, aby rozpocząć tworzenie aplikacji za pomocą usługi Media Services za pomocą interfejsów API REST.
+Aby rozpocząć programowanie Media Services przy użyciu interfejsów API REST, wymagane są następujące wymagania wstępne.
 
 * Konto platformy Azure. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 * Konto usługi Media Services. Aby utworzyć konto usługi Media Services, zobacz temat [Jak utworzyć konto usługi Media Services](media-services-portal-create-account.md).
-* Wiedzą, jak tworzyć aplikacje za pomocą interfejsu API REST usługi Media Services. Aby uzyskać więcej informacji, zobacz [omówienie interfejsu API REST usługi Media Services](media-services-rest-how-to-use.md).
-* Aplikacja, który można wysłać żądań i odpowiedzi HTTP. W tym samouczku [Fiddler](https://www.telerik.com/download/fiddler).
+* Zrozumienie sposobu tworzenia przy użyciu interfejsu API REST Media Services. Aby uzyskać więcej informacji, zobacz [Media Services API REST — Omówienie](media-services-rest-how-to-use.md).
+* Wybrana przez Ciebie aplikacja, która może wysyłać żądania HTTP i odpowiedzi. Ten samouczek używa [programu Fiddler](https://www.telerik.com/download/fiddler).
 
-Następujące zadania są wyświetlane w tym przewodniku Szybki Start.
+W tym przewodniku szybki start przedstawiono następujące zadania.
 
 1. Uruchamianie punktów końcowych przesyłania strumieniowego (przy użyciu witryny Azure Portal).
-2. Połączyć konto usługi Media Services za pomocą interfejsu API REST.
-3. Tworzenie nowego elementu zawartości i przekazywanie pliku wideo za pomocą interfejsu API REST.
-4. Kodowanie pliku źródłowego do zestawu plików MP4 o adaptacyjnej szybkości transmisji bitów przy użyciu interfejsu API REST.
-5. Publikowanie elementu zawartości i uzyskiwanie przesyłania strumieniowego i pobierania progresywnego adresy URL przy użyciu interfejsu API REST.
+2. Połącz się z kontem Media Services za pomocą interfejsu API REST.
+3. Utwórz nowy element zawartości i Przekaż plik wideo za pomocą interfejsu API REST.
+4. Kodowanie pliku źródłowego do zestawu plików MP4 z adaptacyjną szybkością transmisji bitów przy użyciu interfejsu API REST.
+5. Opublikowanie elementu zawartości i pobieranie przesyłania strumieniowego oraz adresów URL pobierania progresywnego za pomocą interfejsu API REST.
 6. Odtwarzanie zawartości.
 
 >[!NOTE]
->Limit różnych zasad usługi AMS wynosi 1 000 000 (na przykład zasad lokalizatorów lub ContentKeyAuthorizationPolicy). Użyj tego samego Identyfikatora zasad, jeśli zawsze używasz tych samych dni / dostęp do uprawnień, na przykład zasad lokalizatorów, które powinny pozostać w miejscu przez długi czas (nieprzekazywane zasady). Więcej informacji znajduje się w [tym](media-services-dotnet-manage-entities.md#limit-access-policies) artykule.
+>Limit różnych zasad usługi AMS wynosi 1 000 000 (na przykład zasad lokalizatorów lub ContentKeyAuthorizationPolicy). Użyj tego samego identyfikatora zasad, jeśli zawsze używasz tych samych dni/uprawnień dostępu, na przykład zasad dla lokalizatorów, które mają być nadal wykonywane przez długi czas (zasady bez przekazywania). Więcej informacji znajduje się w [tym](media-services-dotnet-manage-entities.md#limit-access-policies) artykule.
 
-Aby uzyskać szczegółowe informacje na temat jednostek REST usługi AMS używane w tym artykule, zobacz [dokumentacja interfejsu API REST usługi multimediów Azure](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference). Zobacz też [pojęcia dotyczące usługi Azure Media Services](media-services-concepts.md).
+Aby uzyskać szczegółowe informacje na temat jednostek REST usługi AMS używanych w tym artykule, zobacz [Azure Media Services Dokumentacja interfejsu API REST](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference). Zobacz też temat [Azure Media Services pojęcia](media-services-concepts.md).
 
 >[!NOTE]
->Podczas uzyskiwania dostępu do jednostek w usłudze Media Services, należy ustawić określonych pól nagłówka i wartości w żądaniach HTTP. Aby uzyskać więcej informacji, zobacz [Instalatora w celu tworzenia interfejsu API REST usługi Media](media-services-rest-how-to-use.md).
+>Podczas uzyskiwania dostępu do jednostek w Media Services należy ustawić określone pola nagłówka i wartości w żądaniach HTTP. Aby uzyskać więcej informacji, zobacz [konfigurowanie Media Services tworzenia interfejsu API REST](media-services-rest-how-to-use.md).
 
 ## <a name="start-streaming-endpoints-using-the-azure-portal"></a>Uruchamianie punktów końcowych przesyłania strumieniowego przy użyciu witryny Azure Portal
 
-Podczas pracy z usługą Azure Media Services, jednym z najbardziej typowych scenariuszy jest dostarczanie obrazu wideo za pośrednictwem przesyłania strumieniowego o adaptacyjnej szybkości transmisji bitów. Usługa Media Services udostępnia funkcję dynamicznego tworzenia pakietów, która pozwala dostarczać kodowaną zawartość plików MP4 z adaptacyjną szybkością transmisji bitów w formatach przesyłania strumieniowego obsługiwanych przez usługę Media Services (MPEG DASH, HLS, Smooth Streaming) w odpowiednim czasie bez konieczności przechowywania wersji wstępnie utworzonych pakietów poszczególnych formatów przesyłania strumieniowego.
+Podczas pracy z Azure Media Services jednym z najbardziej typowych scenariuszy jest dostarczanie wideo za pośrednictwem przesyłania strumieniowego z adaptacyjną szybkością transmisji bitów. Usługa Media Services udostępnia funkcję dynamicznego tworzenia pakietów, która pozwala dostarczać kodowaną zawartość plików MP4 z adaptacyjną szybkością transmisji bitów w formatach przesyłania strumieniowego obsługiwanych przez usługę Media Services (MPEG DASH, HLS, Smooth Streaming) w odpowiednim czasie bez konieczności przechowywania wersji wstępnie utworzonych pakietów poszczególnych formatów przesyłania strumieniowego.
 
 >[!NOTE]
 >Po utworzeniu konta usługi AMS zostanie do niego dodany **domyślny** punkt końcowy przesyłania strumieniowego mający stan **Zatrzymany**. Aby rozpocząć przesyłanie strumieniowe zawartości oraz korzystać z dynamicznego tworzenia pakietów i szyfrowania dynamicznego, punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać zawartość, musi mieć stan **Uruchomiony**.
@@ -79,24 +79,24 @@ Aby uruchomić punkt końcowy przesyłania strumieniowego, wykonaj następujące
 4. Kliknij ikonę Uruchom.
 5. Kliknij przycisk Zapisz, aby zapisać zmiany.
 
-## <a id="connect"></a>Połączenie z kontem usługi Media Services za pomocą interfejsu API REST
+## <a id="connect"></a>Nawiązywanie połączenia z kontem Media Services przy użyciu interfejsu API REST
 
-Aby uzyskać informacje o tym, jak połączyć się z interfejsem API usługi AMS, zobacz [dostęp do interfejsu API usługi multimediów Azure przy użyciu uwierzytelniania usługi Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+Aby uzyskać informacje na temat nawiązywania połączenia z interfejsem API usługi AMS, zobacz [dostęp do interfejsu api Azure Media Services przy użyciu uwierzytelniania w usłudze Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
 ## <a id="upload"></a>Tworzenie nowego elementu zawartości i przekazywanie pliku wideo za pomocą interfejsu API REST
 
-Za pomocą usługi Media Services można przekazać pliki cyfrowe do elementu zawartości. **Zasobów** jednostki może zawierać wideo, audio, obrazy, kolekcje miniatur, tekst śledzi i napisów plików (i metadane dotyczące tych plików.)  Po przekazaniu plików do elementu zawartości, zawartość jest bezpiecznie przechowywana w chmurze na potrzeby dalszego przetwarzania i przesyłania strumieniowego.
+Za pomocą usługi Media Services można przekazać pliki cyfrowe do elementu zawartości. Jednostka **zasobu** może zawierać wideo, audio, obrazy, kolekcje miniatur, ścieżki tekstowe i pliki napisów (oraz metadane dotyczące tych plików).  Gdy pliki zostaną przekazane do elementu zawartości, zawartość jest bezpiecznie przechowywana w chmurze w celu dalszej przetwarzania i przesyłania strumieniowego.
 
-Jedna z wartości, które należy podać podczas tworzenia zasobu jest opcji tworzenia elementów zawartości. **Opcje** właściwość jest wartością wyliczenia, która w tym artykule opisano opcje szyfrowania, które można utworzyć element zawartości za pomocą. Nieprawidłowa wartość jest jedną z wartości z listy poniżej, a nie kombinacji wartości z tej listy:
+Jedną z wartości, które należy podać podczas tworzenia elementu zawartości, jest opcja tworzenia zasobów. Właściwość **Options** jest wartością wyliczenia opisującą opcje szyfrowania, za pomocą których można utworzyć zasób. Prawidłowa wartość jest jedną z wartości z poniższej listy, a nie kombinacją wartości z tej listy:
 
-* **Brak** = **0** — bez szyfrowania jest używany. Przy użyciu tej opcji zawartość nie jest chroniona w trakcie przesyłania lub przechowywania w magazynie.
+* Brak = **0** — żadne szyfrowanie nie jest używane. W przypadku korzystania z tej opcji zawartość nie jest chroniona podczas przesyłania ani przechowywania w magazynie.
     Jeśli planujesz dostarczać zawartość w formacie MP4 przy użyciu pobierania progresywnego, użyj tej opcji.
-* **StorageEncrypted** = **1** — zawartości lokalnie przy użyciu algorytmu AES-256-bitowego szyfruje i przekazuje je do usługi Azure Storage gdzie są przechowywane, szyfrowane, gdy. Elementy zawartości chronione przy użyciu szyfrowania magazynu są automatycznie odszyfrowywane i umieszczane w systemie szyfrowania plików przed kodowaniem, a także opcjonalnie ponownie szyfrowane przed przesłaniem zwrotnym w formie nowego elementu zawartości wyjściowej. Pierwotnym zastosowaniem szyfrowania magazynu jest zabezpieczenie za pomocą silnego szyfrowania wysokiej jakości multimedialnych plików wejściowych przechowywanych na dysku.
-* **CommonEncryptionProtected** = **2** — Użyj tej opcji, jeśli przekazujesz zawartość, która jest już zaszyfrowana i chroniona za pomocą wspólnego szyfrowania lub technologii PlayReady DRM (na przykład, Smooth Streaming chronione przy użyciu technologii PlayReady DRM).
-* **EnvelopeEncryptionProtected** = **4** — Użyj tej opcji, jeśli przekazujesz HLS zaszyfrowanych z użyciem standardu AES. Należy zakodowane pliki i szyfrowane przez Transform Manager.
+* StorageEncrypted = **1** — szyfruje zawartość czystych danych lokalnie przy użyciu szyfrowania AES-256 bit, a następnie przekazuje je do usługi Azure Storage, gdzie jest przechowywana w stanie spoczynku. Elementy zawartości chronione przy użyciu szyfrowania magazynu są automatycznie odszyfrowywane i umieszczane w systemie szyfrowania plików przed kodowaniem, a także opcjonalnie ponownie szyfrowane przed przesłaniem zwrotnym w formie nowego elementu zawartości wyjściowej. Pierwotnym zastosowaniem szyfrowania magazynu jest zabezpieczenie za pomocą silnego szyfrowania wysokiej jakości multimedialnych plików wejściowych przechowywanych na dysku.
+* CommonEncryptionProtected = **2** — Użyj tej opcji, jeśli przesyłasz zawartość, która została już zaszyfrowana i chroniona za pomocą Common Encryption lub technologii DRM (na przykład Smooth Streaming chronione za pomocą technologii PlayReady DRM).
+* EnvelopeEncryptionProtected = **4** — Użyj tej opcji, jeśli przekazujesz HLS szyfrowany przy użyciu algorytmu AES. Pliki muszą być zakodowane i zaszyfrowane przez Menedżera transformacji.
 
-### <a name="create-an-asset"></a>Utworzenie elementu zawartości
-Element zawartości jest kontenerem dla wielu typów lub zestawów obiektów w usłudze Media Services, w tym wideo, audio, obrazy, kolekcje miniatur, ścieżki tekstowe i pliki napisów. W interfejsie API REST tworzenia zasobu wymaga wysłanie żądania POST do usługi Media Services oraz umieszczanie właściwości informacji o elementów zawartości w treści żądania.
+### <a name="create-an-asset"></a>Utwórz element zawartości
+Element zawartości to kontener dla wielu typów lub zestawów obiektów w Media Services, w tym wideo, audio, obrazy, kolekcje miniatur, ścieżki tekstowe i pliki napisów. W interfejsie API REST Tworzenie elementu zawartości wymaga wysłania żądania POST do Media Services i umieszczenia wszelkich informacji o właściwościach zasobu w treści żądania.
 
 Poniższy przykład pokazuje, jak utworzyć element zawartości.
 
@@ -119,7 +119,7 @@ Poniższy przykład pokazuje, jak utworzyć element zawartości.
 
 **Odpowiedź HTTP**
 
-Jeśli to się powiedzie, jest zwracany następujące czynności:
+Jeśli to się powiedzie, zwracane są następujące elementy:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -150,9 +150,9 @@ Jeśli to się powiedzie, jest zwracany następujące czynności:
     }
 
 ### <a name="create-an-assetfile"></a>Utwórz AssetFile
-[AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) jednostki reprezentuje plik wideo lub audio, który jest przechowywany w kontenerze obiektów blob. Plik zasobów jest zawsze skojarzone z elementem zawartości i zasobów może zawierać jeden lub wiele AssetFiles. Zadanie Media Services Encoder kończy się niepowodzeniem, jeśli obiekt pliku zasobów nie jest skojarzony z plikiem cyfrowych w kontenerze obiektów blob.
+Jednostka [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) reprezentuje plik wideo lub audio, który jest przechowywany w kontenerze obiektów BLOB. Plik zasobów jest zawsze skojarzony z zasobem, a element zawartości może zawierać jeden lub wiele AssetFiles. Zadanie kodera Media Services nie powiedzie się, jeśli obiekt pliku zasobów nie jest skojarzony z plikiem cyfrowym w kontenerze obiektów BLOB.
 
-Po przekazaniu pliku multimediów cyfrowych do kontenera obiektów blob, użyj **scalania** żądania HTTP, aby zaktualizować AssetFile z informacjami o pliku multimedialnego (jak pokazano w dalszej części tematu).
+Po przekazaniu pliku multimediów cyfrowych do kontenera obiektów BLOB używasz żądania **scalania** http, aby zaktualizować AssetFile za pomocą informacji o pliku multimedialnym (jak pokazano w dalszej części tematu).
 
 **Żądanie HTTP**
 
@@ -212,7 +212,7 @@ Po przekazaniu pliku multimediów cyfrowych do kontenera obiektów blob, użyj *
 
 
 ### <a name="creating-the-accesspolicy-with-write-permission"></a>Tworzenie AccessPolicy z uprawnieniami do zapisu
-Przed przekazaniem żadnych plików do magazynu obiektów blob, należy ustawić dostępu zasady prawa do zapisu do elementu zawartości. Aby to zrobić, OPUBLIKUJ żądanie HTTP AccessPolicies zestawem jednostek. Zdefiniuj wartość DurationInMinutes po utworzeniu lub pojawi się komunikat 500 Błąd wewnętrzny serwera w odpowiedzi. Aby uzyskać więcej informacji na temat AccessPolicies, zobacz [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy).
+Przed przekazaniem plików do usługi BLOB Storage Ustaw uprawnienia dostępu do zapisu w elemencie zawartości. W tym celu Opublikuj żądanie HTTP w zestawie jednostek AccessPolicies. Zdefiniuj wartość DurationInMinutes podczas tworzenia lub w odpowiedzi zostanie wyświetlony komunikat o błędzie wewnętrznego serwera 500. Aby uzyskać więcej informacji na temat AccessPolicies, zobacz [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy).
 
 Poniższy przykład pokazuje, jak utworzyć AccessPolicy:
 
@@ -233,7 +233,7 @@ Poniższy przykład pokazuje, jak utworzyć AccessPolicy:
 
 **Odpowiedź HTTP**
 
-Jeśli to się powiedzie, jest zwracany następującą odpowiedź:
+W przypadku powodzenia następuje zwrócenie następującej odpowiedzi:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -259,21 +259,21 @@ Jeśli to się powiedzie, jest zwracany następującą odpowiedź:
        "Permissions":2
     }
 
-### <a name="get-the-upload-url"></a>Pobierz adres URL przesyłania
+### <a name="get-the-upload-url"></a>Pobierz adres URL przekazywania
 
-Aby otrzymywać z adresem URL rzeczywistej przekazywania, należy utworzyć Lokalizator sygnatury dostępu Współdzielonego. Lokalizatory definiują czas rozpoczęcia i typu punktu końcowego połączenia dla klientów, którzy chcą uzyskać dostęp do plików w zasobie. Możesz utworzyć wiele jednostek lokalizatora dla danego pary AccessPolicy i zasobów do obsługi żądań różnych klientów i potrzeb. Wartość StartTime plus wartość DurationInMinutes AccessPolicy każdego z tych lokalizatorów używa do określenia czasu, można użyć adresu URL. Aby uzyskać więcej informacji, zobacz [lokalizatora](https://docs.microsoft.com/rest/api/media/operations/locator).
+Aby otrzymać rzeczywisty adres URL przekazywania, Utwórz lokalizator sygnatury dostępu współdzielonego. Lokalizatory definiują czas rozpoczęcia i typ punktu końcowego połączenia dla klientów, którzy chcą uzyskać dostęp do plików w elemencie zawartości. Można utworzyć wiele jednostek lokalizatora dla danej AccessPolicy i pary zasobów, aby obsługiwać różne żądania klientów i ich potrzeby. Każdy z tych lokalizatorów używa wartości StartTime oraz wartości DurationInMinutes AccessPolicy, aby określić długość czasu, przez jaki można użyć adresu URL. Aby uzyskać więcej informacji, zobacz [lokalizator](https://docs.microsoft.com/rest/api/media/operations/locator).
 
-Adres URL SAS ma następujący format:
+Adres URL sygnatury dostępu współdzielonego ma następujący format:
 
     {https://myaccount.blob.core.windows.net}/{asset name}/{video file name}?{SAS signature}
 
 Zagadnienia do rozważenia:
 
-* Nie może mieć więcej niż pięć unikatowe Lokalizatory skojarzone z danym elementem zawartości w tym samym czasie. 
-* Jeśli zachodzi potrzeba natychmiast przekazać pliki, należy ustawić wartość StartTime do pięciu minut przed bieżącym czasem. Jest to spowodowane mogą istnieć zegara niesymetryczność między komputerem klienckim i Media Services. Ponadto wartość StartTime musi być w następującym formacie daty/godziny: RRRR-MM-ddtgg (na przykład "2014-05-23T17:53:50Z").    
-* Może to być sekundy 30 – 40 opóźnienie po utworzeniu lokalizatora, gdy będzie ona dostępna do użytku. Ten problem dotyczy zarówno [adresu URL sygnatury dostępu Współdzielonego](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) oraz Lokalizatory pochodzenia.
+* W tym samym czasie nie można mieć więcej niż pięciu unikatowych lokalizatorów skojarzonych z danym elementem zawartości. 
+* Jeśli zachodzi potrzeba natychmiastowego przekazania plików, należy ustawić wartość StartTime na pięć minut przed bieżącą godziną. Wynika to z faktu, że nastąpi przechylenie zegara między komputerem klienckim a Media Services. Ponadto wartość StartTime musi mieć następujący format: RRRR-MM-DDTgg: mm: SSS (na przykład "2014-05-23T17:53:50Z").    
+* Po utworzeniu lokalizatora do użycia może wystąpić 30-40 sekund. Ten problem dotyczy zarówno [adresów URL sygnatury](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) dostępu współdzielonego, jak i lokalizatorów pochodzenia.
 
-Poniższy przykład pokazuje, jak utworzyć Lokalizator adresu URL sygnatury dostępu Współdzielonego, zgodnie z definicją we właściwości typu w treści żądania ("1" dla lokalizatora sygnatury dostępu Współdzielonego) i "2" dla lokalizatora origin na żądanie. **Ścieżki** właściwości zwróconej zawiera adres URL, do którego należy użyć, aby przesłać plik.
+Poniższy przykład pokazuje, jak utworzyć lokalizator adresów URL sygnatury dostępu współdzielonego, jak określono przez Właściwość Type w treści żądania ("1" dla lokalizatora sygnatury dostępu współdzielonego i "2" dla lokalizatora źródła na żądanie). Zwrócona Właściwość **Path** zawiera adres URL, którego należy użyć do przekazania pliku.
 
 **Żądanie HTTP**
 
@@ -298,7 +298,7 @@ Poniższy przykład pokazuje, jak utworzyć Lokalizator adresu URL sygnatury dos
 
 **Odpowiedź HTTP**
 
-Jeśli to się powiedzie, jest zwracany następującą odpowiedź:
+W przypadku powodzenia następuje zwrócenie następującej odpowiedzi:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -328,18 +328,18 @@ Jeśli to się powiedzie, jest zwracany następującą odpowiedź:
        "Name":null
     }
 
-### <a name="upload-a-file-into-a-blob-storage-container"></a>Przekaż plik do kontenera magazynu obiektów blob
-Po utworzeniu AccessPolicy i lokalizatora zestawu rzeczywisty plik zostanie przekazany do kontenera magazynu obiektów blob platformy Azure przy użyciu interfejsów API REST usługi Azure Storage. Należy przekazać pliki jako blokowe obiekty BLOB. Stronicowe obiekty BLOB nie są obsługiwane przez usługę Azure Media Services.  
+### <a name="upload-a-file-into-a-blob-storage-container"></a>Przekaż plik do kontenera magazynu obiektów BLOB
+Po skonfigurowaniu AccessPolicy i lokalizatora rzeczywisty plik zostanie przekazany do kontenera usługi Azure Blob Storage za pomocą interfejsów API REST usługi Azure Storage. Pliki muszą być przekazywane jako blokowe obiekty blob. Stronicowe obiekty blob nie są obsługiwane przez Azure Media Services.  
 
 > [!NOTE]
-> Należy dodać nazwę pliku dla pliku, który chcesz przekazać do Lokalizator **ścieżki** wartość odebrana w poprzedniej sekcji. Na przykład `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?`.
+> Należy dodać nazwę pliku, który ma zostać przekazany do wartości **ścieżki** lokalizatora otrzymanej w poprzedniej sekcji. Na przykład `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?`.
 >
 >
 
-Aby uzyskać więcej informacji na temat pracy z obiektami blob usługi Azure storage, zobacz [interfejsu API REST usługi Blob](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
+Aby uzyskać więcej informacji na temat pracy z obiektami BLOB usługi Azure Storage, zobacz [API REST usługa BLOB Service](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
 
-### <a name="update-the-assetfile"></a>Aktualizacja AssetFile
-Teraz, gdy już przesłano pliku, należy zaktualizować informacje o FileAsset rozmiar (i inne). Na przykład:
+### <a name="update-the-assetfile"></a>Aktualizowanie AssetFile
+Teraz, gdy plik został przekazany, zaktualizuj informacje o rozmiarze FileAsset (i innych). Przykład:
 
     MERGE https://wamsbayclus001rest-hs.cloudapp.net/api/Files('nb%3Acid%3AUUID%3Af13a0137-0a62-9d4c-b3b9-ca944b5142c5') HTTP/1.1
     Content-Type: application/json
@@ -362,7 +362,7 @@ Teraz, gdy już przesłano pliku, należy zaktualizować informacje o FileAsset 
 
 **Odpowiedź HTTP**
 
-Jeśli to się powiedzie, jest zwracany następujące czynności:
+Jeśli to się powiedzie, zwracane są następujące elementy:
 
     HTTP/1.1 204 No Content
     ...
@@ -382,7 +382,7 @@ Jeśli to się powiedzie, jest zwracany następujące czynności:
 
 **Odpowiedź HTTP**
 
-Jeśli to się powiedzie, jest zwracany następujące czynności:
+Jeśli to się powiedzie, zwracane są następujące elementy:
 
     HTTP/1.1 204 No Content
     ...
@@ -400,23 +400,23 @@ Jeśli to się powiedzie, jest zwracany następujące czynności:
 
 **Odpowiedź HTTP**
 
-Jeśli to się powiedzie, jest zwracany następujące czynności:
+Jeśli to się powiedzie, zwracane są następujące elementy:
 
     HTTP/1.1 204 No Content
     ...
 
 ## <a id="encode"></a>Kodowanie pliku źródłowego do zestawu plików MP4 z adaptacyjną szybkością transmisji bitów
 
-Po wprowadzane, które mogą być zakodowane zasoby do usługi Media Services, media, transmultipleksacji znakiem wodnym i tak dalej przed dostarczeniem do klientów. Te działania są zaplanowane i uruchamiane w wielu wystąpieniach ról w tle, aby zapewnić wysoką wydajność oraz dostępność. Te działania są nazywane zadaniami, a każde zadanie składa się z niepodzielnych podzadań, które wykonują rzeczywistą pracę w pliku zasobów (Aby uzyskać więcej informacji, zobacz [zadania](https://docs.microsoft.com/rest/api/media/operations/job), [zadań](https://docs.microsoft.com/rest/api/media/operations/task) opisy).
+Po pozyskaniu zasobów do Media Services, można zakodować, transmuxed, znak wodny i tak dalej, przed dostarczeniem ich do klientów. Te działania są zaplanowane i uruchamiane w wielu wystąpieniach ról w tle, aby zapewnić wysoką wydajność oraz dostępność. Te działania są nazywane zadaniami, a każde zadanie składa się z niepodzielnych zadań, które wykonują rzeczywistą pracę w pliku zasobów (Aby uzyskać więcej informacji, zobacz [zadania](https://docs.microsoft.com/rest/api/media/operations/job), opisy [zadań](https://docs.microsoft.com/rest/api/media/operations/task) ).
 
-Jak wspomniano wcześniej, podczas pracy za pomocą usługi Azure Media Services jednym z najbardziej typowych scenariuszy jest dostarczanie adaptacyjną szybkością transmisji bitów, przesyłanie strumieniowe do klientów. Usługa Media Services, korzystając z funkcji dynamicznego tworzenia pakietów, może utworzyć pakiet zestawu plików MP4 z adaptacyjną szybkością transmisji bitów w jednym z następujących formatów: HTTP na żywo przesyłania strumieniowego (HLS), Smooth Streaming i MPEG DASH.
+Jak wspomniano wcześniej, podczas pracy z Azure Media Services jednym z najczęściej spotykanych scenariuszy jest dostarczanie do klientów przesyłania strumieniowego z adaptacyjną szybkością transmisji bitów. Usługa Media Services, korzystając z funkcji dynamicznego tworzenia pakietów, może utworzyć pakiet zestawu plików MP4 z adaptacyjną szybkością transmisji bitów w jednym z następujących formatów: HTTP Live Streaming (HLS), Smooth Streaming, KRESKa MPEG.
 
-W poniższej sekcji pokazano, jak utworzyć zadanie, które zawiera jedno zadanie kodowania. Zadanie określa transkodowanie pliku mezzanine do zestawu z każdego pliku MP4 z adaptacyjną szybkością transmisji bitów przy użyciu **Media Encoder Standard**. W sekcji przedstawiono również sposób monitorowania zadania postęp przetwarzania. Po zakończeniu zadania będzie możliwe do utworzenia lokalizatorów, które są niezbędne do uzyskiwania dostępu do zasobów.
+W poniższej sekcji pokazano, jak utworzyć zadanie zawierające jedno zadanie kodowania. Zadanie określa transkodowanie pliku Mezzanine do zestawu pliki MP4 z adaptacyjną szybkością transmisji bitów przy użyciu **Media Encoder Standard**. Sekcja pokazuje również, jak monitorować postęp przetwarzania zadań. Po zakończeniu zadania można utworzyć lokalizatory, które są potrzebne do uzyskania dostępu do zasobów.
 
 ### <a name="get-a-media-processor"></a>Pobierz procesor multimediów
-W usłudze Media Services procesor multimediów jest składnikiem, który obsługuje zadanie przetwarzania specyficznego, takich jak kodowania, konwersji formatów, zawartości multimedialnej szyfrowania lub odszyfrowywania. Dla zadania kodowania, przedstawione w tym samouczku są użyjemy Media Encoder Standard.
+W Media Services procesor multimediów to składnik obsługujący konkretne zadanie przetwarzania, takie jak kodowanie, Konwersja formatu, szyfrowanie lub odszyfrowywanie zawartości multimedialnej. W przypadku zadania kodowania pokazanego w tym samouczku będziemy używać Media Encoder Standard.
 
-Poniższy kod żądania identyfikator kodera.
+Poniższy kod żąda identyfikatora kodera.
 
 **Żądanie HTTP**
 
@@ -459,10 +459,10 @@ Poniższy kod żądania identyfikator kodera.
        ]
     }
 
-### <a name="create-a-job"></a>Tworzenie zadania
-Każde zadanie może mieć jedno lub więcej zadań, w zależności od rodzaju przetwarzania, które chcesz osiągnąć. Za pomocą interfejsu API REST można utworzyć zadań i ich powiązane zadania, w jeden z dwóch sposobów: Zadania mogą być zdefiniowano w tekście za pomocą właściwości nawigacji zadania na jednostkach zadania lub przetwarzanie wsadowe OData. Zestaw SDK usług Media Services korzysta z przetwarzania wsadowego. Aby zwiększyć czytelność, przykładowe kody w tym artykule, zadania są zdefiniowano w tekście. Aby uzyskać informacji na temat przetwarzania wsadowego, zobacz [przetwarzanie wsadowe Open Data Protocol (OData)](https://www.odata.org/documentation/odata-version-3-0/batch-processing/).
+### <a name="create-a-job"></a>Utwórz zadanie
+Każde zadanie może mieć jedno lub więcej zadań w zależności od typu przetwarzania, które chcesz wykonać. Za pomocą interfejsu API REST można tworzyć zadania i powiązane z nimi zadania na jeden z dwóch sposobów: Zadania mogą być definiowane w tekście przy użyciu właściwości nawigacji zadania w jednostkach zadania lub przetwarzania wsadowego OData. Zestaw SDK Media Services używa przetwarzania wsadowego. Jednak w celu odczytywania przykładów kodu w tym artykule zadania są zdefiniowane w tekście. Aby uzyskać informacje na temat przetwarzania wsadowego, zobacz artykuł [Przetwarzanie wsadowe protokołu Open Data Protocol (OData)](https://www.odata.org/documentation/odata-version-3-0/batch-processing/).
 
-Poniższy przykład pokazuje, jak utworzyć i opublikuj zadania przy użyciu jednego, ustawionych przez zadanie do zakodowania filmu w określonym rozwiązania i jakości. Poniższa sekcja dokumentacji zawiera listę wszystkich [zadań wstępne](https://msdn.microsoft.com/library/mt269960) obsługiwane przez procesora Media Encoder Standard.  
+Poniższy przykład pokazuje, jak utworzyć i ogłosić zadanie przy użyciu jednego zestawu zadań do kodowania wideo z określoną rozdzielczością i jakością. Poniższa sekcja dokumentacji zawiera listę wszystkich [ustawień predefiniowanych zadań](https://msdn.microsoft.com/library/mt269960) obsługiwanych przez procesor Media Encoder Standard.  
 
 **Żądanie HTTP**
 
@@ -498,7 +498,7 @@ Poniższy przykład pokazuje, jak utworzyć i opublikuj zadania przy użyciu jed
 
 **Odpowiedź HTTP**
 
-Jeśli to się powiedzie, jest zwracany następującą odpowiedź:
+W przypadku powodzenia następuje zwrócenie następującej odpowiedzi:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -558,35 +558,35 @@ Jeśli to się powiedzie, jest zwracany następującą odpowiedź:
     }
 
 
-Istnieje kilka ważnych rzeczy, należy pamiętać, we wszystkich żądaniach zadania:
+Istnieje kilka istotnych kwestii, które należy wziąć pod uwagę w przypadku każdego żądania zadania:
 
-* Taskbody — właściwości należy użyć literał XML, aby zdefiniować liczbę dane wejściowe lub wyjściowe zasoby, które są używane przez zadanie. Ten artykuł zadań zawiera definicji schematu XML dla pliku XML.
-* W definicji taskbody — wartość każdego wewnętrzny `<inputAsset>` i `<outputAsset>` musi być ustawiona jako JobInputAsset(value) lub JobOutputAsset(value).
-* Zadanie może mieć wielu zasobów danych wyjściowych. Jeden JobOutputAsset(x) należy używać tylko jeden raz jako dane wyjściowe zadania w zadaniu.
-* Możesz określić JobInputAsset lub JobOutputAsset jako wejściowego elementu zadania.
-* Zadania muszą nie tworzą cyklu.
-* Parametr wartości, który jest przekazywany do JobInputAsset lub JobOutputAsset reprezentuje wartość indeksu dla zasobu. Rzeczywiste zasoby są zdefiniowane w InputMediaAssets i OutputMediaAssets właściwości nawigacji na definicję jednostki zadania.
+* Właściwości TaskBody — muszą używać literału XML do definiowania liczby zasobów wejściowych lub wyjściowych, które są używane przez zadanie. Artykuł zadania zawiera definicję schematu XML dla kodu XML.
+* W definicji TaskBody — każda wartość wewnętrzna dla `<inputAsset>` i `<outputAsset>` musi być ustawiona jako JobInputAsset (wartość) lub JobOutputAsset (wartość).
+* Zadanie może mieć wiele elementów zawartości wyjściowej. Jeden JobOutputAsset (x) może być używany tylko raz jako dane wyjściowe zadania w zadaniu.
+* Można określić JobInputAsset lub JobOutputAsset jako element zawartości wejściowej zadania.
+* Zadania nie mogą tworzyć cyklu.
+* Parametr value przekazany do JobInputAsset lub JobOutputAsset reprezentuje wartość indeksu dla elementu zawartości. Rzeczywiste elementy zawartości są zdefiniowane we właściwościach nawigacji InputMediaAssets i OutputMediaAssets w definicji jednostki zadania.
 
 > [!NOTE]
-> Ponieważ usługa Media Services jest oparta na protokole OData v3, poszczególnych zasobów w kolekcji właściwości nawigacji InputMediaAssets i OutputMediaAssets są wywoływane za pośrednictwem "__metadata: identyfikator uri" pary nazwa wartość.
+> Ponieważ Media Services jest oparty na protokole OData V3, poszczególne zasoby w kolekcjach właściwości nawigacji InputMediaAssets i OutputMediaAssets są przywoływane przez parę nazwa-wartość "__metadata: URI".
 >
 >
 
-* InputMediaAssets jest mapowany na jeden lub więcej zasobów, które zostały utworzone w usłudze Media Services. OutputMediaAssets są tworzone przez system. Nie odwołują się do istniejącego zasobu.
-* OutputMediaAssets może być nazwane za pomocą atrybutu assetName. Jeśli ten atrybut nie jest obecny, a następnie nazywa OutputMediaAsset niezależnie od tekst wewnętrzny wartość `<outputAsset>` element jest sufiksem Nazwa zadania wartość lub wartość identyfikatora zadania (w przypadku, w którym nie zdefiniowano właściwości Name). Na przykład jeśli ustawisz wartość assetName do "Przykładowy", następnie właściwość OutputMediaAsset Name będzie miał ustawienie "Przykładowy". Jednak jeśli nie ustawiona wartość assetName, ale ustawiona na nazwę zadania, aby "NewJob", nazwa OutputMediaAsset będzie "_NewJob JobOutputAsset (wartość)".
+* InputMediaAssets mapuje do jednego lub większej liczby zasobów utworzonych w Media Services. OutputMediaAssets są tworzone przez system. Nie odwołują się do istniejącego elementu zawartości.
+* OutputMediaAssets można nazwać przy użyciu atrybutu assetname. Jeśli ten atrybut nie jest obecny, nazwa OutputMediaAsset jest dowolną wartością `<outputAsset>` tekstu wewnętrznego elementu z sufiksem wartości nazwy zadania lub wartości identyfikatora zadania (w przypadku, gdy właściwość Name nie jest zdefiniowana). Jeśli na przykład ustawisz wartość dla elementu assetname na "sample", właściwość OutputMediaAsset Name zostanie ustawiona na "sample". Jeśli jednak nie ustawisz wartości dla elementu assetname, ale ustawisz nazwę zadania na "NewJob", wówczas nazwą OutputMediaAsset będzie "JobOutputAsset (Value) _NewJob".
 
-    Poniższy przykład pokazuje, jak ustawić atrybutu assetName:
+    Poniższy przykład pokazuje, jak ustawić atrybut assetname:
 
         "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset assetName=\"CustomOutputAssetName\">JobOutputAsset(0)</outputAsset></taskBody>"
-* Aby włączyć tworzenie łańcuchów zadań:
+* Aby włączyć tworzenie łańcucha zadań:
 
-  * Zadanie musi mieć co najmniej dwa zadania
-  * Musi istnieć co najmniej jedno zadanie, którego dane wejściowe są dane wyjściowe inne zadanie w ramach zadania.
+  * Zadanie musi mieć co najmniej dwa zadania podrzędne
+  * Musi istnieć co najmniej jedno zadanie, którego dane wejściowe są dane wyjściowe innego zadania w zadaniu.
 
-Aby uzyskać więcej informacji, zobacz [Tworzenie zadania kodowania za pomocą interfejsu API REST usługi Media Services](media-services-rest-encode-asset.md).
+Aby uzyskać więcej informacji, zobacz [Tworzenie zadania kodowania za pomocą interfejsu API REST Media Services](media-services-rest-encode-asset.md).
 
-### <a name="monitor-processing-progress"></a>Monitoruj postęp przetwarzania
-Można pobrać stanu zadania za pomocą właściwości stanu, jak pokazano w poniższym przykładzie:
+### <a name="monitor-processing-progress"></a>Monitorowanie postępu przetwarzania
+Stan zadania można pobrać przy użyciu właściwości State, jak pokazano w następującym przykładzie:
 
 **Żądanie HTTP**
 
@@ -603,7 +603,7 @@ Można pobrać stanu zadania za pomocą właściwości stanu, jak pokazano w pon
 
 **Odpowiedź HTTP**
 
-Jeśli to się powiedzie, jest zwracany następującą odpowiedź:
+W przypadku powodzenia następuje zwrócenie następującej odpowiedzi:
 
     HTTP/1.1 200 OK
     Cache-Control: no-cache
@@ -621,9 +621,9 @@ Jeśli to się powiedzie, jest zwracany następującą odpowiedź:
 
 
 ### <a name="cancel-a-job"></a>Anulowanie zadania
-Usługa Media Services umożliwia anulowanie działające zadania za pomocą funkcji CancelJob. To wywołanie zwraca kod błędu 400, jeśli zostanie podjęta próba anulowania zadania, gdy jego stan jest anulowane, anulowanie, błąd lub zostało zakończone.
+Media Services umożliwia anulowanie uruchamiania zadań za pomocą funkcji CancelJob. To wywołanie zwraca 400 kod błędu, jeśli użytkownik próbuje anulować zadanie, gdy jego stan zostanie anulowany, anulowanie, błąd lub zakończenie.
 
-Poniższy przykład pokazuje sposób wywoływania CancelJob.
+Poniższy przykład pokazuje, jak wywołać CancelJob.
 
 **Żądanie HTTP**
 
@@ -637,15 +637,15 @@ Poniższy przykład pokazuje sposób wywoływania CancelJob.
     Host: wamsbayclus001rest-hs.net
 
 
-Jeśli to się powiedzie, kod 204 odpowiedzi jest zwracany z treści wiadomości.
+Jeśli to się powiedzie, kod odpowiedzi 204 jest zwracany bez treści komunikatu.
 
 > [!NOTE]
-> Należy zakodować adres URL zadania o identyfikatorze (zwykle nb:jid:UUID: wartość somevalue) podczas przekazywania go jako parametr do CancelJob.
+> Musisz zakodować URL identyfikator zadania (zwykle NB: jid: UUID: wartość someValue) podczas przekazywania go jako parametru do CancelJob.
 >
 >
 
-### <a name="get-the-output-asset"></a>Pobieranie elementu zawartości wyjściowej
-Poniższy kod pokazuje, jak żądania elementu zawartości wyjściowej identyfikatora.
+### <a name="get-the-output-asset"></a>Pobierz element zawartości wyjściowej
+Poniższy kod przedstawia sposób żądania identyfikatora elementu zawartości wyjściowej.
 
 **Żądanie HTTP**
 
@@ -692,7 +692,7 @@ Poniższy kod pokazuje, jak żądania elementu zawartości wyjściowej identyfik
        ]
     }
 
-## <a id="publish_get_urls"></a>Publikowanie elementu zawartości i uzyskiwanie przesyłania strumieniowego i pobierania progresywnego adresy URL przy użyciu interfejsu API REST
+## <a id="publish_get_urls"></a>Publikowanie elementu zawartości oraz pobieranie przesyłania strumieniowego i pobieranie progresywnych adresów URL przy użyciu interfejsu API REST
 
 Aby przesłać strumieniowo lub pobrać element zawartości, należy go najpierw opublikować, tworząc lokalizator. Lokalizatory zapewniają dostęp do plików znajdujących się w elemencie zawartości. Usługa Media Services obsługuje dwa typy lokalizatorów: lokalizatory OnDemandOrigin używane do strumieniowego przesyłania plików multimedialnych (na przykład w formacie MPEG DASH, HLS i Smooth Streaming) oraz lokalizatory sygnatury dostępu współdzielonego (SAS) używane do pobierania plików multimedialnych. 
 
@@ -717,14 +717,14 @@ Adres URL SAS używany do pobierania plików ma następujący format:
 
     {blob container name}/{asset name}/{file name}/{SAS signature}
 
-W tej sekcji pokazano, jak wykonywać następujące zadania niezbędne do "Publikuj" Twoje zasoby.  
+W tej sekcji przedstawiono sposób wykonywania następujących zadań niezbędnych do "publikacji" zasobów.  
 
-* Tworzenie AccessPolicy z uprawnieniem do odczytu
-* Tworzenie adresu URL sygnatury dostępu Współdzielonego dla pobierania zawartości
-* Tworzenie źródłowy adres URL do strumieniowego przesyłania zawartości
+* Tworzenie AccessPolicy z uprawnieniami do odczytu
+* Tworzenie adresu URL sygnatury dostępu współdzielonego na potrzeby pobierania zawartości
+* Tworzenie adresu URL źródła dla zawartości przesyłania strumieniowego
 
-### <a name="creating-the-accesspolicy-with-read-permission"></a>Tworzenie AccessPolicy z uprawnieniem do odczytu
-Przed pobraniem pliku przesyłanie strumieniowe zawartości multimediów, zdefiniuj AccessPolicy z uprawnieniami do odczytu i Utwórz odpowiednie jednostki lokalizatora, który określa typ mechanizm dostarczania, który chcesz włączyć dla klientów. Aby uzyskać więcej informacji na temat dostępnych właściwości, zobacz [właściwości jednostki AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy#accesspolicy_properties).
+### <a name="creating-the-accesspolicy-with-read-permission"></a>Tworzenie AccessPolicy z uprawnieniami do odczytu
+Przed pobraniem lub przesłaniem strumieniowym zawartości multimedialnej należy najpierw zdefiniować AccessPolicy z uprawnieniami do odczytu i utworzyć odpowiednią jednostkę lokalizatora, która określa typ mechanizmu dostarczania, który ma zostać włączony dla klientów. Aby uzyskać więcej informacji na temat dostępnych właściwości, zobacz [AccessPolicy Entity Properties](https://docs.microsoft.com/rest/api/media/operations/accesspolicy#accesspolicy_properties).
 
 Poniższy przykład pokazuje, jak określić AccessPolicy dla uprawnień do odczytu dla danego elementu zawartości.
 
@@ -741,15 +741,15 @@ Poniższy przykład pokazuje, jak określić AccessPolicy dla uprawnień do odcz
 
     {"Name": "DownloadPolicy", "DurationInMinutes" : "300", "Permissions" : 1}
 
-Jeśli to się powiedzie, zwracany jest kod 201 sukces, opisujące jednostkę AccessPolicy, który został utworzony. Następnie należy użyć identyfikatora AccessPolicy wraz z Identyfikator trwały zasób, który zawiera plik, którego chcesz dostarczyć (na przykład elementu zawartości wyjściowej), aby utworzyć jednostkę lokalizatora.
+Jeśli to się powiedzie, zwracany jest 201 kod sukcesu opisujący utworzoną jednostkę AccessPolicy. Następnie należy użyć identyfikatora AccessPolicy wraz z identyfikatorem zasobu zasobu zawierającego plik, który chcesz dostarczyć (na przykład dane wyjściowe), aby utworzyć jednostkę lokalizatora.
 
 > [!NOTE]
-> Ten podstawowy przepływ pracy jest taka sama jak przekazywania pliku podczas wprowadzania elementu zawartości (jak zostało omówione we wcześniejszej części tego tematu). Ponadto takie jak przekazywanie plików, jeśli użytkownik (lub klientów) muszą natychmiast uzyskać dostęp do plików, ustawić wartość StartTime do pięciu minut przed bieżącym czasem. Ta akcja jest konieczne, ponieważ może istnieć zegara niesymetryczność między klientem a Media Services. Wartość StartTime musi być w następującym formacie daty/godziny: RRRR-MM-ddtgg (na przykład "2014-05-23T17:53:50Z").
+> Ten podstawowy przepływ pracy jest taki sam jak przekazywanie pliku podczas pozyskiwania elementu zawartości (zgodnie z wcześniejszym opisem w tym temacie). Ponadto, podobnie jak przekazywanie plików, jeśli użytkownik (lub klienci) muszą natychmiast uzyskać dostęp do plików, należy ustawić wartość StartTime na pięć minut przed bieżącą godziną. Ta akcja jest niezbędna, ponieważ między klientem i Media Services może być nachylony zegar. Wartość StartTime musi mieć następujący format: RRRR-MM-DDTgg: mm: SSS (na przykład "2014-05-23T17:53:50Z").
 >
 >
 
-### <a name="creating-a-sas-url-for-downloading-content"></a>Tworzenie adresu URL sygnatury dostępu Współdzielonego dla pobierania zawartości
-Poniższy kod pokazuje, jak można pobrać adresu URL, który może służyć do pobrania plik multimedialny utworzony i przekazany wcześniej. AccessPolicy zapoznał zestaw uprawnień, a ścieżka lokalizatora odwołuje się do pobierania adresu URL sygnatury dostępu Współdzielonego.
+### <a name="creating-a-sas-url-for-downloading-content"></a>Tworzenie adresu URL sygnatury dostępu współdzielonego na potrzeby pobierania zawartości
+Poniższy kod pokazuje, jak uzyskać adres URL, którego można użyć do pobrania wcześniej utworzonego i przekazanego pliku multimedialnego. AccessPolicy ma ustawione uprawnienia do odczytu, a ścieżka lokalizatora odnosi się do adresu URL pobierania sygnatury dostępu współdzielonego.
 
     POST https://wamsbayclus001rest-hs.net/API/Locators HTTP/1.1
     Content-Type: application/json
@@ -764,7 +764,7 @@ Poniższy kod pokazuje, jak można pobrać adresu URL, który może służyć do
 
     {"AccessPolicyId": "nb:pid:UUID:38c71dd0-44c5-4c5f-8418-08bb6fbf7bf8", "AssetId" : "nb:cid:UUID:71d2dd33-efdf-ec43-8ea1-136a110bd42c", "StartTime" : "2014-05-17T16:45:53", "Type":1}
 
-Jeśli to się powiedzie, jest zwracany następującą odpowiedź:
+W przypadku powodzenia następuje zwrócenie następującej odpowiedzi:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -806,22 +806,22 @@ Jeśli to się powiedzie, jest zwracany następującą odpowiedź:
        }
     }
 
-Zwrócony **ścieżki** właściwość zawiera adres URL sygnatury dostępu Współdzielonego.
+Właściwość zwracanej ścieżki zawiera adres URL sygnatury **dostępu** współdzielonego.
 
 > [!NOTE]
-> Jeśli pobierasz zawartość szyfrowany w magazynie, użytkownik musi ręcznie je odszyfrować przed renderowaniem go lub umożliwia MediaProcessor odszyfrowywania magazynu w ramach zadania przetwarzania danych wyjściowych przetworzone pliki bez zabezpieczeń na OutputAsset, a następnie Pobierz z tego zasobu. Aby uzyskać więcej informacji na temat przetwarzania Zobacz Tworzenie zadania kodowania za pomocą interfejsu API REST usługi Media Services. Ponadto nie można zaktualizować lokalizatorów adresu URL sygnatury dostępu Współdzielonego, po ich utworzeniu. Na przykład nie można ponownie użyć tego samego lokalizatora ze zaktualizowaną wartość StartTime. Jest to ze względu na sposób tworzenia adresów URL sygnatury dostępu Współdzielonego. Jeśli chcesz uzyskać dostęp do zasobu do pobrania, po Lokalizator wygasł, należy utworzyć nową grupę za pomocą nowego StartTime.
+> W przypadku pobierania zawartości zaszyfrowanej magazynu należy ręcznie odszyfrować ją przed jej renderowaniem lub użyć odszyfrowania magazynu MediaProcessor w zadaniu przetwarzania w celu wygenerowania plików w postaci jasnej do OutputAsset, a następnie pobrania z tego elementu zawartości. Aby uzyskać więcej informacji na temat przetwarzania, zobacz Tworzenie zadania kodowania za pomocą interfejsu API REST Media Services. Ponadto lokalizatory adresów URL sygnatury dostępu współdzielonego nie można zaktualizować po ich utworzeniu. Na przykład nie można ponownie użyć tego samego lokalizatora z zaktualizowaną wartością StartTime. Jest to spowodowane sposobem tworzenia adresów URL sygnatury dostępu współdzielonego. Jeśli chcesz uzyskać dostęp do zasobu do pobrania po wygaśnięciu lokalizatora, musisz utworzyć nowy element z nowym okresem StartTime.
 >
 >
 
 ### <a name="download-files"></a>Pobieranie plików
-Po utworzeniu AccessPolicy i lokalizatora zestawu, możesz pobrać pliki przy użyciu interfejsów API REST usługi Azure Storage.  
+Po skonfigurowaniu usługi AccessPolicy i lokalizatora można pobierać pliki przy użyciu interfejsów API REST usługi Azure Storage.  
 
 > [!NOTE]
-> Należy dodać nazwę pliku dla pliku chcesz pobrać Lokalizator **ścieżki** wartość odebrana w poprzedniej sekcji. Na przykład: https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . .
+> Należy dodać nazwę pliku, który ma zostać pobrany do wartości **ścieżki** lokalizatora otrzymanej w poprzedniej sekcji. Na przykład: https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . .
 
-Aby uzyskać więcej informacji na temat pracy z obiektami blob usługi Azure storage, zobacz [interfejsu API REST usługi Blob](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
+Aby uzyskać więcej informacji na temat pracy z obiektami BLOB usługi Azure Storage, zobacz [API REST usługa BLOB Service](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
 
-W wyniku zadania kodowania opisane wcześniej (kodowanie na zestaw MP4 o adaptacyjnej) masz plików MP4 z wieloma, które można pobrać progresywnie. Na przykład:    
+W wyniku zadania kodowania, które zostało wykonane wcześniej (kodowanie w ramach adaptacyjnego zestawu MP4), istnieje wiele plików MP4, które można pobrać stopniowo. Na przykład:    
 
     https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z
 
@@ -839,8 +839,8 @@ W wyniku zadania kodowania opisane wcześniej (kodowanie na zestaw MP4 o adaptac
 
     https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_AAC_und_ch2_56kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z
 
-### <a name="creating-a-streaming-url-for-streaming-content"></a>Tworzenie adresu URL przesyłania strumieniowego do strumieniowego przesyłania zawartości
-Poniższy kod pokazuje, jak utworzyć Lokalizator przesyłania strumieniowego adresu URL:
+### <a name="creating-a-streaming-url-for-streaming-content"></a>Tworzenie adresu URL przesyłania strumieniowego dla zawartości przesyłania strumieniowego
+Poniższy kod przedstawia sposób tworzenia lokalizatora adresów URL przesyłania strumieniowego:
 
     POST https://wamsbayclus001rest-hs/API/Locators HTTP/1.1
     Content-Type: application/json
@@ -855,7 +855,7 @@ Poniższy kod pokazuje, jak utworzyć Lokalizator przesyłania strumieniowego ad
 
     {"AccessPolicyId": "nb:pid:UUID:38c71dd0-44c5-4c5f-8418-08bb6fbf7bf8", "AssetId" : "nb:cid:UUID:eb5540a2-116e-4d36-b084-7e9958f7f3c3", "StartTime" : "2014-05-17T16:45:53",, "Type":2}
 
-Jeśli to się powiedzie, jest zwracany następującą odpowiedź:
+W przypadku powodzenia następuje zwrócenie następującej odpowiedzi:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -897,23 +897,23 @@ Jeśli to się powiedzie, jest zwracany następującą odpowiedź:
        }
     }
 
-Aby przesyłać strumieniowo Smooth Streaming źródłowy adres URL w odtwarzaczu przesyłania strumieniowego multimediów, można dołączyć ścieżkę właściwości o nazwie Smooth Streaming manifest pliku, a następnie "/ manifestu".
+Aby przesłać strumieniowo adres URL źródła Smooth Streaming w odtwarzaczu multimediów przesyłanych strumieniowo, należy dołączyć Właściwość Path z nazwą pliku manifestu Smooth Streaming, po którym następuje wartość "/manifest".
 
     http://amstestaccount001.streaming.mediaservices.windows.net/ebf733c4-3e2e-4a68-b67b-cc5159d1d7f2/BigBuckBunny.ism/manifest
 
-Aby przesyłanie strumieniowe HLS, Dołącz (format = m3u8-aapl) po "/ manifestu".
+Aby przesłać strumieniowo HLS, Dołącz (format = M3U8-AAPL) po "/manifest".
 
     http://amstestaccount001.streaming.mediaservices.windows.net/ebf733c4-3e2e-4a68-b67b-cc5159d1d7f2/BigBuckBunny.ism/manifest(format=m3u8-aapl)
 
-Do przesyłania strumieniowego MPEG DASH, Dołącz (format = mpd-time-csf) po "/ manifestu".
+Aby przesłać strumień MPEG, Dołącz (format = MPD-Time-CSF) po "/manifest".
 
     http://amstestaccount001.streaming.mediaservices.windows.net/ebf733c4-3e2e-4a68-b67b-cc5159d1d7f2/BigBuckBunny.ism/manifest(format=mpd-time-csf)
 
 
-## <a id="play"></a>Odtwarzanie zawartości
-Do przesyłania strumieniowego zawartości wideo użyj [odtwarzacza usługi Azure Media Services](https://amsplayer.azurewebsites.net/azuremediaplayer.html).
+## <a id="play"></a>Odtwórz zawartość
+Do przesyłania strumieniowego zawartości wideo użyj [odtwarzacza usługi Azure Media Services](https://aka.ms/azuremediaplayer).
 
-Aby przetestować pobieranie progresywne, wklej adres URL do przeglądarki (na przykład programu Internet Explorer, Chrome, Safari).
+Aby przetestować pobieranie progresywne, wklej adres URL do przeglądarki (na przykład IE, Chrome, Safari).
 
 ## <a name="next-steps-media-services-learning-paths"></a>Następne kroki: Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

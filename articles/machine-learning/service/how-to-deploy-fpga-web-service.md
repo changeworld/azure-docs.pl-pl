@@ -1,5 +1,5 @@
 ---
-title: Wdróż modele na FPGA
+title: Co to są FPGA — jak wdrożyć
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak wdrożyć usługę sieci Web z modelem działającym na FPGA za pomocą usługi Azure Machine Learning na potrzeby wnioskowania o bardzo małych opóźnieniach.
 services: machine-learning
@@ -11,18 +11,49 @@ ms.author: tedway
 author: tedway
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5e780c1a1d18954d0b3e9413e26f478e4ea3a8b1
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ff4259c438fec448ba510e4c248de6f4acc184ab
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856102"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990500"
 ---
-# <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning-service"></a>Wdrażanie modelu jako usługi sieci Web na FPGA za pomocą usługi Azure Machine Learning
+# <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Co to są tablice z bramą programowalną w polu (FPGA) i sposób wdrażania
 
-Model można wdrożyć jako usługę sieci Web na przykładowych [tablicach bram (FPGA)](concept-accelerate-with-fpgas.md) z Azure Machine Learning modele z przyspieszaniem sprzętowym. Korzystanie z usługi FPGA zapewnia bardzo małe ilości opóźnienia, nawet w przypadku pojedynczego rozmiaru partii. Wnioskowanie lub ocenianie modelu to faza, w której wdrożony model jest używany do prognozowania, najczęściej dotyczący danych produkcyjnych.
+Ten artykuł zawiera wprowadzenie do tablic opartych na programowalnych bramach (FPGA) i pokazuje, jak wdrożyć modele przy użyciu usługi Azure Machine Learning na platformie Azure FPGA. 
 
-Te modele są obecnie dostępne:
+FPGA zawierają tablicę programowalnych bloków logiki oraz hierarchię z ponownymi konfigurowalnymi połączeniami. Połączenia międzyłączne umożliwiają skonfigurowanie tych bloków na różne sposoby po zakończeniu produkcji. W porównaniu z innymi mikroukładami FPGA zapewniają kombinację programowania i wydajności.
+
+## <a name="fpgas-vs-cpu-gpu-and-asic"></a>Vs układów FPGA. Procesor CPU, procesora GPU i ASIC
+
+Na poniższym diagramie i tabeli przedstawiono sposób porównywania FPGA z innymi procesorami.
+
+![Diagram porównania usługi Azure Machine Learning Service FPGA](./media/concept-accelerate-with-fpgas/azure-machine-learning-fpga-comparison.png)
+
+|Procesor||Opis|
+|---|:-------:|------|
+|Scalonych specyficzne dla aplikacji|ASICs|Obwody niestandardowe, takie jak Google TensorFlow procesora jednostki (TPU), zapewnia najwyższą efektywnością. Nie można ich ponownie skonfigurować zgodnie z potrzebami zmian.|
+|Tablice programowalny bramy|Układów FPGA|FPGA, takie jak te dostępne na platformie Azure, zapewniają wydajność zbliżoną do ASICs. Są one również elastyczne i można je skonfigurować w miarę upływu czasu w celu zaimplementowania nowej logiki.|
+|Procesory graficzne|Procesory GPU|Popularny wybór dla obliczeń AI. Procesory GPU oferują równoległe możliwości przetwarzania, przyspieszając renderowanie obrazów niż procesory CPU.|
+|Jednostek centralnych|Procesory CPU|Procesor ogólnego przeznaczenia, wydajność, która nie jest idealnym rozwiązaniem w przypadku przetwarzania grafiki i wideo.|
+
+FPGA na platformie Azure są oparte na urządzeniach FPGA firmy Intel, których analityki danych i Deweloperzy używają do przyspieszenia obliczeń w czasie rzeczywistym. Ta architektura z obsługą FPGA oferuje wydajność, elastyczność i skalowalność oraz jest dostępna na platformie Azure.
+
+FPGA umożliwiają osiągnięcie małych opóźnień dla żądań wnioskowania w czasie rzeczywistym (lub oceniania modeli). Żądania asynchroniczne (wsadowe) nie są potrzebne. Przetwarzanie wsadowe może spowodować opóźnienia, ponieważ trzeba przetworzyć więcej danych. Implementacje jednostek przetwarzania neuronowych nie wymagają przetwarzania wsadowego; w związku z tym opóźnienie może być znacznie mniejsze, w porównaniu z procesorami CPU i procesora GPU.
+
+### <a name="reconfigurable-power"></a>Możliwych do ponownego skonfigurowania zasilania
+Można ponownie skonfigurować FPGA dla różnych typów modeli uczenia maszynowego. Ta elastyczność ułatwia przyspieszenie aplikacji na podstawie najbardziej optymalną precyzja wartości liczbowych i model pamięci używane. Ze względu na to, że FPGA są modyfikowane, można zachować aktualność z wymaganiami natychmiastowej zmiany algorytmów AI.
+
+## <a name="whats-supported-on-azure"></a>Co to jest obsługiwana na platformie Azure
+Microsoft Azure to największe inwestycje chmury w FPGA. Przy użyciu tej architektury włączone FPGA sprzętu, przeszkolonych sieci neuronowych uruchomić szybkie i mniejsze opóźnienie. Platforma Azure może zrównoleglanie wstępnie szkolonych sieci neuronowych (DNN) w całej FPGA w celu skalowania usługi. Sieci mogą być wstępnie przeszkolonych, jako głębokiego featurized transferu uczenia lub dostosowaniu za pomocą wag zaktualizowane.
+
+FPGA na platformie Azure obsługuje:
+
++ Scenariusze dotyczące klasyfikacji i rozpoznawania obrazu
++ TensorFlow wdrożenia
++ Sprzęt firmy Intel FPGA 
+
+Te modele DNN są obecnie dostępne:
   - ResNet 50
   - ResNet 152
   - DenseNet-121
@@ -38,7 +69,25 @@ FPGA są dostępne w tych regionach świadczenia usługi Azure:
 > [!IMPORTANT]
 > Aby zoptymalizować opóźnienia i przepływność, klient wysyłający dane do modelu FPGA powinien znajdować się w jednym z powyższych regionów (na którym został wdrożony model).
 
-## <a name="prerequisites"></a>Wymagania wstępne
+**Rodzina PBS maszyn wirtualnych platformy Azure** zawiera technologię Intel Arria 10 FPGA. Zostanie on wyświetlony jako "standardowa rodzina PBS procesorów wirtualnych vCPU" podczas sprawdzania przydziału przydziału platformy Azure. Maszyna wirtualna w PB6 ma sześć procesorów wirtualnych vCPU i jeden FPGA i zostanie automatycznie zainicjowana przez usługę Azure ML w ramach wdrażania modelu w FPGA. Jest ona używana tylko z platformą Azure ML i nie może uruchamiać dowolnego bitstreams. Na przykład nie będzie można wykonać czynności Flash FPGA z bitstreams do szyfrowania, kodowania itp.
+
+### <a name="scenarios-and-applications"></a>Scenariusze i aplikacje
+
+Usługa Azure FPGA jest zintegrowana z usługą Azure Machine Learning. Firma Microsoft używa usługi FPGA do oceny DNN, klasyfikacji wyszukiwania Bing i przyspieszenia sieci zdefiniowanej przez oprogramowanie (SDN) w celu skrócenia opóźnień, jednocześnie zwalniając procesory dla innych zadań.
+
+Następujące scenariusze używają FPGA:
++ [Zautomatyzowany system inspekcji optycznych](https://blogs.microsoft.com/ai/build-2018-project-brainwave/)
+
++ [Mapowanie cover ziemi](https://blogs.technet.microsoft.com/machinelearning/2018/05/29/how-to-use-fpgas-for-deep-learning-inference-to-perform-land-cover-mapping-on-terabytes-of-aerial-images/)
+
+
+
+## <a name="example-deploy-models-on-fpgas"></a>Przykład: Wdróż modele na FPGA 
+
+Model można wdrożyć jako usługę sieci Web na FPGA z Modele z przyspieszaniem sprzętowym Azure Machine Learning. Korzystanie z usługi FPGA zapewnia bardzo małe ilości opóźnienia, nawet w przypadku pojedynczego rozmiaru partii. Wnioskowanie lub ocenianie modelu to faza, w której wdrożony model jest używany do prognozowania, najczęściej dotyczący danych produkcyjnych.
+
+
+### <a name="prerequisites"></a>Wymagania wstępne
 
 - Subskrypcja platformy Azure.  Jeśli nie masz takiego konta, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
 
@@ -71,11 +120,8 @@ FPGA są dostępne w tych regionach świadczenia usługi Azure:
     pip install --upgrade azureml-accel-models
     ```
 
-## <a name="sample-notebooks"></a>Przykładowe notesy
 
-Dla wygody można [](https://aka.ms/aml-accel-models-notebooks) zapoznać się z przykładowymi notesami poniżej i innymi przykładami.
-
-## <a name="create-and-containerize-your-model"></a>Utwórz i konteneryzowanie model
+## <a name="1-create-and-containerize-models"></a>1. Tworzenie i konteneryzowanie modeli
 
 W tym dokumencie opisano sposób tworzenia grafu TensorFlow w celu wstępnego przetworzenia obrazu wejściowego, przeprowadzenia featurized przy użyciu ResNet 50 na FPGA, a następnie uruchomienia funkcji za pomocą klasyfikatora przeszkolonego na zestawie danych ImageNet.
 
@@ -86,6 +132,8 @@ Postępuj zgodnie z instrukcjami, aby:
 * Wdrażanie modelu
 * Używanie wdrożonego modelu
 * Usuwanie wdrożonych usług
+
+Użyj [zestawu SDK Azure Machine Learning dla języka Python](https://aka.ms/aml-sdk) , aby utworzyć definicję usługi. Definicja usługi jest plikiem opisującym potok grafów (Input, featurized i klasyfikator) oparty na TensorFlow. Polecenie wdrożenia automatycznie kompresuje definicje i wykresy do pliku ZIP i przekazuje je do usługi Azure Blob Storage. DNN jest już wdrożony do uruchamiania na FPGA.
 
 ### <a name="load-azure-ml-workspace"></a>Załaduj obszar roboczy usługi Azure ML
 
@@ -197,7 +245,7 @@ Dostępne są następujące modele i odpowiednie rozdzielacze domyślne klasyfik
 
 ### <a name="register-model"></a>Rejestrowanie modelu
 
-[Zarejestruj](./concept-model-management-and-deployment.md) utworzony model.  Dodawanie tagów i innych metadanych dotyczących modelu ułatwia śledzenie przeszkolonych modeli.
+[Zarejestruj](./concept-model-management-and-deployment.md) model przy użyciu zestawu SDK z plikiem zip w usłudze Azure Blob Storage. Dodawanie tagów i innych metadanych dotyczących modelu ułatwia śledzenie przeszkolonych modeli.
 
 ```python
 from azureml.core.model import Model
@@ -267,7 +315,7 @@ for i in Image.list(workspace=ws):
         i.name, i.version, i.creation_state, i.image_location, i.image_build_log_uri))
 ```
 
-## <a name="model-deployment"></a>Wdrażanie modelu
+## <a name="2-deploy-to-cloud-or-edge"></a>2. Wdróż w chmurze lub Edge
 
 ### <a name="deploy-to-the-cloud"></a>Wdrażanie w chmurze
 
@@ -369,15 +417,23 @@ registered_model.delete()
 converted_model.delete()
 ```
 
-## <a name="deploy-to-a-local-edge-server"></a>Wdrażanie na lokalnym serwerze brzegowym
+### <a name="deploy-to-a-local-edge-server"></a>Wdrażanie na lokalnym serwerze brzegowym
 
 Wszystkie [urządzenia](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview
 ) Azure Data Box Edge zawierają FPGA do uruchamiania modelu.  Tylko jeden model może być uruchomiony w FPGA jednocześnie.  Aby uruchomić inny model, po prostu wdróż nowy kontener. Instrukcje i przykładowy kod można znaleźć w [tym przykładzie platformy Azure](https://github.com/Azure-Samples/aml-hardware-accelerated-models).
 
 ## <a name="secure-fpga-web-services"></a>Zabezpieczania usług sieci web FPGA
 
-Aby uzyskać informacje na temat zabezpieczania usług sieci Web FPGA, zobacz dokument [Secure Web Services](how-to-secure-web-service.md) .
+Aby zabezpieczyć FPGA usługi sieci Web, zobacz dokument [Secure Web Services](how-to-secure-web-service.md) .
 
-## <a name="pbs-family-vms"></a>Maszyny wirtualne z rodziny PBS
+## <a name="next-steps"></a>Następne kroki
 
-Rodzina PBS maszyn wirtualnych platformy Azure zawiera technologię Intel Arria 10 FPGA.  Zostanie on wyświetlony jako "standardowa rodzina PBS procesorów wirtualnych vCPU" podczas sprawdzania przydziału przydziału platformy Azure.  Maszyna wirtualna w PB6 ma sześć procesorów wirtualnych vCPU i jeden FPGA i zostanie automatycznie zainicjowana przez usługę Azure ML w ramach wdrażania modelu w FPGA.  Jest ona używana tylko z platformą Azure ML i nie może uruchamiać dowolnego bitstreams.  Na przykład nie będzie można wykonać czynności Flash FPGA z bitstreams do szyfrowania, kodowania itp. 
+Zapoznaj się z tymi notesami, klipami wideo i blogami:
+
++ Kilka [przykładowych notesów](https://aka.ms/aml-accel-models-notebooks).
+
++ [Sprzęt ze skalowaniem: ML na dużą skalę na platformie Azure i FPGA: Kompilacja 2018 (wideo)](https://channel9.msdn.com/events/Build/2018/BRK3202)
+
++ [W firmie Microsoft na układach FPGA konfigurowalnej chmury (wideo)](https://channel9.msdn.com/Events/Build/2017/B8063)
+
++ [Project Brainwave dla sztucznej Inteligencji w czasie rzeczywistym: Strona główna projektu](https://www.microsoft.com/research/project/project-brainwave/)

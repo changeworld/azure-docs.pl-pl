@@ -1,6 +1,6 @@
 ---
-title: Omówienie transmisji strumieniowej na żywo za pomocą usługi Azure Media Services | Dokumentacja firmy Microsoft
-description: Ten temat zawiera omówienie transmisji strumieniowych na żywo za pomocą usługi Azure Media Services.
+title: Omówienie przesyłania strumieniowego na żywo przy użyciu Azure Media Services | Microsoft Docs
+description: Ten temat zawiera omówienie przesyłania strumieniowego na żywo przy użyciu Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,21 +14,21 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: c5dd0146fe59e7dc85787f146b10cfde7d6addb4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45089c77ff2fed7ea5903333514f4d4edbad7cb3
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64867897"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "69015543"
 ---
-# <a name="overview-of-live-streaming-using-media-services"></a>Omówienie transmisji strumieniowej na żywo za pomocą usługi Media Services
+# <a name="overview-of-live-streaming-using-media-services"></a>Omówienie przesyłania strumieniowego na żywo przy użyciu Media Services
 
 > [!NOTE]
-> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
+> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówki dotyczące migracji od wersji 2 do V3](../latest/migrate-from-v2-to-v3.md)
 
 ## <a name="overview"></a>Omówienie
 
-Gdy dostarczanie wydarzeń transmisji strumieniowej na żywo w usłudze Azure Media Services to zwykle wymagane są następujące składniki:
+W przypadku dostarczania zdarzeń przesyłania strumieniowego na żywo za pomocą Azure Media Services często są wykorzystywane następujące składniki:
 
 * Kamera, która umożliwia emisję wydarzenia.
 * Koder wideo na żywo, który konwertuje sygnały z kamery na strumienie wysyłane do usługi transmisji strumieniowej na żywo.
@@ -44,47 +44,47 @@ Gdy dostarczanie wydarzeń transmisji strumieniowej na żywo w usłudze Azure Me
 
 Usługa **Microsoft Azure Media Services** (AMS) zapewnia możliwość pozyskiwania, kodowania, podglądu, przechowywania i dostarczania transmisji strumieniowej zawartości na żywo.
 
-Za pomocą usługi Media Services, możesz korzystać z zalet [funkcję dynamicznego tworzenia pakietów](media-services-dynamic-packaging-overview.md), co pozwala na emisji strumieni na żywo w MPEG DASH, HLS, i Smooth Streaming formatuje z udziału, źródła danych jest wysyłanych do usługi. Przeglądającym można odtwarzać transmisji strumieniowej na żywo za pomocą dowolnego odtwarzaczy zgodne HLS, DASH lub Smooth Streaming. Usługa Azure Media Player w sieci web lub aplikacji mobilnych umożliwia dostarczanie strumienia we wszystkich tych protokołów.
+Za pomocą Media Services można korzystać z funkcji [dynamicznego tworzenia pakietów](media-services-dynamic-packaging-overview.md), która umożliwia emitowanie strumieni na żywo w postaci łączników MPEG, HLS i Smooth Streaming z kanału informacyjnego, który jest wysyłany do usługi. Osoby przeglądające mogą odtworzyć strumień na żywo za pomocą dowolnych HLS, ŁĄCZNIKów lub Smooth Streaming zgodnych graczy. Możesz użyć Azure Media Player w aplikacjach sieci Web lub aplikacji mobilnych, aby dostarczyć strumień do dowolnego z tych protokołów.
 
 > [!NOTE]
-> Od 12 maja 2018 r. Usługa kanały na żywo będzie już obsługę strumienia transportu RTP/MPEG-2 protokołu pozyskiwania. Przeprowadź migrację z protokołu RTP/MPEG-2 do protokołu RTMP lub plików MP4 (Smooth Streaming) protokołów pozyskiwania.
+> Od 12 maja 2018 kanały na żywo nie będą już obsługiwać protokołu pozyskiwania strumienia transportowego RTP/MPEG-2. Przeprowadź migrację z protokołów RTP/MPEG-2 do protokołu RTMP lub pofragmentowanych plików MP4 (Smooth Streaming).
 
-## <a name="streaming-endpoints-channels-programs"></a>Przesyłanie strumieniowe punktów końcowych, kanałów i programów
+## <a name="streaming-endpoints-channels-programs"></a>Punkty końcowe przesyłania strumieniowego, kanały, programy
 
 W usłudze Azure Media Services **kanały**, **programy**, i **punkty końcowe przesyłania strumieniowego** obsługują wszystkie funkcje transmisji strumieniowej na żywo, w tym pozyskiwanie, formatowanie, cyfrowy rejestrator wideo (DVR), zabezpieczenia, skalowalność i nadmiarowość.
 
 **Kanał** reprezentuje potok przetwarzania zawartości transmisji strumieniowej na żywo. Kanał może odbierać przychodzące strumienie na żywo w następujący sposób:
 
-* Lokalny koder na żywo wysyła plik **RTMP** o różnych szybkościach transmisji bitów lub plik **Smooth Streaming** (pofragmentowany plik MP4) do kanału, który jest skonfigurowany do obsługi dostarczania zawartości w formie **przekazywania**. Dostarczanie w formie **przekazywania** występuje wtedy, gdy pozyskiwane strumienie są przekazywane przez **kanał** bez dalszego przetwarzania. Można użyć następujących koderów na żywo, które zwracają Smooth Streaming o różnych szybkościach transmisji bitów: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco i Elemental. Następujące kodery na żywo danych wyjściowych RTMP: Adobe Flash Media Live Encoder (FMLE), Telestream Wirecast, Haivision, Teradek i Transkodery tricaster.  Koder na żywo może także wysłać strumień o pojedynczej szybkości transmisji bitów do kanału, który nie obsługuje kodowania na żywo, nie jest to jednak zalecane. Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
+* Lokalny koder na żywo wysyła plik **RTMP** o różnych szybkościach transmisji bitów lub plik **Smooth Streaming** (pofragmentowany plik MP4) do kanału, który jest skonfigurowany do obsługi dostarczania zawartości w formie **przekazywania**. Dostarczanie w formie **przekazywania** występuje wtedy, gdy pozyskiwane strumienie są przekazywane przez **kanał** bez dalszego przetwarzania. Można użyć następujących koderów na żywo, które wychodzące Smooth Streaming o kilku szybkościach transmisji bitów: MediaExcel, ATEME, Wyobraź sobie, Envivio, Cisco i elementy. Następujące kodery na żywo wyprowadzają RTMP: Program Adobe Flash Media Live Encoder (KODER FMLE), Telestream Wirecast, Haivision, Teradek i TriCaster.  Koder na żywo może także wysłać strumień o pojedynczej szybkości transmisji bitów do kanału, który nie obsługuje kodowania na żywo, nie jest to jednak zalecane. Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
 
   > [!NOTE]
   > Metoda przekazywania to najbardziej ekonomiczne rozwiązanie transmisji strumieniowej na żywo w przypadku organizowania wielu wydarzeń w długim okresie oraz poczynionych inwestycji w kodery lokalne. Zobacz szczegółowe informacje o [cenach](https://azure.microsoft.com/pricing/details/media-services/).
   > 
   > 
-* Lokalny koder na żywo wysyła strumień o pojedynczej szybkości bitów do kanału, który jest skonfigurowany do przeprowadzania kodowania na żywo z usługą Media Services w jednym z następujących formatów: RTMP lub Smooth Streaming (pofragmentowany MP4). Następujące kodery na żywo z danymi wyjściowymi RTMP znane pracować z kanałami tego typu: Telestream Wirecast FMLE. Kanał wykonuje następnie kodowanie na żywo przychodzącego strumienia o pojedynczej szybkości transmisji bitów do postaci strumienia wideo o różnych szybkościach transmisji bitów (adaptacyjnej szybkości transmisji bitów). Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
+* Lokalny koder na żywo wysyła strumień o pojedynczej szybkości transmisji bitów do kanału, w którym włączono obsługę kodowania na żywo za pomocą Media Services w jednym z następujących formatów: RTMP lub Smooth Streaming (fragmentacja MP4). Następujące kodery na żywo z danymi wyjściowymi RTMP są znane do pracy z kanałami tego typu: Telestream Wirecast, KODER FMLE. Kanał wykonuje następnie kodowanie na żywo przychodzącego strumienia o pojedynczej szybkości transmisji bitów do postaci strumienia wideo o różnych szybkościach transmisji bitów (adaptacyjnej szybkości transmisji bitów). Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
 
-Począwszy od Media Services w wersji 2.10 wersji, podczas tworzenia kanału, można określić w jaki sposób chcesz kanału w taki sposób otrzymywać strumień wejściowy i określa, czy chcesz dla kanału do przeprowadzania kodowania na żywo strumienia. Dostępne są dwie opcje:
+Począwszy od wersji 2,10 Media Services, podczas tworzenia kanału można określić, w jaki sposób chcesz, aby kanał odbierał strumień wejściowy i czy chcesz, aby kanał wykonywał kodowanie na żywo strumienia. Dostępne są dwie opcje:
 
-* **Brak** (przekazujących) — określ tę wartość, jeśli zamierzasz używać na lokalny koder na żywo, która zwróci strumień o różnych szybkościach transmisji bitów (strumień przekazującego). W tym przypadku przychodzącego strumienia przekazywane do dane wyjściowe bez żadnych kodowania. Jest to zachowanie kanału przed wydaniem 2.10.  
-* **Standardowa** — wybierz tę wartość, jeśli planujesz używać usługi Media Services do zakodowania transmisji strumieniowej na żywo o pojedynczej szybkości transmisji bitów do strumienia o wielokrotnej szybkości transmisji bitów. Ta metoda jest bardziej ekonomiczny w przypadku skalowania w górę szybko rzadkie zdarzeń. Należy pamiętać, że istnieje rozliczeń wpływ kodowanie na żywo i należy pamiętać, że pozostawienie kodowania kanału na żywo w stanie "Uruchomiona" spowoduje naliczenie opłat rozliczeń.  Zaleca się natychmiast zatrzymać kanałów uruchomione po zakończeniu zdarzenia przesyłania strumieniowego na żywo, aby uniknąć dodatkowych stawki godzinowe.
+* **Brak** (przekazywane) — Określ tę wartość, jeśli planujesz używać lokalnego kodera na żywo, który będzie wyprowadzać strumień o szybkości transmisji bitów (strumień Pass-through). W tym przypadku strumień przychodzący przeszedł do danych wyjściowych bez kodowania. Jest to zachowanie kanału przed wydaniem 2,10.  
+* **Standardowa** — wybierz tę wartość, jeśli planujesz używać Media Services do kodowania strumienia na żywo o pojedynczej szybkości transmisji bitów do strumienia o większej szybkości transmisji bitów. Ta metoda jest bardziej ekonomiczna w przypadku szybkiego skalowania w górę w przypadku rzadko występujących zdarzeń. Należy pamiętać, że istnieje wpływ rozliczania na kodowanie na żywo i należy pamiętać, że pozostawienie kanału kodowania na żywo w stanie "uruchomiona" spowoduje naliczenie opłat naliczanych.  Zaleca się natychmiastowe zatrzymanie uruchomionych kanałów po zakończeniu zdarzenia przesyłania strumieniowego na żywo, aby uniknąć dodatkowych opłat godzinowych.
 
 ## <a name="comparison-of-channel-types"></a>Porównanie typów kanałów
 
-Poniższa tabela zawiera przewodnik do porównywania dwóch typów kanałów obsługiwane w usłudze Media Services
+Poniższa tabela zawiera Przewodnik porównujący dwa typy kanałów obsługiwane w Media Services
 
-| Cecha | Kanału przekazującego | Wzorzec kanał |
+| Cecha | Kanał Pass-through | Kanał standardowy |
 | --- | --- | --- |
-| Pojedyncza szybkość transmisji bitów w danych wejściowych jest zakodowany do wielokrotnych w chmurze |Nie |Tak |
-| Maksymalna rozdzielczość, liczba warstw |1080p, 8 warstwy ponad 60 kl. / s |720p 6 warstwy 30 kl. / s |
-| Protokoły danych wejściowych |RTMP, Smooth Streaming |RTMP, Smooth Streaming |
-| Cena |Zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/media-services/) i kliknij kartę "Wideo na żywo" |Zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/media-services/) |
-| Maksymalny czas działania |Całodobowo |8 godzin |
-| Obsługa wstawiania plansz |Nie |Tak |
-| Obsługa sygnalizowanie ad |Nie |Tak |
-| Podpisy napisy kodowane CEA 608/708 przekazywania |Tak |Yes |
-| Obsługa niejednolitego GOPs danych wejściowych |Tak |Nie — dane wejściowe zostały poprawione 2 s GOPs |
-| Obsługa dane wejściowe szybkość klatek zmiennej |Tak |Nie — dane wejściowe muszą zostać usunięte, szybkości klatek.<br/>Niewielkich zmian są dopuszczalne na przykład podczas sceny wysokiej ruchu. Ale kodera nie można porzucić do 10 ramek na sekundę. |
-| Auto bliskie kanały, gdy dane wejściowe źródła danych zostaną utracone |Nie |Po upływie 12 godzin, jeśli nie jest uruchomiony żaden Program |
+| Dane wejściowe o pojedynczej szybkości transmisji bitów są zakodowane w wielu szybkościach transmisji bitów w chmurze |Nie |Tak |
+| Rozdzielczość maksymalna, liczba warstw |1080p, 8 warstw, 60 klatek na sekundę |720, 6 warstw, 30 fps |
+| Protokoły wejściowe |RTMP, Smooth Streaming |RTMP, Smooth Streaming |
+| Cena |Zobacz [stronę cennika](https://azure.microsoft.com/pricing/details/media-services/) i kliknij kartę "wideo na żywo" |Zobacz [stronę](https://azure.microsoft.com/pricing/details/media-services/) z cennikiem |
+| Maksymalny czas działania |Całodobowa |8 godzin |
+| Obsługa wstawiania przednich |Nie |Tak |
+| Obsługa sygnalizowania AD |Nie |Tak |
+| Podpisy CEA 608/708 |Tak |Tak |
+| Obsługa niejednorodnych danych wejściowych GOPs |Tak |Nie — dane wejściowe muszą być stałe 2sec GOPs |
+| Obsługa danych wejściowych stawki ramki zmiennej |Tak |Nie — dane wejściowe muszą być stałym wskaźnikiem ramki.<br/>Niewielkie wahania są tolerowane, na przykład podczas wysokiego poziomu ruchów. Jednak koder nie może porzucić 10 klatek na sekundę. |
+| Autoshutoff kanałów, gdy źródło danych wejściowych jest tracone |Nie |Po upływie 12 godzin, jeśli nie jest uruchomiony żaden program |
 
 ## <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>Praca z kanałami odbierającymi strumień na żywo o różnych szybkościach transmisji bitów z koderów lokalnych (przekazujących)
 
@@ -102,55 +102,55 @@ Na poniższym diagramie przedstawiono główne elementy platformy AMS biorące u
 
 Aby uzyskać więcej informacji, zobacz temat [Praca z kanałami obsługującymi funkcję Live Encoding w usłudze Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
 
-## <a name="description-of-a-channel-and-its-related-components"></a>Opis kanału i jego składników powiązane
+## <a name="description-of-a-channel-and-its-related-components"></a>Opis kanału i powiązanych z nim składników
 
 ### <a name="channel"></a>Kanał
 
-W usłudze Media Services [kanału](https://docs.microsoft.com/rest/api/media/operations/channel)s są zobowiązani do przetwarzania zawartości transmisji strumieniowej na żywo. Kanał oferuje wejściowy punkt końcowy (adres URL pozyskiwania) następnie podaj transkoder na żywo. Kanał odbiera strumieni danych wejściowych z transkoder na żywo i udostępnia go do przesyłania strumieniowego za pośrednictwem co najmniej jeden punkty. Kanały zapewniają również punkt końcowy (wersja zapoznawcza) (adres URL w wersji zapoznawczej), która umożliwia podgląd i weryfikować strumień przed dalszym przetwarzaniem i dostarczaniem.
+W Media Services [kanał](https://docs.microsoft.com/rest/api/media/operations/channel)s jest odpowiedzialny za przetwarzanie zawartości przesyłania strumieniowego na żywo. Kanał udostępnia wejściowy punkt końcowy (adres URL pozyskiwania), który następnie można przekazać do transkodera na żywo. Kanał odbiera strumienie danych wejściowych na żywo z transkodera dynamicznego i udostępnia je do przesyłania strumieniowego za pośrednictwem co najmniej jednego StreamingEndpointsu. Kanały udostępniają również punkt końcowy (wersja zapoznawcza) służący do wyświetlania podglądu i weryfikowania strumienia przed dalszem przetwarzaniem i dostarczaniem.
 
-Po utworzeniu kanału można uzyskać adresu URL pozyskiwania i adres URL w wersji zapoznawczej. Aby uzyskać te adresy URL, kanał nie ma być w stanie uruchomionym. Gdy wszystko jest gotowe rozpocząć wypychanie danych z transkoder na żywo do kanału, kanał musi zostać uruchomiona. Po uruchomieniu na żywo transkoder dane wprowadzane można wyświetlać podgląd strumienia.
+Podczas tworzenia kanału można uzyskać adres URL pozyskiwania i adres URL wersji zapoznawczej. Aby uzyskać te adresy URL, kanał nie musi znajdować się w stanie uruchomienia. Gdy wszystko będzie gotowe do rozpoczęcia wypychania danych z transkodera na żywo do kanału, należy uruchomić kanał. Gdy transkoder na żywo zacznie pozyskiwanie danych, można wyświetlić podgląd strumienia.
 
-Każde konto usługi Media Services może zawierać wielu kanałów, wiele programów i wielu punkty. W zależności od potrzeb przepustowości i bezpieczeństwa usługi StreamingEndpoint mogą być przeznaczone do obsługi co najmniej jednego kanału. Wszelkie StreamingEndpoint ściągnąć z dowolnym kanału.
+Każde konto Media Services może zawierać wiele kanałów, wiele programów i wiele StreamingEndpoints. W zależności od potrzeb dotyczących przepustowości i zabezpieczeń usługi StreamingEndpoint Services mogą być dedykowane dla jednego lub kilku kanałów. Każdy StreamingEndpoint może pobierać z dowolnego kanału.
 
-Podczas tworzenia kanału, można określić dozwolone adresy IP w jednym z następujących formatów: adres IPv4 z 4 cyframi, zakres adresów CIDR.
+Podczas tworzenia kanału można określić dozwolone adresy IP w jednym z następujących formatów: adres IPv4 z 4 cyframi, zakres adresów CIDR.
 
 ### <a name="program"></a>Program
-A [Program](https://docs.microsoft.com/rest/api/media/operations/program) pozwala na kontrolowanie publikowania i przechowywania segmentów strumienia na żywo. Kanały zarządzają programami. Relacja kanału i programu jest bardzo podobna do relacji w tradycyjnych multimediach, gdzie kanał ma stały strumień zawartości, a program obejmuje niektóre zdarzenia czasowe na tym kanale.
-Można określić liczbę godzin, aby zachować zarejestrowaną zawartość na potrzeby programu przez ustawienie **ArchiveWindowLength** właściwości. Ta wartość musi mieścić się w zakresie od 5 minut do maksymalnie 25 godzin.
+[Program](https://docs.microsoft.com/rest/api/media/operations/program) umożliwia kontrolowanie publikowania i przechowywania segmentów w strumieniu na żywo. Kanały zarządzają programami. Relacja kanału i programu jest bardzo podobna do relacji w tradycyjnych multimediach, gdzie kanał ma stały strumień zawartości, a program obejmuje niektóre zdarzenia czasowe na tym kanale.
+Możesz określić liczbę godzin, przez którą ma zostać zachowana zarejestrowana zawartość dla programu, ustawiając właściwość **ArchiveWindowLength** . Ta wartość musi mieścić się w zakresie od 5 minut do maksymalnie 25 godzin.
 
-ArchiveWindowLength również mówią, że maksymalną ilość czasu klientów można wyszukać w czasie od bieżącej pozycji na żywo. Programy mogą być transmitowane w określonym czasie, ale zawartość, która wykracza poza długość okna, jest stale odrzucana. Wartość tej właściwości określa również, jak długie mogą być manifesty na kliencie.
+ArchiveWindowLength określa również maksymalną ilość czasu, jaką klienci mogą odszukać w czasie z bieżącej pozycji na żywo. Programy mogą być transmitowane w określonym czasie, ale zawartość, która wykracza poza długość okna, jest stale odrzucana. Wartość tej właściwości określa również, jak długie mogą być manifesty na kliencie.
 
-Każdy program jest skojarzony z zasobem. Aby opublikować program, należy utworzyć Lokalizator dla skojarzonego elementu zawartości. Lokalizator umożliwia utworzenie adresu URL przesyłania strumieniowego, który można udostępnić klientom.
+Każdy program jest skojarzony z zasobem. Aby opublikować program, należy utworzyć lokalizator dla skojarzonego elementu zawartości. Lokalizator umożliwia utworzenie adresu URL przesyłania strumieniowego, który można udostępnić klientom.
 
 Kanał obsługuje maksymalnie trzy jednocześnie uruchomione programy, dzięki czemu można tworzyć wiele archiwów tego samego strumienia przychodzącego. Umożliwia to w razie potrzeby publikowanie i archiwizację różnych części wydarzenia. Na przykład zgodnie z wymaganiami biznesowymi potrzebna jest archiwizacja sześciu godzin programu, ale do emisji przeznaczonych jest tylko ostatnich 10 minut. W tym celu należy utworzyć dwa jednocześnie uruchomione programy. Jeden z programów jest skonfigurowany na potrzeby archiwizacji sześciu godzin zdarzenia, ale ten program nie jest publikowany. Drugi z programów jest skonfigurowany w celu archiwizacji 10 minut wydarzenia i ten program zostanie opublikowany.
 
-## <a name="billing-implications"></a>Opłaty wpływ
-Kanał rozpoczyna rozliczeń zaraz po zmianie stanu na "Uruchomione" jest za pośrednictwem interfejsu API.  
+## <a name="billing-implications"></a>Implikacje rozliczeń
+Kanał rozpoczyna rozliczanie od razu po zmianie stanu na "uruchomiony" za pośrednictwem interfejsu API.  
 
-W poniższej tabeli przedstawiono, jak Stany kanału mapują stanom rozliczeń w portalu usługi interfejsu API i platformy Azure. Należy pamiętać, że Stany różnią się nieco między komputerowy Portal i interfejsu API Jak najszybciej kanał jest w stanie "Uruchomiona", za pośrednictwem interfejsu API lub w stanie "Gotowy" lub "Przesyłanie strumieniowe" w witrynie Azure portal rozliczeń będzie aktywny.
+W poniższej tabeli przedstawiono sposób, w jaki Stany kanałów mapują się na Stany rozliczeń w interfejsie API i Azure Portal. Należy pamiętać, że Stany różnią się nieco między interfejsem użytkownika interfejsu API i portalu. Gdy tylko kanał jest w stanie "uruchomiony" za pośrednictwem interfejsu API lub w stanie "gotowe" lub "streaming" w Azure Portal, rozliczenia będą aktywne.
 
-Zatrzymanie kanału z rozliczeń można dalej, musisz zatrzymać kanał za pomocą interfejsu API lub w witrynie Azure portal.
-Odpowiedzialność za zatrzymywanie kanałów, po wykonaniu kanale. Nie można zatrzymać kanał spowoduje dalsze rozliczeń.
+Aby zatrzymać rozliczanie kanału od Ciebie, należy zatrzymać kanał za pośrednictwem interfejsu API lub Azure Portal.
+Użytkownik jest odpowiedzialny za zatrzymywanie kanałów po zakończeniu pracy z kanałem. Niepowodzenie zatrzymania kanału spowoduje dalsze rozliczanie.
 
 > [!NOTE]
-> Podczas pracy z kanały standardowe, AMS automatycznie bliskie dowolny kanał, który jest nadal w stanie "Uruchomiona" 12 godzin po źródła danych wejściowych zostaną utracone, a nie Brak programów, uruchamianie. Jednakże możesz nadal jest naliczana za czas, jaki kanał był w stanie "Uruchomiona".
+> Podczas pracy z kanałami standardowymi, AMS będzie ShutOff dowolny kanał, który nadal jest w stanie "uruchomiony" 12 godzin po utracie danych wejściowych i nie ma uruchomionych programów. Jednak nadal będą naliczane opłaty za czas działania kanału w stanie "uruchomiony".
 >
 >
 
-### <a id="states"></a>Stany kanału oraz sposobu mapowania ich na tryb rozliczeń
+### <a id="states"></a>Stany kanału i sposób ich mapowania do trybu rozliczania
 Bieżący stan kanału. Możliwe wartości obejmują:
 
-* **Zatrzymano**. To jest wstępny stan kanału po jego utworzeniu (chyba że autostart został wybrany w portalu). Rozliczenia nie występuje w tym stanie. W tym stanie właściwości kanału mogą być aktualizowane, ale transmisja strumieniowa jest niedozwolona.
-* **Uruchamianie**. Kanał jest uruchamiany. Rozliczenia nie występuje w tym stanie. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa. Jeśli wystąpi błąd, kanał wróci do stanu Zatrzymany.
-* **Uruchamianie**. Kanał może przetwarzać transmisje strumieniowe na żywo. Teraz jest to fakturowania użycia. Należy zatrzymać kanał, aby uniknąć dalszych rozliczeń.
-* **Zatrzymywanie**. Kanał jest zatrzymywany. Rozliczenia nie występuje w tym stanie przejściowym. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa.
-* **Usuwanie**. Kanał jest usuwany. Rozliczenia nie występuje w tym stanie przejściowym. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa.
+* **Zatrzymano**. Jest to początkowy stan kanału po jego utworzeniu (o ile Autostart nie został wybrany w portalu). W tym stanie nie ma rozliczeń. W tym stanie właściwości kanału mogą być aktualizowane, ale transmisja strumieniowa jest niedozwolona.
+* **Rozpoczęcie**. Kanał jest uruchamiany. W tym stanie nie ma rozliczeń. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa. Jeśli wystąpi błąd, kanał wróci do stanu Zatrzymany.
+* **Uruchomione**. Kanał może przetwarzać transmisje strumieniowe na żywo. Jest teraz użycie rozliczeń. Należy zatrzymać kanał, aby zapobiec dalszemu rozliczeniu.
+* **Zatrzymywanie**. Kanał jest zatrzymywany. W tym stanie przejściowym nie ma rozliczeń. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa.
+* **Usuwanie**. Kanał jest usuwany. W tym stanie przejściowym nie ma rozliczeń. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa.
 
 W tabeli poniżej pokazano, jak stany kanału przekładają się na naliczanie opłat.
 
-| Stan kanału | Wskaźniki w interfejsie użytkownika portalu | Jest to rozliczeń? |
+| Stan kanału | Wskaźniki w interfejsie użytkownika portalu | Czy jest to rozliczenia? |
 | --- | --- | --- |
-| Uruchamianie |Uruchamianie |Nie (stan przejściowy) |
+| Rozpoczęcie |Rozpoczęcie |Nie (stan przejściowy) |
 | Działanie |Gotowy (brak uruchomionych programów)<br/>lub<br/>Transmisja strumieniowa (co najmniej jeden uruchomiony program) |TAK |
 | Zatrzymywanie |Zatrzymywanie |Nie (stan przejściowy) |
 | Zatrzymano |Zatrzymano |Nie |
@@ -162,12 +162,12 @@ W tabeli poniżej pokazano, jak stany kanału przekładają się na naliczanie o
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>Tematy pokrewne
-[Specyfikacja odbierania podzielonej zawartości w formacie MP4 na żywo w usłudze Azure Media Services](media-services-fmp4-live-ingest-overview.md)
+[Azure Media Services pofragmentowana Specyfikacja pozyskiwania na żywo w formacie MP4](../media-services-fmp4-live-ingest-overview.md)
 
-[Praca z kanałami obsługującymi funkcję Live Encoding w usłudze Azure Media Services](media-services-manage-live-encoder-enabled-channels.md)
+[Praca z kanałami obsługującymi Live Encoding z Azure Media Services](media-services-manage-live-encoder-enabled-channels.md)
 
 [Praca z kanałami odbierającymi strumień na żywo o różnych szybkościach transmisji bitów z koderów lokalnych](media-services-live-streaming-with-onprem-encoders.md)
 
-[Przydziały i ograniczenia](media-services-quotas-and-limitations.md).  
+[Limity przydziału i ograniczenia](media-services-quotas-and-limitations.md).  
 
-[Pojęcia dotyczące usługi Media Services](media-services-concepts.md)
+[Koncepcje Media Services](media-services-concepts.md)

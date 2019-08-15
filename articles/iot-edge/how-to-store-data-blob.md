@@ -1,21 +1,21 @@
 ---
 title: Store blokowych obiektów blob na urządzeniach — usługi Azure IoT Edge | Dokumentacja firmy Microsoft
 description: Informacje o warstwach i funkcjach typu Time-to-Live można znaleźć w temacie obsługiwane operacje usługi BLOB Storage i nawiązać połączenie z kontem usługi BLOB Storage.
-author: arduppal
+author: kgremban
 manager: mchad
-ms.author: arduppal
-ms.reviewer: arduppal
+ms.author: kgremban
+ms.reviewer: kgremban
 ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a40389ca378826aef1b6aa136f8f5d69783c638e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 861b5c3ee6d5661339788e7a27ba70557d0ea267
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881217"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947031"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Przechowuj dane na krawędzi za pomocą usługi Azure Blob Storage na IoT Edge
 
@@ -28,7 +28,7 @@ Ten moduł jest użyteczny w scenariuszach:
 * Aby zmniejszyć koszty przepustowości i uniknąć przesyłania terabajtów danych do chmury. Dane można przetwarzać lokalnie i wysyłać tylko dane przetworzone do chmury.
 
 Obejrzyj film wideo, aby uzyskać szybkie wprowadzenie
-> [!VIDEO https://www.youtube.com/embed/QhCYCvu3tiM]
+> [!VIDEO https://www.youtube.com/embed/xbwgMNGB_3Y]
 
 Ten moduł zawiera funkcje **deviceToCloudUpload** i **deviceAutoDelete** .
 

@@ -1,6 +1,6 @@
 ---
-title: Konfiguruj koder FMLE do wysyłania strumienia na żywo o pojedynczej szybkości transmisji bitów | Dokumentacja firmy Microsoft
-description: W tym temacie pokazano, jak skonfigurować koder interfejsu Flash Media Live Encoder (FMLE), aby wysłać strumień o pojedynczej szybkości transmisji bitów w kanałach usługi AMS, obsługującymi kodowanie na żywo.
+title: Skonfiguruj koder KODER FMLE, aby wysyłać strumień na żywo o pojedynczej szybkości transmisji bitów | Microsoft Docs
+description: W tym temacie pokazano, jak skonfigurować koder Flash Media Live Encoder (KODER FMLE) w celu wysłania strumienia pojedynczego szybkości transmisji bitów do kanałów AMS, dla których włączono obsługę kodowania na żywo.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,15 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: 01bb628a6520488dcebf49a1e868213b955abc31
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.reviewer: cenkdin;anilmur
+ms.openlocfilehash: 09d9bdffefe9204e9f58b8f07af5b21228269f6c
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61466016"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69016754"
 ---
-# <a name="use-the-fmle-encoder-to-send-a-single-bitrate-live-stream"></a>Wysyłać strumień na żywo o pojedynczej szybkości transmisji bitów przy użyciu koder FMLE 
+# <a name="use-the-fmle-encoder-to-send-a-single-bitrate-live-stream"></a>Użyj kodera KODER FMLE, aby wysłać strumień na żywo o pojedynczej szybkości transmisji bitów 
 > [!div class="op_single_selector"]
 > * [FMLE](media-services-configure-fmle-live-encoder.md)
 > * [Tricaster](media-services-configure-tricaster-live-encoder.md)
@@ -29,11 +30,11 @@ ms.locfileid: "61466016"
 >
 >
 
-W tym artykule przedstawiono sposób konfigurowania [Flash Media Live Encoder](https://www.adobe.com/products/flash-media-encoder.html) encoder (FMLE) do wysyłania strumień o pojedynczej szybkości transmisji bitów do usługi AMS kanały, które są włączone dla kodowania na żywo. Aby uzyskać więcej informacji, zobacz temat [Praca z kanałami obsługującymi funkcję Live Encoding w usłudze Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
+W tym artykule pokazano, jak skonfigurować koder [Flash Media Live Encoder](https://www.adobe.com/products/flash-media-encoder.html) (koder FMLE) w celu wysłania strumienia pojedynczego szybkości transmisji bitów do kanałów AMS, dla których włączono obsługę kodowania na żywo. Aby uzyskać więcej informacji, zobacz temat [Praca z kanałami obsługującymi funkcję Live Encoding w usłudze Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
 
 W tym samouczku przedstawiono sposób zarządzania usługi Azure Media Services (AMS) przy użyciu narzędzia Azure Media Services Explorer (AMSE). To narzędzie jest uruchamiane tylko na komputerze Windows. Jeśli na komputerze Mac lub Linux, użyj witryny Azure portal do utworzenia [kanały](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) i [programy](media-services-portal-creating-live-encoder-enabled-channel.md).
 
-W tym samouczku opisano sposób używania adaptacyjnych kontrolek aplikacji. Jednak domyślnie adaptacyjnych kontrolek aplikacji nie obsługuje FMLE. Należy zakupić wtyczkę AAC kodowania takich jak przez firmę MainConcept: [Wtyczkę AAC](https://www.mainconcept.com/products/plug-ins/plug-ins-for-adobe/aac-encoder-fmle.html)
+W tym samouczku opisano użycie AAC. KODER FMLE jednak domyślnie nie obsługuje AAC. Trzeba zakupić wtyczkę do kodowania AAC, na przykład z MainConcept: [Wtyczka AAC](https://www.mainconcept.com/products/plug-ins/plug-ins-for-adobe/aac-encoder-fmle.html)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * [Tworzenie konta usługi Azure Media Services](media-services-portal-create-account.md)
@@ -49,7 +50,7 @@ W tym samouczku opisano sposób używania adaptacyjnych kontrolek aplikacji. Jed
 ## <a name="create-a-channel"></a>Tworzenie kanału
 1. W użyciu narzędzia AMSE, przejdź do **Live** , a następnie kliknij prawym przyciskiem myszy na obszarze kanału. Wybierz **tworzenia kanału...** w menu.
 
-    ![FMLE](./media/media-services-fmle-live-encoder/media-services-fmle1.png)
+    ![KODER FMLE](./media/media-services-fmle-live-encoder/media-services-fmle1.png)
 
 2. Określ nazwę kanału pole opisu jest opcjonalne. W obszarze Ustawienia kanału wybierz **standardowa** opcji kodowanie na żywo przy użyciu protokołu danych wejściowych, ustaw **RTMP**. Możesz pozostawić wszystkie inne ustawienia, ponieważ jest.
 
@@ -57,7 +58,7 @@ W tym samouczku opisano sposób używania adaptacyjnych kontrolek aplikacji. Jed
 
 3. Kliknij przycisk **utworzenia kanału**.
 
-   ![FMLE](./media/media-services-fmle-live-encoder/media-services-fmle2.png)
+   ![KODER FMLE](./media/media-services-fmle-live-encoder/media-services-fmle2.png)
 
 > [!NOTE]
 > Kanał może trwać tyle samo co 20 minut, aby rozpocząć.
@@ -67,69 +68,69 @@ W tym samouczku opisano sposób używania adaptacyjnych kontrolek aplikacji. Jed
 Podczas uruchamiania kanału możesz [skonfigurować koder](media-services-configure-fmle-live-encoder.md).
 
 > [!IMPORTANT]
-> Należy pamiętać, że naliczanie opłat rozpoczyna się tak szybko, jak kanał przechodzi do stanu gotowości. Aby uzyskać więcej informacji, zobacz [stany kanału](media-services-manage-live-encoder-enabled-channels.md#states).
+> Należy pamiętać, że rozliczanie zaczyna się zaraz po przeniesieniu kanału w stan gotowości. Aby uzyskać więcej informacji, zobacz [stany kanału](media-services-manage-live-encoder-enabled-channels.md#states).
 >
 >
 
-## <a id=configure_fmle_rtmp></a>Konfiguruj koder FMLE
+## <a id=configure_fmle_rtmp></a>Konfigurowanie kodera KODER FMLE
 W tym samouczku są używane następujące ustawienia danych wyjściowych. W pozostałej części tej sekcji opisano kroki konfiguracji szczegółowo.
 
 **Film wideo**:
 
-* Codec: H.264
-* Profil: Wysoki (poziom 4.0)
-* Szybkość transmisji bitów: 5000 KB/s
-* Klatki kluczowe: 2 sekundy (60 sekund)
+* Wymaga H. 264
+* Profilu Wysoka (poziom 4,0)
+* Multimedia 5000 KB/s
+* Kluczowych 2 sekundy (60 s)
 * Szybkość klatek: 30
 
 **Dźwięk**:
 
-* Codec: AAC (LC)
-* Szybkość transmisji bitów: 192 kb/s
+* Wymaga AAC (LC)
+* Multimedia 192 kb/s
 * Częstotliwość próbkowania: 44,1 kHz
 
 ### <a name="configuration-steps"></a>Kroki konfiguracji
-1. Przejdź do programu Flash Media Live Encoder firmy (FMLE) interfejsu na maszynie używane.
+1. Przejdź do interfejsu kodera (KODER FMLE) usługi Flash Media Live na używanej maszynie.
 
-    Interfejs jest jeden główna strona ustawień. Zwróć uwagę na następujące ustawienia, aby zacząć korzystać z przesyłania strumieniowego przy użyciu FMLE zalecane.
+    Interfejs to jedna Strona główna ustawień. Zwróć uwagę na następujące zalecane ustawienia, aby rozpocząć przesyłanie strumieniowe przy użyciu usługi KODER FMLE.
 
-   * Format: Szybkość klatek H.264: 30.00
+   * Format: Szybkość klatek na sekundę 264: 30,00
    * Rozmiar danych wejściowych: 1280 x 720
-   * Szybkość transmisji bitów: (Może być określany na podstawie ograniczenia sieci) do 5000 KB/s  
+   * Szybkość transmisji bitów: 5000 KB/s (można je dostosować w zależności od ograniczeń sieci)  
 
-     ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle3.png)
+     ![koder FMLE](./media/media-services-fmle-live-encoder/media-services-fmle3.png)
 
-     Przy użyciu z przeplotem źródeł, skontaktuj się znacznik wyboru opcji "Opcji Usuń przeplot"
-2. Wybierz ikonę klucza, obok Format, należy te dodatkowe ustawienia:
+     W przypadku korzystania ze źródeł z przeplotem zaznacz opcję "Usuń przeplot"
+2. Wybierz ikonę klucza obok pozycji Format, te dodatkowe ustawienia powinny być następujące:
 
-   * Profil: Main
+   * Profilu Główny
    * Poziom: 4.0
-   * Ramka kluczowa częstotliwość: 2 sekundy
+   * Częstotliwość klatek kluczowych: 2 sekundy
 
-     ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle4.png)
-3. Ustawienie następujących ważnych audio:
+     ![koder FMLE](./media/media-services-fmle-live-encoder/media-services-fmle4.png)
+3. Ustaw następujące ważne ustawienie audio:
 
    * Format: AAC
    * Częstotliwość próbkowania: 44100 Hz
-   * Szybkość transmisji bitów: 192 kb/s
+   * Multimedia 192 kb/s
 
-     ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle5.png)
-4. Pobierz kanał dane wejściowe podane przez adres URL, aby przypisać ją do FMLE **punktu końcowego protokołu RTMP**.
+     ![koder FMLE](./media/media-services-fmle-live-encoder/media-services-fmle5.png)
+4. Pobierz adres URL wejścia kanału, aby przypisać go do **punktu końcowego RTMP**koder FMLE.
 
     Przejdź z powrotem do przy użyciu narzędzia AMSE i sprawdzić stan ukończenia kanału. Po zmianie stanu z **od** do **systemem**, możesz uzyskać wejściowego adresu URL.
 
     Gdy kanał jest uruchomiony, kliknij prawym przyciskiem myszy nazwę kanału, przejdź do umieść kursor nad **kopia danych wejściowych z adresu URL do Schowka** , a następnie wybierz **podstawowy adres URL danych wejściowych**.  
 
-    ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle6.png)
-5. Wklej tę informację w **FMS URL** pole sekcji danych wyjściowych, a następnie przypisz nazwę strumienia.
+    ![koder FMLE](./media/media-services-fmle-live-encoder/media-services-fmle6.png)
+5. Wklej te informacje w polu **adres URL FMS** w sekcji dane wyjściowe i przypisz nazwę strumienia.
 
-    ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle7.png)
+    ![koder FMLE](./media/media-services-fmle-live-encoder/media-services-fmle7.png)
 
-    Dodatkowe nadmiarowość Powtórz te kroki, przy użyciu pomocniczego adresu URL danych wejściowych.
+    Aby uzyskać dodatkową nadmiarowość, Powtórz te kroki z dodatkowym wejściowym adresem URL.
 6. Wybierz przycisk **Połącz**.
 
 > [!IMPORTANT]
-> Przed kliknięciem przycisku **Connect**, możesz **musi** upewnij się, że kanał jest gotowy.
+> Przed kliknięciem przycisku **Połącz** **musisz** upewnić się, że kanał jest gotowy.
 > Ponadto upewnij się, że nie pozostawić kanał w stanie gotowości bez udziału danych wejściowych, źródła danych przez czas dłuższy niż > 15 minut.
 >
 >
@@ -147,8 +148,8 @@ Odebranie błędu kanału musi być resetowany i dostosować ustawień kodera. Z
 ## <a name="create-a-program"></a>Utwórz program
 1. Po potwierdzeniu odtwarzania kanału, Utwórz program. W obszarze **Live** karty przy użyciu narzędzia AMSE, kliknij prawym przyciskiem myszy na obszarze program i wybierz **utworzyć nowy Program**.  
 
-    ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle9.png)
-2. Nazwa programu i w razie potrzeby dostosuj **długość okna archiwizacji** (której wartość domyślna to 4 godziny). Można również określić lokalizację przechowywania lub pozostaw domyślny.  
+    ![koder FMLE](./media/media-services-fmle-live-encoder/media-services-fmle9.png)
+2. Nadaj nazwę programowi i, w razie potrzeby, Dostosuj **Długość okna archiwum** (wartość domyślna to 4 godziny). Można również określić lokalizację przechowywania lub pozostaw domyślny.  
 3. Sprawdź **teraz uruchomić Program** pole.
 4. Kliknij przycisk **utworzyć Program**.  
 

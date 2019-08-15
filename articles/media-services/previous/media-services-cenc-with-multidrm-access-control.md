@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: willzhan;kilroyh;yanmf;juliako
-ms.openlocfilehash: 336552c142e504ae7296314512f00688e30d032e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: willzhan
+ms.reviewer: kilroyh;yanmf;juliako
+ms.openlocfilehash: 6004e08f5f30c7f3c63bb87437147db15da5e335
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61466581"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69016779"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Projekt systemu ochrony zawartości przy użyciu kontroli dostępu przy użyciu usługi Azure Media Services 
 
@@ -130,11 +131,11 @@ Te zagadnienia są ważne
 
 Jeśli używasz chmury publicznej do dostarczania licencji, licencje trwałe i nietrwałe mają bezpośredni wpływ na koszt dostarczania licencji. Następujące dwa przypadki różnorodności służą do zilustrowania:
 
-* Subskrypcja miesięczna: Użyj trwałego licencji i mapowanie klucz do zasobu z zawartości 1-do wielu. Na przykład dla wszystkich dzieci filmy, używamy jednego klucza zawartości do szyfrowania. W takim przypadku:
+* Subskrypcja miesięczna: Użyj trwałej licencji i mapowania klucza zawartości typu 1-do-wielu. Na przykład dla wszystkich dzieci filmy, używamy jednego klucza zawartości do szyfrowania. W takim przypadku:
 
     Całkowita liczba licencji wymagane dla wszystkich dzieci filmy/urządzenie = 1
 
-* Subskrypcja miesięczna: Za pomocą nietrwałych licencji i mapowania 1-do-1 między klucz zawartości i zasobów. W takim przypadku:
+* Subskrypcja miesięczna: Użyj nietrwałej licencji i mapowania 1-do-jednego między kluczem zawartości i zasobem. W takim przypadku:
 
     Całkowita liczba licencji wymagane dla wszystkich dzieci filmy/urządzenie = [liczba filmów, którzy oglądali transmisje stacji] x [liczba sesji]
 
@@ -335,7 +336,7 @@ Aby zarejestrować i skonfigurować aplikację wskaźnika w usłudze Azure AD, w
 
 2. Dodaj nowy klucz aplikacji zasobu.
 
-3. Aktualizacja pliku manifestu aplikacji, tak aby właściwość groupMembershipClaims ma wartość "groupMembershipClaims": "Wszystkie".
+3. Zaktualizuj plik manifestu aplikacji tak, aby Właściwość groupMembershipClaims miała wartość "groupMembershipClaims": "Wszystkie".
 
 4. W aplikacji usługi Azure AD, która wskazuje na odtwarzaczu aplikacji sieci web, w sekcji **uprawnień dotyczących innych aplikacji**, Dodaj aplikacji zasobu, który został dodany w kroku 1. W obszarze **delegowane uprawnienia**, wybierz opcję **dostępu [resource_name]** . Ta opcja zapewnia uprawnienia aplikacji sieci web do tworzenia tokenów dostępu, uzyskujących dostęp do aplikacji zasobu. W tym lokalnych i wdrożonych wersji aplikacji sieci web w przypadku tworzenia przy użyciu programu Visual Studio i aplikacji sieci web platformy Azure.
 
@@ -367,13 +368,13 @@ Jeśli używasz niestandardowej usługi STS, przeprowadza się dwie zmiany:
 
 Istnieją dwa typy kluczy zabezpieczeń:
 
-* Klucz symetryczny: Ten sam klucz służy do generowania i sprawdź token JWT.
-* Klucz asymetryczny: Pary kluczy publiczny prywatny w X509 certyfikat jest używany z kluczem prywatnym, aby zaszyfrować/wygenerować token JWT i przy użyciu klucza publicznego w celu zweryfikowania tokenu.
+* Klucz symetryczny: Ten sam klucz jest używany do generowania i weryfikowania tokenu JWT.
+* Klucz asymetryczny: Para kluczy publiczny-prywatny w certyfikacie x509 jest używana z kluczem prywatnym do szyfrowania/generowania tokenu JWT oraz klucza publicznego do weryfikowania tokenów.
 
 > [!NOTE]
 > Jeśli używasz środowiska .NET Framework / C# jako platformy projektowej, X509 certyfikat używany dla klucza asymetrycznego zabezpieczeń musi mieć klucz o długości co najmniej 2048. Jest to wymagane klasy System.IdentityModel.Tokens.X509AsymmetricSecurityKey w programie .NET Framework. W przeciwnym razie jest zgłaszany następujący wyjątek:
 > 
-> IDX10630: "System.IdentityModel.Tokens.X509AsymmetricSecurityKey" do podpisywania nie może być mniejszy niż "2048" bitów.
+> IDX10630: Element "System. IdentityModel. Tokens. X509AsymmetricSecurityKey" dla podpisywania nie może być mniejszy niż "2048" bitów.
 
 ## <a name="the-completed-system-and-test"></a>Ukończone system i testowanie
 Ta sekcja przeprowadzi Cię przez następujące scenariusze ukończone systemu end-to-end tak, aby przed uzyskaniem konto logowania, może mieć podstawowego obrazu zachowania:
@@ -407,15 +408,15 @@ Możesz skontaktować się ze wszystkich autorów konta utworzone lub dodawane.
 
 Poniższych zrzutach ekranu przedstawiono różne stron logowania w usługach używany przez inną domenę konta:
 
-**Konto domeny dzierżawy niestandardowy usługi Azure AD**: Niestandardowe strony logowania w niestandardowych usługi Azure AD dzierżawy domeny.
+**Niestandardowe konto domeny dzierżawy usługi Azure AD**: Dostosowana Strona logowania do niestandardowej domeny dzierżawy usługi Azure AD.
 
 ![Konto domeny dzierżawy niestandardowy usługi Azure AD](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain1.png)
 
-**Konto domeny firmy Microsoft przy użyciu karty inteligentnej**: Strona logowania dostosowywane przez firmy Microsoft IT za pomocą uwierzytelniania dwuskładnikowego.
+**Konto domeny Microsoft z kartą inteligentną**: Strona logowania dostosowana przez firmę Microsoft w firmie przy użyciu uwierzytelniania dwuskładnikowego.
 
 ![Konto domeny dzierżawy niestandardowy usługi Azure AD](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain2.png)
 
-**Konto Microsoft**: Strona logowania konta Microsoft dla konsumentów.
+**Konto Microsoft**: Strona logowania konto Microsoft dla użytkowników.
 
 ![Konto domeny dzierżawy niestandardowy usługi Azure AD](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain3.png)
 

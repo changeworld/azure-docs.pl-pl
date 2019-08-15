@@ -7,18 +7,17 @@ author: raiye
 editor: ''
 ms.assetid: d0a272a9-ed01-4f4c-a0b3-bd5e841bdd77
 ms.service: cloud-services
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 8/2/2019
 ms.author: raiye
-ms.openlocfilehash: 534a77ad29338ca1cdba22a3adeb8113521a6246
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 6f7fc27674ad26d8de8dd5d0c6c801b269b0e686
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780089"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68941707"
 ---
 # <a name="azure-guest-os"></a>System operacyjny gościa platformy Azure
 W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Response Center (MSRC) zastosowane do systemu operacyjnego gościa platformy Azure. Przeszukaj ten artykuł, aby ustalić, czy dana aktualizacja dotyczy systemu operacyjnego gościa, którego używasz. Aktualizacje są zawsze przenoszone dla określonej [rodziny][family-explain] , w której zostały wprowadzone.
@@ -42,7 +41,7 @@ W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Respo
 |  Rel 19-07   |  [4507469]  |  Zabezpieczenia systemu Windows   |  6.9  |  9 lipca 2019  |
 |  ND  |  [4503537]  |  Czerwiec "19 aktualizacja stosu obsługi dla (serwer 2016)   |  5.33  |  14 maja 2019  |
 |  ND  |  [4504369]  |  Czerwiec "19 aktualizacja stosu obsługi dla (serwer 2019)   |  6.9  |  14 maja 2019  |
-|  ND  |  [4503292]  |  Czerwiec "19 niezabezpieczeń (Serwer 2008 R2)   |  2,88  |  20 maja 2019  |
+|  ND  |  [4503292]  |  Czerwiec "19 niezabezpieczeń (Serwer 2008 R2)   |  2,88  |  20 maja 2019 r.  |
 |  ND  |  [4503285]  |  Czerwiec "19 non-Security" (serwer 2012)   |  3.75  |  14 maja 2019  |
 |  ND  |  [4503276]  |  Czerwiec "19 niezabezpieczeń (serwer 2012 R2)   |  4,68  |  14 maja 2019  |
 
@@ -82,7 +81,7 @@ W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Respo
 |  Rel 19-06   |  [4503259]  |  Internet Explorer   |  2,87, 3,74, 4,67  |  13 czerwca 2019  |
 |  ND  |  [4499164]  |  Może "19 nie zabezpieczenia  |  2,87  |  14 maja 2019  |
 |  ND  |  [4495606]  |  Maj "19 .NET 3,5 niezwiązane z zabezpieczeniami  |  2,87  |  14 maja 2019  |
-|  ND  |  [4495596]  |  Maj "19 .NET 4,5 niezwiązane z zabezpieczeniami  |  2,87  |  20 maja 2019  |
+|  ND  |  [4495596]  |  Maj "19 .NET 4,5 niezwiązane z zabezpieczeniami  |  2,87  |  20 maja 2019 r.  |
 |  ND  |  [4499171]  |  Może "19 nie zabezpieczenia  |  3,74  |  14 maja 2019  |
 |  ND  |  [4495602]  |  Maj "19 .NET 3,5 niezwiązane z zabezpieczeniami  |  3,74  |  14 maja 2019  |
 |  ND  |  [4495594]  |  Maj "19 .NET 4. x non-Security  |  4,67  |  14 maja 2019  |

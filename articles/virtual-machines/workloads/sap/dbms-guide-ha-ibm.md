@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
-ms.openlocfilehash: 754eb063f82344e72bece8fb0ac5708dbc8ab791
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 0da426a9302ce72b5359df15d3f8e244fc1766a0
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249132"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935359"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -87,7 +87,7 @@ Przed rozpoczęciem instalacji zapoznaj się z następującymi informacjami i do
 | [IBM DB2 HADR Cluster 11,1][db2-hadr-11.1] |
 | [IBM DB2 HADR Cluster R 10,5][db2-hadr-10.5] |
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Aby zapewnić wysoką dostępność, program IBM DB2 LUW z HADR Cluster jest instalowany na co najmniej dwóch maszynach wirtualnych platformy Azure, które są wdrażane w [zestawie dostępności platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) lub w różnych [strefy dostępności platformy Azureach](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones). 
 
 Poniższa Grafika przedstawia konfigurację dwóch maszyn wirtualnych platformy Azure na serwerze bazy danych. Zarówno maszyny wirtualne platformy Azure z serwerem bazy danych mają podłączony własny magazyn, jak i są uruchomione. W HADR Cluster, jedno wystąpienie bazy danych na jednej z maszyn wirtualnych platformy Azure ma rolę wystąpienia podstawowego. Wszyscy klienci są połączeni z tym wystąpieniem podstawowym. Wszystkie zmiany transakcji bazy danych są utrwalane lokalnie w dzienniku transakcji programu DB2. Ponieważ rekordy dziennika transakcji są utrwalane lokalnie, rekordy są transferowane za pośrednictwem protokołu TCP/IP do wystąpienia bazy danych na drugim serwerze bazy danych, serwerze rezerwy lub wystąpieniu gotowości. Wystąpienie gotowości aktualizuje lokalną bazę danych, przechodząc do przodu przesłanych rekordów dziennika transakcji. W ten sposób serwer rezerwy jest zsynchronizowany z serwerem podstawowym.
@@ -133,7 +133,7 @@ Ukończ proces planowania przed wykonaniem wdrożenia. Planowanie kompiluje pods
 | Definicja sieci wirtualnej/podsieci | Miejsce, w którym są wdrażane maszyny wirtualne dla programu IBM DB2 i Azure Load Balancer. Może być istniejący lub nowo utworzony. |
 | Maszyny wirtualne obsługujące IBM DB2 LUW | Rozmiar maszyny wirtualnej, magazyn, Sieć, adres IP. |
 | Nazwa hosta wirtualnego i wirtualny adres IP dla bazy danych programu IBM DB2| Wirtualny adres IP lub nazwa hosta, który jest używany do połączenia serwerów aplikacji SAP. **DB-virt-hostname**, **DB-virt-IP**. |
-| Ogrodzenie platformy Azure | Ogrodzenie platformy Azure lub SBD (zdecydowanie zalecane). Metoda zapobiegania rozdzielonym sytuacje mózgów jest nieblokowana. |
+| Ogrodzenie platformy Azure | Ogrodzenie platformy Azure lub SBD (zdecydowanie zalecane). Metoda zapobiegania rozdzielonym sytuacjom mózgów. |
 | MASZYNA WIRTUALNA W SBD | SBD rozmiar maszyny wirtualnej, magazyn i sieć. |
 | Azure Load Balancer | Użycie Basic lub Standard (zalecane), port sondy dla bazy danych DB2 (nasze zalecenie 62500) **sonda-port**. |
 | Rozpoznawanie nazw| Jak rozpoznawanie nazw działa w środowisku. Usługa DNS jest zdecydowanie zalecana. Można użyć lokalnego pliku Hosts. |
@@ -202,7 +202,7 @@ Aby skonfigurować podstawowe wystąpienie bazy danych programu IBM DB2 LUW:
 
 Aby skonfigurować serwer bazy danych w stanie gotowości przy użyciu procedury kopiowania jednorodnego systemu SAP, wykonaj następujące kroki:
 
-1. Wybierz opcję **kopiowania systemu** > wystąpienia  > **rozproszonej** > **bazy danych**w systemie docelowym.
+1. Wybierz opcję **kopiowania systemu** > wystąpienia > **rozproszonej** > **bazy danych**w systemie docelowym.
 1. Jako metodę kopiowania wybierz jednorodny **system** , aby można było użyć kopii zapasowej do przywrócenia kopii zapasowej w wystąpieniu serwera w stanie gotowości.
 1. Po dojściu do kroku zakończenia, aby przywrócić bazę danych jednorodnej kopii systemu, zamknij Instalatora. Przywróć bazę danych z kopii zapasowej hosta podstawowego. Wszystkie kolejne etapy instalacji zostały już wykonane na podstawowym serwerze bazy danych.
 1. Skonfiguruj HADR Cluster dla programu IBM DB2.
@@ -404,10 +404,10 @@ sudo crm configure property maintenance-mode=false</pre></code>
 # <a name="full-list-of-resources"></a>Pełna lista zasobów:
 
 #  <a name="stonith-sbd----stonithexternalsbd-started-azibmdb02"></a>stonith-SBD (stonith: External/SBD): Uruchomiono azibmdb02
-#  <a name="resource-group-gipdb2ptrptr"></a>Grupa zasobów: g_ip_db2ptr_PTR
-#      <a name="rscipdb2ptrptr--ocfheartbeatipaddr2-------started-azibmdb02"></a>rsc_ip_db2ptr_PTR (OCF:: puls: IPaddr2):       Uruchomiono azibmdb02
-#      <a name="rscncdb2ptrptr--ocfheartbeatanything------started-azibmdb02"></a>rsc_nc_db2ptr_PTR (OCF:: Pulse: cokolwiek):      Uruchomiono azibmdb02
-#  <a name="masterslave-set-msldb2db2ptrptr-rscdb2db2ptrptr"></a>Zestaw główny/podrzędny: msl_Db2_db2ptr_PTR [rsc_Db2_db2ptr_PTR]
+#  <a name="resource-group-g_ip_db2ptr_ptr"></a>Grupa zasobów: g_ip_db2ptr_PTR
+#      <a name="rsc_ip_db2ptr_ptr--ocfheartbeatipaddr2-------started-azibmdb02"></a>rsc_ip_db2ptr_PTR (OCF:: puls: IPaddr2):       Uruchomiono azibmdb02
+#      <a name="rsc_nc_db2ptr_ptr--ocfheartbeatanything------started-azibmdb02"></a>rsc_nc_db2ptr_PTR (OCF:: Pulse: cokolwiek):      Uruchomiono azibmdb02
+#  <a name="masterslave-set-msl_db2_db2ptr_ptr-rsc_db2_db2ptr_ptr"></a>Zestaw główny/podrzędny: msl_Db2_db2ptr_PTR [rsc_Db2_db2ptr_PTR]
 #      <a name="masters--azibmdb02-"></a>Wzorce: [azibmdb02]
 #      <a name="slaves--azibmdb01-"></a>Elementy podrzędne: [azibmdb01]
 </pre>

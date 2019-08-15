@@ -1,181 +1,181 @@
 ---
-title: Query Store w usłudze Azure Database for MySQL
-description: W tym artykule opisano funkcję Store zapytania w usłudze Azure Database for MySQL
+title: Magazyn zapytań w Azure Database for MySQL
+description: W tym artykule opisano funkcję magazynu zapytań w Azure Database for MySQL
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: a24bba0786201f4ea1d1be431107f7bfe26a2a8f
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 884824b6f6fd8bf5b4c7730813c4363fae018375
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461720"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950579"
 ---
-# <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>Monitorowanie — Azure Database dla wydajności programu MySQL przy użyciu Query Store
+# <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>Monitorowanie wydajności Azure Database for MySQL przy użyciu magazynu zapytań
 
-**Dotyczy:**  Azure Database for MySQL 5.7
+**Dotyczy:**  Azure Database for MySQL 5,7
 
-> [!NOTE]
-> Query Store jest dostępna w wersji zapoznawczej.
+> [!IMPORTANT]
+> Magazyn zapytań jest w wersji zapoznawczej.
 
-Funkcja Query Store, w usłudze Azure Database for MySQL zapewnia sposób śledzenia wydajności zapytań, wraz z upływem czasu. Zapytanie Store upraszcza wydajności rozwiązywania problemów, ułatwiając szybkie znajdowanie zapytań najdłużej działających i najbardziej dużej ilości zasobów. Query Store automatycznie przechwytuje historię zapytań i statystyki środowiska uruchomieniowego i przechowuje je do przejrzenia. Tak, aby zobaczyć wzorców użycia baz danych, dzieli dane według czasu systemu windows. Dane dla wszystkich użytkowników, bazy danych i zapytania są przechowywane w **mysql** schematu bazy danych, w usłudze Azure Database for MySQL — wystąpienia.
+Funkcja magazynu zapytań w Azure Database for MySQL zapewnia sposób śledzenia wydajności zapytań w miarę upływu czasu. Magazyn zapytań upraszcza Rozwiązywanie problemów z wydajnością, pomagając szybko znaleźć najdłuższych uruchomionych i większości zapytań intensywnie korzystających z zasobów. Magazyn zapytań automatycznie przechwytuje historię zapytań i statystyk środowiska uruchomieniowego i zachowuje je do przeglądu. Oddziela ona dane według czasu, dzięki czemu można zobaczyć wzorce użycia bazy danych. Dane dla wszystkich użytkowników, baz danych i zapytań są przechowywane w bazie danych schematu **MySQL** w wystąpieniu Azure Database for MySQL.
 
-## <a name="common-scenarios-for-using-query-store"></a>Typowe scenariusze za pomocą Query Store
+## <a name="common-scenarios-for-using-query-store"></a>Typowe scenariusze korzystania z magazynu zapytań
 
-Magazyn zapytań może służyć w wielu scenariuszach, w tym następujące:
+Magazyn zapytań może być używany w wielu scenariuszach, w tym następujących:
 
-- Wykrywanie pogorszonej zapytań
-- Określenie, ile razy zapytanie zostało wykonane w danym przedziale czasowym
-- Porównywanie Średni czas wykonania zapytania na okna czasowe, aby zobaczyć dużych różnic
+- Wykrywanie zapytań uległa pogorszeniu
+- Określanie liczby przypadków wykonania zapytania w danym przedziale czasu
+- Porównanie średniego czasu wykonywania zapytania w oknach czasu, aby zobaczyć duże różnice
 
-## <a name="enabling-query-store"></a>Włączanie kwerenda Store
+## <a name="enabling-query-store"></a>Włączanie magazynu zapytań
 
-Query Store jest funkcji opcjonalnych, więc nie jest aktywne, domyślnie na serwerze. Magazyn zapytań jest włączone lub wyłączone globalnie, dla wszystkich baz danych na danym serwerze i nie można włączyć lub wyłączyć dla bazy danych.
+Magazyn zapytań jest funkcją wyboru, dlatego nie jest domyślnie aktywna na serwerze. Magazyn zapytań jest włączony lub wyłączony globalnie dla wszystkich baz danych na danym serwerze i nie można go włączyć ani wyłączyć na bazę danych.
 
-### <a name="enable-query-store-using-the-azure-portal"></a>Włączanie kwerenda Store przy użyciu witryny Azure portal
+### <a name="enable-query-store-using-the-azure-portal"></a>Włącz magazyn zapytań przy użyciu Azure Portal
 
-1. Zaloguj się do witryny Azure portal i wybierz usługi Azure Database for MySQL server.
-1. Wybierz **parametrów serwera** w **ustawienia** części menu.
+1. Zaloguj się do Azure Portal i wybierz swój serwer Azure Database for MySQL.
+1. Wybierz opcję **Parametry** serwera w sekcji **Ustawienia** w menu.
 1. Wyszukaj parametr query_store_capture_mode.
-1. Ustaw wartość do wszystkich i **Zapisz**.
+1. Ustaw wartość wszystkie i **Zapisz**.
 
-Aby włączyć statystyki oczekiwania w swojej Query Store:
+Aby włączyć statystykę oczekiwania w magazynie zapytań:
 
 1. Wyszukaj parametr query_store_wait_sampling_capture_mode.
-1. Ustaw wartość do wszystkich i **Zapisz**.
+1. Ustaw wartość wszystkie i **Zapisz**.
 
-Zezwala na maksymalnie 20 minut pierwszej partii danych do utrwalenia w bazie danych mysql.
+Zaczekaj do 20 minut, aż pierwsza partia danych ma pozostać w bazie danych MySQL.
 
-## <a name="information-in-query-store"></a>Informacje przedstawione w Query Store
+## <a name="information-in-query-store"></a>Informacje w magazynie zapytań
 
-Query Store składa się z dwóch magazynów:
+Magazyn zapytań ma dwa magazyny:
 
-- Statystyki środowiska uruchomieniowego przechowywania na potrzeby utrwalania informacji statystyk wykonywania zapytań.
-- Magazyn statystyki oczekiwania utrwalanie informacji statystyki oczekiwania.
+- Magazyn statystyk środowiska uruchomieniowego na potrzeby utrwalania informacji statystycznych wykonywania zapytania.
+- Magazyn statystyk oczekiwania dla utrwalania informacji o statystyce oczekiwania.
 
-Aby zminimalizować użycie miejsca na, statystyk wykonywania środowiska uruchomieniowego w magazynie statystyki środowiska uruchomieniowego są agregowane w przedziale czasu stałych, które można konfigurować. Informacje przedstawione w tych magazynów jest widoczna, badając widoków magazynu zapytań.
+Aby zminimalizować użycie miejsca, statystyki wykonywania środowiska uruchomieniowego w magazynie statystyk środowiska uruchomieniowego są agregowane w ustalonym, konfigurowalnym przedziale czasu. Informacje w tych sklepach są widoczne przez zapytanie dotyczące widoków magazynu zapytań.
 
-Następujące zapytanie zwraca informacje o zapytaniach w Query Store:
+Następujące zapytanie zwraca informacje o zapytaniach w magazynie zapytań:
 
 ```sql
 SELECT * FROM mysql.query_store;
 ```
 
-Lub to zapytanie statystyki oczekiwania:
+Lub to zapytanie dotyczące statystyk oczekiwania:
 
 ```sql
 SELECT * FROM mysql.query_store_wait_stats;
 ```
 
-## <a name="finding-wait-queries"></a>Znajdowanie oczekiwania zapytań
+## <a name="finding-wait-queries"></a>Znajdowanie zapytań oczekujących
 
-Typy zdarzeń oczekiwania łączyć różne oczekiwania zdarzenia w zasobników wg podobieństwa. Query Store zawiera typ zdarzenia oczekiwania, Nazwa zdarzenia określonego oczekiwania i zapytania w danym. Możliwość skorelować te informacje oczekiwania ze środowiskiem uruchomieniowym zapytania, statystyki oznacza, że można uzyskać, aby lepiej zrozumieć, co przyczynia się do charakterystyki wydajności zapytania.
+Typy zdarzeń oczekiwania łączą różne zdarzenia oczekiwania do zasobników według podobieństwa. Magazyn zapytań zawiera typ zdarzenia oczekiwania, konkretną nazwę zdarzenia oczekiwania i zapytanie, którego dotyczy. Aby skorelować te informacje o poczekaniu z statystykami środowiska uruchomieniowego zapytań, można lepiej zrozumieć, co przyczynia się do charakterystyki wydajności zapytań.
 
-Poniżej przedstawiono kilka przykładów, jak można uzyskać lepszy wgląd w obciążenia przy użyciu statystyki oczekiwania w Query Store:
+Poniżej przedstawiono kilka przykładów, w których można uzyskać więcej szczegółowych informacji na temat obciążenia przy użyciu statystyk oczekiwania w magazynie zapytań:
 
-| **Obserwowanie** | **Akcja** |
+| **Uchwyceni** | **Akcja** |
 |---|---|
-|Wysoka czeka blokady | Sprawdź teksty zapytania dla zapytań, których to dotyczy i zidentyfikować jednostki docelowej. Szukaj w Query Store na inne zapytania modyfikowanie tej samej jednostki, która jest często wykonywane i/lub mają wysoki czas trwania. Po określeniu tych zapytań, należy rozważyć zmianę logiki aplikacji w celu zwiększenia współbieżności, lub użyj mniej restrykcyjny poziom izolacji. |
-|Wysoka czeka buforu operacji We/Wy | Znajdź zapytania z dużą liczbą fizyczne odczyty Query Store. Jeśli zapytania z wysoką czeka We/Wy są zgodne, należy rozważyć wprowadzenie do indeksu w podstawowej jednostki w celu szuka zamiast skanowania. Spowoduje to zminimalizować obciążenie We/Wy zapytań. Sprawdź **zalecenia dotyczące wydajności** serwera w portalu, aby sprawdzić, czy są zalecenia dotyczące indeksu dla tego serwera, który będzie optymalizacji zapytań. |
-|Oczekuje na dużą ilość pamięci | Znajdź najważniejsze pamięć zapytań w Store zapytań zużywających najwięcej zasobów. Te zapytania są prawdopodobnie opóźniania dalszych postępów objęte zapytania. Sprawdź **zalecenia dotyczące wydajności** serwera w portalu, aby sprawdzić, czy są zalecenia dotyczące indeksu, które będzie zoptymalizowania tych zapytań.|
+|Duża blokada | Sprawdź teksty zapytania dla zaatakowanych zapytań i zidentyfikuj jednostki docelowe. Wyszukaj inne zapytania w magazynie zapytań, modyfikując tę samą jednostkę, która jest wykonywana często i/lub o dużym czasie trwania. Po zidentyfikowaniu tych zapytań Rozważ zmianę logiki aplikacji, aby zwiększyć współbieżność, lub użyj mniej restrykcyjnego poziomu izolacji. |
+|Duże oczekiwania we/wy | Znajdź zapytania z dużą liczbą odczytów fizycznych w magazynie zapytań. Jeśli są one zgodne z kwerendami o wysokim poziomie operacji we/wy, rozważ wprowadzenie indeksu w jednostce źródłowej, aby przeszukiwać zamiast skanów. Zmniejsza to obciążenie operacji we/wy dla zapytań. Sprawdź **zalecenia** dotyczące wydajności serwera w portalu, aby sprawdzić, czy istnieją zalecenia dotyczące indeksów dla tego serwera, które optymalizują zapytania. |
+|Duża ilość pamięci | Znajdź zapytania zużywające najwięcej pamięci w magazynie zapytań. Te zapytania prawdopodobnie opóźnią dalsze postępy zapytań, których to dotyczy. Sprawdź **zalecenia** dotyczące wydajności serwera w portalu, aby sprawdzić, czy istnieją zalecenia dotyczące indeksów, które optymalizują te zapytania.|
 
 ## <a name="configuration-options"></a>Opcje konfiguracji
 
-Po włączeniu Query Store zapisuje dane w systemie windows agregacji 15 minut, maksymalnie 500 różne zapytania na okna.
+Po włączeniu magazynu zapytań dane są zapisywane w 15-minutowych oknach agregacji, do 500 oddzielnych zapytań dla każdego okna.
 
-Następujące opcje są dostępne w celu konfigurowania parametrów Query Store.
-
-| **Parametr** | **Opis** | **Domyślne** | **Range** |
-|---|---|---|---|
-| query_store_capture_mode | Włącz funkcję magazynu zapytań, włączyć/wyłączyć na podstawie wartości. Uwaga: Jeśli performance_schema jest WYŁĄCZONY, włączając query_store_capture_mode spowoduje włączenie performance_schema oraz podzbiór dokumentów schematu wydajności wymagana dla tej funkcji. | ALL | BRAK, WSZYSTKIE |
-| query_store_capture_interval | Magazyn zapytań przechwytywania interwału w ciągu kilku minut. Umożliwia określenie interwału, w którym są agregowane metryki zapytania | 15 | 5 - 60 |
-| query_store_capture_utility_queries | Włączanie wł. lub Wył do przechwytywania wszystkich zapytań narzędzie, które jest wykonywane w systemie. | NO | TAK, NO |
-| query_store_retention_period_in_days | Przedział czasu w dni przechowywania danych w magazynie zapytań. | 7 | 1 - 30 |
-
-Poniższe opcje są stosowane specjalnie w celu oczekiwania statystyk.
+Następujące opcje są dostępne na potrzeby konfigurowania parametrów magazynu zapytań.
 
 | **Parametr** | **Opis** | **Domyślne** | **Range** |
 |---|---|---|---|
-| query_store_wait_sampling_capture_mode | Umożliwia włączenie ON / OFF statystyki oczekiwania. | BRAK | BRAK, WSZYSTKIE |
-| query_store_wait_sampling_frequency | Alters częstotliwość pobierania próbek oczekiwania w sekundach. 5-300 sekund. | 30 | 5-300 |
+| query_store_capture_mode | Włącz/Wyłącz funkcję magazynu zapytań na podstawie wartości. Uwaga: Jeśli performance_schema jest wyłączona, włączenie opcji query_store_capture_mode spowoduje włączenie performance_schema i podzestawu narzędzi schematu wydajności wymaganych dla tej funkcji. | WSZYSTKIE | BRAK, WSZYSTKIE |
+| query_store_capture_interval | Interwał przechwytywania magazynu zapytań (w minutach). Umożliwia określenie interwału, w którym metryki zapytania są agregowane | 15 | 5 - 60 |
+| query_store_capture_utility_queries | Włączenie lub wyłączenie w celu przechwycenia wszystkich zapytań narzędziowych wykonywanych w systemie. | NO | TAK, NIE |
+| query_store_retention_period_in_days | Przedział czasu w dniach, aby zachować dane w magazynie zapytań. | 7 | 1 - 30 |
+
+Poniższe opcje są stosowane w odniesieniu do statystyk oczekiwania.
+
+| **Parametr** | **Opis** | **Domyślne** | **Range** |
+|---|---|---|---|
+| query_store_wait_sampling_capture_mode | Umożliwia włączenie/wyłączenie statystyk oczekiwania. | BRAK | BRAK, WSZYSTKIE |
+| query_store_wait_sampling_frequency | Zmienia częstotliwość próbkowania oczekiwania w sekundach. od 5 do 300 sekund. | 30 | 5-300 |
 
 > [!NOTE]
-> Obecnie **query_store_capture_mode** zastępuje tę konfigurację, co oznacza zarówno **query_store_capture_mode** i **query_store_wait_sampling_capture_mode** musi być włączone dla wszystkich statystyki oczekiwania do pracy. Jeśli **query_store_capture_mode** jest wyłączony, a następnie statystyki oczekiwania jest wyłączone także ponieważ statystyki oczekiwania wykorzystuje performance_schema włączone i zapytanie_tekst przechwycone przez Magazyn zapytań.
+> Obecnie **query_store_capture_mode** zastępuje tę konfigurację, co oznacza, że zarówno **query_store_capture_mode** , jak i **QUERY_STORE_WAIT_SAMPLING_CAPTURE_MODE** muszą być włączone dla wszystkich, aby statystyki oczekiwania mogły działać. Jeśli **query_store_capture_mode** jest wyłączone, a następnie zaczekaj, statystyki są również wyłączone, ponieważ statystyki oczekiwania wykorzystują performance_schema włączone i zapytanie_tekst przechwycone przez magazyn zapytań.
 
-Użyj [witryny Azure portal](howto-server-parameters.md) lub [wiersza polecenia platformy Azure](howto-configure-server-parameters-using-cli.md) można pobrać lub ustawić inną wartość dla parametru.
+Użyj [Azure Portal](howto-server-parameters.md) lub  [interfejsu wiersza polecenia platformy Azure](howto-configure-server-parameters-using-cli.md), aby uzyskać lub ustawić inną wartość dla parametru.
 
 ## <a name="views-and-functions"></a>Widoki i funkcje
 
-Wyświetlanie i zarządzanie nimi Query Store przy użyciu następujących widoki i funkcje. Każda osoba w [wybierz uprawnienia roli publicznej](howto-create-users.md#how-to-create-additional-admin-users-in-azure-database-for-mysql) użyć tych widoków, aby wyświetlić dane w Query Store. Widoki te są dostępne tylko w **mysql** bazy danych.
+Wyświetlanie magazynu zapytań i zarządzanie nim przy użyciu następujących widoków i funkcji. Każda osoba w [roli publicznej Wybieranie uprawnienia](howto-create-users.md#how-to-create-additional-admin-users-in-azure-database-for-mysql) może używać tych widoków do wyświetlania danych w magazynie zapytań. Te widoki są dostępne tylko w bazie danych **MySQL** .
 
-Zapytania są znormalizowane, analizując ich struktury, po usunięciu literałów i stałych. Jeśli dwa zapytania są identyczne, z wyjątkiem wartości literału, będzie miał ten sam skrót.
+Zapytania są znormalizowane przez przejrzenie ich struktury po usunięciu literałów i stałych. Jeśli dwa zapytania są identyczne z wyjątkiem wartości literału, będą miały ten sam skrót.
 
-### <a name="mysqlquerystore"></a>mysql.query_store
+### <a name="mysqlquery_store"></a>MySQL. query_store
 
-Ten widok zwraca wszystkie dane w Query Store. Istnieje jeden wiersz dla każdej różne bazy danych, identyfikator, nazwę użytkownika i identyfikator zapytania.
+Ten widok zwraca wszystkie dane w magazynie zapytań. Dla każdego unikatowego identyfikatora bazy danych, identyfikatora użytkownika i identyfikatora zapytania istnieje jeden wiersz.
 
 | **Nazwa** | **Typ danych** | **IS_NULLABLE** | **Opis** |
 |---|---|---|---|
-| `schema_name`| varchar(64) | NO | Nazwa schematu |
-| `query_id`| bigint(20) | NO| Unikatowy identyfikator generowany dla określonego zapytania, jeśli to samo zapytanie wykonuje się w różnych schematów, nowy identyfikator zostanie wygenerowany. |
-| `timestamp_id` | timestamp| NO| Znacznik czasu wykonywania zapytania. To zależy od konfiguracji query_store_interval|
-| `query_digest_text`| longtext| NO| Tekst zapytania znormalizowane po usunięciu wszystkich literałach|
-| `query_sample_text` | longtext| NO| Pierwsze wystąpienie rzeczywiste zapytanie z literałów|
-| `query_digest_truncated` | bit| TAK| Czy został obcięty tekst zapytania. Wartością będzie tak, jeśli zapytanie jest dłuższy niż 1 KB|
-| `execution_count` | bigint(20)| NO| Liczba przypadków, gdy dla tego Identyfikatora sygnatury czasowej / okresie skonfigurowany interwał stało się wykonać zapytania|
-| `warning_count` | bigint(20)| NO| Liczba ostrzeżeń to zapytanie generowane podczas wewnętrzny|
-| `error_count` | bigint(20)| NO| Liczba błędów, to zapytanie generowane w interwale|
+| `schema_name`| varchar (64) | NO | Nazwa schematu |
+| `query_id`| bigint (20) | NO| Unikatowy identyfikator wygenerowany dla konkretnego zapytania, jeśli to samo zapytanie jest wykonywane w innym schemacie, zostanie wygenerowany nowy identyfikator |
+| `timestamp_id` | timestamp| NO| Znacznik czasu, w którym jest wykonywane zapytanie. Jest to oparte na konfiguracji query_store_interval|
+| `query_digest_text`| longtext| NO| Znormalizowany tekst zapytania po usunięciu wszystkich literałów|
+| `query_sample_text` | longtext| NO| Pierwszy wygląd rzeczywistego zapytania z literałami|
+| `query_digest_truncated` | bit| TAK| Czy tekst zapytania został obcięty. Wartość będzie równa tak, jeśli zapytanie jest dłuższe niż 1 KB|
+| `execution_count` | bigint (20)| NO| Liczba wykonań zapytania dla tego identyfikatora znacznika czasu/w skonfigurowanym okresie interwału|
+| `warning_count` | bigint (20)| NO| Liczba ostrzeżeń wygenerowanych przez to zapytanie w czasie wewnętrznym|
+| `error_count` | bigint (20)| NO| Liczba błędów wygenerowanych przez to zapytanie w interwale|
 | `sum_timer_wait` | double| TAK| Łączny czas wykonywania tego zapytania w interwale|
-| `avg_timer_wait` | double| TAK| Średni czas wykonywania tego zapytania w interwale|
-| `min_timer_wait` | double| TAK| Minimalny czas wykonywania tego zapytania|
+| `avg_timer_wait` | double| TAK| Średni czas wykonywania dla tego zapytania w interwale|
+| `min_timer_wait` | double| TAK| Minimalny czas wykonywania dla tego zapytania|
 | `max_timer_wait` | double| TAK| Maksymalny czas wykonywania|
-| `sum_lock_time` | bigint(20)| NO| Łączna ilość czasu przeznaczonego dla wszystkich blokad to wykonywania zapytań w tym przedziale czasu|
-| `sum_rows_affected` | bigint(20)| NO| Liczba wierszy, których to dotyczy|
-| `sum_rows_sent` | bigint(20)| NO| Liczba wierszy, wysłane do klienta|
-| `sum_rows_examined` | bigint(20)| NO| Liczba wierszy, które badania|
-| `sum_select_full_join` | bigint(20)| NO| Liczba pełnego sprzężenia|
-| `sum_select_scan` | bigint(20)| NO| Numer skanowania, wybierz opcję |
-| `sum_sort_rows` | bigint(20)| NO| Liczba posortowanych wierszy|
-| `sum_no_index_used` | bigint(20)| NO| Liczba przypadków, gdy zapytanie bez użycia jakichkolwiek indeksów|
-| `sum_no_good_index_used` | bigint(20)| NO| Ile razy podczas aparatu wykonywania zapytań bez użycia jakichkolwiek indeksów dobre|
-| `sum_created_tmp_tables` | bigint(20)| NO| Łączna liczba utworzone tabele tymczasowe|
-| `sum_created_tmp_disk_tables` | bigint(20)| NO| Łączna liczba tabel tymczasowych utworzony na dysku (generuje operacji We/Wy)|
-| `first_seen` | timestamp| NO| Pierwsze wystąpienie (UTC) zapytanie przedziale agregacji|
+| `sum_lock_time` | bigint (20)| NO| Łączny czas spędzony dla wszystkich blokad dla tego wykonania zapytania w tym przedziale czasu|
+| `sum_rows_affected` | bigint (20)| NO| Liczba zaatakowanych wierszy|
+| `sum_rows_sent` | bigint (20)| NO| Liczba wierszy wysłanych do klienta|
+| `sum_rows_examined` | bigint (20)| NO| Liczba badanych wierszy|
+| `sum_select_full_join` | bigint (20)| NO| Liczba pełnych sprzężeń|
+| `sum_select_scan` | bigint (20)| NO| Liczba wybranych skanów |
+| `sum_sort_rows` | bigint (20)| NO| Liczba posortowanych wierszy|
+| `sum_no_index_used` | bigint (20)| NO| Liczba przypadków, gdy zapytanie nie używało żadnych indeksów|
+| `sum_no_good_index_used` | bigint (20)| NO| Liczba przypadków, gdy aparat wykonywania zapytania nie korzystał z prawidłowych indeksów|
+| `sum_created_tmp_tables` | bigint (20)| NO| Łączna liczba utworzonych tabel tymczasowych|
+| `sum_created_tmp_disk_tables` | bigint (20)| NO| Łączna liczba tabel tymczasowych utworzonych w dysku (generuje we/wy)|
+| `first_seen` | timestamp| NO| Pierwsze wystąpienie (UTC) zapytania w oknie agregacji|
 | `last_seen` | timestamp| NO| Ostatnie wystąpienie (UTC) zapytania w tym oknie agregacji|
 
-### <a name="mysqlquerystorewaitstats"></a>mysql.query_store_wait_stats
+### <a name="mysqlquery_store_wait_stats"></a>mysql.query_store_wait_stats
 
-Ten widok zwraca oczekiwać dane zdarzeń w Query Store. Istnieje jeden wiersz dla każdego identyfikator różne bazy danych, identyfikator użytkownika, identyfikator zapytania i zdarzeń.
+Ten widok zwraca dane zdarzeń oczekiwania w magazynie zapytań. Istnieje jeden wiersz dla każdego identyfikatora bazy danych, identyfikatora użytkownika, identyfikatora zapytania i zdarzenia.
 
 | **Nazwa**| **Typ danych** | **IS_NULLABLE** | **Opis** |
 |---|---|---|---|
-| `interval_start` | timestamp | NO| Początek interwału (15-minutowy inkrementacja)|
-| `interval_end` | timestamp | NO| Koniec interwału (15-minutowy inkrementacja)|
-| `query_id` | bigint(20) | NO| Wygenerowany unikatowy identyfikator na znormalizowaną zapytania (z magazynu zapytań)|
-| `query_digest_id` | varchar(32) | NO| Tekst zapytania znormalizowane po usunięciu wszystkich literałach (z magazynu zapytań) |
-| `query_digest_text` | longtext | NO| Pierwsze wystąpienie rzeczywiste zapytanie z literałami (z magazynu zapytań) |
-| `event_type` | varchar(32) | NO| Kategoria zdarzenia oczekiwania |
-| `event_name` | varchar(128) | NO| Nazwa zdarzenia oczekiwania |
-| `count_star` | bigint(20) | NO| Liczba zdarzeń oczekiwanie próbkowany przedział czasu dla zapytania |
-| `sum_timer_wait_ms` | double | NO| Całkowity czas oczekiwania (w milisekundach) tego zapytania w interwale |
+| `interval_start` | timestamp | NO| Początek interwału (15-minutowy przyrost)|
+| `interval_end` | timestamp | NO| Koniec interwału (co 15 minut)|
+| `query_id` | bigint (20) | NO| Wygenerowano unikatowy identyfikator w znormalizowanej kwerendzie (z magazynu zapytań)|
+| `query_digest_id` | varchar (32) | NO| Znormalizowany tekst zapytania po usunięciu wszystkich literałów (z magazynu zapytań) |
+| `query_digest_text` | longtext | NO| Pierwszy wygląd rzeczywistego zapytania z literałami (z magazynu zapytań) |
+| `event_type` | varchar (32) | NO| Kategoria zdarzenia oczekiwania |
+| `event_name` | varchar (128) | NO| Nazwa zdarzenia oczekiwania |
+| `count_star` | bigint (20) | NO| Liczba zdarzeń oczekiwania próbkowanych w przedziale czasu dla zapytania |
+| `sum_timer_wait_ms` | double | NO| Łączny czas oczekiwania (w milisekundach) tego zapytania w interwale |
 
 ### <a name="functions"></a>Funkcje
 
 | **Nazwa**| **Opis** |
 |---|---|
-| `mysql.az_purge_querystore_data(TIMESTAMP)` | Przeczyszcza wszystkie zapytania o dane magazynu przed sygnaturę czasową danej |
-| `mysql.az_procedure_purge_querystore_event(TIMESTAMP)` | Powoduje usunięcie wszystkich oczekiwania dane zdarzeń przed sygnaturę czasową danej |
-| `mysql.az_procedure_purge_recommendation(TIMESTAMP)` | Przeczyszcza zaleceń, których wygaśnięcia jest wcześniejsza niż sygnaturę czasową danej |
+| `mysql.az_purge_querystore_data(TIMESTAMP)` | Przeczyszcza wszystkie dane magazynu zapytań przed daną sygnaturą czasową |
+| `mysql.az_procedure_purge_querystore_event(TIMESTAMP)` | Przeczyszcza wszystkie dane zdarzeń oczekiwania przed daną sygnaturą czasową |
+| `mysql.az_procedure_purge_recommendation(TIMESTAMP)` | Przeczyszcza zalecenia, których wygaśnięcie jest przed daną sygnaturą czasową |
 
 ## <a name="limitations-and-known-issues"></a>Ograniczenia i znane problemy
 
-- Jeśli dany serwer MySQL parametru `default_transaction_read_only` , Query Store nie mogą przechwytywać dane.
-- Funkcje Query Store można przerwana w przypadku napotkania długie zapytania Unicode (\>= 6000 bajtów).
-- Okres przechowywania dla statystyki oczekiwania wynosi 24 godziny.
-- Statystyki oczekiwania używa próbki analizy czasowej przechwytywania ułamek zdarzeń. Częstotliwość można modyfikować za pomocą parametru `query_store_wait_sampling_frequency`.
+- Jeśli serwer MySQL ma parametr `default_transaction_read_only` na, magazyn zapytań nie może przechwycić danych.
+- Funkcja magazynu zapytań może zostać przerwana, jeśli napotka długie zapytania Unicode (\>= 6000 bajtów).
+- Okres przechowywania statystyk oczekiwania wynosi 24 godziny.
+- Statystyki oczekiwania wykorzystują przykładowe przechwycenie zdarzenia. Częstotliwość można zmodyfikować przy użyciu parametru `query_store_wait_sampling_frequency`.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [szczegółowe informacje o wydajności zapytań](concepts-query-performance-insight.md)
+- Dowiedz się więcej o usłudze [Query Performance Insights](concepts-query-performance-insight.md)

@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z ról, które można uruchomić | Dokumentacja firmy Microsoft
-description: Poniżej przedstawiono niektóre typowe przyczyny, dlaczego roli usługi w chmurze może się nie powieść. Podano także rozwiązania tych problemów.
+title: Rozwiązywanie problemów z rolami, których uruchomienie nie powiodło się | Microsoft Docs
+description: Poniżej przedstawiono niektóre typowe przyczyny niepowodzenia uruchomienia roli usługi w chmurze. Dostępne są również rozwiązania tych problemów.
 services: cloud-services
 documentationcenter: ''
 author: simonxjx
@@ -9,120 +9,119 @@ editor: ''
 tags: top-support-issue
 ms.assetid: 674b2faf-26d7-4f54-99ea-a9e02ef0eb2f
 ms.service: cloud-services
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: d2daae2a3317d3b48748262d87ab8d7f7e13f2b0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9e1ae9ca6106a6a55e0cfc933ad47a5944ed5abb
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60653395"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945393"
 ---
-# <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Rozwiązywanie problemów z ról usługi w chmurze, które można uruchomić
-Poniżej przedstawiono niektóre typowe problemy i rozwiązania związane z usług Azure Cloud Services role, których nie udało się uruchomić.
+# <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Rozwiązywanie problemów z rolami usługi w chmurze, których nie można uruchomić
+Poniżej przedstawiono niektóre typowe problemy i rozwiązania dotyczące ról Cloud Services platformy Azure, których nie można uruchomić.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="missing-dlls-or-dependencies"></a>Brak bibliotek DLL lub zależności
-Role nie odpowiada i role, które są cykliczne między **inicjowanie**, **zajęty**, i **zatrzymywanie** stany może być spowodowane przez Brak biblioteki DLL lub zestawów.
+Nieodpowiadające role i role, które sącykliczne między inicjalizacją, **zajętą**i zatrzymywaniem, mogą być spowodowane brakującymi bibliotekami DLL lub zestawami.
 
-Objawy Brak biblioteki DLL lub zestawów może być:
+Objawy brakujących bibliotek DLL lub zestawów mogą być następujące:
 
-* Twoje wystąpienie roli jest okrągło **inicjowanie**, **zajęty**, i **zatrzymywanie** stanów.
-* Twoje wystąpienie roli została przeniesiona do **gotowe** , ale jeśli przejdziesz do aplikacji sieci web, strona nie jest wyświetlana.
+* Wystąpienie roli jest cykliczne przez **Inicjowanie**, **zajęte**i **Zatrzymywanie** Stanów.
+* Wystąpienie roli zostało przeniesione do **gotowe** , ale jeśli przejdziesz do aplikacji sieci Web, Strona nie zostanie wyświetlona.
 
-Istnieje kilka metod zalecane do badania tych problemów.
+Istnieje kilka zalecanych metod badania tych problemów.
 
-## <a name="diagnose-missing-dll-issues-in-a-web-role"></a>Diagnozowanie Brak problemów biblioteki DLL w roli sieci web
-Po przejściu do witryny sieci Web, która jest wdrażana w sieci web roli i przeglądarka wyświetli błąd podobny do następującego serwera, może to oznaczać, że brakuje biblioteki DLL.
+## <a name="diagnose-missing-dll-issues-in-a-web-role"></a>Diagnozuj brakujące problemy z biblioteką DLL w roli sieci Web
+Po przejściu do witryny internetowej wdrożonej w roli sieci Web, a w przeglądarce zostanie wyświetlony komunikat o błędzie serwera podobny do poniższego, może to oznaczać, że brakuje biblioteki DLL.
 
-![Błąd serwera w aplikacji» /».](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503388.png)
+![Błąd serwera w aplikacji "/".](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503388.png)
 
-## <a name="diagnose-issues-by-turning-off-custom-errors"></a>Diagnozowanie problemów, wyłączając błędów niestandardowych
-Bardziej szczegółowe informacje o błędzie mogą zostać przejrzane przez konfigurowanie pliku web.config dla roli sieci web ustawić tryb błędu niestandardowego na Off i ponownie wdrożyć usługę.
+## <a name="diagnose-issues-by-turning-off-custom-errors"></a>Diagnozuj problemy, wyłączając błędy niestandardowe
+Więcej informacji o błędach można wyświetlić, konfigurując plik Web. config dla roli sieci Web w celu ustawienia niestandardowego trybu błędu na off i ponowne wdrożenie usługi.
 
-Aby wyświetlić bardziej szczegółowy błędy bez przy użyciu pulpitu zdalnego:
+Aby wyświetlić bardziej szczegółowe błędy bez używania Pulpit zdalny:
 
-1. Otwórz rozwiązanie w programie Microsoft Visual Studio.
-2. W **Eksploratora rozwiązań**, Znajdź plik web.config i otwórz go.
-3. W pliku web.config Odszukaj sekcję system.web i Dodaj następujący wiersz:
+1. Otwórz rozwiązanie w Microsoft Visual Studio.
+2. W **Eksplorator rozwiązań**Znajdź plik Web. config i otwórz go.
+3. W pliku Web. config Znajdź sekcję system. Web i Dodaj następujący wiersz:
 
     ```xml
     <customErrors mode="Off" />
     ```
 4. Zapisz plik.
-5. Przeprowadź ponowne pakowanie i ponownie wdrożyć usługę.
+5. Ponownie spakować i ponownie Wdróż usługę.
 
-Gdy usługa jest ponownie wdrażana, zobaczysz komunikat o błędzie z nazwą zestawu brakuje lub biblioteki DLL.
+Po ponownym wdrożeniu usługi zostanie wyświetlony komunikat o błędzie z nazwą brakującego zestawu lub biblioteki DLL.
 
-## <a name="diagnose-issues-by-viewing-the-error-remotely"></a>Diagnozowanie problemów, wyświetlając błąd zdalnie
-Można użyć usług pulpitu zdalnego, dostęp do roli i zdalnie wyświetlić bardziej szczegółowe informacje o błędzie. Użyj następujących kroków, aby wyświetlić błędy przy użyciu pulpitu zdalnego:
+## <a name="diagnose-issues-by-viewing-the-error-remotely"></a>Diagnozuj problemy, wyświetlając błąd zdalnie
+Możesz użyć Pulpit zdalny, aby uzyskać dostęp do roli i wyświetlić więcej pełnych informacji o błędzie. Aby wyświetlić błędy przy użyciu Pulpit zdalny, wykonaj następujące kroki:
 
-1. Upewnij się, że zainstalowano zestaw SDK platformy Azure 1.3 lub nowszej.
-2. Podczas wdrażania rozwiązania przy użyciu programu Visual Studio Włącz pulpit zdalny. Aby uzyskać więcej informacji, zobacz [Włącz Podłączanie pulpitu zdalnego dla roli w usługach Azure Cloud Services przy użyciu programu Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md).
-3. W portalu Microsoft Azure, gdy wystąpienie pojawi się stan **gotowe**zdalne do wystąpienia. Aby uzyskać więcej informacji na temat korzystania z pulpitu zdalnego z usługami w chmurze, zobacz [zdalny do wystąpień roli](cloud-services-role-enable-remote-desktop-new-portal.md#remote-into-role-instances).
-5. Zaloguj się do maszyny wirtualnej przy użyciu poświadczeń, które zostały określone podczas konfigurowania usług pulpitu zdalnego.
+1. Upewnij się, że zainstalowano zestaw Azure SDK 1,3 lub nowszy.
+2. Podczas wdrażania rozwiązania przy użyciu programu Visual Studio Włącz Pulpit zdalny. Aby uzyskać więcej informacji, zobacz [Włącz Podłączanie pulpitu zdalnego dla roli w usługach Azure Cloud Services przy użyciu programu Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md).
+3. W Microsoft Azure Portal, gdy wystąpienie wskazuje stan **gotowe**, zdalny do wystąpienia. Aby uzyskać więcej informacji na temat używania pulpitu zdalnego z Cloud Services, zobacz [zdalne w wystąpieniach roli](cloud-services-role-enable-remote-desktop-new-portal.md#remote-into-role-instances).
+5. Zaloguj się do maszyny wirtualnej przy użyciu poświadczeń określonych podczas konfiguracji Pulpit zdalny.
 6. Otwórz okno polecenia.
 7. Wpisz polecenie `IPconfig`.
-8. Zanotuj wartość adresu IPV4.
+8. Zanotuj wartość adres IPV4.
 9. Otwórz program Internet Explorer.
-10. Wpisz adres i nazwę aplikacji sieci web. Na przykład `http://<IPV4 Address>/default.aspx`.
+10. Wpisz adres i nazwę aplikacji sieci Web. Na przykład `http://<IPV4 Address>/default.aspx`.
 
-Przejdź do witryny sieci Web teraz zwróci dokładniejsze komunikaty o błędach:
+Przechodzenie do witryny sieci Web spowoduje teraz zwrócenie bardziej jawnych komunikatów o błędach:
 
-* Błąd serwera w aplikacji» /».
-* Opis: Wystąpił nieobsługiwany wyjątek podczas wykonywania bieżącego żądania sieci web. Sprawdź ślad stosu, aby uzyskać więcej informacji o błędzie i pochodzenie w kodzie.
-* Szczegóły wyjątku: System.IO.FIleNotFoundException: Nie można załadować pliku lub zestawu ' Microsoft.WindowsAzure.StorageClient, wersja = 1.1.0.0, Culture = neutral, PublicKeyToken = 31bf856ad364e35 "lub jednej z jego zależności. System nie może odnaleźć określonego pliku.
+* Błąd serwera w aplikacji "/".
+* Opis: Wystąpił nieobsługiwany wyjątek podczas wykonywania bieżącego żądania sieci Web. Przejrzyj ślad stosu, aby uzyskać więcej informacji o błędzie i o tym, skąd pochodzi w kodzie.
+* Szczegóły wyjątku: System.IO.FIleNotFoundException: Nie można załadować pliku lub zestawu "Microsoft. WindowsAzure. StorageClient, Version = 1.1.0.0, Culture = neutral, PublicKeyToken = 31bf856ad364e35" lub jednej z jego zależności. W systemie nie można odnaleźć określonego pliku.
 
 Na przykład:
 
-![Błąd jawnego serwera w aplikacji» /»](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503389.png)
+![Jawny błąd serwera w aplikacji "/"](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503389.png)
 
 ## <a name="diagnose-issues-by-using-the-compute-emulator"></a>Diagnozowanie problemów przy użyciu emulatora obliczeń
-Emulator obliczeń Microsoft Azure można użyć do diagnozowania i rozwiązywania problemów brakujących zależności i błędy w pliku web.config.
+Za pomocą emulatora obliczeń Microsoft Azure można diagnozować i rozwiązywać problemy dotyczące brakujących zależności i błędów pliku Web. config.
 
-Aby uzyskać najlepsze wyniki przy użyciu tej metody diagnostyki należy używać komputer lub maszynę wirtualną, która ma czystą instalację systemu Windows. Aby najlepiej symulowania środowiska platformy Azure, należy użyć systemu Windows Server 2008 R2 x64.
+Aby uzyskać najlepsze wyniki przy użyciu tej metody diagnostyki, należy użyć komputera lub maszyny wirtualnej, która ma czystą instalację systemu Windows. Aby najlepiej symulować środowisko platformy Azure, należy użyć systemu Windows Server 2008 R2 x64.
 
-1. Zainstaluj wersję autonomicznej [zestawu Azure SDK](https://azure.microsoft.com/downloads/).
-2. Na maszynie deweloperskiej Tworzenie projektu usługi w chmurze.
-3. W Eksploratorze Windows przejdź do folderu bin\debug projekt usługi w chmurze.
-4. Skopiuj plik csx folder i plik .cscfg do komputera, którego używasz do debugowania problemów.
-5. Na czystej maszynie, Otwórz okno wiersza polecenia zestawu SDK platformy Azure i wpisz `csrun.exe /devstore:start`.
-6. W wierszu polecenia wpisz `run csrun <path to .csx folder> <path to .cscfg file> /launchBrowser`.
-7. Podczas uruchamiania roli, zobaczysz szczegółowe informacje o błędzie w programie Internet Explorer. Umożliwia także Windows standardowych narzędzi do rozwiązywania problemów można zdiagnozować problem.
+1. Zainstaluj autonomiczną wersję [zestawu Azure SDK](https://azure.microsoft.com/downloads/).
+2. Na komputerze deweloperskim Skompiluj projekt usługi w chmurze.
+3. W Eksploratorze Windows przejdź do folderu bin\Debug w projekcie usługi w chmurze.
+4. Skopiuj folder. CSX i plik. cscfg na komputer, który jest używany do debugowania problemów.
+5. Na czystym komputerze otwórz okno wiersza polecenia zestawu Azure SDK i wpisz `csrun.exe /devstore:start`.
+6. W wierszu polecenia wpisz `run csrun <path to .csx folder> <path to .cscfg file> /launchBrowser`polecenie.
+7. Po uruchomieniu roli zostaną wyświetlone szczegółowe informacje o błędzie w programie Internet Explorer. Możesz również użyć standardowych narzędzi do rozwiązywania problemów systemu Windows, aby dodatkowo zdiagnozować problem.
 
-## <a name="diagnose-issues-by-using-intellitrace"></a>Diagnozowanie problemów przy użyciu funkcji IntelliTrace
-W przypadku procesu roboczego i role sieci web, które używają .NET Framework 4, można użyć [IntelliTrace](/visualstudio/debugger/intellitrace), który jest dostępny w programie Microsoft Visual Studio Enterprise.
+## <a name="diagnose-issues-by-using-intellitrace"></a>Diagnozowanie problemów przy użyciu IntelliTrace
+W przypadku ról procesów roboczych i sieci Web, które używają .NET Framework 4, możesz użyć [IntelliTrace](/visualstudio/debugger/intellitrace), który jest dostępny w Microsoft Visual Studio Enterprise.
 
-Wykonaj następujące kroki, aby wdrożyć usługę przy użyciu funkcji IntelliTrace jest włączony:
+Wykonaj następujące kroki, aby wdrożyć usługę z włączonym IntelliTrace:
 
-1. Upewnij się, że zainstalowano zestaw SDK platformy Azure 1.3 lub nowszej.
-2. Wdrażanie rozwiązania przy użyciu programu Visual Studio. Podczas wdrażania, sprawdź **Włącz IntelliTrace dla ról platformy .NET 4** pole wyboru.
-3. Po uruchomieniu wystąpienia Otwórz **Eksploratora serwera**.
-4. Rozwiń **Azure\\usług w chmurze** węzła i Znajdź wdrożenie.
-5. Rozwiń wdrożenia, aż zobaczysz wystąpień roli. Kliknij prawym przyciskiem myszy na jednym z wystąpień.
-6. Wybierz **protokoly IntelliTrace widoku**. **Krótki opis IntelliTrace** zostanie otwarty.
-7. Zlokalizuj sekcję wyjątki podsumowania. Jeśli istnieją wyjątki, zostaną oznaczone etykietą sekcji **dane o wyjątkach**.
-8. Rozwiń **dane o wyjątkach** i poszukaj **System.IO.FileNotFoundException** błędy podobne do następującego:
+1. Upewnij się, że zainstalowano zestaw Azure SDK 1,3 lub nowszy.
+2. Wdróż rozwiązanie przy użyciu programu Visual Studio. Podczas wdrażania zaznacz pole wyboru **Włącz role IntelliTrace for .NET 4** .
+3. Po uruchomieniu wystąpienia Otwórz **Eksplorator serwera**.
+4. Rozwiń węzeł **Cloud Services\\platformy Azure** i Znajdź wdrożenie.
+5. Rozwiń wdrożenie, dopóki nie zobaczysz wystąpień roli. Kliknij prawym przyciskiem myszy jedno z wystąpień.
+6. Wybierz pozycję **Wyświetl dzienniki IntelliTrace**. Zostanie otwarte **podsumowanie IntelliTrace** .
+7. Znajdź sekcję wyjątki podsumowania. Jeśli istnieją wyjątki, sekcja będzie zawierać etykiety **danych wyjątków**.
+8. Rozwiń **dane wyjątku** i Wyszukaj błędy **System. IO. FileNotFoundException** podobne do następujących:
 
-![Dane wyjątku, Brak pliku lub zestawu](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503390.png)
+![Dane wyjątku, brak pliku lub zestawu](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503390.png)
 
-## <a name="address-missing-dlls-and-assemblies"></a>Brak bibliotek DLL i zestawy adresów
-Aby rozwiązać brakuje biblioteki DLL i błędów zestawu, wykonaj następujące kroki:
+## <a name="address-missing-dlls-and-assemblies"></a>Brak bibliotek DLL i zestawów
+Aby rozwiązać brakujące błędy bibliotek DLL i zestawów, wykonaj następujące kroki:
 
 1. Otwórz rozwiązanie w programie Visual Studio.
-2. W **Eksploratora rozwiązań**, otwórz **odwołania** folderu.
-3. Kliknij zestaw identyfikowane w błędzie.
-4. W **właściwości** okienku Znajdź **kopię lokalną właściwość** i ustaw wartość **True**.
-5. Należy ponownie wdrożyć usługę w chmurze.
+2. W **Eksplorator rozwiązań**Otwórz folder **References** .
+3. Kliknij zestaw zidentyfikowany w błędzie.
+4. W okienku **Właściwości** Znajdź opcję **Kopiuj lokalną właściwość** i ustaw wartość na **true**.
+5. Wdróż ponownie usługę w chmurze.
 
-Po upewnieniu się, że wszystkie błędy zostały poprawione, możesz wdrożyć usługę bez sprawdzania **Włącz IntelliTrace dla ról platformy .NET 4** pole wyboru.
+Po sprawdzeniu, czy wszystkie błędy zostały poprawione, można wdrożyć usługę bez sprawdzania, czy pole wyboru **Włącz role IntelliTrace for .NET 4** .
 
-## <a name="next-steps"></a>Kolejne kroki
-Wyświetl więcej [artykuły dotyczące rozwiązywania problemów](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) dla usług w chmurze.
+## <a name="next-steps"></a>Następne kroki
+Zobacz więcej [artykułów do rozwiązywania problemów](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) dotyczących usług Cloud Services.
 
-Aby dowiedzieć się, jak rozwiązywać problemy dotyczące ról usługi chmury przy użyciu danych diagnostycznych na komputerze modelu PaaS platformy Azure, zobacz [serię wpisów w blogu Kevina Williamson](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
+Aby dowiedzieć się, jak rozwiązywać problemy z rolą usługi w chmurze, korzystając z danych diagnostycznych dotyczących komputerów z usługą Azure PaaS, zobacz [Seria blogów Piotr Williamson](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).

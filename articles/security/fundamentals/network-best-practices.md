@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/05/2019
 ms.author: TomSh
-ms.openlocfilehash: a821ce5d9e545db2dee2adbe942eab5edcfdb01f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 09caffcfdad4b132858b6ec52b36fe037f488b3a
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726955"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934705"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Najlepsze rozwiązania dotyczące platformy Azure dotyczące zabezpieczeń sieci
 W tym artykule omówiono zbiór najlepszych rozwiązań dotyczących platformy Azure w celu zwiększenia bezpieczeństwa sieci. Te najlepsze rozwiązania wynikają z naszych rozwiązań związanych z obsługą sieci platformy Azure i klientami.
@@ -35,7 +35,7 @@ Dla każdego z najlepszych rozwiązań w tym artykule wyjaśniono:
 Te najlepsze rozwiązania są oparte na jednomyślnych opiniach i możliwościach platformy Azure oraz zestawach funkcji, ponieważ istnieją one w momencie zapisania tego artykułu. Opinie i technologie zmieniają się wraz z upływem czasu, a ten artykuł zostanie regularnie zaktualizowany w celu odzwierciedlenia tych zmian.
 
 ## <a name="use-strong-network-controls"></a>Używanie silnych kontrolek sieci
-[Maszyny wirtualne platformy Azure](https://azure.microsoft.com/services/virtual-machines/) i urządzenia można połączyć z innymi urządzeniami sieciowymi, umieszczając je w [sieciach wirtualnych platformy Azure](https://docs.microsoft.com/azure/virtual-network/). Oznacza to, że można podłączyć karty interfejsu sieci wirtualnej do sieci wirtualnej, aby umożliwić komunikację opartą na protokole TCP/IP między urządzeniami z obsługą sieci. Maszyny wirtualne połączone z siecią wirtualną platformy Azure mogą łączyć się z urządzeniami w tej samej sieci wirtualnej, w różnych sieciach wirtualnych, Internecie lub własnych sieciach lokalnych.
+[Maszyny wirtualne platformy Azure](https://azure.microsoft.com/services/virtual-machines/) i urządzenia można połączyć z innymi urządzeniami sieciowymi, umieszczając je w [sieciach wirtualnych platformy Azure](../../virtual-network/index.yml). Oznacza to, że można podłączyć karty interfejsu sieci wirtualnej do sieci wirtualnej, aby umożliwić komunikację opartą na protokole TCP/IP między urządzeniami z obsługą sieci. Maszyny wirtualne połączone z siecią wirtualną platformy Azure mogą łączyć się z urządzeniami w tej samej sieci wirtualnej, w różnych sieciach wirtualnych, Internecie lub własnych sieciach lokalnych.
 
 W miarę planowania sieci i bezpieczeństwa sieci zalecamy scentralizowanie:
 
@@ -114,7 +114,7 @@ Urządzenia zabezpieczeń sieci platformy Azure mogą zapewniać lepsze zabezpie
 Aby znaleźć dostępne urządzenia zabezpieczeń sieci wirtualnej platformy Azure, przejdź do [witryny Azure Marketplace](https://azure.microsoft.com/marketplace/) i wyszukaj ciąg "zabezpieczenia" oraz "zabezpieczenia sieci".
 
 ## <a name="deploy-perimeter-networks-for-security-zones"></a>Wdrażanie sieci obwodowych pod kątem stref zabezpieczeń
-[Sieć obwodowa](https://docs.microsoft.com/azure/best-practices-network-security) (nazywana również strefą DMZ) jest segmentem sieci fizycznej lub logicznej, który zapewnia dodatkową warstwę zabezpieczeń między zasobami i Internetem. Wyspecjalizowane urządzenia kontroli dostępu do sieci na granicy sieci obwodowej zezwalają tylko na żądany ruch do sieci wirtualnej.
+[Sieć obwodowa](./https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) (nazywana również strefą DMZ) jest segmentem sieci fizycznej lub logicznej, który zapewnia dodatkową warstwę zabezpieczeń między zasobami i Internetem. Wyspecjalizowane urządzenia kontroli dostępu do sieci na granicy sieci obwodowej zezwalają tylko na żądany ruch do sieci wirtualnej.
 
 Sieci obwodowe są przydatne, ponieważ możesz skoncentrować się na zarządzaniu, monitorowaniu, rejestrowaniu i raportowaniu kontroli dostępu do sieci na urządzeniach na granicy sieci wirtualnej platformy Azure. Sieć obwodowa polega na tym, że zwykle włączane jest zapobieganie atakom typu "odmowa usługi" (DDoS), Wykrywanie intruzów/systemy zapobiegania włamaniom (identyfikatory/adresy IP), reguły i zasady zapory, filtrowanie sieci Web, ochrona przed złośliwym oprogramowaniem w sieci i wiele innych. Urządzenia zabezpieczeń sieci są dostępne między Internetem a siecią wirtualną platformy Azure i mają interfejs w obu sieciach.
 
@@ -177,7 +177,7 @@ Na przykład jeśli użytkownik wysyła żądanie do usługi z UE, połączenie 
 ## <a name="disable-rdpssh-access-to-virtual-machines"></a>Wyłącz dostęp RDP/SSH do maszyn wirtualnych
 Można nawiązać połączenie z maszynami wirtualnymi platformy Azure przy użyciu protokołu [Remote Desktop Protocol](https://en.wikipedia.org/wiki/Remote_Desktop_Protocol) (RDP) i [Secure Shell](https://en.wikipedia.org/wiki/Secure_Shell) (SSH). Te protokoły umożliwiają zarządzanie maszynami wirtualnymi z lokalizacji zdalnych i są standardowe w centrach danych.
 
-Potencjalny problem z zabezpieczeniami związany z korzystaniem z tych protokołów przez Internet polega na tym, że atakujący mogą korzystać [z technik](https://en.wikipedia.org/wiki/Brute-force_attack) bezprawnego, aby uzyskać dostęp do usługi Azure Virtual Machines. Po uzyskaniu dostępu przez osoby atakujące mogą korzystać z maszyny wirtualnej jako punktu uruchomienia w celu odzyskania innych maszyn w sieci wirtualnej, a nawet atakujących urządzeń sieciowych poza platformą Azure.
+Potencjalny problem z zabezpieczeniami związany z korzystaniem z tych protokołów przez Internet polega na tym, [](https://en.wikipedia.org/wiki/Brute-force_attack) że atakujący mogą korzystać z technik bezprawnego, aby uzyskać dostęp do usługi Azure Virtual Machines. Po uzyskaniu dostępu przez osoby atakujące mogą korzystać z maszyny wirtualnej jako punktu uruchomienia w celu odzyskania innych maszyn w sieci wirtualnej, a nawet atakujących urządzeń sieciowych poza platformą Azure.
 
 Zalecamy wyłączenie bezpośredniego dostępu RDP i SSH do maszyn wirtualnych platformy Azure z Internetu. Po wyłączeniu bezpośredniego dostępu do protokołu RDP i SSH z Internetu dostępne są inne opcje umożliwiające dostęp do tych maszyn wirtualnych na potrzeby zdalnego zarządzania.
 

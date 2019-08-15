@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: adca67152c33f4c6a3ec272b63c4c8157a777f36
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 6e29e0f89d9270a143d48cf6e85b479813e19d9d
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856186"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013643"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurowanie zautomatyzowanych eksperymentów ML w języku Python
 
@@ -72,6 +72,11 @@ automl_config = AutoMLConfig(task="classification")
 Uczenie maszynowe automatycznych obsługuje dane, które znajdują się na komputerze lokalnym lub w chmurze, takich jak Azure Blob Storage. Dane mogą być odczytywane w scikit-informacje formatów obsługiwanych danych. Można odczytywać dane do:
 * Tablice Numpy X (cech) i y (Zmienna docelowa lub znany także jako etykieta)
 * Pandas dataframe
+
+>[!Important]
+> Wymagania dotyczące danych szkoleniowych:
+>* Dane muszą być w formie tabelarycznej.
+>* Wartość, która ma zostać przewidywalna (kolumna docelowa), musi być obecna w danych.
 
 Przykłady:
 
@@ -563,7 +568,7 @@ RunDetails(automl_run).show()
 
 Aby uzyskać więcej informacji na temat sposobu, w jaki można włączyć wyjaśnienie modelu i znaczenie funkcji w innych obszarach zestawu SDK poza funkcją automatycznej uczenia maszynowego, zapoznaj się z artykułem [koncepcji](machine-learning-interpretability-explainability.md) w zakresie interpretacji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o [jak i gdzie można wdrożyć model](how-to-deploy-and-where.md).
 

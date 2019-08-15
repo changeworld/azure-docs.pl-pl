@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7011025a1d94a5c99bf2338d9f80c683c2fd7b35
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 12fd08fa301cb22857470e3c81d7f4f7c1f04de9
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514978"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68948888"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurowanie ustawień usługi Azure MFA
 
@@ -389,8 +389,7 @@ Funkcja _Zapamiętaj uwierzytelnianie wieloskładnikowe_ dla urządzeń i przegl
 >[!IMPORTANT]
 >W przypadku naruszenia zabezpieczeń konta lub urządzenia zapamiętanie uwierzytelniania wieloskładnikowego dla zaufanych urządzeń może wpłynąć na bezpieczeństwo. Jeśli konto firmowe zostanie złamane lub zostanie utracone lub skradzione, należy [przywrócić uwierzytelnianie wieloskładnikowe na wszystkich urządzeniach](howto-mfa-userdevicesettings.md#restore-mfa-on-all-remembered-devices-for-a-user).
 >
->Akcja Przywróć odwołuje stan zaufany ze wszystkich urządzeń, a użytkownik musi wykonać weryfikację dwuetapową ponownie. Możesz również poinstruować użytkowników, aby przywracali uwierzytelnianie wieloskładnikowe na swoich urządzeniach, korzystając z instrukcji w sekcji [Zarządzanie ustawieniami weryfikacji](../user-help/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted)dwuetapowej.
->
+>Akcja Przywróć odwołuje stan zaufany ze wszystkich urządzeń, a użytkownik musi wykonać weryfikację dwuetapową ponownie. Możesz również poinstruować użytkowników, aby przywracali uwierzytelnianie wieloskładnikowe na swoich urządzeniach, korzystając z instrukcji w sekcji [Zarządzanie ustawieniami weryfikacji](../user-help/multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)dwuetapowej.
 
 ### <a name="how-the-feature-works"></a>Jak działa funkcja
 
@@ -403,7 +402,7 @@ Funkcja zmniejsza liczbę uwierzytelnień w aplikacjach sieci Web, które zwykle
 >[!IMPORTANT]
 >Funkcja **Zapamiętaj uwierzytelnianie wieloskładnikowe** nie jest zgodna z funkcją nie wylogowuj **mnie** AD FS, gdy użytkownicy przeprowadzają weryfikację dwuetapową dla AD FS za pomocą serwera usługi Azure MFA lub wieloskładnikowego Rozwiązanie uwierzytelniania.
 >
->Jeśli użytkownik wybierze opcję Nie wylogowuj **mnie** na AD FS, a także oznaczy swoje urządzenie jako zaufane do uwierzytelniania wieloskładnikowego, użytkownik nie zostanie automatycznie zweryfikowany po upływie **następującej liczby dni** . Usługa Azure AD żąda nowej weryfikacji dwuetapowej, ale AD FS zwraca token z pierwotnym wnioskiem usługi MFA i datą usługi uwierzytelniania wieloskładnikowego, a nie ponownie wykonuje weryfikacji dwuetapowej. **Ta reakcja ustawia pętlę weryfikacji między usługą Azure AD a AD FS.**
+>Jeśli użytkownik wybierze opcję Nie wylogowuj **mnie** na AD FS, a także oznaczy swoje urządzenie jako zaufane do uwierzytelniania wieloskładnikowego, użytkownik nie zostanie automatycznie zweryfikowany po upływie następującej liczby dni. Usługa Azure AD żąda nowej weryfikacji dwuetapowej, ale AD FS zwraca token z pierwotnym wnioskiem usługi MFA i datą usługi uwierzytelniania wieloskładnikowego, a nie ponownie wykonuje weryfikacji dwuetapowej. **Ta reakcja ustawia pętlę weryfikacji między usługą Azure AD a AD FS.**
 >
 
 ### <a name="enable-remember-multi-factor-authentication"></a>Włącz Zapamiętaj uwierzytelnianie wieloskładnikowe
@@ -420,6 +419,6 @@ Funkcja zmniejsza liczbę uwierzytelnień w aplikacjach sieci Web, które zwykle
 
 Po włączeniu funkcji Zapamiętaj uwierzytelnianie wieloskładnikowe użytkownicy mogą oznaczyć urządzenie jako zaufane podczas logowania, wybierając pozycję **nie Monituj ponownie**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Modyfikuj znakowanie strony logowania usługi Azure AD](../fundamentals/customize-branding.md)

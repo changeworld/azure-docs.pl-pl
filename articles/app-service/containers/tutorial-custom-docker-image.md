@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 315e225eafc4fededcaa998560f4cdf703123aca
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 6ef739b61c07dae1631a704a70a3a5543d9d8a3d
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68958673"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69015600"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>Samouczek: Tworzenie obrazu niestandardowego i uruchamianie go w App Service z rejestru prywatnego
 
@@ -145,7 +145,7 @@ Dane wyjściowe ujawniają dwa hasła wraz z nazwą użytkownika.
 }
 ```
 
-W lokalnym oknie terminala Zaloguj się do Azure Container Registry za pomocą `docker login` polecenia, jak pokazano w poniższym przykładzie. Zastąp * \<ciąg Azure-Container-Registry-Name >* i * \<Registry-username >* wartościami dla rejestru. Po wyświetleniu monitu wpisz jedno z haseł z poprzedniego kroku.
+W lokalnym oknie terminala Zaloguj się do Azure Container Registry za pomocą `docker login` polecenia, jak pokazano w poniższym przykładzie. Zastąp  *\<ciąg Azure-Container-Registry-Name >* i  *\<Registry-username >* wartościami dla rejestru. Po wyświetleniu monitu wpisz jedno z haseł z poprzedniego kroku.
 
 ```bash
 docker login <azure-container-registry-name>.azurecr.io --username <registry-username>
@@ -186,7 +186,7 @@ Należy uzyskać następujące dane wyjściowe.
 
 ### <a name="create-web-app"></a>Tworzenie aplikacji internetowej
 
-W usłudze Cloud Shell utwórz [aplikację internetową](app-service-linux-intro.md) w planie usługi App Service `myAppServicePlan` za pomocą polecenia [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). Zastąp _ \<> App-Name nazwą_ unikatowej nazwy aplikacji, a _ \<Nazwa rejestru Azure-Container-Registry-Name >_ .
+W usłudze Cloud Shell utwórz [aplikację internetową](app-service-linux-intro.md) w planie usługi App Service `myAppServicePlan` za pomocą polecenia [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). Zastąp  _\<> App-Name nazwą_ unikatowej nazwy aplikacji, a  _\<Nazwa rejestru Azure-Container-Registry-Name >_ .
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --deployment-container-image-name <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
@@ -211,7 +211,7 @@ Po utworzeniu aplikacji internetowej w interfejsie wiersza polecenia platformy A
 
 ### <a name="configure-registry-credentials-in-web-app"></a>Konfigurowanie poświadczeń rejestru w aplikacji sieci Web
 
-Aby uzyskać App Service do ściągania obrazu prywatnego, potrzebne są informacje o rejestrze i obrazie. W Cloud Shell podaj je za pomocą [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) polecenia. Zastąp * \<ciąg App-Name >*, * \<Azure-Container-Registry-Name >*, _ \<Registry-username >_ i _ \<> hasła_.
+Aby uzyskać App Service do ściągania obrazu prywatnego, potrzebne są informacje o rejestrze i obrazie. W Cloud Shell podaj je za pomocą [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) polecenia. Zastąp  *\<ciąg App-Name >* ,  *\<Azure-Container-Registry-Name >* ,  _\<Registry-username >_ i  _\<> hasła_.
 
 ```azurecli-interactive
 az webapp config container set --name <app-name> --resource-group myResourceGroup --docker-custom-image-name <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0 --docker-registry-server-url https://<azure-container-registry-name>.azurecr.io --docker-registry-server-user <registry-username> --docker-registry-server-password <password>
@@ -292,20 +292,20 @@ Protokół SSH umożliwia bezpieczną komunikację między kontenerem i klientem
 
 * [Skrypt wejścia](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/init.sh#L5) uruchamia serwer SSH.
 
-      ```bash
-      #!/bin/bash
-      service ssh start
+    ```bash
+    #!/bin/bash
+    service ssh start
     ```
 
-### Open SSH connection to container
+### <a name="open-ssh-connection-to-container"></a>Otwieranie połączenia SSH z kontenerem
 
-SSH connection is available only through the Kudu site, which is accessible at `https://<app-name>.scm.azurewebsites.net`.
+Połączenie SSH jest dostępne tylko za pośrednictwem witryny kudu, która jest dostępna `https://<app-name>.scm.azurewebsites.net`pod adresem.
 
-To connect, browse to `https://<app-name>.scm.azurewebsites.net/webssh/host` and sign in with your Azure account.
+Aby nawiązać połączenie, przejdź pod adres `https://<app-name>.scm.azurewebsites.net/webssh/host` i zaloguj się przy użyciu konta platformy Azure.
 
-You are then redirected to a page displaying an interactive console.
+Nastąpi wtedy przekierowanie do strony z wyświetloną interaktywną konsolą.
 
-You may wish to verify that certain applications are running in the container. To inspect the container and verify running processes, issue the `top` command at the prompt.
+Możesz sprawdzić, czy w kontenerze są uruchomione określone aplikacje. Aby sprawdzić kontener i zweryfikować uruchomione procesy, uruchom polecenie `top` w wierszu polecenia.
 
 ```bash
 top

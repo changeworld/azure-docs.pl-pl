@@ -13,39 +13,40 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: juliako;cenkdin
-ms.openlocfilehash: 05b899658b5c58e15b2f30ab759eb49319979fee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.reviewer: cenkdin
+ms.openlocfilehash: c60b223f91a151bf63cabc5e95816f2545022503
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61465562"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69016601"
 ---
-# <a name="creating-filters-with-media-services-net-sdk"></a>Tworzenie filtrów za pomocą usługi Media Services .NET SDK 
+# <a name="creating-filters-with-media-services-net-sdk"></a>Tworzenie filtrów za pomocą zestawu SDK programu Media Services .NET 
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-dynamic-manifest.md)
 > * [REST](media-services-rest-dynamic-manifest.md)
 > 
 > 
 
-Począwszy od wersji 2.17, Media Services umożliwia definiowanie filtrów dla zasobów. Te filtry są reguły po stronie serwera, które umożliwiają klientom chce wykonywać następujące czynności: odtwarzanie tylko na część wideo (zamiast odtwarzanie całego), lub określ tylko podzbiór odwzorowaniami audio i wideo, obsługujące przez klienta urządzenia (zamiast z wszystkie wersje, które są skojarzone z elementem zawartości). Filtrowanie zasobów odbywa się za pośrednictwem **manifestów dynamicznych**s, które są tworzone na żądanie klienta do przesyłania strumieniowego wideo oparte na określonej filtry.
+Począwszy od wersji 2,17, Media Services umożliwia zdefiniowanie filtrów dla zasobów. Te filtry są regułami po stronie serwera, które umożliwiają klientom wykonywanie takich czynności jak: odtwarzanie tylko sekcji filmu wideo (zamiast odtwarzania całego filmu wideo) lub określanie tylko podzestawu plików audio i wideo, które może obsłużyć urządzenie klienta (zamiast wszystkie wersje, które są skojarzone z zasobem. Takie filtrowanie zasobów jest realizowane za pośrednictwem **dynamicznego manifestu**s, które są tworzone na żądanie klienta w celu przesyłania strumieniowego wideo na podstawie określonych filtrów.
 
-Aby uzyskać szczegółowe informacje dotyczące filtrów i manifestów dynamicznych, zobacz [dynamiczne manifesty Przegląd](media-services-dynamic-manifest-overview.md).
+Aby uzyskać bardziej szczegółowe informacje dotyczące filtrów i manifestu dynamicznego, zobacz [Omówienie manifestów dynamicznych](media-services-dynamic-manifest-overview.md).
 
-W tym artykule przedstawiono sposób Media Services .NET SDK umożliwia tworzenie, aktualizowanie i usuwanie filtrów. 
+W tym artykule pokazano, jak używać zestawu SDK programu Media Services .NET do tworzenia, aktualizowania i usuwania filtrów. 
 
-Należy pamiętać o tym, jeśli zaktualizujesz filtru, może potrwać do dwóch minut, zanim punkt końcowy, aby odświeżyć zasady przesyłania strumieniowego. Zawartość zostało obsłużone za pomocą tego filtru (i w pamięci podręcznej serwerów proxy i Azure CDN pamięci podręcznych), aktualizacja tego filtru może spowodować błędy odtwarzacza. Zawsze należy wyczyścić pamięć podręczną po zaktualizowaniu filtru. Jeśli ta opcja nie jest możliwe, należy wziąć pod uwagę przy użyciu innego filtru. 
+Uwaga w przypadku aktualizowania filtru może upłynąć do dwóch minut, zanim punkt końcowy przesyłania strumieniowego odświeża reguły. Jeśli zawartość została obsłużona przy użyciu tego filtru (i jest buforowana w serwerach proxy i w pamięci podręcznej usługi CDN), aktualizacja tego filtru może spowodować awarie odtwarzacza. Po zaktualizowaniu filtru zawsze Wyczyść pamięć podręczną. Jeśli ta opcja nie jest możliwa, należy rozważyć użycie innego filtru. 
 
 ## <a name="types-used-to-create-filters"></a>Typy używane do tworzenia filtrów
-Podczas tworzenia filtrów, używane są następujące typy: 
+Następujące typy są używane podczas tworzenia filtrów: 
 
-* **IStreamingFilter**.  Na następujący interfejs API REST jest oparty ten typ [filtru](https://docs.microsoft.com/rest/api/media/operations/filter)
-* **IStreamingAssetFilter**. Na następujący interfejs API REST jest oparty ten typ [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
-* **PresentationTimeRange**. Na następujący interfejs API REST jest oparty ten typ [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
-* **FilterTrackSelectStatement** i **IFilterTrackPropertyCondition**. Te typy są oparte na następujących interfejsów API REST [FilterTrackSelect i FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
+* **IStreamingFilter**.  Ten typ jest oparty na następującym filtrze interfejsu [](https://docs.microsoft.com/rest/api/media/operations/filter) API REST
+* **IStreamingAssetFilter**. Ten typ jest oparty na następującym interfejsie API REST [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
+* **PresentationTimeRange**. Ten typ jest oparty na następującym interfejsie API REST [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
+* **FilterTrackSelectStatement** i **IFilterTrackPropertyCondition**. Te typy są oparte na następujących interfejsach API REST [FilterTrackSelect i FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
 
-## <a name="createupdatereaddelete-global-filters"></a>Tworzenie/aktualizowanie/odczyt/usuwanie filtry globalne
-Poniższy kod przedstawia sposób .NET umożliwia tworzenie, aktualizowanie i odczytu i usuwania zasobów filtrów.
+## <a name="createupdatereaddelete-global-filters"></a>Tworzenie/aktualizowanie/odczytywanie/usuwanie filtrów globalnych
+Poniższy kod pokazuje, jak używać programu .NET do tworzenia, aktualizowania, odczytywania i usuwania filtrów zasobów.
 
 ```csharp
     string filterName = "GlobalFilter_" + Guid.NewGuid().ToString();
@@ -74,8 +75,8 @@ Poniższy kod przedstawia sposób .NET umożliwia tworzenie, aktualizowanie i od
     filter.Delete();
 ```
 
-## <a name="createupdatereaddelete-asset-filters"></a>Filtry Tworzenie/aktualizowanie/odczyt/Usuwanie zasobu
-Poniższy kod przedstawia sposób .NET umożliwia tworzenie, aktualizowanie i odczytu i usuwania zasobów filtrów.
+## <a name="createupdatereaddelete-asset-filters"></a>Tworzenie/aktualizowanie/odczytywanie/usuwanie filtrów zasobów
+Poniższy kod pokazuje, jak używać programu .NET do tworzenia, aktualizowania, odczytywania i usuwania filtrów zasobów.
 
 ```csharp
     string assetName = "AssetFilter_" + Guid.NewGuid().ToString();
@@ -106,20 +107,20 @@ Poniższy kod przedstawia sposób .NET umożliwia tworzenie, aktualizowanie i od
 ```
 
 
-## <a name="build-streaming-urls-that-use-filters"></a>Tworzenie adresów URL, które używają filtrów przesyłania strumieniowego
-Aby uzyskać informacje na temat publikowania i dostarczać zasobów, zobacz [dostarczanie zawartości klientom Przegląd](media-services-deliver-content-overview.md).
+## <a name="build-streaming-urls-that-use-filters"></a>Kompiluj adresy URL przesyłania strumieniowego używające filtrów
+Informacje o sposobach publikowania i dostarczania zasobów znajdują się w temacie [dostarczanie zawartości do klientów Przegląd](media-services-deliver-content-overview.md).
 
-Następujące przykłady przedstawiają sposób dodawania filtrów do przesyłania strumieniowego adresami URL.
+W poniższych przykładach pokazano, jak dodać filtry do adresów URL przesyłania strumieniowego.
 
 **MPEG DASH** 
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf, filter=MyFilter)
 
-**Apple HTTP Live przesyłania strumieniowego V4 (HLS)**
+**Apple HTTP Live Streaming (HLS) v4**
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl, filter=MyFilter)
 
-**Apple HTTP Live przesyłania strumieniowego (HLS) V3**
+**Apple HTTP Live Streaming (HLS) v3**
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3, filter=MyFilter)
 
