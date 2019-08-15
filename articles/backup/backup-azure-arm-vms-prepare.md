@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9a6ea961f7433f511ef22a6ac9aaefa51b5df8aa
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 1f8086580d60d13251052636d4d771855e9605a5
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663701"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954946"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure w magazynie Recovery Services
 
@@ -102,7 +102,7 @@ Skonfiguruj zasady tworzenia kopii zapasowych dla magazynu.
    ![Przycisk Kopia zapasowa](./media/backup-azure-arm-vms-prepare/backup-button.png)
 
 
-2.  > W **celu utworzenia kopii zapasowej**,**gdzie jest uruchomione Twoje obciążenie?** wybierz pozycję **Azure**. W **co chcesz utworzyć kopię zapasową?** wybierz pozycję **maszyna** >  wirtualna**OK**. Spowoduje to zarejestrowanie rozszerzenia maszyny wirtualnej w magazynie.
+2.  > W **celu utworzenia kopii zapasowej**,**gdzie jest uruchomione Twoje obciążenie?** wybierz pozycję **Azure**. W **czym chcesz utworzyć kopię zapasową?** wybierz pozycję **maszyna** >  wirtualna**OK**. Spowoduje to zarejestrowanie rozszerzenia maszyny wirtualnej w magazynie.
 
    ![Okienka celu tworzenia kopii zapasowych i tworzenia kopii zapasowych](./media/backup-azure-arm-vms-prepare/select-backup-goal-1.png)
 
@@ -138,7 +138,7 @@ Po włączeniu kopii zapasowej:
 Jeśli wybrano opcję utworzenia nowych zasad tworzenia kopii zapasowych, Wypełnij ustawienia zasad.
 
 1. W polu **Nazwa zasad**Określ zrozumiałą nazwę.
-2. W obszarze **harmonogram wykonywania kopii zapasowych** Określ, kiedy mają być wykonywane kopie zapasowe. Codzienne lub cotygodniowe wykonywanie kopii zapasowych maszyn wirtualnych platformy Azure.
+2. W polu **harmonogram tworzenia kopii zapasowych**Określ, kiedy mają być pobierane kopie zapasowe. Codzienne lub cotygodniowe wykonywanie kopii zapasowych maszyn wirtualnych platformy Azure.
 2. W obszarze **natychmiastowe przywracanie**Określ, jak długo mają być przechowywane migawki lokalnie przywracane.
     - Podczas przywracania kopia zapasowa dysków maszyny wirtualnej jest kopiowana z magazynu w sieci do lokalizacji magazynu odzyskiwania. Za pomocą natychmiastowego przywracania można korzystać z migawek przechowywanych lokalnie, które są wykonywane podczas zadania tworzenia kopii zapasowej, bez czekania na przesłanie danych kopii zapasowej do magazynu.
     - Migawki do natychmiastowego przywrócenia można zachować przez od 1 do pięciu dni. Ustawienie domyślne to dwa dni.
@@ -164,8 +164,8 @@ Początkowa kopia zapasowa będzie uruchamiana zgodnie z harmonogramem, ale moż
 
 ## <a name="verify-backup-job-status"></a>Sprawdź stan zadania tworzenia kopii zapasowej
 
-Szczegóły zadania kopii zapasowej dla każdej kopii zapasowej maszyny wirtualnej składają się z dwóch faz, fazy **migawki** , a następnie fazy **transferu danych do magazynu** .<br/>
-Faza migawki gwarantuje dostępność punktu odzyskiwania przechowywanego wraz z dyskami do **natychmiastowego przywrócenia** i jest dostępna przez maksymalnie 5 dni w zależności od przechowywania migawek skonfigurowanego przez użytkownika. Transfer danych do magazynu tworzy punkt odzyskiwania w magazynie do długoterminowego przechowywania. Transfer danych do magazynu rozpoczyna się dopiero po zakończeniu fazy migawki.
+Szczegóły zadania kopii zapasowej dla każdej kopii zapasowej maszyny wirtualnej składają się z dwóch faz, fazy **migawki** i fazy **transferu danych do magazynu** .<br/>
+Faza migawki gwarantuje dostępność punktu odzyskiwania przechowywanego wraz z dyskami do **natychmiastowego przywrócenia** i jest dostępna przez maksymalnie pięć dni w zależności od przechowywania migawek skonfigurowanego przez użytkownika. Transfer danych do magazynu tworzy punkt odzyskiwania w magazynie do długoterminowego przechowywania. Transfer danych do magazynu rozpoczyna się dopiero po zakończeniu fazy migawki.
 
   ![Stan zadania tworzenia kopii zapasowej](./media/backup-azure-arm-vms-prepare/backup-job-status.png)
 
@@ -248,7 +248,7 @@ Możesz kierować ruchem kopii zapasowej za pomocą serwera proxy, a następnie 
 
 - Maszyna wirtualna platformy Azure powinna kierować cały ruch HTTP związany z publicznym Internetem za pośrednictwem serwera proxy.
 - Serwer proxy powinien zezwalać na ruch przychodzący z maszyn wirtualnych w odpowiedniej sieci wirtualnej.
-- **Sieciowej grupy zabezpieczeń musi** mieć regułę zezwalającą na ruch wychodzący z maszyny wirtualnej serwera proxy.
+- SIECIOWEJ grupy zabezpieczeń musi mieć regułę zezwalającą na ruch wychodzący z maszyny wirtualnej serwera proxy.
 
 ###### <a name="set-up-the-proxy"></a>Konfigurowanie serwera proxy
 
@@ -311,7 +311,7 @@ Zaporę platformy Azure można skonfigurować tak, aby zezwalała na dostęp wyc
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Rozwiązywanie problemów z [agentami maszyn wirtualnych platformy Azure](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md) lub [kopiami zapasowymi maszyny wirtualnej platformy Azure](backup-azure-vms-troubleshoot.md).
 - [Przywróć](backup-azure-arm-restore-vms.md) Maszyny wirtualne platformy Azure.

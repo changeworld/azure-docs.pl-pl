@@ -1,75 +1,75 @@
 ---
-title: Włączanie aplikacji wielodostępnych za pomocą Twins cyfrowych platformy Azure | Dokumentacja firmy Microsoft
-description: Jak skonfigurować wielodostępne aplikacje usługi Azure Active Directory bliźniaki cyfrowych platformy Azure.
+title: Włączanie wielodostępnych aplikacji za pomocą usługi Azure Digital bliźniaczych reprezentacji | Microsoft Docs
+description: Jak skonfigurować wielodostępne Azure Active Directory aplikacje dla usługi Azure Digital bliźniaczych reprezentacji.
 author: mavoge
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 08/12/2019
 ms.author: mavoge
-ms.openlocfilehash: 03b5693fe016cfb11d6f685f9088fe6e94f03b90
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2ee3681640f68839c32e2963b34d5547abb6943b
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66688599"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976877"
 ---
-# <a name="enable-multitenant-applications-with-azure-digital-twins"></a>Włączanie aplikacji wielodostępnych za pomocą Twins cyfrowych platformy Azure
+# <a name="enable-multitenant-applications-with-azure-digital-twins"></a>Włączanie wielodostępnych aplikacji za pomocą usługi Azure Digital bliźniaczych reprezentacji
 
-Deweloperzy rozwiązań, którzy tworzą na Twins cyfrowych platformy Azure może się okazać, że chce obsługiwać wielu klientów przy użyciu jednej usługi lub rozwiązania. W rzeczywistości *wielodostępnej* aplikacji znajdują się wśród najbardziej typowe konfiguracje Twins cyfrowych platformy Azure.
+Deweloperzy rozwiązań korzystający z usługi Azure Digital bliźniaczych reprezentacji mogą stwierdzić, że chcą obsługiwać wielu klientów w ramach jednej usługi lub rozwiązania. W rzeczywistości aplikacje wielodostępne są wśród najpopularniejszych konfiguracji usługi Azure Digital bliźniaczych reprezentacji.
 
-W tym dokumencie opisano sposób konfigurowania aplikacji Twins cyfrowych platformy Azure do obsługi wielu dzierżaw usługi Azure Active Directory i klientów.
+W tym dokumencie opisano sposób konfigurowania aplikacji Digital bliźniaczych reprezentacji na platformie Azure w celu obsługi kilku dzierżaw Azure Active Directory i klientów.
 
 ## <a name="multitenancy"></a>Wielodostępności
 
-A *wielodostępnej* zasobów jest pojedynczym wystąpieniem elastycznie, który obsługuje wielu klientów. Każdy klient ma swoje własne niezależnie od danych i uprawnień. Środowisko każdego klienta jest odizolowane od siebie nawzajem, tak aby ich "view" aplikacji różni się.
+Zasób wielodostępny to jedno zainicjowane wystąpienie obsługujące wielu klientów. Każdy klient ma własne niezależne dane i uprawnienia. Środowisko każdego klienta jest odizolowane od siebie, tak aby ich "widok" aplikacji był różny.
 
-Aby dowiedzieć się więcej na temat wielodostępności, przeczytaj [wielodostępnej aplikacji na platformie Azure](https://docs.microsoft.com/azure/dotnet-develop-multitenant-applications).
+Aby dowiedzieć się więcej o wielodostępności, Odczytaj aplikacje wielodostępne [na platformie Azure](https://docs.microsoft.com/azure/dotnet-develop-multitenant-applications).
 
 ## <a name="problem-scenario"></a>Scenariusz problemu
 
-W tym scenariuszu należy wziąć pod uwagę deweloperów, tworzenie rozwiązania Azure cyfrowego bliźniaczych reprezentacji (**DEVELOPER**) i klienta, które korzystają z tego rozwiązania (**klienta**):
+W tym scenariuszu Rozważmy Tworzenie rozwiązania Digital bliźniaczych reprezentacji (**Developer**) na platformie Azure i klienta korzystającego z tego rozwiązania (**Klient**):
 
-- **DEWELOPER** ma subskrypcję platformy Azure z dzierżawą usługi Azure Active Directory.
-- **DEWELOPER** wdroży wystąpienie Twins cyfrowych platformy Azure w ramach subskrypcji platformy Azure. Usługa Azure Active Directory automatycznie utworzono nazwę główną usługi w **DEVELOPER**przez dzierżawę usługi Azure Active Directory.
-- Użytkowników w ramach **DEVELOPER**przez dzierżawę usługi Azure Active Directory można następnie [uzyskiwanie tokenów protokołu OAuth 2.0](./security-authenticating-apis.md) z usługi Azure cyfrowego bliźniaczych reprezentacji.
-- **DEWELOPER** utworzy teraz aplikację mobilną, która bezpośrednio integruje się z cyfrowego Twins zarządzania interfejsów API usługi Azure.
-- **DEWELOPER** umożliwia **klienta** korzystanie z aplikacji mobilnej.
-- **Klient** muszą być autoryzowane do używania cyfrowego Twins zarządzania interfejsu API usługi Azure w ramach **DEVELOPER**w aplikacji.
+- **Deweloper** ma subskrypcję platformy Azure z dzierżawą Azure Active Directory.
+- **Deweloper** wdraża wystąpienie usługi Azure Digital bliźniaczych reprezentacji w ramach swojej subskrypcji platformy Azure. Azure Active Directory automatycznie utworzyć nazwę główną usługi wdzierżawie Azure Active Directory dewelopera.
+- Użytkownicy wramach dzierżawy Azure Active Directory dewelopera mogą następnie [uzyskać tokeny uwierzytelniania OAuth 2,0](./security-authenticating-apis.md) z usługi Azure Digital bliźniaczych reprezentacji.
+- **Deweloper** tworzy teraz aplikację mobilną, która bezpośrednio integruje się z interfejsami API usługi Azure Digital bliźniaczych reprezentacji Management.
+- **Deweloperzy** umożliwiają **klientom** korzystanie z aplikacji mobilnej.
+- **Klient** musi mieć autoryzację, aby używać interfejsu API zarządzania bliźniaczych reprezentacji AzureDigital w aplikacji dewelopera.
 
 Problem:
 
-- Podczas **klienta** loguje się do **DEVELOPER**w aplikacji, aplikacja nie może uzyskać tokenów dla **klienta**firmy użytkownikom na uwierzytelnianie za pomocą cyfrowych Twins zarządzania interfejsów API usługi Azure.
-- Wyjątek jest wystawiony w usłudze Azure Active Directory wskazujący, że Twins cyfrowych platformy Azure nie został rozpoznany w ramach **klienta**w katalogu.
+- Gdy **Klient** logujesię do aplikacji dewelopera, aplikacja nie może uzyskać tokenów użytkowników **klienta**do uwierzytelniania za pomocą interfejsów API usługi Azure Digital bliźniaczych reprezentacji Management.
+- Wyjątek jest wystawiany w Azure Active Directory wskazujący, że usługa Azure Digital bliźniaczych reprezentacji nie jest rozpoznawana w katalogu **klienta**.
 
 ## <a name="problem-solution"></a>Rozwiązanie problemu
 
-Aby rozwiązać w poprzednim scenariuszu problem, następujące akcje są wymagane do utworzenia Twins cyfrowych platformy Azure nazwy głównej usługi w ramach **klienta**firmy dzierżawy usługi Azure Active Directory:
+Aby rozwiązać poprzedni scenariusz problemu, należy wykonać następujące czynności w celu utworzenia jednostki usługi Digital bliźniaczych reprezentacji na platformie Azure w ramach dzierżawy Azure Active Directory **klienta**:
 
-- Jeśli **klienta** nie ma jeszcze subskrypcji platformy Azure z dzierżawą usługi Azure Active Directory:
+- Jeśli **Klient** nie ma jeszcze subskrypcji platformy Azure z dzierżawą Azure Active Directory:
 
-  - **Klient**przez administratora dzierżawy usługi Azure Active Directory muszą uzyskać [płatność za rzeczywiste użycie subskrypcji platformy Azure](https://azure.microsoft.com/offers/ms-azr-0003p/).
-  - **Klient**użytkownika administratora dzierżawy usługi Azure Active Directory, a następnie musi [połączyć ich dzierżawy przy użyciu nowej subskrypcji](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity).
+  - Administrator dzierżawy Azure Active Directory **klienta**musi uzyskać [subskrypcję platformy Azure z płatność zgodnie z rzeczywistym](https://azure.microsoft.com/offers/ms-azr-0003p/)użyciem.
+  - Administrator dzierżawy Azure Active Directory **klienta**musi [połączyć swoją dzierżawę z nową subskrypcją](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity).
 
-- Na [witryny Azure portal](https://portal.azure.com), **klienta**przez administratora dzierżawy usługi Azure Active Directory wykonuje następujące czynności:
+- Na [Azure Portal](https://portal.azure.com)Administrator dzierżawy Azure Active Directory **klienta**wykona następujące czynności:
 
   1. Otwórz **subskrypcje**.
-  1. Wybierz subskrypcję z dzierżawą usługi Azure Active Directory do użycia w **DEVELOPER**w aplikacji.
+  1. Wybierz subskrypcję mającą dzierżawę Azure Active Directory, która ma byćużywana w aplikacji dewelopera.
 
-     ![Subskrypcje usługi Azure Active Directory][1]
+     ![Subskrypcje Azure Active Directory][1]
 
-  1. Wybierz **dostawców zasobów**.
-  1. Wyszukaj **Microsoft.IoTSpaces**.
+  1. Wybierz pozycję **dostawcy zasobów**.
+  1. Wyszukaj ciąg **Microsoft. IoTSpaces**.
   1. Wybierz pozycję **Zarejestruj**.
 
-     ![Dostawcy zasobów usługi Azure Active Directory][2]
+     ![Dostawcy zasobów Azure Active Directory][2]
   
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się więcej o tym, jak używać funkcji zdefiniowanych przez użytkownika za pomocą Twins cyfrowych platformy Azure, przeczytaj [jak tworzyć funkcje zdefiniowane przez użytkownika Twins cyfrowego Azure](./how-to-user-defined-functions.md).
+- Aby dowiedzieć się więcej na temat używania funkcji zdefiniowanych przez użytkownika z usługą Azure Digital bliźniaczych reprezentacji, przeczytaj artykuł [jak utworzyć funkcje usługi Azure Digital bliźniaczych reprezentacji zdefiniowane przez użytkownika](./how-to-user-defined-functions.md).
 
-- Aby dowiedzieć się, jak można dodatkowo zabezpieczyć aplikację za pomocą przypisań ról za pomocą kontroli dostępu opartej na rolach, przeczytaj [sposób tworzenia i zarządzania kontroli dostępu opartej na rolach Twins cyfrowego Azure](./security-create-manage-role-assignments.md).
+- Aby dowiedzieć się, jak używać kontroli dostępu opartej na rolach, aby dodatkowo zabezpieczyć aplikację za pomocą przypisań ról, przeczytaj artykuł [jak utworzyć kontrolę dostępu opartą na rolach w usłudze Azure Digital bliźniaczych reprezentacji i zarządzać nią](./security-create-manage-role-assignments.md).
 
 <!-- Images -->
 [1]: media/multitenant/ad-subscriptions.png

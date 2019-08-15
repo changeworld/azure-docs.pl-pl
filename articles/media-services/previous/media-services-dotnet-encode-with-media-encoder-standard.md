@@ -1,6 +1,6 @@
 ---
-title: Kodowanie elementu zawartości za pomocą usługi Media Encoder Standard za pomocą platformy .NET | Dokumentacja firmy Microsoft
-description: W tym artykule pokazano, jak kodowanie elementu zawartości przy użyciu usługi Media Encoder Standard za pomocą platformy .NET.
+title: Kodowanie elementu zawartości za pomocą Media Encoder Standard przy użyciu platformy .NET | Microsoft Docs
+description: W tym artykule pokazano, jak używać platformy .NET do kodowania zasobów przy użyciu Media Encoder Standard.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,58 +13,59 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: juliako;anilmur
-ms.openlocfilehash: d3eb2affe76374eb35ac724dff0204f43b567e09
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.reviewer: anilmur
+ms.openlocfilehash: 259e32d55f25c4a146b7ff358eb503763dd5fab2
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61225732"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69016589"
 ---
-# <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Kodowanie elementu zawartości za pomocą usługi Media Encoder Standard za pomocą platformy .NET  
+# <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Kodowanie elementu zawartości za pomocą Media Encoder Standard przy użyciu platformy .NET  
 
-Zadania kodowania to jedna z operacji najczęściej przeprowadzanych przy użyciu usługi Media Services. Zadania kodowania są tworzone w celu konwertowania plików multimediów z jednego formatu kodowania na inny. Podczas kodowania, możesz użyć wbudowanych Media Encoder usługi Media Services. Można również użyć koder świadczonych przez partnera usługi Media Services; kodery innych firm są dostępne za pośrednictwem portalu Azure Marketplace. 
+Zadania kodowania to jedna z operacji najczęściej przeprowadzanych przy użyciu usługi Media Services. Zadania kodowania są tworzone w celu konwertowania plików multimediów z jednego formatu kodowania na inny. Podczas kodowania można użyć Media Services wbudowanego kodera multimediów. Można również użyć kodera dostarczonego przez partnera Media Services; kodery innych firm są dostępne w portalu Azure Marketplace. 
 
-W tym artykule przedstawiono sposób kodowania elementów zawartości przy użyciu Media Encoder Standard (MES) za pomocą platformy .NET. Usługi Media Encoder Standard jest skonfigurowany przy użyciu jednego z ustawień wstępnych koderów opisem [tutaj](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
+W tym artykule pokazano, jak używać platformy .NET do kodowania zasobów przy użyciu Media Encoder Standard (MES). Media Encoder Standard jest skonfigurowany przy użyciu jednego z ustawień predefiniowanych koderów opisanych [poniżej](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
 
-Zalecane jest zawsze kodowanie plików źródłowych do adaptacyjną szybkością transmisji bitów zestawu w formacie MP4, a następnie wykonać konwersję zestawu za pomocą żądany format [funkcję dynamicznego tworzenia pakietów](media-services-dynamic-packaging-overview.md). 
+Zalecane jest, aby zawsze kodować pliki źródłowe do zestawu MP4 z adaptacyjną szybkością transmisji bitów, a następnie przekonwertować zestaw na żądany format przy użyciu [dynamicznego tworzenia pakietów](media-services-dynamic-packaging-overview.md). 
 
-Jeśli element zawartości danych wyjściowych jest szyfrowany w magazynie, należy skonfigurować zasady dostarczania elementu zawartości. Aby uzyskać więcej informacji, zobacz [Konfigurowanie zasad dostarczania elementów zawartości](media-services-dotnet-configure-asset-delivery-policy.md).
+Jeśli zasoby wyjściowe są szyfrowane magazynem, należy skonfigurować zasady dostarczania zasobów. Aby uzyskać więcej informacji, zobacz [Konfigurowanie zasad dostarczania elementów zawartości](media-services-dotnet-configure-asset-delivery-policy.md).
 
 > [!NOTE]
-> Usługi MES tworzy plik wyjściowy o nazwie, która zawiera pierwszych 32 znaków nazwy pliku wejściowego. Nazwa jest oparty na został określony w pliku wstępnie zdefiniowane. Na przykład, "FileName": "{Basename} _ {Index} {Extension}". {Basename} jest zastępowany przez pierwszych 32 znaków nazwy pliku wejściowego.
+> MES tworzy plik wyjściowy o nazwie zawierającej pierwsze 32 znaków nazwy pliku wejściowego. Nazwa jest oparta na tym, co jest określone w pliku predefiniowanym. Na przykład "FileName": "{basename} _ {index} {Extension}". {Basename} jest zastępowana przez pierwsze 32 znaków nazwy pliku wejściowego.
 > 
 > 
 
-### <a name="mes-formats"></a>Formaty usługi MES
-[Formaty i kodery-dekodery](media-services-media-encoder-standard-formats.md)
+### <a name="mes-formats"></a>Formaty MES
+[Formaty i kodeki](media-services-media-encoder-standard-formats.md)
 
 ### <a name="mes-presets"></a>Ustawienia wstępne usługi MES
-Usługi Media Encoder Standard jest skonfigurowany przy użyciu jednego z ustawień wstępnych koderów opisem [tutaj](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
+Media Encoder Standard jest skonfigurowany przy użyciu jednego z ustawień predefiniowanych koderów opisanych [poniżej](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
 
 ### <a name="input-and-output-metadata"></a>Metadane wejściowe i wyjściowe
-Podczas kodowania wejściowego elementu (lub zasoby), za pomocą usługi MES, pobieranie elementu zawartości wyjściowej po pomyślnym zakończeniu tego kodowania zadań. Elementu zawartości wyjściowej zawiera film wideo, audio, miniatury, manifest, itp., w oparciu o ustawienia wstępne kodowania, którego używasz.
+W przypadku kodowania danych wejściowych (lub zasobów) przy użyciu programu MES można uzyskać wyjściowy element zawartości po pomyślnym zakończeniu tego zadania kodowania. Element zawartości wyjściowej zawiera wideo, audio, miniatury, manifest itp. w zależności od używanego ustawienia wstępnego kodowania.
 
-Elementu zawartości wyjściowej zawiera także plik o metadane dotyczące zasobu danych wejściowych. Nazwa pliku XML metadanych ma następujący format: < asset_id > _metadata.xml (na przykład, d 57 8 41114ad3-eb5e — 4 rdzeni 92-5354e2b7d4a4_metadata.xml), gdzie < asset_id > jest wartość AssetId trwałego danych wejściowych. Schemat XML metadanych danych wejściowych jest opisany [tutaj](media-services-input-metadata-schema.md).
+Wyjściowy element zawartości zawiera również plik z metadanymi zawierającymi dane wejściowe. Nazwa pliku XML metadanych ma następujący format: < asset_id > _metadata. XML (na przykład 41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata. xml), gdzie < asset_id > jest wartością AssetId elementu zawartości. Schemat tego pliku XML metadanych wejściowych jest opisany [tutaj](media-services-input-metadata-schema.md).
 
-Elementu zawartości wyjściowej zawiera także plik o metadane dotyczące elementu zawartości wyjściowej. Nazwa pliku XML metadanych ma następujący format: < source_file_name > _manifest.xml (na przykład BigBuckBunny_manifest.xml). Schemat metadanych danych wyjściowych XML jest opisany [tutaj](media-services-output-metadata-schema.md).
+Wyjściowy element zawartości zawiera również plik z metadanymi dotyczącymi wyjściowego elementu zawartości. Nazwa pliku XML metadanych ma następujący format: < source_file_name > _manifest. XML (na przykład BigBuckBunny_manifest. xml). Schemat tego XML metadanych wyjściowych jest opisany [tutaj](media-services-output-metadata-schema.md).
 
-Jeśli chcesz sprawdzić z jednej z dwóch plików metadanych, możesz utworzyć lokalizatora SAS następuje i pobrać plik na komputer lokalny. Przykład można znaleźć na temat sposobu tworzenia lokalizatora SAS następuje i Pobierz plik przy użyciu rozszerzenia SDK .NET usługi Media Services.
+Jeśli chcesz przejrzeć jeden z tych dwóch plików metadanych, możesz utworzyć lokalizatora SAS i pobrać plik na komputer lokalny. Przykład tworzenia lokalizatora SAS i pobierania pliku przy użyciu rozszerzeń zestawu SDK platformy .NET Media Services.
 
 ## <a name="download-sample"></a>Pobieranie przykładu
-Możesz pobrać i uruchomić przykład, który pokazuje, jak kodowanie za pomocą usługi MES z [tutaj](https://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/).
+Możesz uzyskać i uruchomić przykład, który pokazuje, jak kodować ze statusem MES w [tym miejscu](https://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/).
 
-## <a name="net-sample-code"></a>Przykładowy kod .NET
+## <a name="net-sample-code"></a>Przykładowy kod platformy .NET
 
 Poniższy przykład kodu używa Media Services .NET SDK do wykonywania następujących zadań:
 
-* Utwórz zadania kodowania.
-* Pobierz odwołanie do usługi Media Encoder Standard kodera.
-* Określić, czy użyć [adaptacyjnego przesyłania strumieniowego](media-services-autogen-bitrate-ladder-with-mes.md) wstępnie zdefiniowane. 
-* Dodaj pojedynczego zadania kodowania do zadania. 
-* Określ wejściowego elementu do zakodowania.
-* Tworzenie zasobu danych wyjściowych, który zawiera zakodowanym elementem zawartości.
-* Dodaj program obsługi zdarzeń, aby sprawdzić postęp zadania.
+* Utwórz zadanie kodowania.
+* Pobierz odwołanie do kodera Media Encoder Standard.
+* Określ, aby użyć adaptacyjnego ustawienia wstępnego [przesyłania strumieniowego](media-services-autogen-bitrate-ladder-with-mes.md) . 
+* Dodaj jedno zadanie kodowania do zadania. 
+* Określ zasób wejściowy do zakodowania.
+* Utwórz zasób wyjściowy, który zawiera zakodowany element zawartości.
+* Dodaj procedurę obsługi zdarzeń, aby sprawdzić postęp zadania.
 * Przesyłanie zadania.
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Tworzenie i konfigurowanie projektu programu Visual Studio
@@ -195,12 +196,12 @@ namespace MediaEncoderStandardSample
 }
 ```
 
-## <a name="advanced-encoding-features-to-explore"></a>Zaawansowane funkcje kodowania, aby zapoznać się z
-* [Generowanie miniatur](media-services-dotnet-generate-thumbnail-with-mes.md)
+## <a name="advanced-encoding-features-to-explore"></a>Zaawansowane funkcje kodowania do eksplorowania
+* [Jak generować miniatury](media-services-dotnet-generate-thumbnail-with-mes.md)
 * [Generowanie miniatur podczas kodowania](media-services-dotnet-generate-thumbnail-with-mes.md#example-of-generating-a-thumbnail-while-encoding)
-* [Przycinanie wideo podczas kodowania](media-services-crop-video.md)
-* [Dostosowywanie ustawienia wstępne kodowania](media-services-custom-mes-presets-with-dotnet.md)
-* [Nakładki lub znaku wodnego wideo z obrazem](media-services-advanced-encoding-with-mes.md#overlay)
+* [Przytnij wideo podczas kodowania](media-services-crop-video.md)
+* [Dostosowywanie ustawień wstępnych kodowania](media-services-custom-mes-presets-with-dotnet.md)
+* [Nałożenie wideo z obrazem lub znak wodny](media-services-advanced-encoding-with-mes.md#overlay)
 
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -208,7 +209,7 @@ namespace MediaEncoderStandardSample
 ## <a name="provide-feedback"></a>Przekazywanie opinii
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
-[Sposób generowania miniatur za pomocą usługi Media Encoder Standard za pomocą platformy .NET](media-services-dotnet-generate-thumbnail-with-mes.md)
-[omówienie kodowanie usług Media](media-services-encode-asset.md)
+## <a name="next-steps"></a>Następne kroki
+[Jak wygenerować miniaturę przy użyciu Media Encoder Standard z użyciem kodowania .NET](media-services-dotnet-generate-thumbnail-with-mes.md)
+[Media Services — Omówienie](media-services-encode-asset.md)
 

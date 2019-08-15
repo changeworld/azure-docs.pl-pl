@@ -12,12 +12,12 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: 91c0ad260c16ac09fd764246d31f99d481f8f147
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: fd8168b5786f669de0c5c2109c9e02b43c62c582
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886834"
+ms.locfileid: "68933651"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Kontrola źródła w Azure Data Factory
 
@@ -243,7 +243,7 @@ Korzystanie z Key Vault powoduje także uproszczenie ciągłej integracji i wdra
 
 Jeśli gałąź publikowania nie jest zsynchronizowana z gałęzią główną i zawiera nieaktualne zasoby pomimo niedawnego publikowania, spróbuj wykonać następujące czynności:
 
-1. Usuń bieżące repozytorium git/
+1. Usuń bieżące repozytorium git
 1. Skonfiguruj ponownie usługę git przy użyciu tych samych ustawień, ale upewnij się, że wybrano opcję **Importuj istniejące zasoby Data Factory do repozytorium** , a następnie wybierz pozycję **Nowa gałąź**
 1. Usuń wszystkie zasoby z gałęzi współpracy
 1. Utwórz żądanie ściągnięcia, aby scalić zmiany w gałęzi współpracy 
@@ -253,7 +253,7 @@ Wybierz **opinię** , aby skomentować informacje o funkcjach lub powiadomić fi
 
 ![Opinia](media/author-visually/provide-feedback.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby dowiedzieć się więcej na temat monitorowania potoków i zarządzania nimi, zobacz temat [monitorowanie potoków i zarządzanie nimi programowo](monitor-programmatically.md).
 * Aby wdrożyć ciągłą integrację i wdrażanie, zobacz [ciągłej integracji i dostarczania (Ci/CD) w Azure Data Factory](continuous-integration-deployment.md).

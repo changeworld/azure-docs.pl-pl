@@ -2,19 +2,18 @@
 title: Rozwiązywanie problemów Azure Data Factory | Microsoft Docs
 description: Dowiedz się, jak rozwiązywać problemy związane z zewnętrznymi kontrolkami w Azure Data Factory.
 services: data-factory
-author: abnarain
-manager: craigg
+author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 6/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: c76242c176ba4f4c9ffc0d6934f6b645743d77f4
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 1995ce2a91bfbc115f80c99687cc84b52ef614ec
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234580"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950107"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Rozwiązywanie problemów Azure Data Factory
 
@@ -47,7 +46,7 @@ Poniższa tabela dotyczy języka U-SQL.
 | Kod błędu         | Komunikat o błędzie                                                | Opis                                          | Zalecenie                            |
 | -------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 2709                 | Token dostępu pochodzi od niewłaściwej dzierżawy.                    | Nieprawidłowa dzierżawa usługi Azure Active Directory (Azure AD).                                         | Nazwa główna usługi służąca do uzyskiwania dostępu do Azure Data Lake Analytics należy do innej dzierżawy usługi Azure AD. Utwórz nową nazwę główną usługi w tej samej dzierżawie co konto Data Lake Analytics. |
-| 2711,   2705,   2704 | Zabrania. Weryfikacja listy ACL nie powiodła się. Zasób nie istnieje lub użytkownik nie ma uprawnień do wykonywania żądanych operacji.<br/><br/>Użytkownik nie może uzyskać dostępu do Data Lake Store.  <br/><br/>Użytkownik nie ma uprawnień do używania Data Lake Analytics. | Nazwa główna usługi lub certyfikat nie ma dostępu do pliku w magazynie. | Upewnij się, że jednostka usługi lub certyfikat udostępniany przez użytkownika dla zadań Data Lake Analytics ma dostęp do konta Data Lake Analytics i domyślnego wystąpienia Data Lake Storage z folderu głównego. |
+| 2711,   2705,   2704 | Zabrania. Weryfikacja listy kontroli dostępu nie powiodła się. Zasób nie istnieje lub użytkownik nie ma uprawnień do wykonywania żądanych operacji.<br/><br/>Użytkownik nie może uzyskać dostępu do Data Lake Store.  <br/><br/>Użytkownik nie ma uprawnień do używania Data Lake Analytics. | Nazwa główna usługi lub certyfikat nie ma dostępu do pliku w magazynie. | Upewnij się, że jednostka usługi lub certyfikat udostępniany przez użytkownika dla zadań Data Lake Analytics ma dostęp do konta Data Lake Analytics i domyślnego wystąpienia Data Lake Storage z folderu głównego. |
 | 2711                 | Nie można znaleźć pliku lub folderu "Azure Data Lake Store".       | Ścieżka do pliku U-SQL jest niepoprawna lub poświadczenia połączonej usługi nie mają dostępu. | Sprawdź ścieżkę i poświadczenia podane w połączonej usłudze. |
 | 2707                 | Nie można rozpoznać konta AzureDataLakeAnalytics. Sprawdź "AccountName" i "DataLakeAnalyticsUri". | Konto Data Lake Analytics w połączonej usłudze jest nieprawidłowe.                  | Sprawdź, czy odpowiednie konto zostało podane.             |
 | 2703                 | Identyfikator błędu: E_CQO_SYSTEM_INTERNAL_ERROR (lub dowolny błąd zaczynający się od "Identyfikator błędu:"). | Błąd pochodzi z Data Lake Analytics.                                    | Błąd podobny do przykładu oznacza, że zadanie zostało przesłane do Data Lake Analytics, a skrypt zakończył się niepowodzeniem. Zbadaj w Data Lake Analytics. W portalu przejdź do konta Data Lake Analytics i Wyszukaj zadanie przy użyciu identyfikatora uruchomienia działania Data Factory (nie identyfikatora uruchomienia potoku). Zadanie zawiera więcej informacji o błędzie i pomaga w rozwiązywaniu problemów. Jeśli rozwiązanie nie jest wyczyszczone, skontaktuj się z zespołem pomocy technicznej Data Lake Analytics i podaj adres URL zadania, który zawiera nazwę konta i identyfikator zadania. |
@@ -65,7 +64,7 @@ Poniższa tabela dotyczy języka U-SQL.
 
 
 
-## <a name="custom"></a>Niestandardowy
+## <a name="custom"></a>Niestandardowa
 
 Poniższa tabela ma zastosowanie do Azure Batch.
 
@@ -91,7 +90,7 @@ Poniższa tabela ma zastosowanie do przesyłania strumieniowego platformy Spark,
 | 2300         | Nie można przesłać zadania usługi Hadoop. Zadanie:..., klaster:.../. Błąd: Zadanie zostało anulowane. | Przekroczono limit czasu podczas przekazywania zadania.                         | Przyczyną problemu może być ogólna łączność z usługą HDInsight lub łączność sieciowa. Najpierw upewnij się, że interfejs użytkownika usługi HDInsight Ambari jest dostępny z dowolnej przeglądarki. Upewnij się, że poświadczenia są nadal ważne. Jeśli używasz własnego środowiska uruchomieniowego (IR), upewnij się, że jest to możliwe z maszyny wirtualnej lub maszyny, na której zainstalowano samoobsługowe środowisko IR. Następnie spróbuj ponownie przesłać zadanie z Data Factory. Jeśli nadal się nie powiedzie, skontaktuj się z zespołem Data Factory, aby uzyskać pomoc techniczną. |
 | 2300         | Próby   Nazwa użytkownika Ambari lub hasło są niepoprawne  <br/><br/>Próby   Administrator użytkownika jest zablokowany w Ambari.   <br/><br/>403 — Dostęp zabroniony: Odmowa dostępu. | Poświadczenia usługi HDInsight są nieprawidłowe lub wygasły. | Popraw poświadczenia i ponownie Wdróż połączoną usługę. Najpierw upewnij się, że poświadczenia działają w usłudze HDInsight, otwierając identyfikator URI klastra w dowolnej przeglądarce i próbując się zalogować. Jeśli poświadczenia nie działają, możesz je zresetować z poziomu Azure Portal. |
 | 2300,   2310 | 502 — Serwer sieci Web odebrał nieprawidłową odpowiedź, działając jako brama lub serwer proxy.       <br/>Zła brama. | Ten błąd pochodzi z usługi HDInsight.                               | Ten błąd pochodzi z klastra usługi HDInsight. Aby uzyskać więcej informacji, zobacz [AMBARI UI 502 Error](https://hdinsight.github.io/ambari/ambari-ui-502-error.html), [502 błędy połączenia z serwerem spark Thrift](https://hdinsight.github.io/spark/spark-thriftserver-errors.html), [502 błędy połączenia z serwerem Spark Thrift](https://hdinsight.github.io/spark/spark-thriftserver-errors.html)i [Rozwiązywanie problemów z błędami bramy w Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502). |
-| 2300         | Nie można przesłać zadania usługi Hadoop. Zadanie:..., klaster:... Błąd: {\"error\":\"nie można obsłużyć żądania przesłania zadania, ponieważ usługa Templeton jest zajęta zbyt wiele żądań przesłania zadania. Poczekaj przez jakiś czas przed ponowieniem próby wykonania operacji. Zapoznaj się z konfiguracją Templeton. parallellism. job. Submit, aby skonfigurować współbieżne żądania.  <br/><br/>Nie można przesłać zadania usługi Hadoop. Zleceń 161da5d4-6fa8-4ef4-a240-6b6428c5ae2f, klaster: `https://abc-analytics-prod-hdi-hd-trax-prod01.azurehdinsight.net/`.   Błąd: {\"error\":\"Java. IO. IOException: org. Apache. Hadoop. przędzy. Exceptions. przędzexception: Nie można przesłać application_1561147195099_3730 do PRZĘDZy: org. Apache. Hadoop. Security. AccessControlException: Element główny kolejki. joblauncher ma już 500 aplikacji, nie można zaakceptować przesłania aplikacji: application_1561147195099_3730 \ | Zbyt wiele zadań jest przesyłanych do usługi HDInsight w tym samym czasie. | Rozważ ograniczenie liczby współbieżnych zadań przesyłanych do usługi HDInsight. Zapoznaj się z Data Factory współbieżności działań, jeśli zadania są przesyłane przez to samo działanie. Zmień Wyzwalacze w celu rozłożenia współbieżnych uruchomień potoków w czasie. Zapoznaj się z dokumentacją usługi `templeton.parallellism.job.submit` HDInsight, aby dostosować ją w miarę sugerowania błędu. |
+| 2300         | Nie można przesłać zadania usługi Hadoop. Zadanie:..., klaster:... Błąd: {\"error\":\"nie można obsłużyć żądania przesłania zadania, ponieważ usługa Templeton jest zajęta zbyt wiele żądań przesłania zadania. Poczekaj przez jakiś czas przed ponowieniem próby wykonania operacji. Zapoznaj się z konfiguracją Templeton. parallellism. job. Submit, aby skonfigurować współbieżne żądania.  <br/><br/>Nie można przesłać zadania usługi Hadoop. Zadanie: 161da5d4-6fa8-4ef4-a240-6b6428c5ae2f, klaster: `https://abc-analytics-prod-hdi-hd-trax-prod01.azurehdinsight.net/`.   Błąd: {\"error\":\"Java. IO. IOException: org. Apache. Hadoop. przędzy. Exceptions. przędzexception: Nie można przesłać application_1561147195099_3730 do PRZĘDZy: org. Apache. Hadoop. Security. AccessControlException: Element główny kolejki. joblauncher ma już 500 aplikacji, nie można zaakceptować przesłania aplikacji: application_1561147195099_3730 \ | Zbyt wiele zadań jest przesyłanych do usługi HDInsight w tym samym czasie. | Rozważ ograniczenie liczby współbieżnych zadań przesyłanych do usługi HDInsight. Zapoznaj się z Data Factory współbieżności działań, jeśli zadania są przesyłane przez to samo działanie. Zmień Wyzwalacze w celu rozłożenia współbieżnych uruchomień potoków w czasie. Zapoznaj się z dokumentacją usługi `templeton.parallellism.job.submit` HDInsight, aby dostosować ją w miarę sugerowania błędu. |
 | 2303, 2347 | Zadanie usługi Hadoop nie powiodło się z kodem zakończenia "5". Aby uzyskaćwasbs://adfjobs@adftrialrun.blob.core.windows.net/StreamingJobs/da4afc6d-7836-444e-bbd5-635fce315997/18_06_2019_05_36_05_050/stderrwięcej informacji, zobacz "".  <br/><br/>Wykonanie programu Hive nie powiodło się z kodem błędu "UserErrorHiveOdbcCommandExecutionFailure".   Aby uzyskaćwasbs://adfjobs@eclsupplychainblobd.blob.core.windows.net/HiveQueryJobs/16439742-edd5-4efe-adf6-9b8ff5770beb/18_06_2019_07_37_50_477/Status/hive.outwięcej informacji, zobacz "". | Zadanie zostało przesłane do usługi HDInsight i nie powiodło się w usłudze HDInsight. | Zadanie zostało pomyślnie przesłane do usługi HDInsight. W klastrze nie powiodło się. Otwórz zadanie i dzienniki w interfejsie użytkownika usługi HDInsight Ambari lub Otwórz plik z magazynu, który sugeruje komunikat o błędzie. Plik zawiera szczegóły błędu. |
 | 2328         | Wystąpił wewnętrzny błąd serwera podczas przetwarzania żądania. Spróbuj ponownie wykonać żądanie lub skontaktuj się z pomocą techniczną. | Ten błąd występuje na żądanie w usłudze HDInsight.                              | Ten błąd pochodzi z usługi HDInsight, gdy inicjowanie obsługi usługi HDInsight kończy się niepowodzeniem. Skontaktuj się z zespołem usługi HDInsight i podaj nazwę klastra na żądanie. |
 | 2310         | java.lang.NullPointerException                               | Ten błąd występuje, gdy zadanie zostanie przesłane do klastra Spark.      | Ten wyjątek pochodzi z usługi HDInsight. Powoduje ukrycie rzeczywistego problemu. Skontaktuj się z zespołem usługi HDInsight, aby uzyskać pomoc techniczną. Podaj nazwę klastra i zakres czasu wykonywania działania. |
@@ -109,7 +108,7 @@ Poniższa tabela ma zastosowanie do przesyłania strumieniowego platformy Spark,
 | 2108         | Zabronione 403.                                                | Brak wymaganych uprawnień.                                 | Sprawdź uprawnienia użytkownika do dostępnego zasobu. Użyj programu Fiddler lub Ogłoś, aby sprawdzić funkcjonalność adresu URL.  |
 | 2108         | Złe żądanie 400.                                              | Nieprawidłowe żądanie HTTP.                                         | Sprawdź adres URL, czasownik i treść żądania. Aby zweryfikować żądanie, użyj programu Fiddler lub programu Poster.  |
 | 2108         | Nie znaleziono 404.                                                | Nie znaleziono zasobu.                                       | Aby zweryfikować żądanie, użyj programu Fiddler lub programu Poster.  |
-| 2108         | Usługa jest niedostępna.                                          | Usługa jest niedostępna.                                       | Aby zweryfikować żądanie, użyj programu Fiddler lub programu Poster.  |
+| 2108         | Usługa niedostępna.                                          | Usługa jest niedostępna.                                       | Aby zweryfikować żądanie, użyj programu Fiddler lub programu Poster.  |
 | 2108         | Nieobsługiwany typ nośnika.                                       | Typ zawartości jest niezgodny z treścią działania sieci Web.           | Określ typ zawartości zgodny z formatem ładunku. Aby zweryfikować żądanie, użyj programu Fiddler lub programu Poster. |
 | 2108         | Zasób, którego szukasz, został usunięty, ma zmienioną nazwę lub jest tymczasowo niedostępna. | Zasób nie jest dostępny.                                | Aby sprawdzić punkt końcowy, użyj programu Fiddler lub programu Poster. |
 | 2108         | Szukana Strona nie może zostać wyświetlona, ponieważ jest używana nieprawidłowa Metoda (czasownik HTTP). | W żądaniu określono niepoprawną metodę działania sieci Web.   | Aby sprawdzić punkt końcowy, użyj programu Fiddler lub programu Poster. |
@@ -145,7 +144,7 @@ Aby użyć programu Fiddler do utworzenia sesji HTTP monitorowanej aplikacji sie
 
 Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z usługą programu Fiddler](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureFiddler).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji dotyczących rozwiązywania problemów, wypróbuj następujące zasoby:
 

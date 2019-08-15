@@ -1,6 +1,6 @@
 ---
-title: Łączenie komputerów przy użyciu bramy usługi Log Analytics | Dokumentacja firmy Microsoft
-description: Połącz swoje urządzenia i komputery monitorowane przez menedżera operacji przy użyciu bramy usługi Log Analytics do wysyłania danych do usługi Azure Automation i usługę Log Analytics, gdy nie mają dostępu do Internetu.
+title: Łączenie komputerów przy użyciu bramy Log Analytics | Microsoft Docs
+description: Podłącz urządzenia i Operations Manager monitorowane komputery przy użyciu bramy Log Analytics do wysyłania danych do usługi Azure Automation i Log Analytics, jeśli nie mają dostępu do Internetu.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,69 +11,69 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/17/2019
+ms.date: 08/12/2019
 ms.author: magoedte
-ms.openlocfilehash: b0b221a9fe6c6482e8759664c297dbd25d0ee776
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1d735a3740b473806835f2e80f40cea02b48387e
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60396430"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955094"
 ---
-# <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Łączenie komputerów bez dostępu do Internetu za pomocą bramy usługi Log Analytics w usłudze Azure Monitor
+# <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Łączenie komputerów bez dostępu do Internetu przy użyciu bramy Log Analytics w programie Azure Monitor
 
 >[!NOTE]
->Zgodnie z programu Microsoft Operations Management Suite (OMS) przejścia do systemu Microsoft Azure Monitor, terminologii ulegnie zmianie. Ten artykuł odnosi się do bramy pakietu OMS jako bramy usługi Azure Log Analytics. 
+>Zgodnie z Microsoft Operations Management Suite (OMS) przejściami do monitora Microsoft Azure, terminologia zmienia się. Ten artykuł odnosi się do bramy pakietu OMS jako bramy usługi Azure Log Analytics. 
 >
 
-W tym artykule opisano sposób konfigurowania komunikacji przy użyciu usługi Azure Automation i Azure Monitor przy użyciu bramy usługi Log Analytics, gdy komputery, które są połączone bezpośrednio lub które są monitorowane przez program Operations Manager mają Brak dostępu do Internetu. 
+W tym artykule opisano sposób konfigurowania komunikacji z Azure Automation i Azure Monitor przy użyciu bramy Log Analytics, gdy komputery połączone bezpośrednio lub monitorowane przez Operations Manager nie mają dostępu do Internetu. 
 
-Brama usługi Log Analytics jest przekierowania serwera proxy HTTP obsługującego tunelowania HTTP za pomocą polecenia połączenia protokołu HTTP. Ta Brama może zbierać dane i wysyłać je do usługi Azure Automation i obszar roboczy usługi Log Analytics w usłudze Azure Monitor imieniu komputerów, które nie są połączone z Internetem.  
+Brama Log Analytics jest serwerem proxy przesyłania dalej HTTP, który obsługuje Tunelowanie HTTP przy użyciu polecenia HTTP CONNECT. Ta brama wysyła dane do Azure Automation i Log Analytics obszaru roboczego w Azure Monitor w imieniu komputerów, które nie mogą bezpośrednio łączyć się z Internetem. Nie buforuje danych z agentów, Agent obsługuje dane buforowania w tej sytuacji do momentu przywrócenia komunikacji.
 
 Brama usługi Log Analytics obsługuje:
 
-* Raportowanie do tego samego cztery usługi Log Analytics agenci obszaru roboczego, które są pod nim, które są skonfigurowane przy użyciu usługi Azure Automation hybrydowego Runbook Worker.  
-* Komputery Windows, na których program Microsoft Monitoring Agent bezpośrednio połączone z obszarem roboczym usługi Log Analytics w usłudze Azure Monitor.
-* Komputery z systemem Linux na których agenta usługi Log Analytics dla systemu Linux jest bezpośrednio połączony z obszarem roboczym usługi Log Analytics w usłudze Azure Monitor.  
-* System Center Operations Manager 2012 z dodatkiem SP1 z pakietem zbiorczym aktualizacji 7, Operations Manager 2012 R2 przy użyciu UR3 lub grupy zarządzania w programie Operations Manager 2016 lub nowszym zintegrowanej z usługą Log Analytics.  
+* Raportowanie do tych samych czterech Log Analytics agentów obszaru roboczego, które znajdują się w nim i są skonfigurowane za pomocą Azure Automation hybrydowych procesów roboczych elementów Runbook.  
+* Komputery z systemem Windows, na których Microsoft Monitoring Agent jest podłączony bezpośrednio do Log Analytics obszaru roboczego w Azure Monitor.
+* Komputery z systemem Linux, na których Agent Log Analytics dla systemu Linux jest podłączony bezpośrednio do Log Analytics obszaru roboczego w Azure Monitor.  
+* System Center Operations Manager 2012 z dodatkiem SP1 z pakietem UR7, Operations Manager 2012 R2 z UR3 lub grupą zarządzania w Operations Manager 2016 lub nowszym, która jest zintegrowana z Log Analytics.  
 
-Niektóre z zasadami bezpieczeństwa IT nie zezwalaj na połączenia internetowego komputerów w sieci. Te komputery niepołączonych może być punktu sprzedaży (POS) urządzeniami lub serwerami obsługującymi funkcję usług informatycznych, na przykład. Do łączenia z tych urządzeń do usługi Azure Automation lub obszaru roboczego usługi Log Analytics, co umożliwia zarządzanie i monitorowanie ich je skonfigurować do komunikowania się bezpośrednio z bramą usługi Log Analytics. Brama usługi Log Analytics może odbierać informacje o konfiguracji i przekazują dane w ich imieniu. Jeśli komputery są skonfigurowane przy użyciu agenta usługi Log Analytics można łączyć się bezpośrednio do obszaru roboczego usługi Log Analytics, komputery zamiast komunikowania się z bramą usługi Log Analytics.  
+Niektóre zasady zabezpieczeń IT nie zezwalają na połączenie internetowe komputerów sieciowych. Te niepołączone komputery mogą wskazywać na przykład urządzenia do sprzedaży (POS) lub serwery obsługujące usługi IT. Aby podłączyć te urządzenia do Azure Automation lub Log Analytics obszaru roboczego, tak aby można było nimi zarządzać i monitorować, należy skonfigurować je do bezpośredniego komunikowania się z bramą Log Analytics. Brama Log Analytics może odbierać informacje o konfiguracji i przesyłać dalej dane w ich imieniu. Jeśli komputery są skonfigurowane z agentem Log Analytics, aby połączyć się bezpośrednio z obszarem roboczym Log Analytics, komputery będą komunikować się z bramą Log Analytics.  
 
-Brama usługi Log Analytics przesyła dane z agentów do usługi bezpośrednio. Nie analizować dane podczas przesyłania.
+Brama usługi Log Analytics transferuje dane bezpośrednio z agentów do usługi. Nie analizuje żadnych danych podczas przesyłania.
 
-W przypadku grupy zarządzania programu Operations Manager jest zintegrowany z usługą Log Analytics, do połączenia z bramą usługi Log Analytics do odbierania informacji o konfiguracji i wysyłać zebrane dane, w zależności od rozwiązania, które można skonfigurować serwery zarządzania .  Agenci programu Operations Manager wysyłać dane do serwera zarządzania. Na przykład agentów może wysyłać alertów programu Operations Manager, dane oceny konfiguracji, dane przestrzeni wystąpienia i dane wydajności. Inne dane w dużej liczby, takich jak dzienniki, dane dotyczące wydajności i zdarzeń zabezpieczeń Internet Information Services (IIS) są wysyłane bezpośrednio do bramy usługi Log Analytics. 
+Po zintegrowaniu Operations Manager grupy zarządzania z Log Analytics, serwery zarządzania można skonfigurować tak, aby łączyły się z bramą Log Analytics, aby otrzymywać informacje o konfiguracji i wysyłać zebrane dane, w zależności od włączonego rozwiązania. .  Operations Manager agenci wysyłają dane do serwera zarządzania. Na przykład agenci mogą wysyłać alerty Operations Manager, dane oceny konfiguracji, dane przestrzeni wystąpienia oraz dane pojemności. Inne dane o dużej ilości danych, takie jak dzienniki Internet Information Services (IIS), dane wydajności i zdarzenia zabezpieczeń, są wysyłane bezpośrednio do bramy Log Analytics. 
 
-Jeśli jeden lub więcej serwerów bramę programu Operations Manager są wdrażane do monitorowania niezaufanych systemów w sieci obwodowej lub sieci izolowanej, te serwery nie mogą komunikować się z bramą usługi Log Analytics.  Serwery programu Operations Manager Gateway może zgłaszać tylko na serwerze zarządzania.  Gdy grupy zarządzania programu Operations Manager jest skonfigurowany do komunikowania się z bramą usługi Log Analytics, informacje o konfiguracji serwera proxy jest automatycznie przekazywana do każdego komputera zarządzanego przez agenta, który jest skonfigurowany do gromadzenia danych dziennika dla usługi Azure Monitor nawet jeśli ustawienie jest pusty.    
+Jeśli co najmniej jeden serwer bramy Operations Manager jest wdrożony w celu monitorowania niezaufanych systemów w sieci obwodowej lub izolowanej sieci, te serwery nie mogą komunikować się z bramą Log Analytics.  Serwery bramy Operations Manager mogą zgłosić tylko serwer zarządzania programu.  W przypadku skonfigurowania Operations Manager grupy zarządzania do komunikowania się z bramą Log Analytics informacje o konfiguracji serwera proxy są automatycznie dystrybuowane do każdego komputera zarządzanego przez agenta, który jest skonfigurowany do zbierania danych dziennika dla Azure Monitor, nawet jeśli ustawienie jest puste.
 
-Aby zapewnić wysoką dostępność bezpośrednio połączone lub grupy zarządzania operacjami, które komunikują się z obszarem roboczym usługi Log Analytics za pośrednictwem bramy, użyj równoważenia obciążenia sieciowego (NLB) do przekierowywania i dystrybuowanie ruchu między wieloma serwerami bramy. W ten sposób, jeśli jeden serwer bramy ulegnie awarii, ruch jest przekierowywany do innego węzła dostępności.  
+Aby zapewnić wysoką dostępność dla bezpośrednio połączonych lub grup zarządzania operacjami, które komunikują się z obszarem roboczym Log Analytics za pośrednictwem bramy, użyj funkcji równoważenia obciążenia sieciowego (NLB) do przekierowywania i dystrybucji ruchu między wieloma serwerami bramy. W ten sposób, jeśli jeden serwer bramy ulegnie awarii, ruch jest przekierowywany do innego dostępnego węzła.  
 
-Komputer z uruchomioną bramą usługi Log Analytics wymaga agenta Log Analytics Windows do identyfikacji punktów końcowych usługi, które musi komunikować się z bramą. Agenta należy również kierować bramy do raportowania do tego samego obszaru roboczego, agentów lub grupy zarządzania programu Operations Manager za bramą są skonfigurowane przy użyciu. Ta konfiguracja umożliwia bramy i agenta do komunikowania się z ich przypisanej obszaru roboczego.
+Komputer z uruchomioną bramą Log Analytics wymaga Log Analytics Windows Agent do zidentyfikowania punktów końcowych usługi, z którymi musi komunikować się brama. Agent musi również skierować bramę do raportowania do tych samych obszarów roboczych, do których są skonfigurowane agenci lub Operations Manager grupy zarządzania za bramą. Ta konfiguracja umożliwia bramie i agentowi komunikowanie się z przypisanym obszarem roboczym.
 
-Brama może być wieloadresowe, aby maksymalnie czterech obszarów roboczych. Jest to całkowita liczba obszarów roboczych, których Windows agent obsługuje.  
+Brama może być wieloadresowa do czterech obszarów roboczych. Jest to całkowita liczba obszarów roboczych obsługiwanych przez agenta systemu Windows.  
 
-Każdy agent muszą mieć łączność sieciową do bramy, dzięki czemu agenci automatycznie mogą przesyłać dane do i z bramy. Unikaj instalowania bramy na kontrolerze domeny.
+Każdy agent musi mieć łączność sieciową z bramą, aby agenci mogli automatycznie przesyłać dane do i z bramy. Należy unikać instalowania bramy na kontrolerze domeny.
 
-Na poniższym diagramie przedstawiono danych napływających z bezpośrednich agentów, za pośrednictwem bramy, aby usługa Azure Automation i Log Analytics. Konfiguracja serwera proxy agenta muszą być zgodne port, który skonfigurowano bramy usługi Log Analytics.  
+Na poniższym diagramie przedstawiono dane przepływające od agentów bezpośrednich za pośrednictwem bramy do Azure Automation i Log Analytics. Konfiguracja serwera proxy agenta musi być zgodna z portem, z którym jest skonfigurowana Brama Log Analytics.  
 
-![Diagram przedstawiający agent bezpośredni komunikacja z usługami](./media/gateway/oms-omsgateway-agentdirectconnect.png)
+![Diagram bezpośredniej komunikacji agenta z usługami](./media/gateway/oms-omsgateway-agentdirectconnect.png)
 
 Na poniższym diagramie przedstawiono przepływ danych z grupy zarządzania programu Operations Manager do usługi Log Analytics.   
 
-![Diagram przedstawiający komunikacji programu Operations Manager z usługą Log Analytics](./media/gateway/log-analytics-agent-opsmgrconnect.png)
+![Diagram komunikacji Operations Manager z Log Analytics](./media/gateway/log-analytics-agent-opsmgrconnect.png)
 
 ## <a name="set-up-your-system"></a>Konfigurowanie systemu
 
-Komputery wyznaczone do uruchamiania bramy usługi Log Analytics musi mieć następującą konfigurację:
+Komputery wyznaczeni do uruchomienia bramy Log Analytics muszą mieć następującą konfigurację:
 
-* System Windows 10, Windows 8.1 lub Windows 7
-* Systemu Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 lub systemu Windows Server 2008
+* Windows 10, Windows 8.1 lub Windows 7
+* Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 lub Windows Server 2008
 * Microsoft .NET Framework 4.5
-* Co najmniej 4-rdzeniową procesora i 8 GB pamięci 
-* A [agenta usługi Log Analytics dla Windows](agent-windows.md) skonfigurowany do raportowania do tego samego obszaru roboczego wraz z agentami, które komunikują się za pośrednictwem bramy
+* Co najmniej 4-rdzeniowy procesor i 8 GB pamięci 
+* [Agent log Analytics dla systemu Windows](agent-windows.md) , który jest skonfigurowany do raportowania w tym samym obszarze roboczym, co agenci, którzy komunikują się za pomocą bramy
 
 ### <a name="language-availability"></a>Dostępne wersje językowe
 
-Brama usługi Log Analytics jest dostępna w tych językach:
+Brama Log Analytics jest dostępna w następujących językach:
 
 - Chiński (uproszczony)
 - Chiński (tradycyjny)
@@ -93,224 +93,229 @@ Brama usługi Log Analytics jest dostępna w tych językach:
 - Hiszpański (międzynarodowy)
 
 ### <a name="supported-encryption-protocols"></a>Szyfrowanie obsługiwane protokoły
-Brama usługi Log Analytics obsługuje tylko zabezpieczeń TLS (Transport Layer) 1.0, 1.1 i 1.2.  Go nie obsługuje protokołu Secure Sockets Layer (SSL).  Aby zapewnić bezpieczeństwo danych przesyłanych do usługi Log Analytics, należy skonfigurować bramę do użycia w co najmniej protokołu TLS 1.2. Starsze wersje protokołu TLS lub SSL są zagrożone. Chociaż obecnie umożliwiają one zgodności z poprzednimi wersjami, należy unikać używania ich.  
+
+Brama Log Analytics obsługuje tylko Transport Layer Security (TLS) 1,0, 1,1 i 1,2.  Nie obsługuje SSL (SSL).  Aby zapewnić bezpieczeństwo danych podczas przesyłania do Log Analytics, skonfiguruj bramę do użycia co najmniej protokołu TLS 1,2. Starsze wersje protokołu TLS lub SSL są narażone na ataki. Chociaż obecnie dopuszczają zgodność z poprzednimi wersjami, unikaj ich używania.  
 
 Aby uzyskać dodatkowe informacje, przejrzyj [wysyłanie danych przy użyciu protokołu TLS 1.2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
 
 ### <a name="supported-number-of-agent-connections"></a>Obsługiwana liczba połączeń agenta
-W poniższej tabeli przedstawiono około liczby agentów może komunikować się z serwerem bramy. Obsługa opiera się na agentów przekazujących około 200 KB danych co 6 sekund. Dla każdego agenta, przetestowane ilość danych jest około 2.7 GB dziennie.
 
-|Brama |Agenci obsługiwani (w przybliżeniu)|  
+W poniższej tabeli przedstawiono około liczby agentów, które mogą komunikować się z serwerem bramy. Pomoc techniczna jest oparta na agentach, które przesyłają około 200 KB danych co 6 sekund. Dla każdego testowanego agenta ilość danych jest około 2,7 GB dziennie.
+
+|Brama |Obsługiwane agenci (przybliżony)|  
 |--------|----------------------------------|  
-|CPU: Intel Xeon procesora E5 2660 v3 \@ 2,6 GHz, 2 rdzenie<br> Pamięć: 4 GB<br> Przepustowość sieci: 1 Gb/s| 600|  
-|CPU: Intel Xeon procesora E5 2660 v3 \@ 2,6 GHz 4 rdzenie<br> Pamięć: 8 GB<br> Przepustowość sieci: 1 Gb/s| 1000|  
+|CPU: Procesor Intel Xeon E5-2660 v3 \@ 2,6 GHz 2 rdzenie<br> Pamięć: 4 GB<br> Przepustowość sieci: 1 Gb/s| 600|  
+|CPU: Procesor Intel Xeon E5-2660 v3 \@ 2,6 GHz 4 rdzenie<br> Pamięć: 8 GB<br> Przepustowość sieci: 1 Gb/s| 1000|  
 
 ## <a name="download-the-log-analytics-gateway"></a>Pobierz bramę usługi Log Analytics
 
-Pobierz najnowszą wersję pliku instalacyjnego bramy usługi Log Analytics z poziomu [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=54443) lub witrynie Azure portal.
+Pobierz najnowszą wersję pliku instalacyjnego bramy Log Analytics z [Centrum pobierania firmy Microsoft](https://www.microsoft.com/download/details.aspx?id=54443) lub Azure Portal.
 
-Aby uzyskać bramy usługi Log Analytics w witrynie Azure portal, wykonaj następujące kroki:
+Aby uzyskać bramę Log Analytics z Azure Portal, wykonaj następujące kroki:
 
 1. Przejrzyj listę usług, a następnie wybierz **usługi Log Analytics**. 
 1. Wybierz obszar roboczy.
-1. W bloku obszaru roboczego w obszarze **ogólne**, wybierz opcję **— Szybki Start**. 
-1. W obszarze **wybierz źródło danych do łączenia z obszarem roboczym**, wybierz opcję **komputerów**.
-1. W **Agent bezpośredni** bloku wybierz **pobierania usługi Log Analytics gateway**.
+1. W bloku obszaru roboczego w obszarze **Ogólne**wybierz pozycję **Szybki Start**. 
+1. W obszarze **Wybierz źródło danych, aby połączyć się z obszarem roboczym**wybierz pozycję **komputery**.
+1. W bloku **agenta bezpośredniego** wybierz pozycję **Pobierz log Analytics bramę**.
  
-   ![Zrzut ekranu kroki, aby pobrać bramę usługi Log Analytics](./media/gateway/download-gateway.png)
+   ![Zrzut ekranu przedstawiający kroki pobierania bramy Log Analytics](./media/gateway/download-gateway.png)
 
 lub 
 
-1. W bloku obszaru roboczego w obszarze **ustawienia**, wybierz opcję **Zaawansowane ustawienia**.
-1. Przejdź do **połączone źródła** > **serwerów Windows** i wybierz **pobierania usługi Log Analytics gateway**.
+1. W bloku obszaru roboczego w obszarze **Ustawienia**wybierz pozycję **Ustawienia zaawansowane**.
+1. Przejdź do pozycji **połączone źródła** > **serwery z systemem Windows** i wybierz pozycję **Pobierz log Analytics bramę**.
 
-## <a name="install-log-analytics-gateway-using-setup-wizard"></a>Instalowanie bramy usługi Log Analytics, za pomocą Kreatora instalacji
+## <a name="install-log-analytics-gateway-using-setup-wizard"></a>Zainstaluj bramę Log Analytics przy użyciu Kreatora instalacji
 
 Aby zainstalować bramę przy użyciu Kreatora instalacji, wykonaj następujące kroki. 
 
 1. Folder docelowy, kliknij dwukrotnie **gateway.msi usługi Log Analytics**.
 1. Na **stronie powitalnej** wybierz pozycję **Dalej**.
 
-   ![Zrzut ekranu powitalnej strony Kreatora instalacji bramy](./media/gateway/gateway-wizard01.png)
+   ![Zrzut ekranu przedstawiający stronę powitalną w Kreatorze instalacji bramy](./media/gateway/gateway-wizard01.png)
 
-1. Na **umowy licencyjnej** wybierz opcję **akceptuję warunki umowy licencyjnej** zgodę na postanowienia licencyjne dotyczące oprogramowania firmy Microsoft, a następnie wybierz pozycję **dalej**.
+1. Na stronie **Umowa licencyjna** zaznacz opcję **Akceptuję warunki umowy licencyjnej** , aby wyrazić zgodę na postanowienia licencyjne dotyczące oprogramowania firmy Microsoft, a następnie wybierz przycisk **dalej**.
 1. Na **portu i serwera proxy adres** strony:
 
-   a. Wprowadź numer portu TCP, który ma być używany dla bramy. Instalator używa tego numeru portu, aby skonfigurować regułę ruchu przychodzącego zapory Windows.  Wartość domyślna to 8080.
-      Prawidłowy zakres numer portu to od 1 do 65535. Jeśli dane wejściowe nie należy do tego zakresu, pojawi się komunikat o błędzie.
+   a. Wprowadź numer portu TCP, który ma być używany przez bramę. Instalator używa tego numeru portu w celu skonfigurowania reguły ruchu przychodzącego w zaporze systemu Windows.  Wartość domyślna to 8080.
+      Prawidłowy zakres numeru portu to od 1 do 65535. Jeśli dane wejściowe nie należy do tego zakresu, pojawi się komunikat o błędzie.
 
-   b. Jeśli serwer, na której zainstalowano bramę musi komunikować się za pośrednictwem serwera proxy, należy wprowadzić adres serwera proxy, gdy brama musi połączyć. Na przykład wprowadź wartość `http://myorgname.corp.contoso.com:80`.  Jeśli to pole pozostanie puste, brama podejmie próbę bezpośrednie połączenie z Internetem.  Jeśli Twój serwer proxy wymaga uwierzytelnienia, wprowadź nazwę użytkownika i hasło.
+   b. Jeśli serwer, na którym zainstalowano bramę, musi komunikować się za pomocą serwera proxy, wprowadź adres serwera proxy, pod którym Brama musi nawiązać połączenie. Na przykład wprowadź wartość `http://myorgname.corp.contoso.com:80`.  Jeśli to pole pozostanie puste, Brama będzie podejmować próby nawiązania bezpośredniego połączenia z Internetem.  Jeśli Twój serwer proxy wymaga uwierzytelnienia, wprowadź nazwę użytkownika i hasło.
 
    c. Wybierz opcję **Dalej**.
 
    ![Zrzut ekranu przedstawiający konfigurację serwera proxy bramy](./media/gateway/gateway-wizard02.png)
 
-1. Jeśli nie masz włączona usługa Microsoft Update, zostanie wyświetlona strona usługi Microsoft Update i można ją włączyć. Wybierz opcję, a następnie wybierz pozycję **dalej**. W przeciwnym razie przejdź do następnego kroku.
-1. Na **Folder docelowy** strony, pozostaw domyślny folder C:\Program Files\OMS bramy lub wprowadź lokalizację, w którym chcesz zainstalować bramę. Następnie wybierz przycisk **Dalej**.
-1. Na **gotowe do zainstalowania** wybierz opcję **zainstalować**. Jeśli Kontrola konta użytkownika żąda uprawnienia do instalacji, wybierz **tak**.
-1. Po zakończeniu działania Instalatora, wybierz **Zakończ**. Aby sprawdzić, czy usługa jest uruchomiona, otwórz przystawkę services.msc i sprawdź, czy **bramy pakietu OMS** pojawia się na liście usług i że jego stan to **systemem**.
+1. Jeśli nie masz włączonej Microsoft Update, zostanie wyświetlona strona Microsoft Update i będzie można ją włączyć. Wybierz pozycję, a następnie kliknij przycisk **dalej**. W przeciwnym razie przejdź do następnego kroku.
+1. Na stronie **folder docelowy** pozostaw folder domyślny C:\Program Files\OMS Gateway lub wprowadź lokalizację, w której chcesz zainstalować bramę. Następnie wybierz przycisk **Dalej**.
+1. Na stronie **gotowy do instalacji** wybierz pozycję **Zainstaluj**. Jeśli Kontrola konta użytkownika żąda uprawnień do instalacji, wybierz pozycję **tak**.
+1. Po zakończeniu instalacji wybierz pozycję **Zakończ**. Aby sprawdzić, czy usługa jest uruchomiona, Otwórz przystawkę Services. msc i sprawdź, czy **brama pakietu OMS** jest wyświetlana na liście usług i czy jej stan jest **uruchomiony**.
 
-   ![Zrzut ekranu przedstawiający usług lokalnych, pokazujący, że jest uruchomiona brama pakietu OMS](./media/gateway/gateway-service.png)
+   ![Zrzut ekranu usług lokalnych pokazujący, że brama pakietu OMS jest uruchomiona](./media/gateway/gateway-service.png)
 
-## <a name="install-the-log-analytics-gateway-using-the-command-line"></a>Instalowanie bramy usługi Log Analytics przy użyciu wiersza polecenia
-Pobrany plik bramy to pakiet Instalatora Windows, który obsługuje instalacji dyskretnej z wiersza polecenia lub inne zautomatyzowanej metody. Jeśli użytkownik nie jest zaznajomiony z opcjami standardowymi wiersza polecenia dla Instalatora Windows, zobacz [opcje wiersza polecenia](https://docs.microsoft.com/windows/desktop/Msi/command-line-options).   
-
-W poniższej tabeli wymieniono parametrów obsługiwanych przez Instalatora.
+## <a name="install-the-log-analytics-gateway-using-the-command-line"></a>Instalowanie bramy Log Analytics przy użyciu wiersza polecenia
+Pobrany plik dla bramy to pakiet Instalator Windows obsługujący instalację dyskretną z poziomu wiersza polecenia lub innej metody zautomatyzowanej. Jeśli nie znasz standardowych opcji wiersza polecenia dla Instalator Windows, zobacz [Opcje wiersza polecenia](https://docs.microsoft.com/windows/desktop/Msi/command-line-options).
+ 
+W poniższej tabeli przedstawiono parametry obsługiwane przez Instalatora.
 
 |Parametry| Uwagi|
 |----------|------| 
 |NUMER_PORTU | Numer portu TCP dla bramy do nasłuchiwania |
-|PROXY | Adres IP serwera proxy |
-|INSTALLDIR | Pełną ścieżkę, aby określić katalog instalacyjny plików oprogramowania bramy |
-|NAZWA UŻYTKOWNIKA | Identyfikator użytkownika do uwierzytelniania przy użyciu serwera proxy |
-|HASŁO | Hasło użytkownika, identyfikator do uwierzytelniania przy użyciu serwera proxy |
-|LicenseAccepted | Określ wartość **1** Aby sprawdzić, zaakceptuj umowę licencyjną |
-|HASAUTH | Określ wartość **1** gdy są określone parametry nazwy użytkownika i HASŁA |
-|HASPROXY | Określ wartość **1** podczas określania adresu IP dla **PROXY** parametru |
+|SERWERA PROXY | Adres IP serwera proxy |
+|INSTALLDIR | W pełni kwalifikowana ścieżka do określenia katalogu instalacyjnego plików oprogramowania bramy |
+|NAZWA UŻYTKOWNIKA | Identyfikator użytkownika do uwierzytelnienia na serwerze proxy |
+|HASŁO | Hasło identyfikatora użytkownika do uwierzytelniania przy użyciu serwera proxy |
+|LicenseAccepted | Określ wartość **1** , aby potwierdzić zaakceptowanie umowy licencyjnej |
+|HASAUTH | Określ wartość **1** , jeśli określono parametry nazwy użytkownika/hasła |
+|HASPROXY | Określ wartość **1** podczas określania adresu IP dla parametru **proxy** |
 
-Aby dyskretnie zainstalować bramę i skonfigurować go przy użyciu adresu serwera proxy przeznaczonego numeru portu, wpisz następujące polecenie:
+Aby zainstalować bramę w trybie dyskretnym i skonfigurować ją z określonym adresem serwera proxy, numer portu, wpisz następujące polecenie:
 
 ```dos
 Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200” HASPROXY=1 LicenseAccepted=1 
 ```
 
-Przy użyciu opcji wiersza polecenia /qn ukrywa Instalatora, /qb przedstawiono konfigurację podczas instalacji dyskretnej.  
+Użycie opcji wiersza polecenia/Qn powoduje ukrycie Instalatora,/QB pokazuje Instalatora podczas instalacji dyskretnej.  
 
-Jeśli musisz podać poświadczenia do uwierzytelniania z serwerem proxy, wpisz następujące polecenie:
+Jeśli musisz podać poświadczenia w celu uwierzytelnienia z serwerem proxy, wpisz następujące polecenie:
 
 ```dos
 Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200” HASPROXY=1 HASAUTH=1 USERNAME=”<username>” PASSWORD=”<password>” LicenseAccepted=1 
 ```
 
-Po zakończeniu instalacji możesz sprawdzić te ustawienia są akceptowane (bizonów nazwy użytkownika i hasła) przy użyciu następujących poleceń cmdlet programu PowerShell:
+Po zakończeniu instalacji można potwierdzić, że ustawienia są akceptowane (exlcuding nazwę użytkownika i hasło) przy użyciu następujących poleceń cmdlet programu PowerShell:
 
-- **Get-OMSGatewayConfig** — zwraca brama jest skonfigurowana do nasłuchiwania na porcie TCP.
-- **Get-OMSGatewayRelayProxy** — zwraca adres IP, który został skonfigurowany do komunikowania się z serwera proxy.
+- **Get-OMSGatewayConfig** — zwraca port TCP, na którym Brama jest skonfigurowana do nasłuchiwania.
+- **Get-OMSGatewayRelayProxy** — zwraca adres IP serwera proxy, który został skonfigurowany do komunikacji z usługą.
 
 ## <a name="configure-network-load-balancing"></a>Konfigurowanie równoważenia obciążenia sieciowego 
-Można skonfigurować bramy w celu zapewnienia wysokiej dostępności przy użyciu równoważenia obciążenia sieciowego (NLB) firmy Microsoft [obciążenia równoważenia sieciowego (NLB)](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing), [usługi Azure Load Balancer](../../load-balancer/load-balancer-overview.md), lub modułów równoważenia obciążenia oparte na sprzęcie. Moduł równoważenia obciążenia zarządza ruchem, przekierowując żądanego połączenia z agentów usługi Log Analytics lub serwerów zarządzania programu Operations Manager w jego węzłach. Jeśli jeden serwer bramy ulegnie awarii, ruch jest kierowany do innych węzłów.
+Bramę można skonfigurować pod kątem wysokiej dostępności przy użyciu funkcji równoważenia obciążenia sieciowego (NLB), korzystając z usługi równoważenia obciążenia sieciowego firmy Microsoft [(NLB)](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing), [Azure Load Balancer](../../load-balancer/load-balancer-overview.md)lub sprzętowych modułów równoważenia obciążenia. Moduł równoważenia obciążenia zarządza ruchem, przekierowując żądanego połączenia z agentów usługi Log Analytics lub serwerów zarządzania programu Operations Manager w jego węzłach. Jeśli jeden serwer bramy ulegnie awarii, ruch jest kierowany do innych węzłów.
 
 ### <a name="microsoft-network-load-balancing"></a>Równoważenie obciążenia sieciowego firmy Microsoft
-Aby dowiedzieć się, jak zaprojektować i wdrożyć klaster równoważenia obciążenia sieciowego systemu Windows Server 2016, zobacz [równoważenia obciążenia sieciowego](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing). Poniżej opisano sposób konfigurowania klastra równoważenia obciążenia sieciowego firmy Microsoft.  
+Aby dowiedzieć się, jak zaprojektować i wdrożyć klaster równoważenia obciążenia sieciowego systemu Windows Server 2016, zobacz [równoważenia obciążenia sieciowego](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing). Poniższe kroki opisują sposób konfigurowania klastra równoważenia obciążenia sieciowego firmy Microsoft.  
 
 1. Zaloguj się na serwerze Windows, który jest członkiem klastra równoważenia obciążenia Sieciowego przy użyciu konta administracyjnego.  
 2. Otwórz Menedżera równoważenia obciążenia sieciowego w Menedżerze serwera, kliknij pozycję **narzędzia**, a następnie kliknij przycisk **Menedżera równoważenia obciążenia sieciowego**.
 3. Aby połączyć się z serwerem bramy usługi Log Analytics z programu Microsoft Monitoring Agent zainstalowany, kliknij prawym przyciskiem myszy adres IP klastra, a następnie kliknij przycisk **Dodaj hosta do klastra**. 
 
-    ![Sieć obciążenia równoważenia Manager — Dodaj hosta do klastra](./media/gateway/nlb02.png)
+    ![Menedżer równoważenia obciążenia sieciowego — Dodawanie hosta do klastra](./media/gateway/nlb02.png)
  
 4. Wprowadź adres IP serwera bramy, który chcesz się połączyć. 
 
-    ![Sieć obciążenia równoważenia Manager — Dodaj hosta do klastra: Połączenie](./media/gateway/nlb03.png) 
+    ![Menedżer równoważenia obciążenia sieciowego — Dodaj hosta do klastra: Połącz](./media/gateway/nlb03.png) 
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
-Aby dowiedzieć się, jak zaprojektować i wdrożyć usługi Azure Load Balancer, zobacz [co to jest usługa Azure Load Balancer?](../../load-balancer/load-balancer-overview.md). Aby wdrożyć podstawowego modułu równoważenia obciążenia, wykonaj czynności opisane w tym [Szybki Start](../../load-balancer/quickstart-create-basic-load-balancer-portal.md) z wyłączeniem kroki opisane w sekcji **tworzenie serwerów zaplecza**.   
+Aby dowiedzieć się, jak projektować i wdrażać Azure Load Balancer, zobacz [co to jest Azure Load Balancer?](../../load-balancer/load-balancer-overview.md). Aby wdrożyć podstawowy moduł równoważenia obciążenia, wykonaj czynności opisane w tym [przewodniku szybki start](../../load-balancer/quickstart-create-basic-load-balancer-portal.md) , z wyjątkiem kroków opisanych w sekcji **Tworzenie serwerów zaplecza**.   
 
 > [!NOTE]
-> Konfigurowanie przy użyciu usługi Azure Load Balancer **podstawowej jednostki SKU**, wymaga się, że maszyny wirtualne platformy Azure należą do zestawu dostępności. Aby dowiedzieć się więcej o zestawach dostępności, zobacz [Zarządzanie dostępnością maszyn wirtualnych Windows na platformie Azure](../../virtual-machines/windows/manage-availability.md). Aby dodać istniejące maszyny wirtualne do zestawu dostępności, zobacz [zestawu usługi Azure Resource Manager zestawu dostępności maszyny Wirtualnej](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4).
+> Skonfigurowanie Azure Load Balancer przy użyciu **podstawowej jednostki SKU**wymaga, aby maszyny wirtualne platformy Azure należały do zestawu dostępności. Aby dowiedzieć się więcej na temat zestawów dostępności, zobacz [Zarządzanie dostępnością maszyn wirtualnych z systemem Windows na platformie Azure](../../virtual-machines/windows/manage-availability.md). Aby dodać istniejące maszyny wirtualne do zestawu dostępności, zapoznaj się z poleceniem [set Azure Resource Manager VM Availability Set](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4).
 > 
 
-Po utworzeniu modułu równoważenia obciążenia, pulę zaplecza musi zostać utworzona, która dystrybuuje ruch do jednego lub więcej serwerów bramy. Wykonaj kroki opisane w sekcji artykułu szybkiego startu [tworzenie zasobów modułu równoważenia obciążenia](../../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-resources-for-the-load-balancer).  
+Po utworzeniu modułu równoważenia obciążenia należy utworzyć pulę zaplecza, która dystrybuuje ruch do jednego lub większej liczby serwerów bramy. Wykonaj kroki opisane w sekcji artykuł szybkiego startu [Tworzenie zasobów dla modułu równoważenia obciążenia](../../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-resources-for-the-load-balancer).  
 
 >[!NOTE]
->Podczas konfigurowania sondę kondycji, powinien on zostać skonfigurowany do korzystania z portu protokołu TCP serwera bramy. Sonda kondycji dynamicznie dodaje lub usuwa serwery bramy z rotacji modułu równoważenia obciążenia na podstawie ich odpowiedzi na kontrole kondycji. 
+>Podczas konfigurowania sondy kondycji należy ją skonfigurować tak, aby korzystała z portu TCP serwera bramy. Sonda kondycji dynamicznie dodaje lub usuwa serwery bramy z rotacji modułu równoważenia obciążenia na podstawie ich odpowiedzi na testy kondycji. 
 >
 
-## <a name="configure-the-log-analytics-agent-and-operations-manager-management-group"></a>Konfigurowanie agenta usługi Log Analytics i grupa zarządzania programu Operations Manager
-W tej sekcji pokazano, jak skonfigurować bezpośrednio połączonych agentów usługi Log Analytics, grupy zarządzania programu Operations Manager lub usługi Azure Automation hybrydowych — procesów roboczych Runbook z bramą usługi Log Analytics do komunikowania się z usługi Azure Automation i Log Analytics.  
+## <a name="configure-the-log-analytics-agent-and-operations-manager-management-group"></a>Konfigurowanie agenta Log Analytics i grupy zarządzania Operations Manager
+W tej sekcji zobaczysz, jak skonfigurować bezpośrednio połączone Log Analytics agentów, Operations Manager grupę zarządzania lub Azure Automation hybrydowych procesów roboczych elementów Runbook z bramą Log Analytics do komunikowania się z Azure Automation lub Log Analytics.  
 
-### <a name="configure-a-standalone-log-analytics-agent"></a>Konfigurowanie agenta usługi Log Analytics autonomiczny
-Podczas konfigurowania agenta usługi Log Analytics, Zamień adres IP serwera bramy programu Log Analytics i jego numer portu wartość serwera proxy. Jeśli wdrożono wiele serwerów bramy za modułem równoważenia obciążenia w konfiguracji serwera proxy agenta usługi Log Analytics jest wirtualny adres IP modułu równoważenia obciążenia.  
+### <a name="configure-a-standalone-log-analytics-agent"></a>Konfigurowanie autonomicznego agenta Log Analytics
+Podczas konfigurowania agenta Log Analytics należy zamienić wartość serwera proxy na adres IP serwera bramy Log Analytics i numer portu. Jeśli wdrożono wiele serwerów bramy za modułem równoważenia obciążenia, konfiguracja serwera proxy agenta Log Analytics jest wirtualnym adresem IP modułu równoważenia obciążenia.  
 
 >[!NOTE]
->Aby zainstalować agenta usługi Log Analytics na komputerach Windows, które łączyć się bezpośrednio do usługi Log Analytics i bramy, zobacz [Windows łączenie komputerów do usługi Log Analytics na platformie Azure](agent-windows.md). Aby połączyć komputery z systemem Linux, zobacz [konfigurowania agenta usługi Log Analytics dla komputerów z systemem Linux w środowisku hybrydowym](../../azure-monitor/learn/quick-collect-linux-computer.md). 
+>Aby zainstalować agenta Log Analytics na komputerach bramy i systemu Windows, które bezpośrednio łączą się z Log Analytics, zobacz [łączenie komputerów z systemem Windows z usługą log Analytics na platformie Azure](agent-windows.md). Aby połączyć komputery z systemem Linux, zobacz [Konfigurowanie agenta log Analytics dla komputerów z systemem Linux w środowisku hybrydowym](../../azure-monitor/learn/quick-collect-linux-computer.md). 
 >
 
-Po zainstalowaniu agenta na serwerze bramy, należy skonfigurować go do obszaru roboczego lub agenci obszaru roboczego, które komunikują się z bramą. Jeśli nie zainstalowano agenta programu Windows Analytics dziennika w bramie, 300 jest zapisanie w dzienniku zdarzeń bramy pakietu OMS, wskazujący, że agent musi być zainstalowany. Jeśli agent jest zainstalowany, ale nie jest skonfigurowany do raportowania do tego samego obszaru roboczego wraz z agentami, które komunikują się przy jego użyciu, zdarzeń 105 są zapisywane do tego samego dziennika, wskazujący, że agent w bramie musi zostać skonfigurowany do raportowania do tego samego obszaru roboczego wraz z agentami, tego co mmunicate z bramą.
+Po zainstalowaniu agenta na serwerze bramy skonfiguruj go w celu raportowania do obszaru roboczego lub agentów obszaru roboczego, które komunikują się z bramą. Jeśli Log Analytics Agent systemu Windows nie jest zainstalowany w bramie, zdarzenie 300 jest zapisywane w dzienniku zdarzeń bramy pakietu OMS, wskazując, że należy zainstalować agenta. Jeśli Agent jest zainstalowany, ale nie został skonfigurowany do raportowania w tym samym obszarze roboczym co agenci, którzy komunikują się z nim, zdarzenie 105 jest zapisywane w tym samym dzienniku, co wskazuje, że Agent na bramie musi być skonfigurowany do raportowania do tego samego obszaru roboczego co agenci mmunicate z bramą.
 
-Po wykonaniu konfiguracji, uruchom ponownie usługę bramy pakietu OMS, aby zastosować zmiany. W przeciwnym razie bramy spowoduje odrzucenie agentów, którzy próby komunikacji z usługą Log Analytics i zgłasza zdarzenie 105 w dzienniku zdarzeń bramy pakietu OMS. Nastąpi to również podczas dodawania lub usunąć obszar roboczy z konfiguracji agenta na serwerze bramy.   
+Po zakończeniu konfiguracji należy ponownie uruchomić usługę bramy OMS, aby zastosować zmiany. W przeciwnym razie Brama odrzuci agentów próbujących komunikować się z usługą Log Analytics i zgłosi zdarzenie 105 w dzienniku zdarzeń bramy pakietu OMS. Taka sytuacja występuje również po dodaniu lub usunięciu obszaru roboczego z konfiguracji agenta na serwerze bramy.   
 
-Aby uzyskać informacje dotyczące automatyzacji hybrydowego procesu roboczego Runbook, zobacz [Automatyzuj zasobów w centrum danych lub w chmurze przy użyciu hybrydowego procesu roboczego Runbook](../../automation/automation-hybrid-runbook-worker.md).
+Informacje dotyczące hybrydowego procesu roboczego elementu Runbook usługi Automation można znaleźć [w temacie Automatyzowanie zasobów w centrum danych lub w chmurze przy użyciu hybrydowego procesu roboczego elementu Runbook](../../automation/automation-hybrid-runbook-worker.md).
 
-### <a name="configure-operations-manager-where-all-agents-use-the-same-proxy-server"></a>Skonfigurować program Operations Manager, w którym wszyscy agenci korzystać z tego samego serwera proxy
-Konfiguracja serwera proxy programu Operations Manager jest automatycznie stosowany do wszystkich agentów, którzy raportują do programu Operations Manager, nawet jeśli ustawienie jest pusty.  
+### <a name="configure-operations-manager-where-all-agents-use-the-same-proxy-server"></a>Skonfiguruj Operations Manager, gdzie wszyscy agenci używają tego samego serwera proxy
 
-Aby użyć bramy pakietu OMS do obsługi programu Operations Manager, musisz mieć:
+Operations Manager konfiguracja serwera proxy jest automatycznie stosowana do wszystkich agentów, które zgłaszają Operations Manager, nawet jeśli ustawienie jest puste.  
 
-* Program Microsoft Monitoring Agent (wersja 8.0.10900.0 lub nowszej) zainstalowane na serwerze bramy pakietu OMS i z tego samego obszarów roboczych usługi Log Analytics, że grupy zarządzania jest skonfigurowany do raportu, aby.
-* Łączność z Internetem. Alternatywnie bramy pakietu OMS należy połączyć serwer proxy, który jest połączony z Internetem.
+Aby móc obsługiwać Operations Manager przy użyciu bramy pakietu OMS, musisz dysponować:
+
+* Microsoft Monitoring Agent (wersja 8.0.10900.0 lub nowsza) zainstalowana na serwerze bramy OMS i skonfigurowana za pomocą tych samych Log Analytics obszarów roboczych, do których jest skonfigurowana Grupa zarządzania.
+* Łączność z Internetem. Alternatywnie Brama pakietu OMS musi być podłączona do serwera proxy, który jest połączony z Internetem.
 
 > [!NOTE]
-> Jeśli nie określisz żadnej wartości dla bramy, wartości puste są wypychane do wszystkich agentów.
+> Jeśli nie określisz żadnej wartości dla bramy, puste wartości są przekazywane do wszystkich agentów.
 >
 
-Jeśli rejestruje grupę zarządzania programu Operations Manager z obszarem roboczym usługi Log Analytics po raz pierwszy, nie zobaczysz opcję, aby określić konfigurację serwera proxy dla grupy zarządzania w konsoli operacje. Ta opcja jest dostępna tylko w przypadku grupy zarządzania został zarejestrowany w usłudze.  
+Jeśli Operations Manager grupy zarządzania jest rejestrowany przy pierwszej Log Analytics obszarze roboczym, nie zobaczysz opcji, aby określić konfigurację serwera proxy dla grupy zarządzania w konsoli operacje. Ta opcja jest dostępna tylko wtedy, gdy grupa zarządzania została zarejestrowana w usłudze.  
 
-Aby skonfigurować integrację, należy zaktualizować system konfiguracji serwera proxy przy użyciu polecenia Netsh w systemie, w którym pracujesz w konsoli operacje, jak i na wszystkich serwerach zarządzania w grupie zarządzania. Wykonaj następujące kroki:
+Aby skonfigurować integrację, zaktualizuj konfigurację serwera proxy systemu przy użyciu narzędzia Netsh w systemie, w którym uruchomiono konsolę operacje, oraz na wszystkich serwerach zarządzania w grupie zarządzania. Wykonaj następujące kroki:
 
 1. Otwórz wiersz polecenia z podwyższonym poziomem uprawnień:
 
-   a. Wybierz **Start** i wprowadź **cmd**.  
+   a. Wybierz pozycję **Start** i wpisz **cmd**.  
 
-   b. Kliknij prawym przyciskiem myszy **polecenia** i wybierz **Uruchom jako administrator**.  
+   b. Kliknij prawym przyciskiem myszy **wiersz polecenia** i wybierz polecenie **Uruchom jako administrator**.  
 
 1. Wprowadź następujące polecenie:
 
    `netsh winhttp set proxy <proxy>:<port>`
 
-Po ukończeniu integracji z usługą Log Analytics, należy usunąć zmiany, uruchamiając `netsh winhttp reset proxy`. Następnie w konsoli operacje, należy użyć **skonfiguruj poświadczenia serwera proxy** opcję, aby określić serwer bramy usługi Log Analytics. 
+Po zakończeniu integracji z Log Analytics Usuń zmiany, uruchamiając `netsh winhttp reset proxy`polecenie. Następnie w konsoli operacje Użyj opcji **Konfiguruj serwer proxy** , aby określić serwer bramy log Analytics. 
 
-1. W konsoli programu Operations Manager w obszarze **pakietu Operations Management Suite**, wybierz opcję **połączenia**, a następnie wybierz pozycję **Konfiguruj serwer Proxy**.
+1. W konsoli Operations Manager w obszarze **Pakiet Operations Management Suite**wybierz pozycję **połączenie**, a następnie wybierz pozycję **Konfiguruj serwer proxy**.
 
-   ![Zrzut ekranu programu Operations Manager, przedstawiający wybór skonfiguruj poświadczenia serwera Proxy](./media/gateway/scom01.png)
+   ![Zrzut ekranu przedstawiający Operations Manager, pokazując wybór opcji Konfiguruj serwer proxy](./media/gateway/scom01.png)
 
-1. Wybierz **Użyj serwera proxy do dostępu do pakietu Operations Management Suite** , a następnie wprowadź adres IP serwera bramy programu Log Analytics lub wirtualny adres IP modułu równoważenia obciążenia. Uważaj rozpoczynają się prefiksem `http://`.
+1. Wybierz opcję **Użyj serwera proxy, aby uzyskać dostęp do pakietu Operations Management Suite** , a następnie wprowadź adres IP serwera bramy log Analytics lub wirtualnego adresu IP modułu równoważenia obciążenia. Ostrożnie Rozpocznij od prefiksu `http://`.
 
-   ![Zrzut ekranu programu Operations Manager, przedstawiający adres serwera proxy](./media/gateway/scom02.png)
+   ![Zrzut ekranu przedstawiający Operations Manager, pokazujący adres serwera proxy](./media/gateway/scom02.png)
 
 1. Wybierz pozycję **Finish** (Zakończ). Grupa zarządzania programu Operations Manager został skonfigurowany do komunikowania się za pośrednictwem serwera bramy do usługi Log Analytics.
 
-### <a name="configure-operations-manager-where-specific-agents-use-a-proxy-server"></a>Skonfigurować program Operations Manager, gdzie określone agentów, Użyj serwera proxy
-W przypadku dużych lub złożonych środowisk można tylko określonych serwerów (lub grupy) do używania serwera bramy programu Log Analytics.  Na tych serwerach nie można zaktualizować agenta programu Operations Manager bezpośrednio, ponieważ ta wartość jest zastępowany przez wartość globalny dla grupy zarządzania.  Zamiast tego należy zastąpić regułę używaną do wypychania tych wartości.  
+### <a name="configure-operations-manager-where-specific-agents-use-a-proxy-server"></a>Konfigurowanie Operations Manager, gdzie określeni agenci używają serwera proxy
+
+W przypadku dużych lub złożonych środowisk można chcieć używać tylko określonych serwerów (lub grup) do korzystania z serwera bramy Log Analytics.  W przypadku tych serwerów nie można zaktualizować agenta Operations Manager bezpośrednio, ponieważ ta wartość jest zastępowana przez wartość globalną grupy zarządzania.  Zamiast tego należy zastąpić regułę użytą do wypchnięcia tych wartości.  
 
 > [!NOTE] 
-> Użyj tej techniki konfiguracji, jeśli chcesz zezwolić na wiele serwerów bramy usługi Log Analytics w danym środowisku.  Na przykład można wymagać określonych serwerów bramy usługi Log Analytics, należy określić na podstawie regionalnej.
+> Użyj tej techniki konfiguracji, jeśli chcesz zezwolić na wiele serwerów bramy Log Analytics w danym środowisku.  Można na przykład wymagać określenia określonych serwerów bramy Log Analytics w zależności od regionu.
 >
 
-Aby skonfigurować konkretnych serwerów lub grupy, aby użyć serwera bramy programu Log Analytics: 
+Aby skonfigurować określone serwery lub grupy do korzystania z serwera bramy Log Analytics: 
 
 1. Otwórz konsolę programu Operations Manager i wybierz **tworzenie** obszaru roboczego.  
-1. W obszarze roboczym tworzenie wybierz **reguły**. 
-1. Na pasku narzędzi programu Operations Manager wybierz **zakres** przycisku. Jeśli ten przycisk jest niedostępny, upewnij się, po wybraniu obiektu, nie folder w **monitorowanie** okienka. **Zakres obiektów pakietu administracyjnego** okno dialogowe wyświetla listę typowych klas docelowych, grup lub obiektów. 
-1. W **poszukaj** wprowadź **usługa kondycji** i wybierz ją z listy. Kliknij przycisk **OK**.  
-1. Wyszukaj **reguła ustawienia serwera Proxy usługi Advisor**. 
-1. Na pasku narzędzi programu Operations Manager wybierz **zastępuje** i wskaż **zastąpienia Rule\For konkretnego obiektu klasy: Usługa kondycji** i wybierz obiekt z listy.  Lub Utwórz niestandardową grupę, która zawiera obiekt usługi kondycji serwerów, które chcesz zastosować przesłonięcia w celu. Następnie można zastosować przesłonięcia do grupy niestandardowej.
-1. W **właściwości zastąpienia** okna dialogowego Dodaj znacznik wyboru w **zastąpienia** obok kolumny **WebProxyAddress** parametru.  W **wartość zastąpienia** wprowadź adres URL serwera bramy usługi Log Analytics. Uważaj rozpoczynają się prefiksem `http://`.  
+1. W obszarze roboczym Tworzenie wybierz pozycję **reguły**. 
+1. Na pasku narzędzi Operations Manager wybierz przycisk **zakres** . Jeśli ten przycisk jest niedostępny, upewnij się, że w okienku **monitorowanie** został wybrany obiekt, a nie folder. **Zakres obiektów pakietu administracyjnego** okno dialogowe wyświetla listę typowych klas docelowych, grup lub obiektów. 
+1. W polu **Wyszukaj** wpisz **Usługa kondycji** i wybierz go z listy. Kliknij przycisk **OK**.  
+1. Wyszukaj **regułę ustawień serwera proxy usługi Advisor**. 
+1. Na pasku narzędzi Operations Manager wybierz pozycję **zastąpienia** , a następnie wskaż **pozycję Przesłoń Rule\For określony obiekt klasy: Usługa kondycji** i wybierz obiekt z listy.  Lub Utwórz grupę niestandardową zawierającą obiekt usługi kondycji serwerów, do których chcesz zastosować to zastąpienie. Następnie Zastosuj zastąpienie do grupy niestandardowej.
+1. W oknie dialogowym **Właściwości** przesłonięcia Dodaj znacznik wyboru w kolumnie Przesłoń obok parametru **WebProxyAddress** .  W polu **wartość zastąpienia** wprowadź adres URL serwera bramy log Analytics. Ostrożnie Rozpocznij od prefiksu `http://`.  
 
     >[!NOTE]
-    > Nie potrzebujesz włączyć zasadę. On już zarządzane automatycznie za pomocą zastąpienia w pakiecie administracyjnym programu Microsoft Center Advisor bezpiecznego odwołania zastąpienie systemowe przeznaczonego Microsoft grupy System Center Advisor Monitoring Server.
+    > Nie musisz włączać reguły. Jest już ona zarządzana automatycznie przy użyciu zastąpienia w pakiecie administracyjnym "Zastąp" programu Microsoft System Center Advisor, który jest przeznaczony dla grupy programu Microsoft System Center Advisor Monitoring Server.
     > 
 
-1. Wybierz pakiet administracyjny z **wybierz docelowy pakiet administracyjny** listy lub Utwórz nowy niezapieczętowany pakiet administracyjny, wybierając **New**. 
+1. Wybierz pakiet administracyjny z listy **Wybierz docelowy pakiet administracyjny** lub Utwórz nowy niezapieczętowany pakiet administracyjny, wybierając pozycję **Nowy**. 
 1. Po zakończeniu wybierz pozycję **OK**. 
 
-### <a name="configure-for-automation-hybrid-runbook-workers"></a>Konfigurowanie dla usługi Automation hybrydowych procesów roboczych Runbook
-W przypadku usługi Automation hybrydowych procesów roboczych Runbook w środowisku, wykonaj te kroki ręczne, tymczasowego obejścia, aby skonfigurować bramę pakietu OMS do obsługi pracowników.
+### <a name="configure-for-automation-hybrid-runbook-workers"></a>Konfigurowanie dla hybrydowych procesów roboczych elementów Runbook usługi Automation
 
-Aby wykonać kroki opisane w tej sekcji, musisz wiedzieć region platformy Azure, w której znajduje się konto usługi Automation. Aby znaleźć tej lokalizacji:
+Jeśli w środowisku znajdują się hybrydowe procesy robocze elementów Runbook usługi Automation, wykonaj następujące kroki ręcznego, tymczasowego obejścia, aby skonfigurować bramę pakietu OMS do obsługi procesów roboczych.
+
+Aby wykonać kroki opisane w tej sekcji, musisz znać region świadczenia usługi Azure, w którym znajduje się konto usługi Automation. Aby znaleźć tę lokalizację:
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 1. Wybierz usługę Azure Automation.
 1. Wybierz odpowiednie konto usługi Azure Automation.
 1. Wyświetl regionie na podstawie **lokalizacji**.
 
-   ![Zrzut ekranu przedstawiający Lokalizacja konta usługi Automation w witrynie Azure portal](./media/gateway/location.png)
+   ![Zrzut ekranu lokalizacji konta usługi Automation w Azure Portal](./media/gateway/location.png)
 
-Użyj następujących tabel, aby ustalić adres URL dla każdej lokalizacji.
+Użyj poniższych tabel, aby zidentyfikować adres URL dla każdej lokalizacji.
 
-**Adresy URL usługi danych czasu wykonywania zadania**
+**Adresy URL usługi danych środowiska uruchomieniowego zadań**
 
-| **Lokalizacja** | **Adres URL** |
+| **Location** | **Adres URL** |
 | --- | --- |
 | Środkowo-północne stany USA |ncus-jobruntimedata-prod-su1.azure-automation.net |
 | Europa Zachodnia |we-jobruntimedata-prod-su1.azure-automation.net |
@@ -325,7 +330,7 @@ Użyj następujących tabel, aby ustalić adres URL dla każdej lokalizacji.
 
 **Adresy URL usługi agenta**
 
-| **Lokalizacja** | **Adres URL** |
+| **Location** | **Adres URL** |
 | --- | --- |
 | Środkowo-północne stany USA |ncus-agentservice-prod-1.azure-automation.net |
 | Europa Zachodnia |we-agentservice-prod-1.azure-automation.net |
@@ -338,12 +343,12 @@ Użyj następujących tabel, aby ustalić adres URL dla każdej lokalizacji.
 | Japonia |jpe-agentservice-prod-1.azure-automation.net |
 | Australia |ase-agentservice-prod-1.azure-automation.net |
 
-Jeśli komputer jest zarejestrowany jako hybrydowy proces roboczy elementu Runbook automatycznie, należy użyć rozwiązania do zarządzania aktualizacjami do zarządzania poprawki. Wykonaj następujące kroki:
+Jeśli komputer jest automatycznie zarejestrowany w hybrydowym procesie roboczym elementu Runbook, użyj rozwiązania Update Management do zarządzania poprawką. Wykonaj następujące kroki:
 
 1. Dodaj adresy URL usługi danych czasu wykonywania zadania do listy dozwolone hosta w bramie usługi Log Analytics. Na przykład: `Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
 1. Uruchom ponownie usługę bramy usługi Log Analytics, za pomocą następującego polecenia cmdlet programu PowerShell: `Restart-Service OMSGatewayService`
 
-Jeśli komputer jest przyłączony do usługi Azure Automation za pomocą polecenia cmdlet rejestracji hybrydowego procesu roboczego Runbook, wykonaj następujące kroki:
+Jeśli komputer jest przyłączony do Azure Automation przy użyciu polecenia cmdlet hybrydowego rejestrowania procesu roboczego elementu Runbook, wykonaj następujące czynności:
 
 1. Adres URL rejestracji usługi agenta należy dodać do listy dozwolone hosta w bramie usługi Log Analytics. Na przykład: `Add-OMSGatewayAllowedHost ncus-agentservice-prod-1.azure-automation.net`
 1. Dodaj adresy URL usługi danych czasu wykonywania zadania do listy dozwolone hosta w bramie usługi Log Analytics. Na przykład: `Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
@@ -351,15 +356,16 @@ Jeśli komputer jest przyłączony do usługi Azure Automation za pomocą polece
     `Restart-Service OMSGatewayService`
 
 ## <a name="useful-powershell-cmdlets"></a>Przydatne poleceń cmdlet programu PowerShell
-Można użyć poleceń cmdlet w celu wykonania zadań, aby zaktualizować ustawienia konfiguracji bramy usługi Log Analytics. Przed użyciem polecenia cmdlet, należy koniecznie:
 
-1. Zainstaluj bramę usługi Log Analytics (Instalator systemu Microsoft Windows).
+Za pomocą poleceń cmdlet można wykonać zadania w celu zaktualizowania ustawień konfiguracji bramy Log Analytics. Przed użyciem poleceń cmdlet programu należy się upewnić, że:
+
+1. Zainstaluj bramę Log Analytics (Microsoft Instalator Windows).
 1. Otwórz okno konsoli programu PowerShell.
-1. Zaimportuj moduł, wpisując polecenie: `Import-Module OMSGateway`
+1. Zaimportuj moduł, wpisując następujące polecenie:`Import-Module OMSGateway`
 1. Jeśli żaden błąd nie wystąpił w poprzednim kroku, moduł został pomyślnie zaimportowany i używać poleceń cmdlet. Wprowadź wartość `Get-Module OMSGateway`
-1. Wprowadź zmiany przy użyciu polecenia cmdlet, uruchom ponownie usługę bramy pakietu OMS.
+1. Po użyciu poleceń cmdlet, aby wprowadzić zmiany, uruchom ponownie usługę bramy OMS.
 
-Błąd w kroku 3 oznacza, że moduł nie został zaimportowany. Ten błąd może wystąpić, gdy programu PowerShell nie można odnaleźć modułu. Moduł znajduje się w ścieżce instalacji bramy pakietu OMS: *C:\Program Files\Microsoft OMS Gateway\PowerShell\OmsGateway*.
+Błąd w kroku 3 oznacza, że moduł nie został zaimportowany. Ten błąd może wystąpić, gdy program PowerShell nie może odnaleźć modułu. Moduł można znaleźć w ścieżce instalacji usługi OMS Gateway: *C:\Program Files\Microsoft OMS Gateway\PowerShell\OmsGateway*.
 
 | **Polecenia cmdlet** | **Parametry** | **Opis** | **Przykład** |
 | --- | --- | --- | --- |  
@@ -367,41 +373,42 @@ Błąd w kroku 3 oznacza, że moduł nie został zaimportowany. Ten błąd może
 | `Set-OMSGatewayConfig` |Klucz (wymagane) <br> Wartość |Umożliwia zmianę konfiguracji usługi |`Set-OMSGatewayConfig -Name ListenPort -Value 8080` |  
 | `Get-OMSGatewayRelayProxy` | |Pobiera adres serwera proxy (nadrzędnego) przekazywania |`Get-OMSGatewayRelayProxy` |  
 | `Set-OMSGatewayRelayProxy` |Adres<br> Nazwa użytkownika<br> Hasło |Ustawia adres (i poświadczeń) przekazywania (nadrzędnego) serwera proxy |1. Ustaw serwer proxy usługi relay i poświadczenia:<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2. Ustaw serwer proxy usługi relay, która nie wymaga uwierzytelniania: `Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3. Wyczyść ustawienia serwera proxy usługi relay:<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
-| `Get-OMSGatewayAllowedHost` | |Pobiera obecnie dozwolone hosta (tylko lokalnie skonfigurowanych hosta dozwolone, nie są automatycznie pobierane dozwolone hostów) |`Get-OMSGatewayAllowedHost` | 
+| `Get-OMSGatewayAllowedHost` | |Pobiera aktualnie dozwolony Host (tylko lokalnie skonfigurowany dozwolony host, nie pobiera automatycznie dozwolonych hostów) |`Get-OMSGatewayAllowedHost` | 
 | `Add-OMSGatewayAllowedHost` |Hosta (wymagane) |Dodanie hosta do listy dozwolonych |`Add-OMSGatewayAllowedHost -Host www.test.com` |  
 | `Remove-OMSGatewayAllowedHost` |Hosta (wymagane) |Usuwa hosta z listy dozwolonych |`Remove-OMSGatewayAllowedHost`<br> `-Host www.test.com` |  
 | `Add-OMSGatewayAllowedClientCertificate` |Temat (wymagane) |Dodaje certyfikat klienta z zastrzeżeniem listy dozwolonych |`Add-OMSGatewayAllowed`<br>`ClientCertificate` <br> `-Subject mycert` |  
 | `Remove-OMSGatewayAllowedClientCertificate` |Temat (wymagane) |Usuwa podmiot certyfikatu klienta z białej listy |`Remove-OMSGatewayAllowed` <br> `ClientCertificate` <br> `-Subject mycert` |  
-| `Get-OMSGatewayAllowedClientCertificate` | |Pobiera obecnie dozwolone klienta podmiotom certyfikatów (tylko lokalnie skonfigurowanych tematów dozwolone, nie są automatycznie pobierane dozwolone przedmioty) |`Get-`<br>`OMSGatewayAllowed`<br>`ClientCertificate` |  
+| `Get-OMSGatewayAllowedClientCertificate` | |Pobiera aktualnie dozwolonych podmiotów certyfikatów klienta (tylko lokalnie skonfigurowany dozwolony podmiot, nie pobiera automatycznie pobranych przedmiotów) |`Get-`<br>`OMSGatewayAllowed`<br>`ClientCertificate` |  
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
-Aby zbierać zdarzenia zarejestrowane przez bramę, należy mieć zainstalowany agent usługi Log Analytics.
 
-![Zrzut ekranu przedstawiający listę Podglądu zdarzeń w dzienniku bramy usługi Log Analytics](./media/gateway/event-viewer.png)
+Aby zbierać zdarzenia zarejestrowane przez bramę, należy zainstalować agenta Log Analytics.
 
-### <a name="log-analytics-gateway-event-ids-and-descriptions"></a>Identyfikatory zdarzeń bramy log Analytics i opisów
+![Zrzut ekranu przedstawiający listę Podgląd zdarzeń w dzienniku bramy Log Analytics](./media/gateway/event-viewer.png)
 
-W poniższej tabeli przedstawiono identyfikatorów zdarzeń i opisów dla zdarzenia dziennika bramy usługi Log Analytics.
+### <a name="log-analytics-gateway-event-ids-and-descriptions"></a>Identyfikatory i opisy zdarzeń bramy Log Analytics
+
+W poniższej tabeli przedstawiono identyfikatory i opisy zdarzeń dotyczących zdarzeń dziennika bramy Log Analytics.
 
 | **Identyfikator** | **Opis** |
 | --- | --- |
-| 400 |Wszystkie błędu aplikacji, który ma nie określonych identyfikator. |
-| 401 |Niewłaściwej konfiguracji. Na przykład listenPort = "text", a nie liczbą całkowitą. |
-| 402 |Wyjątek podczas analizowania komunikatów uzgadniania TLS. |
-| 403 |Błąd sieci. Na przykład nie można połączyć z serwerem docelowym. |
+| 400 |Dowolny błąd aplikacji, który nie ma określonego identyfikatora. |
+| 401 |Niewłaściwej konfiguracji. Na przykład, listenPort = "text" zamiast liczby całkowitej. |
+| 402 |Wyjątek podczas analizowania komunikatów uzgadniania protokołu TLS. |
+| 403 |Błąd sieci. Na przykład nie można nawiązać połączenia z serwerem docelowym. |
 | 100 |Informacje ogólne. |
 | 101 |Usługa została uruchomiona. |
 | 102 |Usługa została zatrzymana. |
-| 103 |To polecenie połączenia protokołu HTTP została odebrana od klienta. |
-| 104 |Nie połączenia HTTP polecenia. |
-| 105 |Serwer docelowy nie ma na liście dozwolonych lub port docelowy nie jest bezpieczne (443). <br> <br> Upewnij się, że na serwerze bramy pakietu OMS agent MMA i agentów, które komunikują się za pomocą bramy pakietu OMS są podłączone do tego samego obszaru roboczego usługi Log Analytics. |
-| 105 |Błąd TcpConnection — nieprawidłowy certyfikat klienta: CN=Gateway. <br><br> Upewnij się, że używasz bramy pakietu OMS wersji 1.0.395.0 lub nowszej. Upewnij się również, że na serwerze bramy pakietu OMS agent MMA i agentów podczas komunikowania się z bramą pakietu OMS są podłączone do tego samego obszaru roboczego usługi Log Analytics. |
-| 106 |Nieobsługiwana wersja protokołu TLS/SSL.<br><br> Brama usługi Log Analytics obsługuje tylko protokół TLS 1.0, TLS 1.1 i 1.2. Nie obsługuje protokołu SSL.|
-| 107 |Zweryfikowano sesji TLS. |
+| 103 |Odebrano polecenie HTTP CONNECT od klienta. |
+| 104 |To nie jest polecenie HTTP CONNECT. |
+| 105 |Serwer docelowy nie znajduje się na liście dozwolonych lub port docelowy nie jest bezpieczny (443). <br> <br> Upewnij się, że Agent MMA na serwerze bramy OMS i agenci, którzy komunikują się z bramą pakietu OMS, są połączeni z tym samym obszarem roboczym Log Analytics. |
+| 105 |BŁĄD TcpConnection — nieprawidłowy certyfikat klienta: CN=Gateway. <br><br> Upewnij się, że korzystasz z usługi OMS Gateway w wersji 1.0.395.0 lub nowszej. Upewnij się również, że Agent MMA na serwerze bramy OMS i agenci komunikują się z bramą OMS są połączeni z tym samym obszarem roboczym Log Analytics. |
+| 106 |Nieobsługiwana wersja protokołu TLS/SSL.<br><br> Brama Log Analytics obsługuje tylko protokoły TLS 1,0, TLS 1,1 i 1,2. Nie obsługuje protokołu SSL.|
+| 107 |Sesja TLS została zweryfikowana. |
 
-### <a name="performance-counters-to-collect"></a>Liczniki wydajności do zbierania
+### <a name="performance-counters-to-collect"></a>Liczniki wydajności do zebrania
 
-W poniższej tabeli przedstawiono dostępne dla bramy usługi Log Analytics liczników wydajności. Aby dodać liczniki, należy użyć Monitora wydajności.
+W poniższej tabeli przedstawiono dostępne dla bramy usługi Log Analytics liczników wydajności. Użyj monitora wydajności, aby dodać liczniki.
 
 | **Nazwa** | **Opis** |
 | --- | --- |
@@ -410,13 +417,15 @@ W poniższej tabeli przedstawiono dostępne dla bramy usługi Log Analytics licz
 | Log Analytics połączony bramy klienta |Liczba połączonych klientów |
 | Liczba bramy/odrzucenia analizy dzienników |Liczba odrzuceń z powodu dowolnego błędu sprawdzania poprawności protokołu TLS |
 
-![Interfejs bramy zrzut ekranu usługi Log Analytics, przedstawiający liczników wydajności](./media/gateway/counters.png)
+![Zrzut ekranu przedstawiający interfejs Log Analytics Gateway, pokazujący liczniki wydajności](./media/gateway/counters.png)
 
 ## <a name="assistance"></a>Pomoc
-Po zalogowaniu witrynie Azure Portal, możesz uzyskać pomoc przy użyciu bramy usługi Log Analytics lub innych usług platformy Azure lub funkcji.
-Aby uzyskać pomoc, wybierz ikonę znaku zapytania w prawym górnym rogu portalu i wybierz **nowe żądanie obsługi**. Wypełnij formularz nowego żądania pomocy technicznej.
+
+Po zalogowaniu się do Azure Portal można uzyskać pomoc dotyczącą bramy Log Analytics lub dowolnej innej usługi lub funkcji platformy Azure.
+Aby uzyskać pomoc, wybierz ikonę znaku zapytania w prawym górnym rogu portalu i wybierz pozycję **nowe żądanie obsługi**. Następnie uzupełnij nowy formularz żądania pomocy technicznej.
 
 ![Zrzut ekranu przedstawiający nowe żądanie obsługi](./media/gateway/support.png)
 
-## <a name="next-steps"></a>Kolejne kroki
-[Dodawanie źródeł danych](../../azure-monitor/platform/agent-data-sources.md) zbieranie danych z połączonych źródeł w celu przechowywania danych w obszarze roboczym usługi Log Analytics.
+## <a name="next-steps"></a>Następne kroki
+
+[Dodawanie źródeł danych](../../azure-monitor/platform/agent-data-sources.md) w celu zbierania danych z połączonych źródeł i przechowywania danych w obszarze roboczym log Analytics.

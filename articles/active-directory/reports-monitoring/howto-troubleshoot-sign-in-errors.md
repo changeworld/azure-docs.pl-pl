@@ -1,9 +1,9 @@
 ---
-title: Jak rozwiązywać problemy z logowania w raportach usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak rozwiązywać problemy z logowania w raportach usługi Azure Active Directory w witrynie Azure portal
+title: Jak rozwiązywać problemy z błędami logowania przy użyciu raportów Azure Active Directory | Microsoft Docs
+description: Dowiedz się, jak rozwiązywać problemy związane z logowaniem przy użyciu raportów Azure Active Directory w Azure Portal
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -11,57 +11,57 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db68ad2a29dcaa53d219b679b9e0f24a50a6f576
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5c901395436c8ed660c50b7342a804143d57db3c
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60286540"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68988164"
 ---
-# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Instrukcje: Rozwiązywanie problemów z logowania w raportach usługi Azure Active Directory
+# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Instrukcje: Rozwiązywanie problemów z błędami logowania przy użyciu raportów Azure Active Directory
 
-[Raporcie logowań](concept-sign-ins.md) w usłudze Azure Active Directory (Azure AD) umożliwia znalezienie odpowiedzi na pytania dotyczące zarządzania dostępem do aplikacji w organizacji, w tym:
+[Raport logowania](concept-sign-ins.md) w Azure Active Directory (Azure AD) umożliwia znalezienie odpowiedzi na pytania dotyczące zarządzania dostępem do aplikacji w organizacji, w tym:
 
 - Co to jest wzorzec logowania użytkownika?
 - Ilu użytkowników zalogowało się w ciągu tygodnia?
 - Jaki jest stan tych logowań?
 
 
-Ponadto w raporcie logowań może również pomóc rozwiązać logowań dla użytkowników w Twojej organizacji. W tym przewodniku dowiesz się, jak izolować błąd logowania w raporcie logowań i użyj go, aby poznać główną przyczynę niepowodzenia.
+Ponadto raport logowania może również pomóc w rozwiązywaniu problemów z błędami logowania użytkowników w organizacji. W tym przewodniku dowiesz się, jak wyizolować błąd logowania w raporcie logowania i użyć go do zrozumienia głównej przyczyny błędu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Potrzebne elementy:
 
 * Dzierżawa usługi Azure AD z licencją premium (P1/P2). Aby uaktualnić swoją wersję usługi Azure Active Directory, zobacz [Wprowadzenie do usługi Azure Active Directory w wersji Premium](../fundamentals/active-directory-get-started-premium.md).
-* Użytkownik, który znajduje się w **administratora globalnego**, **administrator zabezpieczeń**, **Czytelnik zabezpieczeń**, lub **czytnika raportu** roli dla dzierżawy. Ponadto każdy użytkownik może uzyskiwać dostęp do informacji o swoim logowaniu. 
+* Użytkownik będący **administratorem globalnym**, **administratorem zabezpieczeń**, **czytelnikiem zabezpieczeń**lub rolą czytelnika **raportu** dla dzierżawy. Ponadto każdy użytkownik może uzyskiwać dostęp do informacji o swoim logowaniu. 
 
-## <a name="troubleshoot-sign-in-errors-using-the-sign-ins-report"></a>Rozwiązywanie problemów z logowania za pomocą funkcji Zgłoś logowania
+## <a name="troubleshoot-sign-in-errors-using-the-sign-ins-report"></a>Rozwiązywanie problemów z błędami logowania przy użyciu raportu logowania
 
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com) i wybierz swój katalog.
 2. Wybierz pozycję **Azure Active Directory**, a następnie pozycję **Logowania** w sekcji **Monitorowanie**. 
-3. Użyj filtrów podane, aby zawęzić awarii, albo według nazwy użytkownika lub identyfikatorem obiektu, nazwa aplikacji lub daty. Ponadto wybierz **błąd** z **stan** listy rozwijanej do wyświetlania tylko Nieudane logowania. 
+3. Użyj dostarczonych filtrów, aby zawęzić awarię o nazwę użytkownika lub identyfikator obiektu, nazwę aplikacji lub datę. Ponadto wybierz opcję **Niepowodzenie** z listy rozwijanej **stan** , aby wyświetlić tylko nieudane logowania. 
 
-    ![Filtrowanie wyników](./media/howto-troubleshoot-sign-in-errors/filters.png)
+    ![Filtruj wyniki](./media/howto-troubleshoot-sign-in-errors/filters.png)
         
-4. Zidentyfikuj Nieudane logowania, które chcesz zbadać. Wybierz ją, aby otworzyć okno dodatkowe szczegóły o więcej informacji na temat logowania nie powiodło się. Zanotuj **logowania kod błędu:** i **Przyczyna niepowodzenia**. 
+4. Zidentyfikuj nieudane logowanie, które chcesz zbadać. Wybierz go, aby otworzyć okno dodatkowe szczegóły z więcej informacji na temat nieudanego logowania. Zanotuj **Kod błędu logowania** i **przyczynę niepowodzenia**. 
 
     ![Wybierz rekord](./media/howto-troubleshoot-sign-in-errors/sign-in-failures.png)
         
-5. Można również znaleźć te informacje w **Rozwiązywanie problemów i pomoc techniczna** karta w oknie Szczegóły.
+5. Te informacje można również znaleźć na karcie **Rozwiązywanie problemów i obsługa** w oknie Szczegóły.
 
     ![Rozwiązywanie problemów i pomoc techniczna](./media/howto-troubleshoot-sign-in-errors/troubleshooting-and-support.png)
 
-6. Przyczyna niepowodzenia opisuje błąd. Na przykład w powyższym scenariuszu Usługa Przyczyna niepowodzenia jest **nieprawidłowej nazwy użytkownika lub hasło lub nazwa nieprawidłowa w środowisku lokalnym użytkownika lub hasło**. Poprawka jest po prostu Zaloguj się ponownie, podając prawidłową nazwę użytkownika i hasło.
+6. Przyczyna niepowodzenia dotyczy błędu. Na przykład w powyższym scenariuszu przyczyna niepowodzenia to **Nieprawidłowa nazwa użytkownika lub hasło albo nieprawidłowa lokalna nazwa użytkownika lub hasło**. Poprawka polega na ponownym zalogowaniu się przy użyciu prawidłowej nazwy użytkownika i hasła.
 
-7. Dodatkowe informacje, w tym koncepcji korygowania, szukając kodu błędu, można uzyskać **50126** w tym przykładzie w [odwołania kody błędów logowania](reference-sign-ins-error-codes.md). 
+7. Możesz uzyskać dodatkowe informacje, w tym pomysły dotyczące korygowania, wyszukując kod błędu, **50126** w tym przykładzie [Informacje o kodach błędów logowania](reference-sign-ins-error-codes.md). 
 
-8. Wszystkie inne nie powiedzie się, czy problem nadal występuje mimo podjęcia zalecany sposób postępowania, [Otwórz bilet pomocy technicznej](../fundamentals/active-directory-troubleshooting-support-howto.md) czynności opisane w **Rozwiązywanie problemów i pomoc techniczna** kartę. 
+8. Jeśli wszystkie inne osoby zakończą się niepowodzeniem lub problem będzie się powtarzał pomimo podjęcia zalecanego działania, [Otwórz bilet pomocy technicznej](../fundamentals/active-directory-troubleshooting-support-howto.md) zgodnie z instrukcjami na karcie **Rozwiązywanie problemów i pomoc techniczna** . 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Odwoływać się do kodów błędów logowania](reference-sign-ins-error-codes.md)
-* [Omówienie raportów logowania](concept-sign-ins.md)
+* [Dokumentacja kodów błędów logowania](reference-sign-ins-error-codes.md)
+* [Przegląd raportów logowania](concept-sign-ins.md)

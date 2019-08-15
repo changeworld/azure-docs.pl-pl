@@ -16,12 +16,12 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4e21fdef5be09148f001ab6f66f87dd270ccf54
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 4430e2115e4282ba7bb618184139a845547a06ed
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618266"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967096"
 ---
 # <a name="delegate-tasks-in-azure-ad-entitlement-management-preview"></a>Delegowanie zadań w usłudze Azure AD uprawnień zarządzanie (wersja zapoznawcza)
 
@@ -40,7 +40,7 @@ Aby zrozumieć, jak można delegować zadania w usłudze zarządzania uprawnieni
 
 | Użytkownik | Dział | Uwagi |
 | --- | --- | --- |
-| Alicja | IT | Administrator globalny |
+| Alicja | it | Administrator globalny |
 | Bob | Badania | Robert jest również właścicielem grupy badań |
 | Carole | Badania |  |
 | Dave | Marketing |  |
@@ -77,7 +77,7 @@ Ponadto Wyznaczeni osoby zatwierdzające i osoba żądająca pakietu dostępu ma
 
 Poniższa tabela zawiera listę zadań, które mogą wykonywać te role.
 
-| Zadanie | Twórca katalogu | Właściciel katalogu | Menedżer pakietów dostępu | Osoby zatwierdzającej |
+| Zadanie | Twórca katalogu | Właściciel katalogu | Menedżer pakietów dostępu | Osoba zatwierdzająca |
 | --- | :---: | :---: | :---: | :---: |
 | [Utwórz nowy katalog](entitlement-management-catalog-create.md) | :heavy_check_mark: |  |  |  |
 | [Dodawanie zasobu do wykazu](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | | :heavy_check_mark: | | |
@@ -86,7 +86,7 @@ Poniższa tabela zawiera listę zadań, które mogą wykonywać te role.
 | [Dodawanie właściciela katalogu lub Menedżera pakietów dostępu do wykazu](#add-a-catalog-owner-or-an-access-package-manager) |  | :heavy_check_mark: |  |  |
 | [Utwórz nowy pakiet dostępu w wykazie](entitlement-management-access-package-create.md) |  | :heavy_check_mark:  | :heavy_check_mark:  |  |
 | [Zarządzanie rolami zasobów w pakiecie dostępu](entitlement-management-access-package-edit.md) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Określ, kto może zażądać pakietu dostępu](entitlement-management-access-package-edit.md#add-a-new-policy) |  | :heavy_check_mark: | :heavy_check_mark: |  |
+| [Tworzenie i edytowanie zasad](entitlement-management-access-package-edit.md#add-a-new-policy) |  | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Bezpośrednie przypisywanie użytkownika do pakietu dostępu](entitlement-management-access-package-edit.md#directly-assign-a-user) |  | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Wyświetl osoby, które mają przypisanie do pakietu dostępu](entitlement-management-access-package-edit.md#view-who-has-an-assignment) |  | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Wyświetlanie żądań pakietu dostępu](entitlement-management-access-package-edit.md#view-requests) |  | :heavy_check_mark: | :heavy_check_mark: |  |

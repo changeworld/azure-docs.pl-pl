@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: dacurwin
-ms.openlocfilehash: 55af6d17f18efd11fe2d6f89b9b87ca9f407ec25
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 26ba811eba1a25dacddd04814f8e0d2805360920
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688654"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018777"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Rozwiązywanie problemów z kopią zapasową stanu systemu
 
@@ -25,7 +25,7 @@ Przed rozpoczęciem rozwiązywania problemów z kopiami zapasowymi stanu systemu
 
 - [Upewnij się, że agent Microsoft Azure Recovery Services (MARS) jest aktualny](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
 - [Upewnij się, że istnieje połączenie sieciowe między agentem MARS i platformą Azure](https://aka.ms/AB-A4dp50)
-- Upewnij się, że usługa Microsoft Azure Recovery Services jest uruchomiona (w konsoli usługi). Jeśli to wymagane, ponownie uruchom i ponów operację
+- Upewnij się, że usługa Microsoft Azure Recovery Services jest uruchomiona (w konsoli usługi). W razie potrzeby uruchom ponownie, a następnie spróbuj ponownie wykonać operację.
 - [Upewnij się, że 5–10% wolnego miejsca na woluminie jest dostępne na potrzeby lokalizacji folderu plików tymczasowych](https://aka.ms/AB-AA4dwtt)
 - [Sprawdź, czy inny proces lub oprogramowanie antywirusowe nie zakłóca działania usługi Azure Backup](https://aka.ms/AB-AA4dwtk)
 - [Zaplanowane tworzenie kopii zapasowej kończy się niepowodzeniem, ale ręczne tworzenie kopii zapasowej działa](https://aka.ms/ScheduledBackupFailManualWorks)
@@ -36,7 +36,7 @@ Przed rozpoczęciem rozwiązywania problemów z kopiami zapasowymi stanu systemu
 - Jeśli próbujesz **ponownie zarejestrować serwer** w magazynie, wykonaj następujące czynności: <br>
   - Upewnij się, że agent został odinstalowany z serwera oraz usunięty z portalu <br>
   - Użyj tego samego hasła, które zostało początkowo użyte podczas rejestrowania serwera <br>
-- W przypadku tworzenia kopii zapasowej offline upewnij się, że Azure PowerShell wersja 3.7.0 jest zainstalowana na komputerze źródłowym i skopiuj przed rozpoczęciem operacji tworzenia kopii zapasowej w trybie offline
+- W przypadku tworzenia kopii zapasowej offline upewnij się, że Azure PowerShell wersji 3.7.0 jest zainstalowana na komputerze źródłowym i skopiuj przed rozpoczęciem operacji tworzenia kopii zapasowej w trybie offline
 - [Uwzględnianie, gdy Agent kopii zapasowej jest uruchomiony na maszynie wirtualnej platformy Azure](https://aka.ms/AB-AA4dwtr)
 
 ### <a name="limitation"></a>Ograniczenia
@@ -45,14 +45,14 @@ Przed rozpoczęciem rozwiązywania problemów z kopiami zapasowymi stanu systemu
 
 ## <a name="pre-requisite"></a>Wymagania wstępne
 
-Przed rozpoczęciem rozwiązywania problemów z kopiami zapasowymi stanu systemu za pomocą Azure Backup upewnij się, że przeprowadzić się poniżej sprawdzenia wymagań wstępnych.  
+Przed rozpoczęciem rozwiązywania problemów z wykonywaniem kopii zapasowych stanu systemu za pomocą Azure Backup wykonaj poniższe sprawdzanie wymagań wstępnych.  
 
 ### <a name="verify-windows-server-backup-is-installed"></a>Sprawdź, czy Kopia zapasowa systemu Windows Server jest zainstalowana
 
 Upewnij się, że na serwerze jest zainstalowana i włączona Kopia zapasowa systemu Windows Server. Aby sprawdzić stan instalacji, uruchom następujące polecenie programu PowerShell:
 
- ```
- PS C:\> Get-WindowsFeature Windows-Server-Backup
+ ```powershell
+Get-WindowsFeature Windows-Server-Backup
  ```
 Jeśli w danych wyjściowych zostanie wyświetlony **stan instalacji** **dostępny**, oznacza to, że funkcja kopia zapasowa systemu Windows Server jest dostępna dla instalacji, ale nie jest zainstalowana na serwerze. Jeśli jednak Kopia zapasowa systemu Windows Server nie jest zainstalowana, użyj jednej z poniższych metod, aby ją zainstalować.
 
@@ -60,15 +60,15 @@ Jeśli w danych wyjściowych zostanie wyświetlony **stan instalacji** **dostęp
 
 Aby zainstalować Kopia zapasowa systemu Windows Server przy użyciu programu PowerShell, uruchom następujące polecenie:
 
-  ```
-  PS C:\> Install-WindowsFeature -Name Windows-Server-Backup
+  ```powershell
+  Install-WindowsFeature -Name Windows-Server-Backup
   ```
 
 **Metoda 2. Instalowanie Kopia zapasowa systemu Windows Server przy użyciu Menedżer serwera**
 
-Aby zainstalować Kopia zapasowa systemu Windows Server przy użyciu Menedżer serwera, wykonaj następujące czynności:
+Aby zainstalować Kopia zapasowa systemu Windows Server przy użyciu Menedżer serwera, wykonaj poniższe czynności:
 
-1. W obszarze **Menedżer serwera** kliknij pozycję **Dodaj role i funkcje**. Zostanie wyświetlony **Kreator dodawania ról i funkcji** .
+1. W oknie **Menedżer serwera**kliknij pozycję **Dodaj role i funkcje**. Zostanie wyświetlony **Kreator dodawania ról i funkcji** .
 
     ![Pulpit nawigacyjny](./media/backup-azure-system-state-troubleshoot/server_management.jpg)
 
@@ -126,7 +126,7 @@ Aby sprawdzić stan Kopia zapasowa systemu Windows Server, wykonaj następujące
     - Okresowe sprawdzanie stanu zadania przez uruchomienie `Get-WBJob` polecenia z podwyższonym poziomem uprawnień programu PowerShell        
     - Po zakończeniu zadania tworzenia kopii zapasowej Sprawdź stan końcowy zadania, uruchamiając `Get-WBJob -Previous 1` polecenie
 
-Jeśli zadanie nie powiedzie się, wskazuje to na problem z WSB, co spowoduje niepowodzenie tworzenia kopii zapasowych stanu systemu agenta MARS.
+Jeśli zadanie nie powiedzie się, wskazuje to na problem z WSB, który spowoduje niepowodzenie tworzenia kopii zapasowych stanu systemu agenta MARS.
 
 ## <a name="common-errors"></a>Typowe błędy
 
@@ -141,14 +141,14 @@ Jeśli zadanie nie powiedzie się, wskazuje to na problem z WSB, co spowoduje ni
 
 | Objaw | Rozwiązanie
 | -- | --
-| -Agent MARS kończy się niepowodzeniem z komunikatem o błędzie: Tworzenie kopii zapasowej nie powiodło się, ponieważ nie można zwiększyć woluminu kopii w tle z powodu niewystarczającej ilości miejsca na woluminach zawierających pliki systemowe <br/><br/> — Następujący dziennik błędów/ostrzeżeń jest obecny w dzienniku zdarzeń systemu Volsnap: "Za mało miejsca na dysku w woluminie C: aby zwiększyć magazyn kopii w tle dla kopii w tle C: z powodu tego błędu wszystkie kopie w tle woluminu C: są zagrożone. | -Zwolnij miejsce na wyróżnionym woluminie w dzienniku zdarzeń, tak że jest wystarczająca ilość miejsca na zwiększenie rozmiaru kopii w tle, gdy trwa wykonywanie kopii zapasowej <br/><br/> — Podczas konfigurowania obszaru kopiowania w tle możemy ograniczyć ilość miejsca używanego do kopiowania w tle, aby uzyskać więcej informacji, zobacz ten [artykuł](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc788050(v=ws.11)#syntax) .
+| -Agent MARS kończy się niepowodzeniem z komunikatem o błędzie: Tworzenie kopii zapasowej nie powiodło się, ponieważ nie można zwiększyć woluminu kopii w tle z powodu niewystarczającej ilości miejsca na woluminach zawierających pliki systemowe <br/><br/> — Następujący dziennik błędów/ostrzeżeń jest obecny w dzienniku zdarzeń systemu Volsnap: "Za mało miejsca na dysku w woluminie C: aby zwiększyć magazyn kopii w tle dla kopii w tle C: z powodu tego błędu wszystkie kopie w tle woluminu C: są zagrożone. | -Zwolnij miejsce na wyróżnionym woluminie w dzienniku zdarzeń, tak że jest wystarczająca ilość miejsca na zwiększenie rozmiaru kopii w tle, gdy trwa wykonywanie kopii zapasowej <br/><br/> — Podczas konfigurowania obszaru kopiowania w tle możemy ograniczyć ilość miejsca używanego do kopiowania w tle. Aby uzyskać więcej informacji, zobacz ten [artykuł](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc788050(v=ws.11)#syntax)
 
 
 ### <a name="efi-partition-locked"></a>Zablokowana partycja EFI
 
 | Objaw | Rozwiązanie
 | -- | --
-| Agent MARS kończy się niepowodzeniem z komunikatem o błędzie: "Wykonywanie kopii zapasowej stanu systemu nie powiodło się, ponieważ partycja systemowa EFI jest zablokowana. Może to być spowodowane dostępem do partycji systemowej przez zabezpieczenia innej firmy lub oprogramowanie do tworzenia kopii zapasowych. | — Jeśli problem jest spowodowany przez oprogramowanie zabezpieczeń innej firmy, należy skontaktować się z dostawcą oprogramowania antywirusowego, aby umożliwić mu agenta MARS <br/><br/> — Jeśli działa oprogramowanie do tworzenia kopii zapasowych innej firmy, zaczekaj na jego zakończenie, a następnie ponów próbę wykonania kopii zapasowej
+| Agent MARS kończy się niepowodzeniem z komunikatem o błędzie: "Tworzenie kopii zapasowej stanu systemu nie powiodło się, ponieważ partycja systemowa EFI jest zablokowana. Może to być spowodowane dostępem do partycji systemowej przez zabezpieczenia innej firmy lub oprogramowanie do tworzenia kopii zapasowych. | — Jeśli problem jest spowodowany przez oprogramowanie zabezpieczeń innej firmy, należy skontaktować się z dostawcą oprogramowania antywirusowego, aby umożliwić mu agenta MARS <br/><br/> — Jeśli działa oprogramowanie do tworzenia kopii zapasowych innej firmy, zaczekaj na jego zakończenie, a następnie ponów próbę wykonania kopii zapasowej
 
 
 ## <a name="next-steps"></a>Następne kroki

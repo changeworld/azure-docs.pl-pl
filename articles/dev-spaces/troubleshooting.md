@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s '
-ms.openlocfilehash: 2434507ac89d631bb96ae9633403075801879a37
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 6ab2e0866c4e6c5cc8f89cb490504f6ca6a076fc
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277397"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019643"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
@@ -97,7 +97,7 @@ Service cannot be started.
 Ten błąd występuje, ponieważ węzły AKS korzystają ze starszej wersji platformy Docker, która nie obsługuje kompilacji wieloetapowych. Aby uniknąć kompilacji wieloetapowych, napisz ponownie pliku dockerfile.
 
 ### <a name="rerunning-a-service-after-controller-re-creation"></a>Ponowne uruchamianie usługi po ponownym utworzeniu kontrolera
-Wystąpił błąd  podczas próby ponownego uruchomienia usługi po usunięciu i ponownym utworzeniu kontrolera Azure dev Spaces skojarzonego z tym klastrem. W tej sytuacji pełne dane wyjściowe zawierają następujący tekst:
+Wystąpił błąd podczas próby ponownego uruchomienia usługi po usunięciu i ponownym utworzeniu kontrolera Azure dev Spaces skojarzonego z tym klastrem. W tej sytuacji pełne dane wyjściowe zawierają następujący tekst:
 
 ```cmd
 Installing Helm chart...
@@ -373,7 +373,7 @@ Po ponownym zainstalowaniu kontrolera ponownie Wdróż swój zasobnik.
 ## <a name="incorrect-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>Nieprawidłowe uprawnienia RBAC do wywoływania kontrolera i interfejsów API programu dev Spaces
 
 ### <a name="reason"></a>Reason
-Użytkownik, który uzyskuje dostęp do kontrolera Azure Dev Spaces, musi mieć dostęp do odczytu *kubeconfig* administratora w klastrze AKS. Na przykład to uprawnienie jest dostępne w wbudowanej [roli administratora klastra usługi Kubernetes platformy Azure](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions). Użytkownik uzyskujący dostęp do kontrolera Azure Dev Spaces musi mieć także rolę  RBAC współautora lub *właściciela* dla kontrolera.
+Użytkownik, który uzyskuje dostęp do kontrolera Azure Dev Spaces, musi mieć dostęp do odczytu *kubeconfig* administratora w klastrze AKS. Na przykład to uprawnienie jest dostępne w wbudowanej [roli administratora klastra usługi Kubernetes platformy Azure](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions). Użytkownik uzyskujący dostęp do kontrolera Azure Dev Spaces musi mieć także rolę RBAC współautora lub *właściciela* dla kontrolera.
 
 ### <a name="try"></a>Spróbuj
 Więcej szczegółów na temat aktualizowania uprawnień użytkownika do klastra AKS są dostępne [tutaj](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user-or-group).
@@ -419,10 +419,10 @@ Obecnie Azure Dev Spaces jest przeznaczony do uruchamiania tylko w przypadku sys
 
 ### <a name="reason"></a>Reason
 
-Azure Dev Spaces nie może utworzyć kontrolera w klastrze AKS, ponieważ nie mógł znaleźć w stanie *gotowym* węzła, który ma zaplanowaną wartość. Azure Dev Spaces wymaga co najmniej jednego węzła systemu Linux w  stanie gotowości, który umożliwia planowanie zasobników bez określania tolerowania.
+Azure Dev Spaces nie może utworzyć kontrolera w klastrze AKS, ponieważ nie mógł znaleźć w stanie *gotowym* węzła, który ma zaplanowaną wartość. Azure Dev Spaces wymaga co najmniej jednego węzła systemu Linux w stanie gotowości, który umożliwia planowanie zasobników bez określania tolerowania.
 
 ### <a name="try"></a>Spróbuj
-[Zaktualizuj konfigurację swojego programu](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations) w klastrze AKS, aby upewnić się, że co najmniej jeden węzeł systemu Linux zezwala na planowanie zasobników bez określania tolerowanych danych. Ponadto upewnij się, że co najmniej jeden węzeł systemu Linux, który umożliwia planowanie zasobników bez określania tolerowania, jest w stanie *gotowe* . Jeśli Twój węzeł zajmuje dużo czasu na osiągnięcie stanu gotowości  , możesz spróbować ponownie uruchomić węzeł.
+[Zaktualizuj konfigurację swojego programu](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations) w klastrze AKS, aby upewnić się, że co najmniej jeden węzeł systemu Linux zezwala na planowanie zasobników bez określania tolerowanych danych. Ponadto upewnij się, że co najmniej jeden węzeł systemu Linux, który umożliwia planowanie zasobników bez określania tolerowania, jest w stanie *gotowe* . Jeśli Twój węzeł zajmuje dużo czasu na osiągnięcie stanu gotowości , możesz spróbować ponownie uruchomić węzeł.
 
 ## <a name="error-azure-dev-spaces-cli-not-installed-properly-when-running-az-aks-use-dev-spaces"></a>Błąd "Azure Dev Spaces interfejs wiersza polecenia nie został poprawnie zainstalowany" podczas uruchamiania`az aks use-dev-spaces`
 
@@ -445,7 +445,14 @@ Zaktualizuj instalację [interfejsu wiersza polecenia platformy Azure](/cli/azur
 
 ### <a name="reason"></a>Reason
 
-Po uruchomieniu usługi w miejscu deweloperskim usługa ta jest wprowadzana [z dodatkowymi kontenerami dla Instrumentacji](how-dev-spaces-works.md#prepare-your-aks-cluster). Te kontenery nie mają zdefiniowanych żądań zasobów lub limitów, co powoduje wyłączenie automatycznego skalowania w poziomie pod.
+Po uruchomieniu usługi w obszarze deweloperskim, ta usługa jest wprowadzana [z dodatkowymi kontenerami dla Instrumentacji](how-dev-spaces-works.md#prepare-your-aks-cluster) , a wszystkie kontenery w miejscu muszą mieć limity zasobów i żądania ustawione na automatyczne skalowanie w poziomie. 
+
+
+Żądania zasobów i limity można zastosować dla wstrzykniętego kontenera (devspaces-proxy), dodając `azds.io/proxy-resources` adnotację do specyfikacji pod. Wartość powinna być ustawiona na obiekt JSON reprezentujący sekcję zasobów specyfikacji kontenera dla serwera proxy.
 
 ### <a name="try"></a>Spróbuj
-Uruchom skalowanie w poziomie poniżej w przestrzeni nazw, w której nie ma włączonych miejsc deweloperskich.
+
+Poniżej znajduje się przykład adnotacji zasobów serwera proxy, która ma zostać zastosowana do specyfikacji pod.
+```
+azds.io/proxy-resources: "{\"Limits\": {\"cpu\": \"300m\",\"memory\": \"400Mi\"},\"Requests\": {\"cpu\": \"150m\",\"memory\": \"200Mi\"}}"
+```

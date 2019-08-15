@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: eece1520a4b7e3bf37e1d209c58b5019921fdb98
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 7591cefddd6e7217c885293a2f5c878d7a82e158
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884379"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69015916"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
@@ -155,7 +155,7 @@ Nowe udziały plików zaczynają się od pełnej liczby kredytów w swoim zasobn
 
 ## <a name="file-share-redundancy"></a>Nadmiarowość udziałów plików
 
-Azure Files udziały standardowe obsługują trzy opcje nadmiarowości danych: Magazyn lokalnie nadmiarowy (LRS), magazyn strefowo nadmiarowy (ZRS) i magazyn Geograficznie nadmiarowy (GRS).
+Azure Files udziały standardowe obsługuje trzy opcje nadmiarowości danych: Magazyn lokalnie nadmiarowy (LRS), magazyn strefowo nadmiarowy (ZRS), magazyn Geograficznie nadmiarowy (GRS) i magazyn Geograficznie nadmiarowy (GZRS) (wersja zapoznawcza).
 
 Azure Files udziały w warstwie Premium obsługują tylko Magazyn lokalnie nadmiarowy (LRS).
 
@@ -186,6 +186,7 @@ Zarówno region podstawowy, jak i pomocniczy zarządzają replikami w osobnych d
 
 Przed wybraniem opcji replikacji należy pamiętać o następujących kwestiach:
 
+* Magazyn strefy Geograficznie nadmiarowy (GZRS) (wersja zapoznawcza) zapewnia wysoką dostępność wraz z maksymalną trwałością przez replikację danych synchronicznie w trzech strefach dostępności platformy Azure, a następnie replikowanie danych asynchronicznie do regionu pomocniczego. Możesz również włączyć dostęp do odczytu do regionu pomocniczego. GZRS zaprojektowano w celu udostępnienia co najmniej 99.99999999999999% (16 9) trwałości obiektów w danym roku. Aby uzyskać więcej informacji na temat GZRS, zobacz Geograficznie nadmiarowy [Magazyn w celu zapewnienia wysokiej dostępności i maksymalnej trwałości (wersja zapoznawcza)](../common/storage-redundancy-gzrs.md).
 * Magazyn strefowo nadmiarowy (ZRS) zapewnia wysoką dostępność z replikacją synchroniczną i może być lepszym wyborem w przypadku niektórych scenariuszy niż GRS. Aby uzyskać więcej informacji na temat ZRS, zobacz [ZRS](../common/storage-redundancy-zrs.md).
 * Replikacja asynchroniczna polega na opóźnieniu od momentu zapisania danych w regionie podstawowym, gdy zostanie ono zreplikowane do regionu pomocniczego. W przypadku awarii regionalnej zmiany, które nie zostały jeszcze zreplikowane do regionu pomocniczego, mogą zostać utracone, jeśli nie można odzyskać tych danych z regionu podstawowego.
 * W programie GRS replika nie jest dostępna do odczytu lub zapisu, chyba że firma Microsoft zainicjuje przejście w tryb failover do regionu pomocniczego. W przypadku przejścia w tryb failover będziesz mieć dostęp do odczytu i zapisu do tych danych po zakończeniu pracy w trybie failover. Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące odzyskiwania po awarii](../common/storage-disaster-recovery-guidance.md).
@@ -198,7 +199,7 @@ Ta sekcja ma zastosowanie tylko do standardowych udziałów plików. Wszystkie u
 
 - [Warunki](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) wersji zapoznawczej platformy Azure dotyczą dużych udziałów plików w wersji zapoznawczej, takich jak użycie z wdrożeniami Azure File Sync.
 - Wymaga utworzenia nowego konta magazynu ogólnego zastosowania (nie można rozwinąć istniejących kont magazynu).
-- Konwersja konta LRS/ZRS na GRS nie będzie możliwa na żadnym nowym koncie magazynu utworzonym po zaakceptowaniu subskrypcji do większej wersji zapoznawczej udziałów plików.
+- Konwersja konta LRS/ZRS na GRS/GZRS nie będzie możliwa na żadnym nowym koncie magazynu utworzonym po zaakceptowaniu subskrypcji do większej wersji zapoznawczej udziałów plików.
 
 
 ### <a name="regional-availability"></a>Dostępność regionalna
@@ -210,11 +211,11 @@ Standardowe udziały plików są dostępne we wszystkich regionach do 5 TiB. W n
 |Australia Wschodnia  |LRS     |Nie    |Tak|
 |Francja Środkowa  |LRS     |Nie    |Jeszcze nie|
 |Francja Południowa    |LRS     |Nie    |Jeszcze nie|
-|Azja Południowo-Wschodnia  |LRS, ZRS|Nie    |Yes|
-|Europa Zachodnia     |LRS, ZRS|Nie    |Yes|
-|Zachodnie stany USA 2       |LRS, ZRS|Nie    |Yes|
+|Azja Południowo-Wschodnia  |LRS, ZRS|Nie    |Tak|
+|Europa Zachodnia     |LRS, ZRS|Nie    |Tak|
+|Zachodnie stany USA 2       |LRS, ZRS|Nie    |Tak|
 
-\* W przypadku regionów bez obsługi portalu można nadal używać programu PowerShell lub interfejsu wiersza polecenia platformy Azure do tworzenia większych udziałów TiB. Altenatively, Utwórz nowy udział za pośrednictwem portalu bez określania limitu przydziału. Spowoduje to utworzenie udziału o domyślnym rozmiarze 100 TiB, który można później zaktualizować za pomocą programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
+\* W przypadku regionów bez obsługi portalu można nadal używać programu PowerShell lub interfejsu wiersza polecenia platformy Azure do tworzenia większych udziałów TiB. Alternatywnie możesz utworzyć nowy udział za pośrednictwem portalu bez określania limitu przydziału. Spowoduje to utworzenie udziału o domyślnym rozmiarze 100 TiB, który można później zaktualizować za pomocą programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
 
 Aby pomóc nam określić priorytety nowych regionów i funkcji, Wypełnij tę [ankietę](https://aka.ms/azurefilesatscalesurvey).
 

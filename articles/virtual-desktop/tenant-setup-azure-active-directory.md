@@ -1,130 +1,138 @@
 ---
-title: Tworzenie dzierżawy w Windows wirtualnego pulpitu (wersja zapoznawcza) — platformy Azure
-description: W tym artykule opisano sposób konfigurowania dzierżaw Windows wirtualnego pulpitu (wersja zapoznawcza) w usłudze Azure Active Directory.
+title: Tworzenie dzierżawy w wersji zapoznawczej pulpitu wirtualnego systemu Windows — Azure
+description: Opisuje sposób konfigurowania dzierżawców dla systemu Windows Virtual Desktop w wersji zapoznawczej w Azure Active Directory.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 3d418d9f18c98e1b6fdf39924ab41dae77fba291
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 062b815315d7bcdd5d55a86c2447a0b21295e8b6
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204748"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014089"
 ---
-# <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>Samouczek: Tworzenie dzierżawy w wersji zapoznawczej pulpitu wirtualnego Windows
+# <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>Samouczek: Tworzenie dzierżawy w wersji zapoznawczej pulpitu wirtualnego systemu Windows
 
-Tworzenie dzierżawy w wersji zapoznawczej pulpitu wirtualnego Windows jest pierwszym krokiem procesu tworzenia rozwiązania do wirtualizacji pulpitu. Dzierżawa to grupy co najmniej jedna pula hosta. Każda pula hosta składa się z wielu hostów sesji, uruchomione jako maszyny wirtualne na platformie Azure i zarejestrowane w usłudze Windows pulpitu wirtualnego. Każda pula hosta również składa się z co najmniej jedną grupę aplikacji, które są używane do publikowania zasobów zdalnego pulpitu i zdalnej aplikacji dla użytkowników. Z dzierżawą można tworzyć pule hosta, tworzenie grupy aplikacji, przypisywanie użytkowników i nawiązywać połączenia za pośrednictwem usługi.
+Tworzenie dzierżawy w programie Windows Virtual Desktop w wersji zapoznawczej to pierwszy krok w kierunku tworzenia rozwiązania do wirtualizacji pulpitu. Dzierżawca jest grupą co najmniej jednej puli hostów. Każda pula hostów składa się z wielu hostów sesji uruchomionych jako maszyny wirtualne na platformie Azure i zarejestrowane w usłudze pulpitu wirtualnego systemu Windows. Każda pula hostów składa się również z co najmniej jednej grupy aplikacji, która jest używana do publikowania zasobów pulpitu zdalnego i aplikacji zdalnych użytkownikom. Dzierżawy umożliwiają tworzenie pul hostów, tworzenie grup aplikacji, przypisywanie użytkowników i nawiązywanie połączeń za pomocą usługi.
 
 W tym samouczku pokazano, jak:
 
 > [!div class="checklist"]
-> * Uprawnienia GRANT usługi Azure Active Directory z usługą Windows pulpitu wirtualnego.
-> * Przypisz rolę aplikacji TenantCreator użytkownikowi w swojej dzierżawie usługi Azure Active Directory.
-> * Utwórz dzierżawę Windows pulpitu wirtualnego.
+> * Przyznaj Azure Active Directory uprawnienia do usługi pulpitu wirtualnego systemu Windows.
+> * Przypisz rolę aplikacji TenantCreator do użytkownika w dzierżawie Azure Active Directory.
+> * Utwórz dzierżawę pulpitu wirtualnego systemu Windows.
 
-Oto, co jest potrzebne do skonfigurowania dzierżawy pulpitu wirtualnego Windows:
+Oto, co musisz zrobić, aby skonfigurować dzierżawcę pulpitów wirtualnych systemu Windows:
 
-* [Usługi Azure Active Directory](https://azure.microsoft.com/services/active-directory/) identyfikator dla Windows pulpitu wirtualnego użytkowników dzierżawy.
-* Konto administratora globalnego dzierżawy usługi Azure Active Directory.
-   * Dotyczy to również organizacji Cloud Solution Provider (CSP), które tworzenia dzierżawcy pulpitu wirtualnego Windows dla swoich klientów. Jeśli jesteś w organizacji dostawcy usług Kryptograficznych, należy zalogować się jako administrator globalny wystąpienia usługi Azure Active Directory klienta.
-   * Konta administratora należy ustalić źródło, z dzierżawy usługi Azure Active Directory, w którym próbujesz utworzyć dzierżawę pulpitu wirtualnego Windows. Ten proces nie obsługuje usługi Azure Active Directory B2B (Gość) konta.
-   * Konto administratora musi być konta firmowego lub szkolnego.
+* Identyfikator dzierżawy [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) dla użytkowników pulpitu wirtualnego systemu Windows.
+* Konto administratora globalnego w dzierżawie Azure Active Directory.
+   * Dotyczy to również organizacji z dostawcami rozwiązań w chmurze, które tworzą dzierżawę pulpitów wirtualnych systemu Windows dla swoich klientów. Jeśli jesteś w organizacji programu CSP, musisz być w stanie zalogować się jako Administrator globalny Azure Active Directory wystąpienia klienta.
+   * Konto administratora musi być źródłem Azure Active Directory dzierżawy, w której próbujesz utworzyć dzierżawę pulpitu wirtualnego systemu Windows. Ten proces nie obsługuje Azure Active Directory kont B2B (gościa).
+   * Konto administratora musi być kontem służbowym.
 * Subskrypcja platformy Azure.
 
-## <a name="grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-preview-service"></a>Uprawnienia GRANT usługi Azure Active Directory z usługą Windows wirtualnego pulpitu (wersja zapoznawcza)
+## <a name="grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-preview-service"></a>Przyznaj Azure Active Directory uprawnienia do usługi Windows Virtual Desktop w wersji zapoznawczej
 
-Jeśli masz już uprawnień do pulpitu wirtualnego Windows dla tego wystąpienia usługi Azure Active Directory, należy pominąć tę sekcję.
+Jeśli masz już uprawnienia do pulpitu wirtualnego systemu Windows dla tego wystąpienia Azure Active Directory Pomiń tę sekcję.
 
-Udzielanie uprawnień pulpitu wirtualnego Windows service pozwala zapytań usługi Azure Active Directory dla administracyjnych i zadaniach użytkownika końcowego.
+Przyznanie uprawnień do usługi pulpitów wirtualnych systemu Windows umożliwia tworzenie zapytań Azure Active Directory na potrzeby zadań administracyjnych i użytkowników końcowych.
 
 Aby udzielić uprawnień usługi:
 
-1. Otwórz przeglądarkę i połącz się z [strona zgody użytkownika pulpitu wirtualnego Windows](https://rdweb.wvd.microsoft.com).
-2. Dla **opcja zgody** > **aplikacja serwera**, wprowadź nazwę dzierżawy usługi Azure Active Directory lub identyfikator katalogu, a następnie wybierz **przesyłania**.
-        
-   W przypadku klientów programu Cloud Solution Provider identyfikator jest identyfikator firmy Microsoft przez klienta z portalu dla partnerów. Dla klientów korporacyjnych identyfikator znajduje się w folderze **usługi Azure Active Directory** > **właściwości** > **identyfikator katalogu**.
-3. Zaloguj się Strona zgody użytkownika Windows pulpitu wirtualnego przy użyciu konta administratora globalnego. Na przykład, gdyby w organizacji Contoso Twoje konto może być admin@contoso.com lub admin@contoso.onmicrosoft.com.  
-4. Wybierz pozycję **Zaakceptuj**.
-5. Oczekiwanie na jedną minutę.
-6. Wróć do [strona zgody użytkownika pulpitu wirtualnego Windows](https://rdweb.wvd.microsoft.com).
-7. Przejdź do **opcja zgody** > **aplikację kliencką**wprowadź tej samej nazwie dzierżawy usługi Azure Active Directory lub identyfikator katalogu, a następnie wybierz pozycję **przesyłania**.
-8. Zaloguj się do strona zgody użytkownika pulpitu wirtualnego Windows jako administrator globalny, ponieważ użytkownik krok 3.
-9. Wybierz pozycję **Zaakceptuj**.
+1. Otwórz przeglądarkę i Rozpocznij przepływ zgody administratora na [aplikację serwera pulpitu wirtualnego systemu Windows](https://login.microsoftonline.com/common/adminconsent?client_id=5a0aa725-4958-4b0c-80a9-34562e23f3b7&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback).
+   > [!NOTE]
+   > W przypadku zarządzania klientem i konieczności udzielenia zgody administratora na katalog klienta wprowadź następujący adres URL w przeglądarce i Zastąp ciąg {dzierżawca} nazwą domeny usługi Azure AD. Na przykład jeśli organizacja klienta zarejestrowała nazwę domeny usługi Azure AD contoso.onmicrosoft.com, Zastąp ciąg {dzierżawca} z contoso.onmicrosoft.com.
+   >```
+   >https://login.microsoftonline.com/{tenant}/adminconsent?client_id=5a0aa725-4958-4b0c-80a9-34562e23f3b7&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback
+   >```
 
-## <a name="assign-the-tenantcreator-application-role-to-a-user-in-your-azure-active-directory-tenant"></a>Przypisanie roli aplikacji TenantCreator do użytkownika w dzierżawie usługi Azure Active Directory
+2. Zaloguj się na stronie zgody na pulpit wirtualny systemu Windows przy użyciu konta administratora globalnego. Na przykład jeśli jesteś w organizacji contoso, Twoje konto może być admin@contoso.com lub. admin@contoso.onmicrosoft.com  
+3. Wybierz pozycję **Zaakceptuj**.
+4. Poczekaj chwilę, aby usługa Azure AD mogła rejestrować zgodę.
+5. Otwórz przeglądarkę i Rozpocznij przepływ zgody administratora na [aplikację klienta pulpitu wirtualnego systemu Windows](https://login.microsoftonline.com/common/adminconsent?client_id=fa4345a4-a730-4230-84a8-7d9651b86739&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback).
+   >[!NOTE]
+   > W przypadku zarządzania klientem i konieczności udzielenia zgody administratora na katalog klienta wprowadź następujący adres URL w przeglądarce i Zastąp ciąg {dzierżawca} nazwą domeny usługi Azure AD. Na przykład jeśli organizacja klienta zarejestrowała nazwę domeny usługi Azure AD contoso.onmicrosoft.com, Zastąp ciąg {dzierżawca} z contoso.onmicrosoft.com.
+   >```
+   > https://login.microsoftonline.com/{tenant}/adminconsent?client_id=fa4345a4-a730-4230-84a8-7d9651b86739&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback
+   >```
 
-Przypisanie użytkownika usługi Azure Active Directory TenantCreator roli aplikacji umożliwia użytkownikowi utworzenie dzierżawy Windows pulpit wirtualny skojarzony z wystąpieniem usługi Azure Active Directory. Należy użyć konta administratora globalnego usługi, aby przypisać rolę TenantCreator.
+6. Zaloguj się na stronie zgody pulpitu wirtualnego systemu Windows jako Administrator globalny, tak jak w kroku 2.
+7. Wybierz pozycję **Zaakceptuj**.
 
-Aby przypisać rolę TenantCreator aplikacji:
+## <a name="assign-the-tenantcreator-application-role-to-a-user-in-your-azure-active-directory-tenant"></a>Przypisywanie roli aplikacji TenantCreator do użytkownika w dzierżawie Azure Active Directory
 
-1. Otwórz przeglądarkę i połącz się z [witryny Azure portal](https://portal.azure.com) przy użyciu konta administratora globalnego.
+Przypisanie użytkownika Azure Active Directory rola aplikacji TenantCreator umożliwia temu użytkownikowi utworzenie dzierżawy pulpitu wirtualnego systemu Windows skojarzonej z wystąpieniem Azure Active Directory. Musisz użyć konta administratora globalnego, aby przypisać rolę TenantCreator.
+
+Aby przypisać rolę aplikacji TenantCreator:
+
+1. Otwórz przeglądarkę i Połącz się z [Azure Portal](https://portal.azure.com) przy użyciu konta administratora globalnego.
    
-   Jeśli pracujesz z wieloma dzierżawami usługi Azure Active Directory, jest najlepszym rozwiązaniem, aby otworzyć sesję przeglądarki prywatnej i skopiuj i Wklej adresy URL na pasku adresu.
-2. Na pasku wyszukiwania w witrynie Azure portal Wyszukaj **aplikacje dla przedsiębiorstw** i wybierz wpis, który pojawia się w obszarze **usług** kategorii.
-3. W ramach **aplikacje dla przedsiębiorstw**, wyszukaj **pulpitu wirtualnego Windows**. Zostaną wyświetlone dwie aplikacje, pod warunkiem zgodę dotyczącą w poprzedniej sekcji. Te dwie aplikacje, wybierz **pulpitu wirtualnego Windows**.
-   ![Zrzut ekranu przedstawiający wyniki wyszukiwania, aby wyszukać "Pulpitu wirtualnego Windows" w "Aplikacje dla przedsiębiorstw." Aplikacja o nazwie "Windows pulpit wirtualny" zostanie wyróżniona.](media/tenant-enterprise-app.png)
-4. Wybierz pozycję **Użytkownicy i grupy**. Można napotkać, że administrator, który uzyska zatwierdzenie do aplikacji jest już wyświetlany na liście **domyślnego dostępu** przypisanej roli. To nie jest wystarczająco, aby utworzyć dzierżawę Windows pulpitu wirtualnego. Postępuj zgodnie z tymi instrukcjami, aby dodać **TenantCreator** roli do użytkownika.
-   ![Zrzut ekranu użytkowników i grup przypisanych do zarządzania aplikacją przedsiębiorstwa "Pulpitu wirtualnego Windows". Zrzut ekranu przedstawia tylko jedno przypisanie, które jest "Domyślnego dostępu".](media/tenant-default-access.png)
-5. Wybierz **Dodaj użytkownika**, a następnie wybierz pozycję **użytkowników i grup** w **Dodaj przydziału** bloku.
-6. Wyszukiwanie konta użytkownika, który spowoduje utworzenie dzierżawy Windows pulpitu wirtualnego. Dla uproszczenia może to być konto administratora globalnego.
+   Jeśli pracujesz z wieloma dzierżawcami Azure Active Directory, najlepszym rozwiązaniem jest otwarcie sesji przeglądarki prywatnej i skopiowanie i wklejenie adresów URL na pasku adresu.
+2. Na pasku wyszukiwania w Azure Portal Wyszukaj **aplikacje dla przedsiębiorstw** i wybierz wpis, który pojawia się w kategorii **usługi** .
+3. W obszarze **aplikacje dla przedsiębiorstw**Wyszukaj pozycję **pulpit wirtualny systemu Windows**. Zobaczysz dwie aplikacje, które podano w poprzedniej sekcji. Z tych dwóch aplikacji wybierz pozycję **pulpit wirtualny systemu Windows**.
+   ![Zrzut ekranu przedstawiający wyniki wyszukiwania podczas wyszukiwania "pulpit wirtualny systemu Windows" w "aplikacje dla przedsiębiorstw". Aplikacja o nazwie "pulpit wirtualny systemu Windows" jest wyróżniona.](media/tenant-enterprise-app.png)
+4. Wybierz pozycję **Użytkownicy i grupy**. Może się okazać, że administrator, który udzielił zgody na dostęp do aplikacji, znajduje się już na liście z domyślną przypisaną rolą **dostępu** . Nie jest to wystarczające, aby utworzyć dzierżawę pulpitu wirtualnego systemu Windows. Wykonaj poniższe instrukcje, aby dodać rolę **TenantCreator** do użytkownika.
+   ![Zrzut ekranu użytkowników i grup przypisanych do zarządzania aplikacją Enterprise "pulpit wirtualny systemu Windows". Zrzut ekranu zawiera tylko jedno przypisanie, które jest przeznaczone dla "dostępu domyślnego".](media/tenant-default-access.png)
+5. Wybierz pozycję **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w bloku **Dodaj przypisanie** .
+6. Wyszukaj konto użytkownika, które będzie tworzyć dzierżawcę pulpitów wirtualnych systemu Windows. Dla uproszczenia może to być konto administratora globalnego.
 
-   ![Zrzut ekranu przedstawiający wybór użytkownika do dodania jako "TenantCreator."](media/tenant-assign-user.png)
+   ![Zrzut ekranu przedstawiający Wybieranie użytkownika do dodania jako "TenantCreator".](media/tenant-assign-user.png)
 
    > [!NOTE]
-   > Należy wybrać użytkownika (lub grupy, która zawiera użytkownika), pochodzi z tego wystąpienia usługi Azure Active Directory. Nie możesz wybrać użytkownika-gościa (B2B) lub ta jednostka usługi.
+   > Musisz wybrać użytkownika (lub grupę zawierającą użytkownika), która jest źródłem z tego wystąpienia Azure Active Directory. Nie możesz wybrać użytkownika (B2B) ani nazwy głównej usługi.
 
-7. Wybierz konto użytkownika, wybierz pozycję **wybierz** przycisk, a następnie wybierz **przypisać**.
-8. Na **pulpitu wirtualnego Windows - użytkownicy i grupy** upewnij się, że zostanie wyświetlony nowy wpis o **TenantCreator** roli przypisanej do użytkownika, który utworzy dzierżawę Windows pulpitu wirtualnego.
-   ![Zrzut ekranu użytkowników i grup przypisanych do zarządzania aplikacją przedsiębiorstwa "Pulpitu wirtualnego Windows". Zrzut ekranu zawiera teraz drugi wpis użytkownika przypisanego do roli "TenantCreator".](media/tenant-tenant-creator-added.png)
+7. Wybierz konto użytkownika, wybierz przycisk **Wybierz** , a następnie wybierz pozycję **Przypisz**.
+8. Na stronie **pulpity wirtualne systemu Windows — użytkownicy i grupy** Sprawdź, czy jest wyświetlany nowy wpis z rolą **TenantCreator** przypisaną do użytkownika, który utworzy dzierżawę pulpitów wirtualnych systemu Windows.
+   ![Zrzut ekranu użytkowników i grup przypisanych do zarządzania aplikacją Enterprise "pulpit wirtualny systemu Windows". Zrzut ekranu zawiera teraz drugą pozycję użytkownika przypisaną do roli "TenantCreator".](media/tenant-tenant-creator-added.png)
 
-Przed kontynuowaniem utworzyć swoją dzierżawę pulpitu wirtualnego Windows potrzebne są dwa rodzaje informacji:
-- Identyfikator dzierżawy usługi Azure Active Directory (lub **identyfikator katalogu**)
+Przed kontynuowaniem tworzenia dzierżawy pulpitu wirtualnego systemu Windows potrzebne są dwie informacje:
+- Identyfikator dzierżawy Azure Active Directory (lub **Identyfikator katalogu**)
 - Identyfikator subskrypcji platformy Azure
 
-Aby znaleźć swój identyfikator dzierżawy usługi Azure Active Directory (lub **identyfikator katalogu**):
-1. W tej samej sesji portalu Azure, wyszukaj **usługi Azure Active Directory** w pasku wyszukiwania i wybierz wpis, który pojawia się w obszarze **usług** kategorii.
-   ![Zrzut ekranu przedstawiający wyniki wyszukiwania dla "Azure Active Directory" w witrynie Azure portal. Wynik wyszukiwania w obszarze "Usługi" zostanie wyróżniona.](media/tenant-search-azure-active-directory.png)
-2. Przewiń w dół, aż znajdziesz **właściwości**, a następnie wybierz ją.
-3. Wyszukaj **identyfikator katalogu**, a następnie wybierz ikonę Schowka. Wkleić ją w poręczne miejsce, aby można było używać nowszego jako **AadTenantId** wartości.
-   ![Zrzut ekranu przedstawiający właściwości usługi Azure Active Directory. Po umieszczeniu wskaźnika myszy na ikonie Schowka "Identyfikator katalogu" skopiować i wkleić.](media/tenant-directory-id.png)
+Aby znaleźć identyfikator dzierżawy Azure Active Directory (lub **Identyfikator katalogu**):
+1. W tej samej sesji Azure Portal Wyszukaj pozycję **Azure Active Directory** na pasku wyszukiwania i wybierz pozycję, która pojawia się w obszarze kategorii **usługi** .
+   ![Zrzut ekranu przedstawiający wyniki wyszukiwania dla "Azure Active Directory" w Azure Portal. Zostanie wyróżniony wynik wyszukiwania w obszarze "usługi".](media/tenant-search-azure-active-directory.png)
+2. Przewiń w dół do momentu znalezienia **Właściwości**, a następnie wybierz ją.
+3. Wyszukaj **Identyfikator katalogu**, a następnie wybierz ikonę schowka. Wklej ją w wygodnym miejscu, aby można było użyć jej później jako wartości **AadTenantId** .
+   ![Zrzut ekranu przedstawiający właściwości Azure Active Directory. Wskaźnik myszy znajduje się nad ikoną schowka dla "identyfikator katalogu", aby skopiować i wkleić.](media/tenant-directory-id.png)
 
-Aby znaleźć swój identyfikator subskrypcji platformy Azure:
-1. W tej samej sesji portalu Azure, wyszukaj **subskrypcje** w pasku wyszukiwania i wybierz wpis, który pojawia się w obszarze **usług** kategorii.
-   ![Zrzut ekranu przedstawiający wyniki wyszukiwania dla "Azure Active Directory" w witrynie Azure portal. Wynik wyszukiwania w obszarze "Usługi" zostanie wyróżniona.](media/tenant-search-subscription.png)
-2. Wybierz subskrypcję platformy Azure, którego chcesz użyć, aby otrzymywać powiadomienia usługi Windows pulpitu wirtualnego.
-3. Wyszukaj **identyfikator subskrypcji**, a następnie umieść kursor nad wartością, aż pojawi się ikona Schowka. Wybierz ikonę Schowka i wkleić ją w poręczne miejsce, aby można było używać nowszego jako **AzureSubscriptionId** wartości.
-   ![Zrzut ekranu przedstawiający właściwości subskrypcji platformy Azure. Przycisk myszy po umieszczeniu wskaźnika myszy na ikonie Schowka dla subskrypcji "ID" do kopiowania i wklejania.](media/tenant-subscription-id.png)
+Aby znaleźć identyfikator subskrypcji platformy Azure:
+1. W tej samej sesji Azure Portal Wyszukaj pozycję **subskrypcje** na pasku wyszukiwania i wybierz pozycję, która jest wyświetlana w kategorii **usługi** .
+   ![Zrzut ekranu przedstawiający wyniki wyszukiwania dla "Azure Active Directory" w Azure Portal. Zostanie wyróżniony wynik wyszukiwania w obszarze "usługi".](media/tenant-search-subscription.png)
+2. Wybierz subskrypcję platformy Azure, której chcesz używać do odbierania powiadomień usługi pulpitu wirtualnego systemu Windows.
+3. Poszukaj **identyfikatora subskrypcji**, a następnie umieść wskaźnik myszy nad wartością, dopóki nie zostanie wyświetlona ikona Schowka. Wybierz ikonę schowka i wklej ją w wygodnym miejscu, aby można było użyć jej później jako wartości **AzureSubscriptionId** .
+   ![Zrzut ekranu przedstawiający właściwości subskrypcji platformy Azure. Wskaźnik myszy znajduje się nad ikoną schowka dla "Identyfikator subskrypcji", aby skopiować i wkleić.](media/tenant-subscription-id.png)
 
-## <a name="create-a-windows-virtual-desktop-preview-tenant"></a>Tworzenie dzierżawy Windows wirtualnego pulpitu (wersja zapoznawcza)
+## <a name="create-a-windows-virtual-desktop-preview-tenant"></a>Tworzenie dzierżawy w wersji zapoznawczej pulpitu wirtualnego systemu Windows
 
-Skoro już przyznane uprawnienia usługi pulpitu wirtualnego Windows do wykonywania zapytań w usłudze Azure Active Directory i przypisano rolę TenantCreator do konta użytkownika, możesz utworzyć dzierżawę Windows pulpitu wirtualnego.
+Teraz, gdy masz uprawnienia usługi pulpitu wirtualnego systemu Windows do wykonywania zapytań Azure Active Directory i przypisywania roli TenantCreator do konta użytkownika, możesz utworzyć dzierżawę pulpitu wirtualnego systemu Windows.
 
-Po pierwsze, [Pobierz i zaimportuj moduł programu Windows pulpitu wirtualnego](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) do użycia w sesji programu PowerShell, jeśli jeszcze go.
+Najpierw [Pobierz i zaimportuj moduł pulpitu wirtualnego systemu Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , który ma być używany w sesji programu PowerShell, jeśli jeszcze tego nie zrobiono.
 
-Zaloguj się do Windows pulpitu wirtualnego przy użyciu konta użytkownika TenantCreator za pomocą tego polecenia cmdlet:
+Zaloguj się do pulpitu wirtualnego systemu Windows przy użyciu konta użytkownika TenantCreator za pomocą tego polecenia cmdlet:
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ```
 
-Po tym należy utworzyć nową dzierżawę Windows pulpit wirtualny skojarzony z dzierżawą usługi Azure Active Directory:
+Następnie utwórz nową dzierżawę pulpitu wirtualnego systemu Windows skojarzoną z dzierżawcą Azure Active Directory:
 
 ```powershell
 New-RdsTenant -Name <TenantName> -AadTenantId <DirectoryID> -AzureSubscriptionId <SubscriptionID>
 ```
 
-Zastąp wartości w nawiasach kwadratowych wartości odpowiednich dla Twojej firmy i dzierżawy. Nazwa, wybrany dla nowej dzierżawy pulpitu wirtualnego Windows powinna być unikatowa w skali globalnej. Załóżmy na przykład, że jesteś Windows TenantCreator pulpitu wirtualnego w organizacji Contoso. Polecenia cmdlet, które należy uruchomić następujące polecenie będzie wyglądać następująco:
+Zastąp wartości ujęte w nawiasy wartościami istotnymi dla Twojej organizacji i dzierżawy. Wybrana nazwa nowej dzierżawy pulpitu wirtualnego systemu Windows powinna być globalnie unikatowa. Załóżmy na przykład, że jesteś TenantCreator pulpitu wirtualnego systemu Windows dla organizacji contoso. Uruchomione polecenie cmdlet będzie wyglądać następująco:
 
 ```powershell
 New-RdsTenant -Name Contoso -AadTenantId 00000000-1111-2222-3333-444444444444 -AzureSubscriptionId 55555555-6666-7777-8888-999999999999
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Po utworzeniu dzierżawy należy utworzyć usługę podmiotu zabezpieczeń w usłudze Azure Active Directory i przypisać ją w roli w ramach pulpitu wirtualnego Windows. Nazwa główna usługi pozwala pomyślne wdrożenie Windows wirtualnego pulpitu portalu Azure Marketplace oferty utworzyć pulę hosta. Aby dowiedzieć się więcej o pulach hosta, przejdź do samouczka związane z tworzeniem puli hosta w Windows pulpitu wirtualnego.
+Po utworzeniu dzierżawy należy utworzyć nazwę główną usługi w Azure Active Directory i przypisać ją do roli w ramach pulpitu wirtualnego systemu Windows. Jednostka usługi umożliwi pomyślne wdrożenie oferty Azure Marketplace pulpitu wirtualnego systemu Windows w celu utworzenia puli hostów. Aby dowiedzieć się więcej na temat pul hostów, przejdź do samouczka dotyczącego tworzenia puli hostów w programie Virtual Desktop systemu Windows.
 
 > [!div class="nextstepaction"]
 > [Tworzenie jednostek usługi i przypisań ról za pomocą programu PowerShell](./create-service-principal-role-powershell.md)

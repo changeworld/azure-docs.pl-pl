@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 05e2375998b3bce4320b2d66ab7fce44cd911dcc
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 6767644e037c6abb3e3044c8707e923a9137a01c
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479125"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019544"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>Zarządzanie kosztami i użyciem AWS na platformie Azure
 
@@ -138,7 +138,7 @@ Istnieją dwa sposoby uzyskania uprawnień dostępu do AWS połączonych kont:
 
 Domyślnie twórca łącznika AWS jest właścicielem wszystkich obiektów utworzonych przez łącznik. Dotyczy to również skonsolidowanego konta AWS i połączonego konta AWS.
 
-Aby możliwe było zweryfikowanie ustawień łączników, musisz mieć co najmniej rolę współautora, nie można zweryfikować ustawień łącznika
+Aby możliwe było zweryfikowanie ustawień łączników, musisz mieć co najmniej rolę współautor, czytnik nie może zweryfikować ustawień łącznika
 
 ### <a name="collection-failed-with-assumerole"></a>Zbieranie nie powiodło się z AssumeRole
 
@@ -181,6 +181,6 @@ Ten błąd oznacza, że Cost Management nie może znaleźć raportu kosztów i u
 
 Ten błąd jest związany z definicją raportu o kosztach i użyciu AWS, ale wymagamy określonych ustawień dla tego raportu, zobacz temat wymagania w temacie [Tworzenie kosztów i użycie w AWS](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Jeśli środowisko platformy Azure nie zostało jeszcze skonfigurowane w grupach zarządzania, zobacz [początkowa konfiguracja grup zarządzania](../governance/management-groups/index.md#initial-setup-of-management-groups).

@@ -1,56 +1,56 @@
 ---
-title: Jak utworzyć funkcje zdefiniowane przez użytkownika w reprezentacji urządzeń cyfrowych platformy Azure | Dokumentacja firmy Microsoft
-description: Jak tworzyć funkcje zdefiniowane przez użytkownika, dopasowujące jednostki i przypisań ról w reprezentacji urządzeń cyfrowych platformy Azure.
+title: Jak utworzyć funkcje zdefiniowane przez użytkownika w usłudze Azure Digital bliźniaczych reprezentacji | Microsoft Docs
+description: Jak utworzyć funkcje zdefiniowane przez użytkownika, przydziały i przypisania ról w usłudze Azure Digital bliźniaczych reprezentacji.
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 06/06/2019
+ms.date: 08/12/2019
 ms.author: alinast
 ms.custom: seodec18
-ms.openlocfilehash: b5e230f45fd5889e216f2993f58adf6940ef7679
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6853ebf16c1a9d6b0d363277b22c7dd2583d37e5
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072911"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013971"
 ---
-# <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Jak utworzyć funkcje zdefiniowane przez użytkownika w reprezentacji urządzeń cyfrowych platformy Azure
+# <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Jak utworzyć funkcje zdefiniowane przez użytkownika w usłudze Azure Digital bliźniaczych reprezentacji
 
-[Funkcje zdefiniowane przez użytkownika](./concepts-user-defined-functions.md) umożliwiają użytkownikom konfigurowanie logikę niestandardową do wykonania z komunikatów przychodzących danych telemetrycznych i przestrzennych grafu metadanych. Użytkownicy mogą również wysyłać zdarzenia do wstępnie zdefiniowanych [punktów końcowych](./how-to-egress-endpoints.md).
+[Funkcje zdefiniowane przez użytkownika](./concepts-user-defined-functions.md) umożliwiają użytkownikom konfigurowanie logiki niestandardowej, która ma być wykonywana z przychodzących komunikatów telemetrycznych i metadanych grafu przestrzennego. Użytkownicy mogą również wysyłać zdarzenia do wstępnie zdefiniowanych [punktów końcowych](./how-to-egress-endpoints.md).
 
-Ten przewodnik przeprowadzi uzyskać przykład pokazujący, jak wykrywać i alert dotyczący dowolnego odczytu, które przekraczają niektórych temperatury, temperatury odebranych zdarzeń.
+W tym przewodniku przedstawiono przykład pokazujący, jak wykryć i ostrzec każdy odczyt, który przekracza określoną temperaturę z odebranych zdarzeń temperatury.
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-## <a name="client-library-reference"></a>Dokumentacja biblioteki klienckiej
+## <a name="client-library-reference"></a>Dokumentacja biblioteki klienta
 
-Funkcje dostępne jako metody pomocnicze w środowisku uruchomieniowym funkcje zdefiniowane przez użytkownika są widoczne w [informacje o bibliotece klienta](./reference-user-defined-functions-client-library.md) dokumentu.
+Funkcje dostępne jako metody pomocnika w środowisku uruchomieniowym funkcji zdefiniowanych przez użytkownika są wymienione w dokumencie [Dokumentacja biblioteki klienta](./reference-user-defined-functions-client-library.md) .
 
-## <a name="create-a-matcher"></a>Utwórz dopasowywania
+## <a name="create-a-matcher"></a>Tworzenie dopasowania
 
-Dopasowujące jednostki są obiektami programu graph, określających, funkcje zdefiniowane przez użytkownika Uruchom telemetrii danego komunikatu.
+Dopasowania są obiektami grafów, które określają, jakie funkcje zdefiniowane przez użytkownika są uruchamiane dla danego komunikatu telemetrii.
 
-- Nieprawidłowa dopasowywania warunek porównania:
+- Porównań prawidłowy warunek dopasowania:
 
   - `Equals`
   - `NotEquals`
   - `Contains`
 
-- Nieprawidłowa dopasowywania warunek cele:
+- Prawidłowe cele warunku dopasowania:
 
   - `Sensor`
   - `SensorDevice`
   - `SensorSpace`
 
-Następujące dopasowywania przykład zwraca wartość true na wszelkie zdarzenia telemetrii czujników z `"Temperature"` jako wartość typu danych. Możesz utworzyć wiele dopasowujące jednostki w funkcji zdefiniowanej przez użytkownika, wprowadzając uwierzytelnionego żądania HTTP POST do:
+Poniższy przykład dopasowania zwraca wartość true dla dowolnego zdarzenia telemetrii czujnika z `"Temperature"` wartością typu danych. Można utworzyć wiele odpowiedników dla funkcji zdefiniowanej przez użytkownika, wykonując uwierzytelnione żądanie HTTP POST:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/matchers
 ```
 
-Za pomocą treść kodu JSON:
+Z treścią JSON:
 
 ```JSON
 {
@@ -67,23 +67,23 @@ Za pomocą treść kodu JSON:
 }
 ```
 
-| Wartość | Zamień na |
+| Value | Zamień na |
 | --- | --- |
 | YOUR_SPACE_IDENTIFIER | Region serwera, w którym jest hostowane używane wystąpienie |
 
 ## <a name="create-a-user-defined-function"></a>Tworzenie funkcji zdefiniowanej przez użytkownika
 
-Tworzenie funkcji zdefiniowanej przez użytkownika polega na utworzeniu wieloczęściowego żądania HTTP do cyfrowego Twins zarządzania interfejsów API usługi Azure.
+Tworzenie funkcji zdefiniowanej przez użytkownika obejmuje utworzenie wieloczęściowego żądania HTTP do interfejsów API usługi Azure Digital bliźniaczych reprezentacji Management.
 
 [!INCLUDE [Digital Twins multipart requests](../../includes/digital-twins-multipart.md)]
 
-Po utworzeniu dopasowujące jednostki, Przekaż fragment kodu funkcji z następujących uwierzytelnionego wieloczęściowego żądanie HTTP POST do:
+Po utworzeniu dopasowań należy przekazać fragment kodu funkcji z następującym uwierzytelnionym wieloczęściowym żądaniem HTTP POST do:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/userdefinedfunctions
 ```
 
-Użyj następujących treści:
+Użyj następującej treści:
 
 ```plaintext
 --USER_DEFINED_BOUNDARY
@@ -107,24 +107,24 @@ function process(telemetry, executionContext) {
 --USER_DEFINED_BOUNDARY--
 ```
 
-| Wartość | Zamień na |
+| Value | Zamień na |
 | --- | --- |
-| USER_DEFINED_BOUNDARY | Nazwa granice zawartości wieloczęściowej wiadomości |
-| YOUR_SPACE_IDENTIFIER | Identyfikator miejsca  |
-| YOUR_MATCHER_IDENTIFIER | Identyfikator dopasowywania, którego chcesz użyć |
+| USER_DEFINED_BOUNDARY | Nazwa granicy wieloczęściowej zawartości |
+| YOUR_SPACE_IDENTIFIER | Identyfikator przestrzeni  |
+| YOUR_MATCHER_IDENTIFIER | Identyfikator obiektu odpowiadającego, którego chcesz użyć |
 
 1. Sprawdź, czy nagłówki obejmują: `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`.
-1. Sprawdź, czy treści wieloczęściowej wiadomości:
+1. Sprawdź, czy treść jest wieloczęściowa:
 
-   - Pierwsza część zawiera metadane wymagane funkcji zdefiniowanej przez użytkownika.
-   - Druga część zawiera logikę obliczeń języka JavaScript.
+   - Pierwsza część zawiera wymagane metadane funkcji zdefiniowanej przez użytkownika.
+   - Druga część zawiera logikę obliczeniową języka JavaScript.
 
-1. W **USER_DEFINED_BOUNDARY** sekcji i Zastąp **spaceId** (`YOUR_SPACE_IDENTIFIER`) i **dopasowujące jednostki** (`YOUR_MATCHER_IDENTIFIER`) wartości.
-1. Sprawdź, czy funkcja zdefiniowana przez użytkownika języka JavaScript jest dostarczany jako `Content-Type: text/javascript`.
+1. W sekcji **USER_DEFINED_BOUNDARY** Zastąp wartości **spaceId** `YOUR_SPACE_IDENTIFIER`() i **Matchs** (`YOUR_MATCHER_IDENTIFIER`).
+1. Sprawdź, czy funkcja JavaScript zdefiniowana przez użytkownika jest podana jako `Content-Type: text/javascript`.
 
-### <a name="example-functions"></a>Przykład funkcji
+### <a name="example-functions"></a>Przykładowe funkcje
 
-Ustaw telemetrii czujnik odczytu bezpośrednio dla czujnika z typem danych **temperatury**, czyli `sensor.DataType`:
+Ustaw odczytywanie danych telemetrycznych czujnika bezpośrednio dla czujnika z **temperaturą** `sensor.DataType`typu dane:
 
 ```JavaScript
 function process(telemetry, executionContext) {
@@ -140,7 +140,7 @@ function process(telemetry, executionContext) {
 }
 ```
 
-**Telemetrii** udostępnia parametru **SensorId** i **komunikat** atrybutów, odpowiadający wiadomością wysłaną przez czujnik. **Kontekście wykonywania** parametru uwidacznia następujące atrybuty:
+Parametr telemetrii uwidacznia atrybuty **SensorId** i **Message** , odpowiadające komunikatowi wysyłanemu przez czujnik. Parametr **kontekście wykonywania** uwidacznia następujące atrybuty:
 
 ```csharp
 var executionContext = new UdfExecutionContext
@@ -152,7 +152,7 @@ var executionContext = new UdfExecutionContext
 };
 ```
 
-W następnym przykładzie mamy dziennika komunikat w przypadku odczytywanie danych telemetrycznych czujnik przekracza wstępnie zdefiniowany próg. Jeśli ustawienia diagnostyki są włączone w wystąpieniu Twins cyfrowych platformy Azure, zostają przekazane dzienniki z funkcjami zdefiniowanymi przez użytkownika:
+W następnym przykładzie rejestrujemy komunikat, jeśli odczyt danych telemetrycznych czujnika przekracza wstępnie zdefiniowany próg. Jeśli ustawienia diagnostyczne są włączone w wystąpieniu usługi Azure Digital bliźniaczych reprezentacji, dzienniki funkcji zdefiniowanych przez użytkownika również są przesyłane dalej:
 
 ```JavaScript
 function process(telemetry, executionContext) {
@@ -167,7 +167,7 @@ function process(telemetry, executionContext) {
 }
 ```
 
-Poniższy kod wyzwala powiadomienie, jeśli poziom temperatury wzrośnie powyżej wstępnie zdefiniowanej stałej:
+Poniższy kod wyzwala powiadomienie, jeśli poziom temperatury rośnie powyżej wstępnie zdefiniowanej stałej:
 
 ```JavaScript
 function process(telemetry, executionContext) {
@@ -191,37 +191,37 @@ function process(telemetry, executionContext) {
 }
 ```
 
-Dla bardziej złożonego przykładu kodu funkcji zdefiniowanej przez użytkownika, zobacz [Szybki Start zajętość](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js).
+Aby uzyskać bardziej złożony przykładowy kod funkcji zdefiniowany przez użytkownika, zapoznaj się z [przewodnikiem Szybki Start](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js).
 
 ## <a name="create-a-role-assignment"></a>Utwórz przypisanie roli
 
-Utwórz przypisanie roli, funkcji zdefiniowanych przez użytkownika, uruchamiany w kontekście. Jeśli nie przypisania roli istnieje funkcja zdefiniowana przez użytkownika, nie będzie mieć odpowiednie uprawnienia do interakcji z interfejsem API zarządzania, albo mieć dostęp do wykonywania akcji względem obiektów grafu. Akcje, które może wykonywać funkcji zdefiniowanej przez użytkownika są określone i zdefiniowanych za pomocą kontroli dostępu opartej na rolach w ramach cyfrowej Twins zarządzania interfejsów API usługi Azure. Na przykład funkcje zdefiniowane przez użytkownika można ograniczyć, w zakresie, określając określone role lub niektóre ścieżki kontroli dostępu. Aby uzyskać więcej informacji, zobacz [kontroli dostępu opartej na rolach](./security-role-based-access-control.md) dokumentacji.
+Utwórz przypisanie roli dla funkcji zdefiniowanej przez użytkownika do uruchomienia. Jeśli dla funkcji zdefiniowanej przez użytkownika nie istnieje przypisanie roli, nie będzie ono miało odpowiednich uprawnień do współdziałania z interfejsem API zarządzania ani dostępu do wykonywania akcji na obiektach grafu. Akcje, które może wykonywać funkcja zdefiniowana przez użytkownika, są określane i definiowane za pośrednictwem kontroli dostępu opartej na rolach w ramach interfejsów API usługi Azure Digital bliźniaczych reprezentacji Management. Na przykład funkcje zdefiniowane przez użytkownika mogą być ograniczone do zakresu przez określenie pewnych ról lub określonych ścieżek kontroli dostępu. Aby uzyskać więcej informacji, zobacz dokumentację [kontroli dostępu opartej na rolach](./security-role-based-access-control.md) .
 
-1. [Zapytanie interfejsu API systemu](./security-create-manage-role-assignments.md#all) dla wszystkich ról uzyskać identyfikator roli, którą chcesz przypisać do funkcji zdefiniowanych przez użytkownika. To zrobić, wprowadzając uwierzytelnionego żądania HTTP GET do:
+1. [Wykonaj zapytanie dotyczące systemowego interfejsu API](./security-create-manage-role-assignments.md#all) dla wszystkich ról, aby uzyskać identyfikator roli, która ma zostać przypisana do funkcji zdefiniowanej przez użytkownika. Zrób to, wykonując uwierzytelnione żądanie HTTP GET:
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/system/roles
     ```
-   Zachowaj identyfikator odpowiednią rolę. Zostaną przekazane jako atrybut treść JSON **roleId** (`YOUR_DESIRED_ROLE_IDENTIFIER`) poniżej.
+   Zachowaj żądany identyfikator roli. Zostanie ona przeniesiona jako atrybut treści JSON **roleId** (`YOUR_DESIRED_ROLE_IDENTIFIER`) poniżej.
 
-1. **Identyfikator obiektu** (`YOUR_USER_DEFINED_FUNCTION_ID`) będzie identyfikator funkcji zdefiniowanej przez użytkownika, który został utworzony wcześniej.
-1. Znajdź wartość **ścieżki** (`YOUR_ACCESS_CONTROL_PATH`), badając Twojego miejsca do magazynowania przy użyciu `fullpath`.
-1. Skopiuj zwracanego `spacePaths` wartość. Użyjesz, poniżej. Wprowadź uwierzytelnionego żądania HTTP GET do:
+1. identyfikator obiektu (`YOUR_USER_DEFINED_FUNCTION_ID`) będzie identyfikatorem funkcji zdefiniowanej przez użytkownika, który został utworzony wcześniej.
+1. Znajdź wartość **Path** (`YOUR_ACCESS_CONTROL_PATH`), wykonując zapytania dotyczące spacji w `fullpath`.
+1. Skopiuj zwróconą `spacePaths` wartość. Użyjesz poniższego. Wykonaj uwierzytelnione żądanie HTTP GET:
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?name=YOUR_SPACE_NAME&includes=fullpath
     ```
 
-    | Wartość | Zamień na |
+    | Value | Zamień na |
     | --- | --- |
-    | YOUR_SPACE_NAME | Nazwa miejsca, do których chcesz używać |
+    | YOUR_SPACE_NAME | Nazwa miejsca, którego chcesz użyć |
 
-1. Wklej zwrócony `spacePaths` wartością do **ścieżki** można utworzyć przypisania roli funkcji zdefiniowanej przez użytkownika, wprowadzając uwierzytelnionego żądania HTTP POST do:
+1. Wklej zwróconą `spacePaths` wartość do **ścieżki** , aby utworzyć przypisanie roli funkcji zdefiniowanej przez użytkownika, wykonując uwierzytelnione żądanie HTTP Post:
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/roleassignments
     ```
-    Za pomocą treść kodu JSON:
+    Z treścią JSON:
 
     ```JSON
     {
@@ -232,28 +232,28 @@ Utwórz przypisanie roli, funkcji zdefiniowanych przez użytkownika, uruchamiany
     }
     ```
 
-    | Wartość | Zamień na |
+    | Value | Zamień na |
     | --- | --- |
-    | YOUR_DESIRED_ROLE_IDENTIFIER | Identyfikator odpowiednią rolę |
-    | YOUR_USER_DEFINED_FUNCTION_ID | Identyfikator funkcji zdefiniowanej przez użytkownika, którego chcesz użyć |
+    | YOUR_DESIRED_ROLE_IDENTIFIER | Identyfikator żądanej roli |
+    | YOUR_USER_DEFINED_FUNCTION_ID | Identyfikator funkcji zdefiniowanej przez użytkownika, która ma być używana |
     | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | Identyfikator określający typ funkcji zdefiniowanej przez użytkownika |
     | YOUR_ACCESS_CONTROL_PATH | Ścieżka kontroli dostępu |
 
 >[!TIP]
-> Przeczytaj artykuł [jak tworzyć i zarządzać przypisaniami ról](./security-create-manage-role-assignments.md) Aby uzyskać więcej informacji na temat funkcji zdefiniowanej przez użytkownika operacji interfejsu API usługi zarządzania i punktów końcowych.
+> Zapoznaj się z artykułem [jak utworzyć przypisania ról i zarządzać nimi,](./security-create-manage-role-assignments.md) Aby uzyskać więcej informacji o operacjach i punktach końcowych interfejsu API zarządzania funkcjami zdefiniowanym przez użytkownika.
 
-## <a name="send-telemetry-to-be-processed"></a>Wysyłanie danych telemetrycznych do przetworzenia
+## <a name="send-telemetry-to-be-processed"></a>Wyślij dane telemetryczne do przetworzenia
 
-Czujnik zdefiniowane na wykresie analizy przestrzennej wysyła dane telemetryczne. Z kolei telemetrii wyzwala wykonanie funkcji zdefiniowanej przez użytkownika, który został przekazany. Procesor danych przejmuje dane telemetryczne. Plan wykonania jest tworzona dla wywołania funkcji zdefiniowanej przez użytkownika.
+Czujnik zdefiniowany w grafie analizy przestrzennej wysyła dane telemetryczne. Z kolei Telemetria wyzwala wykonywanie przekazanej funkcji zdefiniowanej przez użytkownika. Procesor danych odbiera dane telemetryczne. Następnie tworzony jest plan wykonania dla wywołania funkcji zdefiniowanej przez użytkownika.
 
-1. Pobierz dopasowujące jednostki dla odczytu została wygenerowana z czujnika.
-1. W zależności od tego, jakie dopasowujące jednostki zostały spełnione należy pobrać skojarzone funkcje zdefiniowane przez użytkownika.
-1. Wykonywanie poszczególnych funkcji zdefiniowanej przez użytkownika.
+1. Pobierz odpowiedniki dla czujnika, z którego zostało wygenerowane odczytanie.
+1. W zależności od tego, które dopasowania zostały pomyślnie ocenione, Pobierz skojarzone funkcje zdefiniowane przez użytkownika.
+1. Wykonaj każdą funkcję zdefiniowaną przez użytkownika.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się, jak [utworzyć punkty końcowe Azure cyfrowego bliźniaczych reprezentacji](./how-to-egress-endpoints.md) do wysyłania zdarzeń do.
+- Dowiedz się, jak [tworzyć punkty końcowe usługi Azure Digital bliźniaczych reprezentacji](./how-to-egress-endpoints.md) do wysyłania zdarzeń do programu.
 
-- Aby uzyskać więcej szczegółów na temat routingu w reprezentacji urządzeń cyfrowych platformy Azure, przeczytaj [Routing zdarzeń i komunikatów](./concepts-events-routing.md).
+- Aby uzyskać więcej informacji na temat routingu w usłudze Azure Digital bliźniaczych reprezentacji, Odczytaj [zdarzenia i komunikaty routingu](./concepts-events-routing.md).
 
-- Przegląd [klienta biblioteki dokumentacji](./reference-user-defined-functions-client-library.md).
+- Zapoznaj się z [dokumentacją dotyczącą biblioteki klienta](./reference-user-defined-functions-client-library.md).

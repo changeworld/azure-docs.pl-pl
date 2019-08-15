@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: 836a17051aee4e6a9ac3089f60da30673783e408
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: a80f99bc37d3a92a794a78f1f47ce32fbaae75a3
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875964"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989167"
 ---
 # <a name="azure-monitor-overview"></a>Omówienie usługi Azure Monitor
 
@@ -83,7 +83,7 @@ Dane monitorowania są przydatne tylko wtedy, gdy mogą zwiększyć widoczność
 [Azure monitor dla maszyn wirtualnych](insights/vminsights-overview.md) monitoruje maszyny wirtualne platformy Azure na dużą skalę, analizując wydajność i kondycję maszyn wirtualnych z systemami Windows i Linux, w tym różne procesy i połączone zależności od innych zasobów i zewnętrznych przetwarzające. Rozwiązanie obejmuje obsługę monitorowania wydajności i zależności aplikacji dla maszyn wirtualnych hostowanych lokalnie lub w innym dostawcy chmury.  
 
 
-![Szczegółowe informacje o maszynie wirtualnej](media/overview/vm-insights.png)
+![VM Insights](media/overview/vm-insights.png)
 
 ### <a name="monitoring-solutions"></a>Rozwiązania do monitorowania
 [Rozwiązania do monitorowania](insights/solutions.md) w Azure monitor są spakowanymi zestawami logiki, które zapewniają wgląd w konkretną aplikację lub usługę. Obejmują one logikę zbierania danych monitorowania dla aplikacji lub usługi, [zapytania](log-query/log-query-overview.md) do analizy tych danych i [widoki](../log-analytics/log-analytics-view-designer.md) do wizualizacji. Rozwiązania do monitorowania są [dostępne od firmy Microsoft](insights/solutions-inventory.md) i partnerów w celu zapewnienia monitorowania różnych usług platformy Azure i innych aplikacji.
@@ -146,3 +146,4 @@ Dowiedz się więcej o usługach:
 * [Metryki i dzienniki](platform/data-platform.md) dla danych zbieranych przez Azure monitor.
 * [Źródła danych](platform/data-sources.md) , dla których różne składniki aplikacji wysyłają dane telemetryczne.
 * [Zapytania dzienników](log-query/log-query-overview.md) do analizowania zebranych danych.
+* [Najlepsze rozwiązania](https://docs.microsoft.com/azure/architecture/best-practices/monitoring) dotyczące monitorowania aplikacji i usług w chmurze.

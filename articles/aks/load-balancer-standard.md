@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: zarhoads
-ms.openlocfilehash: a9cf3db3a15fab5a2f067a146950e02923a20379
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 4e234d3849e09bd8c57a8c33bb378ab801ce0f6d
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "67476805"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019463"
 ---
 # <a name="preview---use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Wersja zapoznawcza — używanie standardowego modułu równoważenia obciążenia jednostki SKU w usłudze Azure Kubernetes Service (AKS)
 
@@ -92,6 +92,7 @@ Podczas tworzenia klastrów AKS i zarządzania nimi, które obsługują moduł r
 
 * W przypadku korzystania z *standardowej* jednostki SKU usługi równoważenia obciążenia należy zezwolić na publiczne adresy i uniknąć tworzenia Azure Policy, które zakazują tworzenie adresów IP. Klaster AKS automatycznie tworzy publiczny adres IP jednostki SKU w tej samej grupie zasobów utworzonej dla klastra AKS, który zwykle nosi nazwę z *MC_* na początku. AKS przypisuje publiczny adres IP do modułu równoważenia obciążenia *standardowej* jednostki SKU. Publiczny adres IP jest wymagany do zezwalania na ruch wychodzący z klastra AKS. Ten publiczny adres IP jest również wymagany do utrzymania łączności między płaszczyzną kontroli a węzłami agenta, a także w celu zachowania zgodności z poprzednimi wersjami AKS.
 * W przypadku korzystania z *standardowej* jednostki SKU dla modułu równoważenia obciążenia należy użyć Kubernetes w wersji 1.13.5 lub nowszej.
+* W przypadku korzystania z [funkcji publicznego adresu IP węzła](use-multiple-node-pools.md#assign-a-public-ip-per-node-in-a-node-pool) z usługami równoważenia obciążenia w warstwie Standardowa można ustawić dla węzła regułę wychodzącą lub publiczny adres IP. Należy wybrać jedną lub drugą, ponieważ jednej maszyny wirtualnej nie można dołączyć jednocześnie do reguły ruchu wychodzącego modułu równoważenia obciążenia i publicznego adresu IP.
 
 Chociaż ta funkcja jest dostępna w wersji zapoznawczej, obowiązują następujące dodatkowe ograniczenia:
 
@@ -135,7 +136,6 @@ az aks create \
     --name myAKSCluster \
     --enable-vmss \
     --node-count 1 \
-    --kubernetes-version 1.14.0 \
     --load-balancer-sku standard \
     --generate-ssh-keys
 ```
@@ -166,7 +166,7 @@ Poniższe przykładowe dane wyjściowe zawierają jeden węzeł utworzony w popr
 
 ```
 NAME                       STATUS   ROLES   AGE     VERSION
-aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.14.0
+aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.13.9
 ```
 
 ## <a name="verify-your-cluster-uses-the-standard-sku"></a>Weryfikowanie, czy klaster używa *standardowej* jednostki SKU

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/1/2018
 ms.author: pabutler
-ms.openlocfilehash: dcba2b40bdcf4558f7a06f7e14d0ce654a9c1ec1
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 35134d828098af0cff3d585dee600ee1808b00c4
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876075"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013635"
 ---
 # <a name="private-offers"></a>Oferty prywatne
 
@@ -50,9 +50,6 @@ Oferty prywatne są wykrywalne wyłącznie za pośrednictwem [Azure Portal](http
 
 Oferty prywatne będą również wyświetlane w wynikach wyszukiwania. Po prostu wyszukaj wskaźnik "prywatny".
 
-> [!Note]
-> Oferty prywatne nie są obsługiwane w przypadku subskrypcji ustanowionych przez odsprzedawcę programu dostawcy rozwiązań w chmurze (CSP).
-
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Jeśli chcesz korzystać z tych nowych funkcji, możesz zacząć sprzedawać w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/sell).

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08be09f7bee3aa17ff9d1baae4271e994fa235cb
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 3b7265f8d5ec4b7336253787e9cb881900a52b79
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248879"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963443"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Najlepsze rozwiązania dotyczące dostępu warunkowego w Azure Active Directory
 
@@ -35,7 +35,7 @@ Podczas tworzenia nowych zasad nie wybrano żadnych użytkowników, grup, aplika
 
 Aby zasady działały, należy skonfigurować:
 
-| Elementy           | Jaka                                  | Zalet |
+| Co           | Jaka                                  | Zalet |
 | :--            | :--                                  | :-- |
 | **Aplikacje w chmurze** |Wybierz co najmniej jedną aplikację.  | Celem zasad dostępu warunkowego jest umożliwienie kontroli nad sposobem, w jaki autoryzowani użytkownicy mogą uzyskiwać dostęp do aplikacji w chmurze.|
 | **Użytkownicy i grupy** | Wybierz co najmniej jednego użytkownika lub grupę, która ma uprawnienia dostępu do wybranych aplikacji w chmurze. | Zasady dostępu warunkowego, które nie mają przypisanych użytkowników i grup, nigdy nie są wyzwalane. |
@@ -50,7 +50,8 @@ Podczas uzyskiwania dostępu do aplikacji w chmurze mogą być stosowane więcej
 Wszystkie zasady są wymuszane w dwóch fazach:
 
 - W **pierwszej** fazie są oceniane wszystkie zasady i wszystkie kontrole dostępu, które nie zostały spełnione. 
-- W **drugiej** fazie zostanie wyświetlony monit o spełnienie wymagań, które nie zostały spełnione. Jeśli jedna z zasad blokuje dostęp, zostanie zablokowana i nie zostanie wyświetlony monit o spełnienie innych kontroli zasad. Jeśli zasady zostaną zablokowane, zostanie wyświetlony monit o spełnienie innych kontroli zasad w następującej kolejności:
+
+- W **drugiej** fazie zostanie wyświetlony monit o spełnienie wymagań, które nie zostały spełnione. Jeśli jedna z zasad blokuje dostęp, zostanie zablokowana i nie zostanie wyświetlony monit o spełnienie innych kontroli zasad. Jeśli żaden z tych zasad nie zostanie zablokowany, zostanie wyświetlony monit o spełnienie innych kontroli zasad w następującej kolejności:
 
    ![Zamówienie](./media/best-practices/06.png)
     

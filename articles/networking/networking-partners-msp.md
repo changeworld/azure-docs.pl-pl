@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sukishen
-ms.openlocfilehash: 62f73f17d598cb2a22ef57d3ec0bcf91b8852298
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 77f04b9688be2a7b7343bac05b24a3fcd4e0fcde
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728787"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019700"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Informacje o partnerach MSP sieci platformy Azure
 
@@ -24,9 +24,11 @@ Usługa Azure Network msp to wyspecjalizowany zbiór dostawców usług zarządza
 
 Klienci mogą kupić oferty usług zarządzanych przez MSP w portalu Azure Marketplace lub bezpośrednio z MSP. Usługa msp umożliwia wdrażanie zasobów sieciowych platformy Azure i zarządzanie nimi w ramach subskrypcji i grup zasobów klientów przy użyciu usługi Azure Lighthouse.
 
-## <a name="msp"></a>Partnerzy MSP
+## <a name="msp"></a>Partnerzy MSP sieci platformy Azure
 
 Skorzystaj z linków w tej sekcji, aby uzyskać więcej informacji na temat zarządzanych usług sieciowych w chmurze oferowanych przez partnerów MSP dla sieci platformy Azure. Jeśli partner usług sieci w chmurze nie jest wymieniony w poniższej sekcji, skontaktuj się z nami. Mogą skontaktować się z nami, wysyłając wiadomość ManagedVirtualWAN@microsoft.come-mail na adres. 
+
+[ANS — Grupa UK](https://www.ans.co.uk/)
 
 [Sieci aryaka Networks](https://www.aryaka.com/)
 
@@ -43,6 +45,8 @@ Skorzystaj z linków w tej sekcji, aby uzyskać więcej informacji na temat zarz
 [ixreach](https://www.ixreach.com/)
 
 [Megaport](https://www.megaport.com/)
+
+[Cloud Services oncore]( https://www.oncore.cloud/services/ue-for-expressroute/)
 
 [Tata Communications](https://www.tatacommunications.com/)
 

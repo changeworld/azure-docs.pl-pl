@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/24/2019
 ms.author: banders
-ms.openlocfilehash: 1afd78a0525be523f677cf0146c8a120155130ea
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1842d32a838470d9b2af3a778c44c37464d32294
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68554680"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954343"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Zapoznaj się z postanowieniami dotyczącymi pliku użycia i opłat związanych z platformą Azure
 
@@ -26,7 +26,7 @@ W poniższej tabeli przedstawiono opłaty za poszczególne typy kont.
 
 Typ konta | Użycie platformy Azure | Użycie witryny Marketplace | Kupione | Zwroty
 --- | --- | --- | --- | ---
-Enterprise Agreement (EA) | Yes | Yes | Yes | Nie
+Enterprise Agreement (EA) | Tak | Yes | Yes | Nie
 Umowa klienta firmy Microsoft | Tak | Yes | Yes | Tak
 Płatność zgodnie z rzeczywistym użyciem (PAYG) | Tak | Yes | Nie | Nie
 
@@ -43,46 +43,46 @@ Lista obejmuje konta płatność zgodnie z rzeczywistym użyciem (PAYG), Umowa E
 Termin | Typ konta | Opis
 --- | --- | ---
 Nazwa konta | EA, PAYG | Nazwa wyświetlana konta rejestracji EA lub konta rozliczeniowego PAYG.
-AccountOwnerId | EA, PAYG | Unikatowy identyfikator konta rejestracji EA lub konta rozliczeniowego PAYG.
+AccountOwnerId<sup>1</sup> | EA, PAYG | Unikatowy identyfikator konta rejestracji EA lub konta rozliczeniowego PAYG.
 Informacje dodatkowe | Wszyscy | Metadane dotyczące usługi. Na przykład typ obrazu dla maszyny wirtualnej.
-BillingAccountId | Wszyscy | Unikatowy identyfikator konta rozliczeń głównych.
+BillingAccountId<sup>1</sup> | Wszyscy | Unikatowy identyfikator konta rozliczeń głównych.
 BillingAccountName | Wszyscy | Nazwa konta rozliczeniowego.
 BillingCurrency | Wszyscy | Waluta skojarzona z kontem rozliczeniowym.
 BillingPeriod | EA, PAYG | Okres rozliczeniowy opłaty.
 BillingPeriodEndDate | Wszyscy | Data końcowa okresu rozliczeniowego.
 BillingPeriodStartDate | Wszyscy | Data rozpoczęcia okresu rozliczeniowego.
-BillingProfileId | Wszyscy | Unikatowy identyfikator rejestracji EA, subskrypcji PAYG, profilu rozliczania MCA lub skonsolidowanego konta AWS.
+BillingProfileId<sup>1</sup> | Wszyscy | Unikatowy identyfikator rejestracji EA, subskrypcji PAYG, profilu rozliczania MCA lub skonsolidowanego konta AWS.
 BillingProfileName | Wszyscy | Nazwa rejestracji EA, subskrypcji PAYG, profilu rozliczania MCA lub skonsolidowanego konta AWS.
 Opłatatype | Wszyscy | Wskazuje, czy opłata reprezentuje użycie (**użycie**), zakup (**zakup**), czy zwrot (**zwrot**).
 Użyta usługa | Wszyscy | Nazwa usługi, z którą jest skojarzona opłata.
-CostCenter | EA, MCA | Centrum kosztów zdefiniowane dla subskrypcji na potrzeby śledzenia kosztów (dostępne tylko w otwartych okresach rozliczeniowych dla kont MCA).
+CostCenter<sup>1</sup> | EA, MCA | Centrum kosztów zdefiniowane dla subskrypcji na potrzeby śledzenia kosztów (dostępne tylko w otwartych okresach rozliczeniowych dla kont MCA).
 Koszt | EA, PAYG | Zobacz CostInBillingCurrency.
 CostInBillingCurrency | MCA | Koszt opłaty w walucie rozliczeniowej przed kredytami lub podatkami.
 CostInPricingCurrency | MCA | Koszt opłaty w walucie cenowej przed kredytami lub podatkami.
 Currency | EA, PAYG | Zobacz BillingCurrency.
-Date | Wszyscy | Użycie lub data zakupu opłaty.
+Data<sup>1</sup> | Wszyscy | Użycie lub data zakupu opłaty.
 EffectivePrice | Wszyscy | Cena jednostkowa zmieszana za okres. Mieszane ceny przekraczają wahania cen jednostkowych, takie jak stopniowanie warstwowe, które obniżają cenę w miarę wzrostu ilości w czasie.
 ExchangeRateDate | MCA | Data ustalenia kursu wymiany.
 ExchangeRatePricingToBilling | MCA | Kurs wymiany używany do konwersji kosztów w walucie cenowej na walutę rozliczeń.
 Częstotliwość | Wszyscy | Wskazuje, czy opłata powinna zostać powtórzona. Opłaty mogą mieć miejsce raz (**jednorazowej**), powtarzać się w oparciu o co miesiąc lubco rok (cyklicznie) lub być oparte na użyciu (**UsageBased**).
 InvoiceId | PAYG, MCA | Unikatowy identyfikator dokumentu w pliku PDF faktury.
 InvoiceSection | MCA | Zobacz InvoiceSectionName.
-InvoiceSectionId | EA, MCA | Unikatowy identyfikator dla działu EA lub faktury MCA.
+InvoiceSectionId<sup>1</sup> | EA, MCA | Unikatowy identyfikator dla działu EA lub faktury MCA.
 InvoiceSectionName | EA, MCA | Nazwa działu EA lub faktury MCA.
 IsAzureCreditEligible | Wszyscy | Wskazuje, czy opłata jest uprawniona do płatności za korzystanie z kredytów platformy Azure (wartości: True, false).
 Location | MCA | Lokalizacja centrum danych, w którym jest uruchomiony zasób.
 Kategoria miernika | Wszyscy | Nazwa kategorii klasyfikacji dla miernika. Na przykład *usługi w chmurze* i *sieci*.
-MeterId | Wszyscy | Unikatowy identyfikator miernika.
+MeterId<sup>1</sup> | Wszyscy | Unikatowy identyfikator miernika.
 Nazwa miernika | Wszyscy | Nazwa miernika.
 MeterRegion | Wszyscy | Nazwa lokalizacji centrum danych dla usług, które są wyceniane na podstawie lokalizacji. Zobacz lokalizację.
 MeterSubCategory | Wszyscy | Nazwa kategorii podklasyfikacji miernika.
-OfferId | Wszyscy | Nazwa zakupionej oferty.
-PartNumber | EA, PAYG | Identyfikator używany do uzyskiwania określonych cen taryfowych.
+OfferId<sup>1</sup> | Wszyscy | Nazwa zakupionej oferty.
+PartNumber<sup>1</sup> | EA, PAYG | Identyfikator używany do uzyskiwania określonych cen taryfowych.
 PlanName | EA, PAYG | Nazwa planu witryny Marketplace.
 PreviousInvoiceId | MCA | Odwołanie do oryginalnej faktury, jeśli ten element wiersza jest zwrotem.
 PricingCurrency | MCA | Waluta używana w przypadku klasyfikacji na podstawie cen wynegocjowanych.
 Produkt | Wszyscy | Nazwa produktu.
-Identyfikator produktu | MCA | Unikatowy identyfikator produktu.
+ProductId<sup>1</sup> | MCA | Unikatowy identyfikator produktu.
 ProductOrderId | Wszyscy | Unikatowy identyfikator zamówienia produktu.
 ProductOrderName | Wszyscy | Unikatowa nazwa zamówienia produktu.
 PublisherName | Wszyscy | Wydawca dla usług Marketplace.
@@ -91,7 +91,7 @@ Ilość | Wszyscy | Liczba zakupionych lub zużytych jednostek.
 ReservationId | EA, MCA | Unikatowy identyfikator zakupionego wystąpienia rezerwacji.
 Rezerwacjaname | EA, MCA | Nazwa zakupionego wystąpienia rezerwacji.
 Grupa zasobów | Wszyscy | Nazwa [grupy zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) , w której znajduje się zasób.
-ResourceId | Wszyscy | Unikatowy identyfikator zasobu [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/resources) .
+Identyfikator zasobu<sup>1</sup> | Wszyscy | Unikatowy identyfikator zasobu [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/resources) .
 Lokalizacja zasobu | Wszyscy | Lokalizacja centrum danych, w którym jest uruchomiony zasób. Zobacz lokalizację.
 ResourceName | EA, PAYG | Nazwa zasobu.
 ResourceType | MCA | Typ wystąpienia zasobu.
@@ -100,12 +100,14 @@ Informacje o usłudze 1 | Wszyscy | Metadane dotyczące usługi.
 Informacje o usłudze 2 | Wszyscy | Pole starsze z opcjonalnymi metadanymi specyficznymi dla usługi.
 ServicePeriodEndDate | MCA | Data końcowa okresu oceny, który został zdefiniowany i zablokowany w przypadku usługi zużytej lub zakupionej.
 ServicePeriodStartDate | MCA | Data rozpoczęcia okresu oceny, który został zdefiniowany i zablokowany Cennik dla usługi zużytej lub zakupionej.
-SubscriptionId | Wszyscy | Unikatowy identyfikator dla subskrypcji platformy Azure.
+Identyfikator subskrypcji<sup>1</sup> | Wszyscy | Unikatowy identyfikator dla subskrypcji platformy Azure.
 SubscriptionName | Wszyscy | Nazwa subskrypcji platformy Azure.
-`Tags` | Wszyscy | Tagi przypisane do zasobu. Nie obejmuje tagów grupy zasobów. Może służyć do grupowania lub dystrybucji kosztów dla wewnętrznej obciążenia zwrotnego. Aby uzyskać więcej informacji, zobacz [organizowanie zasobów platformy Azure za pomocą tagów](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/).
+Tagi<sup>1</sup> | Wszyscy | Tagi przypisane do zasobu. Nie obejmuje tagów grupy zasobów. Może służyć do grupowania lub dystrybucji kosztów dla wewnętrznej obciążenia zwrotnego. Aby uzyskać więcej informacji, zobacz [organizowanie zasobów platformy Azure za pomocą tagów](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/).
 Termin | Wszyscy | Przedstawia termin ważności oferty. Na przykład: W przypadku wystąpień zarezerwowanych w danym okresie będzie wyświetlana 12 miesięcy. Dla jednorazowych zakupów lub cyklicznych zakupów termin wynosi 1 miesiąc (SaaS, pomoc techniczna Marketplace). Nie dotyczy to użycia platformy Azure.
 Jednostka miary | Wszyscy | Jednostka miary dla rozliczeń dla usługi. Na przykład usługi obliczeniowe są rozliczane na godzinę.
 Jednostk | EA, PAYG | Cena za jednostkę dla opłaty.
+
+_<sup>**1**</sup> pola używane do tworzenia unikatowego identyfikatora dla pojedynczego rekordu kosztu._
 
 Pamiętaj, że niektóre pola mogą różnić się wielkością liter i odstępów między typami kont.
 Starsze wersje plików użycia z opcją płatność zgodnie z rzeczywistym użyciem mają oddzielne sekcje dla instrukcji i dziennego użycia.
@@ -133,7 +135,7 @@ Aby dowiedzieć się więcej na temat szczegółowych informacji o użyciu i op�
 
 Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Wyświetlanie i pobieranie faktury Microsoft Azure](billing-download-azure-invoice.md)
 - [Wyświetlaj i pobieraj Microsoft Azure użycie i opłaty](billing-download-azure-daily-usage.md)

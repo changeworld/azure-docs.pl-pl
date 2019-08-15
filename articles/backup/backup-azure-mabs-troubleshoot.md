@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: c08acaf65cd42abd9db97fab1267ce5628595b78
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 0f9c2d1d2081ec22898ed3a4fbc73305ff0995e3
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689267"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954685"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Rozwiązywanie problemów ze składnikiem Azure Backup Server
 
@@ -25,7 +25,7 @@ Przed rozpoczęciem rozwiązywania problemów Microsoft Azure Backup Server (ser
 
 - [Upewnij się, że agent Microsoft Azure Recovery Services (MARS) jest aktualny](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
 - [Upewnij się, że istnieje połączenie sieciowe między agentem MARS i platformą Azure](https://aka.ms/AB-A4dp50)
-- Upewnij się, że usługa Microsoft Azure Recovery Services jest uruchomiona (w konsoli usługi). W razie potrzeby uruchom ponownie, a następnie spróbuj ponownie wykonać operację
+- Upewnij się, że usługa Microsoft Azure Recovery Services jest uruchomiona (w konsoli usługi). W razie potrzeby uruchom ponownie, a następnie spróbuj ponownie wykonać operację.
 - [Upewnij się, że 5–10% wolnego miejsca na woluminie jest dostępne na potrzeby lokalizacji folderu plików tymczasowych](https://aka.ms/AB-AA4dwtt)
 - Jeśli rejestracja kończy się niepowodzeniem, upewnij się, że serwer, na którym próbujesz zainstalować Azure Backup Server, nie jest już zarejestrowany w innym magazynie
 - Jeśli instalacja wypychana zakończy się niepowodzeniem, sprawdź, czy agent programu DPM jest już obecny. Jeśli tak, odinstaluj agenta i ponów próbę instalacji
@@ -61,7 +61,7 @@ Przed rozpoczęciem rozwiązywania problemów Microsoft Azure Backup Server (ser
 
 | Operacja | Szczegóły błędu | Obejście |
 | --- | --- | --- |
-| Tworzenie kopii zapasowej | Zadania tworzenia punktu odzyskiwania w trybie online dla maszyny wirtualnej VMware kończą się niepowodzeniem. Program DPM napotkał błąd z programu VMware podczas próby uzyskania informacji o śledzenia zmian. ErrorCode-FileFaultFault (identyfikator 33621) |  <ol><li> Zresetuj CTK w oprogramowaniu VMware dla maszyn wirtualnych, których to dotyczy.</li> <li>Sprawdź, czy dysk niezależny nie jest umieszczony w programie VMware.</li> <li>Zatrzymaj ochronę odpowiednich maszyn wirtualnych i ponownie Włącz ochronę przy użyciu przycisku **Odśwież** . </li><li>Uruchom DW dla maszyn wirtualnych, których to dotyczy.</li></ol>|
+| Tworzenie kopii zapasowej | Zadania tworzenia punktu odzyskiwania w trybie online dla maszyny wirtualnej VMware kończą się niepowodzeniem. Program DPM napotkał błąd z programu VMware podczas próby uzyskania informacji o śledzenia zmian. ErrorCode-FileFaultFault (identyfikator 33621) |  <ol><li> Zresetuj CTK w oprogramowaniu VMware dla maszyn wirtualnych, których to dotyczy.</li> <li>Sprawdź, czy dysk niezależny nie jest umieszczony w programie VMware.</li> <li>Zatrzymaj ochronę odpowiednich maszyn wirtualnych i ponownie Włącz ochronę za pomocą przycisku **Odśwież** . </li><li>Uruchom DW dla maszyn wirtualnych, których to dotyczy.</li></ol>|
 
 
 ## <a name="the-agent-operation-failed-because-of-a-communication-error-with-the-dpm-agent-coordinator-service-on-the-server"></a>Operacja agenta nie powiodła się z powodu błędu komunikacji z usługą koordynatora agenta programu DPM na serwerze

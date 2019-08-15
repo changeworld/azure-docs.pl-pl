@@ -1,6 +1,6 @@
 ---
-title: Zestaw przekierowania adresów URL, na stronie b2clogin.com — Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o korzystaniu z usługi b2clogin.com w Twojego przekierowania adresów URL dla usługi Azure Active Directory B2C.
+title: Ustawianie adresów URL przekierowania na b2clogin.com-Azure Active Directory B2C | Microsoft Docs
+description: Dowiedz się więcej na temat używania b2clogin.com w adresach URL przekierowania dla Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,43 +10,46 @@ ms.topic: conceptual
 ms.date: 01/28/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4d70fe3f3f19723cd37080ae09dce97bfd8f3d34
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 080c1933f88d9e824969a42212de2eacd0f62e14
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511694"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927280"
 ---
-# <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Zestaw przekierowania adresów URL z usługi b2clogin.com dla usługi Azure Active Directory B2C
+# <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Ustaw adresy URL przekierowania na b2clogin.com dla Azure Active Directory B2C
 
-Po skonfigurowaniu dostawcy tożsamości dla rejestracji i logowania w aplikacji Azure Active Directory (Azure AD) B2C, musisz określić adres URL przekierowania. W przeszłości login.microsoftonline.com został użyty po stronie b2clogin.com powinien być używany.
+Po skonfigurowaniu dostawcy tożsamości na potrzeby rejestracji i logowania Azure Active Directory w aplikacji B2C (Azure AD), należy określić adres URL przekierowania. W przeszłości użyto login.microsoftonline.com, teraz należy używać b2clogin.com.
 
-Korzystanie z usługi b2clogin.com zapewnia dodatkowe korzyści, takich jak:
+> [!NOTE]
+> Możesz użyć kodu po stronie klienta JavaScript (obecnie w wersji zapoznawczej) w b2clogin.com. Kod JavaScript zostanie usunięty ze strony niestandardowej, jeśli używasz login.microsoftonline.com. Dodatkowe ograniczenia zabezpieczeń są również stosowane do login.microsoftonline.com, takich jak usuwanie elementów formularza HTML ze strony niestandardowej. 
 
-- Zmniejszono ilość miejsca na używana w nagłówku plików cookie przez usługi Microsoft Azure.
-- Adresami URL nie będzie zawierać odniesienie do firmy Microsoft. Na przykład `https://your-tenant-name.b2clogin.com/tenant-id/oauth2/authresp`.
+Korzystanie z usługi b2clogin.com daje dodatkowe korzyści, takie jak:
 
->[!NOTE]
-> Program nazwa dzierżawy i dzierżawy, identyfikator GUID w następujący sposób:
-> * `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` (które nadal odwołuje się do `onmicrosoft.com`)
-> * `https://your-tenant-name.b2clogin.com/your-tenant-guid` (w takim przypadku nie ma żadnego odwołania do firmy Microsoft w ogóle)
+- Zajęte miejsce w nagłówku pliku cookie przez usługi firmy Microsoft jest ograniczone.
+- Adresy URL nie zawierają już odwołania do firmy Microsoft. Na przykład `https://your-tenant-name.b2clogin.com/tenant-id/oauth2/authresp`.
+
+> [!NOTE]
+> Można użyć zarówno nazwy dzierżawy, jak i identyfikatora GUID dzierżawy w następujący sposób:
+> * `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`(nadal odwołuje się `onmicrosoft.com`do)
+> * `https://your-tenant-name.b2clogin.com/your-tenant-guid`(w tym przypadku w ogóle nie ma odwołań do firmy Microsoft)
 >
-> Nie można jednak użyć _domeny niestandardowej_ dla usługi Azure Active Directory B2C dzierżawy, np. `https://your-tenant-name.b2clogin.com/your-custom-domain-name` będzie _nie_ pracy.
+> Nie można jednak używać _domeny niestandardowej_ dla dzierżawy Azure Active Directory B2C, na przykład `https://your-tenant-name.b2clogin.com/your-custom-domain-name` _nie będzie ona_ zadziałała.
 
-Należy wziąć pod uwagę te ustawienia, które może być konieczna zmiana podczas korzystania z usługi b2clogin.com:
+Należy wziąć pod uwagę te ustawienia, które mogą wymagać zmiany w przypadku korzystania z b2clogin.com:
 
-- Ustaw przekierowania adresów URL w aplikacji dostawcy tożsamości z usługi b2clogin.com. 
-- Ustaw aplikację usługi Azure AD B2C, aby korzystać z usługi b2clogin.com dla odwołania do przepływu użytkownika i token punktów końcowych. 
-- Jeśli używasz biblioteki MSAL, musisz ustawić **ValidateAuthority** właściwość `false`.
-- Upewnij się, że wprowadzisz zmiany w dowolnej **dozwolone źródła** zdefiniowanego w ustawieniach mechanizmu CORS [dostosowywania interfejsu użytkownika](active-directory-b2c-ui-customization-custom-dynamic.md).  
+- Ustaw adresy URL przekierowania w aplikacjach dostawcy tożsamości, aby używać b2clogin.com. 
+- Ustaw dla aplikacji Azure AD B2C użycie b2clogin.com do odwoływania się do przepływu użytkownika i punktów końcowych tokenów. 
+- Jeśli używasz MSAL, musisz ustawić właściwość **ValidateAuthority** na `false`.
+- Upewnij się, że zmienisz dowolne **dozwolone źródła** zdefiniowane w ustawieniach mechanizmu CORS do [dostosowywania interfejsu użytkownika](active-directory-b2c-ui-customization-custom-dynamic.md).  
 
-## <a name="change-redirect-urls"></a>Zmiana przekierowania adresów URL
+## <a name="change-redirect-urls"></a>Zmienianie adresów URL przekierowania
 
-Aby korzystać z usługi b2clogin.com, w ustawieniach aplikacji dostawcy tożsamości, Znajdź i zmienić listę zaufanych adresów URL do przekierowania usługi Azure AD B2C.  Obecnie możesz prawdopodobnie jest skonfigurowany do Przekieruj z powrotem do lokacji niektóre login.microsoftonline.com. 
+Aby użyć b2clogin.com, w ustawieniach aplikacji dostawcy tożsamości Wyszukaj i zmień listę zaufanych adresów URL w celu przekierowania z powrotem do Azure AD B2C.  Obecnie jest to prawdopodobnie skonfigurowane w celu przekierowania z powrotem do pewnej lokacji login.microsoftonline.com. 
 
-Musisz zmienić adres URL przekierowania tak, aby `your-tenant-name.b2clogin.com` jest autoryzowany. Upewnij się zastąpić `your-tenant-name` o nazwie usługi Azure AD B2C dzierżawy i Usuń `/te` istnienia w adresie URL. Ma niewielkie zmiany do tego adresu URL, dla każdego dostawcy tożsamości, więc zajrzyj odpowiadającą mu stronę, aby uzyskać dokładny adres URL.
+Należy zmienić adres URL przekierowania tak, `your-tenant-name.b2clogin.com` aby był autoryzowany. Pamiętaj o zamianie `your-tenant-name` na nazwę dzierżawy Azure AD B2C i Usuń `/te` ją, jeśli istnieje w adresie URL. W przypadku każdego dostawcy tożsamości istnieją nieznaczne zmiany w tym adresie URL, dlatego należy sprawdzić odpowiednią stronę, aby uzyskać dokładny adres URL.
 
-Informacje o konfiguracji dla dostawcy tożsamości można znaleźć w następujących artykułach:
+Informacje dotyczące konfigurowania dostawców tożsamości można znaleźć w następujących artykułach:
 
 - [Konto Microsoft](active-directory-b2c-setup-msa-app.md)
 - [Facebook](active-directory-b2c-setup-fb-app.md)
@@ -59,26 +62,26 @@ Informacje o konfiguracji dla dostawcy tożsamości można znaleźć w następuj
 - [QQ](active-directory-b2c-setup-qq-app.md)
 - [WeChat](active-directory-b2c-setup-wechat-app.md)
 - [Azure AD](active-directory-b2c-setup-oidc-azure-active-directory.md)
-- [Niestandardowe OIDC](active-directory-b2c-setup-oidc-idp.md)
+- [Niestandardowy OIDC](active-directory-b2c-setup-oidc-idp.md)
 
 ## <a name="update-your-application"></a>Aktualizowanie aplikacji
 
-Aplikacja usługi Azure AD B2C, ale prawdopodobnie dotyczy `login.microsoftonline.com` w kilku miejscach, takie jak odwołania do przepływu użytkownika i token punktów końcowych.  Upewnij się, że Twoje punkt końcowy autoryzacji punktu końcowego tokenu i Wystawca zostały zaktualizowane na potrzeby `your-tenant-name.b2clogin.com`.  
+Aplikacja Azure AD B2C prawdopodobnie odwołuje się `login.microsoftonline.com` do programu w kilku miejscach, takich jak odwołania do przepływu użytkownika i punkty końcowe tokenu.  Upewnij się, że punkt końcowy autoryzacji, punkt końcowy tokenu i wystawca zostały zaktualizowane do `your-tenant-name.b2clogin.com`użycia.  
 
 ## <a name="set-the-validateauthority-property"></a>Ustaw właściwość ValidateAuthority
 
-Jeśli używasz biblioteki MSAL **ValidateAuthority** właściwość `false`. Gdy **ValidateAuthority** jest ustawiona na `false`, mogą z usługi b2clogin.com przekierowania. 
+Jeśli używasz MSAL, ustaw właściwość **ValidateAuthority** na `false`. Gdy **ValidateAuthority** jest ustawiona na `false`, przekierowania są dozwolone do b2clogin.com. 
 
-Poniższy przykład pokazuje, jak można ustawić właściwości:
+Poniższy przykład pokazuje, jak można ustawić właściwość:
 
-W [biblioteki MSAL dla platformy .net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet):
+W programie [MSAL for .NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet):
 
 ```CSharp
  ConfidentialClientApplication client = new ConfidentialClientApplication(...); // can also be PublicClientApplication
  client.ValidateAuthority = false;
 ```
 
-A następnie w [biblioteki MSAL dla języka Javascript](https://github.com/AzureAD/microsoft-authentication-library-for-js):
+I w [MSAL dla języka JavaScript](https://github.com/AzureAD/microsoft-authentication-library-for-js):
 
 ```Javascript
 this.clientApplication = new UserAgentApplication(

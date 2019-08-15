@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 8aaaa6465b501cee83f4c2d8cb60729282651967
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: e44acfc66a8faf76068af9c31233e89c45ee02f7
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384856"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68953162"
 ---
 # <a name="understand-cost-management-data"></a>Omówienie danych usługi Cost Management
 
@@ -33,8 +33,8 @@ Poniższe informacje przedstawiają obecnie obsługiwane [oferty Microsoft Azure
 | **Azure Government** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P | 2014 maja<sup>1</sup> |
 | **Umowa Enterprise (EA)** | Enterprise — tworzenie i testowanie                                                        | MSDNDevTest_2014-09-01 | MS-AZR-0148P | 2014 maja<sup>1</sup> |
 | **Umowa Enterprise (EA)** | [Microsoft Azure Enterprise](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade) | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P | 2014 maja<sup>1</sup> |
-| **Umowa klienta firmy Microsoft** | [Plan Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | ND | Mar 2019<sup>3</sup> |
-| **Umowa klienta firmy Microsoft** | [Plan Microsoft Azure dla tworzenia i testowania](https://azure.microsoft.com/offers/ms-azr-0148g) | MSDNDevTest_2014-09-01 | ND | Mar 2019<sup>3</sup> |
+| **Umowa klienta firmy Microsoft** | [Plan Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | ND | Marzec 2019<sup>3</sup> |
+| **Umowa klienta firmy Microsoft** | [Plan Microsoft Azure dla tworzenia i testowania](https://azure.microsoft.com/offers/ms-azr-0148g) | MSDNDevTest_2014-09-01 | ND | Marzec 2019<sup>3</sup> |
 | **Microsoft Developer Network (MSDN)** | [Platformy MSDN](https://azure.microsoft.com/offers/ms-azr-0062p) <sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0062P | 2 października, 2018<sup>2</sup> |
 | **Pay-As-You-Go** | [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0003p)                  | PayAsYouGo_2014-09-01 | MS-AZR-0003P | 2 października, 2018<sup>2</sup> |
 | **Pay-As-You-Go** | [Płatność zgodnie z rzeczywistym użyciem — tworzenie i testowanie](https://azure.microsoft.com/offers/ms-azr-0023p)         | MSDNDevTest_2014-09-01 | MS-AZR-0023P | 2 października, 2018<sup>2</sup> |
@@ -53,7 +53,7 @@ _<sup>**1**</sup> w przypadku danych przed 2014 maja odwiedź witrynę [Azure En
 
 _<sup>**2**</sup> w przypadku danych przed 2 października 2018, odwiedź [centrum konta platformy Azure](https://account.azure.com/subscriptions)._
 
-_<sup>**3**</sup> umowy klienta firmy Microsoft rozpoczęły się w Mar 2019 i nie zawierają żadnych danych historycznych przed tym punktem._
+_<sup>**3**</sup> umowy klienta firmy Microsoft rozpoczęły się w marcu 2019 i nie mają żadnych danych historycznych przed tym punktem._
 
 _<sup>**4**</sup> dane historyczne dla subskrypcji płatnych za pośrednictwem środków i płacy mogą nie być zgodne z fakturą. Zobacz, jak [dane historyczne mogą nie być zgodne](#historical-data-might-not-match-invoice) z poniższą fakturą._
 

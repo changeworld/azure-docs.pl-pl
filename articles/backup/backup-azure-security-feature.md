@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2017
 ms.author: dacurwin
-ms.openlocfilehash: 2c1890089bcb713d8ef80bca25b123b425d96607
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 2cd298323d8f455010978361078d474415e77dfa
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688677"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954528"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Funkcje zabezpieczeń chroniące hybrydowe kopie zapasowe, które używają Azure Backup
 Problemy dotyczące zabezpieczeń, takie jak złośliwe oprogramowanie, programy wymuszającego okup i wtargnięcie, zwiększają się. Te problemy z zabezpieczeniami mogą być kosztowne, w odniesieniu do pieniędzy i danych. Aby ochronić przed takimi atakami, Azure Backup teraz zapewnia funkcje zabezpieczeń, które ułatwiają ochronę hybrydowych kopii zapasowych. W tym artykule opisano sposób włączania i używania tych funkcji przy użyciu agenta Recovery Services platformy Azure i Azure Backup Server. Między innymi są to następujące funkcje:
@@ -73,7 +73,7 @@ Dla **Azure Backup Server** użytkowników:
 Dla **Data Protection Manager** użytkowników:
 
 1. Jeśli serwer, na którym wykonywane są kopie zapasowe, nadal jest dostępny, ponownie Włącz ochronę usuniętych źródeł danych i użyj funkcji **Odzyskaj dane** , aby odzyskać ze wszystkich starych punktów odzyskiwania.
-2. Jeśli ten serwer nie jest dostępny, do pobrania tych [danych Użyj innego](backup-azure-alternate-dpm-server.md) serwera Data Protection Manager.
+2. Jeśli ten serwer nie jest dostępny, do [](backup-azure-alternate-dpm-server.md) pobrania tych danych Użyj innego serwera Data Protection Manager.
 
 ## <a name="prevent-attacks"></a>Zapobiegaj atakom
 Dodano testy, aby upewnić się, że tylko Prawidłowi użytkownicy mogą wykonywać różne operacje. Obejmują one Dodawanie dodatkowej warstwy uwierzytelniania i utrzymywanie minimalnego zakresu przechowywania na potrzeby odzyskiwania.
@@ -108,7 +108,7 @@ Funkcje zabezpieczeń wymienione w tym artykule zapewniają mechanizmy obrony pr
 ## <a name="troubleshooting-errors"></a>Rozwiązywanie problemów z błędami
 | Operacja | Szczegóły błędu | Rozwiązanie |
 | --- | --- | --- |
-| Zmiana zasad |Nie można zmodyfikować zasad tworzenia kopii zapasowych. Błąd: Bieżąca operacja nie powiodła się z powodu wewnętrznego błędu usługi [0x29834]. Spróbuj wykonać ponownie operację za jakiś czas. Jeśli problem będzie nadal występować, skontaktuj się z pomocą techniczną firmy Microsoft. |**Może**<br/>Ten błąd pojawia się, gdy ustawienia zabezpieczeń są włączone, spróbuj zmniejszyć zakres przechowywania poniżej wartości minimalnej określonych powyżej, a użytkownik jest w wersji nieobsługiwanej (obsługiwane wersje są określone w pierwszej notatce tego artykułu). <br/>**Zalecana akcja:**<br/> W takim przypadku należy ustawić okres przechowywania powyżej minimalnego podanego okresu przechowywania (siedem dni dziennie, czterech tygodni przez tydzień, trzy tygodnie na rok i rok), aby kontynuować pracę z aktualizacjami dotyczącymi zasad. Opcjonalnie, preferowanym podejściem jest zaktualizowanie agenta kopii zapasowej, Azure Backup Server i/lub UR w celu wykorzystania wszystkich aktualizacji zabezpieczeń. |
+| Zmiana zasad |Nie można zmodyfikować zasad tworzenia kopii zapasowych. Błąd: Bieżąca operacja nie powiodła się z powodu wewnętrznego błędu usługi [0x29834]. Spróbuj wykonać ponownie operację za jakiś czas. Jeśli problem będzie nadal występować, skontaktuj się z pomocą techniczną firmy Microsoft. |**Może**<br/>Ten błąd pojawia się, gdy ustawienia zabezpieczeń są włączone, spróbuj zmniejszyć zakres przechowywania poniżej wartości minimalnej określonych powyżej, a użytkownik jest w wersji nieobsługiwanej (obsługiwane wersje są określone w pierwszej notatce tego artykułu). <br/>**Zalecana akcja:**<br/> W takim przypadku należy ustawić okres przechowywania powyżej minimalnego podanego okresu przechowywania (siedem dni dziennie, czterech tygodni przez tydzień, trzy tygodnie przez rok i rok), aby kontynuować aktualizacje związane z zasadami. Opcjonalnie, preferowanym podejściem jest zaktualizowanie agenta kopii zapasowej, Azure Backup Server i/lub UR w celu wykorzystania wszystkich aktualizacji zabezpieczeń. |
 | Zmień hasło |Wprowadzony numer PIN zabezpieczeń jest niepoprawny. (IDENTYFIKATOR: 100130) Podaj poprawny zabezpieczający numer PIN, aby ukończyć tę operację. |**Może**<br/> Ten błąd jest dostarczany po wprowadzeniu nieprawidłowego lub wygasłego numeru PIN zabezpieczeń podczas wykonywania operacji krytycznej (np. zmiany hasła). <br/>**Zalecana akcja:**<br/> Aby ukończyć tę operację, musisz wprowadzić prawidłowy zabezpieczający numer PIN. Aby uzyskać numer PIN, zaloguj się do Azure Portal i przejdź do Recovery Services magazynu > Ustawienia > Właściwości > Generuj zabezpieczający numer PIN. Użyj tego numeru PIN, aby zmienić hasło. |
 | Zmień hasło |Operacja nie powiodła się. Identyfikator: 120002 |**Może**<br/>Ten błąd pojawia się, gdy ustawienia zabezpieczeń są włączone, spróbuj zmienić hasło i używasz wersji nieobsługiwanej (prawidłowe wersje określone w pierwszej notatce tego artykułu).<br/>**Zalecana akcja:**<br/> Aby zmienić hasło, należy najpierw zaktualizować agenta kopii zapasowej do minimalnej minimalnej wersji: 2.0.9052, Azure Backup Server do aktualizacji minimalnej 1 i/lub DPM do minimum DPM 2012 R2 UR12 lub DPM 2016 UR2 (Pobierz linki poniżej), a następnie wprowadzić prawidłowy zabezpieczający numer PIN. Aby uzyskać numer PIN, zaloguj się do Azure Portal i przejdź do Recovery Services magazynu > Ustawienia > Właściwości > Generuj zabezpieczający numer PIN. Użyj tego numeru PIN, aby zmienić hasło. |
 

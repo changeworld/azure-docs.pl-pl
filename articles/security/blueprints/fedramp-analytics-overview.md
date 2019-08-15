@@ -8,16 +8,16 @@ ms.service: security
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
-ms.openlocfilehash: 61f0b42731f98dc772a588e5840af6e8535af118
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 7b07fee46bce4c7b80346eb0b4c0fccd5245d87f
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781092"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946871"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-fedramp"></a>Strategia zabezpieczeń i zgodności z przepisami platformy Azure: Analiza dla FedRAMP
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 [Federal Risk and Authorization Management Program (FedRAMP)](https://www.fedramp.gov/) to Stany Zjednoczone program dla instytucji rządowych, który zapewnia ustandaryzowane podejście do oceny zabezpieczeń, autoryzacji i ciągłego monitorowania produktów i usług w chmurze. Ten Strategia zabezpieczeń i zgodności z przepisami platformy Azure zawiera wskazówki dotyczące sposobu dostarczania architektury analizy Microsoft Azure, która pomaga zaimplementować podzestaw FedRAMP o wysokiej kontroli. To rozwiązanie zapewnia wskazówki dotyczące wdrażania i konfigurowania zasobów platformy Azure na potrzeby wspólnej architektury referencyjnej, pokazując sposoby, w których klienci mogą spełniać określone wymagania w zakresie zabezpieczeń i zgodności, a także służy jako podstawa dla klientów Twórz i Konfiguruj własne rozwiązania analityczne na platformie Azure.
 
@@ -44,7 +44,7 @@ Azure SQL Database jest często zarządzany za pośrednictwem SQL Server Managem
 ![Analiza diagramu architektury referencyjnej FedRAMP](images/fedramp-analytics-reference-architecture.png?raw=true "Analiza diagramu architektury referencyjnej FedRAMP")
 
 ### <a name="roles"></a>Role
-Plan analizy przedstawia scenariusz z trzema ogólnymi typami użytkowników: użytkownikiem operacyjnym, administratorem SQL/danych i inżynierem systemów. Access Control oparte na rolach (RBAC) na platformie Azure umożliwia wdrożenie precyzyjnego zarządzania dostępem za pośrednictwem wbudowanych ról niestandardowych. Zasoby są dostępne do konfigurowania [Access Control opartej na rolach](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) i tworzenia konspektów oraz implementowania [wstępnie zdefiniowanych ról](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles).
+Plan analizy przedstawia scenariusz z trzema ogólnymi typami użytkowników: użytkownikiem operacyjnym, administratorem SQL/danych i inżynierem systemów. Access Control oparte na rolach (RBAC) na platformie Azure umożliwia wdrożenie precyzyjnego zarządzania dostępem za pośrednictwem wbudowanych ról niestandardowych. Zasoby są dostępne do konfigurowania [Access Control opartej na rolach](../../role-based-access-control/role-assignments-portal.md) i tworzenia konspektów oraz implementowania [wstępnie zdefiniowanych ról](../../role-based-access-control/built-in-roles.md).
 
 #### <a name="systems-engineer"></a>Inżynier systemów
 Inżynier systemów posiada subskrypcję klienta platformy Azure i konfiguruje wdrożenie rozwiązania za pomocą witryny Azure Portal.
@@ -80,11 +80,11 @@ W poniższej sekcji znajdują się szczegółowe informacje dotyczące elementó
 **Power BI**: [Power BI](https://docs.microsoft.com/power-bi/service-azure-and-power-bi) udostępnia funkcje analizy i raportowania dla klientów próbujących uzyskać więcej informacji na temat wysiłków związanych z przetwarzaniem danych.
 
 ### <a name="networking"></a>Networking
-**Sieciowe grupy zabezpieczeń**: [Sieciowych grup zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) są skonfigurowane do zarządzania ruchem skierowanym do wdrożonych zasobów i usług. Sieciowe grupy zabezpieczeń są ustawiane na schemat odmowy przez domyślny i zezwalają na ruch zawarty na liście wstępnie skonfigurowanych Access Control (ACL).
+**Sieciowe grupy zabezpieczeń**: [Sieciowych grup zabezpieczeń](../../virtual-network/virtual-network-vnet-plan-design-arm.md) są skonfigurowane do zarządzania ruchem skierowanym do wdrożonych zasobów i usług. Sieciowe grupy zabezpieczeń są ustawiane na schemat odmowy przez domyślny i zezwalają na ruch zawarty na liście wstępnie skonfigurowanych Access Control (ACL).
 
 Każdy sieciowych grup zabezpieczeń ma otwarte określone porty i protokoły, dzięki czemu rozwiązanie może być bezpieczne i poprawne. Ponadto dla każdego sieciowej grupy ZABEZPIECZEŃu są włączone następujące konfiguracje:
   - [Dzienniki diagnostyczne i zdarzenia](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log) są włączone i przechowywane na koncie magazynu
-  - [Dzienniki Azure monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics) są połączone z dziennikami diagnostycznymi sieciowej grupy zabezpieczeń.
+  - [Dzienniki Azure monitor](../../azure-monitor/insights/azure-networking-analytics.md) są połączone z dziennikami diagnostycznymi sieciowej grupy zabezpieczeń.
 
 ### <a name="data-at-rest"></a>Dane magazynowane
 Architektura chroni dane przechowywane przez szyfrowanie, inspekcję bazy danych i inne miary.
@@ -93,38 +93,38 @@ Architektura chroni dane przechowywane przez szyfrowanie, inspekcję bazy danych
  - Domyślne ustawienie replikacji danych to **Magazyn Geograficznie nadmiarowy (GRS)** , który asynchronicznie przechowuje dane klientów w osobnym centrum danych poza regionem podstawowym. Zapewnia to odzyskiwanie danych w łącznym zdarzeniu utraty dla podstawowego centrum danych.
  - **Magazyn lokalnie nadmiarowy (LRS)** można skonfigurować Alternatywnie za pomocą konta usługi Azure Storage. LRS replikuje dane w jednostce skalowania magazynu, która jest hostowana w tym samym regionie, w którym klient tworzy swoje konto. Wszystkie dane są replikowane współbieżnie, co gwarantuje, że żadne dane kopii zapasowej nie zostaną utracone w przypadku awarii podstawowej jednostki skalowania magazynu.
 
-**Usługa Azure Storage** Aby zaspokoić zaszyfrowane dane w wymaganiach dotyczących REST, wszystkie usługi wdrożone w tej architekturze referencyjnej wykorzystują [usługę Azure Storage](https://azure.microsoft.com/services/storage/), która przechowuje dane w [szyfrowanie usługi Storage](https://docs.microsoft.com/azure/storage/storage-service-encryption).
+**Usługa Azure Storage** Aby zaspokoić zaszyfrowane dane w wymaganiach dotyczących REST, wszystkie usługi wdrożone w tej architekturze referencyjnej wykorzystują [usługę Azure Storage](https://azure.microsoft.com/services/storage/), która przechowuje dane w [szyfrowanie usługi Storage](../../storage/common/storage-service-encryption.md).
 
 AzureDiskEncryption
-[Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) wykorzystuje funkcję BitLocker systemu Windows w celu zapewnienia szyfrowania woluminów dla systemu operacyjnego i dysków danych. Rozwiązanie integruje się z Azure Key Vault w celu ułatwienia kontroli kluczy szyfrowania dysków i zarządzania nimi.
+[Azure Disk Encryption](../azure-security-disk-encryption-overview.md) wykorzystuje funkcję BitLocker systemu Windows w celu zapewnienia szyfrowania woluminów dla systemu operacyjnego i dysków danych. Rozwiązanie integruje się z Azure Key Vault w celu ułatwienia kontroli kluczy szyfrowania dysków i zarządzania nimi.
 
 **Azure SQL Database** W wystąpieniu Azure SQL Database są stosowane następujące miary zabezpieczeń bazy danych:
 -   [Uwierzytelnianie i autoryzacja w usłudze AD](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) umożliwia zarządzanie tożsamościami użytkowników baz danych i innych usług firmy Microsoft w jednej centralnej lokalizacji.
--   [Inspekcja bazy danych SQL](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started) śledzi zdarzenia bazy danych i zapisuje je w dzienniku inspekcji na koncie usługi Azure Storage.
+-   [Inspekcja bazy danych SQL](../../sql-database/sql-database-auditing.md) śledzi zdarzenia bazy danych i zapisuje je w dzienniku inspekcji na koncie usługi Azure Storage.
 -   SQL Database jest skonfigurowany do używania [transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql), który wykonuje szyfrowanie w czasie rzeczywistym i odszyfrowywanie danych i plików dziennika w celu ochrony informacji przechowywanych w pamięci podręcznej. TDE zapewnia gwarancję, że przechowywane dane nie podlegają nieautoryzowanemu dostępowi.
 -   [Reguły zapory](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) uniemożliwiają dostęp do serwerów baz danych do momentu udzielenia odpowiednich uprawnień. Zapora udziela dostępu do bazy danych na podstawie źródłowego adresu IP każdego żądania.
--   [Wykrywanie zagrożeń SQL](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-get-started) umożliwia wykrywanie i reagowanie na potencjalne zagrożenia w miarę ich występowania, zapewniając alerty zabezpieczeń dla podejrzanych działań bazy danych, potencjalne luki w zabezpieczeniach, ataki z iniekcją SQL i nietypowe wzorce dostępu do bazy danych.
+-   [Wykrywanie zagrożeń SQL](../../sql-database/sql-database-threat-detection.md) umożliwia wykrywanie i reagowanie na potencjalne zagrożenia w miarę ich występowania, zapewniając alerty zabezpieczeń dla podejrzanych działań bazy danych, potencjalne luki w zabezpieczeniach, ataki z iniekcją SQL i nietypowe wzorce dostępu do bazy danych.
 -   [Always Encrypted kolumny](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault) zapewniają, że poufne dane nigdy nie pojawiają się jako zwykły tekst w systemie bazy danych. Po włączeniu szyfrowania danych tylko aplikacje klienckie lub serwery aplikacji z dostępem do kluczy mogą uzyskiwać dostęp do danych w postaci zwykłego tekstu.
 -   [SQL Database dynamiczną maskowanie danych](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) można wykonać po wdrożeniu architektury referencyjnej. Klienci będą musieli dostosować ustawienia dynamicznego maskowania danych, aby były zgodne ze schematem bazy danych.
 
 ### <a name="logging-and-audit"></a>Rejestrowanie i inspekcja
-[Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started) generuje cały ekran danych monitorowania, w tym dzienniki aktywności, metryki i dane diagnostyczne, umożliwiając klientom tworzenie kompletnego obrazu kondycji systemu.  
-[Dzienniki Azure monitor](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) zapewniają obszerne rejestrowanie aktywności systemu i użytkownika, a także kondycję systemu. Zbiera i analizuje dane generowane przez zasoby na platformie Azure i w środowiskach lokalnych.
-- **Dzienniki aktywności**: [Dzienniki aktywności](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) zapewniają wgląd w operacje wykonywane na zasobach w ramach subskrypcji.
-- **Dzienniki diagnostyczne**: [Dzienniki diagnostyczne](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) obejmują wszystkie dzienniki wyemitowane przez każdy zasób. Te dzienniki obejmują Dzienniki systemu Windows i magazyn obiektów blob platformy Azure, tabele i dzienniki kolejki.
+[Azure monitor](../../azure-monitor/overview.md) generuje cały ekran danych monitorowania, w tym dzienniki aktywności, metryki i dane diagnostyczne, umożliwiając klientom tworzenie kompletnego obrazu kondycji systemu.  
+[Dzienniki Azure monitor](../azure-security-disk-encryption-overview.md) zapewniają obszerne rejestrowanie aktywności systemu i użytkownika, a także kondycję systemu. Zbiera i analizuje dane generowane przez zasoby na platformie Azure i w środowiskach lokalnych.
+- **Dzienniki aktywności**: [Dzienniki aktywności](../../azure-monitor/platform/activity-logs-overview.md) zapewniają wgląd w operacje wykonywane na zasobach w ramach subskrypcji.
+- **Dzienniki diagnostyczne**: [Dzienniki diagnostyczne](../../azure-monitor/platform/diagnostic-logs-overview.md) obejmują wszystkie dzienniki wyemitowane przez każdy zasób. Te dzienniki obejmują Dzienniki systemu Windows i magazyn obiektów blob platformy Azure, tabele i dzienniki kolejki.
 - **Dzienniki zapory**: Application Gateway zapewnia pełną dzienników diagnostycznych i dostępu. Dzienniki zapory są dostępne dla zasobów Application Gateway z włączoną obsługą usługi WAF.
 - **Archiwizowanie dzienników**: Wszystkie dzienniki diagnostyczne zapisu na scentralizowanym i zaszyfrowanym koncie usługi Azure Storage na potrzeby archiwizacji ze zdefiniowanym okresem przechowywania wynoszącym 2 dni. Te dzienniki łączą się z dziennikami Azure Monitor na potrzeby przetwarzania, przechowywania i raportowania pulpitów nawigacyjnych.
 
 Ponadto w ramach tej architektury są dołączone następujące rozwiązania do monitorowania:
 -   [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker): Azure Automation rozwiązanie przechowuje elementy Runbook, uruchamia je i zarządza nimi.
--   [Security and Audit](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started): Pulpit nawigacyjny Security and Audit zawiera szczegółowe informacje o stanie zabezpieczeń zasobów dzięki zapewnieniu metryk w domenach zabezpieczeń, istotnych problemach, wykryciach, analizie zagrożeń i typowych zapytaniach zabezpieczeń.
--   [SQL Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): Rozwiązanie Sprawdzanie kondycji SQL ocenia ryzyko i kondycję środowisk serwera w regularnych odstępach czasu oraz zapewnia klientom priorytetową listę zaleceń specyficznych dla wdrożonej infrastruktury serwera.
--   [Dzienniki aktywności platformy Azure](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Activity Log Analytics rozwiązanie pomaga w analizie dzienników aktywności platformy Azure we wszystkich subskrypcjach platformy Azure dla klienta.
+-   [Security and Audit](../../security-center/security-center-intro.md): Pulpit nawigacyjny Security and Audit zawiera szczegółowe informacje o stanie zabezpieczeń zasobów dzięki zapewnieniu metryk w domenach zabezpieczeń, istotnych problemach, wykryciach, analizie zagrożeń i typowych zapytaniach zabezpieczeń.
+-   [SQL Assessment](../../azure-monitor/insights/sql-assessment.md): Rozwiązanie Sprawdzanie kondycji SQL ocenia ryzyko i kondycję środowisk serwera w regularnych odstępach czasu oraz zapewnia klientom priorytetową listę zaleceń specyficznych dla wdrożonej infrastruktury serwera.
+-   [Dzienniki aktywności platformy Azure](../../azure-monitor/platform/collect-activity-logs.md): Activity Log Analytics rozwiązanie pomaga w analizie dzienników aktywności platformy Azure we wszystkich subskrypcjach platformy Azure dla klienta.
 
 ### <a name="identity-management"></a>Zarządzanie tożsamościami
--   Uwierzytelnianie w aplikacji odbywa się przy użyciu usługi Azure AD. Aby uzyskać więcej informacji, zobacz [Integrowanie aplikacji z Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications). Ponadto szyfrowanie kolumn bazy danych używa usługi Azure AD do uwierzytelniania aplikacji do Azure SQL Database. Aby uzyskać więcej informacji, zobacz jak [chronić poufne dane w SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault).
--   [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) wykrywa potencjalne luki w zabezpieczeniach, które mają wpływ na tożsamości organizacji, konfiguruje automatyczne odpowiedzi na wykryte podejrzane działania związane z tożsamościami organizacji i bada podejrzane zdarzenia w celu podjęcia odpowiednich działań w celu ich rozwiązania.
--   [Access Control oparte na rolach (RBAC) na platformie Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) umożliwia zarządzanie dostępem ukierunkowanym na platformę Azure. Dostęp do subskrypcji jest ograniczony do administratora subskrypcji.
+-   Uwierzytelnianie w aplikacji odbywa się przy użyciu usługi Azure AD. Aby uzyskać więcej informacji, zobacz [Integrowanie aplikacji z Azure Active Directory](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md). Ponadto szyfrowanie kolumn bazy danych używa usługi Azure AD do uwierzytelniania aplikacji do Azure SQL Database. Aby uzyskać więcej informacji, zobacz jak [chronić poufne dane w SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault).
+-   [Azure Active Directory Identity Protection](../../active-directory/identity-protection/overview.md) wykrywa potencjalne luki w zabezpieczeniach, które mają wpływ na tożsamości organizacji, konfiguruje automatyczne odpowiedzi na wykryte podejrzane działania związane z tożsamościami organizacji i bada podejrzane zdarzenia w celu podjęcia odpowiednich działań w celu ich rozwiązania.
+-   [Access Control oparte na rolach (RBAC) na platformie Azure](../../role-based-access-control/role-assignments-portal.md) umożliwia zarządzanie dostępem ukierunkowanym na platformę Azure. Dostęp do subskrypcji jest ograniczony do administratora subskrypcji.
 
 Aby dowiedzieć się więcej o korzystaniu z funkcji zabezpieczeń Azure SQL Database, zobacz przykład [aplikacji demonstracyjnej firmy Contoso](https://github.com/Microsoft/azure-sql-security-sample) .
 
@@ -137,7 +137,7 @@ Aby dowiedzieć się więcej o korzystaniu z funkcji zabezpieczeń Azure SQL Dat
 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) lub bezpieczny tunel VPN musi być skonfigurowany do bezpiecznego nawiązywania połączenia z zasobami wdrożonymi w ramach tej architektury referencyjnej analizy danych. Ponieważ połączenia ExpressRoute nie przechodzą przez Internet, połączenia te oferują większą niezawodność, większe szybkości, mniejsze opóźnienia i lepsze zabezpieczenia niż typowe połączenia przez Internet. Przez odpowiednie skonfigurowanie usługi ExpressRoute lub sieci VPN klienci mogą dodać warstwę ochrony danych podczas przesyłania.
 
 ### <a name="azure-active-directory-setup"></a>Konfiguracja Azure Active Directory
-[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) ma zasadnicze znaczenie dla zarządzania wdrożeniem i zapewnianiem dostępu do pracowników, którzy współpracują ze środowiskiem. Istniejące Active Directory systemu Windows Server można zintegrować z usługą AAD za pomocą [czterech kliknięć](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-express). Klienci mogą również powiązać wdrożoną infrastrukturę Active Directory (kontrolery domeny) z istniejącą usługą AAD, wykonując wdrożoną infrastrukturę Active Directory poddomeną lasu usługi AAD.
+[Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) ma zasadnicze znaczenie dla zarządzania wdrożeniem i zapewnianiem dostępu do pracowników, którzy współpracują ze środowiskiem. Istniejące Active Directory systemu Windows Server można zintegrować z usługą AAD za pomocą [czterech kliknięć](../../active-directory/hybrid/how-to-connect-install-express.md). Klienci mogą również powiązać wdrożoną infrastrukturę Active Directory (kontrolery domeny) z istniejącą usługą AAD, wykonując wdrożoną infrastrukturę Active Directory poddomeną lasu usługi AAD.
 
 ### <a name="additional-services"></a>Usługi dodatkowe
 #### <a name="iaas---vm-considerations"></a>IaaS — uwagi dotyczące maszyn wirtualnych
@@ -149,11 +149,11 @@ To rozwiązanie PaaS nie obejmuje maszyn wirtualnych IaaS platformy Azure. Klien
 - **Magazyn Recovery Services**: [Magazyn Recovery Services](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview) przechowuje dane kopii zapasowych i chroni wszystkie konfiguracje Virtual Machines platformy Azure w tej architekturze. W przypadku magazynu Recovery Services klienci mogą przywracać pliki i foldery z maszyny wirtualnej IaaS bez przywracania całej maszyny wirtualnej, co umożliwia szybsze przywracanie.
 
 ##### <a name="monitoring-solutions"></a>Rozwiązania do monitorowania
--   [AD Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Rozwiązanie Active Directory Sprawdzanie kondycji ocenia ryzyko i kondycję środowisk serwera w regularnych odstępach czasu i zawiera priorytetową listę zaleceń specyficznych dla wdrożonej infrastruktury serwera.
--   [Antimalware Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware): Rozwiązanie chroniące przed złośliwym kodem zgłasza złośliwe oprogramowanie, zagrożenia i stan ochrony.
--   [Update Management](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management): Rozwiązanie Update Management umożliwia klientom zarządzanie aktualizacjami zabezpieczeń systemu operacyjnego, w tym stanem dostępnych aktualizacji i procesem instalowania wymaganych aktualizacji.
--   [Agent Health](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): Rozwiązanie Agent Health zgłasza liczbę wdrożonych agentów i ich dystrybucję geograficzną, a także liczbę agentów, które nie odpowiadają, oraz liczby agentów przesyłających dane operacyjne.
--   [Change Tracking](https://docs.microsoft.com/azure/automation/automation-change-tracking): Rozwiązanie Change Tracking pozwala klientom łatwo identyfikować zmiany w środowisku.
+-   [AD Assessment](../../azure-monitor/insights/ad-assessment.md): Rozwiązanie Active Directory Sprawdzanie kondycji ocenia ryzyko i kondycję środowisk serwera w regularnych odstępach czasu i zawiera priorytetową listę zaleceń specyficznych dla wdrożonej infrastruktury serwera.
+-   [Antimalware Assessment](../../security-center/security-center-install-endpoint-protection.md): Rozwiązanie chroniące przed złośliwym kodem zgłasza złośliwe oprogramowanie, zagrożenia i stan ochrony.
+-   [Update Management](../../automation/automation-update-management.md): Rozwiązanie Update Management umożliwia klientom zarządzanie aktualizacjami zabezpieczeń systemu operacyjnego, w tym stanem dostępnych aktualizacji i procesem instalowania wymaganych aktualizacji.
+-   [Agent Health](../../monitoring/monitoring-solution-agenthealth.md): Rozwiązanie Agent Health zgłasza liczbę wdrożonych agentów i ich dystrybucję geograficzną, a także liczbę agentów, które nie odpowiadają, oraz liczby agentów przesyłających dane operacyjne.
+-   [Change Tracking](../../automation/change-tracking.md): Rozwiązanie Change Tracking pozwala klientom łatwo identyfikować zmiany w środowisku.
 
 ##### <a name="security"></a>Bezpieczeństwo
 - **Ochrona przed złośliwym oprogramowaniem**: [Oprogramowanie chroniące przed złośliwym oprogramowaniem firmy Microsoft](https://docs.microsoft.com/azure/security/fundamentals/antimalware) Virtual Machines zapewnia ochronę w czasie rzeczywistym, która pomaga identyfikować i usuwać wirusy, programy szpiegujące i inne złośliwe oprogramowanie, z konfigurowalnymi alertami, gdy znane złośliwe lub niepożądane oprogramowanie próbuje Zainstaluj lub Uruchom na chronionych maszynach wirtualnych.

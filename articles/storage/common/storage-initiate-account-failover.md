@@ -9,12 +9,12 @@ ms.date: 02/11/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 51e0379607c49019590a99c9fb7304f28be2afe5
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: d94f6297f27eb3ea130b443ccf94052d391eb46d
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305736"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985337"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>Inicjowanie trybu failover konta magazynu (wersja zapoznawcza)
 
@@ -68,12 +68,13 @@ Aby można było zainicjować pracę w trybie failover przy użyciu programu Pow
 
     - Usuń wszystkie poprzednie instalacje Azure PowerShell z systemu Windows za pomocą ustawienia **aplikacje & funkcje** w obszarze **Ustawienia**.
     - Usuń wszystkie moduły **platformy Azure** z programu `%Program Files%\WindowsPowerShell\Modules`.
-    
+
 1. Upewnij się, że masz zainstalowaną najnowszą wersję programu PowerShellGet. Otwórz okno programu Windows PowerShell i uruchom następujące polecenie, aby zainstalować najnowszą wersję:
- 
+
     ```powershell
     Install-Module PowerShellGet –Repository PSGallery –Force
     ```
+
 1. Zamknij i ponownie otwórz okno programu PowerShell po zainstalowaniu PowerShellGet. 
 
 1. Zainstaluj najnowszą wersję Azure PowerShell:
@@ -82,14 +83,14 @@ Aby można było zainicjować pracę w trybie failover przy użyciu programu Pow
     Install-Module Az –Repository PSGallery –AllowClobber
     ```
 
-1. Zainstaluj moduł usługi Azure Storage w wersji zapoznawczej, który obsługuje usługę Azure AD:
-   
+1. Zainstaluj moduł usługi Azure Storage w wersji zapoznawczej obsługujący tryb failover konta:
+
     ```powershell
     Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force 
     ```
+
 1. Zamknij i ponownie otwórz okno programu PowerShell.
  
-
 Aby zainicjować tryb failover konta z programu PowerShell, wykonaj następujące polecenie:
 
 ```powershell

@@ -1,6 +1,6 @@
 ---
-title: Model szeregów czasowych w usłudze Azure Time Series Insights w wersji zapoznawczej | Dokumentacja firmy Microsoft
-description: Omówienie usługi Azure Time Series Insights czasu modelu szeregów.
+title: Model szeregów czasowych w wersji zapoznawczej Azure Time Series Insights | Microsoft Docs
+description: Zrozumienie Azure Time Series Insights modelu szeregów czasowych.
 author: ashannon7
 ms.author: dpalled
 ms.workload: big-data
@@ -8,48 +8,48 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3e6e8ae76c0ae6f688dd4a039b34c52af16b6e0f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2a740d8ee0eb50cfa01f36bd8f5590a58e1e6627
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244025"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931931"
 ---
 # <a name="time-series-model"></a>Model szeregów czasowych
 
-W tym artykule opisano Model szeregów czasowych część Azure czas Series Insights w wersji zapoznawczej. Omówiono w nim samym modelu, jego możliwości i jak rozpocząć tworzenie i aktualizowanie własnego modelu.
+W tym artykule opisano częścią modelu szeregów czasowych w wersji zapoznawczej Azure Time Series Insights. Omówiono w nim sam model, jego możliwości oraz sposób rozpoczynania kompilowania i aktualizowania własnych modeli.
 
-Tradycyjnie dane, które są zbierane z urządzeń IoT brakuje informacji kontekstowych, który sprawia, że trudno znaleźć i szybkie analizowanie czujników. Głównym celem dla modelu szeregów czasowych to uprościć Znajdowanie i analizowanie danych IoT. Powoduje to osiągnięcie tego celu, włączając nadzorowaną, konserwacja i Wzbogacanie danych szeregów czasowych, ułatwiających przygotowanie przygotowane zestawów danych.
+Tradycyjnie dane zbierane z urządzeń IoT nie zawierają informacji kontekstowych, co utrudnia szybkie znajdowanie i analizowanie czujników. Główną motywacją dla modelu szeregów czasowych jest uproszczenie wyszukiwania i analizowania danych IoT. Realizuje ten cel, umożliwiając nadzorowanie, konserwację i wzbogacanie danych szeregów czasowych, aby pomóc w przygotowaniu gotowych do użycia przez klienta zestawów elementów.
 
-Modeli szeregów czasowych odgrywają kluczową rolę w zapytaniach i nawigacji, ponieważ ich nakreślić kontekst dla urządzeń i innych urządzeń jednostek. Dane, które zawiera utrwalone w modelu szeregów czasowych obsługuje zapytania dla szeregów czasowych obliczeń, wykorzystując formuły są w nich przechowywane.
+Modele szeregów czasowych odgrywają istotną rolę w zapytaniach i nawigacji, ponieważ contextualizeją one urządzenia i jednostki niebędące urządzeniami. Dane, które są utrwalane w modelu szeregów czasowych, mają wpływ na obliczenia zapytań szeregów czasowych przez skorzystanie z formuł przechowywanych w nich.
 
-[![Omówienie modelu serii czasu](media/v2-update-tsm/tsm.png)](media/v2-update-tsm/tsm.png#lightbox)
+[![Omówienie modelu szeregów czasowych](media/v2-update-tsm/tsm.png)](media/v2-update-tsm/tsm.png#lightbox)
 
 ## <a name="key-capabilities"></a>Najważniejsze możliwości
 
-W celu się to proste i łatwe do zarządzania contextualization serii czasu modelu szeregów czasowych włącza następujące możliwości w czasie Series Insights w wersji zapoznawczej. Ułatwia:
+W celu uproszczenia i łatwego zarządzania contextualization szeregów czasowych model szeregów czasowych umożliwia korzystanie z następujących funkcji w wersji zapoznawczej programu Time Series Insights. Ułatwia:
 
-* Tworzenie i zarządzanie obliczeń lub formuł, przekształcać dane, wykorzystując funkcje skalarne, agregacji operacje i tak dalej.
-* Definiowanie relacji nadrzędny podrzędny, Włącz nawigacji i odwołania do zapewniania kontekstu danych telemetrycznych serii czasu.
-* Definiowanie właściwości, które są skojarzone z wystąpień część *wystąpienia pól* i używać ich do tworzenia hierarchii.
+* Twórz obliczenia lub formuły i zarządzaj nimi, Przekształcaj dane przy użyciu funkcji skalarnych, operacji agregujących i tak dalej.
+* Zdefiniuj relacje nadrzędny-podrzędny, aby włączyć nawigację i odwołanie oraz zapewnić kontekst do telemetrii szeregów czasowych.
+* Zdefiniuj właściwości, które są skojarzone z częścią wystąpień *pól wystąpień* i używają ich do tworzenia hierarchii.
 
 ## <a name="entity-components"></a>Składniki jednostki
 
-Modeli szeregów czasowych są trzy podstawowe składniki:
+Modele szeregów czasowych mają trzy podstawowe składniki:
 
-* <a href="#time-series-model-types">Typy modelu serii czasu</a>
-* <a href="#time-series-model-hierarchies">Hierarchie Model serii czasu</a>
-* <a href="#time-series-model-instances">Wystąpienia serii modelu godziny</a>
+* <a href="#time-series-model-types">Typy modeli szeregów czasowych</a>
+* <a href="#time-series-model-hierarchies">Hierarchie modelu szeregów czasowych</a>
+* <a href="#time-series-model-instances">Wystąpienia modelu szeregów czasowych</a>
 
-Te składniki są połączone, aby określić Model szeregów czasowych i organizowania danych usługi Azure Time Series Insights.
+Te składniki są łączone w celu określenia modelu szeregów czasowych i organizowania danych Azure Time Series Insights.
 
-## <a name="time-series-model-types"></a>Typy modelu serii czasu
+## <a name="time-series-model-types"></a>Typy modeli szeregów czasowych
 
-Czas modelu szeregów *typy* pomagającym w zdefiniowaniu zmiennych lub formuł do wykonywania obliczeń. Typy nie są skojarzone z określonym wystąpieniem usługi Time Series Insights. Typ może mieć co najmniej jednej zmiennej. Na przykład wystąpienie usługi Time Series Insights może być typu *czujnik temperatury*, która składa się ze zmiennych *średnia temperatura*, *minimalna temperatura*i *maksymalna temperatura*. Możemy utworzyć domyślny typ, gdy dane zacznie przepływać do usługi Time Series Insights. Domyślny typ, można je pobrać i aktualizowane na podstawie ustawienia modelu. Domyślne typy mają zmienną, który zlicza liczbę zdarzeń.
+*Typy* modeli szeregów czasowych pomagają definiować zmienne lub formuły do wykonywania obliczeń. Typy są skojarzone z określonym wystąpieniem Time Series Insights. Typ może mieć co najmniej jednej zmiennej. Na przykład wystąpienie Time Series Insights może być typu *czujnik temperatury*, który składa się z *średniej temperatury*, temperatury *minimalnej*i *maksymalnej temperatury*. Tworzymy domyślny typ, gdy dane zaczynają przepływać do Time Series Insights. Typ domyślny można pobrać i zaktualizować z ustawień modelu. Typy domyślne mają zmienną, która zlicza liczbę zdarzeń.
 
-### <a name="time-series-model-type-json-example"></a>Przykład kodu JSON typ modelu serii czasu
+### <a name="time-series-model-type-json-example"></a>Przykład JSON typu modelu szeregów czasowych
 
 Przykład:
 
@@ -78,26 +78,26 @@ Aby uzyskać więcej informacji na temat typów modelu szeregów czasowych, zoba
 
 ### <a name="variables"></a>Zmienne
 
-Czas Series Insights typy mają zmiennych, które są nazwane obliczenia przez wartości z tych zdarzeń. Definicje zmiennych w czasie Series Insights zawiera formułę i obliczanie reguły. Definicje zmiennych obejmują *rodzaj*, *wartość*, *filtru*, *redukcji*, i *granice*. Zmienne są przechowywane w definicji typu w modelu szeregów czasowych i można podać wbudowane za pośrednictwem interfejsów API zapytań, aby zastąpić przechowywaną definicję.
+Typy Time Series Insights mają zmienne, które są nazwanymi obliczeniami względem wartości ze zdarzeń. Definicje zmiennych Time Series Insights zawierają formułę i reguły obliczeń. Definicje zmiennych obejmują *rodzaj*, *wartość*, *Filtr*, *zmniejszenie*i *granice*. Zmienne są przechowywane w definicji typu w modelu szeregów czasowych i mogą być dostarczane wewnętrznie za pośrednictwem interfejsów API zapytań w celu zastąpienia przechowywanej definicji.
 
-Następujące macierz działa jako legendę definicje zmiennych:
+Poniższa macierz działa jako legenda dla definicji zmiennych:
 
-[![Typ definicji zmiennej tabeli](media/v2-update-tsm/table.png)](media/v2-update-tsm/table.png#lightbox)
+[![Tabela definicji zmiennych typów](media/v2-update-tsm/table.png)](media/v2-update-tsm/table.png#lightbox)
 
 | Definicja | Opis |
 | --- | ---|
-| Rodzaj zmiennej |  *Liczbowe* i *agregacji* rodzaju są obsługiwane. |
-| Filtr zmiennej | Filtry zmiennej Określ klauzulę opcjonalny filtr, aby ograniczyć liczbę wierszy, są traktowane jako obliczeń w oparciu o kryteria. |
-| Wartość zmiennej | Wartości zmiennych i powinny być używane w obliczeń. Odpowiednie pole do odwoływania się do dla danego punktu danych. |
-| Agregacja zmiennej | Funkcji agregującej zmiennej umożliwia część obliczeń. Time Series Insights obsługuje agregacje regularne (to znaczy, *min*, *max*, *avg*, *suma*, i *liczba*). |
+| Rodzaj zmiennej |  Typy *liczbowe* i *zagregowane* są obsługiwane |
+| Filtr zmiennych | Filtry zmiennych określają opcjonalną klauzulę filtru, aby ograniczyć liczbę wierszy branych pod uwagę w obliczeniach na podstawie warunków. |
+| Wartość zmiennej | Wartości zmiennych są i powinny być używane w obliczeniach. Odpowiednie pole, do którego odwołuje się dla danego punktu danych. |
+| Agregacja zmiennych | Funkcja agregująca zmiennej umożliwia części obliczeń. Time Series Insights obsługuje regularne agregaty (mianowicie, *min*, *Max*, *AVG*, *sum*i *Count*). |
 
-## <a name="time-series-model-hierarchies"></a>Hierarchie Model serii czasu
+## <a name="time-series-model-hierarchies"></a>Hierarchie modelu szeregów czasowych
 
-Hierarchie organizować wystąpienia, przez określenie nazwy właściwości i ich wzajemne relacje. Konieczne może być pojedynczą hierarchię lub wielu hierarchii. Nie muszą być częścią bieżącego danych, ale każde wystąpienie powinny być mapowane do hierarchii. Wystąpienie modelu szeregów czasowych mapować na pojedynczą hierarchię lub wielu hierarchii.
+Hierarchie organizują wystąpienia przez określenie nazw właściwości i ich relacji. Może istnieć pojedyncza hierarchia lub wiele hierarchii. Nie muszą one być bieżącą częścią danych, ale każde wystąpienie powinno być mapowane na hierarchię. Wystąpienie modelu szeregów czasowych może być mapowane na pojedynczą hierarchię lub wiele hierarchii.
 
-Hierarchie są definiowane przez *identyfikator hierarchii*, *nazwa*, i *źródła*. Hierarchie mają ścieżki, czyli kolejność góra dół nadrzędny podrzędny w hierarchii, które użytkownicy chcą utworzyć. Mapy właściwości nadrzędny podrzędny *wystąpienia pól*.
+Hierarchie są definiowane przez *Identyfikator hierarchii*, *nazwę*i *Źródło*. Hierarchie mają ścieżkę, która jest kolejnością nadrzędny-podrzędny hierarchii, którą użytkownicy chcą tworzyć. Właściwości nadrzędny-podrzędny mapowania *pól wystąpień*.
 
-### <a name="time-series-model-hierarchy-json-example"></a>Przykład kodu JSON hierarchii modelu serii czasu
+### <a name="time-series-model-hierarchy-json-example"></a>Przykład JSON hierarchii modelu szeregów czasowych
 
 Przykład:
 
@@ -118,35 +118,35 @@ Aby uzyskać więcej informacji na temat hierarchii modelu szeregów czasowych, 
 
 ### <a name="hierarchy-definition-behavior"></a>Zachowanie definicji hierarchii
 
-Rozważmy następujący przykład, gdzie ma hierarchię H1 *tworzenia*, *floor*, i *pokoju* jako część jego definicji:
+Rozważmy poniższy przykład, w którym hierarchia H1 ma *kompilację*, *piętro*i *Pokój* w ramach swojej definicji:
 
 ```plaintext
  H1 = [“building”, “floor”, “room”]
 ```
 
-W zależności od *wystąpienia pól*, hierarchii atrybutów i wartości są wyświetlane zgodnie z poniższą tabelą:
+W zależności od *pól wystąpienia*atrybuty hierarchii i wartości są wyświetlane jak pokazano w poniższej tabeli:
 
-| Identyfikator serii czasu | Pola wystąpienia |
+| Identyfikator szeregu czasowego | Pola wystąpienia |
 | --- | --- |
-| ID1 | "Tworzenie" = "1000", "floor" = "10", "pomieszczenie" = "55"  |
-| ID2 | "Tworzenie" = "1000", "pomieszczenie" = "55" |
-| ID3 | "floor" = "10" |
-| ID4 | "Tworzenie" = "1000", "floor" = "10"  |
-| ID5 | "Tworzenie", "floor" ani "pomieszczenie" jest ustawiona |
+| ID1 | "Building" = "1000", "piętro" = "10", "Pokój" = "55"  |
+| ID2 | "Building" = "1000", "Pokój" = "55" |
+| ID3 | "piętro" = "10" |
+| ID4 | "Building" = "1000", "piętro" = "10"  |
+| ID5 | Nie ustawiono żadnego z "kompilowania", "piętra" ani "pokoju" |
 
-W powyższym przykładzie **ID1** i **ID4** Pokaż jako część hierarchii H1 w Eksploratorze usługi Azure Time Series Insights, a pozostałe są klasyfikowane jako *wystąpień bez elementów nadrzędnych* ponieważ nie są one zgodne z hierarchii określone dane.
+W powyższym przykładzie **ID1** i **ID4** są wyświetlane jako część hierarchii H1 w Eksploratorze Azure Time Series Insights, a pozostałe są klasyfikowane jako nienadrzędne *wystąpienia* , ponieważ nie są zgodne z określoną hierarchią danych.
 
-## <a name="time-series-model-instances"></a>Wystąpienia serii modelu godziny
+## <a name="time-series-model-instances"></a>Wystąpienia modelu szeregów czasowych
 
-Wystąpienia są szeregów czasowych, samodzielnie. W większości przypadków *deviceId* lub *assetId* jest unikatowym identyfikatorem zasobów w środowisku. Wystąpienia zostały skojarzone z nimi informacje opisowe o nazwie właściwości wystąpienia. Co najmniej właściwości wystąpienia obejmują informacje o hierarchii. Mogą również zawierać przydatne, opisowe danych, takich jak producenta, operator lub Data ostatniego usługi.
+Wystąpienia są same w szeregach czasowych. W większości przypadków parametr *deviceId* lub *AssetID* jest unikatowym identyfikatorem elementu zawartości w środowisku. Wystąpienia mają opisowe informacje skojarzone z nimi nazywane właściwościami wystąpienia. Co najmniej właściwości wystąpienia zawiera informacje o hierarchii. Mogą również zawierać przydatne, opisowe dane, takie jak producent, operator lub Data ostatniej usługi.
 
-Wystąpienia są definiowane przez *typeId*, *timeSeriesId*, *nazwa*, *opis*, *hierarchyIds* , a *instanceFields*. Każde wystąpienie jest mapowany na tylko jeden *typu*oraz jednej lub wielu hierarchii. Wystąpienia dziedziczyć wszystkie właściwości z hierarchii wraz z dodatkowymi *instanceFields* można dodać więcej definicji właściwości wystąpienia.
+Wystąpienia są definiowane przez *typeId*, *timeSeriesId*, *name*, *Description*, *hierarchyIds*i *instanceFields*. Każde wystąpienie jest mapowane na tylko jeden *Typ*i co najmniej jedną hierarchię. Wystąpienia dziedziczą wszystkie właściwości z hierarchii i dodatkowe *instanceFields* można dodać do dalszej definicji właściwości wystąpienia.
 
-*instanceFields* są właściwości wystąpienia i danych statycznych, który definiuje wystąpienie. Wartości właściwości hierarchia lub hierarchia nie mogą określać jednocześnie obsługując indeksowanie w celu wykonywania operacji wyszukiwania.
+*instanceFields* to właściwości wystąpienia i wszystkie dane statyczne, które definiują wystąpienie. Definiują wartości hierarchii lub właściwości nie będących hierarchią, a także obsługują indeksowanie w celu wykonywania operacji wyszukiwania.
 
-*Nazwa* właściwość jest opcjonalna i wielkość liter. Jeśli *nazwa* jest niedostępne, zostaną domyślnie nazwę serii czasu. Jeśli *nazwa* zostanie podana, identyfikator serii czasu będą nadal dostępne w źródle (siatka poniżej wykresów w Eksploratorze).
+Właściwość *name* jest opcjonalna i uwzględnia wielkość liter. Jeśli *Nazwa* jest niedostępna, domyślnie będzie to identyfikator szeregów czasowych. W przypadku podanej *nazwy* identyfikator szeregów czasowych nadal będzie dostępny w dobrze (siatka poniżej wykresów w Eksploratorze).
 
-### <a name="time-series-model-instance-json-example"></a>Przykład kodu JSON wystąpienia modelu serii czasu
+### <a name="time-series-model-instance-json-example"></a>Przykład JSON wystąpienia modelu szeregów czasowych
 
 Przykład:
 
@@ -166,9 +166,9 @@ Przykład:
 }
 ```
 
-Aby uzyskać więcej informacji na temat wystąpienia modelu szeregów czasowych, zobacz [dokumentację referencyjną](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api).
+Aby uzyskać więcej informacji na temat wystąpień modelu szeregów czasowych, zobacz [dokumentację referencyjną](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api).
 
-### <a name="time-series-model-settings-example"></a>Przykład ustawień modelu serii czasu
+### <a name="time-series-model-settings-example"></a>Przykład ustawień modelu szeregów czasowych
 
 Przykład:
 
@@ -189,8 +189,8 @@ Przykład:
 
 Aby uzyskać więcej informacji na temat ustawień modelu szeregów czasowych, zobacz [dokumentację referencyjną](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Zobacz [magazynu Azure czas Series Insights w wersji zapoznawczej i ruch przychodzący](./time-series-insights-update-storage-ingress.md).
+- Zobacz [Azure Time Series Insights w wersji zapoznawczej magazynu i transferu danych](./time-series-insights-update-storage-ingress.md)przychodzących.
 
-- Zobacz Omówienie nowej [modelu szeregów czasowych](https://docs.microsoft.com/rest/api/time-series-insights/preview-model).
+- Zobacz nowy [model szeregów czasowych](https://docs.microsoft.com/rest/api/time-series-insights/preview-model).

@@ -10,12 +10,12 @@ ms.date: 06/02/2017
 ms.author: tamram
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 3338bed8cd8067d58eb2600854de6c0d8e34d1a3
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: d259ea02824937f0c496bb253fa4b6c1f5cea412
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668462"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69015635"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>Używanie interfejsu wiersza polecenia platformy Azure z usługą Azure Storage
 
@@ -195,6 +195,8 @@ az storage account create \
   * `Standard_LRS`
   * `Standard_RAGRS`
   * `Standard_ZRS`
+  * `Standard_GZRS`przeglądania
+  * `Standard_RAGZRS`przeglądania
 
 ### <a name="set-default-azure-storage-account-environment-variables"></a>Ustaw domyślne zmienne środowiskowe konta usługi Azure Storage
 

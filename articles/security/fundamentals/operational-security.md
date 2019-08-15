@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a2c186fab28c96fa743e7bbf1701dba9de3f742d
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 69b25f22d448436db5e906a3b56b5e50ec412b40
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726932"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934673"
 ---
 # <a name="azure-operational-security"></a>Zabezpieczenia operacyjne platformy Azure
 ## <a name="introduction"></a>Wprowadzenie
 
-### <a name="overview"></a>Przegląd
+### <a name="overview"></a>Omówienie
 Wiemy, że zabezpieczenia to zadanie jedno w chmurze i jak ważne jest, aby znaleźć dokładne i aktualne informacje o zabezpieczeniach platformy Azure. Jednym z najlepszych powodów używania platformy Azure dla aplikacji i usług jest skorzystanie z zalet szerokiej gamy dostępnych narzędzi i funkcji zabezpieczeń. Te narzędzia i funkcje ułatwiają tworzenie bezpiecznych rozwiązań na bezpiecznej platformie Azure. System Windows Azure musi zapewnić poufność, integralność i dostępność danych klientów, a także włączyć przejrzystą odpowiedzialność.
 
 Aby pomóc klientom w lepszym zrozumieniu macierzy kontroli zabezpieczeń wdrożonych w ramach Microsoft Azure z perspektywy klienta i firmy Microsoft, ten oficjalny dokument "zabezpieczenia operacyjne platformy Azure" jest zapisywana, co zapewnia kompleksowy Zapoznaj się z zabezpieczeniami operacyjnymi dostępnymi w systemie Windows Azure.
@@ -41,17 +41,17 @@ Infrastruktura platformy Azure została zaprojektowana od funkcji do aplikacji d
 Zabezpieczenia operacyjne platformy Azure odnoszą się do usług, formantów i funkcji dostępnych dla użytkowników w celu ochrony danych, aplikacji i innych zasobów w Microsoft Azure. Usługa Azure Operational Security jest oparta na architekturze, która obejmuje wiedzę uzyskaną na podstawie różnych możliwości, które są unikatowe dla firmy Microsoft, w tym cyklu projektowania zabezpieczeń firmy Microsoft (SDL), programu Microsoft Security Response Center, i szczegółowa świadomość cyberbezpieczeństwa zagrożeń.
 
 Ten oficjalny dokument przedstawia podejście firmy Microsoft do zabezpieczeń operacyjnych platformy Azure w ramach platformy Microsoft Azure w chmurze i obejmuje następujące usługi:
-1.  [Azure Monitor](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview)
+1.  [Azure Monitor](../../azure-monitor/index.yml)
 
-2.  [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+2.  [Azure Security Center](../../security-center/security-center-intro.md)
 
-3.  [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview)
+3.  [Azure Monitor](../../azure-monitor/overview.md)
 
-4.  [Obserwator sieci platformy Azure](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)
+4.  [Obserwator sieci platformy Azure](../../network-watcher/network-watcher-monitoring-overview.md)
 
 5.  [Analiza usługi Azure Storage](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)
 
-6.  [Azure Active directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)
+6.  [Azure Active directory](../../active-directory/fundamentals/active-directory-whatis.md)
 
 
 ## <a name="microsoft-azure-monitor-logs"></a>Dzienniki monitora Microsoft Azure
@@ -100,21 +100,21 @@ Chroni ona dane aplikacji i przechowuje je przez wiele lat bez konieczności pon
 Chronione dane w usłudze Azure Backup są przechowywane w magazynie kopii zapasowych, znajdującym się w określonym regionie geograficznym. Dane są replikowane w tym samym regionie i, w zależności od typu magazynu, mogą być również replikowane do innego regionu w celu uzyskania dalszej odporności.
 
 ### <a name="management-solutions"></a>Rozwiązania związane z zarządzaniem
-[Azure monitor](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) to oparte na chmurze rozwiązanie do zarządzania działem IT firmy Microsoft, które ułatwia zarządzanie infrastrukturą lokalną i chmurową oraz jej ochronę.
+[Azure monitor](../../security-center/security-center-intro.md) to oparte na chmurze rozwiązanie do zarządzania działem IT firmy Microsoft, które ułatwia zarządzanie infrastrukturą lokalną i chmurową oraz jej ochronę.
 
 
-[Rozwiązania do zarządzania](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions) to zestawy logiki, które implementują konkretny scenariusz zarządzania przy użyciu co najmniej jednej Azure monitor usług. Dostępne są różne rozwiązania firmy Microsoft i partnerów, które można łatwo dodać do subskrypcji platformy Azure, aby zwiększyć wartość inwestycji w Azure Monitor. Jako partner możesz tworzyć własne rozwiązania obsługujące aplikacje i usługi oraz udostępniać je użytkownikom za pomocą witryny Azure Marketplace lub szablonów Szybki start.
+[Rozwiązania do zarządzania](../../monitoring/monitoring-solutions.md) to zestawy logiki, które implementują konkretny scenariusz zarządzania przy użyciu co najmniej jednej Azure monitor usług. Dostępne są różne rozwiązania firmy Microsoft i partnerów, które można łatwo dodać do subskrypcji platformy Azure, aby zwiększyć wartość inwestycji w Azure Monitor. Jako partner możesz tworzyć własne rozwiązania obsługujące aplikacje i usługi oraz udostępniać je użytkownikom za pomocą witryny Azure Marketplace lub szablonów Szybki start.
 
 
 ![Rozwiązania związane z zarządzaniem](./media/operational-security/azure-operational-security-fig4.png)
 
-Dobrym przykładem rozwiązania korzystającego z wielu usług w celu zapewnienia dodatkowej funkcjonalności jest [rozwiązanie Update Management](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management). To rozwiązanie używa agenta [dzienników Azure monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) dla systemów Windows i Linux w celu zbierania informacji na temat wymaganych aktualizacji na każdym agencie. Zapisuje te dane w repozytorium dzienników Azure Monitor, w którym można je analizować za pomocą dołączonego pulpitu nawigacyjnego.
+Dobrym przykładem rozwiązania korzystającego z wielu usług w celu zapewnienia dodatkowej funkcjonalności jest [rozwiązanie Update Management](../../automation/automation-update-management.md). To rozwiązanie używa agenta [dzienników Azure monitor](../../log-analytics/log-analytics-queries.md) dla systemów Windows i Linux w celu zbierania informacji na temat wymaganych aktualizacji na każdym agencie. Zapisuje te dane w repozytorium dzienników Azure Monitor, w którym można je analizować za pomocą dołączonego pulpitu nawigacyjnego.
 
-Podczas tworzenia wdrożenia elementy Runbook w [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) są używane do instalowania wymaganych aktualizacji. Możesz zarządzać całym procesem w portalu, dzięki czemu nie musisz przejmować się szczegółami.
+Podczas tworzenia wdrożenia elementy Runbook w [Azure Automation](../../automation/automation-intro.md) są używane do instalowania wymaganych aktualizacji. Możesz zarządzać całym procesem w portalu, dzięki czemu nie musisz przejmować się szczegółami.
 
 ## <a name="azure-security-center"></a>Azure Security Center
 
-Azure Security Center pomaga chronić zasoby platformy Azure. Zapewnia zintegrowane monitorowanie zabezpieczeń i zarządzanie zasadami w ramach subskrypcji platformy Azure. W ramach usługi można definiować zasady nie tylko dla subskrypcji platformy Azure, ale również dla [grup zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups), dzięki czemu można być bardziej szczegółowym.
+Azure Security Center pomaga chronić zasoby platformy Azure. Zapewnia zintegrowane monitorowanie zabezpieczeń i zarządzanie zasadami w ramach subskrypcji platformy Azure. W ramach usługi można definiować zasady nie tylko dla subskrypcji platformy Azure, ale również dla [grup zasobów](../../azure-resource-manager/resource-group-overview.md#resource-groups), dzięki czemu można być bardziej szczegółowym.
 
 ### <a name="security-policies-and-recommendations"></a>Zasady zabezpieczeń i zalecenia w tym zakresie
 
@@ -165,7 +165,7 @@ Usługa Azure Security Center zbiera efemeryczne kopie plików zrzutu awaryjnego
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-[Azure monitor rejestruje rozwiązanie zabezpieczenia](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources) i Inspekcja umożliwia działowi IT aktywne monitorowanie wszystkich zasobów, co może pomóc zminimalizować wpływ zdarzeń zabezpieczeń. Dzienniki Azure Monitor Security and Audit mają domeny zabezpieczeń, których można używać do monitorowania zasobów. Domena zabezpieczeń zapewnia szybki dostęp do opcji, aby monitorować zabezpieczenia następujące domeny zostały omówione bardziej szczegółowo:
+[Azure monitor rejestruje rozwiązanie zabezpieczenia](../../security-center/security-center-monitoring.md) i Inspekcja umożliwia działowi IT aktywne monitorowanie wszystkich zasobów, co może pomóc zminimalizować wpływ zdarzeń zabezpieczeń. Dzienniki Azure Monitor Security and Audit mają domeny zabezpieczeń, których można używać do monitorowania zasobów. Domena zabezpieczeń zapewnia szybki dostęp do opcji, aby monitorować zabezpieczenia następujące domeny zostały omówione bardziej szczegółowo:
 
 -   Ocena złośliwego oprogramowania
 -   Ocena aktualizacji
@@ -195,11 +195,11 @@ Te dzienniki są emitowane przez zasób i zapewniają rozbudowane, częste dane 
 
 Na przykład Dzienniki systemu zdarzeń systemu Windows są jedną kategorią dziennika diagnostycznego dla maszyn wirtualnych i dzienników obiektów blob, tabel i kolejek są kategorie dzienników diagnostycznych dla kont magazynu.
 
-Dzienniki diagnostyczne różnią się od [dziennika aktywności (dawniej zwanego dziennikiem inspekcji lub dziennikiem operacji)](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). Dziennik aktywności zawiera szczegółowe informacje o operacjach wykonywanych na zasobach w ramach subskrypcji. Dzienniki diagnostyczne udostępniają szczegółowe dane operacji wykonanych przez sam zasób.
+Dzienniki diagnostyczne różnią się od [dziennika aktywności (dawniej zwanego dziennikiem inspekcji lub dziennikiem operacji)](../../azure-monitor/platform/activity-logs-overview.md). Dziennik aktywności zawiera szczegółowe informacje o operacjach wykonywanych na zasobach w ramach subskrypcji. Dzienniki diagnostyczne udostępniają szczegółowe dane operacji wykonanych przez sam zasób.
 
 ### <a name="metrics"></a>Metryki
 
-Azure Monitor umożliwia korzystanie z telemetrii w celu uzyskania wglądu w wydajność i kondycję obciążeń na platformie Azure. Najważniejszym typem danych telemetrii platformy Azure jest metryki (nazywane również licznikami wydajności) emitowane przez większość zasobów platformy Azure. Azure Monitor oferuje kilka sposobów konfigurowania i używania tych [metryk](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) do monitorowania i rozwiązywania problemów. Metryki są cennym źródłem danych telemetrycznych i umożliwiają wykonywanie następujących zadań:
+Azure Monitor umożliwia korzystanie z telemetrii w celu uzyskania wglądu w wydajność i kondycję obciążeń na platformie Azure. Najważniejszym typem danych telemetrii platformy Azure jest metryki (nazywane również licznikami wydajności) emitowane przez większość zasobów platformy Azure. Azure Monitor oferuje kilka sposobów konfigurowania i używania tych [metryk](../../monitoring/monitoring-data-collection.md) do monitorowania i rozwiązywania problemów. Metryki są cennym źródłem danych telemetrycznych i umożliwiają wykonywanie następujących zadań:
 
 -   **Śledź wydajność** zasobów (takich jak maszyna wirtualna, witryna sieci Web lub aplikacja logiki) przez wykreślenie jej metryk na wykresie portalu i Przypinanie tego wykresu do pulpitu nawigacyjnego.
 
@@ -213,13 +213,13 @@ Azure Monitor umożliwia korzystanie z telemetrii w celu uzyskania wglądu w wyd
 
 ### <a name="azure-diagnostics"></a>Diagnostyka Azure
 
-Jest to możliwość na platformie Azure, która umożliwia zbieranie danych diagnostycznych we wdrożonej aplikacji. Można użyć rozszerzenia diagnostyki z różnych różnych źródeł. Obecnie obsługiwane są [role sieci Web i procesu roboczego usługi w chmurze platformy Azure](https://docs.microsoft.com/azure/vs-azure-tools-configure-roles-for-cloud-service), [platforma Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/overview) z systemem Microsoft Windows i [Service Fabric](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics). Inne usługi platformy Azure mają własną osobną diagnostykę.
+Jest to możliwość na platformie Azure, która umożliwia zbieranie danych diagnostycznych we wdrożonej aplikacji. Można użyć rozszerzenia diagnostyki z różnych różnych źródeł. Obecnie obsługiwane są [role sieci Web i procesu roboczego usługi w chmurze platformy Azure](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service), [platforma Azure Virtual Machines](../../virtual-machines/windows/overview.md) z systemem Microsoft Windows i [Service Fabric](../../azure-monitor/platform/diagnostics-extension-overview.md). Inne usługi platformy Azure mają własną osobną diagnostykę.
 
 ## <a name="azure-network-watcher"></a>Azure Network Watcher
 
 Inspekcja zabezpieczeń sieci jest konieczna do wykrywania luk w zabezpieczeniach sieci i zapewnienia zgodności z modelem nadzoru obowiązującym w zakresie bezpieczeństwa i zarządzania. Widok grupy zabezpieczeń umożliwia pobranie skonfigurowanej sieciowej grupy zabezpieczeń i reguł zabezpieczeń oraz obowiązujących reguł zabezpieczeń. Mając listę zastosowanych reguł, możesz określić porty, które są otwarte i oceniają lukę w zabezpieczeniach sieci.
 
-[Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) to usługa regionalna, która umożliwia monitorowanie i diagnozowanie warunków na poziomie sieci w, do i z platformy Azure. Narzędzia do diagnostyki i wizualizacji sieci dostępne w Network Watcher pomagają zrozumieć, zdiagnozować i uzyskiwać wgląd w sieć na platformie Azure. Ta usługa obejmuje funkcję przechwytywania pakietów, następny przeskok, sprawdzenie przepływu IP, widok grupy zabezpieczeń, dzienniki przepływu sieciowej grupy zabezpieczeń. Monitorowanie poziomu scenariusza zapewnia kompleksowy wgląd w zasoby sieciowe w przeciwieństwie do monitorowania poszczególnych zasobów sieciowych.
+[Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) to usługa regionalna, która umożliwia monitorowanie i diagnozowanie warunków na poziomie sieci w, do i z platformy Azure. Narzędzia do diagnostyki i wizualizacji sieci dostępne w Network Watcher pomagają zrozumieć, zdiagnozować i uzyskiwać wgląd w sieć na platformie Azure. Ta usługa obejmuje funkcję przechwytywania pakietów, następny przeskok, sprawdzenie przepływu IP, widok grupy zabezpieczeń, dzienniki przepływu sieciowej grupy zabezpieczeń. Monitorowanie poziomu scenariusza zapewnia kompleksowy wgląd w zasoby sieciowe w przeciwieństwie do monitorowania poszczególnych zasobów sieciowych.
 
 ![Azure Network Watcher](./media/operational-security/azure-operational-security-fig8.png)
 
@@ -240,15 +240,15 @@ Network Watcher obecnie ma następujące możliwości:
 
 [Analityka magazynu](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) mogą przechowywać metryki, które obejmują zagregowane statystyki transakcji oraz dane pojemności dotyczące żądań do usługi magazynu. Transakcje są raportowane zarówno na poziomie operacji interfejsu API, jak i na poziomie usługi magazynu, a pojemność jest raportowana na poziomie usługi magazynu. Dane metryk umożliwiają analizowanie użycia usługi magazynu, diagnozowanie problemów z żądaniami dotyczącymi usługi Storage oraz Poprawianie wydajności aplikacji korzystających z usługi.
 
-[Analityka magazynu platformy Azure](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) wykonuje rejestrowanie i udostępnia dane metryk dla konta magazynu. Dane te mogą posłużyć do śledzenia żądań, analizy tendencji użycia oraz diagnozowania problemów z kontem magazynu. Rejestrowanie analityka magazynu jest dostępne dla [usług obiektów blob, kolejek i tabel](https://docs.microsoft.com/azure/storage/storage-introduction). Analityka magazynu rejestruje szczegółowe informacje o żądaniach zakończonych powodzeniem i zakończonych niepowodzeniem do usługi magazynu.
+[Analityka magazynu platformy Azure](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) wykonuje rejestrowanie i udostępnia dane metryk dla konta magazynu. Dane te mogą posłużyć do śledzenia żądań, analizy tendencji użycia oraz diagnozowania problemów z kontem magazynu. Rejestrowanie analityka magazynu jest dostępne dla [usług obiektów blob, kolejek i tabel](../../storage/common/storage-introduction.md). Analityka magazynu rejestruje szczegółowe informacje o żądaniach zakończonych powodzeniem i zakończonych niepowodzeniem do usługi magazynu.
 
 Te informacje mogą służyć do monitorowania indywidualnych żądań i diagnozowania problemów z usługą magazynu. Żądania są rejestrowane na podstawie najlepszego wysiłku. Wpisy dziennika są tworzone tylko wtedy, gdy istnieją żądania skierowane do punktu końcowego usługi. Na przykład jeśli konto magazynu ma aktywność w swoim punkcie końcowym obiektu BLOB, ale nie znajduje się w jego punktach końcowych tabeli lub kolejki, tworzone są tylko dzienniki dotyczące Blob service.
 
-Aby użyć analityka magazynu, należy włączyć ją indywidualnie dla każdej usługi, którą chcesz monitorować. Można ją włączyć w [Azure Portal](https://portal.azure.com/); Aby uzyskać szczegółowe informacje, zobacz [Monitorowanie konta magazynu w Azure Portal](https://docs.microsoft.com/azure/storage/storage-monitor-storage-account). Możesz również włączyć analityka magazynu programowo za pośrednictwem interfejsu API REST lub biblioteki klienta. Użyj operacji ustaw właściwości usługi, aby włączyć analityka magazynu indywidualnie dla każdej usługi.
+Aby użyć analityka magazynu, należy włączyć ją indywidualnie dla każdej usługi, którą chcesz monitorować. Można ją włączyć w [Azure Portal](https://portal.azure.com/); Aby uzyskać szczegółowe informacje, zobacz [Monitorowanie konta magazynu w Azure Portal](../../storage/common/storage-monitor-storage-account.md). Możesz również włączyć analityka magazynu programowo za pośrednictwem interfejsu API REST lub biblioteki klienta. Użyj operacji ustaw właściwości usługi, aby włączyć analityka magazynu indywidualnie dla każdej usługi.
 
 Zagregowane dane są przechowywane w dobrze znanym obiekcie BLOB (na potrzeby rejestrowania) i w dobrze znanych tabelach (dla metryk), do których można uzyskać dostęp za pomocą interfejsów API Blob service i Table service.
 
-Analityka magazynu ma limit 20 TB ilości przechowywanych danych, które są niezależne od łącznego limitu dla konta magazynu. Wszystkie dzienniki są przechowywane w blokowych obiektach [BLOB](https://docs.microsoft.com/azure/storage/storage-analytics) w kontenerze o nazwie $logs, które są tworzone automatycznie po włączeniu analityka magazynu dla konta magazynu.
+Analityka magazynu ma limit 20 TB ilości przechowywanych danych, które są niezależne od łącznego limitu dla konta magazynu. Wszystkie dzienniki są przechowywane w blokowych obiektach [BLOB](../../storage/common/storage-analytics.md) w kontenerze o nazwie $logs, które są tworzone automatycznie po włączeniu analityka magazynu dla konta magazynu.
 
 Następujące akcje wykonywane przez analityka magazynu są rozliczane:
 
@@ -260,7 +260,7 @@ Następujące akcje wykonywane przez analityka magazynu są rozliczane:
 > W celu uzyskania optymalnej wydajności należy ograniczyć liczbę dysków o wysokiej dostępności podłączonych do maszyny wirtualnej, aby uniknąć możliwego ograniczenia przepustowości. Jeśli wszystkie dyski nie są w wysokim stopniu wykorzystywane, konto magazynu może obsługiwać większy dysk.
 
 > [!Note]
-> Aby uzyskać więcej informacji na temat limitów kont magazynu, zobacz [cele dotyczące skalowalności i wydajności usługi Azure Storage](https://docs.microsoft.com/azure/storage/storage-scalability-targets).
+> Aby uzyskać więcej informacji na temat limitów kont magazynu, zobacz [cele dotyczące skalowalności i wydajności usługi Azure Storage](../../storage/common/storage-scalability-targets.md).
 
 
 Rejestrowane są następujące typy żądań uwierzytelnionych i anonimowych.
@@ -281,9 +281,9 @@ Usługa Azure AD zawiera również pełen zestaw funkcji zarządzania tożsamoś
 
 -   Monitoruj użycie aplikacji i Chroń swoją firmę przed zaawansowanymi zagrożeniami Dzięki raportowaniu i monitorowaniu zabezpieczeń.
 
-W usłudze Azure Active Directory (Azure AD) uwzględniono raporty dotyczące zabezpieczeń, działań i inspekcji dla katalogu. [Raport inspekcji Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-guide) pomaga klientom identyfikować uprzywilejowane akcje, które wystąpiły w ich Azure Active Directory. Akcje uprzywilejowane obejmują zmiany podniesienia uprawnień (na przykład tworzenie ról lub resetowanie haseł), Zmienianie konfiguracji zasad (na przykład zasad haseł) lub zmiany konfiguracji katalogu (na przykład zmiany w ustawieniach federacyjnych domen).
+W usłudze Azure Active Directory (Azure AD) uwzględniono raporty dotyczące zabezpieczeń, działań i inspekcji dla katalogu. [Raport inspekcji Azure Active Directory](../../active-directory/active-directory-reporting-azure-portal.md) pomaga klientom identyfikować uprzywilejowane akcje, które wystąpiły w ich Azure Active Directory. Akcje uprzywilejowane obejmują zmiany podniesienia uprawnień (na przykład tworzenie ról lub resetowanie haseł), Zmienianie konfiguracji zasad (na przykład zasad haseł) lub zmiany konfiguracji katalogu (na przykład zmiany w ustawieniach federacyjnych domen).
 
-Raporty zawierają rekord inspekcji dla nazwy zdarzenia, aktora, który wykonał akcję, zasób docelowy, na który ma wpływ zmiana, oraz datę i godzinę (w formacie UTC). Klienci mogą pobrać listę zdarzeń inspekcji dla ich Azure Active Directory za pośrednictwem [Azure Portal](https://portal.azure.com/), zgodnie z opisem w temacie [Wyświetlanie dzienników inspekcji](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal). Oto lista uwzględnionych raportów:
+Raporty zawierają rekord inspekcji dla nazwy zdarzenia, aktora, który wykonał akcję, zasób docelowy, na który ma wpływ zmiana, oraz datę i godzinę (w formacie UTC). Klienci mogą pobrać listę zdarzeń inspekcji dla ich Azure Active Directory za pośrednictwem [Azure Portal](https://portal.azure.com/), zgodnie z opisem w temacie [Wyświetlanie dzienników inspekcji](../../active-directory/reports-monitoring/overview-reports.md). Oto lista uwzględnionych raportów:
 
 | Raporty dotyczące zabezpieczeń  | Raporty dotyczące działań| Raporty dotyczące inspekcji |
 | :------------- | :-------------| :-------------|
@@ -299,14 +299,14 @@ Raporty zawierają rekord inspekcji dla nazwy zdarzenia, aktora, który wykonał
 
 
 
-Dane tych raportów mogą być przydatne dla aplikacji, takich jak systemy SIEM, Inspekcja i narzędzia analizy biznesowej. [Interfejsy API](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started) raportowania usługi Azure AD zapewniają programistyczny dostęp do danych za pośrednictwem zestawu interfejsów API opartych na interfejsie REST. Te interfejsy API można wywoływać za pomocą różnych języków programowania i narzędzi.
+Dane tych raportów mogą być przydatne dla aplikacji, takich jak systemy SIEM, Inspekcja i narzędzia analizy biznesowej. [Interfejsy API](../../active-directory/active-directory-reporting-api-getting-started-azure-portal.md) raportowania usługi Azure AD zapewniają programistyczny dostęp do danych za pośrednictwem zestawu interfejsów API opartych na interfejsie REST. Te interfejsy API można wywoływać za pomocą różnych języków programowania i narzędzi.
 
 Zdarzenia w raporcie inspekcji usługi Azure AD są przechowywane przez 180 dni.
 
 > [!Note]
-> Aby uzyskać więcej informacji o przechowywaniu w raportach, zobacz [Azure Active Directory zasad przechowywania raportów](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-retention).
+> Aby uzyskać więcej informacji o przechowywaniu w raportach, zobacz [Azure Active Directory zasad przechowywania raportów](../../active-directory/reports-monitoring/reference-reports-data-retention.md).
 
-W przypadku klientów zainteresowanych przechowywaniem [zdarzeń inspekcji](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-audit-events) dla dłuższych okresów przechowywania można użyć interfejsu API raportowania do regularnego ściągania zdarzeń inspekcji do oddzielnego magazynu danych.
+W przypadku klientów zainteresowanych przechowywaniem [zdarzeń inspekcji](../../active-directory/active-directory-reporting-activity-audit-logs.md) dla dłuższych okresów przechowywania można użyć interfejsu API raportowania do regularnego ściągania zdarzeń inspekcji do oddzielnego magazynu danych.
 
 ## <a name="summary"></a>Podsumowanie
 
@@ -341,5 +341,5 @@ Firma Microsoft projektuje swoje usługi i oprogramowanie z uwzględnieniem zabe
 
 Użyj danych i analizy zabezpieczeń firmy Microsoft, aby przeprowadzić bardziej inteligentne i efektywne wykrywanie zagrożeń.
 
-- [Azure Security Center planowanie i operacje](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide) Zestaw kroków i zadań, które można wykonać, aby zoptymalizować korzystanie z Security Center na podstawie wymagań dotyczących zabezpieczeń i modelu zarządzania chmurą w organizacji.
+- [Azure Security Center planowanie i operacje](../../security-center/security-center-planning-and-operations-guide.md) Zestaw kroków i zadań, które można wykonać, aby zoptymalizować korzystanie z Security Center na podstawie wymagań dotyczących zabezpieczeń i modelu zarządzania chmurą w organizacji.
 

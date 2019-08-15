@@ -14,16 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: df7866d4f87f55523e8139232e48d81cb17c80e4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 01ce952ea774ba852c83d0d6aa3fe38d5dfd677e
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62117337"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965725"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Wdrażanie urządzenia StorSimple w chmurze oraz zarządzanie nim na platformie Azure (aktualizacja Update 3 i nowsze)
 
-## <a name="overview"></a>Omówienie
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
+
+## <a name="overview"></a>Przegląd
 
 Urządzenie z serii StorSimple 8000 w chmurze oferuje dodatkową funkcję dołączoną do rozwiązania Microsoft Azure StorSimple. Urządzenie StorSimple w chmurze działa na maszynie wirtualnej w sieci wirtualnej platformy Microsoft Azure i służy do tworzenia kopii zapasowych oraz klonowania danych z hostów.
 
@@ -62,7 +64,7 @@ W poniższej tabeli przedstawiono niektóre podstawowe różnice między urządz
 
 |  | Urządzenie fizyczne | Urządzenie w chmurze |
 | --- | --- | --- |
-| **Lokalizacja** |Znajduje się w centrum danych. |Działa w systemie Azure. |
+| **Location** |Znajduje się w centrum danych. |Działa w systemie Azure. |
 | **Interfejsy sieciowe** |Ma sześć interfejsów sieciowych: od DATA 0 do DATA 5. |Ma tylko jeden interfejs sieciowy: DATA 0. |
 | **Rejestracja** |Rejestrowane podczas wykonywania kroku konfiguracji początkowej. |Rejestracja jest osobnym zadaniem. |
 | **Klucz szyfrowania danych usługi** |Należy wygenerować ponownie w urządzeniu fizycznym, a następnie zaktualizować urządzenie w chmurze za pomocą nowego klucza. |Nie można ponownie wygenerować z urządzenia w chmurze. |
@@ -274,6 +276,6 @@ Jeśli podczas tworzenia urządzenia w chmurze nie ma łączności z Internetem,
 5. Jeśli narzędzie `nslookup` ulegnie awarii, oznacza to, że błąd łączności z Internetem uniemożliwia zarejestrowanie urządzenia w chmurze w usłudze Menedżer urządzeń StorSimple.
 6. Wprowadź wymagane zmiany w sieci wirtualnej, aby zapewnić, że urządzenie w chmurze może uzyskać dostęp do witryn platformy Azure, na przykład _windows.net_.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Informacje na temat [używania usługi Menedżer urządzeń StorSimple do zarządzania urządzeniem w chmurze](storsimple-8000-manager-service-administration.md).
 * Zapoznanie się ze sposobem [przywracania woluminu StorSimple z zestawu kopii zapasowych](storsimple-8000-restore-from-backup-set-u2.md).

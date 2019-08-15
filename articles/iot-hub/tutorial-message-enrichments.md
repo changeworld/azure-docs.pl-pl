@@ -1,6 +1,6 @@
 ---
-title: Samouczek — używanie wzbogacenia komunikatów usługi Azure IoT Hub
-description: Samouczek przedstawiający sposób użycia wzbogacenia komunikatu dla komunikatów usługi Azure IoT Hub
+title: Samouczek — korzystanie z funkcji wzbogacania komunikatów IoT Hub platformy Azure
+description: Samouczek przedstawiający sposób używania wzbogacania komunikatów dla komunikatów usługi Azure IoT Hub
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -8,27 +8,27 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: e4906bf9f2aead69c315ddb7b2e3b10489378d87
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2c115bf0ad21e905e998692fbbc175f5aa52b86d
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66259077"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014247"
 ---
-# <a name="tutorial-using-azure-iot-hub-message-enrichments-preview"></a>Samouczek: Za pomocą usługi Azure IoT Hub komunikatów wzbogacenia (wersja zapoznawcza)
+# <a name="tutorial-using-azure-iot-hub-message-enrichments-preview"></a>Samouczek: Korzystanie z wzbogacania komunikatów IoT Hub platformy Azure (wersja zapoznawcza)
 
-*Komunikat wzbogaceń* to zdolność usług IoT Hub *sygnatury* wiadomości z dodatkowymi informacjami przed wysłaniem wiadomości do wyznaczonej punktu końcowego. Jednym z powodów używania wzbogacenia wiadomości jest zawierają dane, do którego można uproszczenie przetwarzania transmisji dla klientów. Na przykład wzbogaca komunikaty telemetryczne urządzenia przy użyciu tagu bliźniaczej reprezentacji urządzenia można zmniejszyć obciążenie klientom na podejmowanie bliźniaczej reprezentacji urządzenia, które wywołań interfejsu API, aby uzyskać te informacje. Aby uzyskać więcej informacji, zobacz [Przegląd wzbogacenia komunikat](iot-hub-message-enrichments-overview.md).
+*Wzbogacanie komunikatów* polega na tym, że IoT Hub *sygnatury* wiadomości z dodatkowymi informacjami przed wysłaniem komunikatów do określonego punktu końcowego. Jednym z powodów użycia wzbogacania komunikatów jest dołączenie danych, które mogą być używane do uproszczenia przetwarzania podrzędnego. Na przykład wzbogacanie komunikatów telemetrycznych urządzeń za pomocą znacznika sznurka urządzenia może zmniejszyć obciążenie klientów, aby umożliwić wywoływanie interfejsu API z użyciem urządzeń z systemem dla tych informacji. Aby uzyskać więcej informacji, zobacz [Omówienie wzbogacania komunikatów](iot-hub-message-enrichments-overview.md).
 
-W tym samouczku Użyj wiersza polecenia platformy Azure można skonfigurować zasoby, w tym dwa punkty końcowe, które wskazują na dwa kontenery innego magazynu — **wzbogacony** i **oryginalnego**. Możesz użyć [witryny Azure portal](https://portal.azure.com) skonfigurować komunikat wzbogacenia mają być stosowane tylko dla komunikatów wysyłanych do punktu końcowego z **wzbogacony** kontenera magazynu. Możesz wysyłać komunikaty do Centrum IoT, które są kierowane do obu kontenery magazynu. Tylko komunikaty wysyłane do punktu końcowego dla **wzbogacony** kontenera magazynu będzie wzbogacony.
+W tym samouczku użyjesz interfejsu wiersza polecenia platformy Azure, aby skonfigurować zasoby, w tym dwa punkty końcowe wskazujące na dwa różne kontenery magazynu — **wzbogacone** i **oryginalne**. Następnie użyj [Azure Portal](https://portal.azure.com) , aby skonfigurować wzbogacanie komunikatów, które mają być stosowane tylko do wiadomości wysyłanych do punktu końcowego przy użyciu wzbogaconego kontenera magazynu. Komunikaty są wysyłane do IoT Hub, które są kierowane do obu kontenerów magazynu. Tylko komunikaty wysyłane do punktu końcowego dla wzbogaconego kontenera magazynu zostaną wzbogacone.
 
-Poniżej przedstawiono zadania, należy wykonać do ukończenia tego samouczka:
+Poniżej przedstawiono zadania, które należy wykonać w celu wykonania tego samouczka:
 
-**Za pomocą wzbogacenia komunikatów usługi IoT Hub**
+**Korzystanie z IoT Hub wzbogacania komunikatów**
 > [!div class="checklist"]
-> * Przy użyciu wiersza polecenia platformy Azure, Utwórz zasobów — Centrum IoT hub, konto magazynu z dwoma punktami końcowymi i konfiguracji routingu.
-> * Użyj witryny Azure portal, aby skonfigurować wzbogacenia wiadomości.
-> * Uruchom aplikację, która symuluje urządzenie wysyłanie komunikatów do Centrum IoT.
-> * Wyświetlanie wyników i sprawdź, czy wzbogacenia komunikat działają zgodnie z oczekiwaniami.
+> * Korzystając z interfejsu wiersza polecenia platformy Azure, Utwórz zasoby — Centrum IoT, konto magazynu z dwoma punktami końcowymi i konfigurację routingu.
+> * Użyj Azure Portal, aby skonfigurować wzbogacania komunikatów.
+> * Uruchom aplikację, która symuluje wysyłanie komunikatów przez urządzenie IoT do centrum.
+> * Wyświetl wyniki i sprawdź, czy wzbogacania komunikatów działają zgodnie z oczekiwaniami.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -38,49 +38,49 @@ Poniżej przedstawiono zadania, należy wykonać do ukończenia tego samouczka:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="retrieve-the-sample-code"></a>Pobierz przykładowy kod
+## <a name="retrieve-the-sample-code"></a>Pobieranie przykładowego kodu
 
-Pobierz [symulacji urządzenia IoT](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) i Rozpakuj go. To repozytorium zawiera kilka aplikacji, w tym alert, które będą używane do wysyłania komunikatów do Centrum IoT hub.
+Pobierz [symulację urządzenia IoT](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) i rozpakuj go. To repozytorium zawiera kilka aplikacji, w tym te, które będą używane do wysyłania komunikatów do centrum IoT.
 
-Ten plik do pobrania zawiera także skrypt tworzenia zasobów, używane do testowania wzbogacenia wiadomości. The script is in /azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/iothub_msgenrichment_cli.azcli. Teraz możesz przyjrzeć się skrypt i jej używać. Skrypt można również kopiować, bezpośrednio z tego artykułu.
+Ten pobieranie zawiera również skrypt służący do tworzenia zasobów używanych do testowania wzbogacania komunikatów. Skrypt jest w/azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/iothub_msgenrichment_cli.azcli. Na razie możesz sprawdzić skrypt i użyć go. Możesz również skopiować skrypt bezpośrednio z artykułu.
 
-Gdy wszystko jest gotowe do rozpoczęcia testowania, użyjesz aplikacji symulacji urządzenia z ten plik do pobrania do wysyłania komunikatów do Centrum IoT.
+Gdy wszystko będzie gotowe do rozpoczęcia testowania, użyjesz aplikacji symulacji urządzenia z tego pobrania, aby wysłać wiadomość do centrum IoT.
 
-## <a name="set-up-and-configure-resources"></a>Instalowanie i konfigurowanie zasobów
+## <a name="set-up-and-configure-resources"></a>Konfigurowanie i Konfigurowanie zasobów
 
-Oprócz tworzenia niezbędne zasoby, wiersza polecenia platformy Azure konfiguruje również dwa tras do punktów końcowych, które są kontenery oddzielne magazynu. Aby uzyskać więcej informacji na temat konfigurowania routingu, zobacz [routingu samouczek](tutorial-routing.md). Po skonfigurowaniu zasoby, należy użyć [witryny Azure portal](https://portal.azure.com) do skonfigurowania wzbogacenia wiadomości dla każdego punktu końcowego, a następnie przejdź do kroku testowania.
+Oprócz tworzenia niezbędnych zasobów skrypt interfejsu wiersza polecenia platformy Azure konfiguruje również dwa trasy do punktów końcowych, które są oddzielnymi kontenerami magazynu. Aby uzyskać więcej informacji na temat konfigurowania routingu, zapoznaj się z samouczkiem dotyczącym [routingu](tutorial-routing.md). Po skonfigurowaniu zasobów Użyj [Azure Portal](https://portal.azure.com) , aby skonfigurować wzbogacania komunikatów dla każdego punktu końcowego, a następnie przejdź do kroku testowania.
 
 > [!NOTE]
-> Wszystkie komunikaty są kierowane do obu punktów końcowych, ale tylko wiadomości, przechodząc do punktu końcowego za pomocą wzbogacenia skonfigurowanego komunikat będzie wzbogacony.
+> Wszystkie komunikaty są kierowane do obu punktów końcowych, ale tylko komunikaty przechodzące do punktu końcowego ze skonfigurowanymi wzbogacami komunikatów zostaną wzbogacone.
 >
 
-Możesz użyć poniższego skryptu lub Otwórz skrypt w folderze /resources pobrany repozytorium. Poniżej przedstawiono kroki, które będzie wykonywać skrypt:
+Możesz użyć poniższego skryptu lub otworzyć skrypt w folderze/Resources pobranego repozytorium. Poniżej przedstawiono kroki, które zostaną wykonane przez skrypt:
 
 * Tworzenie centrum IoT Hub.
 * Utwórz konto magazynu.
-* Utwórz dwa kontenery na koncie magazynu — jeden dla wzbogaconego komunikatów i jeden dla wiadomości, które nie są wzbogacane.
-* Konfigurowanie routingu dla dwóch różnych kont magazynu.
-    * Utworzenie punktu końcowego dla każdego kontenera konta magazynu.
-    * Utwórz trasę do każdego z punktów końcowych kontenera konta magazynu.
+* Utwórz dwa kontenery na koncie magazynu — jeden dla ulepszonych komunikatów i jeden dla komunikatów, które nie są wzbogacane.
+* Skonfiguruj Routing dla dwóch różnych kont magazynu.
+    * Utwórz punkt końcowy dla każdego kontenera konta magazynu.
+    * Utwórz trasę do każdego z punktów końcowych kontenera kont magazynu.
 
-Istnieje kilka nazw zasobów, które muszą być globalnie unikatowa, takie jak nazwa usługi IoT Hub i nazwy konta magazynu. Aby upewnić się, uruchamiając skrypt łatwiejsze, te nazwy zasobu są dołączane za pomocą losowych wartości alfanumeryczne o nazwie *randomValue*. RandomValue jest generowane raz w górnej części skryptu i dołączany do nazwy zasobów, zgodnie z potrzebami w całym skrypcie. Jeśli nie chcesz, aby była losowych, można ustawić na ciąg pusty lub określoną wartość.
+Istnieje kilka nazw zasobów, które muszą być globalnie unikatowe, takie jak nazwa IoT Hub i nazwa konta magazynu. Aby ułatwić uruchamianie skryptu, nazwy tych zasobów są dołączane losowo wartością alfanumeryczną o nazwie *randomValue*. RandomValue jest generowany raz u góry skryptu i dołączany do nazw zasobów zgodnie z wymaganiami w całym skrypcie. Jeśli nie chcesz go losowo, możesz ustawić go na pusty ciąg lub do określonej wartości.
 
-Jeśli jeszcze tego nie zrobiono, otwórz [okno usługi Cloud Shell dla programu Bash.](https://shell.azure.com). Otwórz skrypt w rozpakowany repozytorium, użyj klawiszy Ctrl-A, aby zaznaczyć wszystkie, a następnie Ctrl-C, aby go skopiować. Alternatywnie możesz Skopiuj poniższy skrypt interfejsu wiersza polecenia lub otworzyć go bezpośrednio w usłudze cloud shell. Wklej skrypt w oknie usługi Azure cloud shell, kliknij prawym przyciskiem myszy w wierszu polecenia i wybierając **Wklej**. Skrypt jest uruchamiany jednej instrukcji w danym momencie. Po zatrzymaniu skrypt uruchamiania wybierz **Enter** się upewnić, że uruchomieniu ostatnie polecenie. Poniższy blok kodu pokazuje skrypt, który jest używany z komentarze objaśniające, jakie jest zastosowanie.
+Jeśli jeszcze tego nie zrobiono, Otwórz [okno Cloud Shell dla bash.](https://shell.azure.com).. Otwórz skrypt w niespakowanym repozytorium, użyj klawiszy Ctrl-A, aby go zaznaczyć, a następnie naciśnij klawisze CTRL-C, aby skopiować go. Alternatywnie można skopiować następujący skrypt interfejsu wiersza polecenia lub otworzyć go bezpośrednio w usłudze Cloud Shell. Wklej skrypt w oknie usługi Azure Cloud Shell, klikając prawym przyciskiem myszy wiersz polecenia i wybierając pozycję **Wklej**. Skrypt jest uruchamiany jedną instrukcją w danym momencie. Po zatrzymaniu skryptu wybierz **klawisz ENTER** , aby upewnić się, że uruchomiono ostatnie polecenie. Poniższy blok kodu pokazuje używany skrypt z komentarzami wyjaśniającymi, co robi.
 
-Poniżej przedstawiono zasoby utworzone przez skrypt. **Wzbogacone** oznacza, że zasób dla komunikatów za pomocą wzbogacenia. **Oryginalny** oznacza, że komunikaty, które nie są wzbogacane zasobów.
+Poniżej przedstawiono zasoby utworzone przez skrypt. **Ulepszony** oznacza, że zasób jest przeznaczony dla komunikatów z wzbogacaniem. **Oryginalna** oznacza, że zasób jest przeznaczony dla komunikatów, które nie są wzbogacane.
 
-| Name (Nazwa) | Wartość |
+| Name (Nazwa) | Value |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
-| Nazwa kontenera | Oryginał  |
-| Nazwa kontenera | wzbogacony  |
-| Nazwa urządzenia IoT | Contoso-Test-Device |
-| Nazwa centrum IoT Hub | ContosoTestHubMsgEn |
+| nazwa kontenera | Oryginał  |
+| nazwa kontenera | wzbogacone  |
+| Nazwa urządzenia IoT | Contoso-test-Device |
+| Nazwa centrum IoT | ContosoTestHubMsgEn |
 | Nazwa konta magazynu | contosostorage |
-| punkt końcowy nazwa 1 | ContosoStorageEndpointOriginal |
-| punkt końcowy Nazwa 2 | ContosoStorageEndpointEnriched|
-| trasy Nazwa 1 | ContosoStorageRouteOriginal |
-| trasy Nazwa 2 | ContosoStorageRouteEnriched |
+| Nazwa punktu końcowego 1 | ContosoStorageEndpointOriginal |
+| Nazwa punktu końcowego 2 | ContosoStorageEndpointEnriched|
+| Nazwa trasy 1 | ContosoStorageRouteOriginal |
+| Nazwa trasy 2 | ContosoStorageRouteEnriched |
 
 ```azurecli-interactive
 # This command retrieves the subscription id of the current Azure account.
@@ -236,50 +236,50 @@ az iot hub route create \
   --condition $condition
 ```
 
-W tym momencie zasoby rosną wszystko jest gotowe i routingu jest skonfigurowana. Możesz wyświetlać konfigurację routingu komunikatów w portalu i konfigurowanie wzbogacenia komunikatu dla komunikatów do **wzbogacony** kontenera magazynu.
+W tym momencie wszystkie zasoby są skonfigurowane i skonfigurowano Routing. Konfigurację routingu wiadomości można wyświetlić w portalu i skonfigurować wzbogacanie komunikatów dla komunikatów przechodzących do wzbogaconego kontenera magazynu .
 
-### <a name="view-routing-and-configure-the-message-enrichments"></a>Wyświetlanie, routingu i konfigurowanie wzbogacenia wiadomości
+### <a name="view-routing-and-configure-the-message-enrichments"></a>Wyświetlanie routingu i Konfigurowanie wzbogacania komunikatów
 
-1. Przejdź do Centrum IoT, wybierając **grup zasobów**, następnie wybierz grupę zasobów, konfigurowanie na potrzeby tego samouczka (**ContosoResources_MsgEn**). Znajdź na liście usługi IoT Hub i zaznacz go. Wybierz *Routing komunikatów** dla Centrum Iot Hub.
+1. Przejdź do IoT Hub, wybierając pozycję **grupy zasobów**, a następnie wybierz grupę zasobów skonfigurowaną dla tego samouczka (**ContosoResources_MsgEn**). Znajdź IoT Hub na liście i wybierz ją. Wybierz pozycję *routing wiadomości** dla Centrum IoT Hub.
 
-   ![Wybierz pozycję routing wiadomości](./media/tutorial-message-enrichments/select-iot-hub.png)
+   ![Wybierz routing wiadomości](./media/tutorial-message-enrichments/select-iot-hub.png)
 
-   Komunikat o routingu okienko zawiera trzy karty — **trasy**, **niestandardowe punkty końcowe**, i **wzbogacania komunikatów**. Można przeglądać w pierwszych dwóch kart, aby wyświetlić konfigurację skonfigurować przy użyciu skryptu. Trzeci karta umożliwia dodawanie wzbogacenia wiadomości. Spróbujmy wzbogacania komunikatów, przechodząc do endpoint kontenera magazynu o nazwie **wzbogacony**. Wprowadź nazwę i wartość, a następnie wybierz punkt końcowy **ContosoStorageEndpointEnriched** z listy rozwijanej. Poniżej przedstawiono przykład konfigurowania wzbogacania, który dodaje nazwę Centrum IoT Hub do wiadomości:
+   Okienko routing wiadomości zawiera trzy karty — **trasy**, **niestandardowe punkty końcowe**i **komunikaty wzbogacania**. Możesz przeglądać dwie pierwsze karty, aby zobaczyć konfigurację skonfigurowaną przez skrypt. Użyj trzeciej karty, aby dodać wzbogacania komunikatów. Wzbogacamy komunikaty przechodzące do punktu końcowego dla kontenera magazynu onazwie wzbogacone. Wypełnij pola Nazwa i wartość, a następnie wybierz punkt końcowy **ContosoStorageEndpointEnriched** z listy rozwijanej. Oto przykład konfigurowania wzbogacania, które dodaje nazwę IoT Hub do komunikatu:
 
-   ![Dodaj pierwszy wzbogacanie](./media/tutorial-message-enrichments/add-message-enrichments.png)
+   ![Dodaj pierwsze wzbogacanie](./media/tutorial-message-enrichments/add-message-enrichments.png)
 
-2. Dodaj te wartości do listy do ContosoStorageEndpointEnriched endpoint.
+2. Dodaj te wartości do listy dla punktu końcowego ContosoStorageEndpointEnriched.
 
-   | Name (Nazwa) | Wartość | Punkt końcowy (listy rozwijanej) |
+   | Name (Nazwa) | Value | Punkt końcowy (lista rozwijana) |
    | ---- | ----- | -------------------------|
    | myIotHub | $iothubname | AzureStorageContainers > ContosoStorageEndpointEnriched |
-   | Lokalizacja urządzenia | $twin.tags.location | AzureStorageContainers > ContosoStorageEndpointEnriched |
-   |CustomerID | 6ce345b8-1e4a-411e-9398-d34587459a3a | AzureStorageContainers > ContosoStorageEndpointEnriched |
+   | DeviceLocation | $twin. Tags. Location | AzureStorageContainers > ContosoStorageEndpointEnriched |
+   |Identyfikator | 6ce345b8-1e4a-411e-9398-d34587459a3a | AzureStorageContainers > ContosoStorageEndpointEnriched |
 
    > [!NOTE]
-   > Jeśli urządzenie nie ma bliźniaczego elementu, wartości, które można umieścić w tym miejscu zostanie oznaczony jako ciąg znaków na potrzeby wartości wzbogacenia wiadomości. Aby wyświetlić urządzeń, bliźniacza reprezentacja informacji, przejdź do Centrum w portalu, następnie wybierz pozycję **urządzeń IoT**, wybierz urządzenie, a następnie wybierz **bliźniaczej reprezentacji urządzenia** w górnej części strony.
+   > Jeśli urządzenie nie ma sznurka, wartość wprowadzona w tym miejscu będzie sygnaturą ciągu dla wartości w wzbogacaniu komunikatów. Aby wyświetlić informacje dotyczące sznurka urządzenia, przejdź do centrum w portalu, a następnie wybierz pozycję **urządzenia IoT**, wybierz urządzenie, a następnie wybierz pozycję **sznurki urządzenia** u góry strony.
    >
-   > Można edytować informacje o bliźniaczych reprezentacji dodawania tagów (na przykład lokalizacja) i ustaw ją na konkretną wartość, jeśli chcesz. Aby uzyskać więcej informacji, zobacz [Opis bliźniaczej reprezentacji urządzenia w usłudze IoT Hub oraz sposoby jej używania](iot-hub-devguide-device-twins.md)
+   > Można edytować informacje o przędze w celu dodania tagów (takich jak lokalizacja) i ustawić ją na określoną wartość, jeśli chcesz. Aby uzyskać więcej informacji, zobacz [Opis bliźniaczej reprezentacji urządzenia w usłudze IoT Hub oraz sposoby jej używania](iot-hub-devguide-device-twins.md)
 
-3. Gdy skończysz, okienku powinna wyglądać następująco:
+3. Po zakończeniu okienko powinno wyglądać podobnie do tego obrazu:
 
-   ![Tabela z wzbogacenia wszystkie dodane](./media/tutorial-message-enrichments/all-message-enrichments.png)
+   ![Tabela ze wszystkimi dodanymi wzbogacaniem](./media/tutorial-message-enrichments/all-message-enrichments.png)
 
-4. Wybierz **Zastosuj** Aby zapisać zmiany.
+4. Wybierz pozycję **Zastosuj** , aby zapisać zmiany.
 
-## <a name="send-messages-to-the-iot-hub"></a>Wysyłanie komunikatów do Centrum IoT Hub
+## <a name="send-messages-to-the-iot-hub"></a>Wysyłanie komunikatów do IoT Hub
 
-Teraz, gdy wzbogacenia wiadomości są skonfigurowane dla punktu końcowego, uruchamianie aplikacji symulowane urządzenie w celu wysyłania komunikatów do Centrum IoT. Centrum została prawidłowo skonfigurowana przy użyciu reguł, których wykonywanie następujących czynności:
+Teraz, gdy w punkcie końcowym są skonfigurowane wzbogacania komunikatów, uruchom aplikację symulowanego urządzenia, aby wysyłać komunikaty do IoT Hub. Centrum zostało skonfigurowane przy użyciu reguł, które spełniają następujące warunki:
 
-* Wiadomości kierowane do punktu końcowego magazynu ContosoStorageEndpointOriginal nie będzie wzbogacony i będą przechowywane w kontenerze magazynu `original`.
+* Komunikaty kierowane do punktu końcowego magazynu ContosoStorageEndpointOriginal nie zostaną wzbogacone i będą przechowywane w kontenerze `original`magazynu.
 
-* Wiadomości kierowane do punktu końcowego magazynu ContosoStorageEndpointEnriched zostanie wzbogacony i przechowywane w kontenerze magazynu `enriched`.
+* Komunikaty kierowane do punktu końcowego magazynu ContosoStorageEndpointEnriched będą wzbogacone i przechowywane w kontenerze `enriched`magazynu.
 
-Aplikacja symulowane urządzenie jest jedną z aplikacji w ramach rozpakowany pobierania. Aplikacja wysyła wiadomości dla każdej z metod routingu inny komunikat w [routingu samouczek](tutorial-routing.md); obejmuje to usługi Azure Storage.
+Aplikacja symulowanego urządzenia jest jedną z aplikacji w niespakowanym pobieraniu. Aplikacja wysyła komunikaty dla każdej z różnych metod routingu komunikatów w [samouczku routingu](tutorial-routing.md); obejmuje to usługę Azure Storage.
 
-Kliknij dwukrotnie plik rozwiązania (IoT_SimulatedDevice.sln), aby otworzyć kod w programie Visual Studio, a następnie otwórz plik Program.cs. Zastąp `{your hub name}` nazwą Centrum IoT. Format nazwy hosta Centrum IoT jest **{nazwa Twojego Centrum} .azure-devices.net**. W tym samouczku jest nazwą hosta Centrum **ContosoTestHubMsgEn.azure-devices.net**. Następnie zastąp `{device key}` kluczem urządzenia zostały zapisane wcześniej podczas uruchamiania skryptu, aby utworzyć zasoby.
+Kliknij dwukrotnie plik rozwiązania (IoT_SimulatedDevice. sln), aby otworzyć kod w programie Visual Studio, a następnie otwórz Program.cs. `{your hub name}` Zastąp ciąg nazwą Centrum IoT Hub. Format nazwy hosta Centrum IoT to **{nazwa centrum}. Azure-Devices.NET**. W tym samouczku nazwa hosta centrum to **ContosoTestHubMsgEn.Azure-Devices.NET**. `{device key}` Następnie zastąp klucz urządzenia zapisany wcześniej podczas uruchamiania skryptu, aby utworzyć zasoby.
 
-Jeśli nie masz klucz urządzenia, możesz pobrać go z poziomu portalu. Po zalogowaniu przejdź do **grup zasobów**, wybierz grupę zasobów, a następnie wybierz swoje Centrum IoT. Sprawdź w obszarze **urządzeń IoT** dla Twojego urządzenia testowego i wybierz swoje urządzenie. Wybierz ikonę kopiowania obok **klucz podstawowy** skopiowania go do Schowka.
+Jeśli nie masz klucza urządzenia, możesz go pobrać z portalu. Po zalogowaniu przejdź do pozycji **grupy zasobów**, wybierz grupę zasobów, a następnie wybierz IoT Hub. Sprawdź w obszarze **urządzenia IoT** dla urządzenia testowego i wybierz urządzenie. Wybierz ikonę kopiowania obok **klucza podstawowego** , aby skopiować ją do Schowka.
 
    ```csharp
         static string myDeviceId = "contoso-test-device";
@@ -291,31 +291,31 @@ Jeśli nie masz klucz urządzenia, możesz pobrać go z poziomu portalu. Po zalo
 
 ## <a name="run-and-test"></a>Uruchamianie i testowanie
 
-Uruchom aplikację konsolową. Zaczekaj kilka minut. Wiadomości, które są wysyłane są wyświetlane na ekranie konsoli w aplikacji.
+Uruchom aplikację konsolową. Zaczekaj kilka minut. Wysyłane komunikaty są wyświetlane na ekranie konsoli aplikacji.
 
-Aplikacja wysyła nowy komunikat z urządzenia do centrum IoT Hub co sekundę. Komunikat zawiera obiekt serializowany w notacji JSON z identyfikatorem urządzenia, temperaturą, wilgotnością i poziomem komunikatu ustawianym domyślnie na `normal`. Losowo przypisuje poziom `critical` lub `storage`, powodując komunikat, który ma być kierowany do konta magazynu lub do domyślnego punktu końcowego. Komunikaty wysyłane do **wzbogacony** kontenera na koncie magazynu będzie wzbogacony.
+Aplikacja wysyła nowy komunikat z urządzenia do centrum IoT Hub co sekundę. Komunikat zawiera obiekt serializowany w notacji JSON z identyfikatorem urządzenia, temperaturą, wilgotnością i poziomem komunikatu ustawianym domyślnie na `normal`. Losowo przypisuje poziom `critical` lub `storage`, powodując kierowanie komunikatu do konta magazynu lub domyślnego punktu końcowego. Komunikaty wysyłane do wzbogaconego kontenera na koncie magazynu zostaną wzbogacone.
 
-Po wysłaniu kilka komunikatów magazynu, należy wyświetlić dane.
+Po wysłaniu kilku komunikatów magazynu Wyświetl dane.
 
-1. Wybierz **grup zasobów**, a następnie znajdź swoją grupę zasobów (ContosoResourcesMsgEn) i wybierz ją.
+1. Wybierz pozycję **grupy zasobów**, a następnie Znajdź grupę zasobów (ContosoResourcesMsgEn) i wybierz ją.
 
-2. Wybierz konto magazynu (contosostorage). Następnie wybierz pozycję **Eksploratora usługi Storage (wersja zapoznawcza)** z poziomu okienka wyboru po lewej stronie.
+2. Wybierz konto magazynu (contosostorage). Następnie wybierz pozycję **Eksplorator usługi Storage (wersja zapoznawcza)** z okienka wyboru po lewej stronie.
 
-   ![Wybierz pozycję Eksplorator usługi storage](./media/tutorial-message-enrichments/select-storage-explorer.png)
+   ![Wybieranie Eksploratora magazynu](./media/tutorial-message-enrichments/select-storage-explorer.png)
 
-   Wybierz **kontenery obiektów BLOB** się dwa kontenery, których można użyć.
+   Wybierz **kontenery obiektów BLOB** , aby wyświetlić dwa kontenery, których można użyć.
 
-   ![Zobacz kontenerów na koncie magazynu](./media/tutorial-message-enrichments/show-blob-containers.png)
+   ![Zobacz kontenery na koncie magazynu](./media/tutorial-message-enrichments/show-blob-containers.png)
 
-Komunikaty w kontenerze o nazwie **wzbogacony** mają wzbogacenia komunikat zawarte w wiadomości. Komunikaty w kontenerze o nazwie **oryginalnego** będzie miał nieprzetworzone komunikaty z nie wzbogacenia. Przejść do szczegółów jednego z kontenerów do momentu możesz uzyskać dostęp do dołu i Otwórz plik najnowsze wiadomości, a następnie Zrób to samo dla innego kontenera zweryfikować, że nie istnieją żadne wzbogacenia dodawane do komunikatów w ramach tego kontenera.
+Komunikaty w kontenerze o nazwie **wzbogacono** mają wzbogacenia komunikatów zawarte w wiadomościach. Wiadomości w kontenerze o nazwie **Original** będą zawierać nieprzetworzone komunikaty bez wzbogacania. Przechodzenie do szczegółów jednego z kontenerów, aż do momentu, w którym zostanie otwarty najnowszy plik komunikatów, a następnie wykonaj te same czynności dla drugiego kontenera, aby sprawdzić, czy do komunikatów w tym kontenerze nie zostały dodane żadne wzbogacania.
 
-Po wyświetleniu wiadomości, które został wzbogacony powinny zostać wyświetlone "Moje Centrum IoT" przy użyciu nazwy Centrum, a także lokalizacji i identyfikator klienta w następujący sposób:
+Podczas przeglądania komunikatów, które zostały wzbogacone, powinna zostać wyświetlona wartość "My IoT Hub" z nazwą centrum oraz lokalizacją i IDENTYFIKATORem klienta, w tym:
 
 ```json
-{"EnqueuedTimeUtc":"2019-05-10T06:06:32.7220000Z","Properties":{"level":"storage","my IoT Hub":"contosotesthubmsgen3276","device location":"$twin.tags.location","customerID":"6ce345b8-1e4a-411e-9398-d34587459a3a"},"SystemProperties":{"connectionDeviceId":"Contoso-Test-Device","connectionAuthMethod":"{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}","connectionDeviceGenerationId":"636930642531278483","enqueuedTime":"2019-05-10T06:06:32.7220000Z"},"Body":"eyJkZXZpY2VJZCI6IkNvbnRvc28tVGVzdC1EZXZpY2UiLCJ0ZW1wZXJhdHVyZSI6MjkuMjMyMDE2ODQ4MDQyNjE1LCJodW1pZGl0eSI6NjQuMzA1MzQ5NjkyODQ0NDg3LCJwb2ludEluZm8iOiJUaGlzIGlzIGEgc3RvcmFnZSBtZXNzYWdlLiJ9"}
+{"EnqueuedTimeUtc":"2019-05-10T06:06:32.7220000Z","Properties":{"level":"storage","my IoT Hub":"contosotesthubmsgen3276","devicelocation":"$twin.tags.location","customerID":"6ce345b8-1e4a-411e-9398-d34587459a3a"},"SystemProperties":{"connectionDeviceId":"Contoso-Test-Device","connectionAuthMethod":"{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}","connectionDeviceGenerationId":"636930642531278483","enqueuedTime":"2019-05-10T06:06:32.7220000Z"},"Body":"eyJkZXZpY2VJZCI6IkNvbnRvc28tVGVzdC1EZXZpY2UiLCJ0ZW1wZXJhdHVyZSI6MjkuMjMyMDE2ODQ4MDQyNjE1LCJodW1pZGl0eSI6NjQuMzA1MzQ5NjkyODQ0NDg3LCJwb2ludEluZm8iOiJUaGlzIGlzIGEgc3RvcmFnZSBtZXNzYWdlLiJ9"}
 ```
 
-A Oto unenriched komunikat. "" Moje Centrum IoT Hub","Lokalizacja urządzenia"i"customerID"nie są wyświetlane w tym miejscu, ponieważ ten punkt końcowy nie ma żadnych wzbogacenia.
+A oto niewzbogacony komunikat. "" My IoT Hub "," devicelocation "i" customerID "nie są wyświetlane w tym miejscu, ponieważ ten punkt końcowy nie ma wzbogacania.
 
 ```json
 {"EnqueuedTimeUtc":"2019-05-10T06:06:32.7220000Z","Properties":{"level":"storage"},"SystemProperties":{"connectionDeviceId":"Contoso-Test-Device","connectionAuthMethod":"{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}","connectionDeviceGenerationId":"636930642531278483","enqueuedTime":"2019-05-10T06:06:32.7220000Z"},"Body":"eyJkZXZpY2VJZCI6IkNvbnRvc28tVGVzdC1EZXZpY2UiLCJ0ZW1wZXJhdHVyZSI6MjkuMjMyMDE2ODQ4MDQyNjE1LCJodW1pZGl0eSI6NjQuMzA1MzQ5NjkyODQ0NDg3LCJwb2ludEluZm8iOiJUaGlzIGlzIGEgc3RvcmFnZSBtZXNzYWdlLiJ9"}
@@ -325,29 +325,29 @@ A Oto unenriched komunikat. "" Moje Centrum IoT Hub","Lokalizacja urządzenia"i"
 
 Jeśli chcesz usunąć wszystkie zasoby utworzone w ramach tego samouczka, Usuń grupę zasobów. Ta akcja spowoduje również usunięcie wszystkich zasobów znajdujących się w grupie. W takim przypadku następuje również usunięcie centrum IoT, konta magazynu i samej grupy zasobów.
 
-### <a name="use-the-azure-cli-to-clean-up-resources"></a>Użyj wiersza polecenia platformy Azure, aby wyczyścić zasoby
+### <a name="use-the-azure-cli-to-clean-up-resources"></a>Czyszczenie zasobów przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Aby usunąć grupę zasobów, użyj polecenia [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete). `$resourceGroup` ustawiono **ContosoResources** ponownie na początku tego samouczka.
+Aby usunąć grupę zasobów, użyj polecenia [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete). `$resourceGroup`została ustawiona na **ContosoResources** z powrotem na początku tego samouczka.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku zostanie skonfigurowane i przetestowane Dodawanie wzbogacenia wiadomości do komunikatów usługi IoT Hub wykonując następujące czynności:
+W tym samouczku skonfigurowano i przetestowano Dodawanie wzbogacania komunikatów do IoT Hub komunikatów, wykonując następujące czynności:
 
-**Za pomocą wzbogacenia komunikatów usługi IoT Hub**
+**Korzystanie z IoT Hub wzbogacania komunikatów**
 > [!div class="checklist"]
-> * Przy użyciu wiersza polecenia platformy Azure, Utwórz zasobów — Centrum IoT hub, konto magazynu przy użyciu dwóch enendpoints i konfiguracji routingu.
-> * Użyj witryny Azure portal, aby skonfigurować wzbogacenia wiadomości.
-> * Uruchom aplikację, która symuluje urządzenie IoT wysyłanie komunikatu do Centrum.
-> * Wyświetlanie wyników i sprawdź, czy wzbogacenia komunikat działają zgodnie z oczekiwaniami.
+> * Korzystając z interfejsu wiersza polecenia platformy Azure, Utwórz zasoby — Centrum IoT, konto magazynu z dwoma enendpoints i konfigurację routingu.
+> * Użyj Azure Portal, aby skonfigurować wzbogacania komunikatów.
+> * Uruchom aplikację, która symuluje wysyłanie komunikatów przez urządzenie IoT do centrum.
+> * Wyświetl wyniki i sprawdź, czy wzbogacania komunikatów działają zgodnie z oczekiwaniami.
 
-Aby uzyskać więcej informacji na temat wzbogacenia wiadomości zobacz [Przegląd wzbogacenia komunikat](iot-hub-message-enrichments-overview.md).
+Aby uzyskać więcej informacji na temat wzbogacania komunikatów, zobacz [Omówienie wzbogacania komunikatów](iot-hub-message-enrichments-overview.md).
 
-Aby uzyskać więcej informacji na temat routingu komunikatów zobacz następujące artykuły:
+Aby uzyskać więcej informacji na temat routingu wiadomości, zobacz następujące artykuły:
 
-* [Umożliwia routing komunikatów usługi IoT Hub wysyłanie komunikatów z urządzenia do chmury do różnych punktów końcowych](iot-hub-devguide-messages-d2c.md)
+* [Używanie routingu komunikatów IoT Hub do wysyłania komunikatów z urządzenia do chmury do różnych punktów końcowych](iot-hub-devguide-messages-d2c.md)
 
-* [Samouczek: Routing w Centrum IoT Hub](tutorial-routing.md)
+* [Samouczek: Routing IoT Hub](tutorial-routing.md)

@@ -1,6 +1,6 @@
 ---
-title: Transmisja strumieniowa przy użyciu usługi Azure Media Services do tworzenia strumieni o różnej szybkości transmisji na żywo | Dokumentacja firmy Microsoft
-description: 'W tym temacie opisano sposób konfigurowania kanału, który odbiera strumień na żywo o pojedynczej szybkości transmisji bitów z kodera w środowisku lokalnym i wykonuje następnie kodowanie na żywo do strumienia o adaptacyjnej szybkości transmisji bitów przy użyciu usługi Media Services. Strumień może następnie dostarczane do klienta odtwarzanie aplikacji za pośrednictwem co najmniej jeden punkty końcowe przesyłania strumieniowego, przy użyciu jednej z następujących adaptacyjnych protokołów przesyłania strumieniowego: HLS, Smooth Stream MPEG DASH.'
+title: Przesyłanie strumieniowe na żywo przy użyciu Azure Media Services do tworzenia strumieni o wysokiej szybkości transmisji bitów | Microsoft Docs
+description: 'W tym temacie opisano sposób konfigurowania kanału, który odbiera strumień na żywo o pojedynczej szybkości transmisji bitów z kodera lokalnego, a następnie wykonuje kodowanie na żywo w strumieniu adaptacyjnej szybkości transmisji bitów przy użyciu Media Services. Strumień można następnie dostarczyć do aplikacji do odtwarzania klienta za pośrednictwem co najmniej jednego punktu końcowego przesyłania strumieniowego przy użyciu jednego z następujących protokołów adaptacyjnego przesyłania strumieniowego: HLS, gładki strumień, KRESKa MPEG.'
 services: media-services
 documentationcenter: ''
 author: anilmur
@@ -13,84 +13,85 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: juliako;anilmur
-ms.openlocfilehash: c168182f0b34329ed3e72e90ce86456dfbe210ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: anilmur
+ms.reviewer: juliako
+ms.openlocfilehash: a828d03093c73d5c65a92ccf899fbaa1ef622bd6
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61217267"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "69016502"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Transmisja strumieniowa na żywo korzystająca z usługi Azure Media Services do tworzenia strumieni o różnej szybkości transmisji bitów
 
 > [!NOTE]
-> Od 12 maja 2018 r. Usługa kanały na żywo będzie już obsługę strumienia transportu RTP/MPEG-2 protokołu pozyskiwania. Przeprowadź migrację z protokołu RTP/MPEG-2 do protokołu RTMP lub plików MP4 (Smooth Streaming) protokołów pozyskiwania.
+> Od 12 maja 2018 kanały na żywo nie będą już obsługiwać protokołu pozyskiwania strumienia transportowego RTP/MPEG-2. Przeprowadź migrację z protokołów RTP/MPEG-2 do protokołu RTMP lub pofragmentowanych plików MP4 (Smooth Streaming).
 
-## <a name="overview"></a>Omówienie
-W konsoli usługi Azure Media Services (AMS) **kanału** reprezentuje potok przetwarzania zawartości transmisji strumieniowej na żywo. A **kanału** odbiera strumieni danych wejściowych w jeden z dwóch sposobów:
+## <a name="overview"></a>Przegląd
+W Azure Media Services (AMS) **kanał** reprezentuje potok służący do przetwarzania zawartości przesyłania strumieniowego na żywo. **Kanał** odbiera strumienie wejściowe na żywo na jeden z dwóch sposobów:
 
-* Lokalny koder na żywo wysyła strumień o pojedynczej szybkości bitów do kanału, który jest skonfigurowany do przeprowadzania kodowania na żywo z usługą Media Services w jednym z następujących formatów: RTMP lub Smooth Streaming (pofragmentowany MP4). Kanał wykonuje następnie kodowanie na żywo przychodzącego strumienia o pojedynczej szybkości transmisji bitów do postaci strumienia wideo o różnych szybkościach transmisji bitów (adaptacyjnej szybkości transmisji bitów). Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
-* Lokalny koder na żywo wysyła różnych szybkościach transmisji bitów **RTMP** lub **Smooth Streaming** (pofragmentowany plik MP4) do kanału, który nie jest skonfigurowany do przeprowadzania kodowania na żywo przy użyciu usługi AMS. Pozyskiwane strumienie są przekazywane za pośrednictwem **kanału**bez dalszego przetwarzania. Ta metoda jest wywoływana **przekazywanego**. Można użyć następujących koderów na żywo, które zwracają Smooth Streaming o różnych szybkościach transmisji bitów: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco i Elemental. Następujące kodery na żywo danych wyjściowych RTMP: Kodery Adobe Flash Media Live Encoder (FMLE), Telestream Wirecast, Haivision, Teradek i Tricaster.  Koder na żywo może także wysłać strumień o pojedynczej szybkości transmisji bitów do kanału, który nie obsługuje kodowania na żywo, nie jest to jednak zalecane. Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
+* Lokalny koder na żywo wysyła strumień o pojedynczej szybkości transmisji bitów do kanału, w którym włączono obsługę kodowania na żywo za pomocą Media Services w jednym z następujących formatów: RTMP lub Smooth Streaming (fragmentacja MP4). Kanał wykonuje następnie kodowanie na żywo przychodzącego strumienia o pojedynczej szybkości transmisji bitów do postaci strumienia wideo o różnych szybkościach transmisji bitów (adaptacyjnej szybkości transmisji bitów). Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
+* Lokalny koder na żywo wysyła protokół **RTMP** o dużej szybkości transmisji bitów lub **Smooth Streaming** (pofragmentowany plik MP4) do kanału, w którym nie włączono kodowania na żywo z użyciem usługi AMS. Pozyskiwane strumienie są przekazywane przez **kanał**bez żadnego dalszego przetwarzania. Ta metoda jest nazywana **przekazywaniem**. Można użyć następujących koderów na żywo, które wychodzące Smooth Streaming o kilku szybkościach transmisji bitów: MediaExcel, ATEME, Wyobraź sobie, Envivio, Cisco i elementy. Następujące kodery na żywo wyprowadzają RTMP: Kodery Flash Live Encoder (KODER FMLE), webstream Wirecast, Haivision, Teradek i TriCaster.  Koder na żywo może także wysłać strumień o pojedynczej szybkości transmisji bitów do kanału, który nie obsługuje kodowania na żywo, nie jest to jednak zalecane. Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
 
   > [!NOTE]
-  > Metoda przekazywania to najbardziej ekonomiczny sposób transmisja strumieniowa na żywo.
+  > Użycie metody przekazującej to najbardziej ekonomiczny sposób na przesyłanie strumieniowe na żywo.
   > 
   > 
 
-Począwszy od Media Services w wersji 2.10 wersji, podczas tworzenia kanału, można określić w jaki sposób chcesz kanału w taki sposób otrzymywać strumień wejściowy i określa, czy chcesz dla kanału do przeprowadzania kodowania na żywo strumienia. Dostępne są dwie opcje:
+Począwszy od wersji 2,10 Media Services, podczas tworzenia kanału można określić, w jaki sposób chcesz, aby kanał odbierał strumień wejściowy i czy chcesz, aby kanał wykonywał kodowanie na żywo strumienia. Dostępne są dwie opcje:
 
-* **Brak** — określić tę wartość, jeśli zamierzasz używać na lokalny koder na żywo, która zwróci strumień o różnych szybkościach transmisji bitów (strumień przekazującego). W tym przypadku przychodzącego strumienia przekazywane do dane wyjściowe bez żadnych kodowania. Jest to zachowanie kanału przed wydaniem 2.10.  Aby uzyskać szczegółowe informacje na temat pracy z kanałami tego typu, zobacz [transmisja strumieniowa na żywo za pomocą koderów lokalnych, które tworzą strumienie różnej szybkości transmisji bitów](media-services-live-streaming-with-onprem-encoders.md).
-* **Standardowa** — wybierz tę wartość, jeśli planujesz używać usługi Media Services do zakodowania transmisji strumieniowej na żywo o pojedynczej szybkości transmisji bitów do strumienia o wielokrotnej szybkości transmisji bitów. Należy pamiętać, że istnieje rozliczeń wpływ kodowanie na żywo i należy pamiętać, że pozostawienie kodowania kanału na żywo w stanie "Uruchomiona" spowoduje naliczenie opłat rozliczeń.  Zaleca się natychmiast zatrzymać kanałów uruchomione po zakończeniu zdarzenia przesyłania strumieniowego na żywo, aby uniknąć dodatkowych stawki godzinowe.
+* **Brak** — Określ tę wartość, jeśli planujesz używać lokalnego kodera na żywo, który będzie wyprowadzać strumień o szybkości transmisji bitów (strumień Pass-through). W tym przypadku strumień przychodzący przeszedł do danych wyjściowych bez kodowania. Jest to zachowanie kanału przed wydaniem 2,10.  Aby uzyskać bardziej szczegółowe informacje na temat pracy z kanałami tego typu, zobacz [przesyłanie strumieniowe na żywo z użyciem koderów lokalnych, które tworzą strumienie o wielu szybkościach transmisji bitów](media-services-live-streaming-with-onprem-encoders.md).
+* **Standardowa** — wybierz tę wartość, jeśli planujesz używać Media Services do kodowania strumienia na żywo o pojedynczej szybkości transmisji bitów do strumienia o większej szybkości transmisji bitów. Należy pamiętać, że istnieje wpływ rozliczania na kodowanie na żywo i należy pamiętać, że pozostawienie kanału kodowania na żywo w stanie "uruchomiona" spowoduje naliczenie opłat naliczanych.  Zaleca się natychmiastowe zatrzymanie uruchomionych kanałów po zakończeniu zdarzenia przesyłania strumieniowego na żywo, aby uniknąć dodatkowych opłat godzinowych.
 
 > [!NOTE]
-> W tym temacie omówiono atrybuty z kanałami obsługującymi kodowanie na żywo (**standardowa** typ kodowania). Aby dowiedzieć się, jak praca z kanałami obsługującymi kodowanie na żywo nie mają włączonej, zobacz [transmisja strumieniowa na żywo za pomocą koderów lokalnych, które tworzą strumienie różnej szybkości transmisji bitów](media-services-live-streaming-with-onprem-encoders.md).
+> W tym temacie omówiono atrybuty kanałów włączonych do wykonywania kodowania na żywo (**standardowego** typu kodowania). Aby uzyskać informacje na temat pracy z kanałami, w których nie włączono obsługi kodowania na żywo, zobacz [przesyłanie strumieniowe na żywo z użyciem koderów lokalnych, które tworzą strumienie o wysokiej szybkości transmisji bitów](media-services-live-streaming-with-onprem-encoders.md).
 > 
-> Upewnij się zapoznać się z [zagadnienia](media-services-manage-live-encoder-enabled-channels.md#Considerations) sekcji.
+> Zapoznaj się z sekcją [zagadnienia](media-services-manage-live-encoder-enabled-channels.md#Considerations) .
 > 
 > 
 
-## <a name="billing-implications"></a>Opłaty wpływ
-Rozpoczyna się kodowania kanału na żywo, rozliczeń, zaraz po zmianie stanu na "Uruchomione" jest za pośrednictwem interfejsu API.   Można również wyświetlić stan, w witrynie Azure portal lub za pomocą narzędzia Azure Media Services Explorer (https://aka.ms/amse).
+## <a name="billing-implications"></a>Implikacje rozliczeń
+Kanał kodowania na żywo rozpoczyna rozliczanie od razu po zmianie stanu na "uruchomiony" za pośrednictwem interfejsu API.   Możesz również wyświetlić stan w Azure Portal lub w narzędziu Eksplorator Azure Media Services (https://aka.ms/amse).
 
-W poniższej tabeli przedstawiono, jak Stany kanału mapują stanom rozliczeń w portalu usługi interfejsu API i platformy Azure. Stany różnią się nieco między komputerowy Portal i interfejsu API Jak najszybciej kanał jest w stanie "Uruchomiona", za pośrednictwem interfejsu API lub w stanie "Gotowy" lub "Przesyłanie strumieniowe" w witrynie Azure portal rozliczeń będzie aktywny.
-Zatrzymanie kanału z rozliczeń można dalej, musisz zatrzymać kanał za pomocą interfejsu API lub w witrynie Azure portal.
-Odpowiedzialność za zatrzymywanie kanałów, po wykonaniu kanale kodowania na żywo.  Nie można zatrzymać kodowania kanału spowoduje dalsze rozliczeń.
+W poniższej tabeli przedstawiono sposób, w jaki Stany kanałów mapują się na Stany rozliczeń w interfejsie API i Azure Portal. Stany różnią się nieco między interfejsem użytkownika interfejsu API i portalu. Gdy tylko kanał jest w stanie "uruchomiony" za pośrednictwem interfejsu API lub w stanie "gotowe" lub "streaming" w Azure Portal, rozliczenia będą aktywne.
+Aby zatrzymać rozliczanie kanału od Ciebie, należy zatrzymać kanał za pośrednictwem interfejsu API lub Azure Portal.
+Użytkownik jest odpowiedzialny za zatrzymywanie kanałów po zakończeniu pracy z kanałem kodowania na żywo.  Niepowodzenie zatrzymania kanału kodowania spowoduje dalsze rozliczanie.
 
-### <a id="states"></a>Stany kanału oraz sposobu mapowania ich na tryb rozliczeń
+### <a id="states"></a>Stany kanału i sposób ich mapowania do trybu rozliczania
 Bieżący stan kanału. Możliwe wartości obejmują:
 
-* **Zatrzymano**. To jest wstępny stan kanału po jego utworzeniu (chyba że autostart został wybrany w portalu). Rozliczenia nie występuje w tym stanie. W tym stanie właściwości kanału mogą być aktualizowane, ale transmisja strumieniowa jest niedozwolona.
-* **Uruchamianie**. Kanał jest uruchamiany. Rozliczenia nie występuje w tym stanie. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa. Jeśli wystąpi błąd, kanał wróci do stanu Zatrzymany.
-* **Uruchamianie**. Kanał może przetwarzać transmisje strumieniowe na żywo. Teraz jest to fakturowania użycia. Należy zatrzymać kanał, aby uniknąć dalszych rozliczeń. 
-* **Zatrzymywanie**. Kanał jest zatrzymywany. Rozliczenia nie występuje w tym stanie przejściowym. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa.
-* **Usuwanie**. Kanał jest usuwany. Rozliczenia nie występuje w tym stanie przejściowym. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa.
+* **Zatrzymano**. Jest to początkowy stan kanału po jego utworzeniu (o ile Autostart nie został wybrany w portalu). W tym stanie nie ma rozliczeń. W tym stanie właściwości kanału mogą być aktualizowane, ale transmisja strumieniowa jest niedozwolona.
+* **Rozpoczęcie**. Kanał jest uruchamiany. W tym stanie nie ma rozliczeń. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa. Jeśli wystąpi błąd, kanał wróci do stanu Zatrzymany.
+* **Uruchomione**. Kanał może przetwarzać transmisje strumieniowe na żywo. Jest teraz użycie rozliczeń. Należy zatrzymać kanał, aby zapobiec dalszemu rozliczeniu. 
+* **Zatrzymywanie**. Kanał jest zatrzymywany. W tym stanie przejściowym nie ma rozliczeń. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa.
+* **Usuwanie**. Kanał jest usuwany. W tym stanie przejściowym nie ma rozliczeń. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa.
 
 W tabeli poniżej pokazano, jak stany kanału przekładają się na naliczanie opłat. 
 
-| Stan kanału | Wskaźniki w interfejsie użytkownika portalu | Jest to rozliczeń? |
+| Stan kanału | Wskaźniki w interfejsie użytkownika portalu | Czy jest to rozliczenia? |
 | --- | --- | --- |
-| Uruchamianie |Uruchamianie |Nie (stan przejściowy) |
+| Rozpoczęcie |Rozpoczęcie |Nie (stan przejściowy) |
 | Działanie |Gotowy (brak uruchomionych programów)<br/>lub<br/>Transmisja strumieniowa (co najmniej jeden uruchomiony program) |TAK |
 | Zatrzymywanie |Zatrzymywanie |Nie (stan przejściowy) |
 | Zatrzymano |Zatrzymano |Nie |
 
-### <a name="automatic-shut-off-for-unused-channels"></a>Automatycznego wyłączania nieużywanych kanałów
-Począwszy od 25 stycznia 2016 r. usługa Media Services wprowadzane aktualizację, która automatycznie zatrzymuje kanału (z funkcją live encoding włączone) po działa ona w stanie nieużywany przez długi czas. Dotyczy to kanałów, które mają nie aktywne programy i którzy nie otrzymali wkład wejściowego źródła danych przez dłuższy czas.
+### <a name="automatic-shut-off-for-unused-channels"></a>Automatyczne wyłączenie dla nieużywanych kanałów
+Począwszy od 25 stycznia 2016, Media Services wycofał aktualizację, która automatycznie przerywa kanał (z włączonym kodowaniem na żywo) po uruchomieniu w nieużywanym stanie przez długi czas. Dotyczy to kanałów, które nie mają aktywnych programów, a które nie otrzymały źródła danych wejściowych przez dłuższy czas.
 
-Próg dla nieużywanych przedziale jest nominalnie 12 godzin, ale może ulec zmianie.
+Próg nieużywanego okresu wynosi nominalnie 12 godzin, ale może ulec zmianie.
 
-## <a name="live-encoding-workflow"></a>Przepływ pracy kodowania na żywo
-Poniższy diagram przedstawia na żywo przepływ pracy transmisji strumieniowej, gdzie kanał odbiera strumień o pojedynczej szybkości transmisji bitów w jednym z następujących protokołów: RTMP lub Smooth Streaming; następnie koduje jako strumień na strumień o wielokrotnej szybkości transmisji bitów. 
+## <a name="live-encoding-workflow"></a>Przepływ pracy Live Encoding
+Poniższy diagram przedstawia przepływ pracy przesyłania strumieniowego na żywo, gdzie kanał odbiera strumień o pojedynczej szybkości transmisji bitów w jednym z następujących protokołów: RTMP lub Smooth Streaming; następnie koduje strumień do strumienia o większej szybkości transmisji bitów. 
 
 ![Przepływ pracy na żywo][live-overview]
 
-## <a id="scenario"></a>Typowy scenariusz transmisji strumieniowej na żywo
+## <a id="scenario"></a>Typowy scenariusz przesyłania strumieniowego na żywo
 Poniżej przedstawiono ogólne etapy tworzenia typowych aplikacji transmisji strumieniowej na żywo.
 
 > [!NOTE]
-> Obecnie maksymalny zalecany czas trwania wydarzenia na żywo wynosi 8 godzin. Napisz na adres amslived@microsoft.com, jeśli potrzebujesz uruchomić kanał na dłuższy czas. Ma to wpływu rozliczeń kodowanie na żywo i należy pamiętać, że pozostawienie kodowania kanału na żywo w stanie "Uruchomiona" zostaną naliczone stawki godzinowe rozliczeń.  Zaleca się natychmiast zatrzymać kanałów uruchomione po zakończeniu zdarzenia przesyłania strumieniowego na żywo, aby uniknąć dodatkowych stawki godzinowe. 
+> Obecnie maksymalny zalecany czas trwania wydarzenia na żywo wynosi 8 godzin. Napisz na adres amshelp@microsoft.com, jeśli potrzebujesz uruchomić kanał na dłuższy czas. Istnieje wpływ rozliczania na kodowanie na żywo i należy pamiętać, że pozostawienie kanału kodowania na żywo w stanie "uruchomiona" spowoduje naliczenie opłat za godzinę.  Zaleca się natychmiastowe zatrzymanie uruchomionych kanałów po zakończeniu zdarzenia przesyłania strumieniowego na żywo, aby uniknąć dodatkowych opłat godzinowych. 
 
-1. Podłącz kamerę wideo do komputera. Uruchom i skonfiguruj lokalny koder na żywo, którego dane wyjściowe **pojedynczego** strumienia szybkości transmisji bitów w jednym z następujących protokołów: RTMP lub Smooth Streaming. 
+1. Podłącz kamerę wideo do komputera. Uruchom i skonfiguruj lokalny koder na żywo, który może wyprowadzać strumień o pojedynczej szybkości transmisji bitów w jednym z następujących protokołów: RTMP lub Smooth Streaming. 
 
     Ten krok można również wykonać po utworzeniu kanału.
 2. Utwórz i uruchom kanał. 
@@ -102,10 +103,10 @@ Poniżej przedstawiono ogólne etapy tworzenia typowych aplikacji transmisji str
     Użyj tego adresu URL, aby sprawdzić, czy kanał prawidłowo odbiera strumień na żywo.
 5. Utwórz program. 
 
-    Korzystając z witryny Azure portal, tworzenie programu tworzy również element zawartości. 
+    W przypadku korzystania z Azure Portal Tworzenie programu powoduje także utworzenie elementu zawartości. 
 
-    Podczas korzystania z zestawu SDK platformy .NET lub REST, należy utworzyć element zawartości i określić, czy używać tego zasobu, podczas tworzenia programu. 
-6. Opublikuj zasób skojarzony z danym programem.   
+    W przypadku korzystania z zestawu SDK platformy .NET lub REST należy utworzyć zasób i określić, aby użyć tego elementu zawartości podczas tworzenia programu. 
+6. Opublikuj element zawartości skojarzony z programem.   
 
     >[!NOTE]
     >Po utworzeniu konta usługi AMS zostanie do niego dodany **domyślny** punkt końcowy przesyłania strumieniowego mający stan **Zatrzymany**. Punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać zawartość, musi mieć stan **Uruchomiony**. 
@@ -116,107 +117,107 @@ Poniżej przedstawiono ogólne etapy tworzenia typowych aplikacji transmisji str
 10. Usuń program (opcjonalnie można również usunąć zasób).   
 
 > [!NOTE]
-> Jest to bardzo ważne nie należy zapominać zatrzymać kanału kodowanie na żywo. Należy pamiętać, że ma wpływu kodowanie na żywo rozliczeń co godzinę i należy pamiętać, że pozostawienie kodowania kanału na żywo w stanie "Uruchomiona" spowoduje naliczenie opłat rozliczeń.  Zaleca się natychmiast zatrzymać kanałów uruchomione po zakończeniu zdarzenia przesyłania strumieniowego na żywo, aby uniknąć dodatkowych stawki godzinowe. 
+> Nie należy zapominać o zatrzymaniu Live Encoding kanału. Należy pamiętać, że istnieje co godzinę dla kodowania na żywo i należy pamiętać, że pozostawienie kanału kodowania na żywo w stanie "uruchomiona" spowoduje naliczenie opłat za rozliczenia.  Zaleca się natychmiastowe zatrzymanie uruchomionych kanałów po zakończeniu zdarzenia przesyłania strumieniowego na żywo, aby uniknąć dodatkowych opłat godzinowych. 
 > 
 > 
 
-## <a id="channel"></a>Kanał dane wejściowe podane przez (odbieranie) konfiguracji
+## <a id="channel"></a>Konfiguracje wejścia/wyjścia kanału
 ### <a id="Ingest_Protocols"></a>Pozyskiwanie protokołu przesyłania strumieniowego
-Jeśli **typ kodera** ustawiono **standardowa**, prawidłowe opcje to:
+Jeśli ustawiono **Typ kodera** **Standardowy**, prawidłowe są następujące opcje:
 
-* Pojedyncza szybkość transmisji bitów **RTMP**
-* Pojedyncza szybkość transmisji bitów **pofragmentowany plik MP4** (Smooth Streaming)
+* Pojedyncze szybkości transmisji bitów
+* Fragmentacja pojedynczej szybkości transmisji bitów (Smooth Streaming)
 
-#### <a id="single_bitrate_RTMP"></a>Pojedyncza szybkość transmisji bitów RTMP
+#### <a id="single_bitrate_RTMP"></a>Pojedyncze szybkości transmisji bitów
 Zagadnienia do rozważenia:
 
-* Przychodzący strumień nie może zawierać wideo o różnych szybkościach transmisji bitów
-* Strumienia wideo powinien mieć średnia szybkość transmisji bitów poniżej 15 MB/s
-* Strumień audio powinny mieć średnia szybkość transmisji bitów poniżej 1 MB/s
-* Obsługiwane kodery-dekodery są następujące:
-* AVC MPEG-4 / wideo H.264
-* Linii bazowej, główny, wysoka profilu (8-bitowy 4:2:0)
-* Wysoka profilu 10 (10-bitowy 4:2:0)
-* Wysoka profil 422 (10-bitowy 4:2:2)
-* Audio AAC-LC MPEG-2
-* Narzędzie mono, Stereo, Otocz (5.1, 7.1)
+* Strumień przychodzący nie może zawierać wideo o wysokiej szybkości transmisji bitów
+* Strumień wideo powinien mieć średnią szybkość transmisji bitów poniżej 15 MB/s
+* Strumień audio powinien mieć średnią szybkość transmisji bitów poniżej 1 MB/s
+* Obsługiwane są następujące kodery-dekoder:
+* Wideo MPEG-4 AVC/H 264
+* Linia bazowa, główny, wysoki profil (8-bitowy 4:2:0)
+* Profil o wysokiej 10 (10-bitowy 4:2:0)
+* Profil o wysokiej 422 (10-bitowy 4:2:2)
+* Dźwięk MPEG-2 AAC-LC
+* Mono, stereo, przestrzenny (5,1, 7,1)
 * częstotliwość próbkowania 44,1 kHz
-* Pakowanie ADTS styl MPEG-2
+* Pakowanie ADTS w stylu MPEG-2
 * Zalecane kodery obejmują:
-* Telestream Wirecast
-* Flash Media Live Encoder
+* Wirecast telestrumienia
+* Koder na żywo usługi Flash Media
 
 #### <a name="single-bitrate-fragmented-mp4-smooth-streaming"></a>Pojedyncza szybkość transmisji bitów podzielonej zawartości w formacie MP4 (Smooth Streaming)
 Typowy przypadek użycia:
 
-Lokalne korzystanie koderów na żywo od dostawców, takich jak Elemental technologii Ericsson, Ateme, Envivio do wysyłania strumienia wejściowego za pośrednictwem otwartego Internetu w pobliżu Azure centrum danych.
+Użyj lokalnych koderów na żywo od dostawców, takich jak technologie ATEME, Ericsson, Envivio, aby wysłać strumień wejściowy za pośrednictwem otwartego Internetu do pobliskiego centrum danych platformy Azure.
 
 Zagadnienia do rozważenia:
 
-Takie same jak dla [pojedyncza szybkość transmisji bitów RTMP](media-services-manage-live-encoder-enabled-channels.md#single_bitrate_RTMP).
+Tak samo jak w przypadku protokołu [RTMP o pojedynczej szybkości transmisji bitów](media-services-manage-live-encoder-enabled-channels.md#single_bitrate_RTMP).
 
 #### <a name="other-considerations"></a>Inne zagadnienia
 * Nie można zmienić protokołu wejściowego, gdy kanał lub skojarzone z nim programy są uruchomione. Jeśli potrzebujesz różnych protokołów, utwórz osobny kanał dla każdego protokołu wejściowego.
-* Maksymalna rozdzielczość dla przychodzących strumienia wideo wynosi 1920 x 1080 pikseli i co najwyżej 60 pola na sekundę, jeśli z przeplotem lub 30 klatek na sekundę w przypadku progresywnego.
+* Maksymalna rozdzielczość przychodzącego strumienia wideo to 1920 x 1080, a maksymalnie 60 pól na sekundę w przypadku przeplotu lub 30 klatek na sekundę w przypadku progresywnego.
 
-### <a name="ingest-urls-endpoints"></a>Adresy URL (punkty końcowe) pozyskiwania
-Kanał oferuje wejściowy punkt końcowy (adres URL pozyskiwania) określisz w koder na żywo, dzięki czemu można wypchnąć kodera strumienie do kanałów.
+### <a name="ingest-urls-endpoints"></a>Adresy URL pozyskiwania (punkty końcowe)
+Kanał udostępnia wejściowy punkt końcowy (adres URL pozyskiwania) określony w koderze dynamicznym, dzięki czemu koder może wypchnąć strumienie do kanałów.
 
-Po utworzeniu kanału możesz uzyskać adresy URL pozyskiwania. Aby uzyskać te adresy URL, kanał nie muszą znajdować się w **systemem** stanu. Gdy wszystko jest gotowe rozpocząć wypychanie danych do kanału, musi być w **systemem** stanu. Po uruchomieniu kanału dane wprowadzane można wyświetlać podgląd strumienia za pomocą adresu URL w wersji zapoznawczej.
+Po utworzeniu kanału możesz uzyskać adresy URL pozyskiwania. Aby uzyskać te adresy URL, kanał nie musi znajdować się w stanie **uruchomienia** . Gdy wszystko będzie gotowe do rozpoczęcia wypychania danych do kanału, musi być w stanie uruchomionym . Gdy kanał zacznie pozyskiwanie danych, możesz wyświetlić podgląd strumienia za pośrednictwem adresu URL w wersji zapoznawczej.
 
-Istnieje możliwość wprowadzania pofragmentowany plik MP4 (Smooth Streaming) transmisji strumieniowej na żywo za pośrednictwem połączenia SSL. Pozyskanie za pośrednictwem protokołu SSL, upewnij się zaktualizować adres URL pozyskiwania protokołu HTTPS. Obecnie usługa AMS nie obsługuje protokołu SSL z zastosowaniem domen niestandardowych.  
+Istnieje możliwość pozyskiwania pofragmentowanego strumienia MP4 (Smooth Streaming) na żywo za pośrednictwem połączenia SSL. Aby pozyskać za pośrednictwem protokołu SSL, należy zaktualizować adres URL pozyskiwania do protokołu HTTPS. Obecnie AMS nie obsługuje protokołu SSL z domenami niestandardowymi.  
 
 ### <a name="allowed-ip-addresses"></a>Dozwolone adresy IP
-Można zdefiniować adresy IP, które mogą publikować pliki wideo do tego kanału. Dozwolone IP adresów może być określony jako albo pojedynczy adres IP adresów (na przykład "10.0.0.1"), zakresu adresów IP przy użyciu adresu IP i maski podsieci CIDR (na przykład "10.0.0.1/22") lub adres IP zakresu (na przykład przy użyciu adresu IP i maski podsieci dziesiętna kropkowana , "10.0.0.1(255.255.252.0)').
+Można zdefiniować adresy IP, które mogą publikować wideo w tym kanale. Dozwolone adresy IP można określić jako pojedynczy adres IP (na przykład "10.0.0.1"), zakres adresów IP przy użyciu adresu IP i maski podsieci CIDR (np. "10.0.0.1/22") lub zakres adresów IP przy użyciu adresu IP i maski podsieci dziesiętnej (na przykład , "10.0.0.1 (255.255.252.0)").
 
 Jeśli adresy IP nie zostaną określone i brakuje definicji reguły, to żaden adres IP nie będzie dozwolony. Aby zezwolić na jakikolwiek adres IP, utwórz regułę i ustaw wartość 0.0.0.0/0.
 
 ## <a name="channel-preview"></a>Podgląd kanału
-### <a name="preview-urls"></a>Adresy URL podglądu
-Kanały zapewniają punktu końcowego (wersja zapoznawcza) (adres URL w wersji zapoznawczej), która umożliwia podgląd i weryfikować strumień przed dalszym przetwarzaniem i dostarczaniem.
+### <a name="preview-urls"></a>Podgląd adresów URL
+Kanały zapewniają punkt końcowy (wersja zapoznawcza), który służy do wyświetlania podglądu i weryfikowania strumienia przed dalszem przetwarzaniem i dostarczaniem.
 
-Po utworzeniu kanału możesz uzyskać adres URL podglądu. Aby uzyskać adres URL, kanał nie muszą znajdować się w **systemem** stanu.
+Możesz uzyskać adres URL wersji zapoznawczej podczas tworzenia kanału. Aby uzyskać adres URL, kanał nie musi znajdować się w stanie **uruchomionym** .
 
-Po uruchomieniu kanału dane wprowadzane można wyświetlać podgląd strumienia.
+Gdy kanał zacznie pozyskiwanie danych, możesz wyświetlić podgląd strumienia.
 
 > [!NOTE]
-> Obecnie Podgląd strumienia tylko mogą być dostarczane w pofragmentowany plik MP4 (Smooth Streaming) format niezależnie od określonego typu danych wejściowych.  Odtwarzacz hostowany w witrynie Azure portal służy do wyświetlania strumienia.
+> Obecnie strumień w wersji zapoznawczej można dostarczyć tylko w pofragmentowanym formacie MP4 (Smooth Streaming) niezależnie od określonego typu danych wejściowych.  Aby wyświetlić swój strumień, możesz użyć odtwarzacza hostowanego w Azure Portal.
 > 
 > 
 
 ### <a name="allowed-ip-addresses"></a>Dozwolone adresy IP
-Można zdefiniować adresy IP, które mogą nawiązywać połączenie z punktem końcowym (wersja zapoznawcza). Jeśli nie adresy IP są określone, może być dowolny adres IP. Dozwolone IP adresów może być określony jako albo pojedynczy adres IP adresów (na przykład "10.0.0.1"), zakresu adresów IP przy użyciu adresu IP i maski podsieci CIDR (na przykład "10.0.0.1/22") lub adres IP zakresu (na przykład przy użyciu adresu IP i maski podsieci dziesiętna kropkowana , "10.0.0.1(255.255.252.0)').
+Można zdefiniować adresy IP, które mogą łączyć się z punktem końcowym wersji zapoznawczej. Jeśli adresy IP nie zostaną określone, dozwolony jest dowolny adres IP. Dozwolone adresy IP można określić jako pojedynczy adres IP (na przykład "10.0.0.1"), zakres adresów IP przy użyciu adresu IP i maski podsieci CIDR (np. "10.0.0.1/22") lub zakres adresów IP przy użyciu adresu IP i maski podsieci dziesiętnej (na przykład , "10.0.0.1 (255.255.252.0)").
 
 ## <a name="live-encoding-settings"></a>Ustawienia kodowania na żywo
-W tej sekcji opisano, jak ustawień kodera na żywo w kanale można dostosować, gdy **typ kodowania** kanału jest równa **standardowa**.
+W tej sekcji opisano, jak można dopasować ustawienia dla kodera na żywo w kanale, gdy **typ kodowania** kanału jest ustawiony na wartość **standardowa**.
 
 > [!NOTE]
-> Twoje źródło danych udział może zawierać tylko pojedynczą ścieżkę audio — wprowadzane z wielu ścieżki audio nie jest obecnie obsługiwane. Podczas wykonywania kodowania na żywo za pomocą [na żywo w środowisku lokalnym koduje](media-services-live-streaming-with-onprem-encoders.md), możesz wysłać wkład kanału informacyjnego w protokole Smooth Streaming, zawierające wiele ścieżki audio.
+> Kanał informacyjny dotyczący wkładu może zawierać tylko jedną ścieżkę audio — wprowadzanie wielu ścieżek audio nie jest obecnie obsługiwane. Podczas przeprowadzania kodowania na żywo z lokalnymi kodowaniem [na żywo](media-services-live-streaming-with-onprem-encoders.md)można wysłać kanał informacyjny udziału w protokole Smooth Streaming zawierającym wiele ścieżek audio.
 > 
 > 
 
 ### <a name="ad-marker-source"></a>Źródło znacznika usługi AD
-Można określić źródło sygnałów znaczników reklamowych. Wartość domyślna to **Api**, co oznacza, że koder na żywo w kanale powinien nasłuchiwać asynchronicznego **interfejsu API znacznika reklamy**.
+Możesz określić źródło dla sygnałów znaczników AD. Wartość domyślna to **API**, co oznacza, że koder na żywo w kanale powinien nasłuchiwać ASYNCHRONICZNEGO **interfejsu API znaczników usługi AD**.
 
-### <a name="cea-708-closed-captions"></a>Napisy kodowane CEA 708 podpisy kodowane
-Opcjonalna Flaga, która informuje o tym koder na żywo, aby ignorować wszystkie dane Podpisy napisy kodowane CEA-708 osadzony w przychodzących wideo. Gdy flaga jest ustawiona na wartość false (domyślnie), kodera wykryje i ponownie włóż napisy kodowane CEA-708 danych do strumieni wideo w danych wyjściowych.
+### <a name="cea-708-closed-captions"></a>Napisy CEA 708
+Opcjonalna Flaga wskazująca, że koder na żywo ma ignorować wszystkie CEAe podpisy 708 osadzone w przychodzącym wideo. Gdy flaga ma wartość false (domyślnie), koder wykrywa i ponownie wstawia dane z CEA 708 do wyjściowych strumieni wideo.
 
 #### <a name="index"></a>Indeks
-Zalecane jest, aby wysłać w jednym programie strumień transportu (SPTS). Jeśli strumień wejściowy zawiera wiele programów, analizuje tabeli mapy Program (rata) w danych wejściowych kodera na żywo w kanale, który identyfikuje dane wejściowe, które mają nazwę typu stream ADTS AAC MPEG-2 lub AC-3, System A lub AC 3 systemu-B lub prywatnej PES MPEG-2 lub MPEG-1 Audio lub dźwięk w postaci strumieni MPEG-2 i układa je w kolejności określonej w konto Liczony od zera indeks jest następnie używany tak, aby wczytać n tego wpisu w takie rozwiązanie.
+Zaleca się wysyłanie w strumieniu transportu pojedynczego programu (SPTS). Jeśli strumień wejściowy zawiera wiele programów, koder na żywo w ramach kanału analizuje tabelę mapy programu (PMT) w danych wejściowych, identyfikuje dane wejściowe, które mają nazwę typu strumienia MPEG-2 AAC ADTS lub AC-3 systemu-A lub AC-3 systemu-B lub MPEG-2 prywatnych PES lub MPEG-1 Audio lub MPEG-2 audio i rozmieszcza je w kolejności określonej w OPŁ. Indeks oparty na zero jest następnie używany do pobrania n-ty wpisu w tym rozmieszczeniu.
 
 #### <a name="language"></a>Język
-Identyfikator języka strumienia audio, zgodne z normą ISO 639-2, takie jak ENG. Jeśli nie istnieje, wartość domyślna to i (niezdefiniowany).
+Identyfikator języka strumienia audio zgodny z ISO 639-2, taki jak aparatu. Jeśli nie istnieje, wartość domyślna to UND (undefined).
 
-### <a id="preset"></a>Ustawienie wstępne systemu
-Określa ustawienie wstępne, który będzie używany przez koder na żywo w ramach tego kanału. Obecnie jest jedyną dozwoloną wartość **Default720p** (ustawienie domyślne).
+### <a id="preset"></a>Ustawienia wstępne systemu
+Określa ustawienie wstępne, które ma być używane przez koder na żywo w ramach tego kanału. Obecnie jedyną dozwoloną wartością jest **Default720p** (domyślnie).
 
-Należy pamiętać, że jeśli potrzebujesz niestandardowych ustawień wstępnych, należy skontaktować się ze amslived@microsoft.com.
+Należy pamiętać, że jeśli potrzebujesz niestandardowych ustawień wstępnych, amshelp@microsoft.comnależy skontaktować się z.
 
-**Default720p** będzie kodowania wideo na następujące warstwy 6.
+**Default720p** zakodowanie wideo do następujących 6 warstw.
 
-#### <a name="output-video-stream"></a>Dane wyjściowe Stream wideo
+#### <a name="output-video-stream"></a>Wyjściowy strumień wideo
 
-| Szybkość transmisji bitów | Szerokość | Wysokość | MaxFPS | Profil | Nazwa Stream wyjściowego |
+| Multimedia | Szerokość | Wysokość | MaxFPS | Profil | Nazwa strumienia wyjściowego |
 | --- | --- | --- | --- | --- | --- |
 | 3500 |1280 |720 |30 |Wysoka |Video_1280x720_3500kbps |
 | 2200 |960 |540 |30 |Wysoka |Video_960x540_2200kbps |
@@ -225,68 +226,68 @@ Należy pamiętać, że jeśli potrzebujesz niestandardowych ustawień wstępnyc
 | 550 |384 |216 |30 |Wysoka |Video_384x216_550kbps |
 | 200 |340 |192 |30 |Wysoka |Video_340x192_200kbps |
 
-#### <a name="output-audio-stream"></a>Dane wyjściowe Audio Stream
+#### <a name="output-audio-stream"></a>Wyjściowy strumień audio
 
-Dźwięk jest zakodowany w celu stereo AAC-LC na 128 Kb/s, częstotliwość próbkowania kHz 48.
+Dźwięk jest zakodowany do stereo AAC-LC o 128 kb/s, częstotliwość próbkowania 48 kHz.
 
-## <a name="signaling-advertisements"></a>Sygnalizowanie anonsów
-Kanał ma włączone kodowanie na żywo, ma składnika w potoku, który jest przetwarzanie filmu wideo, a można manipulować go. Można wysłać sygnału dla kanału wstawiania plansz i/lub reklam do strumienia o adaptacyjnej szybkości transmisji bitów wychodzących. Plansz nadal są obrazy, które można użyć w celu ukrycia się wejściowy Kanał informacyjny na żywo w niektórych przypadkach (na przykład podczas reklamowej). Anonsowanie sygnały, są sygnały zsynchronizowany czas, który osadzania do strumienia wychodzącego mówić odtwarzacz wideo, aby podejmować żadnych specjalnych czynności — tak, aby przełączyć się do anonsu w odpowiednim czasie. Zobacz ten [blogu](https://codesequoia.wordpress.com/2014/02/24/understanding-scte-35/) omówienie mechanizm sygnalizowanie SCTE 35 używanym do tego celu. Poniżej przedstawiono typowy scenariusz, którą można implementować w zdarzenia na żywo.
+## <a name="signaling-advertisements"></a>Sygnalizowanie ogłoszeń
+Gdy kanał ma Live Encoding włączony, masz składnik w potoku, który przetwarza wideo, i może go manipulować. Możesz sygnalizować kanałowi, aby wstawiać do strumienia transmisji bitów wychodzącej i/lub anonse. Obrazy z obrazami są nadal używane do pozyskania danych wejściowych na żywo w niektórych przypadkach (na przykład w przypadku przerwy w działaniu handlowym). Sygnały anonsowania to sygnały zsynchronizowane czasowo, które są osadzane w strumieniu wychodzącym, aby poinformować odtwarzacz wideo o konieczności podjęcia specjalnej akcji — na przykład w celu przełączenia do reklamy w odpowiednim czasie. Zobacz ten [blog](https://codesequoia.wordpress.com/2014/02/24/understanding-scte-35/) , aby zapoznać się z omówieniem mechanizmu sygnalizowania SCTE-35 używanego do tego celu. Poniżej znajduje się typowy scenariusz, który można zaimplementować w zdarzeniu na żywo.
 
-1. Mieć przeglądającym pobrać obraz zdarzenie wstępne, przed uruchomieniem zdarzenia.
-2. Mieć przeglądającym pobrać obraz po zdarzeń po zakończeniu zdarzenia.
-3. Mieć przeglądającym uzyskać obraz zdarzenie błędu, jeśli występuje problem podczas zdarzenia (na przykład awarii zasilania w stadion).
-4. Wyślij obraz AD-BREAK, aby ukryć zdarzenia na żywo, źródła danych podczas reklamowej.
+1. Zapoznaj się z podglądem obrazu przed rozpoczęciem zdarzenia.
+2. Zapoznaj się z podglądem po zakończeniu zdarzenia, aby wyświetlić obraz po ZDARZENIu.
+3. Wyświetlanie obrazu zdarzenia błędu, jeśli wystąpił problem podczas zdarzenia (na przykład awaria zasilacza w stadium).
+4. Wyślij obraz rozbicie usługi AD w celu ukrycia na żywo kanału informacyjnego w trakcie przerwy komercyjnej.
 
-Poniżej przedstawiono właściwości, które można ustawić podczas sygnalizowanie anonsów. 
+Poniżej znajdują się właściwości, które można ustawić podczas sygnalizowania anonsów. 
 
-### <a name="duration"></a>Czas trwania
-Czas w sekundach, komercyjnych podziału. Musi to być dodatnia wartość różna od zera, aby uruchomić reklamowej. Po reklamowej jest w toku, a czas trwania jest ustawiona na zero z CueId dopasowywania w toku reklamowej, a następnie tego podziału zostanie anulowane.
+### <a name="duration"></a>Duration
+Czas trwania przerwy komercyjnej (w sekundach). Ta wartość musi być wartością dodatnią różną od zera, aby można było rozpocząć przerwy komercyjne. Gdy podział komercyjny jest w toku, a czas trwania jest ustawiony na zero z CueId dopasowuje się do przechodzenia do zera, ten przerwanie zostanie anulowane.
 
 ### <a name="cueid"></a>CueId
-Unikatowy identyfikator dla reklamowej, do użycia przez aplikację podrzędnego do podjęcia odpowiednich akcji. Musi być dodatnią liczbą całkowitą. Można ustawić tej wartości losowych dodatnią liczbą całkowitą lub użyć nadrzędnego system do śledzenia identyfikatory wskaźnika. Pamiętaj znormalizować wszystkich identyfikatorów do dodatnie liczby całkowite przed przesłaniem za pośrednictwem interfejsu API.
+Unikatowy identyfikator dla przerwy komercyjnej, który ma być używany przez aplikację podrzędny do podejmowania odpowiednich akcji. Musi być dodatnią liczbą całkowitą. Można ustawić tę wartość na dowolną losowo dodatnią liczbę całkowitą lub użyć systemu nadrzędnego do śledzenia identyfikatorów wskaźnika. Przed przesłaniem za pomocą interfejsu API należy przeprowadzić normalizację wszelkich identyfikatorów do dodatnich liczb całkowitych.
 
-### <a name="show-slate"></a>Pokaż plansz
-Opcjonalny. Sygnalizuje koder na żywo, aby przełączyć się do [domyślne plansz](media-services-manage-live-encoder-enabled-channels.md#default_slate) obrazu podczas reklamowej i ukrywanie przychodzących źródła wideo. Dźwięk jest również wyciszone podczas plansz. Wartość domyślna to **false**. 
+### <a name="show-slate"></a>Pokaż moje
+Opcjonalna. Sygnalizuje koder na żywo, aby przełączać się do [domyślnego](media-services-manage-live-encoder-enabled-channels.md#default_slate) obrazu przedniego podczas handlowego przerwy i ukrywać przychodzące źródło wideo. Dźwięk jest również wyciszony na przedniej. Wartość domyślna to **false**. 
 
-Obraz używany będzie określony za pomocą elementu zawartości planszy domyślne Właściwość Id w czasie tworzenia kanału. Plansz będzie być rozciągnięty do rozmiaru ekranu rozmiar obrazu. 
+Używany obraz będzie to ten określony za pośrednictwem domyślnej właściwości identyfikator elementu zawartości w momencie tworzenia kanału. Obraz będzie rozciągany w celu dopasowania go do rozmiaru obrazu wyświetlanego. 
 
-## <a name="insert-slate--images"></a>Wstawianie obrazów Plansz
-Koder na żywo w kanale mogą być sygnalizowane, aby przełączyć się do obrazu planszy. Go może również być sygnalizowane, aby zakończyć plansz w toku. 
+## <a name="insert-slate--images"></a>Wstaw obrazy z obrazami
+Koder na żywo w kanale może być sygnalizowane do przełączania do obrazu z obrazem. Może być również zasygnalizowani, aby zakończyć do końca. 
 
-Koder na żywo można skonfigurować tak, aby przejść do obrazu planszy i Ukryj przychodzących sygnał wideo, w niektórych sytuacjach — na przykład podczas przerwy ad. Jeśli nie skonfigurowano takie tablecie, wejściowy plik wideo nie jest maskowane podczas tego podziału usługi ad.
+Koder na żywo można skonfigurować w taki sposób, aby przełączać się do obrazu z obrazem i ukrywać sygnał wideo w pewnych sytuacjach — na przykład podczas przerwy w usłudze AD. Jeśli taki symbol nie jest skonfigurowany, wejściowy film wideo nie jest maskowany podczas tego przerwania usługi AD.
 
-### <a name="duration"></a>Czas trwania
-Czas trwania tablecie, w ciągu kilku sekund. Musi to być różna od zera dodatnia, aby uruchomić plansz. Jeśli istnieje plansz w toku, a czas trwania zero jest określony, że plansz w toku zostanie zakończona.
+### <a name="duration"></a>Duration
+Czas trwania (w sekundach). Ta wartość musi być wartością dodatnią różną od zera, aby można było zacząć od siebie. W przypadku korzystania z ciągłego nałożenia, gdy zostanie określony czas trwania zero, ten, który zostanie zamknięty, zostanie zakończony.
 
-### <a name="insert-slate-on-ad-marker"></a>Wstaw planszę w znacznika reklamy miejscu
-Gdy wartość true, to ustawienie służy do konfigurowania koder na żywo, aby wstawić obrazu planszy podczas przerwy ad. Wartość domyślna to true. 
+### <a name="insert-slate-on-ad-marker"></a>Wstaw planszę w miejscu znacznika reklamy
+Po ustawieniu na wartość true, to ustawienie konfiguruje koder na żywo, aby wstawić obraz obrazu w trakcie przerwy w usłudze AD. Wartość domyślna to true. 
 
-### <a id="default_slate"></a>Identyfikator elementu zawartości planszy domyślne
+### <a id="default_slate"></a>Domyślny identyfikator elementu zawartości
 
-Opcjonalny. Określa identyfikator zasobu elementu zawartości usługi multimediów, który zawiera obraz planszy. Domyślny ma wartość null. 
+Opcjonalny. Określa identyfikator elementu zawartości Media Services, który zawiera obraz obrazu. Wartość domyślna to null. 
 
 
 > [!NOTE] 
-> Przed utworzeniem kanału, obrazu planszy z następującymi ograniczeniami powinny zostać przekazane jako dedykowane trwały (żadne inne pliki nie powinny należeć do tego zasobu). Ten obraz jest używany tylko wtedy, gdy koder na żywo jest wstawiania plansz z powodu przerwania ad lub została jawnie zasygnalizują, aby wstawić tablecie. Obecnie nie ma opcji do użycia niestandardowego obrazu, podczas koder na żywo wejdzie w taki stan usługi "utraty sygnału wejściowego". Dla tej funkcji, możesz głosować [tutaj](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/10190457-define-custom-slate-image-on-a-live-encoder-channel).
+> Przed utworzeniem kanału obraz obrazu z następującymi ograniczeniami powinien zostać przekazany jako dedykowany element zawartości (żadne inne pliki nie powinny znajdować się w tym elemencie zawartości). Ten obraz jest używany tylko wtedy, gdy koder na żywo jest wstawiany z powodu przerwy w działaniu usługi AD. Obecnie nie ma możliwości użycia obrazu niestandardowego, gdy koder na żywo wejdzie w stan "utracony sygnał wejściowy". Tę funkcję można głosować w [tym miejscu](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/10190457-define-custom-slate-image-on-a-live-encoder-channel).
 
 
-* Co najwyżej 1920 x 1080 pikseli w rozdzielczości.
-* Maksymalnie 3 (MB) rozmiar.
-* Nazwa pliku musi mieć rozszerzenie *.jpg.
-* Obraz, który należy przekazać do elementu zawartości w formie tylko AssetFile, zasobów i AssetFile ten powinien być oznaczony jako plik podstawowy. Zasób nie może być szyfrowany w magazynie.
+* 1920 x 1080.
+* Co najwyżej 3 MB.
+* Nazwa pliku musi mieć rozszerzenie *. jpg.
+* Obraz musi być przekazany do elementu zawartości jako jedyna AssetFile w tym elemencie zawartości, a ten AssetFile powinien być oznaczony jako plik podstawowy. Zasób nie może być zaszyfrowany za pomocą magazynu.
 
-Jeśli **domyślne łupków identyfikator elementu zawartości** nie zostanie określony, i **Wstaw planszę w znacznika reklamy miejscu** jest ustawiona na **true**, domyślnego obrazu usługi Azure Media Services będzie służyć do ukrywania wejściowego filmu wideo strumień. Dźwięk jest również wyciszone podczas plansz. 
+Jeśli **domyślny identyfikator elementu zawartości** nie zostanie określony, a **w polu Wstaw znacznik w usłudze AD** jest ustawiona **wartość true**, do ukrycia wejściowego strumienia wideo zostanie użyty domyślny obraz Azure Media Services. Dźwięk jest również wyciszony na przedniej. 
 
 ## <a name="channels-programs"></a>Programy kanału
-Kanał jest skojarzony z programami, które umożliwiają kontrolowanie publikowania i przechowywania segmentów strumienia na żywo. Kanały zarządzają programami. Relacja kanału i programu jest bardzo podobne do tradycyjnych multimediach, gdzie kanał ma stały strumień zawartości, a program obejmuje niektóre zdarzenia czasowe na tym kanale.
+Kanał jest skojarzony z programami, które umożliwiają kontrolowanie publikowania i przechowywania segmentów strumienia na żywo. Kanały zarządzają programami. Relacja kanału i programu jest bardzo podobna do tradycyjnego nośnika, gdzie kanał ma stały strumień zawartości, a program jest objęty zakresem pewnego czasu zdarzenia w tym kanale.
 
-Można określić liczbę godzin, aby zachować zarejestrowaną zawartość na potrzeby programu przez ustawienie długości **Okna archiwum**. Ta wartość musi mieścić się w zakresie od 5 minut do maksymalnie 25 godzin. Długość okna archiwizacji również mówią, że maksymalna liczba klientów można wyszukać w czasie od bieżącej pozycji na żywo. Programy mogą być transmitowane w określonym czasie, ale zawartość, która wykracza poza długość okna, jest stale odrzucana. Wartość tej właściwości określa również, jak długie mogą być manifesty na kliencie.
+Można określić liczbę godzin, aby zachować zarejestrowaną zawartość na potrzeby programu przez ustawienie długości **Okna archiwum**. Ta wartość musi mieścić się w zakresie od 5 minut do maksymalnie 25 godzin. Długość okna archiwum określa również maksymalną liczbę czasu, przez jaką klienci mogą odwrócić w czasie od bieżącego stanowiska na żywo. Programy mogą być transmitowane w określonym czasie, ale zawartość, która wykracza poza długość okna, jest stale odrzucana. Wartość tej właściwości określa również, jak długie mogą być manifesty na kliencie.
 
-Każdy program jest skojarzony z elementem zawartości, która przechowuje zawartości przesyłanej strumieniowo. Element zawartości jest mapowany do bloku kontenera obiektów blob na koncie usługi Azure Storage, a pliki w elemencie zawartości są przechowywane jako obiekty BLOB w kontenerze. Aby opublikować program, dzięki czemu klienci mogą wyświetlać strumień, należy utworzyć Lokalizator OnDemand dla skojarzonego elementu zawartości. Lokalizator umożliwia utworzenie adresu URL przesyłania strumieniowego, który można udostępnić klientom.
+Każdy program jest skojarzony z zasobem, który przechowuje zawartość przesyłaną strumieniowo. Element zawartości jest mapowany na kontener blokowych obiektów BLOB na koncie usługi Azure Storage, a pliki w elemencie zawartości są przechowywane jako obiekty blob w tym kontenerze. Aby opublikować program, aby klienci mogli wyświetlić strumień, należy utworzyć lokalizator OnDemand dla skojarzonego elementu zawartości. Lokalizator umożliwia utworzenie adresu URL przesyłania strumieniowego, który można udostępnić klientom.
 
-Kanał obsługuje maksymalnie trzy jednocześnie uruchomione programy, dzięki czemu można tworzyć wiele archiwów tego samego strumienia przychodzącego. Umożliwia to w razie potrzeby publikowanie i archiwizację różnych części wydarzenia. Na przykład zgodnie z wymaganiami biznesowymi potrzebna jest archiwizacja sześciu godzin programu, ale do emisji przeznaczonych jest tylko ostatnich 10 minut. W tym celu należy utworzyć dwa jednocześnie uruchomione programy. Jeden z programów jest skonfigurowany na potrzeby archiwizacji sześciu godzin zdarzenia, ale ten program nie jest publikowany. Drugi z programów jest skonfigurowany w celu archiwizacji 10 minut wydarzenia i ten program zostanie opublikowany.
+Kanał obsługuje maksymalnie trzy współbieżnie uruchomione programy, dzięki czemu można tworzyć wiele archiwów tego samego strumienia przychodzącego. Umożliwia to w razie potrzeby publikowanie i archiwizację różnych części wydarzenia. Na przykład zgodnie z wymaganiami biznesowymi potrzebna jest archiwizacja sześciu godzin programu, ale do emisji przeznaczonych jest tylko ostatnich 10 minut. W tym celu należy utworzyć dwa jednocześnie uruchomione programy. Jeden z programów jest skonfigurowany na potrzeby archiwizacji sześciu godzin zdarzenia, ale ten program nie jest publikowany. Drugi z programów jest skonfigurowany w celu archiwizacji 10 minut wydarzenia i ten program zostanie opublikowany.
 
-Nie należy używać ponownie istniejących programów dla nowych zdarzeń. Zamiast tego należy utworzyć i uruchomić nowy program dla każdego zdarzenia, zgodnie z opisem w sekcji programowania aplikacji przesyłania strumieniowego na żywo.
+Nie należy używać ponownie istniejących programów dla nowych zdarzeń. Zamiast tego należy utworzyć i uruchomić nowy program dla każdego zdarzenia, zgodnie z opisem w sekcji Programowanie strumieniowego na żywo aplikacji.
 
 Uruchom program, gdy wszystko będzie gotowe do rozpoczęcia przesyłania strumieniowego i archiwizacji. Zatrzymaj program w dowolnym momencie, w którym chcesz zatrzymać przesyłanie strumieniowe i archiwizowanie wydarzenia. 
 
@@ -296,15 +297,15 @@ Nawet po zatrzymaniu i usunięciu programu użytkownicy będą mogli przesyłać
 
 Jeśli chcesz zachować zarchiwizowaną zawartość, ale bez udostępniania jej do przesyłania strumieniowego, usuń lokalizator przesyłania strumieniowego.
 
-## <a name="getting-a-thumbnail-preview-of-a-live-feed"></a>Pobieranie miniatury podglądu na żywo źródła danych
-Gdy kodowanie na żywo jest włączona, możesz teraz uzyskać wersję zapoznawczą Kanał informacyjny na żywo jako osiągnie kanału. Może to być przydatne narzędzie, aby sprawdzić, czy Twoje Kanał informacyjny na żywo faktycznie zbliża się do kanału. 
+## <a name="getting-a-thumbnail-preview-of-a-live-feed"></a>Pobieranie podglądu miniatury kanału informacyjnego na żywo
+Gdy Live Encoding jest włączona, możesz teraz uzyskać podgląd kanału informacyjnego na żywo, który dociera do kanału. Może to być cenny narzędzie do sprawdzenia, czy na żywo kanał informacyjny rzeczywiście dociera do kanału. 
 
-## <a id="states"></a>Stany kanału i sposobu mapowania stanów przekładają się naliczanie opłat
+## <a id="states"></a>Stany kanału i sposób, w jaki Stany są mapowane do trybu rozliczania
 Bieżący stan kanału. Możliwe wartości obejmują:
 
 * **Zatrzymano**. To jest wstępny stan kanału po jego utworzeniu. W tym stanie właściwości kanału mogą być aktualizowane, ale transmisja strumieniowa jest niedozwolona.
-* **Uruchamianie**. Kanał jest uruchamiany. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa. Jeśli wystąpi błąd, kanał wróci do stanu Zatrzymany.
-* **Uruchamianie**. Kanał może przetwarzać transmisje strumieniowe na żywo.
+* **Rozpoczęcie**. Kanał jest uruchamiany. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa. Jeśli wystąpi błąd, kanał wróci do stanu Zatrzymany.
+* **Uruchomione**. Kanał może przetwarzać transmisje strumieniowe na żywo.
 * **Zatrzymywanie**. Kanał jest zatrzymywany. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa.
 * **Usuwanie**. Kanał jest usuwany. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa.
 
@@ -312,33 +313,33 @@ W tabeli poniżej pokazano, jak stany kanału przekładają się na naliczanie o
 
 | Stan kanału | Wskaźniki w interfejsie użytkownika portalu | Naliczanie opłat? |
 | --- | --- | --- |
-| Uruchamianie |Uruchamianie |Nie (stan przejściowy) |
-| Działanie |Gotowy (brak uruchomionych programów)<br/>lub<br/>Transmisja strumieniowa (co najmniej jeden uruchomiony program) |Yes |
+| Rozpoczęcie |Rozpoczęcie |Nie (stan przejściowy) |
+| Działanie |Gotowy (brak uruchomionych programów)<br/>lub<br/>Transmisja strumieniowa (co najmniej jeden uruchomiony program) |Tak |
 | Zatrzymywanie |Zatrzymywanie |Nie (stan przejściowy) |
 | Zatrzymano |Zatrzymano |Nie |
 
 > [!NOTE]
-> Obecnie średnia start kanału to około 2 minuty, ale czasami może potrwać do ponad 20 minut. Resetowanie kanału może potrwać do 5 minut.
+> Obecnie średnia wartość początku kanału wynosi około 2 minuty, ale czasami może potrwać do 20 minut. Resetowanie kanału może potrwać do 5 minut.
 > 
 > 
 
 ## <a id="Considerations"></a>Zagadnienia dotyczące
-* Gdy kanał **standardowa** typ kodowania napotyka utraty źródła danych źródła danych wejściowych/wkładu, kompensuje ona go, zastępując plansz błąd i wyciszenia źródła audio/wideo. Kanał będzie emitować tablecie, dopóki dane wejściowe/wkład kanału informacyjnego wznawia. Zaleca się, że kanału na żywo nie może pozostać w stanie przez czas dłuższy niż 2 godziny. Poza ten punkt zachowanie kanału po ponownym nawiązaniu połączenia w danych wejściowych nie ma żadnej gwarancji, żaden nie jest jego zachowanie w odpowiedzi na polecenie resetowania. Trzeba będzie zatrzymać kanał, usuń ją i Utwórz nową.
+* W przypadku kanału **standardowego** typu kodowania w przypadku utraty źródła danych wejściowych/kanału informacyjnego, jest on kompensowany przez zastępowanie źródłowego wideo/audio błędem i wysunięciem. Kanał będzie w dalszym ciągu emitować do momentu wznowienia kanału wejścia/wyjścia. Zalecamy, aby kanał na żywo nie pozostawał w stanie dłuższym niż 2 godziny. Po tym momencie zachowanie kanału na potrzeby ponownego połączenia danych wejściowych nie jest gwarantowane, ani nie jest zachowaniem w odpowiedzi na polecenie resetowania. Należy zatrzymać kanał, usunąć go i utworzyć nowy.
 * Nie można zmienić protokołu wejściowego, gdy kanał lub skojarzone z nim programy są uruchomione. Jeśli potrzebujesz różnych protokołów, utwórz osobny kanał dla każdego protokołu wejściowego.
-* Za każdym razem, gdy skonfigurujesz koder na żywo, wywołaj **resetowania** metody w kanale. Przed zresetowaniem kanał, musisz zatrzymać program. Po zresetowaniu kanał, ponownie uruchom program.
-* Kanał można zatrzymać tylko wtedy, gdy jest ona w stanie uruchomiona, a wszystkie programy na kanale zostały zatrzymane.
-* Domyślnie 5 kanałów można dodać tylko do konta usługi Media Services. Jest to przydziału elastycznego na wszystkich nowych kont. Aby uzyskać więcej informacji, zobacz [przydziały i ograniczenia](media-services-quotas-and-limitations.md).
+* Za każdym razem, gdy ponownie konfigurujesz koder na żywo , wywołaj metodę resetowania kanału. Przed zresetowaniem kanału należy zatrzymać program. Po zresetowaniu kanału należy ponownie uruchomić program.
+* Kanał można zatrzymać tylko wtedy, gdy jest w stanie uruchomienia, a wszystkie programy w kanale zostały zatrzymane.
+* Domyślnie można dodawać tylko 5 kanałów do konta Media Services. Jest to przydział elastyczny dla wszystkich nowych kont. Aby uzyskać więcej informacji, zobacz Przydziały [i ograniczenia](media-services-quotas-and-limitations.md).
 * Nie można zmienić protokołu wejściowego, gdy kanał lub skojarzone z nim programy są uruchomione. Jeśli potrzebujesz różnych protokołów, utwórz osobny kanał dla każdego protokołu wejściowego.
-* Rozliczenie jest przeprowadzane tylko wtedy, gdy kanał jest w **systemem** stanu. Aby uzyskać więcej informacji, zobacz [to](media-services-manage-live-encoder-enabled-channels.md#states) sekcji.
-* Obecnie maksymalny zalecany czas trwania wydarzenia na żywo wynosi 8 godzin. Napisz na adres amslived@microsoft.com, jeśli potrzebujesz uruchomić kanał na dłuższy czas.
-* Upewnij się, że istnieje punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać zawartość w **systemem** stanu.
-* Ustawienia wstępne kodowania używa pojęcie "maksymalną szybkość" 30 kl. / s. Jeśli dane wejściowe są 60 kl. / s / 59.94i, ramki danych wejściowych porzuconych/cofania-interlaced do 30/29,97 kl. / s. Jeśli dane wejściowe są 50 kl. / s/50i, ramki wejściowe są porzucony/cofania-interlaced do 25 kl. / s. Jeśli dane wejściowe są 25 kl. / s, dane wyjściowe pozostaje na poziomie 25 kl. / s.
-* Nie zapomnij o zatrzymanie YOUR kanały po zakończeniu. Jeśli tego nie zrobisz, będą nadal rozliczeń.
+* Opłaty są naliczane tylko wtedy, gdy kanał jest w stanie **uruchomienia** . Aby uzyskać więcej informacji, zapoznaj się z [tą](media-services-manage-live-encoder-enabled-channels.md#states) sekcją.
+* Obecnie maksymalny zalecany czas trwania wydarzenia na żywo wynosi 8 godzin. Napisz na adres amshelp@microsoft.com, jeśli potrzebujesz uruchomić kanał na dłuższy czas.
+* Upewnij się, że punkt końcowy przesyłania strumieniowego, z którego chcesz przesłać strumieniowo zawartość w stanie **uruchomienia** .
+* Ustawienie wstępne kodowania używa pojęcia "Max Frame Rate" z 30 fps. Dlatego jeśli dane wejściowe to 60fps/wyświetlaczu i, ramki wejściowe są usuwane/cofane z przeplotem do 30/29.97 fps. Jeśli dane wejściowe to 50fps/50i, ramki wejściowe są usuwane/cofane z przeplotem do 25 fps. Jeśli dane wejściowe to 25 fps, dane wyjściowe pozostają na 25 fps.
+* Nie zapomnij zatrzymać kanałów po zakończeniu. Jeśli tego nie zrobisz, rozliczenia będą kontynuowane.
 
 ## <a name="known-issues"></a>Znane problemy
-* Czas uruchamiania kanał został ulepszony, aby średnio 2 minuty, ale czasami z rosnący popyt trwało do ponad 20 minut.
-* Obrazy planszy powinna być zgodna ograniczenia [tutaj](media-services-manage-live-encoder-enabled-channels.md#default_slate). Jeśli użytkownik podejmie próbę utworzenia kanału z plansz domyślny, który jest większy niż 1920 x 1080 pikseli, żądanie po pewnym czasie zgłosi błąd.
-* Jeszcze raz... nie zapomnij STOP YOUR kanały, po zakończeniu przesyłania strumieniowego. Jeśli tego nie zrobisz, będą nadal rozliczeń.
+* Czas uruchamiania kanału został ulepszony na średnią wynoszącą 2 minuty, ale czasami może to potrwać do 20 minut.
+* Obrazy z obrazami powinny być zgodne z ograniczeniami opisanymi [tutaj](media-services-manage-live-encoder-enabled-channels.md#default_slate). W przypadku próby utworzenia kanału z domyślnym przedplanszą, który jest większy niż 1920 x 1080, żądanie zostanie ostatecznie zatrzymane.
+* Jeszcze raz.... nie zapomnij zatrzymać kanałów po zakończeniu przesyłania strumieniowego. Jeśli tego nie zrobisz, rozliczenia będą kontynuowane.
 
 ## <a name="next-step"></a>Następny krok
 Przejrzyj ścieżki szkoleniowe dotyczące usługi Media Services.
@@ -349,17 +350,17 @@ Przejrzyj ścieżki szkoleniowe dotyczące usługi Media Services.
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>Tematy pokrewne
-[Dostarczanie wydarzeń transmisji strumieniowej na żywo, za pomocą usługi Azure Media Services](media-services-overview.md)
+[Dostarczanie zdarzeń przesyłania strumieniowego na żywo za pomocą Azure Media Services](media-services-overview.md)
 
-[Tworzenie kanałów wykonujących kodowanie na żywo z wystąpieniu szybkości transmisji bitów do strumienia o adaptacyjnej szybkości transmisji bitów przy użyciu portalu](media-services-portal-creating-live-encoder-enabled-channel.md)
+[Tworzenie kanałów wykonujących kodowanie na żywo z pojedynczej szybkości transmisji bitów do strumienia z adaptacyjną szybkością transmisji bitów przy użyciu portalu](media-services-portal-creating-live-encoder-enabled-channel.md)
 
-[Tworzenie kanałów wykonujących kodowanie na żywo z wystąpieniu szybkości transmisji bitów do strumienia o adaptacyjnej szybkości transmisji bitów przy użyciu zestawu .NET SDK](media-services-dotnet-creating-live-encoder-enabled-channel.md)
+[Tworzenie kanałów wykonujących kodowanie na żywo z pojedynczej szybkości transmisji bitów do strumienia z adaptacyjną szybkością transmisji bitów przy użyciu zestawu .NET SDK](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 
 [Zarządzanie kanałami przy użyciu interfejsu API REST](https://docs.microsoft.com/rest/api/media/operations/channel)
 
-[Pojęcia dotyczące usługi Media Services](media-services-concepts.md)
+[Koncepcje Media Services](media-services-concepts.md)
 
-[Specyfikacja odbierania podzielonej zawartości w formacie MP4 na żywo w usłudze Azure Media Services](media-services-fmp4-live-ingest-overview.md)
+[Azure Media Services pofragmentowana Specyfikacja pozyskiwania na żywo w formacie MP4](../media-services-fmp4-live-ingest-overview.md)
 
 [live-overview]: ./media/media-services-manage-live-encoder-enabled-channels/media-services-live-streaming-new.png
 

@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 80a04333260b7aa710c1598b64a414ce53a1037a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 1dea5e174c66685f889595ab15b3edf57dd02493
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883310"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018242"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Co to jest usługa Azure Machine Learning?
 
@@ -49,15 +49,15 @@ Rozpocznij szkolenie na maszynie lokalnej przy użyciu <a href="https://aka.ms/a
 
 Możesz również [zautomatyzować szkolenia i dostrajanie modeli](tutorial-auto-train-models.md) za pomocą zestawu SDK.
 
-### <a name="code-free--low-code-experience"></a>Niezależne od kodu/mała obsługa kodu
+### <a name="ui-based-low-code-experience"></a>Interfejs użytkownika, środowisko o niskim kodzie
 
 W przypadku szkoleń bez kodu wypróbuj następujące rozwiązania:
 
-+ Interfejs wizualny do eksperymentowania i wdrażania przy użyciu przeciągania i upuszczania
++ Tworzenie [zautomatyzowanych eksperymentów ml](tutorial-first-experiment-automated-ml.md) w łatwym w użyciu interfejsie.
++ [Eksperymentowanie przy użyciu przeciągania i upuszczania w interfejsie wizualizacji](ui-tutorial-automobile-price-train-score.md).
+  ![Interfejs wizualny usługi Azure Machine Learning](media/overview-what-is-azure-ml/visual-interface.png)
 
-    ![Interfejs wizualny usługi Azure Machine Learning](media/overview-what-is-azure-ml/visual-interface.png)
 
-+ Opcja Azure Portal dla zautomatyzowanych eksperymentów ML
 
 ### <a name="operationalization-mlops"></a>Operacjonalizacji (MLOps)
 
@@ -70,7 +70,7 @@ Te modele mogą być używane i zwracać przewidywania w [czasie rzeczywistym](h
 Dzięki zaawansowanym [potokom uczenia maszynowego](concept-ml-pipelines.md)można współpracować nad każdym krokiem w procesie przygotowywania danych, uczenia modelu i oceny, dzięki wdrożeniu. Potoki umożliwiają:
 
 * Automatyzuj kompleksowy proces uczenia maszynowego w chmurze
-* ponownie używaj składników i ponownie uruchamiaj kroki, gdy zachodzi potrzeba
+* Ponowne używanie składników i ponowne uruchamianie kroków w razie potrzeby
 * Użyj innych zasobów obliczeniowych w każdym kroku
 * Uruchamianie zadań oceniania partii
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 13f80b42ef6dfd0c70067a3ecf5f3e172527a63f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 6bb3be3805243bba4d11037b180e7f8418a84014
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846533"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947215"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>Kontenery profili FSLogix i pliki platformy Azure
 
@@ -47,10 +47,10 @@ W poniższej tabeli przedstawiono zalety i ograniczenia dotyczące wcześniejszy
 
 | Technologia | Ustawienia nowoczesne | Ustawienia Win32 | Ustawienia systemu operacyjnego | Dane użytkowników | Obsługiwane w jednostce SKU serwera | Magazyn zaplecza na platformie Azure | Magazyn zaplecza lokalnego | Obsługa wersji | Kolejny czas logowania |Uwagi|
 | ---------- | :-------------: | :------------: | :---------: | --------: | :---------------------: | :-----------------------: | :--------------------------: | :-------------: | :---------------------: |-----|
-| **Dyski profilu użytkownika (UPD)** | Tak | Yes | Yes | Yes | Yes | Nie | Yes | Win 7 + | Yes | |
-| **Profil użytkownika mobilnego (RUP), tryb konserwacji** | Nie | Yes | Yes | Yes | Yes| Nie | Yes | Win 7 + | Nie | |
-| **Enterprise State Roaming (ESR)** | Yes | Nie | Yes | Nie | Zobacz uwagi | Tak | Nie | Win 10 | Nie | Funkcje w jednostce SKU serwera, ale bez interfejsu użytkownika pomocniczego |
-| **Wirtualizacja środowiska użytkownika (UE-V)** | Tak | Yes | Yes | Nie | Yes | Nie | Yes | Win 7 + | Nie |  |
+| **Dyski profilu użytkownika (UPD)** | Tak | Yes | Yes | Yes | Yes | Nie | Tak | Win 7 + | Tak | |
+| **Profil użytkownika mobilnego (RUP), tryb konserwacji** | Nie | Yes | Yes | Yes | Yes| Nie | Tak | Win 7 + | Nie | |
+| **Enterprise State Roaming (ESR)** | Tak | Nie | Yes | Nie | Zobacz uwagi | Tak | Nie | Win 10 | Nie | Funkcje w jednostce SKU serwera, ale bez interfejsu użytkownika pomocniczego |
+| **Wirtualizacja środowiska użytkownika (UE-V)** | Tak | Yes | Yes | Nie | Yes | Nie | Tak | Win 7 + | Nie |  |
 | **Pliki w chmurze w usłudze OneDrive** | Nie | Nie | Nie | Tak | Zobacz uwagi | Zobacz uwagi  | Zobacz uwagi | Win 10 RS3 | Nie | Nie przetestowano w jednostce SKU serwera. Magazyn zaplecza na platformie Azure zależy od klienta synchronizacji. Magazyn zaplecza Premium wymaga klienta synchronizacji. |
 
 #### <a name="performance"></a>Wydajność
@@ -77,7 +77,7 @@ Od momentu nabycia firma Microsoft rozpoczęła wymianę istniejących rozwiąza
 
 ## <a name="azure-files-integration-with-azure-active-directory-domain-service"></a>Azure Files integrację z usługą domenową Azure Active Directory
 
-Wydajność i funkcje kontenerów profilów FSLogix korzystają z chmury. 7 sierpnia 2019 pliki Microsoft Azure ogłoszone ogólnie dostęp do [Azure Files uwierzytelniania przy użyciu usługi domeny Azure Active Directory (AD DS)](/articles/storage/files/storage-files-active-directory-overview.md). Odnosząc się do kosztów i obciążeń administracyjnych, Azure Files z uwierzytelnianiem za pomocą usługi Azure AD DS to rozwiązanie Premium dla profilów użytkowników w usłudze pulpitów wirtualnych systemu Windows.
+Wydajność i funkcje kontenerów profilów FSLogix korzystają z chmury. 7 sierpnia 2019 pliki Microsoft Azure ogłoszone ogólnie dostęp do [Azure Files uwierzytelniania przy użyciu usługi domeny Azure Active Directory (AD DS)](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-active-directory-overview). Odnosząc się do kosztów i obciążeń administracyjnych, Azure Files z uwierzytelnianiem za pomocą usługi Azure AD DS to rozwiązanie Premium dla profilów użytkowników w usłudze pulpitów wirtualnych systemu Windows.
 
 ## <a name="best-practices-for-windows-virtual-desktop"></a>Najlepsze rozwiązania dotyczące pulpitu wirtualnego systemu Windows
 

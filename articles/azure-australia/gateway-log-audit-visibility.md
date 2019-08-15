@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: grgale
-ms.openlocfilehash: 153b9d503dfece404455fbb7e8cb51c51686ec57
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: b7a9f28d06b5e921b5f1b8defa151641bb039940
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68824298"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990214"
 ---
 # <a name="gateway-logging-auditing-and-visibility-in-azure-australia"></a>Rejestrowanie, Inspekcja i widoczność bramy w Australii platformy Azure
 
@@ -113,7 +113,7 @@ Podczas wdrażania składników wymienionych w tym artykule są stosowane nastę
 |---|---|
 |Dokumenty zgodności z przepisami i zasadami|[https://aka.ms/au-irap](https://aka.ms/au-irap)|
 |Produkty platformy Azure — regiony australijskie i inne niż regionalne|[https://azure.microsoft.com/global-infrastructure/services/?regions=non-regional Australia-środkowe, Australia-środkowe-2, Australia Wschodnia, Australia Południowo-Wschodnia](https://azure.microsoft.com/global-infrastructure/services/?regions=non-regional,australia-central,australia-central-2,australia-east,australia-southeast)|
-|Dokument Security and Audit Microsoft Azure zarządzanie dziennikami|[https://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf](http://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf)|
+|Dokument Security and Audit Microsoft Azure zarządzanie dziennikami|[https://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf](https://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf)|
 |Konfiguracja Microsoft Monitoring Agent|[https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)|
 |
 
@@ -409,6 +409,6 @@ Azure Automation umożliwia jednostkom Wspólnoty wyzwalanie akcji w odpowiedzi 
 |Przewodnik: Użyj alertu, aby wyzwolić Azure Automation element Runbook|[https://docs.microsoft.com/azure/automation/automation-create-alert-triggered-runbook](https://docs.microsoft.com/azure/automation/automation-create-alert-triggered-runbook)|
 |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Zapoznaj się z artykułem dotyczącym [bezpiecznej administracji zdalnej bramy](gateway-secure-remote-administration.md) , aby uzyskać szczegółowe informacje na temat bezpiecznego zarządzania środowiskiem bramy na platformie Azure.

@@ -1,6 +1,6 @@
 ---
-title: Azure maszyny wirtualne wysokiej dostępności dla oprogramowania SAP NetWeaver w systemie Red Hat Enterprise Linux przy użyciu usługi Azure Files NetApp | Dokumentacja firmy Microsoft
-description: Azure maszyny wirtualne wysokiej dostępności dla oprogramowania SAP NetWeaver w systemie Red Hat Enterprise Linux
+title: Platforma Azure Virtual Machines wysoka dostępność dla oprogramowania SAP NetWeaver na Red Hat Enterprise Linux z Azure NetApp Files | Microsoft Docs
+description: Platforma Azure Virtual Machines wysoka dostępność dla oprogramowania SAP NetWeaver na Red Hat Enterprise Linux
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/14/2019
 ms.author: radeltch
-ms.openlocfilehash: 8679cfe54c8fb2c88b312f67ea9b2d7115cc479e
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 5aaeda39869985da1b499916ff6f977c91f6a756
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67503580"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014127"
 ---
-# <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>Azure maszyny wirtualne wysokiej dostępności dla oprogramowania SAP NetWeaver w systemie Red Hat Enterprise Linux przy użyciu usługi Azure Files NetApp dla aplikacji SAP
+# <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>Platforma Azure Virtual Machines wysoka dostępność dla oprogramowania SAP NetWeaver na Red Hat Enterprise Linux z Azure NetApp Files dla aplikacji SAP
 
 [dbms-guide]:dbms-guide.md
 [deployment-guide]:deployment-guide.md
@@ -50,183 +50,183 @@ ms.locfileid: "67503580"
 [sap-hana-ha]:sap-hana-high-availability-rhel.md
 [glusterfs-ha]:high-availability-guide-rhel-glusterfs.md
 
-W tym artykule opisano sposób wdrażania maszyn wirtualnych, konfigurowanie maszyn wirtualnych, zainstalować w ramach klastra i instalacji o wysokiej dostępności systemu SAP NetWeaver 7.50, za pomocą [usługi Azure Files NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/).
-W przykładowych konfiguracji polecenia instalacji itp. Wystąpienie ASCS jest liczbą 00, wystąpienie Wywołujących jest numer 01, wystąpienie aplikacji głównej (PAS) 02 i wystąpienia aplikacji (AAS) to 03. QAS identyfikator systemu SAP jest używany. 
+W tym artykule opisano sposób wdrażania maszyn wirtualnych, konfigurowania maszyn wirtualnych, instalowania platformy klastra i instalowania systemu SAP NetWeaver 7,50 o wysokiej dostępności przy użyciu [Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/).
+W przykładowych konfiguracjach polecenia instalacji itp. Wystąpienie ASCS ma numer 00, wystąpienie wykres WYWOŁUJĄCYCH ma numer 01, podstawowe wystąpienie aplikacji (PAS) to 02, a wystąpienie aplikacji (AAS) to 03. Identyfikator systemowy SAP QAS jest używany. 
 
-Warstwa bazy danych nie jest omówiona szczegółowo w tym artykule.  
+Warstwa bazy danych nie jest szczegółowo omówiona w tym artykule.  
 
-Najpierw przeczytaj następujące uwagi SAP i dokumenty:
+Przeczytaj najpierw następujące informacje i dokumenty SAP:
 
-* [Dokumentacja usługi Azure plików NetApp][anf-azure-doc] 
-* Uwaga SAP [1928533], która zawiera:
-  * Listę rozmiarów maszyn wirtualnych platformy Azure, które są obsługiwane w przypadku wdrażania oprogramowania SAP
-  * Informacje o pojemności ważne w przypadku rozmiarów maszyn wirtualnych platformy Azure
-  * Obsługiwane oprogramowanie SAP i systemu operacyjnego (OS) i kombinacji bazy danych
-  * Wymagana wersja jądra SAP dla Windows i Linux w systemie Microsoft Azure
+* [Dokumentacja Azure NetApp Files][anf-azure-doc] 
+* Nota SAP [1928533], która ma:
+  * Lista rozmiarów maszyn wirtualnych platformy Azure, które są obsługiwane w przypadku wdrażania oprogramowania SAP
+  * Ważne informacje o pojemności dla rozmiarów maszyn wirtualnych platformy Azure
+  * Obsługiwane oprogramowanie SAP oraz kombinacje systemu operacyjnego i bazy danych
+  * Wymagana wersja jądra SAP dla systemu Windows i Linux w systemie Microsoft Azure
 
-* Uwaga SAP [2015553] wymieniono wymagania wstępne dotyczące wdrażania oprogramowania SAP obsługiwane przez oprogramowanie SAP na platformie Azure.
-* Uwaga SAP [2002167] zawiera zalecane ustawienia systemu operacyjnego Red Hat Enterprise Linux
-* SAP Note [2009879] has SAP HANA Guidelines for Red Hat Enterprise Linux
-* Uwaga SAP [2178632] zawiera szczegółowe informacje o metrykach wszystkie funkcje monitorowania zgłoszone dla rozwiązania SAP na platformie Azure.
-* Uwaga SAP [2191498] ma wymaganą wersję agenta hosta SAP dla systemu Linux na platformie Azure.
-* Uwaga SAP [2243692] zawiera informacje o licencjonowaniu SAP, w systemie Linux na platformie Azure.
-* Uwaga SAP [1999351] zawiera dodatkowe informacje dotyczące rozwiązywania problemów rozszerzenia platformy Azure Enhanced Monitoring dla rozwiązania SAP.
-* [WIKI społeczności SAP](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) ma wszystkie wymagane informacje o SAP dla systemu Linux.
-* [Azure maszyny wirtualne, planowania i implementacji dla rozwiązania SAP w systemie Linux][planning-guide]
-* [Wdrażania maszyn wirtualnych platformy Azure dla rozwiązania SAP w systemie Linux][deployment-guide]
-* [Wdrażania systemu DBMS na maszynach wirtualnych platformy Azure dla rozwiązania SAP w systemie Linux][dbms-guide]
-* [Oprogramowanie SAP Netweaver w klastrze program pacemaker](https://access.redhat.com/articles/3150081)
-* Dokumentacja systemu RHEL ogólne
-  * [Omówienie dodatek wysokiej dostępności](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
-  * [Administracja dodatek wysokiej dostępności](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-  * [Dokumentacja dodatek wysokiej dostępności](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
-  * [Konfigurowanie ASCS/Wywołujących środowiska SAP NetWeaver przy użyciu autonomicznego zasobów w RHEL w wersji 7.5](https://access.redhat.com/articles/3569681)
-  * [Skonfiguruj S/4HANA, SAP ASCS/Wywołujących przy użyciu serwera autonomicznego umieścić 2 (ENSA2) w program Pacemaker w systemie RHEL ](https://access.redhat.com/articles/3974941)
-* Usługa Azure RHEL dokumentacji:
-  * [Zasady pomocy technicznej w przypadku klastrów o wysokiej dostępności systemu RHEL — maszyny wirtualne platformy Microsoft Azure jako elementów członkowskich klastra](https://access.redhat.com/articles/3131341)
-  * [Instalowanie i konfigurowanie Red Hat Enterprise Linux 7.4 (lub nowszy) o wysokiej dostępności klastra w systemie Microsoft Azure](https://access.redhat.com/articles/3252491)
-* [Aplikacje środowiska SAP NetApp na Microsoft Azure przy użyciu usługi Azure Files NetApp][anf-sap-applications-azure]
+* Uwaga dotycząca protokołu SAP [2015553] zawiera listę wymagań wstępnych dotyczących wdrożeń oprogramowania SAP obsługiwanych przez oprogramowanie SAP na platformie Azure.
+* W przypadku programu SAP Uwaga [2002167] zalecane ustawienia systemu operacyjnego dla Red Hat Enterprise Linux
+* Uwaga dotycząca oprogramowania SAP [2009879] SAP HANA wytycznych dotyczących Red Hat Enterprise Linux
+* Uwaga dotycząca oprogramowania SAP [2178632] zawiera szczegółowe informacje o wszystkich metrykach monitorowania raportowanych dla oprogramowania SAP na platformie Azure.
+* Uwaga dotycząca programu SAP [2191498] ma wymaganą wersję agenta hosta SAP dla systemu Linux na platformie Azure.
+* Uwaga dotycząca oprogramowania SAP [2243692] zawiera informacje na temat licencjonowania SAP w systemie Linux na platformie Azure.
+* Uwaga dotycząca programu SAP [1999351] zawiera dodatkowe informacje dotyczące rozwiązywania problemów z rozszerzoną funkcją monitorowania platformy Azure dla oprogramowania SAP.
+* [Społeczność systemu SAP](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) na stronie wiki ma wszystkie wymagane uwagi SAP dla systemu Linux.
+* [Planowanie i wdrażanie usługi Azure Virtual Machines dla oprogramowania SAP w systemie Linux][planning-guide]
+* [Wdrożenie Virtual Machines platformy Azure dla oprogramowania SAP w systemie Linux][deployment-guide]
+* [Wdrożenie systemu Azure Virtual Machines DBMS dla oprogramowania SAP w systemie Linux][dbms-guide]
+* [NetWeaver SAP w klastrze Pacemaker](https://access.redhat.com/articles/3150081)
+* Ogólna dokumentacja RHEL
+  * [Omówienie dodatku wysokiej dostępności](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
+  * [Administracja dodatkiem wysokiej dostępności](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
+  * [Dodatkowe informacje o wysokiej dostępności](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+  * [Konfigurowanie ASCS/wykres WYWOŁUJĄCYCH dla SAP NetWeaver z zasobami autonomicznymi w RHEL 7,5](https://access.redhat.com/articles/3569681)
+  * [Skonfiguruj rozwiązanie SAP S/4HANA ASCS/wykres WYWOŁUJĄCYCH za pomocą autonomicznej kolejki serwer 2 (ENSA2) w Pacemaker na RHEL](https://access.redhat.com/articles/3974941)
+* Dokumentacja usługi RHEL specyficznej dla platformy Azure:
+  * [Zasady obsługi klastrów RHEL o wysokiej dostępności — Microsoft Azure Virtual Machines jako elementy członkowskie klastra](https://access.redhat.com/articles/3131341)
+  * [Instalowanie i Konfigurowanie Red Hat Enterprise Linux 7,4 (i nowszych) klastra o wysokiej dostępności na Microsoft Azure](https://access.redhat.com/articles/3252491)
+* [NetApp aplikacje SAP na Microsoft Azure przy użyciu Azure NetApp Files][anf-sap-applications-azure]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
-Wysoka availability(HA) usługi centralne SAP Netweaver wymaga magazynu udostępnionego.
-Aby to osiągnąć w systemie Red Hat Linux do tej pory było konieczne tworzenie klastrze oddzielonym GlusterFS o wysokiej dostępności. 
+Wysoka dostępność (HA) dla usług SAP NetWeaver Central Services wymaga magazynu udostępnionego.
+Aby osiągnąć ten dostęp w systemie Red Hat Linux, konieczne było skompilowanie oddzielnego klastra GlusterFS o wysokiej dostępności. 
 
-Teraz jest możliwe uzyskanie SAP Netweaver wysokiej dostępności przy użyciu magazynu udostępnionego, wdrożone w usłudze Azure Files NetApp. Za pomocą usługi Azure Files NetApp dla magazynu udostępnionego eliminuje potrzebę stosowania dodatkowych [klastra GlusterFS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs). Program pacemaker nadal jest wymagany dla HA services(ASCS/SCS) centralne SAP Netweaver.
+Teraz można osiągnąć rozwiązanie SAP NetWeaver HA przy użyciu magazynu udostępnionego, wdrożonego na Azure NetApp Files. Używanie Azure NetApp Files dla magazynu udostępnionego eliminuje konieczność dodatkowego [klastra GlusterFS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs). Pacemaker jest nadal wymagana w przypadku wysokiej dostępności usług SAP NetWeaver Central Services (ASCS/SCS).
 
-![Oprogramowanie SAP NetWeaver wysokiej dostępności Przegląd](./media/high-availability-guide-rhel/high-availability-guide-rhel-anf.png)
+![Omówienie wysokiej dostępności SAP NetWeaver](./media/high-availability-guide-rhel/high-availability-guide-rhel-anf.png)
 
-SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver Wywołujących i bazy danych SAP HANA, użyj nazwy hosta wirtualnego i wirtualnych adresów IP. Na platformie Azure modułu równoważenia obciążenia jest wymagany do użycia wirtualnego adresu IP. Na poniższej liście przedstawiono konfigurację modułu równoważenia obciążenia z przodu osobne adresy IP () SCS i Wywołujących.
+SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver wykres WYWOŁUJĄCYCH, a SAP HANA Database używają wirtualnej nazwy hosta i wirtualnych adresów IP. Na platformie Azure moduł równoważenia obciążenia jest wymagany do używania wirtualnego adresu IP. Na poniższej liście przedstawiono konfigurację modułu równoważenia obciążenia z oddzielnymi adresami IP (A) SCS i wykres WYWOŁUJĄCYCH.
 
 > [!IMPORTANT]
-> — Wiele identyfikatorów SID klastrowania SAP ASCS/Wywołujących z systemu Red Hat Linux jako system operacyjny gościa na maszynach wirtualnych Azure **nieobsługiwane**. — Wiele identyfikatorów SID klastrowania w tym artykule opisano instalację wielu wystąpień SAP ASCS/Wywołujących o różnych identyfikatorach SID w jednym klastrze program Pacemaker.
+> Klastrowanie z obsługą wiele identyfikatorów SID oprogramowania SAP ASCS/wykres WYWOŁUJĄCYCH z systemem Red Hat Linux jako systemu operacyjnego gościa na maszynach wirtualnych platformy Azure **nie jest obsługiwane**. Klastrowanie z wieloma SIDmi opisuje instalację wielu wystąpień SAP ASCS/wykres WYWOŁUJĄCYCH z różnymi identyfikatorami SID w jednym klastrze Pacemaker.
 
 ### <a name="ascs"></a>(A)SCS
 
 * Konfiguracja frontonu
   * Adres IP 192.168.14.9
 * Konfiguracja zaplecza
-  * Podłączone do podstawowych interfejsów sieciowych wszystkich maszyn wirtualnych, które powinny być częścią (A) SCS/Wywołujących klastra
+  * Połączono z podstawowymi interfejsami sieciowymi wszystkich maszyn wirtualnych, które powinny być częścią klastra programu (A) SCS/wykres WYWOŁUJĄCYCH
 * Port sondy
   * Port 620<strong>&lt;nr&gt;</strong>
 * Reguły równoważenia obciążenia
-  * 32<strong>&lt;nr&gt;</strong>  TCP
-  * 36<strong>&lt;nr&gt;</strong>  TCP
+  * <strong>32&lt;Nr&gt;</strong>  TCP
+  * <strong>36&lt;Nr&gt;</strong>  TCP
   * 39<strong>&lt;nr&gt;</strong> TCP
-  * 81<strong>&lt;nr&gt;</strong>  TCP
-  * 5<strong>&lt;nr&gt;</strong>13 TCP
-  * 5<strong>&lt;nr&gt;</strong>14 TCP
-  * 5<strong>&lt;nr&gt;</strong>16 TCP
+  * <strong>81&lt;Nr&gt;</strong>  TCP
+  * <strong>5&lt;Nr&gt;</strong>13 TCP
+  * <strong>5&lt;Nr&gt;</strong>14 TCP
+  * <strong>5&lt;Nr&gt;</strong>16 TCP
 
 ### <a name="ers"></a>ERS
 
 * Konfiguracja frontonu
   * Adres IP 192.168.14.10
 * Konfiguracja zaplecza
-  * Podłączone do podstawowych interfejsów sieciowych wszystkich maszyn wirtualnych, które powinny być częścią (A) SCS/Wywołujących klastra
+  * Połączono z podstawowymi interfejsami sieciowymi wszystkich maszyn wirtualnych, które powinny być częścią klastra programu (A) SCS/wykres WYWOŁUJĄCYCH
 * Port sondy
   * Port 621<strong>&lt;nr&gt;</strong>
 * Reguły równoważenia obciążenia
-  * 32<strong>&lt;nr&gt;</strong>  TCP
-  * 33<strong>&lt;nr&gt;</strong>  TCP
-  * 5<strong>&lt;nr&gt;</strong>13 TCP
-  * 5<strong>&lt;nr&gt;</strong>14 TCP
-  * 5<strong>&lt;nr&gt;</strong>16 TCP
+  * <strong>32&lt;Nr&gt;</strong>  TCP
+  * <strong>33&lt;Nr&gt;</strong>  TCP
+  * <strong>5&lt;Nr&gt;</strong>13 TCP
+  * <strong>5&lt;Nr&gt;</strong>14 TCP
+  * <strong>5&lt;Nr&gt;</strong>16 TCP
 
-## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>Konfigurowanie infrastruktury usługi Azure Files NetApp 
+## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>Konfigurowanie infrastruktury Azure NetApp Files 
 
-Oprogramowanie SAP NetWeaver wymaga magazynu udostępnionego dla katalogu transportu i profilu.  Przed kontynuowaniem instalacji dla infrastruktury plików NetApp platformy Azure, zapoznaj się z [dokumentacji usługi Azure Files NetApp][anf-azure-doc]. Sprawdź, jeśli wybranego regionu świadczenia usługi Azure oferuje usługi Azure Files NetApp. Kliknięcie następującego łącza przedstawia dostępność usługi Azure Files NetApp uporządkowane według regionów platformy Azure: [Azure NetApp pliki dostępności według regionów platformy Azure][anf-avail-matrix].
+Rozwiązanie SAP NetWeaver wymaga udostępnionego magazynu dla katalogu transportowego i profilu.  Przed przystąpieniem do konfigurowania infrastruktury usługi Azure NetApp Files zapoznaj się z [dokumentacją Azure NetApp Files][anf-azure-doc]. Sprawdź, czy wybrany region platformy Azure oferuje Azure NetApp Files. Poniższy link przedstawia dostępność Azure NetApp Files według regionu platformy Azure: [Azure NetApp Files dostępność według regionów świadczenia usługi Azure][anf-avail-matrix].
 
-Usługa Azure files NetApp jest dostępna w kilku [regionów świadczenia usługi Azure](https://azure.microsoft.com/global-infrastructure/services/?products=netapp). Przed wdrożeniem usługi Azure Files NetApp, żądanie dołączania do usługi Azure Files NetApp, zgodnie z [zarejestrować instrukcje plików Azure NetApp][anf-register]. 
+Pliki usługi Azure NetApp są dostępne w kilku [regionach świadczenia usługi Azure](https://azure.microsoft.com/global-infrastructure/services/?products=netapp). Przed wdrożeniem Azure NetApp Files należy zażądać dołączenia do Azure NetApp Files, postępując zgodnie z instrukcjami dotyczącymi [usługi Azure NetApp Files][anf-register]. 
 
-### <a name="deploy-azure-netapp-files-resources"></a>Wdrażanie zasobów usługi Azure Files NetApp  
+### <a name="deploy-azure-netapp-files-resources"></a>Wdrażanie zasobów Azure NetApp Files  
 
-W krokach założono, że został już wdrożony [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview). Zasoby usługi Azure Files NetApp i maszyn wirtualnych, w której zostanie zainstalowany zasoby usługi Azure Files NetApp musi zostać wdrożony w tej samej sieci wirtualnej platformy Azure lub w równorzędnej sieci wirtualnych platformy Azure.  
+W tych krokach przyjęto założenie, że wdrożono już [Virtual Network platformy Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview). Zasoby Azure NetApp Files i maszyny wirtualne, w których zostaną zainstalowane zasoby Azure NetApp Files, muszą być wdrożone w tej samej Virtual Network platformy Azure lub w równorzędnych sieciach wirtualnych platformy Azure.  
 
-1. Jeśli nie zostało wykonane, żądanie [dołączania do usługi Azure Files NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register).  
-2. Tworzenie konta NetApp w wybranym regionie platformy Azure, zgodnie z [instrukcje dotyczące tworzenia konta NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account).  
-3. Konfigurowanie usługi Azure Files NetApp pojemność puli zgodnie z [instrukcje dotyczące sposobu konfigurowania usługi Azure Files NetApp pojemność puli](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool).  
-Architektura środowiska SAP Netweaver, przedstawione w tym artykule używa pojedynczej puli pojemność usługi Azure Files NetApp, jednostki SKU Premium. Jednostki SKU usługi Azure NetApp pliki Premium firma Microsoft zaleca w przypadku obciążeń aplikacji SAP Netweaver na platformie Azure.  
-4. Delegowanie podsieci do plików NetApp platformy Azure, zgodnie z opisem w [instrukcje delegowania podsieci do usługi Azure Files NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet).  
+1. Jeśli jeszcze tego nie zrobiono, zażądaj dołączenia [do Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register).  
+2. Utwórz konto NetApp w wybranym regionie świadczenia usługi Azure, postępując zgodnie z [instrukcjami dotyczącymi tworzenia konta NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account).  
+3. Skonfiguruj pulę pojemności Azure NetApp Files, postępując zgodnie z [instrukcjami dotyczącymi konfigurowania Azure NetApp Files puli pojemności](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool).  
+Architektura SAP NetWeaver w tym artykule używa puli pojemności Azure NetApp Files w wersji Premium. Zalecamy Azure NetApp Files jednostki SKU Premium dla obciążenia aplikacji SAP NetWeaver na platformie Azure.  
+4. Delegowanie podsieci do plików NetApp platformy Azure zgodnie z opisem w [instrukcji delegowania podsieci do Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet).  
 
-5. Wdrażanie usługi Azure Files NetApp woluminów, zgodnie z [instrukcjami, aby utworzyć wolumin dla usługi Azure Files NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes). Wdrażanie woluminy w wyznaczonym usługi Azure Files NetApp [podsieci](https://docs.microsoft.com/rest/api/virtualnetwork/subnets). Należy pamiętać o tym, które zasoby usługi Azure Files NetApp i maszyn wirtualnych platformy Azure musi być w tej samej sieci wirtualnej platformy Azure lub w równorzędnej sieci wirtualnych platformy Azure. W tym przykładzie używamy dwa woluminy usługi Azure Files NetApp: oprogramowanie sap<b>QAS</b> i transSAP. Ścieżki do plików, które są instalowane do odpowiednich punktów instalacji są /usrsap<b>qas</b>/sapmnt<b>QAS</b>, /usrsap<b>qas</b>/usrsap<b>QAS</b>sys itp.  
+5. Wdróż woluminy Azure NetApp Files, postępując zgodnie z [instrukcjami, aby utworzyć wolumin dla Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes). Wdróż woluminy w wyznaczeniej [podsieci](https://docs.microsoft.com/rest/api/virtualnetwork/subnets)Azure NetApp Files. Należy pamiętać, że zasoby Azure NetApp Files i maszyny wirtualne platformy Azure muszą znajdować się w tym samym Virtual Network platformy Azure lub w równorzędnych sieciach wirtualnych platformy Azure. W tym przykładzie używamy dwóch Azure NetApp Files woluminów: SAP<b>QAS</b> i transSAP. Ścieżki plików, które są zainstalowane do odpowiednich punktów instalacji, to/usrsap<b>QAS</b>/sapmnt<b>QAS</b>,/usrsap<b>QAS</b>/usrsap<b>QAS</b>sys itd.  
 
-   1. wolumin sap<b>QAS</b> (nfs://192.168.24.5/usrsap<b>qas</b>/sapmnt<b>QAS</b>)
-   2. wolumin sap<b>QAS</b> (nfs://192.168.24.5/usrsap<b>qas</b>/usrsap<b>QAS</b>ascs)
-   3. wolumin sap<b>QAS</b> (nfs://192.168.24.5/usrsap<b>qas</b>/usrsap<b>QAS</b>sys)
-   4. wolumin sap<b>QAS</b> (nfs://192.168.24.5/usrsap<b>qas</b>/usrsap<b>QAS</b>wywołujących)
-   5. wolumin transSAP (nfs://192.168.24.4/transSAP)
-   6. wolumin sap<b>QAS</b> (nfs://192.168.24.5/usrsap<b>qas</b>/usrsap<b>QAS</b>pas)
-   7. wolumin sap<b>QAS</b> (nfs://192.168.24.5/usrsap<b>qas</b>/usrsap<b>QAS</b>aas)
+   1. Volume SAP<b>QAS</b> (NFS://192.168.24.5/usrsap<b>QAS</b>/sapmnt<b>QAS</b>)
+   2. Volume SAP<b>QAS</b> (NFS://192.168.24.5/usrsap<b>QAS</b>/usrsap<b>QAS</b>ASCS)
+   3. Volume SAP<b>QAS</b> (NFS://192.168.24.5/usrsap<b>QAS</b>/usrsap<b>QAS</b>sys)
+   4. Volume SAP<b>QAS</b> (NFS://192.168.24.5/usrsap<b>QAS</b>/usrsap<b>QAS</b>wykres wywołujących)
+   5. Volume transSAP (nfs://192.168.24.4/transSAP)
+   6. Volume SAP<b>QAS</b> (NFS://192.168.24.5/usrsap<b>QAS</b>/usrsap<b>QAS</b>pas)
+   7. Volume SAP<b>QAS</b> (NFS://192.168.24.5/usrsap<b>QAS</b>/usrsap<b>QAS</b>AAS)
   
-W tym przykładzie użyliśmy usługi Azure Files NetApp dla wszystkich systemów plików oprogramowania SAP Netweaver aby zademonstrować, jak używać usługi Azure Files NetApp. Można także wdrożyć systemów plików SAP, które nie muszą być zainstalowane za pomocą systemu plików NFS jako [usługa Azure disk storage](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) . W tym przykładzie <b>-e</b> muszą znajdować się w usłudze Azure Files NetApp i <b>f k</b> (czyli/usr/sap/<b>QAS</b>/D<b>02</b>, /usr/sap/<b>QAS </b>/D<b>03</b>) może być wdrożony jako magazynu danych na dysku platformy Azure. 
+W tym przykładzie użyto Azure NetApp Files dla wszystkich systemów plików SAP NetWeaver, aby zademonstrować, jak Azure NetApp Files może być używany. Systemy plików SAP, które nie muszą być instalowane za pośrednictwem systemu plików NFS, można również wdrożyć jako [usługę Azure Disk Storage](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) . W tym przykładzie <b>a-e</b> musi znajdować się w Azure NetApp Files i <b>f-g</b> (czyli/usr/SAP/<b>QAS</b>/d<b>02</b>,/usr/SAP/<b>QAS</b>/d<b>03</b>) można wdrożyć jako usługę Azure Disk Storage. 
 
-### <a name="important-considerations"></a>Istotne zagadnienia
+### <a name="important-considerations"></a>Ważne zagadnienia
 
-Rozważając usługi Azure Files NetApp środowiska SAP NetWeaver w architekturze SUSE wysokiej dostępności, należy pamiętać o następujących ważnych kwestiach:
+Rozważając Azure NetApp Files dla architektury SAP NetWeaver w systemie SUSE wysokiej dostępności, weź pod uwagę następujące ważne zagadnienia:
 
-- Pula minimalnej pojemności to 4 TiB. Rozmiar pojemności w puli musi być wielokrotności 4 TiB.
-- Minimalna wielkość jest 100 GiB
-- Usługa Azure Files NetApp i wszystkich maszyn wirtualnych, w której zostanie zainstalowany woluminy usługi Azure Files NetApp, muszą być w tej samej sieci wirtualnej platformy Azure lub w [nawiązać komunikacji równorzędnej między sieciami wirtualnymi](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) w tym samym regionie. Dostępu plików NetApp na platformie Azure za pośrednictwem wirtualnej sieci równorzędnej w tym samym regionie jest teraz obsługiwane. Dostępu NetApp na platformie Azure za pośrednictwem globalnej komunikacji równorzędnej nie jest jeszcze obsługiwana.
-- Wybranej sieci wirtualnej musi mieć podsieć delegować domenę do usługi Azure Files NetApp.
-- Usługa Azure Files NetApp aktualnie obsługuje tylko NFSv3 
-- Usługa Azure Files NetApp oferuje [Eksportuj zasady](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): dozwolone klientów, można kontrolować typ dostępu (Odczyt i zapis, tylko do odczytu itp.). 
-- Funkcja Azure plików NetApp nie jest strefa pamiętać jeszcze. Obecnie funkcji usługi Azure Files NetApp nie jest wdrożona w wszystkich stref dostępności w regionie platformy Azure. Należy pamiętać o potencjalny wpływ opóźnienia w niektórych regionach platformy Azure. 
+- Minimalna Pula pojemności to 4 TiB. Rozmiar puli pojemności musi być wielokrotnością 4 TiB.
+- Minimalny wolumin to 100 GiB
+- Azure NetApp Files i wszystkie maszyny wirtualne, w których zostaną zainstalowane woluminy Azure NetApp Files, muszą znajdować się w tej samej Virtual Network platformy Azure lub w [równorzędnych sieciach wirtualnych](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) w tym samym regionie. Azure NetApp Files dostęp za pośrednictwem komunikacji równorzędnej sieci wirtualnej w tym samym regionie jest obecnie obsługiwany. Dostęp do usługi Azure NetApp za pośrednictwem globalnej komunikacji równorzędnej nie jest jeszcze obsługiwany.
+- Wybrana Sieć wirtualna musi mieć podsieć delegowaną do Azure NetApp Files.
+- Azure NetApp Files obecnie obsługuje tylko NFSv3 
+- Azure NetApp Files oferuje [zasady eksportowania](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): można kontrolować dozwolonych klientów, typ dostępu (odczyt & zapis, tylko do odczytu itp.). 
+- Funkcja Azure NetApp Files nie jest jeszcze dostępna dla strefy. Obecnie Azure NetApp Files funkcja nie jest wdrażana we wszystkich strefach dostępności w regionie świadczenia usługi Azure. Weź pod uwagę potencjalne konsekwencje opóźnienia w niektórych regionach świadczenia usługi Azure. 
 
-## <a name="setting-up-ascs"></a>Konfigurowanie () SCS
+## <a name="setting-up-ascs"></a>Konfigurowanie (A) SCS
 
-W tym przykładzie zasoby zostały wdrożone ręcznie za pośrednictwem [witryny Azure portal](https://portal.azure.com/#home).
+W tym przykładzie zasoby zostały wdrożone ręcznie za pośrednictwem [Azure Portal](https://portal.azure.com/#home).
 
-### <a name="deploy-linux-manually-via-azure-portal"></a>Ręczne wdrażanie systemu Linux za pomocą witryny Azure portal
+### <a name="deploy-linux-manually-via-azure-portal"></a>Ręczne wdrażanie systemu Linux za pośrednictwem Azure Portal
 
-Najpierw musisz utworzyć woluminy plików NetApp platformy Azure. Wdrażanie maszyn wirtualnych. Następnie utwórz moduł równoważenia obciążenia i używanie maszyn wirtualnych w puli zaplecza.
+Najpierw należy utworzyć woluminy Azure NetApp Files. Wdróż maszyny wirtualne. Następnie należy utworzyć moduł równoważenia obciążenia i użyć maszyn wirtualnych w pulach zaplecza.
 
-1. Utwórz moduł równoważenia obciążenia (wewnętrzny)  
-   1. Tworzenie adresów IP frontonu
-      1. Adres IP 192.168.14.9 ASCS
-         1. Otwórz moduł równoważenia obciążenia, wybierz puli adresów IP frontonu, a następnie kliknij przycisk Dodaj
-         1. Wprowadź nazwę nowej puli adresów IP frontonu (na przykład **frontonu. QAS. ASCS**)
-         1. Ustawić przypisania jako statyczny i podaj adres IP (na przykład **192.168.14.9**)
-         1. Kliknij przycisk OK
-      1. Adres IP 192.168.14.10 Wywołujących ASCS
-         * Powtórz powyższe kroki w obszarze "a" do utworzenia adresu IP dla Wywołujących (na przykład **192.168.14.10** i **frontonu. QAS. Wywołujących**)
-   1. Utwórz pule zaplecza
+1. Tworzenie Load Balancer (wewnętrzny)  
+   1. Utwórz adresy IP frontonu
+      1. Adres IP 192.168.14.9 dla ASCS
+         1. Otwórz moduł równoważenia obciążenia, wybierz pozycję Pula adresów IP frontonu, a następnie kliknij przycisk Dodaj.
+         1. Wprowadź nazwę nowej puli adresów IP frontonu (na przykład frontonu) **. QAS. ASCS**)
+         1. Ustaw przypisanie na static i wprowadź adres IP (na przykład **192.168.14.9**)
+         1. Kliknij przycisk OK.
+      1. 192.168.14.10 adresu IP dla ASCS wykres WYWOŁUJĄCYCH
+         * Powtórz powyższe kroki w obszarze "a", aby utworzyć adres IP dla wykres WYWOŁUJĄCYCH (na przykład **192.168.14.10** i **fronton. QAS. Wykres WYWOŁUJĄCYCH**)
+   1. Tworzenie pul zaplecza
       1. Tworzenie puli zaplecza dla ASCS
-         1. Otwórz moduł równoważenia obciążenia, wybierz opcję pule zaplecza, a następnie kliknij przycisk Dodaj
-         1. Wprowadź nazwę nowej puli wewnętrznej bazy danych (na przykład **wewnętrznej bazy danych. QAS**)
-         1. Kliknij przycisk Dodaj maszynę wirtualną.
-         1. Wybierz zestaw dostępności została wcześniej utworzona dla ASCS 
-         1. Wybierz maszyny wirtualne (a) SCS klastra
-         1. Kliknij przycisk OK
-   1. Utworzenie sond kondycji.
+         1. Otwórz moduł równoważenia obciążenia, wybierz pozycję Pule zaplecza, a następnie kliknij przycisk Dodaj.
+         1. Wprowadź nazwę nowej puli zaplecza (na przykład zaplecze **. QAS**)
+         1. Kliknij pozycję Dodaj maszynę wirtualną.
+         1. Wybierz zestaw dostępności utworzony wcześniej dla ASCS 
+         1. Wybierz Maszyny wirtualne klastra SCS
+         1. Kliknij przycisk OK.
+   1. Tworzenie sond kondycji
       1. Port 620**00** dla ASCS
-         1. Otwórz moduł równoważenia obciążenia, wybierz pozycję sondy kondycji i kliknij przycisk Dodaj
-         1. Wprowadź nazwę nowego sondy kondycji (na przykład **kondycji. QAS. ASCS**)
-         1. Wybierz opcję TCP jako protokół, port 620**00**, Zachowaj 5 interwał i próg złej kondycji 2
-         1. Kliknij przycisk OK
-      1. Port 621**01** dla ASCS Wywołujących
-            * Powtórz powyższe kroki w obszarze "c", aby utworzyć sondę kondycji dla Wywołujących (na przykład 621**01** i **kondycji. QAS. Wywołujących**)
+         1. Otwórz moduł równoważenia obciążenia, wybierz pozycję sondy kondycji, a następnie kliknij przycisk Dodaj.
+         1. Wprowadź nazwę nowej sondy kondycji (na przykład **kondycja. QAS. ASCS**)
+         1. Wybierz pozycję TCP jako protokół, port 620**00**, Zachowaj interwał 5 i próg złej kondycji 2
+         1. Kliknij przycisk OK.
+      1. Port 621**01** dla ASCS wykres wywołujących
+            * Powtórz powyższe kroki w sekcji "c", aby utworzyć sondę kondycji dla wykres WYWOŁUJĄCYCH (na przykład 621**01** i kondycja) **. QAS. Wykres WYWOŁUJĄCYCH**)
    1. Reguły równoważenia obciążenia
-      1. 32**00** protokołu TCP na potrzeby ASCS
-         1. Otwórz moduł równoważenia obciążenia, wybierz pozycję reguły równoważenia obciążenia, a następnie kliknij przycisk Dodaj
-         1. Wprowadź nazwę nowej reguły równoważenia obciążenia (na przykład **modułu równoważenia obciążenia. QAS. ASCS.3200**)
-         1. Wybierz adres IP frontonu dla ASCS, pula zaplecza i sondy kondycji utworzonego wcześniej (na przykład **frontonu. QAS. ASCS**)
-         1. Zachowaj protokołu **TCP**, wprowadź numer portu **3200**
+      1. 32**00** TCP dla ASCS
+         1. Otwórz moduł równoważenia obciążenia, wybierz pozycję reguły równoważenia obciążenia, a następnie kliknij przycisk Dodaj.
+         1. Wprowadź nazwę nowej reguły modułu równoważenia obciążenia (na przykład **LB. QAS. ASCS. 3200**)
+         1. Wybierz adres IP frontonu dla ASCS, puli zaplecza i sondy kondycji utworzonej wcześniej (na przykład frontonu) **. QAS. ASCS**)
+         1. Utrzymywanie protokołu **TCP**, wprowadź port **3200**
          1. Zwiększ limit czasu bezczynności do 30 minut
-         1. **Pamiętaj włączyć pływającego adresu IP**
-         1. Kliknij przycisk OK
+         1. **Upewnij się, że włączono zmiennoprzecinkowy adres IP**
+         1. Kliknij przycisk OK.
       1. Dodatkowe porty dla ASCS
-         * Powtórz powyższe kroki w obszarze "d" dla portów 36**00**, 39**00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 i protokołu TCP na potrzeby ASCS
-      1. Dodatkowe porty dla Wywołujących ASCS
-         * Powtórz powyższe kroki w obszarze "d" dla portów 32**01**, 33**01**, 5**01**13, 5**01**14, 5**01**16 i TCP Aby uzyskać Wywołujących ASCS
+         * Powtórz powyższe kroki w obszarze "d" dla portów 36**00**, 39**00**, 81**00**, 5**00**, 5**00**14, 5**00**16 i TCP dla ASCS
+      1. Dodatkowe porty dla ASCS wykres WYWOŁUJĄCYCH
+         * Powtórz powyższe kroki w obszarze "d" dla portów 32**01**, 33**01**, 5**01**13, 5**01**14, 5**01**16 i TCP dla ASCS wykres wywołujących
 
 
 > [!IMPORTANT]
-> Nie należy włączać czasowe TCP na maszynach wirtualnych Azure umieszczonych za modułem równoważenia obciążenia platformy Azure. Włączenie protokołu TCP sygnatur czasowych spowoduje, że sondy kondycji nie powiedzie się. Ustaw parametr **net.ipv4.tcp_timestamps** do **0**. Aby uzyskać szczegółowe informacje, zobacz [sondy kondycji modułu równoważenia obciążenia](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
+> Nie należy włączać sygnatur czasowych protokołu TCP na maszynach wirtualnych platformy Azure umieszczonych za Azure Load Balancer. Włączenie sygnatur czasowych protokołu TCP spowoduje niepowodzenie sond kondycji. Ustaw parametr **net. IPv4. TCP _timestamps** na **0**. Aby uzyskać szczegółowe informacje, zobacz [sondy kondycji Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
 
-### <a name="create-pacemaker-cluster"></a>Tworzenie klastra program Pacemaker
+### <a name="create-pacemaker-cluster"></a>Tworzenie klastra Pacemaker
 
-Postępuj zgodnie z instrukcjami w [konfigurowania program Pacemaker w systemie Red Hat Enterprise Linux na platformie Azure](high-availability-guide-rhel-pacemaker.md) do utworzenia podstawowego program Pacemaker klastra dla tego serwera () SCS.
+Wykonaj kroki opisane w temacie [Konfigurowanie Pacemaker Red Hat Enterprise Linux na platformie Azure](high-availability-guide-rhel-pacemaker.md) , aby utworzyć podstawowy klaster Pacemaker dla tego (a) serwera SCS.
 
 ### <a name="prepare-for-sap-netweaver-installation"></a>Przygotowanie do instalacji oprogramowania SAP NetWeaver
 
@@ -235,7 +235,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
 1. **[A]**  Konfigurowanie rozpoznawania nazw hostów
 
    Można użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. W tym przykładzie pokazano, jak przy użyciu pliku/etc/hosts.
-   Zastąp adres IP i nazwy hosta w poniższych poleceniach
+   Zastąp adres IP i nazwę hosta w następujących poleceniach
 
     ```
     sudo vi /etc/hosts
@@ -254,8 +254,8 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
     192.168.14.10    anftstsapers
     ```
 
-1. **[1]**  SAP Tworzenie katalogów w woluminie plików NetApp platformy Azure.  
-   Tymczasowo instalacji woluminu plików NetApp platformy Azure na jednej z maszyn wirtualnych i tworzyć katalogi SAP (ścieżki plików).  
+1. **[1]** utwórz katalogi SAP na woluminie Azure NetApp Files.  
+   Zainstaluj tymczasowo wolumin Azure NetApp Files na jednej z maszyn wirtualnych i utwórz katalogi SAP (ścieżki plików).  
 
     ```
      #mount temporarily the volume
@@ -273,658 +273,842 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
      sudo cd ..
      sudo umount /saptmp
      sudo rmdir /saptmp
+    ``` 
 
-1. **[A]** Create the shared directories
+1. **[A]** Tworzenie katalogów udostępnionych
 
    ```
-   "sudo" mkdir -p/sapmnt/QAS "sudo" mkdir -p /usr/sap/trans "sudo" mkdir -p /usr/sap/QAS/SYS "sudo" mkdir -p /usr/sap/QAS/ASCS00 "sudo" mkdir -p /usr/sap/QAS/ERS01
+   sudo mkdir -p /sapmnt/QAS
+   sudo mkdir -p /usr/sap/trans
+   sudo mkdir -p /usr/sap/QAS/SYS
+   sudo mkdir -p /usr/sap/QAS/ASCS00
+   sudo mkdir -p /usr/sap/QAS/ERS01
    
-   chattr "sudo" + i/sapmnt/QAS "sudo" chattr + i chattr "sudo" /usr/sap/trans + i chattr "sudo" /usr/sap/QAS/SYS + i chattr "sudo" /usr/sap/QAS/ASCS00 + i /usr/sap/QAS/ERS01
+   sudo chattr +i /sapmnt/QAS
+   sudo chattr +i /usr/sap/trans
+   sudo chattr +i /usr/sap/QAS/SYS
+   sudo chattr +i /usr/sap/QAS/ASCS00
+   sudo chattr +i /usr/sap/QAS/ERS01
    ```
 
-1. **[A]** Install NFS client and other requirements
+1. **[A]** Zainstaluj klienta NFS i inne wymagania
 
    ```
-   "sudo" yum -y instalacji systemu plików nfs utils agentów zasobów zasobów agentów — sap
+   sudo yum -y install nfs-utils resource-agents resource-agents-sap
    ```
 
-1. **[A]** Check version of resource-agents-sap
+1. **[A]** Sprawdź wersję zasobów agentów — SAP
 
-   Make sure that the version of the installed resource-agents-sap package is at least 3.9.5-124.el7
+   Upewnij się, że wersja zainstalowanych pakietów Resource-Agents — SAP to co najmniej 3.9.5 -124. el7
    ```
-   "sudo" yum informacji zasobów agentów — sap
+   sudo yum info resource-agents-sap
    
-   # <a name="loaded-plugins-langpacks-product-id-search-disabled-repos"></a>Załadowano wtyczek: langpacks, identyfikator produktu, wyszukiwanie — wyłączone — repozytoria
-   # <a name="repodata-is-over-2-weeks-old-install-yum-cron-or-run-yum-makecache-fast"></a>Repodata jest ponad 2 tygodnie. Zainstaluj narzędzia yum cron? Lub uruchomić: szybkie makecache yum
-   # <a name="installed-packages"></a>Zainstalowane pakiety
-   # <a name="name---------resource-agents-sap"></a>Nazwa: w zasobów sap agentów
-   # <a name="arch---------x8664"></a>Architektura: x86_64
-   # <a name="version------395"></a>Wersja: 3.9.5
-   # <a name="release------124el7"></a>Wersja: 124.el7
-   # <a name="size---------100-k"></a>Rozmiar: 100 k
-   # <a name="repo---------installed"></a>Repozytorium: zainstalowana
-   # <a name="from-repo----rhel-sap-for-rhel-7-server-rpms"></a>Z repozytorium: rhel-sap-for-rhel-7-server-rpms
-   # <a name="summary------sap-cluster-resource-agents-and-connector-script"></a>Podsumowanie: Agentów zasobu klastra SAP i skrypt łącznika
-   # <a name="url----------httpsgithubcomclusterlabsresource-agents"></a>ADRES URL: https://github.com/ClusterLabs/resource-agents
-   # <a name="license------gplv2"></a>Licencja: GPLv2+
-   # <a name="description--the-sap-resource-agents-and-connector-script-interface-with"></a>Opis: Agenci zasobów SAP i interfejs skrypt łącznika z
-   #          <a name="-pacemaker-to-allow-sap-instances-to-be-managed-in-a-cluster"></a>: Program pacemaker, aby umożliwić wystąpieniami platformy SAP mają być zarządzane w klastrze
-   #          <a name="-environment"></a>: środowisko.
+   # Loaded plugins: langpacks, product-id, search-disabled-repos
+   # Repodata is over 2 weeks old. Install yum-cron? Or run: yum makecache fast
+   # Installed Packages
+   # Name        : resource-agents-sap
+   # Arch        : x86_64
+   # Version     : 3.9.5
+   # Release     : 124.el7
+   # Size        : 100 k
+   # Repo        : installed
+   # From repo   : rhel-sap-for-rhel-7-server-rpms
+   # Summary     : SAP cluster resource agents and connector script
+   # URL         : https://github.com/ClusterLabs/resource-agents
+   # License     : GPLv2+
+   # Description : The SAP resource agents and connector script interface with
+   #          : Pacemaker to allow SAP instances to be managed in a cluster
+   #          : environment.
    ```
 
 
-1. **[A]** Add mount entries
+1. **[A]** Dodawanie wpisów instalacji
 
    ```
-   "sudo" vi/etc/fstab
+   sudo vi /etc/fstab
    
-   # <a name="add-the-following-lines-to-fstab-save-and-exit"></a>Dodaj następujące wiersze do fstab, Zapisz i zamknij
-    192.168.24.5:/sapQAS/sapmntQAS/sapmnt/QAS systemu plików nfs rw trudna, rsize 65536, wsize = = 65536, vers = 3 192.168.24.5:/sapQAS/usrsapQASsys /usr/sap/QAS/SYS systemu plików nfs rw trudna, rsize 65536, wsize = = 65536, vers = 3 192.168.24.4:/transSAP /usr/sap/trans systemu plików nfs rw trudna, rsize = 65536, wsize = 65536, vers = 3
+   # Add the following lines to fstab, save and exit
+    192.168.24.5:/sapQAS/sapmntQAS /sapmnt/QAS nfs rw,hard,rsize=65536,wsize=65536,vers=3
+    192.168.24.5:/sapQAS/usrsapQASsys /usr/sap/QAS/SYS nfs rw,hard,rsize=65536,wsize=65536,vers=3
+    192.168.24.4:/transSAP /usr/sap/trans nfs rw,hard,rsize=65536,wsize=65536,vers=3
    ```
 
-   Mount the new shares
+   Zainstaluj nowe udziały
 
    ```
    sudo mount -a  
    ```
 
-1. **[A]** Configure SWAP file
+1. **[A]** Skonfiguruj plik wymiany
 
    ```
    sudo vi /etc/waagent.conf
    
-   # <a name="set-the-property-resourcediskenableswap-to-y"></a>Ustaw właściwość ResourceDisk.EnableSwap y
-   # <a name="create-and-use-swapfile-on-resource-disk"></a>Utwórz i użyć pliku wymiany dysku zasobów.
+   # Set the property ResourceDisk.EnableSwap to y
+   # Create and use swapfile on resource disk.
    ResourceDisk.EnableSwap=y
    
-   # <a name="set-the-size-of-the-swap-file-with-property-resourcediskswapsizemb"></a>Ustawianie rozmiaru pliku wymiany z właściwością ResourceDisk.SwapSizeMB
-   # <a name="the-free-space-of-resource-disk-varies-by-virtual-machine-size-make-sure-that-you-do-not-set-a-value-that-is-too-big-you-can-check-the-swap-space-with-command-swapon"></a>Ilość wolnego miejsca na dysku zasobów jest zależna od rozmiaru maszyny wirtualnej. Upewnij się, że należy ustawiać wartości, które są zbyt duże. Możesz sprawdzić obszaru wymiany przy użyciu polecenia swapon
-   # <a name="size-of-the-swapfile"></a>Rozmiar pliku wymiany.
+   # Set the size of the SWAP file with property ResourceDisk.SwapSizeMB
+   # The free space of resource disk varies by virtual machine size. Make sure that you do not set a value that is too big. You can check the SWAP space with command swapon
+   # Size of the swapfile.
    ResourceDisk.SwapSizeMB=2000
    ```
 
-   Restart the Agent to activate the change
+   Uruchom ponownie agenta, aby aktywować zmianę
 
    ```
-   ponowne uruchomienie waagent usługi "sudo"
+   sudo service waagent restart
    ```
 
-1. **[A]** RHEL configuration
+1. **[A]** konfiguracja RHEL
 
-   Configure RHEL as described in SAP Note [2002167]
+   Konfigurowanie RHEL zgodnie z opisem w temacie SAP Note [2002167]
 
-### Installing SAP NetWeaver ASCS/ERS
+### <a name="installing-sap-netweaver-ascsers"></a>Instalowanie oprogramowania SAP NetWeaver ASCS/wykres WYWOŁUJĄCYCH
 
-1. **[1]** Create a virtual IP resource and health-probe for the ASCS instance
+1. **[1]** Utwórz zasób wirtualnego adresu IP i sondę kondycji dla wystąpienia ASCS
 
    ```
-   anftstsapcl2 wstrzymania węzła komputerów "sudo"
+   sudo pcs node standby anftstsapcl2
    
-   tworzenia zasobów komputerów "sudo" fs_QAS_ASCS device='192.168.24.5:/sapQAS/usrsapQASascs system plików \
-     Katalog = "/ usr/sap/QAS/ASCS00" fstype = "systemu plików nfs" \
-     --grupie g QAS_ASCS
+   sudo pcs resource create fs_QAS_ASCS Filesystem device='192.168.24.5:/sapQAS/usrsapQASascs' \
+     directory='/usr/sap/QAS/ASCS00' fstype='nfs' \
+     --group g-QAS_ASCS
    
-   vip_QAS_ASCS IPaddr2 tworzenia zasobów komputerów "sudo" \
-     IP = 192.168.14.9 cidr_netmask = 24 \
-     --grupie g QAS_ASCS
+   sudo pcs resource create vip_QAS_ASCS IPaddr2 \
+     ip=192.168.14.9 cidr_netmask=24 \
+     --group g-QAS_ASCS
    
-   zasobów komputerów "sudo" Utwórz nc_QAS_ASCS port równoważenia obciążenia azure = 62000 \
-     --grupie g QAS_ASCS
+   sudo pcs resource create nc_QAS_ASCS azure-lb port=62000 \
+     --group g-QAS_ASCS
    ```
 
-   Make sure that the cluster status is ok and that all resources are started. It is not important on which node the resources are running.
+   Upewnij się, że klaster ma stan OK i że wszystkie zasoby zostały uruchomione. Nie ma znaczenia, w którym węźle są uruchomione zasoby.
 
    ```
-   Stan komputerów "sudo"
+   sudo pcs status
    
-   # <a name="node-anftstsapcl2-standby"></a>Węzeł anftstsapcl2: rezerwy dynamicznej
-   # <a name="online--anftstsapcl1-"></a>Online: [anftstsapcl1]
+   # Node anftstsapcl2: standby
+   # Online: [ anftstsapcl1 ]
    #
-   # <a name="full-list-of-resources"></a>Pełną listę zasobów:
+   # Full list of resources:
    #
-   # <a name="rscstazure----stonithfenceazurearm------started-anftstsapcl1"></a>rsc_st_azure (stonith:fence_azure_arm):      Rozpoczęto anftstsapcl1
-   #  <a name="resource-group-g-qasascs"></a>Grupa zasobów: g-QAS_ASCS
-   #      <a name="fsqasascs--------ocfheartbeatfilesystem----started-anftstsapcl1"></a>fs_QAS_ASCS (ocf::heartbeat:Filesystem):    Rozpoczęto anftstsapcl1
-   #      <a name="ncqasascs--------ocfheartbeatazure-lb------started-anftstsapcl1"></a>nc_QAS_ASCS (ocf::heartbeat:azure-lb):      Rozpoczęto anftstsapcl1
-   #      <a name="vipqasascs-------ocfheartbeatipaddr2-------started-anftstsapcl1"></a>vip_QAS_ASCS (ocf::heartbeat:IPaddr2):       Rozpoczęto anftstsapcl1
+   # rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl1
+   #  Resource Group: g-QAS_ASCS
+   #      fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
+   #      nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
+   #      vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
    ```
 
-1. **[1]** Install SAP NetWeaver ASCS  
+1. **[1]** Instalowanie oprogramowania SAP NetWeaver ASCS  
 
-   Install SAP NetWeaver ASCS as root on the first node using a virtual hostname that maps to the IP address of the load balancer frontend configuration for the ASCS, for example <b>anftstsapvh</b>, <b>192.168.14.9</b> and the instance number that you used for the probe of the load balancer, for example <b>00</b>.
+   Zainstaluj oprogramowanie SAP NetWeaver ASCS jako element główny w pierwszym węźle przy użyciu wirtualnej nazwy hosta, która jest mapowana na adres IP konfiguracji frontonu modułu równoważenia obciążenia dla ASCS, na przykład <b>anftstsapvh</b>, <b>192.168.14.9</b> i numer wystąpienia użyty dla Sonda modułu równoważenia obciążenia, na przykład <b>00</b>.
 
-   You can use the sapinst parameter SAPINST_REMOTE_ACCESS_USER to allow a non-root user to connect to sapinst.
+   Można użyć sapinst parametru SAPINST_REMOTE_ACCESS_USER, aby zezwolić niegłównemu użytkownikowi na łączenie się z usługą sapinst.
 
    ```
-   # <a name="allow-access-to-swpm-this-rule-is-not-permanent-if-you-reboot-the-machine-you-have-to-run-the-command-again"></a>Zezwalaj na dostęp do SWPM. Ta zasada nie jest trwały. Jeśli ponowne uruchomienie komputera, musisz ponownie uruchom polecenie.
+   # Allow access to SWPM. This rule is not permanent. If you reboot the machine, you have to run the command again.
    sudo firewall-cmd --zone=public  --add-port=4237/tcp
    
-   "sudo" <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER = sapadmin SAPINST_USE_HOSTNAME = < virtual_hostname >
+   sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin SAPINST_USE_HOSTNAME=<virtual_hostname>
    ```
 
-   If the installation fails to create a subfolder in /usr/sap/**QAS**/ASCS**00**, try setting the owner and group of the ASCS**00** folder and retry.
+   Jeśli instalacja nie powiedzie się w celu utworzenia podfolderu w/usr/SAP/**QAS**/ASCS**00**, spróbuj ustawić właściciela i grupę folderu ASCS**00** , a następnie ponów próbę.
 
    ```
-   qasadm zmienić właściciela "sudo" /usr/sap/QAS/ASCS00 /usr/sap/QAS/ASCS00 sapsys chgrp "sudo"
+   sudo chown qasadm /usr/sap/QAS/ASCS00
+   sudo chgrp sapsys /usr/sap/QAS/ASCS00
    ```
 
-1. **[1]** Create a virtual IP resource and health-probe for the ERS instance
+1. **[1]** Utwórz zasób wirtualnego adresu IP i sondę kondycji dla wystąpienia wykres wywołujących
 
    ```
-   "sudo" komputerów węzła unstandby anftstsapcl2 "sudo" komputerów węzła wstrzymania anftstsapcl1
+   sudo pcs node unstandby anftstsapcl2
+   sudo pcs node standby anftstsapcl1
    
-   tworzenia zasobów komputerów "sudo" fs_QAS_AERS device='192.168.24.5:/sapQAS/usrsapQASers system plików \
-     Katalog = "/ usr/sap/QAS/ERS01" fstype = "systemu plików nfs" \
-    --grupie g QAS_AERS
+   sudo pcs resource create fs_QAS_AERS Filesystem device='192.168.24.5:/sapQAS/usrsapQASers' \
+     directory='/usr/sap/QAS/ERS01' fstype='nfs' \
+    --group g-QAS_AERS
 
-   vip_QAS_AERS IPaddr2 tworzenia zasobów komputerów "sudo" \
-     IP = 192.168.14.10 cidr_netmask = 24 \
-    --grupie g QAS_AERS
+   sudo pcs resource create vip_QAS_AERS IPaddr2 \
+     ip=192.168.14.10 cidr_netmask=24 \
+    --group g-QAS_AERS
    
-   zasobów komputerów "sudo" Utwórz nc_QAS_AERS port równoważenia obciążenia azure = 62101 \
-    --grupie g QAS_AERS
+   sudo pcs resource create nc_QAS_AERS azure-lb port=62101 \
+    --group g-QAS_AERS
    ```
  
-   Make sure that the cluster status is ok and that all resources are started. It is not important on which node the resources are running.
+   Upewnij się, że klaster ma stan OK i że wszystkie zasoby zostały uruchomione. Nie ma znaczenia, w którym węźle są uruchomione zasoby.
 
    ```
-   Stan komputerów "sudo"
+   sudo pcs status
    
-   # <a name="node-anftstsapcl1-standby"></a>Węzeł anftstsapcl1: rezerwy dynamicznej
-   # <a name="online--anftstsapcl2-"></a>Online: [anftstsapcl2]
+   # Node anftstsapcl1: standby
+   # Online: [ anftstsapcl2 ]
    #
-   # <a name="full-list-of-resources"></a>Pełną listę zasobów:
+   # Full list of resources:
    #
-   # <a name="rscstazure----stonithfenceazurearm------started-anftstsapcl2"></a>rsc_st_azure (stonith:fence_azure_arm):      Rozpoczęto anftstsapcl2
-   #  <a name="resource-group-g-qasascs"></a>Grupa zasobów: g-QAS_ASCS
-   #      <a name="fsqasascs--------ocfheartbeatfilesystem----started-anftstsapcl2"></a>fs_QAS_ASCS (ocf::heartbeat:Filesystem):    Rozpoczęto anftstsapcl2
-   #      <a name="ncqasascs--------ocfheartbeatazure-lb------started-anftstsapcl2"></a>nc_QAS_ASCS (ocf::heartbeat:azure-lb):      Pracę anftstsapcl2 <
-   #      <a name="vipqasascs-------ocfheartbeatipaddr2-------started-anftstsapcl2"></a>vip_QAS_ASCS (ocf::heartbeat:IPaddr2):       Rozpoczęto anftstsapcl2
-   #  <a name="resource-group-g-qasaers"></a>Grupa zasobów: g-QAS_AERS
-   #      <a name="fsqasaers--------ocfheartbeatfilesystem----started-anftstsapcl2"></a>fs_QAS_AERS (ocf::heartbeat:Filesystem):    Rozpoczęto anftstsapcl2
-   #      <a name="ncqasaers--------ocfheartbeatazure-lb------started-anftstsapcl2"></a>nc_QAS_AERS (ocf::heartbeat:azure-lb):      Rozpoczęto anftstsapcl2
-   #      <a name="vipqasaers-------ocfheartbeatipaddr2-------started-anftstsapcl2"></a>vip_QAS_AERS (ocf::heartbeat:IPaddr2):       Rozpoczęto anftstsapcl2
+   # rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl2
+   #  Resource Group: g-QAS_ASCS
+   #      fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
+   #      nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2<
+   #      vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
+   #  Resource Group: g-QAS_AERS
+   #      fs_QAS_AERS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
+   #      nc_QAS_AERS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
+   #      vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
    ```
 
-1. **[2]** Install SAP NetWeaver ERS  
+1. **[2]** Instalowanie oprogramowania SAP NetWeaver wykres wywołujących  
 
-   Install SAP NetWeaver ERS as root on the second node using a virtual hostname that maps to the IP address of the load balancer frontend configuration for the ERS, for example <b>anftstsapers</b>, <b>192.168.14.10</b> and the instance number that you used for the probe of the load balancer, for example <b>01</b>.
+   Zainstaluj oprogramowanie SAP NetWeaver wykres WYWOŁUJĄCYCH jako element główny w drugim węźle przy użyciu wirtualnej nazwy hosta, która jest mapowana na adres IP konfiguracji frontonu modułu równoważenia obciążenia dla wykres WYWOŁUJĄCYCH, na przykład <b>anftstsapers</b>, <b>192.168.14.10</b> i numer wystąpienia użyty dla Sonda modułu równoważenia obciążenia, na przykład <b>01</b>.
 
-   You can use the sapinst parameter SAPINST_REMOTE_ACCESS_USER to allow a non-root user to connect to sapinst.
+   Można użyć sapinst parametru SAPINST_REMOTE_ACCESS_USER, aby zezwolić niegłównemu użytkownikowi na łączenie się z usługą sapinst.
 
    ```
-   # <a name="allow-access-to-swpm-this-rule-is-not-permanent-if-you-reboot-the-machine-you-have-to-run-the-command-again"></a>Zezwalaj na dostęp do SWPM. Ta zasada nie jest trwały. Jeśli ponowne uruchomienie komputera, musisz ponownie uruchom polecenie.
+   # Allow access to SWPM. This rule is not permanent. If you reboot the machine, you have to run the command again.
    sudo firewall-cmd --zone=public  --add-port=4237/tcp
 
-   "sudo" <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER = sapadmin SAPINST_USE_HOSTNAME = < virtual_hostname >
+   sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin SAPINST_USE_HOSTNAME=<virtual_hostname>
    ```
 
-   If the installation fails to create a subfolder in /usr/sap/**QAS**/ERS**01**, try setting the owner and group of the ERS**01** folder and retry.
+   Jeśli instalacja nie powiedzie się, utwórz podfolder w/usr/SAP/**QAS**/ERS**01**, spróbuj ustawić właściciela i grupę folderu wykres wywołujących**01** i ponów próbę.
 
    ```
-   qaadm zmienić właściciela "sudo" /usr/sap/QAS/ERS01 /usr/sap/QAS/ERS01 sapsys chgrp "sudo"
+   sudo chown qaadm /usr/sap/QAS/ERS01
+   sudo chgrp sapsys /usr/sap/QAS/ERS01
    ```
 
-1. **[1]** Adapt the ASCS/SCS and ERS instance profiles
+1. **[1]** dostosowuje profile wystąpienia ASCS/SCS i wykres wywołujących
 
-   * ASCS/SCS profile
+   * Profil ASCS/SCS
 
    ```
-   /sapmnt/QAS/profile/QAS_ASCS00_anftstsapvh vi "sudo"
+   sudo vi /sapmnt/QAS/profile/QAS_ASCS00_anftstsapvh
    
-   # <a name="change-the-restart-command-to-a-start-command"></a>Zmień polecenia ponownego uruchomienia polecenia start
-   #<a name="restartprogram01--local-en-pfpf"></a>Restart_Program_01 = lokalnego pf=$(_PF) $(_EN)
-   Start_Program_01 = lokalnego pf=$(_PF) $(_EN)
+   # Change the restart command to a start command
+   #Restart_Program_01 = local $(_EN) pf=$(_PF)
+   Start_Program_01 = local $(_EN) pf=$(_PF)
    
-   # <a name="add-the-keep-alive-parameter"></a>Dodaj parametr zachować aktywności
-   umieścić/encni/set_so_keepalive = true
+   # Add the keep alive parameter
+   enque/encni/set_so_keepalive = true
    ```
 
-   * ERS profile
+   * Profil wykres WYWOŁUJĄCYCH
 
    ```
-   /sapmnt/QAS/profile/QAS_ERS01_anftstsapers vi "sudo"
+   sudo vi /sapmnt/QAS/profile/QAS_ERS01_anftstsapers
    
-   # <a name="change-the-restart-command-to-a-start-command"></a>Zmień polecenia ponownego uruchomienia polecenia start
-   #<a name="restartprogram00--local-er-pfpfl-nrscsid"></a>Restart_Program_00 = lokalnego pf=$(_PFL) $(_ER) NR=$(SCSID)
-   Start_Program_00 = lokalnego pf=$(_PFL) $(_ER) NR=$(SCSID)
+   # Change the restart command to a start command
+   #Restart_Program_00 = local $(_ER) pf=$(_PFL) NR=$(SCSID)
+   Start_Program_00 = local $(_ER) pf=$(_PFL) NR=$(SCSID)
    
-   # <a name="remove-autostart-from-ers-profile"></a>Usuń Autostart z profilu Wywołujących
-   # <a name="autostart--1"></a>Autostart = 1
+   # remove Autostart from ERS profile
+   # Autostart = 1
    ```
 
 
-1. **[A]** Configure Keep Alive
+1. **[A]** Skonfiguruj utrzymywanie aktywności
 
-   The communication between the SAP NetWeaver application server and the ASCS/SCS is routed through a software load balancer. The load balancer disconnects inactive connections after a configurable timeout. To prevent this, you need to set a parameter in the SAP NetWeaver ASCS/SCS profile and change the Linux system settings. Read [SAP Note 1410736][1410736] for more information.
+   Komunikacja między serwerem aplikacji SAP NetWeaver a ASCS/SCS jest kierowana przez programowy moduł równoważenia obciążenia. Moduł równoważenia obciążenia rozłącza nieaktywne połączenia po upływie konfigurowalnego limitu czasu. Aby tego uniknąć, należy ustawić parametr w profilu SAP NetWeaver ASCS/SCS i zmienić ustawienia systemu Linux. Aby uzyskać więcej informacji, przeczytaj temat [SAP Note 1410736][1410736] .
 
-   The ASCS/SCS profile parameter enque/encni/set_so_keepalive was already added in the last step.
+   Parametr ASCS/SCS profilu umieścić/encni/set_so_keepalive został już dodany w ostatnim kroku.
 
    ```
-   # <a name="change-the-linux-system-configuration"></a>Zmień konfigurację systemu Linux
-   net.ipv4.tcp_keepalive_time=120 sysctl "sudo"
+   # Change the Linux system configuration
+   sudo sysctl net.ipv4.tcp_keepalive_time=120
    ```
 
-1. **[A]** Update the /usr/sap/sapservices file
+1. **[A]** Zaktualizuj plik/usr/SAP/sapservices
 
-   To prevent the start of the instances by the sapinit startup script, all instances managed by Pacemaker must be commented out from /usr/sap/sapservices file. Do not comment out the SAP HANA instance if it will be used with HANA SR.
+   Aby zapobiec uruchamianiu wystąpień przez skrypt uruchamiania sapinit, wszystkie wystąpienia zarządzane przez Pacemaker muszą być oznaczone jako komentarze z pliku/usr/SAP/sapservices. Nie należy dodawać komentarzy do wystąpienia SAP HANA, jeśli będzie on używany z usługą HANA SR.
 
    ```
    sudo vi /usr/sap/sapservices
    
-   # <a name="on-the-node-where-you-installed-the-ascs-comment-out-the-following-line"></a>W węźle z zainstalowanym ASCS komentarz następujący wiersz
-   # <a name="ldlibrarypathusrsapqasascs00exeldlibrarypath-export-ldlibrarypath-usrsapqasascs00exesapstartsrv-pfusrsapqassysprofileqasascs00anftstsapvh--d--u-qasadm"></a>LD_LIBRARY_PATH = / usr/sap/QAS/ASCS00/exe: $LD_LIBRARY_PATH; Eksportuj LD_LIBRARY_PATH; /usr/SAP/QAS/ASCS00/exe/sapstartsrv pf = / usr/sap/QAS/SYS/profile/QAS_ASCS00_anftstsapvh - D -u qasadm
+   # On the node where you installed the ASCS, comment out the following line
+   # LD_LIBRARY_PATH=/usr/sap/QAS/ASCS00/exe:$LD_LIBRARY_PATH; export LD_LIBRARY_PATH; /usr/sap/QAS/ASCS00/exe/sapstartsrv pf=/usr/sap/QAS/SYS/profile/QAS_ASCS00_anftstsapvh -D -u qasadm
    
-   # <a name="on-the-node-where-you-installed-the-ers-comment-out-the-following-line"></a>W węźle, w którym zostało zainstalowane Wywołujących przekształcić w komentarz następujący wiersz
-   # <a name="ldlibrarypathusrsapqasers01exeldlibrarypath-export-ldlibrarypath-usrsapqasers01exesapstartsrv-pfusrsapqasers01profileqasers01anftstsapers--d--u-qasadm"></a>LD_LIBRARY_PATH = / usr/sap/QAS/ERS01/exe: $LD_LIBRARY_PATH; Eksportuj LD_LIBRARY_PATH; /usr/SAP/QAS/ERS01/exe/sapstartsrv pf = / usr/sap/QAS/ERS01/profile/QAS_ERS01_anftstsapers - D -u qasadm
+   # On the node where you installed the ERS, comment out the following line
+   # LD_LIBRARY_PATH=/usr/sap/QAS/ERS01/exe:$LD_LIBRARY_PATH; export LD_LIBRARY_PATH; /usr/sap/QAS/ERS01/exe/sapstartsrv pf=/usr/sap/QAS/ERS01/profile/QAS_ERS01_anftstsapers -D -u qasadm
    ```
 
-1. **[1]** Create the SAP cluster resources
+1. **[1]** tworzenie zasobów klastra SAP
 
-   If using enqueue server 1 architecture (ENSA1), define the resources as follows:
+   W przypadku korzystania z architektury Server 1 Architecture (ENSA1) Zdefiniuj zasoby w następujący sposób:
 
    ```
-   właściwości komputerów z systemem "sudo" Ustaw tryb konserwacji = true
+   sudo pcs property set maintenance-mode=true
    
-    rsc_sap_QAS_ASCS00 SAPInstance tworzenia zasobów komputerów "sudo" \
-    InstanceName = QAS_ASCS00_anftstsapvh START_PROFILE = "/ sapmnt/QAS/profile/QAS_ASCS00_anftstsapvh" \
-    AUTOMATIC_RECOVER = false \
-    zasób meta-lepkości = 5000 migracji — próg = 1 \
-    --grupie g QAS_ASCS
+    sudo pcs resource create rsc_sap_QAS_ASCS00 SAPInstance \
+    InstanceName=QAS_ASCS00_anftstsapvh START_PROFILE="/sapmnt/QAS/profile/QAS_ASCS00_anftstsapvh" \
+    AUTOMATIC_RECOVER=false \
+    meta resource-stickiness=5000 migration-threshold=1 \
+    --group g-QAS_ASCS
    
-    rsc_sap_QAS_ERS01 SAPInstance tworzenia zasobów komputerów "sudo" \
-    InstanceName = QAS_ERS01_anftstsapers START_PROFILE = "/ sapmnt/QAS/profile/QAS_ERS01_anftstsapers" \
-    AUTOMATIC_RECOVER = false IS_ERS = true \
-    --grupie g QAS_AERS
+    sudo pcs resource create rsc_sap_QAS_ERS01 SAPInstance \
+    InstanceName=QAS_ERS01_anftstsapers START_PROFILE="/sapmnt/QAS/profile/QAS_ERS01_anftstsapers" \
+    AUTOMATIC_RECOVER=false IS_ERS=true \
+    --group g-QAS_AERS
       
-    wspólnej ograniczenie komputerów "sudo" Dodaj g-QAS_AERS g-QAS_ASCS-5000 "sudo" komputerów ograniczenie lokalizacji rsc_sap_QAS_ASCS00 reguły wynik = 2000 runs_ers_QAS eq 1 "sudo" komputerów ograniczenia zlecenia g QAS_ASCS, a następnie g QAS_AERS rodzaj = opcjonalne symetryczne = false
+    sudo pcs constraint colocation add g-QAS_AERS with g-QAS_ASCS -5000
+    sudo pcs constraint location rsc_sap_QAS_ASCS00 rule score=2000 runs_ers_QAS eq 1
+    sudo pcs constraint order g-QAS_ASCS then g-QAS_AERS kind=Optional symmetrical=false
     
-    "sudo" komputerów węzła unstandby anftstsapcl1 "sudo" komputerów właściwością trybu konserwacji = false
+    sudo pcs node unstandby anftstsapcl1
+    sudo pcs property set maintenance-mode=false
     ```
 
-   SAP introduced support for enqueue server 2, including replication, as of SAP NW 7.52. Starting with ABAP Platform 1809, enqueue server 2 is installed by default. See SAP note [2630416](https://launchpad.support.sap.com/#/notes/2630416) for enqueue server 2 support.
-   If using enqueue server 2 architecture ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)), install resource agent resource-agents-sap-4.1.1-12.el7.x86_64 or newer and define the resources as follows:
+   System SAP wprowadził obsługę dla kolejki serwera 2, w tym replikację, w przypadku oprogramowania SAP NW 7,52. Począwszy od programu ABAP platform 1809, w kolejce serwer 2 jest instalowany domyślnie. Zobacz temat SAP Note [2630416](https://launchpad.support.sap.com/#/notes/2630416) dla obsługi kolejki serwera 2.
+   Jeśli korzystasz z architektury Server 2 ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)), Zainstaluj agenta zasobów Resource-Agents-SAP-4.1.1 -12. el7. x86_64 lub nowszy i zdefiniuj zasoby w następujący sposób:
 
     ```
-    właściwości komputerów z systemem "sudo" Ustaw tryb konserwacji = true
+    sudo pcs property set maintenance-mode=true
     
-    rsc_sap_QAS_ASCS00 SAPInstance tworzenia zasobów komputerów "sudo" \
-    InstanceName = QAS_ASCS00_anftstsapvh START_PROFILE = "/ sapmnt/QAS/profile/QAS_ASCS00_anftstsapvh" \
-    AUTOMATIC_RECOVER = false \
-    zasób meta-lepkości = 5000 \
-    --grupie g QAS_ASCS
+    sudo pcs resource create rsc_sap_QAS_ASCS00 SAPInstance \
+    InstanceName=QAS_ASCS00_anftstsapvh START_PROFILE="/sapmnt/QAS/profile/QAS_ASCS00_anftstsapvh" \
+    AUTOMATIC_RECOVER=false \
+    meta resource-stickiness=5000 \
+    --group g-QAS_ASCS
    
-    rsc_sap_QAS_ERS01 SAPInstance tworzenia zasobów komputerów "sudo" \
-    InstanceName = QAS_ERS01_anftstsapers START_PROFILE = "/ sapmnt/QAS/profile/QAS_ERS01_anftstsapers" \
-    AUTOMATIC_RECOVER = false IS_ERS = true \
-    --grupie g QAS_AERS
+    sudo pcs resource create rsc_sap_QAS_ERS01 SAPInstance \
+    InstanceName=QAS_ERS01_anftstsapers START_PROFILE="/sapmnt/QAS/profile/QAS_ERS01_anftstsapers" \
+    AUTOMATIC_RECOVER=false IS_ERS=true \
+    --group g-QAS_AERS
       
-    wspólnej ograniczenie komputerów "sudo" Dodaj g-QAS_AERS z g-QAS_ASCS-5000 "sudo" komputerów ograniczenia zlecenia g QAS_ASCS, a następnie g QAS_AERS rodzajem = opcjonalne symetryczne = false
+    sudo pcs constraint colocation add g-QAS_AERS with g-QAS_ASCS -5000
+    sudo pcs constraint order g-QAS_ASCS then g-QAS_AERS kind=Optional symmetrical=false
    
-    "sudo" komputerów węzła unstandby anftstsapcl1 "sudo" komputerów właściwością trybu konserwacji = false
+    sudo pcs node unstandby anftstsapcl1
+    sudo pcs property set maintenance-mode=false
     ```
 
-   If you are upgrading from an older version and switching to enqueue server 2, see SAP note [2641322](https://launchpad.support.sap.com/#/notes/2641322). 
+   W przypadku uaktualniania ze starszej wersji i przełączania do kolejki serwera 2, zobacz uwagi dotyczące oprogramowania SAP [2641322](https://launchpad.support.sap.com/#/notes/2641322). 
 
-   Make sure that the cluster status is ok and that all resources are started. It is not important on which node the resources are running.
+   Upewnij się, że klaster ma stan OK i że wszystkie zasoby zostały uruchomione. Nie ma znaczenia, w którym węźle są uruchomione zasoby.
 
     ```
-    Stan komputerów "sudo"
+    sudo pcs status
     
-    # <a name="online--anftstsapcl1-anftstsapcl2-"></a>Online: [anftstsapcl1 anftstsapcl2]
+    # Online: [ anftstsapcl1 anftstsapcl2 ]
     #
-    # <a name="full-list-of-resources"></a>Pełną listę zasobów:
+    # Full list of resources:
     #
-    # <a name="rscstazure----stonithfenceazurearm------started-anftstsapcl2"></a>rsc_st_azure (stonith:fence_azure_arm):      Rozpoczęto anftstsapcl2
-    #  <a name="resource-group-g-qasascs"></a>Grupa zasobów: g-QAS_ASCS
-    #      <a name="fsqasascs--------ocfheartbeatfilesystem----started-anftstsapcl2"></a>fs_QAS_ASCS (ocf::heartbeat:Filesystem):    Rozpoczęto anftstsapcl2
-    #      <a name="ncqasascs--------ocfheartbeatazure-lb------started-anftstsapcl2"></a>nc_QAS_ASCS (ocf::heartbeat:azure-lb):      Rozpoczęto anftstsapcl2
-    #      <a name="vipqasascs-------ocfheartbeatipaddr2-------started-anftstsapcl2"></a>vip_QAS_ASCS (ocf::heartbeat:IPaddr2):       Rozpoczęto anftstsapcl2
-    #      <a name="rscsapqasascs00-ocfheartbeatsapinstance---started-anftstsapcl2"></a>rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Rozpoczęto anftstsapcl2
-    #  <a name="resource-group-g-qasaers"></a>Grupa zasobów: g-QAS_AERS
-    #      <a name="fsqasaers--------ocfheartbeatfilesystem----started-anftstsapcl1"></a>fs_QAS_AERS (ocf::heartbeat:Filesystem):    Rozpoczęto anftstsapcl1
-    #      <a name="ncqasaers--------ocfheartbeatazure-lb------started-anftstsapcl1"></a>nc_QAS_AERS (ocf::heartbeat:azure-lb):      Rozpoczęto anftstsapcl1
-    #      <a name="vipqasaers-------ocfheartbeatipaddr2-------started-anftstsapcl1"></a>vip_QAS_AERS (ocf::heartbeat:IPaddr2):       Rozpoczęto anftstsapcl1
-    #      <a name="rscsapqasers01--ocfheartbeatsapinstance---started-anftstsapcl1"></a>rsc_sap_QAS_ERS01 (ocf::heartbeat:SAPInstance):   Rozpoczęto anftstsapcl1
+    # rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl2
+    #  Resource Group: g-QAS_ASCS
+    #      fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
+    #      nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
+    #      vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
+    #      rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
+    #  Resource Group: g-QAS_AERS
+    #      fs_QAS_AERS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
+    #      nc_QAS_AERS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
+    #      vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
+    #      rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    ```
 
-1. **[A]** Add firewall rules for ASCS and ERS on both nodes
-   Add the firewall rules for ASCS and ERS on both nodes.
+1. **[A]** Dodaj reguły zapory dla ASCS i wykres wywołujących na obu węzłach Dodaj reguły zapory dla ASCS i wykres wywołujących na obu węzłach.
    ```
-   # <a name="probe-port-of-ascs"></a>Port sondy ASCS
-   "sudo" zapory cmd — strefy = publicznego — Dodaj port = 62000/tcp — stałe "sudo" zapory cmd — strefy = publicznego — Dodaj port = 62000/tcp "sudo" zapory cmd — strefy = publicznego — Dodaj port = 3200/tcp — stałe "sudo" zapory cmd — strefy = publicznego — Dodaj port = 3200/tcp "sudo" zapory cmd — strefy = publicznego — Dodaj port = 3600/tcp — stałe "sudo" zapory cmd — strefy = publicznego — Dodaj port = 3600/tcp "sudo" zapory cmd — strefy = publicznego — Dodaj port = 3900/tcp — stałe "sudo" zapory cmd — strefy = publicznego — Dodaj port = 3900/tcp "sudo" zapory cmd — strefy = publicznego — Dodaj port = 8100/tcp — stałe "sudo" zapory cmd — strefy = publicznego — Dodaj port = 8100/tcp "sudo" zapory cmd — strefy = publicznego — Dodaj port = 50013/tcp — stałe "sudo" zapory cmd — strefy = publicznego — Dodaj port = 50013/tcp "sudo" zapory cmd — strefy = publicznego — Dodaj port = 50014/tcp — stałe "sudo" zapory cmd — strefy = publicznego — Dodaj port = 50014/tcp "sudo" zapory cmd — strefy = publicznego — Dodaj port = 50016/tcp — stałe "sudo" zapory cmd — strefy = publicznego — Dodaj port = 50016/tcp
-   # <a name="probe-port-of-ers"></a>Port sondy Wywołujących
-   "sudo" zapory cmd — strefy = publicznego — Dodaj port = 62101/tcp — stałe "sudo" zapory cmd — strefy = publicznego — Dodaj port = 62101/tcp "sudo" zapory cmd — strefy = publicznego — Dodaj port = 3301/tcp — stałe "sudo" zapory cmd — strefy = publicznego — Dodaj port = 3301/tcp "sudo" zapory cmd — strefy = publicznego — Dodaj port = 50113/tcp — stałe "sudo" zapory cmd — strefy = publicznego — Dodaj port = 50113/tcp "sudo" zapory cmd — strefy = publicznego — Dodaj port = 50114/tcp — stałe "sudo" zapory cmd — strefy = publicznego — Dodaj port = 50114/tcp "sudo" Zapora cmd — strefy = publicznego — Dodaj port = 50116/tcp — stałe "sudo" zapory cmd — strefy = publicznego — Dodaj port = 50116/tcp
+   # Probe Port of ASCS
+   sudo firewall-cmd --zone=public --add-port=62000/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=62000/tcp
+   sudo firewall-cmd --zone=public --add-port=3200/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=3200/tcp
+   sudo firewall-cmd --zone=public --add-port=3600/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=3600/tcp
+   sudo firewall-cmd --zone=public --add-port=3900/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=3900/tcp
+   sudo firewall-cmd --zone=public --add-port=8100/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=8100/tcp
+   sudo firewall-cmd --zone=public --add-port=50013/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=50013/tcp
+   sudo firewall-cmd --zone=public --add-port=50014/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=50014/tcp
+   sudo firewall-cmd --zone=public --add-port=50016/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=50016/tcp
+   # Probe Port of ERS
+   sudo firewall-cmd --zone=public --add-port=62101/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=62101/tcp
+   sudo firewall-cmd --zone=public --add-port=3301/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=3301/tcp
+   sudo firewall-cmd --zone=public --add-port=50113/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=50113/tcp
+   sudo firewall-cmd --zone=public --add-port=50114/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=50114/tcp
+   sudo firewall-cmd --zone=public --add-port=50116/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=50116/tcp
    ```
 
-## <a name="2d6008b0-685d-426c-b59e-6cd281fd45d7"></a>SAP NetWeaver application server preparation
+## <a name="2d6008b0-685d-426c-b59e-6cd281fd45d7"></a>Przygotowywanie serwera aplikacji SAP NetWeaver
 
-   Some databases require that the database instance installation is executed on an application server. Prepare the application server virtual machines to be able to use them in these cases.  
+   Niektóre bazy danych wymagają wykonania instalacji wystąpienia bazy danych na serwerze aplikacji. Przygotuj maszyny wirtualne serwera aplikacji, aby mogły z nich korzystać w tych przypadkach.  
 
-   The steps bellow assume that you install the application server on a server different from the ASCS/SCS and HANA servers. Otherwise some of the steps below (like configuring host name resolution) are not needed.  
+   W poniższych krokach założono, że serwer aplikacji jest instalowany na serwerze innym niż serwery ASCS/SCS i HANA. W przeciwnym razie niektóre kroki (takie jak Konfigurowanie rozpoznawania nazw hostów) nie są wymagane.  
 
-   The following items are prefixed with either **[A]** - applicable to both PAS and AAS, **[P]** - only applicable to PAS or **[S]** - only applicable to AAS.  
+   Następujące elementy są poprzedzone znakiem **[A]** — dotyczy zarówno platformy pas, jak i AAS, **[P]** — dotyczy tylko platformy pas lub **[S]** — dotyczy tylko AAS.  
 
-1. **[A]** Setup host name resolution
-   You can either use a DNS server or modify the /etc/hosts on all nodes. This example shows how to use the /etc/hosts file.
-   Replace the IP address and the hostname in the following commands:  
-
-   ```
-   "sudo" vi/etc/hosts
-   ```
-
-   Insert the following lines to /etc/hosts. Change the IP address and hostname to match your environment.
+1. **[A]** rozpoznawanie nazw hostów można użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. W tym przykładzie pokazano, jak przy użyciu pliku/etc/hosts.
+   Zastąp adres IP i nazwę hosta w następujących poleceniach:  
 
    ```
-   # <a name="ip-address-of-the-load-balancer-frontend-configuration-for-sap-netweaver-ascs"></a>Adres IP z konfiguracji frontonu modułu równoważenia obciążenia dla SAP NetWeaver ASCS
+   sudo vi /etc/hosts
+   ```
+
+   Wstaw następujące wiersze do/etc/hosts. Zmień adres IP i nazwę hosta w taki sposób, aby odpowiadały Twojemu środowisku.
+
+   ```
+   # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS
    192.168.14.9 anftstsapvh
-   # <a name="ip-address-of-the-load-balancer-frontend-configuration-for-sap-netweaver-ascs-ers"></a>Adres IP z konfiguracji frontonu modułu równoważenia obciążenia dla SAP NetWeaver ASCS Wywołujących
-   192.168.14.10 anftstsapa01 anftstsapers 192.168.14.7 192.168.14.8 anftstsapa02
+   # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS ERS
+   192.168.14.10 anftstsapers
+   192.168.14.7 anftstsapa01
+   192.168.14.8 anftstsapa02
    ```
 
-1. **[A]** Create the sapmnt directory
-   Create the sapmnt directory.
+1. **[A]** Utwórz katalog sapmnt Utwórz katalog sapmnt.
    ```
-   "sudo" mkdir -p/sapmnt/QAS "sudo" mkdir -p /usr/sap/trans
+   sudo mkdir -p /sapmnt/QAS
+   sudo mkdir -p /usr/sap/trans
 
-   chattr "sudo" + i/sapmnt/QAS "sudo" chattr + i /usr/sap/trans
-   ```
-
-1. **[A]** Install NFS client and other requirements  
-
-   ```
-   "sudo" yum -y zainstalować uuidd utils systemu plików nfs
+   sudo chattr +i /sapmnt/QAS
+   sudo chattr +i /usr/sap/trans
    ```
 
-1. **[A]** Add mount entries  
+1. **[A]** Zainstaluj klienta NFS i inne wymagania  
 
    ```
-   "sudo" vi/etc/fstab
+   sudo yum -y install nfs-utils uuidd
+   ```
+
+1. **[A]** Dodawanie wpisów instalacji  
+
+   ```
+   sudo vi /etc/fstab
    
-   # <a name="add-the-following-lines-to-fstab-save-and-exit"></a>Dodaj następujące wiersze do fstab, Zapisz i zamknij
-   192.168.24.5:/sapQAS/sapmntQAS/sapmnt/QAS systemu plików nfs rw trudna, rsize = 65536, wsize = 65536, vers = 3 192.168.24.4:/transSAP /usr/sap/trans systemu plików nfs rw trudna, rsize 65536, wsize = = 65536, vers = 3
+   # Add the following lines to fstab, save and exit
+   192.168.24.5:/sapQAS/sapmntQAS /sapmnt/QAS nfs rw,hard,rsize=65536,wsize=65536,vers=3
+   192.168.24.4:/transSAP /usr/sap/trans nfs rw,hard,rsize=65536,wsize=65536,vers=3
    ```
 
-   Mount the new shares
+   Zainstaluj nowe udziały
 
    ```
    sudo mount -a
    ```
 
-1. **[P]** Create and mount the PAS directory  
+1. **[P]** Utwórz i zainstaluj katalog pas  
 
    ```
-   sudo mkdir -p /usr/sap/QAS/D02 sudo chattr +i /usr/sap/QAS/D02
+   sudo mkdir -p /usr/sap/QAS/D02
+   sudo chattr +i /usr/sap/QAS/D02
    
-   "sudo" vi/etc/fstab
-   # <a name="add-the-following-line-to-fstab"></a>Dodaj następujący wiersz do fstab
-   92.168.24.5:/sapQAS/usrsapQASpas /usr/sap/QAS/D02 systemu plików nfs rw trudna, rsize = 65536, wsize = 65536, vers = 3
+   sudo vi /etc/fstab
+   # Add the following line to fstab
+   92.168.24.5:/sapQAS/usrsapQASpas /usr/sap/QAS/D02 nfs rw,hard,rsize=65536,wsize=65536,vers=3
    
-   # <a name="mount"></a>Instalacja
+   # Mount
    sudo mount -a
    ```
 
-1. **[S]** Create and mount the AAS directory  
+1. **[S]** Utwórz i zainstaluj katalog AAS  
 
    ```
-   sudo mkdir -p /usr/sap/QAS/D03 sudo chattr +i /usr/sap/QAS/D03
+   sudo mkdir -p /usr/sap/QAS/D03
+   sudo chattr +i /usr/sap/QAS/D03
    
-   "sudo" vi/etc/fstab
-   # <a name="add-the-following-line-to-fstab"></a>Dodaj następujący wiersz do fstab
-   92.168.24.5:/sapQAS/usrsapQASaas /usr/sap/QAS/D03 systemu plików nfs rw trudna, rsize = 65536, wsize = 65536, vers = 3
+   sudo vi /etc/fstab
+   # Add the following line to fstab
+   92.168.24.5:/sapQAS/usrsapQASaas /usr/sap/QAS/D03 nfs rw,hard,rsize=65536,wsize=65536,vers=3
    
-   # <a name="mount"></a>Instalacja
+   # Mount
    sudo mount -a
    ```
 
 
-1. **[A]** Configure SWAP file
+1. **[A]** Skonfiguruj plik wymiany
  
    ```
    sudo vi /etc/waagent.conf
    
-   # <a name="set-the-property-resourcediskenableswap-to-y"></a>Ustaw właściwość ResourceDisk.EnableSwap y
-   # <a name="create-and-use-swapfile-on-resource-disk"></a>Utwórz i użyć pliku wymiany dysku zasobów.
+   # Set the property ResourceDisk.EnableSwap to y
+   # Create and use swapfile on resource disk.
    ResourceDisk.EnableSwap=y
    
-   # <a name="set-the-size-of-the-swap-file-with-property-resourcediskswapsizemb"></a>Ustawianie rozmiaru pliku wymiany z właściwością ResourceDisk.SwapSizeMB
-   # <a name="the-free-space-of-resource-disk-varies-by-virtual-machine-size-make-sure-that-you-do-not-set-a-value-that-is-too-big-you-can-check-the-swap-space-with-command-swapon"></a>Ilość wolnego miejsca na dysku zasobów jest zależna od rozmiaru maszyny wirtualnej. Upewnij się, że należy ustawiać wartości, które są zbyt duże. Możesz sprawdzić obszaru wymiany przy użyciu polecenia swapon
-   # <a name="size-of-the-swapfile"></a>Rozmiar pliku wymiany.
+   # Set the size of the SWAP file with property ResourceDisk.SwapSizeMB
+   # The free space of resource disk varies by virtual machine size. Make sure that you do not set a value that is too big. You can check the SWAP space with command swapon
+   # Size of the swapfile.
    ResourceDisk.SwapSizeMB=2000
    ```
 
-   Restart the Agent to activate the change
+   Uruchom ponownie agenta, aby aktywować zmianę
 
    ```
-   ponowne uruchomienie waagent usługi "sudo"
+   sudo service waagent restart
    ```
 
-## Install database
+## <a name="install-database"></a>Zainstaluj bazę danych
 
-In this example, SAP NetWeaver is installed on SAP HANA. You can use every supported database for this installation. For more information on how to install SAP HANA in Azure, see [High availability of SAP HANA on Azure VMs on Red Hat Enterprise Linux][sap-hana-ha]. For a list of supported databases, see [SAP Note 1928533][1928533].
+W tym przykładzie system SAP NetWeaver jest instalowany na SAP HANA. Dla tej instalacji można użyć każdej obsługiwanej bazy danych. Aby uzyskać więcej informacji na temat instalowania SAP HANA na platformie Azure, zobacz [wysoka dostępność SAP HANA na maszynach wirtualnych platformy Azure w Red Hat Enterprise Linux][sap-hana-ha]. For a list of supported databases, see [SAP Note 1928533][1928533].
 
-1. Run the SAP database instance installation
+1. Uruchamianie instalacji wystąpienia bazy danych SAP
 
-   Install the SAP NetWeaver database instance as root using a virtual hostname that maps to the IP address of the load balancer frontend configuration for the database.
+   Zainstaluj wystąpienie bazy danych SAP NetWeaver jako element główny przy użyciu wirtualnej nazwy hosta, która jest mapowana na adres IP konfiguracji frontonu modułu równoważenia obciążenia dla bazy danych.
 
-   You can use the sapinst parameter SAPINST_REMOTE_ACCESS_USER to allow a non-root user to connect to sapinst.
-
-   ```
-   "sudo" <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER = sapadmin
-   ```
-
-## SAP NetWeaver application server installation
-
-Follow these steps to install an SAP application server.
-
-1. Prepare application server
-
-   Follow the steps in the chapter [SAP NetWeaver application server preparation](high-availability-guide-rhel.md#2d6008b0-685d-426c-b59e-6cd281fd45d7) above to prepare the application server.
-
-1. Install SAP NetWeaver application server
-
-   Install a primary or additional SAP NetWeaver applications server.
-
-   You can use the sapinst parameter SAPINST_REMOTE_ACCESS_USER to allow a non-root user to connect to sapinst.
+   Można użyć sapinst parametru SAPINST_REMOTE_ACCESS_USER, aby zezwolić niegłównemu użytkownikowi na łączenie się z usługą sapinst.
 
    ```
-   "sudo" <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER = sapadmin
+   sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin
    ```
 
-1. Update SAP HANA secure store
+## <a name="sap-netweaver-application-server-installation"></a>Instalacja serwera aplikacji SAP NetWeaver
 
-   Update the SAP HANA secure store to point to the virtual name of the SAP HANA System Replication setup.
+Wykonaj następujące kroki, aby zainstalować serwer aplikacji SAP.
 
-   Run the following command to list the entries as \<sapsid>adm
+1. Przygotuj serwer aplikacji
+
+   Aby przygotować serwer aplikacji, wykonaj kroki opisane w rozdziale " [Przygotowywanie serwera aplikacji SAP NetWeaver](high-availability-guide-rhel.md#2d6008b0-685d-426c-b59e-6cd281fd45d7) " powyżej.
+
+1. Zainstaluj serwer aplikacji SAP NetWeaver
+
+   Zainstaluj podstawowy lub dodatkowy serwer aplikacji SAP NetWeaver.
+
+   Można użyć sapinst parametru SAPINST_REMOTE_ACCESS_USER, aby zezwolić niegłównemu użytkownikowi na łączenie się z usługą sapinst.
 
    ```
-   hdbuserstore listy
+   sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin
    ```
 
-   This should list all entries and should look similar to
+1. Aktualizacja SAP HANA bezpiecznego magazynu
+
+   Zaktualizuj SAP HANA bezpiecznego magazynu, aby wskazywał nazwę wirtualną konfiguracji replikacji systemu SAP HANA.
+
+   Uruchom następujące polecenie, aby wyświetlić listę wpisów jako \<sapsid > adm
+
    ```
-   DANE pliku: /home/qasadm/.hdb/anftstsapa01/SSFS_HDB. Plik klucza DAT: /home/qasadm/.hdb/anftstsapa01/SSFS_HDB. KLUCZ
+   hdbuserstore List
+   ```
+
+   Powinno to być lista wszystkich wpisów i powinna wyglądać podobnie do
+   ```
+   DATA FILE       : /home/qasadm/.hdb/anftstsapa01/SSFS_HDB.DAT
+   KEY FILE        : /home/qasadm/.hdb/anftstsapa01/SSFS_HDB.KEY
    
-   ŚRODOWISKO DOMYŚLNE KLUCZA: UŻYTKOWNIK 192.168.14.4:30313: SAPABAP1   DATABASE: QAS
+   KEY DEFAULT
+     ENV : 192.168.14.4:30313
+     USER: SAPABAP1
+     DATABASE: QAS
    ```
 
-   The output shows that the IP address of the default entry is pointing to the virtual machine and not to the load balancer's IP address. This entry needs to be changed to point to the virtual hostname of the load balancer. Make sure to use the same port (**30313** in the output above) and database name (**QAS** in the output above)!
+   Dane wyjściowe wskazują, że adres IP wpisu domyślnego wskazuje maszynę wirtualną, a nie adres IP modułu równoważenia obciążenia. Ten wpis należy zmienić, aby wskazywał wirtualną nazwę hosta usługi równoważenia obciążenia. Upewnij się, że używasz tego samego portu (**30313** w danych wyjściowych powyżej) i nazwy bazy danych (**QAS** w danych wyjściowych powyżej)!
 
    ```
-   Jednostka su — hdbuserstore qasadm SET DEFAULT qasdb:30313@QAS SAPABAP1 <password of ABAP schema>
+   su - qasadm
+   hdbuserstore SET DEFAULT qasdb:30313@QAS SAPABAP1 <password of ABAP schema>
    ```
 
-## Test the cluster setup
+## <a name="test-the-cluster-setup"></a>Testowanie konfiguracji klastra
 
-1. Manually migrate the ASCS instance
+1. Ręczne Migrowanie wystąpienia ASCS
 
-   Resource state before starting the test:
-
-   ```
-    rsc_st_azure (stonith:fence_azure_arm):      Do grupy zasobów anftstsapcl1: g QAS_ASCS fs_QAS_ASCS (ocf::heartbeat:Filesystem):    Pracę anftstsapcl1 nc_QAS_ASCS (ocf::heartbeat:azure-lb):      Rozpoczęto anftstsapcl1 vip_QAS_ASCS (ocf::heartbeat:IPaddr2):       Pracę anftstsapcl1 rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Do grupy zasobów anftstsapcl1: g QAS_AERS fs_QAS_AERS (ocf::heartbeat:Filesystem):    Pracę anftstsapcl2 nc_QAS_AERS (ocf::heartbeat:azure-lb):      Rozpoczęto anftstsapcl2 vip_QAS_AERS (ocf::heartbeat:IPaddr2):       Pracę anftstsapcl2 rsc_sap_QAS_ERS01 (ocf::heartbeat:SAPInstance):   Rozpoczęto anftstsapcl2
-   ```
-
-   Run the following commands as root to migrate the ASCS instance.
+   Stan zasobu przed rozpoczęciem testu:
 
    ```
-   [root@anftstsapcl1 ~] rsc_sap_QAS_ASCS00 przenoszenia zasobów komputerów #
+    rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl1
+    Resource Group: g-QAS_ASCS
+        fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
+        vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
+        rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
+    Resource Group: g-QAS_AERS
+        fs_QAS_AERS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
+        nc_QAS_AERS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
+        vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
+        rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
+   ```
+
+   Uruchom następujące polecenia jako główne, aby zmigrować wystąpienie ASCS.
+
+   ```
+   [root@anftstsapcl1 ~]# pcs resource move rsc_sap_QAS_ASCS00
    
-   [root@anftstsapcl1 ~] # komputerów resource wyczyścić rsc_sap_QAS_ASCS00
+   [root@anftstsapcl1 ~]# pcs resource clear rsc_sap_QAS_ASCS00
    
-   # <a name="remove-failed-actions-for-the-ers-that-occurred-as-part-of-the-migration"></a>Usuń zakończone niepowodzeniem akcje w przypadku Wywołujących, które wystąpiły w ramach migracji
-   [root@anftstsapcl1 ~] rsc_sap_QAS_ERS01 Oczyszczanie zasobów komputerów #
+   # Remove failed actions for the ERS that occurred as part of the migration
+   [root@anftstsapcl1 ~]# pcs resource cleanup rsc_sap_QAS_ERS01
    ```
 
-   Resource state after the test:
+   Stan zasobu po teście:
 
    ```
-   rsc_st_azure (stonith:fence_azure_arm):      Do grupy zasobów anftstsapcl1: g QAS_ASCS fs_QAS_ASCS (ocf::heartbeat:Filesystem):    Pracę anftstsapcl2 nc_QAS_ASCS (ocf::heartbeat:azure-lb):      Rozpoczęto anftstsapcl2 vip_QAS_ASCS (ocf::heartbeat:IPaddr2):       Pracę anftstsapcl2 rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Do grupy zasobów anftstsapcl2: g QAS_AERS fs_QAS_AERS (ocf::heartbeat:Filesystem):    Pracę anftstsapcl1 nc_QAS_AERS (ocf::heartbeat:azure-lb):      Rozpoczęto anftstsapcl1 vip_QAS_AERS (ocf::heartbeat:IPaddr2):       Pracę anftstsapcl1 rsc_sap_QAS_ERS01 (ocf::heartbeat:SAPInstance):   Rozpoczęto anftstsapcl1
+   rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl1
+    Resource Group: g-QAS_ASCS
+        fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
+        vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
+        rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
+    Resource Group: g-QAS_AERS
+        fs_QAS_AERS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
+        nc_QAS_AERS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
+        vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
+        rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    ```
 
-1. Simulate node crash
+1. Symulowanie awarii węzła
 
-   Resource state before starting the test:
-
-   ```
-   rsc_st_azure (stonith:fence_azure_arm):      Do grupy zasobów anftstsapcl1: g QAS_ASCS fs_QAS_ASCS (ocf::heartbeat:Filesystem):    Pracę anftstsapcl2 nc_QAS_ASCS (ocf::heartbeat:azure-lb):      Rozpoczęto anftstsapcl2 vip_QAS_ASCS (ocf::heartbeat:IPaddr2):       Pracę anftstsapcl2 rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Do grupy zasobów anftstsapcl2: g QAS_AERS fs_QAS_AERS (ocf::heartbeat:Filesystem):    Pracę anftstsapcl1 nc_QAS_AERS (ocf::heartbeat:azure-lb):      Rozpoczęto anftstsapcl1 vip_QAS_AERS (ocf::heartbeat:IPaddr2):       Pracę anftstsapcl1 rsc_sap_QAS_ERS01 (ocf::heartbeat:SAPInstance):   Rozpoczęto anftstsapcl1
-   ```
-
-   Run the following command as root on the node where the ASCS instance is running
+   Stan zasobu przed rozpoczęciem testu:
 
    ```
-   [root@anftstsapcl2 ~] # echo b > /proc/sysrq-trigger
+   rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl1
+    Resource Group: g-QAS_ASCS
+        fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
+        vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
+        rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
+    Resource Group: g-QAS_AERS
+        fs_QAS_AERS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
+        nc_QAS_AERS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
+        vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
+        rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    ```
 
-   The status after the node is started again should look like this.
+   Uruchom następujące polecenie jako element główny w węźle, w którym jest uruchomione wystąpienie ASCS
 
    ```
-   Online: [anftstsapcl1 anftstsapcl2]
+   [root@anftstsapcl2 ~]# echo b > /proc/sysrq-trigger
+   ```
+
+   Stan po ponownym uruchomieniu węzła powinien wyglądać następująco.
+
+   ```
+   Online: [ anftstsapcl1 anftstsapcl2 ]
    
-   Pełną listę zasobów:
+   Full list of resources:
    
-   rsc_st_azure (stonith:fence_azure_arm):      Do grupy zasobów anftstsapcl1: g QAS_ASCS fs_QAS_ASCS (ocf::heartbeat:Filesystem):    Pracę anftstsapcl1 nc_QAS_ASCS (ocf::heartbeat:azure-lb):      Rozpoczęto anftstsapcl1 vip_QAS_ASCS (ocf::heartbeat:IPaddr2):       Pracę anftstsapcl1 rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Do grupy zasobów anftstsapcl1: g QAS_AERS fs_QAS_AERS (ocf::heartbeat:Filesystem):    Pracę anftstsapcl2 nc_QAS_AERS (ocf::heartbeat:azure-lb):      Rozpoczęto anftstsapcl2 vip_QAS_AERS (ocf::heartbeat:IPaddr2):       Pracę anftstsapcl2 rsc_sap_QAS_ERS01 (ocf::heartbeat:SAPInstance):   Rozpoczęto anftstsapcl2
+   rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl1
+    Resource Group: g-QAS_ASCS
+        fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
+        vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
+        rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
+    Resource Group: g-QAS_AERS
+        fs_QAS_AERS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
+        nc_QAS_AERS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
+        vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
+        rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    
-   Akcje zakończone niepowodzeniem:
-   * rsc_sap_QAS_ERS01_monitor_11000 na anftstsapcl1 nie działa (7): wywołanie = 45, stan = zakończeniu exitreason = ",
+   Failed Actions:
+   * rsc_sap_QAS_ERS01_monitor_11000 on anftstsapcl1 'not running' (7): call=45, status=complete, exitreason='',
    ```
 
-   Use the following command to clean the failed resources.
+   Użyj poniższego polecenia, aby wyczyścić zasoby zakończone niepowodzeniem.
 
    ```
-   [root@anftstsapcl1 ~] rsc_sap_QAS_ERS01 Oczyszczanie zasobów komputerów #
+   [root@anftstsapcl1 ~]# pcs resource cleanup rsc_sap_QAS_ERS01
    ```
 
-   Resource state after the test:
+   Stan zasobu po teście:
 
    ```
-   rsc_st_azure (stonith:fence_azure_arm):      Do grupy zasobów anftstsapcl1: g QAS_ASCS fs_QAS_ASCS (ocf::heartbeat:Filesystem):    Pracę anftstsapcl1 nc_QAS_ASCS (ocf::heartbeat:azure-lb):      Rozpoczęto anftstsapcl1 vip_QAS_ASCS (ocf::heartbeat:IPaddr2):       Pracę anftstsapcl1 rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Do grupy zasobów anftstsapcl1: g QAS_AERS fs_QAS_AERS (ocf::heartbeat:Filesystem):    Pracę anftstsapcl2 nc_QAS_AERS (ocf::heartbeat:azure-lb):      Rozpoczęto anftstsapcl2 vip_QAS_AERS (ocf::heartbeat:IPaddr2):       Pracę anftstsapcl2 rsc_sap_QAS_ERS01 (ocf::heartbeat:SAPInstance):   Rozpoczęto anftstsapcl2
+   rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl1
+    Resource Group: g-QAS_ASCS
+        fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
+        vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
+        rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
+    Resource Group: g-QAS_AERS
+        fs_QAS_AERS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
+        nc_QAS_AERS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
+        vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
+        rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    ```
 
-1. Kill message server process
+1. Przerwij proces serwera komunikatów
 
-   Resource state before starting the test:
+   Stan zasobu przed rozpoczęciem testu:
 
    ```
-   rsc_st_azure (stonith:fence_azure_arm):      Do grupy zasobów anftstsapcl1: g QAS_ASCS fs_QAS_ASCS (ocf::heartbeat:Filesystem):    Pracę anftstsapcl1 nc_QAS_ASCS (ocf::heartbeat:azure-lb):      Rozpoczęto anftstsapcl1 vip_QAS_ASCS (ocf::heartbeat:IPaddr2):       Pracę anftstsapcl1 rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Do grupy zasobów anftstsapcl1: g QAS_AERS fs_QAS_AERS (ocf::heartbeat:Filesystem):    Pracę anftstsapcl2 nc_QAS_AERS (ocf::heartbeat:azure-lb):      Rozpoczęto anftstsapcl2 vip_QAS_AERS (ocf::heartbeat:IPaddr2):       Pracę anftstsapcl2 rsc_sap_QAS_ERS01 (ocf::heartbeat:SAPInstance):   Rozpoczęto anftstsapcl2
+   rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl1
+    Resource Group: g-QAS_ASCS
+        fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
+        vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
+        rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
+    Resource Group: g-QAS_AERS
+        fs_QAS_AERS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
+        nc_QAS_AERS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
+        vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
+        rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    ```
    
-   Run the following commands as root to identify the process of the message server and kill it.
+   Uruchom następujące polecenia jako główne, aby zidentyfikować proces serwera komunikatów i Kasuj go.
 
    ```
-   [root@anftstsapcl1 ~] # pgrep ms.sapQAS | xargs kill -9
+   [root@anftstsapcl1 ~]# pgrep ms.sapQAS | xargs kill -9
    ```
 
-   If you only kill the message server once, it will be restarted by `sapstart`. If you kill it often enough, Pacemaker will eventually move the ASCS instance to the other node. Run the following commands as root to clean up the resource state of the ASCS and ERS instance after the test.
+   Jeśli serwer wiadomości zostanie skasowany tylko raz, zostanie on ponownie uruchomiony przez `sapstart`program. Jeśli zakończysz go często, Pacemaker będzie ostatecznie przenieść wystąpienie ASCS do innego węzła. Uruchom następujące polecenia jako główne, aby wyczyścić stan zasobu wystąpienia ASCS i wykres WYWOŁUJĄCYCH po teście.
 
    ```
-   [root@anftstsapcl1 ~] rsc_sap_QAS_ASCS00 Oczyszczanie zasobów komputerów # [root@anftstsapcl1 ~] rsc_sap_QAS_ERS01 Oczyszczanie zasobów komputerów #
+   [root@anftstsapcl1 ~]# pcs resource cleanup rsc_sap_QAS_ASCS00
+   [root@anftstsapcl1 ~]# pcs resource cleanup rsc_sap_QAS_ERS01
    ```
 
-   Resource state after the test:
+   Stan zasobu po teście:
 
    ```
-   rsc_st_azure (stonith:fence_azure_arm):      Do grupy zasobów anftstsapcl1: g QAS_ASCS fs_QAS_ASCS (ocf::heartbeat:Filesystem):    Pracę anftstsapcl2 nc_QAS_ASCS (ocf::heartbeat:azure-lb):      Rozpoczęto anftstsapcl2 vip_QAS_ASCS (ocf::heartbeat:IPaddr2):       Pracę anftstsapcl2 rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Do grupy zasobów anftstsapcl2: g QAS_AERS fs_QAS_AERS (ocf::heartbeat:Filesystem):    Pracę anftstsapcl1 nc_QAS_AERS (ocf::heartbeat:azure-lb):      Rozpoczęto anftstsapcl1 vip_QAS_AERS (ocf::heartbeat:IPaddr2):       Pracę anftstsapcl1 rsc_sap_QAS_ERS01 (ocf::heartbeat:SAPInstance):   Rozpoczęto anftstsapcl1
+   rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl1
+    Resource Group: g-QAS_ASCS
+        fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
+        vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
+        rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
+    Resource Group: g-QAS_AERS
+        fs_QAS_AERS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
+        nc_QAS_AERS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
+        vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
+        rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    ```
 
-1. Kill enqueue server process
+1. Kasuj proces serwera z kolejki
 
-   Resource state before starting the test:
-
-   ```
-   rsc_st_azure (stonith:fence_azure_arm):      Do grupy zasobów anftstsapcl1: g QAS_ASCS fs_QAS_ASCS (ocf::heartbeat:Filesystem):    Pracę anftstsapcl2 nc_QAS_ASCS (ocf::heartbeat:azure-lb):      Rozpoczęto anftstsapcl2 vip_QAS_ASCS (ocf::heartbeat:IPaddr2):       Pracę anftstsapcl2 rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Do grupy zasobów anftstsapcl2: g QAS_AERS fs_QAS_AERS (ocf::heartbeat:Filesystem):    Pracę anftstsapcl1 nc_QAS_AERS (ocf::heartbeat:azure-lb):      Rozpoczęto anftstsapcl1 vip_QAS_AERS (ocf::heartbeat:IPaddr2):       Pracę anftstsapcl1 rsc_sap_QAS_ERS01 (ocf::heartbeat:SAPInstance):   Rozpoczęto anftstsapcl1
-   ```
-
-   Run the following commands as root on the node where the ASCS instance is running to kill the enqueue server.
+   Stan zasobu przed rozpoczęciem testu:
 
    ```
-   [root@anftstsapcl2 ~] # pgrep en.sapQAS | xargs kill -9
+   rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl1
+    Resource Group: g-QAS_ASCS
+        fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
+        vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
+        rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
+    Resource Group: g-QAS_AERS
+        fs_QAS_AERS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
+        nc_QAS_AERS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
+        vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
+        rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    ```
 
-   The ASCS instance should immediately fail over to the other node. The ERS instance should also fail over after the ASCS instance is started. Run the following commands as root to clean up the resource state of the ASCS and ERS instance after the test.
+   Uruchom następujące polecenia jako element główny w węźle, w którym uruchomiono wystąpienie ASCS, aby skasować serwer z kolejki.
 
    ```
-   [root@anftstsapcl2 ~] rsc_sap_QAS_ASCS00 Oczyszczanie zasobów komputerów # [root@anftstsapcl2 ~] rsc_sap_QAS_ERS01 Oczyszczanie zasobów komputerów #
+   [root@anftstsapcl2 ~]# pgrep en.sapQAS | xargs kill -9
    ```
 
-   Resource state after the test:
+   Wystąpienie ASCS powinno natychmiast przejść w tryb failover do innego węzła. Wystąpienie wykres WYWOŁUJĄCYCH powinno również przechodzić w tryb failover po rozpoczęciu wystąpienia ASCS. Uruchom następujące polecenia jako główne, aby wyczyścić stan zasobu wystąpienia ASCS i wykres WYWOŁUJĄCYCH po teście.
 
    ```
-   rsc_st_azure (stonith:fence_azure_arm):      Do grupy zasobów anftstsapcl1: g QAS_ASCS fs_QAS_ASCS (ocf::heartbeat:Filesystem):    Pracę anftstsapcl1 nc_QAS_ASCS (ocf::heartbeat:azure-lb):      Rozpoczęto anftstsapcl1 vip_QAS_ASCS (ocf::heartbeat:IPaddr2):       Pracę anftstsapcl1 rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Do grupy zasobów anftstsapcl1: g QAS_AERS fs_QAS_AERS (ocf::heartbeat:Filesystem):    Pracę anftstsapcl2 nc_QAS_AERS (ocf::heartbeat:azure-lb):      Rozpoczęto anftstsapcl2 vip_QAS_AERS (ocf::heartbeat:IPaddr2):       Pracę anftstsapcl2 rsc_sap_QAS_ERS01 (ocf::heartbeat:SAPInstance):   Rozpoczęto anftstsapcl2
+   [root@anftstsapcl2 ~]# pcs resource cleanup rsc_sap_QAS_ASCS00
+   [root@anftstsapcl2 ~]# pcs resource cleanup rsc_sap_QAS_ERS01
    ```
 
-1. Kill enqueue replication server process
-
-   Resource state before starting the test:
+   Stan zasobu po teście:
 
    ```
-   rsc_st_azure (stonith:fence_azure_arm):      Do grupy zasobów anftstsapcl1: g QAS_ASCS fs_QAS_ASCS (ocf::heartbeat:Filesystem):    Pracę anftstsapcl1 nc_QAS_ASCS (ocf::heartbeat:azure-lb):      Rozpoczęto anftstsapcl1 vip_QAS_ASCS (ocf::heartbeat:IPaddr2):       Pracę anftstsapcl1 rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Do grupy zasobów anftstsapcl1: g QAS_AERS fs_QAS_AERS (ocf::heartbeat:Filesystem):    Pracę anftstsapcl2 nc_QAS_AERS (ocf::heartbeat:azure-lb):      Rozpoczęto anftstsapcl2 vip_QAS_AERS (ocf::heartbeat:IPaddr2):       Pracę anftstsapcl2 rsc_sap_QAS_ERS01 (ocf::heartbeat:SAPInstance):   Rozpoczęto anftstsapcl2
+   rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl1
+    Resource Group: g-QAS_ASCS
+        fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
+        vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
+        rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
+    Resource Group: g-QAS_AERS
+        fs_QAS_AERS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
+        nc_QAS_AERS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
+        vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
+        rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    ```
 
-   Run the following command as root on the node where the ERS instance is running to kill the enqueue replication server process.
+1. Kasuj proces serwera replikacji z kolejki
+
+   Stan zasobu przed rozpoczęciem testu:
 
    ```
-   [root@anftstsapcl2 ~] # pgrep er.sapQAS | xargs kill -9
+   rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl1
+    Resource Group: g-QAS_ASCS
+        fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
+        vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
+        rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
+    Resource Group: g-QAS_AERS
+        fs_QAS_AERS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
+        nc_QAS_AERS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
+        vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
+        rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    ```
 
-   If you only run the command once, `sapstart` will restart the process. If you run it often enough, `sapstart` will not restart the process and the resource will be in a stopped state. Run the following commands as root to clean up the resource state of the ERS instance after the test.
+   Uruchom następujące polecenie jako element główny w węźle, w którym uruchomiono wystąpienie wykres WYWOŁUJĄCYCH, aby skasować proces serwera replikacji z kolejki.
 
    ```
-   [root@anftstsapcl2 ~] rsc_sap_QAS_ERS01 Oczyszczanie zasobów komputerów #
+   [root@anftstsapcl2 ~]# pgrep er.sapQAS | xargs kill -9
    ```
 
-   Resource state after the test:
+   Jeśli uruchamiasz polecenie tylko raz, `sapstart` program uruchomi ponownie ten proces. Jeśli uruchomisz go często, `sapstart` program nie uruchomi ponownie procesu, a zasób stanie się zatrzymany. Uruchom następujące polecenia jako główne, aby wyczyścić stan zasobu wystąpienia wykres WYWOŁUJĄCYCH po teście.
 
    ```
-   rsc_st_azure (stonith:fence_azure_arm):      Do grupy zasobów anftstsapcl1: g QAS_ASCS fs_QAS_ASCS (ocf::heartbeat:Filesystem):    Pracę anftstsapcl1 nc_QAS_ASCS (ocf::heartbeat:azure-lb):      Rozpoczęto anftstsapcl1 vip_QAS_ASCS (ocf::heartbeat:IPaddr2):       Pracę anftstsapcl1 rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Do grupy zasobów anftstsapcl1: g QAS_AERS fs_QAS_AERS (ocf::heartbeat:Filesystem):    Pracę anftstsapcl2 nc_QAS_AERS (ocf::heartbeat:azure-lb):      Rozpoczęto anftstsapcl2 vip_QAS_AERS (ocf::heartbeat:IPaddr2):       Pracę anftstsapcl2 rsc_sap_QAS_ERS01 (ocf::heartbeat:SAPInstance):   Rozpoczęto anftstsapcl2
+   [root@anftstsapcl2 ~]# pcs resource cleanup rsc_sap_QAS_ERS01
    ```
 
-1. Kill enqueue sapstartsrv process
-
-   Resource state before starting the test:
+   Stan zasobu po teście:
 
    ```
-   rsc_st_azure (stonith:fence_azure_arm):      Do grupy zasobów anftstsapcl1: g QAS_ASCS fs_QAS_ASCS (ocf::heartbeat:Filesystem):    Pracę anftstsapcl1 nc_QAS_ASCS (ocf::heartbeat:azure-lb):      Rozpoczęto anftstsapcl1 vip_QAS_ASCS (ocf::heartbeat:IPaddr2):       Pracę anftstsapcl1 rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Do grupy zasobów anftstsapcl1: g QAS_AERS fs_QAS_AERS (ocf::heartbeat:Filesystem):    Pracę anftstsapcl2 nc_QAS_AERS (ocf::heartbeat:azure-lb):      Rozpoczęto anftstsapcl2 vip_QAS_AERS (ocf::heartbeat:IPaddr2):       Pracę anftstsapcl2 rsc_sap_QAS_ERS01 (ocf::heartbeat:SAPInstance):   Rozpoczęto anftstsapcl2
+   rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl1
+    Resource Group: g-QAS_ASCS
+        fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
+        vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
+        rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
+    Resource Group: g-QAS_AERS
+        fs_QAS_AERS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
+        nc_QAS_AERS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
+        vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
+        rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    ```
 
-   Run the following commands as root on the node where the ASCS is running.
+1. Kasuj proces sapstartsrvnia w kolejce
+
+   Stan zasobu przed rozpoczęciem testu:
 
    ```
-   [root@anftstsapcl1 ~] # pgrep -fl ASCS00.*sapstartsrv
-   # <a name="59545-sapstartsrv"></a>59545 sapstartsrv
+   rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl1
+    Resource Group: g-QAS_ASCS
+        fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
+        vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
+        rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
+    Resource Group: g-QAS_AERS
+        fs_QAS_AERS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
+        nc_QAS_AERS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
+        vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
+        rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
+   ```
+
+   Uruchom następujące polecenia jako element główny w węźle, w którym działa ASCS.
+
+   ```
+   [root@anftstsapcl1 ~]# pgrep -fl ASCS00.*sapstartsrv
+   # 59545 sapstartsrv
    
-   [root@anftstsapcl1 ~] # ataku typu kill 59545-9
+   [root@anftstsapcl1 ~]# kill -9 59545
    ```
 
-   The sapstartsrv process should always be restarted by the Pacemaker resource agent as part of the monitoring. Resource state after the test:
+   Proces sapstartsrv powinien być zawsze ponownie uruchamiany przez agenta zasobów Pacemaker w ramach monitorowania. Stan zasobu po teście:
 
    ```
-   rsc_st_azure (stonith:fence_azure_arm):      Do grupy zasobów anftstsapcl1: g QAS_ASCS fs_QAS_ASCS (ocf::heartbeat:Filesystem):    Pracę anftstsapcl1 nc_QAS_ASCS (ocf::heartbeat:azure-lb):      Rozpoczęto anftstsapcl1 vip_QAS_ASCS (ocf::heartbeat:IPaddr2):       Pracę anftstsapcl1 rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Do grupy zasobów anftstsapcl1: g QAS_AERS fs_QAS_AERS (ocf::heartbeat:Filesystem):    Pracę anftstsapcl2 nc_QAS_AERS (ocf::heartbeat:azure-lb):      Rozpoczęto anftstsapcl2 vip_QAS_AERS (ocf::heartbeat:IPaddr2):       Pracę anftstsapcl2 rsc_sap_QAS_ERS01 (ocf::heartbeat:SAPInstance):   Rozpoczęto anftstsapcl2
+   rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl1
+    Resource Group: g-QAS_ASCS
+        fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
+        vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
+        rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
+    Resource Group: g-QAS_AERS
+        fs_QAS_AERS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
+        nc_QAS_AERS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
+        vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
+        rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    ```
 
-## Next steps
+## <a name="next-steps"></a>Następne kroki
 
-* [Azure Virtual Machines planning and implementation for SAP][planning-guide]
-* [Azure Virtual Machines deployment for SAP][deployment-guide]
-* [Azure Virtual Machines DBMS deployment for SAP][dbms-guide]
-* To learn how to establish high availability and plan for disaster recovery of SAP HANA on Azure (large instances), see [SAP HANA (large instances) high availability and disaster recovery on Azure](hana-overview-high-availability-disaster-recovery.md).
-* To learn how to establish high availability and plan for disaster recovery of SAP HANA on Azure VMs, see [High Availability of SAP HANA on Azure Virtual Machines (VMs)][sap-hana-ha]
+* [Planowanie i wdrażanie Virtual Machines platformy Azure dla oprogramowania SAP][planning-guide]
+* [Wdrożenie Virtual Machines platformy Azure dla oprogramowania SAP][deployment-guide]
+* [Wdrożenie systemu Azure Virtual Machines DBMS dla oprogramowania SAP][dbms-guide]
+* Aby dowiedzieć się, jak stworzyć wysoką dostępność i zaplanować odzyskiwanie po awarii SAP HANA na platformie Azure (duże wystąpienia), zobacz [SAP HANA (duże wystąpienia) wysoka dostępność i odzyskiwanie po awarii na platformie Azure](hana-overview-high-availability-disaster-recovery.md).
+* Aby dowiedzieć się, jak zapewnić wysoką dostępność i zaplanować odzyskiwanie po awarii SAP HANA na maszynach wirtualnych platformy Azure, zobacz [wysoka dostępność SAP HANA na platformie azure Virtual Machines (maszyny wirtualne)][sap-hana-ha]

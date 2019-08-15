@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Automation hybrydowego procesu roboczego Runbook
-description: Ten artykuł zawiera informacje na temat instalowania i przy użyciu hybrydowego procesu roboczego Runbook, jest to funkcja usługi Azure Automation, którego używasz do uruchamiania elementów runbook na maszynach w lokalnym centrum danych lub dostawca usług w chmurze.
+title: Azure Automation hybrydowy proces roboczy elementu Runbook
+description: Ten artykuł zawiera informacje na temat instalowania i używania hybrydowego procesu roboczego elementu Runbook, który jest funkcją Azure Automation, której można użyć do uruchamiania elementów Runbook na maszynach w lokalnym dostawcy centrum danych lub w chmurze.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,30 +9,30 @@ ms.author: robreed
 ms.date: 04/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fceeed47ee77207e00ebfc619226ecbb5956bc3d
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 015318b1695f76121662b82e94b37de1ddb63b1b
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478531"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952937"
 ---
-# <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatyzuj zasobów w centrum danych lub w chmurze przy użyciu hybrydowego procesu roboczego Runbook
+# <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatyzowanie zasobów w centrum danych lub w chmurze przy użyciu hybrydowego procesu roboczego elementu Runbook
 
-Elementy Runbook w usłudze Azure Automation może nie mieć dostępu do zasobów w innych chmurach lub w środowisku w środowisku lokalnym, ponieważ są one uruchomione na platformie Azure w chmurze. Funkcja hybrydowego procesu roboczego Runbook usługi Azure Automation umożliwia uruchamianie elementów runbook bezpośrednio na komputerze, który jest hostem roli i w odniesieniu do zasobów w środowisku w celu zarządzania tymi zasobami lokalnymi. Elementy Runbook są przechowywane i zarządzane w usłudze Azure Automation i następnie dostarczane do co najmniej jeden przypisany komputer.
+Elementy Runbook w programie Azure Automation mogą nie mieć dostępu do zasobów w innych chmurach lub w środowisku lokalnym, ponieważ działają na platformie Azure w chmurze. Za pomocą funkcji hybrydowego procesu roboczego elementu Runbook programu Azure Automation można uruchamiać elementy Runbook bezpośrednio na komputerze hostującym rolę i w odniesieniu do zasobów w środowisku, aby zarządzać tymi zasobami lokalnymi. Elementy Runbook są przechowywane i zarządzane w Azure Automation a następnie dostarczane do co najmniej jednego przypisanego komputera.
 
-Na poniższym obrazie przedstawiono tę funkcję:
+Na poniższej ilustracji przedstawiono tę funkcję:
 
 ![Omówienie hybrydowych procesów roboczych elementów Runbook](media/automation-hybrid-runbook-worker/automation.png)
 
-Każdy hybrydowy proces roboczy elementu Runbook jest członkiem grupy hybrydowego procesu roboczego Runbook, który jest określany podczas instalacji agenta. Grupa może obejmować jednego agenta, ale można zainstalować wielu agentów w grupie w celu zapewnienia wysokiej dostępności.
+Każdy hybrydowy proces roboczy elementu Runbook jest członkiem grupy hybrydowych procesów roboczych elementu Runbook, która została określona podczas instalacji agenta. Grupa może zawierać jednego agenta, ale w celu zapewnienia wysokiej dostępności można zainstalować wielu agentów w grupie.
 
-Podczas uruchamiania elementu runbook w hybrydowym procesie roboczym elementu Runbook należy określić grupę, która działa na. Każdemu procesowi roboczemu w tej grupie sonduje usługę Azure Automation, aby sprawdzić, czy wszystkie zadania są dostępne. Jeśli zadanie jest dostępna, to pierwszy proces roboczy, aby zakończyć dane zadanie przełączy go. Czas przetwarzania kolejki zadań zależy od tego, profil sprzętu procesu roboczego hybrydowego i obciążenia. Nie można określić określonego procesu roboczego. Hybrydowych procesów roboczych Runbook nie udostępniaj wiele ograniczeń, które mają piaskownic platformy Azure. Nie mają takie same ograniczenia miejsca na dysku, pamięci lub gniazd sieciowych. Jedynym ograniczeniem jest hybrydowych procesów roboczych Runbook przez zasoby hybrydowego procesu roboczego Runbook sam. Ponadto hybrydowych procesów roboczych Runbook nie należy udostępniać 180 minut [udział](automation-runbook-execution.md#fair-share) limitu czasu, który do piaskownic usługi Azure. Aby dowiedzieć się więcej o limitach usługi do piaskownic usługi Azure i hybrydowych procesów roboczych Runbook, zobacz zadania [limity](../azure-subscription-service-limits.md#automation-limits) strony.
+Po uruchomieniu elementu Runbook w hybrydowym procesie roboczym elementu Runbook należy określić grupę, w której ma ona działać. Każdy proces roboczy w grupie sonduje Azure Automation, aby sprawdzić, czy jakieś zadania są dostępne. Jeśli zadanie jest dostępne, pierwszy proces roboczy, aby pobrać to zadanie. Czas przetwarzania kolejki zadań zależy od profilu sprzętu hybrydowego procesu roboczego i obciążenia. Nie można określić określonego pracownika. Hybrydowe procesy robocze elementów Runbook nie udostępniają wielu limitów, które są dostępne w piaskownicach platformy Azure. Nie mają one tych samych limitów dotyczących miejsca na dysku, pamięci lub gniazd sieciowych. Hybrydowe procesy robocze elementów Runbook są ograniczone przez zasoby samego hybrydowego procesu roboczego elementu Runbook. Ponadto hybrydowe procesy robocze elementu Runbook nie współdzielą 180-minutowy dozwolony czas [udziału](automation-runbook-execution.md#fair-share) w piaskownicach systemu Azure. Aby dowiedzieć się więcej na temat limitów usługi dla piaskownic platformy Azure i hybrydowych procesów roboczych elementów Runbook, zobacz stronę [limity](../azure-subscription-service-limits.md#automation-limits) zadań.
 
 ## <a name="install-a-hybrid-runbook-worker"></a>Instalowanie hybrydowego procesu roboczego elementu Runbook
 
-Proces, aby zainstalować hybrydowego procesu roboczego Runbook zależy od systemu operacyjnego. Poniższa tabela zawiera łącza do metod, które można użyć do zainstalowania.
+Proces instalacji hybrydowego procesu roboczego elementu Runbook zależy od systemu operacyjnego. Poniższa tabela zawiera linki do metod, których można użyć do instalacji.
 
-Aby zainstalować i skonfigurować Windows hybrydowego procesu roboczego Runbook, można użyć dwóch metod. Zalecaną metodą jest całkowicie zautomatyzować proces konfigurowania komputerów Windows przy użyciu elementu runbook usługi Automation. Druga metoda jest następujące procedury krok po kroku, aby ręcznie zainstalować i skonfigurować rolę. Dla maszyn z systemem Linux możesz uruchomić skrypt języka Python, aby zainstalować agenta na maszynie.
+Aby zainstalować i skonfigurować hybrydowy proces roboczy elementu Runbook systemu Windows, można użyć dwóch metod. Zalecaną metodą jest użycie elementu Runbook usługi Automation w celu całkowitego zautomatyzowania procesu konfigurowania komputera z systemem Windows. Druga metoda to procedura krok po kroku, aby ręcznie zainstalować i skonfigurować rolę. W przypadku maszyn z systemem Linux należy uruchomić skrypt języka Python w celu zainstalowania agenta na komputerze.
 
 |OS  |Typy wdrożeń  |
 |---------|---------|
@@ -40,29 +40,29 @@ Aby zainstalować i skonfigurować Windows hybrydowego procesu roboczego Runbook
 |Linux     | [Python](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)        |
 
 > [!NOTE]
-> Aby zarządzać konfiguracji serwerów, które obsługują roli hybrydowego procesu roboczego Runbook za pomocą Desired State Configuration (DSC), należy dodać je jako węzłów DSC. Aby uzyskać więcej informacji na temat dołączania ich do zarządzania za pomocą DSC, zobacz [dołączanie maszyn w celu zarządzania przez usługi Azure Automation DSC](automation-dsc-onboarding.md).
+> Aby zarządzać konfiguracją serwerów obsługujących rolę hybrydowego procesu roboczego elementu Runbook z konfiguracją żądanego stanu (DSC), należy dodać je jako węzły DSC. Aby uzyskać więcej informacji na temat dołączania do zarządzania przy użyciu usługi DSC, zobacz Dołączanie [maszyn w celu zarządzania przez Azure Automation DSC](automation-dsc-onboarding.md).
 >
->Po włączeniu [rozwiązanie do zarządzania aktualizacjami](automation-update-management.md), dowolnym komputerze, który jest połączony z obszarem roboczym usługi Azure Log Analytics zostanie automatycznie skonfigurowany jako hybrydowy proces roboczy elementu Runbook w celu obsługi elementów runbook zawartych w tym rozwiązaniu. Jednak komputer nie jest zarejestrowany w żadnych grupach hybrydowych procesów roboczych, które już zdefiniowane na koncie usługi Automation. Komputer można dodać do grupy hybrydowego procesu roboczego Runbook na Twoim koncie usługi Automation w celu obsługi elementów runbook usługi Automation, tak długo, jak długo używasz tego samego konta zarówno dla rozwiązania i hybrydowego procesu roboczego Runbook członkostwa w grupie. Ta funkcja ma dodano do wersji 7.2.12024.0 hybrydowego procesu roboczego Runbook.
+>Jeśli włączysz [Update Management rozwiązanie](automation-update-management.md), każdy komputer połączony z obszarem roboczym usługi Azure log Analytics zostanie automatycznie skonfigurowany jako hybrydowy proces roboczy elementu Runbook w celu obsługi elementów Runbook uwzględnionych w tym rozwiązaniu. Jednak komputer nie jest zarejestrowany dla żadnych grup hybrydowych procesów roboczych, które są już zdefiniowane na koncie usługi Automation. Komputer można dodać do grupy hybrydowych procesów roboczych elementu Runbook na koncie usługi Automation w celu obsługi elementów Runbook usługi Automation, o ile używasz tego samego konta zarówno dla tego rozwiązania, jak i dla członkostwa w grupie hybrydowych procesów roboczych elementu Runbook. Ta funkcja została dodana do wersji 7.2.12024.0 hybrydowego procesu roboczego elementu Runbook.
 
-Przegląd [informacje dotyczące planowania sieci](#network-planning) przed rozpoczęciem wdrażania hybrydowego procesu roboczego elementu Runbook. Po pomyślnym wdrożeniu proces roboczy, przejrzyj [uruchamianie elementów runbook w hybrydowym procesie roboczym elementu Runbook](automation-hrw-run-runbooks.md) informacje na temat konfigurowania elementów runbook do automatyzacji procesów w lokalnym centrum danych lub w innym środowisku chmury.
+Przed rozpoczęciem wdrażania hybrydowego procesu roboczego elementu Runbook zapoznaj się z [informacjami dotyczącymi planowania sieci](#network-planning) . Po pomyślnym wdrożeniu procesu roboczego zapoznaj się z tematem [Uruchamianie elementów Runbook w hybrydowym procesie roboczym elementu Runbook](automation-hrw-run-runbooks.md) , aby dowiedzieć się, jak skonfigurować elementy Runbook do automatyzowania procesów w lokalnym centrum danych lub w innym środowisku chmury.
 
-Komputer można dodać do grupy hybrydowego procesu roboczego Runbook na Twoim koncie usługi Automation w celu obsługi elementów runbook usługi Automation, tak długo, jak długo używasz tego samego konta zarówno dla rozwiązania i hybrydowego procesu roboczego Runbook członkostwa w grupie. Ta funkcjonalność została dodana do wersji 7.2.12024.0 hybrydowego procesu roboczego elementu Runbook.
-## <a name="remove-a-hybrid-runbook-worker"></a>Usuń hybrydowy proces roboczy elementu Runbook
+Komputer można dodać do grupy hybrydowych procesów roboczych elementu Runbook na koncie usługi Automation w celu obsługi elementów Runbook usługi Automation, o ile używasz tego samego konta zarówno dla tego rozwiązania, jak i dla członkostwa w grupie hybrydowych procesów roboczych elementu Runbook. Ta funkcjonalność została dodana do wersji 7.2.12024.0 hybrydowego procesu roboczego elementu Runbook.
+## <a name="remove-a-hybrid-runbook-worker"></a>Usuwanie hybrydowego procesu roboczego elementu Runbook
 
-Co najmniej jeden hybrydowych procesów roboczych Runbook bankowym można usunąć z grupy, lub możesz usunąć grupę, w zależności od wymagań. Aby usunąć hybrydowy proces roboczy elementu Runbook na komputerze lokalnym, użyj następujące czynności:
+Można usunąć co najmniej jednego hybrydowego procesów roboczych elementów Runbook z grupy lub usunąć grupę, w zależności od wymagań. Aby usunąć hybrydowy proces roboczy elementu Runbook z komputera lokalnego, wykonaj następujące czynności:
 
-1. W witrynie Azure portal przejdź do konta usługi Automation.
-2. W obszarze **ustawienia konta**, wybierz opcję **klucze** i zwróć uwagę na wartości dla **adresu URL** i **podstawowy klucz dostępu**. Ta informacja będzie potrzebna do kolejnego kroku.
+1. W Azure Portal przejdź do konta usługi Automation.
+2. W obszarze **Ustawienia konta**wybierz pozycję **klucze** i zanotuj wartości **adresu URL** i **podstawowego klucza dostępu**. Te informacje są potrzebne do następnego kroku.
 
 ### <a name="windows"></a>Windows
 
-Otwórz sesję programu PowerShell w trybie administratora i uruchom następujące polecenie. Użyj **-Verbose** przełącznika, aby uzyskać szczegółowy dziennik proces usuwania.
+Otwórz sesję programu PowerShell w trybie administratora i uruchom następujące polecenie. Użyj przełącznika **-verbose** , aby zapoznać się ze szczegółowym dziennikiem procesu usuwania.
 
 ```powershell-interactive
 Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey>
 ```
 
-Aby usunąć stare maszyny z grupy hybrydowych procesów roboczych, Użyj opcjonalnego `machineName` parametru.
+Aby usunąć przestarzałe maszyny z grupy hybrydowych procesów roboczych, użyj `machineName` opcjonalnego parametru.
 
 ```powershell-interactive
 Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <ComputerName>
@@ -70,50 +70,50 @@ Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <Comp
 
 ### <a name="linux"></a>Linux
 
-Możesz użyć polecenia `ls /var/opt/microsoft/omsagent` na hybrydowy proces roboczy elementu Runbook można pobrać identyfikator obszaru roboczego. Istnieje folder w katalogu, w którym nazwa folderu jest obszarem roboczym identyfikatora.
+Aby uzyskać identyfikator obszaru roboczego, można `ls /var/opt/microsoft/omsagent` użyć polecenia w hybrydowym procesie roboczym elementu Runbook. Istnieje folder w katalogu, w którym nazwa folderu jest identyfikatorem obszaru roboczego.
 
 ```bash
 sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessKey>" --groupname="Example" --workspaceid="<workspaceId>"
 ```
 
 > [!NOTE]
-> Ten kod nie powoduje usunięcia programu Microsoft Monitoring Agent z komputera, tylko funkcje i konfiguracji roli hybrydowego procesu roboczego Runbook.
+> Ten kod nie usuwa Microsoft Monitoring Agent z komputera, tylko funkcjonalności i konfiguracji roli hybrydowego procesu roboczego elementu Runbook.
 
-## <a name="remove-a-hybrid-worker-group"></a>Usuwanie grupy hybrydowych procesów roboczych
+## <a name="remove-a-hybrid-worker-group"></a>Usuń grupę hybrydowych procesów roboczych
 
-Aby usunąć grupę, należy najpierw usunąć hybrydowy proces roboczy elementu Runbook z każdego komputera, który jest członkiem grupy za pomocą procedury przedstawionej wcześniej. Następnie użyj następujące kroki, aby usunąć grupę:
+Aby usunąć grupę, należy najpierw usunąć hybrydowy proces roboczy elementu Runbook z każdego komputera, który jest członkiem grupy, przy użyciu procedury pokazanej wcześniej. Następnie wykonaj następujące kroki, aby usunąć grupę:
 
-1. Otwórz konto usługi Automation w witrynie Azure portal.
-2. W obszarze **automatyzacji procesów**, wybierz opcję **grupy hybrydowych procesów roboczych**. Wybierz grupę, która ma zostać usunięty. Zostanie wyświetlona strona właściwości dla tej grupy.
+1. Otwórz konto usługi Automation w Azure Portal.
+2. W obszarze **Automatyzacja procesu**wybierz pozycję **grupy hybrydowych procesów roboczych**. Wybierz grupę, którą chcesz usunąć. Zostanie wyświetlona strona właściwości dla tej grupy.
 
    ![Strona właściwości](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)
 
-3. Na stronie właściwości dla wybranej grupy wybierz **Usuń**. Komunikat jest wyświetlany monit o potwierdzenie tej akcji. Wybierz **tak** Jeśli wiesz, czy chcesz kontynuować.
+3. Na stronie właściwości wybranej grupy wybierz pozycję **Usuń**. Zostanie wyświetlony komunikat z prośbą o potwierdzenie tej akcji. Wybierz opcję **tak** , jeśli na pewno chcesz kontynuować.
 
    ![Komunikat z potwierdzeniem](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-confirm-delete.png)
 
-   Ten proces może potrwać kilka sekund, aby zakończyć. Postęp możesz śledzić w sekcji **Powiadomienia** z poziomu menu.
+   Ukończenie tego procesu może potrwać kilka sekund. Postęp możesz śledzić w sekcji **Powiadomienia** z poziomu menu.
 
 ## <a name="network-planning"></a>Konfigurowanie sieci
 
-### <a name="hybrid-worker-role"></a>Rola procesu roboczego hybrydowego
+### <a name="hybrid-worker-role"></a>Rola hybrydowego procesu roboczego
 
-Hybrydowego procesu roboczego Runbook połączyć się i rejestrowanie w usłudze Azure Automation musi mieć dostęp do numeru portu oraz w adresach URL, które są opisane w tej sekcji. Jest to u góry, aby [portów i adresów URL wymaganych dla programu Microsoft Monitoring Agent](../azure-monitor/platform/agent-windows.md) połączyć się z dziennikami usługi Azure Monitor.
+Aby hybrydowy proces roboczy elementu Runbook mógł nawiązać połączenie i zarejestrować się w Azure Automation, musi on mieć dostęp do numeru portu i adresów URL, które zostały opisane w tej sekcji. Ten dostęp znajduje się na górze [portów i adresów URL wymaganych do naMicrosoft Monitoring Agent](../azure-monitor/platform/agent-windows.md) połączenia z dziennikami Azure monitor.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Jeśli używasz serwera proxy do komunikacji między agentem i usługi Azure Automation, upewnij się, że odpowiednie zasoby są dostępne. Limit czasu żądania z hybrydowego procesu roboczego elementu Runbook i usługi Automation to 30 sekund. Po 3 prób żądanie zakończy się niepowodzeniem. Jeśli używasz zapory, aby ograniczyć dostęp do Internetu, należy skonfigurować zaporę, aby zezwolić na dostęp. Jeśli używasz bram usługi Log Analytics jako serwer proxy, upewnij się, że jest ono skonfigurowane dla hybrydowych procesów roboczych. Aby uzyskać instrukcje, jak to zrobić, zobacz [skonfigurować bramę usługi Log Analytics dla usługi Automation hybrydowych procesów roboczych](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway).
+Jeśli serwer proxy jest używany do komunikacji między agentem a usługą Azure Automation, należy się upewnić, że dostępne są odpowiednie zasoby. Limit czasu dla żądań od hybrydowego procesu roboczego elementu Runbook i usług Automation wynosi 30 sekund. Po 3 próby żądanie zakończy się niepowodzeniem. W przypadku używania zapory w celu ograniczenia dostępu do Internetu należy skonfigurować zaporę tak, aby zezwalała na dostęp. Jeśli używasz bramy Log Analytics jako serwera proxy, upewnij się, że jest on skonfigurowany dla hybrydowych procesów roboczych. Aby uzyskać instrukcje, jak to zrobić, zobacz [Konfigurowanie bramy log Analytics dla hybrydowych procesów roboczych usługi Automation](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway).
 
-Następujących portów i adresów URL są wymagane dla roli hybrydowego procesu roboczego Runbook do komunikowania się z usługą Automation:
+Następujący port i adresy URL są wymagane dla roli hybrydowego procesu roboczego elementu Runbook do komunikowania się z automatyzacją:
 
-* Port: Tylko TCP 443 jest wymagany dla wychodzącego dostępu do Internetu.
-* Globalny adres URL: *.azure-automation.net
-* Globalny adres URL Administracja USA — Wirginia: *.azure-automation.us
-* Usługa agenta: https://\<workspaceId\>.agentsvc.azure-automation.net
+* Port: Do wychodzącego dostępu do Internetu jest wymagany tylko protokół TCP 443.
+* Globalny adres URL: *. azure-automation.net
+* Globalny adres URL US Gov Wirginia: *. azure-automation.us
+* Usługa agenta: https://\<identyfikator obszaru roboczego\>. agentsvc.Azure-Automation.NET
 
-Zaleca się używania adresów wymienionych podczas definiowania wyjątków. Adresy IP, możesz pobrać [zakresów IP centrum danych Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653). Ten plik jest aktualizowana co tydzień i ma aktualnie wdrożone zakresy i wszystkie nadchodzące zmiany w zakresach adresów IP.
+Zaleca się użycie adresów wymienionych podczas definiowania wyjątków. Dla adresów IP można pobrać zakresy adresów [IP centrum danych Microsoft Azure](https://www.microsoft.com/en-us/download/details.aspx?id=56519). Ten plik jest aktualizowany co tydzień i ma aktualnie wdrożone zakresy oraz wszystkie nadchodzące zmiany w zakresach adresów IP.
 
-Jeśli masz konto usługi Automation, która jest zdefiniowana dla konkretnego regionu, można ograniczyć komunikację z tym regionalnym centrum danych. Poniższa tabela zawiera rekord DNS dla każdego regionu:
+Jeśli masz konto usługi Automation zdefiniowane dla określonego regionu, możesz ograniczyć komunikację z tym regionalnym centrum danych. Poniższa tabela zawiera rekord DNS dla każdego regionu:
 
 | **Region** | **Rekord DNS** |
 | --- | --- |
@@ -132,18 +132,18 @@ Jeśli masz konto usługi Automation, która jest zdefiniowana dla konkretnego r
 | Południowe Zjednoczone Królestwo | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
 | Administracja USA — Wirginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
 
-Aby uzyskać listę adresów IP regionu zamiast nazwy regionów, Pobierz [adres IP centrum danych Azure](https://www.microsoft.com/download/details.aspx?id=41653) plik XML z Microsoft Download Center.
+Aby uzyskać listę adresów IP regionów zamiast nazw regionów, Pobierz plik XML [adresu IP centrum danych platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653) z centrum pobierania Microsoft.
 
 > [!NOTE]
-> Plik XML adres IP centrum danych platformy Azure zawiera listę zakresów adresów IP, które są używane w centrach danych platformy Microsoft Azure. Plik zawiera zakresy obliczeń, SQL i storage.
+> Plik XML adresu IP centrum danych platformy Azure zawiera zakresy adresów IP, które są używane w centrach danych Microsoft Azure. Plik zawiera zakresy obliczeń, SQL i magazynu.
 >
->Tydzień jest publikowany zaktualizowany plik. Plik odzwierciedla aktualnie wdrożone zakresy i wszystkie nadchodzące zmiany w zakresach adresów IP. Nowe zakresy, które pojawiają się w pliku nie są używane w centrach danych, przez co najmniej jeden tydzień.
+>Zaktualizowany plik jest publikowany co tydzień. Plik odzwierciedla aktualnie wdrożone zakresy i wszystkie nadchodzące zmiany w zakresach adresów IP. Nowe zakresy, które pojawiają się w pliku nie są używane w centrach danych przez co najmniej jeden tydzień.
 >
-> To dobry pomysł, aby pobrać nowy plik XML, co tydzień. Następnie należy zaktualizować lokację do prawidłowo identyfikować usługi uruchomione na platformie Azure. Użytkownicy usługi Azure ExpressRoute należy zauważyć, że ten plik jest używany do aktualizacji anonsu protokołu BGP (Border Gateway) miejsca platformy Azure w pierwszym tygodniu każdego miesiąca.
+> Dobrym pomysłem jest pobranie nowego pliku XML co tydzień. Następnie zaktualizuj swoją witrynę, aby prawidłowo identyfikować usługi działające na platformie Azure. Użytkownicy usługi Azure ExpressRoute powinni pamiętać, że ten plik jest używany do aktualizacji anonsu usługi Border Gateway Protocol (BGP) w pierwszym tygodniu każdego miesiąca.
 
 ### <a name="update-management"></a>Zarządzanie aktualizacjami
 
-Standardowe adresy i porty wymagane przez hybrydowy proces roboczy elementu Runbook następujące adresy są wymagane dla rozwiązania Update Management. Komunikacja z tych adresów odbywa się za pośrednictwem portu 443.
+Na podstawie standardowych adresów i portów wymaganych przez hybrydowy proces roboczy elementu Runbook wymagane są następujące adresy przeznaczone dla Update Management. Komunikacja z tymi adresami odbywa się za pośrednictwem portu 443.
 
 |Azure Public  |Azure Government  |
 |---------|---------|
@@ -151,8 +151,8 @@ Standardowe adresy i porty wymagane przez hybrydowy proces roboczy elementu Runb
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
 |*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Aby dowiedzieć się, jak skonfigurować elementy runbook do automatyzacji procesów w lokalnym centrum danych lub w innym środowisku chmury, zobacz [uruchamianie elementów runbook w hybrydowym procesie roboczym elementu Runbook](automation-hrw-run-runbooks.md).
-* Aby dowiedzieć się, jak rozwiązywać problemy z hybrydowych procesów roboczych Runbook, zobacz [Rozwiązywanie problemów z hybrydowych procesów roboczych Runbook](troubleshoot/hybrid-runbook-worker.md#general)
+* Aby dowiedzieć się, jak skonfigurować elementy Runbook do automatyzowania procesów w lokalnym centrum danych lub w innym środowisku chmury, zobacz [Uruchamianie elementów Runbook w hybrydowym procesie roboczym elementu Runbook](automation-hrw-run-runbooks.md).
+* Aby dowiedzieć się, jak rozwiązywać problemy dotyczące hybrydowych procesów roboczych elementów Runbook, zobacz [Rozwiązywanie problemów z hybrydowymi](troubleshoot/hybrid-runbook-worker.md#general)
 

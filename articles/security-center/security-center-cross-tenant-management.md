@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/04/2019
+ms.date: 08/11/2019
 ms.author: v-mohabe
-ms.openlocfilehash: b8d27178a75cb39c7d7769f2db6a193292a3f9f1
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: d6b5b528c3021bfb62bc30ad5910524db36e7e95
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782537"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950546"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Zarządzanie między dzierżawcami w Security Center
 
@@ -27,9 +27,7 @@ Zarządzanie między dzierżawcami pozwala wyświetlać stan zabezpieczeń wielu
 
 - Dostawcy usług mogą zarządzać stanem zabezpieczeń zasobów dla wielu klientów w ramach własnej dzierżawy.
 
-- Zespoły ds. zabezpieczeń organizacji z wieloma dzierżawcami mogą wyświetlać stan zabezpieczeń i zarządzać nimi z jednej lokalizacji
-
-  ![Zarządzanie między dzierżawcami](./media/security-center-cross-tenant-management/cross-tenant-security-center.png)
+- Zespoły ds. zabezpieczeń organizacji z wieloma dzierżawcami mogą wyświetlać stan zabezpieczeń i zarządzać nimi z jednej lokalizacji.
 
 ## <a name="set-up-cross-tenant-management"></a>Konfigurowanie zarządzania przez wiele dzierżawców
 
@@ -48,22 +46,13 @@ Na górnym pasku menu kliknij ikonę filtru, a następnie wybierz subskrypcje, z
 
 Widoki i akcje są zasadniczo takie same. Oto kilka przykładów:
 
-- **Zarządzanie zasadami zabezpieczeń**: W jednym widoku można zarządzać stan zabezpieczeń wielu zasobów przy użyciu [zasad](tutorial-security-policy.md), podejmować działania z zaleceniami dotyczącymi zabezpieczeń oraz zbierać dane związane z zabezpieczeniami i zarządzać nimi. Na przykład na poniższej ilustracji znajdują się cztery różne katalogi dzierżawców (Doug. Lora utworzonej, Microsoft, SSO, Wilde Company), a każda dzierżawa ma subskrypcje. Wybrane subskrypcje z różnych dzierżawców są wymienione na liście zarządzania zasadami.
-
-     ![Zarządzanie zasadami dla wielu dzierżawców](./media/security-center-cross-tenant-management/cross-tenant-policy.png)
-
-- **Ulepszanie bezpiecznego stan oceny i zgodności**: Widoczność między dzierżawami umożliwia wyświetlenie ogólnych stan związanych z bezpieczeństwem wszystkich dzierżawców oraz, gdzie i jak najlepiej poprawić [bezpieczną ocenę](security-center-secure-score.md) i [zgodność stan](security-center-compliance-dashboard.md) dla każdego z nich, jak pokazano na poniższej ilustracji.
-
-     ![Wskaźnik bezpieczeństwa](./media/security-center-cross-tenant-management/cross-tenant-secure-score.png)
-
-- **Skoryguj zalecenia**: Monitoruj i Koryguj [zalecenia](security-center-recommendations.md) dotyczące wielu zasobów z różnych dzierżawców (jak pokazano na poniższej ilustracji). Następnie można natychmiast zaradzić sobie z lukami w zabezpieczeniach, które stwarzają największe ryzyko dla wszystkich dzierżawców.
-
-  ![Zarządzanie zaleceniami dla wielu dzierżawców](./media/security-center-cross-tenant-management/cross-tenant-recommendation.png)
-
+- **Zarządzanie zasadami zabezpieczeń**: W jednym widoku można zarządzać stan zabezpieczeń wielu zasobów przy użyciu [zasad](tutorial-security-policy.md), podejmować działania z zaleceniami dotyczącymi zabezpieczeń oraz zbierać dane związane z zabezpieczeniami i zarządzać nimi.
+- **Ulepszanie bezpiecznego stan oceny i zgodności**: Widoczność między dzierżawcami umożliwia wyświetlenie ogólnych stan zabezpieczeń wszystkich dzierżawców oraz miejsce i sposób, w jaki najlepiej poprawić [bezpieczny wynik](security-center-secure-score.md) i [zgodność stan](security-center-compliance-dashboard.md) dla każdego z nich.
+- **Skoryguj zalecenia**: Monitoruj i Koryguj [zalecenia](security-center-recommendations.md) dotyczące wielu zasobów z różnych dzierżawców jednocześnie. Następnie można natychmiast zaradzić sobie z lukami w zabezpieczeniach, które stwarzają największe ryzyko dla wszystkich dzierżawców.
 - **Zarządzanie alertami**: Wykrywaj [alerty](security-center-alerts-overview.md) w różnych dzierżawach. Wykonaj działania dotyczące zasobów, które są niezgodne z krokami [korygowania](security-center-managing-and-responding-alerts.md)akcji.
 
 - **Zarządzaj zaawansowanymi funkcjami obrony przed chmurą i nie tylko**: Zarządzaj różnymi usługami wykrywania zagrożeń i ochrony, takimi jak [dostęp do maszyn wirtualnych just-in-Time (JIT)](security-center-just-in-time.md), [adaptacyjne Zabezpieczanie sieci](security-center-adaptive-network-hardening.md), [adaptacyjne kontrolki aplikacji](security-center-adaptive-application.md)i nie tylko.
-
+ 
 ## <a name="next-steps"></a>Następne kroki
 W tym artykule wyjaśniono, jak zarządzanie przez wiele dzierżawców działa w Security Center. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 

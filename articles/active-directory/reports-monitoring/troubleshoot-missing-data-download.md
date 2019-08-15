@@ -1,9 +1,9 @@
 ---
-title: 'Rozwiązywanie problemów: Brak danych w pobranych dziennikach aktywności usługi Azure Active Directory | Dokumentacja firmy Microsoft'
+title: Rozwiązywanie problemów z Brak danych w pobranych dziennikach aktywności Azure Active Directory | Microsoft Docs
 description: Zawiera rozwiązanie problemu dotyczącego braku danych w pobranych dziennikach aktywności usługi Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: ffce7eb1-99da-4ea7-9c4d-2322b755c8ce
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2200a9c75b371ed72ffefe6900367e698101e0fe
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f120c1b86efe94f4ff6316e6116b9049582b07e9
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60437106"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987982"
 ---
-# <a name="i-cant-find-all-the-data-in-the-azure-active-directory-activity-logs-i-downloaded"></a>Nie mogę znaleźć wszystkie dane w dziennikach aktywności usługi Azure Active Directory, pobrany
+# <a name="i-cant-find-all-the-data-in-the-azure-active-directory-activity-logs-i-downloaded"></a>Nie mogę znaleźć wszystkich danych w pobranych dziennikach aktywności Azure Active Directory
 
 ## <a name="symptoms"></a>Objawy
 
@@ -34,13 +34,13 @@ Pobrano dzienniki aktywności (inspekcji lub logowania), ale nie widać wszystki
  
 ## <a name="cause"></a>Przyczyna
 
-Podczas pobierania dzienników aktywności w witrynie Azure portal ograniczamy skalowanie do 250 000 rekordów posortowanych według najnowsze na początku. 
+Po pobraniu dzienników aktywności w Azure Portal ograniczamy do 250 000 rekordów, posortowanych według ostatnio używanych elementów. 
 
 ## <a name="resolution"></a>Rozwiązanie
 
 Można wykorzystać [interfejsy API raportowania usługi Azure AD](concept-reporting-api.md), aby pobrać do miliona rekordów z dowolnego okresu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Usługa Azure Active Directory raporty — często zadawane pytania](reports-faq.md)
+* [Raporty Azure Active Directory często zadawane pytania](reports-faq.md)
 

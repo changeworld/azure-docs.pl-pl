@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 08/09/2019
-ms.openlocfilehash: 9167757625347ba1857dc0d666ffdc6d25291a61
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 830e58e68ea84d70c581ea315ca15b2a03be59da
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990847"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019631"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Problemy z uwierzytelnianiem w usłudze Azure HDInsight
 
@@ -21,7 +21,9 @@ W przypadku bezpiecznych klastrów objętych usługą Azure Data Lake (Gen1 lub 
 
 Gdy uwierzytelnianie nie powiedzie się, zostanie wyświetlony monit o podanie poświadczeń. Jeśli anulujesz to okno dialogowe, zostanie wydrukowany komunikat o błędzie. Poniżej przedstawiono niektóre typowe komunikaty o błędach:
 
-## <a name="issue-invalid_grant-or-unauthorized_client-50126"></a>Problem: invalid_grant lub unauthorized_client, 50126
+## <a name="invalid_grant-or-unauthorized_client-50126"></a>invalid_grant lub unauthorized_client, 50126
+
+### <a name="issue"></a>Problem
 
 Logowanie użytkowników federacyjnych kończy się niepowodzeniem z kodem błędu 50126 (logowanie dla użytkowników w chmurze kończy się niepowodzeniem). Komunikat o błędzie jest podobny do:
 
@@ -39,7 +41,9 @@ Administrator firmy w dzierżawie usługi Azure AD powinien zezwolić usłudze A
 
 ---
 
-## <a name="issue-invalid_grant-or-unauthorized_client-50034"></a>Problem: invalid_grant lub unauthorized_client, 50034
+## <a name="invalid_grant-or-unauthorized_client-50034"></a>invalid_grant lub unauthorized_client, 50034
+
+### <a name="issue"></a>Problem
 
 Logowanie kończy się niepowodzeniem z kodem błędu 50034. Komunikat o błędzie jest podobny do:
 
@@ -57,10 +61,9 @@ Użyj tej samej nazwy użytkownika, która działa w tym portalu.
 
 ---
 
+## <a name="invalid_grant-or-unauthorized_client-50053"></a>invalid_grant lub unauthorized_client, 50053
 
-
-
-## <a name="issue-invalid_grant-or-unauthorized_client-50053"></a>Problem: invalid_grant lub unauthorized_client, 50053
+### <a name="issue"></a>Problem
 
 Konto użytkownika jest zablokowane, kod błędu 50053. Komunikat o błędzie jest podobny do:
 
@@ -78,7 +81,9 @@ Zaczekaj 30 minut lub tak, Zatrzymaj wszystkie aplikacje, które mogą próbowa�
 
 ---
 
-## <a name="issue-invalid_grant-or-unauthorized_client-50053"></a>Problem: invalid_grant lub unauthorized_client, 50053
+## <a name="invalid_grant-or-unauthorized_client-50053"></a>invalid_grant lub unauthorized_client, 50053
+
+### <a name="issue"></a>Problem
 
 Hasło wygasło, kod błędu 50053. Komunikat o błędzie jest podobny do:
 
@@ -96,7 +101,9 @@ Zmień hasło w Azure Portal (w systemie lokalnym), a następnie poczekaj 30 min
 
 ---
 
-## <a name="issue-interaction_required"></a>Problem: interaction_required
+## <a name="interaction_required"></a>interaction_required
+
+### <a name="issue"></a>Problem
 
 Odbieranie komunikatu `interaction_required`o błędzie.
 
@@ -110,7 +117,9 @@ Użyj zasad dostępu warunkowego i Wyklucz klastry HDInisght z usługi MFA, jak 
 
 ---
 
-## <a name="issue-sign-in-denied"></a>Problem: Odmowa logowania
+## <a name="sign-in-denied"></a>Odmowa logowania
+
+### <a name="issue"></a>Problem
 
 Odmowa logowania.
 
@@ -126,7 +135,11 @@ Spróbuj użyć protokołu SSH w celu uwierzytelnienia (Narzędzie kinit) przy u
 
 ---
 
-## <a name="issue-kinit-fails"></a>Problem: Narzędzie kinit kończy się niepowodzeniem
+## <a name="kinit-fails"></a>Narzędzie kinit kończy się niepowodzeniem
+
+### <a name="issue"></a>Problem
+
+Narzędzie kinit kończy się niepowodzeniem.
 
 ### <a name="cause"></a>Przyczyna
 
@@ -148,7 +161,11 @@ Sposoby znajdowania `sAMAccountName`:
 
 ---
 
-## <a name="issue-kinit-fails-with-preauthentication-failure"></a>Problem: Narzędzie kinit kończy się niepowodzeniem z błędem uwierzytelniania wstępnego
+## <a name="kinit-fails-with-preauthentication-failure"></a>Narzędzie kinit kończy się niepowodzeniem z powodu niepowodzenia uwierzytelniania wstępnego
+
+### <a name="issue"></a>Problem
+
+Narzędzie kinit kończy się `Preauthentication` niepowodzeniem z powodu błędu.
 
 ### <a name="cause"></a>Przyczyna
 
@@ -160,7 +177,11 @@ Sprawdź nazwę użytkownika i hasło. Sprawdź również inne opisane powyżej 
 
 ---
 
-## <a name="issue-job--hdfs-command-fails-due-to-tokennotfoundexception"></a>Problem: Polecenie Job/HDFS nie powiodło się z powodu TokenNotFoundException
+## <a name="job--hdfs-command-fails-due-to-tokennotfoundexception"></a>Polecenie Job/HDFS nie powiodło się z powodu TokenNotFoundException
+
+### <a name="issue"></a>Problem
+
+Polecenie Job/HDFS nie powiodło `TokenNotFoundException`się z powodu błędu.
 
 ### <a name="cause"></a>Przyczyna
 

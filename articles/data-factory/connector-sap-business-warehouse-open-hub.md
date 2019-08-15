@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych z rozwiązania SAP Business Warehouse, za pośrednictwem Centrum Otwórz za pomocą usługi Azure Data Factory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skopiować dane z SAP Business Warehouse (BW) za pośrednictwem Centrum Otwórz do magazynów danych ujścia obsługiwane za pomocą działania kopiowania w potoku usługi Azure Data Factory.
+title: Kopiowanie danych z programu SAP Business Warehouse za pośrednictwem usługi Open Hub przy użyciu Azure Data Factory | Microsoft Docs
+description: Informacje o kopiowaniu danych z programu SAP Business Warehouse (BW) za pośrednictwem usługi Open Hub do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,102 +10,102 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/08/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 6fb989632d3165ac5e54e540aae4385fc2258c85
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e94c4f179174a3957aef8828687ebf1fbb299903
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66256910"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967437"
 ---
-# <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopiowanie danych z rozwiązania SAP Business Warehouse, za pośrednictwem Centrum Otwórz za pomocą usługi Azure Data Factory
+# <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopiowanie danych z programu SAP Business Warehouse za pośrednictwem usługi Open Hub przy użyciu Azure Data Factory
 
-W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych z SAP Business Warehouse (BW) za pośrednictwem Centrum Otwórz. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z programu SAP Business Warehouse (BW) za pośrednictwem usługi Open Hub. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
-Możesz skopiować dane z rozwiązania SAP Business Warehouse, za pośrednictwem Centrum Otwórz, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
+Dane z programu SAP Business Warehouse można skopiować do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
-W szczególności ten łącznik SAP Business Warehouse Otwórz Centrum obsługuje:
+W ramach tego łącznika centrum danych programu SAP Business Warehouse obsługuje następujące rozwiązania:
 
-- SAP Business Warehouse **7.01 lub nowszy (w ostatnich SAP pomocy technicznej pakietu stosie wydana po 2015 roku) w wersji**.
-- Kopiowanie danych za pomocą funkcji Otwórz docelowy Centrum lokalnej tabeli, która poniżej może być DSO InfoCube, MultiProvider, źródła danych, itp.
+- SAP Business Warehouse **w wersji 7,01 lub nowszej (w ostatnim stosie pakietów pomocy technicznej SAP wydanej po roku 2015)** .
+- Kopiowanie danych za pośrednictwem lokalnej tabeli docelowej centrum, która znajduje się poniżej, może być DSO, InfoCube, wieloelementowy, DataSource itd.
 - Kopiowanie danych przy użyciu uwierzytelniania podstawowego.
 - Łączenie z serwerem aplikacji.
 
-## <a name="sap-bw-open-hub-integration"></a>Integracja programu SAP BW Open Centrum 
+## <a name="sap-bw-open-hub-integration"></a>SAP BW Otwórz integrację z centrum 
 
-[Otwórz usługę Centrum SAP BW](https://wiki.scn.sap.com/wiki/display/BI/Overview+of+Open+Hub+Service) jest wydajny sposób wyodrębniania danych z systemu SAP BW. Na poniższym diagramie przedstawiono jedną z typowych przepływów, klienci mają w ich systemie SAP, w których przepływy danych przypadków z SAP ECC -> PSA -> DSO -> modułu.
+[SAP BW otwieranie usługi centrum](https://wiki.scn.sap.com/wiki/display/BI/Overview+of+Open+Hub+Service) jest wydajnym sposobem wyodrębnienia danych z SAP BW. Na poniższym diagramie przedstawiono jeden z typowych przepływów, które znajdują się w systemie SAP, w tym przypadku dane są przesyłane z modułu SAP ECC — > PSA-> module DSO->.
 
-SAP BW Open koncentrator docelowy (OHD) definiowania miejsca docelowego, do którego jest przekazywane danych SAP. Wszystkie obiekty obsługiwane przez proces transferu danych SAP (DTP) może służyć jako źródeł danych otwórz Centrum, na przykład DSO InfoCube, źródła danych, itp. Otwórz Centrum docelowego — w którym są przechowywane dane z przekazywaniem — może być tabel bazy danych (lokalnym lub zdalnym) i plików prostych. Ten łącznik SAP BW Open Centrum Obsługa kopiowanie danych z lokalnej tabeli OHD w BW. W przypadku, gdy używane są inne typy, możesz połączyć bezpośrednio do bazy danych lub systemu plików przy użyciu innych łączników.
+SAP BW Otwórz lokalizację docelową (OHD) określa miejsce docelowe, do którego są przekazywane dane SAP. Wszystkie obiekty obsługiwane przez proces Transfer danych SAP (DTP) mogą być używane jako otwarte źródła danych, na przykład DSO, InfoCube, DataSource itp. Typ miejsca docelowego typu Open Hub — miejsce przechowywania danych przekazywanych — może to być tabela bazy danych (lokalna lub zdalna) i pliki proste. Ten SAP BW otworzyć łącznik centrum obsługi kopiowania danych z lokalnej tabeli OHD w BW. W przypadku korzystania z innych typów można połączyć się bezpośrednio z bazą danych lub systemem plików przy użyciu innych łączników.
 
-![Oprogramowanie SAP BW Open Centrum](./media/connector-sap-business-warehouse-open-hub/sap-bw-open-hub.png)
+![SAP BW otworzyć Centrum](./media/connector-sap-business-warehouse-open-hub/sap-bw-open-hub.png)
 
-## <a name="delta-extraction-flow"></a>Przepływ wyodrębniania delta
+## <a name="delta-extraction-flow"></a>Przepływ ekstrakcji różnicowej
 
-ADF Otwórz Centrum łącznika systemu SAP BW oferuje dwie właściwości opcjonalne: `excludeLastRequest` i `baseRequestId` który może służyć do obsługi zmian obciążenia z Centrum Otwórz. 
+Moduł ADF SAP BW otwarty łącznik centrum udostępnia dwie opcjonalne właściwości `excludeLastRequest` : `baseRequestId` i, które mogą być używane do obsługi obciążenia różnicowego z otwartego centrum. 
 
-- **excludeLastRequestId**: Określa, czy wykluczyć rekordy ostatniego żądania. Wartość domyślna to true. 
-- **baseRequestId**: Identyfikator żądania dla ładowania różnicowych. Po ustawieniu, będą pobierane tylko dane z identyfikatorem requestId jest większa niż wartość tej właściwości. 
+- **excludeLastRequestId**: Określa, czy mają zostać wykluczone rekordy ostatniego żądania. Wartość domyślna to true. 
+- **baseRequestId**: Identyfikator żądania dla ładowania różnicowego. Po jego ustawieniu zostaną pobrane tylko dane z identyfikatorem żądania większym niż wartość tej właściwości. 
 
-Ogólne wyodrębnianie z SAP InfoProviders do platformy Azure Data Factory (ADF) składa się z 2 kroki: 
+Ogólnie, wyodrębnianie z oprogramowania SAP InfoProviders do Azure Data Factory (ADF) składa się z dwóch kroków: 
 
-1. **Oprogramowanie SAP BW dane transferu procesu (DTP)** tego kroku kopiuje dane z SAP BW InfoProvider do tabeli programu SAP BW Open Centrum 
+1. **Proces Transfer danych SAP BW (DTP)** Ten krok powoduje skopiowanie danych z SAP BW InfoProvider do SAP BW otwartej tabeli usługi Hub 
 
-1. **Kopiowanie danych w usłudze ADF** w tym kroku tabeli Otwórz Centrum jest odczytywany przez łącznik usługi ADF 
+1. **Kopiowanie danych ADF** W tym kroku zostanie odczytana tabela "Otwórz Centrum" w ramach łącznika ADF 
 
-![Przepływ wyodrębniania delta](media/connector-sap-business-warehouse-open-hub/delta-extraction-flow.png)
+![Przepływ ekstrakcji różnicowej](media/connector-sap-business-warehouse-open-hub/delta-extraction-flow.png)
 
-W pierwszym kroku DTP jest wykonywany. Każdego wykonania utworzy nowy identyfikator żądania SAP. Identyfikator żądania są przechowywane w tabeli Centrum Otwórz, a następnie jest używany do identyfikowania danych różnicowych przez łącznik usługi ADF. Dwa kroki uruchamiane asynchronicznie: DTP jest wyzwalany przez oprogramowanie SAP, a kopiowanie danych usługi ADF jest wyzwalane za pomocą usługi ADF. 
+W pierwszym kroku jest wykonywane DTP. Każde wykonanie powoduje utworzenie nowego identyfikatora żądania SAP. Identyfikator żądania jest przechowywany w tabeli Open Hub, a następnie używany przez łącznik ADF do identyfikowania różnic. Dwa kroki są wykonywane asynchronicznie: DTP jest wyzwalany przez SAP, a kopiowanie danych ADF jest wyzwalane za pomocą ADF. 
 
-Domyślnie usługi ADF nie odczytuje najnowszą różnicową z tabeli Otwórz Centrum (opcja "Wyklucz ostatnie żądanie" to true). Niniejszym użytkownik udziela firmie dane w usłudze ADF nie jest 100% aktualny z danymi w tabeli Centrum Otwórz (ostatnie delta Brak). W zamian tej procedury zapewnia żadnych wierszy giną spowodowane przez asynchroniczne wyodrębniania. Działa ona poprawnie, nawet wtedy, gdy ADF odczytuje tabeli Centrum Otwórz DTP jest nadal zapisu w tej samej tabeli. 
+Domyślnie moduł ADF nie odczytuje najnowszych różnic z otwartej tabeli centrum (opcja "Wyklucz ostatnie żądanie" ma wartość true). W takim przypadku dane w podajniku APD nie są aktualne na 100% z danymi w otwartej tabeli centrum (brakuje ostatniej delty). W przypadku powrotu ta procedura gwarantuje, że żadne wiersze nie zostaną utracone z powodu asynchronicznego wyodrębniania. Działa dobrze nawet wtedy, gdy moduł ADF odczytuje otwartą tabelę centrów, podczas gdy DTP nadal zapisuje w tej samej tabeli. 
 
-Zazwyczaj identyfikator maksymalny skopiowany żądania są przechowywane w ostatnim uruchomieniu przez usługę ADF w przejściowy magazyn danych (np. usługi Azure Blob w powyżej diagram). W związku z tym tego samego żądania nie jest odczytywany po raz drugi przez usługi ADF w kolejnych przebiegu. Ponadto należy zauważyć, że dane nie są automatycznie usuwane z tabeli Otwórz Centrum.
+Zwykle przechowujesz maksymalny identyfikator kopiowanego żądania w ostatnim przebiegu przez ADF w tymczasowym magazynie danych (takim jak obiekt blob platformy Azure na wyższym diagramie). W związku z tym to samo żądanie nie jest odczytywane po raz drugi przez ADF w kolejnym przebiegu. Należy zauważyć, że dane nie są automatycznie usuwane z otwartej tabeli centrum.
 
-Dla odpowiednich zmian jej obsługa jest nie może mieć identyfikatory z różnych DTPs żądania w tej samej tabeli Otwórz Centrum. W związku z tym należy nie utworzyć więcej niż jeden DTP dla każdego otwartego koncentratora docelowy (OHD). Jeśli zachodzi pełne i różnicowe wyodrębniania z tego samego InfoProvider, należy utworzyć dwa OHDs dla tego samego InfoProvider. 
+W celu zapewnienia prawidłowej obsługi różnic nie można mieć identyfikatorów żądań z różnych DTPs w tej samej otwartej tabeli. W związku z tym nie należy tworzyć więcej niż jednego DTP dla każdego otwartego miejsca docelowego (OHD). Gdy wymagana jest Ekstrakcja pełna i różnicowa z tego samego InfoProvider, należy utworzyć dwa OHDs dla tego samego InfoProvider. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby użyć tego łącznika SAP Business Warehouse Otwórz Centrum, należy:
+Aby użyć tego łącznika centrum danych SAP Business Warehouse, należy wykonać następujące czynności:
 
-- Skonfiguruj własne środowisko IR za pomocą wersji 3.13 lub nowszej. Zobacz [własne środowisko IR](create-self-hosted-integration-runtime.md) artykuł, aby uzyskać szczegółowe informacje.
+- Skonfiguruj własne Integration Runtime w wersji 3,13 lub nowszej. Zobacz [własne środowisko IR](create-self-hosted-integration-runtime.md) artykuł, aby uzyskać szczegółowe informacje.
 
-- Pobierz **64-bitowych [SAP .NET łącznika 3.0](https://support.sap.com/en/product/connectors/msnet.html)**  z witryny sieci Web firmy SAP i zainstaluj go na maszynie własne środowisko IR (). Podczas instalowania w oknie kroki opcjonalne ustawienia upewnij się, możesz wybrać **zainstalować zestawy GAC** opcji, jak pokazano na poniższej ilustracji. 
+- Pobierz **64-bitowy [Łącznik SAP .NET 3,0](https://support.sap.com/en/product/connectors/msnet.html)**  z witryny sieci Web SAP i zainstaluj go na samoobsługowej maszynie IR. W przypadku instalowania programu w oknie opcjonalne kroki instalacji upewnij się, że wybrano opcję **Zainstaluj zestawy do GAC** , jak pokazano na poniższej ilustracji. 
 
-    ![Instalowanie łącznika systemu SAP platformy .NET](./media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
+    ![Instalowanie łącznika SAP .NET](./media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
 
-- Użytkownik SAP on używany w łączniku BW fabryki danych musi mieć następujące uprawnienia: 
+- Użytkownik SAP używany w łączniku Data Factory BW musi mieć następujące uprawnienia: 
 
-    - Autoryzacja RFC i system SAP BW. 
-    - Uprawnienia do działania "Execute" obiekt autoryzacji "S_SDSAUTH".
+    - Autoryzacja dla RFC i SAP BW. 
+    - Uprawnienia do działania "Execute" obiektu autoryzacji "S_SDSAUTH".
 
-- Tworzenie typu miejsca docelowego SAP Otwórz Centrum jako **tabeli bazy danych** z zaznaczoną opcją "Techniczne klucz".  Zalecane jest również pozostawiają dane usuwania z tabeli jako niesprawdzone, ale nie jest wymagana. Wykorzystaj DTP (bezpośrednio wykonania lub integrowanie istniejących łańcuch procesów) jako proponowany danych z obiektu źródłowego (na przykład moduł), aby użytkownik wybrał Centrum Otwórz tabelę docelową.
+- Utwórz typ docelowy typu "Open Hub" SAP jako **tabelę bazy danych** z zaznaczoną opcją "klucz techniczny".  Zaleca się również pozostawienie usunięcia danych z tabeli jako niezaznaczone, chociaż nie jest to wymagane. Użyj DTP (bezpośrednio wykonaj lub Zintegruj do istniejącego łańcucha procesów), aby wystawić dane z obiektu źródłowego (na przykład modułu), które zostały wybrane do tabeli docelowej centrum.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
 > [!TIP]
 >
-> Przewodnik dotyczący użycia łącznika SAP BW Open Centrum, można zobaczyć [ładowanie danych z usługi SAP Business Warehouse (BW) przy użyciu usługi Azure Data Factory](load-sap-bw-data.md).
+> Aby zapoznać się ze wskazówkami dotyczącymi używania łącznika SAP BW Open Hub, zobacz temat [ładowanie danych z oprogramowania SAP Business Warehouse (BW) przy użyciu Azure Data Factory](load-sap-bw-data.md).
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, które są używane do definiowania jednostek usługi fabryka danych określonej do łącznika SAP Business Warehouse Otwórz Centrum.
+W poniższych sekcjach znajdują się szczegółowe informacje o właściwościach, które są używane do definiowania Data Factory jednostek specyficznych dla programu SAP Business Warehouse Open Hub Connector.
 
 ## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 
-Następujące właściwości są obsługiwane w przypadku usługi SAP Business Warehouse Otwórz Centrum połączone:
+Następujące właściwości są obsługiwane w przypadku usługi SAP Business Warehouse Open Hub połączonej:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **SapOpenHub** | Yes |
-| serwer | Nazwa serwera, na którym znajduje się wystąpienie systemu SAP BW. | Yes |
-| systemNumber | Numer systemu systemu SAP BW.<br/>Dozwolone wartości: liczba dziesiętna dwucyfrowy reprezentowane jako ciąg. | Yes |
-| clientId | Identyfikator klienta klienta w SAP W systemie.<br/>Dozwolone wartości: liczba dziesiętna trzy cyfry, reprezentowane jako ciąg. | Yes |
-| language | Język, który używa systemu SAP. | Nie (wartość domyślna to **EN**)|
-| userName | Nazwa użytkownika, który ma dostęp do serwera SAP. | Yes |
+| type | Właściwość Type musi mieć ustawioną wartość: **SapOpenHub** | Tak |
+| server | Nazwa serwera, na którym znajduje się wystąpienie SAP BW. | Tak |
+| systemNumber | Numer systemu SAP BW.<br/>Dozwolona wartość: dwucyfrowa liczba dziesiętna reprezentowana jako ciąg. | Tak |
+| clientId | Identyfikator klienta klienta w systemie SAP w.<br/>Dozwolona wartość: 3-cyfrowa liczba dziesiętna reprezentowana jako ciąg. | Tak |
+| język | Język, którego używa System SAP. | Nie (wartość domyślna to **EN**)|
+| userName | Nazwa użytkownika, który ma dostęp do serwera SAP. | Tak |
 | password | Hasło użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
-| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Własne środowisko IR jest wymagany, zgodnie z opisem w [wymagania wstępne](#prerequisites). |Yes |
+| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Samodzielna Integration Runtime jest wymagana, jak wspomniano [](#prerequisites)w wymaganiach wstępnych. |Tak |
 
 **Przykład:**
 
@@ -134,19 +134,19 @@ Następujące właściwości są obsługiwane w przypadku usługi SAP Business W
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych SAP BW Open koncentratora.
+Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez SAP BW otwartego centrum danych.
 
-Aby skopiować dane z i do Centrum Otwórz programu SAP BW, należy ustawić właściwość typu zestawu danych na **SapOpenHubTable**. Następujące właściwości są obsługiwane.
+Aby skopiować dane z i do SAP BW Otwórz Centrum, ustaw właściwość Type zestawu danych na **SapOpenHubTable**. Następujące właściwości są obsługiwane.
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa **SapOpenHubTable**.  | Yes |
-| openHubDestinationName | Nazwa do skopiowania danych z Centrum Otwórz w lokalizacji docelowej. | Yes |
-| excludeLastRequest | Określa, czy wykluczyć rekordy ostatniego żądania. | Nie (wartość domyślna to **true**) |
-| baseRequestId | Identyfikator żądania dla ładowania różnicowych. Po ustawieniu, tylko dane z identyfikatorem requestId **większy niż** zostanie pobrana wartość tej właściwości.  | Nie |
+| type | Właściwość Type musi być ustawiona na wartość **SapOpenHubTable**.  | Tak |
+| openHubDestinationName | Nazwa miejsca docelowego typu Open Hub, z którego mają zostać skopiowane dane. | Tak |
+| excludeLastRequest | Określa, czy mają zostać wykluczone rekordy ostatniego żądania. | Nie (wartość domyślna to **true**) |
+| baseRequestId | Identyfikator żądania dla ładowania różnicowego. Po jego ustawieniu zostaną pobrane tylko dane z identyfikatorem żądania **większym niż** wartość tej właściwości.  | Nie |
 
 >[!TIP]
->Jeśli Centrum Otwórz tabeli zawiera tylko dane generowane przez identyfikator pojedynczego żądania, na przykład zawsze pełnych obciążenia i zastąpić istniejące dane w tabeli lub uruchomisz wyłącznie DTP jeden raz dla testów, pamiętaj, aby Usuń zaznaczenie opcji "excludeLastRequest", aby można było skopiować do d Usługa ATA out.
+>Jeśli otwarta tabela centrów zawiera tylko dane wygenerowane przez pojedynczy identyfikator żądania, na przykład zawsze należy wykonać pełne ładowanie i zastąpić istniejące dane w tabeli, lub uruchomić DTP tylko raz dla testu, pamiętaj o usunięciu zaznaczenia opcji "excludeLastRequest" w celu skopiowania d ATA out.
 
 **Przykład:**
 
@@ -168,11 +168,13 @@ Aby skopiować dane z i do Centrum Otwórz programu SAP BW, należy ustawić wł
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło SAP BW Open koncentratora.
+Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez SAP BW Otwórz źródło centrum.
 
-### <a name="sap-bw-open-hub-as-source"></a>Oprogramowanie SAP BW Open Centrum jako źródło
+### <a name="sap-bw-open-hub-as-source"></a>SAP BW otworzyć Centrum jako źródło
 
-Aby skopiować dane z Centrum Otwórz programu SAP BW, należy ustawić typ źródła w działaniu kopiowania, aby **SapOpenHubSource**. Nie ma żadnych dodatkowych właściwości specyficzne dla typu, które są potrzebne w działaniu kopiowania **źródła** sekcji.
+Aby skopiować dane z SAP BW Otwórz Centrum, ustaw typ źródła w działaniu kopiowania na **SapOpenHubSource**. W sekcji **Źródło** działania kopiowania nie są dostępne żadne dodatkowe właściwości specyficzne dla typu.
+
+Aby przyspieszyć ładowanie danych, można ustawić [`parallelCopies`](copy-activity-performance.md#parallel-copy) działanie kopiowania w celu załadowania danych z SAP BW otwartego centrum. Jeśli na przykład ustawisz `parallelCopies` cztery, Data Factory współbieżnie wykonuje cztery wywołania RFC, a każde wywołanie RFC pobierze część danych z SAP BW otwartej tabeli z podziałem na partycje według identyfikatora żądania DTP i identyfikatora pakietu. Ma to zastosowanie, gdy liczba unikatowych identyfikatorów żądań DTP i identyfikator pakietu jest większa niż wartość `parallelCopies`.
 
 **Przykład:**
 
@@ -199,17 +201,18 @@ Aby skopiować dane z Centrum Otwórz programu SAP BW, należy ustawić typ źr�
             },
             "sink": {
                 "type": "<sink type>"
-            }
+            },
+            "parallelCopies": 4
         }
     }
 ]
 ```
 
-## <a name="data-type-mapping-for-sap-bw-open-hub"></a>Mapowanie typu danych dla Centrum Otwórz programu SAP BW
+## <a name="data-type-mapping-for-sap-bw-open-hub"></a>Mapowanie typu danych dla SAP BW Open Hub
 
-Podczas kopiowania danych z Centrum Otwórz programu SAP BW, następujące mapowania są używane do typów danych tymczasowych usługi Azure Data Factory z typów danych SAP BW. Zobacz [schemat i dane mapowanie typu](copy-activity-schema-and-type-mapping.md) Aby poznać sposób działania kopiowania mapowania typ schematu i danych źródła do ujścia.
+Podczas kopiowania danych z SAP BW otwartego centrum następujące mapowania są używane z poziomu SAP BW danych do Azure Data Factory pośrednich typów danych. Zobacz [schemat i dane mapowanie typu](copy-activity-schema-and-type-mapping.md) Aby poznać sposób działania kopiowania mapowania typ schematu i danych źródła do ujścia.
 
-| Typ ABAP SAP | Typ danych tymczasowych fabryki danych |
+| Typ SAP ABAP | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
 | C (String) | String |
 | I (integer) | Int32 |
@@ -217,8 +220,8 @@ Podczas kopiowania danych z Centrum Otwórz programu SAP BW, następujące mapow
 | D (Date) | String |
 | T (Time) | String |
 | P (BCD Packed, Currency, Decimal, Qty) | Decimal |
-| N (Numc) | String |
+| N (NUMC) | String |
 | X (Binary and Raw) | String |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

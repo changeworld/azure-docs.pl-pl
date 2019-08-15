@@ -8,12 +8,12 @@ ms.date: 02/07/2019
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: rugopala
-ms.openlocfilehash: 554a77b65b1baab980d765c69a5bffaeacb483d9
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 850d580d4eb1ca41932a28005d3375ced709db60
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855398"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016375"
 ---
 # <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2"></a>Uaktualnij rozwiązania do analizy danych Big Data z Azure Data Lake Storage Gen1 do Azure Data Lake Storage Gen2
 
@@ -82,7 +82,7 @@ W tej sekcji opisano, które Data Lake Storage Gen1 możliwości platformy, któ
 | |Optymalizacji wydajności dla obciążeń analizy równoległej. Wysoka przepływność i operacje We/Wy. | Optymalizacji wydajności dla obciążeń analizy równoległej. Wysoka przepływność i operacje We/Wy. | *Teraz dostępna* |
 | Obsługa Virtual Network (VNet)  | [Korzystanie z integracji Virtual Network](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-network-security)  | [Korzystanie z punktu końcowego usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) | *Teraz dostępna* |
 | Limity rozmiaru | Brak limitów rozmiarów kont, rozmiarów plików lub liczby plików | Brak limitów rozmiarów kont lub liczbę plików. Rozmiar pliku jest ograniczony do 5TB. | *Teraz dostępna*|
-| Nadmiarowość geograficzna| Lokalnie nadmiarowy (LRS) | Lokalnie nadmiarowy (LRS) Strefowo nadmiarowy (ZRS) globalnie nadmiarowy (GRS) dostęp do odczytu, globalnie nadmiarowy zobacz (RA-GRS) [tutaj](https://docs.microsoft.com/azure/storage/common/storage-redundancy) Aby uzyskać więcej informacji| *Teraz dostępna* |
+| Nadmiarowość geograficzna| Lokalnie nadmiarowy (LRS) | Lokalnie nadmiarowy (LRS) strefa nadmiarowa (ZRS) Geograficznie nadmiarowy (GRS) z dostępem do odczytu (RA-GRS) — zobacz [tutaj](https://docs.microsoft.com/azure/storage/common/storage-redundancy) , aby uzyskać więcej informacji| *Teraz dostępna* |
 | Dostępność regionalna | Zobacz [tutaj](https://azure.microsoft.com/regions/) | Wszystkie [regiony platformy Azure](https://azure.microsoft.com/global-infrastructure/regions/)                                                                                                                                                                                                                                                                                                                                       | *Teraz dostępna*                                                                                                                           |
 | Cena                                       | Zobacz [ceny](https://azure.microsoft.com/pricing/details/data-lake-store/)                                                                            | Zobacz [ceny](https://azure.microsoft.com/pricing/details/storage/data-lake/)                                                                                                                                                                                                                                                                                                                                         |                                                                                                                                           |
 | Dostępność umowy SLA                            | [Zobacz umowę SLA](https://azure.microsoft.com/support/legal/sla/data-lake-store/v1_0/)                                                                   | [Zobacz umowę SLA](https://azure.microsoft.com/support/legal/sla/storage/v1_3/)                                                                                                                                                                                                                                                                                                                                                | *Teraz dostępna*                                                                                                                           |

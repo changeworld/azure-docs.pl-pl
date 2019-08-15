@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: b3ebd8b6f65ec86d338932579f5d4ccec6a90be3
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: e92c2e58122556f90b25f070fff9e6e6616b0257
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704730"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976848"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Interfejs API .NET Standard tabeli Azure Cosmos DB: Informacje dotyczące pobierania i zwalniania
 > [!div class="op_single_selector"]
@@ -31,8 +31,13 @@ ms.locfileid: "68704730"
 |**Szybki start**|[Szybki start](create-table-dotnet.md)|
 |**Samouczek**|[Samouczek](tutorial-develop-table-dotnet.md)|
 |**Bieżącej struktury obsługiwanej**|[Microsoft .NET Standard 2,0](https://www.nuget.org/packages/NETStandard.Library)|
+|**Zgłoś problem**|[Zgłoś problem](https://github.com/Azure/azure-cosmos-table-dotnet/issues)|
 
 ## <a name="release-notes"></a>Informacje o wersji
+
+### <a name="a-name104104"></a><a name="1.0.4"/>1.0.4
+* Poprawki błędów
+* Podaj opcję HttpClientTimeout dla RestExecutorConfiguration.
 
 ### <a name="a-name104-preview104-preview"></a><a name="1.0.4-preview"/>1.0.4 — wersja zapoznawcza
 * Poprawki błędów
@@ -71,6 +76,7 @@ Ta międzyplatformowa biblioteka .NET Standard [Microsoft. Azure. Cosmos. Table]
 
 | Version | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
+| [1.0.4](#1.0.4) |Auguest 12, 2019 |--- |
 | [1.0.4 — wersja zapoznawcza](#1.0.4-preview) |26 lipca 2019 |--- |
 | 1.0.2 (wersja zapoznawcza) |2 maja 2019 |--- |
 | [1.0.1](#1.0.1) |19 kwietnia 2019 |--- |
@@ -86,4 +92,4 @@ Ta międzyplatformowa biblioteka .NET Standard [Microsoft. Azure. Cosmos. Table]
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Zobacz także
-Aby dowiedzieć się więcej na temat interfejs API tabel Azure Cosmos DB, zobacz [wprowadzenie do Azure Cosmos DB interfejs API tabel](table-introduction.md). 
+Aby dowiedzieć się więcej na temat interfejs API tabel Azure Cosmos DB, zobacz [wprowadzenie do Azure Cosmos DB interfejs API tabel](table-introduction.md).

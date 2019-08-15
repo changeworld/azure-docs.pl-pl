@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mlearned
 ms.openlocfilehash: 3feadaca361950df2a09f8da33fe380fc3763763
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67614828"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące zarządzania obrazami kontenera i zabezpieczeń w usłudze Azure Kubernetes Service (AKS)
@@ -24,13 +24,13 @@ Ten artykuł koncentruje się na sposób zabezpieczania kontenerów w usłudze A
 > * Wyszukiwanie i korygowanie luk w zabezpieczeniach obrazu
 > * Automatyczne wyzwalanie i ponowne wdrażanie obrazów kontenerów, po zaktualizowaniu obrazu podstawowego
 
-Można również przeczytać najlepsze rozwiązania dotyczące [klastra zabezpieczeń][best-practices-cluster-security] and for [pod security][best-practices-pod-security].
+Można także zapoznać się z najlepszymi rozwiązaniami dotyczącymi [zabezpieczeń klastra][best-practices-cluster-security] i [zabezpieczenia pod][best-practices-pod-security].
 
 ## <a name="secure-the-images-and-run-time"></a>Zabezpieczanie obrazów i w czasie wykonywania
 
 **Najważniejsze wskazówki** — skanowania obrazów kontenerów dla luki w zabezpieczeniach i wdrażać tylko obrazy, które przeszły sprawdzania poprawności. Regularnie aktualizować obrazy podstawowe i środowisko uruchomieniowe aplikacji, a następnie ponownie wdrożyć obciążenia w klastrze AKS.
 
-Jeden problem z przyjęciem obciążeń opartych na kontenerach jest sprawdzanie zabezpieczeń obrazów i środowisko uruchomieniowe używane do tworzenia własnych aplikacji. Jak należy upewnić się, że do wdrożenia, nie spowodują luk w zabezpieczeniach? Wdrażanie przepływu pracy powinna zawierać procesu do skanowania obrazów kontenerów przy użyciu narzędzi takich jak [Twistlock][twistlock] or [Aqua][aqua]i wówczas tylko zweryfikowane obrazy mają zostać wdrożone.
+Jeden problem z przyjęciem obciążeń opartych na kontenerach jest sprawdzanie zabezpieczeń obrazów i środowisko uruchomieniowe używane do tworzenia własnych aplikacji. Jak należy upewnić się, że do wdrożenia, nie spowodują luk w zabezpieczeniach? Przepływ pracy wdrożenia powinien obejmować proces skanowania obrazów kontenera przy użyciu narzędzi, takich jak [TwistLock][twistlock] lub [akwamaryna][aqua], a następnie zezwala na wdrażanie tylko zweryfikowanych obrazów.
 
 ![Skanowanie i skorygować obrazów kontenerów, sprawdzanie poprawności i wdrażanie](media/operator-best-practices-container-security/scan-container-images-simplified.png)
 
@@ -40,17 +40,17 @@ W przykładzie rzeczywistych umożliwia ciągłej integracji i ciągłego wdraż
 
 **Najważniejsze wskazówki** — Użyj obrazy podstawowe dla aplikacji, obrazów, użyj automatyzacji do tworzenia nowych obrazów po zaktualizowaniu obrazu podstawowego. Jak te obrazy podstawowe zwykle zawierają poprawki zabezpieczeń, należy zaktualizować wszystkie obrazy kontenerów aplikacji.
 
-Każdorazowo, gdy zostanie zaktualizowany obraz podstawowy, również należy uaktualnić wszystkie obrazy kontenerów podrzędnych. Ten proces kompilacji, należy włączyć do sprawdzania poprawności i potoków wdrażania, takie jak [potoki Azure][azure-pipelines] lub systemu Jenkins. Te potoki gwarantuje, że aplikacje w dalszym ciągu uruchamiać na zaktualizowane na podstawie obrazów. Po zweryfikowaniu obrazów kontenerów aplikacji wdrożeń usługi AKS następnie może zostać zaktualizowana do uruchomienia obrazów najnowsze i bezpieczne.
+Każdorazowo, gdy zostanie zaktualizowany obraz podstawowy, również należy uaktualnić wszystkie obrazy kontenerów podrzędnych. Ten proces kompilacji należy zintegrować z potokami walidacji i wdrażania, takimi jak [Azure Pipelines][azure-pipelines] lub Jenkins. Te potoki gwarantuje, że aplikacje w dalszym ciągu uruchamiać na zaktualizowane na podstawie obrazów. Po zweryfikowaniu obrazów kontenerów aplikacji wdrożeń usługi AKS następnie może zostać zaktualizowana do uruchomienia obrazów najnowsze i bezpieczne.
 
 Zadania usługi Azure rejestru kontenerów można również aktualizować obrazy kontenerów po zaktualizowaniu obrazu podstawowego. Ta funkcja umożliwia tworzenie małej liczby obrazy podstawowe i regularnie je zaktualizować przy użyciu poprawki usterek i zabezpieczeń.
 
-Aby uzyskać więcej informacji na temat aktualizacji obrazu podstawowego zobacz [Automatyzacja obrazu jest oparta na aktualizacji obrazów podstawowych zadań rejestru kontenera platformy Azure][acr-base-image-update].
+Aby uzyskać więcej informacji o aktualizacjach obrazu podstawowego, zobacz Automatyzacja kompilowania obrazów [w podstawowej aktualizacji obrazu przy użyciu Azure Container Registry zadań][acr-base-image-update].
 
 ## <a name="next-steps"></a>Następne kroki
 
 Ten artykuł koncentruje się na sposób zabezpieczania kontenerów. Aby zaimplementować, niektóre z tych obszarów, zobacz następujące artykuły:
 
-* [Automatyzowanie kompilacji obrazów po aktualizacji obraz podstawowy z zadaniami rejestru kontenera platformy Azure][acr-base-image-update]
+* [Automatyzacja kompilacji obrazów w podstawowej aktualizacji obrazu przy użyciu Azure Container Registry zadań][acr-base-image-update]
 
 <!-- EXTERNAL LINKS -->
 [azure-pipelines]: /azure/devops/pipelines/?view=vsts

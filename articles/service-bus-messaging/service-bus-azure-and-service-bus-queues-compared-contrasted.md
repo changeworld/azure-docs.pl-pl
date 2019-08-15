@@ -1,6 +1,6 @@
 ---
-title: Kolejki magazynu platformy Azure i kolejek usługi Service Bus porównanie i różnice | Dokumentacja firmy Microsoft
-description: Analizuje różnice i podobieństwa dwóch typów kolejek oferowanych na platformie Azure.
+title: Kolejki usługi Azure Storage i kolejki Service Bus są porównywane i różnicowe | Microsoft Docs
+description: Analizuje różnice i podobieństwa między dwoma typami kolejek oferowanych przez platformę Azure.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -14,188 +14,188 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: dbbc43bc7a2f42f8a72ce12d84da1ae406a588d2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 32c903e5d469a9a3e7b98bd406b5512d752bb210
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799347"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69017791"
 ---
-# <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Kolejki magazynu i kolejek usługi Service Bus — porównanie
-W tym artykule przeanalizowano różnice i podobieństwa dwóch typów kolejek oferowanych przez Microsoft Azure już dzisiaj: Kolejki magazynu i kolejek usługi Service Bus. Dzięki tym informacjom można porównać odpowiednie technologie i świadomie wybrać rozwiązanie, które najlepiej odpowiada danym potrzebom.
+# <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Kolejki magazynu i kolejki Service Bus — porównane i rozróżnienia
+Ten artykuł analizuje różnice i podobieństwa między dwoma typami kolejek oferowanych przez Microsoft Azure Dzisiaj: Kolejki magazynu i kolejki Service Bus. Dzięki tym informacjom można porównać odpowiednie technologie i świadomie wybrać rozwiązanie, które najlepiej odpowiada danym potrzebom.
 
 ## <a name="introduction"></a>Wprowadzenie
-Platforma Azure obsługuje dwa rodzaje mechanizmów kolejki: **Kolejki magazynu** i **kolejek usługi Service Bus**.
+Platforma Azure obsługuje dwa typy mechanizmów kolejki: **Kolejki magazynu** i **kolejki Service Bus**.
 
-**Kolejki magazynu**, które są częścią [usługi Azure storage](https://azure.microsoft.com/services/storage/) infrastruktury, funkcja prosty interfejs oparty na protokole REST GET/PUT/PODEJRZENIE, zapewniając niezawodnej, stałej obsługi komunikatów w ramach i między usługami.
+**Kolejki magazynu**, które są częścią infrastruktury [usługi Azure Storage](https://azure.microsoft.com/services/storage/) , oferują prosty, oparty na REST interfejs get/put/Peek, zapewniając niezawodne, trwałe komunikaty w ramach i między usługami.
 
-**Kolejki usługi Service Bus** należą do szerszego [Azure messaging](https://azure.microsoft.com/services/service-bus/) infrastrukturę, która obsługuje usługi kolejkowania wiadomości, a także publikowania/subskrybowania oraz bardziej zaawansowane wzorce integracji. Aby uzyskać więcej informacji na temat usługi Service Bus kolejek/tematów/subskrypcji, zobacz [Omówienie usługi Service Bus](service-bus-messaging-overview.md).
+**Kolejki Service Bus** są częścią szerszej infrastruktury [usługi Azure Messaging](https://azure.microsoft.com/services/service-bus/) , która obsługuje Kolejkowanie, a także publikowanie/subskrybowanie i bardziej zaawansowane wzorce integracji. Więcej informacji o Service Bus kolejkach/tematach/subskrypcjach znajduje się w temacie [omówienie Service Bus](service-bus-messaging-overview.md).
 
-Gdy obie technologie kolejkowania równolegle kolejek magazynu zostały wprowadzone po pierwsze, stanowiąc dedykowaną kolejkę mechanizm magazynu, korzystających z usługi Azure Storage. Kolejki usługi Service Bus są tworzone na podstawie szersze infrastruktura obsługi komunikatów, zaprojektowany pod kątem integracji z aplikacjami lub składnikami aplikacji, które może obejmować wiele protokołów komunikacyjnych, kontraktów danych, domenami zaufania lub środowiskach sieciowych.
+Chociaż obie technologie kolejkowania istnieją jednocześnie, kolejki magazynu zostały najpierw wprowadzone jako dedykowany mechanizm magazynu kolejki oparty na usługach Azure Storage. Kolejki Service Bus są zbudowane na podstawie szerszej infrastruktury obsługi komunikatów zaprojektowanej do integrowania aplikacji lub składników aplikacji, które mogą obejmować wiele protokołów komunikacyjnych, kontraktów danych, domen zaufania i/lub środowisk sieciowych.
 
 ## <a name="technology-selection-considerations"></a>Zagadnienia dotyczące wyboru technologii
-Kolejki magazynu i kolejek usługi Service Bus stanowią implementacje kolejkowania usługa, obecnie oferowane przez Microsoft Azure. Zestaw funkcji nieco inny, co oznacza, że można wybrać jednego lub drugiego, lub używać ich obu w zależności od potrzeb biznesowych/technical problem, który rozwiązywanych lub konkretnego rozwiązania, na których każda ma.
+Kolejki magazynu i kolejki Service Bus są implementacjami usługi kolejkowania komunikatów oferowaną obecnie przez Microsoft Azure. Każdy z nich ma nieco inny zestaw funkcji, co oznacza, że można wybrać jedną lub drugą lub użyć obu, w zależności od potrzeb konkretnego rozwiązania lub problemu biznesowego, który rozwiązujesz.
 
-Podczas określania, która technologia usługi kolejkowania pasuje do zastosowania dla danego rozwiązania, rozwiązanie dla architektów i deweloperów należy wziąć pod uwagę te zalecenia. Aby uzyskać więcej informacji zobacz następną sekcję.
+Podczas określania, która technologia kolejkowania pasuje do przeznaczenia dla danego rozwiązania, architektzy rozwiązań i deweloperzy powinni wziąć pod uwagę te zalecenia. Aby uzyskać więcej informacji, zobacz następną sekcję.
 
-Architekt rozwiązań/programista **należy rozważyć użycie kolejek magazynu** po:
+Jako architekt rozwiązań/deweloper należy **rozważyć użycie kolejek usługi Storage** w przypadku:
 
-* Aplikacja musi przechowywać ponad 80 GB wiadomości w kolejce.
-* Aplikacja chce, aby śledzić postęp przetwarzania komunikatu w kolejce. Jest to przydatne, jeśli wystąpiła awaria procesu roboczego przetwarza komunikat. Kolejne procesu roboczego następnie można użyć tych informacji do kontynuowania pracy tam, gdzie przerwaliśmy poprzedniego procesu roboczego.
-* Wymagane dzienniki po stronie serwera dla wszystkich transakcji wykonywane względem Twojej kolejki.
+* Aplikacja musi przechowywać ponad 80 GB komunikatów w kolejce.
+* Aplikacja chce śledzić postęp przetwarzania komunikatu w kolejce. Jest to przydatne, jeśli proces roboczy przetwarza komunikat awarii. Kolejny proces roboczy może następnie użyć tych informacji, aby kontynuować, gdzie poprzedni proces roboczy został pozostawiony.
+* Wymagane są dzienniki po stronie serwera dla wszystkich transakcji wykonywanych względem kolejek.
 
-Architekt rozwiązań/programista **należy rozważyć użycie kolejek usługi Service Bus** po:
+Jako architekt rozwiązań/deweloper należy **rozważyć użycie kolejek Service Bus** , gdy:
 
-* Rozwiązanie musi być może odbierać wiadomości bez konieczności sondowania kolejki. Usługa Service Bus można to osiągnąć przy użyciu długiego sondowania przy użyciu protokołów oparte na protokole TCP, które Usługa Service Bus obsługuje operacji odbioru.
-* Rozwiązanie wymaga kolejki do zapewnienia gwarantowanej pierwszy wejściu — pierwszy na wyjściu (FIFO) uporządkowane dostarczania.
-* Rozwiązanie musi mieć możliwość obsługi automatycznego wykrywania duplikatów.
-* Chcesz Twojej aplikacji do przetwarzania komunikatów w postaci równoległej strumieni długotrwałych (komunikaty są skojarzone z strumienia z wykorzystaniem [SessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid) właściwości wiadomości). W tym modelu każdy węzeł w aplikacja odbierająca komunikaty konkuruje dla strumieni, w przeciwieństwie do komunikatów. Gdy strumień jest dużo węzła, węzeł można sprawdzić stan stan strumienia aplikacji za pomocą transakcji.
-* Rozwiązanie wymaga transakcyjnych zachowanie i niepodzielność podczas wysyłania lub odbierania wielu komunikatów z kolejki.
-* Aplikacji obsługi wiadomości, które może być dłuższa niż 64 KB, ale ograniczy prawdopodobnie nie podejście 256 KB.
-* Praca z wymaganiem, aby zapewnić model opartej na rolach dostęp do kolejek i inne prawa/uprawnienia dla nadawców i odbiorców.
-* Rozmiar kolejki rośnie nie większy niż 80 GB.
-* Chcesz używać protokołu obsługi komunikatów oparte na standardach protokołu AMQP 1.0. Aby uzyskać więcej informacji na temat protokołu AMQP, zobacz [Omówienie protokołu AMQP usługi Service Bus](service-bus-amqp-overview.md).
-* Mogą traktować ostatecznej migracja z kolejki bezpośredniej komunikacji do wymiany komunikatów, który umożliwia bezproblemową integrację odbiorcy dodatkowego (subskrybentów), z których każdy odbiera niezależnych, pobranych kopii niektórych lub wszystkich Komunikaty wysyłane do kolejki. Te ostatnie odnosi się do możliwości publikowania/subskrybowania, natywnie dostarczane przez usługę Service Bus.
-* Rozwiązanie do obsługi komunikatów musi mieć możliwość obsługi gwarancją dostarczania "Co większość jednokrotne" nie jest potrzebne do tworzenia składników dodatkowej infrastruktury.
-* Czy chcesz mieć możliwość publikowania i używania partii komunikatów.
+* Twoje rozwiązanie musi mieć możliwość otrzymywania komunikatów bez konieczności sondowania kolejki. Za pomocą Service Bus można to osiągnąć za pomocą długotrwałej operacji odbioru przy użyciu protokołów opartych na protokole TCP obsługiwanych przez Service Bus.
+* Twoje rozwiązanie wymaga, aby Kolejka zapewniała zagwarantowane dostarczenie pierwszego początku (FIFO).
+* Twoje rozwiązanie musi być w stanie obsługiwać automatyczne wykrywanie duplikatów.
+* Aplikacja ma przetwarzać komunikaty jako Parallel długotrwałe strumienie (komunikaty są skojarzone ze strumieniem przy użyciu właściwości [SessionID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid) w komunikacie). W tym modelu każdy węzeł w aplikacji zużywanej konkuruje o strumienie, w przeciwieństwie do komunikatów. Gdy strumień jest przyznany w węźle zużywanym, węzeł może przeanalizować stan strumienia aplikacji przy użyciu transakcji.
+* Twoje rozwiązanie wymaga transakcyjnego zachowania i niepodzielności podczas wysyłania lub otrzymywania wielu komunikatów z kolejki.
+* Aplikacja obsługuje komunikaty, które mogą przekraczać 64 KB, ale prawdopodobnie nie zbliża się do limitu 256 KB.
+* Istnieje wymóg, aby zapewnić model dostępu oparty na rolach dla kolejek i różne prawa/uprawnienia dla nadawców i odbiorników. Aby uzyskać więcej informacji, zobacz [Active Directory Access Control opartych na rolach (wersja zapoznawcza)](service-bus-role-based-access-control.md)
+* Rozmiar kolejki nie będzie większy niż 80 GB.
+* Chcesz użyć protokołu obsługi komunikatów opartych na standardach AMQP 1,0. Aby uzyskać więcej informacji na temat AMQP, zobacz [Service Bus AMQP Overview](service-bus-amqp-overview.md).
+* Można Envision z komunikacji punkt-punktowego opartego na kolejkach do wzorca wymiany komunikatów, który umożliwia bezproblemową integrację dodatkowych odbiorników (subskrybentów), z których każdy otrzymuje niezależne kopie niektórych lub wszystkich Komunikaty wysyłane do kolejki. Drugie odnosi się do możliwości publikowania/subskrybowania natywnie udostępniane przez Service Bus.
+* Rozwiązanie do obsługi komunikatów musi być w stanie obsługiwać gwarancję dostarczenia "at-najwyżej raz" bez konieczności tworzenia dodatkowych składników infrastruktury.
+* Chcesz mieć możliwość publikowania i korzystania z partii komunikatów.
 
-## <a name="comparing-storage-queues-and-service-bus-queues"></a>Porównanie kolejek magazynu i kolejek usługi Service Bus
-Tabele w poniższych sekcjach umożliwiają logiczne grupowanie funkcji kolejki i pozwalają porównać, na pierwszy rzut oka możliwości, które są dostępne zarówno w kolejkach usługi Azure Storage i kolejek usługi Service Bus.
+## <a name="comparing-storage-queues-and-service-bus-queues"></a>Porównywanie kolejek magazynu i kolejek Service Bus
+Tabele w poniższych sekcjach zawierają logiczne grupowanie funkcji kolejki oraz pozwalają na szybkie porównanie możliwości dostępnych zarówno w kolejkach usługi Azure Storage, jak i w kolejkach Service Bus.
 
-## <a name="foundational-capabilities"></a>Podstawowe możliwości
-W tej sekcji przedstawiono porównanie, niektóre z podstawowych funkcji usługi kolejkowania, dostarczone przez kolejki magazynu i kolejek usługi Service Bus.
+## <a name="foundational-capabilities"></a>Funkcje podstawowe
+W tej sekcji porównano niektóre podstawowe możliwości kolejkowania zapewniane przez kolejki magazynu i kolejki Service Bus.
 
 | Kryteria porównania | Kolejki magazynu | Kolejki usługi Service Bus |
 | --- | --- | --- |
-| Kolejność gwarancji |**Nie** <br/><br>Aby uzyskać więcej informacji zobacz pierwszą uwagi w części "Informacje dodatkowe".</br> |**Tak - pierwszej wejściu — pierwszy na wyjściu (FIFO)**<br/><br>(przy użyciu komunikatów sesji) |
-| Gwarancja dostarczenia |**At-Least-Once** |**At-Least-Once**<br/><br/>**Większość jednocześnie** |
-| Niepodzielna operacja pomocy technicznej |**Nie** |**Tak**<br/><br/> |
-| Odbieranie zachowanie |**Nieblokujące**<br/><br/>(kończy natychmiast, jeśli zostanie znaleziony żaden nowy komunikat) |**Blokowanie z lub bez limitu czasu**<br/><br/>(oferuje długim sondowaniem lub ["Comet techniki"](https://go.microsoft.com/fwlink/?LinkId=613759))<br/><br/>**Nieblokujące**<br/><br/>(przy użyciu platformy .NET API tylko zarządzany) |
-| Interfejsu API wypychania stylu |**Nie** |**Tak**<br/><br/>[OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__) i **OnMessage** sesje interfejsu API platformy .NET. |
-| Tryb odbierania |**Odbierz & dzierżawy** |**Odbierz & blokady**<br/><br/>**Odbieranie i Usuń** |
-| Tryb wyłączności |**Na podstawie dzierżawy** |**Na podstawie blokady** |
-| Czas trwania blokady/na dzierżawę |**30 sekund (ustawienie domyślne)**<br/><br/>**7 dni (maksymalnie)** (można odnowienia lub wydania dzierżawy komunikat przy użyciu [UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) interfejsu API.) |**60 sekund (ustawienie domyślne)**<br/><br/>Można odnowić blokady komunikat przy użyciu [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) interfejsu API. |
-| Dzierżawa/Lock dokładności |**Poziom komunikatu**<br/><br/>(każdy komunikat może mieć wartość inny limit można zaktualizować zgodnie z potrzebami podczas przetwarzania komunikatu, za pomocą [UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) interfejsu API) |**Poziom kolejki**<br/><br/>(Każda kolejka ma dokładności blokady stosowane do wszystkich jego wiadomości, ale można odnowić blokady, za pomocą [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) interfejsu API.) |
-| Wsadowe odbierania |**Tak**<br/><br/>(jawne określenie liczby komunikatów podczas pobierania wiadomości, maksymalnie 32 komunikaty) |**Tak**<br/><br/>(niejawnie włączenie właściwości pobierania wstępnego lub jawnie przy użyciu transakcji) |
-| Wyślij wsadów |**Nie** |**Tak**<br/><br/>(przy użyciu transakcji lub przetwarzanie wsadowe po stronie klienta) |
+| Gwarancja porządkowania |**Nie** <br/><br>Aby uzyskać więcej informacji, zobacz pierwszą uwagę w sekcji "dodatkowe informacje".</br> |**Tak — pierwszy w pierwszej kolejności (FIFO)**<br/><br>(za pomocą sesji obsługi komunikatów) |
+| Gwarancja dostarczania |**Co najmniej raz** |**Co najmniej raz**<br/><br/>**Co najwyżej raz** |
+| Obsługa niepodzielnych operacji |**Nie** |**Tak**<br/><br/> |
+| Zachowanie odbierania |**Bez blokowania**<br/><br/>(wykonuje natychmiast, jeśli nie zostanie znaleziony nowy komunikat) |**Blokowanie z limitem czasu/bez**<br/><br/>(oferuje długotrwałe sondowanie lub ["technikę" Comet "](https://go.microsoft.com/fwlink/?LinkId=613759))<br/><br/>**Bez blokowania**<br/><br/>(tylko w przypadku korzystania z zarządzanego interfejsu API platformy .NET) |
+| Interfejs API w stylu wypychania |**Nie** |**Tak**<br/><br/>[](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__) Interfejsy API platformy .NET dla sesji OnMessage i OnMessage. |
+| Tryb odbioru |**Wgląd w & dzierżawy** |**Wgląd & blokadę**<br/><br/>**Odbierz & usunąć** |
+| Wyłączny tryb dostępu |**Oparte na dzierżawie** |**Na podstawie blokady** |
+| Czas trwania dzierżawy/blokady |**30 sekund (wartość domyślna)**<br/><br/>**7 dni (maksimum)** (Można odnowić lub wydać dzierżawę komunikatów przy użyciu interfejsu API [UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) ). |**60 sekund (wartość domyślna)**<br/><br/>Blokadę wiadomości można odnowić przy użyciu interfejsu API [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) . |
+| Precyzja dzierżawy/blokady |**Poziom komunikatu**<br/><br/>(każdy komunikat może mieć inną wartość limitu czasu, którą można następnie zaktualizować w razie konieczności podczas przetwarzania komunikatu przy użyciu interfejsu API [UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) ). |**Poziom kolejki**<br/><br/>(Każda kolejka ma dokładnooć blokady zastosowana do wszystkich swoich komunikatów, ale można odnowić blokadę przy użyciu interfejsu API [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) ). |
+| Odbierane wsadowo |**Tak**<br/><br/>(jawnie Określanie liczby komunikatów podczas pobierania komunikatów, maksymalnie 32 komunikatów) |**Tak**<br/><br/>(niejawnie włączenie właściwości poprzedzającego pobranie lub jawne użycie transakcji) |
+| Wysyłanie wsadowe |**Nie** |**Tak**<br/><br/>(w przypadku korzystania z transakcji lub wykonywania operacji wsadowych po stronie klienta) |
 
 ### <a name="additional-information"></a>Dodatkowe informacje
-* Komunikaty w kolejkach usługi Storage są zazwyczaj pierwsze wejściu — pierwszy na wyjściu, ale czasami może być uszkodzony; na przykład komunikat o widoczności limitu czasu wygaśnięcia (na przykład w wyniku awarii podczas przetwarzania aplikacji klienckiej). Po upływie tego czasu widoczności, komunikat staje się widoczna ponownie w kolejce dla innego procesu roboczego do usuwania go. W tym momencie nowo widoczny komunikat może być umieszczone w kolejce (usuniętej ponownie), po komunikat, który pierwotnie został umieszczony w kolejce po nim.
-* Gwarantowana wzorzec FIFO w kolejek usługi Service Bus wymaga użycia sesji komunikacji. W przypadku, gdy wystąpiła awaria podczas przetwarzania wiadomość zostaje odebrana w aplikacji **wgląd i blokowanie** trybu przy następnym odbiorcy kolejka akceptuje sesji obsługi komunikatów, rozpocznie się komunikatem nie powiodło się po jego czas wygaśnięcia (TTL) okres wygaśnięcia.
-* Kolejki magazynu są przeznaczone do wsparcia kolejkowania scenariusze standardowe, takie jak odsprzęgania składniki aplikacji w celu zwiększenia skalowalności i tolerancji w przypadku błędów ładowania wyrównywanie i przepływy pracy procesu kompilacji.
-* Obsługa kolejki usługi Service Bus *co najmniej jednokrotne* gwarancja dostarczenia. 
-* Można uniknąć niespójności w odniesieniu do obsługi komunikatów w ramach sesji usługi Service Bus przy użyciu stanu sesji na przechowywanie stanu aplikacji względem postęp obsługi sekwencji komunikatów na sesji i za pomocą transakcji wokół Rozliczanie odebrane wiadomości i aktualizowaniu stanu sesji. Czasami nazywa ten rodzaj funkcji spójności *dokładnie — po zakończeniu przetwarzania* w innych dostawców produktów, ale transakcji błędy oczywiście spowoduje, że komunikaty, aby być dostarczony ponownie i dlatego termin dokładnie odpowiednie.
-* Kolejki magazynu zapewnienia jednolitego i spójny model programowania kolejek, tabel i obiektów blob — dla deweloperów i zespołów operacyjnych.
-* Kolejki usługi Service Bus zapewnia obsługę lokalnej transakcji w ramach pojedynczej kolejki.
-* **Odbieranie i usuwanie** trybem obsługiwanym przez usługi Service Bus zapewnia możliwość zmniejszyć liczbę operacji obsługi komunikatów (i skojarzone z nim koszty) w zamian za zapewnienie skróconego dostarczania.
-* Kolejki magazynu umożliwiają dzierżawy z możliwością rozszerzenia dzierżawy dla wiadomości. Dzięki temu pracownikom zachować krótki dzierżaw dla wiadomości. W związku z tym jeśli proces roboczy ulegnie awarii, wiadomości mogą być szybko przetwarzane ponownie przez innego procesu roboczego. Ponadto proces roboczy mogą rozszerzać dzierżawy w komunikacie wymaga przetworzenia jej dłużej niż bieżący czas dzierżawy.
-* Kolejki usługi Storage oferuje widoczność limit czasu można ustawić na enqueuing lub usuwania z kolejki komunikatów. Ponadto można zaktualizować wiadomości przy użyciu wartości z innej dzierżawy w czasie wykonywania i zaktualizować różne wartości w wiadomości w tej samej kolejki. Limity czasu blokowania usługi Service Bus są zdefiniowane w metadanych kolejki; jednak można odnowić blokady przez wywołanie metody [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) metody.
-* Maksymalny limit czasu operacji blokowania odbioru w kolejek usługi Service Bus to 24 dni. Jednak oparte na protokole REST przekroczeń limitu czasu ma maksymalną wartość sekund 55.
-* Po stronie klienta przetwarzanie wsadowe, dostarczone przez usługę Service Bus umożliwia klientowi kolejki operacji wysyłania pojedynczej usługi batch wiele wiadomości. Przetwarzanie wsadowe jest dostępna tylko dla operacji Wyślij asynchroniczne.
-* Funkcje, takie jak limit 200 TB kolejki magazynu (więcej informacji podczas wirtualizacji konta) i nieograniczona liczba kolejek był jest idealną platformą dla dostawców SaaS.
-* Kolejki magazynu umożliwiają elastyczne i wydajne delegowane mechanizmu kontroli dostępu.
+* Komunikaty w kolejkach magazynu są zwykle pierwszym wyjściem, ale czasami mogą być poza kolejnością. na przykład po upływie limitu czasu wyświetlania komunikatu (na przykład w wyniku awarii aplikacji klienta podczas przetwarzania). Po upływie limitu czasu widoczności komunikat zostaje ponownie widoczny w kolejce dla innego procesu roboczego, aby go usunąć. W tym momencie nowo widoczny komunikat może zostać umieszczony w kolejce (do ponownego odkolejkowania) po komunikacie, który był pierwotnie przemieszczony po nim.
+* W kolejkach Service Bus gwarantowana wzorzec FIFO wymaga użycia sesji obsługi komunikatów. W przypadku awarii aplikacji podczas przetwarzania komunikatu odebranego w trybie **wglądu & tryb blokowania** , gdy odbiornik kolejki akceptuje sesję obsługi komunikatów, rozpocznie się z komunikatem o błędzie po upływie okresu czasu wygaśnięcia (TTL).
+* Kolejki magazynu zostały zaprojektowane z myślą o obsłudze standardowych scenariuszy kolejkowania, takich jak składniki aplikacji do oddzielania, aby zwiększyć skalowalność i odporność na awarie, obciążać i kompilować przepływy pracy procesów.
+* Kolejki Service Bus obsługują gwarancję dostarczenia *co najmniej raz* . 
+* Niespójności w odniesieniu do obsługi komunikatów w kontekście Service Bus sesji można uniknąć przy użyciu stanu sesji w celu przechowywania stanu aplikacji względem postępu obsługi sekwencji komunikatów sesji oraz przy użyciu transakcji wokół Rozliczanie odebranych komunikatów i aktualizowanie stanu sesji. Ten rodzaj funkcji spójności jest czasami oznaczany *dokładnie* jednokrotnym przetwarzaniem w produktach innych dostawców, ale niepowodzenia transakcji spowodują, że komunikaty zostaną ponownie dostarczone i w związku z tym termin nie jest dokładnie odpowiedni.
+* Kolejki magazynu zapewniają jednolity i spójny model programowania między kolejkami, tabelami i obiektami BLOB — zarówno dla deweloperów, jak i dla zespołów operacyjnych.
+* Kolejki Service Bus zapewniają obsługę lokalnych transakcji w kontekście pojedynczej kolejki.
+* Tryb **odbioru i usuwania** obsługiwany przez Service Bus umożliwia zredukowanie liczby operacji obsługi komunikatów (i powiązanego kosztu) w programie Exchange w celu obniżenia poziomu gwarancji dostarczania.
+* Kolejki magazynu zapewniają dzierżawy z możliwością rozszerania dzierżaw dla komunikatów. Dzięki temu procesy robocze mogą obsługiwać krótkie dzierżawy komunikatów. W takim przypadku w przypadku awarii procesu roboczego komunikat może być szybko przetwarzany przez inny proces roboczy. Ponadto proces roboczy może wydłużyć dzierżawę w wiadomości, jeśli musi przetworzyć ją dłużej niż bieżący czas dzierżawy.
+* Kolejki magazynu oferują wartość limitu czasu widoczności, którą można ustawić przy umieszczenie lub wykorzystaniu komunikatu. Ponadto można aktualizować komunikat z różnymi wartościami dzierżawy w czasie wykonywania i aktualizować różne wartości między komunikatami w tej samej kolejce. Limity czasu blokady Service Bus są zdefiniowane w metadanych kolejki; można jednak odnowić blokadę, wywołując metodę [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) .
+* Maksymalny limit czasu dla operacji odbierania blokowania w kolejkach Service Bus wynosi 24 dni. Limity czasu REST mają jednak wartość maksymalną 55 sekund.
+* Przetwarzanie wsadowe po stronie klienta zapewniane przez Service Bus umożliwia klientowi kolejki przetwarzanie wsadowe wielu komunikatów w ramach jednej operacji wysyłania. Przetwarzanie wsadowe jest dostępne tylko dla asynchronicznych operacji wysyłania.
+* Funkcje, takie jak limit 200 TB kolejek magazynu (więcej podczas wirtualizacji kont) i nieograniczoną liczbę kolejek sprawiają, że jest to idealna platforma dla dostawców SaaS.
+* Kolejki magazynu zapewniają elastyczny i wydajny mechanizm kontroli dostępu delegowanego.
 
-## <a name="advanced-capabilities"></a>Zaawansowane funkcje
-Ta sekcja zawiera porównanie zaawansowane możliwości zapewniane przez kolejki magazynu i kolejek usługi Service Bus.
+## <a name="advanced-capabilities"></a>Zaawansowane możliwości
+W tej sekcji porównano zaawansowane możliwości zapewniane przez kolejki magazynu i kolejki Service Bus.
 
 | Kryteria porównania | Kolejki magazynu | Kolejki usługi Service Bus |
 | --- | --- | --- |
 | Zaplanowane dostarczanie |**Tak** |**Tak** |
-| Automatyczne utraconych |**Nie** |**Tak** |
-| Zwiększenie wartości czasu wygaśnięcia kolejki |**Tak**<br/><br/>(za pośrednictwem aktualizacji w miejscu limitu czasu widoczności) |**Tak**<br/><br/>(udostępnione za pośrednictwem dedykowanego interfejsu API function) |
-| Obsługa komunikatów zanieczyszczonych |**Tak** |**Tak** |
-| Aktualizacja "w miejscu" |**Tak** |**Tak** |
+| Automatyczna litera utraconych wiadomości |**Nie** |**Tak** |
+| Zwiększanie wartości czasu wygaśnięcia kolejki |**Tak**<br/><br/>(za pośrednictwem aktualizacji w miejscu limitu czasu widoczności) |**Tak**<br/><br/>(udostępniane za pośrednictwem dedykowanej funkcji interfejsu API) |
+| Obsługa skażonych komunikatów |**Tak** |**Tak** |
+| Aktualizacja w miejscu |**Tak** |**Tak** |
 | Dziennik transakcji po stronie serwera |**Tak** |**Nie** |
-| Metryki magazynu |**Tak**<br/><br/>**Minuta metryki**: udostępnia metryki w czasie rzeczywistym dla interfejsu API dostępność, TPS, wywołaj liczników, liczniki błąd i nie tylko w czasie rzeczywistym (zagregowane na minutę i zgłaszanych w ciągu kilku minut od co właśnie wydarzyło się w środowisku produkcyjnym. Aby uzyskać więcej informacji, zobacz [o Storage Analytics Metrics](/rest/api/storageservices/fileservices/About-Storage-Analytics-Metrics). |**Tak**<br/><br/>(zbiorczo zapytania, wywołując [GetQueues](/dotnet/api/microsoft.servicebus.namespacemanager.getqueues#Microsoft_ServiceBus_NamespaceManager_GetQueues)) |
-| Zarządzanie stanem |**Nie** |**Tak**<br/><br/>[Microsoft.ServiceBus.Messaging.EntityStatus.Active](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft.ServiceBus.Messaging.EntityStatus.Disabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft.ServiceBus.Messaging.EntityStatus.SendDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft.ServiceBus.Messaging.EntityStatus.ReceiveDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus) |
-| Komunikat o automatycznym przekazywaniem |**Nie** |**Tak** |
-| Wyczyść kolejkę — funkcja |**Tak** |**Nie** |
-| Grupy komunikatów |**Nie** |**Tak**<br/><br/>(przy użyciu komunikatów sesji) |
-| Stan aplikacji dla każdej grupy komunikatów |**Nie** |**Tak** |
-| Wykrywanie duplikatów |**Nie** |**Tak**<br/><br/>(można je konfigurować na stronie nadawcy) |
-| Przeglądanie grupy komunikatów |**Nie** |**Tak** |
-| Pobieranie sesji komunikatów według Identyfikatora |**Nie** |**Tak** |
+| Metryki magazynu |**Tak**<br/><br/>**Metryki minut**: udostępniają metryki w czasie rzeczywistym dotyczące dostępności, TPS, liczby wywołań interfejsu API, liczby błędów i nie tylko w czasie rzeczywistym (zagregowane na minutę i raportowane w ciągu kilku minut od tego, co się stało w środowisku produkcyjnym). Aby uzyskać więcej informacji, zobacz [Informacje o analityka magazynu metrykach](/rest/api/storageservices/fileservices/About-Storage-Analytics-Metrics). |**Tak**<br/><br/>(zapytania zbiorcze przez [](/dotnet/api/microsoft.servicebus.namespacemanager.getqueues#Microsoft_ServiceBus_NamespaceManager_GetQueues)wywołanie metody getqueues) |
+| Zarządzanie stanem |**Nie** |**Tak**<br/><br/>[Microsoft. ServiceBus. Messaging. EntityStatus. Active](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft. ServiceBus. Messaging. EntityStatus. disabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft. ServiceBus. Messaging. EntityStatus. SendDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [ Microsoft. ServiceBus. Messaging. EntityStatus. ReceiveDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus) |
+| Funkcja autoprzekazywania komunikatów |**Nie** |**Tak** |
+| Funkcja przeczyszczania kolejki |**Tak** |**Nie** |
+| Grupy komunikatów |**Nie** |**Tak**<br/><br/>(za pomocą sesji obsługi komunikatów) |
+| Stan aplikacji na grupę komunikatów |**Nie** |**Tak** |
+| Wykrywanie duplikatów |**Nie** |**Tak**<br/><br/>(możliwe do skonfigurowania po stronie nadawcy) |
+| Przeglądanie grup komunikatów |**Nie** |**Tak** |
+| Pobieranie sesji komunikatów według identyfikatora |**Nie** |**Tak** |
 
 ### <a name="additional-information"></a>Dodatkowe informacje
-* Obie technologie kolejkowania Włącz wiadomości do zaplanowania dostarczania w późniejszym czasie.
-* Automatyczne przekazywanie kolejki umożliwia tysiące kolejek do automatycznego przekazywania dalej wiadomości do pojedynczej kolejki, z którego aplikacja zużywa wiadomości. Można użyć ten mechanizm do osiągnięcia zabezpieczenia, przepływ sterowania i izolowania magazynu między każdy wydawca wiadomości.
-* Kolejki magazynu umożliwiają aktualizowanie zawartości wiadomości. Można użyć tej funkcji utrwalanie informacji o stanie i przyrostowy postęp aktualizacji do wiadomości, dzięki czemu mogą być przetwarzane od ostatniego znanego punktu kontrolnego, zamiast od zera. Za pomocą kolejek usługi Service Bus można włączyć ten sam scenariusz przy użyciu sesji komunikatów. Sesje umożliwiają zapisywanie i pobieranie stanu przetwarzania aplikacji (przy użyciu [SetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_) i [GetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate#Microsoft_ServiceBus_Messaging_MessageSession_GetState)).
-* [Dead drukiem](service-bus-dead-letter-queues.md), który jest tylko do obsługiwanych przez usługi Service Bus, może być przydatne do izolowania wiadomości, który nie może pomyślnie przetworzone przez aplikację odbierającą lub gdy komunikatów nie może połączyć się ich przeznaczenia z powodu wygasły (time-to-live Właściwość TTL). Wartość TTL Określa, jak długo pozostaje wiadomość w kolejce. Usługa Service Bus wiadomość zostanie przeniesiona do kolejki specjalne o nazwie $DeadLetterQueue po wygaśnięciu danego okresu czasu wygaśnięcia.
-* Znajdowanie "" wiadomości w kolejkach magazynu podczas usuwania z kolejki, komunikat aplikacji sprawdza [DequeueCount](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage.dequeuecount) właściwość komunikatu. Jeśli **DequeueCount** przekracza wartość progową, aplikacja przenosi wiadomość do zdefiniowanych przez aplikację "kolejki utraconych wiadomości".
-* Kolejki magazynu umożliwiają uzyskanie szczegółowego dziennika dla wszystkich transakcji wykonywane w odniesieniu do kolejki, jak również jak zagregowanych metryk. Obie te opcje są przydatne do debugowania i zrozumienie, jak aplikacja używa kolejek magazynu. Są one również przydatne w przypadku aplikacji dostrajanie wydajności i obniżenia kosztów przy użyciu funkcji kolejek.
-* Pojęcie "sesji komunikatów" obsługiwane przez usługę Service Bus umożliwia wiadomości, które należą do określonej grupy logicznej ma zostać skojarzony z danym odbiornik, który z kolei tworzy koligację sesji przypominającej między wiadomości i ich odpowiednich odbiorców. Możesz je włączyć zaawansowanych funkcji w usłudze Service Bus, ustawiając [SessionID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid#Microsoft_ServiceBus_Messaging_BrokeredMessage_SessionId) właściwości w komunikacie. Odbiorniki można nasłuchiwać Identyfikatora określonej sesji i odbierać komunikaty, które mają identyfikator określonej sesji.
-* Funkcji wykrywania duplikatów, które są obsługiwane przez usługi Service Bus automatycznie usuwa zduplikowane komunikaty wysłane do kolejki lub tematu, w oparciu o wartość [MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) właściwości.
+* Obie technologie kolejkowania umożliwiają zaplanowanie dostarczania wiadomości w późniejszym czasie.
+* Funkcja autoprzekazywania kolejki umożliwia tysiącom kolejek przekazanie wiadomości do pojedynczej kolejki, z której aplikacja otrzymująca korzysta z wiadomości. Tego mechanizmu można użyć do osiągnięcia zabezpieczeń, przepływu sterowania i izolowania magazynu między każdym wydawcą wiadomości.
+* Kolejki magazynu zapewniają obsługę aktualizowania zawartości komunikatów. Za pomocą tej funkcji można zachować informacje o stanie i przyrostowe aktualizacje postępu w komunikacie, aby można było je przetworzyć z ostatniego znanego punktu kontrolnego, zamiast zaczynać od zera. Za pomocą kolejek Service Bus można włączyć ten sam scenariusz przy użyciu sesji komunikatów. Sesje umożliwiają zapisywanie i pobieranie stanu przetwarzania aplikacji (przy użyciu funkcji setstate [](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_) i GetState [](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate#Microsoft_ServiceBus_Messaging_MessageSession_GetState)).
+* [Utracony](service-bus-dead-letter-queues.md)komunikat, który jest obsługiwany tylko przez kolejki Service Bus, może być przydatny do izolowania komunikatów, które nie mogą zostać przetworzone pomyślnie przez aplikację otrzymującą lub gdy wiadomości nie mogą dotrzeć do swojego miejsca docelowego z powodu wygasłego czasu wygaśnięcia (TTL) wartość. Wartość czasu wygaśnięcia określa, jak długo komunikat pozostaje w kolejce. Za pomocą Service Bus wiadomość zostanie przeniesiona do specjalnej kolejki o nazwie $DeadLetterQueue po upływie okresu TTL.
+* Aby znaleźć komunikaty "trujące" w kolejkach magazynu, podczas usuwania z kolejki komunikatu aplikacja analizuje Właściwość [DequeueCount](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage.dequeuecount) komunikatu. Jeśli **DequeueCount** jest większa niż dany próg, aplikacja przenosi komunikat do kolejki "utraconych" aplikacji.
+* Kolejki magazynu umożliwiają uzyskanie szczegółowego dziennika wszystkich transakcji wykonywanych względem kolejki, a także zagregowanych metryk. Obie te opcje są przydatne w debugowaniu i zrozumieniu, jak Twoja aplikacja korzysta z kolejek magazynu. Są one również przydatne do dostrajania wydajności aplikacji i zmniejszania kosztów korzystania z kolejek.
+* Koncepcja "sesji komunikatów" obsługiwana przez Service Bus umożliwia skojarzenie komunikatów należących do określonej grupy logicznej z danym odbiornikiem, co z kolei tworzy koligację podobną do sesji między komunikatami a ich odpowiednimi odbiornikami. Możesz włączyć tę funkcję zaawansowaną w Service Bus przez ustawienie właściwości [SessionID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid#Microsoft_ServiceBus_Messaging_BrokeredMessage_SessionId) w komunikacie. Odbiorcy mogą następnie nasłuchiwać określonego identyfikatora sesji i odbierać komunikaty, które współużytkują określony identyfikator sesji.
+* Funkcje wykrywania duplikacji obsługiwane przez kolejki Service Bus automatycznie usuwają zduplikowane komunikaty wysyłane do kolejki lub tematu na podstawie wartości właściwości [MessageID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) .
 
-## <a name="capacity-and-quotas"></a>Pojemności i przydziałów
-W tej sekcji porównuje kolejki magazynu i kolejek usługi Service Bus z punktu widzenia [pojemności i przydziałów](service-bus-quotas.md) , może być stosowane.
+## <a name="capacity-and-quotas"></a>Pojemność i limity przydziału
+W tej sekcji porównano kolejki magazynu i kolejki Service Bus z perspektywy [pojemności i](service-bus-quotas.md) przydziałów, które mogą być stosowane.
 
 | Kryteria porównania | Kolejki magazynu | Kolejki usługi Service Bus |
 | --- | --- | --- |
-| Maksymalny rozmiar kolejki |**500 TB**<br/><br/>(maksymalnie [pojedynczy pojemności konta magazynu](../storage/common/storage-introduction.md#queue-storage)) |**1 GB do 80 GB**<br/><br/>(zdefiniowane podczas tworzenia kolejki i [włączenie partycjonowania](service-bus-partitioning.md) – zobacz sekcję "Informacje dodatkowe") |
-| Maksymalny rozmiar komunikatu |**64 KB**<br/><br/>(48 KB w przypadku korzystania z **Base64** kodowania)<br/><br/>Platforma Azure obsługuje duże komunikaty, łącząc kolejki i obiekty BLOB — w tym momencie można umieścić w kolejce do 200 GB dla pojedynczego elementu. |**256 KB** lub **1 MB**<br/><br/>(w tym nagłówka i treści, rozmiar maksymalny nagłówka: 64 KB).<br/><br/>Zależy od [warstwy usług](service-bus-premium-messaging.md). |
-| Maksymalny czas wygaśnięcia wiadomości. |**Nieskończona** (począwszy od wersji interfejsu api 2017-07-27) |**TimeSpan.Max** |
-| Maksymalna liczba kolejek |**Unlimited (nieograniczony)** |**10,000**<br/><br/>(na przestrzeń nazw usług) |
-| Maksymalna liczba współbieżnych klientów |**Unlimited (nieograniczony)** |**Unlimited (nieograniczony)**<br/><br/>(100 limit współbieżnych połączeń dotyczą tylko komunikacji oparte na protokole TCP) |
+| Maksymalny rozmiar kolejki |**500 TB**<br/><br/>(ograniczone do [jednej pojemności konta magazynu](../storage/common/storage-introduction.md#queue-storage)) |**1 GB do 80 GB**<br/><br/>(zdefiniowane podczas tworzenia kolejki i włączania [partycjonowania](service-bus-partitioning.md) — Zobacz sekcję "informacje dodatkowe"). |
+| Maksymalny rozmiar wiadomości |**64 KB**<br/><br/>(48 KB przy użyciu kodowania **Base64** )<br/><br/>Platforma Azure obsługuje duże komunikaty przez połączenie kolejek i obiektów BLOB — w tym momencie można umieścić w kolejce do 200 GB dla pojedynczego elementu. |**256 KB** lub **1 MB**<br/><br/>(w tym nagłówek i treść, maksymalny rozmiar nagłówka: 64 KB).<br/><br/>Zależy od [warstwy usług](service-bus-premium-messaging.md). |
+| Maksymalny czas wygaśnięcia komunikatu |**Nieskończoność** (w przypadku interfejsu API — wersja 2017-07-27) |**TimeSpan.Max** |
+| Maksymalna liczba kolejek |**Unlimited (nieograniczony)** |**10,000**<br/><br/>(na przestrzeń nazw usługi) |
+| Maksymalna liczba jednoczesnych klientów |**Unlimited (nieograniczony)** |**Unlimited (nieograniczony)**<br/><br/>(100 limit połączeń współbieżnych dotyczy tylko komunikacji opartej na protokole TCP) |
 
 ### <a name="additional-information"></a>Dodatkowe informacje
-* Usługa Service Bus wymusza limitach rozmiaru kolejek. Maksymalny rozmiar kolejki jest określana podczas tworzenia kolejki i może mieć wartość z zakresu od 1 do 80 GB. W przypadku osiągnięcia wartości rozmiar kolejki po utworzeniu kolejki dodatkowe komunikaty przychodzące są odrzucane, a wyjątek zostanie odebrana przez kod wywołujący. Aby uzyskać więcej informacji na temat limitów przydziału w usłudze Service Bus, zobacz [przydziały magistrali usługi](service-bus-quotas.md).
-* Partycjonowanie nie jest obsługiwana w [w warstwie Premium](service-bus-premium-messaging.md). W warstwie standardowa można utworzyć kolejki usługi Service Bus w rozmiarach 1, 2, 3, 4 lub 5 GB (wartość domyślna to 1 GB). W standardowej warstwie partycjonowania włączone (co jest ustawieniem domyślnym), usługi Service Bus tworzy partycje 16 za każdy GB, można określić. Jako takie, tworząc kolejki, która ma rozmiar 5 GB, z 16 partycji maksymalny rozmiar kolejki staje się (5 * 16) = 80 GB. Maksymalny rozmiar podzieleniu kolejki lub tematu widoczne, analizując jego wpis [witryny Azure portal][Azure portal].
-* W przypadku kolejek magazynu, jeśli zawartość komunikatu nie jest bezpieczne XML, następnie musi być **Base64** zakodowany. Jeśli użytkownik **Base64**— Kodowanie komunikatu, ładunek użytkownika mogą mieć maksymalnie 48 KB, zamiast 64 KB.
-* Za pomocą kolejek usługi Service Bus, każdy komunikat przechowywane w kolejce składa się z dwóch części: Nagłówek i treść. Łączny rozmiar komunikatu nie może przekraczać maksymalny rozmiar wiadomości obsługiwane przez warstwę usług.
-* Gdy klienci komunikują się za pomocą kolejek usługi Service Bus za pośrednictwem protokołu TCP, maksymalną liczbę jednoczesnych połączeń z pojedynczą kolejką usługi Service Bus jest ograniczona do 100. Liczba ta jest udostępniana między nadawcami a odbiornikami. Po osiągnięciu tego limitu przydziału, kolejne żądania dla dodatkowych połączeń zostanie odrzucony, a wyjątek zostanie odebrana przez kod wywołujący. Ten limit nie obsługują przypadające na klientów łączących się z kolejki za pomocą interfejsu opartego na protokole REST API.
-* Jeśli potrzebujesz więcej niż 10 000 kolejek w jednej przestrzeni nazw usługi Service Bus, możesz skontaktować się z zespołem pomocy technicznej platformy Azure i poprosić o zwiększenie. Będą skalowane ponad 10 000 kolejek usługi Service Bus, możesz również utworzyć dodatkowe przestrzenie nazw, używając [witryny Azure portal][Azure portal].
+* Service Bus wymusza limity rozmiaru kolejki. Maksymalny rozmiar kolejki jest określany podczas tworzenia kolejki i może mieć wartość z przedziału od 1 do 80 GB. Jeśli zostanie osiągnięta wartość rozmiaru kolejki ustawioną podczas tworzenia kolejki, dodatkowe komunikaty przychodzące zostaną odrzucone i zostanie odebrany wyjątek przez wywoływany kod. Aby uzyskać więcej informacji na temat przydziałów w Service Bus, zobacz [Service Bus](service-bus-quotas.md)przydziałów.
+* Partycjonowanie nie jest obsługiwane w [warstwie Premium](service-bus-premium-messaging.md). W warstwie Standardowa można utworzyć kolejki Service Bus w rozmiarze 1, 2, 3, 4 lub 5 GB (wartość domyślna to 1 GB). W warstwie Standardowa z włączonym partycjonowaniem (co jest ustawieniem domyślnym) Service Bus tworzy 16 partycji dla każdej określonej GB. W związku z tym, jeśli utworzysz kolejkę o rozmiarze 5 GB, a w przypadku 16 partycji zostanie osiągnięty maksymalny rozmiar kolejki (5 * 16) = 80 GB. Możesz zobaczyć maksymalny rozmiar kolejki lub tematu partycjonowanego, przeglądając jego wpis na [Azure Portal][Azure portal].
+* W przypadku kolejek magazynu, jeśli zawartość wiadomości nie jest bezpieczna w formacie XML, musi być zakodowana w **formacie base64** . W przypadku kodowania **Base64**komunikat, ładunek użytkownika może mieć do 48 KB, a nie 64 KB.
+* W przypadku kolejek Service Bus każdy komunikat przechowywany w kolejce składa się z dwóch części: nagłówka i treści. Łączny rozmiar wiadomości nie może przekroczyć maksymalnego rozmiaru komunikatów obsługiwanego przez warstwę usług.
+* Gdy klienci komunikują się z kolejkami Service Bus za pośrednictwem protokołu TCP, Maksymalna liczba jednoczesnych połączeń z pojedynczą kolejką Service Bus jest ograniczona do 100. Ta liczba jest udostępniana między nadawcami i odbiornikami. Jeśli limit przydziału zostanie osiągnięty, kolejne żądania dla dodatkowych połączeń zostaną odrzucone i zostanie odebrany wyjątek przez wywoływany kod. Ten limit nie jest nakładany na klientów nawiązujących połączenie z kolejkami za pomocą interfejsu API opartego na interfejsie REST.
+* Jeśli potrzebujesz więcej niż 10 000 kolejek w pojedynczej przestrzeni nazw Service Bus, możesz skontaktować się z zespołem pomocy technicznej systemu Azure i poprosić o zwiększenie. Aby skalować poza kolejki 10 000 przy użyciu Service Bus, można również utworzyć dodatkowe przestrzenie nazw przy użyciu [Azure Portal][Azure portal].
 
 ## <a name="management-and-operations"></a>Zarządzanie i operacje
-Ta sekcja zawiera porównanie funkcji zarządzania oferowanych przez kolejki magazynu i kolejek usługi Service Bus.
+W tej sekcji porównano funkcje zarządzania udostępniane przez kolejki magazynu i kolejki Service Bus.
 
 | Kryteria porównania | Kolejki magazynu | Kolejki usługi Service Bus |
 | --- | --- | --- |
-| Protokół zarządzania |**REST za pośrednictwem protokołu HTTP/HTTPS** |**REST przy użyciu protokołu HTTPS** |
-| Protokół czasu wykonywania |**REST za pośrednictwem protokołu HTTP/HTTPS** |**REST przy użyciu protokołu HTTPS**<br/><br/>**Protokół AMQP 1.0 Standard (TCP z protokołem TLS)** |
-| Interfejs API .NET |**Tak**<br/><br/>(.NET interfejsu API klienta magazynu) |**Tak**<br/><br/>(.NET usługi Service Bus interfejsu API) |
+| Protokół zarządzania |**REST za pośrednictwem protokołu HTTP/HTTPS** |**REST za pośrednictwem protokołu HTTPS** |
+| Protokół uruchomieniowy |**REST za pośrednictwem protokołu HTTP/HTTPS** |**REST za pośrednictwem protokołu HTTPS**<br/><br/>**AMQP 1,0 Standard (TCP z TLS)** |
+| Interfejs API .NET |**Tak**<br/><br/>(Interfejs API klienta usługi Storage) |**Tak**<br/><br/>(.NET Service Bus API) |
 | Natywnych języka C++ |**Tak** |**Tak** |
 | Interfejs API języka Java |**Tak** |**Tak** |
-| INTERFEJS API JĘZYKA PHP |**Tak** |**Tak** |
-| Interfejsu API środowiska node.js |**Tak** |**Tak** |
-| Obsługa dowolnego metadanych |**Tak** |**Nie** |
-| Reguły nazewnictwa kolejki |**Do 63 znaków.**<br/><br/>(Litery w nazwie kolejki musi być mała). |**Maksymalnie 260 znaków.**<br/><br/>(Nazwy i ścieżki kolejki są bez uwzględniania wielkości liter). |
-| Get — funkcja długość kolejki |**Tak**<br/><br/>(Stanowiących wartość, jeśli komunikaty wygasają poza czasem wygaśnięcia bez usuwany.) |**Tak**<br/><br/>(Dokładnie, w momencie wartości.) |
+| INTERFEJS API PHP |**Tak** |**Tak** |
+| Interfejs API środowiska Node. js |**Tak** |**Tak** |
+| Dowolna Obsługa metadanych |**Tak** |**Nie** |
+| Reguły nazewnictwa kolejek |**Do 63 znaków**<br/><br/>(Litery w nazwie kolejki muszą być małymi literami). |**Do 260 znaków**<br/><br/>(W ścieżkach i nazwach kolejek nie jest rozróżniana wielkość liter). |
+| Pobierz funkcję długości kolejki |**Tak**<br/><br/>(Przybliżona wartość, Jeśli komunikaty wygasną poza czasem wygaśnięcia, bez usuwania). |**Tak**<br/><br/>(Dokładnie wartość wskazywana przez punkt w czasie). |
 | Peek — funkcja |**Tak** |**Tak** |
 
 ### <a name="additional-information"></a>Dodatkowe informacje
-* Kolejki usługi Storage zapewnia obsługę dowolnymi atrybutami, które mogą być stosowane w opisie kolejki w postaci par nazwa/wartość.
-* Obie technologie kolejki oferują możliwość wgląd do wiadomości bez blokady, które mogą być przydatne podczas implementowania narzędzia Eksploratora/przeglądarki kolejki.
-* .NET usługi Service Bus obsługiwanych przez brokera obsługi komunikatów interfejsów API Wykorzystaj pełny dupleks połączeń TCP w celu zwiększenia wydajności w porównaniu do REST za pośrednictwem protokołu HTTP i obsługują ze standardowego protokołu AMQP 1.0.
-* Nazwy kolejek magazynu może zawierać znaków 3 – 63 long, mogą zawierać małe litery, cyfry i łączniki. Aby uzyskać więcej informacji, zobacz [nazewnictwo kolejek i metadanych](/rest/api/storageservices/fileservices/Naming-Queues-and-Metadata).
-* Nazwy kolejek usługi Service Bus może zawierać maksymalnie 260 znaków i ma mniej restrykcyjnych reguł nazewnictwa. Nazwy kolejek usługi Service Bus może zawierać litery, cyfry, kropki, łączniki i podkreślenia.
+* Kolejki magazynu zapewniają obsługę dowolnych atrybutów, które można zastosować do opisu kolejki, w postaci par nazwa/wartość.
+* Obie technologie kolejki oferują możliwość wglądu w komunikat bez konieczności jego zablokowania, co może być przydatne podczas implementowania Eksploratora kolejki/narzędzia przeglądarki.
+* Interfejsy API komunikatów obsługiwanych przez brokera programu Service Bus .NET wykorzystują pełne połączenia TCP, aby zwiększyć wydajność w porównaniu do usługi REST za pośrednictwem protokołu HTTP i obsługują protokół AMQP 1,0 Standard.
+* Nazwy kolejek magazynu mogą składać się z co najwyżej 3-63 znaków, mogą zawierać małe litery, cyfry i łączniki. Aby uzyskać więcej informacji, zobacz [nazywanie kolejek i metadanych](/rest/api/storageservices/fileservices/Naming-Queues-and-Metadata).
+* Nazwy kolejek Service Bus mogą mieć długość do 260 znaków i mają mniej restrykcyjne reguły nazewnictwa. Nazwy kolejek Service Bus mogą zawierać litery, cyfry, kropki, łączniki i podkreślenia.
 
 ## <a name="authentication-and-authorization"></a>Uwierzytelnianie i autoryzacja
-W tej sekcji omówiono funkcje uwierzytelniania i autoryzacji, obsługiwane przez kolejki magazynu i kolejek usługi Service Bus.
+W tej sekcji omówiono funkcje uwierzytelniania i autoryzacji obsługiwane przez kolejki magazynu i kolejki Service Bus.
 
 | Kryteria porównania | Kolejki magazynu | Kolejki usługi Service Bus |
 | --- | --- | --- |
 | Authentication |**Klucz symetryczny** |**Klucz symetryczny** |
-| Model zabezpieczeń |Delegowany dostęp za pomocą tokenów sygnatur dostępu Współdzielonego. |SAS |
-| Federacji dostawcy tożsamości |**Nie** |**Tak** |
+| Model zabezpieczeń |Delegowany dostęp za pośrednictwem tokenów SAS. |SAS |
+| Federacja dostawcy tożsamości |**Nie** |**Tak** |
 
 ### <a name="additional-information"></a>Dodatkowe informacje
-* Każde żądanie do jednej z technologii kolejkowania musi zostać uwierzytelnione. Kolejek publicznych za pomocą dostępu anonimowego nie są obsługiwane. Za pomocą [sygnatury dostępu Współdzielonego](service-bus-sas.md), w tym scenariuszu można rozwiązać, publikując sygnatury dostępu Współdzielonego tylko do zapisu, sygnatury dostępu Współdzielonego tylko do odczytu lub nawet pełnego dostępu sygnatury dostępu Współdzielonego.
-* Schemat uwierzytelniania podane przez magazyn kolejek polega na użyciu tego klucza symetrycznego, czyli opartej na skrótach komunikat o kod uwierzytelniania (HMAC), obliczana przy użyciu algorytmu SHA-256 i zakodowanymi w formacie **Base64** ciągu. Aby uzyskać więcej informacji na temat protokołu odpowiednich zobacz [uwierzytelniania dla usług Azure Storage](/rest/api/storageservices/fileservices/Authentication-for-the-Azure-Storage-Services). Kolejki usługi Service Bus obsługuje model podobne przy użyciu kluczy symetrycznych. Aby uzyskać więcej informacji, zobacz [udostępnione uwierzytelniania sygnatury dostępu za pomocą usługi Service Bus](service-bus-sas.md).
+* Każde żądanie dotyczące każdej z technologii kolejkowania musi zostać uwierzytelnione. Kolejki publiczne z dostępem anonimowym nie są obsługiwane. Korzystając [](service-bus-sas.md)z sygnatury dostępu współdzielonego, można rozwiązać ten scenariusz, publikując sygnaturę dostępu współdzielonego tylko do odczytu, czyli SAS, do której istnieje wiele SAS.
+* Schemat uwierzytelniania dostarczany przez kolejki magazynu obejmuje użycie klucza symetrycznego, który jest kod uwierzytelniania wiadomości oparty na skrótach (HMAC), obliczany przy użyciu algorytmu SHA-256 i zakodowany jako ciąg **Base64** . Aby uzyskać więcej informacji na temat odpowiedniego protokołu, zobacz [uwierzytelnianie dla usług Azure Storage](/rest/api/storageservices/fileservices/Authentication-for-the-Azure-Storage-Services). Kolejki Service Bus obsługują podobny model przy użyciu kluczy symetrycznych. Aby uzyskać więcej informacji, zobacz [uwierzytelnianie sygnatury dostępu współdzielonego za pomocą Service Bus](service-bus-sas.md).
 
-## <a name="conclusion"></a>Podsumowanie
-Przejmując lepiej zrozumieć te dwie technologie, będzie możliwe zapewnienie bardziej świadomie podjąć decyzję na technologii kolejki i kiedy. Decyzja o tym, kiedy należy używać magazynu kolejek lub kolejek usługi Service Bus wyraźnie zależy od wielu czynników. Te czynniki mogą dużym stopniu zależą od indywidualnych potrzeb aplikacji oraz jej architektury. Jeśli aplikacja już używa podstawowych możliwości systemu Microsoft Azure, warto wybierz kolejek magazynu, zwłaszcza, jeśli potrzebujesz podstawowe komunikacji i obsługi komunikatów między usługami lub kolejki potrzebę, które może być większy niż 80 GB, rozmiar.
+## <a name="conclusion"></a>Wniosek
+Dzięki dokładniejszemu zrozumieniu tych dwóch technologii będziesz mieć możliwość podejmowania bardziej świadomej decyzji o tym, której technologii kolejki użyć i kiedy. Podejmowanie decyzji o tym, kiedy należy używać kolejek usługi Storage lub kolejek Service Bus, zależy od wielu czynników. Te czynniki mogą zależeć od indywidualnych potrzeb aplikacji i jej architektury. Jeśli aplikacja korzysta już z podstawowych możliwości Microsoft Azure, warto wybrać kolejno pozycje kolejki magazynu, zwłaszcza jeśli wymagana jest podstawowa komunikacja i obsługa komunikatów między usługami lub potrzebna jest większa liczba kolejek niż 80 GB.
 
-Ponieważ kolejek usługi Service Bus zapewniają zaawansowane funkcje, takie jak sesje, transakcje, zduplikowane wykrywania automatycznego Obsługa utraconych komunikatów i niezawodne możliwości publikowania/subskrybowania, mogą być preferowanych przez budowania hybrydowych Aplikacja lub jeśli w przeciwnym razie aplikacja wymaga tych funkcji.
+Ponieważ kolejki Service Bus udostępniają wiele zaawansowanych funkcji, takich jak sesje, transakcje, wykrywanie duplikatów, automatyczne martwe i trwałe funkcje publikowania/subskrybowania, mogą one być preferowanym wyborem w przypadku kompilowania hybrydowego Aplikacja lub jeśli w przeciwnym razie aplikacja wymaga tych funkcji.
 
-## <a name="next-steps"></a>Kolejne kroki
-Poniższe artykuły zawierają więcej wskazówki i informacje o używaniu magazynu kolejki lub kolejek usługi Service Bus.
+## <a name="next-steps"></a>Następne kroki
+Poniższe artykuły zawierają dodatkowe wskazówki i informacje dotyczące korzystania z kolejek usługi Storage lub kolejek Service Bus.
 
 * [Wprowadzenie do kolejek usługi Service Bus](service-bus-dotnet-get-started-with-queues.md)
-* [Jak używać usługi Queue Storage](../storage/queues/storage-dotnet-how-to-use-queues.md)
-* [Najlepsze rozwiązania zwiększające wydajność przy użyciu usługi Service Bus obsługiwanych przez brokera obsługi komunikatów](service-bus-performance-improvements.md)
-* [Wprowadzenie do kolejek i tematów w usłudze Azure Service Bus (wpis na blogu)](https://www.code-magazine.com/article.aspx?quickid=1112041)
-* [Przewodnik dewelopera usługi Service Bus](http://www.cloudcasts.net/devguide/Default.aspx?id=11030)
-* [Usługa kolejkowania na platformie Azure](https://www.developerfusion.com/article/120197/using-the-queuing-service-in-windows-azure/)
+* [Jak korzystać z usługi Queue Storage](../storage/queues/storage-dotnet-how-to-use-queues.md)
+* [Najlepsze rozwiązania dotyczące ulepszeń wydajności przy użyciu Service Bus komunikatów obsługiwanych przez brokera](service-bus-performance-improvements.md)
+* [Wprowadzenie do kolejek i tematów w Azure Service Bus (wpis w blogu)](https://www.code-magazine.com/article.aspx?quickid=1112041)
+* [Przewodnik dewelopera do Service Bus](http://www.cloudcasts.net/devguide/Default.aspx?id=11030)
+* [Korzystanie z usługi kolejkowania na platformie Azure](https://www.developerfusion.com/article/120197/using-the-queuing-service-in-windows-azure/)
 
 [Azure portal]: https://portal.azure.com
 

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.openlocfilehash: 0683c065285a6ddf8d966bbd3d22e88c39b34d5c
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 640900458eccc36afe58cb148ffd7b94b43be879
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728797"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934919"
 ---
 # <a name="develop-a-secure-web-app"></a>Opracowywanie bezpiecznej aplikacji sieci Web
 
@@ -52,16 +52,16 @@ Aplikacja jest typową aplikacją n-warstwową z trzema warstwami. Warstwy front
 
 Architektura składa się z następujących składników:
 
-- [Application Gateway platformy Azure](https://docs.microsoft.com/azure/application-gateway/). Zapewnia bramę i zaporę dla naszej architektury aplikacji.
-- [Web Apps platformy Azure w systemie Linux](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro). Zapewnia środowisko uruchomieniowe kontenera do uruchamiania aplikacji języka Python w środowisku systemu Linux.
-- [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/). Przechowuje i szyfruje wpisy tajne aplikacji i zarządza tworzeniem zasad dostępu.
+- [Application Gateway platformy Azure](../../application-gateway/index.yml). Zapewnia bramę i zaporę dla naszej architektury aplikacji.
+- [Web Apps platformy Azure w systemie Linux](../../app-service/containers/app-service-linux-intro.md). Zapewnia środowisko uruchomieniowe kontenera do uruchamiania aplikacji języka Python w środowisku systemu Linux.
+- [Azure Key Vault](../../key-vault/index.yml). Przechowuje i szyfruje wpisy tajne aplikacji i zarządza tworzeniem zasad dostępu.
 - [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql/). Bezpieczne przechowywanie danych aplikacji.
-- [Azure Security Center](https://docs.microsoft.com/azure/security-center/) i [Application Insights platformy Azure](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Oferuje monitorowanie i alerty dotyczące operacji aplikacji.
+- [Azure Security Center](../../security-center/index.yml) i [Application Insights platformy Azure](../../azure-monitor/app/app-insights-overview.md). Oferuje monitorowanie i alerty dotyczące operacji aplikacji.
 
 ## <a name="threat-model"></a>Model zagrożeń
 Modelowanie zagrożeń polega na zidentyfikowaniu potencjalnych zagrożeń bezpieczeństwa dla Twojej firmy i aplikacji, a następnie zapewnieniu prawidłowego planu zaradczego.
 
-W tym przykładzie użyto [Microsoft Threat Modeling Tool](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool) do zaimplementowania modelowania zagrożeń dla bezpiecznej przykładowej aplikacji. Dzięki utworzeniu diagramu składników i przepływów danych można wcześnie identyfikować problemy i zagrożenia w procesie tworzenia oprogramowania. Pozwala to zaoszczędzić czas i pieniądze później.
+W tym przykładzie użyto [Microsoft Threat Modeling Tool](threat-modeling-tool.md) do zaimplementowania modelowania zagrożeń dla bezpiecznej przykładowej aplikacji. Dzięki utworzeniu diagramu składników i przepływów danych można wcześnie identyfikować problemy i zagrożenia w procesie tworzenia oprogramowania. Pozwala to zaoszczędzić czas i pieniądze później.
 
 Jest to model zagrożeń dla przykładowej aplikacji:
 
@@ -349,19 +349,19 @@ $$ LANGUAGE PLPGSQL;
 ```
 
 
-Aby uzyskać więcej informacji na temat sposobu konfigurowania weryfikacji protokołu SSL i urzędu certyfikacji dla usługi PostgreSQL, zobacz [Konfigurowanie łączności SSL w Azure Database for PostgreSQL](https://docs.microsoft.com/en-us/azure/postgresql/concepts-ssl-connection-security).
+Aby uzyskać więcej informacji na temat sposobu konfigurowania weryfikacji protokołu SSL i urzędu certyfikacji dla usługi PostgreSQL, zobacz [Konfigurowanie łączności SSL w Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security).
 
 Certyfikat główny znajduje się w kontenerze. Poniżej przedstawiono kroki, które należy wykonać w celu uzyskania certyfikatu:
 
 1. Pobierz plik certyfikatu z [urzędu certyfikacji](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt).
-2. [Pobierz i zainstaluj program OpenSSL na swojej maszynie](https://docs.microsoft.com/en-us/azure/postgresql/concepts-ssl-connection-security).
+2. [Pobierz i zainstaluj program OpenSSL na swojej maszynie](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security).
 3. Dekodowanie pliku certyfikatu:
 
    ```powershell
    openssl x509 -inform DER -in BaltimoreCyberTrustRoot.crt -text -out root.crt
    ```
 
-Więcej informacji na temat konfigurowania zabezpieczeń protokołu SSL dla usługi PostgreSQL można znaleźć w tym miejscu. [skonfiguruj zabezpieczenia połączeń SSL](https://docs.microsoft.com/en-gb/azure/postgresql/concepts-ssl-connection-security).
+Więcej informacji na temat konfigurowania zabezpieczeń protokołu SSL dla usługi PostgreSQL można znaleźć w tym miejscu. [skonfiguruj zabezpieczenia połączeń SSL](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security).
 
 #### <a name="deploy-azure-web-apps-on-linux"></a>Wdrażanie Web Apps platformy Azure w systemie Linux
 Możesz łatwo tworzyć usługi systemu Linux na Azure App Service, ponieważ platforma Azure udostępnia zestaw wstępnie skompilowanych kontenerów i obrazów dla powszechnie używanych języków, takich jak Python, C#Ruby, i Java. Platforma Azure obsługuje również kontenery niestandardowe, co pozwala na uruchamianie praktycznie wszystkich języków programowania na platformie Azure App Service.

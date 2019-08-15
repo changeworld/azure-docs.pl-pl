@@ -1,35 +1,35 @@
 ---
 title: Jak zaimplementować synchronizację niestandardową w celu optymalizacji pod kątem wyższej dostępności i wydajności w usłudze Azure Cosmos DB
-description: Dowiedz się, jak zaimplementować niestandardowy synchronizacji zoptymalizowane pod kątem większej dostępności i wydajności w usłudze Azure Cosmos DB.
+description: Dowiedz się, jak zaimplementować synchronizację niestandardową w celu optymalizacji pod kątem wyższej dostępności i wydajności w Azure Cosmos DB.
 author: rimman
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019
 ms.author: rimman
-ms.openlocfilehash: de66149a2ea3e01e62aa8e33ea5a99121a21524f
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 0f630c2139d1d7d391d6c5578e5e7f378e56dcb4
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67986079"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013791"
 ---
-# <a name="implement-custom-synchronization-to-optimize-for-higher-availability-and-performance"></a>Implementowanie niestandardowego synchronizacji zoptymalizowane pod kątem większej dostępności i wydajności
+# <a name="implement-custom-synchronization-to-optimize-for-higher-availability-and-performance"></a>Implementowanie niestandardowej synchronizacji w celu optymalizacji pod kątem wyższej dostępności i wydajności
 
-Usługa Azure Cosmos DB oferuje [pięć dobrze zdefiniowanych poziomów spójności](consistency-levels.md) można wybrać z równoważyć zależnościami między spójnością, wydajności i dostępności. Wysoki poziom spójności pomaga zapewnić danych replikowanych synchronicznie i trwale utrwalone w każdym regionie, w których konto usługi Cosmos Azure jest dostępna. Ta konfiguracja zapewnia najwyższy poziom niezawodności, ale kosztem wydajności i dostępności. Jeśli chcesz, aby aplikację, aby kontrolować lub zwalnia trwałości danych w aplikacji stosownie do potrzeb bez naruszania dostępności, możesz użyć *synchronizacji niestandardowych* w warstwie aplikacji w celu osiągnięcia poziomu niezawodności możesz chcesz.
+Azure Cosmos DB oferuje [pięć dobrze zdefiniowanych poziomów spójności](consistency-levels.md) , które można wybrać, aby zrównoważyć kompromis między spójnością, wydajnością i dostępnością. Silna spójność pomaga zapewnić, że dane są synchronicznie replikowane i trwale utrwalone w każdym regionie, w którym jest dostępne konto platformy Azure Cosmos. Ta konfiguracja zapewnia najwyższy poziom trwałości, ale jest kosztem wydajności i dostępności. Jeśli chcesz, aby aplikacja mogła kontrolować lub zmniejszać trwałość danych do potrzeb aplikacji bez kompromisu dostępności, możesz użyć *niestandardowej synchronizacji* w warstwie aplikacji w celu osiągnięcia żądanego poziomu trwałości.
 
-Poniższa ilustracja przedstawia wizualnie modelu niestandardowego synchronizacji:
+Na poniższym obrazie przedstawiono wizualnie model synchronizacji niestandardowej:
 
-![Niestandardowe synchronizacji](./media/how-to-custom-synchronization/custom-synchronization.png)
+![Synchronizacja niestandardowa](./media/how-to-custom-synchronization/custom-synchronization.png)
 
-W tym scenariuszu kontenera usługi Azure Cosmos jest replikowany globalnie w kilku regionach na wielu kontynentach. Za pomocą wysoki poziom spójności w przypadku wszystkich regionów, w tym scenariuszu wpływa na wydajność. Aby zapewnić wyższy poziom trwałości danych bez naruszania opóźnienie zapisu, aplikacja może użyć dwóch klientów, które mają takie same [tokenu sesji](how-to-manage-consistency.md#utilize-session-tokens).
+W tym scenariuszu kontener usługi Azure Cosmos jest replikowany globalnie w kilku regionach na wielu kontynentach. Używanie silnej spójności dla wszystkich regionów w tym scenariuszu ma wpływ na wydajność. Aby zapewnić wyższy poziom trwałości danych bez naruszania opóźnień zapisu, aplikacja może używać dwóch klientów, którzy korzystają z tego samego [tokenu sesji](how-to-manage-consistency.md#utilize-session-tokens).
 
-Pierwszy klient może zapisywać dane w regionie lokalnym (np. Zachodnie stany USA). Drugi klienta (na przykład we wschodnich Stanach USA) jest odczytu klienta, który służy do zapewnienia synchronizacji. Przepływających tokenu sesji z odpowiedzi zapisu do następujących odczytu, odczytu zapewnia synchronizację zapisów wschodnie stany USA. Usługa Azure Cosmos DB gwarantuje, że zapisy są widoczne dla co najmniej jednego regionu. Mają gwarancję, że przetrwać regionalnej awarii, jeśli oryginalny region zapisu ulegnie awarii. W tym scenariuszu każdego zapisu jest synchronizowana z usługą wschodnie stany USA, zmniejszając czas oczekiwania na wprowadzenie wysoki poziom spójności we wszystkich regionach. W przypadku wielu wzorców, której wystąpienia zapisy w każdym regionie, można rozszerzyć ten model, aby zsynchronizować do wielu regionów, w sposób równoległy.
+Pierwszy klient może zapisywać dane w regionie lokalnym (np. Zachodnie stany USA). Drugi klient (na przykład w regionie Wschodnie stany USA) jest klientem odczytu, który jest używany do zapewnienia synchronizacji. Przepływając token sesji z odpowiedzi zapisu do poniższego odczytu, odczyt gwarantuje synchronizację zapisów w regionie Wschodnie stany USA. Azure Cosmos DB zapewnia, że zapisy są widoczne w co najmniej jednym regionie. W przypadku awarii oryginalnego regionu zapisu zagwarantowane jest przekroczenie regionalnej przerwy w działaniu. W tym scenariuszu każdy zapis jest synchronizowany do regionu Wschodnie stany USA, skracając czas oczekiwania na zastosowanie silnej spójności we wszystkich regionach. W scenariuszu z wieloma wzorcami, w których zapisy są wykonywane w każdym regionie, można rozwinąć ten model w celu zsynchronizowania ich z wieloma regionami równolegle.
 
 ## <a name="configure-the-clients"></a>Konfigurowanie klientów
 
-Poniższy przykład pokazuje warstwy dostępu do danych, tworzącym dwóch klientów niestandardowych synchronizacji:
+Poniższy przykład pokazuje warstwę dostępu do danych, która tworzy wystąpienia dwóch klientów na potrzeby niestandardowej synchronizacji:
 
-### <a name="net-v2-sdk"></a>.Net V2 SDK
+### <a name="net-v2-sdk"></a>Zestaw .NET V2 SDK
 ```csharp
 class MyDataAccessLayer
 {
@@ -65,7 +65,7 @@ class MyDataAccessLayer
 }
 ```
 
-### <a name="net-v3-sdk"></a>.Net V3 SDK
+### <a name="net-v3-sdk"></a>Zestaw SDK dla platformy .NET v3
 ```csharp
 class MyDataAccessLayer
 {
@@ -84,16 +84,16 @@ class MyDataAccessLayer
 
 
         writeClient = new CosmosClient(accountEndpoint, key, writeConnectionOptions);
-        writeClient = new CosmosClient(accountEndpoint, key, writeConnectionOptions);
+        readClient = new CosmosClient(accountEndpoint, key, readConnectionOptions);
     }
 }
 ```
 
 ## <a name="implement-custom-synchronization"></a>Implementowanie synchronizacji niestandardowej
 
-Po klientów są inicjowane, aplikację można wykonywać operacje zapisu region lokalny (zachodnie stany USA) i wymuszanie synchronizacji zapisy do wschodnie stany USA w następujący sposób.
+Po zainicjowaniu klientów aplikacja może wykonywać operacje zapisu w regionie lokalnym (Zachodnie stany USA) i wymusić synchronizację zapisów w regionach Wschodnie stany USA w następujący sposób.
 
-### <a name="net-v2-sdk"></a>.Net V2 SDK
+### <a name="net-v2-sdk"></a>Zestaw .NET V2 SDK
 ```csharp
 class MyDataAccessLayer
 {
@@ -108,7 +108,7 @@ class MyDataAccessLayer
 }
 ```
 
-### <a name="net-v3-sdk"></a>.Net V3 SDK
+### <a name="net-v3-sdk"></a>Zestaw SDK dla platformy .NET v3
 ```csharp
 class MyDataAccessLayer
 {
@@ -127,13 +127,13 @@ class MyDataAccessLayer
 }
 ```
 
-Możesz rozszerzyć modelu do synchronizacji w wielu regionach w sposób równoległy.
+Można zwiększyć model, aby zsynchronizować go z wieloma regionami równolegle.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat dystrybucji globalnej i spójność w usłudze Azure Cosmos DB, przeczytaj następujące artykuły:
+Aby dowiedzieć się więcej na temat globalnej dystrybucji i spójności w Azure Cosmos DB, przeczytaj następujące artykuły:
 
-* [Wybierz poziom spójności w prawo w usłudze Azure Cosmos DB](consistency-levels-choosing.md)
+* [Wybierz odpowiedni poziom spójności w Azure Cosmos DB](consistency-levels-choosing.md)
 * [Kompromisy w zakresie spójności, dostępności i wydajności w usłudze Azure Cosmos DB](consistency-levels-tradeoffs.md)
-* [Zarządzanie spójności w usłudze Azure Cosmos DB](how-to-manage-consistency.md)
+* [Zarządzanie spójnością w Azure Cosmos DB](how-to-manage-consistency.md)
 * [Partitioning and data distribution in Azure Cosmos DB (Partycjonowanie i dystrybucja danych w usłudze Azure Cosmos DB)](partition-data.md)

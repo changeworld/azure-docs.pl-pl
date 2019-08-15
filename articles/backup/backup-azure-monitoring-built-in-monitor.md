@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/05/2019
 ms.author: dacurwin
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 5fde581f322504c7e329da7fa153671b8a91183d
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: bae05e890ef76ada9f775293c673cb8baa82c8bf
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688373"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954581"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Monitorowanie obciążeń Azure Backup
 
@@ -87,6 +87,9 @@ Po podniesieniu alertu użytkownicy będą powiadamiani. Azure Backup zapewnia w
 
 ![Powiadomienie e-mail dotyczące nieskompilowanego magazynu RS](media/backup-azure-monitoring-laworkspace/rs-vault-inbuiltnotification.png)
 
+> [!NOTE]
+> Alerty dla kopii zapasowych SQL zostaną skonsolidowane i wiadomość e-mail będzie wysyłana tylko dla pierwszego wystąpienia. Jeśli jednak alert zostanie zdezaktywowany przez użytkownika, następne wystąpienie wyzwoli kolejną wiadomość e-mail.
+
 Po skonfigurowaniu powiadomienia otrzymasz powitalną lub wprowadzającą wiadomość e-mail. Spowoduje to potwierdzenie, że Azure Backup mogą wysyłać wiadomości e-mail na te adresy, gdy zostanie zgłoszony alert.<br>
 
 Jeśli częstotliwość została ustawiona na podsumowanie godzinowe, a alert został zgłoszony i rozwiązany w ciągu godziny, nie będzie częścią nadchodzącego podsumowania godzinowego.
@@ -96,6 +99,14 @@ Jeśli częstotliwość została ustawiona na podsumowanie godzinowe, a alert zo
 > * W przypadku wykonania operacji niszczącej, takiej jak **zatrzymanie ochrony z usuwaniem danych** , zostanie zgłoszony alert, a wiadomość e-mail zostanie wysłana do właścicieli subskrypcji, administratorów i współadministratorów, nawet jeśli nie skonfigurowano powiadomień dla magazynu usługi odzyskiwania.
 > * Aby skonfigurować powiadomienie dla zadań zakończonych powodzeniem, użyj [log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="inactivating-alerts"></a>Dezaktywacja alertów
+
+Aby dezaktywować/rozwiązywać aktywny alert, możesz kliknąć element listy odpowiadający Alertowi, który ma zostać zdezaktywowany. Spowoduje to otwarcie ekranu wyświetlającego szczegółowe informacje o alercie, z przyciskiem "Dezaktywuj" u góry. Kliknięcie tego przycisku spowoduje zmianę stanu alertu na nieaktywny. Możesz również dezaktywować alert, klikając prawym przyciskiem myszy element listy odpowiadający temu Alertowi i wybierając pozycję "Dezaktywuj".
+
+![Dezaktywacja alertu dotyczącego magazynu RS](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
+
+
+
+## <a name="next-steps"></a>Następne kroki
 
 [Monitorowanie obciążeń usługi Azure Backup przy użyciu Azure Monitor](backup-azure-monitoring-use-azuremonitor.md)

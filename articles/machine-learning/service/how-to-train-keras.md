@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: b4f2bf5c762b6f93c2d23714d860e8261f6756d1
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: e7646330d9d89d5257a991b5095b7b6814aa3ba9
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847689"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966817"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning-service"></a>Uczenie i rejestrowanie modelu klasyfikacji Keras za pomocą usługi Azure Machine Learning
 
@@ -207,3 +207,7 @@ W tym artykule został przeszkolony i zarejestrowany model Keras w usłudze Azur
 
 > [!div class="nextstepaction"]
 > [Jak i gdzie wdrażać modele](how-to-deploy-and-where.md)
+* [Śledzenie metryk są uruchamiane podczas szkolenia](how-to-track-experiments.md)
+* [Dostosowywanie hiperparametrów](how-to-tune-hyperparameters.md)
+* [Wdrażanie uczonego modelu](how-to-deploy-and-where.md)
+* [Architektura referencyjna na potrzeby rozproszonego szkolenia uczenia głębokiego na platformie Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)

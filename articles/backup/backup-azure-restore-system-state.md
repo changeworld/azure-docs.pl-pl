@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/18/2017
 ms.author: dacurwin
-ms.openlocfilehash: 6dc478f569b94450921e56c05b148bae357fef8e
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 83c4d8a90bf9ae348026c14beaec4975636b29b5
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689129"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018803"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Przywróć stan systemu do systemu Windows Server
 
@@ -124,9 +124,9 @@ Po odzyskaniu stanu systemu jako plików przy użyciu usługi Azure Recovery Ser
 
 1. Użyj następujących poleceń, aby ponownie uruchomić serwer w *trybie naprawy usług katalogowych*. W wierszu polecenia z podwyższonym poziomem uprawnień:
 
-    ```
-    PS C:\> Bcdedit /set safeboot dsrepair
-    PS C:\> Shutdown /r /t 0
+    ```cmd
+    Bcdedit /set safeboot dsrepair
+    Shutdown /r /t 0
     ```
 
 2. Po ponownym uruchomieniu Otwórz przystawkę Kopia zapasowa systemu Windows Server. Jeśli nie wiesz, gdzie zainstalowano przystawkę, przeszukaj komputer lub serwer pod kątem **kopia zapasowa systemu Windows Server**.
@@ -189,14 +189,14 @@ Jeśli poprzedni proces stosowania stanu systemu nie zakończy się pomyślnie, 
 
 5. Gdy otworzysz wiersz polecenia w trybie administratora, uruchom następujące polecenie, aby pobrać wersje kopii zapasowej stanu systemu.
 
-    ```
+    ```cmd
     Wbadmin get versions -backuptarget:<Volume where WindowsImageBackup folder is copied>:
     ```
     ![Pobierz wersje kopii zapasowej stanu systemu](./media/backup-azure-restore-system-state/winre-4.png)
 
 6. Uruchom następujące polecenie, aby uzyskać wszystkie woluminy dostępne w kopii zapasowej.
 
-    ```
+    ```cmd
     Wbadmin get items -version:<copy version from above step> -backuptarget:<Backup volume>
     ```
 
@@ -204,7 +204,7 @@ Jeśli poprzedni proces stosowania stanu systemu nie zakończy się pomyślnie, 
 
 7. Poniższe polecenie odzyska wszystkie woluminy, które są częścią kopii zapasowej stanu systemu. Należy zauważyć, że ten krok odzyskuje tylko woluminy krytyczne, które są częścią stanu systemu. Wszystkie dane niesystemowe są wymazywane.
 
-    ```
+    ```cmd
     Wbadmin start recovery -items:C: -itemtype:Volume -version:<Backupversion> -backuptarget:<backup target volume>
     ```
      ![Pobierz wersje kopii zapasowej stanu systemu](./media/backup-azure-restore-system-state/winre-6.png)

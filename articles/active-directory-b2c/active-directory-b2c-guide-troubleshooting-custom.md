@@ -1,77 +1,85 @@
 ---
-title: Rozwiązywanie problemów dotyczących zasad niestandardowych w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Poznaj sposoby rozwiązywania błędy podczas pracy z zasad niestandardowych w usłudze Azure Active Directory B2C.
+title: Rozwiązywanie problemów z zasadami niestandardowymi w Azure Active Directory B2C
+description: Dowiedz się więcej na temat metod rozwiązywania problemów podczas pracy z zasadami niestandardowymi w programie Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/07/2017
+ms.date: 08/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 552f056a6637b3ebacfbd15eb878c28adbec6b88
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5dee0ef768180057452a232436fc295b36fd756c
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509973"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963731"
 ---
-# <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Rozwiązywanie problemów z niestandardowych zasad usługi Azure AD B2C i platformy środowiska tożsamości
+# <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Rozwiązywanie problemów Azure AD B2C zasad niestandardowych i struktury środowiska obsługi tożsamości
 
-Jeśli używasz usługi Azure Active Directory B2C (Azure AD B2C) zasady niestandardowe, mogą pojawić się problemów z konfigurowaniem struktura środowiska tożsamości w formacie XML język zasad.  Uczenia się pisania niestandardowych zasad może być podobny uczenia się nowego języka. W tym artykule opisano narzędzia i wskazówki, które mogą pomóc Ci szybko odnaleźć i rozwiązać problemy. 
+W przypadku korzystania z zasad niestandardowych Azure Active Directory B2C (Azure AD B2C) mogą wystąpić problemy z skonfigurowaniem struktury środowiska tożsamości w formacie XML języka zasad. Uczenie się do pisania zasad niestandardowych może być podobne do uczenia się nowego języka. W tym artykule opisano niektóre narzędzia i wskazówki, które mogą pomóc w wykrywaniu i rozwiązywaniu problemów.
 
-> [!NOTE]
-> Ten artykuł koncentruje się na rozwiązywaniu problemów z konfiguracją zasad niestandardowych usługi Azure AD B2C. Go nie dotyczą aplikacji jednostki uzależnionej lub jego biblioteki tożsamości.
+Ten artykuł koncentruje się na rozwiązywaniu problemów z konfiguracją zasad niestandardowych Azure AD B2C. Nie dotyczy to aplikacji jednostki uzależnionej ani jej biblioteki tożsamości.
 
-## <a name="xml-editing"></a>Edytowanie XML
+## <a name="xml-editing"></a>Edycja XML
 
-Najbardziej typowych błędów w konfigurowaniu zasad niestandardowych jest nieprawidłowo w formacie XML. Niemal istotne jest dobrym edytora XML. Dobre edytora XML Wyświetla XML w sposób macierzysty, color-codes zawartości, powoduje wstępne wypełnienie typowe terminy, przechowuje elementy XML indeksowane i można sprawdzić poprawność ze schematem. Poniżej przedstawiono dwa naszych ulubionych edytory XML:
+Najbardziej typowym błędem konfigurowania zasad niestandardowych jest nieprawidłowo sformatowana zawartość XML. Dobry Edytor XML jest niemal istotny. Wyświetla natywnie XML, zawartość kodów kolorów, wstępnie wypełnień wspólnych warunków, zachowuje indeksowane elementy XML i może być zweryfikowane względem schematu XML.
 
-* [Visual Studio Code](https://code.visualstudio.com/)
-* [Notepad++](https://notepad-plus-plus.org/)
+Dwa z naszych ulubionych edytorów to [Visual Studio Code](https://code.visualstudio.com/) i [Notatnik + +](https://notepad-plus-plus.org/).
 
-Sprawdzanie poprawności schematu XML identyfikuje błędy przed przekazaniem pliku XML. W folderze głównym pakietu startowego pobrać definicji schematu XML TrustFrameworkPolicy_0.3.0.0.xsd. Aby uzyskać więcej informacji, w dokumentacji edytora XML, poszukaj *narzędzia XML* i *sprawdzanie poprawności kodu XML*.
+Walidacja schematu XML identyfikuje błędy przed przekazaniem pliku XML. W folderze głównym [pakietu Starter](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)Pobierz plik definicji schematu XML *trustframeworkpolicy_ 0.3.0.0. xsd*. Aby dowiedzieć się, jak używać pliku schematu XSD do walidacji w edytorze, poszukaj *narzędzi XML* i *walidacji kodu XML* lub podobnych w dokumentacji edytora.
 
-Przegląd zasad XML może okazać się pomocne. Usługa Azure AD B2C odrzuca XML, wszelkie wykryte błędy formatowania. Czasami niepoprawnie sformatowana XML może spowodować komunikaty o błędach, które są mylące.
+Przegląd reguł XML może być przydatny. Azure AD B2C odrzuca wszystkie wykryte błędy w formacie XML. Czasami nieprawidłowo sformatowana zawartość XML może spowodować błędy komunikatów o błędach.
 
 ## <a name="upload-policies-and-policy-validation"></a>Przekazywanie zasad i sprawdzanie poprawności zasad
 
- Odbywa się automatycznie Walidacja przekazywania pliku XML. Większość błędów spowodować przekazywania nie powiedzie się. Walidacja obejmuje plik zasad, które przekazujesz. Zawiera on również łańcuch plików, które przekazywanie pliku, który odwołuje się do (pliku zasad jednostki uzależnionej ze stron, plik rozszerzenia i pliku podstawowego). 
- 
- Oto typowe błędy sprawdzania poprawności.
+Sprawdzanie poprawności pliku zasad XML jest wykonywane automatycznie przy przekazywaniu. Większość błędów powoduje niepowodzenie przekazywania. Walidacja obejmuje plik zasad, który jest przekazywany. Obejmuje również łańcuch plików, do których odnosi się plik przekazywania (plik zasad jednostki uzależnionej, plik rozszerzeń i plik podstawowy).
 
-Fragment kodu błędu: `... makes a reference to ClaimType with id "displaName" but neither the policy nor any of its base policies contain such an element`
-* Wartość oświadczenia mógł zostać źle wpisany lub nie istnieje w schemacie.
-* Element ClaimType wartości musi być zdefiniowany w co najmniej jeden z plików w ramach zasad. 
-    Na przykład: `<ClaimType Id="socialIdpUserId">`
-* Jeśli typ oświadczenia jest zdefiniowana w pliku rozszerzenia, ale jest również używany w profilu TechnicalProfile wartości w pliku podstawowego, przekazywanie pliku podstawowego powoduje wystąpienie błędu.
+Typowe błędy walidacji obejmują następujące elementy:
 
-Fragment kodu błędu: `...makes a reference to a ClaimsTransformation with id...`
-* Przyczyny błędu może być taka sama, jak w przypadku błędu typu oświadczenia.
+> Fragment kodu błędu:`...makes a reference to ClaimType with id "displayName" but neither the policy nor any of its base policies contain such an element`
 
-Fragment kodu błędu: `Reason: User is currently logged as a user of 'yourtenant.onmicrosoft.com' tenant. In order to manage 'yourtenant.onmicrosoft.com', please login as a user of 'yourtenant.onmicrosoft.com' tenant`
-* Sprawdź, czy identyfikator dzierżawy, wartość w **\<elementu TrustFrameworkPolicy\>** i **\<BasePolicy\>** elementy są zgodne w dzierżawie docelowej usługi Azure AD B2C.  
+* Wartość elementu ClaimType może być błędna lub nie istnieje w schemacie.
+* Wartości typu ClaimType muszą być zdefiniowane w co najmniej jednym z plików w ramach zasad.
+    Na przykład: `<ClaimType Id="issuerUserId">`
+* Jeśli element ClaimType jest zdefiniowany w pliku rozszerzeń, ale jest również używany w wartości profilu technicznym w pliku podstawowym, przekazanie pliku bazowego spowoduje wystąpienie błędu.
 
-## <a name="troubleshoot-the-runtime"></a>Rozwiązywanie problemów z środowiska uruchomieniowego
+> Fragment kodu błędu:`...makes a reference to a ClaimsTransformation with id...`
 
-* Użyj `Run Now` i `https://jwt.io` do testowania zasad niezależnie od usługi sieci web lub aplikacji mobilnej. Ta witryna sieci Web działa jak aplikacji jednostki uzależnionej. Wyświetla zawartość z sieci Web tokenu JSON (JWT) generowany przez zasady usługi Azure AD B2C. Aby utworzyć aplikacji testowej w struktura środowiska tożsamości, użyj następujących wartości:
-    * Nazwa: TestApp
-    * W sieci Web/sieci Web aplikacji interfejsu API: Nie
-    * Natywny klient: Nie
+* Przyczyny tego błędu mogą być takie same jak w przypadku błędu elementu ClaimType.
 
-* Aby śledzić wymiana wiadomości między przeglądarką klienta i usługi Azure AD B2C, należy użyć [Fiddler](https://www.telerik.com/fiddler). Może pomóc Ci wskazanie gdzie swoją podróż po użytkownik nie działa prawidłowo w etapów aranżacji.
+> Fragment kodu błędu:`Reason: User is currently logged as a user of 'yourtenant.onmicrosoft.com' tenant. In order to manage 'yourtenant.onmicrosoft.com', please login as a user of 'yourtenant.onmicrosoft.com' tenant`
 
-* W **trybu opracowywania**, użyj **usługi Application Insights** do śledzenia działania swoją podróż po użytkownik struktura środowiska tożsamości. W **trybu opracowywania**, można zaobserwować, wymiana oświadczeń między struktura środowiska tożsamości i różnych dostawców oświadczeń, które są zdefiniowane w profilach technicznych, takich jak dostawców tożsamości, oparte na interfejsie API usługi, Katalog użytkowników w usłudze Azure AD B2C i innych usług, takich jak Azure wielu uwierzytelnianie wieloskładnikowe.  
+* Sprawdź, czy wartość TenantId w `<TrustFrameworkPolicy\>` elementach i `<BasePolicy\>` jest zgodna z docelową dzierżawą Azure AD B2C.
+
+## <a name="troubleshoot-the-runtime"></a>Rozwiązywanie problemów dotyczących środowiska uruchomieniowego
+
+* Używaj **teraz** i `https://jwt.ms` Przetestuj swoje zasady niezależnie od aplikacji sieci Web lub mobilnej. Ta witryna sieci Web działa jak aplikacja jednostki uzależnionej. Wyświetla zawartość tokenu sieci Web JSON (JWT) wygenerowanego przez zasady Azure AD B2C. Aby utworzyć aplikację testową, przejdź do **Azure AD B2C** \> **aplikacji** w Azure Portal i Dodaj aplikację z następującymi wartościami:
+
+  * **Nazwa**: TestApp
+  * **Aplikacja sieci Web/interfejs API sieci Web**: Nie
+  * **Klient natywny**: Nie
+
+  Następnie Dodaj `https://jwt.ms` jako **adres URL odpowiedzi**.
+
+* Aby śledzić wymianę komunikatów między przeglądarką klienta i Azure AD B2C, użyj [programu Fiddler](https://www.telerik.com/fiddler). Może to pomóc w uzyskaniu informacji o tym, gdzie podróż użytkownika kończy się niepowodzeniem w ramach kroków aranżacji.
+
+* W **trybie programistycznym**Użyj [Application Insights](active-directory-b2c-troubleshoot-custom.md) , aby śledzić aktywność użytkownika platformy do obsługi tożsamości. W **trybie programistycznym**można obserwować wymianę oświadczeń między strukturą środowiska tożsamości a różnymi dostawcami oświadczeń, które są zdefiniowane przez profile techniczne, takie jak dostawcy tożsamości, usługi oparte na interfejsie API, Azure AD B2C użytkownika Katalog i inne usługi, takie jak uwierzytelnianie wieloskładnikowe systemu Azure.
 
 ## <a name="recommended-practices"></a>Zalecane praktyki
 
-**Przechowywanie wielu wersji swoich scenariuszy. Je pogrupować w projekcie z aplikacją.** Podstawowy, rozszerzenia i jednostki uzależnionej strona pliki są bezpośrednio zależne od siebie nawzajem. Zapisz je jako grupa. Nowe funkcje zostaną dodane do swoich zasad, zachować oddzielnych wersji roboczych. Etap wersji roboczych w ramach własnego pliku system zawierające kod aplikacji, które współdziałają z.  Aplikacje mogą wywołać wiele różnych jednostki uzależnionej zasad firmy, w dzierżawie. Mogą one stać się zależne od oświadczenia, które spełniają oczekiwane z zasad usługi Azure AD B2C.
+**Zachowaj wiele wersji scenariuszy. Grupuj je w projekcie z Twoją aplikacją.** Podstawowe, rozszerzenia i pliki jednostek uzależnionych są bezpośrednio od siebie zależne. Zapisz je jako grupę. W miarę dodawania nowych funkcji do zasad należy zachować różne wersje robocze. Przemieszczanie wersji roboczych we własnym systemie plików przy użyciu kodu aplikacji, z którym się pracują. Aplikacje mogą wywoływać wiele różnych zasad jednostki uzależnionej w dzierżawie. Mogą one być zależne od oświadczeń, których oczekują od zasad Azure AD B2C.
 
-**Twórz i Testuj profile techniczne przy użyciu znanego użytkownika podróży.** Za pomocą zasad pakiet startowy przetestowane skonfigurować profile techniczne. Przetestuj je oddzielnie przed dołączać je do własnych podróży użytkownika.
+**Opracowuj i Testuj profile techniczne ze znanymi przejazdami użytkowników.** Użyj zasad przetestowanych pakietów początkowych, aby skonfigurować profile techniczne. Przetestuj je oddzielnie przed wprowadzeniem ich do własnej podróży użytkownika.
 
-**Twórz i Testuj podróży użytkownika z przetestowane profile techniczne.** Zmień kroki aranżacji podróży użytkownika przyrostowo. Stopniowo kompilować zamierzony scenariuszy.
+**Opracowywanie i testowanie podróży użytkowników przy użyciu przetestowanych profilów technicznych.** Zmień kroki aranżacji przejazdu użytkownika przyrostowo. Stopniowo Kompiluj zamierzone scenariusze.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* W usłudze GitHub, Pobierz [active-directory-b2c-custom-policy-starterpack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) pliku zip.
+Dostępne w usłudze GitHub Pobierz plik archiwum [Active Directory-B2C-Custom-Policy-starterpack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) . zip. Można również sklonować repozytorium:
+
+```
+git clone https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack
+```

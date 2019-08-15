@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 1fc5e83c2c46a7da2a4b56879a2d596405fd8bee
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 8038b7bd60ac771c798a1a8645022b0bf9e142a9
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68718316"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934845"
 ---
 # <a name="frequently-asked-questions"></a>Często zadawane pytania
 Masz pytania? Zapoznaj się z często zadawanymi pytaniami, aby uzyskać więcej informacji.
@@ -136,13 +136,13 @@ Prawidłowe reguły pomijania:
 > Wszystkie przyszłe wpisy tajne dodane do pliku będą również automatycznie pomijane. 
 
 #### <a name="what-are-recommended-secrets-management-guidelines"></a>Jakie są zalecane wskazówki dotyczące zarządzania kluczami tajnymi? 
-Podczas wykrywania stałych zakodowanych wpisów tajnych w odpowiednim czasie i łagodzenia ryzyka jest to jeszcze lepsze, jeśli jedna z nich nie pozwala na całkowite sprawdzenie wpisów tajnych. W tym przypadku firma Microsoft udostępniła analizatora kodu CredScan jako część [rozszerzenia Microsoft DevLabs](https://marketplace.visualstudio.com/items?itemName=VSIDEDevOpsMSFT.ContinuousDeliveryToolsforVisualStudio) dla programu Visual Studio. Na wczesnej wersji zapoznawczej oferuje deweloperom wbudowane środowisko do wykrywania potencjalnych wpisów tajnych w kodzie, dzięki czemu można rozwiązać te problemy w czasie rzeczywistym. Aby uzyskać więcej informacji, zapoznaj się [z blogiem](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/) dotyczącym bezpiecznego zarządzania kluczami tajnymi w chmurze. Poniżej przedstawiono kilka dodatkowych zasobów, które ułatwiają zarządzanie wpisami tajnymi i dostęp do poufnych informacji z aplikacji w bezpieczny sposób: 
- - [Usługa Azure Key Vault](https://docs.microsoft.com/azure/key-vault/)
- - [Azure Active Directory](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)
+Podczas wykrywania stałych zakodowanych wpisów tajnych w odpowiednim czasie i łagodzenia ryzyka jest to jeszcze lepsze, jeśli jedna z nich nie pozwala na całkowite sprawdzenie wpisów tajnych. W tym przypadku firma Microsoft udostępniła analizatora kodu CredScan jako część [rozszerzenia Microsoft DevLabs](https://marketplace.visualstudio.com/items?itemName=VSIDEDevOpsMSFT.ContinuousDeliveryToolsforVisualStudio) dla programu Visual Studio. Na wczesnej wersji zapoznawczej oferuje deweloperom wbudowane środowisko do wykrywania potencjalnych wpisów tajnych w kodzie, dzięki czemu można rozwiązać te problemy w czasie rzeczywistym. Aby uzyskać więcej informacji, zapoznaj [](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/) się z blogiem dotyczącym bezpiecznego zarządzania kluczami tajnymi w chmurze. Poniżej przedstawiono kilka dodatkowych zasobów, które ułatwiają zarządzanie wpisami tajnymi i dostęp do poufnych informacji z aplikacji w bezpieczny sposób: 
+ - [Usługa Azure Key Vault](../../key-vault/index.yml)
+ - [Azure Active Directory](../../sql-database/sql-database-aad-authentication.md)
  - [tożsamość usługi zarządzanej usługi Azure AD](https://azure.microsoft.com/blog/keep-credentials-out-of-code-introducing-azure-ad-managed-service-identity/)
- - [Tożsamość usługi zarządzanej (MSI) dla zasobów platformy Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
- - [tożsamość usługi zarządzanej platformy Azure](https://docs.microsoft.com/azure/app-service/overview-managed-identity)
- - [Biblioteka AppAuthentication](https://docs.microsoft.com/azure/key-vault/service-to-service-authentication)
+ - [Tożsamość usługi zarządzanej (MSI) dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md)
+ - [tożsamość usługi zarządzanej platformy Azure](../../app-service/overview-managed-identity.md)
+ - [Biblioteka AppAuthentication](../../key-vault/service-to-service-authentication.md)
 
 #### <a name="can-i-write-my-own-custom-searchers"></a>Czy mogę napisać własne niestandardowe wyszukiwania?
 
@@ -183,7 +183,7 @@ Najnowsze wersje C# kompilatora są opublikowane tutaj: https://www.nuget.org/pa
 
 Ze względu na sposób działania zadania to zadanie wymaga wykonania zapytania dotyczącego usługi Azure DevOps dla dziennika MSBuild z zadania kompilacji MSBuild. Jeśli to zadanie zostanie uruchomione natychmiast po zadaniu kompilacji MSBuild, dziennik nie będzie jeszcze dostępny; Umieść inne zadania kompilacji, w tym zadania kompilacji SecDevTools, takie jak Binskim, skanowanie chroniące przed złośliwym kodem i inne), między zadaniem kompilacji MSBuild i zadaniem do tworzenia analizatorów Roslyn. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Jeśli potrzebujesz dodatkowej pomocy, pomoc techniczna firmy Microsoft do analizy kodu zabezpieczeń jest dostępna od poniedziałku do piątku od 9:00 AM – 5:00 PM (pacyficzny czas standardowy)
 

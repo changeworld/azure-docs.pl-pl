@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 4d002a82e3968e0462e5f6e775ec147669c01b0d
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 448d416ce4915aeae048639f6021197ed8c1d334
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147946"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967869"
 ---
 # <a name="azure-importexport-system-requirements"></a>Wymagania dotyczące systemu Azure Import/Export
 
@@ -41,9 +41,9 @@ Aby przygotować dyski twarde, za pomocą narzędzia WAImportExport, następują
 
 Usługa Azure Import/Export obsługuje następujące typy kont magazynu:
 
-- Konta magazynu w wersji 2 Standard ogólnego przeznaczenia (zalecane w przypadku większości scenariuszy)
+- Standardowe konta magazynu Ogólnego przeznaczenia v2 (zalecane w przypadku większości scenariuszy)
 - Konta usługi Blob Storage
-- V1 magazynu konta (wdrożenia zarówno klasyczny, jak i usługi Azure Resource Manager), ogólnego przeznaczenia 
+- Konta magazynu Ogólnego przeznaczenia V1 (zarówno w przypadku wdrożeń klasycznych, jak i Azure Resource Manager), 
 
 Aby uzyskać więcej informacji na temat kont magazynu, zobacz [omówienie kont magazynu platformy Azure](storage-account-overview.md).
 
@@ -72,11 +72,15 @@ Dla usługi Azure Import/Export potrzebne są obsługiwane dyski do kopiowania d
 Poniższa lista dysków jest obsługiwane do użytku z usługi Import/Export.
 
 
-|Typ dysku  |Rozmiar  |Obsługiwane |Nieobsługiwane  |
-|---------|---------|---------|---------|
-|SSD    |   2,5"      |SATA III          |  USB       |
-|HDD     |  2,5"<br>3,5"       |SATA II SATA III         |Zewnętrzny dysk twardy za pomocą wbudowanych adaptera USB <br> Dyskiem wewnątrz wielkość liter w wyrazie zewnętrzny dysk twardy         |
+|Typ dysku  |Rozmiar  |Obsługiwane |
+|---------|---------|---------|
+|SSD    |   2,5"      |SATA III          | 
+|HDD     |  2,5"<br>3,5"       |SATA II SATA III         |
 
+Następujące typy dysków nie są obsługiwane:
+- USBs.
+- Zewnętrzny dysk twardy z wbudowaną adapterem USB.
+- Dyski, które znajdują się w obudowie zewnętrznego dysku twardego.
 
 Zadania importu/eksportu pojedynczego może mieć:
 - Maksymalnie 10 HDD/SSD.

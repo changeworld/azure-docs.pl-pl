@@ -1,6 +1,6 @@
 ---
-title: Aktualizowanie usługi Media Services po stopniowym uaktualnieniu kluczy dostępu do magazynu | Dokumentacja firmy Microsoft
-description: W tym artykule umożliwiają wskazówki na temat aktualizacji usługi Media Services po stopniowym uaktualnieniu kluczy dostępu do magazynu.
+title: Aktualizowanie Media Services po przejściu między klawiszami dostępu do magazynu Microsoft Docs
+description: W tym artykule przedstawiono wskazówki dotyczące sposobu aktualizacji Media Services po przejściu między klawiszami dostępu do magazynu.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,51 +13,52 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
-ms.author: milanga;cenkdin;juliako
-ms.openlocfilehash: c688169dc21304f234aead7196f377a3fa5fd633
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: juliako
+ms.reviewer: milanga;cenkdin
+ms.openlocfilehash: 1cebe0fda7da97933fc94082a62c671535fe689b
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60407326"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69015800"
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>Aktualizowanie usługi Media Services po stopniowym uaktualnieniu kluczy dostępu do magazynu 
 
-Podczas tworzenia nowego konta usługi Azure Media Services (AMS), możesz również monit o wybranie konta usługi Azure Storage, który jest używany do przechowywania zawartości multimedialnej. Można dodać więcej niż jednego konta magazynu, do konta usługi Media Services. W tym artykule przedstawiono sposób rotacja kluczy magazynu. Prezentuje również sposób dodawania konta magazynu do konta usługi media. 
+Podczas tworzenia nowego konta usługi Azure Media Services (AMS) zostanie również wyświetlony monit o wybranie konta magazynu platformy Azure używanego do przechowywania zawartości multimedialnej. Do konta Media Services można dodać więcej niż jedno konto magazynu. W tym artykule pokazano, jak obrócić klucze magazynu. Przedstawiono w nim również sposób dodawania kont magazynu do konta multimediów. 
 
-Aby wykonać czynności opisane w tym artykule, należy używać [interfejsów API usługi Azure Resource Manager](/rest/api/media/operations/azure-media-services-rest-api-reference) i [Powershell](https://docs.microsoft.com/powershell/module/az.media).  Aby uzyskać więcej informacji, zobacz [jak zarządzać zasobami platformy Azure przy użyciu programu PowerShell i Menedżera zasobów](../../azure-resource-manager/manage-resource-groups-powershell.md).
+Aby wykonać czynności opisane w tym artykule, należy używać [Azure Resource Manager interfejsów API](/rest/api/media/operations/azure-media-services-rest-api-reference) i [programu PowerShell](https://docs.microsoft.com/powershell/module/az.media).  Aby uzyskać więcej informacji, zobacz [jak zarządzać zasobami platformy Azure za pomocą programu PowerShell i Menedżer zasobów](../../azure-resource-manager/manage-resource-groups-powershell.md).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Omówienie
 
-Po utworzeniu nowego konta magazynu platformy Azure generuje dwa klucze dostępu do magazynu 512-bitowe, które są używane do uwierzytelniania dostępu do konta magazynu. Aby zabezpieczyć połączenia z magazynem więcej, zalecane jest okresowe ponowne wygenerowanie i Obróć klucz dostępu do magazynu. Dwa klucze dostępu (podstawowych i pomocniczych) znajdują się w celu umożliwia utrzymanie połączeń przy użyciu jednego klucza dostępu, jednocześnie ponownie generując drugi klucz dostępu konta magazynu. Ta procedura jest również nazywany "przerzucić klucze dostępu".
+Po utworzeniu nowego konta magazynu platforma Azure generuje 2 512-bitowe klucze dostępu do magazynu, które są używane do uwierzytelniania dostępu do konta magazynu. Aby zapewnić lepszą ochronę połączeń magazynu, zaleca się okresowe ponowne wygenerowanie i obrócenie klucza dostępu do magazynu. Dwa klucze dostępu (podstawowa i pomocnicza) są dostarczane w celu umożliwienia utrzymania połączeń z kontem magazynu przy użyciu jednego klucza dostępu podczas ponownego generowania drugiego klucza dostępu. Ta procedura jest również nazywana "kluczami dostępu równoległego".
 
-Podany klucz magazynu zależy od usługi Media Services. W szczególności lokalizatory, które są używane do przesyłania strumieniowego lub pobierania zasobów są zależne od klucza dostępu do określonego magazynu. Po utworzeniu konta usługi AMS zajmuje zależność magazynu podstawowego klucza dostępu domyślnie, ale jako użytkownik może zaktualizować klucza magazynu, który ma usługi AMS. Upewnij się umożliwić usługi Media Services wiedzieć, którego klucza należy używać, wykonując kroki opisane w tym artykule.  
+Media Services zależy od dostarczonego do niego klucza magazynu. Lokalizatory używane do przesyłania strumieniowego lub pobierania zasobów zależą od określonego klucza dostępu do magazynu. Po utworzeniu konta AMS domyślnie jest ono zależne od podstawowego klucza dostępu do magazynu, ale jako użytkownik można zaktualizować klucz magazynu, którego dotyczy. Musisz się upewnić, że Media Services wiedzieć, który klucz ma być używany, wykonując czynności opisane w tym artykule.  
 
 >[!NOTE]
-> Jeśli masz wiele kont magazynu, może wykonać tę procedurę, z każdym kontem magazynu. Kolejność, w którym rotacja kluczy magazynu nie jest określony. Można też obrócić dodatkowej pierwszy klucza, a następnie podstawowego klucza lub na odwrót.
+> Jeśli masz wiele kont magazynu, tę procedurę należy wykonać przy użyciu poszczególnych kont magazynu. Kolejność, w której nie zostały naprawione klucze magazynu. Możesz najpierw obrócić klucz pomocniczy, a następnie klucz podstawowy lub odwrotnie.
 >
-> Przed wykonaniem kroków opisanych w tym artykule na koncie produkcyjnym, upewnij się przetestować je na koncie produkcji wstępnej.
+> Przed wykonaniem kroków opisanych w tym artykule na koncie produkcyjnym należy przetestować je na koncie przedprodukcyjnym.
 >
 
-## <a name="steps-to-rotate-storage-keys"></a>Kroki, aby rotacja kluczy magazynu 
+## <a name="steps-to-rotate-storage-keys"></a>Procedura rotacji kluczy magazynu 
  
- 1. Zmiana klucza podstawowego konta magazynu za pomocą polecenia cmdlet programu powershell lub [Azure](https://portal.azure.com/) portalu.
- 2. Wywołaj polecenie cmdlet AzMediaServiceStorageKeys synchronizacji z odpowiednie parametry do wymuszenia konta multimediów, aby pobrać klucze konta magazynu
+ 1. Zmień klucz podstawowy konta magazynu za pomocą polecenia cmdlet programu PowerShell lub witryny [Azure](https://portal.azure.com/) Portal.
+ 2. Wywołaj polecenie cmdlet Sync-AzMediaServiceStorageKeys z odpowiednimi parametrami, aby wymusić konto multimediów w celu pobrania kluczy konta magazynu
  
-    Poniższy przykład pokazuje, jak można zsynchronizować kluczy konta magazynu.
+    Poniższy przykład pokazuje, jak zsynchronizować klucze z kontami magazynu.
   
          Sync-AzMediaServiceStorageKeys -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccountId $storageAccountId
   
- 3. Poczekaj godziny. Sprawdź, czy pracujesz scenariusze przesyłania strumieniowego.
- 4. Zmiana klucza pomocniczego konta magazynu za pomocą polecenia cmdlet programu powershell lub witryny Azure portal.
- 5. Wywołanie synchronizacji AzMediaServiceStorageKeys powershell za pomocą odpowiednie parametry do wymuszenia konta usługi media do pobrania nowych kluczy konta magazynu. 
- 6. Poczekaj godziny. Sprawdź, czy pracujesz scenariusze przesyłania strumieniowego.
+ 3. Zaczekaj godzinę lub tak. Sprawdź, czy scenariusze przesyłania strumieniowego działają.
+ 4. Zmień klucz pomocniczy konta magazynu za pomocą polecenia cmdlet programu PowerShell lub Azure Portal.
+ 5. Wywołaj synchronizację — AzMediaServiceStorageKeys PowerShell z odpowiednimi paramsmi, aby wymusić konto multimediów w celu pobrania nowych kluczy konta magazynu. 
+ 6. Zaczekaj godzinę lub tak. Sprawdź, czy scenariusze przesyłania strumieniowego działają.
  
-### <a name="a-powershell-cmdlet-example"></a>Przykład polecenia cmdlet programu powershell 
+### <a name="a-powershell-cmdlet-example"></a>Przykład polecenia cmdlet programu PowerShell 
 
-Poniższy przykład pokazuje, jak pobrać konta magazynu, a następnie zsynchronizować ją z kontem usługi AMS.
+W poniższym przykładzie pokazano, jak uzyskać konto magazynu i zsynchronizować je z kontem AMS.
 
     $regionName = "West US"
     $resourceGroupName = "SkyMedia-USWest-App"
@@ -68,9 +69,9 @@ Poniższy przykład pokazuje, jak pobrać konta magazynu, a następnie zsynchron
     Sync-AzMediaServiceStorageKeys -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccountId $storageAccountId
 
  
-## <a name="steps-to-add-storage-accounts-to-your-ams-account"></a>Kroki, aby dodać konta usługi storage z kontem usługi AMS
+## <a name="steps-to-add-storage-accounts-to-your-ams-account"></a>Kroki dodawania kont magazynu do konta AMS
 
-Następujący artykuł pokazuje, jak dodać konta magazynu do konta usługi AMS: [Dołączanie wielu kont magazynu do konta usługi Media Services](meda-services-managing-multiple-storage-accounts.md).
+W poniższym artykule pokazano, jak dodać konta magazynu do konta AMS: [Dołącz wiele kont magazynu do konta Media Services](meda-services-managing-multiple-storage-accounts.md).
 
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -78,5 +79,5 @@ Następujący artykuł pokazuje, jak dodać konta magazynu do konta usługi AMS:
 ## <a name="provide-feedback"></a>Przekazywanie opinii
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-### <a name="acknowledgments"></a>Potwierdzenia
-Chcielibyśmy potwierdzić poniższe osób, które przyczyniły się do tworzenia tego dokumentu: Seva Titov Cenk Dingiloglu, Gada Mediolan.
+### <a name="acknowledgments"></a>Potwierdzeń
+Chcemy potwierdzić następujące osoby, które współczyniły się do utworzenia tego dokumentu: Cenk Dingiloglu, Mediolan gada, Seva Titov.

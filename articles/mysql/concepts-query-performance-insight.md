@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 05d6de31dbc3ff5bbf9365098ceae4c840bf116b
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f6c74582760d77ae4318739c74f77d0bcd0501fe
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882806"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950357"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mysql"></a>Szczegółowe informacje o wydajności zapytań w Azure Database for MySQL
 
 **Dotyczy:** Azure Database for MySQL 5,7
 
-> [!NOTE]
+> [!IMPORTANT]
 > Szczegółowe informacje o wydajności zapytań jest w wersji zapoznawczej.
 
 Szczegółowe informacje o wydajności zapytań pomaga szybko określić, co najdłuższe uruchomione zapytania, jak zmieniają się wraz z upływem czasu i co czeka na ich wpływ.

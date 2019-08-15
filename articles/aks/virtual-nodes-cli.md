@@ -1,6 +1,6 @@
 ---
-title: Tworzenie wirtualnych węzłów przy użyciu interfejsu wiersza polecenia platformy Azure usługi Kubernetes (AKS)
-description: Dowiedz się, jak utworzyć klaster usługi Kubernetes usługi Azure (AKS), korzystającą z wirtualnych węzłów w celu uruchomienia zasobników za pomocą wiersza polecenia platformy Azure.
+title: Tworzenie węzłów wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure w usłudze Azure Kubernetes Services (AKS)
+description: Dowiedz się, jak za pomocą interfejsu wiersza polecenia platformy Azure utworzyć klaster usługi Azure Kubernetes Services (AKS), który używa węzłów wirtualnych do uruchamiania tego programu.
 services: container-service
 author: mlearned
 ms.topic: conceptual
@@ -8,29 +8,29 @@ ms.service: container-service
 ms.date: 05/06/2019
 ms.author: mlearned
 ms.openlocfilehash: a6acdd6255278123ff13a8597cadd2a386536bd4
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67613783"
 ---
-# <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Tworzenie i konfigurowanie klastra usługi Azure Kubernetes usługi (AKS) do użycia wirtualnych węzłów przy użyciu wiersza polecenia platformy Azure
+# <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Tworzenie i Konfigurowanie klastra usługi Azure Kubernetes Services (AKS) w celu używania węzłów wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Szybkie skalowanie obciążeń aplikacji w klastrze usługi Azure Kubernetes Service (AKS), można użyć wirtualnych węzłów. Wirtualne węzły, możesz mieć szybkiej aprowizacji zasobników i płacić tylko na sekundę na czas wykonywania uległ. Nie należy czekać do wdrożenia węzłów obliczeniowych maszyn wirtualnych, aby uruchomić dodatkowe zasobniki skalowanie klastra usługi Kubernetes. Wirtualne węzły są obsługiwane tylko z zasobników systemu Linux i węzłów.
+Aby szybko skalować obciążenia aplikacji w klastrze usługi Azure Kubernetes Service (AKS), można użyć węzłów wirtualnych. Dzięki węzłom wirtualnym można szybko zainicjowania obsługi pojemności i płacisz na sekundę w czasie wykonywania. Nie musisz czekać, aż klaster Kubernetes ma wdrażać węzły obliczeniowe maszyny wirtualnej w celu uruchamiania dodatkowych zasobników. Węzły wirtualne są obsługiwane tylko w przypadku systemów i węzłów systemu Linux.
 
-W tym artykule pokazano, jak utworzyć i skonfigurować zasoby sieci wirtualnej i klastra AKS, a następnie włącz wirtualnych węzłów.
+W tym artykule pokazano, jak utworzyć i skonfigurować zasoby sieci wirtualnej i klaster AKS, a następnie włączyć węzły wirtualne.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Wirtualne węzły Włącz komunikację sieciową między zasobników, które są uruchamiane w usłudze ACI i klastrem AKS. Aby zapewnić tę komunikację, podsieci sieci wirtualnej jest tworzony i przypisanych uprawnień delegowanych. Wirtualne węzły działają tylko z klastrami usługi AKS utworzone za pomocą *zaawansowane* sieci. Domyślnie klastry usługi AKS są tworzone za pomocą *podstawowe* sieci. W tym artykule przedstawiono sposób tworzenia sieci wirtualnej i podsieci, a następnie wdrożyć klaster AKS, która używa zaawansowane sieci.
+Węzły wirtualne umożliwiają komunikację sieciową między jednostkami, które działają w ACI i klastrze AKS. W celu zapewnienia tej komunikacji zostanie utworzona podsieć sieci wirtualnej i przypisane uprawnienia delegowane. Węzły wirtualne działają tylko w przypadku klastrów AKS utworzonych przy użyciu zaawansowanej sieci. Domyślnie klastry AKS są tworzone z użyciem sieci *podstawowej* . W tym artykule opisano sposób tworzenia sieci wirtualnej i podsieci, a następnie wdrażania klastra AKS, który korzysta z zaawansowanej sieci.
 
-Jeśli wcześniej nie używano usługi ACI, należy zarejestrować dostawcę usług w ramach subskrypcji. Możesz sprawdzić stan usługi ACI dostawcy rejestracji za pomocą [az provider list][az-provider-list] polecenia, jak pokazano w poniższym przykładzie:
+Jeśli nie korzystasz wcześniej z ACI, zarejestruj dostawcę usług w ramach subskrypcji. Stan rejestracji dostawcy ACI można sprawdzić za pomocą polecenia [AZ Provider list][az-provider-list] , jak pokazano w następującym przykładzie:
 
 ```azurecli-interactive
 az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" -o table
 ```
 
-*Microsoft.ContainerInstance* dostawca powinien wysyłać raporty jako *zarejestrowanej*, jak pokazano w następujących przykładowych danych wyjściowych:
+Dostawca *Microsoft. ContainerInstance* powinien raportować jako *zarejestrowane*, jak pokazano w następujących przykładowych danych wyjściowych:
 
 ```
 Namespace                    RegistrationState
@@ -38,7 +38,7 @@ Namespace                    RegistrationState
 Microsoft.ContainerInstance  Registered
 ```
 
-Jeśli dostawca jest wyświetlany jako *NotRegistered*, zarejestruj dostawcę przy użyciu [az provider register][az-provider-register] jak pokazano w poniższym przykładzie:
+Jeśli dostawca jest wyświetlany jako *NotRegistered*, zarejestruj dostawcę przy użyciu polecenia [AZ Provider Register][az-provider-register] , jak pokazano w następującym przykładzie:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerInstance
@@ -46,38 +46,38 @@ az provider register --namespace Microsoft.ContainerInstance
 
 ## <a name="regional-availability"></a>Dostępność regionalna
 
-Następujące regiony są obsługiwane dla wdrożeń wirtualnego węzła:
+W przypadku wdrożeń węzłów wirtualnych obsługiwane są następujące regiony:
 
 * Australia Wschodnia (australiaeast)
-* Środkowe stany USA (centralus)
-* Wschodnie stany USA (eastus)
+* Środkowe stany USA (środkowe)
+* Wschodnie stany USA (wschód)
 * Wschodnie stany USA 2 (eastus2)
-* Japonia, część wschodnia (japaneast)
+* Japonia Wschodnia (japaneast)
 * Europa Północna (northeurope)
-* Azja południowo-wschodnia (southeastasia)
+* Azja Południowo-Wschodnia (southeastasia)
 * Zachodnio-środkowe stany USA (westcentralus)
 * Europa Zachodnia (westeurope)
-* Zachodnie stany USA (westus)
+* Zachodnie stany USA (Zachodnie)
 * Zachodnie stany USA 2 (westus2)
 
 ## <a name="known-limitations"></a>Znane ograniczenia
-Działanie węzłów wirtualnej jest stopniu zależą od zestawu funkcji usługi ACI firmy. Następujące scenariusze nie są jeszcze obsługiwane za pomocą wirtualnych węzłów
+Funkcjonalność węzłów wirtualnych jest w dużym stopniu zależna od zestawu funkcji ACI. Następujące scenariusze nie są jeszcze obsługiwane w przypadku węzłów wirtualnych
 
-* Przy użyciu jednostki usługi do obrazów ACR ściągnięcia. [Obejście](https://github.com/virtual-kubelet/virtual-kubelet/blob/master/providers/azure/README.md#Private-registry) jest użycie [wpisy tajne usługi Kubernetes](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line)
-* [Ograniczenia sieci wirtualnej](../container-instances/container-instances-vnet.md) tym komunikacja równorzędna sieci wirtualnych, Kubernetes zasad sieciowych i ruch wychodzący do Internetu za pomocą sieciowych grup zabezpieczeń.
-* Kontenery init
-* [Aliasy hosta](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
-* [Argumenty](../container-instances/container-instances-exec.md#restrictions) dla exec w usłudze ACI
-* [Daemonsets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) nie wdroży zasobników wirtualnego węzła
-* [Węzły systemu Windows Server (obecnie dostępna w wersji zapoznawczej w usłudze AKS)](windows-container-cli.md) nie są obsługiwane razem z wirtualnych węzłów. Wirtualne węzły umożliwia planowanie kontenerów systemów Windows Server bez potrzeby węzłów systemu Windows Server w klastrze AKS.
+* Używanie nazwy głównej usługi do ściągania obrazów ACR. [Obejście](https://github.com/virtual-kubelet/virtual-kubelet/blob/master/providers/azure/README.md#Private-registry) polega na użyciu wpisów [tajnych Kubernetes](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line)
+* [Virtual Network ograniczenia](../container-instances/container-instances-vnet.md) , w tym wirtualne sieci równorzędne, zasady sieci Kubernetes i ruch wychodzący do Internetu za pomocą sieciowych grup zabezpieczeń.
+* Inicjuj kontenery
+* [Aliasy hostów](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
+* [Argumenty](../container-instances/container-instances-exec.md#restrictions) dla elementu exec w ACI
+* [Daemonsets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) nie będzie wdrażać zasobników w węźle wirtualnym
+* [Węzły systemu Windows Server (obecnie dostępne w wersji zapoznawczej w AKS)](windows-container-cli.md) nie są obsługiwane razem z węzłami wirtualnymi. Węzłów wirtualnych można użyć do zaplanowania kontenerów systemu Windows Server bez potrzeby węzłów systemu Windows Server w klastrze AKS.
 
 ## <a name="launch-azure-cloud-shell"></a>Uruchamianie usługi Azure Cloud Shell
 
 Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie.
 
-Aby otworzyć usłudze Cloud Shell, wybierz **wypróbuj** w prawym górnym rogu bloku kodu. Możesz również uruchomić usługę Cloud Shell w oddzielnej karcie przeglądarki, przechodząc do strony [https://shell.azure.com/bash](https://shell.azure.com/bash). Wybierz przycisk **Kopiuj**, aby skopiować bloki kodu, wklej je do usługi Cloud Shell, a następnie naciśnij klawisz Enter, aby je uruchomić.
+Aby otworzyć Cloud Shell, wybierz pozycję **Wypróbuj** w prawym górnym rogu bloku kodu. Możesz również uruchomić usługę Cloud Shell w oddzielnej karcie przeglądarki, przechodząc do strony [https://shell.azure.com/bash](https://shell.azure.com/bash). Wybierz przycisk **Kopiuj**, aby skopiować bloki kodu, wklej je do usługi Cloud Shell, a następnie naciśnij klawisz Enter, aby je uruchomić.
 
-Jeśli wolisz zainstalować i korzystać z interfejsu wiersza polecenia lokalnie, ten artykuł wymaga interfejsu wiersza polecenia Azure w wersji 2.0.49 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
+Jeśli wolisz zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten artykuł będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.49 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
@@ -89,7 +89,7 @@ az group create --name myResourceGroup --location westus
 
 ## <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 
-Tworzenie sieci wirtualnej przy użyciu [tworzenie sieci wirtualnej sieci az][az-network-vnet-create] polecenia. Poniższy przykład tworzy nazwę sieci wirtualnej *myVnet* z prefiksem adresu *10.0.0.0/8*, a podsieć o nazwie *myAKSSubnet*. Prefiks adresu podsieci to wartość domyślna to *10.240.0.0/16*:
+Utwórz sieć wirtualną za pomocą polecenia [AZ Network VNET Create][az-network-vnet-create] . Poniższy przykład tworzy nazwę sieci wirtualnej *myVnet* z prefiksem adresu *10.0.0.0/8*i podsiecią o nazwie *myAKSSubnet*. Prefiks adresu tej podsieci domyślnie *10.240.0.0/16*:
 
 ```azurecli-interactive
 az network vnet create \
@@ -100,7 +100,7 @@ az network vnet create \
     --subnet-prefix 10.240.0.0/16
 ```
 
-Teraz Utwórz dodatkowe podsieci wirtualnych węzłów przy użyciu [az podsieci sieci wirtualnej Utwórz][az-network-vnet-subnet-create] polecenia. Poniższy przykład tworzy podsieć o nazwie *myVirtualNodeSubnet* z prefiksem adresu *10.241.0.0/16*.
+Teraz Utwórz dodatkową podsieć dla węzłów wirtualnych przy użyciu polecenia [AZ Network VNET Subnet Create][az-network-vnet-subnet-create] . Poniższy przykład tworzy podsieć o nazwie *myVirtualNodeSubnet* z prefiksem adresu *10.241.0.0/16*.
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -136,15 +136,15 @@ Zwróć uwagę na wartości *appId* i *password*. Te wartości są używane w ko
 
 ## <a name="assign-permissions-to-the-virtual-network"></a>Przypisywanie uprawnień do sieci wirtualnej
 
-Aby umożliwić klastrem i zarządzać sieci wirtualnej, należy udzielić nazwy głównej usługi AKS odpowiednich uprawnień, aby korzystać z zasobów sieciowych.
+Aby umożliwić klastrowi korzystanie z sieci wirtualnej i zarządzanie nią, należy przyznać jednostce usługi AKS odpowiednie prawa do używania zasobów sieciowych.
 
-Najpierw Pobierz, używając Identyfikatora zasobu sieci wirtualnej [az sieci vnet show][az-network-vnet-show]:
+Najpierw Pobierz identyfikator zasobu sieci wirtualnej za pomocą polecenia [AZ Network VNET show][az-network-vnet-show]:
 
 ```azurecli-interactive
 az network vnet show --resource-group myResourceGroup --name myVnet --query id -o tsv
 ```
 
-Aby udzielić prawidłowy dostęp do klastra AKS użyć sieci wirtualnej, utworzyć przypisania roli przy użyciu [utworzenia przypisania roli az][az-role-assignment-create] polecenia. Zastąp ciągi `<appId`> i `<vnetId>` wartościami określonymi w dwóch poprzednich krokach.
+Aby udzielić poprawnego dostępu do klastra AKS do korzystania z sieci wirtualnej, Utwórz przypisanie roli za pomocą polecenia [AZ role przypisanie Create][az-role-assignment-create] . Zastąp ciągi `<appId`> i `<vnetId>` wartościami określonymi w dwóch poprzednich krokach.
 
 ```azurecli-interactive
 az role assignment create --assignee <appId> --scope <vnetId> --role Contributor
@@ -152,13 +152,13 @@ az role assignment create --assignee <appId> --scope <vnetId> --role Contributor
 
 ## <a name="create-an-aks-cluster"></a>Tworzenie klastra AKS
 
-Możesz wdrożyć klaster usługi AKS w taki sposób, w podsieci usługi AKS utworzonego w poprzednim kroku. Pobierz identyfikator tej podsieci przy użyciu [Pokaż podsieci sieci wirtualnej sieci az][az-network-vnet-subnet-show]:
+Klaster AKS jest wdrażany w podsieci AKS utworzonej w poprzednim kroku. Pobierz identyfikator tej podsieci za pomocą polecenia [AZ Network VNET Subnet show][az-network-vnet-subnet-show]:
 
 ```azurecli-interactive
 az network vnet subnet show --resource-group myResourceGroup --vnet-name myVnet --name myAKSSubnet --query id -o tsv
 ```
 
-Użyj [tworzenie az aks][az-aks-create] polecenie, aby utworzyć klaster usługi AKS. W poniższym przykładzie pokazano tworzenie klastra o nazwie *myAKSCluster* z jednym węzłem. Zastąp `<subnetId>` o identyfikatorze uzyskanego w poprzednim kroku, a następnie `<appId>` i `<password>` z 
+Użyj polecenia [AZ AKS Create][az-aks-create] , aby utworzyć klaster AKS. W poniższym przykładzie pokazano tworzenie klastra o nazwie *myAKSCluster* z jednym węzłem. Zamień `<subnetId>` na identyfikator uzyskany w poprzednim kroku, a `<password>` następnie `<appId>` wraz z 
 
 ```azurecli-interactive
 az aks create \
@@ -176,9 +176,9 @@ az aks create \
 
 Po kilku minutach polecenie zostanie wykonane i zwróci informacje o klastrze w formacie JSON.
 
-## <a name="enable-virtual-nodes-addon"></a>Włącz dodatek wirtualnych węzłów
+## <a name="enable-virtual-nodes-addon"></a>Włącz dodatek węzłów wirtualnych
 
-Aby włączyć wirtualne węzły, teraz używać [az aks enable dodatków][az-aks-enable-addons] polecenia. W poniższym przykładzie użyto podsieci o nazwie *myVirtualNodeSubnet* utworzony w poprzednim kroku:
+Aby włączyć węzły wirtualne, teraz użyj polecenia [AZ AKS Enable-dodatkis][az-aks-enable-addons] . W poniższym przykładzie zastosowano podsieć o nazwie *myVirtualNodeSubnet* , która została utworzona w poprzednim kroku:
 
 ```azurecli-interactive
 az aks enable-addons \
@@ -202,7 +202,7 @@ Aby sprawdzić połączenie z klastrem, użyj polecenia [kubectl get][kubectl-ge
 kubectl get nodes
 ```
 
-Następujące przykładowe dane wyjściowe zawiera jeden węzeł maszyny Wirtualnej utworzone, a następnie wirtualnego węzła dla systemu Linux, *wirtualnego node-aci-linux*:
+Następujące przykładowe dane wyjściowe pokazują utworzony węzeł maszyny wirtualnej, a następnie węzeł wirtualny dla systemu Linux, *Virtual-Node-ACI-Linux*:
 
 ```
 $ kubectl get nodes
@@ -212,9 +212,9 @@ virtual-node-aci-linux        Ready     agent     28m       v1.11.2
 aks-agentpool-14693408-0      Ready     agent     32m       v1.11.2
 ```
 
-## <a name="deploy-a-sample-app"></a>Wdróż przykładową aplikację
+## <a name="deploy-a-sample-app"></a>Wdrażanie przykładowej aplikacji
 
-Utwórz plik o nazwie `virtual-node.yaml` i skopiuj do poniższego kodu YAML. Aby zaplanować uruchamianie kontenera w węźle [nodeSelector][node-selector] and [toleration][toleration] są zdefiniowane.
+Utwórz plik o nazwie `virtual-node.yaml` i skopiuj w następującym YAML. Do zaplanowania kontenera w węźle są zdefiniowane [nodeSelector][node-selector] i [tolerowanie][toleration] .
 
 ```yaml
 apiVersion: apps/v1
@@ -247,13 +247,13 @@ spec:
         effect: NoSchedule
 ```
 
-Uruchom aplikację za pomocą [zastosować kubectl][kubectl-apply] polecenia.
+Uruchom aplikację za pomocą polecenia [polecenia kubectl Apply][kubectl-apply] .
 
 ```console
 kubectl apply -f virtual-node.yaml
 ```
 
-Użyj [kubectl get pods-][kubectl-get] polecenia `-o wide` argument służący do wypełniania wyjściowego listę zasobników i zaplanowane węzła. Należy zauważyć, że `aci-helloworld` zasobnika została zaplanowana na `virtual-node-aci-linux` węzła.
+Użyj [polecenia kubectl Get][kubectl-get] -Binding polecenia z `-o wide` argumentem, aby wyprowadzić listę z listy i zaplanowanego węzła. Zwróć uwagę `aci-helloworld` `virtual-node-aci-linux` na to, że zgodnie z harmonogramem zaplanowano w węźle.
 
 ```
 $ kubectl get pods -o wide
@@ -262,32 +262,32 @@ NAME                            READY     STATUS    RESTARTS   AGE       IP     
 aci-helloworld-9b55975f-bnmfl   1/1       Running   0          4m        10.241.0.4   virtual-node-aci-linux
 ```
 
-Zasobnik jest przypisany wewnętrznego adresu IP z podsieci sieci wirtualnej platformy Azure, delegowane do użytku z wirtualnych węzłów.
+Pod przypisywany jest wewnętrzny adres IP z podsieci sieci wirtualnej platformy Azure delegowanej do użycia z węzłami wirtualnymi.
 
 > [!NOTE]
-> Jeśli używasz obrazów przechowywanych w usłudze Azure Container Registry, [Konfigurowanie i używanie wpisie tajnym rozwiązania Kubernetes][acr-aks-secrets]. To aktualne ograniczenie wirtualnych węzłów jest nie Azure zintegrowane uwierzytelnianie jednostki usługi AD. Jeśli nie używasz klucza tajnego, zasobników zaplanowane na wirtualnych węzłów nie można uruchomić i zgłoś błąd `HTTP response status code 400 error code "InaccessibleImage"`.
+> Jeśli używasz obrazów przechowywanych w Azure Container Registry, [Skonfiguruj i użyj wpisu tajnego Kubernetes][acr-aks-secrets]. Bieżące ograniczenie węzłów wirtualnych polega na tym, że nie można używać zintegrowanego uwierzytelniania podstawowego usługi Azure AD. Jeśli nie korzystasz z wpisu tajnego, nie można uruchomić i zgłosić błędu `HTTP response status code 400 error code "InaccessibleImage"`.
 
-## <a name="test-the-virtual-node-pod"></a>Testowanie pod węzłem wirtualnym
+## <a name="test-the-virtual-node-pod"></a>Przetestuj węzeł wirtualny pod
 
-Aby przetestować uruchomiony na wirtualny węzeł zasobnik, przejdź do aplikacji demonstracyjnej z klienta sieci web. Zasobnik jest przypisany wewnętrznego adresu IP, możesz szybko przetestować tego połączenia z poziomu innego zasobnik w klastrze AKS. Utwórz zasobnik testu i do niej dołączyć sesję terminalu:
+Aby przetestować pod kątem działania w węźle wirtualnym, przejdź do aplikacji demonstracyjnej za pomocą klienta sieci Web. Jako że pod przypisywanym wewnętrznym adresem IP można szybko przetestować to połączenie z innego elementu pod względem klastra AKS. Utwórz test pod i Dołącz do niego sesję terminalu:
 
 ```console
 kubectl run -it --rm virtual-node-test --image=debian
 ```
 
-Zainstaluj `curl` w zasobnik przy użyciu `apt-get`:
+Zainstaluj `curl` w temacie using `apt-get`:
 
 ```console
 apt-get update && apt-get install -y curl
 ```
 
-Teraz uzyskiwać dostęp do sieci za pomocą pod adres `curl`, takich jak *http://10.241.0.4* . Podaj własne wewnętrzny adres IP, które są wyświetlane w ciągu poprzednich `kubectl get pods` polecenia:
+Uzyskaj teraz dostęp do adresu Twojego elementu przy `curl`użyciu, takich *http://10.241.0.4* jak. Podaj własny wewnętrzny adres IP przedstawiony w poprzednim `kubectl get pods` poleceniu:
 
 ```console
 curl -L http://10.241.0.4
 ```
 
-Wyświetlane są aplikacji pokazowej, jak pokazano w następujących danych wyjściowych skróconego przykładu:
+Zostanie wyświetlona aplikacja demonstracyjna, jak pokazano w następujących wąskich przykładowych danych wyjściowych:
 
 ```
 $ curl -L 10.241.0.4
@@ -299,25 +299,25 @@ $ curl -L 10.241.0.4
 [...]
 ```
 
-Zamknij sesję terminala tym zasobniku testu za pomocą `exit`. Gdy sesja zostanie zakończona, zasobnika ustawiany jest usunięte.
+Zamknij sesję terminalu z testem pod `exit`. Po zakończeniu sesji, pod, jest usunięty.
 
-## <a name="remove-virtual-nodes"></a>Usuń wirtualne węzły
+## <a name="remove-virtual-nodes"></a>Usuń węzły wirtualne
 
-Jeśli nie chcesz już używać wirtualnych węzłów, można je wyłączyć za pomocą [az aks disable dodatków][az aks disable-addons] polecenia. 
+Jeśli nie chcesz już używać węzłów wirtualnych, możesz je wyłączyć za pomocą polecenia [AZ AKS Disable-dodatkis][az aks disable-addons] . 
 
-Najpierw usuń uruchomiony na wirtualny węzeł zasobnik helloworld:
+Najpierw usuń plik HelloWorld pod kontrolą uruchomienia w węźle wirtualnym:
 
 ```azurecli-interactive
 kubectl delete -f virtual-node.yaml
 ```
 
-Następujące przykładowe polecenie wyłącza wirtualnych węzłów systemu Linux:
+Następujące przykładowe polecenie wyłącza węzły wirtualne systemu Linux:
 
 ```azurecli-interactive
 az aks disable-addons --resource-group myResourceGroup --name myAKSCluster --addons virtual-node
 ```
 
-Teraz Usuń zasoby sieci wirtualnej i grupy zasobów:
+Teraz Usuń zasoby sieci wirtualnej i grupę zasobów:
 
 ```azurecli-interactive
 # Change the name of your resource group, cluster and network resources as needed
@@ -345,16 +345,16 @@ az resource delete --ids $SAL_ID --api-version 2018-07-01
 az network vnet subnet update --resource-group $RES_GROUP --vnet-name $AKS_VNET --name $AKS_SUBNET --remove delegations 0
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule zasobnik została zaplanowana na wirtualny węzeł i przypisać prywatny, wewnętrzny adres IP. Można zamiast tego utworzyć wdrożenie usługi i kierowanie ruchem na tym zasobniku za pośrednictwem modułu równoważenia obciążenia lub kontrolera danych przychodzących. Aby uzyskać więcej informacji, zobacz [utworzyć kontroler podstawowy ruch przychodzący w usłudze AKS][aks-basic-ingress].
+W tym artykule zaplanowano w węźle wirtualnym i przypisano prywatny, wewnętrzny adres IP. Zamiast tego można utworzyć wdrożenie usługi i skierować ruch do swojego użytkownika przy użyciu modułu równoważenia obciążenia lub kontrolera transferu danych przychodzących. Aby uzyskać więcej informacji, zobacz [Tworzenie podstawowego kontrolera danych wejściowych w AKS][aks-basic-ingress].
 
-Wirtualne węzły są często jeden składnik skalowania rozwiązania w usłudze AKS. Aby uzyskać więcej informacji na temat skalowania rozwiązań zobacz następujące artykuły:
+Węzły wirtualne są często jednym składnikiem rozwiązania do skalowania w AKS. Aby uzyskać więcej informacji na temat skalowania rozwiązań, zobacz następujące artykuły:
 
-- [Użyj skalowania automatycznego zasobników w poziomie rozwiązania Kubernetes][aks-hpa]
-- [Użyj skalowania automatycznego klastra Kubernetes][aks-cluster-autoscaler]
-- [Zapoznaj się z przykładowych skalowania automatycznego dla wirtualnych węzłów][virtual-node-autoscale]
-- [Więcej informacji na temat rozwiązania Virtual Kubelet biblioteki typu open source][virtual-kubelet-repo]
+- [Korzystanie z funkcji automatycznego skalowania w Kubernetes w poziomie][aks-hpa]
+- [Korzystanie z automatycznego skalowania klastra Kubernetes][aks-cluster-autoscaler]
+- [Zapoznaj się z przykładem skalowania automatycznego dla węzłów wirtualnych][virtual-node-autoscale]
+- [Przeczytaj więcej na temat biblioteki Open Source Kubelet wirtualnej][virtual-kubelet-repo]
 
 <!-- LINKS - external -->
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get

@@ -1,52 +1,67 @@
 ---
 title: Jak zabezpieczyć dostęp do Azure Data Catalog
-description: W tym artykule wyjaśniono, jak zabezpieczyć wykaz danych i jego zasoby danych.
+description: W tym artykule opisano sposób zabezpieczania wykazu danych i jego zasobów danych w programie Azure Data Catalog.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: c6c99eb62ba628ffc8c84799a6729540b572c580
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: b0972be2b8a6e05d3d90cde7354b4890ea95cbe4
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736395"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976758"
 ---
 # <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>Jak zabezpieczyć dostęp do wykazu danych i zasobów danych
+
 > [!IMPORTANT]
 > Ta funkcja jest dostępna tylko w wersji Standard programu Azure Data Catalog.
 
 Azure Data Catalog pozwala określić, kto może uzyskiwać dostęp do wykazu danych i jakie operacje (rejestrować, dodawać adnotacje, przejąć własność), które mogą być wykonywane na metadanych w wykazie. 
 
 ## <a name="catalog-users-and-permissions"></a>Użytkownicy i uprawnienia katalogu
+
 Aby nadać użytkownikowi lub grupie dostęp do wykazu danych i ustawić uprawnienia:
 
 1. Na [stronie głównej wykazu danych](https://www.azuredatacatalog.com)kliknij pozycję **Ustawienia** na pasku narzędzi.
 
-    ![Wykaz danych — ustawienia](media/data-catalog-how-to-secure-catalog/data-catalog-settings.png)
-2. Na stronie Ustawienia rozwiń sekcję **Użytkownicy katalogu** .
-    ![Użytkownicy wykazu — Dodawanie](media/data-catalog-how-to-secure-catalog/data-catalog-add-button.png)
-3. Kliknij przycisk **Dodaj**.
-4. Wprowadź w pełni kwalifikowaną **nazwę użytkownika** lub nazwę **grupy zabezpieczeń** w Azure Active Directory (AAD) skojarzonej z wykazem. Jeśli dodajesz więcej niż jednego użytkownika lub grupę, użyj przecinka (",") jako separatora.
-    ![Użytkownicy katalogu — Użytkownicy lub grupy](media/data-catalog-how-to-secure-catalog/data-catalog-users-groups.png)
-5. Naciśnij klawisz **Enter** lub **Tab** z pola tekstowego. 
-6.  Upewnij się, że wszystkie uprawnienia (**Dodawanie adnotacji**, **Rejestrowanie**i przejęcie na **własność**) są domyślnie przypisane do tych użytkowników lub grup. Oznacza to, że użytkownik lub Grupa może [rejestrować zasoby danych]( data-catalog-how-to-register.md), [dodawać adnotacje do zasobów danych]( data-catalog-how-to-annotate.md)i [przejąć własność zasobów danych]( data-catalog-how-to-manage.md). 
-    ![Użytkownicy wykazu — uprawnienia domyślne](media/data-catalog-how-to-secure-catalog/data-catalog-default-permissions.png)
-7.  Aby nadać użytkownikowi lub grupie tylko dostęp do odczytu do wykazu, wyczyść opcję **Adnotuj** dla tego użytkownika lub grupy. Gdy to zrobisz, użytkownik lub grupa nie będzie mógł dodawać adnotacji do zasobów danych w wykazie, ale mogą je przeglądać. 
-8.  Aby odmówić, aby użytkownik lub Grupa rejestrował zasoby danych, wyczyść opcję **zarejestruj** dla tego użytkownika lub grupy.
-9.  Aby uniemożliwić użytkownikowi przejęcie własności zasobu danych, wyczyść opcję **Przejmij własność** dla tego użytkownika lub grupy. 
-10. Aby usunąć użytkownika/grupę z użytkowników wykazu, kliknij przycisk **x** dla użytkownika/grupy w dolnej części listy. 
-    ![Użytkownicy katalogu — Usuwanie użytkownika](media/data-catalog-how-to-secure-catalog/data-catalog-delete-user.png)
+   ![Przycisk ustawień strony głównej Azure Data Catalog](media/data-catalog-how-to-secure-catalog/data-catalog-settings.png)
 
-    > [!IMPORTANT]
-    > Zalecamy dodanie grup zabezpieczeń do użytkowników wykazu zamiast bezpośredniego dodawania użytkowników i przypisywania uprawnień. Następnie Dodaj użytkowników do grup zabezpieczeń, które pasują do ich ról i wymagane przez nich dostęp do wykazu.
+2. Na stronie Ustawienia rozwiń sekcję **Użytkownicy katalogu** .
+
+   ![Przycisk Dodaj Azure Data Catalog użytkowników](media/data-catalog-how-to-secure-catalog/data-catalog-add-button.png)
+
+3. Kliknij przycisk **Dodaj**.
+
+4. Wprowadź w pełni kwalifikowaną **nazwę użytkownika** lub nazwę **grupy zabezpieczeń** w Azure Active Directory (AAD) skojarzonej z wykazem. Jeśli dodajesz więcej niż jednego użytkownika lub grupę, użyj przecinka (",") jako separatora.
+
+   ![Azure Data Catalog użytkownicy lub grupy](media/data-catalog-how-to-secure-catalog/data-catalog-users-groups.png)
+
+5. Naciśnij klawisz **Enter** lub **Tab** z pola tekstowego. 
+
+6. Upewnij się, że wszystkie uprawnienia (**Dodawanie adnotacji**, **Rejestrowanie**i przejęcie na **własność**) są domyślnie przypisane do tych użytkowników lub grup. Oznacza to, że użytkownik lub Grupa może [rejestrować zasoby danych]( data-catalog-how-to-register.md), [dodawać adnotacje do zasobów danych]( data-catalog-how-to-annotate.md)i [przejąć własność zasobów danych]( data-catalog-how-to-manage.md). 
+
+   ![Azure Data Catalog użytkownicy — uprawnienia domyślne](media/data-catalog-how-to-secure-catalog/data-catalog-default-permissions.png)
+
+7. Aby nadać użytkownikowi lub grupie tylko dostęp do odczytu do wykazu, wyczyść opcję **Adnotuj** dla tego użytkownika lub grupy. Gdy to zrobisz, użytkownik lub grupa nie będzie mógł dodawać adnotacji do zasobów danych w wykazie, ale mogą je przeglądać. 
+
+8. Aby odmówić, aby użytkownik lub Grupa rejestrował zasoby danych, wyczyść opcję **zarejestruj** dla tego użytkownika lub grupy.
+
+9. Aby uniemożliwić użytkownikowi przejęcie własności zasobu danych, wyczyść opcję **Przejmij własność** dla tego użytkownika lub grupy. 
+
+10. Aby usunąć użytkownika/grupę z użytkowników wykazu, kliknij przycisk **x** dla użytkownika/grupy w dolnej części listy. 
+
+   ![Użytkownicy katalogu Azure Data Catalog — Usuwanie ikony użytkownika X](media/data-catalog-how-to-secure-catalog/data-catalog-delete-user.png)
+
+   > [!IMPORTANT]
+   > Zalecamy dodanie grup zabezpieczeń do użytkowników wykazu zamiast bezpośredniego dodawania użytkowników i przypisywania uprawnień. Następnie Dodaj użytkowników do grup zabezpieczeń, które pasują do ich ról i wymagane przez nich dostęp do wykazu.
 
 ## <a name="special-considerations"></a>Specjalne uwagi
 
 - Uprawnienia przypisane do grup zabezpieczeń to dodatki. Załóżmy, że użytkownik należy do dwóch grup. Jedna grupa ma uprawnienia do dodawania adnotacji, a inna grupa nie ma uprawnień do dodawania adnotacji. Następnie użytkownik ma uprawnienia do dodawania adnotacji. 
 - Uprawnienia przypisane jawnie do użytkownika zastępują uprawnienia przypisane do grup, do których należy użytkownik. W poprzednim przykładzie Załóżmy, że użytkownik został jawnie dodany do katalogu użytkowników wykazu i nie przypisał uprawnień do dodawania adnotacji. Użytkownik nie może dodawać adnotacji do zasobów danych nawet wtedy, gdy użytkownik jest członkiem grupy, która ma uprawnienia do dodawania adnotacji.
 
-## <a name="next-steps"></a>Kolejne kroki
-- [Rozpoczynanie pracy z usługą Azure Data Catalog](data-catalog-get-started.md)
+## <a name="next-steps"></a>Następne kroki
 
+- [Rozpoczynanie pracy z usługą Azure Data Catalog](data-catalog-get-started.md)

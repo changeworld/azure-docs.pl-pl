@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: dacurwin
-ms.openlocfilehash: 07faf03ee9b12d1bf4a200de47d6df714c2248d9
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 72ab33cd280892ac6de827986e21e04672e58960
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737162"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951853"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Omówienie kopii zapasowej maszyny wirtualnej platformy Azure
 
@@ -139,6 +139,50 @@ Dysk danych 2 | 4095 GB | 0 GB
 
 Rzeczywistą wielkością maszyny wirtualnej w tym przypadku jest 17 GB + 30 GB + 0 GB = 47 GB. Ten rozmiar chronionego wystąpienia (47 GB) stanowi podstawę dla rachunku miesięcznego. Wraz ze wzrostem ilości danych w maszynie wirtualnej rozmiar chronionego wystąpienia używany do zmiany rozliczeń jest zgodny.
 
-## <a name="next-steps"></a>Kolejne kroki
+<a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb"></a>
+## <a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30-tb"></a>Ograniczona publiczna wersja zapoznawcza: Tworzenie kopii zapasowej maszyny wirtualnej z rozmiarem dysku do 30 TB
+
+Azure Backup teraz obsługuje ograniczoną publiczną wersję zapoznawczą większych i bardziej zaawansowanych [Managed disks platformy Azure](https://azure.microsoft.com/blog/larger-more-powerful-managed-disks-for-azure-virtual-machines/) o rozmiarze do 30 TB. Ta wersja zapoznawcza zapewnia obsługę na poziomie produkcyjnym zarządzanych maszyn wirtualnych.
+
+Możesz bezproblemowo rejestrować w wersji zapoznawczej bez wpływu na bieżące kopie zapasowe. Po zarejestrowaniu subskrypcji w wersji zapoznawczej należy utworzyć kopię zapasową wszystkich maszyn wirtualnych z dyskami o rozmiarze do 30 TB. Aby zarejestrować się w wersji zapoznawczej:
+ 
+Wykonaj następujące polecenia cmdlet z poziomu terminalu programu PowerShell z podwyższonym poziomem uprawnień:
+
+1. Zaloguj się do swojego konta platformy Azure.
+
+    ```powershell
+    PS C:> Login-AzureRmAccount
+    ```
+
+2. Wybierz subskrypcję, która ma zostać zarejestrowana w celu uaktualnienia:
+
+    ```powershell
+    PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
+    ```
+3. Zarejestruj tę subskrypcję w programie w wersji zapoznawczej: 
+
+    ```powershell
+    PS C:> Register-AzureRmProviderFeature -FeatureName "LargeDiskVMBackupPreview" –ProviderNamespace Microsoft.RecoveryServices
+    ```
+
+    Poczekaj 30 minut, aż subskrypcja zostanie zarejestrowana w wersji zapoznawczej. 
+
+ 4. Aby sprawdzić stan, uruchom następujące polecenia cmdlet:
+
+    ```powershell
+    PS C:> Get-AzureRmProviderFeature -FeatureName "LargeDiskVMBackupPreview" –ProviderNamespace Microsoft.RecoveryServices 
+    ```
+5. Gdy subskrypcja jest wyświetlana jako zarejestrowana, uruchom następujące polecenie:
+    
+    ```powershell
+    PS C:> Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
+    ```
+
+> [!NOTE]
+> Zaszyfrowane maszyny wirtualne z dyskami większymi niż 4 TB nie są obsługiwane w tej wersji zapoznawczej.
+
+
+
+## <a name="next-steps"></a>Następne kroki
 
 Teraz [Przygotuj się do utworzenia kopii zapasowej maszyny wirtualnej platformy Azure](backup-azure-arm-vms-prepare.md).

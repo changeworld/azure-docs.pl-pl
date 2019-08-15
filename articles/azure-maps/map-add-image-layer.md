@@ -1,6 +1,6 @@
 ---
 title: Dodawanie warstwy obrazu do Azure Maps | Microsoft Docs
-description: Jak dodać warstwę obrazu do mapy JavaScript
+description: Jak dodać warstwę obrazu do Azure Maps Web SDK.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 7ea0f37e307196af4b27fd3f8fb1aa0d42443dfa
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 6c43ccaee473eca701d15a5a83f84814d65c6b7c
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638736"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976159"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>Dodawanie warstwy obrazu do mapy
 
@@ -31,28 +31,38 @@ W tym artykule pokazano, jak można nałożyć obraz na stały zestaw współrz�
 
 ## <a name="add-an-image-layer"></a>Dodawanie warstwy obrazów
 
-Ten przykład pokazuje, jak nałożyć obraz [mapy Newark nowej Jersey z 1922](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) na mapie.
+Poniższy kod nakłada obraz [mapy Newark nowej Jersey z 1922](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) na mapie. [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) jest tworzony przez przekazanie adresu URL do obrazu i współrzędne dla czterech rogów w formacie `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]`.
+
+```javascript
+//Create an image layer and add it to the map.
+map.layers.add(new atlas.layer.ImageLayer({
+    url: 'newark_nj_1922.jpg',
+    coordinates: [
+        [-74.22655, 40.773941], //Top Left Corner
+        [-74.12544, 40.773941], //Top Right Corner
+        [-74.12544, 40.712216], //Bottom Right Corner
+        [-74.22655, 40.712216]  //Bottom Left Corner
+    ]
+}));
+```
+
+Poniżej znajduje się kompletny przykładowy kod wykonywany z powyższymi funkcjami.
 
 <br/>
 
 <iframe height='500' scrolling='no' title='Prosta warstwa obrazu' src='//codepen.io/azuremaps/embed/eQodRo/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zapoznaj się z <a href='https://codepen.io/azuremaps/pen/eQodRo/'>prostą warstwą obrazu</a> piórem Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-W powyższym kodzie pierwszy blok kodu konstruuje obiekt mapy. Aby uzyskać instrukcje, zobacz [Tworzenie mapy](./map-create.md) .
-
-W drugim bloku kodu [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) jest tworzony przez przekazanie adresu URL do obrazu i współrzędne dla czterech rogów w formacie `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]`.
-
 ## <a name="import-a-kml-ground-overlay"></a>Importowanie nakładki uziemienia KML
 
-Ten przykład pokazuje, jak nałożyć KMLe informacje o nakładki naziemnej jako warstwę obrazu na mapie. Nakładki naziemne KML zapewniają współrzędne północne, Południowe, wschodnie i zachodnie oraz obrót z ruchem wskazówek zegara, gdzie warstwa obrazu oczekuje współrzędnych dla każdego rogu obrazu. KML nakładki naziemnej w tym przykładzie jest Chartres Cathedral i pochodzący z [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml).
+Ten przykład pokazuje, jak nałożyć KMLe informacje o nakładki naziemnej jako warstwę obrazu na mapie. Nakładki naziemne KML zapewniają współrzędne północne, Południowe, wschodnie i zachodnie oraz obrót z ruchem przeciwnym, natomiast warstwa obrazu oczekuje współrzędnych dla każdego rogu obrazu. KML nakładki naziemnej w tym przykładzie jest Chartres Cathedral i pochodzący z [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml).
+
+Poniższy kod używa funkcji statycznej `getCoordinatesFromEdges` klasy [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) , aby obliczyć cztery rogi obrazu na podstawie informacji o północy, południe, wschód, zachód i rotacji z nakładki naziemnej KML.
 
 <br/>
 
 <iframe height='500' scrolling='no' title='KML nakładki jako warstwa obrazu' src='//codepen.io/azuremaps/embed/EOJgpj/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zapoznaj się z KML piórem, <a href='https://codepen.io/azuremaps/pen/EOJgpj/'>jak warstwa obrazu</a> według<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
-
-Powyższy kod używa funkcji statycznej `getCoordinatesFromEdges` klasy [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) , aby obliczyć cztery rogi obrazu na podstawie informacji o północy, południe, wschód, zachód i rotacji z nakładki naziemnej KML.
-
 
 ## <a name="customize-an-image-layer"></a>Dostosowywanie warstwy obrazu
 
@@ -63,7 +73,7 @@ Warstwa obrazu ma wiele opcji stylów. Oto narzędzie do wypróbowania.
 <iframe height='700' scrolling='no' title='Opcje warstwy obrazu' src='//codepen.io/azuremaps/embed/RqOGzx/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz <a href='https://codepen.io/azuremaps/pen/RqOGzx/'>Opcje warstwy obrazu</a> pióra według Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej na temat klas i metod używanych w tym artykule:
 

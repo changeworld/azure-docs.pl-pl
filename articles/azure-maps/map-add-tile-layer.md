@@ -1,6 +1,6 @@
 ---
 title: Dodawanie warstwy kafelków do Azure Maps | Microsoft Docs
-description: Jak dodać warstwę kafelków do mapy JavaScript
+description: Jak dodać warstwę kafelków do Azure Maps Web SDK.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: d872cd78b3fd04512fcaee706e54bffa1cf9fcc1
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 3f047ec1aced55038384cbe29bd3a4b8a948dce9
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882081"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976455"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>Dodawanie warstwy kafelków do mapy
 
@@ -40,16 +40,24 @@ Adres URL kafelka przesłany do warstwy kafelków musi być adresem URL protoko�
 
 ## <a name="add-a-tile-layer"></a>Dodawanie warstwy kafelków
 
- Ten przykład pokazuje, jak utworzyć warstwę kafelków, która wskazuje zestaw kafelków korzystających z systemu dzielenia x, y. Źródłem tej warstwy kafelków jest nałożenie radaru pogody z [Iowa środowiska Mesonet Iowa University](https://mesonet.agron.iastate.edu/ogc/). 
+ Ten przykład pokazuje, jak utworzyć warstwę kafelków, która wskazuje zestaw kafelków korzystających z systemu dzielenia x, y. Źródłem tej warstwy kafelków jest nałożenie radaru pogody z [Iowa środowiska Mesonet Iowa University](https://mesonet.agron.iastate.edu/ogc/). Podczas przeglądania danych radaru najlepiej, aby użytkownicy mogli jasno widzieć etykiety miast podczas nawigowania po mapie. można to zrobić, wstawiając warstwę kafelka poniżej `labels` warstwy.
+
+```javascript
+//Create a tile layer and add it to the map below the label layer.
+//Weather radar tiles from Iowa Environmental Mesonet of Iowa State University.
+map.layers.add(new atlas.layer.TileLayer({
+    tileUrl: 'https://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-n0q-900913/{z}/{x}/{y}.png',
+    opacity: 0.8,
+    tileSize: 256
+}), 'labels');
+```
+
+Poniżej znajduje się kompletny przykładowy kod wykonywany z powyższymi funkcjami.
 
 <br/>
 
 <iframe height='500' scrolling='no' title='Warstwa kafelków używająca X, Y i Z' src='//codepen.io/azuremaps/embed/BGEQjG/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz warstwę kafelków pióra <a href='https://codepen.io/azuremaps/pen/BGEQjG/'>przy użyciu X, Y i z z</a> Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
-
-W powyższym kodzie pierwszy blok kodu konstruuje obiekt mapy. Aby uzyskać instrukcje, zobacz [Tworzenie mapy](./map-create.md) .
-
-W drugim bloku kodu [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) jest tworzony przez przekazanie SFORMATOWANEGO adresu URL do usługi kafelków, rozmiaru kafelka i nieprzezroczystości, aby uczynić go częściowo przezroczystym. Ponadto przy dodawaniu warstwy kafelków do mapy zostanie ona dodana poniżej `labels` warstwy, aby etykiety były nadal widoczne.
 
 ## <a name="customize-a-tile-layer"></a>Dostosowywanie warstwy kafelków
 

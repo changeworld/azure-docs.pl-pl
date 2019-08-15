@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: f0f00745f2f7781bda0e636167b1cf1a4045f7cd
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 481e6c5f2271651627577af3d03f9dd4da725146
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881370"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68949926"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Pracuj z Azure Functions Core Tools
 
@@ -93,7 +93,7 @@ Poniższe kroki używają oprogramowania homebrew, aby zainstalować podstawowe 
 
 Poniższe kroki używają [apt](https://wiki.debian.org/Apt) do instalowania podstawowych narzędzi w dystrybucji systemu Ubuntu/Debian Linux. Aby poznać inne dystrybucje systemu Linux, zobacz [plik Readme podstawowych narzędzi](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux).
 
-1. Zarejestruj klucz produktu firmy Microsoft jako zaufany:
+1. Zainstaluj klucz GPG repozytorium pakietów Microsoft, aby zweryfikować integralność pakietu:
 
     ```bash
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
@@ -135,15 +135,19 @@ func init MyFunctionProj
 ```
 
 Po podaniu nazwy projektu zostanie utworzony i zainicjowany nowy folder o tej nazwie. W przeciwnym razie bieżący folder zostanie zainicjowany.  
-W wersji 2. x po uruchomieniu polecenia należy wybrać środowisko uruchomieniowe dla projektu. Jeśli planujesz programowanie funkcji JavaScript, wybierz **węzeł**:
+W wersji 2. x po uruchomieniu polecenia należy wybrać środowisko uruchomieniowe dla projektu. 
 
 ```output
 Select a worker runtime:
 dotnet
 node
+python (preview)
+powershell (preview)
 ```
 
-Użyj klawiszy strzałek w górę/w dół, aby wybrać język, a następnie naciśnij klawisz ENTER. Dane wyjściowe wyglądają podobnie do następującego przykładu dla projektu JavaScript:
+Użyj klawiszy strzałek w górę/w dół, aby wybrać język, a następnie naciśnij klawisz ENTER. Jeśli planujesz programowanie funkcji JavaScript lub TypeScript, wybierz **węzeł**, a następnie wybierz język. Język TypeScript ma [pewne dodatkowe wymagania](functions-reference-node.md#typescript). 
+
+Dane wyjściowe wyglądają podobnie do następującego przykładu dla projektu JavaScript:
 
 ```output
 Select a worker runtime: node
@@ -269,15 +273,40 @@ func new --template "Queue Trigger" --name QueueTriggerJS
 
 ## <a name="start"></a>Uruchamianie funkcji lokalnie
 
-Aby uruchomić projekt funkcji, uruchom hosta funkcji. Host włącza wyzwalacze dla wszystkich funkcji w projekcie:
+Aby uruchomić projekt funkcji, uruchom hosta funkcji. Host włącza wyzwalacze dla wszystkich funkcji w projekcie. 
 
-```bash
+### <a name="version-2x"></a>Wersja 2. x
+
+W wersji 2. x środowiska uruchomieniowego polecenie uruchamiania różni się w zależności od języka projektu.
+
+#### <a name="c"></a>C\#
+
+```command
+func start --build
+```
+
+#### <a name="javascript"></a>JavaScript
+
+```command
+func start
+```
+
+#### <a name="typescript"></a>TypeScript
+
+```command
+npm install
+npm start     
+```
+
+### <a name="version-1x"></a>Wersja 1. x
+
+Wersja 1. x środowiska uruchomieniowego funkcji wymaga `host` polecenia, jak w poniższym przykładzie:
+
+```command
 func host start
 ```
 
-`host` Polecenie jest wymagane tylko w wersji 1. x.
-
-`func host start`Program obsługuje następujące opcje:
+`func start`Program obsługuje następujące opcje:
 
 | Opcja     | Opis                            |
 | ------------ | -------------------------------------- |
@@ -293,8 +322,6 @@ func host start
 | **`--script-root --prefix`** | Służy do określania ścieżki do katalogu głównego aplikacji funkcji, która ma być uruchamiana lub wdrażana. Służy do kompilowania projektów, które generują pliki projektu w podfolderze. Na przykład podczas kompilowania projektu biblioteki C# klas plik host. JSON, Local. Settings. JSON i Function. JSON jest generowany w podfolderze *głównym* o ścieżce podobnej `MyProject/bin/Debug/netstandard2.0`do. W takim przypadku należy ustawić prefiks jako `--script-root MyProject/bin/Debug/netstandard2.0`. Jest to katalog główny aplikacji funkcji w przypadku uruchamiania na platformie Azure. |
 | **`--timeout -t`** | Limit czasu uruchamiania hosta usługi Functions (w sekundach). Domyślne: 20 sekund.|
 | **`--useHttps`** | Powiąż `https://localhost:{port}` z, a `http://localhost:{port}`nie z. Domyślnie ta opcja tworzy zaufany certyfikat na komputerze.|
-
-Dla projektu C# biblioteki klas (. csproj) należy uwzględnić `--build` opcję wygenerowania biblioteki Library. dll.
 
 Po uruchomieniu hosta funkcji wyświetla adres URL funkcji wyzwalanych przez protokół HTTP:
 

@@ -2,30 +2,30 @@
 author: cephalin
 ms.service: app-service
 ms.topic: include
-ms.date: 11/03/2016
+ms.date: 08/12/2019
 ms.author: cephalin
-ms.openlocfilehash: 7aa0d232cf53eef9bd28c36b66e8fdae22a28db9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 4f3236c0a167a2b6f7586c6cb5fea8e30f55a86c
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183033"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954076"
 ---
-## <a name="rest"></a>Wdróż plik ZIP z interfejsami API REST 
+## <a name="rest"></a>Wdróż plik ZIP przy użyciu interfejsów API REST 
 
-Możesz użyć [usługa wdrażania interfejsów API REST](https://github.com/projectkudu/kudu/wiki/REST-API) można wdrożyć pliku zip do aplikacji na platformie Azure. Aby wdrożyć, wysłanie żądania POST do https://<app_name>.scm.azurewebsites.net/api/zipdeploy. Żądanie POST musi zawierać plik zip w treści komunikatu. Poświadczenia wdrażania dla aplikacji są podawane w żądaniu za pomocą podstawowego uwierzytelniania HTTP. Aby uzyskać więcej informacji, zobacz [odwołanie do wdrożenia wypychania zip](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file). 
+Za pomocą [interfejsów API REST usługi wdrażania](https://github.com/projectkudu/kudu/wiki/REST-API) można wdrożyć plik zip w aplikacji na platformie Azure. W celu wdrożenia Wyślij żądanie POST do protokołu https://< APP_NAME >. SCM. azurewebsites. NET/API/zipdeploy. Żądanie POST musi zawierać plik. zip w treści wiadomości. Poświadczenia wdrażania dla aplikacji są podawane w żądaniu za pomocą podstawowego uwierzytelniania HTTP. Aby uzyskać więcej informacji, zobacz [. zip](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)— informacje o wdrożeniu. 
 
-W przypadku uwierzytelniania HTTP BASIC potrzebne są Twoje poświadczenia wdrożenia usługi App Service. Aby zobaczyć, jak ustawić poświadczenia wdrażania, zobacz [zestawu i zresetować poświadczenia na poziomie użytkownika](../articles/app-service/deploy-configure-credentials.md#userscope).
+W przypadku uwierzytelniania podstawowego HTTP wymagane są poświadczenia wdrażania App Service. Aby dowiedzieć się, jak ustawić poświadczenia wdrożenia, zobacz [Ustawianie i resetowanie poświadczeń na poziomie użytkownika](../articles/app-service/deploy-configure-credentials.md#userscope).
 
-### <a name="with-curl"></a>Za pomocą programu cURL
+### <a name="with-curl"></a>Z zwinięciem
 
-W poniższym przykładzie użyto narzędzia cURL, aby wdrożyć plik zip. Zastąp symbole zastępcze `<username>`, `<password>`, `<zip_file_path>`, i `<app_name>`. Po wyświetleniu monitu przez program cURL wpisz hasło.
+W poniższym przykładzie za pomocą narzędzia zwinięcie można wdrożyć plik. zip. Zastąp symbole `<username>`zastępcze `<password>`, `<zip_file_path>`, i `<app_name>`. Po wyświetleniu monitu przez zwinięcie wpisz hasło.
 
 ```bash
 curl -X POST -u <deployment_user> --data-binary @"<zip_file_path>" https://<app_name>.scm.azurewebsites.net/api/zipdeploy
 ```
 
-To żądanie wyzwala wdrażanie powiadomień push z przesłanego pliku zip. Możesz przejrzeć bieżącej i wcześniejszych wdrożeń przy użyciu `https://<app_name>.scm.azurewebsites.net/api/deployments` punktu końcowego, jak pokazano w poniższym przykładzie narzędzie cURL. Ponownie `<app_name>` nazwą swojej aplikacji i `<deployment_user>` przy użyciu nazwy użytkownika poświadczeń wdrażania.
+To żądanie wyzwala wdrożenie wypychane z przekazanego pliku zip. Bieżące i wcześniejsze wdrożenia można przejrzeć przy użyciu `https://<app_name>.scm.azurewebsites.net/api/deployments` punktu końcowego, jak pokazano w poniższym przykładzie. Ponownie Zastąp `<app_name>` ciąg nazwą swojej aplikacji i `<deployment_user>` nazwę użytkownika poświadczeń wdrożenia.
 
 ```bash
 curl -u <deployment_user> https://<app_name>.scm.azurewebsites.net/api/deployments
@@ -33,22 +33,21 @@ curl -u <deployment_user> https://<app_name>.scm.azurewebsites.net/api/deploymen
 
 ### <a name="with-powershell"></a>Z programem PowerShell
 
-W poniższym przykładzie użyto [Invoke RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) można wysłać żądania, który zawiera plik zip. Zastąp symbole zastępcze `<deployment_user>`, `<deployment_password>`, `<zip_file_path>`, i `<app_name>`.
+Poniższy przykład używa [publikowania-AzWebapp](/powershell/module/az.websites/publish-azwebapp) Przekaż plik. zip. Zastąp symbole `<group-name>`zastępcze `<app-name>`, i `<zip-file-path>`.
 
 ```powershell
-#PowerShell
-$username = "<deployment_user>"
-$password = "<deployment_password>"
-$filePath = "<zip_file_path>"
-$apiUrl = "https://<app_name>.scm.azurewebsites.net/api/zipdeploy"
-$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username, $password)))
-$userAgent = "powershell/1.0"
-Invoke-RestMethod -Uri $apiUrl -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -UserAgent $userAgent -Method POST -InFile $filePath -ContentType "multipart/form-data"
+Publish-AzWebapp -ResourceGroupName <group-name> -Name <app-name> -ArchivePath <zip-file-path>
 ```
 
-To żądanie wyzwala wdrażanie powiadomień push z przesłanego pliku zip. Aby zapoznać się z bieżącej i wcześniejszych wdrożeń, uruchom następujące polecenia. Ponownie `<app_name>` symbol zastępczy.
+To żądanie wyzwala wdrożenie wypychane z przekazanego pliku zip. 
+
+Aby przejrzeć bieżące i wcześniejsze wdrożenia, uruchom następujące polecenia. Ponownie Zastąp `<deployment-user>`symbole zastępcze, `<app-name>` `<deployment-password>`i.
 
 ```bash
-$apiUrl = "https://<app_name>.scm.azurewebsites.net/api/deployments"
+$username = "<deployment-user>"
+$password = "<deployment-password>"
+$apiUrl = "https://<app-name>.scm.azurewebsites.net/api/deployments"
+$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username, $password)))
+$userAgent = "powershell/1.0"
 Invoke-RestMethod -Uri $apiUrl -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -UserAgent $userAgent -Method GET
 ```

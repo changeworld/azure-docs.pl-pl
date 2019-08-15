@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: fef509d705d0b904586a86b7dc58decc54e7023d
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 4ea983255463080592181cda321ef6b6d1ff147f
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716639"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932356"
 ---
 # <a name="azure-app-service-plan-overview"></a>Przegląd planu Azure App Service
 
@@ -32,14 +32,13 @@ Po utworzeniu planu App Service w określonym regionie (na przykład Europa Zach
 - Region (Zachodnie stany USA, Wschodnie stany USA itd.)
 - Liczba wystąpień maszyn wirtualnych
 - Rozmiar wystąpień maszyn wirtualnych (mały, średni, duży)
-- Warstwa cenowa (bezpłatna, współdzielona, podstawowa, standardowa, Premium, PremiumV2, izolowane, zużycie)
+- Warstwa cenowa (bezpłatna, współdzielona, podstawowa, standardowa, Premium, PremiumV2, izolowana)
 
 _Warstwa cenowa_ planu App Service określa, jakie funkcje App Service uzyskasz i ile płacisz za plan. Istnieje kilka kategorii warstw cenowych:
 
 - **Udostępnione obliczenia**: **Bezpłatna** i **współdzielona**— dwie warstwy podstawowe, uruchamiają aplikację na tej samej maszynie wirtualnej platformy Azure, co inne App Service aplikacje, w tym aplikacje innych klientów. Te warstwy przydzielą limity przydziału procesora CPU do poszczególnych aplikacji, które są uruchamiane w udostępnionych zasobach, a zasoby nie mogą skalować w poziomie.
 - **Dedykowane obliczenia**: Warstwy **Basic**, **Standard**, **Premium**i **PremiumV2** uruchamiają aplikacje na dedykowanych maszynach wirtualnych platformy Azure. Tylko aplikacje w tym samym planie App Service współużytkują te same zasoby obliczeniowe. Im wyższa warstwa, tym więcej wystąpień maszyn wirtualnych jest dostępnych do skalowania w poziomie.
-- **Izolowany**: Ta warstwa służy do uruchamiania dedykowanych maszyn wirtualnych platformy Azure w dedykowanych sieciach wirtualnych platformy Azure, które zapewniają izolację sieci na poziomie izolacji obliczeniowej dla aplikacji. Zapewnia maksymalne możliwości skalowania w poziomie.
-- **Użycie**: Ta warstwa jest dostępna tylko dla [aplikacji funkcji](../azure-functions/functions-overview.md). Funkcje są skalowane dynamicznie w zależności od obciążenia. Aby uzyskać więcej informacji, zobacz [Azure Functions porównanie planów hostingu](../azure-functions/functions-scale.md).
+- **Izolowany**: Ta warstwa służy do uruchamiania dedykowanych maszyn wirtualnych platformy Azure w dedykowanych sieciach wirtualnych platformy Azure. Zapewnia izolację sieci na poziomie izolacji obliczeniowej dla aplikacji. Zapewnia maksymalne możliwości skalowania w poziomie.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -80,8 +79,7 @@ Z wyjątkiem warstwy **bezpłatna** plan App Service jest naliczany godzinowo za
 
 - W warstwie **udostępnionej** każda aplikacja otrzymuje limit czasu procesora (w minutach), więc _każda aplikacja_ jest rozliczana co godzinę dla limitu przydziału procesora CPU.
 - W przypadku dedykowanych warstw obliczeniowych (**podstawowa**, **standardowa**, **Premium**, **PremiumV2**) plan App Service definiuje liczbę wystąpień maszyn wirtualnych, do których są skalowane aplikacje, a więc _każde wystąpienie maszyny wirtualnej_ w planie App Service ma opłaty godzinowe. Te wystąpienia maszyn wirtualnych są obciążane tymi samymi, niezależnie od liczby uruchomionych na nich aplikacji. Aby uniknąć nieoczekiwanych opłat, zobacz [oczyszczanie planu App Service](app-service-plan-manage.md#delete).
-- W warstwie **izolowanej** App Service Environment definiuje liczbę izolowanych pracowników, którzy uruchamiają aplikacje, a _każdy proces roboczy_ jest naliczany co godzinę. Ponadto istnieje co godzinę Podstawowa opłata za uruchomienie App Service Environment samego siebie. 
-- (Tylko Azure Functions) Warstwa **zużycia** dynamicznie przydziela wystąpienia maszyn wirtualnych do obsługi obciążenia aplikacji funkcji i jest rozliczana dynamicznie na sekundę przez platformę Azure. Aby uzyskać więcej informacji, zobacz [cennika usługi Azure Functions](https://azure.microsoft.com/pricing/details/functions/).
+- W warstwie **izolowanej** App Service Environment definiuje liczbę izolowanych pracowników, którzy uruchamiają aplikacje, a _każdy proces roboczy_ jest naliczany co godzinę. Ponadto istnieje co godzinę Podstawowa opłata za uruchomienie App Service Environment samego siebie.
 
 Za korzystanie z funkcji App Service, które są dostępne dla użytkownika (Konfigurowanie domen niestandardowych, certyfikatów SSL, miejsc wdrożenia, kopii zapasowych itp.), nie jest naliczana opłata. Wyjątki są następujące:
 

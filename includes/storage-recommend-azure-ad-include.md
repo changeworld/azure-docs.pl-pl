@@ -8,14 +8,16 @@ ms.topic: include
 ms.date: 06/20/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 44d4078fa5f48531a660f6d2ed981407fb1f230f
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 825a9f5668cc80f1306d74623db2ea54614ba4a3
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67302314"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985375"
 ---
 > [!TIP]
-> Usługa Azure Storage obsługuje Autoryzowanie dostępu do zasobów magazynu obiektów Blob i kolejek, za pomocą usługi Azure Active Directory (Azure AD). Autoryzowanie użytkowników lub aplikacji przy użyciu tokenu OAuth 2.0, zwracane przez usługę Azure AD udostępnia doskonałe zabezpieczenia i łatwość użycia w porównaniu z udostępnionego klucza autoryzacji i udostępnione access signatures (SAS). Z usługą Azure AD nie ma potrzeby przechowywać klucz dostępu do konta za pomocą Twojego kodu i ryzyko potencjalnych luk w zabezpieczeniach.
+> Usługa Azure Storage obsługuje autoryzowanie żądań do magazynu obiektów blob i Queue przy użyciu Azure Active Directory (Azure AD). Autoryzowanie użytkowników lub aplikacji przy użyciu tokenu OAuth 2,0 zwróconego przez usługę Azure AD zapewnia doskonałe zabezpieczenia i łatwość użycia w porównaniu z autoryzacją klucza współużytkowanego. W przypadku usługi Azure AD nie ma potrzeby przechowywania klucza dostępu do konta z kodem i ryzyka potencjalnej luki w zabezpieczeniach.
 >
-> Firma Microsoft zaleca używanie programu Azure AD za pomocą aplikacji usługi Azure Storage, jeśli jest to możliwe. Aby uzyskać więcej informacji, zobacz [Autoryzuj dostęp do platformy Azure, obiekty BLOB i kolejki przy użyciu usługi Azure Active Directory](../articles/storage/common/storage-auth-aad.md).
+> Ponadto usługa Azure Storage obsługuje sygnaturę dostępu współdzielonego (SAS) delegowania użytkowników dla usługi BLOB Storage. Sygnatura dostępu współdzielonego użytkownika jest podpisywana przy użyciu poświadczeń usługi Azure AD. Gdy projekt aplikacji wymaga sygnatur dostępu współdzielonego w celu uzyskania dostępu do usługi BLOB Storage, Użyj poświadczeń usługi Azure AD, aby utworzyć SYGNATURę czasową delegowania użytkowników dla zabezpieczeń nadrzędnych.
+>
+> Jeśli to możliwe, firma Microsoft zaleca korzystanie z usługi Azure AD z aplikacjami usługi Azure Storage. Aby uzyskać więcej informacji, zobacz [Autoryzuj dostęp do obiektów blob i kolejek platformy Azure przy użyciu Azure Active Directory](../articles/storage/common/storage-auth-aad.md).

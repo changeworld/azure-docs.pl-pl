@@ -1,6 +1,6 @@
 ---
-title: Połączenia hybrydowe — usłudze Azure App Service | Dokumentacja firmy Microsoft
-description: Jak utworzyć i dostęp do zasobów w różnych sieciach za pomocą połączeń hybrydowych
+title: Połączenia hybrydowe — Azure App Service | Microsoft Docs
+description: Jak utworzyć i używać Połączenia hybrydowe do uzyskiwania dostępu do zasobów w różnych sieciach
 services: app-service
 documentationcenter: ''
 author: ccompy
@@ -16,171 +16,171 @@ ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 4b125649dee51680625ac5a92b31bdc9f6830529
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67069661"
 ---
-# <a name="azure-app-service-hybrid-connections"></a>Połączenia hybrydowe usługi Azure App Service #
+# <a name="azure-app-service-hybrid-connections"></a>Azure App Service Połączenia hybrydowe #
 
-Połączenia hybrydowe to usługa platformy Azure i funkcji w usłudze Azure App Service. Jako usługa ma zastosowań i możliwości poza tymi, które są używane w usłudze App Service. Aby dowiedzieć się więcej na temat połączeń hybrydowych i ich użycia poza usługi App Service, zobacz [połączeń hybrydowych usługi Azure Relay][HCService].
+Połączenia hybrydowe to usługa na platformie Azure i funkcja w Azure App Service. Jako usługa, ma ona użycie i możliwości poza tymi, które są używane w App Service. Aby dowiedzieć się więcej na temat Połączenia hybrydowe i ich użycia poza App Service, zobacz [Azure Relay połączenia hybrydowe][HCService].
 
-W ramach usługi App Service połączeń hybrydowych może służyć do dostępu do zasobów aplikacji w innych sieciach. Zapewnia dostęp z aplikacji do punktu końcowego aplikacji. Nie uwzględnia alternatywne możliwość dostęp do Twoich aplikacji. W przypadku użycia w usłudze App Service, każde połączenie hybrydowe skorelowany jednej kombinacji hosta i portu TCP. Oznacza to, że punkt końcowy połączenia hybrydowego może być w dowolnym systemie operacyjnym i każdej aplikacji, możesz podać uzyskują dostęp do portu nasłuchiwania protokołu TCP. Funkcja połączeń hybrydowych nie wiedzieć, ani nie obchodzi, jest protokół aplikacji lub uzyskujesz dostęp. Jest on po prostu zapewnienie dostępu do sieci.  
+W App Service Połączenia hybrydowe może służyć do uzyskiwania dostępu do zasobów aplikacji w innych sieciach. Zapewnia dostęp z aplikacji do punktu końcowego aplikacji. Nie umożliwia alternatywnej możliwości uzyskiwania dostępu do aplikacji. Jak w App Service każde połączenie hybrydowe jest skorelowane z pojedynczym hostem TCP i kombinacją portów. Oznacza to, że punkt końcowy połączenia hybrydowego może znajdować się w dowolnym systemie operacyjnym i dowolnej aplikacji, pod warunkiem, że uzyskujesz dostęp do portu nasłuchiwania protokołu TCP. Funkcja Połączenia hybrydowe nie wie ani nie posługuje się z protokołem aplikacji lub dostępem do niego. Zapewnia to po prostu dostęp do sieci.  
 
 
 ## <a name="how-it-works"></a>Jak to działa ##
-Funkcja połączeń hybrydowych składa się z dwóch połączenia wychodzące do usługi Azure Service Bus Relay. Brak połączenia z biblioteki na hoście, w którym Twoja aplikacja działa w usłudze App Service. Jest również połączenie z Menedżera połączeń hybrydowych (HCM) usługi Service Bus Relay. HCM jest wdrożony w ramach sieci hostingu zasób, do którego próbujesz uzyskać dostęp do usługi przekazywania. 
+Funkcja Połączenia hybrydowe obejmuje dwa wywołania wychodzące do przekaźnika Azure Service Bus. Istnieje połączenie z biblioteki na hoście, na którym aplikacja działa w App Service. Istnieje również połączenie z Menedżer połączeń hybrydowych (HCM) do Service Bus Relay. HCM to usługa przekaźnikowa, która jest wdrażana w sieci obsługującej zasób, do którego próbujesz uzyskać dostęp. 
 
-Za pomocą dwóch połączeń połączone Twoja aplikacja ma tunel protokołu TCP do kombinację stały port hosta: po drugiej stronie HCM. Połączenie używa protokołu TLS 1.2, zabezpieczeń i udostępnione podpisu (SAS) klucze dostępu do uwierzytelniania i autoryzacji.    
+Za pośrednictwem dwóch dołączonych połączeń aplikacja ma tunel TCP do stałego hosta: kombinacja portów po drugiej stronie HCM. W ramach uwierzytelniania i autoryzacji połączenie używa protokołu TLS 1,2 dla zabezpieczeń i kluczy sygnatury dostępu współdzielonego (SAS).    
 
-![Diagram przedstawiający ogólny przepływ połączenia hybrydowego][1]
+![Diagram przepływu wysokiego poziomu połączenia hybrydowego][1]
 
-Gdy aplikacja wykonuje żądanie DNS, które odpowiada skonfigurowanego punktu końcowego połączenia hybrydowego, nastąpi przekierowanie wychodzący ruch TCP za pośrednictwem połączenia hybrydowego.  
+Gdy aplikacja wysyła żądanie DNS pasujące do skonfigurowanego punktu końcowego połączenia hybrydowego, ruch wychodzący TCP zostanie przekierowany przez połączenie hybrydowe.  
 
 > [!NOTE]
-> Oznacza to, że należy zawsze używaj nazwy DNS dla połączenia hybrydowego. Niektóre oprogramowanie klienckie nie wyszukiwania DNS, jeśli zamiast tego używa punktu końcowego adresu IP.
+> Oznacza to, że należy próbować zawsze używać nazwy DNS dla połączenia hybrydowego. Niektóre oprogramowanie klienckie nie wykonuje wyszukiwania DNS, jeśli punkt końcowy używa adresu IP.
 >
 
-### <a name="app-service-hybrid-connection-benefits"></a>Korzyści połączenia hybrydowe usługi aplikacji ###
+### <a name="app-service-hybrid-connection-benefits"></a>App Service korzyści z połączeń hybrydowych ###
 
-Istnieje szereg korzyści klientom możliwości połączeń hybrydowych, w tym:
+Istnieje szereg korzyści dla Połączenia hybrydowe możliwości, w tym:
 
-- Aplikacje mogą uzyskiwać dostęp w systemach lokalnych i usług bezpieczne.
-- Ta funkcja nie wymaga punktu końcowego dostępne za pośrednictwem Internetu.
-- Jest szybkie i łatwe do skonfigurowania. 
-- Każde połączenie hybrydowe pasuje do jednego hosta: port kombinacji, przydatne w przypadku zabezpieczeń.
-- Zwykle nie jest wymagane otworów zapory. Połączenia są wszystkie wychodzące przez porty standardowe sieci web.
-- Ponieważ ta funkcja jest poziomie sieci, jest niezależny od języka używanego przez aplikację i technologię używaną przez punkt końcowy.
-- Może służyć do zapewnienia dostępu w wielu sieciach z pojedynczą aplikacją. 
+- Aplikacje mogą bezpiecznie uzyskać dostęp do lokalnych systemów i usług.
+- Ta funkcja nie wymaga punktu końcowego dostępnego z Internetu.
+- Konfiguracja jest szybka i łatwa. 
+- Każde połączenie hybrydowe jest zgodne z pojedynczym hostem: kombinacją portów, przydatną dla zabezpieczeń.
+- Zwykle nie wymaga to otworów zapory. Połączenia są wychodzące przez standardowe porty sieci Web.
+- Ponieważ ta funkcja jest poziomem sieci, jest niezależny od do języka używanego przez aplikację i technologii używanej przez punkt końcowy.
+- Może służyć do zapewnienia dostępu w wielu sieciach z pojedynczej aplikacji. 
 
-### <a name="things-you-cannot-do-with-hybrid-connections"></a>Czynności, które nie można wykonać za pomocą połączeń hybrydowych ###
+### <a name="things-you-cannot-do-with-hybrid-connections"></a>Elementy, których nie można wykonać za pomocą Połączenia hybrydowe ###
 
-Obejmuje to między innymi, nie będzie możliwe za pomocą połączeń hybrydowych:
+Elementy, które nie są dostępne w Połączenia hybrydowe obejmują:
 
 - Zainstaluj dysk.
 - Użyj protokołu UDP.
-- Dostępu oparte na protokole TCP usługi, które używają portów dynamicznych, takie jak FTP w trybie pasywnym lub pasywnym trybie rozszerzonym.
-- Obsługuje LDAP, ponieważ wymaga on UDP.
-- Obsługuje usługi Active Directory, ponieważ nie można było przyłączenie do domeny usługi App Service procesu roboczego.
+- Uzyskaj dostęp do usług opartych na protokole TCP, które używają portów dynamicznych, takich jak tryb pasywny FTP lub rozszerzony tryb pasywny.
+- Obsługa protokołu LDAP, ponieważ może to wymagać protokołu UDP.
+- Active Directory obsługi, ponieważ nie można przyłączyć się do domeny App Service Worker.
 
-## <a name="add-and-create-hybrid-connections-in-your-app"></a>Dodawanie i tworzenie połączeń hybrydowych w swojej aplikacji ##
+## <a name="add-and-create-hybrid-connections-in-your-app"></a>Dodawanie i tworzenie Połączenia hybrydowe w aplikacji ##
 
-Aby utworzyć połączenie hybrydowe, przejdź do [witryny Azure portal] [ portal] i wybierz swoją aplikację. Wybierz **sieć** > **konfigurowania punktów końcowych połączenia hybrydowego**. Tutaj widać połączeń hybrydowych, które są skonfigurowane dla twojej aplikacji.  
+Aby utworzyć połączenie hybrydowe, przejdź do [Azure Portal][portal] i wybierz aplikację. Wybierz pozycję **Sieć** > **Skonfiguruj punkty końcowe połączenia hybrydowego**. Tutaj możesz zobaczyć Połączenia hybrydowe, które są skonfigurowane dla Twojej aplikacji.  
 
-![Zrzut ekranu połączenia hybrydowego listy][2]
+![Zrzut ekranu listy połączeń hybrydowych][2]
 
-Aby dodać nowe połączenie hybrydowe, wybierz **[+] Dodaj połączenie hybrydowe**.  Zobaczysz listę połączeń hybrydowych, który został już utworzony. Aby dodać co najmniej jeden z nich do swojej aplikacji, wybierz te, a następnie wybierz **Dodaj wybrane połączenie hybrydowe**.  
+Aby dodać nowe połączenie hybrydowe, wybierz pozycję **[+] Dodaj połączenie hybrydowe**.  Zostanie wyświetlona lista Połączenia hybrydowe, które zostały już utworzone. Aby dodać jeden lub więcej z nich do aplikacji, wybierz odpowiednie opcje, a następnie wybierz pozycję **Dodaj wybrane połączenie hybrydowe**.  
 
-![Zrzut ekranu połączenia hybrydowego portalu][3]
+![Zrzut ekranu portalu połączenia hybrydowego][3]
 
-Aby utworzyć nowe połączenie hybrydowe, należy zaznaczyć **Utwórz nowe połączenie hybrydowe**. Określ: 
+Jeśli chcesz utworzyć nowe połączenie hybrydowe, wybierz pozycję **Utwórz nowe połączenie hybrydowe**. Określ: 
 
 - Nazwa połączenia hybrydowego.
 - Nazwa hosta punktu końcowego.
 - Port punktu końcowego.
-- Przestrzeń nazw usługi Service Bus, którego chcesz użyć.
+- Service Bus przestrzeń nazw, której chcesz użyć.
 
-![Zrzut ekranu opcji Utwórz nowy hybrydowe połączenie — okno dialogowe][4]
+![Zrzut ekranu przedstawiający okno dialogowe Tworzenie nowego połączenia hybrydowego][4]
 
-Każde połączenie hybrydowe jest powiązany z przestrzeni nazw usługi Service Bus, a każda przestrzeń nazw usługi Service Bus znajduje się w regionie platformy Azure. Należy podjąć próbę użycia przestrzeni nazw usługi Service Bus w tym samym regionie co aplikacja, w celu wyeliminowania opóźnień sieciowych wywołane.
+Każde połączenie hybrydowe jest powiązane z przestrzenią nazw Service Bus, a każda Service Bus przestrzeń nazw znajduje się w regionie świadczenia usługi Azure. Ważne jest, aby próbować użyć przestrzeni nazw Service Bus w tym samym regionie, w którym znajduje się aplikacja, aby uniknąć opóźnień w sieci.
 
-Jeśli chcesz usunąć połączenie hybrydowe z aplikacji, kliknij go prawym przyciskiem myszy, a następnie wybierz **rozłączenia**.  
+Jeśli chcesz usunąć połączenie hybrydowe z aplikacji, kliknij ją prawym przyciskiem myszy, a następniewybierz polecenie Rozłącz.  
 
-Podczas połączenia hybrydowego jest dodawany do Twojej aplikacji, można wyświetlić szczegółowe informacje na go, po prostu wybierając go. 
+Po dodaniu połączenia hybrydowego do aplikacji możesz wyświetlić szczegółowe informacje na jego temat, zaznaczając je. 
 
-![Zrzut ekranu z hybrydowego szczegóły połączenia][5]
+![Zrzut ekranu przedstawiający szczegóły połączeń hybrydowych][5]
 
-### <a name="create-a-hybrid-connection-in-the-azure-relay-portal"></a>Tworzenie połączenia hybrydowego w portalu usługi Azure Relay ###
+### <a name="create-a-hybrid-connection-in-the-azure-relay-portal"></a>Tworzenie połączenia hybrydowego w portalu Azure Relay ###
 
-Oprócz portalu doświadczenia z poziomu aplikacji można utworzyć połączenia hybrydowe z w portalu usługi Azure Relay. Połączenia hybrydowego, który będzie używany przez usługi App Service musi:
+Oprócz środowiska portalu z poziomu aplikacji można utworzyć Połączenia hybrydowe z poziomu portalu Azure Relay. Aby połączenie hybrydowe było używane przez App Service, musi:
 
-* Wymaga autoryzacji klienta.
-* Element metadanych, nazwę punktu końcowego, który zawiera kombinację portów: hosta jako wartość.
+* Wymagaj autoryzacji klienta.
+* Posiadanie elementu metadanych o nazwie Endpoint, który zawiera wartość parametru Host: port.
 
-## <a name="hybrid-connections-and-app-service-plans"></a>Połączenia hybrydowe i usługa App Service planów ##
+## <a name="hybrid-connections-and-app-service-plans"></a>Plany Połączenia hybrydowe i App Service ##
 
-Połączenia hybrydowe usługi App Service są dostępne tylko w podstawowa, standardowa, Premium i izolowany wycena jednostek SKU. Istnieją limity powiązane z cennikiem.  
+App Service Połączenia hybrydowe są dostępne tylko w jednostkach SKU w warstwach Podstawowa, standardowa, Premium i izolowanych. Istnieją ograniczenia związane z planem cenowym.  
 
-| Plan taryfowy | Liczba połączeń hybrydowych, które można używać w ramach planu |
+| Plan cenowy | Liczba Połączenia hybrydowe użytecznych w planie |
 |----|----|
 | Podstawowa | 5 |
 | Standardowa (Standard) | 25 |
 | Premium | 200 |
-| Izolowane | 200 |
+| Izolowana | 200 |
 
-Plan usługi App Service interfejs użytkownika pokazuje, jak wiele połączeń hybrydowych są używane i jakie aplikacje.  
+Interfejs użytkownika planu App Service pokazuje, ile Połączenia hybrydowe są używane, a także aplikacji.  
 
-![Właściwości planu zrzut ekranu usługi App Service][6]
+![Zrzut ekranu przedstawiający właściwości planu App Service][6]
 
-Wybierz połączenie hybrydowe, aby wyświetlić szczegóły. Widać wszystkie informacje, który był wyświetlany w widoku aplikacji. Widać również, jak wiele innych aplikacji, w tym samym planie korzystają z tego połączenia hybrydowego.
+Wybierz połączenie hybrydowe, aby wyświetlić szczegóły. Możesz zobaczyć wszystkie informacje, które zostały wyświetlone w widoku aplikacji. Możesz również sprawdzić, ile innych aplikacji w tym samym planie używa tego połączenia hybrydowego.
 
-Ma limitu liczby punktów końcowych połączenie hybrydowe, które mogą być używane w planie usługi App Service. Każde połączenie hybrydowe używane, jednak można w dowolnej liczbie aplikacji w tym planie. Na przykład pojedyncze połączenie hybrydowe, używanym w pięciu osobnych aplikacji w ramach planu usługi App Service jest liczona jako jeden połączenie hybrydowe.
+Istnieje limit liczby punktów końcowych połączenia hybrydowego, które mogą być używane w planie App Service. Można jednak używać poszczególnych połączeń hybrydowych w ramach dowolnej liczby aplikacji w tym planie. Na przykład pojedyncze połączenie hybrydowe używane w pięciu oddzielnych aplikacjach w planie App Service jest traktowane jako jedno połączenie hybrydowe.
 
 ### <a name="pricing"></a>Cennik ###
 
-Oprócz nie jest to wymaganie dotyczące jednostki SKU planu usługi App Service Brak dodatkowych kosztów za pomocą połączeń hybrydowych. Istnieje opłata za każdego odbiornika używany przez połączenie hybrydowe. Odbiornik jest Menedżera połączeń hybrydowych. Jeśli masz 5 połączeń hybrydowych, obsługiwane przez dwa Menedżerowie połączeń hybrydowych, wyniesie 10 odbiorników. Aby uzyskać więcej informacji, zobacz [cennika usługi Service Bus][sbpricing].
+Oprócz tego, że jest wymagane App Service planu SKU, istnieje dodatkowy koszt korzystania z Połączenia hybrydowe. Jest naliczana opłata za każdy odbiornik używany przez połączenie hybrydowe. Odbiornik jest Menedżer połączeń hybrydowych. Jeśli masz pięć Połączenia hybrydowe obsługiwanych przez dwóch menedżerów połączeń hybrydowych, które byłyby 10 odbiorników. Aby uzyskać więcej informacji, zobacz [Cennik usługi Service Bus][sbpricing].
 
 ## <a name="hybrid-connection-manager"></a>Menedżer połączeń hybrydowych ##
 
-Funkcja połączeń hybrydowych wymaga agenta przekazywania w sieci, który jest hostem punktu końcowego połączenia hybrydowego. Ten agent przekazywania nosi nazwę menedżera połączeń hybrydowych (HCM). Aby pobrać HCM, z poziomu aplikacji w [witryny Azure portal][portal], wybierz opcję **sieci** > **Konfigurowanie punktów końcowychpołączeniahybrydowego**.  
+Funkcja Połączenia hybrydowe wymaga agenta przekazywania w sieci, który hostuje punkt końcowy połączenia hybrydowego. Agent przekazywania ma nazwę Menedżer połączeń hybrydowych (HCM). Aby pobrać HCM, z aplikacji w [Azure Portal][portal]wybierz pozycję **Sieć** > **Skonfiguruj punkty końcowe połączenia hybrydowego**.  
 
-To narzędzie działa w systemie Windows Server 2012 i nowszych. HCM działa jako usługa i nawiązuje połączenie wychodzące do usługi Azure Relay na porcie 443.  
+To narzędzie działa w systemie Windows Server 2012 lub nowszym. HCM działa jako usługa i łączy ruch wychodzący do Azure Relay na porcie 443.  
 
-Po zainstalowaniu HCM, możesz uruchomić HybridConnectionManagerUi.exe korzystać z interfejsu użytkownika dla narzędzia. Ten plik znajduje się w katalogu instalacji Menedżera połączeń hybrydowych. W systemie Windows 10, możesz też po prostu wyszukać *interfejsu użytkownika Menedżera połączeń hybrydowych* w polu wyszukiwania.  
+Po zainstalowaniu HCM można uruchomić program HybridConnectionManagerUi. exe, aby użyć interfejsu użytkownika dla narzędzia. Ten plik znajduje się w katalogu instalacyjnym programu Menedżer połączeń hybrydowych. W systemie Windows 10 można również wyszukać *Menedżer połączeń hybrydowych interfejs użytkownika* w polu wyszukiwania.  
 
-![Zrzut ekranu Menedżera połączeń hybrydowych][7]
+![Zrzut ekranu przedstawiający Menedżer połączeń hybrydowych][7]
 
-Po uruchomieniu interfejsu użytkownika HCM, pierwszą rzeczą, jaką widzisz to tabelę, która zawiera listę wszystkich połączeń hybrydowych, które są skonfigurowane z tym wystąpieniem HCM. Jeśli chcesz wprowadzić zmiany, najpierw uwierzytelnić się za pomocą platformy Azure. 
+Po uruchomieniu interfejsu użytkownika HCM pierwszy element jest widoczny w tabeli, która zawiera listę wszystkich Połączenia hybrydowe, które są skonfigurowane za pomocą tego wystąpienia HCM. Jeśli chcesz wprowadzić zmiany, najpierw Uwierzytelnij się na platformie Azure. 
 
-Aby dodać co najmniej jednego połączenia hybrydowe do Twojej HCM:
+Aby dodać jeden lub więcej Połączenia hybrydowe do HCM:
 
-1. Rozpocznij HCM interfejsu użytkownika.
-2. Wybierz **skonfigurować inne połączenie hybrydowe**.
-![Zrzut ekranu przedstawiający Konfigurowanie nowego połączenia hybrydowe][8]
+1. Uruchom interfejs użytkownika HCM.
+2. Wybierz opcję **skonfiguruj inne połączenie hybrydowe**.
+![Zrzut ekranu przedstawiający konfigurowanie nowych Połączenia hybrydowe][8]
 
-1. Zaloguj się przy użyciu konta platformy Azure, można pobrać połączeń hybrydowych dostępne z subskrypcjami. HCM, nie mogą korzystać z Twojego konta platformy Azure, poza tym. 
-1. wybierz subskrypcję.
-1. Wybierz połączeń hybrydowych, które HCM przekazanie.
-![Zrzut ekranu przedstawiający połączeń hybrydowych][9]
+1. Zaloguj się przy użyciu konta platformy Azure, aby uzyskać Połączenia hybrydowe dostęp do Twoich subskrypcji. HCM nie będzie nadal korzystać z konta platformy Azure poza tym. 
+1. Wybierz subskrypcję.
+1. Wybierz Połączenia hybrydowe, które mają być przekazywane przez HCM.
+![Zrzut ekranu przedstawiający Połączenia hybrydowe][9]
 
 1. Wybierz pozycję **Zapisz**.
 
-Teraz widać połączeń hybrydowych, został dodany. Możesz również wybrać skonfigurowane połączenie hybrydowe, aby wyświetlić szczegóły.
+Teraz możesz zobaczyć dodaną Połączenia hybrydowe. Możesz również wybrać skonfigurowane połączenie hybrydowe, aby wyświetlić szczegóły.
 
-![Zrzut ekranu przedstawiający szczegółów połączenia hybrydowego][10]
+![Zrzut ekranu przedstawiający szczegóły połączenia hybrydowego][10]
 
-Do obsługi połączeń hybrydowych jest konfigurowana, HCM wymaga:
+Aby można było obsługiwać Połączenia hybrydowe, które jest skonfigurowane z programem, HCM wymaga:
 
-- TCP korzystanie z platformy Azure za pośrednictwem portu 443.
-- TCP dostęp do punktu końcowego połączenia hybrydowego.
-- Możliwości w celu wyszukania DNS na hoście punktu końcowego i przestrzeni nazw usługi Service Bus.
+- Dostęp TCP do platformy Azure przez port 443.
+- Dostęp TCP do punktu końcowego połączenia hybrydowego.
+- Możliwość wyszukiwania w systemie DNS na hoście punktu końcowego i przestrzeni nazw Service Bus.
 
 > [!NOTE]
-> Usługa Azure Relay opiera się na gniazda sieci Web dla połączenia. Ta funkcja jest tylko dostępne w systemie Windows Server 2012 lub nowszym. Z tego powodu HCM nie jest obsługiwana w żadnych starszych niż Windows Server 2012.
+> Azure Relay korzysta z gniazd sieci Web na potrzeby łączności. Ta funkcja jest dostępna tylko w systemie Windows Server 2012 lub nowszym. Z tego powodu HCM nie jest obsługiwany w żadnym systemie Windows Server 2012.
 >
 
 ### <a name="redundancy"></a>Nadmiarowość ###
 
-Każdy HCM, może obsługiwać wiele połączeń hybrydowych. Ponadto wszelkie danego połączenia hybrydowego mogą być obsługiwane przez wiele HCMs. Domyślnym zachowaniem jest kierowanie ruchu skonfigurowane HCMs dla dowolnego danego punktu końcowego. Wysoka dostępność połączeń hybrydowych z Twojej sieci, należy uruchomić wiele HCMs na oddzielnych komputerach. Algorytmu dystrybucji obciążenia, które są używane przez usługi przekazywania do dystrybucji ruchu do HCMs jest przypisanie losowej. 
+Każdy HCM może obsługiwać wiele Połączenia hybrydowe. Ponadto każde połączenie hybrydowe może być obsługiwane przez wiele HCMs. Domyślne zachowanie polega na kierowaniu ruchu sieciowego przez skonfigurowany HCMs dla danego punktu końcowego. Jeśli potrzebujesz wysokiej dostępności na Połączenia hybrydowe z sieci, uruchom wiele HCMs na oddzielnych komputerach. Algorytm dystrybucji obciążenia używany przez usługę przekazywania do dystrybucji ruchu do HCMs jest przypisaniem losowym. 
 
-### <a name="manually-add-a-hybrid-connection"></a>Ręcznie Dodaj połączenie hybrydowe ###
+### <a name="manually-add-a-hybrid-connection"></a>Ręczne dodawanie połączenia hybrydowego ###
 
-Aby włączyć osoby spoza Twojej subskrypcji do hostowania wystąpienia usługi HCM dla danego połączenia hybrydowe, udostępniać parametry połączenia bramy połączenia hybrydowego ze sobą. Możesz zobaczyć parametry połączenia bramy we właściwościach połączenia hybrydowego w [witryny Azure portal][portal]. Aby użyć tych parametrów, wybierz pozycję **Wprowadź ręcznie** w HCM, a następnie wklej parametry połączenia bramy.
+Aby umożliwić komuś spoza subskrypcji hostowanie wystąpienia HCM dla danego połączenia hybrydowego, należy udostępnić parametry połączenia bramy dla połączenia hybrydowego. Parametry połączenia bramy są widoczne we właściwościach połączenia hybrydowego w [Azure Portal][portal]. Aby użyć tego ciągu, wybierz opcję **wprowadź ręcznie** w HCM i wklej w parametrach połączenia bramy.
 
-![Ręcznie Dodaj połączenie hybrydowe][11]
+![Ręczne dodawanie połączenia hybrydowego][11]
 
 ### <a name="upgrade"></a>Uaktualnienie ###
 
-Brak okresowe aktualizacje do Menedżera połączeń hybrydowych rozwiązywania problemów lub ulepszenia. Jeśli uaktualnienia zostaną zwolnione, okna podręcznego będą widoczne w Interfejsie użytkownika HCM. Stosowanie uaktualnienia zastosowania zmian i ponowne uruchomienie HCM. 
+Istnieją okresowe aktualizacje Menedżer połączeń hybrydowych w celu rozwiązania problemów lub zapewnienia ulepszeń. Po wydaniu uaktualnień zostanie wyświetlone okno podręczne w interfejsie użytkownika HCM. Zastosowanie uaktualnienia spowoduje zastosowanie zmian i ponowne uruchomienie HCM. 
 
-## <a name="adding-a-hybrid-connection-to-your-app-programmatically"></a>Programowe Dodawanie połączenia hybrydowego do aplikacji ##
+## <a name="adding-a-hybrid-connection-to-your-app-programmatically"></a>Programistyczne Dodawanie połączenia hybrydowego do aplikacji ##
 
-Interfejsy API wskazanych poniżej może służyć bezpośrednio, aby zarządzać połączeń hybrydowych, w połączonych aplikacjach. 
+Wymienione poniżej interfejsy API mogą być używane bezpośrednio do zarządzania Połączenia hybrydowe połączonymi z aplikacjami. 
 
     /subscriptions/[subscription name]/resourceGroups/[resource group name]/providers/Microsoft.Web/sites/[app name]/hybridConnectionNamespaces/[relay namespace name]/relays/[hybrid connection name]?api-version=2016-08-01
 
-Obiekt JSON skojarzony z połączenia hybrydowego wygląda następująco:
+Obiekt JSON skojarzony z połączeniem hybrydowym wygląda następująco:
 
     {
       "name": "[hybrid connection name]",
@@ -197,7 +197,7 @@ Obiekt JSON skojarzony z połączenia hybrydowego wygląda następująco:
       }
     }
 
-Jest jednym ze sposobów dzięki tym informacjom armclient, którą można pobrać z [ARMClient] [ armclient] projektu GitHub. Oto przykład podczas dołączania istniejące połączenie hybrydowe z aplikacją. Utwórz plik JSON na powyższym schematu, takich jak:
+Jednym ze sposobów korzystania z tych informacji jest armclient, które można uzyskać z projektu usługi GitHub [armclient][armclient] . Oto przykład na temat dołączania istniejącego połączenia hybrydowego do aplikacji. Utwórz plik JSON na powyższym schemacie, taki jak:
 
     {
       "name": "relay-demo-hc",
@@ -214,24 +214,24 @@ Jest jednym ze sposobów dzięki tym informacjom armclient, którą można pobra
       }
     }
 
-Aby użyć tego interfejsu API, należy Wyślij klucz i przekazywania identyfikator zasobu. Zapisanie informacji o hctest.json nazwę pliku, należy wydać to polecenie, aby dołączyć swoje połączenie hybrydowe z aplikacją: 
+Aby użyć tego interfejsu API, wymagany jest identyfikator wysyłania klucza i zasobu przekaźnika. Jeśli Zapisano informacje w pliku hctest. JSON, wydaj to polecenie, aby dołączyć połączenie hybrydowe do swojej aplikacji: 
 
     armclient login
     armclient put /subscriptions/ebcidic-asci-anna-nath-rak1111111/resourceGroups/myapp-rg/providers/Microsoft.Web/sites/myhcdemoapp/hybridConnectionNamespaces/demo-relay/relays/relay-demo-hc?api-version=2016-08-01 @hctest.json
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów ##
 
-Stan "Połączono" oznacza, że co najmniej jeden HCM skonfigurowano przy użyciu tego połączenia hybrydowego i jest w stanie dociera do platformy Azure. Jeśli stan połączenia hybrydowego nie określa **połączono**, połączenia hybrydowe nie jest skonfigurowany na dowolnym HCM, które ma dostęp do platformy Azure.
+Stan "połączone" oznacza, że co najmniej jeden HCM jest skonfigurowany przy użyciu tego połączenia hybrydowego i jest w stanie uzyskać dostęp do platformy Azure. Jeśli stan połączenia hybrydowego nie jest **połączony**, połączenie hybrydowe nie zostanie skonfigurowane na żadnym HCM, który ma dostęp do platformy Azure.
 
-Głównym powodem, że klienci nie można połączyć z ich punktu końcowego jest, ponieważ punkt końcowy został określony przy użyciu adresu IP zamiast nazwy DNS. Jeśli aplikacja nie może nawiązać połączenia żądanego punktu końcowego i użycie adresu IP, przełączyć się przy użyciu nazwy DNS, który jest niepoprawna na hoście, gdzie jest uruchomione HCM. Sprawdź także, czy nazwa DNS rozpoznaje poprawnie na hoście, na którym działa HCM. Upewnij się, że istnieje łączność z hosta, w którym HCM, działa na punkt końcowy połączenia hybrydowego.  
+Głównym powodem, że klienci nie mogą połączyć się z punktem końcowym, jest fakt, że punkt końcowy został określony przy użyciu adresu IP zamiast nazwy DNS. Jeśli aplikacja nie może nawiązać połączenia z żądanym punktem końcowym i został użyty adres IP, przełącz się do korzystania z nazwy DNS, która jest prawidłowa na hoście, na którym działa HCM. Sprawdź również, czy nazwa DNS jest rozpoznawana poprawnie na hoście, na którym działa HCM. Upewnij się, że nawiązano połączenie z hostem, na którym uruchomiono HCM, do punktu końcowego połączenia hybrydowego.  
 
-W usłudze App Service **tcpping** narzędzia wiersza polecenia mogą być wywoływane z poziomu konsoli narzędzia zaawansowane (Kudu). To narzędzie może określić, jeśli masz dostęp do punktu końcowego TCP, ale go nie informujące, jeśli masz dostęp do punktu końcowego połączenia hybrydowego. Gdy używasz narzędzia w konsoli względem punktu końcowego połączenia hybrydowego tylko potwierdzasz korzysta z kombinacji hosta: port.  
+W App Service narzędzie wiersza polecenia **tcpping** można wywołać z poziomu konsoli narzędzia zaawansowane (kudu). To narzędzie może powiedzieć, czy masz dostęp do punktu końcowego TCP, ale nie informuje Cię o tym, czy masz dostęp do punktu końcowego połączenia hybrydowego. Gdy korzystasz z narzędzia w konsoli programu względem punktu końcowego połączenia hybrydowego, potwierdzasz, że używa kombinacji hosta: port.  
 
-Jeśli masz klienta wiersza polecenia dla punktu końcowego usługi, możesz przetestować łączność z aplikacji konsoli. Na przykład można przetestować dostęp do punktów końcowych serwera sieci web, przy użyciu programu curl.
+Jeśli masz klienta wiersza polecenia dla punktu końcowego, możesz przetestować łączność z poziomu konsoli aplikacji. Na przykład można testować dostęp do punktów końcowych serwera sieci Web za pomocą zwinięcia.
 
 ## <a name="biztalk-hybrid-connections"></a>Połączenia hybrydowe BizTalk ##
 
-Wczesne formularza ta funkcja została wywołana połączenia hybrydowe BizTalk. Ta funkcja poszło zakończenia eksploatacji 31 maja 2018 r i zakończeniu operacji. Połączenia hybrydowe BizTalk zostały usunięte ze wszystkich aplikacji i nie są dostępne za pośrednictwem interfejsu API lub portalu. Jeśli nadal masz te starsze połączeń, skonfigurowanych Menedżera połączeń hybrydowych, będzie wyświetlany stan wycofany i wyświetlić instrukcji zakończenia eksploatacji u dołu.
+Wczesna forma tej funkcji była nazywana Połączenia hybrydowe BizTalk. Ta możliwość przestała obowiązywać z dniem 31 maja 2018 i zaprzestanie operacji. Połączenia hybrydowe BizTalk zostały usunięte ze wszystkich aplikacji i nie są dostępne za pośrednictwem portalu lub interfejsu API. Jeśli nadal masz te starsze połączenia skonfigurowane w Menedżer połączeń hybrydowych, zobaczysz stan wycofane i wyświetlona zostanie instrukcja końca okresu ważności u dołu.
 
 ![Połączenia hybrydowe BizTalk w HCM][12]
 

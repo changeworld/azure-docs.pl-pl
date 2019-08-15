@@ -1,90 +1,96 @@
 ---
-title: Omówienie formatu komunikatów usługi Azure IoT Hub | Dokumentacja firmy Microsoft
-description: Przewodnik dewelopera — w tym artykule opisano format i oczekiwanej zawartości komunikatami usługi IoT Hub.
+title: Opis formatu komunikatów usługi Azure IoT Hub | Microsoft Docs
+description: Przewodnik dla deweloperów — opisuje format i oczekiwaną zawartość komunikatów IoT Hub.
 author: ash2017
 manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/13/2018
+ms.date: 08/08/2019
 ms.author: asrastog
-ms.openlocfilehash: e2aafa195fa463a405e2132cd41fada8d6903961
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: dd45c68fb7d7a7226d18dd1afc508b3dbf7b770b
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450078"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950452"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>Tworzenie i odczytywanie komunikatów usługi IoT Hub
 
-Aby umożliwić bezproblemowe współdziałanie różnych protokołów, usługi IoT Hub definiuje typowego formatu komunikatów dla wszystkich protokołów przeznaczonych dla urządzeń. Ten format wiadomości jest używany zarówno [routingu urządzenia do chmury](iot-hub-devguide-messages-d2c.md) i [chmury do urządzenia](iot-hub-devguide-messages-c2d.md) wiadomości. 
+Aby zapewnić bezproblemowe współdziałanie w ramach protokołów, IoT Hub definiuje typowy format komunikatów dla wszystkich protokołów dostępnych dla urządzeń. Ten format komunikatu służy do przesyłania komunikatów przesyłanych [z urządzenia do chmury](iot-hub-devguide-messages-d2c.md) i z [chmury do urządzenia](iot-hub-devguide-messages-c2d.md) . 
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-IoT Hub zaimplementowano urządzenia do chmury komunikatów przy użyciu wzorca obsługi wiadomości przesyłanych strumieniowo. Przypominają komunikatów przesyłanych z chmury do urządzenia usługi IoT Hub [usługi Event Hubs](/azure/event-hubs/) *zdarzenia* niż [usługi Service Bus](/azure/service-bus-messaging/) *wiadomości* , istnieje duża przekazywanie za pośrednictwem usługi, która może zostać odczytany przez czytniki wielu zdarzeń.
+IoT Hub implementuje obsługę komunikatów z urządzenia do chmury przy użyciu wzorca przesyłania komunikatów przesyłania strumieniowego. Komunikaty z urządzenia do chmury IoT Hub są bardziej podobne do [Event Hubs](/azure/event-hubs/) *zdarzeń* niż [Service Bus](/azure/service-bus-messaging/) *komunikatów* w tym miejscu, że istnieje duża liczba zdarzeń przechodzących przez usługę, które mogą być odczytywane przez wielu czytelników.
 
-Komunikat usługi IoT Hub składa się z:
+Komunikat IoT Hub składa się z:
 
-* Predefiniowany zestaw *właściwości systemu* wymienione poniżej.
+* Wstępnie zdefiniowany zestaw *Właściwości systemu* , jak pokazano poniżej.
 
-* Zbiór *właściwości aplikacji*. Słownik właściwości ciągów, które można zdefiniować aplikację i dostępu, bez konieczności wykonywania deserializacji treści komunikatu. Usługa IoT Hub nigdy nie modyfikuje te właściwości.
+* Zestaw *właściwości aplikacji*. Słownik właściwości ciągów, które aplikacja może definiować i uzyskać do nich dostęp, bez konieczności deserializacji treści komunikatu. IoT Hub nigdy nie modyfikuje tych właściwości.
 
-* Nieprzezroczysty dane binarne ciała.
+* Nieprzezroczysta treść binarna.
 
-Nazwy i wartości właściwości mogą zawierać tylko znaki alfanumeryczne ASCII, a także ``{'!', '#', '$', '%, '&', ''', '*', '+', '-', '.', '^', '_', '`', '|', '~'}`` podczas wysyłania komunikatów z urządzenia do chmury przy użyciu protokołu HTTPS protokołu lub wysyłać komunikaty z chmury do urządzenia.
+Nazwy i wartości właściwości mogą zawierać tylko znaki alfanumeryczne ASCII, ``{'!', '#', '$', '%, '&', ''', '*', '+', '-', '.', '^', '_', '`', '|', '~'}`` a także w przypadku wysyłania komunikatów z urządzenia do chmury przy użyciu protokołu HTTPS lub wysyłania komunikatów z chmury do urządzenia.
 
-Obsługa komunikatów za pomocą usługi IoT Hub urządzenia do chmury ma następującą charakterystykę:
+Obsługa komunikatów przesyłanych z urządzeń do chmury przy użyciu IoT Hub ma następujące cechy:
 
-* Komunikaty z urządzenia do chmury są trwałe i zachowane w domyślnej usługi IoT hub **komunikaty/zdarzenia** punktu końcowego dla maksymalnie siedem dni.
+* Komunikaty z urządzenia do chmury są trwałe i przechowywane w domyślnym punkcie końcowym **komunikatów/zdarzeń** usługi IoT Hub przez maksymalnie siedem dni.
 
-* Komunikaty z urządzenia do chmury może być co najwyżej 256 KB i mogą być grupowane w partiach, aby zoptymalizować wysyła. Partie może mieć co najwyżej 256 KB.
+* Komunikaty przesyłane z urządzenia do chmury mogą mieć co najwyżej 256 KB i mogą być pogrupowane w partiach, aby zoptymalizować wysyłanie. Wsady mogą mieć co najwyżej 256 KB.
 
-* Usługi IoT Hub nie zezwala na dowolne partycjonowania. Komunikaty z urządzenia do chmury są podzielone na partycje oparte na ich pochodzące **deviceId**.
+* IoT Hub nie zezwala na dowolne partycjonowanie. Komunikaty z urządzenia do chmury są partycjonowane na podstawie ich źródłowego **deviceId**.
 
-* Jak wyjaśniono w [kontrolować dostęp do usługi IoT Hub](iot-hub-devguide-security.md), usługa IoT Hub udostępnia na urządzenia uwierzytelniania i kontroli dostępu.
+* Jak wyjaśniono w obszarze [Kontrola dostępu do IoT Hub](iot-hub-devguide-security.md), IoT Hub Włącza uwierzytelnianie na urządzenie i kontrolę dostępu.
 
-* Za sygnatury komunikaty z informacjami, które przechodzi do właściwości aplikacji. Aby uzyskać więcej informacji, zobacz [komunikatu wzbogacenia](iot-hub-message-enrichments-overview.md).
+* Można oznaczyć wiadomości zawierające informacje, które są umieszczane we właściwościach aplikacji. Aby uzyskać więcej informacji, zobacz [wzbogacanie komunikatów](iot-hub-message-enrichments-overview.md).
 
-Aby uzyskać więcej informacji na temat kodowania i dekodowania wiadomości wysłane przy użyciu różnych protokołów, zobacz [Azure IoT SDKs](iot-hub-devguide-sdks.md).
+Aby uzyskać więcej informacji na temat kodowania i dekodowania komunikatów wysyłanych za pomocą różnych protokołów, zobacz [zestawy SDK usługi Azure IoT](iot-hub-devguide-sdks.md).
 
-Poniższa lista zawiera zbiór właściwości systemu w komunikatach usługi IoT Hub.
+## <a name="system-properties-of-d2c-iot-hub-messages"></a>Właściwości systemowe komunikatów **D2C** IoT Hub
 
-| Właściwość | Opis | Czy użytkownika można ustawić? |
+| Właściwość | Opis  |Jesteś w trakcie, aby użytkownik miał tabelę?|Słowo kluczowe dla kwerendy routingu|
+| --- | --- | --- | --- |
+| Identyfikator komunikatu |Identyfikator użytkownika-settable dla wiadomości używany na potrzeby wzorców odpowiedzi na żądanie. Format: Ciąg uwzględniający wielkość liter (do 128 znaków) ASCII 7-bitowe znaki alfanumeryczne + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`.  | Tak | MessageId |
+| iothub — enqueuedtime |Data i godzina odebrania komunikatu [z urządzenia do chmury](iot-hub-devguide-d2c-guidance.md) przez IoT Hub. | Nie | EnqueuedTime |
+| Identyfikator użytkownika |Identyfikator używany do określania źródła komunikatów. Komunikaty generowane przez IoT Hub są ustawiane na `{iot hub name}`. | Tak | UserId |
+| iothub-Connection-ID urządzenia |Identyfikator ustawiony przez IoT Hub w komunikatach przesyłanych z urządzenia do chmury. Zawiera identyfikator **deviceId** urządzenia, które wysłało wiadomość. | Nie | DeviceId |
+| iothub-Connection-auth-Generation-ID |Identyfikator ustawiony przez IoT Hub w komunikatach przesyłanych z urządzenia do chmury. Zawiera **generationId** (zgodnie z właściwościami [tożsamości urządzenia](iot-hub-devguide-identity-registry.md#device-identity-properties)) urządzenia, które wysłało komunikat. | Nie |DeviceGenerationId |
+| iothub-Connection-auth-Metoda |Metoda uwierzytelniania ustawiona przez IoT Hub w komunikatach z urządzenia do chmury. Ta właściwość zawiera informacje na temat metody uwierzytelniania używanej do uwierzytelniania urządzenia wysyłającego wiadomość.| Nie | AuthMethod |
+
+## <a name="system-properties-of-c2d-iot-hub-messages"></a>Właściwości systemowe komunikatów **C2D** IoT Hub
+
+| Właściwość | Opis  |Jesteś w trakcie, aby użytkownik miał tabelę?|
 | --- | --- | --- |
-| message-id |Identyfikator użytkownika można ustawić dla komunikatu używanego dla wzorców "żądanie-odpowiedź". Format: Ciąg uwzględniający wielkość liter (maksymalnie 128 znaków) znaków alfanumerycznych ASCII 7-bitowego + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`. | Tak |
-| numer sekwencyjny |Liczba (unikatowe na urządzeniu kolejkę) przypisany przez usługę IoT Hub do każdego komunikatu chmury do urządzenia. | Brak komunikatów C2D; tak, w przeciwnym razie. |
-| na |Lokalizacji docelowej, określone w [chmury do urządzenia](iot-hub-devguide-c2d-guidance.md) wiadomości. | Brak komunikatów C2D; tak, w przeciwnym razie. |
-| czas w przypadku wygaśnięcia bezwzględne |Data i godzina wygaśnięcia komunikatu. | Tak |
-| iothub enqueuedtime |Data i godzina [urządzenia do chmury](iot-hub-devguide-d2c-guidance.md) wiadomość została odebrana przez usługę IoT Hub. | Brak komunikatów D2C; tak, w przeciwnym razie. |
-| correlation-id |Właściwość ciągu w komunikacie odpowiedzi, który zwykle zawiera identyfikator komunikatu żądania we wzorcach "żądanie-odpowiedź". | Tak |
-| user-id |Identyfikator używany do określenia pochodzenia wiadomości. Gdy komunikaty są generowane przez usługę IoT Hub, jest równa `{iot hub name}`. | Nie |
-| potwierdzenia iothub |Generator komunikat o opinię. Ta właściwość jest używana w komunikatów z chmury do urządzeń do usługi IoT Hub do generowania komunikatów zwrotnych w wyniku użycia komunikatu żądania przez urządzenie. Możliwe wartości: **Brak** (ustawienie domyślne): Brak komunikatu opinii jest generowany, **dodatnią**: Jeśli wiadomość została ukończona, wyświetlony komunikat opinii **ujemna**: odbierania komunikat opinii wygasł (lub została osiągnięta maksymalna liczba prób dostarczenia) bez kończone przez to urządzenie lub **pełne**: pozytywne i negatywne. <!-- robinsh For more information, see [Message feedback][lnk-feedback].--> | Tak |
-| iothub-connection-device-id |Identyfikator jest ustawiony przez usługę IoT Hub na komunikaty z urządzenia do chmury. Zawiera on **deviceId** urządzenia wysyłającego wiadomość. | Brak komunikatów D2C; tak, w przeciwnym razie. |
-| iothub-connection-auth-generation-id |Identyfikator jest ustawiony przez usługę IoT Hub na komunikaty z urządzenia do chmury. Zawiera on **generationId** (zgodnie [właściwości tożsamości urządzenia](iot-hub-devguide-identity-registry.md#device-identity-properties)) urządzenia, która wysłała komunikat. | Brak komunikatów D2C; tak, w przeciwnym razie. |
-| iothub-connection-auth-method |Metoda uwierzytelniania, ustawić przez usługę IoT Hub dla komunikatów z urządzenia do chmury. Ta właściwość zawiera informacje o metodę uwierzytelniania stosowaną w celu uwierzytelnienia urządzenia wysyłania wiadomości. <!-- ROBINSH For more information, see [Device to cloud anti-spoofing][lnk-antispoofing].--> | Brak komunikatów D2C; tak, w przeciwnym razie. |
-| iothub-creation-time-utc | Data i godzina utworzenia komunikatu na urządzeniu. Urządzenie musi jawnie ustaw tę wartość. | Tak |
+| Identyfikator komunikatu |Identyfikator użytkownika-settable dla wiadomości używany na potrzeby wzorców odpowiedzi na żądanie. Format: Ciąg uwzględniający wielkość liter (do 128 znaków) ASCII 7-bitowe znaki alfanumeryczne + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`.  |Tak|
+| Numer sekwencyjny |Liczba (unikatowa dla kolejki urządzenia) przypisana przez IoT Hub do poszczególnych komunikatów z chmury do urządzenia. |Nie|
+| to |Lokalizacja docelowa określona w komunikatach [z chmury do urządzenia](iot-hub-devguide-c2d-guidance.md) . |Nie|
+| absolute-expiry-time |Data i godzina wygaśnięcia komunikatu. |Nie|   |
+| Identyfikator korelacji |Właściwość ciągu w komunikacie odpowiedzi, który zwykle zawiera wartość MessageId żądania w wzorcach żądania-odpowiedzi. |Tak|
+| Identyfikator użytkownika |Identyfikator używany do określania źródła komunikatów. Komunikaty generowane przez IoT Hub są ustawiane na `{iot hub name}`. |Tak|
+| iothub — ACK |Generator komunikatów opinii. Ta właściwość jest używana w komunikatach z chmury do urządzeń w celu żądania IoT Hub generowania komunikatów zwrotnych w wyniku użycia wiadomości przez urządzenie. Możliwe wartości: **Brak** (wartość domyślna): nie Wygenerowano żadnego komunikatuz opiniami pozytywnymi: otrzymasz wiadomość z informacją o opinii, jeśli wiadomość została ukończona, **wartość ujemna**: otrzymasz wiadomość z informacją o opinii, jeśli wiadomość wygasła (lub maksymalna liczba dostaw została osiągnięto) bez ukończenia przez urządzenie lub **pełne**: dodatnie i ujemne. |Tak|
 
 ## <a name="message-size"></a>Rozmiar komunikatu
 
-Usługi IoT Hub mierzy rozmiar wiadomości w sposób niezależny od protokołu, biorąc pod uwagę rzeczywiste obciążenie. Rozmiar w bajtach jest obliczany jako suma z następujących czynności:
+IoT Hub mierzy rozmiar komunikatu w metodzie niezależny od, biorąc pod uwagę tylko rzeczywisty ładunek. Rozmiar w bajtach jest obliczany jako suma następujących wartości:
 
 * Rozmiar treści w bajtach.
-* Rozmiar w bajtach wartości właściwości systemu komunikatu.
-* Rozmiar w bajtach wszystkie użytkownika nazwy i wartości właściwości.
+* Rozmiar w bajtach wszystkich wartości właściwości systemu komunikatów.
+* Rozmiar w bajtach wszystkich nazw i wartości właściwości użytkownika.
 
-Nazwy i wartości właściwości są ograniczone do znaków ASCII, więc długość ciągów jest równy rozmiar w bajtach.
+Nazwy i wartości właściwości są ograniczone do znaków ASCII, więc długość ciągów jest równa rozmiarowi w bajtach.
 
-## <a name="anti-spoofing-properties"></a>Ochrona przed fałszowaniem właściwości
+## <a name="anti-spoofing-properties"></a>Właściwości chroniące przed fałszowaniem
 
-Aby uniknąć urządzenia fałszowanie w komunikatów z urządzenia do chmury, usługi IoT Hub sygnatury wszystkie komunikaty z następującymi właściwościami:
+Aby uniknąć fałszowania urządzenia w komunikatach przesyłanych z urządzeń do chmury, IoT Hub sygnatury wszystkich komunikatów o następujących właściwościach:
 
 * **iothub-connection-device-id**
-* **iothub-connection-auth-generation-id**
-* **iothub-connection-auth-method**
+* **iothub-Connection-auth-Generation-ID**
+* **iothub-Connection-auth-Metoda**
 
-Zawiera dwa pierwsze **deviceId** i **generationId** urządzenia źródłowego zgodnie [właściwości tożsamości urządzenia](iot-hub-devguide-identity-registry.md#device-identity-properties).
+Pierwsze dwa zawierają **deviceId** i **generationId** urządzenia pochodzącego, zgodnie z [właściwościami tożsamości urządzenia](iot-hub-devguide-identity-registry.md#device-identity-properties).
 
-**Iothub połączenia — — metoda uwierzytelniania** właściwość zawiera obiekt serializacji JSON z następującymi właściwościami:
+Właściwość **iothub-Connection-auth-Method** zawiera serializowany obiekt JSON z następującymi właściwościami:
 
 ```json
 {
@@ -94,8 +100,8 @@ Zawiera dwa pierwsze **deviceId** i **generationId** urządzenia źródłowego z
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Aby uzyskać informacji na temat limitów rozmiaru wiadomości w usłudze IoT Hub, zobacz [usługi IoT Hub przydziałów i dławienia](iot-hub-devguide-quotas-throttling.md).
+* Aby uzyskać informacje na temat limitów rozmiaru komunikatów w IoT Hub, zobacz [IoT Hub przydziały i ograniczanie przepustowości](iot-hub-devguide-quotas-throttling.md).
 
-* Aby dowiedzieć się, jak tworzenie i odczytywanie wiadomości w różnych językach programowania usługi IoT Hub, zobacz [przewodników Szybki Start](quickstart-send-telemetry-node.md).
+* Aby dowiedzieć się, jak tworzyć i odczytywać IoT Hub wiadomości w różnych językach programowania, zobacz [Przewodniki Szybki Start](quickstart-send-telemetry-node.md).

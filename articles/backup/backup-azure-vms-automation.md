@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: dacurwin
-ms.openlocfilehash: 1cbd0f649bd5e89c1ed424604697afa179964175
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 23492133035f27aa3e1217269022565e0ff217a9
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689019"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018760"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Tworzenie kopii zapasowej i przywracanie maszyn wirtualnych platformy Azure przy użyciu programu PowerShell
 
@@ -312,7 +312,7 @@ $bkpPol.SnapshotRetentionInDays=7
 PS C:\> Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ````
 
-Wartość domyślna to 2, użytkownik może ustawić wartość minimalną 1 i maksymalnie 5. W przypadku tygodniowych zasad tworzenia kopii zapasowych okres jest ustawiony na 5 i nie można go zmienić.
+Wartość domyślna to 2, użytkownik może ustawić wartość minimalną 1 i maksymalnie 5. W przypadku tygodniowych zasad tworzenia kopii zapasowych okres ma wartość 5 i nie można go zmienić.
 
 ### <a name="trigger-a-backup"></a>Wyzwalanie kopii zapasowej
 
@@ -340,7 +340,7 @@ V2VM              Backup              InProgress          4/23/2016             
 
 ### <a name="change-policy-for-backup-items"></a>Zmień zasady dla elementów kopii zapasowej
 
-Użytkownik może zmodyfikować istniejące zasady lub zmienić zasady kopii zapasowej elementu z Policy1 na Policy2. Aby przełączyć zasady dla elementu kopii zapasowej, po prostu Pobierz odpowiednie zasady i wykonaj kopię zapasową, a następnie użyj polecenia [enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) z elementem kopii zapasowej jako parametru.
+Użytkownik może zmodyfikować istniejące zasady lub zmienić zasady kopii zapasowej elementu z Policy1 na Policy2. Aby przełączyć zasady dla elementu kopii zapasowej, należy pobrać odpowiednie zasady i wykonać kopię zapasową, a następnie użyć polecenia [enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) z elementem kopii zapasowej jako parametru.
 
 ````powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName>
@@ -511,7 +511,7 @@ Po przywróceniu dysków wykonaj następujące kroki, aby utworzyć i skonfiguro
 > [!NOTE]
 > Po przywróceniu dysków można teraz uzyskać szablon wdrożenia, za pomocą którego można bezpośrednio utworzyć nową maszynę wirtualną. Nie ma więcej różnych poleceń cmdlet środowiska PS do tworzenia zarządzanych/niezarządzanych maszyn wirtualnych, które są zaszyfrowane/nieszyfrowane.
 
-Szczegóły zadania wynikowego to identyfikator URI szablonu, który można zbadać i wdrożyć.
+Szczegóły zadania wynikowego zawierają identyfikator URI szablonu, który można zbadać i wdrożyć.
 
 ```powershell
    $properties = $details.properties
@@ -720,7 +720,7 @@ W poniższej sekcji przedstawiono kroki niezbędne do utworzenia maszyny wirtual
 
    * **W przypadku maszyny wirtualnej bez usługi Azure AD** — Użyj następującego polecenia, aby ręcznie włączyć szyfrowanie dla dysków danych.
 
-     Jeśli podczas wykonywania polecenia zostanie wyświetlony monit o AADClientID, należy zaktualizować Azure PowerShell.
+     Jeśli podczas wykonywania polecenia prosi o AADClientID, należy zaktualizować Azure PowerShell.
 
      **Tylko klucz szyfrowania bloków**
 
@@ -806,7 +806,7 @@ OsType  Password        Filename
 Windows e3632984e51f496 V2VM_wus2_8287309959960546283_451516692429_cbd6061f7fc543c489f1974d33659fed07a6e0c2e08740.exe
 ```
 
-Uruchom skrypt na komputerze, na którym chcesz odzyskać pliki. Aby wykonać skrypt, należy wprowadzić podane hasło. Po dołączeniu dysków Użyj Eksploratora plików systemu Windows, aby przeglądać nowe woluminy i pliki. Aby uzyskać więcej informacji, zapoznaj się z artykułem kopia zapasowa [odzyskiwanie plików z kopii zapasowej maszyny wirtualnej platformy Azure](backup-azure-restore-files-from-vm.md).
+Uruchom skrypt na komputerze, na którym chcesz odzyskać pliki. Aby wykonać skrypt, należy wprowadzić podane hasło. Po dołączeniu dysków Użyj Eksploratora plików systemu Windows, aby przeglądać nowe woluminy i pliki. Aby uzyskać więcej informacji, zobacz artykuł Tworzenie kopii zapasowej, [odzyskiwanie plików z kopii zapasowej maszyny wirtualnej platformy Azure](backup-azure-restore-files-from-vm.md).
 
 ### <a name="unmount-the-disks"></a>Odinstalowywanie dysków
 

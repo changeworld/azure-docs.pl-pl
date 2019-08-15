@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 1e14e9819f4b3344d0f0155ac5c15337a45952dc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: c739a6e79cab14ecc8e5a4be23c551d2774cbbd8
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828053"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933980"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-cassandra-api-account-using-striim"></a>Migrowanie danych do konta Azure Cosmos DB interfejs API Cassandra za pomocą Striim
 
 Obraz Striim w portalu Azure Marketplace oferuje ciągły ruch danych w czasie rzeczywistym z magazynów danych i baz danych na platformę Azure. Podczas przemieszczania danych można wykonać denormalizację w trybie online, Przekształcanie danych, włączyć analizy w czasie rzeczywistym i scenariusze raportowania danych. Rozpoczęcie pracy z usługą Striim w celu ciągłego przenoszenia danych przedsiębiorstwa do interfejs API Cassandra Azure Cosmos DB. Platforma Azure udostępnia ofertę w witrynie Marketplace, która ułatwia wdrażanie Striim i Migrowanie danych do Azure Cosmos DB. 
 
-W tym artykule przedstawiono sposób korzystania z programu Striim do migrowania danych z **bazy danych programu Oracle** do **konta interfejsu API usługi Azure Cosmos DB Cassnadra**.
+W tym artykule przedstawiono sposób korzystania z programu Striim do migrowania danych z **bazy danych programu Oracle** do **konta interfejs API Cassandra Azure Cosmos DB**.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

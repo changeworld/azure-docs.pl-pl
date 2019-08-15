@@ -1,5 +1,5 @@
 ---
-title: Ubytk Przewidywanie cen i porównywanie algorytmów
+title: 'Przykład interfejsu wizualizacji #3: regresja do ceny i porównywanie algorytmów'
 titleSuffix: Azure Machine Learning service
 description: W tym artykule przedstawiono sposób tworzenia złożonego eksperymentu uczenia maszynowego bez konieczności pisania jednego wiersza kodu przy użyciu interfejsu wizualizacji. Dowiedz się, jak uczenie i porównywanie wielu modeli regresji w celu przewidywania cen samochodu w oparciu o funkcje techniczne
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: 28af7b814a8d214c3529ecb12ffe25ede78b1cb6
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d05a601196ec4a5349a0acb4763098d9716c17f5
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855932"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989999"
 ---
 # <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>Przykład 2 — Regresja: Przewidywanie cen i porównywanie algorytmów
 
@@ -88,7 +88,7 @@ Oba algorytmy mają niższy błąd w zestawie danych szkoleniowych niż na niewi
 
 [!INCLUDE [aml-ui-cleanup](../../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Zapoznaj się z innymi przykładami dostępnymi dla interfejsu wizualizacji:
 

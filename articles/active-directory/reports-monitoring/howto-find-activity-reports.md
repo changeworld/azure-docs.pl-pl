@@ -1,9 +1,9 @@
 ---
-title: Znajdowanie raportów aktywności użytkownika usługi Azure Active Directory w witrynie Azure portal | Dokumentacja firmy Microsoft
-description: Dowiedz się, gdzie raporty aktywności użytkownika w usłudze Azure Active Directory znajdują się w witrynie Azure portal.
+title: Znajdź Azure Active Directory raporty aktywności użytkowników w Azure Portal | Microsoft Docs
+description: Dowiedz się, gdzie Azure Active Directory raporty aktywności użytkowników znajdują się w Azure Portal.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -11,27 +11,27 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d47072713c57576abe780134792c3a5cbc27127c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 356412bfca19e72d09338faf8c8bcac5ec8f273a
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60438330"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68988283"
 ---
-# <a name="find-activity-reports-in-the-azure-portal"></a>Znajdowanie raportów aktywności w witrynie Azure portal
+# <a name="find-activity-reports-in-the-azure-portal"></a>Znajdź raporty aktywności w Azure Portal
 
-W tym artykule dowiesz się, jak znajdowanie raportów aktywności użytkownika usługi Azure Active Directory (Azure AD) w witrynie Azure portal.
+W tym artykule dowiesz się, jak znaleźć w Azure Portal raporty dotyczące działań użytkownika w usłudze Azure Active Directory (Azure AD).
 
 ## <a name="audit-logs-report"></a>Raport dotyczący dzienników inspekcji
 
-Raport dotyczący dzienników inspekcji łączy kilka raportów w całym działania aplikacji w jednym widoku na podstawie kontekstu raportowania. Dostęp do raportu dzienników inspekcji:
+Raport dzienniki inspekcji łączy kilka raportów dotyczących działań aplikacji w jeden widok dla raportowania opartego na kontekście. Aby uzyskać dostęp do raportu dzienniki inspekcji:
 
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
-2. Wybierz swój katalog w prawym górnym rogu, a następnie wybierz **usługi Azure Active Directory** bloku, w okienku nawigacji po lewej stronie.
-3. Wybierz **dzienniki inspekcji** z **działania** części bloku Azure Active Directory. 
+2. Wybierz katalog z prawego górnego rogu, a następnie wybierz blok **Azure Active Directory** w okienku nawigacji po lewej stronie.
+3. Wybierz pozycję **dzienniki inspekcji** w sekcji **działanie** w bloku Azure Active Directory. 
 
     ![Dzienniki inspekcji](./media/howto-find-activity-reports/482.png "Dzienniki inspekcji")
 
@@ -39,27 +39,27 @@ Raport dotyczący dzienników inspekcji konsoliduje następujące raporty:
 
 * Raport z inspekcji
 * Działania związane z resetowaniem haseł
-* Aktywność rejestracji resetowania haseł
-* Aktywności grup samoobsługi
-* Office365 Group Name Changes
-* Działanie z aprowizacją kont
-* Stan przerzucania hasła
+* Działanie rejestracji resetowania hasła
+* Działanie grup samoobsługi
+* Zmiany nazw grup usługi Office 365
+* Działanie aprowizacji konta
+* Stan przerzucenia hasła
 * Błędy aprowizacji kont
 
-### <a name="filtering-on-audit-logs"></a>Filtrowanie według dzienników inspekcji
+### <a name="filtering-on-audit-logs"></a>Filtrowanie w dziennikach inspekcji
 
-Umożliwia filtrowanie Zaawansowane w raporcie inspekcji dostępu do określonej kategorii danych inspekcji, określając ją w **kategorii** filtru. Na przykład, aby wyświetlić wszystkie działania związane z użytkownikami, wybierz pozycję **UserManagement** kategorii. 
+Możesz użyć filtrowania zaawansowanego w raporcie inspekcji, aby uzyskać dostęp do określonej kategorii danych inspekcji, określając ją w filtr **kategorii** . Aby na przykład wyświetlić wszystkie działania związane z użytkownikami, wybierz kategorię **UserManagement** . 
 
-Kategorie:
+Kategorie obejmują:
 
 - Wszyscy
 - AdministrativeUnit
 - ApplicationManagement
 - Authentication
-- Autoryzacja
+- Authorization
 - Skontaktuj się z
 - Urządzenie
-- Konfiguracja urządzenia
+- DeviceConfiguration
 - DirectoryManagement
 - EntitlementManagement
 - GroupManagement
@@ -69,19 +69,19 @@ Kategorie:
 - RoleManagement
 - UserManagement
 
-Można również filtrować w określonej usługi za pomocą **usługi** filtru listy rozwijanej. Na przykład, aby uzyskać wszystkie zdarzenia inspekcji dotyczące Samoobsługowe zarządzanie hasłami, wybierz **samoobsługowego zarządzania hasłami** filtru.
+Możesz również filtrować określoną usługę za pomocą filtru listy rozwijanej **usługi** . Aby na przykład uzyskać wszystkie zdarzenia inspekcji związane z samoobsługowym zarządzaniem hasłami, należy wybrać filtr samoobsługowego **zarządzania hasłami** .
 
 Usługi to:
 
 - Wszyscy
-- Przeglądy dostępu
+- Kontrole uprawnień dostępu
 - Aprowizacja kont 
-- Usługa rejestracji Jednokrotnej w aplikacji
+- Logowanie jednokrotne aplikacji
 - Metody uwierzytelniania
 - B2C
 - Dostęp warunkowy
 - Katalog podstawowy
-- Zarządzanie uprawnieniami
+- Zarządzanie upoważnieniami
 - Identity Protection
 - Zaproszeni użytkownicy
 - PIM
@@ -91,59 +91,59 @@ Usługi to:
 
 ## <a name="sign-ins-report"></a>Raport dotyczący logowań 
 
-**Logowania** widok zawiera wszystkie logowania użytkownika, jak również **użycia aplikacji** raportu. Również wyświetlane informacje o użyciu aplikacji w **Zarządzaj** części **aplikacje dla przedsiębiorstw** Przegląd.
+Widok **logowania** zawiera wszystkie logowania użytkowników, a także Raport **użycia aplikacji** . Informacje o użyciu aplikacji można także wyświetlić w sekcji **Zarządzanie** **aplikacjami** w przedsiębiorstwie.
 
-Dostęp do raportów logowania:
+Aby uzyskać dostęp do raportu logowania:
 
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
-2. Wybierz swój katalog w prawym górnym rogu, a następnie wybierz **usługi Azure Active Directory** bloku, w okienku nawigacji po lewej stronie.
-3. Wybierz **plik logowań do** z **działania** części bloku Azure Active Directory. 
+2. Wybierz katalog z prawego górnego rogu, a następnie wybierz blok **Azure Active Directory** w okienku nawigacji po lewej stronie.
+3. Wybierz pozycję **Signins** w sekcji **działanie** w bloku Azure Active Directory. 
 
-    ![Widok logowania](./media/howto-find-activity-reports/483.png "wyświetlić logowania")
+    ![Widok logowania](./media/howto-find-activity-reports/483.png "Widok logowania")
 
 
 ### <a name="filtering-on-application-name"></a>Filtrowanie według nazwy aplikacji
 
-W raporcie logowań można użyć, aby wyświetlić szczegóły dotyczące użycia aplikacji przez filtrowanie według nazwy użytkownika lub aplikacji.
+Możesz użyć raportu logowania, aby wyświetlić szczegółowe informacje o użyciu aplikacji, filtrując nazwę użytkownika lub nazwę aplikacji.
 
-![Filtr zdarzeń logowania strony](./media/howto-find-activity-reports/07.png "strony filtr zdarzeń logowania")
+![Strona filtrowania zdarzeń logowania](./media/howto-find-activity-reports/07.png "Strona filtrowania zdarzeń logowania")
 
 ## <a name="security-reports"></a>Raporty dotyczące zabezpieczeń
 
-### <a name="anomalous-activity-reports"></a>Raporty nietypowych działań
+### <a name="anomalous-activity-reports"></a>Raporty o nietypowych działaniach
 
-Nietypowe działanie raporty zawierają informacje dotyczące zdarzeń ryzyka związanych z zabezpieczeniami usługi Azure AD można wykrywać i raportować.
+Raporty o nietypowych działaniach zawierają informacje o zdarzeniach związanych z zabezpieczeniami, które mogą być wykrywane i raportowane przez usługę Azure AD.
 
-Poniższej tabeli list usługi Azure AD nietypowych działań raporty dotyczące zabezpieczeń i odpowiednie typy zdarzeń o podwyższonym ryzyku w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz [Zdarzenia o podwyższonym ryzyku w usłudze Azure Active Directory](concept-risk-events.md).  
+W poniższej tabeli wymieniono raporty zabezpieczeń działania anomalii usługi Azure AD oraz odpowiednie typy zdarzeń ryzyka w Azure Portal. Aby uzyskać więcej informacji, zobacz [Zdarzenia o podwyższonym ryzyku w usłudze Azure Active Directory](concept-risk-events.md).  
 
 
-| Raport nietypowych działań w usłudze Azure AD |  Typ zdarzenia o podwyższonym ryzyku ochrony tożsamości|
+| Raport o nietypowej aktywności usługi Azure AD |  Typ zdarzenia ryzyka ochrony tożsamości|
 | :--- | :--- |
 | Użytkownicy z ujawnionymi poświadczeniami | Ujawnione poświadczenia |
 | Nieregularne działania związane z logowaniem | Niemożliwa podróż do nietypowych lokalizacji |
 | Logowania z urządzeń, które mogą być zainfekowane | Logowania z zainfekowanych urządzeń|
 | Logowania z nieznanych źródeł | Logowania z anonimowych adresów IP |
-| Logowania z adresów IP związanych z podejrzanymi działaniami | Logowania z adresów IP związanych z podejrzanymi działaniami |
+| Logowania z adresów IP z podejrzaną aktywnością | Logowania z adresów IP z podejrzaną aktywnością |
 | - | Logowania z nieznanych lokalizacji |
 
-Następujące zabezpieczeń usługi Azure AD w nietypowych działań raporty nie są uwzględniane jako zdarzeń o podwyższonym ryzyku w witrynie Azure portal:
+Następujące raporty o zabezpieczeniach nietypowej aktywności usługi Azure AD nie są uwzględniane jako zdarzenia ryzyka w Azure Portal:
 
 * Logowania po wielokrotnych niepowodzeniach
 * Logowania z wielu lokalizacji geograficznych
 
 
-### <a name="detected-risk-events"></a>Wykrytych ryzykownych zdarzeń
+### <a name="detected-risk-events"></a>Zdarzenia wykrytego ryzyka
 
-Raporty o zdarzeniach zagrożenia wykryte w **zabezpieczeń** części **usługi Azure Active Directory** bloku [witryny Azure portal](https://portal.azure.com). Zdarzenia o podwyższonym ryzyku w wykryte są śledzone w następujące raporty:   
+Możesz uzyskać dostęp do raportów o wykrytych zdarzeniach o podwyższonym ryzyku w sekcji **zabezpieczenia** w bloku **Azure Active Directory** w [Azure Portal](https://portal.azure.com). Zdarzenia wykrytego ryzyka są śledzone w następujących raportach:   
 
 - [Narażeni użytkownicy](concept-user-at-risk.md)
 - [Ryzykowne logowania](concept-risky-sign-ins.md)
 
-    ![Raporty dotyczące zabezpieczeń](./media/howto-find-activity-reports/04.png "raporty dotyczące zabezpieczeń")
+    ![Raporty zabezpieczeń](./media/howto-find-activity-reports/04.png "Raporty zabezpieczeń")
 
-## <a name="troubleshoot-issues-with-activity-reports"></a>Rozwiązywanie problemów z raportów aktywności
+## <a name="troubleshoot-issues-with-activity-reports"></a>Rozwiązywanie problemów z raportami aktywności
 
-### <a name="missing-data-in-the-downloaded-activity-logs"></a>Brak danych w dziennikach aktywności pobrany
+### <a name="missing-data-in-the-downloaded-activity-logs"></a>Brak danych w pobranych dziennikach aktywności
 
 #### <a name="symptoms"></a>Objawy 
 
@@ -153,13 +153,13 @@ Pobrano dzienniki aktywności (inspekcji lub logowania), ale nie widać wszystki
  
 #### <a name="cause"></a>Przyczyna
 
-Podczas pobierania dzienników aktywności w witrynie Azure portal jest ograniczona na skalę, która rozmiar 250 000 rekordów posortowanych według najnowsze na początku. 
+Po pobraniu dzienników aktywności w Azure Portal ograniczamy do 250000 rekordów, posortowanych według ostatnio używanych elementów. 
 
 #### <a name="resolution"></a>Rozwiązanie
 
 Można wykorzystać [interfejsy API raportowania usługi Azure AD](concept-reporting-api.md), aby pobrać do miliona rekordów z dowolnego okresu.
 
-### <a name="missing-audit-data-for-recent-actions-in-the-azure-portal"></a>Brak danych inspekcji dla ostatnich działań w witrynie Azure portal
+### <a name="missing-audit-data-for-recent-actions-in-the-azure-portal"></a>Brak danych inspekcji dla ostatnich akcji w Azure Portal
 
 #### <a name="symptoms"></a>Objawy
 
@@ -180,7 +180,7 @@ Akcje nie pojawiają się natychmiast w dziennikach aktywności. W poniższej ta
 
 Poczekaj od 15 minut do dwóch godzin, a następnie sprawdź, czy akcje pojawią się w dzienniku. Jeśli dzienniki nie są widoczne nawet po dwóch godzinach, [utwórz bilet pomocy technicznej](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), abyśmy mogli przeanalizować tę sytuację.
 
-### <a name="missing-logs-for-recent-user-sign-ins-in-the-azure-ad-sign-ins-activity-log"></a>Zaloguj się Brak dzienników dla ostatnich operacji logowania użytkownika w ramach działania logowania usługi Azure AD
+### <a name="missing-logs-for-recent-user-sign-ins-in-the-azure-ad-sign-ins-activity-log"></a>Brak dzienników dla ostatnich logowań użytkowników w dzienniku aktywności logowania usługi Azure AD
 
 #### <a name="symptoms"></a>Objawy
 
@@ -224,8 +224,8 @@ Aby uzyskać więcej informacji, zobacz [Azure Active Directory report retention
 
 Dostępne są dwie opcje przechowywania danych przez czas dłuższy niż 30 dni. Możesz użyć [interfejsów API raportowania usługi Azure AD](concept-reporting-api.md) do programowego pobierania danych i przechowywania ich w bazie danych. Alternatywnie możesz zintegrować dzienniki inspekcji w systemie SIEM innej firmy, takim jak Splunk lub SumoLogic.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Przegląd dzienników inspekcji](concept-audit-logs.md)
-* [Omówienie logowania](concept-sign-ins.md)
-* [Przegląd ryzykownych zdarzeń](concept-risk-events.md)
+* [Przegląd logowania](concept-sign-ins.md)
+* [Omówienie ryzykownych zdarzeń](concept-risk-events.md)

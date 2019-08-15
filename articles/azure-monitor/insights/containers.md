@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: magoedte
-ms.openlocfilehash: 98b7e99e5e9d25c6708b92b02e609ad38a971054
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 5f48b1b1c8568c4f60d012797634b844a276b1bb
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381579"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951959"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Rozwiązanie do monitorowania kontenerów w Azure Monitor
 
@@ -202,11 +202,11 @@ W tej sekcji omówione kroki wymagane do zainstalowania agenta usługi Log Analy
 2. Uruchom następujące polecenia, aby utworzyć projekt dla Azure Monitor i ustawić konto użytkownika.
 
     ```
-    oadm new-project omslogging --node-selector='zone=default'
+    oc adm new-project omslogging --node-selector='zone=default'
     oc project omslogging  
     oc create serviceaccount omsagent  
-    oadm policy add-cluster-role-to-user cluster-reader   system:serviceaccount:omslogging:omsagent  
-    oadm policy add-scc-to-user privileged system:serviceaccount:omslogging:omsagent  
+    oc adm policy add-cluster-role-to-user cluster-reader   system:serviceaccount:omslogging:omsagent  
+    oc adm policy add-scc-to-user privileged system:serviceaccount:omslogging:omsagent  
     ```
 
 3. Aby wdrożyć zestaw demona, uruchom następujące polecenie:
@@ -241,11 +241,11 @@ Jeśli chcesz użyć kluczy tajnych do zabezpieczenia Twojego Identyfikatora obs
 2. Uruchom następujące polecenia, aby utworzyć projekt dla Azure Monitor i ustawić konto użytkownika. Klucz tajny, Generowanie skryptu poprosi o podanie Identyfikatora obszaru roboczego analizy dzienników `<WSID>` i klucz podstawowy `<KEY>` i po jego ukończeniu, tworzy plik ocp secret.yaml.  
 
     ```
-    oadm new-project omslogging --node-selector='zone=default'  
+    oc adm new-project omslogging --node-selector='zone=default'  
     oc project omslogging  
     oc create serviceaccount omsagent  
-    oadm policy add-cluster-role-to-user cluster-reader   system:serviceaccount:omslogging:omsagent  
-    oadm policy add-scc-to-user privileged system:serviceaccount:omslogging:omsagent  
+    oc adm policy add-cluster-role-to-user cluster-reader   system:serviceaccount:omslogging:omsagent  
+    oc adm policy add-scc-to-user privileged system:serviceaccount:omslogging:omsagent  
     ```
 
 3. Wdróż plik wpisów tajnych, uruchamiając następujące czynności:
@@ -557,7 +557,7 @@ W poniższej tabeli przedstawiono przykłady rekordów zbieranych przez to rozwi
 Etykiety są dołączane do *PodLabel* typy danych są etykiet niestandardowych. Przykładami są dołączonych etykiety PodLabel pokazano w tabeli. Dlatego `PodLabel_deployment_s`, `PodLabel_deploymentconfig_s`, `PodLabel_docker_registry_s` będą różnić się w zestawie danych w danym środowisku i ogólnie wyglądać `PodLabel_yourlabel_s`.
 
 ## <a name="monitor-containers"></a>Monitorowanie kontenerów
-Po włączeniu rozwiązania w Azure Portal na kafelku kontenery zostaną  wyświetlone informacje podsumowujące dotyczące hostów kontenerów i kontenerów uruchomionych na hostach.
+Po włączeniu rozwiązania w Azure Portal na kafelku kontenery zostaną wyświetlone informacje podsumowujące dotyczące hostów kontenerów i kontenerów uruchomionych na hostach.
 
 ![Kafelek kontenerów](./media/containers/containers-title.png)
 

@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: a0717785f4f9c1c21a18d081d157a6cdc8c12f18
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 3cdbb6587871b970c0188c0b8f510cc9f1f4fe07
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371187"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985181"
 ---
 # <a name="authorizing-access-to-azure-storage"></a>Autoryzowanie dostępu do usługi Azure Storage
 
@@ -24,11 +24,11 @@ W poniższej tabeli opisano opcje oferowane przez usługę Azure Storage do auto
 
 |  |Klucz współużytkowany (klucz konta magazynu)  |Sygnatura dostępu współdzielonego (SAS)  |Azure Active Directory (Azure AD)  |Anonimowy publiczny dostęp do odczytu  |
 |---------|---------|---------|---------|---------|
-|Obiekty blob platformy Azure     |[Obsługiwane](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[Obsługiwane](storage-dotnet-shared-access-signature-part-1.md)         |[Obsługiwane](storage-auth-aad.md)         |[Obsługiwane](../blobs/storage-manage-access-to-resources.md)         |
+|Obiekty blob platformy Azure     |[Obsługiwane](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[Obsługiwane](storage-sas-overview.md)         |[Obsługiwane](storage-auth-aad.md)         |[Obsługiwane](../blobs/storage-manage-access-to-resources.md)         |
 |Azure Files (SMB)     |[Obsługiwane](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |Nieobsługiwane         |[Obsługiwane tylko w przypadku usług domenowych w usłudze AAD](../files/storage-files-active-directory-overview.md)         |Nieobsługiwane         |
-|Azure Files (REST)     |[Obsługiwane](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[Obsługiwane](storage-dotnet-shared-access-signature-part-1.md)         |Nieobsługiwane         |Nieobsługiwane         |
-|Kolejki Azure Queue     |[Obsługiwane](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[Obsługiwane](storage-dotnet-shared-access-signature-part-1.md)         |[Obsługiwane](storage-auth-aad.md)         |Nieobsługiwane         |
-|Tabele platformy Azure     |[Obsługiwane](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[Obsługiwane](storage-dotnet-shared-access-signature-part-1.md)         |Nieobsługiwane         |Nieobsługiwane         |
+|Azure Files (REST)     |[Obsługiwane](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[Obsługiwane](storage-sas-overview.md)         |Nieobsługiwane         |Nieobsługiwane         |
+|Kolejki Azure Queue     |[Obsługiwane](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[Obsługiwane](storage-sas-overview.md)         |[Obsługiwane](storage-auth-aad.md)         |Nieobsługiwane         |
+|Tabele platformy Azure     |[Obsługiwane](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[Obsługiwane](storage-sas-overview.md)         |Nieobsługiwane         |Nieobsługiwane         |
 
 Każdą opcję autoryzacji można krótko opisać poniżej:
 
@@ -37,7 +37,7 @@ Każdą opcję autoryzacji można krótko opisać poniżej:
 - **Integracja z Azure AD Domain Services (DS) (wersja zapoznawcza)** plików. Azure Files obsługuje uwierzytelnianie oparte na tożsamościach za pośrednictwem protokołu SMB (Server Message Block) za pośrednictwem usługi Azure AD DS. Zapewnia to RBAC do szczegółowej kontroli nad dostępem klienta do zasobów na koncie magazynu. Aby uzyskać więcej informacji na temat integracji usługi Azure AD dla plików korzystających z usług domenowych, zobacz [Omówienie obsługi uwierzytelniania protokołu SMB w usłudze Azure Files Azure Active Directory (wersja](../files/storage-files-active-directory-overview.md)zapoznawcza).
 
 - **Autoryzacja klucza** współużytkowanego dla obiektów blob, plików, kolejek i tabel. Klient korzystający z klucza współużytkowanego przekazuje nagłówek z każdym żądaniem podpisanym przy użyciu klucza dostępu konta magazynu. Aby uzyskać więcej informacji, zobacz [Autoryzuj przy użyciu klucza](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)współużytkowanego.
-- **Sygnatury dostępu** współdzielonego dla obiektów blob, plików, kolejek i tabel. Sygnatury dostępu współdzielonego (SAS) zapewniają ograniczony dostęp delegowany do zasobów na koncie magazynu. Dodanie ograniczeń w przedziale czasowym, dla którego podpis jest prawidłowy lub na uprawnienia, które ma w ten sposób zapewnia elastyczność zarządzania dostępem. Aby uzyskać więcej informacji, zobacz [Używanie sygnatur dostępu współdzielonego (SAS)](storage-dotnet-shared-access-signature-part-1.md).
+- **Sygnatury dostępu** współdzielonego dla obiektów blob, plików, kolejek i tabel. Sygnatury dostępu współdzielonego (SAS) zapewniają ograniczony dostęp delegowany do zasobów na koncie magazynu. Dodanie ograniczeń w przedziale czasowym, dla którego podpis jest prawidłowy lub na uprawnienia, które ma w ten sposób zapewnia elastyczność zarządzania dostępem. Aby uzyskać więcej informacji, zobacz [Używanie sygnatur dostępu współdzielonego (SAS)](storage-sas-overview.md).
 - **Anonimowy publiczny dostęp do odczytu** dla kontenerów i obiektów BLOB. Autoryzacja nie jest wymagana. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem anonimowym w trybie odczytu do kontenerów i obiektów blob](../blobs/storage-manage-access-to-resources.md).  
 
 Domyślnie wszystkie zasoby w usłudze Azure Storage są zabezpieczone i są dostępne tylko dla właściciela konta. Chociaż można użyć dowolnej z tych strategii autoryzacji w celu udzielenia klientom dostępu do zasobów na koncie magazynu, firma Microsoft zaleca korzystanie z usługi Azure AD, gdy jest to możliwe, aby uzyskać maksymalne zabezpieczenia i łatwość użycia. 

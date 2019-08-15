@@ -1,6 +1,6 @@
 ---
-title: Problemy z wdrażaniem dla często zadawane pytania dotyczące systemu Microsoft Azure Cloud Services | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera listę często zadawanych pytań dotyczących wdrażania usług Microsoft Azure Cloud Services.
+title: Problemy z wdrażaniem Microsoft Azure Cloud Services często zadawane pytania | Microsoft Docs
+description: Ten artykuł zawiera listę często zadawanych pytań dotyczących wdrażania Microsoft Azure Cloud Services.
 services: cloud-services
 documentationcenter: ''
 author: genlin
@@ -11,73 +11,72 @@ ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
 ms.service: cloud-services
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 08d74f866fe28a4c424ba504795b4a22f09785ca
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fff70cc0c80d26d5454e54e43a6ef6c0b39b5cac
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60337327"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68941722"
 ---
-# <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problemy z wdrażaniem usług Azure Cloud Services: Często zadawane pytania (FAQ)
+# <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problemy z wdrażaniem Cloud Services platformy Azure: Często zadawane pytania
 
-Ten artykuł zawiera często zadawane pytania dotyczące problemów z wdrażaniem dla [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Można także zapoznać się [strony rozmiar maszyny Wirtualnej usługi w chmurze](cloud-services-sizes-specs.md) Aby uzyskać informacje o rozmiarze.
+W tym artykule opisano często zadawane pytania dotyczące problemów z wdrażaniem [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Informacje o rozmiarze można także znaleźć na [stronie Cloud Services rozmiaru maszyny wirtualnej](cloud-services-sizes-specs.md) .
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="why-does-deploying-a-cloud-service-to-the-staging-slot-sometimes-fail-with-a-resource-allocation-error-if-there-is-already-an-existing-deployment-in-the-production-slot"></a>Dlaczego wdrożenie usługi w chmurze do miejsca przejściowego, czasami kończy się niepowodzeniem z powodu błędu alokacji zasobów Jeśli jest już istniejącego wdrożenia w gnieździe produkcyjnym?
-Jeśli usługa w chmurze ma wdrożenia w dowolnym miejscu, usługi w chmurze całego został przypięty do określonego klastra. Oznacza to, że jeśli wdrożenia już istnieje w miejscu produkcyjnym, nowego wdrożenia przejściowego może zostać przydzielone tylko w tym samym klastrze z miejscem produkcyjnym.
+## <a name="why-does-deploying-a-cloud-service-to-the-staging-slot-sometimes-fail-with-a-resource-allocation-error-if-there-is-already-an-existing-deployment-in-the-production-slot"></a>Dlaczego wdrożenie usługi w chmurze w miejscu przejściowym czasami kończy się niepowodzeniem z powodu błędu alokacji zasobów, jeśli istnieje już istniejące wdrożenie w miejscu produkcyjnym?
+Jeśli usługa w chmurze ma wdrożenie w dowolnym miejscu, cała usługa w chmurze jest przypięta do określonego klastra. Oznacza to, że jeśli wdrożenie już istnieje w gnieździe produkcyjnym, nowe wdrożenie przejściowe może być przydzielono tylko w tym samym klastrze, w którym znajduje się miejsce produkcyjne.
 
-Błędy alokacji wystąpić, gdy klaster, w którym znajduje się usługa w chmurze nie ma wystarczającej ilości zasobów obliczeniowych fizyczne, do spełnienia żądania wdrożenia.
+Błędy alokacji występują, gdy klaster, w którym znajduje się usługa w chmurze, nie ma wystarczającej ilości fizycznych zasobów obliczeniowych do zaspokojenia Twojego żądania wdrożenia.
 
-Aby uzyskać pomoc, łagodzenia takie błędy alokacji, zobacz [niepowodzenie alokacji usługi w chmurze: Rozwiązania](cloud-services-allocation-failures.md#solutions).
+Aby uzyskać pomoc w zapobieganiu takich niepowodzeń [alokacji, zobacz niepowodzenie alokacji usługi w chmurze: Rozwiązania](cloud-services-allocation-failures.md#solutions).
 
-## <a name="why-does-scaling-up-or-scaling-out-a-cloud-service-deployment-sometimes-result-in-allocation-failure"></a>Dlaczego skalowanie w lub poza wdrażania usługi w chmurze czasami powodować niepowodzenie alokacji?
-Po wdrożeniu usługi w chmurze on zazwyczaj pobiera przypięte do określonego klastra. Oznacza to, że skalowanie w górę/out istniejącej usługi w chmurze należy przydzielić nowe wystąpienia w tym samym klastrze. Jeśli zbliża się klastra lub żądanego rozmiaru maszyny Wirtualnej i typu nie jest dostępna, żądanie może zakończyć się niepowodzeniem.
+## <a name="why-does-scaling-up-or-scaling-out-a-cloud-service-deployment-sometimes-result-in-allocation-failure"></a>Dlaczego skalowanie w górę lub skalowanie wdrożenia usługi w chmurze czasami powoduje niepowodzenie alokacji?
+Gdy usługa w chmurze jest wdrażana, zazwyczaj jest przypięta do określonego klastra. Oznacza to, że skalowanie w górę/w górę istniejącej usługi w chmurze musi przydzielić nowe wystąpienia w tym samym klastrze. Jeśli klaster zbliża się do pojemności lub żądany rozmiar i typ maszyny wirtualnej nie są dostępne, żądanie może zakończyć się niepowodzeniem.
 
-Aby uzyskać pomoc, łagodzenia takie błędy alokacji, zobacz [niepowodzenie alokacji usługi w chmurze: Rozwiązania](cloud-services-allocation-failures.md#solutions).
+Aby uzyskać pomoc w zapobieganiu takich niepowodzeń [alokacji, zobacz niepowodzenie alokacji usługi w chmurze: Rozwiązania](cloud-services-allocation-failures.md#solutions).
 
-## <a name="why-does-deploying-a-cloud-service-into-an-affinity-group-sometimes-result-in-allocation-failure"></a>Dlaczego czasem wdrażania usługi w chmurze do grupy koligacji powoduje niepowodzenie alokacji?
-Nowe wdrożenie usługi w chmurze pusty mogą zostać przydzieleni przez sieci szkieletowej w programie dowolnego klastra w danym regionie, chyba że usługi w chmurze jest przypięte do grupy koligacji. Zostanie podjęta próba wdrożenia w tej samej grupie koligacji, w tym samym klastrze. Jeśli klaster zbliża się, żądanie może zakończyć się niepowodzeniem.
+## <a name="why-does-deploying-a-cloud-service-into-an-affinity-group-sometimes-result-in-allocation-failure"></a>Dlaczego wdrożenie usługi w chmurze w grupie koligacji czasami powoduje niepowodzenie alokacji?
+Nowe wdrożenie do pustej usługi w chmurze może być przydzielone przez sieć szkieletową w dowolnym klastrze w tym regionie, chyba że usługa w chmurze jest przypięta do grupy koligacji. W tym samym klastrze podjęto próbę wdrożenia w tej samej grupie koligacji. Jeśli klaster zbliża się do pojemności, żądanie może zakończyć się niepowodzeniem.
 
-Aby uzyskać pomoc, łagodzenia takie błędy alokacji, zobacz [niepowodzenie alokacji usługi w chmurze: Rozwiązania](cloud-services-allocation-failures.md#solutions).
+Aby uzyskać pomoc w zapobieganiu takich niepowodzeń [alokacji, zobacz niepowodzenie alokacji usługi w chmurze: Rozwiązania](cloud-services-allocation-failures.md#solutions).
 
-## <a name="why-does-changing-vm-size-or-adding-a-new-vm-to-an-existing-cloud-service-sometimes-result-in-allocation-failure"></a>Dlaczego zmieniając rozmiar maszyny Wirtualnej lub dodawania nowej maszyny Wirtualnej do istniejącej usługi w chmurze, czasami powoduje niepowodzenie alokacji?
-Klastry w centrum danych mogą mieć różne konfiguracje typów maszyny (np. serii serii Av2, seria D, seria Dv2, seria G, seria H, itp.). Jednak nie wszystkie klastry musi się wszystkie rodzaje maszyn wirtualnych. Na przykład Jeśli spróbujesz dodać serii D maszyn wirtualnych do usługi w chmurze, która została już wdrożona w klastrze tylko do serii A, wystąpią wystąpił błąd alokacji. Dzieje się tak również Jeśli spróbujesz zmienić że jednostki SKU maszyny Wirtualnej o rozmiarach (np. przełączanie z serii A z serii D).
+## <a name="why-does-changing-vm-size-or-adding-a-new-vm-to-an-existing-cloud-service-sometimes-result-in-allocation-failure"></a>Dlaczego zmiana rozmiaru maszyny wirtualnej lub dodanie nowej maszyny wirtualnej do istniejącej usługi w chmurze czasami powoduje niepowodzenie alokacji?
+Klastry w centrum danych mogą mieć różne konfiguracje typów maszyn (np. serii, serii Av2, serii D, serii Dv2, serii G, serii H itp.). Ale nie wszystkie klastry muszą mieć wszystkie rodzaje maszyn wirtualnych. Na przykład jeśli spróbujesz dodać maszynę wirtualną z serii D do usługi w chmurze, która została już wdrożona w klastrze tylko z serii, wystąpi błąd alokacji. Taka sytuacja występuje również w przypadku próby zmiany rozmiarów jednostki SKU maszyny wirtualnej (na przykład przełączenia z serii do serii D).
 
-Aby uzyskać pomoc, łagodzenia takie błędy alokacji, zobacz [niepowodzenie alokacji usługi w chmurze: Rozwiązania](cloud-services-allocation-failures.md#solutions).
+Aby uzyskać pomoc w zapobieganiu takich niepowodzeń [alokacji, zobacz niepowodzenie alokacji usługi w chmurze: Rozwiązania](cloud-services-allocation-failures.md#solutions).
 
-Aby sprawdzić dostępne rozmiary w Twoim regionie, zobacz [Microsoft Azure: Dostępność produktów według regionów](https://azure.microsoft.com/regions/services).
+Aby sprawdzić dostępne rozmiary w Twoim regionie, zobacz [Microsoft Azure: Dostępne produkty według regionów](https://azure.microsoft.com/regions/services).
 
-## <a name="why-does-deploying-a-cloud-service-sometime-fail-due-to-limitsquotasconstraints-on-my-subscription-or-service"></a>Dlaczego jakiś czas wdrażania usługi w chmurze kończy się niepowodzeniem ze względu na ograniczenia/przydziały/ograniczenia na mojej subskrypcji lub usług?
-Wdrożenie usługi w chmurze może zakończyć się niepowodzeniem, jeśli zasoby, które są wymagane do przydzielenia, która przekracza domyślnych lub maksymalny limit przydziału, o których usługi na poziomie region/centrum danych. Aby uzyskać więcej informacji, zobacz [usług Cloud Services ogranicza](../azure-subscription-service-limits.md#azure-cloud-services-limits).
+## <a name="why-does-deploying-a-cloud-service-sometime-fail-due-to-limitsquotasconstraints-on-my-subscription-or-service"></a>Dlaczego wdrożenie usługi w chmurze kończy się niepowodzeniem z powodu limitów/przydziałów/ograniczeń dotyczących mojej subskrypcji lub usługi?
+Wdrożenie usługi w chmurze może zakończyć się niepowodzeniem, jeśli zasoby, które są wymagane do przydzielenia, przekraczają domyślny lub maksymalny limit przydziału dozwolony dla usługi na poziomie regionu/centrum danych. Aby uzyskać więcej informacji, zobacz [limity Cloud Services](../azure-subscription-service-limits.md#azure-cloud-services-limits).
 
-Można także śledzić bieżącego użycia/limit przydziału dla Twojej subskrypcji w portalu: Witryna Azure portal = > Subskrypcje = > \<odpowiednich subskrypcji > = > "Użycie + limitu przydziału".
+Możesz również śledzić bieżące użycie/przydział dla subskrypcji w portalu: Azure Portal = > subscriptions = \<> odpowiednie subskrypcje > = > "użycie + przydział".
 
-Informacje o zasobach związanych z użyciem/użycie można również pobrać za pośrednictwem interfejsów API rozliczeń platformy Azure. Zobacz [użycia zasobów platformy Azure, interfejsu API (wersja zapoznawcza)](../billing/billing-usage-rate-card-overview.md#azure-resource-usage-api-preview).
+Informacje dotyczące użycia zasobów/zużycia można także pobrać za pośrednictwem interfejsy API rozliczeń platformy Azure. Zobacz [interfejs API użycia zasobów platformy Azure (wersja zapoznawcza)](../billing/billing-usage-rate-card-overview.md#azure-resource-usage-api-preview).
 
-## <a name="how-can-i-change-the-size-of-a-deployed-cloud-service-vm-without-redeploying-it"></a>Jak zmienić rozmiar wdrożonej usłudze w chmurze maszyny Wirtualnej bez jej ponownego wdrażania
-Nie można zmienić rozmiar maszyny Wirtualnej wdrożonej usłudze w chmurze, bez jej ponownego wdrażania. Rozmiar maszyny Wirtualnej jest wbudowana w CSDEF, w którym można aktualizować tylko z ponownego wdrażania.
+## <a name="how-can-i-change-the-size-of-a-deployed-cloud-service-vm-without-redeploying-it"></a>Jak zmienić rozmiar wdrożonej maszyny wirtualnej usługi w chmurze bez jej ponownego wdrażania?
+Nie można zmienić rozmiaru maszyny wirtualnej wdrożonej usługi w chmurze bez jej ponownego wdrożenia. Rozmiar maszyny wirtualnej jest wbudowany w CSDEF, który można zaktualizować tylko przy użyciu ponownego wdrożenia.
 
-Aby uzyskać więcej informacji, zobacz [sposób aktualizacji usługi w chmurze](cloud-services-update-azure-service.md).
+Aby uzyskać więcej informacji, zobacz [jak zaktualizować usługę w chmurze](cloud-services-update-azure-service.md).
 
-## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>Dlaczego nie mogę wdrożyć usługi w chmurze za pośrednictwem interfejsów API zarządzania usługami lub programu PowerShell, korzystając z konta magazynu usługi Resource Manager platformy Azure? 
+## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>Dlaczego nie mogę wdrożyć Cloud Services za pośrednictwem interfejsów API zarządzania usługami lub programu PowerShell w przypadku korzystania z konta magazynu Azure Resource Manager? 
 
-Ponieważ usługa w chmurze jest zasobem klasyczne, które nie są bezpośrednio zgodne z modelem usługi Azure Resource Manager, nie można skojarzyć go z kontami magazynu usługi Resource Manager platformy Azure. Poniżej przedstawiono kilka opcji: 
+Ponieważ usługa w chmurze jest zasobem klasycznym, który nie jest bezpośrednio zgodny z modelem Azure Resource Manager, nie można go skojarzyć z kontami magazynu Azure Resource Manager. Oto kilka opcji: 
  
-- Wdrażanie za pomocą interfejsu API REST.
+- Wdrażanie przy użyciu interfejsu API REST.
 
-    Podczas wdrażania za pomocą interfejsu API REST zarządzania usługami można obejść to ograniczenie, określając adres URL sygnatury dostępu Współdzielonego do magazynu obiektów blob, które będą działać przy użyciu magazynu usługi Resource Manager platformy Azure i klasycznego konta. Przeczytaj więcej na temat właściwości "PackageUrl" [tutaj](/previous-versions/azure/reference/ee460813(v=azure.100)).
+    Podczas wdrażania za pośrednictwem interfejsu API REST usługi Service Management można obejść ograniczenie, określając adres URL sygnatury dostępu współdzielonego dla magazynu obiektów blob, który będzie działał zarówno na klasycznym, jak i Azure Resource Manager koncie magazynu. Przeczytaj więcej na temat właściwości "PackageUrl" w [tym miejscu](/previous-versions/azure/reference/ee460813(v=azure.100)).
   
-- Wdrażanie za pomocą [witryny Azure portal](https://portal.azure.com).
+- Wdrażanie za [Azure Portal](https://portal.azure.com).
 
-    Funkcja będzie działać z [witryny Azure portal](https://portal.azure.com) jako wywołanie przechodzi przez serwer proxy/podkładki, która umożliwia komunikację między zasobami usługi Azure Resource Manager i model klasyczny. 
+    Ta wartość będzie działała z [Azure Portal](https://portal.azure.com) , gdy połączenie przechodzi przez serwer proxy/podkładkę, która umożliwia komunikację między zasobami Azure Resource Manager i klasycznymi. 
  
-## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>Dlaczego witryna Azure portal wymaga mnie o podanie konta magazynu dla wdrożenia? 
+## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>Dlaczego Azure Portal wymaga podania konta magazynu na potrzeby wdrożenia? 
 
-W portalu klasycznym pakiet został przekazany bezpośrednio do warstwy interfejsu API zarządzania, a następnie warstwę interfejsu API tymczasowo będzie umieść pakiet do konta pamięci wewnętrznej.  Ten proces powoduje problemy z wydajnością i skalowalnością, ponieważ warstwę interfejsu API nie został zaprojektowany do usługi przekazywania plików.  W witrynie Azure portal (model wdrażania usługi Resource Manager) firma Microsoft ma pominąć pośredni krok w pierwszym przekazywania w warstwie interfejsu API skutkuje szybszy i bardziej niezawodny wdrożeń. 
+W portalu klasycznym pakiet został przekazany bezpośrednio do warstwy interfejsu API zarządzania, a następnie warstwa interfejsu API tymczasowo umieszcza pakiet w wewnętrznym koncie magazynu.  Ten proces powoduje problemy z wydajnością i skalowalnością, ponieważ warstwa interfejsu API nie została zaprojektowana jako usługa przekazywania plików.  W Azure Portal (Menedżer zasobów model wdrażania) pomijamy tymczasowy krok pierwszego przekazania do warstwy interfejsu API, co prowadzi do szybszego i bardziej niezawodnego wdrożenia. 
 
-Jak koszt jest bardzo mały, a następnie można ponownie użyć tego samego konta magazynu dla wszystkich wdrożeń. Możesz użyć [Kalkulator kosztów magazynowania](https://azure.microsoft.com/pricing/calculator/#storage1) ustalenie kosztów, aby przekazać pakiet usługi (CSPKG), Pobierz CSPKG, a następnie usuń CSPKG. 
+Podobnie jak w przypadku kosztu, jest to bardzo małe i można ponownie użyć tego samego konta magazynu we wszystkich wdrożeniach. [Kalkulator kosztów magazynu](https://azure.microsoft.com/pricing/calculator/#storage1) umożliwia określenie kosztu przekazania pakietu usługi (CSPKG), pobranie CSPKG, a następnie usunięcie CSPKG. 

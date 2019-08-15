@@ -5,50 +5,50 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: ccc2b574ea054a1b0ecf32a1e59691050fb66fcf
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67183171"
 ---
 ## <a name="tagging-a-virtual-machine-through-templates"></a>Tagowanie maszyny wirtualnej za pomocą szablonów
-Najpierw Przyjrzyjmy się tagowanie za pomocą szablonów. [Ten szablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags) umieszcza tagi w następujących zasobach: Obliczeń (maszyna wirtualna), magazynu (konta magazynu) i sieci, (publiczny adres IP, sieci wirtualnej i interfejsu sieciowego). Ten szablon jest dla maszyny Wirtualnej z systemem Windows, ale mogą być dostosowane do maszyn wirtualnych systemu Linux.
+Najpierw przyjrzyjmy się znakowaniu za poorednictwem szablonów. [Ten szablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags) umieszcza znaczniki w następujących zasobach: Obliczenia (maszyna wirtualna), magazyn (konto magazynu) i sieć (publiczny adres IP, Virtual Network i interfejs sieciowy). Ten szablon jest przeznaczony dla maszyny wirtualnej z systemem Windows, ale można go dostosować do maszyn wirtualnych z systemem Linux.
 
-Kliknij przycisk **Wdróż na platformie Azure** przycisk [link szablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags). Spowoduje to przejście do [witryny Azure portal](https://portal.azure.com/) którym można wdrożyć tego szablonu.
+Kliknij przycisk **Wdróż na platformie Azure** w [linku szablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags). Spowoduje to przejście do [Azure Portal](https://portal.azure.com/) , w którym można wdrożyć ten szablon.
 
-![Proste wdrożenie przy użyciu tagów](./media/virtual-machines-common-tag/deploy-to-azure-tags.png)
+![Proste wdrożenie ze znacznikami](./media/virtual-machines-common-tag/deploy-to-azure-tags.png)
 
-Ten szablon zawiera następujące tagi: *Dział*, *aplikacji*, i *utworzone przez*. Możesz można Dodawanie/edytowanie tych znaczników bezpośrednio w szablonie Jeśli różnych nazwach.
+Ten szablon zawiera następujące Tagi: *Dział*, *aplikacja*i *utworzone przez*. Możesz dodawać lub edytować te Tagi bezpośrednio w szablonie, jeśli chcesz zmienić nazwy tagów.
 
-![Usługa Azure tagów w szablonie](./media/virtual-machines-common-tag/azure-tags-in-a-template.png)
+![Tagi platformy Azure w szablonie](./media/virtual-machines-common-tag/azure-tags-in-a-template.png)
 
-Jak widać, znaczniki są definiowane jako pary klucz/wartość, oddzielone dwukropkiem (:). Tagi muszą być zdefiniowane w następującym formacie:
+Jak widać, znaczniki są definiowane jako pary klucz/wartość, oddzielone dwukropkiem (:). Tagi muszą być zdefiniowane w tym formacie:
 
         “tags”: {
             “Key1” : ”Value1”,
             “Key2” : “Value2”
         }
 
-Zapisz plik szablonu, po zakończeniu edycji za pomocą tagów wybranych przez użytkownika.
+Zapisz plik szablonu po zakończeniu edycji przy użyciu wybranych przez Ciebie tagów.
 
-Następnie w **Edytuj parametry** sekcji, możesz podać wartości dla swoich tagów.
+Następnie w sekcji **Edytuj parametry** można wypełnić wartości dla tagów.
 
-![Edytowanie tagów w witrynie Azure portal](./media/virtual-machines-common-tag/edit-tags-in-azure-portal.png)
+![Edytuj Tagi w Azure Portal](./media/virtual-machines-common-tag/edit-tags-in-azure-portal.png)
 
-Kliknij przycisk **Utwórz** do wdrożenia tego szablonu za pomocą wartości tagu.
+Kliknij przycisk **Utwórz** , aby wdrożyć ten szablon z wartościami tagów.
 
-## <a name="tagging-through-the-portal"></a>Znakowanie portalu
-Po utworzeniu zasobów przy użyciu tagów można wyświetlać, dodawać i usuwać tagi w portalu.
+## <a name="tagging-through-the-portal"></a>Tagowanie za pomocą portalu
+Po utworzeniu zasobów przy użyciu tagów można wyświetlać, dodawać i usuwać Tagi w portalu.
 
-Wybierz ikonę tagów, aby wyświetlić tagi:
+Wybierz ikonę tagów, aby wyświetlić Tagi:
 
-![Ikona tagów w witrynie Azure portal](./media/virtual-machines-common-tag/azure-portal-tags-icon.png)
+![Ikona tagów w Azure Portal](./media/virtual-machines-common-tag/azure-portal-tags-icon.png)
 
-Dodaj nowy tag za pośrednictwem portalu, definiując własne pary klucz/wartość i zapisz go.
+Dodaj nowy tag za pomocą portalu, definiując własną parę klucz/wartość i Zapisz go.
 
-![Dodawanie nowego tagu w witrynie Azure portal](./media/virtual-machines-common-tag/azure-portal-add-new-tag.png)
+![Dodaj nowy tag w Azure Portal](./media/virtual-machines-common-tag/azure-portal-add-new-tag.png)
 
-Nowy tag powinien zostać wyświetlony na liście tagi dla zasobu.
+Nowy tag powinien teraz pojawić się na liście tagów dla zasobu.
 
-![Nowy znacznik zapisane w witrynie Azure portal](./media/virtual-machines-common-tag/azure-portal-saved-new-tag.png)
+![Nowy tag zapisany w Azure Portal](./media/virtual-machines-common-tag/azure-portal-saved-new-tag.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Indeksowanie plików multimedialnych za pomocą usługi Azure Media Indexer 2 w wersji zapoznawczej | Dokumentacja firmy Microsoft
-description: Usługa Azure Media Indexer umożliwia Dodaj zawartości multimediów jako możliwej do multimedialnej możliwość wyszukiwania oraz generowanie pełnotekstowej transkrypcji na podpisy kodowane oraz słowa kluczowe. W tym temacie pokazano, jak używać programu Media Indexer 2 (wersja zapoznawcza).
+title: Indeksowanie plików multimedialnych z Azure Media Indexer 2 wersja zapoznawcza | Microsoft Docs
+description: Azure Media Indexer umożliwia przeszukiwanie zawartości plików multimedialnych oraz generowanie pełnotekstowego transkrypcji napisów i słów kluczowych. W tym temacie przedstawiono sposób korzystania z wersji zapoznawczej programu Media Indexer 2.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,50 +12,51 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/19/2019
-ms.author: adsolank;juliako;
-ms.openlocfilehash: 304ecda320e1fdd9573bc961fde74efe03400aa3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.reviewer: adsolank
+ms.openlocfilehash: 8aa3082b15886234905edaebbbc9e1458bd7e3f8
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64712950"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "69015013"
 ---
-# <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Indeksowanie plików multimedialnych za pomocą usługi Azure Media Indexer 2 w wersji zapoznawczej
+# <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Indeksowanie plików multimedialnych z Azure Media Indexer 2 wersja zapoznawcza
 ## <a name="overview"></a>Omówienie
-**Azure Media Indexer 2 w wersji zapoznawczej** procesor multimediów (MP) umożliwia Dodaj plików multimedialnych i zawartości multimedialnej możliwość wyszukiwania, a także wygenerować zamknięte śledzi podpisów. W porównaniu do poprzedniej wersji [usługi Azure Media Indexer](media-services-index-content.md), **Azure Media Indexer 2 w wersji zapoznawczej** wykonuje indeksowania szybciej i zapewnia szerszy obsługę języka. Obsługiwane języki angielski, hiszpański, francuski, niemiecki, włoski, chiński (mandaryński, uproszczonym), portugalski, arabskiego, rosyjski i japoński.
+Procesor **Azure Media Indexer 2 (wersja** zapoznawcza) umożliwia udostępnianie plików multimedialnych i zawartości, a także generowanie ścieżek napisów. W porównaniu do poprzedniej wersji [Azure Media Indexer](media-services-index-content.md), **Azure Media Indexer 2 wersja** zapoznawcza wykonuje szybsze indeksowanie i oferuje szersze wsparcie w zakresie języków. Obsługiwane języki to angielski, hiszpański, francuski, niemiecki, włoski, chiński (mandarynki, uproszczony), portugalski, arabski, rosyjski i japoński.
 
-**Azure Media Indexer 2 w wersji zapoznawczej** pakiet administracyjny jest obecnie w wersji zapoznawczej.
+Pakiet MP **Azure Media Indexer 2 w wersji** zapoznawczej jest obecnie w wersji zapoznawczej.
 
-W tym artykule przedstawiono sposób tworzenia zadania indeksowania za pomocą **Azure Media Indexer 2 w wersji zapoznawczej**.
+W tym artykule przedstawiono sposób tworzenia zadań indeksowania przy użyciu **wersji Zapoznawczej Azure Media Indexer 2**.
 
 > [!NOTE]
-> Mają zastosowanie następujące kwestie:
+> Stosuje się następujące zagadnienia:
 > 
-> Indeksatora w wersji 2 nie jest obsługiwana w chińskiej wersji platformy Azure i Azure dla instytucji rządowych.
+> Indeksator 2 nie jest obsługiwany w Chinach i Azure Government platformy Azure.
 > 
-> Podczas indeksowania zawartości, upewnij się użyć plików multimedialnych, które mają jasno mowy (bez muzyki w tle, hałasu, efekty i szumów mikrofon). Niektóre przykłady odpowiedniej zawartości to: rejestrowane spotkań, kursach i prezentacji. Następująca zawartość może nie być odpowiednie dla indeksowania: filmy, programy telewizyjne, wszystko za pomocą mieszanego audio i efekty dźwiękowe źle nagranej zawartości przy użyciu hałas w tle (szumów).
+> Podczas indeksowania zawartości upewnij się, że używasz plików multimedialnych, które mają bardzo jasne mowę (bez muzyki w tle, szumu, efektów lub HISS mikrofonu). Oto kilka przykładów odpowiedniej zawartości: zarejestrowane spotkania, wykłady lub prezentacje. Następująca zawartość może nie być odpowiednia do indeksowania: filmy, programy telewizyjne, wszystko z mieszaniem dźwięku i dYwiękiem, źle zarejestrowano zawartość z hałasem w tle (HISS).
 > 
 > 
 
-Ten artykuł zawiera szczegółowe informacje o **Azure Media Indexer 2 w wersji zapoznawczej** i pokazuje, jak z niej korzystać z zestawu SDK usługi Media Services dla platformy .NET
+Ten artykuł zawiera szczegółowe informacje na temat **Azure Media Indexer 2 w wersji** zapoznawczej i pokazuje, jak używać go z zestawem SDK Media Services dla platformy .NET
 
 ## <a name="input-and-output-files"></a>Pliki wejściowe i wyjściowe
 ### <a name="input-files"></a>Pliki wejściowe
-Plików audio i wideo
+Pliki audio lub wideo
 
 ### <a name="output-files"></a>Pliki wyjściowe
-Zadania można wygenerować plików z napisami w następujących formatach:  
+Zadanie indeksowania może generować pliki napisów w następujących formatach:  
 
 * **SAMI**
 * **TTML**
 * **WebVTT**
 
-Zamknięte podpisu (DW) plików w tych formatach można udostępnić pliki audio i wideo dla osób z wadami słuchu niepełnosprawności.
+Pliki napisów (DW) w tych formatach mogą służyć do udostępniania plików audio i wideo osobom niepełnosprawnym.
 
 ## <a name="task-configuration-preset"></a>Konfiguracja zadania (ustawienie wstępne)
-Podczas tworzenia Indeksowanie zadań za pomocą **Azure Media Indexer 2 w wersji zapoznawczej**, należy określić ustawienie wstępne konfiguracji.
+Podczas tworzenia zadania indeksowania przy użyciu **wersji Zapoznawczej Azure Media Indexer 2**należy określić ustawienie wstępne konfiguracji.
 
-Następujące dane JSON ustawia dostępne parametry.
+Poniższe ustawienia JSON określają dostępne parametry.
 
 ```json
     {
@@ -74,31 +75,31 @@ Następujące dane JSON ustawia dostępne parametry.
 ```
 
 ## <a name="supported-languages"></a>Obsługiwane języki
-Wersji zapoznawczej witryny Azure Media Indexer 2 obsługuje mowy na tekst dla następujących języków (jeśli jest określenie nazwy języka w konfiguracji zadania, użyj 4-znakowy kod w nawiasach kwadratowych, jak pokazano poniżej):
+Wersja zapoznawcza Azure Media Indexer 2 obsługuje zamianę mowy na tekst dla następujących języków (w przypadku określenia nazwy języka w konfiguracji zadania, należy użyć 4-znakowego kodu w nawiasach, jak pokazano poniżej):
 
 * Angielski [EnUs]
 * Hiszpański [EsEs]
-* Chiński (mandaryński, uproszczone) [ZhCn]
+* Chiński (mandarynki, uproszczony) [ZhCn]
 * Francuski [FrFr]
 * Niemiecki [DeDe]
 * Włoski [ItIt]
 * Portugalski [PtBr]
-* Arabski (egipska) [ArEg]
+* Arabski (Egipt) [ArEg]
 * Japoński [JaJp]
-* Federacja [RuRu]
+* Rosyjski [RuRu]
 * British English [EnGb]
 * Hiszpański (Meksyk) [EsMx] 
 
 ## <a name="supported-file-types"></a>Obsługiwane typy plików
 
-Aby uzyskać informacji na temat typów plików obsługiwanych, zobacz [obsługiwane kodery-dekodery/formaty](media-services-media-encoder-standard-formats.md#input-containerfile-formats) sekcji.
+Aby uzyskać informacje na temat typów plików obsługiwanych, zobacz sekcję [obsługiwane kodery-dekoder/formaty](media-services-media-encoder-standard-formats.md#input-containerfile-formats) .
 
-## <a name="net-sample-code"></a>Przykładowy kod .NET
+## <a name="net-sample-code"></a>Przykładowy kod platformy .NET
 
-Poniższy program pokazuje jak:
+Poniższy program pokazuje, jak:
 
-1. Utworzenie elementu zawartości i przekaż plik multimedialny do niego.
-2. Utwórz zadanie w przypadku zadania indeksowania oparte na pliku konfiguracji, który zawiera następujące ustawienie wstępne json:
+1. Utwórz element zawartości i Przekaż plik multimedialny do elementu zawartości.
+2. Utwórz zadanie przy użyciu zadania indeksowania opartego na pliku konfiguracji, który zawiera następujące ustawienia wstępne JSON:
 
     ```json
             {
@@ -116,7 +117,7 @@ Poniższy program pokazuje jak:
             }
     ```
     
-3. Pobieranie plików wyjściowych. 
+3. Pobierz pliki wyjściowe. 
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>Tworzenie i konfigurowanie projektu programu Visual Studio
 
@@ -298,8 +299,8 @@ namespace IndexContent
 ## <a name="provide-feedback"></a>Przekazywanie opinii
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="related-links"></a>Powiązane linki
-[Przegląd Analityki usługi Azure Media Services](media-services-analytics-overview.md)
+## <a name="related-links"></a>Linki pokrewne
+[Omówienie Azure Media Services Analytics](media-services-analytics-overview.md)
 
-[Pokazy usługi Azure Media Analytics](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Demonstracje Azure Media Analytics](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

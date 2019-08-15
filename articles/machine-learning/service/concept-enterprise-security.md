@@ -10,18 +10,18 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/07/2019
-ms.openlocfilehash: d1ad89943f6acfec6e42199ef399643be12e2b8b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ebecb69e57c620b2eb84568757c8e3e6f1cb1663
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856240"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946403"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Zabezpieczenia przedsiębiorstwa dla usługi Azure Machine Learning
 
 W tym artykule przedstawiono informacje o funkcjach zabezpieczeń dostępnych w usłudze Azure Machine Learning.
 
-W przypadku korzystania z usługi w chmurze najlepszym rozwiązaniem jest ograniczenie dostępu tylko do użytkowników, którzy ich potrzebują. Ten proces rozpocznie się, opisując model uwierzytelniania i autoryzacji używany przez usługę. Możesz również ograniczyć dostęp do sieci lub bezpiecznie dołączać do zasobów w sieci lokalnej przy użyciu tych w chmurze. Szyfrowanie danych jest również niezbędne, zarówno w czasie spoczynku, jak i podczas przenoszenia danych między usługami. Na koniec należy mieć możliwość monitorowania usługi i tworzenia dziennika inspekcji dla wszystkich działań.
+W przypadku korzystania z usługi w chmurze najlepszym rozwiązaniem jest ograniczenie dostępu tylko do użytkowników, którzy ich potrzebują. Ten proces rozpocznie się, opisując model uwierzytelniania i autoryzacji używany przez usługę. Możesz również ograniczyć dostęp do sieci lub bezpiecznie dołączać zasoby w sieci lokalnej do chmury. Szyfrowanie danych jest również niezbędne, zarówno w czasie spoczynku, jak i podczas przenoszenia danych między usługami. Na koniec należy mieć możliwość monitorowania usługi i tworzenia dziennika inspekcji dla wszystkich działań.
 
 ## <a name="authentication"></a>Authentication
 
@@ -29,7 +29,7 @@ Uwierzytelnianie wieloskładnikowe jest obsługiwane, jeśli Azure Active Direct
 
 * Klient loguje się do usługi Azure AD i pobiera Azure Resource Manager token.  Nazwy główne użytkowników i usług są w pełni obsługiwane.
 * Klient przedstawia token, aby Azure Resource Manager & wszystkie usługi Azure Machine Learning
-* Usługa Azure Machine Learning udostępnia token Azure Machine Learning do obliczenia przez użytkownika. Na przykład środowisko obliczeniowe usługi Machine Learning. Ten token Azure Machine Learning jest używany przez usługę obliczeniową użytkownika do wywołania zwrotnego do usługi Azure Machine Learning (ogranicza zakres do obszaru roboczego) po zakończeniu przebiegu.
+* Usługa Azure Machine Learning udostępnia token Azure Machine Learning do obliczenia przez użytkownika. Na przykład środowisko obliczeniowe usługi Machine Learning. Ten token jest używany przez usługę obliczeniową użytkownika do wywołania zwrotnego do usługi Azure Machine Learning (ogranicza zakres do obszaru roboczego) po zakończeniu przebiegu.
 
 ![Zrzut ekranu przedstawiający sposób działania uwierzytelniania w usłudze Azure Machine Learning](./media/enterprise-readiness/authentication.png)
 
@@ -159,8 +159,8 @@ Wszystkie obrazy kontenerów w rejestrze (ACR) są szyfrowane w stanie spoczynku
 
 #### <a name="machine-learning-compute"></a>Środowisko obliczeniowe usługi Machine Learning
 
-Dysk systemu operacyjnego dla każdego węzła obliczeniowego jest przechowywany w usłudze Azure Storage przy użyciu kluczy zarządzanych przez firmę Microsoft w ramach kont magazynu usługi Azure Machine Learning. To obliczenie jest tymczasowe, a klastry są zwykle skalowane w dół, gdy nie ma żadnych uruchomionych w kolejce. Podstawowa maszyna wirtualna jest nieobsługiwana i dysk systemu operacyjnego został usunięty. Usługa Azure Disk Encryption nie jest obsługiwana w przypadku dysku systemu operacyjnego.
-Każda maszyna wirtualna ma także lokalny dysk tymczasowy dla operacji systemu operacyjnego. Ten dysk może być również opcjonalnie używany do przygotowywania danych szkoleniowych. Ten dysk nie jest szyfrowany.
+Dysk systemu operacyjnego dla każdego węzła obliczeniowego jest przechowywany w usłudze Azure Storage przy użyciu kluczy zarządzanych przez firmę Microsoft w ramach kont magazynu usługi Azure Machine Learning. Ten element docelowy obliczeń jest nieulotny, a klastry są zwykle skalowane, gdy nie ma żadnych uruchomionych w kolejce. Podstawowa maszyna wirtualna jest nieobsługiwana i dysk systemu operacyjnego został usunięty. Usługa Azure Disk Encryption nie jest obsługiwana w przypadku dysku systemu operacyjnego.
+Każda maszyna wirtualna ma także lokalny dysk tymczasowy dla operacji systemu operacyjnego. Dysk może być również opcjonalnie używany do przygotowywania danych szkoleniowych. Dysk nie jest szyfrowany.
 Aby uzyskać więcej informacji na temat sposobu, w jaki szyfrowanie w spoczynku działa na platformie Azure, zobacz [szyfrowanie danych na platformie Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest).
 
 ### <a name="encryption-in-transit"></a>Szyfrowanie podczas przesyłania
@@ -199,7 +199,12 @@ Poniższy zrzut ekranu przedstawia dziennik aktywności obszaru roboczego:
 
 ![Zrzut ekranu przedstawiający dziennik aktywności w obszarze roboczym](./media/enterprise-readiness/workspace-activity-log.png)
 
-Szczegóły żądania oceniania są przechowywane w AppInsights, który jest tworzony w ramach subskrypcji użytkownika podczas tworzenia obszaru roboczego. Obejmuje to następujące pola, takie jak HTTPMethod, UserAgent, Computetype, RequestUrl, StatusCode, IdentyfikatorŻądania, Duration itd.
+Szczegóły żądania oceniania są przechowywane w usłudze Application Insights, która jest tworzona w ramach subskrypcji użytkownika podczas tworzenia obszaru roboczego. Zarejestrowane informacje zawierają pola, takie jak HTTPMethod, UserAgent, Computetype, RequestUrl, StatusCode, IdentyfikatorŻądania, Duration itd.
+
+> [!IMPORTANT]
+> Niektóre akcje w obszarze roboczym Azure Machine Learning nie rejestrują informacji w dzienniku aktywności. Na przykład uruchomienie szkolenia lub zarejestrowanie modelu.
+>
+> Niektóre z tych akcji są wyświetlane w obszarze __działania__ obszaru roboczego, ale nie wskazują, kto zainicjował działanie.
 
 ## <a name="data-flow-diagram"></a>Diagram przepływu danych
 
@@ -220,7 +225,7 @@ Inne obliczenia dołączone do obszaru roboczego (usługa Azure Kubernetes, masz
 ### <a name="save-source-code-training-scripts"></a>Zapisz kod źródłowy (skrypty szkoleniowe)
 
 Na poniższym diagramie przedstawiono przepływ pracy migawek kodu.
-Skojarzona z obszarem roboczym usługi Azure Machine Learning są katalogami (eksperymenty), które zawierają kod źródłowy (skrypty szkoleniowe).  Są one przechowywane na lokalnym komputerze klienta i w chmurze (w Blob Storage na platformie Azure w ramach subskrypcji klienta). Te migawki kodu są używane do wykonywania lub inspekcji inspekcji historycznej.
+Skojarzona z obszarem roboczym usługi Azure Machine Learning są katalogami (eksperymenty), które zawierają kod źródłowy (skrypty szkoleniowe).  Te skrypty są przechowywane na lokalnym komputerze klienta i w chmurze (w Blob Storage na platformie Azure w ramach subskrypcji klienta). Migawki kodu są używane do wykonywania lub inspekcji inspekcji historycznej.
 
 ![Zrzut ekranu przedstawiający przepływ pracy tworzenia obszaru roboczego](./media/enterprise-readiness/code-snapshot.png)
 
@@ -233,12 +238,12 @@ Na poniższym diagramie przedstawiono przepływ pracy szkoleniowej.
 * Można wybrać zarządzane obliczenia (np. Środowisko obliczeniowe usługi Machine Learning) lub obliczeń niezarządzanych (np. Maszyna wirtualna) do uruchamiania zadań szkoleniowych. Przepływ danych został wyjaśniony dla poniższych scenariuszy:
 * (Maszyna wirtualna/HDInsight — dostęp z użyciem poświadczeń SSH w Key Vault w ramach subskrypcji firmy Microsoft) Usługa Azure Machine Learning uruchamia kod zarządzania w miejscu docelowym obliczeń, który:
 
-   1. Przygotowuje środowisko. (Należy pamiętać, że platforma Docker jest opcją dla maszyny wirtualnej i lokalnego. Aby dowiedzieć się, jak działa środowisko Docker, należy zapoznać się z poniższymi krokami środowisko obliczeniowe usługi Machine Learning.
+   1. Przygotowuje środowisko. (Platforma Docker jest opcją dla maszyny wirtualnej i lokalnego. Aby dowiedzieć się, jak działa środowisko Docker, należy zapoznać się z poniższymi krokami środowisko obliczeniowe usługi Machine Learning.
    1. Pobiera kod.
    1. Konfiguruje zmienne środowiskowe i konfiguracje.
    1. Uruchamia skrypt użytkownika (migawka kodu wymieniona powyżej).
 
-* (Środowisko obliczeniowe usługi Machine Learning — dostęp przy użyciu tożsamości zarządzanej w obszarze roboczym) Należy pamiętać, że ponieważ środowisko obliczeniowe usługi Machine Learning jest zarządzanym wynikiem obliczeń, który jest zarządzany przez firmę Microsoft, w związku z czym jest uruchamiany w ramach subskrypcji firmy Microsoft.
+* (Środowisko obliczeniowe usługi Machine Learning — dostęp przy użyciu tożsamości zarządzanej przez obszar roboczy) Ponieważ środowisko obliczeniowe usługi Machine Learning jest zarządzanym obliczaniem, który jest zarządzany przez firmę Microsoft, w związku z czym jest uruchamiany w ramach subskrypcji firmy Microsoft.
 
    1. Zdalna konstrukcja platformy Docker jest wyłączona, w razie konieczności.
    1. Zapisuje kod zarządzania w udziale użytkownika platformy Azure.
@@ -259,7 +264,7 @@ Zobacz szczegóły poniżej:
 * Użytkownik tworzy obraz przy użyciu modelu, pliku wynikowego i innych zależności modelu
 * Obraz platformy Docker jest tworzony i przechowywany w ACR
 * Usługa WebService jest wdrażana w obiekcie docelowym obliczeń (ACI/AKS) przy użyciu utworzonego powyżej obrazu
-* Szczegóły żądania oceniania są przechowywane w AppInsights, który jest w subskrypcji użytkownika
+* Szczegóły żądania oceniania są przechowywane w usłudze Application Insights, która jest w subskrypcji użytkownika
 * Dane telemetryczne są również wypychane do subskrypcji firmy Microsoft/platformy Azure
 
 ![Zrzut ekranu przedstawiający przepływ pracy tworzenia obszaru roboczego](./media/enterprise-readiness/inferencing.png)

@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 4df8ff8abfeb7a6ba96ec3344407e95e0a9a3b3d
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c4314a0dcbbcb907ef4d6de0a2788cf04dfe1641
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728717"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934863"
 ---
 # <a name="secure-development-best-practices-on-azure"></a>Bezpieczne programowanie najlepszych rozwiązań na platformie Azure
 W tej serii artykułów przedstawiono działania i mechanizmy kontroli zabezpieczeń, które należy wziąć pod uwagę podczas opracowywania aplikacji dla chmury. Fazy cyklu projektowania zabezpieczeń firmy Microsoft (SDL) i pytania zabezpieczające oraz pojęcia, które należy wziąć pod uwagę podczas każdej fazy cyklu życia, zostały omówione. Celem jest ułatwienie zdefiniowania działań i usług platformy Azure, których można używać w każdej fazie cyklu życia w celu projektowania, opracowywania i wdrażania bezpieczniejszej aplikacji.
@@ -27,7 +27,7 @@ Zalecenia zawarte w artykułach pochodzą z naszego doświadczenia związanego z
 
 Te artykuły są przeznaczone dla projektantów oprogramowania, deweloperów i testerów na wszystkich poziomach, którzy tworzą i wdrażają bezpieczne aplikacje platformy Azure.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Bezpieczeństwo jest jednym z najważniejszych aspektów dowolnych aplikacji i nie jest prostą kwestią, aby uzyskać prawo. Na szczęście platforma Azure oferuje wiele usług, które mogą pomóc w zabezpieczeniu aplikacji w chmurze. Te artykuły zawierają adresy i usługi platformy Azure, które można wdrożyć na każdym etapie cyklu projektowania oprogramowania, aby ułatwić tworzenie bezpieczniejszego kodu i wdrażanie bezpieczniejszej aplikacji w chmurze.
 
@@ -69,7 +69,7 @@ Skorzystaj z następujących zasobów, aby dowiedzieć się więcej na temat two
 
 [Wypychanie z lewej strony, jak piasta](https://code.likeagirl.io/pushing-left-like-a-boss-part-1-80f1f007da95?WT.mc_id=docs-blog-tajanca) — szereg artykułów online, które przedstawiają różne typy działań zabezpieczeń aplikacji, które deweloperzy powinni zakończyć, aby utworzyć bardziej bezpieczny kod.
 
-[Platforma tożsamości firmy Microsoft](https://docs.microsoft.com/azure/active-directory/develop/) — platforma tożsamości firmy Microsoft to ewolucja usługi tożsamości usługi Azure AD i platformy deweloperskiej. Jest to w pełni funkcjonalna platforma, która składa się z usługi uwierzytelniania, bibliotek typu open source, rejestracji aplikacji i konfiguracji, pełnej dokumentacji dla deweloperów, przykładów kodu i innej zawartości dla deweloperów. Platforma tożsamości firmy Microsoft obsługuje protokoły standardowe branżowe, takie jak OAuth 2,0 i OpenID Connect Connect.
+[Platforma tożsamości firmy Microsoft](../../active-directory/develop/index.yml) — platforma tożsamości firmy Microsoft to ewolucja usługi tożsamości usługi Azure AD i platformy deweloperskiej. Jest to w pełni funkcjonalna platforma, która składa się z usługi uwierzytelniania, bibliotek typu open source, rejestracji aplikacji i konfiguracji, pełnej dokumentacji dla deweloperów, przykładów kodu i innej zawartości dla deweloperów. Platforma tożsamości firmy Microsoft obsługuje protokoły standardowe branżowe, takie jak OAuth 2,0 i OpenID Connect Connect.
 
 [Najlepsze rozwiązania w zakresie zabezpieczeń dla rozwiązań platformy Azure](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions/) — zbiór najlepszych rozwiązań dotyczących zabezpieczeń do użycia podczas projektowania, wdrażania i zarządzania rozwiązaniami w chmurze przy użyciu platformy Azure. Ten dokument jest przeznaczony dla informatyków. Może to obejmować projektantów, architektów, deweloperów i testerów, którzy tworzą i wdrażają bezpieczne rozwiązania platformy Azure.
 
