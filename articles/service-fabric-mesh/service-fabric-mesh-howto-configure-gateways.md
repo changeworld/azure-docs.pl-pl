@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie bramy kierujące żądania | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować bramę, który obsługuje ruchem przychodzącym, aby Twoje aplikacje uruchomione na usługi Service Fabric siatki.
+title: Konfigurowanie bramy do przesyłania żądań | Microsoft Docs
+description: Dowiedz się, jak skonfigurować bramę obsługującą ruch przychodzący dla aplikacji działających na Service Fabric siatki.
 services: service-fabric-mesh
 documentationcenter: .net
 author: dkkapur
@@ -8,40 +8,39 @@ manager: chakdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric-mesh
-ms.devlang: azure-cli
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/28/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 2e2502e35b3720ddbfe5950b89e2388de378f2ba
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b4fc6f91ee2429205974b9cb7ceb05b7cff53f15
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60583645"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034211"
 ---
-# <a name="configure-a-gateway-resource-to-route-requests"></a>Konfigurowanie zasobu bramy w celu kierowania żądań
+# <a name="configure-a-gateway-resource-to-route-requests"></a>Konfigurowanie zasobu bramy do przesyłania żądań
 
-Zasobu bramy jest używana kierującą ruch przychodzący z siecią, która przechowuje aplikacji. Skonfigurować tak, aby określić zasady, przez które żądania są kierowane do określonych usług lub punktów końcowych na podstawie struktury żądania. Zobacz [wprowadzenie do sieci w programie Service Fabric siatki](service-fabric-mesh-networks-and-gateways.md) Aby uzyskać więcej informacji na temat sieci i bramy w sieci. 
+Zasób bramy służy do kierowania ruchem przychodzącym do sieci, w której znajduje się Twoja aplikacja. Skonfiguruj, aby określić reguły, za pomocą których żądania są kierowane do określonych usług lub punktów końcowych w oparciu o strukturę żądania. Aby uzyskać więcej informacji o sieciach i bramach w sieci, zobacz [wprowadzenie do sieci w Service Fabric siatki](service-fabric-mesh-networks-and-gateways.md) . 
 
-Zasoby bramy musi być zadeklarowany jako część szablonu wdrożenia (JSON lub yaml) i są zależne od zasobu sieciowego. W tym dokumencie opisano różne właściwości, które można ustawić dla bramy i obejmuje przykładowej konfiguracji bramy.
+Zasoby bramy muszą być zadeklarowane jako część szablonu wdrożenia (JSON lub YAML) i są zależne od zasobu sieciowego. Ten dokument zawiera opis różnych właściwości, które można ustawić dla bramy, i obejmuje przykładową konfigurację bramy.
 
-## <a name="options-for-configuring-your-gateway-resource"></a>Opcje dotyczące konfigurowania zasobu bramy
+## <a name="options-for-configuring-your-gateway-resource"></a>Opcje konfigurowania zasobu bramy
 
-Ponieważ zasobu brama stanowi Most między siecią aplikacji i sieci podstawowej infrastruktury ( `open` sieci). Należy tylko skonfigurować jedną (w wersji zapoznawczej siatki, jest ograniczona do jednej bramy aplikacji). Deklaracja dla zasobu, który składa się z dwie główne części: metadanych zasobów i właściwości. 
+Ponieważ zasób bramy służy jako Most między siecią aplikacji a siecią źródłową infrastruktury ( `open` sieć). Należy tylko skonfigurować jeden (w podglądzie siatki, istnieje limit jednej bramy dla każdej aplikacji). Deklaracja dla zasobu składa się z dwóch głównych części: metadanych zasobów i właściwości. 
 
-### <a name="gateway-resource-metadata"></a>Metadane zasobu bramy
+### <a name="gateway-resource-metadata"></a>Metadane zasobów bramy
 
-Brama jest zadeklarowana za pomocą następujące metadane:
-* `apiVersion` -musi być ustawiona na "2018-09-01-preview" (lub później, w przyszłości)
-* `name` — nazwy ciągu dla tej bramy
-* `type` -"Microsoft.ServiceFabricMesh/gateways"
-* `location` — powinna być ustawiona na lokalizacji aplikacji / sieci; zwykle będzie odwołania do parametru lokalizacji w danym wdrożeniu
-* `dependsOn` -sieci, dla którego ta brama będzie służyć jako punkt danych przychodzących dla
+Brama jest zadeklarowana przy użyciu następujących metadanych:
+* `apiVersion`-musi być ustawiony na wartość "2018-09-01-Preview" (lub nowszą, w przyszłości)
+* `name`-Nazwa ciągu dla tej bramy
+* `type`-"Microsoft. ServiceFabricMesh/Gateways"
+* `location`-powinna być ustawiona na lokalizację aplikacji/sieci; zwykle będzie to odwołanie do parametru lokalizacji we wdrożeniu
+* `dependsOn`— Sieć, dla której ta brama będzie działać jako punkt transferu dla
 
-Oto jak wygląda w szablonie wdrożenia usługi Azure Resource Manager (JSON): 
+Oto jak wygląda w szablonie wdrożenia Azure Resource Manager (JSON): 
 
 ```json
 {
@@ -60,11 +59,11 @@ Oto jak wygląda w szablonie wdrożenia usługi Azure Resource Manager (JSON):
 
 ### <a name="gateway-properties"></a>Właściwości bramy
 
-Sekcja właściwości służy do definiowania sieci, między którymi znajduje się brama i reguł routingu żądań. 
+Sekcja właściwości służy do definiowania sieci, między którymi jest brama, oraz reguł żądań routingu. 
 
-#### <a name="source-and-destination-network"></a>Źródłowe i docelowe sieci 
+#### <a name="source-and-destination-network"></a>Sieć źródłowa i docelowa 
 
-Każda brama wymaga `sourceNetwork` i `destinationNetwork`. Sieć źródłowa jest zdefiniowana jako sieć, z którego Twoja aplikacja będzie otrzymywać żądań przychodzących. Właściwość name powinny być zawsze ustawiony na "Otwarte". Sieć docelowa to sieć, która przeznaczonych do żądania. Wartość to nazwa powinna być równa nazwę zasobu w sieci lokalnej aplikacji (powinien zawierać pełną dokumentację do zasobu). Poniżej znajdują się przykładowe konfiguracji programu jak to wygląda dla wdrożenia w sieci o nazwie "myNetwork".
+Każda Brama wymaga programu `sourceNetwork` i `destinationNetwork`. Sieć źródłowa jest definiowana jako sieć, z której aplikacja będzie odbierać żądania przychodzące. Właściwość Name powinna zawsze być ustawiona na wartość "Open". Sieć docelowa to sieć, do której są kierowane żądania. Wartość nazwy dla tej opcji powinna być ustawiona na nazwę zasobu sieci lokalnej aplikacji (powinna zawierać pełne odwołanie do zasobu). Poniżej znajduje się Przykładowa konfiguracja tego, jak wygląda w przypadku wdrożenia w sieci o nazwie "Moja sieć".
 
 ```json 
 "properties": {
@@ -81,16 +80,16 @@ Każda brama wymaga `sourceNetwork` i `destinationNetwork`. Sieć źródłowa je
 
 #### <a name="rules"></a>Reguły 
 
-Brama może mieć wiele routingu reguły określające sposób przychodzący ruch będzie obsługiwana. Reguła routingu definiuje relację między port nasłuchujący i docelowy punkt końcowy dla danej aplikacji. W przypadku reguł routingu TCP istnieje mapowanie 1:1 między Port: punkt końcowy. Dla reguł routingu dla protokołu HTTP można ustawić bardziej złożone zasady routingu, które zbadać ścieżka żądania i opcjonalnie nagłówki, aby zdecydować, jak żądania będą kierowane. 
+Brama może mieć wiele reguł routingu, które określają sposób obsługi ruchu przychodzącego. Reguła routingu definiuje relację między portem nasłuchiwania i docelowym punktem końcowym dla danej aplikacji. W przypadku reguł routingu TCP istnieje mapowanie 1:1 między portem: punkt końcowy. W przypadku reguł routingu HTTP można ustawić bardziej złożone reguły routingu, które badają ścieżkę żądania oraz opcjonalnie nagłówki, aby określić, jak będzie kierowane żądanie. 
 
-Reguły routingu są określane na podstawie poszczególnych portów. Każdy port transferu danych przychodzących ma swój własny tablicę reguł w sekcji właściwości w pliku config bramy. 
+Reguły routingu są określane dla poszczególnych portów. Każdy port transferu danych przychodzących ma własną tablicę reguł w sekcji Właściwości konfiguracji bramy. 
 
 #### <a name="tcp-routing-rules"></a>Reguły routingu TCP 
 
-Reguły routingu TCP składa się z następującymi właściwościami: 
-* `name` — Odwołanie do regułę, która może być dowolnym ciągiem wybranych przez użytkownika 
-* `port` -port do nasłuchiwania żądań przychodzących 
-* `destination` -Specyfikacja punktu końcowego, który zawiera `applicationName`, `serviceName`, i `endpointName`, dla których żądania muszą być kierowane do
+Reguła routingu TCP składa się z następujących właściwości: 
+* `name`-odwołanie do reguły, która może być dowolnym dowolnym ciągiem 
+* `port`-Port, na którym nasłuchuje żądań przychodzących 
+* `destination`-Specyfikacja punktu końcowego `applicationName`obejmująca `serviceName`, i `endpointName`, w przypadku których żądania muszą być kierowane do
 
 Oto przykładowa reguła routingu TCP:
 
@@ -112,21 +111,21 @@ Oto przykładowa reguła routingu TCP:
 ```
 
 
-#### <a name="http-routing-rules"></a>Reguły routingu protokołu HTTP 
+#### <a name="http-routing-rules"></a>Reguły routingu HTTP 
 
-Reguły routingu HTTP składa się z następującymi właściwościami: 
-* `name` — Odwołanie do regułę, która może być dowolnym ciągiem wybranych przez użytkownika 
-* `port` -port do nasłuchiwania żądań przychodzących 
-* `hosts` -Tablica zasady, które dotyczą żądań przychodzących do różnych "hosts" na porcie określonym powyżej. Hosty to zbiór aplikacji i usług, które mogą działać w sieci i mogą obsługiwać żądania przychodzące, czyli aplikacji sieci web. Zasady hosta są interpretowane w kolejności, dlatego należy utworzyć następujące malejąco poziomy specyficzności
-    * `name` — Nazwa DNS hosta, dla którego określono następujące reguły routingu. Za pomocą "*" w tym miejscu utworzyć reguły routingu dla wszystkich hostów.
-    * `routes` -Tablica zasad dla tego konkretnego hosta
-        * `match` -na podstawie specyfikacji struktury żądania przychodzące dla tej reguły zastosować, `path`
-            * `path` -zawiera `value` (przychodzący identyfikator URI), `rewrite` (jak chcesz, aby żądania, które mają być przekazywane) i `type` (obecnie może składać się wyłącznie "Prefiks")
-            * `header` -jest tablicą opcjonalne nagłówki wartości do dopasowania w nagłówku żądania, że jeśli żądanie pasuje do specyfikacji ścieżki (powyżej).
-              * Każdy wpis zawiera `name` (ciąg Nazwa nagłówka do dopasowania) `value` (wartość nagłówka w żądaniu ciągu) i `type` (obecnie może składać się wyłącznie "Exact")
-        * `destination` -Jeśli żądanie jest zgodne, będą kierowane do tego miejsca docelowego, który jest określony przy użyciu `applicationName`, `serviceName`, i `endpointName`
+Reguła routingu HTTP składa się z następujących właściwości: 
+* `name`-odwołanie do reguły, która może być dowolnym dowolnym ciągiem 
+* `port`-Port, na którym nasłuchuje żądań przychodzących 
+* `hosts`-tablicę zasad, które mają zastosowanie do żądań skierowanych do różnych "hostów" na porcie określonym powyżej. Hosty to zbiór aplikacji i usług, które mogą być uruchomione w sieci i mogą obsługiwać żądania przychodzące, np. aplikację sieci Web. Zasady hosta są interpretowane w podanej kolejności, dlatego należy utworzyć następujące elementy na malejących poziomach
+    * `name`-Nazwa DNS hosta, dla którego określono następujące reguły routingu. Użycie znaku "*" spowoduje utworzenie reguł routingu dla wszystkich hostów.
+    * `routes`-tablicę zasad dla tego konkretnego hosta
+        * `match`-Specyfikacja przychodzącej struktury żądań dla tej reguły na podstawie`path`
+            * `path`-zawiera `value` (przychodzący identyfikator URI `rewrite` ), (w jaki sposób żądanie ma zostać `type` przesłane dalej) i (obecnie tylko "prefiks")
+            * `header`-to opcjonalna Tablica wartości nagłówków do dopasowania w nagłówku żądania, gdy żądanie jest zgodne ze specyfikacją ścieżki (powyżej).
+              * Każdy wpis zawiera `name` (Nazwa ciągu nagłówka do dopasowania), `value` (wartość ciągu nagłówka w `type` żądaniu) i (teraz może być tylko "dokładne")
+        * `destination`— Jeśli żądanie jest zgodne, zostanie przekazane do tego miejsca docelowego, które jest określone przy użyciu `applicationName`, i `serviceName``endpointName`
 
-Oto przykład HTTP reguły routingu będzie stosowane do żądania przychodzące na porcie 80, dla wszystkich hostów, obsługiwane przez aplikacje w tej sieci. Jeśli adres URL żądania zawiera strukturę, która pasuje do specyfikacji ścieżki, czyli `<IPAddress>:80/pickme/<requestContent>`, a następnie nastąpi przekierowanie do `myListener` punktu końcowego.  
+Poniżej znajduje się przykład reguły routingu HTTP, która powinna być stosowana do żądań przychodzących na porcie 80, do wszystkich hostów obsługiwanych przez aplikacje w tej sieci. Jeśli adres URL żądania ma strukturę zgodną ze specyfikacją ścieżki, tj. `<IPAddress>:80/pickme/<requestContent>`, zostanie ona skierowana `myListener` do punktu końcowego.  
 
 ```json
 "properties": {
@@ -161,9 +160,9 @@ Oto przykład HTTP reguły routingu będzie stosowane do żądania przychodzące
 }
 ```
 
-## <a name="sample-config-for-a-gateway-resource"></a>Przykład konfiguracji dla zasobu bramy 
+## <a name="sample-config-for-a-gateway-resource"></a>Przykładowa konfiguracja dla zasobu bramy 
 
-Oto jak wygląda pełną konfigurację zasobu bramy (jest to zaczerpnięte z przykładowych danych przychodzących dostępne w [siatki przykłady repozytorium](https://github.com/Azure-Samples/service-fabric-mesh/blob/2018-09-01-preview/templates/ingress/meshingress.linux.json)):
+Oto jak wygląda pełna Konfiguracja zasobów bramy (jest to dostosowana z przykładu danych przychodzących dostępnych w [repozytorium próbek siatki](https://github.com/Azure-Samples/service-fabric-mesh/blob/2018-09-01-preview/templates/ingress/meshingress.linux.json)):
 
 ```json
 {
@@ -227,9 +226,9 @@ Oto jak wygląda pełną konfigurację zasobu bramy (jest to zaczerpnięte z prz
 }
 ```
 
-Ta brama jest skonfigurowana dla aplikacji systemu Linux, "meshAppLinux", który składa się z co najmniej dwie usługi: "helloWorldService" i "counterService", która nasłuchuje na porcie 80. W zależności od struktury adresu URL żądania przychodzącego jej będzie kierować żądania do jednego z tych usług. 
-* "\<Adres IP >: 80/helloWorld/\<żądania\>" spowodowałoby żądanie jest kierowane do "helloWorldListener" w helloWorldService. 
-* "\<Adres IP >: 80/licznik/\<żądania\>" spowodowałoby żądanie jest kierowane do "counterListener" w counterService. 
+Ta brama jest skonfigurowana dla aplikacji systemu Linux "meshAppLinux", która składa się z co najmniej dwóch usług, "helloWorldService" i "counterService", które nasłuchuje na porcie 80. W zależności od struktury adresu URL żądania przychodzącego kieruje ono żądanie do jednej z tych usług. 
+* "\<AdresIP >: 80/helloWorld/\<Request\>" spowoduje skierowanie żądania do elementu "helloWorldListener" w helloWorldService. 
+* "\<AdresIP >: 80/Counter/\<Request\>" spowoduje skierowanie żądania do elementu "counterListener" w CounterService. 
 
-## <a name="next-steps"></a>Kolejne kroki
-* Wdrażanie [przykładowych danych przychodzących](https://github.com/Azure-Samples/service-fabric-mesh/tree/2018-09-01-preview/templates/ingress) można wyświetlić bramy w działaniu
+## <a name="next-steps"></a>Następne kroki
+* Wdróż [przykład](https://github.com/Azure-Samples/service-fabric-mesh/tree/2018-09-01-preview/templates/ingress) transferu danych przychodzących, aby zobaczyć bramy w działaniu

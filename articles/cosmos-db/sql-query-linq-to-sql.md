@@ -1,29 +1,29 @@
 ---
-title: LINQ do SQL tłumaczenia w usłudze Azure Cosmos DB
-description: Mapowanie zapytań LINQ do zapytań SQL usługi Azure Cosmos DB.
+title: Tłumaczenie LINQ to SQL w Azure Cosmos DB
+description: Mapowanie zapytań LINQ do Azure Cosmos DB zapytań SQL.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: tisande
-ms.openlocfilehash: 057614da8fd29e1208c2788049c5d6d1a985eed5
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: ce9d96a90a2463d1ab8e1a9774a019e38ca681f4
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342699"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036030"
 ---
 # <a name="linq-to-sql-translation"></a>Tłumaczenie składni LINQ na język SQL
 
-Dostawca usługi Azure Cosmos DB zapytania wykonuje najlepsze mapowania nakład pracy w wyniku zapytania LINQ do zapytań SQL usługi Cosmos DB. Poniższy opis założono podstawowe znajomość LINQ.
+Dostawca zapytań Azure Cosmos DB wykonuje Mapowanie najlepszego nakładu pracy z zapytania LINQ do Cosmos DB zapytania SQL. W poniższym opisie założono podstawową znajomość programu LINQ.
 
-System typu dostawcy zapytań obsługuje tylko typy pierwotne JSON: liczbowe, atrybut typu wartość logiczna, ciąg, a wartość null.
+System typu dostawcy zapytań obsługuje tylko typy pierwotne JSON: numeric, Boolean, String i null.
 
-Dostawcy zapytań obsługuje następujące wyrażenia skalarne:
+Dostawca zapytań obsługuje następujące wyrażenia skalarne:
 
-- Stałe wartości, w tym stałe wartości pierwotnych typów danych w czasie oceny kwerendy.
+- Stałe wartości, w tym stałe wartości typów danych pierwotnych w czasie oceny zapytania.
   
-- Wyrażenia indeksu tablicy/właściwości, które odwołują się do właściwości elementu tablicy lub obiektu. Na przykład:
+- Wyrażenia indeksu właściwości/tablicy odwołujące się do właściwości obiektu lub elementu tablicy. Przykład:
   
   ```
     family.Id;
@@ -32,21 +32,21 @@ Dostawcy zapytań obsługuje następujące wyrażenia skalarne:
     family.children[n].grade; //n is an int variable
   ```
   
-- Wyrażenia arytmetyczne, w tym wspólnych wyrażeniach arytmetycznych na wartościach liczbowych i logicznych. Aby uzyskać pełną listę, zobacz [specyfikacji SQL usługi Azure Cosmos DB](https://go.microsoft.com/fwlink/p/?LinkID=510612).
+- Wyrażenia arytmetyczne, w tym typowe wyrażenia arytmetyczne na wartościach liczbowych i logicznych. Aby zapoznać się z pełną listą, zobacz [specyfikację SQL Azure Cosmos DB](https://go.microsoft.com/fwlink/p/?LinkID=510612).
   
   ```
     2 * family.children[0].grade;
     x + y;
   ```
   
-- Wyrażenia porównania ciągu, obejmujących porównanie wartości ciągu na wartość stałą ciągu.  
+- Wyrażenia porównania ciągów, które obejmują porównanie wartości ciągu z pewną stałą wartością ciągu.  
   
   ```
     mother.familyName == "Wakefield";
     child.givenName == s; //s is a string variable
   ```
   
-- Tablica/obiektów tworzenia wyrażeń, które zwracają obiekt typu złożonego wartości lub typu anonimowego lub tablicę obiektów. Można zagnieżdżać te wartości.
+- Wyrażenia tworzenia obiektów/tablic, które zwracają obiekt typu wartości złożonej lub typu anonimowego, lub tablicę takich obiektów. Można zagnieżdżać te wartości.
   
   ```
     new Parent { familyName = "Wakefield", givenName = "Robin" };
@@ -54,33 +54,33 @@ Dostawcy zapytań obsługuje następujące wyrażenia skalarne:
     new int[] { 3, child.grade, 5 };
   ```
 
-## <a id="SupportedLinqOperators"></a>Obsługiwane operatory zapytań LINQ
+## <a id="SupportedLinqOperators"></a>Obsługiwane operatory LINQ
 
-Dostawca LINQ, dołączone do zestawu .NET SDK SQL obsługuje następujące operatory:
+Dostawca LINQ zawarty w zestawie SDK programu SQL .NET obsługuje następujące operatory:
 
-- **Select**: Aby wybrać SQL, w tym konstrukcji obiektu wykonuje translację elementu projekcji.
-- **Where**: Filtry przełożyć na WHERE języka SQL i obsługują tłumaczenie między `&&`, `||`, i `!` operatorów SQL
-- **SelectMany**: umożliwia rozwijanie tablic do klauzuli JOIN języka SQL. Użyj, aby utworzyć łańcuch lub zagnieżdżanie wyrażeń do filtrowania elementów tablicy.
-- **OrderBy** i **OrderByDescending**: Wykonuje translację elementu do zamówienia, za pomocą usługi ASC lub DESC.
+- **Select**: Projekcje przekładają się na wybór SQL, w tym Konstruowanie obiektu.
+- **Where**: Filtry przekładają się na SQL, gdzie i obsługują `&&`tłumaczenie `||`między, `!` i do operatorów SQL
+- **SelectMany**: umożliwia rozwijanie tablic do klauzuli JOIN języka SQL. Użyj do łańcucha lub zagnieżdżania wyrażeń do filtrowania elementów tablicy.
+- **OrderBy** i **OrderByDescending**: Tłumaczenie na ORDER BY przy użyciu ASC lub DESC.
 - Operatory **Count**, **Sum**, **Min**, **Max** i **Average** na potrzeby agregacji oraz ich asynchroniczne odpowiedniki **CountAsync**, **SumAsync**, **MinAsync**, **MaxAsync** i **AverageAsync**.
-- **CompareTo**: operator tłumaczony na porównania zakresu. Często używane dla ciągów, ponieważ nie jest porównywalny na platformie .NET.
-- **Take**: Przekłada się na GÓRZE SQL do ograniczania wyników z zapytania.
-- **Funkcje matematyczne**: Tłumaczenie z .NET obsługuje `Abs`, `Acos`, `Asin`, `Atan`, `Ceiling`, `Cos`, `Exp`, `Floor`, `Log`, `Log10`, `Pow`, `Round`, `Sign`, `Sin`, `Sqrt`, `Tan`, i `Truncate` na równoważne funkcje wbudowane SQL.
-- **Ciąg funkcje**: Tłumaczenie z .NET obsługuje `Concat`, `Contains`, `Count`, `EndsWith`,`IndexOf`, `Replace`, `Reverse`, `StartsWith`, `SubString`, `ToLower`, `ToUpper`, `TrimEnd`, i `TrimStart` na równoważne funkcje wbudowane SQL.
-- **Funkcje tablicy**: Tłumaczenie z .NET obsługuje `Concat`, `Contains`, i `Count` na równoważne funkcje wbudowane SQL.
-- **Funkcje Geoprzestrzenne rozszerzeń**: Obsługuje tłumaczenie z metodami klasy zastępczej `Distance`, `IsValid`, `IsValidDetailed`, i `Within` na równoważne funkcje wbudowane SQL.
-- **Funkcja zdefiniowana przez użytkownika funkcji rozszerzenia**: Obsługuje tłumaczenia z metody klasy zastępczej `UserDefinedFunctionProvider.Invoke` do odpowiednich funkcji zdefiniowanej przez użytkownika.
-- **Różne**: Obsługuje tłumaczenie `Coalesce` i operatorów warunkowych. Może dokonywać translacji `Contains` zawiera ciąg, ARRAY_CONTAINS lub IN SQL, w zależności od kontekstu.
+- **CompareTo**: operator tłumaczony na porównania zakresu. Często używane dla ciągów, ponieważ nie są one porównywalne w programie .NET.
+- **Take**: Tłumaczy na wierzch SQL w celu ograniczenia wyników zapytania.
+- **Funkcje matematyczne**: Obsługuje tłumaczenie z platformy `Abs`.NET `Acos`, `Asin` `Atan` `Ceiling` ,,`Floor`, ,,`Cos`,,,, ,`Pow` `Exp` `Log` `Log10` `Round`, `Sign`, ,,`Sin`i dorównoważnychfunkcji`Truncate` wbudowanych języka SQL. `Sqrt` `Tan`
+- **Funkcje ciągów**: Obsługuje tłumaczenie z platformy `Concat`.NET `Contains`, `Count` `EndsWith``IndexOf` ,,`StartsWith`, ,,`Replace`,,,, ,`ToUpper` `Reverse` `SubString` `ToLower` `TrimEnd` i`TrimStart` do równoważnych funkcji wbudowanych języka SQL.
+- **Funkcje tablicowe**: Obsługuje tłumaczenie z platformy `Concat`.NET `Contains`, i `Count` do równoważnych funkcji wbudowanych języka SQL.
+- **Funkcje rozszerzenia**geograficznego: Obsługuje tłumaczenie z `Distance`metod zastępczych `IsValid` `IsValidDetailed`,, i `Within` do równoważnych funkcji wbudowanych języka SQL.
+- **Funkcja rozszerzenia funkcji zdefiniowanej przez użytkownika**: Obsługuje tłumaczenie z metody `UserDefinedFunctionProvider.Invoke` zastępczej do odpowiedniej funkcji zdefiniowanej przez użytkownika.
+- **Różne**: Obsługuje translację `Coalesce` i operatory warunkowe. Można przetłumaczyć `Contains` na ciąg zawiera, ARRAY_CONTAINS lub SQL w, w zależności od kontekstu.
 
 ## <a name="examples"></a>Przykłady
 
-Poniższe przykłady ilustrują, jak tłumaczenie niektóre standardowe operatory zapytań LINQ do zapytań usługi Cosmos DB.
+Poniższe przykłady ilustrują, jak niektóre standardowe operatory zapytań LINQ przekładają się na zapytania Cosmos DB.
 
 ### <a name="select-operator"></a>Wybierz operator
 
 Składnia to `input.Select(x => f(x))`, gdzie `f` jest wyrażeniem skalarnym.
 
-**Wybierz operator, przykład 1:**
+**SELECT — operator, przykład 1:**
 
 - **Wyrażenie lambda składni LINQ**
   
@@ -95,7 +95,7 @@ Składnia to `input.Select(x => f(x))`, gdzie `f` jest wyrażeniem skalarnym.
       FROM Families f
     ```
   
-**Wybierz operator, przykład 2:** 
+**SELECT — operator, przykład 2:** 
 
 - **Wyrażenie lambda składni LINQ**
   
@@ -110,7 +110,7 @@ Składnia to `input.Select(x => f(x))`, gdzie `f` jest wyrażeniem skalarnym.
       FROM Families f
   ```
   
-**Wybierz operator, przykład 3:**
+**SELECT — operator, przykład 3:**
 
 - **Wyrażenie lambda składni LINQ**
   
@@ -151,7 +151,7 @@ Składnia to `input.SelectMany(x => f(x))`, gdzie `f` jest wyrażeniem skalarnym
 
 Składnia to `input.Where(x => f(x))`, gdzie `f` jest wyrażenie skalarnym, które zwraca wartość logiczną.
 
-**Gdy operator, na przykład 1:**
+**Operator WHERE, przykład 1:**
 
 - **Wyrażenie lambda składni LINQ**
   
@@ -167,7 +167,7 @@ Składnia to `input.Where(x => f(x))`, gdzie `f` jest wyrażenie skalarnym, któ
       WHERE f.parents[0].familyName = "Wakefield"
   ```
   
-**Gdy operator, na przykład 2:**
+**Operator WHERE, przykład 2:**
 
 - **Wyrażenie lambda składni LINQ**
   
@@ -188,19 +188,19 @@ Składnia to `input.Where(x => f(x))`, gdzie `f` jest wyrażenie skalarnym, któ
 
 ## <a name="composite-sql-queries"></a>Złożone zapytania języka SQL
 
-Można utworzyć, poprzedni operatorów w celu utworzenia bardziej zaawansowane kwerendy. Ponieważ usługi Cosmos DB obsługuje zagnieżdżone kontenery, można połączyć lub zagnieździć kompozycji.
+Możesz złożyć poprzednie operatory, aby tworzyć bardziej zaawansowane zapytania. Ponieważ Cosmos DB obsługuje zagnieżdżone kontenery, można łączyć lub zagnieżdżać kompozycję.
 
 ### <a name="concatenation"></a>Łączenie
 
-Składnia to `input(.|.SelectMany())(.Select()|.Where())*`. Zapytania połączonych można uruchomić z opcjonalnymi `SelectMany` zapytania, a następnie za pomocą wielu `Select` lub `Where` operatorów.
+Składnia to `input(.|.SelectMany())(.Select()|.Where())*`. Połączone zapytanie może rozpoczynać się od opcjonalnego `SelectMany` zapytania, po którym następuje `Select` wiele `Where` operatorów lub.
 
 **Łączenie, przykład 1:**
 
 - **Wyrażenie lambda składni LINQ**
   
   ```csharp
-      input.Select(family=>family.parents[0])
-          .Where(familyName == "Wakefield");
+      input.Select(family => family.parents[0])
+          .Where(parent => parent.familyName == "Wakefield");
   ```
 
 - **SQL**
@@ -264,9 +264,9 @@ Składnia to `input(.|.SelectMany())(.Select()|.Where())*`. Zapytania połączon
 
 ### <a name="nesting"></a>Zagnieżdżanie
 
-Składnia jest `input.SelectMany(x=>x.Q())` gdzie `Q` jest `Select`, `SelectMany`, lub `Where` operatora.
+Składnia `input.SelectMany(x=>x.Q())` to gdzie `Q` jest `Select`operator ,`SelectMany`, or `Where` .
 
-Zapytanie zagnieżdżone dotyczy zapytanie wewnętrzne każdy element obiektu kontenera. Jedną funkcję ważne jest, czy zapytanie wewnętrzne mogą odwoływać się do pól elementów w kontenerze zewnętrzne, takie jak samosprzężenie.
+Zapytanie zagnieżdżone stosuje wewnętrzne zapytanie do każdego elementu zewnętrznego kontenera. Jedną z ważnych funkcji jest to, że zapytanie wewnętrzne może odwoływać się do pól elementów w kontenerze zewnętrznym, takich jak samosprzężenie.
 
 **Zagnieżdżanie, przykład 1:**
 
@@ -322,7 +322,7 @@ Zapytanie zagnieżdżone dotyczy zapytanie wewnętrzne każdy element obiektu ko
   ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Przykłady dla platformy .NET w usłudze Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-dotnet)
-- [Modelowanie danych dokumentów](modeling-data.md)
+- [Dane dokumentu modelu](modeling-data.md)

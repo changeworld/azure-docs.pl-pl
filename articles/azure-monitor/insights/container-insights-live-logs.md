@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 968ee4c8bb5d7e09ef3c345c46f6c7b839e0e25a
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 2eab6fa75e4adbbde7bcf20f18301a1e516235c2
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67990033"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035346"
 ---
 # <a name="how-to-view-logs-and-events-in-real-time-preview"></a>Jak wyświetlać dzienniki i zdarzenia w czasie rzeczywistym (wersja zapoznawcza)
 Azure Monitor dla kontenerów zawiera funkcję, która jest obecnie dostępna w wersji zapoznawczej, która umożliwia wyświetlanie na żywo w usłudze Azure Kubernetes Service (AKS) Logs (stdout/stderr) i zdarzenia bez konieczności uruchamiania poleceń polecenia kubectl. Po wybraniu jednej z tych opcji nowe okienko zostanie wyświetlone poniżej tabeli dane wydajności w **węźle węzły**, **Kontrolery**i **kontenery** . Pokazuje rejestrowanie na żywo i zdarzenia wygenerowane przez aparat kontenera, aby dodatkowo pomóc w rozwiązywaniu problemów w czasie rzeczywistym.
@@ -72,7 +72,7 @@ Po włączeniu autoryzacji RBAC platformy Kubernetes, należy zastosować powią
 
 AKS można skonfigurować do uwierzytelniania użytkowników usługi Azure Active Directory (AD). Jeśli konfigurujesz ją po raz pierwszy, zobacz Integrowanie [Azure Active Directory z usługą Azure Kubernetes](../../aks/azure-ad-integration.md). Podczas wykonywania kroków w celu utworzenia [aplikacji klienckiej](../../aks/azure-ad-integration.md#create-the-client-application)określ następujące elementy:
 
-- **Identyfikator URI przekierowania (opcjonalnie)** : Jest to typ aplikacji **sieci Web** , a podstawowa wartość `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`adresu URL to.
+-  **Identyfikator URI przekierowania**: Należy utworzyć dwa typy aplikacji **sieci Web** . Pierwszą podstawową wartością adresu URL powinna być `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` , a druga podstawowa wartość `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`adresu URL.
 - Po zarejestrowaniu aplikacji na stronie **Przegląd** wybierz pozycję **uwierzytelnianie** w okienku po lewej stronie. Na stronie **uwierzytelnianie** w obszarze **Ustawienia zaawansowane** niejawnie Udziel **tokenów dostępu** i **tokenów identyfikatorów** , a następnie Zapisz zmiany.
 
 >[!NOTE]

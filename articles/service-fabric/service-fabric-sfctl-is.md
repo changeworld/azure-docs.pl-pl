@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric interfejsu wiersza polecenia — interfejs sfctl jest | Dokumentacja firmy Microsoft
-description: W tym artykule opisano interfejs wiersza polecenia usługi Service Fabric sfctl jest poleceń.
+title: Interfejs wiersza polecenia platformy Azure Service Fabric to | Microsoft Docs
+description: Service Fabric opisuje sfctl interfejsu wiersza polecenia.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -8,76 +8,75 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 2039dd9222809d2c05aaeaf01f9d38c51f3b3797
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 998a94350250402d4face64f64e12f32cf5b2a36
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837325"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036487"
 ---
 # <a name="sfctl-is"></a>sfctl is
-Zapytania i wysyłanie poleceń do usługi infrastruktury.
+Wykonywanie zapytań i wysyłanie poleceń do usługi infrastruktury.
 
 ## <a name="commands"></a>Polecenia
 
 |Polecenie|Opis|
 | --- | --- |
-| Polecenie | Wywołuje polecenie administracyjne dla danego wystąpienia usługi infrastruktury. |
-| query | Wywołuje zapytanie tylko do odczytu w wystąpieniu usługi danej infrastruktury. |
+| Polecenie | Wywołuje polecenie administracyjne w danym wystąpieniu usługi infrastruktury. |
+| query | Wywołuje zapytanie tylko do odczytu dla danego wystąpienia usługi infrastruktury. |
 
-## <a name="sfctl-is-command"></a>Interfejs sfctl to polecenie
-Wywołuje polecenie administracyjne dla danego wystąpienia usługi infrastruktury.
+## <a name="sfctl-is-command"></a>sfctl jest poleceniem
+Wywołuje polecenie administracyjne w danym wystąpieniu usługi infrastruktury.
 
-W przypadku klastrów, które mają co najmniej jedno wystąpienie usługi infrastruktury, skonfigurować ten interfejs API umożliwia wysyłanie poleceń specyficznych dla infrastruktury do konkretnego wystąpienia usługi infrastruktury. Dostępnych poleceń i ich odpowiednich formatów odpowiedź zależy od infrastruktury, na którym jest uruchomiony klaster. Ten interfejs API obsługuje platformy usługi Service Fabric; nie jest przeznaczona do użycia bezpośrednio w kodzie.
-
-### <a name="arguments"></a>Argumenty
-
-|Argument|Opis|
-| --- | --- |
-| — polecenie [wymagane] | Tekst polecenia do wywołania. Zawartość polecenia jest specyficzne dla infrastruktury. |
-| --service-id | Tożsamość usługi infrastruktury. <br><br> Jest to pełna nazwa usługi infrastruktury bez "Service fabric\:" schemat identyfikatora URI. Ten parametr jest wymagane tylko dla klastra który zawiera więcej niż jedno wystąpienie infrastruktury usługa jest uruchomiona. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
-
-### <a name="global-arguments"></a>Argumenty globalne
-
-|Argument|Opis|
-| --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
-
-## <a name="sfctl-is-query"></a>Interfejs sfctl jest zapytanie
-Wywołuje zapytanie tylko do odczytu w wystąpieniu usługi danej infrastruktury.
-
-W przypadku klastrów, które mają co najmniej jedno wystąpienie usługi infrastruktury, skonfigurować ten interfejs API umożliwia wysyłanie zapytań specyficznych dla infrastruktury do konkretnego wystąpienia usługi infrastruktury. Dostępnych poleceń i ich odpowiednich formatów odpowiedź zależy od infrastruktury, na którym jest uruchomiony klaster. Ten interfejs API obsługuje platformy usługi Service Fabric; nie jest przeznaczona do użycia bezpośrednio w kodzie.
+W przypadku klastrów, dla których skonfigurowano co najmniej jedno wystąpienie usługi infrastruktury, ten interfejs API umożliwia wysyłanie poleceń specyficznych dla infrastruktury do określonego wystąpienia usługi infrastruktury. Dostępne polecenia i odpowiadające im formaty odpowiedzi różnią się w zależności od infrastruktury, w której działa klaster. Ten interfejs API obsługuje platformę Service Fabric. nie jest przeznaczona do użycia bezpośrednio w kodzie.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| — polecenie [wymagane] | Tekst polecenia do wywołania. Zawartość polecenia jest specyficzne dla infrastruktury. |
-| --service-id | Tożsamość usługi infrastruktury. <br><br> Jest to pełna nazwa usługi infrastruktury bez "Service fabric\:" schemat identyfikatora URI. Ten parametr jest wymagane tylko dla klastra który zawiera więcej niż jedno wystąpienie infrastruktury usługa jest uruchomiona. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| --polecenie [wymagane] | Tekst polecenia, który ma zostać wywołany. Zawartość polecenia jest specyficzna dla infrastruktury. |
+| --service-id | Tożsamość usługi infrastruktury. <br><br> Jest to pełna nazwa usługi infrastruktury bez schematu identyfikatora URI "Sieć szkieletowa\:". Ten parametr jest wymagany tylko w przypadku klastra, na którym działa więcej niż jedno wystąpienie usługi infrastruktury. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
+
+## <a name="sfctl-is-query"></a>sfctl jest kwerendą
+Wywołuje zapytanie tylko do odczytu dla danego wystąpienia usługi infrastruktury.
+
+W przypadku klastrów, dla których skonfigurowano co najmniej jedno wystąpienie usługi infrastruktury, ten interfejs API umożliwia wysyłanie zapytań specyficznych dla infrastruktury do określonego wystąpienia usługi infrastruktury. Dostępne polecenia i odpowiadające im formaty odpowiedzi różnią się w zależności od infrastruktury, w której działa klaster. Ten interfejs API obsługuje platformę Service Fabric. nie jest przeznaczona do użycia bezpośrednio w kodzie.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Opis|
+| --- | --- |
+| --polecenie [wymagane] | Tekst polecenia, który ma zostać wywołany. Zawartość polecenia jest specyficzna dla infrastruktury. |
+| --service-id | Tożsamość usługi infrastruktury. <br><br> Jest to pełna nazwa usługi infrastruktury bez schematu identyfikatora URI "Sieć szkieletowa\:". Ten parametr jest wymagany tylko w przypadku klastra, na którym działa więcej niż jedno wystąpienie usługi infrastruktury. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
+
+### <a name="global-arguments"></a>Argumenty globalne
+
+|Argument|Opis|
+| --- | --- |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
 
-## <a name="next-steps"></a>Kolejne kroki
-- [Konfigurowanie](service-fabric-cli.md) interfejsu wiersza polecenia usługi Service Fabric.
-- Dowiedz się, jak używać przy użyciu interfejsu wiersza polecenia usługi Service Fabric [przykładowe skrypty](/azure/service-fabric/scripts/sfctl-upgrade-application).
+## <a name="next-steps"></a>Następne kroki
+- [Skonfiguruj](service-fabric-cli.md) interfejs wiersza polecenia Service Fabric.
+- Dowiedz się, jak używać interfejsu wiersza polecenia Service Fabric przy użyciu [przykładowych skryptów](/azure/service-fabric/scripts/sfctl-upgrade-application).

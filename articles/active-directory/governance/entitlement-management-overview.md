@@ -1,5 +1,5 @@
 ---
-title: Co to jest zarządzanie prawami w usłudze Azure AD? (Wersja zapoznawcza) — Azure Active Directory
+title: Co to jest zarządzanie upoważnieniami w usłudze Azure AD? (Wersja zapoznawcza) — Azure Active Directory
 description: Zapoznaj się z omówieniem zarządzania uprawnieniami Azure Active Directory i sposobami korzystania z niego do zarządzania dostępem do grup, aplikacji i witryn usługi SharePoint Online dla użytkowników wewnętrznych i zewnętrznych.
 services: active-directory
 documentationCenter: ''
@@ -16,14 +16,14 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12452b4e9cc6caa64d4c81a310fbccb5d1717817
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: d93a20494886bb7d563439e2699f60bedb646dcd
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678154"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032555"
 ---
-# <a name="what-is-azure-ad-entitlement-management-preview"></a>Co to jest zarządzanie prawami w usłudze Azure AD? (wersja zapoznawcza)
+# <a name="what-is-azure-ad-entitlement-management-preview"></a>Co to jest zarządzanie upoważnieniami w usłudze Azure AD? (wersja zapoznawcza)
 
 > [!IMPORTANT]
 > Zarządzanie prawami w usłudze Azure Active Directory (Azure AD) jest obecnie dostępne w publicznej wersji zapoznawczej.
@@ -33,6 +33,10 @@ ms.locfileid: "68678154"
 Pracownicy w organizacjach potrzebują dostępu do różnych grup, aplikacji i witryn w celu wykonywania ich zadań. Zarządzanie tym dostępem jest trudne. W większości przypadków nie ma zorganizowanej listy wszystkich zasobów wymaganych przez użytkownika dla projektu. Menedżer projektu jest dobrym zrozumieniem wymaganych zasobów, osób, których to dotyczy, oraz czasu, przez jaki projekt będzie ostatni. Jednak Menedżer projektu zwykle nie ma uprawnień do zatwierdzania lub udzielania dostępu innym osobom. Ten scenariusz jest bardziej skomplikowany podczas próby pracy z zewnętrznymi osobami lub firmami.
 
 Zarządzanie prawami Azure Active Directory (Azure AD) ułatwia zarządzanie dostępem do grup, aplikacji i witryn usługi SharePoint Online dla użytkowników wewnętrznych, a także użytkowników spoza organizacji.
+
+Ten film wideo zawiera omówienie zarządzania uprawnieniami i jego wartości biznesowej:
+
+>[!VIDEO https://www.youtube.com/embed/_Lss6bFrnQ8]
 
 ## <a name="why-use-entitlement-management"></a>Dlaczego warto korzystać z zarządzania prawami?
 

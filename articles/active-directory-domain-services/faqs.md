@@ -1,6 +1,6 @@
 ---
-title: Często zadawane pytania — usługa Azure Active Directory Domain Services | Dokumentacja firmy Microsoft
-description: Często zadawane pytania dotyczące usługi Azure Active Directory Domain Services
+title: Często zadawane pytania — Azure Active Directory Domain Services | Microsoft Docs
+description: Często zadawane pytania dotyczące Azure Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: iainfoulds
@@ -15,93 +15,93 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 10131ad306a8a24cb5835e55a02f1b502b20bea4
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 3d44937c977ba264d671f2053d387470651af68a
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473369"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69030886"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services: Często zadawane pytania
-Ta strona odpowiedzi na często zadawane pytania dotyczące usługi Azure Active Directory Domain Services. Wracaj aktualizacje.
+Ta strona zawiera odpowiedzi na często zadawane pytania dotyczące Azure Active Directory Domain Services. Kontynuuj sprawdzanie aktualizacji.
 
 ## <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
-Zapoznaj się [przewodnik rozwiązywania problemów](troubleshoot.md) dla rozwiązania typowych problemów z Konfigurowanie lub administrowania usługami domenowymi Azure AD.
+Zapoznaj się z [przewodnikiem rozwiązywania problemów](troubleshoot.md) , aby zapoznać się z typowymi problemami dotyczącymi konfigurowania i administrowania Azure AD Domain Services.
 
 ## <a name="configuration"></a>Konfigurowanie
-### <a name="can-i-create-multiple-managed-domains-for-a-single-azure-ad-directory"></a>Można utworzyć wiele domen zarządzanych dla pojedynczego katalogu usługi Azure AD?
-Nie. Można tworzyć tylko jednej domeny zarządzanej, obsługiwany przez usług domenowych Azure AD dla pojedynczego katalogu usługi Azure AD.  
+### <a name="can-i-create-multiple-managed-domains-for-a-single-azure-ad-directory"></a>Czy mogę utworzyć wiele domen zarządzanych dla jednego katalogu usługi Azure AD?
+Nie. Można utworzyć tylko jedną domenę zarządzaną, Azure AD Domain Services dla jednego katalogu usługi Azure AD.  
 
-### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-resource-manager-virtual-network"></a>Można włączyć usługi domenowe Azure AD w sieci wirtualnej usługi Azure Resource Manager?
-Tak. Usługi domenowe Azure AD można włączyć w sieci wirtualnej usługi Azure Resource Manager. Klasyczne sieci wirtualne platformy Azure nie są już obsługiwane do tworzenia nowych domen zarządzanych.
+### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-resource-manager-virtual-network"></a>Czy mogę włączyć Azure AD Domain Services w sieci wirtualnej Azure Resource Manager?
+Tak. Azure AD Domain Services można włączyć w Azure Resource Manager sieci wirtualnej. Klasyczne sieci wirtualne platformy Azure nie są już obsługiwane na potrzeby tworzenia nowych domen zarządzanych.
 
-### <a name="can-i-migrate-my-existing-managed-domain-from-a-classic-virtual-network-to-a-resource-manager-virtual-network"></a>Czy mogę przenieść mój istniejąca domena zarządzana z klasyczną siecią wirtualną z siecią wirtualną usługi Resource Manager
-Obecnie nie. Microsoft będzie dostarczać mechanizm do migracji istniejąca domena zarządzana z klasyczną siecią wirtualną z siecią wirtualną Menedżera zasobów w przyszłości.
+### <a name="can-i-migrate-my-existing-managed-domain-from-a-classic-virtual-network-to-a-resource-manager-virtual-network"></a>Czy mogę migrować istniejącą domenę zarządzaną z klasycznej sieci wirtualnej do sieci wirtualnej Menedżer zasobów?
+Obecnie nie. Firma Microsoft dostarczy mechanizm migracji istniejącej domeny zarządzanej z klasycznej sieci wirtualnej do Menedżer zasobów sieci wirtualnej w przyszłości.
 
-### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-csp-cloud-solution-provider-subscription"></a>Można włączyć usługi domenowe Azure AD w ramach subskrypcji Azure CSP (dostawca rozwiązań w chmurze)?
-Tak. Zobacz, jak umożliwić [usług domenowych Azure AD w ramach subskrypcji Azure CSP](csp.md).
+### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-csp-cloud-solution-provider-subscription"></a>Czy mogę włączyć Azure AD Domain Services w ramach subskrypcji dostawcy rozwiązań w chmurze (CSP) platformy Azure?
+Tak. Zobacz, jak można włączyć [Azure AD Domain Services w subskrypcjach CSP platformy Azure](csp.md).
 
-### <a name="can-i-enable-azure-ad-domain-services-in-a-federated-azure-ad-directory-i-do-not-synchronize-password-hashes-to-azure-ad-can-i-enable-azure-ad-domain-services-for-this-directory"></a>Można włączyć usługi domenowe Azure AD w federacyjnych Azure AD directory? Czy mogę synchronizuje skrótów haseł z usługą Azure AD. Można włączyć usługi domenowe Azure AD dla tego katalogu?
-Nie. Usługi domenowe Azure AD wymaga dostępu do skróty haseł kont użytkowników w celu uwierzytelniania użytkowników za pomocą protokołu NTLM lub Kerberos. W katalogu federacyjnego skrótów haseł nie są przechowywane w katalogu usługi Azure AD. W związku z tym usług domenowych Azure AD nie działa z tych katalogów usługi Azure AD.
+### <a name="can-i-enable-azure-ad-domain-services-in-a-federated-azure-ad-directory-i-do-not-synchronize-password-hashes-to-azure-ad-can-i-enable-azure-ad-domain-services-for-this-directory"></a>Czy mogę włączyć Azure AD Domain Services w federacyjnym katalogu usługi Azure AD? Nie synchronizuję skrótów haseł z usługą Azure AD. Czy mogę włączyć Azure AD Domain Services dla tego katalogu?
+Nie. Azure AD Domain Services musi mieć dostęp do skrótów haseł kont użytkowników, aby uwierzytelniać użytkowników za pośrednictwem protokołu NTLM lub Kerberos. W katalogu federacyjnym skróty haseł nie są przechowywane w katalogu usługi Azure AD. W związku z tym Azure AD Domain Services nie działa z takimi katalogami usługi Azure AD.
 
-### <a name="can-i-make-azure-ad-domain-services-available-in-multiple-virtual-networks-within-my-subscription"></a>Czy można utworzyć usługi Azure AD Domain Services dostępna w wielu sieci wirtualnych w ramach mojej subskrypcji?
-Sama usługa nie obsługuje bezpośrednio w tym scenariuszu. Twoja domena zarządzana jest dostępna w tylko jednej sieci wirtualnej w danym momencie. Można jednak skonfigurować łączność między wieloma sieciami wirtualnymi w celu udostępnienia usług domenowych Azure AD z innymi sieciami wirtualnymi. Zobacz, jak można [łączenie sieci wirtualnych na platformie Azure](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md).
+### <a name="can-i-make-azure-ad-domain-services-available-in-multiple-virtual-networks-within-my-subscription"></a>Czy mogę udostępniać Azure AD Domain Services w wielu sieciach wirtualnych w ramach mojej subskrypcji?
+Sama usługa nie obsługuje bezpośrednio tego scenariusza. Twoja domena zarządzana jest dostępna tylko w jednej sieci wirtualnej naraz. Istnieje jednak możliwość skonfigurowania łączności między wieloma sieciami wirtualnymi w celu udostępnienia Azure AD Domain Services innym sieciom wirtualnym. Zobacz, jak [połączyć sieci wirtualne na platformie Azure](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md).
 
-### <a name="can-i-enable-azure-ad-domain-services-using-powershell"></a>Można włączyć usługi domenowe Azure AD przy użyciu programu PowerShell?
-Tak. Zobacz [jak włączyć usługę Azure AD Domain Services przy użyciu programu PowerShell](powershell-create-instance.md).
+### <a name="can-i-enable-azure-ad-domain-services-using-powershell"></a>Czy mogę włączyć Azure AD Domain Services przy użyciu programu PowerShell?
+Tak. Zobacz [jak włączyć Azure AD Domain Services przy użyciu programu PowerShell](powershell-create-instance.md).
 
-### <a name="can-i-enable-azure-ad-domain-services-using-a-resource-manager-template"></a>Można włączyć usługi domenowe Azure AD przy użyciu szablonu usługi Resource Manager?
-Nie, nie jest obecnie można włączyć usługi domenowe Azure AD przy użyciu szablonu. Zamiast tego użyj programu PowerShell, zobacz [jak włączyć usługę Azure AD Domain Services przy użyciu programu PowerShell](powershell-create-instance.md).
+### <a name="can-i-enable-azure-ad-domain-services-using-a-resource-manager-template"></a>Czy mogę włączyć Azure AD Domain Services przy użyciu szablonu Menedżer zasobów?
+Nie, obecnie nie jest możliwe Włączanie Azure AD Domain Services przy użyciu szablonu. Zamiast tego należy użyć programu PowerShell, zobacz [jak włączyć Azure AD Domain Services przy użyciu programu PowerShell](powershell-create-instance.md).
 
-### <a name="can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain"></a>Czy mogę dodać kontrolerów domeny do domeny zarządzanej usług domenowych Azure AD?
-Nie. Domeny oferowanymi przez usługi Azure AD Domain Services jest domeną zarządzaną. Nie trzeba aprowizować, konfigurując lub inny sposób zarządzania kontrolerami domeny dla tej domeny — tych działań związanych z zarządzaniem są dostarczane jako usługa przez firmę Microsoft. W związku z tym nie można dodać dodatkowe kontrolery domeny (odczytu i zapisu lub tylko do odczytu) dla domeny zarządzanej.
+### <a name="can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain"></a>Czy można dodać kontrolery domeny do Azure AD Domain Services domeny zarządzanej?
+Nie. Domena udostępniona przez Azure AD Domain Services jest domeną zarządzaną. Nie ma potrzeby udostępniania, konfigurowania ani zarządzania kontrolerami domeny dla tej domeny — te działania związane z zarządzaniem są udostępniane jako usługa przez firmę Microsoft. W związku z tym nie można dodać dodatkowych kontrolerów domeny (do odczytu i zapisu lub tylko do odczytu) dla domeny zarządzanej.
 
-### <a name="can-guest-users-invited-to-my-directory-use-azure-ad-domain-services"></a>Użytkownicy-goście zaproszenie do katalogu, można użyć usług domenowych Azure AD?
-Nie. Użytkownicy-goście zaproszenie do katalogu usługi Azure AD za pomocą [usługi Azure AD B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) procesu zaproszenia są synchronizowane Twojej domeny zarządzanej usług domenowych Azure AD. Hasła dla tych użytkowników nie są przechowywane w katalogu usługi Azure AD. W związku z tym usługi domenowe Azure AD nie ma możliwości synchronizacji NTLM i Kerberos wyznacza wartość skrótu dla tych użytkowników do domeny zarządzanej. W wyniku tych użytkowników nie można zalogować się do domeny zarządzanej lub dołączania komputerów do domeny zarządzanej.
+### <a name="can-guest-users-invited-to-my-directory-use-azure-ad-domain-services"></a>Czy użytkownicy-Goście zaproszeni do mojego katalogu używają Azure AD Domain Services?
+Nie. Użytkownicy-Goście zaproszeni do katalogu usługi Azure AD przy użyciu procesu zapraszania [B2B usługi Azure AD](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) są synchronizowane w Azure AD Domain Services domenie zarządzanej. Jednak hasła dla tych użytkowników nie są przechowywane w katalogu usługi Azure AD. W związku z tym Azure AD Domain Services nie ma możliwości synchronizacji skrótów NTLM i Kerberos dla tych użytkowników w domenie zarządzanej. W związku z tym użytkownicy nie mogą zalogować się do domeny zarządzanej ani przyłączyć komputerów do domeny zarządzanej.
 
 ## <a name="administration-and-operations"></a>Administracja i operacje
-### <a name="can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop"></a>Można podłączyć do kontrolera domeny dla mojej domeny zarządzanej przy użyciu pulpitu zdalnego?
-Nie. Nie masz uprawnień do łączenia się z kontrolerami domeny dla domeny zarządzanej za pośrednictwem pulpitu zdalnego. Członkowie grupy "Administratorzy usługi AAD DC" mogą administrować domeny zarządzanej za pomocą narzędzi administracji usługi AD, takich jak Centrum administracji usługi Active Directory (ADAC) lub programu PowerShell usługi AD. Te narzędzia są zainstalowane na serwerze Windows przyłączone do domeny zarządzanej przy użyciu funkcji "Narzędzia administracji zdalnej serwera".
+### <a name="can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop"></a>Czy można połączyć się z kontrolerem domeny dla mojej domeny zarządzanej przy użyciu Pulpit zdalny?
+Nie. Nie masz uprawnień do łączenia się z kontrolerami domeny dla domeny zarządzanej za pośrednictwem Pulpit zdalny. Członkowie grupy "Administratorzy usługi AAD DC" mogą administrować zarządzaną domeną przy użyciu narzędzi administracyjnych usług AD, takich jak Active Directory Administration Center (usługach ADAC) lub AD PowerShell. Te narzędzia są instalowane przy użyciu funkcji "Narzędzia administracji zdalnej serwera" na serwerze z systemem Windows przyłączonym do domeny zarządzanej.
 
-### <a name="ive-enabled-azure-ad-domain-services-what-user-account-do-i-use-to-domain-join-machines-to-this-domain"></a>Czy włączono usługi domenowe Azure AD. Które konto użytkownika należy używać do domeny dołączania maszyn do tej domeny?
-Członkowie grupy administracyjnej "Administratorzy usługi AAD DC" można maszyn przyłączania do domeny. Ponadto Członkowie tej grupy uzyskują dostęp zdalny do pulpitu na maszynach, które zostały dołączone do domeny.
+### <a name="ive-enabled-azure-ad-domain-services-what-user-account-do-i-use-to-domain-join-machines-to-this-domain"></a>Włączono Azure AD Domain Services. Jakie konto użytkownika jest używane do przyłączania do domeny maszyn do tej domeny?
+Członkowie grupy administracyjnej "Administratorzy usługi AAD DC" mogą przyłączać do domeny maszyny. Ponadto członkowie tej grupy mają przyznany dostęp pulpitu zdalnego do komputerów, które zostały przyłączone do domeny.
 
-### <a name="do-i-have-domain-administrator-privileges-for-the-managed-domain-provided-by-azure-ad-domain-services"></a>Czy masz uprawnienia administratora domeny dla domeny zarządzanej, udostępniane przez usługi domenowe Azure AD?
-Nie. Nie udzielono uprawnień administracyjnych w domenie zarządzanej. "Administrator domeny" i "Administrator przedsiębiorstwa" uprawnienia nie są dostępne do użycia w domenie. Również elementy członkowskie administrator domeny lub grupy administrator przedsiębiorstwa w usłudze Active Directory w środowisku lokalnym nie są przyznawane uprawnienia administratora przedsiębiorstwa/domeny w domenie zarządzanej.
+### <a name="do-i-have-domain-administrator-privileges-for-the-managed-domain-provided-by-azure-ad-domain-services"></a>Czy masz uprawnienia administratora domeny dla domeny zarządzanej dostarczonej przez Azure AD Domain Services?
+Nie. Nie przyznano uprawnień administracyjnych w domenie zarządzanej. Przywileje "Administrator domeny" i "Administrator przedsiębiorstwa" nie są dostępne do użycia w ramach domeny. Członkowie grupy Administratorzy domeny lub Administratorzy przedsiębiorstwa w Active Directory lokalnym nie mają również uprawnień administratora domeny/przedsiębiorstwa w domenie zarządzanej.
 
-### <a name="can-i-modify-group-memberships-using-ldap-or-other-ad-administrative-tools-on-managed-domains"></a>Czy można modyfikować członkostwa w grupie przy użyciu protokołu LDAP lub innych narzędzi administracyjnych usługi AD w domenach zarządzanych
-Nie. Nie można modyfikować członkostwa w grupach w przypadku domen obsługiwanych przez usługi domenowe Azure AD. To samo dotyczy atrybutów użytkownika. Możesz jednak zmienić atrybuty użytkownika lub członkostwa w grupach w usłudze Azure AD lub w domenie lokalnej. Takie zmiany są automatycznie synchronizowane w usłudze Azure AD Domain Services.
+### <a name="can-i-modify-group-memberships-using-ldap-or-other-ad-administrative-tools-on-managed-domains"></a>Czy mogę modyfikować członkostwa w grupach przy użyciu protokołu LDAP lub innych narzędzi administracyjnych usługi AD w domenach zarządzanych?
+Nie. Członkostwa w grupach nie można modyfikować w domenach objętych usługą Azure AD Domain Services. To samo dotyczy atrybutów użytkownika. Można jednak zmienić członkostwa w grupach lub atrybuty użytkownika w usłudze Azure AD lub w domenie lokalnej. Takie zmiany są automatycznie synchronizowane z Azure AD Domain Services.
 
-### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>Jak długo trwa zmiany można wprowadzić do katalogu usługi Azure AD mają być wyświetlane w mojej domeny zarządzanej?
-Zmiany wprowadzone w katalogu usługi Azure AD przy użyciu interfejsu użytkownika usługi Azure AD lub programu PowerShell są synchronizowane z domeną zarządzaną. Ten proces — synchronizacja jest uruchamiana w tle. Po ukończeniu synchronizacji początkowej zwykle trwa około 20 minut, aby zmiany wprowadzone w usłudze Azure AD zostaną odzwierciedlone w Twojej domeny zarządzanej.
+### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>Jak długo trwa wprowadzanie zmian wprowadzonych w katalogu usługi Azure AD, aby były widoczne w mojej domenie zarządzanej?
+Zmiany wprowadzone w katalogu usługi Azure AD za pomocą interfejsu użytkownika usługi Azure AD lub programu PowerShell są synchronizowane z domeną zarządzaną. Ten proces synchronizacji jest uruchamiany w tle. Po zakończeniu synchronizacji początkowej zwykle trwa około 20 minut, aby zmiany wprowadzone w usłudze Azure AD zostały odzwierciedlone w domenie zarządzanej.
 
-### <a name="can-i-extend-the-schema-of-the-managed-domain-provided-by-azure-ad-domain-services"></a>Czy można rozszerzyć schemat domeny zarządzanej, udostępniane przez usługi domenowe Azure AD?
-Nie. Schemat jest zarządzane przez firmę Microsoft dla domeny zarządzanej. Rozszerzenia schematu nie są obsługiwane przez usługi domenowe Azure AD.
+### <a name="can-i-extend-the-schema-of-the-managed-domain-provided-by-azure-ad-domain-services"></a>Czy można rozciągnąć schemat domeny zarządzanej udostępnionej przez Azure AD Domain Services?
+Nie. Schemat jest zarządzany przez firmę Microsoft dla domeny zarządzanej. Rozszerzenia schematu nie są obsługiwane przez Azure AD Domain Services.
 
-### <a name="can-i-modify-or-add-dns-records-in-my-managed-domain"></a>Można zmodyfikować lub dodać rekordy DNS w mojej domeny zarządzanej?
-Tak. Członkowie grupy "Administratorzy usługi AAD DC" zostaną przyznane uprawnienia "Administrator DNS", aby zmodyfikować rekordy DNS w domenie zarządzanej. One umożliwia konsolę Menedżera DNS na komputerze z systemem Windows Server, przyłączone do domeny zarządzanej, zarządzać usługą DNS. Aby korzystać z konsoli Menedżera DNS, należy zainstalować "Narzędzia serwera DNS", który jest częścią funkcji opcjonalnych "Narzędzia administracji zdalnej serwera" na serwerze. Więcej informacji na temat [narzędzia do zarządzania, monitorowania i rozwiązywania problemów DNS](https://technet.microsoft.com/library/cc753579.aspx) jest dostępna w witrynie TechNet.
+### <a name="can-i-modify-or-add-dns-records-in-my-managed-domain"></a>Czy mogę modyfikować lub dodawać rekordy DNS w mojej domenie zarządzanej?
+Tak. Członkowie grupy "Administratorzy usługi AAD DC" otrzymują uprawnienia administratora "DNS", aby modyfikować rekordy DNS w domenie zarządzanej. Mogą oni korzystać z konsoli Menedżera DNS na komputerze z systemem Windows Server przyłączonym do domeny zarządzanej, aby zarządzać systemem DNS. Aby użyć konsoli Menedżera DNS, należy zainstalować "narzędzia serwera DNS", które jest częścią funkcji opcjonalnej "Narzędzia administracji zdalnej serwera" na serwerze. Więcej informacji na temat [narzędzi do administrowania, monitorowania i rozwiązywania problemów z usługą DNS](https://technet.microsoft.com/library/cc753579.aspx) jest dostępnych w witrynie TechNet.
 
-### <a name="what-is-the-password-lifetime-policy-on-a-managed-domain"></a>Co to jest okres istnienia hasła w domenie zarządzanej?
-Domyślny okres istnienia hasła w usłudze Azure AD Domain Services domeny zarządzanej wynosi 90 dni. Okres istnienia tego hasła nie jest zsynchronizowany z okresem istnienia hasło skonfigurowane w usłudze Azure AD. W związku z tym może wystąpić sytuacja, gdy wygaśnie po upływie domenę zarządzaną haseł użytkowników, ale są nadal ważne w usłudze Azure AD. W takich przypadkach użytkownicy muszą zmienić swoje hasło w usłudze Azure AD i synchronizują nowe hasło do domeny zarządzanej. Ponadto "hasło — ma not wygasa" i "user-must-change-password-at-next-logon" atrybuty dla kont użytkowników nie są zsynchronizowane z domeną zarządzaną.
+### <a name="what-is-the-password-lifetime-policy-on-a-managed-domain"></a>Jakie są zasady okresu istnienia hasła w domenie zarządzanej?
+Domyślny okres istnienia hasła w domenie zarządzanej Azure AD Domain Services to 90 dni. Okres istnienia hasła nie jest zsynchronizowany z okresem istnienia hasła skonfigurowanym w usłudze Azure AD. W związku z tym może wystąpić sytuacja, w której hasła użytkowników wygasną w domenie zarządzanej, ale są nadal ważne w usłudze Azure AD. W takich scenariuszach użytkownicy muszą zmienić swoje hasło w usłudze Azure AD, a nowe hasło zostanie zsynchronizowane z domeną zarządzaną. Ponadto atrybuty "hasło-nie wygasa" i "użytkownik-zmiana hasła przy następnym logowaniu" dla kont użytkowników nie są synchronizowane z domeną zarządzaną.
 
-### <a name="does-azure-ad-domain-services-provide-ad-account-lockout-protection"></a>Usług domenowych Azure AD zapewnia ochronę blokady konta usługi AD?
-Tak. Pięć próby podania hasła w ciągu 2 minut w domenie zarządzanej spowodować, że konto użytkownika zostało zablokowane przez 30 minut. Po 30 minutach konto użytkownika zostanie automatycznie odblokowana. Próby podania hasła w domenie zarządzanej nie zablokowania konta użytkownika w usłudze Azure AD. Konto użytkownika jest zablokowane tylko w ramach domeny usług domenowych Azure AD zarządzane.
+### <a name="does-azure-ad-domain-services-provide-ad-account-lockout-protection"></a>Czy Azure AD Domain Services zapewnić ochronę blokady konta usługi AD?
+Tak. Pięć nieudanych prób wprowadzenia hasła w ciągu 2 minut w domenie zarządzanej powoduje, że konto użytkownika zostanie zablokowane przez 30 minut. Po 30 minutach konto użytkownika zostanie automatycznie odblokowane. Nieprawidłowe próby hasła w domenie zarządzanej nie Zablokuj konta użytkownika w usłudze Azure AD. Konto użytkownika jest blokowane tylko w ramach domeny zarządzanej Azure AD Domain Services.
 
-## <a name="billing-and-availability"></a>Pomoc dotycząca rozliczeń i dostępności
-### <a name="is-azure-ad-domain-services-a-paid-service"></a>Czy usługi Azure AD Domain Services płatnej usługi?
+## <a name="billing-and-availability"></a>Rozliczenia i dostępność
+### <a name="is-azure-ad-domain-services-a-paid-service"></a>Czy Azure AD Domain Services płatną usługę?
 Tak. Aby uzyskać więcej informacji, odwiedź [stronę cennika](https://azure.microsoft.com/pricing/details/active-directory-ds/).
 
 ### <a name="is-there-a-free-trial-for-the-service"></a>Czy istnieje bezpłatna wersja próbna usługi?
-Ta usługa znajduje się w bezpłatnej wersji próbnej platformy Azure. Możesz zarejestrować się w celu [bezpłatna miesięczna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
+Ta usługa jest oferowana w bezpłatnej wersji próbnej platformy Azure. Możesz zarejestrować się w celu uzyskania [bezpłatnej miesięcznej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-### <a name="can-i-pause-an-azure-ad-domain-services-managed-domain"></a>Czy można wstrzymać domeny zarządzanej usług domenowych Azure AD? 
-Nie. Po włączeniu domeny zarządzanej usług domenowych Azure AD, usługa jest dostępne w wybranej sieci wirtualnej, dopóki nie zostanie zdezaktywuj lub Usuń domeny zarządzanej. Nie ma możliwości wstrzymania usługi. W systemie godzinowym nadal rozliczeń, dopóki nie usuniesz domeny zarządzanej.
+### <a name="can-i-pause-an-azure-ad-domain-services-managed-domain"></a>Czy można wstrzymać Azure AD Domain Servicesą domenę zarządzaną? 
+Nie. Po włączeniu domeny zarządzanej Azure AD Domain Services usługa będzie dostępna w wybranej sieci wirtualnej do momentu wyłączenia/usunięcia domeny zarządzanej. Nie ma możliwości wstrzymania usługi. Rozliczanie jest kontynuowane co godzinę, dopóki nie usuniesz domeny zarządzanej.
 
-### <a name="can-i-failover-azure-ad-domain-services-to-another-region-for-a-dr-event"></a>Czy mogę trybu failover w usługach domenowych Azure AD do innego regionu dla zdarzenia odzyskiwania po awarii?
-Nie.  Azure AD Domain Services nie jest aktualnie dostępny model wdrożenia geograficznie nadmiarowy. Jest ograniczona do jednej sieci wirtualnej w regionie platformy Azure. Korzystanie z wielu regionach platformy Azure, musisz uruchomić kontrolerów domeny usługi Active Directory na maszynach wirtualnych IaaS platformy Azure.  Znajdują się wskazówki dotyczące architektury [tutaj](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain).
+### <a name="can-i-failover-azure-ad-domain-services-to-another-region-for-a-dr-event"></a>Czy można przeAzure AD Domain Servicesć w tryb failover do innego regionu dla zdarzenia DR?
+Nie.  Azure AD Domain Services obecnie nie udostępnia modelu wdrażania geograficznie nadmiarowego. Jest ograniczona do pojedynczej sieci wirtualnej w regionie świadczenia usługi Azure. Jeśli chcesz korzystać z wielu regionów platformy Azure, musisz uruchomić kontrolery domena usługi Active Directory na maszynach wirtualnych usługi Azure IaaS.  Wskazówki dotyczące architektury można znaleźć [tutaj](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain).
 
-### <a name="can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services"></a>Czy można uzyskać usług domenowych Azure AD w ramach Enterprise Mobility Suite (EMS)? Czy muszę mieć usługi Azure AD Premium do korzystania z usług domenowych Azure AD?
-Nie. Azure AD Domain Services jest rozliczana według bieżącego użycia usług platformy Azure i nie jest częścią pakietu EMS. Usługi domenowe Azure AD mogą być używane z wszystkie wersje usługi Azure AD (bezpłatna, podstawowa i, Premium). Opłaty są naliczane godzinowo, w zależności od użycia.
+### <a name="can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services"></a>Czy mogę uzyskać Azure AD Domain Services w ramach pakietu Enterprise Mobility Suite (EMS)? Czy muszę Azure AD — wersja Premium używać Azure AD Domain Services?
+Nie. Azure AD Domain Services to usługa platformy Azure z płatność zgodnie z rzeczywistym użyciem i nie jest częścią pakietu EMS. Azure AD Domain Services można używać ze wszystkimi wersjami usługi Azure AD (bezpłatna i Premium). Opłaty są naliczane godzinowo, w zależności od użycia.
 
-### <a name="what-azure-regions-is-the-service-available-in"></a>Jakie regiony platformy Azure jest dostępne w usłudze?
-Zapoznaj się [usług platformy Azure według regionu](https://azure.microsoft.com/regions/#services/) strony, aby wyświetlić listę regionów świadczenia usługi Azure, których usługi domenowe Azure AD jest dostępna.
+### <a name="what-azure-regions-is-the-service-available-in"></a>W jakich regionach platformy Azure jest dostępna usługa?
+Zapoznaj się ze stroną [usług platformy Azure według regionów](https://azure.microsoft.com/regions/#services/) , aby wyświetlić listę regionów świadczenia usługi Azure, w których Azure AD Domain Services jest dostępna.

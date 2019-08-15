@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4e7b3905295e619c5a9500f80b5c43126b919e2f
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 74d345249e1cbaeb45a1a35d3c3d2f61a4c0b9cf
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946474"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032965"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Znane problemy i rozwiązywania problemów z usługi Azure Machine Learning
 
@@ -48,6 +48,14 @@ Zestaw Azure Machine Learning SDK dla języka Python: PyYAML jest zainstalowaną
 ```Python
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
 ```
+
+**Komunikat o błędzie:`ERROR: No matching distribution found for azureml-dataprep-native`**
+
+Anaconda 3.7.4 w języku Python zawiera usterkę, która powoduje przerwanie instalacji aplikacji Azure-SDK. Ten problem został omówiony w tym problemie z usługą [GitHub](https://github.com/ContinuumIO/anaconda-issues/issues/11195) , ponieważ może to obejść, tworząc nowe środowisko Conda za pomocą tego polecenia:
+```bash
+conda create -n <env-name> python=3.7.3
+```
+Tworzy środowisko Conda przy użyciu języka Python 3.7.3, który nie ma problemu z instalacją w 3.7.4.
 
 ## <a name="trouble-creating-azure-machine-learning-compute"></a>Problemy z utworzeniem obliczeniowego usługi Azure Machine Learning
 

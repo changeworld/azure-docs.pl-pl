@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/18/2019
-ms.openlocfilehash: 5d79edc4db07a2c5916725efc312d9f94fe985dc
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 05e16a67e6b01ce3bd1f03f0649baa1358414ea7
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640090"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035062"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Używanie grup z obsługą trybu failover w celu zapewnienia przezroczystej i skoordynowanej pracy w trybie failover wielu baz danych
 
@@ -133,9 +133,13 @@ Aby można było przełączyć grupę trybu failover, należy uzyskać dostęp d
 
 ## <a name="best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools"></a>Najlepsze rozwiązania dotyczące korzystania z grup trybu failover z pojedynczymi bazami danych i pulami elastycznymi
 
-Grupa autotrybu failover musi być skonfigurowana na serwerze głównym SQL Database i będzie łączyć ją z serwerem pomocniczym SQL Database w innym regionie świadczenia usługi Azure.  Grupy mogą obejmować wszystkie lub niektóre bazy danych na tych serwerach. Na poniższym diagramie przedstawiono typową konfigurację aplikacji w chmurze nadmiarowej geograficznie przy użyciu wielu baz danych i grupy automatycznej pracy awaryjnej.
+Grupa autotrybu failover musi być skonfigurowana na serwerze głównym SQL Database i będzie łączyć ją z serwerem pomocniczym SQL Database w innym regionie świadczenia usługi Azure. Grupy mogą obejmować wszystkie lub niektóre bazy danych na tych serwerach. Na poniższym diagramie przedstawiono typową konfigurację aplikacji w chmurze nadmiarowej geograficznie przy użyciu wielu baz danych i grupy automatycznej pracy awaryjnej.
 
 ![Tryb failover](./media/sql-database-auto-failover-group/auto-failover-group.png)
+
+> [!NOTE]
+> Aby zapoznać się z szczegółowym samouczkiem krok po kroku dodawania pojedynczej bazy danych do grupy trybu failover, zobacz [Dodawanie pojedynczej bazy danych do grupy trybu failover](sql-database-single-database-failover-group-tutorial.md) . 
+
 
 Podczas projektowania usługi z zachowaniem ciągłości działania postępuj zgodnie z następującymi ogólnymi wskazówkami:
 
@@ -167,12 +171,17 @@ Podczas projektowania usługi z zachowaniem ciągłości działania postępuj zg
 
 ## <a name="best-practices-of-using-failover-groups-with-managed-instances"></a>Najlepsze rozwiązania dotyczące korzystania z grup trybu failover z wystąpieniami zarządzanymi
 
-Grupa autotrybu failover musi być skonfigurowana w wystąpieniu podstawowym i nawiązać połączenie z wystąpieniem pomocniczym w innym regionie świadczenia usługi Azure.  Wszystkie bazy danych w wystąpieniu zostaną zreplikowane do wystąpienia pomocniczego. Na poniższym diagramie przedstawiono typową konfigurację aplikacji w chmurze nadmiarowej geograficznie przy użyciu wystąpienia zarządzanego i grupy autotrybu failover.
+> [!IMPORTANT]
+> Grupy autotrybu failover dla wystąpienia zarządzanego są w publicznej wersji zapoznawczej.
+
+Grupa autotrybu failover musi być skonfigurowana w wystąpieniu podstawowym i nawiązać połączenie z wystąpieniem pomocniczym w innym regionie świadczenia usługi Azure.  Wszystkie bazy danych w wystąpieniu zostaną zreplikowane do wystąpienia pomocniczego. 
+
+Na poniższym diagramie przedstawiono typową konfigurację aplikacji w chmurze nadmiarowej geograficznie przy użyciu wystąpienia zarządzanego i grupy autotrybu failover.
 
 ![Tryb failover](./media/sql-database-auto-failover-group/auto-failover-group-mi.png)
 
-> [!IMPORTANT]
-> Grupy autotrybu failover dla wystąpienia zarządzanego są w publicznej wersji zapoznawczej.
+> [!NOTE]
+> Zobacz [Dodawanie wystąpienia zarządzanego do grupy trybu failover](sql-database-managed-instance-failover-group-tutorial.md) , aby uzyskać szczegółowy samouczek krok po kroku dodawania wystąpienia zarządzanego do korzystania z grupy trybu failover. 
 
 Jeśli aplikacja używa wystąpienia zarządzanego jako warstwy danych, postępuj zgodnie z ogólnymi wskazówkami podczas projektowania pod kątem ciągłości działania:
 
@@ -367,6 +376,10 @@ Jak wspomniano wcześniej, grupy autotrybu failover i aktywnej replikacji geogra
 
 ## <a name="next-steps"></a>Następne kroki
 
+- Aby zapoznać się z szczegółowymi samouczkami, zobacz
+    - [Dodawanie pojedynczej bazy danych do grupy trybu failover](sql-database-single-database-failover-group-tutorial.md)
+    - [Dodawanie puli elastycznej do grupy trybu failover](sql-database-elastic-pool-failover-group-tutorial.md)
+    - [Dodawanie wystąpienia zarządzanego do grupy trybu failover](sql-database-managed-instance-failover-group-tutorial.md)
 - Aby zapoznać się z przykładowymi skryptami, zobacz:
   - [Używanie programu PowerShell do konfigurowania aktywnej replikacji geograficznej dla pojedynczej bazy danych w Azure SQL Database](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
   - [Użyj programu PowerShell, aby skonfigurować aktywną replikację geograficzną dla bazy danych w puli w Azure SQL Database](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)

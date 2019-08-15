@@ -8,16 +8,16 @@ ms.service: search
 ms.topic: overview
 ms.date: 08/13/2019
 ms.author: heidist
-ms.openlocfilehash: a48e4026ee3d7108f3b8e77dcb482d9904891cd4
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: eefa0eb5d1e15df34089d7baa3241cbbed4724c2
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014485"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034836"
 ---
 # <a name="what-is-azure-search"></a>Co to jest usługa Azure Search?
 
-Azure Search jest opartym na chmurze rozwiązaniem typu „wyszukiwanie jako usługa”, które udostępnia deweloperom interfejsy API oraz narzędzia umożliwiające dodawanie zaawansowanych funkcji wyszukiwania do prywatnej, heterogenicznej zawartości w aplikacjach internetowych, mobilnych i firmowych. Niestandardowy kod wywołuje pozyskiwanie danych (indeksowanie), wysyła żądania zapytań i obsługuje odpowiedzi. Środowisko wyszukiwania jest zdefiniowane w kodzie klienta przy użyciu funkcji z Azure Search, z wykonywaniem zapytań w odniesieniu do tworzonego trwałego indeksu. 
+Azure Search jest opartym na chmurze rozwiązaniem typu „wyszukiwanie jako usługa”, które udostępnia deweloperom interfejsy API oraz narzędzia umożliwiające dodawanie zaawansowanych funkcji wyszukiwania do prywatnej, heterogenicznej zawartości w aplikacjach internetowych, mobilnych i firmowych. Niestandardowy kod wywołuje pozyskiwanie danych (indeksowanie), wysyła żądania zapytań i obsługuje odpowiedzi. Środowisko wyszukiwania jest zdefiniowane w kodzie klienta przy użyciu funkcji z Azure Search z wykonywaniem zapytań względem utrwalonego indeksu tworzonego, własnego i przechowywania Azure Search.
 
 ![Architektura Azure Search](media/search-what-is-azure-search/azure-search-diagram.png "Architektura Azure Search")
 

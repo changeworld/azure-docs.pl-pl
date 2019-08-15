@@ -1,6 +1,6 @@
 ---
-title: Azure interfejsu wiersza polecenia usługi Service Fabric - sfctl compose | Dokumentacja firmy Microsoft
-description: W tym artykule opisano interfejs wiersza polecenia usługi Service Fabric sfctl compose poleceń.
+title: Interfejs wiersza polecenia platformy Azure Service Fabric sfctl Microsoft Docs
+description: Opisuje polecenie sfctl polecenia tworzenia Service Fabric w programie.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -8,210 +8,209 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 4b5cbb4a24b61de7e64a52ef950deedab3eec263
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dab844246d99b0ab80e1e86219c2064c79e74e4f
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837270"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035111"
 ---
 # <a name="sfctl-compose"></a>sfctl compose
-Tworzenie, usuwanie i zarządzać aplikacjami narzędzia Docker Compose.
+Twórz i usuwaj Docker Compose aplikacje oraz zarządzaj nimi.
 
 ## <a name="commands"></a>Polecenia
 
 |Polecenie|Opis|
 | --- | --- |
-| create | Tworzy usługi Service Fabric wdrożenia redagowania. |
-| list | Pobiera listę tworzą wdrożeń utworzonych w klastrze usługi Service Fabric. |
-| Usuń | Usuwa istniejące usługi Service Fabric tworzą wdrożenia z klastra. |
-| status | Wdrożenie redagowania pobiera informacje o usłudze Service Fabric. |
-| upgrade | Rozpoczyna się uaktualnianie wdrożenia compose w klastrze usługi Service Fabric. |
-| upgrade-rollback | Wycofywanie wdrożenia compose rozpoczyna się uaktualnienie z klastra usługi Service Fabric. |
-| upgrade-status | Wdrożenie redagowania pobiera szczegóły najnowszą aktualizację, które są wykonywane w tej usłudze Service Fabric. |
+| tworzenie | Tworzy wdrożenie Service Fabric tworzenia. |
+| list | Pobiera listę wdrożeń tworzenia utworzonych w klastrze Service Fabric. |
+| usuń | Usuwa istniejące Service Fabric redagowanie wdrożenia z klastra. |
+| status | Pobiera informacje o rozmieszczeniu tworzenia Service Fabric. |
+| upgrade | Zaczyna uaktualniać wdrożenie redagowania w klastrze Service Fabric. |
+| uaktualnienie — wycofanie | Uruchamia wycofywanie uaktualnienia redagowania wdrożenia w klastrze Service Fabric. |
+| uaktualnienie — stan | Pobiera szczegóły dotyczące najnowszego uaktualnienia wykonywanego na tym Service Fabric redagowanie wdrożenia. |
 
-## <a name="sfctl-compose-create"></a>Interfejs sfctl compose tworzenie
-Tworzy usługi Service Fabric wdrożenia redagowania.
-
-### <a name="arguments"></a>Argumenty
-
-|Argument|Opis|
-| --- | --- |
-| — [wymagane] Nazwa wdrożenia | Nazwa wdrożenia. |
-| — Ścieżka pliku [wymagane] | Ścieżka do pliku docelowego narzędzia Docker Compose. |
-| --encrypted-pass | Zamiast monitowania o hasło rejestru kontenerów, użyj już zaszyfrowane hasło. |
-| --has-pass | Wyświetli monit o podanie hasła do rejestru kontenerów. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
-| --user | Nazwa użytkownika, aby nawiązać połączenie z rejestru kontenerów. |
-
-### <a name="global-arguments"></a>Argumenty globalne
-
-|Argument|Opis|
-| --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
-
-## <a name="sfctl-compose-list"></a>Interfejs sfctl compose list
-Pobiera listę tworzą wdrożeń utworzonych w klastrze usługi Service Fabric.
-
-Pobiera stan o wdrożeniach compose, które zostały utworzone, lub trwa proces tworzonych w klastrze usługi Service Fabric. Odpowiedź zawiera nazwę, stan i inne szczegóły dotyczące wdrożenia compose. Jeśli lista wdrożeń nie mieszczą się na stronie, jednej stronie wyników jest zwracany oraz token kontynuacji, którego można uzyskać następnej strony.
+## <a name="sfctl-compose-create"></a>Tworzenie sfctl Utwórz
+Tworzy wdrożenie Service Fabric tworzenia.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --token kontynuacji | Parametr tokenu kontynuacji służy do uzyskania następny zestaw wyników. Token kontynuacji o wartości niepuste znajduje się w odpowiedzi interfejsu API, gdy wyniki z systemu nie mieszczą się w jednej odpowiedzi. Jeśli ta wartość jest przekazywana do następnego wywołania interfejsu API, interfejs API zwraca następny zestaw wyników. Jeśli nie istnieją żadne dalsze wyniki, token kontynuacji nie zawiera wartości. Wartość tego parametru nie powinny być zakodowane w adresie URL. |
-| --max-results | Maksymalna liczba wyników do zwrócenia w ramach kwerend stronicowanych. Ten parametr określa górną granicę na liczbie zwrócone wyniki. Wyniki zwracane, może być mniejsza niż określona maksymalna liczba wyników, jeśli nie mieszczą się w komunikacie zgodnie z ograniczeniami rozmiar maksymalny komunikatu zdefiniowane w konfiguracji. Jeśli ten parametr ma wartość zero lub nie określono, stronicowane zapytanie zawiera dowolną liczbę wyników jak to możliwe, który mieści się w komunikacie zwrotu. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| --Deployment-Name [wymagane] | Nazwa wdrożenia. |
+| --ścieżka pliku [wymagana] | Ścieżka do docelowego pliku Docker Compose. |
+| --Encrypted-Pass | Zamiast monitowania o hasło rejestru kontenera, należy użyć już zaszyfrowanego frazy. |
+| --has-pass | Zostanie wyświetlony monit o podanie hasła do rejestru kontenerów. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
+| --user | Nazwa użytkownika, aby połączyć się z rejestrem kontenerów. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
-## <a name="sfctl-compose-remove"></a>Interfejs sfctl compose remove
-Usuwa istniejące usługi Service Fabric tworzą wdrożenia z klastra.
+## <a name="sfctl-compose-list"></a>Lista redagowania sfctl
+Pobiera listę wdrożeń tworzenia utworzonych w klastrze Service Fabric.
 
-Wdrożenie redagowania usuwa istniejące usługi Service Fabric.
+Pobiera stan utworzonych wdrożeń tworzenia lub w procesie tworzonym w klastrze Service Fabric. Odpowiedź zawiera nazwę, stan i inne szczegóły dotyczące wdrożeń redagowania. Jeśli lista wdrożeń nie mieści się na stronie, zwracana jest jedna strona wyników, a także token kontynuacji, który może służyć do uzyskania następnej strony.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| — [wymagane] Nazwa wdrożenia | Tożsamość wdrożenia. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| --Kontynuacja — token | Parametr tokenu kontynuacji służy do uzyskiwania następnego zestawu wyników. Token kontynuacji z niepustą wartością jest dołączany do odpowiedzi interfejsu API, gdy wyniki z systemu nie mieszczą się w pojedynczej odpowiedzi. Gdy ta wartość jest przenoszona do następnego wywołania interfejsu API, interfejs API zwraca następny zestaw wyników. Jeśli nie ma żadnych dalszych wyników, token kontynuacji nie zawiera wartości. Wartość tego parametru nie powinna być zakodowana w adresie URL. |
+| --Max-Results | Maksymalna liczba wyników do zwrócenia w ramach zapytań stronicowanych. Ten parametr definiuje górną granicę wartości zwracanych wyników. Zwracane wyniki mogą być mniejsze niż określone maksymalne wyniki, jeśli nie mieszczą się w komunikacie zgodnie z maksymalnymi ograniczeniami rozmiaru komunikatów zdefiniowanymi w konfiguracji. Jeśli ten parametr ma wartość zero lub nie zostanie określony, zapytanie stronicowane zawiera tyle wyników, ile to możliwe, które mieszczą się w komunikacie zwrotnym. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
-## <a name="sfctl-compose-status"></a>Interfejs sfctl compose status
-Wdrożenie redagowania pobiera informacje o usłudze Service Fabric.
+## <a name="sfctl-compose-remove"></a>Usuwanie sfctl
+Usuwa istniejące Service Fabric redagowanie wdrożenia z klastra.
 
-Zwraca stan wdrożenia compose, który został utworzony lub w trakcie tworzonych w klaster usługi Service Fabric, którego nazwa odpowiada dokumentem określonym jako parametr. Odpowiedź zawiera nazwę, stan i inne szczegóły dotyczące wdrożenia.
+Usuwa istniejące wdrożenie Service Fabric tworzenia.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| — [wymagane] Nazwa wdrożenia | Tożsamość wdrożenia. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| --Deployment-Name [wymagane] | Tożsamość wdrożenia. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
-## <a name="sfctl-compose-upgrade"></a>Interfejs sfctl compose uaktualnienia
-Rozpoczyna się uaktualnianie wdrożenia compose w klastrze usługi Service Fabric.
+## <a name="sfctl-compose-status"></a>stan redagowania sfctl
+Pobiera informacje o rozmieszczeniu tworzenia Service Fabric.
 
-Sprawdza poprawność podanych parametrów uaktualniania i rozpoczyna uaktualnianie wdrożenia, jeśli parametry są prawidłowe.
+Zwraca stan utworzonego wdrożenia tworzenia lub w procesie tworzenia w klastrze Service Fabric, którego nazwa jest zgodna z nazwą określoną jako parametr. Odpowiedź zawiera nazwę, stan i inne szczegóły dotyczące wdrożenia.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| — [wymagane] Nazwa wdrożenia | Nazwa wdrożenia. |
-| — Ścieżka pliku [wymagane] | Ścieżka do obiektu docelowego platformy Docker compose pliku. |
-| --default-svc-type-health-map | Słownik, który opisano zasad dotyczących kondycji używane do oceny kondycji usług zakodowane JSON. |
-| --encrypted-pass | Zamiast monitowania o hasło rejestru kontenerów, użyj już zaszyfrowane hasło. |
-| — Akcja błędu | Możliwe wartości to\: "Nieprawidłowy", "Wycofać", "Manual". |
-| --force-restart | Procesy wymuszone zostaną ponownie uruchomione podczas uaktualniania, nawet wtedy, gdy wersja kodu nie została zmieniona. <br><br> Uaktualnianie tylko zmiany konfiguracji lub danych. |
-| --has-pass | Wyświetli monit o podanie hasła do rejestru kontenerów. |
-| --health-check-retry | Odstęp czasu między próbami sprawdzać kondycję, jeśli aplikacja lub klastra nie jest w dobrej kondycji. |
-| --health-check-stable | Ilość czasu, aplikacji lub klastra musi pozostać dobrej kondycji przed uaktualnienia przechodzi do następnej domeny uaktualnienia. <br><br> Najpierw jest interpretowany jako ciąg reprezentujący czas trwania ISO 8601. Jeśli ono zawiedzie, następnie jest interpretowany jako liczba reprezentujący całkowitą liczbę milisekund. |
-| --health-check-wait | Czas oczekiwania po wykonaniu uaktualnienia domeny przed rozpoczęciem kondycji sprawdza, czy proces. |
-| --replica-set-check | Maksymalna ilość czasu blokowania przetwarzania domeny uaktualnienia, a przed utratą dostępności w przypadku nieoczekiwanych problemów. <br><br> Po wygaśnięciu tego limitu czasu przetwarzania przez domenę uaktualnienia będzie kontynuowana bez względu na to, problemy z dostępnością utraty. Limit czasu jest resetowany na początku każdej z domen. Prawidłowe wartości należą do zakresu od 0 i 42949672925 (włącznie). |
-| --svc-type-health-map | Listę obiektów, które opisują zasady dotyczące kondycji używane do oceny kondycji różne typy usług zakodowane JSON. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
-| --unhealthy-app | Maksymalna dozwolona wartość procentowa aplikacje w złej kondycji przed zgłoszeniem błędu. <br><br> Na przykład aby zezwolić na 10% aplikacje będącą w złej kondycji, wartość ta wynosi 10. Wartość procentowa reprezentuje maksymalny procent tolerowana aplikacje, które mogą być złej kondycji, zanim klaster zostanie uznane za błąd. Jeśli wartość procentowa jest zachowana, ale istnieje co najmniej jednej aplikacji w złej kondycji, kondycji jest oceniane jako ostrzeżenie. To jest obliczana przez podzielenie liczby aplikacji w złej kondycji przez całkowitą liczbę wystąpień aplikacji w klastrze. |
-| --upgrade-domain-timeout | Czas każdej z domen musi wykonać, zanim zostanie wykonany FailureAction. <br><br> Najpierw jest interpretowany jako ciąg reprezentujący czas trwania ISO 8601. Jeśli ono zawiedzie, następnie jest interpretowany jako liczba reprezentujący całkowitą liczbę milisekund. |
-| --upgrade-kind | Domyślne\: stopniowe. |
-| --Tryb uaktualniania | Możliwe wartości to\: "Nieprawidłowy", "UnmonitoredAuto", "UnmonitoredManual", "Monitorowania".  Domyślne\: UnmonitoredAuto. |
-| — limit czasu uaktualniania | Czas ogólną uaktualnienia musi wykonać, zanim zostanie wykonany FailureAction. <br><br> Najpierw jest interpretowany jako ciąg reprezentujący czas trwania ISO 8601. Jeśli ono zawiedzie, następnie jest interpretowany jako liczba reprezentujący całkowitą liczbę milisekund. |
-| --user | Nazwa użytkownika, aby nawiązać połączenie z rejestru kontenerów. |
-| --warning-as-error | Wskazuje, czy ostrzeżenia są traktowane z tego samego ważność jako błędy. |
+| --Deployment-Name [wymagane] | Tożsamość wdrożenia. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
-## <a name="sfctl-compose-upgrade-rollback"></a>Interfejs sfctl compose wycofywanie uaktualnienia
-Wycofywanie wdrożenia compose rozpoczyna się uaktualnienie z klastra usługi Service Fabric.
+## <a name="sfctl-compose-upgrade"></a>sfctl — uaktualnienie
+Zaczyna uaktualniać wdrożenie redagowania w klastrze Service Fabric.
 
-Wycofanie usługi Service fabric tworzą uaktualnianie wdrożenia.
+Sprawdza poprawność podanych parametrów uaktualnienia i zaczyna uaktualniać wdrożenie, jeśli parametry są prawidłowe.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| — [wymagane] Nazwa wdrożenia | Tożsamość wdrożenia. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| --Deployment-Name [wymagane] | Nazwa wdrożenia. |
+| --ścieżka pliku [wymagana] | Ścieżka do docelowego pliku redagowania platformy Docker. |
+| --default-svc-type-health-map | Zakodowany słownik JSON, który opisuje zasady dotyczące kondycji używane do oszacowania kondycji usług. |
+| --Encrypted-Pass | Zamiast monitowania o hasło rejestru kontenera, należy użyć już zaszyfrowanego frazy. |
+| --Niepowodzenie-akcja | Możliwe wartości to\: "nieprawidłowe", "Wycofaj", "ręczne". |
+| --force-restart | Procesy są wymuszane ponownie po uaktualnieniu, nawet gdy wersja kodu nie została zmieniona. <br><br> Uaktualnienie zmienia tylko konfigurację lub dane. |
+| --has-pass | Zostanie wyświetlony monit o podanie hasła do rejestru kontenerów. |
+| --Health-Check-retry | Czas między próbami sprawdzenia kondycji, jeśli aplikacja lub klaster nie są w dobrej kondycji. |
+| --health-check-stable | Ilość czasu, przez jaką aplikacja lub klaster muszą pozostawać w dobrej kondycji, zanim uaktualnienie przejdzie do następnej domeny uaktualnienia. <br><br> Najpierw jest interpretowany jako ciąg reprezentujący czas trwania ISO 8601. Jeśli to się nie powiedzie, jest interpretowana jako liczba reprezentująca łączną liczbę milisekund. |
+| --health-check-wait | Czas oczekiwania po zakończeniu domeny uaktualnienia przed rozpoczęciem procesu kontroli kondycji. |
+| --replica-set-check | Maksymalny czas blokowania przetwarzania domeny uaktualnienia i zapobiegania utracie dostępności w przypadku wystąpienia nieoczekiwanych problemów. <br><br> Po upływie tego limitu czasu przetwarzanie domeny uaktualnienia będzie przebiegać bez względu na problemy z utratą dostępności. Limit czasu jest resetowany na początku każdej domeny uaktualnienia. Prawidłowe wartości należą do zakresu od 0 do 42949672925 włącznie. |
+| --svc-type-health-map | Zakodowana w formacie JSON lista obiektów, które opisują zasady dotyczące kondycji używane do obliczania kondycji różnych typów usług. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
+| --unhealthy-app | Maksymalny dozwolony procent aplikacji w złej kondycji przed zgłoszeniem błędu. <br><br> Na przykład, aby umożliwić złej kondycji 10% aplikacji, ta wartość będzie równa 10. Wartość procentowa reprezentuje maksymalny dopuszczalny procent aplikacji, które mogą być w złej kondycji, zanim klaster zostanie uznany za błąd. Jeśli wartość procentowa jest przestrzegana, ale istnieje co najmniej jedna aplikacja w złej kondycji, kondycja jest szacowana jako ostrzeżenie. Jest to obliczane przez podzielenie liczby aplikacji w złej kondycji na łączną liczbę wystąpień aplikacji w klastrze. |
+| --Upgrade-Domain-timeout | Czas, przez jaki każda domena uaktualnienia musi zakończyć pracę przed wykonaniem FailureAction. <br><br> Najpierw jest interpretowany jako ciąg reprezentujący czas trwania ISO 8601. Jeśli to się nie powiedzie, jest interpretowana jako liczba reprezentująca łączną liczbę milisekund. |
+| --rodzaj uaktualnienia | Domyślne\: Przetaczanie. |
+| --Tryb uaktualnienia | Możliwe wartości to\: "nieprawidłowe", "UnmonitoredAuto", "UnmonitoredManual", "monitorowane".  Domyślny\: UnmonitoredAuto. |
+| --Upgrade-timeout | Czas, przez jaki całkowite uaktualnienie musi zakończyć się przed wykonaniem FailureAction. <br><br> Najpierw jest interpretowany jako ciąg reprezentujący czas trwania ISO 8601. Jeśli to się nie powiedzie, jest interpretowana jako liczba reprezentująca łączną liczbę milisekund. |
+| --user | Nazwa użytkownika, aby połączyć się z rejestrem kontenerów. |
+| --warning-as-error | Wskazuje, czy ostrzeżenia są traktowane z taką samą ważnością jak błędy. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
-## <a name="sfctl-compose-upgrade-status"></a>Interfejs sfctl compose stan uaktualnienia
-Wdrożenie redagowania pobiera szczegóły najnowszą aktualizację, które są wykonywane w tej usłudze Service Fabric.
+## <a name="sfctl-compose-upgrade-rollback"></a>sfctl redagowania — wycofywanie
+Uruchamia wycofywanie uaktualnienia redagowania wdrożenia w klastrze Service Fabric.
 
-Zwraca informacje o stanie uaktualnianie wdrożenia compose wraz ze szczegółami ułatwiające debugowanie problemów z kondycją aplikacji.
+Wycofywanie uaktualnienia tworzenia i wdrażania usługi Service Fabric.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| — [wymagane] Nazwa wdrożenia | Tożsamość wdrożenia. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| --Deployment-Name [wymagane] | Tożsamość wdrożenia. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
+
+## <a name="sfctl-compose-upgrade-status"></a>sfctl redagowania — stan
+Pobiera szczegóły dotyczące najnowszego uaktualnienia wykonywanego na tym Service Fabric redagowanie wdrożenia.
+
+Zwraca informacje o stanie uaktualnienia redagowania wdrożenia wraz ze szczegółami dotyczącymi pomocy w debugowaniu problemów z kondycją aplikacji.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Opis|
+| --- | --- |
+| --Deployment-Name [wymagane] | Tożsamość wdrożenia. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
+
+### <a name="global-arguments"></a>Argumenty globalne
+
+|Argument|Opis|
+| --- | --- |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
 
-## <a name="next-steps"></a>Kolejne kroki
-- [Konfigurowanie](service-fabric-cli.md) interfejsu wiersza polecenia usługi Service Fabric.
-- Dowiedz się, jak używać przy użyciu interfejsu wiersza polecenia usługi Service Fabric [przykładowe skrypty](/azure/service-fabric/scripts/sfctl-upgrade-application).
+## <a name="next-steps"></a>Następne kroki
+- [Skonfiguruj](service-fabric-cli.md) interfejs wiersza polecenia Service Fabric.
+- Dowiedz się, jak używać interfejsu wiersza polecenia Service Fabric przy użyciu [przykładowych skryptów](/azure/service-fabric/scripts/sfctl-upgrade-application).

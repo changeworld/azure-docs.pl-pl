@@ -1,6 +1,6 @@
 ---
-title: Azure usługi sieci szkieletowej interfejsu wiersza polecenia sfctl siatki obciążające | Dokumentacja firmy Microsoft
-description: W tym artykule opisano poleceń interfejsu wiersza polecenia usługi Service Fabric sfctl siatki woluminu.
+title: Interfejs wiersza polecenia platformy Azure Service Fabric — wolumin siatki sfctl | Microsoft Docs
+description: Opisuje polecenie Service Fabric interfejsu wiersza polecenia w sieci sfctl.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -8,88 +8,87 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 740aec6ccb9b20cbcb8f55b2518c2b2539ef82ac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e2413a152048e08d6218783891c20b66ac2e618
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60836913"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034993"
 ---
 # <a name="sfctl-mesh-volume"></a>sfctl mesh volume
-Pobieranie i usuwanie zasobów woluminu.
+Pobierz i Usuń zasoby woluminu.
 
 ## <a name="commands"></a>Polecenia
 
 |Polecenie|Opis|
 | --- | --- |
-| delete | Usuwa zasób woluminu. |
+| usuwanie | Usuwa zasób woluminu. |
 | list | Wyświetla listę wszystkich zasobów woluminu. |
-| pokaż | Pobiera zasób woluminu o podanej nazwie. |
+| pokaż | Pobiera zasób woluminu o podaną nazwę. |
 
-## <a name="sfctl-mesh-volume-delete"></a>Usuń wolumin siatki interfejsu sfctl
+## <a name="sfctl-mesh-volume-delete"></a>Usuwanie woluminu siatki sfctl
 Usuwa zasób woluminu.
 
-Usuwa zasób woluminu identyfikowane przez nazwę.
+Usuwa zasób woluminu identyfikowany przez nazwę.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| — Nazwa -n [wymagane] | Nazwa woluminu. |
+| --Name-n [wymagane] | Nazwa woluminu. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
-## <a name="sfctl-mesh-volume-list"></a>listę woluminów siatki interfejsu sfctl
+## <a name="sfctl-mesh-volume-list"></a>Lista woluminów siatki sfctl
 Wyświetla listę wszystkich zasobów woluminu.
 
-Pobiera informacje o wszystkich zasobów woluminu w danej grupy zasobów. Informacje zawierają opis i inne właściwości woluminu.
+Pobiera informacje o wszystkich zasobach zbiorczych w danej grupie zasobów. Informacje obejmują opis i inne właściwości woluminu.
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
-## <a name="sfctl-mesh-volume-show"></a>Interfejs sfctl siatki woluminu show
-Pobiera zasób woluminu o podanej nazwie.
+## <a name="sfctl-mesh-volume-show"></a>Pokaż wolumin siatki sfctl
+Pobiera zasób woluminu o podaną nazwę.
 
-Pobiera informacje o zasobie wolumin o podanej nazwie. Informacje zawierają opis i inne właściwości woluminu.
+Pobiera informacje o zasobie woluminu o podanej nazwie. Informacje obejmują opis i inne właściwości woluminu.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| — Nazwa -n [wymagane] | Nazwa woluminu. |
+| --Name-n [wymagane] | Nazwa woluminu. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
 
-## <a name="next-steps"></a>Kolejne kroki
-- [Konfigurowanie](service-fabric-cli.md) interfejsu wiersza polecenia usługi Service Fabric.
-- Dowiedz się, jak używać przy użyciu interfejsu wiersza polecenia usługi Service Fabric [przykładowe skrypty](/azure/service-fabric/scripts/sfctl-upgrade-application).
+## <a name="next-steps"></a>Następne kroki
+- [Skonfiguruj](service-fabric-cli.md) interfejs wiersza polecenia Service Fabric.
+- Dowiedz się, jak używać interfejsu wiersza polecenia Service Fabric przy użyciu [przykładowych skryptów](/azure/service-fabric/scripts/sfctl-upgrade-application).

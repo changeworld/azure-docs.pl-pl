@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: 0507b3cb64b4b12bac92cc6bc90120ab4ec56dee
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5dd241fed757669cf8bccd96a1de948e8d73a021
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568739"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69033268"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Samouczek: Dodawanie Azure SQL Database elastycznej puli do grupy trybu failover
 
@@ -76,11 +76,11 @@ W tym kroku utworzysz [grupę trybu failover](sql-database-auto-failover-group.m
 1. Wybierz pozycję **serwery SQL** i wybierz serwer utworzony w sekcji 1.
 1. Wybierz pozycję **grupy trybu failover** w okienku **Ustawienia** , a następnie wybierz pozycję **Dodaj grupę** , aby utworzyć nową grupę trybu failover. 
 
-    ![Dodaj nową grupę trybu failover](media/sql-database-elastic-pool-create-failover-group-tutorial/add-elastic-pool-to-failover-group.png)
+    ![Dodaj nową grupę trybu failover](media/sql-database-single-database-create-failover-group-tutorial/sqldb-add-new-failover-group.png)
 
 1. Na stronie **Grupa trybu failover** wprowadź lub wybierz następujące wartości, a następnie wybierz pozycję **Utwórz**:
     - **Nazwa grupy trybu failover**: Wpisz unikatową nazwę grupy trybu failover, `failovergrouptutorial`na przykład. 
-    - **Serwer pomocniczy**: Wybierz opcję *konfigurowania wymaganych ustawień* , a następnie wybierz opcję **utworzenia nowego serwera**. Alternatywnie można wybrać istniejący serwer jako serwer pomocniczy. Po wprowadzeniu następujących wartości wybierz pozycję **Wybierz**. 
+    - **Serwer pomocniczy**: Wybierz opcję *konfigurowania wymaganych ustawień* , a następnie wybierz opcję **utworzenia nowego serwera**. Alternatywnie można wybrać istniejący serwer jako serwer pomocniczy. Po wprowadzeniu następujących wartości dla nowego serwera pomocniczego wybierz pozycję **Wybierz**. 
         - **Nazwa serwera**: Wpisz unikatową nazwę serwera pomocniczego, `mysqlsecondary`na przykład. 
         - **Identyfikator logowania administratora serwera**: Wprowadź`azureuser`
         - **Hasło**: Wpisz złożone hasło spełniające wymagania dotyczące haseł.
@@ -91,9 +91,9 @@ W tym kroku utworzysz [grupę trybu failover](sql-database-auto-failover-group.m
     
        ![Tworzenie serwera pomocniczego dla grupy trybu failover](media/sql-database-single-database-create-failover-group-tutorial/create-secondary-failover-server.png)
 
-1. Po wybraniu serwera pomocniczego, **bazy danych w grupie** zostanie odblokowane. Wybierz je, aby **wybrać bazy danych do dodania** , a następnie wybierz pulę elastyczną utworzoną w sekcji 2. Powinien pojawić się ostrzeżenie z monitem o utworzenie elastycznej puli na serwerze pomocniczym. Wybierz ostrzeżenie, a następnie wybierz przycisk **OK** , aby utworzyć pulę elastyczną na serwerze pomocniczym. 
+1. Wybierz **bazy danych w grupie,** a następnie wybierz pulę elastyczną utworzoną w sekcji 2. Powinien pojawić się ostrzeżenie z monitem o utworzenie elastycznej puli na serwerze pomocniczym. Wybierz ostrzeżenie, a następnie wybierz przycisk **OK** , aby utworzyć pulę elastyczną na serwerze pomocniczym. 
         
-    ![Dodawanie bazy danych SQL do grupy trybu failover](media/sql-database-single-database-create-failover-group-tutorial/add-sqldb-to-failover-group.png)
+    ![Dodawanie puli elastycznej do grupy trybu failover](media/sql-database-elastic-pool-create-failover-group-tutorial/add-elastic-pool-to-failover-group.png)
         
 1. Wybierz pozycję **Wybierz** , aby zastosować ustawienia puli elastycznej do grupy trybu failover, a następnie wybierz pozycję **Utwórz** , aby utworzyć grupę trybu failover. Dodanie puli elastycznej do grupy trybu failover spowoduje automatyczne uruchomienie procesu replikacji geograficznej. 
 

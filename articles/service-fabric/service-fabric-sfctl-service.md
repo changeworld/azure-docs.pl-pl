@@ -1,6 +1,6 @@
 ---
-title: Usługa Service Fabric interfejsu wiersza polecenia sfctl usługi platformy Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano poleceń usługi sfctl interfejsu wiersza polecenia usługi Service Fabric.
+title: Interfejs wiersza polecenia platformy Azure Service Fabric — usługa sfctl | Microsoft Docs
+description: Zawiera Service Fabric opis poleceń usługi sfctl interfejsu wiersza polecenia.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -8,591 +8,590 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: e0454d0124efba04434884fbac9056c5e324710d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e215ab6d3ee56f2cccdd5887c240d9046327f110
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60556376"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035215"
 ---
 # <a name="sfctl-service"></a>sfctl service
-Tworzenie, usuwanie i zarządzać usługą, typy usług i pakietów usługi.
+Tworzenie, usuwanie usług, typów usług i pakietów usług oraz zarządzanie nimi.
 
 ## <a name="commands"></a>Polecenia
 
 |Polecenie|Opis|
 | --- | --- |
-| app-name | Pobiera nazwę aplikacji usługi Service Fabric dla usługi. |
-| code-package-list | Pobiera listę pakietów kod wdrożony w węźle usługi Service Fabric. |
-| create | Tworzy określony usługi Service Fabric. |
-| delete | Usuwa istniejącą usługę Service Fabric. |
-| wdrożone typu | Pobiera informacje o określonej usługi rodzaj aplikacji wdrożonej w węźle w klastrze usługi Service Fabric. |
-| wdrożony — — lista typów | Pobiera listę zawierającą informacje o typach usługi z poziomu aplikacji wdrożonych w węźle w klastrze usługi Service Fabric. |
+| Nazwa aplikacji | Pobiera nazwę aplikacji Service Fabric dla usługi. |
+| code-package-list | Pobiera listę pakietów kodu wdrożonych w węźle Service Fabric. |
+| tworzenie | Tworzy określoną usługę Service Fabric. |
+| usuwanie | Usuwa istniejącą usługę Service Fabric. |
+| wdrożono-Type | Pobiera informacje o określonym typie usługi aplikacji wdrożonym w węźle klastra Service Fabric. |
+| wdrożone — lista typów | Pobiera listę zawierającą informacje o typach usług z aplikacji wdrożonych w węźle w klastrze Service Fabric. |
 | description | Pobiera opis istniejącej usługi Service Fabric. |
-| get-container-logs | Pobiera dzienniki kontenera dla kontenera wdrażane w węźle usługi Service Fabric. |
-| health | Pobiera kondycji określonej usługi Service Fabric. |
-| info | Pobiera informacje o określonej usługi należące do aplikacji usługi Service Fabric. |
-| list | Pobiera informacje o wszystkich usług należących do aplikacji, określonego przez identyfikator aplikacji. |
-| manifest | Pobiera manifest opisujące typ usługi. |
-| package-deploy | Pobiera pakiety skojarzone z określoną usługą manifestu do pamięci podręcznej obrazów w określonym węźle. |
-| package-health | Pobiera informacje o kondycji usług pakietu dla określonej aplikacji wdrożone dla węzła usługi Service Fabric i aplikacji. |
-| package-info | Pobiera listę pakietów usług wdrożonych w węźle usługi Service Fabric dopasowania określonej nazwy. |
-| package-list | Pobiera listę pakietów usług wdrożonych w węźle usługi Service Fabric. |
-| Odzyskiwanie | Klaster usługi Service Fabric wskazywać, że ma podejmować do odzyskania z określonej usługi, który jest obecnie zablokowany utraciła kworum. |
-| report-health | Wysyła raport o kondycji usługi Service Fabric. |
-| resolve | Rozwiąż partycji usługi Service Fabric. |
-| type-list | Pobiera listę zawierającą informacje o typach usługi, które są obsługiwane przez typ aplikacji aprowizowanych w klastrze usługi Service Fabric. |
-| update | Aktualizuje określonej usługi przy użyciu opisu danej aktualizacji. |
+| Pobierz kontener — dzienniki | Pobiera dzienniki kontenerów dla kontenera wdrożonego w węźle Service Fabric. |
+| health | Pobiera kondycję określonej usługi Service Fabric. |
+| info | Pobiera informacje o konkretnej usłudze należącej do aplikacji Service Fabric. |
+| list | Pobiera informacje o wszystkich usługach należących do aplikacji określonej przez identyfikator aplikacji. |
+| manifest | Pobiera manifest opisujący typ usługi. |
+| package-deploy | Pobiera pakiety skojarzone z określonym manifestem usługi do pamięci podręcznej obrazu w określonym węźle. |
+| package-health | Pobiera informacje o kondycji pakietu usługi dla określonej aplikacji wdrożonej dla węzła Service Fabric i aplikacji. |
+| package-info | Pobiera listę pakietów usługi wdrożonych w węźle Service Fabric zgodnym z określoną nazwą. |
+| package-list | Pobiera listę pakietów usług wdrożonych w węźle Service Fabric. |
+| odtwarzania | Wskazuje klaster Service Fabric, który powinien próbować odzyskać określoną usługę, która aktualnie jest zablokowana w utracie kworum. |
+| report-health | Wysyła raport o kondycji w usłudze Service Fabric. |
+| rozwiąż | Rozpoznaj partycję Service Fabric. |
+| type-list | Pobiera listę zawierającą informacje o typach usług obsługiwanych przez typ aplikacji zainicjowanej w klastrze Service Fabric. |
+| aktualizuj | Aktualizuje określoną usługę za pomocą podanego opisu aktualizacji. |
 
-## <a name="sfctl-service-app-name"></a>Nazwa aplikacji interfejsu sfctl usługi
-Pobiera nazwę aplikacji usługi Service Fabric dla usługi.
+## <a name="sfctl-service-app-name"></a>Nazwa aplikacji usługi sfctl
+Pobiera nazwę aplikacji Service Fabric dla usługi.
 
-Pobiera nazwę aplikacji dla określonej usługi. Błąd 404 FABRIC_E_SERVICE_DOES_NOT_EXIST jest zwracany, jeśli usługa o identyfikatorze podanej usługi nie istnieje.
-
-### <a name="arguments"></a>Argumenty
-
-|Argument|Opis|
-| --- | --- |
-| — Identyfikator usługi [wymagane] | Tożsamość usługi. Ten identyfikator jest zazwyczaj pełną nazwę usługi bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa usługi jest "Service fabric\:/myapp/app1/svc1", będzie tożsamości usługi "myapp\~app1\~svc1" w wersji 6.0 + i "myapp/app1/svc1" w poprzednich wersjach. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
-
-### <a name="global-arguments"></a>Argumenty globalne
-
-|Argument|Opis|
-| --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
-
-## <a name="sfctl-service-code-package-list"></a>Interfejs sfctl usługi kod —-listy pakietów
-Pobiera listę pakietów kod wdrożony w węźle usługi Service Fabric.
-
-Pobiera listę pakietów kod wdrożony w węźle usługi Service Fabric dla danej aplikacji.
+Pobiera nazwę aplikacji dla określonej usługi. Gdy usługa o podanym IDENTYFIKATORze usługi nie istnieje, zwracany jest błąd 404 FABRIC_E_SERVICE_DOES_NOT_EXIST.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| — Identyfikator aplikacji [wymagane] | Tożsamość aplikacji. Zazwyczaj jest to pełna nazwa aplikacji bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa aplikacji jest "Service fabric\:/myapp/app1", tożsamość aplikacji będzie "myapp\~app1" w wersji 6.0 + i "myapp app1" w poprzednich wersjach. |
-| — [wymagane] Nazwa węzła | Nazwa węzła. |
-| --code-package-name | Nazwa pakietu kodu określonego w manifeście usługi zarejestrowany jako część typu aplikacji w klastrze usługi Service Fabric. |
-| --service-manifest-name | Nazwa manifestu usługi zarejestrowany jako część typu aplikacji w klastrze usługi Service Fabric. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| --ID usługi [wymagane] | Tożsamość usługi. Ten identyfikator jest zazwyczaj pełną nazwą usługi bez schematu identyfikatora URI "Sieć szkieletowa\:". Począwszy od wersji 6,0, hierarchiczne nazwy są rozdzielane znakami\~"". Na przykład, jeśli nazwa usługi to "Fabric\:/MyApp/APP1/svc1", tożsamość usługi powinna mieć wartość "MojaApl\~APP1\~svc1" w wersji 6.0 + i "MojaApl/APP1/svc1" w poprzednich wersjach. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
+
+## <a name="sfctl-service-code-package-list"></a>kod usługi sfctl — lista pakietów
+Pobiera listę pakietów kodu wdrożonych w węźle Service Fabric.
+
+Pobiera listę pakietów kodu wdrożonych w węźle Service Fabric dla danej aplikacji.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Opis|
+| --- | --- |
+| --ID aplikacji [wymagane] | Tożsamość aplikacji. Jest to zazwyczaj pełna nazwa aplikacji bez schematu identyfikatora URI "Sieć szkieletowa\:". Począwszy od wersji 6,0, hierarchiczne nazwy są rozdzielane znakami\~"". Na przykład jeśli nazwa aplikacji to "Fabric\:/MyApp/APP1", tożsamość aplikacji byłaby "MojaApl\~APP1" w wersji 6.0 + i "MojaApl/APP1" w poprzednich wersjach. |
+| --Node-Name [wymagane] | Nazwa węzła. |
+| --Code-package-name | Nazwa pakietu kodu określona w manifeście usługi zarejestrowana w ramach typu aplikacji w klastrze Service Fabric. |
+| --service-manifest-name | Nazwa manifestu usługi zarejestrowana w ramach typu aplikacji w klastrze Service Fabric. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
+
+### <a name="global-arguments"></a>Argumenty globalne
+
+|Argument|Opis|
+| --- | --- |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
 ## <a name="sfctl-service-create"></a>Tworzenie usługi sfctl
-Tworzy określony usługi Service Fabric.
+Tworzy określoną usługę Service Fabric.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| Identyfikator aplikacji —, [wymagane] | Tożsamość aplikacji. Zazwyczaj jest to pełna nazwa aplikacji bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa aplikacji jest "Service fabric\:/myapp/app1", tożsamość aplikacji będzie "myapp\~app1" 6.0 + i "myapp app1" w poprzednich wersjach. |
-| — Nazwa [wymagane] | Nazwa usługi. Powinna to być elementem podrzędnym identyfikator aplikacji. Jest pełną nazwę w tym `fabric\:` identyfikatora URI. Na przykład usługi `fabric\:/A/B` jest elementem podrzędnym aplikacji `fabric\:/A`. |
-| — Typ usługi [wymagane] | Nazwa typu usługi. |
-| --activation-mode | Tryb aktywacji pakietu usługi. |
-| — ograniczenia | Ograniczenia dotyczące umieszczania jako ciąg. Ograniczeniami dotyczącymi umieszczania są wyrażeń logicznych na — właściwości węzła i umożliwiają ograniczenie usługi do określonych węzłów w oparciu o wymagania dotyczące usługi. Na przykład, aby umieścić usługi na węzłach, gdzie element NodeType to niebieski określ następujące\:"NodeColor == niebieski". |
-| --correlated-service | Nazwa docelowej usługi w celu skorelowania za pomocą. |
-| --correlation | Korelowanie usługi za pomocą istniejącej usługi przy użyciu koligacji wyrównania. |
-| --dns-name | Nazwa DNS usługi, które ma zostać utworzony. Usługa system DNS w sieci szkieletowej usługi musi być włączona dla tego ustawienia. |
-| --instance-count | Liczba wystąpień. Dotyczy to tylko w przypadku usług bezstanowych. |
-| --int-scheme | Wskazuje, że usługi powinny być dzielone równomiernie różnych liczb całkowitych bez znaku. |
-| --int-scheme-count | Liczba partycji wewnątrz zakres kluczy liczby całkowitej w celu utworzenia, jeśli przy użyciu schematu partycji jednolitego liczby całkowitej. |
-| --int-scheme-high | Koniec zakresu kluczy liczby całkowitej, jeśli przy użyciu schematu partycji jednolitego liczby całkowitej. |
-| --int-scheme-low | Początek zakresu kluczy liczby całkowitej, jeśli przy użyciu schematu partycji jednolitego liczby całkowitej. |
-| --metryk obciążenia | Lista kodowany w formacie JSON metryki używany podczas równoważenia obciążenia usług między węzłami. |
-| --min-replica-set-size | Minimalna repliki Ustaw rozmiar jako liczba. Dotyczy to tylko w przypadku usług stanowych. |
-| --move-cost | Określa koszt przeniesienia dla usługi. Możliwe wartości to\: "Zero", "Niska", "Średnie", "Wysokiego". |
-| --named-scheme | Wskazuje, że usługa powinny mieć wiele partycji o nazwie. |
-| --named-scheme-list | Lista kodowany w formacie JSON nazwy partycji usługi, jeśli przy użyciu schematu partycji o nazwie. |
-| --nie utrwalone — stan | W przypadku opcji true oznacza to, usługa nie ma żadnych trwały stan przechowywane na dysku lokalnym lub tylko przechowuje stan w pamięci. |
-| --placement-policy-list | Zakodowane JSON listy zasady umieszczania dla usługi, wraz ze wszystkimi skojarzonymi nazw domen. Zasady mogą być co najmniej\: `NonPartiallyPlaceService`, `PreferPrimaryDomain`, `RequireDomain`, `RequireDomainDistribution`. |
-| --kworum utraty wait | Maksymalny czas trwania w sekundach, dla której partycji może być w stanie utraciła kworum. Dotyczy to tylko w przypadku usług stanowych. |
-| --replica-restart-wait | Czas w sekundach między Jeśli replika ulegnie awarii, a po utworzeniu nowej repliki. Dotyczy to tylko w przypadku usług stanowych. |
-| --scaling-policies | JSON zakodowany listę skalowania zasad dla tej usługi. |
-| --singleton-scheme | Wskazuje usługi powinien mieć jednej partycji lub być usługi niepartycjonowana. |
-| --stand-by-replica-keep | Maksymalny czas trwania w sekundach, w których stan wstrzymania repliki zostanie zachowana przed usuwany. Dotyczy to tylko w przypadku usług stanowych. |
-| --stateful | Wskazuje, że usługa jest usługi stanowej. |
-| --stateless | Wskazuje, że usługa jest usługą bezstanowe. |
-| --target-replica-set-size | Replika docelowej Ustaw rozmiar jako liczba. Dotyczy to tylko w przypadku usług stanowych. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| --App-ID [wymagane] | Tożsamość aplikacji. Jest to zazwyczaj pełna nazwa aplikacji bez schematu identyfikatora URI "Sieć szkieletowa\:". Począwszy od wersji 6,0, hierarchiczne nazwy są rozdzielane znakami\~"". Na przykład jeśli nazwa aplikacji to "Fabric\:/MyApp/APP1", tożsamość aplikacji byłaby "MojaApl\~APP1" w wersji 6.0 + i "MojaApl/APP1" w poprzednich wersjach. |
+| --Name [wymagane] | Nazwa usługi. Powinien to być element podrzędny identyfikatora aplikacji. Jest to pełna nazwa, łącznie z `fabric\:` identyfikatorem URI. Na przykład usługa `fabric\:/A/B` jest elementem podrzędnym aplikacji `fabric\:/A`. |
+| --Typ usługi [wymagane] | Nazwa typu usługi. |
+| --activation-mode | Tryb aktywacji dla pakietu usługi. |
+| --ograniczenia | Ograniczenia umieszczania w postaci ciągu. Ograniczenia umieszczania są wyrażeniami logicznymi we właściwościach węzła i umożliwiają ograniczenie usługi do określonych węzłów na podstawie wymagań usługi. Na przykład, aby umieścić usługę w węzłach, gdzie NodeType jest niebieska,\:określ następujące "NodeColor = = Blue". |
+| --correlated-service | Nazwa docelowej usługi do powiązania. |
+| --Korelacja | Należy skorelować usługę z istniejącą usługą przy użyciu koligacji wyrównania. |
+| --dns-name | Nazwa DNS usługi, która ma zostać utworzona. Dla tego ustawienia musi być włączona usługa systemu DNS Service Fabric. |
+| --instance-Count | Liczba wystąpień. Dotyczy to wyłącznie usług bezstanowych. |
+| --int-scheme | Wskazuje, że usługa powinna być jednolicie partycjonowana dla zakresu liczb całkowitych bez znaku. |
+| --int-scheme-count | Liczba partycji w zakresie klucza liczb całkowitych do utworzenia, jeśli używany jest schemat partycji jednolitej liczby całkowitej. |
+| --int-scheme-high | Koniec zakresu wartości całkowitych, jeśli używany jest schemat partycji jednolitej liczby całkowitej. |
+| --int-scheme-low | Początek zakresu wartości całkowitych, jeśli jest używany schemat partycji jednolitej liczby całkowitej. |
+| --Load-Metrics | Zakodowana lista metryk w formacie JSON używana podczas równoważenia obciążenia usług między węzłami. |
+| --min-replica-set-size | Minimalny rozmiar zestawu replik to liczba. Dotyczy to wyłącznie usług stanowych. |
+| --move-cost | Określa koszt przenoszenia usługi. Możliwe wartości to\: "zero", "Low", "medium", "High". |
+| --named-scheme | Wskazuje, że usługa powinna mieć wiele nazwanych partycji. |
+| --named-scheme-list | Zakodowana w formacie JSON lista nazw do partycjonowania usługi w programie, jeśli jest używany schemat partycji o nazwie. |
+| --No-PERSISTED-State | W przypadku wartości true oznacza to, że usługa nie ma trwałego stanu przechowywanego na dysku lokalnym lub przechowuje tylko stan w pamięci. |
+| --placement-policy-list | Zakodowana w formacie JSON lista zasad umieszczania dla usługi i skojarzonych nazw domen. Zasady mogą być jedną lub większą liczbą\: `NonPartiallyPlaceService`, `PreferPrimaryDomain` `RequireDomain`,, `RequireDomainDistribution`. |
+| --kworum — utrata odczekania | Maksymalny czas (w sekundach), przez który partycja może być w stanie utraty kworum. Dotyczy to wyłącznie usług stanowych. |
+| --replica-restart-wait | Czas trwania (w sekundach), po którym następuje awaria repliki i utworzenie nowej repliki. Dotyczy to wyłącznie usług stanowych. |
+| --scaling-policies | Zakodowana w formacie JSON lista zasad skalowania dla tej usługi. |
+| --Singleton-schemat | Wskazuje, że usługa powinna mieć pojedynczą partycję lub być usługą niepartycjonowaną. |
+| --pogotowowanie do repliki — Zachowaj | Maksymalny czas (w sekundach) przechowywania replik rezerwy przed usunięciem. Dotyczy to wyłącznie usług stanowych. |
+| --stateful | Wskazuje, że usługa jest usługą stanową. |
+| --bezstanowe | Wskazuje, że usługa jest usługą bezstanową. |
+| --target-replica-set-size | Docelowy rozmiar zestawu replik to liczba. Dotyczy to wyłącznie usług stanowych. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
-## <a name="sfctl-service-delete"></a>Usuń usługę interfejsu sfctl
+## <a name="sfctl-service-delete"></a>Usuwanie usługi sfctl
 Usuwa istniejącą usługę Service Fabric.
 
-Usługa musi zostać utworzona, aby można było usunąć. Domyślnie Usługa Service Fabric podejmie próbę zamknięcie usługi replik w sposób płynnego, a następnie usuń usługę. Jednak jeśli usługa występują problemy, które bez problemu zmieniała zamknięcia repliki, operacja usuwania może zająć dużo czasu lub zatrzymywane. Opcjonalna Flaga ForceRemove umożliwia pominąć łagodne zamknięcia sekwencji i wymuszać usunąć usługę.
+Aby można było usunąć usługę, należy ją utworzyć. Domyślnie Service Fabric spróbuje zamknąć repliki usługi w sposób płynny, a następnie usunąć usługę. Jeśli jednak usługa ma problemy z zamykaniem repliki, operacja usuwania może zająć dużo czasu lub zostać zatrzymana. Użyj opcjonalnej flagi ForceRemove, aby pominąć przebieg sekwencji i wymuszone usunięcie usługi.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| — Identyfikator usługi [wymagane] | Tożsamość usługi. Ten identyfikator jest zazwyczaj pełną nazwę usługi bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa usługi jest "Service fabric\:/myapp/app1/svc1", będzie tożsamości usługi "myapp\~app1\~svc1" w wersji 6.0 + i "myapp/app1/svc1" w poprzednich wersjach. |
-| --force-remove | Usuwanie aplikacji usługi Service Fabric lub usługa wymuszone bez pośrednictwa sekwencji łagodne zamykanie. Ten parametr może służyć do wymuszone usunięcie aplikacji lub usługi w przypadku usuwania, które jest przekroczeniem limitu czasu z powodu problemów w kodzie usługi, który uniemożliwia łagodne zamknięcia repliki. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| --ID usługi [wymagane] | Tożsamość usługi. Ten identyfikator jest zazwyczaj pełną nazwą usługi bez schematu identyfikatora URI "Sieć szkieletowa\:". Począwszy od wersji 6,0, hierarchiczne nazwy są rozdzielane znakami\~"". Na przykład, jeśli nazwa usługi to "Fabric\:/MyApp/APP1/svc1", tożsamość usługi powinna mieć wartość "MojaApl\~APP1\~svc1" w wersji 6.0 + i "MojaApl/APP1/svc1" w poprzednich wersjach. |
+| --force-remove | Usuń wymuszanie Service Fabric aplikacji lub usługi bez przechodzenia przez łagodną sekwencję zamykania. Tego parametru można użyć, aby wymusić usunięcie aplikacji lub usługi, dla której limit czasu usuwania jest spowodowany przez problemy w kodzie usługi, które uniemożliwiają płynne zamknięcie replik. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
-## <a name="sfctl-service-deployed-type"></a>Usługa interfejs sfctl wdrożone typu
-Pobiera informacje o określonej usługi rodzaj aplikacji wdrożonej w węźle w klastrze usługi Service Fabric.
+## <a name="sfctl-service-deployed-type"></a>wdrożono usługę sfctl-Type
+Pobiera informacje o określonym typie usługi aplikacji wdrożonym w węźle klastra Service Fabric.
 
-Pobiera listę zawierającą informacje o typie określonej usługi, z poziomu aplikacji wdrożonych w węźle w klastrze usługi Service Fabric. Odpowiedź zawiera nazwę typu usługi, jego stan rejestracji, pakiet kodu, który zarejestrował ją i aktywacja identyfikator pakietu usługi. Każdy wpis przedstawia jeden aktywacji typu usługi zróżnicowane według identyfikatora aktywacji.
+Pobiera listę zawierającą informacje o określonym typie usługi z aplikacji wdrożonych w węźle w klastrze Service Fabric. Odpowiedź obejmuje nazwę typu usługi, jego stan rejestracji, pakiet kodu, który zarejestrował go i identyfikator aktywacji pakietu usługi. Każdy wpis reprezentuje jedną aktywację typu usługi, zróżnicowaną przez identyfikator aktywacji.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| — Identyfikator aplikacji [wymagane] | Tożsamość aplikacji. Zazwyczaj jest to pełna nazwa aplikacji bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa aplikacji jest "Service fabric\:/myapp/app1", tożsamość aplikacji będzie "myapp\~app1" w wersji 6.0 + i "myapp app1" w poprzednich wersjach. |
-| — [wymagane] Nazwa węzła | Nazwa węzła. |
-| --service-type-name [wymagane] | Określa nazwę typu usługi Service Fabric. |
-| --service-manifest-name | Nazwa manifestu usługi, aby filtrować listę informacji o typie wdrożonej usługi. Jeśli zostanie określony, odpowiedź będzie zawierać tylko informacje dotyczące typów usług, które są zdefiniowane w manifeście tej usługi. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| --ID aplikacji [wymagane] | Tożsamość aplikacji. Jest to zazwyczaj pełna nazwa aplikacji bez schematu identyfikatora URI "Sieć szkieletowa\:". Począwszy od wersji 6,0, hierarchiczne nazwy są rozdzielane znakami\~"". Na przykład jeśli nazwa aplikacji to "Fabric\:/MyApp/APP1", tożsamość aplikacji byłaby "MojaApl\~APP1" w wersji 6.0 + i "MojaApl/APP1" w poprzednich wersjach. |
+| --Node-Name [wymagane] | Nazwa węzła. |
+| --Service-Type-Name [wymagane] | Określa nazwę typu usługi Service Fabric. |
+| --service-manifest-name | Nazwa manifestu usługi, aby przefiltrować listę wdrożonych informacji o typie usługi. Jeśli ta wartość jest określona, odpowiedź będzie zawierać tylko informacje o typach usług, które są zdefiniowane w tym manifeście usługi. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
-## <a name="sfctl-service-deployed-type-list"></a>Interfejs sfctl usługa wdrożona typ list
-Pobiera listę zawierającą informacje o typach usługi z poziomu aplikacji wdrożonych w węźle w klastrze usługi Service Fabric.
+## <a name="sfctl-service-deployed-type-list"></a>wdrożono usługę sfctl-list typów
+Pobiera listę zawierającą informacje o typach usług z aplikacji wdrożonych w węźle w klastrze Service Fabric.
 
-Pobiera listę zawierającą informacje o typach usługi z poziomu aplikacji wdrożonych w węźle w klastrze usługi Service Fabric. Odpowiedź zawiera nazwę typu usługi, jego stan rejestracji, pakiet kodu, który zarejestrował ją i aktywacja identyfikator pakietu usługi.
+Pobiera listę zawierającą informacje o typach usług z aplikacji wdrożonych w węźle w klastrze Service Fabric. Odpowiedź obejmuje nazwę typu usługi, jego stan rejestracji, pakiet kodu, który zarejestrował go i identyfikator aktywacji pakietu usługi.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| — Identyfikator aplikacji [wymagane] | Tożsamość aplikacji. Zazwyczaj jest to pełna nazwa aplikacji bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa aplikacji jest "Service fabric\:/myapp/app1", tożsamość aplikacji będzie "myapp\~app1" w wersji 6.0 + i "myapp app1" w poprzednich wersjach. |
-| — [wymagane] Nazwa węzła | Nazwa węzła. |
-| --service-manifest-name | Nazwa manifestu usługi, aby filtrować listę informacji o typie wdrożonej usługi. Jeśli zostanie określony, odpowiedź będzie zawierać tylko informacje dotyczące typów usług, które są zdefiniowane w manifeście tej usługi. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| --ID aplikacji [wymagane] | Tożsamość aplikacji. Jest to zazwyczaj pełna nazwa aplikacji bez schematu identyfikatora URI "Sieć szkieletowa\:". Począwszy od wersji 6,0, hierarchiczne nazwy są rozdzielane znakami\~"". Na przykład jeśli nazwa aplikacji to "Fabric\:/MyApp/APP1", tożsamość aplikacji byłaby "MojaApl\~APP1" w wersji 6.0 + i "MojaApl/APP1" w poprzednich wersjach. |
+| --Node-Name [wymagane] | Nazwa węzła. |
+| --service-manifest-name | Nazwa manifestu usługi, aby przefiltrować listę wdrożonych informacji o typie usługi. Jeśli ta wartość jest określona, odpowiedź będzie zawierać tylko informacje o typach usług, które są zdefiniowane w tym manifeście usługi. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
 ## <a name="sfctl-service-description"></a>Opis usługi sfctl
 Pobiera opis istniejącej usługi Service Fabric.
 
-Pobiera opis istniejącej usługi Service Fabric. Usługa musi zostać utworzona przed można uzyskać jego opis.
+Pobiera opis istniejącej usługi Service Fabric. Aby można było uzyskać opis usługi, należy ją utworzyć.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| — Identyfikator usługi [wymagane] | Tożsamość usługi. Ten identyfikator jest zazwyczaj pełną nazwę usługi bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa usługi jest "Service fabric\:/myapp/app1/svc1", będzie tożsamości usługi "myapp\~app1\~svc1" w wersji 6.0 + i "myapp/app1/svc1" w poprzednich wersjach. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| --ID usługi [wymagane] | Tożsamość usługi. Ten identyfikator jest zazwyczaj pełną nazwą usługi bez schematu identyfikatora URI "Sieć szkieletowa\:". Począwszy od wersji 6,0, hierarchiczne nazwy są rozdzielane znakami\~"". Na przykład, jeśli nazwa usługi to "Fabric\:/MyApp/APP1/svc1", tożsamość usługi powinna mieć wartość "MojaApl\~APP1\~svc1" w wersji 6.0 + i "MojaApl/APP1/svc1" w poprzednich wersjach. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
-## <a name="sfctl-service-get-container-logs"></a>Interfejs sfctl get-container dzienniki usługi
-Pobiera dzienniki kontenera dla kontenera wdrażane w węźle usługi Service Fabric.
+## <a name="sfctl-service-get-container-logs"></a>sfctl Service Get-Container-Logs
+Pobiera dzienniki kontenerów dla kontenera wdrożonego w węźle Service Fabric.
 
-Pobiera dzienniki kontenera dla kontenera wdrażane w węźle usługi Service Fabric dla pakietu danego kodu.
+Pobiera dzienniki kontenerów dla kontenera wdrożonego w węźle Service Fabric dla danego pakietu kodu.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| — Identyfikator aplikacji [wymagane] | Tożsamość aplikacji. Zazwyczaj jest to pełna nazwa aplikacji bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa aplikacji jest "Service fabric\:/myapp/app1", tożsamość aplikacji będzie "myapp\~app1" w wersji 6.0 + i "myapp app1" w poprzednich wersjach. |
-| --Kod pakietu nazwa-[wymagane] | Nazwa pakietu kodu określonego w manifeście usługi zarejestrowany jako część typu aplikacji w klastrze usługi Service Fabric. |
-| — [wymagane] Nazwa węzła | Nazwa węzła. |
-| --service-manifest-name [wymagane] | Nazwa manifestu usługi zarejestrowany jako część typu aplikacji w klastrze usługi Service Fabric. |
-| --poprzedniej | Określa, czy można pobrać dzienniki kontenerów z kontenerów zakończył działanie dead wystąpienia pakietu kodu. |
-| --tail | Liczba wierszy do pokazania od końca dzienniki. Domyślna to 100. "wszystkie", aby wyświetlić pełne dzienniki. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| --ID aplikacji [wymagane] | Tożsamość aplikacji. Jest to zazwyczaj pełna nazwa aplikacji bez schematu identyfikatora URI "Sieć szkieletowa\:". Począwszy od wersji 6,0, hierarchiczne nazwy są rozdzielane znakami\~"". Na przykład jeśli nazwa aplikacji to "Fabric\:/MyApp/APP1", tożsamość aplikacji byłaby "MojaApl\~APP1" w wersji 6.0 + i "MojaApl/APP1" w poprzednich wersjach. |
+| --Code-package-name [wymagane] | Nazwa pakietu kodu określona w manifeście usługi zarejestrowana w ramach typu aplikacji w klastrze Service Fabric. |
+| --Node-Name [wymagane] | Nazwa węzła. |
+| --Service-manifest-Name [wymagane] | Nazwa manifestu usługi zarejestrowana w ramach typu aplikacji w klastrze Service Fabric. |
+| --poprzednie | Określa, czy mają zostać pobrane dzienniki kontenerów z zakończonych/martwych kontenerów wystąpienia pakietu kodu. |
+| --tail | Liczba wierszy do wyświetlenia na końcu dzienników. Wartość domyślna to 100. "wszystkie", aby wyświetlić kompletne dzienniki. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
-## <a name="sfctl-service-health"></a>Kondycja usługi sfctl
-Pobiera kondycji określonej usługi Service Fabric.
+## <a name="sfctl-service-health"></a>kondycja usługi sfctl
+Pobiera kondycję określonej usługi Service Fabric.
 
-Pobiera informacje o kondycji określonej usługi. Zgłoszone EventsHealthStateFilter użycia do filtrowania kolekcji zdarzeń dotyczących kondycji usługi oparte na stanie kondycji. Użyj PartitionsHealthStateFilter do filtrowania kolekcji zwrócił partycji. Jeśli określisz to usługa, która nie istnieje w magazynie kondycji, to żądanie zwraca błąd.
+Pobiera informacje o kondycji określonej usługi. Użyj EventsHealthStateFilter, aby odfiltrować kolekcję zdarzeń kondycji zgłoszonych w usłudze na podstawie stanu kondycji. Użyj PartitionsHealthStateFilter, aby odfiltrować kolekcję zwracanych partycji. W przypadku określenia usługi, która nie istnieje w magazynie kondycji, żądanie zwróci błąd.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --service-id          [Required] | Tożsamość usługi. Ten identyfikator jest zazwyczaj pełną nazwę usługi bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa usługi jest "Service fabric\:/myapp/app1/svc1", będzie tożsamości usługi "myapp\~app1\~svc1" w wersji 6.0 + i "myapp/app1/svc1" w poprzednich wersjach. |
-| --events-health-state-filter | Umożliwia filtrowanie kolekcji zwracanych obiektów HealthEvent oparte na stanie kondycji. Możliwe wartości dla tego parametru to wartość całkowitą, jednego z następujących stanów kondycji. Zwracane są tylko te zdarzenia, które są zgodne z filtrem. Wszystkie zdarzenia są używane do oceny stanu kondycji zagregowane. Jeśli nie zostanie określony, zwracane są wszystkie wpisy. Wartości stanu są wyliczanie oparte na flagi, dzięki czemu może to być kombinacją tych wartości uzyskanych przy użyciu bitowego operatora "Lub". Na przykład jeśli podana wartość jest 6 następnie wszystkie zdarzenia z wartością atrybutu HealthState OK (2) i ostrzeżenia (4) są zwracane.  <br> -Domyślnie — wartość domyślną. Pasuje do dowolnego atrybutu HealthState. Ta wartość wynosi zero.  <br> -Brak — filtr, który nie jest zgodny z dowolną wartością atrybutu HealthState. Używany, aby zwracała żadnych wyników w danej kolekcji stanów. Wartość to 1.  <br> -Ok — filtrowanie, że dopasowania danych wejściowych z wartością atrybutu HealthState Ok. Wartość jest równa 2.  <br> -Warning - filtru, że wprowadzanie dopasowania z atrybutem HealthState wartość ostrzeżenie. Wartość wynosi 4.  <br> -Błąd — filtr, który pasuje do danych wejściowych z wartością atrybutu HealthState błędu. Wartość jest 8.  <br> -Al - filtr, który pasuje do danych wejściowych z dowolną wartością atrybutu HealthState. Wartość jest 65535. |
-| --exclude-health-statistics | Wskazuje, czy statystyki kondycji ma zostać zwrócone w wyniku zapytania. Wartość false, domyślnie. Statystyki pokazują liczbę elementów podrzędnych jednostek w kondycja Ok, ostrzeżenia i błędu. |
-| --partitions-health-state-filter | Umożliwia filtrowanie obiektów stanu kondycji partycje zwrócone w wyniku zapytania usługi kondycji, na podstawie ich stanu kondycji. Możliwe wartości dla tego parametru to wartość całkowitą, jednego z następujących stanów kondycji. Zwracane są tylko te partycje, które są zgodne z filtrem. Wszystkie partycje służą do oceny stanu kondycji zagregowane. Jeśli nie zostanie określony, zwracane są wszystkie wpisy. Wartości stanu są wyliczanie oparte na flagi, dzięki czemu może to być kombinacją tych wartości uzyskanych przy użyciu bitowego operatora "Lub". Na przykład jeśli podana wartość jest 6 następnie stan kondycji partycji przy użyciu wartości atrybutu HealthState OK (2) i ostrzeżenia (4) zwracaną.  <br> -Domyślnie — wartość domyślną. Pasuje do dowolnego atrybutu HealthState. Ta wartość wynosi zero.  <br> -Brak — filtr, który nie jest zgodny z dowolną wartością atrybutu HealthState. Używany, aby zwracała żadnych wyników w danej kolekcji stanów. Wartość to 1.  <br> -Ok — filtrowanie, że dopasowania danych wejściowych z wartością atrybutu HealthState Ok. Wartość jest równa 2.  <br> -Warning - filtru, że wprowadzanie dopasowania z atrybutem HealthState wartość ostrzeżenie. Wartość wynosi 4.  <br> -Błąd — filtr, który pasuje do danych wejściowych z wartością atrybutu HealthState błędu. Wartość jest 8.  <br> -Al - filtr, który pasuje do danych wejściowych z dowolną wartością atrybutu HealthState. Wartość jest 65535. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| --ID usługi [wymagane] | Tożsamość usługi. Ten identyfikator jest zazwyczaj pełną nazwą usługi bez schematu identyfikatora URI "Sieć szkieletowa\:". Począwszy od wersji 6,0, hierarchiczne nazwy są rozdzielane znakami\~"". Na przykład, jeśli nazwa usługi to "Fabric\:/MyApp/APP1/svc1", tożsamość usługi powinna mieć wartość "MojaApl\~APP1\~svc1" w wersji 6.0 + i "MojaApl/APP1/svc1" w poprzednich wersjach. |
+| --events-health-state-filter | Umożliwia filtrowanie kolekcji obiektów HealthEvent zwracanych na podstawie stanu kondycji. Możliwe wartości tego parametru obejmują wartość całkowitą jednego z następujących stanów kondycji. Zwracane są tylko zdarzenia zgodne z filtrem. Wszystkie zdarzenia są używane do oszacowania zagregowanego stanu kondycji. Jeśli nie zostanie określony, zwracane są wszystkie wpisy. Wartości stanu są wyliczeniem opartym na flagach, więc wartość może być kombinacją tych wartości uzyskanych za pomocą bitowego operatora "OR". Na przykład jeśli podana wartość to 6, zwracane są wszystkie zdarzenia z wartością HealthState równą OK (2) i ostrzeżenie (4).  <br> -Default — wartość domyślna. Dopasowuje dowolny HealthState. Wartość jest równa zero.  <br> -None-Filter, który nie pasuje do żadnej wartości HealthState. Używane w celu zwracania wyników w danej kolekcji Stanów. Wartość jest równa 1.  <br> -OK-Filter, który dopasowuje dane wejściowe z wartością HealthState równą OK. Wartość jest równa 2.  <br> -Warning-Filter, który dopasowuje dane wejściowe z ostrzeżeniem o wartości HealthState. Wartość to 4.  <br> -Error-Filter, który dopasowuje dane wejściowe z błędem wartości HealthState. Wartość to 8.  <br> -All-Filter, który dopasowuje dane wejściowe z dowolną wartością HealthState. Wartość to 65535. |
+| --exclude-health-statistics | Wskazuje, czy statystyki kondycji mają być zwracane jako część wyniku zapytania. Domyślnie wartość false. Statystyki przedstawiają liczbę jednostek podrzędnych w stanie kondycji prawidłowy, ostrzegawczy i błąd. |
+| --partitions-health-state-filter | Umożliwia filtrowanie obiektów stanu kondycji partycji zwracanych w wyniku zapytania o kondycję usługi na podstawie ich stanu kondycji. Możliwe wartości tego parametru obejmują wartość całkowitą jednego z następujących stanów kondycji. Zwracane są tylko partycje zgodne z filtrem. Wszystkie partycje są używane do szacowania zagregowanego stanu kondycji. Jeśli nie zostanie określony, zwracane są wszystkie wpisy. Wartości stanu są wyliczaniem opartym na flagach, więc wartość może być kombinacją wartości uzyskanych za pomocą bitowego operatora "OR". Na przykład jeśli podana wartość to 6, stan kondycji partycji z wartością HealthState równą OK (2) i ostrzeżenie (4) zostaną zwrócone.  <br> -Default — wartość domyślna. Dopasowuje dowolny HealthState. Wartość jest równa zero.  <br> -None-Filter, który nie pasuje do żadnej wartości HealthState. Używane w celu zwracania wyników w danej kolekcji Stanów. Wartość jest równa 1.  <br> -OK-Filter, który dopasowuje dane wejściowe z wartością HealthState równą OK. Wartość jest równa 2.  <br> -Warning-Filter, który dopasowuje dane wejściowe z ostrzeżeniem o wartości HealthState. Wartość to 4.  <br> -Error-Filter, który dopasowuje dane wejściowe z błędem wartości HealthState. Wartość to 8.  <br> -All-Filter, który dopasowuje dane wejściowe z dowolną wartością HealthState. Wartość to 65535. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
-## <a name="sfctl-service-info"></a>informacje o usłudze sfctl
-Pobiera informacje o określonej usługi należące do aplikacji usługi Service Fabric.
+## <a name="sfctl-service-info"></a>Informacje o usłudze sfctl
+Pobiera informacje o konkretnej usłudze należącej do aplikacji Service Fabric.
 
-Zwraca informacje dotyczące określonej usługi należących do określonej aplikacji usługi Service Fabric.
+Zwraca informacje dotyczące określonej usługi należącej do określonej Service Fabric aplikacji.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| — Identyfikator aplikacji [wymagane] | Tożsamość aplikacji. Zazwyczaj jest to pełna nazwa aplikacji bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa aplikacji jest "Service fabric\:/myapp/app1", tożsamość aplikacji będzie "myapp\~app1" w wersji 6.0 + i "myapp app1" w poprzednich wersjach. |
-| --service-id     [Required] | Tożsamość usługi. Ten identyfikator jest zazwyczaj pełną nazwę usługi bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa usługi jest "Service fabric\:/myapp/app1/svc1", będzie tożsamości usługi "myapp\~app1\~svc1" w wersji 6.0 + i "myapp/app1/svc1" w poprzednich wersjach. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| --ID aplikacji [wymagane] | Tożsamość aplikacji. Jest to zazwyczaj pełna nazwa aplikacji bez schematu identyfikatora URI "Sieć szkieletowa\:". Począwszy od wersji 6,0, hierarchiczne nazwy są rozdzielane znakami\~"". Na przykład jeśli nazwa aplikacji to "Fabric\:/MyApp/APP1", tożsamość aplikacji byłaby "MojaApl\~APP1" w wersji 6.0 + i "MojaApl/APP1" w poprzednich wersjach. |
+| --ID usługi [wymagane] | Tożsamość usługi. Ten identyfikator jest zazwyczaj pełną nazwą usługi bez schematu identyfikatora URI "Sieć szkieletowa\:". Począwszy od wersji 6,0, hierarchiczne nazwy są rozdzielane znakami\~"". Na przykład, jeśli nazwa usługi to "Fabric\:/MyApp/APP1/svc1", tożsamość usługi powinna mieć wartość "MojaApl\~APP1\~svc1" w wersji 6.0 + i "MojaApl/APP1/svc1" w poprzednich wersjach. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
-## <a name="sfctl-service-list"></a>Lista usług interfejsu sfctl
-Pobiera informacje o wszystkich usług należących do aplikacji, określonego przez identyfikator aplikacji.
+## <a name="sfctl-service-list"></a>Lista usługi sfctl
+Pobiera informacje o wszystkich usługach należących do aplikacji określonej przez identyfikator aplikacji.
 
-Zwraca informacje dotyczące wszystkich usług należących do aplikacji, określonego przez identyfikator aplikacji.
+Zwraca informacje o wszystkich usługach należących do aplikacji określonej przez identyfikator aplikacji.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| — Identyfikator aplikacji [wymagane] | Tożsamość aplikacji. Zazwyczaj jest to pełna nazwa aplikacji bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa aplikacji jest "Service fabric\:/myapp/app1", tożsamość aplikacji będzie "myapp\~app1" w wersji 6.0 + i "myapp app1" w poprzednich wersjach. |
-| --token kontynuacji | Parametr tokenu kontynuacji służy do uzyskania następny zestaw wyników. Token kontynuacji o wartości niepuste znajduje się w odpowiedzi interfejsu API, gdy wyniki z systemu nie mieszczą się w jednej odpowiedzi. Jeśli ta wartość jest przekazywana do następnego wywołania interfejsu API, interfejs API zwraca następny zestaw wyników. Jeśli nie istnieją żadne dalsze wyniki, token kontynuacji nie zawiera wartości. Wartość tego parametru nie powinny być zakodowane w adresie URL. |
-| --service-type-name | Nazwa typu usługi używane do filtrowania usług dla kwerendy. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| --ID aplikacji [wymagane] | Tożsamość aplikacji. Jest to zazwyczaj pełna nazwa aplikacji bez schematu identyfikatora URI "Sieć szkieletowa\:". Począwszy od wersji 6,0, hierarchiczne nazwy są rozdzielane znakami\~"". Na przykład jeśli nazwa aplikacji to "Fabric\:/MyApp/APP1", tożsamość aplikacji byłaby "MojaApl\~APP1" w wersji 6.0 + i "MojaApl/APP1" w poprzednich wersjach. |
+| --Kontynuacja — token | Parametr tokenu kontynuacji służy do uzyskiwania następnego zestawu wyników. Token kontynuacji z niepustą wartością jest dołączany do odpowiedzi interfejsu API, gdy wyniki z systemu nie mieszczą się w pojedynczej odpowiedzi. Gdy ta wartość jest przenoszona do następnego wywołania interfejsu API, interfejs API zwraca następny zestaw wyników. Jeśli nie ma żadnych dalszych wyników, token kontynuacji nie zawiera wartości. Wartość tego parametru nie powinna być zakodowana w adresie URL. |
+| --service-type-name | Nazwa typu usługi używana do filtrowania usług w celu wykonywania zapytań. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
-## <a name="sfctl-service-manifest"></a>Interfejs sfctl manifestu usługi
-Pobiera manifest opisujące typ usługi.
+## <a name="sfctl-service-manifest"></a>Manifest usługi sfctl
+Pobiera manifest opisujący typ usługi.
 
-Pobiera manifest opisujące typ usługi. Odpowiedź zawiera kod XML manifestu usługi jako ciąg.
+Pobiera manifest opisujący typ usługi. Odpowiedź zawiera kod XML manifestu usługi jako ciąg.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| -aplikacji type-name [wymagane] | Nazwa typu aplikacji. |
-| --— wersję typu aplikacji — [wymagane] | Wersja typu aplikacji. |
-| --service-manifest-name    [Required] | Nazwa manifestu usługi zarejestrowany jako część typu aplikacji w klastrze usługi Service Fabric. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| --Typ aplikacji-nazwa [wymagane] | Nazwa typu aplikacji. |
+| --Typ aplikacji — wersja [wymagana] | Wersja typu aplikacji. |
+| --service-manifest-name    [Required] | Nazwa manifestu usługi zarejestrowana w ramach typu aplikacji w klastrze Service Fabric. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
-## <a name="sfctl-service-package-deploy"></a>Wdrażanie pakietu usługi sfctl
-Pobiera pakiety skojarzone z określoną usługą manifestu do pamięci podręcznej obrazów w określonym węźle.
+## <a name="sfctl-service-package-deploy"></a>Pakiet usługi sfctl — wdrażanie
+Pobiera pakiety skojarzone z określonym manifestem usługi do pamięci podręcznej obrazu w określonym węźle.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| -aplikacji-type-name [wymagane] | Nazwa manifestu aplikacji odpowiednie manifestu żądanej usługi. |
-| --— Typ wersja aplikacji [wymagane] | Wersja manifestu aplikacji odpowiednie manifestu żądanej usługi. |
-| — [wymagane] Nazwa węzła | Nazwa węzła. |
-| --service-manifest-name [wymagane] | Nazwa manifestu usługi skojarzone z pakietami, które będą pobierane. |
-| — zasady udziału | Lista kodowany w formacie JSON zasad udostępniania. Każdy udostępniania element zasad składa się z "name" i "scope". Nazwa odpowiada nazwa pakietu kodu, konfiguracji lub danych, który ma zostać udostępniony. Zakres nie może być wartość "None", "All", "Code", "Konfiguracja" lub "Dane". |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| --App-type-name [wymagane] | Nazwa manifestu aplikacji dla odpowiadającego żądanego manifestu usługi. |
+| --App-Type-Version [wymagane] | Wersja manifestu aplikacji dla odpowiadającego żądanego manifestu usługi. |
+| --Node-Name [wymagane] | Nazwa węzła. |
+| --Service-manifest-Name [wymagane] | Nazwa manifestu usługi skojarzonego z pakietami, które zostaną pobrane. |
+| --Share-Policy | Zakodowana lista zasad udostępniania w formacie JSON. Każdy element zasad udostępniania składa się z wartości "name" i "Scope". Nazwa odpowiada nazwie kodu, konfiguracji lub pakietu danych, który ma zostać udostępniony. Zakresem może być "none", "All", "Code", "config" lub "Data". |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
-## <a name="sfctl-service-package-health"></a>Interfejs sfctl pakietu — kondycja usługi
-Pobiera informacje o kondycji usług pakietu dla określonej aplikacji wdrożone dla węzła usługi Service Fabric i aplikacji.
+## <a name="sfctl-service-package-health"></a>Pakiet usługi sfctl Service — kondycja
+Pobiera informacje o kondycji pakietu usługi dla określonej aplikacji wdrożonej dla węzła Service Fabric i aplikacji.
 
-Pobiera informacje o kondycji usług pakietu dla określonej aplikacji wdrożonych w węźle usługi Service Fabric. Użyj EventsHealthStateFilter opcjonalnie filtrowania dla kolekcji obiektów HealthEvent zgłoszone w pakiecie wdrożonej usługi na podstawie stanu kondycji.
+Pobiera informacje o kondycji pakietu usługi dla określonej aplikacji wdrożonej w węźle Service Fabric. Użyj EventsHealthStateFilter, aby opcjonalnie odfiltrować kolekcję obiektów HealthEvent raportowanych dla wdrożonego pakietu usługi na podstawie stanu kondycji.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| — Identyfikator aplikacji [wymagane] | Tożsamość aplikacji. Zazwyczaj jest to pełna nazwa aplikacji bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa aplikacji jest "Service fabric\:/myapp/app1", tożsamość aplikacji będzie "myapp\~app1" w wersji 6.0 + i "myapp app1" w poprzednich wersjach. |
-| — [wymagane] Nazwa węzła | Nazwa węzła. |
-| --service pakietu name [wymagane] | Nazwa pakietu usługi. |
-| --events-health-state-filter | Umożliwia filtrowanie kolekcji zwracanych obiektów HealthEvent oparte na stanie kondycji. Możliwe wartości dla tego parametru to wartość całkowitą, jednego z następujących stanów kondycji. Zwracane są tylko te zdarzenia, które są zgodne z filtrem. Wszystkie zdarzenia są używane do oceny stanu kondycji zagregowane. Jeśli nie zostanie określony, zwracane są wszystkie wpisy. Wartości stanu są wyliczanie oparte na flagi, dzięki czemu może to być kombinacją tych wartości uzyskanych przy użyciu bitowego operatora "Lub". Na przykład jeśli podana wartość jest 6 następnie wszystkie zdarzenia z wartością atrybutu HealthState OK (2) i ostrzeżenia (4) są zwracane.  <br> -Domyślnie — wartość domyślną. Pasuje do dowolnego atrybutu HealthState. Ta wartość wynosi zero.  <br> -Brak — filtr, który nie jest zgodny z dowolną wartością atrybutu HealthState. Używany, aby zwracała żadnych wyników w danej kolekcji stanów. Wartość to 1.  <br> -Ok — filtrowanie, że dopasowania danych wejściowych z wartością atrybutu HealthState Ok. Wartość jest równa 2.  <br> -Warning - filtru, że wprowadzanie dopasowania z atrybutem HealthState wartość ostrzeżenie. Wartość wynosi 4.  <br> -Błąd — filtr, który pasuje do danych wejściowych z wartością atrybutu HealthState błędu. Wartość jest 8.  <br> -Al - filtr, który pasuje do danych wejściowych z dowolną wartością atrybutu HealthState. Wartość jest 65535. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| --ID aplikacji [wymagane] | Tożsamość aplikacji. Jest to zazwyczaj pełna nazwa aplikacji bez schematu identyfikatora URI "Sieć szkieletowa\:". Począwszy od wersji 6,0, hierarchiczne nazwy są rozdzielane znakami\~"". Na przykład jeśli nazwa aplikacji to "Fabric\:/MyApp/APP1", tożsamość aplikacji byłaby "MojaApl\~APP1" w wersji 6.0 + i "MojaApl/APP1" w poprzednich wersjach. |
+| --Node-Name [wymagane] | Nazwa węzła. |
+| --Service-package-name [wymagane] | Nazwa pakietu usługi. |
+| --events-health-state-filter | Umożliwia filtrowanie kolekcji obiektów HealthEvent zwracanych na podstawie stanu kondycji. Możliwe wartości tego parametru obejmują wartość całkowitą jednego z następujących stanów kondycji. Zwracane są tylko zdarzenia zgodne z filtrem. Wszystkie zdarzenia są używane do oszacowania zagregowanego stanu kondycji. Jeśli nie zostanie określony, zwracane są wszystkie wpisy. Wartości stanu są wyliczeniem opartym na flagach, więc wartość może być kombinacją tych wartości uzyskanych za pomocą bitowego operatora "OR". Na przykład jeśli podana wartość to 6, zwracane są wszystkie zdarzenia z wartością HealthState równą OK (2) i ostrzeżenie (4).  <br> -Default — wartość domyślna. Dopasowuje dowolny HealthState. Wartość jest równa zero.  <br> -None-Filter, który nie pasuje do żadnej wartości HealthState. Używane w celu zwracania wyników w danej kolekcji Stanów. Wartość jest równa 1.  <br> -OK-Filter, który dopasowuje dane wejściowe z wartością HealthState równą OK. Wartość jest równa 2.  <br> -Warning-Filter, który dopasowuje dane wejściowe z ostrzeżeniem o wartości HealthState. Wartość to 4.  <br> -Error-Filter, który dopasowuje dane wejściowe z błędem wartości HealthState. Wartość to 8.  <br> -All-Filter, który dopasowuje dane wejściowe z dowolną wartością HealthState. Wartość to 65535. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
-## <a name="sfctl-service-package-info"></a>Interfejs sfctl usługi — informacje o pakiecie
-Pobiera listę pakietów usług wdrożonych w węźle usługi Service Fabric dopasowania określonej nazwy.
+## <a name="sfctl-service-package-info"></a>Pakiet usługi sfctl Service — informacje
+Pobiera listę pakietów usługi wdrożonych w węźle Service Fabric zgodnym z określoną nazwą.
 
-Zwraca informacje o pakietach usługi wdrożone w węźle usługi Service Fabric dla danej aplikacji. Pakietów usługi, którego nazwa odpowiada dokładnie nazwę pakietu usługi te wyniki są określone jako parametr.
+Zwraca informacje o pakietach usług wdrożonych w węźle Service Fabric dla danej aplikacji. Te wyniki są pakietami usług, których nazwa pasuje dokładnie do nazwy pakietu usługi określonego jako parametr.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| — Identyfikator aplikacji [wymagane] | Tożsamość aplikacji. Zazwyczaj jest to pełna nazwa aplikacji bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa aplikacji jest "Service fabric\:/myapp/app1", tożsamość aplikacji będzie "myapp\~app1" w wersji 6.0 + i "myapp app1" w poprzednich wersjach. |
-| — [wymagane] Nazwa węzła | Nazwa węzła. |
-| --service pakietu name [wymagane] | Nazwa pakietu usługi. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| --ID aplikacji [wymagane] | Tożsamość aplikacji. Jest to zazwyczaj pełna nazwa aplikacji bez schematu identyfikatora URI "Sieć szkieletowa\:". Począwszy od wersji 6,0, hierarchiczne nazwy są rozdzielane znakami\~"". Na przykład jeśli nazwa aplikacji to "Fabric\:/MyApp/APP1", tożsamość aplikacji byłaby "MojaApl\~APP1" w wersji 6.0 + i "MojaApl/APP1" w poprzednich wersjach. |
+| --Node-Name [wymagane] | Nazwa węzła. |
+| --Service-package-name [wymagane] | Nazwa pakietu usługi. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
-## <a name="sfctl-service-package-list"></a>Interfejs sfctl usługę z listy pakietów
-Pobiera listę pakietów usług wdrożonych w węźle usługi Service Fabric.
+## <a name="sfctl-service-package-list"></a>Lista pakietów usługi sfctl
+Pobiera listę pakietów usług wdrożonych w węźle Service Fabric.
 
-Zwraca informacje o pakietach usługi wdrożone w węźle usługi Service Fabric dla danej aplikacji.
+Zwraca informacje o pakietach usług wdrożonych w węźle Service Fabric dla danej aplikacji.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| — Identyfikator aplikacji [wymagane] | Tożsamość aplikacji. Zazwyczaj jest to pełna nazwa aplikacji bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa aplikacji jest "Service fabric\:/myapp/app1", tożsamość aplikacji będzie "myapp\~app1" w wersji 6.0 + i "myapp app1" w poprzednich wersjach. |
-| — [wymagane] Nazwa węzła | Nazwa węzła. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| --ID aplikacji [wymagane] | Tożsamość aplikacji. Jest to zazwyczaj pełna nazwa aplikacji bez schematu identyfikatora URI "Sieć szkieletowa\:". Począwszy od wersji 6,0, hierarchiczne nazwy są rozdzielane znakami\~"". Na przykład jeśli nazwa aplikacji to "Fabric\:/MyApp/APP1", tożsamość aplikacji byłaby "MojaApl\~APP1" w wersji 6.0 + i "MojaApl/APP1" w poprzednich wersjach. |
+| --Node-Name [wymagane] | Nazwa węzła. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
-## <a name="sfctl-service-recover"></a>Odzyskaj usługi sfctl
-Klaster usługi Service Fabric wskazywać, że ma podejmować do odzyskania z określonej usługi, który jest obecnie zablokowany utraciła kworum.
+## <a name="sfctl-service-recover"></a>odzyskiwanie usługi sfctl
+Wskazuje klaster Service Fabric, który powinien próbować odzyskać określoną usługę, która aktualnie jest zablokowana w utracie kworum.
 
-Klaster usługi Service Fabric wskazywać, że ma podejmować do odzyskania z określonej usługi, który jest obecnie zablokowany utraciła kworum. Ta operacja powinna można wykonać tylko, jeśli jest znany, nie będzie można odzyskać replik, które nie działają. Niepoprawne użycie tego interfejsu API może spowodować ryzyko utraty danych.
+Wskazuje klaster Service Fabric, który powinien próbować odzyskać określoną usługę, która aktualnie jest zablokowana w utracie kworum. Tę operację należy wykonać tylko wtedy, gdy wiadomo, że repliki nie mogą zostać odzyskane. Nieprawidłowe użycie tego interfejsu API może spowodować utratę danych.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| — Identyfikator usługi [wymagane] | Tożsamość usługi. Ten identyfikator jest zazwyczaj pełną nazwę usługi bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa usługi jest "Service fabric\:/myapp/app1/svc1", będzie tożsamości usługi "myapp\~app1\~svc1" w wersji 6.0 + i "myapp/app1/svc1" w poprzednich wersjach. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| --ID usługi [wymagane] | Tożsamość usługi. Ten identyfikator jest zazwyczaj pełną nazwą usługi bez schematu identyfikatora URI "Sieć szkieletowa\:". Począwszy od wersji 6,0, hierarchiczne nazwy są rozdzielane znakami\~"". Na przykład, jeśli nazwa usługi to "Fabric\:/MyApp/APP1/svc1", tożsamość usługi powinna mieć wartość "MojaApl\~APP1\~svc1" w wersji 6.0 + i "MojaApl/APP1/svc1" w poprzednich wersjach. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
-## <a name="sfctl-service-report-health"></a>Interfejs sfctl usługi raportów kondycji
-Wysyła raport o kondycji usługi Service Fabric.
+## <a name="sfctl-service-report-health"></a>Raport usługi sfctl — kondycja
+Wysyła raport o kondycji w usłudze Service Fabric.
 
-Raporty stan kondycji określonej usługi Service Fabric. Raport musi zawierać informacje o źródle raport o kondycji i właściwości, na którym jest zgłaszany. Raport jest wysyłany do usługi, która przekazuje w magazynie kondycji bramy usługi Service Fabric. Raport może być akceptowane przez bramę, ale odrzucony przez magazynu kondycji po dodatkową walidację. Na przykład magazynu kondycji może odrzucić raport ze względu na nieprawidłowy parametr, takich jak numer sekwencji starych. Aby sprawdzić, czy raport został zastosowany w magazynie kondycji, sprawdź, czy raport jest wyświetlany w zdarzeń kondycji usługi.
+Zgłasza stan kondycji określonej usługi Service Fabric. Raport musi zawierać informacje o źródle raportu kondycji i właściwości, na których jest raportowany. Raport jest wysyłany do usługi bramy Service Fabric, która przekazuje do magazynu kondycji. Raport może zostać zaakceptowany przez bramę, ale odrzucony przez magazyn kondycji po dodatkowej weryfikacji. Na przykład magazyn kondycji może odrzucić raport z powodu nieprawidłowego parametru, takiego jak stary numer sekwencyjny. Aby sprawdzić, czy raport został zastosowany w magazynie kondycji, sprawdź, czy raport jest wyświetlany w zdarzeniach dotyczących kondycji usługi.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --kondycji — właściwość [wymagane] | Właściwość o kondycji. <br><br> Jednostka może mieć raportów o kondycji dla różnych właściwości. Właściwość jest ciągu i stałych wyliczenia aby zezwalał na elastyczność reportera do kategoryzowania warunek stanu, która powoduje uruchomienie raportu. Na przykład reportera o ID "LocalWatchdog" można monitorować stan wolnego w węźle, aby go zgłosić właściwości "AvailableDisk" w tym węźle. Ten sam reportera monitorować łączność węzeł tak go zgłosić właściwości "Łączność" w tym samym węźle. W magazynie kondycji te raporty są traktowane jako zdarzenia dotyczące kondycji oddzielnych dla określonego węzła. Wraz z SourceId właściwość jednoznacznie identyfikuje informacje o kondycji. |
-| --health-state    [Required] | Możliwe wartości to\: "Nieprawidłowy", "Ok", "Ostrzeżenie", "Error", "Nieznany". |
-| --service-id      [Required] | Tożsamość usługi. <br><br> Zazwyczaj jest to pełna nazwa usługi bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa usługi jest "Service fabric\:/myapp/app1/svc1", będzie tożsamości usługi "myapp\~app1\~svc1" w wersji 6.0 + i "myapp/app1/svc1" w poprzednich wersjach. |
-| --source-id       [Required] | Nazwa źródła, która identyfikuje składnik klienta/strażnika/systemu, który wygenerował informacji o kondycji. |
-| --description | Opis informacji o kondycji. <br><br> Reprezentuje dowolny tekst, które umożliwiają dodawanie ludzi do odczytu informacji na temat raportu. Maksymalna długość ciągu opisu wynosi 4096 znaków. Jeśli podany ciąg jest dłuższy, zostaną automatycznie obcięte. W przypadku obcięty, ostatnie znaki opis zawiera znacznik "[obcięte]", a ciąg łączny rozmiar wynosi 4096 znaków. Obecność znacznika wskazuje, aby użytkownicy tej obcięcie wystąpił. Należy pamiętać, że gdy obcięty, opis ma mniej niż 4096 znaków z oryginalnego ciągu. |
-| --immediate | Flaga, która wskazuje, czy raport powinna zostać wysłana natychmiast. <br><br> Raport o kondycji są wysyłane do aplikacji, która przekazuje w magazynie kondycji bramy usługi Service Fabric. Jeśli bezpośrednie jest ustawiona na wartość true, raport jest wysyłany bezpośrednio z bramy protokołu HTTP w magazynie kondycji niezależnie od ustawień klienta sieci szkieletowej, które używa aplikacji bramy protokołu HTTP. Jest to przydatne dla krytycznych raportów, które mają być wysyłane tak szybko, jak to możliwe. W zależności od czasu i innych warunków wysłaniem raportu może nadal się nie powieść, na przykład jeśli bramy HTTP został zamknięty lub komunikat nie dociera do bramy. Jeśli bezpośrednie jest ustawiona na wartość false, raport jest wysyłana na podstawie ustawień klienta kondycji z bramy protokołu HTTP. W związku z tym będzie partii zgodnie z konfiguracją HealthReportSendInterval. Jest to zalecane ustawienie ponieważ zezwala ona na kondycji klienta do optymalizacji raportowania komunikatów w magazynie danych kondycji, a także przetwarzania raportu kondycji kondycji. Domyślnie raporty nie są wysyłane bezpośrednio. |
-| --remove-when-expired | Wartość wskazująca, czy raport jest usuwany z magazynu kondycji po jego wygaśnięciu. <br><br> Jeśli ustawiono wartość true, raport zostanie usunięty z magazynu kondycji po jego wygaśnięciu. Jeśli ma wartość false, raport jest traktowana jako błąd po upływie. Wartość tej właściwości to false domyślnie. Gdy klienci okresowo raportu ustala RemoveWhenExpired false (domyślnie). W ten sposób jest zgłaszającą ma problemy (np. zakleszczenia) i nie można zgłosić jednostki jest oceniany na błąd, po wygaśnięciu raport o kondycji. Oznacza flagą jednostki jako błąd stanu kondycji. |
-| --sequence-number | Numer sekwencji dla tego raportu o kondycji jako ciągu numerycznego. <br><br> Numer sekwencyjny raportu służy magazynu kondycji do wykrywania stare raportów. Jeśli nie zostanie określony, numer sekwencyjny został wygenerowany automatycznie przez klienta usługi kondycji po dodaniu raportu. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
-| --ttl | Czas trwania, dla których raport o kondycji jest nieprawidłowy. To pole używa formatu ISO8601 do określania czasu trwania. <br><br> Gdy klienci okresowo raport powinien wysyłać raporty, z częstotliwością wyższe niż czas wygaśnięcia. Jeśli klienci raportować przejścia, ich ustawić czas wygaśnięcia na nieograniczoną. Po wygaśnięciu czasu wygaśnięcia zdarzenie kondycji, który zawiera informacje o kondycji jest usunięte z magazynu kondycji, jeśli jest RemoveWhenExpired wartość true, lub oceniona błąd, jeśli RemoveWhenExpired wartość false. Jeśli nie zostanie określony, czas wygaśnięcia wartością domyślną jest wartość nieskończona. |
+| --Health-Property [wymagane] | Właściwość informacji o kondycji. <br><br> Jednostka może mieć raporty kondycji dla różnych właściwości. Właściwość jest ciągiem i nie jest stałym wyliczeniem, aby umożliwić elastyczność programu Reporter na kategoryzowanie warunku stanu, który wyzwala raport. Na przykład, Raport z identyfikatorem SourceId "LocalWatchdog" może monitorować stan dostępnego dysku w węźle, dzięki czemu może raportować Właściwość "AvailableDisk" w tym węźle. Ten sam raport może monitorować łączność z węzłami, dzięki czemu może zgłosić Właściwość "łączność" w tym samym węźle. W magazynie kondycji te raporty są traktowane jako oddzielne zdarzenia dotyczące kondycji dla określonego węzła. Wraz z identyfikatorem SourceId Właściwość jednoznacznie identyfikuje informacje o kondycji. |
+| --kondycja — stan [wymagane] | Możliwe wartości to\: "nieprawidłowe", "OK", "ostrzeżenie", "błąd", "nieznany". |
+| --ID usługi [wymagane] | Tożsamość usługi. <br><br> Jest to zazwyczaj pełna nazwa usługi bez schematu identyfikatora URI "Sieć szkieletowa\:". Począwszy od wersji 6,0, hierarchiczne nazwy są rozdzielane znakami\~"". Jeśli na przykład nazwa usługi to "Fabric\:/MyApp/APP1/svc1", tożsamość usługi byłaby "MojaApl\~APP1\~svc1" w wersji 6.0 + i "MojaApl/APP1/svc1" w poprzednich wersjach. |
+| --source-ID [wymagane] | Nazwa źródłowa, która identyfikuje składnik klienta/alarm/składnika systemu, który wygenerował informacje o kondycji. |
+| --description | Opis informacji o kondycji. <br><br> Reprezentuje on bezpłatny tekst używany do dodawania informacji ludzkich o raporcie. Maksymalna długość ciągu dla opisu to 4096 znaków. Jeśli podany ciąg jest dłuższy, zostanie automatycznie obcięty. Po obcięciu ostatnie znaki opisu zawierają znacznik "[obcięty]", a całkowity rozmiar ciągu to 4096 znaków. Obecność znacznika wskazuje użytkownikom, że wystąpiło obcinanie. Należy pamiętać, że w przypadku obcinania opis ma mniej niż 4096 znaków od oryginalnego ciągu. |
+| --natychmiastowe | Flaga wskazująca, czy raport ma być wysyłany od razu. <br><br> Raport o kondycji jest wysyłany do aplikacji bramy Service Fabric, która przekazuje do magazynu kondycji. Jeśli jest ustawiona wartość true, raport jest wysyłany natychmiast z bramy HTTP do magazynu kondycji, niezależnie od ustawień klienta sieci szkieletowej używanej przez aplikację bramy HTTP. Jest to przydatne w przypadku raportów o kluczowym znaczeniu, które powinny być wysyłane najszybciej, jak to możliwe. W zależności od chronometrażu i innych warunków wysyłanie raportu może nadal zakończyć się niepowodzeniem, na przykład jeśli Brama HTTP jest ZAMKNIĘTA lub komunikat nie dociera do bramy. Jeśli wartość jest ustawiona na wartość FAŁSZ, raport jest wysyłany na podstawie ustawień klienta kondycji z bramy HTTP. W związku z tym będzie on przetwarzany wsadowo zgodnie z konfiguracją HealthReportSendInterval. Jest to zalecane ustawienie, ponieważ pozwala klientowi kondycji zoptymalizować komunikaty raportowania kondycji do magazynu kondycji, a także przetwarzania raportów kondycji. Domyślnie raporty nie są wysyłane od razu. |
+| --remove-when-expired | Wartość wskazująca, czy raport został usunięty z magazynu kondycji po jego wygaśnięciu. <br><br> W przypadku ustawienia wartości true raport zostanie usunięty z magazynu kondycji po jego wygaśnięciu. Jeśli zostanie ustawiona na wartość false, raport jest traktowany jako błąd po wygaśnięciu. Wartość tej właściwości jest domyślnie fałszywa. Gdy klienci raportują okresowo, powinni ustawić RemoveWhenExpired false (domyślnie). W ten sposób, to program reporter ma problemy (np. zakleszczenie) i nie może zgłosić, gdy Raport kondycji wygaśnie. Oznacza to, że jednostka jest w stanie błędu kondycji. |
+| --Sequence-Number | Numer sekwencyjny dla tego raportu kondycji jako ciąg liczbowy. <br><br> Numer sekwencyjny raportu jest używany przez magazyn kondycji do wykrywania starych raportów. Jeśli nie zostanie określony, numer sekwencyjny jest generowany automatycznie przez klienta kondycji, gdy raport zostanie dodany. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
+| --ttl | Czas trwania okresu ważności tego raportu kondycji. To pole używa formatu ISO8601 do określenia czasu trwania. <br><br> Gdy klienci raportują okresowo, powinni wysyłać raporty o wyższej częstotliwości niż czas wygaśnięcia. Jeśli klienci raportują przejście, mogą ustawić czas wygaśnięcia na wartość nieskończoną. Po wygaśnięciu wygaśnięcia zdarzenia dotyczącego kondycji, które zawiera informacje o kondycji, zostaną usunięte z magazynu kondycji, jeśli RemoveWhenExpired ma wartość true lub jest oceniane w przypadku błędu, jeśli RemoveWhenExpired false. Jeśli nie zostanie określony, wartość czasu wygaśnięcia będzie równa wartości nieskończonej. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
-## <a name="sfctl-service-resolve"></a>Interfejs sfctl service resolve
-Rozwiąż partycji usługi Service Fabric.
+## <a name="sfctl-service-resolve"></a>Rozpoznawanie usługi sfctl
+Rozpoznaj partycję Service Fabric.
 
-Rozwiąż partycji usługi Service Fabric można pobrać z punktami końcowymi repliki usługi.
+Aby uzyskać punkty końcowe replik usług, należy rozwiązać Service Fabric partycji usługi.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| — Identyfikator usługi [wymagane] | Tożsamość usługi. Ten identyfikator jest zazwyczaj pełną nazwę usługi bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa usługi jest "Service fabric\:/myapp/app1/svc1", będzie tożsamości usługi "myapp\~app1\~svc1" w wersji 6.0 + i "myapp/app1/svc1" w poprzednich wersjach. |
-| --partition-key-type | Typ klucza partycji. Ten parametr jest wymagany, jeśli schemat partycji dla usługi jest Int64Range lub nazwane. Możliwe wartości są następujące. -Brak (1) — wskazuje, że nie określono parametru PartitionKeyValue. To jest prawidłowy dla partycji z podziałem na partycje schematu jako pojedyncza. Jest to wartość domyślna. Wartość to 1. -Int64Range (2) — wskazuje parametr PartitionKeyValue klucz partycji typu int64. To jest prawidłowy dla partycji przy użyciu schematu jako Int64Range partycjonowania. Wartość jest równa 2. -O nazwie (3) — wskazuje, że parametr PartitionKeyValue nazwę partycji. To jest prawidłowy dla partycji przy użyciu schemat jako nazwanych partycji. Wartość to 3. |
-| --partition-key-value | Klucz partycji. Jest to wymagane, jeśli schemat partycji dla usługi jest Int64Range lub nazwane. To nie jest Identyfikatorem partycji, ale raczej to liczba całkowita klucza, lub nazwa identyfikatora partycji. Na przykład jeśli usługa używa ranged partycji z zakresu od 0 do 10, ich PartitionKeyValue będzie liczbą całkowitą, w tym zakresie. Wyślij zapytanie do opisu usługi, aby zobaczyć, zakresu lub nazwy. |
-| --poprzedniej wersji rsp | Wartość w polu Wersja odpowiedź, która została otrzymana wcześniej. Jest to wymagane, jeśli użytkownik wie, że wynik, który był coraz wcześniej jest przestarzałe. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| --ID usługi [wymagane] | Tożsamość usługi. Ten identyfikator jest zazwyczaj pełną nazwą usługi bez schematu identyfikatora URI "Sieć szkieletowa\:". Począwszy od wersji 6,0, hierarchiczne nazwy są rozdzielane znakami\~"". Na przykład, jeśli nazwa usługi to "Fabric\:/MyApp/APP1/svc1", tożsamość usługi powinna mieć wartość "MojaApl\~APP1\~svc1" w wersji 6.0 + i "MojaApl/APP1/svc1" w poprzednich wersjach. |
+| --Partition-typ | Typ klucza dla partycji. Ten parametr jest wymagany, jeśli schemat partycji dla usługi jest Int64Range lub nazwany. Możliwe wartości są następujące. -Brak (1)-wskazuje, że parametr PartitionKeyValue nie jest określony. Jest to prawidłowe dla partycji z schematem partycjonowania jako pojedynczą. Jest to wartość domyślna. Wartość jest równa 1. -Int64Range (2)-wskazuje, że parametr PartitionKeyValue jest kluczem partycji Int64. Jest to prawidłowe dla partycji z schematem partycjonowania jako Int64Range. Wartość jest równa 2. -Nazwane (3) — wskazuje, że parametr PartitionKeyValue jest nazwą partycji. Jest to prawidłowe dla partycji z schematem partycjonowania o nazwie. Wartość to 3. |
+| --Partition-key-value | Klucz partycji. Jest to wymagane, jeśli schemat partycji dla usługi jest Int64Range lub o nazwie. To nie jest identyfikator partycji, ale jego wartość całkowita lub nazwa identyfikatora partycji. Na przykład jeśli usługa korzysta z zakresów partycji z zakresu od 0 do 10, wówczas PartitionKeyValue będzie liczbą całkowitą z tego zakresu. Opis usługi kwerendy, aby zobaczyć zakres lub nazwę. |
+| --Previous-w wersji | Wartość w polu wersja odpowiedzi, która została wcześniej odebrana. Jest to wymagane, jeśli użytkownik wie, że uzyskany wcześniej wynik jest przestarzały. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
-## <a name="sfctl-service-type-list"></a>Lista typów interfejsu sfctl usługi
-Pobiera listę zawierającą informacje o typach usługi, które są obsługiwane przez typ aplikacji aprowizowanych w klastrze usługi Service Fabric.
+## <a name="sfctl-service-type-list"></a>Lista typów usługi sfctl
+Pobiera listę zawierającą informacje o typach usług obsługiwanych przez typ aplikacji zainicjowanej w klastrze Service Fabric.
 
-Pobiera listę zawierającą informacje o typach usługi, które są obsługiwane przez typ aplikacji aprowizowanych w klastrze usługi Service Fabric. Typ aplikacji podana, musi istnieć. W przeciwnym razie zwracany jest stan 404.
+Pobiera listę zawierającą informacje o typach usług obsługiwanych przez typ aplikacji zainicjowanej w klastrze Service Fabric. Podany typ aplikacji musi istnieć. W przeciwnym razie jest zwracany stan 404.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| -aplikacji type-name [wymagane] | Nazwa typu aplikacji. |
-| --— wersję typu aplikacji — [wymagane] | Wersja typu aplikacji. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| --Typ aplikacji-nazwa [wymagane] | Nazwa typu aplikacji. |
+| --Typ aplikacji — wersja [wymagana] | Wersja typu aplikacji. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
 ## <a name="sfctl-service-update"></a>Aktualizacja usługi sfctl
-Aktualizuje określonej usługi przy użyciu opisu danej aktualizacji.
+Aktualizuje określoną usługę za pomocą podanego opisu aktualizacji.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --service-id   [Required] | Tożsamość usługi. Zazwyczaj jest to pełna nazwa usługi bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa usługi jest "Service fabric\:/myapp/app1/svc1", będzie tożsamości usługi "myapp\~app1\~svc1" w wersji 6.0 + i "myapp/app1/svc1" w poprzednich wersjach. |
-| — ograniczenia | Ograniczenia dotyczące umieszczania jako ciąg. Ograniczeniami dotyczącymi umieszczania są wyrażeń logicznych na — właściwości węzła i umożliwiają ograniczenie usługi do określonych węzłów w oparciu o wymagania dotyczące usługi. Na przykład, aby umieścić usługi na węzłach, gdzie element NodeType to niebieski określ następujące\: "NodeColor == niebieski". |
-| --correlated-service | Nazwa docelowej usługi w celu skorelowania za pomocą. |
-| --correlation | Korelowanie usługi za pomocą istniejącej usługi przy użyciu koligacji wyrównania. |
-| --instance-count | Liczba wystąpień. Dotyczy to tylko w przypadku usług bezstanowych. |
-| --metryk obciążenia | Zakodowane w formacie JSON listy metryk używany podczas ładowania równoważenia między węzłami. |
-| --min-replica-set-size | Minimalna repliki Ustaw rozmiar jako liczba. Dotyczy to tylko w przypadku usług stanowych. |
-| --move-cost | Określa koszt przeniesienia dla usługi. Możliwe wartości to\: "Zero", "Niska", "Średnie", "Wysokiego". |
-| --placement-policy-list | Zakodowane JSON listy zasady umieszczania dla usługi, wraz ze wszystkimi skojarzonymi nazw domen. Zasady mogą być co najmniej\: `NonPartiallyPlaceService`, `PreferPrimaryDomain`, `RequireDomain`, `RequireDomainDistribution`. |
-| --kworum utraty wait | Maksymalny czas trwania w sekundach, dla której partycji może być w stanie utraciła kworum. Dotyczy to tylko w przypadku usług stanowych. |
-| --replica-restart-wait | Czas w sekundach między Jeśli replika ulegnie awarii, a po utworzeniu nowej repliki. Dotyczy to tylko w przypadku usług stanowych. |
-| --scaling-policies | JSON zakodowany listę skalowania zasad dla tej usługi. |
-| --stand-by-replica-keep | Maksymalny czas trwania w sekundach, w których stan wstrzymania repliki zostanie zachowana przed usuwany. Dotyczy to tylko w przypadku usług stanowych. |
-| --stateful | Wskazuje, że Usługa docelowa jest usługi stanowej. |
-| --stateless | Wskazuje, że Usługa docelowa jest bezstanowej usługi. |
-| --target-replica-set-size | Replika docelowej Ustaw rozmiar jako liczba. Dotyczy to tylko w przypadku usług stanowych. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| --ID usługi [wymagane] | Tożsamość usługi. Jest to zazwyczaj pełna nazwa usługi bez schematu identyfikatora URI "Sieć szkieletowa\:". Począwszy od wersji 6,0, hierarchiczne nazwy są rozdzielane znakami\~"". Jeśli na przykład nazwa usługi to "Fabric\:/MyApp/APP1/svc1", tożsamość usługi byłaby "MojaApl\~APP1\~svc1" w wersji 6.0 + i "MojaApl/APP1/svc1" w poprzednich wersjach. |
+| --ograniczenia | Ograniczenia umieszczania w postaci ciągu. Ograniczenia umieszczania są wyrażeniami logicznymi we właściwościach węzła i umożliwiają ograniczenie usługi do określonych węzłów na podstawie wymagań usługi. Na przykład, aby umieścić usługę w węzłach, gdzie NodeType jest niebieska,\: określ następujące "NodeColor = = Blue". |
+| --correlated-service | Nazwa docelowej usługi do powiązania. |
+| --Korelacja | Należy skorelować usługę z istniejącą usługą przy użyciu koligacji wyrównania. |
+| --instance-Count | Liczba wystąpień. Dotyczy to wyłącznie usług bezstanowych. |
+| --Load-Metrics | Zakodowana lista wartości JSON metryk używanych podczas równoważenia obciążenia między węzłami. |
+| --min-replica-set-size | Minimalny rozmiar zestawu replik to liczba. Dotyczy to wyłącznie usług stanowych. |
+| --move-cost | Określa koszt przenoszenia usługi. Możliwe wartości to\: "zero", "Low", "medium", "High". |
+| --placement-policy-list | Zakodowana w formacie JSON lista zasad umieszczania dla usługi i skojarzonych nazw domen. Zasady mogą być jedną lub większą liczbą\: `NonPartiallyPlaceService`, `PreferPrimaryDomain` `RequireDomain`,, `RequireDomainDistribution`. |
+| --kworum — utrata odczekania | Maksymalny czas (w sekundach), przez który partycja może być w stanie utraty kworum. Dotyczy to wyłącznie usług stanowych. |
+| --replica-restart-wait | Czas trwania (w sekundach), po którym następuje awaria repliki i utworzenie nowej repliki. Dotyczy to wyłącznie usług stanowych. |
+| --scaling-policies | Zakodowana w formacie JSON lista zasad skalowania dla tej usługi. |
+| --pogotowowanie do repliki — Zachowaj | Maksymalny czas (w sekundach) przechowywania replik rezerwy przed usunięciem. Dotyczy to wyłącznie usług stanowych. |
+| --stateful | Wskazuje, że usługa docelowa jest usługą stanową. |
+| --bezstanowe | Wskazuje, że usługa docelowa jest usługą bezstanową. |
+| --target-replica-set-size | Docelowy rozmiar zestawu replik to liczba. Dotyczy to wyłącznie usług stanowych. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
 
-## <a name="next-steps"></a>Kolejne kroki
-- [Konfigurowanie](service-fabric-cli.md) interfejsu wiersza polecenia usługi Service Fabric.
-- Dowiedz się, jak używać przy użyciu interfejsu wiersza polecenia usługi Service Fabric [przykładowe skrypty](/azure/service-fabric/scripts/sfctl-upgrade-application).
+## <a name="next-steps"></a>Następne kroki
+- [Skonfiguruj](service-fabric-cli.md) interfejs wiersza polecenia Service Fabric.
+- Dowiedz się, jak używać interfejsu wiersza polecenia Service Fabric przy użyciu [przykładowych skryptów](/azure/service-fabric/scripts/sfctl-upgrade-application).

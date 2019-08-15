@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 07/08/2019
-ms.openlocfilehash: c5484c37d89cc9ae880bbe17987bb47f3114b8a4
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b9593a5802300da8baa1e518f14885637db2068f
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847894"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036188"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Wykrywaj dryfowanie danych (wersja zapoznawcza) dla modeli wdrożonych w usłudze Azure Kubernetes Service (AKS)
 
@@ -162,9 +162,9 @@ Konfigurację wykrywania dryfu danych można zobaczyć na stronie Szczegóły mo
 
 ![Konfiguracja dryfowania danych Azure Portal](media/how-to-monitor-data-drift/drift_config.png)
 
-## <a name="view-results-in-azure-ml-workspace-ui"></a>Wyświetlanie wyników w interfejsie użytkownika usługi Azure Obszar roboczy usługi ML
+## <a name="view-results-in-azure-portal"></a>Wyświetl wyniki w Azure Portal
 
-Aby wyświetlić wyniki w interfejsie użytkownika usługi Azure Obszar roboczy usługi ML, przejdź do strony model. Na karcie Szczegóły w modelu jest wyświetlana konfiguracja dryfowania danych. Karta "dryf danych (wersja zapoznawcza)" jest teraz dostępna Wizualizacja metryk dryfowania danych. 
+Aby wyświetlić wyniki w obszarze roboczym w [Azure Portal](https://portal.azure.com), przejdź do strony model. Na karcie Szczegóły w modelu jest wyświetlana konfiguracja dryfowania danych. Karta "dryf danych (wersja zapoznawcza)" jest teraz dostępna Wizualizacja metryk dryfowania danych. 
 
 ![Azure Portal dryfowanie danych](media/how-to-monitor-data-drift/drift_ui.png)
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2019
 ms.author: barclayn
-ms.openlocfilehash: c91c8de35dcf3f1bc8fd5f41bd2356336c3fe450
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 89acc86526d1017e97efbf1812e02cfb6a240953
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927965"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035423"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Szyfrowanie danych platformy Azure — w spoczynku
 
@@ -298,7 +298,7 @@ Szyfrowanie po stronie klienta Azure SQL Database danych jest obsługiwane za po
 | Event Grid                       | Tak                | -                  | -                  |
 | API Management                   | Tak                | -                  | -                  |
 | **Usługi IoT**                 |                    |                    |                    |
-| IoT Hub                          | -                  | -                  | Tak                |
+| IoT Hub                          | Tak                | -                  | Tak                |
 | **Zarządzanie i nadzór**    |                    |                    |                    |
 | Azure Site Recovery              | Tak                | Tak, RSA 2048-bit  | Tak                |
 | **Multimedialny**                        |                    |                    |                    |

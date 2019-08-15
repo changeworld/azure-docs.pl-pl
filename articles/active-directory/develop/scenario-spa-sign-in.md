@@ -1,6 +1,6 @@
 ---
-title: Aplikacja jednostronicowa (logowanie) — Platforma tożsamości firmy Microsoft
-description: Informacje o sposobie tworzenia aplikacji jednostronicowych (Zaloguj się)
+title: Aplikacja jednostronicowa (logowanie) — platforma tożsamości firmy Microsoft
+description: Dowiedz się, jak utworzyć aplikację jednostronicową (logowanie)
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -17,42 +17,42 @@ ms.date: 05/06/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc9c46ae28960387e6f8efc1ade20afa1c77ef55
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7bf614a5523e78fc72918db973ef8d738a171fff
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65138803"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69031781"
 ---
-# <a name="single-page-application---sign-in"></a>Aplikacja jednostronicowa — logowanie
+# <a name="single-page-application---sign-in"></a>Jednostronicowa aplikacja — logowanie
 
-Dowiedz się, jak dodać logowanie do kodu aplikacji jednostronicowej.
+Dowiedz się, jak dodać logowanie do kodu dla aplikacji jednostronicowej.
 
-Zanim będzie możliwe uzyskanie tokenów dostęp do interfejsów API w aplikacji, konieczne będzie uprawnieniami uwierzytelnionego użytkownika. Można logowania użytkowników do aplikacji w MSAL.js na dwa sposoby:
+Aby można było uzyskać tokeny dostępu do interfejsów API w aplikacji, wymagany jest kontekst uwierzytelnionego użytkownika. Użytkowników można zalogować do aplikacji w MSAL. js na dwa sposoby:
 
-* [Zaloguj się przy użyciu wyskakującego okienka](#sign-in-with-a-pop-up-window) przy użyciu `loginPopup` — metoda
-* [Zaloguj się przy użyciu przekierowania](#sign-in-with-redirect) przy użyciu `loginRedirect` — metoda
+* [Logowanie za pomocą okna](#sign-in-with-a-pop-up-window) podręcznego przy użyciu `loginPopup` metody
+* [Logowanie przy](#sign-in-with-redirect) użyciu `loginRedirect` metody redirect
 
-Można również przekazać zakresy interfejsów API, dla którego trzeba posiadać użytkownika o zgodę podczas logowania.
+Opcjonalnie można również przekazać zakresy interfejsów API, dla których użytkownik musi wyrazić zgodę w momencie logowania.
 
 > [!NOTE]
-> Jeśli aplikacja już ma dostęp do kontekstu użytkownika uwierzytelnionego lub identyfikator tokenu, można pominąć ten krok logowania i bezpośrednio uzyskać tokeny. Aby uzyskać więcej informacji, zobacz [logowania jednokrotnego bez logowania msal.js](msal-js-sso.md#sso-without-msaljs-login).
+> Jeśli aplikacja ma już dostęp do kontekstu uwierzytelnionego użytkownika lub tokenu identyfikatora, można pominąć krok logowania i bezpośrednio uzyskać tokeny. Aby uzyskać więcej informacji, zobacz [Logowanie jednokrotne bez logowania msal. js](msal-js-sso.md#sso-without-msaljs-login).
 
-## <a name="choosing-between-a-pop-up-or-redirect-experience"></a>Wybieranie między okno podręczne lub przekierowania doświadczenia
+## <a name="choosing-between-a-pop-up-or-redirect-experience"></a>Wybieranie między podręcznym i przekierowaniami
 
-Nie można użyć kombinacji metod okno podręczne i Przekierowanie do aplikacji. Wybór między okno podręczne lub przekierowania doświadczenia zależy od przepływu aplikacji.
+Nie można użyć kombinacji podmenu podręcznych i metod przekierowania w aplikacji. Wybór między podręcznym i przekierowaniami zależy od przepływu aplikacji.
 
-* Jeśli nie chcesz, aby użytkownik, który chcesz wyjść strony głównej aplikacji podczas uwierzytelniania, zaleca się używanie metod wyskakujących. Ponieważ przekierowania uwierzytelniania odbywa się w oknie podręcznym, stan aplikacji głównej jest zachowywana.
+* Jeśli nie chcesz, aby użytkownik przechodził do strony głównej aplikacji podczas uwierzytelniania, zaleca się korzystanie z wyskakujących metod. Ponieważ przekierowanie uwierzytelniania odbywa się w oknie podręcznym, stan głównej aplikacji jest zachowywany.
 
-* Istnieją niektórych przypadki, w której użytkownik może być konieczne użycie metody przekierowania. Jeśli użytkownicy aplikacji mają ograniczenia przeglądarki lub zasady gdzie wyskakujące są wyłączone, można użyć metody przekierowania. Za pomocą metody przekierowanie przeglądarki Internet Explorer, ponieważ istnieją pewne [znane problemy z programem Internet Explorer](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser) podczas obsługi wyskakujących okienek.
+* Istnieją pewne przypadki, w których może być konieczne użycie metod przekierowania. Jeśli użytkownicy aplikacji mają ograniczenia przeglądarki lub zasady, w których okna wyskakujące są wyłączone, można użyć metod przekierowania. Użyj metod przekierowania z przeglądarką Internet Explorer, ponieważ występują pewne [znane problemy z programem Internet Explorer](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser) podczas obsługi wyskakujących okienek.
 
-## <a name="sign-in-with-a-pop-up-window"></a>Zaloguj się za pomocą okna podręcznego
+## <a name="sign-in-with-a-pop-up-window"></a>Zaloguj się przy użyciu okna podręcznego
 
 ### <a name="javascript"></a>JavaScript
 
 ```javascript
 const loginRequest = {
-    scopes: ["user.read", "user.write"]
+    scopes: ["https://graph.microsoft.com/User.ReadWrite"]
 }
 
 userAgentApplication.loginPopup(loginRequest).then(function (loginResponse) {
@@ -66,7 +66,7 @@ userAgentApplication.loginPopup(loginRequest).then(function (loginResponse) {
 
 ### <a name="angular"></a>Angular
 
-Biblioteka MSAL Angular otoki umożliwia zabezpieczenie określonej trasy w aplikacji, po prostu dodając `MsalGuard` do definicji trasy. Ta ochrona wywoła metodę logowania podczas uzyskiwania dostępu do tej trasy.
+Otoka kątowa MSAL umożliwia Zabezpieczanie określonych tras w aplikacji przez jedynie dodanie `MsalGuard` do definicji trasy. Ta funkcja Guard wywoła metodę w celu zalogowania się, gdy zostanie uzyskany dostęp do tej trasy.
 
 ```javascript
 // In app.routes.ts
@@ -78,7 +78,7 @@ Biblioteka MSAL Angular otoki umożliwia zabezpieczenie określonej trasy w apli
   { path: 'myProfile' ,component: MsGraphComponent, canActivate : [MsalGuard] },
 ```
 
-Okno podręczne środowisko pracy, należy włączyć `popUp` opcji konfiguracji. Można również przekazać zakresów, które wymagają zgody w następujący sposób:
+W przypadku okna podręcznego Włącz `popUp` opcję konfiguracji. Możesz również przekazać zakresy, które wymagają zgody w następujący sposób:
 
 ```javascript
 //In app.module.ts
@@ -86,16 +86,16 @@ Okno podręczne środowisko pracy, należy włączyć `popUp` opcji konfiguracji
   imports: [ MsalModule.forRoot({
                 clientID: 'your_app_id',
                 popUp: true,
-                consentScopes: ["user.read", "user.write"]
+                consentScopes: ["https://graph.microsoft.com/User.ReadWrite"]
             })]
          })
 ```
 
-## <a name="sign-in-with-redirect"></a>Zaloguj się przy użyciu przekierowania
+## <a name="sign-in-with-redirect"></a>Logowanie przy użyciu przekierowania
 
 ### <a name="javascript"></a>JavaScript
 
-Metody przekierowania nie zwracają obietnicą ze względu na nawigacji od głównej aplikacji. Do przetwarzania i zwrócony tokeny dostępu, należy zarejestrować sukcesach i błędach wywołania zwrotne przed wywołaniem metody przekierowania.
+Metody przekierowania nie zwracają obietnicy ze względu na nawigację z głównej aplikacji. Aby przetworzyć zwrócone tokeny i uzyskać do nich dostęp, należy zarejestrować wywołania zwrotne sukcesu i błędów przed wywołaniem metod przekierowania.
 
 ```javascript
 function authCallback(error, response) {
@@ -105,7 +105,7 @@ function authCallback(error, response) {
 userAgentApplication.handleRedirectCallback(authCallback);
 
 const loginRequest = {
-    scopes: ["user.read", "user.write"]
+    scopes: ["https://graph.microsoft.com/User.ReadWrite"]
 }
 
 userAgentApplication.loginRedirect(loginRequest);
@@ -113,16 +113,16 @@ userAgentApplication.loginRedirect(loginRequest);
 
 ### <a name="angular"></a>Angular
 
-Kod w tym miejscu jest taka sama, jak opisano powyżej, w obszarze Zaloguj się przy użyciu sekcji oknie podręcznym. Przepływ domyślny jest przekierowania.
+Kod jest taki sam, jak opisano powyżej, w sekcji Zaloguj się przy użyciu okna podręcznego. Domyślny przepływ jest przekierowywany.
 
 > [!NOTE]
-> Identyfikator tokenu nie zawiera zatwierdzonej zakresy i tylko reprezentuje uwierzytelnionego użytkownika. Które wyrażono zgodę zakresy są zwracane w tokenie dostępu, który będzie pobrać w kolejnym kroku.
+> Token identyfikatora nie zawiera zgodnych zakresów i reprezentuje tylko uwierzytelnionego użytkownika. Wysłane zakresy są zwracane w tokenie dostępu, który zostanie pozyskany w następnym kroku.
 
 ## <a name="sign-out"></a>Wyloguj
 
-Biblioteka MSAL zapewnia `logout` metodę, która spowoduje wyczyszczenie pamięci podręcznej w magazynie przeglądarki, a następnie wysyła Wyloguj żądania do usługi Azure AD. Po wylogowaniu się zostanie przekierowany do strony początkowej aplikacji domyślnie.
+Biblioteka MSAL zapewnia `logout` metodę, która spowoduje wyczyszczenie pamięci podręcznej w magazynie przeglądarki i wysłanie żądania wylogowania do usługi Azure AD. Po wylogowaniu następuje przekierowanie z powrotem do strony początkowej aplikacji.
 
-Można skonfigurować identyfikator URI, do którego powinien spowodować przekierowanie po znaku na zewnątrz, ustawiając `postLogoutRedirectUri`. Ten identyfikator URI powinien być zarejestrowany również jako identyfikator URI wylogowania w Twojej rejestracji aplikacji.
+Można skonfigurować identyfikator URI, do którego ma zostać przekierowany po wylogowaniu, ustawiając `postLogoutRedirectUri`. Ten identyfikator URI powinien być również zarejestrowany jako identyfikator URI wylogowania w rejestracji aplikacji.
 
 ### <a name="javascript"></a>JavaScript
 
@@ -156,7 +156,7 @@ userAgentApplication.logout();
 this.authService.logout();
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Uzyskiwanie tokenu dla aplikacji](scenario-spa-acquire-token.md)

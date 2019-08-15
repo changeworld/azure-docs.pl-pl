@@ -8,23 +8,23 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: asgang
-ms.openlocfilehash: 1e0450554597d99aa99d6df51f22bfc90c0d92ad
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 4d8ba44cdd5161a1a5ff108837cb57af4cd98835
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798583"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034797"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Rozwiązywanie problemów z replikacją maszyny Wirtualnej platformy Azure do platformy Azure
 
 W tym artykule opisano, jakie są najczęstsze problemy w usłudze Azure Site Recovery podczas replikacji i odzyskiwania maszyn wirtualnych platformy Azure z jednego regionu do innego regionu i wyjaśniono, jak rozwiązywać problemy z nimi. Aby uzyskać więcej informacji o obsługiwanych konfiguracjach, zobacz [macierz obsługi do replikowania maszyn wirtualnych platformy Azure](site-recovery-support-matrix-azure-to-azure.md).
 
 ## <a name="list-of-errors"></a>Lista błędów
-- **[Problemy z przydziałami zasobów platformy Azure (kod błędu: 150097)](#azure-resource-quota-issues-error-code-150097)**
-- **[Zaufane certyfikaty główne (kod błędu: 151066)](#trusted-root-certificates-error-code-151066)**
-- **[Łączność wychodząca na potrzeby usługi Site Recovery (kod błędu: 151195)](#issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br)**
+- **[Problemy z przydziałami zasobów platformy Azure (kod błędu 150097)](#azure-resource-quota-issues-error-code-150097)**
+- **[Zaufane certyfikaty główne (kod błędu 151066)](#trusted-root-certificates-error-code-151066)**
+- **[Łączność wychodząca dla Site Recovery (kod błędu 151195)](#issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br)**
 
-## <a name="azure-resource-quota-issues-error-code-150097"></a>Problemy z przydziałami zasobów platformy Azure (kod błędu: 150097)
+## <a name="azure-resource-quota-issues-error-code-150097"></a>Problemy z przydziałami zasobów platformy Azure (kod błędu 150097)
 Twoja subskrypcja powinna być włączona w celu tworzenia maszyn wirtualnych platformy Azure w regionie docelowym, który ma być używany jako swój region odzyskiwania po awarii. Ponadto subskrypcji powinny mieć wystarczającego limitu przydziału, włączone, aby tworzyć maszyny wirtualne o określonym rozmiarze. Domyślnie usługa Site Recovery wybiera ten sam rozmiar dla docelowej maszyny Wirtualnej, co źródłowa maszyna wirtualna. Jeśli dopasowania rozmiaru nie jest dostępna, najbardziej zbliżony rozmiar jest pobierany automatycznie. W przypadku nie pasującego rozmiar, który obsługuje konfiguracji źródłowej maszyny Wirtualnej, zostanie wyświetlony ten komunikat o błędzie:
 
 **Kod błędu:** | **Możliwe przyczyny** | **Zalecenie**
@@ -36,13 +36,13 @@ Możesz skontaktować się ze [Azure pomocy technicznej dotyczącej rozliczeń](
 
 Jeśli lokalizacja docelowa ma ograniczenie pojemności, wyłącz replikację i włącz go w innej lokalizacji, w którym Twoja subskrypcja ma wystarczający przydział do tworzenia maszyn wirtualnych o wymaganych rozmiarach.
 
-## <a name="trusted-root-certificates-error-code-151066"></a>Zaufane certyfikaty główne (kod błędu: 151066)
+## <a name="trusted-root-certificates-error-code-151066"></a>Zaufane certyfikaty główne (kod błędu 151066)
 
 Jeśli wszystkie najnowsze certyfikaty zaufany główny urząd certyfikacji nie istnieje na maszynie Wirtualnej, zadanie "Włącz replikację" może zakończyć się niepowodzeniem. Bez certyfikatów uwierzytelniania i autoryzacji, wywołań usługi Site Recovery z maszyny Wirtualnej zakończyć się niepowodzeniem. Zostanie wyświetlony komunikat o błędzie o zadaniu zakończonym niepowodzeniem "Włącz replikację" Site Recovery:
 
 **Kod błędu:** | **Możliwa przyczyna** | **Zalecenia**
 --- | --- | ---
-151066<br></br>**Komunikat**: Konfiguracja usługi Site Recovery nie powiodła się. | Wymagane zaufane certyfikaty główne używane na potrzeby autoryzacji i uwierzytelniania nie są dostępne na komputerze. | — Dla maszyny Wirtualnej z systemem operacyjnym Windows upewnij się, że zaufane certyfikaty główne na maszynie. Aby uzyskać informacje, zobacz [Konfigurowanie zaufanych certyfikatów głównych i certyfikatów niedozwolonych](https://technet.microsoft.com/library/dn265983.aspx).<br></br>— Dla maszyny Wirtualnej z systemem operacyjnym Linux postępuj zgodnie z wytycznymi dla zaufanych certyfikatów głównych opublikowanymi przez dystrybutora wersji systemu operacyjnego Linux.
+151066<br></br>**Komunikat**: Konfiguracja Site Recovery nie powiodła się. | Wymagane zaufane certyfikaty główne używane na potrzeby autoryzacji i uwierzytelniania nie są dostępne na komputerze. | — Dla maszyny Wirtualnej z systemem operacyjnym Windows upewnij się, że zaufane certyfikaty główne na maszynie. Aby uzyskać informacje, zobacz [Konfigurowanie zaufanych certyfikatów głównych i certyfikatów niedozwolonych](https://technet.microsoft.com/library/dn265983.aspx).<br></br>— Dla maszyny Wirtualnej z systemem operacyjnym Linux postępuj zgodnie z wytycznymi dla zaufanych certyfikatów głównych opublikowanymi przez dystrybutora wersji systemu operacyjnego Linux.
 
 ### <a name="fix-the-problem"></a>Rozwiąż problem
 **Windows**
@@ -154,9 +154,9 @@ Ponieważ SuSE Linux używa łączy symbolicznych, aby utrzymywać listę certyf
 
 W przypadku replikacji usługi Site Recovery do pracy, łączność wychodząca z określonych adresów URL lub IP zakresów jest wymagane z maszyny Wirtualnej. Jeśli maszyna wirtualna znajduje się za zaporą lub używa reguł Sieciowej grupy zabezpieczeń sieci do sterowania ruchem wychodzącym, może być jedną z tych problemów twarzy.
 
-### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>Problem 1: Nie można zarejestrować maszyny wirtualnej platformy Azure z usługą Site Recovery (151195) </br>
+### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>Problem 1: Nie można zarejestrować maszyny wirtualnej platformy Azure w Site Recovery (151195) </br>
 - **Możliwa przyczyna** </br>
-  - Nie można ustanowić połączenia z punktami końcowymi Site Recovery, ze względu na niepowodzenie rozpoznawania nazw DNS.
+  - Nie można nawiązać połączenia, aby Site Recovery punkty końcowe z powodu błędu rozpoznawania nazw DNS.
   - Jest to częściej występujące podczas ponownej ochrony, gdy zostały przełączone w tryb failover maszyny wirtualnej, ale serwer DNS nie jest dostępny w regionie odzyskiwania po awarii.
 
 - **Rozdzielczość**
@@ -165,7 +165,7 @@ W przypadku replikacji usługi Site Recovery do pracy, łączność wychodząca 
     ![Błąd modelu COM](./media/azure-to-azure-troubleshoot-errors/custom_dns.png)
 
 
-### <a name="issue-2-site-recovery-configuration-failed-151196"></a>Problem 2: Konfiguracja usługi Site Recovery nie powiodła się (151196)
+### <a name="issue-2-site-recovery-configuration-failed-151196"></a>Problem 2: Konfiguracja Site Recovery nie powiodła się (151196)
 - **Możliwa przyczyna** </br>
   - Nie można ustanowić połączenia z uwierzytelnianiem usługi Office 365 i punktów końcowych IP4 tożsamości.
 
@@ -175,9 +175,9 @@ W przypadku replikacji usługi Site Recovery do pracy, łączność wychodząca 
       - Nowe adresy zostaną dodane do usługi Azure Active Directory (AAD) w przyszłości, należy utworzyć nowe reguły sieciowej grupy zabezpieczeń.
 
 > [!NOTE]
-> W przypadku maszyn wirtualnych za modułem **standardowa** wewnętrznego modułu równoważenia obciążenia, a następnie go może nie mieć dostępu do adresów IP usługi Office 365, tj Login.microsoftonline.com domyślnie. Albo zmień ją na **podstawowe** wewnętrzny typ modułu równoważenia obciążenia lub utworzyć na zewnątrz dostępu, zgodnie z opisem w [artykułu](https://aka.ms/lboutboundrulescli).
+> Jeśli maszyny wirtualne znajdują się za standardowym wewnętrznym modułem równoważenia obciążenia, nie będą miały dostępu do adresów IP usługi O365, tj. Domyślnie login.microsoftonline.com. Zmień go na **podstawowy** typ wewnętrznego modułu równoważenia obciążenia lub Utwórz powiązany dostęp określony w [artykule](https://aka.ms/lboutboundrulescli).
 
-### <a name="issue-3-site-recovery-configuration-failed-151197"></a>Problem 3: Konfiguracja usługi Site Recovery nie powiodła się (151197)
+### <a name="issue-3-site-recovery-configuration-failed-151197"></a>Problem 3: Konfiguracja Site Recovery nie powiodła się (151197)
 - **Możliwa przyczyna** </br>
   - Nie można ustanowić połączenia z punktami końcowymi usługi Azure Site Recovery.
 
@@ -185,25 +185,25 @@ W przypadku replikacji usługi Site Recovery do pracy, łączność wychodząca 
   - Usługa Azure Site Recovery wymagany dostęp do [zakresów adresów IP odzyskiwania lokacji](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges) w zależności od regionu. Upewnij się, wymagane zakresy adresów ip są dostępne z maszyny wirtualnej.
 
 
-### <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>Problem 4: Replikacji — A2A nie powiodło się, gdy ruch sieciowy przechodzi przez lokalny serwer proxy (151072)
+### <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>Problem 4: Replikacja — A2A nie powiodła się, gdy ruch sieciowy przechodzi przez lokalny serwer proxy (151072)
 - **Możliwa przyczyna** </br>
-  - Ustawienia niestandardowego serwera proxy są nieprawidłowe i agenta usługi mobilności Azure Site Recovery Nie wykrywaj automatycznie ustawienia serwera proxy z programu Internet Explorer
+  - Niestandardowe ustawienia serwera proxy są nieprawidłowe, a Azure Site Recovery Agent usługi mobilności nie wykrył automatycznie ustawień serwera proxy z programu IE
 
 
 - **Rozdzielczość**
   1. Agent usługi mobilności wykrywa ustawienia serwera proxy programu Internet Explorer na Windows i /etc/environment w systemie Linux.
-  2. Jeśli wolisz skonfigurować serwer proxy tylko w przypadku usługi mobilności Azure Site Recovery, można podać szczegóły serwera proxy w ProxyInfo.conf znajdujących się na:</br>
+  2. Jeśli wolisz ustawić serwer proxy tylko dla usługi mobilności Azure Site Recovery, możesz podać szczegóły serwera proxy w ProxyInfo. conf znajdującym się w:</br>
      - ``/usr/local/InMage/config/`` na ***systemu Linux***
      - ``C:\ProgramData\Microsoft Azure Site Recovery\Config`` na ***Windows***
   3. ProxyInfo.conf powinna mieć ustawienia serwera proxy w następującym formacie pliku INI.</br>
                 *[proxy]*</br>
                 *Adres =http://1.2.3.4*</br>
                 *Port = 567*</br>
-  4. Agent platformy Azure usługę mobilności usługi Site Recovery obsługuje tylko ***nieuwierzytelnione serwery proxy***.
+  4. Agent usługi mobilności Azure Site Recovery obsługuje tylko ***nieuwierzytelnione serwery proxy***.
 
 
 ### <a name="fix-the-problem"></a>Rozwiąż problem
-Aby umożliwić [odpowiednie adresy URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) lub [wymaganych zakresów adresów IP](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges), postępuj zgodnie z instrukcjami w [sieci dokument ze wskazówkami dotyczącymi](site-recovery-azure-to-azure-networking-guidance.md).
+Aby zezwolić na [wymagane adresy URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) lub [wymagane zakresy adresów IP](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges), wykonaj kroki opisane w [dokumencie wskazówki dotyczące sieci](site-recovery-azure-to-azure-networking-guidance.md).
 
 ## <a name="disk-not-found-in-the-machine-error-code-150039"></a>Nie znaleziono maszyny (kod błędu: 150039) dysku
 
@@ -211,63 +211,63 @@ Nowy dysk dołączony do maszyny Wirtualnej musi być zainicjowany.
 
 **Kod błędu:** | **Możliwe przyczyny** | **Zalecenia**
 --- | --- | ---
-150039<br></br>**Komunikat**: Dysk danych platformy Azure (DiskName) (DiskURI) przy użyciu numeru jednostki logicznej (LUN) (LUNValue) nie został zamapowany do odpowiadającego dysku zgłaszanego z poziomu maszyny Wirtualnej, która ma taką samą wartość jednostki LUN. | -Nowy dysk danych został dołączony do maszyny Wirtualnej, ale nie został on zainicjowany.</br></br>-Dysk danych wewnątrz maszyny Wirtualnej nie zgłasza poprawnie wartości LUN, w którym dysk został dołączony do maszyny Wirtualnej.| Upewnij się, czy są inicjowane dyski z danymi, a następnie spróbuj ponownie wykonać operację.</br></br>W przypadku systemu Windows: [Dołączanie i zainicjować nowy dysk](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal).</br></br>Dla systemu Linux: [Zainicjuj dysk danych w systemie Linux](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk).
+150039<br></br>**Komunikat**: Dysk danych platformy Azure (diskname) (DiskURI) z numerem jednostki logicznej (LUN) (LUNValue) nie został zmapowany na odpowiedni dysk, który jest raportowany z poziomu maszyny wirtualnej o tej samej wartości LUN. | -Nowy dysk danych został dołączony do maszyny Wirtualnej, ale nie został on zainicjowany.</br></br>-Dysk danych wewnątrz maszyny Wirtualnej nie zgłasza poprawnie wartości LUN, w którym dysk został dołączony do maszyny Wirtualnej.| Upewnij się, czy są inicjowane dyski z danymi, a następnie spróbuj ponownie wykonać operację.</br></br>W przypadku systemu Windows: [Dołącz i zainicjuj nowy dysk](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal).</br></br>Dla systemu Linux: [Zainicjuj nowy dysk danych w systemie Linux](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk).
 
 ### <a name="fix-the-problem"></a>Rozwiąż problem
 Upewnij się, dyski danych zostały zainicjowane, a następnie spróbuj ponownie wykonać operację:
 
-- W przypadku systemu Windows: [Dołączanie i zainicjować nowy dysk](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal).
+- W przypadku systemu Windows: [Dołącz i zainicjuj nowy dysk](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal).
 - Dla systemu Linux: [Dodaj nowy dysk danych w systemie Linux](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk).
 
 Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną.
 
-## <a name="one-or-more-disks-are-available-for-protectionerror-code-153039"></a>Jeden lub więcej dysków są dostępne do ochrony (kod błędu: 153039)
+## <a name="one-or-more-disks-are-available-for-protectionerror-code-153039"></a>Co najmniej jeden dysk jest dostępny do ochrony (kod błędu 153039)
 - **Możliwa przyczyna** </br>
-  - Jeśli jeden lub więcej dysków zostały ostatnio dodane do maszyny wirtualnej po ochronę. 
-  - Jeśli co najmniej jeden dyski zostały zainicjowane później, po ochronę maszyny wirtualnej.
+  - Jeśli co najmniej jeden dysk został niedawno dodany do maszyny wirtualnej po włączeniu ochrony. 
+  - Jeśli co najmniej jeden dysk został zainicjowany później po włączeniu ochrony maszyny wirtualnej.
 
 ### <a name="fix-the-problem"></a>Rozwiąż problem
-Można albo do ochrony dysków lub zignorować to ostrzeżenie, aby umożliwić stan replikacji maszyny wirtualnej ponownie w dobrej kondycji.</br>
-1. Aby chronić dyski. Przejdź do zreplikowane elementy > Maszyna wirtualna > dyski > kliknij niechronionego dysku > włączania replikacji.
+Możesz wybrać opcję ochrony dysków lub zignorować ostrzeżenie, aby ponownie zmienić stan replikacji maszyny wirtualnej.</br>
+1. W celu ochrony dysków. Przejdź do pozycji zreplikowane elementy > dysków > maszyn wirtualnych > kliknij dysk niechroniony > Włącz replikację.
  ![add_disks](./media/azure-to-azure-troubleshoot-errors/add-disk.png)
-2. Aby zignorować to ostrzeżenie. Przejdź do zreplikowany elementy > Maszyna wirtualna > kliknij pozycję Odrzuć alert w sekcji Przegląd.
+2. Aby odrzucić ostrzeżenie. Przejdź do pozycji zreplikowane elementy > VM > kliknij sekcję Odrzuć alert w obszarze przegląd.
 ![dismiss_warning](./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png)
 
 
-## <a name="remove-the-virtual-machine-from-the-vault-completed-with-information--error-code-150225"></a>Usuń maszynę wirtualną z magazynu zakończone z informacjami (kod błędu: 150225)
-Podczas ochrony maszyny wirtualnej usługi Azure Site Recovery tworzy niektóre linki na źródłowej maszynie wirtualnej. Podczas usunięcia ochrony lub wyłączanie replikacji usługi Azure Site Recovery Usuń te linki w ramach zadania oczyszczania. W przypadku, gdy maszyna wirtualna ma blokady zasobu Zadanie pobiera zakończone z informacjami. Informuje, że maszyna wirtualna została usunięta z magazynu usługi Recovery services, ale niektóre starych łącza nie można oczyścić z maszyny źródłowej.
+## <a name="remove-the-virtual-machine-from-the-vault-completed-with-information--error-code-150225"></a>Usuwanie maszyny wirtualnej z magazynu zostało zakończone z informacjami (kod błędu 150225)
+W czasie ochrony maszyny wirtualnej Azure Site Recovery tworzy niektóre linki na źródłowej maszynie wirtualnej. Po usunięciu ochrony lub wyłączeniu replikacji Azure Site Recovery usunąć te linki w ramach zadania oczyszczania. Jeśli maszyna wirtualna ma blokadę zasobu, zadanie zostanie wykonane z informacjami. Informuje o tym, że maszyna wirtualna została usunięta z magazynu usługi Recovery Services, ale niektórych nieodświeżonych linków nie można oczyścić z maszyny źródłowej.
 
-Można zignorować to ostrzeżenie, jeśli zamierzasz nigdy nie chronić tę maszynę wirtualną ponownie w przyszłości. Jednak jeśli zajdzie potrzeba ochrony tej maszyny wirtualnej, później następnie powinien czyszczenie łącza zgodnie z opisem w poniższych krokach. 
+To ostrzeżenie można zignorować, jeśli nie chcesz ponownie chronić tej maszyny wirtualnej w przyszłości. Jeśli jednak chcesz chronić tę maszynę wirtualną później, wyczyść linki, jak wspomniano w poniższych krokach. 
 
-**W przeciwnym razie czystego następnie:**
+**Jeśli nie wykonasz czyszczenia, wykonaj następujące czynności:**
 
-1.  Podczas włączania replikacji przy użyciu magazynu usługi Recovery services maszyny wirtualnej, nie będą wyświetlane. 
-2.  Jeśli próbujesz chronić maszynę Wirtualną za pośrednictwem **maszyny wirtualnej > Ustawienia > odzyskiwania po awarii** będą wykonywane następujące czynności nie powiodło się z powodu błędu "*nie można włączyć replikacji ze względu na istniejące linki starych na maszynie Wirtualnej*".
+1.  W czasie włączania replikacji za pomocą magazynu usługi Recovery Services maszyna wirtualna nie zostanie wyświetlona na liście. 
+2.  Jeśli spróbujesz chronić MASZYNę wirtualną za pomocą **ustawień > maszyny wirtualnej > odzyskiwanie awaryjne** zakończy się niepowodzeniem z powodu błędu "*nie można włączyć replikacji, ponieważ istnieją linki starych zasobów na maszynie wirtualnej*".
 
 
 ### <a name="fix-the-problem"></a>Rozwiąż problem
 
 >[!NOTE]
 >
->Usługa Azure Site Recovery nie usunąć źródłowej maszyny wirtualnej lub wpływ w jakikolwiek sposób, wykonując poniższe kroki.
+>Azure Site Recovery nie usuwa źródłowej maszyny wirtualnej ani nie wpływa na nie w jakikolwiek sposób, wykonując poniższe kroki.
 >
 
-1. Usuń blokadę z maszyny Wirtualnej lub maszyny Wirtualnej grupy zasobów. Na przykład: Poniższe maszyny Wirtualnej nazwy "MoveDemo" ma blokady zasobu, który musi zostać usunięty.
+1. Usuń blokadę z maszyny wirtualnej lub grupy zasobów maszyny wirtualnej. Na przykład: Nazwa maszyny wirtualnej "MoveDemo" ma blokadę zasobu, która musi zostać usunięta.
 
    ![Network_Selection_greyed_out](./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png)
-2. Pobierz skrypt [Usuń nieaktualną konfigurację usługi Azure Site Recovery](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
-3. Uruchom skrypt *Cleanup-stale-asr-config-Azure-VM.ps1*.
-4. Podaj nazwę subskrypcji identyfikator, grupy zasobów maszyny Wirtualnej i maszyn wirtualnych, jako parametr.
-5. Jeśli pojawi się pytanie poświadczeń platformy Azure, podaj i sprawdź, czy skrypt pobiera wykonany bez żadnych przeszkód. 
+2. Pobierz skrypt [Usuń nieodświeżoną Azure Site Recovery konfigurację](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
+3. Wykonaj skrypt *Cleanup-stale-ASR-config-Azure-VM. ps1*.
+4. Podaj identyfikator subskrypcji, grupę zasobów maszyny wirtualnej i nazwę maszyny wirtualnej jako parametr.
+5. Jeśli zażądano poświadczeń platformy Azure, określ, czy skrypt ma być wykonywany bez żadnych błędów. 
 
 
-## <a name="replication-cannot-be-enabled-because-of-the-existing-stale-resource-links-on-the-vm-error-code-150226"></a>Nie można włączyć replikacji ze względu na istniejące linki starych na maszynie Wirtualnej (kod błędu: 150226)
+## <a name="replication-cannot-be-enabled-because-of-the-existing-stale-resource-links-on-the-vm-error-code-150226"></a>Nie można włączyć replikacji z powodu istniejących starych linków zasobów na maszynie wirtualnej (kod błędu 150226)
 
-**Przyczyna: Maszyna wirtualna ma nieaktualną konfigurację, pozostanie z poprzedniej ochrony Usługa Site Recovery**
+**Przyczyna: Maszyna wirtualna ma nieaktualną konfigurację pozostałą z poprzedniej Site Recovery ochrony**
 
 Nieaktualną konfigurację, może pozostać na Maszynie wirtualnej platformy Azure w następujących przypadkach:
 
-- Włączyć replikację dla maszyny Wirtualnej platformy Azure przy użyciu usługi Site Recovery, a następnie wyłącz replikację, ale **źródłowa maszyna wirtualna ma blokady zasobu**.
+- Włączono replikację maszyny wirtualnej platformy Azure przy użyciu Site Recovery, a następnie wyłącz replikację, ale **źródłowa maszyna wirtualna miała blokadę zasobu**.
 - Włączyć replikację dla maszyny Wirtualnej platformy Azure przy użyciu usługi Site Recovery, a następnie usunąć magazyn usługi Site Recovery bez jawnie wyłączenie replikacji na maszynie Wirtualnej.
 - Możesz włączyć replikację dla maszyny Wirtualnej platformy Azure przy użyciu usługi Site Recovery, a następnie usunąć grupę zasobów zawierającą magazyn usługi Site Recovery bez jawnie wyłączenie replikacji na maszynie Wirtualnej.
 
@@ -275,57 +275,57 @@ Nieaktualną konfigurację, może pozostać na Maszynie wirtualnej platformy Azu
 
 >[!NOTE]
 >
->Usługa Azure Site Recovery nie usunąć źródłowej maszyny wirtualnej lub wpływ w jakikolwiek sposób, wykonując poniższe kroki.
+>Azure Site Recovery nie usuwa źródłowej maszyny wirtualnej ani nie wpływa na nie w jakikolwiek sposób, wykonując poniższe kroki.
 
 
-1. Usuń blokadę z maszyny Wirtualnej lub maszyny Wirtualnej grupy zasobów, jeśli istnieją. *Na przykład:* Poniższe maszyny Wirtualnej nazwy "MoveDemo" ma blokady zasobu, który musi zostać usunięty.
+1. Usuń blokadę z maszyny wirtualnej lub grupy zasobów maszyny wirtualnej, jeśli istnieją. *Na przykład:* Nazwa maszyny wirtualnej "MoveDemo" ma blokadę zasobu, która musi zostać usunięta.
    
    ![Network_Selection_greyed_out](./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png)
-2. Pobierz skrypt [Usuń nieaktualną konfigurację usługi Azure Site Recovery](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
-3. Uruchom skrypt *Cleanup-stale-asr-config-Azure-VM.ps1*.
-4. Podaj nazwę subskrypcji identyfikator, grupy zasobów maszyny Wirtualnej i maszyn wirtualnych, jako parametr.
-5. Jeśli pojawi się pytanie poświadczeń platformy Azure, podaj i sprawdź, czy skrypt pobiera wykonany bez żadnych przeszkód.  
+2. Pobierz skrypt [Usuń nieodświeżoną Azure Site Recovery konfigurację](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
+3. Wykonaj skrypt *Cleanup-stale-ASR-config-Azure-VM. ps1*.
+4. Podaj identyfikator subskrypcji, grupę zasobów maszyny wirtualnej i nazwę maszyny wirtualnej jako parametr.
+5. Jeśli zażądano poświadczeń platformy Azure, określ, czy skrypt ma być wykonywany bez żadnych błędów.  
 
-## <a name="unable-to-see-the-azure-vm-or-resource-group--for-selection-in-enable-replication"></a>Nie można wyświetlić grupy maszyn wirtualnych platformy Azure lub zasobów, do wyboru w "Włącz replikację"
+## <a name="unable-to-see-the-azure-vm-or-resource-group--for-selection-in-enable-replication"></a>Nie można wyświetlić maszyny wirtualnej lub grupy zasobów platformy Azure do wyboru w pozycji "Włącz replikację"
 
- **Przyczyny 1:  Grupa zasobów i źródłowa maszyna wirtualna znajdują się w innej lokalizacji**
+ **Przyczyna 1:  Grupa zasobów i źródłowa maszyna wirtualna znajdują się w różnych lokalizacjach**
  
-Usługa Azure Site Recovery obecnie oczekuje się, źródłowej grupy zasobów w regionie i maszyn wirtualnych, które powinny być w tej samej lokalizacji. Jeśli nie jest to użytkownik nie będzie mogła znaleźć maszyny wirtualnej lub grupy zasobów w czasie ochrony. 
+Azure Site Recovery obecnie zezwala na to, że grupa zasobów regionu źródłowego i maszyny wirtualne powinny znajdować się w tej samej lokalizacji. Jeśli tak nie jest, nie można znaleźć maszyny wirtualnej ani grupy zasobów w czasie ochrony. 
 
-**Jako obejście**, można włączyć replikację z maszyny Wirtualnej, a nie magazyn usługi Recovery services. Przejdź do źródłowej maszyny Wirtualnej > Właściwości > odzyskiwania po awarii i Włącz replikację.
+Aby obejść ten **sposób**, można włączyć replikację z poziomu maszyny wirtualnej zamiast magazynu usługi Recovery Services. Przejdź do pozycji źródłowa maszyna wirtualna > Właściwości > Odzyskiwanie awaryjne i Włącz replikację.
 
-**Przyczyny 2: Grupa zasobów nie jest częścią wybranej subskrypcji**
+**Przyczyna 2: Grupa zasobów nie jest częścią wybranej subskrypcji**
 
 Nie można odnaleźć grupy zasobów w czasie ochrony, jeśli nie jest częścią danej subskrypcji. Upewnij się, że grupa zasobów należy do subskrypcji, która jest używana.
 
- **Przyczyny 3: Nieaktualną konfigurację**
+ **Przyczyna 3: Nieodświeżona konfiguracja**
  
 Jeśli chcesz włączyć replikację maszyny Wirtualnej nie jest widoczny, jego może z powodu nieaktualną konfigurację Site Recovery pozostać na maszynie Wirtualnej platformy Azure. Nieaktualną konfigurację, może pozostać na Maszynie wirtualnej platformy Azure w następujących przypadkach:
 
 - Włączyć replikację dla maszyny Wirtualnej platformy Azure przy użyciu usługi Site Recovery, a następnie usunąć magazyn usługi Site Recovery bez jawnie wyłączenie replikacji na maszynie Wirtualnej.
 - Możesz włączyć replikację dla maszyny Wirtualnej platformy Azure przy użyciu usługi Site Recovery, a następnie usunąć grupę zasobów zawierającą magazyn usługi Site Recovery bez jawnie wyłączenie replikacji na maszynie Wirtualnej.
 
-- Włączyć replikację dla maszyny Wirtualnej platformy Azure przy użyciu usługi Site Recovery, a następnie wyłącz replikację, ale źródłowa maszyna wirtualna ma blokady zasobu.
+- Włączono replikację maszyny wirtualnej platformy Azure przy użyciu Site Recovery, a następnie wyłącz replikację, ale źródłowa maszyna wirtualna miała blokadę zasobu.
 
 ### <a name="fix-the-problem"></a>Rozwiąż problem
 
 > [!NOTE]
 >
-> Upewnij się, że aktualizacja modułu azurerm.resources "" wprowadzono"" przed rozpoczęciem korzystania z poniższego skryptu. Usługa Azure Site Recovery nie usunąć źródłowej maszyny wirtualnej lub wpływ w jakikolwiek sposób, wykonując poniższe kroki.
+> Upewnij się, że moduł "" AzureRM. resources "" został zaktualizowany przed użyciem poniższego skryptu. Azure Site Recovery nie usuwa źródłowej maszyny wirtualnej ani nie wpływa na nie w jakikolwiek sposób, wykonując poniższe kroki.
 >
 
-1. Usuń blokadę z maszyny Wirtualnej lub maszyny Wirtualnej grupy zasobów, jeśli istnieją. *Na przykład:* Poniższe maszyny Wirtualnej nazwy "MoveDemo" ma blokady zasobu, który musi zostać usunięty.
+1. Usuń blokadę z maszyny wirtualnej lub grupy zasobów maszyny wirtualnej, jeśli istnieją. *Na przykład:* Nazwa maszyny wirtualnej "MoveDemo" ma blokadę zasobu, która musi zostać usunięta.
 
    ![Network_Selection_greyed_out](./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png)
 2. Pobierz skrypt [Usuń nieaktualną konfigurację](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
-3. Uruchom skrypt *Cleanup-stale-asr-config-Azure-VM.ps1*.
-4. Podaj nazwę subskrypcji identyfikator, grupy zasobów maszyny Wirtualnej i maszyn wirtualnych, jako parametr.
-5. Jeśli pojawi się pytanie poświadczeń platformy Azure, podaj i sprawdź, czy skrypt pobiera wykonany bez żadnych przeszkód.
+3. Wykonaj skrypt *Cleanup-stale-ASR-config-Azure-VM. ps1*.
+4. Podaj identyfikator subskrypcji, grupę zasobów maszyny wirtualnej i nazwę maszyny wirtualnej jako parametr.
+5. Jeśli zażądano poświadczeń platformy Azure, określ, czy skrypt ma być wykonywany bez żadnych błędów.
 
 ## <a name="unable-to-select-virtual-machine-for-protection"></a>Nie można wybrać maszynę wirtualną do ochrony
- **Przyczyny 1:  Maszyna wirtualna ma pewne rozszerzenia instalowana w stanie nie powiodło się lub nie odpowiada** <br>
+ **Przyczyna 1:  Niektóre rozszerzenia maszyny wirtualnej są zainstalowane w stanie awarii lub braku odpowiedzi** <br>
  Przejdź do maszyny wirtualnej > Ustawienia > rozszerzenia i sprawdź, czy istnieją jakiekolwiek rozszerzenia w stanie niepowodzenia. Odinstaluj rozszerzenie nie powiodło się i spróbuj ponownie ochronę maszyny wirtualnej.<br>
- **Przyczyny 2:  [Stan inicjowania obsługi administracyjnej maszyny Wirtualnej jest nieprawidłowy](#vms-provisioning-state-is-not-valid-error-code-150019)**
+ **Przyczyna 2:  [Stan aprowizacji maszyny wirtualnej jest nieprawidłowy](#vms-provisioning-state-is-not-valid-error-code-150019)**
 
 ## <a name="vms-provisioning-state-is-not-valid-error-code-150019"></a>Stan inicjowania obsługi administracyjnej maszyny Wirtualnej jest nieprawidłowy (kod błędu: 150019)
 
@@ -344,12 +344,12 @@ Aby włączyć replikację na maszynie Wirtualnej, powinna być w stanie inicjow
 
 ## <a name="unable-to-select-target-virtual-network---network-selection-tab-is-grayed-out"></a>Nie można wybrać docelowej sieci wirtualnej — karta wybór sieciowych jest wyszarzona.
 
-**Przyczyny 1: Jeśli maszyna wirtualna jest dołączony do sieci, która jest już zamapowana do sieci docelowej.**
+**Przyczyna 1: Jeśli maszyna wirtualna jest dołączona do sieci, która jest już zamapowana na sieć docelową.**
 - Jeśli źródłowa maszyna wirtualna jest częścią sieci wirtualnej i inną maszynę Wirtualną z tej samej sieci wirtualnej jest już zamapowana z siecią w docelowej grupie zasobów, następnie według wyboru sieci domyślne listy rozwijanej zostaną wyłączone.
 
 ![Network_Selection_greyed_out](./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png)
 
-**Przyczyny 2: Jeśli wcześniej chroniona maszyna wirtualna, za pomocą usługi Azure Site Recovery i wyłączone z replikacji.**
+**Przyczyna 2: Jeśli maszyna wirtualna została wcześniej chroniona przy użyciu Azure Site Recovery i wyłączono replikację.**
  - Wyłączanie replikacji maszyny Wirtualnej nie powoduje usunięcia mapowanie sieci. Musi on być usunięte z magazynu usługi recovery, gdy maszyna wirtualna była chroniona. </br>
  Przejdź do magazynu usług odzyskiwania > infrastruktura usługi Site Recovery > Mapowanie sieci. </br>
  ![Delete_NW_Mapping](./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png)
@@ -362,40 +362,40 @@ Aby włączyć replikację na maszynie Wirtualnej, powinna być w stanie inicjow
 
 **Kod błędu:** | **Możliwe przyczyny** | **Zalecenia**
 --- | --- | ---
-151025<br></br>**Komunikat**: Nie można zainstalować rozszerzenia usługi Site Recovery | -Usługa "COM + System Application" wyłączona.</br></br>-Usługa "Kopiowanie woluminów w tle" jest wyłączona.| Ustaw tryb automatycznego lub ręcznego uruchamiania usług "COM + System Application" i "Kopiowanie woluminów w tle".
+151025<br></br>**Komunikat**: Nie można zainstalować rozszerzenia Site Recovery | -Usługa "COM + System Application" wyłączona.</br></br>-Usługa "Kopiowanie woluminów w tle" jest wyłączona.| Ustaw tryb automatycznego lub ręcznego uruchamiania usług "COM + System Application" i "Kopiowanie woluminów w tle".
 
 ### <a name="fix-the-problem"></a>Rozwiąż problem
 
 Można otworzyć konsoli "Usługi" i upewnij się, "COM + System Application" i "Kopiowanie woluminów w tle" nie są ustawione na wartość "Wyłączony" dla "Typ uruchamiania".
   ![Błąd modelu COM](./media/azure-to-azure-troubleshoot-errors/com-error.png)
 
-## <a name="unsupported-managed-disk-size-error-code-150172"></a>Nieobsługiwana zarządzane rozmiar dysku (kod błędu: 150172)
+## <a name="unsupported-managed-disk-size-error-code-150172"></a>Nieobsługiwany rozmiar dysku zarządzanego (kod błędu 150172)
 
 
 **Kod błędu:** | **Możliwe przyczyny** | **Zalecenia**
 --- | --- | ---
-150172<br></br>**Komunikat**: Nie można włączyć ochrony dla maszyny wirtualnej, ponieważ zawiera ona (DiskName) o rozmiarze (DiskSize), która jest mniejsza niż minimalna obsługiwana rozmiar 1024 MB. | -Dysk jest mniejszy niż obsługiwany rozmiar wynoszący 1024 MB| Upewnij się, że rozmiary dysków są w zakresie obsługiwanych rozmiarów, a następnie spróbuj ponownie wykonać operację.
+150172<br></br>**Komunikat**: Nie można włączyć ochrony dla maszyny wirtualnej, ponieważ ma ona (diskname) o rozmiarze (DiskSize), która jest mniejsza niż minimalna obsługiwana wielkość 1024 MB. | -Dysk jest mniejszy niż obsługiwany rozmiar wynoszący 1024 MB| Upewnij się, że rozmiary dysków mieszczą się w zakresie obsługiwanego rozmiaru, a następnie spróbuj ponownie wykonać operację.
 
-## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-error-code-151126"></a>Włączanie ochrony nie powiodło się, jak nazwa urządzenia, wymienione w konfiguracji programu GRUB zamiast identyfikatora UUID (kod błędu: 151126)
+## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-error-code-151126"></a>Włączenie ochrony nie powiodło się, ponieważ nazwa urządzenia wymieniona w konfiguracji GRUB zamiast identyfikatora UUID (kod błędu 151126)
 
 **Możliwa przyczyna:** </br>
-Pliki konfiguracji programu GRUB ("/ boot/grub/menu.lst", "/ boot/grub/grub.cfg", "/ boot/grub2/grub.cfg" lub "/ etc/domyślne/chodników") może zawierać wartości dla parametrów **głównego** i **wznowić** jako nazwy rzeczywistego urządzenia zamiast identyfikatora UUID. Usługa Site Recovery określającemu UUID podejście, jak nazwa urządzenia mogą ulec zmianie między ponowny rozruch maszyny wirtualnej jako maszyny Wirtualnej może nie wróć w górę o takiej samej nazwie w trybie failover powodujące problemy. Na przykład: </br>
+Pliki konfiguracji GRUB ("/boot/grub/menu.lst", "/boot/grub/grub.cfg", "/Boot/grub2/grub.cfg" lub "/etc/default/grub") mogą zawierać wartość parametrów **root** i **Resume** jako rzeczywiste nazwy urządzeń zamiast UUID. Site Recovery zezwala na metodę UUID, ponieważ nazwa urządzeń może ulec zmianie po ponownym uruchomieniu maszyny wirtualnej, ponieważ maszyna wirtualna może nie zostać utworzona z tą samą nazwą w przypadku przejścia w tryb failover, co spowodowało problemy. Na przykład: </br>
 
 
-- Następujący wiersz jest z pliku programu GRUB **/boot/grub2/grub.cfg**. <br>
-  *Linux /boot/vmlinuz-3.12.49-11-default **główny = / dev/sda2** ${extra_cmdline} **wznowić = / dev/sda1** splash = dyskretnej showopts cichy*
+- Poniższy wiersz pochodzi z pliku GRUB **/Boot/grub2/grub.cfg**. <br>
+  *Linux/Boot/vmlinuz-3.12.49-11-default **root =/dev/sda2** $ {extra_cmdline} **Resume =/dev/sda1** powitalny = ciche ciche showopts*
 
 
-- Następujący wiersz jest z pliku programu GRUB **/boot/grub/menu.lst**
-   */boot/vmlinuz-3.0.101-63-default jądra **główny = / dev/sda2** **wznowić = / dev/sda1 ** splash = dyskretnej crashkernel = 256M-:128M showopts vga = 0x314*
+- Następujący wiersz pochodzi z pliku GRUB **/boot/grub/menu.lst**
+  *jądra/Boot/vmlinuz-3.0.101-63-default **root =/dev/sda2** **Resume =/dev/sda1** powitalnego = Silent crashkernel = 256M-: 128M showopts VGA = 0x314*
 
-Jeśli zauważysz bold ciągu powyżej, program GRUB zawiera rzeczywistego urządzenia nazwy parametrów "root" i "resume" zamiast identyfikatora UUID.
+Jeśli zobaczysz pogrubiony ciąg powyżej, GRUB ma rzeczywiste nazwy urządzeń dla parametrów "root" i "resume" zamiast identyfikatora UUID.
 
 **Jak naprawić:**<br>
-Nazwy urządzeń należy zastąpić je klasą odpowiedni identyfikator UUID.<br>
+Nazwy urządzeń należy zamienić na odpowiedni identyfikator UUID.<br>
 
 
-1. Znajdź identyfikator UUID urządzenia, wykonując polecenie "blkid \<nazwa urządzenia >". Przykład:<br>
+1. Znajdź identyfikator UUID urządzenia, wykonując polecenie "blkid \<Device Name >". Na przykład:<br>
    ```
    blkid /dev/sda1
    ```<br>
@@ -403,43 +403,43 @@ Nazwy urządzeń należy zastąpić je klasą odpowiedni identyfikator UUID.<br>
    ```blkid /dev/sda2```<br>
    ```/dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3"
    ```<br>
+   ```
 
 
 
-1. Now replace the device name with its UUID in the format like "root=UUID=\<UUID>". For example, if we replace the device names with UUID for root and resume parameter mentioned above in the files "/boot/grub2/grub.cfg", "/boot/grub2/grub.cfg" or "/etc/default/grub: then the lines in the files looks like. <br>
-   *kernel /boot/vmlinuz-3.0.101-63-default **root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4** **resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b** splash=silent crashkernel=256M-:128M showopts vga=0x314*
-1. Restart the protection again
+1. Teraz Zastąp nazwę urządzenia identyfikatorem UUID w formacie takim jak "root = UUID =\<UUID >". Na przykład, jeśli zamienimy nazwy urządzeń z identyfikatorem UUID dla certyfikatu głównego i wznowienia wymienionego powyżej w plikach "/Boot/grub2/grub.cfg", "/Boot/grub2/grub.cfg" lub "/etc/default/grub:, wówczas wiersze w plikach wyglądają podobnie. <br>
+   *jądro/Boot/vmlinuz-3.0.101-63-default **root = UUID = 62927e85-f7ba-40bc-9993-cc1feeb191e4** **Resume = UUID = 6f614b44-433B-431b-9ca1-4dd2f6f74f6b** powitalny = cichy crashkernel = 256M-: 128M showopts VGA = 0x314*
+1. Ponownie uruchom ochronę
 
-## Enable protection failed as device mentioned in the GRUB configuration doesn't exist(error code 151124)
-**Possible Cause:** </br>
-The GRUB configuration files ("/boot/grub/menu.lst", "/boot/grub/grub.cfg", "/boot/grub2/grub.cfg" or "/etc/default/grub") may contain the parameters "rd.lvm.lv" or "rd_LVM_LV" to indicate the LVM device that should be discovered at the time of booting. If these LVM devices doesn't exist, then the protected system itself will not boot and stuck in the boot process. Even the same will be observed with the failover VM. Below are few examples:
+## <a name="enable-protection-failed-as-device-mentioned-in-the-grub-configuration-doesnt-existerror-code-151124"></a>Włączenie ochrony nie powiodło się, ponieważ urządzenie wymienione w konfiguracji GRUB nie istnieje (kod błędu 151124)
+**Możliwa przyczyna:** </br>
+Pliki konfiguracji GRUB ("/boot/grub/menu.lst", "/boot/grub/grub.cfg", "/Boot/grub2/grub.cfg" lub "/etc/default/grub") mogą zawierać parametry "rd.lvm.lv" lub "rd_LVM_LV" wskazujące urządzenie LVM, które ma zostać odnalezione w momencie rozruchu. Jeśli te urządzenia LVM nie istnieją, wówczas chroniony system nie zostanie uruchomiony i zablokowany w procesie rozruchu. Nawet te same będą obserwowane z maszyną wirtualną trybu failover. Poniżej przedstawiono kilka przykładów:
 
-Few examples: </br>
+Kilka przykładów: </br>
 
-1. The following line is from the GRUB file **"/boot/grub2/grub.cfg"** on RHEL7. </br>
-   *linux16 /vmlinuz-3.10.0-957.el7.x86_64 root=/dev/mapper/rhel_mup--rhel7u6-root ro crashkernel=128M\@64M **rd.lvm.lv=rootvg/root rd.lvm.lv=rootvg/swap** rhgb quiet LANG=en_US.UTF-8*</br>
-   Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg".
-1. The following line is from the GRUB file **"/etc/default/grub"** on RHEL7 </br>
-   *GRUB_CMDLINE_LINUX="crashkernel=auto **rd.lvm.lv=rootvg/root rd.lvm.lv=rootvg/swap** rhgb quiet"*</br>
-   Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg".
-1. The following line is from the GRUB file **"/boot/grub/menu.lst"** on RHEL6 </br>
-   *kernel /vmlinuz-2.6.32-754.el6.x86_64 ro root=UUID=36dd8b45-e90d-40d6-81ac-ad0d0725d69e rd_NO_LUKS LANG=en_US.UTF-8 rd_NO_MD SYSFONT=latarcyrheb-sun16 crashkernel=auto rd_LVM_LV=rootvg/lv_root  KEYBOARDTYPE=pc KEYTABLE=us rd_LVM_LV=rootvg/lv_swap rd_NO_DM rhgb quiet* </br>
-   Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg".<br>
+1. Następujący wiersz pochodzi z pliku GRUB **"/Boot/grub2/grub.cfg"** na RHEL7. </br>
+   *linux16/vmlinuz-3.10.0-957.el7.x86_64 root =/dev/mapper/rhel_mup--rhel7u6-root ro crashkernel = 128M\@64M **Rd. LVM. lv = rootvg/root Rd. LVM. lv = rootvg/swap** rhgb quiet lang = en_US. UTF-8*</br>
+   W wyróżnionej części widać, że GRUB musi wykryć dwa urządzenia LVM z nazwami **"root"** i **"swap"** z grupy woluminów "rootvg".
+1. Następujący wiersz pochodzi z pliku GRUB **"/etc/default/grub"** na RHEL7 </br>
+   *GRUB_CMDLINE_LINUX = "crashkernel = **autord. LVM. lv = rootvg/root Rd. LVM. lv = rootvg/swap** rhgb quiet"*</br>
+   W wyróżnionej części widać, że GRUB musi wykryć dwa urządzenia LVM z nazwami **"root"** i **"swap"** z grupy woluminów "rootvg".
+1. Następujący wiersz pochodzi z pliku GRUB **"/boot/grub/menu.lst"** na RHEL6 </br>
+   *jądro/vmlinuz-2.6.32-754.EL6.x86_64 ro root = UUID = 36dd8b45-e90d-40d6-81ac-ad0d0725d69e rd_NO_LUKS LANG = en_US. UTF-8 rd_NO_MD SYSFONT = latarcyrheb-sun16 crashkernel = autord_LVM_LV = rootvg/lv_root KEYBOARDtype = komputer PC TABLE = US rd_LVM_LV = rootvg/lv_swap rd_NO_DM rhgb quiet* </br>
+   W wyróżnionej części widać, że GRUB musi wykryć dwa urządzenia LVM z nazwami **"root"** i **"swap"** z grupy woluminów "rootvg".<br>
 
-**How to Fix:**<br>
+**Jak naprawić:**<br>
 
-If the LVM device doesn't exist, fix either by creating it or remove the parameter for the same from the GRUB configuration files and then retry the enable protection. </br>
+Jeśli urządzenie LVM nie istnieje, napraw je przez utworzenie lub Usuń parametr dla tego samego z plików konfiguracji GRUB, a następnie ponów próbę włączenia ochrony. </br>
 
-## Site Recovery mobility service update completed with warnings ( error code 151083)
-Site Recovery mobility service has many components, one of which is called filter driver. Filter driver gets loaded into system memory only at a time of system reboot. Whenever there are  Site Recovery mobility service updates that has filter driver changes, we update the machine but still gives you warning that some fixes require a reboot. It means that the filter driver fixes can only be realized when a new filter driver is loaded which can happen only at the time of system reboot.<br>
-**Please note** that this is just a warning and existing replication keeps on working even after the new agent update. You can choose to reboot anytime you want to get the benefits of new filter driver but if you don't reboot than also old filter driver keeps on working. Apart from filter driver, **benefits of  any other enhancements and fixes in mobility service get realized without any reboot when the agent gets updated.**  
+## <a name="site-recovery-mobility-service-update-completed-with-warnings--error-code-151083"></a>Aktualizacja usługi mobilności Site Recovery została ukończona z ostrzeżeniami (kod błędu 151083)
+Usługa mobilności Site Recovery ma wiele składników, z których jeden jest nazywany sterownikiem filtru. Sterownik filtru jest ładowany do pamięci systemowej tylko w momencie ponownego uruchomienia systemu. Za każdym razem, gdy istnieją Site Recovery aktualizacje usługi mobilności, które mają zmiany sterownika filtru, należy zaktualizować maszynę, ale nadal zostanie wyświetlone ostrzeżenie, że niektóre poprawki wymagają ponownego uruchomienia. Oznacza to, że poprawki sterownika filtru można wykonać tylko w przypadku załadowania nowego sterownika filtru, który może wystąpić tylko w momencie ponownego uruchomienia systemu.<br>
+**Należy pamiętać** , że jest to ostrzeżenie i istniejąca replikacja nadal działa nawet po nowej aktualizacji agenta. Możesz wybrać opcję ponownego uruchomienia w dowolnym momencie, aby uzyskać korzyści płynące z nowego sterownika filtru, ale jeśli nie zostanie uruchomiony ponowny rozruch, a także nadal trwa praca starego sterownika filtru. Oprócz sterownika filtru **korzyści wynikające z innych ulepszeń i poprawek w usłudze mobilności są realizowane bez konieczności ponownego uruchamiania, gdy agent zostanie zaktualizowany.**  
 
 
-## Protection couldn't be enabled as replica managed disk 'diskname-replica' already exists without expected tags in the target resource group( error code 150161
+## <a name="protection-couldnt-be-enabled-as-replica-managed-disk-diskname-replica-already-exists-without-expected-tags-in-the-target-resource-group-error-code-150161"></a>Nie można włączyć ochrony, ponieważ dysk zarządzany repliki "diskname-Replica" już istnieje bez oczekiwanych tagów w docelowej grupie zasobów (kod błędu 150161
 
-**Cause**: It can occur if the  virtual machine was protected earlier in the past and during disabling the replication, replica disk was not cleaned due to some reason.</br>
-**How to fix:**
-Delete the mentioned replica disk in the error message and restart the failed protection job again.
+**Przyczyna**: Taka sytuacja może wystąpić, jeśli maszyna wirtualna była chroniona wcześniej w przeszłości i podczas wyłączania replikacji, dysk repliki nie został oczyszczony z powodu pewnej przyczyny.</br>
+**Jak naprawić:** Usuń wymieniony dysk repliki w komunikacie o błędzie i ponownie uruchom zadanie ochrony zakończone niepowodzeniem.
 
-## Next steps
-[Replicate Azure virtual machines](site-recovery-replicate-azure-to-azure.md)
+## <a name="next-steps"></a>Następne kroki
+[Replikowanie maszyn wirtualnych platformy Azure](site-recovery-replicate-azure-to-azure.md)

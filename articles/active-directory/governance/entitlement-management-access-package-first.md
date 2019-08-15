@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1688651466ba6748e1254c9d33bb24435602868b
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 76ba284ec1a30322a24c762a1829b399f2583c6c
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489166"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032929"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management-preview"></a>Samouczek: Tworzenie pierwszego pakietu dostępu w usłudze Azure AD uprawnia do zarządzania (wersja zapoznawcza)
 
@@ -44,7 +44,9 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Pokazuje, w jaki sposób użytkownik wewnętrzny może zażądać pakietu dostępu
 > * Zatwierdź żądanie dostępu
 
-Jeśli nie masz licencji na Azure AD — wersja Premium P2 lub Enterprise Mobility + Security E5, Utwórz bezpłatną [wersję próbną Enterprise Mobility + Security E5](https://signup.microsoft.com/Signup?OfferId=87dd2714-d452-48a0-a809-d2f58c4f68b7&ali=1).
+Aby zapoznać się z krok po kroku procesu wdrażania Azure Active Directory Zarządzanie prawami, w tym tworzenia pierwszego pakietu dostępu, zobacz następujące wideo:
+
+>[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -52,6 +54,8 @@ Aby korzystać z usługi Azure AD do zarządzania prawami (wersja zapoznawcza), 
 
 - Usługa Azure AD — warstwa Premium P2
 - Licencja na usługę Enterprise Mobility + Security (EMS) E5
+
+Jeśli nie masz licencji na Azure AD — wersja Premium P2 lub Enterprise Mobility + Security E5, Utwórz bezpłatną [wersję próbną Enterprise Mobility + Security E5](https://signup.microsoft.com/Signup?OfferId=87dd2714-d452-48a0-a809-d2f58c4f68b7&ali=1).
 
 ## <a name="step-1-set-up-users-and-group"></a>Krok 1: Konfigurowanie użytkowników i grup
 
@@ -67,20 +71,20 @@ Katalog zasobów zawiera co najmniej jeden zasób do udostępnienia. W tym kroku
 
 1. Utwórz lub skonfiguruj następujących dwóch użytkowników. Możesz użyć tych nazw lub różnych nazw. **Admin1** może być zalogowany jako użytkownik.
 
-    | Name (Nazwa) | Rola katalogu | Opis |
+    | Name | Rola katalogu | Opis |
     | --- | --- | --- |
     | **Admin1** | Administrator globalny<br/>—lub—<br/>Administrator z ograniczeniami (administrator użytkowników) | Administrator i osoba zatwierdzająca |
     | **Requestor1** | Użytkownik | Wewnętrzny Obiekt żądający |
 
     W tym samouczku administrator i osoba zatwierdzająca to ta sama osoba, ale zazwyczaj wyznaczasz co najmniej jedną osobę, która ma osoby zatwierdzające.
 
-1. Utwórz grupę zabezpieczeń usługi Azure AD o nazwie **Grupa inżynierów** z przypisanym typem członkostwa.
+1. Utwórz grupę zabezpieczeń usługi Azure AD o nazwie **Grupa inżynierów** z przypisanymtypem członkostwa.
 
     Ta grupa będzie zasobem docelowym dla zarządzania uprawnieniami. Grupa powinna być pusta elementów członkowskich do uruchomienia.
 
 ## <a name="step-2-create-an-access-package"></a>Krok 2: Tworzenie pakietu dostępu
 
-*Pakiet dostępu* to pakiet wszystkich zasobów, które użytkownik musi pracować nad projektem lub wykonywać zadania. Pakiety dostępu są definiowane w kontenerach o nazwie wykazów. W tym kroku utworzysz **pakiet dostępu do projektu sieci Web** w katalogu **ogólnym** .
+*Pakiet dostępu* to pakiet wszystkich zasobów, które użytkownik musi pracować nad projektem lub wykonywać zadania. Pakiety dostępu są definiowane w konteneracho nazwie wykazów. W tym kroku utworzysz **pakiet dostępu do projektu sieci Web** w katalogu **ogólnym** .
 
 **Rola wymagana wstępnie:** Administrator globalny lub administrator użytkowników
 
@@ -244,7 +248,7 @@ W tym kroku należy zalogować się jako użytkownik **osoby zatwierdzającej** 
 
 1. Kliknij link **Wyświetl** , aby otworzyć okienko żądanie dostępu.
 
-1. Kliknij przycisk Zatwierdź.
+1. Kliknijprzycisk Zatwierdź.
 
 1. W polu **Przyczyna** wpisz przyczynę zatwierdzonego **dostępu do projektu sieci Web**.
 

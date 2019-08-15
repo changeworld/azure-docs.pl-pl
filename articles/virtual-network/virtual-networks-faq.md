@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: b088b4d0e21819411c7329f3cb1e6ca9761665fd
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: ebb9028aab8626554d0f5fede15129c141d441cb
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610204"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035330"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network często zadawane pytania
 
@@ -67,9 +67,11 @@ Tak. Aby uzyskać więcej informacji na temat zakresów publicznych adresów IP,
 Tak. Aby uzyskać szczegółowe informacje, zobacz [limity platformy Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) . Przestrzenie adresowe podsieci nie mogą nakładać się na siebie nawzajem.
 
 ### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>Czy istnieją jakieś ograniczenia dotyczące używania adresów IP w tych podsieciach?
-Tak. Platforma Azure rezerwuje 5 adresów IP dla każdej podsieci. Są to x. x. x. 0-x. x. x. 3 i ostatni adres podsieci.    
-- x. x. x. 0 i ostatni adres podsieci jest zarezerwowany do zgodności z protokołem.
-- x. x. x. 1-x. x. x. 3 jest zarezerwowane w każdej podsieci dla usług platformy Azure.
+Tak. Platforma Azure rezerwuje 5 adresów IP dla każdej podsieci. Są to x. x. x. 0-x. x. x. 3 i ostatni adres podsieci. x. x. x. 1-x. x. x. 3 jest zarezerwowane w każdej podsieci dla usług platformy Azure.   
+- x. x. x. 0: Adres sieciowy
+- x. x. x. 1: Zarezerwowane przez platformę Azure dla bramy domyślnej
+- x. x. x. 2, x. x. x. 3: Zarezerwowane przez platformę Azure do mapowania adresów IP Azure DNS na przestrzeń wirtualną
+- x. x. x. 255: Adres emisji sieci
 
 ### <a name="how-small-and-how-large-can-vnets-and-subnets-be"></a>Jak mały i jak duży może być sieci wirtualnych i podsieci?
 Najmniejsza obsługiwana podsieć to/29, a największe to/8 (przy użyciu definicji podsieci CIDR).

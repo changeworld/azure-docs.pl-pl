@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie kluczy zarządzanych przez klienta do szyfrowania usługi Azure Storage za pomocą programu PowerShell
-description: Dowiedz się, jak skonfigurować kluczy zarządzanych przez klienta do szyfrowania usługi Azure Storage za pomocą programu PowerShell. Kluczy zarządzanych przez klienta umożliwiają tworzenie, obracanie, wyłącz i odwołać kontroli dostępu.
+title: Konfigurowanie kluczy zarządzanych przez klienta na potrzeby szyfrowania usługi Azure Storage za pomocą programu PowerShell
+description: Dowiedz się, jak skonfigurować klucze zarządzane przez klienta do szyfrowania za pomocą usługi Azure Storage przy użyciu programu PowerShell. Klucze zarządzane przez klienta umożliwiają tworzenie, obracanie, wyłączanie i odwoływanie kontroli dostępu.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,24 +9,28 @@ ms.date: 04/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: be876b370cd476bee2af7d90a9f0433fd80de3b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6c9adf1c00503ec7f1cbf4a3405c303eea2d2292
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233681"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034871"
 ---
-# <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-powershell"></a>Konfigurowanie kluczy zarządzanych przez klienta do szyfrowania usługi Azure Storage za pomocą programu PowerShell
+# <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-powershell"></a>Konfigurowanie kluczy zarządzanych przez klienta na potrzeby szyfrowania usługi Azure Storage za pomocą programu PowerShell
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-W tym artykule przedstawiono sposób konfigurowania magazynu kluczy przy użyciu kluczy zarządzanych przez klienta za pomocą programu PowerShell.
+W tym artykule pokazano, jak skonfigurować magazyn kluczy z kluczami zarządzanymi przez klienta przy użyciu programu PowerShell.
 
-## <a name="assign-an-identity-to-the-storage-account"></a>Przypisz tożsamość do konta magazynu
+> [!IMPORTANT]
+> W przypadku korzystania z kluczy zarządzanych przez klienta z szyfrowaniem usługi Azure Storage wymagane jest skonfigurowanie dwóch wymaganych właściwości magazynu kluczy, **usuwania** nietrwałego i nieprzeczyszczania. Te właściwości są domyślnie włączone podczas tworzenia nowego magazynu kluczy w Azure Portal. Jeśli jednak musisz włączyć te właściwości w istniejącym magazynie kluczy, musisz użyć programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
+> Obsługiwane są tylko klucze RSA i rozmiar klucza 2048.
 
-Aby włączyć kluczy konta magazynu zarządzanych przez klienta, należy najpierw przypisać przypisany systemowo tożsamości zarządzanych do konta magazynu. Użyjesz tej tożsamości zarządzanej do udzielania uprawnień do konta magazynu do dostępu do magazynu kluczy.
+## <a name="assign-an-identity-to-the-storage-account"></a>Przypisywanie tożsamości do konta magazynu
 
-Aby przypisać tożsamość zarządzana przy użyciu programu PowerShell, należy wywołać [AzStorageAccount zestaw](/powershell/module/az.storage/set-azstorageaccount). Pamiętaj, aby zastąpić symbole zastępcze w nawiasach własnymi wartościami.
+Aby włączyć klucze zarządzane przez klienta dla konta magazynu, należy najpierw przypisać tożsamość zarządzaną przez system do konta magazynu. Ta tożsamość zarządzana zostanie użyta do nadania uprawnień kontu magazynu dostępu do magazynu kluczy.
+
+Aby przypisać tożsamość zarządzaną przy użyciu programu PowerShell, wywołaj polecenie [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount). Pamiętaj, aby zastąpić wartości zastępcze w nawiasach własnymi wartościami.
 
 ```powershell
 $storageAccount = Set-AzStorageAccount -ResourceGroupName <resource_group> `
@@ -34,13 +38,13 @@ $storageAccount = Set-AzStorageAccount -ResourceGroupName <resource_group> `
     -AssignIdentity
 ```
 
-Aby uzyskać więcej informacji o konfigurowaniu przypisany systemowo zarządzanych tożsamości za pomocą programu PowerShell, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure przy użyciu programu PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md).
+Aby uzyskać więcej informacji na temat konfigurowania tożsamości zarządzanych przez system przy użyciu programu PowerShell, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej platformy Azure przy użyciu programu PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md).
 
 ## <a name="create-a-new-key-vault"></a>Utwórz nowy magazyn kluczy
 
-Aby utworzyć nowego magazynu kluczy przy użyciu programu PowerShell, wywołaj [New AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault). Magazyn kluczy, która umożliwia przechowywanie kluczy zarządzanych przez klienta usługi Azure Storage szyfrowania musi mieć dwa ustawienia ochrony kluczy włączone, **usuwanie nietrwałe** i **przeczyszczanie**. 
+Aby utworzyć nowy magazyn kluczy przy użyciu programu PowerShell, wywołaj polecenie [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault). Magazyn kluczy używany do przechowywania kluczy zarządzanych przez klienta do szyfrowania usługi Azure Storage musi mieć włączone dwa ustawienia ochrony klucza, **usuwanie nietrwałe** i **nie przeczyszczanie**. 
 
-Pamiętaj, aby zastąpić symbole zastępcze w nawiasach własnymi wartościami. 
+Pamiętaj, aby zastąpić wartości zastępcze w nawiasach własnymi wartościami. 
 
 ```powershell
 $keyVault = New-AzKeyVault -Name <key-vault> `
@@ -52,9 +56,9 @@ $keyVault = New-AzKeyVault -Name <key-vault> `
 
 ## <a name="configure-the-key-vault-access-policy"></a>Konfigurowanie zasad dostępu magazynu kluczy
 
-Następnie skonfiguruj zasady dostępu dla usługi key vault, więc, że konto magazynu nie ma uprawnień dostępu do niego. W tym kroku użyjesz tożsamości zarządzanej, które zostały wcześniej przypisane do konta magazynu.
+Następnie skonfiguruj zasady dostępu dla magazynu kluczy, aby konto magazynu miało uprawnienia dostępu do niego. W tym kroku zostanie użyta zarządzana tożsamość, która została wcześniej przypisana do konta magazynu.
 
-Aby ustawić zasady dostępu dla magazynu kluczy, należy wywołać [AzKeyVaultAccessPolicy zestaw](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy). Pamiętaj, aby zastąpić symbole zastępcze w nawiasach przy użyciu własnych wartości i korzystanie ze zmiennych zdefiniowanych w poprzednich przykładach.
+Aby ustawić zasady dostępu dla magazynu kluczy, wywołaj polecenie [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy). Pamiętaj, aby zastąpić wartości symboli zastępczych w nawiasach własnymi wartościami i użyć zmiennych zdefiniowanych w poprzednich przykładach.
 
 ```powershell
 Set-AzKeyVaultAccessPolicy `
@@ -65,7 +69,7 @@ Set-AzKeyVaultAccessPolicy `
 
 ## <a name="create-a-new-key"></a>Utwórz nowy klucz
 
-Następnie utwórz nowy klucz w magazynie kluczy. Aby utworzyć nowy klucz, wywołaj [AzKeyVaultKey Dodaj](/powershell/module/az.keyvault/add-azkeyvaultkey). Pamiętaj, aby zastąpić symbole zastępcze w nawiasach przy użyciu własnych wartości i korzystanie ze zmiennych zdefiniowanych w poprzednich przykładach.
+Następnie utwórz nowy klucz w magazynie kluczy. Aby utworzyć nowy klucz, wywołaj polecenie [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey). Pamiętaj, aby zastąpić wartości symboli zastępczych w nawiasach własnymi wartościami i użyć zmiennych zdefiniowanych w poprzednich przykładach.
 
 ```powershell
 $key = Add-AzKeyVaultKey -VaultName $keyVault.VaultName -Name <key> -Destination 'Software'
@@ -73,9 +77,9 @@ $key = Add-AzKeyVaultKey -VaultName $keyVault.VaultName -Name <key> -Destination
 
 ## <a name="configure-encryption-with-customer-managed-keys"></a>Konfigurowanie szyfrowania przy użyciu kluczy zarządzanych przez klienta
 
-Domyślnie szyfrowanie usługi Azure Storage korzysta z kluczy zarządzanych przez firmę Microsoft. W tym kroku należy skonfigurować konto usługi Azure Storage w taki sposób, aby używać kluczy zarządzanych przez klienta i określ klucz do skojarzenia z kontem magazynu.
+Domyślnie szyfrowanie usługi Azure Storage używa kluczy zarządzanych przez firmę Microsoft. W tym kroku Skonfiguruj konto usługi Azure Storage tak, aby korzystało z kluczy zarządzanych przez klienta, i określ klucz, który ma zostać skojarzony z kontem magazynu.
 
-Wywołaj [AzStorageAccount zestaw](/powershell/module/az.storage/set-azstorageaccount) można zaktualizować ustawień szyfrowania konta magazynu. Pamiętaj, aby zastąpić symbole zastępcze w nawiasach przy użyciu własnych wartości i korzystanie ze zmiennych zdefiniowanych w poprzednich przykładach.
+Aby zaktualizować ustawienia szyfrowania konta magazynu, wywołaj metodę [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) . Pamiętaj, aby zastąpić wartości symboli zastępczych w nawiasach własnymi wartościami i użyć zmiennych zdefiniowanych w poprzednich przykładach.
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
@@ -86,11 +90,11 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
     -KeyVaultUri $keyVault.VaultUri
 ```
 
-## <a name="update-the-key-version"></a>Aktualizacja wersji klucza
+## <a name="update-the-key-version"></a>Zaktualizuj wersję klucza
 
-Kiedy tworzysz nową wersję klucza, należy zaktualizować konta magazynu do nowej wersji. Po pierwsze wywołanie [Get AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey) można pobrać najnowszą wersję klucza. Następnie wywołaj [AzStorageAccount zestaw](/powershell/module/az.storage/set-azstorageaccount) można zaktualizować ustawień szyfrowania konta magazynu do nowej wersji klucza, jak pokazano w poprzedniej sekcji.
+Podczas tworzenia nowej wersji klucza należy zaktualizować konto magazynu, aby używało nowej wersji. Najpierw należy wywołać polecenie [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey) , aby uzyskać najnowszą wersję klucza. Następnie Wywołaj polecenie [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) , aby zaktualizować ustawienia szyfrowania konta magazynu, aby użyć nowej wersji klucza, jak pokazano w poprzedniej sekcji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Szyfrowanie usługi Azure Storage dla danych magazynowanych](storage-service-encryption.md) 
-- [Co to jest usługa Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)?
+- [Co to jest Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)?

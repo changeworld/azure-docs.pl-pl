@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric interfejsu wiersza polecenia — interfejs sfctl siatki dziennik w przypadku pakietu kodu | Dokumentacja firmy Microsoft
-description: W tym artykule opisano poleceń interfejsu wiersza polecenia usługi Service Fabric sfctl siatki dziennik w przypadku pakietu kodu.
+title: Interfejs wiersza polecenia platformy Azure Service Fabric — kod siatki sfctl-Package-log | Microsoft Docs
+description: Opisuje Service Fabric interfejs wiersza polecenia sfctl w kodzie siatkowym.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -8,21 +8,20 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: e7bc8491071946eaa2e322517e5d36d681a49130
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b1949f87dcdb1e3d9fe8e7fd08d8d8ba3b8203a0
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837644"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036445"
 ---
 # <a name="sfctl-mesh-code-package-log"></a>sfctl mesh code-package-log
-Pobierz dzienniki dla kontenera pakietu określony kod dla repliki danej usługi.
+Pobierz dzienniki dla kontenera określonego pakietu kodu dla danej repliki usługi.
 
 ## <a name="commands"></a>Polecenia
 
@@ -30,32 +29,32 @@ Pobierz dzienniki dla kontenera pakietu określony kod dla repliki danej usługi
 | --- | --- |
 | Pobierz | Pobiera dzienniki z kontenera. |
 
-## <a name="sfctl-mesh-code-package-log-get"></a>Pobierz dziennik w przypadku pakietu kodu siatki interfejsu sfctl
+## <a name="sfctl-mesh-code-package-log-get"></a>kod siatki sfctl-Package-log Get
 Pobiera dzienniki z kontenera.
 
-Pobiera dzienniki dla kontenera pakietu określony kod repliki usługi.
+Pobiera dzienniki dla kontenera określonego pakietu kodu repliki usługi.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --— Nazwa aplikacji — Nazwa aplikacji [wymagane] | Nazwa aplikacji. |
-| --Kod pakietu nazwa-[wymagane] | Nazwa pakietu kodu usługi. |
-| — [wymagane] Nazwa repliki | Nazwa repliki usługi Service Fabric. |
-| — [wymagane] nazwa usługi | Nazwa usługi. |
-| --tail | Liczba wierszy do pokazania od końca dzienniki. Domyślna to 100. "wszystkie", aby wyświetlić pełne dzienniki. |
+| --App-Name--Application-Name [wymagane] | Nazwa aplikacji. |
+| --Code-package-name [wymagane] | Nazwa pakietu kodu usługi. |
+| --Replica-Name [wymagane] | Nazwa repliki Service Fabric. |
+| --Service-Name [wymagane] | Nazwa usługi. |
+| --tail | Liczba wierszy do wyświetlenia na końcu dzienników. Wartość domyślna to 100. "wszystkie", aby wyświetlić kompletne dzienniki. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
 
-## <a name="next-steps"></a>Kolejne kroki
-- [Konfigurowanie](service-fabric-cli.md) interfejsu wiersza polecenia usługi Service Fabric.
-- Dowiedz się, jak używać przy użyciu interfejsu wiersza polecenia usługi Service Fabric [przykładowe skrypty](/azure/service-fabric/scripts/sfctl-upgrade-application).
+## <a name="next-steps"></a>Następne kroki
+- [Skonfiguruj](service-fabric-cli.md) interfejs wiersza polecenia Service Fabric.
+- Dowiedz się, jak używać interfejsu wiersza polecenia Service Fabric przy użyciu [przykładowych skryptów](/azure/service-fabric/scripts/sfctl-upgrade-application).

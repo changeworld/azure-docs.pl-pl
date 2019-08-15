@@ -1,6 +1,6 @@
 ---
-title: Wdrożenie usługi Azure Service Fabric interfejsu wiersza polecenia — sfctl siatki | Dokumentacja firmy Microsoft
-description: W tym artykule opisano poleceń wdrażania siatki sfctl interfejsu wiersza polecenia usługi Service Fabric.
+title: Interfejs wiersza polecenia platformy Azure Service Fabric — wdrożenie siatki sfctl | Microsoft Docs
+description: Opisuje sfctl interfejsu wiersza polecenia Service Fabric dla poleceń wdrożenia siatki.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -8,64 +8,63 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: e6b484dabd77a142961db2d97242896790fa3d8b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b3f506b46ef563f47fc7c67b759d3fcd08b7509d
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60836963"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035187"
 ---
 # <a name="sfctl-mesh-deployment"></a>sfctl mesh deployment
-Tworzenie zasobów usługi Service Fabric siatki.
+Utwórz zasoby siatki Service Fabric.
 
 ## <a name="commands"></a>Polecenia
 
 |Polecenie|Opis|
 | --- | --- |
-| create | Tworzy wdrożenie usługi Service Fabric siatki zasobów. |
+| tworzenie | Tworzy wdrożenie zasobów siatki Service Fabric. |
 
-## <a name="sfctl-mesh-deployment-create"></a>Tworzenie wdrożenia siatki interfejsu sfctl
-Tworzy wdrożenie usługi Service Fabric siatki zasobów.
+## <a name="sfctl-mesh-deployment-create"></a>Tworzenie wdrożenia siatki sfctl
+Tworzy wdrożenie zasobów siatki Service Fabric.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --input-yaml — pliki [wymagane] | Rozdzielana przecinkami względne i bezwzględne ścieżki plików wszystkich yaml pliki lub ścieżki względne i bezwzględne katalogu (rekursywnie) zawierające pliki yaml. |
-| --Parametry | Względna/bezwzględną ścieżką do pliku yaml lub obiekt json, który zawiera parametry, które muszą zostać zastąpione. |
+| --Input-YAML-Files [wymagane] | Oddzielone przecinkami względne/bezwzględne ścieżki plików wszystkich plików YAML lub ścieżki względnej/bezwzględnej katalogu (rekursywnie), które zawierają pliki YAML. |
+| --parametry | Ścieżka względna/bezwzględna do pliku YAML lub obiekt JSON zawierający parametry, które muszą zostać zastąpione. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
 ### <a name="examples"></a>Przykłady
 
-Konsoliduje i służy do wdrażania wszystkich zasobów do klastra przez zastąpienie parametry określone w pliku yaml
+Konsoliduje i wdraża wszystkie zasoby w klastrze, zastępując parametry wymienione w pliku YAML
 
 ```
 sfctl mesh deployment create --input-yaml-files ./app.yaml,./network.yaml --parameters
 ./param.yaml
 ```
 
-Konsoliduje i służy do wdrażania wszystkich zasobów w katalogu, do klastra przez zastąpienie parametry określone w pliku yaml
+Konsoliduje i wdraża wszystkie zasoby w katalogu w klastrze, zastępując parametry wymienione w pliku YAML
 
 ```
 sfctl mesh deployment create --input-yaml-files ./resources --parameters ./param.yaml
 ```
 
-Konsoliduje i służy do wdrażania wszystkich zasobów w katalogu, do klastra przez zastąpienie parametry, które są przekazywane bezpośrednio jako obiekt json
+Konsoliduje i wdraża wszystkie zasoby w katalogu w klastrze przez zastąpienie parametrów, które są przesyłane bezpośrednio jako obiekt JSON
 
 ```
 sfctl mesh deployment create --input-yaml-files ./resources --parameters "{ 'my_param' :
@@ -73,6 +72,6 @@ sfctl mesh deployment create --input-yaml-files ./resources --parameters "{ 'my_
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
-- [Konfigurowanie](service-fabric-cli.md) interfejsu wiersza polecenia usługi Service Fabric.
-- Dowiedz się, jak używać przy użyciu interfejsu wiersza polecenia usługi Service Fabric [przykładowe skrypty](/azure/service-fabric/scripts/sfctl-upgrade-application).
+## <a name="next-steps"></a>Następne kroki
+- [Skonfiguruj](service-fabric-cli.md) interfejs wiersza polecenia Service Fabric.
+- Dowiedz się, jak używać interfejsu wiersza polecenia Service Fabric przy użyciu [przykładowych skryptów](/azure/service-fabric/scripts/sfctl-upgrade-application).

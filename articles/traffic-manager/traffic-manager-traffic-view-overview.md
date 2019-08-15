@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 39d6090b14a16f505413154df2a78d42b3fb3f3c
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 5b451378fcc14106cb8731a89bcf6ccf415d0a92
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333714"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035447"
 ---
 # <a name="traffic-manager-traffic-view"></a>Traffic Manager Widok ruchu
 
@@ -44,6 +44,8 @@ Częstotliwość aktualizacji danych widoku ruchu zależy od wielu wewnętrznych
 ## <a name="visual-overview"></a>Przegląd wizualizacji
 
 Po przejściu do sekcji **Widok ruchu** na stronie Traffic Manager zostanie wyświetlona mapa geograficzna z nakładką widok ruchu szczegółowych informacji. Mapa zawiera informacje o podstawowym i punktach końcowych użytkownika dla profilu Traffic Manager.
+
+![Traffic Manager Widok ruchu widoku geograficznego][1]
 
 ### <a name="user-base-information"></a>Informacje podstawowe użytkownika
 
@@ -88,9 +90,11 @@ Gdy używasz Widok ruchu, opłaty są naliczane na podstawie liczby punktów dan
 
 * [Jak działa rozliczanie Widok ruchu?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-view-billing-work)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, [jak działa Traffic Manager](traffic-manager-overview.md)
 - Dowiedz się więcej o [metodach routingu ruchu](traffic-manager-routing-methods.md) obsługiwanych przez Traffic Manager
 - Dowiedz się, jak [utworzyć profil Traffic Manager](traffic-manager-create-profile.md)
 
+<!--Image references-->
+[1]: ./media/traffic-manager-traffic-view-overview/trafficview.png

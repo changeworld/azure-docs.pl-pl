@@ -1,21 +1,21 @@
 ---
-title: Udostępnianie puli Azure Batch z obrazu niestandardowego | Microsoft Docs
-description: Utwórz pulę usługi Batch z obrazu niestandardowego, aby udostępnić węzły obliczeniowe zawierające oprogramowanie i dane potrzebne aplikacji. Obrazy niestandardowe są wydajnym sposobem konfigurowania węzłów obliczeniowych do uruchamiania obciążeń wsadowych.
+title: Używanie galerii obrazów udostępnionych do tworzenia puli Azure Batch | Microsoft Docs
+description: Utwórz pulę usługi Batch z udostępnioną galerią obrazów, aby udostępnić niestandardowe obrazy do węzłów obliczeniowych zawierających oprogramowanie i dane potrzebne dla aplikacji. Obrazy niestandardowe są wydajnym sposobem konfigurowania węzłów obliczeniowych do uruchamiania obciążeń wsadowych.
 services: batch
 author: laurenhughes
 manager: gwallace
 ms.service: batch
 ms.topic: article
-ms.date: 08/07/2019
+ms.date: 08/14/2019
 ms.author: lahugh
-ms.openlocfilehash: d8bda817231ec0a5a733d5e586e49639c62ea177
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 00da17512cbc2e713955ea83c7d9fa7517958169
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882841"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036690"
 ---
-# <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>Używanie obrazu niestandardowego do tworzenia puli maszyn wirtualnych
+# <a name="use-the-shared-image-gallery-to-create-a-pool"></a>Tworzenie puli za pomocą galerii obrazów udostępnionych
 
 Podczas tworzenia puli Azure Batch przy użyciu konfiguracji maszyny wirtualnej należy określić obraz maszyny wirtualnej, który dostarcza system operacyjny dla każdego węzła obliczeniowego w puli. Można utworzyć pulę maszyn wirtualnych z obsługiwanym obrazem witryny Azure Marketplace lub utworzyć niestandardowy obraz za pomocą [galerii obrazów udostępnionych](../virtual-machines/windows/shared-image-galleries.md).
 

@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 7/24/2019
+ms.date: 8/14/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: ad0927c551f331a3a6f719797dae7598961d78c1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 45f383691a52d841f35ed9b67d4658341de18afc
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721669"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036258"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Informacje o wersji dla agenta Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Instalacje systemów Windows Server są przekształcane w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS). Możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
@@ -25,7 +25,7 @@ Następujące wersje są obsługiwane przez agenta usługi Azure File Sync:
 
 | Rozwoju | Numer wersji agenta | Data wydania | Stan |
 |----|----------------------|--------------|------------------|
-| 2019 lipca zbiorczych aktualizacji — [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 24 lipca 2019 | Obsługiwane — obsługa [lotu](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#automatic-agent-lifecycle-management) |
+| 2019 lipca zbiorczych aktualizacji — [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 24 lipca 2019 r. | Obsługiwane |
 | 2019 lipca zbiorczych aktualizacji — [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 12 lipca 2019 | Obsługiwane |
 | Wersji 7 wydanie — [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 19 czerwca 2019 | Obsługiwane |
 | Czerwiec 2019 — pakiet zbiorczy aktualizacji — [KB4489739](https://support.microsoft.com/help/4489739)| 6.3.0.0 | 27 czerwca 2019 | Obsługiwane |
@@ -39,9 +39,9 @@ Następujące wersje są obsługiwane przez agenta usługi Azure File Sync:
 | Grudzień 2018 — pakiet zbiorczy aktualizacji — [KB4459990](https://support.microsoft.com/help/4459990)| 4.2.0.0 | 10 grudnia 2018 | Obsługiwane |
 | Pakiet zbiorczy aktualizacji 2018 grudnia | 4.1.0.0 | 4 grudnia 2018 r. | Obsługiwane |
 | Wersja v4 | 4.0.1.0 | 13 listopada 2018 r. | Obsługiwane |
-| Pakiet zbiorczy aktualizacji 2018 września | 3.3.0.0 | 24 września 2018 r. | Obsługiwane — wersja agenta wygaśnie 19 lipca 2019 |
-| Pakiet zbiorczy aktualizacji 2018 sierpnia | 3.2.0.0 | 15 sierpnia 2018 r. | Obsługiwane — wersja agenta wygaśnie 19 lipca 2019 |
-| Ogólna dostępność | 3.1.0.0 | 19 lipca 2018 | Obsługiwane — wersja agenta wygaśnie 19 lipca 2019 |
+| Pakiet zbiorczy aktualizacji 2018 września | 3.3.0.0 | 24 września 2018 r. | Obsługiwane — wersja agenta wygaśnie dnia 19 sierpnia 2019 |
+| Pakiet zbiorczy aktualizacji 2018 sierpnia | 3.2.0.0 | 15 sierpnia 2018 r. | Obsługiwane — wersja agenta wygaśnie dnia 19 sierpnia 2019 |
+| Ogólna dostępność | 3.1.0.0 | 19 lipca 2018 | Obsługiwane — wersja agenta wygaśnie dnia 19 sierpnia 2019 |
 | Wygasł agenci | 1.1.0.0 — 3.0.13.0 | ND | Nieobsługiwane — wersje agenta wygasły 1 października 2018 |
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Zasady aktualizacji agenta usługi Azure File Sync

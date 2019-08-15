@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 06/28/2019
+ms.date: 08/14/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 79d00d39903b6fb3891ee7c0ccc4743763043568
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 1a5d80d6cd31621f8c3931b1845050f0a212ef08
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015613"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036618"
 ---
 # <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>Projektowanie aplikacji o wysokiej dostępności przy użyciu magazynu geograficznie nadmiarowego do odczytu
 
@@ -150,7 +150,7 @@ Istnieją trzy główne opcje monitorowania częstotliwości ponawiania prób w 
 
 * Dodaj procedurę obsługi dla [**ponawiania**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) zdarzenia dla obiektu [**OperationContext**](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) przekazanego do żądań magazynu — jest to metoda wyświetlana w tym artykule i używana w towarzyszącej próbce. Te zdarzenia są wyzwalane za każdym razem, gdy klient ponawia próbę żądania, umożliwiając śledzenie, jak często klient napotyka błędy powtarzające się w podstawowym punkcie końcowym.
 
-    ```csharp 
+    ```csharp
     operationContext.Retrying += (sender, arguments) =>
     {
         // Retrying in the primary region
@@ -219,7 +219,13 @@ Możesz użyć programu PowerShell lub interfejsu wiersza polecenia platformy Az
 
 ### <a name="powershell"></a>PowerShell
 
-Aby uzyskać ostatnią godzinę synchronizacji dla konta magazynu za pomocą programu PowerShell, sprawdź Właściwość **GeoReplicationStats. LastSyncTime** konta magazynu. Pamiętaj, aby zastąpić wartości zastępcze własnymi wartościami:
+Aby uzyskać ostatnią godzinę synchronizacji dla konta magazynu za pomocą programu PowerShell, zainstaluj moduł w wersji zapoznawczej usługi Azure Storage, który obsługuje pobieranie statystyk replikacji geograficznej. Na przykład:
+
+```powershell
+Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force
+```
+
+Następnie sprawdź Właściwość **GeoReplicationStats. LastSyncTime** konta magazynu. Pamiętaj, aby zastąpić wartości zastępcze własnymi wartościami:
 
 ```powershell
 $lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `

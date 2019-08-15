@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e5ff6755f1391ff19e65df669fb51967a904f4f
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 99f31c5928273973a9089ae9ef1fd184cdb78bbb
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707567"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69033322"
 ---
 # <a name="application-registration-subtypes-and-permissions-in-azure-active-directory"></a>Podtypy rejestracji aplikacji i uprawnienia w Azure Active Directory
 
@@ -46,12 +46,12 @@ Szczegóły dotyczące następujących uprawnień do wersji zapoznawczej ról ni
 
 ### <a name="create-and-delete"></a>Tworzenie i usuwanie
 
-Dostępne są dwa uprawnienia do przyznawania możliwości tworzenia rejestracji aplikacji:
+Dostępne są dwa uprawnienia do przyznawania możliwości tworzenia rejestracji aplikacji, z których każdy ma inne zachowanie:
 
-- **Microsoft. Directory/Applications/createAsOwner**
-- **Microsoft. Directory/Applications/Create**
+- **Microsoft. Directory/Applications/createAsOwner**: Przypisanie wyników tego uprawnienia do twórcy zostanie dodany jako pierwszy właściciel utworzonej rejestracji aplikacji, a rejestracja utworzonej aplikacji będzie liczona względem przydziału 250 obiektów utworzonych przez twórcę.
+- **Microsoft. Directory/applicationPolicies/Create**: Przypisanie wyników tego uprawnienia do twórcy nie jest dodawany jako pierwszy właściciel utworzonej rejestracji aplikacji, a rejestracja utworzonej aplikacji nie będzie uwzględniać przydziału utworzonych obiektów 250 dla twórcy. Należy dokładnie użyć tego uprawnienia, ponieważ nie ma możliwości uniemożliwienia sobie tworzenia rejestracji aplikacji, dopóki nie zostanie osiągnięty limit przydziału na poziomie katalogu. Jeśli przypisane są oba uprawnienia, ma to pierwszeństwo.
 
-Jeśli przypisane są oba uprawnienia, pierwszeństwo ma uprawnienie Tworzenie. Mimo że uprawnienie createAsOwner nie dodaje tego twórcy jako pierwszego właściciela, właściciele mogą zostać określeni podczas tworzenia rejestracji aplikacji podczas korzystania z interfejsów API programu Graph lub poleceń cmdlet środowiska PowerShell.
+Jeśli przypisane są oba uprawnienia, pierwszeństwo ma uprawnienie/CREATE. Mimo że uprawnienie/createAsOwner nie dodaje tego twórcy jako pierwszego właściciela, właściciele mogą zostać określeni podczas tworzenia rejestracji aplikacji podczas korzystania z interfejsów API programu Graph lub poleceń cmdlet środowiska PowerShell.
 
 Utwórz uprawnienia Udziel dostępu do **nowego polecenia rejestracji** .
 
@@ -282,7 +282,7 @@ Przyznaje takie same uprawnienia, jak Microsoft. Directory/Applications/Permissi
 
 [!INCLUDE [License requirement for using custom roles in Azure AD](../../../includes/active-directory-p1-license.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Tworzenie ról niestandardowych przy użyciu [Azure Portal, programu Azure AD PowerShell i interfejs API programu Graph](roles-create-custom.md)
 - [Wyświetlanie przypisań roli niestandardowej](roles-view-assignments.md)

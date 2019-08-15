@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: b-juche
-ms.openlocfilehash: 763b3961bfd621f05ab5cd021526b0d6d109c020
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
-ms.translationtype: MT
+ms.openlocfilehash: b9dd89e38f5cab6dceca36201695c068e0521943
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881721"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034865"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Limity zasobów dla usługi Azure NetApp Files
 
@@ -32,7 +32,7 @@ W poniższej tabeli opisano limity zasobów dla Azure NetApp Files:
 |  Resource  |  Limit domyślny  |  Regulowane przez żądanie pomocy technicznej  |
 |----------------|---------------------|--------------------------------------|
 |  Liczba kont NetApp na subskrypcję platformy Azure   |  10    |  Tak   |
-|  Liczba pul pojemności na konto NetApp   |    25     |   Yes   |
+|  Liczba pul pojemności na konto NetApp   |    25     |   Tak   |
 |  Liczba woluminów na pulę pojemności     |    500   |    Tak     |
 |  Liczba migawek na wolumin       |    255     |    Nie        |
 |  Liczba podsieci delegowanych do Azure NetApp Files (Microsoft. NetApp/Volumes) na platformie Azure Virtual Network    |   1   |    Nie    |
@@ -40,11 +40,8 @@ W poniższej tabeli opisano limity zasobów dla Azure NetApp Files:
 |  Minimalny rozmiar puli o pojedynczej pojemności   |  4 TiB     |    Nie  |
 |  Maksymalny rozmiar puli o pojedynczej pojemności    |  500 TiB   |   Nie   |
 |  Minimalny rozmiar pojedynczego woluminu    |    100 GiB    |    Nie    |
-|  Maksymalny przypisany limit przydziału pojedynczego woluminu *   |   92 TiB   |    Nie   |
-|  Maksymalny rozmiar pojedynczego woluminu *     |    100 TiB    |    Nie       |
+|  Maksymalny rozmiar pojedynczego woluminu     |    100 TiB    |    Nie       |
 |  Maksymalna liczba plików (węzłów i) na wolumin     |    50 000 000    |    Nie    |    
-
-\* Wolumin można ręcznie utworzyć lub zmienić jego rozmiar na Maximally 92 TiB. Jednak wolumin może wzrosnąć do 100 TiB w scenariuszu nadwyżki. Aby uzyskać szczegółowe informacje o nadmiernej pojemności, zobacz [model kosztów dla Azure NetApp Files](azure-netapp-files-cost-model.md) . 
 
 ## <a name="request-limit-increase"></a>Zwiększenie limitu żądań 
 
@@ -73,7 +70,7 @@ Ze płaszczyzny nawigacyjnej Azure Portal:
     3. Kliknij pozycję **Next: Przejrzyj i Utwórz** , aby utworzyć żądanie. 
 
 
-## <a name="next-steps"></a>Kolejne kroki  
+## <a name="next-steps"></a>Następne kroki  
 
 - [Omówienie hierarchii magazynu usługi Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md)
 - [Model kosztów dla Azure NetApp Files](azure-netapp-files-cost-model.md)

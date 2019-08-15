@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5a1e487b52cb6f146ccc7fd3208ecc90de9aa080
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: eb2a6933b711804f957056353d7d609dbdbbe5d5
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840160"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036454"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Samouczek: Opracowywanie C# modułu IoT Edge dla urządzeń z systemem Windows
 
@@ -51,7 +51,7 @@ Przed rozpoczęciem pracy z tym samouczkiem należy zapoznać się z poprzednim 
 * [Urządzenie z systemem Windows, na którym działa Azure IoT Edge](quickstart.md).
 * Rejestr kontenerów, taki jak [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/).
 * [Program Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/install-visual-studio) został skonfigurowany z rozszerzeniem [narzędzi Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) .
-* Aparat [Docker ce](https://docs.docker.com/install/) skonfigurowany do uruchamiania kontenerów systemu Windows.
+* [Pulpit platformy Docker](https://docs.docker.com/docker-for-windows/install/) skonfigurowany do uruchamiania kontenerów systemu Windows.
 
 > [!TIP]
 > Jeśli używasz programu Visual Studio 2017 (wersja 15,7 lub nowsza), plrease Pobierz i zainstaluj [Azure IoT Edge narzędzia](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) dla programu vs 2017 z witryny Visual Studio Marketplace
@@ -76,7 +76,7 @@ Narzędzia Azure IoT Edge zawierają szablony projektów dla wszystkich obsługi
 
 4. W oknie IoT Edge aplikacji i modułu Skonfiguruj projekt przy użyciu następujących wartości: 
 
-   | Pole | Wartość |
+   | Pole | Value |
    | ----- | ----- |
    | Wybierz szablon | Wybierz pozycję  **C# moduł**. | 
    | Nazwa projektu modułu | Nazwij moduł **CSharpModule**. | 

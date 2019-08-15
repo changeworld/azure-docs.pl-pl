@@ -1,6 +1,6 @@
 ---
-title: Używanie o wysokiej dostępności usługi Service Fabric Reliable woluminu dysku w aplikacji usługi Azure Service Fabric siatki | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak przechowywać stanu w aplikacji usługi Azure Service Fabric siatki przez zainstalowanie usługi Service Fabric Reliable na dysku woluminu w kontenerze przy użyciu wiersza polecenia platformy Azure.
+title: Użyj wysokiej dostępności Service Fabric niezawodnego woluminu dysku w aplikacji siatki Service Fabric platformy Azure | Microsoft Docs
+description: Dowiedz się, jak przechowywać informacje o stanie w aplikacji sieci Service Fabricej na platformie Azure, instalując Service Fabric niezawodny wolumin oparty na dyskach wewnątrz kontenera przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: service-fabric-mesh
 documentationcenter: .net
 author: ashishnegi
@@ -8,33 +8,32 @@ manager: raunakpandya
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric-mesh
-ms.devlang: azure-cli
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 9f760e7e693334475fb61ba9e5d44df019e78604
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 25bd298c412db38ec4d3b7859580d58ac9b151fb
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66147492"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036149"
 ---
-# <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>Instalowanie o wysokiej dostępności usługi Service Fabric Reliable dysku na podstawie woluminu w aplikacji usługi Service Fabric siatki 
-Typowe metody utrwalanie stanu przy użyciu aplikacji kontenera jest użycie magazynu zdalnego, takich jak usługi Azure File Storage lub bazy danych, takich jak usługi Azure Cosmos DB. To spowoduje naliczenie znaczących odczytu i zapisu opóźnienia sieci do zdalnego magazynu.
+# <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>Instalowanie wysokiej dostępności Service Fabric niezawodnego woluminu opartego na dyskach w aplikacji Service Fabric siatki 
+Typową metodą utrwalania stanu przy użyciu aplikacji kontenera jest używanie zdalnego magazynu, takiego jak usługa Azure File Storage lub baza danych, taka jak Azure Cosmos DB. Wiąże się to z istotnym opóźnieniem odczytu i zapisu sieci dla magazynu zdalnego.
 
-W tym artykule przedstawiono sposób przechowywania stanu o wysokiej dostępności usługi Service Fabric Reliable dysku przez zainstalowanie woluminu w kontenerze aplikacji usługi Service Fabric siatki.
-Dysk niezawodnej usługi Service Fabric zapewnia woluminów dla odczytów lokalnego zapisów replikowane w obrębie klastra usługi Service Fabric w celu zapewnienia wysokiej dostępności. To spowoduje usunięcie wywołań sieci dla odczytów i zmniejsza jej opóźnienie do zapisu. Jeśli kontener uruchamia się ponownie lub przenoszone do innego węzła, nowego wystąpienia kontenera zostaną wyświetlone tego samego woluminu, jak stary. Ten sposób jest wydajne i o wysokiej dostępności.
+W tym artykule pokazano, jak przechowywać stan w Service Fabric niezawodnego dysku przez zainstalowanie woluminu wewnątrz kontenera aplikacji Service Fabric siatki.
+Service Fabric niezawodny dysk zapewnia woluminy do odczytu lokalnego z zapisami replikowanymi w klastrze Service Fabric w celu zapewnienia wysokiej dostępności. Spowoduje to usunięcie wywołań sieciowych dla operacji odczytu i zmniejsza czas oczekiwania sieci na zapis. Jeśli kontener zostanie ponownie uruchomiony lub przejdzie do innego węzła, nowe wystąpienie kontenera będzie widziało ten sam wolumin jak starszy. W ten sposób jest to zarówno wydajna, jak i wysoka dostępność.
 
-W tym przykładzie aplikacja licznika ma usługi platformy ASP.NET Core ze stroną sieci web, która przedstawia wartość licznika w przeglądarce.
+W tym przykładzie aplikacja licznika ma usługę ASP.NET Core ze stroną sieci Web, która wyświetla wartość licznika w przeglądarce.
 
-`counterService` Co jakiś czas odczytuje wartość licznika z pliku, zwiększa ona i zapisu je z powrotem do pliku. Plik jest przechowywany w folderze, który jest zainstalowany na tym woluminie wspierany przez dysk niezawodnej usługi Service Fabric.
+`counterService` Okresowo odczytuje wartość licznika z pliku, zwiększa ją i zapisuje z powrotem do pliku. Plik jest przechowywany w folderze, który jest instalowany na woluminie, Service Fabric niezawodny dysk.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby zakończyć to zadanie, można użyć usługi Azure Cloud Shell lub lokalnej instalacji interfejsu wiersza polecenia platformy Azure. Aby użyć wiersza polecenia platformy Azure z tym artykułem, upewnij się, że `az --version` zwraca co najmniej `azure-cli (2.0.43)`.  Zainstalować (lub zaktualizować) modułu rozszerzenia usługi Service Fabric siatki wiersza polecenia platformy Azure, wykonując te [instrukcje](service-fabric-mesh-howto-setup-cli.md).
+Aby wykonać to zadanie, można użyć Azure Cloud Shell lub lokalnej instalacji interfejsu wiersza polecenia platformy Azure. Aby użyć interfejsu wiersza polecenia platformy Azure z tym artykułem `az --version` , upewnij się `azure-cli (2.0.43)`, że program zwraca co najmniej.  Zainstaluj (lub zaktualizuj) moduł rozszerzenia interfejsu wiersza polecenia usługi Azure Service Fabric siatka, wykonując te [instrukcje](service-fabric-mesh-howto-setup-cli.md).
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
@@ -47,7 +46,7 @@ az account set --subscription "<subscriptionID>"
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Utwórz grupę zasobów, w której zostanie wdrożona aplikacja. Następujące polecenie tworzy grupę zasobów o nazwie `myResourceGroup` w lokalizacji w wschodnich Stanach Zjednoczonych. Jeśli zmienisz nazwę grupy zasobów w poniższego polecenia, pamiętaj, aby ją zmienić w wszystkie polecenia, które należy wykonać.
+Utwórz grupę zasobów, w której zostanie wdrożona aplikacja. Następujące polecenie tworzy grupę zasobów o nazwie `myResourceGroup` w lokalizacji w Stany Zjednoczone wschodnim. W przypadku zmiany nazwy grupy zasobów w poniższym poleceniu Pamiętaj, aby zmienić ją we wszystkich kolejnych poleceniach.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -55,43 +54,43 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="deploy-the-template"></a>Wdrożenie szablonu
 
-Następujące polecenie służy do wdrażania aplikacji systemu Linux za pomocą [szablonu counter.sfreliablevolume.linux.json](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.linux.json). Aby wdrożyć aplikację Windows, należy użyć [szablonu counter.sfreliablevolume.windows.json](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.windows.json). Należy pamiętać, czy większych obrazów kontenerów może potrwać dłużej wdrożenia.
+Następujące polecenie wdraża aplikację systemu Linux przy użyciu [szablonu Counter. sfreliablevolume. Linux. JSON](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.linux.json). Aby wdrożyć aplikację systemu Windows, użyj [szablonu Counter. sfreliablevolume. Windows. JSON](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.windows.json). Należy pamiętać, że wdrażanie większych obrazów kontenerów może trwać dłużej.
 
 ```azurecli-interactive
 az mesh deployment create --resource-group myResourceGroup --template-uri https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/counter/counter.sfreliablevolume.linux.json
 ```
 
-Można również wyświetlić stan wdrożenia za pomocą polecenia
+Możesz również zobaczyć stan wdrożenia za pomocą polecenia
 
 ```azurecli-interactive
 az group deployment show --name counter.sfreliablevolume.linux --resource-group myResourceGroup
 ```
 
-Zwróć uwagę na nazwę zasobu bramy, która ma typ zasobu `Microsoft.ServiceFabricMesh/gateways`. To posłuży podczas pobierania publiczny adres IP aplikacji.
+Zwróć uwagę na nazwę zasobu bramy, który ma typ zasobu `Microsoft.ServiceFabricMesh/gateways`jako. Ta wartość zostanie użyta w celu uzyskania publicznego adresu IP aplikacji.
 
 ## <a name="open-the-application"></a>Otwieranie aplikacji
 
-Po pomyślnym wdrożeniu aplikacji, Uzyskaj adres IP zasobu bramy aplikacji. Użyj nazwę bramy, którą można zauważyć, że w powyżej sekcji.
+Po pomyślnym wdrożeniu aplikacji Pobierz adres IP zasobu bramy dla aplikacji. Użyj nazwy bramy podanej w poprzedniej sekcji.
 ```azurecli-interactive
 az mesh gateway show --resource-group myResourceGroup --name counterGateway
 ```
 
-Dane wyjściowe powinny mieć właściwość `ipAddress` czyli publiczny adres IP punktu końcowego usługi. Otwórz go w przeglądarce. Wyświetli stronę sieci web za pomocą wartość licznika, aktualizowane co sekundę.
+Dane wyjściowe powinny mieć właściwość `ipAddress` , która jest publicznym adresem IP dla punktu końcowego usługi. Otwórz go w przeglądarce. Zostanie wyświetlona strona sieci Web z wartością licznika, która jest aktualizowana co sekundę.
 
-## <a name="verify-that-the-application-is-able-to-use-the-volume"></a>Sprawdź, czy aplikacja jest w stanie korzystać z woluminu
+## <a name="verify-that-the-application-is-able-to-use-the-volume"></a>Sprawdź, czy aplikacja może korzystać z woluminu
 
-Aplikacja tworzy plik o nazwie `counter.txt` zbiorczo wewnątrz `counter/counterService` folderu. Zawartość tego pliku jest wartość licznika są wyświetlane na stronie sieci web.
+Aplikacja tworzy plik o nazwie `counter.txt` w folderze woluminu wewnątrz. `counter/counterService` Zawartość tego pliku jest wartością licznika wyświetlaną na stronie sieci Web.
 
 ## <a name="delete-the-resources"></a>Usuń zasoby
 
-Często usunąć zasoby, których już używasz na platformie Azure. Aby usunąć zasoby związane z tym przykładzie, należy usunąć grupę zasobów, w którym zostały wdrożone (co spowoduje usunięcie wszystkich skojarzonych z tą grupą zasobów) za pomocą następującego polecenia:
+Często usuwaj zasoby, które nie są już używane na platformie Azure. Aby usunąć zasoby związane z tym przykładem, Usuń grupę zasobów, w której zostały wdrożone (co spowoduje usunięcie wszystkich skojarzonych z tą grupą zasobów) za pomocą następującego polecenia:
 
 ```azurecli-interactive
 az group delete --resource-group myResourceGroup
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Wyświetl przykładowej aplikacji usługi Service Fabric Reliable dysku woluminu na [GitHub](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter).
+- Wyświetl przykładową aplikację Service Fabric niezawodnego dysku woluminu w witrynie [GitHub](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter).
 - Aby dowiedzieć się więcej o modelu zasobów usługi Service Fabric, zobacz [Model zasobów usługi Service Fabric Mesh](service-fabric-mesh-service-fabric-resources.md).
 - Aby dowiedzieć się więcej na temat usługi Service Fabric Mesh, przeczytaj [omówienie usługi Service Fabric Mesh](service-fabric-mesh-overview.md).

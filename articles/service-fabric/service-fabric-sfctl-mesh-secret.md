@@ -1,6 +1,6 @@
 ---
-title: Azure interfejsu wiersza polecenia usługi Service Fabric - sfctl siatki klucz tajny | Dokumentacja firmy Microsoft
-description: W tym artykule opisano poleceń wpisu tajnego siatki sfctl interfejsu wiersza polecenia usługi Service Fabric.
+title: Interfejs wiersza polecenia platformy Azure Service Fabric — wpis tajny sfctl siatki | Microsoft Docs
+description: Opisuje polecenie Service Fabric interfejsu wiersza polecenia w sieci sfctl.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -8,88 +8,87 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: acc5862a8794da4fde991025eacfcccf6e16916a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5e58e6a401cc166c176dc465d58ba9e8a8ed83b0
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60607683"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035971"
 ---
 # <a name="sfctl-mesh-secret"></a>sfctl mesh secret
-Pobierz i usunąć zasoby wpisu tajnego siatki.
+Pobierz i Usuń zasoby z siatką kluczy tajnych.
 
 ## <a name="commands"></a>Polecenia
 
 |Polecenie|Opis|
 | --- | --- |
-| delete | Usuwa zasób wpisu tajnego. |
-| list | Wyświetla wszystkie zasoby, klucza tajnego. |
-| pokaż | Pobiera wpisu tajnego zasobów o podanej nazwie. |
+| usuwanie | Usuwa zasób tajny. |
+| list | Wyświetla listę wszystkich zasobów tajnych. |
+| pokaż | Pobiera tajny zasób o podaną nazwę. |
 
-## <a name="sfctl-mesh-secret-delete"></a>Interfejs sfctl siatki secret delete
-Usuwa zasób wpisu tajnego.
+## <a name="sfctl-mesh-secret-delete"></a>Usuwanie wpisu tajnego siatki sfctl
+Usuwa zasób tajny.
 
-Usuwa określony zasób wpisu tajnego i wszystkie jego nazwanych wartości.
-
-### <a name="arguments"></a>Argumenty
-
-|Argument|Opis|
-| --- | --- |
-| — Nazwa -n [wymagane] | Nazwa klucza tajnego. |
-
-### <a name="global-arguments"></a>Argumenty globalne
-
-|Argument|Opis|
-| --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
-
-## <a name="sfctl-mesh-secret-list"></a>sfctl siatki secret list
-Wyświetla wszystkie zasoby, klucza tajnego.
-
-Pobiera informacje o wszystkich zasobów wpisu tajnego w określonej grupy zasobów. Informacje zawierają opis i inne właściwości wpisu tajnego.
-
-### <a name="global-arguments"></a>Argumenty globalne
-
-|Argument|Opis|
-| --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
-
-## <a name="sfctl-mesh-secret-show"></a>Interfejs sfctl siatki secret show
-Pobiera wpisu tajnego zasobów o podanej nazwie.
-
-Pobiera informacje o zasobie tajny o podanej nazwie. Informacje zawierają opis i inne właściwości wpisu tajnego.
+Usuwa określony zasób tajny i wszystkie jego nazwane wartości.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| — Nazwa -n [wymagane] | Nazwa klucza tajnego. |
+| --Name-n [wymagane] | Nazwa wpisu tajnego. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
+
+## <a name="sfctl-mesh-secret-list"></a>Lista wpisów tajnych sfctl siatki
+Wyświetla listę wszystkich zasobów tajnych.
+
+Pobiera informacje o wszystkich zasobach tajnych w danej grupie zasobów. Informacje obejmują opis i inne właściwości wpisu tajnego.
+
+### <a name="global-arguments"></a>Argumenty globalne
+
+|Argument|Opis|
+| --- | --- |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
+
+## <a name="sfctl-mesh-secret-show"></a>Pokaż wpis tajny siatki sfctl
+Pobiera tajny zasób o podaną nazwę.
+
+Pobiera informacje o zasobie tajnym o podanej nazwie. Informacje obejmują opis i inne właściwości wpisu tajnego.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Opis|
+| --- | --- |
+| --Name-n [wymagane] | Nazwa wpisu tajnego. |
+
+### <a name="global-arguments"></a>Argumenty globalne
+
+|Argument|Opis|
+| --- | --- |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
 
-## <a name="next-steps"></a>Kolejne kroki
-- [Konfigurowanie](service-fabric-cli.md) interfejsu wiersza polecenia usługi Service Fabric.
-- Dowiedz się, jak używać przy użyciu interfejsu wiersza polecenia usługi Service Fabric [przykładowe skrypty](/azure/service-fabric/scripts/sfctl-upgrade-application).
+## <a name="next-steps"></a>Następne kroki
+- [Skonfiguruj](service-fabric-cli.md) interfejs wiersza polecenia Service Fabric.
+- Dowiedz się, jak używać interfejsu wiersza polecenia Service Fabric przy użyciu [przykładowych skryptów](/azure/service-fabric/scripts/sfctl-upgrade-application).

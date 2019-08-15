@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
-ms.date: 08/12/2019
-ms.openlocfilehash: 515e971214244cdd14955cc269a5f005cb93734f
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.date: 08/14/2019
+ms.openlocfilehash: a02709ffde144e7bd5e4d05fcd0e07c5d84a15fb
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967922"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035823"
 ---
 # <a name="time-zones-in-azure-sql-database-managed-instance"></a>Strefy czasowe w Azure SQL Database wystąpieniu zarządzanym
 
@@ -83,7 +83,10 @@ Można przywrócić plik kopii zapasowej lub zaimportować dane do wystąpienia 
 
 ### <a name="point-in-time-restore"></a>Przywracanie do określonego momentu
 
-Gdy wykonujesz przywracanie do punktu w czasie, czas przywracania jest interpretowany jako czas UTC. W ten sposób można uniknąć wszelkich niejasności z powodu czasu letniego i jego potencjalnych zmian.
+<del>Gdy wykonujesz przywracanie do punktu w czasie, czas przywracania jest interpretowany jako czas UTC. W ten sposób można uniknąć wszelkich niejasności z powodu czasu letniego i jego potencjalnych zmian.<del>
+
+ >[!WARNING]
+  > Bieżące zachowanie nie jest zgodne z powyższą instrukcją i czas przywracania do programu jest interpretowany jako dla strefy czasowej źródłowego wystąpienia zarządzanego, z którego pobierane są automatyczne kopie zapasowe bazy danych. Pracujemy nad korygowaniem tego zachowania, aby interpretować dany punkt w czasie jako czas UTC.
 
 ### <a name="auto-failover-groups"></a>Grupy automatycznego trybu failover
 

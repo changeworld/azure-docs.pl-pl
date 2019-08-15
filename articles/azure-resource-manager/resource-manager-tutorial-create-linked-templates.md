@@ -13,18 +13,18 @@ ms.devlang: na
 ms.date: 03/18/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: de2e848bd587f3b9bf2efe3fa8df3710e24243e4
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 11eae0e3bae501cdf39d7fe1d5d39524c1f83e6c
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241378"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036007"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>Samouczek: Tworzenie połączonych szablonów usługi Azure Resource Manager
 
 Dowiedz się, jak tworzyć połączone szablony usługi Azure Resource Manager. Użycie połączonych szablonów umożliwia wywołanie szablonu przez inny szablon. Jest to idealne narzędzie do podziału szablonów na moduły. W tym samouczku użyjesz tego samego szablonu, który został użyty w artykule [Samouczek: Tworzenie szablonów usługi Azure Resource Manager przy użyciu zasobów zależnych](./resource-manager-tutorial-create-templates-with-dependent-resources.md). Powoduje on utworzenie maszyny wirtualnej, sieci wirtualnej i innych zasobów zależnych, w tym konta magazynu. Tworzenie zasobu konta magazynu jest realizowane przez połączony szablon.
 
-Wywoływanie dołączonego szablonu jest podobne do wywołania funkcji.  Poznasz również sposób przekazać wartości parametrów do dołączonego szablonu oraz uzyskiwanie "return values" dołączonego szablonu.
+Wywołanie połączonego szablonu jest podobne do tworzenia wywołania funkcji.  Dowiesz się również, jak przekazać wartości parametrów do połączonego szablonu i jak uzyskać "wartości zwracane" z połączonego szablonu.
 
 Ten samouczek obejmuje następujące zadania:
 
@@ -37,7 +37,7 @@ Ten samouczek obejmuje następujące zadania:
 > * Wdrożenie szablonu
 > * Dodatkowe rozwiązania
 
-Aby uzyskać więcej informacji, zobacz [połączone i zagnieżdżone szablony, podczas wdrażania zasobów platformy Azure](./resource-group-linked-templates.md).
+Aby uzyskać więcej informacji, zobacz [Używanie połączonych i zagnieżdżonych szablonów podczas wdrażania zasobów platformy Azure](./resource-group-linked-templates.md).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
@@ -77,18 +77,18 @@ Szablony szybkiego startu platformy Azure to repozytorium na potrzeby szablonów
    * [`Microsoft.Network/networkInterfaces`](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)
    * [`Microsoft.Compute/virtualMachines`](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)
 
-     Warto uzyskać podstawowych informacji na temat schematu szablonu przed rozpoczęciem dostosowywania szablonu.
+     Warto zapoznać się z podstawową wiedzą na temat schematu szablonu przed przystąpieniem do dostosowywania szablonu.
 5. Wybierz pozycję **Plik**>**Zapisz jako**, aby zapisać kopię pliku o nazwie **azuredeploy.json** na komputerze lokalnym.
 6. Wybierz pozycję **Plik**>**Zapisz jako**, aby utworzyć kolejną kopię pliku o nazwie **linkedTemplate.json**.
 
 ## <a name="create-the-linked-template"></a>Tworzenie połączonego szablonu
 
-Połączony szablon tworzy konto magazynu. Połączony szablon może służyć jako autonomiczny szablonu można utworzyć konta magazynu. W tym samouczku połączony szablon przyjmuje dwa parametry i przekazuje wartość z powrotem do głównego szablonu. Ta wartość "return" jest zdefiniowany w `outputs` elementu.
+Połączony szablon tworzy konto magazynu. Połączony szablon może służyć jako szablon autonomiczny do tworzenia konta magazynu. W tym samouczku połączony szablon przyjmuje dwa parametry i przekazuje wartość z powrotem do głównego szablonu. Ta wartość "return" jest zdefiniowana w `outputs` elemencie.
 
-1. Otwórz **linkedTemplate.json** programu Visual Studio Code, jeśli plik nie jest otwarty.
+1. Otwórz **linkedTemplate. JSON** w Visual Studio Code, jeśli plik nie jest otwarty.
 2. Wprowadź następujące zmiany:
 
-    * Usuń wszystkie parametry innych niż **lokalizacji**.
+    * Usuń wszystkie parametry inne niż **Lokalizacja**.
     * Dodaj parametr o nazwie **storageAccountName**.
         ```json
         "storageAccountName":{
@@ -98,10 +98,10 @@ Połączony szablon tworzy konto magazynu. Połączony szablon może służyć j
           }
         },
         ```
-        Nazwa konta magazynu i lokalizacja są przekazywane z głównego szablonu do dołączonego szablonu jako parametry.
+        Nazwa i lokalizacja konta magazynu są przesyłane z szablonu głównego do połączonego szablonu jako parametry.
 
     * Usuń element **variables** i wszystkie definicje zmiennych.
-    * Usuwanie wszystkich zasobów innych niż konta magazynu. Łącznie należy usunąć cztery zasoby.
+    * Usuń wszystkie zasoby inne niż konto magazynu. Łącznie należy usunąć cztery zasoby.
     * Zaktualizuj wartość elementu **name** zasobu konta magazynu na następującą wartość:
 
         ```json
@@ -227,13 +227,13 @@ echo "Linked template URI with SAS token: $templateURI"
 4. Zanotuj dwie wartości (nazwę grupy zasobów i identyfikator URI połączonego szablonu) znajdujące się w dolnej części okienka powłoki. Będą one potrzebne w dalszej części tego samouczka.
 5. Wybierz pozycję **Wyjdź z trybu koncentracji uwagi**, aby zamknąć okienko powłoki.
 
-W praktyce token SAS jest generowany podczas wdrażania głównego szablonu. Dla tego tokenu jest też ustawiany mniejszy okres czasu wygaśnięcia, aby był on bardziej bezpieczny. Aby uzyskać więcej informacji, zobacz [Udostępnianie tokenu SAS podczas wdrażania](./resource-manager-powershell-sas-token.md#provide-sas-token-during-deployment).
+W praktyce token SAS jest generowany podczas wdrażania głównego szablonu. Dla tego tokenu jest też ustawiany mniejszy okres czasu wygaśnięcia, aby był on bardziej bezpieczny. Aby uzyskać więcej informacji, zobacz [Udostępnianie tokenu SAS podczas wdrażania](./secure-template-with-sas-token.md#provide-sas-token-during-deployment).
 
 ## <a name="call-the-linked-template"></a>Wywoływanie połączonego szablonu
 
 Główny szablonu ma nazwę azuredeploy.json.
 
-1. Otwórz **azuredeploy.json** programu Visual Studio Code, jeśli nie jest otwarty.
+1. Otwórz plik **azuredeploy. JSON** w Visual Studio Code, jeśli nie jest otwarty.
 2. Usuń z szablonu definicję zasobu konta magazynu:
 
     ```json
@@ -327,9 +327,9 @@ Gdy zasoby platformy Azure nie będą już potrzebne, wyczyść wdrożone zasoby
 Aby poprawić projekt, po jego ukończeniu wprowadź w nim następujące dodatkowe zmiany:
 
 1. Zmodyfikuj szablon główny (azuredeploy.json), aby pobierał wartość identyfikatora URI połączonego szablonu za pośrednictwem parametru.
-2. Zamiast generować token SAS podczas przekazywania połączonego szablonu, wygeneruj ten token podczas wdrażania szablonu głównego. Aby uzyskać więcej informacji, zobacz [Udostępnianie tokenu SAS podczas wdrażania](./resource-manager-powershell-sas-token.md#provide-sas-token-during-deployment).
+2. Zamiast generować token SAS podczas przekazywania połączonego szablonu, wygeneruj ten token podczas wdrażania szablonu głównego. Aby uzyskać więcej informacji, zobacz [Udostępnianie tokenu SAS podczas wdrażania](./secure-template-with-sas-token.md#provide-sas-token-during-deployment).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku wydzielono z szablonu dwa moduły: szablon główny i szablon połączony. Aby dowiedzieć się, jak wykonać zadania po wdrożeniu przy użyciu rozszerzenia maszyny wirtualnej, zobacz:
 

@@ -1,6 +1,6 @@
 ---
-title: Azure usługi Service Fabric interfejsu wiersza polecenia sfctl właściwość | Dokumentacja firmy Microsoft
-description: Opisuje właściwości polecenia sfctl interfejsu wiersza polecenia usługi Service Fabric.
+title: Interfejs wiersza polecenia platformy Azure Service Fabric — Właściwość sfctl | Microsoft Docs
+description: Zawiera Service Fabric opis poleceń właściwości sfctl interfejsu wiersza polecenia.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -8,127 +8,126 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 54cb9f604e9d1b817947990e657390387df6c881
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 34e6fc0d4e6e0817f9312a6565a2dd5dd99fdab9
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60556598"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035249"
 ---
 # <a name="sfctl-property"></a>sfctl property
-Właściwości Store i zapytania w obszarze nazw usługi Service Fabric.
+Właściwości magazynu i zapytania w obszarze nazwy Service Fabric.
 
 ## <a name="commands"></a>Polecenia
 
 |Polecenie|Opis|
 | --- | --- |
-| delete | Usuwa określoną właściwość usługi Service Fabric. |
-| Pobierz | Pobiera określoną właściwość usługi Service Fabric. |
-| list | Pobiera informacje na temat wszystkich właściwości usługi Service Fabric w ramach określonej nazwie. |
-| Umieść | Tworzy lub aktualizuje właściwości usługi Service Fabric. |
+| usuwanie | Usuwa określoną właściwość Service Fabric. |
+| Pobierz | Pobiera określoną właściwość Service Fabric. |
+| list | Pobiera informacje o wszystkich Service Fabric właściwościach o podanej nazwie. |
+| Ubrani | Tworzy lub aktualizuje właściwość Service Fabric. |
 
-## <a name="sfctl-property-delete"></a>Usuń właściwość sfctl
-Usuwa określoną właściwość usługi Service Fabric.
+## <a name="sfctl-property-delete"></a>sfctl — usuwanie właściwości
+Usuwa określoną właściwość Service Fabric.
 
-Usuwa określoną właściwość usługi Service Fabric w ramach określonej nazwie. Właściwość musi zostać utworzona, aby można było usunąć.
-
-### <a name="arguments"></a>Argumenty
-
-|Argument|Opis|
-| --- | --- |
-| — Identyfikator nazwy [wymagane] | Nazwa usługi Service Fabric, bez "Service fabric\:" schemat identyfikatora URI. |
-| — [wymagane] Nazwa właściwości | Określa nazwę właściwości do pobrania. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
-
-### <a name="global-arguments"></a>Argumenty globalne
-
-|Argument|Opis|
-| --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
-
-## <a name="sfctl-property-get"></a>Pobierz właściwości sfctl
-Pobiera określoną właściwość usługi Service Fabric.
-
-Pobiera określoną właściwość usługi Service Fabric w ramach określonej nazwie. Ta funkcja zawsze zwraca wartość i metadanych.
+Usuwa określoną właściwość Service Fabric pod podaną nazwą. Aby można było usunąć właściwość, należy ją utworzyć.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| — Identyfikator nazwy [wymagane] | Nazwa usługi Service Fabric, bez "Service fabric\:" schemat identyfikatora URI. |
-| — [wymagane] Nazwa właściwości | Określa nazwę właściwości do pobrania. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| --Name-ID [wymagane] | Nazwa Service Fabric bez schematu identyfikatora URI "Sieć\:szkieletowa". |
+| --Property-Name [wymagane] | Określa nazwę właściwości do pobrania. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
+
+## <a name="sfctl-property-get"></a>Pobieranie właściwości sfctl
+Pobiera określoną właściwość Service Fabric.
+
+Pobiera określoną właściwość Service Fabric pod podaną nazwą. Zawsze zwróci zarówno wartość, jak i metadane.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Opis|
+| --- | --- |
+| --Name-ID [wymagane] | Nazwa Service Fabric bez schematu identyfikatora URI "Sieć\:szkieletowa". |
+| --Property-Name [wymagane] | Określa nazwę właściwości do pobrania. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
+
+### <a name="global-arguments"></a>Argumenty globalne
+
+|Argument|Opis|
+| --- | --- |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
 ## <a name="sfctl-property-list"></a>Lista właściwości sfctl
-Pobiera informacje na temat wszystkich właściwości usługi Service Fabric w ramach określonej nazwie.
+Pobiera informacje o wszystkich Service Fabric właściwościach o podanej nazwie.
 
-Nazwa usługi Service Fabric może mieć co najmniej jeden nazwane właściwości, które przechowują informacje o niestandardowych. Ta operacja pobiera informacje o tych właściwościach liście stronicowanej. Informacje obejmują nazwę, wartość oraz metadane dotyczące każdej właściwości.
-
-### <a name="arguments"></a>Argumenty
-
-|Argument|Opis|
-| --- | --- |
-| — Identyfikator nazwy [wymagane] | Nazwa usługi Service Fabric, bez "Service fabric\:" schemat identyfikatora URI. |
-| --token kontynuacji | Parametr tokenu kontynuacji służy do uzyskania następny zestaw wyników. Token kontynuacji o wartości niepuste znajduje się w odpowiedzi interfejsu API, gdy wyniki z systemu nie mieszczą się w jednej odpowiedzi. Jeśli ta wartość jest przekazywana do następnego wywołania interfejsu API, interfejs API zwraca następny zestaw wyników. Jeśli nie istnieją żadne dalsze wyniki, token kontynuacji nie zawiera wartości. Wartość tego parametru nie powinny być zakodowane w adresie URL. |
-| --include-values | Umożliwia określenie czy mają zostać dołączone wartości właściwości, zwracany. Wartość true, jeśli ma zostać zwrócone wartości z metadanymi; Wartość FAŁSZ, aby zwrócić tylko metadane właściwości. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
-
-### <a name="global-arguments"></a>Argumenty globalne
-
-|Argument|Opis|
-| --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
-
-## <a name="sfctl-property-put"></a>Interfejs sfctl właściwość put
-Tworzy lub aktualizuje właściwości usługi Service Fabric.
-
-Tworzy lub aktualizuje określoną właściwość usługi Service Fabric w ramach określonej nazwie.
+Nazwa Service Fabric może mieć jedną lub więcej nazwanych właściwości, które przechowują informacje niestandardowe. Ta operacja pobiera informacje o tych właściwościach na liście stronicowanej. Informacje obejmują nazwę, wartość i metadane dotyczące poszczególnych właściwości.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| — Identyfikator nazwy [wymagane] | Nazwa usługi Service Fabric, bez "Service fabric\:" schemat identyfikatora URI. |
-| — [wymagane] Nazwa właściwości | Nazwa właściwości usługi Service Fabric. |
-| --Wartość [wymagane] | W tym artykule opisano wartość właściwości usługi Service Fabric. Jest to ciąg JSON. <br><br> Ciąg json ma dwa pola: "Kind" dane i "Value" dane. Wartość "Kind" musi być pierwszym elementem pojawią się w ciągu JSON i może mieć wartości "Binarny", "Int64", "Double", "String" lub "Guid". Wartość powinna być serializacji — możliwość danym typami. Należy podać wartości "Kind" i "Dane" jako ciągi. |
-| --custom-id-type | Identyfikator niestandardowego typu właściwości. Używanie tej właściwości, użytkownik będzie mógł tag typu wartości właściwości. |
-| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| --Name-ID [wymagane] | Nazwa Service Fabric bez schematu identyfikatora URI "Sieć\:szkieletowa". |
+| --Kontynuacja — token | Parametr tokenu kontynuacji służy do uzyskiwania następnego zestawu wyników. Token kontynuacji z niepustą wartością jest dołączany do odpowiedzi interfejsu API, gdy wyniki z systemu nie mieszczą się w pojedynczej odpowiedzi. Gdy ta wartość jest przenoszona do następnego wywołania interfejsu API, interfejs API zwraca następny zestaw wyników. Jeśli nie ma żadnych dalszych wyników, token kontynuacji nie zawiera wartości. Wartość tego parametru nie powinna być zakodowana w adresie URL. |
+| --include-Values | Umożliwia określenie, czy mają zostać uwzględnione wartości zwracanych właściwości. Prawda, jeśli wartości powinny być zwracane z metadanymi; Zwraca wartość false, aby zwrócić tylko metadane właściwości. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
+
+## <a name="sfctl-property-put"></a>sfctl Właściwość Put
+Tworzy lub aktualizuje właściwość Service Fabric.
+
+Tworzy lub aktualizuje określoną właściwość Service Fabric pod daną nazwą.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Opis|
+| --- | --- |
+| --Name-ID [wymagane] | Nazwa Service Fabric bez schematu identyfikatora URI "Sieć\:szkieletowa". |
+| --Property-Name [wymagane] | Nazwa właściwości Service Fabric. |
+| --wartość [wymagane] | Opisuje Service Fabric wartość właściwości. Jest to ciąg JSON. <br><br> Ciąg JSON ma dwa pola, typ "dane" i "wartość" danych. Wartość "Kind" musi być pierwszym elementem wyświetlanym w ciągu JSON i może mieć wartości "Binary", "Int64", "Double", "String" lub "GUID". Wartość powinna być serializowana dla danego typu. Wartości "Kind" i "Data" powinny być podane jako ciągi. |
+| --typ niestandardowy-ID | Identyfikator typu niestandardowego właściwości. Korzystając z tej właściwości, użytkownik może oznaczyć typ wartości właściwości. |
+| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
+
+### <a name="global-arguments"></a>Argumenty globalne
+
+|Argument|Opis|
+| --- | --- |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
 
-## <a name="next-steps"></a>Kolejne kroki
-- [Konfigurowanie](service-fabric-cli.md) interfejsu wiersza polecenia usługi Service Fabric.
-- Dowiedz się, jak używać przy użyciu interfejsu wiersza polecenia usługi Service Fabric [przykładowe skrypty](/azure/service-fabric/scripts/sfctl-upgrade-application).
+## <a name="next-steps"></a>Następne kroki
+- [Skonfiguruj](service-fabric-cli.md) interfejs wiersza polecenia Service Fabric.
+- Dowiedz się, jak używać interfejsu wiersza polecenia Service Fabric przy użyciu [przykładowych skryptów](/azure/service-fabric/scripts/sfctl-upgrade-application).

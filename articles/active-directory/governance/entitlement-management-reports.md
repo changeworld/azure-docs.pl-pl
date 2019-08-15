@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d33b4751b421f5af1536af9a88d15e060ab59bdb
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 2420fc25795ec74939649fb8a17ead7c8cfdd1df
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489057"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032450"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management-preview"></a>Wyświetlanie raportów i dzienników w usłudze Azure AD uprawnia do zarządzania (wersja zapoznawcza)
 
@@ -29,6 +29,12 @@ ms.locfileid: "68489057"
 > Zarządzanie prawami w usłudze Azure Active Directory (Azure AD) jest obecnie dostępne w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
 > Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Raport dotyczący przypisań użytkowników i dziennik inspekcji Azure Active Directory zawierają dodatkowe informacje o użytkownikach w katalogu. Jako administrator możesz wyświetlić zasoby, do których użytkownik ma dostęp, i wyświetlić dzienniki żądań na potrzeby inspekcji lub określić stan żądania użytkownika. W tym artykule opisano sposób korzystania z raportów o przypisaniach użytkowników i dziennikach inspekcji usługi Azure AD.
+
+Obejrzyj poniższe wideo, aby dowiedzieć się, jak za pomocą zarządzania uprawnieniami zarządzać dostępem użytkowników w Azure Active Directory:
+
+>[!VIDEO https://www.youtube.com/embed/omtNJ7ySjS0]
 
 ## <a name="view-resources-a-user-has-access-to"></a>Wyświetlanie zasobów, do których użytkownik ma dostęp
 

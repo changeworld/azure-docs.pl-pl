@@ -1,5 +1,5 @@
 ---
-title: Wysyłanie i odbieranie zdarzeń przy użyciu języka Java — Azure Event Hubs | Microsoft Docs
+title: Wysyłanie danych do i z usługi Azure Event Hubs przy użyciu języka Java
 description: Ten artykuł zawiera Przewodnik dotyczący tworzenia aplikacji Java, która wysyła zdarzenia do usługi Azure Event Hubs.
 services: event-hubs
 author: ShubhaVijayasarathy
@@ -7,15 +7,15 @@ manager: timlt
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.custom: seodec18
+ms.custom: seodec18, seo-java-august2019
 ms.date: 04/15/2019
 ms.author: shvija
-ms.openlocfilehash: 00107d99f69fcec086f9692a5ba31a9d9970d089
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c85d69b823956a5cf5e7f9d6dfa3c39b918cd465
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848519"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034814"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-java"></a>Wysyłanie zdarzeń do i odbieranie zdarzeń z usługi Azure Event Hubs przy użyciu języka Java
 

@@ -1,6 +1,6 @@
 ---
-title: Rozpoczynanie pracy z usługą Azure Blob storage i Visual Studio podłączone usługi (ASP.NET) | Dokumentacja firmy Microsoft
-description: Jak rozpocząć pracę przy użyciu usługi Azure Blob storage w projektach programu ASP.NET w programie Visual Studio, po nawiązaniu połączenia z kontem magazynu za pomocą programu Visual Studio podłączone usługi
+title: Rozpoczynanie pracy z usługą Azure Blob Storage i usługami połączonymi programu Visual Studio (ASP.NET) | Microsoft Docs
+description: Jak rozpocząć korzystanie z usługi Azure Blob Storage w projekcie ASP.NET w programie Visual Studio po nawiązaniu połączenia z kontem magazynu przy użyciu usług połączonych programu Visual Studio
 services: storage
 author: ghogen
 manager: douge
@@ -11,22 +11,22 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: ghogen
-ms.openlocfilehash: 557b47aab5cdadef79427c4da9c18477daac0689
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 229522d16db0571c7dbe50e05fceaca9491c4c58
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62123046"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034160"
 ---
-# <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet"></a>Rozpoczynanie pracy z usługą Azure Blob storage i Visual Studio podłączone usługi (ASP.NET)
+# <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet"></a>Rozpoczynanie pracy z usługą Azure Blob Storage i usługami połączonymi programu Visual Studio (ASP.NET)
 
 > [!div class="op_single_selector"]
 > - [ASP.NET](./vs-storage-aspnet-getting-started-blobs.md)
 > - [ASP.NET Core](./vs-storage-aspnet-core-getting-started-blobs.md)
 
-Usługa Azure Blob storage to usługa, która przechowuje dane niestrukturalne w chmurze jako obiekty lub obiekty BLOB. Magazyn obiektów blob umożliwia przechowywanie dowolnego typu danych tekstowych lub binarnych, takich jak dokumenty, pliki multimedialne lub instalatory aplikacji. Magazyn obiektów blob jest również nazywany magazynem obiektów. Aby dowiedzieć się więcej o usłudze Blob storage, zobacz [wprowadzenie do usługi Azure Blob storage](../storage/blobs/storage-blobs-introduction.md).
+Azure Blob Storage to usługa, która przechowuje dane niestrukturalne w chmurze jako obiekty blob. Magazyn obiektów blob umożliwia przechowywanie dowolnego typu danych tekstowych lub binarnych, takich jak dokumenty, pliki multimedialne lub instalatory aplikacji. Magazyn obiektów blob jest również nazywany magazynem obiektów. Aby dowiedzieć się więcej o usłudze BLOB Storage, zobacz [wprowadzenie do usługi Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md).
 
-W tym samouczku pokazano, jak napisać kod ASP.NET dla niektórych typowych scenariuszy korzystających z usługi Blob storage. Scenariusze obejmują tworzenie kontenera obiektów blob, przekazywanie, wyświetlanie listy, pobieranie i usuwanie obiektów blob.
+W tym samouczku pokazano, jak napisać kod ASP.NET dla niektórych typowych scenariuszy korzystających z usługi BLOB Storage. Scenariusze obejmują tworzenie kontenera obiektów blob, a także przekazywanie, wyświetlanie, pobieranie i usuwanie obiektów BLOB.
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
@@ -38,37 +38,37 @@ W tym samouczku pokazano, jak napisać kod ASP.NET dla niektórych typowych scen
 
 ## <a name="create-an-mvc-controller"></a>Tworzenie kontrolera MVC 
 
-1. W **Eksploratora rozwiązań**, kliknij prawym przyciskiem myszy **kontrolerów**.
+1. W **Eksplorator rozwiązań**kliknij prawym przyciskiem myszy pozycję **Kontrolery**.
 
-2. Z menu kontekstowego wybierz **Dodaj** > **kontrolera**.
+2. Z menu kontekstowego wybierz pozycję **Dodaj** > **kontroler**.
 
-    ![Zrzut ekranu z Eksploratora rozwiązań Dodaj i wyróżnione kontrolera](./media/vs-storage-aspnet-getting-started-blobs/add-controller-menu.png)
+    ![Zrzut ekranu przedstawiający Eksplorator rozwiązań, z wyróżnionym dodatkiem Add i Controller](./media/vs-storage-aspnet-getting-started-blobs/add-controller-menu.png)
 
-1. W **Dodawanie szkieletu** okno dialogowe, wybierz opcję **kontroler MVC 5 — pusty**i wybierz **Dodaj**.
+1. W oknie dialogowym **Dodawanie szkieletu** wybierz pozycję **kontroler MVC 5 — pusty**, a następnie wybierz pozycję **Dodaj**.
 
-    ![Zrzut ekranu Dodawanie szkieletu, okno dialogowe](./media/vs-storage-aspnet-getting-started-blobs/add-controller.png)
+    ![Zrzut ekranu przedstawiający okno dialogowe Dodawanie szkieletu](./media/vs-storage-aspnet-getting-started-blobs/add-controller.png)
 
-1. W **Dodaj kontroler** okno dialogowe, nazwy kontrolera *BlobsController*i wybierz **Dodaj**.
+1. W oknie dialogowym **Dodaj kontroler** Nadaj nazwę kontrolerowi *BlobsController*i wybierz pozycję **Dodaj**.
 
-    ![Zrzut ekranu Dodaj kontroler, okno dialogowe](./media/vs-storage-aspnet-getting-started-blobs/add-controller-name.png)
+    ![Zrzut ekranu przedstawiający okno dialogowe Dodawanie kontrolera](./media/vs-storage-aspnet-getting-started-blobs/add-controller-name.png)
 
-1. Dodaj następujący kod `using` dyrektywy `BlobsController.cs` pliku:
+1. Dodaj następujące `using` dyrektywy `BlobsController.cs` do pliku:
 
     ```csharp
-    using Microsoft.Azure;
+    using Microsoft.WindowsAzure;
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
     ```
 
-## <a name="connect-to-a-storage-account-and-get-a-container-reference"></a>Łączenie z kontem magazynu i Uzyskaj odwołanie do kontenera
+## <a name="connect-to-a-storage-account-and-get-a-container-reference"></a>Połącz się z kontem magazynu i uzyskaj odwołanie do kontenera
 
-Kontener obiektów blob jest hierarchię zagnieżdżoną obiektów blob oraz folderów. Pozostałe kroki w tym dokumencie wymagają odwołanie do kontenera obiektów blob, tak, aby kod powinny być umieszczone w jego własnej metody możliwość ponownego wykorzystania.
+Kontener obiektów BLOB jest zagnieżdżoną hierarchią obiektów blob i folderów. Pozostałe kroki opisane w tym dokumencie wymagają odwołania do kontenera obiektów blob, dzięki czemu kod powinien być umieszczony w osobnym metodzie do ponownego wykorzystania.
 
-Poniższe kroki umożliwiają utworzenie metoda nawiązywania połączenia z kontem magazynu przy użyciu parametrów połączenia w **Web.config**. Kroki także Utwórz odwołanie do kontenera.  Ustawienie parametrów połączenia w **Web.config** nosi nazwę w formacie `<storageaccountname>_AzureStorageConnectionString`. 
+Poniższe kroki umożliwiają utworzenie metody łączenia się z kontem magazynu przy użyciu parametrów połączenia w **pliku Web. config**. Kroki te umożliwiają również utworzenie odwołania do kontenera.  Ustawienie parametrów połączenia w **pliku Web. config** ma nazwę o formacie `<storageaccountname>_AzureStorageConnectionString`. 
 
 1. Otwórz plik `BlobsController.cs`.
 
-1. Dodaj metodę o nazwie **GetCloudBlobContainer** zwracającego **CloudBlobContainer**.  Koniecznie Zastąp `<storageaccountname>_AzureStorageConnectionString` z rzeczywistą nazwę klucza w **Web.config**.
+1. Dodaj metodę o nazwie **GetCloudBlobContainer** , która zwraca **CloudBlobContainer**.  Pamiętaj, aby zamienić `<storageaccountname>_AzureStorageConnectionString` na rzeczywistą nazwę klucza w **pliku Web. config**.
     
     ```csharp
     private CloudBlobContainer GetCloudBlobContainer()
@@ -82,13 +82,13 @@ Poniższe kroki umożliwiają utworzenie metoda nawiązywania połączenia z kon
     ```
 
 > [!NOTE]
-> Mimo że *blobcontainer testu* nie istnieje jeszcze, ten kod tworzy odwołanie do niej. Umożliwia to kontener mogą być tworzone za pomocą `CreateIfNotExists` metod przedstawionych w następnym kroku.
+> Chociaż *test-BLOB-Container* nie istnieje jeszcze, ten kod tworzy odwołanie do niego. Jest to tak dlatego, że kontener można utworzyć za `CreateIfNotExists` pomocą metody pokazanej w następnym kroku.
 
 ## <a name="create-a-blob-container"></a>Tworzenie kontenera obiektów blob
 
-Poniższe kroki ilustrują Tworzenie kontenera obiektów blob:
+Poniższe kroki ilustrują sposób tworzenia kontenera obiektów blob:
 
-1. Dodaj metodę o nazwie `CreateBlobContainer` zwracającego `ActionResult`.
+1. Dodaj metodę o nazwie `CreateBlobContainer` , która `ActionResult`zwraca.
 
     ```csharp
     public ActionResult CreateBlobContainer()
@@ -99,25 +99,25 @@ Poniższe kroki ilustrują Tworzenie kontenera obiektów blob:
     }
     ```
  
-1. Pobierz `CloudBlobContainer` obiekt, który reprezentuje odwołanie do nazwy kontenera żądanego obiektu blob. 
+1. `CloudBlobContainer` Pobierz obiekt, który reprezentuje odwołanie do żądanej nazwy kontenera obiektów BLOB. 
    
     ```csharp
     CloudBlobContainer container = GetCloudBlobContainer();
     ```
 
-1. Wywołaj `CloudBlobContainer.CreateIfNotExists` metodę, aby utworzyć kontener, jeśli jeszcze nie istnieje. `CloudBlobContainer.CreateIfNotExists` Metoda zwraca **true** Jeśli kontener nie istnieje i został pomyślnie utworzony. W przeciwnym razie metoda zwraca **false**.    
+1. Wywołaj `CloudBlobContainer.CreateIfNotExists` metodę, aby utworzyć kontener, jeśli jeszcze nie istnieje. Metoda zwraca **wartość true** , jeśli kontener nie istnieje i został pomyślnie utworzony. `CloudBlobContainer.CreateIfNotExists` W przeciwnym razie metoda zwraca **wartość false**.    
 
     ```csharp
     ViewBag.Success = container.CreateIfNotExists();
     ```
 
-1. Aktualizacja `ViewBag` o nazwie kontener obiektów blob.
+1. Zaktualizuj `ViewBag` przy użyciu nazwy kontenera obiektów BLOB.
 
     ```csharp
     ViewBag.BlobContainerName = container.Name;
     ```
     
-    Poniżej przedstawiono ukończoną `CreateBlobContainer` metody:
+    Poniżej przedstawiono metodę zakończoną `CreateBlobContainer` :
 
     ```csharp
     public ActionResult CreateBlobContainer()
@@ -130,17 +130,17 @@ Poniższe kroki ilustrują Tworzenie kontenera obiektów blob:
     }
     ```
 
-1. W **Eksploratora rozwiązań**, kliknij prawym przyciskiem myszy **widoków** folderu.
+1. W **Eksplorator rozwiązań**kliknij prawym przyciskiem myszy folder **widoki** .
 
-1. Jeśli nie ma **obiektów blob** folderu, utwórz je. Z menu kontekstowego wybierz **Dodaj** > **nowy Folder**. Nadaj nazwę nowego folderu *obiektów blob*. 
+1. Jeśli nie ma folderu **BLOB** , utwórz go. Z menu kontekstowego wybierz pozycję **Dodaj** > **Nowy folder**. Nadaj nazwę nowemu folderowi *obiekty blob*. 
  
-1. W **Eksploratora rozwiązań**, rozwiń węzeł **widoków** folder, a następnie kliknij prawym przyciskiem myszy **obiektów blob**.
+1. W **Eksplorator rozwiązań**rozwiń folder **widoki** , a następnie kliknij prawym przyciskiem myszy pozycję **obiekty blob**.
 
-1. Z menu kontekstowego wybierz **Dodaj** > **widoku**.
+1. Z menu kontekstowego wybierz polecenie **Dodaj** > **Widok**.
 
-1. W **Dodaj widok** okna dialogowego wprowadź **CreateBlobContainer** dla nazwy widoku, a następnie wybierz **Dodaj**.
+1. W oknie dialogowym **Dodawanie widoku** w polu Nazwa widoku wpisz **CreateBlobContainer** , a następnie wybierz pozycję **Dodaj**.
 
-1. Otwórz `CreateBlobContainer.cshtml`i zmodyfikuj go tak, aby wygląda jak poniższy fragment kodu:
+1. Otwórz `CreateBlobContainer.cshtml`i zmodyfikuj go tak, aby wyglądał jak w poniższym fragmencie kodu:
 
     ```csharp
     @{
@@ -152,27 +152,27 @@ Poniższe kroki ilustrują Tworzenie kontenera obiektów blob:
     Creation of @ViewBag.BlobContainerName @(ViewBag.Success == true ? "succeeded" : "failed")
     ```
 
-1. W **Eksploratora rozwiązań**, rozwiń węzeł **widoków** > **Shared** folder, a następnie otwórz `_Layout.cshtml`.
+1. W **Eksplorator rozwiązań**rozwiń folder **widoki** > **udostępnione** i Otwórz `_Layout.cshtml`.
 
-1. Po ostatnim **Html.ActionLink**, Dodaj następujący kod **Html.ActionLink**:
+1. Po ostatnim **pliku HTML. actionlink**Dodaj następujący **plik HTML. actionlink**:
 
     ```html
     <li>@Html.ActionLink("Create blob container", "CreateBlobContainer", "Blobs")</li>
     ```
 
-1. Uruchom aplikację, a następnie wybierz pozycję **Utwórz kontener obiektów Blob** aby zobaczyć wyniki, podobnie jak poniższy zrzut ekranu:
+1. Uruchom aplikację, a następnie wybierz pozycję **Utwórz kontener obiektów BLOB** , aby zobaczyć wyniki podobne do poniższego zrzutu ekranu:
   
-    ![Zrzut ekranu opcji Utwórz kontener obiektów blob](./media/vs-storage-aspnet-getting-started-blobs/create-blob-container-results.png)
+    ![Zrzut ekranu przedstawiający tworzenie kontenera obiektów BLOB](./media/vs-storage-aspnet-getting-started-blobs/create-blob-container-results.png)
 
-    Jak wspomniano wcześniej, `CloudBlobContainer.CreateIfNotExists` metoda zwraca **true** tylko, kiedy kontener nie istnieje i zostanie utworzony. W związku z tym, jeśli aplikacja jest uruchamiana, gdy kontener istnieje, metoda zwraca **false**.
+    Jak wspomniano wcześniej, `CloudBlobContainer.CreateIfNotExists` Metoda zwraca **wartość true** tylko wtedy, gdy kontener nie istnieje i jest tworzony. W związku z tym, jeśli aplikacja jest uruchamiana, gdy kontener istnieje, metoda zwraca **wartość false**.
 
-## <a name="upload-a-blob-into-a-blob-container"></a>Przekazywanie obiektu blob w kontenerze obiektów blob
+## <a name="upload-a-blob-into-a-blob-container"></a>Przekazywanie obiektu BLOB do kontenera obiektów BLOB
 
-Gdy [kontener obiektów blob jest tworzony](#create-a-blob-container), przekazywanie plików do tego kontenera. W tej sekcji przedstawiono przekazanie pliku lokalnego do kontenera obiektów blob. Założono w nim jest kontener obiektów blob o nazwie *blobcontainer testu*. 
+Po [utworzeniu kontenera obiektów BLOB](#create-a-blob-container)Przekaż pliki do tego kontenera. W tej sekcji omówiono przekazywanie plików lokalnych do kontenera obiektów BLOB. W tych krokach przyjęto, że istnieje kontener obiektów BLOB o nazwie *test-BLOB-Container*. 
 
 1. Otwórz plik `BlobsController.cs`.
 
-1. Dodaj metodę o nazwie `UploadBlob` , zwraca wartość typu ciąg.
+1. Dodaj metodę o nazwie `UploadBlob` , która zwraca ciąg.
 
     ```csharp
     public string UploadBlob()
@@ -183,22 +183,22 @@ Gdy [kontener obiektów blob jest tworzony](#create-a-blob-container), przekazyw
     }
     ```
  
-1. W ramach `UploadBlob` metody, Pobierz `CloudBlobContainer` obiekt, który reprezentuje odwołanie do nazwy kontenera żądanego obiektu blob. 
+1. W ramach `CloudBlobContainer` metody Pobierz obiekt, który reprezentuje odwołanie do żądanej nazwy kontenera obiektów BLOB. `UploadBlob` 
    
     ```csharp
     CloudBlobContainer container = GetCloudBlobContainer();
     ```
 
-1. Usługa Azure storage obsługuje typy różnych obiektów blob. W tym samouczku korzysta z blokowych obiektów blob. Aby pobrać odwołanie do blokowego obiektu blob, należy wywołać `CloudBlobContainer.GetBlockBlobReference` metody.
+1. Usługa Azure Storage obsługuje różne typy obiektów BLOB. W tym samouczku są stosowane blokowe obiekty blob. Aby pobrać odwołanie do blokowego obiektu BLOB, wywołaj `CloudBlobContainer.GetBlockBlobReference` metodę.
 
     ```csharp
     CloudBlockBlob blob = container.GetBlockBlobReference("myBlob");
     ```
     
     > [!NOTE]
-    > Nazwa obiektu blob jest częścią adresu URL używany do pobierania obiektu blob może być dowolny ciąg, łącznie z nazwą pliku.
+    > Nazwa obiektu BLOB jest częścią adresu URL służącego do pobierania obiektu BLOB i może być dowolnym ciągiem, łącznie z nazwą pliku.
 
-1. Po odwołanie do obiektu blob możesz przekazać dowolny strumień danych do niego przez wywołanie obiektu odwołanie do obiektu blob `UploadFromStream` metody. `UploadFromStream` Metoda tworzy obiekt blob, jeśli nie istnieje lub zastępuje go, jeśli istnieje. (Zmień  *&lt;przekazywanie pliku >* do pełni kwalifikowaną ścieżkę do pliku do przekazania.)
+1. Po utworzeniu odwołania do obiektu BLOB możesz przekazać do niego strumień danych, wywołując `UploadFromStream` metodę obiektu odwołania obiektów BLOB. `UploadFromStream` Metoda tworzy obiekt BLOB, jeśli nie istnieje, lub zastępuje go, jeśli istnieje. (Zmień  *&lt;plik do przekazania >* na w pełni kwalifikowaną ścieżkę do pliku, który ma zostać przekazany.)
 
     ```csharp
     using (var fileStream = System.IO.File.OpenRead(@"<file-to-upload>"))
@@ -207,7 +207,7 @@ Gdy [kontener obiektów blob jest tworzony](#create-a-blob-container), przekazyw
     }
     ```
     
-    Poniżej przedstawiono ukończoną `UploadBlob` metody (za pomocą w pełni kwalifikowana ścieżka dla pliku do przekazania):
+    Poniżej przedstawiono metodę ukończenia `UploadBlob` (z w pełni kwalifikowaną ścieżką pliku do przekazania):
 
     ```csharp
     public string UploadBlob()
@@ -222,25 +222,25 @@ Gdy [kontener obiektów blob jest tworzony](#create-a-blob-container), przekazyw
     }
     ```
 
-1. W **Eksploratora rozwiązań**, rozwiń węzeł **widoków** > **Shared** folder, a następnie otwórz `_Layout.cshtml`.
+1. W **Eksplorator rozwiązań**rozwiń folder **widoki** > **udostępnione** i Otwórz `_Layout.cshtml`.
 
-1. Po ostatnim **Html.ActionLink**, Dodaj następujący kod **Html.ActionLink**:
+1. Po ostatnim **pliku HTML. actionlink**Dodaj następujący **plik HTML. actionlink**:
 
     ```html
     <li>@Html.ActionLink("Upload blob", "UploadBlob", "Blobs")</li>
     ```
 
-1. Uruchom aplikację, a następnie wybierz pozycję **przekazywanie obiektu blob**.  Wyraz *sukces!* powinna zostać wyświetlona.
+1. Uruchom aplikację i wybierz pozycję **Przekaż obiekt BLOB**.  Słowo *sukcesu zostało zakończone pomyślnie!* powinna zostać wyświetlona.
     
-    ![Zrzut ekranu przedstawiający Powodzenie weryfikacji](./media/vs-storage-aspnet-getting-started-blobs/upload-blob.png)
+    ![Zrzut ekranu przedstawiający weryfikację sukcesów](./media/vs-storage-aspnet-getting-started-blobs/upload-blob.png)
   
-## <a name="list-the-blobs-in-a-blob-container"></a>Wyświetlanie listy obiektów blob w kontenerze obiektów blob
+## <a name="list-the-blobs-in-a-blob-container"></a>Wyświetlanie listy obiektów BLOB w kontenerze obiektów BLOB
 
-W tej sekcji przedstawiono sposób wyświetlenia listy obiektów blob w kontenerze obiektów blob. Odwołania do kodu przykładowej *testu blobcontainer* utworzony w sekcji [Utwórz kontener obiektów blob](#create-a-blob-container).
+W tej sekcji pokazano, jak wyświetlić listę obiektów BLOB w kontenerze obiektów BLOB. Przykładowy kod odwołuje się do *kontenera Test-BLOB-Container* utworzonego w sekcji, [Tworzenie kontenera obiektów BLOB](#create-a-blob-container).
 
 1. Otwórz plik `BlobsController.cs`.
 
-1. Dodaj metodę o nazwie `ListBlobs` zwracającego `ActionResult`.
+1. Dodaj metodę o nazwie `ListBlobs` , która `ActionResult`zwraca.
 
     ```csharp
     public ActionResult ListBlobs()
@@ -250,13 +250,13 @@ W tej sekcji przedstawiono sposób wyświetlenia listy obiektów blob w kontener
     }
     ```
  
-1. W ramach `ListBlobs` metody, Pobierz `CloudBlobContainer` obiekt, który reprezentuje odwołanie do kontenera obiektów blob. 
+1. W ramach `CloudBlobContainer` metody Pobierz obiekt, który reprezentuje odwołanie do kontenera obiektów BLOB. `ListBlobs` 
    
     ```csharp
     CloudBlobContainer container = GetCloudBlobContainer();
     ```
    
-1. Aby wyświetlić listę obiektów blob w kontenerze obiektów blob, użyj `CloudBlobContainer.ListBlobs` metody. `CloudBlobContainer.ListBlobs` Metoda zwraca `IListBlobItem` obiekt, który może być rzutowany `CloudBlockBlob`, `CloudPageBlob`, lub `CloudBlobDirectory` obiektu. Poniższy fragment kodu wylicza wszystkie obiekty BLOB w kontenerze obiektów blob. Każdy obiekt blob jest rzutowanie do odpowiedniego obiektu, na podstawie jego typu. Jego nazwę (lub identyfikator URI w przypadku właściwości **CloudBlobDirectory**) zostanie dodany do listy.
+1. Aby wyświetlić listę obiektów BLOB w kontenerze obiektów blob, `CloudBlobContainer.ListBlobs` Użyj metody. `CloudBlobDirectory` `CloudPageBlob` `CloudBlockBlob`Metoda zwraca obiekt, który może być rzutowany do obiektu,, lub. `IListBlobItem` `CloudBlobContainer.ListBlobs` Poniższy fragment kodu wylicza wszystkie obiekty blob w kontenerze obiektów BLOB. Każdy obiekt BLOB jest rzutowany na odpowiedni obiekt na podstawie jego typu. Jego nazwa (lub identyfikator URI w przypadku **CloudBlobDirectory**) jest dodawana do listy.
 
     ```csharp
     List<string> blobs = new List<string>();
@@ -283,19 +283,19 @@ W tej sekcji przedstawiono sposób wyświetlenia listy obiektów blob w kontener
     return View(blobs);
     ```
 
-    Oprócz obiektów blob kontenerów obiektów blob może zawierać katalogów. Załóżmy, że istnieje kontener obiektów blob o nazwie *blobcontainer testu*, przy użyciu następującej hierarchii:
+    Kontenery obiektów BLOB oprócz obiektów BLOB mogą zawierać katalogi. Załóżmy, że istnieje kontener obiektów BLOB o nazwie *test-BLOB-Container*, z następującą hierarchią:
 
         foo.png
         dir1/bar.png
         dir2/baz.png
 
-    Użyty w poprzednim przykładzie kodu **obiektów blob** lista parametrów zawiera wartości podobny do następującego:
+    Korzystając z powyższego przykładu kodu, lista ciągów **obiektów BLOB** zawiera wartości podobne do następujących:
 
         foo.png
         <storage-account-url>/test-blob-container/dir1
         <storage-account-url>/test-blob-container/dir2
 
-    Jak widać, lista zawiera tylko jednostki najwyższego poziomu, a nie te zagnieżdżonych (*bar.png* i *baz.png*). Aby wyświetlić listę wszystkich jednostek w ramach kontenera obiektów blob, Zmień kod, aby **CloudBlobContainer.ListBlobs** metody jest przekazywana **true** dla **useFlatBlobListing** parametr.    
+    Jak pokazano, lista zawiera tylko jednostki najwyższego poziomu, a nie zagnieżdżone (*bar. png* i *baz. png*). Aby wyświetlić listę wszystkich jednostek w kontenerze obiektów blob, Zmień kod tak, aby Metoda **CloudBlobContainer. ListBlobs** została przeniesiona do **wartości true** dla parametru **useFlatBlobListing** .    
 
     ```csharp
     //...
@@ -303,13 +303,13 @@ W tej sekcji przedstawiono sposób wyświetlenia listy obiektów blob w kontener
     //...
     ```
 
-    Ustawienie **useFlatBlobListing** parametr **true** podaje płaską listę wszystkich jednostek w kontenerze obiektów blob. To daje następujące wyniki:
+    Ustawienie parametru **useFlatBlobListing** na **wartość true** zwraca płaską listę wszystkich jednostek w kontenerze obiektów BLOB. Daje to następujące wyniki:
 
         foo.png
         dir1/bar.png
         dir2/baz.png
     
-    Poniżej przedstawiono ukończoną **ListBlobs** metody:
+    Poniżej przedstawiono zakończono metodę **ListBlobs** :
 
     ```csharp
     public ActionResult ListBlobs()
@@ -339,13 +339,13 @@ W tej sekcji przedstawiono sposób wyświetlenia listy obiektów blob w kontener
     }
     ```
 
-1. W **Eksploratora rozwiązań**, rozwiń węzeł **widoków** folder, a następnie kliknij prawym przyciskiem myszy **obiektów blob**.
+1. W **Eksplorator rozwiązań**rozwiń folder **widoki** , a następnie kliknij prawym przyciskiem myszy pozycję **obiekty blob**.
 
-2. Z menu kontekstowego wybierz **Dodaj** > **widoku**.
+2. Z menu kontekstowego wybierz polecenie **Dodaj** > **Widok**.
 
-1. W **Dodaj widok** okna dialogowego wprowadź `ListBlobs` dla nazwy widoku, a następnie wybierz **Dodaj**.
+1. W oknie dialogowym **Dodawanie widoku** wprowadź `ListBlobs` nazwę widoku, a następnie wybierz pozycję **Dodaj**.
 
-1. Otwórz `ListBlobs.cshtml`i zastąp jego zawartość następującym kodem:
+1. Otwórz `ListBlobs.cshtml`i Zastąp zawartość następującym kodem:
 
     ```html
     @model List<string>
@@ -363,25 +363,25 @@ W tej sekcji przedstawiono sposób wyświetlenia listy obiektów blob w kontener
     </ul>
     ```
 
-1. W **Eksploratora rozwiązań**, rozwiń węzeł **widoków** > **Shared** folder, a następnie otwórz `_Layout.cshtml`.
+1. W **Eksplorator rozwiązań**rozwiń folder **widoki** > **udostępnione** i Otwórz `_Layout.cshtml`.
 
-1. Po ostatnim **Html.ActionLink**, Dodaj następujący kod **Html.ActionLink**:
+1. Po ostatnim **pliku HTML. actionlink**Dodaj następujący **plik HTML. actionlink**:
 
     ```html
     <li>@Html.ActionLink("List blobs", "ListBlobs", "Blobs")</li>
     ```
 
-1. Uruchom aplikację, a następnie wybierz pozycję **wyświetlanie listy obiektów blob** aby zobaczyć wyniki, podobnie jak poniższy zrzut ekranu:
+1. Uruchom aplikację, a następnie wybierz pozycję **Wyświetl obiekty blob** , aby zobaczyć wyniki podobne do poniższego zrzutu ekranu:
   
-    ![Zrzut ekranu listy obiektów blob](./media/vs-storage-aspnet-getting-started-blobs/listblobs.png)
+    ![Zrzut ekranu przedstawiający listę obiektów BLOB](./media/vs-storage-aspnet-getting-started-blobs/listblobs.png)
 
 ## <a name="download-blobs"></a>Pobieranie obiektów blob
 
-W tej sekcji przedstawiono sposób pobierania obiektu blob. Można utrwalić ją w magazynie lokalnym lub odczytać zawartość ciągu. Odwołania do kodu przykładowej *testu blobcontainer* utworzony w sekcji [Utwórz kontener obiektów blob](#create-a-blob-container).
+W tej sekcji pokazano, jak pobrać obiekt BLOB. Można je zachować do magazynu lokalnego lub odczytać zawartość w postaci ciągu. Przykładowy kod odwołuje się do *kontenera Test-BLOB-Container* utworzonego w sekcji, [Tworzenie kontenera obiektów BLOB](#create-a-blob-container).
 
 1. Otwórz plik `BlobsController.cs`.
 
-1. Dodaj metodę o nazwie `DownloadBlob` , zwraca wartość typu ciąg.
+1. Dodaj metodę o nazwie `DownloadBlob` , która zwraca ciąg.
 
     ```csharp
     public string DownloadBlob()
@@ -392,19 +392,19 @@ W tej sekcji przedstawiono sposób pobierania obiektu blob. Można utrwalić ją
     }
     ```
  
-1. W ramach `DownloadBlob` metody, Pobierz `CloudBlobContainer` obiekt, który reprezentuje odwołanie do kontenera obiektów blob.
+1. W ramach `CloudBlobContainer` metody Pobierz obiekt, który reprezentuje odwołanie do kontenera obiektów BLOB. `DownloadBlob`
    
     ```csharp
     CloudBlobContainer container = GetCloudBlobContainer();
     ```
 
-1. Pobieranie obiektu blob odwołania, wywołując `CloudBlobContainer.GetBlockBlobReference` metody. 
+1. Pobierz obiekt referencyjny obiektu BLOB, wywołując `CloudBlobContainer.GetBlockBlobReference` metodę. 
 
     ```csharp
     CloudBlockBlob blob = container.GetBlockBlobReference("myBlob");
     ```
 
-1. Aby pobrać obiekt blob, użyj `CloudBlockBlob.DownloadToStream` metody. Poniższy kod przesyła zawartość obiektu blob do obiektu strumienia. Ten obiekt zostanie następnie utrwalone w pliku lokalnym. (Zmień  *&lt;lokalnej nazwy pliku >* reprezentującą pliku w pełni kwalifikowana nazwa, gdy obiekt blob jest pobranie.) 
+1. Aby pobrać obiekt BLOB, użyj `CloudBlockBlob.DownloadToStream` metody. Poniższy kod przenosi zawartość obiektu BLOB do strumienia. Ten obiekt jest następnie utrwalany w pliku lokalnym. (Zmień  *&lt;nazwę pliku lokalnego >* na w pełni kwalifikowaną nazwę pliku reprezentującą lokalizację, w której ma zostać pobrany obiekt BLOB). 
 
     ```csharp
     using (var fileStream = System.IO.File.OpenWrite(<local-file-name>))
@@ -413,7 +413,7 @@ W tej sekcji przedstawiono sposób pobierania obiektu blob. Można utrwalić ją
     }
     ```
     
-    Poniżej przedstawiono ukończoną `DownloadBlob` — metoda (z pełną ścieżkę do pliku lokalnego, tworzona):
+    Poniżej przedstawiono metodę ukończenia `DownloadBlob` (z w pełni kwalifikowaną ścieżką dla tworzonego pliku lokalnego):
     
     ```csharp
     public string DownloadBlob()
@@ -428,23 +428,23 @@ W tej sekcji przedstawiono sposób pobierania obiektu blob. Można utrwalić ją
     }
     ```
 
-1. W **Eksploratora rozwiązań**, rozwiń węzeł **widoków** > **Shared** folder, a następnie otwórz `_Layout.cshtml`.
+1. W **Eksplorator rozwiązań**rozwiń folder **widoki** > **udostępnione** i Otwórz `_Layout.cshtml`.
 
-1. Po ostatnim **Html.ActionLink**, Dodaj następujący kod **Html.ActionLink**:
+1. Po ostatnim **pliku HTML. actionlink**Dodaj następujący **plik HTML. actionlink**:
 
     ```html
     <li>@Html.ActionLink("Download blob", "DownloadBlob", "Blobs")</li>
     ```
 
-1. Uruchom aplikację, a następnie wybierz pozycję **pobierania obiektów blob** można pobrać obiektu blob. Określona w obiekcie blob `CloudBlobContainer.GetBlockBlobReference` wywołania metody pliki do pobrania w lokalizacji określonej w `File.OpenWrite` wywołania metody.  Tekst *sukces!* powinna zostać wyświetlona w przeglądarce. 
+1. Uruchom aplikację, a następnie wybierz pozycję **Pobierz obiekt BLOB** , aby pobrać obiekt BLOB. Obiekt BLOB określony w `CloudBlobContainer.GetBlockBlobReference` wywołaniu metody pobiera je do lokalizacji określonej `File.OpenWrite` w wywołaniu metody.  Tekst zakończył się *pomyślnie* . powinien pojawić się w przeglądarce. 
 
 ## <a name="delete-blobs"></a>Usuwanie obiektów blob
 
-Poniższe kroki ilustrują usuwanie obiektu blob:
+Poniższe kroki ilustrują sposób usuwania obiektu BLOB:
 
 1. Otwórz plik `BlobsController.cs`.
 
-1. Dodaj metodę o nazwie `DeleteBlob` , zwraca wartość typu ciąg.
+1. Dodaj metodę o nazwie `DeleteBlob` , która zwraca ciąg.
 
     ```csharp
     public string DeleteBlob()
@@ -455,25 +455,25 @@ Poniższe kroki ilustrują usuwanie obiektu blob:
     }
     ```
 
-1. W ramach `DeleteBlob` metody, Pobierz `CloudBlobContainer` obiekt, który reprezentuje odwołanie do kontenera obiektów blob.
+1. W ramach `CloudBlobContainer` metody Pobierz obiekt, który reprezentuje odwołanie do kontenera obiektów BLOB. `DeleteBlob`
    
     ```csharp
     CloudBlobContainer container = GetCloudBlobContainer();
     ```
 
-1. Pobieranie obiektu blob odwołania, wywołując `CloudBlobContainer.GetBlockBlobReference` metody. 
+1. Pobierz obiekt referencyjny obiektu BLOB, wywołując `CloudBlobContainer.GetBlockBlobReference` metodę. 
 
     ```csharp
     CloudBlockBlob blob = container.GetBlockBlobReference("myBlob");
     ```
 
-1. Aby usunąć obiekt blob, użyj `Delete` metody.
+1. Aby usunąć obiekt BLOB, użyj `Delete` metody.
 
     ```csharp
     blob.Delete();
     ```
     
-    Gotowy `DeleteBlob` metoda powinna wyglądać następująco:
+    Metoda ukończenia `DeleteBlob` powinna wyglądać w następujący sposób:
     
     ```csharp
     public string DeleteBlob()
@@ -485,19 +485,19 @@ Poniższe kroki ilustrują usuwanie obiektu blob:
     }
     ```
 
-1. W **Eksploratora rozwiązań**, rozwiń węzeł **widoków** > **Shared** folder, a następnie otwórz `_Layout.cshtml`.
+1. W **Eksplorator rozwiązań**rozwiń folder **widoki** > **udostępnione** i Otwórz `_Layout.cshtml`.
 
-1. Po ostatnim **Html.ActionLink**, Dodaj następujący kod **Html.ActionLink**:
+1. Po ostatnim **pliku HTML. actionlink**Dodaj następujący **plik HTML. actionlink**:
 
     ```html
     <li>@Html.ActionLink("Delete blob", "DeleteBlob", "Blobs")</li>
     ```
 
-1. Uruchom aplikację, a następnie wybierz pozycję **usunięcia obiektu blob** można usunąć obiektu blob, określone w `CloudBlobContainer.GetBlockBlobReference` wywołania metody. Tekst *sukces!* powinna zostać wyświetlona w przeglądarce. Wybierz przeglądarkę **ponownie** przycisk, a następnie wybierz **wyświetlanie listy obiektów blob** Aby sprawdzić, czy obiekt blob nie jest już w kontenerze.
+1. Uruchom aplikację, a następnie wybierz pozycję **Usuń obiekt BLOB** , aby usunąć obiekt BLOB `CloudBlobContainer.GetBlockBlobReference` określony w wywołaniu metody. Tekst zakończył się *pomyślnie* . powinien pojawić się w przeglądarce. Wybierz przycisk **Wstecz** przeglądarki, a następnie wybierz pozycję **Wyświetl obiekty blob** , aby sprawdzić, czy obiekt BLOB nie znajduje się już w kontenerze.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób przechowywania i pobierania obiektów blob w usłudze Azure Storage za pomocą programu ASP.NET oraz listy. Wyświetl więcej poradników dotyczących funkcji, aby dowiedzieć się więcej o dodatkowych opcjach przechowywania danych na platformie Azure.
+W tym samouczku przedstawiono sposób przechowywania, wyświetlania i pobierania obiektów BLOB w usłudze Azure Storage przy użyciu programu ASP.NET. Wyświetl więcej poradników dotyczących funkcji, aby dowiedzieć się więcej o dodatkowych opcjach przechowywania danych na platformie Azure.
 
-  * [Rozpoczynanie pracy z usługą Azure Table storage i Visual Studio podłączone usługi (ASP.NET)](vs-storage-aspnet-getting-started-tables.md)
-  * [Rozpoczynanie pracy z usługą Azure Queue storage i Visual Studio podłączone usługi (ASP.NET)](vs-storage-aspnet-getting-started-queues.md)
+  * [Rozpoczynanie pracy z usługą Azure Table Storage i usługami połączonymi programu Visual Studio (ASP.NET)](vs-storage-aspnet-getting-started-tables.md)
+  * [Rozpoczynanie pracy z usługą Azure queue storage i usługami połączonymi programu Visual Studio (ASP.NET)](vs-storage-aspnet-getting-started-queues.md)

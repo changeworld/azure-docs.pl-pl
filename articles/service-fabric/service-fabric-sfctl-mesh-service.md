@@ -1,6 +1,6 @@
 ---
-title: Usługa Service Fabric interfejsu wiersza polecenia sfctl siatki usługi platformy Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano poleceń usługi siatki sfctl interfejsu wiersza polecenia usługi Service Fabric.
+title: Interfejs wiersza polecenia platformy Azure Service Fabric — usługa siatki sfctl | Microsoft Docs
+description: Zawiera opis poleceń usługi sfctl Service Fabric w sieci interfejsu wiersza polecenia.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -8,73 +8,72 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: e8b735780f4ed3402845d9d401f8e37701b9a1a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6afcb891de763f156705bc9825ab7575a272c1db
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60836930"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035032"
 ---
 # <a name="sfctl-mesh-service"></a>sfctl mesh service
-Uzyskaj szczegółowe informacje o usłudze i Lista usług zasobu aplikacji.
+Pobierz szczegóły usługi i Wyświetl listę usług dla zasobu aplikacji.
 
 ## <a name="commands"></a>Polecenia
 
 |Polecenie|Opis|
 | --- | --- |
 | list | Wyświetla listę wszystkich zasobów usługi. |
-| pokaż | Pobiera zasób usługi o podanej nazwie. |
+| pokaż | Pobiera zasób usługi o podaną nazwę. |
 
-## <a name="sfctl-mesh-service-list"></a>Lista usług siatki interfejsu sfctl
+## <a name="sfctl-mesh-service-list"></a>Lista usługi siatki sfctl
 Wyświetla listę wszystkich zasobów usługi.
 
-Pobiera informacje o wszystkich usług z zasobem aplikacji. Informacje zawierają opis i inne właściwości usługi.
+Pobiera informacje o wszystkich usługach zasobu aplikacji. Informacje obejmują opis i inne właściwości usługi.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --— Nazwa aplikacji — Nazwa aplikacji [wymagane] | Nazwa aplikacji. |
+| --App-Name--Application-Name [wymagane] | Nazwa aplikacji. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
-## <a name="sfctl-mesh-service-show"></a>Interfejs sfctl siatki service show
-Pobiera zasób usługi o podanej nazwie.
+## <a name="sfctl-mesh-service-show"></a>Pokaż usługę siatki sfctl
+Pobiera zasób usługi o podaną nazwę.
 
-Pobiera informacje o zasobie usługi o podanej nazwie. Informacje zawierają opis i inne właściwości usługi.
+Pobiera informacje o zasobie usługi o podanej nazwie. Informacje obejmują opis i inne właściwości usługi.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --— Nazwa aplikacji — Nazwa aplikacji [wymagane] | Nazwa aplikacji. |
-| — Nazwa -n [wymagane] | Nazwa usługi. |
+| --App-Name--Application-Name [wymagane] | Nazwa aplikacji. |
+| --Name-n [wymagane] | Nazwa usługi. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
-| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
-| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
 
-## <a name="next-steps"></a>Kolejne kroki
-- [Konfigurowanie](service-fabric-cli.md) interfejsu wiersza polecenia usługi Service Fabric.
-- Dowiedz się, jak używać przy użyciu interfejsu wiersza polecenia usługi Service Fabric [przykładowe skrypty](/azure/service-fabric/scripts/sfctl-upgrade-application).
+## <a name="next-steps"></a>Następne kroki
+- [Skonfiguruj](service-fabric-cli.md) interfejs wiersza polecenia Service Fabric.
+- Dowiedz się, jak używać interfejsu wiersza polecenia Service Fabric przy użyciu [przykładowych skryptów](/azure/service-fabric/scripts/sfctl-upgrade-application).
