@@ -2,7 +2,7 @@
 title: Raport o zabezpieczeniach dotyczący użytkowników oflagowanych w związku z ryzykiem w portalu usługi Azure Active Directory | Microsoft Docs
 description: Dowiedz się więcej o raporcie o zabezpieczeniach dotyczącym użytkowników oflagowanych w związku z ryzykiem w portalu usługi Azure Active Directory
 services: active-directory
-author: MarkusVi
+author: cawrites
 manager: daveba
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 01/17/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 463f5c2d03cd96089342aa9b22ef85ebc05aa909
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 950d0dc2f4a1a88e0c317b3398c7492cc6c52e2a
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60438134"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989834"
 ---
 # <a name="users-flagged-for-risk-report-in-the-azure-portal"></a>Użytkownicy oflagowani w związku z raportem dotyczącym narażonych użytkowników w witrynie Azure Portal
 
@@ -61,7 +61,7 @@ Wybranie użytkownika powoduje podanie informacji logowania. W przypadku narażo
 To okno dialogowe oferuje opcję:
 
 - Pobierania raportu
-- Wyszukiwania użytkowników
+- Wyszukaj użytkowników
 
     ![Ryzykowne logowania](./media/concept-user-at-risk/16.png)
 
@@ -98,7 +98,7 @@ Aby zbadać zdarzenia o podwyższonym ryzyku, wybierz zdarzenie z listy w celu o
 ![Ryzykowne logowania](./media/concept-user-at-risk/325.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Sposób konfigurowania zasad ryzyka użytkowników](../identity-protection/howto-user-risk-policy.md)
 - [Sposób konfigurowania zasad podejmowania działań naprawczych dotyczących ryzyka](../identity-protection/howto-user-risk-policy.md)

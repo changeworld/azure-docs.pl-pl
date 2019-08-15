@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 312e39ff1b699bb3c7f2baea3c66cbf8999ee44b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: ba21ec6ba82ac4984d3c51fc46f88de2cd56b2b2
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68814516"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933691"
 ---
 # <a name="use-a-jupyter-notebook-and-kqlmagic-extension-to-analyze-data-in-azure-data-explorer"></a>Analizowanie danych na platformie Eksplorator danych Azure za pomocą rozszerzenia Jupyter Notebook i Kqlmagic
 
@@ -39,7 +39,9 @@ Jupyter Notebook to aplikacja sieci Web Open Source, która umożliwia tworzenie
     ```python
     %reload_ext Kqlmagic
     ```
-
+    > [!NOTE]
+    > Zmień wersję jądra na Python 3,6, klikając jądro > zmienić jądra > Python 3,6
+    
 ## <a name="connect-to-the-azure-data-explorer-help-cluster"></a>Nawiązywanie połączenia z klastrem pomocy usługi Azure Eksplorator danych
 
 Użyj poniższego polecenia, aby nawiązać połączenie z bazą danych *przykładów* hostowaną w klastrze *pomocy* . W przypadku użytkowników usługi AAD innych niż Microsoft należy zastąpić nazwę `Microsoft.com` dzierżawy dzierżawie usługi AAD.
@@ -168,7 +170,7 @@ W wielu scenariuszach analizy można utworzyć notesy wielokrotnego użytku, kt�
 > [!TIP]
 > Aby uzyskać informacje o wszystkich dostępnych konfiguracjach `%config KQLmagic`, użyj programu. W celu rozwiązywania problemów i przechwytywania błędów Kusto, takich jak problemy z połączeniem i nieprawidłowe zapytania, należy użyć`%config Kqlmagic.short_errors=False`
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Uruchom polecenie pomocy, aby poznać następujące przykładowe notesy, które zawierają wszystkie obsługiwane funkcje:
 - [Wprowadzenie do usługi KQL Magic for Azure Eksplorator danych](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStart.ipynb) 

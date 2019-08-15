@@ -1,6 +1,6 @@
 ---
-title: Używanie programu Azure PowerShell z usługą Azure Storage | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać poleceń cmdlet programu Azure PowerShell dla usługi Azure Storage.
+title: Używanie Azure PowerShell z usługą Azure Storage | Microsoft Docs
+description: Dowiedz się, jak używać poleceń cmdlet Azure PowerShell dla usługi Azure Storage.
 services: storage
 author: tamram
 ms.service: storage
@@ -8,39 +8,39 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 082033cebc68fc97f7cff9ce80eb02acbbf5f4b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ac210a03f8b1a0a5f7fff07cbc68b4cd6bc98632
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65145882"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016345"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Używanie programu Azure PowerShell z usługą Azure Storage
 
-Program Azure PowerShell służy do tworzenia i zarządzania zasobami platformy Azure, w wierszu polecenia programu PowerShell lub skryptów. Dla usługi Azure Storage tych poleceń cmdlet można podzielić na dwie kategorie — na płaszczyźnie kontroli i płaszczyzny danych. Polecenia cmdlet płaszczyzny kontroli umożliwiają zarządzanie kontem magazynu — Tworzenie konta magazynu, ustaw właściwości, usuwania kont magazynu, rotowanie kluczy dostępu do i tak dalej. Polecenia cmdlet płaszczyzny danych umożliwiają zarządzanie danymi zapisanymi *w* konta magazynu. Na przykład przekazywania obiektów blob, tworzenia udziałów plików i dodawanie wiadomości do kolejki.
+Azure PowerShell służy do tworzenia zasobów platformy Azure i zarządzania nimi z poziomu wiersza polecenia programu PowerShell lub skryptów. W przypadku usługi Azure Storage te polecenia cmdlet dzielą się na dwie kategorie — płaszczyzny kontroli i płaszczyzny danych. Polecenia cmdlet płaszczyzny kontroli służą do zarządzania kontem magazynu — aby utworzyć konta magazynu, ustawić właściwości, usunąć konta magazynu, obrócić klucze dostępu i tak dalej. Polecenia cmdlet płaszczyzny danych służą do zarządzania danymi przechowywanymi *na* koncie magazynu. Na przykład przekazywanie obiektów blob, tworzenie udziałów plików i Dodawanie komunikatów do kolejki.
 
-W tym artykule omówiono typowe operacje przy użyciu polecenia cmdlet płaszczyzny zarządzania, aby zarządzać kontami magazynu. Omawiane kwestie:
+Ten artykuł zawiera opis typowych operacji za pomocą poleceń cmdlet płaszczyzny zarządzania do zarządzania kontami magazynu. Omawiane kwestie:
 
 > [!div class="checklist"]
 > * Wyświetlanie listy kont magazynu
 > * Pobierz odwołanie do istniejącego konta magazynu
 > * Tworzenie konta magazynu
-> * Właściwości konta magazynu
-> * Pobieranie lub ponownie wygenerować klucze dostępu
+> * Ustawianie właściwości konta magazynu
+> * Pobieranie i ponowne generowanie kluczy dostępu
 > * Ochrona dostępu do konta magazynu
 > * Włącz analityka magazynu
 
-W tym artykule linki do kilka artykułów programu PowerShell dla magazynu, takich jak sposobu włączania i dostęp do usługi Storage Analytics, jak za pomocą poleceń cmdlet płaszczyzny danych i jak uzyskać dostęp w chmurach niezależnie od platformy Azure albo chmura, chmura niemiecka i dla instytucji rządowych W chmurze.
+Ten artykuł zawiera linki do kilku innych artykułów programu PowerShell dotyczących magazynu, na przykład sposobu włączania i uzyskiwania dostępu do analityka magazynu, sposobu korzystania z poleceń cmdlet dotyczących płaszczyzny danych oraz uzyskiwania dostępu do chmur niezależnych od platformy Azure, takich jak chmura Chińska, Chmura niemiecka i rząd Chmury.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-To ćwiczenie wymaga modułu Azure PowerShell Az wersji 0,7 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-Az-ps).
+To ćwiczenie wymaga modułu Azure PowerShell AZ w wersji 0,7 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-Az-ps).
 
-Na potrzeby tego ćwiczenia można wpisywać polecenia do regularnego okna programu PowerShell, możesz też [Windows PowerShell zintegrowane Scripting Environment (ISE)](/powershell/scripting/getting-started/fundamental/windows-powershell-integrated-scripting-environment--ise-) wpisz poleceń w edytorze, a następnie przetestować co najmniej jedno polecenie w czasie, co Możesz przejść za pomocą przykładów. Można wyróżnić wiersze, które chcesz wykonać i kliknij przycisk Uruchom wybrane tylko uruchamiania tych poleceń.
+W tym ćwiczeniu można wpisać polecenia do zwykłego okna programu PowerShell lub użyć [środowiska Windows PowerShell Integrated Scripting Environment (ISE)](/powershell/scripting/getting-started/fundamental/windows-powershell-integrated-scripting-environment--ise-) , a następnie wpisać polecenia do edytora, a następnie przetestować jedno lub więcej poleceń w danym momencie po przejściu przez pokazują. Można podświetlić wiersze, które mają zostać wykonane, a następnie kliknąć pozycję Uruchom wybrane, aby po prostu uruchomić te polecenia.
 
-Aby uzyskać więcej informacji na temat kont magazynu, zobacz [wprowadzenie do usługi Storage](storage-introduction.md) i [kontach magazynu Azure o](storage-create-storage-account.md).
+Aby uzyskać więcej informacji na temat kont magazynu, zobacz [wprowadzenie do magazynu](storage-introduction.md) i [konta usługi Azure Storage](storage-create-storage-account.md).
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
@@ -52,7 +52,7 @@ Connect-AzAccount
 
 ## <a name="list-the-storage-accounts-in-the-subscription"></a>Wyświetlanie listy kont magazynu w ramach subskrypcji
 
-Uruchom [Get AzStorageAccount](/powershell/module/az.storage/Get-azStorageAccount) polecenie cmdlet do pobierania listy kont magazynu w bieżącej subskrypcji.
+Uruchom polecenie cmdlet [Get-AzStorageAccount](/powershell/module/az.storage/Get-azStorageAccount) , aby pobrać listę kont magazynu w bieżącej subskrypcji.
 
 ```powershell
 Get-AzStorageAccount | Select StorageAccountName, Location
@@ -60,11 +60,11 @@ Get-AzStorageAccount | Select StorageAccountName, Location
 
 ## <a name="get-a-reference-to-a-storage-account"></a>Pobierz odwołanie do konta magazynu
 
-Następnie należy odwołanie do konta magazynu. Możesz utworzyć nowe konto magazynu lub odwołać się do istniejącego konta magazynu. W tej części opisano obie metody.
+Następnie musisz odwołać się do konta magazynu. Można utworzyć nowe konto magazynu lub odwołać się do istniejącego konta magazynu. W poniższej sekcji przedstawiono obie metody.
 
 ### <a name="use-an-existing-storage-account"></a>Użyj istniejącego konta magazynu
 
-Aby pobrać istniejące konto magazynu, należy nazwę grupy zasobów i nazwę konta magazynu. Ustaw zmienne dla tych dwóch pól, a następnie użyj [Get AzStorageAccount](/powershell/module/az.storage/Get-azStorageAccount) polecenia cmdlet.
+Aby można było pobrać istniejące konto magazynu, wymagana jest nazwa grupy zasobów i nazwa konta magazynu. Ustaw zmienne dla tych dwóch pól, a następnie użyj polecenia cmdlet [Get-AzStorageAccount](/powershell/module/az.storage/Get-azStorageAccount) .
 
 ```powershell
 $resourceGroup = "myexistingresourcegroup"
@@ -74,11 +74,11 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroup `
   -Name $storageAccountName
 ```
 
-Masz teraz $storageAccount, która wskazuje na istniejące konto magazynu.
+Teraz masz $storageAccount, które wskazuje na istniejące konto magazynu.
 
 ### <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
-Poniższy skrypt pokazuje, jak utworzyć konto magazynu ogólnego przeznaczenia przy użyciu [New AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount). Po utworzeniu konta, pobrać jego kontekst, który może służyć w kolejnych poleceniach zamiast określania uwierzytelniania za pomocą każdego wywołania.
+Poniższy skrypt pokazuje, jak utworzyć konto magazynu ogólnego przeznaczenia przy użyciu polecenia [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount). Po utworzeniu konta Pobierz jego kontekst, który może być używany w kolejnych poleceniach zamiast określania uwierzytelniania przy każdym wywołaniu.
 
 ```powershell
 # Get list of locations and select one.
@@ -105,41 +105,41 @@ $ctx = $storageAccount.Context
 
 Skrypt używa następujących poleceń cmdlet programu PowerShell:
 
-*   [Get-AzLocation](/powershell/module/az.resources/get-azlocation) — pobiera listę prawidłowych lokalizacji. W przykładzie użyto `eastus` dla lokalizacji.
+*   [Get-AzLocation](/powershell/module/az.resources/get-azlocation) --pobiera listę prawidłowych lokalizacji. W przykładzie zastosowano `eastus` lokalizację.
 
-*   [Nowe AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) — tworzy nową grupę zasobów. Grupa zasobów to logiczny kontener, w której zasoby platformy Azure są wdrażania i zarządzania nimi. Nasza nosi nazwę `teststoragerg`.
+*   [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) --tworzy nową grupę zasobów. Grupa zasobów to logiczny kontener, w którym są wdrażane i zarządzane zasoby platformy Azure. Jest wywoływana `teststoragerg`nasza.
 
-*   [Nowe AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) — tworzy konto magazynu. W przykładzie użyto `testpshstorage`.
+*   [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) --tworzy konto magazynu. W przykładzie zastosowano `testpshstorage`.
 
-Nazwa jednostki SKU wskazuje typ replikacji dla konta magazynu, takich jak magazyn LRS (magazyn lokalnie nadmiarowy). Aby uzyskać więcej informacji na temat replikacji, zobacz [replikacja usługi Azure Storage](storage-redundancy.md).
+Nazwa jednostki SKU wskazuje typ replikacji konta magazynu, na przykład LRS (Magazyn lokalnie nadmiarowy). Aby uzyskać więcej informacji na temat replikacji, zobacz [Replikacja usługi Azure Storage](storage-redundancy.md).
 
 > [!IMPORTANT]
-> Nazwa konta magazynu musi być unikatowa w obrębie platformy Azure i muszą być małymi literami. Konwencje nazewnictwa i ograniczenia, zobacz [nazewnictwo i odwoływanie się do kontenerów, obiektów blob i metadanych](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata).
+> Nazwa konta magazynu musi być unikatowa w ramach platformy Azure i musi być małymi literami. W przypadku konwencji nazewnictwa i ograniczeń można znaleźć w temacie [nazywanie i odwoływanie się do kontenerów, obiektów blob i metadanych](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata).
 >
 
-Masz teraz nowe konto magazynu i odwołanie do niej.
+Teraz masz nowe konto magazynu i odwołanie do niego.
 
 ## <a name="manage-the-storage-account"></a>Zarządzanie kontem magazynu
 
-Teraz, gdy odwołanie do nowego konta magazynu lub istniejące konto magazynu, w poniższej sekcji pokazano niektóre polecenia, które umożliwia zarządzanie kontem magazynu.
+Teraz, gdy masz odwołanie do nowego konta magazynu lub istniejącego konta magazynu, w poniższej sekcji przedstawiono niektóre z poleceń, których można użyć do zarządzania kontem magazynu.
 
 ### <a name="storage-account-properties"></a>Właściwości konta magazynu
 
-Aby zmienić ustawienia konta magazynu, użyj [AzStorageAccount zestaw](/powershell/module/az.storage/set-azstorageaccount). Chociaż nie można zmienić lokalizacji konta magazynu lub grupy zasobów, w którym się znajduje, możesz zmienić wiele innych właściwości. Poniższa lista zawiera niektóre właściwości, które można zmienić za pomocą programu PowerShell.
+Aby zmienić ustawienia dla konta magazynu, użyj polecenie [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount). Chociaż nie można zmienić lokalizacji konta magazynu lub grupy zasobów, w której znajduje się, można zmienić wiele innych właściwości. Poniżej wymieniono niektóre właściwości, które można zmienić przy użyciu programu PowerShell.
 
-* **Domeny niestandardowej** przypisane do konta magazynu.
+* **Domena** niestandardowa przypisana do konta magazynu.
 
-* **Tagi** przypisane do konta magazynu. Tagi są często używane do kategoryzowania zasobów na potrzeby rozliczeń.
+* **Tagi** przypisane do konta magazynu. Tagi są często używane do klasyfikowania zasobów na potrzeby rozliczeń.
 
-* **Jednostki SKU** jest ustawienie replikacji dla konta magazynu, takich jak magazyn LRS, aby uzyskać magazyn lokalnie nadmiarowy. Na przykład można zmienić warstwy standardowej\_LRS na warstwę standardowa\_GRS lub Standard\_RAGRS. Należy pamiętać, że nie można zmienić Standard\_ZRS lub Premium\_LRS na inne jednostki SKU lub zmienić te inne jednostki SKU.
+* **Jednostka SKU** to ustawienie replikacji dla konta magazynu, takie jak LRS dla magazynu lokalnie nadmiarowego. Na przykład można zmienić ze standardowego\_LRS na standardowy\_GRS lub standardowy\_RAGRS. Należy pamiętać, że nie można\_zmienić standardowych ZRS\_, standardowych GZRS\_, standardowa RAGZRS ani\_Premium LRS na inne jednostki SKU ani zmienić innych jednostek SKU na te.
 
-* **Warstwy dostępu** dla kont usługi Blob storage. Wartość w przypadku warstwy dostępu jest równa **gorąca** lub **chłodna**, i umożliwia zminimalizowanie kosztów, wybierając warstwę dostępu, która wyrównuje z jak używać konta magazynu. Aby uzyskać więcej informacji, zobacz [gorąca, chłodna i archiwalna magazynu](../blobs/storage-blob-storage-tiers.md).
+* **Warstwa dostępu** dla kont usługi BLOB Storage. Wartość w polu Warstwa dostępu jest ustawiana na gorąca lub **chłodna**i pozwala zminimalizować koszt, wybierając warstwę dostępu, która jest wyrównana do sposobu korzystania z konta magazynu. Aby uzyskać więcej informacji, zobacz [warstwy magazynowania gorąca, chłodna i archiwalna](../blobs/storage-blob-storage-tiers.md).
 
 * Zezwalaj tylko na ruch HTTPS.
 
-### <a name="manage-the-access-keys"></a>Zarządzanie kluczami dostępu do
+### <a name="manage-the-access-keys"></a>Zarządzanie kluczami dostępu
 
-Konto usługi Azure Storage jest dostarczany z dwóch kluczy konta. Aby pobrać klucze, użyj [Get AzStorageAccountKey](/powershell/module/az.Storage/Get-azStorageAccountKey). W tym przykładzie pobiera pierwszy klucz. Aby pobrać, druga, użyj `Value[1]` zamiast `Value[0]`.
+Konto usługi Azure Storage zawiera dwa klucze konta. Aby pobrać klucze, użyj polecenie [Get-AzStorageAccountKey](/powershell/module/az.Storage/Get-azStorageAccountKey). Ten przykład pobiera pierwszy klucz. Aby pobrać inne, użyj `Value[1]` `Value[0]`zamiast.
 
 ```powershell
 $storageAccountKey = `
@@ -148,7 +148,7 @@ $storageAccountKey = `
     -Name $storageAccountName).Value[0]
 ```
 
-Aby ponownie wygenerować klucz, należy użyć [New AzStorageAccountKey](/powershell/module/az.Storage/New-azStorageAccountKey).
+Aby ponownie wygenerować klucz, użyj polecenie [New-AzStorageAccountKey](/powershell/module/az.Storage/New-azStorageAccountKey).
 
 ```powershell
 New-AzStorageAccountKey -ResourceGroupName $resourceGroup `
@@ -156,100 +156,100 @@ New-AzStorageAccountKey -ResourceGroupName $resourceGroup `
   -KeyName key1
 ```
 
-Aby ponownie wygenerować klucz innych, należy użyć `key2` jako nazwę klucza, zamiast `key1`.
+Aby ponownie wygenerować drugi klucz, użyj `key2` jako nazwy klucza `key1`zamiast.
 
-Ponowne generowanie jednego z kluczy, a następnie pobrać ją ponownie, aby zobaczyć nową wartość.
+Wygeneruj ponownie jeden z kluczy, a następnie Odzyskaj go w celu wyświetlenia nowej wartości.
 
 > [!NOTE]
-> Należy to wykonać starannego planowania przed Trwa ponowne generowanie klucza konta magazynu w środowisku produkcyjnym. Ponowne generowanie kluczy jeden lub oba spowoduje unieważnienie dostępu dla każdej aplikacji za pomocą klucza, który został ponownie wygenerowany. Aby uzyskać więcej informacji, zobacz temat [Klucze dostępu](storage-account-manage.md#access-keys).
+> Należy zachować ostrożność planowania przed ponownym generowaniem klucza dla produkcyjnego konta magazynu. Ponowne generowanie jednego lub obu kluczy spowoduje unieważnienie dostępu dla każdej aplikacji przy użyciu klucza, który został ponownie wygenerowany. Aby uzyskać więcej informacji, zobacz temat [Klucze dostępu](storage-account-manage.md#access-keys).
 
 
 ### <a name="delete-a-storage-account"></a>Usuwanie konta magazynu
 
-Aby usunąć konto magazynu, użyj [AzStorageAccount Usuń](/powershell/module/az.storage/Remove-azStorageAccount).
+Aby usunąć konto magazynu, użyj polecenie [Remove-AzStorageAccount](/powershell/module/az.storage/Remove-azStorageAccount).
 
 ```powershell
 Remove-AzStorageAccount -ResourceGroup $resourceGroup -AccountName $storageAccountName
 ```
 
 > [!IMPORTANT]
-> Podczas usuwania konta magazynu, wszystkie zasoby przechowywanych na koncie są również usunięte. Jeśli przypadkowo usuniesz konto, z działem pomocy technicznej natychmiast, a następnie otwórz bilet, można przywrócić konta magazynu. Odzyskiwanie danych nie ma żadnej gwarancji, ale czasami działa. Nie należy tworzyć nowe konto magazynu z taką samą nazwę jak stary, dopóki bilet pomocy technicznej zostanie rozwiązany.
+> Po usunięciu konta magazynu zostaną również usunięte wszystkie zasoby przechowywane w ramach konta. W przypadku przypadkowego usunięcia konta skontaktuj się z pomocą techniczną natychmiast i Otwórz bilet, aby przywrócić konto magazynu. Odzyskiwanie danych nie jest gwarantowane, ale czasami działa. Nie należy tworzyć nowego konta magazynu o takiej samej nazwie jak stary, dopóki bilet pomocy technicznej nie zostanie rozwiązany.
 >
 
-### <a name="protect-your-storage-account-using-vnets-and-firewalls"></a>Chroń swoje konto magazynu przy użyciu sieci wirtualnych i zapór
+### <a name="protect-your-storage-account-using-vnets-and-firewalls"></a>Ochrona konta magazynu za pomocą sieci wirtualnych i zapór
 
-Domyślnie wszystkie konta magazynu są dostępne dla każdej sieci, który ma dostęp do Internetu. Można jednak skonfigurować reguły sieci, aby zezwalać tylko na aplikacje z określonej sieci wirtualnych na dostęp do konta magazynu. Aby uzyskać więcej informacji, zobacz [Konfigurowanie usługi Azure Storage zapory i sieci wirtualne](storage-network-security.md).
+Domyślnie wszystkie konta magazynu są dostępne dla dowolnej sieci, która ma dostęp do Internetu. Jednak reguły sieci można skonfigurować tak, aby zezwalać na dostęp do konta magazynu tylko aplikacjom z określonych sieci wirtualnych. Aby uzyskać więcej informacji, zobacz [Konfigurowanie zapór usługi Azure Storage i sieci wirtualnych](storage-network-security.md).
 
-Artykuł pokazuje, jak zarządzać tymi ustawieniami za pomocą następujących poleceń cmdlet programu PowerShell:
+W tym artykule pokazano, jak zarządzać tymi ustawieniami przy użyciu następujących poleceń cmdlet programu PowerShell:
 * [Add-AzStorageAccountNetworkRule](/powershell/module/az.Storage/Add-azStorageAccountNetworkRule)
 * [Update-AzStorageAccountNetworkRuleSet](/powershell/module/az.storage/update-azstorageaccountnetworkruleset)
 * [Remove-AzStorageAccountNetworkRule](https://docs.microsoft.com/powershell/module/az.storage/remove-azstorageaccountnetworkrule)
 
 ## <a name="use-storage-analytics"></a>Korzystanie z analizy magazynu  
 
-[Analizy usługi Azure Storage](storage-analytics.md) składa się z [Storage Analytics Metrics](/rest/api/storageservices/about-storage-analytics-metrics) i [Storage Analytics rejestrowania](/rest/api/storageservices/about-storage-analytics-logging).
+[Analityka magazynu platformy Azure](storage-analytics.md) składa się z [metryk analityka magazynu](/rest/api/storageservices/about-storage-analytics-metrics) i [rejestrowania analityka magazynu](/rest/api/storageservices/about-storage-analytics-logging).
 
-**Storage Analytics Metrics** służy do zbierania metryk dla kont usługi Azure storage, które służy do monitorowania kondycji na koncie magazynu. Metryki można włączyć dla obiektów blob, pliki, tabele i kolejki.
+**Metryki analityka magazynu** są używane do zbierania metryk dla kont usługi Azure Storage, których można użyć do monitorowania kondycji konta magazynu. Metryki można włączyć dla obiektów blob, plików, tabel i kolejek.
 
-**Storage Analytics rejestrowania** się dzieje po stronie serwera i umożliwia zarejestrowanie szczegółów dotyczących zarówno udane, jak i nieudane żądania do swojego konta magazynu. Te dzienniki przedstawiają szczegółowe informacje o odczytu, zapisu i usuwania operacji dotyczących tabel, kolejek i obiektów blob, a także przyczyny nieudanych żądań. Rejestrowanie nie jest dostępna dla usługi Azure Files.
+**Analityka magazynu rejestrowanie** odbywa się po stronie serwera i umożliwia rejestrowanie szczegółowych informacji dla żądań zakończonych powodzeniem i zakończonych niepowodzeniem na koncie magazynu. Te dzienniki umożliwiają wyświetlanie szczegółów operacji odczytu, zapisu i usuwania dla tabel, kolejek i obiektów blob, a także powodów nieudanych żądań. Rejestrowanie nie jest dostępne dla Azure Files.
 
-Możesz skonfigurować monitorowanie za pomocą [witryny Azure portal](https://portal.azure.com), programu PowerShell lub programowo przy użyciu biblioteki klienta usługi storage.
+Monitorowanie można skonfigurować przy użyciu [Azure Portal](https://portal.azure.com), programu PowerShell lub programowo przy użyciu biblioteki klienta usługi Storage.
 
 > [!NOTE]
-> Można włączyć minuty analytics przy użyciu programu PowerShell. Ta funkcja nie jest dostępne w portalu.
+> Możesz włączyć analizę minutową przy użyciu programu PowerShell. Ta funkcja nie jest dostępna w portalu.
 >
 
-* Aby dowiedzieć się, jak włączanie i wyświetlanie danych metryk usługi Storage przy użyciu programu PowerShell, zobacz [Storage analytics metrics](storage-analytics-metrics.md).
+* Aby dowiedzieć się, jak włączyć i wyświetlić dane metryk magazynu za pomocą programu PowerShell, zobacz [metryki analizy magazynu](storage-analytics-metrics.md).
 
-* Aby dowiedzieć się, jak włączyć i pobrać rejestrowania magazynu danych przy użyciu programu PowerShell, zobacz [jak włączyć rejestrowanie magazynu, przy użyciu programu PowerShell](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data) i [znajdowanie rejestrowania magazynu danych dziennika](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data).
+* Aby dowiedzieć się, jak włączyć i pobrać dane rejestrowania magazynu za pomocą programu PowerShell, zobacz [jak włączyć rejestrowanie magazynu przy użyciu programu PowerShell](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data) i [znaleźć dane dziennika rejestrowania magazynu](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data).
 
-* Aby uzyskać szczegółowe informacje na temat używania metryki magazynu i rejestrowania magazynu rozwiązywać problemy związane z magazynowaniem, zobacz [monitorowanie, diagnozowanie i rozwiązywanie problemów z usługi Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md).
+* Aby uzyskać szczegółowe informacje na temat używania metryk magazynu i rejestrowania magazynu w celu rozwiązywania problemów z magazynem, zobacz [monitorowanie, diagnozowanie i rozwiązywanie problemów Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md).
 
-## <a name="manage-the-data-in-the-storage-account"></a>Zarządzanie danymi w ramach konta magazynu
+## <a name="manage-the-data-in-the-storage-account"></a>Zarządzanie danymi na koncie magazynu
 
-Gdy już wiesz jak zarządzać kontem magazynu za pomocą programu PowerShell służy następujące artykuły na temat sposobu dostępu do obiektów danych na koncie magazynu.
+Teraz, gdy rozumiesz, jak zarządzać kontem magazynu za pomocą programu PowerShell, możesz skorzystać z poniższych artykułów, aby dowiedzieć się, jak uzyskać dostęp do obiektów danych na koncie magazynu.
 
-* [Jak zarządzać obiektami blob za pomocą programu PowerShell](../blobs/storage-how-to-use-blobs-powershell.md)
+* [Jak zarządzać obiektami BLOB za pomocą programu PowerShell](../blobs/storage-how-to-use-blobs-powershell.md)
 * [Jak zarządzać plikami za pomocą programu PowerShell](../files/storage-how-to-use-files-powershell.md)
-* [Jak zarządzać kolejki przy użyciu programu PowerShell](../queues/storage-powershell-how-to-use-queues.md)
-* [Wykonywanie operacji magazynu tabel Azure przy użyciu programu PowerShell](../../storage/tables/table-storage-how-to-use-powershell.md)
+* [Jak zarządzać kolejkami przy użyciu programu PowerShell](../queues/storage-powershell-how-to-use-queues.md)
+* [Wykonywanie operacji usługi Azure Table Storage za pomocą programu PowerShell](../../storage/tables/table-storage-how-to-use-powershell.md)
 
-Interfejs API usługi Azure Cosmos DB Table zapewnia funkcje premium usługi table storage, takie jak gotowa do użycia funkcja dystrybucji globalnej, odczytów z małymi opóźnieniami i zapisy, automatyczne indeksowanie pomocnicze i dedykowanej przepływności.
+Azure Cosmos DB interfejs API tabel udostępnia funkcje Premium dla magazynu tabel, takie jak gotowe Global Distribution, odczyty i zapisy o małym opóźnieniu, Automatyczne indeksowanie pomocnicze i dedykowana przepływność.
 
-* Aby uzyskać więcej informacji, zobacz [interfejsu API tabeli usługi Azure Cosmos DB](../../cosmos-db/table-introduction.md).
+* Aby uzyskać więcej informacji, zobacz [Azure Cosmos DB interfejs API tabel](../../cosmos-db/table-introduction.md).
 
-## <a name="independent-cloud-deployments-of-azure"></a>Wdrożenia chmury niezależnie od platformy Azure
+## <a name="independent-cloud-deployments-of-azure"></a>Niezależne wdrożenia w chmurze platformy Azure
 
-Większość osób na użytek chmurze publicznej platformy Azure ich globalnego wdrażania platformy Azure. Istnieją również pewne niezależne wdrożenia systemu Microsoft Azure, aby niezależności i tak dalej. Niezależne wdrożenia są określane jako "środowisk". Poniżej przedstawiono dostępnych środowisk:
+Większość osób korzysta z chmury publicznej platformy Azure na potrzeby globalnego wdrożenia platformy Azure. Istnieją także niezależne wdrożenia Microsoft Azure z przyczyn suwerenności i tak dalej. Te niezależne wdrożenia są określane jako "środowiska". Dostępne są następujące środowiska:
 
-* [Chmura platformy Azure dla instytucji rządowych](https://azure.microsoft.com/features/gov/)
-* [Platformy Azure China 21Vianet w chmurze obsługiwana przez firmę 21Vianet w Chinach](http://www.windowsazure.cn/)
-* [Usługa Azure niemieckiej wersji chmury](../../germany/germany-welcome.md)
+* [Azure Government Cloud](https://azure.microsoft.com/features/gov/)
+* [Azure — Chiny, Chmura firmy 21Vianet obsługiwana przez firmę 21Vianet w Chinach](http://www.windowsazure.cn/)
+* [Chmura w języku niemieckim platformy Azure](../../germany/germany-welcome.md)
 
-Aby uzyskać informacje o tym, jak uzyskać dostęp do tych chmur i ich magazynu przy użyciu programu PowerShell, zobacz [Managing Storage w niezależnych chmury platformy Azure przy użyciu programu PowerShell](storage-powershell-independent-clouds.md).
+Informacje o sposobach uzyskiwania dostępu do tych chmur i ich magazynu za pomocą programu PowerShell można znaleźć [w temacie Zarządzanie magazynem w chmurach niezależnych platformy Azure przy użyciu programu PowerShell](storage-powershell-independent-clouds.md).
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli utworzono nową grupę zasobów i konto magazynu na potrzeby tego ćwiczenia yous można usunąć wszystkie zasoby utworzone przez usunięcie grupy zasobów. Spowoduje to również usunięcie wszystkich zasobów znajdujących się w grupie. W tym przypadku powoduje usunięcie konta magazynu i samej grupy zasobów.
+Jeśli utworzono nową grupę zasobów i konto magazynu dla tego ćwiczenia, yous może usunąć wszystkie utworzone zasoby, usuwając grupę zasobów. Spowoduje to również usunięcie wszystkich zasobów znajdujących się w grupie. W tym przypadku usuwa utworzone konto magazynu i grupę zasobów.
 
 ```powershell
 Remove-AzResourceGroup -Name $resourceGroup
 ```
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule omówiono typowe operacje przy użyciu polecenia cmdlet płaszczyzny zarządzania, aby zarządzać kontami magazynu. W tym samouczku omówiono:
+Ten artykuł zawiera opis typowych operacji za pomocą poleceń cmdlet płaszczyzny zarządzania do zarządzania kontami magazynu. W tym samouczku omówiono:
 
 > [!div class="checklist"]
 > * Wyświetlanie listy kont magazynu
 > * Pobierz odwołanie do istniejącego konta magazynu
 > * Tworzenie konta magazynu
-> * Właściwości konta magazynu
-> * Pobieranie lub ponownie wygenerować klucze dostępu
+> * Ustawianie właściwości konta magazynu
+> * Pobieranie i ponowne generowanie kluczy dostępu
 > * Ochrona dostępu do konta magazynu
 > * Włącz analityka magazynu
 
-W tym artykule również podane odwołania do kilku innych artykułów, takich jak sposób zarządzania obiektów danych, jak włączyć Storage Analytics i sposób dostępu chmury niezależnie od platformy Azure albo chmura, chmura niemiecka i chmury dla instytucji rządowych. Poniżej przedstawiono niektóre więcej powiązanych artykuły i zasoby dla odwołania:
+W tym artykule przedstawiono również odwołania do kilku innych artykułów, takich jak zarządzanie obiektami danych, jak włączyć analityka magazynu i jak uzyskać dostęp do chmur niezależnych platformy Azure, takich jak chmura Chińska, Chmura niemiecka i chmura rządowa. Poniżej przedstawiono kilka pokrewnych artykułów i zasobów dotyczących odwołań:
 
-* [Usługa Azure Storage kontroli płaszczyzny poleceń cmdlet programu PowerShell](/powershell/module/az.storage/)
-* [Polecenia cmdlet programu PowerShell na płaszczyźnie danych usługi Azure Storage](/powershell/module/azure.storage/)
+* [Polecenia cmdlet programu PowerShell płaszczyzny kontroli usługi Azure Storage](/powershell/module/az.storage/)
+* [Polecenia cmdlet programu PowerShell dotyczące płaszczyzny danych usługi Azure Storage](/powershell/module/azure.storage/)
 * [Dokumentacja programu Windows PowerShell](https://msdn.microsoft.com/library/ms714469.aspx)

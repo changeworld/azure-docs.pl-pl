@@ -7,12 +7,12 @@ ms.date: 07/30/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: e14fcbd81a562b8d6451bb89a479c6675569403a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0fe893ae95b31b1b676a982a60166041a0ad964d
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854536"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69015902"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Często zadawane pytania dotyczące Azure Files
 [Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem standardowego [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Udziały plików platformy Azure można instalować jednocześnie w chmurze lub lokalnych wdrożeniach systemów Windows, Linux i macOS. Możesz również buforować udziały plików platformy Azure na maszynach z systemem Windows Server, używając Azure File Sync, aby szybko uzyskać dostęp do miejsca, w którym są używane dane.
@@ -68,7 +68,7 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące 
 
 * <a id="redundancy-options"></a>
   **Jakie opcje nadmiarowości magazynu są obsługiwane przez Azure Files?**  
-    Obecnie Azure Files obsługuje Magazyn lokalnie nadmiarowy (LRS), magazyn strefowo nadmiarowy (ZRS) i magazyn Geograficznie nadmiarowy (GRS). Firma Microsoft planuje obsługę magazynu geograficznie nadmiarowego do odczytu (RA-GRS) w przyszłości, ale nie mamy już do udostępnienia osi czasu.
+    Obecnie Azure Files obsługuje Magazyn lokalnie nadmiarowy (LRS), magazyn strefowo nadmiarowy (ZRS), magazyn Geograficznie nadmiarowy (GRS) i geograficznie nadmiarowy magazyn (GZRS) (wersja zapoznawcza). Firma Microsoft planuje obsługę magazynu geograficznie nadmiarowego do odczytu (RA-GRS) w przyszłości, ale nie mamy już do udostępnienia osi czasu.
 
 * <a id="tier-options"></a>
   **Jakie warstwy magazynowania są obsługiwane w Azure Files?**  

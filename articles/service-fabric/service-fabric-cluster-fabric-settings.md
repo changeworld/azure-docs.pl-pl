@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/12/2019
 ms.author: atsenthi
-ms.openlocfilehash: c20e782423c60985adb9e18e275fde59e57e00a2
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 08864d6a965921f7f6d284dc53bd2586d30fedd1
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599887"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014425"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Dostosuj ustawienia klastra Service Fabric
 W tym artykule opisano różne ustawienia sieci szkieletowej dla klastra Service Fabric, które można dostosować. W przypadku klastrów hostowanych na platformie Azure można dostosować ustawienia za pomocą [Azure Portal](https://portal.azure.com) lub szablonu Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [uaktualnianie konfiguracji klastra platformy Azure](service-fabric-cluster-config-upgrade-azure.md). W przypadku klastrów autonomicznych można dostosować ustawienia, aktualizując plik *ClusterConfig. JSON* i wykonując uaktualnienie konfiguracji w klastrze. Aby uzyskać więcej informacji, zobacz [uaktualnianie konfiguracji klastra autonomicznego](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -132,7 +132,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |ApplicationLogsFormatVersion |Int, wartość domyślna to 0 | Dynamiczne |Wersja formatu dzienników aplikacji. Obsługiwane wartości to 0 i 1. Wersja 1 zawiera więcej pól z rekordu zdarzenia ETW niż wersja 0. |
 |AuditHttpRequests |Bool, wartość domyślna to false | Dynamiczne | Włącz lub Wyłącz inspekcję HTTP. Celem inspekcji jest wyświetlenie działań, które zostały wykonane względem klastra; dołączenie do osoby, która zainicjowała żądanie. Należy zauważyć, że jest to Najlepsza próba zarejestrowania; mogą wystąpić utracone wyniki. Żądania HTTP z uwierzytelnianiem użytkownika nie są rejestrowane. |
 |CaptureHttpTelemetry|Bool, wartość domyślna to false | Dynamiczne | Włączać lub wyłączać dane telemetryczne protokołu HTTP. Celem telemetrii jest umożliwienie Service Fabric przechwycenia danych telemetrycznych w celu zaplanowania przyszłej pracy i zidentyfikowania obszarów problemów. Telemetrię nie rejestruje żadnych danych osobowych ani treści żądania. Dane telemetryczne przechwytują wszystkie żądania HTTP, o ile nie zostały skonfigurowane inaczej |
-|ClusterId |Ciąg | Dynamiczne |Unikatowy identyfikator klastra. Ta wartość jest generowana podczas tworzenia klastra. |
+|ClusterId |String | Dynamiczne |Unikatowy identyfikator klastra. Ta wartość jest generowana podczas tworzenia klastra. |
 |ConsumerInstances |String | Dynamiczne |Lista wystąpień konsumentów DCA. |
 |DiskFullSafetySpaceInMB |Int, wartość domyślna to 1024 | Dynamiczne |Pozostała ilość miejsca na dysku (w MB) do ochrony przed użyciem przez DCA. |
 |EnableCircularTraceSession |Bool, wartość domyślna to false | Static |Flaga wskazuje, czy należy używać cyklicznych sesji śledzenia. |
@@ -141,7 +141,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |FailuresOnlyHttpTelemetry | Bool, wartość domyślna to true | Dynamiczne | Jeśli funkcja przechwytywania telemetrii HTTP jest włączona; Przechwyć tylko Nieudane żądania. Jest to pomocne w zmniejszeniu liczby zdarzeń wygenerowanych na potrzeby telemetrii. |
 |HttpTelemetryCapturePercentage | int, wartość domyślna to 50 | Dynamiczne | Jeśli funkcja przechwytywania telemetrii HTTP jest włączona; Przechwyć tylko losową wartość procentową żądań. Jest to pomocne w zmniejszeniu liczby zdarzeń wygenerowanych na potrzeby telemetrii. |
 |MaxDiskQuotaInMB |Int, wartość domyślna to 65536 | Dynamiczne |Przydział dysku w MB dla plików dziennika Windows Fabric. |
-|ProducerInstances |Ciąg | Dynamiczne |Lista wystąpień producentów DCA. |
+|ProducerInstances |String | Dynamiczne |Lista wystąpień producentów DCA. |
 
 ## <a name="dnsservice"></a>DnsService
 | **Parametr** | **Dozwolone wartości** |**Zasady uaktualniania**| **Wskazówki lub Krótki opis** |
@@ -411,6 +411,11 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |WriteBufferMemoryPoolMaximumInKB | Int, wartość domyślna to 0 |Dynamiczne|Liczba KB zezwalająca na zwiększenie puli pamięci buforu zapisu. Wartość 0 oznacza brak limitu. |
 |WriteBufferMemoryPoolMinimumInKB |Int, wartość domyślna to 8388608 |Dynamiczne|Liczba KB do wstępnego przydzielenia dla puli pamięci buforu zapisu. Wartość 0 oznacza, że wartość domyślna nie powinna być zgodna z SharedLogSizeInMB poniżej. |
 
+## <a name="managedidentitytokenservice"></a>ManagedIdentityTokenService
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub Krótki opis** |
+| --- | --- | --- | --- |
+|isEnabled|bool, wartość domyślna to FALSE|Static|Oflaguj kontrolowanie obecności i stanu usługi Managed Identity Tokens w klastrze; jest to wymaganie wstępne w przypadku korzystania z funkcji tożsamości zarządzanej Service Fabric aplikacji.|
+
 ## <a name="management"></a>Zarządzanie
 
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub Krótki opis** |
@@ -610,7 +615,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |RunAsAccountType|ciąg, wartość domyślna to "" |Dynamiczne|Wskazuje typ konta RunAs. Jest to potrzebne w przypadku wszystkich prawidłowych wartości sekcji RunAs to "DomainUser/NetworkService/ManagedServiceAccount/LocalSystem".|
 |RunAsPassword|ciąg, wartość domyślna to "" |Dynamiczne|Wskazuje hasło do konta Uruchom jako. Ta wartość jest wymagana tylko dla typu konta "DomainUser". |
 
-## <a name="runasdca"></a>RunAs_DCA
+## <a name="runas_dca"></a>RunAs_DCA
 
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub Krótki opis** |
 | --- | --- | --- | --- |
@@ -618,7 +623,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |RunAsAccountType|ciąg, wartość domyślna to "" |Dynamiczne|Wskazuje typ konta RunAs. Jest to potrzebne w przypadku wszystkich prawidłowych wartości sekcji RunAs to "LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem". |
 |RunAsPassword|ciąg, wartość domyślna to "" |Dynamiczne|Wskazuje hasło do konta Uruchom jako. Ta wartość jest wymagana tylko dla typu konta "DomainUser". |
 
-## <a name="runasfabric"></a>RunAs_Fabric
+## <a name="runas_fabric"></a>RunAs_Fabric
 
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub Krótki opis** |
 | --- | --- | --- | --- |
@@ -626,7 +631,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |RunAsAccountType|ciąg, wartość domyślna to "" |Dynamiczne|Wskazuje typ konta RunAs. Jest to potrzebne w przypadku wszystkich prawidłowych wartości sekcji RunAs to "LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem". |
 |RunAsPassword|ciąg, wartość domyślna to "" |Dynamiczne|Wskazuje hasło do konta Uruchom jako. Ta wartość jest wymagana tylko dla typu konta "DomainUser". |
 
-## <a name="runashttpgateway"></a>RunAs_HttpGateway
+## <a name="runas_httpgateway"></a>RunAs_HttpGateway
 
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub Krótki opis** |
 | --- | --- | --- | --- |

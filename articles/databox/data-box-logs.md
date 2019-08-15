@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 08/07/2019
+ms.date: 08/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 309dc8e1fd15ae4088ed6ee87bdbb8aa4d636951
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 8fecc00a970f0e706dc6240eaec593fd54968ff8
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848570"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934221"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Śledzenie i rejestrowanie zdarzeń dla Azure Data Box i Azure Data Box Heavy
 
@@ -197,7 +197,7 @@ Pliki BOM lub manifestów są również kopiowane do konta usługi Azure Storage
 
 Podczas przekazywania danych na platformę Azure jest tworzony dziennik kopii.
 
-### <a name="copylog"></a>Copylog
+### <a name="copy-log"></a>Kopiuj dziennik
 
 Dla każdego przetwarzanego zamówienia usługa urządzenie Data Box tworzy dziennik kopiowania na skojarzonym koncie magazynu. Dziennik kopiowania zawiera łączną liczbę plików, które zostały przekazane, oraz liczbę plików, które wystąpiły podczas kopiowania danych z urządzenie Data Box na konto usługi Azure Storage.
 
@@ -252,6 +252,8 @@ Oto przykład dziennika kopiowania, w którym zakończono przekazywanie z błęd
 ### <a name="upload-completed-with-warnings"></a>Przekazywanie zostało ukończone z ostrzeżeniami
 
 Przekazanie na platformę Azure kończy się z ostrzeżeniami, jeśli dane mają nazwy kontenera/obiektów BLOB/plików niezgodne z konwencjami nazewnictwa platformy Azure i nazwy zostały zmodyfikowane w celu przekazania danych na platformę Azure.
+
+![Ścieżka do kopiowania bloku dziennika przeglądu po zakończeniu z ostrzeżeniami](media/data-box-logs/copy-log-path-3.png)
 
 Oto przykład dziennika kopiowania, w którym nazwy kontenerów, które nie są zgodne z konwencjami nazewnictwa platformy Azure, zostały zmienione podczas przekazywania danych na platformę Azure.
 
@@ -409,6 +411,6 @@ Audit Logs Path      : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 BOM Files Path       : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się [, jak rozwiązywać problemy dotyczące urządzenie Data Box i Data Box Heavy](data-box-troubleshoot.md).

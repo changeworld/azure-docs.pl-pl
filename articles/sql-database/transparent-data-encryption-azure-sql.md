@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
-ms.date: 04/19/2019
-ms.openlocfilehash: 1d5baf4b7f8a28638c5dbd50fb407035a5b9ea89
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/12/2019
+ms.openlocfilehash: 07fcd0f1ec33aa9a7520e35eb7e53a76295009ba
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566122"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967900"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Przezroczyste szyfrowanie danych dla SQL Database i magazynu danych
 
@@ -37,7 +37,7 @@ Na platformie Azure domyślne ustawienie przezroczystego szyfrowania danych pole
 Firma Microsoft bezproblemowo przenosi klucze i zarządza nimi w zależności od potrzeby replikacji geograficznej i przywracania.
 
 > [!IMPORTANT]
-> Wszystkie nowo utworzone bazy danych SQL są domyślnie szyfrowane przy użyciu funkcji przezroczystego szyfrowania danych zarządzanego przez usługę. Bazy danych wystąpienia zarządzanego usługi Azure SQL, istniejące bazy danych SQL utworzone przed 2017 i bazy danych SQL utworzone za pomocą funkcji przywracania, replikacji geograficznej i kopii bazy nie są domyślnie szyfrowane.
+> Wszystkie nowo utworzone bazy danych SQL i bazy danych wystąpień zarządzanych domyślnie są szyfrowane za pomocą funkcji przezroczystego szyfrowania danych zarządzanego przez usługę. Istniejące bazy danych SQL utworzone przed 2017mi i bazami danych SQL utworzonych przy użyciu funkcji przywracania, replikacji geograficznej i kopii bazy danych nie są szyfrowane domyślnie. Istniejące bazy danych wystąpienia zarządzanego utworzone przed 2019 lutego nie są szyfrowane domyślnie. Zarządzane bazy danych wystąpień utworzonych za pośrednictwem przywracania dziedziczą stan szyfrowania ze źródła.
 
 ## <a name="customer-managed-transparent-data-encryption---bring-your-own-key"></a>Szyfrowanie danych przezroczystych zarządzanych przez klienta — Bring Your Own Key
 
@@ -139,7 +139,7 @@ Użyj następującego zestawu poleceń dla Azure SQL Database i magazynu danych:
 |[Pobierz konfigurację Transparent Data Encryption](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/get)|Pobiera przezroczystą konfigurację szyfrowania danych dla bazy danych|
 |[Lista wyników konfiguracji Transparent Data Encryption](https://docs.microsoft.com/rest/api/sql/transparentdataencryptionactivities/listbyconfiguration)|Pobiera wynik szyfrowania dla bazy danych|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby uzyskać ogólny opis przezroczystego szyfrowania danych, zobacz [przezroczyste szyfrowanie danych](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption).
 - Aby dowiedzieć się więcej na temat funkcji przezroczystego szyfrowania danych z obsługą Bring Your Own Key dla Azure SQL Database, wystąpienia zarządzanego usługi Azure SQL i magazynu danych, zobacz [przezroczyste szyfrowanie danych za pomocą obsługi Bring Your Own Key](transparent-data-encryption-byok-azure-sql.md).

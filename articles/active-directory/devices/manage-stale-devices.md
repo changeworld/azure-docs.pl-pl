@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c6793581b797892c0bb468906d4f8ae72182618
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 78ddda8ff67cfdfebcf19f53c307c689884baf4d
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562118"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68942896"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Instrukcje: Zarządzanie nieaktywnymi urządzeniami w usłudze Azure AD
 
@@ -101,7 +101,7 @@ Oczyszczanie w usłudze Azure AD:
 - **Windows 7/8** — najpierw należy wyłączyć lub usunąć urządzenia z systemem Windows 7/8 w lokalnej usłudze AD. Nie możesz używać programu Azure AD Connect do wyłączania ani usuwania urządzeń z systemem Windows 7 lub 8 w usłudze Azure AD. Zamiast tego, po wprowadzeniu zmiany w środowisku lokalnym, należy ją wyłączyć lub usunąć w usłudze Azure AD.
 
 > [!NOTE]
->* Usuwanie urządzeń w lokalnej usłudze AD lub usłudze Azure AD nie powoduje rejestracji na kliencie. Uniemożliwi dostęp do zasobów tylko za pomocą urządzenia jako tożsamości (np. dostępu warunkowego). Zapoznaj się z dodatkowymi informacjami na temat [usuwania rejestracji na kliencie](faq.md#hybrid-azure-ad-join-faq).
+>* Usunięcie urządzeń w lokalnej usłudze AD lub usłudze Azure AD nie powoduje usunięcia rejestracji na kliencie. Uniemożliwi dostęp do zasobów tylko za pomocą urządzenia jako tożsamości (np. dostępu warunkowego). Zapoznaj się z dodatkowymi informacjami na temat [usuwania rejestracji na kliencie](faq.md#hybrid-azure-ad-join-faq).
 >* Usunięcie urządzenia z systemem Windows 10 tylko w usłudze Azure AD spowoduje ponowne zsynchronizowanie urządzenia z lokalnego przy użyciu programu Azure AD Connect, ale jako nowy obiekt w stanie "oczekiwanie". Na urządzeniu wymagana jest ponowna rejestracja.
 >* Usunięcie urządzenia z zakresu synchronizacji dla urządzeń z systemem Windows 10/Server 2016 spowoduje usunięcie urządzenia usługi Azure AD. Dodanie jej z powrotem do zakresu synchronizacji spowoduje umieszczenie nowego obiektu w stanie "oczekiwanie". Wymagana jest ponowna rejestracja urządzenia.
 >* Jeśli nie używasz Azure AD Connect do synchronizowania urządzeń z systemem Windows 10 (np. przy użyciu AD FS do rejestracji), musisz zarządzać cyklem życia podobnym do urządzeń z systemem Windows 7/8.

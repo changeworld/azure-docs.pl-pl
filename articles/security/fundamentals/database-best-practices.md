@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: dd703420f6a02dba589d8e5ace20cbd1e384adfb
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 72b15d77baedae318d4503f2d481b08202730459
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727441"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68928001"
 ---
 # <a name="azure-database-security-best-practices"></a>Najlepsze rozwiązania dotyczące zabezpieczeń bazy danych na platformie Azure
 W tym artykule opisano najlepsze rozwiązania dotyczące zabezpieczeń bazy danych.
@@ -28,7 +28,7 @@ W tym artykule opisano najlepsze rozwiązania dotyczące zabezpieczeń bazy dany
 Najlepsze rozwiązania są oparte na konsensusie opinii i współpracują z bieżącymi funkcjami platformy Azure i zestawami funkcji. Opinie i technologie zmieniają się wraz z upływem czasu, a ten artykuł jest regularnie aktualizowany w celu odzwierciedlenia tych zmian.
 
 ## <a name="secure-databases"></a>Zabezpieczanie baz danych
-Zabezpieczenia to najważniejsze zagadnienia związane z zarządzaniem bazami danych i zawsze ma priorytet dla [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/). Bazy danych mogą być ściśle zabezpieczone, aby pomóc spełnić większość wymagań prawnych lub bezpieczeństwa, w tym HIPAA, ISO 27001/27002 PCI DSS i poziom 1. Bieżąca lista certyfikatów zgodności z zabezpieczeniami jest dostępna w [witrynie Centrum zaufania firmy Microsoft](https://azure.microsoft.com/support/trust-center/services/). Możesz również wybrać opcję umieszczenia baz danych w określonych centrach Datacenter w oparciu o wymagania prawne.
+Zabezpieczenia to najważniejsze zagadnienia związane z zarządzaniem bazami danych i zawsze ma priorytet dla [Azure SQL Database](../../sql-database/index.yml). Bazy danych mogą być ściśle zabezpieczone, aby pomóc spełnić większość wymagań prawnych lub bezpieczeństwa, w tym HIPAA, ISO 27001/27002 PCI DSS i poziom 1. Bieżąca lista certyfikatów zgodności z zabezpieczeniami jest dostępna w [witrynie Centrum zaufania firmy Microsoft](https://azure.microsoft.com/support/trust-center/services/). Możesz również wybrać opcję umieszczenia baz danych w określonych centrach Datacenter w oparciu o wymagania prawne.
 
 ## <a name="use-firewall-rules-to-restrict-database-access"></a>Używanie reguł zapory do ograniczania dostępu do bazy danych
 Microsoft Azure SQL Database zapewnia usługi relacyjnej bazy danych dla platformy Azure i innych aplikacji internetowych. Aby zapewnić bezpieczeństwo dostępu, SQL Database kontroluje dostęp z:

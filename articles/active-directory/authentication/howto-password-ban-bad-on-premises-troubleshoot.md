@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07c035f4823ea8c8eaa96ca9bda22450246811cd
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 1cb4d3e35ae743dbae4c049f515d61b3042e7efe
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779623"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952802"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Rozwiązywanie problemów z ochroną hasłem usługi Azure AD
 
@@ -41,6 +41,8 @@ Głównym objawem tego problemu jest 30018 zdarzeń w dzienniku zdarzeń adminis
 1. Komputer hosta serwera proxy blokuje dostęp do punktu końcowego RPC (dynamiczny lub statyczny), który jest wysłuchiwany przez usługę serwera proxy
 
    Instalator serwera proxy ochrony hasłem usługi Azure AD automatycznie tworzy regułę ruchu przychodzącego zapory systemu Windows, która umożliwia dostęp do wszystkich portów przychodzących nasłuchiwania przez usługę serwera proxy ochrony hasłem usługi Azure AD. Jeśli ta reguła zostanie później usunięta lub wyłączona, agenci DC nie będą mogli komunikować się z usługą proxy. Jeśli wbudowana zapora systemu Windows została wyłączona zamiast innego produktu zapory, należy skonfigurować zaporę tak, aby zezwalała na dostęp do wszystkich portów przychodzących nasłuchiwanych przez usługę serwera proxy ochrony hasłem usługi Azure AD. Ta konfiguracja może być bardziej szczegółowa, jeśli usługa serwera proxy została skonfigurowana do nasłuchiwania na określonym statycznym porcie RPC (za `Set-AzureADPasswordProtectionProxyConfiguration` pomocą polecenia cmdlet).
+
+1. Komputer hosta proxy nie jest skonfigurowany tak, aby zezwalał kontrolerom domeny na logowanie do komputera. To zachowanie jest kontrolowane przez przypisanie uprawnień użytkownika "dostęp do tego komputera z sieci". Wszystkie kontrolery domeny we wszystkich domenach w lesie muszą mieć przyznane to uprawnienie. To ustawienie jest często ograniczone w ramach większego nakładu pracy w sieci.
 
 ## <a name="proxy-service-is-unable-to-communicate-with-azure"></a>Usługa serwera proxy nie może komunikować się z platformą Azure
 

@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2019
-ms.openlocfilehash: 4b1a551ea2dd62d428fee6a7be475472235a3994
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 131333f140518f6fb2f63f17d0aa72692dc7d49a
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569615"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935067"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Tworzenie i używanie aktywnej replikacji geograficznej
 
@@ -76,7 +76,7 @@ Aby osiągnąć prawdziwą ciągłość biznesową, Dodawanie nadmiarowości baz
 > [!NOTE]
 > Odtwarzanie dziennika jest opóźnione w pomocniczej bazie danych, jeśli istnieją aktualizacje schematu na serwerze podstawowym. Ten ostatni wymaga blokady schematu w pomocniczej bazie danych.
 > [!IMPORTANT]
-> Możesz użyć replikacji geograficznej, aby utworzyć pomocniczą bazę danych w tym samym regionie co podstawowy. Tej dodatkowej można użyć do równoważenia obciążenia obciążeń tylko do odczytu w tym samym regionie. Jednak pomocnicza baza danych w tym samym regionie nie zapewnia dodatkowej odporności na uszkodzenia i dlatego nie jest odpowiednim miejscem docelowym trybu failover na potrzeby odzyskiwania po awarii. Nie gwarantuje to również izolacji strefy avaialability. Użyj warstwy usługi krytycznej dla firmy lub Premium z konfiguracją nadmiarową [strefy](sql-database-high-availability.md#zone-redundant-configuration) , aby osiągnąć izolację strefy avaialability.   
+> Możesz użyć replikacji geograficznej, aby utworzyć pomocniczą bazę danych w tym samym regionie co podstawowy. Tej dodatkowej można użyć do równoważenia obciążenia obciążeń tylko do odczytu w tym samym regionie. Jednak pomocnicza baza danych w tym samym regionie nie zapewnia dodatkowej odporności na uszkodzenia i dlatego nie jest odpowiednim miejscem docelowym trybu failover na potrzeby odzyskiwania po awarii. Nie gwarantuje to również izolacji strefy dostępności. Aby uzyskać izolację strefy dostępności, użyj warstwy usługi krytycznej lub Premium firmy z konfiguracją nadmiarową [stref](sql-database-high-availability.md#zone-redundant-configuration) .   
 >
 
 - **Planowana praca w trybie failover**

@@ -12,16 +12,20 @@ ms.date: 5/14/2019
 author: swinarko
 ms.author: sawinark
 manager: craigg
-ms.openlocfilehash: 1e55d1878b1a5616d467f2fa27b1b20132d5e77c
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 51f67667caa9e0e564709de40c145b107c619b59
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517004"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016009"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Włączanie Azure Active Directory uwierzytelniania na platformie Azure — SSIS Integration Runtime
 
-W tym artykule opisano sposób włączania uwierzytelniania Azure Active Directory (Azure AD) przy użyciu tożsamości zarządzanej dla Azure Data Factory (ADF) i używania go zamiast uwierzytelniania SQL w celu utworzenia Integration Runtime platformy Azure-SSIS, który zostanie włączony. Baza danych wykazu usług SSIS (SSISDB) w Azure SQL Database serwerze/wystąpieniu zarządzanym w Twoim imieniu.
+W tym artykule pokazano, jak włączyć uwierzytelnianie Azure Active Directory (Azure AD) przy użyciu tożsamości zarządzanej dla Azure Data Factory (ADF) i użyć jej zamiast konwencjonalnych metod uwierzytelniania (takich jak uwierzytelnianie SQL), aby:
+
+- Utwórz Integration Runtime platformy Azure — SSIS (IR), która spowoduje włączenie obsługi administracyjnej bazy danych wykazu usług SSIS (SSISDB) w Azure SQL Database serwerze/wystąpieniu zarządzanym w Twoim imieniu.
+
+- Nawiąż połączenie z różnymi zasobami platformy Azure w przypadku uruchamiania pakietów usług SSIS na platformie Azure-SSIS IR.
 
 Aby uzyskać więcej informacji na temat tożsamości zarządzanej dla Twojego ADF, zobacz [Managed Identiy for Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity).
 
@@ -214,4 +218,14 @@ Aby udostępnić środowisko Azure-SSIS IR przy użyciu programu PowerShell, wyk
     Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
                                                  -DataFactoryName $DataFactoryName `
                                                  -Name $AzureSSISName
-   ```
+    ```
+
+## <a name="run-ssis-packages-with-managed-identity-authentication"></a>Uruchamianie pakietów SSIS z uwierzytelnianiem tożsamości zarządzanej
+
+W przypadku uruchamiania pakietów usług SSIS na platformie Azure-SSIS IR można użyć uwierzytelniania tożsamości zarządzanej, aby nawiązać połączenie z różnymi zasobami platformy Azure. Obecnie jest już obsługiwane uwierzytelnianie tożsamości zarządzanej w następujących menedżerach połączeń.
+
+- [OLE DB Menedżera połączeń](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager#managed-identities-for-azure-resources-authentication)
+
+- [Menedżer połączeń ADO.NET](https://docs.microsoft.com/sql/integration-services/connection-manager/ado-net-connection-manager#managed-identities-for-azure-resources-authentication)
+
+- [Menedżer połączeń usługi Azure Storage](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager#managed-identities-for-azure-resources-authentication)

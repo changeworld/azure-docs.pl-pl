@@ -1,6 +1,6 @@
 ---
-title: Korzystanie z castLabs w celu dostarczania licencji Widevine do usługi Azure Media Services | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak Azure Media Services (AMS) umożliwia dostarczanie dynamicznie szyfrowanych przez usługi AMS przy użyciu technologii PlayReady i Widevine protokołów DRM strumienia. Licencja PlayReady pochodzi z serwera licencji PlayReady usługi Media Services i licencji Widevine są dostarczane przez serwer licencji castLabs.
+title: Używanie castLabs do dostarczania licencji Widevine do Azure Media Services | Microsoft Docs
+description: W tym artykule opisano, jak można użyć Azure Media Services (AMS) do dostarczania strumienia, który jest dynamicznie szyfrowany za pomocą usługi PlayReady i Widevine protokołów DRM. Licencja PlayReady pochodzi z Media Services serwera licencji PlayReady i licencji Widevine jest dostarczana przez serwer licencji castLabs.
 services: media-services
 documentationcenter: ''
 author: Mingfeiy
@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: Mingfeiy;willzhan;Juliako
-ms.openlocfilehash: dfb82e91b0f65b85d34b7e20d57ed9929469321f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: Juliako
+ms.reviewer: willzhan
+ms.openlocfilehash: 9c61fad333037074f392b019ae61c161673e4008
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61232588"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "69016694"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>Korzystanie z castLabs w celu dostarczania licencji Widevine do usługi Azure Media Services 
 > [!div class="op_single_selector"]
@@ -28,91 +29,91 @@ ms.locfileid: "61232588"
 > 
 > 
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
-W tym artykule opisano, jak Azure Media Services (AMS) umożliwia dostarczanie dynamicznie szyfrowanych przez usługi AMS przy użyciu technologii PlayReady i Widevine protokołów DRM strumienia. Licencja PlayReady pochodzi z serwera licencji PlayReady usługi Media Services i licencji Widevine są dostarczane przez **castLabs** serwera licencji.
+W tym artykule opisano, jak można użyć Azure Media Services (AMS) do dostarczania strumienia, który jest dynamicznie szyfrowany za pomocą usługi PlayReady i Widevine protokołów DRM. Licencja PlayReady pochodzi z Media Services serwera licencji PlayReady i licencji Widevine jest dostarczana przez serwer licencji **castLabs** .
 
-Aby odtworzyć ponownie przesyłania strumieniowego zawartości chronionej przez CENC (PlayReady i Widevine), można użyć [usługi Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html). Zobacz [dokumentu AMP](https://amp.azure.net/libs/amp/latest/docs/) Aby uzyskać szczegółowe informacje.
+Aby odtworzyć zawartość strumieniową chronioną przez CENC (PlayReady i/lub Widevine), można użyć [Azure Media Player](https://aka.ms/azuremediaplayer). Szczegóły można znaleźć w [dokumencie amp](https://amp.azure.net/libs/amp/latest/docs/) .
 
-Poniższy diagram przedstawia wysokiego poziomu usługi Azure Media Services i architektura integracyjna castLabs.
+Na poniższym diagramie przedstawiono architekturę integracji na poziomie Azure Media Services i castLabs.
 
-![Integracja](./media/media-services-castlabs-integration/media-services-castlabs-integration.png)
+![Integration](./media/media-services-castlabs-integration/media-services-castlabs-integration.png)
 
-## <a name="typical-system-set-up"></a>Typowym systemie Konfigurowanie
+## <a name="typical-system-set-up"></a>Typowa konfiguracja systemu
 
-* Zawartości multimedialnej są przechowywane w usługi AMS.
-* Identyfikatory klucz zawartości kluczy są przechowywane w castLabs i usługi AMS.
-* castLabs i AMS mają wbudowane uwierzytelnianie przy użyciu tokenów. W poniższych sekcjach omówiono tokeny uwierzytelniania. 
-* Gdy klient zażąda do przesyłania strumieniowego wideo, zawartość dynamicznie jest szyfrowana za pomocą **szyfrowania Common Encryption** (CENC) i dynamicznie opakowane przez usługi AMS Smooth Streaming i KRESKI. Możemy również zapewniać PlayReady M2TS szyfrowanie podstawowe strumienia HLS protokołu przesyłania strumieniowego.
-* Licencja PlayReady są pobierane z serwera licencji usługi AMS i licencji Widevine są pobierane z serwera licencji castLabs. 
-* Usługa Media Player automatycznie decyduje, licencji, które można pobrać oparciu o możliwości platformy klienta. 
+* Zawartość multimedialna jest przechowywana w AMS.
+* Identyfikatory kluczy zawartości są przechowywane zarówno w castLabs, jak i AMS.
+* zarówno castLabs, jak i AMS mają wbudowaną funkcję uwierzytelniania tokenów. W poniższych sekcjach omówiono tokeny uwierzytelniania. 
+* Gdy klient zażąda strumieniowego przegrania filmu wideo, zawartość jest dynamicznie szyfrowana przy użyciu **Common Encryption** (Cenc) i dynamicznie PAKOWANA przez AMS do Smooth Streaming i pauzy. Dostarczamy również usługi PlayReady M2TS podstawowe szyfrowanie strumienia dla protokołu przesyłania strumieniowego HLS.
+* Licencja PlayReady jest pobierana z serwera licencji usługi AMS i licencja Widevine jest pobierana z serwera licencji castLabs. 
+* Media Player automatycznie decyduje, którą licencję pobrać na podstawie możliwości platformy klienta. 
 
-## <a name="authentication-token-generation-for-getting-a-license"></a>Generowanie tokenu uwierzytelniania w celu uzyskania licencji
+## <a name="authentication-token-generation-for-getting-a-license"></a>Generowanie tokenu uwierzytelniania na potrzeby uzyskiwania licencji
 
-Zarówno castLabs, jak i usługi AMS obsługuje format tokenu JWT (JSON Web Token), służące do autoryzowania licencji. 
+Zarówno castLabs, jak i AMS obsługują format tokenu JWT (token sieci Web JSON) używany do autoryzacji licencji. 
 
-### <a name="jwt-token-in-ams"></a>Token JWT w usługi AMS
+### <a name="jwt-token-in-ams"></a>Token JWT w AMS
 
-W poniższej tabeli opisano tokenu JWT w usługi AMS. 
+W poniższej tabeli opisano token JWT w AMS. 
 
-| Wystawca | Ciąg wystawcy z wybranego Secure Token Service (STS) |
+| Wystawca | Ciąg wystawcy z wybranej usługi bezpiecznego tokenu (STS) |
 | --- | --- |
-| Grupy odbiorców |Ciąg odbiorców z używane usługi STS |
-| oświadczenia |Zestaw oświadczeń |
-| nie wcześniej niż |Rozpocznij ważności tokenu |
-| Wygasa |Zakończenia ważności tokenu |
-| SigningCredentials |Klucz, który jest współużytkowana przez serwer licencji PlayReady, castLabs serwer licencji i usługi STS, możliwe, konfiguracji symetrycznej lub asymetrycznej klucza. |
+| Odbiorcy |Ciąg odbiorców z użycia usługi STS |
+| Oświadczenia |Zestaw oświadczeń |
+| NotBefore |Rozpocznij ważność tokenu |
+| Wygasa |Koniec ważności tokenu |
+| SigningCredentials |Klucz, który jest współużytkowany przez serwer licencji PlayReady, castLabs serwera licencji i usługi STS, może być kluczem symetrycznym lub asymetrycznym. |
 
 ### <a name="jwt-token-in-castlabs"></a>Token JWT w castLabs
 
-W poniższej tabeli opisano tokenu JWT w castLabs. 
+W poniższej tabeli opisano token JWT w castLabs. 
 
 | Name (Nazwa) | Opis |
 | --- | --- |
-| optData |Ciąg JSON zawierający informacje o Tobie. |
-| CRT |Ciąg JSON zawierający informacje o zawartości, jej informacji i odtwarzanie praw licencyjnych. |
+| optData |Ciąg JSON zawierający informacje o użytkowniku. |
+| CRT |Ciąg JSON zawierający informacje o elemencie zawartości, jego informacji o licencji i prawach odtwarzania. |
 | iat |Bieżąca data i godzina w epoki. |
-| jti |Unikatowy identyfikator o ten token (każdy token może być użyte tylko raz w systemie castLabs). |
+| jti |Unikatowy identyfikator tego tokenu (każdy token może być używany tylko raz w systemie castLabs). |
 
-## <a name="sample-solution-setup"></a>Przykładowe rozwiązanie Instalatora
+## <a name="sample-solution-setup"></a>Przykładowa konfiguracja rozwiązania
 
-[Przykładowe rozwiązanie](https://github.com/AzureMediaServicesSamples/CastlabsIntegration) obejmuje dwa projekty:
+[Przykładowe rozwiązanie](https://github.com/AzureMediaServicesSamples/CastlabsIntegration) składa się z dwóch projektów:
 
-* Aplikacja konsoli, która może służyć do Ustawianie ograniczeń DRM na już pozyskiwane elementu zawartości, zarówno dla technologii PlayReady i Widevine.
-* Aplikacja sieci Web, która przekazuje się tokenów, które może być traktowany jak bardzo uproszczony wersji usługi tokenu Zabezpieczającego.
+* Aplikacja konsolowa, która może służyć do ustawiania ograniczeń DRM dla już pozyskiwanego zasobu, dla oprogramowania PlayReady i Widevine.
+* Aplikacja sieci Web, która wyczerpuje tokeny, co może być widoczne jako bardzo UPROSZCZONa wersja usługi STS.
 
-Korzystanie z aplikacji konsoli:
+Aby użyć aplikacji konsolowej:
 
-1. Zmienianie pliku app.config, aby skonfigurować poświadczenia usługi AMS, castLabs poświadczeń, konfiguracji usługi STS i klucz współużytkowany.
-2. Przekaż element zawartości do usługi AMS.
-3. Uzyskaj identyfikator UUID z przekazanego zasobów, a następnie zmień 32 wiersza w pliku Program.cs:
+1. Zmień plik App. config, aby skonfigurować poświadczenia usługi AMS, poświadczenia castLabs, konfigurację usługi STS i klucz współużytkowany.
+2. Przekaż element zawartości do AMS.
+3. Pobierz identyfikator UUID z przekazanego elementu zawartości i Zmień wiersz 32 w pliku Program.cs:
    
-      var objIAsset = _context.Assets.Where(x => x.Id == "nb:cid:UUID:dac53a5d-1500-80bd-b864-f1e4b62594cf").FirstOrDefault();
-4. Na użytek AssetId nazwy zasobu w systemie castLabs (44 wiersza w pliku Program.cs).
+      var objIAsset = _CONTEXT. Assets. WHERE (x = > x.Id = = "NB: CID: UUID: dac53a5d-1500-80bd-b864-f1e4b62594cf"). FirstOrDefault ();
+4. Użyj AssetId do nazewnictwa elementów zawartości w systemie castLabs (wiersz 44 w pliku Program.cs).
    
-   Należy ustawić AssetId dla **castLabs**; musi być unikatowy ciąg alfanumeryczny.
+   Należy ustawić AssetId dla **castLabs**; musi być unikatowym ciągiem alfanumerycznym.
 5. Uruchom program.
 
 Aby użyć aplikacji sieci Web (STS):
 
-1. Zmień plik web.config w instalacji castlabs handlowca identyfikator, konfiguracją usługi STS i klucz współużytkowany.
-2. Wdrażanie w usłudze Azure Websites.
+1. Zmień plik Web. config w celu skonfigurowania identyfikatora handlowca castlabs, konfiguracji usługi STS i klucza współużytkowanego.
+2. Wdróż w usłudze Azure Websites.
 3. Przejdź do witryny sieci Web.
 
-## <a name="playing-back-a-video"></a>Odtwarzanie filmu wideo
+## <a name="playing-back-a-video"></a>Odtwarzanie wideo
 
-Aby odtworzyć wideo zaszyfrowany przy użyciu szyfrowania common encryption (PlayReady i Widevine), można użyć [usługi Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html). Podczas uruchamiania aplikacji konsolowej, powtarzane Identyfikatora klucza zawartości i adres URL manifestu.
+Aby odtworzyć wideo szyfrowane za pomocą typowego szyfrowania (PlayReady i/lub Widevine), można użyć [Azure Media Player](https://aka.ms/azuremediaplayer). Podczas uruchamiania aplikacji konsolowej identyfikator klucza zawartości i adres URL manifestu są wyświetlane jako echo.
 
-1. Otwórz nową kartę, a następnie uruchom usługi STS: http://[yourStsName].azurewebsites.net/api/token/assetid/[yourCastLabsAssetId]/contentkeyid/[thecontentkeyid].
-2. Przejdź do [usługi Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html).
-3. Wklej adres URL przesyłania strumieniowego.
-4. Kliknij przycisk **zaawansowane opcje** pola wyboru.
-5. W **ochrony** listy rozwijanej wybierz PlayReady i Widevine.
+1. Otwórz nową kartę i uruchom usługę STS: http://[yourStsName]. azurewebsites. NET/API/token/AssetID/[yourCastLabsAssetId]/contentkeyid/[thecontentkeyid].
+2. Przejdź do [Azure Media Player](https://aka.ms/azuremediaplayer).
+3. Wklej w adresie URL przesyłania strumieniowego.
+4. Kliknij pole wyboru **Zaawansowane opcje** .
+5. Na liście rozwijanej **Ochrona** wybierz pozycję PlayReady i/lub Widevine.
 6. Wklej token uzyskany z usługi STS w polu tekstowym tokenu. 
    
-   Serwer licencji castLab nie jest konieczne "Bearer =" prefiks przed tokenu. Dlatego należy usunąć przed przesłaniem tokenu.
-7. Zaktualizuj odtwarzacza.
-8. Należy odtwarzanie filmu wideo.
+   Serwer licencji castLab nie potrzebuje prefiksu "Bearer =" przed tokenem. Usuń to przed przesłaniem tokenu.
+7. Aktualizowanie odtwarzacza.
+8. Film wideo powinien być odtwarzany.
 
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

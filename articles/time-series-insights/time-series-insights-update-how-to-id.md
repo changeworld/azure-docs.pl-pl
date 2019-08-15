@@ -1,6 +1,6 @@
 ---
 title: Najlepsze rozwiązania dotyczące wybierania Identyfikatora serii czasu w wersji zapoznawczej Azure czas serii szczegółowych informacji | Dokumentacja firmy Microsoft
-description: Opis najlepszych rozwiązań po wybraniu Identyfikatora serii czasu w wersji zapoznawczej Azure czas serii szczegółowych informacji.
+description: Zrozumienie najlepszych rozwiązań w przypadku wybrania identyfikatora szeregów czasowych w wersji zapoznawczej Azure Time Series Insights.
 author: ashannon7
 ms.author: dpalled
 ms.workload: big-data
@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: af540267e4afc1b248b66b1c6f4989b832c38b58
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7057ce27cbbba8d70835493fc91a88ad823369bb
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237577"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947196"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Najlepsze rozwiązania dotyczące wybierania Identyfikatora serii czasu
 
@@ -42,13 +42,13 @@ Ponadto możesz wybrać maksymalnie *trzy* (3) właściwości klucza jako identy
 
 W poniższych scenariuszach opisano, wybierając opcję więcej niż jedną właściwość klucza jako swój identyfikator serii czasu:  
 
-### <a name="scenario-one"></a>Scenariusz 1
+### <a name="scenario-one"></a>Scenariusz jeden
 
 * Masz flot starszych zasobów, z których każdy unikatowy klucz.
 * Na przykład jeden floty jest unikatowo identyfikowana przez właściwość *deviceId* i inny unikatowy właściwości *objectId*. Żadna floty zawiera inne floty unikatowa właściwość. W tym przykładzie będzie wybierz dwa klucze, identyfikator urządzenia i identyfikator obiektu jako klucze unikatowe.
 * Możemy zaakceptować wartości null i braku obecność właściwości w ładunku zdarzenia jest liczona jako `null` wartość. Jest to również odpowiedni sposób obsługi wysyłania danych do dwóch źródeł zdarzeń, gdzie dane w każdym źródło zdarzenia ma unikatowy identyfikator czas serii
 
-### <a name="scenario-two"></a>Scenariusz 2
+### <a name="scenario-two"></a>Scenariusz — dwa
 
 * Wymagane jest wiele właściwości, aby być unikatowe w obrębie tego samego jej zasobów. 
 * Na przykład załóżmy, że jesteś producenta inteligentne tworzenie i wdrażanie czujników w każdym pokoju. W każdym pomieszczeniu, zazwyczaj mają takie same wartości *sensorId*, takich jak *sensor1*, *sensor2*, i *sensor3*.

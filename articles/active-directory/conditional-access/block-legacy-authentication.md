@@ -1,6 +1,6 @@
 ---
-title: Jak zablokować starsze uwierzytelnianie w usłudze Azure Active Directory (Azure AD) przy użyciu dostępu warunkowego | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zwiększyć poziom bezpieczeństwa przez blokowanie starsze uwierzytelnianie przy użyciu dostępu warunkowego usługi Azure AD.
+title: Jak zablokować starsze uwierzytelnianie w usłudze Azure Active Directory (Azure AD) z dostępem warunkowym | Microsoft Docs
+description: Dowiedz się, jak ulepszyć stan zabezpieczeń, blokując starsze uwierzytelnianie przy użyciu dostępu warunkowego usługi Azure AD.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,68 +11,68 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60fc168a6c15e7cb8d6e4271154d99fb4136226e
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 0d227b4cf7090cdc3177c7045d6137f30a13f71b
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509024"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931950"
 ---
-# <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Instrukcje: Blokuj starsze uwierzytelnianie do usługi Azure AD przy użyciu dostępu warunkowego   
+# <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Instrukcje: Blokuj starsze uwierzytelnianie w usłudze Azure AD przy użyciu dostępu warunkowego   
 
-Aby dać użytkownikom łatwy dostęp do aplikacji w chmurze, Azure Active Directory (Azure AD) obsługuje szerokiej gamy protokołów uwierzytelniania, w tym starsze uwierzytelnianie. Uwierzytelnianie wieloskładnikowe (MFA) nie obsługuje jednak starszych protokołów. Uwierzytelnianie wieloskładnikowe w wielu środowiskach jest typowym wymogiem na kradzież tożsamości adresu. 
+Aby zapewnić użytkownikom łatwy dostęp do aplikacji w chmurze, usługa Azure Active Directory (Azure AD) obsługuje szeroką gamę protokołów uwierzytelniania, w tym starsze uwierzytelnianie. Jednak starsze protokoły nie obsługują uwierzytelniania wieloskładnikowego (MFA). Uwierzytelnianie wieloskładnikowe jest w wielu środowiskach typowym wymaganiem do kradzieży tożsamości. 
 
-Czy środowisko jest gotowe do bloku starszych uwierzytelniania w celu zwiększenia ochrony Twojej dzierżawy, można osiągnąć ten cel przy użyciu dostępu warunkowego. W tym artykule opisano sposób konfigurowania zasad dostępu warunkowego, które zablokowanie starszych uwierzytelniania dla dzierżawy.
+Jeśli środowisko jest gotowe do blokowania starszego uwierzytelniania w celu usprawnienia ochrony dzierżawy, można osiągnąć ten cel za pomocą dostępu warunkowego. W tym artykule wyjaśniono, jak można skonfigurować zasady dostępu warunkowego, które blokują starsze uwierzytelnianie dla dzierżawy.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 W tym artykule założono, że znasz: 
 
-- [Podstawowe pojęcia](overview.md) dostępu warunkowego usługi Azure AD 
-- [Najlepsze praktyki](best-practices.md) na temat konfigurowania zasad dostępu warunkowego w witrynie Azure portal
+- [Podstawowe koncepcje](overview.md) dostępu warunkowego usługi Azure AD 
+- [Najlepsze rozwiązania](best-practices.md) dotyczące konfigurowania zasad dostępu warunkowego w Azure Portal
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-Usługa Azure AD obsługuje niektóre z najczęściej używanych protokołów uwierzytelniania i autoryzacji, w tym starsze uwierzytelnianie. Starsze uwierzytelnianie odnosi się do protokołów, które korzystają z uwierzytelniania podstawowego. Zazwyczaj te protokoły nie można wymusić dowolnego typu uwierzytelniania dwuskładnikowego. Przykłady aplikacji, które są oparte na starszych uwierzytelniania są:
+Usługa Azure AD obsługuje kilka powszechnie używanych protokołów uwierzytelniania i autoryzacji, w tym starsze uwierzytelnianie. Starsze uwierzytelnianie dotyczy protokołów korzystających z uwierzytelniania podstawowego. Zazwyczaj te protokoły nie mogą wymuszać żadnego typu uwierzytelniania drugiego. Przykłady dla aplikacji opartych na starszej wersji uwierzytelniania są następujące:
 
-- Starsze aplikacje pakietu Microsoft Office
-- Aplikacje przy użyciu protokołów poczty, takich jak SMTP, POP i IMAP
+- Starsze aplikacje Microsoft Office
+- Aplikacje korzystające z protokołów poczty, takich jak POP, IMAP i SMTP
 
-Uwierzytelnianie pojedynczy czynnik (na przykład nazwę użytkownika i hasło) nie jest wystarczająco dużo, te dni. Hasła są uszkodzone, są one łatwe do odgadnięcia i firma Microsoft (ludzi) będą nieprawidłowe na wybranie dobre hasła. Hasła są również narażone na różnych atakami, takimi jak osłony techniki wyłudzania informacji oraz hasło. Jeden najprostszym rzeczy, które można zrobić, aby chronić przed zagrożeniami hasła jest zaimplementowanie usługi MFA. Za pomocą usługi MFA nawet wtedy, gdy osoba atakująca uzyskuje w posiadaniu hasła użytkownika samego hasła nie jest wystarczające, aby pomyślnie uwierzytelnić i uzyskać dostęp do danych.
+Uwierzytelnianie wieloskładnikowe (na przykład nazwa użytkownika i hasło) nie wystarcza do korzystania z tych dni. Hasła są nieodpowiednie, ponieważ są one łatwe do odgadnięcia, a firma Microsoft nie jest w stanie wybierać prawidłowych haseł. Hasła są również narażone na różne ataki, takie jak phishing i rozpylanie haseł. Jedną z najłatwiejszych możliwości ochrony przed zagrożeniami hasła jest wdrożenie usługi MFA. W przypadku usługi MFA nawet jeśli osoba atakująca uzyska hasło użytkownika, samo hasło nie jest wystarczające do pomyślnego uwierzytelnienia i uzyskiwania dostępu do danych.
 
-Jak można zapobiec aplikacji korzystających z uwierzytelniania starszej wersji, uzyskiwanie dostępu do zasobów dzierżawy Zalecane jest po prostu je zablokować przy użyciu zasad dostępu warunkowego. Jeśli to konieczne, możesz zezwolić tylko niektórych użytkowników i określone lokalizacje sieciowe korzystać z aplikacji, które są oparte na starszych uwierzytelniania.
+Jak można uniemożliwić aplikacjom korzystającym ze starszego uwierzytelniania dostęp do zasobów dzierżawy? Zalecenie polega na prostu zablokować je za pomocą zasad dostępu warunkowego. W razie potrzeby zezwalasz tylko określonym użytkownikom i określonym lokalizacjom sieciowym na używanie aplikacji opartych na starszej wersji uwierzytelniania.
 
-Po zakończeniu pierwszego czynnika, wymuszane są zasady dostępu warunkowego. W związku z tym dostęp warunkowy nie jest przeznaczony jako pierwszy defense wiersza dla scenariuszy, takich jak ataki (DoS) typu "odmowa usługi", ale mogą korzystać z sygnałów z tych zdarzeń (na przykład poziom ryzyka logowania, lokalizacja żądania, i tak dalej) w celu określenia dostępu do.
+Zasady dostępu warunkowego są wymuszane po zakończeniu uwierzytelniania pierwszego. W związku z tym dostęp warunkowy nie jest przeznaczony jako pierwszy wiersz obrony przed scenariuszami, takimi jak ataki typu "odmowa usługi" (DoS), ale mogą korzystać z sygnałów z tych zdarzeń (na przykład poziomu ryzyka logowania, lokalizacji żądania itp.) w celu określenia dostępu.
 
-## <a name="implementation"></a>Wdrażanie
+## <a name="implementation"></a>Implementacja
 
-W tej sekcji opisano sposób konfigurowania zasad dostępu warunkowego w celu uwierzytelniania starszych bloku. 
+W tej sekcji opisano sposób konfigurowania zasad dostępu warunkowego w celu blokowania starszego uwierzytelniania. 
 
-### <a name="identify-legacy-authentication-use"></a>Identyfikowanie starszych uwierzytelniania użycia
+### <a name="identify-legacy-authentication-use"></a>Identyfikuj użycie starszego uwierzytelniania
 
-Zanim zablokujesz starsze uwierzytelnianie w katalogu, należy najpierw zrozumieć, jeśli użytkownicy mają aplikacje, które używają starszych uwierzytelniania i jak wpływa na ogólne katalogu. Dzienniki logowania usługi AD platformy Azure może służyć do zrozumienia, jeśli używasz starszej wersji uwierzytelniania.
+Przed zablokowaniem starszego uwierzytelniania w katalogu należy najpierw zrozumieć, czy użytkownicy mają aplikacje korzystające ze starszego uwierzytelniania i jak mają wpływ na ogólny katalog. Korzystając z dzienników logowania usługi Azure AD, można zrozumieć, czy używane jest starsze uwierzytelnianie.
 
-1. Przejdź do **witryny Azure portal** > **usługi Azure Active Directory** > **logowania**.
-1. Dodaj kolumnę aplikacji klienckiej, jeśli nie jest wyświetlany, klikając **kolumn** > **aplikację kliencką**.
-1. Filtruj według **aplikację kliencką** > **innych klientów** i kliknij przycisk **Zastosuj**.
+1. Przejdź do **Azure Portal** > **Azure Active Directory** > **logowania**.
+1. Dodaj kolumnę aplikacji klienckiej, jeśli nie jest ona wyświetlana po kliknięciu pozycji **kolumny** > **aplikacja kliencka**.
+1. **Dodaj filtry** > **aplikacje klienckie** > Zaznacz wszystkie opcje dla **innych klientów** i kliknij przycisk **Zastosuj**.
 
-Filtrowanie będzie tylko nieudane próby show logowania wprowadzono protokoły uwierzytelniania w starszej wersji. Kliknięcie każdego poszczególnych prób logowania zostanie wyświetlona dodatkowe szczegóły. **Aplikację kliencką** pola pod **podstawowe informacje o** kartę poinformuje, użyty protokół uwierzytelniania starszej wersji.
+Filtrowanie będzie zawierać tylko próby logowania, które zostały wykonane przez starsze protokoły uwierzytelniania. Kliknięcie każdej próby logowania spowoduje wyświetlenie dodatkowych szczegółów. Pole **aplikacji klienckiej** na karcie **Informacje podstawowe** wskazuje, który z starszych wersji protokołu uwierzytelniania był używany.
 
-Te dzienniki będą wskazywać użytkowników, którzy są nadal w zależności od starszego uwierzytelniania i aplikacji, które używają starszych protokołów uwierzytelniania żądań. Dla użytkowników, którzy nie są wyświetlane w tych dziennikach i zostało potwierdzone nie korzystać z uwierzytelniania starszej wersji należy zaimplementować zasady dostępu warunkowego dla tych użytkowników tylko.
+Te dzienniki wskazują, którzy użytkownicy nadal są w stanie w zależności od starszego uwierzytelniania i które aplikacje używają starszych protokołów do przesyłania żądań uwierzytelniania. W przypadku użytkowników, którzy nie są wyświetlani w tych dziennikach i potwierdzają, że nie używają starszego uwierzytelniania, należy zaimplementować zasady dostępu warunkowego tylko dla tych użytkowników.
 
 ### <a name="block-legacy-authentication"></a>Blokowanie starszego uwierzytelniania 
 
-W zasadach dostępu warunkowego można ustawić warunek, który jest powiązany z aplikacji klienckich, które są używane do dostępu do zasobów. Stan aplikacji klienta umożliwia zawężenie zakresu do aplikacji przy użyciu starszej wersji uwierzytelniania, wybierając **inni klienci** dla **aplikacje mobilne i klienci stacjonarni**.
+W zasadach dostępu warunkowego można ustawić warunek powiązany z aplikacjami klienckimi, które są używane do uzyskiwania dostępu do zasobów. Warunek aplikacje klienckie umożliwia zawężenie zakresu do aplikacji korzystających ze starszego uwierzytelniania przez wybranie **innych klientów** dla **aplikacji mobilnych i klientów stacjonarnych**.
 
 ![Inni klienci](./media/block-legacy-authentication/01.png)
 
-Aby zablokować dostęp do tych aplikacji, musisz wybrać **blokowana**.
+Aby zablokować dostęp do tych aplikacji, musisz wybrać opcję **Blokuj dostęp**.
 
 ![Blokuj dostęp](./media/block-legacy-authentication/02.png)
 
-### <a name="select-users-and-cloud-apps"></a>Wybierz użytkowników i aplikacje w chmurze
+### <a name="select-users-and-cloud-apps"></a>Wybieranie użytkowników i aplikacji w chmurze
 
-Jeśli chcesz zablokować starsze uwierzytelnianie dla Twojej organizacji, prawdopodobnie uważasz, że można to zrobić, wybierając:
+Jeśli chcesz zablokować starsze uwierzytelnianie dla swojej organizacji, prawdopodobnie sądzisz, że możesz to zrobić, wybierając pozycję:
 
 - Wszyscy użytkownicy
 - Wszystkie aplikacje w chmurze
@@ -80,36 +80,36 @@ Jeśli chcesz zablokować starsze uwierzytelnianie dla Twojej organizacji, prawd
 
 ![Przypisania](./media/block-legacy-authentication/03.png)
 
-Platforma Azure ma funkcję bezpieczeństwa, która uniemożliwia tworzenie takie zasady, ponieważ narusza tę konfigurację [najlepsze praktyki](best-practices.md) dla zasad dostępu warunkowego.
+Platforma Azure ma funkcję zabezpieczeń, która uniemożliwia tworzenie zasad, takich jak ta, ponieważ ta konfiguracja narusza [najlepsze rozwiązania](best-practices.md) dotyczące zasad dostępu warunkowego.
  
 ![Konfiguracja zasad nie jest obsługiwana](./media/block-legacy-authentication/04.png)
 
-Funkcja bezpieczeństwa jest konieczne ponieważ *zablokowanie wszystkich użytkowników i wszystkie aplikacje w chmurze* może potencjalnie zablokować w całej organizacji, zalogowanie się do swojej dzierżawy. Musisz wykluczyć co najmniej jednego użytkownika do zaspokojenia minimalnym wymaganiem najlepszym rozwiązaniem. Można również wykluczyć rolę katalogu.
+Funkcja zabezpieczeń jest niezbędna, ponieważ *Blokada wszyscy użytkownicy i wszystkie aplikacje w chmurze* ma możliwość blokowania rejestracji w całej organizacji przed zalogowaniem się do dzierżawy. Należy wykluczyć co najmniej jednego użytkownika, aby spełnić wymagania minimalnego najlepszego rozwiązania. Można również wykluczyć rolę katalogu.
 
 ![Konfiguracja zasad nie jest obsługiwana](./media/block-legacy-authentication/05.png)
 
-Ta funkcja może spełnić przez wykluczenie jednego użytkownika z zasad. W idealnym przypadku należy zdefiniować kilka [dostępu awaryjnego kont administracyjnych w usłudze Azure AD](../users-groups-roles/directory-emergency-access.md) i ich wykluczenie z zasad.
+Tę funkcję zabezpieczeń można spełnić, wykluczając jednego użytkownika z zasad. W idealnym przypadku należy zdefiniować kilka [kont administracyjnych dostępu awaryjnego w usłudze Azure AD](../users-groups-roles/directory-emergency-access.md) i wykluczyć je z zasad.
 
 ## <a name="policy-deployment"></a>Wdrażanie zasad
 
-Zanim przeniesiesz zasad w środowisku produkcyjnym zajmie się:
+Przed wprowadzeniem zasad do środowiska produkcyjnego należy wziąć pod uwagę:
  
-- **Konta usług** -zidentyfikować konta użytkowników, które są używane jako konta usług lub urządzeń, takich jak telefony pokoju konferencji. Upewnij się, te konta silnych haseł i dodać je do grupy wykluczonych.
-- **Raportów logowania** — przejrzeć raport, zaloguj się i poszukaj **innych klientów** ruchu. Identyfikowanie najważniejszych użycia i zbadać, dlaczego jest on używany. Zwykle ruch jest generowana przez starszych klientów pakietu Office, które nie korzystają z nowoczesnego uwierzytelniania lub niektóre aplikacje poczty innych firm. Stworzyć plan przenieść użycia od tych aplikacji lub jeśli brakuje wpływ powiadomić użytkowników, że te aplikacje nie mogą używać już.
+- **Konta usług** — Identyfikuj konta użytkowników, które są używane jako konta usług lub przez urządzenia, takie jak telefony z sali konferencyjnej. Upewnij się, że te konta mają silne hasła, i Dodaj je do wykluczonej grupy.
+- **Raporty logowania** — zapoznaj się z raportem logowania i Wyszukaj inny ruch **klientów** . Zidentyfikuj pierwsze użycie i sprawdź, dlaczego są używane. Zwykle ruch jest generowany przez starszych klientów pakietu Office, którzy nie korzystają z nowoczesnego uwierzytelniania lub niektórych aplikacji poczty innej firmy. Utwórz plan, aby przenieść użycie z tych aplikacji, lub jeśli wpływ jest niski, Powiadom użytkowników, że nie mogą już korzystać z tych aplikacji.
  
 Aby uzyskać więcej informacji, zobacz [jak należy wdrożyć nowe zasady?](best-practices.md#how-should-you-deploy-a-new-policy).
 
 ## <a name="what-you-should-know"></a>Co należy wiedzieć
 
-Blokowanie dostępu za pomocą **inni klienci** blokuje również programu Exchange Online PowerShell przy użyciu uwierzytelniania podstawowego
+Blokowanie dostępu przy użyciu **innych klientów** blokuje również program Exchange Online PowerShell przy użyciu uwierzytelniania podstawowego.
 
-Konfigurowanie zasad dla **inni klienci** blokuje całą organizację, z niektórych klientów, takich jak SPConnect. Ten blok wynika z faktu, starsi klienci uwierzytelnić się w nieoczekiwany sposób. Ten problem nie ma zastosowania do głównej aplikacji pakietu Office, takich jak starsi klienci pakietu Office.
+Skonfigurowanie zasad dla **innych klientów** blokuje całą organizację od niektórych klientów, takich jak SPConnect. Ten blok jest spowodowany tym, że starsi klienci uwierzytelniają się w nieoczekiwany sposób. Problem nie dotyczy najważniejszych aplikacji pakietu Office, takich jak starsi klienci pakietu Office.
 
-Może upłynąć do 24 godzin, aż zasady zaczną obowiązywać.
+Zastosowanie zasad może potrwać do 24 godzin.
 
-Możesz wybrać wszystkich kontrolek dostępnych grant dla **innych klientów** warunku; jednak środowisko użytkownika końcowego jest zawsze taki sam - dostęp jest zablokowany.
+Można wybrać wszystkie dostępne kontrolki Udziel dla **innych klientów** warunek. jednak środowisko użytkownika końcowego zawsze ma ten sam zablokowany dostęp.
 
-Jeśli zablokujesz starszych uwierzytelnianie przy użyciu **inni klienci** warunek, można również ustawić warunek platformy i lokalizacji urządzenia. Jeśli chcesz zablokować starsze uwierzytelnianie dla urządzeń przenośnych, na przykład ustawić **platform urządzeń** warunku, wybierając pozycję:
+W przypadku zablokowania starszego uwierzytelniania przy użyciu warunku **other clients** można również ustawić pozycję platforma urządzenia i warunek lokalizacji. Jeśli na przykład chcesz zablokować starsze uwierzytelnianie dla urządzeń przenośnych, Ustaw warunek **platformy urządzeń** , wybierając pozycję:
 
 - Android
 - iOS
@@ -117,7 +117,7 @@ Jeśli zablokujesz starszych uwierzytelnianie przy użyciu **inni klienci** waru
 
 ![Konfiguracja zasad nie jest obsługiwana](./media/block-legacy-authentication/06.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Jeśli nie znasz jeszcze konfigurowania zasad dostępu warunkowego, zobacz [wymagać uwierzytelniania Wieloskładnikowego dla określonych aplikacji przy użyciu usługi Azure Active Directory dostępu warunkowego](app-based-mfa.md) przykład.
-- Aby uzyskać więcej informacji na temat obsługi nowoczesnego uwierzytelniania, zobacz [sposobu działania nowoczesnego uwierzytelniania dla aplikacji klienckich pakietu Office 2013 i Office 2016](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) 
+- Jeśli nie znasz jeszcze konfiguracji zasad dostępu warunkowego, zobacz [Wymagaj uwierzytelniania wieloskładnikowego dla określonych aplikacji z Azure Active Directory dostępem warunkowym](app-based-mfa.md) na przykład.
+- Aby uzyskać więcej informacji na temat nowoczesnej obsługi uwierzytelniania, zobacz [jak nowoczesne uwierzytelnianie działa dla pakietu office 2013 i aplikacji klienckich pakietu office 2016](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) 

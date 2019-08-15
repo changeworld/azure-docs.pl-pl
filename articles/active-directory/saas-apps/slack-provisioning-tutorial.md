@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Konfigurowanie Slack do automatycznej aprowizacji użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować usługę Azure Active Directory do automatycznego aprowizacji i usuwanie kont użytkowników Slack.
+title: 'Samouczek: Konfigurowanie zapasu czasu dla automatycznej aprowizacji użytkowników przy użyciu Azure Active Directory | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Azure Active Directory, aby automatycznie inicjować udostępnianie kont użytkowników i cofać ich obsługę zapasu czasu.
 services: active-directory
 documentationcenter: ''
 author: ArvindHarinder1
@@ -15,114 +15,116 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 036112027fcf210f0ac2ff1e631c8b0bd4b5e9ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4a294254bd52db89179c5644ea7a0f0f04027f30
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964396"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932489"
 ---
-# <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Slack do automatycznej aprowizacji użytkowników
+# <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie zapasu czasu dla automatycznej aprowizacji użytkowników
 
-Celem tego samouczka jest Wam kroki należy wykonać w Slack i usługi Azure AD, aby automatycznie aprowizować i anulować obsługę kont użytkowników z usługi Azure AD do Slack.
+Celem tego samouczka jest przedstawienie czynności, które należy wykonać w ramach zapasu czasu i usługi Azure AD w celu automatycznego aprowizacji i cofania aprowizacji kont użytkowników z usługi Azure AD w celu zapewnienia zapasu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Scenariusz opisany w tym samouczku przyjęto założenie, że masz następujące elementy:
+Scenariusz opisany w tym samouczku założono, że masz już następujące elementy:
 
 * Dzierżawa usługi Azure Active Directory
-* Slack dzierżawy z [oraz plan](https://aadsyncfabric.slack.com/pricing) lub lepiej nie są włączone
-* Konto użytkownika Slack z uprawnieniami administratora zespołu
+* Dzierżawa zapasowa z [planem Plus](https://aadsyncfabric.slack.com/pricing) lub lepsza
+* Konto użytkownika w zapasie czasu z uprawnieniami administratora zespołu
 
-Uwaga: Inicjowanie obsługi administracyjnej integracji usługi Azure AD opiera się na [API Standard SCIM Slack](https://api.slack.com/scim), który jest dostępny w usłudze Slack, teams na znak Plus zaplanować lub Lepsza.
+Uwaga: Integracja z obsługą administracyjną usługi Azure AD opiera się na [interfejsie API Standard scim zapasu](https://api.slack.com/scim), który jest dostępny dla zespołów zapasowych w planie Plus lub lepszy.
 
-## <a name="assigning-users-to-slack"></a>Przypisywanie użytkowników do Slack
+## <a name="assigning-users-to-slack"></a>Przypisywanie użytkowników do zapasu czasu
 
-Usługa Azure Active Directory używa koncepcji o nazwie "przypisania", aby określić, użytkowników, którzy otrzymają dostęp do wybranych aplikacji. W kontekście konta użytkownika automatycznego inicjowania obsługi administracyjnej tylko użytkownicy i grupy, które "przypisano" do aplikacji w usłudze Azure AD będą synchronizowane.
+Azure Active Directory używa koncepcji o nazwie "przydziały", aby określić, którzy użytkownicy powinni otrzymywać dostęp do wybranych aplikacji. W kontekście automatycznego inicjowania obsługi konta użytkownika zostaną zsynchronizowane tylko użytkownicy i grupy, które zostały przypisane do aplikacji w usłudze Azure AD.
 
-Przed Skonfiguruj i włącz usługę aprowizacji, należy zdecydować, jakie użytkowników i/lub grup w usłudze Azure AD reprezentują użytkowników, którzy potrzebują dostępu do aplikacji Slack. Po decyzję, możesz przypisać użytkowników do aplikacji Slack, zgodnie z instrukcjami w tym miejscu:
+Przed skonfigurowaniem i włączeniem usługi aprowizacji należy zdecydować, którzy użytkownicy i/lub grupy w usłudze Azure AD reprezentują użytkowników, którzy potrzebują dostępu do aplikacji zapasowej. Po ustaleniu tych użytkowników możesz przypisać je do swojej aplikacji zapasowej, postępując zgodnie z poniższymi instrukcjami:
 
-[Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa](../manage-apps/assign-user-or-group-access-portal.md)
+[Przypisywanie użytkownika lub grupy do aplikacji dla przedsiębiorstw](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-slack"></a>Ważne wskazówki dotyczące przypisywania użytkowników do Slack
+### <a name="important-tips-for-assigning-users-to-slack"></a>Ważne porady dotyczące przypisywania użytkowników do zapasu czasu
 
-* Zalecane jest jeden użytkownik usługi Azure AD jest przypisane do Slack do testowania konfiguracji aprowizacji. Później można przypisać dodatkowych użytkowników i/lub grup.
+* Zaleca się, aby jeden użytkownik usługi Azure AD został przypisany do zapasu czasu w celu przetestowania konfiguracji aprowizacji. Dodatkowych użytkowników i/lub grupy można przypisywać później.
 
-* Podczas przypisywania użytkowników do Slack, należy wybrać **użytkownika** lub rola "Group" w oknie dialogowym przydział. Rola "Domyślnego dostępu" nie działa w przypadku inicjowania obsługi administracyjnej.
+* Podczas przypisywania użytkownika do zapasu czasu należy wybrać rolę **użytkownika** lub grupy w oknie dialogowym przypisania. Rola "dostęp domyślny" nie działa w przypadku aprowizacji.
 
-## <a name="configuring-user-provisioning-to-slack"></a>Konfigurowaniem aprowizowania użytkowników w Slack 
+## <a name="configuring-user-provisioning-to-slack"></a>Konfigurowanie aprowizacji użytkowników do zapasu czasu 
 
-Ta sekcja przeprowadzi Cię przez połączenie usługi Azure AD do konta użytkownika w Slack aprowizujący interfejs API i konfigurowanie inicjowania obsługi usługi do tworzenia, aktualizacji, a następnie wyłącz konta użytkowników przypisane w Slack, na podstawie przypisania użytkowników i grup w usłudze Azure AD.
+Ta sekcja przeprowadzi Cię przez proces łączenia się z interfejsem API inicjowania obsługi konta użytkownika usługi Azure AD i konfigurowania usługi aprowizacji w celu tworzenia, aktualizowania i wyłączania przypisanych kont użytkowników w zapasach czasu na podstawie przypisywania użytkowników i grup w usłudze Azure AD.
 
-**Porada:** Można też włączyć opartej na SAML logowania jednokrotnego dla Slack, wykonując instrukcje podane w [witryny Azure portal](https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatyczną aprowizację, chociaż te dwie funkcje uzupełnienie siebie nawzajem.
+**Porada:** Możesz również włączyć funkcję logowania jednokrotnego opartego na protokole SAML dla zapasu czasu, postępując zgodnie z instrukcjami podanymi w [Azure Portal](https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatycznej aprowizacji, chociaż te dwie funkcje napadają nawzajem.
 
-### <a name="to-configure-automatic-user-account-provisioning-to-slack-in-azure-ad"></a>Aby skonfigurować automatyczne aprowizowaniem kont użytkowników do Slack w usłudze Azure AD:
+### <a name="to-configure-automatic-user-account-provisioning-to-slack-in-azure-ad"></a>Aby skonfigurować automatyczne Inicjowanie obsługi konta użytkownika w usłudze Azure AD:
 
-1. W [witryny Azure portal](https://portal.azure.com), przejdź do **usługi Azure Active Directory > aplikacje dla przedsiębiorstw > wszystkie aplikacje** sekcji.
+1. W [Azure Portal](https://portal.azure.com)przejdź do sekcji **Azure Active Directory > aplikacje dla przedsiębiorstw > Wszystkie aplikacje** .
 
-2. Jeśli już skonfigurowano Slack dla logowania jednokrotnego, wyszukiwania dla swojego wystąpienia usługi Slack, korzystając z pola wyszukiwania. W przeciwnym razie wybierz **Dodaj** i wyszukaj **Slack** w galerii aplikacji. Wybierz Slack z wyników wyszukiwania, a następnie dodaj go do listy aplikacji.
+2. Jeśli już skonfigurowano funkcję zapasową dla logowania jednokrotnego, Wyszukaj wystąpienie zapasu czasu przy użyciu pola wyszukiwania. W przeciwnym razie wybierz opcję **Dodaj** i Wyszukaj pozycję zapasowy w galerii aplikacji. Wybierz pozycję zapasowy z wyników wyszukiwania, a następnie dodaj ją do listy aplikacji.
 
-3. Wybierz wystąpienie programu Slack, a następnie wybierz **aprowizacji** kartę.
+3. Wybierz wystąpienie zapasu czasu, a następnie wybierz kartę **Inicjowanie obsługi** .
 
-4. Ustaw **tryb obsługi administracyjnej** do **automatyczne**.
+4. Ustaw **tryb aprowizacji** na **automatyczny**.
 
-   ![Slack, inicjowanie obsługi administracyjnej](./media/slack-provisioning-tutorial/Slack1.PNG)
+   ![Inicjowanie obsługi zapasowej](./media/slack-provisioning-tutorial/Slack1.PNG)
 
-5. W obszarze **poświadczeń administratora** kliknij **Autoryzuj**. Spowoduje to otwarcie okna dialogowego Slack autoryzacji w nowym oknie przeglądarki.
+5. W sekcji **poświadczenia administratora** kliknij przycisk **Autoryzuj**. Spowoduje to otwarcie okna dialogowego autoryzacji zapasowych w nowym oknie przeglądarki.
 
-6. W nowym oknie Zaloguj Slack przy użyciu konta administratora zespołu. w oknie dialogowym autoryzacji wynikowe, wybierz Slack zespołu, który chcesz włączyć udostępnianie, a następnie wybierz **Autoryzuj**. Po zakończeniu wróć do witryny Azure portal, aby zakończyć konfigurowanie inicjowania obsługi administracyjnej.
+6. W nowym oknie, zaloguj się do zapasu czasu przy użyciu konta administratora Twojego zespołu. w oknie dialogowym uzyskana autoryzacja wybierz zespół zapasowy, dla którego chcesz włączyć obsługę administracyjną, a następnie wybierz pozycję **Autoryzuj**. Po zakończeniu Wróć do Azure Portal, aby zakończyć konfigurację aprowizacji.
 
     ![Okno dialogowe autoryzacji](./media/slack-provisioning-tutorial/Slack3.PNG)
 
-7. W witrynie Azure portal kliknij pozycję **Testuj połączenie** aby upewnij się, Azure AD można połączyć się z aplikacji Slack. Jeśli połączenie nie powiedzie się, upewnij się, że usługi Slack konto ma uprawnienia administratora zespołu i spróbuj ponownie w kroku "Autoryzuj".
+7. W Azure Portal kliknij pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może nawiązać połączenie z aplikacją czasu zapasu. Jeśli połączenie nie powiedzie się, upewnij się, że konto zapasowe ma uprawnienia administratora zespołu, a następnie spróbuj ponownie wykonać krok "Autoryzuj".
 
-8. Wprowadź adres e-mail osoby lub grupy, który powinien zostać wyświetlony inicjowania obsługi administracyjnej powiadomienia o błędach w **wiadomość E-mail z powiadomieniem** pola, a następnie zaznacz poniższe pole wyboru.
+8. Wprowadź adres e-mail osoby lub grupy, które powinny otrzymywać powiadomienia o błędach aprowizacji w polu **E-mail powiadomienia** , a następnie zaznacz pole wyboru poniżej.
 
-9. Kliknij pozycję **Zapisz**.
+9. Kliknij polecenie **Zapisz**.
 
-10. W sekcji mapowania, wybierz **synchronizacji Azure użytkownicy usługi Active Directory do Slack**.
+10. W sekcji mapowania wybierz pozycję **synchronizuj Azure Active Directory użytkownicy do zapasu czasu**.
 
-11. W **mapowania atrybutów** Przejrzyj atrybutów użytkowników, które będą synchronizowane z usługi Azure AD z usługą Slack. Należy zauważyć, że atrybuty wybrany jako **zgodne** właściwości, które będą używane do dopasowania kont użytkowników w Slack w przypadku operacji aktualizacji. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
+11. W sekcji **mapowania atrybutów** Przejrzyj atrybuty użytkownika, które zostaną zsynchronizowane z usługi Azure AD do zapasu czasu. Należy zauważyć, że atrybuty wybrane jako pasujące właściwości będą używane w celu dopasowania do kont użytkowników w zapasach czasu dla operacji aktualizacji. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
 
-12. Aby włączyć usługi Azure AD, inicjowania obsługi usługi Slack, zmień **stanie aprowizacji** do **na** w **ustawienia** sekcji
+12. Aby włączyć usługę Azure AD Provisioning dla zapasu czasu, Zmień **stan aprowizacji** na **włączone** w sekcji **Ustawienia** .
 
-13. Kliknij pozycję **Zapisz**.
+13. Kliknij polecenie **Zapisz**.
 
-Spowoduje to uruchomienie synchronizacji wstępnej użytkowników i/lub grupy przypisane do Slack w sekcji Użytkownicy i grupy. Należy pamiętać, że synchronizacja początkowa może potrwać dłużej niż kolejne synchronizacje, które występują co około 10 minut, tak długo, jak usługa jest uruchomiona. Możesz użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do udostępniania raportów działań, które opisują każdą akcję wykonaną przez usługę aprowizacji w aplikacji Slack.
+Spowoduje to rozpoczęcie synchronizacji początkowej dla wszystkich użytkowników i/lub grup przypisanych do zapasu czasu w sekcji Użytkownicy i grupy. Należy pamiętać, że synchronizacja początkowa zajmie więcej czasu niż kolejne synchronizacje, co wystąpi około 10 minut, o ile usługa jest uruchomiona. Za pomocą sekcji **szczegóły synchronizacji** można monitorować postęp i wykonywać linki do raportów dotyczących działań związanych z obsługą administracyjną, które opisują wszystkie akcje wykonywane przez usługę aprowizacji w aplikacji zapasowej.
 
-## <a name="optional-configuring-group-object-provisioning-to-slack"></a>[Opcjonalnie] Konfigurowanie grupy obiektu aprowizacji Slack
+## <a name="optional-configuring-group-object-provisioning-to-slack"></a>Obowiązkowe Konfigurowanie aprowizacji obiektów grupy do zapasu czasu
 
-Opcjonalnie można włączyć, aprowizacja obiekty grupy z usługi Azure AD w celu Slack. To różni się od "przypisywanie grup użytkowników", w tym, że rzeczywiste grupy obiektów poza jej składowych będą replikowane z usługi Azure AD do Slack. Na przykład jeśli istnieje grupa o nazwie "My" w usłudze Azure AD, identyczne grupy o nazwie "My" zostanie utworzony wewnątrz Slack.
+Opcjonalnie można włączyć obsługę administracyjną obiektów grup z usługi Azure AD do zapasowego czasu. Różni się to od "przypisywania grup użytkowników", ponieważ rzeczywisty obiekt grupy oprócz jego członków będzie replikowany z usługi Azure AD do zapasu czasu. Na przykład jeśli masz grupę o nazwie "moja grupa" w usłudze Azure AD, identyczna Grupa o nazwie "moja grupa" zostanie utworzona wewnątrz zapasu czasu.
 
-### <a name="to-enable-provisioning-of-group-objects"></a>Aby włączyć udostępnianie obiektów grupy:
+### <a name="to-enable-provisioning-of-group-objects"></a>Aby włączyć obsługę administracyjną obiektów grup:
 
-1. W sekcji mapowania, wybierz **synchronizacji Azure grup usługi Active Directory do Slack**.
+1. W sekcji mapowania wybierz pozycję **Synchronizuj grupy Azure Active Directory do zapasu czasu**.
 
-2. W bloku mapowanie atrybutu ustawić włączone Yes (tak).
+2. W bloku mapowanie atrybutu ustaw wartość tak.
 
-3. W **mapowania atrybutów** Przejrzyj atrybuty grupy, które będą synchronizowane z usługi Azure AD z usługą Slack. Należy zauważyć, że atrybuty wybrany jako **zgodne** właściwości, które będą używane do dopasowania grup w Slack dla operacji aktualizowania. 
+3. W sekcji **mapowania atrybutów** Przejrzyj atrybuty grupy, które będą synchronizowane z usługi Azure AD do zapasu czasu. Należy zauważyć, że atrybuty wybrane jako pasujące właściwości będą używane do dopasowania do grup w zapasach czasu dla operacji aktualizacji. 
 
-4. Kliknij pozycję **Zapisz**.
+4. Kliknij polecenie **Zapisz**.
 
-Ten wynik w wszystkie obiekty grupy przypisane do Slack w **użytkowników i grup** sekcji, w pełni są synchronizowane z usługi Azure AD do Slack. Możesz użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do inicjowania obsługi dzienników aktywności, które opisują każdą akcję wykonaną przez usługę aprowizacji w aplikacji Slack.
+Spowoduje to, że wszystkie obiekty grupy przypisane do zapasu czasu w sekcji **Użytkownicy i grupy** są w pełni synchronizowane z usługą Azure AD do zapasu czasu. Za pomocą sekcji **szczegóły synchronizacji** można monitorować postęp i wykonywać linki do dzienników aktywności aprowizacji, które opisują wszystkie akcje wykonywane przez usługę aprowizacji w aplikacji zapasowej.
 
 Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Ograniczenia łącznika
 
-* Podczas konfigurowania firmy Slack **displayName** atrybutu, należy zwrócić uwagę na następujące zachowania:
+* Podczas konfigurowania atrybutu **DisplayName** zapasu należy pamiętać o następujących zachowaniach:
 
-  * Wartości nie są unikatowe w całości, (np. 2 użytkownicy mogą mieć tę samą nazwę wyświetlaną)
+  * Wartości nie są całkowicie unikatowe (np. 2 Użytkownicy mogą mieć taką samą nazwę wyświetlaną)
 
-  * Obsługuje znaków innych niż angielski, miejsca do magazynowania, wielkość liter. 
+  * Obsługuje znaki inne niż angielskie, spacje i wielkie litery. 
   
-  * Dozwolone znaki interpunkcyjne obejmuje kropki, podkreślenia, łączniki, apostrofy, nawiasy kwadratowe (np. **([{}])** ) oraz separatory (np. **, /;** ).
+  * Dozwolone znaki interpunkcyjne obejmują kropki, podkreślenia, łączniki, apostrofy, nawiasy (np. **[{}])** ) i separatory (np. **,/;** ).
   
-  * Aktualizuje tylko, jeśli te dwa ustawienia zostały skonfigurowane w miejscu pracy firmy Slack/organizacji - **synchronizowanie profilu jest włączona** i **użytkownicy nie mogą zmieniać ich nazwy wyświetlanej**.
+  * Tylko aktualizacje, jeśli są skonfigurowane te dwa ustawienia w obszarze roboczym zapasu/ **Synchronizacja profilu organizacji jest włączona** , a **Użytkownicy nie mogą zmieniać ich nazwy wyświetlanej**.
   
-  * Firmy Slack **userName** atrybutu musi być w obszarze 21 znaków i mieć unikatową wartość.
+* Atrybut **nazwy użytkownika** zapasu musi znajdować się w zakresie 21 znaków i mieć unikatową wartość.
+
+* Zapasy czasu umożliwiają dopasowanie z użyciem atrybutów **username** i **email**.  
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

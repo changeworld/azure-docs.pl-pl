@@ -1,6 +1,6 @@
 ---
-title: Jak utworzyć aplikację, która może zalogować dowolnego użytkownika usługi Azure AD
-description: Pokazuje sposób tworzenia aplikacji z wieloma dzierżawami, która może zalogować użytkownika z dzierżawami usługi Azure Active Directory.
+title: Jak utworzyć aplikację, która może zalogować się dowolnego użytkownika usługi Azure AD
+description: Pokazuje, w jaki sposób utworzyć aplikację wielodostępną, która może zalogować użytkownika z dowolnego Azure Active Directory dzierżawcy.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -19,174 +19,174 @@ ms.reviewer: jmprieur, lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d53ed0c9a8ae63c2cb0ced635c6f0a8e8a3222fd
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67482741"
 ---
-# <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Instrukcje: Logowanie dowolnego użytkownika usługi Azure Active Directory za pomocą wzorca aplikacji wielodostępnych
+# <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Instrukcje: Zaloguj dowolnego użytkownika Azure Active Directory przy użyciu wzorca aplikacji wielodostępnych
 
-Jeśli oferujesz oprogramowanie jako usługa (SaaS) aplikacji dla wielu organizacji, można skonfigurować aplikację, aby akceptować logowania z dzierżawami usługi Azure Active Directory (Azure AD). Ta konfiguracja jest nazywana *wprowadzania Twojej aplikacji wielodostępnych*. Użytkownicy w dowolnej dzierżawy usługi Azure AD będą mogli logować się do aplikacji po wyrażanie zgody na korzystanie z tego konta z aplikacją.
+Jeśli oferujesz aplikację oprogramowanie jako usługa (SaaS) w wielu organizacjach, możesz skonfigurować aplikację tak, aby akceptowała logowania z dowolnej dzierżawy usługi Azure Active Directory (Azure AD). Ta konfiguracja jest nazywana *tworzeniem wielu dzierżawców aplikacji*. Użytkownicy w dowolnej dzierżawie usługi Azure AD będą mogli zalogować się do aplikacji po dojściu do korzystania z konta w aplikacji.
 
-Jeśli masz istniejącą aplikację, która ma swój własny system konta lub obsługuje inne rodzaje logowania z innych dostawców rozwiązań w chmurze, dodanie usługi Azure AD Zaloguj się za pomocą dowolnej dzierżawy jest proste. Po prostu Zarejestruj swoją aplikację, Dodaj kod, zaloguj się przy użyciu protokołu OAuth2, OpenID Connect lub SAML oraz umieszczać [przycisku "Sign in with Microsoft"][AAD-App-Branding] w aplikacji.
-
-> [!NOTE]
-> W tym artykule przyjęto założenie, że znasz już Kompilowanie aplikacji pojedynczej dzierżawy usługi Azure AD. Jeśli nie masz, uruchomić przy użyciu jednego z przewodników Szybki Start na [strony głównej przewodnik dla deweloperów][AAD-Dev-Guide].
-
-Istnieją cztery proste kroki, aby przekonwertować aplikacji w aplikacji wielodostępnej usługi Azure AD:
-
-1. [Aktualizuj rejestrację aplikacji w taki sposób, aby się z wieloma dzierżawcami](#update-registration-to-be-multi-tenant)
-2. [Zaktualizuj kod w celu wysyłania żądań do / Common punktu końcowego](#update-your-code-to-send-requests-to-common)
-3. [Zaktualizuj swój kod obsługi wielu wartości wystawcy](#update-your-code-to-handle-multiple-issuer-values)
-4. [Zrozumienie zgody użytkownika i administratora i wprowadź zmiany odpowiedni kod](#understand-user-and-admin-consent)
-
-Spójrzmy na poszczególnych kroków w artykule. Możesz też przejść bezpośrednio do [tej listy przykłady wielodostępnych][AAD-Samples-MT].
-
-## <a name="update-registration-to-be-multi-tenant"></a>Aktualizowanie rejestracji jako wielodostępnych
-
-Rejestracje interfejsu API i aplikacji sieci web w usłudze Azure AD są domyślnie pojedynczej dzierżawy. Aby włączyć rejestrację wielodostępne, wyszukując **obsługiwane typy kont** przełączyć się **uwierzytelniania** okienko rejestrację aplikacji w [witrynyAzureportal][AZURE-portal] i ustawieniem dla niego **kont w dowolnym katalogu organizacji**.
-
-Przed aplikacji wielodostępnych, usługa Azure AD wymaga identyfikator URI Identyfikatora aplikacji aplikacji mogą być globalnie unikatowa. Identyfikator URI identyfikatora aplikacji jest jednym ze sposobów, w jaki aplikacja jest identyfikowana w komunikatach protokołu. W przypadku aplikacji pojedynczej dzierżawy wystarczy, aby identyfikator URI identyfikatora aplikacji był unikatowy w obrębie tej dzierżawy. W przypadku aplikacji wielodostępnej ten identyfikator musi być globalnie unikatowy, dzięki czemu usługa Azure AD będzie mogła znaleźć aplikację we wszystkich dzierżawach. Globalna unikatowość jest wymuszana poprzez wymaganie, aby identyfikator URI identyfikatora aplikacji miał nazwę hosta, która jest zgodna ze zweryfikowaną domeną dzierżawy usługi Azure AD.
-
-Domyślnie aplikacje utworzone w witrynie Azure portal mają globalnie unikatowy identyfikator URI aplikacji ustaw przy tworzeniu aplikacji, ale możesz zmienić tę wartość. Na przykład, jeśli nazwa Twojej dzierżawy został contoso.onmicrosoft.com, a następnie prawidłowy identyfikator URI Identyfikatora aplikacji będzie `https://contoso.onmicrosoft.com/myapp`. Jeśli zweryfikowaną domenę dzierżawy `contoso.com`, a następnie prawidłowy identyfikator URI aplikacji będą również `https://contoso.com/myapp`. Jeśli identyfikator URI identyfikatora aplikacji nie jest zgodny z tym wzorcem, ustawienie aplikacji jako aplikacji wielodostępnej zakończy się niepowodzeniem.
+Jeśli masz istniejącą aplikację, która ma własny system kont lub obsługuje inne rodzaje logowań z innych dostawców chmury, Dodawanie logowania za pomocą usługi Azure AD z dowolnego dzierżawy jest proste. Po prostu zarejestruj aplikację, Dodaj kod logowania za pośrednictwem OAuth2, OpenID Connect Connect lub SAML i umieść [przycisk "Zaloguj się przy użyciu konta Microsoft"][AAD-App-Branding] w aplikacji.
 
 > [!NOTE]
-> Rejestracje klienta natywnego także [aplikacji platforma tożsamości firmy Microsoft](./active-directory-appmodel-v2-overview.md) są wielodostępne domyślnie. Nie trzeba podejmować żadnych działań do tych rejestracji aplikacji wielodostępnych.
+> W tym artykule przyjęto założenie, że wiesz już, jak kompilować aplikację z jedną dzierżawą dla usługi Azure AD. Jeśli nie, Zacznij od jednego z szybkich samouczków na [stronie głównej przewodnika dla deweloperów][AAD-Dev-Guide].
 
-## <a name="update-your-code-to-send-requests-to-common"></a>Zaktualizuj kod w celu wysyłania żądań do/Common
+Istnieją cztery proste kroki umożliwiające przekonwertowanie aplikacji do aplikacji wielodostępnej usługi Azure AD:
 
-W przypadku aplikacji pojedynczej dzierżawy żądań logowania są wysyłane do dzierżawy logowania punktu końcowego. Na przykład dla contoso.onmicrosoft.com punkt końcowy będzie: `https://login.microsoftonline.com/contoso.onmicrosoft.com`. Żądania wysyłane do punktu końcowego dzierżawcy mogą logować użytkowników (lub gości) w tej dzierżawie, do aplikacji w tej dzierżawie.
+1. [Aktualizowanie rejestracji aplikacji w ramach wielu dzierżawców](#update-registration-to-be-multi-tenant)
+2. [Aktualizowanie kodu w celu wysyłania żądań do punktu końcowego/typowe](#update-your-code-to-send-requests-to-common)
+3. [Zaktualizuj swój kod, aby obsługiwał wiele wartości wystawcy](#update-your-code-to-handle-multiple-issuer-values)
+4. [Zrozumienie zgody użytkownika i administratora oraz wprowadzenie odpowiednich zmian w kodzie](#understand-user-and-admin-consent)
 
-Za pomocą aplikacji z wieloma dzierżawami aplikacji nie może ustalić na początku dzierżawy, jakie użytkownik jest, więc nie mogą wysyłać żądania do punktu końcowego dzierżawcy. Zamiast tego żądania są wysyłane do punktu końcowego, który multipleksuje dla dzierżaw wszystkie usługi Azure AD: `https://login.microsoftonline.com/common`
+Przyjrzyjmy się szczegółowym krokom. Możesz też przejść bezpośrednio do [tej listy przykładów z wieloma dzierżawcami][AAD-Samples-MT].
 
-Gdy platforma tożsamości usługi Microsoft otrzyma żądanie na / Common punktu końcowego, jego loguje się użytkownik i, w konsekwencji odnajduje dzierżawy, który użytkownik pochodzi z. / Endpoint wspólnego pracuje ze wszystkimi protokołów uwierzytelniania, obsługiwanych przez usługę Azure AD:  OpenID Connect, OAuth 2.0, SAML 2.0 i WS-Federation.
+## <a name="update-registration-to-be-multi-tenant"></a>Aktualizowanie rejestracji w ramach wielu dzierżawców
 
-Odpowiedź logowania do aplikacji, następnie zawiera token reprezentujący użytkownika. Wartość wystawcy w tokenie informuje aplikację dzierżawy, jakie użytkownik pochodzi. Gdy odpowiedzi zwraca znajdujący punktu końcowego, wartość wystawcy w tokenie odnosi się do dzierżawy użytkownika.
+Domyślnie rejestracje aplikacji sieci Web/interfejsu API w usłudze Azure AD są pojedynczym dzierżawcą. Możesz dokonać rejestracji wielu dzierżawców, wyszukując ustawienia **obsługiwane typy kont** w okienku **uwierzytelnianie** rejestracji aplikacji w [Azure Portal][AZURE-portal] i ustawiając je na **konta w dowolnej organizacji Katalog**.
+
+Aby można było nawiązać aplikację z wieloma dzierżawcami, usługa Azure AD wymaga, aby identyfikator URI aplikacji był globalnie unikatowy. Identyfikator URI identyfikatora aplikacji jest jednym ze sposobów, w jaki aplikacja jest identyfikowana w komunikatach protokołu. W przypadku aplikacji pojedynczej dzierżawy wystarczy, aby identyfikator URI identyfikatora aplikacji był unikatowy w obrębie tej dzierżawy. W przypadku aplikacji wielodostępnej ten identyfikator musi być globalnie unikatowy, dzięki czemu usługa Azure AD będzie mogła znaleźć aplikację we wszystkich dzierżawach. Globalna unikatowość jest wymuszana poprzez wymaganie, aby identyfikator URI identyfikatora aplikacji miał nazwę hosta, która jest zgodna ze zweryfikowaną domeną dzierżawy usługi Azure AD.
+
+Domyślnie aplikacje utworzone za pośrednictwem Azure Portal mają globalnie unikatowy identyfikator URI aplikacji ustawiony podczas tworzenia aplikacji, ale można zmienić tę wartość. Na przykład, jeśli nazwa dzierżawy została contoso.onmicrosoft.com, prawidłowy identyfikator URI aplikacji będzie mieć `https://contoso.onmicrosoft.com/myapp`wartość. Jeśli Twoja dzierżawa ma zweryfikowaną domenę `contoso.com`, prawidłowy identyfikator URI aplikacji również będzie mieć `https://contoso.com/myapp`wartość. Jeśli identyfikator URI identyfikatora aplikacji nie jest zgodny z tym wzorcem, ustawienie aplikacji jako aplikacji wielodostępnej zakończy się niepowodzeniem.
+
+> [!NOTE]
+> Natywne rejestracje klienta oraz [aplikacje platformy tożsamości firmy Microsoft](./active-directory-appmodel-v2-overview.md) są domyślnie dostępne dla wielu dzierżawców. Nie musisz podejmować żadnych działań w celu przełączenia tych aplikacji do wielu dzierżawców.
+
+## <a name="update-your-code-to-send-requests-to-common"></a>Aktualizowanie kodu w celu wysyłania żądań do/typowe
+
+W jednej aplikacji dzierżawcy żądania logowania są wysyłane do punktu końcowego logowania dzierżawcy. Na przykład dla contoso.onmicrosoft.com punkt końcowy będzie: `https://login.microsoftonline.com/contoso.onmicrosoft.com`. Żądania wysyłane do punktu końcowego dzierżawy mogą logować użytkowników (lub Gości) w tej dzierżawie do aplikacji w tej dzierżawie.
+
+W przypadku aplikacji z wieloma dzierżawcami aplikacja nie wie, z której dzierżawą pochodzi użytkownik, i nie może wysyłać żądań do punktu końcowego dzierżawy. Zamiast tego żądania są wysyłane do punktu końcowego, który ma wszystkie dzierżawy usługi Azure AD:`https://login.microsoftonline.com/common`
+
+Gdy platforma tożsamości firmy Microsoft odbiera żądanie w punkcie końcowym/typowe, podpisuje użytkownika w i, w związku z tym, wykrywa dzierżawę, z której pochodzi użytkownik. Punkt końcowy/typowe współpracuje ze wszystkimi protokołami uwierzytelniania obsługiwanymi przez usługę Azure AD:  OpenID Connect Connect, OAuth 2,0, SAML 2,0 i WS-Federation.
+
+Odpowiedź na logowanie do aplikacji zawiera token reprezentujący użytkownika. Wartość wystawcy w tokenie instruuje aplikację, z której pochodzi użytkownik. Po powrocie odpowiedzi z punktu końcowego/typowe wartość wystawcy w tokenie odpowiada dzierżawcy użytkownika.
 
 > [!IMPORTANT]
-> / Wspólnego punktu końcowego nie dzierżawę i nie jest wystawcy, jest po prostu multiplekser. Używając/Common logikę w aplikacji w taki sposób, aby sprawdzał poprawność tokenów musi zostać zaktualizowane, aby wziąć pod uwagę.
+> Punkt końcowy/typowe nie jest dzierżawcą i nie jest wystawcą. jest tylko multiplekserem. W przypadku korzystania z/typowe logika w aplikacji do weryfikacji tokenów musi zostać zaktualizowana w celu uwzględnienia tego konta.
 
-## <a name="update-your-code-to-handle-multiple-issuer-values"></a>Zaktualizuj swój kod obsługi wielu wartości wystawcy
+## <a name="update-your-code-to-handle-multiple-issuer-values"></a>Zaktualizuj swój kod, aby obsługiwał wiele wartości wystawcy
 
-Aplikacji internetowych i internetowych interfejsów API odbierania i sprawdzania poprawności tokenów z platformą Microsoft identity.
+Aplikacje sieci Web i interfejsy API sieci Web odbierają i weryfikują tokeny z platformy tożsamości firmy Microsoft.
 
 > [!NOTE]
-> Natywne aplikacje klienckie żądania i odbierania tokenów z platformą Microsoft identity, to zrobią wysyłać je do interfejsów API, w którym są prawidłowe. Aplikacje natywne nie weryfikują tokeny i musisz potraktować je jako nieprzezroczysty.
+> Chociaż natywne aplikacje klienckie żądają tokenów od platformy tożsamości firmy Microsoft i odbierają je, wysyłają je do interfejsów API, gdzie są weryfikowane. Natywne aplikacje nie weryfikują tokenów i muszą traktować je jako nieprzezroczyste.
 
-Przyjrzyjmy się w jaki sposób aplikacja weryfikuje tokeny otrzymuje z platformą Microsoft identity. Aplikacja jednej dzierżawy trwa zwykle wartości punktu końcowego, takie jak:
+Przyjrzyjmy się, jak aplikacja sprawdza poprawność tokenów odbieranych z platformy tożsamości firmy Microsoft. Aplikacja pojedynczej dzierżawy zwykle przyjmuje wartość punktu końcowego, taką jak:
 
     https://login.microsoftonline.com/contoso.onmicrosoft.com
 
-i używa go do utworzenia metadanych adres URL (w tym przypadku OpenID Connect), takich jak:
+i używa go do konstruowania adresu URL metadanych (w tym przypadku OpenID Connect Connect), takich jak:
 
     https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration
 
-Aby pobrać dwóch najistotniejsze informacje, które są używane do sprawdzania poprawności tokenów: dzierżawy podpisywania kluczy i wartości wystawcy. Każda dzierżawa usługi Azure AD ma wartość unikatowego wystawcy formularza:
+Aby pobrać dwie krytyczne informacje, które są używane do weryfikacji tokenów: klucze podpisywania i wartość wystawcy dzierżawcy. Każda dzierżawa usługi Azure AD ma unikatową wartość wystawcy w postaci:
 
     https://sts.windows.net/31537af4-6d77-4bb9-a681-d2394888ea26/
 
-gdy wartość GUID jest identyfikator dzierżawy w dzierżawie w wersji safe zmiany nazwy. Jeśli wybierzesz pod powyższym linkiem metadanych dla `contoso.onmicrosoft.com`, zobaczysz tę wartość wystawcy w dokumencie.
+gdzie GUID wartością jest wersja z bezpiecznym zmianami identyfikatora dzierżawy dzierżawy. W przypadku wybrania poprzedniego linku metadanych `contoso.onmicrosoft.com`dla programu można zobaczyć tę wartość wystawcy w dokumencie.
 
-Gdy aplikacja jednej dzierżawy weryfikuje token, sprawdza podpis tokenu względem klucze podpisywania z dokumentu metadanych. Ten test pozwala ją, aby upewnić się, że wartość wystawcy w tokenie jest zgodna ze strukturą, która została znaleziona w dokumencie metadanych.
+Gdy aplikacja pojedynczej dzierżawy zweryfikuje token, sprawdza podpis tokenu względem kluczy podpisywania z dokumentu metadanych. Ten test pozwala na upewnienie się, że wartość wystawcy w tokenie jest zgodna z tą, która została znaleziona w dokumencie metadanych.
 
-Ponieważ / wspólnego punktu końcowego nie odnoszą się do dzierżawy i nie jest wystawcy, sprawdź wartość wystawcy w metadanych dla/common ma z szablonem adresu URL zamiast rzeczywistej wartości:
+Ponieważ punkt końcowy/typowe nie odpowiada dzierżawcy i nie jest wystawcą, podczas badania wartości wystawcy w metadanych dla/typowe ma adres URL z szablonem, a nie rzeczywistą wartość:
 
     https://sts.windows.net/{tenantid}/
 
-W związku z tym, aplikacji z wieloma dzierżawami nie można sprawdzić poprawności tokenów po prostu, dopasowując wartości wystawcy metadanych za pomocą `issuer` wartość w tokenie. Aplikacja wielodostępna musi logikę do określania wartości wystawcy, które są prawidłowe i nie są oparte na część Identyfikatora dzierżawy wartości wystawcy. 
+W związku z tym aplikacja wielodostępna nie może zweryfikować tokenów tylko przez dopasowanie wartości wystawcy w `issuer` metadanych przy użyciu wartości w tokenie. Aplikacja wielodostępna wymaga logiki, która decyduje o tym, które wartości wystawcy są prawidłowe i które nie są oparte na części identyfikatora dzierżawy wartości wystawcy. 
 
-Na przykład, jeśli aplikacja wielodostępna umożliwia tylko logowania z określonym dzierżawcy, którzy utworzyli konto usługi, następnie powinien sprawdzić wartość wystawcy lub `tid` wartości w tokenie, aby upewnić się, że dzierżawa znajduje się w ich listę subskrybentów oświadczenia. Jeśli aplikacja wielodostępna dotyczy osób i tylko nie decyzje dotyczące dowolnego dostępu oparte na dzierżaw, następnie go zignorować wartości wystawcy całkowicie.
+Jeśli na przykład aplikacja wielodostępna zezwala tylko na logowanie się z określonych dzierżawców, którzy zarejestrowali się w celu korzystania z usługi, musi sprawdzić wartość wystawcy lub `tid` wartość żądania w tokenie, aby upewnić się, że dzierżawa znajduje się na liście subskrybentów. Jeśli aplikacja wielodostępna zajmuje się tylko osobom i nie podejmuje decyzji o dostępie na podstawie dzierżawców, może całkowicie zignorować wartość wystawcy.
 
-W [przykłady wielodostępnych][AAD-Samples-MT], sprawdzania poprawności wystawcy jest wyłączona, aby włączyć wszystkie dzierżawy usługi Azure AD zalogować się.
+W przykładach z [wieloma dzierżawcami][AAD-Samples-MT]weryfikacja wystawcy jest wyłączona, aby umożliwić zalogowanie się w dzierżawie usługi Azure AD.
 
-## <a name="understand-user-and-admin-consent"></a>Zrozumienie zgody użytkowników i administratorów
+## <a name="understand-user-and-admin-consent"></a>Zrozumienie zgody użytkownika i administratora
 
-Dla użytkownika do logowania do aplikacji w usłudze Azure AD aplikacja musi być reprezentowana w dzierżawie użytkownika. Dzięki temu organizacji do wykonywania czynności takich jak stosowanie zasad unikatowe, gdy użytkownicy z dzierżawy Zaloguj się do aplikacji. Rejestracja aplikacji pojedynczej dzierżawy, jest proste; jest ten, który się dzieje po zarejestrowaniu aplikacji w [witryny Azure portal][AZURE-portal].
+Aby użytkownik mógł zalogować się do aplikacji w usłudze Azure AD, aplikacja musi być reprezentowana w dzierżawie użytkownika. Dzięki temu organizacja może wykonywać takie czynności, jak stosowanie unikatowych zasad, gdy użytkownicy z ich dzierżawy logują się do aplikacji. W przypadku pojedynczej aplikacji dzierżawy ta rejestracja jest prosta. jest to taka, która występuje po zarejestrowaniu aplikacji w [Azure Portal][AZURE-portal].
 
-W przypadku aplikacji wielodostępnych wstępnej rejestracji aplikacji znajduje się w dzierżawie usługi Azure AD używany przez dewelopera. Po zalogowaniu się użytkownika z innej dzierżawy do aplikacji po raz pierwszy usługi Azure AD pyta, czy je do wyrażenia zgody na uprawnienia wymagane przez aplikację. Mogą wyrazić zgodę, a następnie reprezentację aplikacji o nazwie *nazwy głównej usługi* zostanie utworzony w dzierżawie użytkownika i logowania można kontynuować. Delegowanie również jest tworzony w katalogu, który rejestruje zgody użytkownika do aplikacji. Szczegółowe informacje na temat aplikacji w aplikacji i ServicePrincipal obiektów i jak powiązane są ze sobą, [obiekty aplikacji i obiektów nazw głównych usług][AAD-App-SP-Objects].
+W przypadku aplikacji z wieloma dzierżawami początkowa Rejestracja aplikacji jest używana w dzierżawie usługi Azure AD używanej przez dewelopera. Gdy użytkownik z innej dzierżawy loguje się do aplikacji po raz pierwszy, usługa Azure AD poprosi o zgodę na uprawnienia wymagane przez aplikację. Jeśli użytkownik wyrazi zgodę, reprezentacja aplikacji zwanej jednostką *usługi* jest tworzona w dzierżawie użytkownika, a logowanie może być kontynuowane. W katalogu zostanie również utworzona delegacja, która rejestruje zgodę użytkownika na aplikację. Aby uzyskać szczegółowe informacje na temat aplikacji i obiektów serviceprincipal aplikacji oraz jak są one ze sobą powiązane, zobacz [obiekty aplikacji i obiekty główne usługi][AAD-App-SP-Objects].
 
-![Ilustruje zgody aplikacji jednowarstwowej][Consent-Single-Tier]
+![Przedstawia zgodę na aplikację jednowarstwową][Consent-Single-Tier]
 
-To środowisko zgody dotyczy uprawnień żądany przez aplikację. Platforma tożsamości firmy Microsoft obsługuje dwa rodzaje uprawnień, tylko do aplikacji i delegowanego.
+Do tej zgody mają wpływ uprawnienia wymagane przez aplikację. Platforma tożsamości firmy Microsoft obsługuje dwa rodzaje uprawnień, tylko aplikacje i delegowane.
 
-* Uprawnienia delegowane przyznaje aplikacji zrobić zdolność do działania jako zalogowanego użytkownika dla podzbioru czynności użytkownika. Na przykład można przyznać aplikacji delegowane uprawnienia do odczytu kalendarza zalogowanego użytkownika.
-* Uprawnienia tylko do aplikacji jest udzielane bezpośrednio do tożsamość aplikacji. Na przykład można udzielić aplikacji uprawnień tylko do aplikacji można odczytać listy użytkowników w dzierżawie, niezależnie od tego, kto jest zalogowany do aplikacji.
+* Delegowane uprawnienie przyznaje aplikacji możliwość działania jako użytkownik zalogowany dla podzbioru rzeczy, które może wykonywać użytkownik. Na przykład można udzielić aplikacji uprawnienia delegowane do odczytu kalendarza zalogowanego użytkownika.
+* Uprawnienie tylko do aplikacji jest udzielane bezpośrednio do tożsamości aplikacji. Na przykład można udzielić aplikacji uprawnienia tylko do odczytu listy użytkowników w dzierżawie, niezależnie od tego, kto jest zalogowany do aplikacji.
 
-Niektóre uprawnienia mogą wyrażono zgodę przez zwykłego użytkownika, a inne wymagają zgody administratora dzierżawy. 
+Niektóre uprawnienia mogą być wysyłane przez zwykłego użytkownika, a inne wymagają zgody administratora dzierżawy. 
 
-### <a name="admin-consent"></a>zgoda administratora
+### <a name="admin-consent"></a>Zgoda administratora
 
-Uprawnienia dotyczące tylko aplikacji zawsze wymagają zgody administratora dzierżawy. Jeśli Twoja aplikacja żąda uprawnienia tylko do aplikacji, a użytkownik próbuje zalogować się do aplikacji, jest wyświetlany komunikat o błędzie, informujący o tym, że użytkownik nie jest w stanie do wyrażenia zgody.
+Uprawnienia dotyczące tylko aplikacji zawsze wymagają zgody administratora dzierżawy. Jeśli aplikacja żąda uprawnień tylko do aplikacji, a użytkownik próbuje zalogować się do aplikacji, zostanie wyświetlony komunikat o błędzie informujący o tym, że użytkownik nie jest w stanie wyrazić zgody.
 
-Niektóre uprawnienia delegowane również wymagają zgody administratora dzierżawy. Na przykład możliwość zapisania z powrotem do usługi Azure AD jako zalogowany użytkownik wymaga zgody administratora dzierżawy. Jak uprawnień dotyczących tylko aplikacji Jeśli zwykły użytkownik próbuje zalogować się do aplikacji, która żąda uprawnienia delegowanego, który wymaga zgody administratora aplikacji otrzymuje informację o błędzie. Czy uprawnienie wymaga zgody administratora jest określany przez dewelopera, opublikowane zasobu, która znajduje się w dokumentacji dla zasobu. W dokumentacji uprawnienia [interfejsu API usługi Azure AD Graph][AAD-Graph-Perm-Scopes] and [Microsoft Graph API][MSFT-Graph-permission-scopes] wskazują, jakie uprawnienia wymagają zgody administratora.
+Niektóre uprawnienia delegowane wymagają również zgody administratora dzierżawy. Na przykład możliwość zapisu zwrotnego w usłudze Azure AD jako zalogowany użytkownik wymaga zgody administratora dzierżawy. Podobnie jak uprawnienia tylko do aplikacji, jeśli zwykły użytkownik próbuje zalogować się do aplikacji, która żąda delegowanego uprawnienia, które wymaga zgody administratora, aplikacja otrzymuje błąd. Niezależnie od tego, czy uprawnienie wymaga zgody administratora, jest określane przez dewelopera, który opublikował zasób, i można je znaleźć w dokumentacji dotyczącej zasobu. Dokumentacja uprawnień dla [usługi Azure AD interfejs API programu Graph][AAD-Graph-Perm-Scopes] i [interfejsu API Microsoft Graph][MSFT-Graph-permission-scopes] wskazują, które uprawnienia wymagają zgody administratora.
 
-Jeśli aplikacja używa uprawnień, które wymagają zgody administratora, musisz mieć gest, takich jak przycisk lub łącze, gdzie administrator może zainicjować akcji. Żądania, Twoja aplikacja przesyła ta akcja jest zwykle OAuth2/OpenID Connect żądanie autoryzacji, która obejmuje również `prompt=admin_consent` parametr ciągu zapytania. Gdy administrator wyraził zgodę i nazwy głównej usługi jest tworzony w dzierżawie klienta, kolejne żądania logowania nie ma potrzeby `prompt=admin_consent` parametru. Ponieważ administrator podjęto decyzję, że żądane uprawnienia są dopuszczalne, żaden użytkownik w dzierżawie monit o zgodę od tego momentu.
+Jeśli aplikacja korzysta z uprawnień, które wymagają zgody administratora, należy mieć gest, taki jak przycisk lub link, w którym administrator może zainicjować akcję. Żądanie wysyłane przez aplikację dla tej akcji to zwykłe żądanie autoryzacji OAuth2/OpenID Connect połączenia, które zawiera `prompt=admin_consent` również parametr ciągu zapytania. Gdy administrator wyraził zgodę, a jednostka usługi zostanie utworzona w dzierżawie klienta, kolejne żądania logowania nie potrzebują `prompt=admin_consent` parametru. Ze względu na to, że administrator zdecydował się, że żądane uprawnienia są akceptowalne, żaden inny użytkownik w dzierżawie nie zostanie poproszony o zgodę od tego momentu.
 
-Administrator dzierżawy może wyłączyć możliwość wyrażania zgody na aplikacje przez zwykłych użytkowników. Jeśli ta funkcja jest wyłączona, zgoda administratora jest zawsze wymagana do używania aplikacji w dzierżawie. Aby przetestować aplikację, za zgodą użytkownika końcowego wyłączone, możesz znaleźć przełącznika konfiguracji w [witryny Azure portal][AZURE-portal] w **[ustawienia użytkownika](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)** sekcji **Aplikacje dla przedsiębiorstw**.
+Administrator dzierżawy może wyłączyć możliwość wyrażania zgody na aplikacje przez zwykłych użytkowników. Jeśli ta funkcja jest wyłączona, zgoda administratora jest zawsze wymagana do używania aplikacji w dzierżawie. Jeśli chcesz przetestować aplikację z wyłączoną zgodą użytkownika końcowego, możesz znaleźć przełącznik konfiguracji w [Azure Portal][AZURE-portal] w sekcji **[Ustawienia użytkownika](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)** w obszarze **aplikacje dla przedsiębiorstw**.
 
-`prompt=admin_consent` Parametru używać przez aplikacje, które zażądać uprawnień, które nie wymagają zgody administratora. Przykładem kiedy będzie to używana jest, jeśli aplikacja wymaga środowiska, w którym administrator dzierżawy "zarejestruje się w" jednym czasie, a żadne inne monit o zgodę od tego momentu.
+Ten `prompt=admin_consent` parametr może być również używany przez aplikacje żądające uprawnień, które nie wymagają zgody administratora. Przykładem sytuacji, w której będzie on używany, jest to, że aplikacja wymaga środowiska, w którym Administrator dzierżawy jest "jednokrotne", a inni użytkownicy nie otrzymują monitu o zgodę od tego momentu.
 
-Jeśli aplikacja wymaga zgody administratora, a administrator loguje się bez `prompt=admin_consent` parametru są wysyłane, gdy administrator pomyślnie wyraża zgodę aplikacji będzie stosowana **tylko dla swojego konta użytkownika**. Regularne użytkownicy nadal nie będą mogli zalogować się lub wyrazić zgodę na aplikację. Ta funkcja jest przydatna, jeśli chcesz nadać administratorowi dzierżawy możliwość badania aplikacji przed zezwoleniem na dostęp innym użytkownikom.
+Jeśli aplikacja wymaga zgody administratora, a administrator loguje się bez `prompt=admin_consent` wysyłanego parametru, gdy administrator pomyślnie wyraził zgodę na aplikację, zostanie ona zastosowana **tylko do konta użytkownika**. Regularne użytkownicy nadal nie będą mogli zalogować się ani wyrazić zgody na aplikację. Ta funkcja jest przydatna, jeśli chcesz dać administratorowi dzierżawy możliwość eksplorowania aplikacji przed zezwoleniem innym użytkownikom na dostęp.
 
 > [!NOTE]
-> Niektóre aplikacje mają środowisko, w którym zwykli użytkownicy będą mogli początkowo zgody, a później aplikacja może obejmować uprawnienia administratora i żądania, które wymagają zgody administratora. Nie ma możliwości w tym celu z rejestracji aplikacji w wersji 1.0 w usłudze Azure AD obecnie; Jednak przy użyciu punktu końcowego platformy (w wersji 2.0) dla tożsamości firmy Microsoft umożliwia aplikacji, aby zażądać uprawnień w czasie wykonywania, a nie w czasie rejestracji, który umożliwia ten scenariusz. Aby uzyskać więcej informacji, zobacz [punktu końcowego platformy tożsamości firmy Microsoft][AAD-V2-Dev-Guide].
+> Niektóre aplikacje chcą korzystać z funkcji, w których regularnie użytkownicy mogą wyrazić zgodę, a później aplikacja może obejmować uprawnienia administratora i żądania, które wymagają zgody administratora. Obecnie nie ma możliwości wykonania tej czynności za pomocą rejestracji aplikacji w wersji 1.0 w usłudze Azure AD. Korzystanie z punktu końcowego Microsoft Identity platform (v 2.0) umożliwia aplikacjom żądanie uprawnień w czasie wykonywania, a nie w czasie rejestracji, co umożliwia wykonanie tego scenariusza. Aby uzyskać więcej informacji, zobacz [punkt końcowy platformy tożsamości firmy Microsoft][AAD-V2-Dev-Guide].
 
-### <a name="consent-and-multi-tier-applications"></a>Aplikacje wielowarstwowe i zgody
+### <a name="consent-and-multi-tier-applications"></a>Zgody i wielowarstwowe aplikacje
 
-Aplikacja może mieć wiele warstw, każdy reprezentowany przez własną rejestracji w usłudze Azure AD. Na przykład aplikacji natywnej, która wywołuje interfejs API sieci web lub aplikacji sieci web, wywołuje interfejs API sieci web. W obu przypadkach klient (natywnej aplikacji lub aplikacji sieci web) żąda uprawnień do wywoływania zasobów (interfejsu API sieci web). Klient pomyślnie wyrazić w dzierżawie klienta wszystkie zasoby, do których żąda uprawnień musi już istnieć w dzierżawie klienta. Jeśli ten warunek nie zostanie spełniony, usługi Azure AD zwraca błąd, czy zasób należy najpierw dodać.
+Aplikacja może mieć wiele warstw, z których każda jest reprezentowana przez własną rejestrację w usłudze Azure AD. Na przykład aplikacja natywna, która wywołuje interfejs API sieci Web, lub aplikację sieci Web, która wywołuje interfejs API sieci Web. W obu przypadkach klient (aplikacja natywna lub aplikacja sieci Web) żąda uprawnień do wywoływania zasobu (internetowy interfejs API). Aby klient mógł zostać pomyślnie przesłany do dzierżawy klienta, wszystkie zasoby, do których żąda uprawnień, muszą już istnieć w dzierżawie klienta. Jeśli ten warunek nie zostanie spełniony, usługa Azure AD zwróci błąd, aby najpierw dodać zasób.
 
-#### <a name="multiple-tiers-in-a-single-tenant"></a>Wiele warstw w pojedynczej dzierżawy
+#### <a name="multiple-tiers-in-a-single-tenant"></a>Wiele warstw w jednej dzierżawie
 
-Może to być problemem, jeśli Twojej aplikacji logicznych składa się z co najmniej dwóch rejestracje aplikacji, na przykład odrębny klient i zasobów. Jak można uzyskać zasobu do dzierżawy klienta pierwszy? Usługa Azure AD obejmuje takim po włączeniu klient i zasobów wyrazić w jednym kroku. Użytkownik zobaczy łączną sumę liczby uprawnień żądany przez klienta i zasobów na strona zgody użytkownika. Aby włączyć to zachowanie, Rejestracja aplikacji zasobu musi zawierać Identyfikatora aplikacji klienckiej jako `knownClientApplications` w jego [manifest aplikacji][AAD-App-Manifest]. Na przykład:
+Może to być problem, jeśli aplikacja logiczna składa się z co najmniej dwóch rejestracji aplikacji, na przykład oddzielnego klienta i zasobu. Jak należy najpierw pobrać zasób do dzierżawy klienta? Usługa Azure AD omawia ten przypadek, umożliwiając klientowi i zalogowanie się w jednym kroku. Użytkownik widzi łączną sumę uprawnień wymaganych przez klienta i zasób na stronie wyrażania zgody. Aby włączyć to zachowanie, Rejestracja aplikacji zasobu musi zawierać identyfikator aplikacji klienta jako element `knownClientApplications` w [manifeście aplikacji][AAD-App-Manifest]. Na przykład:
 
     knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
 
-Jest to zaprezentowane w wielowarstwowej klient natywny, w przypadku wywoływania przykładowym internetowym interfejsie API [powiązana zawartość](#related-content) sekcji na końcu tego artykułu. Poniższy diagram zawiera omówienie wyrażania zgody dla aplikacji wielowarstwowych, zarejestrowany w jednej dzierżawie.
+Jest to zademonstrowane w ramach wielowarstwowego, natywnego wywołania interfejsu API sieci Web w sekcji [powiązanej zawartości](#related-content) na końcu tego artykułu. Poniższy diagram zawiera omówienie wyrażania zgody dla aplikacji wielowarstwowej zarejestrowanej w ramach jednej dzierżawy.
 
-![Ilustruje zgody na aplikację wielowarstwową znanych klienta][Consent-Multi-Tier-Known-Client]
+![Przedstawia zgodę na znaną aplikację kliencką wielowarstwową][Consent-Multi-Tier-Known-Client]
 
-#### <a name="multiple-tiers-in-multiple-tenants"></a>Wiele warstw w wielu dzierżaw
+#### <a name="multiple-tiers-in-multiple-tenants"></a>Wiele warstw w wielu dzierżawcach
 
-Podobne przypadek się dzieje w przypadku różnych warstw w aplikacji są rejestrowane w różnych dzierżawach. Na przykład należy wziąć pod uwagę w przypadku tworzenia aplikacji klienta natywnego, który wywołuje z pakietu Office 365 Exchange Online interfejsu API. Do tworzenia natywnych aplikacji i nowszej dla natywnych aplikacji do uruchamiania w dzierżawie klienta, nazwa główna usługi Exchange Online musi być obecny. W takim przypadku dla deweloperów i klientów musi zakupić usługi Exchange Online do tej jednostki zostały utworzone w ich dzierżawami usługi.
+Podobny przypadek ma miejsce, jeśli różne warstwy aplikacji są zarejestrowane w różnych dzierżawach. Rozważmy na przykład przypadek tworzenia natywnej aplikacji klienckiej, która wywołuje interfejs API usługi Exchange 365 Office Online. Aby opracować aplikację natywną, a później w celu uruchomienia aplikacji natywnej w dzierżawie klienta musi być obecna nazwa główna usługi Exchange Online. W takim przypadku deweloper i klient muszą zakupić usługę Exchange Online w celu utworzenia jednostki usługi w swoich dzierżawach.
 
-Jeśli jest to interfejs API utworzone przez organizację innych niż Microsoft, dla deweloperów interfejsu API musi umożliwiają klientom zgody aplikacji na swoim klientom dzierżaw. Zalecany projekt jest dla deweloperów innych firm do tworzenia interfejsu API w taki sposób, że może również działać jako klient sieci web w celu zaimplementowania rejestracji. W tym celu:
+Jeśli jest to interfejs API zbudowany przez organizację inną niż Microsoft, deweloper interfejsu API musi zapewnić klientom zgodę na stosowanie aplikacji do dzierżawców klientów. Zalecany projekt jest przeznaczony dla deweloperów innych firm do kompilowania interfejsu API w taki sposób, że może on również działać jako klient sieci Web w celu zaimplementowania rejestracji. W tym celu:
 
-1. Postępuj zgodnie z wcześniejszych sekcjach, aby upewnić się, że interfejs API implementuje wymagania dotyczące rejestracji/kodu aplikacji wielodostępnych.
-2. Oprócz udostępnianie interfejsu API zakresy/role, upewnij się, zawiera rejestracji "Zaloguj się i odczytuj profil użytkownika" uprawnienia (udostępnione domyślnie).
-3. Implementowanie strony logowania — w/rejestracją w kliencie sieci web i postępuj zgodnie z [zgody administratora](#admin-consent) wskazówki.
-4. Po użytkownik wyraża zgodę na aplikację, jednostki i zgody delegowania łącza do usług są tworzone w ramach ich dzierżawy, a następnie aplikacji natywnej mogą uzyskiwać tokeny interfejsu API.
+1. Postępuj zgodnie z wcześniejszymi sekcjami, aby upewnić się, że interfejs API implementuje wymagania dotyczące rejestracji/kodu aplikacji wielodostępnej.
+2. Oprócz udostępniania zakresów/ról interfejsu API upewnij się, że rejestracja obejmuje uprawnienie "Logowanie i odczyt profilu użytkownika" (domyślnie dostępne).
+3. Zaimplementuj stronę logowania/rejestracji w kliencie sieci Web i postępuj zgodnie ze wskazówkami dotyczącymi [zgody administratora](#admin-consent) .
+4. Gdy użytkownik wyraża zgodę na aplikację, linki jednostki usługi i delegowania zgody są tworzone w ich dzierżawie, a aplikacja natywna może uzyskać tokeny dla interfejsu API.
 
-Poniższy diagram zawiera omówienie wyrażania zgody dla aplikacji wielowarstwowych, zarejestrowanych w różnych dzierżawach.
+Poniższy diagram zawiera omówienie wyrażania zgody dla aplikacji wielowarstwowej zarejestrowanej w różnych dzierżawach.
 
-![Ilustruje zgodę na wieloosobowa aplikacji wielowarstwowej][Consent-Multi-Tier-Multi-Party]
+![Przedstawia zgodę na wielowarstwową aplikację wieloplatformową][Consent-Multi-Tier-Multi-Party]
 
-### <a name="revoking-consent"></a>Trwa odwoływanie zgody
+### <a name="revoking-consent"></a>Odwoływanie zgody
 
-Użytkownicy i Administratorzy można odwołać zgody na aplikację, w dowolnym momencie:
+Użytkownicy i Administratorzy mogą odwołać zgodę na aplikację w dowolnym momencie:
 
-* Użytkownicy odwołać dostęp do poszczególnych aplikacji, usuwając je z ich [aplikacje panelu dostępu][AAD-Access-Panel] listy.
-* Administratorzy odwołać dostęp do aplikacji, usuwając je przy użyciu [aplikacje dla przedsiębiorstw](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps) części [witryny Azure portal][AZURE-portal].
+* Użytkownicy mogą odwołać dostęp do poszczególnych aplikacji, usuwając je z listy [aplikacji panelu dostępu][AAD-Access-Panel] .
+* Administratorzy mogą odwołać dostęp do aplikacji, usuwając je za pomocą sekcji [aplikacje dla przedsiębiorstw](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps) w [Azure Portal][AZURE-portal].
 
-Jeśli administrator wyraża zgodę na aplikacji dla wszystkich użytkowników w dzierżawie, użytkownicy nie mogą indywidualnie odwołać dostęp. Tylko administrator może odwołać dostęp i tylko dla całej aplikacji.
+Jeśli administrator wyraża zgodę na aplikację dla wszystkich użytkowników w dzierżawie, użytkownicy nie mogą odwołać dostępu pojedynczo. Tylko administrator może odwołać dostęp i tylko dla całej aplikacji.
 
-## <a name="multi-tenant-applications-and-caching-access-tokens"></a>Aplikacje wielodostępne i buforowanie tokenów dostępu
+## <a name="multi-tenant-applications-and-caching-access-tokens"></a>Aplikacje z wieloma dzierżawcami i buforowanie tokeny dostępu
 
-Wielodostępne aplikacje można również uzyskać tokenów dostępu w celu wywoływania interfejsów API, które są chronione przez usługę Azure AD. Typowym błędem podczas używania biblioteki uwierzytelniania usługi Active Directory (ADAL) za pomocą aplikacji z wieloma dzierżawami jest początkowo żądania tokenu dla użytkownika za pomocą/Common, otrzymują odpowiedź, a następnie wysłania żądania tokenu służącego kolejnych dla tego samego użytkownika, również przy użyciu/Common. Ponieważ odpowiedzi z usługi Azure AD nie pochodzi z dzierżawy, / wspólne biblioteki ADAL zapisuje w pamięci podręcznej tokenu jako pochodzącej z dzierżawy. Kolejne wywołanie/Common do uzyskania tokenu dostępu dla użytkownika chybień wpisu pamięci podręcznej, a użytkownik jest monitowany, aby zalogować się ponownie. Aby uniknąć, Brak pamięci podręcznej, upewnij się, że kolejne dla już zalogowany użytkownik wywołań do punktu końcowego dzierżawcy.
+Aplikacje z wieloma dzierżawcami mogą również uzyskać tokeny dostępu do wywoływania interfejsów API chronionych przez usługę Azure AD. Typowym błędem podczas korzystania z Active Directory Authentication Library (ADAL) z aplikacją wielodostępną jest wstępne zażądanie tokenu dla użytkownika korzystającego z/typowe, odebranie odpowiedzi, a następnie zażądanie kolejnego tokenu dla tego samego użytkownika również przy użyciu/Common. Ponieważ odpowiedź z usługi Azure AD pochodzi z dzierżawy, a nie/typowe, biblioteka ADAL buforuje token jako pochodzący z dzierżawy. Kolejne wywołanie/typowe w celu uzyskania tokenu dostępu dla użytkownika powoduje odrzucenie wpisu pamięci podręcznej, a użytkownik jest monitowany o ponowne zalogowanie. Aby uniknąć braku pamięci podręcznej, upewnij się, że kolejne wywołania dla już zalogowanego użytkownika są nawiązywane w punkcie końcowym dzierżawy.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule przedstawiono sposób tworzenia aplikacji, która może zalogować użytkownika z dzierżawami usługi Azure AD. Po włączeniu pojedynczego logowania jednokrotnego (SSO) między aplikacji i usługi Azure AD, ale też aktualizować aplikacji dostęp do interfejsów API udostępnianych przez zasoby firmy Microsoft, takich jak Office 365. Dzięki temu można zaoferować spersonalizowane środowisko, w aplikacji, takich jak pokazywanie informacji kontekstowych dla użytkowników, takich jak swoje zdjęcie profilowe lub dalej termin z kalendarza. Aby dowiedzieć się więcej o tworzeniu interfejsu API wywołań do usługi Azure AD i Office 365 usług takich jak Exchange, SharePoint, OneDrive, OneNote i uzyskać więcej informacji, odwiedź stronę [interfejsu API Microsoft Graph][MSFT-Graph-overview].
+W tym artykule przedstawiono sposób tworzenia aplikacji, która może zalogować użytkownika z dowolnej dzierżawy usługi Azure AD. Po włączeniu logowania jednokrotnego między aplikacją i usługą Azure AD możesz także zaktualizować aplikację, aby uzyskać dostęp do interfejsów API udostępnianych przez zasoby firmy Microsoft, takie jak pakiet Office 365. Dzięki temu możesz oferować spersonalizowany interfejs w aplikacji, taki jak wyświetlanie informacji kontekstowych dla użytkowników, takich jak ich zdjęcie profilu lub termin następnego kalendarza. Aby dowiedzieć się więcej na temat tworzenia wywołań interfejsu API dla usług Azure AD i Office 365, takich jak Exchange, SharePoint, OneDrive, OneNote i innych, odwiedź witrynę [Microsoft Graph API][MSFT-Graph-overview].
 
 ## <a name="related-content"></a>Powiązana zawartość
 
-* [Przykłady aplikacji wielodostępnych][AAD-Samples-MT]
-* [Wytyczne dotyczące aplikacji oznaczania marką][AAD-App-Branding]
-* [Obiekty aplikacji i obiektów nazw głównych usług][AAD-App-SP-Objects]
+* [Przykłady aplikacji z wieloma dzierżawcami][AAD-Samples-MT]
+* [Wskazówki dotyczące znakowania aplikacji][AAD-App-Branding]
+* [Obiekty aplikacji i obiekty główne usługi][AAD-App-SP-Objects]
 * [Integrating applications with Azure Active Directory][AAD-Integrating-Apps] (Integrowanie aplikacji za pomocą usługi Azure Active Directory)
-* [Omówienie platformy wyrażania zgody][AAD-Consent-Overview]
+* [Przegląd struktury zgody][AAD-Consent-Overview]
 * [Zakresy uprawnień interfejsu API Microsoft Graph][MSFT-Graph-permission-scopes]
-* [Zakresy uprawnień w usłudze Azure AD Graph API][AAD-Graph-Perm-Scopes]
+* [Zakresy uprawnień interfejs API programu Graph usługi Azure AD][AAD-Graph-Perm-Scopes]
 
 <!--Reference style links IN USE -->
 [AAD-Access-Panel]:  https://myapps.microsoft.com

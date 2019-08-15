@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/02/2019
-ms.openlocfilehash: a5db2c1c40c9c6f5c05205b9b2c652d2e23cf229
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2f6d45613120d02dd96a9fe0a14ce388d20cf0c6
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848244"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990586"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Twórz, eksploruj i wdrażaj automatyczne eksperymenty uczenia maszynowego w Azure Portal (wersja zapoznawcza)
 
@@ -66,6 +66,10 @@ Wybierz pozycję **Utwórz eksperyment** i wypełnij formularz **Utwórz nowy za
 1. Wybierz kontener magazynu.
 
 1. Wybierz plik danych z kontenera magazynu lub Przekaż plik z komputera lokalnego do kontenera. Publiczna wersja zapoznawcza obsługuje tylko lokalne operacje przekazywania plików i konta usługi Azure Blob Storage.
+    >[!Important]
+    > Wymagania dotyczące danych szkoleniowych:
+    >* Dane muszą być w formie tabelarycznej.
+    >* Wartość, która ma zostać przewidywalna (kolumna docelowa), musi być obecna w danych.
 
     [![Wybierz plik danych](media/tutorial-1st-experiment-automated-ml/select-data-file.png)](media/tutorial-1st-experiment-automated-ml/select-data-file-expanded.png#lightbox)
 
@@ -190,7 +194,7 @@ Automatyczna ML pomaga wdrożyć model bez pisania kodu:
 
 Teraz masz działającą usługę sieci Web do generowania prognoz!
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Wypróbuj kompleksowy samouczek dotyczący [tworzenia pierwszego zautomatyzowanego eksperymentu ml z Azure Machine Learning](tutorial-first-experiment-automated-ml.md). 
 * [Dowiedz się więcej o zautomatyzowanym uczeniu maszynowym](concept-automated-ml.md) i Azure Machine Learning.

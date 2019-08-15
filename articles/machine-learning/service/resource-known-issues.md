@@ -9,14 +9,14 @@ ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7d1bce7575272b7df185c4e261685d989f49436c
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 4e7b3905295e619c5a9500f80b5c43126b919e2f
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716533"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946474"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Znane problemy i rozwiązywania problemów z usługi Azure Machine Learning
 
@@ -71,7 +71,7 @@ Automatyczne Uczenie maszynowe w przepływie dwuosiowym obecnie nie obsługuje p
 
 ### <a name="experiment-charts"></a>Wykresy eksperymentu
 
-Binarne wykresy klasyfikacji (precyzja-odwoływanie, ROC, krzywa zysku itp.) pokazana w zautomatyzowanych iteracjach eksperymentów z badaniami nie są w pełni stosowane w interfejsie użytkownika od 4/12. Wykresy wykresów są obecnie wyświetlane z wynikami odwrotnymi, gdzie lepsze są modele z niższymi wynikami. Zbadano rozwiązanie.
+Binarne wykresy klasyfikacji (precyzja-odwoływanie, ROC, krzywa zysku itp.) pokazana w zautomatyzowanych iteracjach eksperymentów w przypadku nieprawidłowego renderowania w interfejsie użytkownika od 4/12. Wykresy wykresów są obecnie wyświetlane z wynikami odwrotnymi, gdzie lepsze są modele z niższymi wynikami. Zbadano rozwiązanie.
 
 ## <a name="databricks"></a>Databricks
 
@@ -134,6 +134,15 @@ Jeśli przejdziesz bezpośrednio, aby wyświetlić obszar roboczy z Udostępnij 
 
 Czasami może być przydatne Jeśli podasz informacje diagnostyczne podczas pytania o pomoc. Aby wyświetlić niektóre dzienniki, odwiedź stronę [Azure Portal](https://portal.azure.com) i przejdź do obszaru roboczego, a następnie wybierz pozycję **obszar roboczy > eksperymentuj > Uruchom > dzienników**.
 
+> [!NOTE]
+> Usługa Azure Machine Learning rejestruje informacje z różnych źródeł podczas szkoleń, takich jak AutoML lub kontener platformy Docker, który uruchamia zadanie szkoleniowe. Wiele z tych dzienników nie jest udokumentowane. Jeśli wystąpią problemy i skontaktuje się z działem pomocy technicznej firmy Microsoft, mogą oni korzystać z tych dzienników podczas rozwiązywania problemów.
+
+## <a name="activity-logs"></a>Dzienniki aktywności
+
+Niektóre akcje w obszarze roboczym Azure Machine Learning nie rejestrują informacji w __dzienniku aktywności__. Na przykład uruchomienie szkolenia lub zarejestrowanie modelu.
+
+Niektóre z tych akcji są wyświetlane w obszarze __działania__ obszaru roboczego, ale nie wskazują, kto zainicjował działanie.
+
 ## <a name="resource-quotas"></a>Limity przydziałów zasobów
 
 Dowiedz się więcej o [limity przydziałów zasobów](how-to-manage-quotas.md) można napotkać podczas pracy z usługą Azure Machine Learning.
@@ -154,6 +163,6 @@ Na przykład, jeśli spróbujesz utworzyć lub dołączyć obiekt docelowy oblic
 
 ## <a name="overloaded-azurefile-storage"></a>Przeciążony magazyn AzureFile
 
-Jeśli zostanie wyświetlony komunikat o błędzie "nie można przekazać plików projektu do katalogu roboczego w AzureFile, ponieważ magazyn jest przeciążony", zastosuj następujące obejścia.
+Jeśli wystąpi błąd `Unable to upload project files to working directory in AzureFile because the storage is overloaded`, zastosuj następujące obejścia.
 
 Jeśli używasz udziału plików dla innych obciążeń, takich jak transfer danych, zalecenie polega na użyciu obiektów blob, dzięki czemu udział plików jest bezpłatny do użycia na potrzeby przesyłania przebiegów. Obciążenie można także podzielić między dwa różne obszary robocze.

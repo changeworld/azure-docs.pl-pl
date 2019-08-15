@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: dbe3526444bc35815dd4323a3a5290696619e3f9
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 986bed758229d639bb40d0803f7be4a89a0f6e49
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728346"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934806"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Ramka zabezpieczeń: Zarządzanie konfiguracją | Środki zaradcze 
 | Produkt/usługę | Artykuł |
@@ -563,7 +563,7 @@ Aby wyłączyć mechanizm CORS dla kontrolera lub akcji, Użyj atrybutu [Disable
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | Wybór bramy — IoT Hub platformy Azure |
-| **Wołują**              | [IoT Hub Omówienie zarządzania urządzeniami](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/), [Aktualizowanie oprogramowania układowego urządzenia](https://docs.microsoft.com/azure/iot-hub/tutorial-firmware-update) |
+| **Wołują**              | [IoT Hub Omówienie zarządzania urządzeniami](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/), [Aktualizowanie oprogramowania układowego urządzenia](../../iot-hub/tutorial-firmware-update.md) |
 | **Kroki** | LWM2M to protokół z usługi Open Mobile Alliance for IoT zarządzanie urządzeniami. Zarządzanie urządzeniami w usłudze Azure IoT umożliwia współpracę z urządzeniami fizycznymi przy użyciu zadań urządzeń. Upewnij się, że brama chmury implementuje proces, aby regularnie chronić dane na urządzeniu i innych konfiguracji przy użyciu usługi Azure IoT Hub Device Management. |
 
 ## <a id="controls-policies"></a>Upewnij się, że urządzenia mają kontrolki zabezpieczeń punktu końcowego skonfigurowane zgodnie z zasadami organizacji

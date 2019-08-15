@@ -1,6 +1,6 @@
 ---
-title: Domyślny rozmiar folderu TEMP jest zbyt mały dla roli | Dokumentacja firmy Microsoft
-description: Rola usługi w chmurze ma ograniczoną ilość miejsca dla folderu TEMP. Ten artykuł zawiera wskazówki na temat sposobu uniknięcia wyczerpaniem przestrzeni.
+title: Domyślny rozmiar folderu tymczasowego jest za mały dla roli | Microsoft Docs
+description: Rola usługi w chmurze ma ograniczoną ilość miejsca dla folderu tymczasowego. W tym artykule przedstawiono kilka sugestii, w których można uniknąć braku miejsca.
 services: cloud-services
 documentationcenter: ''
 author: simonxjx
@@ -9,34 +9,33 @@ editor: ''
 tags: top-support-issue
 ms.assetid: 9f2af8dd-2012-4b36-9dd5-19bf6a67e47d
 ms.service: cloud-services
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 7862e4d5c4dd603dacf5784df6c4194392ebc351
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9b731eba4e1cd79a07c20271f1bd33c8c2c35d92
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60652185"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945356"
 ---
-# <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-webworker-role"></a>Domyślny rozmiar folderu TEMP jest zbyt mały dla roli sieć web/proces roboczy usług chmury
-Domyślny katalog tymczasowy rola usługi w chmurze sieci web lub proces roboczy ma maksymalnym rozmiarze 100 MB, co może stać się pełną w pewnym momencie. W tym artykule opisano sposoby unikania ilość miejsca dla katalogu tymczasowego.
+# <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-webworker-role"></a>Domyślny rozmiar folderu tymczasowego jest za mały w roli sieć Web/proces roboczy usługi w chmurze
+Domyślny katalog tymczasowy procesu roboczego usługi w chmurze lub roli sieci Web ma maksymalny rozmiar 100 MB, który może być zapełniony w pewnym momencie. W tym artykule opisano, jak uniknąć braku miejsca na katalog tymczasowy.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="why-do-i-run-out-of-space"></a>Dlaczego zabraknie miejsca
-Standardowa Windows zmienne środowiskowe TEMP i TMP są dostępne do kodu, który jest uruchomiony w aplikacji. Zarówno TEMP i TMP wskaż jeden katalog, który ma maksymalnym rozmiarze 100 MB. Wszelkie dane, które są przechowywane w tym katalogu nie są utrwalane w całym cyklu życia usługi w chmurze; w przypadku odtwarzania wystąpień roli w usłudze w chmurze jest czyszczona katalogu.
+## <a name="why-do-i-run-out-of-space"></a>Dlaczego zabrakło miejsca?
+Standardowe zmienne środowiskowe systemu Windows w TEMP i TMP są dostępne dla kodu, który jest uruchomiony w aplikacji. Zarówno TEMP, jak i PZT wskazują pojedynczy katalog o maksymalnym rozmiarze 100 MB. Wszystkie dane przechowywane w tym katalogu nie są utrwalane w cyklu życia usługi w chmurze; Jeśli wystąpienia roli w usłudze w chmurze są odtwarzane, katalog jest czyszczony.
 
-## <a name="suggestion-to-fix-the-problem"></a>Sugestia, aby rozwiązać ten problem
-Implementować jeden z następujących opcji:
+## <a name="suggestion-to-fix-the-problem"></a>Sugestia usunięcia problemu
+Zaimplementuj jedną z następujących alternatyw:
 
-* Konfigurowanie zasobów magazynu lokalnego i uzyskać do niego dostęp bezpośrednio zamiast przy użyciu TEMP i TMP. Aby uzyskać dostęp do zasobów magazynu lokalnego, od kodu, który jest uruchomiony w ramach aplikacji, należy wywołać [RoleEnvironment.GetLocalResource](/previous-versions/azure/reference/ee772845(v=azure.100)) metody.
-* Konfigurowanie zasobów magazynu lokalnego, a punktu katalogi TEMP i TMP wskaż ścieżkę zasobu magazynu lokalnego. Ta modyfikacja powinny być wykonywane w ramach [RoleEntryPoint.OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) metody.
+* Skonfiguruj zasób magazynu lokalnego i uzyskuj dostęp do niego bezpośrednio, zamiast korzystać z usługi TEMP lub TMP. Aby uzyskać dostęp do zasobu magazynu lokalnego z kodu, który jest uruchomiony w aplikacji, wywołaj metodę [RoleEnvironment. GetLocalResource](/previous-versions/azure/reference/ee772845(v=azure.100)) .
+* Skonfiguruj zasób magazynu lokalnego i wskaż katalogi TEMP i TMP, aby wskazywały ścieżkę lokalnego zasobu magazynu. Tę modyfikację należy wykonać w metodzie [RoleEntryPoint. OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) .
 
-Poniższy przykład kodu pokazuje, jak zmodyfikować katalog docelowy dla TEMP i TMP z wewnątrz metody OnStart:
+Poniższy przykład kodu pokazuje, jak modyfikować katalogi docelowe dla TEMP i TMP z poziomu metody OnStart:
 
 ```csharp
 using System;
@@ -70,9 +69,9 @@ namespace WorkerRole1
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-Przeczytaj wpis w blogu, który opisuje [sposobu zwiększenia rozmiaru platformy Azure w sieci Web roli folderu tymczasowego środowiska ASP.NET](https://blogs.msdn.com/b/kwill/archive/2011/07/18/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder.aspx).
+## <a name="next-steps"></a>Następne kroki
+Zapoznaj się z blogiem opisującym [sposób zwiększenia rozmiaru folderu tymczasowego ASP.NET roli sieci Web platformy Azure](https://blogs.msdn.com/b/kwill/archive/2011/07/18/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder.aspx).
 
-Wyświetl więcej [artykuły dotyczące rozwiązywania problemów](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/vs-azure-tools-debugging-cloud-services-overview.md) dla usług w chmurze.
+Zobacz więcej [artykułów do rozwiązywania problemów](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/vs-azure-tools-debugging-cloud-services-overview.md) dotyczących usług Cloud Services.
 
-Aby dowiedzieć się, jak rozwiązywać problemy dotyczące ról usługi chmury przy użyciu danych diagnostycznych na komputerze modelu PaaS platformy Azure, Wyświetl [serię wpisów w blogu Kevina Williamson](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
+Aby dowiedzieć się, jak rozwiązywać problemy z rolą usługi w chmurze, korzystając z danych diagnostycznych dotyczących komputerów z usługą Azure PaaS, zobacz [Seria blogów Jan Williamson](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).

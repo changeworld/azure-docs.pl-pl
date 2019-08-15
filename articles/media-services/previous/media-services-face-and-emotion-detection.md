@@ -1,6 +1,6 @@
 ---
-title: Wykrywanie twarzy i emocji za pomocą usługi Azure Media Analytics | Dokumentacja firmy Microsoft
-description: W tym temacie pokazano, jak wykrywanie twarzy i emocji z usługą Azure Media Analytics.
+title: Wykrywanie kroju i rozpoznawania emocji przy użyciu Azure Media Analytics | Microsoft Docs
+description: W tym temacie pokazano, jak wykrywać twarze i emocji przy użyciu Azure Media Analytics.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,57 +13,58 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: milanga;juliako;
-ms.openlocfilehash: 46e60583da79006c133c8d9fac63e27f28bd699f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.reviewer: milanga
+ms.openlocfilehash: 3ae2e49b812e7a9515cef81b328ceb87e1a7f017
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61217268"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "69015456"
 ---
-# <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Wykrywanie twarzy i emocji za pomocą usługi Azure Media Analytics
+# <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Wykrywanie kroju i rozpoznawania emocji przy użyciu Azure Media Analytics
 ## <a name="overview"></a>Omówienie
-**Wykrywanie twarzy multimediów Azure** procesor multimediów (MP) pozwala na count, śledzenie przepływu i nawet miernika uczestnictwa odbiorców i reagowanie na nie przy użyciu twarzy. Ta usługa zawiera dwie funkcje: 
+Procesor Media **Azure Media Face Detector** (MP) umożliwia zliczanie, śledzenie przesunięć, a nawet ocenia uczestnictwo i reagowanie odbiorców przy użyciu wyrażeń twarzy. Ta usługa zawiera dwie funkcje: 
 
-* **Wykrywanie twarzy**
+* **Wykrywanie kroju**
   
-    Wykrywanie twarzy umożliwia znalezienie i śledzenie ludzkich twarzy w filmie wideo. Wiele powierzchni może zostać wykryte i następnie być śledzone przechodzące wokół, za pomocą metadanych czasu i bieżącej lokalizacji, zwracane w pliku JSON. Podczas śledzenia, podejmowana jest próba oferowanie spójny identyfikator tego samego twarzy podczas, gdy osoba jest poruszanie się w na ekranie, nawet jeśli są zablokowane lub krótko pozostaw ramki.
+    Wykrywanie twarzy wykrywa i śledzi ludzkie twarze w filmie wideo. Można wykryć wiele twarzy, a następnie śledzić je w miarę poruszania się, z metadanymi czasu i lokalizacji zwracanymi w pliku JSON. Podczas śledzenia próbuje nadawać spójny identyfikator do tej samej pory, gdy osoba jest przenoszona na ekran, nawet jeśli są one zakłócone lub krótko opuszczają ramkę.
   
   > [!NOTE]
-  > Ta usługa nie wykonuje rozpoznawanie twarzy. Osoba, która pozostawia ramki lub staje się blokować dla zbyt długo otrzyma nowy identyfikator przypadku zwracają.
+  > Ta usługa nie wykonuje rozpoznawania twarzy. Osoba, która opuści ramkę lub nie jest zbyt długa, otrzymuje nowy identyfikator, gdy zwróci.
   > 
   > 
-* **Wykrywanie emocji**
+* **Wykrywanie rozpoznawania emocji**
   
-    Wykrywanie emocji jest opcjonalnym składnikiem procesor multimediów wykrywanie twarzy, które zwraca analizy na wiele atrybutów emocjonalnej twarzy wykryć, w tym szczęście, smutek, strach i gniew. 
+    Wykrywanie rozpoznawania emocji jest opcjonalnym składnikiem procesora multimediów wykrywanie twarzy, który zwraca analizę dla wielu atrybutów emocjonalnej z wykrytych twarzy, w tym szczęście, smutek, obaw, gniew i wiele innych. 
 
-**Wykrywanie twarzy multimediów Azure** pakiet administracyjny jest obecnie w wersji zapoznawczej.
+Pakiet MP **Azure Media Face Detector** jest obecnie w wersji zapoznawczej.
 
-Ten artykuł zawiera szczegółowe informacje o **wykrywanie twarzy multimediów Azure** i pokazuje, jak z niej korzystać z zestawu SDK usługi Media Services dla platformy .NET.
+Ten artykuł zawiera szczegółowe informacje dotyczące **Azure Media Face Detector** i pokazuje, jak używać go z zestawem SDK Media Services dla platformy .NET.
 
-## <a name="face-detector-input-files"></a>Pliki wejściowe wykrywanie twarzy
+## <a name="face-detector-input-files"></a>Pliki wejściowe czujnika kroju
 Pliki wideo. Obecnie obsługiwane są następujące formaty: MP4, MOV i WMV.
 
-## <a name="face-detector-output-files"></a>Pliki wyjściowe wykrywanie twarzy
-Interfejs API śledzenia i wykrywania twarzy zawiera śledzenia, który można wykrywanie do 64 ludzkich twarzy w filmach wideo i wykrywania położenia twarzy dużej dokładności. Czołowa twarzy zapewniają najlepsze wyniki, podczas boczne i małym twarzy (mniejsze niż lub równe 24 x 24 piksele) może nie być dokładny.
+## <a name="face-detector-output-files"></a>Pliki wyjściowe czujnika kroju
+Interfejs API wykrywania i śledzenia twarzy zapewnia wykrywanie i śledzenie lokalizacji twarzy o wysokiej precyzji, które mogą wykrywać nawet 64 ludzkich buziek wideo. Twarze czołowe zapewniają najlepsze wyniki, a powierzchnie boczne i małe twarze (mniejsze niż lub równe 24x24 pikseli) mogą być niedokładne.
 
-Wykryte i śledzone twarzy są zwracane z współrzędnych (po lewej stronie, top, szerokość i wysokość) wskazująca lokalizację twarzy na obrazie w pikselach, a także numer identyfikacyjny rozpoznawania twarzy, wskazując śledzenie tej osoby. Numery identyfikatorów twarzy są podatne na zresetować w sytuacjach, gdy czołowego twarzy zostanie utracony lub nakładających się w ramce, co w niektórych osób wprowadzenie przypisanych wiele identyfikatorów.
+Wykryte i śledzone powierzchnie są zwracane ze współrzędnymi (z lewej, góry, szerokości i wysokości) wskazujące lokalizację powierzchni w obrazie w pikselach, a także numer IDENTYFIKACYJNy twarzy wskazujący na śledzenie tej osoby. Numery IDENTYFIKACYJNe kroju są podatne na zresetowanie w warunkach, gdy czołowa powierzchnia zostanie utracona lub nakłada się w ramkę, co oznacza, że niektóre osoby mogą uzyskać przypisane wiele identyfikatorów.
 
-## <a id="output_elements"></a>Elementy danych wyjściowych pliku JSON
+## <a id="output_elements"></a>Elementy wyjściowego pliku JSON
 
 [!INCLUDE [media-services-analytics-output-json](../../../includes/media-services-analytics-output-json.md)]
 
-Wykrywanie twarzy używane są także techniki fragmentacji (gdzie metadane mogą być dzielone we fragmentach oparte na czasie i mogą pobrać tylko potrzebnych składników) i segmentacji (której zdarzenia są dzielone w przypadku, gdy staną się zbyt duże). W transformacji danych może pomóc kilka prostych obliczeń. Na przykład, jeśli zdarzenie rozpoczęło się o 6300 (Takty) przy użyciu skali czasu 2997 (Takty/s) i framerate następnie 29,97 (ramek/s):
+Wykrywanie kroju korzysta z technik fragmentacji (gdzie metadane można rozbić w fragmenty czasu i można pobrać tylko te, czego potrzebujesz) i segmentacji (gdzie zdarzenia są podzielone na wypadek, gdyby były zbyt duże). W transformacji danych może pomóc kilka prostych obliczeń. Na przykład, jeśli zdarzenie zostało uruchomione o godzinie 6300 (Takty), z przedziałem czasu 2997 (Takty/s) i szybkością 29,97 (ramki/s), wówczas:
 
 * Pocżątek/skala czasu= 2,1 s
-* X Framerate (w sekundach) = 63 ramki
+* Sekundy x klatek = 63 klatek
 
-## <a name="face-detection-input-and-output-example"></a>Dane wejściowe wykrywanie twarzy i przykład danych wyjściowych
-### <a name="input-video"></a>Wejściowy plik wideo
-[Wejściowy plik wideo](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
+## <a name="face-detection-input-and-output-example"></a>Przykład danych wejściowych i wyjściowych wykrywania kroju
+### <a name="input-video"></a>Wejściowy film wideo
+[Wejściowy film wideo](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
 ### <a name="task-configuration-preset"></a>Konfiguracja zadania (ustawienie wstępne)
-Podczas tworzenia zadania za pomocą **wykrywanie twarzy multimediów Azure**, należy określić ustawienie wstępne konfiguracji. Następujące ustawienie konfiguracji jest po prostu wykrywanie twarzy.
+Podczas tworzenia zadania z **Azure Media Face Detector**należy określić ustawienia wstępne konfiguracji. Poniższe ustawienia wstępne konfiguracji są przeznaczone tylko do wykrywania kroju.
 
 ```json
     {
@@ -77,10 +78,10 @@ Podczas tworzenia zadania za pomocą **wykrywanie twarzy multimediów Azure**, n
 #### <a name="attribute-descriptions"></a>Opisy atrybutów
 | Nazwa atrybutu | Opis |
 | --- | --- |
-| Tryb |Bardzo szybko — szybkie przetwarzanie szybkość, ale mniej dokładne (ustawienie domyślne).|
+| Tryb |Szybka szybkość przetwarzania, ale mniej dokładne (wartość domyślna).|
 
 ### <a name="json-output"></a>Dane wyjściowe JSON
-Poniższy przykład dane wyjściowe JSON zostały obcięte.
+Poniższy przykład danych wyjściowych JSON został obcięty.
 
 ```json
     {
@@ -130,12 +131,12 @@ Poniższy przykład dane wyjściowe JSON zostały obcięte.
 ```
 
 
-## <a name="emotion-detection-input-and-output-example"></a>Wykrywanie emocji na danych wejściowych i wyjściowych przykładu
-### <a name="input-video"></a>Wejściowy plik wideo
-[Wejściowy plik wideo](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
+## <a name="emotion-detection-input-and-output-example"></a>Przykład danych wejściowych i wyjściowych wykrywania rozpoznawania emocji
+### <a name="input-video"></a>Wejściowy film wideo
+[Wejściowy film wideo](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
 ### <a name="task-configuration-preset"></a>Konfiguracja zadania (ustawienie wstępne)
-Podczas tworzenia zadania za pomocą **wykrywanie twarzy multimediów Azure**, należy określić ustawienie wstępne konfiguracji. Określa następujące ustawienie konfiguracji do tworzenia opartych na wykrywanie emocji na notacji JSON.
+Podczas tworzenia zadania z **Azure Media Face Detector**należy określić ustawienia wstępne konfiguracji. Poniższe ustawienie wstępne konfiguracji określa, aby utworzyć kod JSON na podstawie wykrywania rozpoznawania emocji.
 
 ```json
     {
@@ -152,20 +153,20 @@ Podczas tworzenia zadania za pomocą **wykrywanie twarzy multimediów Azure**, n
 #### <a name="attribute-descriptions"></a>Opisy atrybutów
 | Nazwa atrybutu | Opis |
 | --- | --- |
-| Tryb |Twarze: Tylko stoją w obliczu wykrywania.<br/>PerFaceEmotion: Zwróć emocji osobno dla każdego wykrywania twarzy.<br/>AggregateEmotion: Średnia emocji wartości zwracane dla wszystkich powierzchni w ramce. |
-| AggregateEmotionWindowMs |Użyj, jeśli wybrany tryb AggregateEmotion. Określa długość wideo użyta do wyprodukowania każdej agregacji wyników, w milisekundach. |
-| AggregateEmotionIntervalMs |Użyj, jeśli wybrany tryb AggregateEmotion. Określa częstotliwość w celu uzyskania wyników agregacji. |
+| Tryb |Ściank Wykrywanie czołowe.<br/>PerFaceEmotion: Zwróć rozpoznawania emocji niezależnie do wykrywania czołowego.<br/>AggregateEmotion: Zwróć średnią wartość rozpoznawania emocji dla wszystkich twarzy w ramce. |
+| AggregateEmotionWindowMs |Użyj, jeśli wybrano tryb AggregateEmotion. Określa długość wideo użytą do wygenerowania każdego zagregowanego wyniku w milisekundach. |
+| AggregateEmotionIntervalMs |Użyj, jeśli wybrano tryb AggregateEmotion. Określa częstotliwość generowania zagregowanych wyników. |
 
-#### <a name="aggregate-defaults"></a>Ustawienia domyślne agregacji
-Poniżej są zalecane wartości ustawień okna i interwał agregacji. AggregateEmotionWindowMs powinien być dłuższy niż AggregateEmotionIntervalMs.
+#### <a name="aggregate-defaults"></a>Wartości domyślne agregacji
+Poniżej znajdują się zalecane wartości okna agregacji i ustawień interwału. AggregateEmotionWindowMs powinna być dłuższa niż AggregateEmotionIntervalMs.
 
-|| Wartości domyślne (s) | MAX(s) | Min(s) |
+|| Wartości domyślne | Maksymalna liczba (s) | Min. |
 |--- | --- | --- | --- |
 | AggregateEmotionWindowMs |0,5 |2 |0.25|
 | AggregateEmotionIntervalMs |0,5 |1 |0.25|
 
 ### <a name="json-output"></a>Dane wyjściowe JSON
-JSON, dane wyjściowe dla agregacji rozpoznawania emocji (obcięty):
+Dane wyjściowe JSON dla zagregowanych rozpoznawania emocji (obcięty):
 
 ```json
     {
@@ -321,24 +322,24 @@ JSON, dane wyjściowe dla agregacji rozpoznawania emocji (obcięty):
 ```
 
 ## <a name="limitations"></a>Ograniczenia
-* Wideo obsługiwanych formatów danych wejściowych obejmują MP4, MOV i WMV.
-* Zakres rozmiaru wykrywalny twarzy to 24 x 24 do 2048 x 2048 pikseli. Twarze poza tym zakresem nie zostanie wykryty.
-* Dla każdego pliku wideo maksymalną liczbę twarzy, zwracany jest 64.
-* Niektóre twarzy mogą nie zostać wykryte, ze względu na problemy techniczne; na przykład, bardzo dużych powierzchni kąty (head ułożenia) i duże zamknięcia. Czołowa i niemal czołowego twarzy ma najlepsze rezultaty.
+* Obsługiwane formaty wideo to MP4, MOV i WMV.
+* Wykrywalny zakres rozmiaru jest 24x24 do 2048x2048 pikseli. Nie zostaną wykryte powierzchnie z tego zakresu.
+* Dla każdego filmu wideo Maksymalna liczba zwracanych twarzy to 64.
+* Niektóre powierzchnie mogą nie zostać wykryte ze względu na wyzwania techniczne; na przykład bardzo duże kąty kroju (ułożenie głowy) i duże zamknięcia. Najbardziej czołowe i bliskie buźki mają najlepsze wyniki.
 
-## <a name="net-sample-code"></a>Przykładowy kod .NET
+## <a name="net-sample-code"></a>Przykładowy kod platformy .NET
 
-Poniższy program pokazuje jak:
+Poniższy program pokazuje, jak:
 
-1. Utworzenie elementu zawartości i przekaż plik multimedialny do niego.
-2. Tworzenie zadania za pomocą zadania wykrywania twarzy w zależności od pliku konfiguracji, który zawiera następujące ustawienie wstępne json: 
+1. Utwórz element zawartości i Przekaż plik multimedialny do elementu zawartości.
+2. Utwórz zadanie z zadaniem wykrywania kroju na podstawie pliku konfiguracji, który zawiera następujące ustawienia wstępne JSON: 
 
     ```json
             {
                 "version": "1.0"
             }
     ```
-3. Pobierz pliki danych wyjściowych w formacie JSON. 
+3. Pobierz wyjściowe pliki JSON. 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Tworzenie i konfigurowanie projektu programu Visual Studio
 
@@ -519,8 +520,8 @@ namespace FaceDetection
 ## <a name="provide-feedback"></a>Przekazywanie opinii
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="related-links"></a>Powiązane linki
-[Przegląd Analityki usługi Azure Media Services](media-services-analytics-overview.md)
+## <a name="related-links"></a>Linki pokrewne
+[Omówienie Azure Media Services Analytics](media-services-analytics-overview.md)
 
-[Pokazy usługi Azure Media Analytics](https://amslabs.azurewebsites.net/demos/Analytics.html)
+[Demonstracje Azure Media Analytics](https://amslabs.azurewebsites.net/demos/Analytics.html)
 

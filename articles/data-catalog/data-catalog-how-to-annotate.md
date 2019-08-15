@@ -6,15 +6,17 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 708c62971a20a7071accf7591a4e2914f7dbd9f3
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: c1e022591ce1aee073330055744fbd78d97c0b1d
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736352"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950257"
 ---
-# <a name="how-to-annotate-data-sources"></a>Jak dodawać adnotacje do źródeł danych
+# <a name="how-to-annotate-data-sources-in-azure-data-catalog"></a>Jak dodawać adnotacje do źródeł danych w Azure Data Catalog
+
 ## <a name="introduction"></a>Wprowadzenie
+
 **Microsoft Azure Data Catalog** to w pełni zarządzana usługa w chmurze, która służy jako system rejestracji i odnajdywania źródeł danych w przedsiębiorstwie. Innymi słowy, Data Catalog to pomoc dla osób, które odnajdują i korzystają ze źródeł danych oraz pomagają organizacjom w uzyskaniu większej korzyści z istniejących danych. Gdy źródło danych jest zarejestrowane w Data Catalog, jego metadane są kopiowane i indeksowane przez usługę, ale wątek nie kończy w tym miejscu. Data Catalog umożliwia użytkownikom dostarczenie własnych metadanych opisowych, takich jak opisy i Tagi, aby uzupełnić metadane wyodrębnione ze źródła danych, a źródło danych było bardziej zrozumiałe dla większej liczby osób.
 
 ## <a name="annotation-and-crowdsourcing"></a>Adnotacja i crowdsourcing

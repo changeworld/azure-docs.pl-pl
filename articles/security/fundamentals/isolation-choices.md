@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 0c07cbd9fef865f3fc7b782210ef44094df9f629
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 9ab09c7215827369b3e1fc449af68be307881f51
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779833"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68928010"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolacja w chmurze publicznej platformy Azure
 ##  <a name="introduction"></a>Wprowadzenie
-### <a name="overview"></a>Przegląd
+### <a name="overview"></a>Omówienie
 Aby pomóc aktualnym i potencjalnym klientom platformy Azure zrozumieć i korzystać z różnych funkcji związanych z zabezpieczeniami dostępnych w i otaczających platformę Azure, firma Microsoft opracowała szereg oficjalnych dokumentów, omówienia zabezpieczeń, najlepsze rozwiązania i Zestawie.
 Tematy obejmują zakres i głębokość oraz są aktualizowane okresowo. Ten dokument jest częścią tej serii, jak przedstawiono w poniższej sekcji streszczenie.
 
@@ -54,7 +54,7 @@ W przypadku miejsca pracy w chmurze dzierżawę można zdefiniować jako klienta
 Każdy katalog usługi Azure AD jest odrębny i oddzielony od innych katalogów usługi Azure AD. Podobnie jak budynek biurowy, który jest zabezpieczonym zasobem przeznaczonym tylko dla Twojej organizacji, katalog Azure AD został zaprojektowany jako zabezpieczony zasób do użytku tylko Twojej organizacji. Architektura usługi Azure AD chroni dane klientów i informacje o tożsamości przez zmieszaniem. Oznacza to, że użytkownicy i administratorzy jednego katalogu usługi Azure AD nie mogą przypadkowo ani złośliwie uzyskać dostępu do danych w innym katalogu.
 
 ### <a name="azure-tenancy"></a>Dzierżawa platformy Azure
-Dzierżawa platformy Azure (subskrypcja platformy Azure) odnosi się do relacji "klient/rozliczenia" i unikatowej [dzierżawy](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) w [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis). Izolacja poziomu dzierżawy w Microsoft Azure jest realizowana przy użyciu Azure Active Directory i [formantów opartych na rolach](https://docs.microsoft.com/azure/role-based-access-control/overview) . Każda subskrypcja platformy Azure jest skojarzona z jednym katalogiem Azure Active Directory (AD).
+Dzierżawa platformy Azure (subskrypcja platformy Azure) odnosi się do relacji "klient/rozliczenia" i unikatowej [dzierżawy](../../active-directory/develop/quickstart-create-new-tenant.md) w [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md). Izolacja poziomu dzierżawy w Microsoft Azure jest realizowana przy użyciu Azure Active Directory i [formantów opartych na rolach](../../role-based-access-control/overview.md) . Każda subskrypcja platformy Azure jest skojarzona z jednym katalogiem Azure Active Directory (AD).
 
 Użytkownicy, grupy i aplikacje z tego katalogu mogą zarządzać zasobami w ramach subskrypcji platformy Azure. Te prawa dostępu można przypisywać przy użyciu Azure Portal, narzędzi wiersza polecenia platformy Azure i interfejsów API zarządzania platformy Azure. Dzierżawa usługi Azure AD jest logicznie izolowana przy użyciu granic zabezpieczeń, dzięki czemu klient nie może uzyskać dostępu do ani naruszać współdzierżawców, złośliwie lub przypadkowo. Usługa Azure AD działa na serwerach "bez systemu operacyjnego" izolowanych w podzielonym segmencie sieci, w których filtrowanie pakietów na poziomie hosta i Zapora systemu Windows blokują niechciane połączenia i ruch.
 
@@ -71,7 +71,7 @@ Użytkownicy, grupy i aplikacje z tego katalogu mogą zarządzać zasobami w ram
 
 - Użytkownicy usługi Azure AD nie mają dostępu do fizycznych zasobów ani lokalizacji, dlatego nie jest możliwe, że nie mogą oni obejść testów logicznych zasad RBAC określonych poniżej.
 
-W przypadku potrzeb diagnostycznych i konserwacyjnych wymagany jest model operacyjny, który korzysta z systemu podniesienia uprawnień just-in-Time. Azure AD Privileged Identity Management (PIM) wprowadza koncepcję uprawnionego administratora. [Uprawnieni Administratorzy](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) powinni być użytkownikami, którzy potrzebują uprzywilejowanego dostępu, a następnie, ale nie codziennie. Rola pozostaje nieaktywna, a gdy użytkownik potrzebuje dostępu, przechodzi proces aktywacji i staje się aktywnym administratorem na określony z góry czas.
+W przypadku potrzeb diagnostycznych i konserwacyjnych wymagany jest model operacyjny, który korzysta z systemu podniesienia uprawnień just-in-Time. Azure AD Privileged Identity Management (PIM) wprowadza koncepcję uprawnionego administratora. [Uprawnieni Administratorzy](../../active-directory/privileged-identity-management/pim-configure.md) powinni być użytkownikami, którzy potrzebują uprzywilejowanego dostępu, a następnie, ale nie codziennie. Rola pozostaje nieaktywna, a gdy użytkownik potrzebuje dostępu, przechodzi proces aktywacji i staje się aktywnym administratorem na określony z góry czas.
 
 ![Usługa Azure AD Privileged Identity Management](./media/isolation-choices/azure-isolation-fig2.png)
 
@@ -82,7 +82,7 @@ Koncepcje kontenerów dzierżawców są głęboko przegrane w usłudze katalogow
 Nawet wtedy, gdy metadane z wielu dzierżawców Azure Active Directory są przechowywane na tym samym dysku fizycznym, nie istnieje żadna relacja między kontenerami innymi niż zdefiniowane przez usługę katalogową, która z kolei jest podyktowana przez administratora dzierżawy.
 
 ### <a name="azure-role-based-access-control-rbac"></a>Access Control oparte na rolach (RBAC) na platformie Azure
-[Access Control oparte na rolach (RBAC) na platformie](https://docs.microsoft.com/azure/role-based-access-control/overview) Azure ułatwia udostępnianie różnych składników dostępnych w ramach subskrypcji platformy Azure przez zapewnienie szczegółowych informacji o zarządzaniu dostępem na platformie Azure. Funkcja RBAC systemu Azure umożliwia rozdzielenie obowiązków w organizacji i udzielanie dostępu na podstawie tego, co użytkownicy potrzebują do wykonywania swoich zadań. Zamiast udzielać wszystkim nieograniczonych uprawnień w ramach subskrypcji lub zasobów platformy Azure, można zezwolić tylko na niektóre akcje.
+[Access Control oparte na rolach (RBAC) na platformie](../../role-based-access-control/overview.md) Azure ułatwia udostępnianie różnych składników dostępnych w ramach subskrypcji platformy Azure przez zapewnienie szczegółowych informacji o zarządzaniu dostępem na platformie Azure. Funkcja RBAC systemu Azure umożliwia rozdzielenie obowiązków w organizacji i udzielanie dostępu na podstawie tego, co użytkownicy potrzebują do wykonywania swoich zadań. Zamiast udzielać wszystkim nieograniczonych uprawnień w ramach subskrypcji lub zasobów platformy Azure, można zezwolić tylko na niektóre akcje.
 
 Usługa Azure RBAC ma trzy podstawowe role, które mają zastosowanie do wszystkich typów zasobów:
 
@@ -96,16 +96,16 @@ Usługa Azure RBAC ma trzy podstawowe role, które mają zastosowanie do wszystk
 
 Pozostałe role RBAC na platformie Azure umożliwiają zarządzanie określonymi zasobami platformy Azure. Na przykład rola współautor maszyny wirtualnej umożliwia użytkownikowi tworzenie maszyn wirtualnych i zarządzanie nimi. Nie daje im dostępu do Virtual Network platformy Azure lub podsieci, z którą nawiąże połączenie maszyna wirtualna.
 
-[Role wbudowane RBAC](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) mają listę ról dostępnych na platformie Azure. Określa operacje i zakres, które każda wbudowana rola przyznaje użytkownikom. Jeśli chcesz zdefiniować własne role, aby jeszcze bardziej kontrolować, zobacz jak tworzyć [role niestandardowe na platformie Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).
+[Role wbudowane RBAC](../../role-based-access-control/built-in-roles.md) mają listę ról dostępnych na platformie Azure. Określa operacje i zakres, które każda wbudowana rola przyznaje użytkownikom. Jeśli chcesz zdefiniować własne role, aby jeszcze bardziej kontrolować, zobacz jak tworzyć [role niestandardowe na platformie Azure RBAC](../../role-based-access-control/custom-roles.md).
 
 Niektóre inne możliwości Azure Active Directory obejmują:
 - Usługa Azure AD umożliwia logowanie jednokrotne do aplikacji SaaS, bez względu na to, gdzie są hostowane. Niektóre aplikacje są sfederowane z usługą Azure AD, a inne korzystają z logowania jednokrotnego z użyciem hasła. Aplikacje federacyjne mogą również obsługiwać obsługę administracyjną użytkowników i przechowywanie [haseł](https://www.techopedia.com/definition/31415/password-vault).
 
-- Dostęp do danych w usłudze [Azure Storage](https://azure.microsoft.com/services/storage/) jest kontrolowany za pośrednictwem uwierzytelniania. Każde konto magazynu ma klucz podstawowy ([klucz konta magazynu](https://docs.microsoft.com/azure/storage/storage-create-storage-account)lub SAK) oraz pomocniczy klucz tajny (Sygnatura dostępu współdzielonego lub SAS).
+- Dostęp do danych w usłudze [Azure Storage](https://azure.microsoft.com/services/storage/) jest kontrolowany za pośrednictwem uwierzytelniania. Każde konto magazynu ma klucz podstawowy ([klucz konta magazynu](../../storage/common/storage-create-storage-account.md)lub SAK) oraz pomocniczy klucz tajny (Sygnatura dostępu współdzielonego lub SAS).
 
-- Usługa Azure AD zapewnia tożsamość jako usługę za pośrednictwem Federacji przy użyciu [Active Directory Federation Services](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-azure-adfs), synchronizacji i replikacji z katalogami lokalnymi.
+- Usługa Azure AD zapewnia tożsamość jako usługę za pośrednictwem Federacji przy użyciu [Active Directory Federation Services](../../active-directory/hybrid/how-to-connect-fed-azure-adfs.md), synchronizacji i replikacji z katalogami lokalnymi.
 
-- [Uwierzytelnianie wieloskładnikowe systemu Azure](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication) to usługa wieloskładnikowego uwierzytelniania, która wymaga od użytkowników weryfikacji logowania przy użyciu aplikacji mobilnej, połączenia telefonicznego lub wiadomości SMS. Może być używany z usługą Azure AD, aby pomóc w zabezpieczaniu zasobów lokalnych za pomocą serwera usługi Azure MFA, a także z niestandardowymi aplikacjami i katalogami przy użyciu zestawu SDK.
+- [Uwierzytelnianie wieloskładnikowe systemu Azure](../../active-directory/authentication/multi-factor-authentication.md) to usługa wieloskładnikowego uwierzytelniania, która wymaga od użytkowników weryfikacji logowania przy użyciu aplikacji mobilnej, połączenia telefonicznego lub wiadomości SMS. Może być używany z usługą Azure AD, aby pomóc w zabezpieczaniu zasobów lokalnych za pomocą serwera usługi Azure MFA, a także z niestandardowymi aplikacjami i katalogami przy użyciu zestawu SDK.
 
 - [Azure AD Domain Services](https://azure.microsoft.com/services/active-directory-ds/) umożliwia dołączanie maszyn wirtualnych platformy Azure do domeny Active Directory bez wdrażania kontrolerów domeny. Możesz zalogować się na tych maszynach wirtualnych za pomocą poświadczeń firmowych Active Directory i zarządzać maszynami wirtualnymi przyłączonymi do domeny, używając zasady grupy, aby wymusić podstawy zabezpieczeń na wszystkich maszynach wirtualnych platformy Azure.
 
@@ -140,7 +140,7 @@ Wykorzystanie wyizolowanego rozmiaru gwarantuje, że Twoja maszyna wirtualna bę
 * Standard_D15_v2
 * Standard_F72s_v2
 
-Więcej informacji na temat każdego wyizolowanego rozmiaru można znaleźć w [tym miejscu](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory).
+Więcej informacji na temat każdego wyizolowanego rozmiaru można znaleźć w [tym miejscu](../../virtual-machines/windows/sizes-memory.md).
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>Izolacja głównej systemu operacyjnego funkcji Hyper-V & między głównymi maszynami wirtualnymi & Gości
 Platforma obliczeniowa platformy Azure jest oparta na wirtualizacji maszyn, co oznacza, że cały kod klienta jest wykonywany na maszynie wirtualnej funkcji Hyper-V. W każdym węźle platformy Azure (lub w sieci punkt końcowy) istnieje funkcja hypervisor, która jest uruchamiana bezpośrednio przez sprzęt i dzieli węzeł na zmienną liczbę Virtual Machines Gości (VM).
@@ -215,12 +215,12 @@ W związku z tym usługa Azure Storage działa na osobnym sprzęcie bez łączno
 
 ![Izolacja przy użyciu kontroli dostępu do magazynu](./media/isolation-choices/azure-isolation-fig9.png)
 
-**Dostęp do danych usługi Azure Storage (w tym tabel)** można kontrolować za pomocą tokenu sygnatury [dostępu](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) współdzielonego, który zapewnia dostęp z zakresu. Sygnatura dostępu współdzielonego jest tworzona za pomocą szablonu zapytania (URL) podpisanego przy użyciu [SAK (klucza konta magazynu)](https://msdn.microsoft.com/library/azure/ee460785.aspx). [Podpisany adres URL](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) można podać innemu procesowi (delegowanemu), który następnie może wypełnić szczegóły zapytania i przekazać żądanie usługi magazynu. Sygnatura dostępu współdzielonego umożliwia przyznanie klientom dostęp oparty na czasie bez ujawniania klucza tajnego konta magazynu.
+**Dostęp do danych usługi Azure Storage (w tym tabel)** można kontrolować za pomocą tokenu sygnatury [dostępu](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) współdzielonego, który zapewnia dostęp z zakresu. Sygnatura dostępu współdzielonego jest tworzona za pomocą szablonu zapytania (URL) podpisanego przy użyciu [SAK (klucza konta magazynu)](https://msdn.microsoft.com/library/azure/ee460785.aspx). [Podpisany adres URL](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) można podać innemu procesowi (delegowanemu), który następnie może wypełnić szczegóły zapytania i przekazać żądanie usługi magazynu. Sygnatura dostępu współdzielonego umożliwia przyznanie klientom dostęp oparty na czasie bez ujawniania klucza tajnego konta magazynu.
 
 Sygnatura dostępu współdzielonego oznacza, że można udzielić klientowi ograniczonych uprawnień do obiektów w naszym koncie magazynu przez określony czas i z określonym zestawem uprawnień. Firma Microsoft może przyznać te ograniczone uprawnienia bez konieczności udostępniania kluczy dostępu do konta.
 
 ### <a name="ip-level-storage-isolation"></a>Izolacja magazynu na poziomie IP
-Można nawiązywać zapory i definiować zakres adresów IP dla zaufanych klientów. Z zakresem adresów IP tylko klienci, którzy mają adres IP w zdefiniowanym zakresie, mogą łączyć się z [usługą Azure Storage](https://docs.microsoft.com/azure/storage/storage-security-guide).
+Można nawiązywać zapory i definiować zakres adresów IP dla zaufanych klientów. Z zakresem adresów IP tylko klienci, którzy mają adres IP w zdefiniowanym zakresie, mogą łączyć się z [usługą Azure Storage](../../storage/common/storage-security-guide.md).
 
 Dane magazynu IP mogą być chronione przed nieautoryzowanymi użytkownikami za pomocą mechanizmu sieciowego, który jest używany do przydzielania dedykowanego lub dedykowanego tunelu ruchu do magazynu IP.
 
@@ -233,23 +233,23 @@ Platforma Azure oferuje następujące typy szyfrowania do ochrony danych:
 #### <a name="encryption-in-transit"></a>Szyfrowanie podczas przesyłania
 Szyfrowanie podczas przesyłania jest mechanizmem ochrony danych przesyłanych między sieciami. Za pomocą usługi Azure Storage można zabezpieczyć dane przy użyciu:
 
--   [Szyfrowanie na poziomie transportu](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-in-transit), takie jak https, podczas transferu danych do usługi Azure Storage lub z niej.
+-   [Szyfrowanie na poziomie transportu](../../storage/common/storage-security-guide.md), takie jak https, podczas transferu danych do usługi Azure Storage lub z niej.
 
 -   [Szyfrowanie przewodowe](../../storage/common/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares), takie jak szyfrowanie SMB 3,0 dla udziałów plików platformy Azure.
 
--   [Szyfrowanie po stronie klienta](https://docs.microsoft.com/azure/storage/storage-security-guide#using-client-side-encryption-to-secure-data-that-you-send-to-storage)umożliwia szyfrowanie danych przed ich przesłaniem do magazynu oraz odszyfrowanie danych po ich przeniesieniu poza magazyn.
+-   [Szyfrowanie po stronie klienta](../../storage/common/storage-security-guide.md)umożliwia szyfrowanie danych przed ich przesłaniem do magazynu oraz odszyfrowanie danych po ich przeniesieniu poza magazyn.
 
 #### <a name="encryption-at-rest"></a>Szyfrowanie w spoczynku
-W przypadku wielu organizacji [szyfrowanie danych w spoczynku](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices) stanowi obowiązkowy krok w kierunku prywatności, zgodności i suwerenności danych. Istnieją trzy funkcje platformy Azure, które zapewniają szyfrowanie danych "w spoczynku":
+W przypadku wielu organizacji [szyfrowanie danych w spoczynku](isolation-choices.md) stanowi obowiązkowy krok w kierunku prywatności, zgodności i suwerenności danych. Istnieją trzy funkcje platformy Azure, które zapewniają szyfrowanie danych "w spoczynku":
 
--   [Szyfrowanie usługi Storage](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-at-rest) pozwala na zażądanie, aby usługa magazynu automatycznie szyfruje dane podczas ich zapisywania do usługi Azure Storage.
+-   [Szyfrowanie usługi Storage](../../storage/common/storage-security-guide.md) pozwala na zażądanie, aby usługa magazynu automatycznie szyfruje dane podczas ich zapisywania do usługi Azure Storage.
 
--   [Szyfrowanie po stronie klienta](https://docs.microsoft.com/azure/storage/storage-security-guide#client-side-encryption) udostępnia również funkcję szyfrowania w stanie spoczynku.
+-   [Szyfrowanie po stronie klienta](../../storage/common/storage-security-guide.md) udostępnia również funkcję szyfrowania w stanie spoczynku.
 
--   [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) umożliwia szyfrowanie dysków systemu operacyjnego i dysków danych używanych przez maszynę wirtualną IaaS.
+-   [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) umożliwia szyfrowanie dysków systemu operacyjnego i dysków danych używanych przez maszynę wirtualną IaaS.
 
 #### <a name="azure-disk-encryption"></a>Azure Disk Encryption
-[Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) dla maszyn wirtualnych pomaga sprostać wymaganiom bezpieczeństwa i zgodności w organizacji przez szyfrowanie dysków maszyny wirtualnej (w tym dysków rozruchowych i danych) przy użyciu kluczy i zasad, które można kontrolować w [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
+[Azure Disk Encryption](../azure-security-disk-encryption-overview.md) dla maszyn wirtualnych pomaga sprostać wymaganiom bezpieczeństwa i zgodności w organizacji przez szyfrowanie dysków maszyny wirtualnej (w tym dysków rozruchowych i danych) przy użyciu kluczy i zasad, które można kontrolować w [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
 
 Rozwiązanie do szyfrowania dysków dla systemu Windows jest oparte na [szyfrowanie dysków funkcją BitLocker firmy Microsoft](https://technet.microsoft.com/library/cc732774.aspx), a rozwiązanie Linux opiera się na usłudze [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt).
 
@@ -293,7 +293,7 @@ Usługa SQL Database jest usługą relacyjnej bazy danych w chmurze firmy Micros
 
 ### <a name="sql-azure-application-model"></a>Model aplikacji SQL Azure
 
-[Microsoft SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-get-started) Baza danych jest usługą relacyjnej bazy danych opartą na chmurze, która jest oparta na SQL Server technologiach. Zapewnia wysoką dostępność, skalowalną i wielodostępną usługę bazy danych hostowaną przez firmę Microsoft w chmurze.
+[Microsoft SQL Azure](../../sql-database/sql-database-single-database-get-started.md) Baza danych jest usługą relacyjnej bazy danych opartą na chmurze, która jest oparta na SQL Server technologiach. Zapewnia wysoką dostępność, skalowalną i wielodostępną usługę bazy danych hostowaną przez firmę Microsoft w chmurze.
 
 Z perspektywy aplikacji SQL Azure oferuje następującą hierarchię: Każdy poziom zawiera więcej poziomów poniżej.
 
@@ -344,9 +344,9 @@ Wdrożenie platformy Azure ma wiele warstw izolacji sieci. Na poniższym diagram
 
 ![Izolacja sieci](./media/isolation-choices/azure-isolation-fig13.png)
 
-**Izolacja ruchu:** [Sieć wirtualna](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) to granica izolacji ruchu na platformie Azure. Maszyny wirtualne w jednej sieci wirtualnej nie mogą komunikować się bezpośrednio z maszynami wirtualnymi w innej sieci wirtualnej, nawet jeśli obie sieci wirtualne są tworzone przez tego samego klienta. Izolacja jest właściwością krytyczną, która zapewnia, że maszyny wirtualne klienta i komunikacja pozostają prywatne w ramach sieci wirtualnej.
+**Izolacja ruchu:** [Sieć wirtualna](../../virtual-network/virtual-networks-overview.md) to granica izolacji ruchu na platformie Azure. Maszyny wirtualne w jednej sieci wirtualnej nie mogą komunikować się bezpośrednio z maszynami wirtualnymi w innej sieci wirtualnej, nawet jeśli obie sieci wirtualne są tworzone przez tego samego klienta. Izolacja jest właściwością krytyczną, która zapewnia, że maszyny wirtualne klienta i komunikacja pozostają prywatne w ramach sieci wirtualnej.
 
-[Podsieć](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) oferuje dodatkową warstwę izolacji w sieci wirtualnej na podstawie zakresu adresów IP. Adresy IP w sieci wirtualnej można podzielić na wiele podsieci w celu zapewnienia organizacji i zabezpieczeń. Maszyny wirtualne i wystąpienia ról PaaS wdrożone w podsieciach (tych samych lub różnych) w ramach sieci wirtualnej mogą komunikować się ze sobą bez dodatkowego konfigurowania. Możesz również skonfigurować [grupę zabezpieczeń sieci (sieciowych grup zabezpieczeń)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) , aby zezwolić na ruch sieciowy do wystąpienia maszyny wirtualnej lub go zabronić na podstawie reguł skonfigurowanych na liście kontroli dostępu (ACL) sieciowej grupy zabezpieczeń. Grupy NSG można kojarzyć z podsieciami lub poszczególnymi wystąpieniami maszyn wirtualnych w danej podsieci. Gdy sieciowa grupa zabezpieczeń jest skojarzona z podsiecią, reguły listy ACL dotyczą wszystkich wystąpień maszyn wirtualnych w tej podsieci.
+[Podsieć](../../virtual-network/virtual-networks-overview.md) oferuje dodatkową warstwę izolacji w sieci wirtualnej na podstawie zakresu adresów IP. Adresy IP w sieci wirtualnej można podzielić na wiele podsieci w celu zapewnienia organizacji i zabezpieczeń. Maszyny wirtualne i wystąpienia ról PaaS wdrożone w podsieciach (tych samych lub różnych) w ramach sieci wirtualnej mogą komunikować się ze sobą bez dodatkowego konfigurowania. Możesz również skonfigurować [grupę zabezpieczeń sieci (sieciowych grup zabezpieczeń)](../../virtual-network/virtual-networks-overview.md) , aby zezwolić na ruch sieciowy do wystąpienia maszyny wirtualnej lub go zabronić na podstawie reguł skonfigurowanych na liście kontroli dostępu (ACL) sieciowej grupy zabezpieczeń. Grupy NSG można kojarzyć z podsieciami lub poszczególnymi wystąpieniami maszyn wirtualnych w danej podsieci. Gdy sieciowa grupa zabezpieczeń jest skojarzona z podsiecią, reguły listy ACL dotyczą wszystkich wystąpień maszyn wirtualnych w tej podsieci.
 
 ## <a name="next-steps"></a>Następne kroki
 

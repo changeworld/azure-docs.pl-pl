@@ -1,6 +1,6 @@
 ---
-title: Włącz replikację dla dysku, który został dodany do maszyny Wirtualnej platformy Azure replikowane za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób włączania replikacji dysk, który został dodany do maszyny Wirtualnej platformy Azure, który jest włączony dla odzyskiwania po awarii przy użyciu usługi Azure Site Recovery
+title: Włącz replikację dysku dodanego do maszyny wirtualnej platformy Azure zreplikowanej przez Azure Site Recovery | Microsoft Docs
+description: W tym artykule opisano sposób włączania replikacji dysku dodanego do maszyny wirtualnej platformy Azure, która umożliwia odzyskiwanie po awarii za pomocą Azure Site Recovery
 services: site-recovery
 author: asgang
 manager: rochakm
@@ -8,48 +8,48 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: asgang
-ms.openlocfilehash: 4a262a3a0c32516988890a6afc6eef34d8655c89
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 068464b8a3919d833418c8f3916ccf5c54835c6f
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671871"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934540"
 ---
-# <a name="enable-replication-for-a-disk-added-to-an-azure-vm"></a>Włącz replikację dla dysku, który został dodany do maszyny Wirtualnej platformy Azure
+# <a name="enable-replication-for-a-disk-added-to-an-azure-vm"></a>Włącz replikację dla dysku dodanego do maszyny wirtualnej platformy Azure
 
 
-W tym artykule opisano sposób włączania replikacji dysków z danymi, które są dodawane do maszyny Wirtualnej platformy Azure, która jest już włączona dla odzyskiwania po awarii w innym regionie platformy Azure, za pomocą [usługi Azure Site Recovery](site-recovery-overview.md).
+W tym artykule opisano sposób włączania replikacji dysków z danymi, które są dodawane do maszyny wirtualnej platformy Azure, która jest już włączona na potrzeby odzyskiwania po awarii w innym regionie świadczenia usługi Azure przy użyciu [Azure Site Recovery](site-recovery-overview.md).
 
-Włączanie replikacji dla dysku, dodane do maszyny Wirtualnej jest obsługiwana dla maszyn wirtualnych platformy Azure z dyskami zarządzanymi.
+Włączenie replikacji dysku dodawanego do maszyny wirtualnej jest obsługiwane dla maszyn wirtualnych platformy Azure z dyskami zarządzanymi.
 
-Po dodaniu nowego dysku do maszyny Wirtualnej platformy Azure, który jest replikowany do innego regionu platformy Azure, są następujące operacje:
+Po dodaniu nowego dysku do maszyny wirtualnej platformy Azure, która jest replikowana do innego regionu platformy Azure, występują następujące sytuacje:
 
--   Kondycja replikacji maszyny wirtualnej, wyświetla ostrzeżenie i notatki w portalu informuje, że jeden lub więcej dysków są dostępne do ochrony.
--   Jeśli włączysz ochronę dodane dyski, ostrzeżenie znikną po początkowej replikacji dysku.
--   Jeśli wybierzesz nie włączyć replikację dla dysku, możesz wybrać, aby zignorować to ostrzeżenie.
+-   Kondycja replikacji maszyny wirtualnej zawiera ostrzeżenie i Uwaga w portalu informuje o tym, że co najmniej jeden dysk jest dostępny do ochrony.
+-   Jeśli włączysz ochronę dla dodanych dysków, ostrzeżenie zniknie po początkowej replikacji dysku.
+-   Jeśli nie zdecydujesz się na włączenie replikacji dla dysku, możesz wybrać opcję odrzucania ostrzeżenia.
 
-![Nowy dysk, dodane](./media/azure-to-azure-enable-replication-added-disk/newdisk.png)
+![Dodano nowy dysk](./media/azure-to-azure-enable-replication-added-disk/newdisk.png)
 
 
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
-W tym artykule założono, że już skonfigurowano odzyskiwanie po awarii dla maszyny Wirtualnej, do którego dodajesz dysku. Jeśli jeszcze tego nie, postępuj zgodnie z [samouczek odzyskiwania po awarii Azure – Azure](azure-to-azure-tutorial-enable-replication.md). 
+W tym artykule przyjęto założenie, że już skonfigurowano odzyskiwanie po awarii dla maszyny wirtualnej, do której jest dodawany dysk. Jeśli nie, postępuj zgodnie z [samouczkiem odzyskiwania po awarii z platformy Azure do platformy Azure](azure-to-azure-tutorial-enable-replication.md). 
 
 ## <a name="enable-replication-for-an-added-disk"></a>Włączanie replikacji dodanego dysku 
 
-Aby włączyć replikację dla dodany dysk, wykonaj następujące czynności:
+Aby włączyć replikację dla dodanego dysku, wykonaj następujące czynności:
 
-1. W magazynie > **zreplikowane elementy**, kliknij maszynę Wirtualną, do którego został dodany dysk.
-2. Kliknij przycisk **dysków**, a następnie wybierz dysk danych, dla którego chcesz włączyć replikację (dyski te mają **nie są chronione** stanu).
-3.  W **szczegóły dysku**, kliknij przycisk **włączyć replikację**.
+1. W magazynie > **zreplikowane elementy**kliknij maszynę wirtualną, do której dodano dysk.
+2. Kliknij pozycję **dyski**, a następnie wybierz dysk danych, dla którego chcesz włączyć replikację (te dyski mają stan **niechroniony** ).
+3.  W obszarze **szczegóły dysku**kliknij pozycję **Włącz replikację**.
 
-    ![Włączanie replikacji na potrzeby dodany dysk](./media/azure-to-azure-enable-replication-added-disk/enabled-added.png)
+    ![Włącz replikację dla dodanego dysku](./media/azure-to-azure-enable-replication-added-disk/enabled-added.png)
 
-Po zakończeniu replikacji początkowej, uruchamia zadanie włączania replikacji ostrzeżenie kondycji replikacji dla problemu z dyskiem zostaną usunięte.
+Po uruchomieniu zadania włączania replikacji i zakończeniu początkowej replikacji zostanie usunięte ostrzeżenie o kondycji replikacji dla problemu z dyskiem.
 
 
 
-# <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Dowiedz się więcej](site-recovery-test-failover-to-azure.md) o uruchamianiu testowy tryb failover.
+[Dowiedz się więcej](site-recovery-test-failover-to-azure.md) o uruchamianiu testowej pracy w trybie failover.

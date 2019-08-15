@@ -7,12 +7,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: gwallace
-ms.openlocfilehash: 10d919b21e05195e8a7b6b351a742a4f9a57ee2b
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: ae9d124391a1b17187ca98964874f681352498da
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360708"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945352"
 ---
 # <a name="how-to-update-a-cloud-service"></a>Jak zaktualizować usługę w chmurze
 
@@ -21,7 +21,7 @@ Proces aktualizowania usługi w chmurze, w tym jej ról i systemu operacyjnego g
 ## <a name="update-an-azure-service"></a>Aktualizowanie usługi platformy Azure
 Platforma Azure organizuje wystąpienia roli w logiczne grupy o nazwie domeny uaktualnienia (UD). Domeny uaktualnienia (UD) to logiczne zestawy wystąpień ról, które są aktualizowane jako Grupa.  Platforma Azure aktualizuje jedną UD usługi w chmurze, dzięki czemu wystąpienia w innym miejscu mogą nadal obsługiwać ruch.
 
-Domyślna liczba domen uaktualnienia to 5. Możesz określić inną liczbę domen uaktualnienia, dołączając atrybut upgradeDomainCount w pliku definicji usługi (. csdef). Aby uzyskać więcej informacji o atrybucie upgradeDomainCount, zobacz Schemat [roli webrole](/previous-versions/azure/reference/gg557553(v=azure.100)) lub [schemat rola procesu roboczego](/previous-versions/azure/reference/gg557552(v=azure.100)).
+Domyślna liczba domen uaktualnienia to 5. Możesz określić inną liczbę domen uaktualnienia, dołączając atrybut upgradeDomainCount w pliku definicji usługi (. csdef). Aby uzyskać więcej informacji o atrybucie upgradeDomainCount, zobacz [schemat definicji usługi Azure Cloud Services (plik csdef)](https://docs.microsoft.com/azure/cloud-services/schema-csdef-file).
 
 W przypadku wykonywania aktualizacji w miejscu co najmniej jednej roli w usłudze platforma Azure aktualizuje zestawy wystąpień ról zgodnie z domeną uaktualnienia, do której należą. Platforma Azure aktualizuje wszystkie wystąpienia w danej domenie uaktualnienia — je zatrzymują, aktualizując je, a następnie przełączając je do następnej domeny. Zatrzymując tylko wystąpienia uruchomione w bieżącej domenie uaktualnienia, platforma Azure sprawdza, czy aktualizacja ma najmniejszy możliwy wpływ na uruchomioną usługę. Aby uzyskać więcej informacji, zobacz [jak działa aktualizacja](#howanupgradeproceeds) w dalszej części tego artykułu.
 
@@ -49,13 +49,13 @@ W poniższej tabeli przedstawiono dozwolone zmiany usługi w trakcie aktualizacj
 | --- | --- | --- | --- |
 | Wersja systemu operacyjnego |Tak |Yes |Tak |
 | Poziom zaufania platformy .NET |Tak |Yes |Tak |
-| Rozmiar maszyny wirtualnej<sup>1</sup> |Tak<sup>2</sup> |Yes |Tak |
-| Ustawienia magazynu lokalnego |Zwiększ tylko<sup>2</sup> |Yes |Tak |
-| Dodawanie lub usuwanie ról w usłudze |Tak |Yes |Yes |
-| Liczba wystąpień określonej roli |Yes |Yes |Tak |
-| Liczba lub typ punktów końcowych dla usługi |Tak<sup>2</sup> |Nie |Yes |
-| Nazwy i wartości ustawień konfiguracji |Yes |Yes |Tak |
-| Wartości (ale nie nazwy) ustawień konfiguracji |Tak |Yes |Yes |
+| Rozmiar maszyny wirtualnej<sup>1</sup> |Tak<sup>2</sup> |Tak |Tak |
+| Ustawienia magazynu lokalnego |Zwiększ tylko<sup>2</sup> |Tak |Tak |
+| Dodawanie lub usuwanie ról w usłudze |Tak |Yes |Tak |
+| Liczba wystąpień określonej roli |Tak |Yes |Tak |
+| Liczba lub typ punktów końcowych dla usługi |Tak<sup>2</sup> |Nie |Tak |
+| Nazwy i wartości ustawień konfiguracji |Tak |Yes |Tak |
+| Wartości (ale nie nazwy) ustawień konfiguracji |Tak |Yes |Tak |
 | Dodaj nowe certyfikaty |Tak |Yes |Tak |
 | Zmień istniejące certyfikaty |Tak |Yes |Tak |
 | Wdróż nowy kod |Tak |Yes |Tak |

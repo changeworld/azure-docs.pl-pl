@@ -2,19 +2,18 @@
 title: Obsługuj urządzenia w trybie offline — usługi Azure IoT Edge | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak urządzenia usługi IoT Edge i moduły mogą działać bez połączenia internetowego przez dłuższy czas i jak włączyć regularne urządzeniach IoT, aby działać w trybie offline za usługi IoT Edge.
 author: kgremban
-manager: philmea
 ms.author: kgremban
-ms.date: 06/04/2019
+ms.date: 08/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 4a46128d3b0e77ff7921e1f4875c318a95309769
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 6d82b353f8b485b4441853b7ff8e70e7d69f4d6a
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598607"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986988"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>Informacje o rozszerzonych możliwościach trybu offline dla urządzeń IoT Edge, modułów i urządzeń podrzędnych
 
@@ -137,45 +136,73 @@ To ustawienie jest odpowiednią właściwością Centrum IoT Edge, które jest p
 }
 ```
 
-### <a name="additional-offline-storage"></a>Dodatkowy magazyn w trybie offline
+### <a name="host-storage-for-system-modules"></a>Magazyn hosta dla modułów systemowych
 
-Komunikaty są domyślnie przechowywane w systemie plików kontenerów IoT Edge centrum. Jeśli tego ilość miejsca jest niewystarczająca do potrzeb w trybie offline, można przypisać magazyn lokalny na urządzeniu usługi IoT Edge. Utwórz zmienną środowiskową dla Centrum IoT Edge, która wskazuje folder magazynu w kontenerze. Następnie użyj opcji tworzenia, aby powiązać ten folder storage do folderu na komputerze hosta. 
+Komunikaty i informacje o stanie modułów są domyślnie przechowywane w lokalnym kontenerze systemu IoT Edge centrum. Aby zwiększyć niezawodność, szczególnie w przypadku działania w trybie offline, można również przeznaczyć magazyn na hoście IoT Edge urządzenia.
 
-Zmienne środowiskowe i opcje tworzenia dla modułu IoT Edge Hub można skonfigurować w Azure Portal w sekcji **Konfigurowanie ustawień zaawansowanego środowiska uruchomieniowego Edge** . Ewentualnie można skonfigurować go bezpośrednio w pliku manifestu wdrożenia. 
+Aby skonfigurować magazyn w systemie hosta, Utwórz zmienne środowiskowe dla Centrum IoT Edge i agenta IoT Edge, które wskazują folder magazynu w kontenerze. Następnie użyj opcji tworzenia, aby powiązać ten folder storage do folderu na komputerze hosta. 
+
+Zmienne środowiskowe i opcje tworzenia dla modułu IoT Edge Hub można skonfigurować w Azure Portal w sekcji **Konfigurowanie ustawień zaawansowanego środowiska uruchomieniowego Edge** . 
+
+1. W przypadku agentów IoT Edge Hub i IoT Edge Dodaj zmienną środowiskową o nazwie **storageFolder** , która wskazuje katalog w module.
+1. Dla Centrum IoT Edge i agenta IoT Edge Dodaj powiązania, aby połączyć katalog lokalny na komputerze hosta z katalogiem w module. Na przykład: 
+
+   ![Dodawanie opcji tworzenia i zmiennych środowiskowych dla magazynu lokalnego](./media/offline-capabilities/offline-storage.png)
+
+Lub można skonfigurować magazyn lokalny bezpośrednio w manifeście wdrożenia. Na przykład: 
 
 ```json
-"edgeHub": {
-    "type": "docker",
-    "settings": {
-        "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
-        "createOptions": {
-            "HostConfig": {
-                "Binds": ["<HostStoragePath>:<ModuleStoragePath>"],
-                "PortBindings": {
-                    "8883/tcp": [{"HostPort":"8883"}],
-                    "443/tcp": [{"HostPort":"443"}],
-                    "5671/tcp": [{"HostPort":"5671"}]
+"systemModules": {
+    "edgeAgent": {
+        "settings": {
+            "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+            "createOptions": {
+                "HostConfig": {
+                    "Binds":["<HostStoragePath>:<ModuleStoragePath>"]
                 }
+            }
+        },
+        "type": "docker",
+        "env": {
+            "storageFolder": {
+                "value": "<ModuleStoragePath>"
             }
         }
     },
-    "env": {
-        "storageFolder": {
-            "value": "<ModuleStoragePath>"
-        }
-    },
-    "status": "running",
-    "restartPolicy": "always"
+    "edgeHub": {
+        "settings": {
+            "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+            "createOptions": {
+                "HostConfig": {
+                    "Binds":["<HostStoragePath>:<ModuleStoragePath"],
+                    "PortBindings":{"5671/tcp":[{"HostPort":"5671"}],"8883/tcp":[{"HostPort":"8883"}],"443/tcp":[{"HostPort":"443"}]}}}
+        },
+        "type": "docker",
+        "env": {
+            "storageFolder": {
+                "value": "<ModuleStoragePath>"
+            }
+        },
+        "status": "running",
+        "restartPolicy": "always"
+    }
 }
 ```
 
-Zastąp `<HostStoragePath>` i `<ModuleStoragePath>` z hosta i modułu magazynu ścieżka magazynu ścieżki; hosta i moduł musi być ścieżką bezwzględną. W opcjach tworzenia Powiąż wszystkie ścieżki magazynu hosta i modułu. Następnie utwórz zmienną środowiskową, która wskazuje ścieżkę magazynu modułów.  
+Zamień `<HostStoragePath>` i`<ModuleStoragePath>` na ścieżkę magazynu hosta i modułu; obie wartości muszą być ścieżką bezwzględną. 
 
 Na przykład oznacza `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` , że katalog **/etc/iotedge/Storage** w systemie hosta jest mapowany do katalogu **/iotedge/Storage/** w kontenerze. Inny przykład dla systemów Windows oznacza, `"Binds":["C:\\temp:C:\\contemp"]` że katalog **c:\\temp** w systemie hosta jest mapowany do katalogu **c\\:** na tymczasowej sekcji kontenera. 
 
-Więcej informacji na temat opcji tworzenia można znaleźć w dokumentacji [platformy Docker](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate).
+Na urządzeniach z systemem Linux upewnij się, że profil użytkownika Centrum IoT Edge, identyfikator UID 1000, ma uprawnienia Odczyt, zapis i wykonywanie do katalogu systemu hosta. Te uprawnienia są niezbędne, aby Centrum IoT Edge mogły przechowywać wiadomości w katalogu i pobierać je później. (Agent IoT Edge działa jako element główny, więc nie potrzebuje dodatkowych uprawnień). Istnieje kilka sposobów zarządzania uprawnieniami katalogu w systemach Linux, w tym za pomocą `chown` programu, zmienić właściciela katalogu, a `chmod` następnie zmienić uprawnienia. Na przykład:
 
-## <a name="next-steps"></a>Kolejne kroki
+```bash
+sudo chown 1000 <HostStoragePath>
+sudo chmod 700 <HostStoragePath>
+```
+
+Więcej informacji o opcjach tworzenia można znaleźć w dokumentacji [platformy Docker](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate).
+
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o konfigurowaniu przezroczystej bramy dla połączeń urządzeń nadrzędnych/podrzędnych: 
 

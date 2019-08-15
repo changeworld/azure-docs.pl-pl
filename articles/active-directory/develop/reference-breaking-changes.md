@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 747b279b38ec3b73f19194825195f1b3450d4514
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 38383685f74020f5208d42df4428f896931fbe2a
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834855"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931782"
 ---
 # <a name="whats-new-for-authentication"></a>Co nowego w uwierzytelnianiu? 
 
@@ -49,7 +49,7 @@ System uwierzytelniania zmienia i dodaje funkcje na bieżąco w celu poprawy bez
 
 **Data wprowadzenia**: 26 lipca 2019
 
-**Wpływ na punkty końcowe**: Zarówno [wersja 1.0](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow) , jak i [2.0](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)
+**Wpływ na punkty końcowe**: Zarówno [wersja 1.0](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow) , jak i [2.0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)
 
 **Wpływ na protokół**: [Poświadczenia klienta (tokeny tylko dla aplikacji)](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
 
@@ -69,7 +69,7 @@ Jeśli jednak aplikacja bramy contoso była aplikacją z wieloma dzierżawcami, 
 
 ### <a name="redirect-uris-can-now-contain-query-string-parameters"></a>Identyfikatory URI przekierowania mogą teraz zawierać parametry ciągu zapytania
 
-**Data wprowadzenia**: 22 lipca 2019
+**Data wprowadzenia**: 22 lipca 2019 r.
 
 **Wpływ na punkty końcowe**: Zarówno wersja 1.0, jak i 2.0
 

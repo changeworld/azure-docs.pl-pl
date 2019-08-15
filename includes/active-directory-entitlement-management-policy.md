@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/31/2019
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: db16a2f122da1bf6c767e0a47c93c22f1882c406
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 154d71c9cbc109834a5854b46c3e6584dcefa7eb
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68817237"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68968913"
 ---
 ### <a name="policy-for-users-in-your-directory"></a>Zasady: Dla użytkowników w katalogu
 
@@ -35,7 +35,7 @@ Wykonaj te kroki, jeśli chcesz, aby zasady były przeznaczone dla użytkownikó
 
 ### <a name="policy-for-users-not-in-your-directory"></a>Zasady: Dla użytkowników nieznajdujących się w katalogu
 
-Wykonaj te kroki, jeśli chcesz, aby zasady były przeznaczone dla użytkowników, którzy nie należą do katalogu, którzy mogą zażądać tego pakietu dostępu. Użytkownicy znajdujący się **w katalogu nie** są użytkownikami, którzy znajdują się w innym katalogu usługi Azure AD i mogą nie zostać zaproszeni do katalogu.  Katalogi muszą być skonfigurowane tak, aby były dozwolone w ustawieniach **ograniczeń organizacyjnych relacje współpracy** .
+Wykonaj te kroki, jeśli chcesz, aby zasady były przeznaczone dla użytkowników, którzy nie należą do katalogu, którzy mogą zażądać tego pakietu dostępu. Użytkownicy znajdujący się **w katalogu nie** są użytkownikami, którzy znajdują się w innym katalogu usługi Azure AD i mogą nie zostać zaproszeni do katalogu. Obecnie można dodawać tylko użytkowników z organizacji z usługą Azure AD. Katalogi muszą być skonfigurowane tak, aby były dozwolone w ustawieniach **ograniczeń organizacyjnych relacje współpracy** .
 
 > [!NOTE]
 > Zostanie utworzone konto użytkownika zewnętrznego gościa dla użytkownika, którego jeszcze nie ma w Twoim katalogu, którego żądanie zostało zatwierdzone lub którego zatwierdzeni zostanie zaakceptowany. Gość zostanie zaproszony, ale nie otrzyma wiadomości e-mail z zaproszeniem. Zamiast tego otrzymają wiadomość e-mail, gdy zostanie dostarczone przypisanie pakietu dostępu. Domyślnie, gdy użytkownik tego gościa nie ma już żadnych przypisań pakietów dostępu, ponieważ ostatnie przypisanie wygasło lub zostało anulowane, konto użytkownika Gość zostanie zablokowane przed zalogowaniem się i usunięciem. Jeśli chcesz, aby użytkownicy-Goście pozostali w Twoim katalogu przez czas nieokreślony, nawet jeśli nie mają przypisanych pakietów dostępu, możesz zmienić ustawienia konfiguracji zarządzania uprawnieniami.

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49f8d0e418f43648665b95f5bf1f672e9f9dae28
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: cad2568702909274030d3c7c6469a7e4cbf670c4
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779451"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989255"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Instrukcje: Planowanie implementacji dołączania hybrydowego Azure Active Directory
 
@@ -101,7 +101,7 @@ Organizacje mogą chcieć przeprowadzić kontrolowane sprawdzenie poprawności h
 
 ## <a name="select-your-scenario-based-on-your-identity-infrastructure"></a>Wybierz swój scenariusz w oparciu o infrastrukturę tożsamości
 
-Sprzężenie hybrydowe usługi Azure AD współdziała z obydwoma środowiskami zarządzanymi i federacyjnymi.  
+Sprzężenie hybrydowe usługi Azure AD współdziała z systemami, zarządzanymi i federacyjnymi, w zależności od tego, czy nazwa UPN jest w trakcie routingu czy bez obsługi routingu. W dolnej części strony tabeli zapoznaj się z obsługiwanymi scenariuszami.  
 
 ### <a name="managed-environment"></a>Środowisko zarządzane
 

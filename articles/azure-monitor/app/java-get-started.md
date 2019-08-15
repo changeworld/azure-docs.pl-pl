@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: lagayhar
-ms.openlocfilehash: d3edfa1ca63560f447d2c9ea3da3588e069b7af1
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 27610280bafa6d8e9e33f84af2d3e9f6c2c9ea5c
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226820"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967821"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Wprowadzenie do usługi Application Insights w projekcie sieci Web w języku Java
 
@@ -91,7 +91,7 @@ Następnie odśwież zależności projektu, aby pliki binarne zostały pobrane.
 ```
 
 #### <a name="if-youre-using-eclipse-to-create-a-dynamic-web-project-"></a>Jeśli używasz środowiska Eclipse do tworzenia dynamicznego projektu internetowego...
-Użyj [zestawu SDK Application Insights dla wtyczki Java][eclipse]. Uwaga: ta wtyczka pozwala szybciej rozpocząć pracę z usługą Application Insights (przy założeniu, że nie używasz programu Maven/Gradle), ale nie udostępnia funkcji systemu zarządzania zależnościami. Oznacza to, że zaktualizowanie wtyczki nie powoduje automatycznego zaktualizowania bibliotek usługi Application Insights w projekcie.
+Użyj zestawu SDK Application Insights dla wtyczki Java. Uwaga: ta wtyczka pozwala szybciej rozpocząć pracę z usługą Application Insights (przy założeniu, że nie używasz programu Maven/Gradle), ale nie udostępnia funkcji systemu zarządzania zależnościami. Oznacza to, że zaktualizowanie wtyczki nie powoduje automatycznego zaktualizowania bibliotek usługi Application Insights w projekcie.
 
 * *Błędy kompilacji lub walidacji sumy kontrolnej?* Spróbuj użyć określonej wersji, np.: `version:'2.0.n'`. Najbardziej aktualną wersję znajdziesz w [informacjach o wersji zestawu SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) lub wśród [artefaktów Maven](https://search.maven.org/#search%7Cga%7C1%7Capplicationinsights).
 * *Aby zaktualizować zestaw SDK do nowej wersji*, odśwież zależności projektu.
@@ -459,7 +459,7 @@ Usługa Application Insights może służyć do testowania witryny sieci Web w r
 ## <a name="questions-problems"></a>Pytania? Problemy?
 [Rozwiązywanie problemów z technologią Java](java-troubleshoot.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Monitorowanie wywołań zależności](java-agent.md)
 * [Monitorowanie liczników wydajności sytemu Unix](java-collectd.md)
 * Dodawanie [monitorowania do stron sieci Web](javascript.md) w celu monitorowania czasów ładowania stron, wywołań AJAX i wyjątków przeglądarki
@@ -473,7 +473,6 @@ Usługa Application Insights może służyć do testowania witryny sieci Web w r
 [apiexceptions]: ../../azure-monitor/app/api-custom-events-metrics.md#trackexception
 [availability]: ../../azure-monitor/app/monitor-web-app-availability.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[eclipse]: ../../azure-monitor/learn/java-quick-start.md
 [javalogs]: java-trace-logs.md
 [metrics]: ../../azure-monitor/app/metrics-explorer.md
 [usage]: javascript.md

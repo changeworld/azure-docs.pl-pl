@@ -1,40 +1,40 @@
 ---
-title: Konfigurowanie aplikacji platformy ASP.NET Core — usługa Azure App Service | Dokumentacja firmy Microsoft
-description: Informacje o sposobie konfigurowania aplikacji ASP.NET Core pracę w usłudze Azure App Service
+title: Konfigurowanie aplikacji ASP.NET Core — Azure App Service | Microsoft Docs
+description: Dowiedz się, jak skonfigurować aplikacje ASP.NET Core do pracy w programie Azure App Service
 services: app-service
 documentationcenter: ''
 author: cephalin
-manager: jpconnock
+manager: gwallace
 editor: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 08/13/2019
 ms.author: cephalin
-ms.openlocfilehash: f2781e3cc2433f73ba7ff33e5c452e29de746adf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b05120148d3b82829c465effbcdc948da950aaf0
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956201"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990258"
 ---
-# <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>Konfigurowanie systemu Linux aplikacji ASP.NET Core dla usługi Azure App Service
+# <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>Konfigurowanie aplikacji ASP.NET Core systemu Linux dla Azure App Service
 
-Aplikacje platformy ASP.NET Core, musi zostać wdrożony jako skompilowane pliki binarne. Narzędzie do publikowania programu Visual Studio kompiluje rozwiązanie, a następnie wdraża skompilowane pliki binarne bezpośrednio w aparacie wdrażania usługi App Service najpierw wdraża repozytorium kodu, a następnie kompiluje pliki binarne.
+Aplikacje ASP.NET Core muszą być wdrożone jako skompilowane pliki binarne. Narzędzie do publikowania programu Visual Studio kompiluje rozwiązanie, a następnie wdraża skompilowane pliki binarne bezpośrednio, natomiast aparat wdrażania App Service najpierw wdraża repozytorium kodu, a następnie kompiluje pliki binarne.
 
-Ten przewodnik zawiera podstawowe pojęcia i instrukcje dotyczące platformy ASP.NET Core programistów, którzy korzystają z wbudowanych kontenera systemu Linux w usłudze App Service. Jeśli nie znasz usługi Azure App Service, postępuj zgodnie z [Szybki Start platformy ASP.NET Core](quickstart-dotnetcore.md) i [platformy ASP.NET Core z usługą SQL Database](tutorial-dotnetcore-sqldb-app.md) pierwszy.
+Ten przewodnik zawiera najważniejsze pojęcia i instrukcje dla ASP.NET Core deweloperów korzystających z wbudowanego kontenera systemu Linux w programie App Service. Jeśli nie korzystasz z Azure App Service, postępuj zgodnie z przewodnikiem [szybki start ASP.NET Core](quickstart-dotnetcore.md) i [ASP.NET Core z samouczkiem SQL Database](tutorial-dotnetcore-sqldb-app.md) .
 
-## <a name="show-net-core-version"></a>Pokaż wersji programu .NET Core
+## <a name="show-net-core-version"></a>Pokaż wersję .NET Core
 
-Aby wyświetlić bieżącą wersję platformy .NET Core, uruchom następujące polecenie [Cloud Shell](https://shell.azure.com):
+Aby wyświetlić bieżącą wersję programu .NET Core, uruchom następujące polecenie w [Cloud Shell](https://shell.azure.com):
 
 ```azurecli-interactive
 az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
 ```
 
-Aby wyświetlić wszystkie obsługiwane wersje platformy .NET Core, uruchom następujące polecenie [Cloud Shell](https://shell.azure.com):
+Aby wyświetlić wszystkie obsługiwane wersje programu .NET Core, uruchom następujące polecenie w [Cloud Shell](https://shell.azure.com):
 
 ```azurecli-interactive
 az webapp list-runtimes --linux | grep DOTNETCORE
@@ -42,7 +42,7 @@ az webapp list-runtimes --linux | grep DOTNETCORE
 
 ## <a name="set-net-core-version"></a>Ustaw wersję .NET Core
 
-Uruchom następujące polecenie [Cloud Shell](https://shell.azure.com) można ustawić wersji platformy .NET Core do wersji 2.1:
+Uruchom następujące polecenie w [Cloud Shell](https://shell.azure.com) , aby ustawić wersję .NET Core na 2,1:
 
 ```azurecli-interactive
 az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "DOTNETCORE|2.1"
@@ -50,21 +50,38 @@ az webapp config set --name <app-name> --resource-group <resource-group-name> --
 
 ## <a name="access-environment-variables"></a>Uzyskiwanie dostępu do zmiennych środowiskowych
 
-W usłudze App Service możesz [określić ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) poza kodu aplikacji. Następnie można z nich korzystać przy użyciu standardowego wzorca ASP.NET:
+W App Service można [ustawić ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) poza kodem aplikacji. Następnie można uzyskać do nich dostęp w dowolnej klasie przy użyciu wzorca iniekcji zależności standardowej ASP.NET Core:
 
 ```csharp
 include Microsoft.Extensions.Configuration;
-// retrieve App Service app setting
-System.Configuration.ConfigurationManager.AppSettings["MySetting"]
-// retrieve App Service connection string
-Configuration.GetConnectionString("MyDbConnection")
+
+namespace SomeNamespace 
+{
+    public class SomeClass
+    {
+        private IConfiguration _configuration;
+    
+        public SomeClass(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+    
+        public SomeMethod()
+        {
+            // retrieve App Service app setting
+            var myAppSetting = _configuration["MySetting"];
+            // retrieve App Service connection string
+            var myConnString = _configuration.GetConnectionString("MyDbConnection");
+        }
+    }
+}
 ```
 
-Jeśli skonfigurujesz to ustawienie aplikacji o takiej samej nazwie w usłudze App Service, a w *Web.config*, wartość usługi App Service ma pierwszeństwo przed wartością pliku Web.config. Wartość Web.config umożliwia debugowanie aplikacji w środowisku lokalnym, ale wartość usługi App Service umożliwia przebieg aplikacji w produkcie przy użyciu ustawień w środowisku produkcyjnym. Parametry połączenia działają w taki sam sposób. W ten sposób można przechowywać klucze tajne aplikacji poza repozytorium kodu i uzyskać dostęp do odpowiedniej wartości bez wprowadzania zmian w kodzie.
+W przypadku skonfigurowania ustawienia aplikacji o tej samej nazwie w App Service i w pliku *appSettings. JSON*na przykład wartość App Service ma pierwszeństwo przed wartością *appSettings. JSON* . Lokalna wartość *appSettings. JSON* umożliwia debugowanie aplikacji lokalnie, ale App Service wartość umożliwia uruchamianie aplikacji w produkcie z ustawieniami produkcyjnymi. Parametry połączenia działają w ten sam sposób. W ten sposób można zachować wpisy tajne aplikacji poza repozytorium kodu i uzyskać dostęp do odpowiednich wartości bez konieczności zmiany kodu.
 
-## <a name="get-detailed-exceptions-page"></a>Strona szczegółowe wyjątki
+## <a name="get-detailed-exceptions-page"></a>Strona pobierania szczegółowych wyjątków
 
-Aplikacja ASP.NET generuje wyjątek w debugerze programu Visual Studio, w przeglądarce pojawi się Strona szczegółowe wyjątku, ale w usłudze App Service tę stronę zastępuje ogólnego **HTTP 500** błąd lub **błąd wystąpił podczas przetwarzanie żądania.** Komunikat. Aby wyświetlić stronę szczegółowe wyjątek w usłudze App Service, należy dodać `ASPNETCORE_ENVIRONMENT` ustawienia aplikacji na aplikację, uruchamiając następujące polecenie w <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>.
+Gdy aplikacja ASP.NET generuje wyjątek w debugerze programu Visual Studio, przeglądarka wyświetla szczegółową stronę wyjątku, ale w App Service tej stronie jest zastępowany przez ogólny błąd **protokołu HTTP 500** lub **Wystąpił błąd podczas przetwarzania żądania.** Komunikat. Aby wyświetlić szczegółową stronę wyjątku w App Service, Dodaj `ASPNETCORE_ENVIRONMENT` ustawienie aplikacji do aplikacji, uruchamiając następujące polecenie w <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASPNETCORE_ENVIRONMENT="Development"
@@ -72,13 +89,13 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ## <a name="detect-https-session"></a>Wykrywanie sesji protokołu HTTPS
 
-W usłudze App Service [kończenie żądań SSL](https://wikipedia.org/wiki/TLS_termination_proxy) odbywa się w modułach równoważenia obciążenia sieciowego, dzięki czemu wszystkie żądania HTTPS docierają do aplikacji jako niezaszyfrowane żądania HTTP. Jeśli logika aplikacji musi znać, jeśli użytkownik zażąda są zaszyfrowane, czy nie, należy skonfigurować oprogramowanie pośredniczące nagłówki przekazywane w *Startup.cs*:
+W usłudze App Service [kończenie żądań SSL](https://wikipedia.org/wiki/TLS_termination_proxy) odbywa się w modułach równoważenia obciążenia sieciowego, dzięki czemu wszystkie żądania HTTPS docierają do aplikacji jako niezaszyfrowane żądania HTTP. Jeśli logika aplikacji musi wiedzieć, czy żądania użytkowników są szyfrowane, należy skonfigurować oprogramowanie pośredniczące w programie *Startup.cs*:
 
-- Konfigurowanie oprogramowania pośredniczącego z [ForwardedHeadersOptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) do przekazywania `X-Forwarded-For` i `X-Forwarded-Proto` nagłówków w `Startup.ConfigureServices`.
-- Dodaj zakresy prywatnych adresów IP do znane sieci, tak aby oprogramowanie pośredniczące mogą ufać modułu równoważenia obciążenia usługi App Service.
-- Wywoływanie [UseForwardedHeaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) method in Class metoda `Startup.Configure` przed wywołaniem innych middlewares.
+- Skonfiguruj oprogramowanie pośredniczące w programie [ForwardedHeadersOptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) , aby `X-Forwarded-For` przekazywać nagłówki `Startup.ConfigureServices`i `X-Forwarded-Proto` w.
+- Dodaj zakresy prywatnych adresów IP do znanych sieci, dzięki czemu oprogramowanie pośredniczące może ufać App Service Module równoważenia obciążenia.
+- Wywołaj metodę [UseForwardedHeaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) w `Startup.Configure` elemencie przed wywołaniem innych middlewares.
 
-Zestawiania wszystkich trzech elementów, Twój kod wygląda podobnie jak w poniższym przykładzie:
+Umieszczenie wszystkich trzech elementów razem, kod wygląda podobnie do poniższego przykładu:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -107,24 +124,24 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 Aby uzyskać więcej informacji, zobacz [Konfigurowanie platformy ASP.NET Core pracować z serwerów proxy i moduły równoważenia obciążenia](https://docs.microsoft.com/aspnet/core/host-and-deploy/proxy-load-balancer).
 
-## <a name="deploy-multi-project-solutions"></a>Wdrażanie rozwiązań dotyczących wielu projektów
+## <a name="deploy-multi-project-solutions"></a>Wdróż rozwiązania obejmujące wiele projektów
 
-Podczas wdrażania repozytorium programu ASP.NET w aparacie wdrażania za pomocą *.csproj* pliku w katalogu głównym, aparat wdroży projekt. Podczas wdrażania repozytorium platformy ASP.NET przy użyciu *.sln* pliku w katalogu głównym, aparat wybiera pierwszej witryny sieci Web lub projektu aplikacji sieci Web znajdzie jako aplikację usługi App Service. Jest to aparat nie wybrać projekt, który ma.
+Po wdrożeniu repozytorium ASP.NET do aparatu wdrożenia z plikiem *. csproj* w katalogu głównym aparat wdraża projekt. Po wdrożeniu repozytorium ASP.NET z plikiem *. sln* w katalogu głównym Aparat wybiera pierwszą witrynę sieci Web lub projekt aplikacji sieci Web, który znajduje się jako aplikacja App Service. Jest możliwe, że aparat nie wybierze żądanego projektu.
 
-Aby wdrożyć rozwiązania wielu projektów, można określić projektu do użycia w usłudze App Service na dwa sposoby:
+Aby wdrożyć rozwiązanie z obsługą wielu projektów, można określić projekt do użycia w App Service na dwa różne sposoby:
 
-### <a name="using-deployment-file"></a>Przy użyciu pliku .deployment
+### <a name="using-deployment-file"></a>Przy użyciu pliku. Deployment
 
-Dodaj *.deployment* pliku w folderze głównym repozytorium i Dodaj następujący kod:
+Dodaj plik *. Deployment* do katalogu głównego repozytorium i Dodaj następujący kod:
 
 ```
 [config]
 project = <project-name>/<project-name>.csproj
 ```
 
-### <a name="using-app-settings"></a>Przy użyciu ustawień aplikacji
+### <a name="using-app-settings"></a>Korzystanie z ustawień aplikacji
 
-W <a target="_blank" href="https://shell.azure.com">usługi Azure Cloud Shell</a>, Dodaj ustawienie aplikacji do aplikacji usługi app Service, uruchamiając następujące polecenie interfejsu wiersza polecenia. Zastąp  *\<Nazwa aplikacji >* ,  *\<Nazwa grupy zasobów >* , i  *\<Nazwa projektu >* odpowiednimi wartościami .
+W <a target="_blank" href="https://shell.azure.com">Azure Cloud Shell</a>Dodaj ustawienie aplikacji do aplikacji App Service, uruchamiając następujące polecenie interfejsu wiersza polecenia. Zastąp  *\<wartość > nazwy aplikacji*,  *\<> grupy zasobów*i  *\<nazwę projektu >* z odpowiednimi wartościami.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PROJECT="<project-name>/<project-name>.csproj"
@@ -138,10 +155,10 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 [!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek: Aplikacja platformy ASP.NET Core z bazą danych SQL](tutorial-dotnetcore-sqldb-app.md)
+> [Samouczek: ASP.NET Core aplikacji z SQL Database](tutorial-dotnetcore-sqldb-app.md)
 
 > [!div class="nextstepaction"]
-> [App Service dla systemu Linux — często zadawane pytania](app-service-linux-faq.md)
+> [App Service Linux — często zadawane pytania](app-service-linux-faq.md)

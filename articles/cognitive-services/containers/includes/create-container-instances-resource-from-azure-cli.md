@@ -1,7 +1,7 @@
 ---
 title: Obsługa kontenerów
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak utworzyć zasób wystąpienia kontenera platformy Azure z wiersza polecenia platformy Azure.
+description: Dowiedz się, jak utworzyć zasób wystąpienia kontenera platformy Azure z poziomu interfejsu wiersza polecenia platformy Azure.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 7/5/2019
 ms.author: dapine
-ms.openlocfilehash: 5e7a3d849f726ae4dbbd559d541464404e427775
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 2080d283c6cb7466dcb4847a81d76a4c3109217a
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67717093"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "69012230"
 ---
-## <a name="create-an-azure-container-instance-resource-from-the-azure-cli"></a>Tworzenie zasobu wystąpienia kontenera platformy Azure z poziomu wiersza polecenia platformy Azure
+## <a name="create-an-azure-container-instance-resource-from-the-azure-cli"></a>Tworzenie zasobu wystąpienia kontenera platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure
 
-YAML poniżej definiuje zasobów wystąpienia kontenera platformy Azure. Skopiuj i Wklej zawartość do nowego pliku o nazwie `my-aci.yaml` i Zastąp komentarze wartości swoimi własnymi. Można znaleźć w [formacie szablonu] [szablon formant] dla prawidłowe YAML. Zapoznaj się [kontenera repozytoriów i obrazów][repositories-and-images] nazwy dostępnych obrazów i ich odpowiedniego repozytorium.
+YAML poniżej definiuje zasób wystąpienia kontenera platformy Azure. Skopiuj i wklej zawartość do nowego pliku o nazwie `my-aci.yaml` i Zastąp jej własnymi wartościami. Zapoznaj się z [formatem szablonu][template-format] prawidłowy YAML. Zapoznaj się z [repozytoriami i obrazami kontenerów][repositories-and-images] dla dostępnych nazw obrazów i ich odpowiedniego repozytorium.
 
 ```YAML
 apiVersion: 2018-10-01
@@ -58,18 +58,18 @@ type: Microsoft.ContainerInstance/containerGroups
 ```
 
 > [!NOTE]
-> Nie wszystkie lokalizacje mają ten sam dostępności procesora CPU i pamięci. Zapoznaj się [lokalizacji i zasobów][location-to-resource] tabeli, aby uzyskać listę dostępnych zasobów dla kontenerów na lokalizację i systemu operacyjnego.
+> Nie wszystkie lokalizacje mają tę samą dostępność procesora CPU i pamięci. Zapoznaj się z tabelą [Lokalizacja i zasoby][location-to-resource] , aby uzyskać listę dostępnych zasobów dla kontenerów dla poszczególnych lokalizacji i systemu operacyjnego.
 
-Firma Microsoft będzie polegać na pliku YAML, utworzyliśmy dla [ `az container create` ][azure-container-create] polecenia. Z wiersza polecenia platformy Azure, wykonaj `az container create` polecenie, zastępując `<resource-group>` swoją własną. Ponadto zabezpieczanie wartości w ramach YAML wdrożenia można znaleźć [secure wartości][secure-values].
+Zabędziemy korzystać z pliku YAML, który został utworzony dla [`az container create`][azure-container-create] polecenia. W interfejsie wiersza `az container create` polecenia platformy Azure wykonaj polecenie, `<resource-group>` zastępując własny własny. Ponadto w celu zabezpieczania wartości w ramach wdrożenia YAML odnosi się do [wartości zabezpieczonych][secure-values].
 
 ```azurecli
 az container create -g <resource-group> -f my-aci.yaml
 ```
 
-Dane wyjściowe polecenia `Running...` Jeśli prawidłowy, po upływie pewnego czasu danych wyjściowych zmieni się na ciąg JSON reprezentujący nowo utworzony zasób usługi ACI. Obraz kontenera jest większa niż może nie być dostępne od pewnego czasu, ale zasób został wdrożony.
+Dane wyjściowe polecenia są `Running...` prawidłowe, po upływie zmiany danych wyjściowych na ciąg JSON reprezentujący nowo utworzony zasób ACI. Obraz kontenera jest najprawdopodobniej niedostępny przez pewien czas, ale zasób jest teraz wdrażany.
 
 > [!TIP]
-> Zwracać szczególną uwagę na lokalizacje w publicznej wersji zapoznawczej usługi Azure Cognitive ofert, w razie YAML zostaną odpowiednio dopasowane do lokalizacji.
+> Zwróć szczególną uwagę na lokalizacje publicznej wersji zapoznawczej oferty usługi Azure poznawczej, ponieważ YAML będzie musiał odpowiednio dopasować do lokalizacji.
 
 [azure-container-create]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-create
 [template-format]: https://docs.microsoft.com/azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups#template-format

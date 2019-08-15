@@ -1,6 +1,6 @@
 ---
-title: Wybierz protokół Federacji odpowiednie dla twojej aplikacji wielodostępnej
-description: Wskazówki dla niezależnych dostawców oprogramowania na integrację z usługą Azure Active Directory
+title: Wybieranie odpowiedniego protokołu federacyjnego dla aplikacji wielodostępnej
+description: Wskazówki dla niezależnych dostawców oprogramowania w ramach integracji z usługą Azure Active Directory
 services: active-directory
 author: barbaraselden
 manager: CelesteDG
@@ -12,55 +12,55 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53b315b87200b37cda215a29a65be9babaf54f43
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 3c5975b57b6f960badf747e33deb238adf260199
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67795193"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967215"
 ---
-# <a name="choose-the-right-federation-protocol-for-your-multi-tenant-application"></a>Wybierz protokół Federacji odpowiednie dla twojej aplikacji wielodostępnej
+# <a name="choose-the-right-federation-protocol-for-your-multi-tenant-application"></a>Wybieranie odpowiedniego protokołu federacyjnego dla aplikacji wielodostępnej
 
-Podczas opracowywania Twoja aplikacja oprogramowania jako usługi (SaaS), należy wybrać protokół federacyjnych, które najlepiej odpowiadają potrzebom Twoich i Twoich klientów. Ta decyzja zależy od platformy deweloperskiej i chęć Integracja z usługą danych dostępnych w ekosystemie klientów usługi Office 365 i Azure AD.
+Podczas tworzenia aplikacji SaaS (Software as a Service) należy wybrać protokół federacyjny, który najlepiej spełnia Twoje potrzeby i klientów. Ta decyzja jest oparta na platformie deweloperskiej i chcemy zintegrować dane z danymi dostępnymi w obrębie klientów pakietu Office 365 i usługi Azure AD.
 
-Zobacz pełną listę [protokołów dostępnych dla rejestracji Jednokrotnej integracji](what-is-single-sign-on.md) za pomocą usługi Azure Active Directory.
-Następujące porównuje tabeli 
-* Otwarte uwierzytelnianie (protokołu OAuth 2.0) w wersji 2.0
-* Open ID Connect (OIDC)
-* Security Assertion Markup Language (SAML)
-* Web Services Federation (WSFed)
+Zapoznaj się z pełną listą [protokołów dostępnych dla integracji](what-is-single-sign-on.md) z logowaniem jednokrotnym za pomocą Azure Active Directory.
+Poniższa tabela zawiera porównanie 
+* Uwierzytelnianie Open 2,0 (OAuth 2,0)
+* Nawiązywanie połączenia przy otwartym IDENTYFIKATORze (OIDC)
+* SAML (SAML)
+* Federacja usług sieci Web (WSFed)
 
-| Możliwość| OAuth / OIDC| SAML / WSFed |
+| Możliwość| OAuth/OIDC| SAML/WSFed |
 | - |-|-|
-| Oparte na sieci Web logowania jednokrotnego| √| √ |
-| Wylogowania jednokrotnego opartego na sieci Web| √| √ |
-| Na podstawie mobilnej logowanie jednokrotne| √| √* |
-| Na podstawie Mobile wylogowania jednokrotnego| √| √* |
+| Logowanie jednokrotne oparte na sieci Web| √| √ |
+| Logowanie jednokrotne oparte na sieci Web| √| √ |
+| Logowanie jednokrotne oparte na urządzeniach przenośnych| √| √* |
+| Logowanie jednokrotne oparte na urządzeniach przenośnych| √| √* |
 | Zasady dostępu warunkowego dla aplikacji mobilnych| √| X |
-| Bezproblemowe uwierzytelnianie wieloskładnikowe dla aplikacji mobilnych| √| X |
-| Access Microsoft Graph| √| X |
+| Bezproblemowe środowisko MFA dla aplikacji mobilnych| √| X |
+| Microsoft Graph dostępu| √| X |
 
-\* To możliwe, ale Microsoft nie zawiera przykłady i wskazówki.
+\* Możliwe, ale firma Microsoft nie udostępnia próbek ani wskazówek.
 
-## <a name="oauth-20-and-open-id-connect"></a>OAuth 2.0 i Open ID Connect
+## <a name="oauth-20-and-open-id-connect"></a>Uwierzytelnianie OAuth 2,0 i łączenie z otwartym IDENTYFIKATORem
 
-OAuth 2.0 to [standardowych](https://oauth.net/2/) Protokół autoryzacji. OIDC (OpenID Connect) jest [standardem branżowym](https://openid.net/connect/) warstwy uwierzytelniania tożsamości, zbudowany na podstawie protokołu Oath 2.0.
+Uwierzytelnianie OAuth 2,0 jest [standardowym](https://oauth.net/2/) protokołem do autoryzacji. OIDC (OpenID Connect Connect) to [standardowa](https://openid.net/connect/) warstwa uwierzytelniania tożsamości oparta na protokole Oath 2,0.
 
 ### <a name="benefits"></a>Korzyści
 
-Firma Microsoft zaleca używanie OIDC/OAuth 2.0, mają uwierzytelnianie i autoryzacja wbudowanej w protokołów. Przy użyciu protokołu SAML należy również zaimplementować autoryzacji.
+Firma Microsoft zaleca używanie OIDC/OAuth 2,0, ponieważ mają one uwierzytelnianie i autoryzację wbudowaną w protokoły. W przypadku protokołu SAML należy dodatkowo zaimplementować autoryzację.
 
-W tych protokołów autoryzacji włącza aplikację, aby uzyskać dostęp i przeprowadzić integrację z zaawansowanych użytkowników i danych organizacji za pośrednictwem interfejsu API programu Microsoft Graph.
+Autoryzacja nieodłączna w tych protokołach umożliwia aplikacji dostęp do i integrowanie z rozbudowanymi danymi użytkownika i organizacji za pomocą interfejsu API Microsoft Graph.
 
-Przy użyciu protokołu OAuth 2.0 i OIDC upraszcza środowisko użytkownika końcowego klientów, przyjmując logowania jednokrotnego dla aplikacji. Możesz łatwo definiować niezbędne zestawy uprawnień, które następnie są automatycznie reprezentowane administratora lub użytkownika końcowego wyrażanie zgody.
+Korzystanie z protokołu OAuth 2,0 i OIDC upraszcza środowisko użytkownika końcowego w przypadku przyjmowania rejestracji Jednokrotnej dla aplikacji. Można łatwo definiować wymagane zestawy uprawnień, które są następnie automatycznie reprezentowane przez administratora lub użytkownika końcowego.
 
-Ponadto przy użyciu tych protokołów umożliwia klientom korzystanie z dostępu warunkowego i zasad uwierzytelniania Wieloskładnikowego do kontrolowania dostępu do aplikacji. Firma Microsoft udostępnia biblioteki i [przykłady kodu na wielu platformach technologii](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Samples) ułatwiające tworzenie oprogramowania.  
+Ponadto użycie tych protokołów umożliwia klientom korzystanie z zasad dostępu warunkowego i uwierzytelniania MFA w celu kontrolowania dostępu do aplikacji. Firma Microsoft udostępnia biblioteki i [przykłady kodu na wielu platformach technologicznych](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Samples) , aby pomóc w rozwoju.  
 
 ### <a name="implementation"></a>Implementacja
 
-Możesz zarejestrować aplikację w usłudze Microsoft Identity, która jest dostawcą uwierzytelniania OAuth 2.0. Następnie można również zarejestrować aplikację na podstawie protokołu OAuth 2.0 przy użyciu innego dostawcy tożsamości, który chcesz zintegrować z. 
+Możesz zarejestrować swoją aplikację przy użyciu tożsamości firmy Microsoft, która jest dostawcą protokołu OAuth 2,0. Możesz również zarejestrować aplikację opartą na protokole OAuth 2,0 przy użyciu dowolnego innego dostawcy tożsamości, z którym chcesz zintegrować program. 
 
-Aby uzyskać informacje na temat sposobu Zarejestruj swoją aplikację i zaimplementować te protokoły logowania jednokrotnego do aplikacji sieci web, zobacz [Autoryzowanie dostępu do aplikacji sieci web przy użyciu protokołu OpenID Connect i Azure Active Directory](../develop/sample-v2-code.md).  Aby uzyskać informacje na temat sposobu zaimplementować te protokoły logowania jednokrotnego w aplikacjach mobilnych zobacz następujące tematy: 
+Aby uzyskać informacje na temat sposobu rejestrowania aplikacji i implementowania tych protokołów dla logowania jednokrotnego do aplikacji sieci Web, zobacz [Autoryzuj dostęp do aplikacji sieci Web za pomocą OpenID Connect Connect i Azure Active Directory](../develop/sample-v2-code.md).  Aby uzyskać informacje na temat sposobu implementowania tych protokołów dla logowania jednokrotnego w aplikacjach mobilnych, zobacz następujące tematy: 
 
 * [Android](../develop/quickstart-v2-android.md)
 
@@ -68,34 +68,34 @@ Aby uzyskać informacje na temat sposobu Zarejestruj swoją aplikację i zaimple
 
 * [Platforma uniwersalna systemu Windows](../develop/quickstart-v2-uwp.md)
 
-## <a name="saml-20-and-wsfed"></a>SAML 2.0 i WSFed
+## <a name="saml-20-and-wsfed"></a>SAML 2,0 i WSFed
 
-Zabezpieczeń Assertion Markup Language (SAML) jest zwykle używany w dla aplikacji sieci web. Zobacz [platformy Azure korzysta z protokołu SAML](../develop/active-directory-saml-protocol-reference.md) omówienie. 
+SAML (SAML) jest zwykle używany dla aplikacji sieci Web. Zobacz [, w jaki sposób platforma Azure używa protokołu SAML,](../develop/active-directory-saml-protocol-reference.md) aby zapoznać się z omówieniem. 
 
-Web Services Federation (WSFed) jest [standardem branżowym](http://docs.oasis-open.org/wsfed/federation/v1.2/ws-federation.html) zazwyczaj używane w przypadku aplikacji sieci web, które są tworzone przy użyciu platformy .net.
+Web Services Federation (WSFed) jest [standardem branżowym](https://docs.oasis-open.org/wsfed/federation/v1.2/ws-federation.html) zwykle używanym przez aplikacje sieci Web, które są opracowywane przy użyciu platformy .NET.
 
 ### <a name="benefits"></a>Korzyści
 
-SAML 2.0 to dojrzała standard i większość technologii platformy typu open-source bibliotek obsługi SAML 2.0. Możesz zapewnić klientom interfejs administracji do konfigurowania logowania jednokrotnego SAML. Logowania jednokrotnego SAML można skonfigurować dla usługi Microsoft Azure AD i innego dostawcy tożsamości, który obsługuje SAML 2
+SAML 2,0 to wersja najbardziej dojrzałej i większość platform technologicznych obsługuje biblioteki typu open source dla protokołu SAML 2,0. Możesz udostępnić klientom interfejs administracyjny, aby skonfigurować Logowanie jednokrotne SAML. Mogą konfigurować Logowanie jednokrotne SAML dla Microsoft Azure AD i wszystkich innych dostawców tożsamości, które obsługują protokół SAML 2
 
-### <a name="trade-offs"></a>Wad
+### <a name="trade-offs"></a>Wady
 
-W przypadku używania protokołów języka SAML 2.0 lub WSFed dla aplikacji mobilnych, niektóre zasady dostępu warunkowego, w tym usługi Multi-Factor Authentication (MFA) mają ograniczonymi możliwościami. Ponadto ma dostęp do programu Microsoft Graph, należy zaimplementować autoryzacji za pomocą protokołu OAuth 2.0 do generowania tokenów niezbędne. 
+W przypadku korzystania z protokołów SAML 2,0 lub WSFed dla aplikacji mobilnych niektóre zasady dostępu warunkowego, w tym uwierzytelnianie wieloskładnikowe (MFA), będą mieć obniżoną wydajność. Ponadto, jeśli chcesz uzyskać dostęp do Microsoft Graph, musisz zaimplementować autoryzację za pomocą protokołu OAuth 2,0 w celu wygenerowania niezbędnych tokenów. 
 
 ### <a name="implementation"></a>Implementacja
 
-Firma Microsoft nie udostępniają biblioteki dla implementacji protokołu SAML ani nie zaleca się określonej biblioteki. Brak dostępnych wiele bibliotek typu open source.
+Firma Microsoft nie udostępnia bibliotek dla implementacji języka SAML ani nie zaleca określonych bibliotek. Dostępnych jest wiele bibliotek Open Source.
 
-## <a name="sso-and-using-microsoft-graph-rest-api"></a>Usługa rejestracji Jednokrotnej i Rest, programu Microsoft Graph przy użyciu interfejsu API 
+## <a name="sso-and-using-microsoft-graph-rest-api"></a>Logowanie jednokrotne i korzystanie z interfejsu API REST Microsoft Graph 
 
-Program Microsoft Graph jest sieć szkieletową danych we wszystkich Microsoft 365, w tym usługi Office 365, systemu Windows 10 i pakietu Enterprise Mobility i zabezpieczeń oraz dodatkowych produktów, takich jak Dynamics 365. W tym schematy podstawowej jednostki, takie jak użytkowników, grup, kalendarza, poczty, plików i innych produktywność użytkowników tego dysku. Program Microsoft Graph udostępnia trzy interfejsy, dla deweloperów REST API oparty na, połączenie danych programu Microsoft Graph i łączników, które umożliwiają deweloperom można dodać własne dane do programu Microsoft Graph.  
+Microsoft Graph to sieć szkieletowa danych obejmująca wszystkie Microsoft 365, w tym Office 365, Windows 10 i Enterprise Mobility i Security, oraz dodatkowe produkty, takie jak Dynamics 365. Obejmuje to podstawowe schematy jednostek, takich jak użytkownicy, grupy, kalendarz, poczta, pliki i inne, które zwiększają produktywność użytkowników. Microsoft Graph oferuje trzy interfejsy dla deweloperów, interfejs API oparty na usłudze REST, Microsoft Graph połączenia danych oraz łączniki, które umożliwiają deweloperom Dodawanie własnych danych do Microsoft Graph.  
 
-Przy użyciu dowolnej z powyższych protokołów logowania jednokrotnego umożliwia aplikacji dostęp do zaawansowanych danych dostępne za pośrednictwem interfejsu API REST usługi Microsoft Graph. Umożliwia to klientom lepsze wykorzystanie inwestycji w usłudze Microsoft 365. Na przykład aplikację, można wywołać interfejsu API Microsoft Graph integrację z wystąpienia usługi Office 365 klientów i powierzchni użytkowników programu Microsoft Office i elementów programu SharePoint w aplikacji. 
+Użycie któregokolwiek z powyższych protokołów logowania jednokrotnego umożliwia aplikacji dostęp do bogatych danych dostępnych za pośrednictwem interfejsu API REST Microsoft Graph. Dzięki temu klienci mogą uzyskać większą wartość z inwestycji w Microsoft 365. Na przykład aplikacja może wywoływać interfejs API Microsoft Graph, aby zintegrować go z wystąpieniem pakietu Office 365 i Microsoft Officeą użytkowników powierzchniowych i elementami programu SharePoint w aplikacji. 
 
-Jeśli używasz Open ID Connect na potrzeby uwierzytelniania, a następnie tworzenie oprogramowania jest bezproblemowe, ponieważ będzie używać protokołu OAuth2, podstawę Open ID Connect, aby uzyskać tokeny może służyć do wywoływania interfejsów API programu Microsoft Graph. Jeśli aplikacja korzysta z protokołu SAML lub WSFed, należy dodać dodatkowy kod w aplikacji, aby otrzymywać te OAuth2 można uzyskać tokenów, wymaganych do wywoływania interfejsów API programu Microsoft Graph. 
+Jeśli używasz usługi Open ID Connect do uwierzytelniania, środowisko programistyczne jest bezproblemowe, ponieważ będziesz używać OAuth2, podstawą połączenia typu Open ID, aby uzyskać tokeny do wywoływania Microsoft Graph interfejsów API. Jeśli aplikacja używa protokołu SAML lub WSFed, należy dodać dodatkowy kod w aplikacji, aby uzyskać te OAuth2 w celu uzyskania tokenów wymaganych do wywoływania Microsoft Graph interfejsów API. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Włączanie logowania jednokrotnego dla aplikacji wielodostępnych](isv-sso-content.md)
+[Włącz logowanie jednokrotne dla aplikacji wielodostępnych](isv-sso-content.md)
 
-[Tworzenie dokumentacji dla twojej aplikacji wielodostępnej](isv-create-sso-documentation.md)
+[Tworzenie dokumentacji dla aplikacji wielodostępnej](isv-create-sso-documentation.md)

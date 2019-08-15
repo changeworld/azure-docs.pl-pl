@@ -1,6 +1,6 @@
 ---
-title: Dynamiczne szyfrowanie AES-128 i usługę dostarczania kluczy | Dokumentacja firmy Microsoft
-description: Dostarczanie zawartości szyfrowane przy użyciu kluczy szyfrowania AES 128-bitowy przy użyciu usługi Microsoft Azure Media Services. Media Services udostępnia również usługa dostarczania kluczy, która dostarcza kluczy szyfrowania do autoryzowanych użytkowników. W tym temacie przedstawiono sposób dynamicznego szyfrowania przy użyciu algorytmu AES-128 i korzystania z usługi dostarczania kluczy.
+title: Korzystanie z szyfrowania dynamicznego AES-128 i usługi dostarczania kluczy | Microsoft Docs
+description: Dostarcz zawartość zaszyfrowaną przy użyciu kluczy szyfrowania AES 128-bitowego za pomocą Microsoft Azure Media Services. Media Services zapewnia również usługę dostarczania kluczy, która dostarcza klucze szyfrowania do autoryzowanych użytkowników. W tym temacie przedstawiono sposób dynamicznego szyfrowania przy użyciu algorytmu AES-128 i używania usługi Key Delivery.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 6f76d6aed8dc5eed3dbf673b265c404f27b0536d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2b96d968cb1ad2ec903dbf9788e1fbae22bd2b7d
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60557194"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "69014970"
 ---
-# <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Dynamiczne szyfrowanie AES-128 i usługę dostarczania kluczy
+# <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Korzystanie z szyfrowania dynamicznego AES-128 i usługi dostarczania kluczy
 > [!div class="op_single_selector"]
 > * [.NET](media-services-protect-with-aes128.md)
 > * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
@@ -29,63 +29,63 @@ ms.locfileid: "60557194"
 >  
 
 > [!NOTE]
-> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
+> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówki dotyczące migracji od wersji 2 do V3](../latest/migrate-from-v2-to-v3.md)
 
-Usługa Media Services umożliwia dostarczanie HTTP Live Streaming (HLS) i Smooth Streaming, zaszyfrowany przy użyciu AES przy użyciu kluczy szyfrowania 128-bitowego. Media Services udostępnia również usługa dostarczania kluczy, która dostarcza kluczy szyfrowania do autoryzowanych użytkowników. Jeśli chcesz, aby usługi Media Services, aby zaszyfrować element zawartości, skojarz klucz szyfrowania z zawartości i również skonfigurować zasady autoryzacji klucza. Zleconą strumienia za pomocą odtwarzacza Media Services używa określonego klucza dynamiczne szyfrowanie zawartości przy użyciu szyfrowania AES. Aby odszyfrować strumień, odtwarzacz żąda klucza z usługi dostarczania kluczy. Aby ustalić, czy użytkownik jest autoryzowany do uzyskania klucza, usługa oblicza zasad autoryzacji, które podane dla klucza.
+Za pomocą Media Services można dostarczyć HTTP Live Streaming (HLS) i Smooth Streaming zaszyfrowanych za pomocą algorytmu AES przy użyciu kluczy szyfrowania 128-bitowych. Media Services zapewnia również usługę dostarczania kluczy, która dostarcza klucze szyfrowania do autoryzowanych użytkowników. Jeśli chcesz, aby Media Services szyfrowanie zasobu, skojarz klucz szyfrowania z zasobem, a także Skonfiguruj zasady autoryzacji dla klucza. Gdy gracz prosi o przesłanie strumienia, Media Services używa określonego klucza do dynamicznego szyfrowania zawartości przy użyciu szyfrowania AES. Aby odszyfrować strumień, odtwarzacz żąda klucza z usługi dostarczania kluczy. Aby określić, czy użytkownik ma uprawnienia do uzyskiwania klucza, usługa szacuje zasady autoryzacji określone dla klucza.
 
 Usługa Media Services obsługuje wiele sposobów uwierzytelniania użytkowników, którzy tworzą żądania klucza. Zasady autoryzacji klucza zawartości mogą mieć jedno lub więcej ograniczeń: ograniczenia otwarte lub ograniczenia tokenu. Zasadom ograniczenia tokenu musi towarzyszyć token wystawiony przez usługę tokenu zabezpieczającego (STS). Usługa Media Services obsługuje następujące formaty tokenów: [prosty token sieci Web](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2) (SWT) i [token sieci Web JSON](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) (JWT). Aby uzyskać więcej informacji, zobacz [Konfigurowanie zasad autoryzacji klucza zawartości](media-services-protect-with-aes128.md#configure_key_auth_policy).
 
-Aby móc skorzystać z szyfrowania dynamicznego, należy posiadać element zawartości zawierający zestaw plików MP4 o różnych szybkościach transmisji bitów lub pliki źródłowe Smooth Streaming o różnych szybkościach transmisji bitów. Należy także skonfigurować zasadę dostarczania elementu zawartości (opisane w dalszej części tego artykułu). Następnie na podstawie formatu określonego w adresie URL przesyłanego strumienia serwer przesyłania strumieniowego na żądanie zapewnia, że strumień jest dostarczany za pomocą wybranego protokołu. W rezultacie należy przechowywać i opłacać tylko dla plików w jednym formacie magazynu. Usługa Media Services tworzy i udostępnia właściwą odpowiedź na podstawie żądań klienta.
+Aby móc skorzystać z szyfrowania dynamicznego, należy posiadać element zawartości zawierający zestaw plików MP4 o różnych szybkościach transmisji bitów lub pliki źródłowe Smooth Streaming o różnych szybkościach transmisji bitów. Należy również skonfigurować zasady dostarczania dla zasobu (opisane w dalszej części tego artykułu). Następnie na podstawie formatu określonego w adresie URL przesyłanego strumienia serwer przesyłania strumieniowego na żądanie zapewnia, że strumień jest dostarczany za pomocą wybranego protokołu. W związku z tym należy przechowywać i płacisz tylko za pliki w jednym formacie magazynu. Usługa Media Services tworzy i udostępnia właściwą odpowiedź na podstawie żądań klienta.
 
-Ten artykuł jest przydatny dla deweloperów pracujących nad aplikacjami, które dostarczają chronionych. Tego artykułu dowiesz się, jak skonfigurować usługę dostarczania kluczy przy użyciu zasad autoryzacji, tak aby tylko autoryzowani klienci mogli odbierać kluczy szyfrowania. Pokazano również, jak używać szyfrowania dynamicznego.
+Ten artykuł jest przydatny dla deweloperów pracujących nad aplikacjami dostarczającymi chronione multimedia. W tym artykule opisano sposób konfigurowania usługi dostarczania kluczy przy użyciu zasad autoryzacji, tak aby tylko autoryzowani klienci mogli odbierać klucze szyfrowania. Pokazano również, jak używać szyfrowania dynamicznego.
 
-Aby uzyskać informacje na temat sposobu szyfrowanie zawartości przy użyciu Advanced Encryption Standard (AES) do dostarczania do programu Safari w systemie macOS, zobacz [ten wpis w blogu](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
-Aby uzyskać omówienie sposobu ochrony Twojej zawartości multimediów przy użyciu szyfrowania AES, zobacz [ten film wideo](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-Protecting-your-Media-Content-with-AES-Encryption).
+Aby uzyskać informacje na temat sposobu szyfrowania zawartości przy użyciu Advanced Encryption Standard (AES) na potrzeby dostarczania do przeglądarki Safari w witrynie macOS, zobacz [ten wpis w blogu](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
+Aby uzyskać informacje na temat sposobu ochrony zawartości multimedialnej przy użyciu szyfrowania AES, zobacz [ten klip wideo](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-Protecting-your-Media-Content-with-AES-Encryption).
 
 
-## <a name="aes-128-dynamic-encryption-and-key-delivery-service-workflow"></a>Dynamiczne szyfrowanie AES-128 i przepływu pracy usługi dostarczania kluczy
+## <a name="aes-128-dynamic-encryption-and-key-delivery-service-workflow"></a>Dynamiczny szyfrowanie AES-128 i przepływ pracy usługi dostarczania kluczy
 
-Podczas szyfrowania zasoby za pomocą szyfrowania AES, za pomocą usługi dostarczania kluczy usługi Media Services, a także za pomocą szyfrowania dynamicznego, należy wykonać następujące czynności ogólne:
+Podczas szyfrowania zasobów za pomocą algorytmu AES należy wykonać następujące czynności ogólne przy użyciu usługi dostarczania kluczy Media Services, a także przy użyciu szyfrowania dynamicznego:
 
-1. [Utworzenie elementu zawartości i przekaż pliki do niego](media-services-protect-with-aes128.md#create_asset).
+1. [Utwórz element zawartości i przekaż pliki do elementu zawartości](media-services-protect-with-aes128.md#create_asset).
 
-2. [Przekoduj element zawartości zawierający plik, aby adaptacyjną szybkością transmisji bitów zestawu plików MP4](media-services-protect-with-aes128.md#encode_asset).
+2. Zakoduj element [zawartości zawierający plik na zestaw plików MP4 z adaptacyjną szybkością transmisji bitów](media-services-protect-with-aes128.md#encode_asset).
 
-3. [Utwórz klucz zawartości i skojarz go z zakodowanym elementem zawartości](media-services-protect-with-aes128.md#create_contentkey). W usłudze Media Services klucz zawartości zawiera klucz szyfrowania elementu zawartości.
+3. [Utwórz klucz zawartości i skojarz go z zakodowanym elementem](media-services-protect-with-aes128.md#create_contentkey)zawartości. W usłudze Media Services klucz zawartości zawiera klucz szyfrowania elementu zawartości.
 
-4. [Konfigurowanie zasad autoryzacji klucza zawartości](media-services-protect-with-aes128.md#configure_key_auth_policy). Musisz skonfigurować zasady autoryzacji klucza zawartości. Klient musi spełnić te zasady, aby klucz zawartości został do niego dostarczony.
+4. [Skonfiguruj zasady autoryzacji klucza zawartości](media-services-protect-with-aes128.md#configure_key_auth_policy). Musisz skonfigurować zasady autoryzacji klucza zawartości. Klient musi spełnić te zasady, aby klucz zawartości został do niego dostarczony.
 
-5. [Skonfiguruj zasadę dostarczania elementu zawartości](media-services-protect-with-aes128.md#configure_asset_delivery_policy). Konfiguracja zasad dostarczania obejmuje adres URL klucza pozyskiwania i wektor inicjowania (IV). (AES-128 wymaga tych samych IV do szyfrowania i odszyfrowywania). Konfiguracja obejmuje również protokół dostarczania (na przykład MPEG-DASH, HLS, Smooth Streaming lub wszystkie) i typ szyfrowania dynamicznego (na przykład, koperty lub nie szyfrowania dynamicznego).
+5. [Skonfiguruj zasady dostarczania dla elementu zawartości](media-services-protect-with-aes128.md#configure_asset_delivery_policy). Konfiguracja zasad dostarczania obejmuje adres URL pozyskiwania klucza i wektor inicjujący (IV). (Algorytm AES-128 wymaga tego samego elementu IV do szyfrowania i odszyfrowywania). Konfiguracja obejmuje również protokół dostarczania (na przykład MPEG-KRESKa, HLS, Smooth Streaming lub wszystkie) oraz typ szyfrowania dynamicznego (na przykład koperta lub bez szyfrowania dynamicznego).
 
-    Dla każdego protokołu dotyczącego danego elementu zawartości można stosować inne zasady. Na przykład dla protokołu Smooth/DASH można zastosować szyfrowanie PlayReady, zaś dla protokołu HLS — szyfrowanie AES Envelope. Protokoły, które nie są zdefiniowane w zasadach dostarczania są blokowane z przesyłania strumieniowego. (Przykład jest w przypadku dodania jednych zasad jako protokół określający tylko HLS). Wyjątkiem jest przypadek, w którym nie zdefiniowano żadnych zasad dostarczania elementów zawartości. Wówczas są dozwolone wszystkie protokoły.
+    Dla każdego protokołu dotyczącego danego elementu zawartości można stosować inne zasady. Na przykład dla protokołu Smooth/DASH można zastosować szyfrowanie PlayReady, zaś dla protokołu HLS — szyfrowanie AES Envelope. Wszystkie protokoły, które nie są zdefiniowane w zasadach dostarczania, są blokowane przed przesyłaniem strumieniowym. (Przykładem jest dodanie jednej zasady, która określa tylko HLS jako protokół). Wyjątkiem jest przypadek, w którym nie zdefiniowano żadnych zasad dostarczania elementów zawartości. Wówczas są dozwolone wszystkie protokoły.
 
-6. [Utwórz Lokalizator OnDemand](media-services-protect-with-aes128.md#create_locator) można pobrać adresu URL przesyłania strumieniowego.
+6. [Utwórz lokalizator OnDemand](media-services-protect-with-aes128.md#create_locator) w celu pobrania adresu URL przesyłania strumieniowego.
 
-Artykuł przedstawia również [jak aplikacja kliencka może poprosić o klucz usługi dostarczania kluczy](media-services-protect-with-aes128.md#client_request).
+W tym artykule pokazano również, [jak aplikacja kliencka może zażądać klucza z usługi dostarczania kluczy](media-services-protect-with-aes128.md#client_request).
 
-Możesz znaleźć kompletna [przykład dla środowiska .NET](media-services-protect-with-aes128.md#example) na końcu tego artykułu.
+Kompletny [przykład platformy .NET](media-services-protect-with-aes128.md#example) można znaleźć na końcu artykułu.
 
 Poniższa ilustracja pokazuje opisany wcześniej przepływ pracy. Jest tu używany token do uwierzytelniania.
 
 ![Ochrona z zastosowaniem standardu AES-128](./media/media-services-content-protection-overview/media-services-content-protection-with-aes.png)
 
-W dalszej części tego artykułu zawiera wyjaśnienia, przykłady kodu i linki do tematów, w których pokazano, jak wykonać poprzednio opisane zadania.
+Pozostała część tego artykułu zawiera wyjaśnienia, przykłady kodu i linki do tematów, w których pokazano, jak wykonać zadania opisane wcześniej.
 
 ## <a name="current-limitations"></a>Bieżące ograniczenia
 W przypadku dodania lub zaktualizowania zasad dostarczania elementów zawartości należy usunąć skojarzony lokalizator (jeśli istnieje) i utworzyć nowy.
 
-## <a id="create_asset"></a>Utworzenie elementu zawartości i przekazywanie plików do elementu zawartości
+## <a id="create_asset"></a>Tworzenie zasobu i przekazywanie plików do elementu zawartości
 W celu kodowania i przesyłania strumieniowego filmów oraz zarządzania nimi należy najpierw przekazać zawartość do usługi Media Services. Po przekazaniu zawartości jest ona bezpiecznie przechowywana w chmurze na potrzeby dalszego przetwarzania i przesyłania strumieniowego. 
 
 Aby uzyskać więcej informacji, zobacz [Przekazywanie plików na konto usługi Media Services](media-services-dotnet-upload-files.md).
 
-## <a id="encode_asset"></a>Przekoduj element zawartości zawierający plik na adaptacyjną szybkością transmisji bitów, ustawionych w formacie MP4
-W przypadku szyfrowania dynamicznego należy utworzyć element zawartości zawierający zestaw plików MP4 o różnych szybkościach transmisji bitów lub pliki źródłowe Smooth Streaming o różnych szybkościach transmisji bitów. Następnie na podstawie określonego formatu w żądaniu manifestu lub fragment, serwer przesyłania strumieniowego na żądanie zapewnia, że strumień jest dostarczany za pomocą wybranego protokołu. Następnie wystarczy przechowywać i opłacać pliki w jednym formacie magazynu. Usługa Media Services tworzy i udostępnia właściwą odpowiedź na podstawie żądań klienta. Aby uzyskać więcej informacji, zobacz [Omówienie dynamicznego tworzenia pakietów](media-services-dynamic-packaging-overview.md).
+## <a id="encode_asset"></a>Zakoduj element zawartości zawierający plik na zestaw plików MP4 z adaptacyjną szybkością transmisji bitów
+W przypadku szyfrowania dynamicznego należy utworzyć element zawartości zawierający zestaw plików MP4 o różnych szybkościach transmisji bitów lub pliki źródłowe Smooth Streaming o różnych szybkościach transmisji bitów. Następnie na podstawie określonego formatu w żądaniu manifestu lub fragmentu serwer przesyłania strumieniowego na żądanie zapewnia otrzymanie strumienia w wybranym protokole. Następnie wystarczy przechowywać i płacisz tylko za pliki w jednym formacie magazynu. Usługa Media Services tworzy i udostępnia właściwą odpowiedź na podstawie żądań klienta. Aby uzyskać więcej informacji, zobacz [Omówienie dynamicznego tworzenia pakietów](media-services-dynamic-packaging-overview.md).
 
 >[!NOTE]
 >Po utworzeniu konta usług Media Services do Twojego konta dodawany jest domyślny punkt końcowy przesyłania strumieniowego w stanie „Zatrzymany”. Aby rozpocząć przesyłanie strumieniowe zawartości oraz korzystać z dynamicznego tworzenia pakietów i szyfrowania dynamicznego, punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać zawartość, musi mieć stan „Uruchomiony”. 
 >
->Ponadto aby korzystać z dynamicznego tworzenia pakietów i szyfrowania dynamicznego, element zawartości musi zawierać zbiór każdego pliku MP4 z adaptacyjną szybkością transmisji bitów lub pliki Smooth Streaming adaptacyjną szybkością transmisji bitów.
+>Ponadto, aby korzystać z dynamicznego tworzenia pakietów i szyfrowania dynamicznego, element zawartości musi zawierać zestaw z adaptacyjną szybkością transmisji bitów pliki MP4 lub z adaptacyjną szybkością transmisji bitów Smooth Streaming.
 
 Aby uzyskać instrukcje na temat kodowania, zobacz [Kodowanie elementów zawartości przy użyciu standardowego kodera multimediów](media-services-dotnet-encode-with-media-encoder-standard.md).
 
@@ -95,17 +95,17 @@ W usłudze Media Services klucz zawartości zawiera klucz, za pomocą którego c
 Aby uzyskać więcej informacji, zobacz [Tworzenie klucza zawartości](media-services-dotnet-create-contentkey.md).
 
 ## <a id="configure_key_auth_policy"></a>Konfigurowanie zasad autoryzacji klucza zawartości
-Usługa Media Services obsługuje wiele sposobów uwierzytelniania użytkowników, którzy tworzą żądania klucza. Musisz skonfigurować zasady autoryzacji klucza zawartości. Klient (odtwarzacz) musi spełnić te zasady, aby klucz może dostarczony do klienta. Zasady autoryzacji klucza zawartości mogą mieć jeden lub więcej ograniczeń, albo otworzyć, token ograniczenia lub ograniczenia adresów IP.
+Usługa Media Services obsługuje wiele sposobów uwierzytelniania użytkowników, którzy tworzą żądania klucza. Musisz skonfigurować zasady autoryzacji klucza zawartości. Klient (odtwarzacz) musi spełnić te zasady, aby klucz może dostarczony do klienta. Zasady autoryzacji klucza zawartości mogą mieć jedno lub więcej ograniczeń autoryzacji, otwarte, ograniczenie tokenu lub ograniczenie adresów IP.
 
 Aby uzyskać więcej informacji, zobacz [Konfigurowanie zasad autoryzacji klucza zawartości](media-services-dotnet-configure-content-key-auth-policy.md).
 
 ## <a id="configure_asset_delivery_policy"></a>Konfigurowanie zasad dostarczania elementu zawartości
 Skonfiguruj zasady dostarczania dla swojego elementu zawartości. Niektóre elementy objęte konfiguracją zasad dostarczania elementów zawartości:
 
-* Adres URL pozyskiwania kluczy. 
-* Wektor inicjalizacji (IV) do użycia podczas szyfrowania koperty. AES-128 wymaga tych samych IV do szyfrowania i odszyfrowywania. 
+* Adres URL pozyskiwania klucza. 
+* Wektor inicjalizacji (IV) do użycia na potrzeby szyfrowania koperty. Algorytm AES-128 wymaga tego samego elementu IV do szyfrowania i odszyfrowywania. 
 * Protokół dostarczania elementów zawartości (na przykład MPEG DASH, HLS, Smooth Streaming lub wszystkie z nich).
-* Typ szyfrowania dynamicznego (na przykład szyfrowanie AES envelope) lub nie szyfrowania dynamicznego. 
+* Typ szyfrowania dynamicznego (na przykład koperta AES) lub bez szyfrowania dynamicznego. 
 
 Aby uzyskać więcej informacji, zobacz [Konfigurowanie zasad dostarczania elementu zawartości](media-services-dotnet-configure-asset-delivery-policy.md).
 
@@ -135,13 +135,13 @@ Pobierz token testowy, uwzględniając ograniczenia tokenu wybrane w zasadach au
     Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
 ```
 
-Możesz przetestować strumień za pomocą usługi [Azure Media Services Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html).
+Możesz przetestować strumień za pomocą usługi [Azure Media Services Player](https://aka.ms/azuremediaplayer).
 
-## <a id="client_request"></a>Jak klient poprosić o klucz usługi dostarczania kluczy
-W poprzednim kroku tworzony jest adres URL, który wskazuje plik manifestu. Twój klient musi wyodrębnić wymaganych informacji z przesyłania strumieniowego plików manifestu, aby wysyłać żądania do usługi dostarczania kluczy.
+## <a id="client_request"></a>Jak klient może zażądać klucza od usługi dostarczania kluczy?
+W poprzednim kroku został skonstruowany adres URL wskazujący na plik manifestu. Klient musi wyodrębnić niezbędne informacje z plików manifestu przesyłania strumieniowego, aby wysłać żądanie do usługi dostarczania kluczy.
 
 ### <a name="manifest-files"></a>Pliki manifestu
-Klient musi wyodrębnić adres URL (zawierający zawartość [Kącik] identyfikator klucza) wartość z pliku manifestu. Klient następnie próbuje uzyskać klucz szyfrowania z usługi dostarczania kluczy. Klient musi również wyodrębnić wartość IV i użyć go do odszyfrowywania strumienia. Poniższy fragment kodu przedstawia `<Protection>` elemencie manifestu Smooth Streaming:
+Klient musi wyodrębnić adres URL (zawierający także wartość identyfikatora klucza zawartości [dzieciak]) z pliku manifestu. Klient próbuje pobrać klucz szyfrowania z usługi dostarczania kluczy. Klient musi również wyodrębnić wartość IV i użyć jej do odszyfrowania strumienia. Poniższy fragment kodu przedstawia `<Protection>` element manifestu Smooth Streaming:
 
 ```xml
     <Protection>
@@ -157,9 +157,9 @@ Klient musi wyodrębnić adres URL (zawierający zawartość [Kącik] identyfika
     </Protection>
 ```
 
-W przypadku HLS manifest główny jest dzielony na pliki segmentu. 
+W przypadku HLS Manifest główny jest podzielony na pliki segmentów. 
 
-Na przykład to manifest głównego: http:\//test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest(format=m3u8-aapl). Zawiera listę nazw plików segmentu.
+Na przykład, głównym manifestem jest: http:\//test001.Origin.MediaServices.Windows.NET/8bfe7d6f-34e3-4d1a-B289-3e48a8762490/BigBuckBunny.ISM/manifest (format = M3U8-AAPL). Zawiera listę nazw plików segmentów.
 
     . . . 
     #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=630133,RESOLUTION=424x240,CODECS="avc1.4d4015,mp4a.40.2",AUDIO="audio"
@@ -168,7 +168,7 @@ Na przykład to manifest głównego: http:\//test001.origin.mediaservices.window
     QualityLevels(842459)/Manifest(video,format=m3u8-aapl)
     …
 
-Jeśli otworzysz jeden z plików segmentu w edytorze tekstów (na przykład http:\//test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels(514369)/Manifest(video,format=m3u8-aapl), zawiera ona #EXT-X-KEY, co oznacza, że plik jest zaszyfrowany.
+W przypadku otwarcia jednego z plików segmentu w edytorze tekstów (na przykład http:\//test001.Origin.MediaServices.Windows.NET/8bfe7d6f-34e3-4d1a-B289-3e48a8762490/BigBuckBunny.ISM/QualityLevels (514369)/manifest (wideo, format = M3U8-AAPL), zawiera #EXT-X-KEY, co oznacza, że plik jest szyfrowany.
 
     #EXTM3U
     #EXT-X-VERSION:4
@@ -185,11 +185,11 @@ Jeśli otworzysz jeden z plików segmentu w edytorze tekstów (na przykład http
     #EXT-X-ENDLIST
 
 >[!NOTE] 
->Jeśli planujesz odtwarzania HLS z szyfrowaniem AES w przeglądarce Safari, zobacz [ten blog](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
+>Jeśli planujesz odtwarzanie HLS szyfrowanych algorytmem AES w przeglądarce Safari, zobacz [ten blog](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
 
-### <a name="request-the-key-from-the-key-delivery-service"></a>Zażądaj klucza usługi dostarczania kluczy
+### <a name="request-the-key-from-the-key-delivery-service"></a>Zażądaj klucza z usługi dostarczania kluczy
 
-Poniższy kod przedstawia sposób wysyłania żądania do usługi dostarczania kluczy Media Services przy użyciu klucza dostarczania identyfikatora Uri (który został wyodrębniony z manifestu) i tokenu. (W tym artykule nie opisano sposób uzyskiwania SWTs od usługi STS.)
+Poniższy kod przedstawia sposób wysyłania żądania do usługi dostarczania kluczy Media Services przy użyciu identyfikatora URI dostarczania klucza (wyodrębnionego z manifestu) i tokenu. (W tym artykule nie wyjaśniono, jak uzyskać SWTs z usługi STS).
 
 ```csharp
     private byte[] GetDeliveryKey(Uri keyDeliveryUri, string token)
@@ -233,13 +233,13 @@ Poniższy kod przedstawia sposób wysyłania żądania do usługi dostarczania k
     }
 ```
 
-## <a name="protect-your-content-with-aes-128-by-using-net"></a>Ochrona zawartości przy użyciu algorytmu AES-128 przy użyciu platformy .NET
+## <a name="protect-your-content-with-aes-128-by-using-net"></a>Ochrona zawartości za pomocą algorytmu AES-128 przy użyciu platformy .NET
 
 ### <a name="create-and-configure-a-visual-studio-project"></a>Tworzenie i konfigurowanie projektu programu Visual Studio
 
 1. Skonfiguruj środowisko projektowe i umieść w pliku app.config informacje dotyczące połączenia, zgodnie z opisem w sekcji [Projektowanie usługi Media Services na platformie .NET](media-services-dotnet-how-to-use.md).
 
-2. Dodaj następujące elementy do appSettings, zgodnie z definicją w pliku app.config:
+2. Dodaj następujące elementy do appSettings, zgodnie z definicją w pliku App. config:
 
     ```xml
     <add key="Issuer" value="http://testissuer.com"/>
@@ -251,7 +251,7 @@ Poniższy kod przedstawia sposób wysyłania żądania do usługi dostarczania k
 Zastąp kod w pliku Program.cs kodem przedstawionym w tej sekcji.
  
 >[!NOTE]
->Obowiązuje limit 1 000 000 zasad dla różnych zasad usługi Media Services (na przykład zasad lokalizatorów lub ContentKeyAuthorizationPolicy). Użyj tego samego Identyfikatora zasad, jeśli zawsze używasz tych samych dni i uprawnień dostępu. Przykładem są zasady dla lokalizatorów przeznaczone do długotrwałego stosowania (nieprzekazywane zasady). Aby uzyskać więcej informacji, zobacz sekcję "Zasady dostępu Limit" w [zarządzanie zasobami i powiązanymi jednostkami za pomocą zestawu SDK .NET usługi Media Services](media-services-dotnet-manage-entities.md#limit-access-policies).
+>Istnieje limit 1 000 000 zasad dla różnych zasad Media Services (na przykład w przypadku zasad lokalizatora lub ContentKeyAuthorizationPolicy). Użyj tego samego identyfikatora zasad, jeśli zawsze używasz tych samych dni/uprawnień dostępu. Przykładem są zasady dla lokalizatorów przeznaczone do długotrwałego stosowania (nieprzekazywane zasady). Aby uzyskać więcej informacji, zobacz sekcję "ograniczanie dostępu do zasad" w temacie [Zarządzanie zasobami i powiązanymi jednostkami przy użyciu zestawu SDK platformy .net Media Services](media-services-dotnet-manage-entities.md#limit-access-policies).
 
 Upewnij się, że zaktualizowano zmienne, tak aby wskazywały foldery, w których znajdują się pliki danych wejściowych.
 
