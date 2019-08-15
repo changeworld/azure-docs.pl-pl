@@ -57,7 +57,7 @@ Następujące właściwości są obsługiwane dla bazy danych Sybase połączone
 | type | Właściwość type musi być równa: **Sybase** | Yes |
 | server | Nazwa serwera bazy danych Sybase. |Yes |
 | database | Nazwa bazy danych programu Sybase. |Yes |
-| authenticationType | Typ uwierzytelniania używany do łączenia z bazą danych programu Sybase.<br/>Dozwolone wartości to: **Podstawowe**, i **Windows**. |Yes |
+| authenticationType | Typ uwierzytelniania używany do łączenia z bazą danych programu Sybase.<br/>Dozwolone wartości to: **Basic**, i **Windows**. |Yes |
 | username | Określ nazwę użytkownika do łączenia z bazą danych programu Sybase. |Yes |
 | password | Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Własne środowisko IR jest wymagany, zgodnie z opisem w [wymagania wstępne](#prerequisites). |Yes |
