@@ -1,6 +1,6 @@
 ---
-title: Obsługa wielu wystawców tokenów w aplikacji sieci Web opartej na OWIN — Azure Active Directory B2C
-description: Dowiedz się, jak umożliwić aplikacji sieci Web platformy .NET obsługę tokenów wystawionych przez wiele domen.
+title: Migrowanie interfejsów API sieci Web opartych na OWIN do b2clogin.com-Azure Active Directory B2C
+description: Dowiedz się, jak włączyć interfejs API sieci Web platformy .NET, aby obsługiwał tokeny wystawione przez wielu wystawców tokenów podczas migrowania aplikacji do usługi b2clogin.com.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,21 +10,23 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 31ab19b8b3adbef1f0ea573af13b98750d278db8
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: a8a6b4f90fe3f1e60341cc59e7d81870c82e843b
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716720"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533765"
 ---
-# <a name="support-multiple-token-issuers-in-an-owin-based-web-application"></a>Obsługa wielu wystawców tokenów w aplikacji sieci Web opartej na OWIN
+# <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>Migrowanie internetowego interfejsu API opartego na OWIN do usługi b2clogin.com
 
-W tym artykule opisano technikę włączania obsługi wielu wystawców tokenów w aplikacjach sieci Web i interfejsach API implementujących [otwarty interfejs sieci Web dla platformy .NET (Owin)](http://owin.org/). Obsługa wielu punktów końcowych tokenów jest przydatna podczas migrowania aplikacji Azure Active Directory (Azure AD) B2C z *login.microsoftonline.com* do *b2clogin.com*.
+W tym artykule opisano technikę włączania obsługi wielu wystawców tokenów w interfejsach API sieci Web implementujących [otwarty interfejs sieci Web dla platformy .NET (Owin)](http://owin.org/). Obsługa wielu punktów końcowych tokenów jest przydatna w przypadku migrowania Azure Active Directory B2C (Azure AD B2C) interfejsów API i ich aplikacji z *login.microsoftonline.com* do *b2clogin.com*.
 
-Poniższe sekcje przedstawiają przykład sposobu włączania wielu wystawców w aplikacji sieci Web i odpowiedniego interfejsu API sieci Web, który używa składników oprogramowania pośredniczącego [Microsoft Owin][katana] (Katana). Chociaż przykłady kodu są specyficzne dla oprogramowania pośredniczącego Microsoft OWIN, ogólna technika powinna być stosowana do innych bibliotek OWIN.
+Dzięki dodaniu obsługi w interfejsie API do akceptowania tokenów wystawionych przez zarówno b2clogin.com, jak i login.microsoftonline.com, można migrować aplikacje sieci Web w sposób przygotowany przed usunięciem obsługi tokenów wystawionych przez login.microsoftonline.com z interfejsu API.
+
+Poniższe sekcje przedstawiają przykład sposobu włączania wielu wystawców w interfejsie API sieci Web, który używa składników oprogramowania pośredniczącego [Microsoft Owin][katana] (Katana). Chociaż przykłady kodu są specyficzne dla oprogramowania pośredniczącego Microsoft OWIN, ogólna technika powinna być stosowana do innych bibliotek OWIN.
 
 > [!NOTE]
-> Ten artykuł jest przeznaczony dla Azure AD B2C klientów z aktualnie wdrożonymi aplikacjami, `login.microsoftonline.com` które odwołują się do programu i które `b2clogin.com` chcą migrować do zalecanego punktu końcowego. Jeśli konfigurujesz nową aplikację, użyj [b2clogin.com](b2clogin.md) jako kierowany.
+> Ten artykuł jest przeznaczony dla klientów Azure AD B2C z aktualnie wdrożonymi interfejsami API i `login.microsoftonline.com` aplikacjami, które odwołują się do programu `b2clogin.com` i które chcą migrować do zalecanego punktu końcowego. Jeśli konfigurujesz nową aplikację, użyj [b2clogin.com](b2clogin.md) jako kierowany.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -34,7 +36,7 @@ Przed wykonaniem kroków opisanych w tym artykule potrzebne są następujące Az
 
 ## <a name="get-token-issuer-endpoints"></a>Pobierz punkty końcowe wystawcy tokenów
 
-Najpierw należy uzyskać identyfikatory URI punktu końcowego wystawcy tokenów dla każdego wystawcy, który ma być obsługiwany w aplikacji. Aby uzyskać punkty końcowe *b2clogin.com* i *login.microsoftonline.com* obsługiwane przez dzierżawę Azure AD B2C, użyj poniższej procedury w Azure Portal.
+Najpierw należy uzyskać identyfikatory URI punktu końcowego wystawcy tokenów dla każdego wystawcy, który ma być obsługiwany w interfejsie API. Aby uzyskać punkty końcowe *b2clogin.com* i *login.microsoftonline.com* obsługiwane przez dzierżawę Azure AD B2C, użyj poniższej procedury w Azure Portal.
 
 Zacznij od wybrania jednego z istniejących przepływów użytkownika:
 

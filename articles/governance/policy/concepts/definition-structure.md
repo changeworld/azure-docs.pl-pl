@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 77bf284734428e9257b46d85296796e4051ace26
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: 44bf3171f9da73dac17b29e86c80fc8f0d011498
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494837"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69557939"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -72,7 +72,7 @@ Wszystkie przykłady Azure Policy znajdują się na [Azure Policy próbkach](../
 
 ## <a name="mode"></a>Tryb
 
-**Tryb** jest skonfigurowany w zależności, jeśli zasady są ukierunkowane na Właściwość Azure Resource Manager lub Właściwość dostawcy zasobów.
+**Tryb** jest skonfigurowany w zależności od tego, czy zasady są ukierunkowane na Właściwość Azure Resource Manager lub Właściwość dostawcy zasobów.
 
 ### <a name="resource-manager-modes"></a>Tryby Menedżer zasobów
 
@@ -115,7 +115,7 @@ Parametr ma następujące właściwości, które są używane w definicji zasad:
   Wymagane podczas aktualizowania istniejącej definicji zasad, która jest przypisana.
 - `allowedValues`: Obowiązkowe Dostarcza tablicę wartości, które parametr akceptuje podczas przypisywania.
 
-Można na przykład zdefiniować definicję zasad, aby ograniczyć lokalizacje, w których można wdrożyć zasoby. Parametr dla tej definicji zasad może być **allowedLocations**. Ten parametr będzie używany przez każde przypisanie definicji zasad w celu ograniczenia akceptowanych wartości. Użycie silnego  typu zapewnia ulepszone środowisko podczas kończenia przydziału w portalu:
+Można na przykład zdefiniować definicję zasad, aby ograniczyć lokalizacje, w których można wdrożyć zasoby. Parametr dla tej definicji zasad może być **allowedLocations**. Ten parametr będzie używany przez każde przypisanie definicji zasad w celu ograniczenia akceptowanych wartości. Użycie silnego typu zapewnia ulepszone środowisko podczas kończenia przydziału w portalu:
 
 ```json
 "parameters": {
@@ -151,7 +151,7 @@ Ten przykład odwołuje się do parametru **allowedLocations** , który został 
 
 ### <a name="strongtype"></a>strongtype
 
-We właściwości można użyć silnego typu, aby udostępnić listę opcji dostępnych w ramach Azure Portal.  `metadata` Dozwolone wartości **strongType** obejmują:
+We właściwości można użyć silnego typu, aby udostępnić listę opcji dostępnych w ramach Azure Portal. `metadata` Dozwolone wartości **strongType** obejmują:
 
 - `location`
 - `resourceTypes`
@@ -286,7 +286,7 @@ Obsługiwane są następujące pola:
 
 Wartość parametru może być przekazanie do pola tagu. Przekazywanie parametru do pola tagu zwiększa elastyczność definicji zasad podczas przypisywania zasad.
 
-W poniższym przykładzie `concat` jest używany do tworzenia wyszukiwania pól tagów dla tagu o nazwie **TagName** parametru. Jeśli ten tag nie istnieje, efekt  dołączania jest używany do dodawania znacznika przy użyciu wartości tego samego nazwanego tagu ustawionego w nadrzędnej grupie zasobów poddane inspekcji za pomocą `resourcegroup()` funkcji Lookup.
+W poniższym przykładzie `concat` jest używany do tworzenia wyszukiwania pól tagów dla tagu o nazwie **TagName** parametru. Jeśli ten tag nie istnieje, efekt dołączania jest używany do dodawania znacznika przy użyciu wartości tego samego nazwanego tagu ustawionego w nadrzędnej grupie zasobów poddane inspekcji za pomocą `resourcegroup()` funkcji Lookup.
 
 ```json
 {
@@ -304,7 +304,7 @@ W poniższym przykładzie `concat` jest używany do tworzenia wyszukiwania pól 
 }
 ```
 
-### <a name="value"></a>Wartość
+### <a name="value"></a>Value
 
 Warunki mogą być również tworzone przy użyciu **wartości**. **wartość** sprawdza warunki względem [parametrów](#parameters), [obsługiwanych funkcji szablonów](#policy-functions)lub literałów.
 **wartość** jest sparowana z dowolnym obsługiwanym [warunkiem](#conditions).
@@ -370,7 +370,7 @@ Użycie _funkcji szablonu_ w **wartości** pozwala na wiele złożonych zagnież
 }
 ```
 
-Powyższa Przykładowa reguła zasad używa podciągu [()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) , aby porównać pierwsze trzy znaki **nazwy** z **ABC**. Jeśli **Nazwa** jest krótsza niż trzy znaki, `substring()` funkcja powoduje błąd. Ten błąd powoduje, że zasady stają się  efektem odmowy.
+Powyższa Przykładowa reguła zasad używa podciągu [()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) , aby porównać pierwsze trzy znaki **nazwy** z **ABC**. Jeśli **Nazwa** jest krótsza niż trzy znaki, `substring()` funkcja powoduje błąd. Ten błąd powoduje, że zasady stają się efektem odmowy.
 
 Zamiast tego należy użyć funkcji [if ()](../../../azure-resource-manager/resource-group-template-functions-logical.md#if) , aby sprawdzić, czy pierwsze trzy znaki **nazwy** są równe **ABC** bez dopuszczania **nazwy** krótszej niż trzy znaki w celu spowodowania błędu:
 
@@ -510,14 +510,14 @@ Zawsze rośnie listę aliasów. Aby dowiedzieć się, jakie aliasy są obecnie o
 
 ### <a name="understanding-the--alias"></a>Opis alias [*]
 
-Mieć wiele aliasów, które są dostępne wersji, która jest wyświetlana jako nazwa "normal", a drugi zawierający **[\*]** podłączone do niego. Przykład:
+Mieć wiele aliasów, które są dostępne wersji, która jest wyświetlana jako nazwa "normal", a drugi zawierający **[\*]** podłączone do niego. Na przykład:
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
 
 Alias "normal" reprezentuje pole jako pojedynczą wartość. To pole jest przeznaczone do dokładnego dopasowania scenariuszy porównywania, gdy cały zestaw wartości musi być dokładnie zdefiniowany, nie więcej i nie rzadziej.
 
-Alias **[\*]** umożliwia porównanie wartości poszczególnych elementów w tablicy i określonych właściwości każdego elementu. Takie podejście umożliwia porównanie właściwości elementów dla elementu "If None of", "if any" lub "If all of". Przy użyciu **ipRules\*[]** przykład sprawdza, czy każda _Akcja_ jest odmowa , ale nie martw się o liczbę istniejących reguł lub _wartość_ IP. Ta przykładowa reguła sprawdza, czy dla dowolnych dopasowań **ipRules [\*]. Value** do **10.0.4.1** i stosuje element **effecttype** tylko wtedy, gdy nie znajdzie co najmniej jednego dopasowania:
+Alias **[\*]** umożliwia porównanie wartości poszczególnych elementów w tablicy i określonych właściwości każdego elementu. Takie podejście umożliwia porównanie właściwości elementów dla elementu "If None of", "if any" lub "If all of". Przy użyciu **ipRules\*[]** przykład sprawdza, czy każda _Akcja_ jest odmowa, ale nie martw się o liczbę istniejących reguł lub _wartość_ IP. Ta przykładowa reguła sprawdza, czy dla dowolnych dopasowań **ipRules [\*]. Value** do **10.0.4.1** i stosuje element **effecttype** tylko wtedy, gdy nie znajdzie co najmniej jednego dopasowania:
 
 ```json
 "policyRule": {
@@ -619,7 +619,7 @@ Poniższy przykład ilustruje sposób tworzenia inicjatywy do obsługi dwa tagi:
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Zapoznaj się z przykładami w [Azure Policy Samples](../samples/index.md).
 - Przejrzyj [wyjaśnienie działania zasad](effects.md).

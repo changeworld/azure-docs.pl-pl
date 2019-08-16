@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/12/2019
+ms.date: 08/14/2019
 ms.author: magoedte
-ms.openlocfilehash: 12010aaa7bc90bd200264549ad3efb79f46576c6
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 2b601825a58fe5739a43df607067acc8d629c5f4
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67867655"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558901"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Konfigurowanie zbierania danych agenta dla Azure Monitor kontenerów
 
@@ -30,14 +30,14 @@ W tym artykule pokazano, jak utworzyć ConfigMap i skonfigurować zbieranie dany
 >Obsługa usługi Prometheus jest w tej chwili funkcją w publicznej wersji zapoznawczej.
 >
 
-## <a name="configure-your-cluster-with-custom-data-collection-settings"></a>Skonfiguruj klaster przy użyciu niestandardowych ustawień zbierania danych
+## <a name="configmap-file-settings-overview"></a>ConfigMap — Omówienie ustawień plików
 
 Udostępniany jest plik ConfigMap szablonu, który umożliwia łatwe edytowanie go przy użyciu dostosowań bez konieczności tworzenia go od podstaw. Przed rozpoczęciem należy zapoznać się z dokumentacją Kubernetes dotyczącą [ConfigMaps](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/) i zapoznać się z tematem jak tworzyć, konfigurować i wdrażać ConfigMaps. Pozwoli to na filtrowanie stderr i stdout dla przestrzeni nazw lub całego klastra oraz zmiennych środowiskowych dla dowolnego kontenera uruchomionego we wszystkich/wszystkich węzłach w klastrze.
 
 >[!IMPORTANT]
 >Minimalna wersja agenta obsługiwana w celu zbierania zmiennych stdout, stderr i środowiskowych z obciążeń kontenerów to ciprod06142019 lub nowszy. Minimalna wersja agenta obsługiwana w przypadku wycinków Prometheus ma wartość ciprod07092019 lub nowszą. Aby sprawdzić wersję agenta, z karty **węzeł** wybierz węzeł, a następnie w okienku właściwości wartość komentarza właściwości **tag obrazu agenta** .  
 
-### <a name="overview-of-configurable-data-collection-settings"></a>Przegląd ustawień zbierania danych konfigurowalnych
+### <a name="data-collection-settings"></a>Ustawienia zbierania danych
 
 Poniżej przedstawiono ustawienia, które można skonfigurować w celu kontrolowania zbierania danych.
 
@@ -51,12 +51,24 @@ Poniżej przedstawiono ustawienia, które można skonfigurować w celu kontrolow
 |`[log_collection_settings.stderr] exclude_namespaces =` |String |Tablica rozdzielona przecinkami |Tablica przestrzeni nazw Kubernetes, dla których dzienniki stderr nie będą zbierane. To ustawienie ma zastosowanie tylko wtedy `log_collection_settings.stdout.enabled` , gdy jest `true`ustawione na. Jeśli nie zostanie określony w ConfigMap, wartość domyślna to `exclude_namespaces = ["kube-system"]`. |
 | `[log_collection_settings.env_var] enabled =` |Boolean | prawda lub FAŁSZ | Ta funkcja kontroluje, czy jest włączona kolekcja zmiennych środowiskowych. Gdy jest ustawiona `false`na, żadne zmienne środowiskowe nie są zbierane dla żadnego kontenera uruchomionego we wszystkich zbiorach/węzłach w klastrze. Jeśli nie zostanie określony w ConfigMap, wartość domyślna to `enabled = true`. |
 
-## <a name="overview-of-configurable-prometheus-scraping-settings"></a>Omówienie konfigurowalnych ustawień odpadków Prometheus
+### <a name="prometheus-scraping-settings"></a>Ustawienia odpadków Prometheus
 
-Aktywne wycinki metryk z Prometheus są wykonywane z jednej z dwóch perspektyw:
+![Architektura monitorowania kontenerów dla Prometheus](./media/container-insights-agent-config/monitoring-kubernetes-architecture.png)
+
+Azure Monitor dla kontenerów zapewnia bezproblemowe środowisko umożliwiające zbieranie metryk Prometheus przez wiele wycinków przez następujące mechanizmy, jak pokazano w poniższej tabeli. Metryki są zbierane za pośrednictwem zestawu ustawień określonych w pojedynczym pliku ConfigMap, który jest ten sam plik, który służy do konfigurowania kolekcji stdout, stderr i zmiennych środowiskowych z obciążeń kontenerów. 
+
+Aktywne odróżnienie metryk z Prometheus jest wykonywane z jednej z dwóch perspektyw:
 
 * Adresy URL protokołu HTTP w całym klastrze i odnajdywanie elementów docelowych z listy punktów końcowych usługi, usług k8s, takich jak polecenia-DNS i polecenia-State-Metrics, a pod adnotacje specyficzne dla aplikacji. Metryki zebrane w tym kontekście zostaną zdefiniowane w sekcji ConfigMap *[Prometheus data_collection_settings. cluster]* .
 * Adres URL protokołu HTTP w całym węźle i odnajdywanie obiektów docelowych z listy punktów końcowych usługi. Metryki zebrane w tym kontekście zostaną zdefiniowane w sekcji ConfigMap *[Prometheus_data_collection_settings. Node]* .
+
+| Endpoint | Scope | Przykład |
+|----------|-------|---------|
+| Pod adnotacją | Cały klaster | adnotacj <br>`prometheus.io/scrape: "true"` <br>`prometheus.io/path: "/mymetrics"` <br>`prometheus.io/port: "8000" <br>prometheus.io/scheme: "http"` |
+| Usługa Kubernetes | Cały klaster | `http://my-service-dns.my-namespace:9100/metrics` <br>`https://metrics-server.kube-system.svc.cluster.local/metrics` |
+| adres URL/punkt końcowy | Dla każdego węzła i/lub całego klastra | `http://myurl:9101/metrics` |
+
+W przypadku określenia adresu URL Azure Monitor dla kontenerów odnosi się tylko do punktu końcowego. Gdy jest określona usługa Kubernetes, nazwa usługi jest rozpoznawana z serwerem DNS klastra w celu uzyskania adresu IP, a następnie rozwiązanej usługi.
 
 |Scope | Klucz | Typ danych | Value | Opis |
 |------|-----|-----------|-------|-------------|
@@ -64,17 +76,17 @@ Aktywne wycinki metryk z Prometheus są wykonywane z jednej z dwóch perspektyw:
 | | `urls` | String | Tablica rozdzielona przecinkami | Punkt końcowy HTTP (podano adres IP lub prawidłową ścieżkę URL). Na przykład: `urls=[$NODE_IP/metrics]`. ($NODE _IP jest określonym Azure Monitor dla parametru Containers i można go użyć zamiast adresu IP węzła. Musi zawierać wielkie litery). |
 | | `kubernetes_services` | String | Tablica rozdzielona przecinkami | Tablica usług Kubernetes Services do odporności metryk z metryk polecenia-State-Metrics. Na przykład`kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics", http://my-service-dns.my-namespace:9100/metrics]`.|
 | | `monitor_kubernetes_pods` | Boolean | prawda lub FAŁSZ | Po ustawieniu `true` na wartość w ustawieniach całego klastra, Azure monitor dla agenta kontenerów będą odporne na Kubernetesy w całym klastrze dla następujących adnotacji Prometheus:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
-| | `prometheus.io/scrape` | Boolean | prawda lub FAŁSZ | Włącza odpadków pod. |
-| | `prometheus.io/scheme` | Ciąg | http lub https | Wartość domyślna to złomowanie za pośrednictwem protokołu HTTP. W `https`razie potrzeby ustaw wartość. | 
-| | `prometheus.io/path` | Ciąg | Tablica rozdzielona przecinkami | Ścieżka zasobu HTTP, z której mają zostać pobrane metryki. Jeśli ścieżka metryk nie `/metrics`jest zdefiniowana, zdefiniuj ją z tą adnotacją. |
-| | `prometheus.io/port` | Ciąg | 9102 | Określ port, na którym nasłuchuje nasłuchiwanie. Jeśli port nie jest ustawiony, wartość domyślna to 9102. |
-| Cały węzeł | `urls` | Ciąg | Tablica rozdzielona przecinkami | Punkt końcowy HTTP (podano adres IP lub prawidłową ścieżkę URL). Na przykład: `urls=[$NODE_IP/metrics]`. ($NODE _IP jest określonym Azure Monitor dla parametru Containers i można go użyć zamiast adresu IP węzła. Musi zawierać wielkie litery). |
-| Cały węzeł lub cały klaster | `interval` | Ciąg | 60 s | Interwał kolekcji jest wartością domyślną 1 minuty (60 sekund). Kolekcję można modyfikować w ramach jednostek czasu *[prometheus_data_collection_settings. Node]* i/lub *[prometheus_data_collection_settings. cluster]* , takich jak NS, US (lub Âμs), MS, s, m, h. |
+| | `prometheus.io/scrape` | Boolean | prawda lub FAŁSZ | Włącza odpadków pod. `monitor_kubernetes_pods`musi być ustawiony na `true`. |
+| | `prometheus.io/scheme` | String | http lub https | Wartość domyślna to złomowanie za pośrednictwem protokołu HTTP. W `https`razie potrzeby ustaw wartość. | 
+| | `prometheus.io/path` | String | Tablica rozdzielona przecinkami | Ścieżka zasobu HTTP, z której mają zostać pobrane metryki. Jeśli ścieżka metryk nie `/metrics`jest zdefiniowana, zdefiniuj ją z tą adnotacją. |
+| | `prometheus.io/port` | String | 9102 | Określ port, na którym nasłuchuje nasłuchiwanie. Jeśli port nie jest ustawiony, wartość domyślna to 9102. |
+| Cały węzeł | `urls` | String | Tablica rozdzielona przecinkami | Punkt końcowy HTTP (podano adres IP lub prawidłową ścieżkę URL). Na przykład: `urls=[$NODE_IP/metrics]`. ($NODE _IP jest określonym Azure Monitor dla parametru Containers i można go użyć zamiast adresu IP węzła. Musi zawierać wielkie litery). |
+| Cały węzeł lub cały klaster | `interval` | String | 60 s | Interwał kolekcji jest wartością domyślną 1 minuty (60 sekund). Kolekcję można modyfikować w ramach jednostek czasu *[prometheus_data_collection_settings. Node]* i/lub *[prometheus_data_collection_settings. cluster]* , takich jak NS, US (lub Âμs), MS, s, m, h. |
 | Cały węzeł lub cały klaster | `fieldpass`<br> `fielddrop`| String | Tablica rozdzielona przecinkami | Można określić, które metryki mają być zbierane lub nie z punktu końcowego przez ustawienie listy Zezwalaj`fieldpass`() i nie`fielddrop`Zezwalaj (). Należy najpierw ustawić listę dozwolonych. |
 
 ConfigMap jest globalną listą, a do agenta może być zastosowany tylko jeden ConfigMap. Nie można ConfigMap kolekcji.
 
-### <a name="configure-and-deploy-configmaps"></a>Konfigurowanie i wdrażanie ConfigMaps
+## <a name="configure-and-deploy-configmaps"></a>Konfigurowanie i wdrażanie ConfigMaps
 
 Wykonaj następujące kroki, aby skonfigurować i wdrożyć plik konfiguracyjny ConfigMap w klastrze.
 
@@ -82,8 +94,51 @@ Wykonaj następujące kroki, aby skonfigurować i wdrożyć plik konfiguracyjny 
 1. Edytuj plik YAML ConfigMap z własnymi dostosowaniami.
 
     - Aby wykluczyć określone przestrzenie nazw dla zbierania dzienników stdout, należy skonfigurować klucz/wartość przy użyciu następującego przykładu: `[log_collection_settings.stdout] enabled = true exclude_namespaces = ["my-namespace-1", "my-namespace-2"]`.
+    
     - Aby wyłączyć kolekcję zmiennych środowiskowych dla określonego kontenera, należy ustawić klucz/wartość `[log_collection_settings.env_var] enabled = true` , aby włączyć kolekcje zmiennych globalnie, a następnie wykonać kroki opisane [tutaj](container-insights-manage-agent.md#how-to-disable-environment-variable-collection-on-a-container) , aby ukończyć konfigurację dla określonego kontenera.
+    
     - Aby wyłączyć zbieranie dzienników stderr dla całego klastra, należy skonfigurować klucz/wartość przy użyciu następującego przykładu: `[log_collection_settings.stderr] enabled = false`.
+    
+    - W poniższych przykładach pokazano, jak skonfigurować metryki plików ConfigMap z całego klastra adresów URL, z całego węzła DameonSet agenta i przez określenie adnotacji pod
+
+        - Brak metryk Prometheus z określonego adresu URL w klastrze.
+
+        ```
+         prometheus-data-collection-settings: |- 
+         # Custom Prometheus metrics data collection settings
+         [prometheus_data_collection_settings.cluster] 
+         interval = "1m"  ## Valid time units are ns, us (or µs), ms, s, m, h.
+         fieldpass = ["metric_to_pass1", "metric_to_pass12"] ## specify metrics to pass through 
+         fielddrop = ["metric_to_drop"] ## specify metrics to drop from collecting
+         urls = ["http://myurl:9101/metrics"] ## An array of urls to scrape metrics from
+        ```
+
+        - Brak metryk Prometheus z elementu daemonset agenta działającego w każdym węźle w klastrze.
+
+        ```
+         prometheus-data-collection-settings: |- 
+         # Custom Prometheus metrics data collection settings 
+         [prometheus_data_collection_settings.node] 
+         interval = "1m"  ## Valid time units are ns, us (or µs), ms, s, m, h. 
+         # Node level scrape endpoint(s). These metrics will be scraped from agent's DaemonSet running in every node in the cluster 
+         urls = ["http://$NODE_IP:9103/metrics"] 
+         fieldpass = ["metric_to_pass1", "metric_to_pass2"] 
+         fielddrop = ["metric_to_drop"] 
+        ```
+
+        - Brak metryk Prometheus przez określenie adnotacji pod.
+
+        ```
+         prometheus-data-collection-settings: |- 
+         # Custom Prometheus metrics data collection settings
+         [prometheus_data_collection_settings.cluster] 
+         interval = "1m"  ## Valid time units are ns, us (or µs), ms, s, m, h
+         monitor_kubernetes_pods = true #replicaset will scrape Kubernetes pods for the following prometheus annotations: 
+          - prometheus.io/scrape:"true" #Enable scraping for this pod 
+          - prometheus.io/scheme:"http:" #If the metrics endpoint is secured then you will need to set this to `https`, if not default ‘http’
+          - prometheus.io/path:"/mymetrics" #If the metrics path is not /metrics, define it with this annotation. 
+          - prometheus.io/port:"8000" #If port is not 9102 use this annotation
+        ```
 
 1. Utwórz ConfigMap, uruchamiając następujące polecenie polecenia kubectl: `kubectl apply -f <configmap_yaml_file.yaml>`.
     
@@ -98,7 +153,7 @@ Aby sprawdzić, czy konfiguracja została pomyślnie zastosowana, użyj następu
 config::unsupported/missing config schema version - 'v21' , using defaults
 ```
 
-Błędy związane z zastosowaniem zmian konfiguracji dla Prometheus są również dostępne do przeglądu.  Z dzienników agenta pod użyciem tego samego `kubectl logs` polecenia lub z dzienników na żywo. W dziennikach na żywo są wyświetlane błędy podobne do następujących:
+Błędy związane z zastosowaniem zmian konfiguracji dla Prometheus są również dostępne do przeglądu.  Z dzienników agenta pod użyciem tego samego `kubectl logs` polecenia lub z dzienników na żywo. Dzienniki na żywo pokazują błędy podobne do następujących:
 
 ```
 2019-07-08T18:55:00Z E! [inputs.prometheus]: Error in plugin: error making HTTP request to http://invalidurl:1010/metrics: Get http://invalidurl:1010/metrics: dial tcp: lookup invalidurl on 10.0.0.10:53: no such host
@@ -108,7 +163,7 @@ Błędy uniemożliwiają programowi omsagent analizowanie pliku, powodując pono
 
 ## <a name="applying-updated-configmap"></a>Stosowanie zaktualizowanych ConfigMap
 
-Jeśli wdrożono już ConfigMap w klastrze i chcesz ją zaktualizować przy użyciu nowszej konfiguracji, możesz po prostu edytować plik ConfigMap, który został wcześniej użyty, a następnie zastosować go przy użyciu tego samego polecenia jak poprzednio `kubectl apply -f <configmap_yaml_file.yaml`.
+Jeśli wdrożono już ConfigMap w klastrze i chcesz ją zaktualizować przy użyciu nowszej konfiguracji, możesz edytować wcześniej używany plik ConfigMap, a następnie zastosować go przy użyciu tego samego polecenia jak poprzednio `kubectl apply -f <configmap_yaml_file.yaml`.
 
 Zmiana konfiguracji może potrwać kilka minut, zanim zostanie ona uwzględniona, a wszystkie omsagent zostaną uruchomione ponownie. Ponowne uruchomienie jest ponownym uruchomieniem dla wszystkich omsagentch, a nie wszystkich ponownych uruchomień w tym samym czasie. Po zakończeniu ponownych uruchomień zostanie wyświetlony komunikat podobny do poniższego i zawiera wynik: `configmap "container-azm-ms-agentconfig" updated`.
 

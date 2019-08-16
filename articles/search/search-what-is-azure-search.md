@@ -8,18 +8,18 @@ ms.service: search
 ms.topic: overview
 ms.date: 08/13/2019
 ms.author: heidist
-ms.openlocfilehash: eefa0eb5d1e15df34089d7baa3241cbbed4724c2
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
-ms.translationtype: MT
+ms.openlocfilehash: 0a254716acbcd51263680d421045788e8365ae8b
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034836"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533174"
 ---
 # <a name="what-is-azure-search"></a>Co to jest usługa Azure Search?
 
 Azure Search jest opartym na chmurze rozwiązaniem typu „wyszukiwanie jako usługa”, które udostępnia deweloperom interfejsy API oraz narzędzia umożliwiające dodawanie zaawansowanych funkcji wyszukiwania do prywatnej, heterogenicznej zawartości w aplikacjach internetowych, mobilnych i firmowych. Niestandardowy kod wywołuje pozyskiwanie danych (indeksowanie), wysyła żądania zapytań i obsługuje odpowiedzi. Środowisko wyszukiwania jest zdefiniowane w kodzie klienta przy użyciu funkcji z Azure Search z wykonywaniem zapytań względem utrwalonego indeksu tworzonego, własnego i przechowywania Azure Search.
 
-![Architektura Azure Search](media/search-what-is-azure-search/azure-search-diagram.png "Architektura Azure Search")
+![Architektura Azure Search](media/search-what-is-azure-search/azure-search-diagram.svg "Architektura Azure Search")
 
 <!-- + Build a search index containing only your data, sourced from multiple content types and platforms. 
 + Leverage AI enrichments to extract text and features from image files, or entities and key phrases from raw text.

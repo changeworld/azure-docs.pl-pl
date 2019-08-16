@@ -7,16 +7,16 @@ ms.service: billing
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: banders
-ms.openlocfilehash: 2e595fbee90b710ec6b8090a770d93e688a04818
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2122b6bd5fbd6b15bd5a2e411898d957708bf4c9
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839983"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558869"
 ---
 # <a name="what-are-azure-reservations"></a>Co to jest Azure Reservations?
 
-Azure Reservations pomóc w zaoszczędzeniu pieniędzy przez przedpłatę za rok lub trzy lata maszyn wirtualnych, SQL Database pojemności obliczeniowej, Azure Cosmos DB przepływności lub innych zasobów platformy Azure. Funkcja przedpłaty umożliwia uzyskanie rabatu za zasoby, których używasz. Rezerwacje mogą znacząco obniżyć ilość zasobów dla maszyny wirtualnej, obliczeń w usłudze SQL Database, Azure Cosmos DB lub innych kosztów zasobu do 72% w przypadku cen z wynagrodzeniem zgodnie z rzeczywistym użyciem. Rezerwacje zapewniają rabat na rozliczenia i nie mają wpływu na stan środowiska uruchomieniowego Twoich zasobów.
+Azure Reservations pomóc w zaoszczędzeniu pieniędzy przez przedpłatę za rok lub trzy lata maszyn wirtualnych, SQL Database pojemności obliczeniowej, Azure Cosmos DB przepływności lub innych zasobów platformy Azure. Przedpłaty umożliwiają uzyskanie rabatu dotyczącego używanych zasobów. Rezerwacje mogą znacząco obniżyć ilość zasobów dla maszyny wirtualnej, obliczeń w usłudze SQL Database, Azure Cosmos DB lub innych kosztów zasobu do 72% w przypadku cen z wynagrodzeniem zgodnie z rzeczywistym użyciem. Rezerwacje zapewniają rabat na rozliczenia i nie mają wpływu na stan środowiska uruchomieniowego Twoich zasobów.
 
 Możesz kupić rezerwację w [Azure Portal](https://ms.portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade).
 
@@ -36,7 +36,7 @@ W przypadku maszyn wirtualnych z systemem Windows i SQL Database można obsłuż
 
 ## <a name="whos-eligible-to-purchase-a-reservation"></a>Kto jest uprawniony do zakupu rezerwacji?
 
-Aby kupić plan, musisz mieć rolę właściciela subskrypcji w przedsiębiorstwie (MS-AZR-0017P lub MS-AZR-0148P) lub z opcją płatność zgodnie z rzeczywistym użyciem (MS-AZR-003P lub MS-AZR-0023P). Dostawcy rozwiązań w chmurze mogą kupować Azure Reservations za pomocą Azure Portal lub [centrum](/partner-center/azure-reservations) partnerskiego.
+Aby kupić plan, musisz mieć rolę właściciela subskrypcji w przedsiębiorstwie (MS-AZR-0017P lub MS-AZR-0148P) lub z opcją płatność zgodnie z rzeczywistym użyciem (MS-AZR-0003P lub MS-AZR-0023P). Dostawcy rozwiązań w chmurze mogą kupować Azure Reservations za pomocą Azure Portal lub [centrum](/partner-center/azure-reservations) partnerskiego.
 
 Klienci korzystający z programu Umowa Enterprise (EA) mogą ograniczyć liczbę zakupów do administratorów EA, wyłączając opcję **Dodaj wystąpienia zarezerwowane** w portalu EA. Administratorzy EA muszą być właścicielami subskrypcji dla co najmniej jednej subskrypcji EA do zakupu rezerwacji. Ta opcja jest przydatna w przypadku przedsiębiorstw, które chcą kupować rezerwacje dla różnych centrów kosztów za pomocą scentralizowanego zespołu. Po zakupie zespoły centralne mogą dodawać do rezerwacji właścicieli centrów kosztów. Właściciele mogą następnie ograniczyć rezerwację do swoich subskrypcji. Centralny zespół nie musi mieć dostępu właściciela subskrypcji w przypadku zakupu rezerwacji.
 
@@ -158,7 +158,7 @@ W przypadku klientów z indywidualnymi subskrypcjami:
 
 Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie pomocy technicznej](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej o Azure Reservations z następującymi artykułami:
     - [Zarządzanie usługą Azure Reservations](billing-manage-reserved-vm-instance.md)

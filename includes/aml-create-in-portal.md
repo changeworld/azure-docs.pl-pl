@@ -8,27 +8,25 @@ ms.author: sgilley
 manager: cgronlund
 ms.custom: include file
 ms.topic: include
-ms.date: 07/31/2019
-ms.openlocfilehash: 0a497ce506e1aa3b0f9afc47bf1ab8382c9c0405
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.date: 08/14/2019
+ms.openlocfilehash: 507a6d998f83f5a399f78566967067d0ed92f8b0
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951441"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534395"
 ---
 1. Zaloguj się do [Azure Portal](https://portal.azure.com/) przy użyciu poświadczeń dla używanej subskrypcji platformy Azure. 
 
-1. W lewym górnym rogu Azure Portal wybierz pozycję **Utwórz zasób**.
+1. W lewym górnym rogu Azure Portal wybierz pozycję **+ Utwórz zasób**.
 
 1. Użyj paska wyszukiwania, aby znaleźć **obszar roboczy usługi Machine Learning**.
 
 1. Wybierz **obszar roboczy usługi Machine Learning**.
 
-1. W okienku **obszaru roboczego usługi ml** wybierz pozycję **Utwórz** , aby rozpocząć.
+1. W okienku **obszaru roboczego usługi Machine Learning** wybierz pozycję **Utwórz** , aby rozpocząć.
 
 1. Skonfiguruj nowy obszar roboczy, podając nazwę obszaru roboczego, subskrypcję, grupę zasobów i lokalizację.
-
-    ![Tworzenie obszaru roboczego](./media/aml-create-in-portal/workspace-create-main-tab.png)
 
    Pole|Opis 
    ---|---
@@ -41,14 +39,5 @@ ms.locfileid: "68951441"
 
    Utworzenie obszaru roboczego może potrwać kilka chwil.
 
-   Po zakończeniu procesu zostanie wyświetlony komunikat o powodzeniu wdrożenia. Znajduje się również w sekcji powiadomienia. Aby wyświetlić nowy obszar roboczy, wybierz pozycję **Przejdź do zasobu**.
+   Po zakończeniu procesu zostanie wyświetlony komunikat o powodzeniu wdrożenia. Aby wyświetlić nowy obszar roboczy, wybierz pozycję **Przejdź do zasobu**.
 
-   ![Stan tworzenia obszaru roboczego](./media/aml-create-in-portal/notifications.png)
-
-1. Jeśli kod odwołuje się do tego obszaru roboczego ze środowiska lokalnego, wybierz pozycję **Pobierz plik config. JSON** z sekcji **Przegląd** w obszarze roboczym.  
-
-   ![Pobierz plik config.json](./media/aml-create-in-portal/configure.png)
-
-    Umieść ten plik JSON w strukturze katalogów zawierającej skrypty języka Python lub notesy Jupyter. Może znajdować się w tym samym katalogu, podkatalogu o nazwie *. Azure*lub w katalogu nadrzędnym.
-
-   Jeśli będziesz korzystać z [maszyny wirtualnej notesu](../articles/machine-learning/service/tutorial-1st-experiment-sdk-setup.md#azure) , nie musisz pobierać tego pliku, zostanie ona dodana do poprawnego katalogu na maszynie wirtualnej.

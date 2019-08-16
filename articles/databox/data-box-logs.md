@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 8fecc00a970f0e706dc6240eaec593fd54968ff8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 72e1d3b0ad72b1e68b88eb0550cbe839ade9d929
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934221"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535176"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Śledzenie i rejestrowanie zdarzeń dla Azure Data Box i Azure Data Box Heavy
 
@@ -64,7 +64,7 @@ Zamówienie można śledzić za pomocą Azure Portal oraz za pomocą witryny sie
 
 - Twoje urządzenie Data Box docierają do Twoich miejsc w stanie zablokowanym. Możesz użyć poświadczeń urządzenia dostępnych w Azure Portal zamówienia.  
 
-    Po skonfigurowaniu urządzenie Data Box może być konieczna informacja o tym, kto ma dostęp do poświadczeń urządzenia. Aby ustalić, kto uzyskał dostęp do bloku **poświadczenia urządzenia** , można wykonać zapytanie dotyczące dzienników aktywności.  Wszystkie akcje dotyczące uzyskiwania dostępu do **szczegółów urządzenia > bloku poświadczenia** są rejestrowane w dziennikach aktywności `ListCredentials` jako akcja.
+    Po skonfigurowaniu urządzenie Data Box może być konieczna informacja o tym, kto ma dostęp do poświadczeń urządzenia. Aby ustalić, kto uzyskał dostęp do bloku **poświadczenia urządzenia** , można wykonać zapytanie dotyczące dzienników aktywności.  Wszystkie akcje dotyczące uzyskiwania dostępu do **szczegółów urządzenia > bloku poświadczenia** są rejestrowane w dziennikach aktywności `ListCredentials` jako akcja.
 
     ![Wykonywanie zapytań dotyczących dzienników aktywności](media/data-box-logs/query-activity-log-1.png)
 
@@ -76,7 +76,7 @@ Podczas kopiowania danych do urządzenie Data Box lub Data Box Heavy, generowany
 
 ### <a name="errorxml-file"></a>Error. xml — plik
 
-Upewnij się, że zadania kopiowania zakończyły się bez błędów. Jeśli wystąpią błędy podczas procesu kopiowania, Pobierz dzienniki ze strony **Połącz i Kopiuj** .
+Upewnij się, że zadania kopiowania zakończyły się bez błędów. Jeśli wystąpią błędy podczas procesu kopiowania, Pobierz dzienniki ze strony **Połącz i Kopiuj** .
 
 - Jeśli skopiowano plik, który nie jest 512 bajtów wyrównany do folderu dysku zarządzanego na urządzenie Data Box, plik nie zostanie przekazany jako obiekt BLOB strony do konta magazynu tymczasowego. W dziennikach zostanie wyświetlony komunikat o błędzie. Usuń plik i skopiuj plik o 512 bajtów wyrównanych.
 - W przypadku skopiowania dysku VHDX lub dynamicznego dysku VHD lub różnicowego dysku VHD (te pliki nie są obsługiwane) w dziennikach zostanie wyświetlony komunikat o błędzie.
@@ -203,7 +203,7 @@ Dla każdego przetwarzanego zamówienia usługa urządzenie Data Box tworzy dzie
 
 Obliczenia cyklicznej kontroli nadmiarowości (CRC) są wykonywane podczas przekazywania do platformy Azure. CRCs z kopii danych i po przekazaniu danych. Niezgodność CRC wskazuje, że nie powiodło się przekazanie odpowiednich plików.
 
-Domyślnie dzienniki są zapisywane do kontenera o nazwie `copylog`. Dzienniki są przechowywane z następującą konwencją nazewnictwa:
+Domyślnie dzienniki są zapisywane do kontenera o nazwie `copylog`. Dzienniki są przechowywane z następującą konwencją nazewnictwa:
 
 `storage-account-name/databoxcopylog/ordername_device-serial-number_CopyLog_guid.xml`.
 
@@ -354,7 +354,7 @@ The authentication information fields provide detailed information about this sp
 
 ## <a name="download-order-history"></a>Pobierz historię zamówień
 
-Historia zamówień jest dostępna w Azure Portal. Jeśli zamówienie zostało zakończone, a oczyszczanie urządzenia (dane wymazywane z dysków) zostało zakończone, przejdź do kolejności urządzenia i przejdź do **szczegółów zamówienia**.  **Pobierz historię kolejności**  opcja jest dostępna. Aby uzyskać więcej informacji, zobacz [Pobieranie historii kolejności](data-box-portal-admin.md#download-order-history).
+Historia zamówień jest dostępna w Azure Portal. Jeśli zamówienie zostało zakończone, a oczyszczanie urządzenia (dane wymazywane z dysków) zostało zakończone, przejdź do kolejności urządzenia i przejdź do **szczegółów zamówienia**. Opcja **Pobieranie historii zamówienia** jest dostępna. Aby uzyskać więcej informacji, zobacz [Pobieranie historii kolejności](data-box-portal-admin.md#download-order-history).
 
 Jeśli przewiniesz historię kolejności, zobaczysz:
 

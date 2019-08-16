@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: e6ba6aeaeadb2359c4b30efa35471ca62dcc6b41
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 514098368c38c6d61bc192f5ba0f0450dc05776c
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033973"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533476"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Wersja zapoznawcza — tworzenie i zarządzanie wieloma pulami węzłów dla klastra w usłudze Azure Kubernetes Service (AKS)
 
@@ -35,7 +35,7 @@ Wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.61 lub no
 
 ### <a name="install-aks-preview-cli-extension"></a>Zainstaluj rozszerzenie interfejsu wiersza polecenia AKS-Preview
 
-Aby można było używać wielu nodepools, wymagany jest interfejs wiersza polecenia *AKS-Preview* w wersji 0.4.1 lub nowszej. Zainstaluj rozszerzenie interfejsu wiersza polecenia platformy Azure w *wersji* zapoznawczej przy użyciu poleceń [AZ Extension Add][az-extension-add] , a następnie wyszukaj wszystkie dostępne aktualizacje za pomocą polecenia [AZ Extension Update][az-extension-update] ::
+Aby można było używać wielu pul węzłów, wymagany jest interfejs wiersza polecenia *AKS-Preview* w wersji 0.4.1 lub nowszej. Zainstaluj rozszerzenie interfejsu wiersza polecenia platformy Azure w *wersji* zapoznawczej przy użyciu poleceń [AZ Extension Add][az-extension-add] , a następnie wyszukaj wszystkie dostępne aktualizacje za pomocą polecenia [AZ Extension Update][az-extension-update] ::
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -167,6 +167,9 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 
 ## <a name="upgrade-a-node-pool"></a>Uaktualnianie puli węzłów
 
+> [!NOTE]
+> Operacje uaktualniania i skalowania w klastrze lub puli węzłów wzajemnie się wykluczają. Klaster ani Pula węzłów nie mogą być jednocześnie uaktualniane i skalowane. W zamian każdy typ operacji musi zakończyć się w odniesieniu do zasobu docelowego przed następnym żądaniem tego samego zasobu. Więcej informacji na ten temat znajdziesz w naszym [przewodniku rozwiązywania problemów](https://aka.ms/aks-pending-upgrade).
+
 Po utworzeniu klastra AKS w pierwszym kroku został określony element `--kubernetes-version` *1.13.9* . Ustawia wersję Kubernetes dla płaszczyzny kontroli i początkowej puli węzłów. Istnieją różne polecenia służące do uaktualniania wersji Kubernetes płaszczyzny kontroli i puli węzłów. Polecenie jest używane do uaktualniania płaszczyzny kontroli, `az aks nodepool upgrade` podczas gdy jest używana do uaktualnienia puli poszczególnych węzłów. `az aks upgrade`
 
 Uaktualnimy *mynodepool* do Kubernetes *1.13.9*. Użyj polecenia [AZ AKS Node Pool upgrade][az-aks-nodepool-upgrade] , aby uaktualnić pulę węzłów, jak pokazano w następującym przykładzie:
@@ -283,7 +286,7 @@ Ukończenie operacji skalowania może potrwać kilka minut.
 
 ## <a name="scale-a-specific-node-pool-automatically-by-enabling-the-cluster-autoscaler"></a>Automatyczne skalowanie określonej puli węzłów przez włączenie automatycznego skalowania klastra
 
-AKS oferuje osobną funkcję w wersji zapoznawczej umożliwiającą automatyczne skalowanie pul węzłów za pomocą składnika zwanego autoskalowaniem [klastra](cluster-autoscaler.md). Ten składnik jest dodatkiem AKS, który można włączyć dla puli węzłów z unikatowymi minimalnymi i maksymalnymi liczbami skalowania na pulę węzłów. Dowiedz się [, jak korzystać z automatycznego skalowania klastra na pulę węzłów](cluster-autoscaler.md#enable-the-cluster-autoscaler-on-an-existing-node-pool-in-a-cluster-with-multiple-node-pools).
+AKS oferuje osobną funkcję w wersji zapoznawczej umożliwiającą automatyczne skalowanie pul węzłów za pomocą funkcji zwanej automatycznym [skalowaniem klastra](cluster-autoscaler.md). Ta funkcja jest dodatkiem AKS, który można włączyć dla puli węzłów z unikatowymi minimalnymi i maksymalnymi liczbami skalowania na pulę węzłów. Dowiedz się [, jak korzystać z automatycznego skalowania klastra na pulę węzłów](cluster-autoscaler.md#use-the-cluster-autoscaler-with-multiple-node-pools-enabled).
 
 ## <a name="delete-a-node-pool"></a>Usuwanie puli węzłów
 
@@ -553,6 +556,9 @@ az group deployment create \
 Zaktualizowanie klastra AKS może potrwać kilka minut, w zależności od ustawień puli węzłów i operacji zdefiniowanych w szablonie Menedżer zasobów.
 
 ## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>Przypisywanie publicznego adresu IP na węzeł w puli węzłów
+
+> [!NOTE]
+> W trakcie korzystania z wersji zapoznawczej istnieje ograniczenie użycia tej funkcji w *programie AKS (wersja zapoznawcza) usługa Load Balancer w warstwie Standardowa* z powodu możliwych reguł modułu równoważenia obciążenia powodujących konflikt z obsługą maszyny wirtualnej. W wersji zapoznawczej Użyj *podstawowej jednostki SKU Load Balancer* , jeśli musisz przypisać publiczny adres IP na węzeł.
 
 Węzły AKS nie wymagają swoich własnych publicznych adresów IP do komunikacji. Jednak niektóre scenariusze mogą wymagać, aby węzły w puli węzłów miały własne publiczne adresy IP. Przykładem są gry, w których konsola programu musi nawiązać bezpośrednie połączenie z maszyną wirtualną w chmurze, aby zminimalizować liczbę przeskoków. Można to osiągnąć, rejestrując się w celu uzyskania oddzielnej funkcji w wersji zapoznawczej, publicznego adresu IP węzła (wersja zapoznawcza).
 

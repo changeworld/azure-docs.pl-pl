@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 08/08/2019
-ms.openlocfilehash: 7c6b85bd1f5935fb3722f82efcdfc921fc9cb2ec
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.date: 08/16/2019
+ms.openlocfilehash: e386e34a8326a51753631ee9ea4215d01ba7ceb3
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990551"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558232"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Ponowne generowanie kluczy dostępu do konta magazynu
 
@@ -50,12 +50,15 @@ ws = Workspace.from_config()
 
 default_ds = ws.get_default_datastore()
 print("Default datstore: " + default_ds.name + ", storage account name: " +
-      default_ds.account_name + ", container name: " + ds.container_name)
+      default_ds.account_name + ", container name: " + default_ds.container_name)
 
 datastores = ws.datastores
 for name, ds in datastores.items():
-    if ds.datastore_type == "AzureBlob" or ds.datastore_type == "AzureFile":
-        print("datastore name: " + name + ", storage account name: " +
+    if ds.datastore_type == "AzureBlob":
+        print("Blob store - datastore name: " + name + ", storage account name: " +
+              ds.account_name + ", container name: " + ds.container_name)
+    if ds.datastore_type == "AzureFile":
+        print("File share - datastore name: " + name + ", storage account name: " +
               ds.account_name + ", container name: " + ds.container_name)
 ```
 
@@ -64,6 +67,8 @@ Ten kod wyszukuje wszystkie zarejestrowane magazyny danych korzystające z usłu
 * Nazwa magazynu danych: Nazwa magazynu danych, w ramach którego zarejestrowano konto magazynu.
 * Nazwa konta magazynu: Nazwa konta usługi Azure Storage.
 * Wbudowane Kontener na koncie magazynu, który jest używany przez tę rejestrację.
+
+Wskazuje również, czy magazyn danych jest przeznaczony dla obiektów blob platformy Azure, czy udziału plików platformy Azure, ponieważ istnieją różne metody ponownego rejestrowania każdego typu magazynu danych.
 
 Jeśli istnieje wpis dla konta magazynu, w którym planujesz ponownie wygenerować klucze dostępu, Zapisz nazwę magazynu danych, nazwę konta magazynu i nazwę kontenera.
 
@@ -97,12 +102,21 @@ Aby zaktualizować usługę Azure Machine Learning w celu używania nowego klucz
 1. Aby ponownie zarejestrować magazyny danych korzystające z konta magazynu, użyj wartości z sekcji [co należy zaktualizować](#whattoupdate) , a klucz z kroku 1 z następującym kodem:
 
     ```python
-    ds = Datastore.register_azure_blob_container(workspace=ws, 
-                                              datastore_name='your datastore name', 
+    # Re-register the blob container
+    ds_blob = Datastore.register_azure_blob_container(workspace=ws,
+                                              datastore_name='your datastore name',
                                               container_name='your container name',
-                                              account_name='your storage account name', 
+                                              account_name='your storage account name',
                                               account_key='new storage account key',
                                               overwrite=True)
+    # Re-register file shares
+    ds_file = Datastore.register_azure_file_share(workspace=ws,
+                                          datastore_name='your datastore name',
+                                          file_share_name='your container name',
+                                          account_name='your storage account name',
+                                          account_key='new storage account key',
+                                          overwrite=True)
+    
     ```
 
     Ponieważ `overwrite=True` został określony, ten kod zastępuje istniejącą rejestrację i aktualizuje ją w celu użycia nowego klucza.

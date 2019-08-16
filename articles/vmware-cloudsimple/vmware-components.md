@@ -3,17 +3,17 @@ title: Rozwiązanie VMware firmy Azure według CloudSimple — składniki VMware
 description: Opisuje, jak składniki VMware są instalowane w chmurze prywatnej
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/30/2019
+ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 89bc9c07ae74da1a4269a505627a7626e478ef99
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 26f58a38ac3abe9c6e2a3c6254190dffc4a51eb9
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812180"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543710"
 ---
 # <a name="private-cloud-vmware-components"></a>Składniki VMware chmury prywatnej
 
@@ -47,7 +47,7 @@ Program vCenter Server Appliance (VCSA) zapewnia funkcje uwierzytelniania, zarz�
 
 ### <a name="vcenter-single-sign-on"></a>Logowanie jednokrotne vCenter
 
-Osadzony kontroler usług platformy VCSA jest skojarzony z **domeną logowania**jednokrotnego.  Nazwa domeny to **cloudsimple. Local**.  Tworzony jest domyślny **CloudOwner@cloudsimple.com** użytkownik mający dostęp do programu vCenter.  Możesz dodać [źródła tożsamości](https://docs.azure.cloudsimple.com/set-vcenter-identity/)lokalnego/usługi Azure Active Directory dla serwera vCenter.
+Osadzony kontroler usług platformy VCSA jest skojarzony z **domeną logowania**jednokrotnego.  Nazwa domeny to **cloudsimple. Local**.  Tworzony jest domyślny **CloudOwner@cloudsimple.com** użytkownik mający dostęp do programu vCenter.  Możesz dodać [źródła tożsamości](set-vcenter-identity.md)lokalnego/usługi Azure Active Directory dla serwera vCenter.
 
 ## <a name="vsan-storage"></a>Magazyn sieci vSAN
 

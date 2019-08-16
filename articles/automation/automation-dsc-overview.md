@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c192a994ac5398d41e28a35267b922ba98b721cc
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: dd898397b4aaec2e62558d12a3547f7b61d6d3fd
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69513622"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533455"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Przegląd konfiguracji stanu Azure Automation
 
@@ -126,15 +126,6 @@ Aby uzyskać listę adresów IP regionów zamiast nazw regionów, Pobierz plik X
 >Zaktualizowany plik jest publikowany co tydzień. Plik odzwierciedla aktualnie wdrożone zakresy i wszystkie nadchodzące zmiany w zakresach adresów IP. Nowe zakresy, które pojawiają się w pliku nie są używane w centrach danych przez co najmniej jeden tydzień.
 >
 > Dobrym pomysłem jest pobranie nowego pliku XML co tydzień. Następnie zaktualizuj swoją witrynę, aby prawidłowo identyfikować usługi działające na platformie Azure. Użytkownicy usługi Azure ExpressRoute powinni pamiętać, że ten plik jest używany do aktualizacji anonsu usługi Border Gateway Protocol (BGP) w pierwszym tygodniu każdego miesiąca.
-
-## <a name="introduction-video"></a>Wideo z wprowadzeniem
-
-Wolisz obejrzeć film niż przeczytać artykuł? Zapoznaj się z następującym wideo z maja 2015, gdy Azure Automation konfiguracja stanu została po raz pierwszy ogłoszona.
-
-> [!NOTE]
-> Chociaż pojęcia i cykl życia omówione w tym filmie wideo są poprawne, Azure Automation konfiguracja stanu zakończyła się dużą ilością od momentu nagrania tego filmu wideo. Jest ona teraz ogólnie dostępna, ma znacznie bardziej obszerny interfejs użytkownika w Azure Portal i obsługuje wiele dodatkowych funkcji.
-
-> [!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3467/player]
 
 ## <a name="next-steps"></a>Następne kroki
 

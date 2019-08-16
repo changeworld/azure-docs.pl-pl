@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/13/2019
 ms.author: dalek
-ms.openlocfilehash: abf23eda2474ecbcfcaf0dadb26327225213a9a6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 4029a9e46b9c9bb7cbd677deff4a172d8fc982f8
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989229"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534596"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Zarządzanie użyciem i kosztami Application Insights
 
@@ -92,7 +92,7 @@ Możesz użyć jednej z następujących opcji, aby sprawdzić, ile danych jest w
 Oto kilka rzeczy, które można zrobić, aby zmniejszyć ilość danych:
 
 * Użyj [próbkowania](../../azure-monitor/app/sampling.md). Ta technologia zmniejsza szybkość danych bez pochylania metryk. Nie utracisz możliwości nawigowania między powiązanymi elementami w wyszukiwaniu. W obszarze aplikacje serwera próbkowanie działa automatycznie.
-* [Ogranicz liczbę wywołań AJAX, które mogą być zgłaszane](../../azure-monitor/app/javascript.md#detailed-configuration) w każdym widoku strony, lub Wyłącz raportowanie AJAX.
+* [Ogranicz liczbę wywołań AJAX, które mogą być zgłaszane](../../azure-monitor/app/javascript.md#configuration) w każdym widoku strony, lub Wyłącz raportowanie AJAX.
 * [Edytuj plik ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) , aby wyłączyć niepotrzebne moduły kolekcji. Na przykład można zdecydować, że liczniki wydajności lub dane zależności są nieistotne.
 * Podziel dane telemetryczne między osobnymi kluczami Instrumentacji. 
 * Metryki przed agregacją. W przypadku umieszczenia wywołań TrackMetric w aplikacji można zmniejszyć ruch przy użyciu przeciążenia, które akceptuje Obliczanie średniej i odchylenia standardowego partii pomiarów. Lub można użyć [wstępnie agregowanego pakietu](https://www.myget.org/gallery/applicationinsights-sdk-labs).

@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: a92cb0f3da5058e7ffeee6f47e8cfa26ae291005
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 5c0c3ade3fd089a4819b8836b07e249fc32c06e0
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990560"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543611"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Wdrażaj modele za pomocą usługi Azure Machine Learning
 
@@ -149,12 +149,25 @@ Poniższe cele obliczeniowe lub zasoby obliczeniowe mogą służyć do hostowani
 
 ## <a name="prepare-to-deploy"></a>Przygotowywanie do wdrożenia
 
-Aby wdrożyć jako usługę sieci Web, należy utworzyć konfigurację wnioskowania (`InferenceConfig`) i konfigurację wdrożenia. Wnioskowanie lub ocenianie modelu to faza, w której wdrożony model jest używany do prognozowania, najczęściej dotyczący danych produkcyjnych. W konfiguracji wnioskowania należy określić skrypty i zależności potrzebne do obkorzystania z modelu. W konfiguracji wdrożenia należy określić szczegóły dotyczące sposobu obsłużynia modelu w obiekcie docelowym obliczeń.
+Wdrożenie modelu wymaga kilku czynności:
 
-> [!IMPORTANT]
-> Zestaw SDK Azure Machine Learning nie udostępnia metody usługi sieci Web lub IoT Edge wdrożenia w celu uzyskania dostępu do magazynu danych lub zestawów. Jeśli chcesz, aby wdrożony model miał dostęp do danych przechowywanych poza wdrożeniem, na przykład na koncie usługi Azure Storage, musisz opracować niestandardowe rozwiązanie kodu przy użyciu odpowiedniego zestawu SDK. Na przykład [zestaw SDK usługi Azure Storage dla języka Python](https://github.com/Azure/azure-storage-python).
->
-> Kolejną alternatywą, która może posłużyć do danego scenariusza, są [przewidywania wsadowe](how-to-run-batch-predictions.md), które zapewniają dostęp do magazynów danych podczas oceniania.
+* __Skrypt wejściowy__. Ten skrypt akceptuje żądania, ocenia żądanie przy użyciu modelu i zwraca wyniki.
+
+    > [!IMPORTANT]
+    > Skrypt wejścia jest specyficzny dla modelu; musi on zrozumieć format danych żądania przychodzącego, format danych oczekiwanych przez model i format danych zwracanych do klientów.
+    >
+    > Jeśli dane żądania są w formacie, którego nie można używać w modelu, skrypt może przekształcić go w akceptowalny format. Może również przekształcić odpowiedź przed powrotem do klienta programu.
+
+    > [!IMPORTANT]
+    > Zestaw SDK Azure Machine Learning nie udostępnia metody usługi sieci Web lub IoT Edge wdrożenia w celu uzyskania dostępu do magazynu danych lub zestawów. Jeśli chcesz, aby wdrożony model miał dostęp do danych przechowywanych poza wdrożeniem, na przykład na koncie usługi Azure Storage, musisz opracować niestandardowe rozwiązanie kodu przy użyciu odpowiedniego zestawu SDK. Na przykład [zestaw SDK usługi Azure Storage dla języka Python](https://github.com/Azure/azure-storage-python).
+    >
+    > Kolejną alternatywą, która może posłużyć do danego scenariusza, są [przewidywania wsadowe](how-to-run-batch-predictions.md), które zapewniają dostęp do magazynów danych podczas oceniania.
+
+* **Zależności**, takie jak skrypty pomocnika lub pakiety Python/Conda wymagane do uruchomienia skryptu lub modelu wprowadzania
+
+* __Konfiguracja wdrożenia__ dla elementu docelowego obliczeń, który hostuje wdrożony model. Ta konfiguracja zawiera opis zagadnień dotyczących pamięci i procesora CPU wymaganych do uruchomienia modelu.
+
+Te jednostki są hermetyzowane w __konfiguracji wnioskowania__i __konfiguracji wdrożenia__. Konfiguracja wnioskowania odwołuje się do skryptu wejścia i innych zależności. Te konfiguracje są definiowane programowo podczas korzystania z zestawu SDK oraz jako pliki JSON w przypadku korzystania z interfejsu wiersza polecenia w celu wykonania wdrożenia.
 
 ### <a id="script"></a> 1. Definiowanie zależności & skryptu
 
@@ -399,9 +412,13 @@ def run(request):
 
 ### <a name="2-define-your-inferenceconfig"></a>2. Definiowanie InferenceConfig
 
-Konfiguracja wnioskowania opisuje, jak skonfigurować model do tworzenia prognoz. W poniższym przykładzie pokazano, jak utworzyć konfigurację wnioskowania. Ta konfiguracja określa środowisko uruchomieniowe, skrypt wpisu oraz (opcjonalnie) plik środowiska Conda:
+Konfiguracja wnioskowania opisuje, jak skonfigurować model do tworzenia prognoz. Ta konfiguracja nie jest częścią skryptu Wejścia; odwołuje się do skryptu wejścia i służy do lokalizowania wszystkich zasobów wymaganych przez wdrożenie. Jest on używany później podczas rzeczywistego wdrażania modelu.
+
+W poniższym przykładzie pokazano, jak utworzyć konfigurację wnioskowania. Ta konfiguracja określa środowisko uruchomieniowe, skrypt wpisu oraz (opcjonalnie) plik środowiska Conda:
 
 ```python
+from azureml.core.model import InferenceConfig
+
 inference_config = InferenceConfig(runtime="python",
                                    entry_script="x/y/score.py",
                                    conda_file="env/myenv.yml")
@@ -431,7 +448,7 @@ Aby uzyskać informacje na temat używania niestandardowego obrazu platformy Doc
 
 ### <a name="3-define-your-deployment-configuration"></a>3. Definiowanie konfiguracji wdrożenia
 
-Przed wdrożeniem należy zdefiniować konfigurację wdrożenia. __Konfiguracja wdrożenia jest specyficzna dla elementu docelowego obliczeń, który będzie hostować usługę sieci Web__. Na przykład podczas wdrażania lokalnego należy określić port, w którym usługa akceptuje żądania.
+Przed wdrożeniem należy zdefiniować konfigurację wdrożenia. __Konfiguracja wdrożenia jest specyficzna dla elementu docelowego obliczeń, który będzie hostować usługę sieci Web__. Na przykład podczas wdrażania lokalnego należy określić port, w którym usługa akceptuje żądania. Konfiguracja wdrożenia nie jest częścią skryptu wejścia. Służy do definiowania właściwości obiektu docelowego obliczeń, który będzie hostować model i skrypt wejścia.
 
 Może być również konieczne utworzenie zasobu obliczeniowego. Na przykład jeśli nie masz jeszcze usługi Azure Kubernetes skojarzonej z Twoim obszarem roboczym.
 
@@ -442,6 +459,12 @@ Poniższa tabela zawiera przykład tworzenia konfiguracji wdrożenia dla każdeg
 | Lokalny | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
 | Wystąpienie kontenera platformy Azure | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
+
+Każdą z tych klas dla lokalnych, ACI i AKS usług sieci Web można zaimportować z `azureml.core.webservice`:
+
+```python
+from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
+```
 
 > [!TIP]
 > Przed wdrożeniem modelu jako usługi można go profilować, aby określić optymalne wymagania dotyczące procesora i pamięci. Możesz profilować model przy użyciu zestawu SDK lub interfejsu wiersza polecenia. Aby uzyskać więcej informacji, zobacz Dokumentacja profilu [profil ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-) i [AZ ml model](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile) Reference.
@@ -459,6 +482,8 @@ Aby wdrożyć lokalnie, należy zainstalować platformę Docker na komputerze lo
 #### <a name="using-the-sdk"></a>Używanie zestawu SDK
 
 ```python
+from azureml.core.webservice import LocalWebservice, Webservice
+
 deployment_config = LocalWebservice.deploy_configuration(port=8890)
 service = Model.deploy(ws, "myservice", [model], inference_config, deployment_config)
 service.wait_for_deployment(show_output = True)

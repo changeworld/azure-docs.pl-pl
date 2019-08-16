@@ -3,7 +3,7 @@ title: Konfiguracja aplikacji klienckiej (Biblioteka uwierzytelniania firmy Micr
 description: Dowiedz się więcej o opcjach konfiguracji dla klienta publicznego i poufnych aplikacji klienckich w bibliotece uwierzytelniania firmy Microsoft (MSAL).
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 767f7362a6c46d864ba17f23f6506bf6cdb71414
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 6fedca8dfb60d976723508bb89cab7d5b6dda1b9
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304727"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532912"
 ---
 # <a name="application-configuration-options"></a>Opcje konfiguracji aplikacji
 
@@ -135,7 +135,7 @@ Ta opcja określa klucz tajny klienta dla poufnej aplikacji klienckiej. Ten wpis
 ## <a name="logging"></a>Rejestrowanie
 Inne opcje konfiguracji umożliwiają rejestrowanie i rozwiązywanie problemów. Zobacz artykuł [Rejestrowanie](msal-logging.md) , aby uzyskać szczegółowe informacje na temat korzystania z nich.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Dowiedz się więcej o [tworzeniu wystąpień aplikacji klienckich za pomocą MSAL.NET](msal-net-initializing-client-applications.md).
 
 Dowiedz się więcej o [tworzeniu wystąpień aplikacji klienckich przy użyciu MSAL. js](msal-js-initializing-client-applications.md).

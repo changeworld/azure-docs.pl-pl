@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: a8797afdfacfcfc75445c7f35083aeb9bb847ac1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 41d12013ec7eaa4e2aae59e1b366cc511a41f749
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562932"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535107"
 ---
 # <a name="try-speech-services-for-free"></a>Wypróbuj bezpłatnie usługi mowy
 
@@ -38,7 +38,7 @@ Aby zarejestrować się w 30-dniowej bezpłatnej wersji próbnej:
 
    ![Karta usługi mowy](media/index/try-speech-api-free-trial1.png)
 
-1. W obszarze **usługi mowy**wybierz przycisk **Pobierz klucz interfejsu API** .
+1. W obszarze **usługi mowy**wybierz pozycję **Pobierz klucz interfejsu API**.
 
    ![Klucz interfejsu API](media/index/try-speech-api-free-trial2.png)
 
@@ -48,7 +48,7 @@ Aby zarejestrować się w 30-dniowej bezpłatnej wersji próbnej:
 
 1. Zaloguj się przy użyciu swojego konta Microsoft, Facebook, LinkedIn i GitHub.
 
-    Możesz zasubskrybować bezpłatnego konta Microsoft na [portalu konta usługi Microsoft](https://account.microsoft.com/account). Aby rozpocząć, kliknij pozycję **Zaloguj się przy użyciu Microsoft** , a następnie po wyświetleniu monitu, aby zalogować się, kliknij **utwórz je.** Wykonaj kroki, aby utworzyć i zweryfikować nowego konta Microsoft.
+    Możesz zasubskrybować bezpłatnego konta Microsoft na [portalu konta usługi Microsoft](https://account.microsoft.com/account). Aby rozpocząć, wybierz pozycję **Zaloguj się przy użyciu konta Microsoft** a następnie, gdy zostanie wyświetlony monit o zalogowanie się, wybierz pozycję **Utwórz.** Wykonaj kroki, aby utworzyć i zweryfikować nowego konta Microsoft.
 
 Po zalogowaniu się do usług Cognitive Services spróbuj zaczyna się Twoja bezpłatna wersja próbna. Wyświetlane strony sieci Web Wyświetla listę wszystkich usług Azure Cognitive Services do których użytkownik ma obecnie subskrypcji wersji próbnej. Dwa klucze subskrypcji są wyświetlane obok **usługi Speech Services**. Żadnego z nich można używać w aplikacjach.
 
@@ -59,9 +59,9 @@ Po zalogowaniu się do usług Cognitive Services spróbuj zaczyna się Twoja bez
 
 Nowe konta usługi Azure otrzymywać 200 USD środków usługa, która jest dostępna przez maksymalnie 30 dni. Możesz użyć tego kredytu, aby dowiedzieć się więcej o usługach mowy lub rozpocząć tworzenie aplikacji.
 
-Aby utworzyć nowe konto platformy Azure, przejdź do [strona tworzenia konta usługi Azure](https://azure.microsoft.com/free/ai/), kliknij przycisk **Rozpocznij za darmo,** i Utwórz nowe konto platformy Azure przy użyciu konta Microsoft.
+Aby zarejestrować się w celu utworzenia nowego konta platformy Azure, przejdź na [stronę rejestracji w usłudze Azure](https://azure.microsoft.com/free/ai/), wybierz pozycję **Rozpocznij bezpłatnie** i Utwórz nowe konto platformy Azure przy użyciu konto Microsoft.
 
-Możesz zasubskrybować bezpłatnego konta Microsoft na [portalu konta usługi Microsoft](https://account.microsoft.com/account). Aby rozpocząć, kliknij pozycję **Zaloguj się przy użyciu Microsoft** , a następnie po wyświetleniu monitu, aby zalogować się, kliknij **utwórz je.** Wykonaj kroki, aby utworzyć i zweryfikować nowego konta Microsoft.
+Możesz zasubskrybować bezpłatnego konta Microsoft na [portalu konta usługi Microsoft](https://account.microsoft.com/account). Aby rozpocząć, wybierz pozycję **Zaloguj się przy użyciu konta Microsoft** a następnie, gdy zostanie wyświetlony monit o zalogowanie się, wybierz pozycję **Utwórz.** Wykonaj kroki, aby utworzyć i zweryfikować nowego konta Microsoft.
 
 Po utworzeniu konta platformy Azure postępuj zgodnie z instrukcjami w następnej sekcji, aby rozpocząć subskrypcję usługi Speech Services.
 
@@ -90,7 +90,7 @@ Aby dodać zasób usługi Speech Services (warstwa Bezpłatna lub płatna) do ko
    * Nazwa dla nowego zasobu. Nazwa służy do rozróżnienia wielu subskrypcji tej samej usługi.
    * Wybierz subskrypcję platformy Azure, nowy zasób z którym skojarzony jest ustalenie, jak są naliczane opłaty.
    * Wybierz [region](regions.md) , w którym będzie używany zasób.
-   * Wybierz opcję bezpłatnej i płatnej warstwy cenowej. Kliknij przycisk **Wyświetl pełne szczegóły ceny** pełne informacje dotyczące cen i użycie przydziały dla każdej warstwy.
+   * Wybierz opcję bezpłatnej i płatnej warstwy cenowej. Wybierz pozycję **Wyświetl pełne szczegóły cennika** , aby uzyskać pełne informacje na temat cen i przydziałów użycia dla każdej warstwy.
    * Utwórz nową grupę zasobów dla tej subskrypcji mowy lub Przypisz subskrypcję przechodząc do istniejącej grupy zasobów. Pomoc, której możesz przechowywać różne subskrypcje platformy Azure uporządkowane grupy zasobów.
    * Wygodny dostęp do Twojej subskrypcji w przyszłości, wybierz **Przypnij do pulpitu nawigacyjnego** pole wyboru.
    * Wybierz **utworzyć.**
@@ -101,7 +101,7 @@ Aby dodać zasób usługi Speech Services (warstwa Bezpłatna lub płatna) do ko
 
      ![Panel szybkiego startu](media/index/try-speech-api-create-speech5.png)
 
-1. W obszarze **Szybki Start**, kliknij przycisk **klucze** łącze w kroku 1, aby wyświetlić klucze subskrypcji. Każda subskrypcja ma dwa klucze; Możesz użyć dowolnego klucza w aplikacji. Wybierz przycisk obok każdego klucza, aby skopiować go do Schowka wklejania w kodzie.
+1. W obszarze **Szybki Start**wybierz link **klucze** w obszarze Krok 1, aby wyświetlić klucze subskrypcji. Każda subskrypcja ma dwa klucze; Możesz użyć dowolnego klucza w aplikacji. Wybierz przycisk obok każdego klucza, aby skopiować go do Schowka wklejania w kodzie.
 
 > [!NOTE]
 > Można utworzyć nieograniczoną liczbę subskrypcji do warstwy standardowa w jednym lub wielu regionach. Jednak można utworzyć tylko jedną subskrypcję z warstwy bezpłatna. Wdrożenia modelu w ramach warstwy bezpłatna, które pozostają nieużywane przez 7 dni będzie można ponowić automatycznie.

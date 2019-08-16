@@ -1,6 +1,6 @@
 ---
-title: Zalecenia dotyczące maszyny wirtualnej w usłudze Azure Security Center | Dokumentacja firmy Microsoft
-description: W tym dokumencie wyjaśniono zaleceń Centrum zabezpieczeń Azure, jak pomóc w ochronie maszyn wirtualnych i komputerów i aplikacji sieci web i środowisk usługi App Service.
+title: Zalecenia dotyczące maszyny wirtualnej w Azure Security Center | Microsoft Docs
+description: W tym dokumencie opisano Azure Security Center zalecenia dotyczące ochrony maszyn wirtualnych i komputerów oraz aplikacji sieci Web i środowisk App Service.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -14,59 +14,59 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2018
 ms.author: rkarlin
-ms.openlocfilehash: a4aaf440856746895a31914aeee2bddec2ce23f6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 798e027ca611905766b1fb8bcdb89cba4aeaf9b2
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60544996"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69531337"
 ---
-# <a name="understand-azure-security-center-resource-recommendations"></a>Omówienie zaleceń dotyczących zasobów usługi Azure Security Center
+# <a name="understand-azure-security-center-resource-recommendations"></a>Opis zaleceń dotyczących zasobów Azure Security Center
 
 
 ## <a name="recommendations"></a>Zalecenia
-Użyj poniższe tabele jako źródła, aby lepiej zrozumieć dostępne zasoby obliczeniowe i usługi App services zalecenia i każdej z nich działanie w przypadku zastosowania.
+Poniższe tabele zawierają informacje ułatwiające zrozumienie dostępnych zaleceń dotyczących usług obliczeniowych i aplikacji oraz to, co każda z nich ma zastosowanie.
 
 ### <a name="computers"></a>Komputery
 | Zalecenie | Opis |
 | --- | --- |
-| [Włącz zbieranie danych dla subskrypcji](security-center-enable-data-collection.md) |Zaleca włączenie zbierania danych w zasadach zabezpieczeń dla każdej subskrypcji i wszystkich maszyn wirtualnych w subskrypcjach. |
-| [Włączanie szyfrowania dla konta usługi Azure Storage](security-center-enable-encryption-for-storage-account.md) | Zaleca się, zostanie włączone szyfrowanie usługi Azure Storage dla danych magazynowanych. Szyfrowanie usługi Storage (SSE) działa przez szyfrowanie danych podczas są zapisywane do magazynu platformy Azure i odszyfrowuje przed pobierania. SSE jest obecnie dostępna tylko w przypadku usługi Azure Blob service i może służyć do blokowych obiektów blob, stronicowe obiekty BLOB i uzupełnialnych obiektów blob. Aby dowiedzieć się więcej, zobacz [szyfrowanie usługi Storage dla danych magazynowanych](../storage/common/storage-service-encryption.md).</br>Funkcja SSE jest obsługiwana tylko na kontach magazynu usługi Resource Manager. Klasyczne konta magazynu nie są obecnie obsługiwane. Aby poznać klasyczny, jak i modelem wdrażania usługi Resource Manager, zobacz [modele wdrażania Azure](../azure-classic-rm.md). |
-| [Korygowanie konfiguracji zabezpieczeń](security-center-remediate-os-vulnerabilities.md) |Zaleca dostosowanie konfiguracji systemu operacyjnego za pomocą reguł konfiguracji zabezpieczeń, np. nie zezwalaj na zapisywanie haseł. |
-| [Zastosuj aktualizacje systemu](security-center-apply-system-updates.md) |Zaleca wdrożenie na maszynach wirtualnych brakujących zabezpieczeń systemu i aktualizacji krytycznych. |
-| [Zastosuj Just-In-Time kontrolę dostępu do sieci](security-center-just-in-time.md) | Zaleca się zastosowanie dostęp dokładnie na czas maszyny Wirtualnej. Po prostu w czasie funkcja jest dostępna w wersji zapoznawczej i dostępne w warstwie standardowa usługi Security Center. Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center. |
-| [Uruchom ponownie po zaktualizowaniu systemu](security-center-apply-system-updates.md#reboot-after-system-updates) |Zaleca ponowne uruchomienie maszyny wirtualnej w celu ukończenia procesu stosowania aktualizacji systemu. |
-| [Zainstaluj punkt końcowy](security-center-install-endpoint-protection.md) |Zaleca aprowizację programów chroniących przed złośliwym oprogramowaniem na maszynach wirtualnych (dotyczy tylko maszyn wirtualnych z systemem Windows). |
-| [Włącz agenta maszyny wirtualnej](security-center-enable-vm-agent.md) |Umożliwia zobaczenie, które maszyny wirtualne wymagają agenta maszyny wirtualnej. Agent maszyny wirtualnej musi być zainstalowany na maszynach wirtualnych, aby zapewnić aprowizację skanowania w poszukiwaniu poprawek, skanowania linii bazowej i programów chroniących przed złośliwym oprogramowaniem. Agent maszyny wirtualnej jest instalowany domyślnie w przypadku maszyn wirtualnych wdrażanych z poziomu portalu Azure Marketplace. Informacje na temat instalowania agenta maszyny wirtualnej można znaleźć w artykule [Agent maszyny wirtualnej i rozszerzenia — część 2](https://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/). |
-| [Zastosuj szyfrowanie dysków](security-center-apply-disk-encryption.md) |Zaleca szyfrowanie dysków maszyny wirtualnej przy użyciu usługi Azure Disk Encryption (maszyny wirtualne z systemami Windows i Linux). Szyfrowanie jest zalecane zarówno w przypadku woluminów z systemem operacyjnym, jak i z danymi maszyny wirtualnej. |
-| [Aktualizacja wersji systemu operacyjnego](security-center-update-os-version.md) |Zaleca się, zaktualizować wersję systemu operacyjnego (OS) dla usługi w chmurze do najnowszej wersji dostępnych dla rodziny systemów operacyjnych.  Aby dowiedzieć się więcej o usługach Cloud Services, zobacz [Omówienie usług w chmurze](../cloud-services/cloud-services-choose-me.md). |
-| [Funkcja oceny luk w zabezpieczeniach nie jest zainstalowana](security-center-vulnerability-assessment-recommendations.md) |Zaleca się zainstalowanie na maszynie wirtualnej rozwiązania do oceny luk w zabezpieczeniach. |
-| [Korygowanie luk w zabezpieczeniach](security-center-vulnerability-assessment-recommendations.md#review-the-recommendation) |Umożliwia wyświetlenie luk w zabezpieczeniach systemu i aplikacji wykrytych przez rozwiązanie do oceny luk w zabezpieczeniach zainstalowane na maszynie wirtualnej. |
+| Włącz zbieranie danych dla subskrypcji|Zaleca włączenie zbierania danych w zasadach zabezpieczeń dla każdej subskrypcji i wszystkich maszyn wirtualnych w subskrypcjach. |
+| Włącz szyfrowanie dla konta usługi Azure Storage| Zalecane jest włączenie usługi Azure szyfrowanie usługi Storage dla danych przechowywanych w spoczynku. Szyfrowanie usługi Storage (SSE) działa przez szyfrowanie danych podczas zapisywania ich w usłudze Azure Storage i odszyfrowywanie przed pobraniem. Funkcja SSE jest obecnie dostępna tylko dla Blob service platformy Azure i może być używana dla blokowych obiektów blob, stronicowych obiektów blob i dołączania obiektów BLOB. Aby dowiedzieć się więcej, zobacz [szyfrowanie usługi Storage dla danych przechowywanych w spoczynku](../storage/common/storage-service-encryption.md).</br>Funkcja SSE jest obsługiwana tylko na kontach magazynu Menedżer zasobów. Klasyczne konta magazynu nie są obecnie obsługiwane. Aby poznać modele wdrażania klasycznego i Menedżer zasobów, zobacz modele wdrażania platformy Azure. |
+| Skoryguj konfiguracje zabezpieczeń|Zaleca dostosowanie konfiguracji systemu operacyjnego przy użyciu zalecanych reguł konfiguracji zabezpieczeń, np. nie pozwala na zapisywanie haseł. |
+| Zastosuj aktualizacje systemu |Zaleca wdrożenie na maszynach wirtualnych brakujących zabezpieczeń systemu i aktualizacji krytycznych. |
+| Stosowanie kontroli dostępu just in time do sieci| Zaleca zastosowanie just in Time do maszyny wirtualnej. Funkcja just in time jest w wersji zapoznawczej i jest dostępna w warstwie Standardowa Security Center. Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center. |
+| Uruchom ponownie po zaktualizowaniu systemu|Zaleca ponowne uruchomienie maszyny wirtualnej w celu ukończenia procesu stosowania aktualizacji systemu. |
+| Zainstaluj program Endpoint Protection|Zaleca aprowizację programów chroniących przed złośliwym oprogramowaniem na maszynach wirtualnych (dotyczy tylko maszyn wirtualnych z systemem Windows). |
+| Włącz agenta maszyny wirtualnej |Umożliwia zobaczenie, które maszyny wirtualne wymagają agenta maszyny wirtualnej. Agent maszyny wirtualnej musi być zainstalowany na maszynach wirtualnych, aby zapewnić aprowizację skanowania w poszukiwaniu poprawek, skanowania linii bazowej i programów chroniących przed złośliwym oprogramowaniem. Agent maszyny wirtualnej jest instalowany domyślnie w przypadku maszyn wirtualnych wdrażanych z poziomu portalu Azure Marketplace. Informacje na temat instalowania agenta maszyny wirtualnej można znaleźć w artykule [Agent maszyny wirtualnej i rozszerzenia — część 2](https://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/). |
+| Zastosuj szyfrowanie dysków|Zaleca szyfrowanie dysków maszyny wirtualnej przy użyciu usługi Azure Disk Encryption (maszyny wirtualne z systemami Windows i Linux). Szyfrowanie jest zalecane zarówno w przypadku woluminów z systemem operacyjnym, jak i z danymi maszyny wirtualnej. |
+| Aktualizacja wersji systemu operacyjnego|Zalecane jest zaktualizowanie wersji systemu operacyjnego dla usługi w chmurze do najnowszej wersji dostępnej dla rodziny systemów operacyjnych.  Aby dowiedzieć się więcej na temat Cloud Services, zobacz Omówienie Cloud Services. |
+| Funkcja oceny luk w zabezpieczeniach nie jest zainstalowana|Zaleca się zainstalowanie na maszynie wirtualnej rozwiązania do oceny luk w zabezpieczeniach. |
+| Koryguj luki w zabezpieczeniach) |Umożliwia wyświetlenie luk w zabezpieczeniach systemu i aplikacji wykrytych przez rozwiązanie do oceny luk w zabezpieczeniach zainstalowane na maszynie wirtualnej. |
 
-### Usługi aplikacji <a name="app-services"></a>
+### App Services<a name="app-services"></a>
 | Zalecenie | Opis |
 | --- | --- |
-| Usługa App Service powinny być dostępne tylko za pośrednictwem protokołu HTTPS | Zaleca się ograniczenie dostępu do usługi App Service przy użyciu protokołu HTTPS tylko. |
-| Gniazda sieci Web powinny być wyłączone dla aplikacji sieci Web| Zaleca się dokładnie przejrzyj użycie gniazda sieci Web w aplikacjach sieci web.  Protokół Websocket jest narażony na różnego rodzaju zagrożenia bezpieczeństwa. |
-| Użyj domen niestandardowych dla aplikacji sieci Web | Zaleca się, użyj domen niestandardowych do ochrony aplikacji sieci web przed typowymi atakami, takimi jak wyłudzanie informacji i inne ataki związane z usługą DNS. |
-| Konfiguruj ograniczenia adresów IP dla aplikacji sieci Web | Zaleca się, że definiowanie listy adresów IP, które mogą uzyskać dostęp do Twojej aplikacji.  Użyj ograniczeń adresów IP chroni aplikację internetową przed typowymi atakami. |
-| Nie zezwalaj na wszystkie ("*") zasobów uzyskiwanie dostępu do aplikacji | Zaleca się, że nie należy ustawiać parametru WEBSITE_LOAD_CERTIFICATES na " *". Ustawienie dla parametru "* " oznacza, że wszystkie certyfikaty zostaną załadowane do magazynu certyfikatów osobiste aplikacje sieci web.  Może to prowadzić do naruszenia zasady najmniejszych uprawnień, ponieważ jest mało prawdopodobne, że witryna musi mieć dostęp do wszystkich certyfikatów w czasie wykonywania. |
-| Mechanizm CORS nie powinien zezwalać na każdy zasób, uzyskiwanie dostępu do aplikacji | Zaleca się, aby zezwolić tylko wymagane domen do interakcji z aplikacją sieci web. Krzyżowe pochodzenia zasobów między źródłami (cors) nie powinien zezwalać na wszystkie domeny uzyskiwanie dostępu do sieci web aplikacji. |
-| Użyj najnowszej obsługiwanej wersji systemu .NET Framework dla aplikacji sieci Web | Zaleca się, że używasz najnowszej wersji .NET Framework dla najnowszych klas zabezpieczeń. Używanie starszych klas i typów może narazić aplikację. |
-| Użyj najnowszej obsługiwanej wersji środowiska Java dla aplikacji sieci Web | Zaleca się, że używasz najnowszej wersji języka Java dla najnowszych klas zabezpieczeń. Używanie starszych klas i typów może narazić aplikację. |
-| Użyj najnowszej obsługiwanej wersji środowiska PHP dla aplikacji sieci Web | Zaleca się, że używasz najnowszej wersji języka PHP dla najnowszych klas zabezpieczeń. Używanie starszych klas i typów może narazić aplikację. |
-| [Dodawanie zapory aplikacji internetowej](security-center-add-web-application-firewall.md) |Zaleca wdrożenie zapory aplikacji sieci web (WAF) dla punktów końcowych sieci web. Dla wszelkich publicznych umożliwiający dostęp do Internetu adresu IP (adres IP na poziomie wystąpienia lub adres IP ze zrównoważonym obciążeniem) zawierającej sieciową grupę zabezpieczeń skojarzoną z portami Otwórz przychodzącego ruchu internetowego (80,443) jest wyświetlane zalecenie zapory aplikacji sieci Web.</br></br>Usługa Security Center zaleca obsługi administracyjnej zapory aplikacji sieci Web, aby pomóc Ci chronić przed atakami przeznaczone dla aplikacji sieci web na maszynach wirtualnych i w środowisku App Service Environment. App Service Environment (ASE) jest [Premium](https://azure.microsoft.com/pricing/details/app-service/) usługi opcja planu usługi Azure App Service udostępniająca w pełni izolowane, dedykowane środowisko do bezpiecznego uruchamiania aplikacji w usłudze Azure App Service. Aby dowiedzieć się więcej na temat środowiska ASE, zobacz [dokumentacja środowiska usługi App Service](../app-service/environment/intro.md).</br></br>Możesz chronić wiele aplikacji sieci web w usłudze Security Center, dodając te aplikacje do istniejących wdrożeń zapory aplikacji sieci Web. |
-| [Finalizowanie ochrony aplikacji](security-center-add-web-application-firewall.md#finalize-application-protection) |Aby ukończyć konfigurację zapory aplikacji sieci Web, ruch musi zostać skierowany do urządzenia zapory aplikacji sieci Web. Tym zaleceniem kończy zmiany wymagane ustawienia. |
-| Użyj najnowszej obsługiwanej wersji środowiska Node.js dla aplikacji sieci Web | Zaleca się, że używasz najnowszej wersji środowiska Node.js dla najnowszych klas zabezpieczeń. Używanie starszych klas i typów może narazić aplikację. |
-| Mechanizm CORS nie powinien zezwalać na każdy zasób, dostęp do aplikacji funkcji | Zaleca się, aby zezwolić tylko wymagane domen do interakcji z aplikacją sieci web. Krzyżowe origin resource sharing (CORS) nie powinien zezwalać na wszystkie domeny uzyskiwanie dostępu do funkcji aplikacji. |
-| Użyj domen niestandardowych dla aplikacji funkcji | Zaleca się, użyj domen niestandardowych do ochrony aplikacji funkcji przed typowymi atakami, takimi jak wyłudzanie informacji i inne ataki związane z usługą DNS. |
-| Konfiguruj ograniczenia adresów IP dla aplikacji funkcji | Zaleca się, że definiowanie listy adresów IP, które mogą uzyskać dostęp do Twojej aplikacji. Użyj ograniczeń adresów IP chroni aplikację funkcji przed typowymi atakami. |
-| Funkcja aplikacji powinny być dostępne tylko za pośrednictwem protokołu HTTPS | Zaleca się ograniczenie dostępu do aplikacji funkcji przy użyciu protokołu HTTPS tylko. |
-| Zdalne debugowanie powinno zostać wyłączone dla aplikacji funkcji | Zaleca się wyłączyć debugowania dla aplikacji funkcji, jeśli nie potrzebujesz już go używać. Zdalne debugowanie wymaga porty wejściowe były otwarte w aplikacji funkcji. |
-| Gniazda sieci Web powinny być wyłączone dla aplikacji funkcji | Zaleca się dokładnie przejrzyj użycie gniazda sieci Web w obrębie aplikacji funkcji. Protokół Websocket jest narażony na różnego rodzaju zagrożenia bezpieczeństwa. |
+| App Service powinna być dostępna tylko za pośrednictwem protokołu HTTPS | Zaleca się, aby ograniczyć dostęp do App Service tylko za pośrednictwem protokołu HTTPS. |
+| Gniazda sieci Web powinny być wyłączone dla aplikacji sieci Web| Zalecane jest dokładne zapoznanie się z użyciem gniazd sieci Web w aplikacjach sieci Web.  Protokół Websocket jest narażony na różnego rodzaju zagrożenia bezpieczeństwa. |
+| Użyj domen niestandardowych dla aplikacji sieci Web | Zalecane jest używanie domen niestandardowych do ochrony aplikacji sieci Web przed typowymi atakami, takimi jak wyłudzanie informacji, oraz innymi atakami związanymi z usługą DNS. |
+| Konfiguruj ograniczenia adresów IP dla aplikacji sieci Web | Zaleca się zdefiniowanie listy adresów IP, które mogą uzyskiwać dostęp do aplikacji.  Użyj ograniczeń adresów IP chroni aplikację internetową przed typowymi atakami. |
+| Nie zezwalaj na wszystkie ("*") zasobów uzyskiwanie dostępu do aplikacji | Zaleca się, aby nie ustawiać parametru WEBSITE_LOAD_CERTIFICATES " *". Ustawienie parametru na "* " oznacza, że wszystkie certyfikaty zostaną załadowane do osobistego magazynu certyfikatów aplikacji sieci Web.  Może to prowadzić do naruszenia zasady najmniejszych uprawnień, ponieważ jest mało prawdopodobne, że witryna musi mieć dostęp do wszystkich certyfikatów w czasie wykonywania. |
+| Mechanizm CORS nie powinien zezwalać wszystkim zasobom na dostęp do aplikacji | Zaleca się, aby zezwalać na współpracującie z aplikacją sieci Web tylko wymaganych domen. Krzyżowe pochodzenia zasobów między źródłami (cors) nie powinien zezwalać na wszystkie domeny uzyskiwanie dostępu do sieci web aplikacji. |
+| Użyj najnowszej obsługiwanej wersji systemu .NET Framework dla aplikacji sieci Web | Zaleca użycie najnowszej wersji .NET Framework dla najnowszych klas zabezpieczeń. Używanie starszych klas i typów może narazić aplikację. |
+| Użyj najnowszej obsługiwanej wersji środowiska Java dla aplikacji sieci Web | Zaleca użycie najnowszej wersji języka Java dla najnowszych klas zabezpieczeń. Używanie starszych klas i typów może narazić aplikację. |
+| Użyj najnowszej obsługiwanej wersji środowiska PHP dla aplikacji sieci Web | Zaleca użycie najnowszej wersji języka PHP dla najnowszych klas zabezpieczeń. Używanie starszych klas i typów może narazić aplikację. |
+| [Dodawanie zapory aplikacji internetowej](security-center-add-web-application-firewall.md) |Zalecane jest wdrożenie zapory aplikacji sieci Web (WAF) dla punktów końcowych sieci Web. Zalecenie WAF jest pokazane dla dowolnego publicznego adresu IP (na poziomie wystąpienia adresu IP lub IP ze zrównoważonym obciążeniem), który ma skojarzoną sieciową grupę zabezpieczeń z otwartymi portami sieci Web dla ruchu przychodzącego (80 443).</br></br>Security Center zaleca się, aby pomóc w obrony przed atakami na aplikacje sieci Web na maszynach wirtualnych i App Service Environment. App Service Environment (ASE) to opcja planu usługi [Premium](https://azure.microsoft.com/pricing/details/app-service/) systemu Azure App Service, która zapewnia w pełni izolowane i dedykowane środowisko do bezpiecznego uruchamiania aplikacji Azure App Service. Aby dowiedzieć się więcej na temat środowiska ASE, zapoznaj się z [dokumentacją App Service Environment](../app-service/environment/intro.md).</br></br>W Security Center można chronić wiele aplikacji sieci Web, dodając te aplikacje do istniejących wdrożeń WAF. |
+| [Finalizowanie ochrony aplikacji](security-center-add-web-application-firewall.md#finalize-application-protection) |Aby ukończyć konfigurację WAF, ruch musi być kierowany do urządzenia WAF. Wykonanie tego zalecenia spowoduje zakończenie niezbędnych zmian konfiguracji. |
+| Użyj najnowszej obsługiwanej wersji środowiska Node.js dla aplikacji sieci Web | Zaleca użycie najnowszej wersji środowiska Node. js dla najnowszych klas zabezpieczeń. Używanie starszych klas i typów może narazić aplikację. |
+| Mechanizm CORS nie powinien zezwalać na każdy zasób, dostęp do aplikacji funkcji | Zaleca się, aby zezwalać na współpracującie z aplikacją sieci Web tylko wymaganych domen. Krzyżowe origin resource sharing (CORS) nie powinien zezwalać na wszystkie domeny uzyskiwanie dostępu do funkcji aplikacji. |
+| Użyj domen niestandardowych dla aplikacji funkcji | Zalecane jest używanie domen niestandardowych do ochrony aplikacji funkcji przed typowymi atakami, takimi jak wyłudzanie informacji, oraz innymi atakami związanymi z usługą DNS. |
+| Konfiguruj ograniczenia adresów IP dla aplikacji funkcji | Zaleca się zdefiniowanie listy adresów IP, które mogą uzyskiwać dostęp do aplikacji. Użyj ograniczeń adresów IP chroni aplikację funkcji przed typowymi atakami. |
+| Funkcja aplikacji powinny być dostępne tylko za pośrednictwem protokołu HTTPS | Zaleca się, aby ograniczyć dostęp do aplikacji funkcji tylko za pośrednictwem protokołu HTTPS. |
+| Zdalne debugowanie powinno zostać wyłączone dla aplikacja funkcji | Zalecane jest wyłączenie debugowania dla aplikacja funkcji, jeśli nie trzeba już z niego korzystać. Zdalne debugowanie wymaga porty wejściowe były otwarte w aplikacji funkcji. |
+| Gniazda sieci Web powinny być wyłączone dla aplikacji funkcji | Zalecane jest dokładne zapoznanie się z użyciem gniazd sieci Web w aplikacjach funkcji. Protokół Websocket jest narażony na różnego rodzaju zagrożenia bezpieczeństwa. |
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej na temat zalecenia, które mają zastosowanie do innych typów zasobów platformy Azure, zobacz następujące tematy:
 
 * [Monitorowanie tożsamości i dostępu w usłudze Azure Security Center](security-center-identity-access.md)

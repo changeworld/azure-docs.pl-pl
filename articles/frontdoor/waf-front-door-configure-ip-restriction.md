@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 05/31/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: 025e45b86fa3a6020652ae9756ceace5b51daa55
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: d2d52d2faf9122b7dc87f71ac7b1be53eaa99878
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516205"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534987"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door-service"></a>Konfigurowanie reguły ograniczeń adresów IP za pomocą zapory aplikacji sieci Web dla usługi platformy Azure front-drzwi
 W tym artykule opisano sposób konfigurowania reguł ograniczeń adresów IP w zaporze aplikacji sieci Web (WAF) dla usługi frontonu platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure, Azure PowerShell lub szablonu Azure Resource Manager.
@@ -56,7 +56,7 @@ W następujących przykładach:
 -  Zastąp *IPAllowPolicyExampleCLI* własnymi utworzonymi wcześniej zasadami.
 -  Zastąp wartości *IP-Address-Range-1*, *IP-Address-Range-2* własnym zakresem.
 
-Najpierw utwórz regułę zezwalania IP dla zasad utworzonych w poprzednim kroku. Uwaga **—** przechodzenie jest wymagane, ponieważ reguła musi zawierać warunek dopasowania, który ma zostać dodany w następnym kroku.
+Najpierw utwórz regułę zezwalania IP dla zasad utworzonych w poprzednim kroku. Uwaga : odroczenie jest wymagane, ponieważ reguła musi zawierać co najmniej jeden warunek dopasowania. 
 
 ```azurecli
 az network front-door waf-policy rule create \

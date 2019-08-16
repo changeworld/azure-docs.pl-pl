@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 819b2f3c54d97639eceae9aed60fdd5da2e7b3ef
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 572371f4abec413be5a2320c7d69d8126f26924f
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608171"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533056"
 ---
 # <a name="what-are-baseline-policies"></a>Co to są zasady podstawowe?
 
@@ -41,7 +41,7 @@ Wszystkie cztery z tych zasad będą miały wpływ na starsze przepływy uwierzy
 
 Ze względu na moc i dostęp do kont administratorów należy je traktować z uwzględnieniem specjalnych zaopieki. Jedną z typowych metod ulepszania ochrony uprzywilejowanych kont jest wymaganie, aby w przypadku logowania się do nich była wymagana silniejsza weryfikacja konta. W Azure Active Directory można uzyskać silniejszą weryfikację konta, wymagając od administratorów rejestracji w usłudze i korzystania z usługi Azure MFA Authentication.
 
-[Wymagaj uwierzytelniania wieloskładnikowego dla administratorów (wersja zapoznawcza)](howto-baseline-protect-administrators.md) to zasady linii bazowej, które wymagają usługi uwierzytelnianie wieloskładnikowe (MFA) dla następujących ról katalogu, które są traktowane jako największe role usługi Azure AD:
+[Wymagaj uwierzytelniania WIELOskładnikowego dla administratorów (wersja zapoznawcza)](howto-baseline-protect-administrators.md) to zasady linii bazowej, które wymagają usługi uwierzytelnianie wieloskładnikowe (MFA) dla następujących ról katalogu, które są traktowane jako największe role usługi Azure AD:
 
 * Administrator globalny
 * Administrator programu SharePoint
@@ -52,7 +52,7 @@ Ze względu na moc i dostęp do kont administratorów należy je traktować z uw
 * Administrator rozliczeń
 * Administrator użytkownika
 
-Jeśli w organizacji są używane te konta w skryptach lub kodzie, należy rozważyć zastępowanie [](../managed-identities-azure-resources/overview.md)ich tożsamościami zarządzanymi.
+Jeśli w organizacji są używane te konta w skryptach lub kodzie, należy rozważyć zastępowanie [](../managed-identities-azure-resources/overview.md)ich tożsamościami zarządzanymi.
 
 ### <a name="end-user-protection-preview"></a>Ochrona użytkowników końcowych (wersja zapoznawcza)
 
@@ -87,11 +87,11 @@ Aby chronić uprzywilejowane akcje, ta funkcja wymaga uwierzytelniania wieloskł
 
 Aby włączyć zasadę bazową:
 
-1. Zaloguj się do **Azure Portal** jako Administrator globalny, administrator zabezpieczeń lub administrator dostępu warunkowego.
+1. Zaloguj się do **Azure Portal** jako Administrator globalny, administrator zabezpieczeń lub administrator dostępu warunkowego.
 1. Przejdź do **Azure Active Directory** > **dostęp warunkowy**.
 1. Z listy zasad wybierz zasady linii bazowej, które chcesz włączyć.
 1. Ustaw opcję **Włącz zasady** na **włączone**.
-1. Kliknij przycisk Zapisz.
+1. Kliknij pozycję Zapisz.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -3,7 +3,7 @@ title: Zagadnienia dotyczące platforma uniwersalna systemu Windows (Biblioteka 
 description: Informacje o określonych kwestiach dotyczących używania platforma uniwersalna systemu Windows z biblioteką uwierzytelniania firmy Microsoft dla platformy .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d78a64ee41e37fe53eba20eab6753c0b6eb8389
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 263264742088a0012ea844946e13cffbab634b29
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277918"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532469"
 ---
 # <a name="universal-windows-platform-specific-considerations-with-msalnet"></a>Zagadnienia dotyczące platforma uniwersalna systemu Windows z MSAL.NET
 W systemie platformy UWP istnieje kilka kwestii, które należy wziąć pod uwagę podczas korzystania z MSAL.NET.
@@ -32,7 +32,7 @@ Na platformie `PublicClientApplication` WinRT ma następującą właściwość `
 
 > [!IMPORTANT]
 > Ustawienie tej właściwości na true zakłada, że deweloper aplikacji włączył zintegrowane uwierzytelnianie systemu Windows (IWA) w aplikacji. Dla tego:
-> - W aplikacji dla platformy UWP na karcie możliwości Włącz następujące możliwości:  ``Package.appxmanifest``
+> - W aplikacji dla platformy UWP na karcie możliwości Włącz następujące możliwości: ``Package.appxmanifest``
 >   - Uwierzytelnianie w przedsiębiorstwie
 >   - Sieci prywatne (serwer & klienta)
 >   - Udostępniony certyfikat użytkownika
@@ -67,7 +67,7 @@ Aby uzyskać szczegółowe informacje, zobacz [brokera uwierzytelniania w sieci 
 ## <a name="next-steps"></a>Następne kroki
 Więcej szczegółowych informacji znajduje się w następujących przykładach:
 
-Sample | Platforma | Opis 
+Próbka | Platforma | Opis 
 |------ | -------- | -----------|
 |[active-directory-dotnet-native-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | Platforma UWP | Platforma uniwersalna systemu Windows aplikacji klienckiej używającej msal.net, która uzyskuje dostęp do Microsoft Graph w celu uwierzytelniania użytkowników za pomocą punktu końcowego usługi Azure AD v 2.0. <br>![Topologia](media/msal-net-uwp-considerations/topology-native-uwp.png)|
 |[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, platformy UWP | Prosta aplikacja interfejsu Xamarin Forms, która przedstawia, jak używać MSAL do uwierzytelniania kont MSA i Azure AD za pośrednictwem punktu końcowego usługi AAD w wersji 2.0 oraz uzyskiwać dostęp do Microsoft Graph przy użyciu tokenu z wynikiem. <br>![Topologia](media/msal-net-uwp-considerations/topology-xamarin-native.png)|

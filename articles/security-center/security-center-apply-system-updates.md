@@ -1,6 +1,6 @@
 ---
-title: Zastosuj aktualizacje systemu w usłudze Azure Security Center | Dokumentacja firmy Microsoft
-description: W tym dokumencie przedstawiono sposób implementowania zaleceń Centrum zabezpieczeń Azure **Zastosuj aktualizacje systemu** i **Uruchom ponownie po zaktualizowaniu systemu**.
+title: Zastosuj aktualizacje systemu w Azure Security Center | Microsoft Docs
+description: W tym dokumencie przedstawiono sposób implementacji zaleceń Azure Security Center **zastosowania aktualizacji systemu** i **ponownego uruchomienia po aktualizacji systemu**.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -13,84 +13,74 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: ebd9939128d1f2b870541e82710792d13b69728e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: v-mohabe
+ms.openlocfilehash: 7f9c5b702c0da8de4476508114be911a9d74f78a
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62095453"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69531454"
 ---
-# <a name="apply-system-updates-in-azure-security-center"></a>Zastosuj aktualizacje systemu w usłudze Azure Security Center
-Usługa Azure Security Center monitoruje dzienne Windows i Linux maszyn wirtualnych (VM) i komputerów w celu znalezienia brakujących aktualizacji systemu operacyjnego. Usługa Security Center pobiera listę dostępnych zabezpieczeń i aktualizacje krytyczne z witryny Windows Update lub Windows Server Update Services (WSUS) w zależności od którego usługa jest skonfigurowana na komputerze Windows. Centrum zabezpieczeń sprawdza również uzyskać najnowsze aktualizacje w systemach Linux. Jeśli komputera lub maszyny Wirtualnej, na których brakuje aktualizacji systemu, usługa Security Center zaleca zastosowanie aktualizacji systemu.
+# <a name="apply-system-updates-in-azure-security-center"></a>Zastosuj aktualizacje systemu w Azure Security Center
+Azure Security Center monitoruje codzienne maszyny wirtualne z systemami Windows i Linux oraz komputery z brakującymi aktualizacjami systemu operacyjnego. Security Center pobiera listę dostępnych aktualizacji zabezpieczeń i krytycznych z Windows Update lub Windows Server Update Services (WSUS), w zależności od tego, która usługa została skonfigurowana na komputerze z systemem Windows. Security Center również sprawdza najnowsze aktualizacje w systemach Linux. Jeśli na maszynie wirtualnej lub komputerze brakuje aktualizacji systemu, Security Center będzie zalecać stosowanie aktualizacji systemu.
 
-## <a name="implement-the-recommendation"></a>Zaimplementuj zalecenia
-Zastosuj system aktualizacji jest przedstawiany jako zalecenia w usłudze Security Center. Jeśli komputera lub maszyny Wirtualnej, na których brakuje aktualizacji systemu, tego zalecenia zostanie wyświetlony w obszarze **zalecenia** i w obszarze **obliczenia**.  Wybranie zalecenie otwiera **Zastosuj aktualizacje systemu** pulpitu nawigacyjnego.
+## <a name="implement-the-recommendation"></a>Implementowanie zalecenia
+Zastosowanie aktualizacji systemu jest przedstawione jako zalecenie w Security Center. Jeśli na maszynie wirtualnej lub komputerze brakuje aktualizacji systemu, to zalecenie zostanie wyświetlone w obszarze **rekomendacje** i w obszarze **obliczenia**.  Wybranie zalecenia spowoduje otwarcie pulpitu nawigacyjnego **Zastosuj aktualizacje systemu** .
 
-W tym przykładzie użyjemy **obliczenia**.
+W tym przykładzie będziemy używać **obliczeń**.
 
-1. Wybierz **obliczenia** menu głównym usługi Security Center.
+1. Wybierz pozycję **obliczenia** w menu głównym Security Center.
 
-   ![Select Compute][1]
+   ![Wybierz pozycję obliczenia][1]
 
-2. W obszarze **obliczenia**, wybierz opcję **brakujące aktualizacje systemu**. **Zastosuj aktualizacje systemu** zostanie otwarty pulpit nawigacyjny.
+2. W obszarze **Obliczanie**wybierz pozycję **brakujące aktualizacje systemu**. Zostanie otwarty pulpit nawigacyjny **Zastosuj aktualizacje systemu** .
 
-   ![Zastosuj pulpit nawigacyjny aktualizacji systemu][2]
+   ![Pulpit nawigacyjny zastosowania aktualizacji systemu][2]
 
-   Udostępnia górnej części pulpitu nawigacyjnego:
+   W górnej części pulpitu nawigacyjnego dostępne są następujące informacje:
 
-    - Całkowita liczba Windows i maszyn wirtualnych systemu Linux oraz komputery z brakującymi aktualizacjami systemu.
-    - Całkowita liczba aktualizacje krytyczne, brakuje w maszynach wirtualnych i komputerów.
-    - Całkowita liczba aktualizacji zabezpieczeń na maszynach wirtualnych i komputerów.
+    - Całkowita liczba maszyn wirtualnych z systemami Windows i Linux oraz komputerów, na których brakuje aktualizacji systemu.
+    - Całkowita liczba brakujących aktualizacji krytycznych na maszynach wirtualnych i komputerach.
+    - Całkowita liczba brakujących aktualizacji zabezpieczeń na maszynach wirtualnych i komputerach.
 
-   Dolnej części pulpitu nawigacyjnego Wyświetla wszystkie brakujące aktualizacje dla maszyn wirtualnych i komputerów oraz ważność brakujących aktualizacji.  Lista zawiera:
+   Na dole pulpitu nawigacyjnego są wyświetlane wszystkie brakujące aktualizacje na maszynach wirtualnych i komputerach oraz ważność brakującej aktualizacji.  Lista zawiera:
 
-    - NAZWA: Nazwa brakującej aktualizacji.
-    - NIE. Maszyn wirtualnych i komputerów: Całkowita liczba maszyn wirtualnych i komputerów, które mają tej aktualizacji.
-    - STAN: Bieżący stan zalecenia:
+    - NAZWIJ Nazwa brakującej aktualizacji.
+    - ZNALEZIONO. Maszyn wirtualnych & komputerów: Łączna liczba maszyn wirtualnych i komputerów, na których brakuje tej aktualizacji.
+    - PAŃSTWU Bieżący stan zalecenia:
 
-      - Otwórz: Zalecenie nie rozpoczęto jeszcze wykonywania.
-      - W toku: Zalecenie jest aktualnie stosowane do tych zasobów i jest wymagana żadna akcja.
-      - Rozpoznane: Zalecenie zostało już zakończone. (Gdy problem został rozwiązany, wpis jest wyszarzony).
+      - Otwórz Zalecenie nie zostało jeszcze uwzględnione.
+      - W toku: Zalecenie jest obecnie stosowane do tych zasobów i nie jest wymagane wykonanie jakiejkolwiek akcji przez użytkownika.
+      - Klienta Zalecenie zostało już zakończone. (Gdy problem został rozwiązany, wpis jest wyszarzony).
 
-    - WAŻNOŚĆ: Opisuje ważność określonego zalecenia:
+    - OBRAŻEŃ Opisuje ważność danego zalecenia:
 
-      - Wysoka: Luki w zabezpieczeniach istnieje, która dotyczy istotnego zasobu (aplikacji, maszyny wirtualnej lub sieciowej grupy zabezpieczeń) i wymaga uwagi.
-      - Średni: Niekrytyczne lub dodatkowe kroki są wymagane do ukończenia procesu lub wyeliminowania luki w zabezpieczeniach.
-      - Niski: Luki w zabezpieczeniach powinny być kierowane, ale nie wymaga natychmiastowej uwagi. (Domyślnie zalecenia o niskiej ważności nie są prezentowane, ale możesz ustawić filtr umożliwiający wyświetlanie zaleceń o niskiej ważności, jeśli chcesz je przeglądać).
+      - Wysokowydajn Istnieje luka w zabezpieczeniach z istotnym zasobem (aplikacją, maszyną wirtualną lub sieciową grupą zabezpieczeń) i wymaga uwagi.
+      - Średniookresow Niekrytyczne lub dodatkowe kroki są wymagane do ukończenia procesu lub wyeliminowania luki w zabezpieczeniach.
+      - Małą Należy rozwiązać usterkę, ale nie wymaga natychmiastowej uwagi. (Domyślnie zalecenia o niskiej ważności nie są prezentowane, ale możesz ustawić filtr umożliwiający wyświetlanie zaleceń o niskiej ważności, jeśli chcesz je przeglądać).
 
-3. Wybierz brakujących aktualizacji na liście, aby wyświetlić szczegóły.
+3. Wybierz brakującą aktualizację na liście, aby wyświetlić szczegóły.
 
    ![Brak aktualizacji zabezpieczeń][3]
 
-4. Wybierz **wyszukiwania** ikona na Wstążce najważniejsze.  Zapytanie wyszukiwania dzienników usługi Azure Monitor otwiera filtrowane na komputerach brakujących aktualizacji.
+4. Wybierz ikonę **wyszukiwania** na górnej Wstążce.  Zapytanie wyszukiwania w dzienniku Azure Monitor otwiera się w odfiltrowane na komputerach, na których brakuje aktualizacji.
 
-   ![Usługa Azure Monitor dzienniki wyszukiwania][4]
+   ![Wyszukiwanie dzienników Azure Monitor][4]
 
-5. Wybierz komputer z listy, aby uzyskać więcej informacji. Zostanie otwarty inny wynik wyszukiwania informacji filtrowane tylko dla tego komputera.
+5. Wybierz komputer z listy, aby uzyskać więcej informacji. Zostanie otwarty inny wynik wyszukiwania z informacjami przefiltrowanymi tylko dla tego komputera.
 
-    ![Usługa Azure Monitor dzienniki wyszukiwania][5]
+    ![Wyszukiwanie dzienników Azure Monitor][5]
 
-## <a name="reboot-after-system-updates"></a>Uruchom ponownie po zaktualizowaniu systemu
-1. Wróć do **zalecenia** bloku. Wygenerowano nowy wpis, po zastosowaniu aktualizacji systemu, nazywany **Uruchom ponownie po zaktualizowaniu systemu**. Ten wpis informuje o tym, że musisz ponownie uruchomić maszynę Wirtualną w celu ukończenia procesu stosowania aktualizacji systemu.
-
-   ![Uruchom ponownie po zaktualizowaniu systemu][6]
-2. Wybierz **Uruchom ponownie po zaktualizowaniu systemu**. Spowoduje to otwarcie **ponownego uruchomienia oczekuje na ukończenie aktualizacji systemu** bloku, wyświetlanie listy maszyn wirtualnych, które należy ponownie uruchomić, aby ukończyć Zastosuj system aktualizuje procesu.
-
-   ![Oczekiwanie na ponowne uruchomienie][7]
-
-Uruchom ponownie maszynę Wirtualną platformy Azure, aby ukończyć proces.
-
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
 * [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](tutorial-security-policy.md) — informacje na temat konfigurowania zasad zabezpieczeń dla subskrypcji i grup zasobów na platformie Azure.
-* [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w usłudze Azure Security Center](security-center-recommendations.md) — Dowiedz się, w jaki sposób zalecenia ułatwiają ochronę zasobów platformy Azure.
-* [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md) — informacje o sposobie monitorowania kondycji zasobów platformy Azure.
+* [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w Azure Security Center](security-center-recommendations.md) — Dowiedz się, jak zalecenia ułatwiają ochronę zasobów platformy Azure.
+* [Monitorowanie kondycji zabezpieczeń w Azure Security Center](security-center-monitoring.md) — informacje na temat monitorowania kondycji zasobów platformy Azure.
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md) — informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi.
 * [Monitorowanie rozwiązań partnerskich w Centrum zabezpieczeń Azure](security-center-partner-solutions.md) — informacje na temat monitorowania stanu kondycji rozwiązań partnerskich.
 * [Azure Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
-* [Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) — wpisy na blogu dotyczące zabezpieczeń platformy Azure i zgodności.
+* [Blog dotyczący zabezpieczeń platformy Azure](https://blogs.msdn.com/b/azuresecurity/) — zawiera wpisy w blogu dotyczące zabezpieczeń i zgodności platformy Azure.
 
 <!--Image references-->
 [1]: ./media/security-center-apply-system-updates/missing-system-updates.png
@@ -98,5 +88,3 @@ Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następując
 [3]: ./media/security-center-apply-system-updates/detail-on-missing-update.png
 [4]: ./media/security-center-apply-system-updates/log-search.png
 [5]: ./media/security-center-apply-system-updates/search-details.png
-[6]: ./media/security-center-apply-system-updates/reboot-after-system-updates.png
-[7]: ./media/security-center-apply-system-updates/restart-pending.png

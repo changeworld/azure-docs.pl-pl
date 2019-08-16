@@ -1,9 +1,9 @@
 ---
-title: Uzyskaj zgodę dla kilku zasobów (Biblioteka Microsoft Authentication Library dla platformy .NET) | Azure
-description: Dowiedz się, jak użytkownik może uzyskać zgodę przed dla kilku zasobów przy użyciu Biblioteka Microsoft Authentication Library for .NET (platformy MSAL.NET).
+title: Uzyskaj zgodę na kilka zasobów (Biblioteka uwierzytelniania firmy Microsoft dla platformy .NET) | Azure
+description: Dowiedz się, jak użytkownik może uzyskać wstępną zgodę na kilka zasobów przy użyciu biblioteki uwierzytelniania firmy Microsoft dla platformy .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,29 +13,29 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/30/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8bd9a86d5ec0d39a7f1c26adac52f41e6420283
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4ded7a6fc465b4cfc98d26f65195f89de8381ac6
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66121986"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532397"
 ---
-# <a name="user-gets-consent-for-several-resources-using-msalnet"></a>Użytkownik otrzyma wyrażania zgody dla kilku zasobów przy użyciu platformy MSAL.NET
-Microsoft platformy tożsamości z punktu końcowego nie pozwala uzyskać token dla kilku zasobów jednocześnie. Korzystając z Biblioteka Microsoft Authentication Library for .NET (platformy MSAL.NET), parametr zakresów w przypadku metody tokenu nabywania powinien zawierać tylko zakresy do jednego zasobu. Jednak można wstępnie zgadzasz się na kilka zasobów z wyprzedzeniem, określając dodatkowe zakresy, za pomocą `.WithExtraScopeToConsent` metody konstruktora.
+# <a name="user-gets-consent-for-several-resources-using-msalnet"></a>Użytkownik otrzymuje zgodę na kilka zasobów przy użyciu MSAL.NET
+Punkt końcowy platformy tożsamości firmy Microsoft nie pozwala na uzyskanie tokenu dla kilku zasobów jednocześnie. W przypadku korzystania z biblioteki uwierzytelniania firmy Microsoft dla platformy .NET (MSAL.NET) parametr zakresy w metodzie pozyskiwania tokenów powinien zawierać tylko zakresy dla pojedynczego zasobu. Można jednak wstępnie wyrazić zgodę na kilka zasobów, określając dodatkowe zakresy przy użyciu `.WithExtraScopeToConsent` metody konstruktora.
 
 > [!NOTE]
-> Aby uzyskać zgodę kilka działa zasobów dla platformy tożsamości firmy Microsoft, ale nie dla usługi Azure AD B2C. Usługa Azure AD B2C obsługuje tylko zgody administratora, nie zgody użytkownika.
+> Uzyskanie zgody na kilka zasobów działa w przypadku platformy tożsamości firmy Microsoft, ale nie dla Azure AD B2C. Azure AD B2C obsługuje tylko zgodę z uprawnieniami administratora, a nie za zgodą użytkownika.
 
-Na przykład jeśli masz dwa zasoby, które mają 2 zakresów każdy:
+Na przykład jeśli masz dwa zasoby, które mają 2 zakresy każdy:
 
-- protokół https:\//mytenant.onmicrosoft.com/customerapi (z 2-zakresami `customer.read` i `customer.write`)
-- protokół https:\//mytenant.onmicrosoft.com/vendorapi (z 2-zakresami `vendor.read` i `vendor.write`)
+- https:\//mytenant.onmicrosoft.com/customerapi (z 2 zakresami `customer.write` `customer.read` i)
+- https:\//mytenant.onmicrosoft.com/vendorapi (z 2 zakresami `vendor.write` `vendor.read` i)
 
-Należy używać `.WithExtraScopeToConsent` modyfikator, która ma *extraScopesToConsent* parametru, jak pokazano w poniższym przykładzie:
+Należy używać `.WithExtraScopeToConsent` modyfikatora, który ma parametr *extraScopesToConsent* , jak pokazano w następującym przykładzie:
 
 ```csharp
 string[] scopesForCustomerApi = new string[]
@@ -56,7 +56,7 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
                      .ExecuteAsync();
 ```
 
-Instalacja obejmuje programy tokenu dostępu dla pierwszego interfejsu API sieci web. Następnie Jeśli potrzebujesz dostępu do drugiego interfejsu API sieci web dyskretnie pobieranie tokenu z pamięci podręcznej tokenu:
+Spowoduje to uzyskanie tokenu dostępu dla pierwszego internetowego interfejsu API. Następnie, gdy musisz uzyskać dostęp do drugiego internetowego interfejsu API, możesz w trybie dyskretnym uzyskać token z pamięci podręcznej tokenów:
 
 ```csharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();

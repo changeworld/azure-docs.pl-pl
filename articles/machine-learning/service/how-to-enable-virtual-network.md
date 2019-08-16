@@ -1,7 +1,7 @@
 ---
-title: Uruchamianie eksperymentów i wnioskowania w sieci wirtualnej
+title: Bezpieczne eksperymenty i wnioskowanie w sieci wirtualnej
 titleSuffix: Azure Machine Learning service
-description: Uruchamiaj eksperymenty uczenia maszynowego i zabezpieczanie wnioskowania w ramach sieci wirtualnej platformy Azure. Dowiedz się, jak tworzyć cele obliczeniowe dla szkolenia modeli oraz jak uruchamiać wnioski w ramach sieci wirtualnej. Dowiedz się więcej o wymaganiach dotyczących zabezpieczonych sieci wirtualnych, takich jak wymagania dotyczące portów przychodzących i wychodzących.
+description: Dowiedz się, jak zabezpieczyć zadania eksperymentów/szkoleń oraz zadania wnioskowania/oceniania w Azure Machine Learning w ramach Virtual Network platformy Azure.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,29 +10,30 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 08/05/2019
-ms.openlocfilehash: bd70957671c11137465225aa3bbb046b12a2c650
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 1b5e3777109b13baa7d774a524664551798ba4ca
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966899"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558011"
 ---
-# <a name="run-experiments-and-inference-securely-within-an-azure-virtual-network"></a>Bezpieczne uruchamianie eksperymentów i wnioskowania w ramach sieci wirtualnej platformy Azure
+# <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Zabezpieczanie zadań eksperymentowania i wnioskowania usługi Azure ML w ramach Virtual Network platformy Azure
 
-W tym artykule dowiesz się, jak uruchamiać eksperymenty, wnioskowanie lub ocenianie modeli w ramach sieci wirtualnej. Sieć wirtualna działa jako granica zabezpieczeń, izolowanie zasobów platformy Azure od publicznego Internetu. Możesz również dołączyć do sieci wirtualnej platformy Azure do sieci lokalnej. Dzięki dołączeniu sieci można bezpiecznie uczenie modeli i uzyskać dostęp do wdrożonych modeli w celu wnioskowania. Wnioskowanie lub ocenianie modelu to faza, w której wdrożony model jest używany do prognozowania, najczęściej na danych produkcyjnych.
+W tym artykule dowiesz się, jak zabezpieczyć zadania eksperymentowania/szkolenia oraz zadania wnioskowania/oceniania w Azure Machine Learning w ramach Virtual Network platformy Azure. 
 
-Usługa Azure Machine Learning opiera się na innych usługach platformy Azure dla zasobów obliczeniowych. Zasoby obliczeniowe lub obiekty docelowe obliczeń są używane do uczenia i wdrażania modeli. Obiekty docelowe można tworzyć w ramach sieci wirtualnej. Na przykład można użyć programu Microsoft Data Science Virtual Machine do uczenia modelu, a następnie wdrożenia modelu w usłudze Azure Kubernetes Service (AKS). Aby uzyskać więcej informacji na temat sieci wirtualnych, zobacz [Omówienie usługi Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
+**Sieć wirtualna** działa jako granica zabezpieczeń, izolowanie zasobów platformy Azure od publicznego Internetu. Możesz również dołączyć do sieci wirtualnej platformy Azure do sieci lokalnej. Dzięki dołączeniu sieci można bezpiecznie uczenie modeli i uzyskać dostęp do wdrożonych modeli w celu wnioskowania.
 
-Ten artykuł zawiera szczegółowe informacje na temat *zaawansowanych ustawień zabezpieczeń*, informacji, które nie są niezbędne dla podstawowych lub eksperymentalnych przypadków użycia. Niektóre sekcje tego artykułu zawierają informacje o konfiguracji dla różnych scenariuszy. Nie musisz wykonywać instrukcji w kolejności ani w całości.
+Usługa Azure Machine Learning opiera się na innych usługach platformy Azure dla zasobów obliczeniowych. Zasoby obliczeniowe lub [obiekty docelowe obliczeń](concept-compute-target.md)są używane do uczenia i wdrażania modeli. Obiekty docelowe można tworzyć w ramach sieci wirtualnej. Na przykład można użyć programu Microsoft Data Science Virtual Machine do uczenia modelu, a następnie wdrożenia modelu w usłudze Azure Kubernetes Service (AKS). Aby uzyskać więcej informacji na temat sieci wirtualnych, zobacz [Omówienie usługi Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
+
+Ten artykuł zawiera również szczegółowe informacje dotyczące *zaawansowanych ustawień zabezpieczeń*, informacji, które nie są niezbędne dla podstawowych lub eksperymentalnych przypadków użycia. Niektóre sekcje tego artykułu zawierają informacje o konfiguracji dla różnych scenariuszy. Nie musisz wykonywać instrukcji w kolejności ani w całości.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Utwórz [obszar roboczy](how-to-manage-workspace.md) usługi Azure Machine Learning, jeśli jeszcze go nie masz. W tym artykule przyjęto założenie, że znasz zarówno usługę Azure Virtual Network, jak i sieci IP. W tym artykule przyjęto również założenie, że utworzono sieć wirtualną i podsieć, która ma być używana z zasobami obliczeniowymi. Jeśli nie znasz usługi Azure Virtual Network, możesz uzyskać informacje na jej temat w następujących artykułach:
++ [Obszar roboczy](how-to-manage-workspace.md)usługi Azure Machine Learning. 
 
-* [Adresowanie IP](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)
-* [Grupy zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/security-overview)
-* [Szybki start: Tworzenie sieci wirtualnej](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
-* [Filtrowanie ruchu sieciowego](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
++ Ogólna wiedza o działaniu [usługi Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) i [sieci IP](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm). 
+
++ Wstępnie istniejąca sieć wirtualna i podsieć do użycia z zasobami obliczeniowymi. 
 
 ## <a name="use-a-storage-account-for-your-workspace"></a>Korzystanie z konta magazynu dla obszaru roboczego
 
@@ -232,6 +233,9 @@ Po zakończeniu procesu tworzenia nauczysz model przy użyciu klastra w eksperym
 
 ## <a name="use-a-virtual-machine-or-hdinsight-cluster"></a>Korzystanie z maszyny wirtualnej lub klastra usługi HDInsight
 
+> [!IMPORTANT]
+> Usługa Azure Machine Learning obsługuje tylko maszyny wirtualne z systemem Ubuntu.
+
 Aby użyć maszyny wirtualnej lub klastra usługi Azure HDInsight w sieci wirtualnej z obszarem roboczym, wykonaj następujące czynności:
 
 1. Utwórz maszynę wirtualną lub klaster usługi HDInsight przy użyciu Azure Portal lub interfejsu wiersza polecenia platformy Azure i umieść klaster w sieci wirtualnej platformy Azure. Aby uzyskać więcej informacji zobacz następujące artykuły:
@@ -263,9 +267,6 @@ Aby użyć maszyny wirtualnej lub klastra usługi Azure HDInsight w sieci wirtua
 
 1. Dołącz maszynę wirtualną lub klaster HDInsight do obszaru roboczego usługi Azure Machine Learning. Aby uzyskać więcej informacji, zobacz [Konfigurowanie celów obliczeniowych na potrzeby szkolenia modeli](how-to-set-up-training-targets.md).
 
-> [!IMPORTANT]
-> Usługa Azure Machine Learning obsługuje tylko maszyny wirtualne z systemem Ubuntu.
-
 ## <a name="use-azure-kubernetes-service-aks"></a>Korzystanie z usługi Azure Kubernetes Service (AKS)
 
 Aby dodać AKS w sieci wirtualnej do obszaru roboczego, wykonaj następujące czynności:
@@ -273,9 +274,7 @@ Aby dodać AKS w sieci wirtualnej do obszaru roboczego, wykonaj następujące cz
 > [!IMPORTANT]
 > Przed rozpoczęciem poniższej procedury Sprawdź wymagania wstępne i zaplanuj adresowanie IP klastra. Aby uzyskać więcej informacji, zobacz [Konfigurowanie zaawansowanej sieci w usłudze Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/configure-advanced-networking).
 >
-> Zachowaj domyślne reguły ruchu wychodzącego dla sieciowej grupy zabezpieczeń. Aby uzyskać więcej informacji, zobacz domyślne reguły zabezpieczeń w [grupach zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules).
->
-> Wystąpienie AKS i Sieć wirtualna platformy Azure powinny znajdować się w tym samym regionie.
+> Wystąpienie AKS i Sieć wirtualna platformy Azure muszą znajdować się w tym samym regionie.
 
 1. W [Azure Portal](https://portal.azure.com)upewnij się, że sieciowej grupy zabezpieczeń kontrolujący sieć wirtualną ma regułę ruchu przychodzącego, która jest włączona dla usługi Azure Machine Learning przy użyciu __AzureMachineLearning__ jako **źródła**.
 
@@ -304,13 +303,12 @@ Aby dodać AKS w sieci wirtualnej do obszaru roboczego, wykonaj następujące cz
    ![Usługa Azure Machine Learning: środowisko obliczeniowe usługi Machine Learning ustawień sieci wirtualnej](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
 
 1. Upewnij się, że grupa sieciowej grupy zabezpieczeń kontrolująca sieć wirtualną ma włączoną regułę zabezpieczeń dla punktu końcowego oceniania, tak aby można ją było wywołać spoza sieci wirtualnej.
+   > [!IMPORTANT]
+   > Zachowaj domyślne reguły ruchu wychodzącego dla sieciowej grupy zabezpieczeń. Aby uzyskać więcej informacji, zobacz domyślne reguły zabezpieczeń w [grupach zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules).
+  
+   ![Reguła zabezpieczeń dla ruchu przychodzącego](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)
 
-    ![Reguła zabezpieczeń dla ruchu przychodzącego](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)
-
-    > [!TIP]
-    > Jeśli masz już klaster AKS w sieci wirtualnej, możesz dołączyć go do obszaru roboczego. Aby uzyskać więcej informacji, zobacz [How to Deploy to AKS](how-to-deploy-to-aks.md).
-
-Możesz również użyć zestawu SDK Azure Machine Learning, aby dodać AKS w sieci wirtualnej. Poniższy kod tworzy nowe wystąpienie AKS w `default` podsieci sieci wirtualnej o nazwie: `mynetwork`
+Możesz również użyć zestawu SDK Azure Machine Learning, aby dodać usługę Azure Kubernetes w sieci wirtualnej. Jeśli masz już klaster AKS w sieci wirtualnej, dołącz go do obszaru roboczego, zgodnie z opisem w artykule [wdrażanie w AKS](how-to-deploy-to-aks.md). Poniższy kod tworzy nowe wystąpienie AKS w `default` podsieci sieci wirtualnej o nazwie: `mynetwork`
 
 ```python
 from azureml.core.compute import ComputeTarget, AksCompute

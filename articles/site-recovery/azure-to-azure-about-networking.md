@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: 844563e03529e472624b35d2b545c3e432e4ea17
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: c642640d590e1f568fb6f6c5072decd75575ab2d
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876299"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543639"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Informacje o sieci na platformie Azure do replikacji platformy Azure
 
@@ -93,22 +93,27 @@ Zakresy adresów IP Site Recovery są następujące:
    Zachodnie stany USA 2 | 52.183.45.166 | 13.66.228.204
    Zachodnie Zjednoczone Królestwo | 51.141.3.203 | 51.141.14.113
    Południowe Zjednoczone Królestwo | 51.140.43.158 | 51.140.189.52
-   Południowe Zjednoczone Królestwo 2 | 13.87.37.4| 13.87.34.139
-   Północne Zjednoczone Królestwo | 51.142.209.167 | 13.87.102.68
+   Zjednoczone Królestwo (południe) 2 | 13.87.37.4| 13.87.34.139
+   Zjednoczone Królestwo (północ) | 51.142.209.167 | 13.87.102.68
    Korea Środkowa | 52.231.28.253 | 52.231.32.85
    Korea Południowa | 52.231.198.185 | 52.231.200.144
    Francja Środkowa | 52.143.138.106 | 52.143.136.55
    Francja Południowa | 52.136.139.227 |52.136.136.62
    Australia Środkowa| 20.36.34.70 | 20.36.46.142
    Australia Środkowa 2| 20.36.69.62 | 20.36.74.130
-   Republika Południowej Afryki (zachód) | 102.133.72.51 | 102.133.26.128
-   Republika Południowej Afryki (północ) | 102.133.160.44 | 102.133.154.128
+   Zachodnia Republika Południowej Afryki | 102.133.72.51 | 102.133.26.128
+   Północna Republika Południowej Afryki | 102.133.160.44 | 102.133.154.128
    Administracja USA — Wirginia | 52.227.178.114 | 23.97.0.197
    US Gov Iowa | 13.72.184.23 | 23.97.16.186
    Administracja USA — Arizona | 52.244.205.45 | 52.244.48.85
    Administracja USA — Teksas | 52.238.119.218 | 52.238.116.60
    US DoD — wschodnie stany | 52.181.164.103 | 52.181.162.129
    US DoD — środkowe stany | 52.182.95.237 | 52.182.90.133
+   Chiny Północne | 40.125.202.254 | 42.159.4.151
+   Chiny Północne 2 | 40.73.35.193 | 40.73.33.230
+   Chiny Wschodnie | 42.159.205.45 | 42.159.132.40
+   Chiny Wschodnie 2 | 40.73.118.52| 40.73.100.125
+  
 ## <a name="example-nsg-configuration"></a>Przykładowa konfiguracja sieciowej grupy zabezpieczeń
 
 Ten przykład pokazuje, jak skonfigurować reguły sieciowej grupy zabezpieczeń dla maszyny wirtualnej do replikacji.

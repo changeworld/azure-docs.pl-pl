@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: d4b7a214af23d69f1217d84e9401de230cd358b0
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 903fd2309949036b62fb4975596fb645c021d06d
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67877365"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535038"
 ---
 # <a name="application-insights-log-based-metrics"></a>Application Insights metryki oparte na dzienniku
 
@@ -93,7 +93,7 @@ availabilityResults
 Metryki przeglądarki są zbierane przez zestaw Application Insights JavaScript SDK z rzeczywistych przeglądarek użytkowników końcowych. Zapewniają doskonałe informacje o doświadczeniu użytkowników w Twojej aplikacji sieci Web. Metryki przeglądarki zazwyczaj nie są próbkowane, co oznacza, że zapewniają większą precyzję numerów użycia w porównaniu z metrykami po stronie serwera, które mogą być pochylone przez próbkowanie.
 
 > [!NOTE]
-> Aby zbierać metryki przeglądarki, aplikacja musi być Instrumentacja przy użyciu [fragmentu kodu SDK Application Insights JavaScript](../../azure-monitor/app/javascript.md#add-the-sdk-script-to-your-app-or-web-pages).
+> Aby zbierać metryki przeglądarki, aplikacja musi być Instrumentacja przy użyciu [zestawu SDK języka JavaScript Application Insights](../../azure-monitor/app/javascript.md).
 
 ### <a name="browser-page-load-time-browsertimingstotalduration"></a>Czas ładowania strony w przeglądarce (browserTimings/totalDuration)
 
@@ -327,7 +327,7 @@ performanceCounters
 
 |Jednostka miary|Obsługiwane agregacje|Obsługiwane wymiary|
 |---|---|---|
-|Bajty na sekundę|Średnia, minimum, maksimum|Wystąpienie roli w chmurze
+|Bajtów na sekundę|Średnia, minimum, maksimum|Wystąpienie roli w chmurze
 
 ```Kusto
 performanceCounters

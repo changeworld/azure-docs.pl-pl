@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/20/2019
-ms.author: rkarlin
-ms.openlocfilehash: 8216aee1c27fd5bcb722648aa6380044e1431452
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.date: 08/15/2019
+ms.author: v-mohabe
+ms.openlocfilehash: df4f51f97798048b28c0193dbc61e07fc55c9adc
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662473"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535075"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-retired"></a>Dostosowywanie konfiguracji zabezpieczeń systemu operacyjnego w Azure Security Center (wycofane)
 
@@ -317,4 +317,4 @@ W tym artykule opisano sposób dostosowywania ocen konfiguracji zabezpieczeń sy
 
 - [Security Center wspólnych identyfikatorów konfiguracji i reguł linii bazowej](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335).
 - Security Center używa wyliczenia typowej konfiguracji (CCE) do przypisywania unikatowych identyfikatorów do reguł konfiguracji. Aby uzyskać więcej informacji, zobacz [CCE](https://nvd.nist.gov/config/cce/index).
-- Aby rozwiązać luki w zabezpieczeniach, gdy konfiguracja systemu operacyjnego nie jest zgodna z zalecanymi regułami konfiguracji zabezpieczeń, zobacz [korygowanie konfiguracji zabezpieczeń](security-center-remediate-os-vulnerabilities.md).
+- Aby rozwiązać luki w zabezpieczeniach, gdy konfiguracja systemu operacyjnego nie jest zgodna z zalecanymi regułami konfiguracji zabezpieczeń, zobacz [korygowanie konfiguracji zabezpieczeń](security-center-virtual-machine-protection.md).

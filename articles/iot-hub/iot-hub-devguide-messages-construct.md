@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: asrastog
-ms.openlocfilehash: dd45c68fb7d7a7226d18dd1afc508b3dbf7b770b
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 9a62001f168e0577ea07ad030923a4d0398e50af
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950452"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534962"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>Tworzenie i odczytywanie komunikatów usługi IoT Hub
 
@@ -49,14 +49,15 @@ Aby uzyskać więcej informacji na temat kodowania i dekodowania komunikatów wy
 
 ## <a name="system-properties-of-d2c-iot-hub-messages"></a>Właściwości systemowe komunikatów **D2C** IoT Hub
 
-| Właściwość | Opis  |Jesteś w trakcie, aby użytkownik miał tabelę?|Słowo kluczowe dla kwerendy routingu|
+| Właściwość | Opis  |Jesteś w trakcie, aby użytkownik miał tabelę?|Słowo kluczowe dla </br>zapytanie routingu|
 | --- | --- | --- | --- |
-| Identyfikator komunikatu |Identyfikator użytkownika-settable dla wiadomości używany na potrzeby wzorców odpowiedzi na żądanie. Format: Ciąg uwzględniający wielkość liter (do 128 znaków) ASCII 7-bitowe znaki alfanumeryczne + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`.  | Tak | MessageId |
-| iothub — enqueuedtime |Data i godzina odebrania komunikatu [z urządzenia do chmury](iot-hub-devguide-d2c-guidance.md) przez IoT Hub. | Nie | EnqueuedTime |
-| Identyfikator użytkownika |Identyfikator używany do określania źródła komunikatów. Komunikaty generowane przez IoT Hub są ustawiane na `{iot hub name}`. | Tak | UserId |
-| iothub-Connection-ID urządzenia |Identyfikator ustawiony przez IoT Hub w komunikatach przesyłanych z urządzenia do chmury. Zawiera identyfikator **deviceId** urządzenia, które wysłało wiadomość. | Nie | DeviceId |
-| iothub-Connection-auth-Generation-ID |Identyfikator ustawiony przez IoT Hub w komunikatach przesyłanych z urządzenia do chmury. Zawiera **generationId** (zgodnie z właściwościami [tożsamości urządzenia](iot-hub-devguide-identity-registry.md#device-identity-properties)) urządzenia, które wysłało komunikat. | Nie |DeviceGenerationId |
-| iothub-Connection-auth-Metoda |Metoda uwierzytelniania ustawiona przez IoT Hub w komunikatach z urządzenia do chmury. Ta właściwość zawiera informacje na temat metody uwierzytelniania używanej do uwierzytelniania urządzenia wysyłającego wiadomość.| Nie | AuthMethod |
+| Identyfikator komunikatu |Identyfikator użytkownika-settable dla wiadomości używany na potrzeby wzorców odpowiedzi na żądanie. Format: Ciąg uwzględniający wielkość liter (do 128 znaków) ASCII 7-bitowe znaki alfanumeryczne + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`.  | Tak | messageId |
+| iothub — enqueuedtime |Data i godzina odebrania komunikatu [z urządzenia do chmury](iot-hub-devguide-d2c-guidance.md) przez IoT Hub. | Nie | enqueuedTime |
+| Identyfikator użytkownika |Identyfikator używany do określania źródła komunikatów. Komunikaty generowane przez IoT Hub są ustawiane na `{iot hub name}`. | Tak | userId |
+| iothub-Connection-ID urządzenia |Identyfikator ustawiony przez IoT Hub w komunikatach przesyłanych z urządzenia do chmury. Zawiera identyfikator **deviceId** urządzenia, które wysłało wiadomość. | Nie | connectionDeviceId |
+| iothub-Connection-module-ID |Identyfikator ustawiony przez IoT Hub w komunikatach przesyłanych z urządzenia do chmury. Zawiera **moduleId** urządzenia, które wysłało wiadomość. | Nie | connectionModuleId |
+| iothub-Connection-auth-Generation-ID |Identyfikator ustawiony przez IoT Hub w komunikatach przesyłanych z urządzenia do chmury. Zawiera **connectionDeviceGenerationId** (zgodnie z właściwościami [tożsamości urządzenia](iot-hub-devguide-identity-registry.md#device-identity-properties)) urządzenia, które wysłało komunikat. | Nie |connectionDeviceGenerationId |
+| iothub-Connection-auth-Metoda |Metoda uwierzytelniania ustawiona przez IoT Hub w komunikatach z urządzenia do chmury. Ta właściwość zawiera informacje na temat metody uwierzytelniania używanej do uwierzytelniania urządzenia wysyłającego wiadomość.| Nie | connectionAuthMethod |
 
 ## <a name="system-properties-of-c2d-iot-hub-messages"></a>Właściwości systemowe komunikatów **C2D** IoT Hub
 

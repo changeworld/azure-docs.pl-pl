@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: ae809dd4841d6df8caabebfaded263b52f386834
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2359befc05bff867a8f8b17943ed67d906ff4971
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845031"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534343"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Konfigurowanie niestandardowej nazwy domeny dla konta usługi Azure Storage
 
@@ -27,7 +27,7 @@ Można skonfigurować domenę niestandardową na potrzeby uzyskiwania dostępu d
 > Konta magazynu obsługują obecnie tylko jedną niestandardową nazwę domeny na konto. Nie można zmapować niestandardowej nazwy domeny do punktów końcowych usługi sieci Web i obiektów BLOB.
 > 
 > [!NOTE]
-> Mapowanie działa tylko w przypadku poddomen (np. www\.contoso.com). Jeśli chcesz, aby punkt końcowy sieci Web był dostępny w domenie głównej (np. contoso.com), musisz [używać Azure CDN z domenami](storage-https-custom-domain-cdn.md) niestandardowymi
+> Mapowanie działa tylko w przypadku poddomen (np. www\.contoso.com). Jeśli chcesz, aby punkt końcowy sieci Web był dostępny w domenie głównej (np. contoso.com), musisz [dodać domenę niestandardową do punktu końcowego Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain).
 
 W poniższej tabeli przedstawiono kilka przykładowych adresów URL dla danych obiektów blob, które znajdują się na koncie magazynu o nazwie *mojekontomagazynu*. Niestandardowa poddomena zarejestrowana dla konta magazynu to *contoso.com\.www*:
 

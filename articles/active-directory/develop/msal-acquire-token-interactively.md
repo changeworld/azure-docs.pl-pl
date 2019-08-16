@@ -3,7 +3,7 @@ title: Zarządzanie tokenami (Biblioteka uwierzytelniania firmy Microsoft) | Azu
 description: Dowiedz się więcej o uzyskiwaniu i buforowaniu tokenów przy użyciu biblioteki uwierzytelniania firmy Microsoft (MSAL).
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/24/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6148f6f9d449dc5aa55da2f041119a8b706491b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: d4f7914744073f82d8a35d3679a1c65459e10b2f
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835081"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532891"
 ---
 # <a name="acquiring-and-caching-tokens-using-msal"></a>Pobieranie i buforowanie tokenów przy użyciu MSAL
 [Tokeny dostępu](access-tokens.md) umożliwiają klientom bezpieczne wywoływanie interfejsów API sieci Web chronionych przez platformę Azure. Istnieje wiele sposobów uzyskania tokenu przy użyciu biblioteki uwierzytelniania firmy Microsoft (MSAL). Niektóre sposoby wymagają interakcji z użytkownikami za pomocą przeglądarki sieci Web. Niektóre nie wymagają interakcji z użytkownikiem. Ogólnie rzecz biorąc, sposób uzyskania tokenu zależy od tego, czy aplikacja to publiczna aplikacja kliencka (aplikacja klasyczna lub mobilna), czy poufna aplikacja kliencka (aplikacja sieci Web, internetowy interfejs API lub aplikacja demona, taka jak usługa systemu Windows).

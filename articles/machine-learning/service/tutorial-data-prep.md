@@ -11,12 +11,12 @@ ms.author: sihhu
 ms.reviewer: trbye
 ms.date: 07/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 241c84212132ee90e71291758e094cb4a115f2e2
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: cc243fea67c479879f25e4f39e3cd1c5e0237869
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018077"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534350"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Samouczek: Przygotowywanie danych do modelowania regresji
 
@@ -35,40 +35,15 @@ W tym samouczku zostaną wykonane następujące czynności:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przejdź do sekcji [Konfigurowanie środowiska projektowego](#start), aby zapoznać się z instrukcjami dotyczącymi notesu, lub skorzystaj z poniższych instrukcji, aby pobrać notes i uruchomić go w usłudze Azure Notebooks lub na swoim serwerze notesów. Do uruchomienia notesu potrzebne są następujące elementy:
+* Wykonaj kroki z artykułu [Samouczek: Rozpocznij tworzenie pierwszego eksperymentu](tutorial-1st-experiment-sdk-setup.md) w celu:
+    * Tworzenie obszaru roboczego
+    * Tworzenie serwera notesu w chmurze
+    * Uruchamianie pulpitu nawigacyjnego notesu Jupyter
 
-* Serwer notesów Python 3.6 z zainstalowanym następującym oprogramowaniem:
-    * `azureml-dataprep` Pakiet z zestawu SDK Azure Machine Learning
-* Notes samouczka
+* Po uruchomieniu pulpitu nawigacyjnego notesu Jupyter Otwórz Notes **/Regression-part1-Data-Prep. ipynb** .
 
-* Korzystanie z [serwera notesu w chmurze w obszarze roboczym](#azure) 
-* Korzystanie z [własnego serwera notesów](#server)
+Ten samouczek jest również dostępny w witrynie [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , jeśli chcesz używać go w [środowisku lokalnym](how-to-configure-environment.md#local).  Upewnij się, że `azureml-dataprep` pakiet został zainstalowany z zestawu Azure Machine Learning SDK.
 
-### <a name="azure"></a>Korzystanie z serwera notesu w chmurze w obszarze roboczym
-
-Rozpoczęcie pracy z własnym serwerem notesu opartym na chmurze jest proste. Zestaw Azure Machine Learning SDK dla języka Python jest już zainstalowany i skonfigurowany dla Ciebie po utworzeniu tego zasobu w chmurze.
-
-[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
-
-* Po uruchomieniu witryny sieci Web notesu Uruchom **samouczki/Regression-part1-Data-Prep. ipynb** .
-
-### <a name="server"></a>Korzystanie z własnego serwera notesów Jupyter Notebook
-
-Wykonaj te kroki, aby utworzyć lokalny serwer notesów Jupyter Notebook na komputerze.  Po wykonaniu kroków uruchom notes **tutorials/regression-part1-data-prep.ipynb**.
-
-1. Wykonaj kroki instalacji w [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
-1. `azureml-dataprep` Pakiet jest automatycznie instalowany podczas instalowania zestawu SDK.
-1. Sklonuj [repozytorium GitHub](https://aka.ms/aml-notebooks).
-
-    ```
-    git clone https://github.com/Azure/MachineLearningNotebooks.git
-    ```
-
-1. Uruchom serwer notesów z poziomu sklonowanego katalogu.
-
-    ```shell
-    jupyter notebook
-    ```
 
 ## <a name="start"></a>Konfigurowanie środowiska projektowego
 

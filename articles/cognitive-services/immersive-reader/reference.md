@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 1a616bce8c161825853b1966769d9505595d95de
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 1d9fc20055fe3adb571b5a77330cc6537998cb5f
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688314"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534474"
 ---
 # <a name="immersive-reader-sdk-reference"></a>Dokumentacja zestawu SDK czytnika immersyjny
 
@@ -35,12 +35,12 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 #### <a name="parameters"></a>Parametry
 
-| Name (Nazwa) | Typ | Opis |
+| Name | Typ | Opis |
 | ---- | ---- |------------ |
 | `token` | ciąg | Token uwierzytelniania usługi Azure AD. Zobacz [temat uwierzytelnianie w usłudze Azure AD](./azure-active-directory-authentication.md). |
 | `subdomain` | ciąg | Niestandardowa poddomena zasobu czytnika immersyjny na platformie Azure. Zobacz [temat uwierzytelnianie w usłudze Azure AD](./azure-active-directory-authentication.md). |
 | `content` | [Zawartość](#content) | Obiekt zawierający zawartość, która ma zostać pokazana w czytniku immersyjny. |
-| `options` | [Opcje](#options) | Opcje konfigurowania niektórych zachowań czytnika immersyjny. Opcjonalny. |
+| `options` | [Opcje](#options) | Opcje konfigurowania niektórych zachowań czytnika immersyjny. Opcjonalna. |
 
 #### <a name="returns"></a>Zwraca
 
@@ -73,6 +73,7 @@ Zawiera zawartość, która ma zostać pokazana w czytniku immersyjny.
 | --------- | ----------- |
 | tekst/zwykły | Zwykły tekst. |
 | Application/MathML + XML | Język matematycznych znaczników (MathML). [Dowiedz się więcej](https://developer.mozilla.org/en-US/docs/Web/MathML).
+| application/vnd. openxmlformats-officedocument. WordprocessingML. Document | Dokument formatu programu Microsoft Word. docx.
 
 ### <a name="options"></a>Opcje
 
@@ -104,7 +105,8 @@ Zawiera informacje o błędzie.
 | ---- | ----------- |
 | BadArgument | Podany argument jest nieprawidłowy. Aby `message` uzyskać szczegółowe informacje, zobacz. |
 | limit czasu | Nie można załadować czytnika immersyjny w określonym limicie czasu. |
-| TokenExpired| Podany token wygasł. |
+| TokenExpired | Podany token wygasł. |
+| Ograniczone | Przekroczono limit liczby wywołań. |
 
 ## <a name="launching-the-immersive-reader"></a>Uruchamianie czytnika immersyjny
 

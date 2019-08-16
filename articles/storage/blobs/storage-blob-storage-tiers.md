@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 8f180308133ffba12cc3bffb19130aa7a129da9f
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 48c6d6ed60045d906fcb711bd07ab492b6bbf488
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952896"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543685"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: warstwy dostępu gorąca, chłodna i archiwalna
 
@@ -80,6 +80,7 @@ Przykładowe scenariusze użycia dla warstwy dostępu archiwalnego obejmują:
 ### <a name="blob-rehydration"></a>Ponowne wypełnianie obiektów blob
 
 [!INCLUDE [storage-blob-rehydrate-include](../../../includes/storage-blob-rehydrate-include.md)]
+Aby dowiedzieć się więcej, zobacz informacje dotyczące [danych obiektów BLOB w warstwie archiwum](storage-blob-rehydration.md) .  
 
 ## <a name="account-level-tiering"></a>Obsługa warstw na poziomie konta
 
@@ -164,11 +165,13 @@ W tej sekcji przedstawiono następujące scenariusze obejmujące użycie witryny
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-1. Aby przejść do obiektu BLOB na koncie magazynu, wybierz pozycję **wszystkie zasoby**, wybierz konto magazynu, wybierz kontener, a następnie wybierz obiekt BLOB.
+1. Aby przejść do obiektu blob na koncie magazynu, wybierz pozycję Wszystkie zasoby, wybierz konto magazynu, wybierz kontener, a następnie wybierz obiekt blob.
 
-1. W bloku **właściwości obiektu BLOB** wybierz menu rozwijane **Warstwa dostępu** , aby wybrać warstwędostępu gorąca, **chłodna**lub **archiwalna** .
+1. W bloku **właściwości obiektu BLOB** wybierz przycisk **Zmień warstwę** , aby otworzyć blok warstwa.
 
-1. Kliknij pozycję **Zapisz** w górnej części bloku.
+1. Wybierz warstwędostępu gorąca, **chłodna**lub **archiwalna** . Jeśli obiekt BLOB znajduje się obecnie w archiwum i chcesz go umieścić w warstwie online, możesz również wybrać priorytet rehydratacji dla warstwy **standardowa** lub **wysoka**.
+
+1. Kliknij przycisk **OK** w dolnej części bloku.
 
 ## <a name="pricing-and-billing"></a>Cennik i rozliczenia
 
@@ -245,6 +248,8 @@ Magazyn danych oraz inne limity są ustawiane na poziomie konta, a nie na warstw
 [Sprawdzanie dostępności warstw Gorąca, Chłodna i Archiwum według regionu](https://azure.microsoft.com/regions/#services)
 
 [Zarządzanie cyklem życia usługi Azure Blob Storage](storage-lifecycle-management-concepts.md)
+
+[Dowiedz się więcej na temat ponownego wypełniania danych obiektów BLOB w warstwie Archiwum](storage-blob-rehydration.md)
 
 [Ocena użycia bieżących kont magazynu przez włączenie metryk usługi Azure Storage](../common/storage-enable-and-view-metrics.md)
 

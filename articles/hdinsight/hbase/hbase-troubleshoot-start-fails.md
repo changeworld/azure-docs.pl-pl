@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 08/06/2019
-ms.openlocfilehash: 8368ebfca4cdd72c5c455a04e29b6c0cb44938ea
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.date: 08/14/2019
+ms.openlocfilehash: 6d729d9303326dd43f3bc5ae943d6ab788c818f3
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935408"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534440"
 ---
 # <a name="apache-hbase-master-hmaster-fails-to-start-in-azure-hdinsight"></a>Nie można uruchomić oprogramowania Apache HBase Master (serwera hmaster) w usłudze Azure HDInsight
 
@@ -25,13 +25,17 @@ Podczas procesu uruchamiania zidentyfikowano nieoczekiwane pliki.
 
 ### <a name="cause"></a>Przyczyna
 
-W trakcie procesu uruchamiania serwera hmaster wykonuje wiele kroków inicjowania, w tym przeniesienie danych z folderu Scratch (tmp) do folderu danych. Serwera hmaster również przegląda folder WALs (zapis z wyprzedzeniem), aby sprawdzić, czy istnieją wolne serwery regionów. We wszystkich tych sytuacjach wykonuje podstawowe `list` polecenie dla tych folderów. Jeśli w dowolnym momencie widzi nieoczekiwany plik w dowolnym z tych folderów, zgłosi wyjątek, dlatego nie zostanie uruchomiony.
+W trakcie procesu uruchamiania serwera hmaster wykonuje wiele kroków inicjowania, w tym przeniesienie danych z folderu Scratch (tmp) do folderu danych. Serwera hmaster również przegląda folder dzienników zapisu (WAL), aby sprawdzić, czy istnieją nieodpowiadające serwery regionów.
+
+Serwera hmaster wykonuje podstawowe polecenie list w folderach WAL. Jeśli w dowolnym momencie serwera hmaster widzi nieoczekiwany plik w żadnym z tych folderów, zgłosi wyjątek i nie zostanie uruchomiony.
 
 ### <a name="resolution"></a>Rozwiązanie
 
-W takiej sytuacji Sprawdź stos wywołań, aby zobaczyć, który folder może powodować problem (na przykład WALs folder lub tmp folder). Następnie za pomocą programu Cloud Explorer lub systemu HDFS, aby zlokalizować plik problemu. Plik problemu to zwykle `*-renamePending.json` plik (plik dziennika używany do implementowania operacji niepodzielnej zmiany nazwy w sterowniku WASB). Ze względu na błędy w tej implementacji takie pliki mogą pozostać w przypadku awarii procesu. Wymuś usunięcie tego pliku za pośrednictwem programu Cloud Explorer. Ponadto w tej lokalizacji może istnieć tymczasowy plik o charakterze $. Nie można zobaczyć pliku za pośrednictwem Eksploratora chmury i tylko za `ls` pośrednictwem polecenia HDFS. Aby usunąć ten plik, `hdfs dfs -rm //\$\$\$.\$\$\$` można użyć polecenia HDFS.
+Sprawdź stos wywołań i spróbuj ustalić, który folder może powodować problem (na przykład może być folderem WAL lub folderem. tmp). Następnie w Eksploratorze chmury lub przy użyciu poleceń systemu plików HDFS Spróbuj zlokalizować plik problemu. Zwykle jest `*-renamePending.json` to plik. `*-renamePending.json` (Plik jest plikiem dziennika używanym do implementowania operacji niepodzielnej zmiany nazwy w sterowniku WASB. Ze względu na błędy w tej implementacji te pliki mogą pozostać po awarii procesu i tak dalej.) Wymuś usunięcie tego pliku w programie Cloud Explorer lub przy użyciu systemu plików HDFS.
 
-Po usunięciu pliku problemu serwera hmaster powinien zostać uruchomiony od razu.
+Czasami może być również plik tymczasowy o nazwie podobnej `$$$.$$$` do tej lokalizacji. Aby wyświetlić ten plik, `ls` należy użyć systemu HDFS. plik nie jest widoczny w programie Cloud Explorer. Aby usunąć ten plik, użyj polecenia `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$`HDFS.
+
+Po uruchomieniu tych poleceń serwera hmaster powinny zacząć działać od razu.
 
 ---
 
@@ -39,7 +43,7 @@ Po usunięciu pliku problemu serwera hmaster powinien zostać uruchomiony od raz
 
 ### <a name="issue"></a>Problem
 
-W dzienniku serwera hmaster jest wyświetlany komunikat o błędzie podobny do "brak adresu serwera wymienionego w HBase: meta dla regionu XXX".
+Może zostać wyświetlony komunikat informujący o tym, `hbase: meta` że tabela nie jest w trybie online. Uruchomienie `hbck` programu może zgłosić `hbase: meta table replicaId 0 is not found on any region.` , że w dziennikach serwera hmaster może zostać wyświetlony komunikat: `No server address listed in hbase: meta for region hbase: backup <region name>`.  
 
 ### <a name="cause"></a>Przyczyna
 
@@ -47,20 +51,20 @@ Nie można zainicjować serwera hmaster po ponownym uruchomieniu HBase.
 
 ### <a name="resolution"></a>Rozwiązanie
 
-1. Wykonaj następujące polecenia w powłoce HBase (Zmień wartości rzeczywiste stosownie do potrzeb):
+1. W HBase Shell wprowadź następujące polecenia (Zmień wartości rzeczywiste stosownie do potrzeb):
 
-    ```
+    ```hbase
     scan 'hbase:meta'
-    delete 'hbase:meta','hbase:backup <region name>','<column name>' 
+    delete 'hbase:meta','hbase:backup <region name>','<column name>'
     ```
 
-1. Usuń wpis HBase: przestrzeń nazw, ponieważ ten sam błąd może być raportowany podczas skanowania HBase: tabela przestrzeni nazw.
+1. `hbase: namespace` Usuń wpis. Ten wpis może być tym samym błędem, który jest raportowany `hbase: namespace` podczas skanowania tabeli.
 
 1. Uruchom ponownie aktywne serwera hmaster z interfejsu użytkownika Ambari, aby wyświetlić stan HBase w stanie uruchomienia.
 
-1. Uruchom następujące polecenie w powłoce HBase, aby wyświetlić wszystkie tabele w trybie offline:
+1. W powłoce HBase, aby wyświetlić wszystkie tabele w trybie offline, uruchom następujące polecenie:
 
-    ```
+    ```hbase
     hbase hbck -ignorePreCheckPermission -fixAssignments
     ```
 
@@ -70,29 +74,29 @@ Nie można zainicjować serwera hmaster po ponownym uruchomieniu HBase.
 
 ### <a name="issue"></a>Problem
 
-Serwera hmaster limit czasu przy użyciu wyjątku krytycznego, takiego jak `java.io.IOException: Timedout 300000ms waiting for namespace table to be assigned`.
+Serwera hmaster limit czasu dla wyjątku krytycznego podobnego do `java.io.IOException: Timedout 300000ms waiting for namespace table to be assigned`:.
 
 ### <a name="cause"></a>Przyczyna
 
-Limit czasu jest znaną wadą z serwera hmaster. Ogólne zadania uruchamiania klastra mogą zająć dużo czasu. Serwera hmaster zamyka się, jeśli tabela przestrzeni nazw nie jest jeszcze przypisana. Długotrwałe zadania uruchamiania są wykonywane w przypadku, gdy istnieje duża ilość nieopróżnionych danych i przekroczenie limitu czasu wynoszącego pięć minut.
+Ten problem może wystąpić, jeśli masz wiele tabel i regionów, które nie zostały opróżnione po ponownym uruchomieniu usług serwera hmaster. Limit czasu jest znaną wadą z serwera hmaster. Ogólne zadania uruchamiania klastra mogą zająć dużo czasu. Serwera hmaster zamyka się, jeśli tabela przestrzeni nazw nie jest jeszcze przypisana. Długotrwałe zadania uruchamiania są wykonywane w przypadku, gdy istnieje duża ilość nieopróżnionych danych i przekroczenie limitu czasu wynoszącego pięć minut.
 
 ### <a name="resolution"></a>Rozwiązanie
 
-1. Dostęp do interfejsu użytkownika Ambari, przejdź do konfiguracji HBase->, w `hbase-site.xml` obszarze niestandardowe Dodaj następujące ustawienie:
+1. W interfejsie użytkownika Apache Ambari przejdź do pozycji **HBase** > **configs**. W pliku niestandardowym `hbase-site.xml` Dodaj następujące ustawienie:
 
     ```
     Key: hbase.master.namespace.init.timeout Value: 2400000  
     ```
 
-1. Uruchom ponownie wymagane usługi (głównie serwera hmaster i inne usługi HBase).
+1. Uruchom ponownie wymagane usługi (serwera hmaster, a także inne usługi HBase).
 
 ---
 
-## <a name="scenario-frequent-regionserver-restarts"></a>Scenariusz: Częste ponowne uruchomienia regionserver
+## <a name="scenario-frequent-region-server-restarts"></a>Scenariusz: Częste ponowne uruchamianie serwera regionów
 
 ### <a name="issue"></a>Problem
 
-Okresowe ponowne uruchamianie węzłów. Z dzienników regionserver można zobaczyć wpisy podobne do:
+Okresowe ponowne uruchamianie węzłów. W dziennikach serwera regionów mogą pojawić się wpisy podobne do:
 
 ```
 2017-05-09 17:45:07,683 WARN  [JvmPauseMonitor] util.JvmPauseMonitor: Detected pause in JVM or host machine (eg GC): pause of approximately 31000ms
@@ -102,15 +106,15 @@ Okresowe ponowne uruchamianie węzłów. Z dzienników regionserver można zobac
 
 ### <a name="cause"></a>Przyczyna
 
-Długi regionserver JVM GC. Wstrzymanie spowoduje, że regionserver nie odpowiada i nie będzie mógł wysyłać pulsu do serwera hmaster w ramach 40s limitu czasu sesji ZK. Serwera hmaster uważa, że regionserver jest martwa i spowoduje przerwanie regionserver i ponowne uruchomienie.
+Długotrwałe `regionserver` wstrzymywanie JVM GC. Wstrzymanie spowoduje `regionserver` niereagowanie i nie będzie możliwe wysłanie pulsu do serwera hmaster w ramach limitu czasu sesji ZK 40s. Serwera hmaster będą uważane `regionserver` za `regionserver` martwe i spowoduje przerwanie i ponowne uruchomienie.
 
 ### <a name="resolution"></a>Rozwiązanie
 
-Zmień limit czasu sesji dozorcy, a nie tylko ustawienia `zookeeper.session.timeout` HBase-site, ale również dozorcy zoo. cfg należy zmienić ustawienie. `maxSessionTimeout`
+Zmień limit `hbase-site` czasu sesji dozorcy, `zookeeper.session.timeout` ale również ustawienie dozorcy `zoo.cfg` `maxSessionTimeout` należy zmienić.
 
 1. Dostęp do interfejsu użytkownika Ambari, przejdź do **HBase-> configs-> ustawienia**, w sekcji Limity czasu, Zmień wartość limitu czasu sesji dozorcy.
 
-1. Dostęp do interfejsu użytkownika Ambari, przejdź do **dozorcy-> configs — > Custom** zoo. cfg, Dodaj/Zmień następujące ustawienie. Upewnij się, że wartość jest taka sama jak `zookeeper.session.timeout`HBase.
+1. Dostęp do interfejsu użytkownika Ambari, przejdź do **dozorcy-> configs-> Custom** `zoo.cfg`, Dodaj/Zmień następujące ustawienie. Upewnij się, że wartość jest taka sama jak `zookeeper.session.timeout`HBase.
 
     ```
     Key: maxSessionTimeout Value: 120000  

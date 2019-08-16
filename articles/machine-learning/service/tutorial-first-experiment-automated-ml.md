@@ -5,23 +5,23 @@ description: Dowiedz się, jak nauczyć i wdrożyć model klasyfikacji przy uży
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: tutorial
 ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
-ms.date: 07/23/2019
-ms.openlocfilehash: 7ef19db472b30d82f14a5dd650cb8f4cb1f3ed3a
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.date: 08/14/2019
+ms.openlocfilehash: e53cd92a9dfd8f823918fb38e14c2b73c2ce071f
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990074"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534382"
 ---
-# <a name="tutorial-use-automated-machine-learning-to-train-and-deploy-your-first-classification-model-preview"></a>Samouczek: Używanie automatycznej uczenia maszynowego do uczenia i wdrożenia pierwszego modelu klasyfikacji (wersja zapoznawcza)
+# <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Samouczek: Tworzenie pierwszego modelu klasyfikacji przy użyciu automatycznej uczenia maszynowego
 
-W tym samouczku dowiesz się, jak utworzyć pierwszy zautomatyzowany eksperyment uczenia maszynowego w Azure Portal. Ten przykład tworzy model klasyfikacji w celu przewidywania, czy klient będzie subskrybował termin depozytowy w banku.
+W tym samouczku dowiesz się, jak utworzyć pierwszy zautomatyzowany eksperyment uczenia maszynowego w Azure Portal (wersja zapoznawcza) bez konieczności pisania pojedynczego wiersza kodu. Ten przykład tworzy model klasyfikacji, aby przewidzieć, czy klient zasubskrybuje stały termin wpłaty z instytucją finansową.
 
-Korzystając z funkcji automatycznego uczenia maszynowego usługi i Azure Portal, rozpocznie się proces automatycznego uczenia maszynowego. Wybór algorytmu i dostrajanie parametrów są wykonywane. Technika automatycznej uczenia maszynowego wykonuje iterację wielu kombinacji algorytmów i parametrów do momentu znalezienia najlepszego modelu na podstawie kryterium, bez pisania pojedynczego wiersza kodu.
+Korzystając z funkcji automatycznego uczenia maszynowego usługi Azure Machine Learning i Azure Portal, rozpocznie się proces automatycznego uczenia maszynowego. Wybór algorytmu i dostrajanie parametrów są wykonywane. Technika zautomatyzowanego uczenia maszynowego wykonuje iterację wielu kombinacji algorytmów i hiperparametrów aż do momentu znalezienia najlepszego modelu na podstawie podanego kryterium.
 
 W tym samouczku nauczysz się wykonywać następujące zadania:
 
@@ -36,7 +36,7 @@ W tym samouczku nauczysz się wykonywać następujące zadania:
 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, Utwórz [bezpłatne konto](https://aka.ms/AMLFree).
 
-* Plik danych **bankmarketing_train. csv** . [Pobierz ją](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv).
+* Pobierz plik danych [ **bankmarketing_train. csv** ](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) . Kolumna **y** wskazuje, czy klient subskrybuje stały termin wpłaty, który jest później zidentyfikowany jako kolumna docelowa dla prognoz w tym samouczku. 
 
 ## <a name="create-a-workspace"></a>Tworzenie obszaru roboczego
 
@@ -44,11 +44,14 @@ W tym samouczku nauczysz się wykonywać następujące zadania:
 
 ## <a name="create-an-experiment"></a>Tworzenie eksperymentu
 
+Te kroki przeprowadzą Cię przez proces eksperymentowania skonfigurowany z wyboru danych, aby wybrać podstawową metrykę i typ modelu. 
+
 1. Przejdź do lewego okienka obszaru roboczego. Wybierz pozycję **Automatyczne Uczenie maszynowe** w sekcji **Tworzenie (wersja zapoznawcza)** .
+Zobaczysz ekran " **Witamy w Machine Learning zautomatyzowanym** ", ponieważ jest to pierwszy eksperyment z automatycznym Machine Learningem.
 
     ![Azure Portal okienku nawigacji](media/tutorial-1st-experiment-automated-ml/nav-pane.png)
 
-    Ponieważ jest to pierwszy eksperyment z automatycznym Machine Learningem, zobaczysz ekran **Witamy w Machine Learning automatycznym** . 
+
 
 1. Wybierz pozycję **Utwórz eksperyment**. Następnie wprowadź **My-1-automl-eksperyment** jako nazwę eksperymentu.
 
@@ -64,7 +67,8 @@ W tym samouczku nauczysz się wykonywać następujące zadania:
 
     Po zakończeniu tworzenia wybierz nowe obliczenie z listy rozwijanej, a następnie wybierz przycisk **dalej**.
 
-1. W tym samouczku używamy domyślnego konta magazynu i kontenera utworzonego przy użyciu nowego obliczenia. Wypełniają one automatycznie w formularzu.
+    >[!NOTE]
+    >W tym samouczku używamy domyślnego konta magazynu i kontenera utworzonego przy użyciu nowego obliczenia. Wypełniają one automatycznie w formularzu.
 
 1. Wybierz pozycję **Przekaż** i wybierz plik **bankmarketing_train. csv** z komputera lokalnego, aby przekazać go do domyślnego kontenera. Publiczna wersja zapoznawcza obsługuje tylko lokalne operacje przekazywania plików i konta usługi Azure Blob Storage. Po zakończeniu przekazywania wybierz plik z listy. 
 
@@ -116,7 +120,9 @@ W miarę postępu eksperymentu ekran **szczegóły uruchamiania** aktualizuje wy
 
 ## <a name="deploy-the-model"></a>Wdrażanie modelu
 
-Na potrzeby tego eksperymentu **VotingEnsemble** jest uznawany za najlepszy model, w oparciu o metrykę **AUC_weighted** . Przy użyciu funkcji automatycznego uczenia maszynowego w Azure Portal można wdrożyć ten model jako usługę sieci Web, aby przewidzieć nowe dane. 
+Dzięki funkcji automatycznego uczenia maszynowego w Azure Portal można wdrożyć najlepszy model jako usługę sieci Web, aby przewidzieć nowe dane i zidentyfikować potencjalne obszary szansy sprzedaży. W przypadku tego eksperymentu wdrożenie oznacza, że instytucja finansowa ma teraz iteracyjne i skalowalne rozwiązanie do identyfikowania potencjalnych klientów z krótkoterminowymi wpłatami.
+
+W tym kontekście eksperymentu **VotingEnsemble** jest uznawany za najlepszy model w oparciu o metrykę **AUC_weighted** .  Wdrażamy ten model, ale zaleca się wdrożenie trwa około 20 minut.
 
 1. Na stronie **szczegóły uruchamiania** wybierz przycisk **Wdróż najlepszy model** .
 
@@ -129,13 +135,13 @@ Na potrzeby tego eksperymentu **VotingEnsemble** jest uznawany za najlepszy mode
     Skrypt oceniania| Automatyczne generowanie
     Skrypt środowiska| Automatyczne generowanie
     
-1. Wybierz pozycję **Wdróż**. Wdrożenie trwa około 20 minut.
+1. Wybierz pozycję **Wdróż**.
 
     Po pomyślnym zakończeniu wdrożenia zostanie wyświetlony następujący komunikat:
 
     ![Zakończono wdrożenie](media/tutorial-1st-experiment-automated-ml/deploy-complete-status.png)
     
-    To wszystko! Masz działającą usługę sieci Web do generowania prognoz.
+    Teraz masz działającą usługę sieci Web do generowania prognoz.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -159,7 +165,10 @@ Usuń tylko wystąpienie wdrożenia z Azure Portal, jeśli chcesz zachować grup
 
 W tym samouczku zautomatyzowanym uczenia maszynowego Azure Portal utworzyć i wdrożyć model klasyfikacji. Zobacz następujące artykuły, aby uzyskać więcej informacji i następnych kroków:
 
-+ Dowiedz się [, jak korzystać z usługi sieci Web](how-to-consume-web-service.md).
+> [!div class="nextstepaction"]
+> [Korzystanie z usługi sieci Web](how-to-consume-web-service.md)
+
+
 + Dowiedz się więcej na temat [przetwarzania wstępnego](how-to-create-portal-experiments.md#preprocess).
 + Dowiedz się więcej na temat [profilowania danych](how-to-create-portal-experiments.md#profile).
 + Dowiedz się [](concept-automated-ml.md)więcej o automatycznym uczeniu maszynowym.

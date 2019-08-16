@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: f14403422e2c783d75634bb929d8c2130bd505b6
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: a8a75601daf36ca21ea56a5930219d7d467f0c85
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663871"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69557823"
 ---
 # <a name="how-to-analyze-your-learning-loop-with-an-offline-evaluation"></a>Jak analizować pętlę szkoleniową za pomocą oceny w trybie offline
 
@@ -30,7 +30,7 @@ Przeczytaj o [ocenach w trybie offline](concepts-offline-evaluation.md) , aby do
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 1. Musisz mieć skonfigurowaną pętlę personalizacji
-1. Pętla personalizacji musi mieć co najmniej 50 000 zdarzeń w swoich dziennikach, aby uzyskać istotne wyniki oceny.
+1. Pętla personalizacji musi mieć reprezentatywną ilość danych — jako przybliżoną recommmend co najmniej 50 000 zdarzeń w swoich dziennikach w celu uzyskania istotnych wyników oceny.
 
 Opcjonalnie możesz również wcześniej wyeksportować pliki _zasad uczenia_ , które można porównywać i testować w tej samej ocenie.
 

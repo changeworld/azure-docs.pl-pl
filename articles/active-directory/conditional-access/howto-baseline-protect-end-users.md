@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afcd9c9d3191caeabe182f499b5fd80cd8e1d8dd
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 131d38f6154e7a6e2f3175838b084e47e17ec582
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608135"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532928"
 ---
 # <a name="baseline-policy-end-user-protection-preview"></a>Zasady linii bazowej: Ochrona użytkowników końcowych (wersja zapoznawcza)
 
@@ -64,11 +64,11 @@ Zasady linii **bazowej zasad: Ochrona użytkowników końcowych (wersja** zapozn
 
 Aby włączyć te zasady i chronić użytkowników:
 
-1. Zaloguj się do **Azure Portal** jako Administrator globalny, administrator zabezpieczeń lub administrator dostępu warunkowego.
+1. Zaloguj się do **Azure Portal** jako Administrator globalny, administrator zabezpieczeń lub administrator dostępu warunkowego.
 1. Przejdź do **Azure Active Directory** > **dostęp warunkowy**.
 1. Na liście zasad wybierz pozycję **zasady linii bazowej: Ochrona użytkowników końcowych (wersja**zapoznawcza).
 1. Ustaw opcję **Włącz zasady** , aby od **razu używać zasad**.
-1. Kliknij przycisk **Zapisz**.
+1. Kliknij polecenie **Zapisz**.
 
 ## <a name="next-steps"></a>Następne kroki
 

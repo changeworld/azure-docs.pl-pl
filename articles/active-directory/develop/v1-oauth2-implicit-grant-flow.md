@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 08/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e30bd940d3312a16f2dd30b175deb6622cb8c01
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: eb751d4cad036135865af9f97e159da104749388
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834732"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532410"
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Informacje o niejawnym przepływie OAuth2 w Azure Active Directory (AD)
 
@@ -35,7 +35,7 @@ Niejawne przyznanie OAuth2 jest Notorious do przyznania z najdłuższym wykazem 
 
 Przyznanie [kodu autoryzacji Quintessential OAuth2](https://tools.ietf.org/html/rfc6749#section-1.3.1) jest przyznawanie autoryzacji, która używa dwóch oddzielnych punktów końcowych. Punkt końcowy autoryzacji jest używany dla fazy interakcji użytkownika, która powoduje kod autoryzacji. Punkt końcowy tokenu jest następnie używany przez klienta do wymiany kodu dla tokenu dostępu i często również tokenu odświeżania. Aplikacje sieci Web są wymagane do zaprezentowania własnych poświadczeń aplikacji do punktu końcowego tokenu, dzięki czemu serwer autoryzacji może uwierzytelniać klienta.
 
-Niejawne [przyznanie OAuth2](https://tools.ietf.org/html/rfc6749#section-1.3.2) jest wariantem innych dotacji do autoryzacji. Umożliwia klientowi uzyskanie tokenu dostępu (i id_token, w przypadku używania [OpenID Connect Connect](https://openid.net/specs/openid-connect-core-1_0.html)) bezpośrednio z punktu końcowego autoryzacji, bez kontaktowania się z punktem końcowym tokenu ani uwierzytelnianiem klienta. Ten wariant został zaprojektowany dla aplikacji opartych na języku JavaScript działających w przeglądarce sieci Web: w pierwotnej specyfikacji OAuth2 tokeny są zwracane w fragmencie identyfikatora URI. Powoduje to, że bity usługi BITS są dostępne dla kodu JavaScript w kliencie, ale gwarantuje, że nie zostaną uwzględnione w przekierowaniach skierowanych na serwer. Zwracanie tokenów za pośrednictwem przeglądarki przekieruje się bezpośrednio z punktu końcowego autoryzacji. Pozwala również wyeliminować wszelkie wymagania dotyczące wywołań między źródłami, które są niezbędne, jeśli aplikacja JavaScript jest wymagana do skontaktowania się z punktem końcowym tokenu.
+Niejawne [przyznanie OAuth2](https://tools.ietf.org/html/rfc6749#section-1.3.2) jest wariantem innych dotacji do autoryzacji. Umożliwia klientowi uzyskanie tokenu dostępu (i id_token, w przypadku używania [OpenID Connect Connect](https://openid.net/specs/openid-connect-core-1_0.html)) bezpośrednio z punktu końcowego autoryzacji, bez kontaktowania się z punktem końcowym tokenu ani uwierzytelnianiem klienta. Ten wariant został zaprojektowany dla aplikacji opartych na języku JavaScript działających w przeglądarce sieci Web: w pierwotnej specyfikacji OAuth2 tokeny są zwracane w fragmencie identyfikatora URI. Powoduje to, że bity usługi BITS są dostępne dla kodu JavaScript w kliencie, ale gwarantuje, że nie zostaną uwzględnione w przekierowaniach skierowanych na serwer. W przypadku niejawnego udzielenia OAuth2 punkt końcowy autoryzacji wystawia tokeny dostępu bezpośrednio do klienta przy użyciu identyfikatora URI przekierowania, który został wcześniej dostarczony. Pozwala również wyeliminować wszelkie wymagania dotyczące wywołań między źródłami, które są niezbędne, jeśli aplikacja JavaScript jest wymagana do skontaktowania się z punktem końcowym tokenu.
 
 Ważną cechą niejawnego udzielenia OAuth2 jest fakt, że takie przepływy nigdy nie zwracają tokenów odświeżania do klienta. W następnej sekcji pokazano, jak to nie jest konieczne i w rzeczywistości występuje problem z zabezpieczeniami.
 
