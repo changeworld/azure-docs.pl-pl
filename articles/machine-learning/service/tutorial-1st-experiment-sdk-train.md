@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Uczenie swojego pierwszego modelu.'
+title: 'Samouczek: Uczenie swojego pierwszego modelu ML'
 titleSuffix: Azure Machine Learning service
 description: W ramach tego samouczka nauczysz się podstawowe wzorce projektowe w usłudze Azure Machine Learning i nauczysz prosty model uczenia scikit na podstawie zestawu danych cukrzycą.
 services: machine-learning
@@ -10,14 +10,14 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: a3db70925d59f9d0e2793b04824b2e8606719dd4
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 17fee1f01bf883aa2a9845fe4f2817fb806056dd
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934233"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69516245"
 ---
-# <a name="tutorial-train-your-first-model"></a>Samouczek: Trenowanie pierwszego modelu
+# <a name="tutorial-train-your-first-ml-model"></a>Samouczek: Uczenie swojego pierwszego modelu ML
 
 Ten samouczek jest **drugą częścią dwuczęściowej serii samouczków**. W poprzednim samouczku [utworzono obszar roboczy i wybrano środowisko programistyczne](tutorial-1st-experiment-sdk-setup.md). W ramach tego samouczka nauczysz się podstawowe wzorce projektowe w usłudze Azure Machine Learning i nauczysz prosty model uczenia scikit na podstawie zestawu danych cukrzycą. Po ukończeniu tego samouczka będziesz mieć praktyczną wiedzę na temat zestawu SDK w celu skalowania w górę w celu opracowywania bardziej złożonych eksperymentów i przepływów pracy.
 
@@ -112,7 +112,7 @@ Po zakończeniu szkolenia Wywołaj `experiment` zmienną, aby pobrać link do ek
 experiment
 ```
 
-<table style="width:100%"><tr><th>Name (Nazwa)</th><th>Obszar roboczy</th><th>Strona raportu</th><th>Strona docs</th></tr><tr><td>cukrzycą — eksperyment</td><td>Nazwa Twojego obszaru roboczego</td><td>Link do witryny Azure Portal</td><td>Link do dokumentacji</td></tr></table>
+<table style="width:100%"><tr><th>Name</th><th>Obszar roboczy</th><th>Strona raportu</th><th>Strona docs</th></tr><tr><td>cukrzycą — eksperyment</td><td>Nazwa Twojego obszaru roboczego</td><td>Link do witryny Azure Portal</td><td>Link do dokumentacji</td></tr></table>
 
 ## <a name="view-training-results-in-portal"></a>Wyświetlanie wyników szkolenia w portalu
 

@@ -4,21 +4,21 @@ description: Omówienie usługi Azure Managed disks, która obsługuje konta mag
 author: roygara
 ms.service: virtual-machines-linux
 ms.topic: overview
-ms.date: 04/22/2019
+ms.date: 08/15/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 5052504b4fb63ce9d638a9d2505ad1c08d3324de
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 3ba797088eb23262c583906d7023f20fb7d408ba
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695464"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69516152"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Wprowadzenie do usługi Azure Managed disks
 
 Dysk zarządzany przez platformę Azure to wirtualny dysk twardy (VHD). Można traktować go jako dysk fizyczny na serwerze lokalnym, ale zwirtualizowany. Azure Managed disks są przechowywane jako stronicowe obiekty blob, które są losowym obiektem magazynu we/wy na platformie Azure. Nazywamy zarządzany dysk zarządzany, ponieważ jest to Abstrakcja dla stronicowych obiektów blob, kontenerów obiektów blob i kont usługi Azure Storage. W przypadku dysków zarządzanych wszystkie czynności, które należy wykonać, udostępniają dysk, a platforma Azure zajmie się resztą.
 
-Gdy wybierzesz używanie usługi Azure Managed disks z obciążeniami, platforma Azure utworzy dysk i będzie nim zarządzać. Dostępne typy dysków to Ultra disks (wersja zapoznawcza), dyski półprzewodnikowe (SSD), standardowy dysk SSD i standardowe dyski twarde (dysk twardy). Aby uzyskać więcej informacji na temat poszczególnych typów dysków, zobacz [Wybieranie typu dysku dla maszyn wirtualnych IaaS](disks-types.md).
+Gdy wybierzesz używanie usługi Azure Managed disks z obciążeniami, platforma Azure utworzy dysk i będzie nim zarządzać. Dostępne typy dysków to Ultra dysk, dysk półprzewodnikowy Premium (SSD), SSD w warstwie Standardowa i standardowy dysk twardy. Aby uzyskać więcej informacji na temat poszczególnych typów dysków, zobacz [Wybieranie typu dysku dla maszyn wirtualnych IaaS](disks-types.md).
 
 [!INCLUDE [virtual-machines-managed-disks-overview.md](../../../includes/virtual-machines-managed-disks-overview.md)]
 

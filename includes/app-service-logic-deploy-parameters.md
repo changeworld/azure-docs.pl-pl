@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: cephalin
 ms.openlocfilehash: f188f2c7bea511f1109d37ef49563e0f745a770e
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 08/15/2019
 ms.locfileid: "68385745"
 ---
 Za pomocą Azure Resource Manager można zdefiniować parametry dla wartości, które będą używane podczas wdrażania szablonu. Szablon zawiera `parameters` sekcję zawierającą wszystkie wartości parametrów. Każda wartość parametru jest używana przez szablon do definiowania zasobów, które mają zostać wdrożone.
@@ -20,4 +20,4 @@ Podczas definiowania parametrów:
 
 * Aby określić dozwolone wartości, które użytkownik może podać podczas wdrażania, użyj pola **allowedValues** .
 
-* Aby przypisać wartości domyślne do parametru, jeśli podczas wdrażania nie podano żadnych wartości,  Użyj pola DefaultValue. 
+* Aby przypisać wartości domyślne do parametru, jeśli podczas wdrażania nie podano żadnych wartości, Użyj pola DefaultValue. 

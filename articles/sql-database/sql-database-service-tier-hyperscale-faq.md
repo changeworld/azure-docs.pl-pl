@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: 94894126be98f0d3d4d404d97d0a4a39fff2e665
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 951d5bb10fbeeac090a1edb510b7214855477eac
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847396"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515351"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Często zadawane pytania dotyczące baz danych usługi Azure SQL Database
 
@@ -131,7 +131,7 @@ W tej chwili można jednak skalować obliczenia i liczbę replik w dół, aby zm
 
 ### <a name="can-i-provision-a-compute-with-extra-ram-for-my-memory-intensive-workload"></a>Czy można zarezerwować obliczenia z dodatkową ilością pamięci RAM na potrzeby obciążeń intensywnie korzystających z pamięci
 
-Nie. Aby uzyskać więcej pamięci RAM, należy przeprowadzić uaktualnienie do wyższego rozmiaru. Aby uzyskać więcej informacji, zobacz temat [skalowanie magazynu i rozmiarów obliczeniowych](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier).
+Nie. Aby uzyskać więcej pamięci RAM, należy przeprowadzić uaktualnienie do wyższego rozmiaru. Aby uzyskać więcej informacji, zobacz temat [skalowanie magazynu i rozmiarów obliczeniowych](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-for-provisioned-compute).
 
 ### <a name="can-i-provision-multiple-compute-nodes-of-different-sizes"></a>Czy mogę zainicjować obsługę wielu węzłów obliczeniowych o różnych rozmiarach
 
@@ -197,7 +197,7 @@ Nie
 
 ### <a name="is-database-compression-supported"></a>Czy kompresja bazy danych jest obsługiwana
 
-Yes
+Tak
 
 ### <a name="if-i-have-a-huge-table-does-my-table-data-get-spread-out-across-multiple-data-files"></a>Jeśli mam ogromną tabelę, dane tabeli są rozłożone na wiele plików danych
 
@@ -256,7 +256,7 @@ Dzięki domyślnemu podstawowemu i 1 pomocniczemu zapasowi jest dostępna umowa 
 
 ### <a name="are-the-database-backups-managed-for-me-by-the-azure-sql-database-service"></a>Są kopiami zapasowymi bazy danych zarządzanymi dla mnie przez usługę Azure SQL Database
 
-Yes
+Tak
 
 ### <a name="how-often-are-the-database-backups-taken"></a>Jak często wykonywane są kopie zapasowe bazy danych
 
@@ -264,7 +264,7 @@ Nie ma tradycyjnych pełnych, różnicowych i dzienników kopii zapasowych dla S
 
 ### <a name="does-sql-database-hyperscale-support-point-in-time-restore"></a>Czy SQL Database w czasie przywracania punktu obsługi funkcji preskalowania
 
-Yes
+Tak
 
 ### <a name="what-is-the-recovery-point-objective-rporecovery-time-objective-rto-with-backuprestore-in-sql-database-hyperscale"></a>Jaki jest cel punktu odzyskiwania (RPO)/Recovery cel (RTO) z kopią zapasową/przywracaniem w SQL Databasem skalowaniu
 
@@ -386,6 +386,6 @@ Nie. Bazy danych w ramach skalowania mają magazyn udostępniony, co oznacza, ż
 
 Od momentu, gdy transakcja jest zatwierdzana na poziomie podstawowym, w zależności od szybkości generowania dziennika, może być chwilowo lub w niskiej wartości milisekund.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat warstwy usługi do skalowania, zobacz sekcję [skalowanie warstwy usług](sql-database-service-tier-hyperscale.md).

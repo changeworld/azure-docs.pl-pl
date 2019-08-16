@@ -7,12 +7,12 @@ ms.date: 07/22/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: d49ef19d763ea3ae643a9c7bbbbb620ae414c664
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 7be9a208f82dd9a487c1794a7996f9bb11bb09d8
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816818"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515437"
 ---
 # <a name="control-mapping-of-the-iso-27001-blueprint-sample"></a>Sterowanie mapowaniem przykładu planu ISO 27001
 
@@ -118,13 +118,13 @@ Zrozumienie, w jaki sposób zasoby platformy Azure mogą mieć nieoptymalną kon
 - \[Wersja\]zapoznawcza: Inspekcja braku szyfrowania obiektów blob dla kont magazynu
 - \[Wersja\]zapoznawcza: Wdrożenie rozszerzenia maszyny wirtualnej w celu przeprowadzenia inspekcji maszyny wirtualnej z systemem Windows nie powinno przechowywać haseł przy użyciu szyfrowania odwracalnego
 - \[Wersja\]zapoznawcza: Inspekcja maszyny wirtualnej z systemem Windows nie powinna przechowywać haseł przy użyciu szyfrowania odwracalnego
-- \[Wersja\]zapoznawcza: Monitorowanie nieszyfrowanej bazy danych SQL w Azure Security Center
 - \[Wersja\]zapoznawcza: Monitoruj niezaszyfrowane dyski maszyn wirtualnych w usłudze Azure Security Center
 - Przeprowadź inspekcję włączania szyfrowania zmiennych konta usługi Automation
 - Przeprowadź inspekcję włączania tylko bezpiecznych połączeń z pamięć podręczną Redis Cache
 - Przeprowadź inspekcję bezpiecznego transferu do kont magazynu
 - Przeprowadź inspekcję ustawienia właściwości ClusterProtectionLevel na wartość EncryptAndSign w usłudze Service Fabric
 - Przeprowadź inspekcję stanu przezroczystego szyfrowania danych
+- Należy włączyć Transparent Data Encryption baz danych SQL
 
 ## <a name="a1241-event-logging"></a>A. 12.4.1 Rejestrowanie zdarzeń
 
@@ -135,9 +135,9 @@ Dzienniki diagnostyczne zapewniają wgląd w operacje wykonywane w ramach zasob�
 - \[Wersja\]zapoznawcza: Inspekcja Agent zależności wdrożenia w programie VMSS — lista obrazów maszyn wirtualnych (OS) nie została wystawiona
 - \[Wersja\]zapoznawcza: Inspekcja wdrożenia agenta Log Analytics — lista obrazów maszyn wirtualnych (OS) nie została wystawiona
 - \[Wersja\]zapoznawcza: Inspekcja wdrożenia agenta Log Analytics w programie VMSS — lista obrazów maszyn wirtualnych (OS) nie została wystawiona
-- \[Wersja\]zapoznawcza: Monitoruj niepoddaną inspekcję bazy danych SQL w Azure Security Center
 - Przeprowadź inspekcję ustawienia diagnostyki
 - Przeprowadź inspekcję ustawień inspekcji SQL na poziomie serwera
+- Inspekcja powinna być włączona w zaawansowanych ustawieniach zabezpieczeń danych na SQL Server
 
 ## <a name="a1243-administrator-and-operator-logs"></a>A. 12.4.3 dzienniki administratorów i operatorów
 
@@ -147,9 +147,9 @@ Ten plan pomaga zapewnić, że zdarzenia systemowe są rejestrowane przez przypi
 - \[Wersja\]zapoznawcza: Inspekcja Agent zależności wdrożenia w programie VMSS — lista obrazów maszyn wirtualnych (OS) nie została wystawiona
 - \[Wersja\]zapoznawcza: Inspekcja wdrożenia agenta Log Analytics — lista obrazów maszyn wirtualnych (OS) nie została wystawiona
 - \[Wersja\]zapoznawcza: Inspekcja wdrożenia agenta Log Analytics w programie VMSS — lista obrazów maszyn wirtualnych (OS) nie została wystawiona
-- \[Wersja\]zapoznawcza: Monitoruj niepoddaną inspekcję bazy danych SQL w Azure Security Center
 - Przeprowadź inspekcję ustawienia diagnostyki
 - Przeprowadź inspekcję ustawień inspekcji SQL na poziomie serwera
+- Inspekcja powinna być włączona w zaawansowanych ustawieniach zabezpieczeń danych na SQL Server
 
 ## <a name="a1244-clock-synchronization"></a>Synchronizacja zegara. 12.4.4
 
@@ -159,9 +159,9 @@ Ten plan pomaga zapewnić, że zdarzenia systemowe są rejestrowane przez przypi
 - \[Wersja\]zapoznawcza: Inspekcja Agent zależności wdrożenia w programie VMSS — lista obrazów maszyn wirtualnych (OS) nie została wystawiona
 - \[Wersja\]zapoznawcza: Inspekcja wdrożenia agenta Log Analytics — lista obrazów maszyn wirtualnych (OS) nie została wystawiona
 - \[Wersja\]zapoznawcza: Inspekcja wdrożenia agenta Log Analytics w programie VMSS — lista obrazów maszyn wirtualnych (OS) nie została wystawiona
-- \[Wersja\]zapoznawcza: Monitoruj niepoddaną inspekcję bazy danych SQL w Azure Security Center
 - Przeprowadź inspekcję ustawienia diagnostyki
 - Przeprowadź inspekcję ustawień inspekcji SQL na poziomie serwera
+- Inspekcja powinna być włączona w zaawansowanych ustawieniach zabezpieczeń danych na SQL Server
 
 ## <a name="a1251-installation-of-software-on-operational-systems"></a>A. 12.5.1 Instalacja oprogramowania w systemach operacyjnych
 
@@ -201,7 +201,7 @@ Plan pomaga zapewnić, że transfer informacji w ramach usług platformy Azure j
 - Przeprowadź inspekcję włączania tylko bezpiecznych połączeń z pamięć podręczną Redis Cache
 - Przeprowadź inspekcję bezpiecznego transferu do kont magazynu
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Po przejrzeniu mapowania kontroli planu ISO 27001 zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej o architekturze i sposobie wdrażania tego przykładu:
 

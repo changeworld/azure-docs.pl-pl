@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: b228dfd92fe389d196a65f7152ef22751842f4bb
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 24ad0f2e917420c327577851cabc9e5bdbad2825
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640283"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515683"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Przekształcanie ujścia dla przepływu danych
 
@@ -79,13 +79,16 @@ Skonfiguruj nazewnictwo plików:
 
 Wybierz pozycję Ustawienia bazy danych:
 
+![Karta Ustawienia z opcjami UJŚCIA SQL](media/data-flow/alter-row2.png "Opcje SQL")
+
 * **Metoda aktualizacji**: Wartość domyślna to Zezwalaj na operacje wstawiania. Usuń zaznaczenie pola wyboru **Zezwalaj** , jeśli chcesz przerwać wstawianie nowych wierszy ze źródła. Aby zaktualizować, upsert lub usunąć wiersze, najpierw Dodaj transformację ALTER-Row do wierszy tagów dla tych działań. 
 * **Utwórz ponownie tabelę**: Porzuć lub Utwórz tabelę docelową przed zakończeniem przepływu danych.
 * **Obetnij tabelę**: Usuń wszystkie wiersze z tabeli docelowej przed ukończeniem przepływu danych.
 * **Rozmiar wsadu**: Wprowadź liczbę, aby przetworzyć przedział zapisu do fragmentów. Użyj tej opcji w przypadku dużych obciążeń danych. 
 * **Włącz przemieszczanie**: Użyj podstawy podczas ładowania usługi Azure Data Warehouse jako zestawu danych ujścia.
+* **Wstępne i gotowe skrypty SQL**: Wprowadź wielowierszowe skrypty SQL, które zostaną wykonane przed (przetwarzanie wstępne) i po wykonaniu (po przetworzeniu) dane są zapisywane w bazie danych ujścia
 
-![Karta Ustawienia z opcjami UJŚCIA SQL](media/data-flow/alter-row2.png "Opcje SQL")
+![wstępne i końcowe skrypty przetwarzania SQL](media/data-flow/prepost1.png "Skrypty przetwarzania SQL")
 
 > [!NOTE]
 > W przepływie danych można skierować Data Factory, aby utworzyć nową definicję tabeli w docelowej bazie danych. Aby utworzyć definicję tabeli, należy ustawić zestaw danych w transformację ujścia, która ma nową nazwę tabeli. W zestawie danych SQL, pod nazwą tabeli, wybierz opcję **Edytuj** i wprowadź nową nazwę tabeli. Następnie w transformacji ujścia Włącz opcję **Zezwalaj na dryfowanie schematu**. Ustaw dla opcji **Importuj schemat** **wartość Brak**.

@@ -10,16 +10,16 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3f6d15e67122afcbea3cc294c803a302e961bdbd
-ms.sourcegitcommit: 57a7d4f67635212f5bf0c56e58fd87c8ec366f2c
+ms.openlocfilehash: c192a994ac5398d41e28a35267b922ba98b721cc
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68372553"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69513622"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Przegląd konfiguracji stanu Azure Automation
 
-Konfiguracja stanu Azure Automation to usługa platformy Azure, która umożliwia pisanie, zarządzanie i kompilowanie konfiguracji stanu żądanego ( [DSC) programu](/powershell/dsc/configurations)PowerShell, importowanie [zasobów DSC](/powershell/dsc/resources)i przypisywanie konfiguracji do węzłów docelowych, a wszystko w chmury.
+Konfiguracja stanu Azure Automation to usługa platformy Azure, która umożliwia pisanie, zarządzanie i kompilowanie konfiguracji stanu żądanego (DSC) programu [](/powershell/dsc/configurations)PowerShell, importowanie [zasobów DSC](/powershell/dsc/resources)i przypisywanie konfiguracji do węzłów docelowych, a wszystko w chmury.
 
 ## <a name="why-use-azure-automation-state-configuration"></a>Dlaczego warto używać konfiguracji stanu Azure Automation
 
@@ -57,6 +57,8 @@ W przypadku węzłów z systemem Windows obsługiwane są następujące wersje:
 - Windows 10
 - Windows 8.1
 - Windows 7
+
+Autonomiczna jednostka SKU produktu [Microsoft Hyper-V Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) nie zawiera implementacji żądanego stanu konfiguracją, więc nie może być zarządzana przez program PowerShell DSC lub konfigurację stanu Azure Automation.
 
 W przypadku węzłów z systemem Linux obsługiwane są następujące dystrybucje/wersje:
 
@@ -134,7 +136,7 @@ Wolisz obejrzeć film niż przeczytać artykuł? Zapoznaj się z następującym 
 
 > [!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3467/player]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby rozpocząć, zobacz [wprowadzenie do konfiguracji stanu Azure Automation](automation-dsc-getting-started.md)
 - Aby dowiedzieć się, jak dołączyć węzły, zobacz sekcję dołączanie [maszyn w celu zarządzania według konfiguracji stanu Azure Automation](automation-dsc-onboarding.md)

@@ -8,18 +8,18 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 945898105aab7261ee494a86aeff10337599feb3
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 7da31e09157b8877db4d36d0f061f29433d02d11
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226003"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515632"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Kontrolowanie mapowania przykładowych OFICJALNych i BRYTYJSKIch planów NHS w Wielkiej Brytanii
 
 W poniższym artykule szczegółowo przedstawiono sposób mapowania przykładowych OFICJALNych i BRYTYJSKIch planów NHS z brytyjskimi i BRYTYJSKImi formantami NHS. Aby uzyskać więcej informacji na temat kontrolek, zobacz [Zjednoczone Królestwo](https://www.gov.uk/government/publications/government-security-classifications).
 
-Następujące mapowania są do OFICJALNych  i brytyjskich **NHS** . Użyj nawigacji po prawej stronie, aby przejść bezpośrednio do określonego mapowania formantów. Wiele zamapowanych formantów jest implementowanych z inicjatywą [Azure Policy](../../../policy/overview.md) . Aby zapoznać się z pełną inicjatywą, Otwórz **zasady** w Azure Portal i wybierz stronę **definicje** . Następnie Znajdź i wybierz  **\[kontrolę wersji zapoznawczej\] Zjednoczone oficjalne i Zjednoczone Królestwo NHS oraz Wdróż określone rozszerzenia maszyn wirtualnych, aby obsługiwać zasady inspekcji** wbudowanej inicjatywy.
+Następujące mapowania są do OFICJALNych i brytyjskich **NHS** . Użyj nawigacji po prawej stronie, aby przejść bezpośrednio do określonego mapowania formantów. Wiele zamapowanych formantów jest implementowanych z inicjatywą [Azure Policy](../../../policy/overview.md) . Aby zapoznać się z pełną inicjatywą, Otwórz **zasady** w Azure Portal i wybierz stronę **definicje** . Następnie Znajdź i wybierz  **\[kontrolę wersji zapoznawczej\] Zjednoczone oficjalne i Zjednoczone Królestwo NHS oraz Wdróż określone rozszerzenia maszyn wirtualnych, aby obsługiwać zasady inspekcji** wbudowanej inicjatywy.
 
 ## <a name="1-data-in-transit-protection"></a>1 Data w ochronie tranzytowej
 
@@ -33,13 +33,13 @@ Plan pomaga zapewnić, że transfer informacji w ramach usług platformy Azure j
 Ten plan pomaga wymusić zasady korzystania z formantów cryptograph, przypisując definicje [Azure Policy](../../../policy/overview.md) , które wymuszają określone kontrolki cryptograph i inspekcji używają słabych ustawień kryptograficznych.
 Zrozumienie, w jaki sposób zasoby platformy Azure mogą mieć nieoptymalną konfigurację kryptograficzną, może pomóc w podejmowaniu działań naprawczych w celu zapewnienia, że zasoby są skonfigurowane zgodnie z zasadami zabezpieczeń informacji. Zasady przypisane przez ten plan wymagają szyfrowania dla kont usługi Data Lake Storage; Wymagaj przezroczystego szyfrowania danych w bazach danych SQL; Inspekcja braku szyfrowania na kontach magazynu, bazach danych SQL, dyskach maszyn wirtualnych i zmiennych konta usługi Automation; Inspekcja niezabezpieczonych połączeń z kontami magazynu i Redis Cache; Inspekcja niesłabego szyfrowania hasła maszyny wirtualnej; i Przeprowadź inspekcję niezaszyfrowanej komunikacji Service Fabric.
 
-- Monitoruj nieszyfrowane bazy danych SQL w Azure Security Center
+- Należy włączyć Transparent Data Encryption baz danych SQL
 - Szyfrowanie dysków powinno być stosowane na maszynach wirtualnych
 - Zmienne konta usługi Automation powinny być szyfrowane
 - Należy włączyć bezpieczny transfer do kont magazynu
 - W klastrach Service Fabric Właściwość ClusterProtectionLevel ma ustawioną wartość EncryptAndSign
 - Należy włączyć Transparent Data Encryption baz danych SQL
-- Wdróż przezroczyste szyfrowanie danych SQL DB
+- Wdróż przezroczyste szyfrowanie danych usługi SQL DB
 - Wymagaj szyfrowania na kontach Data Lake Store
 - Dozwolone lokalizacje (zostały trwale zakodowane jako "Południowe Zjednoczone Królestwo" i "ZACHODNIe Zjednoczone Królestwo")
 - Dozwolone lokalizacje dla grup zasobów (zostały trwale zakodowane jako "Południowe Zjednoczone Królestwo" i "ZACHODNIe Zjednoczone Królestwo")
@@ -48,7 +48,7 @@ Zrozumienie, w jaki sposób zasoby platformy Azure mogą mieć nieoptymalną kon
 
 Ten plan ułatwia zarządzanie lukami w zabezpieczeniach systemu informacji przez przypisanie definicji [Azure Policy](../../../policy/overview.md) , które monitorują brak programu Endpoint Protection, brakujące aktualizacje systemu operacyjnego, luki w zabezpieczeniach SQL i wirtualne luki w zabezpieczeniach komputera. Te szczegółowe dane zapewniają informacje o stanie zabezpieczeń wdrożonych zasobów i umożliwiają określanie priorytetów akcji korygowania.
 
-- Monitoruj brakujące Endpoint Protection w Azure Security Center
+- Monitoruj brakujący program Endpoint Protection w usłudze Azure Security Center
 - Aktualizacje systemu powinny być zainstalowane na maszynach
 - Luki w zabezpieczeniach konfiguracji zabezpieczeń na maszynach należy skorygować
 - Luki w zabezpieczeniach baz danych SQL należy skorygować
@@ -58,9 +58,9 @@ Ten plan ułatwia zarządzanie lukami w zabezpieczeniach systemu informacji prze
 
 Ten plan pomaga chronić zasoby systemu informacji przez przypisanie [Azure Policy](../../../policy/overview.md) definicji, które zapewniają ochronę przed nieograniczonym dostępem, dozwolonych aktywność i zagrożeniami.
 
-- Inspekcja nieograniczonego dostępu sieciowego do kont magazynu
+- Przeprowadź inspekcję nieograniczonego dostępu do kont magazynu
 - Na maszynach wirtualnych należy włączyć adaptacyjne kontrolki aplikacji
-- Wdrażanie wykrywania zagrożeń na serwerach SQL
+- Wdróż wykrywanie zagrożeń na serwerach SQL
 - Wdróż domyślne rozszerzenie programu Microsoft IaaSe chroniące przed złośliwym oprogramowaniem dla systemu Windows Server
 
 ## <a name="9-secure-user-management--10-identity-and-authentication"></a>9 zarządzanie użytkownikami i tożsamość 10
@@ -111,13 +111,13 @@ Ten plan pomaga również kontrolować dostęp do zasobów platformy Azure, przy
 - \[Wersja\]zapoznawcza: Inspekcja maszyn wirtualnych z systemem Linux, które zezwalają na połączenia zdalne z kont bez hasła
 - Konta magazynu należy migrować do nowych zasobów Azure Resource Manager
 - Maszyny wirtualne należy migrować do nowych zasobów Azure Resource Manager
-- Inspekcja maszyn wirtualnych, które nie korzystają z dysków zarządzanych
+- Przeprowadź inspekcję maszyn wirtualnych, które nie korzystają z dysków zarządzanych
 
 ## <a name="11-external-interface-protection"></a>11 ochrona interfejsu zewnętrznego
 
 W przypadku korzystania z więcej niż 25 zasad do odpowiedniego zarządzania bezpiecznymi użytkownikami ten plan pomaga chronić interfejsy usługi przed nieautoryzowanym dostępem, przypisując [Azure Policy](../../../policy/overview.md) definicję, która monitoruje nieograniczone konta magazynu. Konta magazynu z nieograniczonym dostępem mogą zezwalać na niezamierzony dostęp do informacji zawartych w systemie informacyjnym. Ten plan przypisuje również zasady, które umożliwiają adaptacyjne kontrole aplikacji na maszynach wirtualnych.
 
-- Inspekcja nieograniczonego dostępu sieciowego do kont magazynu
+- Przeprowadź inspekcję nieograniczonego dostępu do kont magazynu
 - Na maszynach wirtualnych należy włączyć adaptacyjne kontrolki aplikacji
 
 ## <a name="12-secure-service-administration"></a>12 administrowanie bezpieczną usługą
@@ -151,12 +151,12 @@ Ten plan przypisuje również definicję Azure Policy, która przeprowadza inspe
 
 Ten plan pomaga zapewnić, że zdarzenia systemowe są rejestrowane przez przypisanie [Azure Policy](../../../policy/overview.md) definicji, które Przeprowadź inspekcję ustawień dziennika w zasobach platformy Azure. Przypisane zasady również przeprowadzają inspekcję, jeśli maszyny wirtualne nie wysyłają dzienników do określonego obszaru roboczego usługi log Analytics.
 
-- Monitoruj niemonitorowane serwery SQL w Azure Security Center
-- Przeprowadzanie inspekcji ustawienia diagnostyki
-- Inspekcja ustawień inspekcji poziomu serwera SQL
+- Inspekcja powinna być włączona w zaawansowanych ustawieniach zabezpieczeń danych na SQL Server
+- Przeprowadź inspekcję ustawienia diagnostyki
+- Przeprowadź inspekcję ustawień inspekcji SQL na poziomie serwera
 - \[Wersja\]zapoznawcza: Wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux
 - \[Wersja\]zapoznawcza: Wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows
-- Wdróż obserwatora sieciowego po utworzeniu sieci wirtualnych
+- Wdrażaj zasób Network Watcher podczas tworzenia sieci wirtualnych
 
 ## <a name="next-steps"></a>Następne kroki
 

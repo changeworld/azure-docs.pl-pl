@@ -7,20 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 08/06/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 58c6d1b032f5b492c5641ff51da80426124069b1
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 46755cb8d0383d166b10d50854eb476b676a6ee4
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716783"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509735"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Konfigurowanie logowania dla konkretnej organizacji Azure Active Directory w programie Azure Active Directory B2C
-
->[!NOTE]
-> Ta funkcja jest dostępna w publicznej wersji zapoznawczej. Nie należy używać tej funkcji w środowiskach produkcyjnych.
 
 Aby użyć Azure Active Directory (Azure AD) jako [dostawcy tożsamości](active-directory-b2c-reference-oauth-code.md) w Azure AD B2C, należy utworzyć aplikację, która go reprezentuje. W tym artykule opisano sposób włączania logowania dla użytkowników z określonej organizacji usługi Azure AD przy użyciu przepływu użytkownika w Azure AD B2C.
 
@@ -54,7 +51,7 @@ Aby włączyć Logowanie użytkowników z określonej organizacji usługi Azure 
 2. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 3. Wybierz **dostawców tożsamości**, a następnie wybierz pozycję **Dodaj**.
 4. Wprowadź **nazwę**. Na przykład wprowadź wartość `Contoso Azure AD`.
-5. Wybierz **Typ dostawcy tożsamości**, wybierz pozycję **OpenID Connect Connect (wersja zapoznawcza)** , a następnie kliknij przycisk **OK**.
+5. Wybierz **Typ dostawcy tożsamości**, wybierz pozycję **OpenID Connect Connect**, a następnie kliknij przycisk **OK**.
 6. Wybierz opcję **Skonfiguruj tego dostawcę tożsamości**
 7. W polu **adres URL metadanych**wprowadź następujący adres URL `your-AD-tenant-domain` zastępujący nazwą domeny dzierżawy usługi Azure AD. Na przykład `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`:
 

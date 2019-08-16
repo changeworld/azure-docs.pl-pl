@@ -181,10 +181,6 @@
           href: security-center-search.md
         - name: Planowanie i operacje
           href: security-center-planning-and-operations-guide.md
-        - name: Informacje o alertach zabezpieczeń
-          href: security-center-alerts-type.md
-        - name: Analiza behawioralna użytkowników i jednostek (UEBA) dla zasobów i użytkowników platformy Azure
-          href: security-center-ueba-mcas.md
         - name: Dostosowywanie konfiguracji zabezpieczeń
           href: security-center-customize-os-security-config.md
 - name: Dokumentacja

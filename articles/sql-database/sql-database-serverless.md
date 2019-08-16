@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 07/05/2019
-ms.openlocfilehash: 3b9a9f4ac1cf0722ab7d3838f0b0c4c12b47dc74
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 67e877609eec98e7100b34ab477dbab7c5577772
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566799"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515285"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL Database bezserwerowe (wersja zapoznawcza)
 
@@ -281,7 +281,7 @@ Get-AzSqlDatabase `
 
 ## <a name="resource-limits"></a>Limity zasobów
 
-W przypadku limitów zasobów zobacz [warstwa obliczeń](sql-database-vCore-resource-limits-single-databases.md#serverless-compute-tier) bezserwerowych
+W przypadku limitów zasobów zapoznaj się z tematem [warstwa obliczeń](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)bezserwerowych.
 
 ## <a name="billing"></a>Rozliczenia
 
@@ -324,4 +324,4 @@ Warstwa obliczeń bezserwerowych jest dostępna na całym świecie, z wyjątkiem
 ## <a name="next-steps"></a>Następne kroki
 
 - Aby rozpocząć, zobacz [szybki start: Utwórz pojedynczą bazę danych w Azure SQL Database przy użyciu](sql-database-single-database-get-started.md)Azure Portal.
-- W przypadku limitów zasobów zobacz [limity zasobów warstwy obliczeń](sql-database-vCore-resource-limits-single-databases.md#serverless-compute-tier)bezserwerowych.
+- W przypadku limitów zasobów zobacz [limity zasobów warstwy obliczeń](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)bezserwerowych.

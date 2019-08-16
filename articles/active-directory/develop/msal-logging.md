@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09590fbd340ac3945f05346f99254ec0b76dcd76
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 475b692a29edf5cdd05552e7b5c3dc5fde210275
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834997"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69512524"
 ---
 # <a name="logging"></a>Rejestrowanie
 Aplikacje Microsoft Authentication Library (MSAL) do generowania komunikatów dziennika, które mogą pomóc zdiagnozować problemy i podać szczegóły. Aplikacja może skonfigurować rejestrowanie z kilkoma wierszami kodu i mieć kontrolę niestandardową na poziomie szczegółowości oraz o tym, czy dane osobiste i organizacyjne są rejestrowane. Zaleca się ustawienie wywołania zwrotnego rejestrowania MSAL i umożliwia użytkownikom przesyłanie dzienników w przypadku problemów z uwierzytelnianiem.
@@ -40,6 +40,10 @@ Rejestrator MSAL umożliwia przechwytywanie kilku poziomów szczegółowości:
 Domyślnie Rejestrator MSAL nie przechwytuje żadnych wysoce poufnych danych osobistych lub organizacji. Biblioteka udostępnia opcję włączenia rejestrowania danych osobowych i organizacji w przypadku podjęcia decyzji.
 
 ## <a name="logging-in-msalnet"></a>Logowanie w MSAL.NET
+
+ > [!NOTE]
+ > Aby uzyskać więcej informacji na temat MSAL.NET, zapoznaj się z witryną [typu wiki usługi MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki). Uzyskaj przykłady rejestrowania MSAL.NET i nie tylko. 
+ 
 W MSAL 3. x rejestrowanie jest ustawione na aplikację przy tworzeniu aplikacji przy użyciu `.WithLogging` modyfikatora konstruktora. Ta metoda pobiera parametry opcjonalne:
 
 - *Poziom* pozwala określić żądany poziom rejestrowania. Ustawienie na błędy spowoduje tylko błędy

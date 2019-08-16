@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 21fe92bf4a33dc44545f1bd54c718db6c0a38532
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a334b19fe4dd819a6e4c391e49d934bf5955a567
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68843284"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69516072"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Często zadawane pytania dotyczące dysków maszyn wirtualnych usługi Azure IaaS oraz zarządzanych i niezarządzanych dysków Premium
 
@@ -143,7 +143,48 @@ Partycjonowanie GPT może być używane tylko na dyskach danych, a nie na dyskac
 
 **Jakie typy dysków obsługują migawki?**
 
-SSD w warstwie Premium, standardowy dysk SSD i standardowe dyski twarde obsługują migawki. Dla tych trzech typów dysków migawki są obsługiwane dla wszystkich rozmiarów dysków (łącznie z dyskami o rozmiarze do 32 TiB). Niezwykle dysków SSD nie obsługują migawek.
+SSD w warstwie Premium, standardowy dysk SSD i standardowe dyski twarde obsługują migawki. Dla tych trzech typów dysków migawki są obsługiwane dla wszystkich rozmiarów dysków (łącznie z dyskami o rozmiarze do 32 TiB). Dyski Ultra nie obsługują migawek.
+
+## <a name="ultra-disks"></a>Ultra disks
+
+**Jakie regiony obecnie obsługują Ultra disks?**
+- Wschodnie stany USA 2
+- Azja Południowo-Wschodnia
+- Europa Północna
+
+**Jakie serie maszyn wirtualnych obsługują teraz Ultra disks?**
+- ESv3
+- DSv3
+
+**Jak należy ustawić moją przepływność na dysku?**
+Jeśli nie masz pewności, w jaki sposób ustawić przepływność dysku, zalecamy rozpoczęcie od zagwarantowania, że rozmiar we/wy wynoszący 16 KiB i dostosowanie wydajności w trakcie monitorowania aplikacji. Formuła: Przepływność w MB/s = liczba operacji we/wy * 16/1000.
+
+**Mam skonfigurowany dysk do 40000 IOPS, ale widzę tylko 12800 operacji we/wy na sekundę, dlaczego nie widzę wydajności dysku?**
+Oprócz ograniczenia dysku istnieje ograniczenie we/wy, które jest nakładane na poziomie maszyny wirtualnej. Upewnij się, że rozmiar maszyny wirtualnej, z której korzystasz, może obsługiwać poziomy skonfigurowane na dyskach. Aby uzyskać szczegółowe informacje dotyczące limitów we/wy narzuconych przez maszynę wirtualną, zobacz [rozmiary maszyn wirtualnych z systemem Windows na platformie Azure](../articles/virtual-machines/windows/sizes.md).
+
+**Czy mogę użyć poziomów buforowania z dyskiem o bardzo wysokiej rozdzielczości?**
+Nie, Ultra disks nie obsługuje różnych metod buforowania, które są obsługiwane przez inne typy dysków. Ustaw buforowanie dysku na brak.
+
+**Czy mogę dołączyć dysk Ultra do istniejącej maszyny wirtualnej?**
+Może to być, że maszyna wirtualna musi znajdować się w stacji i strefie dostępności, która obsługuje Ultra Disks. Aby uzyskać szczegółowe informacje, zobacz Wprowadzenie do usługi [Ultra disks](../articles/virtual-machines/windows/disks-enable-ultra-ssd.md) .
+
+**Czy mogę użyć dyskietki jako dysku systemu operacyjnego dla mojej maszyny wirtualnej?**
+Nie. niezwykle dyski są obsługiwane tylko jako dyski danych i są obsługiwane tylko jako dyski natywne 4 k.
+
+**Czy mogę przekonwertować istniejący dysk na dysk?**
+Nie, ale można migrować datę z istniejącego dysku na dysk Ultra. Aby przeprowadzić migrację istniejącego dysku na dysk, podłącz oba dyski do tej samej maszyny wirtualnej i skopiuj dane dysku z jednego dysku do drugiego lub Skorzystaj z rozwiązania innej firmy do migracji danych.
+
+**Czy można tworzyć migawki dla Ultra disks?**
+Nie, migawki nie są jeszcze dostępne.
+
+**Czy jest Azure Backup dostępne dla Ultra disks?**
+Nie, pomoc techniczna Azure Backup nie jest jeszcze dostępna.
+
+**Czy mogę dołączyć dysk Ultra do maszyny wirtualnej działającej w zestawie dostępności?**
+Nie, to nie jest jeszcze obsługiwane.
+
+**Czy mogę włączyć funkcję Azure Site Recovery (ASR) dla maszyn wirtualnych przy użyciu Ultra disks?**
+Nie, usługa ASR nie jest jeszcze obsługiwana w przypadku Ultra Disks.
 
 ## <a name="standard-ssd-disks"></a>SSD w warstwie Standardowa dyski
 

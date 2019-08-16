@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 04/22/2019
-ms.openlocfilehash: 661ac9ea3fd87268c43bf0a0eba66e30f636fc77
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/14/2019
+ms.openlocfilehash: f69fc89fe5634c9467cf728c7ab5c4d8ac6c5c74
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566205"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69512318"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>Limity zasobów dla pojedynczych baz danych przy użyciu modelu zakupu opartego na rdzeń wirtualny
 
@@ -32,254 +32,278 @@ Możesz ustawić warstwę usług, rozmiar obliczeń i ilość miejsca do magazyn
 > [!IMPORTANT]
 > Aby uzyskać wskazówki dotyczące skalowania i zagadnienia, zobacz [skalowanie pojedynczej bazy danych](sql-database-single-database-scale.md).
 
-## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>Ogólnego przeznaczenia warstwa usługi: Rozmiary magazynu i rozmiary obliczeń
+## <a name="general-purpose-service-tier-for-provisioned-compute"></a>Ogólnego przeznaczenia warstwa usługi dla obliczeń zainicjowanych
 
 > [!IMPORTANT]
 > Nowe bazy danych obliczenia nie są już obsługiwane w regionie AustraliaEast.
 
-### <a name="general-purpose-service-tier-generation-4-compute-platform-part-1"></a>Ogólnego przeznaczenia warstwa usługi: Platforma obliczeniowa 4 generacji (część 1)
+### <a name="gen4-compute-generation-part-1"></a>Generowanie obliczeń obliczenia (część 1)
 
 |Rozmiar obliczeń|GP_Gen4_1|GP_Gen4_2|GP_Gen4_3|GP_Gen4_4|GP_Gen4_5|GP_Gen4_6
 |:--- | --: |--: |--: |--: |--: |--: |
-|Generowanie H/W|4|4|4|4|4|4|
+|Generowanie obliczeń|4\. generacji|4\. generacji|4\. generacji|4\. generacji|4\. generacji|4\. generacji|
 |Rdzenie wirtualne|1|2|3|4|5|6|
 |Pamięć (GB)|7|14|21|28|35|42|
 |Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Tak|
 |Magazyn OLTP w pamięci (GB)|ND|ND|ND|ND|ND|ND|
 |Maksymalny rozmiar danych (GB)|1024|1024|1024|1536|1536|1536|
 |Maksymalny rozmiar dziennika (GB)|307|307|307|461|461|461|
-|Rozmiar bazy danych TempDB (GB)|32|64|96|128|160|192|
-|Typ magazynu|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|
+|Maksymalny rozmiar danych TempDB (GB)|32|64|96|128|160|192|
+|Typ magazynu|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|
 |We/Wy, czas oczekiwania (w przybliżeniu)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|
-|Liczba operacji we/wy docelowej (64 KB)|500|1000|1500|2000|2500|3000|
-|Limity szybkości rejestrowania (MB/s)|3.75|7.5|11.25|15|18,75|22.5|
+|Maksymalna liczba operacji we/wy danych (64 KB)|500|1000|1500|2000|2500|3000|
+|Maksymalny współczynnik rejestrowania (MB/s)|3.75|7.5|11.25|15|18,75|22.5|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|200|400|600|800|1000|1200|
-|Maksymalna dozwolona liczba sesji|30000|30000|30000|30000|30000|30000|
+|Maksymalna liczba współbieżnych sesji|30000|30000|30000|30000|30000|30000|
 |Liczba replik|1|1|1|1|1|1|
 |Multi-AZ|ND|ND|ND|ND|ND|ND|
 |Odczyt skalowalny w poziomie|ND|ND|ND|ND|ND|ND|
 |Uwzględniony magazyn kopii zapasowych|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|
 
-### <a name="general-purpose-service-tier-generation-4-compute-platform-part-2"></a>Ogólnego przeznaczenia warstwa usługi: Platforma obliczeniowa generacji 4 (część 2)
+### <a name="gen4-compute-generation-part-2"></a>Generowanie obliczeń obliczenia (część 2)
 
 |Rozmiar obliczeń|GP_Gen4_7|GP_Gen4_8|GP_Gen4_9|GP_Gen4_10|GP_Gen4_16|GP_Gen4_24
 |:--- | --: |--: |--: |--: |--: |--: |
-|Generowanie H/W|4|4|4|4|4|4|
+|Generowanie obliczeń|4\. generacji|4\. generacji|4\. generacji|4\. generacji|4\. generacji|4\. generacji|
 |Rdzenie wirtualne|7|8|9|10|16|24|
 |Pamięć (GB)|49|56|63|70|112|168|
 |Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Tak|
 |Magazyn OLTP w pamięci (GB)|ND|ND|ND|ND|ND|ND|
 |Maksymalny rozmiar danych (GB)|1536|3072|3072|3072|4096|4096|
 |Maksymalny rozmiar dziennika (GB)|461|922|922|922|1229|1229|
-|Rozmiar bazy danych TempDB (GB)|224|256|288|320|384|384|
-|Typ magazynu|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|
+|Maksymalny rozmiar danych TempDB (GB)|224|256|288|320|384|384|
+|Typ magazynu|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|
 |We/Wy, czas oczekiwania (w przybliżeniu)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)
-|Liczba operacji we/wy docelowej (64 KB)|3500|4000|4500|5000|7000|7000|
-|Limity szybkości rejestrowania (MB/s)|26,25|30|30|30|30|30|
+|Maksymalna liczba operacji we/wy danych (64 KB)|3500|4000|4500|5000|7000|7000|
+|Maksymalny współczynnik rejestrowania (MB/s)|26,25|30|30|30|30|30|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|1400|1600|1800|2000|3200|4800|
-|Maksymalna dozwolona liczba sesji|30000|30000|30000|30000|30000|30000|
+|Maksymalna liczba współbieżnych sesji|30000|30000|30000|30000|30000|30000|
 |Liczba replik|1|1|1|1|1|1|
 |Multi-AZ|ND|ND|ND|ND|ND|ND|
 |Odczyt skalowalny w poziomie|ND|ND|ND|ND|ND|ND|
 |Uwzględniony magazyn kopii zapasowych|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|
 
-### <a name="general-purpose-service-tier-generation-5-compute-platform-part-1"></a>Ogólnego przeznaczenia warstwa usługi: Platforma obliczeniowa generacji 5 (część 1)
+### <a name="gen5-compute-generation-part-1"></a>Generowanie obliczeń 5 rdzeń (część 1)
 
 |Rozmiar obliczeń|GP_Gen5_2|GP_Gen5_4|GP_Gen5_6|GP_Gen5_8|GP_Gen5_10|GP_Gen5_12|GP_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
-|Generowanie H/W|5|5|5|5|5|5|5|
+|Generowanie obliczeń|5\. generacji|5\. generacji|5\. generacji|5\. generacji|5\. generacji|5\. generacji|5\. generacji|
 |Rdzenie wirtualne|2|4|6|8|10|12|14|
 |Pamięć (GB)|10.2|20,4|30,6|40,8|51|61,2|71,4|
-|Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Yes|Yes|
+|Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Yes|Tak|
 |Magazyn OLTP w pamięci (GB)|ND|ND|ND|ND|ND|ND|ND|
 |Maksymalny rozmiar danych (GB)|1024|1024|1536|1536|1536|3072|3072|
 |Maksymalny rozmiar dziennika (GB)|307|307|307|461|461|461|461|
-|Rozmiar bazy danych TempDB (GB)|64|128|192|256|320|384|384|
-|Typ magazynu|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|
+|Maksymalny rozmiar danych TempDB (GB)|64|128|192|256|320|384|384|
+|Typ magazynu|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|
 |We/Wy, czas oczekiwania (w przybliżeniu)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|
-|Liczba operacji we/wy docelowej (64 KB)|1000|2000|3000|4000|5000|6000|7000|
-|Limity szybkości rejestrowania (MB/s)|3.75|7.5|11.25|15|18,75|22.5|26,25|
+|Maksymalna liczba operacji we/wy danych (64 KB)|1000|2000|3000|4000|5000|6000|7000|
+|Maksymalny współczynnik rejestrowania (MB/s)|3.75|7.5|11.25|15|18,75|22.5|26,25|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|200|400|600|800|1000|1200|1400|
-|Maksymalna dozwolona liczba sesji|30000|30000|30000|30000|30000|30000|30000|
+|Maksymalna liczba współbieżnych sesji|30000|30000|30000|30000|30000|30000|30000|
 |Liczba replik|1|1|1|1|1|1|1|
 |Multi-AZ|ND|ND|ND|ND|ND|ND|ND|
 |Odczyt skalowalny w poziomie|ND|ND|ND|ND|ND|ND|ND|
 |Uwzględniony magazyn kopii zapasowych|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|
 
-### <a name="general-purpose-service-tier-generation-5-compute-platform-part-2"></a>Ogólnego przeznaczenia warstwa usługi: Platforma obliczeniowa generacji 5 (część 2)
+### <a name="gen5-compute-generation-part-2"></a>Generowanie obliczeń 5 rdzeń (część 2)
 
 |Rozmiar obliczeń|GP_Gen5_16|GP_Gen5_18|GP_Gen5_20|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
-|Generowanie H/W|5|5|5|5|5|5|5|
+|Generowanie obliczeń|5\. generacji|5\. generacji|5\. generacji|5\. generacji|5\. generacji|5\. generacji|5\. generacji|
 |Rdzenie wirtualne|16|18|20|24|32|40|80|
 |Pamięć (GB)|81,6|91,8|102|122,4|163,2|204|408|
-|Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Yes|Yes|
+|Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Yes|Tak|
 |Magazyn OLTP w pamięci (GB)|ND|ND|ND|ND|ND|ND|ND|
 |Maksymalny rozmiar danych (GB)|3072|3072|3072|4096|4096|4096|4096|
 |Maksymalny rozmiar dziennika (GB)|922|922|922|1229|1229|1229|1229|
-|Rozmiar bazy danych TempDB (GB)|384|384|384|384|384|384|384|
-|Typ magazynu|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|
+|Maksymalny rozmiar danych TempDB (GB)|384|384|384|384|384|384|384|
+|Typ magazynu|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|
 |We/Wy, czas oczekiwania (w przybliżeniu)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|
-|Liczba operacji we/wy docelowej (64 KB)|7000|7000|7000|7000|7000|7000|7000|
-|Limity szybkości rejestrowania (MB/s)|30|30|30|30|30|30|30|
+|Maksymalna liczba operacji we/wy danych (64 KB)|7000|7000|7000|7000|7000|7000|7000|
+|Maksymalny współczynnik rejestrowania (MB/s)|30|30|30|30|30|30|30|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|1600|1800|2000|2400|3200|4000|8000|
-|Maksymalna dozwolona liczba sesji|30000|30000|30000|30000|30000|30000|30000|
+|Maksymalna liczba współbieżnych sesji|30000|30000|30000|30000|30000|30000|30000|
 |Liczba replik|1|1|1|1|1|1|1|
 |Multi-AZ|ND|ND|ND|ND|ND|ND|ND|
 |Odczyt skalowalny w poziomie|ND|ND|ND|ND|ND|ND|ND|
 |Uwzględniony magazyn kopii zapasowych|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|
 
-### <a name="serverless-compute-tier"></a>Warstwa bezserwerowych usług obliczeniowych
+## <a name="general-purpose-service-tier-for-serverless-compute"></a>Ogólnego przeznaczenia warstwy usług dla obliczeń bezserwerowych
 
-[Warstwa obliczeń](sql-database-serverless.md) bezserwerowych jest w wersji zapoznawczej i dotyczy tylko pojedynczych baz danych przy użyciu modelu zakupu rdzeń wirtualny.
+[Warstwa obliczeń](sql-database-serverless.md) bezserwerowych jest w wersji zapoznawczej.
 
-#### <a name="generation-5-compute-platform"></a>Platforma obliczeniowa z generacji 5
+### <a name="gen5-compute-generation-part-1"></a>Generowanie obliczeń 5 rdzeń (część 1)
 
-|Rozmiar obliczeń|GP_S_Gen5_1|GP_S_Gen5_2|GP_S_Gen5_4|
-|:--- | --: |--: |--: |
-|Generowanie H/W|5|5|5|
-|Min — maks. rdzeni wirtualnych|0,5-1|0,5-2|0,5 – 4|
-|Min — maks. pamięć (GB)|2.02-3|2.05-6|2.10-12|
-|Minimalne opóźnienie autowstrzymania (godziny)|6|6|6|
-|Obsługa magazynu kolumn|Tak|Yes|Tak|
-|Magazyn OLTP w pamięci (GB)|ND|ND|ND|
-|Maksymalny rozmiar danych (GB)|512|1024|1024|
-|Maksymalny rozmiar dziennika (GB)|12|24|48|
-|Rozmiar bazy danych TempDB (GB)|32|64|128|
-|Typ magazynu|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|Magazyn Premium (zdalny)|
-|We/Wy, czas oczekiwania (w przybliżeniu)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|
-|Liczba operacji we/wy docelowej (64 KB)|500|1000|2000|
-|Limity szybkości rejestrowania (MB/s)|2.5|5.6|10|
-|Maksymalna liczba współbieżnych procesów roboczych (żądań)|75|150|300|
-|Maksymalna dozwolona liczba sesji|30000|30000|30000|
-|Liczba replik|1|1|1|
-|Multi-AZ|ND|ND|ND|
-|Odczyt skalowalny w poziomie|ND|ND|ND|
-|Uwzględniony magazyn kopii zapasowych|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|
+|Rozmiar obliczeń|GP_S_Gen5_1|GP_S_Gen5_2|GP_S_Gen5_4|GP_S_Gen5_6|GP_S_Gen5_8|
+|:--- | --: |--: |--: |--: |--: |
+|Generowanie obliczeń|5\. generacji|5\. generacji|5\. generacji|5\. generacji|5\. generacji|
+|Min — maks. rdzeni wirtualnych|0,5-1|0,5-2|0,5 – 4|0,75-6|1.0 — 8|
+|Min — maks. pamięć (GB)|2.02-3|2.05-6|2.10-12|2.25 – 18|3,00-24|
+|Minimalne opóźnienie autopauzy (minuty)|60|60|60|60|60|
+|Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Tak|
+|Magazyn OLTP w pamięci (GB)|ND|ND|ND|ND|ND|
+|Maksymalny rozmiar danych (GB)|512|1024|1024|1024|1536|
+|Maksymalny rozmiar dziennika (GB)|154|307|307|307|461|
+|Maksymalny rozmiar danych TempDB (GB)|32|64|128|192|256|
+|Typ magazynu|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|
+|We/Wy, czas oczekiwania (w przybliżeniu)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|
+|Maksymalna liczba operacji we/wy danych (64 KB)|500|1000|2000|3000|4000|
+|Maksymalny współczynnik rejestrowania (MB/s)|2.5|5.6|10|15|20|
+|Maksymalna liczba współbieżnych procesów roboczych (żądań)|75|150|300|450|600|
+|Maksymalna liczba współbieżnych sesji|30000|30000|30000|30000|30000|
+|Liczba replik|1|1|1|1|1|
+|Multi-AZ|ND|ND|ND|ND|ND|
+|Odczyt skalowalny w poziomie|ND|ND|ND|ND|ND|
+|Uwzględniony magazyn kopii zapasowych|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|
 
-## <a name="business-critical-service-tier-for-provisioned-compute-tier"></a>Krytyczne dla działania firmy warstwa usługi dla alokowanej warstwy obliczeniowej
+### <a name="gen5-compute-generation-part-2"></a>Generowanie obliczeń 5 rdzeń (część 2)
+
+|Rozmiar obliczeń|GP_S_Gen5_10|GP_S_Gen5_12|GP_S_Gen5_14|GP_S_Gen5_16|
+|:--- | --: |--: |--: |--: |
+|Generowanie obliczeń|5\. generacji|5\. generacji|5\. generacji|5\. generacji|
+|Min — maks. rdzeni wirtualnych|1,25-10|1.50 — 12|1,75-14|2,00-16|
+|Min — maks. pamięć (GB)|3,75-30|4.50 – 36|5,25-42|6.00-48|
+|Minimalne opóźnienie autopauzy (minuty)|60|60|60|60|
+|Obsługa magazynu kolumn|Tak|Yes|Yes|Tak|
+|Magazyn OLTP w pamięci (GB)|ND|ND|ND|ND|
+|Maksymalny rozmiar danych (GB)|1536|1536|1536|3072|
+|Maksymalny rozmiar dziennika (GB)|461|461|461|922|
+|Maksymalny rozmiar danych TempDB (GB)|320|384|448|512|
+|Typ magazynu|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|
+|We/Wy, czas oczekiwania (w przybliżeniu)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|
+|Maksymalna liczba operacji we/wy danych (64 KB)|5000|6000|7000|8000|
+|Maksymalny współczynnik rejestrowania (MB/s)|20|20|20|20|
+|Maksymalna liczba współbieżnych procesów roboczych (żądań)|750|900|1050|1200|
+|Maksymalna liczba współbieżnych sesji|30000|30000|30000|30000|
+|Liczba replik|1|1|1|1|
+|Multi-AZ|ND|ND|ND|ND|
+|Odczyt skalowalny w poziomie|ND|ND|ND|ND|
+|Uwzględniony magazyn kopii zapasowych|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|
+
+## <a name="business-critical-service-tier-for-provisioned-compute"></a>Krytyczne dla działania firmy warstwa usługi dla obliczeń zainicjowanych
 
 > [!IMPORTANT]
 > Nowe bazy danych obliczenia nie są już obsługiwane w regionie AustraliaEast.
 
-### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>Krytyczne dla działania firmy warstwa usługi: Platforma obliczeniowa 4 generacji (część 1)
+### <a name="gen4-compute-generation-part-1"></a>Generowanie obliczeń obliczenia (część 1)
 
 |Rozmiar obliczeń|BC_Gen4_1|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
 |:--- | --: |--: |--: |--: |--: |--: |
-|Generowanie H/W|4|4|4|4|4|4|
+|Generowanie obliczeń|4\. generacji|4\. generacji|4\. generacji|4\. generacji|4\. generacji|4\. generacji|
 |Rdzenie wirtualne|1|2|3|4|5|6|
 |Pamięć (GB)|7|14|21|28|35|42|
-|Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Yes|
+|Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Tak|
 |Magazyn OLTP w pamięci (GB)|1|2|3|4|5|6|
 |Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
 |Maksymalny rozmiar danych (GB)|650|650|650|650|650|650|
 |Maksymalny rozmiar dziennika (GB)|195|195|195|195|195|195|
-|Rozmiar bazy danych TempDB (GB)|32|64|96|128|160|192|
+|Maksymalny rozmiar danych TempDB (GB)|32|64|96|128|160|192|
 |We/Wy, czas oczekiwania (w przybliżeniu)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|
-|Liczba operacji we/wy docelowej (64 KB)|5000|10 000|15000|20000|25000|30000|
-|Limity szybkości rejestrowania (MB/s)|8|16|24|32|40|48|
+|Maksymalna liczba operacji we/wy danych (64 KB)|5000|10 000|15000|20000|25000|30000|
+|Maksymalny współczynnik rejestrowania (MB/s)|8|16|24|32|40|48|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|200|400|600|800|1000|1200|
 |Maksymalna liczba współbieżnych logowań|200|400|600|800|1000|1200|
-|Maksymalna dozwolona liczba sesji|30000|30000|30000|30000|30000|30000|
+|Maksymalna liczba współbieżnych sesji|30000|30000|30000|30000|30000|30000|
 |Liczba replik|4|4|4|4|4|4|
 |Multi-AZ|Tak|Yes|Yes|Yes|Yes|Tak|
 |Odczyt skalowalny w poziomie|Tak|Yes|Yes|Yes|Yes|Tak|
 |Uwzględniony magazyn kopii zapasowych|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|
 
-### <a name="business-critical-service-tier-generation-4-compute-platform-part-2"></a>Krytyczne dla działania firmy warstwa usługi: Platforma obliczeniowa generacji 4 (część 2)
+### <a name="gen4-compute-generation-part-2"></a>Generowanie obliczeń obliczenia (część 2)
 
 |Rozmiar obliczeń|BC_Gen4_7|BC_Gen4_8|BC_Gen4_9|BC_Gen4_10|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
-|Generowanie H/W|4|4|4|4|4|4|
+|Generowanie obliczeń|4\. generacji|4\. generacji|4\. generacji|4\. generacji|4\. generacji|4\. generacji|
 |Rdzenie wirtualne|7|8|9|10|16|24|
 |Pamięć (GB)|49|56|63|70|112|168|
-|Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Yes|
+|Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Tak|
 |Magazyn OLTP w pamięci (GB)|7|8|9,5|11|20|36|
 |Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
 |Maksymalny rozmiar danych (GB)|650|650|650|650|1024|1024|
 |Maksymalny rozmiar dziennika (GB)|195|195|195|195|307|307|
-|Rozmiar bazy danych TempDB (GB)|224|256|288|320|384|384|
+|Maksymalny rozmiar danych TempDB (GB)|224|256|288|320|384|384|
 |We/Wy, czas oczekiwania (w przybliżeniu)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|
-|Liczba operacji we/wy docelowej (64 KB)|35000|40000|45000|50000|80000|120000|
-|Limity szybkości rejestrowania (MB/s)|56|64|64|64|64|64|
+|Maksymalna liczba operacji we/wy danych (64 KB)|35000|40000|45000|50000|80000|120000|
+|Maksymalny współczynnik rejestrowania (MB/s)|56|64|64|64|64|64|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|1400|1600|1800|2000|3200|4800|
 |Maksymalna liczba współbieżnych logowań (żądania)|1400|1600|1800|2000|3200|4800|
-|Maksymalna dozwolona liczba sesji|30000|30000|30000|30000|30000|30000|
+|Maksymalna liczba współbieżnych sesji|30000|30000|30000|30000|30000|30000|
 |Liczba replik|4|4|4|4|4|4|
 |Multi-AZ|Tak|Yes|Yes|Yes|Yes|Tak|
 |Odczyt skalowalny w poziomie|Tak|Yes|Yes|Yes|Yes|Tak|
 |Uwzględniony magazyn kopii zapasowych|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|
 
-### <a name="business-critical-service-tier-generation-5-compute-platform-part-1"></a>Krytyczne dla działania firmy warstwa usługi: Platforma obliczeniowa generacji 5 (część 1)
+### <a name="gen5-compute-compute-part-1"></a>5 rdzeń obliczeń obliczeniowych (część 1)
 
 |Rozmiar obliczeń|BC_Gen5_2|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
-|Generowanie H/W|5|5|5|5|5|5|5|
+|Generowanie obliczeń|5\. generacji|5\. generacji|5\. generacji|5\. generacji|5\. generacji|5\. generacji|5\. generacji|
 |Rdzenie wirtualne|2|4|6|8|10|12|14|
 |Pamięć (GB)|10.2|20,4|30,6|40,8|51|61,2|71,4|
-|Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|Tak|
+|Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Yes|Tak|
 |Magazyn OLTP w pamięci (GB)|1,571|3,142|4,713|6,284|8,655|11,026|13,397|
 |Maksymalny rozmiar danych (GB)|1024|1024|1536|1536|1536|3072|3072|
 |Maksymalny rozmiar dziennika (GB)|307|307|307|461|461|922|922|
-|Rozmiar bazy danych TempDB (GB)|64|128|192|256|320|384|384|
+|Maksymalny rozmiar danych TempDB (GB)|64|128|192|256|320|384|384|
 |Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
 |We/Wy, czas oczekiwania (w przybliżeniu)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|
-|Liczba operacji we/wy docelowej (64 KB)|8000|16000|24000|32000|40000|48000|56000|
-|Limity szybkości rejestrowania (MB/s)|12|24|36|48|60|72|84|
+|Maksymalna liczba operacji we/wy danych (64 KB)|8000|16000|24000|32000|40000|48000|56000|
+|Maksymalny współczynnik rejestrowania (MB/s)|12|24|36|48|60|72|84|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|200|400|600|800|1000|1200|1400|
 |Maksymalna liczba współbieżnych logowań|200|400|600|800|1000|1200|1400|
-|Maksymalna dozwolona liczba sesji|30000|30000|30000|30000|30000|30000|30000|
+|Maksymalna liczba współbieżnych sesji|30000|30000|30000|30000|30000|30000|30000|
 |Liczba replik|4|4|4|4|4|4|4|
-|Multi-AZ|Yes|Yes|Yes|Yes|Yes|Yes|Tak|
+|Multi-AZ|Tak|Yes|Yes|Yes|Yes|Yes|Tak|
 |Odczyt skalowalny w poziomie|Tak|Yes|Yes|Yes|Yes|Yes|Tak|
 |Uwzględniony magazyn kopii zapasowych|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|
 
-### <a name="business-critical-service-tier-generation-5-compute-platform-part-2"></a>Krytyczne dla działania firmy warstwa usługi: Platforma obliczeniowa generacji 5 (część 2)
+### <a name="gen5-compute-generation-part-2"></a>Generowanie obliczeń 5 rdzeń (część 2)
 
 |Rozmiar obliczeń|BC_Gen5_16|BC_Gen5_18|BC_Gen5_20|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
-|Generowanie H/W|5|5|5|5|5|5|5|
+|Generowanie obliczeń|5\. generacji|5\. generacji|5\. generacji|5\. generacji|5\. generacji|5\. generacji|5\. generacji|
 |Rdzenie wirtualne|16|18|20|24|32|40|80|
 |Pamięć (GB)|81,6|91,8|102|122,4|163,2|204|408|
 |Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Yes|Tak|
 |Magazyn OLTP w pamięci (GB)|15,768|18,139|20,51|25,252|37,936|52,22|131,64|
 |Maksymalny rozmiar danych (GB)|3072|3072|3072|4096|4096|4096|4096|
 |Maksymalny rozmiar dziennika (GB)|922|922|922|1229|1229|1229|1229|
-|Rozmiar bazy danych TempDB (GB)|384|384|384|384|384|384|384|
+|Maksymalny rozmiar danych TempDB (GB)|384|384|384|384|384|384|384|
 |Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
 |We/Wy, czas oczekiwania (w przybliżeniu)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|
-|Liczba operacji we/wy docelowej (64 KB)|64000|72000|80000|96000|128000|160000|320000|
-|Limity szybkości rejestrowania (MB/s)|96|96|96|96|96|96|96|
+|Maksymalna liczba operacji we/wy danych (64 KB)|64000|72000|80000|96000|128000|160000|320000|
+|Maksymalny współczynnik rejestrowania (MB/s)|96|96|96|96|96|96|96|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|1600|1800|2000|2400|3200|4000|8000|
 |Maksymalna liczba współbieżnych logowań|1600|1800|2000|2400|3200|4000|8000|
-|Maksymalna dozwolona liczba sesji|30000|30000|30000|30000|30000|30000|30000|
+|Maksymalna liczba współbieżnych sesji|30000|30000|30000|30000|30000|30000|30000|
 |Liczba replik|4|4|4|4|4|4|4|
 |Multi-AZ|Tak|Yes|Yes|Yes|Yes|Yes|Tak|
 |Odczyt skalowalny w poziomie|Tak|Yes|Yes|Yes|Yes|Yes|Tak|
 |Uwzględniony magazyn kopii zapasowych|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|rozmiar bazy danych 1X|
 
-## <a name="hyperscale-service-tier"></a>Warstwa usługi Hiperskala
+## <a name="hyperscale-service-tier-for-provisioned-compute"></a>Warstwa usługi do skalowania dla zasobów obliczeniowych
 
-### <a name="generation-5-compute-platform"></a>Platforma obliczeniowa z generacji 5
+### <a name="gen5-compute-generation"></a>Generowanie obliczeń 5 rdzeń
 
 |Poziom wydajności|HS_Gen5_2|HS_Gen5_4|HS_Gen5_8|HS_Gen5_16|HS_Gen5_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |
-|Generowanie H/W|5|5|5|5|5|5|5|5|
+|Generowanie obliczeń|5\. generacji|5\. generacji|5\. generacji|5\. generacji|5\. generacji|5\. generacji|5\. generacji|5\. generacji|
 |Rdzenie wirtualne|2|4|8|16|24|32|40|80|
 |Pamięć (GB)|10.2|20,4|40,8|81,6|122,4|163,2|204|408|
-|Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Yes|Yes|Tak|
 |Magazyn OLTP w pamięci (GB)|ND|ND|ND|ND|ND|ND|ND|ND|
 |Maksymalny rozmiar danych (TB)|100 |100 |100 |100 |100 |100 |100 |100 |
 |Maksymalny rozmiar dziennika (TB)|1 |1 |1 |1 |1 |1 |1 |1 |
-|Rozmiar bazy danych TempDB (GB)|64|128|256|384|384|384|384|384|
+|Maksymalny rozmiar danych TempDB (GB)|64|128|256|384|384|384|384|384|
 |Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
-|Liczba operacji we/wy docelowej (64 KB)| [Uwaga 1](#note-1) |[Uwaga 1](#note-1)|[Uwaga 1](#note-1) |[Uwaga 1](#note-1) |[Uwaga 1](#note-1) |[Uwaga 1](#note-1) |[Uwaga 1](#note-1) | [Uwaga 1](#note-1) |
+|Maksymalna liczba operacji we/wy danych (64 KB)| [Uwaga 1](#note-1) |[Uwaga 1](#note-1)|[Uwaga 1](#note-1) |[Uwaga 1](#note-1) |[Uwaga 1](#note-1) |[Uwaga 1](#note-1) |[Uwaga 1](#note-1) | [Uwaga 1](#note-1) |
 |We/Wy, czas oczekiwania (w przybliżeniu)|Do ustalenia|Do ustalenia|Do ustalenia|Do ustalenia|Do ustalenia|Do ustalenia|Do ustalenia|Do ustalenia|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|200|400|800|1600|2400|3200|4000|8000|
-|Maksymalna dozwolona liczba sesji|30000|30000|30000|30000|30000|30000|30000|30000|
+|Maksymalna liczba współbieżnych sesji|30000|30000|30000|30000|30000|30000|30000|30000|
 |Liczba replik|2|2|2|2|2|2|2|2|
 |Multi-AZ|ND|ND|ND|ND|ND|ND|ND|ND|
-|Odczyt skalowalny w poziomie|Tak|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Odczyt skalowalny w poziomie|Tak|Yes|Yes|Yes|Yes|Yes|Yes|Tak|
 |Uwzględniony magazyn kopii zapasowych |7|7|7|7|7|7|7|7|
 |||
 

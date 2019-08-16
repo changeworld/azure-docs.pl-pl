@@ -1,7 +1,7 @@
 ---
-title: Diagnostyka usługa Load Balancer w warstwie Standardowa platformy Azure
+title: Diagnostyka usługa Load Balancer w warstwie Standardowa platformy Azure z metrykami, alertami i kondycją zasobów
 titlesuffix: Azure Load Balancer
-description: Skorzystaj z dostępnych metryk i informacji o kondycji dla diagnostyki usługa Load Balancer w warstwie Standardowa platformy Azure.
+description: Korzystając z dostępnych metryk, alertów i informacji o kondycji zasobów, można zdiagnozować usługa Load Balancer w warstwie Standardowa platformy Azure.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -11,21 +11,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/11/2019
+ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: e0329f5f975b67460796bf7dd9429752549a3483
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: b241f753c0de6e14282c679c5aec3c32be68e348
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274482"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69516258"
 ---
-# <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>Metryki i Diagnostyka kondycji dla usługa Load Balancer w warstwie Standardowa
+# <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Diagnostyka usługa Load Balancer w warstwie Standardowa przy użyciu metryk, alertów i kondycji zasobów
 
-Usługa Azure usługa Load Balancer w warstwie Standardowa udostępnia usługę Azure usługa Load Balancer w warstwie Standardowa zapewnia następujące możliwości diagnostyczne:
-* **Metryki wielowymiarowe**: Udostępnia nowe wielowymiarowe możliwości diagnostyki za poorednictwem [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) zarówno dla konfiguracji usług Public, jak i wewnętrznego modułu równoważenia obciążenia. Możesz monitorować zasoby modułu równoważenia obciążenia, zarządzać nimi i rozwiązywać problemy.
+Usługa Azure usługa Load Balancer w warstwie Standardowa udostępnia następujące możliwości diagnostyczne:
 
-* **Kondycja zasobu**: Strona Load Balancer na Azure Portal i Resource Health stronie (w obszarze monitor) uwidacznia sekcję Resource Health dla konfiguracji publicznej usługi równoważenia obciążenia usługa Load Balancer w warstwie Standardowa.
+* **Metryki i alerty wielowymiarowe**: Udostępnia nowe wielowymiarowe możliwości diagnostyki za [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) w przypadku konfiguracji usługi równoważenia obciążenia w warstwie Standardowa. Możesz monitorować zasoby standardowego modułu równoważenia obciążenia, zarządzać nimi i rozwiązywać problemy.
+
+* **Kondycja zasobu**: Strona Load Balancer na Azure Portal i Resource Health stronie (w obszarze monitor) uwidacznia sekcję Resource Health dla usługa Load Balancer w warstwie Standardowa. 
 
 Ten artykuł zawiera krótki przewodnik po tych możliwościach i oferuje sposoby ich używania do usługa Load Balancer w warstwie Standardowa.
 
@@ -74,8 +75,8 @@ Metryka dostępności adresu VIP opisuje prawidłowość ścieżki danych w regi
 
 Aby uzyskać dostępność ścieżki danych dla usługa Load Balancer w warstwie Standardowa zasobów:
 1. Upewnij się, że wybrano prawidłowy zasób modułu równoważenia obciążenia. 
-2. Z listy  rozwijanej Metryka wybierz opcję **dostępność ścieżki danych**. 
-3. Z listy  rozwijanej agregacja wybierz pozycję **średnia**. 
+2. Z listy rozwijanej Metryka wybierz opcję **dostępność ścieżki danych**. 
+3. Z listy rozwijanej agregacja wybierz pozycję **średnia**. 
 4. Dodatkowo należy dodać filtr dla adresu IP frontonu lub portu frontonu jako wymiar z wymaganym adresem IP frontonu lub portem frontonu, a następnie zgrupować je według wybranego wymiaru.
 
 ![Sondowanie VIP](./media/load-balancer-standard-diagnostics/LBMetrics-VIPProbing.png)
@@ -172,9 +173,6 @@ Wykres umożliwia klientom Samodzielne rozwiązywanie problemów ze wdrożeniem 
 
 Stan kondycji zasobów usługa Load Balancer w warstwie Standardowa jest udostępniany za pośrednictwem istniejącej **kondycji zasobów** w obszarze **monitorowanie > Service Health**.
 
->[!NOTE]
->Stan kondycji zasobu dla Load Balancer jest obecnie dostępny tylko dla publicznej konfiguracji usługi usługa Load Balancer w warstwie Standardowa. Zasoby wewnętrznego modułu równoważenia obciążenia lub podstawowe jednostki SKU zasobów Load Balancer nie ujawniają kondycji zasobów.
-
 Aby wyświetlić kondycję publicznych zasobów usługa Load Balancer w warstwie Standardowa:
 1. Wybierz pozycję **Monitoruj** > **Service Health**.
 
@@ -198,13 +196,9 @@ W poniższej tabeli wymieniono różne stany kondycji zasobów i ich opisy:
 
 | Stan kondycji zasobu | Opis |
 | --- | --- |
-| Dostępne | Twój publiczny zasób modułu równoważenia obciążenia jest w dobrej kondycji i jest dostępny. |
-| Niedostępny | Twój publiczny zasób modułu równoważenia obciążenia nie jest w dobrej kondycji. Diagnozuj kondycję, wybierając pozycję **Azure monitor** > **metryki**.<br>(Stan*niedostępny* może również oznaczać, że zasób nie jest połączony z publicznym modułem równoważenia obciążenia). |
-| Nieznane | Stan kondycji zasobu dla zasobu publicznego modułu równoważenia obciążenia nie został jeszcze zaktualizowany.<br>(*Nieznany* stan może również oznaczać, że zasób nie jest połączony z publicznym modułem równoważenia obciążenia).  |
-
-## <a name="limitations"></a>Ograniczenia 
-
-- Dostępność ścieżki danych (dostępność VIP) nie jest dostępna dla wewnętrznych frontonów Load Balancer.
+| Dostępne | Zasób standardowego modułu równoważenia obciążenia jest w dobrej kondycji i jest dostępny. |
+| Niedostępny | Zasób standardowego modułu równoważenia obciążenia nie jest w dobrej kondycji. Diagnozuj kondycję, wybierając pozycję **Azure monitor** > **metryki**.<br>(Stan*niedostępny* może również oznaczać, że zasób nie jest połączony z usługą równoważenia obciążenia w warstwie Standardowa). |
+| Nieznane | Stan kondycji zasobu dla zasobu standardowego modułu równoważenia obciążenia nie został jeszcze zaktualizowany.<br>(*Nieznany* stan może również oznaczać, że zasób nie jest połączony z usługą równoważenia obciążenia w warstwie Standardowa).  |
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -212,5 +206,3 @@ W poniższej tabeli wymieniono różne stany kondycji zasobów i ich opisy:
 - Dowiedz się więcej o [łączności wychodzącej modułu równoważenia obciążenia](https://aka.ms/lboutbound).
 - Dowiedz się więcej na temat [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview).
 - Dowiedz się więcej o [interfejsie API rest Azure monitor](https://docs.microsoft.com/rest/api/monitor/) i [sposobach pobierania metryk za pośrednictwem interfejsu API REST](/rest/api/monitor/metrics/list).
-
-

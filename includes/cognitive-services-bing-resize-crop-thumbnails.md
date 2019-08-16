@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: nitinme
 ms.openlocfilehash: f96c3a693ce8fc099374c998b35ce2fa90f4bb3f
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2019
+ms.lasthandoff: 08/15/2019
 ms.locfileid: "67868977"
 ---
 Niektóre odpowiedzi Bing zawierają adresy URL obrazów miniatur obsługiwanych przez usługę Bing. Można zmienić rozmiar i przyciąć obrazy miniatur. 
@@ -17,7 +17,7 @@ Niektóre odpowiedzi Bing zawierają adresy URL obrazów miniatur obsługiwanych
 > Upewnij się, że rozmiar i przycinanie miniatury zawierają scenariusz wyszukiwania i Uwzględnij prawa stron trzecich zgodnie z wymaganiami Wyszukiwanie Bing interfejsu API i wyświetlaj wymagania.
 
 
-Aby zmienić rozmiar obrazu, w adresie URL miniatury należy dodać parametr zapytania w (Width), h (Height) lub oba te elementy. Określ szerokość i wysokość w pikselach. Na przykład:  
+Aby zmienić rozmiar obrazu, w adresie URL miniatury należy dodać parametr zapytania w (Width), h (Height) lub oba te elementy. Określ szerokość i wysokość w pikselach. Przykład:  
   
 `https://<host>/th?id=JN.5l3yzwy%2f%2fHj59U6XhssIQ&pid=Api&w=200&h=200`  
   

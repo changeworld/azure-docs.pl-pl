@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: ac3d1a55a707349873132befb25a38358b563138
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: bb54221dedc3bfd5ddc84098d5309d26abcfa305
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875557"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515579"
 ---
 # <a name="azure-security-center-detection-capabilities"></a>Funkcje wykrywania usługi Azure Security Center
 W tym dokumencie omówiono zaawansowane możliwości wykrywania Azure Security Center, które ułatwiają identyfikowanie aktywnych zagrożeń przeznaczonych dla Microsoft Azure zasobów — zarówno dla systemu Windows, jak i Linux — oraz udostępnia szczegółowe informacje potrzebne do szybkiego reagowania.
@@ -83,7 +83,7 @@ W tym dokumencie omówiono, na czym polegają funkcje wykrywania w usłudze Azur
 
 * [Przewodnik planowania i obsługi usługi Azure Security Center](security-center-planning-and-operations-guide.md)
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md)
-* [Alerty zabezpieczeń według typu w usłudze Azure Security Center](security-center-alerts-type.md)
+* [Alerty zabezpieczeń w Azure Security Center](security-center-alerts-overview.md)
 * [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md) — informacje na temat monitorowania kondycji zasobów platformy Azure.
 * [Monitorowanie rozwiązań partnerskich w usłudze Azure Security Center](security-center-partner-solutions.md) — informacje na temat monitorowania stanu kondycji rozwiązań partnerskich.
 * [Azure Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.

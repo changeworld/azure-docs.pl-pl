@@ -1,67 +1,63 @@
 ---
-title: Konfigurowanie rejestrowania i zaloguj się przy użyciu protokołu OpenID Connect — Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Konfigurowanie rejestracji i logowania za pomocą protokołu OpenID Connect, za pomocą usługi Azure Active Directory B2C.
+title: Konfigurowanie rejestracji i logowania za pomocą OpenID Connect Connect-Azure Active Directory B2C
+description: Skonfiguruj konto i zaloguj się za pomocą usługi OpenID Connect Connect przy użyciu Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 08/06/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 774716aeb28ca5d9563f38272a59c8e675a11e4b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 720deb28ce124af23035337ac88cfb1d37fc7c53
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508390"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509684"
 ---
-# <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Konfigurowanie rejestracji i logowania za pomocą protokołu OpenID Connect, za pomocą usługi Azure Active Directory B2C
+# <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Skonfiguruj konto i zaloguj się za pomocą usługi OpenID Connect Connect przy użyciu Azure Active Directory B2C
 
->[!NOTE]
-> Ta funkcja jest dostępna w publicznej wersji zapoznawczej. Nie należy używać tej funkcji w środowisku produkcyjnym.
+[OpenID Connect Connect](active-directory-b2c-reference-oidc.md) to protokół uwierzytelniania oparty na protokole OAuth 2,0, który może służyć do bezpiecznego logowania użytkowników. Większość dostawców tożsamości korzystających z tego protokołu jest obsługiwana w Azure AD B2C. W tym artykule wyjaśniono, jak dodać niestandardowych dostawców tożsamości OpenID Connect Connect do przepływów użytkownika.
 
-
-[OpenID Connect](active-directory-b2c-reference-oidc.md) to protokół uwierzytelniania korzystających z protokołu OAuth 2.0, który może służyć do bezpiecznego logowania użytkowników. Większość dostawców tożsamości, które używają tego protokołu, są obsługiwane w usłudze Azure AD B2C. W tym artykule opisano sposób dodawania niestandardowych dostawców tożsamości OpenID Connect na temat przepływów użytkownika.
-
-## <a name="add-the-identity-provider"></a>Dodaj dostawcę tożsamości
+## <a name="add-the-identity-provider"></a>Dodawanie dostawcy tożsamości
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) jako administrator globalny dzierżawy usługi Azure AD B2C.
 2. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy.
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
-4. Wybierz **dostawców tożsamości**, a następnie kliknij przycisk **Dodaj**.
-5. Aby uzyskać **typ dostawcy tożsamości**, wybierz opcję **OpenID Connect (wersja zapoznawcza)** .
+4. Wybierz pozycję **dostawcy tożsamości**, a następnie kliknij przycisk **Dodaj**.
+5. W polu **Typ dostawcy tożsamości**wybierz pozycję **OpenID Connect Połącz**.
 
 ## <a name="configure-the-identity-provider"></a>Konfigurowanie dostawcy tożsamości
 
-Każdego dostawcy tożsamości z OpenID Connect w tym artykule opisano dokument metadanych, który zawiera większość informacji wymaganych do wykonania logowania. Obejmuje to informacje, takie jak adresy URL do użycia i lokalizację usługi publiczne klucze podpisywania. Dokument metadanych OpenID Connect zawsze znajduje się w punkcie końcowym, który kończy się `.well-known\openid-configuration`. Dostawca tożsamości OpenID Connect chcesz dodać, wprowadź jego adres URL metadanych.
+Każdy dostawca tożsamości OpenID Connect Connect zawiera opis dokumentu metadanych, który zawiera większość informacji wymaganych do przeprowadzenia logowania. Obejmuje to takie informacje, jak adresy URL, które mają być używane, oraz lokalizację publicznych kluczy podpisywania usługi. Dokument metadanych OpenID Connect Connect zawsze znajduje się w punkcie końcowym, który się `.well-known\openid-configuration`skończy. Dla dostawcy tożsamości OpenID Connect Connect, który chcesz dodać, wprowadź adres URL metadanych.
 
-Aby zezwolić użytkownikom na logowanie, dostawca tożsamości wymaga deweloperów zarejestrować aplikację w ich usługi. Ta aplikacja ma identyfikator, który jest określany jako **identyfikator klienta** i **klucz tajny klienta**. Skopiuj te wartości z dostawcy tożsamości, a następnie wprowadź je do odpowiednich pól.
+Aby umożliwić użytkownikom logowanie się, dostawca tożsamości wymaga od deweloperów zarejestrowania aplikacji w swojej usłudze. Ta aplikacja ma identyfikator, który jest określany jako **Identyfikator klienta** i **klucz tajny klienta**. Skopiuj te wartości z dostawcy tożsamości i wprowadź je do odpowiednich pól.
 
 > [!NOTE]
-> Klucz tajny klienta jest opcjonalne. Jednak należy wprowadzić klucz tajny klienta, jeśli chcesz użyć [przepływ kodu autoryzacji](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth), który używa klucza tajnego do programu exchange kodu dla tokenu.
+> Wpis tajny klienta jest opcjonalny. Należy jednak wprowadzić klucz tajny klienta, jeśli chcesz użyć [przepływu kodu autoryzacji](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth), który używa klucza tajnego do wymiany kodu dla tokenu.
 
-Zakres definiuje informacje i uprawnienia, które chcesz zbierać z dostawcą tożsamości niestandardowej. OpenID Connect żądania muszą zawierać `openid` zakres wartości, aby otrzymać identyfikator tokenu od dostawcy tożsamości. Bez tokenu Identyfikacyjnego użytkownicy nie będą mogli zalogować się do usługi Azure AD B2C przy użyciu niestandardowego dostawcy tożsamości. Można dołączyć inne zakresy rozdzielone spacjami. Zajrzyj do dokumentacji dostawcy tożsamości niestandardowej, aby zobaczyć, jakie inne zakresy mogą być dostępne.
+Zakres definiuje informacje i uprawnienia, które chcesz zebrać od niestandardowego dostawcy tożsamości. Żądania połączenia OpenID Connect muszą zawierać `openid` wartość zakresu w celu uzyskania tokenu identyfikatora od dostawcy tożsamości. Bez tokenu identyfikatora użytkownicy nie mogą zalogować się do Azure AD B2C przy użyciu niestandardowego dostawcy tożsamości. Inne zakresy można dołączać rozdzielone spacjami. Zapoznaj się z dokumentacją niestandardowego dostawcy tożsamości, aby zobaczyć, jakie inne zakresy mogą być dostępne.
 
-Typ odpowiedzi opisano, jakie informacje są wysyłane w początkowe wywołanie `authorization_endpoint` z niestandardowego dostawcy tożsamości. Następujące typy odpowiedzi mogą być używane:
+Typ odpowiedzi opisuje, jakiego rodzaju informacje są wysyłane z powrotem podczas początkowego wywołania do `authorization_endpoint` niestandardowego dostawcy tożsamości. Można użyć następujących typów odpowiedzi:
 
-- `code`: Zgodnie [przepływ kodu autoryzacji](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth), zostanie zwrócony kod, wróć do usługi Azure AD B2C. Usługa Azure AD B2C będzie kontynuowane do wywołania `token_endpoint` wymianę kodu dla tokenu.
-- `token`: Token dostępu jest zwracany do usługi Azure AD B2C z niestandardowego dostawcy tożsamości.
-- `id_token`: Identyfikator tokenu jest zwracany do usługi Azure AD B2C z niestandardowego dostawcy tożsamości.
+- `code`: Zgodnie z [przepływem kodu autoryzacji](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)kod zostanie zwrócony z powrotem do Azure AD B2C. Azure AD B2C przechodzi do wywołania `token_endpoint` programu w celu wymiany kodu dla tokenu.
+- `token`: Token dostępu jest zwracany z powrotem do Azure AD B2C z niestandardowego dostawcy tożsamości.
+- `id_token`: Token identyfikatora jest zwracany z powrotem do Azure AD B2C z niestandardowego dostawcy tożsamości.
 
-Tryb odpowiedzi definiuje metodę, które mają być używane do wysyłania danych z niestandardowego dostawcy tożsamości do usługi Azure AD B2C. Można użyć następujących trybów odpowiedzi:
+Tryb odpowiedzi definiuje metodę, która powinna być używana do wysyłania danych z powrotem z niestandardowego dostawcy tożsamości do Azure AD B2C. Można używać następujących trybów odpowiedzi:
 
-- `form_post`: Ten tryb odpowiedzi zaleca się najlepiej. Odpowiedzi są przesyłane za pośrednictwem protokołu HTTP `POST` metoda, za pomocą kodu lub token jest zakodowany w treści, używając `application/x-www-form-urlencoded` formatu.
+- `form_post`: Ten tryb odpowiedzi jest zalecany w celu uzyskania najlepszego zabezpieczenia. Odpowiedź jest przesyłana przez metodę http `POST` , z kodem lub tokenem zakodowanym w treści `application/x-www-form-urlencoded` przy użyciu formatu.
 - `query`: Kod lub token jest zwracany jako parametr zapytania.
 
-Wskazówka dotycząca domeny, można przejść bezpośrednio do strony dostawcy określonej tożsamości, zamiast użytkownika wykonującego wyboru między listy dostawców tożsamości dostępnych logowania. Aby zezwolić na tego rodzaju zachowanie, wprowadź wskazówkę dotyczącą domeny. Aby przejść do niestandardowego dostawcy tożsamości, Dołącz parametr `domain_hint=<domain hint value>` na końcu żądania podczas wywoływania usługi Azure AD B2C do logowania.
+Wskazówki dotyczącej domeny można użyć, aby pominąć bezpośrednio na stronie logowania określonego dostawcy tożsamości, zamiast wybierać użytkowników z listy dostępnych dostawców tożsamości. Aby zezwolić na tego rodzaju zachowanie, wprowadź wartość dla wskazówki dotyczącej domeny. Aby przejść do niestandardowego dostawcy tożsamości, należy dołączyć parametr `domain_hint=<domain hint value>` do końca żądania podczas wywoływania Azure AD B2C logowania.
 
-Po tożsamość niestandardowa dostawcy wysyła identyfikator tokenu do usługi Azure AD B2C, musi mieć możliwość zmapowania oświadczeń otrzymany token oświadczenia, które usługi Azure AD B2C, rozpoznaje i wykorzystuje usługę Azure AD B2C. Dla każdego z następujące mapowania zapoznaj się z dokumentacją dostawcy tożsamości niestandardowe, aby zrozumieć oświadczenia, które są zwracane w tokenach dostawcy tożsamości:
+Gdy niestandardowy dostawca tożsamości wyśle token identyfikatora z powrotem do Azure AD B2C, Azure AD B2C musi mieć możliwość mapowania oświadczeń od otrzymanego tokenu do oświadczeń, które Azure AD B2C rozpoznawane i używane. Dla każdego z poniższych mapowań zapoznaj się z dokumentacją niestandardowego dostawcy tożsamości, aby zrozumieć oświadczenia, które są zwracane z powrotem do tokenów dostawcy tożsamości:
 
-- `User ID`: Wprowadź oświadczenie, które zawiera unikatowy identyfikator dla zalogowanego użytkownika.
-- `Display Name`: Wprowadź oświadczenie, które zawiera nazwę wyświetlaną lub pełną nazwę użytkownika.
-- `Given Name`: Wprowadź oświadczenie, które zawiera imię użytkownika.
-- `Surname`: Wprowadź oświadczenie, który zawiera nazwisko użytkownika.
-- `Email`: Wprowadź oświadczenie, które zawiera adres e-mail użytkownika.
+- `User ID`: Wprowadź wartość, która zapewnia unikatowy identyfikator zalogowanego użytkownika.
+- `Display Name`: Wprowadź wartość, która zawiera nazwę wyświetlaną lub pełną nazwę użytkownika.
+- `Given Name`: Wprowadź wartość, która zawiera imię użytkownika.
+- `Surname`: Wprowadź wartość, która zawiera nazwisko użytkownika.
+- `Email`: Wprowadź wartość, która zawiera adres e-mail użytkownika.
 

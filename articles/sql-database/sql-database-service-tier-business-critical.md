@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 12/04/2018
-ms.openlocfilehash: 208224e10c3acfb17bc5fd89d2d66152943811dc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 48cde2f96083779bdeb13ba5f39b68c18b395045
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566749"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515363"
 ---
 # <a name="business-critical-tier---azure-sql-database"></a>Warstwa Krytyczne dla działania firmy — Azure SQL Database
 
@@ -46,9 +46,9 @@ Ponadto klaster Krytyczne dla działania firmy ma wbudowaną funkcję [odczytu](
 
 Krytyczne dla działania firmy warstwa usług została zaprojektowana dla aplikacji, które wymagają odpowiedzi o małym opóźnieniu z bazowego magazynu SSD (średnio 1-2 ms), szybkiego odzyskiwania w przypadku awarii infrastruktury podstawowej lub konieczności wyłączania raportów, analiz i tylko do odczytu. wykonuje zapytania dotyczące bezpłatnej repliki pomocniczej do odzyskania podstawowej bazy danych.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Znajdź charakterystykę zasobu (liczbę rdzeni, operacji we/wy, pamięci) warstwy Krytyczne dla działania firmy w [wystąpieniu zarządzanym](sql-database-managed-instance-resource-limits.md#service-tier-characteristics), pojedynczą bazę danych w [modelu rdzeń wirtualny](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute-tier) lub [modelu DTU](sql-database-dtu-resource-limits-single-databases.md#premium-service-tier)lub elastyczną pulę w [modelu rdzeń wirtualny](sql-database-vcore-resource-limits-elastic-pools.md#business-critical-service-tier-storage-sizes-and-compute-sizes) i [modelu DTU](sql-database-dtu-resource-limits-elastic-pools.md#premium-elastic-pool-limits).
+- Znajdź charakterystykę zasobu (liczbę rdzeni, operacji we/wy, pamięci) warstwy Krytyczne dla działania firmy w [wystąpieniu zarządzanym](sql-database-managed-instance-resource-limits.md#service-tier-characteristics), pojedynczą bazę danych w [modelu rdzeń wirtualny](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute) lub [modelu DTU](sql-database-dtu-resource-limits-single-databases.md#premium-service-tier)lub elastyczną pulę w [modelu rdzeń wirtualny](sql-database-vcore-resource-limits-elastic-pools.md#business-critical-service-tier-storage-sizes-and-compute-sizes) i [modelu DTU](sql-database-dtu-resource-limits-elastic-pools.md#premium-elastic-pool-limits).
 - Dowiedz się więcej na temat warstw [ogólnego przeznaczenia](sql-database-service-tier-general-purpose.md) i [skalowania](sql-database-service-tier-hyperscale.md) .
 - Dowiedz się więcej na temat [Service Fabric](../service-fabric/service-fabric-overview.md).
 - Aby uzyskać więcej opcji dotyczących wysokiej dostępności i odzyskiwania po awarii [](sql-database-business-continuity.md), zobacz ciągłość działania.

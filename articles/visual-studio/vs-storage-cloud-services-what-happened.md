@@ -1,9 +1,9 @@
 ---
 title: Co się stało z moim projektem usługi w chmurze? | Microsoft Docs
-description: W tym artykule opisano, co się dzieje w projekt usług w chmurze po łączenie się z kontem magazynu platformy Azure przy użyciu programu Visual Studio podłączone usługi
+description: Opisuje, co się dzieje w projekcie usług w chmurze po nawiązaniu połączenia z kontem usługi Azure Storage przy użyciu usług połączonych programu Visual Studio
 services: storage
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: ca0ea68d-f417-4ce8-9413-40d76f69cdea
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
@@ -12,17 +12,17 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: b0adceb42109f07658e56cebde3fbc4401478a1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d96e523b6e4e060eaef33de0f961e7020e5dfb57
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64720462"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510641"
 ---
-# <a name="what-happened-to-my-cloud-services-project-visual-studio-azure-storage-connected-service"></a>Co się stało z moim projektem usług w chmurze (usługa połączona programu Visual Studio usługi Azure Storage)?
-## <a name="references-added"></a>Odwołania dodane
+# <a name="what-happened-to-my-cloud-services-project-visual-studio-azure-storage-connected-service"></a>Co się stało z projektem usług Cloud Services (usługa połączona z usługą Visual Studio Azure Storage)?
+## <a name="references-added"></a>Dodane odwołania
 Pakiet NuGet usługi Azure Storage został dodany do projektu programu Visual Studio.  
-Ten pakiet dodaje następujące odwołania do platformy .NET:
+Ten pakiet dodaje następujące odwołania platformy .NET:
 
 * **Microsoft.Data.Edm**
 * **Microsoft.Data.OData**
@@ -33,8 +33,8 @@ Ten pakiet dodaje następujące odwołania do platformy .NET:
 * **System.Data**
 * **System.Spatial**
 
-## <a name="connection-string-for-azure-storage-added"></a>Parametry połączenia dla usługi Azure Storage dodane
-Elementy zostały utworzone konto magazynu wybrane parametry połączenia i kluczem. Zmiany zostały wprowadzone w następujących plikach:
+## <a name="connection-string-for-azure-storage-added"></a>Dodano parametry połączenia dla usługi Azure Storage
+Elementy zostały utworzone przy użyciu parametrów połączenia wybranego konta magazynu i klucza. Wprowadzono modyfikacje następujących plików:
 
 * **ServiceDefinition.csdef**
 * **ServiceConfiguration.Cloud.cscfg**

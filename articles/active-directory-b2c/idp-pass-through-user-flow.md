@@ -1,35 +1,32 @@
 ---
-title: Przekazywanie tokenu dostępu za pomocą przepływu użytkownika do aplikacji — Azure Active Directory B2C | Microsoft Docs
-description: Dowiedz się, jak przekazać token dostępu dla dostawców tożsamości OAuth 2.0 jako rolę w przepływie użytkownika w Azure Active Directory B2C.
+title: Przekazywanie tokenu dostępu za pomocą przepływu użytkownika do aplikacji — Azure Active Directory B2C
+description: Dowiedz się, jak przekazać token dostępu dla dostawców tożsamości OAuth 2,0 jako rolę w przepływie użytkownika w Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 08/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8e9019699d8a81d31d2b20f674fd76fcb70021d6
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 66b3dc4aba5d1b29cc0c6190877fbd6b26a11f0c
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846824"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510098"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Przekaż token dostępu za pomocą przepływu użytkownika do aplikacji w Azure Active Directory B2C
 
-> [!NOTE]
-> Ta funkcja jest obecnie w publicznej wersji zapoznawczej.
-
-[Przepływ użytkownika](active-directory-b2c-reference-policies.md) w usłudze Azure Active Directory (Azure AD) B2C zapewnia użytkownikom aplikacji możliwość rejestrowania się lub logowania za pomocą dostawcy tożsamości. Po rozpoczęciu podróży Azure AD B2C otrzymuje [token dostępu](active-directory-b2c-reference-tokens.md) od dostawcy tożsamości. Azure AD B2C używa tego tokenu do pobierania informacji o użytkowniku. W przepływie użytkownika można włączyć funkcję przekazywania tokenu do aplikacji, które są rejestrowane w Azure AD B2C.
+[Przepływ użytkownika](active-directory-b2c-reference-policies.md) w Azure Active Directory B2C (Azure AD B2C) zapewnia użytkownikom aplikacji możliwość rejestrowania się lub logowania za pomocą dostawcy tożsamości. Po rozpoczęciu podróży Azure AD B2C otrzymuje [token dostępu](active-directory-b2c-reference-tokens.md) od dostawcy tożsamości. Azure AD B2C używa tego tokenu do pobierania informacji o użytkowniku. W przepływie użytkownika można włączyć funkcję przekazywania tokenu do aplikacji, które są rejestrowane w Azure AD B2C.
 
 Azure AD B2C obecnie obsługuje tylko przekazywanie tokenu dostępu dla dostawców tożsamości [OAuth 2,0](active-directory-b2c-reference-oauth-code.md) , w tym [Facebook](active-directory-b2c-setup-fb-app.md) i [Google](active-directory-b2c-setup-goog-app.md). W przypadku wszystkich innych dostawców tożsamości, zgłoszenie jest zwracane puste.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Aplikacja musi używać [przepływu użytkownika w wersji 2](user-flow-versions.md).
-- Przepływ użytkownika jest konfigurowany za pomocą dostawcy tożsamości OAuth 2,0.
+* Aplikacja musi używać [przepływu użytkownika w wersji 2](user-flow-versions.md).
+* Przepływ użytkownika jest konfigurowany za pomocą dostawcy tożsamości OAuth 2,0.
 
 ## <a name="enable-the-claim"></a>Włączanie tego żądania
 

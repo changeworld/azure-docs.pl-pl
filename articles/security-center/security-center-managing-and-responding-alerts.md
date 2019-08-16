@@ -13,13 +13,13 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2018
-ms.author: rkarlin
-ms.openlocfilehash: 582912160c8ed514401be3522e52dcc6eb45d263
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: v-mohabe
+ms.openlocfilehash: 39849514d772f128434daad590de22f941245af7
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65235768"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69516096"
 ---
 # <a name="managing-and-responding-to-security-alerts-in-azure-security-center"></a>Reagowanie na alerty zabezpieczeń i zarządzanie nimi w Centrum zabezpieczeń Azure
 Ten dokument ułatwia zarządzanie alertami zabezpieczeń i reagowanie na nie przy użyciu usługi Azure Security Center.
@@ -52,13 +52,13 @@ Bieżące alerty można przeglądać przy użyciu kafelka **Alerty zabezpieczeń
 W dolnej części tej strony znajdują się szczegółowe informacje o każdym alercie. Aby posortować dane, kliknij kolumnę, według której chcesz wykonać sortowanie. Poniżej znajdują się definicje poszczególnych kolumn:
 
 * **Opis**: Krótki opis alertu.
-* **Liczba**: Lista wszystkich alertów określonego typu, które zostały wykryte w określonym dniu.
-* **Wykryte przez**: Usługa, która była odpowiedzialna za wyzwolenie alertu.
-* **Data**: Data, które wystąpiło zdarzenie.
-* **Stan**: Bieżący stan alertu. Istnieją dwa typy stanów:
-  * **Aktywne**: Alert zabezpieczeń został wykryty.
-  * **Odrzucono**: Alert zabezpieczeń został odrzucony przez użytkownika. Ten stan jest zwykle używana w przypadku alertów, które zostały zbadane i zastosowanymi środkami zaradczymi lub został odnaleziony, aby nie dotyczył rzeczywistego ataku.
-* **Ważność**: Poziom ważności, który może być wysoki, średni lub niski.
+* **Liczba**: Lista wszystkich alertów tego konkretnego typu, które zostały wykryte w określonym dniu.
+* **Wykryte przez**: Usługa, która jest odpowiedzialna za wyzwalanie alertu.
+* **Data**: Data wystąpienia zdarzenia.
+* **Stan**: Bieżący stan dla tego alertu. Istnieją dwa typy stanów:
+  * **Aktywne**: Wykryto alert zabezpieczeń.
+  * **Odrzucono**: Alert zabezpieczeń został odrzucony przez użytkownika. Ten stan jest zwykle używany w przypadku alertów, które zostały zbadane i zostały uznane za faktyczne lub nie jest to rzeczywisty atak.
+* **Ważność**: Poziom ważności, który może mieć wartość wysoki, średni lub niski.
 
 > [!NOTE]
 > Alerty zabezpieczeń wygenerowane przez usługę Security Center pojawią się również w dzienniku aktywności platformy Azure. Aby uzyskać więcej informacji o tym, jak uzyskać dostęp do dziennika aktywności platformy Azure, zobacz [View activity logs to audit actions on resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit) (Wyświetlanie dzienników aktywności w celu inspekcji akcji wykonywanych na zasobach).
@@ -67,16 +67,16 @@ W dolnej części tej strony znajdują się szczegółowe informacje o każdym a
 
 ### <a name="alert-severity"></a>Ważność alertu
 
--   **Wysoka**: Istnieje wysokie prawdopodobieństwo, że zasób zostanie naruszone. Następnie od razu należy zwrócić uwagę do niego. Usługa Security Center ma o dużej pewności w obu złośliwego działania i ustalenia używany do wysyłania alertu. Na przykład alert, który wykrywa wykonywania znane złośliwe narzędzia, takiego jak program Mimikatz, popularnego narzędzia używane do kradzieży poświadczeń. 
--   **Średnia**: Jest to prawdopodobnie podejrzanych działań, które mogą wskazywać, że zasób zostanie naruszone.
-Security Center w analitycznych lub wyszukiwaniu UFNOŚĆ średni i UFNOŚĆ złośliwego działania średniej lub dużej. Są to zazwyczaj będzie uczenia maszynowego ani rozwiązaniami do wykrywania anomalii na podstawie. Na przykład logowanie próba z nietypowej lokalizacji.
--   **Niska**: Może to być nieszkodliwe dodatni lub blokowania ataków. 
-    - Usługa Security Center nie jest wystarczająco pewność, że celem jest złośliwego i działanie może być nieszkodliwe. Na przykład Wyczyść dziennik jest akcję, która może się zdarzyć, gdy osoba atakująca próbuje użyć w celu ukrycia śladów ich działania, ale w wielu przypadkach jest operacją procedury wykonywane przez administratorów.
-    - Usługa Security Center nie zwykle zorientować się, gdy ataków zostały zablokowane, chyba że jest to interesujące takim Sugerujemy, że masz możliwość przejrzenia. 
--   **Informacyjny**: Widoczne są tylko alerty informacyjne podczas przechodzenia do szczegółów w przypadku wystąpienia zdarzenia zabezpieczeń, czy przy użyciu interfejsu API REST z określonym identyfikatorem alertu. Zdarzenia zwykle składa się z liczby alertów, niektóre z nich mogą być wyświetlane w ich własnych tylko do informacyjna, ale w kontekście innych alertów może być Alberta bliżej.  
+-   **Wysoka**: Istnieje duże prawdopodobieństwo naruszenia bezpieczeństwa zasobu. Należy od razu przyjrzeć się do niego. Security Center ma wysoki poziom zaufania zarówno w złośliwym zamiarach, jak i w ustaleniach używanych do wystawiania alertu. Na przykład alert, który wykrywa wykonywanie znanego złośliwego narzędzia, takiego jak program mimikatz, typowego narzędzia używanego do kradzieży poświadczeń. 
+-   **Średni**: Jest to prawdopodobnie podejrzane działanie, które może wskazywać na naruszenie bezpieczeństwa zasobu.
+Stopień zaufania Security Center w analitycznym lub wyszukiwaniu jest średni, a wiarygodność złośliwego celu jest wysoka. Zazwyczaj mogą to być Uczenie maszynowe lub wykryte anomalie. Na przykład próba logowania z nietypowej lokalizacji.
+-   **Niska**: Może to być niegroźne pozytywne lub zablokowany atak. 
+    - Security Center nie ma wystarczającej pewności, że zamiar jest złośliwy, a działanie może być nieszkodliwe. Na przykład dziennik czyszczenie jest akcją, która może wystąpić, gdy osoba atakująca próbuje ukryć swoje ścieżki, ale w wielu przypadkach jest to procedura wykonywana przez administratorów.
+    - Security Center zazwyczaj nie informuje użytkownika o zablokowaniu ataków, chyba że jest to interesujący przypadek, który sugerujemy. 
+-   **Informacje**: Podczas przechodzenia do szczegółów zdarzenia związanego z bezpieczeństwem będą wyświetlane tylko alerty informacyjne lub użycie interfejsu API REST z określonym IDENTYFIKATORem alertu. Zdarzenie zwykle składa się z wielu alertów, które mogą być wyświetlane na własne potrzeby tylko w celu uzyskania informacji, ale w kontekście innych alertów może być zaufanego bliższego wyglądu.  
 
 > [!NOTE]
-> Jeśli używasz **2015-06-01-preview** wersji interfejsu API, a następnie istnieją różnice w alarmu, które typy ważności są stosowane do scenariuszy, do których, niż wymienione powyżej.  
+> Jeśli korzystasz z wersji interfejsu API **2015-06-01-Preview** , istnieją różnice w tym, które typy ważności alarmów są stosowane do tego, co jest wymienione powyżej.  
 
 ### <a name="filtering-alerts"></a>Filtrowanie alertów
 Alerty można filtrować na podstawie daty, stanu i ważności. Filtrowanie alertów może być przydatne w przypadku scenariuszy, w których należy zawęzić zakres wyświetlanych alertów zabezpieczeń. Możesz na przykład sprawdzić alerty zabezpieczeń, które wystąpiły w ciągu ostatnich 24 godzin, ponieważ badasz potencjalne naruszenie zabezpieczeń systemu.
@@ -94,9 +94,9 @@ W tym przypadku wyzwolone alerty dotyczą podejrzanego działania protokołu RDP
 
 ![Sugestie dotyczące zalecanych działań związanych z alertami zabezpieczeń w Centrum zabezpieczeń Azure](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig6-ga.png)
 
-W polu **Opis** znajdują się dalsze szczegółowe informacje na temat danego zdarzenia. Te dodatkowe szczegóły dotyczą przyczyn wyzwolenia alertu zabezpieczeń, zasobu docelowego, źródłowego adresu IP (jeśli ma to zastosowanie) i zaleceń dotyczących sposobu wyeliminowania skutków ataku.  W niektórych przypadkach źródłowy adres IP jest pusty (niedostępny), ponieważ nie wszystkie dzienniki zdarzeń zabezpieczeń systemu Windows obejmują adres IP.
+W polu **Opis** znajdziesz więcej szczegółowych informacji o tym zdarzeniu. Te dodatkowe szczegóły dotyczą przyczyn wyzwolenia alertu zabezpieczeń, zasobu docelowego, źródłowego adresu IP (jeśli ma to zastosowanie) i zaleceń dotyczących sposobu wyeliminowania skutków ataku.  W niektórych przypadkach źródłowy adres IP jest pusty (niedostępny), ponieważ nie wszystkie dzienniki zdarzeń zabezpieczeń systemu Windows obejmują adres IP.
 
-Czynności naprawcze sugerowane w Centrum zabezpieczeń różnią się w zależności od alertu zabezpieczeń. W niektórych przypadkach do wykonania zalecanych czynności naprawczych trzeba będzie użyć innych funkcji platformy Azure. Na przykład aby wyeliminować skutki takiego ataku, należy utworzyć listę niedozwolonych adresów IP generujących atak przy użyciu [sieciowej listy ACL](../virtual-network/virtual-networks-acl.md) lub reguły [sieciowej grupy zabezpieczeń](../virtual-network/security-overview.md#security-rules). Aby znaleźć więcej informacji na temat różnych typów alertów, przeczytaj artykuł [Alerty zabezpieczeń według typu w usłudze Azure Security Center](security-center-alerts-type.md).
+Czynności naprawcze sugerowane w Centrum zabezpieczeń różnią się w zależności od alertu zabezpieczeń. W niektórych przypadkach do wykonania zalecanych czynności naprawczych trzeba będzie użyć innych funkcji platformy Azure. Na przykład korygowanie tego ataku nie zezwala na adres IP, który generuje ten atak, za pomocą [listy ACL sieci](../virtual-network/virtual-networks-acl.md) lub reguły [sieciowej grupy zabezpieczeń](../virtual-network/security-overview.md#security-rules) . Aby uzyskać więcej informacji na temat różnych typów alertów, Odczytaj [typy alertów zabezpieczeń](security-center-alerts-overview.md#security-alert-types).
 
 > [!NOTE]
 > Usługa Security Center została wydana w ograniczonej wersji zapoznawczej z nowym zestawem funkcji wykrywania, które wykorzystują rekordy inspekcji, czyli wspólną platformę inspekcji, do wykrywania złośliwych zachowań na maszynach z systemem Linux. Wyślij [nam](mailto:ASC_linuxdetections@microsoft.com) wiadomość e-mail ze swoim identyfikatorem subskrypcji, aby dołączyć do tej wersji zapoznawczej.

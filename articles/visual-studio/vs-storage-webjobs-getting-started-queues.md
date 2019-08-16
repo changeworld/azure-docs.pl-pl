@@ -3,7 +3,7 @@ title: Wprowadzenie do usługi queue storage i usług połączonych programu Vis
 description: Jak rozpocząć pracę z usługą Azure queue storage w projekcie Zadania WebJob po nawiązaniu połączenia z kontem magazynu przy użyciu usług połączonych programu Visual Studio.
 services: storage
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: 5c3ef267-2a67-44e9-ab4a-1edd7015034f
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 44206f1826fc25407d9dec3f832b70881091e187
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 0afed158f5a19f3d82a3953f828f2b5566a6d5ff
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248959"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510788"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Rozpoczynanie pracy z usługą Azure queue storage i usługami połączonymi programu Visual Studio (projekty zadań WebJob)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -44,8 +44,8 @@ public static void ProcessQueueMessage([QueueTrigger("logqueue")] string logMess
 
 Oprócz **ciągu**, parametr może być tablicą bajtową, obiektem **CloudQueueMessage** lub zdefiniowanym poco.
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [(zwykły stary obiekt CLR](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) komunikaty kolejki
-W poniższym przykładzie komunikat kolejki zawiera kod JSON dla obiektu **BlobInformation** , który zawiera właściwość blobname  . Zestaw SDK automatycznie deserializacji obiektu.
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>POCO [(zwykły stary obiekt CLR](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) komunikaty kolejki
+W poniższym przykładzie komunikat kolejki zawiera kod JSON dla obiektu **BlobInformation** , który zawiera właściwość blobname . Zestaw SDK automatycznie deserializacji obiektu.
 
 ```csharp
 public static void WriteLogPOCO([QueueTrigger("logqueue")] BlobInformation blobInfo, TextWriter logger)
@@ -88,7 +88,7 @@ public async static Task ProcessQueueMessageAsyncCancellationToken(
 ## <a name="types-the-queuetrigger-attribute-works-with"></a>Typy, które współdziałają z atrybutem QueueTrigger
 Możesz użyć **QueueTrigger** z następującymi typami:
 
-* **ciąg**
+* **string**
 * Typ POCO, który jest serializowany jako JSON
 * **byte[]**
 * **CloudQueueMessage**
@@ -201,7 +201,7 @@ public static void CreateQueueMessage(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [(zwykły stary obiekt CLR](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) komunikaty kolejki
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>POCO [(zwykły stary obiekt CLR](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) komunikaty kolejki
 Aby utworzyć komunikat kolejki, który zawiera POCO, a nie ciąg, Przekaż typ POCO jako parametr wyjściowy do konstruktora atrybutu **kolejki** .
 
 ```csharp
@@ -296,7 +296,7 @@ public static void DeleteBlob(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [(zwykły stary obiekt CLR](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) komunikaty kolejki
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>POCO [(zwykły stary obiekt CLR](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) komunikaty kolejki
 W przypadku elementu POCO przechowywanego jako dane JSON w komunikacie kolejki można użyć symboli zastępczych, które są właściwościami obiektu w parametrze **blobpath ścieżką** parametru **kolejki** . Nazwy właściwości metadanych kolejki można także użyć jako symboli zastępczych. Zobacz [Pobieranie metadanych kolejki lub komunikatów w kolejce](#get-queue-or-queue-message-metadata).
 
 Poniższy przykład kopiuje obiekt BLOB do nowego obiektu BLOB przy użyciu innego rozszerzenia. Komunikat kolejki to obiekt **BlobInformation** , który zawiera właściwości **blobname** i **BlobNameWithoutExtension** . Nazwy właściwości są używane jako symbole zastępcze w ścieżce obiektu BLOB dla atrybutów **obiektu BLOB** .
@@ -337,7 +337,7 @@ Atrybut **obiektu BLOB** może być używany z następującymi typami:
 * **CloudPageBlob** (odczyt lub zapis)
 
 ## <a name="how-to-handle-poison-messages"></a>Jak obsługiwać skażone komunikaty
-Komunikaty, których zawartość powoduje niepowodzenie funkcji, są nazywane skażonymi komunikatami. Gdy funkcja się nie powiedzie, komunikat kolejki nie zostanie usunięty i ostatecznie zostanie pobrany ponownie, co spowoduje powtarzanie cyklu. Zestaw SDK może automatycznie przerwać cykl po ograniczonej liczbie iteracji lub można to zrobić ręcznie.
+Komunikaty, których zawartość powoduje niepowodzenie funkcji, sąnazywane skażonymi komunikatami. Gdy funkcja się nie powiedzie, komunikat kolejki nie zostanie usunięty i ostatecznie zostanie pobrany ponownie, co spowoduje powtarzanie cyklu. Zestaw SDK może automatycznie przerwać cykl po ograniczonej liczbie iteracji lub można to zrobić ręcznie.
 
 ### <a name="automatic-poison-message-handling"></a>Automatyczna obsługa skażonych komunikatów
 Zestaw SDK będzie wywoływał funkcję do 5 razy w celu przetworzenia komunikatu w kolejce. Jeśli piąta próba nie powiedzie się, komunikat zostanie przeniesiony do kolejki trującej. Możesz zobaczyć, jak skonfigurować maksymalną liczbę ponownych prób w [sposobie ustawiania opcji konfiguracji](#how-to-set-configuration-options).

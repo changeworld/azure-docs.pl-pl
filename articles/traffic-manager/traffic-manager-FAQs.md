@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
-ms.openlocfilehash: 37f1a0d9c70afc0a3a86ac76b682ee7b2adb253d
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 86376983f98abd241783f456cb9b41ab5d93ae51
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335792"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69511017"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager często zadawane pytania
 
@@ -322,9 +322,9 @@ Traffic Manager reaguje na nazwę DNS lub adres IP punktu końcowego. Aby obsłu
 
 Zwykle Traffic Manager jest używany do kierowania ruchu do aplikacji wdrożonych w różnych regionach. Można go jednak również używać w przypadku, gdy aplikacja ma więcej niż jedno wdrożenie w tym samym regionie. Traffic Manager punkty końcowe platformy Azure nie zezwalają na dodanie do tego samego profilu Traffic Manager więcej niż jednego punktu końcowego aplikacji sieci Web z tego samego regionu platformy Azure.
 
-### <a name="how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group"></a>Jak mogę przenieść punkty końcowe platformy Azure profilu Traffic Manager do innej grupy zasobów?
+### <a name="how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group-or-subscription"></a>Jak mogę przenieść punkty końcowe platformy Azure profilu Traffic Manager do innej grupy zasobów lub subskrypcji?
 
-Punkty końcowe platformy Azure skojarzone z profilem Traffic Manager są śledzone przy użyciu ich identyfikatorów zasobów. Gdy zasób platformy Azure używany jako punkt końcowy (na przykład publiczny adres IP, klasyczna usługa w chmurze, WebApp lub inny profil Traffic Manager używany w sposób zagnieżdżony) jest przenoszony do innej grupy zasobów, jego identyfikator zasobu ulegnie zmianie. W tym scenariuszu należy obecnie zaktualizować profil Traffic Manager, usuwając najpierw, a następnie dodając punkty końcowe do profilu.
+Punkty końcowe platformy Azure skojarzone z profilem Traffic Manager są śledzone przy użyciu ich identyfikatorów zasobów. Gdy zasób platformy Azure używany jako punkt końcowy (na przykład publiczny adres IP, klasyczna usługa w chmurze, WebApp lub inny profil Traffic Manager używany w sposób zagnieżdżony) jest przenoszony do innej grupy zasobów lub subskrypcji, jego identyfikator zasobu zmieni się. W tym scenariuszu należy obecnie zaktualizować profil Traffic Manager, usuwając najpierw, a następnie dodając punkty końcowe do profilu.
 
 ## <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager monitorowanie punktu końcowego
 

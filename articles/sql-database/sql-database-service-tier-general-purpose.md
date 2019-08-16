@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/07/2019
-ms.openlocfilehash: 711552501825e5d34d3547ede8dc998065083c96
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2573adcb199ab32467493729842b6c47e3add64b
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566738"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515302"
 ---
 # <a name="general-purpose-service-tier---azure-sql-database"></a>Warstwa usługi ogólnego przeznaczenia — Azure SQL Database
 
@@ -46,9 +46,9 @@ Po uaktualnieniu aparatu bazy danych lub systemu operacyjnego część podstawow
 
 Ogólnego przeznaczenia warstwa usługi jest domyślną warstwą usług w Azure SQL Database, która jest przeznaczona dla większości obciążeń zwykłych. Jeśli potrzebujesz w pełni zarządzanego aparatu bazy danych z umową SLA na 99,99% z opóźnieniem magazynu od 5 do 10 ms, które są zgodne z usługą Azure SQL IaaS w większości przypadków Ogólnego przeznaczenia, jest to opcja.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Znajdź charakterystyki zasobów (liczbę rdzeni, operacji we/wy, pamięci) Ogólnego przeznaczenia/warstwy standardowej w [wystąpieniu zarządzanym](sql-database-managed-instance-resource-limits.md#service-tier-characteristics), pojedynczą bazę danych w [modelu rdzeń wirtualny](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-storage-sizes-and-compute-sizes) lub [modelu DTU](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)lub elastyczną pulę w [modelu rdzeń wirtualny](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes) i [modelu DTU](sql-database-dtu-resource-limits-elastic-pools.md#standard-elastic-pool-limits).
+- Znajdź charakterystyki zasobów (liczbę rdzeni, operacji we/wy, pamięci) Ogólnego przeznaczenia/warstwy standardowej w [wystąpieniu zarządzanym](sql-database-managed-instance-resource-limits.md#service-tier-characteristics), pojedynczą bazę danych w [modelu rdzeń wirtualny](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute) lub [modelu DTU](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)lub elastyczną pulę w [modelu rdzeń wirtualny](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes) i [modelu DTU](sql-database-dtu-resource-limits-elastic-pools.md#standard-elastic-pool-limits).
 - Dowiedz się więcej na temat warstw [krytyczne dla działania firmy](sql-database-service-tier-business-critical.md) i [skalowania](sql-database-service-tier-hyperscale.md) .
 - Dowiedz się więcej na temat [Service Fabric](../service-fabric/service-fabric-overview.md).
 - Aby uzyskać więcej opcji dotyczących wysokiej dostępności i odzyskiwania po awarii [](sql-database-business-continuity.md), zobacz ciągłość działania.

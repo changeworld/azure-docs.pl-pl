@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: f5869cbb51cf1c968ee8ca1e2286416fd263d647
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: d6cde04d122d20c4aad5920c29995d9d33165163
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68224632"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515526"
 ---
 # <a name="identify-issues-with-the-diagnostics-feature"></a>Identyfikowanie problemów za pomocą funkcji diagnostyki
 
@@ -153,7 +153,7 @@ W poniższej tabeli wymieniono typowe błędy, w których administratorzy mogą 
 |8000|InvalidAuthorizationRoleScope|Wprowadzona nazwa roli nie jest zgodna z żadną z istniejących nazw ról. Przejrzyj nazwę roli pod kątem pisowni i spróbuj ponownie. |
 |8001|UserNotFound |Wprowadzona nazwa użytkownika nie jest zgodna z żadną z istniejących nazw użytkowników. Sprawdź nazwę literówków i spróbuj ponownie.|
 |8005|UserNotFoundInAAD |Wprowadzona nazwa użytkownika nie jest zgodna z żadną z istniejących nazw użytkowników. Sprawdź nazwę literówków i spróbuj ponownie.|
-|8008|TenantConsentRequired|Postępuj zgodnie z instrukcjami w [tym miejscu](tenant-setup-azure-active-directory.md#grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-preview-service) , aby wyrazić zgodę na dzierżawę.|
+|8008|TenantConsentRequired|Postępuj zgodnie z instrukcjami w [tym miejscu](tenant-setup-azure-active-directory.md#grant-permissions-to-windows-virtual-desktop) , aby wyrazić zgodę na dzierżawę.|
 
 ### <a name="external-connection-error-codes"></a>Kody błędów połączenia zewnętrznego
 

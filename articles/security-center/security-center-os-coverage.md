@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/03/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 7cd1d451b49faf2f8e3ad38f4ff780256ef2dc5d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 9a11af7e2875c9af5cf4b08d459bc67b55dbdcf3
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883601"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515536"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformy i funkcje obsługiwane przez Azure Security Center
 
@@ -110,11 +110,11 @@ Aby uzyskać informacje o tym, kiedy są generowane zalecenia dla każdej z tych
 
 | Endpoint Protection| Platformy | Instalacja usługi Security Center | Odnajdywanie usługi Security Center |
 |------|------|-----|-----|
-| Windows Defender (oprogramowanie firmy Microsoft chroniące przed złośliwym kodem)| Windows Server 2016| Nie, wbudowana w system operacyjny| Yes |
-| System Center Endpoint Protection (oprogramowanie firmy Microsoft chroniące przed złośliwym kodem) | Windows Server 2012 R2, 2012, 2008 R2 (Zobacz uwagi poniżej) | Za pomocą rozszerzenia | Yes |
+| Windows Defender (oprogramowanie firmy Microsoft chroniące przed złośliwym kodem)| Windows Server 2016| Nie, wbudowana w system operacyjny| Tak |
+| System Center Endpoint Protection (oprogramowanie firmy Microsoft chroniące przed złośliwym kodem) | Windows Server 2012 R2, 2012, 2008 R2 (Zobacz uwagi poniżej) | Za pomocą rozszerzenia | Tak |
 | Trend Micro — wszystkie wersje | Rodzina systemów Windows Server  | Nie | Tak |
 | Symantec — w wersji co najmniej 12.1.1100| Rodzina systemów Windows Server  | Nie | Tak |
-| McAfee — w wersji co najmniej 10 | Rodzina systemów Windows Server  | Nie | Yes |
+| McAfee — w wersji co najmniej 10 | Rodzina systemów Windows Server  | Nie | Tak |
 | McAfee — w wersji co najmniej 10 | Rodzina serwerów z systemem Linux  | Nie | Opcję **\*** |
 | Sophos V9 +| Rodzina serwerów z systemem Linux  | Nie | Opcję **\***  |
 
@@ -165,6 +165,6 @@ Aby uzyskać informacje o tym, kiedy są generowane zalecenia dla każdej z tych
 ## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, jak [planować i zrozumieć zagadnienia dotyczące projektowania, aby przyjąć Azure Security Center](security-center-planning-and-operations-guide.md).
-- Dowiedz się więcej o [analizie behawioralnej maszyn wirtualnych i analizie pamięci zrzutu awaryjnego w Security Center](security-center-alerts-type.md#virtual-machine-behavioral-analysis).
+- Dowiedz się więcej [na temat wykrywania zagrożeń dla maszyn wirtualnych & serwerów w Azure Security Center](security-center-alerts-iaas.md).
 - Znajdowanie [często zadawanych pytań dotyczących korzystania z Azure Security Center](security-center-faq.md).
 - Znajdź [wpisy w blogu dotyczące zabezpieczeń i zgodności platformy Azure](https://blogs.msdn.com/b/azuresecurity/).

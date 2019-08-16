@@ -8,12 +8,12 @@ ms.date: 07/10/2019
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: a713ed69dc9c35e16b1cc5d9ad9819d53e2e1efe
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d0dd9a371c4912cae0e74b214c673c629fc1ff55
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986167"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515818"
 ---
 # <a name="troubleshoot-query-performance-for-azure-cosmos-db"></a>Rozwiązywanie problemów z wydajnością zapytań dla Azure Cosmos DB
 W tym artykule opisano sposób identyfikowania, diagnozowania i rozwiązywania problemów z Azure Cosmos DB zapytań SQL. Aby osiągnąć optymalną wydajność zapytań Azure Cosmos DB, wykonaj poniższe kroki rozwiązywania problemów. 
@@ -24,11 +24,12 @@ Najniższe możliwe opóźnienie jest realizowane przez zagwarantowanie, że apl
 ## <a name="check-consistency-level"></a>Sprawdź poziom spójności
 [Poziom spójności](consistency-levels.md) może mieć wpływ na wydajność i opłaty. Upewnij się, że poziom spójności jest odpowiedni dla danego scenariusza. Aby uzyskać więcej szczegółów, zobacz [Wybieranie poziomu spójności](consistency-levels-choosing.md).
 
-## <a name="log-sql-query-in-storage-account"></a>Rejestrowanie zapytania SQL na koncie magazynu
-[Dzienniki zapytań interfejsu API SQL za pomocą dzienników diagnostycznych](logging.md#turn-on-logging-in-the-azure-portal) umożliwiają rejestrowanie zasłoniętego zapytania na wybranym koncie magazynu. Pozwala to na sprawdzenie dzienników diagnostycznych i znalezienie zapytania przy użyciu więcej jednostek ru i użycie identyfikatora działania do dopasowania w QueryRuntimeStatistics. 
+## <a name="log-the-executed-sql-query"></a>Rejestruj wykonane zapytanie SQL 
 
+Wykonane zapytanie SQL można zarejestrować na koncie magazynu lub w tabeli dzienników diagnostycznych. [Dzienniki zapytań SQL za pomocą dzienników diagnostycznych](logging.md#turn-on-logging-in-the-azure-portal) umożliwiają rejestrowanie zasłoniętego zapytania na wybranym koncie magazynu. Pozwala to na wyświetlenie dzienników i znalezienie zapytania, które używa wyższych jednostek ru. Później można użyć identyfikatora działania, aby dopasować rzeczywiste zapytanie w QueryRuntimeStatistics. Zapytanie jest ukrywane ze względów bezpieczeństwa i nazw parametrów zapytania, a ich wartości w klauzulach WHERE są inne niż rzeczywiste nazwy i wartości. Możesz użyć rejestrowania na koncie magazynu, aby zachować długoterminowe przechowywanie wykonanych zapytań.  
 
 ## <a name="log-query-metrics"></a>Metryki zapytań dziennika
+
 Służy `QueryMetrics` do rozwiązywania problemów z niską lub kosztowną kwerendą. 
 
   * `FeedOptions.PopulateQueryMetrics = true` Ustaw`QueryMetrics` na wartość w odpowiedzi.

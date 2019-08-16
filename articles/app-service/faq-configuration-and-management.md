@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 6f86a8465bcbd3d88ffb7909cac53c3fd38c3af6
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: f7fbfbe5ae5d2ba4148d94768a1109f566151170
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489429"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69513790"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Często zadawane pytania dotyczące konfiguracji i zarządzania dla Web Apps na platformie Azure
 
@@ -167,7 +167,7 @@ Jeśli używasz App Service Environment, możesz użyć [zapory Barracuda](https
 
 ## <a name="how-do-i-block-ports-in-an-app-service-web-app"></a>Jak mogę blokować porty w aplikacji internetowej App Service?
 
-W App Service udostępnionym środowisku dzierżawców nie można blokować określonych portów ze względu na charakter infrastruktury. Porty TCP 4016, 4018 i 4020 mogą być również otwarte dla zdalnego debugowania programu Visual Studio.
+W App Service udostępnionym środowisku dzierżawców nie można blokować określonych portów ze względu na charakter infrastruktury. Porty TCP 4020, 4022 i 4024 mogą być również otwarte dla zdalnego debugowania programu Visual Studio.
 
 W App Service Environment masz pełną kontrolę nad ruchem przychodzącym i wychodzącym. W celu ograniczenia lub zablokowania określonych portów można użyć sieciowych grup zabezpieczeń. Aby uzyskać więcej informacji na temat App Service Environment, zobacz [wprowadzenie App Service Environment](https://azure.microsoft.com/blog/introducing-app-service-environment/).
 
@@ -251,7 +251,7 @@ Aby uzyskać więcej informacji o zaplanowanych zadaniach WebJob, zobacz temat [
 
 ## <a name="how-do-i-perform-penetration-testing-for-my-app-service-app"></a>Jak mogę przeprowadzić testowanie penetracji dla aplikacji App Service?
 
-Aby przeprowadzić testowanie penetracji, [Prześlij żądanie](https://portal.msrc.microsoft.com/en-us/engage/pentest).
+Aby przeprowadzić testowanie penetracji, [Prześlij żądanie](https://portal.msrc.microsoft.com/engage/pentest).
 
 ## <a name="how-do-i-configure-a-custom-domain-name-for-an-app-service-web-app-that-uses-traffic-manager"></a>Jak mogę skonfigurować niestandardową nazwę domeny dla App Service aplikacji internetowej korzystającej z Traffic Manager?
 
@@ -289,7 +289,7 @@ Aby uzyskać szczegółową dokumentację dotyczącą uwierzytelniania i autoryz
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>Jak mogę przekierować domyślną domenę *. azurewebsites.net do domeny niestandardowej mojej aplikacji sieci Web platformy Azure?
 
-Podczas tworzenia nowej witryny sieci Web przy użyciu Web Apps na platformie Azure do lokacji zostanie przypisana domyślna domena sitename. azurewebsites.NET. Jeśli dodasz niestandardową nazwę hosta do lokacji i nie chcesz, aby użytkownicy mogli uzyskać dostęp do domyślnej domeny *. azurewebsites.net, możesz przekierować domyślny adres URL. Aby dowiedzieć się, jak przekierować cały ruch z domeny domyślnej witryny sieci Web do domeny niestandardowej, zobacz [Przekierowanie domeny domyślnej do domeny niestandardowej w usłudze Azure Web Apps](https://zainrizvi.io/blog/block-default-azure-websites-domain/).
+Podczas tworzenia nowej witryny sieci Web przy użyciu Web Apps na platformie Azure do lokacjizostanie przypisana domyślna domena sitename. azurewebsites.NET. Jeśli dodasz niestandardową nazwę hosta do lokacji i nie chcesz, aby użytkownicy mogli uzyskać dostęp do domyślnej domeny *. azurewebsites.net, możesz przekierować domyślny adres URL. Aby dowiedzieć się, jak przekierować cały ruch z domeny domyślnej witryny sieci Web do domeny niestandardowej, zobacz [Przekierowanie domeny domyślnej do domeny niestandardowej w usłudze Azure Web Apps](https://zainrizvi.io/blog/block-default-azure-websites-domain/).
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>Jak mogę określić, która wersja programu .NET jest zainstalowana w programie App Service?
 

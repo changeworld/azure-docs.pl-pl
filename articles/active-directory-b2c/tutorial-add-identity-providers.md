@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5710ccfe5d6450714e029827a795b484b1bcd2b4
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: eee881e6d4e446e07867261545a90dfacaa93712
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716663"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69512201"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Samouczek: Dodawanie dostawców tożsamości do aplikacji w Azure Active Directory B2C
 
@@ -86,7 +86,7 @@ Aby użyć konta w serwisie Facebook jako dostawcy tożsamości w Azure AD B2C, 
 1. Wybierz znak plus obok pozycji **produkty**, a następnie w obszarze **Logowanie do serwisu Facebook**wybierz pozycję **Konfiguruj**.
 1. W obszarze **Logowanie do serwisu Facebook** w menu po lewej stronie wybierz pozycję **Ustawienia**.
 1. W prawidłowych identyfikatorach **URI przekierowania OAuth**wprowadź `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`. Zamień `your-tenant-name` na nazwę dzierżawy. Wybierz pozycję **Zapisz zmiany** w dolnej części strony.
-1. Aby udostępnić aplikację Facebook Azure AD B2C, kliknij selektor **stanu** w prawym górnym rogu strony i **Włącz go,** aby udostępnić aplikację, a następnie kliknij przycisk **Potwierdź**. W tym momencie stan powinien ulec zmianie z **opracowywania** na na **żywo**.
+1. Aby udostępnić aplikację Facebook Azure AD B2C, kliknij selektor **stanu** w prawym górnym rogu strony i włącz go, aby udostępnić aplikację, a następnie kliknij przycisk **Potwierdź**. W tym momencie stan powinien ulec zmianie z **opracowywania** na na **żywo**.
 
 ## <a name="add-the-identity-providers"></a>Dodawanie dostawców tożsamości
 
@@ -98,7 +98,7 @@ Po utworzeniu aplikacji dla dostawcy tożsamości, który chcesz dodać, należy
 1. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 1. Wybierz **dostawców tożsamości**, a następnie wybierz pozycję **Dodaj**.
 1. Wprowadź **nazwę**. Na przykład wprowadź nazwę *contoso Azure AD*.
-1. Wybierz **Typ dostawcy tożsamości**, wybierz pozycję **OpenID Connect Connect (wersja zapoznawcza)** , a następnie kliknij przycisk **OK**.
+1. Wybierz **Typ dostawcy tożsamości**, wybierz pozycję **OpenID Connect Connect**, a następnie kliknij przycisk **OK**.
 1. Kliknij pozycję **Skonfiguruj tego dostawcę tożsamości**
 1. W polu **adres URL metadanych**wprowadź następujący adres URL, `your-AD-tenant-domain` zastępując nazwę domeny dzierżawy usługi Azure AD.
 

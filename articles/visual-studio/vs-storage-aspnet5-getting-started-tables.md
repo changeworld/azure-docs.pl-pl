@@ -1,9 +1,9 @@
 ---
-title: Jak rozpocząć pracę z usługi table storage i Visual Studio podłączone usługi (systemu Windows platformy ASP.NET Core) | Dokumentacja firmy Microsoft
-description: Jak rozpocząć pracę z usługą Azure Table storage w projektach programu ASP.NET Core w programie Visual Studio po nawiązaniu połączenia z kontem magazynu za pomocą programu Visual Studio podłączone usługi
+title: Jak rozpocząć pracę z usługą Table Storage i usługami połączonymi programu Visual Studio (ASP.NET Core) | Microsoft Docs
+description: Jak rozpocząć pracę z usługą Azure Table Storage w projekcie ASP.NET Core w programie Visual Studio po nawiązaniu połączenia z kontem magazynu przy użyciu usług połączonych programu Visual Studio
 services: storage
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: c3c451d1-71ff-4222-a348-c41c98a02b85
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
@@ -12,30 +12,30 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ghogen
-ms.openlocfilehash: 1f90ce71084ba3acbf5a0aec5c7b8e9683323766
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7ac610e96d84568b7973f288623730ea1677ceac
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60362122"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510923"
 ---
-# <a name="how-to-get-started-with-azure-table-storage-and-visual-studio-connected-services"></a>Jak rozpocząć pracę z zestawem Azure Table storage i Visual Studio podłączone usługi
+# <a name="how-to-get-started-with-azure-table-storage-and-visual-studio-connected-services"></a>Jak rozpocząć pracę z usługą Azure Table Storage i usługami połączonymi programu Visual Studio
 
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
-W tym artykule opisano sposób rozpoczęcia pracy przy użyciu usługi Azure Table storage w programie Visual Studio po użytkownik utworzył, lub odwołanie do konta usługi Azure storage w projektach programu ASP.NET Core przy użyciu programu Visual Studio **podłączone usługi** funkcji. **Podłączone usługi** operacji instaluje odpowiednie pakiety NuGet dostępu do magazynu platformy Azure w swoim projekcie i dodaje parametry połączenia dla konta magazynu do plików konfiguracji projektu. (Zobacz [dokumentacja usługi Storage](https://azure.microsoft.com/documentation/services/storage/) ogólne informacje o usłudze Azure Storage.)
+W tym artykule opisano, jak rozpocząć korzystanie z usługi Azure Table Storage w programie Visual Studio po utworzeniu lub przywoływaniu konta usługi Azure Storage w projekcie ASP.NET Core przy użyciu funkcji **usługi połączone** programu Visual Studio. Operacja **połączone usługi** instaluje odpowiednie pakiety NuGet w celu uzyskania dostępu do usługi Azure Storage w projekcie i dodaje parametry połączenia dla konta magazynu do plików konfiguracji projektu. (Zobacz [dokumentację magazynu](https://azure.microsoft.com/documentation/services/storage/) , aby uzyskać ogólne informacje na temat usługi Azure Storage).
 
-Usługa Azure Table storage umożliwia przechowywanie dużych ilości danych strukturalnych. Usługa jest magazynem danych NoSQL, który przyjmuje uwierzytelnione wywołania z wewnątrz i na zewnątrz chmury platformy Azure. Tabele platformy Azure są idealnym rozwiązaniem do przechowywania strukturalnych danych nierelacyjnych. Aby uzyskać więcej ogólnych informacji o korzystaniu z usługi Azure Table storage, zobacz [Rozpoczynanie pracy z usługą Azure Table storage przy użyciu platformy .NET](../storage/storage-dotnet-how-to-use-tables.md).
+Usługa Azure Table Storage umożliwia przechowywanie dużych ilości danych strukturalnych. Usługa to magazyn danych NoSQL, który akceptuje uwierzytelnione wywołania z chmury platformy Azure i poza nią. Tabele platformy Azure są idealnym rozwiązaniem do przechowywania strukturalnych danych nierelacyjnych. Aby uzyskać więcej ogólnych informacji o korzystaniu z usługi Azure Table Storage, zobacz [Rozpoczynanie pracy z usługą Azure Table Storage przy użyciu platformy .NET](../storage/storage-dotnet-how-to-use-tables.md).
 
-Aby rozpocząć pracę, należy najpierw utworzyć tabelę, w ramach konta magazynu. Następnie w tym artykule pokazano, jak utworzyć tabelę w języku C# oraz jak wykonywać operacje tabeli podstawowej, takie jak dodawanie, modyfikowanie, odczytywanie i usuwanie wpisów tabeli.  Kod używa biblioteki klienta usługi Azure Storage dla platformy .NET. Aby uzyskać więcej informacji na temat platformy ASP.NET, zobacz [ASP.NET](https://www.asp.net).
+Aby rozpocząć, najpierw utwórz tabelę na koncie magazynu. W tym artykule pokazano, jak utworzyć tabelę w programie C# oraz jak wykonywać podstawowe operacje tabeli, takie jak dodawanie, modyfikowanie, odczytywanie i usuwanie wpisów w tabeli.  Kod używa biblioteki klienta usługi Azure Storage dla platformy .NET. Aby uzyskać więcej informacji na temat ASP.NET, zobacz [ASP.NET](https://www.asp.net).
 
-Niektóre z interfejsów API usługi Azure Storage są asynchroniczne i kodu w tym artykule przyjęto założenie, że metody asynchroniczne są używane. Zobacz [programowania asynchronicznego](https://docs.microsoft.com/dotnet/csharp/async) Aby uzyskać więcej informacji.
+Niektóre interfejsy API usługi Azure Storage są asynchroniczne, a w kodzie w tym artykule przyjęto, że metody asynchroniczne są używane. Aby uzyskać więcej informacji, zobacz [programowanie asynchroniczne](https://docs.microsoft.com/dotnet/csharp/async) .
 
 ## <a name="access-tables-in-code"></a>Dostęp do tabel w kodzie
 
-Dostęp do tabel w projektach ASP.NET Core, należy uwzględnić poniższe elementy do plików źródłowych języka C# uzyskujących dostęp do usługi Azure table storage.
+Aby uzyskać dostęp do tabel w projektach ASP.NET Core, należy dołączyć następujące elementy do wszystkich C# plików źródłowych, które uzyskują dostęp do usługi Azure Table Storage.
 
-1. Dodaj niezbędne `using` instrukcji:
+1. Dodaj wymagane `using` instrukcje:
 
     ```csharp
     using Microsoft.WindowsAzure.Storage;
@@ -43,7 +43,7 @@ Dostęp do tabel w projektach ASP.NET Core, należy uwzględnić poniższe eleme
     using System.Threading.Tasks;
     ```
 
-1. Pobierz `CloudStorageAccount` obiekt, który reprezentuje dane konta magazynu. Użyj poniższego kodu, przy użyciu nazwy konta magazynu oraz klucz konta, który można znaleźć w parametrach połączenia magazynu w pliku appSettings.json:
+1. `CloudStorageAccount` Pobierz obiekt reprezentujący informacje o koncie magazynu. Użyj poniższego kodu, używając nazwy konta magazynu i klucza konta, które można znaleźć w parametrach połączenia magazynu w pliku appSettings. JSON:
 
     ```csharp
         CloudStorageAccount storageAccount = new CloudStorageAccount(
@@ -51,23 +51,23 @@ Dostęp do tabel w projektach ASP.NET Core, należy uwzględnić poniższe eleme
                 "<name>", "<account-key>"), true);
     ```
 
-1. Pobierz `CloudTableClient` obiekt, aby odwoływać się obiektów tabeli na koncie magazynu:
+1. `CloudTableClient` Pobierz obiekt, aby odwoływać się do obiektów tabeli na koncie magazynu:
 
     ```csharp
     // Create the table client.
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
     ```
 
-1. Pobierz `CloudTable` obiektu odwołania, aby odwoływać się do określonej tabeli i jednostki:
+1. Pobierz obiekt `CloudTable` odniesienia, aby odwołać się do określonej tabeli i jednostek:
 
     ```csharp
     // Get a reference to a table named "peopleTable"
     CloudTable peopleTable = tableClient.GetTableReference("peopleTable");
     ```
 
-## <a name="create-a-table-in-code"></a>Utwórz tabelę w kodzie
+## <a name="create-a-table-in-code"></a>Tworzenie tabeli w kodzie
 
-Aby utworzyć tabelę platformy Azure, tworzenia metody asynchronicznej i znajdujący się w nim, należy wywołać `CreateIfNotExistsAsync()`:
+Aby utworzyć tabelę platformy Azure, Utwórz w niej metodę asynchroniczną, a następnie `CreateIfNotExistsAsync()`Wywołaj:
 
 ```csharp
 async void CreatePeopleTableAsync()
@@ -79,7 +79,7 @@ async void CreatePeopleTableAsync()
     
 ## <a name="add-an-entity-to-a-table"></a>Dodawanie jednostki do tabeli
 
-Aby dodać jednostkę do tabeli, należy utworzyć klasę, która definiuje właściwości jednostki. Poniższy kod definiuje klasę jednostki o nazwie `CustomerEntity` , używa imienia klienta jako klucz wiersza i nazwiska jako klucza partycji.
+Aby dodać jednostkę do tabeli, należy utworzyć klasę, która definiuje właściwości jednostki. Poniższy kod definiuje klasę jednostki o nazwie `CustomerEntity` , która używa imienia klienta jako klucza wiersza i nazwisko jako klucz partycji.
 
 ```csharp
 public class CustomerEntity : TableEntity
@@ -98,7 +98,7 @@ public class CustomerEntity : TableEntity
 }
 ```
 
-Operacje dotyczące użycia jednostek tabeli `CloudTable` obiekt utworzony wcześniej w procedurze [dostęp do tabel w kodzie](#access-tables-in-code). `TableOperation` Obiekt reprezentuje operację do wykonania. Poniższy przykład kodu pokazuje sposób tworzenia `CloudTable` obiektu i `CustomerEntity` obiektu. Aby przygotować operację, `TableOperation` służy do wstawiania jednostki Klient w tabeli. Na koniec operacja jest wykonywana przez wywołanie metody `CloudTable.ExecuteAsync`.
+Operacje tabeli obejmujące jednostki używają `CloudTable` obiektu utworzonego wcześniej w [tabelach dostępu w kodzie](#access-tables-in-code). `TableOperation` Obiekt reprezentuje operację do wykonania. Poniższy przykład kodu pokazuje, jak utworzyć `CloudTable` obiekt `CustomerEntity` i obiekt. Aby przygotować operację, `TableOperation` jest tworzona, aby wstawić jednostkę klienta do tabeli. Na koniec operacja jest wykonywana przez wywołanie metody `CloudTable.ExecuteAsync`.
 
 ```csharp
 // Create a new customer entity.
@@ -115,7 +115,7 @@ await peopleTable.ExecuteAsync(insertOperation);
 
 ## <a name="insert-a-batch-of-entities"></a>Zbiorcze wstawianie jednostek
 
-Możesz wstawić wiele jednostek do tabeli w operacji zapisu w jednym. Poniższy przykład kodu tworzy dwa obiekty jednostki ("Jan Kowalski" i "Ben Smith"), dodanie ich do `TableBatchOperation` przy użyciu `Insert` metody, a następnie uruchamia operację, wywołując `CloudTable.ExecuteBatchAsync`.
+Można wstawić wiele jednostek do tabeli w jednej operacji zapisu. Poniższy przykład kodu tworzy dwa obiekty jednostki ("Jan Kowalski" i "Ben Kowalski"), dodaje je do `TableBatchOperation` obiektu `Insert` za pomocą metody, a następnie uruchamia operację przez wywołanie `CloudTable.ExecuteBatchAsync`.
 
 ```csharp
 // Create the batch operation.
@@ -139,9 +139,9 @@ batchOperation.Insert(customer2);
 await peopleTable.ExecuteBatchAsync(batchOperation);
 ```
 
-## <a name="get-all-of-the-entities-in-a-partition"></a>Pobierz wszystkie jednostki w partycji
+## <a name="get-all-of-the-entities-in-a-partition"></a>Pobieranie wszystkich jednostek w partycji
 
-Aby wysłać zapytanie do tabeli dla wszystkich jednostek w partycji, należy użyć `TableQuery` obiektu. Poniższy przykład kodu określa filtr jednostek, gdzie „Smith” jest kluczem partycji. W tym przykładzie drukowane są pola każdej jednostki w wynikach zapytania w konsoli.
+Aby zbadać tabelę dla wszystkich jednostek w partycji, użyj `TableQuery` obiektu. Poniższy przykład kodu określa filtr jednostek, gdzie „Smith” jest kluczem partycji. W tym przykładzie drukowane są pola każdej jednostki w wynikach zapytania w konsoli.
 
 ```csharp
 // Construct the query operation for all customer entities where PartitionKey="Smith".
@@ -164,7 +164,7 @@ do
 
 ## <a name="get-a-single-entity"></a>Pobieranie pojedynczej jednostki
 
-Można napisać zapytanie w celu uzyskania jednej, określonej jednostki. Poniższy kod używa `TableOperation` obiektu w celu określenia klienta o nazwie "Ben Smith". Metoda ta zwraca tylko jedną jednostkę zamiast kolekcji, a zwrócona wartość w `TableResult.Result` jest `CustomerEntity` obiektu. Określenie kluczy partycji i wiersza w zapytaniu jest najszybszym sposobem na pobranie jednej jednostki z `Table` usługi.
+Można napisać zapytanie w celu pobrania pojedynczej określonej jednostki. Poniższy kod używa `TableOperation` obiektu, aby określić klienta o nazwie "Ben Kowalski". Metoda zwraca tylko jedną jednostkę, a nie kolekcję, a zwracana wartość w `TableResult.Result` `CustomerEntity` jest obiektem. Określenie kluczy partycji i wierszy w zapytaniu jest najszybszym sposobem na pobranie pojedynczej jednostki z `Table` usługi.
 
 ```csharp
 // Create a retrieve operation that takes a customer entity.
@@ -182,7 +182,7 @@ else
 
 ## <a name="delete-an-entity"></a>Usuwanie jednostki
 
-Po znalezieniu go, można usunąć jednostki. Poniższy kod wyszukuje i usunięcie jednostki klienta "Jan Kowalski":
+Możesz usunąć jednostkę po jej znalezieniu. Poniższy kod wyszukuje i usuwa jednostkę klienta o nazwie "Ben Kowalski":
 
 ```csharp
 // Create a retrieve operation that expects a customer entity.
@@ -209,5 +209,5 @@ else
    Console.WriteLine("Couldn't delete the entity.");
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 [!INCLUDE [vs-storage-dotnet-tables-next-steps](../../includes/vs-storage-dotnet-tables-next-steps.md)]

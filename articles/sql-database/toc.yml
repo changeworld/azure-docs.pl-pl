@@ -107,6 +107,8 @@
       items:
         - name: Migracja online za pomocą usługi DMS
           href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
+        - name: Dodawanie do grupy trybu failover
+          href: sql-database-managed-instance-failover-group-tutorial.md
         - name: Konfigurowanie replikacji transakcyjnej
           href: replication-with-sql-database-managed-instance.md
     - name: Zabezpieczenia w usłudze SQL Database

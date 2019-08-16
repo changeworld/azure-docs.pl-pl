@@ -200,6 +200,8 @@
       href: /azure/templates/microsoft.hdinsight/allversions
 - name: Zasoby
   items:
+    - name: Często zadawane pytania
+      href: kafka-faq.md
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
     - name: Uzyskiwanie pomocy na forum

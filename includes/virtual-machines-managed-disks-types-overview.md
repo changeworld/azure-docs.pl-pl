@@ -5,76 +5,69 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 01/22/2019
+ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 4abf50e11070f2060309ae9b9cd045c874a2c52e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7385888c54d46e706621f781a64d12d3ae7aa5fb
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67133731"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69512701"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Jakie typy dysków są dostępne na platformie Azure?
 
-Usługi Azure managed disks jest obecnie oferuje cztery typy dysków, z których trzy są ogólnie dostępne (GA) oraz jedną, która jest obecnie dostępna w wersji zapoznawczej. Te cztery typy dysków każdego mieć własnych scenariuszy dla odpowiedniego obiektu docelowego.
+Usługa Azure Managed disks obecnie oferuje cztery typy dysków, a każdy typ jest skierowany do określonych scenariuszy klientów.
 
 ## <a name="disk-comparison"></a>Porównanie dysków
 
-Poniższa tabela zawiera porównanie ultra solid-Województwo dyski (SSD) (wersja zapoznawcza), dysk SSD w warstwie premium, SSD w warstwie standardowa i standardowych dysków twardych (HDD) dla dysków zarządzanych, aby ułatwić wybór rozwiązania do zastosowania.
+Poniższa tabela zawiera porównanie dysków twardych, dysków półprzewodnikowych (SSD), standardowego dysku SSD i standardowych dysków twardych na potrzeby dysków zarządzanych, które ułatwią podjęcie decyzji o tym, czego używać.
 
-|   | Największa SSD (wersja zapoznawcza)   | Premium, SSD   | Standardowa, SSD   | Standardowa, dysk twardy   |
+|   | Ultra Disk   | SSD w warstwie Premium   | SSD w warstwie Standardowa   | HDD w warstwie Standardowa   |
 |---------|---------|---------|---------|---------|
 |Typ dysku   |SSD   |SSD   |SSD   |HDD   |
-|Scenariusz   |Obciążeń intensywnie korzystających z operacji We/Wy, takich jak SAP HANA, baz danych w warstwie najwyższego (na przykład SQL, Oracle) i innych obciążeń dużej transakcji.   |Obciążenia produkcyjne i wrażliwe na wydajność   |Serwery sieci Web, aplikacje dla przedsiębiorstw używana w niewielkim stopniu i tworzenie i testowanie   |Tworzenie kopii zapasowej, zastosowania niekrytyczne, rzadkie dostępu   |
-|Rozmiar dysku   |gibibajt 65 536 (GiB) (wersja zapoznawcza)   |32,767 GiB    |32,767 GiB   |32,767 GiB   |
-|Maksymalna przepływność   |2000 MiB/s (wersja zapoznawcza)   |900 MiB/s   |750 MiB/s   |500 MiB/s   |
-|Maksymalna liczba operacji We/Wy   |160,000 (wersja zapoznawcza)   |20,000   |6,000   |2000   |
+|Scenariusz   |Obciążenia intensywnie korzystające z operacji we/wy, takie jak SAP HANA, baz danych najwyższej warstwy (na przykład SQL, Oracle) i innych obciążeń intensywnie korzystających z transakcji.   |Obciążenia produkcyjne i wrażliwe na wydajność   |Serwery sieci Web, lekko używane aplikacje dla przedsiębiorstw i tworzenie/testowanie   |Kopia zapasowa, niekrytyczny, rzadko występujący dostęp   |
+|Rozmiar dysku   |65 536 nazywana gigabajtem i (GiB)    |32 767 GiB    |32 767 GiB   |32 767 GiB   |
+|Maksymalna przepływność   |2 000 MiB/s    |900 MiB/s   |750 MiB/s   |500 MiB/s   |
+|Maks. IOPS   |160 000    |20,000   |6,000   |2000   |
 
-## <a name="ultra-ssd-preview"></a>Największa SSD (wersja zapoznawcza)
+## <a name="ultra-disk"></a>Ultra Disk
 
-SSD ultra platformy Azure (wersja zapoznawcza) zapewnia wysoką przepływność, wysokiej operacje We/Wy i magazynu dyskowego niskie opóźnienia dla maszyn wirtualnych IaaS platformy Azure. Niektóre dodatkowe korzyści ultra SSD obejmują możliwość dynamicznie zmieniać wydajność dysku, wraz z obciążeń, bez konieczności ponownego uruchamiania maszyn wirtualnych. Największa dyski SSD są odpowiednie dla obciążeń intensywnie korzystających z danych, takich jak SAP HANA, najwyższej warstwy bazy danych i transakcji duże obciążenia. Największa dysków SSD należy używać tylko jako dyski z danymi. Zalecamy używanie dysków premium SSD jako dyski systemu operacyjnego.
+Usługa Azure Ultra disks zapewnia wysoką przepływność, dużą liczbę operacji we/wy na sekundę oraz spójną małą ilość miejsca na dysku dla maszyn wirtualnych usługi Azure IaaS Niektóre dodatkowe zalety funkcji Ultra disks to możliwość dynamicznego zmieniania wydajności dysku wraz z obciążeniami bez konieczności ponownego uruchamiania maszyn wirtualnych. Ultra dyski są odpowiednie dla obciążeń intensywnie korzystających z danych, takich jak SAP HANA, baz danych najwyższej warstwy i obciążeń intensywnie korzystających z transakcji. Ultra disks można używać tylko jako dysków danych. Zalecamy używanie dysków SSD Premium jako dysków systemu operacyjnego.
 
 ### <a name="performance"></a>Wydajność
 
-Podczas aprowizowania dysku ultra niezależnie skonfigurować pojemność i wydajność dysku. Największa dyski SSD są dostępne w kilku stałych rozmiarach od 4 GiB maksymalnie 64 TiB i są wyposażone w modelu konfiguracji elastyczna wydajność umożliwiająca można niezależnie konfigurować operacje We/Wy i przepływność.
+Podczas aprowizacji Ultra Disk można niezależnie skonfigurować pojemność i wydajność dysku. Niezwykle dyski są dostępne w kilku stałych rozmiarach, z przedziału od 4 GiB do 64 TiB i oferują elastyczny model konfiguracji wydajności, który pozwala niezależnie konfigurować operacje we/wy i przepływność.
 
-Niektóre kluczowe funkcje Ultra dyski SSD są:
+Niektóre kluczowe możliwości Ultra disks to:
 
-- Pojemność dysku: Największa zakresy pojemność dysków SSD z 4 GiB rozmiarze do 64 TiB.
-- Disk IOPS: Największa SSD obsługuje operacje We/Wy limitów 300 operacji We/Wy/GiB, maksymalnie 160 KB operacje We/Wy na dysk. Uzyskanie operacje We/Wy, które należy aprowizować, upewnij się, że wybrany dysk operacje We/Wy mniejsza niż na SEKUNDĘ maszyny Wirtualnej. Minimalna dysku operacje We/Wy są 100 operacji We/Wy.
-- Przepływność dysku: Przy użyciu najwyższej SSD przepływność pojedynczego dysku wynoszący 256 KiB/s dla każdego aprowizowane operacje We/Wy, maksymalnie 2000 MB/s na dysk (gdzie MB/s = 10 ^ 6 bajtów na sekundę). Przepływność dysku minimalną jest 1 MiB.
-- Największa SSD obsługuje dopasowywanie atrybuty wydajności dysku (operacje We/Wy i przepływność) w czasie wykonywania bez odłączeniem dysku od maszyny wirtualnej. Po wystawieniu wydajności operacji zmiany rozmiaru dysku na dysku może potrwać do godziny rzeczywiście zostały wprowadzone zmiany.
+- Pojemność dysku: Pojemność Ultra disks mieści się w zakresie od 4 GiB do 64 TiB.
+- Liczba operacji we/wy dysku: Ultra disks obsługuje limity liczby operacji we/wy 300 IOPS/GiB, maksymalnie 160 K operacji we/wy na dysk. Aby osiągnąć liczbę operacji we/wy, która została zainicjowana, upewnij się, że wybrane operacje we/wy na dysku są mniejsze niż limit liczby IOPS maszyny wirtualnej. Minimalna liczba operacji we/wy na dysk wynosi 2 IOPS/GiB, a ogólna podstawowa linia bazowa wynosi 100 operacji we/wy. Na przykład jeśli masz 4 GiB Ultra Disk, będziesz mieć co najmniej 100 operacji we/wy, a nie 8 operacji we/wy na sekundę.
+- Przepływność dysku: W przypadku bardzo dysków limit przepływności pojedynczego dysku to 256 KiB/s dla każdej z zainicjowanych operacji we/wy, maksymalnie 2000 s MB na dysk (gdzie MB/s = 10 ^ 6 bajtów na sekundę). Minimalna przepływność na dysk to 4KiB/s dla każdej z zainicjowanych operacji we/wy z co najmniej 1 MB/s.
+- Ultra disks obsługuje dostosowanie atrybutów wydajności dysku (IOPS i przepływności) w czasie wykonywania bez odłączania dysku od maszyny wirtualnej. Po wystawieniu operacji zmiany rozmiaru dysku na dysku może upłynąć do czasu, aż zmiana zacznie obowiązywać.
 
 ### <a name="disk-size"></a>Rozmiar dysku
 
-|Rozmiar dysku (GiB)  |Limity operacji We/Wy  |Limit przepływności (MB/s)  |
+|Rozmiar dysku (GiB)  |Limit operacji we/wy  |Limit przepływności (MB/s)  |
 |---------|---------|---------|
 |4     |1,200         |300         |
 |8     |2,400         |600         |
 |16     |4,800         |1,200         |
-|32     |9,600         |2000         |
-|64     |19,200         |2000         |
-|128     |38,400         |2000         |
-|256     |76,800         |2000         |
+|32     |9 600         |2000         |
+|64     |19 200         |2000         |
+|128     |38 400         |2000         |
+|256     |76 800         |2000         |
 |512     |80,000         |2000         |
-|1024 – 65 536 (rozmiary, w tym zakresie, zwiększając w przyrostach co 1 TiB)     |160,000         |2000         |
+|1024-65536 (rozmiary w tym zakresie zwiększają się w przyrostach 1 TiB)     |160 000         |2000         |
 
-### <a name="transactions"></a>Transakcje
+### <a name="ga-scope-and-limitations"></a>Zakres i ograniczenia dotyczące GA
 
-Największa dysków SSD każdej operacji We/Wy mniejszą niż lub równy 256 KiB przepływności są uznawane za jednej operacji We/Wy. Operacje We/Wy jest większy niż 256 KiB przepływności są uważane za wiele operacji We/Wy o rozmiarze 256 KiB.
+Na razie Ultra dyski mają dodatkowe ograniczenia, są następujące:
 
-### <a name="preview-scope-and-limitations"></a>Zakres (wersja zapoznawcza) i ograniczenia
-
-W trakcie okresu zapoznawczego ultra SSD:
-
-- Są obsługiwane w regionie wschodnie stany USA 2 w pojedynczej strefie dostępności  
-- Należy używać tylko z użyciem strefy dostępności (zestawy dostępności i jednego wdrożenia maszyn wirtualnych poza strefy będą ma możliwość dołączenia dysku ultra)
-- Są obsługiwane tylko na maszynach wirtualnych v3 ES/DS
-- Są dostępne tylko jako dyski z danymi i tylko rozmiar sektora fizycznego 4k pomocy technicznej  
-- Może być utworzony tylko jako pustych dysków  
-- Obecnie można wdrożyć tylko przy użyciu szablonów usługi Azure Resource Manager, interfejsu wiersza polecenia, programu PowerShell i zestawu SDK języka Python.
-- Nie można wdrożyć w witrynie Azure Portal (jeszcze).
-- Nie obsługuje jeszcze migawki dysków maszyny Wirtualnej obrazy, zestawy dostępności, zestawy skalowania maszyn wirtualnych i usługa Azure disk encryption.
-- Nie obsługuje jeszcze integracji z usługą Azure Backup lub usługi Azure Site Recovery.
-- Podobnie jak w przypadku [większość wersji zapoznawczych](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), nie należy używać tej funkcji dla obciążeń produkcyjnych do ogólnodostępnej (GA).
+- Są obsługiwane w regionach Wschodnie stany USA 2, Azja Południowo-Wschodnia i Europa Północna, w dwóch strefach dostępności na region  
+- Może być używany tylko z strefami dostępności (zbiory dostępności i pojedyncze wdrożenia maszyn wirtualnych poza strefami nie będą miały możliwości dołączenia Ultra Disk)
+- Są obsługiwane tylko na maszynach wirtualnych ES/DS. v3
+- Są dostępne tylko jako dyski danych i obsługują tylko rozmiar sektora fizycznego 4 KB  
+- Można utworzyć tylko jako puste dyski  
+- Nie obsługują jeszcze migawek dysków, obrazów maszyn wirtualnych, zestawów dostępności, zestawów skalowania maszyn wirtualnych i usługi Azure Disk Encryption
+- Nie należy jeszcze obsługiwać integracji z programem Azure Backup lub Azure Site Recovery

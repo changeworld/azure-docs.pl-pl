@@ -5,28 +5,28 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: b609a708a987194398c53bdf83f0d6e1f281808d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 08/15/2019
 ms.locfileid: "67183724"
 ---
-Domyślnie interfejsy API w zaplecze funkcji Mobile Apps może być wywoływany anonimowo. Następnie należy ograniczyć dostęp do tylko uwierzytelnionym klientom.  
+Domyślnie interfejsy API w Mobile Apps zaplecza mogą być wywoływane anonimowo. Następnie musisz ograniczyć dostęp tylko do uwierzytelnionych klientów.  
 
-* **Środowisko node.js z powrotem zakończenia (za pośrednictwem witryny Azure portal)** :  
+* Zaplecze środowiska **Node. js (za pośrednictwem Azure Portal)** :  
 
-    W ustawieniach aplikacji mobilnej kliknij **łatwych tabel** i Wybieranie tabeli. Kliknij przycisk **zmienić uprawnienia**, wybierz opcję **tylko dostęp uwierzytelniony** wszystkich uprawnień, a następnie kliknij przycisk **Zapisz**.
-* **Zaplecze platformy .NET (C#)** :  
+    W ustawieniach Mobile Apps kliknij pozycję **łatwe tabele** i wybierz tabelę. Kliknij pozycję **Zmień uprawnienia**, wybierz pozycję **dostęp uwierzytelniony tylko** dla wszystkich uprawnień, a następnie kliknij przycisk **Zapisz**.
+* **Zaplecze .NET (C#)** :  
 
-    W programie project server, przejdź do **kontrolerów** > **TodoItemController.cs**. Dodaj `[Authorize]` atrybutu **TodoItemController** klasy w następujący sposób. Aby ograniczyć dostęp tylko do określonych metod, można także zastosować ten atrybut tylko do jednej z tych metod zamiast klasy. Ponownie opublikować projekt serwera.
+    W projekcie serwera przejdź do **kontrolera** > **TodoItemController.cs**. Dodaj atrybut do klasy TodoItemController w następujący sposób. `[Authorize]` Aby ograniczyć dostęp tylko do określonych metod, można również zastosować ten atrybut tylko do tych metod, a nie klasy. Opublikuj ponownie projekt serwera.
 
         [Authorize]
         public class TodoItemController : TableController<TodoItem>
 
-* **Zaplecze środowiska node.js (przy użyciu kodu w języku Node.js)** :  
+* Zaplecze środowiska **Node. js (za pośrednictwem kodu Node. js)** :  
 
-    Aby wymagać uwierzytelniania w celu dostępu do tabel, Dodaj następujący wiersz do skryptu serwera Node.js:
+    Aby wymagać uwierzytelniania w celu uzyskania dostępu do tabeli, Dodaj następujący wiersz do skryptu serwera Node. js:
 
         table.access = 'authenticated';
 
-    Aby uzyskać więcej informacji, zobacz [jak: Wymaganie uwierzytelniania na potrzeby dostępu do tabel](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-auth). Aby dowiedzieć się, jak pobrać projekt kodu szybkiego startu z lokacji, zobacz [jak: Pobierz projekt kodu szybkiego startu zaplecza Node.js przy użyciu narzędzia Git](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart).
+    Aby uzyskać więcej informacji, [zobacz How to: Wymagaj uwierzytelniania w celu uzyskania dostępu](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-auth)do tabel. Aby dowiedzieć się, jak pobrać projekt kodu szybkiego startu z witryny [, zobacz How to: Pobierz projekt kodu zaplecze środowiska Node. js przy](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)użyciu narzędzia Git.

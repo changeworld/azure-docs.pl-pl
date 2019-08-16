@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 08/15/2019
 ms.author: diberry
-ms.openlocfilehash: 78c75e69be5521660937e34da0d7261dba1de385
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: a3e1853e587f2f1632641cbb896eba59f8dc9455
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955285"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515787"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Źródła danych dla zawartości usługi QnA Maker
 
@@ -133,9 +133,21 @@ Struktura znacznie w formie *.txt*, *tsv* lub *xls* pliki można przekazać do u
 
 Wszelkie dodatkowe kolumny w pliku źródłowym są ignorowane.
 
+### <a name="example-of-structured-excel-file"></a>Przykład strukturalnego pliku programu Excel
+
 Poniżej znajduje się przykład ze strukturą QnA *xls* plik z zawartością HTML:
 
  ![Przykład wiedzy pytań i odpowiedzi ze strukturą w programie excel](../media/qnamaker-concepts-datasources/structured-qna-xls.png)
+
+### <a name="example-of-alternate-questions-for-single-answer-in-excel-file"></a>Przykład alternatywnych pytań dotyczących pojedynczej odpowiedzi w pliku programu Excel
+
+Poniżej znajduje się przykład strukturalnego pliku QnA *. xls* z kilkoma dodatkowymi pytaniami dotyczącymi pojedynczej odpowiedzi:
+
+ ![Przykład alternatywnych pytań dotyczących pojedynczej odpowiedzi w pliku programu Excel](../media/qnamaker-concepts-datasources/xls-alternate-question-example.png)
+
+Po zaimportowaniu pliku para pytań i odpowiedzi znajduje się w bazie wiedzy, jak pokazano poniżej:
+
+ ![Zrzut ekranu z alternatywnymi pytaniami dotyczącymi pojedynczej odpowiedzi zaimportowanej do bazy wiedzy](../media/qnamaker-concepts-datasources/xls-alternate-question-example-after-import.png)
 
 ## <a name="structured-data-format-through-import"></a>Format danych ze strukturą za pośrednictwem importu
 
