@@ -19,9 +19,7 @@
       href: dsvm-ubuntu-intro.md
     - name: Tworzenie maszyny DSVM z systemem CentOS
       href: linux-dsvm-intro.md
-    - name: Tworzenie maszyny wirtualnej do uczenia głębokiego
-      href: provision-deep-learning-dsvm.md
-    - name: Tworzenie maszyny DSVM ze sztuczną inteligencją w zakresie danych geograficznych
+    - name: Tworzenie maszyny wirtualnej analizy danych geograficznych ze sztuczną inteligencją
       href: provision-geo-ai-dsvm.md
 - name: Pojęcia
   items:

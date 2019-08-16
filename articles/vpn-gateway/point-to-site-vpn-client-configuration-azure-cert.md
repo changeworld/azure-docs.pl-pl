@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 08/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 624c1648bc709e1ca6ee9c4120350a606df67df5
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 79e7027d308d389aa672d164de91df61b1142e32
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035773"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534155"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Tworzenie i Instalowanie plików konfiguracji klienta sieci VPN dla natywnych konfiguracji P2S uwierzytelniania certyfikatu platformy Azure
 
@@ -126,12 +126,12 @@ Jeśli certyfikaty nie zostały jeszcze wygenerowane, wykonaj następujące czyn
 
 ### <a name="install"></a>Instalowanie i Konfigurowanie
 
-Następujące instrukcje zostały utworzone za pomocą klient strongswan 5.5.1 na Ubuntu 17.0.4. Ubuntu 16.0.10 nie obsługuje graficznego interfejsu użytkownika klient strongswan. Jeśli chcesz użyć Ubuntu 16.0.10, należy użyć [wiersza polecenia](#linuxinstallcli). Poniższe przykłady mogą nie odpowiadać ekranom widocznym w zależności od wersji systemu Linux i klient strongswan.
+Następujące instrukcje zostały utworzone w witrynie Ubuntu 18.0.4. Ubuntu 16.0.10 nie obsługuje graficznego interfejsu użytkownika klient strongswan. Jeśli chcesz użyć Ubuntu 16.0.10, należy użyć [wiersza polecenia](#linuxinstallcli). Poniższe przykłady mogą nie odpowiadać ekranom widocznym w zależności od wersji systemu Linux i klient strongswan.
 
-1. Otwórz **Terminal** , aby zainstalować **Klient strongswan** i jego Menedżera sieci, uruchamiając polecenie w przykładzie. Jeśli zostanie wyświetlony komunikat o błędzie związanym z dodatkiem *libcharon-Extra-* plugins, zastąp go opcją "klient strongswan-wtyczka-EAP-MSCHAPv2".
+1. Otwórz **Terminal** , aby zainstalować **Klient strongswan** i jego Menedżera sieci, uruchamiając polecenie w przykładzie.
 
    ```
-   sudo apt-get install strongswan libcharon-extra-plugins moreutils iptables-persistent network-manager-strongswan
+   sudo apt install network-manager-strongswan
    ```
 2. Wybierz ikonę **Menedżera sieci** (Strzałka w górę/Strzałka w dół), a następnie wybierz pozycję **Edytuj połączenia**.
 

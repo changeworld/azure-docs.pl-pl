@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 08/02/2019
-ms.openlocfilehash: a8351f13f015ca53e72bbff41152e46690fdc7bc
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.date: 08/15/2019
+ms.openlocfilehash: f6ff654b8e51dfaf2697df69c7f220d41346c2bc
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855727"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543467"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>OutOfMemoryError wyjątki dla Apache Spark w usłudze Azure HDInsight
 
@@ -53,13 +53,13 @@ java.lang.OutOfMemoryError
 
 ### <a name="cause"></a>Przyczyna
 
-Najbardziej prawdopodobną przyczyną tego wyjątku jest za mało pamięci sterty. Aplikacja platformy Spark wymaga wystarczającej ilości pamięci sterty języka Java Virtual Machines (JVM) podczas uruchamiania programu jako modułów wykonujących lub sterowników.
+Najbardziej prawdopodobną przyczyną tego wyjątku to, że nie ma wystarczającej ilości pamięci sterty jest przydzielany do maszyny wirtualnej Java (JVMs). Te JVMs są uruchamiane jako elementy wykonawcze lub sterowniki w ramach aplikacji Apache Spark.
 
 ### <a name="resolution"></a>Rozwiązanie
 
 1. Określ maksymalny rozmiar danych obsługiwanych przez aplikację aparatu Spark. Należy oszacować rozmiar na podstawie maksymalnego rozmiaru danych wejściowych, danych pośrednich generowanych przez transformacje danych wejściowych i danych wyjściowych, które wygenerowały dalsze Przekształcanie danych pośrednich. Jeśli wstępne oszacowanie nie jest wystarczające, Zwiększ rozmiar nieco i wykonaj iterację do momentu wystąpienia błędów pamięci.
 
-1. Upewnij się, że klaster usługi HDInsight, który ma być używany, ma wystarczającą ilość zasobów pamięci i rdzeni, aby pomieścić aplikację aparatu Spark. Można to ustalić przez wyświetlenie sekcji metryki klastra w interfejsie użytkownika usługi YARN w celu uzyskania wartości używanej pamięci względem łącznej ilości pamięci oraz liczby używanych rdzeni wirtualnych względem łącznej liczby rdzeni wirtualnych.
+1. Upewnij się, że klaster usługi HDInsight, który ma być używany, ma wystarczającą ilość zasobów pamięci i rdzeni, aby pomieścić aplikację aparatu Spark. Można to ustalić, wyświetlając sekcję metryki klastra w interfejsie użytkownika PRZĘDZy w klastrze dla wartości używanej **pamięci** a. **Łączna ilość pamięci** i **użycie rdzeni wirtualnych** zamiast **Łączna liczba rdzeni wirtualnych**.
 
     ![Widok pamięci podstawowej przędzy](./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png)
 

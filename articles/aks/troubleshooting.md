@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 1668e0b3b155804496b190f2ba66d220ba0dd219
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 00fadd8a98ec4f58783ed8b407e2621a7c107149
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381950"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533523"
 ---
 # <a name="aks-troubleshooting"></a>Rozwiązywanie problemów z AKS
 
@@ -86,10 +86,12 @@ Ten błąd występuje, gdy klastry wchodzą w stan niepowodzenia z wielu powodó
 
 *Ta pomoc w rozwiązywaniu problemów jest skierowana z https://aka.ms/aks-pending-upgrade*
 
-Operacje klastra są ograniczone, gdy wykonywane są aktywne operacje uaktualniania lub podjęto próbę uaktualnienia, ale nie powiodło się. Aby zdiagnozować przebieg `az aks show -g myResourceGroup -n myAKSCluster -o table` problemu w celu pobrania szczegółowego stanu w klastrze. W oparciu o wynik:
+Operacje uaktualniania i skalowania w klastrze z pojedynczą pulą węzłów lub klastra z [wieloma pulami węzłów](use-multiple-node-pools.md) wzajemnie się wykluczają. Klaster ani Pula węzłów nie mogą być jednocześnie uaktualniane i skalowane. W zamian każdy typ operacji musi zakończyć się w odniesieniu do zasobu docelowego przed następnym żądaniem tego samego zasobu. W związku z tym operacje są ograniczone w przypadku wystąpienia lub próby aktywnego uaktualnienia lub operacji skalowania, a następnie niepowodzenie. 
 
-* Jeśli klaster jest aktywnie uaktualniany, poczekaj na zakończenie operacji. Jeśli zakończyło się pomyślnie, spróbuj ponownie wykonać operację.
-* Jeśli uaktualnienie nie powiodło się, wykonaj czynności opisane powyżej
+Aby ułatwić zdiagnozowanie uruchomienia `az aks show -g myResourceGroup -n myAKSCluster -o table` problemu w celu pobrania szczegółowego stanu w klastrze. W oparciu o wynik:
+
+* Jeśli klaster jest aktywnie uaktualniany, poczekaj na zakończenie operacji. Jeśli zakończyło się pomyślnie, ponów próbę wykonania poprzedniej operacji zakończonej niepowodzeniem.
+* Jeśli uaktualnienie nie powiodło się, wykonaj kroki opisane w poprzedniej sekcji.
 
 ## <a name="can-i-move-my-cluster-to-a-different-subscription-or-my-subscription-with-my-cluster-to-a-new-tenant"></a>Czy mogę przenieść klaster na inną subskrypcję lub moją subskrypcję z moim klastrem do nowej dzierżawy?
 
@@ -127,6 +129,6 @@ Operacje klastra są ograniczone, gdy Poprzednia operacja jest nadal w toku. Aby
 
 Na podstawie danych wyjściowych stanu klastra:
 
-* Jeśli klaster jest w stanie aprowizacji *innym niż* *powodzenie*lub nieudany, poczekaj na zakończenie operacji (uaktualnianie */Aktualizowanie/tworzenie/skalowanie/usuwanie/Migrowanie*). Po zakończeniu poprzedniej operacji ponów próbę wykonania ostatniej operacji klastra.
+* Jeśli klaster jest w stanie aprowizacji innym niż *powodzenie*lub nieudany , poczekaj na zakończenie operacji (uaktualnianie */Aktualizowanie/tworzenie/skalowanie/usuwanie/Migrowanie*). Po zakończeniu poprzedniej operacji ponów próbę wykonania ostatniej operacji klastra.
 
 * Jeśli uaktualnienie nie powiodło się, wykonaj kroki opisane w temacie jak pojawiają się [błędy, w których klaster jest w stanie niepowodzenia, a uaktualnienie lub skalowanie nie będzie działało do momentu jego](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed)naprawienia.

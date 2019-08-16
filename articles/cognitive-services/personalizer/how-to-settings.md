@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: f0ccf0e480fa57e0ffdfc94ca35cfaceded37a0b
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: cd67f435ff390267e01acd99594b9063db4c4ee1
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663893"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69559095"
 ---
 # <a name="personalizer-settings"></a>Ustawienia personalizacji
 
@@ -86,6 +86,7 @@ Z sekcji Zarządzanie zasobami dla **modelu i zasad**przejrzyj temat Tworzenie m
 ## <a name="import-and-export-learning-policy"></a>Importowanie i eksportowanie zasad uczenia
 
 Z sekcji Zarządzanie zasobami dotyczącymi **modelu i zasad**należy zaimportować nowe zasady uczenia lub wyeksportować bieżące zasady nauki.
+Możesz pobrać pliki zasad uczenia z poprzednich eksportów lub pobrać zoptymalizowane zasady wykryte podczas oceny w trybie offline. Ręczne wprowadzanie zmian w tych plikach będzie miało wpływ na wydajność uczenia maszynowego i dokładność ocen w trybie offline, a firma Microsoft nie może zagwarantowania dokładności uczenia maszynowego i ocen ani wyjątków usług wynikających z ręcznej edycji zasad.
 
 ## <a name="next-steps"></a>Następne kroki
 

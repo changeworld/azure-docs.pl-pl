@@ -1,9 +1,9 @@
 ---
-title: Uniknąć przeładowania strony (Biblioteka Microsoft Authentication Library dla języka JavaScript) | Azure
-description: Dowiedz się, jak uniknąć przeładowania strony nabywania i odnawianie tokenów dyskretne przy użyciu Biblioteka Microsoft Authentication Library dla języka JavaScript (MSAL.js).
+title: Unikaj ponownego ładowania stron (Biblioteka uwierzytelniania firmy Microsoft dla języka JavaScript) | Azure
+description: Dowiedz się, jak uniknąć ponownego ładowania strony podczas uzyskiwania i odnawiania tokenów w trybie dyskretnym przy użyciu biblioteki uwierzytelniania firmy Microsoft dla języka JavaScript (MSAL. js).
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,33 +13,33 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/29/2019
-ms.author: nacanuma
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 162811221e6dde89ad11f358b2ec8f32f3c82522
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c382c78cf631def74272768b78ee489e49820d04
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66420471"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532836"
 ---
-# <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>Uniknąć przeładowania strony nabywania i odnawianie tokeny, w trybie dyskretnym przy użyciu MSAL.js
-Biblioteka Microsoft Authentication Library dla języka JavaScript (MSAL.js) używa ukryte `iframe` elementy do uzyskania i odnawiania tokenów w trybie dyskretnym w tle. Usługa Azure AD zwraca token z powrotem do zarejestrowanych redirect_uri, określony w żądaniu tokenu (domyślnie jest to strony głównej aplikacji). Ponieważ odpowiedzi 302, powoduje to HTML odpowiadający `redirect_uri` ładowany w `iframe`. Zazwyczaj aplikacji `redirect_uri` strony głównej i to powoduje, że załadować ponownie.
+# <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>Unikaj ponownego ładowania stron podczas uzyskiwania i odnawiania tokenów dyskretnie przy użyciu MSAL. js
+Biblioteka Microsoft Authentication Library for JavaScript (MSAL. js) używa `iframe` ukrytych elementów w celu pozyskania i odnawiania tokenów dyskretnie w tle. Usługa Azure AD zwraca token z zarejestrowanego elementu redirect_uri określonego w żądaniu tokenu (domyślnie jest to Strona główna aplikacji). Ponieważ odpowiedź jest 302, wynikiem jest kod HTML odpowiadający `redirect_uri` wczytywaniu `iframe`w. `redirect_uri` Zwykle jest to Strona główna, która powoduje ponowne załadowanie.
 
-W innych przypadkach, jeśli przejście do strony głównej aplikacji wymaga uwierzytelnienia, jego może prowadzić do zagnieżdżonych `iframe` elementów lub `X-Frame-Options: deny` błędu.
+W innych przypadkach, jeśli przechodzenie do strony głównej aplikacji wymaga uwierzytelnienia, może to prowadzić do zagnieżdżonych `iframe` elementów lub `X-Frame-Options: deny` błędu.
 
-Ponieważ MSAL.js nie można odrzucić 302 wystawione przez usługę Azure AD i jest wymagany do procesu zwrócony token, nie można zapobiec `redirect_uri` z ładowany w `iframe`.
+Ponieważ MSAL. js nie może odrzucić 302 wystawionych przez usługę Azure AD i jest wymagany do przetworzenia zwróconego tokenu `redirect_uri` , nie można zapobiec załadowaniu go `iframe`w.
 
-Aby uniknąć całej aplikacji, ponownie załadować ponownie lub inne błędy spowodowane ze względu na to, wykonaj te rozwiązania problemu.
+Aby uniknąć ponownego ładowania całej aplikacji lub innych błędów spowodowanych tym problemem, należy postępować zgodnie z poniższymi obejściami.
 
-## <a name="specify-different-html-for-the-iframe"></a>Określ inny kod HTML dla elementu iframe
+## <a name="specify-different-html-for-the-iframe"></a>Określ inny kod HTML dla elementu IFRAME
 
-Ustaw `redirect_uri` właściwość konfiguracji do to prosta strona, która nie wymaga uwierzytelniania. Musisz upewnić się, czy jest on zgodny z `redirect_uri` zarejestrowany w witrynie Azure portal. Nie dotyczy to logowania użytkownika jako biblioteki MSAL zapisuje strony początkowej, gdy użytkownik rozpoczyna się proces logowania i przekierowuje do dokładnej lokalizacji po ukończeniu logowania.
+`redirect_uri` Ustaw właściwość konfiguracji na prostą stronę, która nie wymaga uwierzytelniania. Musisz się upewnić, że jest on zgodny z `redirect_uri` zarejestrowaną w Azure Portal. Nie wpłynie to na środowisko logowania użytkownika, ponieważ MSAL zapisuje stronę początkową, gdy użytkownik rozpocznie proces logowania i przekierowuje się z powrotem do dokładnej lokalizacji po zakończeniu logowania.
 
-## <a name="initialization-in-your-main-app-file"></a>Inicjowanie pliku głównego aplikacji
+## <a name="initialization-in-your-main-app-file"></a>Inicjowanie w głównym pliku aplikacji
 
-Jeśli aplikacja ma strukturę taki sposób, że istnieje jeden centralny plik Javascript, który definiuje inicjowania aplikacji, routingu i inne rzeczy, warunkowo można załadować aplikacji moduły oparte na tego, czy aplikacja jest ładowany w `iframe` czy nie. Na przykład:
+Jeśli aplikacja jest strukturalna w taki sposób, że istnieje jeden centralny plik języka JavaScript, który definiuje inicjalizację, Routing i inne elementy aplikacji, można warunkowo załadować moduły aplikacji w zależności od tego, czy aplikacja jest ładowana `iframe` w programie, czy nie. Przykład:
 
 In AngularJS: app.js
 
@@ -78,7 +78,7 @@ else {
 }
 ```
 
-W Angular: app.module.ts
+W elemencie kątowym: App. module. TS
 
 ```javascript
 // Imports...
@@ -149,5 +149,5 @@ export class MsalComponent {
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się więcej o [Kompilowanie aplikacji jednostronicowej (SPA)](scenario-spa-overview.md) przy użyciu MSAL.js.
+## <a name="next-steps"></a>Następne kroki
+Dowiedz się więcej o [tworzeniu aplikacji jednostronicowej (Spa)](scenario-spa-overview.md) przy użyciu MSAL. js.

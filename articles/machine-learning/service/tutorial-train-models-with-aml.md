@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6725bbc1978109d2b690a98e2cf98cc8c8c25141
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: df5085011fd2771f094131244c1f466cebcbc89a
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033012"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534803"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Samouczek: Uczenie modeli klasyfikacji obrazów przy użyciu MNIST ręcznie danych i scikit — uczenie się za pomocą Azure Machine Learning
 
@@ -40,33 +40,15 @@ Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przejdź do sekcji [Konfigurowanie środowiska projektowego](#start), aby zapoznać się z instrukcjami dotyczącymi notesu, lub skorzystaj z poniższych instrukcji, aby pobrać notes i uruchomić go w usłudze Azure Notebooks lub na swoim serwerze notesów.  Do uruchomienia notesu potrzebne są następujące elementy:
+* Wykonaj kroki z artykułu [Samouczek: Rozpocznij tworzenie pierwszego eksperymentu](tutorial-1st-experiment-sdk-setup.md) w celu:
+    * Tworzenie obszaru roboczego
+    * Tworzenie serwera notesu w chmurze
+    * Uruchamianie pulpitu nawigacyjnego notesu Jupyter
 
-* Serwer notesów Python 3.6 z zainstalowanym następującym oprogramowaniem:
-    * Zestaw SDK usługi Azure Machine Learning dla języka Python
-    * `matplotlib` i `scikit-learn`
-* Notes samouczka i plik **utils.py**
-* Obszar roboczy uczenia maszynowego
-* Plik konfiguracji obszaru roboczego w tym samym katalogu co notes
+* Po uruchomieniu pulpitu nawigacyjnego notesu Jupyter Otwórz Notes **/IMG-Classification-part1-Training. ipynb** .
 
-Wszystkie te wymagania wstępne można spełnić, korzystając z jednej z poniższych sekcji.
+Samouczek i towarzyszący plik **utils.py** są również dostępne w usłudze [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , jeśli chcesz korzystać z niego w [środowisku lokalnym](how-to-configure-environment.md#local).  Upewnij się, że zainstalowano `matplotlib` i `scikit-learn` w Twoim środowisku.
 
-* Korzystanie z [serwera notesu w chmurze w obszarze roboczym](#azure)
-* Korzystanie z [własnego serwera notesów](#server)
-
-### <a name="azure"></a>Korzystanie z serwera notesu w chmurze w obszarze roboczym
-
-Rozpoczęcie pracy z własnym serwerem notesu opartym na chmurze jest proste. [Zestaw Azure Machine Learning SDK dla języka Python](https://aka.ms/aml-sdk) jest już zainstalowany i skonfigurowany dla Ciebie po utworzeniu tego zasobu w chmurze.
-
-[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
-
-* Po uruchomieniu witryny sieci Web notesu Otwórz Notes **/IMG-Classification-part1-Training. ipynb** .
-
-### <a name="server"></a>Korzystanie z własnego serwera notesów Jupyter Notebook
-
-[!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
-
- Po wykonaniu tych kroków uruchom Notes **/IMG-Classification-part1-Training. ipynb** w sklonowanym katalogu.
 
 ## <a name="start"></a>Konfigurowanie środowiska projektowego
 

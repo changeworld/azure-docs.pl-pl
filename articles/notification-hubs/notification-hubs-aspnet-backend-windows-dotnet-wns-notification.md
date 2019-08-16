@@ -15,23 +15,23 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
 ms.author: jowargo
-ms.openlocfilehash: 32714b3e5a5ed859716faef2ca660f8b2c90b089
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a4949b12076ea7cdbbf882d199279410da95e005
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60874299"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558650"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>Samouczek: wysyłanie powiadomień do konkretnych użytkowników przy użyciu usługi Azure Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 W tym samouczku pokazano, jak wysyłać powiadomienia push do użytkownika konkretnej aplikacji na konkretnym urządzeniu za pomocą usługi Azure Notification Hubs. Zaplecze ASP.NET interfejsu WebAPI jest używane do uwierzytelniania klientów. Kiedy zaplecze uwierzytelnia użytkownika aplikacji klienckiej, automatycznie dodaje tag do rejestracji powiadomienia. Zaplecze używa tego tagu do wysyłania powiadomień do określonego użytkownika.
 
 > [!NOTE]
-> Kompletny kod dla tego samouczka można znaleźć [w witrynie GitHub](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/NotifyUsers).
+> Kompletny kod dla tego samouczka można znaleźć [w witrynie GitHub](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers).
 
 W tym samouczku wykonasz następujące kroki:
 
@@ -53,13 +53,13 @@ Ten samouczek jest oparty na centrum powiadomień i projekcie programu Visual St
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
-## <a name="update-the-code-for-the-uwp-client"></a>Aktualizowanie kodu dla klienta platformy uniwersalnej systemu Windows
+## <a name="update-the-code-for-the-uwp-client"></a>Aktualizowanie kodu dla klienta platformy UWP
 
 W tej sekcji zaktualizujesz kod w projekcie ukończonym w ramach artykułu [Samouczek: wysyłanie powiadomień do aplikacji platformy uniwersalnej systemu Windows przy użyciu usługi Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md). Projekt powinien już być skojarzony ze Sklepem Windows. Ponadto powinien być skonfigurowany do używania centrum powiadomień. W tej sekcji dodasz kod, aby wywołać nowe zaplecze interfejsu WebAPI oraz rejestrować i wysyłać powiadomienia za jego pomocą.
 
 1. W programie Visual Studio otwórz rozwiązanie utworzone w ramach artykułu [Samouczek: wysyłanie powiadomień do aplikacji platformy uniwersalnej systemu Windows przy użyciu usługi Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
-2. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy projekt platformy uniwersalnej Windows (UWP), a następnie kliknij przycisk **Zarządzaj pakietami NuGet**.
-3. Po lewej stronie wybierz **Przeglądaj**.
+2. W Eksplorator rozwiązań kliknij prawym przyciskiem myszy projekt platforma uniwersalna systemu Windows (platformy UWP), a następnie kliknij pozycję **Zarządzaj pakietami NuGet**.
+3. Po lewej stronie wybierz pozycję **Przeglądaj**.
 4. W polu **Wyszukaj** wpisz ciąg **Klient HTTP**.
 5. Na liście wyników kliknij pozycję **System.Net.Http**, a następnie kliknij opcję **Zainstaluj**. Ukończ instalację.
 6. W polu **Wyszukaj** w menedżerze pakietów NuGet wpisz ciąg **Json.net**. Zainstaluj pakiet **Newtonsoft.json**, a następnie zamknij okno menedżera pakietów NuGet.
@@ -116,7 +116,7 @@ W tej sekcji zaktualizujesz kod w projekcie ukończonym w ramach artykułu [Samo
         </StackPanel>
     </Grid>
     ```
-9. W Eksploratorze rozwiązań otwórz plik `MainPage.xaml.cs` dla projektów **(Windows 8.1)** i **(Windows Phone 8.1)**. Dodaj następujące instrukcje `using` na początku obu plików:
+9. W Eksploratorze rozwiązań otwórz plik `MainPage.xaml.cs` dla projektów **(Windows 8.1)** i **(Windows Phone 8.1)** . Dodaj następujące instrukcje `using` na początku obu plików:
 
     ```csharp
     using System.Net.Http;
@@ -131,7 +131,7 @@ W tej sekcji zaktualizujesz kod w projekcie ukończonym w ramach artykułu [Samo
     ```csharp
     private static string BACKEND_ENDPOINT = "<Enter Your Backend Endpoint>";
     ```
-11. Dodaj poniższy kod do klasy MainPage w pliku `MainPage.xaml.cs` dla projektów **(Windows 8.1)** i **(Windows Phone 8.1)**.
+11. Dodaj poniższy kod do klasy MainPage w pliku `MainPage.xaml.cs` dla projektów **(Windows 8.1)** i **(Windows Phone 8.1)** .
 
     Metoda `PushClick` to procedura obsługi kliknięcia dla przycisku **Send Push** (Wyślij powiadomienie push). Metoda wywołuje zaplecze, aby wyzwolić powiadomienie do wszystkich urządzeń z tagiem nazwy użytkownika, który pasuje do parametru `to_tag`. Komunikat powiadomienia jest wysyłany jako zawartość JSON w treści żądania.
 
@@ -335,7 +335,7 @@ W tej sekcji zaktualizujesz kod w projekcie ukończonym w ramach artykułu [Samo
 
     ![][15]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono sposób wysyłania powiadomień push do konkretnych użytkowników, którzy mają tagi skojarzone ze swoimi rejestracjami. Aby dowiedzieć się, jak wypychać powiadomienia oparte na lokalizacji, przejdź do następującego samouczka:
 

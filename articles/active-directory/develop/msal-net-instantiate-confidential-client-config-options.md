@@ -1,9 +1,9 @@
 ---
-title: Utwórz wystąpienie aplikacji poufne klienta, za pomocą opcji (Biblioteka Microsoft Authentication Library dla platformy .NET) | Azure
-description: Dowiedz się, jak tworzyć wystąpienia aplikacji poufne klienta przy użyciu opcji konfiguracji przy użyciu Biblioteka Microsoft Authentication Library for .NET (platformy MSAL.NET).
+title: Tworzenie wystąpienia poufnej aplikacji klienckiej z opcjami (Biblioteka uwierzytelniania firmy Microsoft dla platformy .NET) | Azure
+description: Dowiedz się, jak utworzyć wystąpienie poufnej aplikacji klienckiej z opcjami konfiguracji przy użyciu biblioteki uwierzytelniania firmy Microsoft dla platformy .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,33 +13,33 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/30/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7814ff6b7575fedc19e63676ce3353c2a62a62b4
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 47a05959311b7f62f88a7b474b907982e005b98b
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154432"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532635"
 ---
-# <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>Utwórz wystąpienie aplikacji zawierających poufne dane klienta z opcjami konfiguracji przy użyciu platformy MSAL.NET
+# <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>Tworzenie wystąpienia poufnej aplikacji klienckiej z opcjami konfiguracji przy użyciu MSAL.NET
 
-W tym artykule opisano sposób tworzenia wystąpienia [poufne klienta aplikacji](msal-client-applications.md) przy użyciu Biblioteka Microsoft Authentication Library for .NET (platformy MSAL.NET).  Aplikacja jest utworzone za pomocą opcji konfiguracji zdefiniowanej w pliku ustawień.
+W tym artykule opisano sposób tworzenia wystąpienia [poufnej aplikacji klienckiej](msal-client-applications.md) przy użyciu biblioteki uwierzytelniania firmy Microsoft dla platformy .net (MSAL.NET).  Aplikacja tworzy wystąpienie z opcjami konfiguracji zdefiniowanymi w pliku ustawień.
 
-Przed inicjowania aplikacji, musisz najpierw [zarejestrować](quickstart-register-app.md) go tak, aby aplikację można zintegrować z platformą Microsoft identity. Po zarejestrowaniu może być konieczne następujące informacje (które można znaleźć w witrynie Azure portal):
+Przed zainicjowaniem aplikacji należy najpierw ją [zarejestrować](quickstart-register-app.md) , aby można było zintegrować aplikację z platformą tożsamości firmy Microsoft. Po zarejestrowaniu mogą być potrzebne następujące informacje (które można znaleźć w Azure Portal):
 
 - Identyfikator klienta (ciąg reprezentujący identyfikator GUID)
-- Adres URL dostawcy tożsamości (nazwanego wystąpienia) i grupy odbiorców logowania dla swojej aplikacji. Te dwa parametry są nazywane zbiorczo urzędu.
-- Identyfikator dzierżawy, jeśli piszesz linię aplikacji biznesowej wyłącznie na potrzeby Twojej organizacji (również o nazwie aplikacja jednej dzierżawy).
-- Klucz tajny aplikacji (ciąg klucza tajnego klienta) lub certyfikatu (typ X509Certificate2), jeśli jest to aplikacja poufne klienta.
-- Dla aplikacji sieci web, a czasami dla aplikacji publicznych klienta (w szczególności, gdy Twoja aplikacja wymaga pod kątem wykorzystania brokera) będzie również ustawiono element redirectUri gdzie dostawcy tożsamości skontaktuje się z powrotem aplikacji przy użyciu tokenów zabezpieczających.
+- Adres URL dostawcy tożsamości (nazywany wystąpieniem) i odbiorcy logowania dla aplikacji. Te dwa parametry są określane zbiorczo jako urząd.
+- Identyfikator dzierżawy, jeśli piszesz aplikację biznesową wyłącznie dla Twojej organizacji (nazywaną również aplikacją z jedną dzierżawą).
+- Wpis tajny aplikacji (ciąg tajny klienta) lub certyfikat (typu X509Certificate2), jeśli jest to poufna aplikacja kliencka.
+- W przypadku aplikacji sieci Web, a czasami dla publicznych aplikacji klienckich (w szczególności gdy aplikacja wymaga użycia brokera), należy również ustawić redirectUri, w którym dostawca tożsamości będzie kontaktować się z aplikacją przy użyciu tokenów zabezpieczających.
 
-## <a name="configure-the-application-from-the-config-file"></a>Konfigurowanie aplikacji z pliku konfiguracji
-Nazwa właściwości opcje platformy MSAL.NET odpowiadać nazwa właściwości `AzureADOptions` w programie ASP.NET Core, więc nie trzeba pisać kodu pośredniczącego.
+## <a name="configure-the-application-from-the-config-file"></a>Skonfiguruj aplikację z pliku konfiguracji
+Nazwa właściwości opcji w MSAL.NET jest zgodna z nazwą właściwości `AzureADOptions` w ASP.NET Core, więc nie trzeba pisać kodu łączenia.
 
-Konfiguracja aplikacji ASP.NET Core jest opisana w *appsettings.json* pliku:
+Konfiguracja aplikacji ASP.NET Core jest opisana w pliku *appSettings. JSON* :
 
 ```json
 {
@@ -62,9 +62,9 @@ Konfiguracja aplikacji ASP.NET Core jest opisana w *appsettings.json* pliku:
 }
 ```
 
-Począwszy od platformy MSAL.NET v3.x, można skonfigurować aplikacji zawierających poufne dane klienta z pliku konfiguracji.
+Począwszy od MSAL.NET v3. x, możesz skonfigurować poufną aplikację kliencką z pliku konfiguracyjnego.
 
-W klasie, w której chcesz skonfigurować i utworzyć wystąpienie aplikacji, trzeba zadeklarować `ConfidentialClientApplicationOptions` obiektu.  Konfiguracja odczytu ze źródła (w tym pliku appconfig.json) należy powiązać wystąpienia opcjami aplikacji przy użyciu `IConfigurationRoot.Bind()` metody z [pakietu nuget Microsoft.Extensions.Configuration.Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder):
+W klasie, w której chcesz skonfigurować i utworzyć wystąpienie aplikacji, należy zadeklarować `ConfidentialClientApplicationOptions` obiekt.  Powiąż konfigurację odczytaną ze źródła (w tym plik AppConfig. JSON) z wystąpieniem opcji aplikacji przy użyciu `IConfigurationRoot.Bind()` metody z [pakietu NuGet Microsoft. Extensions. Configuration. Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder):
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -74,7 +74,7 @@ _applicationOptions = new ConfidentialClientApplicationOptions();
 configuration.Bind("AzureAD", _applicationOptions);
 ```
 
-Dzięki temu zawartość w sekcji "AzureAD" *appsettings.json* pliku może być powiązane z odpowiedniej właściwości `ConfidentialClientApplicationOptions` obiektu.  Następnie kompilacji `ConfidentialClientApplication` obiektu:
+Dzięki temu zawartość sekcji "AzureAD" pliku *appSettings. JSON* zostanie powiązana z odpowiednimi właściwościami `ConfidentialClientApplicationOptions` obiektu.  Następnie Skompiluj `ConfidentialClientApplication` obiekt:
 
 ```csharp
 IConfidentialClientApplication app;
@@ -83,7 +83,7 @@ app = ConfidentialClientApplicationBuilder.CreateWithApplicationOptions(_applica
 ```
 
 ## <a name="add-runtime-configuration"></a>Dodaj konfigurację środowiska uruchomieniowego
-W przypadku aplikacji poufnych klienta zazwyczaj mają pamięci podręcznej na użytkownika. W związku z tym należy uzyskać pamięci podręcznej skojarzonych z użytkownikiem i informować Konstruktor aplikacji mają z niego korzystać. W ten sam sposób może być dynamicznie obliczaną identyfikator URI przekierowania. W takim przypadku ten kod jest następująca:
+W poufnej aplikacji klienckiej zwykle masz pamięć podręczną na użytkownika. W związku z tym konieczne będzie uzyskanie pamięci podręcznej skojarzonej z użytkownikiem i informowanie konstruktora aplikacji o tym, który ma być używany. W ten sam sposób może istnieć dynamicznie obliczany identyfikator URI przekierowania. W takim przypadku kod jest następujący:
 
 ```csharp
 IConfidentialClientApplication app;

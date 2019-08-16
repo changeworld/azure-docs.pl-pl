@@ -15,14 +15,17 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 03/16/2018
 ms.author: vijetaj
-ms.openlocfilehash: ddf1169d94c3e71b92e8b1835040ab5738bf94b8
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 8541713219eb8daf880605089fe49fc585836bdc
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68591892"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534959"
 ---
 # <a name="introduction-to-the-deep-learning-virtual-machine"></a>Wprowadzenie do maszyny wirtualnej do uczenia głębokiego
+
+> [!NOTE]
+> Wszystkie narzędzia maszyny wirtualnej do uczenia głębokiego (DLVM) zostały teraz złożone w [Data Science VM (DSVM)](dsvm-tools-overview.md). DLVM i DSVM są teraz takie same. Rozważ utworzenie elementu DSVM zamiast DLVM.
 
 ## <a name="why-deep-learning-virtual-machine"></a>Dlaczego warto uczenie maszyn wirtualnych? 
 
@@ -35,7 +38,6 @@ Maszyna wirtualna do uczenia głębokiego jest specjalnie skonfigurowanym warian
 
 Rozpocznij pracę z maszyną wirtualną uczenie głębokie, wykonując następujące czynności:
 
-* [Inicjowanie obsługi administracyjnej maszyny wirtualnej uczenia głębokiego](provision-deep-learning-dsvm.md)
-* [Korzystanie z maszyny wirtualnej do uczenia głębokiego](use-deep-learning-dsvm.md)
-* [Dokumentacja narzędzia](dsvm-deep-learning-ai-frameworks.md)
-* [Przykłady](dsvm-samples-and-walkthroughs.md)
+* [Inicjowanie obsługi administracyjnej Data Science Virtual Machine systemu Windows](provision-vm.md)
+* [Inicjowanie obsługi administracyjnej Data Science Virtual Machine Ubuntu](dsvm-ubuntu-intro.md)
+

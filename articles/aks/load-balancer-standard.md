@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: zarhoads
-ms.openlocfilehash: 1dcf08f4fefb53ed46038c82e0ce8f9d3dd94de2
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 68968c1f846a1052600a8ed108f4d40fd9d8f2cb
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032239"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534734"
 ---
 # <a name="preview---use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Wersja zapoznawcza — używanie standardowego modułu równoważenia obciążenia jednostki SKU w usłudze Azure Kubernetes Service (AKS)
 
@@ -92,11 +92,11 @@ Podczas tworzenia klastrów AKS i zarządzania nimi, które obsługują moduł r
 
 * W przypadku korzystania z *standardowej* jednostki SKU usługi równoważenia obciążenia należy zezwolić na publiczne adresy i uniknąć tworzenia Azure Policy, które zakazują tworzenie adresów IP. Klaster AKS automatycznie tworzy publiczny adres IP jednostki SKU w tej samej grupie zasobów utworzonej dla klastra AKS, który zwykle nosi nazwę z *MC_* na początku. AKS przypisuje publiczny adres IP do modułu równoważenia obciążenia *standardowej* jednostki SKU. Publiczny adres IP jest wymagany do zezwalania na ruch wychodzący z klastra AKS. Ten publiczny adres IP jest również wymagany do utrzymania łączności między płaszczyzną kontroli a węzłami agenta, a także w celu zachowania zgodności z poprzednimi wersjami AKS.
 * W przypadku korzystania z *standardowej* jednostki SKU dla modułu równoważenia obciążenia należy użyć Kubernetes w wersji 1.13.5 lub nowszej.
-* W przypadku korzystania z [funkcji publicznego adresu IP węzła](use-multiple-node-pools.md#assign-a-public-ip-per-node-in-a-node-pool) z usługami równoważenia obciążenia w warstwie Standardowa można ustawić dla węzła regułę wychodzącą lub publiczny adres IP. Należy wybrać jedną lub drugą, ponieważ jednej maszyny wirtualnej nie można dołączyć jednocześnie do reguły ruchu wychodzącego modułu równoważenia obciążenia i publicznego adresu IP.
 
 Chociaż ta funkcja jest dostępna w wersji zapoznawczej, obowiązują następujące dodatkowe ograniczenia:
 
 * W przypadku korzystania z *standardowej* jednostki SKU usługi równoważenia obciążenia w programie AKS nie można ustawić własnego publicznego adresu IP dla ruchu wychodzącego dla modułu równoważenia obciążenia. Należy użyć AKS adresów IP przypisywanych do modułu równoważenia obciążenia.
+* Nie można jej używać z [funkcją publicznego adresu IP węzła](use-multiple-node-pools.md#assign-a-public-ip-per-node-in-a-node-pool).
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 

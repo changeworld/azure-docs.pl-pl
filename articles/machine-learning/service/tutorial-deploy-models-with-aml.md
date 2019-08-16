@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: c673fd43abe6808256eb74f435aad48ed8d41539
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: a4395105c66756c4743373707309a88e2afa96b7
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359848"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534819"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Samouczek: wdrażanie modelu klasyfikacji obrazów w usłudze Azure Container Instances
 
@@ -38,10 +38,10 @@ Usługa Container Instances to doskonałe rozwiązanie do testowania i interpret
 > Kod w tym artykule został przetestowany przy użyciu zestawu SDK Azure Machine Learning 1.0.41.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Przejdź do sekcji [Konfigurowanie środowiska programistycznego](#start), aby zapoznać się z krokami dotyczącymi notesu.  
 
-Aby uruchomić notes, najpierw przeprowadź trenowanie modelu zgodnie z krokami opisanymi w artykule [Samouczek (część 1): uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md).   Następnie uruchom notes **tutorials/img-classification-part2-deploy.ipynb** za pomocą tego samego serwera notesów.
+Aby uruchomić notes, najpierw przeprowadź trenowanie modelu zgodnie z krokami opisanymi w artykule [Samouczek (część 1): Uczenie modelu](tutorial-train-models-with-aml.md)klasyfikacji obrazów.   Następnie Otwórz Notes **samouczków/IMG-Classification-part2-Deploy. ipynb** przy użyciu tego samego serwera notesu.
 
+Ten samouczek jest również dostępny w witrynie [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , jeśli chcesz używać go w [środowisku lokalnym](how-to-configure-environment.md#local).  Upewnij się, że zainstalowano `matplotlib` i `scikit-learn` w Twoim środowisku. 
 
 ## <a name="start"></a>Konfigurowanie środowiska
 
@@ -377,7 +377,7 @@ service.delete()
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 + Dowiedz się więcej o wszystkich [opcjach wdrażania usługi Azure Machine Learning](how-to-deploy-and-where.md).
 + Dowiedz się, jak [tworzyć klientów na potrzeby usługi internetowej](how-to-consume-web-service.md).

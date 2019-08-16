@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/16/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: cfffc29a467a89416964564b9c55a73cbf77377d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 8d90d71b8d29d26f09ef617ddd56ce91eb4e5e2e
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68601361"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69541517"
 ---
 Ta sekcja zawiera informacje dotyczące wcześniejszych generacji rozmiarów maszyn wirtualnych. Nadal mogą być używane te rozmiary, ale dostępne są nowsze generacji. 
 
@@ -59,32 +59,9 @@ MB/s = 10^6 bajtów na sekundę, GiB = 1024^3 bajtów.
 
 <sup>1</sup> maksymalna przepływność dysku (IOPS lub MB/s) możliwa dla maszyny wirtualnej z serii FS może być ograniczona przez liczbę, rozmiar i rozkładanie dołączonych dysków.  Aby uzyskać szczegółowe informacje, zobacz [projektowanie pod kątem wysokiej wydajności](../articles/virtual-machines/windows/premium-storage-performance.md).  
 
-## <a name="ls-series"></a>Seria Ls
+## <a name="nvv2-series"></a>Seria NVv2
 
-Maszyny wirtualne serii Ls oferują do 32 procesorów wirtualnych vCPU — procesor [Intel® Xeon® z rodziny E5 v3](https://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html). Wydajność procesora CPU dla serii Ls jest taka sama jak w przypadku maszyn wirtualnych serii G/GS. Na procesor wirtualny vCPU przypada pamięć o pojemności 8 GiB.
-
-Seria ls nie obsługuje tworzenia lokalnej pamięci podręcznej w celu zwiększenia liczby operacji we/wy osiągalnej przez trwałe dyski danych. Wysoka przepływność i liczba operacji we/wy na dysku lokalnym sprawia, że maszyny wirtualne z serii LS są idealne dla magazynów NoSQL, takich jak Apache Cassandra i MongoDB, które replikuje dane między wieloma maszynami wirtualnymi w celu osiągnięcia trwałości w przypadku awarii pojedynczej maszyny wirtualnej.
-
-ACU 180-240
-
-Magazyn w warstwie Premium:  Obsługiwane
-
-Buforowanie Premium Storage:  Brak obsługi
- 
-| Size          | Procesor wirtualny | Pamięć (GiB) | Magazyn tymczasowy (GiB) | Maks. liczba dysków danych | Maksymalna przepływność magazynu (IOPS/MB/s) | Maksymalna przepływność dysku w pamięci podręcznej (IOPS/MB/s) | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) | 
-|----------------|-----------|-------------|--------------------------|----------------|-------------------------------------------------------------|-------------------------------------------|------------------------------| 
-| Standardowa_L4s   | 4  | 32  | 678   | 16 | 20000/200 | 5000/125  | 2 / 4000  | 
-| Standardowa_L8s   | 8  | 64  | 1388 | 32 | 40000/400 | 10000/250 | 4 / 8000  | 
-| Standardowa_L16s  | 16 | 128 | 2807 | 64 | 80000/800 | 20000/500 | 8 / 16 000 | 
-| Standard_L32s&nbsp;<sup>1</sup> | 32   | 256  | 5630 | 64   | 160000/1600   | 40000/1000     | 8 / 20 000 | 
-
-Maksymalna przepływność dysku możliwa w przypadku maszyn wirtualnych z serii LS może być ograniczona przez liczbę, rozmiar i rozłożenie dowolnych dołączonych dysków. Aby uzyskać szczegółowe informacje, zobacz [projektowanie pod kątem wysokiej wydajności](../articles/virtual-machines/windows/premium-storage-performance.md).
-
-<sup>1</sup> wystąpienie jest izolowane do sprzętu dedykowanego pojedynczemu klientowi.
-
-## <a name="nvv2-series-preview"></a>NVv2 — seria (wersja zapoznawcza)
-
-**Nowe zalecenie dotyczące rozmiaru**: [NVv3 — seria (wersja zapoznawcza)](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nvv3-series--1)
+**Nowe zalecenie dotyczące rozmiaru**: [Seria NVv3](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nvv3-series-preview-1)
 
 Maszyny wirtualne z serii NVv2 są obsługiwane przez procesory [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU i technologię NVIDIA GRID z procesorami Intel Broadwell. Te maszyny wirtualne są przeznaczone dla procesorów GPU i pulpitów wirtualnych, na których klienci chcą wizualizować swoje dane, symulują wyniki do wyświetlania, pracy w programie CAD lub renderowania i przesyłania strumieniowego zawartości. Dodatkowo te maszyny wirtualne mogą uruchamiać obciążenia o pojedynczej precyzji, takie jak kodowanie i renderowanie. NVv2 maszyny wirtualne obsługują Premium Storage i mają dwa razy większą ilość pamięci systemowej (RAM) w porównaniu z poprzednią serią NV.  
 
@@ -95,13 +72,3 @@ Każdy procesor GPU w wystąpieniach NVv2 zawiera licencję siatki. Ta licencja 
 | Standard_NV6s_v2 |6 |112 |320 | 1 | 8 | 12 | 4 | 1 | 25 |
 | Standard_NV12s_v2 |12 |224 |640 | 2 | 16 | 24 | 8 | 2 | 50 |
 | Standard_NV24s_v2 |24 |448 |1280 | 4 | 32 | 32 | 8 | 4 | 100 |
-
-### <a name="standard-a0---a4-using-cli-and-powershell"></a>Standardowa_A0–A4 w przypadku używania interfejsu wiersza polecenia i programu PowerShell
-
-W klasycznym modelu wdrażania niektóre nazwy rozmiarów maszyny wirtualnej są nieco inne w interfejsie wiersza polecenia i programie PowerShell:
-
-* Standardowa_A0 = Bardzo mała
-* Standardowa_A1 = Mała
-* Standardowa_A2 = Średnia
-* Standardowa_A3 = Duża
-* Standardowa_A4 = Bardzo duża

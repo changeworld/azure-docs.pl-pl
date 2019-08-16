@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 08/13/2019
 ms.author: magoedte
-ms.openlocfilehash: 2ea17a4363218351eb6e5ba0678435f3707e4ab9
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: a559fe86850ee9c1378876bc5ed8f2d0ddfb2d99
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663733"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543048"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Połącz Operations Manager z Azure Monitor
 
@@ -65,12 +65,12 @@ Przed rozpoczęciem należy zapoznać się z następującymi wymaganiami.
 >[!NOTE]
 >Najnowsze zmiany interfejsów API platformy Azure uniemożliwią klientom pomyślne skonfigurowanie integracji między grupą zarządzania a Azure Monitor po raz pierwszy. W przypadku klientów, którzy już mogli zintegrować grupę zarządzania z usługą, nie ma to wpływu, chyba że trzeba ponownie skonfigurować istniejące połączenie.  
 >Wydano nowy pakiet administracyjny dla następujących wersji Operations Manager:
->  
->* W przypadku System Center Operations Manager 1801 Pobierz pakiet administracyjny z tego [miejsca](https://www.microsoft.com/download/details.aspx?id=57173)  
->* W przypadku programu System Center 2016 — Operations Manager Pobierz pakiet administracyjny z tego [miejsca](https://www.microsoft.com/download/details.aspx?id=57172)  
->* W przypadku System Center Operations Manager 2012 R2 Pobierz pakiet administracyjny z tego [miejsca](https://www.microsoft.com/download/details.aspx?id=57171)  
->
->Ta aktualizacja pakietu administracyjnego nie ma zastosowania do System Center Operations Manager 1807, która jest wersją aktualizacji z wersji 1801, a nie pełną kompilacją produktu.   
+> - W przypadku System Center Operations Manager 2019 pakiet administracyjny jest dostarczany z kompilacją Operations Manager.
+>- Pakiet administracyjny Operations Manager 1801 ma również zastosowanie do Operations Manager 1807.
+>- W przypadku System Center Operations Manager 1801 Pobierz pakiet administracyjny z tego [miejsca](https://www.microsoft.com/download/details.aspx?id=57173).
+>- W przypadku programu System Center 2016 — Operations Manager Pobierz pakiet administracyjny z tego [miejsca](https://www.microsoft.com/download/details.aspx?id=57172).  
+>- W przypadku System Center Operations Manager 2012 R2 Pobierz pakiet administracyjny z tego [miejsca](https://www.microsoft.com/download/details.aspx?id=57171).  
+
 
 ### <a name="network"></a>Sieć
 
@@ -82,10 +82,10 @@ W poniższych informacjach przedstawiono informacje o konfiguracji serwera proxy
 |\*.ods.opinsights.azure.com| 443 |Tak|  
 |\*.oms.opinsights.azure.com| 443|Tak|  
 |\*.blob.core.windows.net| 443|Tak|  
-|\*.azure-automation.net| 443|Yes|  
+|\*.azure-automation.net| 443|Tak|  
 |**Serwer zarządzania**|||  
 |\*.service.opinsights.azure.com| 443||  
-|\*.blob.core.windows.net| 443| Yes|  
+|\*.blob.core.windows.net| 443| Tak|  
 |\*.ods.opinsights.azure.com| 443| Yes|  
 |*.azure-automation.net | 443| Tak|  
 |**Operations Manager konsoli programu Azure Monitor**|||  
@@ -359,6 +359,6 @@ W przyszłości, jeśli planujesz ponowne połączenie grupy zarządzania z obsz
 * Na nośniku źródłowym w folderze `\ManagementPacks` dla programu System Center 2016 — Operations Manager lub nowszego.
 * W najnowszym pakiecie zbiorczym aktualizacji zastosowanym w grupie zarządzania. W przypadku Operations Manager 2012 folder źródłowy jest `%ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` i dla 2012 R2 znajduje się w. `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups`
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dodać funkcje i zebrać dane, zobacz [Dodawanie rozwiązań Azure monitor z Galeria rozwiązań](../../azure-monitor/insights/solutions.md).

@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 213540a5b6c77146155365133f2cca08eea25351
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: b00b061b1763d4b4e7236d8dc9ac1eedf7f923bc
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608163"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533018"
 ---
 # <a name="baseline-policy-require-mfa-for-admins-preview"></a>Zasady linii bazowej: Wymagaj uwierzytelniania wieloskładnikowego dla administratorów (wersja zapoznawcza)
 
 Użytkownicy mający dostęp do kont uprzywilejowanych mają nieograniczony dostęp do Twojego środowiska. Ze względu na moc tych kont należy traktować je z uwzględnieniem specjalnych zaopieki. Jedną z typowych metod ulepszania ochrony uprzywilejowanych kont jest wymaganie, aby w przypadku logowania się do nich była wymagana silniejsza weryfikacja konta. W Azure Active Directory można uzyskać silniejszą weryfikację konta przez wymaganie uwierzytelniania wieloskładnikowego (MFA).
 
-**Wymagaj uwierzytelniania wieloskładnikowego dla administratorów (wersja zapoznawcza)**  to [zasady linii bazowej](concept-baseline-protection.md) , które wymagają uwierzytelniania wieloskładnikowego za każdym razem, gdy jedna z następujących ról uprzywilejowanego administratora:
+**Wymagaj uwierzytelniania wieloskładnikowego dla administratorów (wersja zapoznawcza)** to [zasady linii bazowej](concept-baseline-protection.md) , które wymagają uwierzytelniania wieloskładnikowego za każdym razem, gdy jedna z następujących ról uprzywilejowanego administratora:
 
 * Administrator globalny
 * Administrator programu SharePoint
@@ -52,16 +52,16 @@ Zasady linii **bazowej zasad: Funkcja Wymagaj uwierzytelniania wieloskładnikowe
 
 Aby włączyć te zasady i chronić administratorów:
 
-1. Zaloguj się do **Azure Portal** jako Administrator globalny, administrator zabezpieczeń lub administrator dostępu warunkowego.
+1. Zaloguj się do **Azure Portal** jako Administrator globalny, administrator zabezpieczeń lub administrator dostępu warunkowego.
 1. Przejdź do **Azure Active Directory** > **dostęp warunkowy**.
 1. Na liście zasad wybierz pozycję **zasady linii bazowej: Wymagaj uwierzytelniania wieloskładnikowego dla administratorów**(wersja zapoznawcza).
 1. Ustaw opcję **Włącz zasady** , aby od **razu używać zasad**.
-1. Kliknij przycisk **Zapisz**.
+1. Kliknij polecenie **Zapisz**.
 
 > [!WARNING]
 > W przyszłości włączono opcję **automatycznego włączania zasad,** gdy te zasady były w wersji zapoznawczej. Firma Microsoft usunęła tę opcję, aby zminimalizować nagły wpływ na użytkowników. W przypadku wybrania tej opcji, gdy była dostępna, nie należy automatycznie wybierać **zasad** . Jeśli chcesz użyć tych zasad linii bazowej, zobacz kroki opisane powyżej, aby je włączyć.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji, zobacz:
 

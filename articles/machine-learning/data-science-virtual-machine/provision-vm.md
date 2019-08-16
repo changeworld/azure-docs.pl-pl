@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: vijetaj
-ms.openlocfilehash: dfb3e9f6390d4c80b8f3c37b87f2659c671fa823
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 488dc7db01bd865268e143b68cdaccd989010912
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68591826"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534937"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>Inicjowanie obsługi administracyjnej Data Science Virtual Machine systemu Windows na platformie Azure
 
@@ -48,6 +48,7 @@ W DSVM znajdują się następujące narzędzia:
   * [Apache drążenie](https://drill.apache.org/) — aparat zapytań SQL bez schematu dla Apache Hadoop, NoSQL i magazynu w chmurze. Obsługuje ona ODBC i sterownika JDBC interfejsy do wykonywania zapytań, NoSQL i pliki ze standardowych narzędzi analizy Biznesowej, takich jak Power BI, programie Microsoft Excel i Tableau.
 * Bibliotek języka R i Python do użycia w usłudze Azure Machine Learning i innymi usługami platformy Azure
 * Git, w tym powłoki Git Bash, aby pracować z repozytoriów kodu źródłowego, które zawierają usługi GitHub i DevOps platformy Azure. Usługa Git oferuje kilka popularnych Linux narzędzi wiersza polecenia, które są dostępne zarówno w Git Bash, jak i wiersza polecenia. Przykładami są awk, sed, perl, grep, wyszukiwanie, wget i narzędzie curl.
+* Narzędzia i edytory programistyczne (RStudio, platformy PyCharm itd)
 
 ### <a name="about-data-science"></a>Informacje o nauce danych
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 08/15/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 022b16669791b9b9cce066b3dd17c70b33569cc0
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 8cd63913c0e96d496aa617369601c1dd121b4b46
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955230"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69542850"
 ---
 # <a name="what-is-a-qna-maker-knowledge-base"></a>Co to jest usługa QnA Maker wiedzy?
 
@@ -59,6 +59,70 @@ Ten proces został wyjaśniony w poniższej tabeli:
 
 Używane funkcje obejmują, ale nie są ograniczone do semantyki na poziomie wyrazów, ważności na poziomie terminu w korpus i głębokiego uczenia się modeli semantycznych w celu określenia podobieństwa i zgodności między dwoma ciągami tekstowymi.
 
+## <a name="http-request-and-response-with-endpoint"></a>Żądanie HTTP i odpowiedź z punktem końcowym
+Po opublikowaniu bazy wiedzy Usługa tworzy **punkt końcowy** http oparty na PROTOKOLe REST, który można zintegrować z aplikacją, zazwyczaj bot rozmowy. 
+
+### <a name="the-user-query-request-to-generate-an-answer"></a>Żądanie kwerendy użytkownika w celu wygenerowania odpowiedzi
+
+**Zapytanie użytkownika** to pytanie, że użytkownik końcowy prosi o bazę wiedzy, np `How do I add a collaborator to my app?`. Zapytanie jest często w formacie języka naturalnego lub kilka słów kluczowych reprezentujących pytanie, np `help with collaborators`. Zapytanie jest wysyłane do Twojej wiedzy z **żądania** http w aplikacji klienckiej.
+
+```json
+{
+    "question": "qna maker and luis",
+    "top": 6,
+    "isTest": true,
+    "scoreThreshold": 20,
+    "strictFilters": [
+    {
+        "name": "category",
+        "value": "api"
+    }],
+    "userId": "sd53lsY="
+}
+```
+
+Aby kontrolować odpowiedź, należy ustawić właściwości, takie jak [scoreThreshold](./confidence-score.md#choose-a-score-threshold), [Top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)i [stringFilters](../how-to/metadata-generateanswer-usage.md#filter-results-with-strictfilters-for-metadata-tags).
+
+Korzystaj z [zawartości konwersacji](../how-to/metadata-generateanswer-usage.md#use-question-and-answer-results-to-keep-conversation-context) przy użyciu [funkcji](../how-to/multiturn-conversation.md) wieloskładnikowej, aby zachować konwersację w celu uściślenia pytań i odpowiedzi, aby znaleźć poprawną i końcową odpowiedź.
+
+### <a name="the-response-from-a-call-to-generate-answer"></a>Odpowiedź z wywołania w celu wygenerowania odpowiedzi
+
+**Odpowiedź** http to odpowiedź pobierana z bazy wiedzy, na podstawie najlepszego dopasowania dla danego zapytania użytkownika. Odpowiedź zawiera odpowiedź i wynik przewidywania. Jeśli zażądano więcej niż jednej górnej odpowiedzi z `top` właściwością, uzyskasz więcej niż jedną największą odpowiedź z wynikiem. 
+
+```json
+{
+    "answers": [
+        {
+            "questions": [
+                "What is the closing time?"
+            ],
+            "answer": "10.30 PM",
+            "score": 100,
+            "id": 1,
+            "source": "Editorial",
+            "metadata": [
+                {
+                    "name": "restaurant",
+                    "value": "paradise"
+                },
+                {
+                    "name": "location",
+                    "value": "secunderabad"
+                }
+            ]
+        }
+    ]
+}
+```
+
+### <a name="test-and-production-knowledge-base"></a>Baza wiedzy testowej i produkcyjnej
+Baza wiedzy jest repozytorium pytania i odpowiedzi na utworzone, przechowywane i używane za pośrednictwem usługi QnA Maker. Każda warstwa usługi QnA Maker może służyć do wielu baz wiedzy.
+
+Baza wiedzy ma dwa stany - Test opublikowane. 
+
+**Baza wiedzy testowej** to wersja, która jest edytowana, zapisywana i przetestowana pod kątem dokładności i kompletności odpowiedzi. Zmiany wprowadzone w bazie wiedzy knowledge base test nie wpływają na użytkownika końcowego bota aplikacji/rozmowy. Baza wiedzy o testowaniu jest znana `test` jako żądanie HTTP. 
+
+**Opublikowana baza wiedzy** jest wersją używaną w programie Chat bot/aplikacji. Akcja publikowanie bazy wiedzy umieszcza zawartość bazy wiedzy testu w opublikowaną wersję elementu w bazie wiedzy knowledge base. Ponieważ opublikowanych wiedzy wersję, która korzysta z aplikacji za pośrednictwem punktu końcowego, należy z rozwagą aby upewnić się, że zawartość jest poprawna i dobrze przetestowanych. Opublikowana baza wiedzy jest znana jako `prod` żądanie HTTP. 
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -68,3 +132,11 @@ Używane funkcje obejmują, ale nie są ograniczone do semantyki na poziomie wyr
 ## <a name="see-also"></a>Zobacz także
 
 [Omówienie usługi QnA Maker](../Overview/overview.md)
+
+Tworzenie i edytowanie bazy wiedzy przy użyciu: 
+* [REST API](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/qnamaker/knowledgebase)
+* [Zestaw SDK platformy .NET](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebase?view=azure-dotnet)
+
+Generuj odpowiedź przy użyciu: 
+* [REST API](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)
+* [Zestaw SDK platformy .NET](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtime?view=azure-dotnet)

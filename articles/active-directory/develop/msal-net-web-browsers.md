@@ -3,7 +3,7 @@ title: Przeglądarki sieci Web w bibliotece uwierzytelniania firmy Microsoft dla
 description: Informacje o określonych kwestiach dotyczących korzystania z platformy Xamarin Android z biblioteką uwierzytelniania firmy Microsoft dla programu .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: jmprieur
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abb04a30719f7603610b323a4bb271666371ba97
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: e1285c5c61cee25e387ca5fb598f0e062088e549
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276865"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532505"
 ---
 # <a name="using-web-browsers-in-msalnet"></a>Korzystanie z przeglądarek sieci Web w MSAL.NET
 Do uwierzytelniania interakcyjnego są wymagane przeglądarki sieci Web. Domyślnie MSAL.NET obsługuje [systemową przeglądarkę sieci Web](#system-web-browser-on-xamarinios-xamarinandroid) w oprogramowaniu Xamarin. iOS i Xamarin. Android. [Możesz również włączyć osadzoną przeglądarkę internetową](#enable-embedded-webviews-on-ios-and-android) w zależności od wymagań (UX, co jest potrzebne do logowania jednokrotnego (SSO), zabezpieczeń) w aplikacjach [Xamarin. iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios) i [Xamarin. Android](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) . Możesz nawet [dynamicznie wybrać](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) , która przeglądarka sieci Web ma być używana w oparciu o obecność przeglądarki Chrome lub w przeglądarce obsługującej niestandardowe karty programu Chrome w systemie Android. MSAL.NET obsługuje tylko przeglądarkę systemową w aplikacjach klasycznych platformy .NET Core.
@@ -46,7 +46,7 @@ MSAL.NET to biblioteka wieloplatformowa, która ma kod specyficzny dla platformy
 
 Ogólnie rzecz biorąc, zaleca się korzystanie z ustawień domyślnych platformy i jest to zwykle przeglądarka systemu. Przeglądarka systemowa jest lepsza do zapamiętywania użytkowników, którzy zalogowali się wcześniej. Jeśli musisz zmienić to zachowanie, użyj`WithUseEmbeddedWebView(bool)`
 
-### <a name="at-a-glance"></a>W skrócie
+### <a name="at-a-glance"></a>Błyskawicznie
 
 | Architektura        | Osadzić | System | Domyślny |
 | ------------- |-------------| -----| ----- |
@@ -54,9 +54,9 @@ Ogólnie rzecz biorąc, zaleca się korzystanie z ustawień domyślnych platform
 | .NET Core     | Nie | Tak ^ | System |
 | .NET Standard | Nie | Tak ^ | System |
 | Platforma UWP | Tak | Nie | Osadzić |
-| Xamarin.Android | Yes | Yes  | System |
-| Xamarin.iOS | Tak | Yes  | System |
-| Xamarin.Mac| Yes | Nie | Osadzić |
+| Xamarin.Android | Tak | Tak  | System |
+| Xamarin.iOS | Tak | Tak  | System |
+| Xamarin.Mac| Tak | Nie | Osadzić |
 
 ^ Wymaga "http://localhost" URI przekierowania
 
@@ -141,7 +141,7 @@ Jednak w przypadku aplikacji klasycznych uruchamianie systemu WebView prowadzi d
 
 ## <a name="enable-embedded-webviews-on-ios-and-android"></a>Włączanie osadzonych widoków WebView w systemach iOS i Android
 
-Możesz również włączyć osadzone widoki WebView w aplikacjach Xamarin. iOS i Xamarin. Android. Począwszy od MSAL.NET 2.0.0 — wersja zapoznawcza, MSAL.NET obsługuje  również korzystanie z osadzonej opcji WebView. Dla ADAL.NET osadzony widok WebView jest jedyną obsługiwaną opcją.
+Możesz również włączyć osadzone widoki WebView w aplikacjach Xamarin. iOS i Xamarin. Android. Począwszy od MSAL.NET 2.0.0 — wersja zapoznawcza, MSAL.NET obsługuje również korzystanie z osadzonej opcji WebView. Dla ADAL.NET osadzony widok WebView jest jedyną obsługiwaną opcją.
 
 Jako programista korzystający z platformy Xamarin, MSAL.NET jako element docelowy, możesz użyć osadzonych widoków WebViews lub przeglądarek systemu. Jest to wybór w zależności od środowiska użytkownika i kwestii związanych z bezpieczeństwem, które chcesz określić jako docelowe.
 

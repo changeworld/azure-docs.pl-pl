@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 08/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 060257ef144309e37208db80c7731ed96b995b2c
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 49f46c09cfcfef2ab1e74ae7c08d9a54289293ac
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990478"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534827"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Samouczek: Kompilowanie modelu regresji przy użyciu zautomatyzowanego uczenia maszynowego
 
@@ -42,36 +42,11 @@ Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przejdź do sekcji [Konfigurowanie środowiska projektowego](#start), aby zapoznać się z instrukcjami dotyczącymi notesu, lub skorzystaj z poniższych instrukcji, aby pobrać notes i uruchomić go w usłudze Azure Notebooks lub na swoim serwerze notesów. Do uruchomienia notesu potrzebne są następujące elementy:
+* Ukończ część pierwszej, [samouczek przygotowywania danych](tutorial-data-prep.md).
 
-* [Ukończony samouczek przygotowywania danych](tutorial-data-prep.md).
-* Serwer notesów Python 3.6 z zainstalowanym następującym oprogramowaniem:
-    * Zestaw SDK usługi Azure Machine Learning dla języka Python z dodatkami `automl` i `notebooks`
-    * `matplotlib`
-* Notes samouczka
-* Obszar roboczy uczenia maszynowego
-* Plik konfiguracji obszaru roboczego w tym samym katalogu co notes
+* Po zakończeniu części pierwszej Otwórz Notes samouczków **/Regression-part2-Automated-ml. ipynb** przy użyciu tego samego serwera notesu.
 
-Wszystkie te wymagania wstępne można spełnić, korzystając z jednej z poniższych sekcji.
-
-* Korzystanie z [serwera notesu w chmurze w obszarze roboczym](#azure)
-* Korzystanie z [własnego serwera notesów](#server)
-
-### <a name="azure"></a>Korzystanie z serwera notesu w chmurze w obszarze roboczym
-
-Rozpoczęcie pracy z własnym serwerem notesu opartym na chmurze jest proste. [Zestaw Azure Machine Learning SDK dla języka Python](https://aka.ms/aml-sdk) jest już zainstalowany i skonfigurowany dla Ciebie po utworzeniu tego zasobu w chmurze.
-
-[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
-
-* Po uruchomieniu witryny sieci Web notesu Uruchom **samouczki/Regression-part2-Automated-ml. ipynb** .
-
-### <a name="server"></a>Korzystanie z własnego serwera notesów Jupyter Notebook
-
-Wykonaj te kroki, aby utworzyć lokalny serwer notesów Jupyter Notebook na komputerze.  Upewnij się, że w `matplotlib` środowisku są `automl` zainstalowane `notebooks` i dodatki i.
-
-[!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
-
-Po wykonaniu kroków, uruchom notes **tutorials/regresssion-part2-automated-ml.ipynb**.
+Ten samouczek jest również dostępny w witrynie [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , jeśli chcesz używać go w [środowisku lokalnym](how-to-configure-environment.md#local).  Upewnij się, że zainstalowano `matplotlib` program `notebooks` i dodatki i są `automl` dostępne w zestawie Azure Machine Learning SDK.
 
 ## <a name="start"></a>Konfigurowanie środowiska projektowego
 

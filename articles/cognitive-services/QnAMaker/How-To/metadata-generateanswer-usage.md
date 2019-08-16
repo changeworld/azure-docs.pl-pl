@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: diberry
-ms.openlocfilehash: dbfa7aaccd513ffcf8ba3907911d8c49275b2ea6
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 18b901b429ee675726ef0e36535f1f97f4cdd076
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967653"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543001"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Uzyskaj odpowiedź przy użyciu interfejsu API GenerateAnswer i metadanych
 
@@ -228,6 +228,18 @@ Możesz przeszukiwać opublikowaną KB, używając `isTest=false`lub test KB prz
   "RankerType":"QuestionOnly"
 }
 ```
+
+## <a name="common-http-errors"></a>Typowe błędy HTTP
+
+|Kod|Wyjaśnienie|
+|:--|--|
+|2xx|Powodzenie|
+|400|Parametry żądania są nieprawidłowe, co oznacza, że wymagane parametry są brakujące, źle sformułowane lub zbyt duży|
+|400|Treść żądania jest nieprawidłowa, co oznacza, że za pomocą pliku JSON jest Brak, źle sformułowane lub zbyt duży|
+|401|Nieprawidłowy klucz|
+|403|Dostęp zabroniony - nie masz odpowiednich uprawnień|
+|404|KB nie istnieje.|
+|410|Ten interfejs API jest przestarzały i nie jest już dostępny|
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: pabouwer
-ms.openlocfilehash: 9d973cb2ac210e912d93941a2f81889557379f43
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 032a907e45e007cb51357300e4bbf3c7afb40dde
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67625975"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69542879"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Instalowanie i używanie Istio w usłudze Azure Kubernetes Service (AKS)
 
@@ -42,6 +42,8 @@ W krokach przedstawionych w tym artykule przyjęto założenie, że utworzono kl
 
 Musisz [Helm][helm] , aby wykonać te instrukcje i zainstalować Istio. Zaleca się, aby w Twoim klastrze `2.12.2` była zainstalowana lub nowsza wersja programu. Jeśli potrzebujesz pomocy dotyczącej instalowania Helm, zobacz [wskazówki dotyczące instalacji programu AKS Helm][helm-install]. Wszystkie Istioowe zasobniki muszą być również zaplanowane do uruchomienia w węzłach systemu Linux.
 
+Upewnij się, że zapoznaj się z dokumentacją dotyczącą [wydajności i skalowalności Istio](https://istio.io/docs/concepts/performance-and-scalability/) , aby poznać dodatkowe wymagania dotyczące zasobów związanych z uruchamianiem Istio w klastrze AKS. Wymagania podstawowe i dotyczące pamięci będą się różnić w zależności od konkretnego obciążenia. Wybierz odpowiednią liczbę węzłów i rozmiar maszyny wirtualnej, które mają być przeznaczone do instalacji.
+
 Ten artykuł oddziela wskazówki dotyczące instalacji Istio do kilku dyskretnych kroków. Wynik końcowy ma taką samą strukturę jak oficjalne [wskazówki dotyczące][istio-install-helm]instalacji Istio.
 
 ## <a name="download-istio"></a>Pobierz Istio
@@ -49,7 +51,7 @@ Ten artykuł oddziela wskazówki dotyczące instalacji Istio do kilku dyskretnyc
 Najpierw pobierz i Wyodrębnij najnowszą wersję Istio. Kroki są nieco inne dla powłoki bash w systemie MacOS, Linux lub Windows dla systemu Linux oraz dla powłoki programu PowerShell. Wybierz jeden z następujących kroków instalacji, które są zgodne z preferowanym środowiskiem:
 
 * [Bash w systemie MacOS, Linux lub Windows podsystem dla systemu Linux](#bash)
-* [Program PowerShell](#powershell)
+* [PowerShell](#powershell)
 
 ### <a name="bash"></a>Bash
 
@@ -529,7 +531,7 @@ PowerShell
 kubectl get crds -o name | Select-String -Pattern 'istio.io' |% { kubectl delete $_ }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W poniższej dokumentacji opisano, jak można użyć usługi Istio do udostępnienia inteligentnego routingu w celu przeprowadzenia wydania w wersji kanaryjskiej:
 

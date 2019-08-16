@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/05/2019
 ms.author: banders
-ms.openlocfilehash: 5e38684500520d4565835456b94200aea399c938
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 828bc3784a118a81adc4391b1bf222c00ee2025a
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68814103"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543021"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Samoobsługowe wymianę i zwroty za Azure Reservations
 
@@ -60,11 +60,6 @@ Oryginalna faktura została anulowana i zostanie utworzona nowa faktura. Pienią
 
 Platforma Azure ma następujące zasady dotyczące anulowania, wymiany i zwrotów.
 
-**Zasady anulowania**
-
-- W przypadku anulowania rezerwacji może istnieć 12% opłata za wczesne zakończenie.
-- Zwrot otrzymywany w przypadku anulowania to pozostała stawka proporcjonalnie do oceny, pomniejszona o 12% opłaty za wczesne zakończenie. Aby anulować, przejdź do rezerwacji w Azure Portal i wybierz pozycję **zwrot**.
-
 **Zasady programu Exchange**
 
 - Można zwrócić wiele istniejących rezerwacji, aby zakupić nową rezerwację tego samego typu. Nie można wymieniać zastrzeżeń jednego typu dla innego. Na przykład nie można zwrócić rezerwacji maszyny wirtualnej w celu zakupienia rezerwacji SQL.
@@ -77,10 +72,12 @@ Platforma Azure ma następujące zasady dotyczące anulowania, wymiany i zwrotó
 - Nie ma kar ani rocznych limitów dla wymian.
 
 **Zasady dotyczące zwrotów**
+- W przypadku anulowania rezerwacji może istnieć 12% opłata za wczesne zakończenie.
+- Zwrot otrzymywany w przypadku anulowania to pozostała stawka proporcjonalnie do oceny, pomniejszona o 12% opłaty za wczesne zakończenie. Aby anulować, przejdź do rezerwacji w Azure Portal i wybierz pozycję **zwrot**.
 - Łączna kwota zwrotu nie może przekroczyć $50 000 USD w 12-miesięcznym oknie kroczącym.
 - Zwroty są obliczane na podstawie najniższej ceny zakupu lub bieżącej ceny rezerwacji.
 - Tylko właściciele rezerwacji mogą przetwarzać zwroty. [Dowiedz się, jak dodawać i zmieniać użytkowników, którzy mogą zarządzać rezerwacją](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
-- Firma Microsoft zastrzega sobie prawo do naliczania opłat za 12% za wszelkie zwroty, chociaż kary nie są obecnie naliczane.
+- Firma Microsoft zastrzega sobie prawo do naliczania opłat za 12% za wszelkie zwroty. Kara nie jest obecnie naliczana, ale zostanie obciążona w przyszłości.
 
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>Wymiana magazynu niepremium dla magazynu w warstwie Premium
 
@@ -90,7 +87,7 @@ Rezerwacja zakupionego dla rozmiaru maszyny wirtualnej, który nie obsługuje ma
 
 Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby dowiedzieć się, jak zarządzać rezerwacją, zobacz [zarządzanie Azure Reservations](billing-manage-reserved-vm-instance.md).
 - Aby dowiedzieć się więcej na temat Azure Reservations, zobacz następujące artykuły:

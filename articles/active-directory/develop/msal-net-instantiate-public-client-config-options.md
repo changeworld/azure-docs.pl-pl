@@ -1,9 +1,9 @@
 ---
-title: Utwórz wystąpienie aplikacji publicznych klienta, za pomocą opcji (Biblioteka Microsoft Authentication Library dla platformy .NET) | Azure
-description: Dowiedz się, jak utworzyć aplikację kliencką publicznej za pomocą opcji konfiguracji przy użyciu Biblioteka Microsoft Authentication Library for .NET (platformy MSAL.NET).
+title: Tworzenie wystąpienia publicznej aplikacji klienckiej z opcjami (Biblioteka uwierzytelniania firmy Microsoft dla platformy .NET) | Azure
+description: Dowiedz się, jak utworzyć wystąpienie publicznej aplikacji klienckiej z opcjami konfiguracji przy użyciu biblioteki uwierzytelniania firmy Microsoft dla platformy .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,30 +13,30 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/30/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 125bbf9aed54fb00f039aeffddd5cc1aad3360a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1311e047b63cc9b5cccc785fbcd118db29f7c4bd
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544398"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532613"
 ---
-# <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>Utwórz wystąpienie aplikacji publicznych klienta za pomocą opcji konfiguracji przy użyciu platformy MSAL.NET
+# <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>Tworzenie wystąpienia publicznej aplikacji klienckiej z opcjami konfiguracji przy użyciu MSAL.NET
 
-W tym artykule opisano sposób tworzenia wystąpienia [aplikacja kliencka publicznych](msal-client-applications.md) przy użyciu Biblioteka Microsoft Authentication Library for .NET (platformy MSAL.NET).  Aplikacja jest utworzone za pomocą opcji konfiguracji zdefiniowanej w pliku ustawień.
+W tym artykule opisano sposób tworzenia wystąpienia [publicznej aplikacji klienckiej](msal-client-applications.md) przy użyciu biblioteki uwierzytelniania firmy Microsoft dla platformy .net (MSAL.NET).  Aplikacja tworzy wystąpienie z opcjami konfiguracji zdefiniowanymi w pliku ustawień.
 
-Przed inicjowania aplikacji, musisz najpierw [zarejestrować](quickstart-register-app.md) go tak, aby aplikację można zintegrować z platformą Microsoft identity. Po zarejestrowaniu może być konieczne następujące informacje (które można znaleźć w witrynie Azure portal):
+Przed zainicjowaniem aplikacji należy najpierw ją [zarejestrować](quickstart-register-app.md) , aby można było zintegrować aplikację z platformą tożsamości firmy Microsoft. Po zarejestrowaniu mogą być potrzebne następujące informacje (które można znaleźć w Azure Portal):
 
 - Identyfikator klienta (ciąg reprezentujący identyfikator GUID)
-- Adres URL dostawcy tożsamości (nazwanego wystąpienia) i grupy odbiorców logowania dla swojej aplikacji. Te dwa parametry są nazywane zbiorczo urzędu.
-- Identyfikator dzierżawy, jeśli piszesz linię aplikacji biznesowej wyłącznie na potrzeby Twojej organizacji (również o nazwie aplikacja jednej dzierżawy).
-- Dla aplikacji sieci web, a czasami dla aplikacji publicznych klienta (w szczególności, gdy Twoja aplikacja wymaga pod kątem wykorzystania brokera) będzie również ustawiono element redirectUri gdzie dostawcy tożsamości skontaktuje się z powrotem aplikacji przy użyciu tokenów zabezpieczających.
+- Adres URL dostawcy tożsamości (nazywany wystąpieniem) i odbiorcy logowania dla aplikacji. Te dwa parametry są określane zbiorczo jako urząd.
+- Identyfikator dzierżawy, jeśli piszesz aplikację biznesową wyłącznie dla Twojej organizacji (nazywaną również aplikacją z jedną dzierżawą).
+- W przypadku aplikacji sieci Web, a czasami dla publicznych aplikacji klienckich (w szczególności gdy aplikacja wymaga użycia brokera), należy również ustawić redirectUri, w którym dostawca tożsamości będzie kontaktować się z aplikacją przy użyciu tokenów zabezpieczających.
 
 
-Aplikację konsolową .NET Core może mieć następujące *appsettings.json* pliku konfiguracji:
+Aplikacja konsolowa platformy .NET Core może mieć następujący plik konfiguracyjny *appSettings. JSON* :
 
 ```json
 {
@@ -52,7 +52,7 @@ Aplikację konsolową .NET Core może mieć następujące *appsettings.json* pli
 }
 ```
 
-Poniższy kod odczytuje ten plik za pomocą programu .NET framework configuration:
+Poniższy kod odczytuje ten plik za pomocą platformy .NET Configuration Framework:
 
 ```csharp
 public class SampleConfiguration
@@ -94,7 +94,7 @@ public class SampleConfiguration
 }
 ```
 
-Poniższy kod tworzy aplikację za pomocą konfiguracji z pliku ustawień:
+Poniższy kod tworzy aplikację przy użyciu konfiguracji z pliku ustawień:
 
 ```csharp
 SampleConfiguration config = SampleConfiguration.ReadFromJsonFile("appsettings.json");

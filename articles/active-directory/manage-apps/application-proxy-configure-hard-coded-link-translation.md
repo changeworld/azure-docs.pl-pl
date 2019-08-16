@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/04/2018
+ms.date: 08/15/2019
 ms.author: mimart
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6d85fc7ed16f397cb91232e9648df4e8741b37a
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: aa0dc2081aff5a24fb830b756131cccd5c6ce810
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68705794"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533700"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Przekieruj linki stałe dla aplikacji opublikowanych przy użyciu usługi Azure serwer proxy aplikacji usługi Azure AD
 
@@ -30,13 +30,16 @@ Usługa Azure serwer proxy aplikacji usługi Azure AD udostępnia aplikacje loka
 Najlepszym sposobem, aby upewnić się, że linki działają tak samo zarówno wewnątrz sieci firmowej, jak i poza nią, ma na celu skonfigurowanie zewnętrznych adresów URL aplikacji tak, aby były takie same jak wewnętrzne adresy URL. Użyj [domen niestandardowych](application-proxy-configure-custom-domain.md) , aby skonfigurować zewnętrzne adresy URL w celu posiadania firmowej nazwy domeny zamiast domyślnej domeny serwera proxy aplikacji.
 
 
-Jeśli w dzierżawie nie można używać domen niestandardowych, istnieje kilka innych opcji zapewniających tę funkcję. Wszystkie z nich są również zgodne z domenami niestandardowymi i innymi, w razie potrzeby można skonfigurować niestandardowe domeny i inne rozwiązania. 
+Jeśli w dzierżawie nie można używać domen niestandardowych, istnieje kilka innych opcji zapewniających tę funkcję. Wszystkie z nich są również zgodne z domenami niestandardowymi i innymi, w razie potrzeby można skonfigurować niestandardowe domeny i inne rozwiązania.
+
+> [!NOTE]
+> Tłumaczenie linków nie jest obsługiwane w przypadku zakodowanych wewnętrznych adresów URL generowanych za poorednictwem języka JavaScript.
 
 **Opcja 1: Użyj Managed Browser lub Microsoft Edge** — to rozwiązanie ma zastosowanie tylko wtedy, gdy planujesz zalecać lub wymagać, aby użytkownicy mieli dostęp do aplikacji za pomocą Intune Managed Browser lub przeglądarki Microsoft Edge. Będzie obsługiwać wszystkie opublikowane adresy URL. 
 
 **Opcja 2: Korzystanie z rozszerzenia** moje aplikacje — to rozwiązanie wymaga od użytkowników zainstalowania rozszerzenia przeglądarki po stronie klienta, ale będzie obsługiwać wszystkie opublikowane adresy URL i współpracuje z najpopularniejszymi przeglądarkami. 
 
-**Opcja 3: Użyj ustawienia** tłumaczenia linku — to ustawienie po stronie administratora, które jest niewidoczne dla użytkowników. Będzie jednak obsługiwać tylko adresy URL w formacie HTML i CSS. Stałe kodowane wewnętrznie adresy URL generowane za poorednictwem języka JavaScript (na przykład) nie będą działały.  
+**Opcja 3: Użyj ustawienia** tłumaczenia linku — to ustawienie po stronie administratora, które jest niewidoczne dla użytkowników. Będzie jednak obsługiwać tylko adresy URL w formacie HTML i CSS.   
 
 Te trzy funkcje przechowują swoje linki niezależnie od tego, gdzie znajdują się użytkownicy. Jeśli masz aplikacje, które wskazują bezpośrednio na wewnętrzne punkty końcowe lub porty, możesz mapować te wewnętrzne adresy URL na opublikowane adresy URL serwera proxy aplikacji zewnętrznych. 
 
@@ -146,7 +149,7 @@ Teraz, gdy użytkownicy uzyskują dostęp do tej aplikacji, serwer proxy automat
 
 Chcemy, aby Twoja funkcja działała we wszystkich aplikacjach. Przeszukiwane są ponad 30 tagów w formacie HTML i CSS. Jeśli masz przykład wygenerowanych linków, które nie są tłumaczone, Wyślij fragment kodu do [opinii serwera proxy aplikacji](mailto:aadapfeedback@microsoft.com). 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 [Używanie domen niestandardowych w usłudze Azure serwer proxy aplikacji usługi Azure AD](application-proxy-configure-custom-domain.md) w celu posiadania tego samego wewnętrznego i zewnętrznego adresu URL
 
 [Konfigurowanie mapowań dostępu alternatywnego dla programu SharePoint 2013](https://technet.microsoft.com/library/cc263208.aspx)

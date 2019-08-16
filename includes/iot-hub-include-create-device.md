@@ -8,31 +8,30 @@ ms.topic: include
 ms.date: 11/06/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: d70544866b9e321d98acd3978da145276e036025
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e93f78cf07cd4815e5b17ffd3953db121adb6535
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183330"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558821"
 ---
 <!-- put the ## header in the file that includes this file -->
 
-W tej sekcji utworzysz tożsamości urządzenia w rejestrze tożsamości w usłudze IoT hub. Urządzenie nie może połączyć się z centrum IoT, jeśli nie ma wpisu w rejestrze tożsamości. Aby uzyskać więcej informacji, zobacz sekcję "Identity registry" [usługi IoT Hub — przewodnik dewelopera](../articles/iot-hub/iot-hub-devguide-identity-registry.md) 
+W tej sekcji utworzysz tożsamość urządzenia w rejestrze tożsamości w centrum IoT. Urządzenie nie może połączyć się z centrum, chyba że ma wpis w rejestrze tożsamości. Aby uzyskać więcej informacji, zobacz sekcję "Rejestr tożsamości" w [przewodniku dewelopera IoT Hub](../articles/iot-hub/iot-hub-devguide-identity-registry.md).
 
-1. W menu nawigacyjnym Centrum IoT Otwórz **urządzeń IoT**, a następnie wybierz **Dodaj** można zarejestrować nowego urządzenia w usłudze IoT hub.
+1. W menu nawigacji w usłudze IoT Hub Otwórz pozycję **urządzenia IoT**, a następnie wybierz pozycję **Nowy** , aby dodać urządzenie do centrum IoT Hub.
 
-    ![Tworzenie tożsamości urządzenia w portalu](./media/iot-hub-include-create-device/create-identity-portal.png)
+    ![Tworzenie tożsamości urządzenia w portalu](./media/iot-hub-include-create-device/create-identity-portal-vs2019.png)
 
-1. Podaj nazwę dla nowego urządzenia, takie jak **myDeviceId**i wybierz **Zapisz**. Ta akcja tworzy nową tożsamość urządzenia w Centrum IoT.
+1. W obszarze **Tworzenie urządzenia**Podaj nazwę nowego urządzenia, na przykład **myDeviceId**, a następnie wybierz pozycję **Zapisz**. Ta akcja tworzy tożsamość urządzenia dla Centrum IoT Hub.
 
-   ![Dodaj nowe urządzenie](./media/iot-hub-include-create-device/create-a-device.png)
+   ![Dodaj nowe urządzenie](./media/iot-hub-include-create-device/create-a-device-vs2019.png)
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
+1. Po utworzeniu urządzenia otwórz je z listy w okienku **urządzenia IoT** . Skopiuj **podstawowe parametry połączenia** w celu późniejszego użycia.
 
-1. Po utworzeniu urządzenia otwórz je z listy w **urządzeń IoT** okienka. Kopiuj **parametry połączenia---klucza podstawowego** do późniejszego użycia.
-
-    ![Parametry połączenia urządzenia](./media/iot-hub-include-create-device/device-details.png)
+    ![Parametry połączenia urządzenia](./media/iot-hub-include-create-device/device-details-vs2019.png)
 
 > [!NOTE]
-> Rejestr tożsamości usługi IoT Hub przechowuje tożsamości urządzenia tylko po to, aby umożliwić bezpieczny dostęp do centrum IoT. Przechowuje identyfikatory urządzeń i klucze, które będą używane jako poświadczenia zabezpieczeń, oraz flagę włączone/wyłączone, która umożliwia wyłączenie dostępu do poszczególnych urządzeń. Jeśli aplikacja wymaga przechowywania innych metadanych dla określonego urządzenia, powinna korzystać z magazynu określonego dla aplikacji. Aby uzyskać więcej informacji, zobacz [usługi IoT Hub — przewodnik dewelopera](../articles/iot-hub/iot-hub-devguide-identity-registry.md).
+> Rejestr tożsamości usługi IoT Hub przechowuje tożsamości urządzenia tylko po to, aby umożliwić bezpieczny dostęp do centrum IoT. Przechowuje identyfikatory urządzeń i klucze, które będą używane jako poświadczenia zabezpieczeń, oraz flagę włączone/wyłączone, która umożliwia wyłączenie dostępu do poszczególnych urządzeń. Jeśli aplikacja wymaga przechowywania innych metadanych dla określonego urządzenia, powinna korzystać z magazynu określonego dla aplikacji. Aby uzyskać więcej informacji, zobacz [przewodnik dewelopera IoT Hub](../articles/iot-hub/iot-hub-devguide-identity-registry.md).

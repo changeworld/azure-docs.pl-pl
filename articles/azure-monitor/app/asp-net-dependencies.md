@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: mbullwin
-ms.openlocfilehash: c2f115564c81f38dd437f1d3ff1e33d7d162a42f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 858508e949f8a880498e1a3d983dc76224010c31
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326449"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534607"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Śledzenie zależności w usłudze Azure Application Insights 
 
@@ -25,7 +25,7 @@ A *zależności* jest składnik zewnętrzny, która jest wywoływana przez aplik
 
 ## <a name="automatically-tracked-dependencies"></a>Automatycznie śledzone zależności
 
-Zestawy SDK Application Insights dla platform .NET i .NET Core `DependencyTrackingTelemetryModule` , z którymi jest moduł telemetrii, który automatycznie zbiera zależności. Ta kolekcja zależności jest włączana automatycznie dla aplikacji [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) i [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) , gdy jest skonfigurowana zgodnie z powiązanymi oficjalnymi dokumentami. Program jest dostarczany [jako pakiet](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) NuGet i zostaje automatycznie uruchomiony w przypadku używania jednego z `Microsoft.ApplicationInsights.Web` pakietów NuGet lub `Microsoft.ApplicationInsights.AspNetCore`. `DependencyTrackingTelemetryModule`
+Zestawy SDK Application Insights dla platform .NET i .NET Core `DependencyTrackingTelemetryModule` , z którymi jest moduł telemetrii, który automatycznie zbiera zależności. Ta kolekcja zależności jest włączana automatycznie dla aplikacji [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) i [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) , gdy jest skonfigurowana zgodnie z powiązanymi oficjalnymi dokumentami. Program jest dostarczany [](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) jako pakiet NuGet i zostaje automatycznie uruchomiony w przypadku używania jednego z pakietów `Microsoft.ApplicationInsights.Web` NuGet lub `Microsoft.ApplicationInsights.AspNetCore`. `DependencyTrackingTelemetryModule`
 
  `DependencyTrackingTelemetryModule`obecnie śledzi następujące zależności automatycznie:
 
@@ -90,7 +90,7 @@ Jeśli chcesz wyłączyć standardowy moduł śledzenia zależności, usuń odwo
 
 ## <a name="tracking-ajax-calls-from-web-pages"></a>Śledzenie wywołań AJAX ze stron sieci Web
 
-W przypadku stron sieci Web zestaw SDK Application Insights JavaScript automatycznie zbiera wywołania AJAX jako zależności, jak opisano [tutaj](javascript.md#ajax-performance). Ten dokument koncentruje się na zależnościach od składników serwera programu.
+W przypadku stron sieci Web zestaw SDK Application Insights JavaScript automatycznie zbiera wywołania AJAX jako zależności.
 
 ## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>Zaawansowane śledzenie SQL, aby uzyskać pełne zapytanie SQL
 
@@ -113,7 +113,7 @@ W powyższych przypadkach poprawna metoda sprawdzania poprawności aparatu Instr
 
 * [Mapa aplikacji](app-map.md) wizualizuje zależności między aplikacji i składników sąsiednich.
 * [Diagnostyka transakcji](transaction-diagnostics.md) przedstawia ujednolicone, skorelowane dane serwera.
-* [Karta przeglądarki](javascript.md#ajax-performance) pokazuje wywołania AJAX z przeglądarek użytkowników.
+* [Karta przeglądarki](javascript.md) pokazuje wywołania AJAX z przeglądarek użytkowników.
 * Kliknij pozycję przez powolne lub Nieudane żądania, aby sprawdzić ich wywołania zależności.
 * [Analiza](#logs-analytics) może służyć do zależności zapytania o dane.
 

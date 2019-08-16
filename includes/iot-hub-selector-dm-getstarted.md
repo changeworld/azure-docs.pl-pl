@@ -4,12 +4,12 @@ ms.author: wesmc
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 60c0c700dde5afda2ca93a92b334cbc4f0134043
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 239ea2eb4d5bc8d326d5ca503a18b149252dc1be
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667986"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558737"
 ---
 > [!div class="op_single_selector"]
 > * [Node.js](../articles/iot-hub/iot-hub-node-node-device-management-get-started.md)
@@ -24,7 +24,9 @@ Aplikacje zaplecza mogą korzystać z usługi Azure IoT Hub prymitywów, takich 
 Użyj metody bezpośredniej, aby zainicjować akcje zarządzania urządzeniami (takie jak ponowne uruchamianie, Resetowanie do ustawień fabrycznych i aktualizacja oprogramowania układowego) z aplikacji zaplecza w chmurze. Urządzenie jest odpowiedzialne za:
 
 * Obsługa żądania metody wysyłanego z IoT Hub.
+
 * Inicjowanie odpowiedniej akcji specyficznej dla urządzenia na urządzeniu.
+
 * Dostarczanie aktualizacji stanu za poorednictwem *raportowanych właściwości* do IoT Hub.
 
 Możesz użyć aplikacji zaplecza w chmurze, aby uruchamiać zapytania o pojedynczej urządzeniu w celu raportowania postępu akcji związanych z zarządzaniem urządzeniami.

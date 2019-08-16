@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a334b19fe4dd819a6e4c391e49d934bf5955a567
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: c3201ec64ee7a3471b7d93b83664c62c2e7e0435
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516072"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69541515"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Często zadawane pytania dotyczące dysków maszyn wirtualnych usługi Azure IaaS oraz zarządzanych i niezarządzanych dysków Premium
 
@@ -172,7 +172,7 @@ Może to być, że maszyna wirtualna musi znajdować się w stacji i strefie dos
 Nie. niezwykle dyski są obsługiwane tylko jako dyski danych i są obsługiwane tylko jako dyski natywne 4 k.
 
 **Czy mogę przekonwertować istniejący dysk na dysk?**
-Nie, ale można migrować datę z istniejącego dysku na dysk Ultra. Aby przeprowadzić migrację istniejącego dysku na dysk, podłącz oba dyski do tej samej maszyny wirtualnej i skopiuj dane dysku z jednego dysku do drugiego lub Skorzystaj z rozwiązania innej firmy do migracji danych.
+Nie, ale można migrować dane z istniejącego dysku na dysk Ultra. Aby przeprowadzić migrację istniejącego dysku na dysk, podłącz oba dyski do tej samej maszyny wirtualnej i skopiuj dane dysku z jednego dysku do drugiego lub Skorzystaj z rozwiązania innej firmy do migracji danych.
 
 **Czy można tworzyć migawki dla Ultra disks?**
 Nie, migawki nie są jeszcze dostępne.

@@ -1,6 +1,6 @@
 ---
-title: Dodawanie typeahead zapytań do indeksu — usługa Azure Search
-description: Włącz operacje zapytania z podpowiedziami pojawiającymi w usłudze Azure Search, tworząc sugestory i sformułowania żądań, które wywołanie autocomplete lub autosuggested terminów zapytania.
+title: Dodawanie zapytań typeahead do indeksu Azure Search
+description: Włącz akcje zapytań typu "w Azure Search", tworząc sugestie i formułowane żądania, które wywołują Autouzupełnianie lub proponowane automatycznie terminy zapytań.
 ms.date: 05/02/2019
 services: search
 ms.service: search
@@ -19,38 +19,38 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: eb6667a1429382ed566826de64ad7ffbe83183cf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22b53000fa2eebdd8f9cf7fd9f1a2d00763c035b
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65521882"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533211"
 ---
-# <a name="add-suggesters-to-an-index-for-typeahead-in-azure-search"></a>Dodaj sugestory do indeksu dla typeahead w usłudze Azure Search
+# <a name="add-suggesters-to-an-index-for-typeahead-in-azure-search"></a>Dodawanie sugestii do indeksu dla typeahead w Azure Search
 
-A **sugestora** to konstrukcja w [indeksu usługi Azure Search](search-what-is-an-index.md) , która obsługuje środowisko "search jako — możesz type". Zawiera listę pól, dla których chcesz włączyć typeahead zapytania w danych wejściowych. W ramach indeksu, ten sam sugestora obsługuje jeden lub oba te dwa warianty typeahead: *autouzupełniania* kończy termin lub frazę wpisywania *sugestie* zawiera krótką listę wyników. 
+**Sugerował** jest konstrukcja w [indeksie Azure Search](search-what-is-an-index.md) , który obsługuje środowisko "wyszukiwanie jako typ". Zawiera listę pól, dla których chcesz włączyć dane wejściowe zapytania typeahead. W indeksie ta sama sugestia obsługuje jedną lub obie te dwa warianty typeahead: *Autouzupełnianie* uzupełnia wpisany termin lub frazę. *sugestie* przedstawiają krótką listę wyników. 
 
-Poniższy zrzut ekranu przedstawia obie funkcje typeahead. Na tej stronie wyszukiwania Xbox elementów autouzupełniania przejście do nowej strony wyników wyszukiwania dla tego zapytania sugestie są rzeczywiste wyniki, które przejście do strony dla tego konkretnego gry. Można ograniczyć autouzupełniania jednego elementu w pasku wyszukiwania lub Podaj listę, tak jak pokazano poniżej. Masz sugestie może pojawić się dowolnej części dokumentu, która najlepiej opisuje wynik.
+Poniższy zrzut ekranu ilustruje obie funkcje typeahead. Na tej stronie wyszukiwania w usłudze Xbox elementy autouzupełniania przenoszą Cię do nowej strony wyników wyszukiwania dla tego zapytania, a sugestie są rzeczywistymi wynikami, które przenoszą do strony tej konkretnej gry. Można ograniczyć Autouzupełnianie do jednego elementu na pasku wyszukiwania lub podać listę, taką jak pokazana tutaj. W przypadku sugestii można wystawić każdą część dokumentu, która najlepiej opisuje wynik.
 
-![Porównanie Visual Autouzupełnianie i sugerowane zapytania](./media/index-add-suggesters/visual-comparison-suggest-complete.png "Visual porównanie Autouzupełnianie i sugerowane zapytania")
+![Wizualne porównanie autouzupełniania i sugerowanych zapytań](./media/index-add-suggesters/visual-comparison-suggest-complete.png "Wizualne porównanie autouzupełniania i sugerowanych zapytań")
 
-Aby zaimplementować te zachowania w usłudze Azure Search, jest składnikiem indeksów i zapytań. 
+Aby zaimplementować te zachowania w Azure Search, istnieje indeks i składnik zapytania. 
 
-+ Składnik indeksu jest sugestora. Portalu, interfejsu API REST lub zestawu SDK platformy .NET umożliwia tworzenie sugestora. 
++ Składnik indeksu jest sugestią. Możesz użyć portalu, interfejsu API REST lub zestawu .NET SDK, aby utworzyć sugestię. 
 
-+ Składnik kwerendy jest akcja określona w żądaniu zapytania (Akcja sugestię lub automatycznego uzupełniania). 
++ Składnik zapytania jest akcją określoną w żądaniu zapytania (akcję sugestii lub autouzupełniania). 
 
-Obsługa wyszukiwania jako użytkownik typ-jest włączona na poszczególnych pól. Można zaimplementować zarówno zachowania typeahead w obrębie tego samego rozwiązania wyszukiwania, chcąc środowisko podobny do wskazanej na zrzucie ekranu. Zarówno docelowego żądania *dokumenty* kolekcji określonego indeksu i odpowiedzi są zwracane po użytkownik udostępnił co najmniej trzech wejściowy ciąg znaków.
+Obsługa wyszukiwania jako typu jest włączana dla poszczególnych pól. Można zaimplementować oba zachowania typeahead w ramach tego samego rozwiązania wyszukiwania, jeśli chcesz, aby środowisko było podobne do określonego na zrzucie ekranu. Oba żądania są kierowane do kolekcji *dokumenty* określonego indeksu i odpowiedzi są zwracane po podaniu przez użytkownika co najmniej trzech ciągów wejściowych znaku.
 
 ## <a name="create-a-suggester"></a>Tworzenie sugestora
 
-Mimo że sugestora ma kilka właściwości, to przede wszystkim zbiór pól, dla których jest włączane w środowisku typeahead. Na przykład aplikacji turystycznej chcieć umożliwić wyszukiwanie typeahead miejsc docelowych, miasta i atrakcje. W efekcie wszystkie trzy pola musieli przejść z kolekcji pól.
+Chociaż program sugerujący ma kilka właściwości, jest głównie kolekcją pól, dla których jest włączone środowisko typeahead. Na przykład aplikacja podróży może chcieć włączyć typeahead wyszukiwanie w miejscach docelowych, miejscowości i attractions. W związku z tym wszystkie trzy pola zostałyby umieszczone w kolekcji Fields.
 
-Aby utworzyć sugestora, dodaj je do schematu indeksu. Jeden sugestora może mieć w ramach indeksu (w szczególności jeden sugestora w kolekcji sugestory). 
+Aby utworzyć sugestię, Dodaj ją do schematu indeksu. W indeksie może znajdować się jeden element sugerujący (w przypadku kolekcji sugerującej). 
 
 ### <a name="use-the-rest-api"></a>Używanie interfejsu API REST
 
-W interfejsie API REST można dodać sugestory za pośrednictwem [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) lub [Aktualizowanie indeksu](https://docs.microsoft.com/rest/api/searchservice/update-index). 
+W interfejsie API REST można dodać sugestie za pomocą pozycji [Utwórz indeks](https://docs.microsoft.com/rest/api/searchservice/create-index) lub [Aktualizuj indeks](https://docs.microsoft.com/rest/api/searchservice/update-index). 
 
   ```json
   {
@@ -70,11 +70,11 @@ W interfejsie API REST można dodać sugestory za pośrednictwem [Create Index](
     ]
   }
   ```
-Po utworzeniu sugestora Dodaj [sugestie dotyczące interfejsów API](https://docs.microsoft.com/rest/api/searchservice/suggestions) lub [interfejsu API automatycznego uzupełniania](https://docs.microsoft.com/rest/api/searchservice/autocomplete) w logice zapytania, aby wywołać tę funkcję.
+Po utworzeniu sugestii Dodaj [interfejs API sugestii](https://docs.microsoft.com/rest/api/searchservice/suggestions) lub [interfejs API](https://docs.microsoft.com/rest/api/searchservice/autocomplete) autouzupełniania w logice zapytania, aby wywołać funkcję.
 
 ### <a name="use-the-net-sdk"></a>Korzystanie z zestawu SDK dla platformy .NET
 
-W C#, zdefiniuj [obiektu Sugestora](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet). `Suggesters` jest to kolekcja, ale może potrwać tylko jeden element. 
+W C#programie Zdefiniuj [obiekt sugerujący](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet). `Suggesters`jest kolekcją, ale może przyjmować tylko jeden element. 
 
 ```csharp
 private static void CreateHotelsIndex(SearchServiceClient serviceClient)
@@ -97,41 +97,48 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 
 ## <a name="property-reference"></a>Odwołania do właściwości
 
-Klucz wskazuje informacja dotycząca sugestory jest nazwę (sugestory są przywoływane przez nazwę, na żądanie), searchMode (obecnie tylko jeden "analyzingInfixMatching") i listę pól, dla których włączono typeahead. 
+Kluczowe punkty, które należy zwrócić uwagę na temat sugestii, to to, że w żądaniu występuje nazwa (sugestii odwołująca się do niej nazwa), typu wyszukiwania (obecnie tylko jeden, "analyzingInfixMatching") i listy pól, dla których włączono typeahead. 
 
-Właściwości, które definiują sugestora są następujące:
+Właściwości definiujące funkcję sugerują obejmują następujące elementy:
 
 |Właściwość      |Opis      |
 |--------------|-----------------|
-|`name`        |Nazwa sugestora. Użyj nazwy sugestora podczas wywoływania [interfejsu API REST sugestie](https://docs.microsoft.com/rest/api/searchservice/suggestions) lub [interfejsu API REST autouzupełniania](https://docs.microsoft.com/rest/api/searchservice/autocomplete).|
-|`searchMode`  |Strategia używana do wyszukiwania fraz kandydujących. To jedyny obecnie obsługiwany tryb `analyzingInfixMatching`, który przeprowadza elastyczne dopasowywanie fraz na początku lub w środku zdań.|
-|`sourceFields`|Lista jednego lub więcej pól, które są źródłem zawartości sugestie. Tylko pola typu `Edm.String` i `Collection(Edm.String)` może być źródeł dla sugestie. Można tylko pola, które nie mają niestandardowego analizatora języków zestawu.<p/>Te pola, które nadają się do oczekiwanego i odpowiednich odpowiedzi, należy określić, czy jest ono ukończone ciąg w pasku wyszukiwania lub na liście rozwijanej.<p/>Nazwa hotelu jest dobrym kandydatem, ponieważ ma ona dokładności. Pełne pól, takich jak opisy i komentarze są zbyt gęste. Podobnie powtarzających się pola, takie jak kategorie i tagów, są mniej skuteczne. W przykładach zawiera "category" mimo to wykazać, że może zawierać wiele pól. |
+|`name`        |Nazwa sugestii. Podczas wywoływania [interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/suggestions) lub [interfejsu API REST usługi Autouzupełnianie](https://docs.microsoft.com/rest/api/searchservice/autocomplete)należy użyć nazwy narzędzia do sugerowania.|
+|`searchMode`  |Strategia używana do wyszukiwania fraz kandydatów. Jedynym obsługiwanym trybem jest `analyzingInfixMatching`, który wykonuje elastyczne Dopasowywanie fraz na początku lub w środku zdania.|
+|`sourceFields`|Lista co najmniej jednego pola, które jest źródłem zawartości dla sugestii. Tylko pola typu `Edm.String` i `Collection(Edm.String)` mogą być źródłami dla sugestii. Można używać tylko pól, które nie mają niestandardowego zestawu analizatora języka.<p/>Określ tylko pola, które nadają się do oczekiwanej i odpowiedniej odpowiedzi, czy jest to kompletny ciąg na pasku wyszukiwania lub liście rozwijanej.<p/>Nazwa hotelu jest dobrym kandydatem, ponieważ ma dokładnooć. Pełne pola, takie jak opisy i komentarze, są zbyt gęste. Podobnie powtarzające się pola, takie jak kategorie i Tagi, są mniej efektywne. W przykładach zawieramy "kategorię" Mimo to, aby pokazać, że można uwzględnić wiele pól. |
 
-## <a name="when-to-create-a-suggester"></a>Kiedy należy utworzyć sugestora
+#### <a name="analysis-of-sourcefields-in-a-suggester"></a>Analiza SourceFields w sugestii
 
-Aby uniknąć odbudowywanie indeksu, sugestora i pola określone w parametrze `sourceFields` musi zostać utworzona w tym samym czasie.
+Azure Search analizuje zawartość pola, aby umożliwić wykonywanie zapytań dotyczących poszczególnych warunków. Sugestie wymagają, aby prefiksy były indeksowane wraz z pełnymi postanowieniami, które wymagają dodatkowej analizy względem pól źródłowych. Konfiguracje analizatora niestandardowego mogą łączyć dowolne z różnych tokenizatory i filtrów, często w sposób umożliwiający tworzenie prefiksów wymaganych dla sugestii. Z tego powodu **Azure Search uniemożliwiają uwzględnienie pól z**niestandardowymi analizatorami.
 
-Jeśli dodasz sugestora do istniejącego indeksu, gdzie istniejące pola są uwzględnione w `sourceFields`, całkowicie zmienia definicję pola i ponownej kompilacji jest wymagana. Aby uzyskać więcej informacji, zobacz [sposobie odbudowania indeksu usługi Azure Search](search-howto-reindex.md).
+> [!NOTE] 
+>  Zalecanym podejściem do obejścia powyższych ograniczeń jest użycie 2 oddzielnych pól dla tej samej zawartości. Pozwoli to jednemu z pól na posiadanie sugestii, a drugi można skonfigurować przy użyciu konfiguracji analizatora niestandardowego.
 
-## <a name="how-to-use-a-suggester"></a>Jak używać sugestora
+## <a name="when-to-create-a-suggester"></a>Kiedy należy utworzyć sugestię
 
-Jak wspomniano wcześniej można użyć sugestora sugerowane zapytania i/lub automatycznego uzupełniania. 
+Aby uniknąć ponownego kompilowania indeksu, należy utworzyć sugestię i pola określone `sourceFields` w elemencie w tym samym czasie.
 
-Sugestora odwołuje się na żądanie, wraz z operacji. Na przykład na wywołanie GET REST, określ opcję `suggest` lub `autocomplete` w kolekcji dokumentów. REST, po utworzeniu sugestora użytku [sugestie dotyczące interfejsów API](https://docs.microsoft.com/rest/api/searchservice/suggestions) lub [interfejsu API automatycznego uzupełniania](https://docs.microsoft.com/rest/api/searchservice/autocomplete) w logice zapytania.
+Jeśli dodajesz sugestię do istniejącego indeksu, w którym znajdują się istniejące pola w `sourceFields`, definicja pola zostanie zmieniona, a ponowna kompilacja jest wymagana. Aby uzyskać więcej informacji, zobacz [jak ponownie skompilować indeks Azure Search](search-howto-reindex.md).
 
-Dla platformy .NET, należy użyć [SuggestWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet) lub [AutocompleteWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet).
+## <a name="how-to-use-a-suggester"></a>Jak używać sugestii
 
-Aby uzyskać przykład, pokazujący zarówno w przypadku żądań, zobacz [przykład dodawania automatycznego uzupełniania i sugestii w usłudze Azure Search](search-autocomplete-tutorial.md).
+Jak wspomniano wcześniej, można użyć sugestii dla sugerowanych zapytań, autouzupełniania lub obu tych funkcji. 
+
+Do żądania jest przywoływany sugestia wraz z operacją. Na przykład w wywołaniu Get REST Określ albo `suggest` `autocomplete` w kolekcji dokumentów. W przypadku usługi REST po utworzeniu sugestii Użyj [interfejsu API sugestii](https://docs.microsoft.com/rest/api/searchservice/suggestions) lub [interfejsu API](https://docs.microsoft.com/rest/api/searchservice/autocomplete) autouzupełniania w logice zapytania.
+
+W przypadku platformy .NET Użyj [SuggestWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet) lub [AutocompleteWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet).
+
+Przykład pokazujący oba żądania, zobacz [przykład dodawania autouzupełniania i sugestii w Azure Search](search-autocomplete-tutorial.md).
 
 ## <a name="sample-code"></a>Przykładowy kod
 
-[DotNetHowToAutocomplete](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete) zawiera przykładowe C# i kod Java i pokazuje konstrukcji sugestora, sugerowane zapytania, automatycznego uzupełniania i nawigacji zestawu reguł. 
+Przykład [DotNetHowToAutocomplete](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete) zawiera kod zarówno C# , jak i Java, a także demonstruje konstruowanie, sugerowane zapytania, Autouzupełnianie i nawigację aspektów. 
 
-Używa piaskownicy usługi Azure Search i wstępnie załadowane indeksu, dzięki czemu wszystkie trzeba jest naciśnij klawisz F5, aby go uruchomić. Brak subskrypcji i logowania w razie potrzeby.
+Korzysta ona z usługi Azure Search piaskownicy i wstępnie załadowanego indeksu, więc wystarczy nacisnąć klawisz F5, aby go uruchomić. Brak subskrypcji lub logowania.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Firma Microsoft zaleca poniższy przykład, aby zobaczyć, jak są formułowane żądania.
+Zalecamy następujący przykład, aby zobaczyć, jak są formułowane żądania.
 
 > [!div class="nextstepaction"]
-> [Przykłady Autouzupełnianie i sugestie](search-autocomplete-tutorial.md) 
+> [Sugestie i przykłady autouzupełniania](search-autocomplete-tutorial.md) 

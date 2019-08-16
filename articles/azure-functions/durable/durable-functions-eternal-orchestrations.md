@@ -1,6 +1,6 @@
 ---
-title: Orkiestracje nieustanne w funkcje trwałe - Azure
-description: Dowiedz się, jak zaimplementować orkiestracje przy użyciu rozszerzenia funkcji trwałych dla usługi Azure Functions.
+title: Eternal aranżacje w Durable Functions — Azure
+description: Dowiedz się, jak wdrożyć aranżacje Eternal przy użyciu rozszerzenia Durable Functions Azure Functions.
 services: functions
 author: ggailey777
 manager: jeconnoc
@@ -10,33 +10,33 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 99eabf3bc91887ff19b3a0bc9cf6647d32fa6750
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 352fd16d98e6f376e230d2112a9b94b66ccc1b5a
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65787561"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69542731"
 ---
-# <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Orkiestracje nieustanne w funkcje trwałe (usługi Azure Functions)
+# <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Eternal aranżacji w Durable Functions (Azure Functions)
 
-*Orkiestracje nieustanne* funkcji programu orchestrator, które nigdy nie zakończyć. Są one przydatne, jeśli chcesz użyć [funkcje trwałe](durable-functions-overview.md) agregatorów i dowolnego scenariusza, który wymaga wejścia w nieskończoną pętlę.
+*Eternal aranżacje* to funkcje programu Orchestrator, które nigdy nie kończą się. Są one przydatne, gdy chcesz używać [Durable Functions](durable-functions-overview.md) do agregowania i scenariusza, który wymaga pętli nieskończonej.
 
 ## <a name="orchestration-history"></a>Historia aranżacji
 
-Jak wyjaśniono w [punkt kontrolny i powtarzanie](durable-functions-checkpointing-and-replay.md), trwałe Framework zadań śledzi informacje o historii poszczególnych aranżacji funkcji. Ta historia stale tak długo, jak funkcja programu orchestrator w dalszym ciągu zaplanować pracę nad nowym. Jeśli funkcja orkiestratora przechodzi w pętli nieskończonej, ciągłe Planowanie zadań historię, można powiększać niezwykle dużych i spowodować problemy z wydajnością znaczące. *Eternal aranżacji* koncepcji zaprojektowano tak, aby uniknąć tego rodzaju problemy w przypadku aplikacji wymagających pętli nieskończonej.
+Zgodnie z objaśnieniem do tworzenia [punktów kontrolnych i powtarzania](durable-functions-checkpointing-and-replay.md), trwała struktura zadań śledzi historię każdej aranżacji funkcji. Ta historia stale rośnie, o ile funkcja programu Orchestrator nadal planuje nową pracę. Jeśli funkcja programu Orchestrator przejdzie w nieskończoną pętlę i ciągle planuje prace, ta historia może zwiększyć wydajność krytyczną i spowodować znaczne problemy z wydajnością. Koncepcja *aranżacji Eternal* została zaprojektowana w celu ograniczenia tego rodzaju problemów dla aplikacji, które wymagają nieskończonych pętli.
 
 ## <a name="resetting-and-restarting"></a>Resetowanie i ponowne uruchamianie
 
-Zamiast używać pętli nieskończonej, funkcje programu orchestrator resetowania ich stanu, wywołując [ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) metody. Ta metoda przyjmuje jeden parametr serializacji JSON, która staje się nowe dane wejściowe następnej generacji funkcji programu orchestrator.
+Zamiast używać nieskończonych pętli, funkcja programu Orchestrator resetuje swój stan przez wywołanie metody [ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) . Ta metoda przyjmuje jeden parametr możliwy do serializacji JSON, który staje się nowym danymi wejściowymi dla następnej generacji funkcji programu Orchestrator.
 
-Gdy `ContinueAsNew` nosi umieszczeniu wystąpienia komunikatów w samej przed kończy działanie. Komunikat powoduje ponowne uruchomienie wystąpienia przy użyciu nowych wartości wejściowej. Ten sam identyfikator wystąpienia są przechowywane, ale Historia funkcji programu orchestrator skutecznie został obcięty.
+Gdy `ContinueAsNew` jest wywoływana, wystąpienie enqueues komunikat do samego siebie przed opuszczeniem. Komunikat uruchamia ponownie wystąpienie z nową wartością wejściową. Ten sam identyfikator wystąpienia jest zachowywany, ale historia funkcji programu Orchestrator jest efektywnie obcinana.
 
 > [!NOTE]
-> Trwałe Framework zadań utrzymuje ten sam identyfikator wystąpienia, ale wewnętrznie tworzy nową *Identyfikatora wykonania* dla funkcji programu orchestrator, która zostanie zresetowany przez `ContinueAsNew`. Ten identyfikator wykonania ogólnie nie jest uwidaczniana zewnętrznie, ale warto wiedzieć o podczas wykonywania aranżacji debugowania.
+> Usługa trwałych zadań obsługuje ten sam identyfikator wystąpienia, ale wewnętrznie tworzy nowy *Identyfikator wykonania* dla funkcji programu Orchestrator, która jest resetowana przez `ContinueAsNew`. Ten identyfikator wykonania zwykle nie jest ujawniany zewnętrznie, ale może być przydatne podczas debugowania wykonywania aranżacji.
 
-## <a name="periodic-work-example"></a>Przykład okresowe pracy
+## <a name="periodic-work-example"></a>Przykład pracy okresowej
 
-Orkiestracje nieustanne jeden przypadek użycia jest kod, który potrzebuje do wykonywania pracy okresowe przez czas nieokreślony.
+Jeden przypadek użycia dla aranżacji Eternal to kod, który musi wykonywać okresowe zadania na czas nieokreślony.
 
 ### <a name="c"></a>C#
 
@@ -45,7 +45,7 @@ Orkiestracje nieustanne jeden przypadek użycia jest kod, który potrzebuje do w
 public static async Task Run(
     [OrchestrationTrigger] DurableOrchestrationContext context)
 {
-    await context.CallActivityAsync("DoCleanup");
+    await context.CallActivityAsync("DoCleanup", null);
 
     // sleep for one hour between cleanups
     DateTime nextCleanup = context.CurrentUtcDateTime.AddHours(1);
@@ -55,7 +55,7 @@ public static async Task Run(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
+### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -72,15 +72,15 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Różnią się w tym przykładzie i funkcji wyzwalanej przez czasomierz jest oczyszczania razy wyzwalacz w tym miejscu nie są oparte na podstawie harmonogramu. Na przykład harmonogramu wyrażenia CRON, która wykonuje funkcję, co godzinę będzie wykonywać go o 1:00, 2:00, 3:00 itd. oraz potencjalnie może uruchomić nakładania się problemy. W tym przykładzie, jeśli oczyszczanie trwa 30 minut, następnie go zostanie zaplanowana 1:00, 2:30, 4:00 itp. i nie ma możliwości nakładają się na siebie.
+Różnica między tym przykładem a funkcją wyzwalaną czasomierzem oznacza, że czasy wyzwalacza czyszczenia nie są oparte na harmonogramie. Na przykład harmonogram firmy CRONUS, który wykonuje funkcję co godzinę, będzie wykonywał ją na 1:00, 2:00, 3:00 itd. i może być potencjalnie niezależny. Jeśli jednak oczyszczanie trwa 30 minut, zostanie zaplanowane o godzinie 1:00, 2:30, 4:00 itd. i nie ma możliwości nakładania się.
 
-## <a name="exit-from-an-eternal-orchestration"></a>Opuszczenie eternal aranżacji
+## <a name="exit-from-an-eternal-orchestration"></a>Wyjdź z aranżacji Eternal
 
-Jeśli funkcja orkiestratora musi ostatecznie zakończona, a następnie wszystko, czego potrzebujesz, aby zrobić to *nie* wywołania `ContinueAsNew` , a funkcja wyjść.
+Jeśli funkcja programu Orchestrator musi zostać ostatecznie zakończona, wszystko, czego potrzebujesz, *nie* jest wywoływana `ContinueAsNew` i pozwól na zakończenie działania funkcji.
 
-Jeśli funkcja orkiestratora znajduje się w nieskończonej pętli i musi zostać zatrzymana, należy użyć [TerminateAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_) metody, aby ją wyłączyć. Aby uzyskać więcej informacji, zobacz [Zarządzanie wystąpieniami](durable-functions-instance-management.md).
+Jeśli funkcja programu Orchestrator jest w pętli nieskończonej i musi zostać zatrzymana, należy użyć metody [TerminateAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_) , aby ją zatrzymać. Aby uzyskać więcej informacji, zobacz [Zarządzanie wystąpieniami](durable-functions-instance-management.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się, jak zaimplementować orkiestracje pojedyncze](durable-functions-singletons.md)
+> [Dowiedz się, jak zaimplementować pojedyncze aranżacje](durable-functions-singletons.md)

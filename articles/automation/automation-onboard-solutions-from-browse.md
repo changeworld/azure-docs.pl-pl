@@ -9,12 +9,12 @@ ms.date: 04/11/2019
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: cf063311e5559ddf5706df397ce744a726610000
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 5be247e8bb999ee5306d10e67c46c7273953dc71
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667340"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534700"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Włączanie rozwiązań Update Management, Change Tracking i spisu na wielu maszynach wirtualnych
 
@@ -45,7 +45,7 @@ Lista maszyn wirtualnych jest filtrowana w celu wyświetlania tylko maszyn wirtu
 
 ### <a name="resource-group-limit"></a>Ograniczenia dotyczące dołączania
 
-Liczba grup zasobów, których można użyć do dołączenia, jest ograniczona przez [Menedżer zasobów limity wdrożenia](../azure-resource-manager/resource-manager-cross-resource-group-deployment.md). Menedżer zasobów wdrożeń nie należy mylić z wdrożeniami aktualizacji, są ograniczone do 5 grup zasobów na wdrożenie. Aby zapewnić integralność dołączania, 2 z tych grup zasobów są zastrzeżone do konfigurowania obszaru roboczego Log Analytics, konta usługi Automation i powiązanych zasobów. Spowoduje to pozostawienie 3 grup zasobów do wybrania do wdrożenia.
+Liczba grup zasobów, których można użyć do dołączenia, jest ograniczona przez [Menedżer zasobów limity wdrożenia](../azure-resource-manager/resource-manager-cross-resource-group-deployment.md). Menedżer zasobów wdrożeń nie należy mylić z wdrożeniami aktualizacji, są ograniczone do 5 grup zasobów na wdrożenie. Aby zapewnić integralność dołączania, 2 z tych grup zasobów są zastrzeżone do konfigurowania obszaru roboczego Log Analytics, konta usługi Automation i powiązanych zasobów. Spowoduje to pozostawienie 3 grup zasobów do wybrania do wdrożenia. Ten limit dotyczy tylko jednoczesnego dołączania, a nie liczby grup zasobów, które mogą być zarządzane przez rozwiązanie automatyzacji.
 
 Możesz również użyć elementu Runbook do dołączenia, aby uzyskać więcej informacji, zobacz Dołączanie [rozwiązań aktualizacji i śledzenia zmian do Azure Automation](automation-onboard-solutions.md).
 
@@ -133,7 +133,7 @@ Podczas dołączania wielu maszyn mogą istnieć maszyny, które są wyświetlan
 
 **Może** Rozwiązanie nie jest obsługiwane w przypadku wszystkich dystrybucji systemu Linux lub wszystkich wersji Windows.
 
-**Narzędzie** Zapoznaj się z [listą obsługiwanych klientów](automation-update-management.md#clients) rozwiązania.
+**Rozwiązanie:** Zapoznaj się z [listą obsługiwanych klientów](automation-update-management.md#clients) rozwiązania.
 
 ### <a name="classic-vms-cannot-be-enabled"></a>Nie można włączyć klasycznych maszyn wirtualnych
 

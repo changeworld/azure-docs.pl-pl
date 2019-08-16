@@ -8,25 +8,25 @@ ms.topic: include
 ms.date: 02/17/2019
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 69fdc6cf678107ef64ea1fe7b819738fd4a4ff4f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 2514325c93f0f72aa979f871e86e465093479402
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183333"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558856"
 ---
-## <a name="customize-and-extend-the-device-management-actions"></a>Dostosowywanie i rozszerzanie akcje z zakresu zarządzania urządzeniami
+## <a name="customize-and-extend-the-device-management-actions"></a>Dostosowywanie i zwiększanie akcji zarządzania urządzeniami
 
-Rozwiązania IoT można rozwinąć zdefiniowanym zestawem wzorców zarządzania urządzeniami lub włączyć wzorców niestandardowych za pomocą bliźniaczej reprezentacji urządzenia i podstawowych metoda chmury do urządzenia. Inne akcje z zakresu zarządzania urządzeniami przykładami resetowania do ustawień fabrycznych, aktualizacja oprogramowania układowego, aktualizacji oprogramowania, zarządzania energią, Zarządzanie sieciami i łączności i szyfrowania danych.
+Twoje rozwiązania IoT mogą rozszerzać zdefiniowany zestaw wzorców zarządzania urządzeniami lub włączać wzorce niestandardowe przy użyciu sznurka urządzenia i podstawowych metod metody z chmury do urządzenia. Inne przykłady akcji związanych z zarządzaniem urządzeniami obejmują Resetowanie do ustawień fabrycznych, aktualizowanie oprogramowania układowego, aktualizowanie aplikacji, zarządzanie urządzeniami, zarządzanie siecią i łączność oraz szyfrowanie danych.
 
 ## <a name="device-maintenance-windows"></a>Okna obsługi urządzeń
 
-Zwykle możesz skonfigurować urządzenia do wykonywania akcji w czasie, które minimalizuje przestoje i przestoje. Okna obsługi urządzenia są często używane wzorzec do zdefiniowania czasu, gdy urządzenie powinno zaktualizuje konfigurację swojej. Rozwiązania zaplecza umożliwia żądane właściwości bliźniaczej reprezentacji urządzenia zdefiniować i aktywować zasad na urządzeniu, umożliwiająca okna obsługi. Gdy urządzenie otrzyma zasady okna obsługi, służy zgłoszonych właściwości bliźniaka urządzenia zgłoszenia stanu zasad. Aplikacja wewnętrzna następnie można użyć zapytań bliźniaczych reprezentacji urządzeń potwierdzać zgodności urządzenia i każdej zasady.
+Zazwyczaj można skonfigurować urządzenia do wykonywania działań w czasie, które minimalizują przerwy i przestoje. Okna obsługi urządzeń są często używanymi wzorcami do definiowania czasu, w którym urządzenie ma zaktualizować swoją konfigurację. Rozwiązania zaplecza mogą korzystać z odpowiednich właściwości sznurka urządzenia, aby definiować i aktywować zasady na urządzeniu, które umożliwiają przeprowadzenie okna obsługi. Gdy urządzenie otrzyma zasady okna obsługi, może użyć raportowanej właściwości sznurka urządzenia, aby zgłosić stan zasad. Aplikacja zaplecza może następnie użyć zapytań bliźniaczych dla urządzeń, aby zaświadczyć zgodność urządzeń i poszczególnych zasad.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku użyto metody bezpośredniej wyzwolić ponowne uruchomienie komputera zdalnego na urządzeniu. Używane zgłaszanych właściwości do raportowania czasu ostatniego ponownego uruchomienia z urządzenia, a następnie proszeni bliźniaczej reprezentacji urządzenia, aby odnaleźć ostatniego ponownego uruchomienia urządzenia w chmurze.
+W tym samouczku użyto metody bezpośredniej do wyzwolenia zdalnego ponownego uruchomienia na urządzeniu. Zostały użyte zgłoszone właściwości do raportowania czasu ostatniego ponownego uruchomienia z urządzenia i zbadane sznurek urządzenia w celu odnalezienia czasu ostatniego ponownego uruchomienia urządzenia w chmurze.
 
-Aby kontynuować wprowadzenie do usługi IoT Hub i wzorców zarządzania urządzeniami, takich jak zdalne za pośrednictwem aktualizacji oprogramowania układowego air, zobacz [jak zaktualizować oprogramowanie układowe](../articles/iot-hub/tutorial-firmware-update.md)
+Aby nadal zacząć korzystać z wzorców IoT Hub i zarządzania urządzeniami, takimi jak zdalne przez aktualizację oprogramowania układowego, zobacz artykuł [Jak przeprowadzić aktualizację oprogramowania układowego](../articles/iot-hub/tutorial-firmware-update.md).
 
-Aby dowiedzieć się, jak rozszerzyć rozwiązanie i harmonogram metoda wywołuje na wielu urządzeniach IoT, zobacz [harmonogramu i zadań emisji](../articles/iot-hub/iot-hub-node-node-schedule-jobs.md).
+Aby dowiedzieć się, jak rozłożyć rozwiązanie IoT i zaplanować wywołania metod na wielu urządzeniach, zobacz [Planowanie i emitowanie zadań](../articles/iot-hub/iot-hub-node-node-schedule-jobs.md).

@@ -1,5 +1,5 @@
 ---
-title: Logowanie w sieci Web za pomocą OpenID Connect Connect-Azure Active Directory B2C | Microsoft Docs
+title: Logowanie w sieci Web za pomocą OpenID Connect Connect-Azure Active Directory B2C
 description: Twórz aplikacje sieci Web przy użyciu protokołu uwierzytelniania OpenID Connect Connect w Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 08/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 0e60bedcf1324b443d9b9cd34e8dc695fdb0b372
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f6188f5c5bdd256ee84c5e7dc8632e5c067ceca5
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931750"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69541725"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Logowanie w sieci Web za pomocą OpenID Connect Connect in Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ Azure AD B2C rozszerza standardowy protokół połączenia OpenID Connect, aby w
 
 Gdy aplikacja sieci Web wymaga uwierzytelnienia użytkownika i uruchomienia przepływu użytkownika, może kierować użytkownika do `/authorize` punktu końcowego. Użytkownik wykonuje akcję w zależności od przepływu użytkownika.
 
-W tym żądaniu klient wskazuje uprawnienia wymagane do uzyskania od użytkownika w `scope` parametrze i przepływ użytkownika do uruchomienia `p` w parametrze. Trzy przykłady są podane w poniższych sekcjach (z podziałami wierszy na potrzeby czytelności), z których każdy korzysta z innego przepływu użytkownika. Aby poznać sposób działania poszczególnych żądań, spróbuj wkleić żądanie do przeglądarki i uruchomić ją. Możesz zamienić `fabrikamb2c` na nazwę dzierżawy, jeśli istnieje, i utworzyć przepływ użytkownika. Należy również zamienić `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6`. Zastąp ten identyfikator klienta IDENTYFIKATORem aplikacji utworzonej przez Ciebie rejestracji aplikacji. Należy również zmienić nazwę `b2c_1_sign_in` zasad na nazwę zasady, która znajduje się w dzierżawie. 
+W tym żądaniu klient wskazuje uprawnienia wymagane do uzyskania od użytkownika w `scope` parametrze i przepływ użytkownika do uruchomienia `p` w parametrze. Trzy przykłady są podane w poniższych sekcjach (z podziałami wierszy na potrzeby czytelności), z których każdy korzysta z innego przepływu użytkownika. Aby poznać sposób działania poszczególnych żądań, spróbuj wkleić żądanie do przeglądarki i uruchomić ją. Możesz zamienić `fabrikamb2c` na nazwę dzierżawy, jeśli istnieje, i utworzyć przepływ użytkownika. Należy również zamienić `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6`. Zastąp ten identyfikator klienta IDENTYFIKATORem aplikacji utworzonej przez Ciebie rejestracji aplikacji. Należy również zmienić nazwę `b2c_1_sign_in` zasad na nazwę zasady, która znajduje się w dzierżawie.
 
 #### <a name="use-a-sign-in-user-flow"></a>Korzystanie z przepływu użytkownika logowania
 ```
@@ -121,7 +121,7 @@ error=access_denied
 
 ## <a name="validate-the-id-token"></a>Weryfikowanie tokenu identyfikatora
 
-Tylko otrzymanie tokenu identyfikatora jest za mało do uwierzytelnienia użytkownika. Sprawdź poprawność podpisu tokenu identyfikatora i sprawdź oświadczenia w tokenie zgodnie z wymaganiami aplikacji. Azure AD B2C używa [tokenów sieci Web JSON (JWTs)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) i kryptografii klucza publicznego do podpisywania tokenów i sprawdzania, czy są one prawidłowe. Istnieje wiele bibliotek typu "open source", które są dostępne do sprawdzania poprawności JWTs, w zależności od języka preferencji. Zalecamy Eksplorowanie tych opcji zamiast implementowania własnej logiki walidacji. 
+Tylko otrzymanie tokenu identyfikatora jest za mało do uwierzytelnienia użytkownika. Sprawdź poprawność podpisu tokenu identyfikatora i sprawdź oświadczenia w tokenie zgodnie z wymaganiami aplikacji. Azure AD B2C używa [tokenów sieci Web JSON (JWTs)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) i kryptografii klucza publicznego do podpisywania tokenów i sprawdzania, czy są one prawidłowe. Istnieje wiele bibliotek typu "open source", które są dostępne do sprawdzania poprawności JWTs, w zależności od języka preferencji. Zalecamy Eksplorowanie tych opcji zamiast implementowania własnej logiki walidacji.
 
 Azure AD B2C ma punkt końcowy metadanych połączenia OpenID Connect, który umożliwia aplikacji pobieranie informacji o Azure AD B2C w czasie wykonywania. Te informacje obejmują punkty końcowe, zawartość tokenu i klucze podpisywania tokenu. Istnieje dokument metadanych JSON dla każdego przepływu użytkowników w dzierżawie usługi B2C. Na przykład dokument metadanych dla `b2c_1_sign_in` przepływu użytkownika w programie `fabrikamb2c.onmicrosoft.com` znajduje się w lokalizacji:
 
@@ -155,7 +155,7 @@ Po sprawdzeniu poprawności tokenu identyfikatora można rozpocząć sesję z u�
 
 Jeśli potrzebujesz aplikacji sieci Web tylko do uruchamiania przepływów użytkowników, możesz pominąć kilka następnych sekcji. Te sekcje mają zastosowanie tylko do aplikacji sieci Web, które muszą wykonać uwierzytelnione wywołania do internetowego interfejsu API, a także są chronione przez Azure AD B2C.
 
-Możesz zrealizować pobrany kod autoryzacji (za pomocą `response_type=code+id_token`) dla tokenu do żądanego zasobu, `POST` wysyłając żądanie do `/token` punktu końcowego. W Azure AD B2C można zażądać [tokenów dostępu dla innych interfejsów API](active-directory-b2c-access-tokens.md#request-a-token) , jak zwykle, określając ich zakresy w żądaniu.
+Możesz zrealizować pobrany kod autoryzacji (za pomocą `response_type=code+id_token`) dla tokenu do żądanego zasobu, `POST` wysyłając żądanie do `/token` punktu końcowego. W Azure AD B2C można [żądać tokenów dostępu dla innych interfejsów API](active-directory-b2c-access-tokens.md#request-a-token) w zwykły sposób, określając ich zakresy w żądaniu.
 
 Możesz również zażądać tokenu dostępu dla własnego internetowego interfejsu API zaplecza w ramach Konwencji przy użyciu identyfikatora klienta aplikacji jako żądanego zakresu (co spowoduje użycie tokenu dostępu z IDENTYFIKATORem klienta jako "odbiorcy"):
 
@@ -283,18 +283,24 @@ Odpowiedzi na błędy wyglądają następująco:
 
 Jeśli chcesz podpisać użytkownika poza aplikacją, nie wystarczy wyczyścić plików cookie aplikacji lub zakończyć sesję z użytkownikiem. Przekieruj użytkownika do Azure AD B2C, aby się wylogować. W przeciwnym razie użytkownik może być w stanie ponownie uwierzytelnić się w aplikacji bez konieczności ponownego wprowadzania poświadczeń.
 
-Można po prostu przekierować użytkownika do `end_session` punktu końcowego, który jest wymieniony w dokumencie OpenID Connect Connect Metadata opisanego wcześniej:
+Aby wylogować użytkownika, Przekieruj użytkownika do `end_session` punktu końcowego, który jest wymieniony w dokumencie OpenID Connect Connect Metadata opisanego wcześniej:
 
 ```
-GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/logout?
-p=b2c_1_sign_in
-&post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
+GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
 ```
 
 | Parametr | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| p | Tak | Przepływ użytkownika, którego chcesz użyć do podpisania użytkownika z poziomu aplikacji. |
+| dzierżaw | Tak | Nazwa dzierżawy Azure AD B2C |
+| zasad | Tak | Przepływ użytkownika, którego chcesz użyć do podpisania użytkownika z poziomu aplikacji. |
+| id_token_hint| Nie | Wcześniej wystawiony token ID do przekazania do punktu końcowego wylogowania jako wskazówkę dotyczącą bieżącej uwierzytelnionej sesji użytkownika końcowego z klientem. |
 | post_logout_redirect_uri | Nie | Adres URL, do którego użytkownik powinien zostać przekierowany po pomyślnym wylogowaniu. Jeśli ta wartość nie jest uwzględniona, Azure AD B2C pokazuje, że użytkownik jest komunikatem ogólnym. |
+| state | Nie | `state` Jeśli parametr zostanie uwzględniony w żądaniu, ta sama wartość powinna pojawić się w odpowiedzi. Aplikacja powinna sprawdzić, czy `state` wartości w żądaniu i odpowiedzi są identyczne. |
 
-Kierowanie użytkownika do `end_session` punktu końcowego czyści część stanu logowania jednokrotnego użytkownika przy użyciu Azure AD B2C, ale nie podpisuje użytkownika poza sesją dostawcy tożsamości (Social Identity Provider). Jeśli użytkownik wybierze ten sam dostawcy tożsamości podczas kolejnego logowania, zostanie ponownie uwierzytelniony, bez wprowadzania poświadczeń. Jeśli użytkownik chce wylogować się z aplikacji, nie musi to oznaczać, że chce się wylogować z konta w serwisie Facebook. Jeśli jednak są używane konta lokalne, sesja użytkownika zostanie zakończona prawidłowo.
+### <a name="require-id-token-hint-in-logout-request"></a>Wymagaj wskazówki tokenu identyfikatora w żądaniu wylogowania
 
+Po wylogowaniu użytkownik zostanie przekierowany na identyfikator URI określony w `post_logout_redirect_uri` parametrze, bez względu na adresy URL odpowiedzi określone dla aplikacji. Jeśli jednak zostanie przekierowany `id_token_hint` prawidłowy, Azure AD B2C sprawdza, czy `post_logout_redirect_uri` wartość jest zgodna z skonfigurowanymi identyfikatorami URI przekierowania dla aplikacji przed przekazaniem. Jeśli nie skonfigurowano zgodnego adresu URL odpowiedzi dla aplikacji, zostanie wyświetlony komunikat o błędzie i użytkownik nie zostanie przekierowany.
+
+### <a name="external-identity-provider-session"></a>Sesja zewnętrznego dostawcy tożsamości
+
+Kierowanie użytkownika do `end_session` punktu końcowego czyści część stanu logowania jednokrotnego użytkownika przy użyciu Azure AD B2C, ale nie podpisuje użytkownika poza sesją dostawcy tożsamości (Social Identity Provider). Jeśli użytkownik wybierze ten sam dostawcy tożsamości podczas kolejnego logowania, zostanie ponownie uwierzytelniony bez wprowadzania poświadczeń. Jeśli użytkownik chce wylogować się z aplikacji, nie musi to oznaczać, że chce się wylogować z konta w serwisie Facebook. Jeśli jednak są używane konta lokalne, sesja użytkownika zostanie zakończona prawidłowo.

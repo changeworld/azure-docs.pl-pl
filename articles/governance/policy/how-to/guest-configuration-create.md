@@ -7,16 +7,18 @@ ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 7dd053e3a9824ac0817db528b8b053666e1ded04
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 131d6865c47a32bbefbfbd397a5f0f88dedc9c35
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881813"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543515"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Jak utworzyć zasady konfiguracji gościa
 
 Konfiguracja gościa używa modułu zasobów [Konfiguracja żądanego stanu](/powershell/dsc) (DSC) do tworzenia konfiguracji inspekcji maszyn wirtualnych platformy Azure. Konfiguracja DSC definiuje warunek, w którym maszyna wirtualna powinna znajdować się w programie. Jeśli Ocena konfiguracji nie powiedzie się, zostanie wyzwolone **Inspekcja** efektu zasad, a maszyna wirtualna zostanie uznana za niezgodną.
+
+[Azure Policy konfiguracja gościa](/azure/governance/policy/concepts/guest-configuration) może być używana tylko do inspekcji ustawień wewnątrz maszyn wirtualnych. Korygowanie ustawień wewnątrz maszyn wirtualnych nie jest jeszcze dostępne.
 
 Wykonaj poniższe czynności, aby utworzyć własną konfigurację służącą do sprawdzania poprawności stanu maszyny wirtualnej platformy Azure.
 

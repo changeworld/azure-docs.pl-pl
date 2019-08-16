@@ -1,25 +1,28 @@
 ---
+title: Uwagi prawne
+author: SyntaxC4
+ms.author: cfowler
 ms.service: azure
 ms.topic: conceptual
 ms.date: 03/08/2019
-ms.openlocfilehash: 2b1fc99fe179187c6431d9a999628db76885e553
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 14f78c9c7e5f43fb28557933b9a89cfb5c2cb5db
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60884278"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543885"
 ---
 # <a name="legal-notices"></a>Uwagi prawne
 
-Firma Microsoft i Wszyscy współautorzy udzielają Ci licencji na dokumentację firmy Microsoft i innej zawartości w tym repozytorium, w obszarze [Creative Commons: uznanie autorstwa 4.0 International Public License](https://creativecommons.org/licenses/by/4.0/legalcode)i udzielają Ci licencji na wszelki kod w repozytorium w obszarze [licencją MIT](https://opensource.org/licenses/MIT).
+Firma Microsoft i wszyscy Współautorzy udzielają użytkownikowi licencji na dostęp do dokumentacji firmy Microsoft i innej zawartości w ramach tego repozytorium w ramach [międzynarodowej licencji publicznej commons attribution 4,0](https://creativecommons.org/licenses/by/4.0/legalcode). [Licencja mit](https://opensource.org/licenses/MIT).
 
-Microsoft, Windows, Microsoft Azure i/lub innych produktów i usług, do którego odwołuje się z dokumentacją, może być znakami towarowymi lub zastrzeżonymi znakami towarowymi firmy Microsoft w Stanach Zjednoczonych i/lub innych krajach.
-Licencje dla tego projektu nie powodują udzielenia praw do korzystania z nazwy, logo ani znaków towarowych wszelkie firmy Microsoft.
-Wytyczne ogólne znaków towarowych firmy Microsoft znajduje się w temacie [ https://go.microsoft.com/fwlink/?LinkID=254653 ](https://go.microsoft.com/fwlink/?LinkID=254653).
+Microsoft, Windows, Microsoft Azure i/lub inne produkty i usługi firmy Microsoft, do których odwołuje się dokumentacja, mogą być znakami towarowymi lub zarejestrowanymi znakami towarowymi firmy Microsoft w Stany Zjednoczone i/lub innych krajach.
+Licencje dla tego projektu nie przyznają użytkownikowi praw do używania żadnych nazw, logo ani znaków towarowych firmy Microsoft.
+Ogólne wytyczne dotyczące znaków towarowych firmy Microsoft można [https://go.microsoft.com/fwlink/?LinkID=254653](https://go.microsoft.com/fwlink/?LinkID=254653)znaleźć pod adresem.
 
-Informacje o ochronie prywatności znajduje się w temacie [https://privacy.microsoft.com/en-us/](https://privacy.microsoft.com/en-us/)
+Informacje o ochronie prywatności można znaleźć pod adresem[https://privacy.microsoft.com/en-us/](https://privacy.microsoft.com/en-us/)
 
-Firma Microsoft i wszelkie sobie współautorzy wszystkie pozostałe prawa, w ramach odpowiednich praw autorskich, patentów lub znaków towarowych, przez domniemanie, estoppelu lub w inny sposób.
+Firma Microsoft i wszyscy Współautorzy zarezerwują wszystkie pozostałe prawa, niezależnie od tego, czy mają prawo do praw autorskich, patentów lub znaków towarowych.
 
-Gopher z rzeczywistym użyciem został zaprojektowany przez [francuski Renee](https://reneefrench.blogspot.com/).
-Projekt jest licencjonowane w ramach [licencji Creative Commons 3.0 przypisań](https://creativecommons.org/licenses/by/3.0/us/).
+Język gopher został zaprojektowany przez [Renee w języku francuskim](https://reneefrench.blogspot.com/).
+Projekt jest licencjonowany na podstawie [licencji Creative commons attribution 3,0](https://creativecommons.org/licenses/by/3.0/us/).

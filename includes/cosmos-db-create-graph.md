@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: a24159a482c55496bb1e6031be951196258a6796
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 837231ca07abcfdbd6ce932bb24bd890d91506a8
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565464"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69541521"
 ---
 Teraz możesz użyć narzędzia Eksplorator danych w witrynie Azure Portal, aby utworzyć bazę danych grafów. 
 
-1. Kliknij pozycję **Eksplorator danych** > **Nowy graf**.
+1. Wybierz pozycję **Eksplorator danych** > **Nowy Graf**.
 
     Obszar **Dodaj graf** jest wyświetlany po prawej stronie i konieczne może być przewinięcie w prawo w celu wyświetlenia go.
 
@@ -32,4 +32,4 @@ Teraz możesz użyć narzędzia Eksplorator danych w witrynie Azure Portal, aby 
     Identyfikator grafu|sample-graph|Wprowadź *sample-graph* jako nazwę nowej kolekcji. W przypadku nazw grafów obowiązują takie same wymagania dotyczące znaków jak dla identyfikatorów baz danych.
     Klucz partycji| /pk |Wszystkie konta Cosmos DB muszą mieć klucz partycji w poziomie. Dowiedz się, jak wybrać odpowiedni klucz partycji w [artykule Partycjonowanie danych grafu](https://docs.microsoft.com/azure/cosmos-db/graph-partitioning).
 
-3. Po wypełnieniu formularza kliknij przycisk **OK**.
+3. Po wypełnieniu formularza wybierz **przycisk OK**.

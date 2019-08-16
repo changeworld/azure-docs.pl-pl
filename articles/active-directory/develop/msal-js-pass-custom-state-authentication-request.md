@@ -1,9 +1,9 @@
 ---
-title: Przekazywanie stanów niestandardowych w żądaniach uwierzytelniania (Biblioteka Microsoft Authentication Library dla języka JavaScript) | Azure
-description: Dowiedz się, jak przekazać żądanie uwierzytelnienia za pomocą Biblioteka Microsoft Authentication Library dla języka JavaScript (MSAL.js) wartość parametru stanów niestandardowych.
+title: Przekaż stan niestandardowy w żądaniach uwierzytelniania (Biblioteka uwierzytelniania firmy Microsoft dla języka JavaScript) | Azure
+description: Dowiedz się, jak przekazać niestandardową wartość parametru stanu w żądaniu uwierzytelniania przy użyciu biblioteki uwierzytelniania firmy Microsoft dla języka JavaScript (MSAL. js).
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,21 +13,21 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/29/2019
-ms.author: nacanuma
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f29d84838ddb11ac359d7a04dbce8e39dd05ac01
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d2ae12624b3d897f05437f7795d1a1eee32ca37a
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66420501"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532745"
 ---
-# <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>Przekazywanie stanów niestandardowych w żądaniach uwierzytelniania przy użyciu MSAL.js
-*Stanu* parametru, zgodnie z definicją protokołu OAuth 2.0 jest dołączana do żądań uwierzytelnienia i jest także zwracany w odpowiedzi tokenu, aby zapobiec atakom fałszowanie żądań między witrynami. Domyślnie biblioteka Microsoft Authentication Library dla języka JavaScript (MSAL.js) przekazuje losowo generowany unikatowy *stanu* wartość parametru w żądaniach uwierzytelniania.
+# <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>Przekazywanie stanu niestandardowego w żądaniach uwierzytelniania przy użyciu MSAL. js
+Parametr *State* , zdefiniowany przez OAuth 2,0, jest uwzględniony w żądaniu uwierzytelniania i jest również zwracany w odpowiedzi tokenu, aby zapobiec atakom na fałszerstwo żądań między lokacjami. Domyślnie Biblioteka uwierzytelniania firmy Microsoft dla języka JavaScript (MSAL. js) przekazuje losowo wygenerowane unikatowe wartości parametru *stanu* w żądaniach uwierzytelniania.
 
-Parametr state można również kodowania informacji stanu aplikacji przed przekierowania. Można przekazać stanu użytkownika w aplikacji, takich jak strony lub widok, w jakim były, jako dane wejściowe dla tego parametru. Biblioteka MSAL.js umożliwia przekazywanie Twojego stanów niestandardowych jako parametr stanu w `Request` obiektu:
+Parametru stanu można także użyć do kodowania informacji o stanie aplikacji przed przekierowaniem. Można przekazać stan użytkownika w aplikacji, na przykład stronę lub widok, jako dane wejściowe tego parametru. Biblioteka MSAL. js umożliwia przekazanie stanu niestandardowego jako parametru stanu w `Request` obiekcie:
 
 ```javascript
 // Request type
@@ -57,7 +57,7 @@ let loginRequest = {
 myMSALObj.loginPopup(loginRequest);
 ```
 
-Przekazana stanu jest dołączany do Unikatowy identyfikator GUID, ustaw przez MSAL.js podczas wysyłania żądania. Gdy zostanie zwrócona odpowiedź, MSAL.js wyszukuje zgodny stan, a następnie zwraca niestandardowe przekazywane w stanie `Response` obiektu jako `accountState`.
+Przesłany stan jest dołączany do unikatowego identyfikatora GUID ustawionego przez MSAL. js podczas wysyłania żądania. Po zwróceniu odpowiedzi MSAL. js sprawdza zgodność stanu, a następnie zwraca niestandardową przekazaną `Response` w obiekcie jako. `accountState`
 
 ```javascript
 export type AuthResponse = {
@@ -73,4 +73,4 @@ export type AuthResponse = {
 };
 ```
 
-Aby dowiedzieć się więcej, przeczytaj temat [Kompilowanie aplikacji jednostronicowej (SPA)](scenario-spa-overview.md) przy użyciu MSAL.js.
+Aby dowiedzieć się więcej, Przeczytaj o [kompilowaniu aplikacji jednostronicowej (Spa)](scenario-spa-overview.md) przy użyciu MSAL. js.

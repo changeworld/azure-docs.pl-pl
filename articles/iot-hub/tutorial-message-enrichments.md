@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 2c115bf0ad21e905e998692fbbc175f5aa52b86d
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 77d900844705bb86ce4bcfeda31d6ee765cb8d45
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014247"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535006"
 ---
 # <a name="tutorial-using-azure-iot-hub-message-enrichments-preview"></a>Samouczek: Korzystanie z wzbogacania komunikatów IoT Hub platformy Azure (wersja zapoznawcza)
 
@@ -69,7 +69,7 @@ Jeśli jeszcze tego nie zrobiono, Otwórz [okno Cloud Shell dla bash.](https://s
 
 Poniżej przedstawiono zasoby utworzone przez skrypt. **Ulepszony** oznacza, że zasób jest przeznaczony dla komunikatów z wzbogacaniem. **Oryginalna** oznacza, że zasób jest przeznaczony dla komunikatów, które nie są wzbogacane.
 
-| Name (Nazwa) | Value |
+| Name | Value |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | nazwa kontenera | Oryginał  |
@@ -84,7 +84,7 @@ Poniżej przedstawiono zasoby utworzone przez skrypt. **Ulepszony** oznacza, że
 
 ```azurecli-interactive
 # This command retrieves the subscription id of the current Azure account.
-# This field is used when setting up the routing rules.
+# This field is used when setting up the routing queries.
 subscriptionID=$(az account show --query id -o tsv)
 
 # Concatenate this number onto the resources that have to be globally unique.
@@ -250,7 +250,7 @@ W tym momencie wszystkie zasoby są skonfigurowane i skonfigurowano Routing. Kon
 
 2. Dodaj te wartości do listy dla punktu końcowego ContosoStorageEndpointEnriched.
 
-   | Name (Nazwa) | Value | Punkt końcowy (lista rozwijana) |
+   | Name | Value | Punkt końcowy (lista rozwijana) |
    | ---- | ----- | -------------------------|
    | myIotHub | $iothubname | AzureStorageContainers > ContosoStorageEndpointEnriched |
    | DeviceLocation | $twin. Tags. Location | AzureStorageContainers > ContosoStorageEndpointEnriched |
@@ -269,7 +269,7 @@ W tym momencie wszystkie zasoby są skonfigurowane i skonfigurowano Routing. Kon
 
 ## <a name="send-messages-to-the-iot-hub"></a>Wysyłanie komunikatów do IoT Hub
 
-Teraz, gdy w punkcie końcowym są skonfigurowane wzbogacania komunikatów, uruchom aplikację symulowanego urządzenia, aby wysyłać komunikaty do IoT Hub. Centrum zostało skonfigurowane przy użyciu reguł, które spełniają następujące warunki:
+Teraz, gdy w punkcie końcowym są skonfigurowane wzbogacania komunikatów, uruchom aplikację symulowanego urządzenia, aby wysyłać komunikaty do IoT Hub. Koncentrator został skonfigurowany z użyciem ustawień, które spełniają następujące kwestie:
 
 * Komunikaty kierowane do punktu końcowego magazynu ContosoStorageEndpointOriginal nie zostaną wzbogacone i będą przechowywane w kontenerze `original`magazynu.
 

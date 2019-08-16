@@ -1,6 +1,6 @@
 ---
-title: Skonfiguruj poświadczenia wdrożenia — usłudze Azure App Service | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać poświadczenia wdrożenia usługi Azure App Service.
+title: Konfigurowanie poświadczeń wdrożenia — Azure App Service | Microsoft Docs
+description: Dowiedz się, jak używać poświadczeń wdrażania Azure App Service.
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -10,68 +10,81 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 03/10/2019
+ms.date: 08/14/2019
 ms.author: cephalin
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 65e5d6bacc67c64fa21268a853dc9c9d9b447da7
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 52bbc907d91dd4bf9066daf14d0d5de1b759b92f
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617183"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558574"
 ---
-# <a name="configure-deployment-credentials-for-azure-app-service"></a>Skonfiguruj poświadczenia wdrożenia dla usługi Azure App Service
-[Usługa Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) obsługuje dwa typy poświadczeń dla [lokalne wdrożenie narzędzia Git](deploy-local-git.md) i [wdrożenia protokołu FTP/S](deploy-ftp.md). Te poświadczenia nie są takie same, jak poświadczeń usługi Azure Active Directory.
+# <a name="configure-deployment-credentials-for-azure-app-service"></a>Skonfiguruj poświadczenia wdrażania dla Azure App Service
+[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) obsługuje dwa typy poświadczeń dla [lokalnego wdrożenia git](deploy-local-git.md) i [wdrożenia FTP/S](deploy-ftp.md). Te poświadczenia nie są takie same, jak poświadczenia subskrypcji platformy Azure.
 
-* **Poświadczenia na poziomie użytkownika**: jeden zestaw poświadczeń dla całego konta platformy Azure. Może służyć do wdrożenia usługi App Service dla każdej aplikacji, w przypadku subskrypcji, z uprawnień dostępu do konta platformy Azure. Jest domyślny zestaw, który jest udostępniane w portalu graficznego interfejsu użytkownika (takie jak **Przegląd** i **właściwości** aplikacji [strony zasobu](../azure-resource-manager/manage-resources-portal.md#manage-resources)). Po użytkownik uzyska dostęp do aplikacji za pomocą kontroli dostępu opartej na rolach (RBAC) lub uprawnienia coadmin, użytkownik ten może korzystać własnych poświadczeń na poziomie użytkownika, dopóki nie został odwołany dostęp. Nie udostępniaj tych poświadczeń z innymi użytkownikami platformy Azure.
+* **Poświadczenia na poziomie użytkownika**: jeden zestaw poświadczeń dla całego konta platformy Azure. Można go użyć do wdrożenia programu w celu App Service dla każdej aplikacji w dowolnej subskrypcji, do której konto platformy Azure ma uprawnienia dostępu. Jest to domyślny zestaw, który znajduje się w graficznym interfejsie użytkownika portalu (na przykład **Omówienie** i **Właściwości** [strony zasobu](../azure-resource-manager/manage-resources-portal.md#manage-resources)aplikacji). Gdy użytkownik uzyskuje dostęp do aplikacji za pośrednictwem Access Control opartej na rolach (RBAC) lub współadministratora, może użyć własnych poświadczeń na poziomie użytkownika do momentu odwołania dostępu. Nie udostępniaj tych poświadczeń innym użytkownikom platformy Azure.
 
-* **Poświadczenia na poziomie aplikacji**: jeden zestaw poświadczeń dla każdej aplikacji. Może służyć do wdrożenia tej aplikacji tylko. Poświadczenia dla każdej aplikacji są generowane automatycznie podczas tworzenia aplikacji. Nie można skonfigurować ręcznie ale można je zresetować w dowolnym czasie. Użytkownikom można udzielić dostępu do poświadczeń na poziomie aplikacji za pośrednictwem (RBAC), ten użytkownik musi być współautorem lub nowszej na aplikację. Czytelnicy nie są dozwolone do publikowania i nie może uzyskiwać dostęp do tych poświadczeń.
+* **Poświadczenia na poziomie aplikacji**: jeden zestaw poświadczeń dla każdej aplikacji. Można go użyć do wdrożenia tylko w tej aplikacji. Poświadczenia dla każdej aplikacji są generowane automatycznie podczas tworzenia aplikacji. Nie można ich skonfigurować ręcznie, ale można je zresetować w dowolnym momencie. Aby użytkownik mógł uzyskać dostęp do poświadczeń na poziomie aplikacji za pośrednictwem (RBAC), użytkownik musi mieć uprawnienia współautora lub wyższy w aplikacji. Czytelnicy nie mogą publikować i nie mogą uzyskać dostępu do tych poświadczeń.
 
-## <a name="userscope"></a>Wartości i zresetować poświadczenia na poziomie użytkownika
+## <a name="userscope"></a>Konfigurowanie poświadczeń na poziomie użytkownika
 
-Poświadczenia na poziomie użytkownika można skonfigurować w dowolnej aplikacji [strony zasobu](../azure-resource-manager/manage-resources-portal.md#manage-resources). Niezależnie od tego w aplikacji, które można skonfigurować te poświadczenia, ma to zastosowanie do wszystkich aplikacji, a także dla wszystkich subskrypcji na Twoim koncie platformy Azure. 
+Poświadczenia na poziomie użytkownika można skonfigurować na [stronie zasobów](../azure-resource-manager/manage-resources-portal.md#manage-resources)dowolnej aplikacji. Niezależnie od tego, która aplikacja zostanie skonfigurowana, ma zastosowanie do wszystkich aplikacji i wszystkich subskrypcji na koncie platformy Azure. 
 
-Aby skonfigurować swoje poświadczenia na poziomie użytkownika:
+### <a name="in-the-cloud-shell"></a>W Cloud Shell
 
-1. W [witryny Azure portal](https://portal.azure.com), w menu po lewej stronie kliknij **App Services** >  **&lt;any_app >**  > **wdrożenia Centrum** > **poświadczenia wdrożenia**.
+Aby skonfigurować użytkownika wdrożenia w [Cloud Shell](https://shell.azure.com), uruchom polecenie [AZ webapp Deployment User Set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) . Zastąp \<> nazwy \<użytkownika i hasła > nazwą użytkownika i hasłom wdrożenia. 
 
-    W portalu musi mieć co najmniej jedną aplikację, zanim dostęp do strony poświadczeń wdrożenia. Jednak w przypadku [wiersza polecenia platformy Azure](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set), można skonfigurować poświadczeń na poziomie użytkownika bez istniejącej aplikacji.
+- Nazwa użytkownika musi być unikatowa w ramach platformy Azure, a w przypadku lokalnych powiadomień wypychanych Git nie może zawierać symbolu "@". 
+- Hasło musi składać się z co najmniej ośmiu znaków, a dwa z następujących trzech elementów: litery, cyfry i symbole. 
 
-2. Kliknij przycisk **poświadczenia użytkownika**, skonfiguruj nazwę użytkownika i hasło, a następnie kliknij przycisk **poświadczenia zapisu**.
+```azurecli-interactive
+az webapp deployment user set --user-name <username> --password <password>
+```
 
-    ![](./media/app-service-deployment-credentials/deployment_credentials_configure.png)
+Dane wyjściowe JSON przedstawiają hasło jako `null`. Jeśli wystąpił błąd `'Conflict'. Details: 409`, zmień nazwę użytkownika. Jeśli wystąpił błąd `'Bad Request'. Details: 400`, użyj silniejszego hasła. 
 
-Po ustawieniu poświadczenia wdrożenia można znaleźć *Git* nazwa użytkownika wdrożenia w swojej aplikacji **Przegląd**,
+### <a name="in-the-portal"></a>W portalu
+
+W Azure Portal należy mieć co najmniej jedną aplikację, aby można było uzyskać dostęp do strony poświadczeń wdrożenia. Aby skonfigurować poświadczenia na poziomie użytkownika:
+
+1. W [Azure Portal](https://portal.azure.com)z menu po lewej stronie wybierz pozycję **App Services** >  **\<any_app >**  > **pulpit nawigacyjny** **FTP** > **centrum** > wdrażania.
+
+    ![](./media/app-service-deployment-credentials/access-no-git.png)
+
+    Lub, jeśli wdrożenie usługi git zostało już skonfigurowane, wybierz pozycję **App Services** >  **&lt;any_app >**  > do programu**Deployment Center** > **FTP/poświadczenia**.
+
+    ![](./media/app-service-deployment-credentials/access-with-git.png)
+
+2. Wybierz pozycję **poświadczenia użytkownika**, skonfiguruj nazwę użytkownika i hasło, a następnie wybierz pozycję **Zapisz poświadczenia**.
+
+Po ustawieniu poświadczeń wdrożenia można znaleźć nazwę użytkownika wdrożenia *narzędzia Git* na stronie **Przegląd** aplikacji,
 
 ![](./media/app-service-deployment-credentials/deployment_credentials_overview.png)
 
-i *FTP* nazwa użytkownika wdrożenia w swojej aplikacji **właściwości**.
-
-![](./media/app-service-deployment-credentials/deployment_credentials_properties.png)
+Jeśli skonfigurowano wdrożenie usługi git, na stronie zostanie wyświetlona **Nazwa użytkownika narzędzia Git/Deployment**; w przeciwnym razie **Nazwa użytkownika FTP/Deployment**.
 
 > [!NOTE]
-> Azure nie są wyświetlane hasło do wdrażania na poziomie użytkownika. Jeśli zapomnisz hasło, wykonując kroki opisane w tej sekcji można zresetować swoje poświadczenia.
+> Na platformie Azure nie jest wyświetlane hasło do wdrożenia na poziomie użytkownika. Jeśli zapomnisz hasła, możesz zresetować poświadczenia, wykonując kroki opisane w tej sekcji.
 >
->  
+> 
 
-## <a name="use-user-level-credentials-with-ftpftps"></a>Poświadczenia na poziomie użytkownika za pomocą protokołu FTP/FTPS
+## <a name="use-user-level-credentials-with-ftpftps"></a>Korzystanie z poświadczeń na poziomie użytkownika przy użyciu protokołu FTP/FTPS
 
-Uwierzytelnianie FTP/FTPS punkt końcowy przy użyciu requirers poświadczenia na poziomie użytkownika o nazwę użytkownika w następującym formacie: `<app-name>\<user-name>`
+Uwierzytelnianie do punktu końcowego FTP/FTPS przy użyciu poświadczeń na poziomie użytkownika nazwa użytkownika w następującym formacie:`<app-name>\<user-name>`
 
-Ponieważ poświadczenia na poziomie użytkownika są połączone z kontem użytkownika i określonego zasobu, nazwa użytkownika musi być w następującym formacie, aby skierować działania logowania do endpoint odpowiedniej aplikacji.
+Ponieważ poświadczenia na poziomie użytkownika są połączone z użytkownikiem, a nie konkretnym zasobem, nazwa użytkownika musi być w tym formacie, aby skierować akcję logowania do właściwego punktu końcowego aplikacji.
 
-## <a name="appscope"></a>Pobierz i zresetować poświadczenia na poziomie aplikacji
-Aby uzyskać poświadczeń na poziomie aplikacji:
+## <a name="appscope"></a>Pobieranie i resetowanie poświadczeń na poziomie aplikacji
+Aby uzyskać poświadczenia na poziomie aplikacji:
 
-1. W [witryny Azure portal](https://portal.azure.com), w menu po lewej stronie kliknij **App Services** >  **&lt;any_app >**  > **wdrożenia Centrum** > **poświadczenia wdrożenia**.
+1. W [Azure Portal](https://portal.azure.com)z menu po lewej stronie wybierz pozycję **App Services** >  **&lt;any_app >**  > **Deployment Center** > **FTP/Credentials**.
 
-2. Kliknij przycisk **poświadczenia aplikacji**i kliknij przycisk **kopiowania** link, aby skopiować nazwy użytkownika i hasła.
+2. Wybierz pozycję **poświadczenia aplikacji**, a następnie wybierz link **Kopiuj** , aby skopiować nazwę użytkownika lub hasło.
 
-    ![](./media/app-service-deployment-credentials/deployment_credentials_app_level.png)
-
-Aby przywrócić poświadczenia poziomie aplikacji, kliknij przycisk **zresetować poświadczenia** w tym samym oknie dialogowym.
+Aby zresetować poświadczenia na poziomie aplikacji, wybierz pozycję **Zresetuj poświadczenia** w tym samym oknie dialogowym.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak te poświadczenia służą do wdrażania aplikacji na podstawie [lokalnego narzędzia Git](deploy-local-git.md) lub za pomocą [protokołu FTP/S](deploy-ftp.md).
+Dowiedz się, jak używać tych poświadczeń do wdrażania aplikacji z [lokalnego systemu Git](deploy-local-git.md) lub przy użyciu [protokołu FTP/S](deploy-ftp.md).

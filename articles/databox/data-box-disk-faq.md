@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 05/23/2019
+ms.date: 08/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 69068304a6bc72f503ed85edf05229f10e4a8bc0
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 1361224fb59a32ca227c5ea1e6cc92a4b0fdff6e
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236349"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69541817"
 ---
-# <a name="what-is-azure-data-box-disk"></a>Co to jest usługa Azure Data Box Disk?
+# <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: Często zadawane pytania
 
 Rozwiązanie w chmurze Microsoft Azure Data Box Disk umożliwia wysyłanie terabajtów danych na platformę Azure w szybki, niedrogi i niezawodny sposób. Często zadawane pytania zawierają pytania, które mogą się pojawić podczas korzystania z usługi Data Box Disk w witrynie Azure Portal, oraz odpowiedzi na te pytania. 
 
@@ -23,7 +23,7 @@ Pytania i odpowiedzi są podzielone na następujące kategorie:
 
 - Informacje o usłudze
 - Konfigurowanie i łączenie 
-- Śledzenie stanu
+- Śledź stan
 - Migrowanie danych 
 - Weryfikowanie i przekazywanie danych 
 
@@ -51,13 +51,13 @@ A.  Aby otrzymać urządzenia Azure Data Box Disk, zaloguj się do witryny Azure
 A. W przypadku 5 dysków — każdy o rozmiarze 8 TB (7 TB pojemności do wykorzystania) — maksymalna pojemność do wykorzystania to 35 TB. W związku z tym jednorazowo możesz przenieść 35 TB danych. Aby przenieść większą ilość danych, musisz zamówić więcej dysków.
 
 ### <a name="q-how-can-i-check-if-data-box-disks-are-available-in-my-region"></a>PYTANIE: Jak sprawdzić, czy urządzenia Data Box Disk są dostępne w moim regionie? 
-A.  Aby zobaczyć, gdzie są obecnie dostępne dyski Data Box, przejdź do [dostępność w poszczególnych regionach](data-box-disk-overview.md#region-availability).  
+A.  Aby sprawdzić, gdzie urządzenie Data Box dyski są obecnie dostępne, przejdź do [obszaru dostępność w regionie](data-box-disk-overview.md#region-availability).  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>PYTANIE: W jakich regionach mogę zapisać dane, korzystając z usługi Data Box Disk?
-A. Dysku Data Box jest obsługiwane dla wszystkich regionów w USA, Kanadzie, Australii, Europa Zachodnia i Europa Północna, Korei i Japonia. Obsługiwane są tylko regiony chmury publicznej Azure. Usługa Azure Government ani inne suwerenne chmury nie są obsługiwane.
+A. Data Box Disk jest obsługiwana w przypadku wszystkich regionów w Stanach Zjednoczonych, Kanadzie, Australii, Europa Zachodnia i Europa Północna, Korea i Japonia. Obsługiwane są tylko regiony chmury publicznej Azure. Usługa Azure Government ani inne suwerenne chmury nie są obsługiwane.
 
-### <a name="q-will-my-data-box-disk-cross-country-borders-during-shipping"></a>PYTANIE: Będzie Moje dysku Data Box krzyżowe obramowania kraju podczas wysyłania?
-A. Dysku Data Box są dostarczane z w obrębie tego samego kraju jako miejsca docelowego i nie przechodzi wszystkie międzynarodowej obramowania. Jedynym wyjątkiem jest zamówień w Unii Europejskiej (UE), gdzie dysków może wysłać do i z jakiegokolwiek kraju UE.
+### <a name="q-will-my-data-box-disk-cross-country-borders-during-shipping"></a>PYTANIE: Czy my Data Box Disk międzykrajowe obramowania podczas wysyłki?
+A. Data Box Disk są wysyłane z tego samego kraju co ich miejsce docelowe i nie będą przecinać żadnych granic międzynarodowych. Jedyny wyjątek dotyczy zamówień w Unii Europejskiej (UE), w których dyski mogą być dostarczane do i z dowolnego kraju UE.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>PYTANIE: Z kim należy się skontaktować, gdy pojawią się jakiekolwiek problemy z urządzeniami Data Box Disk?
 A. Jeśli napotkasz jakiekolwiek problemy z usługą Data Box Disk, [skontaktuj się z działem pomocy technicznej firmy Microsoft](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support).
@@ -129,14 +129,14 @@ A.  Nie. Obecnie na potrzeby urządzeń Data Box Disk jest obsługiwane tylko je
 A. Zestaw narzędzi dostępny na urządzeniu Data Box Disk zawiera trzy narzędzia:
  - **Narzędzie do odblokowywania dysków Data Box Disk**: To narzędzie umożliwia odblokowywanie zaszyfrowanych dysków, które są wysyłane przez firmę Microsoft. W przypadku odblokowywania dysków za pomocą narzędzia musisz podać klucz dostępu udostępniony w zamówieniu urządzenia Data Box Disk w witrynie Azure Portal. 
  - **Narzędzie do walidacji urządzenia Data Box Disk**: To narzędzie umożliwia weryfikowanie rozmiaru, formatu i nazw obiektów blob zgodnie z konwencjami nazewnictwa platformy Azure. Generuje ono sumy kontrolne skopiowanych danych, które następnie są używane do weryfikowania danych przekazywanych na platformie Azure.
- - **Narzędzie do dzielenia i kopiowania dysków Data Box Disk**: To narzędzie jest stosowane w przypadku korzystania z wielu dysków i dużego zestawu danych, który należy podzielić i skopiować na wszystkie dyski. To narzędzie jest obecnie dostępne dla systemu Windows. To narzędzie nie jest obsługiwana w przypadku dysków zarządzanych. To narzędzie jest również sprawdzane, ponieważ dane są kopiowane, dlatego możesz pominąć krok weryfikacji podczas używania tego narzędzia.
+ - **Narzędzie do dzielenia i kopiowania dysków Data Box Disk**: To narzędzie jest stosowane w przypadku korzystania z wielu dysków i dużego zestawu danych, który należy podzielić i skopiować na wszystkie dyski. To narzędzie jest obecnie dostępne dla systemu Windows. To narzędzie nie jest obsługiwane w przypadku dysków zarządzanych. To narzędzie również sprawdza poprawność, gdy kopiuje dane. w związku z tym możesz pominąć krok walidacji podczas korzystania z tego narzędzia.
 
 Zestaw narzędzi jest dostępny dla systemów Windows i Linux. Zestaw narzędzi można pobrać w tym miejscu:
 - [Pobierz zestaw narzędzi dla dysków Data Box Disk dla systemu Windows](https://aka.ms/databoxdisktoolswin) 
 - [Pobierz zestaw narzędzi dla dysków Data Box Disk dla systemu Linux](https://aka.ms/databoxdisktoolslinux)
  
 ### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>PYTANIE: Czy można używać urządzenia Data Box Disk do przesyłania danych do usługi Azure Files, a następnie używać danych w usłudze Azure File Sync? 
-A. Usługa pliki systemu Azure są obsługiwane przy użyciu dysku Data Box, ale nie będzie działać poprawnie przy użyciu usługi Azure File Sync. Metadane nie są zachowywane, jeśli dane pliku jest używany z usługi Azure File Sync.
+A. Azure Files są obsługiwane przez Data Box Disk, ale nie będą dobrze działały w Azure File Sync. Metadane nie są zachowywane, jeśli dane plików są używane z Azure File Sync.
 
 
 ## <a name="verify-and-upload"></a>Weryfikowanie i przekazywanie
@@ -145,7 +145,7 @@ A. Usługa pliki systemu Azure są obsługiwane przy użyciu dysku Data Box, ale
 A.  Dostęp do danych powinien być możliwy natychmiast po zmianie stanu zamówienia dla pozycji Kopiowanie danych na Ukończono.
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>PYTANIE: Gdzie znajdują się moje dane na platformie Azure po przekazaniu?
-A.  Jeśli skopiowano dane do folderów *BlockBlob* i *PageBlob* na dysku, w ramach konta usługi Azure Storage jest tworzony kontener dla każdego podfolderu w folderze *BlockBlob* i *PageBlob*. Jeśli pliki zostały skopiowane bezpośrednio do folderów *BlockBlob* i *PageBlob*, zostaną one umieszczone w domyślnym kontenerze *$root* na koncie usługi Azure Storage. Po skopiowaniu danych do folderu, w obszarze *AzureFile* tworzony jest folder, udziałem plików.
+A.  Jeśli skopiowano dane do folderów *BlockBlob* i *PageBlob* na dysku, w ramach konta usługi Azure Storage jest tworzony kontener dla każdego podfolderu w folderze *BlockBlob* i *PageBlob*. Jeśli pliki zostały skopiowane bezpośrednio do folderów *BlockBlob* i *PageBlob*, zostaną one umieszczone w domyślnym kontenerze *$root* na koncie usługi Azure Storage. Po skopiowaniu danych do folderu w folderze *AzureFile* zostaje utworzony udział plików.
 
 ### <a name="q-i-just-noticed-that-i-did-not-follow-the-azure-naming-requirements-for-my-containers-will-my-data-fail-to-upload-to-azure"></a>PYTANIE: Nazwy moich kontenerów nie są zgodne z wymaganiami dotyczącymi nazewnictwa platformy Azure. Czy przekazywanie moich danych na platformę Azure nie powiedzie się?
 A. Jeśli nazwy kontenerów zawierają wielkie litery, zostaną one automatycznie przekonwertowane w małe litery. Jeśli nazwy nie są zgodne w inny sposób (znaki specjalne, inne języki itd.), przekazywanie zakończy się niepowodzeniem. Aby uzyskać więcej informacji, zobacz [Konwencje nazewnictwa platformy Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions).
@@ -165,14 +165,14 @@ A. Tak. Jeśli zdecydujesz się na walidację danych (zdecydowanie to zalecamy!)
 ### <a name="q-i-used-all-my-disks-to-transfer-data-and-need-to-order-more-disks-is-there-a-way-to-quickly-place-the-order"></a>PYTANIE: Transferowane dane zajęły miejsce na wszystkich dyskach i muszę zamówić więcej dysków. Czy można szybko złożyć zamówienie?
 A. W takim przypadku możesz sklonować poprzednie zamówienie. Klonowanie tworzy takie samo zamówienie i możliwe jest edytowanie jego szczegółów bez konieczności wpisywania adresu, danych kontaktowych i danych dotyczących powiadomień.
 
-### <a name="q-i-copied-data-to-manageddisk-folder-i-dont-see-any-managed-disks-with-the-resource-group-specified-for-managed-disks-was-my-data-uploaded-to-azure-and-how-can-i-locate-it"></a>PYTANIE: Po skopiowaniu danych do folderu ManagedDisk. Nie widzę żadnych dysków zarządzanych z grupą zasobów określona dla dysków zarządzanych. Przekazano dane na platformie Azure i jak mogę go znaleźć?
-A. Tak. Przekazano dane na platformie Azure, ale jeśli nie widzisz żadnych dysków zarządzanych przy użyciu grup określonego zasobu, prawdopodobną przyczyną jest danych nie jest prawidłowa. W przypadku stronicowych obiektów blob, blokowe obiekty BLOB, Azure Files i dysków zarządzanych nie jest prawidłowy, te musieli przejść do następujących folderów:
- - Stronicowe obiekty BLOB musieli przejść do bloku kontenera obiektów blob, począwszy od *databoxdisk — nieprawidłowy-pb -* .
- - Usługa Azure Files musieli przejść do bloku kontenera obiektów blob, począwszy od *databoxdisk — nieprawidłowy-af -* .
- - Dyski zarządzane musieli przejść do bloku kontenera obiektów blob, począwszy od *databoxdisk — nieprawidłowy-md -* .
+### <a name="q-i-copied-data-to-manageddisk-folder-i-dont-see-any-managed-disks-with-the-resource-group-specified-for-managed-disks-was-my-data-uploaded-to-azure-and-how-can-i-locate-it"></a>PYTANIE: Skopiowano dane do folderu ManagedDisk. Nie widzę żadnych dysków zarządzanych z grupą zasobów określoną dla dysków zarządzanych. Czy moje dane zostały przekazane na platformę Azure i jak można je zlokalizować?
+A. Tak. Dane zostały przekazane na platformę Azure, ale jeśli nie widzisz żadnych dysków zarządzanych z określonymi grupami zasobów, prawdopodobnie dane są nieprawidłowe. Jeśli stronicowe obiekty blob, blokowe obiekty blob, Azure Files i Managed disks były nieprawidłowe, można przejść do następujących folderów:
+ - Stronicowe obiekty blob przejdą do kontenera blokowych obiektów blob, zaczynając od *databoxdisk-nieprawidłowy-PB-* .
+ - Azure Files przejdzie do kontenera blokowych obiektów blob, rozpoczynając od *databoxdisk-nieprawidłowy-AF-* .
+ - Dyski zarządzane przechodzą do kontenera blokowych obiektów blob, rozpoczynając od *databoxdisk-nieprawidłowy-MD-* .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Przegląd [wymagania systemowe dysku Data Box](data-box-disk-system-requirements.md).
+- Zapoznaj się z [wymaganiami systemowymi Data Box Disk](data-box-disk-system-requirements.md).
 - Zapoznaj się z [limitami usługi Data Box Disk](data-box-disk-limits.md).
 - Szybko wdróż usługę [Azure Data Box Disk](data-box-disk-quickstart-portal.md) w witrynie Azure Portal.

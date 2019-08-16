@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 6cbddfc5e529bc48e08407796024e5232d1a22e8
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 134302bffdadc27cf202a43e7dc4cc94704bb5b3
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966371"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69557869"
 ---
 # <a name="copy-data-from-teradata-by-using-azure-data-factory"></a>Kopiowanie danych z programu Teradata przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -143,7 +143,7 @@ Aby skopiować dane z programu Teradata, obsługiwane są następujące właści
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na `TeradataTable`wartość. | Tak |
 | database | Nazwa bazy danych programu Teradata. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
-| table | Nazwa tabeli w bazie danych programu Teradata. | Nie (Jeśli określono parametr "query" w źródle działania) |
+| table | Nazwa tabeli w bazie danych programu Teradata. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład:**
 
@@ -196,7 +196,7 @@ Aby skopiować dane z programu Teradata, w sekcji **Źródło** działania kopio
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type źródła działania Copy musi być ustawiona na `TeradataSource`wartość. | Tak |
-| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Może to być na przykład `"SELECT * FROM MyTable"`.<br>Po włączeniu obciążenia partycjonowanego należy podłączyć wszystkie odpowiednie wbudowane parametry partycji w zapytaniu. Przykłady można znaleźć w sekcji [Kopiowanie równoległe z programu Teradata](#parallel-copy-from-teradata) . | Nie (Jeśli określono table w zestawie danych) |
+| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Może to być na przykład `"SELECT * FROM MyTable"`.<br>Po włączeniu obciążenia partycjonowanego należy podłączyć wszystkie odpowiednie wbudowane parametry partycji w zapytaniu. Przykłady można znaleźć w sekcji [Kopiowanie równoległe z programu Teradata](#parallel-copy-from-teradata) . | Nie (Jeśli określono tabelę w zestawie danych) |
 | partitionOptions | Określa opcje partycjonowania danych używane do ładowania danych z programu Teradata. <br>Dozwolone wartości to: **Brak** (wartość domyślna), **hash** i **DynamicRange**.<br>Gdy opcja partycji jest włączona (to nie `None`jest), należy również [`parallelCopies`](copy-activity-performance.md#parallel-copy) skonfigurować ustawienie dla działania kopiowania. Określa to równoległy stopień, który umożliwia współbieżne ładowanie danych z bazy danych programu Teradata. Można na przykład ustawić wartość 4. | Nie |
 | partitionSettings | Określ grupę ustawień partycjonowania danych. <br>Zastosuj, gdy opcja partycji `None`nie jest. | Nie |
 | partitionColumnName | Określ nazwę kolumny źródłowej **w typie liczb całkowitych** , która będzie używana przez partycjonowanie zakresu do kopiowania równoległego. Jeśli nie zostanie określony, klucz podstawowy tabeli zostanie wykryty i użyty jako kolumna partycji. <br>Zastosuj, gdy opcja partycji to `Hash` lub `DynamicRange`. Jeśli używasz zapytania, aby pobrać dane źródłowe, hak `?AdfHashPartitionCondition` lub `?AdfRangePartitionColumnName` w klauzuli WHERE. Zobacz przykład w sekcji [Kopiowanie równoległe z programu Teradata](#parallel-copy-from-teradata) . | Nie |
@@ -299,7 +299,7 @@ Podczas kopiowania danych z programu Teradata są stosowane następujące mapowa
 | Decimal |Decimal |
 | Double |Double |
 | Graphic |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| Liczba całkowita |Int32 |
+| Integer |Int32 |
 | Interval Day |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
 | Interval Day To Hour |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
 | Interval Day To Minute |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
