@@ -79,10 +79,12 @@
           href: batch-pool-vm-sizes.md
         - name: Konfigurowanie dostępu do węzłów obliczeniowych
           href: pool-endpoint-configuration.md
-        - name: Tworzenie puli za pomocą niestandardowego obrazu
+        - name: Tworzenie puli za pomocą usługi Shared Image Gallery
           href: batch-custom-images.md
         - name: Tworzenie puli w sieci wirtualnej
           href: batch-virtual-network.md
+        - name: Instalowanie wirtualnego systemu plików
+          href: virtual-file-mount.md
         - name: Instalowanie udziału plików platformy Azure
           href: pool-file-shares.md
         - name: Używanie wystąpień procesora GPU lub RDMA

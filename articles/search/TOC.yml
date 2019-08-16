@@ -13,7 +13,7 @@
       items:
         - name: Tworzenie i używanie indeksu
           href: search-get-started-portal.md
-        - name: Wzbogacanie o sztuczną inteligencję (wyszukiwanie poznawcze)
+        - name: Wzbogacanie o wyszukiwanie poznawcze (sztuczna inteligencja)
           href: cognitive-search-quickstart-blob.md
     - name: 'C#'
       href: search-get-started-dotnet.md
@@ -59,6 +59,8 @@
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=csharp'
     - name: Przykłady w języku Java
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=java'
+    - name: Przykłady skryptów w języku JavaScript
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=javascript'
     - name: Przykłady w języku Python
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=python'
     - name: Przykłady dla interfejsu REST

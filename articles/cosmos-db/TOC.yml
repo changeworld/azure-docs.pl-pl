@@ -648,6 +648,8 @@
           href: how-to-create-multiple-cosmos-db-triggers.md
         - name: Rozwiązywanie problemów z wyzwalaczami usługi Azure Cosmos DB
           href: troubleshoot-changefeed-functions.md
+        - name: Czas rozpoczęcia procesora zestawienia zmian
+          href: how-to-configure-change-feed-start-time.md
     - name: Wbudowana analiza przy użyciu platformy Apache Spark
       items:
         - name: Łącznik platformy Azure Spark w usłudze Azure Databricks

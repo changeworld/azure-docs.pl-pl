@@ -2,6 +2,7 @@
   href: index.yml
   items: null
 - name: Omówienie
+  expanded: true
   items:
     - name: Co to jest maszyna wirtualna do analizy danych?
       href: overview.md
@@ -12,15 +13,15 @@
 - name: Przewodniki Szybki start
   expanded: true
   items:
-    - name: Tworzenie maszyny wirtualnej do analizy danych z systemem Windows
+    - name: Tworzenie maszyny DSVM z systemem Windows
       href: provision-vm.md
-    - name: Tworzenie maszyny wirtualnej do analizy danych z systemem Ubuntu
+    - name: Tworzenie maszyny DSVM z systemem Ubuntu
       href: dsvm-ubuntu-intro.md
-    - name: Tworzenie maszyny wirtualnej do analizy danych z systemem CentOS
+    - name: Tworzenie maszyny DSVM z systemem CentOS
       href: linux-dsvm-intro.md
     - name: Tworzenie maszyny wirtualnej do uczenia głębokiego
       href: provision-deep-learning-dsvm.md
-    - name: Tworzenie maszyny wirtualnej analizy danych geograficznych ze sztuczną inteligencją
+    - name: Tworzenie maszyny DSVM ze sztuczną inteligencją w zakresie danych geograficznych
       href: provision-geo-ai-dsvm.md
 - name: Pojęcia
   items:
@@ -28,45 +29,43 @@
       href: dsvm-tools-overview.md
     - name: Platformy sztucznej inteligencji i uczenia głębokiego
       href: dsvm-deep-learning-ai-frameworks.md
-    - name: Narzędzia ML i nauki o danych
-      href: dsvm-ml-data-science-tools.md
-    - name: Języki
+    - name: Języki programowania
       href: dsvm-languages.md
     - name: Narzędzia programistyczne
       href: dsvm-tools-development.md
+    - name: Narzędzia ML i nauki o danych
+      href: dsvm-ml-data-science-tools.md
+    - name: Platformy danych
+      href: dsvm-data-platforms.md
     - name: Narzędzia do wprowadzania danych
       href: dsvm-tools-ingestion.md
     - name: Narzędzia do eksploracji i wizualizacji danych
       href: dsvm-tools-explore-and-visualize.md
-    - name: Platformy danych
-      href: dsvm-data-platforms.md
-    - name: Przykłady i przewodniki
-      href: dsvm-samples-and-walkthroughs.md
+    - name: Wskazówki i zabezpieczenia przedsiębiorstwa
+      href: dsvm-enterprise-overview.md
+- name: Przykłady
+  href: dsvm-samples-and-walkthroughs.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Używanie maszyny wirtualnej do analizy danych z systemem Windows
+    - name: Używanie maszyny DSVM z systemem Windows
       href: vm-do-ten-things.md
-    - name: Używanie maszyny wirtualnej do analizy danych z systemem Linux
+    - name: Używanie maszyny DSVM z systemem Linux
       href: linux-dsvm-walkthrough.md
     - name: Używanie maszyny wirtualnej do uczenia głębokiego
       href: use-deep-learning-dsvm.md
-    - name: Używanie maszyny wirtualnej analizy danych geograficznych ze sztuczną inteligencją
+    - name: Używanie maszyny DSVM ze sztuczną inteligencją w zakresie danych geograficznych
       href: use-geo-ai-dsvm.md
-    - name: Wskazówki dla przedsiębiorstw
-      items:
-        - name: Omówienie
-          href: dsvm-enterprise-overview.md
-        - name: Skalowanie
-          href: dsvm-pools.md
-        - name: Integracja z usługą Active Directory
-          href: dsvm-common-identity.md
-        - name: Poświadczenia na potrzeby bezpiecznego dostępu do zasobów
-          href: dsvm-secure-access-keys.md
+    - name: Tworzenie autoskalowanej puli maszyn DSVM
+      href: dsvm-pools.md
+    - name: Integrację z usługą Active Directory
+      href: dsvm-common-identity.md
+    - name: Poświadczenia na potrzeby bezpiecznego dostępu do zasobów
+      href: dsvm-secure-access-keys.md
 - name: Zasoby
   items:
-    - name: Przewodnik dla deweloperów języka R
-      href: /azure/architecture/data-guide/technology-choices/r-developers-guide?context=azure/machine-learning/data-science-virtual-machine/context/ml-context
     - name: Forum MSDN
       href: 'https://social.microsoft.com/Forums/home?forum=dsvm'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/search?q=dsvm'
+    - name: Przewodnik dla deweloperów języka R
+      href: /azure/architecture/data-guide/technology-choices/r-developers-guide?context=azure/machine-learning/data-science-virtual-machine/context/ml-context

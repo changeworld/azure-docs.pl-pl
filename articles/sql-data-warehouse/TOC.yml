@@ -267,14 +267,14 @@
           href: sql-data-warehouse-connect-overview.md
         - name: Parametry połączeń
           href: sql-data-warehouse-connection-strings.md
-        - name: sqlcmd
-          href: sql-data-warehouse-get-started-connect-sqlcmd.md
+        - name: Instalacja programu Visual Studio SSDT
+          href: sql-data-warehouse-install-visual-studio.md
+        - name: Tworzenie zapytań za pomocą programu Visual Studio SSDT
+          href: sql-data-warehouse-query-visual-studio.md
         - name: Wykonywanie zapytań za pomocą programu SSMS
           href: sql-data-warehouse-query-ssms.md
-        - name: Query with Visual Studio
-          href: sql-data-warehouse-query-visual-studio.md
-        - name: Instalowanie programu Visual Studio
-          href: sql-data-warehouse-install-visual-studio.md
+        - name: Nawiązywanie połączenia i wykonywanie zapytań przy użyciu narzędzia sqlcmd
+          href: sql-data-warehouse-get-started-connect-sqlcmd.md
     - name: Zarządzanie obciążeniem
       items:
         - name: Analizowanie obciążenia

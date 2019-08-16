@@ -25,6 +25,8 @@
       items:
         - name: Konfigurowanie geofencingu
           href: tutorial-geofence.md
+        - name: Analiza przestrzenna
+          href: tutorial-iot-hub-maps.md
 - name: Pojęcia
   items:
     - name: Uwierzytelnianie w usłudze Azure Maps

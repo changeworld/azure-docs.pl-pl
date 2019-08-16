@@ -20,10 +20,14 @@
       displayName: RBAC
     - name: Przenoszenie konta usługi Automation do innej subskrypcji
       href: how-to/move-account.md
+    - name: Automatyzowanie dołączania usług automatyzacji
+      href: /azure/architecture/cloud-adoption/operations/azure-server-management/onboarding-automation
 - name: Automatyzacja procesów
   items:
     - name: Omówienie hybrydowego procesu roboczego elementu Runbook
       href: automation-hybrid-runbook-worker.md
+    - name: Galeria elementów Runbook
+      href: automation-runbook-gallery.md
     - name: Pojęcia
       items:
         - name: Typy elementów Runbook
@@ -297,8 +301,6 @@
   items:
     - name: Wysyłanie wiadomości e-mail z poziomu elementu runbook za pomocą usługi SendGrid
       href: automation-send-email.md
-    - name: Galeria elementów Runbook
-      href: automation-runbook-gallery.md
     - name: Monitorowanie elementów runbook za pomocą alertów metryki
       href: automation-alert-metric.md
     - name: Uruchamianie elementu Runbook z alertów platformy Azure

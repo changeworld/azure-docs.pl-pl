@@ -478,7 +478,7 @@
           items:
             - name: Używanie akceleratora zapisu
               href: how-to-enable-write-accelerator.md
-            - name: Włączanie dysków ultra SSD
+            - name: Używanie dysków ultra
               href: disks-enable-ultra-ssd.md
             - name: Test porównawczy dysku
               href: disks-benchmarks.md

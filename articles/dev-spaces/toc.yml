@@ -85,5 +85,7 @@
           href: how-to/dev-spaces-business-continuity.md
         - name: Interakcja z kontenerami systemu Windows
           href: how-to/run-dev-spaces-windows-containers.md
+        - name: Używanie rozwiązania traefik w przypadku niestandardowego ruchu przychodzącego i ruchu HTTPS
+          href: how-to/ingress-https-traefik.md
     - name: Rozwiązywanie problemów
       href: troubleshooting.md

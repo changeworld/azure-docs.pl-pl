@@ -120,12 +120,8 @@
         - name: Wdrażanie — interfejs API REST
           displayName: 'deployment,rollback on error,redeploy'
           href: resource-group-template-deploy-rest.md
-        - name: Zabezpieczanie szablonów przy użyciu tokenu SAS
-          items:
-            - name: Używanie interfejsu wiersza polecenia platformy Azure
-              href: resource-manager-cli-sas-token.md
-            - name: Korzystanie z programu Azure PowerShell
-              href: resource-manager-powershell-sas-token.md
+        - name: Zabezpieczanie szablonu przy użyciu tokenu SAS
+          href: secure-template-with-sas-token.md
         - name: Wdrażanie w wielu grupach zasobów lub subskrypcjach
           href: resource-manager-cross-resource-group-deployment.md
     - name: CI/CD

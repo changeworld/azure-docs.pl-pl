@@ -44,9 +44,9 @@ sections:
         style: unordered
         items:
           - html: <a href="tutorial-1st-experiment-sdk-setup">Konfigurowanie środowiska i trenowanie pierwszego eksperymentu uczenia maszynowego.</a>
-          - html: <a href="tutorial-train-models-with-aml">Trenowanie i wdrażanie modeli klasyfikacji obrazów</a>.
-          - html: <a href="tutorial-data-prep">Przygotowywanie danych i używanie zautomatyzowanego uczenia maszynowego do przewidywania opłat za taksówkę</b>.</a>
-          - html: <a href="how-to-run-batch-predictions">Uruchamianie przewidywań zbiorczych w dużych zestawach danych przy użyciu potoków uczenia maszynowego</b>.</a>
+          - html: <a href="tutorial-train-models-with-aml">Trenowanie i wdrażanie modeli klasyfikacji obrazów.</a>
+          - html: <a href="tutorial-data-prep">Przygotowywanie danych i używanie zautomatyzowanego uczenia maszynowego do przewidywania opłat za taksówkę.</b></a>
+          - html: <a href="how-to-run-batch-predictions">Uruchamianie przewidywań zbiorczych w dużych zestawach danych przy użyciu potoków uczenia maszynowego.</b></a>
   - title: Przykłady
     items:
       - type: paragraph
@@ -56,10 +56,10 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: '<a href="https://aka.ms/aml-sdk">Główny zestaw SDK języka Python</a>: podstawowe funkcje, zautomatyzowane uczenie maszynowe, potoki i nie tylko'
-          - html: 'Zestaw SDK języka Python do <a href="https://aka.ms/aml-monitoring-sdk">monitorowania</a>: zbieranie danych z wdrożonych usług internetowych'
-          - html: <a href="../algorithm-module-reference/module-reference.md">Dokumentacja algorytmu i modułu</a> dotycząca interfejsu wizualnego
-          - html: '<a href="https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest">Azure ML CLI</a>: rozszerzenie interfejsu wiersza polecenia uczenia maszynowego'
+          - html: 'Dokumentacja <a href="https://aka.ms/aml-sdk">głównego zestawu SDK języka Python</a>: podstawowe funkcje, zautomatyzowane uczenie maszynowe, potoki i nie tylko.'
+          - html: 'Dokumentacja zestawu SDK języka Python do <a href="https://aka.ms/aml-monitoring-sdk">monitorowania</a>: zbieranie danych z wdrożonych usług internetowych'
+          - html: <a href="../algorithm-module-reference/module-reference.md">Dokumentacja algorytmu i modułu</a> dotycząca modułów interfejsu wizualnego.
+          - html: '<a href="https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest">Azure ML CLI</a>: informacje o rozszerzeniu interfejsu wiersza polecenia uczenia maszynowego.'
   - title: Inne technologie usługi Azure Machine Learning
     items:
       - type: list
