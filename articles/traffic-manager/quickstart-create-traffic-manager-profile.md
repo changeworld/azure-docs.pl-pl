@@ -40,12 +40,12 @@ W tym przewodniku Szybki start będą potrzebne dwa wystąpienia aplikacji inter
 1. W obszarze **Tworzenie aplikacji sieci Web**wpisz lub wybierz następujące wartości z karty **podstawowe** :
 
    - **Subskrypcja** > **Grupa zasobów**: Wybierz pozycję **Utwórz nowy** , a następnie wpisz **myResourceGroupTM1**.
-   - ****  > **Nazwa**szczegółów wystąpienia: Wpisz *myWebAppEastUS*.
+   -  > **Nazwa**szczegółów wystąpienia: Wpisz *myWebAppEastUS*.
    - **Szczegóły wystąpienia —** **publikowanie:**  >  Wybierz pozycję **kod**.
-   - ****  > **Stos środowiska uruchomieniowego**szczegółów wystąpienia: Wybierz **ASP.NET v 4.7**
-   - ****  > **System operacyjny**szczegółów wystąpienia: Wybierz pozycję **Windows**.
-   - ****  > **Region**szczegółów wystąpienia:  Wybierz pozycję **Wschodnie stany USA**.
-   - **** Plan Windows plan App Service **(Wschodnie stany USA):**  >  Wybierz pozycję **Utwórz nowy** , a następnie wpisz **myAppServicePlanEastUS**
+   -  > **Stos środowiska uruchomieniowego**szczegółów wystąpienia: Wybierz **ASP.NET v 4.7**
+   -  > **System operacyjny**szczegółów wystąpienia: Wybierz pozycję **Windows**.
+   -  > **Region**szczegółów wystąpienia:  Wybierz pozycję **Wschodnie stany USA**.
+   - Plan Windows plan App Service **(Wschodnie stany USA):**  >  Wybierz pozycję **Utwórz nowy** , a następnie wpisz **myAppServicePlanEastUS**
    - **App Service planowanej** > **jednostki SKU i rozmiaru**: Wybierz pozycję **standardowa S1**.
    
 3. Wybierz kartę **monitorowanie** lub wybierz pozycję **Dalej: monitorowanie**.  W obszarze **monitorowanie**Ustaw **Application Insights** > **Włącz Application Insights** na wartość **nie**.

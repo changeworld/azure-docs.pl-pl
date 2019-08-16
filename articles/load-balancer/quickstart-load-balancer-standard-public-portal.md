@@ -36,7 +36,7 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
 
 W tej sekcji utworzysz usługa Load Balancer w warstwie Standardowa, która pomaga zrównoważyć obciążenie maszyn wirtualnych. Usługa Load Balancer w warstwie Standardowa obsługuje tylko publiczny adres IP w warstwie Standardowa. Podczas tworzenia usługi Load Balancer w warstwie Standardowa musisz także utworzyć nowy publiczny adres IP w warstwie Standardowa, który jest skonfigurowany jako fronton (domyślnie o nazwie *LoadBalancerFrontend*) dla usługi Load Balancer w warstwie Standardowa. 
 
-1. W lewym górnym rogu ekranu wybierz pozycję **Utwórz zasób zasobów** >  ****  > **Load Balancer**.
+1. W lewym górnym rogu ekranu wybierz pozycję **Utwórz zasób zasobów** >  > **Load Balancer**.
 2. Na karcie **Podstawy** na stronie **Tworzenie modułu równoważenia obciążenia** wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Przeglądanie + tworzenie**:
 
     | Ustawienie                 | Value                                              |
@@ -129,9 +129,9 @@ Usługa Load Balancer w warstwie Standardowa obsługuje tylko maszyny wirtualne 
 1. W obszarze **Tworzenie maszyny wirtualnej** wpisz lub wybierz następujące wartości na karcie **Podstawowe**:
    - **Subskrypcja** > **Grupa zasobów**: Select **myResourceGroupSLB**.
    - **Szczegóły wystąpienia** > **Nazwa maszyny wirtualnej**: Wpisz *myVM1*.
-   - ****  > **Region** szczegółów wystąpienia > wybierz pozycję **Europa Zachodnia**.
-   - ****  > **Opcje dostępności** szczegółów wystąpienia > wybierz **strefy dostępności**. 
-   - ****  > **Strefa dostępności** szczegółów wystąpienia > wybierz **1**.
+   -  > **Region** szczegółów wystąpienia > wybierz pozycję **Europa Zachodnia**.
+   -  > **Opcje dostępności** szczegółów wystąpienia > wybierz **strefy dostępności**. 
+   -  > **Strefa dostępności** szczegółów wystąpienia > wybierz **1**.
    - **Konto administratora**> wprowadź **nazwę użytkownika**, **hasło** i **Potwierdź** informacje o haśle.
    - Wybierz kartę **Sieć** lub wybierz pozycję **Dalej: Dyski**, a następnie pozycję **Dalej: Sieć**.
   
