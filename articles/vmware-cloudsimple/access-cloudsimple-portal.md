@@ -8,22 +8,22 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5bb1a4dd9d652481dfe1a2727ee0e5fe7601e96a
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 95d27bab243f6805436465f5027e519d33e20f6f
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812760"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563226"
 ---
-# <a name="accessing-the-vmware-solution-by-cloudsimple-portal-from-azure-portal"></a>Uzyskiwanie dostępu do rozwiązania VMware przez portal CloudSimple z Azure Portal
+# <a name="access-the-vmware-solution-by-cloudsimple-portal-from-the-azure-portal"></a>Dostęp do rozwiązania VMware przez portal CloudSimple z poziomu Azure Portal
 
 Logowanie jednokrotne jest obsługiwane w przypadku dostępu do portalu CloudSimple. Po zalogowaniu się do Azure Portal można uzyskać dostęp do portalu CloudSimple bez konieczności ponownego logowania. Podczas pierwszego uzyskiwania dostępu do portalu CloudSimple zostanie wyświetlony monit o autoryzację aplikacji [autoryzacji usługi CloudSimple](#consent-to-cloudsimple-service-authorization-application) .  Autoryzacja to jednorazowa akcja.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Użytkownicy z rolami wbudowanego **właściciela** i **współautor** mogą uzyskać dostęp do portalu CloudSimple.  Role należy skonfigurować w grupie zasobów, w której wdrożono usługę CloudSimple.  Role można także skonfigurować w obiekcie usługi CloudSimple.  Aby uzyskać więcej informacji na temat sprawdzania roli, zobacz artykuł [Wyświetlanie przypisań ról](https://docs.microsoft.com/azure/role-based-access-control/check-access) .
+Użytkownicy z rolami wbudowanego **właściciela** i **współautor** mogą uzyskać dostęp do portalu CloudSimple.  Role należy skonfigurować w grupie zasobów, w której wdrożono usługę CloudSimple.  Role można także skonfigurować w obiekcie usługi CloudSimple.  Aby uzyskać więcej informacji na temat sprawdzania roli, zobacz artykuł [Wyświetlanie przypisań ról](https://docs.microsoft.com/azure/role-based-access-control/check-access) . Tylko użytkownicy z wbudowanymi rolami **właściciela** i współautorów mogą uzyskać dostęp do portalu CloudSimple.  Role muszą być skonfigurowane w ramach subskrypcji.  Aby uzyskać więcej informacji na temat sprawdzania roli, zobacz artykuł [Wyświetlanie przypisań ról](https://docs.microsoft.com/azure/role-based-access-control/check-access) .
 
-Jeśli używasz ról niestandardowych, rola powinna mieć dowolną z następujących operacji w ```Actions```.  Aby uzyskać więcej informacji na temat ról niestandardowych, zobacz [role niestandardowe dla zasobów platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).  Jeśli którakolwiek z operacji jest częścią ```NotActions```, użytkownik nie może uzyskać dostępu do portalu CloudSimple. 
+Jeśli używasz ról niestandardowych, rola powinna mieć dowolną z następujących operacji w ```Actions```.  Aby uzyskać więcej informacji na temat ról niestandardowych, zobacz [role niestandardowe dla zasobów platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).  Jeśli którakolwiek z operacji jest częścią ```NotActions```, użytkownik nie może uzyskać dostępu do portalu CloudSimple.
 
 ```
 Microsoft.VMwareCloudSimple/*
@@ -48,7 +48,7 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
 
     ![Uruchom Portal CloudSimple](media/launch-cloudsimple-portal.png)
 
-> [!TIP]
+> [!NOTE]
 > W przypadku wybrania operacji chmury prywatnej (takiej jak utworzenie lub rozszerzenie chmury prywatnej) bezpośrednio z Azure Portal Portal CloudSimple zostanie otwarty na wskazanej stronie.
 
 W portalu CloudSimple wybierz pozycję **Strona główna** w menu bocznym, aby wyświetlić podsumowanie informacji o chmurach prywatnych. Wyświetlane są zasoby i pojemność chmur prywatnych wraz z alertami i zadaniami, które wymagają uwagi. W przypadku typowych zadań kliknij nazwane ikony w górnej części strony.
@@ -57,7 +57,7 @@ W portalu CloudSimple wybierz pozycję **Strona główna** w menu bocznym, aby w
 
 ## <a name="consent-to-cloudsimple-service-authorization-application"></a>Wyrażanie zgody na aplikację autoryzacji usługi CloudSimple
 
-Po pierwszym uruchomieniu Portal CloudSimple z Azure Portal wymaga zgody użytkownika na aplikację autoryzacji usługi CloudSimple.  Wybierz pozycję **Akceptuj** , aby udzielić żądanych uprawnień i uzyskać dostęp do portalu CloudSimple. 
+Po pierwszym uruchomieniu Portal CloudSimple z Azure Portal wymaga zgody użytkownika na aplikację autoryzacji usługi CloudSimple.  Wybierz pozycję **Akceptuj** , aby udzielić żądanych uprawnień i uzyskać dostęp do portalu CloudSimple.
 
 ![Wyrażanie zgody na autoryzację usługi CloudSimple — Administratorzy](media/cloudsimple-azure-consent.png)
 

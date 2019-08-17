@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 07/11/2018
+ms.date: 08/16/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6e1095cc2c5937fa5de762f91a9830161b8d2a5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 685c928a20e9bfb47365b5ffa769f1a223d2c563
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60413937"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69561501"
 ---
 # <a name="tutorial-complete-an-azure-ad-self-service-password-reset-pilot-roll-out"></a>Samouczek: przeprowadzanie pilotażowego wdrożenia samoobsługowego resetowania hasła usługi Azure AD
 
 W tym samouczku przeprowadzisz pilotażowe wdrożenie samoobsługowego resetowania hasła (SSPR) usługi Azure AD w swojej organizacji i przetestujesz je przy użyciu konta bez uprawnień administratora.
 
-Należy pamiętać, że testowanie samoobsługowego resetowania hasła trzeba przeprowadzać za pomocą konta bez uprawnień administratora. Zasadami resetowania hasła dla kont administratorów zarządza firma Microsoft, która wymaga użycia silniejszych metod uwierzytelniania. Te zasady nie zezwalają na zastosowanie pytań zabezpieczających i odpowiedzi oraz wymagają użycia dwóch metod resetowania.
+Ważne jest, aby wszystkie testy funkcji samoobsługowego resetowania hasła były wykonywane z kontami niebędącymi administratorami. Zasadami resetowania hasła dla kont administratorów zarządza firma Microsoft, która wymaga użycia silniejszych metod uwierzytelniania. Te zasady nie zezwalają na zastosowanie pytań zabezpieczających i odpowiedzi oraz wymagają użycia dwóch metod resetowania.
 
 > [!div class="checklist"]
 > * Włączanie samoobsługowego resetowania hasła
@@ -37,30 +37,30 @@ Należy pamiętać, że testowanie samoobsługowego resetowania hasła trzeba pr
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com) przy użyciu konta administratora globalnego.
 1. Przejdź do usługi **Azure Active Directory** i wybierz pozycję **Resetowanie hasła**.
 1. Zacznij od grupy pilotażowej, włączając samoobsługowe hasła dla podzbioru użytkowników w Twojej organizacji.
-   * Na stronie **Właściwości** w ramach opcji **Funkcja samoobsługowego resetowania hasła jest włączona** wybierz pozycję **Wybrano** i wybierz grupę pilotażową.
+   * Na stronie **Właściwości** w obszarze opcja samoobsługowe **Resetowanie hasła**wybierz pozycję **wybrane**i wybierz grupę pilotażową.
       * Z funkcji samoobsługowego resetowania hasła mogą korzystać tylko członkowie określonej, wybranej przez Ciebie grupy usługi Azure AD. Zaleca się zdefiniowanie grupy użytkowników i korzystanie z tego ustawienia podczas wdrażania tej funkcji w celu weryfikacji koncepcji. W tym miejscu jest obsługiwane zagnieżdżanie grup zabezpieczeń.
       * Upewnij się, że użytkownicy w wybranej grupie posiadają prawidłowe licencje.
-   * Kliknij pozycję **Zapisz**
+   * Kliknij polecenie **Zapisz**.
 1. Na stronie **Metody uwierzytelniania**
-   * Ustaw **liczba metod wymaganych do zresetowania** do **1**
-   * W obszarze **Metody dostępne dla użytkowników** wybierz metody, które będą dozwolone przez organizację. W tym samouczku należy zaznaczyć pola Aby włączyć **E-mail**, **telefon komórkowy**, **telefon biurowy**, **powiadomienia aplikacji mobilnej (wersja zapoznawcza)** i  **Kod aplikacji mobilnej (wersja zapoznawcza)**.
-   * Kliknij pozycję **Zapisz**
+   * Ustaw **liczbę metod wymaganych do zresetowania** do **1**
+   * W obszarze **Metody dostępne dla użytkowników** wybierz metody, które będą dozwolone przez organizację. Na potrzeby tego samouczka zaznacz pola wyboru, aby włączyć obsługę **poczty e-mail**, **telefonu komórkowego**, **telefonu biurowego**, **powiadomienia aplikacji mobilnej**i **kodu aplikacji mobilnej**.
+   * Kliknij polecenie **Zapisz**.
 1. Na stronie **Rejestracja**
-   * Wybierz wartość **Tak** dla opcji **Czy wymagać od użytkowników rejestrowania się podczas logowania?**.
+   * Wybierz wartość **Tak** dla opcji **Czy wymagać od użytkowników rejestrowania się podczas logowania?** .
    * Dla opcji **Liczba dni, zanim użytkownicy zostaną poproszeni o ponowne potwierdzenie swoich informacji uwierzytelniania** ustaw wartość **180**.
-   * Kliknij pozycję **Zapisz**
+   * Kliknij polecenie **Zapisz**.
 1. Na stronie **Powiadomienia**
    * Dla opcji **Czy powiadamiać użytkowników o resetowaniu hasła?** ustaw wartość **Tak**.
    * Dla opcji **Czy powiadamiać wszystkich administratorów, gdy inni administratorzy zresetują swoje hasło?** ustaw wartość **Tak**.
 1. Na stronie **Dostosowywanie**
    * Firma Microsoft zaleca, aby dla opcji **Dostosuj link do pomocy technicznej** ustawić wartość **Tak** i w polu **Niestandardowy adres e-mail lub adres URL pomocy technicznej** podać adres e-mail lub adres URL strony internetowej, gdzie użytkownicy będą mogli uzyskać dodatkową pomoc od organizacji.
-   * Na potrzeby tego samouczka dla opcji **Dostosuj link do pomocy technicznej** pozostawimy ustawioną wartość **Nie**.
+   * W tym samouczku pozostawisz przycisk **Dostosuj pomoc techniczną** dla ustawienia **nie**.
 
 Samoobsługowe resetowanie hasła dla użytkowników chmury w grupie pilotażowej zostało skonfigurowane.
 
 ## <a name="test-sspr-as-a-user"></a>Testowanie funkcji SSPR jako użytkownik
 
-Przetestuj samoobsługowe resetowanie hasła za pomocą konta użytkownika testowego bez uprawnień administratora, będącego członkiem grupy pilotażowej. **Pamiętaj, że jeśli użyjesz konta z przypisanymi jakimikolwiek rolami administratora, metody uwierzytelniania i ich liczba mogą być inne, niż to, co zostało przez Ciebie wybrane, ponieważ zasadami dotyczącymi administratorów zarządza firma Microsoft.**
+Przetestuj samoobsługowe resetowanie hasła za pomocą konta użytkownika testowego bez uprawnień administratora, będącego członkiem grupy pilotażowej. **W przypadku korzystania z konta, które ma przypisane role administratora, metody i numery uwierzytelniania mogą być inne niż wybrane przez firmę Microsoft do zarządzania zasadami administratora.**
 
 1. Otwórz nowe okno przeglądarki w trybie InPrivate lub incognito.
 1. Korzystając z testowego konta użytkownika, zarejestruj się na potrzeby samoobsługowego resetowania hasła, używając portalu rejestracji pod adresem [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup).
@@ -74,9 +74,9 @@ Jeśli zdecydujesz, że nie chcesz już korzystać z funkcji skonfigurowanych w 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Przejdź do usługi **Azure Active Directory** i wybierz pozycję **Resetowanie hasła**.
 1. Na stronie **Właściwości** w ramach opcji **Funkcja samoobsługowego resetowania hasła jest włączona** wybierz pozycję **Brak**.
-1. Kliknij pozycję **Zapisz**
+1. Kliknij polecenie **Zapisz**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku włączono samoobsługowe resetowanie hasła usługi Azure AD. Przejdź do następnego samouczka, aby zobaczyć, jak można zintegrować lokalną infrastrukturę usług Active Directory Domain Services ze środowiskiem samoobsługowego resetowania hasła.
 

@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64a81a871d811c68f5e92822ca88446966be4d5c
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 7b5be74b0734a27b02030e2c6995b43ef0c02162
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678103"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562127"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Zażądaj dostępu do pakietu dostępu w usłudze Azure AD uprawnień do zarządzania (wersja zapoznawcza)
 
@@ -29,6 +29,10 @@ ms.locfileid: "68678103"
 > Zarządzanie prawami w usłudze Azure Active Directory (Azure AD) jest obecnie dostępne w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
 > Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Za pomocą usługi Azure AD uprawnienia do zarządzania pakietami dostępu umożliwiają jednorazowe skonfigurowanie zasobów i zasad, które automatycznie zarządzają dostępem w okresie istnienia pakietu dostępu. 
+
+Menedżer pakietów dostępu może skonfigurować zasady, aby wymagać zatwierdzenia użytkownikom dostępu do pakietów dostępu. Użytkownik wymagający dostępu do pakietu dostępu może przesłać żądanie uzyskania dostępu. W tym artykule opisano, jak przesłać żądanie dostępu.
 
 ## <a name="sign-in-to-the-my-access-portal"></a>Logowanie się do portalu My Access
 

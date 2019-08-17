@@ -7,12 +7,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: 708c34347966eee7817ca04e0552dcba233765cb
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: df377b19d78a63b3cfc57347fff00345a9c63ead
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934510"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562540"
 ---
 # <a name="azure-key-vault-managed-storage-account---powershell"></a>Azure Key Vault zarządzane konto magazynu — PowerShell
 
@@ -26,7 +26,7 @@ ms.locfileid: "68934510"
 
 [Konto usługi Azure Storage](/azure/storage/storage-create-storage-account) używa poświadczeń, które składają się z nazwy konta i klucza. Klucz jest generowany automatycznie i służy jako "hasło" zamiast klucza kryptograficznego. Key Vault mogą zarządzać tymi kluczami konta magazynu, przechowując je jako wpisy [tajne Key Vault](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-secrets). 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Funkcja zarządzanego konta magazynu Key Vault wykonuje kilka funkcji zarządzania w Twoim imieniu:
 
@@ -42,6 +42,18 @@ W przypadku korzystania z funkcji klucza zarządzanego konta magazynu:
 - **Nie należy ręcznie generować ponownie kluczy konta magazynu**. Zalecamy ponowne wygenerowanie ich za pośrednictwem Key Vault.
 
 W poniższym przykładzie pokazano, jak zezwolić Key Vault na zarządzanie kluczami konta magazynu.
+
+## <a name="connect-to-your-azure-account"></a>Nawiąż połączenie z kontem platformy Azure
+
+Uwierzytelnij sesję programu PowerShell przy użyciu polecenia cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) . 
+```azurepowershell-interactive
+Connect-AzAccount
+```
+Jeśli masz wiele subskrypcji platformy Azure, możesz je wyświetlić za pomocą polecenia cmdlet [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription?view=azps-2.5.0) i określić subskrypcję, której chcesz używać za pomocą polecenia cmdlet [Set-AzContext](/powershell/module/az.accounts/set-azcontext?view=azps-2.5.0) . 
+
+```azurepowershell-interactive
+Set-AzContext -SubscriptionId <subscriptionId>
+```
 
 ## <a name="authorize-key-vault-to-access-to-your-storage-account"></a>Autoryzuj Key Vault, aby uzyskać dostęp do konta magazynu
 
@@ -62,8 +74,8 @@ $storageAccountKey = "key1"
 $keyVaultName = "kvContoso"
 $keyVaultSpAppId = "cfa8b339-82a2-471a-a3c9-0fc0be7a4093" # See "IMPORTANT" block above for information on Key Vault Application IDs
 
-# Authenticate your PowerShell session with Azure AD, for use with Azure Resource Manager cmdlets
-$azureProfile = Connect-AzAccount
+# Get your User Id for later commands
+$userId = (Get-AzContext).Account.Id
 
 # Get a reference to your Azure storage account
 $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName
@@ -98,7 +110,7 @@ Korzystając z tej samej sesji programu PowerShell, zaktualizuj zasady dostępu 
 ```azurepowershell-interactive
 # Give your user principal access to all storage account permissions, on your Key Vault instance
 
-Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $azureProfile.Context.Account.Id -PermissionsToStorage get, list, listsas, delete, set, update, regeneratekey, recover, backup, restore, purge
+Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $userId -PermissionsToStorage get, list, listsas, delete, set, update, regeneratekey, recover, backup, restore, purge
 ```
 
 Należy pamiętać, że uprawnienia dla kont magazynu nie są dostępne na stronie "zasady dostępu" konta magazynu w Azure Portal.

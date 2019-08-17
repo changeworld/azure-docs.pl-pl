@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 6ddd8922f1830b2f57c8ecb4ff62871961b09fec
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: a1c4575ec2ecc65d863ad80f73e64b7a4efdf96f
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228322"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563253"
 ---
 # <a name="azure-instance-metadata-service"></a>Usługa metadanych wystąpienia platformy Azure
 
@@ -39,10 +39,10 @@ Usługa jest dostępna w ogólnie dostępnych regionach platformy Azure. Nie wsz
 
 Regions                                        | Opóźnienie?                                 | Obsługiwane wersje
 -----------------------------------------------|-----------------------------------------------|-----------------
-[Wszystkie ogólnie dostępne globalne regiony platformy Azure](https://azure.microsoft.com/regions/)     | Ogólnie dostępne | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11 
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Ogólnie dostępne | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11
-[Chiny platformy Azure](https://www.azure.cn/)                                                     | Ogólnie dostępne | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11
-[Azure (Niemcy)](https://azure.microsoft.com/overview/clouds/germany/)                    | Ogólnie dostępne | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11
+[Wszystkie ogólnie dostępne globalne regiony platformy Azure](https://azure.microsoft.com/regions/)     | Ogólnie dostępne | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Ogólnie dostępne | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30
+[Chiny platformy Azure](https://www.azure.cn/)                                                     | Ogólnie dostępne | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30
+[Azure (Niemcy)](https://azure.microsoft.com/overview/clouds/germany/)                    | Ogólnie dostępne | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30
 
 Ta tabela jest aktualizowana, gdy istnieją aktualizacje usługi i dostępne są nowe obsługiwane wersje.
 
@@ -104,9 +104,9 @@ Poniższa tabela zawiera odwołania do innych formatów danych, które mogą by�
 
 interfejs API | Domyślny format danych | Inne formaty
 --------|---------------------|--------------
-/instance | kodu | text
-/scheduledevents | kodu | Dawaj
-/attested | kodu | Dawaj
+/instance | json | text
+/scheduledevents | json | brak
+/attested | json | brak
 
 Aby uzyskać dostęp do formatu niedomyślnej odpowiedzi, należy określić żądany format jako parametr ciągu zapytania w żądaniu. Na przykład:
 
@@ -130,7 +130,7 @@ Kod stanu HTTP | Reason
 ----------------|-------
 200 OK |
 400 Nieprawidłowe żądanie | Brak `Metadata: true` nagłówka lub brak formatu podczas wykonywania zapytania o węzeł liścia
-404 — Nie odnaleziono | Żądany element nie istnieje
+404 Nie znaleziono | Żądany element nie istnieje
 Metoda 405 nie jest dozwolona | Tylko `GET` żądania `POST` i są obsługiwane
 429 zbyt wiele żądań | Interfejs API obsługuje obecnie maksymalnie 5 zapytań na sekundę.
 Błąd usługi 500     | Ponów próbę za jakiś czas
@@ -367,7 +367,7 @@ placementGroupId | [Grupa umieszczania](../../virtual-machine-scale-sets/virtual
 zamierza | [Planowanie](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) zawierające nazwę, produkt i wydawcę dla maszyny wirtualnej, jeśli jej obraz portalu Azure Marketplace | 2018-04-02
 platformUpdateDomain |  [Aktualizuj domenę](manage-availability.md) , w której działa maszyna wirtualna | 2017-04-02
 platformFaultDomain | [Domena błędów](manage-availability.md) , w której działa maszyna wirtualna | 2017-04-02
-Dostawcy | Dostawca maszyny wirtualnej | 2018-10-01
+dostawca | Dostawca maszyny wirtualnej | 2018-10-01
 publicKeys | [Kolekcja kluczy publicznych](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) przypisanych do maszyny wirtualnej i ścieżek | 2018-04-02
 publisher | Wydawca obrazu maszyny wirtualnej | 2017-04-02
 resourceGroupName | [Grupa zasobów](../../azure-resource-manager/resource-group-overview.md) dla maszyny wirtualnej | 2017-08-01
@@ -375,6 +375,7 @@ resourceId | W [pełni kwalifikowany](https://docs.microsoft.com/rest/api/resour
 sku | Określona jednostka SKU dla obrazu maszyny wirtualnej | 2017-04-02
 subscriptionId | Subskrypcja platformy Azure dla maszyny wirtualnej | 2017-08-01
 tags | [Tagi](../../azure-resource-manager/resource-group-using-tags.md) dla maszyny wirtualnej  | 2017-08-01
+tagsList | Tagi sformatowane jako tablica JSON dla łatwiejszego analizowania programistycznego  | 2019-06-04
 version | Wersja obrazu maszyny wirtualnej | 2017-04-02
 vmId | [Unikatowy identyfikator](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) dla maszyny wirtualnej | 2017-04-02
 vmScaleSetName | [Nazwa zestawu skalowania maszyny](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) wirtualnej w zestawie skalowania maszyn wirtualnych | 2017-12-01
@@ -425,7 +426,7 @@ Identyfikator jednorazowy jest opcjonalnym 10-cyfrowym ciągiem. Identyfikator j
 }
 ```
 
-> Obiekt BLOB sygnatury jest podpisanym przez [PKCS7](https://aka.ms/pkcs7) wersją dokumentu. Zawiera certyfikat używany do podpisywania wraz ze szczegółami maszyny wirtualnej, takimi jak identyfikator maszyny wirtualnej, nonce, sygnatura czasowa do utworzenia i wygaśnięcia dokumentu oraz informacje o planie obrazu. Informacje o planie są wypełniane wyłącznie na potrzeby obrazów w miejscu na rynku platformy Azure. Certyfikat może zostać wyodrębniony z odpowiedzi i użyty do zweryfikowania, że odpowiedź jest prawidłowa i pochodzi z platformy Azure.
+> Obiekt BLOB sygnatury jest podpisanym przez [PKCS7](https://aka.ms/pkcs7) wersją dokumentu. Zawiera certyfikat używany do podpisywania wraz ze szczegółami maszyny wirtualnej, takimi jak identyfikator maszyny wirtualnej, nonce, Identyfikator subskrypcji, sygnatura czasowa do utworzenia i wygaśnięcia dokumentu oraz informacje o planie obrazu. Informacje o planie są wypełniane wyłącznie na potrzeby obrazów w miejscu na rynku platformy Azure. Certyfikat może zostać wyodrębniony z odpowiedzi i użyty do zweryfikowania, że odpowiedź jest prawidłowa i pochodzi z platformy Azure.
 
 #### <a name="retrieving-attested-metadata-in-windows-virtual-machine"></a>Pobieranie zaświadczania metadanych na maszynie wirtualnej z systemem Windows
 
@@ -457,7 +458,7 @@ Identyfikator jednorazowy jest opcjonalnym 10-cyfrowym ciągiem. Identyfikator j
 }
 ```
 
-> Obiekt BLOB sygnatury jest podpisanym przez [PKCS7](https://aka.ms/pkcs7) wersją dokumentu. Zawiera certyfikat używany do podpisywania wraz ze szczegółami maszyny wirtualnej, takimi jak identyfikator maszyny wirtualnej, nonce, sygnatura czasowa do utworzenia i wygaśnięcia dokumentu oraz informacje o planie obrazu. Informacje o planie są wypełniane wyłącznie na potrzeby obrazów w miejscu na rynku platformy Azure. Certyfikat może zostać wyodrębniony z odpowiedzi i użyty do zweryfikowania, że odpowiedź jest prawidłowa i pochodzi z platformy Azure.
+> Obiekt BLOB sygnatury jest podpisanym przez [PKCS7](https://aka.ms/pkcs7) wersją dokumentu. Zawiera certyfikat używany do podpisywania wraz ze szczegółami maszyny wirtualnej, takimi jak identyfikator maszyny wirtualnej, nonce, Identyfikator subskrypcji, sygnatura czasowa do utworzenia i wygaśnięcia dokumentu oraz informacje o planie obrazu. Informacje o planie są wypełniane wyłącznie na potrzeby obrazów w miejscu na rynku platformy Azure. Certyfikat może zostać wyodrębniony z odpowiedzi i użyty do zweryfikowania, że odpowiedź jest prawidłowa i pochodzi z platformy Azure.
 
 
 ## <a name="example-scenarios-for-usage"></a>Przykładowe scenariusze użycia  
@@ -568,8 +569,32 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tags?api
 Department:IT;Environment:Test;Role:WebRole
 ```
 
-> [!NOTE]
-> Znaczniki są oddzielane średnikami. Jeśli parser jest zapisywana w celu programowego wyodrębnienia tagów, nazwy tagów i wartości nie mogą zawierać średników, aby Analizator działał poprawnie.
+`tags` Pole jest ciągiem zawierającym znaczniki rozdzielane średnikami. Może to być problem, jeśli średniki są używane w samych tagach. Jeśli parser jest Zapisano w celu programowego wyodrębnienia tagów, należy polegać na `tagsList` polu, które jest tablicą JSON bez ograniczników, a w związku z tym łatwiejszym do przeanalizowania.
+
+**Żądanie**
+
+```bash
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04&format=text"
+```
+
+**Odpowiedź**
+
+```json
+[
+  {
+    "name": "Department",
+    "value": "IT"
+  },
+  {
+    "name": "Environment",
+    "value": "Test"
+  },
+  {
+    "name": "Role",
+    "value": "WebRole"
+  }
+]
+```
 
 ### <a name="validating-that-the-vm-is-running-in-azure"></a>Weryfikowanie, czy maszyna wirtualna jest uruchomiona na platformie Azure
 
@@ -612,7 +637,8 @@ Verification successful
     "createdOn":"11/28/18 00:16:17 -0000",
     "expiresOn":"11/28/18 06:16:17 -0000"
   },
-"vmId":"d3e0e374-fda6-4649-bbc9-7f20dc379f34"
+"vmId":"d3e0e374-fda6-4649-bbc9-7f20dc379f34",
+"subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"
 }
 ```
 
@@ -623,10 +649,11 @@ zamierza | [](https://docs.microsoft.com/rest/api/compute/virtualmachines/create
 Sygnatura czasowa/createdOn | Sygnatura czasowa, w której został utworzony pierwszy podpisany dokument
 timestamp/expiresOn | Sygnatura czasowa, z którą wygasa podpisany dokument
 vmId |  [Unikatowy identyfikator](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) dla maszyny wirtualnej
+subscriptionId | Subskrypcja platformy Azure dla maszyny wirtualnej, wprowadzona w`2019-04-30`
 
 #### <a name="verifying-the-signature"></a>Weryfikowanie podpisu
 
-Po otrzymaniu powyższego podpisu możesz sprawdzić, czy podpis pochodzi od firmy Microsoft. Można także zweryfikować certyfikat pośredni i łańcuch certyfikatów.
+Po otrzymaniu powyższego podpisu możesz sprawdzić, czy podpis pochodzi od firmy Microsoft. Można także zweryfikować certyfikat pośredni i łańcuch certyfikatów. Na koniec możesz sprawdzić, czy identyfikator subskrypcji jest poprawny.
 
 > [!NOTE]
 > Certyfikat dla chmury publicznej i suwerennej chmury będzie różny.

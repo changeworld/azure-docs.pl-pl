@@ -1,6 +1,6 @@
 ---
-title: Dzienników przepływu sieciowej grupy zabezpieczeń zarządzania przy użyciu usługi Azure Network Watcher — interfejs API REST | Dokumentacja firmy Microsoft
-description: Ta strona wyjaśnia, jak zarządzać dzienniki przepływu sieciowych grup zabezpieczeń w usłudze Azure Network Watcher przy użyciu interfejsu API REST
+title: Zarządzanie dziennikami przepływu sieciowych grup zabezpieczeń przy użyciu usługi Azure Network Watcher — interfejs API REST | Microsoft Docs
+description: Na tej stronie wyjaśniono, jak zarządzać dziennikami przepływu sieciowych grup zabezpieczeń w usłudze Azure Network Watcher przy użyciu interfejsu API REST
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -14,45 +14,45 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: ab4b283449ec6c0174f380b0231dd2e78dea419d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88173b24ecfca72e05d6f930b45d732aefad0e56
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64688041"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563420"
 ---
-# <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>Skonfigurowanie sieciowej grupy zabezpieczeń dzienników przepływów przy użyciu interfejsu API REST
+# <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>Konfigurowanie dzienników przepływu sieciowych grup zabezpieczeń przy użyciu interfejsu API REST
 
 > [!div class="op_single_selector"]
 > - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
 > - [Program PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Interfejs wiersza polecenia platformy Azure](network-watcher-nsg-flow-logging-cli.md)
-> - [Interfejs API REST](network-watcher-nsg-flow-logging-rest.md)
+> - [REST API](network-watcher-nsg-flow-logging-rest.md)
 
-Dzienniki przepływu sieciowej grupy zabezpieczeń są funkcją usługi Network Watcher, który służy do wyświetlania informacji na temat przychodzący i wychodzący ruch IP sieciowej grupy zabezpieczeń. Te dzienniki przepływu są zapisywane w formacie json i Pokaż przepływy wychodzące i przychodzące na podstawie reguły w poszczególnych kart Sieciowych, przepływ, który ma zastosowanie do 5-elementowych informacji o przepływie (źródłowy/docelowy adres IP, Port źródłowy i docelowy, Protocol), a jeśli zezwolenie lub odrzucenie ruchu sieciowego.
+Dzienniki przepływu sieciowych grup zabezpieczeń są funkcją Network Watcher, która umożliwia wyświetlanie informacji dotyczących ruchu przychodzącego i wychodzącego IP za pomocą sieciowej grupy zabezpieczeń. Te dzienniki przepływów są zapisywane w formacie JSON i pokazują przepływy wychodzące i przychodzące dla każdej reguły, karta sieciowa przepływu ma zastosowanie do, 5-informacje o spójnej kolekcji przepływu (źródłowy/docelowy adres IP, port źródłowy/docelowy, protokół) i jeśli ruch był dozwolony lub zabroniony.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-ARMclient jest używane do wywołania interfejsu API REST przy użyciu programu PowerShell. ARMClient znajduje się na chocolatey na [ARMClient na narzędzia Chocolatey](https://chocolatey.org/packages/ARMClient)
+ARMclient jest używany do wywoływania interfejsu API REST przy użyciu programu PowerShell. ARMClient można znaleźć na czekolady w [ARMClient na czekoladie](https://chocolatey.org/packages/ARMClient)
 
-W tym scenariuszu przyjęto założenie, zostały już wykonane czynności opisane w [utworzyć usługę Network Watcher](network-watcher-create.md) utworzyć usługę Network Watcher.
+W tym scenariuszu założono, że wykonano już kroki opisane w temacie [tworzenie Network Watcher](network-watcher-create.md) w celu utworzenia Network Watcher.
 
 > [!Important]
-> Dla wywołań interfejsu API REST obserwatora sieci, że nazwa grupy zasobów w identyfikatorze URI żądania jest grupa zasobów, który zawiera usługi Network Watcher zasoby nie są wykonywane czynności diagnostyczne na.
+> W przypadku wywołania interfejsu API REST Network Watcher nazwa grupy zasobów w identyfikatorze URI żądania jest grupą zasobów, która zawiera Network Watcher, a nie zasobów, na których wykonywane są akcje diagnostyczne.
 
 ## <a name="scenario"></a>Scenariusz
 
-Scenariusz, w tym artykule pokazano, jak włączać, wyłączać i dzienników przepływów przy użyciu interfejsu API REST zapytań. Aby dowiedzieć się więcej na temat loggings przepływu sieciowej grupy zabezpieczeń, odwiedź stronę [rejestrowanie przepływu sieciowej grupy zabezpieczeń — omówienie](network-watcher-nsg-flow-logging-overview.md).
+W scenariuszu opisanym w tym artykule przedstawiono sposób włączania, wyłączania i wysyłania dzienników przepływów przy użyciu interfejsu API REST. Aby dowiedzieć się więcej na temat rejestrowania przepływu sieciowych grup zabezpieczeń, odwiedź stronę [Rejestrowanie przepływu sieciowych grup zabezpieczeń — omówienie](network-watcher-nsg-flow-logging-overview.md).
 
-W tym scenariuszu wykonasz następujące czynności:
+W tym scenariuszu będziesz:
 
-* Włączanie dzienników przepływu (wersja 2)
-* Wyłącz dzienników przepływów
-* Stan dzienników przepływu zapytania
+* Włącz dzienniki przepływów (wersja 2)
+* Wyłącz dzienniki przepływów
+* Stan dzienników przepływu zapytań
 
-## <a name="log-in-with-armclient"></a>Zaloguj się przy użyciu ARMClient
+## <a name="log-in-with-armclient"></a>Logowanie za pomocą ARMClient
 
-Zaloguj się do armclient przy użyciu swoich poświadczeń platformy Azure.
+Zaloguj się do armclient przy użyciu poświadczeń platformy Azure.
 
 ```powershell
 armclient login
@@ -60,16 +60,16 @@ armclient login
 
 ## <a name="register-insights-provider"></a>Rejestrowanie dostawcy usługi Insights
 
-Aby rejestrowanie działało poprawnie, przepływ **Microsoft.Insights** dostawca musi być zarejestrowana. Jeśli nie masz pewności Jeśli **Microsoft.Insights** dostawca jest zarejestrowany, uruchom następujący skrypt.
+Aby rejestrowanie przepływu działało prawidłowo, dostawca **Microsoft. Insights** musi być zarejestrowany. Jeśli nie masz pewności, czy dostawca **Microsoft. Insights** został zarejestrowany, uruchom następujący skrypt.
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
 armclient post "https://management.azure.com//subscriptions/${subscriptionId}/providers/Microsoft.Insights/register?api-version=2016-09-01"
 ```
 
-## <a name="enable-network-security-group-flow-logs"></a>Dzienniki przepływów Włączanie sieciowych grup zabezpieczeń
+## <a name="enable-network-security-group-flow-logs"></a>Włączanie dzienników przepływu sieciowych grup zabezpieczeń
 
-Na poniższym przykładzie przedstawiono polecenie, aby włączyć dzienniki przepływu w wersji 2. Zastąp pole "version" "1" dla wersji 1:
+W poniższym przykładzie przedstawiono polecenie umożliwiające włączenie dzienników przepływów w wersji 2. W przypadku wersji 1 Zastąp pole "Version" "1":
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -98,7 +98,7 @@ $requestBody = @"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/configureFlowLog?api-version=2016-12-01" $requestBody
 ```
 
-Odpowiedź zwrócona z poprzedniego przykładu, jest następujący:
+Odpowiedź zwrócona z poprzedniego przykładu jest następująca:
 
 ```json
 {
@@ -118,9 +118,9 @@ Odpowiedź zwrócona z poprzedniego przykładu, jest następujący:
 }
 ```
 
-## <a name="disable-network-security-group-flow-logs"></a>Dzienniki przepływów wyłączyć grupy zabezpieczeń sieci
+## <a name="disable-network-security-group-flow-logs"></a>Wyłącz dzienniki przepływu sieciowych grup zabezpieczeń
 
-Skorzystaj z następującego przykładu, aby wyłączyć dzienników przepływów. Wywołanie jest taka sama jak Włączanie dzienników przepływu, z wyjątkiem **false** jest ustawiona dla właściwości włączone.
+Użyj poniższego przykładu, aby wyłączyć dzienniki przepływów. Wywołanie jest takie samo jak Włączanie dzienników przepływów, z wyjątkiem, że dla właściwości Enabled ustawiono **wartość false** .
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -149,7 +149,7 @@ $requestBody = @"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/configureFlowLog?api-version=2016-12-01" $requestBody
 ```
 
-Odpowiedź zwrócona z poprzedniego przykładu, jest następujący:
+Odpowiedź zwrócona z poprzedniego przykładu jest następująca:
 
 ```json
 {
@@ -171,7 +171,7 @@ Odpowiedź zwrócona z poprzedniego przykładu, jest następujący:
 
 ## <a name="query-flow-logs"></a>Dzienniki przepływu zapytań
 
-Następujące zapytania wywołania REST logowania stan przepływu sieciowej grupy zabezpieczeń.
+Następujące wywołanie REST wysyła zapytanie o stan dzienników przepływu w sieciowej grupie zabezpieczeń.
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -187,7 +187,7 @@ $requestBody = @"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/queryFlowLogStatus?api-version=2016-12-01" $requestBody
 ```
 
-Oto przykład odpowiedzi zwróconej:
+Poniżej przedstawiono przykład zwracanej odpowiedzi:
 
 ```json
 {
@@ -209,7 +209,7 @@ Oto przykład odpowiedzi zwróconej:
 
 ## <a name="download-a-flow-log"></a>Pobierz dziennik przepływu
 
-Lokalizacja magazynu dziennika przepływu jest zdefiniowany podczas tworzenia. Wygodne narzędzie dostępu do tych dzienników przepływu zapisane na koncie magazynu jest Microsoft Azure Storage Explorer, który można pobrać tutaj:  https://storageexplorer.com/
+Lokalizacja magazynu dziennika przepływu jest definiowana podczas tworzenia. Wygodnym narzędziem do uzyskiwania dostępu do tych dzienników przepływów zapisanych na koncie magazynu jest Eksplorator usługi Microsoft Azure Storage, które można pobrać tutaj: https://storageexplorer.com/
 
 Jeśli określono konto magazynu, pliki przechwytywania pakietów są zapisywane na koncie magazynu w następującej lokalizacji:
 
@@ -217,8 +217,11 @@ Jeśli określono konto magazynu, pliki przechwytywania pakietów są zapisywane
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+> [!IMPORTANT]
+> Obecnie występuje problem polegający na tym, że [dzienniki przepływu sieciowych grup zabezpieczeń (sieciowej grupy zabezpieczeń)](network-watcher-nsg-flow-logging-overview.md) dla Network Watcher nie są automatycznie usuwane z magazynu obiektów BLOB na podstawie ustawień zasad przechowywania. Jeśli masz istniejące zasady przechowywania inne niż zero, zalecamy okresowe usuwanie obiektów blob magazynu, które przekroczyły okres przechowywania, aby uniknąć naliczania opłat. Aby uzyskać więcej informacji o usuwaniu blogu magazynu dzienników sieciowej grupy zabezpieczeń Flow, zobacz [usuwanie obiektów blob magazynu dzienników usługi sieciowej grupy zabezpieczeń Flow](network-watcher-delete-nsg-flow-log-blobs.md).
 
-Dowiedz się, jak [wizualizowanie dzienników przepływów sieciowych grup zabezpieczeń przy użyciu usługi Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak [wizualizowanie dzienników przepływów sieciowych grup zabezpieczeń przy użyciu narzędzi typu open source](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
+Dowiedz się, jak [wizualizować dzienniki przepływu sieciowej grupy zabezpieczeń za pomocą usługi PowerBI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
+
+Dowiedz się, jak [wizualizować dzienniki przepływu sieciowej grupy zabezpieczeń za pomocą narzędzi open source](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)

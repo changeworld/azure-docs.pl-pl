@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 906ab4da941c6a0e1bc98f2f724141c719d04b89
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: c739e827589a9fd6adeb10255f869acef29a4f16
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879438"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562210"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Instrukcje: Planowanie implementacji dołączania do usługi Azure AD
 
@@ -69,6 +69,7 @@ Te scenariusze nie wymagają konfigurowania serwera federacyjnego na potrzeby uw
 
 - **Usługa WS-karmione:** Ten protokół jest wymagany do przyłączania urządzenia do usługi Azure AD.
 - **Usługa WS-Trust:** Ten protokół jest wymagany do zalogowania się do urządzenia dołączonego do usługi Azure AD.
+
 W przypadku korzystania z AD FS należy włączyć następujące punkty końcowe protokołu WS-Trust:`/adfs/services/trust/2005/usernamemixed`
  `/adfs/services/trust/13/usernamemixed`
  `/adfs/services/trust/2005/certificatemixed`
@@ -197,7 +198,7 @@ Poniżej przedstawiono porównanie tych trzech metod
 |   | Konfiguracja samoobsługowa | Autopilotaż systemu Windows | Rejestracja Zbiorcza |
 | --- | --- | --- | --- |
 | Wymagaj interakcji z użytkownikiem w celu skonfigurowania | Tak | Yes | Nie |
-| Wymaganie nakładu pracy IT | Nie | Yes | Yes |
+| Wymaganie nakładu pracy IT | Nie | Yes | Tak |
 | Odpowiednie przepływy | Ustawienia & OOBE | Tylko OOBE | Tylko OOBE |
 | Prawa administratora lokalnego do użytkownika podstawowego | Tak, domyślnie | Skonfigurować | Nie |
 | Wymagaj obsługi OEM urządzenia | Nie | Yes | Nie |

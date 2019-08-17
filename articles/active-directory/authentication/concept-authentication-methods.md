@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/17/2019
+ms.date: 08/16/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22c25c0a2b2f48baa3b57a8ad39ed4514c884826
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: d18c74e908f6d5c4c3d2eefb0518add380fa1324
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533138"
+ms.locfileid: "69561303"
 ---
 # <a name="what-are-authentication-methods"></a>Co to są metody uwierzytelniania?
 
@@ -31,7 +31,7 @@ Firma Microsoft zdecydowanie zaleca administratorów pozwala użytkownikom wybra
 | Hasło | Uwierzytelnianie MFA i SSPR |
 | Pytania zabezpieczające | Tylko SSPR |
 | Adres e-mail | Tylko SSPR |
-| Aplikacja Microsoft Authenticator | Uwierzytelnianie wieloskładnikowe i publiczna wersja zapoznawcza usługi SSPR |
+| Aplikacja Microsoft Authenticator | Uwierzytelnianie MFA i SSPR |
 | Token sprzętowy OATH | Publiczna wersja zapoznawcza usługi MFA i SSPR |
 | SMS | Uwierzytelnianie MFA i SSPR |
 | Połączenie głosowe | Uwierzytelnianie MFA i SSPR |
@@ -41,7 +41,7 @@ Firma Microsoft zdecydowanie zaleca administratorów pozwala użytkownikom wybra
 
 |     |
 | --- |
-| Tokeny sprzętowe OATH dla usług MFA i SSPR oraz powiadomienia aplikacji mobilnej lub kodu aplikacji mobilnej jako metody samoobsługowego resetowania hasła usługi Azure AD są funkcjami publicznej wersji zapoznawczej programu Azure Active Directory. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz [dodatkowe warunki użytkowania wersji](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) zapoznawczych Microsoft Azure|
+| Tokeny sprzętowe OATH dla usługi MFA i SSPR są funkcjami publicznej wersji zapoznawczej programu Azure Active Directory. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz [dodatkowe warunki użytkowania wersji](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) zapoznawczych Microsoft Azure|
 |     |
 
 ## <a name="password"></a>Hasło

@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 94ef85836ef524b34cd1c51e4eda83695bc70507
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 348cd0eccc66adb29a7564bbbeca99fffec28957
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443952"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562862"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions skalowanie i hosting
 
@@ -51,7 +51,7 @@ Poniższa tabela przedstawia bieżący poziom wsparcia dla trzech planów hostin
 | | Plan Zużycie | Plan Premium | Plan dedykowany |
 |-|:----------------:|:------------:|:----------------:|
 | Windows | Ogólna dostępność | wersja zapoznawcza | Ogólna dostępność |
-| Linux | wersja zapoznawcza | wersja zapoznawcza | Ogólna dostępność |
+| Linux | Ogólna dostępność | wersja zapoznawcza | Ogólna dostępność |
 
 ## <a name="consumption-plan"></a>Plan Zużycie
 

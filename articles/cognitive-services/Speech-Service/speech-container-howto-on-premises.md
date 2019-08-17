@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 7/16/2019
 ms.author: dapine
-ms.openlocfilehash: 06f2db708385c4c3fbf8d005b701b633ac52776a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 420ac45b7d3b5e97772b1aa712ba6b8442ac1de2
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559149"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562758"
 ---
 # <a name="use-with-kubernetes-and-helm"></a>Używanie z usługą Kubernetes i rozwiązaniem Helm
 
@@ -30,7 +30,7 @@ Poniższe wymagania wstępne przed użyciem kontenerów mowy w środowisku lokal
 | Azure Account | Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto][free-azure-account]. |
 | Dostęp Container Registry | Aby Kubernetes do ściągania obrazów platformy Docker do klastra, będzie potrzebny dostęp do rejestru kontenerów. Musisz najpierw zażądać [dostępu do rejestru kontenerów][speech-preview-access] . |
 | Interfejs wiersza polecenia Kubernetes | [Interfejs wiersza polecenia Kubernetes][kubernetes-cli] jest wymagany do zarządzania poświadczeniami udostępnionymi z rejestru kontenerów. Kubernetes jest również wymagany przed Helm, który jest menedżerem pakietów Kubernetes. |
-| Interfejs wiersza polecenia Helm | W ramach instalacji [interfejsu wiersza polecenia Helm][helm-install] trzeba również zainicjować Helm, który zainstaluje [System.][tiller-install] |
+| Interfejs wiersza polecenia Helm | W ramach instalacji [interfejsu wiersza polecenia Helm][helm-install] trzeba również zainicjować Helm, który zainstaluje system. [][tiller-install] |
 |Zasób mowy |Aby można było korzystać z tych kontenerów, musisz mieć:<br><br>Zasób platformy Azure _mowy_ , aby uzyskać skojarzony klucz rozliczeń i identyfikator URI punktu końcowego rozliczenia. Obie wartości są dostępne na stronach przeglądów **mowy** Azure Portal i kluczy i są wymagane do uruchomienia kontenera.<br><br>**{API_KEY}** : klucz zasobu<br><br>**{ENDPOINT_URI}** : przykład identyfikatora URI punktu końcowego:`https://westus.api.cognitive.microsoft.com/sts/v1.0`|
 
 ## <a name="the-recommended-host-computer-configuration"></a>Zalecana konfiguracja komputera hosta
@@ -95,7 +95,7 @@ Odwiedź [centrum Helm firmy Microsoft][ms-helm-hub] , aby uzyskać wszystkie do
 helm repo add microsoft https://microsoft.github.io/charts/repo
 ```
 
-Następnie skonfigurujemy nasze wartości wykresu Helm. Skopiuj i wklej następujący YAML do pliku o nazwie `config-values.yaml`. Aby uzyskać więcej informacji na temat dostosowywania **Cognitive Services mowy lokalnego wykresu Helm**, zobacz [Dostosowywanie wykresów Helm](#customize-helm-charts). Zastąp wartości `apikey`iwłasnymi . `billing`
+Następnie skonfigurujemy nasze wartości wykresu Helm. Skopiuj i wklej następujący YAML do pliku o nazwie `config-values.yaml`. Aby uzyskać więcej informacji na temat dostosowywania **Cognitive Services mowy lokalnego wykresu Helm**, zobacz [Dostosowywanie wykresów Helm](#customize-helm-charts). Zastąp Komentarze `# {API_KEY}`ikomentarz własnymi wartościami. `# {ENDPOINT_URI}`
 
 ```yaml
 # These settings are deployment specific and users can provide customizations
@@ -113,8 +113,8 @@ speechToText:
       - containerpreview # Or an existing secret
     args:
       eula: accept
-      billing: # < Your billing URL >
-      apikey: # < Your API Key >
+      billing: # {ENDPOINT_URI}
+      apikey: # {API_KEY}
 
 # text-to-speech configurations
 textToSpeech:
@@ -129,8 +129,8 @@ textToSpeech:
       - containerpreview # Or an existing secret
     args:
       eula: accept
-      billing: # < Your billing URL >
-      apikey: # < Your API Key >
+      billing: # {ENDPOINT_URI}
+      apikey: # {API_KEY}
 ```
 
 > [!IMPORTANT]
@@ -262,7 +262,7 @@ Wykresy Helm są hierarchiczne. Jest to hierarchia umożliwiająca dziedziczenie
 
 [!INCLUDE [Text-to-Speech Helm Chart Config](includes/text-to-speech-chart-config.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat instalowania aplikacji z programem Helm w usłudze Azure Kubernetes Service (AKS), [odwiedź to tutaj][installing-helm-apps-in-aks].
 

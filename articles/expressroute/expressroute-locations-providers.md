@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: ae397c077ac87618b646883f9125c9da2df81bfd
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: cce14a2f6e7f8aeca6c7f716d66520cef9484dde
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036583"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562635"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partnerzy i lokalizacje komunikacji równorzędnej usługi ExpressRoute
 
@@ -188,7 +188,7 @@ Jeśli dostawca połączenia nie został wymieniony w poprzednich sekcjach, moż
 ## <a name="c1partners"></a>Łączność za pośrednictwem dodatkowych dostawców usług
 | **Location** | **Exchange** | **Dostawcy połączeń** |
 | --- | --- | --- |
-| **Amsterdam** | Equinix, Interxion, poziom 3 komunikacja, miasto | BICS, CloudXpress, Eurofiber, Fastweb S. p. A, perski mostka International, Kalaam Telecom Bahrajn B. S. C, MainOne, Nianet, post, Proximus, TDC Erhverv, Telecom Italia musujący, Telekom Deutschland GmbH, Telia |
+| **Amsterdam** | Equinix, Interxion, poziom 3 komunikacja, miasto | BICS, CloudXpress, Eurofiber, Fastweb S. p. A, perski Bridge International, Kalaam Telecom Bahrajn B. S. C, MainOne, Nianet, POST Telecom Luksemburg, Proximus, TDC Erhverv, Telecom Italia musujący, Telekom Deutschland GmbH, Telia |
 | **Atlanta** | Equinix| Castle korony
 | **Kapsztad** | Teraco | MTN |
 | **Chicago** | Equinix| Castle korony, spektrum korporacyjne, windstream |

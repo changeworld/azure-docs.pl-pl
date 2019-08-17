@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d9fc39edfad18c756c2816f9eb0b3774d8bf882c
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: a180e2ba6c1a610116271d5a9b6e3fdf562cecdf
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812679"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563199"
 ---
 # <a name="account-management-overview"></a>Omówienie zarządzania kontami
 
-Utworzenie usługi CloudSimple powoduje utworzenie konta w witrynie CloudSimple.  Konto jest skojarzone z subskrypcją platformy Azure, w której znajduje się usługa.  Wszyscy użytkownicy z rolami **właściciela** i współautora w subskrypcji mają dostęp do portalu CloudSimple.  Identyfikator subskrypcji platformy Azure i identyfikator dzierżawy skojarzone z usługą CloudSimple można znaleźć na [stronie konta](https://docs.azure.cloudsimple.com/account/).
+Utworzenie usługi CloudSimple powoduje utworzenie konta w witrynie CloudSimple.  Konto jest skojarzone z subskrypcją platformy Azure, w której znajduje się usługa.  Wszyscy użytkownicy z rolami **właściciela** i współautora w subskrypcji mają dostęp do portalu CloudSimple.  Identyfikator subskrypcji platformy Azure i identyfikator dzierżawy skojarzone z usługą CloudSimple można znaleźć na [stronie konta](account.md).
 
 ## <a name="additional-alert-emails"></a>Dodatkowe wiadomości e-mail dotyczące alertów
 
@@ -36,5 +36,5 @@ Wszyscy użytkownicy, którzy mają rolę **właściciela** i współautora w su
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Wyświetl podsumowanie konta](https://docs.azure.cloudsimple.com/account/)
-* [Wyświetl listę użytkowników](https://docs.azure.cloudsimple.com/users/)
+* [Wyświetl podsumowanie konta](account.md)
+* [Wyświetl listę użytkowników](users.md)

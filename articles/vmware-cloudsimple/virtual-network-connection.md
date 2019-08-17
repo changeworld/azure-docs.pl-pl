@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8ba2d2fd9c943fe55e82956d022f6ba9840a550f
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 00d49d763dedc5d86557dadd10f5d727e7893dbe
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/16/2019
-ms.locfileid: "69536601"
+ms.locfileid: "69563062"
 ---
 # <a name="connect-azure-virtual-network-to-cloudsimple-using-expressroute"></a>Łączenie sieci wirtualnej platformy Azure z usługą CloudSimple przy użyciu usługi ExpressRoute
 
@@ -24,7 +24,7 @@ Sieć prywatną chmury można zwiększyć do sieci wirtualnej platformy Azure i 
 Klucz autoryzacji jest wymagany dla połączenia ExpressRoute między chmurą prywatną i siecią wirtualną platformy Azure. Aby uzyskać klucz, należy skorzystać z <a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank">pomocy technicznej</a>.  W żądaniu Skorzystaj z następujących informacji:
 
 * Typ problemu: **Naukow**
-* Subskrypcja: Wybierz subskrypcję, w której wdrożono usługę CloudSimple * *
+* Subskrypcja: **Wybierz subskrypcję, w której wdrożono usługę CloudSimple**
 * Usługa: **Rozwiązanie VMware według CloudSimple**
 * Typ problemu: **Żądanie obsługi**
 * Podtyp problemu: **Klucz autoryzacji dla połączenia sieci wirtualnej platformy Azure**

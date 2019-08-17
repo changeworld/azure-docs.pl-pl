@@ -1,5 +1,5 @@
 ---
-title: CreateUiDefitinion. JSON dla środowiska tworzenia aplikacji zarządzanej platformy Azure | Microsoft Docs
+title: CreateUiDefinition. JSON dla środowiska tworzenia aplikacji zarządzanej platformy Azure | Microsoft Docs
 description: Opisuje sposób tworzenia definicji interfejsu użytkownika dla Azure Managed Applications
 services: managed-applications
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 292f2995e7ff1f56c306b8c9859bdb323f21762d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 1ee6d9332a2be5ccb22b7571b348e2e0aae78fb2
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847607"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563560"
 ---
-# <a name="createuidefitinionjson-for-azure-managed-applications-create-experience"></a>CreateUiDefitinion. JSON dla środowiska tworzenia aplikacji zarządzanej przez platformę Azure
+# <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>CreateUiDefinition. JSON dla środowiska tworzenia aplikacji zarządzanej przez platformę Azure
 
 W tym dokumencie przedstawiono podstawowe pojęcia dotyczące pliku **createUiDefinition. JSON** , który Azure Portal używany do definiowania interfejsu użytkownika podczas tworzenia zarządzanej aplikacji.
 

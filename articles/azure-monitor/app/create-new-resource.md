@@ -1,6 +1,6 @@
 ---
-title: Utwórz nowy zasób usługi Azure Application Insights | Dokumentacja firmy Microsoft
-description: Ręcznie skonfiguruj monitorowanie usługi Application Insights dla nowej aplikacji na żywo.
+title: Tworzenie nowego zasobu usługi Azure Application Insights | Microsoft Docs
+description: Ręcznie skonfiguruj Application Insights monitorowania dla nowej aplikacji na żywo.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -10,59 +10,154 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/10/2019
+ms.date: 08/16/2019
 ms.author: mbullwin
-ms.openlocfilehash: 9da52e5a9dfa3b55431d66ed3162172226f71a40
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ae9c885b342664baf90f9c2b5702a092c9d838df
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67073290"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562843"
 ---
 # <a name="create-an-application-insights-resource"></a>Tworzenie zasobu usługi Application Insights
 
-Usługa Azure Application Insights zawiera dane dotyczące Twojej aplikacji w systemie Microsoft Azure *zasobów*. Tworzenie nowego zasobu znajduje się w związku z tym [konfiguracji usługi Application Insights na potrzeby monitorowania nowej aplikacji][start]. Po utworzeniu nowego zasobu, możesz pobrać jego klucza Instrumentacji i używać go do konfigurowania zestawu SDK usługi Application Insights. Klucz Instrumentacji łączy telemetrii do zasobu.
+Usługa Azure Application Insights wyświetla dane dotyczące aplikacji w Microsoft Azure *zasobu*. Tworzenie nowego zasobu jest w związku z tym częścią [konfigurowania Application Insights do monitorowania nowej aplikacji][start]. Po utworzeniu nowego zasobu można pobrać jego klucz Instrumentacji i użyć go do skonfigurowania zestawu SDK Application Insights. Klucz Instrumentacji łączy dane telemetryczne z zasobem.
 
-## <a name="sign-in-to-microsoft-azure"></a>Zaloguj się do platformy Microsoft Azure
+## <a name="sign-in-to-microsoft-azure"></a>Zaloguj się do Microsoft Azure
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
 ## <a name="create-an-application-insights-resource"></a>Tworzenie zasobu usługi Application Insights
 
-Zaloguj się do [witryny Azure portal](https://portal.azure.com)i Utwórz zasób usługi Application Insights:
+Zaloguj się do [Azure Portal](https://portal.azure.com)i utwórz zasób Application Insights:
 
-![Kliknij znak "+" w lewym górnym rogu. Wybierz narzędzia dla deweloperów, a następnie przez usługę Application Insights](./media/create-new-resource/new-app-insights.png)
+![Kliknij znak "+" w lewym górnym rogu. Wybierz Narzędzia deweloperskie a następnie Application Insights](./media/create-new-resource/new-app-insights.png)
 
-   | Ustawienia        |  Wartość           | Opis  |
+   | Ustawienia        |  Value           | Opis  |
    | ------------- |:-------------|:-----|
    | **Nazwa**      | Wartość unikatowa w skali globalnej | Nazwa identyfikująca monitorowaną aplikację. |
-   | **Grupa zasobów**     | myResourceGroup      | Nazwa nowej lub istniejącej grupy zasobów do przechowywania danych usługi App Insights. |
-   | **Lokalizacja** | Wschodnie stany USA | Wybierz lokalizację w pobliżu Ciebie lub w pobliżu miejsca hostowania aplikacji. |
+   | **Grupa zasobów**     | myResourceGroup      | Nazwa nowej lub istniejącej grupy zasobów do hostowania danych usługi App Insights. |
+   | **Location** | East US | Wybierz lokalizację znajdującą się w sąsiedztwie lub w miejscu, w którym znajduje się aplikacja. |
 
-Wprowadź odpowiednie wartości w wymaganych polach, a następnie wybierz **przeglądu + Utwórz**.
+Wprowadź odpowiednie wartości w wymaganych polach, a następnie wybierz pozycję **Przegląd + Utwórz**.
 
-![Wprowadź wartości w polach wymagane, a następnie wybierz pozycję "Przeglądanie + tworzenie".](./media/create-new-resource/review-create.png)
+![Wprowadź wartości w wymaganych polach, a następnie wybierz pozycję "Przejrzyj + Utwórz".](./media/create-new-resource/review-create.png)
 
-Po utworzeniu aplikacji, zostanie otwarte nowe okienko. To okienko jest tam, gdzie zobaczysz danych użycia i wydajności dotyczące monitorowanej aplikacji. 
+Po utworzeniu aplikacji zostanie otwarte nowe okienko. To okienko służy do wyświetlania danych dotyczących wydajności i użycia dotyczących monitorowanej aplikacji. 
 
-## <a name="copy-the-instrumentation-key"></a>Skopiuj klucz Instrumentacji
+## <a name="copy-the-instrumentation-key"></a>Kopiowanie klucza Instrumentacji
 
-Klucz Instrumentacji identyfikuje zasób, który chcesz skojarzyć dane telemetryczne z. Konieczne będzie kopiowania, aby dodać klucz Instrumentacji do kodu aplikacji.
+Klucz Instrumentacji identyfikuje zasób, z którym chcesz skojarzyć dane telemetryczne. Należy skopiować, aby dodać klucz instrumentacji do kodu aplikacji.
 
-![Kliknij przycisk, a następnie skopiuj klucz Instrumentacji](./media/create-new-resource/instrumentation-key.png)
+![Kliknij i skopiuj klucz Instrumentacji](./media/create-new-resource/instrumentation-key.png)
 
-## <a name="install-the-sdk-in-your-app"></a>Zainstaluj zestaw SDK w aplikacji
+## <a name="install-the-sdk-in-your-app"></a>Instalowanie zestawu SDK w aplikacji
 
-Zainstaluj zestaw SDK usługi Application Insights w swojej aplikacji. Ten krok zależy od intensywnie typu aplikacji.
+Zainstaluj zestaw SDK Application Insights w aplikacji. Ten krok zależy w dużym stopniu od typu aplikacji.
 
-Użyj klucza Instrumentacji do skonfigurowania [zestawu SDK, który można zainstalować w aplikacji][start].
+Użyj klucza Instrumentacja, aby skonfigurować [zestaw SDK, który zostanie zainstalowany w aplikacji][start].
 
-Zestaw SDK zawiera standardowe moduły, które wysyłają dane telemetryczne bez konieczności pisania dodatkowego kodu. Śledzenie działań użytkownika lub diagnozować problemy z bardziej szczegółowo [za pomocą interfejsu API] [ api] do wysyłania własnej telemetrii.
+Zestaw SDK zawiera standardowe moduły wysyłające dane telemetryczne bez konieczności pisania dodatkowego kodu. Aby śledzić akcje użytkownika lub diagnozować problemy bardziej szczegółowo, [Użyj interfejsu API][api] do wysyłania własnej telemetrii.
 
 ## <a name="creating-a-resource-automatically"></a>Automatyczne tworzenie zasobu
-Można napisać [skrypt programu PowerShell](../../azure-monitor/app/powershell.md) automatycznego tworzenia zasobu.
 
-## <a name="next-steps"></a>Kolejne kroki
+### <a name="powershell"></a>PowerShell
+
+Tworzenie nowego zasobu Application Insights
+
+```powershell
+New-AzApplicationInsights [-ResourceGroupName] <String> [-Name] <String> [-Location] <String> [-Kind <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+#### <a name="example"></a>Przykład
+
+```powershell
+New-AzApplicationInsights -Kind java -ResourceGroupName testgroup -Name test1027 -location eastus
+```
+#### <a name="results"></a>Wyniki
+
+```powershell
+Id                 : /subscriptions/{subid}/resourceGroups/testgroup/providers/microsoft.insights/components/test1027
+ResourceGroupName  : testgroup
+Name               : test1027
+Kind               : web
+Location           : eastus
+Type               : microsoft.insights/components
+AppId              : 8323fb13-32aa-46af-b467-8355cf4f8f98
+ApplicationType    : web
+Tags               : {}
+CreationDate       : 10/27/2017 4:56:40 PM
+FlowType           :
+HockeyAppId        :
+HockeyAppToken     :
+InstrumentationKey : 00000000-aaaa-bbbb-cccc-dddddddddddd
+ProvisioningState  : Succeeded
+RequestSource      : AzurePowerShell
+SamplingPercentage :
+TenantId           : {subid}
+```
+
+Pełna Dokumentacja programu PowerShell dla tego polecenia cmdlet i Dowiedz się, jak pobrać klucz instrumentacji, zapoznaj się z [dokumentacją Azure PowerShell](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.5.0).
+
+### <a name="azure-cli-preview"></a>Interfejs wiersza polecenia platformy Azure (wersja zapoznawcza)
+
+Aby uzyskać dostęp do wersji zapoznawczej Application Insights poleceń interfejsu wiersza polecenia platformy Azure, musisz najpierw wykonać następujące działania:
+
+```azurecli
+ az extension add -n application-insights
+```
+
+Jeśli `az extension add` polecenie nie zostanie uruchomione, zostanie wyświetlony komunikat o błędzie informujący o tym, że:`az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
+
+Teraz można wykonać następujące czynności, aby utworzyć zasób Application Insights:
+
+```azurecli
+az monitor app-insights component create --app
+                                         --location
+                                         --resource-group
+                                         [--application-type]
+                                         [--kind]
+                                         [--tags]
+```
+
+#### <a name="example"></a>Przykład
+
+```azurecli
+az monitor app-insights component create --app demoApp --location westus2 --kind web -g demoRg --application-type web
+```
+
+#### <a name="results"></a>Wyniki
+
+```azurecli
+az monitor app-insights component create --app demoApp --location eastus --kind web -g demoApp  --application-type web
+{
+  "appId": "87ba512c-e8c9-48d7-b6eb-118d4aee2697",
+  "applicationId": "demoApp",
+  "applicationType": "web",
+  "creationDate": "2019-08-16T18:15:59.740014+00:00",
+  "etag": "\"0300edb9-0000-0100-0000-5d56f2e00000\"",
+  "flowType": "Bluefield",
+  "hockeyAppId": null,
+  "hockeyAppToken": null,
+  "id": "/subscriptions/{subid}/resourceGroups/demoApp/providers/microsoft.insights/components/demoApp",
+  "instrumentationKey": "00000000-aaaa-bbbb-cccc-dddddddddddd",
+  "kind": "web",
+  "location": "eastus",
+  "name": "demoApp",
+  "provisioningState": "Succeeded",
+  "requestSource": "rest",
+  "resourceGroup": "demoApp",
+  "samplingPercentage": null,
+  "tags": {},
+  "tenantId": {tenantID},
+  "type": "microsoft.insights/components"
+}
+```
+
+Aby zapoznać się z pełną dokumentacją interfejsu wiersza polecenia platformy Azure dotyczącymi tego poleceń i dowiedzieć się, jak pobrać klucz instrumentacji, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create).
+
+## <a name="next-steps"></a>Następne kroki
 * [Wyszukiwanie diagnostyczne](../../azure-monitor/app/diagnostic-search.md)
 * [Eksplorowanie metryk](../../azure-monitor/app/metrics-explorer.md)
 * [Pisanie zapytań analitycznych](../../azure-monitor/app/analytics.md)

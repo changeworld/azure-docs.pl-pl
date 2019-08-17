@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 7f931a72eab534bc2856e9e545b684d2b8ae7a60
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 88b6fbbd68f1f98e50ec0f04336a022dc1580a73
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444036"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562901"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Technologie wdrażania w Azure Functions
 
@@ -31,7 +31,7 @@ Azure Functions obsługuje Międzyplatformowe programowanie lokalne i hosting w 
 
 Każdy plan ma inne zachowania. Nie wszystkie technologie wdrażania są dostępne dla każdej wersji Azure Functions. Na poniższym wykresie przedstawiono, które technologie wdrażania są obsługiwane dla każdej kombinacji systemu operacyjnego i planu hostingu:
 
-| Technologia wdrażania | Użycie systemu Windows | Windows Premium (wersja zapoznawcza) | Dedykowane systemu Windows  | Użycie systemu Linux (wersja zapoznawcza) | System Linux — dedykowany |
+| Technologia wdrażania | Użycie systemu Windows | Windows Premium (wersja zapoznawcza) | Dedykowane systemu Windows  | Użycie systemu Linux | System Linux — dedykowany |
 |-----------------------|:-------------------:|:-------------------------:|:-----------------:|:---------------------------:|:---------------:|
 | Zewnętrzny adres URL pakietu<sup>1</sup> |✔|✔|✔|✔|✔|
 | Wdróż plik zip |✔|✔|✔| |✔|
@@ -70,7 +70,7 @@ Możesz użyć zewnętrznego adresu URL pakietu, aby odwołać się do pliku pak
 >
 >Jeśli używasz usługi Azure Blob Storage, użyj prywatnego kontenera z sygnaturą [dostępu](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) współdzielonego, aby zapewnić funkcje dostępu do pakietu. Za każdym razem, gdy aplikacja zostanie ponownie uruchomiona, pobiera kopię zawartości. Twoje odwołanie musi być ważne przez okres istnienia aplikacji.
 
->__Kiedy używać go:__ Zewnętrzny adres URL pakietu to jedyna obsługiwana metoda wdrażania dla Azure Functions uruchamiana w systemie Linux w planie zużycia (wersja zapoznawcza). Gdy aktualizujesz plik pakietu, do którego odwołuje się aplikacja funkcji, musisz [ręcznie zsynchronizować wyzwalacze](#trigger-syncing) , aby poinformować platformę Azure, że Twoja aplikacja uległa zmianie.
+>__Kiedy używać go:__ Zewnętrzny adres URL pakietu to jedyna obsługiwana metoda wdrażania dla Azure Functions uruchamiana w systemie Linux w planie zużycia. Gdy aktualizujesz plik pakietu, do którego odwołuje się aplikacja funkcji, musisz [ręcznie zsynchronizować wyzwalacze](#trigger-syncing) , aby poinformować platformę Azure, że Twoja aplikacja uległa zmianie.
 
 ### <a name="zip-deploy"></a>Wdróż plik zip
 
@@ -151,7 +151,7 @@ W edytorze opartym na portalu można bezpośrednio edytować pliki znajdujące s
 
 W poniższej tabeli przedstawiono systemy operacyjne i języki obsługujące edycję portalu:
 
-| | Użycie systemu Windows | Windows Premium (wersja zapoznawcza) | Dedykowane systemu Windows | Użycie systemu Linux (wersja zapoznawcza) | Linux Premium (wersja zapoznawcza)| System Linux — dedykowany |
+| | Użycie systemu Windows | Windows Premium (wersja zapoznawcza) | Dedykowane systemu Windows | Użycie systemu Linux | Linux Premium (wersja zapoznawcza)| System Linux — dedykowany |
 |-|:-----------------: |:-------------------------:|:-----------------:|:---------------------------:|:---------------:|:---------------:|
 | C# | | | | | |
 | C#Napisy |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|
@@ -184,7 +184,7 @@ Istnieją dwa poziomy wsparcia dla miejsc wdrożenia:
 | Linux Premium (wersja zapoznawcza) | Wersja zapoznawcza |
 | System Linux — dedykowany | Ogólna dostępność |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Przeczytaj te artykuły, aby dowiedzieć się więcej o wdrażaniu aplikacji funkcji: 
 

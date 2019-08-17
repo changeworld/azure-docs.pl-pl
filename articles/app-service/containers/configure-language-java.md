@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 825379c04c22b3f13e651455c490a58ad47169d8
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: b71cf55944c1049fa2c3ddca79f02a8b75b9b2ec
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967163"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563013"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurowanie aplikacji Java dla systemu Linux dla Azure App Service
 
@@ -139,7 +139,7 @@ Deweloperzy korzystający z jednej aplikacji z jednym miejscem wdrożenia w rama
 
 Podczas dostrajania ustawień sterty aplikacji Przejrzyj szczegóły planu App Service i Uwzględnij wiele aplikacji oraz miejsce wdrożenia, aby znaleźć optymalną alokację pamięci.
 
-Jeśli wdrażasz aplikację JAR, powinna ona mieć nazwę *App. jar* , aby wbudowany obraz mógł prawidłowo identyfikować aplikację. (Wtyczka Maven zmienia nazwę automatycznie). Jeśli nie chcesz zmienić nazwy pliku JAR na *App. jar*, możesz przekazać skrypt powłoki przy użyciu polecenia, aby uruchomić plik JAR. Następnie wklej pełną ścieżkę do tego skryptu w polu tekstowym [plik startowy](app-service-linux-faq.md#built-in-images) w sekcji konfiguracja portalu.
+Jeśli wdrażasz aplikację JAR, powinna ona mieć nazwę *App. jar* , aby wbudowany obraz mógł prawidłowo identyfikować aplikację. (Wtyczka Maven zmienia nazwę automatycznie). Jeśli nie chcesz zmienić nazwy pliku JAR na *App. jar*, możesz przekazać skrypt powłoki przy użyciu polecenia, aby uruchomić plik JAR. Następnie wklej pełną ścieżkę do tego skryptu w polu tekstowym [plik startowy](app-service-linux-faq.md#built-in-images) w sekcji konfiguracja portalu. Skrypt uruchamiania nie jest uruchamiany z katalogu, w którym został umieszczony. W związku z tym zawsze należy używać ścieżek bezwzględnych do odwoływania się do plików `java -jar /home/myapp/myapp.jar`w skrypcie uruchomieniowym (na przykład:).
 
 ### <a name="turn-on-web-sockets"></a>Włącz gniazda sieci Web
 

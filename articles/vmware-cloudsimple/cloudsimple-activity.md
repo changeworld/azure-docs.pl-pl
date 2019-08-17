@@ -8,34 +8,33 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b87a4e2889e9e65a3173a4c11d9c92a33e8e70b7
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: ad7905244ca190badf73c9a812a8f72282cbcdf3
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816249"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563176"
 ---
 # <a name="activity-management-overview"></a>Przegląd zarządzania działaniami
 
-CloudSimple śledzi wszystkie działania, które mogą mieć wpływ na działanie chmur prywatnych. Te działania, w tym alerty, zdarzenia, zadania i działania inspekcji. [Strony działań](https://docs.azure.cloudsimple.com/activity/) podsumowują wszystkie bieżące działania i umożliwiają przechodzenie do szczegółów w celu uzyskania dodatkowych szczegółów.
+CloudSimple śledzi wszystkie działania, które mogą mieć wpływ na działanie środowiska chmury prywatnej. Działania obejmują alerty, zdarzenia, zadania i działania inspekcji. [Strony działań](monitor-activity.md) podsumowują wszystkie bieżące działania i umożliwiają przechodzenie do szczegółów w celu uzyskania dodatkowych szczegółów.
 
 ## <a name="events"></a>Events
 
-Zdarzenia śledzą aktywność użytkowników i systemu w portalu CloudSimple.  Zdarzenia pokazują działanie powiązane z określonym zasobem i ważnością wpływu.  Zdarzenia można wyświetlić w portalu CloudSimple.
+Zdarzenia śledzą aktywność użytkowników i systemu w portalu CloudSimple. Zdarzenia pokazują działanie powiązane z określonym zasobem i ważnością wpływu.  Zdarzenia można wyświetlić w portalu CloudSimple.
 
 ## <a name="alerts"></a>Alerty
 
-Alerty są powiadomieniami o wszelkich znaczących działaniach w środowisku CloudSimple.  Zdarzenia, które mają wpływ na rozliczenia lub dostęp użytkownika, są wyświetlane jako alerty.  Zgłoszone alerty można potwierdzić w portalu CloudSimple.
+Alerty są powiadomieniami o wszelkich znaczących działaniach w środowisku CloudSimple. Zdarzenia, które mają wpływ na rozliczenia lub dostęp użytkownika, są wyświetlane jako alerty.  Można potwierdzić alerty z portalu CloudSimple.
 
 ## <a name="tasks"></a>Zadania
 
-Zadania śledzą każdą operację użytkownika, która zajmuje więcej niż 30 sekund.  Możesz monitorować postęp zadania w portalu CloudSimple.  Zadania wykonane przedstawiają łączny czas trwania zadania.
+Zadania śledzą każdą operację użytkownika, która zajmuje więcej niż 30 sekund. Możesz monitorować postęp zadania w portalu CloudSimple.  W przypadku ukończonych zadań informacje obejmują łączny czas ukończenia.
 
 ## <a name="audit"></a>Inspekcja
 
-Dzienniki inspekcji śledzą operacje wykonywane przez użytkownika.  Dzienniki zawierają parametry dostarczone przez użytkownika dla operacji.  Dzienników inspekcji można użyć do monitorowania aktywności użytkowników dla wszystkich użytkowników.
+Dzienniki inspekcji śledzą operacje użytkownika. Dzienniki inspekcji zawierają parametry podane dla operacji użytkownika.  Dzienników inspekcji można użyć do monitorowania aktywności użytkowników dla wszystkich użytkowników.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Wyświetlanie podsumowania konta](https://docs.azure.cloudsimple.com/account/)
-* [Wyświetlanie dziennika użycia](https://docs.azure.cloudsimple.com/usage/)
+* [Wyświetlanie podsumowania konta](account.md)
