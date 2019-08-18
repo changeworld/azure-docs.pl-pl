@@ -54,9 +54,9 @@ Następujące właściwości są obsługiwane dla połączonej usługi tabeli si
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type musi mieć ustawioną wartość: **Web** |Yes |
+| type | Właściwość Type musi mieć ustawioną wartość: **Sieć Web** |Yes |
 | url | Adres URL źródła sieci Web |Tak |
-| authenticationType | Dozwolona wartość to: **Anonymous**. |Tak |
+| authenticationType | Dozwolona wartość to: **Anonimowe**. |Tak |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Samodzielna Integration Runtime jest wymagana, jak wspomniano [](#prerequisites)w wymaganiach wstępnych. |Tak |
 
 **Przykład:**
