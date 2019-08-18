@@ -1,0 +1,65 @@
+---
+title: Stosowanie licencji systemu Windows do maszyn wirtualnych hosta sesji — Azure
+description: Zawiera opis sposobu zastosowania licencji systemu Windows dla maszyn wirtualnych z systemem Windows dla komputerów stacjonarnych.
+services: virtual-desktop
+author: ChristianMontoya
+ms.service: virtual-desktop
+ms.topic: conceptual
+ms.date: 08/14/2019
+ms.author: chrimo
+ms.openlocfilehash: af8542ccc8fad8d833d8329999ded2f5a52b3d03
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69564201"
+---
+# <a name="apply-windows-license-to-session-host-virtual-machines"></a>Zastosuj licencję systemu Windows na maszyny wirtualne hosta sesji
+
+Klienci, którzy są prawidłowo licencjonowani do uruchamiania obciążeń pulpitu wirtualnego systemu Windows, mogą stosować licencję systemu Windows na maszynach wirtualnych hosta sesji i uruchamiać je bez płacenia za inną licencję. Aby uzyskać więcej informacji, zobacz [Cennik pulpitu wirtualnego systemu Windows](https://azure.microsoft.com/pricing/details/virtual-desktop/).
+
+## <a name="ways-to-use-your-windows-virtual-desktop-license"></a>Sposoby korzystania z licencji pulpitu wirtualnego systemu Windows
+Licencjonowanie usług pulpitu wirtualnego systemu Windows umożliwia zastosowanie licencji do dowolnej maszyny wirtualnej z systemem Windows lub Windows Server, która jest zarejestrowana jako Host sesji w puli hostów i odbiera połączenia użytkownika. Ta licencja nie ma zastosowania do maszyn wirtualnych, które działają jako serwery udziałów plików, kontrolery domeny i tak dalej.
+
+Istnieje kilka sposobów używania licencji pulpitu wirtualnego systemu Windows:
+- Można utworzyć pulę hostów i jej maszyny wirtualne hosta sesji za pomocą [oferty portalu Azure Marketplace](./create-host-pools-azure-marketplace.md). Maszyny wirtualne utworzone w ten sposób automatycznie mają zastosowana licencję.
+- Pulę hostów i jej maszyny wirtualne hosta sesji można utworzyć przy użyciu [szablonu Azure Resource Manager GitHub](./create-host-pools-arm-template.md). Maszyny wirtualne utworzone w ten sposób automatycznie mają zastosowana licencję.
+- Możesz zastosować licencję do istniejącej maszyny wirtualnej hosta sesji. Aby to zrobić, najpierw postępuj zgodnie z instrukcjami w temacie [Tworzenie puli hostów przy użyciu programu PowerShell](./create-host-pools-powershell.md) , aby utworzyć pulę hostów i skojarzone maszyny wirtualne, a następnie wróć do tego artykułu, aby dowiedzieć się, jak zastosować licencję.
+
+## <a name="apply-a-windows-license-to-a-session-host-vm"></a>Stosowanie licencji systemu Windows na maszynę wirtualną hosta sesji
+Upewnij się, że [zainstalowano i skonfigurowano najnowszą Azure PowerShell](/powershell/azure/overview). Uruchom następujące polecenie cmdlet programu PowerShell, aby zastosować licencję systemu Windows:
+
+```powershell
+$vm = Get-AzVM -ResourceGroup <resourceGroupName> -Name <vmName>
+$vm.LicenseType = "Windows_Client"
+Update-AzVM -ResourceGroupName <resourceGroupName> -VM $vm
+```
+
+## <a name="verify-your-session-host-vm-is-utilizing-the-licensing-benefit"></a>Sprawdź, czy maszyna wirtualna hosta sesji korzysta z korzyści licencjonowania
+Po wdrożeniu maszyny wirtualnej Uruchom to polecenie cmdlet, aby zweryfikować typ licencji:
+```powershell
+Get-AzVM -ResourceGroup <resourceGroupName> -Name <vmName>
+```
+
+Na maszynie wirtualnej hosta sesji z założoną licencją systemu Windows zostanie wyświetlony następujący element:
+
+```powershell
+Type                     : Microsoft.Compute/virtualMachines
+Location                 : westus
+LicenseType              : Windows_Client
+```
+
+W przypadku maszyn wirtualnych bez zastosowanej licencji systemu Windows zostanie wyświetlony następujący element:
+
+```powershell
+Type                     : Microsoft.Compute/virtualMachines
+Location                 : westus
+LicenseType              :
+```
+
+Uruchom następujące polecenie cmdlet, aby wyświetlić listę wszystkich maszyn wirtualnych hosta sesji z licencją systemu Windows zastosowanej w ramach subskrypcji platformy Azure:
+
+```powershell
+$vms = Get-AzVM
+$vms | ?{$_.LicenseType -like "Windows_Client"} | select ResourceGroupName, Name, LicenseType
+```

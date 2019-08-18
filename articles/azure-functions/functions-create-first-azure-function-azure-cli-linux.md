@@ -11,20 +11,20 @@ ms.service: azure-functions
 ms.custom: mvc, fasttrack-edit
 ms.devlang: javascript
 manager: jeconnoc
-ms.openlocfilehash: 84e05b7afa2746587f2ea5008d493730ccbfad7e
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 40a2d3ab4ec358b5b2d0105703cdc25cdb777c29
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950034"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562974"
 ---
-# <a name="create-your-first-function-hosted-on-linux-using-core-tools-and-the-azure-cli-preview"></a>Tworzenie pierwszej funkcji hostowanej w systemie Linux za pomocą narzędzi Core Tools i interfejsu wiersza polecenia platformy Azure (wersja zapoznawcza)
+# <a name="create-your-first-function-hosted-on-linux-using-core-tools-and-the-azure-cli"></a>Tworzenie pierwszej funkcji hostowanej w systemie Linux przy użyciu narzędzi podstawowych i interfejsu wiersza polecenia platformy Azure
 
-Usługa Azure Functions umożliwia wykonywanie kodu w środowisku [bezserwerowym](https://azure.com/serverless) systemu Linux bez konieczności uprzedniego tworzenia maszyny wirtualnej lub publikowania aplikacji internetowej. Hosting w systemie Linux wymaga [środowiska uruchomieniowego 2,0](functions-versions.md). Obsługa uruchamiania aplikacji funkcji w systemie Linux w [planie zużycia](functions-scale.md#consumption-plan) bezserwerowego jest obecnie w wersji zapoznawczej. Aby dowiedzieć się więcej, zobacz artykuł dotyczący [zagadnień dotyczących wersji](https://aka.ms/funclinux)zapoznawczej.
+Usługa Azure Functions umożliwia wykonywanie kodu w środowisku [bezserwerowym](https://azure.com/serverless) systemu Linux bez konieczności uprzedniego tworzenia maszyny wirtualnej lub publikowania aplikacji internetowej. Hosting w systemie Linux wymaga [środowiska uruchomieniowego w wersji 2. x](functions-versions.md). Funkcje bezserwerowe działają w [planie zużycia](functions-scale.md#consumption-plan).
 
 W tym artykule Szybki start przedstawiono sposób użycia interfejsu wiersza polecenia platformy Azure w celu utworzenia pierwszej aplikacji funkcji działającej w systemie Linux. Kod funkcji jest tworzony lokalnie, a następnie wdrażany na platformie Azure za pomocą narzędzi [Azure Functions Core Tools](functions-run-local.md).
 
-Poniższe kroki można wykonać na komputerze Mac, w systemie Windows lub w systemie Linux. W tym artykule opisano sposób tworzenia funkcji w języku JavaScript lub C#. Aby dowiedzieć się, jak tworzyć funkcje języka Python, zobacz [Create your first Python function using Core Tools and the Azure CLI (preview) (Tworzenie pierwszej funkcji języka Python za pomocą narzędzi Core Tools i interfejsu wiersza polecenia platformy Azure — wersja zapoznawcza)](functions-create-first-function-python.md).
+Poniższe kroki można wykonać na komputerze Mac, w systemie Windows lub w systemie Linux. W tym artykule opisano sposób tworzenia funkcji w języku JavaScript lub C#. Aby dowiedzieć się, jak tworzyć funkcje języka Python, zobacz [Tworzenie pierwszej funkcji języka Python za pomocą podstawowych narzędzi i interfejsu wiersza polecenia platformy Azure](functions-create-first-function-python.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

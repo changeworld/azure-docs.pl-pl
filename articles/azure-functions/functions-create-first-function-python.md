@@ -11,16 +11,14 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 58f5cfd3718720cafc922bbd7b974a353e0d9d02
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 47de61db96b0f8f9b338f135d4f32eecc4a64efe
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722797"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562963"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Tworzenie funkcji wyzwalanej przez protokół HTTP na platformie Azure
-
-[!INCLUDE [functions-python-preview-note](../../includes/functions-python-preview-note.md)]
 
 W tym artykule pokazano, jak za pomocą narzędzi wiersza polecenia utworzyć projekt w języku Python, który działa w Azure Functions. Utworzona funkcja jest wyzwalana przez żądania HTTP. Na koniec opublikujesz projekt do uruchamiania jako [Funkcja](functions-scale.md#consumption-plan) bezserwerowa na platformie Azure.
 
@@ -40,9 +38,9 @@ Przed rozpoczęciem należy wykonać następujące czynności:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-and-activate-a-virtual-environment"></a>Tworzenie i aktywowanie środowiska wirtualnego
+## <a name="create-and-activate-a-virtual-environment-optional"></a>Tworzenie i aktywowanie środowiska wirtualnego (opcjonalnie)
 
-Aby lokalnie opracowywać i testować funkcje języka Python, musisz pracować w środowisku Python 3,6. Uruchom następujące polecenia, aby utworzyć i aktywować środowisko wirtualne o nazwie `.venv`.
+Aby lokalnie opracowywać i testować funkcje języka Python, zaleca się używanie środowiska Python 3,6. Uruchom następujące polecenia, aby utworzyć i aktywować środowisko wirtualne o nazwie `.venv`.
 
 ### <a name="bash"></a>Bash
 
@@ -165,9 +163,10 @@ az functionapp create --resource-group myResourceGroup --os-type Linux \
 --consumption-plan-location westeurope  --runtime python \
 --name <APP_NAME> --storage-account  <STORAGE_NAME>
 ```
-
 > [!NOTE]
-> Azure Functions plan zużycia dla systemu Linux jest obecnie w wersji zapoznawczej i dostępny tylko w następujących regionach: Zachodnie stany USA, Wschodnie stany USA, Europa Zachodnia, Azja Wschodnia. Ponadto aplikacje dla systemów Linux i Windows nie mogą być hostowane w tej samej grupie zasobów. Jeśli masz istniejącą grupę zasobów o nazwie `myResourceGroup` przy użyciu aplikacji funkcji systemu Windows lub aplikacji sieci Web, musisz użyć innej grupy zasobów.
+> Aplikacje dla systemów Linux i Windows nie mogą być hostowane w tej samej grupie zasobów. Jeśli masz istniejącą grupę zasobów o nazwie `myResourceGroup` przy użyciu aplikacji funkcji systemu Windows lub aplikacji sieci Web, musisz użyć innej grupy zasobów.
+
+To polecenie spowoduje również udostępnienie skojarzonego wystąpienia usługi Azure Application Insights w tej samej grupie zasobów, która może być używana do monitorowania i wyświetlania dzienników.
 
 Teraz możesz przystąpić do publikowania projektu funkcji lokalnych w aplikacji funkcji na platformie Azure.
 
@@ -175,7 +174,10 @@ Teraz możesz przystąpić do publikowania projektu funkcji lokalnych w aplikacj
 
 [!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+> [!NOTE]
+> Aby przeglądać dzienniki niemal w czasie rzeczywistym dla opublikowanej aplikacji języka Python, zalecamy użycie [Live Metrics Stream Application Insights](functions-monitoring.md#streaming-logs)
+
+## <a name="next-steps"></a>Następne kroki
 
 Utworzono projekt funkcji języka Python z funkcją wyzwalaną przez protokół HTTP, uruchom go na komputerze lokalnym i wdrożony na platformie Azure. Teraz możesz rozłożyć funkcję przez...
 
