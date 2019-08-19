@@ -6,8 +6,6 @@
   items:
     - name: Co to jest maszyna wirtualna do analizy danych?
       href: overview.md
-    - name: Co to jest maszyna wirtualna do uczenia głębokiego?
-      href: deep-learning-dsvm-overview.md
     - name: Co to jest maszyna wirtualna analizy danych geograficznych ze sztuczną inteligencją?
       href: geo-ai-dsvm-overview.md
 - name: Przewodniki Szybki start
@@ -23,8 +21,6 @@
       href: provision-geo-ai-dsvm.md
 - name: Pojęcia
   items:
-    - name: Odnajdywanie maszyn DSVM
-      href: dsvm-tools-overview.md
     - name: Platformy sztucznej inteligencji i uczenia głębokiego
       href: dsvm-deep-learning-ai-frameworks.md
     - name: Języki programowania
@@ -49,8 +45,6 @@
       href: vm-do-ten-things.md
     - name: Używanie maszyny DSVM z systemem Linux
       href: linux-dsvm-walkthrough.md
-    - name: Używanie maszyny wirtualnej do uczenia głębokiego
-      href: use-deep-learning-dsvm.md
     - name: Używanie maszyny DSVM ze sztuczną inteligencją w zakresie danych geograficznych
       href: use-geo-ai-dsvm.md
     - name: Tworzenie autoskalowanej puli maszyn DSVM
