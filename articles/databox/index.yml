@@ -1,46 +1,127 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentacja usługi Azure Data Box — transfer danych offline
+summary: Urządzenia Azure Data Box umożliwiają transfer danych w trybie offline, gdy istnieją ograniczenia związane z czasem, siecią lub kosztami. W zależności od rozmiaru danych wybierz wersję Data Box Disk, Data Box lub Data Box Heavy.
 metadata:
   title: Dokumentacja usługi Azure Data Box — transfer danych offline
-  description: 'Urządzenia Data Box umożliwiają transfer danych na platformę Azure w trybie offline, gdy istnieją ograniczenia związane z czasem, siecią lub kosztami.'
+  description: Urządzenia Data Box umożliwiają transfer danych na platformę Azure w trybie offline, gdy istnieją ograniczenia związane z czasem, siecią lub kosztami.
   services: databox
-  author: alkohli
-  manager: twooley
   ms.service: databox
   ms.subservice: pod
   ms.topic: landing-page
-  ms.date: 07/03/2019
+  ms.collection: collection
+  author: alkohli
   ms.author: alkohli
-abstract:
-  description: 'Rodzina Azure Data Box umożliwia szybkie, niedrogie i niezawodne przesyłanie setek terabajtów danych na platformę Azure. Urządzenia Data Box umożliwiają transfer danych w trybie offline, gdy istnieją ograniczenia związane z czasem, siecią lub kosztami.<p>W zależności od rozmiaru danych wybierz wersję Data Box Disk, Data Box lub Data Box Heavy. Na każdym urządzeniu transfer danych na platformę Azure odbywa się w 4 prostych krokach — zamawianie, odbieranie, kopiowanie danych do urządzenia i zwracanie urządzenia na platformę Azure. W centrum danych platformy Azure dane są przekazywane, a następnie usuwane.</p><p>Dowiedz się, jak korzystać z usługi Data Box w celu transferowania danych w trybie offline dzięki naszym przewodnikom Szybki start i samouczkom.</p>'
-sections:
-  - title: Szybki start
-    items:
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_quick-start.svg'
-            text: Konfigurowanie usługi Data Box w witrynie Azure Portal
-            href: /azure/databox/data-box-quickstart-portal
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_quick-start.svg'
-            text: Konfigurowanie usługi Data Box Disk w witrynie Azure Portal
-            href: /azure/databox/data-box-disk-quickstart-portal
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_quick-start.svg'
-            text: Konfigurowanie usługi Data Box Heavy w witrynie Azure Portal
-            href: /azure/databox/data-box-heavy-quickstart-portal
-  - title: Samouczki
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Usługa Data Box
-            html: <p><a href="/azure/databox/data-box-deploy-ordered">Zamawianie urządzenia Azure Data Box</a></p><p><a href="/azure/databox/data-box-deploy-set-up">Podłączanie kabli i łączenie urządzenia Azure Data Box</a></p><p><a href="/azure/databox/data-box-deploy-copy-data">Kopiowanie danych na urządzenie Azure Data Box</a></p><p><a href="/azure/databox/data-box-deploy-picked-up">Zwracanie urządzenia Azure Data Box i weryfikowanie przekazywania</a></p>
-          - title: Usługa Data Box Disk
-            html: '<p><a href="/azure/databox/data-box-disk-deploy-ordered">Zamawianie urządzenia Azure Data Box Disk</a></p><p><a href="/azure/databox/data-box-disk-deploy-set-up">Rozpakowywanie, podłączanie i odblokowywanie urządzenia Azure Data Box Disk</a></p><p><a href="/azure/databox/data-box-disk-deploy-copy-data">Kopiowanie danych na urządzenie Azure Data Box Disk</a></p><p><a href="/azure/databox/data-box-disk-deploy-picked-up">Zwracanie urządzenia Azure Data Box Disk i weryfikowanie przekazywania</a></p>'
-          - title: Usługa Data Box Heavy
-            html: <p><a href="/azure/databox/data-box-heavy-deploy-ordered">Zamawianie urządzenia Azure Data Box Heavy</a></p><p><a href="/azure/databox/data-box-heavy-deploy-set-up">Podłączanie kabli i łączenie urządzenia Azure Data Box Heavy</a></p><p><a href="/azure/databox/data-box-heavy-deploy-copy-data">Kopiowanie danych do usługi Azure Data Box Heavy</a></p><p><a href="/azure/databox/data-box-heavy-deploy-picked-up">Zwracanie urządzenia Azure Data Box Heavy i weryfikowanie przekazywania</a></p>
+  ms.date: 08/14/2019
+  ms.openlocfilehash: 03de9ceffe4495b1c3a39dad6617cc72d022fbbd
+  ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 08/16/2019
+  ms.locfileid: "69557837"
+landingContent:
+- title: Informacje o rodzinie urządzeń Data Box
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest usługa Data Box?
+      url: data-box-overview.md
+    - text: Co to jest dysk usługi Data Box?
+      url: data-box-disk-overview.md
+    - text: Co to jest usługa Data Box Heavy?
+      url: data-box-heavy-overview.md
+  - linkListType: architecture
+    links:
+    - text: Wybieranie opcji transferu danych na platformie Azure
+      url: /azure/storage/common/storage-choose-data-transfer-solution
+- title: Rozpoczęcie pracy
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Konfigurowanie usługi Data Box
+      url: data-box-quickstart-portal.md
+    - text: Konfigurowanie usługi Data Box Disk
+      url: data-box-disk-quickstart-portal.md
+    - text: Konfigurowanie usługi Data Box Heavy
+      url: data-box-heavy-quickstart-portal.md
+  - linkListType: learn
+    links:
+    - text: Importowanie danych offline za pomocą usługi Data Box
+      url: https://docs.microsoft.com/learn/modules/move-data-with-azure-data-box/
+- title: Wyświetl wymagania
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Usługa Data Box
+      url: data-box-system-requirements.md
+    - text: Dla magazynu obiektów blob usługi Data Box
+      url: data-box-system-requirements-rest.md
+    - text: Usługa Data Box Disk
+      url: data-box-disk-system-requirements.md
+    - text: Usługa Data Box Heavy
+      url: data-box-heavy-system-requirements.md
+- title: Wdrażanie usługi Data Box
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Zamówienie
+      url: data-box-deploy-ordered.md
+    - text: Podłączenie
+      url: data-box-deploy-set-up.md
+    - text: Nawiązywanie połączenia, kopiowanie danych za pośrednictwem protokołu SMB
+      url: data-box-deploy-copy-data.md
+    - text: Zwracanie, przekazywanie, weryfikowanie danych platformy Azure
+      url: data-box-deploy-picked-up.md
+- title: Wdrażanie usługi Data Box Disk
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Zamówienie
+      url: data-box-disk-deploy-ordered.md
+    - text: Odblokowywanie i nawiązywanie połączenia
+      url: data-box-disk-deploy-set-up.md
+    - text: Kopiowanie, weryfikowanie danych
+      url: data-box-disk-deploy-copy-data.md
+    - text: Zwracanie, przekazywanie, weryfikowanie danych platformy Azure
+      url: data-box-disk-deploy-picked-up.md
+- title: Wdrażanie usługi Data Box Heavy
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Zamówienie
+      url: data-box-heavy-deploy-ordered.md
+    - text: Podłączenie
+      url: data-box-heavy-deploy-set-up.md
+    - text: Nawiązywanie połączenia, kopiowanie danych za pośrednictwem protokołu SMB
+      url: data-box-heavy-deploy-copy-data.md
+    - text: Zwracanie, przekazywanie, weryfikowanie danych platformy Azure
+      url: data-box-heavy-deploy-picked-up.md
+- title: Zarządzanie urządzeniem
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Usługa Data Box, usługa Data Box Heavy na platformie Azure
+      url: data-box-portal-admin.md
+    - text: Usługa Data Box, usługa Data Box Heavy za pośrednictwem lokalnego interfejsu użytkownika
+      url: data-box-local-web-ui-admin.md
+    - text: Usługa Data Box Disk na platformie Azure
+      url: data-box-portal-ui-admin.md
+- title: Często zadawane pytania
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Często zadawane pytania — usługa Data Box
+      url: data-box-faq.md
+    - text: Często zadawane pytania — usługa Data Box Disk
+      url: data-box-disk-faq.md
+- title: Rozwiązywanie problemów
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Usługa Data Box, usługa Data Box Heavy
+      url: data-box-troubleshoot.md
+    - text: Magazyn obiektów blob usługi Data Box
+      url: data-box-troubleshoot-rest.md
+    - text: Data Box Disk
+      url: data-box-disk-troubleshoot.md
+    - text: Otwieranie biletu pomocy technicznej
+      url: data-box-disk-contact-microsoft-support.md

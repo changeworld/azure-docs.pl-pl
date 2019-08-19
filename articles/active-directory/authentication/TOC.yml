@@ -25,7 +25,7 @@
       href: concept-authentication-methods.md
     - name: Uwierzytelnianie bez hasła
       href: concept-authentication-passwordless.md
-    - name: Rejestracja łączona
+    - name: Rejestracja informacji zabezpieczających
       href: concept-registration-mfa-sspr-combined.md
     - name: Resetowanie hasła
       items:
@@ -103,7 +103,7 @@
               href: howto-mfa-nps-extension-rdg.md
             - name: Sieć VPN
               href: howto-mfa-nps-extension-vpn.md
-    - name: Rejestracja łączona
+    - name: Rejestracja informacji zabezpieczających
       items:
         - name: Włączanie rejestracji łączonej
           href: howto-registration-mfa-sspr-combined.md

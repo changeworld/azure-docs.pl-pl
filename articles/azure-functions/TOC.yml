@@ -53,11 +53,9 @@
   items:
     - name: Funkcje z aplikacjami logiki
       href: functions-twitter-email.md
-    - name: Tworzenie bezserwerowego interfejsu API
-      href: functions-create-serverless-api.md
     - name: Programowanie funkcji języka Python za pomocą programu VS Code
       href: tutorial-vs-code-serverless-python.md
-    - name: Tworzenie definicji interfejsu OpenAPI
+    - name: Definicja interfejsu OpenAPI dla bezserwerowych interfejsów API
       href: functions-openapi-definition.md
     - name: Łączenie z siecią wirtualną
       href: functions-create-vnet.md
@@ -236,12 +234,10 @@
           href: functions-api-definition-getting-started.md
         - name: Eksportowanie do usług PowerApps i Microsoft Flow
           href: app-service-export-api-to-powerapps-and-flow.md
-        - name: Wywoływanie funkcji z usługi PowerApps
-          href: functions-powerapps-scenario.md
-        - name: Wywoływanie funkcji z usługi Microsoft Flow
-          href: functions-flow-scenario.md
         - name: Korzystanie z tożsamości zarządzanej
           href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        - name: Dostosowywanie punktu końcowego funkcji HTTP
+          href: functions-create-serverless-api.md
     - name: Rozwiązywanie problemów
       items:
         - name: Rozwiązywanie problemów z magazynem

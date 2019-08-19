@@ -213,29 +213,29 @@
         - name: Gdzie i jak wdrażać modele
           displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
-        - name: Maszyny wirtualne notesu
-          href: how-to-deploy-local-container-notebook-vm.md
-        - name: Azure Container Instances
-          displayName: aci
-          href: how-to-deploy-azure-container-instance.md
-        - name: Azure Kubernetes Service
+        - name: Wdrażanie w usłudze Azure Kubernetes Service
           displayName: 'aks, aad, authentication, azure active directory'
           href: how-to-deploy-azure-kubernetes-service.md
-        - name: Interfejs GPU
+        - name: Wdrażanie w celu wnioskowania na procesorze GPU
           href: how-to-deploy-inferencing-gpus.md
-        - name: Interfejs układów FPGA
-          href: how-to-deploy-fpga-web-service.md
-        - name: IoT Edge
-          href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
-        - name: Azure App Service
+        - name: Wdrażanie w usłudze Azure App Service
           displayName: web app
           href: how-to-deploy-app-service.md
-        - name: Niestandardowy obraz Docker
+        - name: Wdrażanie w usłudze Azure Container Instances
+          displayName: aci
+          href: how-to-deploy-azure-container-instance.md
+        - name: Wdrażanie na maszynach wirtualnych notesów
+          href: how-to-deploy-local-container-notebook-vm.md
+        - name: Używanie niestandardowego obrazu platformy Docker
           href: how-to-deploy-custom-docker-image.md
         - name: Wdrażanie istniejących modeli
           displayName: publish existing model
           href: how-to-deploy-existing-model.md
-        - name: Rozwiązywanie problemów i debugowanie
+        - name: Wdrażanie w usłudze IoT Edge
+          href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
+        - name: Wdrażanie w celu wnioskowania na układach FPGA
+          href: how-to-deploy-fpga-web-service.md
+        - name: Rozwiązywanie problemów z wdrożeniami i debugowanie
           href: how-to-troubleshoot-deployment.md
     - name: Korzystaj z usług sieci Web
       items:

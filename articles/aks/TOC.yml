@@ -116,6 +116,8 @@
         - name: Usuwanie klastra AKS
           href: '/cli/azure/aks#az-aks-delete'
           maintainContext: true
+        - name: Tworzenie rekordu ACR przy użyciu klastra AKS (wersja zapoznawcza)
+          href: cluster-container-registry-integration.md
         - name: Tworzenie węzłów wirtualnych
           items:
             - name: Używanie interfejsu wiersza polecenia platformy Azure

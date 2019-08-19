@@ -27,6 +27,8 @@
           href: howto-aad-app-configuration.md
     - name: Wdrażanie autonomicznego rozwiązania Prometheus w klastrze platformy Azure Red Hat OpenShift
       href: howto-deploy-prometheus.md
+    - name: Zarządzanie projektami w klastrze usługi Azure Red Hat OpenShift
+      href: howto-manage-projects.md
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia usługi Azure Red Hat OpenShift

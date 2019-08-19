@@ -218,7 +218,7 @@
                       href: app/nodejs.md
                 - name: Strony sieci Web
                   items:
-                    - name: język JavaScript po stronie klienta
+                    - name: Język JavaScript po stronie klienta
                       href: app/javascript.md
                 - name: Podsumowanie interfejsu API usługi Application Insights
                   displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
@@ -509,6 +509,10 @@
                   href: insights/container-insights-troubleshoot.md
             - name: Platforma Docker i monitorowanie kontenerów systemu Windows
               href: insights/containers.md
+        - name: Magazyn
+          items:
+            - name: Usługa Azure Monitor dla magazynu
+              href: insights/storage-insights-overview.md
         - name: Maszyny wirtualne
           items:
             - name: Agenci
@@ -1046,6 +1050,8 @@
               href: app/data-model-context.md
     - name: Interfejs wiersza polecenia platformy Azure
       href: /cli/azure/monitor?view=azure-cli-latest
+    - name: Interfejs wiersza polecenia platformy Azure — usługa Application Insights (wersja zapoznawcza)
+      href: 'https://docs.microsoft.com/cli/azure/ext/application-insights/monitor?view=azure-cli-latest'
     - name: Azure Functions
       href: app/azure-functions-supported-features.md
     - name: Azure PowerShell

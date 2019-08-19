@@ -439,20 +439,38 @@
           href: ./partner-center-portal/account-migration-from-cpp-to-pc.md
     - name: Tworzenie nowej oferty
       items:
-        - name: Lista kontrolna tworzenia oferty
-          href: ./partner-center-portal/offer-creation-checklist.md
-        - name: Tworzenie oferty SaaS
-          href: ./partner-center-portal/create-new-saas-offer.md
-        - name: Rozliczenia danych naliczanych usługi SaaS
-          href: ./partner-center-portal/saas-metered-billing.md
+        - name: Oferty Dynamics 365
           items:
-            - name: Interfejsy API usługi pomiaru w witrynie Marketplace — często zadawane pytania
-              href: ./partner-center-portal/marketplace-metering-service-apis-faq.md
-            - name: Interfejsy API usługi pomiaru w witrynie Marketplace
-              href: ./partner-center-portal/marketplace-metering-service-apis.md
-        - name: Interfejsy API realizacji SaaS
-          href: ./partner-center-portal/pc-saas-fulfillment-apis.md
+            - name: Tworzenie oferty Dynamics 365 for Customer Engagement & PowerApps
+              href: ./partner-center-portal/create-new-customer-engagement-offer.md
+            - name: Tworzenie oferty Dynamics 365 for Operations
+              href: ./partner-center-portal/create-new-operations-offer.md
+            - name: Tworzenie oferty Dynamics 365 Business Central
+              href: ./partner-center-portal/create-new-business-central-offer.md
+        - name: Oferty SaaS
           items:
+            - name: Lista kontrolna tworzenia oferty SaaS
+              href: ./partner-center-portal/offer-creation-checklist.md
+            - name: Tworzenie oferty SaaS
+              href: ./partner-center-portal/create-new-saas-offer.md
+            - name: Rozliczenia danych naliczanych usługi SaaS
+              href: ./partner-center-portal/saas-metered-billing.md
+              items:
+                - name: Interfejsy API usługi pomiaru w witrynie Marketplace — często zadawane pytania
+                  href: ./partner-center-portal/marketplace-metering-service-apis-faq.md
+                - name: Interfejsy API usługi pomiaru w witrynie Marketplace
+                  href: ./partner-center-portal/marketplace-metering-service-apis.md
+            - name: Interfejsy API realizacji SaaS
+              href: ./partner-center-portal/pc-saas-fulfillment-apis.md
+              items:
+                - name: Rejestrowanie aplikacji SaaS
+                  href: ./partner-center-portal/pc-saas-registration.md
+                - name: Interfejsy API realizacji SaaS w wersji 2
+                  href: ./partner-center-portal/pc-saas-fulfillment-api-v2.md
+                - name: Interfejsy API realizacji SaaS w wersji 1 (przestarzałe)
+                  href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
+                - name: Interfejsy API realizacji SaaS — często zadawane pytania
+                  href: ./partner-center-portal/saas-fulfillment-apis-faq.md
             - name: Rejestrowanie aplikacji SaaS
               href: ./partner-center-portal/pc-saas-registration.md
             - name: Interfejsy API realizacji SaaS w wersji 2

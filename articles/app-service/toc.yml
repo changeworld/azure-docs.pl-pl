@@ -67,6 +67,8 @@
       href: overview-hosting-plans.md
     - name: Funkcjonalność systemu operacyjnego
       href: operating-system-functionality.md
+    - name: Najlepsze praktyki dotyczące wdrażania
+      href: deploy-best-practices.md
     - name: Bezpieczeństwo
       items:
         - name: Zalecenia
@@ -217,6 +219,8 @@
       href: /azure/templates/microsoft.web/allversions
 - name: Zasoby
   items:
+    - name: Blog usługi App Service
+      href: 'https://aka.ms/appserviceblog'
     - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
       href: /learn/browse/
     - name: Harmonogram działania dla platformy Azure
