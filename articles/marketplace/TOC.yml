@@ -471,14 +471,6 @@
                   href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
                 - name: Interfejsy API realizacji SaaS — często zadawane pytania
                   href: ./partner-center-portal/saas-fulfillment-apis-faq.md
-            - name: Rejestrowanie aplikacji SaaS
-              href: ./partner-center-portal/pc-saas-registration.md
-            - name: Interfejsy API realizacji SaaS w wersji 2
-              href: ./partner-center-portal/pc-saas-fulfillment-api-v2.md
-            - name: Interfejsy API realizacji SaaS w wersji 1 (przestarzałe)
-              href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
-            - name: Interfejsy API realizacji SaaS — często zadawane pytania
-              href: ./partner-center-portal/saas-fulfillment-apis-faq.md
         - name: Testowanie oferty
           href: ./partner-center-portal/test-drive.md
     - name: Stan publikowania

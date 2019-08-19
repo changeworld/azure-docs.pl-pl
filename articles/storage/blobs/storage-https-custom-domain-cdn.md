@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 3ad599182191e41ea43d38260692a7ab46e1af6f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f3386d04cd3316b38a094524d0d5d4f3c5ab36bb
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845001"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986838"
 ---
 # <a name="use-azure-cdn-to-access-blobs-with-custom-domains-over-https"></a>Użyj Azure CDN, aby uzyskać dostęp do obiektów BLOB za pomocą domen niestandardowych za pośrednictwem protokołu HTTPS
 
@@ -40,7 +40,7 @@ Aby włączyć protokół HTTPS dla niestandardowego punktu końcowego magazynu 
 
 ## <a name="shared-access-signatures"></a>Sygnatury dostępu współdzielonego
 
-Domyślnie punkty końcowe magazynu obiektów BLOB nie zezwalają na anonimowy dostęp do odczytu. Jeśli punkt końcowy magazynu obiektów BLOB jest skonfigurowany tak, aby nie zezwalać na anonimowy dostęp do odczytu, podaj token [sygnatury dostępu](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) współdzielonego w każdym żądaniu do domeny niestandardowej. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem anonimowym w trybie odczytu do kontenerów i obiektów blob](storage-manage-access-to-resources.md).
+Domyślnie punkty końcowe magazynu obiektów BLOB nie zezwalają na anonimowy dostęp do odczytu. Jeśli punkt końcowy magazynu obiektów BLOB jest skonfigurowany tak, aby nie zezwalać na anonimowy dostęp do odczytu, podaj token [sygnatury dostępu](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) współdzielonego w każdym żądaniu do domeny niestandardowej. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem anonimowym w trybie odczytu do kontenerów i obiektów blob](storage-manage-access-to-resources.md).
 
 Azure CDN nie przestrzega żadnych ograniczeń, które są dodawane do tokenu sygnatury dostępu współdzielonego. Na przykład wszystkie tokeny sygnatury dostępu współdzielonego wygasną. Nadal możesz uzyskiwać dostęp do zawartości przy użyciu sygnatury dostępu współdzielonego, dopóki ta zawartość nie zostanie przeczyszczona z węzłów krawędzi Azure CDN. Możesz kontrolować, jak długo dane są buforowane w usłudze Azure CDN, ustawiając nagłówek odpowiedzi pamięci podręcznej. Aby dowiedzieć się, jak to zrobić, zobacz [Zarządzanie wygasaniem obiektów BLOB usługi Azure Storage w Azure CDN](../../cdn/cdn-manage-expiration-of-blob-content.md).
 
@@ -64,7 +64,7 @@ Załóżmy na przykład, że masz konto magazynu w regionie zachodnie stany USA,
 
 Na [stronie cennika Azure CDN](https://azure.microsoft.com/pricing/details/cdn/)obsługa protokołu HTTPS dla nazw domen niestandardowych jest dostępna dla Azure CDN tylko w przypadku produktów Verizon Standard i Premium.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Konfigurowanie niestandardowej nazwy domeny dla punktu końcowego usługi BLOB Storage](storage-custom-domain-name.md)
 * [Hostowanie statycznej witryny internetowej w usłudze Azure Storage](storage-blob-static-website.md)

@@ -1,156 +1,156 @@
 ---
-title: Bezpieczeństwa dla usługi Azure Data Box | Dokumentacja firmy Microsoft
-description: W tym artykule opisano konwencje bezpieczeństwa, wskazówki i uwagi i wyjaśniono, jak bezpiecznie zainstalowania i obsługi usługi Azure Data Box.
+title: Bezpieczeństwo Azure Data Box | Microsoft Docs
+description: Opisuje konwencje bezpieczeństwa, wskazówki i zagadnienia i wyjaśnia, jak bezpiecznie instalować i obsługiwać Azure Data Box.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 08/13/2019
 ms.author: alkohli
-ms.openlocfilehash: d1bad50f2d97434865bb02ad54b1643c54e01790
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: db6e2eadbf19d78a203a4d4ba6111ad88430b192
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65953028"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985942"
 ---
-# <a name="safely-install-and-operate-your-azure-data-box"></a>Bezpiecznie zainstalowania i obsługi usługi Azure Data Box
-![Ikona ostrzeżenia](./media/data-box-safety/warning_icon.png)
-![odczytu ikonę powiadomienia bezpieczeństwa](./media/data-box-safety/read_safety_and_health_information_icon.png) **odczytu bezpieczeństwa i informacje o kondycji**
+# <a name="safely-install-and-operate-your-azure-data-box"></a>Bezpieczne Instalowanie i obsługiwanie Azure Data Box
+![Ikona](./media/data-box-safety/warning_icon.png)
+ostrzeżenia![Odczytaj ikonę](./media/data-box-safety/read_safety_and_health_information_icon.png) powiadomienia o zabezpieczeniach **Przeczytaj informacje o zabezpieczeniach i kondycji**
 
-Przeczytaj informacje bezpieczeństwa w tym artykule, zanim użyjesz usługi Azure Data Box. Niepowodzenie postępuj zgodnie z instrukcjami może spowodować pożaru, próbuj wstrząsnąć electric lub innych kontuzje lub uszkodzenie właściwości.
+Przed rozpoczęciem korzystania z Azure Data Box zapoznaj się ze wszystkimi informacjami o zabezpieczeniach w tym artykule. Nieprzestrzeganie instrukcji może skutkować pożarem, porażeniem elektrycznym lub innymi uszkodzeniami lub uszkodzeniem właściwości.
 
-## <a name="safety-icon-conventions"></a>Konwencje ikonę bezpieczeństwa
-Poniżej przedstawiono ikony, że znajdują się po sprawdzeniu środki bezpieczeństwa, należy przestrzegać podczas konfigurowania i uruchamiania usługi Data Box.
+## <a name="safety-icon-conventions"></a>Konwencje ikon bezpieczeństwa
+Poniżej znajdują się ikony, które będą znajdować się podczas przeglądania środków bezpieczeństwa, które mają być przestrzegane podczas konfigurowania i uruchamiania urządzenie Data Box.
 
 | Ikona | Opis |
 |:--- |:--- |
-| ![Ikona zagrożenie](./media/data-box-safety/warning_icon.png) **zagrożenia!** |Wskazuje niebezpiecznych sytuację, która nie jest to uniknąć, spowoduje śmierci lub poważnemu. Ten wyraz sygnał jest ograniczona do najbardziej ekstremalnych przypadkach. |
-| ![Ikona ostrzeżenia](./media/data-box-safety/warning_icon.png) **ostrzeżenie!** |Wskazuje sytuację zagrożenia, jeśli nie jest to uniknąć, może spowodować śmierci lub poważne szkody. |
-| ![Ikona ostrzeżenia](./media/data-box-safety/warning_icon.png) **Uwaga!** |Wskazuje sytuację zagrożenia, jeśli nie jest to uniknąć, może spowodować szkody drobnych lub Średni. |
-| ![Zwróć uwagę, ikona](./media/data-box-safety/notice_icon.png) **powiadomienia:** |Wskazuje informacje uznawane za ważne, ale niepowiązane zagrożenia. |
-| ![Ikona elektrycznych wstrząsy](./media/data-box-safety/electrical_shock_hazard_icon.png) **elektrycznych wstrząsy zagrożenia** |Wysokie napięcie. |
-| ![Ikona ciężki](./media/data-box-safety/heavy_weight_hazard_icon.png) **ciężki** | |
-| ![Żaden użytkownik nie zdatne do użytku części ikonę](./media/data-box-safety/no_user_serviceable_parts_icon.png) **nie części zdatne do użytku użytkownika** |Nie ma dostępu, chyba że odpowiednio przeszkoleni. |
-| ![Przeczytaj ikonę powiadomienia bezpieczeństwa](./media/data-box-safety/read_safety_and_health_information_icon.png) **najpierw przeczytać wszystkie instrukcje** | |
-| ![Ikona zagrożenie porady](./media/data-box-safety/tip_hazard_icon.png) **Porada zagrożenia** | |
+| ![Niebezpieczeństwo](./media/data-box-safety/warning_icon.png) ikony zagrożenia **!** |Wskazuje niebezpieczną sytuację, która w przypadku braku problemów spowoduje śmierć lub poważną szkodę. Ten znak sygnału jest ograniczony do najbardziej skrajnych sytuacji. |
+| ![Ostrzeżenie ikony](./media/data-box-safety/warning_icon.png) ostrzeżenia **!** |Wskazuje niebezpieczną sytuację, która w przypadku braku problemów może spowodować śmierć lub poważną szkodę. |
+| ![Ostrzeżenie ikony](./media/data-box-safety/warning_icon.png) ostrzeżenia **!** |Wskazuje niebezpieczną sytuację, która w przypadku braku problemów może skutkować drobną lub średnią szkodą. |
+| ![Powiadomienie o](./media/data-box-safety/notice_icon.png) ikonie powiadomienia **:** |Wskazuje informacje uznawane za ważne, ale nie związane z zagrożeniami. |
+| ![Ikona](./media/data-box-safety/electrical_shock_hazard_icon.png) porażenia elektryczną — **zagrożenie elektryczne** |Wysokie napięcie. |
+| ![**Duże** wagi ikony](./media/data-box-safety/heavy_weight_hazard_icon.png) o dużej grubości | |
+| ![Ikona](./media/data-box-safety/no_user_serviceable_parts_icon.png) elementów z obsługą użytkownika **nie ma części z obsługą użytkownika** |Nie należy uzyskiwać dostępu, o ile nie jest prawidłowo szkolony. |
+| ![Ikona](./media/data-box-safety/read_safety_and_health_information_icon.png) powiadomienia o bezpieczeństwie Odczytaj **najpierw wszystkie instrukcje** | |
+| ![](./media/data-box-safety/tip_hazard_icon.png) Niebezpieczeństwo **Porada** ikony ostrzegawczej | |
 
-## <a name="handling-precautions"></a>Obsługa środki ostrożności
+## <a name="handling-precautions"></a>Obsługa środków ostrożności
 
-![Ikona ostrzeżenia](./media/data-box-safety/warning_icon.png) ![ikonę elektrycznych wstrząsy](./media/data-box-safety/electrical_shock_hazard_icon.png)![żaden użytkownik nie zdatne do użytku części ikonę](./media/data-box-safety/no_user_serviceable_parts_icon.png) **Przestroga** 
+![](./media/data-box-safety/electrical_shock_hazard_icon.png)![](./media/data-box-safety/no_user_serviceable_parts_icon.png)Ikonaostrzeżenia — ikona porażenia elektryczną ikona niedostępności elementów z obsługą użytkowników Uwaga ![](./media/data-box-safety/warning_icon.png) 
 
-* Sprawdzanie *jako Odebrano* urządzenie pod kątem szkody. Obudowa urządzenia jest uszkodzony, należy skontaktować się z Microsoft Support jego wymiany. Nie należy próbować działać na urządzeniu. 
-* Urządzenie jest wyposażony w śruby odporną na manipulacje. Jeśli podejrzewasz, że urządzenie działa poprawnie, skontaktuj się z Microsoft Support jego wymiany. Nie należy próbować usługi na urządzeniu. 
-* Urządzenia zawiera nie części użytkownika-zdatne do użytku. Napięcie niebezpieczne, bieżących i poziomy energii są obecne w. Nie należy otwierać. Przywrócenie urządzenia do firmy Microsoft do obsługi.
+* Sprawdź, czy urządzenie *as otrzymało* szkody. Jeśli Obudowa urządzenia jest uszkodzona, [skontaktuj się z firmą pomoc techniczna firmy Microsoft](data-box-disk-contact-microsoft-support.md) , aby uzyskać zastąpienie. Nie należy próbować korzystać z urządzenia. 
+* Urządzenie jest wyposażone w Wkręt z dostępem do innych osób. Jeśli podejrzewasz, że urządzenie nie działa prawidłowo, [skontaktuj się z firmą pomoc techniczna firmy Microsoft](data-box-disk-contact-microsoft-support.md) , aby uzyskać zastąpienie. Nie należy podejmować próby obsługi urządzenia. 
+* Urządzenie nie zawiera części z obsługą użytkownika. W programie obecne są niebezpieczne napięcia, bieżące i poziomy energii. Nie otwieraj. Zwróć urządzenie do firmy Microsoft w celu obsługi.
 
-![Ikona ostrzeżenia](./media/data-box-safety/warning_icon.png) ![ikonę ciężki](./media/data-box-safety/heavy_weight_hazard_icon.png) **ostrzeżenie!** 
+![**Ostrzeżenie** ikony](./media/data-box-safety/warning_icon.png) ![dużej grubości ikony ostrzeżenia!](./media/data-box-safety/heavy_weight_hazard_icon.png) 
 
-* W pełni skonfigurowany obudowy można porównać do 22.7 kg (50 lbs); nie należy próbować przenoś je samodzielnie.
-* Przed przeniesieniem obudowa, zawsze upewnij się, że dwie osoby mogą obsługiwać wagi. Należy pamiętać, że próby, celu zniesienia tego wagi kilku osób może wytrzymać uszkodzenia.
-
-
-![Ikona ostrzeżenia](./media/data-box-safety/warning_icon.png) ![Porada ikony zagrożenia](./media/data-box-safety/tip_hazard_icon.png) **ostrzeżenie!**
-* Umieść je powierzchni prostego, trudny i stabilny, aby uniknąć potencjalnego zagrożenia porada.
-* Urządzenia montowane w stojaku nie ma być używany jako półek lub pracy miejsc do magazynowania. Nie należy umieszczać pola danych na podstawie urządzenia montowane w stojaku. Dodawanie dowolnego typu obciążenia z jednostką rozszerzonej montowane w stojaku, można utworzyć potencjalne zagrożenie poradę, która może prowadzić do szkód, śmierci, produktu.
-
-![Ikona ostrzeżenia](./media/data-box-safety/warning_icon.png) **ostrzeżenie!**
-
-* Konfigurowanie urządzenia w obszarze roboczym, pozwalając na odpowiednie air obrotu wokół urządzenia.
-* Zainstaluj urządzenie w kontrolowany temperatury wewnątrz obszaru bezpłatnie przewodzącymi zanieczyszczenia i umożliwić odpowiednie air obrotu wokół urządzenia.
-* Zachowaj urządzenia od źródła płynne i nadmiernie wilgotnej środowisk.
+* W pełni skonfigurowana obudowa może ważyć do 22,7 kg (50 funtów); nie należy próbować go podnieść przez siebie.
+* Przed przeniesieniem obudowy zawsze upewnij się, że dwie osoby są dostępne do obsługi wagi. Należy pamiętać, że jedna osoba próbująca podnieść wagę może utrzymywać urazy.
 
 
-## <a name="electrical-precautions"></a>Elektrycznego środki ostrożności
+![Ostrzeżenie ikony ostrzegawczej ikona ostrzeżenia **!** ](./media/data-box-safety/tip_hazard_icon.png) ](./media/data-box-safety/warning_icon.png) ![
+* Umieść urządzenie na płaskiej, twardej i stabilnej powierzchni, aby uniknąć potencjalnego ryzyka Porada.
+* Sprzęt montowany w stojaku nie jest używany jako półki ani miejsca pracy. Nie umieszczaj urządzenie Data Box na sprzęcie zainstalowanym w stojaku. Dodanie dowolnego typu obciążenia do rozszerzonej jednostki zainstalowanej w stojaku może stworzyć potencjalne zagrożenie poradami, które mogą prowadzić do szkody, śmierci lub uszkodzenia produktu.
 
-![Ikona ostrzeżenia](./media/data-box-safety/warning_icon.png) ![ikonę elektrycznych wstrząsy](./media/data-box-safety/electrical_shock_hazard_icon.png) **ostrzeżenie!**
+![Ostrzeżenie ikony](./media/data-box-safety/warning_icon.png) ostrzeżenia **!**
 
-* Podaj połączenie bezpieczne ziemi elektrycznych zasilający dostaw. Kabel AC ma trzy locie uziemiający spełnia bardzo Plug and (plug-in ma uziemiający spełnia bardzo numeru pin). Tylko ona ujścia AC mieści się w tej wtyczki. Nie pokonania celem uziemiający spełnia bardzo numeru pin.
-* Biorąc pod uwagę, że wtyczka na dostaw zasilający jest głównym odłączyć urządzenie, upewnij się, że gniazda znajdują się blisko urządzenia i są łatwo dostępne.
-* Odłączyć kabel zasilający (przez pobieranie wtyczki, a nie przewód) i Odłącz wszystkie kable, jeśli istnieje dowolne z następujących warunków:
+* Skonfiguruj urządzenie w obszarze roboczym, co pozwala na odpowiedni obieg powietrza wokół urządzenia.
+* Zainstaluj urządzenie w rejonie niepokojowym kontrolowanym przez temperaturę, a następnie poczekaj na odpowiedni obieg powietrza wokół urządzenia.
+* Zadbaj o to, aby urządzenie było ze źródeł płynów i nadmiernie humidych środowisk.
 
-    - Zasilający lub wtyczki staje się nadpalone lub w przeciwnym razie jest uszkodzony.
-    - Rozlane coś, co możesz dane w małych i wielkich liter urządzenia.
-    - Urządzenie jest narażony na deszcz lub nadmiarowe wilgotności.
-    - Urządzenie zostało porzucone, a wielkość liter w wyrazie urządzenia jest uszkodzony.
-    - Podejrzewasz, że urządzenie wymaga naprawy lub.
-* Trwale Odłącz jednostki, przed jego przeniesieniem lub jeśli uważasz, że ma ulec uszkodzeniu w dowolny sposób.
-* Określ źródła zasilania odpowiedniej ochrony elektrycznych przeciążenia spełnione następujące warunki usługi power:
 
-    - Napięcie: 100 V AC do 240 V programu AC
-    - Bieżące: 6, maksymalnie
-    - Częstotliwość: 50 częstotliwości – 60 Hz
+## <a name="electrical-precautions"></a>Środki bezpieczeństwa elektrycznego
 
-![Ikona ostrzeżenia](./media/data-box-safety/warning_icon.png) **Przestroga:**
+![](./media/data-box-safety/warning_icon.png) Ikona ostrzeżenia![ikona](./media/data-box-safety/electrical_shock_hazard_icon.png) wstrząsu instalacji elektrycznej.
 
-* To urządzenie zawiera monet baterie. Nie należy próbować usługi na urządzeniu. Baterie w tym urządzeniu nie są zdatne do użytku przez użytkownika. 
-* **Dla personelu obsługi tylko**: Ryzyko rozłożenia Jeśli baterii zastępuje niepoprawny typ. Usuwa używane baterie zgodnie z instrukcjami.
+* Zapewnienie bezpiecznego połączenia elektrycznego z przedłużaczem zasilacza. Kabel AC ma trójwymiarowy wtyk naziemny (wtyk, który ma numer PIN). Ten wtyk pasuje tylko do uziemionego gniazda zasilania. Nie obniżaj poziomu numeru PIN.
+* Mając na względzie, że wtyk odbiornika zasilania jest głównym urządzeniem odłączania, upewnij się, że są one zlokalizowane blisko urządzenia i są łatwo dostępne.
+* Odłącz przewód zasilający (przez ściąganie wtyku, a nie przewodu) i Rozłącz wszystkie kable, jeśli istnieją jakiekolwiek z następujących warunków:
 
-![Zwróć uwagę, ikona](./media/data-box-safety/notice_icon.png) **powiadomienia:**
+    - Przewód zasilający lub wtyk zostanie pokryte lub uszkodzony.
+    - Możesz oblewać coś do wielkości liter urządzeń.
+    - Urządzenie jest narażone na deszcz lub nadmierną wilgoć.
+    - Urządzenie zostało porzucone i wielkość liter urządzenia jest uszkodzona.
+    - Podejrzewasz, że urządzenie wymaga usługi lub naprawy.
+* Trwale Odłącz jednostkę przed jej przeniesieniem lub jeśli uważasz, że została ona uszkodzona w jakikolwiek sposób.
+* Podaj odpowiednie źródło zasilania z ochroną przed przeciążeniem elektrycznym, aby spełnić następujące wymagania dotyczące zasilania:
 
-Do prawidłowego działania urządzenia i uniknięcia ryzyka uszkodzenia produktu:
+    - Zakres 100 v AC do 240 V AC
+    - Obecne 6 A, maksimum
+    - Jaką 50 Hz do 60 Hz
 
-* Upewnij się, że przodu i Wstecz drzwi pełni otwarty po uruchomieniu urządzenia.
+![Ostrzeżenie ikony](./media/data-box-safety/warning_icon.png) ostrzeżenia **:**
+
+* To urządzenie zawiera baterie z komórkami monet. Nie należy podejmować próby obsługi urządzenia. Baterie na tym urządzeniu nie są obsługiwane przez użytkownika. 
+* **Tylko dla personelu usługi**: Ryzyko wybuchu w przypadku zastąpienia baterii o nieprawidłowym typie. Usuń używane baterie zgodnie z instrukcjami.
+
+![Powiadomienie o](./media/data-box-safety/notice_icon.png) ikonie powiadomienia **:**
+
+Aby zapewnić prawidłowe działanie urządzenia i zapobiec uszkodzeniu produktu:
+
+* Upewnij się, że drzwi frontonu i tyłu są w pełni otwarte, gdy urządzenie jest uruchomione.
 
 ## <a name="regulatory-information"></a>Informacje prawne
 
-Ta sekcja zawiera informacje prawne w usłudze Azure Data Box, numer modelu przepisami DB010.
+Ta sekcja zawiera informacje o przepisach Azure Data Box, DB010 numer modelu prawnego.
 
-Jest to urządzenie:
+To urządzenie:
 
-- Ocenione jako informacje o technologii sprzętu (element), zaprojektowana do pracy w środowisku pokoju typowych danych. Przydatność, korzystając z tego produktu dla innych środowisk mogą wymagać bliższego oceny.
-- Przeznaczony do użytku z NRTL wymienione (UL CSA, ETL, itp.), a IEC/EN 60950-1 lub IEC/EN 62368 1 zgodne (CE oznaczone) urządzeń technologii informatycznych.
-- Zaprojektowana do pracy w środowisku następujące. 
-    - Temperatura: 50° do 95° F (10° 35 c)
-    - Temperatura:-4 ° 122 ° F (°-20 do 50 C)
-    - Wilgotność względna: 15 – 85% (bez kondensacji) 
-    - Wysokość: Przetestowane do 6500 metry 0 do 2000 liczników
+- Oceniane jako sprzęt technologii informacyjnej (ITRYNY), zaprojektowany do działania w typowym środowisku pokoju danych. Przydatność tego produktu dla innych środowisk może wymagać dalszej oceny.
+- Przeznaczone do użytku z NRTLami (UL, CSA, ETL itp.) i IEC/EN 60950-1 lub IEC/EN 62368-1 zgodne (CE oznaczono) sprzęt technologii informacyjnej.
+- Zaprojektowana do działania w następującym środowisku. 
+    - Temperatura działania: 50 ° do 95 ° F (10 ° do 35 ° C)
+    - Temperatura magazynu:-4 ° do 122 ° F (-20 ° do 50 ° C)
+    - Wilgotność względna: od 15% do 85% (bez kondensacji) 
+    - Wysokość działania: Przetestowano do 6500 metrów (0 metrów do 2000 metrów)
 
-Klasyfikacje zasilania można znaleźć w Etykieta klasyfikacji urządzenia, które są dostarczane z jednostki. 
+W przypadku klasyfikacji zasilania elektrycznego zapoznaj się z etykietą klasyfikacji urządzeń dostarczoną z jednostką. 
 
-![Zwróć uwagę, ikona](./media/data-box-safety/notice_icon.png) **powiadomienia:** 
+![Powiadomienie o](./media/data-box-safety/notice_icon.png) ikonie powiadomienia **:** 
 
-Zmiany lub modyfikacje wprowadzone do urządzenia nie zostaną zatwierdzone przez firmę Microsoft, może spowodować utratę prawa użytkownika do działania na urządzeniu.
+Zmiany lub modyfikacje wprowadzone na urządzeniu, które nie zostały wyraźnie zatwierdzone przez firmę Microsoft, mogą unieważnić uprawnienia użytkownika do obsługi urządzenia.
 
-**KANADZIE i Stanach Zjednoczonych:**
+**Kanada i Stany Zjednoczone:**
 
-![Zwróć uwagę, ikona](./media/data-box-safety/notice_icon.png) **powiadomienia:** 
+![Powiadomienie o](./media/data-box-safety/notice_icon.png) ikonie powiadomienia **:** 
 
-Została przetestowana i spełnia ograniczenia klasy urządzeń cyfrowych, zgodnie z częścią 15 cz tego urządzenia. Limity te są przeznaczone do zapewnienia wystarczającej ochrony przed zakłóceniami szkodliwe, gdy urządzenie jest świadczona w środowiskach komercyjnych. Te urządzenia generuje, używa i może fale radiowe i jeśli nie jest zainstalowane i wykorzystywane zgodnie z instrukcją, może powodować zakłócenia szkodliwych opcji łączności. Działanie tego urządzenia w miejscu zamieszkania jest może spowodować szkodliwe zakłócenia, w którym użytkownik będzie musiał usunąć na ich koszt.
+Ten sprzęt został przetestowany i odnaleziony w celu zachowania zgodności z ograniczeniami dla klasy urządzenie cyfrowe, zgodnie z częścią 15 reguł FCC. Limity te zostały zaprojektowane w celu zapewnienia odpowiedniej ochrony przed szkodliwymi zakłóceniami, gdy sprzęt jest eksploatowany w środowisku komercyjnym. Ten sprzęt generuje, używa i może wypromieniowanać energię radiową oraz, jeśli nie jest zainstalowany i używany zgodnie z instrukcją ręczną instrukcji, może spowodować szkodliwe zakłócenia komunikacji radiowej. Działanie tego sprzętu w obszarze mieszkalnym prawdopodobnie spowoduje szkodliwe zakłócenia, w takim przypadku użytkownik będzie musiał poprawić zakłócenie na własny koszt.
 
-To urządzenie jest zgodny z częścią 15 cz i w przemyśle RSS wykluczone licencji Kanada normach. Operacja podlega następujące dwa warunki: (1) to urządzenie nie może powodować zakłócenia szkodliwych i (2) to urządzenie musi zaakceptować zakłócenia, w tym zakłócenia, które mogą powodować nieoczekiwane działanie urządzenia.
+To urządzenie jest zgodne z częścią 15 reguł FCC i standardami RSS w branży. Operacje podlegają następującym dwóm warunkom: (1) to urządzenie może nie prowadzić do szkodliwych zakłóceń, a (2) to urządzenie musi akceptować wszelkie odebrane zakłócenia, w tym zakłócenia, które mogą spowodować niepożądane działanie urządzenia.
 
 ![Kanada](./media/data-box-safety/canada.png)
 
-MOŻNA ICES-3(A)/NMB-3(A)
+MOŻE ICES-3 (A)/NMB-3 (A)
 
-Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, USA.
+Microsoft Corporation, jeden Microsoft Way, Redmond, WA 98052, USA.
 
 Stany Zjednoczone: (800) 426-9400
 
 Kanada: (800) 933-4750
 
-**UNII EUROPEJSKIEJ:**
+**UNIA EUROPEJSKA:**
 
-W tym miejscu jest dostępna kopia UE deklaracja zgodności.
+[Zażądaj kopii deklaracji zgodności UE](mailto:CSI_Compliance@microsoft.com).
 
-![Ikona ostrzeżenia](./media/data-box-safety/warning_icon.png) **ostrzeżenia:** 
+![Ostrzeżenie ikony](./media/data-box-safety/warning_icon.png) ostrzeżenia **:** 
 
-Jest to produkt klasy A. W środowisku światowego tego produktu może powodować zakłócenia radio, w którym użytkownik może być konieczne podjąć odpowiednie środki.
+To jest produkt klasy A. W środowisku wewnętrznym ten produkt może spowodować zakłócenia radioelektrycznych, w takim przypadku użytkownik może być zobowiązany do podjęcia odpowiednich działań.
 
-**Usuwania odpadów baterii i sprzętu elektrycznego i elektronicznego:**
+**Usuwanie baterii i sprzętu elektrycznego i elektronicznego:**
 
 ![Ikona usuwania baterii](./media/data-box-safety/battery_disposal_icon.png)
 
-Ten symbol na produkt lub zasilane z baterii lub jego opakowania oznacza, że tego produktu i wszystkie akumulatory, zawartych w nim nie są zbywane przy użyciu usługi odpadów. Zamiast tego jest odpowiedzialny za przekazać ten dotyczy kolekcji punktem recyklingu baterii i sprzętu elektrycznego i elektronicznego. Ta kolekcja osobnych i odtwarzanie będzie ułatwiają ochronę zasobów naturalnych i zapobiec potencjalne negatywne skutki dla zdrowia ludzi i środowiska z powodu możliwa obecności niebezpiecznych substancji w baterie i w elektrycznego i elektronicznego sprzęt, który może być spowodowany przez nieodpowiednie usuwania. Aby uzyskać więcej informacji o tym, gdzie można usunąć wyłączony baterie i strat elektrycznych i elektronicznych skontaktuj się z biura lokalnego Miasto/gmina, usługi gospodarstwa domowego usuwania odpadów lub Sklep, w którym zakupiono tego produktu. Skontaktuj się z pomocą *erecycle\@microsoft.com* dodatkowe informacje na temat WEEE.
+Ten symbol na produkcie lub jego baterie lub jego opakowanie oznacza, że ten produkt i wszystkie baterie, które zawiera, nie mogą być usuwane z odpadami z gospodarstwa domowego. Zamiast tego ponosisz odpowiedzialność za przekazanie tej informacji do odpowiedniego punktu kolekcji na potrzeby odtwarzania baterii i sprzętu elektrycznego i elektronicznego. Ta osobna kolekcja i recykling mogą pomóc w zapisywaniu zasobów naturalnych i zapobieganiu potencjalnym negatywnym skutkom dla zdrowia ludzkiego i środowiska ze względu na możliwą obecność niebezpiecznych substancji w bateriach i elektrycznych i elektronicznych Sprzęt, który może być spowodowany przez nieodpowiednie usunięcie. Aby uzyskać więcej informacji o tym, gdzie należy porzucić baterie i odpady elektryczne i elektroniczne, należy skontaktować się z lokalnym miastem/urzędem Centralnym, usługą usuwania odpadów domowych lub z drukarnią, w której zakupiono ten produkt. Aby uzyskać dodatkowe informacje na temat WEEE, skontaktuj się z *erecycle\@Microsoft.com* .
 
-Ten produkt zawiera akumulatora komórki monet.
+Ten produkt zawiera baterie z komórkami monet.
 
-Microsoft Ireland Sandyford Ind Est Dublin D18 KX32 IRL
+Microsoft Irlandia Sandyford IND Est Dublin D18 KX32 IRL
 
-Numer telefonu: +353 1 295 3826
+Numer telefonu: + 353 1 295 3826
 
-Numer faksu: +353 1 706 4110 
+Numer faksu: + 353 1 706 4110 
 
 **Japonia**
 
@@ -168,10 +168,10 @@ Numer faksu: +353 1 706 4110
 
 ![Taiwan](./media/data-box-safety/taiwan.png)-->
 
-Po przejrzeniu tych ogłoszeniach bezpieczeństwa, można skonfigurować i Podłączanie kabli do urządzenia.
+Po przejrzeniu tych informacji o bezpieczeństwie można skonfigurować urządzenie i podłączyć je do siebie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Podłączanie kabli i połącz swoje urządzenia Data Box](data-box-deploy-set-up.md)
+* [Podłącz urządzenie Data Box](data-box-deploy-set-up.md)
 
 

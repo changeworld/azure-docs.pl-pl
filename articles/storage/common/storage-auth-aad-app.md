@@ -1,21 +1,21 @@
 ---
-title: Uwierzytelnianie za pomocą Azure Active Directory w celu uzyskania dostępu do danych obiektów blob i kolejek z aplikacji klienckiej
+title: Autoryzowanie dostępu do obiektów blob i kolejek przy użyciu Azure Active Directory z aplikacji klienckiej — Azure Storage
 description: Użyj Azure Active Directory do uwierzytelniania z poziomu aplikacji klienckiej, uzyskania tokenu OAuth 2,0 i autoryzacji żądań do magazynu obiektów blob platformy Azure i usługi queue storage.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 07/15/2019
+ms.date: 07/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ffae7467e9f94c68cf004b74c9791f2d9cda3171
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 5138fb6338f4ade322414619f8785d77550a91d1
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250002"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986802"
 ---
-# <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues"></a>Uwierzytelnianie za pomocą Azure Active Directory z aplikacji w celu uzyskania dostępu do obiektów blob i kolejek
+# <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-from-a-client-application"></a>Autoryzuj dostęp do obiektów blob i kolejek przy użyciu Azure Active Directory z aplikacji klienckiej
 
 Główną zaletą korzystania z Azure Active Directory (Azure AD) z usługą Azure Blob Storage lub kolejką queue storage jest to, że Twoje poświadczenia nie muszą już być przechowywane w kodzie. Zamiast tego można zażądać tokenu dostępu OAuth 2,0 z platformy tożsamości firmy Microsoft (dawniej: Azure AD). Usługa Azure AD uwierzytelnia podmiot zabezpieczeń (użytkownika, grupę lub nazwę główną usługi), na którym działa aplikacja. W przypadku pomyślnego uwierzytelnienia usługa Azure AD zwraca token dostępu do aplikacji, a następnie może użyć tokenu dostępu do autoryzowania żądań do usługi Azure Blob Storage lub magazynu kolejek.
 
@@ -297,7 +297,7 @@ Po uruchomieniu przykładu możesz sprawdzić, czy należy zaktualizować identy
 
     ![Zrzut ekranu przedstawiający identyfikatory URI przekierowania dla rejestracji aplikacji](media/storage-auth-aad-app/redirect-uri.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby dowiedzieć się więcej na temat platformy tożsamości firmy Microsoft, zobacz [Microsoft Identity platform](https://docs.microsoft.com/azure/active-directory/develop/).
 - Aby dowiedzieć się więcej o rolach RBAC dla usługi Azure Storage, zobacz [Zarządzanie prawami dostępu do danych magazynu za pomocą RBAC](storage-auth-aad-rbac.md).

@@ -1,31 +1,31 @@
 ---
-title: Ruch wychodzący i punktów końcowych w reprezentacji urządzeń cyfrowych platformy Azure | Dokumentacja firmy Microsoft
-description: Wskazówki dotyczące sposobu tworzenia punktów końcowych za pomocą Twins cyfrowych platformy Azure.
+title: Wyjście i punkty końcowe w usłudze Azure Digital bliźniaczych reprezentacji | Microsoft Docs
+description: Wskazówki dotyczące sposobu tworzenia punktów końcowych za pomocą usługi Azure Digital bliźniaczych reprezentacji.
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 06/06/2019
+ms.date: 08/12/2019
 ms.author: alinast
-ms.openlocfilehash: 478fe1859dd9067e8097df0384657793602c1378
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3c33992ce3c130d6c06e0709a9c4ddcab4fff159
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071459"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013936"
 ---
-# <a name="egress-and-endpoints"></a>Ruch wychodzący i punktów końcowych
+# <a name="egress-and-endpoints"></a>Wyjście i punkty końcowe
 
-Azure Twins cyfrowego *punktów końcowych* reprezentują brokera komunikatów lub zdarzeń w ramach subskrypcji platformy Azure przez użytkownika. Zdarzenia i komunikaty mogą być wysyłane do tematów usługi Azure Event Hubs, Azure Event Grid i Azure Service Bus.
+*Punkty końcowe* usługi Azure Digital bliźniaczych reprezentacji reprezentują komunikat lub brokera zdarzeń w ramach subskrypcji platformy Azure użytkownika. Zdarzenia i komunikaty mogą być wysyłane do tematów Event Hubs, Azure Event Grid i Azure Service Bus platformy Azure.
 
-Zdarzenia są kierowane do punktów końcowych, zgodnie z preferencjami routingu wstępnie zdefiniowane. Określ użytkowników, które *typy zdarzeń* każdy punkt końcowy, może zostać wyświetlony.
+Zdarzenia są kierowane do punktów końcowych zgodnie ze wstępnie zdefiniowanymi preferencjami routingu. Użytkownicy określają, które *typy zdarzeń* mogą otrzymać każdy punkt końcowy.
 
-Aby dowiedzieć się więcej na temat zdarzenia, routing i typy zdarzeń dotyczą [Routing zdarzeń i komunikatów w reprezentacji urządzeń cyfrowych platformy Azure](./concepts-events-routing.md).
+Aby dowiedzieć się więcej o zdarzeniach, routingu i typach zdarzeń, zobacz [zdarzenia routingu i komunikaty w usłudze Azure Digital bliźniaczych reprezentacji](./concepts-events-routing.md).
 
-## <a name="events"></a>Zdarzenia
+## <a name="events"></a>Events
 
-Zdarzenia są wysyłane przez IoT obiektów (takich jak urządzenia i czujniki) do przetworzenia przez Azure brokerów komunikat i zdarzeń. Zdarzenia są definiowane przez następujące [odwołanie do schematu zdarzeń usługi Azure Event Grid](../event-grid/event-schema.md).
+Zdarzenia są wysyłane przez obiekty IoT (takie jak urządzenia i czujniki) do przetwarzania przez brokerów komunikatów i zdarzeń platformy Azure. Zdarzenia są definiowane przez następujące [Azure Event Grid odwołanie do schematu zdarzenia](../event-grid/event-schema.md).
 
 ```JSON
 {
@@ -49,23 +49,23 @@ Zdarzenia są wysyłane przez IoT obiektów (takich jak urządzenia i czujniki) 
 
 | Atrybut | Type | Opis |
 | --- | --- | --- |
-| id | string | Unikatowy identyfikator zdarzenia. |
-| subject | string | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
-| data | obiekt | Dane zdarzenia specyficzne dla dostawcy zasobów. |
-| eventType | string | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
-| eventTime | string | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
-| dataVersion | string | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
-| metadataVersion | string | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
-| topic | string | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
+| id | ciąg | Unikatowy identyfikator zdarzenia. |
+| subject | ciąg | Ścieżka zdefiniowana przez program Publisher do tematu zdarzenia. |
+| data | object | Dane zdarzenia specyficzne dla dostawcy zasobów. |
+| Klasę | ciąg | Jeden z zarejestrowanych typów zdarzeń dla tego źródła zdarzeń. |
+| eventTime | ciąg | Czas generowania zdarzenia na podstawie czasu UTC dostawcy. |
+| wersja | ciąg | Wersja schematu dla obiektu danych. Wydawca definiuje wersję schematu. |
+| metadataVersion | ciąg | Wersja schematu dla metadanych zdarzenia. Event Grid definiuje schemat właściwości najwyższego poziomu. Event Grid udostępnia tę wartość. |
+| topic | ciąg | Pełna ścieżka zasobu do źródła zdarzeń. To pole nie umożliwia zapisu. Event Grid udostępnia tę wartość. |
 
-Aby uzyskać więcej informacji na temat schematów zdarzeń usługi Event Grid:
+Aby uzyskać więcej informacji o schemacie zdarzeń Event Grid:
 
-- Przegląd [odwołanie do schematu zdarzeń usługi Azure Event Grid](../event-grid/event-schema.md).
-- Odczyt [odwołanie do usługi Azure EventGrid Node.js SDK EventGridEvent](https://docs.microsoft.com/javascript/api/azure-eventgrid/eventgridevent?view=azure-node-latest).
+- Przejrzyj [Informacje o schemacie zdarzenia Azure Event Grid](../event-grid/event-schema.md).
+- Przeczytaj [Informacje o zestawie SDK środowiska Node. js w usłudze Azure EventGrid](https://docs.microsoft.com/javascript/api/azure-eventgrid/eventgridevent?view=azure-node-latest).
 
 ## <a name="event-types"></a>Typy zdarzeń
 
-Typy zdarzeń klasyfikacji charakteru zdarzenia i są ustawiane w **Typzdarzenia** pola. Zdarzenie dostępne typy są określone przez następującej listy:
+Typy zdarzeń klasyfikują charakter zdarzenia i są ustawiane w polu **EventType** . Dostępne typy zdarzeń są określone przez następującą listę:
 
 - TopologyOperation
 - UdfCustom
@@ -73,24 +73,24 @@ Typy zdarzeń klasyfikacji charakteru zdarzenia i są ustawiane w **Typzdarzenia
 - SpaceChange
 - DeviceMessage
 
-Formatu zdarzeń dla każdego typu zdarzenia są opisane w następujących podsekcjach.
+Formaty zdarzeń dla każdego typu zdarzenia są opisane w poniższych podsekcjach.
 
 ### <a name="topologyoperation"></a>TopologyOperation
 
-**TopologyOperation** stosuje się do zmian grafu. **Podmiotu** właściwość określa typ obiektu, których to dotyczy. Następujące typy obiektów mogą wywołać zdarzenie to:
+**TopologyOperation** dotyczy zmian grafu. Właściwość **subject** określa typ obiektu, którego to dotyczy. Następujące typy obiektów mogą wyzwolić to zdarzenie:
 
 - Urządzenie
 - DeviceBlobMetadata
 - DeviceExtendedProperty
 - ExtendedPropertyKey
-- Typ ExtendedType
-- Magazyn kluczy
+- ExtendedType
+- Magazynu kluczy
 - Raport
-- RoleDefinition
+- Definicji
 - Czujnik
 - SensorBlobMetadata
 - SensorExtendedProperty
-- Przestrzeń kosmiczna
+- Spacja
 - SpaceBlobMetadata
 - SpaceExtendedProperty
 - SpaceResource
@@ -122,16 +122,16 @@ Formatu zdarzeń dla każdego typu zdarzenia są opisane w następujących podse
 }
 ```
 
-| Wartość | Zamień na |
+| Value | Zamień na |
 | --- | --- |
 | YOUR_TOPIC_NAME | Nazwa dostosowanego tematu |
 
 ### <a name="udfcustom"></a>UdfCustom
 
-**UdfCustom** jest zdarzenia wysłanego przez funkcję zdefiniowaną przez użytkownika (UDF).
+**UdfCustom** to zdarzenie wysyłane przez funkcję zdefiniowaną przez użytkownika (UDF).
   
 > [!IMPORTANT]  
-> Tego zdarzenia muszą być jawnie wysyłane z systemu plików UDF, sam.
+> To zdarzenie musi być jawnie wysłane z samego formatu UDF.
 
 #### <a name="example"></a>Przykład
 
@@ -153,13 +153,13 @@ Formatu zdarzeń dla każdego typu zdarzenia są opisane w następujących podse
 }
 ```
 
-| Wartość | Zamień na |
+| Value | Zamień na |
 | --- | --- |
 | YOUR_TOPIC_NAME | Nazwa dostosowanego tematu |
 
 ### <a name="sensorchange"></a>SensorChange
 
-**SensorChange** to aktualizacja stanu czujnika na podstawie danych telemetrycznych zmian.
+**SensorChange** to aktualizacja stanu czujnika oparta na zmianach telemetrycznych.
 
 #### <a name="example"></a>Przykład
 
@@ -188,13 +188,13 @@ Formatu zdarzeń dla każdego typu zdarzenia są opisane w następujących podse
 }
 ```
 
-| Wartość | Zamień na |
+| Value | Zamień na |
 | --- | --- |
 | YOUR_TOPIC_NAME | Nazwa dostosowanego tematu |
 
 ### <a name="spacechange"></a>SpaceChange
 
-**SpaceChange** to aktualizacja stanu miejsca na podstawie danych telemetrycznych zmian.
+**SpaceChange** to aktualizacja stanu miejsca oparta na zmianach telemetrycznych.
 
 #### <a name="example"></a>Przykład
 
@@ -223,36 +223,36 @@ Formatu zdarzeń dla każdego typu zdarzenia są opisane w następujących podse
 }
 ```
 
-| Wartość | Zamień na |
+| Value | Zamień na |
 | --- | --- |
 | YOUR_TOPIC_NAME | Nazwa dostosowanego tematu |
 
 ### <a name="devicemessage"></a>DeviceMessage
 
-Za pomocą **DeviceMessage**, można określić **EventHub** połączenia, do którego nieprzetworzone dane telemetryczne zdarzeń można kierować również z bliźniaczych reprezentacji cyfrowych platformy Azure.
+Za pomocą **DeviceMessage**można określić połączenie **EventHub** , do którego mogą być kierowane zdarzenia danych telemetrycznych również z usługi Azure Digital bliźniaczych reprezentacji.
 
 > [!NOTE]
-> - **DeviceMessage** jest możliwych do łączenia tylko w przypadku **EventHub**. Nie można łączyć **DeviceMessage** za pomocą dowolnego typu zdarzenia.
-> - Można określić tylko jeden punkt końcowy połączenia typu **EventHub** lub **DeviceMessage**.
+> - **DeviceMessage** jest kombinacją tylko z **centrum EventHub**. Nie można połączyć **DeviceMessage** z żadnym innym typem zdarzenia.
+> - Można określić tylko jeden punkt końcowy kombinacji typu **EventHub** lub **DeviceMessage**.
 
 ## <a name="configure-endpoints"></a>Konfigurowanie punktów końcowych
 
-Punkt końcowy zarządzania jest wykonywane za pośrednictwem punktów końcowych interfejsu API.
+Zarządzanie punktami końcowymi odbywa się za pomocą interfejsu API punktów końcowych.
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-Poniższe przykłady pokazują, jak skonfigurować punkty końcowe obsługiwane.
+W poniższych przykładach pokazano, jak skonfigurować obsługiwane punkty końcowe.
 
 >[!IMPORTANT]
-> Należy zwrócić uwagę dokładnej **eventTypes** atrybutu. Definiuje zdarzenia, które typy są obsługiwane przez punkt końcowy i określić routingu.
+> Zwróć szczególną uwagę na atrybut eventtypes. Definiuje, które typy zdarzeń są obsługiwane przez punkt końcowy, a tym samym określają jego Routing.
 
-Żądanie HTTP POST uwierzytelnionego względem
+Uwierzytelnione żądanie HTTP POST względem:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/endpoints
 ```
 
-- Trasa do typów zdarzeń usługi Service Bus **SensorChange**, **SpaceChange**, i **TopologyOperation**:
+- Kierowanie do Service Bus typów zdarzeń **SensorChange**, **SpaceChange**i **TopologyOperation**:
 
   ```JSON
   {
@@ -268,14 +268,14 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Wartość | Zamień na |
+    | Value | Zamień na |
     | --- | --- |
-    | YOUR_NAMESPACE | Przestrzeń nazw punktu końcowego usługi |
+    | YOUR_NAMESPACE | Przestrzeń nazw punktu końcowego |
     | YOUR_PRIMARY_KEY | Podstawowe parametry połączenia używane do uwierzytelniania |
     | YOUR_SECONDARY_KEY | Pomocnicze parametry połączenia używane do uwierzytelniania |
     | YOUR_TOPIC_NAME | Nazwa dostosowanego tematu |
 
-- Trasa do typów zdarzeń usługi Event Grid **SensorChange**, **SpaceChange**, i **TopologyOperation**:
+- Kierowanie do Event Grid typów zdarzeń **SensorChange**, **SpaceChange**i **TopologyOperation**:
 
   ```JSON
   {
@@ -291,13 +291,13 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Wartość | Zamień na |
+    | Value | Zamień na |
     | --- | --- |
     | YOUR_PRIMARY_KEY | Podstawowe parametry połączenia używane do uwierzytelniania|
     | YOUR_SECONDARY_KEY | Pomocnicze parametry połączenia używane do uwierzytelniania |
     | YOUR_TOPIC_NAME | Nazwa dostosowanego tematu |
 
-- Trasa do typów zdarzeń usługi Event Hubs **SensorChange**, **SpaceChange**, i **TopologyOperation**:
+- Kierowanie do Event Hubs typów zdarzeń **SensorChange**, **SpaceChange**i **TopologyOperation**:
 
   ```JSON
   {
@@ -313,14 +313,14 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Wartość | Zamień na |
+    | Value | Zamień na |
     | --- | --- |
-    | YOUR_NAMESPACE | Przestrzeń nazw punktu końcowego usługi |
+    | YOUR_NAMESPACE | Przestrzeń nazw punktu końcowego |
     | YOUR_PRIMARY_KEY | Podstawowe parametry połączenia używane do uwierzytelniania |
     | YOUR_SECONDARY_KEY | Pomocnicze parametry połączenia używane do uwierzytelniania |
-    | YOUR_EVENT_HUB_NAME | Nazwa Centrum zdarzeń |
+    | YOUR_EVENT_HUB_NAME | Nazwa centrum zdarzeń |
 
-- Trasa do typów zdarzeń usługi Event Hubs **DeviceMessage**. Włączenie `EntityPath` w **connectionString** jest wymagane:
+- Roześlij do Event Hubs typu zdarzenia **DeviceMessage**. Włączenie elementu `EntityPath` **ConnectionString** jest obowiązkowe:
 
   ```JSON
   {
@@ -334,30 +334,30 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Wartość | Zamień na |
+    | Value | Zamień na |
     | --- | --- |
-    | YOUR_NAMESPACE | Przestrzeń nazw punktu końcowego usługi |
+    | YOUR_NAMESPACE | Przestrzeń nazw punktu końcowego |
     | YOUR_PRIMARY_KEY | Podstawowe parametry połączenia używane do uwierzytelniania |
     | YOUR_SECONDARY_KEY | Pomocnicze parametry połączenia używane do uwierzytelniania |
-    | YOUR_EVENT_HUB_NAME | Nazwa Centrum zdarzeń |
+    | YOUR_EVENT_HUB_NAME | Nazwa centrum zdarzeń |
 
 > [!NOTE]  
-> Po utworzeniu nowego punktu końcowego może upłynąć do 5 do 10 minut, aby uruchomić odbieranie zdarzeń w punkcie końcowym.
+> Po utworzeniu nowego punktu końcowego może upłynąć do 5 – 10 minut od rozpoczęcia otrzymywania zdarzeń w punkcie końcowym.
 
-## <a name="primary-and-secondary-connection-keys"></a>Klucze podstawowe i pomocnicze połączenia
+## <a name="primary-and-secondary-connection-keys"></a>Podstawowe i pomocnicze klucze połączenia
 
-Gdy klucz podstawowy połączenia staje się nieautoryzowane, system automatycznie próbuje klucza pomocniczego połączenia. Który zawiera kopię zapasową i umożliwia możliwości do poprawnego działania uwierzytelniania i aktualizowanie klucza podstawowego, za pośrednictwem punktów końcowych interfejsu API.
+Gdy klucz połączenia podstawowego zostanie autoryzowany, system automatycznie próbuje pomocniczy klucz połączenia. Zapewnia to kopię zapasową i umożliwia bezpieczne uwierzytelnianie klucza podstawowego i aktualizowanie go za pomocą interfejsu API punktów końcowych.
 
-W przypadku nieautoryzowanych klucze podstawowe i pomocnicze połączenie system przechodzi do 30-minutowy czas oczekiwania wykładniczego wycofywania. Zdarzenia są odrzucane na każdy czas oczekiwania wyzwalane wycofywania.
+Jeśli zarówno podstawowy, jak i pomocniczy klucz połączenia są nieautoryzowane, system wprowadzi wykładniczy czas oczekiwania wynoszący maksymalnie 30 minut. Zdarzenia są porzucane po każdym wyzwoleniu czasu oczekiwania na wycofanie.
 
-Zawsze wtedy, gdy system jest w stan oczekiwania wycofywania, aktualizowanie kluczy połączenia za pośrednictwem interfejsu API punktów końcowych może potrwać do 30 minut, aby zastosować zmiany.
+Zawsze, gdy system jest w stanie oczekiwania na wycofanie, aktualizacja kluczy połączeń za pomocą interfejsu API punktów końcowych może zająć do 30 minut.
 
-## <a name="unreachable-endpoints"></a>Punkty końcowe jest nieosiągalny
+## <a name="unreachable-endpoints"></a>Nieosiągalne punkty końcowe
 
-Gdy punkt końcowy stanie się niedostępny, system przechodzi do 30-minutowy czas oczekiwania wykładniczego wycofywania. Zdarzenia są odrzucane na każdy czas oczekiwania wyzwalane wycofywania.
+Gdy punkt końcowy jest nieosiągalny, system wprowadza wykładniczy czas oczekiwania wynoszący maksymalnie 30 minut. Zdarzenia są porzucane po każdym wyzwoleniu czasu oczekiwania na wycofanie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się, [sposób używania Azure cyfrowego Twins Swagger](how-to-use-swagger.md).
+- Dowiedz się [, jak używać usługi Azure Digital bliźniaczych reprezentacji Swagger](how-to-use-swagger.md).
 
-- Dowiedz się więcej o [routingu zdarzenia i komunikaty](concepts-events-routing.md) w reprezentacji urządzeń cyfrowych platformy Azure.
+- Dowiedz się więcej na temat [routingu zdarzeń i komunikatów](concepts-events-routing.md) w usłudze Azure Digital bliźniaczych reprezentacji.

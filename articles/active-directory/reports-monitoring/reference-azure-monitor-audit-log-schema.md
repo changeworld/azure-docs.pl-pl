@@ -1,9 +1,9 @@
 ---
-title: Interpretowanie schemat dziennika inspekcji usługi Azure Active Directory w usłudze Azure Monitor | Dokumentacja firmy Microsoft
-description: Opisz schemat dziennika inspekcji usługi Azure AD do użycia w usłudze Azure Monitor
+title: Interpretuj schemat dziennika inspekcji Azure Active Directory w Azure Monitor | Microsoft Docs
+description: Opisz schemat dziennika inspekcji usługi Azure AD do użycia w Azure Monitor
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9f58b213e50a021651f35112a48d8f74ae59571
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7f75af14e388626a9ebbb54d43079f30dcfdd98a
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60437077"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987957"
 ---
-# <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Interpretowanie schematu dzienników inspekcji usługi Azure AD w usłudze Azure Monitor (wersja zapoznawcza)
+# <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Interpretuj schemat dzienników inspekcji usługi Azure AD w Azure Monitor (wersja zapoznawcza)
 
-W tym artykule opisano schemat dziennika inspekcji usługi Azure Active Directory (Azure AD) w usłudze Azure Monitor. Każdy wpis osobny dziennik jest przechowywane jako tekst i sformatowane jako obiekt blob JSON, jak pokazano w poniższych dwóch przykładach: 
+W tym artykule opisano schemat dziennika inspekcji usługi Azure Active Directory (Azure AD) w programie Azure Monitor. Każdy pojedynczy wpis dziennika jest przechowywany jako tekst i sformatowany jako obiekt BLOB JSON, jak pokazano w poniższych dwóch przykładach: 
 
 ```json
 { 
@@ -151,32 +151,32 @@ W tym artykule opisano schemat dziennika inspekcji usługi Azure Active Director
 |------------|-------------|
 | time       | Data i godzina (UTC). |
 | operationName | Nazwa operacji. |
-| operationVersion | Wersja interfejsu API REST, które są wymagane przez klienta. |
-| category | Obecnie *inspekcji* jest to jedyna obsługiwana wartość. |
-| tenantId | Identyfikator GUID, który jest skojarzony z dziennikami dzierżawy. |
-| resultType | Wynik operacji. Może to spowodować *Powodzenie* lub *błąd*. |
-| resultSignature |  To pole jest niezamapowany. Ponadto można zignorować. | 
-| resultDescription | Dodatkowy opis wyniku, gdzie są dostępne. | 
-| durationMs |  To pole jest niezamapowany. Ponadto można zignorować. |
-| callerIpAddress | Adres IP klienta, który zgłosił żądanie. | 
-| correlationId | Opcjonalny identyfikator GUID, który jest przekazywany przez klienta. Może ono pomóc korelowanie operacji po stronie klienta przy użyciu operacji po stronie serwera i jest to przydatne, gdy podczas śledzenia dzienników, które rozciągają się usług. |
-| identity | Tożsamość z tokenu, który został przedstawiony podczas zgłosił żądanie. Tożsamość może być konto użytkownika, konto systemowe lub jednostki usługi. |
-| poziom | Typ komunikatu. Dzienniki inspekcji poziom jest zawsze *komunikat o charakterze informacyjnym*. |
+| operationVersion | Wersja interfejsu API REST, która jest wymagana przez klienta programu. |
+| category | Obecnie *Inspekcja* jest jedyną obsługiwaną wartością. |
+| tenantId | Identyfikator GUID dzierżawy, który jest skojarzony z dziennikami. |
+| resultType | Wynik operacji. Wynik może być spowodowany *sukcesem* lub niepowodzeniem. |
+| resultSignature |  To pole jest niezamapowane i można je bezpiecznie zignorować. | 
+| resultDescription | Dodatkowy opis wyniku, o ile jest dostępny. | 
+| durationMs |  To pole jest niezamapowane i można je bezpiecznie zignorować. |
+| callerIpAddress | Adres IP klienta, który wykonał żądanie. | 
+| correlationId | Opcjonalny identyfikator GUID, który jest przesyłany przez klienta. Może pomóc skorelować operacje po stronie klienta przy użyciu operacji po stronie serwera i jest przydatne podczas śledzenia dzienników obejmujących usługi. |
+| identity | Tożsamość z tokenu, która została przedstawiona podczas żądania. Tożsamość może być kontem użytkownika, kontem systemowym lub jednostką usługi. |
+| level | Typ komunikatu. W przypadku dzienników inspekcji poziom jest zawsze *informacyjny*. |
 | location | Lokalizacja centrum danych. |
-| properties | Wyświetla listę obsługiwanych właściwości, które są powiązane z dziennika inspekcji. Aby uzyskać więcej informacji zobacz następną tabelę. | 
+| properties | Wyświetla listę obsługiwanych właściwości, które są powiązane z dziennikiem inspekcji. Aby uzyskać więcej informacji, zobacz następną tabelę. | 
 
 <br>
 
 | Nazwa właściwości | Opis |
 |---------------|-------------|
-| AuditEventCategory | Typ zdarzenia inspekcji. Może być *Zarządzanie użytkownikami*, *Zarządzanie aplikacjami*, lub innego typu.|
-| Typ tożsamości | Typ może być *aplikacji* lub *użytkownika*. |
-| Typ operacji | Typ może być *Dodaj*, *aktualizacji*, *Usuń*. lub *innych*. |
-| Typ zasobu docelowego | Określa typ zasobu docelowego, że operacja została wykonana w. Typ może być *aplikacji*, *użytkownika*, *roli*, *zasad* | 
-| Nazwa zasobu docelowego | Nazwa zasobu docelowego. Może być to nazwa aplikacji, nazwy roli, główną nazwę użytkownika lub główną nazwę usługi. |
-| additionalTargets | Wyświetla wszelkie dodatkowe właściwości dla określonych operacji. Na przykład operacji aktualizacji, stare wartości i nowe wartości są wyświetlane w obszarze *targetUpdatedProperties*. | 
+| AuditEventCategory | Typ zdarzenia inspekcji. Może to być *Zarządzanie użytkownikami*, *Zarządzanie aplikacjami*lub inny typ.|
+| Typ tożsamości | Typ może być *aplikacją* lub *użytkownikiem*. |
+| Typ operacji | Typ może być *dodawany*, *Aktualizowanie*i *usuwanie*. lub *inne*. |
+| Typ zasobu docelowego | Określa typ zasobu docelowego, na którym wykonano operację. Typem może być *aplikacja*, *użytkownik*, *rola*, *zasady* | 
+| Nazwa zasobu docelowego | Nazwa zasobu docelowego. Może to być nazwa aplikacji, nazwa roli, główna nazwa użytkownika lub nazwa główna usługi. |
+| additionalTargets | Wyświetla wszystkie dodatkowe właściwości dla określonych operacji. Na przykład w przypadku operacji aktualizacji stare wartości i nowe wartości są wyświetlane w obszarze *targetUpdatedProperties*. | 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Interpret sign-in logs schema in Azure Monitor (Interpretowanie schematu dzienników logowania w usłudze Azure Monitor)](reference-azure-monitor-sign-ins-log-schema.md)
 * [Dzienniki diagnostyczne platformy Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)

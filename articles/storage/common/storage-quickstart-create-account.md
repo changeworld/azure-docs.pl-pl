@@ -1,26 +1,26 @@
 ---
 title: Tworzenie konta magazynu — Azure Storage
-description: W tym artykule dowiesz się utworzyć konto magazynu przy użyciu witryny Azure portal, programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. Konto usługi Azure Storage zapewnia unikatową przestrzeń nazw na platformie Microsoft Azure do przechowywania i umożliwiania dostępu do obiektów danych utworzonych w usłudze Azure Storage.
+description: W tym artykule z tego artykułu dowiesz się, jak utworzyć konto magazynu przy użyciu Azure Portal, Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. Konto usługi Azure Storage zapewnia unikatową przestrzeń nazw na platformie Microsoft Azure do przechowywania i umożliwiania dostępu do obiektów danych utworzonych w usłudze Azure Storage.
 services: storage
 author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 06/28/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 8375f4c54dc436ecf0694ec5f629c81d3591594d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e72f8c3ed0658765827c4a9b0669c08fefd9044f
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65234182"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016331"
 ---
 # <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
-Konto magazynu platformy Azure zawiera wszystkie obiekty danych usługi Azure Storage: obiekty BLOB, pliki, kolejki, tabele i dyski. Konto magazynu zapewnia unikatową przestrzeń nazw dla danych usługi Azure Storage, który jest dostępny z dowolnego miejsca na świecie za pośrednictwem protokołu HTTP lub HTTPS. Dane na Twoim koncie usługi Azure storage jest trwały i o wysokiej dostępności, bezpieczny i wysoce skalowalny.
+Konto usługi Azure Storage zawiera wszystkie obiekty danych usługi Azure Storage: obiektów blob, plików, kolejek, tabel i dysków. Konto magazynu zapewnia unikatową przestrzeń nazw dla danych usługi Azure Storage, która jest dostępna z dowolnego miejsca na świecie za pośrednictwem protokołu HTTP lub HTTPS. Dane na koncie usługi Azure Storage są trwałe i wysoce dostępne, bezpieczne i skalowalne.
 
-W tym artykule dowiesz się utworzyć konto magazynu przy użyciu [witryny Azure portal](https://portal.azure.com/), [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview), [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure?view=azure-cli-latest), lub [usługi Azure Resource Manager Szablon](../../azure-resource-manager/resource-group-overview.md).  
+W tym artykule z tego artykułu dowiesz się, jak utworzyć konto magazynu przy użyciu [Azure Portal](https://portal.azure.com/), [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview), [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)lub [szablonu Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).  
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -34,28 +34,28 @@ Brak.
 
 # <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
-W tym artykule wymaga modułu Azure PowerShell Az wersji 0,7 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable Az`, aby określić bieżącą wersję. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-Az-ps).
+Ten artykuł instruktażowy wymaga modułu Azure PowerShell AZ w wersji 0,7 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable Az`, aby określić bieżącą wersję. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-Az-ps).
 
 # <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
-Można zalogować się do platformy Azure i uruchamiać polecenia wiersza polecenia platformy Azure w jeden z dwóch sposobów:
+Możesz zalogować się do platformy Azure i uruchamiać polecenia interfejsu wiersza poleceń platformy Azure na jeden z dwóch sposobów:
 
-- Można uruchomić polecenia interfejsu wiersza polecenia z w witrynie Azure portal w usłudze Azure Cloud Shell.
-- Można zainstalować interfejs wiersza polecenia i uruchamiać jego komendy lokalnie.
+- Poleceń interfejsu wiersza polecenia można uruchomić z poziomu Azure Portal w Azure Cloud Shell.
+- Interfejs wiersza polecenia można zainstalować i uruchomić polecenie CLI lokalnie.
 
 ### <a name="use-azure-cloud-shell"></a>Używanie usługi Azure Cloud Shell
 
-Usługa Azure Cloud Shell jest bezpłatną powłoką Bash, którą można uruchamiać bezpośrednio w witrynie Azure Portal. Wiersza polecenia platformy Azure jest wstępnie zainstalowany i skonfigurowany do korzystania z Twoim kontem. Kliknij przycisk **Cloud Shell** przycisk menu w prawej górnej części witryny Azure portal:
+Usługa Azure Cloud Shell jest bezpłatną powłoką Bash, którą można uruchamiać bezpośrednio w witrynie Azure Portal. Interfejs wiersza polecenia platformy Azure jest wstępnie zainstalowany i skonfigurowany do użycia z Twoim kontem. Kliknij przycisk **Cloud Shell** w menu w prawym górnym rogu Azure Portal:
 
 [![Cloud Shell](./media/storage-quickstart-create-account/cloud-shell-menu.png)](https://portal.azure.com)
 
-Ten przycisk uruchamia interaktywną powłokę, której można użyć, aby uruchomić kroki opisane w tym artykule:
+Przycisk uruchamia interaktywną powłokę, której można użyć, aby wykonać kroki opisane w tym artykule:
 
 [![Zrzut ekranu przedstawiający okno usługi Cloud Shell w portalu](./media/storage-quickstart-create-account/cloud-shell.png)](https://portal.azure.com)
 
 ### <a name="install-the-cli-locally"></a>Instalowanie interfejsu wiersza polecenia lokalnie
 
-Interfejs wiersza polecenia platformy Azure możesz również zainstalować i używać go lokalnie. W tym artykule wymaga, czy korzystasz z wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). 
+Interfejs wiersza polecenia platformy Azure możesz również zainstalować i używać go lokalnie. Ten artykuł z artykułu wymaga uruchomienia interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). 
 
 # <a name="templatetabtemplate"></a>[Szablon](#tab/template)
 
@@ -79,9 +79,9 @@ Connect-AzAccount
 
 # <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
-Aby uruchomić usługę Azure Cloud Shell, zaloguj się do [witryny Azure portal](https://portal.azure.com).
+Aby uruchomić Azure Cloud Shell, zaloguj się do [Azure Portal](https://portal.azure.com).
 
-Aby zalogować się do lokalnej instalacji interfejsu wiersza polecenia, uruchom [az login](/cli/azure/reference-index#az-login) polecenia:
+Aby zalogować się do lokalnej instalacji interfejsu wiersza polecenia, uruchom polecenie [AZ login](/cli/azure/reference-index#az-login) :
 
 ```cli
 az login
@@ -97,9 +97,9 @@ ND
 
 Teraz możesz przystąpić do tworzenia konta magazynu.
 
-Każde konto magazynu musi należeć do grupy zasobów platformy Azure. Grupa zasobów to logiczny kontener przeznaczony do grupowania usług platformy Azure. Podczas tworzenia konta magazynu masz możliwość utworzenia nowej grupy zasobów lub użycia istniejącej grupy zasobów. W tym artykule przedstawiono sposób tworzenia nowej grupy zasobów.
+Każde konto magazynu musi należeć do grupy zasobów platformy Azure. Grupa zasobów to logiczny kontener przeznaczony do grupowania usług platformy Azure. Podczas tworzenia konta magazynu masz możliwość utworzenia nowej grupy zasobów lub użycia istniejącej grupy zasobów. W tym artykule pokazano, jak utworzyć nową grupę zasobów.
 
-Konto magazynu **ogólnego przeznaczenia, wersja 2** zapewnia dostęp do wszystkich usług magazynu Azure Storage: obiektów blob, plików, kolejek, tabel i dysków. Kroki opisane w tym miejscu Utwórz konto magazynu ogólnego przeznaczenia w wersji 2, ale kroki tworzenia dowolnego typu konta magazynu są podobne.
+Konto magazynu **ogólnego przeznaczenia, wersja 2** zapewnia dostęp do wszystkich usług magazynu Azure Storage: obiektów blob, plików, kolejek, tabel i dysków. Kroki opisane tutaj tworzą konto magazynu ogólnego przeznaczenia w wersji 2, ale kroki tworzenia dowolnego typu konta magazynu są podobne.
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
@@ -123,7 +123,7 @@ Get-AzLocation | select Location
 $location = "westus"
 ```
 
-Następnie utwórz konto magazynu ogólnego przeznaczenia w wersji 2 z magazynu geograficznie nadmiarowego dostęp do odczytu (RA-GRS) przy użyciu [New AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) polecenia. Należy pamiętać, że nazwa konta magazynu musi być unikatowa w obrębie platformy Azure, więc Zastąp wartość symbolu zastępczego w nawiasach unikatową wartość:
+Następnie utwórz konto magazynu ogólnego przeznaczenia w wersji 2 z magazynem Geograficznie nadmiarowy z dostępem do odczytu (RA-GRS) za pomocą polecenia [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) . Pamiętaj, że nazwa konta magazynu musi być unikatowa w obrębie platformy Azure, więc Zastąp wartość symbolu zastępczego w nawiasach własnym unikatowymi wartościami:
 
 ```powershell
 New-AzStorageAccount -ResourceGroupName $resourceGroup `
@@ -133,7 +133,7 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
   -Kind StorageV2 
 ```
 
-Aby utworzyć konto magazynu ogólnego przeznaczenia w wersji 2, za pomocą opcji replikacji innej, Zastąp żądaną wartość w poniższej tabeli opisano **SkuName** parametru.
+Aby utworzyć konto magazynu ogólnego przeznaczenia w wersji 2 z inną opcją replikacji, należy zastąpić żądaną wartość w poniższej tabeli dla parametru **SkuName** .
 
 |Opcja replikacji  |Parametr SkuName  |
 |---------|---------|
@@ -141,6 +141,8 @@ Aby utworzyć konto magazynu ogólnego przeznaczenia w wersji 2, za pomocą opcj
 |Magazyn strefowo nadmiarowy (ZRS)     |Standard_ZRS         |
 |Magazyn geograficznie nadmiarowy (GRS)     |Standard_GRS         |
 |Magazyn geograficznie nadmiarowy dostępny do odczytu (GRS)     |Standard_RAGRS         |
+|Magazyn Geograficznie nadmiarowy (GZRS) (wersja zapoznawcza)    |Standard_GZRS         |
+|Strefa geograficzna z dostępem do odczytu — magazyn nadmiarowy (RA-GZRS) (wersja zapoznawcza)    |Standard_RAGZRS         |
 
 # <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
@@ -160,7 +162,7 @@ az account list-locations \
     --out table
 ```
 
-Następnie utwórz konto magazynu ogólnego przeznaczenia w wersji 2 z magazynu geograficznie nadmiarowego do odczytu za pomocą [Tworzenie konta magazynu az](/cli/azure/storage/account#az_storage_account_create) polecenia. Należy pamiętać, że nazwa konta magazynu musi być unikatowa w obrębie platformy Azure, więc Zastąp wartość symbolu zastępczego w nawiasach unikatową wartość:
+Następnie utwórz konto magazynu ogólnego przeznaczenia w wersji 2 z magazynem geograficznie nadmiarowym z dostępem do odczytu przy użyciu polecenia [AZ Storage account Create](/cli/azure/storage/account#az_storage_account_create) . Pamiętaj, że nazwa konta magazynu musi być unikatowa w obrębie platformy Azure, więc Zastąp wartość symbolu zastępczego w nawiasach własnym unikatowymi wartościami:
 
 ```azurecli-interactive
 az storage account create \
@@ -171,7 +173,7 @@ az storage account create \
     --kind StorageV2
 ```
 
-Aby utworzyć konto magazynu ogólnego przeznaczenia w wersji 2, za pomocą opcji replikacji innej, Zastąp żądaną wartość w poniższej tabeli opisano **jednostki sku** parametru.
+Aby utworzyć konto magazynu ogólnego przeznaczenia w wersji 2 z inną opcją replikacji, należy zastąpić żądaną wartość w poniższej tabeli dla parametru **SKU** .
 
 |Opcja replikacji  |parametr sku  |
 |---------|---------|
@@ -179,10 +181,12 @@ Aby utworzyć konto magazynu ogólnego przeznaczenia w wersji 2, za pomocą opcj
 |Magazyn strefowo nadmiarowy (ZRS)     |Standard_ZRS         |
 |Magazyn geograficznie nadmiarowy (GRS)     |Standard_GRS         |
 |Magazyn geograficznie nadmiarowy dostępny do odczytu (GRS)     |Standard_RAGRS         |
+|Magazyn Geograficznie nadmiarowy (GZRS) (wersja zapoznawcza)    |Standard_GZRS         |
+|Strefa geograficzna z dostępem do odczytu — magazyn nadmiarowy (RA-GZRS) (wersja zapoznawcza)    |Standard_RAGZRS         |
 
 # <a name="templatetabtemplate"></a>[Szablon](#tab/template)
 
-Aby wdrożyć szablon usługi Resource Manager, aby utworzyć konto magazynu, można użyć programu Azure Powershell lub wiersza polecenia platformy Azure. Do szablonu używanego w tym artykule pochodzą [szablony szybkiego startu usługi Azure Resource Manager](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Aby uruchomić skrypty, zaznacz **wypróbuj** otworzyć usługa Azure Cloud shell. Wklej skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz **Wklej**.
+Za pomocą programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure można wdrożyć szablon Menedżer zasobów, aby utworzyć konto magazynu. Szablon używany w tym artykule z przewodnikiem pochodzi z [Azure Resource Manager szablonów szybkiego startu](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Aby uruchomić skrypty, wybierz pozycję **Wypróbuj** , aby otworzyć usługę Azure Cloud Shell. Aby wkleić skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz polecenie **Wklej**.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -201,11 +205,11 @@ az group create --name $resourceGroupName --location "$location" &&
 az group deployment create --resource-group $resourceGroupName --template-file "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
 ```
 
-Aby dowiedzieć się, jak utworzyć szablony, zobacz:
+Aby dowiedzieć się, jak tworzyć szablony, zobacz:
 
-- [Dokumentacja usługi Azure Resource Manager](/azure/azure-resource-manager/).
-- [Odwołanie do szablonu kont magazynu](/azure/templates/microsoft.storage/allversions).
-- [Przykłady szablonów konta magazynu dodatkowego](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Storage).
+- [Dokumentacja Azure Resource Manager](/azure/azure-resource-manager/).
+- [Odwołanie do szablonu konta magazynu](/azure/templates/microsoft.storage/allversions).
+- [Dodatkowe przykłady szablonów kont magazynu](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Storage).
 
 ---
 
@@ -213,7 +217,7 @@ Aby uzyskać więcej informacji na temat dostępnych opcji replikacji, zobacz [S
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli chcesz wyczyścić zasoby utworzone w tym artykule, możesz usunąć grupę zasobów. Usunięcie grupy zasobów powoduje również usunięcie skojarzonego konta magazynu i wszystkich innych zasobów skojarzonych z tą grupą zasobów.
+Jeśli chcesz wyczyścić zasoby utworzone w tym artykule z tego artykułu, możesz usunąć grupę zasobów. Usunięcie grupy zasobów powoduje również usunięcie skojarzonego konta magazynu i wszystkich innych zasobów skojarzonych z tą grupą zasobów.
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
@@ -241,7 +245,7 @@ az group delete --name storage-resource-group
 
 # <a name="templatetabtemplate"></a>[Szablon](#tab/template)
 
-Aby usunąć grupę zasobów i skojarzone z nią zasoby, w tym nowe konto magazynu, należy użyć programu Azure PowerShell lub wiersza polecenia platformy Azure.
+Aby usunąć grupę zasobów i skojarzone z nią zasoby, w tym nowe konto magazynu, użyj Azure PowerShell lub interfejsu wiersza polecenia platformy Azure.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -256,9 +260,9 @@ az group delete --name $resourceGroupName
 
 ---
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule utworzono konto magazynu w warstwie standardowa ogólnego przeznaczenia w wersji 2. Aby Dowiedz się, jak przekazywać i pobierać obiekty BLOB, do i z konta magazynu, przejdź do jednego z przewodników Szybki Start z magazynu obiektów Blob.
+W tym artykule z tego artykułu opisano tworzenie standardowego konta magazynu ogólnego przeznaczenia w wersji 2. Aby dowiedzieć się, jak przekazywać i pobierać obiekty blob do i z konta magazynu, przejdź do jednego z przewodników szybki start dla usługi BLOB Storage.
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 

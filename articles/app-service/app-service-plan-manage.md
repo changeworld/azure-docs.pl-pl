@@ -1,7 +1,7 @@
 ---
-title: Zarządzanie planu usługi App Service — Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak do wykonywania różnych zadań, aby zarządzać plan usługi App Service.
-keywords: Usługa App service, usłudze azure app service, skala, plan usługi app service, zmiana, tworzenie, zarządzanie i zarządzania
+title: Zarządzanie planem App Service — platforma Azure | Microsoft Docs
+description: Dowiedz się, jak wykonywać różne zadania związane z zarządzaniem planem App Service.
+keywords: App Service, Azure App Service, skala, plan usługi App Service, zmiana, tworzenie, zarządzanie, zarządzanie
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -13,107 +13,107 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 10/31/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 936abe80a66c1dbe99e7d8a255fe8995a2df0803
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c749f090cbb0aeb036a53a01e6cd516617c3186d
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60852284"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68953876"
 ---
-# <a name="manage-an-app-service-plan-in-azure"></a>Zarządzanie plan usługi App Service na platformie Azure
+# <a name="manage-an-app-service-plan-in-azure"></a>Zarządzanie planem App Service na platformie Azure
 
-[Planu usługi Azure App Service](overview-hosting-plans.md) zapewnia zasoby, które aplikacja usługi App Service musi zostać uruchomiony. Ten przewodnik pokazuje, jak zarządzać plan usługi App Service.
+[Plan Azure App Service](overview-hosting-plans.md) zapewnia zasoby, które aplikacja App Service musi uruchomić. W tym przewodniku pokazano, jak zarządzać planem App Service.
 
 ## <a name="create-an-app-service-plan"></a>Tworzenie planu usługi App Service
 
 > [!TIP]
-> Jeśli masz środowisko usługi App Service, zobacz [Utwórz plan usługi App Service w środowisku usługi App Service](environment/app-service-web-how-to-create-a-web-app-in-an-ase.md#createplan).
+> Jeśli masz App Service Environment, zobacz [Tworzenie planu App Service w App Service Environment](environment/app-service-web-how-to-create-a-web-app-in-an-ase.md#createplan).
 
-Można utworzyć pustego planu usługi App Service lub utworzyć plan, jako część tworzenia aplikacji.
+Można utworzyć pusty plan App Service lub utworzyć plan w ramach tworzenia aplikacji.
 
-1. W [witryny Azure portal](https://portal.azure.com), wybierz opcję **New** > **sieci Web i mobilność**, a następnie wybierz pozycję **aplikacji sieci Web** lub inny rodzaj aplikacji usługi app Service.
+1. W [Azure Portal](https://portal.azure.com)wybierz pozycję **Nowy** > **Sieć Web**i mobilność, a następnie wybierz pozycję **aplikacja internetowa** lub inny rodzaj aplikacji App Service.
 
-2. Wybierz istniejący plan usługi App Service lub utworzyć plan dla nowej aplikacji.
+2. Wybierz istniejący plan App Service lub Utwórz plan dla nowej aplikacji.
 
-   ![Tworzenie aplikacji w witrynie Azure portal.][createWebApp]
+   ![Utwórz aplikację w Azure Portal.][createWebApp]
 
    Aby utworzyć plan:
 
-   a. Wybierz **[+] tworzenia nowych**.
+   a. Wybierz pozycję **[+] Utwórz nowy**.
 
-      ![Utwórz plan usługi App Service.][createASP] 
+      ![Utwórz plan App Service.][createASP] 
 
-   b. Aby uzyskać **planu usługi App Service**, wprowadź nazwę planu.
+   b. W polu **plan App Service**wprowadź nazwę planu.
 
-   c. Aby uzyskać **lokalizacji**, wybierz odpowiednią lokalizację.
+   c. W obszarze **Lokalizacja**wybierz odpowiednią lokalizację.
 
-   d. Aby uzyskać **warstwa cenowa**, wybierz odpowiednią warstwę cenową dla usługi. Wybierz **Wyświetl wszystkie** do widoku bardziej cennik, takich jak **bezpłatna** i **Shared**. Po wybraniu warstwy cenowej kliknij **wybierz** przycisku.
+   d. W obszarze **warstwa cenowa**wybierz odpowiednią warstwę cenową dla usługi. Wybierz pozycję **Wyświetl wszystko** , aby wyświetlić więcej opcji cenowych, takich jak **bezpłatne** i **udostępnione**. Po wybraniu warstwy cenowej kliknij przycisk **Wybierz** .
 
 <a name="move"></a>
 
-## <a name="move-an-app-to-another-app-service-plan"></a>Przenoszenie aplikacji do innego planu usługi App Service
+## <a name="move-an-app-to-another-app-service-plan"></a>Przenoszenie aplikacji do innego planu App Service
 
-Przenoszenie aplikacji do innego planu usługi App Service, tak długo, jak planu źródłowego i docelowego planu znajdują się w _tej samej grupie zasobów i region geograficzny_.
+Możesz przenieść aplikację do innego planu App Service, o ile plan źródłowy i plan docelowy znajdują się w _tej samej grupie zasobów i regionie_geograficznym.
 
 > [!NOTE]
-> Platforma Azure wdroży każdego nowego planu usługi App Service do jednostki wdrożenia, wywoływana wewnętrznie przestrzeń sieci Web. Każdy region może mieć wiele przestrzeni internetowych, ale aplikacji mogą być tylko przenoszone między plany, które są tworzone w tej samej przestrzeni internetowej. Środowiska usługi App Service jest izolowane przestrzeni internetowej, dzięki czemu aplikacje mogą być przenoszone między planami w tym samym środowisku usługi App Service, ale nie między planami w różnych środowiskach usługi App Service.
+> Platforma Azure wdraża każdy nowy plan App Service w jednostce wdrożenia wewnętrznie nazywanej przestrzenią sieci Web. Każdy region może mieć wiele przestrzeni sieci Web, ale aplikacja może przenosić się tylko między planami, które są tworzone w tym samym obszarze sieci Web. App Service Environment jest izolowanym miejscem sieci Web, dzięki czemu aplikacje mogą być przenoszone między planami w tym samym App Service Environment, ale nie między planami w różnych środowiskach App Service.
 >
-> Nie można określić podczas tworzenia planu przestrzeni internetowej, ale istnieje możliwość upewnić się, że plan jest tworzony w tej samej przestrzeni internetowej jako istniejącego planu. Krótko mówiąc wszystkie plany utworzone za pomocą tej samej grupie zasobów i region kombinacji są wdrażane w tej samej przestrzeni internetowej. Na przykład jeśli utworzono planu w grupie zasobów, A i region B wszelkie planu, który następnie utworzysz w grupie zasobów, A i region B jest wdrażana w tej samej przestrzeni internetowej. Pamiętaj, że planów nie można przenieść przestrzeni internetowych po ich utworzeniu, więc planu nie można przenieść do "tej samej przestrzeni internetowej" jako innego planu przez przeniesienie ich do innej grupy zasobów.
+> Nie można określić miejsca sieci Web, które ma być używane podczas tworzenia planu, ale istnieje możliwość upewnienia się, że plan jest tworzony w tym samym obszarze sieci Web co istniejący plan. We wszystkich planach utworzonych za pomocą tej samej kombinacji grupy zasobów i regionu są wdrażane w tym samym obszarze sieci Web. Na przykład jeśli utworzono plan w grupie zasobów a i w regionie B, to każdy plan, który następnie utworzysz w grupie zasobów a i region B jest wdrażany w tym samym obszarze sieci Web. Należy pamiętać, że plany nie mogą przenosić obszarów sieci Web po ich utworzeniu, dlatego nie można przenieść planu do "tego samego obszaru sieci Web" jako innego planu przez przeniesienie go do innej grupy zasobów.
 > 
 
-1. W [witryny Azure portal](https://portal.azure.com), przejdź do aplikacji, którą chcesz przenieść.
+1. W [Azure Portal](https://portal.azure.com)przejdź do aplikacji, którą chcesz przenieść.
 
-1. W menu Wyszukaj **planu usługi App Service** sekcji.
+1. W menu poszukaj sekcji **Plan App Service** .
 
-1. Wybierz **planu usługi App Service zmiany** otworzyć **planu usługi App Service** selektora.
+1. Wybierz pozycję **zmień App Service plan** , aby otworzyć selektor **planu App Service** .
 
-   ![Selektor planu usługi App Service.][change] 
+   ![Selektor planu App Service.][change] 
 
-1. W **planu usługi App Service** selektor, wybierz istniejący plan można przenieść tej aplikacji do.   
+1. W selektorze **planu App Service** wybierz istniejący plan, do którego chcesz przenieść tę aplikację.   
 
-**Planu usługi App Service wybierz** strona zawiera tylko te plany, które znajdują się w tej samej grupie zasobów i regionu geograficznego co planu usługi App Service w bieżącej aplikacji.
+Na stronie **Wybierz plan App Service** są wyświetlane tylko plany, które znajdują się w tej samej grupie zasobów i regionie geograficznym, co plan App Service bieżącej aplikacji.
 
-Każdy plan ma swoją własną warstwę cenową. Na przykład przejście do lokacji **bezpłatna** warstwy do **standardowa** warstwy umożliwia wszystkie aplikacje przypisane do niego, można korzystać z funkcji i zasobów **standardowa** warstwy. Przenoszenie aplikacji z wyższej warstwy planu plan z warstwy niższej oznacza jednak, że nie masz już dostęp do pewnych funkcji. Jeśli aplikacja korzysta z funkcji, która nie jest dostępna w ramach planu docelowego, otrzymasz błąd, który pokazuje, która funkcja jest używana, która nie jest dostępna. 
+Każdy plan ma własną warstwę cenową. Na przykład przeniesienie lokacji z warstwy **bezpłatna** do warstwy **standardowa** umożliwia wszystkim aplikacjom przypisanym do korzystania z funkcji i zasobów warstwy **standardowa** . Przeniesienie aplikacji z planu wyższego poziomu do planu niższej warstwy oznacza jednak, że nie masz już dostępu do niektórych funkcji. Jeśli aplikacja korzysta z funkcji, która nie jest dostępna w planie docelowym, zostanie wyświetlony komunikat o błędzie, który pokazuje, która funkcja jest używana, która jest niedostępna. 
 
-Na przykład w jednej z aplikacji korzysta z certyfikatów SSL, może zostać wyświetlony ten komunikat o błędzie:
+Na przykład jeśli jedna z aplikacji używa certyfikatów SSL, może zostać wyświetlony następujący komunikat o błędzie:
 
 `Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`
 
-W tym przypadku przed można przenieść ją do planu docelowego, musisz albo:
-- Skalowanie w górę do warstwy cenowej planu docelowego **podstawowe** lub nowszej.
+W tym przypadku zanim będzie można przenieść aplikację do planu docelowego, należy wykonać jedną z:
+- Skaluj warstwę cenową planu docelowego do warstwy **podstawowa** lub wyższej.
 - Usuń wszystkie połączenia SSL z aplikacją.
 
 ## <a name="move-an-app-to-a-different-region"></a>Przenoszenie aplikacji do innego regionu
 
-Region, w którym działa aplikacja, jest to region, planu usługi App Service, który znajduje się w. Jednak nie można zmienić regionu plan usługi App Service. Jeśli chcesz uruchomić aplikację w innym regionie, co alternatywą jest aplikacji klonowania. Klonowanie sprawia, że kopii aplikacji w nowy lub istniejący plan usługi App Service w dowolnym regionie.
+Region, w którym jest uruchomiona aplikacja, jest regionem App Service planu. Nie można jednak zmienić regionu planu App Service. Jeśli chcesz uruchomić aplikację w innym regionie, jedną alternatywą jest klonowanie aplikacji. Klonowanie tworzy kopię aplikacji w nowym lub istniejącym planie App Service w dowolnym regionie.
 
-Możesz znaleźć **aplikację** w **narzędzia programistyczne** części menu.
+**Klonowanie aplikacji** można znaleźć w sekcji **Narzędzia programistyczne** w menu.
 
 > [!IMPORTANT]
-> Klonowanie ma pewne ograniczenia. Informacje o nich w [klonowania aplikacji usługi Azure App Service](app-service-web-app-cloning.md).
+> Klonowanie ma pewne ograniczenia. Informacje o nich można znaleźć w [Azure App Service klonowania aplikacji](app-service-web-app-cloning.md).
 
-## <a name="scale-an-app-service-plan"></a>Skaluj plan usługi App Service
+## <a name="scale-an-app-service-plan"></a>Skalowanie planu App Service
 
-Skalowanie w górę usługi App Service plan w warstwie cenowej, zobacz [skalowanie aplikacji na platformie Azure](web-sites-scale.md).
+Aby skalować w górę warstwę cenową planu App Service, zobacz [skalowanie w górę aplikacji na platformie Azure](web-sites-scale.md).
 
-Aby skalować liczbę wystąpień aplikacji, zobacz [ręczne lub automatyczne skalowanie liczby wystąpień](../monitoring-and-diagnostics/insights-how-to-scale.md).
+Aby skalować liczbę wystąpień aplikacji, zobacz [Ręczne lub automatyczne skalowanie liczby wystąpień](../monitoring-and-diagnostics/insights-how-to-scale.md).
 
 <a name="delete"></a>
 
-## <a name="delete-an-app-service-plan"></a>Usuwanie planu usługi App Service
+## <a name="delete-an-app-service-plan"></a>Usuwanie planu App Service
 
-Aby uniknąć nieoczekiwanych opłat, po usunięciu ostatniej aplikacji w ramach planu usługi App Service, App Service spowoduje również usunięcie plan domyślnie. Jeśli zdecydujesz się zachować zamiast tego planu, należy zmienić plan **bezpłatna** warstwy, więc nie są naliczane opłaty.
+Aby uniknąć nieoczekiwanych opłat, po usunięciu ostatniej aplikacji w planie App Service, App Service również domyślnie usuwa plan. Jeśli wybierzesz opcję zachowania planu, należy zmienić plan na **bezpłatna** , aby nie naliczać opłat.
 
 > [!IMPORTANT]
-> Plany usługi App Service, w których brak aplikacji skojarzonych z nimi nadal naliczone opłaty, ponieważ nadal zarezerwować skonfigurowanych wystąpień maszyn wirtualnych.
+> Plany App Service, do których nie są skojarzone żadne aplikacje, nadal będą naliczane opłaty, ponieważ nadal rezerwują skonfigurowane wystąpienia maszyn wirtualnych.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Skalowanie aplikacji na platformie Azure](web-sites-scale.md)
+> [Skalowanie aplikacji w górę na platformie Azure](web-sites-scale.md)
 
 [change]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/change-appserviceplan.png
 [createASP]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-appserviceplan.png

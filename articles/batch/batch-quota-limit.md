@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 08/13/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 312f6746cb02aa66b0e7f8b47cb10e52558fa542
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 118a36587667c815489ddad03426b5cfcfee7382
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323158"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036671"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Limity przydziału i limity usługi Batch
 
@@ -70,6 +70,7 @@ Dodatkowe limity ustawiane przez usługę Batch. W przeciwieństwie do przydzia�
 | Pakiety aplikacji na aplikację | 40 |
 | Pakiety aplikacji na pulę | 10 |
 | Maksymalny okres istnienia zadania | 180 dni<sup>1</sup> |
+| [Instalacje](virtual-file-mount.md) na węzeł obliczeniowy | 10 |
 
 <sup>1</sup> maksymalny okres istnienia zadania, od momentu jego dodania do zadania do momentu jego zakończenia, to 180 dni. Zadania ukończone są przechowywane przez siedem dni; dane dla zadań nieukończonych w maksymalnym okresie istnienia są niedostępne.
 
@@ -78,7 +79,7 @@ Dodatkowe limity ustawiane przez usługę Batch. W przeciwieństwie do przydzia�
 Wyświetl przydziały kont wsadowych w [Azure Portal][portal].
 
 1. Wybierz pozycję konta w usłudze **Batch** w portalu, a następnie wybierz odpowiednie konto w usłudze Batch.
-1. Wybierz  pozycję przydziały w menu konta zadania wsadowego.
+1. Wybierz pozycję przydziały w menu konta zadania wsadowego.
 1. Wyświetl przydziały aktualnie stosowane do konta w usłudze Batch
 
     ![Przydziały kont wsadowych][account_quotas]

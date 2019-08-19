@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: d0da69601bfc6fd09c10b30d45195722781d87d6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.reviewer: cenkdin;anilmur
+ms.openlocfilehash: be3c75680599c07a3cebe3dcf0436884958e1706
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61232142"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69016667"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Wysyłać strumień na żywo o pojedynczej szybkości transmisji bitów przy użyciu koder Wirecast 
 > [!div class="op_single_selector"]
@@ -69,21 +70,21 @@ Podczas uruchamiania kanału możesz [skonfigurować koder](media-services-confi
 >
 >
 
-## <a name="a-idconfigurewirecastrtmp-configure-the-telestream-wirecast-encoder"></a><a id="configure_wirecast_rtmp" />Konfiguruj koder Telestream Wirecast
+## <a name="a-idconfigure_wirecast_rtmp-configure-the-telestream-wirecast-encoder"></a><a id="configure_wirecast_rtmp" />Konfiguruj koder Telestream Wirecast
 W tym samouczku są używane następujące ustawienia danych wyjściowych. W pozostałej części tej sekcji opisano kroki konfiguracji szczegółowo.
 
 **Film wideo**:
 
-* Codec: H.264
-* Profil: Wysoki (poziom 4.0)
-* Szybkość transmisji bitów: 5000 KB/s
-* Klatki kluczowe: 2 sekundy (60 sekund)
+* Wymaga H. 264
+* Profilu Wysoka (poziom 4,0)
+* Multimedia 5000 KB/s
+* Kluczowych 2 sekundy (60 s)
 * Szybkość klatek: 30
 
 **Dźwięk**:
 
-* Codec: AAC (LC)
-* Szybkość transmisji bitów: 192 kb/s
+* Wymaga AAC (LC)
+* Multimedia 192 kb/s
 * Częstotliwość próbkowania: 44,1 kHz
 
 ### <a name="configuration-steps"></a>Kroki konfiguracji
@@ -103,16 +104,16 @@ W tym samouczku są używane następujące ustawienia danych wyjściowych. W poz
 
     **Film wideo**
 
-   * Koder: MainConcept H.264
-   * Liczba klatek na sekundę: 30
-   * Średnia szybkość transmisji bitów: 5000 kbitów na sekundę (mogą być dostosowywane według ograniczenia sieci)
-   * Profil: Main
+   * Pomocą MainConcept H. 264
+   * Klatki na sekundę: 30
+   * Średnia szybkość transmisji bitów: 5000 kbit/s (można je dostosować w zależności od ograniczeń sieci)
+   * Profilu Główny
    * Klatka kluczowa co: 60 klatek
 
      **Audio**
 
-   * Docelowa szybkość transmisji bitów: 192 kbitów na sekundę
-   * Częstotliwość próbkowania: 44 100 kHz
+   * Docelowa szybkość transmisji bitów: 192 kbit/s
+   * Częstotliwość próbkowania: 44,100 kHz
 
      ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast4.png)
 6. Naciśnij pozycję **Zapisz**.

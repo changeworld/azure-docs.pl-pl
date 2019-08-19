@@ -1,71 +1,71 @@
 ---
-title: Przygotowywanie maszyn źródłowych, aby zainstalować usługi mobilności za pomocą instalacji wypychanej na potrzeby odzyskiwania po awarii maszyn wirtualnych programu VMware i serwerów fizycznych na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak przygotować serwer do instalacji agenta mobilności za pomocą instalacji wypychanej na potrzeby odzyskiwania po awarii maszyn wirtualnych programu VMware i serwerów fizycznych do platformy Azure przy użyciu usługi Azure Site Recovery.
+title: Przygotuj maszyny źródłowe, aby zainstalować usługę mobilności za pośrednictwem instalacji wypychanej w celu odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformie Azure | Microsoft Docs
+description: Dowiedz się, jak przygotować serwer do instalacji agenta mobilności za pośrednictwem instalacji wypychanej na potrzeby odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformie Azure przy użyciu usługi Azure Site Recovery.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 628be573d03d42ec62a358071074facfe228852d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f1a96302d180f3b4b179f42013232f3b48d4e2b0
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60318192"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016362"
 ---
-# <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>Przygotowanie maszyny źródłowej dotyczące instalacji wypychanej agenta mobilności
+# <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>Przygotuj maszynę źródłową do instalacji wypychanej agenta mobilności
 
-Podczas konfigurowania odzyskiwania po awarii dla maszyn wirtualnych VMware i serwerów fizycznych, za pomocą [usługi Azure Site Recovery](site-recovery-overview.md), należy zainstalować [usługi Site Recovery Mobility](vmware-physical-mobility-service-overview.md) na każdej maszyny Wirtualnej VMware w środowisku lokalnym i serwera fizycznego.  Usługa mobilności służy do przechwytywania zapisów danych na maszynie i przekazuje je do serwera przetwarzania Site Recovery.
+Po skonfigurowaniu odzyskiwania po awarii dla maszyn wirtualnych VMware i serwerów fizycznych przy użyciu [Azure Site Recovery](site-recovery-overview.md)należy zainstalować [usługę mobilności Site Recovery](vmware-physical-mobility-service-overview.md) na wszystkich lokalnych maszynach wirtualnych VMware i na serwerze fizycznym.  Usługa mobilności przechwytuje operacje zapisu danych na komputerze i przekazuje je do serwera przetwarzania Site Recovery.
 
-## <a name="install-on-windows-machine"></a>Zainstaluj na maszynie Windows
+## <a name="install-on-windows-machine"></a>Zainstaluj na komputerze z systemem Windows
 
-Na każdej maszynie, Windows, dla których chcesz chronić, wykonaj następujące czynności:
+Na każdej maszynie z systemem Windows, która ma być chroniona, wykonaj następujące czynności:
 
-1. Upewnij się, że istnieje połączenie sieciowe między maszyną i serwerem przetwarzania. Jeśli nie skonfigurowano oddzielnego serwera przetwarzania, następnie domyślnie działa na serwerze konfiguracji.
-1. Utwórz konto, za pomocą którego serwer przetwarzania będzie mógł uzyskać dostęp do komputera. Konto powinno mieć uprawnień administratora lokalnego lub domeny. Tylko w przypadku instalacji wypychanej i aktualizacji agenta, należy używać tego konta.
-2. Jeśli nie używasz konta domeny, wyłącz kontrolę dostępu użytkowników zdalnych na komputerze lokalnym w następujący sposób:
-    - W kluczu rejestru HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System Dodaj nową wartość typu DWORD: **LocalAccountTokenFilterPolicy**. Ustaw wartość **1**.
-    -  Aby to zrobić w wierszu polecenia, uruchom następujące polecenie:  
-   "Rejestru HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System Dodaj /v LocalAccountTokenFilterPolicy /t REG_DWORD /d
-3. W Zaporze Windows na komputerze, który chcesz chronić, wybierz **Zezwalaj aplikacji lub funkcji za pośrednictwem zapory**. Włącz **udostępnianie plików i drukarek** i **Instrumentacji zarządzania Windows (WMI)** . Dla komputerów, które należą do domeny można skonfigurować ustawienia zapory przy użyciu obiektu zasad grupy (GPO).
+1. Upewnij się, że istnieje połączenie sieciowe między komputerem a serwerem przetwarzania. Jeśli nie skonfigurowano oddzielnego serwera przetwarzania, domyślnie jest on uruchomiony na serwerze konfiguracji.
+1. Utwórz konto, za pomocą którego serwer przetwarzania będzie mógł uzyskać dostęp do komputera. Konto powinno mieć uprawnienia administratora, lokalne lub domeny. Użyj tego konta tylko w przypadku instalacji wypychanej i aktualizacji agenta.
+2. Jeśli nie korzystasz z konta domeny, wyłącz kontrolę dostępu użytkowników zdalnych na komputerze lokalnym w następujący sposób:
+    - W obszarze klucz rejestru HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System Dodaj nową wartość DWORD: **LocalAccountTokenFilterPolicy**. Ustaw wartość na **1**.
+    -  Aby to zrobić, w wierszu polecenia Uruchom następujące polecenie:  
+   "REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System/v LocalAccountTokenFilterPolicy/t REG_DWORD/d
+3. W zaporze systemu Windows na komputerze, który chcesz chronić, wybierz opcję **Zezwalaj aplikacji lub funkcji przez zaporę**. Włącz **udostępnianie plików i drukarek** oraz **Instrumentacja zarządzania Windows (WMI)** . W przypadku komputerów należących do domeny możesz skonfigurować ustawienia zapory przy użyciu obiektu zasady grupy (GPO).
 
    ![Ustawienia zapory](./media/vmware-azure-install-mobility-service/mobility1.png)
 
-4. Dodaj konto utworzone w narzędziu CSPSConfigtool. Aby to zrobić, należy zalogować się do serwera konfiguracji.
-5. Otwórz plik **cspsconfigtool.exe**. Jest on dostępny jako skrót na pulpicie i w folderze %ProgramData%\home\svsystems\bin.
-6. Na **Zarządzanie kontami** zaznacz **Dodaj konto**.
+4. Dodaj konto utworzone w narzędziu CSPSConfigtool. W tym celu zaloguj się do serwera konfiguracji.
+5. Otwórz plik **cspsconfigtool.exe**. Jest on dostępny jako skrót na pulpicie i w folderze%ProgramData%\home\svsystems\bin.
+6. Na karcie **Zarządzanie kontami** wybierz pozycję **Dodaj konto**.
 7. Dodaj utworzone konto.
 8. Wprowadź używane poświadczenia po włączeniu replikacji dla komputera.
 
-## <a name="install-on-linux-machine"></a>Instalowanie na maszynie z systemem Linux
+## <a name="install-on-linux-machine"></a>Zainstaluj na komputerze z systemem Linux
 
-Na każdym komputerze systemu Linux, które mają być chronione wykonaj następujące czynności:
+Na każdym komputerze z systemem Linux, który ma zostać objęty ochroną, wykonaj następujące czynności:
 
-1. Upewnij się, że istnieje połączenie sieciowe między maszyny z systemem Linux a serwerem przetwarzania.
-2. Utwórz konto, za pomocą którego serwer przetwarzania będzie mógł uzyskać dostęp do komputera. Konto powinno być użytkownikiem **root** na źródłowym serwerze z systemem Linux. Tylko w przypadku instalacji wypychanej i aktualizacje, należy używać tego konta.
+1. Upewnij się, że istnieje połączenie sieciowe między komputerem z systemem Linux a serwerem przetwarzania.
+2. Utwórz konto, za pomocą którego serwer przetwarzania będzie mógł uzyskać dostęp do komputera. Konto powinno być użytkownikiem **root** na źródłowym serwerze z systemem Linux. Użyj tego konta tylko w przypadku instalacji wypychanej i aktualizacji.
 3. Sprawdź, czy plik /etc/hosts na źródłowym serwerze z systemem Linux zawiera wpisy mapujące lokalną nazwę hosta na adres IP skojarzony ze wszystkimi kartami sieciowymi.
 4. Zainstaluj najnowsze pakiety openssh, openssh-server i openssl na komputerze, który chcesz replikować.
 5. Upewnij się, że protokół Secure Shell (SSH) jest włączony i uruchomiony na porcie 22.
-4. Włącz podsystem SFTP i hasło uwierzytelnianie w pliku sshd_config. Aby to zrobić, zaloguj się jako **głównego**.
-5. W **/etc/ssh/sshd_config** plików, znajdź wiersz, który rozpoczyna się od **PasswordAuthentication**.
-6. Usuń znaczniki komentarza i zmień wartość na **tak**.
-7. Znajdź wiersz, który rozpoczyna się od **podsystemu**, i usuń znaczniki komentarza.
+4. Włącz podsystem SFTP i uwierzytelnianie hasłem w pliku sshd_config. W tym celu zaloguj się jako **element główny**.
+5. W pliku **/etc/ssh/sshd_config** Znajdź wiersz zaczynający się od **PasswordAuthentication**.
+6. Usuń komentarz z wiersza i zmień wartość na **tak**.
+7. Znajdź wiersz zaczynający się odpodsystemu i usuń znaczniki komentarza z wiersza.
 
       ![Linux](./media/vmware-azure-install-mobility-service/mobility2.png)
 
 8. Uruchom ponownie usługę **sshd**.
-9. Dodaj konto utworzone w narzędziu CSPSConfigtool. Aby to zrobić, należy zalogować się do serwera konfiguracji.
-10. Otwórz plik **cspsconfigtool.exe**. Jest on dostępny jako skrót na pulpicie i w folderze %ProgramData%\home\svsystems\bin.
-11. Na **Zarządzanie kontami** zaznacz **Dodaj konto**.
+9. Dodaj konto utworzone w narzędziu CSPSConfigtool. W tym celu zaloguj się do serwera konfiguracji.
+10. Otwórz plik **cspsconfigtool.exe**. Jest on dostępny jako skrót na pulpicie i w folderze%ProgramData%\home\svsystems\bin.
+11. Na karcie **Zarządzanie kontami** wybierz pozycję **Dodaj konto**.
 12. Dodaj utworzone konto.
 13. Wprowadź używane poświadczenia po włączeniu replikacji dla komputera.
 
-## <a name="anti-virus-on-replicated-machines"></a>Oprogramowanie antywirusowe na replikowanych maszyn
+## <a name="anti-virus-on-replicated-machines"></a>Oprogramowanie antywirusowe na replikowanych maszynach
 
-Jeśli maszyn, które mają być replikowane active oprogramowanie antywirusowe uruchomione, upewnij się, folder instalacji usługi mobilności można wykluczyć z ochrony antywirusowej operacji (*C:\ProgramData\ASR\agent*). Gwarantuje to, że replikacja działa zgodnie z oczekiwaniami.
+Jeśli na maszynach, które mają być replikowane, działa aktywne oprogramowanie chroniące przed wirusami, upewnij się, że folder instalacji usługi mobilności został wykluczony z operacji programu antywirusowego (*C:\ProgramData\ASR\agent*). Dzięki temu replikacja działa zgodnie z oczekiwaniami.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Po zainstalowaniu usługi mobilności w witrynie Azure portal wybierz **+ Replikuj** aby rozpocząć ochronę tych maszyn wirtualnych. Dowiedz się więcej na temat włączania replikacji [VMware VMs(vmware-azure-enable-replication.md) i [serwerów fizycznych](physical-azure-disaster-recovery.md#enable-replication).
+Po zainstalowaniu usługi mobilności w Azure Portal wybierz pozycję **+ Replikuj** , aby rozpocząć ochronę tych maszyn wirtualnych. Dowiedz się więcej na temat włączania replikacji dla [maszyn wirtualnych VMware](vmware-azure-enable-replication.md) i [serwerów fizycznych](physical-azure-disaster-recovery.md#enable-replication).
 
 
