@@ -7,12 +7,12 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 35a41abb156326612c2d60829980f73457cde881
-ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
+ms.openlocfilehash: 05b591137a53e60b3197feb7f57564a8d4af7a44
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68601771"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624280"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Pytania dotyczące tworzenia kopii zapasowej plików w usłudze Azure Files
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące tworzenia kopii zapasowej plików usługi Azure Files. W niektórych odpowiedziach znajdują się linki do artykułów zawierających szczegółowe informacje. Pytania dotyczące usługi Azure Backup można również zadawać na [forum dyskusyjnym](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -83,10 +83,8 @@ Azure Backup obecnie obsługuje Konfigurowanie zaplanowanych raz dziennie kopii 
 ### <a name="how-many-on-demand-backups-can-i-take-per-file-share-br"></a>Ile kopii zapasowych na żądanie można utworzyć na jeden udział plików? <br/>
 W dowolnym momencie możesz mieć maksymalnie 200 migawek na jeden udział plików. Limit obejmuje migawki wykonane przez usługę Azure Backup na podstawie zasad. Jeśli tworzenie kopii zapasowych będzie kończyć się niepowodzeniem z powodu osiągnięcia tego limitu, usuń punkty przywracania utworzone na żądanie, aby zapewnić pomyślne tworzenie kopii zapasowych w przyszłości.
 
-### <a name="after-enabling-virtual-networks-on-my-storage-account-the-backup-of-file-shares-in-the-account-started-failing-why"></a>Po włączeniu sieci wirtualnych na koncie magazynu tworzenie kopii zapasowej udziału plików na koncie kończy się niepowodzeniem. Dlaczego?
-Kopie zapasowe udziałów plików platformy Azure nie obsługują kont usługi Storage z włączonymi sieciami wirtualnymi. Wyłącz sieci wirtualne na kontach magazynu, aby pomyślnie tworzyć kopie zapasowe.
 
-## <a name="restore"></a>Przywracanie
+## <a name="restore"></a>Przywróć
 
 ### <a name="can-i-recover-from-a-deleted-azure-file-share-br"></a>Czy można odzyskać dane z usuniętego udziału plików platformy Azure? <br/>
 Podczas usuwania udziału plików platformy Azure zostanie wyświetlona lista kopii zapasowych, które zostaną usunięte, z prośbą o potwierdzenie. Nie można przywrócić usuniętego udziału plików platformy Azure.

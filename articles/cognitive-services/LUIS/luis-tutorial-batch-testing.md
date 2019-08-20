@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 08/19/2019
 ms.author: diberry
-ms.openlocfilehash: 0a3a9330eaa977f72cdbaba4e11aaa706b437fad
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 60cd87b6cecfb30ebc90f445c79e25c241980a86
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945901"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623334"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Samouczek: Zestawy danych testów wsadowych
 
@@ -95,7 +95,7 @@ Wykonaj następujące czynności:
 
 ## <a name="review-batch-results"></a>Przejrzyj wyniki usługi batch
 
-Wykres batch przedstawia cztery quadrants firmy Gartner wyników. Z prawej strony wykresu jest filtrem. Domyślnie filtr jest równa pierwszej intencji na liście. Filtr zawiera wszystkie intencje i tylko jednostki proste i złożone. Po wybraniu [sekcji wykresu](luis-concept-batch-test.md#batch-test-results) lub punkt w obrębie wykresu skojarzone utterance(s) wyświetlane pod wykresem. 
+Wykres batch przedstawia cztery quadrants firmy Gartner wyników. Z prawej strony wykresu jest filtrem. Filtr zawiera intencje i jednostki. Po wybraniu [sekcji wykresu](luis-concept-batch-test.md#batch-test-results) lub punkt w obrębie wykresu skojarzone utterance(s) wyświetlane pod wykresem. 
 
 Podczas przesuwania wskaźnika w obrębie wykresu, kółka myszy można zwiększyć lub zmniejszyć wyświetlane na wykresie. Jest to przydatne, gdy istnieje wiele punktów na wykresie klastrowane ściśle ze sobą. 
 
@@ -103,27 +103,27 @@ Wykres jest w czterech quadrants firmy Gartner, przy użyciu dwóch sekcjach wy�
 
 ### <a name="getjobinformation-test-results"></a>Wyniki testu GetJobInformation
 
-**GetJobInformation** wyniki testów wyświetlane w filtrze pokazują, czy 2 cztery prognozy zakończyły się pomyślnie. Wybierz nazwę **wynik fałszywie dodatni** powyżej górnej quadrant prawo wyświetlić wypowiedzi pod wykresem. 
+**GetJobInformation** wyniki testów wyświetlane w filtrze pokazują, czy 2 cztery prognozy zakończyły się pomyślnie. Wybierz nazwę **false negatywną** w lewym górnym rogu, aby zobaczyć wyrażenia długości pod wykresem. 
 
-![Usługa LUIS partii testów wypowiedzi](./media/luis-tutorial-batch-testing/hr-applyforjobs-false-positive-results.png)
+Użyj klawiatury, Ctrl + E, aby przełączyć się do widoku etykiety, aby zobaczyć dokładny tekst wypowiedź użytkownika. 
 
-Dlaczego są dwa wypowiedzi przewidzieć jako **ApplyForJob**, zamiast poprawne intencji **GetJobInformation**? Dwie opcje są bardzo pokrewne pod względem wybranego programu word i rozmieszczenie programu word. Ponadto są prawie trzy razy więcej przykładów dla **ApplyForJob** niż **GetJobInformation**. Ta nierówności wypowiedzi przykład zadowalająco uwzględni wagi **ApplyForJob** Preferuj jego przeznaczenie. 
+Wypowiedź `Is there a database position open in Los Colinas?` jest oznaczony jako _GetJobInformation_ , ale bieżący model przewiduje wypowiedź jako _ApplyForJob_. 
+
+Istnieją prawie trzy razy wiele przykładów dla **ApplyForJob** niż **GetJobInformation**. Taka nierówność przykładu wyrażenia długości jest ważona na rzecz intencji **ApplyForJob** , co powoduje nieprawidłowe prognozowanie. 
 
 Należy zauważyć, że zarówno intencji mają ten sam liczbę błędów. Niepoprawne prognozowania w jednym profilu konwersji ma wpływ na inne zamiar także. Oba zawierają błędy, ponieważ wypowiedzi zostały nieprawidłowo przewidywany intencji jeden, a także niepoprawnie nie przewidywany inną intencji. 
 
-![Błędy filtrów testu partii usługi LUIS](./media/luis-tutorial-batch-testing/hr-intent-error-count.png)
+<a name="fix-the-app"></a>
 
-Wypowiedzi odpowiadającego górnej do punktu w **wynik fałszywie dodatni** sekcji są `Can I apply for any database jobs with this resume?` i `Can I apply for any database jobs with this resume?`. Dla pierwszego wypowiedź, wyraz `resume` tylko została użyta w **ApplyForJob**. Dla drugiego wypowiedź, wyraz `apply` tylko została użyta w **ApplyForJob** intencji.
-
-## <a name="fix-the-app"></a>Usuń aplikację
+## <a name="how-to-fix-the-app"></a>Jak naprawić aplikację
 
 Celem tej sekcji jest wszystkie wypowiedzi poprawnie przewidzieć dla **GetJobInformation** Napraw aplikację. 
 
-Pozornie szybka poprawka będzie można dodać te wypowiedzi pliku wsadowego na intencje poprawne. To nie co chcesz zrobić, mimo że. Chcesz, aby usługa LUIS można poprawnie przewidzieć te wypowiedzi bez dodawania ich przykłady. 
+Pozornie szybka poprawka będzie można dodać te wypowiedzi pliku wsadowego na intencje poprawne. To nie co chcesz zrobić. Chcesz, aby usługa LUIS można poprawnie przewidzieć te wypowiedzi bez dodawania ich przykłady. 
 
 Również być może zastanawiasz się o usuwaniu wypowiedzi z **ApplyForJob** aż ilość wypowiedź jest taka sama jak **GetJobInformation**. Który może naprawić wyniki testu, ale utrudniłoby usługi LUIS z precyzyjne Prognozowanie tym przeznaczeniem następnym razem. 
 
-Pierwsze rozwiązanie polega na dodawanie wypowiedzi więcej do **GetJobInformation**. Drugi poprawka jest zmniejszenie wagi wyrazy, takie jak `resume` i `apply` kierunku **ApplyForJob** intencji. 
+Poprawka polega na dodaniu więcej wyrażenia długości do **GetJobInformation**. Pamiętaj, aby zmienić wypowiedź długość, wybór wyrazów i rozmieszczenie wyrazów, zachowując znaczenie dla zamiaru szukania informacji o zadaniu, _nie_ ma zastosowania do tego zadania.
 
 ### <a name="add-more-utterances"></a>Dodawanie wypowiedzi więcej
 
@@ -161,15 +161,13 @@ Aby sprawdzić, czy oczekuje wypowiedzi w teście usługi batch, należy ponowni
 
 1. Wybierz **testu** w górnym pasku nawigacyjnym. Jeśli wyniki przetwarzania wsadowego są wciąż otwarty, wybierz opcję **powrót do listy**.  
 
-2. Wybierz przycisk wielokropka (***...*** ) znajdujący się na prawo od nazwy usługi batch i wybierz **Uruchom zestaw danych**. Zaczekaj, aż odbywa się badanie usługi batch. Należy zauważyć, że **wyniki** kolor zielony ma teraz przycisk. Oznacza to, że całą partię został uruchomiony pomyślnie.
+1. Wybierz przycisk wielokropka (***...***) z prawej strony nazwy partii i wybierz polecenie **Uruchom**. Zaczekaj, aż odbywa się badanie usługi batch. Należy zauważyć, że **wyniki** kolor zielony ma teraz przycisk. Oznacza to, że całą partię został uruchomiony pomyślnie.
 
-3. Wybierz **wyniki**. Intencji powinien mieć zielony ikon po lewej stronie nazwy metody konwersji. 
-
-    ![Zrzut ekranu usługi LUIS z wyróżnionym przyciskiem wyniki usługi batch](./media/luis-tutorial-batch-testing/hr-batch-test-intents-no-errors.png)
+1. Wybierz **wyniki**. Intencji powinien mieć zielony ikon po lewej stronie nazwy metody konwersji. 
 
 ## <a name="create-batch-file-with-entities"></a>Utwórz plik wsadowy z jednostkami 
 
-Aby sprawdzić, czy jednostki w teście usługi batch, jednostki muszą oznaczone etykietą w pliku JSON usługi batch. Używane są tylko jednostki poznanie maszyn: proste i złożone jednostki. Nie należy dodawać jednostki przedstawiono maszyny, ponieważ one zawsze znajdują się za pomocą wyrażeń regularnych lub jawnego tekstu.
+Aby sprawdzić, czy jednostki w teście usługi batch, jednostki muszą oznaczone etykietą w pliku JSON usługi batch. 
 
 Zmiany jednostki dla programu word całkowita ([tokenu](luis-glossary.md#token)) liczby mogą mieć wpływ na jakość prognozy. Upewnij się, że dane szkoleniowe dostarczane na intencje z etykietami wypowiedzi zawiera różne długości jednostki. 
 
@@ -178,7 +176,6 @@ Po pierwsze pisaniu i testowaniu plików wsadowych, zaleca się rozpoczynać kil
 Wartość **zadania** jednostki, podany w wypowiedzi testu jest zazwyczaj jednego lub dwóch słów o kilka przykładów jest więcej słów. Jeśli _własne_ aplikacji kadrowej zwykle zawiera nazwy zadania wiele słów, z etykietą wypowiedzi przykład **zadania** jednostki w tej aplikacji nie będzie działać poprawnie.
 
 1. Tworzenie `HumanResources-entities-batch.json` w edytorze tekstu, takie jak [VSCode](https://code.visualstudio.com/) lub [Pobierz](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json) go.
-
 
 2. W pliku wsadowym w formacie JSON, Dodaj tablicę obiektów, które zawierają wypowiedzi z **intencji** mają dostęp do przewidywanych w test, a także lokalizacje wszystkie jednostki w wypowiedź. Ponieważ jednostka jest oparte na tokenie, upewnij się, uruchamianie i zatrzymywanie każdej jednostki na znak. Nie rozpoczyna się lub kończy wypowiedź w miejscu. Powoduje to błąd podczas importowania pliku wsadowego.  
 

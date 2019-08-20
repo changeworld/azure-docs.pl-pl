@@ -7,15 +7,15 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: atsenthi
-ms.openlocfilehash: 7795612d8aa4974bc640571d49ad1520e2a0f94c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 8e39318dcaa31a111908c6be1ae7a51d73eb7478
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963840"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623827"
 ---
 # <a name="what-is-the-service-fabric-application-resource-model"></a>Co to jest model zasobów aplikacji Service Fabric?
-Zaleca się, aby Service Fabric aplikacje zostały wdrożone w klastrze Service Fabric za pośrednictwem Azure Resource Manager. Dzięki tej metodzie można opisać aplikacje i usługi w formacie JSON i wdrożyć je w tym samym szablonie Menedżer zasobów co klaster. W przeciwieństwie do wdrażania aplikacji i zarządzania nimi za pomocą programu PowerShell lub interfejsu wiersza polecenia platformy Azure nie trzeba czekać, aż klaster będzie gotowy. Proces rejestracji aplikacji, aprowizacji i wdrażania może się zdarzyć w jednym kroku. Jest to najlepsze rozwiązanie do zarządzania cyklem życia aplikacji w klastrze. Aby uzyskać więcej informacji, zapoznaj się z [najlepszymi rozwiązaniami](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources).
+Zaleca się, aby Service Fabric aplikacje zostały wdrożone w klastrze Service Fabric za pośrednictwem Azure Resource Manager. Dzięki tej metodzie można opisać aplikacje i usługi w formacie JSON i wdrożyć je w tym samym szablonie Menedżer zasobów co klaster. W przeciwieństwie do wdrażania aplikacji i zarządzania nimi za pomocą programu PowerShell lub interfejsu wiersza polecenia platformy Azure nie trzeba czekać, aż klaster będzie gotowy. Proces rejestracji, aprowizacji i wdrażania aplikacji może obejmować tylko jeden krok. Jest to najlepsze rozwiązanie w zakresie zarządzania cyklem życiowym aplikacji w klastrze. Aby uzyskać więcej informacji, zapoznaj się z [najlepszymi rozwiązaniami](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources).
 
 W razie potrzeby Zarządzaj aplikacjami jako zasobami Menedżer zasobów, aby zwiększyć:
 * Dziennik inspekcji: Menedżer zasobów przeprowadza inspekcję każdej operacji i utrzymuje szczegółowy *Dziennik aktywności* , który może pomóc w śledzeniu wszelkich zmian wprowadzonych w tych aplikacjach i w klastrze.
@@ -33,7 +33,7 @@ W tym dokumencie dowiesz się, jak:
 ## <a name="deploy-application-resources-using-azure-resource-manager"></a>Wdrażanie zasobów aplikacji przy użyciu Azure Resource Manager  
 Aby wdrożyć aplikację i jej usługi przy użyciu Azure Resource Manager modelu zasobów aplikacji, należy spakować kod aplikacji, przekazać pakiet, a następnie odwołać się do lokalizacji pakietu w szablonie Azure Resource Manager jako aplikacji zasoby. Aby uzyskać więcej informacji, zobacz [pakowanie aplikacji](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps#create-an-sfpkg).
           
-Następnie Utwórz szablon Azure Resource Manager, zaktualizuj plik parametrów przy użyciu szczegółów aplikacji i Wdróż go w klastrze Service Fabric. Tutaj zapoznaj się z przykładami
+Następnie Utwórz szablon Azure Resource Manager, zaktualizuj plik parametrów przy użyciu szczegółów aplikacji i Wdróż go w klastrze Service Fabric. W [tym miejscu](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM)zapoznaj się z przykładami.
 
 ### <a name="create-a-storage-account"></a>Tworzenie konta usługi Storage 
 Wdrożenie aplikacji na podstawie szablonu Menedżer zasobów wymaga konta magazynu na potrzeby przygotowania obrazu aplikacji. Możesz ponownie użyć istniejącego konta magazynu lub utworzyć nowe konto magazynu w celu przygotowania aplikacji. Jeśli chcesz użyć istniejącego konta magazynu, możesz pominąć ten krok. 

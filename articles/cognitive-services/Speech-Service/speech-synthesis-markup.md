@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 89b8b5f8c574de033fabf6861e24fc7d2b31e171
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 12d556fd9c37b83a919b830d155250e9eaa64128
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855100"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624256"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>Język znaczników syntezy mowy (SSML)
 
@@ -31,6 +31,10 @@ Implementacja usługi Speech Services SSML opiera się na wykorzystaniu [języka
 Wybieraj spośród standardowych i neuronowychych głosów lub twórz własny niestandardowy głos unikatowy dla danego produktu lub marki. 75 standardowych głosów jest dostępnych w więcej niż 45 językach i ustawieniach regionalnych oraz 5 neuronowych głosów jest dostępnych w 4 językach i ustawieniach regionalnych. Aby zapoznać się z pełną listą obsługiwanych języków, ustawień regionalnych i głosów (neuronowych i standard), zobacz temat [Obsługa języków](language-support.md).
 
 Aby dowiedzieć się więcej na temat standardowych, neuronowych i niestandardowych głosów, zobacz [Omówienie zamiany tekstu na mowę](text-to-speech.md).
+
+## <a name="special-characters"></a>Znaki specjalne
+
+Korzystając z SSML do konwertowania zamiany tekstu na syntezę, należy pamiętać, że podobnie jak w przypadku formatu XML, znaki specjalne, takie jak cudzysłowy, apostrofy i nawiasy muszą zostać zmienione. Aby uzyskać więcej informacji, [Zobacz XML (XML) 1,0: Dodatek D](https://www.w3.org/TR/xml/#sec-entexpand).
 
 ## <a name="supported-ssml-elements"></a>Obsługiwane elementy SSML
 
@@ -134,7 +138,7 @@ Zmiany są stosowane na poziomie zdania i stylu różnią się w zależności od
 
 | Atrybut | Opis | Wymagane / opcjonalne |
 |-----------|-------------|---------------------|
-| — typ | Określa styl wymawiania. Obecnie style głosu są specyficzne dla głosu. | Wymagane, jeśli ustawienie stylu wymawiania dla głosu neuronowych. Jeśli używasz `mstts:express-as`, należy podać typ. Jeśli podano nieprawidłową wartość, ten element zostanie zignorowany. |
+| type | Określa styl wymawiania. Obecnie style głosu są specyficzne dla głosu. | Wymagane, jeśli ustawienie stylu wymawiania dla głosu neuronowych. Jeśli używasz `mstts:express-as`, należy podać typ. Jeśli podano nieprawidłową wartość, ten element zostanie zignorowany. |
 
 Użyj tej tabeli, aby określić, które style wymawiające są obsługiwane dla każdego głosu neuronowych.
 
@@ -142,6 +146,7 @@ Użyj tej tabeli, aby określić, które style wymawiające są obsługiwane dla
 |-------|------|-------------|
 | `en-US-JessaNeural` | type=`cheerful` | Wyraża rozpoznawania emocji o wartości dodatniej i szczęśliwej |
 | | type=`empathy` | Wyraża świadomość Caring i zrozumienie |
+| | type=`chat` | Czytaj swobodny, swobodny sygnał |
 | `zh-CN-XiaoxiaoNeural` | type=`newscast` | Wyraża formalny sygnał podobny do emisji wiadomości |
 | | type=`sentiment` | Przekazuje komunikat dotykowy lub historię |
 

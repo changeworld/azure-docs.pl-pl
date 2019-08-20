@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 2f6be256801983924cc794d6c8b8fa31e39959e1
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: f65bc0a9969ac713c2fb9f8629b97fbe522e9fe0
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967854"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624847"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Warstwy cenowe w Azure Database for PostgreSQL — pojedynczy serwer
 
@@ -67,7 +67,7 @@ Zwiększamy limity magazynowania w naszych Ogólnego przeznaczenia i warstw zopt
 |              | **Ogólnego przeznaczenia** | **Zoptymalizowane pod kątem pamięci** |
 |:-------------|:--------------------|:---------------------|
 | Typ magazynu | Azure Premium Storage | Azure Premium Storage |
-| Rozmiar magazynu | 32 GB do 16 TB| od 32 do 16 TB |
+| Rozmiar magazynu | 32 GB do 16 TB| 32 GB do 16 TB |
 | Rozmiar przyrostu pamięci masowej | 1 GB | 1 GB |
 | IOPS | 3 IOPS/GB<br/>Min 100 IOPS<br/>Maksymalna liczba operacji we/wy 20 000 | 3 IOPS/GB<br/>Min 100 IOPS<br/>Maksymalna liczba operacji we/wy 20 000 |
 

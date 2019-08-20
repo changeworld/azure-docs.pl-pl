@@ -1,6 +1,6 @@
 ---
-title: Uruchamianie skryptów niestandardowych na maszynach wirtualnych z systemem Linux na platformie Azure | Dokumentacja firmy Microsoft
-description: Automatyzowanie zadań konfiguracji maszyny Wirtualnej systemu Linux za pomocą niestandardowego rozszerzenia skryptu w wersji 2
+title: Uruchamianie skryptów niestandardowych na maszynach wirtualnych z systemem Linux na platformie Azure | Microsoft Docs
+description: Automatyzowanie zadań konfiguracyjnych maszyn wirtualnych z systemem Linux przy użyciu rozszerzenia niestandardowego skryptu v2
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
@@ -15,70 +15,70 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: roiyz
-ms.openlocfilehash: 8b16d7b20c4d49398790d207065da946d98ef658
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 1a01f5f8aed994c16b8302e42996b27ee6a48003
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839164"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624856"
 ---
-# <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Azure niestandardowy skrypt rozszerzenia w wersji 2 za pomocą maszyn wirtualnych systemu Linux
-Rozszerzenie niestandardowego skryptu w wersji 2 pobiera i uruchamia skrypty na maszynach wirtualnych platformy Azure. To rozszerzenie jest przydatne w przypadku konfiguracji po wdrażaniu, instalacja oprogramowania lub innych zadań konfiguracji i zarządzania nimi. Skrypty można pobrać z usługi Azure Storage lub w innej lokalizacji internet dostępny, lub można udostępnić je w czasie wykonywania rozszerzenia. 
+# <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Korzystanie z rozszerzenia niestandardowego skryptu platformy Azure w wersji 2 z maszynami wirtualnymi z systemem Linux
+Rozszerzenie skryptu niestandardowego wersja 2 pobiera i uruchamia skrypty na maszynach wirtualnych platformy Azure. To rozszerzenie jest przydatne w przypadku konfiguracji po wdrożeniu, instalacji oprogramowania lub innych zadań związanych z konfiguracją/zarządzaniem. Skrypty można pobrać z usługi Azure Storage lub innej dostępnej lokalizacji w Internecie lub można je udostępnić do środowiska uruchomieniowego rozszerzenia. 
 
-Rozszerzenie niestandardowego skryptu można zintegrować z szablonami usługi Azure Resource Manager. Można również uruchomić przy użyciu wiersza polecenia platformy Azure, programu PowerShell lub interfejsu API REST dla maszyn wirtualnych platformy Azure.
+Rozszerzenie niestandardowego skryptu integruje się z szablonami Azure Resource Manager. Można go również uruchomić przy użyciu interfejsu wiersza polecenia platformy Azure, programu PowerShell lub usługi Azure Virtual Machines REST.
 
-Ten artykuł szczegółowo opisuje sposób korzystania z rozszerzenia niestandardowego skryptu z wiersza polecenia platformy Azure oraz sposobu uruchamiania rozszerzenia za pomocą szablonu usługi Azure Resource Manager. Ten artykuł zawiera również kroki rozwiązywania problemów w systemach Linux.
+W tym artykule szczegółowo przedstawiono sposób korzystania z rozszerzenia niestandardowego skryptu z interfejsu wiersza polecenia platformy Azure oraz uruchamiania rozszerzenia przy użyciu szablonu Azure Resource Manager. Ten artykuł zawiera również procedurę rozwiązywania problemów z systemami Linux.
 
 
-Istnieją dwa rozszerzenia skryptu niestandardowego systemu Linux:
-* Wersja 1 — Microsoft.OSTCExtensions.CustomScriptForLinux
-* Wersja 2 — Microsoft.Azure.Extensions.CustomScript
+Istnieją dwa rozszerzenia niestandardowego skryptu systemu Linux:
+* Wersja 1 — Microsoft. OSTCExtensions. CustomScriptForLinux
+* Wersja 2 — Microsoft. Azure. Extensions. CustomScript
 
-Przełącz nowych i istniejących wdrożeń, aby zamiast tego użyj nowej wersji 2. Nowa wersja ma być zamiennikiem. W związku z tym migracja jest równie proste jak zmiana nazwy i wersji, nie trzeba zmienić konfigurację rozszerzenia.
+Przełącz nowe i istniejące wdrożenia, aby zamiast tego użyć nowej wersji 2. Nowa wersja jest przeznaczona do zastąpienia. W związku z tym migracja jest tak łatwa jak zmiana nazwy i wersji, więc nie trzeba zmieniać konfiguracji rozszerzenia.
 
 
 ### <a name="operating-system"></a>System operacyjny
 
-Rozszerzenie niestandardowego skryptu dla systemu Linux będą uruchamiane na rozszerzenie rozszerzenia obsługiwane systemu operacyjnego, aby uzyskać więcej informacji, zobacz [artykułu](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems).
+Rozszerzenie niestandardowego skryptu dla systemu Linux zostanie uruchomione na obsługiwanym rozszerzeniu system operacyjny rozszerzenia, aby uzyskać więcej informacji, zobacz ten [artykuł](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems).
 
 ### <a name="script-location"></a>Lokalizacja skryptu
 
-Rozszerzenia można użyć na potrzeby dostępu do usługi Azure Blob storage poświadczeń magazynu obiektów Blob platformy Azure. Alternatywnie lokalizacja skryptu może być dowolnego miejsca, tak długo, jak maszyna wirtualna może kierować do tego punktu końcowego, takich jak GitHub, serwer wewnętrzny plików itp.
+Możesz użyć rozszerzenia, aby użyć poświadczeń usługi Azure Blob Storage w celu uzyskania dostępu do usługi Azure Blob Storage. Alternatywnie lokalizacja skryptu może być dowolna, w której maszyna wirtualna może kierować do tego punktu końcowego, na przykład w usłudze GitHub, na wewnętrznym serwerze plików itp.
 
 ### <a name="internet-connectivity"></a>Łączność z Internetem
-Jeśli musisz pobrać skrypt zewnętrznie takich jak GitHub lub usługi Azure Storage, następnie dodatkowe zapory i sieci grupy zabezpieczeń muszą być otwarte porty. Na przykład jeśli skrypt znajduje się w usłudze Azure Storage, można zezwolić na dostęp, za pomocą tagów usługi sieciowej grupy zabezpieczeń platformy Azure dla [magazynu](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
+Jeśli musisz pobrać skrypt zewnętrzny, taki jak GitHub lub Azure Storage, należy otworzyć dodatkową zaporę/porty sieciowej grupy zabezpieczeń. Jeśli na przykład skrypt znajduje się w usłudze Azure Storage, możesz zezwolić na dostęp za pomocą tagów usługi Azure sieciowej grupy zabezpieczeń dla [magazynu](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
-Jeśli skrypt znajduje się na serwerze lokalnym, a następnie nadal potrzebujesz dodatkowych Zapora/sieci zabezpieczeń grupy portów muszą być otwarte.
+Jeśli skrypt znajduje się na serwerze lokalnym, może być konieczne otwarcie dodatkowych portów zapory/sieciowych grup zabezpieczeń.
 
 ### <a name="tips-and-tricks"></a>Porady i wskazówki
 * Najwyższy współczynnik błędów dla tego rozszerzenia jest spowodowany błędami składni w skrypcie. Sprawdź, czy skrypt działa bezbłędnie, a także umieść dodatkowe rejestrowanie w skrypcie, aby ułatwić wyszukiwanie miejsca, w którym wystąpił błąd.
 * Pisz skrypty idempotentne, aby w razie ich ponownego uruchomienia przez przypadek więcej niż jeden raz nie nastąpiły zmiany systemu.
-* Upewnij się, że skrypty są wymagane dane wejściowe użytkownika podczas uruchamiania.
-* 90 minut mogą uzyskać skrypt do uruchomienia, nic dłużej spowoduje niepowodzenie aprowizacji rozszerzenia.
-* Nie należy umieszczać wewnątrz skrypt jest uruchamiany ponownie, spowoduje to problemy z innymi rozszerzeniami, które są instalowane i po ponownym uruchomieniu, rozszerzenie nie będzie kontynuowana po ponownym uruchomieniu. 
-* Jeśli masz skrypt, który powoduje ponowne uruchomienie, zainstaluj aplikacje i uruchom skrypty itp. Należy zaplanować ponowny rozruch przy użyciu zadania Cron lub narzędzi, takich jak DSC lub Chef, Puppet rozszerzenia.
-* Rozszerzenie tylko uruchamianie skryptu, jeden raz, jeśli chcesz uruchomić skrypt w każdym rozruchu, wówczas można użyć [obraz pakietu cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init) i użyj [skryptów na rozruch](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) modułu. Alternatywnie służy skrypt tworzenia jednostki usługi Systemd.
-* Chcąc Zaplanuj, kiedy skrypt będzie uruchamiany, należy użyć rozszerzenia do tworzenia zadania Cron. 
-* W trakcie działania skryptu będziesz widzieć tylko stan „przechodzenie” z witryny Azure Portal lub interfejsu wiersza polecenia. Chcąc częstsze aktualizacje stanu uruchamianie skryptu, musisz utworzyć własne rozwiązanie.
-* Rozszerzenie niestandardowego skryptu nie obsługuje natywnie serwery proxy, jednak można użyć narzędzie do transferu plików, który obsługuje serwery proxy w ramach skryptu, takie jak *Curl*. 
-* Należy pamiętać, innego niż domyślny katalog lokalizacji, które mogą polegać Twoje skrypty lub polecenia, masz logikę obsługującą to.
+* Upewnij się, że skrypty nie wymagają wprowadzania danych przez użytkownika po ich uruchomieniu.
+* Aby skrypt mógł zostać uruchomiony, może być 90 min, co spowoduje niepowodzenie aprowizacji rozszerzenia.
+* Nie należy umieszczać ponownych uruchomień wewnątrz skryptu, co spowoduje problemy z innymi zainstalowanymi rozszerzeniami i po ponownym uruchomieniu, rozszerzenie nie będzie kontynuowane po ponownym uruchomieniu. 
+* Jeśli masz skrypt, który powoduje ponowne uruchomienie, zainstaluj aplikacje i uruchom skrypty itp. Należy zaplanować ponowny rozruch przy użyciu zadania firmy CRONUS lub użyć narzędzi takich jak DSC lub Chef Puppet.
+* Rozszerzenie spowoduje uruchomienie skryptu tylko raz, aby uruchomić skrypt na każdym rozruchu, a następnie użyć [obrazu Cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init) i użyć [skryptów dla modułu rozruchu](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) . Alternatywnie możesz użyć skryptu, aby utworzyć systemową jednostkę usługi.
+* Jeśli chcesz zaplanować uruchomienie skryptu, użyj rozszerzenia, aby utworzyć zadanie firmy cronus. 
+* W trakcie działania skryptu będziesz widzieć tylko stan „przechodzenie” z witryny Azure Portal lub interfejsu wiersza polecenia. Jeśli chcesz więcej częste aktualizacje stanu uruchomionego skryptu, musisz utworzyć własne rozwiązanie.
+* Niestandardowe rozszerzenie skryptu nie obsługuje natywnie serwerów proxy, jednak można użyć narzędzia transferu plików, które obsługuje serwery proxy w skrypcie, na przykład *zwinięcie*. 
+* Należy pamiętać, że nie są to domyślne lokalizacje katalogów, od których mogą polegać skrypty lub polecenia, i które obsługują tę logikę.
 
 
 
 ## <a name="extension-schema"></a>Schemat rozszerzenia
 
-Określa konfigurację rozszerzenia niestandardowego skryptu, elementów, takich jak lokalizacja skryptu i polecenia do uruchomienia. Możesz zapisać tę konfigurację w plikach konfiguracji, określ go w wierszu polecenia lub je określić w szablonie usługi Azure Resource Manager. 
+Konfiguracja rozszerzenia niestandardowego skryptu określa elementy, takie jak lokalizacja skryptu i polecenie do uruchomienia. Tę konfigurację można zapisać w plikach konfiguracji, określić ją w wierszu polecenia lub określić w szablonie Azure Resource Manager. 
 
-Poufne dane można przechowywać w chronionym konfiguracji, która zostaje zaszyfrowany i odszyfrowane tylko wewnątrz maszyny wirtualnej. Chronionych konfiguracja jest użyteczna w przypadku, gdy polecenia wykonywania zawiera wpisy tajne, takie jak hasło.
+Poufne dane można przechowywać w chronionej konfiguracji, która jest szyfrowana i odszyfrowywana tylko wewnątrz maszyny wirtualnej. Konfiguracja chroniona jest przydatna, gdy polecenie wykonywania zawiera wpisy tajne, takie jak hasło.
 
-Tych elementów powinien być traktowane jako poufne dane i określony w konfiguracji chronione ustawienia rozszerzeń. Dane platformy Azure ustawienia rozszerzenia chronione maszyny Wirtualnej jest zaszyfrowany i odszyfrowane tylko na docelowej maszynie wirtualnej.
+Te elementy powinny być traktowane jako dane poufne i określone w konfiguracji ustawień chronionych przez rozszerzenia. Dane platformy Azure ustawienia rozszerzenia chronione maszyny Wirtualnej jest zaszyfrowany i odszyfrowane tylko na docelowej maszynie wirtualnej.
 
 ```json
 {
   "name": "config-app",
   "type": "Extensions",
   "location": "[resourceGroup().location]",
-  "apiVersion": "2015-06-15",
+  "apiVersion": "2019-03-01",
   "dependsOn": [
     "[concat('Microsoft.Compute/virtualMachines/', concat(variables('vmName'),copyindex()))]"
   ],
@@ -109,47 +109,47 @@ Tych elementów powinien być traktowane jako poufne dane i określony w konfigu
 
 | Name (Nazwa) | Wartość / przykład | Typ danych | 
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Compute.Extensions | ciąg |
+| apiVersion | 2019-03-01 | date |
+| publisher | Microsoft. COMPUTE. Extensions | ciąg |
 | type | CustomScript | ciąg |
 | typeHandlerVersion | 2.0 | int |
 | fileUris (np.) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
-| commandToExecute (np.) | python MyPythonScript.py \<my-param1> | ciąg |
+| Sekcji commandtoexecute (np.) | środowisko Python \<MyPythonScript.py my-param1 > | ciąg |
 | script | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | ciąg |
 | skipDos2Unix (np.) | false | boolean |
 | timestamp (np.) | 123456789 | 32-bitowa liczba całkowita |
 | storageAccountName (np.) | examplestorageacct | ciąg |
 | storageAccountKey (np.) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | ciąg |
 
-### <a name="property-value-details"></a>Szczegóły dotyczące wartości właściwości
-* `skipDos2Unix`: (opcjonalne, wartość logiczna) Pomiń konwersji dos2unix adresów URL opartych na skryptach plików lub skryptu.
-* `timestamp` Użycie (opcjonalne, 32-bitowa liczba całkowita), w tym polu tylko do wyzwolenia ponownie uruchom skrypt, zmieniając wartość tego pola.  Dowolna liczba całkowita jest dopuszczalne; tylko musi być inna niż poprzednia wartość.
-  * `commandToExecute`: (**wymagane** Jeśli skrypt nie został ustawiony, ciąg) skrypt punktu wejścia do wykonania. Zamiast tego użyj tego pola, jeśli polecenie zawiera wpisy tajne, takie jak hasła.
-* `script`: (**wymagane** przypadku commandToExecute ciągu) zakodowane w formacie base64 (i opcjonalnie gzip'ed) skrypt wykonywany przez/bin/sh.
-* `fileUris`: (opcjonalne, tablicy ciągów) adresy URL plików mają być pobrane.
-* `storageAccountName`: (opcjonalnie, ciąg) nazwa konta magazynu. Jeśli określisz poświadczeń magazynu wszystkich `fileUris` muszą być adresami URL dla obiektów blob platformy Azure.
-* `storageAccountKey`: (opcjonalnie, ciąg) klucz dostępu konta magazynu
+### <a name="property-value-details"></a>Szczegóły wartości właściwości
+* `skipDos2Unix`: (opcjonalne, wartość logiczna) Pomiń dos2unix konwersję adresów URL lub skryptu plików opartych na skryptach.
+* `timestamp`(opcjonalnie, 32-bitową liczbę całkowitą) Użyj tego pola tylko do wyzwalania ponownego uruchomienia skryptu przez zmianę wartości tego pola.  Dopuszczalna jest dowolna wartość całkowita; musi on być inny niż Poprzednia wartość.
+  * `commandToExecute`: (**wymagane** , jeśli skrypt nie jest ustawiony, String) skrypt punktu wejścia do wykonania. Użyj tego pola zamiast tego, jeśli polecenie zawiera wpisy tajne, takie jak hasła.
+* `script`: (**wymagane** , jeśli sekcji commandtoexecute nie został ustawiony, String) skrypt kodowany algorytmem Base64 (i opcjonalnie gzip'ed) wykonywany przez/bin/sh.
+* `fileUris`: (opcjonalne, tablica ciągów) adresy URL dla plików do pobrania.
+* `storageAccountName`: (opcjonalnie, ciąg) nazwa konta magazynu. W przypadku określenia poświadczeń magazynu wszystkie `fileUris` muszą być adresami URL dla obiektów blob platformy Azure.
+* `storageAccountKey`: (opcjonalnie, String) klucz dostępu konta magazynu
 
 
-Można ustawić następujące wartości w ustawieniach publiczną lub chronioną, rozszerzenie spowoduje odrzucenie wszystkich konfiguracji, gdzie poniższe wartości są ustawione w ustawieniach zarówno publiczne i chronione.
+Następujące wartości można ustawić w ustawieniach publicznych lub chronionych, rozszerzenie odrzuci każdą konfigurację, w której poniższe wartości są ustawione zarówno w ustawieniach publicznych, jak i chronionych.
 * `commandToExecute`
 * `script`
 * `fileUris`
 
-Za pomocą ustawień publicznego, może być przydatne do debugowania, ale zdecydowanie zalecane jest używanie chronionych ustawień.
+Korzystanie z ustawień publicznych może być przydatne w przypadku debugowania, ale zdecydowanie zaleca się używanie ustawień chronionych.
 
-Ustawienia publicznego są wysyłane w postaci zwykłego tekstu do maszyny Wirtualnej, gdy skrypt zostanie wykonany.  Chronione ustawienia są szyfrowane przy użyciu klucza znanego tylko platformy Azure i maszyny Wirtualnej. Ustawienia są zapisywane do maszyny Wirtualnej, ponieważ zostały wysłane, czyli jeśli były szyfrowane ustawienia są zapisywane zaszyfrowane na maszynie Wirtualnej. Certyfikat używany do odszyfrowania zaszyfrowanych wartości przechowywane na maszynie Wirtualnej i jest używany do odszyfrowywania ustawienia (w razie potrzeby) w czasie wykonywania.
+Ustawienia publiczne są wysyłane w postaci zwykłego tekstu do maszyny wirtualnej, na której skrypt zostanie wykonany.  Ustawienia chronione są szyfrowane przy użyciu klucza znanego tylko na platformie Azure i maszynie wirtualnej. Ustawienia są zapisywane na maszynie wirtualnej w miarę ich wysyłania, tj. Jeśli ustawienia zostały zaszyfrowane, są zapisywane w postaci zaszyfrowanej na maszynie wirtualnej. Certyfikat używany do odszyfrowywania zaszyfrowanych wartości jest przechowywany na maszynie wirtualnej i używany do odszyfrowywania ustawień (w razie potrzeby) w czasie wykonywania.
 
-#### <a name="property-skipdos2unix"></a>Właściwości: skipDos2Unix
+#### <a name="property-skipdos2unix"></a>Właściwość: skipDos2Unix
 
-Wartość domyślna to false, co oznacza, że konwersja dos2unix **jest** wykonywane.
+Wartość domyślna to false, co oznacza, że **jest** wykonywana konwersja dos2unix.
 
-Poprzednią wersję CustomScript, Microsoft.OSTCExtensions.CustomScriptForLinux, będzie automatycznie przekonwertować plików systemu DOS plików systemu UNIX, tłumaczenia `\r\n` do `\n`. Tłumaczenie nadal istnieje i jest domyślnie włączone. Ta konwersja jest stosowany do wszystkich plików pobranych z fileUris lub ustawienia skryptu oparte na dowolnych z następujących kryteriów.
+Poprzednia wersja CustomScript, Microsoft. OSTCExtensions. CustomScriptForLinux, automatycznie konwertuje pliki DOS do plików systemu UNIX przez `\r\n` przetłumaczenie `\n`na. To tłumaczenie nadal istnieje i jest domyślnie włączone. Ta konwersja jest stosowana do wszystkich plików pobranych z fileUris lub ustawienia skryptu w oparciu o dowolne z poniższych kryteriów.
 
-* Jeśli rozszerzenie jest jednym z `.sh`, `.txt`, `.py`, lub `.pl` zostanie przekonwertowany. Ustawienia skryptu zawsze będą zgodne te kryteria, ponieważ zakłada, że skrypt wykonywany z /bin/sh i zostanie zapisany jako script.sh na maszynie Wirtualnej.
-* Jeśli plik, który rozpoczyna się od `#!`.
+* Jeśli rozszerzenie jest jednym `.sh`z, `.txt`, `.py`lub `.pl` zostanie przekonwertowane. Ustawienie skryptu będzie zawsze zgodne z tymi kryteriami, ponieważ zakłada się, że skrypt jest wykonywany przy użyciu/bin/sh i jest zapisywany jako script.sh na maszynie wirtualnej.
+* Jeśli plik zaczyna się od `#!`.
 
-Konwersja dos2unix można było pominąć, ustawiając skipDos2Unix na wartość true.
+Konwersję dos2unix można pominąć, ustawiając wartość skipDos2Unix na true.
 
 ```json
 {
@@ -159,13 +159,13 @@ Konwersja dos2unix można było pominąć, ustawiając skipDos2Unix na wartość
 }
 ```
 
-####  <a name="property-script"></a>Właściwości: skrypt
+####  <a name="property-script"></a>Właściwość: skrypt
 
-CustomScript obsługuje wykonywanie skryptu zdefiniowanego przez użytkownika. Ustawienia skryptu, aby połączyć commandToExecute i fileUris do pojedynczego ustawienia. Zamiast pliku do pobrania z usługi Azure storage lub GitHub gist instalacji, możesz po prostu zakodować skrypt jako ustawienie. Skrypt może służyć do zastąpionego commandToExecute i fileUris.
+CustomScript obsługuje wykonywanie skryptu zdefiniowanego przez użytkownika. Ustawienia skryptu umożliwiające połączenie sekcji commandtoexecute i fileUris w jedno ustawienie. Zamiast konieczności konfigurowania pliku do pobrania z usługi Azure Storage lub GitHub, można po prostu zakodować skrypt jako ustawienie. Skrypt może służyć do wymiany sekcji commandtoexecute i fileUris.
 
-Skrypt **musi** być zakodowany base64.  Skrypt można **opcjonalnie** można gzip'ed. Ustawienie skryptów może być używane w ustawieniach publiczne lub chronione. Maksymalny rozmiar danych parametru skryptu to 256 KB. Jeśli skrypt przekroczy ten rozmiar nie można wykonać.
+Skrypt **musi** być kodowany algorytmem Base64.  Skrypt można **Opcjonalnie** gzip'ed. Ustawienia skryptu można używać w ustawieniach publicznych lub chronionych. Maksymalny rozmiar danych parametru skryptu to 256 KB. Jeśli skrypt przekracza ten rozmiar, nie zostanie on wykonany.
 
-Na przykład, biorąc pod uwagę następujący skrypt, zapisane /script.sh/ pliku.
+Na przykład, mając następujący skrypt zapisany w pliku/script.sh/.
 
 ```sh
 #!/bin/sh
@@ -174,7 +174,7 @@ apt update
 apt upgrade -y
 ```
 
-Poprawne ustawienie CustomScript skrypt może konstruować, korzystając z danych wyjściowych następującego polecenia.
+Poprawne ustawienie skryptu CustomScript zostanie skonstruowane przez pobranie danych wyjściowych następującego polecenia.
 
 ```sh
 cat script.sh | base64 -w0
@@ -186,23 +186,23 @@ cat script.sh | base64 -w0
 }
 ```
 
-Skrypt można opcjonalnie gzip'ed, aby jeszcze bardziej ograniczyć rozmiar (w większości przypadków). (CustomScript automatycznie wykryje użycie kompresję gzip.)
+Skrypt można opcjonalnie gzip'ed, aby bardziej zmniejszyć rozmiar (w większości przypadków). (CustomScript Autowykrywanie użycia kompresji gzip).
 
 ```sh
 cat script | gzip -9 | base64 -w 0
 ```
 
-CustomScript domen używa następującego algorytmu do uruchomienia skryptu.
+CustomScript używa następującego algorytmu do wykonania skryptu.
 
  1. Potwierdź, że długość wartości skryptu nie przekracza 256 KB.
- 1. Base64 — dekodowanie wartość skryptu
- 1. _Próba_ do gunzip base64 zdekodować wartości
- 1. Zapisz wartość zdekodowany (i opcjonalnie zdekompresowany) na dysku (/ var/lib/waagent/custom-script/#/script.sh)
- 1. Uruchom skrypt przy użyciu /var/lib/waagent/custom-script/#/script.sh _ / bin/sh - c.
+ 1. kodowanie w formacie base64 wartości skryptu
+ 1. _próba_ gunzip zdekodowaną wartość Base64
+ 1. Napisz zdekodowaną (i opcjonalnie nieskompresowaną) wartość na dysk (/var/lib/waagent/Custom-Script/#/Script.sh)
+ 1. Wykonaj skrypt przy użyciu _/bin/sh-c/var/lib/waagent/Custom-Script/#/Script.sh.
 
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
-Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager. Schemat JSON szczegółowo opisane w poprzedniej sekcji może służyć w szablonie usługi Azure Resource Manager do rozszerzenia niestandardowego skryptu są uruchamiane podczas wdrażania szablonu usługi Azure Resource Manager. Przykładowy szablon, który zawiera rozszerzenie niestandardowego skryptu można znaleźć w tym miejscu [GitHub](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
+Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager. Schemat JSON opisany w poprzedniej sekcji można użyć w szablonie Azure Resource Manager, aby uruchomić rozszerzenie niestandardowego skryptu podczas wdrażania szablonu Azure Resource Manager. Przykładowy szablon, który zawiera rozszerzenie niestandardowego skryptu, można znaleźć w witrynie [GitHub](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
 
 
 ```json
@@ -210,7 +210,7 @@ Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu sz
   "name": "config-app",
   "type": "extensions",
   "location": "[resourceGroup().location]",
-  "apiVersion": "2015-06-15",
+  "apiVersion": "2019-03-01",
   "dependsOn": [
     "[concat('Microsoft.Compute/virtualMachines/', concat(variables('vmName'),copyindex()))]"
   ],
@@ -234,10 +234,10 @@ Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu sz
 ```
 
 >[!NOTE]
->Nazwy tych właściwości jest rozróżniana wielkość liter. Aby uniknąć problemów z wdrażaniem, użyj nazwy, jak pokazano poniżej.
+>W tych nazwach właściwości jest rozróżniana wielkość liter. Aby uniknąć problemów z wdrażaniem, użyj nazw, jak pokazano poniżej.
 
 ## <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
-Podczas korzystania z wiersza polecenia platformy Azure do uruchamiania rozszerzenia niestandardowego skryptu, Utwórz plik konfiguracji lub plików. Jako minimum konieczne jest posiadanie "commandToExecute".
+Jeśli używasz interfejsu wiersza polecenia platformy Azure do uruchamiania niestandardowego rozszerzenia skryptu, Utwórz plik lub pliki konfiguracyjne. Musisz mieć co najmniej wartość "sekcji commandtoexecute".
 
 ```azurecli
 az vm extension set \
@@ -247,7 +247,7 @@ az vm extension set \
   --protected-settings ./script-config.json
 ```
 
-Opcjonalnie można określić ustawienia w poleceniu jako ciąg w formacie JSON. Dzięki temu konfiguracji należy określić podczas wykonywania i bez osobnego pliku konfiguracji.
+Opcjonalnie można określić ustawienia w poleceniu jako ciąg sformatowany w formacie JSON. Pozwala to określić konfigurację podczas wykonywania i bez oddzielnego pliku konfiguracji.
 
 ```azurecli
 az vm extension set \
@@ -260,7 +260,7 @@ az vm extension set \
 
 ### <a name="azure-cli-examples"></a>Przykłady interfejsu wiersza polecenia platformy Azure
 
-#### <a name="public-configuration-with-script-file"></a>Publiczna Konfiguracja przy użyciu pliku skryptu
+#### <a name="public-configuration-with-script-file"></a>Konfiguracja publiczna z plikiem skryptu
 
 ```json
 {
@@ -269,7 +269,7 @@ az vm extension set \
 }
 ```
 
-Usługa Azure polecenia interfejsu wiersza polecenia:
+Polecenie interfejsu wiersza polecenia platformy Azure:
 
 ```azurecli
 az vm extension set \
@@ -279,7 +279,7 @@ az vm extension set \
   --settings ./script-config.json
 ```
 
-#### <a name="public-configuration-with-no-script-file"></a>Konfiguracja publiczna z żadnego pliku skryptu
+#### <a name="public-configuration-with-no-script-file"></a>Konfiguracja publiczna bez pliku skryptu
 
 ```json
 {
@@ -287,7 +287,7 @@ az vm extension set \
 }
 ```
 
-Usługa Azure polecenia interfejsu wiersza polecenia:
+Polecenie interfejsu wiersza polecenia platformy Azure:
 
 ```azurecli
 az vm extension set \
@@ -297,9 +297,9 @@ az vm extension set \
   --settings ./script-config.json
 ```
 
-#### <a name="public-and-protected-configuration-files"></a>Pliki konfiguracji publiczne i chronione
+#### <a name="public-and-protected-configuration-files"></a>Pliki konfiguracji publicznej i chronionej
 
-Plik konfiguracji publicznego umożliwia określenie pliku skryptu identyfikatora URI. Plik konfiguracji chronionych umożliwia określenie polecenia do uruchomienia.
+Plik konfiguracji publicznej służy do określania identyfikatora URI pliku skryptu. Aby określić polecenie do uruchomienia, należy użyć chronionego pliku konfiguracji.
 
 Plik konfiguracji publicznej:
 
@@ -309,7 +309,7 @@ Plik konfiguracji publicznej:
 }
 ```
 
-Plik konfiguracji chronionych:  
+Chroniony plik konfiguracji:  
 
 ```json
 {
@@ -317,7 +317,7 @@ Plik konfiguracji chronionych:
 }
 ```
 
-Usługa Azure polecenia interfejsu wiersza polecenia:
+Polecenie interfejsu wiersza polecenia platformy Azure:
 
 ```azurecli
 az vm extension set \
@@ -330,19 +330,19 @@ az vm extension set \
 ```
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
-Po uruchomieniu rozszerzenia niestandardowego skryptu skryptu jest utworzony lub pobrany do katalogu, który jest podobny do poniższego przykładu. Dane wyjściowe polecenia jest także zapisywane do tego katalogu w `stdout` i `stderr` plików.
+Po uruchomieniu rozszerzenia skryptu niestandardowego skrypt jest tworzony lub pobierany do katalogu podobnego do poniższego przykładu. Dane wyjściowe polecenia są również zapisywane w tym katalogu w `stdout` plikach `stderr` i.
 
 ```bash
 /var/lib/waagent/custom-script/download/0/
 ```
 
-Rozwiązywanie problemów, najpierw sprawdź w dzienniku agenta systemu Linux, upewnij się, rozszerzenie zostanie wykonane, sprawdź:
+Aby rozwiązać problem, najpierw sprawdź dziennik agenta systemu Linux, upewnij się, że rozszerzenie zostało uruchomione, sprawdź:
 
 ```bash
 /var/log/waagent.log 
 ```
 
-Wykonywanie rozszerzenia należy szukać, będzie on wyglądać mniej więcej tak:
+Należy wyszukać wykonanie rozszerzenia, będzie wyglądać następująco:
 ```text
 2018/04/26 17:47:22.110231 INFO [Microsoft.Azure.Extensions.customScript-2.0.6] [Enable] current handler state is: notinstalled
 2018/04/26 17:47:22.306407 INFO Event: name=Microsoft.Azure.Extensions.customScript, op=Download, message=Download succeeded, duration=167
@@ -353,9 +353,9 @@ Wykonywanie rozszerzenia należy szukać, będzie on wyglądać mniej więcej ta
 2018/04/26 17:47:23.476151 INFO [Microsoft.Azure.Extensions.customScript-2.0.6] Enable extension [bin/custom-script-shim enable]
 2018/04/26 17:47:24.516444 INFO Event: name=Microsoft.Azure.Extensions.customScript, op=Enable, message=Launch command succeeded: bin/custom-sc
 ```
-Niektóre informacje, które należy zwrócić uwagę:
-1. Włącz to podczas uruchamiania polecenia.
-2. Pobierania związana z oczekiwaną Pobieranie pakietu rozszerzenia CustomScript z platformy Azure, nie pliki skryptów określone w fileUris.
+Niektóre punkty do uwagi:
+1. Wartość enable jest uruchamiana, gdy polecenie zostanie uruchomione.
+2. Pobieranie odnosi się do pobierania pakietu rozszerzenia CustomScript z platformy Azure, a nie plików skryptów określonych w fileUris.
 
 
 Rozszerzenie skryptu platformy Azure generuje dziennik, który można znaleźć tutaj:
@@ -364,7 +364,7 @@ Rozszerzenie skryptu platformy Azure generuje dziennik, który można znaleźć 
 /var/log/azure/custom-script/handler.log
 ```
 
-Powinien wyglądać do wykonywania pojedynczych, będzie on wyglądać mniej więcej tak:
+Należy poszukać poszczególnych wykonań, co będzie wyglądać następująco:
 ```text
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event=start
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event=pre-check
@@ -390,18 +390,18 @@ time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event=end
 ```
 W tym miejscu możesz zobaczyć:
-* Włącz uruchamianie polecenia jest ten dziennik
-* Ustawienia przekazane do rozszerzenia
-* Rozszerzenie, pobierania pliku i wynik tego obiektu.
-* Polecenia są uruchamiane i wynik.
+* Uruchamianie polecenia enable jest tym dziennikiem
+* Ustawienia przesłane do rozszerzenia
+* Rozszerzenie pobiera plik i wynik.
+* Polecenie jest uruchamiane i wynik.
 
-Możesz również pobrać stanu wykonywania rozszerzenia niestandardowego skryptu za pomocą wiersza polecenia platformy Azure:
+Możesz również pobrać stan wykonywania rozszerzenia niestandardowego skryptu za pomocą interfejsu wiersza polecenia platformy Azure:
 
 ```azurecli
 az vm extension list -g myResourceGroup --vm-name myVM
 ```
 
-Dane wyjściowe wyglądają podobnie jak następujący tekst:
+Dane wyjściowe wyglądają następująco:
 
 ```azurecli
 info:    Executing command vm extension get
@@ -413,6 +413,6 @@ data:    Microsoft.OSTCExtensions    Microsoft.Insights.VMDiagnosticsSettings  2
 info:    vm extension get command OK
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby wyświetlić kod, bieżących problemach i wersji, zobacz [repozytorium niestandardowego skryptu — rozszerzenie linux](https://github.com/Azure/custom-script-extension-linux).
+## <a name="next-steps"></a>Następne kroki
+Aby wyświetlić kod, bieżące problemy i wersje, zobacz [repozytorium niestandardowe-Script-Extension-Linux](https://github.com/Azure/custom-script-extension-linux).
 

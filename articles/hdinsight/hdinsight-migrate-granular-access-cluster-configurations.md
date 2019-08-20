@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/09/2019
-ms.openlocfilehash: 1e5eb1e363ac9e282a72a9c1430c3f80c825bb91
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: a77310d0e45f095260d77ead0cfe14a3ce0ebd8e
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945073"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623841"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrowanie do szczegółowego dostępu opartego na rolach w przypadku konfiguracji klastrów
 
@@ -201,7 +201,7 @@ Jeśli to jeszcze nie zadziała, skontaktuj się z administratorem usługi AAD, 
 
 ### <a name="what-will-happen-if-i-take-no-action"></a>Co się stanie, jeśli nie będę podejmować żadnych działań?
 
-I nie zwróci już żadnych informacji, a `GET /configurations/{configurationName}` wywołanie nie zwróci już poufnych parametrów, takich jak klucz konta magazynu lub hasło klastra. `POST /configurations/gateway` `GET /configurations` Ta sama wartość dotyczy odpowiednich metod zestawu SDK i poleceń cmdlet programu PowerShell.
+Wywołania `GET /configurations` `GET /configurations/{configurationName}` i `POST /configurations/gateway` nie będą już zwracały żadnych informacji, a wywołanie nie zwróci już poufnych parametrów, takich jak klucze konta magazynu lub hasło klastra. Ta sama wartość dotyczy odpowiednich metod zestawu SDK i poleceń cmdlet programu PowerShell.
 
 Jeśli używasz starszej wersji jednego z narzędzi dla programu Visual Studio, programu vscode, IntelliJ lub zaćmienie wymienione powyżej, nie będą one już działać do momentu aktualizacji.
 

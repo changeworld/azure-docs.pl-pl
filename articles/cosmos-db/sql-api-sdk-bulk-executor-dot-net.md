@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 11/19/2018
 ms.author: ramkris
-ms.openlocfilehash: 989d52e773ed01a8fd1f4d383c42d7628e196a60
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: d24481c1364b41f38e4ca7b8f7d726ebc22a1117
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68814726"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624642"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>Biblioteka modułu wykonującego zbiorczo platformy .NET: Informacje o pobieraniu 
 
@@ -33,9 +33,9 @@ ms.locfileid: "68814726"
 
 | |  |
 |---|---|
-| **Opis**| Biblioteka modułu wykonawczego platformy .NET umożliwia aplikacjom klienckim wykonywanie operacji zbiorczych na kontach Azure Cosmos DB. Ta biblioteka zawiera przestrzenie nazw BulkImport, BulkUpdate i BulkDelete. Moduł BulkImport umożliwia zbiorcze pozyskiwanie dokumentów w sposób zoptymalizowany w taki sposób, że przepływność obsługiwana dla kolekcji jest używana w maksymalnym zakresie. Moduł BulkUpdate można zbiorczo aktualizować istniejące dane w kontenerach Azure Cosmos DB jako poprawki. Moduł BulkDelete umożliwia zbiorcze usuwanie dokumentów w sposób zoptymalizowany w taki sposób, że przepływność obsługiwana dla kolekcji jest używana w maksymalnym zakresie.|
+| **Opis**| Biblioteka modułu wykonawczego platformy .NET umożliwia aplikacjom klienckim wykonywanie operacji zbiorczych na kontach Azure Cosmos DB. Ta biblioteka zawiera przestrzenie nazw BulkImport, BulkUpdate i BulkDelete. Moduł BulkImport umożliwia zbiorcze pozyskiwanie dokumentów w sposób zoptymalizowany w taki sposób, że przepływność obsługiwana dla kolekcji jest używana w maksymalnym zakresie. Moduł BulkUpdate można zbiorczo aktualizować istniejące dane w kontenerach usługi Azure Cosmos jako poprawki. Moduł BulkDelete umożliwia zbiorcze usuwanie dokumentów w sposób zoptymalizowany w taki sposób, że przepływność obsługiwana dla kolekcji jest używana w maksymalnym zakresie.|
 |**Zestaw SDK do pobrania**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
-| **Biblioteka BulkExecutor w usłudze GitHub**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
+| **Biblioteka modułu wykonującego zbiorczo w serwisie GitHub**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
 |**Dokumentacja interfejsu API**|[Dokumentacja interfejsu API platformy .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
 |**Wprowadzenie**|[Wprowadzenie do zestawu .NET SDK biblioteki wykonawczej zbiorczego](bulk-executor-dot-net.md)|
 | **Bieżącej struktury obsługiwanej**| Microsoft .NET Framework 4.5.2, 4.6.1 i .NET Standard 2,0 |
@@ -60,7 +60,7 @@ ms.locfileid: "68814726"
 
 ### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0-Preview
 
-* Dodano .NET Standard 2,0 jako jedną z obsługiwanych platform docelowych, aby Biblioteka BulkExecutor działała z aplikacjami .NET Core.
+* Dodano .NET Standard 2,0 jako jedną z obsługiwanych platform docelowych, aby Biblioteka wykonawców zbiorczych działała z aplikacjami .NET Core.
 
 ### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
 
@@ -80,11 +80,11 @@ ms.locfileid: "68814726"
 
 ### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
 
-* Rozwiązano problem, który spowodował problem z formatowaniem w agencie użytkownika używanym przez BulkExecutor.
+* Rozwiązano problem, który spowodował problem z formatowaniem w agencie użytkownika używanym przez program wykonujący zbiorczo.
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
 
-* Ulepszono BulkExecutor Importowanie i aktualizowanie interfejsów API w celu nieprzezroczystego dostosowywania do elastycznego skalowania Cosmos DB kontenera, gdy magazyn przekracza bieżącą pojemność bez zgłaszania wyjątków.
+* Ulepszono Importowanie i aktualizowanie interfejsów API do zbiorczego wykonawcy w celu nieprzezroczystego dostosowania do elastycznego skalowania kontenera Cosmos, gdy magazyn przekracza bieżącą pojemność bez zgłaszania wyjątków.
 
 ### <a name="a-name112112"></a><a name="1.1.2"/>1.1.2
 
@@ -92,7 +92,7 @@ ms.locfileid: "68814726"
 
 ### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
 
-* Rozwiązano problem, który spowodował BulkExecutor zgłosić błąd JSRT podczas importowania do stałych kolekcji.
+* Rozwiązano problem, który spowodował wygenerowanie zbiorczego błędu JSRT podczas importowania do stałych kolekcji.
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
 

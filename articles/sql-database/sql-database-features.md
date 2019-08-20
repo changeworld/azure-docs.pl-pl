@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 7e5c33577a2d926266ae45057509b112dc27ce7b
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: c4ba2269003c9d401982b83f4e66c8caf45a0073
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985719"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624714"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Porównanie funkcji: Azure SQL Database a SQL Server
 
@@ -53,7 +53,7 @@ Poniższa tabela zawiera listę głównych funkcji SQL Server i zawiera informac
 | [Sortowanie — serwer/wystąpienie](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation) | Nie, domyślne sortowanie `SQL_Latin1_General_CP1_CI_AS` serwera logicznego jest zawsze używane. | Tak, można ustawić podczas [tworzenia wystąpienia](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md) i nie można go później zaktualizować. |
 | [Indeksy magazynu kolumn](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | Tak — [warstwa Premium, warstwa standardowa — S3 i wyższa, warstwa ogólnego przeznaczenia i warstwy krytyczne dla działania firmy](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |Tak |
 | [Środowisko uruchomieniowe języka wspólnego — CLR](https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | Nie | Tak, ale bez dostępu do systemu plików w `CREATE ASSEMBLY` instrukcji — zobacz [różnice w środowisku CLR](sql-database-managed-instance-transact-sql-information.md#clr) |
-| [Zawarte bazy danych](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) | Tak | Obecnie brak [z powodu usterki przywracania, w tym przywracania do punktu w czasie](sql-database-managed-instance-transact-sql-information.md#cant-restore-contained-database). Jest to wada, która zostanie wkrótce naprawiona. |
+| [Zawarte bazy danych](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) | Tak | Tak |
 | [Zawarti użytkownicy](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) | Tak | Tak |
 | [Sterowanie słowami kluczowymi języka przepływu](https://docs.microsoft.com/sql/t-sql/language-elements/control-of-flow) | Tak | Tak |
 | [Poświadczenia](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/credentials-database-engine) | Tak, ale tylko [poświadczenia w zakresie bazy danych](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql). | Tak, ale tylko **Azure Key Vault** i `SHARED ACCESS SIGNATURE` są obsługiwane zobacz [szczegóły](sql-database-managed-instance-transact-sql-information.md#credential) |
@@ -132,7 +132,7 @@ Poniższa tabela zawiera listę głównych funkcji SQL Server i zawiera informac
 | [Tabele danych czasowych](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables) | [Tak](sql-database-temporal-tables.md) | [Tak](sql-database-temporal-tables.md) |
 | Wybór strefy czasowej | Nie | [Tak](sql-database-managed-instance-timezone.md), i musi być skonfigurowany podczas tworzenia wystąpienia zarządzanego. |
 | Wykrywanie zagrożeń|  [Tak](sql-database-threat-detection.md)|[Tak](sql-database-managed-instance-threat-detection.md)|
-| [Flagi śledzenia](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql) | Nie | Nie |
+| [Flagi śledzenia](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql) | Nie | Tak, ale tylko ograniczony zbiór globalnych flag śledzenia. Zobacz [różnice](sql-database-managed-instance-transact-sql-information.md#dbcc) w programie DBCC |
 | [Replikacja transakcyjna](sql-database-managed-instance-transactional-replication.md) | Tak, [tylko subskrybent replikacji transakcyjnej i migawek](sql-database-single-database-migrate.md) | Tak, w [publicznej wersji](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance)zapoznawczej. Zobacz ograniczenia w [tym miejscu](sql-database-managed-instance-transact-sql-information.md#replication). |
 | [Zmienne](https://docs.microsoft.com/sql/t-sql/language-elements/variables-transact-sql) | Tak | Tak |
 | [Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | Tak — Ogólnego przeznaczenia i Krytyczne dla działania firmy warstwy usługi| [Tak](transparent-data-encryption-azure-sql.md) |

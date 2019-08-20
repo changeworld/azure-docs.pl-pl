@@ -6,18 +6,18 @@ author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 06/26/2019
+ms.date: 08/16/2019
 ms.author: alinast
-ms.openlocfilehash: 15a152d6941a8c77cae2ef7771be93db4ddceae4
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: a107f7dba7f28b41303727ad37b7c50f2e215c4f
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "67484692"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622960"
 ---
-# <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Samouczek: Wdróż Azure cyfrowego bliźniaczych reprezentacji (wersja zapoznawcza) i skonfiguruj przestrzenne programu graph
+# <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Samouczek: Wdróż usługę Azure Digital bliźniaczych reprezentacji Preview i skonfiguruj wykres przestrzenny
 
-Usługa Azure cyfrowego bliźniaczych reprezentacji (wersja zapoznawcza) ze sobą osoby, miejsca i urządzenia w spójnym systemie przestrzennych. W tej serii samouczków przedstawiono sposób wykrywania zajętości pomieszczeń z optymalnymi warunkami temperatury i jakości powietrza za pomocą usługi Azure Digital Twins. 
+Możesz użyć usługi Azure Digital bliźniaczych reprezentacji w wersji zapoznawczej, aby połączyć osoby, miejsca i urządzenia w spójny system przestrzenny. W tej serii samouczków przedstawiono sposób wykrywania zajętości pomieszczeń z optymalnymi warunkami temperatury i jakości powietrza za pomocą usługi Azure Digital Twins. 
 
 Samouczki przeprowadzą Cię przez proces tworzenia w aplikacji konsoli .NET scenariusza budynku biurowego. Budynek składa się z wielu pięter i pomieszczeń na każdym piętrze. W pomieszczeniach znajdują się urządzenia z podłączonymi czujnikami, które wykrywają ruch, temperaturę otoczenia i jakość powietrza. 
 

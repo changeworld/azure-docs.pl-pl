@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/18/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 18579f716f80cdf79b703dc78fe520c675e82c51
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
-ms.translationtype: HT
+ms.openlocfilehash: 70b43c65703316e5dee8e9cf2cf86fe982a49592
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575631"
+ms.locfileid: "69624782"
 ---
 # <a name="threat-detection-for-azure-service-layer-in-azure-security-center"></a>Wykrywanie zagrożeń dla warstwy usług platformy Azure w Azure Security Center
 
@@ -78,4 +78,4 @@ Security Center oferuje dodatkową warstwę ochrony, wykorzystując zdarzenia Az
 > 3. W obszarze **Włączanie integracji**Usuń zaznaczenie pola wyboru **Zezwalaj Microsoft Cloud App Security na dostęp do danych**i kliknij przycisk **Zapisz**.
 
 >[!NOTE]
->Azure Security Center przechowuje dane klienta związane z zabezpieczeniami w tym samym miejscu geograficznym, co jego zasób. Jeśli firma Microsoft nie wdrożona jeszcze Azure Security Center w lokalizacji geograficznej zasobu, przechowuje dane w Stany Zjednoczone. Gdy Microsoft Cloud App Security (MCAS) jest włączona, te informacje są przechowywane zgodnie z zasadami lokalizacji geograficznej MCAS. [Aby uzyskać więcej informacji, zobacz Magazyn danych dla usług innych niż regionalne](http://azuredatacentermap.azurewebsites.net/).
+>Azure Security Center przechowuje dane klienta związane z zabezpieczeniami w tym samym miejscu geograficznym, co jego zasób. Jeśli firma Microsoft nie wdrożona jeszcze Azure Security Center w lokalizacji geograficznej zasobu, przechowuje dane w Stany Zjednoczone. Gdy Microsoft Cloud App Security (MCAS) jest włączona, te informacje są przechowywane zgodnie z zasadami lokalizacji geograficznej MCAS. [Aby uzyskać więcej informacji, zobacz Magazyn danych dla usług innych niż regionalne](https://azuredatacentermap.azurewebsites.net/).

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 08/19/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7463b86ea20a712937b8ccba7997c2551aae5be6
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 4d7a23ed0a84ebd671c69744dfec145763ef6897
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879105"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622715"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Wymagania licencyjne dotyczące funkcji samoobsługowego resetowania haseł w usłudze Azure AD
 
@@ -34,7 +34,7 @@ Funkcja samoobsługowego resetowania hasła w usłudze Azure AD jest licencjonow
 * Samoobsługowe resetowanie haseł użytkowników w chmurze
    * Jestem **użytkownikiem tylko w chmurze** i zapomniano mojego hasła.
       * Chcę **zresetować** moje hasło do mnie.
-   * Ta funkcja jest uwzględniona w Azure AD — wersja Premium P1 lub P2 lub Microsoft 365 Business.
+   * Ta funkcja jest uwzględniona w Azure AD — wersja Premium P1 lub P2, Microsoft 365 Business lub Office 365.
 
 * Samoobsługowe resetowanie/zmiana/odblokowanie hasła **przy użyciu lokalnego zapisywania zwrotnego**
    * Jestem **użytkownikiem hybrydowym** mojego lokalnego Active Directory konto użytkownika jest synchronizowane z kontem usługi Azure AD przy użyciu Azure AD Connect. Chcę zmienić moje hasło, zapomniano moje hasło lub zostało zablokowane.
@@ -59,7 +59,7 @@ Usługa Azure AD obsługuje teraz Licencjonowanie oparte na grupach. Administrat
 
 Nie wszystkie usługi firmy Microsoft są dostępne we wszystkich lokalizacjach. Aby można było przypisać licencję do użytkownika, administrator musi określić właściwość **Lokalizacja użycia** dla użytkownika. Przypisanie licencji można wykonać w sekcji**ustawień** **profilu** >  **użytkownika** > w Azure Portal. *W przypadku korzystania z przypisania licencji grupy Wszyscy użytkownicy bez określonej lokalizacji użycia dziedziczą lokalizację katalogu.*
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Jak wykonać pomyślne wdrożenie funkcji samoobsługowego resetowania haseł?](howto-sspr-deployment.md)
 * [Resetowanie lub zmienianie hasła](../user-help/active-directory-passwords-update-your-own-password.md)

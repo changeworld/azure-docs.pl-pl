@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: e85f9a90af778a7e68bf761d8d2159e808cf122d
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 829054064a21b2fb8da2bd975501bfcd0840e7eb
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639210"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624565"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>Funkcje list fraz w aplikacji LUIS
 
@@ -69,7 +69,7 @@ Ponieważ słowa lub frazy dla treści wody są synonimami i mogą być używane
 
 ### <a name="non-interchangeable-lists"></a>Listy, które nie są zamienne
 
-Niewymienna lista fraz jest sygnałem, który zwiększa wykrywanie do LUIS. Lista fraz wskazuje wyrazy lub frazy, które są bardziej znaczące. Pomaga to w ustaleniu zamiar i wykrywania jednostek. Załóżmy na przykład, że masz domenę podmiotu, taką jak podróż, która jest globalna (czyli obejmująca między kulturami, ale nadal w jednym języku). Istnieją wyrazy i frazy, które są ważne dla aplikacji, ale nie są synonimami. 
+Niewymienna lista fraz jest sygnałem, który zwiększa wykrywanie do LUIS. Lista fraz wskazuje wyrazy lub frazy, które są bardziej znaczące niż inne słowa. Pomaga to w ustaleniu zamiar i wykrywania jednostek. Załóżmy na przykład, że masz domenę podmiotu, taką jak podróż, która jest globalna (czyli obejmująca między kulturami, ale nadal w jednym języku). Istnieją wyrazy i frazy, które są ważne dla aplikacji, ale nie są synonimami. 
 
 Innym przykładem jest użycie niewymiennej listy fraz dla rzadkich, własnościowych i obcych wyrazów. Usługa LUIS może być nie można rozpoznać rzadkie i zastrzeżonych słów, jak również obce słowa (poza kultura aplikacji). -Wymienne ustawienie wskazuje, że zbiór słów rzadkich formularzy klasę, która LUIS powinien Naucz się rozpoznawać, ale nie są one synonimy lub wymienne ze sobą.
 

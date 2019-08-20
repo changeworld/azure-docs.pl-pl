@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 811d54da2fbcf36bcd2529ed9172c80d6414ab54
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
-ms.translationtype: HT
+ms.openlocfilehash: 5e9972c5fea7aaa2e6b5270aff87343437b1963e
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617636"
+ms.locfileid: "69624006"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database różnice T-SQL wystąpienia zarządzanego w programie SQL Server
 
@@ -62,6 +62,7 @@ Wystąpienia zarządzane mają automatyczne kopie zapasowe, dlatego użytkownicy
 Ograniczenia: 
 
 - Z wystąpieniem zarządzanym można utworzyć kopię zapasową bazy danych wystąpienia w usłudze z maksymalnie 32 pasków, co wystarcza dla baz danych o pojemności do 4 TB w przypadku użycia kompresji kopii zapasowej.
+- Nie można wykonać `BACKUP DATABASE ... WITH COPY_ONLY` na bazie danych, która jest zaszyfrowana za pomocą transparent Data Encryption zarządzanej przez usługę (TDE). TDE zarządzane przez usługę wymusza szyfrowanie kopii zapasowych przy użyciu wewnętrznego klucza TDE. Nie można wyeksportować klucza, dlatego nie można przywrócić kopii zapasowej. Użyj funkcji automatycznego tworzenia kopii zapasowych oraz przywracania do punktu w czasie lub zamiast tego użyj [zarządzanego przez klienta (BYOK) TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key) . Można również wyłączyć szyfrowanie bazy danych.
 - Maksymalny rozmiar paska tworzenia kopii zapasowej przy użyciu `BACKUP` polecenia w wystąpieniu zarządzanym wynosi 195 GB, czyli maksymalny rozmiar obiektu BLOB. Zwiększ liczbę pasków w poleceniu kopii zapasowej, aby zmniejszyć rozmiar poszczególnych pasków i pozostać w tym limicie.
 
     > [!TIP]
@@ -538,6 +539,14 @@ Okna dialogowe Service Broker między bazami danych nie dostarczą komunikatów 
 
 **Poprawkę** Przed aktualizacją warstwy usług Zatrzymaj wszystkie działania, które używają konwersacji między bazami danych Service Broker.
 
+### <a name="some-aad-login-types-cannot-be-impersonated"></a>Niektóre typy logowania usługi AAD nie mogą być personifikowane
+
+**Dniu** Lipiec 2019
+
+Personifikacja `EXECUTE AS USER` przy `EXECUTE AS LOGIN` użyciu lub następujących głównych podmiotów usługi AAD nie jest obsługiwana:
+-   Aliasy użytkowników usługi AAD. W tym przypadku `15517`zwracany jest następujący błąd.
+- Nazwy logowania i użytkownicy usługi AAD w oparciu o aplikacje lub nazwy główne usług w usłudze AAD. W takim przypadku `15517` zwracane są następujące błędy i `15406`.
+
 ### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@queryparametr nie jest obsługiwany w sp_send_db_mail
 
 **Dniu** Kwiecień 2019
@@ -546,13 +555,13 @@ Parametr w procedurze sp_send_db_mail nie działa. [](https://docs.microsoft.com
 
 ### <a name="aad-logins-and-users-are-not-supported-in-tools"></a>Nazwy logowania i użytkownicy usługi AAD nie są obsługiwane w narzędziach
 
-**Dniu** Kwiecień 2019
+**Dniu** Sty 2019
 
 SQL Server Management Studio i SQL Server narzędzia danych nie fuly obsługi logowania do katalogu kont i użytkowników usługi Azure.
 - Korzystanie z usług Azure AD Server Principals (Logins) i użytkowników (publiczna wersja zapoznawcza) za pomocą narzędzi SQL Server Data Tools nie jest obecnie obsługiwane.
 - Obsługa skryptów dla podmiotów zabezpieczeń serwera usługi Azure AD (logowania) i użytkowników (publiczna wersja zapoznawcza) nie jest obsługiwana w SQL Server Management Studio.
 
-### <a name="tempdb-structure-is-re-created"></a>Struktura bazy danych TEMPDB została utworzona w sposób ponowny
+### <a name="tempdb-structure-and-content-is-re-created"></a>Struktura i zawartość bazy danych TEMPDB są odtwarzane
 
 `tempdb` Baza danych jest zawsze podzielona na 12 plików danych i nie można zmienić struktury pliku. Nie można zmienić maksymalnego rozmiaru pliku i nie można dodać do `tempdb`niego nowych plików. `Tempdb`zawsze jest tworzona jako pusta baza danych, gdy wystąpienie zostanie uruchomione lub działa w trybie failover, a wszelkie zmiany wprowadzone `tempdb` w programie nie zostaną zachowane.
 
@@ -623,12 +632,6 @@ Mimo że ten kod działa z danymi w tym samym wystąpieniu, wymagana jest usług
 Moduły CLR umieszczane w wystąpieniu zarządzanym oraz połączone serwery lub zapytania rozproszone, które odwołują się do bieżącego wystąpienia czasami nie mogą rozpoznać adresu IP wystąpienia lokalnego. Ten błąd jest przejściowym problemem.
 
 **Poprawkę** Jeśli to możliwe, Użyj połączeń kontekstu w module CLR.
-
-### <a name="tde-encrypted-databases-with-a-service-managed-key-dont-support-user-initiated-backups"></a>TDE — szyfrowane bazy danych z kluczem zarządzanym przez usługę nie obsługują kopii zapasowych inicjowanych przez użytkownika
-
-Nie można wykonać `BACKUP DATABASE ... WITH COPY_ONLY` na bazie danych, która jest zaszyfrowana za pomocą transparent Data Encryption zarządzanej przez usługę (TDE). TDE zarządzane przez usługę wymusza szyfrowanie kopii zapasowych przy użyciu wewnętrznego klucza TDE. Nie można wyeksportować klucza, dlatego nie można przywrócić kopii zapasowej.
-
-**Poprawkę** Użyj funkcji automatycznego tworzenia kopii zapasowych oraz przywracania do punktu w czasie lub zamiast tego użyj [zarządzanego przez klienta (BYOK) TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key) . Można również wyłączyć szyfrowanie bazy danych.
 
 ## <a name="next-steps"></a>Następne kroki
 

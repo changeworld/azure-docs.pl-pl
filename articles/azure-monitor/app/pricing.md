@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 08/13/2019
+ms.date: 08/19/2019
 ms.author: dalek
-ms.openlocfilehash: 4029a9e46b9c9bb7cbd677deff4a172d8fc982f8
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: c3da37d89da8c70f6acdfb1b5ab9c5b10edb86f0
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534596"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624391"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Zarządzanie użyciem i kosztami Application Insights
 
@@ -103,7 +103,7 @@ Możesz użyć dziennego limitu ilości, aby ograniczyć zbierane dane. Jeśli j
 
 Zamiast używać dziennego limitu ilości, użyj [próbkowania](../../azure-monitor/app/sampling.md) , aby dostosować ilość danych do żądanego poziomu. Następnie użyj dziennego limitu tylko jako "ostatniej", jeśli aplikacja nieoczekiwanie zacznie wysyłać znacznie wyższe ilości danych telemetrycznych.
 
-Aby zmienić dzienny limit, w sekcji **Konfiguracja** zasobu Application Insights, w okienku **użycie i szacowane koszty** wybierz pozycję **dzienny limit**.
+Aby zmienić dzienny limit, w sekcji **Konfigurowanie** zasobu Application Insights, na stronie **użycie i szacowane koszty** wybierz pozycję **dzienny limit**.
 
 ![Dostosuj dzienny limit ilości danych telemetrycznych](./media/pricing/pricing-003.png)
 
@@ -135,11 +135,13 @@ W każdym zachowanym rekordzie `itemCount` wskazuje liczbę oryginalnych rekord�
 
 ## <a name="change-the-data-retention-period"></a>Zmienić okres przechowywania danych
 
-Application Insights teraz dołączać ograniczoną liczbę klientów Application Insights do naszej wersji zapoznawczej przechowywania. Informacje o tym, jak uczestniczyć w tym programie w wersji zapoznawczej, są dostępne [tutaj](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031).
+Domyślne przechowywanie dla zasobów Application Insights to 90 dni. Dla każdego zasobu Application Insights można wybrać różne okresy przechowywania. Pełny zestaw dostępnych okresów przechowywania to 30, 60, 90, 120, 180, 270, 365, 550 lub 730. 
 
-Domyślne przechowywanie dla zasobów Application Insights to 90 dni. Dla każdego zasobu Application Insights można wybrać różne okresy przechowywania. Pełny zestaw dostępnych okresów przechowywania to 30, 60, 120, 180, 270, 365, 550 lub 730. 
+Aby zmienić przechowywanie, z zasobu Application Insights przejdź na stronę **użycie i szacowane koszty** i wybierz opcję **przechowywania danych** :
 
-Po włączeniu rozliczeń o dłuższym czasie przechowywania dane przechowywane przez czas dłuższy niż 90 dni będą rozliczane jako ta sama stawka, która jest rozliczana w przypadku przechowywania danych Log Analytics Azure. Dowiedz się więcej na [stronie cennika Azure monitor](https://azure.microsoft.com/pricing/details/monitor/).  Bądź na bieżąco z zmiennym postępem przechowywania w ramach [tej sugestii](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031). 
+![Dostosuj dzienny limit ilości danych telemetrycznych](./media/pricing/pricing-005.png)
+
+Po włączeniu rozliczeń o dłuższym czasie przechowywania dane przechowywane przez czas dłuższy niż 90 dni będą rozliczane jako ta sama stawka, która jest rozliczana w przypadku przechowywania danych Log Analytics Azure. Dowiedz się więcej na [stronie cennika Azure monitor](https://azure.microsoft.com/pricing/details/monitor/). Bądź na bieżąco z zmiennym postępem przechowywania w ramach [tej sugestii](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031). 
 
 ## <a name="limits-summary"></a>Podsumowanie limitów
 
