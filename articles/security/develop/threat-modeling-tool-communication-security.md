@@ -87,7 +87,7 @@ ms.locfileid: "68728355"
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -98,7 +98,7 @@ ms.locfileid: "68728355"
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | EnvironmentType — Azure |
@@ -109,7 +109,7 @@ ms.locfileid: "68728355"
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | EnvironmentType — Azure |
@@ -142,7 +142,7 @@ Ta reguła działa przez zwrócenie kodu stanu HTTP 301 (trwałe przekierowanie)
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | ND  |

@@ -33,7 +33,7 @@ Usługa [App Service dla systemu Linux](app-service-linux-intro.md) zapewnia wst
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
-## <a name="create-a-web-app"></a>Tworzenie aplikacji sieci web
+## <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
 
 Utwórz [aplikację internetową](../overview.md) w `myAppServicePlan`planie usługi App Service za pomocą polecenia [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). Nie `<app name>` zapomnij zamienić na globalnie unikatową nazwę aplikacji (prawidłowe znaki `a-z`to `0-9`, i `-`).
 

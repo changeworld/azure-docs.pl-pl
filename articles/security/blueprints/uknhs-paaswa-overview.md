@@ -55,7 +55,7 @@ To rozwiązanie używa następujących usług platformy Azure. Szczegóły archi
 - Azure Storage
 - Azure Virtual Network
     - Grupy zabezpieczeń sieci
-- Aplikacja sieci Web platformy Azure
+- Aplikacja internetowa platformy Azure
 
 ## <a name="deployment-architecture"></a>Architektura wdrożenia
 

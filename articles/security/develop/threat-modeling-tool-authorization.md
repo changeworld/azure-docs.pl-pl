@@ -79,7 +79,7 @@ ms.locfileid: "68728383"
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -90,7 +90,7 @@ ms.locfileid: "68728383"
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -101,7 +101,7 @@ ms.locfileid: "68728383"
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -112,7 +112,7 @@ ms.locfileid: "68728383"
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -131,7 +131,7 @@ Teraz możliwa osoba atakująca nie może modyfikować i zmieniać operacji apli
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | ND  |

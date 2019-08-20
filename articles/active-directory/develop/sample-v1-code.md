@@ -49,7 +49,7 @@ Ten przykład pokazuje, jak napisać aplikację jednostronicową chronioną za p
 ![Ten obraz pokazuje logo JavaScript](media/sample-v2-code/logo_js.png) | [javascript-singlepageapp](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |
 ![Ten obraz pokazuje logo kątowe JS](media/sample-v2-code/logo_angular.png) | [AngularJS — singlepageapp](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) | [angularjs-singlepageapp-cors](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp-dotnet-webapi)
 
-## <a name="web-applications"></a>Aplikacje sieci Web
+## <a name="web-applications"></a>Aplikacje internetowe
 
 ### <a name="web-applications-signing-in-users-calling-microsoft-graph-or-a-web-api-with-the-users-identity"></a>Aplikacje sieci Web służące do logowania użytkowników, wywoływania Microsoft Graph lub interfejsu API sieci Web z tożsamością użytkownika
 

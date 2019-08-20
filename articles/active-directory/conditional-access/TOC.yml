@@ -19,6 +19,10 @@
 - name: Pojęcia
   expanded: false
   items:
+    - name: Wdrażanie dostępu warunkowego
+      href: howto-conditional-access-adoption-kit.md
+    - name: Typowe zasady dostępu warunkowego
+      href: concept-conditional-access-policy-common.md
     - name: Warunki
       href: conditions.md
     - name: Warunki lokalizacji
@@ -38,6 +42,22 @@
       href: plan-conditional-access.md
     - name: Najlepsze praktyki
       href: best-practices.md
+    - name: Typowe szablony zasad
+      items:
+        - name: Wymaganie uwierzytelniania wieloskładnikowego dla administratorów
+          href: howto-conditional-access-policy-admin-mfa.md
+        - name: Wymaganie uwierzytelniania wieloskładnikowego do zarządzania platformą Azure
+          href: howto-conditional-access-policy-azure-management.md
+        - name: Blokowanie starszego uwierzytelniania
+          href: howto-conditional-access-policy-block-legacy.md
+        - name: Dostęp warunkowy oparty na ryzyku
+          href: howto-conditional-access-policy-risk.md
+        - name: Wymaganie zaufanej lokalizacji na potrzeby rejestracji uwierzytelniania wieloskładnikowego
+          href: howto-conditional-access-policy-registration.md
+        - name: Blokowanie dostępu według lokalizacji
+          href: howto-conditional-access-policy-location.md
+        - name: Wymaganie zgodnych urządzeń
+          href: howto-conditional-access-policy-compliant-device.md
     - name: Blokowanie starszego uwierzytelniania
       href: block-legacy-authentication.md
     - name: Dostęp warunkowy na potrzeby rejestracji uwierzytelniania wieloskładnikowego

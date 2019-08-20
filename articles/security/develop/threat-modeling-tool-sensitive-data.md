@@ -74,7 +74,7 @@ ms.locfileid: "68727864"
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Generic, Web Forms, MVC5, MVC6 |
 | **Atrybuty**              | ND  |
@@ -127,7 +127,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -138,7 +138,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -157,7 +157,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | ND  |

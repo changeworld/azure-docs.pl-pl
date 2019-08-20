@@ -4,8 +4,16 @@
   items:
     - name: Omówienie
       href: user-help-two-step-verification-overview.md
-    - name: Konfigurowanie własnego konta
-      href: multi-factor-authentication-end-user-first-time.md
+    - name: Konfigurowanie metod weryfikacji dwuskładnikowej
+      items:
+        - name: Omówienie
+          href: multi-factor-authentication-end-user-first-time.md
+        - name: Konfigurowanie aplikacji Authenticator
+          href: multi-factor-authentication-setup-auth-app.md
+        - name: Konfigurowanie urządzenia przenośnego
+          href: multi-factor-authentication-setup-phone-number.md
+        - name: Konfigurowanie telefonu biurowego
+          href: multi-factor-authentication-setup-office-phone.md
     - name: Zarządzanie ustawieniami
       href: multi-factor-authentication-end-user-manage-settings.md
     - name: Uzyskiwanie pomocy

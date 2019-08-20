@@ -35,7 +35,7 @@ ms.locfileid: "68728054"
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -67,7 +67,7 @@ doc.setProperty("AllowXsltScript", false); // CORRECT. Setting to false disables
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -136,7 +136,7 @@ this.Response.Headers[""X-Content-Type-Options""] = ""nosniff"";
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -198,7 +198,7 @@ Należy pamiętać, że w programie MSXML6 ProhibitDTD jest ustawiona na true (d
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -209,7 +209,7 @@ Należy pamiętać, że w programie MSXML6 ProhibitDTD jest ustawiona na true (d
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -325,7 +325,7 @@ Ostatni punkt dotyczący weryfikacji podpisu w formacie pliku znajduje się w po
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -355,7 +355,7 @@ W poprzednim przykładzie kodu wartość wejściowa nie może być dłuższa ni�
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | MVC5, MVC6 |
 | **Atrybuty**              | ND  |
@@ -366,7 +366,7 @@ W poprzednim przykładzie kodu wartość wejściowa nie może być dłuższa ni�
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Generic, Web Forms, MVC5, MVC6 |
 | **Atrybuty**              | ND  |
@@ -391,7 +391,7 @@ W poprzednim przykładzie kodu wartość wejściowa nie może być dłuższa ni�
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Generic, MVC5, MVC6 |
 | **Atrybuty**              | ND  |
@@ -402,7 +402,7 @@ W poprzednim przykładzie kodu wartość wejściowa nie może być dłuższa ni�
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -413,7 +413,7 @@ W poprzednim przykładzie kodu wartość wejściowa nie może być dłuższa ni�
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -435,7 +435,7 @@ Nie używaj `innerHtml`; zamiast tego `innerText`Użyj. Podobnie zamiast `$("#el
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -446,7 +446,7 @@ Nie używaj `innerHtml`; zamiast tego `innerText`Użyj. Podobnie zamiast `$("#el
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Generic, MVC5, MVC6 |
 | **Atrybuty**              | ND  |
@@ -457,7 +457,7 @@ Nie używaj `innerHtml`; zamiast tego `innerText`Użyj. Podobnie zamiast `$("#el
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Generic, Web Forms, MVC5, MVC6  |
 | **Atrybuty**              | ND  |
@@ -475,7 +475,7 @@ Na przykład następująca konfiguracja spowoduje zgłoszenie RegexMatchTimeoutE
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | MVC5, MVC6 |
 | **Atrybuty**              | ND  |

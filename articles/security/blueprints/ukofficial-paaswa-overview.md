@@ -53,7 +53,7 @@ To rozwiązanie używa następujących usług platformy Azure. Szczegóły archi
 
 - Usługa Azure Active Directory
 - App Service
-- Aplikacja sieci Web
+- Aplikacja internetowa
 - Aplikacja interfejsu API
 - Usługa DNS platformy Azure
 - Usługa Key Vault

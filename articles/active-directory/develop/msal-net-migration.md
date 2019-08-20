@@ -129,7 +129,7 @@ Typ aplikacji | Udziel | ADAL.NET | MSAL.NET
 ----- | ----- | ----- | -----
 Aplikacja internetowa, internetowy interfejs API, Demon | Poświadczenia klienta | [Przepływy poświadczeń klienta w ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [Przepływy poświadczeń klienta w MSAL.NET](msal-authentication-flows.md#client-credentials))
 Interfejs API sieci Web | W imieniu użytkownika | [Wywołania usługi do obsługi w imieniu użytkownika z ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [W imieniu programu MSAL.NET](msal-authentication-flows.md#on-behalf-of)
-Aplikacja sieci Web | Kod uwierzytelniania | [Uzyskiwanie tokenów z kodami autoryzacji w aplikacjach sieci Web za pomocą ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-authorization-codes-on-web-apps) | [Uzyskiwanie tokenów z kodami autoryzacji w aplikacjach sieci Web za pomocą MSAL.NET](msal-authentication-flows.md#authorization-code)
+Aplikacja internetowa | Kod uwierzytelniania | [Uzyskiwanie tokenów z kodami autoryzacji w aplikacjach sieci Web za pomocą ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-authorization-codes-on-web-apps) | [Uzyskiwanie tokenów z kodami autoryzacji w aplikacjach sieci Web za pomocą MSAL.NET](msal-authentication-flows.md#authorization-code)
 
 ### <a name="cache-persistence"></a>Trwałość pamięci podręcznej
 

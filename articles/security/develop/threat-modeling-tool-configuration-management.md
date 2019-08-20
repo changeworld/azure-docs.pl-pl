@@ -39,7 +39,7 @@ ms.locfileid: "68934806"
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -71,7 +71,7 @@ Example: var str="alert(1)"; eval(str);
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -82,7 +82,7 @@ Example: var str="alert(1)"; eval(str);
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -93,7 +93,7 @@ Example: var str="alert(1)"; eval(str);
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -104,7 +104,7 @@ Example: var str="alert(1)"; eval(str);
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -139,7 +139,7 @@ Kod Web. config dla witryn, które powinny być poddzielone tylko przez strony w
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Web Forms, MVC5 |
 | **Atrybuty**              | ND  |
@@ -170,7 +170,7 @@ Należy pamiętać, że ma to na celu zapewnienie, że lista źródeł w atrybuc
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Web Forms, MVC5 |
 | **Atrybuty**              | ND  |
@@ -196,7 +196,7 @@ Należy pamiętać, że funkcja walidacji żądania nie jest obsługiwana i nie 
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -207,7 +207,7 @@ Należy pamiętać, że funkcja walidacji żądania nie jest obsługiwana i nie 
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -272,7 +272,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | EnvironmentType — Azure |

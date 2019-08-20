@@ -47,7 +47,7 @@ To rozwiązanie używa następujących usług platformy Azure. Szczegóły archi
 - Azure Monitor
 - App Service Environment v2
 - Azure Load Balancer
-- Aplikacja sieci Web platformy Azure
+- Aplikacja internetowa platformy Azure
 - Azure Resource Manager
 
 ## <a name="deployment-architecture"></a>Architektura wdrożenia

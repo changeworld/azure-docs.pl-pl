@@ -66,7 +66,7 @@ To rozwiązanie używa następujących usług platformy Azure. Dalsze szczegół
     - Grupy zabezpieczeń sieci
 - Grupy zabezpieczeń sieci
 - Magazyn Recovery Services
-- Aplikacja sieci Web platformy Azure
+- Aplikacja internetowa platformy Azure
 
 Ten plan zawiera usługi platformy Azure, które nie zostały certyfikowane do użycia w chronionej klasyfikacji przez australijskie Centrum zabezpieczeń cybernetycznymi (ACSC). Firma Microsoft zaleca, aby klienci przeglądali opublikowane raporty dotyczące zabezpieczeń i inspekcji związane z tymi usługami platformy Azure oraz korzystać z ich struktury zarządzania ryzykiem w celu określenia, czy usługa platformy Azure jest odpowiednia do celów wewnętrznych akredytacji i używania w Klasyfikacja chroniona.
 

@@ -64,7 +64,7 @@ sections:
               src: media/index/spark-logo.png
             title: Wbudowana analiza przy użyciu platformy Apache Spark
           - href: /azure/cosmos-db/change-feed/
-            html: '<p>Przeprowadzaj analizę w czasie rzeczywistym, używając zestawienia zmian z posortowaną listą dokumentów w kontenerze usługi Azure Cosmos DB w kolejności, w której zostały zmodyfikowane. </p>'
+            html: '<p>Przeprowadzaj analizę w czasie rzeczywistym, używając zestawienia zmian z posortowaną listą dokumentów w kontenerze usługi Azure Cosmos w kolejności, w której zostały zmodyfikowane. </p>'
             image:
               src: media/index/change-feed-logo.png
             title: Źródło zmian

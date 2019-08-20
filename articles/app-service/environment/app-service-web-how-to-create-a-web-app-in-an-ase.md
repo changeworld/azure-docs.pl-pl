@@ -39,7 +39,7 @@ W tym samouczku przedstawiono sposób tworzenia aplikacji sieci web i planów us
 ## <a name="prerequisites"></a>Wymagania wstępne
 W tym samouczku przyjęto założenie, że utworzono środowiska usługi App Service. Jeśli użytkownik jeszcze nie, zobacz [tworzenie środowiska usługi App Service](app-service-web-how-to-create-an-app-service-environment.md). 
 
-## <a name="create-a-web-app"></a>Tworzenie aplikacji sieci web
+## <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
 1. W [witryny Azure Portal](https://portal.azure.com/), kliknij przycisk **Utwórz zasób > Sieć Web i mobilność > Aplikacja sieci Web**. 
    
     ![][1]

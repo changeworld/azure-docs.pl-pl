@@ -7,7 +7,7 @@ metadata:
   description: 'Dowiedz się, jak wbudować w swoje aplikacje, witryny i boty inteligentne algorytmy umożliwiające dostrzeganie, słyszenie, wypowiadanie i interpretowanie potrzeb użytkowników naturalnymi metodami komunikacji. Samouczki, przewodniki Szybki start, dokumentacja interfejsu API i przykłady przedstawiają, jak to zrobić.'
   ms.author: jmartens
   ms.subservice: core
-  ms.date: 5/14/2019
+  ms.date: 8/14/2019
   ms.devlang: na
   ms.service: machine-learning
   ms.tgt_pltfrm: na

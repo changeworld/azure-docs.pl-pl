@@ -293,7 +293,7 @@ Ten ogólny łącznik REST obsługuje następujące wzorce stronicowania:
 |:--- |:--- |
 | AbsoluteUrl | Wskazuje adres URL, na który ma zostać wystawione następne żądanie. Może to być **bezwzględny adres URL lub względny adres URL**. |
 | QueryParameters. *request_query_parameter* LUB QueryParameters [' request_query_parameter '] | "request_query_parameter" jest zdefiniowany przez użytkownika, który odwołuje się do jednej nazwy parametru zapytania w następnym adresie URL żądania HTTP. |
-| Nagłówka. *request_header* LUB nagłówki ["request_header"] | "request_header" jest zdefiniowany przez użytkownika, który odwołuje się do jednej nazwy nagłówka w następnym żądaniu HTTP. |
+| Headers.*request_header* lub Headers['request_header'] | "request_header" jest zdefiniowany przez użytkownika, który odwołuje się do jednej nazwy nagłówka w następnym żądaniu HTTP. |
 
 **Obsługiwane wartości** w regułach dzielenia na strony:
 

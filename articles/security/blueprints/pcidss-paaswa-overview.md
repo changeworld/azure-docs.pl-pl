@@ -70,7 +70,7 @@ To rozwiązanie używa następujących usług platformy Azure. Szczegóły archi
     - (1)/16 sieci
     - (4)/24 sieci
     - (4) sieciowe grupy zabezpieczeń
-- Aplikacja sieci Web platformy Azure
+- Aplikacja internetowa platformy Azure
 
 ## <a name="deployment-architecture"></a>Architektura wdrożenia
 

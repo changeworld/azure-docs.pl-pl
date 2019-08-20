@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 46755cb8d0383d166b10d50854eb476b676a6ee4
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 477b4e51c49a558aed0e5623a3821fa9b8d9eabd
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509735"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622363"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Konfigurowanie logowania dla konkretnej organizacji Azure Active Directory w programie Azure Active Directory B2C
 
@@ -26,7 +26,7 @@ Aby użyć Azure Active Directory (Azure AD) jako [dostawcy tożsamości](active
 Aby włączyć Logowanie użytkowników z określonej organizacji usługi Azure AD, musisz zarejestrować aplikację w ramach organizacji dzierżawy usługi Azure AD, która nie jest taka sama jak dzierżawy Azure AD B2C.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Upewnij się, że używasz katalogu, który zawiera dzierżawę usługi Azure AD. Wybierz pozycję **katalog i filtr subskrypcji** w górnym menu i wybierz katalog, który zawiera dzierżawę usługi Azure AD. To nie jest ta sama dzierżawa, co dzierżawa Azure AD B2C.
+2. Upewnij się, że używasz katalogu, który zawiera dzierżawę usługi Azure AD. W górnym menu wybierz pozycję **katalog i subskrypcja** , a następnie wybierz katalog zawierający dzierżawę usługi Azure AD. To nie jest ta sama dzierżawa, co dzierżawa Azure AD B2C.
 3. Wybierz pozycję **wszystkie usługi** w lewym górnym rogu Azure Portal, a następnie wyszukaj i wybierz pozycję **rejestracje aplikacji**.
 4. Wybierz pozycję **Nowa rejestracja**.
 5. Wprowadź nazwę aplikacji. Na przykład `Azure AD B2C App`.
@@ -47,27 +47,28 @@ Aby włączyć Logowanie użytkowników z określonej organizacji usługi Azure 
 
 ## <a name="configure-azure-ad-as-an-identity-provider"></a>Konfigurowanie usługi Azure AD jako dostawcy tożsamości
 
-1. Upewnij się, że używasz katalogu, który zawiera Azure AD B2C dzierżawcy. Wybierz pozycję **katalog i filtr subskrypcji** w górnym menu, a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
-2. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
-3. Wybierz **dostawców tożsamości**, a następnie wybierz pozycję **Dodaj**.
-4. Wprowadź **nazwę**. Na przykład wprowadź wartość `Contoso Azure AD`.
-5. Wybierz **Typ dostawcy tożsamości**, wybierz pozycję **OpenID Connect Connect**, a następnie kliknij przycisk **OK**.
-6. Wybierz opcję **Skonfiguruj tego dostawcę tożsamości**
-7. W polu **adres URL metadanych**wprowadź następujący adres URL `your-AD-tenant-domain` zastępujący nazwą domeny dzierżawy usługi Azure AD. Na przykład `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`:
+1. Upewnij się, że używasz katalogu, który zawiera Azure AD B2C dzierżawcy. W górnym menu wybierz pozycję **katalog i subskrypcja** , a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
+1. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
+1. Wybierz pozycję **dostawcy tożsamości**, a następnie wybierz pozycję **Nowy dostawca połączenia OpenID Connect**.
+1. Wprowadź **nazwę**. Na przykład wprowadź nazwę *contoso Azure AD*.
+1. W polu **adres URL metadanych**wprowadź następujący adres URL `your-AD-tenant-domain` zastępujący nazwą domeny dzierżawy usługi Azure AD:
 
     ```
     https://login.microsoftonline.com/your-AD-tenant-domain/.well-known/openid-configuration
     ```
 
-8. W polu **Identyfikator klienta**wprowadź identyfikator aplikacji, który został wcześniej zarejestrowany, a dla **wpisu tajnego klienta**wprowadź wcześniej zarejestrowany klucz tajny klienta.
-9. Opcjonalnie wprowadź wartość dla **Domain_hint**. Na przykład `ContosoAD`. Jest to wartość, która będzie używana podczas odwoływania się do tego dostawcy tożsamości przy użyciu *domain_hint* w żądaniu.
-10. Kliknij przycisk **OK**.
-11. Wybierz pozycję **Mapuj oświadczenia tego dostawcy tożsamości** i ustaw następujące oświadczenia:
+    Na przykład `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`.
 
-    - W obszarze **Identyfikator użytkownika**wprowadź `oid`.
-    - W obszarze **Nazwa wyświetlana**wprowadź `name`.
-    - Dla **danej nazwy**wprowadź `given_name`.
-    - W obszarze **nazwisko**wprowadź `family_name`.
-    - W obszarze **poczta e-mail**wprowadź `unique_name`polecenie.
+1. W polu **Identyfikator klienta**wprowadź wcześniej zarejestrowany identyfikator aplikacji.
+1. W polu **klucz tajny klienta**wprowadź wcześniej zarejestrowany klucz tajny klienta.
+1. Pozostaw wartości domyślne dla **zakresu**, **typu odpowiedzi**i **trybu odpowiedzi**.
+1. Obowiązkowe Wprowadź wartość dla **Domain_hint**. Na przykład *ContosoAD*. Jest to wartość, która będzie używana podczas odwoływania się do tego dostawcy tożsamości przy użyciu *domain_hint* w żądaniu.
+1. W obszarze **Mapowanie oświadczeń dostawcy tożsamości**wprowadź następujące wartości mapowania oświadczeń:
 
-12. Kliknij przycisk **OK**, a następnie kliknij przycisk **Utwórz** , aby zapisać konfigurację.
+    * **Identyfikator użytkownika**: *OID*
+    * **Nazwa wyświetlana**: *Nazwa*
+    * Imię: *given_name*
+    * **Nazwisko**: *family_name*
+    * **Adres e-mail**: *unique_name*
+
+1. Wybierz pozycję **Zapisz**.

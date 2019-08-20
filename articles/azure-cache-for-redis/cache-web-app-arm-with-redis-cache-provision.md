@@ -34,7 +34,7 @@ Aby uzyskać kompletny szablon, zobacz [aplikacji internetowej z pamięcią podr
 ## <a name="what-you-will-deploy"></a>Zostanie wdrożona
 W tym szablonie zostanie wdrożona:
 
-* Aplikacja sieci Web platformy Azure
+* Aplikacja internetowa platformy Azure
 * Azure Cache for Redis
 
 Aby automatycznie uruchomić wdrożenie, kliknij poniższy przycisk:

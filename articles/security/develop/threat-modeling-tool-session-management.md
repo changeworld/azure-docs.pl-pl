@@ -154,7 +154,7 @@ Powinien również zniszczyć sesję użytkownika przez wywołanie metody Sessio
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | EnvironmentType-lokalnego |
@@ -173,7 +173,7 @@ Ustawienie jest wymuszane nawet wtedy, gdy do uzyskiwania dostępu do aplikacji 
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Web Forms, MVC5 |
 | **Atrybuty**              | EnvironmentType-lokalnego |
@@ -195,7 +195,7 @@ Ustawienie jest wymuszane nawet wtedy, gdy do uzyskiwania dostępu do aplikacji 
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -216,7 +216,7 @@ Wszystkie aplikacje oparte na protokole HTTP, które używają plików cookie, p
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Formularze sieci Web |
 | **Atrybuty**              | ND  |
@@ -233,7 +233,7 @@ Poniższy przykład kodu ustawia atrybut requireSSL w pliku Web. config.
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | MVC5 |
 | **Atrybuty**              | EnvironmentType-lokalnego |
@@ -258,7 +258,7 @@ Poniższa konfiguracja przedstawia poprawną konfigurację:
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -267,7 +267,7 @@ Poniższa konfiguracja przedstawia poprawną konfigurację:
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | MVC5, MVC6 |
 | **Atrybuty**              | ND  |
@@ -353,7 +353,7 @@ void ValidateRequestHeader(HttpRequestMessage request)
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Formularze sieci Web |
 | **Atrybuty**              | ND  |
@@ -373,7 +373,7 @@ void Page_Init (object sender, EventArgs e) {
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -393,7 +393,7 @@ void Page_Init (object sender, EventArgs e) {
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Formularze sieci Web |
 | **Atrybuty**              | ND  |
@@ -408,7 +408,7 @@ void Page_Init (object sender, EventArgs e) {
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Web Forms, MVC5 |
 | **Atrybuty**              | EnvironmentType-lokalnego |
@@ -443,7 +443,7 @@ Set-ADFSRelyingPartyTrust -TargetName “<RelyingPartyWebApp>” -ClaimsProvider
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Aplikacja sieci Web | 
+| **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
 | **Atrybuty**              | ND  |

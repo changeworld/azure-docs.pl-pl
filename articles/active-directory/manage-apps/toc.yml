@@ -29,6 +29,8 @@
           items:
             - name: Wprowadzenie do integracji aplikacji
               href: plan-an-application-integration.md
+            - name: Planowanie wdrożenia przy użyciu panelu dostępu
+              href: access-panel-deployment-plan.md
             - name: Wskazówki dla deweloperów
               href: developer-guidance-for-integrating-applications.md
         - name: Logowanie jednokrotne

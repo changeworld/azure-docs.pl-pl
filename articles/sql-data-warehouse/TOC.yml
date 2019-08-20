@@ -273,6 +273,8 @@
       items:
         - name: Uaktualnianie do wersji Gen2
           href: upgrade-to-latest-generation.md
+        - name: Zarządzanie zasobami obliczeniowymi
+          href: manage-compute-with-azure-functions.md
         - name: Monitorowanie obciążenia — portal
           href: sql-data-warehouse-monitor-workload-portal.md
         - name: Monitorowanie obciążenia — widoki DMV
