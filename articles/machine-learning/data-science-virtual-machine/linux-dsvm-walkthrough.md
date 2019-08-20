@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: vijetaj
-ms.openlocfilehash: df05b2605f3553ce26447a4f8e2440002b75ec3a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 95d128a7af60a1504d05fb5316969fccc49c397f
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68557348"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574969"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Do nauki o danych z systemem Linux maszyny wirtualnej analizy danych na platformie Azure
 W tym instruktażu przedstawiono sposób wykonywania kilku typowych zadań do nauki o danych z maszyna wirtualna do nauki o danych systemu Linux. Linux Data Science Virtual Machine (dsvm dystrybucji) jest obraz maszyny wirtualnej dostępne na platformie Azure, który jest wstępnie instalowane ze zbiorem narzędzi często używane do analizy danych i uczenia maszynowego. Składniki oprogramowania są wymienione w [Aprowizowanie maszyny wirtualnej do nauki o danych Linux](linux-dsvm-intro.md) tematu. Obraz maszyny Wirtualnej ułatwia rozpoczęcie pracy, nauki o danych w ciągu kilku minut, bez konieczności instalowania i konfigurowania poszczególnych narzędzi indywidualnie. Możesz łatwo skalować w górę maszyny Wirtualnej, w razie potrzeby i zatrzymaj ją, gdy użycie. Więc ten zasób jest elastyczne i ekonomiczne.
@@ -229,6 +229,20 @@ Aby wypróbować tę funkcję w pierwszym ustawić 10 wierszy testu:
 
     consume(ep, smallTestSet[1:10, ])
 
+<a name="deep-learning"></a>
+
+## <a name="deep-learning-tutorials-and-walkthroughs"></a>Głębokiego uczenia, samouczki i przewodniki
+
+Oprócz przykładów oparte na strukturze zbiór — wszechstronne wskazówki udostępniane są również że zweryfikowany w DLVM. Przewodniki te pomagają szybko Rozpocznij korzystanie z usługi opracowywania aplikacji uczenia głębokiego w domenach, takich jak obraz i tekst/language understanding. Więcej samouczków end-to-end w różnych domenach i technologii, będą w dalszym ciągu można dodać.   
+
+
+- [Uruchamianie sieci neuronowych w różnych strukturach](https://github.com/ilkarman/DeepLearningFrameworks): Kompleksowy przewodnik pokazujący sposób migrowania kodu z jednej struktury do innej. Ilustruje też sposób porównywania modelu i uruchamianie wydajności w czasie dla platform. 
+
+- [Przewodnik dotyczący tworzenia kompleksowych rozwiązań do wykrywania produktów w obrazach](https://github.com/Azure/cortana-intelligence-product-detection-from-images): Wykrywanie obrazów to technika, która umożliwia lokalizowanie i klasyfikowanie obiektów w obrazach. Ta technologia może potencjalnie doprowadzić ogromne korzyści w wielu dziedzinach biznesowych realnym. Na przykład sprzedawcy detaliczni, można użyć tej techniki ustalenie produktu, który klientów została pobrana z półki. Informacje te pomagają z kolei magazyny Zarządzanie spis produktów. 
+
+- [Uczenie głębokie dla audio](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/) ten samouczek pokazuje sposób trenowania modelu uczenia głębokiego, wykrywania zdarzeń audio na [dataset miejskich dźwięki](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html) i omówiono sposób pracy z danymi audio.
+
+- [Klasyfikacja dokumentów tekstowych](https://github.com/anargyri/lstm_han): W tym instruktażu przedstawiono sposób tworzenia i uczenia dwóch różnych architektur sieci neuronowych: Sieć hierarchiczna zwracająca uwagę i długi czas pamięci (LSTM). Te sieci neuronowych na użytek interfejsu API biblioteki Keras głębokie uczenie do klasyfikowania dokumentów tekstowych. Keras to przód do trzech najpopularniejszych platform uczenia głębokiego: Microsoft Cognitive Toolkit, TensorFlow i Theano.
 
 ## <a name="use-other-tools-available"></a>Za pomocą innych narzędzi, które są dostępne
 Pozostałe sekcje pokazują, jak korzystać z niektórych narzędzi zainstalowanych na maszynie Wirtualnej do nauki o danych systemu Linux. Oto lista narzędzi omówiono:
