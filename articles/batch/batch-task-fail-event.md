@@ -10,14 +10,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 04/20/2017
+ms.date: 08/15/2019
 ms.author: lahugh
-ms.openlocfilehash: 68c57fbf510d923c4c87bc180a935965a511dc26
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: aa56b0ead8edc17efe74547f6374a3f8888970b5
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322914"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624197"
 ---
 # <a name="task-fail-event"></a>Zdarzenie niepowodzenia zadania
 
@@ -54,8 +54,8 @@ ms.locfileid: "68322914"
 
 |Nazwa elementu|Type|Uwagi|
 |------------------|----------|-----------|
-|jobId|Ciąg|Identyfikator zadania zawierającego zadanie.|
-|id|Ciąg|Identyfikator zadania.|
+|jobId|String|Identyfikator zadania zawierającego zadanie.|
+|id|String|Identyfikator zadania.|
 |taskType|String|Typ zadania. Może to być "JobManager" wskazujący, że jest to zadanie Menedżera zadań lub "użytkownika" wskazujące, że nie jest to zadanie Menedżera zadań. To zdarzenie nie jest emitowane w przypadku zadań związanych z przygotowaniem zadania, zadań wydania zadania lub uruchamiania zadań.|
 |systemTaskVersion|Int32|Jest to wewnętrzny licznik ponownych prób dla zadania. Wewnętrznie usługa Batch może ponowić zadanie, aby uwzględnić przejściowe problemy. Te problemy mogą obejmować wewnętrzne błędy planowania lub próby odzyskania z węzłów obliczeniowych w nieprawidłowym stanie.|
 |[nodeInfo](#nodeInfo)|Typ złożony|Zawiera informacje o węźle obliczeniowym, na którym uruchomiono zadanie.|
@@ -67,8 +67,8 @@ ms.locfileid: "68322914"
 
 |Nazwa elementu|Type|Uwagi|
 |------------------|----------|-----------|
-|poolId|Ciąg|Identyfikator puli, w której uruchomiono zadanie.|
-|nodeId|Ciąg|Identyfikator węzła, w którym uruchomiono zadanie.|
+|poolId|String|Identyfikator puli, w której uruchomiono zadanie.|
+|nodeId|String|Identyfikator węzła, w którym uruchomiono zadanie.|
 
 ###  <a name="multiInstanceSettings"></a>multiInstanceSettings
 
@@ -87,8 +87,8 @@ ms.locfileid: "68322914"
 
 |Nazwa elementu|Type|Uwagi|
 |------------------|----------|-----------|
-|startTime|Datetime|Godzina, o której uruchomiono zadanie. "Uruchomiona" odpowiada stanie **uruchomienia** , więc jeśli zadanie Określa pliki zasobów lub pakiety aplikacji, czas rozpoczęcia odzwierciedla czas, w którym zadanie rozpoczęło pobieranie lub wdrażanie.  Jeśli zadanie zostało ponownie uruchomione lub ponowione, jest to Ostatnia godzina, o której uruchomiono zadanie.|
-|endTime|Datetime|Godzina ukończenia zadania.|
+|startTime|DateTime|Godzina, o której uruchomiono zadanie. "Uruchomiona" odpowiada stanie **uruchomienia** , więc jeśli zadanie Określa pliki zasobów lub pakiety aplikacji, czas rozpoczęcia odzwierciedla czas, w którym zadanie rozpoczęło pobieranie lub wdrażanie.  Jeśli zadanie zostało ponownie uruchomione lub ponowione, jest to Ostatnia godzina, o której uruchomiono zadanie.|
+|endTime|DateTime|Godzina ukończenia zadania.|
 |exitCode|Int32|Kod zakończenia zadania.|
 |retryCount|Int32|Liczba ponownych prób wykonania zadania przez usługę Batch. Zadanie zostanie ponowione, jeśli zostanie zakończone z niezerowym kodem zakończenia, do określonego MaxTaskRetryCount.|
 |requeueCount|Int32|Liczba uruchomień zadania w kolejce przez usługę Batch w wyniku żądania użytkownika.<br /><br /> Gdy użytkownik usuwa węzły z puli (zmieniając rozmiar lub zmniejszając pulę) lub gdy zadanie jest wyłączone, użytkownik może określić, że uruchomione zadania w węzłach będą ponownie umieszczane w kolejce do wykonania. Ta liczba śledzi, ile razy zadanie zostało ponownie poddane kolejce z tych przyczyn.|

@@ -5,15 +5,15 @@ services: digital-twins
 author: alinamstanciu
 ms.service: digital-twins
 ms.topic: include
-ms.date: 08/12/2019
+ms.date: 08/16/2019
 ms.author: alinast
 ms.custom: include file
-ms.openlocfilehash: 9f4bf6fb92b590e274e8880b5f900e5469f85727
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: ef6b395aeff18a63f52f58e2477679b48a19b002
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69012226"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624738"
 ---
 1. W witrynie [Azure Portal](https://portal.azure.com) otwórz usługę **Azure Active Directory** w okienku po lewej stronie, a następnie otwórz okienko **Właściwości**. Skopiuj wartość **identyfikatora katalogu** do pliku tymczasowego. Użyjesz tej wartości, aby skonfigurować aplikację przykładową w następnej sekcji.
 
@@ -41,7 +41,7 @@ ms.locfileid: "69012226"
 
    e. Wybierz przycisk **Gotowe** w okienku **Dodaj dostęp do interfejsu API**.
 
-   f. W okienku **Wymagane uprawnienia** wybierz przycisk **Udziel uprawnień**, a następnie zaakceptuj wyświetlone potwierdzenie. Jeśli uprawnienie nie zostanie przyznane dla tego interfejsu API, skontaktuj się z administratorem.
+   f. W okienku **wymagane uprawnienia** wybierz przycisk **Udziel uprawnień** i Zaakceptuj wyświetlone potwierdzenie. Jeśli uprawnienie nie zostanie przyznane dla tego interfejsu API, skontaktuj się z administratorem.
 
       ![Okienko Wymagane uprawnienia](./media/digital-twins-permissions-legacy/aad-app-req-permissions.png)
 

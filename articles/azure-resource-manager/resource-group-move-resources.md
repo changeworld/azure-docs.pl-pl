@@ -4,14 +4,14 @@ description: Umożliwia przenoszenie zasobów do nowej grupy zasobów lub subskr
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: 53482fdd760517967c9a4a976b43b64ba745c637
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 114e0d8e935aa8e6ac3f70a34a8050b19758fb42
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542961"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624556"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -32,9 +32,11 @@ Przed przeniesieniem zasobu należy wykonać kilka ważnych czynności. Dzięki 
    * [App Services wskazówki dotyczące przenoszenia](./move-limitations/app-service-move-limitations.md)
    * [Azure DevOps Services wskazówki dotyczące przenoszenia](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
    * [Klasyczny model wdrażania — wskazówki dotyczące przenoszenia](./move-limitations/classic-model-move-limitations.md) klasycznego, klasycznego magazynu, klasycznych sieci wirtualnych i Cloud Services
+   * [Wskazówki dotyczące przenoszenia sieci](./move-limitations/networking-move-limitations.md)
    * [Recovery Services wskazówki dotyczące przenoszenia](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
    * [Virtual Machines wskazówki dotyczące przenoszenia](./move-limitations/virtual-machines-move-limitations.md)
-   * [Wskazówki dotyczące przenoszenia sieci wirtualnych](./move-limitations/virtual-network-move-limitations.md)
+
+   Jeśli docelowa Grupa zasobów zawiera sieć wirtualną, stan jej zasobów zależnych może blokować przenoszenie, nawet jeśli te zasoby nie są objęte przenoszeniem. Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące przenoszenia sieci](./move-limitations/virtual-network-move-limitations.md).
 
 1. Subskrypcje źródłowe i docelowe muszą być aktywne. Jeśli masz problemy z włączeniem wyłączonego konta, [Utwórz żądanie pomocy technicznej platformy Azure](../azure-supportability/how-to-create-azure-support-request.md). Wybierz **zarządzania subskrypcjami** jako typ problemu.
 
@@ -97,10 +99,11 @@ Przed przeniesieniem zasobu należy wykonać kilka ważnych czynności. Dzięki 
 1. **W przypadku przechodzenia między subskrypcjami zasób i jego zasoby zależne muszą znajdować się w tej samej grupie zasobów i muszą zostać przeniesione ze sobą.** Na przykład maszyna wirtualna z dyskami zarządzanymi będzie wymagała przeniesienia maszyny wirtualnej i zarządzanych dysków wraz z innymi zasobami zależnymi.
 
    Jeśli przenosisz zasób do nowej subskrypcji, sprawdź, czy zasób zawiera zasoby zależne i czy znajdują się one w tej samej grupie zasobów. Jeśli zasoby nie znajdują się w tej samej grupie zasobów, sprawdź, czy zasoby mogą być konsolidowane do tej samej grupy zasobów. W takim przypadku należy przenieść wszystkie te zasoby do tej samej grupy zasobów przy użyciu operacji przenoszenia między grupami zasobów.
-    
-Aby uzyskać więcej informacji, zobacz [scenariusz przenoszenia między subskrypcjami](#scenario-for-move-across-subscriptions).
+
+   Aby uzyskać więcej informacji, zobacz [scenariusz przenoszenia między subskrypcjami](#scenario-for-move-across-subscriptions).
 
 ## <a name="scenario-for-move-across-subscriptions"></a>Scenariusz przenoszenia między subskrypcjami
+
 Przeniesienie zasobów z jednej subskrypcji do innej to proces trójstanowy:
 
 ![scenariusz przenoszenia między subskrypcjami](./media/resource-group-move-resources/cross-subscription-move-scenario.png)

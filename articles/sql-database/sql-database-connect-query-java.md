@@ -11,12 +11,12 @@ ms.author: andrela
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
 ms.custom: seo-java-july2019. seo-java-august2019
-ms.openlocfilehash: 5e118bad0bfdd1a8e265aa0ed3eeea78a3b0da54
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 8940e13dcc6d6287984ba1cc7c7510768b4e232f
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543534"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624084"
 ---
 # <a name="quickstart-use-java-to-connect-to-and-query-an-azure-sql-database"></a>Szybki start: Używanie języka Java do nawiązywania połączeń z usługą Azure SQL Database i wykonywania w niej zapytań
 
@@ -55,7 +55,7 @@ Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą dan
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
-2. Otwórz stronę **Bazy danych SQL** lub **Wystąpienia zarządzane SQL**.
+2. Wybierz pozycję **bazy danych SQL** lub Otwórz stronę **wystąpienia zarządzane SQL** .
 
 3. Na stronie **Przegląd** znajdź w pełni kwalifikowaną nazwę serwera obok pola **Nazwa serwera** (w przypadku pojedynczej bazy danych) lub w pełni kwalifikowaną nazwę serwera obok pola **Host** (w przypadku wystąpienia zarządzanego). Aby skopiować nazwę serwera lub hosta, umieść na niej wskaźnik myszy i wybierz ikonę **Kopiuj**. 
 

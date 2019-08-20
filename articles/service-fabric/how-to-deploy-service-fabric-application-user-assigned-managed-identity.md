@@ -7,14 +7,14 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 08/09/2019
 ms.author: atsenthi
-ms.openlocfilehash: b99dbe3fd03b8854d7c1f54d17d5ced1f2534132
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: f8dfaa39f02aefbdda1f34afa5011ce5fadbae49
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963876"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624915"
 ---
-# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity"></a>Wdrażanie aplikacji Service Fabric przy użyciu tożsamości zarządzanej przypisanej przez użytkownika
+# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>Wdróż aplikację Service Fabric przy użyciu tożsamości zarządzanej przypisanej przez użytkownika (wersja zapoznawcza)
 
 Aby wdrożyć aplikację Service Fabric z tożsamością zarządzaną, aplikacja musi zostać wdrożona za pomocą Azure Resource Manager, zazwyczaj z szablonem Azure Resource Manager. Aby uzyskać więcej informacji na temat wdrażania Service Fabric aplikacji za poorednictwem Azure Resource Manager, zobacz [Zarządzanie aplikacjami i usługami jako Azure Resource Manager zasobami](service-fabric-application-arm-resource.md).
 

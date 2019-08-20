@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 4ea6f04dbfd18a6e561a255988ba0465b9e017be
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: da88c6d0195236a6f93f81d3296e4624228125f2
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967612"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624262"
 ---
 # <a name="what-are-the-speech-services"></a>Co to są usługi mowy?
 
@@ -42,7 +42,8 @@ Te funkcje składają się na usługi Azure Speech Services. Skorzystaj z łącz
 Dowiedz się, co nowego w usłudze Azure Speech Services.
 
 * 2019 sierpnia
-  * **Nowy samouczek**: [Bote głosowe za pomocą zestawu Speech SDK,C#](tutorial-voice-enable-your-bot-speech-sdk.md)
+  * **Nowy samouczek**: [Dodawanie obsługi głosu do bota przy użyciu zestawu SDK rozpoznawania mowy i języka C#](tutorial-voice-enable-your-bot-speech-sdk.md)
+  * Dodano nowy styl mówiący, [`chat`](speech-synthesis-markup.md#adjust-speaking-styles) `en-US-JessaNeural` dla głosu. 
 * Czerwiec 2019
   * Wydano 1.6.0 zestawu mowy SDK. Aby zapoznać się z pełną listą aktualizacji, ulepszeń i znanych problemów, zobacz [Informacje o wersji](releasenotes.md).
 * 2019 — dokumentacja jest teraz dostępna na potrzeby [transkrypcji konwersacji](conversation-transcription-service.md), [transkrypcji centrum połączeń](call-center-transcription.md)i [wirtualnych asystentów głosowych](voice-first-virtual-assistants.md).

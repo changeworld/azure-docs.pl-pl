@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4883e5a8b0354dba726f4a7c58872bc8cba6c542
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
-ms.translationtype: HT
+ms.openlocfilehash: d4774dcc96e5f7639ca0b03bca992c9a3126230b
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575755"
+ms.locfileid: "69623891"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Zarządzanie dziennikami klastra usługi HDInsight
 
@@ -97,7 +97,7 @@ Następnym krokiem jest przejrzenie plików dziennika wykonywania zadań dla ró
 
 ### <a name="access-the-hadoop-log-files"></a>Dostęp do plików dziennika usługi Hadoop
 
-Pliki dzienników usługi HDInsight są przechowywane zarówno w systemie plików klastra, jak i w usłudze Azure Storage. Pliki dziennika można przeanalizować w klastrze, otwierając połączenie [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) z klastrem i przeglądając system plików lub korzystając z portalu stanu przędzy usługi Hadoop na zdalnym serwerze węzła głównego. Pliki dziennika można przeanalizować w usłudze Azure Storage przy użyciu dowolnych narzędzi, które mogą uzyskiwać dostęp do danych z usługi Azure Storage i je pobierać. Przykłady to [AzCopy](../storage/common/storage-use-azcopy.md), [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer)i Visual Studio Eksplorator serwera. Aby uzyskać dostęp do danych w usłudze Azure Blob Storage, można również użyć programu PowerShell i bibliotek klienckich usługi Azure Storage lub zestawów SDK platformy Azure.
+Pliki dzienników usługi HDInsight są przechowywane zarówno w systemie plików klastra, jak i w usłudze Azure Storage. Pliki dziennika można przeanalizować w klastrze, otwierając połączenie [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) z klastrem i przeglądając system plików lub korzystając z portalu stanu przędzy usługi Hadoop na zdalnym serwerze węzła głównego. Pliki dziennika można przeanalizować w usłudze Azure Storage przy użyciu dowolnych narzędzi, które mogą uzyskiwać dostęp do danych z usługi Azure Storage i je pobierać. Przykłady to [AzCopy](../storage/common/storage-use-azcopy.md), [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer)i Visual Studio Eksplorator serwera. Aby uzyskać dostęp do danych w usłudze Azure Blob Storage, można również użyć programu PowerShell i bibliotek klienckich usługi Azure Storage lub zestawów SDK platformy Azure.
 
 Usługa Hadoop uruchamia zadania w trakcie wykonywania *zadań* w różnych węzłach w klastrze. Usługa HDInsight może inicjować zadania spekulacyjne, kończąc wszystkie inne nieudane próby wykonania zadań. Spowoduje to wygenerowanie znaczącego działania, które jest rejestrowane w plikach dziennika kontrolera, stderr i dziennik systemowy na bieżąco. Ponadto jednocześnie jest uruchomionych wiele prób wykonywania zadań, ale w pliku dziennika mogą być wyświetlane tylko wyniki liniowe.
 

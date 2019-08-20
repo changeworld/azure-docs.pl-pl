@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cedfead26bd2a82792729853a2b8d038278b75f6
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 79f462b8903033784f186032c715cc966dfae7b4
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853297"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622702"
 ---
 # <a name="what-is-authentication"></a>Co to jest uwierzytelnianie?
 
@@ -53,7 +53,7 @@ Poniżej opisano poszczególne składniki wyświetlane na diagramie:
   * Aby szybko utworzyć aplikację i dodać do niej funkcje, takie jak między innymi uzyskiwanie tokenów, odświeżanie tokenów, logowanie użytkownika i wyświetlanie informacji o użytkowniku, zapoznaj się z sekcją **Przewodniki Szybki start** w dokumentacji.
   * Aby uzyskać szczegółowe, oparte na scenariuszach procedury zadań dla deweloperów uwierzytelniania, takich jak uzyskiwanie tokenów dostępu i korzystanie z nich w wywołaniach interfejsu API programu Microsoft Graph i innych interfejsów API, implementowanie logowania firmy Microsoft przy użyciu tradycyjnej aplikacji internetowej opartej na przeglądarce za pomocą protokołu OpenID Connect i innych, zapoznaj się z sekcją **Samouczki** w dokumentacji.
   * Aby pobrać przykłady kodu, przejdź do witryny [GitHub](https://github.com/Azure-Samples?q=active-directory).
-* Przepływ żądań i odpowiedzi dotyczących procesu uwierzytelniania jest określony przez używany protokół uwierzytelniania, taki jak OAuth 2.0, OpenID Connect, WS-Federation lub SAML 2.0. Aby uzyskać więcej informacji na temat protokołów, zobacz sekcję **Pojęcia > Protokoły** w dokumentacji.
+* Przepływ żądań i odpowiedzi dotyczących procesu uwierzytelniania jest określony przez używany protokół uwierzytelniania, taki jak OAuth 2.0, OpenID Connect, WS-Federation lub SAML 2.0. Więcej informacji na temat protokołów znajduje się w sekcji **pojęcia > Authentication Protocol** w dokumentacji.
 
 W przykładowym scenariuszu powyżej aplikacje można sklasyfikować według tych dwóch ról:
 
@@ -119,7 +119,7 @@ W poniższej tabeli przedstawiono krótki opis każdego typu roszczeń emitowany
 | Wystawiony o | Rejestruje godzinę, o której został wystawiony token (często używane w celu odświeżenia tokenu). |
 | Wystawca | Identyfikuje usługę STS, która emitowała token, a także dzierżawę usługi Azure AD. |
 | Nazwisko | Udostępnia nazwisko użytkownika w postaci, w jakiej jest ono ustawione w usłudze Azure AD. |
-| Name (Nazwa) | Udostępnia zrozumiałą wartość identyfikującą podmiot tokenu. |
+| Name | Udostępnia zrozumiałą wartość identyfikującą podmiot tokenu. |
 | Identyfikator obiektu | Zawiera niezmienny, unikatowy identyfikator podmiotu w usłudze Azure AD. |
 | Role | Zawiera przyjazne nazwy ról aplikacji usługi Azure AD, które udzielono użytkownikowi. |
 | Scope | Wskazuje uprawnienia przyznane aplikacji klienckiej. |
@@ -129,6 +129,6 @@ W poniższej tabeli przedstawiono krótki opis każdego typu roszczeń emitowany
 | Nazwa główna użytkownika | Zawiera nazwę główną użytkownika podmiotu. |
 | Version | Zawiera numer wersji tokenu. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Poznaj [typy aplikacji i scenariusze obsługiwane przez platformę tożsamości firmy Microsoft](app-types.md)

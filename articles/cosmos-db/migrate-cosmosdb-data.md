@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.author: bharathb
-ms.openlocfilehash: 041f9c95b22fd4b8c238c603deb0558f2bca01a8
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: a4de902e51b101d14aac599c9aad8c4feb86a9c6
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737630"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624603"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Migrowanie setek terabajtów danych do usługi Azure Cosmos DB 
 
@@ -140,9 +140,16 @@ Po zakończeniu wymagań wstępnych można migrować dane przy użyciu następuj
 
 6. Niektóre z tych błędów mogą wynikać z nieprawidłowych dokumentów w danych źródłowych. Powinny być zidentyfikowane i naprawione. Następnie należy ponownie uruchomić etap importowania w przypadku partycji zakończonych niepowodzeniem w celu ich ponownego wyzyskania. 
 
-Po zakończeniu migracji można sprawdzić, czy liczba dokumentów w Azure Cosmos DB jest taka sama jak liczba dokumentów w źródłowej bazie danych. W tym przykładzie łączny rozmiar w Azure Cosmos DB wyłączono do 65 terabajtów. Po migracji można wybiórczo włączyć indeksowanie, a jednostek ru można obniżyć do poziomu wymaganego przez operacje obciążenia.   
+Po zakończeniu migracji można sprawdzić, czy liczba dokumentów w Azure Cosmos DB jest taka sama jak liczba dokumentów w źródłowej bazie danych. W tym przykładzie łączny rozmiar w Azure Cosmos DB wyłączono do 65 terabajtów. Po migracji można wybiórczo włączyć indeksowanie, a jednostek ru można obniżyć do poziomu wymaganego przez operacje obciążenia.
+
+## <a name="contact-the-azure-cosmos-db-team"></a>Skontaktuj się z zespołem Azure Cosmos DB
+Chociaż w tym przewodniku można pomyślnie migrować duże zestawy danych do Azure Cosmos DB, w przypadku migracji z dużą skalą zaleca się skontaktowanie się z Azure Cosmos DB zespołem ds. produktów w celu zweryfikowania modelowania danych i ogólnego przeglądu architektury. Na podstawie zestawu danych i obciążenia zespół produktu może również zasugerować inne optymalizacje wydajności i kosztów, które mogą być dla Ciebie odpowiednie. Aby skontaktować się z zespołem Azure Cosmos DB, aby uzyskać pomoc dotyczącą migracji z dużą skalą, można otworzyć bilet pomocy technicznej w ramach typu problemu "ogólny poradnik" i "duże (TB +)".
+
+![Temat pomocy technicznej migracji](./media/migrate-cosmosdb-data/supporttopic.png)
+
 
 ## <a name="next-steps"></a>Następne kroki
 * Dowiedz się więcej, pobierając przykładowe aplikacje zużywające zbiorczą bibliotekę wykonawczą w programie [.NET i środowisku](bulk-executor-dot-net.md) [Java](bulk-executor-java.md). 
 * Biblioteka wykonawców zbiorczych jest zintegrowana z łącznikiem Cosmos DB Spark, aby dowiedzieć się więcej, zobacz Azure Cosmos DB artykuł dotyczący [łącznika Spark](spark-connector.md) .  
+* Skontaktuj się z zespołem produktu Azure Cosmos DB, otwierając bilet pomocy technicznej w ramach typu problemu "ogólny poradnik" i "duże (TB +) migracje", aby uzyskać dodatkową pomoc dotyczącą migracji z dużą skalą. 
 

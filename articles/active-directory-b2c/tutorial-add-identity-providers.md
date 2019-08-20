@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: eee881e6d4e446e07867261545a90dfacaa93712
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 388ef66351140dab18bd7c92290d84f0f4d734ac
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512201"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622786"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Samouczek: Dodawanie dostawców tożsamości do aplikacji w Azure Active Directory B2C
 
@@ -94,13 +94,11 @@ Po utworzeniu aplikacji dla dostawcy tożsamości, który chcesz dodać, należy
 
 ### <a name="add-the-azure-active-directory-identity-provider"></a>Dodawanie dostawcy tożsamości Azure Active Directory
 
-1. Upewnij się, że używasz katalogu, który zawiera dzierżawę Azure AD B2C, klikając pozycję **katalog i subskrypcja** w górnym menu i wybierając katalog zawierający dzierżawcę Azure AD B2C.
+1. Upewnij się, że używasz katalogu, który zawiera Azure AD B2C dzierżawcy. W górnym menu wybierz pozycję **katalog i subskrypcja** , a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
 1. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
-1. Wybierz **dostawców tożsamości**, a następnie wybierz pozycję **Dodaj**.
+1. Wybierz pozycję **dostawcy tożsamości**, a następnie wybierz pozycję **Nowy dostawca połączenia OpenID Connect**.
 1. Wprowadź **nazwę**. Na przykład wprowadź nazwę *contoso Azure AD*.
-1. Wybierz **Typ dostawcy tożsamości**, wybierz pozycję **OpenID Connect Connect**, a następnie kliknij przycisk **OK**.
-1. Kliknij pozycję **Skonfiguruj tego dostawcę tożsamości**
-1. W polu **adres URL metadanych**wprowadź następujący adres URL, `your-AD-tenant-domain` zastępując nazwę domeny dzierżawy usługi Azure AD.
+1. W polu **adres URL metadanych**wprowadź następujący adres URL `your-AD-tenant-domain` zastępujący nazwą domeny dzierżawy usługi Azure AD:
 
     ```
     https://login.microsoftonline.com/your-AD-tenant-domain/.well-known/openid-configuration
@@ -108,28 +106,27 @@ Po utworzeniu aplikacji dla dostawcy tożsamości, który chcesz dodać, należy
 
     Na przykład `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`.
 
-1. W polu **Identyfikator klienta**wprowadź wcześniej zarejestrowany *Identyfikator aplikacji (klienta)* .
-1. W polu **klucz tajny klienta**wprowadź wcześniej nagraną wartość *klucza tajnego klienta* .
-1. Opcjonalnie wprowadź wartość dla **Domain_hint**. Na przykład `ContosoAD`. [Wskazówki dotyczące domen](../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md) to dyrektywy, które są zawarte w żądaniu uwierzytelniania z aplikacji. Mogą one służyć do przyspieszenia użytkownika do swojej strony logowania dostawcy tożsamości. Mogą też być używane przez aplikację wielodostępną, aby przyspieszyć użytkownika bezpośrednio do strony logowania do usługi Azure AD dla swojej dzierżawy.
-1. Kliknij przycisk **OK**.
-1. Wybierz pozycję **Mapuj oświadczenia tego dostawcy tożsamości** i ustaw następujące oświadczenia:
+1. W polu **Identyfikator klienta**wprowadź wcześniej zarejestrowany identyfikator aplikacji.
+1. W polu **klucz tajny klienta**wprowadź wcześniej zarejestrowany klucz tajny klienta.
+1. Pozostaw wartości domyślne dla **zakresu**, **typu odpowiedzi**i **trybu odpowiedzi**.
+1. Obowiązkowe Wprowadź wartość dla **Domain_hint**. Na przykład *ContosoAD*. [Wskazówki dotyczące domen](../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md) to dyrektywy, które są zawarte w żądaniu uwierzytelniania z aplikacji. Mogą one służyć do przyspieszenia użytkownika do swojej strony logowania dostawcy tożsamości. Mogą też być używane przez aplikację wielodostępną, aby przyspieszyć użytkownika bezpośrednio do strony logowania do usługi Azure AD dla swojej dzierżawy.
+1. W obszarze **Mapowanie oświadczeń dostawcy tożsamości**wprowadź następujące wartości mapowania oświadczeń:
 
-    - W obszarze **Identyfikator użytkownika**wprowadź `oid`.
-    - W obszarze **Nazwa wyświetlana**wprowadź `name`.
-    - Dla **danej nazwy**wprowadź `given_name`.
-    - W obszarze **nazwisko**wprowadź `family_name`.
-    - W obszarze **poczta e-mail**wprowadź `unique_name`polecenie.
+    * **Identyfikator użytkownika**: *OID*
+    * **Nazwa wyświetlana**: *Nazwa*
+    * Imię: *given_name*
+    * **Nazwisko**: *family_name*
+    * **Adres e-mail**: *unique_name*
 
-1. Wybierz pozycję **OK**, a następnie wybierz pozycję **Utwórz** , aby zapisać konfigurację.
+1. Wybierz pozycję **Zapisz**.
 
 ### <a name="add-the-facebook-identity-provider"></a>Dodawanie dostawcy tożsamości w usłudze Facebook
 
-1. Wybierz **dostawców tożsamości**, a następnie wybierz pozycję **Dodaj**.
-1. Wprowadź **nazwę**. Na przykład wprowadź w *serwisie Facebook*.
-1. Wybierz **Typ dostawcy tożsamości**, wybierz pozycję **Facebook**, a następnie wybierz przycisk **OK**.
-1. Wybierz opcję **Skonfiguruj tego dostawcę tożsamości** i wprowadź *Identyfikator aplikacji* , który został zarejestrowany wcześniej jako **Identyfikator klienta**.
-1. Wprowadź *wpis tajny aplikacji* , który został zarejestrowany jako **klucz tajny klienta**.
-1. Wybierz przycisk **OK** , a następnie wybierz pozycję **Utwórz** , aby zapisać konfigurację w serwisie Facebook.
+1. Wybierz pozycję **dostawcy tożsamości**, a następnie wybierz pozycję **Facebook**.
+1. Wprowadź **nazwę**. Na przykład w *serwisie Facebook*.
+1. W polu **Identyfikator klienta**wprowadź identyfikator aplikacji w usłudze Facebook, który został utworzony wcześniej.
+1. W polu **klucz tajny klienta**Wprowadź zarejestrowany wpis tajny aplikacji.
+1. Wybierz pozycję **Zapisz**.
 
 ## <a name="update-the-user-flow"></a>Aktualizowanie przepływu użytkownika
 

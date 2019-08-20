@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: atsenthi
-ms.openlocfilehash: b6e1108ffee13f1583d920947404963a69616788
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 1facd85563a54de2b703bbc8c192976db92c30f7
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68958423"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624903"
 ---
-# <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources"></a>Udzielanie zarządzanej tożsamości aplikacji Service Fabric do zasobów platformy Azure
+# <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>Udzielanie zarządzanej tożsamości aplikacji Service Fabric do zasobów platformy Azure (wersja zapoznawcza)
 
 Aby aplikacja mogła korzystać z tożsamości zarządzanej w celu uzyskania dostępu do innych zasobów, należy przyznać uprawnienia do tej tożsamości w chronionym dostępnym zasobach platformy Azure. Przyznawanie uprawnień jest zazwyczaj akcją zarządzania w ramach "płaszczyzny kontroli" usługi platformy Azure będącej właścicielem chronionego zasobu kierowanego za pośrednictwem Azure Resource Manager, który będzie wymuszać wszelkie stosowne sprawdzanie dostępu oparte na rolach.
 

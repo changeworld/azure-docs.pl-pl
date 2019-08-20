@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: magoedte
-ms.openlocfilehash: c6fa4df1fb2fc7559f706d81621ea198f5ca7cdc
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 59e5bbaf8deccdd8218e9c5590266070ed3b5ebb
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881423"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624337"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Zarządzanie danymi dziennika i obszarami roboczymi w Azure Monitor
 
@@ -44,12 +44,12 @@ Tryb kontroli dostępu skonfigurowany w obszarze roboczym można wyświetlić z 
 
 ### <a name="configure-from-the-azure-portal"></a>Skonfiguruj z poziomu Azure Portal
 
-Bieżący tryb kontroli dostępu obszaru roboczego można wyświetlić na stronie **Przegląd** obszaru roboczego w menu **log Analytics obszaru roboczego** . 
+Bieżący tryb kontroli dostępu obszaru roboczego można wyświetlić na stronie **Przegląd** obszaru roboczego w menu **log Analytics obszaru roboczego** .
 
 ![Wyświetlanie trybu kontroli dostępu do obszaru roboczego](media/manage-access/view-access-control-mode.png)
 
 1. Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
-1. W Azure Portal wybierz pozycję Log Analytics obszary robocze > obszarze roboczym.  
+1. W Azure Portal wybierz pozycję Log Analytics obszary robocze > obszarze roboczym.
 
 To ustawienie można zmienić na stronie **Właściwości** obszaru roboczego. Zmiana ustawienia zostanie wyłączona, jeśli nie masz uprawnień do konfigurowania obszaru roboczego.
 
@@ -60,7 +60,7 @@ To ustawienie można zmienić na stronie **Właściwości** obszaru roboczego. Z
 Użyj następującego polecenia, aby przeanalizować tryb kontroli dostępu dla wszystkich obszarów roboczych w subskrypcji:
 
 ```powershell
-Get-AzResource -ResourceType Microsoft.OperationalInsights/workspaces -ExpandProperties | foreach {$_.Name + ": " + $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions} 
+Get-AzResource -ResourceType Microsoft.OperationalInsights/workspaces -ExpandProperties | foreach {$_.Name + ": " + $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions}
 ```
 
 Dane wyjściowe powinny wyglądać podobnie do następujących:
@@ -70,10 +70,10 @@ DefaultWorkspace38917: True
 DefaultWorkspace21532: False
 ```
 
-Wartość `False` oznacza, że obszar roboczy jest skonfigurowany z trybem dostępu do kontekstu obszaru roboczego.  Wartość `True` oznacza, że obszar roboczy jest skonfigurowany z trybem dostępu do kontekstu zasobów. 
+Wartość `False` oznacza, że obszar roboczy jest skonfigurowany z trybem dostępu do kontekstu obszaru roboczego.  Wartość `True` oznacza, że obszar roboczy jest skonfigurowany z trybem dostępu do kontekstu zasobów.
 
->[!NOTE]
->Jeśli obszar roboczy jest zwracany bez wartości logicznej i jest pusty, jest również zgodny z wynikami `False` wartości.
+> [!NOTE]
+> Jeśli obszar roboczy jest zwracany bez wartości logicznej i jest pusty, jest również zgodny z wynikami `False` wartości.
 >
 
 Użyj poniższego skryptu, aby ustawić tryb kontroli dostępu dla określonego obszaru roboczego na uprawnienie do kontekstu zasobu:
@@ -81,9 +81,9 @@ Użyj poniższego skryptu, aby ustawić tryb kontroli dostępu dla określonego 
 ```powershell
 $WSName = "my-workspace"
 $Workspace = Get-AzResource -Name $WSName -ExpandProperties
-if ($Workspace.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null) 
+if ($Workspace.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null)
     { $Workspace.Properties.features | Add-Member enableLogAccessUsingOnlyResourcePermissions $true -Force }
-else 
+else
     { $Workspace.Properties.features.enableLogAccessUsingOnlyResourcePermissions = $true }
 Set-AzResource -ResourceId $Workspace.ResourceId -Properties $Workspace.Properties -Force
 ```
@@ -92,9 +92,9 @@ Poniższy skrypt służy do ustawiania trybu kontroli dostępu dla wszystkich ob
 
 ```powershell
 Get-AzResource -ResourceType Microsoft.OperationalInsights/workspaces -ExpandProperties | foreach {
-if ($_.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null) 
+if ($_.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null)
     { $_.Properties.features | Add-Member enableLogAccessUsingOnlyResourcePermissions $true -Force }
-else 
+else
     { $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions = $true }
 Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 ```
@@ -159,10 +159,10 @@ Członkowie roli *Współautor usługi Log Analytics* mogą wykonywać następuj
 * Dodawanie i usuwanie rozwiązań do zarządzania
 
     > [!NOTE]
-    > W celu pomyślnego przeprowadzenia ostatniego dwie akcje, to uprawnienie musi mieć uprawnienia na poziomie grupy lub subskrypcji zasobów.  
+    > W celu pomyślnego przeprowadzenia ostatniego dwie akcje, to uprawnienie musi mieć uprawnienia na poziomie grupy lub subskrypcji zasobów.
 
 * Odczytywanie kluczy kont magazynu
-* Konfigurowanie kolekcji dzienników z usługi Azure Storage  
+* Konfigurowanie kolekcji dzienników z usługi Azure Storage
 * Edytowanie ustawień monitorowania dla zasobów platformy Azure, w tym:
   * Dodawanie rozszerzenia do maszyn wirtualnych
   * Konfigurowanie diagnostyki platformy Azure dla wszystkich zasobów platformy Azure
@@ -202,7 +202,7 @@ Gdy użytkownicy wykonują zapytania dotyczące dzienników z obszaru roboczego 
 | Uprawnienie | Opis |
 | ---------- | ----------- |
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>Przykłady:<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | Możliwość wyświetlania wszystkich danych dziennika dla zasobu.  |
-| `Microsoft.Insights/diagnosticSettings/write ` | Możliwość skonfigurowania ustawień diagnostycznych w celu zezwolenia na Konfigurowanie dzienników dla tego zasobu. |
+| `Microsoft.Insights/diagnosticSettings/write` | Możliwość skonfigurowania ustawień diagnostycznych w celu zezwolenia na Konfigurowanie dzienników dla tego zasobu. |
 
 `/read`uprawnienie _\*_ jest zazwyczaj udzielane z roli [](../../role-based-access-control/built-in-roles.md#contributor) [](../../role-based-access-control/built-in-roles.md#reader)  _\*obejmującej/Read lub_ uprawnienia, takie jak wbudowane czytniki i role współautor. Należy zauważyć, że role niestandardowe zawierające określone akcje lub dedykowane role wbudowane mogą nie uwzględniać tego uprawnienia.
 

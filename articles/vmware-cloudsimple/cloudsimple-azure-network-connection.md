@@ -8,20 +8,20 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: eca3e316d866814f6727dd8ef2c3fa490a551383
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 90e3121c3f036d1abc8ca372ee349aef3485d07b
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563162"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69625026"
 ---
 # <a name="azure-network-connections-overview"></a>Omówienie połączeń sieciowych platformy Azure
 
-W przypadku tworzenia usługi CloudSimple w regionie:
+Podczas tworzenia usługi CloudSimple w regionie i tworzenia węzłów można:
 
-* Tworzy obwód usługi Azure ExpressRoute i dołącza go do usługi w tym regionie.
-* Łączy sieć regionu CloudSimple z siecią wirtualną platformy Azure lub z siecią lokalną za pomocą usługi Azure ExpressRoute.
-* Zapewnia dostęp do usług uruchomionych w ramach subskrypcji platformy Azure lub sieci lokalnej ze środowiska chmury prywatnej.
+* Zażądaj obwodu usługi Azure ExpressRoute i dołącz go do sieci CloudSimple w tym regionie.
+* Podłącz sieć regionu CloudSimple do sieci wirtualnej platformy Azure lub sieci lokalnej przy użyciu usługi Azure ExpressRoute.
+* Zapewnianie dostępu do usług uruchomionych w ramach subskrypcji platformy Azure lub sieci lokalnej ze środowiska chmury prywatnej.
 
 Połączenie ExpressRoute ma wysoką przepustowość dzięki małym opóźnieniu.
 
@@ -35,15 +35,32 @@ Połączenie sieciowe platformy Azure umożliwia:
 
 ## <a name="azure-virtual-network-connection"></a>Połączenie sieci wirtualnej platformy Azure
 
-Chmury prywatne mogą być połączone z zasobami platformy Azure za pomocą ExpressRoute.  Połączenie ExpressRoute umożliwia dostęp do zasobów uruchomionych w ramach subskrypcji platformy Azure z chmury prywatnej.  To połączenie umożliwia zwiększenie sieci prywatnej chmury do sieci wirtualnej platformy Azure.
+Chmury prywatne mogą być połączone z zasobami platformy Azure za pomocą ExpressRoute.  Połączenie ExpressRoute umożliwia dostęp do zasobów uruchomionych w ramach subskrypcji platformy Azure z chmury prywatnej.  To połączenie umożliwia zwiększenie sieci prywatnej chmury do sieci wirtualnej platformy Azure.  Trasy z sieci CloudSimple są wymieniane z siecią wirtualną platformy Azure za pośrednictwem protokołu BGP.  Jeśli skonfigurowano komunikację równorzędną sieci wirtualnej, wszystkie równorzędne sieci wirtualne będą dostępne z sieci CloudSimple.
 
-[![Połączenie usługi Azure ExpressRoute z siecią wirtualną](media/cloudsimple-azure-network-connection.png)
+![Połączenie usługi Azure ExpressRoute z siecią wirtualną](media/cloudsimple-azure-network-connection.png)
 
 ## <a name="expressroute-connection-to-on-premises-network"></a>ExpressRoute połączenie z siecią lokalną
 
-Istniejący obwód usługi Azure ExpressRoute można połączyć z regionem CloudSimple. Funkcja ExpressRoute Global Reach służy do łączenia obu obwodów.  Nawiązywane jest połączenie między obwodami lokalnymi i CloudSimple ExpressRoute.  To połączenie umożliwia zwiększenie sieci lokalnych do sieci prywatnej chmury.
+Istniejący obwód usługi Azure ExpressRoute można połączyć z regionem CloudSimple. Funkcja ExpressRoute Global Reach służy do łączenia obu obwodów.  Nawiązywane jest połączenie między obwodami lokalnymi i CloudSimple ExpressRoute.  To połączenie umożliwia zwiększenie sieci lokalnych do sieci prywatnej chmury. Trasy z sieci CloudSimple będą wymieniane za pośrednictwem protokołu BGP z siecią lokalną.
 
 ![Połączenie lokalne ExpressRoute — Global Reach](media/cloudsimple-global-reach-connection.png)
+
+
+## <a name="connection-to-on-premises-network-and-azure-virtual-network"></a>Połączenie z siecią lokalną i siecią wirtualną platformy Azure
+
+Połączenia z siecią lokalną i siecią wirtualną platformy Azure mogą współistnieć z sieci CloudSimple.  Połączenie używa protokołu BGP do wymiany tras między siecią lokalną, usługą Azure Virtual Network i siecią CloudSimple.  Po połączeniu sieci CloudSimple z siecią wirtualną platformy Azure w obecności Global Reach połączenie trasy sieci wirtualnej platformy Azure będą widoczne w sieci lokalnej.  Wymiana trasy odbywa się na platformie Azure między routerami brzegowymi.
+
+![Lokalne połączenie ExpressRoute z połączeniem sieci wirtualnej platformy Azure](media/cloudsimple-global-reach-and-vnet-connection.png)
+
+### <a name="important-considerations"></a>Ważne zagadnienia
+
+Połączenie z siecią CloudSimple z sieci lokalnej i z usługi Azure Virtual Network umożliwia wymianę między wszystkimi sieciami.
+
+* Usługa Azure Virtual Network będzie widoczna zarówno w sieci lokalnej, jak i w sieci CloudSimple.
+* Jeśli nawiązano połączenie z siecią wirtualną platformy Azure z sieci lokalnej, połączenie z siecią CloudSimple przy użyciu Global Reach umożliwi dostęp do sieci wirtualnych z sieci CloudSimple.
+* Adresy podsieci **nie mogą** się nakładać między żadną z połączonych sieci.
+* CloudSimple **nie** będzie anonsować trasy domyślnej do połączeń ExpressRoute
+* Jeśli router lokalny anonsuje trasę domyślną, ruch z sieci CloudSimple i sieci wirtualnej platformy Azure będzie używał anonsowanej trasy domyślnej.  W związku z tym nie można uzyskać dostępu do maszyn wirtualnych na platformie Azure przy użyciu publicznych adresów IP.
 
 ## <a name="next-steps"></a>Następne kroki
 
