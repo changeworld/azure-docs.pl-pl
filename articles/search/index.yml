@@ -7,9 +7,8 @@ metadata:
   description: 'Dowiedz się, jak przy użyciu usługi Azure Search utworzyć rozwiązanie wyszukiwania dla przedsiębiorstw obsługujące prywatną, heterogeniczną zawartość. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiają sposób konsolidowania zawartości, którą można przeszukiwać, w jeden, szybki indeks umożliwiający wykonywanie zapytań za pomocą składni o różnej złożoności (od podstawowej po zaawansowaną) w szerokim zakresie scenariuszy.'
   services: search
   author: HeidiSteen
-  manager: cgronlun
+  manager: nitinme
   ms.service: search
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 08/12/2019
   ms.author: heidist

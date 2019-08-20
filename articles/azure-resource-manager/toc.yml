@@ -146,12 +146,12 @@
               href: /azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json
             - name: Wdrożenie klasyczne
               href: ./move-limitations/classic-model-move-limitations.md
+            - name: Networking
+              href: ./move-limitations/networking-move-limitations.md
             - name: Recovery Services
               href: ../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json
             - name: Maszyny wirtualne
               href: ./move-limitations/virtual-machines-move-limitations.md
-            - name: Sieci wirtualne
-              href: ./move-limitations/virtual-network-move-limitations.md
     - name: Tagi
       items:
         - name: Tagowanie zasobów

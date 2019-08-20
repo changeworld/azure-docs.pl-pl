@@ -332,8 +332,6 @@
               href: iot-hub-raspberry-pi-kit-c-get-started.md
             - name: Zestaw deweloperski IoT MXChip z urządzeniem Arduino
               href: iot-hub-arduino-iot-devkit-az3166-get-started.md
-            - name: Urządzenie Adafruit Feather HUZZAH ESP8266 z urządzeniem Arduino
-              href: iot-hub-arduino-huzzah-esp8266-get-started.md
         - name: Używanie zestawu deweloperskiego IoT MXChip
           items:
             - name: Tłumaczenie wiadomości głosowych za pomocą usług Azure Cognitive Services

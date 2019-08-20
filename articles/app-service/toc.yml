@@ -170,7 +170,7 @@
     - name: Skalowanie aplikacji
       items:
         - name: Skalowanie w górę pojemności serwera
-          href: web-sites-scale.md
+          href: manage-scale-up.md
         - name: Konfigurowanie warstwy PremiumV2
           href: app-service-configure-premium-tier.md
         - name: Skalowanie w poziomie do wielu wystąpień

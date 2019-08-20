@@ -41,7 +41,7 @@ Zasób obliczeniowy do środowiska Azure integration runtime jest w pełni zarz�
 ### <a name="properties"></a>Właściwości
 Poniższa tabela zawiera opisy właściwości zwracany przez polecenie cmdlet środowiska Azure integration Runtime:
 
-| Właściwość | Opis |
+| Właściwość | Description |
 -------- | ------------- | 
 | Name | Nazwa środowiska Azure integration runtime. |  
 | State | Stan środowiska Azure integration runtime. | 
@@ -50,10 +50,10 @@ Poniższa tabela zawiera opisy właściwości zwracany przez polecenie cmdlet ś
 | ResourceGroupName | Nazwa grupy zasobów, do której należy z fabryką danych.  |
 | Description | Opis produktu integration runtime.  |
 
-### <a name="status"></a>Stan
+### <a name="status"></a>State
 W poniższej tabeli przedstawiono możliwe stany środowiska Azure integration runtime:
 
-| Stan | Komentarze/scenariusze | 
+| State | Komentarze/scenariusze | 
 | ------ | ------------------ |
 | Online | Środowisko uruchomieniowe integracji platformy Azure jest dostępna online i gotowa do użycia. | 
 | Offline | Produkt Azure integration runtime jest w trybie offline z powodu błędu wewnętrznego. |
@@ -68,10 +68,10 @@ Ta sekcja zawiera opis właściwości zwracany przez polecenie cmdlet Get-AzData
 
 Poniższa tabela zawiera opis monitorowania właściwości **każdy węzeł**:
 
-| Właściwość | Opis | 
+| Właściwość | Description | 
 | -------- | ----------- | 
-| Name (Nazwa) | Nazwa własnego środowiska integration runtime i skojarzonych z nim węzłów. Węzeł to maszyna Windows w środowisku lokalnym, który ma własne środowisko integration runtime na nim zainstalowany. |  
-| Stan | Stan ogólny własnego środowiska integration runtime i każdego węzła. Przykład: Online/Offline/Limited/itd. Dla informacji o tych stanów zobacz następną sekcję. | 
+| Name | Nazwa własnego środowiska integration runtime i skojarzonych z nim węzłów. Węzeł to maszyna Windows w środowisku lokalnym, który ma własne środowisko integration runtime na nim zainstalowany. |  
+| State | Stan ogólny własnego środowiska integration runtime i każdego węzła. Przykład: Online/Offline/Limited/itd. Dla informacji o tych stanów zobacz następną sekcję. | 
 | Wersja | Wersja własnego środowiska integration runtime i każdego węzła. Wersja własnego środowiska integration runtime jest określana na podstawie wersji Większość węzłów w grupie. W przypadku węzłów z różnymi wersjami w instalacji Self-Hosted integration runtime tylko węzły numerem wersji jako logicznej może być samodzielnie hostowane funkcji środowiska uruchomieniowego integracji prawidłowo. Innym jest tryb ograniczony i należy ręcznie zaktualizować (tylko w przypadku, gdy aktualizacje automatyczne nie powiedzie się). | 
 | Dostępna pamięć | Dostępna pamięć na węzeł Self-Hosted integration runtime. Ta wartość jest niemal w czasie rzeczywistym migawki. | 
 | Użycie procesora CPU | Użycie procesora CPU węzeł Self-Hosted integration runtime. Ta wartość jest niemal w czasie rzeczywistym migawki. |
@@ -92,7 +92,7 @@ Można zastąpić wartością domyślną obliczeniowe w witrynie Azure portal. W
 ### <a name="status-per-node"></a>Stan (na węzeł)
 W poniższej tabeli przedstawiono możliwe stany węzeł Self-Hosted integration runtime:
 
-| Stan | Opis |
+| State | Description |
 | ------ | ------------------ | 
 | Online | Węzeł jest połączony z usługą Data Factory. |
 | Offline | Węzeł jest w trybie offline. |
@@ -105,7 +105,7 @@ Węzeł może być nieaktywne, gdy nie można nawiązać z innych węzłów.
 ### <a name="status-overall-self-hosted-integration-runtime"></a>Stan (ogólną własnego środowiska integration runtime)
 W poniższej tabeli przedstawiono możliwe stany własnego środowiska integration runtime. Ten stan jest zależna od stany wszystkie węzły, które należą do środowiska uruchomieniowego. 
 
-| Stan | Opis |
+| State | Description |
 | ------ | ----------- | 
 | Potrzebujesz rejestracji | Żaden węzeł nie jest jeszcze zarejestrowany ten własnego środowiska integration runtime. |
 | Online | Wszystkie węzły są w trybie online. |
@@ -157,14 +157,14 @@ Przykładowe dane wyjściowe (przy założeniu, że istnieją dwa węzły skojar
 
 ### <a name="properties"></a>Właściwości
 
-| Właściwość/Status | Opis |
+| Właściwość/Status | Description |
 | --------------- | ----------- |
 | CreateTime | Czas UTC, podczas tworzenia środowiska Azure-SSIS integration runtime. |
 | Węzły | Przydzielone dostępne węzły Twojego środowiska Azure-SSIS integration Runtime z możliwością wykonywania akcji błędów i stanów dla węzła (uruchamianie/dostępne/odtwarzanie/niedostępna). |
 | OtherErrors | Błędy informacje z możliwością działania bez określonego węzła na środowiska Azure-SSIS integration runtime. |
 | LastOperation | Wynik ostatniej operacji uruchomienia/zatrzymania na środowiska Azure-SSIS integration runtime z możliwością wykonywania akcji błędów, jeśli go nie powiodła się. |
-| Stan | Ogólny stan (początkowy/uruchamianie/uruchomienia/zatrzymywania/zatrzymane) środowiska Azure-SSIS integration runtime. |
-| Lokalizacja | Lokalizacja środowiska Azure-SSIS integration runtime. |
+| State | Ogólny stan (początkowy/uruchamianie/uruchomienia/zatrzymywania/zatrzymane) środowiska Azure-SSIS integration runtime. |
+| Location | Lokalizacja środowiska Azure-SSIS integration runtime. |
 | NodeSize | Rozmiar każdego węzła środowiska Azure-SSIS integration runtime. |
 | NodeCount | Liczba węzłów w środowiska Azure-SSIS integration runtime. |
 | MaxParallelExecutionsPerNode | Liczba równoległych wykonań na węzeł w środowiska Azure-SSIS integration runtime. |
@@ -178,13 +178,13 @@ Przykładowe dane wyjściowe (przy założeniu, że istnieją dwa węzły skojar
 | Type | Typ (Managed/samoobsługowego-Hosted) środowiska Azure-SSIS integration runtime. |
 | ResourceGroupName | Nazwa grupy zasobów platformy Azure, w którym zostały utworzone fabryki danych i środowiska Azure-SSIS integration runtime. |
 | DataFactoryName | Nazwa fabryki danych platformy Azure. |
-| Name (Nazwa) | Nazwa środowiska Azure-SSIS integration runtime. |
-| Opis | Opis Twojego środowiska Azure-SSIS integration runtime. |
+| Name | Nazwa środowiska Azure-SSIS integration runtime. |
+| Description | Opis Twojego środowiska Azure-SSIS integration runtime. |
 
   
 ### <a name="status-per-node"></a>Stan (na węzeł)
 
-| Stan | Opis |
+| State | Description |
 | ------ | ----------- | 
 | Uruchamianie | Ten węzeł jest przygotowywane. |
 | Dostępne | Ten węzeł jest gotowe do wdrożenia/wykonywanie pakietów usług SSIS. |
@@ -193,7 +193,7 @@ Przykładowe dane wyjściowe (przy założeniu, że istnieją dwa węzły skojar
 
 ### <a name="status-overall-azure-ssis-integration-runtime"></a>Stan (ogólnego środowiska Azure-SSIS IR)
 
-| Stan ogólny | Opis | 
+| Stan ogólny | Description | 
 | -------------- | ----------- | 
 | Początkowa | Węzły środowiska Azure-SSIS integration runtime nie zostały przydzielone przygotowane. | 
 | Uruchamianie | Węzły środowiska Azure-SSIS integration runtime są przydzielane przygotowany i rozliczeń została uruchomiona. |

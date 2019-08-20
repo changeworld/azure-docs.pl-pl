@@ -216,9 +216,6 @@
         - name: Rozwiązywanie problemów dotyczących zmian na maszynie wirtualnej
           href: automation-tutorial-troubleshoot-changes.md
           displayName: inventory
-        - name: Zarządzanie maszyną wirtualną za pomocą kolekcji spisu
-          href: automation-vm-inventory.md
-          displayName: inventory
     - name: Rozwiązywanie problemów
       items:
         - name: Dołączanie

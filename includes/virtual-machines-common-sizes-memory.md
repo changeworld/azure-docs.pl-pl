@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 3d45defa9ff8e7b2e03d550b76c0e18192c58c4a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: dce7cc2cd8e97eef81023eb803cace3f6d011171
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881616"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69626379"
 ---
 Rozmiary maszyn wirtualnych zoptymalizowane pod kątem pamięci oferują duże proporcje pamięci dla serwerów relacyjnych baz danych, średnich i dużych pamięci podręcznych oraz analizę w pamięci. Ten artykuł zawiera informacje na temat liczby procesorów wirtualnych vCPU, dysków danych i kart sieciowych, a także przepływności magazynu i przepustowości sieci dla każdego rozmiaru w ramach tego grupowania.
 
 * EV3 Series oferuje procesor E5-2673 v4 2,3 GHz (Broadwell) w konfiguracji wielowątkowej, co zapewnia lepszą wartość propozycji dla większości obciążeń ogólnego przeznaczenia, a EV3 do wyrównania z maszynami wirtualnymi ogólnego przeznaczenia większości innych chmur.  Pamięć została rozszerzona (od 7 GiB/vCPU do 8 GiB/vCPU), podczas gdy limity dysku i sieci zostały skorygowane dla poszczególnych rdzeni, aby dostosować je do przenoszenia do wielowątkowości.  EV3 to kolejne rozmiary maszyn wirtualnych o dużej ilości pamięci w rodzinach D/Dv2.
 
-* Serii Eav3 i Easv3 wykorzystują procesor AMD 2.35 GHz EPYC<sup>TM</sup> 7452V w konfiguracji wielowątkowej z maksymalnie 256GBą pamięcią podręczną L3, zwiększając opcje uruchamiania większości zoptymalizowanych pod kątem pamięci.  Serie Eav3 i Easv3 mają takie same konfiguracje pamięci i dysków jak seria EV3 & Esv3.
+* Seria Eav3 i Easv3 korzysta z procesora AMD 2.35 GHz EPYC<sup>TM</sup> 7452V w konfiguracji wielowątkowej z maksymalnie 256 MB pamięci podręcznej L3, zwiększając opcje uruchamiania większości zoptymalizowanych pod kątem pamięci.  Serie Eav3 i Easv3 mają takie same konfiguracje pamięci i dysków jak seria EV3 & Esv3.
 
 * Seria Mv2 oferuje najwyższą liczbę vCPU (do 208 procesorów wirtualnych vCPU) i największą ilość pamięci (do 5,7 TiB) dowolnej maszyny wirtualnej w chmurze. Jest to idealne rozwiązanie dla bardzo dużych baz danych lub innych aplikacji, które korzystają z dużej liczby procesorów wirtualnych vCPU i dużych ilości pamięci.
 
