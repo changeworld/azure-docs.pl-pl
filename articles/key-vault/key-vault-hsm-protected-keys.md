@@ -1,6 +1,6 @@
 ---
-title: Jak wygenerować i przenieść klucze chronione przez moduł HSM dla usługi Azure Key Vault — usługi Azure Key Vault | Dokumentacja firmy Microsoft
-description: Przedstawione w tym artykule ułatwiają planowanie, generowanie i następnie przenoszenie własnych kluczy chronionych modułem HSM za pomocą usługi Azure Key Vault. Także znana jako BYOK lub Użyj własnego klucza.
+title: Jak generować i przesyłać klucze chronione przez moduł HSM dla Azure Key Vault-Azure Key Vault | Microsoft Docs
+description: Ten artykuł ułatwia planowanie, generowanie i transferowanie własnych kluczy chronionych przez moduł HSM w celu korzystania z Azure Key Vault. Znany również jako BYOK lub własny klucz.
 services: key-vault
 author: barclayn
 manager: barbkess
@@ -9,94 +9,94 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: barclayn
-ms.openlocfilehash: f510fa09d30f942f4e26a3a41fd8faa77a37e32a
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 16aebf2bb2e0c4d495aa8e3a45d3398a9aa9b9ed
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205984"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575057"
 ---
-# <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Jak Generowanie i przenoszenie chronionego przez moduł HSM kluczy dla usługi Azure Key Vault
+# <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Jak generować i przesyłać klucze chronione przez moduł HSM dla Azure Key Vault
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Dodano bezpieczeństwa korzystając z usługi Azure Key Vault, można importować lub generować klucze w sprzętowych modułach zabezpieczeń (HSM), które nigdy nie opuszczają modułu HSM. Ten scenariusz jest często nazywany *Użyj własnego klucza*, byok. Moduły HSM są zweryfikowane w trybie FIPS 140-2 poziom 2. Usługa Azure Key Vault używa rodziny nShield nCipher sprzętowych modułów zabezpieczeń do ochrony kluczy.
+Aby uzyskać gwarancję, w przypadku korzystania z Azure Key Vault można importować lub generować klucze w sprzętowych modułach zabezpieczeń (sprzętowych modułów zabezpieczeń), które nigdy nie opuszczają granicy modułu HSM. Ten scenariusz jest często nazywany *własnym kluczem*lub BYOK. Moduły HSM są zweryfikowane w trybie FIPS 140-2 poziom 2. Do ochrony kluczy Azure Key Vault jest używany oprogramowanie wspomagające nCipher sprzętowego nshield rodziny sprzętowych modułów zabezpieczeń.
 
-Skorzystaj z informacji w tym temacie, aby ułatwić planowanie, generowanie i następnie przenoszenie własnych kluczy chronionych modułem HSM za pomocą usługi Azure Key Vault.
+Informacje przedstawione w tym temacie ułatwiają planowanie, generowanie i transferowanie własnych kluczy chronionych przez moduł HSM w celu korzystania z Azure Key Vault.
 
-Ta funkcja nie jest dostępna dla Chińskiej wersji platformy Azure.
+Ta funkcja jest niedostępna dla Chin platformy Azure.
 
 > [!NOTE]
-> Aby uzyskać więcej informacji na temat usługi Azure Key Vault, zobacz [co to jest usługa Azure Key Vault?](key-vault-whatis.md)  
-> Aby uzyskać Samouczek wprowadzający, która obejmuje tworzenie magazynu kluczy dla kluczy chronionych modułem HSM, zobacz [co to jest usługa Azure Key Vault?](key-vault-overview.md).
+> Aby uzyskać więcej informacji na temat Azure Key Vault, zobacz [co to jest Azure Key Vault?](key-vault-whatis.md)  
+> Aby zapoznać się z samouczkiem wprowadzającym, które obejmuje tworzenie magazynu kluczy dla kluczy chronionych przez moduł HSM, zobacz [co to jest Azure Key Vault?](key-vault-overview.md).
 
-Więcej informacji na temat Generowanie i przenoszenie klucza chronionego przez moduł HSM za pośrednictwem Internetu:
+Więcej informacji o generowaniu i przesyłaniu klucza chronionego przez moduł HSM przez Internet:
 
-* Możesz wygenerować klucz w trybie offline stację roboczą, co zmniejsza możliwości ataku.
-* Klucz jest zaszyfrowany przy użyciu klucza wymiany klucza (KEK), który pozostaje zaszyfrowany, dopóki nie zostanie przesłany do HSM usługi Azure Key Vault. Wyłącznie zaszyfrowana wersja klucza opuszcza pierwotną stację roboczą.
-* Zestaw narzędzi ustawia właściwości klucz dzierżawy, który wiąże klucz zabezpieczeń security world usługi Azure Key Vault. Dlatego po HSM usługi Azure Key Vault odbiorą i odszyfrują klucz, tylko te sprzętowych modułów zabezpieczeń można użyć go. Nie można wyeksportować klucza. To powiązanie jest wymuszone przez nCipher sprzętowych modułów zabezpieczeń.
-* Klucz wymiany klucza (KEK), który jest używany do szyfrowania klucza jest generowany wewnątrz HSM usługi Azure Key Vault i nie jest możliwy do eksportu. Moduły HSM wymusić, że może być brak wyczyść wersji KEK poza sprzętowe moduły zabezpieczeń. Ponadto zestaw narzędzi zawiera zaświadczenie od nCipher, że klucza KEK nie można wyeksportować i został on wygenerowany wewnątrz oryginalnego sprzętowego modułu zabezpieczeń, który został wyprodukowany przez nCipher.
-* Zestaw narzędzi zawiera zaświadczenie od nCipher środowiska zabezpieczeń security world usługi Azure Key Vault zostało także wygenerowane w oryginalnym sprzętowym module zabezpieczeń wyprodukowanym przez nCipher. To poświadczenie potwierdza, że firma Microsoft korzysta z oryginalnego sprzętu.
-* Firma Microsoft używa oddzielnych kluczy Kek oraz oddzielne środowiska Security World w każdym regionie geograficznym. Ten rozdział zapewnia, że klucz może służyć tylko w centrach danych w regionie, w którym został zaszyfrowany. Na przykład klucz Europejskiego klienta nie może służyć w centrach danych w Ameryce Północnej ani Azji.
+* Klucz jest generowany z stacji roboczej offline, co zmniejsza obszar narażony na ataki.
+* Klucz jest szyfrowany przy użyciu klucza wymiany klucza (KEK), który pozostaje zaszyfrowany, dopóki nie zostanie przetransferowany do Azure Key Vault sprzętowych modułów zabezpieczeń. Tylko zaszyfrowana wersja klucza opuszcza pierwotną stację roboczą.
+* Zestaw narzędzi ustawia właściwości klucza dzierżawy, który wiąże klucz ze światem zabezpieczeń Azure Key Vault. Tak więc po Azure Key Vault odsprzętowych modułów zabezpieczeń i odszyfrowania klucza tylko te sprzętowych modułów zabezpieczeń mogą go używać. Nie można wyeksportować klucza. To powiązanie jest wymuszane przez oprogramowanie wspomagające nCipher sprzętowych modułów zabezpieczeń.
+* Klucz wymiany klucza (KEK) służący do szyfrowania klucza jest generowany wewnątrz Azure Key Vault sprzętowych modułów zabezpieczeń i nie można go eksportować. Sprzętowych modułów zabezpieczeń wymusza, że nie może być wyczyszczona wersja KEK poza sprzętowych modułów zabezpieczeń. Ponadto zestaw narzędzi zawiera zaświadczanie od oprogramowanie wspomagające nCipher, że KEK nie można eksportować i został wygenerowany w oryginalnym module HSM, który został wyprodukowany przez oprogramowanie wspomagające nCipher.
+* Zestaw narzędzi zawiera zaświadczanie od oprogramowanie wspomagające nCipher, że świat zabezpieczeń Azure Key Vault został również wygenerowany na oryginalnym module HSM wytwarzanym przez oprogramowanie wspomagające nCipher. To zaświadczanie potwierdza, że firma Microsoft używa oryginalnego sprzętu.
+* W każdym regionie geograficznym firma Microsoft używa oddzielnych KEKs i oddzielenia zabezpieczeń. Ta separacja zapewnia, że klucz może być używany tylko w centrach danych w regionie, w którym została zaszyfrowana. Na przykład klucz z klienta Europejskiego nie może zostać użyty w centrach danych w Ameryce Północnej ani Azji.
 
-## <a name="more-information-about-ncipher-hsms-and-microsoft-services"></a>Więcej informacji na temat sprzętowych modułów zabezpieczeń nCipher i usług firmy Microsoft
+## <a name="more-information-about-ncipher-hsms-and-microsoft-services"></a>Więcej informacji na temat oprogramowanie wspomagające nCipher sprzętowych modułów zabezpieczeń i usług firmy Microsoft
 
-nCipher Security jest wiodącym globalnym dostawcą szyfrowania danych i cybernetycznymi zabezpieczeń rozwiązania usług finansowych, nowoczesnych, produkcji, instytucji rządowych i sektorów technologii. 40 lat poświadczać ochrony firmowych i informacje dla instytucji rządowych nCipher kryptograficznych rozwiązania w zakresie zabezpieczeń są używane przez pięć największych firm lotnictwa i kosmonautyki i energii. Swoje rozwiązania są również używane przez 22 kraje/regiony NATO, a secure ponad 80 procent transakcji płatniczych na świecie.
+Oprogramowanie wspomagające nCipher Security to wiodący globalny dostawca rozwiązań do szyfrowania danych i zabezpieczania cybernetycznymi dla usług finansowych, wysokiej technologii, produkcji, instytucji rządowych i technologii. W przypadku 40-letniego rekordu dotyczącego ochrony informacji firmowych i rządowych rozwiązania kryptograficzne zabezpieczeń oprogramowanie wspomagające nCipher są używane w czterech z pięciu największych firm i przedsiębiorców. Ich rozwiązania są również używane przez 22 kraje/regiony NATO i zapewniają ponad 80 miesięcznie transakcji płatności.
 
-Firma Microsoft podjęła współpracę z nCipher zabezpieczeń, które zwiększają pogłębić sprzętowych modułów zabezpieczeń. Opracowane udoskonalenia pozwalają uzyskać typowych zalet usług hostowanych bez potrzeby rezygnacji z kontroli nad kluczami. W szczególności ulepszenia te umożliwiają firmie Microsoft Zarządzanie sprzętowe moduły zabezpieczeń, tak aby nie trzeba. Jako usługa w chmurze usługi Azure Key Vault jest skalowany w górę w krótkim terminie w celu spełnienia nagłego zwiększenia zapotrzebowania organizacji. W tym samym czasie klucz jest chroniony wewnątrz sprzętowych modułów zabezpieczeń firmy Microsoft: Zachowuje się kontrolę nad cyklem życia klucza, ponieważ Wygeneruj klucz i przeniesienie go do sprzętowych modułów zabezpieczeń firmy Microsoft.
+Firma Microsoft współpracuje z oprogramowanie wspomagające nCipher zabezpieczeniami w celu zwiększenia stanu kompozycji dla sprzętowych modułów zabezpieczeń. Te udoskonalenia umożliwiają uzyskanie typowych korzyści płynących z usług hostowanych bez konieczności kontroli nad kluczami. W związku z tym te udoskonalenia umożliwiają firmie Microsoft zarządzanie sprzętowych modułów zabezpieczeń, dzięki czemu nie trzeba. Jako usługa w chmurze Azure Key Vault skaluje się w krótkim czasie, aby sprostać wzrostom użycia w organizacji. W tym samym czasie klucz jest chroniony w sprzętowych modułów zabezpieczeń firmy Microsoft: Zachowujesz kontrolę nad kluczowym cyklem życia, ponieważ klucz jest generowany i przesyłany do sprzętowych modułów zabezpieczeń firmy Microsoft.
 
-## <a name="implementing-bring-your-own-key-byok-for-azure-key-vault"></a>Implementowanie Użyj własnego klucza (BYOK) dla usługi Azure Key Vault
+## <a name="implementing-bring-your-own-key-byok-for-azure-key-vault"></a>Implementowanie dla Azure Key Vault
 
-Użyj następujące informacje i procedury, jeśli będzie wygenerować własny klucz chroniony przez moduł HSM i przenieść go do usługi Azure Key Vault — dostarczania scenariusza klucza (BYOK).
+Poniższe informacje i procedury umożliwiają wygenerowanie własnego klucza chronionego przez moduł HSM, a następnie przekazanie go do Azure Key Vault — scenariusz tworzenia własnego klucza (BYOK).
 
-## <a name="prerequisites-for-byok"></a>Wymagania wstępne dotyczące funkcji BYOK
+## <a name="prerequisites-for-byok"></a>Wymagania wstępne dotyczące usługi BYOK
 
-Znajdują się w następujących tabeli, aby uzyskać listę wymagań wstępnych dotyczących Użyj własnego klucza (BYOK) dla usługi Azure Key Vault.
+Zapoznaj się z poniższą tabelą, aby uzyskać listę wymagań wstępnych dotyczących przenoszenia własnych kluczy (BYOK) dla Azure Key Vault.
 
 | Wymaganie | Więcej informacji |
 | --- | --- |
-| Subskrypcja platformy Azure |Do utworzenia usługi Azure Key Vault, musisz mieć subskrypcję platformy Azure: [Zamów bezpłatną wersję próbną](https://azure.microsoft.com/pricing/free-trial/) |
-| Warstwy usługi Azure Key Vault — wersja Premium do obsługi kluczy chronionych przez moduł HSM |Aby uzyskać więcej informacji na temat warstw usługi i możliwości usługi Azure Key Vault, zobacz [cenami usługi Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/) witryny sieci Web. |
-| nShield nCipher sprzętowych modułów zabezpieczeń, karty inteligentne i oprogramowanie |Musi mieć dostęp do nCipher sprzętowego modułu zabezpieczeń i podstawowe wiedzę na temat działania nShield nCipher sprzętowych modułów zabezpieczeń. Zobacz [nShield nCipher sprzętowego modułu zabezpieczeń](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/how-to-buy) lista zgodnych modeli lub kupić modułu HSM, jeśli nie masz. |
-| Następujący sprzęt i oprogramowanie:<ol><li>W trybie offline x64 stacja robocza z minimalny system operacyjny Windows systemu Windows 7 i nCipher oprogramowaniem nShield co najmniej wersji 11.50.<br/><br/>W przypadku stacji roboczych z systemem Windows 7, należy [instalacja programu Microsoft .NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Stacji roboczej, który jest połączony z Internetem i ma system operacyjny Windows Windows 7 i [programu Azure PowerShell](/powershell/azure/overview?view=azps-1.2.0) **minimalna wersja 1.1.0** zainstalowane.</li><li>Lub inne przenośne urządzenie pamięci masowej z co najmniej 16 MB wolnego miejsca na dysku USB.</li></ol> |Ze względów bezpieczeństwa zaleca się, że pierwszej stacji roboczej nie jest połączony z siecią. Jednak to zalecenie jest nie ograniczenia natury programistycznej.<br/><br/>W instrukcji tą stacją roboczą nazywa się rozłączonej stacji roboczej.</p></blockquote><br/>Ponadto jeśli klucz dzierżawy jest dla środowiska produkcyjnego, zaleca się użyć drugiej, oddzielnej stacji roboczej, aby pobrać zestaw narzędzi i przesłania klucza dzierżawy. Jednak do celów testowych możesz użyć tej samej stacji roboczej jako pierwsza z nich.<br/><br/>W instrukcji druga stacja robocza jest nazywany stacji roboczej podłączonej do Internetu.</p></blockquote><br/> |
+| Subskrypcja platformy Azure |Aby utworzyć Azure Key Vault, potrzebna jest subskrypcja platformy Azure: [Zarejestruj się, aby skorzystać z bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/) |
+| Warstwa usługi Azure Key Vault Premium do obsługi kluczy chronionych przez moduł HSM |Więcej informacji o warstwach i możliwościach usługi dla Azure Key Vault można znaleźć w witrynie internetowej [cennika Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/) . |
+| Oprogramowanie wspomagające nCipher sprzętowego nshield sprzętowych modułów zabezpieczeń, karty inteligentne i oprogramowanie pomocy technicznej |Musisz mieć dostęp do oprogramowanie wspomagające nCipher sprzętowego modułu zabezpieczeń i podstawowej znajomości operacyjnej oprogramowanie wspomagające nCipher sprzętowego nshield sprzętowych modułów zabezpieczeń. Aby uzyskać listę zgodnych modeli lub kupić moduł HSM, jeśli go nie masz, zobacz [oprogramowanie wspomagające nCipher sprzętowego nshield Hardware Security module](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/how-to-buy) . |
+| Następujący sprzęt i oprogramowanie:<ol><li>Stacja robocza offline x64 z minimalnym systemem operacyjnym Windows w wersji Windows 7 i oprogramowanie wspomagające nCipher sprzętowego nshield, który ma co najmniej wersję 11,50.<br/><br/>Jeśli na tej stacji roboczej jest uruchomiony system Windows 7, należy [zainstalować Microsoft .NET Framework 4,5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Stacja robocza, która jest połączona z Internetem i ma minimalny system operacyjny Windows z systemem Windows 7 i [Azure PowerShell](/powershell/azure/overview?view=azps-1.2.0) zainstalowaną **minimalną wersję 1.1.0** .</li><li>Dysk USB lub inne przenośne urządzenie magazynujące z co najmniej 16 MB wolnego miejsca.</li></ol> |Ze względów bezpieczeństwa zalecamy, aby pierwsza stacja robocza nie była połączona z siecią. Jednakże to zalecenie nie jest wymuszane programowo.<br/><br/>W poniższych instrukcjach stacja robocza jest określana jako odłączona stacja robocza.</p></blockquote><br/>Ponadto, jeśli klucz dzierżawy jest przeznaczony dla sieci produkcyjnej, zalecamy użycie drugiej oddzielnej stacji roboczej do pobrania zestawu narzędzi i przekazanie klucza dzierżawy. Jednak na potrzeby testowania można użyć tej samej stacji roboczej co pierwszy.<br/><br/>W poniższych instrukcjach druga stacja robocza jest określana mianem stacji roboczej podłączonej do Internetu.</p></blockquote><br/> |
 
-## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>Generowanie i przeniesienia klucza usługi Azure Key Vault
+## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>Generowanie i transferowanie klucza do Azure Key Vault modułu HSM
 
-Użyjesz następujące pięć kroków, aby wygenerować i przenieść swój klucz do modułu HSM usługi Azure Key Vault:
+Aby wygenerować i przesłać klucz do modułu HSM Azure Key Vault, należy wykonać następujące pięć czynności:
 
-* [Krok 1. Przygotowanie stacji roboczej podłączonej do Internetu](#step-1-prepare-your-internet-connected-workstation)
-* [Krok 2. Przygotowanie odłączonej stacji roboczej](#step-2-prepare-your-disconnected-workstation)
+* [Krok 1. Przygotowanie stacji roboczej połączonej z Internetem](#step-1-prepare-your-internet-connected-workstation)
+* [Krok 2. Przygotowywanie rozłączonej stacji roboczej](#step-2-prepare-your-disconnected-workstation)
 * [Krok 3. Generowanie klucza](#step-3-generate-your-key)
-* [Krok 4. Przygotowanie klucza do przesłania](#step-4-prepare-your-key-for-transfer)
-* [Krok 5. Przesłanie klucza do usługi Azure Key Vault](#step-5-transfer-your-key-to-azure-key-vault)
+* [Krok 4. Przygotuj klucz do przeniesienia](#step-4-prepare-your-key-for-transfer)
+* [Krok 5. Przenieś klucz do Azure Key Vault](#step-5-transfer-your-key-to-azure-key-vault)
 
-## <a name="step-1-prepare-your-internet-connected-workstation"></a>Krok 1: Przygotowanie stacji roboczej podłączonej do Internetu
+## <a name="step-1-prepare-your-internet-connected-workstation"></a>Krok 1: Przygotowanie stacji roboczej połączonej z Internetem
 
-To pierwszy krok wykonaj następujące procedury na stacji roboczej podłączonej do Internetu.
+W pierwszym kroku wykonaj następujące procedury na stacji roboczej, która jest połączona z Internetem.
 
-### <a name="step-11-install-azure-powershell"></a>Krok 1.1: Instalowanie programu Azure PowerShell
+### <a name="step-11-install-azure-powershell"></a>Krok 1,1: Zainstaluj program Azure PowerShell
 
-Ze stacji roboczej podłączonej do Internetu należy pobrać i zainstalować moduł programu Azure PowerShell, który zawiera polecenia cmdlet do zarządzania usługi Azure Key Vault. Aby uzyskać instrukcje dotyczące instalacji, zobacz [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview).
+Z poziomu stacji roboczej podłączonej do Internetu Pobierz i zainstaluj moduł Azure PowerShell, który zawiera polecenia cmdlet służące do zarządzania Azure Key Vault. Instrukcje instalacji znajdują się w temacie [How to Install and configure Azure PowerShell](/powershell/azure/overview).
 
-### <a name="step-12-get-your-azure-subscription-id"></a>Krok 1.2: Pobierz swój identyfikator subskrypcji platformy Azure
+### <a name="step-12-get-your-azure-subscription-id"></a>Krok 1,2: Pobierz swój identyfikator subskrypcji platformy Azure
 
-Uruchom sesję programu Azure PowerShell, a następnie zaloguj się do konta platformy Azure przy użyciu następującego polecenia:
+Rozpocznij sesję Azure PowerShell i zaloguj się do konta platformy Azure przy użyciu następującego polecenia:
 
 ```Powershell
    Connect-AzAccount
 ```
-W podręcznym oknie przeglądarki wprowadź nazwę użytkownika i hasło dla konta platformy Azure. Następnie należy użyć [Get AzSubscription](/powershell/module/az.accounts/get-azsubscription) polecenia:
+W podręcznym oknie przeglądarki wprowadź nazwę użytkownika i hasło dla konta platformy Azure. Następnie użyj polecenia [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) :
 
 ```powershell
    Get-AzSubscription
 ```
-Z danych wyjściowych zlokalizuj identyfikator subskrypcji, które będą używane dla usługi Azure Key Vault. Ten identyfikator subskrypcji będzie potrzebny później.
+Na podstawie danych wyjściowych Znajdź identyfikator subskrypcji, która będzie używana dla Azure Key Vault. Ten identyfikator subskrypcji będzie potrzebny później.
 
-Nie zamykaj okna programu Azure PowerShell.
+Nie zamykaj okna Azure PowerShell.
 
-### <a name="step-13-download-the-byok-toolset-for-azure-key-vault"></a>Krok 1.3. Pobierz zestaw narzędzi BYOK dla usługi Azure Key Vault
+### <a name="step-13-download-the-byok-toolset-for-azure-key-vault"></a>Krok 1,3: Pobierz zestaw narzędzi BYOK dla Azure Key Vault
 
-Przejdź do witryny Microsoft Download Center i [pobrania zestawu narzędzi rozwiązania BYOK usługi Azure Key Vault](https://www.microsoft.com/download/details.aspx?id=45345) dla regionu geograficznego lub wystąpienie platformy Azure. Aby zidentyfikować nazwę pakietu do pobrania i jego odpowiedniego skrótu pakietu algorytmu SHA-256, należy użyć następujących informacji:
+Przejdź do centrum pobierania Microsoft i [Pobierz zestaw narzędzi Azure Key Vault BYOK](https://www.microsoft.com/download/details.aspx?id=45345) dla regionu geograficznego lub wystąpienia platformy Azure. Skorzystaj z poniższych informacji, aby zidentyfikować nazwę pakietu do pobrania i odpowiedni skrót pakietu SHA-256:
 
 ---
 **Stany Zjednoczone:**
@@ -106,16 +106,16 @@ KeyVault-BYOK-Tools-UnitedStates.zip
 2E8C00320400430106366A4E8C67B79015524E4EC24A2D3A6DC513CA1823B0D4
 
 ---
-**Europa:**
+**Terenie**
 
-KeyVault-BYOK-Tools-Europe.zip
+KeyVault-BYOK-Tools-Europe. zip
 
 9AAA63E2E7F20CF9BB62485868754203721D2F88D300910634A32DFA1FB19E4A
 
 ---
-**Azja Wschodnia:**
+**Wsch**
 
-KeyVault-BYOK-Tools-AsiaPacific.zip
+KeyVault-BYOK-Tools-AsiaPacific. zip
 
 4BC14059BF0FEC562CA927AF621DF665328F8A13616F44C977388EC7121EF6B5
 
@@ -148,7 +148,7 @@ KeyVault-BYOK-Tools-SouthAfrica.zip
 C41060C5C0170AAAAD896DA732E31433D14CB9FC83AC3C67766F46D98620784A
 
 ---
-**ZJEDNOCZONE EMIRATY ARABSKIE:**
+**EMIRATY**
 
 KeyVault-BYOK-Tools-UAE.zip
 
@@ -162,14 +162,14 @@ KeyVault-BYOK-Tools-Australia.zip
 CD0FB7365053DEF8C35116D7C92D203C64A3D3EE2452A025223EEB166901C40A
 
 ---
-[**Platforma Azure Government:** ](https://azure.microsoft.com/features/gov/)
+[**Azure Government:** ](https://azure.microsoft.com/features/gov/)
 
 KeyVault-BYOK-Tools-USGovCloud.zip
 
 F8DB2FC914A7360650922391D9AA79FF030FD3048B5795EC83ADC59DB018621A
 
 ---
-**Instytucje rządowe USA — DOD:**
+**Rząd USA:**
 
 KeyVault-BYOK-Tools-USGovernmentDoD.zip
 
@@ -178,272 +178,299 @@ A79DD8C6DFFF1B00B91D1812280207A205442B3DDF861B79B8B991BB55C35263
 ---
 **Kanada:**
 
-KeyVault-BYOK-Tools-Canada.zip
+KeyVault-BYOK-Tools-Canada. zip
 
 61BE1A1F80AC79912A42DEBBCC42CF87C88C2CE249E271934630885799717C7B
 
 ---
 **Niemcy:**
 
-KeyVault-BYOK-Tools-Germany.zip
+KeyVault-BYOK-Tools-Germany. zip
 
 5385E615880AAFC02AFD9841F7BADD025D7EE819894AA29ED3C71C3F844C45D6
 
 ---
+**Niemcy publiczne:**
+
+KeyVault-BYOK-Tools-Germany-Public. zip
+
+54534936D0A0C99C8117DB724C34A5E50FD204CFCBD75C78972B785865364A29
+
+---
 **Indie:**
 
-KeyVault-BYOK-Tools-India.zip
+KeyVault-BYOK-Tools-India. zip
 
 49EDCEB3091CF1DF7B156D5B495A4ADE1CFBA77641134F61B0E0940121C436C8
 
 ---
 **Francja:**
 
-KeyVault-BYOK-Tools-France.zip
+KeyVault-BYOK-Tools-France. zip
 
 5C9D1F3E4125B0C09E9F60897C9AE3A8B4CB0E7D13A14F3EDBD280128F8FE7DF
 
 ---
 **Wielka Brytania:**
 
-KeyVault-BYOK-Tools-UnitedKingdom.zip
+KeyVault-BYOK-Tools-UnitedKingdom. zip
 
 432746BD0D3176B708672CCFF19D6144FCAA9E5EB29BB056489D3782B3B80849
 
 ---
+**Szwajcaria:**
 
-Aby sprawdzić integralność swoje pobranego zestawu narzędzi rozwiązania BYOK, z poziomu sesji programu Azure PowerShell należy użyć [Get FileHash](https://technet.microsoft.com/library/dn520872.aspx) polecenia cmdlet.
+KeyVault-BYOK-Tools-Switzerland. zip
+
+88CF8D39899E26D456D4E0BC57E5C94913ABF1D73A89013FCE3BBD9599AD2FE9
+
+---
+
+
+Aby sprawdzić integralność pobranego zestawu narzędzi BYOK, należy użyć polecenia cmdlet [Get-FileHash](https://technet.microsoft.com/library/dn520872.aspx) w ramach sesji Azure PowerShell.
 
    ```powershell
    Get-FileHash KeyVault-BYOK-Tools-*.zip
    ```
 
-Zestaw narzędzi zawiera:
+Zestaw narzędzi zawiera następujące:
 
-* Pakiet klucza wymiany klucza (KEK), którego nazwa zaczyna się od **BYOK-KEK - pkg-.**
-* Pakiet środowiska zabezpieczeń Security World, którego nazwa zaczyna się od **BYOK-SecurityWorld - pkg-.**
-* Skrypt w języku python o nazwie **verifykeypackage.py.**
-* Plik wykonywalny wiersza polecenia o nazwie **KeyTransferRemote.exe** oraz powiązane biblioteki dll.
-* Element wizualny C++ do dystrybucji pakiet o nazwie **vcredist_x64.exe.**
+* Pakiet klucza wymiany klucza (KEK) o nazwie rozpoczynającej się od **BYOK-KEK-pkg-.**
+* Pakiet "Security World" o nazwie rozpoczynającej się od **BYOK-SecurityWorld-pkg-.**
+* Skrypt języka Python o nazwie **verifykeypackage.py.**
+* Plik wykonywalny wiersza polecenia o nazwie **KeyTransferRemote. exe** i skojarzone biblioteki DLL.
+* Pakiet redystrybucyjny wizualizacji C++ o nazwie **VCRedist_x64. exe.**
 
-Skopiuj pakiet na dysku USB lub innego przenośnego urządzenia pamięci masowej.
+Skopiuj pakiet na dysk USB lub inny przenośny magazyn.
 
-## <a name="step-2-prepare-your-disconnected-workstation"></a>Krok 2: Przygotowanie odłączonej stacji roboczej
+## <a name="step-2-prepare-your-disconnected-workstation"></a>Krok 2: Przygotowywanie rozłączonej stacji roboczej
 
-Ten drugi krok wykonaj następujące procedury na stacji roboczej, który nie jest podłączony do sieci (Internetu lub sieci wewnętrznej).
+W tym drugim kroku wykonaj następujące procedury na stacji roboczej, która nie jest połączona z siecią (Internetem lub siecią wewnętrzną).
 
-### <a name="step-21-prepare-the-disconnected-workstation-with-ncipher-nshield-hsm"></a>Krok 2.1. Przygotowanie odłączonej stacji roboczej z nShield nCipher przez moduł HSM
+### <a name="step-21-prepare-the-disconnected-workstation-with-ncipher-nshield-hsm"></a>Krok 2.1. Przygotowywanie rozłączonej stacji roboczej z modułem HSM oprogramowanie wspomagające nCipher sprzętowego nshield
 
-Zainstaluj oprogramowanie wspomagające nCipher na komputerze Windows, a następnie dołącz nShield nCipher przez moduł HSM do tego komputera.
+Zainstaluj oprogramowanie oprogramowanie wspomagające nCipher support na komputerze z systemem Windows, a następnie Dołącz moduł HSM oprogramowanie wspomagające nCipher sprzętowego nshield do tego komputera.
 
-Upewnij się, że narzędzia nCipher znajdują się w ścieżce ( **%nfast_home%\bin**). Na przykład wpisz następujące polecenie:
+Upewnij się, że narzędzia oprogramowanie wspomagające nCipher znajdują się w ścieżce ( **%nfast_home%\bin**). Na przykład wpisz następujące polecenie:
 
   ```cmd
   set PATH=%PATH%;"%nfast_home%\bin"
   ```
 
-Aby uzyskać więcej informacji zobacz w podręczniku użytkownika dołączonym nShield sprzętowego modułu zabezpieczeń.
+Aby uzyskać więcej informacji, zobacz Podręcznik użytkownika dołączony do modułu HSM sprzętowego nshield.
 
-### <a name="step-22-install-the-byok-toolset-on-the-disconnected-workstation"></a>Krok 2.2. Zainstaluj zestaw narzędzi BYOK na odłączonej stacji roboczej
+### <a name="step-22-install-the-byok-toolset-on-the-disconnected-workstation"></a>Krok 2.2. Instalowanie zestawu narzędzi BYOK na odłączonej stacji roboczej
 
-Skopiuj pakiet zestawu narzędzi BYOK z dysku USB lub innego przenośnego urządzenia pamięci masowej, a następnie wykonaj następujące czynności:
+Skopiuj pakiet zestawu narzędzi BYOK z dysku USB lub innego przenośnego magazynu, a następnie wykonaj następujące czynności:
 
 1. Wyodrębnij pliki z pobranego pakietu do dowolnego folderu.
-2. Z tego folderu Uruchom vcredist_x64.exe.
-3. Postępuj zgodnie z instrukcjami instalacji składników środowiska wykonawczego Visual C++ dla Visual Studio 2013.
+2. W tym folderze Uruchom program VCRedist_x64. exe.
+3. Postępuj zgodnie z instrukcjami, aby zainstalować C++ składniki środowiska uruchomieniowego Visual Visual Studio 2013.
 
 ## <a name="step-3-generate-your-key"></a>Krok 3: Generowanie klucza
 
-To trzeci krok wykonaj następujące procedury na rozłączonej stacji roboczej. Aby ukończyć ten krok modułu HSM musi być w trybie inicjowania. 
+W tym trzecim kroku wykonaj następujące procedury na odłączonej stacji roboczej. Aby ukończyć ten krok, moduł HSM musi być w trybie inicjalizacji. 
 
-### <a name="step-31-change-the-hsm-mode-to-i"></a>Krok 3.1. Zmień tryb sprzętowego modułu zabezpieczeń na wartość "I"
+### <a name="step-31-change-the-hsm-mode-to-i"></a>Krok 3.1. Zmień tryb HSM na "I"
 
-Jeśli używasz nShield nCipher Edge, aby zmienić tryb: 1. Użyj przycisku tryb, aby wyróżnić wymagane trybu. 2. W ciągu kilku sekund naciśnij i przytrzymaj przycisk Wyczyść przez kilka sekund. Zmiana trybu LED nowy tryb zatrzymuje migające i świeci. LED stanu może być nieregularnie flash w kilka sekund i następnie miga regularnie, gdy urządzenie jest gotowe. W przeciwnym razie urządzenia pozostaje w bieżącym trybie, za pomocą odpowiedni tryb LED świeci.
+Jeśli używasz oprogramowanie wspomagające nCipher sprzętowego nshield Edge, aby zmienić tryb: 1. Użyj przycisku tryb, aby wyróżnić wymagany tryb. 2. W ciągu kilku sekund naciśnij i przytrzymaj przycisk Wyczyść przez kilka sekund. Jeśli tryb ulegnie zmianie, dioda LED trybu zostanie migana i pozostaje niewidoczny. Dioda LED stanu może być nieregularna w ciągu kilku sekund, a następnie regularnie błyska, gdy urządzenie jest gotowe. W przeciwnym razie urządzenie pozostaje w bieżącym trybie z zaświeceniem odpowiedniego trybu.
 
-### <a name="step-32-create-a-security-world"></a>Krok 3.2 Tworzenie środowiska zabezpieczeń security world
+### <a name="step-32-create-a-security-world"></a>Krok 3,2: Tworzenie środowiska zabezpieczeń Security World
 
-Uruchom wiersz polecenia, a następnie uruchom program nowym świecie nCipher.
+Uruchom wiersz polecenia i uruchom program oprogramowanie wspomagające nCipher New-World.
 
    ```cmd
     new-world.exe --initialize --cipher-suite=DLf3072s256mRijndael --module=1 --acs-quorum=2/3
    ```
 
-Ten program tworzy **środowiska zabezpieczeń Security World** plik w lokalizacji % NFAST_KMDATA%\local\world, co odnosi się do folderu C:\ProgramData\nCipher\Key Management Data\local. Można użyć różnych wartości dla kworum, ale w tym przykładzie zostanie wyświetlony monit wpisz trzech pustych kart oraz kodów PIN dla każdego z nich. Następnie dowolne dwie spośród kart nadania praw pełnego dostępu do środowiska zabezpieczeń security world. Te karty stają się **zestaw kart administratora** dla nowego środowiska zabezpieczeń security world.
+Ten program tworzy plik środowiska **zabezpieczeń** w%NFAST_KMDATA%\local\world, który odnosi się do folderu C:\ProgramData\nCipher\Key Management Data\local. Możesz użyć różnych wartości dla kworum, ale w naszym przykładzie zostanie wyświetlony monit o wprowadzenie trzech pustych kart i numerów PIN dla każdej z nich. Następnie wszystkie dwie karty zapewniają pełen dostęp do środowiska zabezpieczeń Security World. Te karty stają się **zestawem kart administratora** dla nowego świata zabezpieczeń.
 
 > [!NOTE]
-> Jeśli modułu HSM nie obsługuje nowszych DLf3072s256mRijndael pakietu szyfrowania, możesz zastąpić — mechanizmów szyfrowania = DLf3072s256mRijndael with--mechanizmów szyfrowania = DLf1024s160mRijndael
+> Jeśli moduł HSM nie obsługuje nowszego pakietu szyfr Suite DLf3072s256mRijndael, można zastąpić polecenie--cipher-Suite = DLf3072s256mRijndael z--cipher-Suite = DLf1024s160mRijndael
 
 Następnie wykonaj poniższe czynności:
 
-* Utwórz kopię zapasową pliku środowiska zabezpieczeń. Zabezpieczanie ochrony pliku środowiska zabezpieczeń, karty administratora oraz ich kody PIN i upewnij się, że nikt nie ma dostępu do więcej niż jedną kartę.
+* Utwórz kopię zapasową pliku świata. Zabezpiecz i Chroń plik świata, karty administratorów i ich numery PIN oraz upewnij się, że żadna osoba nie ma dostępu do więcej niż jednej karty.
 
-### <a name="step-33-change-the-hsm-mode-to-o"></a>Krok 3.3. Zmień tryb przez moduł HSM, aby ' O'
+### <a name="step-33-change-the-hsm-mode-to-o"></a>Krok 3,3: Zmień tryb HSM na "O"
 
-Jeśli używasz nShield nCipher Edge, aby zmienić tryb: 1. Użyj przycisku tryb, aby wyróżnić wymagane trybu. 2. W ciągu kilku sekund naciśnij i przytrzymaj przycisk Wyczyść przez kilka sekund. Zmiana trybu LED nowy tryb zatrzymuje migające i świeci. LED stanu może być nieregularnie flash w kilka sekund i następnie miga regularnie, gdy urządzenie jest gotowe. W przeciwnym razie urządzenia pozostaje w bieżącym trybie, za pomocą odpowiedni tryb LED świeci.
+Jeśli używasz oprogramowanie wspomagające nCipher sprzętowego nshield Edge, aby zmienić tryb: 1. Użyj przycisku tryb, aby wyróżnić wymagany tryb. 2. W ciągu kilku sekund naciśnij i przytrzymaj przycisk Wyczyść przez kilka sekund. Jeśli tryb ulegnie zmianie, dioda LED trybu zostanie migana i pozostaje niewidoczny. Dioda LED stanu może być nieregularna w ciągu kilku sekund, a następnie regularnie błyska, gdy urządzenie jest gotowe. W przeciwnym razie urządzenie pozostaje w bieżącym trybie z zaświeceniem odpowiedniego trybu.
 
-### <a name="step-34-validate-the-downloaded-package"></a>Krok 3.4: Zweryfikować pobrany pakiet
+### <a name="step-34-validate-the-downloaded-package"></a>Krok 3,4: Weryfikowanie pobranego pakietu
 
-Ten krok jest opcjonalny, ale też zalecany, dzięki czemu można sprawdzić poprawność następujących:
+Ten krok jest opcjonalny, ale zalecany, aby można było zweryfikować następujące elementy:
 
-* Klucz wymiany klucza, który znajduje się w zestawie narzędzi został wygenerowany z nShield nCipher oryginalnego sprzętowego modułu zabezpieczeń.
-* Skrót środowiska zabezpieczeń Security World, który znajduje się w zestawie narzędzi został wygenerowany w nShield nCipher oryginalnego sprzętowego modułu zabezpieczeń.
-* Nie można eksportować jest klucz wymiany klucza.
+* Klucz wymiany klucza uwzględniony w zestawie narzędzi został wygenerowany na podstawie oryginalnego modułu HSM oprogramowanie wspomagające nCipher sprzętowego nshield.
+* Skrót środowiska zabezpieczeń Security, który został uwzględniony w zestawie narzędzi, został wygenerowany w oryginalnym module HSM oprogramowanie wspomagające nCipher sprzętowego nshield.
+* Klucz wymiany klucza nie jest eksportowalny.
 
 > [!NOTE]
-> Aby zweryfikować pobrany pakiet, moduł HSM musi być podłączony i włączony i musi mieć środowiska zabezpieczeń security world go (na przykład tego, który właśnie został utworzony).
+> Aby sprawdzić pobrany pakiet, moduł HSM musi być połączony, włączony i musi mieć na nim świat zabezpieczeń (na przykład właśnie utworzony).
 
 Aby zweryfikować pobrany pakiet:
 
-1. Uruchom skrypt verifykeypackage.py, wpisując jeden z poniższych pozycji w zależności od regionu geograficznego lub wystąpienie platformy Azure:
+1. Uruchom skrypt verifykeypackage.py, wpisując jedną z następujących opcji, w zależności od regionu geograficznego lub wystąpienia platformy Azure:
 
-   * Dla Ameryki Północnej:
+   * Dla Ameryka Północna:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-NA-1 -w BYOK-SecurityWorld-pkg-NA-1
    * Dla Europy:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-EU-1 -w BYOK-SecurityWorld-pkg-EU-1
-   * Azja:
+   * Dla Azji:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-AP-1 -w BYOK-SecurityWorld-pkg-AP-1
-   * W Ameryce Łacińskiej:
+   * Dla Ameryka Łacińska:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-LATAM-1 -w BYOK-SecurityWorld-pkg-LATAM-1
-   * W Japonii:
+   * Dla Japonii:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-JPN-1 -w BYOK-SecurityWorld-pkg-JPN-1
    * W przypadku Korei:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-KOREA-1 -w BYOK-SecurityWorld-pkg-KOREA-1
-   * Aby uzyskać Republika Południowej Afryki:
+   * W Republice Południowej Afryki:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-SA-1 -w BYOK-SecurityWorld-pkg-SA-1
-   * Aby uzyskać Zjednoczone Emiraty Arabskie:
+   * Za Zjednoczone Emiraty Arabskie:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-UAE-1 -w BYOK-SecurityWorld-pkg-UAE-1
    * Dla Australii:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-AUS-1 -w BYOK-SecurityWorld-pkg-AUS-1
-   * Dla [Azure dla instytucji rządowych](https://azure.microsoft.com/features/gov/), który używa wystąpienie dla instytucji rządowych USA platformy Azure:
+   * W przypadku [Azure Government](https://azure.microsoft.com/features/gov/), który używa wystąpienia platformy Azure dla instytucji rządowych:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-USGOV-1 -w BYOK-SecurityWorld-pkg-USGOV-1
-   * Dla instytucji rządowych USA — DOD:
+   * W przypadku instytucji rządowych USA:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-USDOD-1 -w BYOK-SecurityWorld-pkg-USDOD-1
-   * Dla Kanady:
+   * W przypadku Kanady:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-CANADA-1 -w BYOK-SecurityWorld-pkg-CANADA-1
-   * Niemcy:
+   * Dla Niemiec:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-GERMANY-1 -w BYOK-SecurityWorld-pkg-GERMANY-1
-   * Aby uzyskać Indii:
+   * Dla Niemiec Public:
+
+         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-GERMANY-1 -w BYOK-SecurityWorld-pkg-GERMANY-1
+   * W przypadku Indii:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-INDIA-1 -w BYOK-SecurityWorld-pkg-INDIA-1
-   * Francja:
+   * Dla Francji:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-FRANCE-1 -w BYOK-SecurityWorld-pkg-FRANCE-1
-   * Zjednoczone Królestwo:
+   * W Zjednoczonym Królestwie:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-UK-1 -w BYOK-SecurityWorld-pkg-UK-1
+   * Dla Szwajcarii:
+
+         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-SUI-1 -w BYOK-SecurityWorld-pkg-SUI-1
 
      > [!TIP]
-     > Oprogramowaniem nShield nCipher obejmuje języka python w %NFAST_HOME%\python\bin
+     > Oprogramowanie oprogramowanie wspomagające nCipher sprzętowego nshield obejmuje język Python w lokalizacji%NFAST_HOME%\python\bin
      >
      >
-2. Upewnij się, że zobaczysz następujący widok, co oznacza pomyślnej weryfikacji: **Wynik: SUCCESS**
+2. Potwierdź, że zobaczysz następujące polecenie, które wskazuje na pomyślne sprawdzenie poprawności: **Wynika PRAWNEGO**
 
-Ten skrypt sprawdza łańcuch osoby podpisującej aż nShield klucza głównego. Skrót klucza głównego jest osadzony w skrypcie i jej wartość powinna być **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**. Można również potwierdzić tę wartość osobno, odwiedzając [nCipher witryny sieci Web](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/validation).
+Ten skrypt sprawdza poprawność łańcucha podpisywania do klucza głównego sprzętowego nshield. Skrót tego klucza głównego jest osadzony w skrypcie, a jego wartość powinna być **wynosić 59178a47 de508c3f 291277ee 184f46c4 f1d9c639**. Tę wartość można także potwierdzić osobno, odwiedzając [witrynę sieci Web oprogramowanie wspomagające nCipher](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/validation).
 
-Teraz możesz przystąpić do tworzenia nowego klucza.
+Teraz możesz utworzyć nowy klucz.
 
-### <a name="step-35-create-a-new-key"></a>Krok 3.5. Utwórz nowy klucz
+### <a name="step-35-create-a-new-key"></a>Krok 3,5: Utwórz nowy klucz
 
-Generowanie klucza za pomocą nCipher nShield **do generowania kluczy** program.
+Wygeneruj klucz przy użyciu programu oprogramowanie wspomagające nCipher sprzętowego nshield **do generowania kluczy** .
 
 Uruchom następujące polecenie, aby wygenerować klucz:
 
     generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey plainname=contosokey nvram=no pubexp=
 
-Po uruchomieniu tego polecenia, użyj tych instrukcji:
+Po uruchomieniu tego polecenia należy wykonać następujące instrukcje:
 
-* Parametr *chronić* musi być ustawione na wartość **modułu**, jak pokazano. Spowoduje to utworzenie klucza chronionego przez moduł. Zestaw narzędzi BYOK nie obsługuje kluczy chronionych przez serwer OCS.
-* Zastąp wartość *contosokey* dla **ident** i **plainname** z dowolną wartością ciągu. Aby zminimalizować ogólne koszty administracyjne i zmniejszyć ryzyko błędów, zaleca się używać tej samej wartości dla obu. **Ident** wartość musi zawierać tylko cyfry, łączniki i małe litery.
-* Parametr pubexp został pozostawiony pusty (ustawienie domyślne), w tym przykładzie, ale można określić konkretne jego wartości. Aby uzyskać więcej informacji, zobacz [nCipher dokumentacji.](https://www.ncipher.com/resources/solution-briefs/protect-sensitive-data-rest-and-use-across-premises-and-azure-based)
+* *Ochrona* parametrów musi być ustawiona na **moduł**Value, jak pokazano. Spowoduje to utworzenie klucza chronionego przez moduł. Zestaw narzędzi BYOK nie obsługuje kluczy chronionych przez program OCS.
+* Zastąp wartość *contosokey* dla **ident** i **Plains** wartością dowolnego ciągu. Aby zminimalizować ogólne koszty administracyjne i zmniejszyć ryzyko błędów, zalecamy użycie tej samej wartości dla obu tych elementów. Wartość **ident** musi zawierać tylko cyfry, łączniki i małe litery.
+* Pubexp jest pozostawiona puste (wartość domyślna) w tym przykładzie, ale można określić określone wartości. Aby uzyskać więcej informacji, zapoznaj się z [dokumentacją oprogramowanie wspomagające nCipher.](https://www.ncipher.com/resources/solution-briefs/protect-sensitive-data-rest-and-use-across-premises-and-azure-based)
 
-To polecenie tworzy plik Stokenizowanego klucza w folderze %NFAST_KMDATA%\local za pomocą nazwę zaczynającą się od **key_simple_** , a następnie **ident** podany w poleceniu. Na przykład: **key_simple_contosokey**. Ten plik zawiera zaszyfrowany klucz.
+To polecenie tworzy plik z tokenem w folderze%NFAST_KMDATA%\local o nazwie rozpoczynającej się od **key_simple_** , a następnie **ident** , który został określony w poleceniu. Na przykład: **key_simple_contosokey**. Ten plik zawiera zaszyfrowany klucz.
 
-Utwórz kopię zapasową tego pliku Stokenizowanego klucza w bezpiecznym miejscu.
+Wykonaj kopię zapasową tego pliku klucza tokenu w bezpiecznej lokalizacji.
 
 > [!IMPORTANT]
-> Po późniejszym przesłaniu klucza do usługi Azure Key Vault, Microsoft nie może wyeksportować tego klucza do Ciebie, staje się ona bardzo ważne, bezpieczne przechowywanie kopii zapasowej Twojego klucza oraz środowiska zabezpieczeń. Skontaktuj się z pomocą [nCipher](https://www.ncipher.com/about-us/contact-us) wskazówki i najlepsze rozwiązania dotyczące tworzenia kopii zapasowej klucza.
+> Gdy później przeniesiesz klucz do Azure Key Vault, firma Microsoft nie będzie mogła wyeksportować tego klucza z powrotem do Ciebie, dlatego bardzo ważne jest, aby w bezpieczny sposób utworzyć kopię zapasową klucza i bezpieczeństwa. Skontaktuj się z [oprogramowanie wspomagające nCipher](https://www.ncipher.com/about-us/contact-us) , aby uzyskać wskazówki i najlepsze rozwiązania związane z tworzeniem kopii zapasowej klucza.
 >
 
 
-Teraz można przystąpić do przenoszenia klucza do usługi Azure Key Vault.
+Teraz możesz przystąpić do przenoszenia klucza do Azure Key Vault.
 
-## <a name="step-4-prepare-your-key-for-transfer"></a>Krok 4: Przygotowanie klucza do przesłania
+## <a name="step-4-prepare-your-key-for-transfer"></a>Krok 4: Przygotuj klucz do przeniesienia
 
-Ten krok czwarty wykonaj następujące procedury na rozłączonej stacji roboczej.
+W tym czwartym kroku wykonaj następujące procedury na odłączonej stacji roboczej.
 
-### <a name="step-41-create-a-copy-of-your-key-with-reduced-permissions"></a>Krok 4.1: Tworzenie kopii klucza z ograniczonymi uprawnieniami
+### <a name="step-41-create-a-copy-of-your-key-with-reduced-permissions"></a>Krok 4,1: Utwórz kopię klucza z ograniczonymi uprawnieniami
 
-Otwórz nowy wiersz polecenia i zmień bieżący katalog do lokalizacji, w którym rozpakowano plik zip BYOK. Aby ograniczyć uprawnienia do tego klucza, z poziomu wiersza polecenia, uruchom jedną z następujących czynności, w zależności od regionu geograficznego lub wystąpienie platformy Azure:
+Otwórz nowy wiersz polecenia i Zmień bieżący katalog na lokalizację, w której został rozpakowany plik zip BYOK. Aby zmniejszyć uprawnienia do klucza, w wierszu polecenia Uruchom jedną z następujących czynności, w zależności od regionu geograficznego lub wystąpienia platformy Azure:
 
-* Dla Ameryki Północnej:
+* Dla Ameryka Północna:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-NA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-NA-1
 * Dla Europy:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-EU-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-EU-1
-* Azja:
+* Dla Azji:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-AP-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-AP-1
-* W Ameryce Łacińskiej:
+* Dla Ameryka Łacińska:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-LATAM-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-LATAM-1
-* W Japonii:
+* Dla Japonii:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-JPN-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-JPN-1
 * W przypadku Korei:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-KOREA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-KOREA-1
-* Aby uzyskać Republika Południowej Afryki:
+* W Republice Południowej Afryki:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-SA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-SA-1
-* Aby uzyskać Zjednoczone Emiraty Arabskie:
+* Za Zjednoczone Emiraty Arabskie:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UAE-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UAE-1
 * Dla Australii:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-AUS-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-AUS-1
-* Dla [Azure dla instytucji rządowych](https://azure.microsoft.com/features/gov/), który używa wystąpienie dla instytucji rządowych USA platformy Azure:
+* W przypadku [Azure Government](https://azure.microsoft.com/features/gov/), który używa wystąpienia platformy Azure dla instytucji rządowych:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-USGOV-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-USGOV-1
-* Dla instytucji rządowych USA — DOD:
+* W przypadku instytucji rządowych USA:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-USDOD-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-USDOD-1
-* Dla Kanady:
+* W przypadku Kanady:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-CANADA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-CANADA-1
-* Niemcy:
+* Dla Niemiec:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-GERMANY-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-GERMANY-1
-* Aby uzyskać Indii:
+* Dla Niemiec Public:
+
+        KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-GERMANY-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-GERMANY-1
+* W przypadku Indii:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-INDIA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-INDIA-1
-* Francja:
+* Dla Francji:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-FRANCE-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-FRANCE-1
-* Zjednoczone Królestwo:
+* W Zjednoczonym Królestwie:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UK-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UK-1
+* Dla Szwajcarii:
 
-Podczas uruchamiania tego polecenia Zastąp *contosokey* z taką samą wartość podana w **krok 3.5: Utwórz nowy klucz** z [wygenerowanie własnego klucza](#step-3-generate-your-key) kroku.
+        KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-SUI-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-SUI-1
 
-Zostanie wyświetlony monit monit o podłączenie kart administratora zabezpieczeń świata.
+Po uruchomieniu tego polecenia Zastąp *contosokey* wartością określoną w **kroku 3,5: Utwórz nowy klucz** z kroku [Generuj klucz](#step-3-generate-your-key) .
 
-Po zakończeniu wykonywania polecenia zostanie wyświetlony **wynik: Powodzenie** a kopia klucza z ograniczonymi uprawnieniami znajdują się w pliku o nazwie key_xferacId_\<contosokey >.
+Zostanie wyświetlony monit o podłączenie kart administratora World Security.
 
-Może być bada, listy kontroli dostępu przy użyciu poniższych poleceń za pomocą narzędzi nShield nCipher:
+Po zakończeniu wykonywania polecenia zostanie wyświetlony **wynik: Sukces** i kopia klucza z ograniczonymi uprawnieniami znajdują się w pliku o nazwie key_xferacId_\<contosokey >.
+
+Można sprawdzić listy ACL przy użyciu następujących poleceń przy użyciu narzędzi oprogramowanie wspomagające nCipher sprzętowego nshield:
 
 * aclprint.py:
 
@@ -451,76 +478,83 @@ Może być bada, listy kontroli dostępu przy użyciu poniższych poleceń za po
 * kmfile-dump.exe:
 
         "%nfast_home%\bin\kmfile-dump.exe" "%NFAST_KMDATA%\local\key_xferacld_contosokey"
-  Po uruchomieniu tych poleceń Zastąp contosokey tę samą wartość, określona w **krok 3.5: Utwórz nowy klucz** z [wygenerowanie własnego klucza](#step-3-generate-your-key) kroku.
+  Po uruchomieniu tych poleceń Zastąp contosokey wartością określoną w **kroku 3,5: Utwórz nowy klucz** z kroku [Generuj klucz](#step-3-generate-your-key) .
 
-### <a name="step-42-encrypt-your-key-by-using-microsofts-key-exchange-key"></a>Krok 4.2 Zaszyfrowanie klucza przy użyciu klucza wymiany klucza firmy Microsoft
+### <a name="step-42-encrypt-your-key-by-using-microsofts-key-exchange-key"></a>Krok 4,2: Szyfrowanie klucza przy użyciu klucza wymiany kluczy firmy Microsoft
 
-Uruchom jedno z następujących poleceń w zależności od regionu geograficznego lub wystąpienie platformy Azure:
+Uruchom jedno z następujących poleceń, w zależności od regionu geograficznego lub wystąpienia platformy Azure:
 
-* Dla Ameryki Północnej:
+* Dla Ameryka Północna:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-NA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-NA-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
 * Dla Europy:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-EU-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-EU-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
-* Azja:
+* Dla Azji:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-AP-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-AP-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
-* W Ameryce Łacińskiej:
+* Dla Ameryka Łacińska:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-LATAM-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-LATAM-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
-* W Japonii:
+* Dla Japonii:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-JPN-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-JPN-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
 * W przypadku Korei:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-KOREA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-KOREA-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
-* Aby uzyskać Republika Południowej Afryki:
+* W Republice Południowej Afryki:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-SA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-SA-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
-* Aby uzyskać Zjednoczone Emiraty Arabskie:
+* Za Zjednoczone Emiraty Arabskie:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UAE-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UAE-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
 * Dla Australii:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-AUS-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-AUS-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
-* Dla [Azure dla instytucji rządowych](https://azure.microsoft.com/features/gov/), który używa wystąpienie dla instytucji rządowych USA platformy Azure:
+* W przypadku [Azure Government](https://azure.microsoft.com/features/gov/), który używa wystąpienia platformy Azure dla instytucji rządowych:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-USGOV-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-USGOV-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
-* Dla instytucji rządowych USA — DOD:
+* W przypadku instytucji rządowych USA:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-USDOD-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-USDOD-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
-* Dla Kanady:
+* W przypadku Kanady:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-CANADA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-CANADA-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
-* Niemcy:
+* Dla Niemiec:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-GERMANY-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-GERMANY-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
-* Aby uzyskać Indii:
+* Dla Niemiec Public:
+
+        KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-GERMANY-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-GERMANY-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
+* W przypadku Indii:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-INDIA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-INDIA-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
-* Francja:
+* Dla Francji:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-France-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-France-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
-* Zjednoczone Królestwo:
+* W Zjednoczonym Królestwie:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UK-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UK-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
+* Dla Szwajcarii:
 
-Po uruchomieniu tego polecenia, użyj tych instrukcji:
+        KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-SUI-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-SUI-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
 
-* Zastąp *contosokey* z identyfikatorem użytym do wygenerowania klucza w **krok 3.5: Utwórz nowy klucz** z [wygenerowanie własnego klucza](#step-3-generate-your-key) kroku.
-* Zastąp *SubscriptionID* z Identyfikatorem subskrypcji platformy Azure, która zawiera Twój magazyn kluczy. Możesz pobrać tę wartość poprzedniej wersji programu **opisem kroku 1.2: Pobierz swój identyfikator subskrypcji platformy Azure** z [Przygotowanie stacji roboczej podłączonej do Internetu](#step-1-prepare-your-internet-connected-workstation) kroku.
-* Zastąp *ContosoFirstHSMKey* etykietą, która jest używana do nazwy pliku wyjściowego.
 
-Po zakończeniu tego procesu pomyślnie, wyświetla **wynik: Powodzenie** i nowy plik w bieżącym folderze, który ma następującą nazwę: KeyTransferPackage-*ContosoFirstHSMkey*.byok
+Po uruchomieniu tego polecenia należy wykonać następujące instrukcje:
 
-### <a name="step-43-copy-your-key-transfer-package-to-the-internet-connected-workstation"></a>Krok 4.3: Kopiowanie pakietu przekazywania klucza do stacji roboczej podłączonej do Internetu
+* Zastąp *contosokey* identyfikatorem użytym do wygenerowania klucza w **kroku 3,5: Utwórz nowy klucz** z kroku [Generuj klucz](#step-3-generate-your-key) .
+* Zastąp Identyfikator subskrypcji kluczem subskrypcji platformy Azure, który zawiera Magazyn kluczy. Ta wartość została wcześniej pobrana **, w kroku 1,2: Pobierz swój identyfikator** subskrypcji platformy Azure z kroku [przygotowanie stacji roboczej połączonej z Internetem](#step-1-prepare-your-internet-connected-workstation) .
+* Zastąp *ContosoFirstHSMKey* etykietą, która jest używana jako nazwa pliku wyjściowego.
 
-Aby skopiować plik wyjściowy z poprzedniego kroku (KeyTransferPackage-ContosoFirstHSMkey.byok) do stacji roboczej podłączonej do Internetu, należy użyć dysku USB lub innego przenośnego urządzenia pamięci masowej.
+Po pomyślnym zakończeniu zostanie wyświetlony **wynik: Powodzenie** i istnieje nowy plik w bieżącym folderze, który ma następującą nazwę: KeyTransferPackage-*ContosoFirstHSMkey*.byok
 
-## <a name="step-5-transfer-your-key-to-azure-key-vault"></a>Krok 5. Przesłanie klucza do usługi Azure Key Vault
+### <a name="step-43-copy-your-key-transfer-package-to-the-internet-connected-workstation"></a>Krok 4,3: Skopiuj pakiet transferu klucza do stacji roboczej połączonej z Internetem
 
-W tym ostatnim kroku na stacji roboczej podłączonej do Internetu, użyj [AzKeyVaultKey Dodaj](/powershell/module/az.keyvault/add-azkeyvaultkey) polecenia cmdlet, aby przesłać pakiet przekazywania klucza, który został skopiowany z odłączonej stacji roboczej do magazynu Azure klucza sprzętowego modułu zabezpieczeń:
+Za pomocą dysku USB lub innego przenośnego magazynu Skopiuj plik wyjściowy z poprzedniego kroku (KeyTransferPackage-ContosoFirstHSMkey. BYOK) do stacji roboczej podłączonej do Internetu.
+
+## <a name="step-5-transfer-your-key-to-azure-key-vault"></a>Krok 5. Przenieś klucz do Azure Key Vault
+
+W tym ostatnim kroku na stacji roboczej połączonej z Internetem Użyj polecenia cmdlet [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) w celu przekazania pakietu transferu klucza skopiowanego z rozłączonej stacji roboczej do modułu HSM Azure Key Vault:
 
    ```powershell
         Add-AzKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMkey' -KeyFilePath 'c:\KeyTransferPackage-ContosoFirstHSMkey.byok' -Destination 'HSM'
@@ -528,6 +562,6 @@ W tym ostatnim kroku na stacji roboczej podłączonej do Internetu, użyj [AzKey
 
 Jeśli przekazywanie zakończy się pomyślnie, zobaczysz wyświetlone właściwości klucza, który właśnie został dodany.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Można teraz używać tego klucza chronionego przez moduł HSM w magazynie kluczy. Aby uzyskać więcej informacji, zobacz tej funkcji i cen [porównania](https://azure.microsoft.com/pricing/details/key-vault/).
+Teraz można używać tego klucza chronionego przez moduł HSM w magazynie kluczy. Aby uzyskać więcej informacji, zobacz to [porównanie](https://azure.microsoft.com/pricing/details/key-vault/)cen i funkcji.

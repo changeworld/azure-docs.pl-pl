@@ -6,12 +6,12 @@ author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 67ad37491f71ac82ff52331d19ea92a646c80a52
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 8f83c40aeecdbf9ca30adc20286712850882ee41
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716978"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616793"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Partycjonowanie i skalowanie w poziomie Azure Cosmos DB
 
@@ -27,7 +27,7 @@ Partycja logiczna definiuje również zakres transakcji bazy danych. Można aktu
 
 ## <a name="physical-partitions"></a>Partycje fizyczne
 
-Kontener usługi Azure Cosmos jest skalowany przez dystrybuowanie danych i przepływności na dużą liczbę partycji logicznych. Wewnętrznie, co najmniej jedna partycja logiczna jest zamapowana na partycję fizyczną, która składa się z zestawu replik, nazywanego również [*zestawem replik*](global-dist-under-the-hood.md). Każdy zestaw replik obsługuje wystąpienie aparatu bazy danych Azure Cosmos DB. Zestaw replik sprawia, że dane przechowywane w partycji fizycznej są trwałe, wysoce dostępne i spójne. Partycja fizyczna obsługuje maksymalną ilość magazynu i jednostek żądań (jednostek ru). Każda replika tworząca partycję fizyczną dziedziczy przydział magazynowania partycji. Wszystkie repliki partycji fizycznej w sposób zbiorczy obsługują przepływność przydzieloną do partycji fizycznej. 
+Kontener usługi Azure Cosmos jest skalowany przez dystrybuowanie danych i przepływności na dużą liczbę partycji logicznych. Wewnętrznie, co najmniej jedna partycja logiczna jest zamapowana na partycję fizyczną, która składa się z zestawu replik, nazywanego również [*zestawem replik*](global-dist-under-the-hood.md). Każdy zestaw replik jest hostem wystąpienia aparatu bazy danych Azure Cosmos. Zestaw replik sprawia, że dane przechowywane w partycji fizycznej są trwałe, wysoce dostępne i spójne. Partycja fizyczna obsługuje maksymalną ilość magazynu i jednostek żądań (jednostek ru). Każda replika tworząca partycję fizyczną dziedziczy przydział magazynowania partycji. Wszystkie repliki partycji fizycznej w sposób zbiorczy obsługują przepływność przydzieloną do partycji fizycznej. 
 
 Na poniższej ilustracji przedstawiono, jak partycje logiczne są mapowane na partycje fizyczne dystrybuowane globalnie:
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: abnarain
-ms.openlocfilehash: 7e09c36128c3471ce9df33b2a78eb14fab89435b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ad09715f8ccbe20ec6f58d3a4543e0168e9f4cbc
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60498207"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617719"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Kopiowanie danych z lokalnej bazy danych programu SQL Server do usługi Azure Blob Storage
 W tym samouczku użyjesz interfejsu użytkownika usługi Azure Data Factory, aby utworzyć potok usługi Data Factory, który kopiuje dane z lokalnej bazy danych programu SQL Server do usługi Azure Blob Storage. Utworzysz własne środowisko Integration Runtime (Self-hosted), służące do przenoszenia danych między lokalnym magazynem danych i magazynem danych w chmurze.
@@ -89,7 +89,6 @@ W tym samouczku używasz nazwy i klucza swojego konta magazynu. Pobierz nazwę i
 
 1. W oknie **Konto magazynu** wybierz pozycję **Klucze dostępu**.
 
-    ![Klawisze dostępu](media/tutorial-hybrid-copy-powershell/storage-account-name-key.png)
 
 1. Skopiuj wartości z pól **Nazwa konta magazynu** i **klucz1** i wklej je do Notatnika lub innego edytora do późniejszego użycia z tym samouczkiem. 
 
@@ -114,14 +113,11 @@ W tej sekcji utworzysz kontener obiektów blob o nazwie **adftutorial** w usłud
 
 1. Pozostaw otwarte okno **kontenera** **adftutorial**. Będzie ona używana do weryfikacji danych wyjściowych na końcu tego samouczka. Usługa Data Factory automatycznie tworzy folder wyjściowy w tym kontenerze, więc Ty nie musisz go tworzyć.
 
-    ![Okno kontenera](media/tutorial-hybrid-copy-powershell/container-page.png)
-
-
 ## <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 W tym kroku utworzysz fabrykę danych i uruchomisz interfejs użytkownika usługi Data Factory, aby utworzyć potok w fabryce danych. 
 
 1. Otwórz przeglądarkę internetową **Microsoft Edge** lub **Google Chrome**. Obecnie interfejs użytkownika usługi Data Factory jest obsługiwany tylko przez przeglądarki internetowe Microsoft Edge i Google Chrome.
-1. W menu po lewej stronie wybierz **Utwórz zasób** > **dane + analiza** > **usługi Data Factory**:
+1. W menu po lewej stronie wybierz pozycję **Utwórz zasób** > **dane + analiza** > **Data Factory**:
    
    ![Wybór usługi Data Factory w okienku „Nowy”](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -185,7 +181,7 @@ Nazwa fabryki danych musi być *globalnie unikatowa*. Jeśli dla pola nazwy zoba
 
 1. W oknie **Nowa połączona usługa** w polu **Nazwa** dodaj ciąg **SqlServerLinkedService**. Wybierz pozycję **Nowy** w polu **Połącz za pośrednictwem środowiska Integration Runtime**. W tej sekcji utworzysz własne środowisko Integration Runtime i skojarzysz je z maszyną lokalną za pomocą bazy danych programu SQL Server. Własne środowisko Integration Runtime jest składnikiem, który kopiuje dane z bazy danych programu SQL Server na Twojej maszynie do usługi Blob Storage. 
 
-   ![Nowe środowisko Integration Runtime](./media/tutorial-hybrid-copy-portal/new-integration-runtime-button.png)
+   ![Tworzenie nowego środowiska Integration Runtime](./media/tutorial-hybrid-copy-portal/new-integration-runtime-button.png)
 
 1. W oknie **instalatora środowiska Integration Runtime** wybierz pozycję **Sieć prywatna**, a następnie wybierz przycisk **Dalej**. 
 
@@ -231,7 +227,7 @@ Nazwa fabryki danych musi być *globalnie unikatowa*. Jeśli dla pola nazwy zoba
 
     a. Upewnij się, że dla ustawienia **Połączona usługa** jest wyświetlana wartość **SqlServerLinkedService**.
 
-    b. W obszarze **Tabela** wybierz pozycję **[dbo].[emp]**.
+    b. W obszarze **Tabela** wybierz pozycję **[dbo].[emp]** .
 
     ![Informacje o połączeniu ze źródłowym zestawem danych](./media/tutorial-hybrid-copy-portal/source-dataset-connection.png)
 
@@ -320,7 +316,7 @@ Potok automatycznie tworzy folder wyjściowy o nazwie *fromonprem* w kontenerze 
 ![potwierdzenie nazwy pliku wyjściowego](./media/tutorial-hybrid-copy-portal/sink-output.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Potok w tym przykładzie kopiuje dane z jednej lokalizacji do innej lokalizacji w usłudze Blob Storage. W tym samouczku omówiono:
 
 > [!div class="checklist"]

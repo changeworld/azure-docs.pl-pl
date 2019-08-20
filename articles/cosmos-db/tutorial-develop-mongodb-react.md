@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: jopapa
 ms.reviewer: sngun
-ms.openlocfilehash: 1bb8779db51a3fdc3af4a9169ce5123ebf6e3f50
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 4efaa90281ddcebf1b800e1016578e38c24be651
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66477750"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614113"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>Tworzenie aplikacji bazy danych MongoDB przy użyciu platformy React i usługi Azure Cosmos DB  
 
@@ -69,7 +69,7 @@ W tym filmie pokazano, jak utworzyć konto usługi Azure Cosmos DB w witrynie Az
 
 ## <a name="read-and-create-heroes-in-the-app"></a>Odczytywanie i tworzenie elementów głównych w aplikacji
 
-W tym filmie wideo pokazano, jak odczytywać elementy główne i tworzyć elementy główne w bazie danych usługi Cosmos DB, a także jak testować te metody przy użyciu interfejsu użytkownika platformy React i narzędzia Postman. 
+W tym filmie wideo pokazano, jak odczytać Heroes i utworzyć Heroes w bazie danych Cosmos, a także jak testować te metody przy użyciu programu Poster i interfejsu użytkownika reagowania. 
 
 > [!VIDEO https://www.youtube.com/embed/AQK9n_8fsQI] 
 

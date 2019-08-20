@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: a8265496c475566ec7a87a19eab6d975838e9da4
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 23ae7b5cfec26fb2483a3e4ac13a1220888d76ee
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966384"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614266"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Działanie kopiowania w usłudze Azure Data Factory
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
 > * [Wersja 1](v1/data-factory-data-movement-activities.md)
@@ -130,7 +130,7 @@ Następujący szablon działania kopiowania zawiera stanowi wyczerpującej listy
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type działania Copy musi mieć ustawioną wartość: **Copy** | Tak |
+| type | Właściwość Type działania Copy musi mieć ustawioną wartość: **Kopiuj** | Tak |
 | inputs | Określ zestaw danych utworzony wskazującą na źródło danych. Działanie kopiowania obsługuje tylko jednego danych wejściowych. | Yes |
 | outputs | Określ zestaw danych został utworzony, które punkty danych ujścia. Działanie kopiowania obsługuje tylko pojedynczego wyjścia. | Yes |
 | typeProperties | Grupa właściwości, aby skonfigurować działanie kopiowania. | Yes |
@@ -144,7 +144,7 @@ Następujący szablon działania kopiowania zawiera stanowi wyczerpującej listy
 
 ## <a name="monitoring"></a>Monitorowanie
 
-Możesz monitorować działanie kopiowania służy do uruchamiania w usłudze Azure Data Factory "Tworzenie i monitorowanie" w interfejsie użytkownika lub programowo. Możesz następnie porównać wydajność i konfiguracji scenariusza z działaniem kopiowania [dotyczące wydajności](copy-activity-performance.md#performance-reference) z testów wewnętrznych.
+Możesz monitorować działanie kopiowania służy do uruchamiania w usłudze Azure Data Factory "Tworzenie i monitorowanie" w interfejsie użytkownika lub programowo.
 
 ### <a name="monitor-visually"></a>Monitorowanie wizualne
 

@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.custom: seo-java-august2019
-ms.openlocfilehash: e8ca40ec86bc3af92fd23bb7acce3d6c39b082fb
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 7a76ed943a9c3f7312653d1ea4d714e4c02a5294
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933923"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615616"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-java-sdk-and-azure-cosmos-db"></a>Szybki start: Tworzenie aplikacji Cassandra przy użyciu zestawu SDK języka Java i usługi Azure Cosmos DB
 
@@ -220,7 +220,7 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach poł
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki start wyjaśniono sposób tworzenia konta usługi Azure Cosmos DB, bazy danych Cassandra i kontenera za pomocą Eksploratora danych oraz uruchamianie aplikacji w celu wykonania tych samych czynności w sposób programowy. Teraz możesz zaimportować dodatkowe dane do kontenera usługi Azure Cosmos DB. 
+W tym przewodniku Szybki start wyjaśniono sposób tworzenia konta usługi Azure Cosmos DB, bazy danych Cassandra i kontenera za pomocą Eksploratora danych oraz uruchamianie aplikacji w celu wykonania tych samych czynności w sposób programowy. Teraz możesz zaimportować dodatkowe dane do kontenera usługi Azure Cosmos. 
 
 > [!div class="nextstepaction"]
 > [Importowanie danych bazy danych Cassandra do usługi Azure Cosmos DB](cassandra-import-data.md)

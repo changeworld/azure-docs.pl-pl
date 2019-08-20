@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f346c995cbc8be6e609020db799959d873ce89b3
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 672a3571202b92232bd45a42254a43019f6a9796
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68944954"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617343"
 ---
 # <a name="tutorial-integrate-amazon-web-services-aws-with-azure-active-directory"></a>Samouczek: Integruj Amazon Web Services (AWS) z Azure Active Directory
 
@@ -35,7 +35,7 @@ Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zo
 
 ![Diagram relacji usług Azure AD i AWS](./media/amazon-web-service-tutorial/tutorial_amazonwebservices_image.png)
 
-Można skonfigurować wiele identyfikatorów dla wielu wystąpień. Na przykład:
+Można skonfigurować wiele identyfikatorów dla wielu wystąpień. Przykład:
 
 * `https://signin.aws.amazon.com/saml#1`
 
@@ -111,7 +111,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
 7. Oprócz powyższych atrybutów aplikacja AWS oczekuje kilku atrybutów do przekazania z powrotem w odpowiedzi SAML. W sekcji **oświadczenia użytkownika** w oknie dialogowym **atrybuty użytkownika** wykonaj następujące kroki, aby dodać atrybut tokenu SAML.
 
-    | Name (Nazwa)  | Atrybut źródłowy  | Przestrzeń nazw |
+    | Name  | Atrybut źródłowy  | Przestrzeń nazw |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | https://aws.amazon.com/SAML/Attributes |
     | Role            | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
@@ -369,6 +369,12 @@ Po wybraniu kafelka AWS w panelu dostępu należy automatycznie zalogować się 
    Wiele dzierżawców AWS (reprezentowane przez `servicePrincipals`) można dodać do usługi Azure AD z galerii w celu aprowizacji. Istnieje jednak znany problem, ale nie jest możliwe automatyczne zapisanie wszystkich zaimportowanych ról z wielu AWS `servicePrincipals` używanych do aprowizacji w `servicePrincipal` ramach logowania jednokrotnego. 
    
    Jako obejście można użyć [interfejsu API Microsoft Graph](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) , aby wyodrębnić wszystkie `appRoles` zaimportowane do każdego AWSu `servicePrincipal` , w którym skonfigurowano Inicjowanie obsługi. Następnie można dodać te ciągi ról do AWS `servicePrincipal` , w którym skonfigurowano Logowanie jednokrotne.
+ 
+* Role muszą spełniać następujące wymagania, aby można było zaimportować je z AWS do usługi Azure AD:
+
+  * Role muszą mieć dokładnie jeden dostawca SAML zdefiniowany w AWS
+
+  * Połączona długość roli ARN i SAML-Provider ARN dla importowanej roli nie może zawierać więcej niż 119 znaków
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 

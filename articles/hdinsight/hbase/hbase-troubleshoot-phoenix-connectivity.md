@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 08/07/2019
-ms.openlocfilehash: 641d622377bad7a1239efd526b93c6f0f0c08d4a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.date: 08/14/2019
+ms.openlocfilehash: 66077416dca4048fc99047f7d6b967e55aab0a23
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68887042"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575738"
 ---
 # <a name="scenario-apache-phoenix-connectivity-issues-in-azure-hdinsight"></a>Scenariusz: Problemy z łącznością Apache Phoenix w usłudze Azure HDInsight
 
@@ -27,7 +27,7 @@ Nieprawidłowy adres IP aktywnego węzła dozorcy.
 
 ### <a name="resolution"></a>Rozwiązanie
 
-Adres IP aktywnego węzła dozorcy można zidentyfikować z poziomu interfejsu użytkownika Ambari, wykonując linki do **> Szybkie linki — > ZK***  **(Active) — > Informacje o dozorcy**. Poprawne w razie konieczności.
+Adres IP aktywnego węzła dozorcy można zidentyfikować z poziomu interfejsu użytkownika Ambari, postępując zgodnie z linkami do **HBase** > **szybkie linki** > **ZK (Active)**  > **dozorcy info**. W razie konieczności popraw adres IP.
 
 ---
 
@@ -35,29 +35,29 @@ Adres IP aktywnego węzła dozorcy można zidentyfikować z poziomu interfejsu u
 
 Podczas uruchamiania poleceń, takich `!tables`jak, pojawia się komunikat o błędzie podobny do:
 
-```
+```output
 Error while connecting to sqlline.py (Hbase - phoenix) Setting property: [isolation, TRANSACTION_READ_COMMITTED] issuing: !connect jdbc:phoenix:10.2.0.7 none none org.apache.phoenix.jdbc.PhoenixDriver Connecting to jdbc:phoenix:10.2.0.7 SLF4J: Class path contains multiple SLF4J bindings.
 ```
 
 Podczas uruchamiania poleceń, takich `count 'SYSTEM.CATALOG'`jak, pojawia się komunikat o błędzie podobny do:
 
-```
+```output
 ERROR: org.apache.hadoop.hbase.NotServingRegionException: Region SYSTEM.CATALOG,,1485464083256.c0568c94033870c517ed36c45da98129. is not online on 10.2.0.5,16020,1489466172189)
 ```
 
 ### <a name="resolution"></a>Rozwiązanie
 
-Uruchom ponownie usługę serwera hmaster na wszystkich węzłach dozorcy z poziomu interfejsu użytkownika Ambari.
+W interfejsie użytkownika Apache Ambari wykonaj następujące kroki, aby ponownie uruchomić usługę serwera hmaster na wszystkich węzłach dozorcy:
 
-1. Przejdź do **HBase — > aktywne łącze HBase Master** w sekcji Podsumowanie HBase.
+1. W sekcji **Podsumowanie** HBase przejdź do pozycji **HBase** > **Active HBase Master**.
 
 1. W sekcji **składniki** Uruchom ponownie usługę HBase Master.
 
-1. Powtórz powyższe kroki dla pozostałych usług **HBase Master w stanie wstrzymania** .
+1. Powtórz te kroki dla wszystkich pozostałych usług **HBase Master w stanie wstrzymania** .
 
-Zastabilizacja i zakończenie odzyskiwania może potrwać do 5 HBase Master minut. `SYSTEM.CATALOG` Gdy tabela zostanie przywrócona do normalnego, problem z łącznością Apache Phoenix powinien zostać rozwiązany automatycznie.
+Zastabilizacja i zakończenie odzyskiwania przez usługę HBase Master może potrwać do 5 minut. `SYSTEM.CATALOG` Gdy tabela zostanie przywrócona do normalnego, problem z łącznością Apache Phoenix powinien zostać rozwiązany automatycznie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Jeśli problem nie został wyświetlony lub nie można rozwiązać problemu, odwiedź jeden z następujących kanałów, aby uzyskać więcej pomocy:
 

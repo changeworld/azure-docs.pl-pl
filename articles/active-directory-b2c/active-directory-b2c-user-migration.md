@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 128aa17c3f3d19f5551958fde488f803224d1cd5
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 08ace7170a982fbaa186b77b27e342f16349aadd
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693373"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69613310"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Migracja użytkowników
 
@@ -27,7 +27,7 @@ Za pomocą Azure AD B2C można migrować użytkowników za pomocą [interfejs AP
 
 - **Przed migracją**: Ten przepływ ma zastosowanie, gdy masz czysty dostęp do poświadczeń użytkownika (nazwa użytkownika i hasło) lub poświadczenia są zaszyfrowane, ale można je odszyfrować. Proces poprzedzający migrację obejmuje odczytywanie użytkowników ze starego dostawcy tożsamości i tworzenie nowych kont w katalogu Azure AD B2C.
 
-- **Przed migracją i resetowaniem hasła**: Ten przepływ ma zastosowanie, gdy hasło użytkownika jest niedostępne. Na przykład:
+- **Przed migracją i resetowaniem hasła**: Ten przepływ ma zastosowanie, gdy hasło użytkownika jest niedostępne. Przykład:
   - Hasło jest przechowywane w formacie skrótu.
   - Hasło jest przechowywane w dostawcy tożsamości, do którego nie można uzyskać dostępu. Stary dostawca tożsamości sprawdza poprawność poświadczeń użytkownika przez wywołanie usługi sieci Web.
 
@@ -93,7 +93,7 @@ Teraz masz aplikację z uprawnieniami do tworzenia, odczytywania i aktualizowani
 
 ### <a name="step-14-optional-environment-cleanup"></a>Krok 1,4: Obowiązkowe Czyszczenie środowiska
 
-Uprawnienia do odczytu i zapisu danych katalogu *nie obejmują prawa* do usuwania użytkowników. Aby umożliwić aplikacji usuwanie użytkowników (czyszczenie środowiska), należy wykonać dodatkowy krok, który polega na uruchomieniu programu PowerShell w celu ustawienia uprawnień administratora konta użytkownika. W przeciwnym razie możesz przejść do następnej sekcji.
+Uprawnienia do odczytu i zapisu danych katalogu nie obejmują prawa do usuwania użytkowników. Aby umożliwić aplikacji usuwanie użytkowników (czyszczenie środowiska), należy wykonać dodatkowy krok, który polega na uruchomieniu programu PowerShell w celu ustawienia uprawnień administratora konta użytkownika. W przeciwnym razie możesz przejść do następnej sekcji.
 
 > [!IMPORTANT]
 > Musisz użyć konta administratora dzierżawy B2C, które jest *lokalne* dla dzierżawy B2C. Składnia nazwy konta to *admin\@contosob2c.onmicrosoft.com*.
@@ -375,4 +375,4 @@ Po wykonaniu instruktażu wprowadzenie do [zasad niestandardowych][B2C-GetStarte
 [B2C-GraphQuickStart]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet
 [B2C-NavContext]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-navigate-to-b2c-context
 [Portal]: https://portal.azure.com/
-[UserMigrationSample]: https://github.com/yoelhor/Azure-AD-B2C-UserMigration
+[UserMigrationSample]: https://github.com/azure-ad-b2c/user-migration

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: f465ac91936b766d2c19ea8efd67b3acc8df6d75
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 20a9ca8e28961a6dc49947a22f745424961b4a3f
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243942"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615264"
 ---
 # <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>Jak pisać procedury składowane i wyzwalacze przy użyciu interfejsu API zapytań języka JavaScript w usłudze Azure Cosmos DB
 
@@ -19,7 +19,7 @@ Usługa Azure Cosmos DB umożliwia wykonywanie zapytań zoptymalizowanych przy u
 
 ## <a id="stored-procedures"></a>Procedura składowana używająca interfejsu API zapytań języka JavaScript
 
-Poniższy przykładowy kod pokazuje użycie interfejsu API zapytań języka JavaScript w kontekście procedury składowanej. Procedura składowana wstawia element usługi Azure Cosmos DB, który jest określony przez parametr wejściowy, i aktualizuje dokument metadanych przy użyciu metody `__.filter()` z właściwościami minSize, maxSize i totalSize określonymi na podstawie właściwości rozmiaru elementu wejściowego.
+Poniższy przykładowy kod pokazuje użycie interfejsu API zapytań języka JavaScript w kontekście procedury składowanej. Procedura składowana wstawia element Cosmos platformy Azure, który jest określony przez parametr wejściowy, i aktualizuje dokument metadanych przy użyciu `__.filter()` metody z MinSize, parametrem i totalSize na podstawie właściwości rozmiaru elementu wejściowego.
 
 > [!NOTE]
 > `__` (podwójne podkreślenie) jest aliasem funkcji `getContext().getCollection()` podczas korzystania z interfejsu API zapytań języka JavaScript.
@@ -78,7 +78,7 @@ function insertDocumentAndUpdateMetadata(item) {
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Zapoznaj się z poniższymi artykułami, aby dowiedzieć się więcej o procedurach składowanych, wyzwalaczach i funkcjach zdefiniowanych przez użytkownika w usłudze Azure Cosmos DB:
 

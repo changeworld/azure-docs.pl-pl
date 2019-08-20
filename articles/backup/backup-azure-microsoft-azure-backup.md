@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: eb9908fc7b2d4ecd8af8c2b4a65ab43352035ec5
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 18eacc914a30dc6004bef71e9d3910e170c43d9b
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018893"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575147"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalowanie i uaktualnianie Azure Backup Server
 > [!div class="op_single_selector"]
@@ -176,11 +176,10 @@ Po zakończeniu procesu wyodrębniania zaznacz pole wyboru, aby uruchomić świe
     W przypadku korzystania z własnego wystąpienia programu SQL 2017 należy ręcznie skonfigurować usługi SSRS. Po skonfigurowaniu usług SSRS upewnij się, że właściwość IsInitialized usług SSRS ma *wartość true*. Gdy ta wartość jest równa true, serwera usługi MAB zakłada, że usługa SSRS jest już skonfigurowana i pominie konfigurację usług SSRS.
 
     W przypadku konfiguracji usług SSRS należy użyć następujących wartości: 
-
-        - Service Account: ‘Use built-in account’ should be Network Service
-        - Web Service URL: ‘Virtual Directory’ should be ReportServer_<SQLInstanceName>
-        - Database: DatabaseName should be ReportServer$<SQLInstanceName>
-        - Web Portal URL: ‘Virtual Directory’ should be Reports_<SQLInstanceName>
+    - Konto usługi: "Użyj wbudowanego konta" powinno być usługą sieciową
+    - Adres URL usługi sieci Web: "Katalog wirtualny" powinien być ReportServer_<SQLInstanceName>
+    - Database DatabaseName powinien być ReportServer $<SQLInstanceName>
+    - Adres URL portalu sieci Web: "Katalog wirtualny" powinien być Reports_<SQLInstanceName>
 
     [Dowiedz się więcej](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) o konfiguracji usług SSRS.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 5cbbd507352471f5e093ef018de4b0c849aad442
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 93b00aec868cf947b67329934c703f5d1b774426
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68000795"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615387"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Często zadawane pytania dotyczące różnych interfejsów API w usłudze Azure Cosmos DB
 
@@ -123,7 +123,7 @@ Tak, Azure cosmos DB obsługuje analizy serii czasowych, poniżej przedstawiono 
 
 ### <a name="how-do-i-start-developing-against-the-sql-api"></a>Jak rozpocząć tworzenie przy użyciu interfejsu API SQL
 
-Najpierw musisz zarejestrować do subskrypcji platformy Azure. Po zalogowaniu do subskrypcji platformy Azure z subskrypcją platformy Azure można dodać kontener interfejsu API SQL. Aby uzyskać instrukcje dotyczące dodawania konta usługi Azure Cosmos DB, zobacz [Tworzenie konta bazy danych usługi Azure Cosmos DB](create-sql-api-dotnet.md#create-account).
+Najpierw musisz zarejestrować do subskrypcji platformy Azure. Po zalogowaniu do subskrypcji platformy Azure z subskrypcją platformy Azure można dodać kontener interfejsu API SQL. Aby uzyskać instrukcje dotyczące dodawania konta Azure Cosmos DB, zobacz [Tworzenie konta bazy danych usługi Azure Cosmos](create-sql-api-dotnet.md#create-account).
 
 [Zestawy SDK](sql-api-sdk-dotnet.md) są dostępne dla języków .NET, Python, Node.js, JavaScript i Java. Deweloperzy mogą również używać [interfejsów API RESTful protokołu HTTP](/rest/api/cosmos-db/) do interakcji z zasobami usługi Azure Cosmos DB z różnych platform i języków.
 
@@ -203,7 +203,7 @@ Tworzenie uprawnień za pomocą ResourceTokens jest dozwolone na poziomie konten
 
 ### <a name="what-is-the-azure-cosmos-dbs-api-for-mongodb"></a>Co to jest interfejs API Azure Cosmos DB dla MongoDB?
 
-Interfejs API Azure Cosmos DB dla MongoDB jest warstwą zgodności protokołu przewodowego, która umożliwia aplikacjom łatwe i nieprzezroczyste komunikowanie się z natywnym aparatem bazy danych Azure Cosmos DB, korzystając z istniejących, obsługiwanych przez społeczność zestawów SDK i sterowników dla MongoDB. Deweloperzy mogą teraz używać istniejących MongoDB łańcuchy narzędzi i umiejętności do kompilowania aplikacji, które korzystają z Azure Cosmos DB. Deweloperzy mogą korzystać z unikatowych możliwości Azure Cosmos DB, które obejmują dystrybucję globalną z replikacją obejmującą wiele wzorców, funkcję autoindeksowania, konserwację kopii zapasowej, finansowo objęte umową dotyczącą poziomu usług (umowy SLA) itp.
+Interfejs API Azure Cosmos DB dla MongoDB to warstwa zgodności protokołu przewodowego, która umożliwia aplikacjom łatwe i nieprzezroczyste komunikowanie się z natywnym aparatem bazy danych Cosmos platformy Azure przy użyciu istniejących, obsługiwanych przez społeczność zestawów SDK i sterowników dla MongoDB. Deweloperzy mogą teraz używać istniejących MongoDB łańcuchy narzędzi i umiejętności do kompilowania aplikacji, które korzystają z Azure Cosmos DB. Deweloperzy mogą korzystać z unikatowych możliwości Azure Cosmos DB, które obejmują dystrybucję globalną z replikacją obejmującą wiele wzorców, funkcję autoindeksowania, konserwację kopii zapasowej, finansowo objęte umową dotyczącą poziomu usług (umowy SLA) itp.
 
 ### <a name="how-do-i-connect-to-my-database"></a>Jak mogę połączyć się z moją bazą danych?
 
@@ -453,7 +453,7 @@ Interfejs API tabel udostępnia taką samą funkcjonalność zapytań, jak usłu
 Należy zmienić TableThroughput, gdy stosuje się jedną z następujących warunków:
 
 * Wykonujesz wyodrębniania, przekształcania i ładowania (ETL) danych lub chcesz przekazać dużej ilości danych w krótkim czasie.
-* Potrzebujesz więcej przepływności z kontenera lub zestaw kontenerów na zapleczu. Na przykład zobaczysz że przepustowość używana jest większa niż aprowizowaną przepływność i jesteś ograniczany. Aby uzyskać więcej informacji, zobacz [Ustawianie przepływności dla kontenerów usługi Azure Cosmos DB](set-throughput.md).
+* Potrzebujesz więcej przepływności z kontenera lub zestaw kontenerów na zapleczu. Na przykład zobaczysz że przepustowość używana jest większa niż aprowizowaną przepływność i jesteś ograniczany. Aby uzyskać więcej informacji, zobacz [Ustawianie przepływności dla kontenerów usługi Azure Cosmos](set-throughput.md).
 
 ### <a name="can-i-scale-up-or-scale-down-the-throughput-of-my-table-api-table"></a>Można skalować w górę lub dół przepływność Moja tabela interfejsu API tabeli?
 
@@ -720,7 +720,7 @@ Interfejsu API Apache Cassandra to usługa platformy, która ułatwia planowanie
 
 Usługa Azure Cosmos DB zapewnia globalną dystrybucję użytkowanie dostępności i małym opóźnieniu przyczyny. Nie trzeba repliki instalacji lub inne czynności. Wszystkie zapisy są zawsze trwale kworum zatwierdzone w dowolnym regionie, w którym piszesz, zapewniając gwarancje wydajności.
 
-### <a name="what-happens-with-respect-to-various-settings-for-table-metadata-like-bloom-filter-caching-read-repair-change-gcgrace-compression-memtableflushperiod-and-more"></a>Co się stanie w odniesieniu do różnych ustawień dla tabeli metadanych, takich jak filtr rozwiniętej buforowania, odczytu, zmień naprawy, gc_grace, memtable_flush_period kompresji i?
+### <a name="what-happens-with-respect-to-various-settings-for-table-metadata-like-bloom-filter-caching-read-repair-change-gc_grace-compression-memtable_flush_period-and-more"></a>Co się stanie w odniesieniu do różnych ustawień dla tabeli metadanych, takich jak filtr rozwiniętej buforowania, odczytu, zmień naprawy, gc_grace, memtable_flush_period kompresji i?
 
 Usługa Azure Cosmos DB zapewnia wydajność dla operacji odczytu/zapisu i przepustowość, bez konieczności zmiany ustawień konfiguracji i przypadkowo manipulowania nimi.
 

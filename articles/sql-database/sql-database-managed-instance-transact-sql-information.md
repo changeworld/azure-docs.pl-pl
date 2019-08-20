@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 44b98b55bfa2d0424831f6cf612f66dbcdc8a6d9
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
-ms.translationtype: MT
+ms.openlocfilehash: 811d54da2fbcf36bcd2529ed9172c80d6414ab54
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543695"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617636"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database różnice T-SQL wystąpienia zarządzanego w programie SQL Server
 
@@ -512,6 +512,10 @@ Broker usług dla wielu wystąpień nie jest obsługiwany:
 - Po utworzeniu wystąpienia zarządzanego przeniesienie wystąpienia zarządzanego lub sieci wirtualnej do innej grupy zasobów lub subskrypcji nie jest obsługiwane.
 - Niektóre usługi, takie jak środowiska App Service, Aplikacje logiki i wystąpienia zarządzane (używane na potrzeby replikacji geograficznej, replikacji transakcyjnej lub połączonych serwerów) nie mogą uzyskać dostępu do wystąpień zarządzanych w różnych regionach, jeśli ich sieci wirtualnych są połączone przy użyciu [globalnego Komunikacja równorzędna](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). Możesz połączyć się z tymi zasobami za pośrednictwem ExpressRoute lub sieci VNet-to-VNet za pośrednictwem bram sieci wirtualnej.
 
+### <a name="tempdb-size"></a>Rozmiar bazy danych TEMPDB
+
+Maksymalny rozmiar `tempdb` pliku nie może być większy niż 24 GB na rdzeń w warstwie ogólnego przeznaczenia. Maksymalny `tempdb` rozmiar w warstwie krytyczne dla działania firmy jest ograniczony przez rozmiar magazynu wystąpień. `Tempdb`rozmiar pliku dziennika jest ograniczony do 120 GB zarówno w warstwach Ogólnego przeznaczenia i Krytyczne dla działania firmy. Niektóre zapytania mogą zwrócić błąd, jeśli potrzebują ponad 24 GB na rdzeń w `tempdb` lub, jeśli generują więcej niż 120 GB danych dziennika.
+
 ## <a name="Changes"></a>Zmiany zachowania
 
 Następujące zmienne, funkcje i widoki zwracają różne wyniki:
@@ -526,13 +530,31 @@ Następujące zmienne, funkcje i widoki zwracają różne wyniki:
 
 ## <a name="Issues"></a>Znane problemy i ograniczenia
 
-### <a name="tempdb-size"></a>Rozmiar bazy danych TEMPDB
+### <a name="cross-database-service-broker-dialogs-dont-work-after-service-tier-upgrade"></a>Okna dialogowe Service Broker między bazami danych nie działają po uaktualnieniu warstwy usług
 
-Maksymalny rozmiar `tempdb` pliku nie może być większy niż 24 GB na rdzeń w warstwie ogólnego przeznaczenia. Maksymalny `tempdb` rozmiar w warstwie krytyczne dla działania firmy jest ograniczony przez rozmiar magazynu wystąpień. `Tempdb`rozmiar pliku dziennika jest ograniczony do 120 GB zarówno w warstwach Ogólnego przeznaczenia i Krytyczne dla działania firmy. `tempdb` Baza danych jest zawsze podzielona na 12 plików danych. Nie można zmienić maksymalnego rozmiaru pliku i nie można dodać do `tempdb`niego nowych plików. Niektóre zapytania mogą zwrócić błąd, jeśli potrzebują ponad 24 GB na rdzeń w `tempdb` lub, jeśli generują więcej niż 120 GB danych dziennika. `Tempdb`zawsze jest tworzona jako pusta baza danych, gdy wystąpienie zostanie uruchomione lub działa w trybie failover, a wszelkie zmiany wprowadzone `tempdb` w programie nie zostaną zachowane. 
+**Dniu** 2019 sie
 
-### <a name="cant-restore-contained-database"></a>Nie można przywrócić zawartej bazy danych
+Okna dialogowe Service Broker między bazami danych nie dostarczą komunikatów po operacji zmiany warstwy usług. Każda zmiana rozmiaru magazynu rdzeni wirtualnych lub wystąpienia w wystąpieniu zarządzanym spowoduje `service_broke_guid` zmianę wartości w widoku [sys. databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) dla wszystkich baz danych. Wszystkie `DIALOG` utworzone przy użyciu instrukcji [BEGIN dialog](https://docs.microsoft.com/en-us/sql/t-sql/statements/begin-dialog-conversation-transact-sql) , które odwołują się do brokerów usług w innej bazie danych według identyfikatora GUID, nie będą mogły dostarczać komunikatów.
 
-Wystąpienie zarządzane nie może przywrócić [zawartych baz danych](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases). Przywracanie do punktu w czasie istniejących zawartych baz danych nie działa w wystąpieniu zarządzanym. W międzyczasie zalecamy usunięcie opcji zawierania z baz danych, które są umieszczane na zarządzanym wystąpieniu. Nie używaj opcji zawierania dla produkcyjnych baz danych. 
+**Poprawkę** Przed aktualizacją warstwy usług Zatrzymaj wszystkie działania, które używają konwersacji między bazami danych Service Broker.
+
+### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@queryparametr nie jest obsługiwany w sp_send_db_mail
+
+**Dniu** Kwiecień 2019
+
+Parametr w procedurze sp_send_db_mail nie działa. [](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) `@query`
+
+### <a name="aad-logins-and-users-are-not-supported-in-tools"></a>Nazwy logowania i użytkownicy usługi AAD nie są obsługiwane w narzędziach
+
+**Dniu** Kwiecień 2019
+
+SQL Server Management Studio i SQL Server narzędzia danych nie fuly obsługi logowania do katalogu kont i użytkowników usługi Azure.
+- Korzystanie z usług Azure AD Server Principals (Logins) i użytkowników (publiczna wersja zapoznawcza) za pomocą narzędzi SQL Server Data Tools nie jest obecnie obsługiwane.
+- Obsługa skryptów dla podmiotów zabezpieczeń serwera usługi Azure AD (logowania) i użytkowników (publiczna wersja zapoznawcza) nie jest obsługiwana w SQL Server Management Studio.
+
+### <a name="tempdb-structure-is-re-created"></a>Struktura bazy danych TEMPDB została utworzona w sposób ponowny
+
+`tempdb` Baza danych jest zawsze podzielona na 12 plików danych i nie można zmienić struktury pliku. Nie można zmienić maksymalnego rozmiaru pliku i nie można dodać do `tempdb`niego nowych plików. `Tempdb`zawsze jest tworzona jako pusta baza danych, gdy wystąpienie zostanie uruchomione lub działa w trybie failover, a wszelkie zmiany wprowadzone `tempdb` w programie nie zostaną zachowane.
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Przekraczanie miejsca do magazynowania z małymi plikami bazy danych
 
@@ -551,24 +573,9 @@ W tym przykładzie istniejące bazy danych nadal pracują i mogą wzrosnąć bez
 
 [Liczbę pozostałych plików można określić](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1) za pomocą widoków systemu. Jeśli osiągnięto ten limit, spróbuj [opróżnić i usunąć niektóre z mniejszych plików przy użyciu instrukcji DBCC SHRINKFILE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file) lub przełączyć się do [warstwy krytyczne dla działania firmy, która nie ma tego ograniczenia](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
 
-### <a name="tooling"></a>Narzędzi
-
-Narzędzia danych SQL Server Management Studio i SQL Server mogą mieć pewne problemy, gdy uzyskują dostęp do wystąpienia zarządzanego.
-
-- Korzystanie z usług Azure AD Server Principals (Logins) i użytkowników (publiczna wersja zapoznawcza) za pomocą narzędzi SQL Server Data Tools nie jest obecnie obsługiwane.
-- Obsługa skryptów dla podmiotów zabezpieczeń serwera usługi Azure AD (logowania) i użytkowników (publiczna wersja zapoznawcza) nie jest obsługiwana w SQL Server Management Studio.
-
-### <a name="incorrect-database-names-in-some-views-logs-and-messages"></a>Nieprawidłowe nazwy baz danych w niektórych widokach, dziennikach i komunikatach
+### <a name="guid-values-shown-instead-of-database-names"></a>Wyświetlane wartości identyfikatora GUID zamiast nazw baz danych
 
 W kilku widokach systemu, licznikach wydajności, komunikatach o błędach, XEvents i dzienniku błędów są wyświetlane identyfikatory baz danych GUID zamiast rzeczywistej nazwy bazy danych. Nie należy polegać na tych identyfikatorach GUID, ponieważ są one zastępowane rzeczywistymi nazwami baz danych w przyszłości.
-
-### <a name="database-mail"></a>Poczta bazy danych
-
-Parametr w procedurze sp_send_db_mail nie działa. [](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) `@query`
-
-### <a name="database-mail-profile"></a>Profil Poczta bazy danych
-
-Należy wywołać `AzureManagedInstance_dbmail_profile`profil poczta bazy danych używany przez agenta SQL Server. Nie ma żadnych ograniczeń dotyczących innych nazw profilów Poczta bazy danych.
 
 ### <a name="error-logs-arent-persisted"></a>Dzienniki błędów nie są utrwalone
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/02/2019
+ms.date: 8/18/2019
 ms.author: v-mohabe
-ms.openlocfilehash: f795822d76def4a6695a4746fba7e8566041cb2b
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
-ms.translationtype: MT
+ms.openlocfilehash: 18579f716f80cdf79b703dc78fe520c675e82c51
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295548"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575631"
 ---
 # <a name="threat-detection-for-azure-service-layer-in-azure-security-center"></a>Wykrywanie zagrożeń dla warstwy usług platformy Azure w Azure Security Center
 
@@ -47,6 +47,7 @@ Security Center analiza warstwy sieciowej opiera się na przykładowych [danych 
 |**Podejrzane przychodzące działanie sieci SSH**|Przykładowa analiza ruchu w sieci wykryła nietypową komunikację SSH z zasobem w danym wdrożeniu. Stosunkowo wysoka liczba połączeń przychodzących do zasobu jest traktowana jako nietypowa dla tego środowiska. To działanie może wskazywać na próbę nawiązania połączenia z interfejsem SSH.
 |**Podejrzane przychodzące działanie sieci RDP z wielu źródeł**|Przykładowa analiza ruchu w sieci wykryła nietypową przychodzącą komunikację RDP z wielu źródeł do zasobu we wdrożeniu. Różne unikatowe adresy IP łączące się z zasobem są uznawane za nietypowe w przypadku tego środowiska. To działanie może wskazywać na próbę rozdzielenia interfejsu RDP z wielu hostów (botnet).|
 |**Podejrzane przychodzące działanie sieci RDP**|Przykładowa analiza ruchu w sieci wykryła nietypową przychodzącą komunikację RDP z zasobem w danym wdrożeniu. Stosunkowo wysoka liczba połączeń przychodzących do zasobu jest traktowana jako nietypowa dla tego środowiska. To działanie może wskazywać na próbę nawiązania połączenia z interfejsem SSH.|
+|**Wykryto komunikację sieciową ze złośliwym adresem**|Przykładowa analiza ruchu w sieci wykryła komunikację pochodzącą z zasobu we wdrożeniu za pomocą możliwego serwera z poleceniem i kontrolą (C & C). Należy pamiętać, że ten typ działań może powodować oflagowanie adresu IP jako złośliwego przez jednostki zewnętrzne.|
 
 Aby zrozumieć, jak Security Center mogą używać sygnałów związanych z siecią w celu zastosowania ochrony przed zagrożeniami, zobacz [heurystyczne wykrywanie nazw DNS w Azure Security Center](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/).
 ## Warstwa zarządzania Azure (Azure Resource Manager) (wersja zapoznawcza)<a name ="management-layer"></a>

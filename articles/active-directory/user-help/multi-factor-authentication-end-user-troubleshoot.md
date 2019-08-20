@@ -13,12 +13,12 @@ ms.date: 08/07/2019
 ms.author: lizross
 ms.reviewer: kexia
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df32ec9c2d181072bb67a8ca0f2cb04560287286
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 178ce07db24976d7df590d353603da67b68122e8
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949767"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616118"
 ---
 # <a name="troubleshoot-common-two-factor-verification-problems"></a>Rozwiązywanie typowych problemów z weryfikacją dwuskładnikową
 
@@ -29,7 +29,7 @@ Istnieją pewne typowe problemy z weryfikacją dwuetapową, które pojawiają si
 >[!Important]
 >Ta zawartość jest przeznaczona dla użytkowników. Jeśli jesteś administratorem, więcej informacji na temat konfigurowania i zarządzania środowiskiem usługi Azure Active Directory (Azure AD) możesz znaleźć w [dokumentacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
 >
->Ta zawartość jest również przeznaczona wyłącznie do użytku z kontem służbowym, które jest udostępniane przez organizację (na przykład alain@contoso.com). Jeśli masz problemy z weryfikacją dwuetapową i osobistą konto Microsoft, konto, które zostało skonfigurowane dla siebie (na przykład danielle@outlook.com), zobacz [Włączanie lub wyłączanie weryfikacji dwuskładnikowej dla konto Microsoft](https://support.microsoft.com/en-us/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
+>Ta zawartość jest również przeznaczona wyłącznie do użytku z kontem służbowym, które jest udostępniane przez organizację (na przykład alain@contoso.com). Jeśli masz problemy z weryfikacją dwuetapową i osobistą konto Microsoft, konto, które zostało skonfigurowane dla siebie (na przykład danielle@outlook.com), zobacz [Włączanie lub wyłączanie weryfikacji dwuskładnikowej dla konto Microsoft](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
 
 ## <a name="i-forgot-my-mobile-device-at-home"></a>Nie pamiętam mojego urządzenia przenośnego w domu
 
@@ -92,7 +92,11 @@ Może się okazać trudne użycie metody weryfikacji powiązanej z urządzeniami
 
 ## <a name="i-cant-get-my-app-passwords-to-work"></a>Nie mogę pobrać haseł aplikacji
 
-Hasła aplikacji zastępują normalne hasło dla starszych aplikacji klasycznych, które nie obsługują weryfikacji dwuskładnikowej. Najpierw upewnij się, że hasło zostało wpisane prawidłowo. Jeśli to nie rozwiąże problemu, spróbuj utworzyć nowe hasło aplikacji dla aplikacji, wykonując czynności opisane w sekcji **Tworzenie i usuwanie haseł aplikacji za pomocą portalu Moje aplikacje** w artykule [Zarządzanie hasłami aplikacji w celu weryfikacji](multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-using-the-myapps-portal) dwuetapowej.
+Hasła aplikacji zastępują normalne hasło dla starszych aplikacji klasycznych, które nie obsługują weryfikacji dwuskładnikowej. Najpierw upewnij się, że hasło zostało wpisane prawidłowo. Jeśli to nie rozwiąże problemu, spróbuj utworzyć nowe hasło aplikacji dla aplikacji, wykonując czynności opisane w sekcji **Tworzenie i usuwanie haseł aplikacji za pomocą portalu Moje aplikacje** w artykule [Zarządzanie hasłami aplikacji w celu weryfikacji](multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page) dwuetapowej.
+
+## <a name="why-cant-i-turn-two-factor-verification-off"></a>Dlaczego nie mogę włączyć weryfikacji dwuetapowej?
+
+Jeśli używasz weryfikacji dwuetapowej przy użyciu konta służbowego (na przykład alain@contoso.com), najprawdopodobniej oznacza to, że Twoja organizacja zdecydowała się użyć tej dodatkowej funkcji zabezpieczeń. Ponieważ organizacja zdecydowała się na korzystanie z tej funkcji, nie ma możliwości jej samoistnienia. Jeśli jednak korzystasz z weryfikacji dwuetapowej przy użyciu konta osobistego, alain@outlook.comna przykład, możesz włączyć i wyłączyć tę funkcję. Aby uzyskać instrukcje dotyczące kontrolowania weryfikacji dwuskładnikowej dla osobistych kont Microsoft, zobacz [Włączanie lub wyłączanie weryfikacji dwuskładnikowej dla konto Microsoft](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
 
 ## <a name="i-didnt-find-an-answer-to-my-problem"></a>Nie mogę znaleźć odpowiedzi na mój problem
 

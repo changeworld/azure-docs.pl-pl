@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7acfa31434534eb3618b8a279ea6cff543fae076
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 9ed7d812a9c1cba356277a4454234531ce8d41ef
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949805"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616146"
 ---
 # <a name="manage-your-two-factor-verification-method-settings"></a>Zarządzanie ustawieniami metody weryfikacji dwuskładnikowej
 
@@ -135,6 +135,10 @@ W zależności od ustawień organizacji może pojawić się pole wyboru, które 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Uzyskaj porady dotyczące rozwiązywania problemów i pomoc dotyczącą problemów [z weryfikacją](multi-factor-authentication-end-user-troubleshoot.md) dwuskładnikową
+Po dodaniu lub zaktualizowaniu ustawień weryfikacji dwuskładnikowej możesz zarządzać hasłami aplikacji, zalogować się lub uzyskać pomoc dotyczącą niektórych typowych problemów związanych z weryfikacją dwuskładnikowym.
 
 - [Zarządzaj hasłami aplikacji w celu weryfikacji](multi-factor-authentication-end-user-app-passwords.md) dwuskładnikowej dla wszystkich aplikacji, które nie obsługują weryfikacji dwuskładnikowej.
+
+- [Logowanie przy użyciu weryfikacji dwuskładnikowej](multi-factor-authentication-end-user-signin.md)
+
+- [Uzyskaj pomoc dotyczącą weryfikacji dwuskładnikowej](multi-factor-authentication-end-user-troubleshoot.md)

@@ -1,132 +1,127 @@
 ---
-title: 'Azure Active Directory Domain Services: Administrowanie zasady grupy | Microsoft Docs'
-description: Administrowanie zasady grupy w Azure Active Directory Domain Services domenach zarządzanych
-services: active-directory-ds
-documentationcenter: ''
+title: Tworzenie zasad grupy i zarządzanie nimi w Azure AD Domain Services | Microsoft Docs
+description: Dowiedz się, jak edytować wbudowane obiekty zasad grupy (GPO) i utworzyć własne zasady niestandardowe w Azure Active Directory Domain Services domenie zarządzanej.
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 08/05/2019
 ms.author: iainfou
-ms.openlocfilehash: c7b32885fdb3cf4f3e584c916d6b234fff54bfc4
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 5c6d7b3403209710c9086b90abcb0e2ce61a0e8a
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234042"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69612735"
 ---
-# <a name="administer-group-policy-on-an-azure-ad-domain-services-managed-domain"></a>Administrowanie zasady grupy w Azure AD Domain Servicesej domenie zarządzanej
-Azure Active Directory Domain Services obejmuje wbudowane obiekty zasady grupy (GPO) dla kontenerów "AADDC users" i "AADDC Computers". Można dostosować te wbudowane obiekty zasad grupy w celu skonfigurowania zasady grupy w domenie zarządzanej. Ponadto członkowie grupy "Administratorzy usługi AAD DC" mogą tworzyć własne niestandardowe jednostki organizacyjne w domenie zarządzanej. Mogą również tworzyć niestandardowe obiekty zasad grupy i łączyć je z tymi niestandardowymi jednostkami organizacyjnymi. Użytkownicy należący do grupy "Administratorzy usługi AAD DC" otrzymują zasady grupy uprawnienia administracyjne w domenie zarządzanej.
+# <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Administrowanie zasady grupy w Azure AD Domain Servicesej domenie zarządzanej
+
+Ustawienia obiektów użytkowników i komputerów w Azure Active Directory Domain Services (AD DS platformy Azure) są często zarządzane przy użyciu obiektów zasady grupy. Usługa Azure AD DS obejmuje wbudowane obiekty zasad grupy dla kontenerów *użytkowników AADDC* i *AADDC* . Można dostosować te wbudowane obiekty zasad grupy w celu skonfigurowania zasady grupy, zgodnie z potrzebami środowiska. Członkowie grupy *administratorzy kontrolera domeny usługi Azure AD* zasady grupy mają uprawnienia do administrowania w domenie AD DS platformy Azure, a także mogą tworzyć niestandardowe obiekty zasad grupy i jednostki organizacyjne (OU). Więcej informacji na temat tego, co zasady grupy jest i jak to działa, można znaleźć w temacie [zasady grupy Overview][group-policy-overview].
+
+W tym artykule opisano sposób instalowania narzędzi do zarządzania zasady grupy, a następnie edytowania wbudowanych obiektów zasad grupy i tworzenia niestandardowych obiektów zasad grupy.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
-Aby wykonać zadania wymienione w tym artykule, potrzebne są:
 
-1. Prawidłowa **subskrypcja platformy Azure**.
-2. **Katalog usługi Azure AD** — zsynchronizowany z katalogiem lokalnym lub katalogiem w chmurze.
-3. Należy włączyć **Azure AD Domain Services** dla katalogu usługi Azure AD. Jeśli nie zostało to zrobione, postępuj zgodnie ze wszystkimi zadaniami opisanymi w [przewodniku wprowadzenie](create-instance.md).
-4. Przyłączona do **domeny maszyna wirtualna** , z której administrujesz Azure AD Domain Services domeny zarządzanej. Jeśli nie masz takiej maszyny wirtualnej, postępuj zgodnie ze wszystkimi zadaniami opisanymi w artykule zatytułowanym [Dołącz maszynę wirtualną z systemem Windows do domeny zarządzanej](active-directory-ds-admin-guide-join-windows-vm.md).
-5. Do administrowania zasady grupy dla domeny zarządzanej są potrzebne poświadczenia **konta użytkownika należącego do grupy "Administratorzy usługi AAD DC"** w katalogu.
+Aby wykonać ten artykuł, potrzebne są następujące zasoby i uprawnienia:
 
-<br>
+* Aktywna subskrypcja platformy Azure.
+    * Jeśli nie masz subskrypcji platformy Azure, [Utwórz konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Dzierżawa usługi Azure Active Directory skojarzona z subskrypcją, zsynchronizowana z katalogiem lokalnym lub katalogiem w chmurze.
+    * W razie konieczności [Utwórz dzierżawę Azure Active Directory][create-azure-ad-tenant] lub [skojarz subskrypcję platformy Azure z Twoim kontem][associate-azure-ad-tenant].
+* Azure Active Directory Domain Services zarządzana domena włączona i skonfigurowana w dzierżawie usługi Azure AD.
+    * W razie potrzeby Uzupełnij samouczek, aby [utworzyć i skonfigurować wystąpienie Azure Active Directory Domain Services][create-azure-ad-ds-instance].
+* Maszyna wirtualna zarządzania systemem Windows Server, która jest dołączona do domeny zarządzanej AD DS platformy Azure.
+    * W razie potrzeby uzupełnij ten samouczek, aby [utworzyć maszynę wirtualną z systemem Windows Server i dołączyć ją do domeny zarządzanej][create-join-windows-vm].
+* Konto użytkownika, które jest członkiem grupy *administratorów DC usługi Azure AD* w dzierżawie usługi Azure AD.
 
-## <a name="task-1---provision-a-domain-joined-virtual-machine-to-remotely-administer-group-policy-for-the-managed-domain"></a>Zadanie 1 — Inicjowanie obsługi administracyjnej maszyny wirtualnej przyłączonego do domeny w celu zdalnego administrowania zasady grupyą dla domeny zarządzanej
-Azure AD Domain Services domen zarządzanych można zarządzać zdalnie przy użyciu znanych Active Directory narzędzi administracyjnych, takich jak Centrum administracyjne usługi Active Directory (usługach ADAC) lub AD PowerShell. Podobnie zasady grupy dla domeny zarządzanej można administrować zdalnie przy użyciu narzędzi administracyjnych zasady grupy.
+## <a name="install-group-policy-management-tools"></a>Instalowanie zasady grupy narzędzia do zarządzania
 
-Administratorzy w katalogu usługi Azure AD nie mają uprawnień do łączenia się z kontrolerami domeny w domenie zarządzanej za pośrednictwem Pulpit zdalny. Członkowie grupy "Administratorzy usługi AAD DC" mogą zdalnie administrować zasady grupy dla zarządzanych domen. Mogą oni korzystać z narzędzi zasady grupy na komputerze klienckim z systemem Windows lub w systemie, przyłączonym do domeny zarządzanej. Narzędzia zasady grupy można zainstalować jako część opcjonalnej funkcji zarządzania zasady grupy w systemie Windows Server i na komputerach klienckich dołączonych do domeny zarządzanej.
+Aby utworzyć i skonfigurować zasady grupy obiektów (GPO), należy zainstalować narzędzia do zarządzania zasady grupy. Te narzędzia można zainstalować jako funkcję systemu Windows Server. Aby uzyskać więcej informacji na temat instalowania narzędzi administracyjnych na kliencie systemu Windows, zobacz Install [Narzędzia administracji zdalnej serwera (RSAT)][install-rsat].
 
-Pierwszym zadaniem jest zainicjowanie obsługi administracyjnej maszyny wirtualnej z systemem Windows Server, która jest przyłączona do domeny zarządzanej. Aby uzyskać instrukcje, zobacz artykuł zatytułowany dołączanie [maszyny wirtualnej z systemem Windows Server do domeny zarządzanej Azure AD Domain Services](active-directory-ds-admin-guide-join-windows-vm.md).
+1. Zaloguj się do maszyny wirtualnej zarządzania. Aby uzyskać instrukcje dotyczące sposobu nawiązywania połączenia przy użyciu Azure Portal, zobacz [nawiązywanie połączenia z maszyną wirtualną z systemem Windows Server][connect-windows-server-vm].
+1. **Menedżer serwera** powinna być otwarta domyślnie po zalogowaniu się do maszyny wirtualnej. Jeśli nie, w menu **Start** wybierz **Menedżer serwera**.
+1. W okienku *pulpit nawigacyjny* okna **Menedżer serwera** wybierz pozycję **Dodaj role i funkcje**.
+1. Na stronie **zanim rozpoczniesz** *Kreatora dodawania ról i funkcji*wybierz pozycję **dalej**.
+1. W polu *Typ instalacji*pozostaw zaznaczoną opcję **Instalacja oparta na rolach lub** oparta na funkcjach, a następnie wybierz pozycję **dalej**.
+1. Na stronie **Wybór serwera** wybierz bieżącą maszynę wirtualną z puli serwerów, takiej jak *MyVM.contoso.com*, a następnie wybierz przycisk **dalej**.
+1. Na stronie **role serwera** kliknij przycisk **dalej**.
+1. Na stronie **funkcje** wybierz funkcję **zarządzania zasady grupy** .
 
-## <a name="task-2---install-group-policy-tools-on-the-virtual-machine"></a>Zadanie 2 — Instalowanie narzędzi zasady grupy na maszynie wirtualnej
-Wykonaj następujące kroki, aby zainstalować narzędzia do administrowania zasady grupy na maszynie wirtualnej przyłączonej do domeny.
+    ![Zainstaluj "zasady grupy Management" na stronie funkcji](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-gp-management.png)
 
-1. Przejdź do Azure Portal. Na panelu po lewej stronie kliknij pozycję **wszystkie zasoby** . Znajdź i kliknij maszynę wirtualną utworzoną w zadaniu 1.
-2. Kliknij przycisk **Połącz** na karcie Przegląd. Zostanie utworzony i pobrany plik Remote Desktop Protocol (RDP).
+1. Na stronie **potwierdzenie** wybierz pozycję **Zainstaluj**. Zainstalowanie zasady grupy narzędzi do zarządzania może potrwać minutę lub dwa.
+1. Po zakończeniu instalacji funkcji wybierz pozycję **Zamknij** , aby zakończyć działanie kreatora **dodawania ról i funkcji** .
 
-    ![Połącz z maszyną wirtualną z systemem Windows](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
-3. Aby połączyć się z maszyną wirtualną, otwórz pobrany plik RDP. Jeśli zostanie wyświetlony monit, kliknij przycisk **Połącz**. W wierszu logowania Użyj poświadczeń użytkownika należących do grupy "Administratorzy usługi AAD DC". Na przykład używamy "bob@domainservicespreview.onmicrosoft.com" w naszym przypadku. Podczas procesu logowania może pojawić się ostrzeżenie o certyfikacie. Kliknij przycisk Tak lub Kontynuuj, aby kontynuować połączenie.
-4. Na ekranie startowym Otwórz **Menedżer serwera**. Kliknij pozycję **Dodaj role i funkcje** w środkowym okienku okna Menedżer serwera.
+## <a name="open-the-group-policy-management-console-and-edit-an-object"></a>Otwórz Konsola zarządzania zasadami grupy i edytuj obiekt
 
-    ![Uruchom Menedżer serwera na maszynie wirtualnej](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager.png)
-5. Na stronie **zanim rozpoczniesz** **Kreatora dodawania ról i funkcji**kliknij przycisk **dalej**.
-
-    ![Przed rozpoczęciem](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-begin.png)
-6. Na stronie **Typ instalacji** pozostaw zaznaczoną opcję **Instalacja oparta na rolach lub** oparta na funkcjach, a następnie kliknij przycisk **dalej**.
-
-    ![Strona typu instalacji](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-type.png)
-7. Na stronie **Wybór serwera** wybierz bieżącą maszynę wirtualną z puli serwerów, a następnie kliknij przycisk **dalej**.
-
-    ![Strona wybór serwera](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-server.png)
-8. Na stronie **role serwera** kliknij przycisk **dalej**. Pomijamy Tę stronę, ponieważ nie instalujemy żadnych ról na serwerze.
-9. Na stronie **funkcje** wybierz funkcję **zarządzania zasady grupy** .
-
-    ![Strona funkcje](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-gp-management.png)
-10. Na stronie **potwierdzenie** kliknij przycisk **Zainstaluj** , aby zainstalować funkcję zarządzania zasady grupy na maszynie wirtualnej. Po pomyślnym zakończeniu instalacji funkcji kliknij przycisk **Zamknij** , aby zamknąć kreatora **dodawania ról i funkcji** .
-
-    ![Strona potwierdzenia](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-gp-management-confirmation.png)
-
-## <a name="task-3---launch-the-group-policy-management-console-to-administer-group-policy"></a>Zadanie 3 — Uruchom konsolę zarządzania zasady grupy, aby administrować zasady grupy
-Za pomocą konsoli zarządzania zasady grupy na maszynie wirtualnej przyłączonej do domeny można administrować zasady grupy w domenie zarządzanej.
+Istnieją domyślne obiekty zasad grupy (GPO) dla użytkowników i komputerów w domenie zarządzanej AD DS platformy Azure. Dzięki funkcji zarządzania zasady grupy zainstalowanej w poprzedniej sekcji można wyświetlić i edytować istniejący obiekt zasad grupy. W następnej sekcji utworzysz niestandardowy obiekt zasad grupy.
 
 > [!NOTE]
-> Aby administrować zasady grupy w domenie zarządzanej, musisz być członkiem grupy administratorów domeny usługi AAD.
->
->
+> Aby administrować zasadami grupy w domenie zarządzanej AD DS platformy Azure, użytkownik musi być zalogowany na koncie użytkownika, który jest członkiem grupy *administratorów kontrolera domeny usługi AAD* .
 
-1. Na ekranie startowym kliknij pozycję **Narzędzia administracyjne**. Powinna zostać wyświetlona konsola **zarządzania zasady grupy** zainstalowana na maszynie wirtualnej.
+1. Na ekranie startowym wybierz pozycję **Narzędzia administracyjne**. Zostanie wyświetlona lista dostępnych narzędzi do zarządzania, w tym **zasady grupy zarządzania** zainstalowaną w poprzedniej sekcji.
+1. Aby otworzyć Konsola zarządzania zasadami grupy (GPMC), wybierz pozycję **zarządzanie zasady grupy**.
 
-    ![Uruchom zarządzanie zasady grupy](./media/active-directory-domain-services-admin-guide/gp-management-installed.png)
-2. Kliknij przycisk **zasady grupy zarządzanie** , aby uruchomić konsolę zarządzania zasady grupy.
+    ![Konsola zarządzania zasadami grupy otwiera się gotowy do edytowania obiektów zasad grupy](./media/active-directory-domain-services-admin-guide/gp-management-console.png)
 
-    ![Konsola zasady grupy](./media/active-directory-domain-services-admin-guide/gp-management-console.png)
+Istnieją dwa wbudowane obiekty zasady grupy (GPO) w domenie zarządzanej AD DS platformy Azure — jeden dla kontenera *komputery AADDC* i jeden dla kontenera *Użytkownicy AADDC* . Te obiekty zasad grupy można dostosować w taki sposób, aby w ramach domeny zarządzanej na platformie Azure AD DS konfigurację zasad grup.
 
-## <a name="task-4---customize-built-in-group-policy-objects"></a>Zadanie 4 — Dostosowywanie wbudowanych obiektów zasady grupy
-Istnieją dwa wbudowane obiekty zasady grupy (GPO) — jeden dla kontenerów "AADDC Computers" i "AADDC users" w domenie zarządzanej. Można je dostosować, aby skonfigurować zasady grupy w domenie zarządzanej.
+1. W konsoli **zarządzania zasady grupy** rozwiń węzeł **Las: contoso.com** . Następnie rozwiń węzły **domeny** .
 
-1. W konsoli **zarządzania zasady grupy** kliknij, aby rozwinąć węzeł **lasu: contoso100.com** i **domen** , aby wyświetlić zasady grupy dla domeny zarządzanej.
+    Istnieją dwa wbudowane kontenery dla *komputerów AADDC* i *użytkowników AADDC*. Każdy z tych kontenerów ma zastosowany domyślny obiekt zasad grupy.
 
-    ![Wbudowane obiekty zasad grupy](./media/active-directory-domain-services-admin-guide/builtin-gpos.png)
-2. Można dostosować te wbudowane obiekty zasad grupy w celu skonfigurowania zasad grup w domenie zarządzanej. Kliknij prawym przyciskiem myszy obiekt zasad grupy, a następnie kliknij przycisk **Edytuj...** , aby dostosować wbudowany obiekt zasad grupy. Zasady grupy narzędzie Edytor konfiguracji umożliwia dostosowanie obiektu zasad grupy.
+    ![Wbudowane obiekty zasad grupy stosowane do domyślnych kontenerów "AADDC komputery" i "AADDC użytkowników"](./media/active-directory-domain-services-admin-guide/builtin-gpos.png)
 
-    ![Edytowanie wbudowanego obiektu zasad grupy](./media/active-directory-domain-services-admin-guide/edit-builtin-gpo.png)
-3. Teraz można użyć konsoli **Edytor zarządzania zasadami grupy** do edycji wbudowanego obiektu zasad grupy. Na przykład poniższy zrzut ekranu przedstawia sposób dostosowywania wbudowanego obiektu zasad grupy "AADDC komputery".
+1. Te wbudowane obiekty zasad grupy można dostosować w celu skonfigurowania określonych zasad grup w domenie zarządzanej AD DS platformy Azure. Kliknij prawym przyciskiem myszy jeden z obiektów zasad grupy, na przykład *AADDC komputery obiektów zasad grupy*, a następnie wybierz pozycję **Edytuj...** .
 
-    ![Dostosuj obiekt zasad grupy](./media/active-directory-domain-services-admin-guide/gp-editor.png)
+    ![Wybierz opcję "Edytuj" jeden z wbudowanych obiektów zasad grupy](./media/active-directory-domain-services-admin-guide/edit-builtin-gpo.png)
 
-## <a name="task-5---create-a-custom-group-policy-object-gpo"></a>Zadanie 5 — Tworzenie niestandardowego obiektu zasady grupy (GPO)
-Można utworzyć lub zaimportować własne niestandardowe obiekty zasad grupy. Niestandardowe obiekty zasad grupy można także połączyć z niestandardową jednostką organizacyjną utworzoną w domenie zarządzanej. Aby uzyskać więcej informacji na temat tworzenia niestandardowych jednostek organizacyjnych, zobacz [Tworzenie niestandardowej jednostki organizacyjnej w domenie zarządzanej](create-ou.md).
+1. Zostanie otwarte narzędzie Edytor zarządzania zasadami grupy umożliwiające dostosowanie obiektu zasad grupy, takiego jak *Zasady konta*:
 
-> [!NOTE]
-> Aby administrować zasady grupy w domenie zarządzanej, musisz być członkiem grupy administratorów domeny usługi AAD.
->
->
+    ![Dostosuj obiekt zasad grupy, aby skonfigurować ustawienia zgodnie z potrzebami](./media/active-directory-domain-services-admin-guide/gp-editor.png)
 
-1. W konsoli **zarządzania zasady grupy** kliknij, aby wybrać niestandardową jednostkę organizacyjną (OU). Kliknij prawym przyciskiem myszy jednostkę organizacyjną, a następnie kliknij pozycję **Utwórz obiekt zasad grupy w tej domenie i umieść tu link.**
+    Po zakończeniu wybierz pozycję **plik > Zapisz** , aby zapisać zasady. Komputery domyślnie odświeżają zasady grupy co 90 minut i stosują wprowadzone zmiany.
 
-    ![Tworzenie niestandardowego obiektu zasad grupy](./media/active-directory-domain-services-admin-guide/gp-create-gpo.png)
-2. Określ nazwę dla nowego obiektu zasad grupy, a następnie kliknij przycisk **OK**.
+## <a name="create-a-custom-group-policy-object"></a>Tworzenie niestandardowego obiektu zasady grupy
 
-    ![Określ nazwę obiektu zasad grupy](./media/active-directory-domain-services-admin-guide/gp-specify-gpo-name.png)
-3. Nowy obiekt zasad grupy jest tworzony i połączony z niestandardową jednostką organizacyjną. Kliknij prawym przyciskiem myszy obiekt zasad grupy, a następnie kliknij polecenie **Edytuj...** z menu.
+Aby zgrupować podobne ustawienia zasad, często tworzysz dodatkowe obiekty zasad grupy zamiast stosowania wszystkich wymaganych ustawień w jednym domyślnym obiekcie zasad grupy. Za pomocą usługi Azure AD DS można utworzyć lub zaimportować własne niestandardowe obiekty zasad grupy i połączyć je z niestandardową jednostką organizacyjną. Jeśli musisz najpierw utworzyć niestandardową jednostkę organizacyjną, zobacz [Tworzenie niestandardowej jednostki organizacyjnej w domenie zarządzanej AD DS platformy Azure](create-ou.md).
 
-    ![Nowo utworzony obiekt zasad grupy](./media/active-directory-domain-services-admin-guide/gp-gpo-created.png)
-4. Nowo utworzony obiekt zasad grupy można dostosować przy użyciu **Edytor zarządzania zasadami grupy**.
+1. W konsoli **zarządzania zasady grupy** wybierz swoją niestandardową jednostkę organizacyjną (OU), taką jak *MyCustomOU*. Wybierz jednostkę organizacyjną, a następnie wybierz pozycję **Utwórz obiekt zasad grupy w tej domenie i umieść tu link...** :
 
-    ![Dostosuj nowy obiekt zasad grupy](./media/active-directory-domain-services-admin-guide/gp-customize-gpo.png)
+    ![Tworzenie niestandardowego obiektu zasad grupy w konsoli zarządzania zasady grupy](./media/active-directory-domain-services-admin-guide/gp-create-gpo.png)
 
+1. Określ nazwę dla nowego obiektu zasad grupy, na przykład *niestandardowy obiekt zasad grupy*, a następnie wybierz przycisk **OK**. Opcjonalnie można oprzeć ten niestandardowy obiekt zasad grupy na istniejącym obiekcie zasad grupy i zestawie opcji zasad.
 
-Więcej informacji na temat korzystania z [Konsola zarządzania zasadami grupy](https://technet.microsoft.com/library/cc753298.aspx) jest dostępnych w witrynie TechNet.
+    ![Określ nazwę nowego niestandardowego obiektu zasad grupy](./media/active-directory-domain-services-admin-guide/gp-specify-gpo-name.png)
 
-## <a name="related-content"></a>Powiązana zawartość
-* [Przewodnik po Wprowadzenie Azure AD Domain Services](create-instance.md)
-* [Przyłączanie maszyny wirtualnej z systemem Windows Server do domeny zarządzanej Azure AD Domain Services](active-directory-ds-admin-guide-join-windows-vm.md)
-* [Zarządzanie domeną Azure AD Domain Services](manage-domain.md)
-* [Konsola zarządzania zasadami grupy](https://technet.microsoft.com/library/cc753298.aspx)
+1. Niestandardowy obiekt zasad grupy jest tworzony i połączony z niestandardową jednostką organizacyjną. Aby teraz skonfigurować ustawienia zasad, kliknij prawym przyciskiem myszy obiekt zasad grupy, a następnie wybierz polecenie **Edytuj...** :
+
+    ![Wybierz opcję "Edytuj" niestandardowy obiekt zasad grupy](./media/active-directory-domain-services-admin-guide/gp-gpo-created.png)
+
+1. Zostanie otwarty **Edytor zarządzania zasadami grupy** , aby umożliwić dostosowanie obiektu zasad grupy:
+
+    ![Dostosuj obiekt zasad grupy, aby skonfigurować ustawienia zgodnie z potrzebami](./media/active-directory-domain-services-admin-guide/gp-customize-gpo.png)
+
+    Po zakończeniu wybierz pozycję **plik > Zapisz** , aby zapisać zasady. Komputery domyślnie odświeżają zasady grupy co 90 minut i stosują wprowadzone zmiany.
+
+## <a name="next-steps"></a>Następne kroki
+
+Aby uzyskać więcej informacji na temat dostępnych ustawień zasady grupy, które można skonfigurować za pomocą Konsola zarządzania zasadami grupy, zobacz [Work with zasady grupy Items][group-policy-console].
+
+<!-- INTERNAL LINKS -->
+[create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
+[associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
+[create-azure-ad-ds-instance]: tutorial-create-instance.md
+[create-join-windows-vm]: join-windows-vm.md
+[tutorial-create-management-vm]: tutorial-create-management-vm.md
+[connect-windows-server-vm]: join-windows-vm.md#connect-to-the-windows-server-vm
+
+<!-- EXTERNAL LINKS -->
+[group-policy-overview]: /previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11)
+[install-rsat]: /windows-server/remote/remote-server-administration-tools#BKMK_Thresh
+[group-policy-console]: /previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789194(v=ws.11)

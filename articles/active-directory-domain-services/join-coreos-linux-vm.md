@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 78a6c5262cd6668712beac1e041fa4f25c05a724
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: c1f3d1ec7bb9e9f449cea3f9aa36ca8f80348c6e
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234066"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69612816"
 ---
 # <a name="join-a-coreos-linux-virtual-machine-to-a-managed-domain"></a>Przyłączanie maszyny wirtualnej z systemem CoreOS Linux do domeny zarządzanej
 W tym artykule opisano sposób przyłączania maszyny wirtualnej z systemem CoreOS Linux na platformie Azure do domeny zarządzanej Azure AD Domain Services.
@@ -31,9 +31,9 @@ W tym artykule opisano sposób przyłączania maszyny wirtualnej z systemem Core
 Aby wykonać zadania wymienione w tym artykule, potrzebne są:
 1. Prawidłowa **subskrypcja platformy Azure**.
 2. **Katalog usługi Azure AD** — zsynchronizowany z katalogiem lokalnym lub katalogiem w chmurze.
-3. Należy włączyć **Azure AD Domain Services** dla katalogu usługi Azure AD. Jeśli nie zostało to zrobione, postępuj zgodnie ze wszystkimi zadaniami opisanymi w [przewodniku wprowadzenie](create-instance.md).
-4. Upewnij się, że adresy IP domeny zarządzanej zostały skonfigurowane jako serwery DNS dla sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [jak zaktualizować ustawienia DNS dla sieci wirtualnej platformy Azure](active-directory-ds-getting-started-dns.md)
-5. Wykonaj kroki wymagane do [synchronizacji haseł do domeny zarządzanej Azure AD Domain Services](active-directory-ds-getting-started-password-sync.md).
+3. Należy włączyć **Azure AD Domain Services** dla katalogu usługi Azure AD. Jeśli nie zostało to zrobione, postępuj zgodnie ze wszystkimi zadaniami opisanymi w [przewodniku wprowadzenie](tutorial-create-instance.md).
+4. Upewnij się, że adresy IP domeny zarządzanej zostały skonfigurowane jako serwery DNS dla sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [jak zaktualizować ustawienia DNS dla sieci wirtualnej platformy Azure](tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network)
+5. Wykonaj kroki wymagane do [synchronizacji haseł do domeny zarządzanej Azure AD Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds).
 
 
 ## <a name="provision-a-coreos-linux-virtual-machine"></a>Inicjowanie obsługi administracyjnej maszyny wirtualnej z systemem CoreOS Linux
@@ -66,10 +66,10 @@ sudo vi /etc/hosts
 W pliku hosts Wprowadź następującą wartość:
 
 ```console
-127.0.0.1 contoso-coreos.contoso100.com contoso-coreos
+127.0.0.1 contoso-coreos.contoso.com contoso-coreos
 ```
 
-W tym miejscu "contoso100.com" jest nazwą domeny DNS domeny zarządzanej. "contoso-CoreOS" jest nazwą hosta maszyny wirtualnej CoreOS, do której jest przyłączany do domeny zarządzanej.
+W tym miejscu "contoso.com" jest nazwą domeny DNS domeny zarządzanej. "contoso-CoreOS" jest nazwą hosta maszyny wirtualnej CoreOS, do której jest przyłączany do domeny zarządzanej.
 
 
 ## <a name="configure-the-sssd-service-on-the-linux-virtual-machine"></a>Konfigurowanie usługi SSSD na maszynie wirtualnej z systemem Linux
@@ -79,15 +79,15 @@ Następnie zaktualizuj plik konfiguracji SSSD w programie ("/etc/SSSD/SSSD.conf"
 [sssd]
 config_file_version = 2
 services = nss, pam
-domains = CONTOSO100.COM
+domains = contoso.COM
 
-[domain/CONTOSO100.COM]
+[domain/contoso.COM]
 id_provider = ad
 auth_provider = ad
 chpass_provider = ad
 
-ldap_uri = ldap://contoso100.com
-ldap_search_base = dc=contoso100,dc=com
+ldap_uri = ldap://contoso.com
+ldap_search_base = dc=contoso,dc=com
 ldap_schema = rfc2307bis
 ldap_sasl_mech = GSSAPI
 ldap_user_object_class = user
@@ -98,18 +98,18 @@ ldap_account_expire_policy = ad
 ldap_force_upper_case_realm = true
 fallback_homedir = /home/%d/%u
 
-krb5_server = contoso100.com
-krb5_realm = CONTOSO100.COM
+krb5_server = contoso.com
+krb5_realm = contoso.COM
 ```
 
-Zamień element "CONTOSO100. COM ' z nazwą domeny DNS domeny zarządzanej. Upewnij się, że w pliku conf określono nazwę domeny w przypadku wielkości liter.
+Zamień element "contoso. COM ' z nazwą domeny DNS domeny zarządzanej. Upewnij się, że w pliku conf określono nazwę domeny w przypadku wielkości liter.
 
 
 ## <a name="join-the-linux-virtual-machine-to-the-managed-domain"></a>Przyłączanie maszyny wirtualnej z systemem Linux do domeny zarządzanej
 Teraz, gdy wymagane pakiety są zainstalowane na maszynie wirtualnej z systemem Linux, następne zadanie polega na przyłączeniu maszyny wirtualnej do domeny zarządzanej.
 
 ```console
-sudo adcli join -D CONTOSO100.COM -U bob@CONTOSO100.COM -K /etc/krb5.keytab -H contoso-coreos.contoso100.com -N coreos
+sudo adcli join -D contoso.COM -U bob@contoso.COM -K /etc/krb5.keytab -H contoso-coreos.contoso.com -N coreos
 ```
 
 
@@ -129,10 +129,10 @@ sudo systemctl start sssd.service
 ## <a name="verify-domain-join"></a>Weryfikuj przyłączanie do domeny
 Sprawdź, czy maszyna została pomyślnie przyłączona do domeny zarządzanej. Nawiąż połączenie z dołączoną do domeny maszyną wirtualną CoreOS przy użyciu innego połączenia SSH. Użyj konta użytkownika domeny, a następnie sprawdź, czy konto użytkownika jest prawidłowo rozwiązane.
 
-1. W terminalu SSH wpisz następujące polecenie, aby nawiązać połączenie z przyłączoną do domeny maszyną wirtualną CoreOS przy użyciu protokołu SSH. Użyj konta domeny, które należy do domeny zarządzanej (na przykład "bob@CONTOSO100.COM" w tym przypadku).
+1. W terminalu SSH wpisz następujące polecenie, aby nawiązać połączenie z przyłączoną do domeny maszyną wirtualną CoreOS przy użyciu protokołu SSH. Użyj konta domeny, które należy do domeny zarządzanej (na przykład "bob@contoso.COM" w tym przypadku).
     
     ```console
-    ssh -l bob@CONTOSO100.COM contoso-coreos.contoso100.com
+    ssh -l bob@contoso.COM contoso-coreos.contoso.com
     ```
 
 2. W terminalu SSH wpisz następujące polecenie, aby sprawdzić, czy katalog macierzysty został zainicjowany prawidłowo.
@@ -149,9 +149,9 @@ Sprawdź, czy maszyna została pomyślnie przyłączona do domeny zarządzanej. 
 
 
 ## <a name="troubleshooting-domain-join"></a>Rozwiązywanie problemów z przyłączaniem domeny
-Zobacz artykuł [Rozwiązywanie problemów](join-windows-vm.md#troubleshoot-joining-a-domain) z przyłączaniem do domeny.
+Zobacz artykuł [Rozwiązywanie problemów](join-windows-vm.md#troubleshoot-domain-join-issues) z przyłączaniem do domeny.
 
 ## <a name="related-content"></a>Powiązana zawartość
-* [Przewodnik po Wprowadzenie Azure AD Domain Services](create-instance.md)
+* [Przewodnik po Wprowadzenie Azure AD Domain Services](tutorial-create-instance.md)
 * [Przyłączanie maszyny wirtualnej z systemem Windows Server do domeny zarządzanej Azure AD Domain Services](active-directory-ds-admin-guide-join-windows-vm.md)
 * [Jak zalogować się do maszyny wirtualnej z systemem Linux](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

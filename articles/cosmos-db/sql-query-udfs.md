@@ -1,25 +1,25 @@
 ---
-title: Funkcje zdefiniowane przez użytkownika (UDF) w usłudze Azure Cosmos DB
-description: Zapoznaj się z funkcjami zdefiniowanymi przez użytkownika w usłudze Azure Cosmos DB.
+title: Funkcje zdefiniowane przez użytkownika (UDF) w Azure Cosmos DB
+description: Dowiedz się więcej o funkcjach zdefiniowanych przez użytkownika w programie Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: e168e450230720f4ad78516e6edcdc3aa08ba3e1
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: b67202da7293ef55cfe3390ca676f7944da80fba
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342894"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614336"
 ---
-# <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Funkcje zdefiniowane przez użytkownika (UDF) w usłudze Azure Cosmos DB
+# <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Funkcje zdefiniowane przez użytkownika (UDF) w Azure Cosmos DB
 
-Interfejs API SQL zapewnia obsługę funkcji zdefiniowanych przez użytkownika (UDF). Funkcje skalarne zdefiniowane przez użytkownika możesz przekazać argumenty, zero lub wiele i zwrócenia wyniku pojedynczy argument. Interfejs API sprawdza każdy argument jest prawną wartości JSON.  
+Interfejs API SQL zapewnia obsługę funkcji zdefiniowanych przez użytkownika (UDF). Za pomocą skalarnej UDF można przekazać zero lub wiele argumentów i zwrócić wynik pojedynczego argumentu. Interfejs API sprawdza każdy argument pod kątem dozwolonych wartości JSON.  
 
-Interfejs API rozszerza składni SQL do obsługi niestandardowej logiki aplikacji za pomocą funkcji zdefiniowanych przez użytkownika. Możesz zarejestrować funkcje zdefiniowane przez użytkownika za pomocą interfejsu API SQL i odwoływać się do nich zapytań SQL. Tak naprawdę funkcje zdefiniowane przez użytkownika są w sposób zaawansowany projektowane na potrzeby wywoływania z zapytań. Jako następstwem funkcje zdefiniowane przez użytkownika nie mają dostępu do obiektu context, podobnie jak inne typy języka JavaScript, takie jak procedur składowanych i wyzwalaczy. Zapytania są przeznaczone tylko do odczytu i można uruchomić na repliki podstawowej lub dodatkowej. Funkcje zdefiniowane przez użytkownika, w przeciwieństwie do innych typów języka JavaScript są zaprojektowane do uruchamiania w replikach pomocniczych.
+Interfejs API rozszerza składnię SQL w celu obsługi niestandardowej logiki aplikacji przy użyciu UDF. Możesz zarejestrować UDF z interfejsem API SQL i odwoływać się do nich w zapytaniach SQL. Tak naprawdę funkcje zdefiniowane przez użytkownika są w sposób zaawansowany projektowane na potrzeby wywoływania z zapytań. Jako współrzuty UDF nie mają dostępu do obiektu kontekstu, takiego jak inne typy JavaScript, takie jak procedury składowane i wyzwalacze. Zapytania są tylko do odczytu i mogą być uruchamiane w replikach podstawowych lub pomocniczych. UDF, w przeciwieństwie do innych typów języka JavaScript, są przeznaczone do uruchamiania w replikach pomocniczych.
 
-Poniższy przykład rejestruje funkcji zdefiniowanej przez użytkownika w ramach kontenera elementu w bazie danych Cosmos DB. W przykładzie jest tworzony funkcji zdefiniowanej przez użytkownika o nazwie `REGEX_MATCH`. Akceptuje dwóch wartości ciągu JSON `input` i `pattern`, i sprawdza, czy pierwszego dopasowania wzorca określonego w drugi przy użyciu języka JavaScript `string.match()` funkcji.
+Poniższy przykład rejestruje UDF w kontenerze elementu w bazie danych Cosmos. W przykładzie tworzony jest `REGEX_MATCH`format UDF o nazwie. Akceptuje dwie wartości `input` ciągu JSON i `pattern`i sprawdza, czy pierwsze pasuje do wzorca określonego w drugim przy użyciu `string.match()` funkcji JavaScript.
 
 ## <a name="examples"></a>Przykłady
 
@@ -37,14 +37,14 @@ Poniższy przykład rejestruje funkcji zdefiniowanej przez użytkownika w ramach
            regexMatchUdf).Result;  
 ```
 
-Teraz można użyć tej funkcji zdefiniowanej przez użytkownika w projekcji zapytań. Kwalifikujesz funkcje zdefiniowane przez użytkownika z uwzględnieniem wielkości liter prefiksem `udf.` podczas wywoływania ich z w ramach zapytania.
+Teraz Użyj tego formatu UDF w projekcji zapytania. Należy zakwalifikować UDF z prefiksem `udf.` z rozróżnianiem wielkości liter podczas wywoływania ich z poziomu zapytań.
 
 ```sql
     SELECT udf.REGEX_MATCH(Families.address.city, ".*eattle")
     FROM Families
 ```
 
-Wyniki są:
+Wyniki są następujące:
 
 ```json
     [
@@ -57,7 +57,7 @@ Wyniki są:
     ]
 ```
 
-Można użyć funkcji zdefiniowanej przez użytkownika kwalifikowany za pomocą `udf.` prefiks wewnątrz filtru, tak jak w poniższym przykładzie:
+Można użyć formatu UDF kwalifikowana z `udf.` prefiksem wewnątrz filtra, tak jak w poniższym przykładzie:
 
 ```sql
     SELECT Families.id, Families.address.city
@@ -65,7 +65,7 @@ Można użyć funkcji zdefiniowanej przez użytkownika kwalifikowany za pomocą 
     WHERE udf.REGEX_MATCH(Families.address.city, ".*eattle")
 ```
 
-Wyniki są:
+Wyniki są następujące:
 
 ```json
     [{
@@ -74,9 +74,9 @@ Wyniki są:
     }]
 ```
 
-W zasadzie funkcje zdefiniowane przez użytkownika są prawidłowe wyrażenia skalarne, które można użyć zarówno projekcje i filtry.
+W zasadzie UDF są prawidłowymi wyrażeniami skalarnymi, których można używać zarówno w projekcjach, jak i w filtrach.
 
-Aby rozszerzyć możliwości funkcje zdefiniowane przez użytkownika, Przyjrzyj się kolejny przykład za pomocą logikę warunkową:
+Aby rozwijać możliwości UDF, należy zapoznać się z innym przykładem logiki warunkowej:
 
 ```javascript
        UserDefinedFunction seaLevelUdf = new UserDefinedFunction()
@@ -100,14 +100,14 @@ Aby rozszerzyć możliwości funkcje zdefiniowane przez użytkownika, Przyjrzyj 
                 seaLevelUdf);
 ```
 
-Poniższy przykład wykonuje funkcji zdefiniowanej przez użytkownika:
+Poniższy przykład wykonuje funkcję UDF:
 
 ```sql
     SELECT f.address.city, udf.SEALEVEL(f.address.city) AS seaLevel
     FROM Families f
 ```
 
-Wyniki są:
+Wyniki są następujące:
 
 ```json
      [
@@ -122,12 +122,12 @@ Wyniki są:
     ]
 ```
 
-Jeśli właściwości określone przez UDF parametry nie są dostępne w wartości JSON, parametr jest traktowany jako niezdefiniowane i wywołania funkcji zdefiniowanej przez użytkownika jest pomijany. Podobnie jeśli wynikiem funkcji zdefiniowanej przez użytkownika jest niezdefiniowana, go nie znajduje się w wyniku.
+Jeśli właściwości, do których odwołują się parametry UDF, nie są dostępne w wartości JSON, parametr jest traktowany jako undefined, a wywołanie UDF jest pomijane. Podobnie, jeśli wynik UDF jest niezdefiniowany, nie jest zawarty w wyniku.
 
-Jak w poprzednich przykładach, funkcje zdefiniowane przez użytkownika integracji możliwości języka JavaScript przy użyciu interfejsu API SQL. Funkcje zdefiniowane przez użytkownika zapewnia bogaty interfejs programowalny celu złożonej logiki przedstawiające diagramy proceduralne i warunkowego za pomocą wbudowanych funkcji środowiska uruchomieniowego JavaScript. Interfejs API SQL udostępnia argumenty do funkcji zdefiniowanych przez użytkownika dla każdego elementu źródłowego w bieżącym gdzie lub klauzuli SELECT etap przetwarzania. Wynik jest włączona bezproblemowo ogólną potoku wykonywania. Podsumowując funkcje zdefiniowane przez użytkownika są doskonałe narzędzia pozwalające czy złożoną logikę biznesową jako część zapytania.
+Jak przedstawiono w powyższych przykładach, UDF integruje możliwości języka JavaScript z interfejsem API SQL. UDF zapewniają bogaty programowalny interfejs do wykonywania złożonej procedury, logiki warunkowej z pomocą wbudowanych funkcji środowiska uruchomieniowego języka JavaScript. Interfejs API SQL udostępnia argumenty UDF dla każdego elementu źródłowego w bieżącym etapie przetwarzania lub ZAZNACZania klauzuli. Wynik jest bezproblemowo zawarty w ogólnym potoku wykonywania. Podsumowując, UDF to doskonałe narzędzia do wykonywania złożonej logiki biznesowej w ramach zapytań.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Wprowadzenie do usługi Azure Cosmos DB](introduction.md)
+- [Wprowadzenie do Azure Cosmos DB](introduction.md)
 - [Funkcje systemowe](sql-query-system-functions.md)
-- [agregacje](sql-query-aggregates.md)
+- [Agreguje](sql-query-aggregates.md)

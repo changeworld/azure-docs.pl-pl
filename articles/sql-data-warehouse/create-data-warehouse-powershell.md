@@ -10,16 +10,16 @@ ms.subservice: development
 ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 1f800ade5c5122f0891c9122f6698b6550048c67
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: f5ee4227b0aeb53be4512dafc91f814468b50c12
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479341"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574905"
 ---
-# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Szybki start: Tworzenie i wykonywanie zapytań względem usługi Azure SQL Data Warehouse za pomocą Azure PowerShell
+# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Szybki start: Tworzenie i wykonywanie zapytań o Azure SQL Data Warehouse przy użyciu Azure PowerShell
 
-Szybko Utwórz magazyn danych usługi Azure SQL Data Warehouse przy użyciu Azure PowerShell.
+Szybko Utwórz Azure SQL Data Warehouse przy użyciu Azure PowerShell.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
@@ -90,7 +90,7 @@ New-AzSqlServer -ResourceGroupName $resourcegroupname `
 
 ## <a name="configure-a-server-firewall-rule"></a>Konfigurowanie reguły zapory serwera
 
-Utwórz [regułę zapory na poziomie serwera Azure SQL Server](../sql-database/sql-database-firewall-configure.md) przy użyciu polecenia [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) . Reguła zapory na poziomie serwera pozwala aplikacji zewnętrznej, takiej jak SQL Server Management Studio lub Narzędzie SQLCMD, nawiązać połączenie z usługą SQL Data Warehouse za pomocą zapory usługi SQL Data Warehouse. W poniższym przykładzie zapora jest otwarta tylko dla innych zasobów platformy Azure. Aby włączyć łączność zewnętrzną, zmień adres IP na adres odpowiedni dla danego środowiska. Aby otworzyć wszystkie adresy IP, użyj wartości 0.0.0.0 jako początkowego adresu IP i wartości 255.255.255.255 jako adresu końcowego.
+Utwórz [regułę zapory na poziomie serwera Azure SQL Server](../sql-database/sql-database-firewall-configure.md) przy użyciu polecenia [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) . Reguła zapory na poziomie serwera pozwala aplikacji zewnętrznej, takiej jak SQL Server Management Studio lub Narzędzie SQLCMD, połączyć się z SQL Data Warehouse za pomocą zapory usługi SQL Data Warehouse. W poniższym przykładzie zapora jest otwarta tylko dla innych zasobów platformy Azure. Aby włączyć łączność zewnętrzną, zmień adres IP na adres odpowiedni dla danego środowiska. Aby otworzyć wszystkie adresy IP, użyj wartości 0.0.0.0 jako początkowego adresu IP i wartości 255.255.255.255 jako adresu końcowego.
 
 ```powershell
 New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
@@ -145,8 +145,8 @@ Inne samouczki Szybki start w tej kolekcji bazują na tym przewodniku Szybki sta
 Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Utworzono magazyn danych, utworzono regułę zapory, połączono z magazynem danych i uruchomiono kilka zapytań. Aby dowiedzieć się więcej na temat usługi Azure SQL Data Warehouse, przejdź do samouczka na temat ładowania danych.
 > [!div class="nextstepaction"]
->[Ładowanie danych do magazynu danych SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md)
+>[Ładowanie danych do SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md)

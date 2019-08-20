@@ -11,16 +11,16 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: sqlfreshmay19
-ms.openlocfilehash: 2864acca443e3135ea0023070da95accf97fe2e9
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: b7b7d4cfe699ffdef3a8f736f5656d0b0067453a
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479432"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575198"
 ---
-# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Szybki start: Tworzenie magazynu danych Azure SQL Data Warehouse w witrynie Azure Portal i wykonywanie zapytania skierowanego do niego
+# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Szybki start: Utwórz i zbadaj Azure SQL Data Warehouse w Azure Portal
 
-Szybkie tworzenie i wykonywanie zapytań względem usługi Azure SQL Data Warehouse przy użyciu Azure Portal.
+Szybko Twórz i badaj Azure SQL Data Warehouse przy użyciu Azure Portal.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
@@ -37,9 +37,9 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-data-warehouse"></a>Tworzenie magazynu danych
 
-Magazyn danych Azure SQL Data Warehouse jest tworzony ze zdefiniowanym zestawem [zasobów obliczeniowych](memory-and-concurrency-limits.md). Baza danych jest tworzona w [grupie zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) oraz na [serwerze logicznym SQL platformy Azure](../sql-database/sql-database-logical-servers.md). 
+Azure SQL Data Warehouse jest tworzony ze zdefiniowanym zestawem [zasobów obliczeniowych](memory-and-concurrency-limits.md). Baza danych jest tworzona w [grupie zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) oraz na [serwerze logicznym SQL platformy Azure](../sql-database/sql-database-logical-servers.md). 
 
-Wykonaj następujące kroki, aby utworzyć magazyn danych SQL Data Warehouse zawierający przykładowe dane AdventureWorksDW. 
+Wykonaj następujące kroki, aby utworzyć SQL Data Warehouse zawierający przykładowe dane AdventureWorksDW. 
 
 1. W lewym górnym rogu witryny Azure Portal kliknij przycisk **Utwórz zasób**.
 
@@ -207,4 +207,4 @@ Wykonaj następujące kroki, aby wyczyścić zasoby, które nie są już potrzeb
 Utworzono magazyn danych, utworzono regułę zapory, połączono z magazynem danych i uruchomiono kilka zapytań. Aby dowiedzieć się więcej na temat usługi Azure SQL Data Warehouse, przejdź do samouczka na temat ładowania danych.
 
 > [!div class="nextstepaction"]
-> [Ładowanie danych do magazynu danych SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md)
+> [Ładowanie danych do SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md)

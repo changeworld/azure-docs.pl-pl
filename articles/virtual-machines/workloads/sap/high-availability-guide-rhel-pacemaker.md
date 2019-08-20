@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: bffb92e37ccddd43c2a64466282084bb6226c338
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 24e7e67145b789737484fcb594f48127c41eafe9
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570556"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575229"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Konfigurowanie Pacemaker Red Hat Enterprise Linux na platformie Azure
 
@@ -107,12 +107,16 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    > RHEL 7,6: Fence-Agents-4.2.1 -11. el7 _  
    > RHEL 7,5: Fence-Agents-4.0.11 -86. el7 _ 5.8  
    > RHEL 7,4: Fence-Agents-4.0.11 -66. el7 _ 4.12  
-   > Aby uzyskać więcej informacji, zobacz [maszynę wirtualną platformy Azure działającą jako SKŁADOWA RHEL o wysokiej dostępności trwa bardzo długo lub nie można przekroczyć limitu czasu przed zamknięciem maszyny wirtualnej](https://access.redhat.com/solutions/3408711)
+   > Aby uzyskać więcej informacji, zobacz [maszynę wirtualną platformy Azure działającą jako SKŁADOWA RHEL o wysokiej dostępności trwa bardzo długo lub nie można przekroczyć limitu czasu przed zamknięciem maszyny wirtualnej](https://access.redhat.com/solutions/3408711).
 
    Sprawdź wersję agenta usługi Azure ogrodzenia. W razie potrzeby zaktualizuj ją do wersji równej lub nowszej niż podane powyżej.
+
    <pre><code># Check the version of the Azure Fence Agent
     sudo yum info fence-agents-azure-arm
    </code></pre>
+
+   > [!IMPORTANT]
+   > Jeśli trzeba zaktualizować agenta usługi Azure ogrodzenia, a jeśli jest używana rola niestandardowa, należy zaktualizować rolę niestandardową w celu uwzględnienia akcji **wyłączenie**. Aby uzyskać szczegółowe informacje, zobacz [Tworzenie roli niestandardowej dla agenta ogranicznika](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker#1-create-a-custom-role-for-the-fence-agent).  
 
 1. **[A]**  Konfigurowanie rozpoznawania nazw hostów
 

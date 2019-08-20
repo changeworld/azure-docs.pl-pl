@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4ecf3ec6ba9c71f3d7624b541ba0618645ab14f4
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: da7b9c44d15ac0ca16afe15e429a6fe2cf89e366
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535091"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575242"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Korzystanie z platformy Azure do hostowania i uruchamiania scenariuszy obciążeń SAP
 
@@ -49,7 +49,7 @@ Seria dokumentów prowadzi użytkownika przez SAP HANA na platformie Azure (duż
 - [Wysoka dostępność i odzyskiwanie po awarii dla SAP HANA na platformie Azure (duże wystąpienia)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)
 - [Rozwiązywanie problemów i monitorowanie SAP HANA na platformie Azure (duże wystąpienia)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/troubleshooting-monitoring)
 
-Kolejne kroki:
+Następne kroki:
 
 - Przeczytaj [Omówienie i architekturę SAP HANA na platformie Azure (duże wystąpienia)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
 
@@ -122,6 +122,7 @@ Aby uzyskać informacje na temat integracji usług platformy Azure z składnikam
 
 ## <a name="change-log"></a>Dziennik zmian
 
+- 08/16/2019: Zmiany [Red Hat Enterprise Linux dotyczące konfigurowania Pacemaker na platformie Azure w](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) celu przypominania klientom o aktualizowaniu akcji w roli niestandardowej w przypadku aktualizowania nowej wersji agenta usługi Azure ogrodzenia  
 - 08/15/2019: Zmiany w [konfiguracjach magazynu maszyn wirtualnych platformy Azure SAP HANA](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) w celu odzwierciedlenia ogólnej dostępności Ultra Disk (dawniej SSD w warstwie Ultra)
 - 08/01/2019: Zmiany dotyczące [konfigurowania Pacemaker SUSE Linux Enterprise Server na platformie Azure w](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) celu integracji zmian przeznaczonych dla SLES 15 
 - 07/23/2019: Zmiany w [klastrze wystąpienie SAP ASCS/SCS w klastrze trybu failover systemu Windows przy użyciu udziału plików na platformie Azure](sap-high-availability-guide-wsfc-file-share.md) w celu odzwierciedlenia obsługi miejsca do magazynowania bezpośrednio przez usługi Azure Site Recovery

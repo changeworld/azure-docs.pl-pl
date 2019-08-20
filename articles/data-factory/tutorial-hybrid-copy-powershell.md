@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: abnarain
-ms.openlocfilehash: 49d9be9f10f0e840cfa3d027901a297de8cbf750
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 87b32fdef449945b1e8facac2ac5a51b4ef67972
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60328293"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617600"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Samouczek: Kopiowanie danych z lokalnej bazy danych programu SQL Server do usługi Azure Blob Storage
 W tym samouczku użyjesz programu Azure PowerShell, aby utworzyć potok usługi Data Factory, który kopiuje dane z lokalnej bazy danych programu SQL Server do usługi Azure Blob Storage. Utworzysz własne środowisko Integration Runtime (Self-hosted), służące do przenoszenia danych między lokalnym magazynem danych i magazynem danych w chmurze. 
@@ -82,8 +82,6 @@ W tym samouczku używasz nazwy i klucza swojego konta usługi Azure Storage. Pob
 
 1. W oknie **Konto magazynu** wybierz pozycję **Klucze dostępu**.
 
-    ![Pobieranie nazwy i klucza konta magazynu](media/tutorial-hybrid-copy-powershell/storage-account-name-key.png)
-
 1. Skopiuj wartości z pól **Nazwa konta magazynu** i **klucz1** i wklej je do Notatnika lub innego edytora do późniejszego użycia z tym samouczkiem. 
 
 #### <a name="create-the-adftutorial-container"></a>Tworzenie kontenera adftutorial 
@@ -107,7 +105,6 @@ W tej sekcji utworzysz kontener obiektów blob o nazwie **adftutorial** w usłud
 
 1. Pozostaw otwarte okno **kontenera** **adftutorial**. Będzie ona używana do weryfikacji danych wyjściowych na końcu tego samouczka. Usługa Data Factory automatycznie tworzy folder wyjściowy w tym kontenerze, więc Ty nie musisz go tworzyć.
 
-    ![Okno kontenera](media/tutorial-hybrid-copy-powershell/container-page.png)
 
 ### <a name="windows-powershell"></a>Windows PowerShell
 
@@ -415,7 +412,7 @@ W tym kroku połączysz lokalne wystąpienie programu SQL Server z fabryką dany
     > [!IMPORTANT]
     > - Wybierz właściwą sekcję na podstawie metody uwierzytelniania używanej do nawiązywania połączenia z wystąpieniem programu SQL Server.
     > - Zastąp wartość **\<integration runtime name>** nazwą Twojego środowiska Integration Runtime.
-    > - Przed zapisaniem pliku zastąp wartości **\<servername>**, **\<databasename>**, **\<username>** i **\<password** wartościami odpowiednimi dla wystąpienia programu SQL Server.
+    > - Przed zapisaniem pliku zastąp wartości **\<servername>** , **\<databasename>** , **\<username>** i **\<password** wartościami odpowiednimi dla wystąpienia programu SQL Server.
     > - Jeśli musisz użyć znaku ukośnika (\\) w nazwie konta użytkownika lub nazwie serwera, poprzedź go znakiem ucieczki (\\). Na przykład: *mydomain\\\\myuser*. 
 
 1. Aby zaszyfrować dane poufne (nazwę użytkownika, hasło itp.), uruchom polecenie cmdlet `New-AzDataFactoryV2LinkedServiceEncryptedCredential`.  

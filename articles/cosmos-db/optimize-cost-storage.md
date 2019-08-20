@@ -1,47 +1,47 @@
 ---
-title: Optymalizuj koszt usługi storage w usłudze Azure Cosmos DB
-description: W tym artykule wyjaśniono, jak zarządzać kosztami magazynu dla danych przechowywanych w usłudze Azure Cosmos DB
+title: Optymalizuj koszt magazynu w Azure Cosmos DB
+description: W tym artykule wyjaśniono, jak zarządzać kosztami magazynu dla danych przechowywanych w Azure Cosmos DB
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
-ms.openlocfilehash: 71f1f8896126728277ba6f0bf2c0ded1b2a608b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2955df266bcf164ce4a155acc5209679eff0ce8a
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967247"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615010"
 ---
-# <a name="optimize-storage-cost-in-azure-cosmos-db"></a>Optymalizuj koszt usługi storage w usłudze Azure Cosmos DB
+# <a name="optimize-storage-cost-in-azure-cosmos-db"></a>Optymalizuj koszt magazynu w Azure Cosmos DB
 
-Usługa Azure Cosmos DB zapewnia nieograniczony magazyn i przepustowość. W odróżnieniu od przepustowości, które mają do aprowizacji/konfigurowanie na baz danych lub kontenerów w usłudze Azure Cosmos magazynu jest rozliczana na podstawie na podstawie użycia. Opłaty są naliczane tylko za logicznej magazynu, których można używać, i nie masz żadnych magazyn rezerwacji z wyprzedzeniem. Magazyn automatycznie skalować w górę i w dół na podstawie danych, które powodują dodawanie lub usuwanie do kontenera usługi Azure Cosmos DB.
+Azure Cosmos DB oferuje nieograniczony magazyn i przepływność. W przeciwieństwie do przepływności, które trzeba zainicjować i skonfigurować w odniesieniu do kontenerów lub baz danych usługi Azure Cosmos, magazyn jest rozliczany na podstawie użycia. Opłaty są naliczane tylko za używane magazyny logiczne i nie trzeba rezerwować żadnego magazynu z góry. Magazyn automatycznie skaluje się w górę i w dół w oparciu o dane dodawane lub usuwane do kontenera usługi Azure Cosmos.
 
 ## <a name="storage-cost"></a>Koszt usługi Storage
 
-Magazyn jest rozliczany z jednostką GB. Lokalny magazyn opartych na dyskach SSD jest używany przez Twoje dane i indeksowania. Całkowita ilość miejsca, używany jest równa magazyn wymagany przez dane i indeksy używane we wszystkich regionach, gdy używasz usługi Azure Cosmos DB. Jeśli konto usługi Azure Cosmos jest globalnie replikować w trzech regionach, będzie płacisz łączny koszt magazynu w każdym z tych trzech regionach. Aby oszacować wymaganego do magazynowania, zobacz [planowania pojemności](https://www.documentdb.com/capacityplanner) narzędzia. Koszt usługi storage w usłudze Azure Cosmos DB jest GB 0,25 USD/miesiąc, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/cosmos-db/) najnowsze aktualizacje. Możesz skonfigurować alerty do określenia miejsca używanego przez kontener usługi Azure Cosmos do monitorowania magazynu, zobacz [monitora usługi Azure Cosmos DB](monitor-accounts.md)) artykułu.
+Magazyn jest rozliczany przy użyciu jednostki GB. Lokalny dysk SSD — magazyn kopii zapasowych jest używany przez dane i indeksowanie. Łączny używany magazyn jest równy magazynowi wymaganemu przez dane i indeksy używane we wszystkich regionach, w których są używane Azure Cosmos DB. Jeśli globalnie replikujesz konto usługi Azure Cosmos w trzech regionach, będziesz płacić za łączny koszt magazynu w każdym z tych trzech regionów. Aby oszacować wymaganie magazynu, zobacz Narzędzie do [planowania pojemności](https://www.documentdb.com/capacityplanner) . Koszt magazynu w Azure Cosmos DB wynosi $0,25 GB/miesiąc, zobacz stronę z [cennikiem](https://azure.microsoft.com/pricing/details/cosmos-db/) , aby uzyskać najnowsze aktualizacje. Można skonfigurować alerty w celu określenia magazynu używanego przez kontener usługi Azure Cosmos, aby monitorować magazyn, zobacz artykuł [monitorowanie Azure Cosmos DB](monitor-accounts.md)).
 
-## <a name="optimize-cost-with-item-size"></a>Optymalizowanie kosztów za pomocą rozmiar elementu
+## <a name="optimize-cost-with-item-size"></a>Optymalizuj koszt z rozmiarem elementu
 
-Usługa Azure Cosmos DB oczekuje, że rozmiar elementu 2 MB lub mniej, aby uzyskać optymalną wydajność i oszczędność kosztów. Dowolny element, aby przechowywać więcej niż 2 MB danych, należy wziąć pod uwagę przeprojektowanie schematu elementu. W rzadkich, nie można zmieniać schematu można podzielić elementów podrzędnych i logicznie łączyć je przy użyciu typowych identifier(ID). Wszystkie funkcje usługi Azure Cosmos DB, działać spójnie przez Zakotwiczanie do tego identyfikatora logicznego.
+Azure Cosmos DB oczekuje, że rozmiar elementu wynosi 2 MB lub mniej, aby zapewnić optymalną wydajność i korzyści z kosztów. Jeśli potrzebujesz dowolnego elementu do przechowywania większej ilości danych niż 2 MB, rozważ przeprojektowanie schematu elementu. W rzadkim zdarzeniu, którego nie można ponownie zaprojektować schematu, można podzielić element na elementy podrzędne i połączyć je logicznie ze wspólnym identyfikatorem (ID). Wszystkie funkcje Azure Cosmos DB działają spójnie przez zakotwiczenie tego identyfikatora logicznego.
 
 ## <a name="optimize-cost-with-indexing"></a>Optymalizowanie kosztów za pomocą indeksowania
 
-Domyślnie dane są automatycznie indeksowane, który może zwiększyć całkowitą ilość używanego miejsca. Jednak można zastosować zasady niestandardowe indeksu, aby zmniejszyć to obciążenie. Automatyczne indeksowanie, która nie została ona dostrojona za pomocą zasad jest około 10-20% rozmiaru elementu. Przez usunięcie lub dostosowywanie zasad indeksu, nie płacić za dodatkowych kosztów do zapisu i nie wymagają dodatkowej przepływności. Zobacz [indeksowanie w usłudze Azure Cosmos DB](indexing-policies.md) skonfigurować niestandardowe zasady indeksowania. Użytkownicy mający doświadczenie z relacyjnych baz danych przed, użytkownik może uznać, "index wszystko" oznacza podwojenie magazynu lub nowszej. Jednak w usłudze Azure Cosmos DB, w przypadku mediany, jest znacznie niższy. W usłudze Azure Cosmos DB narzut na przechowywanie indeksu jest zazwyczaj niski (10-20%) nawet w przypadku automatycznego indeksowania, ponieważ jest ona przeznaczona dla rozmiaru magazynu niski. Zarządzając zasady indeksowania, można kontrolować kosztem indeksu zużycia i zwiększa wydajność zapytań, w sposób bardziej szczegółowo.
+Domyślnie dane są indeksowane automatycznie, co może zwiększyć łączny zużyty magazyn. Można jednak zastosować niestandardowe zasady indeksu w celu zmniejszenia tego obciążenia. Automatyczne indeksowanie, które nie zostało dostrojone za pomocą zasad, to około 10-20% rozmiaru elementu. Przez usunięcie lub dostosowanie zasad indeksu nie są napłacone dodatkowe koszty związane z zapisem i nie jest wymagane dodatkowe możliwości przepływności. Aby skonfigurować niestandardowe zasady indeksowania, zobacz [indeksowanie w Azure Cosmos DB](indexing-policies.md) . Jeśli wcześniej pracujesz z relacyjnymi bazami danych, możesz zastanowić się, że "indeks wszystkiego" oznacza Podwajanie przestrzeni dyskowej lub wyższą. Jednak w Azure Cosmos DB, w przypadku gdy jest to znacznie mniejsze. W Azure Cosmos DB obciążenie magazynu dla indeksu jest zwykle niskie (10-20%) nawet w przypadku automatycznego indeksowania, ponieważ jest ono przeznaczone do niskiego rozmiaru magazynu. Zarządzając zasadami indeksowania, można kontrolować kompromisy między wpływami indeksowania i wydajnością zapytań w bardziej szczegółowy sposób.
 
-## <a name="optimize-cost-with-time-to-live-and-change-feed"></a>Optymalizowanie kosztów przy użyciu czasu na żywo i zestawienia zmian
+## <a name="optimize-cost-with-time-to-live-and-change-feed"></a>Optymalizowanie kosztów za pomocą czasu wygaśnięcia i kanału informacyjnego zmiany
 
-Po nie są już potrzebne dane możesz bezpiecznie usunąć go z konta usługi Azure Cosmos przy użyciu [czas wygaśnięcia](time-to-live.md), [zestawienia zmian](change-feed.md) lub stare dane można migrować do innego magazynu danych, takie jak magazyn obiektów blob platformy Azure lub magazynu danych platformy Azure. Czas wygaśnięcia lub czas wygaśnięcia usługi Azure Cosmos DB zapewnia możliwość automatycznie usunąć elementy z kontenera po upływie pewnego czasu. Domyślnie można ustawić czas na żywo na poziomie kontenera i zastąp wartość na podstawie poszczególnych elementów. Po ustawieniu czas wygaśnięcia w kontenerze, lub na poziomie elementu, usługi Azure Cosmos DB automatycznie usunie te elementy po upływie okresu czasu od czasu ostatniej modyfikacji. Za pomocą zestawienia zmian, możliwe jest migrowanie danych do dowolnego innego kontenera w usłudze Azure Cosmos DB lub do magazynu danych zewnętrznych. Migracja trwa zero czas przestoju i podczas pracy przeprowadzić migrację, możesz usunąć lub skonfigurować czas wygaśnięcia można usunąć kontenera źródła w usłudze Azure Cosmos.
+Gdy nie potrzebujesz już danych, możesz bezpiecznie usunąć je z konta usługi Azure Cosmos, używając [czasu wygaśnięcia](time-to-live.md), [kanału informacyjnego zmiany](change-feed.md) lub migracji starych danych do innego magazynu danych, takiego jak Azure Blob Storage lub Azure Data Warehouse. W przypadku czasu wygaśnięcia lub czasu wygaśnięcia usługa Azure Cosmos DB zapewnia możliwość automatycznego usuwania elementów z kontenera po upływie określonego czasu. Domyślnie można ustawić czas na żywo na poziomie kontenera i zastąpić wartość dla każdego elementu. Po ustawieniu czasu wygaśnięcia w kontenerze lub na poziomie elementu Azure Cosmos DB automatycznie usunie te elementy po upływie czasu od momentu ostatniej modyfikacji. Używając kanału informacyjnego zmiany, można migrować dane do innego kontenera w Azure Cosmos DB lub do zewnętrznego magazynu danych. Migracja zajmie zero czasu i po zakończeniu migracji można usunąć lub skonfigurować czas wygaśnięcia, aby usunąć źródłowy kontener platformy Azure Cosmos.
 
-## <a name="optimize-cost-with-rich-media-data-types"></a>Optymalizowanie kosztów z typami danych multimediów 
+## <a name="optimize-cost-with-rich-media-data-types"></a>Optymalizowanie kosztów dzięki rozbudowanym typom danych multimediów 
 
-Jeśli chcesz przechowywać zaawansowanych typów nośników, na przykład filmy wideo, obrazów, itp., masz kilka opcji w usłudze Azure Cosmos DB. Jedną z opcji jest do przechowywania tych typów multimediów jako elementy usługi Azure Cosmos. Jest ograniczona do 2 MB na element, a limit ten można uniknąć, łańcuch elementu danych do wielu podrzędnych. Lub można przechowywać je w usłudze Azure Blob storage i użyj metadane, aby odwoływać się do nich z elementów Azure Cosmos. Istnieje kilka zalet i wad, w przypadku tej metody. Pierwszym sposobem pobiera najlepszej wydajności pod kątem opóźnienia, przepływność umowy SLA, a także możliwości kompleksowa dystrybucja globalna dla typów danych rozbudowane treści multimedialne, oprócz regularnych elementów Azure Cosmos. Jednak obsługa jest dostępna w cenie wyższy. Dzięki przechowywaniu multimediów w usłudze Azure Blob storage, można zmniejszyć koszty ogólne. Jeśli czas oczekiwania ma kluczowe znaczenie, można użyć usługa premium storage dla plików multimediów, które są wywoływane z elementów w usłudze Azure Cosmos. Integruje się to natywnie przy użyciu usługi CDN do udostępniania obrazów z serwera granicznego przy niskich kosztach obejścia ograniczeń geograficznie. Dół strony, w tym scenariuszu jest to, czy masz do czynienia z dwóch usług — Azure Cosmos DB i Azure Blob storage, co może zwiększyć koszty operacyjne. 
+Jeśli chcesz przechowywać rozbudowane typy multimediów, na przykład wideo, obrazy itp., masz kilka opcji dostępnych w Azure Cosmos DB. Jedną z opcji jest przechowywanie tych bogatych typów multimediów jako elementów usługi Azure Cosmos. Dla każdego elementu występuje limit 2 MB, a można uniknąć tego limitu poprzez łańcuchowanie elementu danych w wielu elementach SubItems. Lub można je przechowywać w usłudze Azure Blob Storage i używać ich do odwoływania się do nich z poziomu elementów usługi Azure Cosmos. Ta metoda ma wiele zalet i wad. Pierwsze podejście pozwala uzyskać najlepszą wydajność w zakresie opóźnień, umowy SLA przepływności i gotowe globalną dystrybucję dla bogatych typów danych multimedialnych oraz zwykłych elementów usługi Azure Cosmos. Jednak pomoc techniczna jest dostępna z wyższą ceną. Przechowywanie multimediów w usłudze Azure Blob Storage pozwala obniżyć koszty ogólne. Jeśli opóźnienie ma krytyczne znaczenie, można użyć usługi Premium Storage dla plików multimediów rozbudowanych, do których odwołuje się element Cosmos platformy Azure. Integruje się to natywnie z siecią CDN w celu obsługi obrazów z serwera brzegowego przy niższych kosztach w celu obejścia ograniczenia geograficznego. W tym scenariuszu należy zaradzić sobie z dwoma usługami — Azure Cosmos DB i magazynem obiektów blob platformy Azure, co może zwiększyć koszty operacyjne. 
 
-## <a name="check-storage-consumed"></a>Sprawdź wykorzystany Magazyn
+## <a name="check-storage-consumed"></a>Sprawdź zużyte miejsce w magazynie
 
-Aby sprawdzić użycie magazynu dla kontenera usługi Azure Cosmos, można uruchomić żądanie HEAD lub GET do kontenera i sprawdzić `x-ms-request-quota` i `x-ms-request-usage` nagłówków. Alternatywnie, pracując przy użyciu zestawu .NET SDK, można użyć [DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100)), i [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) właściwości, aby pobrać zajmowanego w magazynie.
+Aby sprawdzić użycie magazynu przez kontener usługi Azure Cosmos, możesz uruchomić żądanie Head lub Get na kontenerze i sprawdzić `x-ms-request-quota` `x-ms-request-usage` nagłówki i. Alternatywnie, podczas pracy z zestawem SDK .NET, można użyć właściwości [DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100))i [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) , aby uzyskać zużyty magazyn.
 
-## <a name="using-sdk"></a>Przy użyciu zestawu SDK
+## <a name="using-sdk"></a>Korzystanie z zestawu SDK
 
 ```csharp
 // Measure the item size usage (which includes the index size)
@@ -50,14 +50,14 @@ ResourceResponse<DocumentCollection> collectionInfo = await client.ReadDocumentC
 Console.WriteLine("Item size quota: {0}, usage: {1}", collectionInfo.DocumentQuota, collectionInfo.DocumentUsage);
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Następnie możesz przejść do Dowiedz się więcej o optymalizacji kosztów w usłudze Azure Cosmos DB z następujących artykułów:
+Następnie możesz dowiedzieć się więcej o optymalizacji kosztów w Azure Cosmos DB z następującymi artykułami:
 
-* Dowiedz się więcej o [Optymalizacja na potrzeby programowania i testowania](optimize-dev-test.md)
-* Dowiedz się więcej o [informacje o rachunku Azure Cosmos DB](understand-your-bill.md)
-* Dowiedz się więcej o [optymalizacji kosztów przepustowości](optimize-cost-throughput.md)
-* Dowiedz się więcej o [optymalizacji koszt odczyty i zapisy](optimize-cost-reads-writes.md)
-* Dowiedz się więcej o [optymalizacji kosztów zapytań](optimize-cost-queries.md)
-* Dowiedz się więcej o [optymalizacji kosztów kont usługi Azure Cosmos w wielu regionach](optimize-cost-regions.md)
+* Dowiedz się więcej [na temat optymalizacji na potrzeby programowania i testowania](optimize-dev-test.md)
+* Dowiedz się więcej o [zrozumieniu Azure Cosmos DB rachunku](understand-your-bill.md)
+* Dowiedz się [](optimize-cost-throughput.md) więcej na temat optymalizowania kosztu przepływności
+* Dowiedz się więcej o [optymalizowaniu kosztów operacji odczytu i zapisu](optimize-cost-reads-writes.md)
+* Dowiedz się więcej o [optymalizowaniu kosztów zapytań](optimize-cost-queries.md)
+* Dowiedz się więcej [na temat optymalizowania kosztów kont usługi Azure Cosmos w wielu regionach](optimize-cost-regions.md)
 

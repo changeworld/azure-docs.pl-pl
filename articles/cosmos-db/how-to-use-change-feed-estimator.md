@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 08/15/2019
 ms.author: maquaran
-ms.openlocfilehash: 582b0a586f830659bbea4dd665be938d2895de47
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: f72a3bfcfd6b4f480977510963f49f73a7207e1f
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544831"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615276"
 ---
 # <a name="use-the-change-feed-estimator"></a>Korzystanie ze źródła zmian szacowania
 
@@ -23,7 +23,7 @@ Procesor kanału informacyjnego zmian działa jako wskaźnik, który przechodzi 
 
 Wdrożenie procesora kanału informacyjnego zmian może przetwarzać zmiany z określoną szybkością na podstawie dostępnych zasobów, takich jak procesor CPU, pamięć, Sieć i tak dalej.
 
-Jeśli ta częstotliwość jest mniejsza niż szybkość, z jaką zmiany są wykonywane w kontenerze Azure Cosmos DB, procesor rozpocznie się z opóźnieniem.
+Jeśli ta częstotliwość jest mniejsza niż szybkość, z jaką zmiany są wykonywane w kontenerze usługi Azure Cosmos, procesor rozpocznie się w stosunku do opóźnienia.
 
 Określenie tego scenariusza pomaga zrozumieć, czy konieczne jest skalowanie wdrożenia procesora kanału informacyjnego zmian.
 
@@ -60,8 +60,7 @@ Można wysłać to oszacowanie do rozwiązania monitorowania i użyć go do zroz
 
 ## <a name="next-steps"></a>Następne kroki
 
-Można teraz kontynuować, aby dowiedzieć się więcej na temat zmiany źródła danych w następujących artykułach:
+Teraz można dowiedzieć się więcej o procesorze źródła zmian w następujących artykułach:
 
-* [Przegląd źródła zmian](change-feed.md)
-* [Sposoby odczytywania źródła zmian](read-change-feed.md)
-* [Użyj procesora źródła zmian](change-feed-processor.md)
+* [Omówienie procesora kanału informacyjnego zmiany](change-feed-processor.md)
+* [Czas rozpoczęcia procesora kanału informacyjnego](how-to-configure-change-feed-start-time.md)

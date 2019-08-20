@@ -14,18 +14,19 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 8dca94f0200f6bd41dfdc199b41bf69981a960da
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 22cf2be8eaed47a9440c6798acfb4383bd84c916
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562702"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611706"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Usługa Azure Event Hubs — odzyskiwanie po awarii geograficznie 
 
 Gdy cały regiony platformy Azure lub w centrach danych (Jeśli nie [strefy dostępności](../availability-zones/az-overview.md) są używane) doświadczają przestoju, koniecznie do przetwarzania danych w dalszym ciągu działać w innym regionie lub w centrum danych. W efekcie *odzyskiwania po awarii geograficznie* i *Geografickou replikaci* są ważne funkcje w każdej firmie. Usługa Azure Event Hubs obsługuje zarówno odzyskiwania po awarii geograficzne i replikacja geograficzna, na poziomie przestrzeni nazw. 
 
-Funkcja odzyskiwania po awarii geograficznej jest globalnie dostępna dla systemów Event Hubs Standard i dedykowana jednostka SKU. Należy pamiętać, że w tej samej warstwie jednostki SKU można tylko przestrzenie nazw z parą geograficzną. Na przykład jeśli masz przestrzeń nazw w klastrze, który jest oferowany tylko w dedykowanej jednostce SKU, można sparować tylko z przestrzenią nazw w innym klastrze. 
+> [!NOTE]
+> Funkcja odzyskiwania geograficznego po awarii jest dostępna tylko dla [standardowej i dedykowanej jednostki SKU](https://azure.microsoft.com/pricing/details/event-hubs/).  
 
 ## <a name="outages-and-disasters"></a>Wyłączeń i awarii
 
@@ -37,7 +38,9 @@ Funkcja odzyskiwania po awarii geograficznej usługi Azure Event Hubs jest rozwi
 
 ## <a name="basic-concepts-and-terms"></a>Podstawowych pojęć i terminów
 
-Funkcja odzyskiwania po awarii implementuje odzyskiwanie po awarii metadane i opiera się na przestrzeni nazw odzyskiwania po awarii podstawowego i pomocniczego. Należy pamiętać, że funkcja odzyskiwania geograficznego po awarii jest dostępna tylko dla [standardowych i dedykowanych jednostek SKU](https://azure.microsoft.com/pricing/details/event-hubs/) . Nie trzeba wprowadzać żadnych zmian ciągu połączenia, ponieważ połączenie zostało nawiązane za pomocą aliasu.
+Funkcja odzyskiwania po awarii implementuje odzyskiwanie po awarii metadane i opiera się na przestrzeni nazw odzyskiwania po awarii podstawowego i pomocniczego. 
+
+Funkcja odzyskiwania geograficznego po awarii jest dostępna tylko dla [standardowych i dedykowanych jednostek SKU](https://azure.microsoft.com/pricing/details/event-hubs/) . Nie trzeba wprowadzać żadnych zmian ciągu połączenia, ponieważ połączenie zostało nawiązane za pomocą aliasu.
 
 W tym artykule są używane następujące terminy:
 
@@ -48,6 +51,19 @@ W tym artykule są używane następujące terminy:
 -  *Metadane*: Jednostki, takie jak centra zdarzeń i grupy konsumentów; i ich właściwości usługi, które są skojarzone z przestrzenią nazw. Należy pamiętać, że tylko jednostek i ich ustawienia są replikowane automatycznie. Komunikaty i zdarzenia nie są replikowane. 
 
 -  *Tryb failover*: Proces aktywowania pomocniczej przestrzeni nazw.
+
+## <a name="supported-namespace-pairs"></a>Obsługiwane pary przestrzeni nazw
+Obsługiwane są następujące kombinacje podstawowych i pomocniczych przestrzeni nazw:  
+
+| Podstawowa przestrzeń nazw | Pomocnicza przestrzeń nazw | Obsługiwany | 
+| ----------------- | -------------------- | ---------- |
+| Standardowa (Standard) | Standardowa (Standard) | Tak | 
+| Standardowa (Standard) | Dedykowany | Tak | 
+| Dedykowany | Dedykowany | Tak | 
+| Dedykowany | Standardowa (Standard) | Nie | 
+
+> [!NOTE]
+> Nie można sparować przestrzeni nazw, które znajdują się w tym samym dedykowanym klastrze. Można sparować przestrzenie nazw, które znajdują się w osobnych klastrach. 
 
 ## <a name="setup-and-failover-flow"></a>Przepływ instalacji i trybu failover
 

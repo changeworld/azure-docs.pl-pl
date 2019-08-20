@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB wskazówki dotyczące wydajności dla asynchronicznego języka Java
-description: Informacje na temat opcji konfiguracji klienta w celu poprawy wydajności bazy danych Azure Cosmos DB
+description: Dowiedz się więcej na temat opcji konfiguracji klienta, aby zwiększyć wydajność usługi Azure Cosmos Database
 author: SnehaGunda
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: 2c2d776012e702469be4fd3217fb89be0ad419bf
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 7a470193110fda0bb675e56e17a8f5647ebda5ab
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261629"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614968"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>Porady dotyczące wydajności Azure Cosmos DB i asynchronicznego języka Java
 
@@ -30,7 +30,7 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" na
    <a id="same-region"></a>
 1. **Kolokacja klientów w tym samym regionie świadczenia usługi Azure na potrzeby wydajności**
 
-    Jeśli to możliwe, należy umieścić dowolne aplikacje wywołujące Azure Cosmos DB w tym samym regionie, co baza danych Azure Cosmos DB. Dla przybliżonego porównania, wywołania do Azure Cosmos DB w tym samym regionie, kompletne w ciągu 1-2 MS, ale opóźnienie między zachodnim i wschodnim wybrzeżem Stanów Zjednoczonych jest > 50 ms. To opóźnienie może się różnić od żądania żądania w zależności od trasy wykonywanej przez żądanie, gdy przechodzi od klienta do granicy centrum danych platformy Azure. Najniższe możliwe opóźnienie jest realizowane przez zagwarantowanie, że aplikacja wywołująca znajduje się w tym samym regionie platformy Azure, co punkt końcowy Azure Cosmos DB aprowizacji. Aby uzyskać listę dostępnych regionów, zobacz [regiony platformy Azure](https://azure.microsoft.com/regions/#services).
+    Jeśli to możliwe, należy umieścić dowolne aplikacje wywołujące Azure Cosmos DB w tym samym regionie, w którym znajduje się baza danych usługi Azure Cosmos. Dla przybliżonego porównania, wywołania do Azure Cosmos DB w tym samym regionie, kompletne w ciągu 1-2 MS, ale opóźnienie między zachodnim i wschodnim wybrzeżem Stanów Zjednoczonych jest > 50 ms. To opóźnienie może się różnić od żądania żądania w zależności od trasy wykonywanej przez żądanie, gdy przechodzi od klienta do granicy centrum danych platformy Azure. Najniższe możliwe opóźnienie jest realizowane przez zagwarantowanie, że aplikacja wywołująca znajduje się w tym samym regionie platformy Azure, co punkt końcowy Azure Cosmos DB aprowizacji. Aby uzyskać listę dostępnych regionów, zobacz [regiony platformy Azure](https://azure.microsoft.com/regions/#services).
 
     ![Ilustracja zasad połączenia Azure Cosmos DB](./media/performance-tips/same-region.png)
 
@@ -82,7 +82,7 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" na
 
 9. **Użyj odpowiedniego harmonogramu (Unikaj kradzieży wątków wielosieciowych we/wy pętli zdarzeń)**
 
-    Asynchroniczny zestaw SDK języka [Java używa sieci](https://netty.io/) na potrzeby nieblokującego we/wy. Zestaw SDK używa ustalonej liczby wątków pętli zdarzeń we/wy (w przypadku wielu rdzeni procesora) na potrzeby wykonywania operacji we/wy. Zauważalny zwracany przez interfejs API emituje wynik na jednym ze współużytkowanych wątków pętli zdarzeń we/wy. W związku z tym ważne jest, aby nie blokować wspólnych wątków pętli na potrzeby operacji we/wy. Wykonywanie zadań intensywnie korzystających z procesora CPU lub operacji blokowania w wątku sieci w pętli zdarzeń we/wy może spowodować zakleszczenie lub znacząco zredukować przepływność zestawu SDK.
+    Asynchroniczny zestaw SDK języka [](https://netty.io/) Java używa sieci na potrzeby nieblokującego we/wy. Zestaw SDK używa ustalonej liczby wątków pętli zdarzeń we/wy (w przypadku wielu rdzeni procesora) na potrzeby wykonywania operacji we/wy. Zauważalny zwracany przez interfejs API emituje wynik na jednym ze współużytkowanych wątków pętli zdarzeń we/wy. W związku z tym ważne jest, aby nie blokować wspólnych wątków pętli na potrzeby operacji we/wy. Wykonywanie zadań intensywnie korzystających z procesora CPU lub operacji blokowania w wątku sieci w pętli zdarzeń we/wy może spowodować zakleszczenie lub znacząco zredukować przepływność zestawu SDK.
 
     Na przykład poniższy kod wykonuje prace intensywnie korzystające z procesora CPU w wątku wielosieciowych operacji we/wy pętli:
 
@@ -225,5 +225,5 @@ W przypadku innych platform (Red Hat, Windows, Mac itp.) zapoznaj się z tymi in
 
     Opłata za żądanie (koszt przetwarzania żądania) danej operacji jest bezpośrednio skorelowana z rozmiarem dokumentu. Operacje na dużych dokumentach są droższe niż operacje w przypadku małych dokumentów.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej na temat projektowania aplikacji pod kątem skalowania i wysokiej wydajności, zobacz [partycjonowanie i skalowanie w Azure Cosmos DB](partition-data.md).

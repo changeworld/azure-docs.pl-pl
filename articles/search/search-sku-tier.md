@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: heidist
-ms.openlocfilehash: d93f8c61511dd1d3fc2bfd253fa7a21857f67ed6
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: a874c8a1fe2e8a81e2f42b2c88447fd52b47f3ad
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563370"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611969"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Wybierz warstwę cenową dla Azure Search
 
@@ -62,7 +62,7 @@ Rozwiązanie oparte na Azure Search może ponosić koszty w następujący sposó
 
 W przeciwieństwie do maszyn wirtualnych lub innych zasobów, które mogą być "wstrzymane" aby uniknąć opłat, usługa Azure Search jest zawsze dostępna na sprzęcie dedykowanym do wyłącznego użytku. W związku z tym tworzenie usługi jest zdarzeniem rozliczanym rozpoczynającym się podczas tworzenia usługi i kończącym się po usunięciu usługi. 
 
-Opłata minimalna to pierwsza jednostka wyszukiwania (jedna replika x jedna partycja). Ta wartość minimalna jest ustalana w okresie istnienia usługi, ponieważ usługa nie może być uruchomiona na żadnym serwerze niższym niż ta konfiguracja. Poza minimalnym można dodawać repliki i partycje niezależnie od siebie. Przyrostowe zwiększenie wydajności za pośrednictwem replik i partycji spowoduje zwiększenie rachunku na podstawie następującej formuły: [(repliki x partycje x)](#search-units), gdzie opłata naliczana zależy od wybranej warstwy cenowej.
+Opłata minimalna to pierwsza jednostka wyszukiwania (jedna replika x jedna partycja) w stawce płatnej. Ta wartość minimalna jest ustalana w okresie istnienia usługi, ponieważ usługa nie może być uruchomiona na żadnym serwerze niższym niż ta konfiguracja. Poza minimalnym można dodawać repliki i partycje niezależnie od siebie. Przyrostowe zwiększenie wydajności za pośrednictwem replik i partycji spowoduje zwiększenie rachunku na podstawie następującej formuły: [(repliki x partycje x)](#search-units), gdzie opłata naliczana zależy od wybranej warstwy cenowej.
 
 W przypadku szacowania kosztów rozwiązania wyszukiwania należy pamiętać, że ceny i pojemność nie są liniowe. (Podwojenie pojemności więcej niż podwaja koszt). Aby zapoznać się z przykładem sposobu działania formuły, zobacz [Jak przydzielić repliki i partycje](search-capacity-planning.md#how-to-allocate-replicas-and-partitions).
 
@@ -157,7 +157,7 @@ L2 offers twice the overall storage capacity of L1.  Choose your tier based on t
 
 ### <a name="evaluating-capacity"></a>Ocena wydajności
 
-Wydajność i koszty związane z działaniem usługi są bezpośrednio powiązane. Warstwy nakładają limity na dwa poziomy: Magazyn i zasoby. Należy zastanowić się, że w zależności od tego, który limit dociera do pierwszego osiągnięcia, obowiązuje limit.
+Pojemność i koszty uruchomienia usługi są dostępne. Warstwy nakładają limity na dwa poziomy: Magazyn i zasoby. Należy zastanowić się, że w zależności od tego, który limit dociera do pierwszego osiągnięcia, obowiązuje limit.
 
 Wymagania biznesowe zwykle określają liczbę indeksów, które będą potrzebne. Na przykład może być potrzebny indeks globalny dla dużego repozytorium dokumentów. Lub może być potrzebne wiele indeksów opartych na regionie, aplikacji lub w trakcie pracy z firmą.
 
@@ -167,25 +167,25 @@ Aby określić rozmiar indeksu, należy go [skompilować](search-create-index-po
 > Chociaż oszacowanie przyszłych potrzeb dotyczących indeksów i magazynu może wyglądać podobnie jak wątpliwości, warto wykonać te czynności. Jeśli pojemność warstwy wyzostanie zbyt niska, należy udostępnić nową usługę w wyższej warstwie, a następnie [ponownie załadować indeksy](search-howto-reindex.md). Nie istnieje uaktualnienie w miejscu usługi z jednej jednostki SKU do innej.
 >
 
-### <a name="step-1-develop-rough-estimates-by-using-the-free-tier"></a>Krok 1: Opracowywanie przybliżonych oszacowań przy użyciu warstwy Bezpłatna
+### <a name="estimate-with-the-free-tier"></a>Szacowanie przy użyciu warstwy Bezpłatna
 
-Jednym z metod oszacowania wydajności jest rozpoczęcie od warstwy Bezpłatna. Należy pamiętać, że bezpłatna usługa oferuje maksymalnie trzy indeksy, 50 MB miejsca do magazynowania i 2 minuty czasu indeksowania. Oszacowanie przewidywanego rozmiaru indeksu z tymi ograniczeniami może być trudne. Oto podejście, które możesz wykonać:
+Jednym z metod oszacowania wydajności jest rozpoczęcie od warstwy Bezpłatna. Należy pamiętać, że bezpłatna usługa oferuje maksymalnie trzy indeksy, 50 MB miejsca do magazynowania i 2 minuty czasu indeksowania. Oszacowanie przewidywanego rozmiaru indeksu z tymi ograniczeniami może być trudne, ale te czynności są następujące:
 
 + [Utwórz bezpłatną usługę](search-create-service-portal.md).
-+ Przygotuj mały reprezentatywny zestaw danych (na przykład 5 000 dokumentów i 10 procent przykładowego rozmiaru).
-+ [Utwórz indeks początkowy](search-create-index-portal.md) i zanotuj jego rozmiar w portalu (na przykład 30 MB).
++ Przygotuj mały reprezentatywny zestaw danych.
++ [Utwórz początkowy indeks w portalu](search-create-index-portal.md) i zanotuj jego rozmiar. Funkcje i atrybuty mają wpływ na magazyn. Na przykład dodawanie sugestii (typeahead) zwiększa wymagania dotyczące magazynu. Korzystając z tego samego zestawu danych, można spróbować utworzyć wiele wersji indeksu z różnymi atrybutami każdego pola, aby zobaczyć, jak różnią się wymagania dotyczące magazynu. Aby uzyskać więcej informacji, zobacz ["konsekwencje dotyczące magazynu" w temacie Tworzenie podstawowego indeksu](search-what-is-an-index.md#storage-implications).
 
-Jeśli przykład jest reprezentatywny i 10% całego źródła danych, indeks 30 MB będzie wynosił około 300 MB, jeśli wszystkie dokumenty są indeksowane. Przy użyciu tego numeru wstępnego możesz dwukrotnie uzyskać kwotę budżetu dla dwóch indeksów (rozwój i produkcja). Zapewnia to łączną liczbę 600 MB w wymaganiach dotyczących magazynu. To wymaganie jest w prosty sposób spełnione przez warstwę podstawowa, więc można je uruchomić.
+Dzięki przybliżonemu szacunkowi możesz dwukrotnie określić wartość budżetu dla dwóch indeksów (rozwój i produkcja), a następnie wybrać odpowiednią warstwę.
 
-### <a name="step-2-develop-refined-estimates-by-using-a-billable-tier"></a>Krok 2: Opracowywanie rafinowanych oszacowań przy użyciu warstwy rozliczanej
+### <a name="estimate-with-a-billable-tier"></a>Szacowanie przy użyciu warstwy rozliczeniowej
 
-Niektórzy klienci wolą zacząć od dedykowanych zasobów, które mogą obsługiwać większe próbkowanie i czasy przetwarzania, a następnie rozwijać realistyczne szacunki dotyczące liczby indeksów, rozmiaru i woluminów zapytań podczas opracowywania. Początkowo usługa jest obsługiwana w oparciu o najlepsze oszacowanie. Następnie, jako dojrzały projekt programistyczny, zespoły zwykle wiedzą, czy istniejąca usługa przekracza lub w mocy do przewidywanych obciążeń produkcyjnych.
+Dedykowane zasoby mogą obsługiwać większe próbkowanie i czasy przetwarzania dla bardziej realistycznych szacunków liczby indeksów, rozmiaru i woluminów zapytań podczas opracowywania. Niektórzy klienci przechodźą w prawo przy użyciu warstwy rozliczeniowej, a następnie ponownie ocenianej jako dojrzały projekt programistyczny.
 
 1. [Przejrzyj limity usługi w każdej warstwie](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#index-limits) , aby określić, czy niższe warstwy mogą obsługiwać wymaganą liczbę indeksów. W warstwach Podstawowa, S1 i S2 limity indeksu są odpowiednio 15, 50 i 200. Warstwa zoptymalizowana pod kątem magazynu ma limit 10 indeksów, ponieważ jest ona zaprojektowana do obsługi niskiej liczby bardzo dużych indeksów.
 
 1. [Utwórz usługę w warstwie](search-create-service-portal.md)rozliczanej:
 
-    + Zacznij od niskiego poziomu, w warstwie Podstawowa lub S1, jeśli jesteś na początku krzywej szkoleniowej.
+    + Jeśli nie masz pewności co do planowanego obciążenia, Zacznij od warstwy Podstawowa lub S1.
     + Zacznij od o godzinie S2 lub nawet S3, Jeśli wiesz, że chcesz mieć indeksowanie dużej skali i ładowanie zapytań.
     + Zacznij od magazynu zoptymalizowanego pod kątem technologii L1 lub L2, jeśli indeksowanie dużej ilości danych jest stosunkowo niskie, podobnie jak w przypadku wewnętrznej aplikacji biznesowej.
 

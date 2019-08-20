@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9b0cbe8126a01a64e35b2fcfeca400aed5aef0cc
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: df9e60c8d517c35029e425d50dba81a18c2f1114
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952034"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617360"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Macierz obsługi dla kopii zapasowej maszyny wirtualnej platformy Azure
 Za pomocą [usługi Azure Backup](backup-overview.md) można tworzyć kopie zapasowe maszyn i obciążeń lokalnych oraz maszyn wirtualnych platformy Azure. Ten artykuł zawiera podsumowanie ustawień i ograniczeń pomocy technicznej podczas tworzenia kopii zapasowych maszyn wirtualnych platformy Azure przy użyciu Azure Backup.
@@ -157,8 +157,8 @@ Przywracanie przypiętych do strefy maszyn wirtualnych | Obsługiwane (w przypad
 
 **Składnik** | **Pomoc techniczna**
 --- | ---
-Dyski z danymi maszyn wirtualnych platformy Azure | Utwórz kopię zapasową maszyny wirtualnej z 16 lub mniej dyskami danych. <br/><br/> Obsługuje rozmiary dysków do 4 TB.<br/><br/>Aby zarejestrować się w celu uzyskania ograniczonej publicznej wersji zapoznawczej Azure Backup dużych dyskach o pojemności większej niż 4 TB i maksymalnie 30 TB, zobacz [Omówienie kopii zapasowej maszyny wirtualnej platformy Azure](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
-Rozmiar dysku danych | Każdy dysk może mieć rozmiar do 4095 GB.<br/><br/>Aby zarejestrować się w celu uzyskania ograniczonej publicznej wersji zapoznawczej Azure Backup dużych dyskach o rozmiarze większym niż 4 TB do 30TB, [](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb)zapoznaj się z tym artykułem.
+Dyski z danymi maszyn wirtualnych platformy Azure | Utwórz kopię zapasową maszyny wirtualnej z 16 lub mniej dyskami danych. <br/><br/> Obsługuje rozmiary dysków do 4 TB.<br/><br/>Aby zarejestrować się w celu uzyskania ograniczonej publicznej wersji zapoznawczej Azure Backup dużych dyskach o rozmiarze większym niż 4 TB i maksymalnie 30 TB, zapoznaj [](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb)się z tym artykułem.
+Rozmiar dysku danych | Każdy dysk może mieć rozmiar do 4095 GB.<br/><br/>Aby zarejestrować się w celu uzyskania ograniczonej publicznej wersji zapoznawczej Azure Backup dużych dyskach o rozmiarze większym niż 4 TB do 30TB, zapoznaj się z tym [artykułem](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
 Typ magazynu | HDD w warstwie Standardowa, SSD w warstwie Standardowa, SSD w warstwie Premium.
 Dyski zarządzane | Obsługiwane.
 Zaszyfrowane dyski | Obsługiwane.<br/><br/> Można utworzyć kopię zapasową maszyn wirtualnych platformy Azure z włączonym Azure Disk Encryption (z aplikacją usługi Azure AD lub bez niej).<br/><br/> Zaszyfrowane maszyny wirtualne nie mogą zostać odzyskane na poziomie plików/folderów. Należy odzyskać całą maszynę wirtualną.<br/><br/> Możesz włączyć szyfrowanie na maszynach wirtualnych, które są już chronione przez Azure Backup.

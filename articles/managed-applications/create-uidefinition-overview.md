@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 1ee6d9332a2be5ccb22b7571b348e2e0aae78fb2
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 783c4f5b1f5a7f2be748bc7173da2d068e1425f4
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563560"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575655"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>CreateUiDefinition. JSON dla środowiska tworzenia aplikacji zarządzanej przez platformę Azure
 
@@ -52,13 +52,11 @@ Schemat właściwości Parameters zależy od kombinacji określonej procedury ob
 
 Włączenie `$schema` jest zalecane, ale opcjonalne. Jeśli jest określona, wartość `version` musi być zgodna z wersją `$schema` w identyfikatorze URI.
 
-Możesz użyć edytora JSON, aby utworzyć definicję interfejsu użytkownika, a następnie przetestować ją w [piaskownicy definicji interfejsu użytkownika](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade) , aby wyświetlić jej podgląd. Aby uzyskać więcej informacji na temat piaskownicy, zobacz [testowanie interfejsu portalu dla Azure Managed Applications](test-createuidefinition.md).
+Możesz użyć edytora JSON do utworzenia createUiDefinition, a następnie przetestowania go w [piaskownicy createUiDefinition](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade) w celu uzyskania podglądu. Aby uzyskać więcej informacji na temat piaskownicy, zobacz [testowanie interfejsu portalu dla Azure Managed Applications](test-createuidefinition.md).
 
 ## <a name="basics"></a>Ustawienia podstawowe
 
 Podstawowe to pierwszy krok generowany, gdy Azure Portal przeanalizuje plik. Oprócz wyświetlania elementów określonych w programie `basics`Portal wprowadza elementy dla użytkowników, aby wybrać subskrypcję, grupę zasobów i lokalizację wdrożenia. Jeśli to możliwe, elementy, które wykonują zapytania dotyczące parametrów obejmujących całe wdrożenie, takie jak nazwa klastra lub poświadczenia administratora, powinny przejść w tym kroku.
-
-Jeśli zachowanie elementu zależy od subskrypcji użytkownika, grupy zasobów lub lokalizacji, ten element nie może być używany w podstawowe. Na przykład **firma Microsoft. COMPUTE. SizeSelector** zależy od subskrypcji i lokalizacji użytkownika w celu określenia listy dostępnych rozmiarów. W związku z tym **firma Microsoft. COMPUTE. SizeSelector** może być używana tylko w krokach. Ogólnie rzecz biorąc, można używać tylko elementów w przestrzeni nazw **Microsoft. Common** . Mimo że niektóre elementy w innych przestrzeniach nazw (na przykład **Microsoft. COMPUTE. Credentials**), które nie są zależne od kontekstu użytkownika, są nadal dozwolone.
 
 ## <a name="steps"></a>Kroki
 

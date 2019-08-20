@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 08/15/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: aea2b3229dd793bc31adc0038763e09340a5f85a
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: e6c3de1714d363eb1481bcea5f470d04125b96b9
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534781"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575316"
 ---
 # <a name="connect-to-sql-data-warehouse-with-visual-studio-and-ssdt"></a>Nawiązywanie połączenia z usługą SQL Data Warehouse przy użyciu programu Visual Studio i narzędzi SSDT
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ Używając programu Visual Studio, można w kilka minut utworzyć zapytanie do u
 ## <a name="prerequisites"></a>Wymagania wstępne
 Aby użyć tego samouczka, potrzebne są następujące elementy:
 
-* Istniejący magazyn danych SQL. Aby go utworzyć, zobacz artykuł [Tworzenie bazy danych w usłudze SQL Data Warehouse][Create a SQL Data Warehouse].
+* Istniejący SQL Data Warehouse. Aby go utworzyć, zobacz artykuł [Tworzenie bazy danych w usłudze SQL Data Warehouse][Create a SQL Data Warehouse].
 * Rozszerzenie SSDT dla programu Visual Studio. Jeśli masz program Visual Studio, prawdopodobnie masz też to rozszerzenie. Aby uzyskać instrukcje instalacji i informacje na temat dostępnych opcji, zobacz artykuł [Instalowanie programu Visual Studio i narzędzi SSDT][Installing Visual Studio and SSDT].
 * W pełni kwalifikowana nazwa serwera SQL. Aby ją znaleźć, zobacz [Nawiązywanie połączenia z usługą SQL Data Warehouse][Connect to SQL Data Warehouse].
 

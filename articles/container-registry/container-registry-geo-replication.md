@@ -6,14 +6,14 @@ author: stevelas
 manager: gwallace
 ms.service: container-registry
 ms.topic: overview
-ms.date: 05/24/2019
+ms.date: 08/16/2019
 ms.author: stevelas
-ms.openlocfilehash: 2fffa3b063969cbe68fb9a405f4198f15b3f9809
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 73d497b4784a91974fab8a94c6f9fe595770ea45
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845206"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574389"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Replikacja geograficzna w usłudze Azure Container Registry
 
@@ -105,6 +105,14 @@ Usługa ACR rozpocznie synchronizowanie obrazów między skonfigurowanymi replik
 Replikacja geograficzna jest funkcją [jednostki SKU w warstwie Premium](container-registry-skus.md) usługi Azure Container Registry. Replikacja rejestru w żądanych regionach wiąże się z naliczaniem opłat za rejestr w warstwie Premium w danym regionie.
 
 W poprzednim przykładzie firma Contoso skonsolidowała dwa rejestry w ramach jednego, dodając repliki do regionu Wschodnie stany USA, Kanada Środkowa i Europa Zachodnia. Firma Contoso zapłaciłaby miesięcznie czterokrotną opłatę za warstwę Premium bez dodatkowej konfiguracji ani zarządzania. W każdym regionie obrazy są teraz ściągane lokalnie, co zwiększa wydajność i niezawodność bez ponoszenia opłat za ruch wychodzący w sieci z regionu Zachodnie stany USA do regionu Kanada Środkowa i Wschodnie stany USA.
+
+## <a name="troubleshoot-push-operations-with-geo-replicated-registries"></a>Rozwiązywanie problemów z operacjami wypychania z rejestrami replikowanymi geograficznie
+ 
+Klient platformy Docker, który wypycha obraz do rejestru z replikacją geograficzną, może nie wypchnąć wszystkich warstw obrazu i jego manifestu do jednego zreplikowanego regionu. Może to być spowodowane tym, że usługa Azure Traffic Manager kieruje żądania rejestru do najbliższego rejestru replikowanego w sieci. Jeśli rejestr ma dwa regiony replikacji w *pobliżu* , warstwy obrazu i manifest mogą być dystrybuowane do dwóch lokacji, a operacja push kończy się niepowodzeniem po sprawdzeniu poprawności manifestu. Ten problem występuje ze względu na sposób, w jaki nazwa DNS rejestru jest rozpoznawana na niektórych hostach z systemem Linux. Ten problem nie występuje w systemie Windows, co zapewnia pamięć podręczną usługi DNS po stronie klienta.
+ 
+W przypadku wystąpienia tego problemu jedno rozwiązanie ma zastosowanie pamięci podręcznej DNS po stronie klienta, `dnsmasq` takiej jak na hoście z systemem Linux. Pozwala to zapewnić spójność nazwy rejestru. Jeśli używasz maszyny wirtualnej z systemem Linux na platformie Azure do wypychania do rejestru, zobacz Opcje [rozpoznawania nazw DNS dla maszyn wirtualnych z systemem Linux na platformie Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/azure-dns).
+
+W celu zoptymalizowania rozpoznawania nazw DNS do najbliższej repliki podczas wypychania obrazów Skonfiguruj rejestr z replikacją geograficzną w tych samych regionach platformy Azure jako źródło operacji wypychania lub najbliższy Region podczas pracy poza platformą Azure.
 
 ## <a name="next-steps"></a>Następne kroki
 

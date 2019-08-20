@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/03/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 9a11af7e2875c9af5cf4b08d459bc67b55dbdcf3
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 21a42b2986b52282fbab914fa702d8c4a323ed35
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515536"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611948"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformy i funkcje obsługiwane przez Azure Security Center
 
@@ -30,8 +30,7 @@ Monitorowanie stanu zabezpieczeń i zalecenia są dostępne dla maszyn wirtualny
 >
 
 ## <a name="platforms-that-support-the-data-collection-agent"></a>Platformy obsługujące agenta zbierania danych 
-
-Ta sekcja zawiera listę platform, na których można uruchomić agenta Azure Security Center i z którego można zbierać dane.
+W tej sekcji wymieniono platformy, w których Agent Log Analytics, który jest używany przez program Azure Security Center, może być uruchamiany.
 
 ### <a name="supported-platforms-for-windows-computers-and-vms"></a>Obsługiwane platformy dla komputerów i maszyn wirtualnych z systemem Windows
 Obsługiwane są następujące systemy operacyjne Windows:
@@ -53,7 +52,7 @@ Obsługiwane są następujące systemy operacyjne Linux:
 > [!NOTE]
 > Ponieważ lista obsługiwanych systemów operacyjnych Linux jest ciągle zmieniana, kliknij [tutaj](https://github.com/microsoft/OMS-Agent-for-Linux#supported-linux-operating-systems) , aby wyświetlić najbardziej aktualną listę obsługiwanych wersji, na wypadek zmiany od momentu ostatniej publikacji tego tematu.
 
-64-bitowa
+64 — bit
 * CentOS 6 i 7
 * Amazon Linux 2017,09
 * Oracle Linux 6 i 7
@@ -62,7 +61,7 @@ Obsługiwane są następujące systemy operacyjne Linux:
 * Ubuntu Linux 14,04 LTS, 16,04 LTS i 18,04 LTS
 * SUSE Linux Enterprise Server 12
 
-32-bitowa
+32 — bit
 * CentOS 6
 * Oracle Linux 6
 * Red Hat Enterprise Linux Server 6

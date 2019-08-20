@@ -6,12 +6,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: rogarana
-ms.openlocfilehash: 2b5ebc9f35dd207e8e530b7d74acc5517125fbf4
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 23e8c82bad60675338a0482155ed8a92cdad3d3d
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935000"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617681"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-over-smb-for-azure-files"></a>Włącz uwierzytelnianie Azure Active Directory Domain Services za pośrednictwem protokołu SMB dla Azure Files
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -46,9 +46,11 @@ Przed włączeniem usługi Azure AD za pośrednictwem protokołu SMB dla Azure F
 
 2.  **Włącz Azure AD Domain Services w dzierżawie usługi Azure AD.**
 
-    Aby zapewnić obsługę uwierzytelniania przy użyciu poświadczeń usługi Azure AD, musisz włączyć usługę Azure AD DS dla dzierżawy usługi Azure AD. Jeśli nie jesteś administratorem dzierżawy usługi Azure AD, skontaktuj się z administratorem i postępuj zgodnie ze wskazówkami krok po kroku, aby [włączyć Azure Active Directory Domain Services przy użyciu Azure Portal](../../active-directory-domain-services/create-instance.md).
+< < < < < < <, aby obsługiwać uwierzytelnianie przy użyciu poświadczeń usługi Azure AD, musisz włączyć Azure AD Domain Services dla dzierżawy usługi Azure AD. Jeśli nie jesteś administratorem dzierżawy usługi Azure AD, skontaktuj się z administratorem i postępuj zgodnie ze wskazówkami krok po kroku, aby [włączyć Azure Active Directory Domain Services przy użyciu Azure Portal](../../active-directory-domain-services/tutorial-create-instance.md).
+= = = = = =, Aby obsługiwać uwierzytelnianie przy użyciu poświadczeń usługi Azure AD, musisz włączyć usługę Azure AD DS dla dzierżawy usługi Azure AD. Jeśli nie jesteś administratorem dzierżawy usługi Azure AD, skontaktuj się z administratorem i postępuj zgodnie ze wskazówkami krok po kroku, aby [włączyć Azure Active Directory Domain Services przy użyciu Azure Portal](../../active-directory-domain-services/create-instance.md).
+>>>>>>> 5f049740fef320adb172d59f68bd161bdc4318e1
 
-    Ukończenie wdrożenia usługi Azure AD DS zwykle trwa około 15 minut. Przed przejściem do następnego kroku Sprawdź, czy stan kondycji usługi Azure AD DS jest **uruchomiony**z włączoną funkcją synchronizacji skrótów haseł.
+    It typically takes about 15 minutes for an Azure AD DS deployment to complete. Verify that the health status of Azure AD DS shows **Running**, with password hash synchronization enabled, before proceeding to the next step.
 
 3.  **Przyłączanie domeny do maszyny wirtualnej platformy Azure przy użyciu usługi Azure AD DS.**
 

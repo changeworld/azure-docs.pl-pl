@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z usługi Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
-description: Rozwiązywanie problemów z usługi Azure SQL Data Warehouse.
+title: Rozwiązywanie problemów Azure SQL Data Warehouse | Microsoft Docs
+description: Rozwiązywanie problemów Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -10,64 +10,64 @@ ms.subservice: supportability
 ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 2d7f56b65db09232af4fe7e198675ea0cfd64a25
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 290753b866f15e09a52572fdd7a43a60fc2812d6
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595490"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575546"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Rozwiązywanie problemów z łącznością
 
-W tym artykule wymieniono typowe techniki rozwiązywania problemów dotyczących nawiązywania połączenia z usługi SQL Data Warehouse.
+W tym artykule wymieniono typowe techniki rozwiązywania problemów dotyczące łączenia się z SQL Data Warehouse.
 - [Sprawdź dostępność usługi](./sql-data-warehouse-troubleshoot-connectivity.md#check-service-availability)
-- [Sprawdź, czy operacja wstrzymania lub skalowania](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
+- [Sprawdź wstrzymanie lub skalowanie operacji](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
 - [Sprawdź ustawienia zapory](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
-- [Sprawdź ustawienia punktu końcowego sieci wirtualnej/usługi](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-vnetservice-endpoint-settings)
-- [Wyszukaj najnowsze sterowniki](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-the-latest-drivers)
+- [Sprawdź ustawienia sieci wirtualnej/punktu końcowego usługi](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-vnetservice-endpoint-settings)
+- [Sprawdź, czy są zainstalowane najnowsze sterowniki](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-the-latest-drivers)
 - [Sprawdź parametry połączenia](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-connection-string)
-- [Problemy z połączeniem tymczasowy](./sql-data-warehouse-troubleshoot-connectivity.md#intermittent-connection-issues)
+- [Sporadyczne problemy z połączeniem](./sql-data-warehouse-troubleshoot-connectivity.md#intermittent-connection-issues)
 - [Typowe komunikaty o błędach](./sql-data-warehouse-troubleshoot-connectivity.md#common-error-messages)
 
 ## <a name="check-service-availability"></a>Sprawdź dostępność usługi
 
-Sprawdź, czy usługa jest dostępna. W witrynie Azure portal przejdź do SQL data warehouse, w którym próbujesz się połączyć. Na panelu spisu treści po lewej stronie kliknij pozycję **diagnozowanie i rozwiązywanie problemów**.
+Sprawdź, czy usługa jest dostępna. W Azure Portal przejdź do SQL Data Warehouse, który próbujesz nawiązać połączenie. W panelu po lewej stronie kliknij pozycję **diagnozowanie i rozwiązywanie problemów**.
 
-![Wybierz opcję Usługa Resource health](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
+![Wybierz kondycję zasobu](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
 
-Stan usługi SQL data warehouse będą wyświetlane w tym miejscu. Jeśli usługa nie jest wyświetlany jako **dostępne**, sprawdź dalszych czynności.
+W tym miejscu zostanie wyświetlony stan SQL Data Warehouse. Jeśli usługa nie jest wyświetlana jako **dostępna**, należy zapoznać się z kolejnymi krokami.
 
 ![Usługa dostępna](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health.png)
 
-Jeśli Twoja usługa Resource health wskazuje, że magazyn danych jest wstrzymany lub skalowania, postępuj zgodnie ze wskazówkami, aby wznowić magazynu danych.
+Jeśli Kondycja zasobów pokazuje, że magazyn danych jest wstrzymany lub skalowany, postępuj zgodnie ze wskazówkami, aby wznowić działanie magazynu danych.
 
-![Usługa wstrzymana](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) dodatkowe informacje na temat kondycji zasobu można znaleźć tutaj.
+![Usługa wstrzymała](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) dodatkowe informacje na temat Resource Health można znaleźć tutaj.
 
-## <a name="check-for-paused-or-scaling-operation"></a>Sprawdź, czy operacja wstrzymania lub skalowania
+## <a name="check-for-paused-or-scaling-operation"></a>Sprawdź wstrzymanie lub skalowanie operacji
 
-Sprawdź portal aby zobaczyć, czy usługi SQL data warehouse jest wstrzymane lub skalowania.
+Sprawdź Portal, aby sprawdzić, czy SQL Data Warehouse jest wstrzymana lub przeskalowana.
 
-![Usługa wstrzymana](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
+![Usługa została wstrzymana](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
-Jeśli zobaczysz, że usługa jest wstrzymana lub skalowania, sprawdź, czy nie jest w harmonogramie konserwacji. W portalu dla usługi SQL data warehouse *Przegląd*, zostanie wyświetlony harmonogram konserwacji wybrane.
+Jeśli zobaczysz, że usługa jest wstrzymana lub skalowania, sprawdź, czy nie jest ona wyświetlana w harmonogramie konserwacji. W portalu dla SQL Data Warehouse *Omówienie*zobaczysz wybrany harmonogram konserwacji.
 
-![Harmonogram konserwacji — omówienie](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
+![Harmonogram konserwacji — Omówienie](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
-W przeciwnym razie skontaktuj się z administratorem IT, aby sprawdzić, czy ta konserwacja nie jest zaplanowane zdarzenie. Aby wznowić SQL data warehouse, wykonaj czynności opisane [tutaj](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute).
+W przeciwnym razie skontaktuj się z administratorem IT, aby sprawdzić, czy ta konserwacja nie jest zaplanowana. Aby wznowić SQL Data Warehouse, wykonaj kroki opisane [tutaj](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute).
 
 ## <a name="check-your-firewall-settings"></a>Sprawdź ustawienia zapory
 
-Usługa SQL Data Warehouse komunikuje się przez port 1433.   Jeśli próbujesz nawiązać połączenie z sieci firmowej, ruch wychodzący na porcie 1433 może być blokowany przez zaporę sieciową. W takim przypadku nie można połączyć z serwerem usługi Azure SQL Database, chyba że dział IT otworzy port 1433. Dodatkowe informacje na temat konfiguracji zapory można znaleźć [tutaj](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#manage-server-level-ip-firewall-rules-using-the-azure-portal).
+Usługa SQL Data Warehouse komunikuje się przez port 1433.   Jeśli próbujesz nawiązać połączenie z sieci firmowej, ruch wychodzący na porcie 1433 może być blokowany przez zaporę sieciową. W takim przypadku nie można nawiązać połączenia z serwerem Azure SQL Database, chyba że dział IT otworzy port 1433. Dodatkowe informacje na temat konfiguracji zapory można znaleźć [tutaj](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#manage-server-level-ip-firewall-rules-using-the-azure-portal).
 
-## <a name="check-your-vnetservice-endpoint-settings"></a>Sprawdź ustawienia punktu końcowego sieci wirtualnej/usługi
+## <a name="check-your-vnetservice-endpoint-settings"></a>Sprawdź ustawienia sieci wirtualnej/punktu końcowego usługi
 
-Jeśli otrzymujesz błędy 40914 i 40615 [opis błędu i rozwiązanie tutaj](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/sql-data-warehouse/toc.json#errors-40914-and-40615).
+Jeśli otrzymujesz błędy 40914 i 40615, zobacz [Opis błędu i rozwiązanie tutaj](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/sql-data-warehouse/toc.json#errors-40914-and-40615).
 
-## <a name="check-for-the-latest-drivers"></a>Wyszukaj najnowsze sterowniki
+## <a name="check-for-the-latest-drivers"></a>Sprawdź, czy są zainstalowane najnowsze sterowniki
 
 ### <a name="software"></a>Oprogramowanie
 
-Sprawdź, upewnij się, że używasz najnowszych narzędzi, aby nawiązać połączenie z usługi SQL data warehouse:
+Upewnij się, że używasz najnowszych narzędzi do nawiązywania połączenia z SQL Data Warehouse:
 
 * SSMS
 * Azure Data Studio
@@ -75,7 +75,7 @@ Sprawdź, upewnij się, że używasz najnowszych narzędzi, aby nawiązać poł�
 
 ### <a name="drivers"></a>Sterowniki
 
-Zaznacz, aby upewnić się, że używasz najnowszej wersji sterowników.  Używanie starszej wersji sterowników może spowodować nieoczekiwane wyniki jako starsze sterowniki mogą nie obsługiwać nowe funkcje.
+Upewnij się, że korzystasz z najnowszej wersji sterownika.  Używanie starszej wersji sterowników może spowodować nieoczekiwane zachowanie, ponieważ starsze sterowniki mogą nie obsługiwać nowych funkcji.
 
 * [ODBC](https://docs.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server)
 * [JDBC](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)
@@ -84,7 +84,7 @@ Zaznacz, aby upewnić się, że używasz najnowszej wersji sterowników.  Uży
 
 ## <a name="check-your-connection-string"></a>Sprawdź parametry połączenia
 
-Sprawdź, upewnij się, że parametry połączenia są ustawione poprawnie.  Poniżej przedstawiono kilka przykładów.  Można znaleźć dodatkowe informacje na temat [ciągi połączenia, w tym miejscu](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-connection-strings).
+Upewnij się, że parametry połączenia zostały prawidłowo ustawione.  Poniżej przedstawiono przykłady.  Dodatkowe informacje o [ciągach połączeń](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-connection-strings)można znaleźć tutaj.
 
 Parametry połączenia sterownika ADO.NET
 
@@ -92,7 +92,7 @@ Parametry połączenia sterownika ADO.NET
 Server=tcp:{your_server}.database.windows.net,1433;Database={your_database};User ID={your_user_name};Password={your_password_here};Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
 ```
 
-Ciąg połączenia ODBC
+Parametry połączenia ODBC
 
 ```csharp
 Driver={SQL Server Native Client 11.0};Server=tcp:{your_server}.database.windows.net,1433;Database={your_database};Uid={your_user_name};Pwd={your_password_here};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;
@@ -110,13 +110,13 @@ Parametry połączenia sterownika JDBC
 jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user={your_user_name};password={your_password_here};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
 ```
 
-## <a name="intermittent-connection-issues"></a>Problemy z połączeniem tymczasowy
+## <a name="intermittent-connection-issues"></a>Sporadyczne problemy z połączeniem
 
-Sprawdź, jeśli występują duże obciążenie na serwerze z dużą liczbą żądań w kolejce. Może być konieczne skalowanie w górę magazynu danych, aby uzyskać dodatkowe zasoby.
+Sprawdź, czy na serwerze występują duże obciążenie z dużą liczbą żądań umieszczonych w kolejce. Może być konieczne skalowanie magazynu danych w górę w celu uzyskania dodatkowych zasobów.
 
 ## <a name="common-error-messages"></a>Typowe komunikaty o błędach
 
-Zobacz błędy 40914 i 40615, [opis błędu i rozwiązanie tutaj](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/sql-data-warehouse/toc.json#errors-40914-and-40615).
+Błędy 40914 i 40615, zobacz [Opis i rozdzielczość błędu tutaj](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/sql-data-warehouse/toc.json#errors-40914-and-40615).
 
-## <a name="still-having-connectivity-issues"></a>Nadal masz problemy z łącznością?
-Tworzenie [bilet pomocy technicznej](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) więc zespół inżynierów może obsługiwać użytkownik.
+## <a name="still-having-connectivity-issues"></a>Nadal występują problemy z łącznością?
+Utwórz [bilet pomocy technicznej](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) , aby zespół inżynieryjny mógł je obsługiwać.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 0cdd7f291b43f442b8471a19f515e4a2d12b4e74
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 637205bd4ad438d7efbee6fb304b0a934aefdfdf
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562876"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615900"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Przewodnik dewelopera w języku Python Azure Functions
 
@@ -259,7 +259,7 @@ def main():
 
 Aby uzyskać kontekst wywołania funkcji podczas wykonywania, należy uwzględnić [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) argument w jego podpisie. 
 
-Na przykład:
+Przykład:
 
 ```python
 import azure.functions
@@ -315,14 +315,22 @@ pip install -r requirements.txt
 
 ## <a name="publishing-to-azure"></a>Publikowanie na platformie Azure
 
-Gdy wszystko jest gotowe do opublikowania, upewnij się, że wszystkie zależności są wymienione w pliku *Requirements. txt* , który znajduje się w katalogu głównym katalogu projektu. Jeśli używasz pakietu wymagającego kompilatora i nie obsługuje on instalacji kół zgodnych z manylinux z PyPI, publikowanie na platformie Azure zakończy się niepowodzeniem z powodu następującego błędu: 
+Gdy wszystko jest gotowe do opublikowania, upewnij się, że wszystkie zależności są wymienione w pliku *Requirements. txt* , który znajduje się w katalogu głównym katalogu projektu. Azure Functions można [zdalnie kompilować](functions-deployment-technologies.md#remote-build) te zależności.
+
+Aby wdrożyć platformę Azure i przeprowadzić kompilację zdalną, użyj następującego polecenia:
+
+```bash
+func azure functionapp publish <app name> --build remote
+```
+
+Jeśli nie korzystasz z kompilacji zdalnej i korzystasz z pakietu wymagającego kompilatora i nie obsługuje on instalacji wielu kół zgodnych z systemem Linux z PyPI, publikowanie na platformie Azure bez tworzenia lokalnie zakończy się niepowodzeniem z powodu następującego błędu:
 
 ```
 There was an error restoring dependencies.ERROR: cannot install <package name - version> dependency: binary dependencies without wheels are not supported.  
 The terminal process terminated with exit code: 1
 ```
 
-Aby automatycznie kompilować i konfigurować wymagane pliki binarne, [Zainstaluj platformę Docker](https://docs.docker.com/install/) na komputerze lokalnym, a następnie uruchom następujące polecenie w celu opublikowania przy użyciu [Azure Functions Core Tools](functions-run-local.md#v2) (Func). Pamiętaj, aby `<app name>` zamienić na nazwę aplikacji funkcji na platformie Azure. 
+Aby utworzyć lokalnie i skonfigurować wymagane pliki binarne, [Zainstaluj platformę Docker](https://docs.docker.com/install/) na komputerze lokalnym i uruchom następujące polecenie w celu opublikowania przy użyciu [Azure Functions Core Tools](functions-run-local.md#v2) (Func). Pamiętaj, aby `<app name>` zamienić na nazwę aplikacji funkcji na platformie Azure. 
 
 ```bash
 func azure functionapp publish <app name> --build-native-deps

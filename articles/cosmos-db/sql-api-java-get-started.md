@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/22/2018
 ms.author: sngun
-ms.openlocfilehash: 55bdcf9847f2194f269b92aed830a66c79c4d337
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 269b2bd1c1457b9e70ea4ada758aacb2f2ae96f3
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67985665"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614641"
 ---
 # <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>Samouczek NoSQL: Tworzenie aplikacji konsolowej w języku Java dla interfejsu API SQL
 
@@ -84,7 +84,7 @@ W witrynie Azure Portal przejdź do swojego konta usługi Azure Cosmos DB i klik
         , new ConnectionPolicy(),
         ConsistencyLevel.Session);
 
-![Zrzut ekranu witryny Azure Portal używaną przez samouczek NoSQL do tworzenia aplikacji konsolowej Java. Przedstawia konto usługi Azure Cosmos DB z wyróżnionym AKTYWNYM centrum, przyciskiem KLUCZE wyróżnionym w bloku konta usługi Azure Cosmos DB oraz wartościami IDENTYFIKATOR URI, KLUCZ PODSTAWOWY i KLUCZ POMOCNICZY wyróżnionymi w bloku Klucze][keys]
+![Zrzut ekranu przedstawiający Azure Portal używany przez samouczek NoSQL do tworzenia aplikacji konsolowej Java. Przedstawia konto usługi Azure Cosmos DB z wyróżnionym AKTYWNYM centrum, przyciskiem KLUCZE wyróżnionym w bloku konta usługi Azure Cosmos DB oraz wartościami IDENTYFIKATOR URI, KLUCZ PODSTAWOWY i KLUCZ POMOCNICZY wyróżnionymi w bloku Klucze][keys]
 
 ## <a name="step-4-create-a-database"></a>Krok 4. Tworzenie bazy danych
 Własną [bazę danych](databases-containers-items.md#azure-cosmos-databases) usługi Azure Cosmos DB można utworzyć za pomocą metody [createDatabase](/java/api/com.microsoft.azure.documentdb.documentclient.createdatabase) klasy **DocumentClient**. Baza danych jest kontenerem logicznym magazynu dokumentów JSON podzielonym na partycje w kolekcjach.
@@ -105,7 +105,7 @@ Kolekcję można utworzyć za pomocą metody [createCollection ](/java/api/com.m
     DocumentCollection collectionInfo = new DocumentCollection();
     collectionInfo.setId("familycoll");
 
-    // Azure Cosmos DB collections can be reserved with throughput specified in request units/second. 
+    // Azure Cosmos containers can be reserved with throughput specified in request units/second. 
     // Here we create a collection with 400 RU/s.
     RequestOptions requestOptions = new RequestOptions();
     requestOptions.setOfferThroughput(400);

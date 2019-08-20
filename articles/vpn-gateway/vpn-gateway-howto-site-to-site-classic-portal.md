@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 77cfde8cc9c6556b907f1185f451c70c8c8e888d
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 2e6036c5f29614f2e91278b693c07dc3dc8595f2
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534014"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575480"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Tworzenie sieci wirtualnej za pomocą połączenia typu lokacja-lokacja przy użyciu witryny Azure Portal (model klasyczny)
 
@@ -39,7 +39,7 @@ Przed rozpoczęciem konfiguracji sprawdź, czy są spełnione następujące kryt
 * Upewnij się, że masz zgodne urządzenie sieci VPN i dostępna jest osoba, która umie je skonfigurować. Aby uzyskać więcej informacji o zgodnych urządzeniach sieci VPN i konfiguracji urządzeń, zobacz artykuł [Informacje o urządzeniach sieci VPN](vpn-gateway-about-vpn-devices.md).
 * Sprawdź, czy masz dostępny zewnętrznie publiczny adres IPv4 urządzenia sieci VPN.
 * Jeśli nie znasz zakresów adresów IP w konfiguracji swojej sieci lokalnej, skontaktuj się z osobą, która może podać Ci te dane. Tworząc tę konfigurację, musisz określić prefiksy zakresu adresów IP, które platforma Azure będzie kierować do Twojej lokalizacji lokalnej. Żadna z podsieci sieci lokalnej nie może się nakładać na podsieci sieci wirtualnej, z którymi chcesz nawiązać połączenie.
-* Obecnie w celu określenia klucza współużytkowanego i utworzenia połączenia bramy sieci VPN jest wymagany program PowerShell. Zainstaluj najnowszą wersję poleceń cmdlet programu PowerShell usługi Azure Service Management (SM). Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview). Podczas pracy z programem PowerShell dla tej konfiguracji upewnij się, że działasz jako administrator.
+* Obecnie w celu określenia klucza współużytkowanego i utworzenia połączenia bramy sieci VPN jest wymagany program PowerShell. Zainstaluj najnowszą wersję poleceń cmdlet programu PowerShell usługi Azure Service Management (SM). Aby zainstalować polecenia cmdlet, zobacz [Zarządzanie usługami](/powershell/azure/servicemanagement/install-azure-ps). Aby uzyskać więcej informacji na temat ogólnych instalacji programu PowerShell, zobacz [jak zainstalować i skonfigurować Azure PowerShell](/powershell/azure/overview). Podczas pracy z programem PowerShell dla tej konfiguracji upewnij się, że działasz jako administrator.
 
 ### <a name="values"></a>Przykładowe wartości konfiguracji dla tego ćwiczenia
 
@@ -159,6 +159,12 @@ W tym kroku należy ustawić klucz współużytkowany i utworzyć połączenie. 
 
 ### <a name="step-1-connect-to-your-azure-account"></a>Krok 1. Nawiąż połączenie z kontem platformy Azure
 
+Te polecenia należy uruchomić lokalnie przy użyciu modułu zarządzania usługą programu PowerShell. Aby przełączyć się do zarządzania usługami, użyj tego polecenia:
+
+```powershell
+azure config mode asm
+```
+
 1. Otwórz konsolę programu PowerShell z podwyższonym poziomem uprawnień i połącz się ze swoim kontem. Użyj poniższego przykładu w celu łatwiejszego nawiązania połączenia:
 
    ```powershell
@@ -177,18 +183,14 @@ W tym kroku należy ustawić klucz współużytkowany i utworzyć połączenie. 
 
 ### <a name="step-2-set-the-shared-key-and-create-the-connection"></a>Krok 2. Ustaw klucz współużytkowany i utwórz połączenie
 
-Podczas pracy z programem PowerShell w klasycznym modelu wdrażania czasami nazwy zasobów w portalu nie są nazwami, których platforma Azure oczekuje przy korzystaniu z programu PowerShell. Poniższe kroki pomogą Ci wyeksportować plik konfiguracji sieci, aby uzyskać dokładne wartości nazw. Te polecenia należy uruchomić lokalnie przy użyciu modułu zarządzania usługą programu PowerShell. Aby przełączyć się do zarządzania usługami, użyj tego polecenia:
-
-```powershell
-azure config mode asm
-```
+Podczas tworzenia klasycznej sieci wirtualnej w portalu (nie przy użyciu programu PowerShell) platforma Azure dodaje nazwę grupy zasobów do nazwy skróconej. Na przykład, zgodnie z platformą Azure, nazwa sieci wirtualnej utworzonej dla tego ćwiczenia to "Group TestRG1 sieci testvnet1", a nie "sieci testvnet1". Program PowerShell wymaga pełnej nazwy sieci wirtualnej, a nie krótkiej nazwy, która pojawia się w portalu. Długa nazwa nie jest widoczna w portalu. Poniższe kroki ułatwiają wyeksportowanie pliku konfiguracji sieci w celu uzyskania dokładnych wartości nazwy sieci wirtualnej. 
 
 1. Utwórz katalog na komputerze, a następnie wyeksportuj plik konfiguracji sieci do tego katalogu. W tym przykładzie plik konfiguracji sieci zostanie wyeksportowany do katalogu C:\AzureNet.
 
    ```powershell
    Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
    ```
-2. Otwórz plik konfiguracji sieci przy użyciu edytora xml, a następnie sprawdź wartości właściwości „LocalNetworkSite name” i „VirtualNetworkSite name”. Zmodyfikuj przykład tak, aby odzwierciedlał odpowiednie wartości. W przypadku podawania nazwy, która zawiera spacje, umieść wartość w apostrofach.
+2. Otwórz plik konfiguracji sieci przy użyciu edytora xml, a następnie sprawdź wartości właściwości „LocalNetworkSite name” i „VirtualNetworkSite name”. Zmodyfikuj przykład dla tego ćwiczenia, aby odzwierciedlał wartości w kodzie XML. W przypadku podawania nazwy, która zawiera spacje, umieść wartość w apostrofach.
 
 3. Ustaw klucz współużytkowany i utwórz połączenie. Wartość „-SharedKey” jest generowana i określana przez Ciebie. W tym przykładzie użyliśmy wartości „abc123”, ale można (i należy) wygenerować bardziej złożoną wartość. Pamiętaj o tym, że wartość podana w tym miejscu musi być taka sama, jak wartość podana podczas konfigurowania urządzenia sieci VPN.
 

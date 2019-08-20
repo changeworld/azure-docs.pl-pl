@@ -6,12 +6,12 @@ author: tknandu
 ms.author: ramkris
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 70f3471b22027bbf5ece87897e678370767f6743
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 56f293600d876a5bc52b618ce8eed044e93f424d
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717084"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616886"
 ---
 # <a name="azure-cosmos-db-implement-a-lambda-architecture-on-the-azure-platform"></a>Usługa Azure Cosmos DB Implementowanie architektury lambda na platformie Azure 
 
@@ -42,7 +42,7 @@ Podstawowe zasady architektury lambda są opisane na powyższym diagramie zgodni
 
 Na dalsze informacje, firma Microsoft będzie wdrożenia tej architektury przy użyciu jedynie następujące elementy:
 
-* Próbnego usługi Azure Cosmos DB
+* Kontenery usługi Azure Cosmos
 * Klaster HDInsight (Apache Spark 2.1)
 * Łącznik Spark [1.0](https://github.com/Azure/azure-cosmosdb-spark/tree/master/releases/azure-cosmosdb-spark_2.1.0_2.11-1.0.0)
 
@@ -114,7 +114,7 @@ Co to jest ważne w tych warstwach:
 
  1. Wszystkie **danych** zostanie przypisany tylko do usługi Azure Cosmos DB (Aby uniknąć problemów z multiemisji).
  2. **Warstwie wsadowej** ma głównego zestawu danych (niezmienne, tylko do dołączania zestawu danych pierwotnych) przechowywanego w usłudze Azure Cosmos DB. Przy użyciu platformy Spark w usłudze HDI, można wstępnie obliczeń swoje agregacje mają być przechowywane w widoków obliczanej usługi batch.
- 3. **Warstwę obsługi** jest baza danych usługi Azure Cosmos DB przy użyciu kolekcji dla głównego zestawu danych i obliczane widok wsadowy.
+ 3. **Warstwa obsługująca** to baza danych usługi Azure Cosmos z kolekcjami dla głównego zestawu danych i obliczanego widoku partii.
  4. **Warstwa szybka** została omówiona w dalszej części tego artykułu.
  5. Wszystkie zapytania można uzyskać przez scalanie wyników z usługi batch, widoków i w czasie rzeczywistym lub odpowiada na polecenie ping je pojedynczo.
 
@@ -161,7 +161,7 @@ limit 10
 
 ![Wykres przedstawiający liczbę tweety na hasztag](./media/lambda-architecture/lambda-architecture-batch-hashtags-bar-chart.png)
 
-Teraz, gdy zapytanie, zapisz go do kolekcji za pomocą łącznika usługi Spark można zapisać dane wyjściowe do innej kolekcji.  W tym przykładzie należy użyć Scala, aby zaprezentować połączenia. Podobnie jak w poprzednim przykładzie, Utwórz połączenie konfiguracji i Zapisz Apache Spark DataFrame do innej kolekcji usługi Azure Cosmos DB.
+Teraz, gdy zapytanie, zapisz go do kolekcji za pomocą łącznika usługi Spark można zapisać dane wyjściowe do innej kolekcji.  W tym przykładzie należy użyć Scala, aby zaprezentować połączenia. Podobnie jak w poprzednim przykładzie, Utwórz połączenie konfiguracji, aby zapisać Apache Spark ramki danych w innym kontenerze usługi Azure Cosmos.
 
 ```
 val writeConfigMap = Map(
@@ -192,7 +192,7 @@ val tweets_bytags = spark.sql("select hashtags.text as hashtags, count(distinct 
 tweets_bytags.write.mode(SaveMode.Overwrite).cosmosDB(writeConfig)
 ```
 
-Teraz ostatnią instrukcję został zapisany usługi Spark DataFrame do nowej kolekcji usługi Azure Cosmos DB; z punktu widzenia architektury lambda jest to Twoja **widok wsadowy** w ramach **warstwę obsługi**.
+Ta ostatnia instrukcja zapisała teraz swoją ramkę danych platformy Spark w nowym kontenerze usługi Azure Cosmos. w perspektywie architektury lambda jest to **Widok wsadu** w ramach **warstwy obsługującej**.
  
 #### <a name="resources"></a>Zasoby
 
@@ -205,7 +205,7 @@ Jak wcześniej wspomniano, przy użyciu biblioteki usługi Azure Cosmos DB zmian
 
 ![Diagram wyróżnianie warstwa szybka architektury lambda](./media/lambda-architecture/lambda-architecture-speed.png)
 
-Aby to zrobić, należy utworzyć oddzielne kolekcji usługi Azure Cosmos DB do zapisywania wyników zapytań przesyłania strumieniowego ze strukturą.  Dzięki temu można mieć dostęp do innych systemów tych informacji nie tylko Apache Spark. Również funkcją usługi Cosmos DB czas wygaśnięcia (TTL), można skonfigurować dokumenty, aby automatycznie usunięte po ustaw czas trwania.  Aby uzyskać więcej informacji na temat funkcji usługi Azure Cosmos DB TTL, zobacz [wygasanie danych w kolekcjach usługi Azure Cosmos DB automatycznie przy użyciu czasu wygaśnięcia](time-to-live.md)
+W tym celu Utwórz oddzielny kontener usługi Azure Cosmos, aby zapisać wyniki zapytań dotyczących przesyłania strumieniowego ze strukturą.  Dzięki temu można mieć dostęp do innych systemów tych informacji nie tylko Apache Spark. Również funkcją usługi Cosmos DB czas wygaśnięcia (TTL), można skonfigurować dokumenty, aby automatycznie usunięte po ustaw czas trwania.  Aby uzyskać więcej informacji na temat funkcji TTL Azure Cosmos DB, zobacz [Automatyczne wygasanie danych w kontenerach usługi Azure Cosmos z użyciem czasu](time-to-live.md) wygaśnięcia
 
 ```
 // Import Libraries

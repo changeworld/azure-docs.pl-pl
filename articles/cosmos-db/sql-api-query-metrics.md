@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: d61d3d00de5b46f7dad44625509eabe6836ca7cf
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ae1773ec1d470b9cff2efb00c200427b7b4c2fb4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447253"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614824"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Dostrajanie wydajności zapytań za pomocą usługi Azure Cosmos DB
 
@@ -44,7 +44,7 @@ Zestawy SDK udostępniają różne opcje w celu wykonywania zapytań. Na przykł
 | `EnableScanInQuery` | Musi być równa true, jeśli rezygnujesz z indeksowania, ale chcesz uruchomić zapytanie za pomocą skanowania, mimo to. Tylko zastosowanie, gdy indeksowanie dla ścieżki żądany filtr jest wyłączona. | 
 | `MaxItemCount` | Maksymalna liczba elementów do zwrócenia na komunikacji dwustronnej z serwerem. Przez ustawienie wartości -1, można pozwolić, serwer zarządzania liczby elementów. Alternatywnie można obniżyć tę wartość, aby pobrać tylko niewielka liczba elementów na komunikację dwustronną. 
 | `MaxBufferedItemCount` | To jest opcja po stronie klienta i używana do ograniczania zmniejszenie zużycia pamięci podczas wykonywania między partycjami klauzuli ORDER BY. Wyższa wartość pomaga zmniejszyć opóźnienie między partycjami sortowania. |
-| `MaxDegreeOfParallelism` | Pobiera lub ustawia liczbę jednoczesnych operacji po stronie klienta są uruchamiane podczas równoległego wykonywania zapytań w usłudze bazy danych Azure Cosmos DB. Wartość właściwości dodatnią ogranicza liczbę jednoczesnych operacji wartość zestawu. Jeśli jest ustawiona na wartość mniejszą niż 0, system automatycznie decyduje, liczby równoczesnych operacji do uruchomienia. |
+| `MaxDegreeOfParallelism` | Pobiera lub ustawia liczbę równoczesnych uruchomień operacji po stronie klienta podczas równoległego wykonywania zapytań w usłudze Azure Cosmos Database. Wartość właściwości dodatnią ogranicza liczbę jednoczesnych operacji wartość zestawu. Jeśli jest ustawiona na wartość mniejszą niż 0, system automatycznie decyduje, liczby równoczesnych operacji do uruchomienia. |
 | `PopulateQueryMetrics` | Czas ładowania umożliwia rejestrowanie szczegółowe statystyki czasu spędzonego w różnych faz wykonywania zapytania, takie jak czas kompilacji, czas pętli indeksów i dokumentów. Pomoc techniczna systemu Azure, aby zdiagnozować problemy z wydajnością zapytań mogą udostępniać dane wyjściowe z statystyki zapytań. |
 | `RequestContinuation` | Można wznowić wykonywania zapytań, przekazując token kontynuacji nieprzezroczyste zwracany przez każde zapytanie. Token kontynuacji hermetyzuje stan wszystkich wymaganych do wykonywania zapytań. |
 | `ResponseContinuationTokenLimitInKb` | Można ograniczyć maksymalny rozmiar token kontynuacji zwrócony przez serwer. Należy ustawić, jeśli aplikacja hosta ma limity rozmiaru nagłówka odpowiedzi. To ustawienie może zwiększyć ogólną czas trwania i RU dla zapytania.  |
@@ -216,7 +216,7 @@ Sekcję metryk wykonywania zapytania wyjaśnia, jak pobrać czas wykonywania zap
 ### <a name="indexing-policy"></a>Zasady indeksowania
 Zobacz [konfigurowania zasad indeksowania](index-policy.md) indeksowania ścieżek, typów i trybów i ich wpływ na wykonanie zapytania. Domyślnie zasady indeksowania używa skrótu indeksowania dla ciągów, która obowiązuje dla zapytań o równość, ale nie dla zakresu zapytania/order przez zapytania. Jeśli potrzebujesz zapytań o zakres dla ciągów, zaleca się określenie zakresu typu indeksu dla wszystkich ciągów. 
 
-Domyślnie usługa Azure Cosmos DB zostaną zastosowane, automatyczne indeksowanie wszystkich danych. Dla wysoko wydajnych Wstaw scenariuszy, należy rozważyć wykluczenie ścieżek, ponieważ spowoduje to zmniejszenie kosztów jednostek RU dla każdej operacji wstawiania. 
+Domyślnie Azure Cosmos DB będzie stosować Automatyczne indeksowanie do wszystkich danych. W przypadku scenariuszy wstawiania o wysokiej wydajności należy rozważyć wykluczenie ścieżek, ponieważ spowoduje to zmniejszenie kosztu RU dla każdej operacji wstawiania. 
 
 ## <a name="query-execution-metrics"></a>Metryk wykonywania zapytania
 Możesz uzyskać szczegółowych metryk dotyczących wykonywania zapytań, przekazując opcjonalny `x-ms-documentdb-populatequerymetrics` nagłówka (`FeedOptions.PopulateQueryMetrics` w zestawie SDK platformy .NET). Wartość zwrócona w `x-ms-documentdb-query-metrics` ma następujące pary klucz-wartość przeznaczone do zaawansowanego rozwiązywania problemów dotyczących wykonywania zapytania. 

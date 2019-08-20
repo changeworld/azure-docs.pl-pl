@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: d0acbd02103ebd8dd3819579c85b4ddac22dba78
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 0e3803edd47c3589652b3fedecd12125e3ff40b7
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68773095"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69612802"
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>Przyłączanie maszyny wirtualnej z systemem Red Hat Enterprise Linux 7 do domeny zarządzanej
 W tym artykule opisano sposób przyłączania maszyny wirtualnej Red Hat Enterprise Linux (RHEL) 7 do domeny zarządzanej Azure AD Domain Services.
@@ -31,9 +31,9 @@ W tym artykule opisano sposób przyłączania maszyny wirtualnej Red Hat Enterpr
 Aby wykonać zadania wymienione w tym artykule, potrzebne są:  
 1. Prawidłowa **subskrypcja platformy Azure**.
 2. **Katalog usługi Azure AD** — zsynchronizowany z katalogiem lokalnym lub katalogiem w chmurze.
-3. Należy włączyć **Azure AD Domain Services** dla katalogu usługi Azure AD. Jeśli nie zostało to zrobione, postępuj zgodnie ze wszystkimi zadaniami opisanymi w [przewodniku wprowadzenie](create-instance.md).
-4. Upewnij się, że adresy IP domeny zarządzanej zostały skonfigurowane jako serwery DNS dla sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [jak zaktualizować ustawienia DNS dla sieci wirtualnej platformy Azure](active-directory-ds-getting-started-dns.md)
-5. Wykonaj kroki wymagane do [synchronizacji haseł do domeny zarządzanej Azure AD Domain Services](active-directory-ds-getting-started-password-sync.md).
+3. Należy włączyć **Azure AD Domain Services** dla katalogu usługi Azure AD. Jeśli nie zostało to zrobione, postępuj zgodnie ze wszystkimi zadaniami opisanymi w [przewodniku wprowadzenie](tutorial-create-instance.md).
+4. Upewnij się, że adresy IP domeny zarządzanej zostały skonfigurowane jako serwery DNS dla sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [jak zaktualizować ustawienia DNS dla sieci wirtualnej platformy Azure](tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network)
+5. Wykonaj kroki wymagane do [synchronizacji haseł do domeny zarządzanej Azure AD Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds).
 
 
 ## <a name="provision-a-red-hat-enterprise-linux-virtual-machine"></a>Inicjowanie obsługi administracyjnej maszyny wirtualnej Red Hat Enterprise Linux
@@ -64,10 +64,10 @@ sudo vi /etc/hosts
 W pliku hosts Wprowadź następującą wartość:
 
 ```console
-127.0.0.1 contoso-rhel.contoso100.com contoso-rhel
+127.0.0.1 contoso-rhel.contoso.com contoso-rhel
 ```
 
-W tym miejscu "contoso100.com" jest nazwą domeny DNS domeny zarządzanej. "contoso-RHEL" jest nazwą hosta maszyny wirtualnej RHEL, do której jest przyłączany do domeny zarządzanej.
+W tym miejscu "contoso.com" jest nazwą domeny DNS domeny zarządzanej. "contoso-RHEL" jest nazwą hosta maszyny wirtualnej RHEL, do której jest przyłączany do domeny zarządzanej.
 
 
 ## <a name="install-required-packages-on-the-linux-virtual-machine"></a>Instalowanie wymaganych pakietów na maszynie wirtualnej z systemem Linux
@@ -84,7 +84,7 @@ Teraz, gdy wymagane pakiety są zainstalowane na maszynie wirtualnej z systemem 
 1. Odkryj domenę zarządzaną usług domenowych w usłudze AAD. W terminalu SSH wpisz następujące polecenie:
 
     ```console
-    sudo realm discover CONTOSO100.COM
+    sudo realm discover contoso.COM
     ```
 
    > [!NOTE]
@@ -100,7 +100,7 @@ Teraz, gdy wymagane pakiety są zainstalowane na maszynie wirtualnej z systemem 
     > * Podaj nazwę domeny z dużymi literami, w przeciwnym razie narzędzie kinit nie powiedzie się.
 
     ```console
-    kinit bob@CONTOSO100.COM
+    kinit bob@contoso.COM
     ```
 
 3. Dołącz komputer do domeny. W terminalu SSH wpisz następujące polecenie:
@@ -111,7 +111,7 @@ Teraz, gdy wymagane pakiety są zainstalowane na maszynie wirtualnej z systemem 
     > Jeśli maszyna wirtualna nie może przyłączyć się do domeny, upewnij się, że sieciowa Grupa zabezpieczeń maszyny wirtualnej zezwala na ruch wychodzący Kerberos na porcie TCP + UDP 464 do podsieci sieci wirtualnej dla domeny zarządzanej platformy Azure AD DS.
 
     ```console
-    sudo realm join --verbose CONTOSO100.COM -U 'bob@CONTOSO100.COM'
+    sudo realm join --verbose contoso.COM -U 'bob@contoso.COM'
     ```
 
 Po pomyślnym przyłączeniu komputera do domeny zarządzanej powinien zostać wyświetlony komunikat ("pomyślnie zarejestrowano maszynę w obszarze").
@@ -120,10 +120,10 @@ Po pomyślnym przyłączeniu komputera do domeny zarządzanej powinien zostać w
 ## <a name="verify-domain-join"></a>Weryfikuj przyłączanie do domeny
 Sprawdź, czy maszyna została pomyślnie przyłączona do domeny zarządzanej. Nawiąż połączenie z dołączoną do domeny maszyną wirtualną RHEL przy użyciu innego połączenia SSH. Użyj konta użytkownika domeny, a następnie sprawdź, czy konto użytkownika jest prawidłowo rozwiązane.
 
-1. W terminalu SSH wpisz następujące polecenie, aby nawiązać połączenie z przyłączoną do domeny maszyną wirtualną RHEL przy użyciu protokołu SSH. Użyj konta domeny, które należy do domeny zarządzanej (na przykład "bob@CONTOSO100.COM" w tym przypadku).
+1. W terminalu SSH wpisz następujące polecenie, aby nawiązać połączenie z przyłączoną do domeny maszyną wirtualną RHEL przy użyciu protokołu SSH. Użyj konta domeny, które należy do domeny zarządzanej (na przykład "bob@contoso.COM" w tym przypadku).
     
     ```console
-    ssh -l bob@CONTOSO100.COM contoso-rhel.contoso100.com
+    ssh -l bob@contoso.COM contoso-rhel.contoso.com
     ```
 
 2. W terminalu SSH wpisz następujące polecenie, aby sprawdzić, czy katalog macierzysty został zainicjowany prawidłowo.
@@ -140,10 +140,10 @@ Sprawdź, czy maszyna została pomyślnie przyłączona do domeny zarządzanej. 
 
 
 ## <a name="troubleshooting-domain-join"></a>Rozwiązywanie problemów z przyłączaniem domeny
-Zobacz artykuł [Rozwiązywanie problemów](join-windows-vm.md#troubleshoot-joining-a-domain) z przyłączaniem do domeny.
+Zobacz artykuł [Rozwiązywanie problemów](join-windows-vm.md#troubleshoot-domain-join-issues) z przyłączaniem do domeny.
 
 ## <a name="related-content"></a>Powiązana zawartość
-* [Przewodnik po Wprowadzenie Azure AD Domain Services](create-instance.md)
+* [Przewodnik po Wprowadzenie Azure AD Domain Services](tutorial-create-instance.md)
 * [Przyłączanie maszyny wirtualnej z systemem Windows Server do domeny zarządzanej Azure AD Domain Services](active-directory-ds-admin-guide-join-windows-vm.md)
 * [Jak zalogować się do maszyny wirtualnej z systemem Linux](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * [Instalowanie protokołu Kerberos](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Managing_Smart_Cards/installing-kerberos.html)

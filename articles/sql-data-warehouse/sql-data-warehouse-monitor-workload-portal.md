@@ -1,6 +1,6 @@
 ---
-title: Monitor obciążenia — witryna Azure portal | Dokumentacja firmy Microsoft
-description: Monitor Azure SQL Data Warehouse przy użyciu witryny Azure portal
+title: Monitorowanie obciążenia — Azure Portal | Microsoft Docs
+description: Monitorowanie Azure SQL Data Warehouse przy użyciu Azure Portal
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,37 +10,37 @@ ms.subservice: manage
 ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6c8ce090039e3d5cc85c86d920710294de2165f9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73e7312eacd11fbec052d2b0b7781528c3b3d50f
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60748909"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575373"
 ---
-# <a name="monitor-workload---azure-portal"></a>Monitor obciążenia — witryna Azure portal
+# <a name="monitor-workload---azure-portal"></a>Monitorowanie obciążenia — Azure Portal
 
-W tym artykule opisano sposób użycia witryny Azure portal do monitorowania obciążenia. Obejmuje to konfigurowanie usługi Azure Monitor dzienniki, aby zbadać trendy obciążenia i wykonywanie zapytań za pomocą usługi log analytics dla [Azure SQL Data Warehouse](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/).
+W tym artykule opisano, jak używać Azure Portal do monitorowania obciążenia. Obejmuje to Konfigurowanie dzienników Azure Monitor, aby zbadać trendy wykonywania i obciążeń zapytań za pomocą usługi log Analytics dla [Azure SQL Data Warehouse](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Subskrypcja platformy Azure: Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
-- Azure SQL Data Warehouse: Firma Microsoft będzie zbierania dzienników dla SQL data warehouse. Jeśli nie masz aprowizowane SQL data warehouse, zapoznaj się z instrukcjami w [utworzyć SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-tutorial).
+- Azure SQL Data Warehouse: Będziemy zbierać dzienniki dla SQL Data Warehouse. Jeśli nie masz zainicjowanego SQL Data Warehouse, zapoznaj się z instrukcjami w artykule [tworzenie SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-tutorial).
 
-## <a name="create-a-log-analytics-workspace"></a>Utwórz obszar roboczy usługi Log Analytics
+## <a name="create-a-log-analytics-workspace"></a>Tworzenie obszaru roboczego Log Analytics
 
-Przejdź do bloku przeglądania dla obszarów roboczych usługi Log Analytics, a następnie utwórz obszar roboczy 
+Przejdź do bloku Przeglądaj dla obszarów roboczych Log Analytics i Utwórz obszar roboczy 
 
-![Obszary robocze usługi log Analytics](media/sql-data-warehouse-monitor/log_analytics_workspaces.png)
+![Obszary robocze usługi Log Analytics](media/sql-data-warehouse-monitor/log_analytics_workspaces.png)
 
 ![Dodaj obszar roboczy analizy](media/sql-data-warehouse-monitor/add_analytics_workspace.png)
 
 ![Dodaj obszar roboczy analizy](media/sql-data-warehouse-monitor/add_analytics_workspace_2.png)
 
-Szczegółowe informacje na temat obszarów roboczych, można znaleźć w następującej [dokumentacji](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#create-a-workspace).
+Aby uzyskać więcej informacji na temat obszarów roboczych, zapoznaj się z poniższą [dokumentacją](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#create-a-workspace).
 
 ## <a name="turn-on-diagnostic-logs"></a>Włączanie dzienników diagnostycznych 
 
-Konfigurowanie ustawień diagnostycznych do emitowania dzienników z usługi SQL data warehouse. Dzienniki składają się z widoków danych telemetrycznych usługi data warehouse jest równoważne z najczęściej używanych Rozwiązywanie problemów z wydajnością dynamicznych widoków zarządzania dla usługi SQL Data Warehouse. Obecnie obsługiwane są następujące widoki:
+Skonfiguruj ustawienia diagnostyczne, aby emitować dzienniki z SQL Data Warehouse. Dzienniki składają się z widoków telemetrii magazynu danych, które są równoważne z najczęściej używanymi rozwiązaniami do rozwiązywania problemów z wydajnością widoków DMV na potrzeby SQL Data Warehouse. Obecnie obsługiwane są następujące widoki:
 
 - [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016-au7)
 - [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?view=aps-pdw-2016-au7)
@@ -51,26 +51,26 @@ Konfigurowanie ustawień diagnostycznych do emitowania dzienników z usługi SQL
 
 ![Włączanie dzienników diagnostycznych](media/sql-data-warehouse-monitor/enable_diagnostic_logs.png)
 
-Może być emitowana dzienników do usługi Azure Storage, Stream Analytics lub usługi Log Analytics. Na potrzeby tego samouczka wybierz usługi Log Analytics.
+Dzienniki mogą być emitowane do usługi Azure Storage, Stream Analytics lub Log Analytics. Na potrzeby tego samouczka wybierz pozycję Log Analytics.
 
-![Określ dzienników](media/sql-data-warehouse-monitor/specify_logs.png)
+![Określanie dzienników](media/sql-data-warehouse-monitor/specify_logs.png)
 
-## <a name="run-queries-against-log-analytics"></a>Uruchamiać zapytania usługi Log Analytics
+## <a name="run-queries-against-log-analytics"></a>Uruchom zapytania względem Log Analytics
 
-Przejdź do obszaru roboczego usługi Log Analytics, gdzie można wykonać następujące czynności:
+Przejdź do obszaru roboczego Log Analytics, gdzie można wykonać następujące czynności:
 
-- Analizowanie dzienników przy użyciu dziennika zapytań i zapisać zapytania do ponownego wykorzystania
-- Zapisywanie zapytań do ponownego wykorzystania
+- Analizuj dzienniki przy użyciu zapytań dzienników i zapisuj zapytania do ponownego użycia
+- Zapisz zapytania do ponownego użycia
 - Tworzenie alertów dziennika
-- Wyniki zapytania Przypnij do pulpitu nawigacyjnego
+- Przypinanie wyników zapytania do pulpitu nawigacyjnego
 
-Szczegółowe informacje dotyczące możliwości dziennika zapytań, znajduje się w następującej [dokumentacji](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language).
+Aby uzyskać szczegółowe informacje na temat możliwości kwerend dzienników, zapoznaj się z poniższą [dokumentacją](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language).
 
-![Edytor obszaru roboczego analizy dzienników](media/sql-data-warehouse-monitor/log_analytics_workspace_editor.png)
+![Log Analytics Edytor obszarów roboczych](media/sql-data-warehouse-monitor/log_analytics_workspace_editor.png)
 
 
 
-![Zaloguj się analitycznych zapytań obszaru roboczego](media/sql-data-warehouse-monitor/log_analytics_workspace_queries.png)
+![Log Analytics zapytań obszaru roboczego](media/sql-data-warehouse-monitor/log_analytics_workspace_queries.png)
 
 ## <a name="sample-log-queries"></a>Przykładowe zapytania dziennika
 
@@ -97,6 +97,6 @@ AzureDiagnostics
 | where Type_s == "UserConcurrencyResourceType"
 | summarize totalQueuedQueries = dcount(RequestId_s)
 ```
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Skoro zdefiniowano i skonfigurowano dzienników usługi Azure monitor [dostosowywania pulpitów nawigacyjnych platformy Azure](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards) udostępnianie całemu zespołowi.
+Teraz, po skonfigurowaniu i skonfigurowaniu dzienników usługi Azure monitor, [Dostosuj pulpity nawigacyjne platformy Azure](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards) tak, aby były udostępniane przez zespół.

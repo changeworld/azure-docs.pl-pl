@@ -8,18 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/15/2019
+ms.date: 08/16/2019
 ms.author: diberry
-ms.openlocfilehash: a3e1853e587f2f1632641cbb896eba59f8dc9455
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 5175dee24542c716b3d087412864ae7e6f056d18
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515787"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615980"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Źródła danych dla zawartości usługi QnA Maker
 
 Usługa QnA Maker wyodrębnia automatycznie pary pytań i odpowiedzi z częściową strukturą zawartości, takiej jak — często zadawane pytania, podręczników, wskazówek, Obsługa dokumentów i zasady przechowywane jako strony sieci web, pliki PDF lub pliki programu MS Word doc. Zawartości mogą być również dodawane do bazy wiedzy ze strukturą pytań i odpowiedzi, pliki zawartości. 
+
+## <a name="data-types"></a>Typy danych
 
 Poniższa tabela zawiera podsumowanie typów formaty zawartości i plików, które są obsługiwane przez narzędzie QnA Maker.
 
@@ -32,11 +34,21 @@ Poniższa tabela zawiera podsumowanie typów formaty zawartości i plików, któ
 
 ## <a name="data-source-locations"></a>Lokalizacje źródeł danych
 
-Większość lokalizacji źródła danych musi podawać publiczne adresy URL lub pliki, które nie wymagają uwierzytelniania. 
+Lokalizacje źródeł danych to **publiczne adresy URL lub pliki**, które nie wymagają uwierzytelniania. 
 
-[Lokalizacje źródeł danych programu SharePoint](../How-to/add-sharepoint-datasources.md) mogą udostępniać uwierzytelnione pliki. Zasoby programu SharePoint muszą być plikami, a nie stronami sieci Web. 
+Jeśli potrzebujesz uwierzytelniania dla źródła danych, Rozważ następujące metody, aby uzyskać te dane do QnA Maker:
 
-Jeśli masz uwierzytelniony plik lub adres URL, alternatywną opcją jest pobranie pliku z witryny uwierzytelnionej na komputer lokalny, a następnie dodanie pliku z komputera lokalnego do bazy wiedzy. 
+* [Pobierz plik ręcznie](#download-file-from-authenticated-data-source-location) i zaimportuj do QNA Maker
+* Importuj plik dla uwierzytelnionej [lokalizacji programu SharePoint](#import-file-from-authenticated-sharepoint) 
+
+### <a name="download-file-from-authenticated-data-source-location"></a>Pobierz plik z lokalizacji uwierzytelnionego źródła danych
+
+Jeśli masz uwierzytelniony plik (nie w lokalizacji uwierzytelnionej programu SharePoint) lub adres URL, alternatywną opcją jest pobranie pliku z witryny uwierzytelnionej na komputer lokalny, a następnie dodanie pliku z komputera lokalnego do bazy wiedzy.
+
+### <a name="import-file-from-authenticated-sharepoint"></a>Importuj plik ze uwierzytelnionego programu SharePoint 
+
+[Lokalizacje źródeł danych programu SharePoint](../How-to/add-sharepoint-datasources.md) mogą udostępniać uwierzytelnione **pliki**. Zasoby programu SharePoint muszą być plikami, a nie stronami sieci Web. Jeśli adres URL jest zakończony rozszerzeniem sieci Web, na przykład **. ASPX**nie zostanie on zaimportowany do QNA Maker z programu SharePoint.
+
 
 ## <a name="faq-urls"></a>Adresy URL — często zadawane pytania
 

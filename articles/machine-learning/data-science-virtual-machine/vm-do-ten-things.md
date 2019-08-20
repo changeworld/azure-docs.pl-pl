@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: vijetaj
-ms.openlocfilehash: 2af65dbae59774ed718d58f055158e61f15e2198
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ee63f7aae70e93dfbe857b8680d2b4a477600d72
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68557497"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575109"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Dziesięć rzeczy, które można wykonać na Windows maszyny wirtualnej analizy danych
 
@@ -54,7 +54,7 @@ W tym artykule dowiesz się, jak używać maszyny wirtualnej DSVM do wykonywania
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="1-explore-data-and-develop-models-using-microsoft-ml-server-or-python"></a>1. Badaj dane i tworzyć modele przy użyciu usługi Microsoft ML Server lub Python
+## <a name="1-explore-data--develop-models-with-microsoft-ml-server"></a>1. Eksplorowanie danych & opracowywanie modeli przy użyciu programu Microsoft ML Server
 Języki R i Python umożliwia przeprowadzenie analizy swoje dane bezpośrednio na maszyny DSVM.
 
 Dla języka R można użyć środowiska IDE, takich jak program RStudio, które znajdują się w start menu lub z pulpitu lub R Tools for Visual Studio. Firma Microsoft udostępnia dodatkowe biblioteki, na podstawie Open źródło/CRAN-R umożliwienie skalowalnej analizy i możliwości analizowania danych jest większy niż dozwolony, wykonując równoległe analizy fragmentaryczne rozmiar pamięci. 
@@ -73,7 +73,7 @@ Zobacz [dokumentacja narzędzi PTVS](https://aka.ms/ptvsdocs) Aby uzyskać więc
 
 Teraz możesz są skonfigurowane do tworzenia nowego projektu języka Python. Przejdź do **pliku** -> **New** -> **projektu** -> **Python** i wybierz typ Aplikacja języka Python, które tworzysz. Można ustawić środowisko Python dla bieżącego projektu do żądanej wersji (Python 2.7 lub 3.6), klikając prawym przyciskiem myszy **środowiska Python**, wybierając opcję **środowiska Python Dodaj/Usuń**, a następnie pobrania wymagane środowisko. Można znaleźć więcej informacji na temat pracy z narzędziami PTVS w produkcie [dokumentacji](https://aka.ms/ptvsdocs).
 
-## <a name="2-using-a-jupyter-notebook-to-explore-and-model-your-data-with-python-or-r"></a>2. Eksplorowanie i modelowanie danych za pomocą języka Python lub R przy użyciu notesu programu Jupyter
+## <a name="2-use-jupyter-notebooks"></a>2. Korzystanie z notesów Jupyter
 Notes Jupyter jest zaawansowane środowisko, która zapewnia oparte na przeglądarce "IDE" Eksplorowanie i modelowanie danych. Używając języka Python 2, 3 języka Python lub R ("Open Source" i Microsoft R Server) w notesie Jupyter.
 
 Aby uruchomić Notes Jupyter, kliknij ikonę menu start / ikony pulpitu pod tytułem **notesu programu Jupyter**. W wierszu polecenia maszyny wirtualnej DSVM, można również uruchomić polecenie ```jupyter notebook``` z katalogu, w którym masz istniejących notesów lub do utworzenia nowych w notesach.  
@@ -92,7 +92,7 @@ Po uruchomieniu programu Jupyter, powinien zostać wyświetlony katalog, który 
 
 Po przejściu w notesie, które można eksplorować dane i tworzenie modelu, przetestowania modelu przy użyciu wybranych bibliotek.
 
-## <a name="3-build-models-using-r-or-python-and-operationalize-them-using-azure-machine-learning"></a>3. Tworzenie modeli przy użyciu języka R lub Python i operacjonalizacja jednym je przy użyciu usługi Azure Machine Learning
+## <a name="3-train--deploy-models-with-azure-machine-learning"></a>3. Uczenie & Wdrażanie modeli przy użyciu Azure Machine Learning
 Po skompilowane i sprawdzania poprawności modelu następnym krokiem jest zwykle można wdrożyć ją w środowisku produkcyjnym. Dzięki temu klient aplikacjom wywoływanie określane są przewidywania modelu w czasie rzeczywistym lub na zasadzie tryb usługi batch. Usługa Azure Machine Learning udostępnia mechanizm do obsługi operacji modelu utworzone w języku R lub Python.
 
 Po użytkownik operacjonalizować model w usłudze Azure Machine Learning, usługi sieci web jest udostępniany, który pozwala na wykonywanie wywołań REST, które przekazać parametry wejściowe i otrzymywać przewidywań modelu jako dane wyjściowe.   
@@ -210,19 +210,19 @@ ans = consume(ep, sleepstudy)$ans
 
 Więcej informacji na temat biblioteki usługi Azure Machine Learning R można znaleźć [tutaj](https://cran.r-project.org/web/packages/AzureML/AzureML.pdf).
 
-## <a name="4-administer-your-azure-resources-using-azure-portal-or-powershell"></a>4. Administrowania zasobami platformy Azure przy użyciu witryny Azure portal lub programu Powershell
+## <a name="4-manage-azure-resources"></a>4. Zarządzanie zasobami platformy Azure
 Maszyny DSVM nie tylko umożliwia tworzenie rozwiązania do analizy lokalnie na maszynie wirtualnej, ale pozwala również na uzyskiwanie dostępu do usług w chmurze Microsoft Azure. System Azure oferuje kilka obliczeń, magazynu, usługi analizy danych i innych usług, które mogą administrować i pobierać z maszyny wirtualnej DSVM.
 
-Do administrowania zasobami platformy Azure subskrypcji i w chmurze można użyć przeglądarki i wskaż [witryny Azure portal](https://portal.azure.com). Umożliwia także programu Azure Powershell do administrowania subskrypcji platformy Azure i zasobów za pomocą skryptu.
-Można uruchomić programu Azure Powershell przy użyciu skrótu na pulpicie lub w menu start o nazwie "Microsoft Azure Powershell." Zapoznaj się [dokumentację programu Azure Powershell Microsoft](../../powershell-azure-resource-manager.md) więcej informacji na temat sposobu do administrowania subskrypcji platformy Azure i zasobów za pomocą skryptów programu Windows Powershell.
+Do administrowania subskrypcją platformy Azure i zasobami w chmurze dostępne są dwie opcje:
++ **Azure Portal**: Użyj przeglądarki i wskaż [Azure Portal](https://portal.azure.com)
 
-## <a name="5-extend-your-storage-space-with-a-shared-file-system"></a>5. Rozszerzanie miejsca do magazynowania w systemie plików udostępnionych
++ **Azure PowerShell**: używanie skryptów programu Windows PowerShell. Uruchom program Azure PowerShell ze skrótu na pulpicie lub z menu Start zatytułowanego "Microsoft Azure PowerShell". Szczegółowe informacje znajdują się w [dokumentacji programu Microsoft Azure PowerShell](../../powershell-azure-resource-manager.md) . 
+
+## <a name="5-extend-storage-with-shared-file-systems"></a>5. Rozszerzona pamięć masowa z udostępnionymi systemami plików
 Analitycy danych mogą udostępniać dużych zestawów danych, kodu lub innych zasobów w ramach zespołu. NAUKI, sama ma około 45GB dostępnego miejsca. Aby rozszerzyć magazynu, można użyć usługi Azure File Service i albo zainstalować na co najmniej jedno wystąpienie maszyny wirtualnej DSVM lub uzyskać do niego dostęp za pośrednictwem interfejsu API REST.  Można również użyć [witryny Azure Portal](../../virtual-machines/windows/attach-managed-disk-portal.md) lub użyj [programu Azure Powershell](../../virtual-machines/windows/attach-disk-ps.md) dodawanie dysków danych dodatkowych dedykowanych. 
 
 > [!NOTE]
 > Maksymalna ilość miejsca na udział usługi Azure File Service jest 5 TB, a limit rozmiaru poszczególnych plików wynosi 1 TB. 
-> 
-> 
 
 Można użyć programu Azure Powershell, aby utworzyć udział usługi Azure File Service. Oto skrypt do uruchomienia w ramach programu Azure PowerShell, aby utworzyć udział plików platformy Azure usługi.
 
@@ -258,7 +258,7 @@ net use z:  \\<mydatadisk>.file.core.windows.net\<<teamsharename>>
 
 Możesz teraz dostęp ten dysk, jak w przypadku dowolnego normalne dysku na maszynie Wirtualnej.
 
-## <a name="6-share-code-with-your-team-using-github"></a>6. Udostępniać kod swojemu zespołowi, korzystając z usługi GitHub
+## <a name="6-share-code-in-github"></a>6. Udostępnianie kodu w usłudze GitHub
 GitHub to repozytorium kodu, gdzie można znaleźć wiele przykładowy kod i źródeł dla różnych narzędzi przy użyciu różnych technologii udostępnione przez społeczność deweloperów. Używa usługi Git jako technologia do śledzenia i przechowywania wersji plików kodu. GitHub to też platformy umożliwiającego utworzenie własnego repozytorium do przechowywania wspólny kod Twojego zespołu i dokumentacji, implementowanie kontroli wersji i kontrolują także, kto ma dostęp do wyświetlanie i Współtworzenie kodu. Odwiedź stronę [stron Pomocy usługi GitHub](https://help.github.com/) Aby uzyskać więcej informacji na temat korzystania z usługi Git. GitHub służy jako sposoby współpracować z zespołem, korzystać z kodem tworzonym przez społeczność i współtworzyć kod społeczności.
 
 Maszyny DSVM zawiera już załadowany z narzędziami klienckimi zarówno wiersza polecenia jako dobrze graficznego interfejsu użytkownika, aby dostęp do repozytorium GitHub. Narzędzie wiersza polecenia do pracy z Git i GitHub nosi nazwę powłoki Git Bash. Visual Studio zainstalowane natym maszyny DSVM ma rozszerzenia Git. Ikony rozruchu można znaleźć w tych narzędzi, w start menu i pulpitu.
@@ -273,7 +273,7 @@ W programie Visual Studio możesz tworzyć tej samej operacji klonowania. Poniż
 
 Można znaleźć więcej informacji na temat korzystania z narzędzia Git do pracy z repozytorium GitHub z kilku dostępnych zasobów w witrynie github.com. [Cheat-sheet](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) jest odwołaniem przydatne.
 
-## <a name="7-access-various-azure-data-and-analytics-services"></a>7. Dostęp do różnych usług Azure data i analizy
+## <a name="7-access-many-azure-data--analytics-services"></a>7. Dostęp do wielu usług analizy danych & Azure
 ### <a name="azure-blob"></a>Obiekt bob Azure
 Obiektów blob platformy Azure to niezawodne i ekonomiczne przechowywanie w chmurze danych dużych i małych. W tej sekcji opisano, jak przenosić dane do obiektów Blob platformy Azure i dostęp do danych przechowywanych w usłudze Azure Blob.
 
@@ -851,8 +851,8 @@ Poniżej przedstawiono kroki na — wymagania wstępne, aby uzyskać dostęp do 
 
 Po zaimportowaniu danych, możesz przejść do aplikacji Jupyter i otworzyć notes o nazwie *DocumentDBSample* zawierający kod python dostęp do usługi Azure Cosmos DB i wykonaj kilka podstawowych zapytań. Znajdziesz więcej informacji na temat usługi Cosmos DB, odwiedzając usługi [stronę z dokumentacją dotyczącą](https://docs.microsoft.com/azure/cosmos-db/).
 
-## <a name="8-build-reports-and-dashboard-using-the-power-bi-desktop"></a>8. Tworzenie raportów i pulpitów nawigacyjnych przy użyciu programu Power BI Desktop
-Można wizualizować pliku swe dzieła JSON z poprzedniego przykładu Cosmos DB w usłudze Power BI, aby uzyskać wizualny wgląd w dane. Szczegółowe instrukcje są dostępne w [artykule dotyczącym usługi Power BI](../../cosmos-db/powerbi-visualize.md). Poniżej przedstawiono ogólne kroki:
+## <a name="8-power-bi-reports--dashboards"></a>8. Power BI raporty & pulpitów nawigacyjnych 
+Plik JSON Volcano można wizualizować z poprzedniego przykładu Cosmos DB na Power BI Desktop, aby uzyskać wgląd w dane. Szczegółowe instrukcje są dostępne w [artykule dotyczącym usługi Power BI](../../cosmos-db/powerbi-visualize.md). Poniżej przedstawiono ogólne kroki:
 
 1. Otwórz program Power BI Desktop i "Pobieranie danych." Określ adres URL w postaci: https://cahandson.blob.core.windows.net/samples/volcano.json
 2. Powinien zostać wyświetlony zaimportowanych jako listę rekordów JSON
@@ -884,7 +884,7 @@ Możesz rozpocząć tworzenie raportów i wizualizacji przy użyciu modelu danyc
 
 ![Usługa Power BI Desktop widoku raportu — łącznik usługi Power BI](./media/vm-do-ten-things/power_bi_connector_pbireportview2.png)
 
-## <a name="9-dynamically-scale-your-dsvm-to-meet-your-project-needs"></a>9. Dynamiczne skalowanie maszyny wirtualnej DSVM stosownie do potrzeb projektu
+## <a name="9-dynamic-dsvm-scaling"></a>9. Dynamiczne skalowanie DSVM 
 Możesz skalować nauki do swoich potrzeb projektu w górę i w dół. Jeśli nie potrzebujesz użyć maszyny Wirtualnej wieczorami lub w weekendy, można po prostu zamknąć maszynę Wirtualną z [witryny Azure portal](https://portal.azure.com).
 
 > [!NOTE]
@@ -898,10 +898,23 @@ Podobnie jeśli zmniejsza Twoje potrzeby możliwości przetwarzania maszyny Wirt
 
 ![Ustawienia wystąpienia maszyny Wirtualnej](./media/vm-do-ten-things/VMScaling.PNG)
 
-## <a name="10-install-additional-tools-on-your-virtual-machine"></a>10. Zainstaluj dodatkowe narzędzia na maszynie wirtualnej.
+## <a name="10-add-more-tools"></a>10. Dodaj więcej narzędzi
 Istnieje kilka narzędzi, wstępnie skompilowane do nauki, które może uwzględnić wiele wspólnych danych, czego potrzebuje analizy. Pozwala to zaoszczędzić czas, unikając konieczności Zainstaluj i skonfiguruj środowiska pojedynczo oraz zaoszczędzić pieniądze, płacąc tylko za zasoby, możesz użyć.
 
 Korzystanie z innymi usługami platformy Azure danych i analizy profilowane w tym artykule, aby ulepszyć środowiska analizy. W niektórych przypadkach potrzeb może wymagać dodatkowych narzędzi, takich jak niektóre zastrzeżone narzędzia innych firm. Masz pełny dostęp administracyjny na maszynie wirtualnej, aby zainstalować nowe narzędzia, których potrzebujesz. Można także zainstalować dodatkowe pakiety języka Python i R, które są wstępnie zainstalowane. Dla języka Python można użyć dowolnego ```conda``` lub ```pip```. W przypadku języka R można użyć ```install.packages()``` języka R w konsoli lub użyć IDE i wybierz pozycję "**pakietów** -> **instalowanie pakietów** ".
+
+## <a name="deep-learning"></a>Uczenie głębokie
+
+Oprócz przykładów oparte na strukturze zbiór — wszechstronne wskazówki udostępniane są również że zweryfikowany w DLVM. Przewodniki te pomagają szybko Rozpocznij korzystanie z usługi opracowywania aplikacji uczenia głębokiego w domenach, takich jak obraz i tekst/language understanding. Więcej samouczków end-to-end w różnych domenach i technologii, będą w dalszym ciągu można dodać.   
+
+
+- [Uruchamianie sieci neuronowych w różnych strukturach](https://github.com/ilkarman/DeepLearningFrameworks): Kompleksowy przewodnik pokazujący sposób migrowania kodu z jednej struktury do innej. Ilustruje też sposób porównywania modelu i uruchamianie wydajności w czasie dla platform. 
+
+- [Przewodnik dotyczący tworzenia kompleksowych rozwiązań do wykrywania produktów w obrazach](https://github.com/Azure/cortana-intelligence-product-detection-from-images): Wykrywanie obrazów to technika, która umożliwia lokalizowanie i klasyfikowanie obiektów w obrazach. Ta technologia może potencjalnie doprowadzić ogromne korzyści w wielu dziedzinach biznesowych realnym. Na przykład sprzedawcy detaliczni, można użyć tej techniki ustalenie produktu, który klientów została pobrana z półki. Informacje te pomagają z kolei magazyny Zarządzanie spis produktów. 
+
+- [Uczenie głębokie dla audio](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/) ten samouczek pokazuje sposób trenowania modelu uczenia głębokiego, wykrywania zdarzeń audio na [dataset miejskich dźwięki](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html) i omówiono sposób pracy z danymi audio.
+
+- [Klasyfikacja dokumentów tekstowych](https://github.com/anargyri/lstm_han): W tym instruktażu przedstawiono sposób tworzenia i uczenia dwóch różnych architektur sieci neuronowych: Sieć hierarchiczna zwracająca uwagę i długi czas pamięci (LSTM). Te sieci neuronowych na użytek interfejsu API biblioteki Keras głębokie uczenie do klasyfikowania dokumentów tekstowych. Keras to przód do trzech najpopularniejszych platform uczenia głębokiego: Microsoft Cognitive Toolkit, TensorFlow i Theano.
 
 ## <a name="summary"></a>Podsumowanie
 To tylko niektóre rzeczy, które można zrobić w programie Microsoft maszyny wirtualnej analizy danych. Istnieje wiele więcej rzeczy, które można zrobić, aby stał się środowisko analizy skuteczne.

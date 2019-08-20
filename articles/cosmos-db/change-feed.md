@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 40caea40637c57aedb6315ff6fc032898ff07af7
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 20ca823f60ced4260c2e61ca15ae04e158b7d952
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467941"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615666"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Źródło zmian w Azure Cosmos DB — Omówienie
 
-Obsługa kanału informacyjnego zmian w usłudze Azure Cosmos DB działa przez nasłuchiwanie w kontenerze usługi Azure Cosmos DB zostały wprowadzone zmiany. Następnie wyświetla posortowaną listę dokumentów, które zostały zmienione w kolejności, w której zostały zmodyfikowane. Zmiany zostają utrwalone, mogą być przetwarzane asynchronicznie i przyrostowo, a dane wyjściowe mogą być rozpowszechniane wśród jednego lub większej liczby konsumentów w celu przetwarzania równoległego. 
+Obsługa kanałów informacyjnych zmian w Azure Cosmos DB działa przez nasłuchiwanie kontenera usługi Azure Cosmos dla wszelkich zmian. Następnie wyświetla posortowaną listę dokumentów, które zostały zmienione w kolejności, w której zostały zmodyfikowane. Zmiany zostają utrwalone, mogą być przetwarzane asynchronicznie i przyrostowo, a dane wyjściowe mogą być rozpowszechniane wśród jednego lub większej liczby konsumentów w celu przetwarzania równoległego. 
 
 Usługa Azure Cosmos DB jest odpowiednie dla IoT, gry detaliczna i operacyjne rejestrowania aplikacji. Typowy wzorzec projektowania w tych aplikacjach jest Wyzwól dodatkowe akcje za pomocą zmian danych. Przykłady dodatkowe akcje:
 
@@ -56,7 +56,7 @@ Na koncie usługi Azure Cosmos wielu regionów, jeśli region zapisu w trybie Fa
 
 Jeśli właściwość czas wygaśnięcia (czas wygaśnięcia) ustawiono element na -1, kanał informacyjny zmian zostanie utrzymany nieskończoność. Jeśli dane nie zostaną usunięte, pozostanie w zestawienia zmian.  
 
-### <a name="change-feed-and-etag-lsn-or-ts"></a>Zmień źródło danych i _etag, _lsn lub _ts
+### <a name="change-feed-and-_etag-_lsn-or-_ts"></a>Zmień źródło danych i _etag, _lsn lub _ts
 
 _Etag format wewnętrzny i użytkownik nie powinna przyjmować zależności, ponieważ go można zmienić w dowolnym momencie. _ts jest modyfikację lub tworzenia sygnatury czasowej. _Ts służy do porównywania chronologicznym. _lsn to identyfikator wsadu, który jest dodawany wyłącznie do źródła zmian. reprezentuje identyfikator transakcji. Wiele elementów może być tym samym _lsn. Tag ETag na FeedResponse różni się od _etag, którą widzisz w elemencie. _etag jest wewnętrznym identyfikatorem i służy do współbieżności kontroli informuje o wersji elementu, natomiast element ETag jest używany do sekwencjonowania źródła danych.
 

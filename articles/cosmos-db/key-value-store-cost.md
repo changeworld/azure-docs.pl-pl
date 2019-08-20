@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 757366f1d1f94d11438be4df0772ce1155f71cee
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 3758766b1051acb9321ec67727eecef249971065
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67310587"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615100"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Usługa Azure Cosmos DB jako wartości klucza magazynu — omówienie kosztów
 
 Usługa Azure Cosmos DB to usługa globalnie dystrybuowanej, wielomodelowej bazy danych do tworzenia aplikacji o wysokiej dostępności, na dużą skalę w prosty sposób. Domyślnie usługa Azure Cosmos DB automatycznie indeksuje wszystkie dane, które pozyskuje wydajnie. Umożliwia to szybkie i spójne [SQL](how-to-sql-query.md) (i [JavaScript](stored-procedures-triggers-udfs.md)) kwerendy dla każdego typu danych. 
 
-W tym artykule opisano koszt usługi Azure Cosmos DB proste zapisu oraz operacje odczytu, gdy jest ona używana jako magazyn klucz/wartość. Operacje obejmują operacje wstawiania, zastępuje, usuwa i wykonuje operację UPSERT dokumentów zapisu. Oprócz gwarantujące dostępność przez 99,99% umowa SLA dotycząca dostępności dla wszystkich kont w obrębie jednego regionu i wszystkich kont w wielu regionach za pomocą rozluźnionej spójności, a przez 99,999% dostępność do odczytu na wszystkich multiregionalne konta baz danych, gwarantowana oferty usługi Azure Cosmos DB < opóźnieniem 10 ms odczytuje i dla (indeksowanych) zapisuje odpowiednio na poziomie 99 percentyla. 
+W tym artykule opisano koszt usługi Azure Cosmos DB proste zapisu oraz operacje odczytu, gdy jest ona używana jako magazyn klucz/wartość. Operacje obejmują operacje wstawiania, zastępuje, usuwa i wykonuje operację UPSERT dokumentów zapisu. Oprócz zagwarantowania, że umowa SLA dotycząca dostępności na 99,99% dla wszystkich kont jednego regionu i wszystkich kont wieloregionowych o spójności swobodnej oraz 99,999% dostępności na wszystkich wieloregionowych kontach baz danych, Azure Cosmos DB oferuje gwarantowane < 10 ms dla odczytuje odpowiednio i dla (indeksowane) zapisów w 99 percentylu. 
 
 ## <a name="why-we-use-request-units-rus"></a>Dlaczego używamy jednostek żądań (ru)
 
 Wydajność usługi Azure Cosmos DB jest oparty na ilość aprowizowanej [jednostek żądań](request-units.md) (RU) dla partycji. Inicjowanie obsługi administracyjnej drugiego stopnia szczegółowości i nie jest sprzedawana w wielkości jednostek ru na sekundę ([nie należy mylić przy naliczaniu godzinowym](https://azure.microsoft.com/pricing/details/cosmos-db/)). (RUS) powinny być uważane za waluty, która upraszcza aprowizację przepustowość wymagana dla aplikacji. Naszych klientów nie trzeba myśleć o rozróżnianiu odczytu i zapisu jednostek pojemności. Model pojedynczej waluty (RUS) tworzy efektywność udostępnianie zaprowizowaną pojemnością między operacji odczytu i zapisu. Ten model zaprowizowaną pojemnością włącza usługę w celu zapewnienia przewidywalnych i spójne przepływności, gwarantowanych małych opóźnień i wysokiej dostępności. Na koniec używamy jednostek Zarezerwowanych do modelu przepływności, ale każdy aprowizowanych jednostek RU również ma określoną ilość zasobów (pamięci, Core). Jednostek żądań na sekundę nie jest tylko operacje We/Wy.
 
-Jako system globalnie rozproszonej bazy danych Cosmos DB to usługa tylko Azure, która zawiera umowy SLA dotyczące opóźnienia, przepływność i spójność oprócz wysokiej dostępności. Przepływność, którą możesz aprowizować jest stosowany do wszystkich regionów skojarzonych z kontem bazy danych usługi Cosmos DB. Dla odczytów, Cosmos DB oferuje wiele dobrze zdefiniowanych [poziomów spójności](consistency-levels.md) służących do wyboru. 
+Jako system globalnie rozproszonej bazy danych Cosmos DB to usługa tylko Azure, która zawiera umowy SLA dotyczące opóźnienia, przepływność i spójność oprócz wysokiej dostępności. Wybrana przepustowość jest stosowana do każdego regionu skojarzonego z kontem bazy danych Cosmos. Dla odczytów, Cosmos DB oferuje wiele dobrze zdefiniowanych [poziomów spójności](consistency-levels.md) służących do wyboru. 
 
 W poniższej tabeli przedstawiono liczbę jednostek zarezerwowanych, wymagane do wykonywania odczytu i zapisu transakcji na podstawie rozmiaru dokumentu o rozmiarze 1 KB i 100 KB/s.
 

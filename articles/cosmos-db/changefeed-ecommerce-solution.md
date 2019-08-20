@@ -7,16 +7,16 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 7923ce10912ebb6f09c1c3d8390dd51b4f876bea
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 86d4dd706b097891db155214e4edb7e85e054858
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552004"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616947"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Użyj usługi Azure Cosmos DB Zmień źródło danych do analizy danych w czasie rzeczywistym wizualizować
 
-Zestawienia zmian usługi Azure Cosmos DB to mechanizm, który można pobrać kanału informacyjnego ciągłe i przyrostowych rekordów z kontenera usługi Azure Cosmos DB, jak te rekordy są tworzone lub modyfikowane. Kanału informacyjnego zmian działania pomocy technicznej przez nasłuchiwanie w kontenerze żadnych zmian. Następnie wyświetla posortowaną listę dokumentów, które zostały zmienione w kolejności, w której zostały zmodyfikowane. Aby dowiedzieć się więcej na temat zmian, zobacz [pracy za pomocą zestawienia zmian](change-feed.md) artykułu. 
+Kanał informacyjny zmiany Azure Cosmos DB jest mechanizmem do uzyskiwania ciągłego i przyrostowego źródła rekordów z kontenera usługi Azure Cosmos, ponieważ te rekordy są tworzone lub modyfikowane. Kanału informacyjnego zmian działania pomocy technicznej przez nasłuchiwanie w kontenerze żadnych zmian. Następnie wyświetla posortowaną listę dokumentów, które zostały zmienione w kolejności, w której zostały zmodyfikowane. Aby dowiedzieć się więcej na temat zmian, zobacz [pracy za pomocą zestawienia zmian](change-feed.md) artykułu. 
 
 W tym artykule opisano, jak zmiany Kanał informacyjny może służyć przez firmę handlu elektronicznego, aby zrozumieć wzorce użytkownika, wykonywania analiz danych w czasie rzeczywistym i wizualizacji. Będzie analizować zdarzenia, takie jak wyświetlenie elementu, dodanie elementu do koszyka ich lub zakupu elementu użytkownika. Gdy wystąpi jedno z tych zdarzeń, zostanie utworzony nowy rekord, a zmiany źródła danych dzienników, służące do rejestrowania. Kanału informacyjnego zmian następnie wyzwalaczy szereg kroków skutkuje wizualizacji metryk, które Analizuj wydajność firmy i działania. Przykładowe metryki, które można wizualizować obejmują przychodu, unikatowych odwiedzających witrynę, najpopularniejszych elementów i średnia cena elementów, które są wyświetlane w porównaniu z dodana do koszyka i zakupu. Te przykładowe metryki może pomóc firmie handlu elektronicznego, oceniać swoją popularność lokacji, tworzyć jego reklamy i strategii cenowych i podjęcia decyzji dotyczących spisu, jakie o wartości inwestycji w.
 
@@ -41,9 +41,9 @@ Poniższy diagram przedstawia przepływ danych i składniki zaangażowane w rozw
    }
    ```
 
-2. **Cosmos DB:** Wygenerowane dane są przechowywane w kolekcji Azure Cosmos DB.  
+2. **Cosmos DB:** Wygenerowane dane są przechowywane w kontenerze usługi Azure Cosmos.  
 
-3. **Źródło zmian:** Źródło zmian będzie nasłuchiwać zmian w kolekcji Azure Cosmos DB. Każdorazowo nowy dokument zostanie dodany do kolekcji (to znaczy po wystąpieniu zdarzenia, od takich użytkowników, wyświetlanie elementu Dodawanie elementu do koszyka ich lub zakupu element), zmiana źródła danych będą wyzwalać [funkcji platformy Azure](../azure-functions/functions-overview.md).  
+3. **Źródło zmian:** Źródło zmian będzie nasłuchiwać zmian w kontenerze usługi Azure Cosmos. Każdorazowo nowy dokument zostanie dodany do kolekcji (to znaczy po wystąpieniu zdarzenia, od takich użytkowników, wyświetlanie elementu Dodawanie elementu do koszyka ich lub zakupu element), zmiana źródła danych będą wyzwalać [funkcji platformy Azure](../azure-functions/functions-overview.md).  
 
 4. **Funkcja platformy Azure:** Funkcja platformy Azure przetwarza nowe dane i wysyła je do [centrum zdarzeń platformy Azure](../event-hubs/event-hubs-about.md).  
 
@@ -143,7 +143,7 @@ Usługi Azure Event Hub odbiera dane zdarzenia, magazyny, procesy i przekazuje d
 
 ## <a name="set-up-azure-function-to-read-the-change-feed"></a>Konfigurowanie funkcji platformy Azure na odczytywanie zestawienia zmian
 
-Gdy tworzony jest nowy dokument, lub bieżący dokument zostanie zmodyfikowany w kolekcji usługi Cosmos DB, Zmień źródło danych automatycznie dodaje modyfikacji dokumentu do jego historię zmian kolekcji. Teraz utworzysz i uruchom funkcję platformy Azure, która przetwarza zestawienia zmian. Gdy dokument zostanie utworzony lub zmodyfikowany w utworzonej kolekcji, funkcja platformy Azure zostanie wyzwolone przez zestawienia zmian. Następnie funkcja platformy Azure będzie wysyłać zmodyfikowanego dokumentu do Centrum zdarzeń.
+Po utworzeniu nowego dokumentu lub zmodyfikowaniu bieżącego dokumentu w kontenerze Cosmos, Źródło zmian automatycznie dodaje zmodyfikowany dokument do historii zmian kolekcji. Teraz utworzysz i uruchom funkcję platformy Azure, która przetwarza zestawienia zmian. Gdy dokument zostanie utworzony lub zmodyfikowany w utworzonej kolekcji, funkcja platformy Azure zostanie wyzwolone przez zestawienia zmian. Następnie funkcja platformy Azure będzie wysyłać zmodyfikowanego dokumentu do Centrum zdarzeń.
 
 1. Wróć do repozytorium, z którego zostało sklonowane na urządzeniu.  
 
@@ -318,7 +318,7 @@ Usługa Power BI to pakiet narzędzi do analizy biznesowej do analizowania danyc
 
 ## <a name="optional-visualize-with-an-e-commerce-site"></a>Opcjonalnie: Wizualizowanie w witrynie handlu elektronicznego
 
-Teraz odbywa się w sposób korzystania z nowego narzędzia analizy danych nawiązać połączenia z lokacją rzeczywistych handlu elektronicznego. Aby można było utworzyć w witrynie handlu elektronicznego, umożliwiają przechowywanie listy Kategorie produktów (dla kobiet, mężczyzn, Brak danych), katalog produktów i listę najpopularniejszych elementów bazą danych Azure Cosmos DB.
+Teraz odbywa się w sposób korzystania z nowego narzędzia analizy danych nawiązać połączenia z lokacją rzeczywistych handlu elektronicznego. Aby zbudować witrynę handlu elektronicznego, należy użyć bazy danych usługi Azure Cosmos do przechowywania listy kategorii produktów (kobiety, mężczyźni, Unisex), katalogu produktów i listy najpopularniejszych elementów.
 
 1. Przejdź z powrotem do [witryny Azure Portal](https://portal.azure.com/), następnie do swojej **konta usługi Cosmos DB**, następnie do **Eksplorator danych**.  
 

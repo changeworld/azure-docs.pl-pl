@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Załaduj dane dotyczące taksówek w Nowym Jorku do usługi Azure SQL Data Warehouse | Dokumentacja firmy Microsoft'
-description: Samouczek korzysta z platformy Azure portal i programu SQL Server Management Studio, aby załadować dane taksówek w Nowym Jorku z publicznej platformy Azure obiektu blob do usługi Azure SQL Data Warehouse.
+title: 'Samouczek: Załaduj dane z Nowego Jorku Taxicab do Azure SQL Data Warehouse | Microsoft Docs'
+description: Samouczek używa Azure Portal i SQL Server Management Studio do ładowania Taxicab danych z publicznego obiektu blob platformy Azure do Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: load-data
 ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 5f2830b524c554a6988bfc873cd0f6c54e5c56a4
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: e3bef20a92322b07219e42c4f7fe8443917eae32
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839680"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575202"
 ---
-# <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Samouczek: Załaduj dane dotyczące taksówek w Nowym Jorku do usługi Azure SQL Data Warehouse
+# <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Samouczek: Załaduj dane z Nowego Jorku Taxicab do Azure SQL Data Warehouse
 
-Ten samouczek używa programu PolyBase, aby załadować dane dotyczące taksówek w Nowym Jorku z publicznej usługi Azure blob do usługi Azure SQL Data Warehouse. W tym samouczku użyto witryny [Azure Portal](https://portal.azure.com) i programu [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS), aby wykonać następujące czynności: 
+W tym samouczku pokazano, jak załadować Nowy Jork Taxicab danych z publicznego obiektu blob platformy Azure do Azure SQL Data Warehouse. W tym samouczku użyto witryny [Azure Portal](https://portal.azure.com) i programu [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS), aby wykonać następujące czynności: 
 
 > [!div class="checklist"]
 > * Tworzenie magazynu danych w witrynie Azure Portal
@@ -42,11 +42,11 @@ Zanim rozpoczniesz ten samouczek, pobierz i zainstaluj najnowszą wersję progra
 
 Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
 
-## <a name="create-a-blank-sql-data-warehouse"></a>Tworzenie pustego magazynu danych SQL
+## <a name="create-a-blank-sql-data-warehouse"></a>Utwórz puste SQL Data Warehouse
 
-Magazyn danych Azure SQL Data Warehouse jest tworzony ze zdefiniowanym zestawem [zasobów obliczeniowych](memory-and-concurrency-limits.md). Baza danych jest tworzona w [grupie zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) oraz na [serwerze logicznym SQL platformy Azure](../sql-database/sql-database-features.md). 
+Azure SQL Data Warehouse jest tworzony ze zdefiniowanym zestawem [zasobów obliczeniowych](memory-and-concurrency-limits.md). Baza danych jest tworzona w [grupie zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) oraz na [serwerze logicznym SQL platformy Azure](../sql-database/sql-database-features.md). 
 
-Wykonaj poniższe czynności, aby utworzyć pusty magazyn danych SQL. 
+Wykonaj następujące kroki, aby utworzyć puste SQL Data Warehouse. 
 
 1. W lewym górnym rogu witryny Azure Portal kliknij przycisk **Utwórz zasób**.
 
@@ -78,9 +78,9 @@ Wykonaj poniższe czynności, aby utworzyć pusty magazyn danych SQL.
 
 5. Kliknij przycisk **wybierz**.
 
-6. Kliknij przycisk **poziom wydajności** do określenia, czy magazyn danych jest Gen1 lub Gen2, a liczba danych jednostek magazynu. 
+6. Kliknij pozycję **poziom wydajności** , aby określić, czy magazyn danych to Gen1, czy Gen2, oraz liczbę jednostek magazynu danych. 
 
-7. Na potrzeby tego samouczka wybierz **Gen2** usługi SQL Data Warehouse. Suwak jest ustawiony na **DW1000c** domyślnie.  Spróbuj przesunąć go w górę i w dół, aby zobaczyć, jak działa. 
+7. Na potrzeby tego samouczka wybierz pozycję **Gen2** SQL Data Warehouse. Suwak jest domyślnie ustawiony na **DW1000c** .  Spróbuj przesunąć go w górę i w dół, aby zobaczyć, jak działa. 
 
     ![konfigurowanie wydajności](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
@@ -103,7 +103,7 @@ Usługa SQL Data Warehouse tworzy zaporę na poziomie serwera, która uniemożli
 > Usługa SQL Data Warehouse komunikuje się przez port 1433. Jeśli próbujesz nawiązać połączenie z sieci firmowej, ruch wychodzący na porcie 1433 może być blokowany przez zaporę sieciową. Jeśli nastąpi taka sytuacja, nie będzie można nawiązać połączenia z serwerem usługi Azure SQL Database, chyba że dział IT otworzy port 1433.
 >
 
-1. Po ukończeniu wdrażania kliknij pozycję **Bazy danych SQL** w menu po lewej stronie i kliknij bazę danych **mySampleDatabase** na stronie **Bazy danych SQL**. Zostanie otwarta strona przeglądu bazy danych zawierająca w pełni kwalifikowaną nazwę serwera (takich jak **mynewserver-20180430.database.windows.net**) i opcje dalszej konfiguracji. 
+1. Po ukończeniu wdrażania kliknij pozycję **Bazy danych SQL** w menu po lewej stronie i kliknij bazę danych **mySampleDatabase** na stronie **Bazy danych SQL**. Zostanie otwarta strona przeglądu bazy danych zawierająca w pełni kwalifikowaną nazwę serwera (na przykład **mynewserver-20180430.Database.Windows.NET**) i opcje dalszej konfiguracji. 
 
 2. Skopiuj tę w pełni kwalifikowaną nazwę serwera w celu nawiązania połączenia z serwerem i jego bazami danych w kolejnych przewodnikach Szybki start. Następnie kliknij nazwę serwera, aby otworzyć ustawienia serwera.
 
@@ -133,7 +133,7 @@ Teraz możesz łączyć się z serwerem SQL i jego magazynami danych przy użyci
 Uzyskaj w pełni kwalifikowaną nazwę serwera dla swojego serwera SQL w witrynie Azure Portal. Nazwa ta będzie używana później przy nawiązywaniu połączenia z serwerem.
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
-2. Wybierz **magazyny danych SQL** z menu po lewej stronie i kliknij bazę danych na **magazyny danych SQL** strony. 
+2. Wybierz pozycję **SQL Data Warehouses** w menu po lewej stronie, a następnie kliknij swoją bazę danych w witrynie usługi **SQL Data Warehouse** . 
 3. W okienku **Essentials** na stronie bazy danych w witrynie Azure Portal zlokalizuj i skopiuj **nazwę serwera**. W tym przykładzie w pełni kwalifikowana nazwa to mynewserver-20180430.database.windows.net. 
 
     ![informacje o połączeniu](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)  
@@ -149,7 +149,7 @@ W tej sekcji używany jest program [SQL Server Management Studio](/sql/ssms/down
     | Ustawienie      | Sugerowana wartość | Opis | 
     | ------------ | --------------- | ----------- | 
     | Typ serwera | Aparat bazy danych | Ta wartość jest wymagana |
-    | Nazwa serwera | W pełni kwalifikowana nazwa serwera | Nazwa powinna mieć taką formę: **mynewserver-20180430.database.windows.net**. |
+    | Nazwa serwera | W pełni kwalifikowana nazwa serwera | Nazwa powinna wyglądać następująco: **mynewserver-20180430.Database.Windows.NET**. |
     | Authentication | Uwierzytelnianie programu SQL Server | Uwierzytelnianie SQL to jedyny typ uwierzytelniania skonfigurowany w tym samouczku. |
     | Login | Konto administratora serwera | To konto określono podczas tworzenia serwera. |
     | Hasło | Hasło konta administratora serwera | To hasło określono podczas tworzenia serwera. |
@@ -164,7 +164,7 @@ W tej sekcji używany jest program [SQL Server Management Studio](/sql/ssms/down
 
 ## <a name="create-a-user-for-loading-data"></a>Tworzenie użytkownika do ładowania danych
 
-Konto administratora serwera jest przeznaczone do wykonywania operacji zarządzania i nie jest odpowiednie do wykonywania zapytań względem danych użytkownika. Operacja ładowania danych bardzo obciąża pamięć. Maksymalne wartości pamięci są zdefiniowane zgodnie z których generowania SQL Data Warehouse aprowizowaniu, [jednostkami magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md), i [klasy zasobów](resource-classes-for-workload-management.md). 
+Konto administratora serwera jest przeznaczone do wykonywania operacji zarządzania i nie jest odpowiednie do wykonywania zapytań względem danych użytkownika. Operacja ładowania danych bardzo obciąża pamięć. Maksymalne wartości pamięci są zdefiniowane w zależności od tego, która generacja SQL Data Warehouse została zainicjowana, [jednostkami magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md)i [klasą zasobów](resource-classes-for-workload-management.md). 
 
 Najlepszym rozwiązaniem jest utworzenie identyfikatora logowania i użytkownika, które są przeznaczone do ładowania danych. Następnie należy dodać użytkownika ładującego do [klasy zasobów](resource-classes-for-workload-management.md), która umożliwia odpowiednią maksymalną alokację pamięci.
 
@@ -215,7 +215,7 @@ Pierwszym krokiem do załadowania danych jest zalogowanie się jako użytkownik 
 
 ## <a name="create-external-tables-for-the-sample-data"></a>Tworzenie tabel zewnętrznych dla przykładowych danych
 
-Wszystko jest gotowe do rozpoczęcia procesu ładowania danych do nowego magazynu danych. W tym samouczku dowiesz się, jak załadować dane taksówek w Nowym Jorku z usługi Azure storage blob za pomocą tabel zewnętrznych. Aby dowiedzieć się, jak przesłać dane do usługi Azure Blob Storage lub załadować je bezpośrednio ze źródła do usługi SQL Data Warehouse, zobacz [omówienie ładowania](sql-data-warehouse-overview-load.md).
+Wszystko jest gotowe do rozpoczęcia procesu ładowania danych do nowego magazynu danych. W tym samouczku pokazano, jak używać tabel zewnętrznych do ładowania danych z pliku cab w Nowym Jorku z usługi Azure Storage BLOB. Aby dowiedzieć się, jak przesłać dane do usługi Azure Blob Storage lub załadować je bezpośrednio ze źródła do usługi SQL Data Warehouse, zobacz [omówienie ładowania](sql-data-warehouse-overview-load.md).
 
 Uruchom następujące skrypty SQL, podając informacje o danych do załadowania. Informacje te obejmują obecną lokalizację danych, format zawartości danych i definicję tabel dla danych. 
 
@@ -561,16 +561,16 @@ W skrypcie użyto instrukcji języka T-SQL [CREATE TABLE AS SELECT (CTAS)](/sql/
 
     ![Wyświetlanie załadowanych tabel](media/load-data-from-azure-blob-storage-using-polybase/view-loaded-tables.png)
 
-## <a name="authenticate-using-managed-identities-to-load-optional"></a>Uwierzytelnianie za pomocą tożsamości zarządzanych do załadowania (opcjonalnie)
-Ładowanie przy użyciu technologii PolyBase i uwierzytelnianie za pomocą tożsamości zarządzanej to najbezpieczniejsza opcja mechanizm i pozwala na wykorzystanie punkty końcowe usługi sieci wirtualnej z usługą Azure storage. 
+## <a name="authenticate-using-managed-identities-to-load-optional"></a>Uwierzytelnianie przy użyciu tożsamości zarządzanych do załadowania (opcjonalnie)
+Ładowanie przy użyciu bazy danych i uwierzytelniania za pomocą tożsamości zarządzanych jest najbardziej bezpiecznym mechanizmem i umożliwia korzystanie z punktów końcowych usługi sieci wirtualnej w usłudze Azure Storage. 
 
 ### <a name="prerequisites"></a>Wymagania wstępne
-1.  Zainstaluj program Azure PowerShell za pomocą tego [przewodnik](https://docs.microsoft.com/powershell/azure/install-az-ps).
-2.  Jeśli masz konto ogólnego przeznaczenia w wersji 1 lub usługi blob storage, należy najpierw uaktualnić do ogólnego przeznaczenia w wersji 2 za pomocą tego [przewodnik](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
-3.  Konieczne jest posiadanie **dozwolonych zaufanych usług firmy Microsoft dostęp do tego konta magazynu** włączone w ramach konta usługi Azure Storage **zapory i sieci wirtualne** menu Ustawienia. Zapoznaj się z tym [przewodnik](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) Aby uzyskać więcej informacji.
+1.  Zainstaluj Azure PowerShell przy użyciu [](https://docs.microsoft.com/powershell/azure/install-az-ps)tego przewodnika.
+2.  Jeśli masz konto usługi Magazyn ogólnego przeznaczenia w wersji 1 lub BLOB, musisz najpierw przeprowadzić uaktualnienie do ogólnego przeznaczenia w wersji 2 przy [](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)użyciu tego przewodnika.
+3.  Musisz **zezwolić zaufanym usługom firmy Microsoft na dostęp do tego konta magazynu** , włączone w obszarze zapory konta usługi Azure Storage i menu ustawienia **sieci wirtualnych** . Aby uzyskać więcej [](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) informacji, zapoznaj się z tym przewodnikiem.
 
 #### <a name="steps"></a>Kroki
-1. W programie PowerShell **zarejestrować serwer bazy danych SQL** za pomocą usługi Azure Active Directory (AAD):
+1. W programie PowerShell **zarejestruj serwer SQL Database** przy użyciu usługi Azure Active Directory (AAD):
 
    ```powershell
    Connect-AzAccount
@@ -578,32 +578,32 @@ W skrypcie użyto instrukcji języka T-SQL [CREATE TABLE AS SELECT (CTAS)](/sql/
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
    ```
     
-   1. Tworzenie **ogólnego przeznaczenia w wersji 2, konto magazynu** za pomocą tego [przewodnik](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
+   1. Utwórz **konto magazynu ogólnego przeznaczenia w wersji 2** za pomocą [](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)tego przewodnika.
 
    > [!NOTE]
-   > - Jeśli masz konto ogólnego przeznaczenia w wersji 1 lub usługi blob storage, musisz najpierw **najpierw przeprowadzić uaktualnienie do wersji 2** za pomocą tego [przewodnik](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
+   > - Jeśli masz konto usługi Magazyn ogólnego przeznaczenia w wersji 1 lub BLOB, musisz **najpierw przeprowadzić uaktualnienie do wersji 2** przy [](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)użyciu tego przewodnika.
     
-1. W ramach konta magazynu, przejdź do **kontrola dostępu (IAM)** i kliknij przycisk **Dodaj przypisanie roli**. Przypisz **Współautor danych obiektu Blob magazynu** rolę RBAC do serwera usługi SQL Database.
+1. W obszarze konto magazynu przejdź do pozycji **Access Control (IAM)** , a następnie kliknij pozycję **Dodaj przypisanie roli**. Przypisz rolę RBAC **współautor danych obiektów blob magazynu** do serwera SQL Database.
 
    > [!NOTE] 
-   > Tylko elementy członkowskie z uprawnieniami właściciela można wykonać ten krok. Dla różnych ról wbudowanych dla zasobów platformy Azure, zapoznaj się z tym [przewodnik](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+   > Tylko członkowie z uprawnieniami właściciela mogą wykonać ten krok. Aby uzyskać różne wbudowane role dla zasobów platformy Azure, zapoznaj się [](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)z tym przewodnikiem.
   
-1. **Program Polybase łączności z kontem usługi Azure Storage:**
+1. **Połączenie z kontem usługi Azure Storage:**
     
-   1. Utwórz swoje poświadczenia bazy danych za pomocą **tożsamość = "Tożsamości usługi zarządzanej"** :
+   1. Utwórz poświadczenie o zakresie bazy danych o **identyfikatorze "tożsamość usługi zarządzanej"** :
 
        ```SQL
        CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
        ```
        > [!NOTE] 
-       > - Nie trzeba określać klucz TAJNY kluczem dostępu do usługi Azure Storage, ponieważ korzysta z tego mechanizmu [tożsamości zarządzanej](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) dzieje się w tle.
-       > - Nazwa tożsamości, powinna być **"Tożsamości usługi zarządzanej"** łączności programu PolyBase do pracy z konta usługi Azure Storage.
+       > - Nie ma potrzeby określania wpisu TAJNego za pomocą klucza dostępu do usługi Azure Storage, ponieważ ten mechanizm używa [tożsamości zarządzanej](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) w ramach okładek.
+       > - Nazwa tożsamości powinna mieć nazwę **"tożsamość usługi zarządzanej"** , aby nawiązać połączenie z kontem usługi Azure Storage.
     
-   1. Tworzenie zewnętrznego źródła danych, określając Database Scoped Credential przy użyciu tożsamości usługi zarządzanej.
+   1. Utwórz zewnętrzne źródło danych określające poświadczenie o zakresie bazy danych z tożsamość usługi zarządzanej.
         
-   1. Zapytania, ponieważ przy użyciu normalnych [tabel zewnętrznych](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql).
+   1. Zapytanie jako normalne przy użyciu [tabel zewnętrznych](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql).
 
-Zobacz następujące [dokumentacji](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) Jeśli chcesz skonfigurować punkty końcowe usługi sieci wirtualnej dla usługi SQL Data Warehouse. 
+Zapoznaj się z poniższą [dokumentacją](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) , jeśli chcesz skonfigurować punkty końcowe usługi sieci wirtualnej dla SQL Data Warehouse. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -622,11 +622,11 @@ Wykonaj następujące kroki, aby wyczyścić zasoby zgodnie z potrzebami.
 
 3. Aby usunąć magazyn danych i nie płacić za obliczenia oraz magazynowanie, kliknij przycisk **Usuń**.
 
-4. Aby usunąć utworzony serwer SQL, kliknij **mynewserver-20180430.database.windows.net** w poprzednim obrazie, a następnie kliknij przycisk **Usuń**.  Należy zachować ostrożność, ponieważ usunięcie serwera spowoduje usunięcie wszystkich baz danych przypisanych do tego serwera.
+4. Aby usunąć utworzony serwer SQL, kliknij pozycję **mynewserver-20180430.Database.Windows.NET** na poprzednim obrazie, a następnie kliknij pozycję **Usuń**.  Należy zachować ostrożność, ponieważ usunięcie serwera spowoduje usunięcie wszystkich baz danych przypisanych do tego serwera.
 
 5. Aby usunąć grupę zasobów, kliknij pozycję **myResourceGroup**, a następnie kliknij pozycję **Usuń grupę zasobów**.
 
-## <a name="next-steps"></a>Kolejne kroki 
+## <a name="next-steps"></a>Następne kroki 
 W tym samouczku przedstawiono sposób tworzenia magazynu danych i tworzenia użytkownika wyznaczonego do ładowania danych. Utworzono tabele zewnętrzne w celu zdefiniowania struktury danych przechowywanych w usłudze Azure Storage Blob, a następnie użyto instrukcji CREATE TABLE AS SELECT technologii PolyBase w celu załadowania danych do magazynu danych. 
 
 Zostały wykonane następujące zadania:
@@ -640,7 +640,7 @@ Zostały wykonane następujące zadania:
 > * Wyświetlenie postępu ładowania danych
 > * Utworzenie statystyk dotyczących nowo załadowanych danych
 
-Przejdź do omówienia rozwoju, aby dowiedzieć się, jak przeprowadzić migrację istniejącej bazy danych SQL Data Warehouse.
+Przejdź do omówienia opracowywania, aby dowiedzieć się, jak przeprowadzić migrację istniejącej bazy danych do SQL Data Warehouse.
 
 > [!div class="nextstepaction"]
->[Decyzje projektowe, aby przeprowadzić migrację istniejącej bazy danych SQL Data Warehouse](sql-data-warehouse-overview-migrate.md)
+>[Podejmowanie decyzji projektowych dotyczących migracji istniejącej bazy danych do SQL Data Warehouse](sql-data-warehouse-overview-migrate.md)

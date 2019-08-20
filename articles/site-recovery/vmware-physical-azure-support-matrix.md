@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: raynew
-ms.openlocfilehash: 65c330a9b2dcc97160280daede926573fdef4c00
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: fd24d0d9f05855cf22da547f95b16da0a8d2c788
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679361"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617643"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Macierz obsługi odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformie Azure
 
@@ -163,7 +163,7 @@ Azure Traffic Manager | Tak
 Multi-NIC | Tak
 Zastrzeżony adres IP | Tak
 IPv4 | Tak
-Zachowaj źródłowy adres IP | Yes
+Zachowaj źródłowy adres IP | Tak
 Punkty końcowe usługi dla sieci wirtualnej platformy Azure<br/> | Tak
 Przyspieszona sieć | Nie
 
@@ -173,7 +173,7 @@ Przyspieszona sieć | Nie
 Dysk dynamiczny | Dysk systemu operacyjnego musi być dyskiem podstawowym. <br/><br/>Dyski danych mogą być dyskami dynamicznymi
 Konfiguracja dysku platformy Docker | Nie
 System plików NFS hosta | Tak dla oprogramowania VMware<br/><br/> Nie dla serwerów fizycznych
-Sieć SAN hosta (iSCSI/FC) | Yes
+Sieć SAN hosta (iSCSI/FC) | Tak
 Host vSAN | Tak dla oprogramowania VMware<br/><br/> N/A dla serwerów fizycznych
 Wielościeżkowa hosta (MPIO) | Tak, przetestowano przy użyciu modułu Microsoft DSM, EMC PowerPath 5,7 SP4, EMC PowerPath DSM dla CLARiiON
 Woluminy wirtualne hosta (VVols) | Tak dla oprogramowania VMware<br/><br/> N/A dla serwerów fizycznych
@@ -181,16 +181,16 @@ Gość/serwer VMDK | Tak
 Udostępniony dysk klastra gościa/serwera | Nie
 Dysk szyfrowany gościa/serwera | Nie
 System plików NFS gościa/serwera | Nie
-Interfejs iSCSI gościa/serwera | Nie
+Interfejs iSCSI gościa/serwera | Dla migracji — tak<br/>W przypadku odzyskiwania po awarii — nie, iSCSI spowoduje powrót po awarii jako dołączony dysk do maszyny wirtualnej
 Gość/serwer SMB 3,0 | Nie
-RDM gościa/serwera | Yes<br/><br/> N/A dla serwerów fizycznych
+RDM gościa/serwera | Tak<br/><br/> N/A dla serwerów fizycznych
 Dysk gościa/serwer > 1 TB | Tak, dysk musi być większy niż 1024 MB<br/><br/>Do 8 192 GB podczas replikowania na dyski zarządzane (wersja 9,26)<br></br> Do 4 095 GB podczas replikowania na konta magazynu
 Dysk gościa/serwer z rozmiarem sektora fizycznego i 4 KB w kilobajtach | Nie
 Dysk gościa/serwer z logicznymi i 512mi 4K rozmiar sektora fizycznego | Nie
 Wolumin gościa/serwer z dyskiem rozłożonym > 4 TB <br/><br/>Zarządzanie woluminami logicznymi (LVM)| Tak
 Gość/serwer — miejsca do magazynowania | Nie
 Gość/serwer gorąca Dodaj/Usuń dysk | Nie
-Gość/serwer — wykluczanie dysku | Yes
+Gość/serwer — wykluczanie dysku | Tak
 Wielościeżkowa gość/serwer (MPIO) | Nie
 Partycje typu GPT/serwer | Z pakietem zbiorczym [aktualizacji 37](https://support.microsoft.com/help/4508614/) są obsługiwane pięć partycji (wersja 9,25 usługi mobilności). Poprzednia wersja obsługiwała cztery.
 Gość/serwer EFI/rozruch UEFI | — Obsługiwane w przypadku korzystania z usługi mobilności w wersji 9,13 lub nowszej.<br/> -Obsługiwane w przypadku migrowania maszyn wirtualnych VMware lub serwerów fizycznych z systemem Windows Server 2012 lub nowszym na platformę Azure.<br/> — Maszyny wirtualne można replikować tylko na potrzeby migracji. Powrót po awarii do lokalnego nie jest obsługiwany.<br/> Obsługiwane są tylko systemy plików NTFS <br/> -Bezpieczny typ rozruchu UEFI nie jest obsługiwany. <br/> — Rozmiar sektora dysku powinien wynosić 512 bajtów na sektor fizyczny.
@@ -208,7 +208,7 @@ Gość/serwer EFI/rozruch UEFI | — Obsługiwane w przypadku korzystania z usł
 **Składnik** | **Obsługiwane**
 --- | ---
 Magazyn lokalnie nadmiarowy | Tak
-Magazyn geograficznie nadmiarowy | Yes
+Magazyn geograficznie nadmiarowy | Tak
 Magazyn Geograficznie nadmiarowy do odczytu | Tak
 Chłodny magazyn | Nie
 Magazyn gorąca| Nie
@@ -226,7 +226,7 @@ Konta magazynu ogólnego przeznaczenia w wersji 2 (warstwy gorąca i chłodna) |
 Zestawy dostępności | Tak
 Strefy dostępności | Nie
 HUB | Tak
-Dyski zarządzane | Yes
+Dyski zarządzane | Tak
 
 ## <a name="azure-vm-requirements"></a>Wymagania dotyczące maszyny wirtualnej platformy Azure
 

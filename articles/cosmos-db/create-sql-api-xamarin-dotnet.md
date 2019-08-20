@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: 28ba47c1c0ec053af8632475ad52ab50672eab64
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 9d7dc560d452eba4c31b24a2011254258211bf8a
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855152"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615740"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Szybki start: Tworzenie aplikacji z listą zadań do wykonania za pomocą platformy Xamarin przy użyciu konta interfejsu API SQL usługi Azure Cosmos DB
 
@@ -137,7 +137,7 @@ Teraz dokonamy szybkiego przeglądu sposobu komunikowania się aplikacji z usłu
     Funkcja `IDocumentQuery<T>.ExecuteNextAsync<T>` pobiera stronę wyników z usługi Azure Cosmos DB, której funkcja `HasMoreResults` sprawdza, czy będą jeszcze zwracane dodatkowe wyniki.
 
 > [!TIP]
-> Kilka funkcji, które działają na Azure Cosmos DB kontenerach i dokumentach, przyjmuje identyfikator URI jako parametr, który określa adres kontenera lub dokumentu. Ten identyfikator URI jest tworzony przy użyciu klasy `URIFactory`. Wszystkie identyfikatory URI baz danych, kontenerów i dokumentów można utworzyć za pomocą tej klasy.
+> Kilka funkcji działających w kontenerach usługi Azure Cosmos i dokumentach przyjmuje identyfikator URI jako parametr, który określa adres kontenera lub dokumentu. Ten identyfikator URI jest tworzony przy użyciu klasy `URIFactory`. Wszystkie identyfikatory URI baz danych, kontenerów i dokumentów można utworzyć za pomocą tej klasy.
 
 * Funkcja `ComsmosDBService.InsertToDoItem` pokazuje, jak wstawić nowy dokument:
 
@@ -200,7 +200,7 @@ W poniższych krokach zademonstrowano sposób uruchamiania aplikacji przy użyci
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku szybki start przedstawiono sposób tworzenia konta usługi Azure Cosmos, tworzenia kontenera przy użyciu Eksplorator danych oraz kompilowania i wdrażania aplikacji platformy Xamarin. Teraz możesz zaimportować dodatkowe dane do konta usługi Azure Cosmos.
 

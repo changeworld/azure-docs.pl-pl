@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/12/2018
+ms.date: 8/16/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f491a160e0f4f72f072dc43c46571f96dd19a297
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 189d6d0030264590986d6fe2af47d35705cfb08b
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671040"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575817"
 ---
-# <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Szybki start: Utwórz maszynę wirtualną systemu Linux w witrynie Azure portal
+# <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Szybki start: Utwórz maszynę wirtualną z systemem Linux w Azure Portal
 
 Maszyny wirtualne platformy Azure można utworzyć za pomocą witryny Azure Portal. Witryna Azure Portal to oparty na przeglądarce interfejs użytkownika umożliwiający tworzenie maszyn wirtualnych i powiązanych z nimi zasobów. Z tego przewodnika Szybki start dowiesz się, jak za pomocą witryny Azure Portal wdrożyć maszynę wirtualną z system Linux (Ubuntu 16.04 LTS). Aby zobaczyć działanie maszyny wirtualnej, połączysz się z nią za pomocą protokołu SSH i zainstalujesz serwer internetowy NGINX.
 
@@ -33,23 +33,50 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Do wykonania kroków tego przewodnika Szybki start konieczne jest posiadanie pary kluczy SSH. Jeśli masz już parę kluczy SSH, możesz pominąć ten krok.
 
-Otwórz powłokę Bash i użyj polecenia [ssh-keygen](https://www.ssh.com/ssh/keygen/), aby utworzyć parę kluczy SSH. Jeśli nie masz powłoki Bash na swoim komputerze lokalnym, możesz użyć usługi [Azure Cloud Shell](https://shell.azure.com/bash).  
+Otwórz powłokę Bash i użyj polecenia [ssh-keygen](https://www.ssh.com/ssh/keygen/), aby utworzyć parę kluczy SSH. Przykładowe polecenie do wykonania jest wymienione poniżej. Jeśli nie masz powłoki Bash na swoim komputerze lokalnym, możesz użyć usługi [Azure Cloud Shell](https://shell.azure.com/bash).
 
 ```bash
 ssh-keygen -t rsa -b 2048
 ```
 
-Powyższe polecenie spowoduje wygenerowanie kluczy publicznych i prywatnych przy użyciu domyślnej nazwy `id_rsa` w katalogu `~/.ssh directory`. Polecenie zwraca pełną ścieżkę do klucza publicznego. Użyj ścieżki do klucza publicznego, aby wyświetlić jego zawartość za pomocą polecenia `cat`.
+Zostanie wyświetlony monit o wprowadzenie pliku, w którym ma zostać zapisana para kluczy. Możesz wprowadzić konkretną lokalizację pliku lub po prostu "Enter", aby zapisać w domyślnej lokalizacji wskazanej w nawiasach. Następnie zostanie wyświetlony monit o wprowadzenie hasła. Możesz wprowadzić hasło do klucza SSH lub można nacisnąć klawisz ENTER, aby kontynuować bez hasła.
 
-```bash 
+```bash
+[root@linuxvm ~]$ ssh-keygen -t rsa -b 2048
+Enter the file in which to save the key (home/root/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your public key has been saved in /home/root/.ssh/id_rsa.pub.
+The key fingerprint is: SHA256:kkQS13gbaxevy4ULH0mW6wLIkcFm0twx/rIlSo1fIqU
+The key's randomart image is:
++---[RSA 2018]----+
+|   +oo=+         |
+|  . B=o.+ .      |
+|   + o+. + +     |
+|    o* o+ = .    |
+|   .EoB.S+ =     |
+|   .o+.O. * .    |
+|    . o. = =     |
+|        . *      |
+|         .       |
++----[SHA256]-----+
+```
+Polecenie generuje klucze publiczne i prywatne z domyślną `id_rsa` nazwą w `~/.ssh directory`. `ssh-keygen` Polecenie zwraca pełną ścieżkę do klucza publicznego. Użyj ścieżki do klucza publicznego, aby wyświetlić jego zawartość za pomocą polecenia `cat`.
+
+```bash
 cat ~/.ssh/id_rsa.pub
 ```
 
-Zapisz dane wyjściowe tego polecenia. Będą one potrzebne podczas konfigurowania konta administratora w celu zalogowania się do maszyny wirtualnej.
+>[!NOTE]
+> W przypadku wybrania opcji zapisania klucza SSH w innej lokalizacji niż domyślna, konieczne będzie użycie tej lokalizacji podczas uruchamiania`cat`
 
-Aby uzyskać bardziej szczegółowe informacje na temat tworzenia par kluczy SSH, łącznie z użyciem programu PuTTy, zobacz [Jak używać kluczy SSH w systemie Windows](ssh-from-windows.md).
+Zapisz dane wyjściowe tego polecenia. Jest to Twój klucz publiczny, który będzie potrzebny podczas konfigurowania konta administratora, aby zalogować się do maszyny wirtualnej.
 
-Jeśli tworzysz parę kluczy SSH przy użyciu usługi Cloud Shell, będzie ona przechowywana w udziale plików platformy Azure, który jest [automatycznie instalowany za pomocą usługi Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage). Nie usuwaj tego udziału plików ani konta magazynu przed pobraniem kluczy, ponieważ utracisz dostęp do maszyny wirtualnej. 
+Aby uzyskać więcej informacji na temat polecenia ssh-keygen, odwiedź [stronę Man (mężczyzna](https://linux.die.net/man/1/ssh-keygen)).
+
+Jeśli używasz komputera z systemem Windows i chcesz uzyskać więcej informacji na temat tworzenia par kluczy SSH, w tym korzystania z tego polecenia, zobacz [jak używać kluczy SSH w systemie Windows](ssh-from-windows.md).
+
+Jeśli tworzysz parę kluczy SSH przy użyciu usługi Cloud Shell, będzie ona przechowywana w udziale plików platformy Azure, który jest [automatycznie instalowany za pomocą usługi Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage). Nie usuwaj tego udziału plików ani konta magazynu przed pobraniem kluczy, ponieważ utracisz dostęp do maszyny wirtualnej.
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
@@ -59,9 +86,9 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 1. Wybierz pozycję **Utwórz zasób** w lewym górnym rogu okna witryny Azure Portal.
 
-1. W polu wyszukiwania nad listą zasobów Microsoft Azure Marketplace wpisz **Ubuntu Server 16.04 LTS by Canonical**, wybierz odpowiednią pozycję i kliknij **Utwórz**.
+1. W polu wyszukiwania powyżej listy zasobów portalu Azure Marketplace Wyszukaj ciąg **Ubuntu Server 18,04** i wybierz ofertę Ubuntu 18,04 LTS, a następnie wybierz pozycję **Utwórz**.
 
-1. Na karcie **Podstawowe**, w obszarze **Szczegóły projektu**, upewnij się, że wybrano poprawną subskrypcję, a następnie wybierz opcję **Utwórz nową** w obszarze **Grupa zasobów**. W wyskakującym okienku wpisz wartość *MyResourceGroup* w polu nazwy grupy zasobów, a następnie wybierz przycisk **OK**. 
+1. Na karcie **Podstawowe**, w obszarze **Szczegóły projektu**, upewnij się, że wybrano poprawną subskrypcję, a następnie wybierz opcję **Utwórz nową** w obszarze **Grupa zasobów**. W wyskakującym okienku wpisz wartość *MyResourceGroup* w polu nazwy grupy zasobów, a następnie wybierz przycisk **OK**.
 
     ![Tworzenie nowej grupy zasobów dla maszyny wirtualnej](./media/quick-create-portal/project-details.png)
 
@@ -69,11 +96,11 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
     ![Sekcja Szczegóły wystąpienia](./media/quick-create-portal/instance-details.png)
 
-1. W obszarze **Konto administratora** wybierz opcję **klucz publiczny SSH**, wpisz nazwę użytkownika, a następnie wklej swój klucz publiczny w polu tekstowym. Usuń wszystkie wiodące i końcowe białe znaki z klucza publicznego.
+1. W obszarze **konto administratora**wybierz opcję **klucz publiczny SSH**, wpisz swoją nazwę użytkownika, a następnie wklej swój klucz publiczny, który został wcześniej zapisany w polu tekstowym. Usuń wszystkie wiodące i końcowe białe znaki z klucza publicznego.
 
     ![Konto administratora](./media/quick-create-portal/administrator-account.png)
 
-1. W obszarze **Reguły portów wejściowych** > **Publiczne porty wejściowe** wybierz opcję **Zezwalaj na wybranych portach**, a następnie wybierz z listy rozwijanej pozycje **SSH (22)** i **HTTP (80)** . 
+1. W obszarze **Reguły portów wejściowych** > **Publiczne porty wejściowe** wybierz opcję **Zezwalaj na wybranych portach**, a następnie wybierz z listy rozwijanej pozycje **SSH (22)** i **HTTP (80)** .
 
     ![Otwieranie portów dla protokołów RDP i HTTP](./media/quick-create-portal/inbound-port-rules.png)
 
@@ -83,12 +110,12 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 Wdrożenie maszyny wirtualnej potrwa kilka minut. Po zakończeniu wdrażania przejdź do następnej sekcji.
 
-    
+
 ## <a name="connect-to-virtual-machine"></a>Nawiązywanie połączenia z maszyną wirtualną
 
 Utwórz połączenie SSH z maszyną wirtualną.
 
-1. Na stronie przeglądu wybierz przycisk **Połącz** dla swojej maszyny wirtualnej. 
+1. Na stronie przeglądu wybierz przycisk **Połącz** dla swojej maszyny wirtualnej.
 
     ![Portal 9](./media/quick-create-portal/portal-quick-start-9.png)
 
@@ -98,7 +125,7 @@ Utwórz połączenie SSH z maszyną wirtualną.
     ssh azureuser@10.111.12.123
     ```
 
-3. Korzystając z tej samej powłoki Bash, która została użyta do utworzenia pary kluczy SSH, takiej jak usługa [Azure Cloud Shell](https://shell.azure.com/bash) lub lokalna powłoka Bash, wklej polecenie połączenia SSH w powłoce, aby utworzyć sesję SSH. 
+3. Korzystając z tej samej powłoki bash, która została użyta do utworzenia pary kluczy SSH (na przykład [Azure Cloud Shell](https://shell.azure.com/bash) lub lokalnej powłoki bash), Wklej polecenie połączenia SSH do powłoki, aby utworzyć sesję SSH.
 
 ## <a name="install-web-server"></a>Instalowanie serwera internetowego
 

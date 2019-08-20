@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 8a542f7927ddd834c7273f6ef8b251ddc35e8436
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 8f9f4a8b52548dad011f5e825fa42c50da970ea7
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234187"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69613155"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Azure AD Domain Services — Rozwiązywanie problemów z konfiguracją Secure LDAP
 
-Ten artykuł zawiera rozwiązania typowych problemów podczas [konfigurowania bezpiecznego protokołu LDAP](configure-ldaps.md) dla Azure AD Domain Services.
+Ten artykuł zawiera rozwiązania typowych problemów podczas [konfigurowania bezpiecznego protokołu LDAP](tutorial-configure-ldaps.md) dla Azure AD Domain Services.
 
 ## <a name="aadds101-secure-ldap-network-security-group-configuration"></a>AADDS101: Konfiguracja sieciowej grupy zabezpieczeń Secure LDAP
 
@@ -62,7 +62,7 @@ Po włączeniu bezpiecznego protokołu LDAP zalecamy utworzenie dodatkowych regu
 
 **Tłumaczenia**
 
-Utwórz nowy certyfikat bezpiecznego protokołu LDAP, wykonując czynności opisane w artykule [Konfigurowanie bezpiecznego protokołu LDAP](configure-ldaps.md) .
+Utwórz nowy certyfikat bezpiecznego protokołu LDAP, wykonując czynności opisane w artykule [Konfigurowanie bezpiecznego protokołu LDAP](tutorial-configure-ldaps.md) .
 
 ## <a name="contact-us"></a>Skontaktuj się z nami
 Skontaktuj się z zespołem pomocy technicznej Azure Active Directory Domain Services, aby [udostępnić opinię lub pomoc techniczną](contact-us.md).

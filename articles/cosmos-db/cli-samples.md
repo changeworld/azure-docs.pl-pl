@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 10/26/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: a6348024d4e84c27610f1294f916cca9a851b6b9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d7ce5e2c12feeee770de8acfd5df81d340e0a7d0
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60892629"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615569"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db"></a>Przykłady interfejsu wiersza polecenia platformy Azure dla usługi Azure Cosmos DB
 
@@ -28,7 +28,7 @@ Poniższa tabela zawiera linki do przykładowych skryptów interfejsu wiersza po
 | [Tworzenie konta usługi Azure Cosmos DB przy użyciu interfejsu API tabel](scripts/create-table-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Tworzy pojedyncze konto, bazę danych i tabelę usługi Azure Cosmos DB. |
 |**Skalowanie usługi Azure Cosmos DB**||
 | [Skalowanie przepływności kontenerów](scripts/scale-collection-throughput-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Zmienia aprowizowaną przepływność w kontenerze.|
-| [Replikowanie konta bazy danych usługi Azure Cosmos DB w wielu regionach i konfigurowanie priorytetów trybu failover](scripts/scale-multiregion-cli.md?toc=%2fcli%2fazure%2ftoc.json)|Globalnie replikuje dane konta w wielu regionach z określonym priorytetem trybu failover.|
+| [Replikowanie konta bazy danych Azure Cosmos Database w wielu regionach i Konfigurowanie priorytetów trybu failover](scripts/scale-multiregion-cli.md?toc=%2fcli%2fazure%2ftoc.json)|Globalnie replikuje dane konta w wielu regionach z określonym priorytetem trybu failover.|
 |**Zabezpieczanie usługi Azure Cosmos DB**||
 | [Uzyskiwanie kluczy kont](scripts/secure-get-account-key-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Uzyskuje podstawowe i pomocnicze klucze główne zapisu oraz klucze podstawowe i pomocnicze tylko do odczytu dla konta.|
 | [Pobieranie parametrów połączenia dla konta usługi Cosmos skonfigurowanego za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB](scripts/secure-mongo-connection-string-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Uzyskuje parametry połączenia umożliwiające połączenie aplikacji bazy danych MongoDB z Twoim kontem usługi Azure Cosmos DB.|
@@ -37,5 +37,5 @@ Poniższa tabela zawiera linki do przykładowych skryptów interfejsu wiersza po
 |**Wysoka dostępność, odzyskiwanie po awarii, tworzenie i przywracanie kopii zapasowej**||
 | [Konfigurowanie zasad trybu failover](scripts/ha-failover-policy-cli.md?toc=%2fcli%2fazure%2ftoc.json)|Ustawia priorytet trybu failover poszczególnych regionów, w których konto jest replikowane.|
 |**Łączenie usługi Azure Cosmos DB z zasobami**||
-| [Łączenie aplikacji internetowej z usługą Azure Cosmos DB](../app-service/scripts/cli-connect-to-documentdb.md?toc=%2fcli%2fazure%2ftoc.json)|Utwórz i połącz bazę danych usługi Azure Cosmos DB oraz aplikację internetową platformy Azure.|
+| [Łączenie aplikacji internetowej z usługą Azure Cosmos DB](../app-service/scripts/cli-connect-to-documentdb.md?toc=%2fcli%2fazure%2ftoc.json)|Utwórz i Połącz bazę danych Azure Cosmos i aplikację sieci Web platformy Azure.|
 |||

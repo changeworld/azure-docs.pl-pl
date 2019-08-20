@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: f8cb7458deddc95f33fa5e4582ffa7c25c3c64e6
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: ef006e94ee22886f1129c7c9ca31e20503312fe3
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619817"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616931"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Wykonywały operacje zbiorcze na danych usługi Azure Cosmos DB za pomocą biblioteki języka Java przetwarzania zbiorczego
 
-Ten samouczek zawiera instrukcje na temat korzystania z usługi Azure Cosmos DB zbiorcze wykonawca Java biblioteki do zaimportowania, a następnie zaktualizować dokumenty usługi Azure Cosmos DB. Aby dowiedzieć się o biblioteki wykonawca zbiorcze oraz jak pomaga w ogromnej przepustowości i magazynu, zobacz [zbiorczo Przegląd biblioteki wykonawca](bulk-executor-overview.md) artykułu. W tym samouczku tworzenie aplikacji w języku Java, która generuje losowe dokumentów i są zbiorcze zaimportowane do kontenera usługi Azure Cosmos DB. Po zaimportowaniu będą zbiorczo zaktualizować niektóre właściwości dokumentu. 
+Ten samouczek zawiera instrukcje na temat korzystania z usługi Azure Cosmos DB zbiorcze wykonawca Java biblioteki do zaimportowania, a następnie zaktualizować dokumenty usługi Azure Cosmos DB. Aby dowiedzieć się o biblioteki wykonawca zbiorcze oraz jak pomaga w ogromnej przepustowości i magazynu, zobacz [zbiorczo Przegląd biblioteki wykonawca](bulk-executor-overview.md) artykułu. W tym samouczku utworzysz aplikację Java, która generuje losowe dokumenty i są one zbiorczo importowane do kontenera usługi Azure Cosmos. Po zaimportowaniu będą zbiorczo zaktualizować niektóre właściwości dokumentu. 
 
 Obecnie Biblioteka wykonawców zbiorczych jest obsługiwana tylko przez Azure Cosmos DB z INTERFEJSem API SQL i kontami interfejsu API Gremlin. W tym artykule opisano sposób użycia zbiorczej procedury tworzenia biblioteki Java z kontami interfejsu API SQL. Aby dowiedzieć się więcej o korzystaniu z biblioteki .NET wykonawca zbiorcze za pomocą interfejsu API języka Gremlin, zobacz [wykonywały operacje zbiorcze w usłudze Azure Cosmos DB — interfejs API Gremlin](bulk-executor-graph-dotnet.md).
 
@@ -88,7 +88,7 @@ Sklonowanego repozytorium zawiera dwa przykłady "elementów bulkimport" i "bulk
    client.getConnectionPolicy().getRetryOptions().setMaxRetryAttemptsOnThrottledRequests(0);
    ```
 
-4. Wywołaj wartość importAll interfejsu API, który generuje losowe dokumentów do zbiorczego importu do kontenera usługi Azure Cosmos DB. Można skonfigurować konfiguracje wiersza polecenia w pliku CmdLineConfiguration.java.
+4. Wywołaj interfejs API, który generuje losowe dokumenty do zbiorczego importowania do kontenera usługi Azure Cosmos. Można skonfigurować konfiguracje wiersza polecenia w pliku CmdLineConfiguration.java.
 
    ```java
    BulkImportResponse bulkImportResponse = bulkExecutor.importAll(documents, false, true, null);
@@ -155,7 +155,7 @@ Należy zaktualizować istniejące dokumenty przy użyciu interfejsu API BulkUpd
     }).collect(Collectors.toCollection(() -> updateItems));
    ```
 
-2. Wywołaj updateAll interfejsu API, który generuje losowe dokumentów można następnie zbiorcze zaimportowane do kontenera usługi Azure Cosmos DB. Można skonfigurować konfiguracje wiersza polecenia do przekazania w pliku CmdLineConfiguration.java.
+2. Wywołaj interfejs API updateAll, który generuje losowe dokumenty, które mają zostać zbiorczo zaimportowane do kontenera usługi Azure Cosmos. Można skonfigurować konfiguracje wiersza polecenia do przekazania w pliku CmdLineConfiguration.java.
 
    ```java
    BulkUpdateResponse bulkUpdateResponse = bulkExecutor.updateAll(updateItems, null)
@@ -206,7 +206,7 @@ Korzystając z biblioteki program wykonujący zbiorcze, należy wziąć pod uwag
    * Ustaw rozmiar sterty JVM numerowi wystarczająco duży, aby uniknąć wszelkich problemu pamięci podczas obsługi dużej liczby dokumentów. Sugerowany rozmiar sterty: maksymalny (3GB, 3 * sizeof (wszystkie dokumenty przekazany do zbiorczego importowanie interfejsu API w jednej partii)).  
    * Brak czasu przetwarzania wstępnego, z powodu którego uzyskasz większą przepływność podczas wykonywania operacji zbiorczych z dużą liczbą dokumentów. Tak Jeśli chcesz zaimportować 10 000 000 dokumentów, uruchomienie importu zbiorczego 10 razy na 10 zbiorcze dokumentów każdego o rozmiarze 1 000 000 jest korzystniejsze niż Uruchamianie importu zbiorczego 100 razy na 100 zbiorcze dokumentów każdej wielkości 100 000 dokumentów.  
 
-* Zalecane jest uruchamianie pojedynczego obiektu DocumentBulkExecutor dla całej aplikacji w ramach jednej maszyny wirtualnej, która odnosi się do określonego kontenera usługi Azure Cosmos DB.  
+* Zaleca się utworzenie wystąpienia pojedynczego obiektu DocumentBulkExecutor dla całej aplikacji w ramach jednej maszyny wirtualnej odpowiadającej określonemu kontenerowi usługi Azure Cosmos.  
 
 * Od momentu wykonania operacji interfejsu API pojedynczej zbiorczej zużywa duże fragment komputerze klienckim procesora CPU i sieci We/Wy. Dzieje się tak wewnętrznie duplikując wielu zadań, należy unikać duplikowania wiele równoczesnych zadań w procesie aplikacji wywoływanych w każdej wykonywanie zbiorczej operacji interfejsu API. W przypadku wywołania operacji interfejsu API pojedynczej zbiorczej, uruchomiony w jednej maszynie wirtualnej nie można użyć całego kontenera przepływności (Jeśli Twój kontener przepływności > 1 mln jednostek RU/s), lepiej jest utworzyć osobne maszyny wirtualne, aby jednocześnie wykonać zbiorcze wywołania operacji interfejsu API.
 

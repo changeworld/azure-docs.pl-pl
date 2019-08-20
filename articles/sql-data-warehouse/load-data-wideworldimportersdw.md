@@ -10,12 +10,12 @@ ms.subservice: load-data
 ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 30b4009b2f52f4949a380f0fc51b02f94c98d966
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: f81a19631b29954f9bd3da55a4b332e37746152e
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304290"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574937"
 ---
 # <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Samouczek: Załaduj dane do Azure SQL Data Warehouse
 
@@ -42,11 +42,11 @@ Zanim rozpoczniesz ten samouczek, pobierz i zainstaluj najnowszą wersję progra
 
 Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
-## <a name="create-a-blank-sql-data-warehouse"></a>Tworzenie pustego magazynu danych SQL
+## <a name="create-a-blank-sql-data-warehouse"></a>Utwórz puste SQL Data Warehouse
 
-Magazyn danych Azure SQL Data Warehouse jest tworzony ze zdefiniowanym zestawem [zasobów obliczeniowych](memory-and-concurrency-limits.md). Baza danych jest tworzona w [grupie zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) oraz na [serwerze logicznym SQL platformy Azure](../sql-database/sql-database-features.md). 
+Azure SQL Data Warehouse jest tworzony ze zdefiniowanym zestawem [zasobów obliczeniowych](memory-and-concurrency-limits.md). Baza danych jest tworzona w [grupie zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) oraz na [serwerze logicznym SQL platformy Azure](../sql-database/sql-database-features.md). 
 
-Wykonaj poniższe czynności, aby utworzyć pusty magazyn danych SQL. 
+Wykonaj następujące kroki, aby utworzyć puste SQL Data Warehouse. 
 
 1. W lewym górnym rogu witryny Azure Portal kliknij przycisk **Utwórz zasób**.
 
@@ -150,8 +150,8 @@ W tej sekcji używany jest program [SQL Server Management Studio](/sql/ssms/down
     | ------------ | --------------- | ----------- | 
     | Typ serwera | Aparat bazy danych | Ta wartość jest wymagana |
     | Nazwa serwera | W pełni kwalifikowana nazwa serwera | Na przykład **sample-svr.database.windows.net** jest w pełni kwalifikowaną nazwą serwera. |
-    | Authentication | Uwierzytelnianie programu SQL Server | Uwierzytelnianie SQL to jedyny typ uwierzytelniania skonfigurowany w tym samouczku. |
-    | Login | Konto administratora serwera | To konto określono podczas tworzenia serwera. |
+    | Authentication | Uwierzytelnianie serwera SQL | Uwierzytelnianie SQL to jedyny typ uwierzytelniania skonfigurowany w tym samouczku. |
+    | Zaloguj | Konto administratora serwera | To konto określono podczas tworzenia serwera. |
     | Hasło | Hasło konta administratora serwera | To hasło określono podczas tworzenia serwera. |
 
     ![łączenie z serwerem](media/load-data-wideworldimportersdw/connect-to-server.png)

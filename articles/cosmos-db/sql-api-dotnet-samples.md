@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 07/23/2019
 ms.author: sngun
-ms.openlocfilehash: 407b5b8dd4aa846140628c7d701ced92e8bcec03
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 57dc1e136d242fd0c5063526dc54bdb95351cf02
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780069"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616642"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: przykłady platformy .NET dla interfejsu SQL API
 > [!div class="op_single_selector"]
@@ -138,7 +138,7 @@ Metoda [RunDemoAsync](https://github.com/Azure/azure-documentdb-dotnet/blob/mast
 | [Odczytywanie zestawienia zmian](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L132) |[DocumentClient.CreateDocumentChangeFeedQuery](/dotnet/api/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery) | 
 | [Odczytywanie zakresów kluczy partycji](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L118) |[DocumentClient.ReadPartitionKeyRangeFeedAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.readpartitionkeyrangefeedasync) | 
 
-Przykładowy procesor źródła zmian [ChangeFeedMigrationTool](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedMigrationTool)pokazuje, jak używać biblioteki procesora źródła zmian do replikowania danych do innej kolekcji Cosmos DB.   
+Przykładowy procesor źródła zmian [ChangeFeedMigrationTool](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedMigrationTool)pokazuje, jak używać biblioteki procesora kanału zmiany do replikowania danych do innego kontenera Cosmos.   
 
 ## <a name="server-side-programming-examples"></a>Przykłady programowania po stronie serwera
 Metoda [RunDemoAsync](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs#L58-L91) przykładowego projektu *ServerSideScripts* pokazuje, jak wykonać poniższe zadania. Aby dowiedzieć się więcej na temat programowania po stronie serwera w Azure Cosmos DB przed uruchomieniem poniższych przykładów, zobacz [procedury składowane, wyzwalacze i funkcje zdefiniowane przez użytkownika](stored-procedures-triggers-udfs.md). 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: ab42c600b975adac9f13e8e75da9696e51e7e94d
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: e4d33756f1e09abedbf828deb447fbf14c6bfed7
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779856"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616918"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Optymalizacja kosztów z zarezerwowaną pojemnością w Azure Cosmos DB
 
@@ -57,7 +57,7 @@ Rozmiar rezerwacji powinien opierać się na całkowitej ilości przepływności
    | Grupa zasobów | Grupa zasobów, w której jest stosowany rabat zarezerwowanej pojemności. |
    |Termin  |   Jeden rok lub trzy lata.   |
    |Typ przepływności   |  Obsługa przepływności jest obsługiwana jako jednostki żądania. Możesz kupić rezerwację dla zainicjowanej przepływności dla obu konfiguracji — zapisu w jednym regionie, a także zapisów w wielu regionach. Typ przepływności ma dwie wartości do wyboru: 100 RU/s na godzinę i 100 wielu głównych RU/s na godzinę.|
-   | Jednostki pojemności zarezerwowanej| Ilość przepływności, która ma zostać zarezerwowana. Tę wartość można obliczyć, określając przepływność potrzebną dla wszystkich zasobów Cosmos DB (na przykład baz danych lub kontenerów) na region. Następnie można je pomnożyć przez liczbę regionów, które zostaną skojarzone z bazą danych Cosmos DB. Na przykład: Jeśli masz pięć regionów z 1 000 000 RU/s w każdym regionie, wybierz pozycję 5 000 000 RU/s na potrzeby zakupu zdolności rezerwacji. |
+   | Jednostki pojemności zarezerwowanej| Ilość przepływności, która ma zostać zarezerwowana. Tę wartość można obliczyć, określając przepływność potrzebną dla wszystkich zasobów Cosmos DB (na przykład baz danych lub kontenerów) na region. Następnie można je pomnożyć przez liczbę regionów, które zostaną skojarzone z bazą danych Cosmos. Przykład: Jeśli masz pięć regionów z 1 000 000 RU/s w każdym regionie, wybierz pozycję 5 000 000 RU/s na potrzeby zakupu zdolności rezerwacji. |
 
 
 5. Po wypełnieniu formularza jest obliczana cena wymagana do zakupu zarezerwowanej pojemności. W danych wyjściowych jest również wyświetlany procent rabatu uzyskany z wybranymi opcjami. Następnie kliknij pozycję **Wybierz** .

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 29c91f2dcff04a2d21973e79c5719c3f4d84181b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a443931b8340552251fbcbe534f009eeeaf953aa
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827374"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617304"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Wskazówki dotyczące danych osobowych przechowywanych w Log Analytics i Application Insights
 
@@ -98,6 +98,11 @@ W przypadku żądań danych widoku i eksportu należy użyć [interfejsu API zap
 Udostępniono jako część obsługi prywatności ścieżkę interfejsu API przeczyszczania. Ta ścieżka powinna być stosowana oszczędnie ze względu na ryzyko związane z tym, potencjalny wpływ na wydajność oraz możliwość pochylania wszystkich agregacji, pomiarów i innych aspektów danych Log Analytics. Zapoznaj się z sekcją [strategia obsługi danych osobowych](#strategy-for-personal-data-handling) , aby poznać alternatywne podejścia do obsługi prywatnych danych.
 
 Przeczyszczanie jest operacją o wysokim poziomie uprawnień, która nie ma uprawnień do Azure Resource Manager wykonania aplikacji ani użytkownika na platformie Azure (w tym nawet Właściciel zasobu). Ta rola jest w trakcie _przeczyszczania danych_ i powinna być ostrożnie delegowana ze względu na potencjalną utratę danych. 
+
+> [!IMPORTANT]
+> Aby można było zarządzać zasobami systemu, żądania przeczyszczania są ograniczone o 50 żądań na godzinę. Należy wykonać przetwarzanie wsadowe żądań przeczyszczenia, wysyłając pojedyncze polecenie, którego predykat zawiera wszystkie tożsamości użytkowników, które wymagają przeczyszczania. Użyj [operatora in](/azure/kusto/query/inoperator) , aby określić wiele tożsamości. Przed wykonaniem żądania przeczyszczenia należy uruchomić zapytanie, aby sprawdzić, czy wyniki są oczekiwane. 
+
+
 
 Po przypisaniu roli Azure Resource Manager dostępne są dwie nowe ścieżki interfejsu API: 
 

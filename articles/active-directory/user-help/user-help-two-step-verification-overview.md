@@ -13,12 +13,12 @@ ms.date: 08/05/2019
 ms.author: lizross
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6145ccc67eedfdae8e9e1aa9245ff8d34101d387
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: f10f3b272978ea24b515e39a8a8cc1fd0bea73a4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949568"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615999"
 ---
 # <a name="overview-for-two-factor-verification-and-your-work-or-school-account"></a>Przegląd weryfikacji dwuskładnikowej i konta służbowego
 
@@ -29,7 +29,15 @@ Weryfikacja dwuetapowa jest bezpieczniejsza niż tylko hasło, ponieważ opiera 
 >[!Important]
 >Ta zawartość jest przeznaczona dla użytkowników. Jeśli jesteś administratorem, więcej informacji na temat konfigurowania i zarządzania środowiskiem usługi Azure Active Directory (Azure AD) możesz znaleźć w [dokumentacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
 >
->Ta zawartość jest również przeznaczona wyłącznie do użytku z kontem służbowym, które jest udostępniane przez organizację (na przykład alain@contoso.com). Jeśli masz problemy z weryfikacją dwuetapową i osobistą konto Microsoft, konto, które zostało skonfigurowane dla siebie (na przykład danielle@outlook.com), zobacz [Włączanie lub wyłączanie weryfikacji dwuskładnikowej dla konto Microsoft](https://support.microsoft.com/en-us/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
+>Ta zawartość jest również przeznaczona wyłącznie do użytku z kontem służbowym, które jest udostępniane przez organizację (na przykład alain@contoso.com). Jeśli masz problemy z weryfikacją dwuetapową i osobistą konto Microsoft, konto, które zostało skonfigurowane dla siebie (na przykład danielle@outlook.com), zobacz [Włączanie lub wyłączanie weryfikacji dwuskładnikowej dla konto Microsoft](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
+
+## <a name="who-decides-if-you-use-this-feature"></a>Kto decyduje o możliwości użycia tej funkcji?
+
+W zależności od typu konta o konieczności korzystania z weryfikacji dwuskładnikowej może zdecydować Twoja organizacja lub ta decyzja może zostać przeniesiona na użytkownika.
+
+- **Konto służbowe.** Jeśli używasz konta służbowego (na przykład alain@contoso.com), to Twoja organizacja decyduje, czy musisz korzystać z weryfikacji dwuskładnikowej i konkretnych metod weryfikacji. Ponieważ organizacja zdecydowała się na korzystanie z tej funkcji, nie ma możliwości jej samoistnienia.
+
+- **Osobiste konto Microsoft.** Weryfikację dwuskładnikowa można skonfigurować dla osobistych kont Microsoft (na przykład alain@outlook.com). Jeśli masz problemy z weryfikacją dwuetapową i osobistą konto Microsoft, zobacz [Włączanie lub wyłączanie weryfikacji dwuskładnikowej dla konto Microsoft](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off). Ze względu na to, czy należy używać tej funkcji, możesz ją włączać i wyłączać w dowolnym momencie.
 
 ## <a name="two-factor-verification-related-articles"></a>Artykuły dotyczące weryfikacji dwuskładnikowej
 

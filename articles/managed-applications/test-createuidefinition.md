@@ -6,12 +6,12 @@ ms.service: managed-applications
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 91dd661cf4900512390079751f400f6a9888c452
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 54eb2df06df56c33e1a3cd74e7a4a93c07aab682
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845924"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575669"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>Przetestuj interfejs portalu dla Azure Managed Applications
 
@@ -91,7 +91,7 @@ W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
 
 Skrypt otwiera nową kartę w przeglądarce. Zostanie wyświetlony portal z interfejsem służącym do tworzenia aplikacji zarządzanej.
 
-Podaj wartości dla pól. Po zakończeniu zobaczysz wartości, które są przesyłane do szablonu.
+Podaj wartości dla pól. Po zakończeniu zobaczysz wartości, które są przesyłane do szablonu, które można znaleźć w konsoli narzędzia deweloperskie w przeglądarce.
 
 ![Pokaż wartości](./media/test-createuidefinition/show-json.png)
 

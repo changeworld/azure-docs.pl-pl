@@ -1,6 +1,6 @@
 ---
-title: 'Azure Active Directory Domain Services: Zakres synchronizacji | Dokumentacja firmy Microsoft'
-description: Konfigurowanie zakresu synchronizacji z usługi Azure AD do domeny zarządzanej
+title: 'Azure Active Directory Domain Services: Synchronizacja w zakresie | Microsoft Docs'
+description: Konfigurowanie synchronizacji z zakresem z usługi Azure AD z domenami zarządzanymi
 services: active-directory-ds
 documentationcenter: ''
 author: iainfoulds
@@ -15,73 +15,73 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: bb96e7ccbc38a71d24178c31f8eb9a077c06b8f0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 7d3bd8c6c62c0b8a1be6203e426337fcee7d2126
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472522"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617115"
 ---
-# <a name="configure-scoped-synchronization-from-azure-ad-to-your-managed-domain"></a>Konfigurowanie zakresu synchronizacji z usługi Azure AD do domeny zarządzanej
-W tym artykule pokazano, jak skonfigurować tylko określone konta użytkowników mają być synchronizowane z katalogiem usługi Azure AD do domeny zarządzanej usług domenowych Azure AD.
+# <a name="configure-scoped-synchronization-from-azure-ad-to-your-managed-domain"></a>Konfigurowanie synchronizacji z zakresem z usługi Azure AD do domeny zarządzanej
+W tym artykule opisano sposób konfigurowania tylko określonych kont użytkowników, które mają być synchronizowane z katalogu usługi Azure AD do domeny zarządzanej Azure AD Domain Services.
 
 
-## <a name="group-based-scoped-synchronization"></a>Oparte na grupach zakresu synchronizacji
-Domyślnie wszyscy użytkownicy i grupy w katalogu usługi Azure AD są synchronizowane z domeną zarządzaną. Jeśli tylko kilku użytkowników używać domeny zarządzanej, może synchronizować tych kont użytkowników. Oparte na grupach objętych zakresem synchronizacji można to zrobić. Po skonfigurowaniu tylko kont użytkowników należących do grup, które zostało podane są synchronizowane do domeny zarządzanej.
+## <a name="group-based-scoped-synchronization"></a>Synchronizacja z zakresem opartym na grupach
+Domyślnie wszyscy użytkownicy i grupy w katalogu usługi Azure AD są synchronizowane z domeną zarządzaną. Jeśli tylko kilku użytkowników korzysta z domeny zarządzanej, można synchronizować tylko te konta użytkowników. Synchronizacja z zakresem opartym na grupach umożliwia wykonanie tej czynności. Po skonfigurowaniu konta użytkowników należące do określonych grup są synchronizowane z domeną zarządzaną.
 
-Poniższa tabela pozwala określić, jak używać synchronizacji o określonym zakresie:
+Poniższa tabela ułatwia określenie sposobu korzystania z synchronizacji w zakresie:
 
-| **Bieżący stan** | **Żądany stan** | **Wymaganej konfiguracji** |
+| **Bieżący stan** | **Żądany stan** | **Wymagana konfiguracja** |
 | --- | --- | --- |
-| Istniejąca domena zarządzana jest skonfigurowany do synchronizacji wszystkich kont użytkowników i grup. | Chcesz synchronizować tylko kont użytkowników należących do określonej grupy do domeny zarządzanej. | [Usuń istniejąca domena zarządzana](delete-aadds.md). Następnie postępuj zgodnie z instrukcjami w tym artykule, aby utworzyć ją ponownie przy użyciu zakresu synchronizacji skonfigurowane. |
-| Nie masz istniejącej domeny zarządzanej. | Chcesz utworzyć nową domenę zarządzanych i zsynchronizować tylko kont użytkowników należących do określonych grup. | Postępuj zgodnie z instrukcjami w tym artykule do utworzenia nowej domeny zarządzanej przy użyciu zakresu synchronizacji skonfigurowane. |
-| Istniejąca domena zarządzana jest skonfigurowany do synchronizacji tylko dla kont należących do określonych grup. | Chcesz zmodyfikować listę grup użytkowników, którzy mają być synchronizowane do domeny zarządzania. | Postępuj zgodnie z instrukcjami w tym artykule w celu zmodyfikowania synchronizacji o określonym zakresie. |
+| Istniejąca domena zarządzana jest skonfigurowana do synchronizacji wszystkich kont użytkowników i grup. | Chcesz synchronizować tylko konta użytkowników należące do określonych grup w domenie zarządzanej. | [Usuń istniejącą domenę zarządzaną](delete-aadds.md). Następnie postępuj zgodnie z instrukcjami w tym artykule, aby utworzyć je ponownie z konfiguracją synchronizacji o określonym zakresie. |
+| Nie masz istniejącej domeny zarządzanej. | Chcesz utworzyć nową domenę zarządzaną i zsynchronizować tylko konta użytkowników należące do określonych grup. | Postępuj zgodnie z instrukcjami w tym artykule, aby utworzyć nową domenę zarządzaną z skonfigurowaną synchronizacją o określonym zakresie. |
+| Istniejąca domena zarządzana jest skonfigurowana tak, aby synchronizować tylko konta należące do określonych grup. | Chcesz zmodyfikować listę grup, których użytkownicy mają być zsynchronizowani z domeną zarządzania. | Postępuj zgodnie z instrukcjami w tym artykule, aby zmodyfikować synchronizację z zakresem. |
 
 > [!WARNING]
-> **Zmiana zakresu synchronizacji powoduje, że Twojej domeny zarządzanej za pośrednictwem ponownej synchronizacji.**
+> **Zmiana zakresu synchronizacji powoduje, że Twoja domena zarządza przejdzie przez ponowną synchronizację.**
 > 
->  * Zmiana zakresu synchronizacji dla domeny zarządzanej, występuje pełnej ponownej synchronizacji.
->  * Obiekty, które nie są już wymagane w domenie zarządzanej zostaną usunięte. Nowe obiekty są tworzone w domenie zarządzanej.
->  * Ponownej synchronizacji może zająć dużo czasu, w zależności od liczby obiektów (użytkowników, grup i członkostw w grupie) w domenie zarządzanej i w katalogu usługi Azure AD. W przypadku dużych katalogów przy użyciu wielu setek tysięcy obiektów podczas ponownej synchronizacji może potrwać kilka dni.
+>  * W przypadku zmiany zakresu synchronizacji dla domeny zarządzanej następuje pełna ponowna synchronizacja.
+>  * Obiekty, które nie są już wymagane w domenie zarządzanej, są usuwane. Nowe obiekty są tworzone w domenie zarządzanej.
+>  * Ponowna synchronizacja może zająć dużo czasu, w zależności od liczby obiektów (użytkowników, grup i członkostwa w grupach) w domenie zarządzanej i w katalogu usługi Azure AD. W przypadku dużych katalogów z wieloma tysiącami obiektów ponowna synchronizacja może potrwać kilka dni.
 
 
-## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization-using-azure-portal"></a>Tworzenie nowej domeny zarządzanej i włączanie grupy synchronizacji opartej na zakresie przy użyciu witryny Azure portal
+## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization-using-azure-portal"></a>Utwórz nową domenę zarządzaną i Włącz synchronizację z zakresem opartym na grupach przy użyciu Azure Portal
 
-1. Postępuj zgodnie z [Wprowadzenie — przewodnik](create-instance.md) można utworzyć domeny zarządzanej.
-2. Wybierz **zakresie** podczas wyboru stylu synchronizacji w kreatorze tworzenia usług domenowych Azure AD.
+1. Postępuj zgodnie z [przewodnikiem wprowadzenie](tutorial-create-instance.md) , aby utworzyć domenę zarządzaną.
+2. Wybierz **zakres** podczas wybierania stylu synchronizacji w kreatorze tworzenia Azure AD Domain Services.
 
-## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization-using-powershell"></a>Tworzenie nowej domeny zarządzanej i włączanie grupy synchronizacji opartej na zakresie przy użyciu programu PowerShell
-Aby ukończyć ten zestaw kroków za pomocą programu PowerShell. Zapoznaj się z instrukcjami, aby [włączyć usługi Azure Active Directory Domain Services przy użyciu programu PowerShell](powershell-create-instance.md). Kilka kroków opisanych w tym artykule są nieco modyfikowane Konfigurowanie synchronizacji o określonym zakresie.
+## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization-using-powershell"></a>Tworzenie nowej domeny zarządzanej i Włączanie synchronizacji z zakresem opartym na grupach przy użyciu programu PowerShell
+Użyj programu PowerShell, aby ukończyć ten zestaw kroków. Zapoznaj się z instrukcjami, aby [włączyć Azure Active Directory Domain Services przy użyciu programu PowerShell](powershell-create-instance.md). Kilka kroków tego artykułu jest nieco nieznacznie modyfikowanych w celu skonfigurowania synchronizacji z zakresem.
 
-Wykonaj poniższe kroki, aby skonfigurować synchronizację o określonym zakresie oparte na grupach, do domeny zarządzanej:
+Wykonaj następujące kroki, aby skonfigurować synchronizację z zakresem opartym na grupach w domenie zarządzanej:
 
-1. Wykonaj następujące czynności:
-   * [Zadanie 1: Zainstaluj wymagane moduły programu PowerShell](powershell-create-instance.md#task-1-install-the-required-powershell-modules).
-   * [Zadanie 2. Tworzenie jednostki usługi wymagane w katalogu usługi Azure AD](powershell-create-instance.md#task-2-create-the-required-service-principal-in-your-azure-ad-directory).
-   * [Zadanie 3: Tworzenie i konfigurowanie "Administratorzy usługi AAD DC" group]powershell-create-instance.md#task-3-create-and-configure-the-aad-dc-administrators-group).
-   * [Zadanie 4. Zarejestruj dostawcę zasobów usługi Azure AD Domain Services](powershell-create-instance.md#task-4-register-the-azure-ad-domain-services-resource-provider).
-   * [Zadanie 5. Utwórz grupę zasobów](powershell-create-instance.md#task-5-create-a-resource-group).
-   * [Zadanie 6. Tworzenie i konfigurowanie sieci wirtualnej](powershell-create-instance.md#task-6-create-and-configure-the-virtual-network).
+1. Wykonaj następujące zadania:
+   * [Zadanie 1: Zainstaluj wymagane moduły](powershell-create-instance.md#task-1-install-the-required-powershell-modules)programu PowerShell.
+   * [Zadanie 2: Utwórz wymaganą jednostkę usługi w katalogu](powershell-create-instance.md#task-2-create-the-required-service-principal-in-your-azure-ad-directory)usługi Azure AD.
+   * [Zadanie 3: Utwórz i skonfiguruj grupę "Administratorzy usługi AAD DC"] PowerShell-Create-instance. MD # Task-3-Create-and-configure-the-AAD-DC-Administrators-Group.
+   * [Zadanie 4: Zarejestruj dostawcę](powershell-create-instance.md#task-4-register-the-azure-ad-domain-services-resource-provider)zasobów Azure AD Domain Services.
+   * [Zadanie 5: Utwórz grupę](powershell-create-instance.md#task-5-create-a-resource-group)zasobów.
+   * [Zadanie 6: Utwórz i skonfiguruj sieć](powershell-create-instance.md#task-6-create-and-configure-the-virtual-network)wirtualną.
 
-2. Wybierz grupy, które chcesz synchronizować, a następnie podaj nazwę wyświetlaną grup, które chcesz zsynchronizować z domeną zarządzaną.
+2. Wybierz grupy, które chcesz synchronizować, i podaj nazwę wyświetlaną grup, które mają być synchronizowane z domeną zarządzaną.
 
-3. Zapisz [skryptu w poniższej sekcji](scoped-synchronization.md#script-to-select-groups-to-synchronize-to-the-managed-domain-select-groupstosyncps1) w pliku o nazwie ```Select-GroupsToSync.ps1```. Uruchom skrypt, takich jak poniżej:
+3. Zapisz [skrypt w poniższej sekcji](scoped-synchronization.md#script-to-select-groups-to-synchronize-to-the-managed-domain-select-groupstosyncps1) w pliku o nazwie ```Select-GroupsToSync.ps1```. Wykonaj skrypt podobny do poniższego:
 
    ```powershell
    .\Select-GroupsToSync.ps1 -groupsToAdd @("AAD DC Administrators", "GroupName1", "GroupName2")
    ```
 
    > [!WARNING]
-   > **Pamiętaj uwzględnić grupy "Administratorzy usługi AAD DC".**
+   > **Nie zapomnij dodać grupy "Administratorzy kontrolera domeny usługi AAD".**
    >
-   > Na liście skonfigurowane do synchronizacji zakresu grupy, musi zawierać grupy "Administratorzy usługi AAD DC". Jeśli ta grupa nie zostanie uwzględniony, domeny zarządzanej, będzie można jej używać.
+   > Należy uwzględnić grupę "Administratorzy kontrolera domeny usługi AAD" na liście grup skonfigurowanych na potrzeby synchronizacji z zakresem. Jeśli ta grupa nie zostanie uwzględniona, domena zarządzana będzie bezużyteczny.
    >
 
-4. Teraz Tworzenie domeny zarządzanej i włączanie na podstawie grupy synchronizacji o określonym zakresie dla domeny zarządzanej. Zawiera właściwości ```"filteredSync" = "Enabled"``` w ```Properties``` parametru. Zobacz na przykład poniższy fragment skryptu skopiowane z [zadanie 7: Aprowizowanie domeny zarządzanej usług domenowych Azure AD](powershell-create-instance.md#task-7-provision-the-azure-ad-domain-services-managed-domain).
+4. Teraz Utwórz domenę zarządzaną i Włącz synchronizację z zakresem opartym na grupach dla domeny zarządzanej. Dołącz Właściwość ```"filteredSync" = "Enabled"``` ```Properties``` do parametru. Na przykład zapoznaj się z poniższym fragmentem skryptu skopiowanym z [zadania 7: Zainicjuj obsługę administracyjną](powershell-create-instance.md#task-7-provision-the-azure-ad-domain-services-managed-domain)Azure AD Domain Services domenie zarządzanej.
 
    ```powershell
    $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-   $ManagedDomainName = "contoso100.com"
+   $ManagedDomainName = "contoso.com"
    $ResourceGroupName = "ContosoAaddsRg"
    $VnetName = "DomainServicesVNet_WUS"
    $AzureLocation = "westus"
@@ -95,11 +95,11 @@ Wykonaj poniższe kroki, aby skonfigurować synchronizację o określonym zakres
    ```
 
    > [!TIP]
-   > Nie zapomnij dołączyć ```"filteredSync" = "Enabled"``` w ```-Properties``` parametru, więc o określonym zakresie synchronizacja jest włączona dla domeny zarządzanej.
+   > Nie zapomnij dołączyć ```"filteredSync" = "Enabled"``` ```-Properties``` do parametru, więc synchronizacja w zakresie jest włączona dla domeny zarządzanej.
 
 
-## <a name="script-to-select-groups-to-synchronize-to-the-managed-domain-select-groupstosyncps1"></a>Skrypt, aby wybrać grupy, które mają być synchronizowane domena zarządzana (Wybierz GroupsToSync.ps1)
-Zapisz poniższy skrypt do pliku (```Select-GroupsToSync.ps1```). Ten skrypt umożliwia skonfigurowanie usług domenowych Azure AD, aby zsynchronizować wybrane grupy do domeny zarządzanej. Wszystkie konta użytkowników należące do określonej grupy zostaną zsynchronizowane z domeny zarządzanej.
+## <a name="script-to-select-groups-to-synchronize-to-the-managed-domain-select-groupstosyncps1"></a>Skrypt służący do wybierania grup do synchronizacji z domeną zarządzaną (Select-GroupsToSync. ps1)
+Zapisz następujący skrypt do pliku (```Select-GroupsToSync.ps1```). Ten skrypt służy do konfigurowania Azure AD Domain Services synchronizacji wybranych grup z domeną zarządzaną. Wszystkie konta użytkowników należące do określonych grup zostaną zsynchronizowane z domeną zarządzaną.
 
 ```powershell
 param (
@@ -179,18 +179,18 @@ Write-Output "******************************************************************
 ```
 
 
-## <a name="modify-group-based-scoped-synchronization"></a>Modyfikowanie oparte na grupach zakresu synchronizacji
-Aby zmodyfikować listę grup użytkowników, którzy mają być synchronizowane z domeną zarządzaną, uruchom ponownie [skrypt programu PowerShell](scoped-synchronization.md#script-to-select-groups-to-synchronize-to-the-managed-domain-select-groupstosyncps1) i określ nową listę grup. Pamiętaj, aby zawsze określać grupy "Administratorzy usługi AAD DC" na tej liście.
+## <a name="modify-group-based-scoped-synchronization"></a>Modyfikuj synchronizację z zakresem opartym na grupach
+Aby zmodyfikować listę grup, których użytkownicy powinni synchronizować z domeną zarządzaną, uruchom ponownie [skrypt programu PowerShell](scoped-synchronization.md#script-to-select-groups-to-synchronize-to-the-managed-domain-select-groupstosyncps1) i określ nową listę grup. Pamiętaj, aby zawsze określać grupę "Administratorzy kontrolera domeny usługi AAD" na tej liście.
 
 > [!WARNING]
-> **Pamiętaj uwzględnić grupy "Administratorzy usługi AAD DC".**
+> **Nie zapomnij dodać grupy "Administratorzy kontrolera domeny usługi AAD".**
 >
-> Na liście skonfigurowane do synchronizacji zakresu grupy, musi zawierać grupy "Administratorzy usługi AAD DC". Jeśli ta grupa nie zostanie uwzględniony, domeny zarządzanej, będzie można jej używać.
+> Należy uwzględnić grupę "Administratorzy kontrolera domeny usługi AAD" na liście grup skonfigurowanych na potrzeby synchronizacji z zakresem. Jeśli ta grupa nie zostanie uwzględniona, domena zarządzana będzie bezużyteczny.
 >
 
 
-## <a name="disable-group-based-scoped-synchronization"></a>Wyłącz synchronizację o określonym zakresie oparte na grupach
-Użyj następującego skryptu programu PowerShell, można wyłączyć, oparte na grupach zakresu synchronizacji dla domeny zarządzanej:
+## <a name="disable-group-based-scoped-synchronization"></a>Wyłącz synchronizację z zakresem opartym na grupach
+Użyj poniższego skryptu programu PowerShell, aby wyłączyć synchronizację z zakresem opartym na grupach dla domeny zarządzanej:
 
 ```powershell
 // Login to your Azure AD tenant
@@ -205,6 +205,6 @@ $disableScopedSync = @{"filteredSync" = "Disabled"}
 Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $disableScopedSync
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-* [Omówienie synchronizacji w usługach domenowych Azure AD](synchronization.md)
-* [Włączanie usługi Azure Active Directory Domain Services przy użyciu programu PowerShell](powershell-create-instance.md)
+## <a name="next-steps"></a>Następne kroki
+* [Omówienie synchronizacji w Azure AD Domain Services](synchronization.md)
+* [Włączanie Azure Active Directory Domain Services przy użyciu programu PowerShell](powershell-create-instance.md)

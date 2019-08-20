@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 849c3a745de08e7cf8ff7f1b8bb237a6d0f54395
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: ce943fbed0774667100f6de4c60f91c0b02de6c3
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384165"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615350"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Globalna dystrybucja danych z Azure Cosmos DBą pod okapem
 
@@ -34,7 +34,7 @@ Jak pokazano na poniższej ilustracji, dane w kontenerze są dystrybuowane w dw�
 
 Partycja fizyczna jest implementowana przez grupę replik nazywaną zestawem *replik*. Każdy komputer obsługuje setki replik odpowiadających różnym partycjom fizycznym w ramach ustalonego zestawu procesów, jak pokazano na powyższym obrazie. Repliki, odpowiadające na partycje fizyczne dynamicznie są umieszczane i zrównoważonym między komputerami w ramach klastrów i centrów danych w obrębie regionu.  
 
-Replikę należy jednoznacznie do dzierżawy usługi Azure Cosmos DB. Każda replika znajduje się wystąpienie usługi Cosmos DB [aparatu bazy danych](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf), która zarządza zasobami, a także indeksy. Aparat bazy danych Cosmos DB działa w systemie na podstawie typu atom rekord sekwencja (ARS). Aparat jest niezależny od do koncepcji schematu, przez odmycie granicy między strukturą i wartościami wystąpień rekordów. Usługa cosmos DB realizuje agnosticism pełnego schematu przez automatyczne indeksowanie wszystkich elementów, od pozyskiwania w sposób efektywny, które umożliwia użytkownikom do wykonywania zapytań ich danych rozproszonych globalnie, bez konieczności zarządzania schematami lub indeksami.
+Replikę należy jednoznacznie do dzierżawy usługi Azure Cosmos DB. Każda replika znajduje się wystąpienie usługi Cosmos DB [aparatu bazy danych](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf), która zarządza zasobami, a także indeksy. Aparat bazy danych Cosmos działa w systemie typów opartych na protokole Atom-Record-Sequence (ARS). Aparat jest niezależny od do koncepcji schematu, przez odmycie granicy między strukturą i wartościami wystąpień rekordów. Usługa cosmos DB realizuje agnosticism pełnego schematu przez automatyczne indeksowanie wszystkich elementów, od pozyskiwania w sposób efektywny, które umożliwia użytkownikom do wykonywania zapytań ich danych rozproszonych globalnie, bez konieczności zarządzania schematami lub indeksami.
 
 Aparat bazy danych Cosmos składa się z składników, takich jak implementacja kilku elementów podstawowych koordynacji, środowisko uruchomieniowe języka, procesor zapytań oraz Podsystemy magazynowania i indeksowania odpowiedzialne za magazyn transakcyjny i indeksowanie danych, piwo. Zapewnienie trwałości i wysokiej dostępności, aparatu bazy danych będzie nadal występować, jego danych i indeksu na dyskach SSD i replikuje ją między wystąpieniami aparatu bazy danych w ramach repliki — określiła odpowiednio. Większe dzierżawy odnoszą się do większej skali przepływności i magazynu oraz mają większe lub więcej replik. Każdy składnik system jest w pełni asynchroniczne — nigdy nie blokuje żadnych wątków, a każdy wątek działa krótkotrwałe bez ponoszenia żadnych przełączników niepotrzebne wątku. Ograniczanie szybkości i ciśnienia wstecznego są przyłączone do instalacji w całym stosie z formantu czasowej na wszystkie ścieżki we/wy. Aparat bazy danych Cosmos został zaprojektowany w celu wykorzystania precyzyjnej współbieżności i zapewnienia wysokiej przepływności podczas pracy w Frugal ilości zasobów systemowych.
 
@@ -50,7 +50,7 @@ Partycja fizyczna jest przeznaczona do użycia przez samodzielną i dynamiczną 
 
 ## <a name="partition-sets"></a>Zestawy partycji
 
-Grupa partycji fizycznych, jedna ze wszystkich skonfigurowanych za pomocą regionów bazy danych Cosmos, składa się z tego samego zestawu kluczy replikowanych we wszystkich skonfigurowanych regionach. Ta wyższa wartość pierwotna koordynacji jest nazywana rozłożoną *w sposób* dynamiczny rozłożeniem partycji fizycznych, która zarządza danym zestawem kluczy. Chociaż dana partycja fizyczna (zestaw replik) jest objęta zakresem klastra, zestaw partycji może obejmować klastry, centra danych i regiony geograficzne, jak pokazano na poniższej ilustracji:  
+Grupa partycji fizycznych, jedna ze wszystkich skonfigurowanych za pomocą regionów bazy danych Cosmos, składa się z tego samego zestawu kluczy replikowanych we wszystkich skonfigurowanych regionach. Ta wyższa wartość pierwotna koordynacji jest nazywana rozłożoną w sposób dynamiczny rozłożeniem partycji fizycznych, która zarządza danym zestawem kluczy. Chociaż dana partycja fizyczna (zestaw replik) jest objęta zakresem klastra, zestaw partycji może obejmować klastry, centra danych i regiony geograficzne, jak pokazano na poniższej ilustracji:  
 
 ![Zestawy partycji](./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png)
 
@@ -77,7 +77,7 @@ Niezależnie od tego, czy baza danych Cosmos jest konfigurowana z jednym czy wie
 
 Ograniczona nieaktualność gwarantuje, że wszystkie operacje odczytu będą znajdować się w obrębie prefiksów *K* lub *T* sekund od ostatniego zapisu w dowolnym regionie. Ponadto należy zapewnić monotoniczny i z zachowaniem spójnych prefiksów. Protokół zapobieganie entropii działa w sposób ograniczony szybkość i gwarantuje, że prefiksy nie są gromadzone i wsteczne zapisu nie ma zastosowanie. Zapewnianie spójności sesji gwarantuje monotoniczny odczyt, monotoniczny zapis, odczytanie własnych zapisów, zapis następujący: Odczyt i spójne gwarancje dotyczące prefiksów, na całym świecie. W przypadku baz danych skonfigurowanych pod kątem silnej spójności korzyści wynikające z replikacji synchronicznej w różnych regionach nie mają zastosowania do małych i dużych ilości zapisów w wielu regionach zapisu.
 
-Semantyka pięciu modeli spójności w Cosmos DB jest opisana [tutaj](consistency-levels.md)i matematycznie opisana przy użyciu wysokiego poziomu tla [i specyfikacji.](https://github.com/Azure/azure-cosmos-tla)
+Semantyka pięciu modeli spójności w Cosmos DB jest opisana [tutaj](consistency-levels.md)i matematycznie opisana przy użyciu wysokiego poziomu tla i specyfikacji. [](https://github.com/Azure/azure-cosmos-tla)
 
 ## <a name="next-steps"></a>Następne kroki
 

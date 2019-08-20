@@ -1,17 +1,17 @@
 ---
 title: Porady dotyczące wydajności Azure Cosmos DB dla platformy .NET
-description: Informacje na temat opcji konfiguracji klienta w celu poprawy wydajności bazy danych Azure Cosmos DB
+description: Dowiedz się więcej na temat opcji konfiguracji klienta, aby zwiększyć wydajność usługi Azure Cosmos Database
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
-ms.openlocfilehash: 21886c11bea6ff09cf97362e06c6d304aaa0d8cc
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 3c4dbd38edaf36461578e087010d978a25450d06
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250058"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614926"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Porady dotyczące wydajności Azure Cosmos DB i .NET
 
@@ -48,8 +48,8 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" na
      |Tryb połączenia  |Obsługiwany protokół  |Obsługiwane zestawy SDK  |Port API/usługi  |
      |---------|---------|---------|---------|
      |Brama  |   HTTPS    |  Wszystkie zestawy SDK    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(10350), Graph(443)    |
-     |Direct    |    HTTPS     |  Zestaw SDK dla platformy .NET i języka Java    |   Porty w zakresie 10000-20000    |
-     |Direct    |     TCP    |  Zestaw SDK .NET    | Porty w zakresie 10000-20000 |
+     |Bezpośrednie    |    HTTPS     |  Zestaw SDK dla platformy .NET i języka Java    |   Porty w zakresie 10000-20000    |
+     |Bezpośrednie    |     TCP    |  Zestaw SDK .NET    | Porty w zakresie 10000-20000 |
 
      Azure Cosmos DB oferuje prosty i otwarty model programowania RESTful za pośrednictwem protokołu HTTPS. Ponadto oferuje wydajny protokół TCP, który jest również RESTful w swoim modelu komunikacji i jest dostępny za pośrednictwem zestawu SDK klienta platformy .NET. Zarówno bezpośrednie TCP, jak i HTTPS używają protokołu SSL do uwierzytelniania początkowego i szyfrowania ruchu sieciowego. Aby uzyskać najlepszą wydajność, Użyj protokołu TCP, gdy jest to możliwe.
 
@@ -78,7 +78,7 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" na
    <a id="same-region"></a>
 3. **Kolokacja klientów w tym samym regionie świadczenia usługi Azure na potrzeby wydajności**
 
-    Jeśli to możliwe, należy umieścić dowolne aplikacje wywołujące Azure Cosmos DB w tym samym regionie, co baza danych Azure Cosmos DB. Dla przybliżonego porównania, wywołania do Azure Cosmos DB w tym samym regionie, kompletne w ciągu 1-2 MS, ale opóźnienie między zachodnim i wschodnim wybrzeżem Stanów Zjednoczonych jest > 50 ms. To opóźnienie może się różnić od żądania żądania w zależności od trasy wykonywanej przez żądanie, gdy przechodzi od klienta do granicy centrum danych platformy Azure. Najniższe możliwe opóźnienie jest realizowane przez zagwarantowanie, że aplikacja wywołująca znajduje się w tym samym regionie platformy Azure, co punkt końcowy Azure Cosmos DB aprowizacji. Aby uzyskać listę dostępnych regionów, zobacz [regiony platformy Azure](https://azure.microsoft.com/regions/#services).
+    Jeśli to możliwe, należy umieścić dowolne aplikacje wywołujące Azure Cosmos DB w tym samym regionie, w którym znajduje się baza danych usługi Azure Cosmos. Dla przybliżonego porównania, wywołania do Azure Cosmos DB w tym samym regionie, kompletne w ciągu 1-2 MS, ale opóźnienie między zachodnim i wschodnim wybrzeżem Stanów Zjednoczonych jest > 50 ms. To opóźnienie może się różnić od żądania żądania w zależności od trasy wykonywanej przez żądanie, gdy przechodzi od klienta do granicy centrum danych platformy Azure. Najniższe możliwe opóźnienie jest realizowane przez zagwarantowanie, że aplikacja wywołująca znajduje się w tym samym regionie platformy Azure, co punkt końcowy Azure Cosmos DB aprowizacji. Aby uzyskać listę dostępnych regionów, zobacz [regiony platformy Azure](https://azure.microsoft.com/regions/#services).
 
     ![Ilustracja zasad połączenia Azure Cosmos DB](./media/performance-tips/same-region.png)
    <a id="increase-threads"></a>
@@ -162,7 +162,7 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" na
 
     - W przypadku aplikacji wykonywalnych można to zrobić, usuwając zaznaczenie opcji **preferuj 32-bitową** w oknie **właściwości projektu** na karcie **kompilacja** .
 
-    - W przypadku projektów testowych opartych na VSTest można to zrobić, **wybierając**->pozycję Testuj testy**Ustawienia**->**domyślne architektura procesora jako x64**z opcji menu **test programu Visual Studio** .
+    - W przypadku projektów testowych opartych na VSTest można to zrobić,->wybierając pozycję Testuj testy**Ustawienia**->**domyślne architektura procesora jako x64**z opcji menu **test programu Visual Studio** .
 
     - W przypadku lokalnie wdrożonych aplikacji sieci Web ASP.NET można to zrobić, sprawdzając, **jak używać 64-bitowej wersji IIS Express dla witryn i projektów sieci Web**, w obszarze **Narzędzia**->**Opcje**->**projekty i rozwiązania** **Projekty sieci Web.** ->
 

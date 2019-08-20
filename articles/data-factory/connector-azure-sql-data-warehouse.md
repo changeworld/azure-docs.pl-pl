@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 2d0c8cfb5e146694304d32eca27836f49d82e887
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 3b50b0e81103f0b4c8ffa757673c9ec0ef652fc0
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618691"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614124"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopiuj dane do / z usługi Azure SQL Data Warehouse przy użyciu usługi Azure Data Factory 
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -400,7 +400,7 @@ Dowiedz się więcej o tym, jak można efektywnie obciążenia usługa SQL Data 
 
 ## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>Ładowanie danych do usługi Azure SQL Data Warehouse przy użyciu technologii PolyBase
 
-Za pomocą [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) to wydajny sposób ładowania dużych ilości danych do usługi Azure SQL Data Warehouse o wysokiej przepływności. Zobaczysz duże korzyści przepływności przy użyciu programu PolyBase zamiast domyślnego mechanizmu BULKINSERT. Zobacz [dotyczące wydajności](copy-activity-performance.md#performance-reference) szczegółowe porównanie. Aby uzyskać wskazówki z przypadkami użycia, zobacz [ładowanie 1 TB w usłudze Azure SQL Data Warehouse](v1/data-factory-load-sql-data-warehouse.md).
+Za pomocą [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) to wydajny sposób ładowania dużych ilości danych do usługi Azure SQL Data Warehouse o wysokiej przepływności. Zobaczysz duże korzyści przepływności przy użyciu programu PolyBase zamiast domyślnego mechanizmu BULKINSERT. Aby uzyskać wskazówki z przypadkami użycia, zobacz [ładowanie 1 TB w usłudze Azure SQL Data Warehouse](v1/data-factory-load-sql-data-warehouse.md).
 
 * Jeśli dane źródłowe są w **obiekcie blob platformy Azure, Azure Data Lake Storage Gen1 lub Azure Data Lake Storage Gen2**i **Format jest zgodny z bazą**danych, można użyć działania kopiowania, aby bezpośrednio wywołać Azure SQL Data Warehouse bazę danych z źródła. Aby uzyskać więcej informacji, zobacz  **[bezpośrednie kopiowania przy użyciu programu PolyBase](#direct-copy-by-using-polybase)** .
 * Jeśli Twoje źródłowy magazyn danych i format pierwotnie nie jest obsługiwana przez program PolyBase, użyj **[kopiowania etapowego za pomocą programu PolyBase](#staged-copy-by-using-polybase)** są wyposażone w zamian. Funkcja kopiowania przejściowego zapewnia także większą przepływność. Automatycznie konwertuje dane w formacie zgodnym z programu PolyBase. I przechowuje dane w usłudze Azure Blob storage. Następnie ładuje dane do usługi SQL Data Warehouse.

@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 502407bbf1cdb47fc8105ed0220babcd9f292faa
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 7cf4629ca97abc5d4ce508f7078f4691467ba249
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382697"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616080"
 ---
 # <a name="add-your-personal-microsoft-accounts"></a>Dodawanie osobistych kont Microsoft
 
@@ -45,7 +45,7 @@ Możesz dodać własne konto Microsoft, najpierw włączając weryfikację dwuet
 
     ![Strona podstawy zabezpieczeń z wyróżnionym linkiem "więcej opcji zabezpieczeń"](./media/user-help-auth-app-add-personal-ms-account/more-security-options-link.png)
 
-3. Przejdź do sekcji **weryfikacja** dwuetapowa i wybierz włączenie **tej funkcji.** Możesz również ją wyłączyć, jeśli nie chcesz już używać jej z kontem osobistym.
+3. Przejdź do sekcji **weryfikacja** dwuetapowa i wybierz włączenie tej funkcji. Możesz również ją wyłączyć, jeśli nie chcesz już używać jej z kontem osobistym.
 
 ### <a name="add-your-microsoft-account-to-the-app"></a>Dodawanie konto Microsoft do aplikacji
 
@@ -70,6 +70,6 @@ Możesz dodać własne konto Microsoft, najpierw włączając weryfikację dwuet
 
 - Po dodaniu kont do aplikacji możesz zalogować się przy użyciu aplikacji uwierzytelniania na urządzeniu. Aby uzyskać więcej informacji, zobacz [Logowanie przy użyciu aplikacji](user-help-auth-app-sign-in.md).
 
-- Jeśli masz problemy z uzyskaniem kodu weryfikacyjnego dla konto Microsoft osobistych, zobacz sekcję Rozwiązywanie problemów z **kodem weryfikacyjnym** w artykule [konto Microsoft informacje zabezpieczające & kody weryfikacyjne](https://support.microsoft.com/en-us/help/12428/microsoft-account-security-info-verification-codes) .
+- Jeśli masz problemy z uzyskaniem kodu weryfikacyjnego dla konto Microsoft osobistych, zobacz sekcję Rozwiązywanie problemów z **kodem weryfikacyjnym** w artykule [konto Microsoft informacje zabezpieczające & kody weryfikacyjne](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes) .
 
 - W przypadku urządzeń z systemem iOS można również utworzyć kopię zapasową poświadczeń konta i powiązanych ustawień aplikacji, takich jak kolejność kont, w chmurze. Aby uzyskać więcej informacji, zobacz [Tworzenie kopii zapasowych i odzyskiwanie danych za pomocą aplikacji Microsoft Authenticator](user-help-auth-app-backup-recovery.md).
