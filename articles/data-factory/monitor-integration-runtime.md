@@ -43,12 +43,12 @@ Poniższa tabela zawiera opisy właściwości zwracany przez polecenie cmdlet ś
 
 | Właściwość | Opis |
 -------- | ------------- | 
-| Name (Nazwa) | Nazwa środowiska Azure integration runtime. |  
-| Stan | Stan środowiska Azure integration runtime. | 
-| Lokalizacja | Lokalizacja IR platformy Azure. Aby uzyskać szczegółowe informacje o lokalizacji środowiska Azure integration runtime, zobacz [wprowadzenie do produktu integration runtime](concepts-integration-runtime.md). |
+| Name | Nazwa środowiska Azure integration runtime. |  
+| State | Stan środowiska Azure integration runtime. | 
+| Location | Lokalizacja IR platformy Azure. Aby uzyskać szczegółowe informacje o lokalizacji środowiska Azure integration runtime, zobacz [wprowadzenie do produktu integration runtime](concepts-integration-runtime.md). |
 | DataFactoryName | Nazwa fabryki danych, do której należy produkt Azure integration runtime. | 
 | ResourceGroupName | Nazwa grupy zasobów, do której należy z fabryką danych.  |
-| Opis | Opis produktu integration runtime.  |
+| Description | Opis produktu integration runtime.  |
 
 ### <a name="status"></a>Stan
 W poniższej tabeli przedstawiono możliwe stany środowiska Azure integration runtime:
