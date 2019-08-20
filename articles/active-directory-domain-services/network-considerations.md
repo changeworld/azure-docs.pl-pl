@@ -1,145 +1,166 @@
 ---
-title: 'Azure AD Domain Services: Wytyczne dotyczące sieci | Dokumentacja firmy Microsoft'
-description: Informacje dotyczące sieci usługi Azure Active Directory Domain Services
+title: Planowanie sieci i połączenia dla Azure AD Domain Services | Microsoft Docs
+description: Zapoznaj się z zagadnieniami dotyczącymi projektowania sieci wirtualnej i zasobami używanymi do łączności podczas uruchamiania Azure Active Directory Domain Services.
 services: active-directory-ds
-documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 23a857a5-2720-400a-ab9b-1ba61e7b145a
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/22/2010
-ms.author: mstephen
-ms.openlocfilehash: 1f21d71bba01eb4bec24dbb558a126ecbbd78bbf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/09/2019
+ms.author: iainfou
+ms.openlocfilehash: 506967fc4cecd322c694d31789cf09bec22ad3d4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66246947"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617323"
 ---
-# <a name="networking-considerations-for-azure-ad-domain-services"></a>Informacje dotyczące sieci usługi Azure AD Domain Services
-## <a name="how-to-select-an-azure-virtual-network"></a>Jak wybrać siecią wirtualną platformy Azure
-Poniższe wskazówki ułatwiają wybierz sieć wirtualną do korzystania z usług domenowych Azure AD.
+# <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Zagadnienia dotyczące projektowania sieci wirtualnej i opcje konfiguracji Azure AD Domain Services
 
-### <a name="type-of-azure-virtual-network"></a>Typ sieci wirtualnej platformy Azure
-* **Sieci wirtualne usługi Resource Manager**: Azure AD Domain Services, można włączyć w sieciach wirtualnych utworzonych za pomocą usługi Azure Resource Manager.
-* Nie można włączyć usługi domenowe Azure AD w klasycznej sieci wirtualnej platformy Azure.
-* Łączenie z innymi sieciami wirtualnymi, siecią wirtualną, w której włączono usługi domenowe Azure AD. Aby uzyskać więcej informacji, zobacz [połączenia sieciowego](network-considerations.md#network-connectivity) sekcji.
+Jako Azure Active Directory Domain Services (AD DS) zapewnia usługi uwierzytelniania i zarządzania dla innych aplikacji i obciążeń, połączenie sieciowe to kluczowy składnik. Bez odpowiednio skonfigurowanych zasobów sieci wirtualnej, aplikacje i obciążenia nie mogą komunikować się z programem i korzystać z tych funkcji dostępnych w usłudze Azure AD DS. W przypadku prawidłowego planowania sieci wirtualnej upewnij się, że usługa Azure AD DS może obsłużyć Twoje aplikacje i obciążenia zgodnie z potrzebami.
 
-### <a name="azure-region-for-the-virtual-network"></a>Region platformy Azure dla sieci wirtualnej
-* Usług domenowych Azure AD, Twoja domena zarządzana jest wdrożony w tym samym regionie platformy Azure, co sieć wirtualna, do których użytkownik chce włączyć usługę w.
-* Wybierz sieć wirtualną w regionie platformy Azure obsługiwane przez usługi domenowe Azure AD.
-* Ze strony zawierającej [usługi platformy Azure uporządkowane według regionów](https://azure.microsoft.com/regions/#services/) dowiesz się, w których regionach platformy Azure jest dostępna usługa Azure AD Domain Services.
+W tym artykule przedstawiono zagadnienia dotyczące projektowania i wymagania dotyczące sieci wirtualnej platformy Azure, która obsługuje platformę Azure AD DS.
 
-### <a name="requirements-for-the-virtual-network"></a>Wymagania dotyczące sieci wirtualnej
-* **Bliskość obciążeń platformy Azure**: Wybierz sieć wirtualną, która obecnie hostuje/będzie hostować maszyny wirtualne wymagające dostępu do Usług domenowych Azure AD. Obciążenia w przypadku wdrożenia w innej sieci wirtualnej niż domeny zarządzanej, możesz też połączyć sieci wirtualne.
-* **Serwery DNS niestandardowe/bring your own**: Upewnij się, że istnieją żadnych niestandardowych serwerów DNS, które są skonfigurowane dla sieci wirtualnej. Przykład niestandardowego serwera DNS jest wystąpieniem DNS systemu Windows Server uruchomiony na maszynie Wirtualnej serwera Windows wdrożonej w sieci wirtualnej. Azure AD Domain Services nie obsługują dowolne niestandardowe serwery DNS, które są wdrażane w ramach sieci wirtualnej.
-* **Istniejące domeny, z tą samą nazwą domeny**: Upewnij się, że nie masz istniejącej domeny z tą samą nazwą domeny, dostępne w tej sieci wirtualnej. Na przykład załóżmy, że masz domenę o nazwie „contoso.com” już dostępną w wybranej sieci wirtualnej. Później spróbuj włączyć domeny zarządzanej usług domenowych Azure AD, z tą samą nazwą domeny (czyli "contoso.com") w tej sieci wirtualnej. Wystąpi błąd podczas próby włączenia usług domenowych Azure AD. Ten błąd jest spowodowany konfliktów nazw dla nazwy domeny w tej sieci wirtualnej. W takiej sytuacji musisz użyć innej nazwy podczas konfigurowania domeny zarządzanej Usług domenowych Azure AD. Możesz również anulować aprowizację istniejącej domeny i kontynuować włączanie Usług domenowych Azure AD.
+## <a name="azure-virtual-network-design"></a>Projekt sieci wirtualnej platformy Azure
+
+Aby zapewnić łączność sieciową i zezwolić aplikacjom i usługom na uwierzytelnianie w usłudze Azure AD DS, należy użyć sieci wirtualnej platformy Azure i podsieci. W idealnym przypadku usługa Azure AD DS powinna zostać wdrożona w swojej własnej sieci wirtualnej. W tej samej sieci wirtualnej można dołączyć oddzielną podsieć aplikacji do hostowania maszyn wirtualnych zarządzania lub lekkich obciążeń aplikacji. Oddzielna Sieć wirtualna dla większych lub złożonych obciążeń aplikacji, które są połączone z siecią wirtualną platformy Azure AD DS, jest zazwyczaj najbardziej odpowiednim projektem. Inne opcje wyboru projektów są prawidłowe, pod warunkiem, że spełniasz wymagania opisane w poniższych sekcjach dla sieci wirtualnej i podsieci.
+
+Podczas projektowania sieci wirtualnej dla usługi Azure AD DS są stosowane następujące zagadnienia:
+
+* Usługę Azure AD DS należy wdrożyć w tym samym regionie świadczenia usługi Azure, w którym znajduje się Twoja sieć wirtualna.
+    * W tej chwili można wdrożyć tylko jedną domenę zarządzaną platformy Azure AD DS dla dzierżawy usługi Azure AD. Domena zarządzana AD DS platformy Azure została wdrożona w jednym regionie. Upewnij się, że tworzysz lub wybrano sieć wirtualną w [regionie, który obsługuje usługę Azure AD DS](https://azure.microsoft.com/global-infrastructure/services/?products=active-directory-ds&regions=all).
+* Rozważ bliskość innych regionów świadczenia usługi Azure i sieci wirtualnych, które obsługują obciążenia aplikacji.
+    * Aby zminimalizować opóźnienie, należy utrzymać podstawowe aplikacje w pobliżu lub w tym samym regionie, w którym znajduje się podsieć sieci wirtualnej dla domeny zarządzanej platformy Azure AD DS. Między sieciami wirtualnymi platformy Azure można używać połączeń równorzędnych sieci wirtualnych lub wirtualnych sieci prywatnych (VPN).
+* Sieć wirtualna nie może polegać na usługach DNS innych niż udostępniane przez usługę Azure AD DS.
+    * Usługa Azure AD DS udostępnia własną usługę DNS. Sieć wirtualna musi być skonfigurowana do używania tych adresów usługi DNS. Rozpoznawanie nazw dla dodatkowych przestrzeni nazw można wykonać przy użyciu usług przesyłania dalej warunkowego.
+    * Nie można użyć niestandardowych ustawień serwera DNS, aby skierować zapytania do innych serwerów DNS, w tym na maszynach wirtualnych. Zasoby w sieci wirtualnej muszą korzystać z usługi DNS dostępnej w usłudze Azure AD DS.
+
+> [!IMPORTANT]
+> Po włączeniu usługi nie można przenieść AD DS platformy Azure do innej sieci wirtualnej.
+
+Domena zarządzana AD DS platformy Azure łączy się z podsiecią w sieci wirtualnej platformy Azure. Zaprojektuj tę podsieć dla AD DS platformy Azure z następującymi kwestiami:
+
+* Usługę Azure AD DS należy wdrożyć w jej własnej podsieci. Nie używaj istniejącej podsieci lub podsieci bramy.
+* Grupa zabezpieczeń sieci jest tworzona podczas wdrażania domeny zarządzanej AD DS platformy Azure. Ta sieciowa Grupa zabezpieczeń zawiera reguły wymagane do poprawnego komunikowania się z usługą.
+    * Nie twórz ani nie używaj istniejącej sieciowej grupy zabezpieczeń z własnymi regułami niestandardowymi.
+* Usługa Azure AD DS wymaga od pięciu do siedmiu adresów IP. Upewnij się, że zakres adresów IP podsieci może podawać tę liczbę adresów.
+    * Ograniczanie dostępnych adresów IP może uniemożliwić Azure AD Domain Services utrzymywanie dwóch kontrolerów domeny.
+
+Poniższy przykładowy diagram przedstawia prawidłowy projekt, w którym usługa Azure AD DS ma własną podsieć, jest podsiecią bramy dla łączności zewnętrznej, a obciążenia aplikacji znajdują się w podsieci w sieci wirtualnej:
+
+![Zalecany projekt podsieci](./media/active-directory-domain-services-design-guide/vnet-subnet-design.png)
+
+## <a name="connections-to-the-azure-ad-ds-virtual-network"></a>Połączenia z siecią wirtualną AD DS platformy Azure
+
+Jak wspomniano w poprzedniej sekcji, można utworzyć tylko Azure AD Domain Services domenę zarządzaną w jednej sieci wirtualnej na platformie Azure i można utworzyć tylko jedną domenę zarządzaną dla dzierżawy usługi Azure AD. W oparciu o tę architekturę może być konieczne połączenie przynajmniej jednej sieci wirtualnej, która hostuje obciążenia aplikacji w sieci wirtualnej platformy Azure AD DS.
+
+Możesz połączyć obciążenia aplikacji hostowane w innych sieciach wirtualnych platformy Azure, korzystając z jednej z następujących metod:
+
+* Wirtualne sieci równorzędne
+* Wirtualna sieć prywatna (VPN)
+
+### <a name="virtual-network-peering"></a>Komunikacja równorzędna sieci wirtualnej
+
+Komunikacja równorzędna sieci wirtualnych jest mechanizmem, który łączy dwie sieci wirtualne w tym samym regionie za pomocą sieci szkieletowej platformy Azure. Globalne wirtualne sieci równorzędne mogą łączyć się z siecią wirtualną w różnych regionach platformy Azure. Po nawiązaniu połączenia równorzędnego dwie sieci wirtualne zezwalają na zasoby, takie jak maszyny wirtualne, komunikują się ze sobą bezpośrednio przy użyciu prywatnych adresów IP. Za pomocą komunikacji równorzędnej sieci wirtualnej można wdrożyć domenę zarządzaną platformy Azure AD DS przy użyciu obciążeń aplikacji wdrożonych w innych sieciach wirtualnych.
+
+![Połączenie sieci wirtualnej przy użyciu komunikacji równorzędnej](./media/active-directory-domain-services-design-guide/vnet-peering.png)
+
+Aby uzyskać więcej informacji, zobacz temat [Omówienie komunikacji równorzędnej sieci wirtualnej platformy Azure](../virtual-network/virtual-network-peering-overview.md).
+
+### <a name="virtual-private-networking"></a>Wirtualna sieć prywatna
+
+Można połączyć sieć wirtualną z inną siecią wirtualną (VNet-to-VNet) w taki sam sposób, w jaki można skonfigurować sieć wirtualną do lokalizacji lokacji lokalnej. Oba połączenia wykorzystują bramę sieci VPN do tworzenia bezpiecznego tunelu przy użyciu protokołu IPsec/IKE. Ten model połączenia umożliwia wdrażanie AD DS platformy Azure w sieci wirtualnej platformy Azure, a następnie łączenie lokalizacji lokalnych lub innych chmur.
+
+![Łączność sieci wirtualnej przy użyciu VPN Gateway](./media/active-directory-domain-services-design-guide/vnet-connection-vpn-gateway.jpg)
+
+Aby uzyskać więcej informacji o korzystaniu z wirtualnej sieci prywatnej, przeczytaj temat [Konfigurowanie połączenia bramy sieci VPN typu sieć wirtualna-sieć wirtualna za pomocą Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal).
+
+## <a name="name-resolution-when-connecting-virtual-networks"></a>Rozpoznawanie nazw podczas łączenia sieci wirtualnych
+
+Sieci wirtualne połączone z siecią wirtualną Azure AD Domain Services zwykle mają własne ustawienia DNS. Po połączeniu z sieciami wirtualnymi nie konfiguruje się automatycznie rozpoznawania nazw dla połączenia sieci wirtualnej w celu rozpoznania usług dostarczonych przez domenę zarządzaną platformy Azure AD DS. Rozpoznawanie nazw w połączonych sieciach wirtualnych musi być skonfigurowane tak, aby umożliwić obciążom aplikacji lokalizowanie Azure AD Domain Services.
+
+Rozpoznawanie nazw można włączyć za pomocą warunkowych usług przesyłania dalej DNS na serwerze DNS obsługującym łączenie sieci wirtualnych lub przy użyciu tych samych adresów IP DNS z sieci wirtualnej usługi Azure AD Domain Service.
+
+## <a name="network-resources-used-by-azure-ad-ds"></a>Zasoby sieciowe używane przez AD DS platformy Azure
+
+W przypadku domeny zarządzanej AD DS platformy Azure tworzone są pewne zasoby sieciowe podczas wdrażania. Te zasoby są odpowiednie do pomyślnego działania i zarządzania domeną zarządzaną platformy Azure AD DS i nie powinny być konfigurowane ręcznie.
+
+| Zasób platformy Azure                          | Opis |
+|:----------------------------------------|:---|
+| Karta sieciowa                  | Usługa Azure AD DS hostuje domenę zarządzaną na dwóch kontrolerach domeny (DC) działających w systemie Windows Server jako maszyn wirtualnych platformy Azure. Każda maszyna wirtualna ma interfejs sieci wirtualnej, który łączy się z podsiecią sieci wirtualnej. |
+| Dynamiczny publiczny adres IP w warstwie Podstawowa         | Usługa Azure AD DS komunikuje się z usługą synchronizacji i zarządzania przy użyciu publicznego adresu IP jednostki SKU. Aby uzyskać więcej informacji o publicznych adresach IP, zobacz [typy adresów IP i metody alokacji na platformie Azure](../virtual-network/virtual-network-ip-addresses-overview-arm.md). |
+| Moduł równoważenia obciążenia w warstwie Podstawowa Azure               | Usługa Azure AD DS używa podstawowego modułu równoważenia obciążenia SKU do translacji adresów sieciowych (NAT) i równoważenia obciążenia (gdy jest używany z bezpiecznym protokołem LDAP). Aby uzyskać więcej informacji na temat modułów równoważenia obciążenia platformy Azure, zobacz [co to jest Azure Load Balancer?](../load-balancer/load-balancer-overview.md) |
+| Reguły translatora adresów sieciowych (NAT) | Usługa Azure AD DS tworzy i używa trzech reguł translatora adresów sieciowych w ramach modułu równoważenia obciążenia — jednej reguły dla bezpiecznego ruchu HTTP i dwóch reguł bezpiecznego komunikacji zdalnej programu PowerShell. |
+| Reguły modułu równoważenia obciążenia                     | W przypadku skonfigurowania domeny zarządzanej AD DS platformy Azure pod kątem bezpiecznego protokołu LDAP na porcie TCP 636, trzy reguły są tworzone i używane w module równoważenia obciążenia do dystrybucji ruchu. |
 
 > [!WARNING]
-> Nie można przenieść usług domenowych do innej sieci wirtualnej, po włączeniu usługi.
->
->
+> Nie usuwaj żadnych zasobów sieciowych utworzonych przez usługę Azure AD DS. W przypadku usunięcia dowolnych zasobów sieciowych wystąpi awaria usługi Azure AD DS.
 
+## <a name="network-security-groups-and-required-ports"></a>Sieciowe grupy zabezpieczeń i wymagane porty
 
-## <a name="guidelines-for-choosing-a-subnet"></a>Wskazówki dotyczące wybierania podsieci
+[Sieciowa Grupa zabezpieczeń (sieciowej grupy zabezpieczeń)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) zawiera listę reguł, które zezwalają na ruch sieciowy w sieci wirtualnej platformy Azure lub odmawiają go. Po wdrożeniu usługi Azure AD DS zawierającej zestaw reguł, które umożliwiają usłudze udostępnianie funkcji uwierzytelniania i zarządzania, tworzona jest sieciowa Grupa zabezpieczeń. Ta domyślna grupa zabezpieczeń sieci jest skojarzona z podsiecią sieci wirtualnej, w której wdrożono domenę zarządzaną platformy Azure AD DS.
 
-![Zalecane podsieci](./media/active-directory-domain-services-design-guide/vnet-subnet-design.png)
+Następujące reguły sieciowej grupy zabezpieczeń są wymagane dla usługi Azure AD DS, aby zapewnić uwierzytelnianie i usługi zarządzania. Nie Edytuj ani nie usuwaj tych reguł sieciowej grupy zabezpieczeń dla podsieci sieci wirtualnej, w której wdrożono domenę zarządzaną platformy Azure AD DS.
 
-* Wdrażanie usługi Azure AD Domain Services **oddzielić dedykowanej podsieci** w ramach sieci wirtualnej platformy Azure.
-* Czy mają zastosowanie sieciowych grup zabezpieczeń do dedykowanej podsieci dla Twojej domeny zarządzanej. Jeśli do dedykowanej podsieci, należy zastosować sieciowe grupy zabezpieczeń, upewnij się, że **nie blokować porty wymagane do usługi i zarządzanie nimi domenę**.
-* Nie ograniczaj nadmiernie liczbę adresów IP w dedykowanej podsieci dla Twojej domeny zarządzanej. To ograniczenie zapobiega udostępnia dwa kontrolery domeny dla domeny zarządzanej usługi.
-* **Usług domenowych Azure AD w podsieci bramy nie należy włączać** sieci wirtualnej.
+| Numer portu | Protocol | Obiekt źródłowy                             | Miejsce docelowe | Action | Wymagane | Cel |
+|:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
+| 443         | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | Tak      | Synchronizacja z dzierżawą usługi Azure AD. |
+| 3389        | TCP      | CorpNetSaw                         | Any         | Allow  | Tak      | Zarządzanie domeną. |
+| 5986        | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | Tak      | Zarządzanie domeną. |
+| 636         | TCP      | Any                                | Any         | Allow  | Nie       | Włączone tylko w przypadku konfigurowania bezpiecznego protokołu LDAP (LDAPs). |
 
 > [!WARNING]
-> Po skojarzeniu sieciowej grupy zabezpieczeń z podsiecią, w którym usługi Azure AD Domain Services jest włączona, może zakłócać zdolność firmy Microsoft do usługi i Zarządzanie domeną. Ponadto synchronizacji między dzierżawą usługi Azure AD, a Twoja domena zarządzana jest zakłócona. **Umowa SLA nie ma zastosowania do wdrożeń, w którym sieciowa grupa zabezpieczeń została zastosowana które blokuje usług domenowych Azure AD z aktualizacji i Zarządzanie domeną.**
+> Nie edytuj ręcznie tych zasobów sieciowych i konfiguracji. W przypadku kojarzenia nieskonfigurowanej grupy zabezpieczeń sieci lub tabeli tras zdefiniowanych przez użytkownika z podsiecią, w której wdrożono AD DS platformy Azure, możesz przerwać możliwość usługi i zarządzania domeną przez firmę Microsoft. Nieprzerwana synchronizacja dzierżawy usługi Azure AD i domeny zarządzanej platformy Azure AD DS.
 >
+> Dla sieciowej grupy zabezpieczeń istnieje również reguła domyślna dla *AllowVnetInBound*, *AllowAzureLoadBalancerInBound*, *DenyAllInBound*, *AllowVnetOutBound*, *AllowInternetOutBound*i *DenyAllOutBound* . Nie należy edytować ani usuwać tych domyślnych reguł.
 >
+> Umowa SLA platformy Azure nie ma zastosowania do wdrożeń, w których zastosowano nieprawidłowo skonfigurowaną tabelę zabezpieczeń sieci i/lub zdefiniowane przez użytkownika tabele tras, które blokują platformę Azure AD DS aktualizowania i zarządzania domeną.
 
-## <a name="ports-required-for-azure-ad-domain-services"></a>Porty wymagane dla usług domenowych Azure AD
-Następujące porty są wymagane dla usług domenowych Azure AD do usługi i obsługa Twojej domeny zarządzanej. Upewnij się, że te porty nie są zablokowane dla podsieci, w którym włączono Twojej domeny zarządzanej.
+### <a name="port-443---synchronization-with-azure-ad"></a>Port 443 — synchronizacja z usługą Azure AD
 
-| Numer portu | Wymagana? | Przeznaczenie |
-| --- | --- | --- |
-| 443 | Obowiązkowy |Synchronizacja z dzierżawą usługi Azure AD |
-| 5986 | Obowiązkowy | Zarządzanie domeny |
-| 3389 | Obowiązkowy | Zarządzanie domeny |
-| 636 | Optional (Opcjonalność) | Bezpieczny dostęp protokołu LDAP (LDAPS) do domeny zarządzanej |
+* Służy do synchronizowania dzierżawy usługi Azure AD z domeną zarządzaną platformy Azure AD DS.
+* Bez dostępu do tego portu domena zarządzana AD DS platformy Azure nie może zostać zsynchronizowana z dzierżawą usługi Azure AD. Użytkownicy mogą nie być w stanie zalogować się, ponieważ zmiany hasła nie będą synchronizowane z domeną zarządzaną platformy Azure AD DS.
+* Dostęp przychodzący do tego portu do adresów IP jest domyślnie ograniczony przy użyciu znacznika usługi **AzureActiveDirectoryDomainServices** .
+* Nie ograniczaj dostępu wychodzącego z tego portu.
 
-**Port 443 (synchronizacji z usługą Azure AD)**
-* Służy do synchronizacji katalogu usługi Azure AD z domeny zarządzanej.
-* Jest to konieczne, aby zezwolić na dostęp do tego portu w sieciowej grupie zabezpieczeń. Bez dostępu do tego portu Twoja domena zarządzana nie jest zsynchronizowany z katalogiem usługi Azure AD. Użytkownicy mogą nie mieć możliwości zarejestrowania się, jak zmiany hasła nie są zsynchronizowane z domeną zarządzaną.
-* Możesz ograniczyć dostęp dla ruchu przychodzącego do tego portu do adresów IP należących do zakresu adresów IP platformy Azure. Należy pamiętać, że zakres adresów IP platformy Azure inny zakres od zakresu programu PowerShell pokazano na poniższej reguły.
+### <a name="port-3389---management-using-remote-desktop"></a>Port 3389 — zarządzanie przy użyciu pulpitu zdalnego
 
-**Portu 5986 (komunikacja zdalna programu PowerShell)**
-* Służy do wykonywania zadań administracyjnych w domenie zarządzanej przy użyciu komunikacji zdalnej programu PowerShell.
-* Jest to konieczne, aby zezwolić na dostęp za pośrednictwem tego portu w sieciowej grupie zabezpieczeń. Bez dostępu do tego portu Twoja domena zarządzana nie może być zaktualizowane, skonfigurowany, kopii zapasowej lub monitorowane.
-* Dla nowej domeny lub domen z siecią wirtualną usługi Azure Resource Manager możesz ograniczyć dostęp dla ruchu przychodzącego do tego portu źródłowych adresów IP: 52.180.179.108, 52.180.177.87, 13.75.105.168, 52.175.18.134, 52.138.68.41, 52.138.65.157, 104.41.159.212, 104.45.138.161, 52.169.125.119, 52.169.218.0, 52.187.19.1, 52.187.120.237, 13.78.172.246, 52.161.110.169, 52.174.189.149, 40.68.160.142, 40.83.144.56, 13.64.151.161, 52.180.183.67, 52.180.181.39, 52.175.28.111, 52.175.16.141, 52.138.70.93, 52.138.64.115, 40.80.146.22, 40.121.211.60, 52.138.143.173, 52.169.87.10, 13.76.171.84, 52.187.169.156, 13.78.174.255, 13.78.191.178, 40.68.163.143, 23.100.14.28, 13.64.188.43, 23.99.93.197
-* Dla domen z klasyczną siecią wirtualną możesz ograniczyć dostęp dla ruchu przychodzącego do tego portu źródłowych adresów IP: 52.180.183.8, 23.101.0.70, 52.225.184.198, 52.179.126.223, 13.74.249.156, 52.187.117.83, 52.161.13.95, 104.40.156.18, 104.40.87.209
-* Kontrolery domeny dla domeny zarządzanej nie Nasłuchuj zwykle na tym porcie. Usługa otwiera ten port na kontrolerach domeny zarządzanej, tylko wtedy, gdy operacja zarządzaniem lub konserwacją, należy wykonać dla domeny zarządzanej. Jak najszybciej po zakończeniu tej operacji usługa zamknięcie tego portu, na kontrolerach domeny zarządzanej.
+* Używany do połączeń pulpitu zdalnego z kontrolerami domeny w domenie zarządzanej platformy Azure AD DS.
+* Domyślna reguła grupy zabezpieczeń sieci używa znacznika usługi *CorpNetSaw* w celu dodatkowego ograniczenia ruchu.
+    * Ten tag usługi zezwala na dostęp do domeny zarządzanej za pomocą usługi Azure AD DS tylko bezpiecznym stacjom roboczym dostępu w sieci firmowej firmy Microsoft.
+    * Dostęp jest dozwolony tylko w przypadku uzasadnienia biznesowego, na przykład w przypadku scenariuszy zarządzania lub rozwiązywania problemów.
+* Dla tej reguły można ustawić wartość *Odmów*i ustawić wartość *Zezwalaj* tylko wtedy, gdy jest to wymagane. Większość zadań związanych z zarządzaniem i monitorowaniem odbywa się przy użyciu komunikacji zdalnej programu PowerShell. Protokół RDP jest używany tylko w rzadkich przypadkach, gdy firma Microsoft musi połączyć się zdalnie z domeną zarządzaną w celu zaawansowania rozwiązywania problemów.
 
-**Port 3389 (pulpitu zdalnego)**
-* Służy do połączenia pulpitu zdalnego z kontrolerami domeny dla domeny zarządzanej.
-* Możesz ograniczyć dostęp dla ruchu przychodzącego, aby źródłowe adresy IP: 207.68.190.32/27, 13.106.78.32/27, 13.106.174.32/27, 13.106.4.96/27
-* Również portu pozostaje w dużej mierze wyłączony na Twojej domeny zarządzanej. Mechanizm ten nie jest używany w sposób ciągły, ponieważ zarządzanie i monitorowanie zadania są wykonywane przy użyciu komunikacji zdalnej programu PowerShell. Ten port jest używany tylko w rzadkich, firma Microsoft musi łączyć się zdalnie z domeny zarządzanej dla zaawansowanego rozwiązywania problemów. Numer portu jest zamknięty, zaraz po zakończeniu operacji rozwiązywania problemów.
+> [!NOTE]
+> Nie można ręcznie wybrać znacznika usługi *CorpNetSaw* w portalu, jeśli próbujesz edytować tę regułę sieciowej grupy zabezpieczeń. Musisz użyć Azure PowerShell lub interfejsu wiersza polecenia platformy Azure, aby ręcznie skonfigurować regułę, która używa znacznika usługi *CorpNetSaw* .
 
-**Portu 636 (protokołu Secure LDAP)**
-* Jest on używany umożliwiające dostęp do Twojej domeny zarządzanej secure LDAP przez internet.
-* Otwarcie tego portu, za pomocą sieciowa grupa zabezpieczeń jest opcjonalne. Tylko wtedy, gdy masz dostęp protokołu secure LDAP przez internet, włączone, należy otworzyć port.
-* Możesz ograniczyć dostęp dla ruchu przychodzącego do tego portu źródłowych adresów IP, z których oczekujesz, że połączenia za pośrednictwem protokołu secure LDAP.
+### <a name="port-5986---management-using-powershell-remoting"></a>Port 5986 — zarządzanie przy użyciu komunikacji zdalnej programu PowerShell
 
+* Służy do wykonywania zadań zarządzania przy użyciu komunikacji zdalnej programu PowerShell w domenie zarządzanej AD DS platformy Azure.
+* Bez dostępu do tego portu domeny zarządzanej AD DS platformy Azure nie można zaktualizować, skonfigurować, utworzyć kopii zapasowej ani monitorować.
+* W przypadku domen zarządzanych AD DS platformy Azure, które korzystają z sieci wirtualnej opartej na Menedżer zasobów, można ograniczyć dostęp przychodzący do tego portu do znacznika usługi *AzureActiveDirectoryDomainServices* .
+    * W przypadku starszych domen zarządzanych przez platformę Azure AD DS przy użyciu klasycznej sieci wirtualnej można ograniczyć dostęp przychodzący do tego portu do następujących źródłowych adresów IP: *52.180.183.8*, *23.101.0.70*, *52.225.184.198*, *52.179.126.223*, *13.74.249.156*, *52.187.117.83*, *52.161.13.95*, *104.40.156.18*i *104.40.87.209*.
 
-## <a name="network-security-groups"></a>Grupy zabezpieczeń sieci
-A [grupy zabezpieczeń sieci (NSG)](../virtual-network/virtual-networks-nsg.md) zawiera listę reguł listy kontroli dostępu (ACL), które blokują lub zezwalają na ruch sieciowy do wystąpień maszyn wirtualnych w sieci wirtualnej. Grupy NSG można kojarzyć z podsieciami lub poszczególnymi wystąpieniami maszyn wirtualnych w danej podsieci. Gdy sieciowa grupa zabezpieczeń jest skojarzona z podsiecią, reguły listy ACL dotyczą wszystkich wystąpień maszyn wirtualnych w tej podsieci. Ponadto ruch do poszczególnych maszyn wirtualnych można ograniczyć jeszcze bardziej przez skojarzenie sieciowej grupy zabezpieczeń bezpośrednio do tej maszyny Wirtualnej.
+## <a name="user-defined-routes"></a>Trasy definiowane przez użytkownika
 
-### <a name="sample-nsg-for-virtual-networks-with-azure-ad-domain-services"></a>Przykładowe sieciowej grupy zabezpieczeń dla sieci wirtualnych za pomocą usług domenowych Azure AD
-W poniższej tabeli przedstawiono przykładowe sieciowej grupy zabezpieczeń można skonfigurować dla sieci wirtualnej z domeną zarządzaną usług domenowych Azure AD. Ta zasada umożliwia ruchu przychodzącego za pośrednictwem portów wymaganych, aby upewnić się, Twoja domena zarządzana pozostaje poprawek, aktualizacji i mogą być monitorowane przez firmę Microsoft. Reguła "DenyAll" domyślna jest stosowana do całego ruchu przychodzącego z Internetu.
+Trasy zdefiniowane przez użytkownika nie są domyślnie tworzone i nie są potrzebne do poprawnego działania usługi Azure AD DS. Jeśli wymagane jest użycie tabel tras, unikaj wprowadzania jakichkolwiek zmian w marszrucie *0.0.0.0* . Zmiany w tej trasie mogą zakłócać Azure AD Domain Services.
 
-Ponadto sieciowej grupy zabezpieczeń ilustruje jak zablokować dostęp protokołu secure LDAP przez internet. Pomiń tę regułę, jeśli nie włączono dostęp protokołu secure LDAP do domeny zarządzanej za pośrednictwem Internetu. Sieciowa grupa zabezpieczeń zawiera zestaw reguł zezwalających na dla ruchu przychodzącego protokołu LDAPS dostęp za pośrednictwem portu TCP 636 tylko z określonego zestawu adresów IP. Reguły sieciowej grupy zabezpieczeń, aby zezwolić na dostęp protokołu LDAPS za pośrednictwem Internetu z określonych adresów IP ma wyższy priorytet niż reguły sieciowej grupy zabezpieczeń DenyAll.
+Należy również skierować ruch przychodzący z adresów IP uwzględnionych w odpowiednich tagach usługi platformy Azure do podsieci Azure AD Domain Services. Aby uzyskać więcej informacji na temat tagów usługi i skojarzonych z nimi adresów IP, zobacz [zakres adresów IP platformy Azure i Tagi usług — chmura publiczna](https://www.microsoft.com/en-us/download/details.aspx?id=56519).
 
-![Przykładowe sieciowej grupy zabezpieczeń z bezpiecznego protokołu LDAPS dostępu przez internet](./media/active-directory-domain-services-alerts/default-nsg.png)
+> [!CAUTION]
+> Te zakresy adresów IP centrum danych platformy Azure mogą ulec zmianie bez powiadomienia. Upewnij się, że masz procesy umożliwiające zweryfikowanie, że masz najnowsze adresy IP.
 
-**Więcej informacji na** - [Utwórz sieciową grupę zabezpieczeń](../virtual-network/manage-network-security-group.md).
+## <a name="next-steps"></a>Następne kroki
 
+Aby uzyskać więcej informacji na temat niektórych zasobów sieciowych i opcji połączenia używanych przez usługę Azure AD DS, zobacz następujące artykuły:
 
-## <a name="network-connectivity"></a>Połączenie sieciowe
-Domeny zarządzanej usług domenowych Azure AD można włączyć tylko w ramach jednej sieci wirtualnej na platformie Azure.
-
-### <a name="scenarios-for-connecting-azure-networks"></a>Scenariusze łączenia sieci platformy Azure
-Łączenie sieci wirtualnych platformy Azure, aby używać domeny zarządzanej, które w żadnym z następujących scenariuszy wdrażania:
-
-#### <a name="use-the-managed-domain-in-more-than-one-azure-virtual-network"></a>Używać domeny zarządzanej w więcej niż jednej sieci wirtualnej platformy Azure
-Łączenie z innymi sieciami wirtualnymi platformy Azure, siecią wirtualną platformy Azure, w której włączono usługi domenowe Azure AD. To połączenie komunikacji równorzędnej sieci VPN/sieci wirtualnej można używać domeny zarządzanej przy użyciu obciążenia wdrożone w innych sieciach wirtualnych.
-
-![Połączenia klasycznej sieci wirtualnej](./media/active-directory-domain-services-design-guide/classic-vnet-connectivity.png)
-
-#### <a name="use-the-managed-domain-in-a-resource-manager-based-virtual-network"></a>Użyj następującej domeny zarządzane w sieci wirtualnej usługi Resource Manager
-Łączenie z sieci wirtualnej usługi Resource Manager, do platformy Azure klasycznej sieci wirtualnej, w której włączono usługi domenowe Azure AD. To połączenie umożliwia domeny zarządzanej za pomocą obciążenia wdrożone w sieci wirtualnej usługi Resource Manager.
-
-![Menedżer zasobów do łączności z klasyczną siecią wirtualną](./media/active-directory-domain-services-design-guide/classic-arm-vnet-connectivity.png)
-
-### <a name="network-connection-options"></a>Opcje połączeń sieciowych
-* **Połączenia sieć wirtualna-sieć wirtualna, używając wirtualnej sieci równorzędnej**: Komunikacja równorzędna sieci wirtualnej to mechanizm, który łączy dwie sieci wirtualne w tym samym regionie za pośrednictwem sieci szkieletowej platformy Azure. Po połączeniu za pomocą komunikacji równorzędnej dwie sieci wirtualne są traktowane jako jedna do wszystkich celów związanych z łącznością. Są one nadal zarządzane jako oddzielne zasoby, ale maszyny wirtualne w tych sieciach wirtualnych mogą komunikować się bezpośrednio przy użyciu prywatnych adresów IP.
-
-    ![Połączenie sieci wirtualnej za pomocą komunikacji równorzędnej](./media/active-directory-domain-services-design-guide/vnet-peering.png)
-
-    [Więcej informacji — wirtualne sieci równorzędne](../virtual-network/virtual-network-peering-overview.md)
-
-* **Połączenia sieć wirtualna-sieć wirtualna za pomocą połączeń sieci VPN typu lokacja lokacja**: Łączenie sieci wirtualnej z inną siecią wirtualną (VNet między sieciami wirtualnymi) jest podobne do procesu łączenia sieci wirtualnej z lokacją lokalną. Oba typy połączeń wykorzystują bramę sieci VPN, aby zapewnić bezpieczny tunel z użyciem protokołu IPsec/IKE.
-
-    ![Połączenie sieci wirtualnej przy użyciu bramy sieci VPN](./media/active-directory-domain-services-design-guide/vnet-connection-vpn-gateway.jpg)
-
-    [Więcej informacji — łączenie sieci wirtualnych przy użyciu bramy sieci VPN](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
-
-<br>
-
-## <a name="related-content"></a>Powiązana zawartość
 * [Komunikacja równorzędna sieci wirtualnej platformy Azure](../virtual-network/virtual-network-peering-overview.md)
-* [Konfigurowanie połączenia między sieciami wirtualnymi dla klasycznego modelu wdrażania](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
-* [Grupy zabezpieczeń sieci platformy Azure](../virtual-network/security-overview.md)
-* [Utwórz sieciową grupę zabezpieczeń](../virtual-network/manage-network-security-group.md)
+* [Bramy sieci VPN platformy Azure](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md)
+* [Sieciowe grupy zabezpieczeń platformy Azure](../virtual-network/security-overview.md)
+
+<!-- INTERNAL LINKS -->
+
+<!-- EXTERNAL LINKS -->

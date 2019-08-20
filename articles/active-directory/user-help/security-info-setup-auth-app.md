@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5fff27094881ffbada2bda7937fa714ffc07133
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 0e1be41c854e212a7b673d8c2dff42d7b9981fb4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954348"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616130"
 ---
 # <a name="set-up-security-info-preview-to-use-an-authenticator-app"></a>Skonfiguruj informacje zabezpieczające (wersja zapoznawcza) w celu korzystania z aplikacji uwierzytelniania
 
@@ -145,6 +145,8 @@ Dostępne są dodatkowe opcje dotyczące sposobu, w jaki Twoja organizacja konta
     >Jeśli brakuje niektórych z tych opcji, prawdopodobnie organizacja nie zezwala na te metody. W takim przypadku należy wybrać dostępną metodę lub skontaktować się z administratorem w celu uzyskania pomocy.
 
 ## <a name="next-steps"></a>Następne kroki
+
+- Zaloguj się przy użyciu aplikacji Microsoft Authenticator, wykonując czynności opisane w artykule [Logowanie przy użyciu weryfikacji dwuetapowej lub informacji o zabezpieczeniach](security-info-setup-signin.md) .
 
 - Zagubione lub zapomniane hasło możesz zresetować w [portalu resetowania hasła](https://passwordreset.microsoftonline.com/) lub wykonując kroki przedstawione w artykule [Resetowanie hasła służbowego](user-help-reset-password.md).
 

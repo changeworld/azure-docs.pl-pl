@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
-ms.openlocfilehash: 57ab281e8d07537c22bd3cf60306dfb1c7e81541
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: f7cbee13416c090e59c82c928946b512af1c620b
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67566079"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611918"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Migrowanie istniejących Azure Service Bus standardowych przestrzeni nazw do warstwy Premium
 Wcześniej Azure Service Bus oferowane przestrzenie nazw tylko w warstwie Standardowa. Przestrzenie nazw to konfiguracje wielodostępne, które są zoptymalizowane pod kątem małych przepływności i środowisk deweloperskich. Warstwa Premium oferuje dedykowane zasoby na przestrzeń nazw na potrzeby przewidywalnego opóźnienia i zwiększonej przepływności przy stałej cenie. Warstwa Premium jest zoptymalizowana pod kątem wysokiej przepływności i środowisk produkcyjnych, które wymagają dodatkowych funkcji w przedsiębiorstwie.
@@ -115,7 +115,8 @@ Migracja przy użyciu Azure Portal ma ten sam przepływ logiczny co migracja prz
    1. Po zakończeniu synchronizacji wybierz pozycję **dalej** w dolnej części strony.
 
 1. Przejrzyj zmiany na stronie Podsumowanie. Wybierz pozycję **pełna migracja** , aby przełączyć obszary nazw i ukończyć migrację.
-    ![Przełącz menu][] przełączenia, strona potwierdzenia pojawia się po zakończeniu migracji.
+    ![Przełącz menu przełączania przestrzeni nazw][]  
+    Strona potwierdzenia zostanie wyświetlona po zakończeniu migracji.
     ![Przełącz przestrzeń nazw — powodzenie][]
 
 ## <a name="caveats"></a>Zastrzeżenia

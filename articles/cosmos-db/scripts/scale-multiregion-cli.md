@@ -8,16 +8,16 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 10/26/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 268b15fb0f3e185be4c06c5c0ba20668d1635f04
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7c957aff49e3428fec4b7ac7f2db19eeed9d7a40
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66154685"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614760"
 ---
-# <a name="replicate-an-azure-cosmos-db-database-account-in-multiple-regions-and-configure-failover-priorities-using-the-azure-cli"></a>Replikowanie konta bazy danych usługi Azure Cosmos DB w wielu regionach i konfigurowanie priorytetów trybu failover przy użyciu interfejsu wiersza polecenia platformy Azure
+# <a name="replicate-an-azure-cosmos-database-account-in-multiple-regions-and-configure-failover-priorities-using-the-azure-cli"></a>Replikowanie konta bazy danych usługi Azure Cosmos w wielu regionach i Konfigurowanie priorytetów trybu failover przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Ten przykład replikuje dowolnego rodzaju konto bazy danych usługi Azure Cosmos DB w wielu regionach i konfiguruje priorytety trybu failover przy użyciu interfejsu wiersza polecenia platformy Azure.
+Ten przykład replikuje dowolnego rodzaju konto bazy danych usługi Azure Cosmos w wielu regionach i konfiguruje priorytety trybu failover przy użyciu interfejsu wiersza polecenia platformy Azure.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -45,7 +45,7 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | [az cosmosdb update](/cli/azure/cosmosdb#az-cosmosdb-update) | Aktualizuje konto usługi Azure Cosmos DB. |
 | [az group delete](/cli/azure/group#az-group-delete) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](/cli/azure).
 

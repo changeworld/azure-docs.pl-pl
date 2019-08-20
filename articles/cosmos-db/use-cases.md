@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: 28a4cc854842b66a9fb61134e3ca9ac9a5f38fed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 04c1466c47d28f638bf7461050cb06b59c7d2396
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65965610"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614225"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Typowe przypadki użycia usługi Azure Cosmos DB
 Ten artykuł zawiera omówienie kilku typowych przypadków użycia usługi Azure Cosmos DB.  Zalecenia przedstawione w tym artykule służyć jako punkt początkowy, podczas opracowywania aplikacji za pomocą usługi Cosmos DB.   
@@ -26,7 +26,7 @@ Po przeczytaniu tego artykułu, będziesz mieć możliwość odpowiedzieć na na
 ## <a name="introduction"></a>Wprowadzenie
 [Usługa Azure Cosmos DB](../cosmos-db/introduction.md) to usługa globalnie rozproszona baza danych firmy Microsoft. Service została zaprojektowana, aby umożliwić klientom elastyczne (i niezależne) Skaluj przepływność oraz Magazyn w dowolnej liczbie regionów geograficznych. Azure Cosmos DB to pierwsza usługa globalnie rozproszonej bazy danych na rynku już dziś do oferty kompleksowe [umowy dotyczące poziomu usług](https://azure.microsoft.com/support/legal/sla/cosmos-db/) obejmujący przepływności, opóźnienia, dostępności i spójności. 
 
-Usługa Azure Cosmos DB jest globalne dystrybuowanej, wielomodelowej bazy danych, która jest używana w szerokiej gamy aplikacji i przypadkami użycia. To dobry wybór dla każdego [bezserwerowe](https://azure.com/serverless) aplikację, która wymaga krótkim kolejności z milisekund czasem odpowiedzi oraz potrzebuje skalowania szybkiego i globalnie. Obsługuje wiele modeli danych (pary klucz wartość, dokumenty, grafy i dane kolumnowe) i uzyskiwać dostęp do wielu interfejsów API dla danych, w tym [interfejsu API usługi Azure Cosmos DB, bazy danych mongodb](mongodb-introduction.md), [interfejsu API SQL](documentdb-introduction.md), [interfejs API Gremlin](graph-introduction.md), i [interfejsu API tabel](table-introduction.md) natywnie i w sposób rozszerzalny. 
+Usługa Azure Cosmos DB jest globalne dystrybuowanej, wielomodelowej bazy danych, która jest używana w szerokiej gamy aplikacji i przypadkami użycia. To dobry wybór dla każdego [bezserwerowe](https://azure.com/serverless) aplikację, która wymaga krótkim kolejności z milisekund czasem odpowiedzi oraz potrzebuje skalowania szybkiego i globalnie. Obsługuje ona wiele modeli danych (klucz-wartość, dokumenty, wykresy i kolumnowy) i wiele interfejsów API na potrzeby dostępu do danych, w [Azure Cosmos DB tym interfejs API usługi MongoDB](mongodb-introduction.md), [interfejs API SQL](documentdb-introduction.md), [interfejs API Gremlin](graph-introduction.md), interfejs [API tabel](table-introduction.md) natywnie i rozszerzalny skoordynowany. 
 
 Poniżej przedstawiono niektóre atrybuty usługi Azure Cosmos DB, które ułatwiają one odpowiednie dla aplikacji o wysokiej wydajności przy użyciu globalnych ambicji.
 
@@ -44,7 +44,7 @@ Przypadki użycia IoT często mają pewne wzorców w sposób pozyskiwanie ich, p
 
 ![Architektura odwołań usługi Azure Cosmos DB IoT](./media/use-cases/iot.png)
 
-Przez usługi Azure Event Hubs można pozyskać wzrosty danych, ponieważ oferuje on wysokiej przepływności, pozyskiwania danych z małymi opóźnieniami. Dane pozyskane, który ma zostać przetworzony, aby uzyskać wgląd w czasie rzeczywistym można funneled do usługi Azure Stream Analytics dla analizy w czasie rzeczywistym. Dane można załadować do usługi Azure Cosmos DB do wykonywania zapytań ad hoc. Po załadowaniu danych do usługi Azure Cosmos DB dane są gotowe do zbadania. Ponadto nowe dane i zmian do istniejących danych mogą być odczytywane na kanał informacyjny zmian. Kanał informacyjny zmian jest trwały, Dołącz dziennik zmian kontenery usługi Cosmos DB są przechowywane w kolejności sekwencyjnej. Wszystkie dane lub po prostu zmian danych w usłudze Azure Cosmos DB może służyć jako dane referencyjne w ramach analizy w czasie rzeczywistym. Ponadto dane dalsze można Elegancja i przetwarzane przez nawiązywania połączenia z danymi usługi Azure Cosmos DB HDInsight do zadań Pig, Hive i Map/Reduce.  Dostosowany dane są następnie ładowane do usługi Azure Cosmos DB do raportowania.   
+Przez usługi Azure Event Hubs można pozyskać wzrosty danych, ponieważ oferuje on wysokiej przepływności, pozyskiwania danych z małymi opóźnieniami. Dane pozyskane, który ma zostać przetworzony, aby uzyskać wgląd w czasie rzeczywistym można funneled do usługi Azure Stream Analytics dla analizy w czasie rzeczywistym. Dane można załadować do usługi Azure Cosmos DB do wykonywania zapytań ad hoc. Po załadowaniu danych do usługi Azure Cosmos DB dane są gotowe do zbadania. Ponadto nowe dane i zmian do istniejących danych mogą być odczytywane na kanał informacyjny zmian. Kanał informacyjny zmiany jest trwały, Dołącz tylko dziennik, który przechowuje zmiany w kontenerach Cosmos w kolejności sekwencyjnej. Wszystkie dane lub po prostu zmian danych w usłudze Azure Cosmos DB może służyć jako dane referencyjne w ramach analizy w czasie rzeczywistym. Ponadto dane dalsze można Elegancja i przetwarzane przez nawiązywania połączenia z danymi usługi Azure Cosmos DB HDInsight do zadań Pig, Hive i Map/Reduce.  Dostosowany dane są następnie ładowane do usługi Azure Cosmos DB do raportowania.   
 
 Aby uzyskać przykładowe rozwiązanie IoT przy użyciu usługi Azure Cosmos DB, EventHubs i Storm, zobacz [repozytorium usługi hdinsight — — przykłady dotyczące systemu storm w usłudze GitHub](https://github.com/hdinsight/hdinsight-storm-examples/).
 
@@ -68,7 +68,7 @@ Ponadto dane przechowywane w usłudze Azure Cosmos DB można zintegrować z HDIn
 ## <a name="gaming"></a>Gry
 Warstwa bazy danych jest kluczowym składnikiem aplikacji gier. Nowoczesne gry wykonywania przetwarzania graficznych na klientach mobilnych/konsoli, ale polegać na chmurze i dostarczać zawartość dostosowane i spersonalizowaną, taką jak statystyki gry, integracja z mediów społecznościowych i rankingi. Gier często wymagają opóźnień o wielkości pojedynczych milisekund dla operacji odczytu i zapisu zapewnienie interesujące w grze środowisko. Gry baza danych musi być szybkie i mieć możliwość obsługi również ogromne wzrosty liczby żądań podczas nowych uruchomień gry i aktualizacje funkcji.
 
-Usługa Azure Cosmos DB jest używany przez gry, takich jak [The Walking Dead: No Man's Land](https://azure.microsoft.com/blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/) przez [Next Games](https://www.nextgames.com/), i [Halo 5: Opiekunów](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/). Usługa Azure Cosmos DB zapewnia następujące korzyści dla deweloperów gier:
+Azure Cosmos DB jest używany przez gry, [takie jak idące: Brak terenów](https://azure.microsoft.com/blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/) firmy człowiek w [następnych grach](https://www.nextgames.com/)i [Halo 5: Opiekunowie](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/). Usługa Azure Cosmos DB zapewnia następujące korzyści dla deweloperów gier:
 
 * Usługa Azure Cosmos DB umożliwia wydajności można skalować w górę lub dół elastycznie. Dzięki temu gry do obsługi aktualizacji profilu i statystyk z dziesiątek, jak do milionów równoczesnych graczy, wprowadzając jednego wywołania interfejsu API.
 * Usługa Azure Cosmos DB obsługuje milisekund odczytuje i zapisuje w celu uniknięcia spowolnienia wszelkie podczas gry.
@@ -108,13 +108,13 @@ Lub, jeśli chcesz dowiedzieć się więcej o tym, klienci korzystający z usłu
 * [Citrix](https://customers.microsoft.com/story/citrix). Citrix opracowuje rozwiązanie z logowanie jednokrotne przy użyciu usługi Azure Service Fabric i usługi Azure Cosmos DB
 * [TEXA](https://customers.microsoft.com/story/texaspa) firmy TEXA Rewolucyjny rozwiązania IoT dla właścicieli pojazdu pozwala zaoszczędzić czas, pieniądze, gaz — i prawdopodobnie są przechowywane.
 * [Firmy Domino Pizza](https://www.dominos.com). Firmy Domino Pizza Inc. jest American pizza sieć restauracji.
-* [Kontroluje Johnson](https://www.johnsoncontrols.com). Formanty Johnson jest globalne różnorodnych technologii i wielu przemysłowych lidera obsługująca wielu klientów w więcej niż 150 krajach/regionach.
+* [Kontroluje Johnson](https://www.johnsoncontrols.com). Johnsonem Controls to globalnie zróżnicowana technologia i wielobranżowy lider obsługujący szeroki zakres klientów w ponad 150 krajach/regionach.
 * [Microsoft Windows Store uniwersalny, usługi Azure IoT Hub, Xbox Live i innych usług w skali Internetu](https://azure.microsoft.com/blog/how-azure-documentdb-planet-scale-nosql-helps-run-microsoft-s-own-businesses/). Jak Microsoft buduje wysoce skalowalnych usług, za pomocą usługi Azure Cosmos DB.
 * [Zespół Microsoft Data i analizy](https://customers.microsoft.com/story/microsoftdataandanalytics). Firmy Microsoft zespół Data i analizy osiąga skalowana w skali zbierania danych big data za pomocą usługi Azure Cosmos DB
 * [Sulekha.com](https://customers.microsoft.com/story/sulekha-uses-azure-documentdb-to-connect-customers-and-businesses-across-india). Sulekha używa usługi Azure Cosmos DB do łączenia klientów i firmom w Indiach.
 * [NewOrbit](https://customers.microsoft.com/story/neworbit-takes-flight-with-azure-documentdb). NewOrbit trwa lotu przy użyciu usługi Azure Cosmos DB.
 * [Affinio](https://customers.microsoft.com/doclink/affinio-switches-from-aws-to-azure-documentdb-to-harness-social-data-at-scale). Affinio zmieniła usługę AWS do usługi Azure Cosmos DB danymi społecznościowymi w dużej skali.
-* [Next Games](https://azure.microsoft.com//blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/). Walking Dead: Gra No Man's Land soars # 1 obsługiwanych przez usługę Azure Cosmos DB.
+* [Next Games](https://azure.microsoft.com//blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/). Niepochodzenie: Nie Soars gruntów firmy Man do #1 obsługiwanych przez Azure Cosmos DB.
 * [Gra Halo](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/). Gra Halo 5 implementacji rozgrywek społecznościowych w grze przy użyciu usługi Azure Cosmos DB.
 * [Cortana Analytics — Galeria](https://azure.microsoft.com/blog/cortana-analytics-gallery-a-scalable-community-site-built-on-azure-documentdb/). Cortana Analytics — Galeria - witryny społeczności skalowalne, oparta na usłudze Azure Cosmos DB.
 * [Szybka i bezproblemowa](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18602). Początkowe Integrator zapewnia globalny wgląd wielonarodowych przedsiębiorstw w ciągu kilku minut przy użyciu technologii chmury elastyczne.

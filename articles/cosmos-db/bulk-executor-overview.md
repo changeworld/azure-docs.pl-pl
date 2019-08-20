@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 1716bd64286f1882b9fc224712d227967d78058a
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 8d2cb30e0f18485d500344e571b3ac5f2cde008f
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68637777"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615708"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Omówienie biblioteki wykonawców zbiorczych Azure Cosmos DB
  
@@ -36,7 +36,7 @@ Biblioteka funkcji wykonawczej operacji zbiorczych ułatwia korzystanie z tej og
  
 * Umożliwia zbiorcze Importowanie ponad terabajtów danych w ciągu godziny przy użyciu architektury skalowalnej w poziomie.  
 
-* Można zbiorczo aktualizować istniejące dane w kontenerach Azure Cosmos DB jako poprawki. 
+* Można zbiorczo aktualizować istniejące dane w kontenerach usługi Azure Cosmos jako poprawki. 
  
 ## <a name="how-does-the-bulk-executor-operate"></a>Jak działa moduł wykonujący zbiorczo? 
 

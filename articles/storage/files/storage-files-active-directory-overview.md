@@ -6,12 +6,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 08/07/2019
 ms.author: rogarana
-ms.openlocfilehash: addb97d71da1ceac8717ae77204c87a8197dac86
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 6cdee8f1ad59962822e9e0394547c395c13e4bd8
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935170"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611779"
 ---
 # <a name="overview-of-azure-files-azure-active-directory-domain-service-azure-ad-ds-authentication-support-for-smb-access"></a>Omówienie obsługi uwierzytelniania protokołu SMB w AD DS usłudze Azure Files Azure Active Directory
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -59,7 +59,7 @@ Gdy tożsamość skojarzona z aplikacją działającą na maszynie wirtualnej pr
 ### <a name="enable-azure-ad-domain-service-authentication-for-smb-access"></a>Włączanie uwierzytelniania usługi Azure AD Domain Service dla dostępu SMB
 Możesz włączyć uwierzytelnianie usługi Azure AD Domain Service dla Azure Files na nowych i istniejących kontach magazynu utworzonych po 24 września 2018. 
 
-Przed włączeniem tej funkcji Sprawdź, czy Azure AD Domain Services został wdrożony dla podstawowej dzierżawy usługi Azure AD, z którą skojarzone jest konto magazynu. Jeśli nie skonfigurowano jeszcze Azure AD Domain Services, postępuj zgodnie ze wskazówkami krok po kroku podanymi w temacie [włączanie Azure Active Directory Domain Services przy użyciu Azure Portal](../../active-directory-domain-services/create-instance.md).
+Przed włączeniem tej funkcji Sprawdź, czy Azure AD Domain Services został wdrożony dla podstawowej dzierżawy usługi Azure AD, z którą skojarzone jest konto magazynu. Jeśli nie skonfigurowano jeszcze Azure AD Domain Services, postępuj zgodnie ze wskazówkami krok po kroku podanymi w temacie [włączanie Azure Active Directory Domain Services przy użyciu Azure Portal](../../active-directory-domain-services/tutorial-create-instance.md).
 
 Wdrożenie Azure AD Domain Services zwykle trwa od 10 do 15 minut. Po wdrożeniu Azure AD Domain Services można włączyć uwierzytelnianie usługi Azure AD za pośrednictwem protokołu SMB dla Azure Files. Aby uzyskać więcej informacji, zobacz [włączanie Azure Active Directory uwierzytelniania usługi domeny za pośrednictwem protokołu SMB dla Azure Files](storage-files-active-directory-enable.md). 
 

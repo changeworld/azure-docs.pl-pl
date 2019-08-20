@@ -1,103 +1,115 @@
 ---
-title: Omówienie usługi Azure Active Directory Domain Services | Dokumentacja firmy Microsoft
-description: Omówienie usługi Azure Active Directory Domain Services
+title: Przegląd Azure Active Directory Domain Services | Microsoft Docs
+description: W tym przeglądzie dowiesz się, co zapewnia Azure Active Directory Domain Services i jak korzystać z niego w organizacji w celu zapewnienia usług tożsamości dla aplikacji i usług w chmurze.
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
-ms.assetid: 0d47178f-773e-45f9-9ff4-9e8cffa4ffa2
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 05/20/2019
+ms.topic: overview
+ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: e29936915f0cd0b7e7ae7adfdbdb90d31195cd34
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 921266b78b82364b4610dcd74b6ee16ee44cb060
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472748"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617232"
 ---
-# <a name="azure-active-directory-ad-domain-services"></a>Azure Active Directory (AD) Domain Services
-## <a name="overview"></a>Przegląd
-Usługi infrastruktury platformy Azure umożliwiają wdrażanie szerokiego zakresu rozwiązań obliczeniowych zwinne. Usługa Azure Virtual Machines można wykonywać niemal natychmiastowe wdrażanie, i płacisz tylko za wykorzystane minuty. Przy użyciu obsługi Windows, Linux, SQL Server, Oracle, IBM, SAP i BizTalk, możesz wdrożyć dowolne obciążenie, w dowolnym języku i w prawie każdym systemie operacyjnym. Korzyści te umożliwiają migrować starsze aplikacje wdrożone w środowisku lokalnym na platformie Azure, aby zaoszczędzić na wydatki operacyjne.
+# <a name="what-is-azure-active-directory-domain-services"></a>Co to jest Azure Active Directory Domain Services?
 
-Kluczowym aspektem migrowania aplikacji lokalnych do platformy Azure jest obsługa wymagań tożsamości tych aplikacji. Aplikacji obsługujących katalog może Polegaj na LDAP w celu odczytu lub zapisu do katalogu firmy, zależą od Windows zintegrowanego uwierzytelniania (uwierzytelnianie Kerberos lub NTLM) do uwierzytelniania użytkowników końcowych. Line-of-business (LOB) działających w systemie Windows Server są zazwyczaj wdrożone na komputerach przyłączonych do domeny, aby można było zarządzać nimi przy użyciu zasad grupy. Te zależności w infrastrukturze tożsamość firmowa aplikacjom "lift-and-shift" środowiska lokalnego do chmury, muszą zostać rozwiązane.
+Azure Active Directory Domain Services (Azure AD DS) oferuje zarządzane usługi domenowe, takie jak przyłączanie do domeny, zasady grupy, LDAP oraz uwierzytelnianie Kerberos/NTLM, które jest w pełni zgodne z systemem Windows Server Active Directory. Te usługi domenowe są używane bez konieczności wdrażania i poprawiania kontrolerów domeny w chmurze oraz zarządzania nimi. Usługa Azure AD DS integruje się z istniejącą dzierżawą usługi Azure AD, co umożliwia użytkownikom logowanie się przy użyciu istniejących poświadczeń. Istnieje również możliwość użycia istniejących grup i kont użytkowników w celu zabezpieczenia dostępu do zasobów, co zapewnia płynne podniesienie i przesunięcia zasobów lokalnych na platformę Azure.
 
-Administratorzy często włączyć do jednego z następujących rozwiązań do zaspokojenia potrzeb tożsamości aplikacji wdrożonych na platformie Azure:
+Usługa Azure AD DS replikuje informacje o tożsamościach z usługi Azure AD, więc współpracuje z dzierżawami usługi Azure AD, które są przeznaczone tylko do chmury, lub zsynchronizowane ze środowiskiem lokalnym Active Directory Domain Services (AD DS). Jeśli masz istniejące lokalne środowisko AD DS, możesz synchronizować informacje o kontach użytkowników, aby zapewnić użytkownikom spójną tożsamość. W przypadku środowisk opartych tylko na chmurze nie jest wymagane tradycyjne lokalne środowisko AD DS do używania scentralizowanych usług tożsamości usługi Azure AD DS. Ten sam zestaw funkcji platformy Azure AD DS istnieje w obu środowiskach.
 
-* Wdrażanie połączenia VPN lokacja lokacja między obciążeń działających w usługach infrastruktury platformy Azure i katalogu firmowego w środowisku lokalnym.
-* Konfigurowanie replik kontrolerów domeny przy użyciu maszyn wirtualnych platformy Azure, aby rozszerzyć firmowej infrastruktury usługi AD w domenie lub lesie.
-* Wdrażanie autonomicznego domeny na platformie Azure przy użyciu kontrolery domeny wdrożone jako maszyny wirtualne platformy Azure.
+Poniższy klip wideo zawiera Omówienie integracji usługi Azure AD DS z aplikacjami i obciążeniami w celu zapewnienia usług tożsamości w chmurze:
 
-Te metody borykają się z dużymi kosztami i nakładem pracy administracyjnej. Administratorzy są wymagane do wdrożenia kontrolerów domeny za pomocą maszyn wirtualnych na platformie Azure. Ponadto muszą one zarządzanie, zabezpieczenia, poprawki, monitorowania, kopii zapasowych i rozwiązywanie problemów tych maszyn wirtualnych. Poleganie na połączenia sieci VPN do katalogu lokalnego powoduje, że obciążeń wdrożonych na platformie Azure są narażone na błędy przejściowe problemy z siecią lub awarie. Te awarie sieci z kolei powodować niższe czasu i zmniejszenie niezawodność dla tych aplikacji.
-
-Został zaprojektowany usług domenowych Azure AD jako alternatywa łatwiejsze.
-
-### <a name="watch-an-introductory-video"></a>Obejrzyj klip wideo
+<br />
 
 >[!VIDEO https://www.youtube.com/embed/T1Nd9APNceQ]
 
-## <a name="introducing-azure-ad-domain-services"></a>Wprowadzenie do usług domenowych Azure AD
+## <a name="common-ways-to-provide-identity-solutions-in-the-cloud"></a>Typowe sposoby dostarczania rozwiązań do obsługi tożsamości w chmurze
 
-Azure AD Domain Services oferuje zarządzane usługi domenowe przyłączania do domeny, grupy zasad, LDAP, Kerberos/NTLM uwierzytelniania są w pełni zgodne z usługą Active Directory systemu Windows Server. Mogą wykorzystywać te usługi domeny bez konieczności wdrażania, zarządzania i stosowanie poprawek do kontrolerów domeny w chmurze. Azure AD Domain Services integruje się z istniejącej dzierżawy usługi Azure AD, umożliwiając użytkownikom zalogowanie się przy użyciu swoich poświadczeń firmowych. Ponadto można użyć istniejących grup i kont użytkowników do zabezpieczania dostępu do zasobów, co pozwala na zapewnienie gładsze "lift-and-shift" zasobów lokalnych do usług infrastruktury platformy Azure.
+Podczas migrowania istniejących obciążeń do chmury aplikacje obsługujące katalogi mogą używać protokołu LDAP do odczytu lub zapisu w lokalnym katalogu AD DS. Aplikacje uruchamiane w systemie Windows Server są zwykle wdrażane na przyłączonych do domeny, aby można je było bezpiecznie zarządzać przy użyciu zasady grupy. W celu uwierzytelnienia użytkowników końcowych aplikacje mogą również polegać na uwierzytelnianiu zintegrowanym z systemem Windows, takim jak uwierzytelnianie Kerberos lub NTLM.
 
-Funkcjonalność platformy Azure AD Domain Services współpracuje bezproblemowo niezależnie od tego, czy dzierżawy usługi Azure AD tylko w chmurze lub synchronizowanych z usługą Active Directory w środowisku lokalnym.
+Administratorzy IT często używają jednego z następujących rozwiązań, aby zapewnić usłudze tożsamości aplikacje działające na platformie Azure:
 
-### <a name="azure-ad-domain-services-for-cloud-only-organizations"></a>Azure AD Domain Services dla organizacji, tylko w chmurze
+* Skonfiguruj połączenie sieci VPN typu lokacja-lokacja między obciążeniami uruchomionymi na platformie Azure a lokalnym środowiskiem AD DS.
+* Utwórz repliki kontrolerów domeny za pomocą usługi Azure Virtual Machines (VM), aby zwiększyć AD DS domeny/lasu.
+* Wdróż autonomiczne środowisko AD DS na platformie Azure przy użyciu kontrolerów domeny działających na maszynach wirtualnych platformy Azure.
 
-Tylko w chmurze dzierżawę usługi Azure AD (często określanymi jako "dzierżaw zarządzanych") nie ma żadnych zużycie tożsamości lokalnych. Innymi słowy konta użytkownika, hasła i członkostwa w grupach są wszystkie natywna względem chmury — czyli tworzone i zarządzane w usłudze Azure AD. Należy wziąć pod uwagę kilka minut, Contoso jest tylko w chmurze dzierżawę usługi Azure AD. Jak pokazano na poniższej ilustracji, administrator firmy Contoso skonfigurował sieci wirtualnej w usługach infrastruktury platformy Azure. Aplikacje i obciążenia serwera są wdrażane w tej sieci wirtualnej, maszynach wirtualnych platformy Azure. Ponieważ firma Contoso ma dzierżawy tylko w chmurze, wszystkie tożsamości użytkownika, poświadczeń i członkostwa w grupach są tworzone i zarządzane w usłudze Azure AD.
+Korzystając z tych metod, połączenia sieci VPN z katalogiem lokalnym sprawiają, że aplikacje są podatne na przejściowe awarie sieciowe lub przestoje. W przypadku wdrażania kontrolerów domeny przy użyciu maszyn wirtualnych na platformie Azure maszyny wirtualne zespołu IT muszą zarządzać, zabezpieczać, poprawiać, monitorować, tworzyć kopie zapasowe i rozwiązywać problemy.
 
-![Omówienie usług domenowych Azure AD](./media/active-directory-domain-services-overview/aadds-overview.png)
+Usługa Azure AD DS oferuje alternatywy dla potrzeb tworzenia połączeń sieci VPN z powrotem do lokalnego środowiska AD DS lub uruchamiania maszyn wirtualnych i zarządzania nimi na platformie Azure w celu zapewnienia usług tożsamości. Jako usługa zarządzana platforma Azure AD DS zmniejsza złożoność tworzenia zintegrowanego rozwiązania do obsługi tożsamości zarówno dla środowisk hybrydowych, jak i chmurowych.
 
-Firmy Contoso administratora IT, można włączyć usług domenowych Azure AD dla swojej dzierżawy usługi Azure AD i chce udostępnić usług domain services w tej sieci wirtualnej. Dzięki temu usługi Azure AD Domain Services aprowizowanie domeny zarządzanej i udostępnia go w sieci wirtualnej. Wszystkie konta użytkowników, członkostw w grupie i poświadczenia użytkownika są dostępne w dzierżawie usługi Azure AD firmy Contoso również są dostępne w tej domenie nowo utworzony. Ta funkcja umożliwia użytkownikom w organizacji Zaloguj się do domeny przy użyciu swoich poświadczeń firmowych — na przykład podczas zdalnego łączenia się z komputerów przyłączonych do domeny za pomocą pulpitu zdalnego. Administratorzy mogą aprowizować dostęp do zasobów w domenie przy użyciu istniejących członkostw w grupie. Aplikacje wdrożone na maszynach wirtualnych w sieci wirtualnej można użyć funkcji, takich jak przyłączanie do domeny, LDAP odczytu, LDAP bind, uwierzytelniania NTLM i Kerberos i zasad grupy.
+## <a name="azure-ad-ds-features-and-benefits"></a>Funkcje i zalety platformy Azure AD DS
 
-Oto kilka istotne aspekty domeny zarządzanej, który jest obsługiwany przez usługi domenowe Azure AD:
+Aby zapewnić obsługę tożsamości dla aplikacji i maszyn wirtualnych w chmurze, platforma Azure AD DS jest w pełni zgodna z tradycyjnym środowiskiem AD DS dla operacji takich jak przyłączanie do domeny, bezpieczne LDAP (LDAPs), zarządzanie zasady grupy i DNS oraz obsługa powiązań LDAP i odczytu. Obsługa zapisu LDAP jest dostępna dla obiektów utworzonych w domenie zarządzanej AD DS platformy Azure, ale nie zasobów synchronizowanych z usługi Azure AD. Następujące funkcje platformy Azure AD DS upraszczają operacje wdrażania i zarządzania:
 
-* Firmy Contoso IT administrator nie musi zarządzać, patch lub monitorowanie tej domeny lub kontrolerów domeny dla tej domeny zarządzanej.
-* Nie ma potrzeby zarządzania replikacją AD dla tej domeny. Konta użytkowników, członkostwa w grupach i poświadczeń z dzierżawą usługi Azure AD firmy Contoso są automatycznie dostępne w ramach tej domeny zarządzanej.
-* Ponieważ domeny jest zarządzane przez usługę Azure AD Domain Services, firma Contoso firmy IT administrator nie ma uprawnienia administratora domeny lub administratora przedsiębiorstwa w tej domenie.
+* **Uproszczone środowisko wdrażania:** Usługa Azure AD DS jest włączona dla dzierżawy usługi Azure AD przy użyciu jednego kreatora w Azure Portal.
+* **Integracja z usługą Azure AD:** Konta użytkowników, członkostwa w grupach i poświadczenia są automatycznie dostępne z dzierżawy usługi Azure AD. Nowi użytkownicy, grupy lub zmiany atrybutów z dzierżawy usługi Azure AD lub lokalnego środowiska AD DS są automatycznie synchronizowane z usługą Azure AD DS.
+* **Użyj poświadczeń/haseł firmowej:** Hasła użytkowników w dzierżawie usługi Azure AD współpracują z usługą Azure AD DS. Użytkownicy mogą używać swoich poświadczeń firmowych do przyłączania do domeny komputerów, logować się interaktywnie lub za pośrednictwem pulpitu zdalnego i uwierzytelniać się w domenie zarządzanej platformy Azure AD DS.
+* **Uwierzytelnianie NTLM i Kerberos:** Dzięki obsłudze uwierzytelniania NTLM i Kerberos można wdrażać aplikacje korzystające z uwierzytelniania zintegrowanego z systemem Windows.
+* **Wysoka dostępność:** Usługa Azure AD DS obejmuje wiele kontrolerów domeny, które zapewniają wysoką dostępność dla domeny zarządzanej. Ta wysoka dostępność gwarantuje czas pracy usługi i odporność na awarie.
 
-### <a name="azure-ad-domain-services-for-hybrid-organizations"></a>Azure AD Domain Services dla organizacji hybrydowych
-Organizacje z hybrydowej infrastruktury informatycznej korzystać z różnych zasobów w chmurze i zasobów lokalnych. Takie organizacje synchronizować informacje o tożsamościach z ich z katalogu lokalnego do swojej dzierżawy usługi Azure AD. Jak migrować bardziej "patrzą" organizacji hybrydowych aplikacji lokalnych do chmury, szczególnie starszych aplikacji obsługujących katalogi, usług domenowych Azure AD może być przydatne do nich.
+Poniżej przedstawiono niektóre kluczowe aspekty domeny zarządzanej platformy Azure AD DS:
 
-Firma litware została wdrożona [program Azure AD Connect](../active-directory/hybrid/whatis-hybrid-identity.md), aby zsynchronizować informacje o tożsamościach z ich z katalogu lokalnego do swojej dzierżawy usługi Azure AD. Informacje o tożsamości, która będzie synchronizowana obejmuje konta użytkowników, ich skrótów poświadczeń dla uwierzytelniania (synchronizacji skrótów haseł) i członkostwa w grupach.
+* Domena zarządzana AD DS platformy Azure jest domeną autonomiczną. Nie jest to rozszerzenie domeny lokalnej.
+* Twój zespół IT nie musi zarządzać, poprawiać ani monitorować kontrolerów domeny dla tej domeny zarządzanej platformy Azure AD DS.
 
-> [!NOTE]
-> **Synchronizacja skrótów haseł jest obowiązkowa dla organizacji hybrydowych do korzystania z usług domenowych Azure AD**. To wymaganie wynika poświadczeń użytkownika są potrzebne w domenie zarządzanej udostępniane przez usługi domenowe Azure AD do uwierzytelniania tych użytkowników za pomocą metod uwierzytelniania NTLM lub Kerberos.
->
->
+W przypadku środowisk hybrydowych, które są uruchamiane AD DS lokalnie, nie trzeba zarządzać replikacją usługi AD do domeny zarządzanej AD DS platformy Azure. Konta użytkowników, członkostwa w grupach i poświadczenia z katalogu lokalnego są synchronizowane z usługą Azure AD za pośrednictwem Azure AD Connect. Te konta użytkowników, członkostwa w grupach i poświadczenia są automatycznie dostępne w ramach domeny zarządzanej AD DS platformy Azure.
 
-![Usług domenowych Azure AD dla Litware Corporation](./media/active-directory-domain-services-overview/aadds-overview-synced-tenant.png)
+## <a name="how-does-azure-ad-ds-work"></a>Jak działa usługa Azure AD DS?
 
-Na poprzedniej ilustracji przedstawiono, jak używać usług domenowych Azure AD w organizacji za pomocą hybrydowego rozwiązania łączącego program infrastruktury IT, takich jak firma Litware. Aplikacje i obciążenia serwera, które wymagają usług domain services firmy litware są wdrażane w sieci wirtualnej w usługach infrastruktury platformy Azure. Firmy litware administratora IT, można włączyć usług domenowych Azure AD dla swojej dzierżawy usługi Azure AD i chce udostępnić w tej sieci wirtualnej w domenie zarządzanej. Ponieważ Litware organizacji za pomocą hybrydowego rozwiązania łączącego program infrastruktury IT, konta użytkowników, grupami i poświadczeniami są synchronizowane ich dzierżawy usługi Azure AD z ich z katalogu lokalnego. Ta funkcja umożliwia użytkownikom na logowanie się do domeny przy użyciu swoich poświadczeń firmowych — na przykład gdy zdalne łączenie się z maszyn przyłączony do domeny za pomocą pulpitu zdalnego. Administratorzy mogą aprowizować dostęp do zasobów w domenie przy użyciu istniejących członkostw w grupie. Aplikacje wdrożone na maszynach wirtualnych w sieci wirtualnej można użyć funkcji, takich jak przyłączanie do domeny, LDAP odczytu, LDAP bind, uwierzytelniania NTLM i Kerberos i zasad grupy.
+Aby zapewnić usługi tożsamości, platforma Azure tworzy domenę zarządzaną AD DS dostępną w wybranej sieci wirtualnej. W tle i bez konieczności zarządzania, zabezpieczania i aktualizowania nadmiarowości jest zapewniana przez parę kontrolerów domeny systemu Windows Server. Domena zarządzana AD DS Azure jest skonfigurowana tak, aby przeprowadzać jednokierunkową synchronizację z usługi Azure AD w celu zapewnienia dostępu do centralnego zestawu użytkowników, grup i poświadczeń. Zasoby można tworzyć bezpośrednio w domenie zarządzanej AD DS platformy Azure, ale nie są one zsynchronizowane z powrotem z usługą Azure AD. Aplikacje, usługi i maszyny wirtualne na platformie Azure, które łączą się z tą siecią wirtualną, mogą używać typowych funkcji AD DS, takich jak przyłączanie do domeny, zasady grupy, LDAP i uwierzytelnianie Kerberos/NTLM. W środowisku hybrydowym z lokalnym środowiskiem AD DS [Azure AD Connect][azure-ad-connect] synchronizuje informacje o tożsamości z usługą Azure AD.
 
-Oto kilka istotne aspekty domeny zarządzanej, który jest obsługiwany przez usługi domenowe Azure AD:
+![Synchronizacja w Azure AD Domain Services z usługą Azure AD i lokalnym Active Directory Domain Services przy użyciu programu AD Connect](./media/active-directory-domain-services-design-guide/sync-topology.png)
 
-* Domena zarządzana jest autonomicznym domeny. Nie jest rozszerzeniem firmy Litware domeny lokalnej.
-* Firmy litware IT administrator nie musi zarządzać poprawkami, lub monitoruje kontrolery domeny dla tej domeny zarządzanej.
-* Nie ma potrzeby zarządzania replikacją AD, do tej domeny. Konta użytkowników, członkostwa w grupach i poświadczeń z katalogu lokalnego firmy Litware synchronizowanych z usługą Azure AD za pomocą usługi Azure AD Connect. Te konta użytkowników, członkostw w grupie i poświadczenia są automatycznie dostępne w ramach domeny zarządzanej.
-* Ponieważ domena jest zarządzany przez usługę Azure AD Domain Services, firma Litware firmy IT administrator nie ma uprawnienia administratora domeny lub administratora przedsiębiorstwa w tej domenie.
+Aby zobaczyć AD DS platformy Azure w działaniu, przyjrzyjmy się kilku przykładom:
 
-## <a name="benefits"></a>Korzyści
-Za pomocą usług domenowych Azure AD można korzystać z następujących zalet:
+* [AD DS platformy Azure dla organizacji hybrydowych](#azure-ad-ds-for-hybrid-organizations)
+* [AD DS platformy Azure dla organizacji tylko w chmurze](#azure-ad-ds-for-cloud-only-organizations)
 
-* **Proste** — może zaspokoić potrzeby tożsamości maszyny wirtualne wdrożone w usługach infrastruktury platformy Azure przy użyciu jedynie kilku kliknięć. Nie jest konieczne wdrażanie infrastruktury i Zarządzanie tożsamościami w platformie Azure lub Instalator łączności lokalnej infrastrukturze tożsamości.
-* **Zintegrowane** — usługi domenowe Azure AD jest ściśle zintegrowana z dzierżawą usługi Azure AD. Można teraz używać usługi Azure AD jak katalog zintegrowanych przedsiębiorstwa opartej na chmurze przeznaczoną do potrzeb nowoczesnych aplikacji i tradycyjnych aplikacji obsługujących katalog.
-* **Zgodne** — usługi domenowe Azure AD jest oparta na sprawdzonej infrastrukturę klasy korporacyjnej z usługi Active Directory systemu Windows Server. Dlatego aplikacje polegać na większy stopień zgodności z funkcjami usługi Active Directory systemu Windows Server. Nie wszystkie funkcje dostępne w systemie Windows Server AD są aktualnie dostępne w usługach domenowych Azure AD. Jednak funkcje dostępne są zgodne z odpowiedniej funkcji systemu Windows Server AD polegać w infrastrukturze lokalnej. Możliwości dołączania LDAP, Kerberos, NTLM, zasady grupy i domeny stanowią dojrzała oferty, które zostały przetestowane i Elegancja przez różne wersje systemu Windows Server.
-* **Ekonomiczne** — za pomocą usług domenowych w usłudze Azure AD, możesz uniknąć obciążeń infrastruktury i zarządzania skojarzony z zarządzania infrastrukturą tożsamości do obsługi tradycyjnych aplikacji obsługujących katalog. Można przenieść te aplikacje do usługi infrastruktury platformy Azure i korzystać z niższych kosztów operacyjnych.
+### <a name="azure-ad-ds-for-hybrid-organizations"></a>AD DS platformy Azure dla organizacji hybrydowych
 
+Wiele organizacji uruchamia infrastrukturę hybrydową obejmującą zarówno obciążenia aplikacji w chmurze, jak i lokalne. Starsze aplikacje migrowane do platformy Azure w ramach strategii podnoszenia i przesunięcia mogą nadal używać tradycyjnych połączeń LDAP do dostarczania informacji o tożsamości. Aby zapewnić obsługę tej infrastruktury hybrydowej, informacje o tożsamościach ze środowiska lokalnego Active Directory Domain Services (AD DS) można synchronizować z dzierżawą usługi Azure AD. Usługa Azure AD DS może następnie udostępnić te starsze aplikacje na platformie Azure przy użyciu źródła tożsamości, bez konieczności konfigurowania i zarządzania łącznością aplikacji z powrotem do lokalnych usług katalogowych.
 
-## <a name="next-steps"></a>Kolejne kroki
-### <a name="learn-more-about-azure-ad-domain-services"></a>Dowiedz się więcej o usłudze Azure AD Domain Services
-* [Funkcje](active-directory-ds-features.md)
-* [Scenariusze wdrażania](scenarios.md)
-* [Dowiedz się, jeśli program Azure AD Domain Services odpowiada przypadki użycia](comparison.md)
-* [Zrozumienie, jak usługi domenowe Azure AD synchronizuje się z katalogiem usługi Azure AD](synchronization.md)
+Przyjrzyjmy się przykładowi do litware Corporation — organizacji hybrydowej, która działa zarówno lokalnie, jak i zasoby platformy Azure:
 
-### <a name="get-started-with-azure-ad-domain-services"></a>Wprowadzenie do usług Azure AD Domain Services
-* [Włączanie usług domenowych Azure AD przy użyciu witryny Azure portal](create-instance.md)
+![Azure Active Directory Domain Services organizacji hybrydowej, która obejmuje synchronizację lokalną](./media/overview/synced-tenant.png)
+
+* Obciążenia aplikacji i serwera, które wymagają usług domenowych, są wdrażane w sieci wirtualnej na platformie Azure.
+    * Może to obejmować starsze aplikacje migrowane do platformy Azure w ramach strategii podnoszenia i przesunięcia.
+* Aby synchronizować informacje o tożsamości z katalogu lokalnego do swojej dzierżawy usługi Azure AD, firma litware Corporation wdraża [Azure AD Connect][azure-ad-connect].
+    * Synchronizowane informacje o tożsamości obejmują konta użytkowników i członkostwa w grupach.
+* Zespół IT litware umożliwia korzystanie z platformy AD DS Azure w ramach tej dzierżawy usługi Azure AD w ramach tej lub komunikacji równorzędnej sieci wirtualnej.
+* Aplikacje i maszyny wirtualne wdrożone w usłudze Azure Virtual Network mogą następnie używać funkcji AD DS platformy Azure, takich jak przyłączanie do domeny, odczyt LDAP, powiązanie LDAP, uwierzytelnianie NTLM i Kerberos oraz zasady grupy.
+
+### <a name="azure-ad-ds-for-cloud-only-organizations"></a>AD DS platformy Azure dla organizacji tylko w chmurze
+
+Dzierżawa usługi Azure AD tylko w chmurze nie ma lokalnego źródła tożsamości. Konta użytkowników i członkostwa w grupach, na przykład, są tworzone i zarządzane w usłudze Azure AD.
+
+Teraz przyjrzyjmy się przykładowi do firmy Contoso — organizacji tylko w chmurze, która korzysta tylko z usługi Azure AD na potrzeby tożsamości. Wszystkie tożsamości użytkowników, ich poświadczenia i członkostwa w grupach są tworzone i zarządzane w usłudze Azure AD. Nie ma dodatkowej konfiguracji Azure AD Connect do synchronizowania informacji o tożsamości z katalogu lokalnego.
+
+![Azure Active Directory Domain Services organizacji tylko w chmurze bez synchronizacji lokalnej](./media/overview/cloud-only-tenant.png)
+
+* Obciążenia aplikacji i serwera, które wymagają usług domenowych, są wdrażane w sieci wirtualnej na platformie Azure.
+* Zespół IT firmy Contoso umożliwia korzystanie z platformy Azure AD DS w ramach tej dzierżawy usługi Azure AD w ramach tej lub komunikacji równorzędnej sieci wirtualnej.
+* Aplikacje i maszyny wirtualne wdrożone w usłudze Azure Virtual Network mogą następnie używać funkcji AD DS platformy Azure, takich jak przyłączanie do domeny, odczyt LDAP, powiązanie LDAP, uwierzytelnianie NTLM i Kerberos oraz zasady grupy.
+
+## <a name="next-steps"></a>Następne kroki
+
+Aby dowiedzieć się więcej o platformie Azure AD DS porównać z innymi rozwiązaniami do tworzenia tożsamości i jak działa synchronizacja, zobacz następujące artykuły:
+
+* [Porównanie AD DS platformy Azure z usługą Azure AD, Active Directory Domain Services na maszynach wirtualnych platformy Azure i Active Directory Domain Services lokalnych][compare]
+* [Dowiedz się, jak Azure AD Domain Services synchronizuje się z katalogiem usługi Azure AD][synchronization]
+
+Aby rozpocząć, [Utwórz domenę zarządzaną platformy Azure AD DS przy użyciu Azure Portal][tutorial-create].
+
+<!-- INTERNAL LINKS -->
+[compare]: compare-identity-solutions.md
+[synchronization]: synchronization.md
+[tutorial-create]: tutorial-create-instance.md
+[azure-ad-connect]: ../active-directory/hybrid/whatis-hybrid-identity.md
+[password-hash-sync]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md

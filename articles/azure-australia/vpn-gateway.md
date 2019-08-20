@@ -6,66 +6,66 @@ ms.service: azure-australia
 ms.topic: article
 ms.date: 07/22/2019
 ms.author: grgale
-ms.openlocfilehash: 442ad6334a1775033018005d4a85875dbcb08ada
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 00588042fa11ace51eef40cdedbae14c1bd99801
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68571850"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575422"
 ---
 # <a name="azure-vpn-gateway-in-azure-australia"></a>VPN Gateway platformy Azure w Australii platformy Azure
 
-Krytyczna usługa z jakąkolwiek chmurą publiczną to bezpieczne połączenie zasobów i usług w chmurze z istniejącymi systemami lokalnymi.  Usługa udostępniająca tę możliwość na platformie Azure to VPN Gateway platformy Azure (VPN Gateway). W tym artykule opisano kluczowe zagadnienia dotyczące konfigurowania VPN Gateway w celu zachowania zgodności z formantami ręcznymi (ISM) z [zabezpieczeniami informacyjnymi](https://acsc.gov.au/infosec/ism/) (ASD) w systemie.
+Krytyczna usługa z jakąkolwiek chmurą publiczną to bezpieczne połączenie zasobów i usług w chmurze z istniejącymi systemami lokalnymi. Usługa udostępniająca tę możliwość na platformie Azure jest VPN Gateway platformy Azure. W tym artykule opisano kluczowe kwestie, które należy wziąć pod uwagę w przypadku skonfigurowania bramy sieci VPN w celu zachowania zgodności z przepisami w zakresie [kontroli bezpieczeństwa informacji (](https://acsc.gov.au/infosec/ism/)ASD) dla programu Australia.
 
-VPN Gateway służy do wysyłania zaszyfrowanego ruchu między siecią wirtualną na platformie Azure a inną siecią.  Bramy sieci VPN są rozwiązywane przez następujące trzy scenariusze:
+Brama sieci VPN jest używana do wysyłania zaszyfrowanego ruchu między siecią wirtualną na platformie Azure a inną siecią. Następujące trzy scenariusze są rozwiązywane przez bramy sieci VPN:
 
-- **Lokacja-lokacja** S2S
-- **Punkt-lokacja** P2S
-- **VNet-to-VNet**
+- Lokacja-lokacja (S2S)
+- Punkt-lokacja (P2S)
+- Sieć-sieć
 
-Ten artykuł koncentruje się na bramach sieci VPN S2S. Na diagramie 1 przedstawiono przykładową konfigurację bramy sieci VPN typu lokacja-lokacja.
+Ten artykuł koncentruje się na bramach sieci VPN S2S. Na diagramie 1 przedstawiono przykład konfiguracji bramy sieci VPN S2S.
 
-![VPN Gateway z połączeniami z obsługą kilku lokacji](media/vpngateway-multisite-connection-diagram.png)
+![Brama sieci VPN z połączeniami z obsługą kilku lokacji](media/vpngateway-multisite-connection-diagram.png)
 
-*Diagram 1 — VPN Gatewaya lokacja-lokacja na platformie Azure*
+*Diagram 1 — VPN Gateway S2S platformy Azure*
 
 ## <a name="key-design-considerations"></a>Podstawowe zagadnienia dotyczące projektowania
 
 Istnieją trzy opcje sieciowe umożliwiające połączenie platformy Azure z firmowymi klientami rządowymi:
 
-- **IKONA**
-- **ExpressRoute**
-- **Publiczny Internet**
+- IKONA
+- Azure ExpressRoute
+- Publiczny Internet
 
-W programie australijski Podręcznik klienta usługi cybernetycznymi Security [dla systemu Azure](https://servicetrust.microsoft.com/viewpage/Australia) zaleca się używanie VPN Gateway (lub RÓWNOWAŻNEj chronionej, certyfikowanej usług innej firmy) w połączeniu z trzema opcjami sieci, aby upewnić się, że połączenia są zgodne z ISM kontroluje szyfrowanie i integralność.
+W przypadku korzystania z trzech opcji sieciowych w programie Cybernetycznymie Podręcznik klienta usługi Microsoft Security Centre [dla systemu Azure](https://servicetrust.microsoft.com/viewpage/Australia) zaleca się używanie VPN Gateway (lub RÓWNOWAŻNEj chronionej w tej usłudze innej firmy). To zalecenie ma na celu upewnienie się, że połączenia są zgodne z kontrolkami ISM na potrzeby szyfrowania i integralności.
 
 ### <a name="encryption-and-integrity"></a>Szyfrowanie i integralność
 
-Domyślnie usługa VPN negocjuje algorytmy szyfrowania i integralności oraz parametry podczas ustanawiania połączenia w ramach uzgodnień IKE.  Podczas uzgadniania IKE konfiguracja i kolejność preferencji zależą od tego, czy VPN Gateway jest inicjatorem, czy obiektem odpowiadającym (NB: jest to kontrolowane przez urządzenie sieci VPN).  Końcowa Konfiguracja połączenia jest kontrolowana przez konfigurację urządzenia sieci VPN.  Aby uzyskać szczegółowe informacje na temat zweryfikowanych urządzeń sieci VPN i ich konfiguracji, zobacz tutaj: [Informacje o urządzeniach sieci VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)
+Domyślnie usługa VPN negocjuje algorytmy szyfrowania i integralności oraz parametry podczas ustanawiania połączenia w ramach uzgodnień IKE. Podczas uzgadniania IKE konfiguracja i kolejność preferencji są zależne od tego, czy Brama sieci VPN jest inicjatorem, czy obiektem odpowiadającym. To oznaczenie jest kontrolowane przez urządzenie sieci VPN. Końcowa Konfiguracja połączenia jest kontrolowana przez konfigurację urządzenia sieci VPN. Aby uzyskać więcej informacji na temat zweryfikowanych urządzeń sieci VPN i ich konfiguracji, zobacz [Informacje o usługach sieci VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices).
 
 Bramy sieci VPN mogą kontrolować szyfrowanie i integralność przez skonfigurowanie niestandardowych zasad protokołu IPsec/IKE w połączeniu.
 
 ### <a name="resource-operations"></a>Operacje zasobów
 
-Bramy sieci VPN tworzą połączenie między środowiskami platformy Azure i firmami nienależącymi do platformy Azure za pośrednictwem publicznego Internetu.  ISM ma kontrolę, która odnosi się do jawnej autoryzacji połączeń.  Domyślnie można używać bram sieci VPN do tworzenia nieautoryzowanych tuneli w bezpiecznych środowiskach.  W związku z tym ważne jest, aby organizacje używały Access Control opartej na rolach (RBAC) na platformie Azure w celu kontrolowania, kto może tworzyć i modyfikować bramy sieci VPN i ich połączenia.  Platforma Azure nie ma roli "wbudowane" do zarządzania bramami sieci VPN w związku z tym wymaga roli niestandardowej.
+Bramy sieci VPN tworzą połączenie między środowiskami platformy Azure i firmami nienależącymi do platformy Azure za pośrednictwem publicznego Internetu. ISM ma kontrolę, która odnosi się do jawnej autoryzacji połączeń. Domyślnie można używać bram sieci VPN do tworzenia nieautoryzowanych tuneli w bezpiecznych środowiskach. Niezwykle ważne jest, aby organizacje używały kontroli dostępu opartej na rolach (RBAC) na platformie Azure w celu kontrolowania, kto może tworzyć i modyfikować bramy sieci VPN i ich połączenia. Platforma Azure nie ma wbudowanej roli do zarządzania bramami sieci VPN, więc wymagana jest rola niestandardowa.
 
-Dostęp do ról "Owner", "Współautor" i "Współautor sieci" jest ściśle kontrolowany.  Zaleca się również, aby Azure AD Privileged Identity Management jest używany w celu uzyskania bardziej szczegółowej kontroli dostępu.
+Dostęp do ról współautor, współautora i sieci jest ściśle kontrolowany. Zalecamy również używanie Azure Active Directory Privileged Identity Management w celu uzyskania bardziej szczegółowej kontroli dostępu.
 
 ### <a name="high-availability"></a>Wysoka dostępność
 
-Bramy sieci VPN platformy Azure mogą mieć wiele połączeń (zobacz diagram 1) i obsługiwać wiele lokalnych urządzeń sieci VPN w tym samym środowisku lokalnym.  
+Bramy sieci VPN platformy Azure mogą mieć wiele połączeń i obsługiwać wiele lokalnych urządzeń sieci VPN w tym samym środowisku lokalnym. Zobacz Diagram 1.
 
 Sieci wirtualne na platformie Azure mogą mieć wiele bram sieci VPN, które można wdrożyć w konfiguracjach niezależne, pasywne lub aktywne-aktywne.
 
-Zaleca się, aby wszystkie bramy sieci VPN zostały wdrożone w [konfiguracji o wysokiej](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-highlyavailable)dostępności: na przykład dwa lokalne urządzenia sieci VPN połączone z dwoma bramami sieci VPN w trybie aktywny-pasywny lub aktywny-aktywny (patrz diagram 2).
+Zalecamy wdrożenie wszystkich bram sieci VPN w [konfiguracji o wysokiej](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-highlyavailable)dostępności. Przykładem są dwa lokalne urządzenia sieci VPN połączone z dwoma bramami sieci VPN w trybie aktywny-pasywny lub aktywny-aktywny. Zobacz diagram 2.
 
-![VPN Gateway nadmiarowe połączenia](media/dual-redundancy.png)
+![Nadmiarowe połączenia bramy sieci VPN](media/dual-redundancy.png)
 
 *Diagram 2 — bramy sieci VPN typu aktywne-aktywne i dwa urządzenia sieci VPN*
 
 ### <a name="forced-tunneling"></a>Wymuszone tunelowanie
 
-Wymuszone przekierowania tunelowania lub "wymusza" cały ruch związany z Internetem z powrotem do środowiska lokalnego za pośrednictwem VPN Gateway na potrzeby inspekcji i inspekcji. Bez wymuszonego tunelowania ruch związany z Internetem z maszyn wirtualnych na platformie Azure przechodzi bezpośrednio przez infrastrukturę sieciową platformy Azure do publicznej sieci Internet bez opcji inspekcji lub inspekcji ruchu.  Jest to ważne, gdy organizacja jest wymagana do korzystania z bezpiecznej bramy internetowej (SIG) dla środowiska.
+Wymuszone przekierowanie tunelowania, czyli wymuszanie, cały ruch związany z Internetem z powrotem do środowiska lokalnego za pośrednictwem bramy sieci VPN na potrzeby inspekcji i inspekcji. Bez wymuszonego tunelowania ruch związany z Internetem z maszyn wirtualnych na platformie Azure przechodzi bezpośrednio przez infrastrukturę sieciową platformy Azure do publicznej sieci Internet bez opcji inspekcji lub inspekcji ruchu. Wymuszone tunelowanie ma krytyczne znaczenie, gdy organizacja jest wymagana do korzystania z bezpiecznej bramy internetowej (SIG) dla środowiska.
 
 ## <a name="detailed-configuration"></a>Konfiguracja szczegółowa
 
@@ -73,22 +73,22 @@ Wymuszone przekierowania tunelowania lub "wymusza" cały ruch związany z Intern
 
 Bramy sieci VPN dla połączeń S2S skonfigurowanych dla instytucji rządowych Australii muszą mieć następujące atrybuty:
 
-|Atrybut | NAJPIERW|
+|Atrybut | Najpierw|
 |--- | --- |
 |gatewayType | POŁĄCZENIE|
 |
 
 Ustawienia atrybutów wymagane do zapewnienia zgodności z kontrolkami ISM dla chronionych są następujące:
 
-|Atrybut | NAJPIERW|
+|Atrybut | Najpierw|
 |--- |---|
 |vpnType |RouteBased|
 |vpnClientConfiguration/vpnClientProtocols | IkeV2|
 |
 
-Bramy sieci VPN platformy Azure obsługują wiele algorytmów kryptograficznych ze standardów protokołu IPsec i IKE.  Domyślne zestawy zasad maksymalizują współdziałanie z szeroką gamę urządzeń sieci VPN innych firm.  W związku z tym jest możliwe, że podczas uzgadniania protokołu IKE niezgodna konfiguracja zostanie wynegocjowana.  Dlatego zdecydowanie zaleca się stosowanie [niestandardowych parametrów zasad protokołu IPSec/IKE](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell) do VpnClientConfiguration w BRAMACH sieci VPN, aby upewnić się, że połączenia spełniają kontrolę ISM dla połączeń środowiska lokalnego z platformą Azure.  Atrybuty klucza są następujące:
+Bramy sieci VPN platformy Azure obsługują wiele algorytmów kryptograficznych ze standardów protokołu IPsec i IKE. Zasady domyślne określają maksymalną współdziałanie z szeroką gamę urządzeń sieci VPN innych firm. W związku z tym możliwe jest, że podczas uzgadniania IKE konfiguracja niezgodnego może zostać wynegocjowana. Zdecydowanie zalecamy stosowanie [niestandardowych parametrów zasad protokołu IPSec/IKE](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell) do vpnClientConfiguration w BRAMACH sieci VPN, aby upewnić się, że połączenia są zgodne z kontrolkami ISM dla połączeń środowiska lokalnego z platformą Azure. Atrybuty klucza przedstawiono w poniższej tabeli.
 
-|Atrybut|MAM|NAJPIERW|
+|Atrybut|Mam|Najpierw|
 |---|---|---|
 |saLifeTimeSeconds|< wartość 14400 s|> 300 s|
 |saDataSizeKilobytes| |> 1024 KB|
@@ -100,24 +100,24 @@ Bramy sieci VPN platformy Azure obsługują wiele algorytmów kryptograficznych 
 |pfsGroup|PFS2048, PFS24, ECP256, ECP384||
 |
 
-*Dla dhGroup i pfsGroup w powyższej tabeli, ECP256 i ECP384 są preferowane, mimo że można użyć innych ustawień*
+Dla dhGroup i pfsGroup w poprzedniej tabeli, ECP256 i ECP384 są preferowane, nawet jeśli można użyć innych ustawień.
 
 ### <a name="related-services"></a>Powiązane usługi
 
-Podczas projektowania i konfigurowania usługi Azure VPN Gateway istnieje wiele powiązanych usług, które również muszą istnieć i zostały skonfigurowane:
+Podczas projektowania i konfigurowania bramy sieci VPN platformy Azure należy również posiadać i skonfigurować wiele powiązanych usług.
 
 |Usługa | Wymagana akcja|
 |--- | ---|
-|Sieć wirtualna | Bramy sieci VPN są dołączone do sieci wirtualnej.  Przed utworzeniem nowego VPN Gateway należy utworzyć sieć wirtualną.|
-|Publiczny adres IP | Bramy sieci VPN S2S muszą mieć publiczny adres IP, aby nawiązać połączenie między lokalnym urządzeniem sieci VPN a VPN Gateway.  Publiczny adres IP musi zostać utworzony przed utworzeniem VPN Gateway S2S.|
-|Subnet | Należy utworzyć podsieć sieci wirtualnej dla VPN Gateway.|
+|Sieć wirtualna | Bramy sieci VPN są dołączone do sieci wirtualnej. Utwórz sieć wirtualną przed utworzeniem nowej bramy sieci VPN.|
+|Publiczny adres IP | Bramy sieci VPN S2S muszą mieć publiczny adres IP, aby nawiązać połączenie między lokalnym urządzeniem sieci VPN i bramą sieci VPN. Utwórz publiczny adres IP przed utworzeniem bramy sieci VPN S2S.|
+|Subnet | Utwórz podsieć sieci wirtualnej dla bramy sieci VPN.|
 |
 
 ## <a name="implementation-steps-using-powershell"></a>Kroki implementacji przy użyciu programu PowerShell
 
-### <a name="role-based-access-control-rbac"></a>Kontrola dostępu oparta na rolach (RBAC)
+### <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
 
-1. Utwórz rolę niestandardową (na przykład współautor virtualNetworkGateway).  Utwórz rolę, która ma zostać przypisana do użytkowników, którzy będą mogli tworzyć i modyfikować bramy sieci VPN. Rola niestandardowa powinna zezwalać na następujące operacje:
+1. Utwórz rolę niestandardową. Przykładem jest współautor virtualNetworkGateway. Utwórz rolę, która ma zostać przypisana do użytkowników, którzy będą mogli tworzyć i modyfikować bramy sieci VPN. Rola niestandardowa powinna zezwalać na następujące operacje:
 
    Microsoft. Network/virtualNetworkGateways/*  
    Microsoft. Network/Connections/*  
@@ -129,41 +129,41 @@ Podczas projektowania i konfigurowania usługi Azure VPN Gateway istnieje wiele 
 
 2. Dodaj rolę niestandardową do użytkowników, którzy mogą tworzyć i zarządzać bramami sieci VPN i połączeniami z środowiskami lokalnymi.
 
-### <a name="create-vpn-gateway"></a>Utwórz VPN Gateway
+### <a name="create-a-vpn-gateway"></a>Tworzenie bramy sieci VPN
 
-*W tych krokach przyjęto, że sieć wirtualna została już utworzona*
+W tych krokach przyjęto założenie, że sieć wirtualna została już utworzona.
 
-1. Utwórz nowy publiczny adres IP
-2. Tworzenie podsieci VPN Gateway
-3. Utwórz konfigurację VPN Gateway IP
-4. Utwórz bramę VPN Gateway
-5. Tworzenie bramy sieci lokalnej dla lokalnego urządzenia sieci VPN
-6. Tworzenie zasad protokołu IPsec (przy założeniu przy użyciu niestandardowych zasad protokołu IPsec/IKE)
-7. Utwórz połączenie między VPN Gateway i bramą sieci lokalnej przy użyciu zasad protokołu IPsec
+1. Utwórz nowy publiczny adres IP.
+2. Utwórz podsieć bramy sieci VPN.
+3. Utwórz plik konfiguracji adresu IP bramy sieci VPN.
+4. Utwórz bramę sieci VPN.
+5. Utwórz bramę sieci lokalnej dla lokalnego urządzenia sieci VPN.
+6. Utwórz zasady protokołu IPsec. W tym kroku przyjęto założenie, że używasz niestandardowych zasad protokołu IPsec/IKE.
+7. Utwórz połączenie między bramą sieci VPN i bramą sieci lokalnej przy użyciu zasad protokołu IPsec.
 
 ### <a name="enforce-tunneling"></a>Wymuś tunelowanie
 
-Jeśli Wymuszone tunelowanie jest wymagane, przed utworzeniem VPN Gateway:
+Jeśli tunelowanie wymuszone jest wymagane, przed utworzeniem bramy sieci VPN:
 
-1. Utwórz tabelę tras i reguły tras
-2. Skojarz tabelę tras z odpowiednimi podsieciami
+1. Utwórz tabelę tras i reguły tras.
+2. Skojarz tabelę tras z odpowiednimi podsieciami.
 
-Po utworzeniu VPN Gateway:
+Po utworzeniu bramy sieci VPN:
 
-1. Ustaw GatewayDefaultSite na środowisko lokalne na VPN Gateway
+- Ustaw GatewayDefaultSite na środowisko lokalne w bramie sieci VPN.
 
 ### <a name="example-powershell-script"></a>Przykładowy skrypt programu PowerShell
 
-Przykładowy skrypt programu PowerShell służący do tworzenia niestandardowych zasad protokołu IPSEC/IKE, które są zgodne z usługami ISM Controls dla australijskiej CHRONIONEj klasyfikacji zabezpieczeń.
+Przykładowy skrypt programu PowerShell służący do tworzenia niestandardowych zasad protokołu IPsec/IKE jest zgodny z usługami ISM Controls dla australijskiej CHRONIONEj klasyfikacji zabezpieczeń.
 
-Przyjęto założenie, że istnieje sieć wirtualna, VPN Gateway i bramy lokalne.
+Przyjęto założenie, że istnieje sieć wirtualna, Brama sieci VPN i bramy lokalne.
 
 #### <a name="create-an-ipsecike-policy"></a>Tworzenie zasad protokołu IPsec/IKE
 
 Poniższy przykładowy skrypt tworzy zasady protokołu IPsec/IKE z następującymi algorytmami i parametrami:
 
 - IKEv2: AES256, SHA256, DHGroup ECP256
-- IPsec: AES256, SHA256, PFS ECP256, okres istnienia SA 14 400 sekund & 102400000 KB
+- IPsec: AES256, SHA256, PFS ECP256, okres istnienia SA 14 400 sekund i 102 400 000 KB
 
 ```powershell
 $custompolicy = New-AzIpsecPolicy `
@@ -200,9 +200,9 @@ New-AzVirtualNetworkGatewayConnection `
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym artykule omówiono konkretną konfigurację VPN Gateway w celu spełnienia wymagań określonych w podręczniku zabezpieczeń informacji (ISM) na potrzeby zabezpieczania danych chronionych przez rząd Australii podczas przesyłania. Aby uzyskać szczegółowe instrukcje dotyczące konfigurowania VPN Gateway:
+W tym artykule omówiono konkretną konfigurację VPN Gateway w celu spełnienia wymagań określonych w podręczniku bezpieczeństwa informacji w celu zabezpieczania danych chronionych przez rząd Australii podczas przesyłania. Aby uzyskać instrukcje dotyczące sposobu konfigurowania bramy sieci VPN, zobacz:
 
-- [Omówienie usługi Azure Virtual Network Gateway](https://docs.microsoft.com/azure/vpn-gateway/)  
+- [Omówienie bramy sieci wirtualnej platformy Azure](https://docs.microsoft.com/azure/vpn-gateway/)  
 - [Co to jest VPN Gateway?](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)  
 - [Tworzenie sieci wirtualnej z połączeniem sieci VPN typu lokacja-lokacja przy użyciu programu PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell)  
 - [Tworzenie usługi VPN Gateway i zarządzanie nią](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-tutorial-create-gateway-powershell)

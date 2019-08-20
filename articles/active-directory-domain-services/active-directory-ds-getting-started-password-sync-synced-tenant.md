@@ -15,37 +15,35 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: iainfou
-ms.openlocfilehash: 3ea4ebe652679ee9e4c0a165493fa86756ca7868
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: 0b38bdba0d88da9296106411737c280dcf6d5df1
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494564"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69613166"
 ---
-# <a name="enable-password-synchronization-to-azure-active-directory-domain-services"></a>Włączanie synchronizacji haseł w usługach Azure Active Directory Domain Services
-W poprzednich zadaniach włączono usługi Azure Active Directory Domain Services dla dzierżawy usługi Azure Active Directory (Azure AD). Kolejnym krokiem jest włączenie synchronizacji skrótów poświadczeń wymaganych do uwierzytelniania NT LAN Manager (NTLM) i Kerberos w usługach Azure AD Domain Services. Po skonfigurowaniu synchronizacji poświadczeń użytkownik może zalogować się do domeny zarządzanej przy użyciu poświadczeń firmowych.
+# <a name="enable-password-hash-synchronization-to-azure-active-directory-domain-services"></a>Włączanie synchronizacji skrótów haseł w usługach Azure Active Directory Domain Services
+
+Zsynchronizowana dzierżawa usługi Azure AD jest ustawiona do synchronizacji z katalogiem lokalnym organizacji za pomocą programu Azure AD Connect. Domyślnie program Azure AD Connect nie synchronizuje skrótów poświadczeń protokołów NTLM i Kerberos w ramach usługi Azure AD. Aby korzystać z usługi Azure AD Domain Services, należy skonfigurować program Azure AD Connect w celu zsynchronizowania skrótów poświadczeń wymaganych do uwierzytelniania NTLM i Kerberos. Następujące kroki umożliwiają synchronizację wymaganych skrótów poświadczeń z katalogu lokalnego z dzierżawą usługi Azure AD.
+
+> [!NOTE]
+> **Jeśli organizacja ma konta użytkowników, które są synchronizowane z katalogu lokalnego, musisz włączyć synchronizację skrótów NTLM i Kerberos, aby można było używać domeny zarządzanej.** Zsynchronizowane konto użytkownika to konto utworzone w katalogu lokalnym, które jest synchronizowane z dzierżawą usługi Azure AD za pomocą programu Azure AD Connect. Synchronizacja skrótów haseł jest procesem innym niż Synchronizacja użytkownika/obiektu. Należy wyłączyć/włączyć synchronizację skrótów haseł w celu uzyskania pełnej synchronizacji haseł, a następnie zobaczysz aktualizacje skrótu haseł wsadowych w dzienniku zdarzeń aplikacji.
+
+W tym artykule opisano włączenie synchronizacji skrótów poświadczeń wymaganych dla programu NT LAN Manager (NTLM) i uwierzytelniania Kerberos w celu Azure AD Domain Services. Po skonfigurowaniu synchronizacji poświadczeń użytkownik może zalogować się do domeny zarządzanej przy użyciu poświadczeń firmowych.
 
 Wykonywane czynności są różne dla kont użytkowników tylko w chmurze i kont użytkowników synchronizowanych z katalogu lokalnego przy użyciu programu Azure AD Connect.
 
 | **Typ konta użytkownika** | **Czynności do wykonania** |
 | --- | --- |
-| **Konta użytkownika synchronizowane z poziomu katalogu lokalnego** |**&#x2713;** [Postępuj zgodnie z instrukcjami w tym artykule](active-directory-ds-getting-started-password-sync-synced-tenant.md#task-5-enable-password-synchronization-to-your-managed-domain-for-user-accounts-synced-with-your-on-premises-ad) |
-| **Konta użytkowników chmury utworzone w usłudze Azure AD** |**&#x2713;** [Zsynchronizuj hasła dla kont użytkowników tylko w chmurze do domeny zarządzanej](active-directory-ds-getting-started-password-sync.md) |
+| **Konta użytkownika synchronizowane z poziomu katalogu lokalnego** |**&#x2713;** [Postępuj zgodnie z instrukcjami w tym artykule](active-directory-ds-getting-started-password-sync-synced-tenant.md#install-or-update-azure-ad-connect) |
+| **Konta użytkowników chmury utworzone w usłudze Azure AD** |**&#x2713;** [Zsynchronizuj hasła dla kont użytkowników tylko w chmurze do domeny zarządzanej](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) |
 
 > [!TIP]
 > **Może być konieczne wykonanie obu zestawów czynności.**
 > Jeśli dzierżawa usługi Azure AD ma kombinację użytkowników tylko w chmurze i użytkowników z lokalnej usługi AD, należy ukończyć oba zestawy czynności.
->
 
-## <a name="task-5-enable-password-synchronization-to-your-managed-domain-for-user-accounts-synced-with-your-on-premises-ad"></a>Zadanie 5. Włączanie synchronizacji haseł do domeny zarządzanej dla kont użytkowników zsynchronizowanych z lokalną usługą AD
-Zsynchronizowana dzierżawa usługi Azure AD jest ustawiona do synchronizacji z katalogiem lokalnym organizacji za pomocą programu Azure AD Connect. Domyślnie program Azure AD Connect nie synchronizuje skrótów poświadczeń protokołów NTLM i Kerberos w ramach usługi Azure AD. Aby korzystać z usługi Azure AD Domain Services, należy skonfigurować program Azure AD Connect w celu zsynchronizowania skrótów poświadczeń wymaganych do uwierzytelniania NTLM i Kerberos. Następujące kroki umożliwiają synchronizację wymaganych skrótów poświadczeń z katalogu lokalnego z dzierżawą usługi Azure AD.
+## <a name="install-or-update-azure-ad-connect"></a>Instalowanie lub aktualizowanie programu Azure AD Connect
 
-> [!NOTE]
-> **Jeśli organizacja ma konta użytkowników, które są synchronizowane z katalogu lokalnego, musisz włączyć synchronizację skrótów NTLM i Kerberos, aby można było używać domeny zarządzanej.** Zsynchronizowane konto użytkownika to konto utworzone w katalogu lokalnym, które jest synchronizowane z dzierżawą usługi Azure AD za pomocą programu Azure AD Connect.  Synchronizacja skrótów haseł jest procesem innym niż Synchronizacja użytkownika/obiektu. Należy wyłączyć/włączyć synchronizację skrótów haseł w celu uzyskania pełnej synchronizacji haseł, a następnie zobaczysz aktualizacje skrótu haseł wsadowych w dzienniku zdarzeń aplikacji.
->
->
-
-### <a name="install-or-update-azure-ad-connect"></a>Instalowanie lub aktualizowanie programu Azure AD Connect
 Na komputerze przyłączonym do domeny zainstaluj najnowszą zalecaną wersję programu Azure AD Connect. Jeśli masz istniejące wystąpienie instalatora programu Azure AD Connect, musisz zaktualizować go tak, aby można było korzystać z najnowszej wersji programu Azure AD Connect. Zawsze używaj najnowszej wersji programu Azure AD Connect, aby uniknąć znanych problemów i błędów, które mogły już zostać naprawione.
 
 **[Pobieranie programu Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)**
@@ -54,12 +52,11 @@ Zalecana wersja: **1.1.614.0** — Opublikowano 5 września 2017.
 
 > [!WARNING]
 > Aby umożliwić synchronizowanie starych poświadczeń haseł (wymaganych podczas uwierzytelniania NTLM i Kerberos) z dzierżawą usługi Azure AD, MUSISZ zainstalować najnowszą zalecaną wersję programu Azure AD Connect. Ta funkcja nie jest dostępna w poprzednich wersjach programu Azure AD Connect ani starszej wersji narzędzia DirSync.
->
->
 
 Instrukcje dotyczące instalowania programu Azure AD Connect są dostępne w artykule [Wprowadzenie do programu Azure AD Connect](../active-directory/hybrid/whatis-hybrid-identity.md)
 
-### <a name="enable-synchronization-of-ntlm-and-kerberos-credential-hashes-to-azure-ad"></a>Włączanie synchronizacji skrótów poświadczeń NTLM i Kerberos w usłudze Azure AD
+## <a name="enable-synchronization-of-ntlm-and-kerberos-credential-hashes-to-azure-ad"></a>Włączanie synchronizacji skrótów poświadczeń NTLM i Kerberos w usłudze Azure AD
+
 Uruchom następujący skrypt programu PowerShell w każdym lesie usługi AD. Skrypt włącza synchronizację skrótów haseł protokołów NTLM i Kerberos dla wszystkich użytkowników lokalnych z Twoją dzierżawą usługi Azure AD. Skrypt inicjuje również pełną synchronizację w programie Azure AD Connect.
 
 ```powershell
@@ -78,11 +75,12 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 
 Czas synchronizacji skrótów poświadczeń z usługą Azure AD zależy od rozmiaru katalogu (liczby użytkowników, grup itp.). Z haseł będzie można korzystać w domenie zarządzanej Usług domenowych Azure AD wkrótce po zsynchronizowaniu skrótów poświadczeń z usługą Azure AD.
 
+## <a name="next-steps"></a>Następne kroki
+
 > [!NOTE]
 > **Synchronizacja skrótów haseł** jest procesem innym niż Synchronizacja użytkownika/obiektu. Należy wyłączyć/włączyć synchronizację skrótów haseł w celu uzyskania pełnej synchronizacji haseł, a następnie zobaczysz aktualizacje skrótu haseł wsadowych w dzienniku zdarzeń aplikacji.
 
-## <a name="related-content"></a>Powiązana zawartość
-* [Włączanie synchronizacji haseł w usługach AAD Domain Services dla katalogu usługi Azure AD tylko w chmurze](active-directory-ds-getting-started-password-sync.md)
-* [Zarządzanie domeną Azure AD Domain Services](manage-domain.md)
+* [Włączanie synchronizacji haseł w usługach AAD Domain Services dla katalogu usługi Azure AD tylko w chmurze](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)
+* [Zarządzanie domeną Azure AD Domain Services](tutorial-create-management-vm.md)
 * [Dołączanie maszyny wirtualnej z systemem Windows do domeny zarządzanej usług Azure AD Domain Services](active-directory-ds-admin-guide-join-windows-vm.md)
 * [Dołączanie maszyny wirtualnej z systemem Red Hat Enterprise Linux do domeny zarządzanej usług Azure AD Domain Services](active-directory-ds-admin-guide-join-rhel-linux-vm.md)

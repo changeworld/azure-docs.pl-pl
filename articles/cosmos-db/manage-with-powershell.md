@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 08/05/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 45f5e21e05cf627d418cb66418cf305833a73891
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: e8f943ebaa5dfc06e0bfb04dc1097d6794ec6d05
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965104"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616825"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Zarządzanie Azure Cosmos DB zasobami interfejsu API SQL przy użyciu programu PowerShell
 
@@ -46,7 +46,7 @@ W poniższych sekcjach pokazano, jak zarządzać kontem usługi Azure Cosmos, w 
 
 ### <a id="create-account"></a>Utwórz konto usługi Azure Cosmos
 
-To polecenie tworzy konto bazy danych Azure Cosmos DB z [wieloma regionami][distribute-data-globally], ograniczone-nieodświeżone [zasady spójności](consistency-levels.md).
+To polecenie tworzy konto bazy danych usługi Azure Cosmos z [wieloma regionami][distribute-data-globally]i ograniczonymi [zasadami spójności](consistency-levels.md).
 
 ```azurepowershell-interactive
 # Create an Azure Cosmos Account for Core (SQL) API
@@ -112,7 +112,7 @@ Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a id="update-account"></a>Aktualizowanie konta usługi Azure Cosmos
 
-To polecenie umożliwia aktualizowanie właściwości konta bazy danych Azure Cosmos DB. Dostępne są następujące właściwości:
+To polecenie umożliwia zaktualizowanie właściwości konta bazy danych Azure Cosmos. Dostępne są następujące właściwości:
 
 * Dodawanie lub usuwanie regionów
 * Zmiana domyślnych zasad spójności
@@ -247,6 +247,7 @@ W poniższym przykładzie Załóżmy, że konto ma bieżący priorytet `West US 
 
 ```azurepowershell-interactive
 # Change the failover priority for an Azure Cosmos Account
+# Assume existing priority is "West US 2" = 0 and "East US 2" = 1
 
 $resourceGroupName = "myResourceGroup"
 $accountName = "mycosmosaccount"

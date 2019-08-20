@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 07/03/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: bb5a267d1c7058193f1d7c8ed4087f5c0ebab267
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 9dcb8b2e9c1b75aac3c195f89777ac9c6eb030d7
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68426592"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575262"
 ---
 # <a name="user-defined-restore-points"></a>Punkty przywracania zdefiniowane przez użytkownika
 
@@ -61,7 +61,7 @@ Punkty przywracania zdefiniowane przez użytkownika mogą być również tworzon
 
 1. Zaloguj się do konta [Azure Portal][Azure portal] .
 
-2. Przejdź do usługi SQL Data Warehouse, dla której chcesz utworzyć punkt przywracania.
+2. Przejdź do SQL Data Warehouse, dla którego chcesz utworzyć punkt przywracania.
 
 3. Wybierz pozycję **Przegląd** w okienku po lewej stronie, a następnie wybierz pozycję **+ nowy punkt przywracania**. Jeśli przycisk Nowy punkt przywracania nie jest włączony, upewnij się, że magazyn danych nie jest wstrzymany.
 

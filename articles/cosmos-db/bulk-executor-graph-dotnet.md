@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: c8e0902388572bc132830b5f263c188ee9337d2a
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
-ms.translationtype: MT
+ms.openlocfilehash: 55deec717e0aaebd343b2db8e45b4e962684eb8a
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66257125"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615689"
 ---
 # <a name="using-the-graph-bulkexecutor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Wykonywanie operacji zbiorczych w interfejsie API języka Gremlin dla usługi Azure Cosmos DB przy użyciu biblioteki grafów BulkExecutor .NET
 
@@ -114,8 +114,8 @@ e.AddProperty("customProperty", "value");
 ## <a name="sample-application"></a>Przykładowa aplikacja
 
 ### <a name="prerequisites"></a>Wymagania wstępne
-* 2019 Visual Studio z obciążeniem programowanie na platformie Azure. Możesz rozpocząć pracę z [Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/downloads/) za darmo.
-* Subskrypcja platformy Azure. [Bezpłatne konto platformy Azure możesz utworzyć tutaj](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db). Możesz również utworzyć konto bazy danych Cosmos DB dzięki ofercie [Wypróbuj usługę Azure Cosmos DB bezpłatnie](https://azure.microsoft.com/try/cosmosdb/) bez subskrypcji platformy Azure.
+* Program Visual Studio 2019 z obciążeniem programowania na platformie Azure. Możesz bezpłatnie zacząć korzystać z programu [Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/downloads/) .
+* Subskrypcja platformy Azure. [Bezpłatne konto platformy Azure możesz utworzyć tutaj](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db). Możesz też utworzyć konto bazy danych Cosmos z bezpłatnymi wersjami [prób Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) bez subskrypcji platformy Azure.
 * Baza danych interfejsu API języka Gremlin w usłudze Azure Cosmos DB z **nieograniczoną kolekcją**. W tym przewodniku pokazano, jak rozpocząć pracę z [interfejsem API języka Gremlin w usłudze Azure Cosmos DB na platformie .NET](https://docs.microsoft.com/azure/cosmos-db/create-graph-dotnet).
 * Usługa Git. Aby uzyskać więcej informacji, zapoznaj się ze [stroną plików do pobrania usługi Git](https://git-scm.com/downloads).
 
@@ -154,7 +154,7 @@ Ustawienie|Opis
 2. Uruchom aplikację. Spowoduje to dwukrotne wywołanie polecenia `BulkImportAsync` — raz w celu zaimportowania wierzchołków i raz w celu zaimportowania krawędzi. Jeśli dowolny z obiektów spowoduje błąd podczas wstawiania, zostanie dodany do pliku `.\BadVertices.txt` lub `.\BadEdges.txt`.
 3. Oceń wyniki, wysyłając zapytania do bazy danych grafów. Jeśli opcja `ShouldCleanupOnFinish` ma wartość „true”, baza danych zostanie automatycznie usunięta.
 
-## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o szczegóły pakietu Nuget i biblioteki .NET wykonawca zbiorcze informacje o wersji, zobacz [zbiorczo Szczegóły zestawu SDK funkcji wykonawczej](sql-api-sdk-bulk-executor-dot-net.md). 
+## <a name="next-steps"></a>Następne kroki
+* Aby dowiedzieć się więcej na temat szczegółów pakietu NuGet i informacji o wersji biblioteki programu .NET do zbiorczego modułu wykonawczego, zobacz [Szczegóły zestawu SDK](sql-api-sdk-bulk-executor-dot-net.md)modułu wykonawczy. 
 * Zapoznaj się z [poradami dotyczącymi wydajności](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-dot-net#performance-tips), aby jeszcze lepiej zoptymalizować użycie narzędzia BulkExecutor.
 * Zapoznaj się z artykułem informacyjnym na temat narzędzia [BulkExecutor.Graph](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet), aby uzyskać szczegółowe informacje na temat klas i metod zdefiniowanych w tej przestrzeni nazw.

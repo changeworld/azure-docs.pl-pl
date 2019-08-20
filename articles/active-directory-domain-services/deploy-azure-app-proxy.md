@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 35211d6f832033a2bb16c495ebab839b7f740445
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 21693926bae681cf15d31dca06344dfa5d865e3b
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69031040"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69613024"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Wdrażanie usługi Azure serwer proxy aplikacji usługi Azure AD w domenie zarządzanej Azure AD Domain Services
 Serwer proxy aplikacji Azure Active Directory (AD) pomaga zapewnić obsługę zdalnych procesów roboczych przez publikowanie aplikacji lokalnych w celu uzyskania dostępu przez Internet. Dzięki Azure AD Domain Services możesz teraz podnieśać i przeshift starsze aplikacje działające lokalnie do usług infrastruktury platformy Azure. Następnie można opublikować te aplikacje za pomocą serwer proxy aplikacji usługi Azure AD platformy Azure, aby zapewnić bezpieczny dostęp zdalny użytkownikom w organizacji.
@@ -35,7 +35,7 @@ Aby wykonać zadania wymienione w tym artykule, potrzebne są:
 1. Prawidłowa **subskrypcja platformy Azure**.
 2. **Katalog usługi Azure AD** — zsynchronizowany z katalogiem lokalnym lub katalogiem w chmurze.
 3. Do korzystania z usługi Azure serwer proxy aplikacji usługi Azure AD jest wymagana **licencja Azure AD — wersja Premium** .
-4. Należy włączyć **Azure AD Domain Services** dla katalogu usługi Azure AD. Jeśli nie zostało to zrobione, postępuj zgodnie ze wszystkimi zadaniami opisanymi w [przewodniku wprowadzenie](create-instance.md).
+4. Należy włączyć **Azure AD Domain Services** dla katalogu usługi Azure AD. Jeśli nie zostało to zrobione, postępuj zgodnie ze wszystkimi zadaniami opisanymi w [przewodniku wprowadzenie](tutorial-create-instance.md).
 
 <br>
 
@@ -114,18 +114,18 @@ Użyj KCD opartego na zasobach zgodnie z opisem w tym [artykule](deploy-kcd.md).
 
 Użyj polecenia cmdlet programu PowerShell Get-ADComputer, aby pobrać ustawienia dla komputera, na którym zainstalowano łącznik usługi Azure serwer proxy aplikacji usługi Azure AD.
 ```powershell
-$ConnectorComputerAccount = Get-ADComputer -Identity contoso100-proxy.contoso100.com
+$ConnectorComputerAccount = Get-ADComputer -Identity contoso-proxy.contoso.com
 ```
 
 Następnie użyj polecenia cmdlet Set-ADComputer w celu skonfigurowania KCD opartego na zasobach dla serwera zasobów.
 ```powershell
-Set-ADComputer contoso100-resource.contoso100.com -PrincipalsAllowedToDelegateToAccount $ConnectorComputerAccount
+Set-ADComputer contoso-resource.contoso.com -PrincipalsAllowedToDelegateToAccount $ConnectorComputerAccount
 ```
 
 Jeśli wdrożono wiele łączników serwera proxy aplikacji w domenie zarządzanej, należy skonfigurować KCD oparte na zasobach dla każdego takiego wystąpienia łącznika.
 
 
 ## <a name="related-content"></a>Powiązana zawartość
-* [Przewodnik po Wprowadzenie Azure AD Domain Services](create-instance.md)
+* [Przewodnik po Wprowadzenie Azure AD Domain Services](tutorial-create-instance.md)
 * [Konfigurowanie ograniczonego delegowania protokołu Kerberos w domenie zarządzanej](deploy-kcd.md)
 * [Omówienie ograniczonego delegowania protokołu Kerberos](https://technet.microsoft.com/library/jj553400.aspx)

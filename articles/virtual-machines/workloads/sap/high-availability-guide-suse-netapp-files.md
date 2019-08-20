@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: radeltch
-ms.openlocfilehash: c8fcf4afa5a363d355f627be95dd7fe8131203ac
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 8910ac83bbe3d92266ee2d7e9c840139dfb1a5be
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67797968"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575524"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Wysoka dostępność dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server z Azure NetApp Files dla aplikacji SAP
 
@@ -87,7 +87,7 @@ Przeczytaj najpierw następujące informacje i dokumenty SAP:
 * [Informacje o wersji w programie SUSE High Availability Extension 12 SP3][suse-ha-12sp3-relnotes]
 * [NetApp aplikacje SAP na Microsoft Azure przy użyciu Azure NetApp Files][anf-sap-applications-azure]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Wysoka dostępność (HA) dla usług SAP NetWeaver Central Services wymaga magazynu udostępnionego.
 Aby osiągnąć ten dostęp w systemie SUSE Linux, konieczne było skompilowanie oddzielnego klastra NFS o wysokiej dostępności. 
@@ -730,7 +730,7 @@ Następujące elementy są poprzedzone znakiem **[A]** — dotyczy zarówno plat
    # Add the following lines to the file, save and exit
    /sapmnt/<b>QAS</b> -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/sapmnt<b>qas</b>
    /usr/sap/trans -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/trans
-   /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=3,nobind,sync <b>10.1.0.5</b>:/ursap<b>qas</b>pas
+   /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=3,nobind,sync <b>10.1.0.5</b>:/usrsap<b>qas</b>pas
    </code></pre>
 
    Uruchom `autofs` ponownie, aby zainstalować nowe udziały

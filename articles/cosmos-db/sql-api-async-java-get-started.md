@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/15/2018
 ms.author: sngun
 Customer intent: As a developer, I want to build a Java application with the Async Java SDK to access and manage Azure Cosmos DB resources so that customers can utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: c466c11cc51ca8d8efcf9ff4e86a9dbd2fd4930c
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 2a6f12bfe7aa3de028039d00c259a606d028a0e5
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67985648"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614596"
 ---
 # <a name="tutorial-build-a-java-app-with-the-async-java-sdk-to-manage-data-stored-in-a-sql-api-account"></a>Samouczek: Tworzenie aplikacji Java przy użyciu zestawu Async Java SDK na potrzeby zarządzania danymi przechowywanymi na koncie interfejsu API SQL
 
@@ -114,7 +114,7 @@ client = new AsyncDocumentClient.Builder()
 
 ## <a id="CreateDatabase"></a>Tworzenie bazy danych
 
-Utwórz bazę danych usługi Azure Cosmos DB za pomocą metody `createDatabaseIfNotExists()` klasy DocumentClient. Baza danych jest kontenerem logicznym magazynu dokumentów JSON podzielonym na partycje w kolekcjach.
+Utwórz bazę danych usługi Azure Cosmos za pomocą `createDatabaseIfNotExists()` metody klasy DocumentClient. Baza danych jest kontenerem logicznym magazynu dokumentów JSON podzielonym na partycje w kolekcjach.
 
 ```java
 private void createDatabaseIfNotExists() throws Exception 
@@ -275,7 +275,7 @@ Pomyślnie ukończono ten samouczek NoSQL i utworzono działającą aplikację k
 Możesz usunąć grupę zasobów, konto usługi Azure Cosmos oraz wszystkie powiązane zasoby, gdy nie będą już potrzebne. Aby to zrobić, wybierz grupę zasobów maszyny wirtualnej, wybierz pozycję **Usuń**, a następnie potwierdź nazwę grupy zasobów, którą chcesz usunąć.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Ten samouczek zawiera informacje na temat tworzenia aplikacji Java przy użyciu zestawu Async Java SDK na potrzeby zarządzania danymi interfejsu API SQL w usłudze Azure Cosmos DB. Teraz możesz przejść do następnego artykułu:
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: mjbrown
-ms.openlocfilehash: 9ec049311fc158b13bba45deb2974d7cdd531f90
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: f9d8bf9161343e4b36a3c16209873962b69d8af5
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815038"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615209"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Zarządzanie zasobami usługi Azure Cosmos za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -41,7 +41,7 @@ az cosmosdb create \
 
 ## <a name="create-a-database"></a>Tworzenie bazy danych
 
-Aby utworzyć bazę danych Cosmos DB, uruchom następujące polecenie:
+Aby utworzyć bazę danych Cosmos, uruchom następujące polecenie:
 
 ```azurecli-interactive
 az cosmosdb database create \
@@ -52,7 +52,7 @@ az cosmosdb database create \
 
 ## <a name="create-a-container"></a>Tworzenie kontenera
 
-Aby utworzyć kontener Cosmos DB z atrybutami RU/s z 400 i kluczem partycji, uruchom następujące polecenie:
+Aby utworzyć kontener Cosmos z atrybutami RU/s z 400 i kluczem partycji, uruchom następujące polecenie:
 
 ```azurecli-interactive
 # Create a container
@@ -67,7 +67,7 @@ az cosmosdb collection create \
 
 ## <a name="change-the-throughput-of-a-container"></a>Zmiana przepływności kontenera
 
-Aby zmienić przepływność kontenera Cosmos DB na 1000 RU/s, uruchom następujące polecenie:
+Aby zmienić przepływność kontenera Cosmos na 1000 RU/s, uruchom następujące polecenie:
 
 ```azurecli-interactive
 # Update container throughput

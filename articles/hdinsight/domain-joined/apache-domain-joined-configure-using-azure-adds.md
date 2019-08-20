@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: 1ad3c446df2f2ce62024dfdda589669653f65ef4
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 300fd31632a6b3c9043c19dd9b47f40258080261
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488711"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614206"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurowanie klastra usługi HDInsight z pakietem Enterprise Security przy użyciu usług Azure Active Directory Domain Services
 
@@ -31,7 +31,7 @@ W tym artykule dowiesz się, jak skonfigurować klaster usługi HDInsight za pom
 >
 > Jeśli magazyn klastra to Azure Blob Storage (WASB), nie należy wyłączać usługi MFA.
 
-Aby można było utworzyć klaster usługi HDInsight przy użyciu ESP, Włącz AzureAD-DS. Aby uzyskać więcej informacji, zobacz [włączanie Azure Active Directory Domain Services przy użyciu Azure Portal](../../active-directory-domain-services/create-instance.md). 
+Aby można było utworzyć klaster usługi HDInsight przy użyciu ESP, Włącz AzureAD-DS. Aby uzyskać więcej informacji, zobacz [włączanie Azure Active Directory Domain Services przy użyciu Azure Portal](../../active-directory-domain-services/tutorial-create-instance.md). 
 
 Gdy usługa Azure AD-DS jest włączona, wszyscy użytkownicy i obiekty domyślnie rozpoczynają synchronizację z Azure Active Directory (AAD) do usługi Azure AD DS. Długość operacji synchronizacji zależy od liczby obiektów w usłudze Azure AD. Synchronizacja może potrwać kilka dni dla setek tysięcy obiektów. 
 
@@ -39,7 +39,7 @@ Nazwa domeny, która jest używana z usługą Azure AD — nie może mieć więc
 
 Można synchronizować tylko te grupy, które wymagają dostępu do klastrów usługi HDInsight. Ta opcja synchronizowania tylko określonych grup jest nazywana synchronizacją w *zakresie*. Aby uzyskać instrukcje [, zobacz Konfigurowanie synchronizacji z zakresem z usługi Azure AD w domenie zarządzanej](../../active-directory-domain-services/scoped-synchronization.md) .
 
-Podczas włączania bezpiecznego protokołu LDAP należy umieścić nazwę domeny w polu Nazwa podmiotu i Alternatywna nazwa podmiotu w certyfikacie. Na przykład jeśli nazwa domeny to *contoso100.onmicrosoft.com*, upewnij się, że w nazwie podmiotu certyfikatu i alternatywnej nazwie podmiotu istnieje dokładna nazwa. Aby uzyskać więcej informacji, zobacz [Konfigurowanie bezpiecznego protokołu LDAP dla domeny zarządzanej usługi AD DS](../../active-directory-domain-services/configure-ldaps.md). Poniżej znajduje się przykład tworzenia certyfikatu z podpisem własnym i nazwy domeny (*contoso100.onmicrosoft.com*) w obu nazwach podmiotów i dnsname (nazwa podmiotu):
+Podczas włączania bezpiecznego protokołu LDAP należy umieścić nazwę domeny w polu Nazwa podmiotu i Alternatywna nazwa podmiotu w certyfikacie. Na przykład jeśli nazwa domeny to *contoso100.onmicrosoft.com*, upewnij się, że w nazwie podmiotu certyfikatu i alternatywnej nazwie podmiotu istnieje dokładna nazwa. Aby uzyskać więcej informacji, zobacz [Konfigurowanie bezpiecznego protokołu LDAP dla domeny zarządzanej usługi AD DS](../../active-directory-domain-services/tutorial-configure-ldaps.md). Poniżej znajduje się przykład tworzenia certyfikatu z podpisem własnym i nazwy domeny (*contoso100.onmicrosoft.com*) w obu nazwach podmiotów i dnsname (nazwa podmiotu):
 
 ```powershell
 $lifetime=Get-Date
@@ -70,7 +70,7 @@ Po utworzeniu tożsamości zarządzanej i otrzymaniu odpowiedniej roli administr
 ## <a name="networking-considerations"></a>Zagadnienia dotyczące pracy w sieci
 
 > [!NOTE]  
-> Usługę Azure AD-DS należy wdrożyć w sieci wirtualnej opartej na Azure Resource Manager (ARM). Klasyczne sieci wirtualne nie są obsługiwane w usłudze Azure AD — DS. Aby uzyskać więcej informacji, zapoznaj się z tematem [włączanie Azure Active Directory Domain Services przy użyciu Azure Portal](../../active-directory-domain-services/active-directory-ds-getting-started-network.md) .
+> Usługę Azure AD-DS należy wdrożyć w sieci wirtualnej opartej na Azure Resource Manager. Klasyczne sieci wirtualne nie są obsługiwane w usłudze Azure AD — DS. Aby uzyskać więcej informacji, zapoznaj się z tematem [włączanie Azure Active Directory Domain Services przy użyciu Azure Portal](../../active-directory-domain-services/tutorial-create-instance.md#create-and-configure-the-virtual-network) .
 
 Po włączeniu usługi Azure AD-DS lokalny serwer usługi nazw domen (DNS) jest uruchamiany na Virtual Machines usługi AD. Skonfiguruj Virtual Network usługi Azure AD — DS (VNET), aby korzystać z tych niestandardowych serwerów DNS. Aby zlokalizować odpowiednie adresy IP, wybierz pozycję **Właściwości** w kategorii **Zarządzanie** i Sprawdź adresy IP wymienione pod **adresem IP na Virtual Network**.
 

@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 67707b64bb6018b322ba980535651c126a526eb7
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: b96896c0366c6fba2548480b166bdb9cf6ca692c
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479536"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575350"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>Nawiązywanie połączenia z SQL Data Warehouse przy użyciu SQL Server Management Studio (SSMS)
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ Użyj SQL Server Management Studio (SSMS), aby nawiązać połączenie z usług�
 ## <a name="prerequisites"></a>Wymagania wstępne
 Aby użyć tego samouczka, potrzebne są następujące elementy:
 
-* Istniejący magazyn danych SQL. Aby go utworzyć, zobacz artykuł [Tworzenie bazy danych w usłudze SQL Data Warehouse][Create a SQL Data Warehouse].
+* Istniejący SQL Data Warehouse. Aby go utworzyć, zobacz artykuł [Tworzenie bazy danych w usłudze SQL Data Warehouse][Create a SQL Data Warehouse].
 * SQL Server Management Studio (SSMS). Bezpłatnie [Zainstaluj program SSMS][Install SSMS] , jeśli go jeszcze nie masz.
 * W pełni kwalifikowana nazwa serwera SQL. Aby ją znaleźć, zobacz [Nawiązywanie połączenia z usługą SQL Data Warehouse][Connect to SQL Data Warehouse].
 

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: f47afd450350226aa944287e756b73f61b15b32d
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 54b83df4c0ad68c9bd6b39d39926657395c48f3e
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952040"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615874"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z błędem Azure Backup: Problemy z agentem lub rozszerzeniem
 
@@ -106,7 +106,7 @@ Po zarejestrowaniu i zaplanowaniu maszyny wirtualnej dla usługi Azure Backup ba
 **Kod błędu**: UserErrorUnsupportedDiskSize <br>
 **Komunikat o błędzie**: Obecnie Azure Backup nie obsługuje dysków o rozmiarach większych niż 4095 GB <br>
 
-Operacja tworzenia kopii zapasowej może zakończyć się niepowodzeniem podczas tworzenia kopii zapasowej maszyny wirtualnej o rozmiarze dysku większym niż 4 095 GB. Aby zarejestrować się w celu uzyskania ograniczonej publicznej wersji zapoznawczej Azure Backup dużych dyskach o pojemności większej niż 4 TB i maksymalnie 30 TB, zobacz [Omówienie kopii zapasowej maszyny wirtualnej platformy Azure](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
+Operacja tworzenia kopii zapasowej może zakończyć się niepowodzeniem podczas tworzenia kopii zapasowej maszyny wirtualnej o rozmiarze dysku większym niż 4 095 GB. Aby zarejestrować się w celu uzyskania ograniczonej publicznej wersji zapoznawczej Azure Backup dużych dyskach o rozmiarze większym niż 4 TB i maksymalnie 30 TB, zapoznaj [](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb)się z tym artykułem.
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress — nie można zainicjować kopii zapasowej, ponieważ trwa inna operacja tworzenia kopii zapasowej
 

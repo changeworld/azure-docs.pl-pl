@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 07/23/2019
 ms.author: kirankk
-ms.openlocfilehash: 37b6a9947d3cabe1f566f842e321229efe9d03b6
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 25275aeb6637d50379b7c71e87be9ecffce269db
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598518"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614688"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Tworzenie aplikacji konsolowej .NET do zarządzania danymi w Azure Cosmos DB koncie interfejsu API SQL
 
@@ -253,7 +253,7 @@ Bazę danych można utworzyć przy użyciu funkcji [**CreateDatabaseIfNotExistsA
 
 Naciśnij klawisz **F5**, aby uruchomić aplikację.
 
-Gratulacje! Pomyślnie utworzono bazę danych usługi Azure Cosmos DB.  
+Gratulacje! Baza danych Azure Cosmos została pomyślnie utworzona.  
 
 ## <a id="CreateColl"></a>Krok 5. Tworzenie kontenera
 > [!WARNING]
@@ -283,10 +283,10 @@ Kontener można utworzyć za pomocą funkcji [**CreateContainerIfNotExistsAsync*
 
    Naciśnij klawisz **F5**, aby uruchomić aplikację.
 
-Gratulacje! Pomyślnie utworzono kontener usługi Azure Cosmos DB.  
+Gratulacje! Pomyślnie utworzono kontener usługi Azure Cosmos.  
 
 ## <a id="CreateDoc"></a>Krok 6. Dodawanie elementów do kontenera
-Element można utworzyć za pomocą funkcji [**CreateItemAsync**](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Container_CreateItemAsync__1___0_System_Nullable_Microsoft_Azure_Cosmos_PartitionKey__Microsoft_Azure_Cosmos_ItemRequestOptions_System_Threading_CancellationToken_) klasy **CosmosContainer** . Podczas korzystania z interfejsu API SQL elementy są przekazywane jako dokumenty, które stanowią zdefiniowaną przez użytkownika (dowolną) zawartość JSON. Teraz można wstawić element do kontenera usługi Azure Cosmos DB.
+Element można utworzyć za pomocą funkcji [**CreateItemAsync**](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Container_CreateItemAsync__1___0_System_Nullable_Microsoft_Azure_Cosmos_PartitionKey__Microsoft_Azure_Cosmos_ItemRequestOptions_System_Threading_CancellationToken_) klasy **CosmosContainer** . Podczas korzystania z interfejsu API SQL elementy są przekazywane jako dokumenty, które stanowią zdefiniowaną przez użytkownika (dowolną) zawartość JSON. Teraz można wstawić element do kontenera usługi Azure Cosmos.
 
 Najpierw Utwórzmy klasę **rodziny** , która będzie reprezentować obiekty przechowywane w Azure Cosmos DB w tym przykładzie. Zostaną również utworzone podklasy **Parent**, **Child**, **Pet** i **Address**, które są używane w ramach klasy **Family**. Element Note musi mieć serializowaną Właściwość **ID** jako **Identyfikator** w formacie JSON.
 
@@ -320,9 +320,9 @@ Kod sprawdza, czy element o takim samym IDENTYFIKATORze jeszcze nie istnieje prz
 
 Naciśnij klawisz **F5**, aby uruchomić aplikację.
 
-Gratulacje! Pomyślnie utworzono dwa elementy usługi Azure Cosmos DB.  
+Gratulacje! Pomyślnie utworzono dwa elementy usługi Azure Cosmos.  
 
-## <a id="Query"></a>Krok 7. Wykonywanie zapytania względem zasobów usługi Azure Cosmos DB
+## <a id="Query"></a>Krok 7: Wykonywanie zapytania względem zasobów usługi Azure Cosmos DB
 Usługa Azure Cosmos DB obsługuje zaawansowane [zapytania](sql-api-sql-query.md) względem dokumentów JSON przechowywanych w każdej kolekcji. W następującym przykładowym kodzie pokazano, jak uruchomić zapytanie względem elementów wstawionych w poprzednim kroku.
 
 1. Skopiuj i wklej metodę **QueryItemsAsync** poniżej metody **AddItemsToContainerAsync** .
@@ -347,7 +347,7 @@ Usługa Azure Cosmos DB obsługuje zaawansowane [zapytania](sql-api-sql-query.md
 
 Naciśnij klawisz **F5**, aby uruchomić aplikację.
 
-Gratulacje! Pomyślnie wykonano zapytanie względem kontenera usługi Azure Cosmos DB.
+Gratulacje! Pomyślnie wykonano zapytanie względem kontenera usługi Azure Cosmos.
 
 ## <a id="ReplaceItem"></a>Krok 8. Zastępowanie elementu JSON
 Teraz zaktualizujemy element w usłudze Azure Cosmos DB.
@@ -375,7 +375,7 @@ Teraz zaktualizujemy element w usłudze Azure Cosmos DB.
 
    Naciśnij klawisz **F5**, aby uruchomić aplikację.
 
-Gratulacje! Pomyślnie zastąpiono element usługi Azure Cosmos DB.
+Gratulacje! Pomyślnie zamieniono element usługi Azure Cosmos.
 
 ## <a id="DeleteDocument"></a>Krok 9. Usuwanie elementu
 Teraz usuniemy element w usłudze Azure Cosmos DB.
@@ -404,7 +404,7 @@ Teraz usuniemy element w usłudze Azure Cosmos DB.
 
 Naciśnij klawisz **F5**, aby uruchomić aplikację.
 
-Gratulacje! Pomyślnie usunięto element usługi Azure Cosmos DB.
+Gratulacje! Pomyślnie usunięto element usługi Azure Cosmos.
 
 ## <a id="DeleteDatabase"></a>Krok 10. Usuwanie bazy danych
 Teraz usuniemy naszą bazę danych. Usunięcie utworzonej bazy danych spowoduje usunięcie bazy danych i wszystkich zasobów podrzędnych (kontenerów, elementów, procedur składowanych, funkcji zdefiniowanych przez użytkownika i wyzwalaczy). Usuniemy także wystąpienie klasy **CosmosClient**.
@@ -419,7 +419,7 @@ Teraz usuniemy naszą bazę danych. Usunięcie utworzonej bazy danych spowoduje 
 
 Naciśnij klawisz **F5**, aby uruchomić aplikację.
 
-Gratulacje! Pomyślnie usunięto bazę danych usługi Azure Cosmos DB.
+Gratulacje! Pomyślnie usunięto bazę danych usługi Azure Cosmos.
 
 ## <a id="Run"></a>Krok 11. Uruchamianie całej aplikacji konsolowej C#
 Naciśnij klawisz F5 w programie Visual Studio, aby skompilować i uruchomić aplikację w trybie debugowania.
