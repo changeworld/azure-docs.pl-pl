@@ -61,9 +61,9 @@ Podczas szyfrowania Biblioteka klienta generuje losowy wektor inicjacji (IV) z 1
 > 
 > 
 
-Pobieranie zaszyfrowanego obiektu BLOB polega na pobieraniu zawartości całego obiektu BLOB przy użyciu metod **Get*** wygodnych. Opakowany CEK jest rozpakowany i używany razem z IV (przechowywane jako metadane obiektu BLOB w tym przypadku) w celu zwrócenia odszyfrowanych danych do użytkowników.
+Pobieranie zaszyfrowanego obiektu BLOB polega na pobieraniu zawartości całego obiektu BLOB przy użyciu metod **Get** * wygodnych. Opakowany CEK jest rozpakowany i używany razem z IV (przechowywane jako metadane obiektu BLOB w tym przypadku) w celu zwrócenia odszyfrowanych danych do użytkowników.
 
-Pobieranie dowolnego zakresu (metody**Get*** z parametrami zakresu przekazane) w zaszyfrowanym obiekcie blob obejmuje dostosowanie zakresu zapewnianego przez użytkowników w celu uzyskania niewielkiej ilości dodatkowych danych, których można użyć do pomyślnego odszyfrowania żądanego zakresu .
+Pobieranie dowolnego zakresu (metody**Get** * z parametrami zakresu przekazane) w zaszyfrowanym obiekcie blob obejmuje dostosowanie zakresu zapewnianego przez użytkowników w celu uzyskania niewielkiej ilości dodatkowych danych, których można użyć do pomyślnego odszyfrowania żądanego zakresu .
 
 Blokowe obiekty blob i stronicowe obiekty blob mogą być szyfrowane/odszyfrowywane przy użyciu tego schematu. Obecnie nie jest obsługiwane szyfrowanie dołączanych obiektów BLOB.
 
