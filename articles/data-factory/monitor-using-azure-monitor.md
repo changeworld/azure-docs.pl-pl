@@ -285,7 +285,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 |resourceId| String | Identyfikator skojarzonego zasobu dla zasobu usługi Data Factory | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |category| String | Kategoria dzienników diagnostycznych. Ustaw tę właściwość na "ActivityRuns" | `ActivityRuns` |
 |level| String | Poziom dzienników diagnostycznych. Ustaw tę właściwość na "informacyjny" | `Informational` |
-|operationName| Ciąg |Nazwa działania o stanie. Jeśli stan jest pulsem startowym, jest to `MyActivity -`. Jeśli stan jest pulsem końcowym, jest `MyActivity - Succeeded` on końcowym stanem | `MyActivity - Succeeded` |
+|operationName| String |Nazwa działania o stanie. Jeśli stan jest pulsem startowym, jest to `MyActivity -`. Jeśli stan jest pulsem końcowym, jest `MyActivity - Succeeded` on końcowym stanem | `MyActivity - Succeeded` |
 |pipelineName| String | Nazwa potoku | `MyPipeline` |
 |activityName| String | Nazwa działania | `MyActivity` |
 |start| String | Początek uruchomienia działania w wartości TimeSpan, format UTC | `2017-06-26T20:55:29.5007959Z`|
@@ -367,17 +367,17 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | Właściwość | Typ | Opis | Przykład |
 | --- | --- | --- | --- |
-| Poziom |String | Poziom dzienników diagnostycznych. Ustaw poziom 4 dla dzienników uruchamiania aktywności. | `4`  |
-| correlationId |Ciąg | Unikatowy identyfikator do śledzenia określonego żądania od końca do końca | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| Level |String | Poziom dzienników diagnostycznych. Ustaw poziom 4 dla dzienników uruchamiania aktywności. | `4`  |
+| correlationId |String | Unikatowy identyfikator do śledzenia określonego żądania od końca do końca | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
 | time | String | Godzina zdarzenia w wartości TimeSpan, format UTC`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
-|triggerId| Ciąg| Identyfikator uruchomienia wyzwalacza | `08587023010602533858661257311` |
-|resourceId| Ciąg | Identyfikator skojarzonego zasobu dla zasobu usługi Data Factory | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|triggerId| String| Identyfikator uruchomienia wyzwalacza | `08587023010602533858661257311` |
+|resourceId| String | Identyfikator skojarzonego zasobu dla zasobu usługi Data Factory | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |category| String | Kategoria dzienników diagnostycznych. Ustaw tę właściwość na "PipelineRuns" | `PipelineRuns` |
 |level| String | Poziom dzienników diagnostycznych. Ustaw tę właściwość na "informacyjny" | `Informational` |
-|operationName| Ciąg |Nazwa wyzwalacza ze stanem końcowym, czy element został pomyślnie wyzwolony. "Wyzwalacz — powodzenie", jeśli puls zakończył się pomyślnie| `MyTrigger - Succeeded` |
+|operationName| String |Nazwa wyzwalacza ze stanem końcowym, czy element został pomyślnie wyzwolony. "Wyzwalacz — powodzenie", jeśli puls zakończył się pomyślnie| `MyTrigger - Succeeded` |
 |triggerName| String | Nazwa wyzwalacza | `MyTrigger` |
 |triggerType| String | Typ wyzwalacza (wyzwalacz ręczny lub wyzwalacz harmonogramu) | `ScheduleTrigger` |
-|triggerEvent| Ciąg | Zdarzenie wyzwalacza | `ScheduleTime - 2017-07-06T01:50:25Z` |
+|triggerEvent| String | Zdarzenie wyzwalacza | `ScheduleTime - 2017-07-06T01:50:25Z` |
 |start| String | Początek wyzwalania wyzwalacza w wartości TimeSpan, format UTC | `2017-06-26T20:55:29.5007959Z`|
 |status| String | Końcowy stan, czy wyzwalacz został pomyślnie wywołany (powodzenie lub niepowodzenie) | `Succeeded`|
 
