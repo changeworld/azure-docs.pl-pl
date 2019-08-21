@@ -8,34 +8,34 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 08/20/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 3126613a9dca00d221610dc46116dd409c65d53d
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 2b2879a1ebcf01a0433873e8da77c4ce55a078cd
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446624"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647018"
 ---
 # <a name="choosing-capacity-for-your-qna-maker-deployment"></a>Wybieranie pojemności dla danego wdrożenia usługi QnA Maker
 
 Usługa QnA Maker przyjmuje zależność dla trzech zasobów platformy Azure:
 1.  App Service (dla środowiska wykonawczego)
-2.  Usługa Azure Search (do przechowywania znacznie)
+2.  Azure Search (do przechowywania i wyszukiwania bazami)
 3.  App Insights (opcjonalnie, do przechowywania dzienniki czatu i telemetrii)
 
 Przed przystąpieniem do tworzenia usługi QnA Maker możesz zdecydować, którą warstwę usług powyżej jest odpowiednia dla Ciebie. 
 
 Zwykle istnieją trzy parametry, które należy wziąć pod uwagę:
 
-1. **Przepływność należy z niej**: Wybierz odpowiedni [Plan usługi App](https://azure.microsoft.com/pricing/details/app-service/plans/) dla usługi App service zgodnie z potrzebami. Możesz [skalowanie w górę](https://docs.microsoft.com/azure/app-service/web-sites-scale) lub w dół aplikacji. To powinien również mieć wpływ na wybór jednostki SKU usługi Azure Search, zobacz więcej szczegółów [tutaj](https://docs.microsoft.com/azure/search/search-sku-tier).
+1. **Przepływność wymagana przez usługę**: Wybierz odpowiedni [Plan aplikacji](https://azure.microsoft.com/pricing/details/app-service/plans/) dla usługi App Service na podstawie Twoich potrzeb. Możesz [skalowanie w górę](https://docs.microsoft.com/azure/app-service/manage-scale-up) lub w dół aplikacji. To powinien również mieć wpływ na wybór jednostki SKU usługi Azure Search, zobacz więcej szczegółów [tutaj](https://docs.microsoft.com/azure/search/search-sku-tier).
 
-1. **Rozmiaru i liczby baz wiedzy**: Wybierz odpowiedni [Azure wyszukiwanie jednostek SKU](https://azure.microsoft.com/pricing/details/search/) dla danego scenariusza. N-1, baz wiedzy można publikować w konkretnej warstwy, gdzie N to maksymalna liczba indeksów dozwolone w ramach warstwy. Sprawdź również maksymalnego rozmiaru i liczby dokumentów dozwolone na warstwę.
+1. **Rozmiar i liczba baz wiedzy**: Wybierz odpowiednią [jednostkę SKU usługi Azure Search](https://azure.microsoft.com/pricing/details/search/) dla danego scenariusza. N-1, baz wiedzy można publikować w konkretnej warstwy, gdzie N to maksymalna liczba indeksów dozwolone w ramach warstwy. Sprawdź również maksymalnego rozmiaru i liczby dokumentów dozwolone na warstwę.
 
-    Na przykład warstwę ma 15 dozwolonych indeksów, można opublikować 14 bazy wiedzy (1 indeks na opublikowane bazy wiedzy knowledge base). 15 indeks jest używany dla wszystkich baz wiedzy do tworzenia i testowania. 
+    Na przykład jeśli warstwa ma 15 dozwolonych indeksów, można opublikować 14 baz wiedzy (1 indeks na opublikowaną bazę wiedzy). 15. indeks jest używany dla wszystkich baz wiedzy na potrzeby tworzenia i testowania. 
 
-1. **Liczba dokumentów jako źródła**: Bezpłatna jednostka SKU usługi zarządzania usługi QnA Maker ogranicza liczbę dokumentów, którymi można zarządzać za pośrednictwem portalu i interfejsów API do 3 (1 MB rozmiar każdego). Standardowa jednostka SKU nie ma limitów liczby dokumentów, którymi można zarządzać. Zobacz więcej szczegółów [tutaj](https://aka.ms/qnamaker-pricing).
+1. **Liczba dokumentów jako źródła**: Bezpłatna jednostka SKU usługi zarządzania QnA Makerą ogranicza liczbę dokumentów, którymi można zarządzać za pośrednictwem portalu i interfejsów API do 3 (o rozmiarze 1 MB). Standardowa jednostka SKU nie ma limitów liczby dokumentów, którymi można zarządzać. Zobacz więcej szczegółów [tutaj](https://aka.ms/qnamaker-pricing).
 
 W poniższej tabeli przedstawiono niektóre wytyczne wysokiego poziomu.
 
