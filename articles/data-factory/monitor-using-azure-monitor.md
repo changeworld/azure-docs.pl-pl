@@ -277,18 +277,18 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | Właściwość | Typ | Opis | Przykład |
 | --- | --- | --- | --- |
-| Poziom |Ciąg | Poziom dzienników diagnostycznych. Poziom 4 zawsze jest uwzględniany w przypadku dzienników uruchomienia działania. | `4`  |
+| Level |String | Poziom dzienników diagnostycznych. Poziom 4 zawsze jest uwzględniany w przypadku dzienników uruchomienia działania. | `4`  |
 | correlationId |String | Unikatowy identyfikator do śledzenia określonego żądania od końca do końca | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
 | time | String | Godzina zdarzenia w wartości TimeSpan, format UTC`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 |activityRunId| String| Identyfikator uruchomienia działania | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
 |pipelineRunId| String| Identyfikator uruchomienia potoku | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
-|resourceId| Ciąg | Identyfikator skojarzonego zasobu dla zasobu usługi Data Factory | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|resourceId| String | Identyfikator skojarzonego zasobu dla zasobu usługi Data Factory | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |category| String | Kategoria dzienników diagnostycznych. Ustaw tę właściwość na "ActivityRuns" | `ActivityRuns` |
 |level| String | Poziom dzienników diagnostycznych. Ustaw tę właściwość na "informacyjny" | `Informational` |
 |operationName| Ciąg |Nazwa działania o stanie. Jeśli stan jest pulsem startowym, jest to `MyActivity -`. Jeśli stan jest pulsem końcowym, jest `MyActivity - Succeeded` on końcowym stanem | `MyActivity - Succeeded` |
 |pipelineName| String | Nazwa potoku | `MyPipeline` |
 |activityName| String | Nazwa działania | `MyActivity` |
-|start| Ciąg | Początek uruchomienia działania w wartości TimeSpan, format UTC | `2017-06-26T20:55:29.5007959Z`|
+|start| String | Początek uruchomienia działania w wartości TimeSpan, format UTC | `2017-06-26T20:55:29.5007959Z`|
 |end| String | Koniec uruchomienia działania w formacie TimeSpan, UTC. Jeśli działanie nie zakończyło się jeszcze (Dziennik diagnostyczny dla uruchomienia działania), `1601-01-01T00:00:00Z` zostanie ustawiona wartość domyślna równa.  | `2017-06-26T20:55:29.5007959Z` |
 
 #### <a name="pipeline-run-logs-attributes"></a>Atrybuty dzienników uruchomienia potoku
@@ -323,18 +323,18 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | Właściwość | Typ | Opis | Przykład |
 | --- | --- | --- | --- |
-| Poziom |String | Poziom dzienników diagnostycznych. Poziom 4 jest uwzględniany w przypadku dzienników uruchomienia działania. | `4`  |
-| correlationId |Ciąg | Unikatowy identyfikator do śledzenia określonego żądania od końca do końca | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| time | Ciąg | Godzina zdarzenia w wartości TimeSpan, format UTC`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
+| Level |String | Poziom dzienników diagnostycznych. Poziom 4 jest uwzględniany w przypadku dzienników uruchomienia działania. | `4`  |
+| correlationId |String | Unikatowy identyfikator do śledzenia określonego żądania od końca do końca | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| time | String | Godzina zdarzenia w wartości TimeSpan, format UTC`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 |runId| String| Identyfikator uruchomienia potoku | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
-|resourceId| Ciąg | Identyfikator skojarzonego zasobu dla zasobu usługi Data Factory | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|resourceId| String | Identyfikator skojarzonego zasobu dla zasobu usługi Data Factory | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |category| String | Kategoria dzienników diagnostycznych. Ustaw tę właściwość na "PipelineRuns" | `PipelineRuns` |
-|level| Ciąg | Poziom dzienników diagnostycznych. Ustaw tę właściwość na "informacyjny" | `Informational` |
-|operationName| Ciąg |Nazwa potoku ze stanem. "Potok — powodzenie" ze stanem końcowym po zakończeniu przebiegu potoku| `MyPipeline - Succeeded` |
-|pipelineName| Ciąg | Nazwa potoku | `MyPipeline` |
+|level| String | Poziom dzienników diagnostycznych. Ustaw tę właściwość na "informacyjny" | `Informational` |
+|operationName| String |Nazwa potoku ze stanem. "Potok — powodzenie" ze stanem końcowym po zakończeniu przebiegu potoku| `MyPipeline - Succeeded` |
+|pipelineName| String | Nazwa potoku | `MyPipeline` |
 |start| String | Początek uruchomienia działania w wartości TimeSpan, format UTC | `2017-06-26T20:55:29.5007959Z`|
 |end| String | Koniec uruchomienia działania w formacie TimeSpan, UTC. Jeśli działanie nie zakończyło się jeszcze (Dziennik diagnostyczny dla uruchomienia działania), `1601-01-01T00:00:00Z` zostanie ustawiona wartość domyślna równa.  | `2017-06-26T20:55:29.5007959Z` |
-|status| Ciąg | Końcowy stan uruchomienia potoku (powodzenie lub niepowodzenie) | `Succeeded`|
+|status| String | Końcowy stan uruchomienia potoku (powodzenie lub niepowodzenie) | `Succeeded`|
 
 #### <a name="trigger-run-logs-attributes"></a>Atrybuty uruchamiania dzienników wyzwalacza
 
