@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4ea983255463080592181cda321ef6b6d1ff147f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: be391f2aa9ee5d94ffc36a6e03d3af8881346520
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932356"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636552"
 ---
 # <a name="azure-app-service-plan-overview"></a>Przegląd planu Azure App Service
 
@@ -100,7 +100,7 @@ Możesz na przykład rozpocząć testowanie aplikacji sieci Web w ramach planu A
 
 To samo działa w odwrocie. Jeśli uważasz, że nie potrzebujesz już możliwości lub funkcji wyższego poziomu, możesz skalować w dół do niższej warstwy, co pozwala zaoszczędzić pieniądze.
 
-Aby uzyskać informacje na temat skalowania planu App Service, zobacz [skalowanie w górę aplikacji na platformie Azure](web-sites-scale.md).
+Aby uzyskać informacje na temat skalowania planu App Service, zobacz [skalowanie w górę aplikacji na platformie Azure](manage-scale-up.md).
 
 Jeśli aplikacja jest w tym samym planie App Service z innymi aplikacjami, możesz zwiększyć wydajność aplikacji, izolując zasoby obliczeniowe. Możesz to zrobić, przenosząc aplikację do oddzielnego planu App Service. Aby uzyskać więcej informacji, zobacz [przenoszenie aplikacji do innego planu App Service](app-service-plan-manage.md#move).
 

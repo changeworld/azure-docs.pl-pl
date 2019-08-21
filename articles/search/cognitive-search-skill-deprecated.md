@@ -5,18 +5,17 @@ services: search
 manager: pablocas
 author: luiscabrer
 ms.service: search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: 316cfb228050030b15e791e1d890c9048eadc109
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 57dd8e47d44248270920e44268b99c98d399504d
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841095"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69635875"
 ---
 # <a name="deprecated-cognitive-search-skills"></a>Przestarzałe umiejętności wyszukiwania poznawczego
 
@@ -25,7 +24,7 @@ W tym dokumencie opisano umiejętności poznawcze, które są uważane za przest
 * Nazwa umiejętności: Nazwa umiejętności, która będzie przestarzała, jest mapowana na @odata.type atrybut.
 * Ostatnia dostępna wersja interfejsu API: Ostatnia wersja publicznego interfejsu API usługi Azure Search, za pomocą którego można tworzyć/aktualizować umiejętności zawierające odpowiednie przestarzałe umiejętności.
 * Koniec wsparcia: Ostatni dzień, po którym odpowiednie kwalifikacje są uznawane za nieobsługiwane. Wcześniej utworzona umiejętności powinna nadal działać, ale użytkownicy są zalecani do migracji od przestarzałej umiejętności.
-* Rekomendacje: Ścieżka migracji do przodu w celu korzystania z obsługiwanej umiejętności. Użytkownicy powinni postępować zgodnie z zaleceniami, aby nadal otrzymywać pomoc techniczną.
+* Mając Ścieżka migracji do przodu w celu korzystania z obsługiwanej umiejętności. Użytkownicy powinni postępować zgodnie z zaleceniami, aby nadal otrzymywać pomoc techniczną.
 
 ## <a name="microsoftskillstextnamedentityrecognitionskill"></a>Microsoft.Skills.Text.NamedEntityRecognitionSkill
 

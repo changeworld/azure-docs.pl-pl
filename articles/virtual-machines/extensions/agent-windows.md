@@ -1,5 +1,5 @@
 ---
-title: Omówienie agenta maszyny wirtualnej platformy Azure | Dokumentacja firmy Microsoft
+title: Omówienie agenta maszyny wirtualnej platformy Azure | Microsoft Docs
 description: Omówienie agenta maszyny wirtualnej platformy Azure
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -13,32 +13,32 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/30/2018
+ms.date: 07/20/2019
 ms.author: roiyz
-ms.openlocfilehash: 3de0e7ac20296544f7ca02030056aa60542cb0b0
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: c3b7b0588e6c1446203f7bb4a3ec7f168f08988f
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706151"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637510"
 ---
-# <a name="azure-virtual-machine-agent-overview"></a>Omówienie agenta maszyny wirtualnej na platformie Azure
-Agent maszyny wirtualnej usług Microsoft Azure (Agent maszyny Wirtualnej) jest bezpieczne, uproszczonego procesu, który zarządza interakcją maszyny wirtualnej (VM) z kontrolerem sieci szkieletowej platformy Azure. Agent maszyny wirtualnej odgrywa podstawową rolę w procesie włączania i wykonywania rozszerzeń maszyny wirtualnej platformy Azure. Rozszerzenia maszyny Wirtualnej Włącz konfigurację po wdrożeniu maszyny wirtualnej, takie jak instalowanie i konfigurowanie oprogramowania. Rozszerzenia maszyn wirtualnych również włączyć funkcje odzyskiwania, takie jak zresetować hasło administracyjne maszyny wirtualnej. Bez agenta maszyny Wirtualnej platformy Azure nie można uruchomić rozszerzenia maszyn wirtualnych.
+# <a name="azure-virtual-machine-agent-overview"></a>Omówienie agenta maszyny wirtualnej platformy Azure
+Agent maszyny wirtualnej Microsoft Azure (Agent VM) to bezpieczny, lekki proces zarządzający interakcją maszyny wirtualnej z kontrolerem sieci szkieletowej Azure. Agent maszyny wirtualnej odgrywa podstawową rolę w procesie włączania i wykonywania rozszerzeń maszyny wirtualnej platformy Azure. Rozszerzenia maszyn wirtualnych umożliwiają konfigurację po wdrożeniu maszyny wirtualnej, taką jak instalowanie i Konfigurowanie oprogramowania. Rozszerzenia maszyn wirtualnych umożliwiają również włączenie funkcji odzyskiwania, takich jak resetowanie hasła administracyjnego maszyny wirtualnej. Bez agenta maszyny wirtualnej platformy Azure nie można uruchomić rozszerzeń maszyn wirtualnych.
 
-Ten artykuł szczegółowo opisuje instalacji, wykrywanie i usuwanie programu Agent maszyny wirtualnej platformy Azure.
+Ten artykuł zawiera szczegółowe informacje dotyczące instalacji, wykrywania i usuwania agenta maszyny wirtualnej platformy Azure.
 
-## <a name="install-the-vm-agent"></a>Zainstaluj agenta maszyny Wirtualnej
+## <a name="install-the-vm-agent"></a>Zainstaluj agenta maszyny wirtualnej
 
-### <a name="azure-marketplace-image"></a>Usługa Azure obrazu z witryny Marketplace
+### <a name="azure-marketplace-image"></a>Obraz witryny Azure Marketplace
 
-Agent maszyny Wirtualnej platformy Azure jest instalowany domyślnie na dowolnej maszynie Wirtualnej z Windows wdrażanych za pomocą obrazu portalu Azure Marketplace. Podczas wdrażania obrazu z witryny Azure Marketplace w portalu, programu PowerShell, interfejsu wiersza polecenia lub szablonu usługi Azure Resource Manager, jest również instalowany Agent maszyny Wirtualnej platformy Azure.
+Agent maszyny wirtualnej platformy Azure jest instalowany domyślnie na dowolnej maszynie wirtualnej z systemem Windows wdrożonej z obrazu portalu Azure Marketplace. Po wdrożeniu obrazu witryny Azure Marketplace z poziomu portalu, programu PowerShell, interfejsu wiersza polecenia lub szablonu Azure Resource Manager jest również instalowany Agent maszyny wirtualnej platformy Azure.
 
-Pakiet agenta gościa Windows jest dzielony na dwie części:
+Pakiet agenta gościa systemu Windows jest podzielony na dwie części:
 
-- Agenta inicjowania obsługi administracyjnej (PA)
-- Agent gościa Windows (WinGA)
+- Agent aprowizacji (PA)
+- Agent gościa systemu Windows (skrzydło)
 
-Rozruch maszyny Wirtualnej musi mieć PA zainstalowane na maszynie Wirtualnej, WinGA nie musi jednak być zainstalowany. Na maszynie Wirtualnej należy wdrożyć czasu, możesz wybrać, aby nie instalować WinGA. Poniższy przykład pokazuje sposób wybierania *provisionVmAgent* opcji za pomocą szablonu usługi Azure Resource Manager:
+Aby uruchomić maszynę wirtualną, należy zainstalować na maszynie wirtualnej PA, ale nie trzeba instalować tego skrzydła. Po wdrożeniu maszyny wirtualnej można wybrać opcję nie instaluj skrzydła. Poniższy przykład pokazuje, jak wybrać opcję *provisionVmAgent* z szablonem Azure Resource Manager:
 
 ```json
 "resources": [{
@@ -57,28 +57,28 @@ Rozruch maszyny Wirtualnej musi mieć PA zainstalowane na maszynie Wirtualnej, W
 }
 ```
 
-Jeśli nie masz zainstalowanych agentów, nie można używać niektórych usług platformy Azure, takich jak usługi Azure Backup lub zabezpieczeń platformy Azure. Te usługi wymagają rozszerzenia do zainstalowania. Jeśli wdrożono maszynę Wirtualną bez WinGA można zainstalować najnowszą wersję agenta, w dalszej części.
+Jeśli nie masz zainstalowanych agentów, nie możesz używać niektórych usług platformy Azure, takich jak Azure Backup lub zabezpieczenia platformy Azure. Te usługi wymagają zainstalowania rozszerzenia. Jeśli maszyna wirtualna została wdrożona bez skrzydła, można zainstalować najnowszą wersję agenta później.
 
 ### <a name="manual-installation"></a>Instalacja ręczna
-Agent maszyny Wirtualnej Windows można zainstalować ręcznie za pomocą pakietu Instalatora Windows. Ręczna instalacja może być konieczne utworzenie niestandardowego obrazu maszyny Wirtualnej, który jest wdrożony na platformie Azure. Aby ręcznie zainstalować agenta maszyny Wirtualnej Windows, [pobrać Instalatora agenta maszyny Wirtualnej](https://go.microsoft.com/fwlink/?LinkID=394789).
+Agenta maszyny wirtualnej z systemem Windows można zainstalować ręcznie przy użyciu pakietu Instalatora Windows. Jeśli tworzysz niestandardowy obraz maszyny wirtualnej wdrożony na platformie Azure, może być konieczna instalacja ręczna. Aby ręcznie zainstalować agenta maszyny wirtualnej z systemem Windows, [Pobierz instalatora agenta maszyny wirtualnej](https://go.microsoft.com/fwlink/?LinkID=394789). Agent maszyny wirtualnej jest obsługiwany w systemie Windows Server 2008 R2 lub nowszym.
 
-Agent maszyny Wirtualnej mogą być instalowane przez dwukrotne kliknięcie pliku Instalatora Windows. Automatyczna lub z instalacji nienadzorowanej instalacji agenta maszyny Wirtualnej uruchom następujące polecenie:
+Agenta maszyny wirtualnej można zainstalować przez dwukrotne kliknięcie pliku Instalatora Windows. W przypadku zautomatyzowanej lub nienadzorowanej instalacji agenta maszyny wirtualnej Uruchom następujące polecenie:
 
 ```cmd
 msiexec.exe /i WindowsAzureVmAgent.2.7.1198.778.rd_art_stable.160617-1120.fre /quiet
 ```
 
-## <a name="detect-the-vm-agent"></a>Wykrywanie agenta maszyny Wirtualnej
+## <a name="detect-the-vm-agent"></a>Wykrywanie agenta maszyny wirtualnej
 
 ### <a name="powershell"></a>PowerShell
 
-Moduł Azure PowerShell Resource Manager może służyć do pobierania informacji o maszynach wirtualnych platformy Azure. Aby wyświetlić informacje o maszynie Wirtualnej, takie jak stan aprowizacji agenta maszyny Wirtualnej platformy Azure, użyj [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm):
+Moduł Azure Resource Manager PowerShell może służyć do pobierania informacji o maszynach wirtualnych platformy Azure. Aby wyświetlić informacje dotyczące maszyny wirtualnej, na przykład stanu aprowizacji agenta maszyny wirtualnej platformy Azure, użyj polecenie [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm):
 
 ```powershell
 Get-AzVM
 ```
 
-Dane wyjściowe poniższego, skróconego przykładu *ProvisionVMAgent* właściwości zagnieżdżone wewnątrz *OSProfile*. Ta właściwość może służyć do określenia, jeśli agent maszyny Wirtualnej został wdrożony na maszynie Wirtualnej:
+Następujące wąskie przykładowe dane wyjściowe pokazują Właściwość *ProvisionVMAgent* zagnieżdżoną wewnątrz *OSProfile*. Ta właściwość może służyć do określenia, czy Agent maszyny wirtualnej został wdrożony na maszynie wirtualnej:
 
 ```powershell
 OSProfile                  :
@@ -89,7 +89,7 @@ OSProfile                  :
     EnableAutomaticUpdates : True
 ```
 
-Poniższy skrypt może służyć do zwrócenia zwięzłe listę nazw maszyn wirtualnych i stan agenta maszyny Wirtualnej:
+Poniższy skrypt może służyć do zwrócenia zwięzłej listy nazw maszyn wirtualnych i stanu agenta maszyny wirtualnej:
 
 ```powershell
 $vms = Get-AzVM
@@ -100,14 +100,14 @@ foreach ($vm in $vms) {
 }
 ```
 
-### <a name="manual-detection"></a>Ręczne wykrywanie
+### <a name="manual-detection"></a>Wykrywanie ręczne
 
-Po zalogowaniu się do maszyny Wirtualnej z systemem Windows, Menedżera zadań może służyć do sprawdzenia uruchomionych procesów. Aby sprawdzić, czy Agent maszyny Wirtualnej platformy Azure, otwórz Menedżera zadań, kliknij *szczegóły* kartę i wyszukaj nazwę procesu **WindowsAzureGuestAgent.exe**. Obecność tego procesu wskazuje, że agent maszyny Wirtualnej jest zainstalowany.
-
-
-## <a name="upgrade-the-vm-agent"></a>Uaktualnij agenta maszyny Wirtualnej
-Azure VM Agent for Windows zostaje automatycznie uaktualnione. Podczas wdrażania nowych maszyn wirtualnych na platformie Azure, otrzyma najnowszą wersję agenta maszyny Wirtualnej podczas aprowizacji maszyny Wirtualnej. Niestandardowe obrazy maszyn wirtualnych należy ręcznie zaktualizować do uwzględnienia nowego agenta maszyny Wirtualnej w czasie tworzenia obrazu.
+Po zalogowaniu się do maszyny wirtualnej z systemem Windows Menedżer zadań może służyć do badania uruchomionych procesów. Aby sprawdzić agenta maszyny wirtualnej platformy Azure, Otwórz Menedżera zadań, kliknij kartę *szczegóły* , a następnie wyszukaj nazwę procesu **WindowsAzureGuestAgent. exe**. Obecność tego procesu wskazuje, że Agent maszyny wirtualnej jest zainstalowany.
 
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji na temat rozszerzeń maszyn wirtualnych, zobacz [omówienie rozszerzeń i funkcji maszyn wirtualnych platformy Azure](overview.md).
+## <a name="upgrade-the-vm-agent"></a>Uaktualnianie agenta maszyny wirtualnej
+Agent maszyny wirtualnej platformy Azure dla systemu Windows jest automatycznie uaktualniany. Gdy nowe maszyny wirtualne są wdrażane na platformie Azure, otrzymują najnowszego agenta maszyny wirtualnej na czas udostępniania maszyny wirtualnej. Niestandardowe obrazy maszyn wirtualnych należy zaktualizować ręcznie, aby uwzględnić nowego agenta maszyny wirtualnej podczas tworzenia obrazu.
+
+
+## <a name="next-steps"></a>Następne kroki
+Aby uzyskać więcej informacji o rozszerzeniach maszyn wirtualnych, zobacz [Omówienie rozszerzeń i funkcji maszyny wirtualnej platformy Azure](overview.md).

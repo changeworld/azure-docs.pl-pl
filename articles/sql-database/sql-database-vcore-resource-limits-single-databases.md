@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/14/2019
-ms.openlocfilehash: f69fc89fe5634c9467cf728c7ab5c4d8ac6c5c74
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 6a29d1e001d4c647d5b975b7e746eced29962ee4
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512318"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637243"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>Limity zasobów dla pojedynczych baz danych przy użyciu modelu zakupu opartego na rdzeń wirtualny
 
@@ -35,7 +35,7 @@ Możesz ustawić warstwę usług, rozmiar obliczeń i ilość miejsca do magazyn
 ## <a name="general-purpose-service-tier-for-provisioned-compute"></a>Ogólnego przeznaczenia warstwa usługi dla obliczeń zainicjowanych
 
 > [!IMPORTANT]
-> Nowe bazy danych obliczenia nie są już obsługiwane w regionie AustraliaEast.
+> Nowe bazy danych obliczenia nie są już obsługiwane w regionach Australia Wschodnia lub Brazylia Południowa.
 
 ### <a name="gen4-compute-generation-part-1"></a>Generowanie obliczeń obliczenia (część 1)
 
@@ -184,7 +184,7 @@ Możesz ustawić warstwę usług, rozmiar obliczeń i ilość miejsca do magazyn
 ## <a name="business-critical-service-tier-for-provisioned-compute"></a>Krytyczne dla działania firmy warstwa usługi dla obliczeń zainicjowanych
 
 > [!IMPORTANT]
-> Nowe bazy danych obliczenia nie są już obsługiwane w regionie AustraliaEast.
+> Nowe bazy danych obliczenia nie są już obsługiwane w regionach Australia Wschodnia lub Brazylia Południowa.
 
 ### <a name="gen4-compute-generation-part-1"></a>Generowanie obliczeń obliczenia (część 1)
 

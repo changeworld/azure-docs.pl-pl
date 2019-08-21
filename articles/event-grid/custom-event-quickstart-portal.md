@@ -9,12 +9,12 @@ ms.date: 03/27/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 0861c47ef9f9649dfe223d8abeb51310a87ea4a9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: afb53ed013af6cd1db2f6ff3d25c350aa2b4f1e8
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66169916"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69638568"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>Szybki start: Kierowanie zdarzeń niestandardowych do internetowego punktu końcowego za pomocą witryny Azure Portal i usługi Event Grid
 
@@ -22,7 +22,7 @@ Azure Event Grid to usługa obsługi zdarzeń dla chmury. W tym artykule omówio
 
 Po zakończeniu przekonasz się, że dane zdarzenia zostały wysłane do aplikacji sieci Web.
 
-![Wyświetl wyniki](./media/custom-event-quickstart-portal/view-result.png)
+![Wyświetlanie wyników](./media/custom-event-quickstart-portal/view-result.png)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -35,35 +35,35 @@ Po zakończeniu przekonasz się, że dane zdarzenia zostały wysłane do aplikac
 Temat usługi Event Grid udostępnia zdefiniowany przez użytkownika punkt końcowy, w którym publikowane są zdarzenia. 
 
 1. Zaloguj się w [portalu Azure](https://portal.azure.com/).
-2. Wybierz **wszystkich usług** w menu nawigacji po lewej stronie, wyszukaj **usługi Event Grid**i wybierz **tematy usługi Event Grid**. 
+2. Wybierz pozycję **wszystkie usługi** w menu nawigacji po lewej stronie, wyszukaj pozycję **Event Grid**i wybierz pozycję **Event Grid tematy**. 
 
-    ![Wybierz tematy usługi Event Grid](./media/custom-event-quickstart-portal/select-event-grid-topics.png)
-3. Na **tematy usługi Event Grid** wybierz opcję **+ Dodaj** na pasku narzędzi. 
+    ![Wybierz tematy Event Grid](./media/custom-event-quickstart-portal/select-event-grid-topics.png)
+3. Na stronie **tematy Event Grid** wybierz pozycję **+ Dodaj** na pasku narzędzi. 
 
-    ![Dodawanie przycisku do tematu usługi Event Grid](./media/custom-event-quickstart-portal/add-event-grid-topic-button.png)
-4. Na **utworzyć temat** strony, wykonaj następujące kroki:
-    1. Podaj unikatową **nazwa** dla tematu niestandardowego. Nazwa tematu musi być unikatowa, ponieważ jest reprezentowana przez wpis DNS. Nie należy używać nazwy widocznej na obrazie. Zamiast tego utwórz własną nazwę — musi mieć od 3 do 50 znaków i może zawierać wyłącznie wartości a–z, A–Z, 0–9 i „-”.
+    ![Dodaj przycisk tematu Event Grid](./media/custom-event-quickstart-portal/add-event-grid-topic-button.png)
+4. Na stronie **Tworzenie tematu** wykonaj następujące kroki:
+    1. Podaj unikatową **nazwę** tematu niestandardowego. Nazwa tematu musi być unikatowa, ponieważ jest reprezentowana przez wpis DNS. Nie należy używać nazwy widocznej na obrazie. Zamiast tego utwórz własną nazwę — musi mieć od 3 do 50 znaków i może zawierać wyłącznie wartości a–z, A–Z, 0–9 i „-”.
     2. Wybierz swoją **subskrypcję** platformy Azure.
-    3. Wybierz istniejącą grupę zasobów lub wybierz **Utwórz nową**, a następnie wprowadź **nazwa** dla **grupy zasobów**.
-    4. Wybierz **lokalizacji** dla tematu usługi event grid.
-    5. Zachowaj wartość domyślną **schemat siatki zdarzeń** dla **schematu zdarzeń** pola. 
+    3. Wybierz istniejącą grupę zasobów lub wybierz pozycję **Utwórz nową**, a następnie wprowadź **nazwę** **grupy zasobów**.
+    4. Wybierz **lokalizację** tematu usługi Event Grid.
+    5. Zachowaj wartość domyślną **Event Grid schemacie** dla pola **schemat zdarzenia** . 
 
        ![Utwórz stronę tematu](./media/custom-event-quickstart-portal/create-custom-topic.png)
     6. Wybierz pozycję **Utwórz**. 
-5. Po utworzeniu tematu niestandardowego zostanie wyświetlone powiadomienie z informacją o powodzeniu. Wybierz **przejdź do grupy zasobów**. 
+5. Po utworzeniu tematu niestandardowego zostanie wyświetlone powiadomienie z informacją o powodzeniu. Wybierz pozycję **Przejdź do grupy zasobów**. 
 
    ![Wyświetlanie powiadomienia z informacją o powodzeniu](./media/custom-event-quickstart-portal/success-notification.png)
-6. Na **grupy zasobów** wybierz tematu usługi event grid. 
+6. Na stronie **Grupa zasobów** wybierz temat siatka zdarzeń. 
 
-   ![Wybierz zasób tematu siatki zdarzeń](./media/custom-event-quickstart-portal/select-event-grid-topic.png)
-7. Zostanie wyświetlony **tematu usługi Event Grid** strony dla usługi event grid. Nie zamykaj tej strony. Możesz użyć go w dalszej części tego przewodnika Szybki Start. 
+   ![Wybierz zasób tematu z siatką zdarzeń](./media/custom-event-quickstart-portal/select-event-grid-topic.png)
+7. Zostanie wyświetlona strona **tematu Event Grid** dla usługi Event Grid. Pozostaw Tę stronę otwartą. Używasz go później w przewodniku Szybki Start. 
 
-    ![Strona główna tematu siatki zdarzeń](./media/custom-event-quickstart-portal/event-grid-topic-home-page.png)
+    ![Strona główna tematu Event Grid](./media/custom-event-quickstart-portal/event-grid-topic-home-page.png)
 
 ## <a name="create-a-message-endpoint"></a>Tworzenie punktu końcowego komunikatów
-Przed utworzeniem subskrypcji dla tematu niestandardowego należy utworzyć punkt końcowy dla komunikatów o zdarzeniach. Zazwyczaj w punkcie końcowym akcje są wykonywane na podstawie danych zdarzenia. Aby uprościć ten przewodnik Szybki Start, wdrożysz [wstępnie zbudowaną aplikację sieci Web](https://github.com/Azure-Samples/azure-event-grid-viewer), która będzie wyświetlać komunikaty o zdarzeniach. Wdrożone rozwiązanie zawiera plan usługi App Service, aplikację internetową usługi App Service i kod źródłowy z repozytorium GitHub.
+Przed utworzeniem subskrypcji tematu niestandardowego Utwórz punkt końcowy dla komunikatu o zdarzeniu. Zazwyczaj w punkcie końcowym akcje są wykonywane na podstawie danych zdarzenia. Aby uprościć ten przewodnik Szybki Start, wdrożysz [wstępnie zbudowaną aplikację sieci Web](https://github.com/Azure-Samples/azure-event-grid-viewer), która będzie wyświetlać komunikaty o zdarzeniach. Wdrożone rozwiązanie zawiera plan usługi App Service, aplikację internetową usługi App Service i kod źródłowy z repozytorium GitHub.
 
-1. Na stronie artykułu wybierz **Wdróż na platformie Azure** Aby wdrożyć to rozwiązanie do Twojej subskrypcji. W witrynie Azure Portal podaj wartości parametrów.
+1. Na stronie artykuł wybierz pozycję **Wdróż na platformie Azure** , aby wdrożyć rozwiązanie w ramach subskrypcji. W witrynie Azure Portal podaj wartości parametrów.
 
    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 1. Wdrożenie może potrwać kilka minut. Po pomyślnym wdrożeniu należy wyświetlić aplikację sieci Web i upewnić się, że jest uruchomiona. W przeglądarce sieci Web przejdź do: `https://<your-site-name>.azurewebsites.net`
@@ -75,19 +75,19 @@ Przed utworzeniem subskrypcji dla tematu niestandardowego należy utworzyć punk
 
 Zasubskrybowanie tematu pozwala poinformować usługę Event Grid o tym, które zdarzenia chcesz śledzić i gdzie mają być one wysyłane.
 
-1. Teraz na **tematu usługi Event Grid** strony dla tematu niestandardowego, wybierz opcję **+ Subskrypcja zdarzeń** na pasku narzędzi.
+1. Teraz na stronie **tematu Event Grid** tematu niestandardowego wybierz pozycję **+ subskrypcja zdarzeń** na pasku narzędzi.
 
    ![Dodawanie subskrypcji zdarzeń](./media/custom-event-quickstart-portal/new-event-subscription.png)
-2. Na **Utwórz subskrypcję zdarzeń** strony, wykonaj następujące kroki:
-    1. Wprowadź **nazwa** dla subskrypcji zdarzeń.
-    3. Wybierz **Webhook** dla **typ punktu końcowego**. 
-    4. Wybierz **wybierz punkt końcowy**. 
+2. Na stronie **Tworzenie subskrypcji zdarzeń** wykonaj następujące kroki:
+    1. Wprowadź **nazwę** subskrypcji zdarzeń.
+    3. Wybierz **element webhook** dla **typu punktu końcowego**. 
+    4. Wybierz **pozycję Wybierz punkt końcowy**. 
 
        ![Podawanie wartości związanych z subskrypcją zdarzeń](./media/custom-event-quickstart-portal/provide-subscription-values.png)
     5. Dla punktu końcowego elementu webhook podaj adres URL aplikacji internetowej i dodaj element `api/updates` do adresu URL strony głównej. Wybierz pozycję **Potwierdź wybór**.
 
        ![Podawanie adresu URL punktu końcowego](./media/custom-event-quickstart-portal/provide-endpoint.png)
-    6. Po powrocie **Utwórz subskrypcję zdarzeń** wybierz opcję **Utwórz**.
+    6. Wróć na stronę **Tworzenie subskrypcji zdarzeń** , a następnie wybierz pozycję **Utwórz**.
 
 3. Wyświetl aplikację sieci Web ponownie i zwróć uwagę, że zdarzenie sprawdzania poprawności subskrypcji zostało do niej wysłane. Wybierz ikonę oka, aby rozwinąć dane zdarzenia. Usługa Event Grid wysyła zdarzenie weryfikacji, aby w punkcie końcowym mogło nastąpić sprawdzenie, czy dane zdarzenia mają być odbierane. Aplikacja sieci Web zawiera kod do sprawdzania poprawności subskrypcji.
 
@@ -101,25 +101,25 @@ W pierwszym przykładzie użyto interfejsu wiersza polecenia platformy Azure. Po
 
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
-1. W witrynie Azure portal wybierz **Cloud Shell**. Wybierz **Bash** w lewym górnym rogu okna usługi Cloud Shell. 
+1. W Azure Portal wybierz pozycję **Cloud Shell**. W lewym górnym rogu okna Cloud Shell wybierz pozycję **bash** . 
 
-    ![Usługa cloud Shell - Bash](./media/custom-event-quickstart-portal/cloud-shell-bash.png)
-1. Uruchom następujące polecenie, aby uzyskać **punktu końcowego** tematu: Po skopiuj i wklej poniższe polecenie, zaktualizuj **nazwy tematu** i **nazwy grupy zasobów** przed uruchomieniem polecenia. 
+    ![Cloud Shell — bash](./media/custom-event-quickstart-portal/cloud-shell-bash.png)
+1. Uruchom następujące polecenie, aby uzyskać **punkt końcowy** dla tematu: Po skopiowaniu i wklejeniu polecenia zaktualizuj **nazwę tematu** i **nazwę grupy zasobów** przed uruchomieniem polecenia. 
 
     ```azurecli
     endpoint=$(az eventgrid topic show --name <topic name> -g <resource group name> --query "endpoint" --output tsv)
     ```
-2. Uruchom następujące polecenie, aby uzyskać **klucz** dla tematu niestandardowego: Po skopiuj i wklej poniższe polecenie, zaktualizuj **nazwy tematu** i **grupy zasobów** nazw przed wykonaniem polecenia. 
+2. Uruchom następujące polecenie, aby uzyskać **klucz** dla tematu niestandardowego: Po skopiowaniu i wklejeniu polecenia zaktualizuj **nazwę tematu** i nazwę **grupy zasobów** przed uruchomieniem polecenia. 
 
     ```azurecli
     key=$(az eventgrid topic key list --name <topic name> -g <resource group name> --query "key1" --output tsv)
     ```
-3. Skopiuj następującą instrukcję przy użyciu definicji zdarzenia, a następnie naciśnij klawisz **ENTER**. 
+3. Skopiuj poniższą instrukcję z definicją zdarzenia i naciśnij klawisz **Enter**. 
 
     ```json
     event='[ {"id": "'"$RANDOM"'", "eventType": "recordInserted", "subject": "myapp/vehicles/motorcycles", "eventTime": "'`date +%Y-%m-%dT%H:%M:%S%z`'", "data":{ "make": "Ducati", "model": "Monster"},"dataVersion": "1.0"} ]'
     ```
-4. Uruchom następujące polecenie **Curl** polecenia można opublikować zdarzenia:
+4. Uruchom następujące polecenie **zwinięcie** , aby ogłosić zdarzenie:
 
     ```
     curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
@@ -128,20 +128,22 @@ W pierwszym przykładzie użyto interfejsu wiersza polecenia platformy Azure. Po
 ### <a name="azure-powershell"></a>Azure PowerShell
 Drugi przykład obejmuje wykonanie podobnych kroków przy użyciu programu PowerShell.
 
-1. W witrynie Azure portal wybierz **Cloud Shell**. Wybierz **PowerShell** w lewym górnym rogu okna usługi Cloud Shell. Zobacz przykład **Cloud Shell** obraz przedstawiający okno w sekcji wiersza polecenia platformy Azure. 
-2. Uruchom następujące polecenie, aby uzyskać **punktu końcowego** tematu: Po skopiuj i wklej poniższe polecenie, zaktualizuj **nazwy tematu** i **nazwy grupy zasobów** przed uruchomieniem polecenia. 
+1. W Azure Portal wybierz pozycję **Cloud Shell** (Alternatywnie przejdź do https://shell.azure.com/). W lewym górnym rogu okna Cloud Shell wybierz pozycję **PowerShell** . Zapoznaj się z przykładowym obrazem okna **Cloud Shell** w sekcji interfejsu wiersza polecenia platformy Azure.
+2. Ustaw następujące zmienne. Po skopiowaniu i wklejeniu każdego polecenia zaktualizuj **nazwę tematu** i **nazwę grupy zasobów** przed uruchomieniem polecenia:
 
     ```powershell
-    $endpoint = (Get-AzEventGridTopic -ResourceGroupName <resource group name> -Name <topic name>).Endpoint
+    $resourceGroupName = <resource group name>
+    $topicName = <topic name>
     ```
-3. Uruchom następujące polecenie, aby uzyskać **klucz** dla tematu niestandardowego: Po skopiuj i wklej poniższe polecenie, zaktualizuj **nazwy tematu** i **grupy zasobów** nazw przed wykonaniem polecenia.
+3. Uruchom następujące polecenia, aby uzyskać **punkt końcowy** i **klucze** dla tematu:
 
     ```powershell
-    $keys = Get-AzEventGridTopicKey -ResourceGroupName gridResourceGroup -Name <topic name>
+    $endpoint = (Get-AzEventGridTopic -ResourceGroupName $resourceGroupName -Name $topicName).Endpoint
+    $keys = Get-AzEventGridTopicKey -ResourceGroupName $resourceGroupName -Name $topicName
     ```
-4. Przygotuj zdarzenia. Skopiuj i wykonania instrukcji w oknie usługi Cloud Shell. 
+4. Przygotuj zdarzenie. Skopiuj i uruchom instrukcje w oknie Cloud Shell. 
 
-    ```azurepowershell
+    ```powershell
     $eventID = Get-Random 99999
 
     #Date format should be SortableDateTimePattern (ISO 8601)
@@ -164,13 +166,13 @@ Drugi przykład obejmuje wykonanie podobnych kroków przy użyciu programu Power
     #Append square brackets to the converted JSON payload since they are expected in the event's JSON payload syntax
     $body = "["+(ConvertTo-Json $htbody)+"]"
     ```
-5. Użyj **Invoke-WebRequest** polecenia cmdlet do wysłania zdarzenia. 
+5. Użyj polecenia cmdlet **Invoke-WebRequest** , aby wysłać zdarzenie. 
 
     ```powershell
     Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-key" = $keys.Key1}
     ```
 
-### <a name="verify-in-the-event-grid-viewer"></a>Sprawdź w zdarzeń Podgląd siatki
+### <a name="verify-in-the-event-grid-viewer"></a>Sprawdź w podglądzie Event Grid
 Zdarzenie zostało wyzwolone, a usługa Event Grid wysłała komunikat do punktu końcowego skonfigurowanego podczas subskrybowania. Wyświetl aplikację sieci Web, aby wyświetlić właśnie wysłane zdarzenie.
 
 ```json
@@ -192,16 +194,16 @@ Zdarzenie zostało wyzwolone, a usługa Event Grid wysłała komunikat do punktu
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 Jeśli zamierzasz kontynuować pracę z tym zdarzeniem, nie usuwaj zasobów utworzonych w tym artykule. W przeciwnym razie usuń zasoby utworzone w ramach tego artykułu.
 
-1. Wybierz **grup zasobów** w menu po lewej stronie. Jeśli widzisz go w menu po lewej stronie, wybierz opcję **wszystkich usług** w menu po lewej stronie, a następnie wybierz pozycję **grup zasobów**. 
-2. Wybierz grupę zasobów, aby uruchomić **grupy zasobów** strony. 
-3. Wybierz **Usuń grupę zasobów** na pasku narzędzi. 
-4. Potwierdź usunięcie, wpisując nazwę grupy zasobów, a następnie wybierz pozycję **Usuń**. 
+1. W menu po lewej stronie wybierz pozycję **grupy zasobów** . Jeśli nie widzisz go w menu po lewej stronie, wybierz pozycję **wszystkie usługi** w menu po lewej stronie, a następnie wybierz pozycję **grupy zasobów**. 
+2. Wybierz grupę zasobów, aby uruchomić stronę **Grupa zasobów** . 
+3. Na pasku narzędzi wybierz pozycję **Usuń grupę zasobów** . 
+4. Potwierdź usunięcie, wprowadzając nazwę grupy zasobów, a następnie wybierz pozycję **Usuń**. 
 
     ![Grupy zasobów](./media/custom-event-quickstart-portal/delete-resource-groups.png)
 
-    Innej grupie zasobów, którą widać na ilustracji został utworzony i używany przez okno usługi Cloud Shell. Usuń go, jeśli nie planujesz później korzystać okno usługi Cloud Shell. 
+    Inna grupa zasobów widoczna w obrazie została utworzona i użyta przez okno Cloud Shell. Usuń ten element, jeśli nie planujesz użyć okna Cloud Shell w późniejszym czasie. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Wiesz już, jak tworzyć tematy niestandardowe i subskrypcje zdarzeń. Dowiedz się więcej na temat tego, co może Ci ułatwić usługa Event Grid:
 

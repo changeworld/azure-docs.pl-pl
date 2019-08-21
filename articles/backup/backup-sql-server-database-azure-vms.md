@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 6a929359c0e4e0a5c64eadbf41f565dfeb56a233
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: e18d6519d1ee3c1750757af5c59157de8bdde80c
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854110"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637912"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Tworzenie kopii zapasowych baz danych programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -51,22 +51,29 @@ Ustanów łączność przy użyciu jednej z następujących opcji:
 
 - **Zezwalaj na zakresy adresów IP centrum danych platformy Azure**. Ta opcja zezwala na pobieranie [zakresów adresów IP](https://www.microsoft.com/download/details.aspx?id=41653) . Aby uzyskać dostęp do sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń), użyj polecenia cmdlet Set-AzureNetworkSecurityRule. Jeśli jesteś adresatami tylko adresów IP specyficznych dla regionu, musisz również zaktualizować Azure Active Directory listę bezpiecznych adresatów, aby włączyć uwierzytelnianie.
 
-- **Zezwalaj na dostęp za pomocą tagów sieciowej grupy zabezpieczeń**. Jeśli używasz sieciowych grup zabezpieczeń, aby ograniczyć łączność, ta opcja dodaje regułę do sieciowej grupy zabezpieczeń, która umożliwia wychodzący dostęp do Azure Backup przy użyciu znacznika AzureBackup. Oprócz tego tagu wymagane są także odpowiednie [reguły](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) usług Azure AD i Azure Storage, aby umożliwić łączność z uwierzytelnianiem i transferem danych. Tag AzureBackup jest obecnie dostępny tylko w programie PowerShell. Aby utworzyć regułę przy użyciu znacznika AzureBackup:
+- **Zezwalaj na dostęp za pomocą tagów sieciowej grupy zabezpieczeń**.  Jeśli używasz sieciowej grupy zabezpieczeń do ograniczenia łączności, należy użyć znacznika usługi AzureBackup w celu zezwalania na dostęp wychodzący do Azure Backup. Ponadto należy również zezwolić na łączność z uwierzytelnianiem i transferem danych przy użyciu [reguł](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) dla usług Azure AD i Azure Storage. Można to zrobić za pomocą portalu lub programu PowerShell.
 
-    - Dodawanie poświadczeń konta platformy Azure i aktualizowanie chmur narodowych<br/>
-    `Add-AzureRmAccount`
+    Aby utworzyć regułę przy użyciu portalu:
+    
+    - W obszarze **wszystkie usługi**przejdź do pozycji **sieciowe grupy zabezpieczeń** i wybierz grupę zabezpieczeń sieci.
+    - W obszarze **Ustawienia**wybierz pozycję **reguły zabezpieczeń dla ruchu** wychodzącego.
+    - Wybierz pozycję **Dodaj**. Wprowadź wszystkie wymagane szczegóły dotyczące tworzenia nowej reguły zgodnie z opisem w [ustawieniach reguły zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings). Upewnij się, że opcja **miejsce docelowe** jest ustawiona na **tag usługi** i **znacznik usługi docelowej** jest ustawiony na **AzureBackup**.
+    - Kliknij przycisk **Dodaj**, aby zapisać nowo utworzoną regułę zabezpieczeń dla ruchu wychodzącego.
+    
+   Aby utworzyć regułę przy użyciu programu PowerShell:
 
-    - Wybierz subskrypcję usługi sieciowej grupy zabezpieczeń<br/>
-    `Select-AzureRmSubscription "<Subscription Id>"`
-
-     - Wybierz sieciowej grupy zabezpieczeń<br/>
-    `$nsg = Get-AzureRmNetworkSecurityGroup -Name "<NSG name>" -ResourceGroupName "<NSG resource group name>"`
-
-    - Dodaj regułę zezwalającą na ruch wychodzący dla tagu usługi Azure Backup<br/>
-    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
-
+   - Dodawanie poświadczeń konta platformy Azure i aktualizowanie chmur narodowych<br/>
+    ``Add-AzureRmAccount``
+  - Wybierz subskrypcję usługi sieciowej grupy zabezpieczeń<br/>
+    ``Select-AzureRmSubscription "<Subscription Id>"``
+  - Wybierz sieciowej grupy zabezpieczeń<br/>
+    ```$nsg = Get-AzureRmNetworkSecurityGroup -Name "<NSG name>" -ResourceGroupName "<NSG resource group name>"```
+  - Dodaj regułę zezwalającą na ruch wychodzący dla tagu usługi Azure Backup<br/>
+   ```Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"```
   - Zapisz sieciowej grupy zabezpieczeń<br/>
-    `Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg`
+    ```Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg```
+
+   
 - **Zezwalaj na dostęp za pomocą tagów zapory platformy Azure**. Jeśli używasz zapory platformy Azure, Utwórz regułę aplikacji przy użyciu [znacznika FQDN](https://docs.microsoft.com/azure/firewall/fqdn-tags)AzureBackup. Umożliwia to wychodzący dostęp do Azure Backup.
 - **Wdróż serwer proxy HTTP, aby kierować ruchem**. Podczas tworzenia kopii zapasowej bazy danych SQL Server na maszynie wirtualnej platformy Azure rozszerzenie kopii zapasowej na maszynie wirtualnej używa interfejsów API HTTPS do wysyłania poleceń zarządzania do Azure Backup i danych do usługi Azure Storage. Rozszerzenie kopii zapasowej używa także usługi Azure AD do uwierzytelniania. Ruch rozszerzenia kopii zapasowej dla tych trzech usług należy kierować za pośrednictwem serwera proxy HTTP. Rozszerzenia są jedynym składnikiem skonfigurowanym do uzyskiwania dostępu do publicznego Internetu.
 
@@ -289,7 +296,7 @@ Jeśli musisz wyłączyć funkcję autoochrony, wybierz nazwę wystąpienia w ob
 ![Wyłącz autoochronę dla tego wystąpienia](./media/backup-azure-sql-database/disable-auto-protection.png)
 
  
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Instrukcje:
 

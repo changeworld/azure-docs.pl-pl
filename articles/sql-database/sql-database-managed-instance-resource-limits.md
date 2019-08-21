@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 06/26/2019
-ms.openlocfilehash: 961c0de6856a9791f76be1ec609f176f1fbbf8fb
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 412a3cb32663f5bd3bfad2d565b6797f92e26b75
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567328"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641107"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Przegląd Azure SQL Database limitów zasobów wystąpienia zarządzanego
 
@@ -42,7 +42,7 @@ Wystąpienie zarządzane Azure SQL Database można wdrożyć na dwóch generacja
 | Maksymalna ilość zarezerwowanego wystąpienia |  Ogólnego przeznaczenia: 8 TB<br/>Krytyczne dla działania firmy: 1TB | Ogólnego przeznaczenia: 8 TB<br/> Krytyczne dla działania firmy 1 TB, 2 TB lub 4 TB w zależności od liczby rdzeni |
 
 > [!IMPORTANT]
-> Nowe bazy danych obliczenia nie są już obsługiwane w regionie AustraliaEast.
+> Nowe bazy danych obliczenia nie są już obsługiwane w regionach Australia Wschodnia lub Brazylia Południowa.
 
 ### <a name="service-tier-characteristics"></a>Charakterystyki warstwy usług
 
@@ -127,7 +127,7 @@ Aby zainicjować proces uzyskiwania większego przydziału:
 3. Kliknij przycisk **Dalej**.
 4. Na **karcie problem** dla nowego żądania obsługi:
    - W polu **ważność**wybierz poziom ważności problemu.
-   - Aby **uzyskać**więcej informacji, podaj dodatkowe informacje o problemie, w tym komunikaty o błędach.
+   - Abyuzyskać więcej informacji, podaj dodatkowe informacje o problemie, w tym komunikaty o błędach.
    - W przypadku **przekazywania plików**Dołącz plik z więcej informacji (do 4 MB).
 
      ![Szczegóły problemu](media/sql-database-managed-instance-resource-limits/problem-details.png)

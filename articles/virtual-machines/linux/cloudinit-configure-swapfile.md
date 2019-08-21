@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie pliku wymiany na Maszynę wirtualną systemu Linux za pomocą pakietu cloud-init | Dokumentacja firmy Microsoft
-description: Jak konfigurowanie pliku wymiany w maszynie Wirtualnej systemu Linux podczas tworzenia przy użyciu wiersza polecenia platformy Azure za pomocą pakietu cloud-init
+title: Używanie funkcji Cloud-init do konfigurowania partycji wymiany na maszynie wirtualnej z systemem Linux | Microsoft Docs
+description: Jak używać funkcji Cloud-init do konfigurowania partycji wymiany na maszynie wirtualnej z systemem Linux podczas tworzenia przy użyciu interfejsu wiersza polecenia platformy Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: rickstercdn
@@ -14,22 +14,22 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: adf03ea912a028c1059683c49350dea3743ee7a6
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: d8ce12b931b6a30fa375588b73a1140ed4697c2f
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671695"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640767"
 ---
-# <a name="use-cloud-init-to-configure-a-swapfile-on-a-linux-vm"></a>Konfigurowanie pliku wymiany na Maszynę wirtualną systemu Linux za pomocą pakietu cloud-init
-W tym artykule dowiesz się, jak używać [pakietu cloud-init](https://cloudinit.readthedocs.io) na konfigurowanie pliku wymiany w różnych dystrybucjach systemu Linux. Swapfile tradycyjnie zostało skonfigurowane przez Linux Agent (WALA) oparte na które dystrybucji wymagany jeden.  W tym dokumencie opisują proces tworzenia pliku wymiany na żądanie w czasie inicjowania obsługi administracyjnej za pomocą pakietu cloud-init.  Aby uzyskać więcej informacji o tym, jak pakietu cloud-init działa natywnie na platformie Azure i obsługiwane dystrybucje systemu Linux, zobacz [Omówienie pakietu cloud-init](using-cloud-init.md)
+# <a name="use-cloud-init-to-configure-a-swap-partition-on-a-linux-vm"></a>Konfigurowanie partycji wymiany na maszynie wirtualnej z systemem Linux przy użyciu funkcji Cloud-init
+W tym artykule przedstawiono sposób użycia usługi [Cloud-init](https://cloudinit.readthedocs.io) w celu skonfigurowania partycji wymiany dla różnych dystrybucji systemu Linux. Partycja wymiany jest tradycyjnie konfigurowana przez agenta systemu Linux (WALA) na podstawie tego, które z nich są wymagane.  W tym dokumencie opisano proces tworzenia partycji wymiany na żądanie podczas aprowizacji czasu przy użyciu funkcji Cloud-init.  Aby uzyskać więcej informacji na temat sposobu, w jaki usługa Cloud-init działa natywnie na platformie Azure i obsługiwanych dystrybucje z systemem Linux, zobacz [Omówienie usługi Cloud-init](using-cloud-init.md)
 
-## <a name="create-swapfile-for-ubuntu-based-images"></a>Tworzenie pliku wymiany obrazów oparty na systemie Ubuntu
-Domyślnie na platformie Azure Ubuntu galerii obrazów nie należy tworzyć pliki wymiany. Aby umożliwić zamiany pliku konfiguracji w czasie za pomocą pakietu cloud-init aprowizacji maszyny Wirtualnej — można znaleźć [dokumentu AzureSwapPartitions](https://wiki.ubuntu.com/AzureSwapPartitions) w witrynie typu wiki Ubuntu.
+## <a name="create-swap-partition-for-ubuntu-based-images"></a>Utwórz partycję wymiany dla obrazów opartych na Ubuntu
+Domyślnie na platformie Azure obrazy galerii Ubuntu nie tworzą partycji wymiany. Aby włączyć konfigurację partycji wymiany podczas udostępniania maszyny wirtualnej za pomocą funkcji Cloud-init — zobacz [dokument AzureSwapPartitions](https://wiki.ubuntu.com/AzureSwapPartitions) w witrynie typu wiki Ubuntu.
 
-## <a name="create-swapfile-for-red-hat-and-centos-based-images"></a>Tworzenie pliku wymiany, Red Hat i CentOS na podstawie obrazów
+## <a name="create-swap-partition-for-red-hat-and-centos-based-images"></a>Utwórz partycję wymiany dla obrazów opartych na Red Hat i CentOS
 
-Utwórz plik w bieżącej powłoce o nazwie *cloud_init_swapfile.txt* i Wklej poniższą konfigurację. W tym przykładzie należy utworzyć plik w usłudze Cloud Shell nie na komputerze lokalnym. Możesz użyć dowolnego edytora. Wprowadź `sensible-editor cloud_init_swapfile.txt`, aby utworzyć plik i wyświetlić listę dostępnych edytorów. Wybierz #1, aby użyć **nano** edytora. Upewnij się, że poprawnie skopiować pliku całego pakietu cloud-init szczególnie pierwszy wiersz.  
+Utwórz plik w bieżącej powłoce o nazwie *cloud_init_swappart. txt* i wklej następującą konfigurację. Na potrzeby tego przykładu Utwórz plik w Cloud Shell nie na komputerze lokalnym. Możesz użyć dowolnego edytora. Wprowadź `sensible-editor cloud_init_swappart.txt`, aby utworzyć plik i wyświetlić listę dostępnych edytorów. Wybierz #1, aby użyć edytora **nano** . Upewnij się, że cały plik Cloud-init został poprawnie skopiowany, szczególnie w pierwszym wierszu.  
 
 ```yaml
 #cloud-config
@@ -48,37 +48,37 @@ mounts:
   - ["ephemeral0.2", "none", "swap", "sw", "0", "0"]
 ```
 
-Przed wdrożeniem tego obrazu, należy utworzyć grupę zasobów za pomocą [Tworzenie grupy az](/cli/azure/group) polecenia. Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*.
+Przed wdrożeniem tego obrazu należy utworzyć grupę zasobów za pomocą polecenia [AZ Group Create](/cli/azure/group) . Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-Teraz Utwórz maszynę Wirtualną z [tworzenie az vm](/cli/azure/vm) i określ plik cloud-init za pomocą `--custom-data cloud_init_swapfile.txt` w następujący sposób:
+Teraz Utwórz maszynę wirtualną za pomocą [AZ VM Create](/cli/azure/vm) i określ plik `--custom-data cloud_init_swappart.txt` Cloud-init w następujący sposób:
 
 ```azurecli-interactive 
 az vm create \
   --resource-group myResourceGroup \
   --name centos74 \
   --image OpenLogic:CentOS:7-CI:latest \
-  --custom-data cloud_init_swapfile.txt \
+  --custom-data cloud_init_swappart.txt \
   --generate-ssh-keys 
 ```
 
-## <a name="verify-swapfile-was-created"></a>Upewnij się, że utworzono pliku wymiany
-Protokół SSH z publicznego adresu IP maszyny Wirtualnej w danych wyjściowych z poprzedniego polecenia. Wprowadź własne **publicznego adresu IP** w następujący sposób:
+## <a name="verify-swap-partition-was-created"></a>Weryfikowanie tworzenia partycji wymiany
+SSH do publicznego adresu IP maszyny wirtualnej wyświetlanej w danych wyjściowych poprzedniego polecenia. Wprowadź własne **publicIpAddress** w następujący sposób:
 
 ```bash
 ssh <publicIpAddress>
 ```
 
-Po utworzeniu SSH'ed do maszyny wirtualnej, sprawdź, czy został utworzony pliku wymiany
+Po SSH'ed na maszynę wirtualną Sprawdź, czy została utworzona partycja wymiany
 
 ```bash
 swapon -s
 ```
 
-Dane wyjściowe tego polecenia powinien wyglądać następująco:
+Dane wyjściowe tego polecenia powinny wyglądać następująco:
 
 ```text
 Filename                Type        Size    Used    Priority
@@ -86,12 +86,12 @@ Filename                Type        Size    Used    Priority
 ```
 
 > [!NOTE] 
-> Jeśli masz istniejącego obrazu platformy Azure, który ma skonfigurowane pliku wymiany, i chcesz zmienić konfigurację pliku wymiany nowych obrazów, należy usunąć istniejący plik wymiany. Zobacz "Dostosowywanie obrazy do przepisu pakietu cloud-init" dokumentu, aby uzyskać więcej informacji.
+> Jeśli masz skonfigurowany obraz platformy Azure, który ma skonfigurowaną partycję wymiany i chcesz zmienić konfigurację partycji wymiany dla nowych obrazów, należy usunąć istniejącą partycję wymiany. Aby uzyskać więcej informacji, zobacz sekcję "Dostosowywanie obrazów do aprowizacji przez funkcję Cloud-init".
 
-## <a name="next-steps"></a>Kolejne kroki
-Przykłady dodatkowe pakietu cloud-init zmian konfiguracji zobacz następujące tematy:
+## <a name="next-steps"></a>Następne kroki
+Aby uzyskać dodatkowe przykłady dotyczące zmian konfiguracji w chmurze, zobacz następujące tematy:
  
-- [Dodaj dodatkowe użytkownika w systemie Linux do maszyny Wirtualnej](cloudinit-add-user.md)
-- [Uruchom Menedżera pakietów, aby zaktualizować istniejące pakiety podczas pierwszego rozruchu](cloudinit-update-vm.md)
-- [Zmień lokalną nazwą hosta maszyny Wirtualnej](cloudinit-update-vm-hostname.md) 
-- [Zainstaluj pakiet aplikacji, zaktualizować pliki konfiguracji i wstawić kluczy](tutorial-automate-vm-deployment.md)
+- [Dodawanie dodatkowego użytkownika systemu Linux do maszyny wirtualnej](cloudinit-add-user.md)
+- [Uruchom Menedżera pakietów, aby zaktualizować istniejące pakiety przy pierwszym rozruchu](cloudinit-update-vm.md)
+- [Zmień lokalną nazwę hosta maszyny wirtualnej](cloudinit-update-vm-hostname.md) 
+- [Zainstaluj pakiet aplikacji, zaktualizuj pliki konfiguracji i klucze iniekcji](tutorial-automate-vm-deployment.md)

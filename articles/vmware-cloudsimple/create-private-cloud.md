@@ -1,21 +1,23 @@
 ---
-title: Utwórz rozwiązanie VMware platformy Azure według chmury prywatnej CloudSimple
+title: Rozwiązanie VMware firmy Azure według CloudSimple — tworzenie CloudSimple prywatnej chmury
 description: Opisuje, jak utworzyć chmurę prywatną CloudSimple do rozbudowania obciążeń programu VMware do chmury z elastycznością operacyjną i ciągłością
 author: sharaths-cs
 ms.author: b-shsury
-ms.date: 06/10/2019
+ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 02a2bd311ea1e89a49eb12ef57a167a08eea5f98
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: aacdb57c312946a9ec2b17a8d41aa9150efc277d
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812253"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640966"
 ---
 # <a name="create-a-cloudsimple-private-cloud"></a>Utwórz chmurę prywatną CloudSimple
+
+Chmura prywatna to izolowany stos oprogramowania VMware obsługujący hosty ESXi, vCenter, sieci vSAN i NSX. Chmurami prywatnymi zarządza się za pomocą portalu CloudSimple. Mają własny serwer vCenter we własnej domenie zarządzania. Stos działa na dedykowanych węzłach i izolowanych węzłach sprzętowych bez systemu operacyjnego.
 
 Tworzenie chmury prywatnej pomaga sprostać różnym typowym potrzebom związanym z infrastrukturą sieci:
 
@@ -29,54 +31,38 @@ Tworzenie chmury prywatnej pomaga sprostać różnym typowym potrzebom związany
 
 Podczas tworzenia chmury prywatnej otrzymujesz jeden klaster vSphere i wszystkie maszyny wirtualne zarządzania utworzone w tym klastrze.
 
-## <a name="before-you-begin"></a>Przed rozpoczęciem
-
-Aby można było utworzyć chmurę prywatną, węzły muszą być obsługiwane.  Aby uzyskać więcej informacji o węzłach aprowizacji, zobacz temat [Inicjowanie obsługi węzłów dla rozwiązań VMware przez CloudSimple — artykuł platformy Azure](create-nodes.md) .
-
-Przydziel zakres CIDR dla podsieci vSphere/sieci vSAN dla chmury prywatnej. Chmura prywatna jest tworzona jako izolowany środowisko VMware (hosty ESXi, vCenter, sieci vSAN i NSX) zarządzane przez serwer vCenter. Składniki zarządzania są wdrażane w sieci wybranej dla podsieci vSphere/sieci vSAN CIDR. Zakres CIDR sieci jest podzielony na różne podsieci podczas wdrażania.  Przestrzeń adresów podsieci vSphere/sieci vSAN musi być unikatowa. Nie może pokrywać się z żadną siecią, która komunikuje się ze środowiskiem CloudSimple.  Sieci, które komunikują się z usługą CloudSimple, obejmują sieci lokalne i sieci wirtualne platformy Azure.  Aby uzyskać więcej informacji na temat podsieci vSphere/sieci vSAN, zobacz [sieci VLAN i podsieci — Omówienie](cloudsimple-vlans-subnets.md).
-
-* Minimalna prefiks zakresu CIDR vSphere/sieci vSAN:/24 
-* Maksymalna vSphere/sieci vSAN prefiks zakresu CIDR:/21
-
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
-
-Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
-
 ## <a name="access-the-cloudsimple-portal"></a>Uzyskiwanie dostępu do portalu CloudSimple
 
 Dostęp do [portalu CloudSimple](access-cloudsimple-portal.md).
 
 ## <a name="create-a-new-private-cloud"></a>Utwórz nową chmurę prywatną
 
-1. Na stronie **zasoby** kliknij pozycję **Nowa Chmura prywatna**.
+1. Wybierz pozycję **Wszystkie usługi**.
+2. Wyszukaj **usługi CloudSimple Services**.
+3. Wybierz usługę CloudSimple, w której chcesz utworzyć chmurę prywatną.
+4. W obszarze **Przegląd**kliknij pozycję **Utwórz chmurę prywatną** , aby otworzyć nową kartę przeglądarki dla portalu CloudSimple. Jeśli zostanie wyświetlony monit, zaloguj się przy użyciu poświadczeń logowania na platformie Azure.
 
-    ![Tworzenie chmury prywatnej — Rozpoczynanie pracy](media/create-pc-button.png)
+    ![Utwórz chmurę prywatną na platformie Azure](media/create-private-cloud-from-azure.png)
 
-2. Wybierz lokalizację, w której mają być hostowane zasoby chmury prywatnej.
+5. W portalu CloudSimple Podaj nazwę chmury prywatnej.
+6. Wybierz **lokalizację** chmury prywatnej.
+7. Wybierz **Typ węzła**spójny z zakupionymi informacjami na platformie Azure.  Można wybrać [opcję CS28 lub CS36](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku). Ta ostatnia opcja obejmuje maksymalną moc obliczeniową i pojemność pamięci.
+8. Określ **liczbę węzłów**.  Aby można było utworzyć chmurę prywatną, wymagane są co najmniej trzy węzły.
 
-3. Wybierz typ węzła CS28 lub CS36 you'ev zainicjowany dla chmury prywatnej. Ta ostatnia opcja obejmuje maksymalną moc obliczeniową i pojemność pamięci.
+    ![Tworzenie chmury prywatnej — informacje podstawowe](media/create-private-cloud-basic-info.png)
 
-4. Wybierz liczbę węzłów dla chmury prywatnej. Można wybrać najwyżej dostępną liczbę węzłów, które you'ev. [](create-nodes.md)
+9. Kliknij pozycję **Next: Opcje**zaawansowane.
+10. Wprowadź zakres CIDR dla podsieci vSphere/sieci vSAN. Upewnij się, że zakres CIDR nie nakłada się na żadną z lokalizacji lokalnych lub innych podsieci platformy Azure (sieci wirtualnych) lub z podsiecią bramy.
 
-    ![Tworzenie chmury prywatnej — ustawienia podstawowe](media/create-private-cloud-basic-info.png)
-
-5. Kliknij pozycję **Next: Opcje**zaawansowane.
-
-6. Wprowadź zakres CIDR dla podsieci vSphere/sieci vSAN. Upewnij się, że zakres CIDR nie nakłada się na żadną z lokalizacji lokalnych lub innych podsieci platformy Azure (sieci wirtualnych) lub z podsiecią bramy.  Nie należy używać żadnego zakresu CIDR zdefiniowanego w sieciach wirtualnych platformy Azure.
-    
     **Opcje zakresu CIDR:** /24,/23,/22 lub/21. Zakres CIDR/24 obsługuje maksymalnie dziewięć węzłów, a/23 zakres CIDR obsługuje do 41 węzłów, a zakres CIDR/22 i/21 obsługuje maksymalnie 64 węzłów (maksymalną liczbę węzłów w chmurze prywatnej).
 
-    > [!CAUTION]
+    > [!IMPORTANT]
     > Adresy IP w zakresie CIDR vSphere/sieci vSAN są zarezerwowane do użytku przez infrastrukturę chmury prywatnej.  Nie używaj adresu IP z tego zakresu na żadnej maszynie wirtualnej.
 
-7. Kliknij pozycję **Next: Przejrzyj i Utwórz**.
+11. Kliknij pozycję **Next: Przejrzyj i Utwórz**.
+12. Przejrzyj ustawienia. Jeśli musisz zmienić dowolne ustawienia, kliknij przycisk **Wstecz**.
+13. Kliknij przycisk **Utwórz**.
 
-8. Przejrzyj ustawienia. Jeśli musisz zmienić dowolne ustawienia, kliknij przycisk **Wstecz**.
+Rozpocznie się proces aprowizacji w chmurze prywatnej. Zainicjowanie obsługi chmury prywatnej może potrwać do dwóch godzin.
 
-9. Kliknij przycisk **Utwórz**.
-
-Inicjowanie obsługi chmury prywatnej rozpocznie się po kliknięciu przycisku Utwórz.  Postęp można monitorować na stronie [zadania](https://docs.azure.cloudsimple.com/activity/#tasks) w portalu CloudSimple.  Inicjowanie obsługi może potrwać od 30 minut do 2 godzin.  Po zakończeniu aprowizacji otrzymasz wiadomość e-mail.
-
-## <a name="next-steps"></a>Następne kroki
-
-* [Rozwiń chmurę prywatną](expand-private-cloud.md)
+Aby uzyskać instrukcje dotyczące rozwinięcia istniejącej chmury prywatnej, zobacz [Rozwiń chmurę prywatną](expand-private-cloud.md).

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 433f8550e9bf8d5f352494005300e1f92494c3c7
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 3e5490a4d74f10532764029f7a83788e3e39b592
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563509"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636214"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Samouczek: rejestrowanie przepływu ruchu sieciowego do i z maszyny wirtualnej przy użyciu witryny Azure Portal
 
@@ -95,7 +95,8 @@ Rejestrowanie przepływu sieciowej grupy zabezpieczeń wymaga dostawcy **Microso
     Tworzenie konta usługi Storage może potrwać około minuty. Nie wykonuj pozostałych kroków, dopóki konto usługi Storage nie zostanie utworzone. Jeśli zamiast tworzyć nowe konto usługi Storage używasz istniejącego konta, upewnij się, że wybierasz konto usługi Storage, które ma pozycję **Wszystkie sieci** (ustawienie domyślne) wybraną dla pozycji **Zapory i sieci wirtualne** w obszarze **USTAWIENIA** na koncie usługi Storage. We wszystkich przypadkach konto magazynu musi znajdować się w tym samym regionie co sieciowej grupy zabezpieczeń. 
     
     > [!NOTE]
-    > Firma Microsoft. Insights i Microsoft. Network Providers są obecnie obsługiwani jako zaufane usługi firmy Microsoft dla usługi Azure Storage, jednak dzienniki przepływu sieciowej grupy zabezpieczeń nie są w pełni dołączane. Aby włączyć rejestrowanie przepływu sieciowej grupy zabezpieczeń, **wszystkie sieci** muszą być nadal wybierane, dopóki ta funkcja nie zostanie w pełni dołączona. 
+    > Firma Microsoft. Insights i Microsoft. Network Providers są obecnie obsługiwani jako [Zaufane usługi firmy Microsoft dla usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services), jednak dzienniki przepływu sieciowej grupy zabezpieczeń nie są w pełni dołączane. Aby włączyć rejestrowanie przepływu sieciowej grupy zabezpieczeń, należy wybrać **wszystkie sieci** , jak wspomniano powyżej.
+    
 4. W lewym górnym rogu portalu wybierz pozycję **Wszystkie usługi**. W polu **Filtr** wpisz ciąg *Network Watcher*. Gdy w wynikach wyszukiwania pojawi się nazwa **Network Watcher**, wybierz ją.
 5. W obszarze **DZIENNIKI** wybierz pozycję **Dzienniki przepływu sieciowej grupy zabezpieczeń**, jak pokazano na poniższej ilustracji:
 

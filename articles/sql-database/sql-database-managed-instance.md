@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 94035fda6b1dff491a69c0f0001019ccd753d4e8
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: ebf4f516b8f90ce2ba8b277281300ae3239821c5
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816615"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640803"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Co to jest Azure SQL Database wystąpienie zarządzane?
 
@@ -58,13 +58,13 @@ W poniższej tabeli przedstawiono najważniejsze funkcje wystąpień zarządzany
 | Wersja SQL Server/kompilacja | Aparat bazy danych SQL Server (Najnowsza stabilna) |
 | Zarządzane automatyczne kopie zapasowe | Tak |
 | Wbudowane wystąpienie i monitorowanie bazy danych oraz metryki | Tak |
-| Automatyczne stosowanie poprawek oprogramowania | Yes |
-| Najnowsze funkcje aparatu bazy danych | Yes |
+| Automatyczne stosowanie poprawek oprogramowania | Tak |
+| Najnowsze funkcje aparatu bazy danych | Tak |
 | Liczba plików danych (wierszy) na bazę danych | Wiele |
 | Liczba plików dziennika (dzienników) na bazę danych | 1 |
 | Wdrożenie Azure Resource Manager sieci wirtualnej | Tak |
 | Model wdrażania klasycznego sieci wirtualnej | Nie |
-| Obsługa portalu | Yes|
+| Obsługa portalu | Tak|
 | Wbudowana usługa integracji (SSIS) | Nie — SSIS jest częścią [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) |
 | Wbudowana usługa analizy (SSAS) | Nie — SSAS jest osobnym [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
 | Wbudowana usługa raportowania (SSRS) | Nie używaj Power BI ani usług SSRS IaaS |
@@ -82,7 +82,7 @@ W modelu rdzeń wirtualny można wybrać między generacjami sprzętu.
 Znajdź więcej informacji na temat różnic między generacjami sprzętowymi w [limitach zasobów wystąpienia zarządzanego](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
 
 > [!IMPORTANT]
-> Nowe bazy danych obliczenia nie są już obsługiwane w regionie AustraliaEast.
+> Nowe bazy danych obliczenia nie są już obsługiwane w regionach Australia Wschodnia lub Brazylia Południowa.
 
 ## <a name="managed-instance-service-tiers"></a>Warstwy usługi wystąpienia zarządzanego
 

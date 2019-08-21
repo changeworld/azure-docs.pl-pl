@@ -7,14 +7,14 @@ manager: paulyuk
 editor: ''
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 07/17/2019
 ms.author: cawa
-ms.openlocfilehash: 3f5196c81550446221a4524330e355c595b65c6a
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: d5662fa3cae8ba0cec0fd76965597ccac7c83889
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934367"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639479"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Bezpieczne Zapisywanie ustawień tajnych aplikacji dla aplikacji sieci Web
 
@@ -23,7 +23,7 @@ W tym artykule opisano sposób bezpiecznego zapisywania ustawień konfiguracji t
 
 Tradycyjnie wszystkie ustawienia konfiguracji aplikacji sieci Web są zapisywane w plikach konfiguracji, takich jak Web. config. To rozwiązanie prowadzi do sprawdzania ustawień tajnych, takich jak poświadczenia w chmurze, do publicznych systemów kontroli źródła, takich jak GitHub. W tym czasie może być trudne przestrzeganie najlepszych rozwiązań w zakresie zabezpieczeń z powodu obciążenia wymaganego do zmiany kodu źródłowego i ponownego skonfigurowania ustawień deweloperskich.
 
-Aby upewnić się, że proces opracowywania jest bezpieczny, biblioteki narzędzi i struktur struktury są tworzone w celu bezpiecznego zapisywania ustawień tajnych aplikacji przy minimalnym lub niezmienionym kodzie źródłowym.
+Aby upewnić się, że proces tworzenia jest bezpieczny, biblioteki narzędzi i struktur struktury są tworzone w celu bezpiecznego zapisywania ustawień tajnych aplikacji z minimalnym lub niezmienionym kodem źródłowym.
 
 ## <a name="aspnet-and-net-core-applications"></a>Aplikacje ASP.NET i .NET Core
 
@@ -50,7 +50,7 @@ Jeśli opracowujesz projekt i chcesz bezpiecznie udostępniać kod źródłowy, 
     ![Dodaj Key Vault tajny](./media/vs-secure-secret-appsettings/add-keyvault-secret.png)
 
     > [!NOTE] 
-    > Przed rozpoczęciem korzystania z programu Visual Studio 2017 15.6 w wersji zazalecamy zainstalowanie rozszerzenia uwierzytelniania usług platformy Azure dla programu Visual Studio. Jest to jednak przestarzałe, ponieważ Funcionality jest zintegrowany w programie Visual Studio. W związku z tym, jeśli używasz starszej wersji programu Visual Studio 2017, Zalecamy zaktualizowanie do programu VS 2017 15,6 lub w taki sposób, aby można było używać tych funkcji natywnie i uzyskać dostęp do magazynu kluczy z użyciem tożsamości logowania programu Visual Studio.
+    > Przed rozpoczęciem korzystania z programu Visual Studio 2017 15.6 w wersji zazalecamy zainstalowanie rozszerzenia uwierzytelniania usług platformy Azure dla programu Visual Studio. Jest to jednak przestarzałe, ponieważ funkcje są zintegrowane w ramach programu Visual Studio. W związku z tym, jeśli używasz starszej wersji programu Visual Studio 2017, Zalecamy zaktualizowanie do programu VS 2017 15,6 lub w taki sposób, aby można było używać tych funkcji natywnie i uzyskać dostęp do magazynu kluczy z użyciem tożsamości logowania programu Visual Studio.
     >
  
 4. Dodaj następujące pakiety NuGet do projektu:
@@ -97,7 +97,7 @@ Jeśli piszesz krótki prototyp i nie chcesz udostępniać zasobów platformy Az
 
 1. Zainstaluj następujący pakiet NuGet w projekcie
     ```
-    Microsoft.Configuration.ConfigurationBuilders.Basic
+    Microsoft.Configuration.ConfigurationBuilders.Base
     ```
 
 2. Utwórz plik podobny do poniższego. Zapisz ją w lokalizacji poza folderem projektu.
@@ -123,7 +123,7 @@ Jeśli piszesz krótki prototyp i nie chcesz udostępniać zasobów platformy Az
     </configBuilders>
     ```
 
-4. Określ sekcję appSettings przy użyciu programu Secret Configuration Builder. Upewnij się, że dla ustawienia tajnego istnieje wpis z wartością fikcyjną.
+4. Określ sekcję appSettings przy użyciu programu Secret Configuration Builder. Upewnij się, że istnieje wpis dla ustawienia tajnego z wartością fikcyjną.
 
     ```xml
         <appSettings configBuilders="Secrets">

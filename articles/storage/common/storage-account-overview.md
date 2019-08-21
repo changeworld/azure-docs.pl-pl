@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 2adb2928772f97c2dc14b8ebe9eb2072cbc4a36d
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 49e15964ba370cc6dc18491507b906764f1f882c
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985368"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640107"
 ---
 # <a name="azure-storage-account-overview"></a>Omówienie konta usługi Azure Storage
 
@@ -143,12 +143,12 @@ Dostęp do danych na koncie magazynu można udzielić przy użyciu dowolnych z n
 
 - **Azure Active Directory:** Użyj poświadczeń usługi Azure Active Directory (Azure AD) w celu uwierzytelnienia użytkownika, grupy lub innej tożsamości w celu uzyskania dostępu do danych obiektów blob i kolejek. W przypadku pomyślnego uwierzytelnienia tożsamości usługa Azure AD zwraca token do użycia w celu autoryzowania żądania do magazynu obiektów blob platformy Azure lub magazynu kolejek. Aby uzyskać więcej informacji, zobacz temat [uwierzytelnianie dostępu do usługi Azure Storage przy użyciu Azure Active Directory](storage-auth-aad.md).
 - **Autoryzacja klucza współużytkowanego:** Użyj klucza dostępu do konta magazynu, aby utworzyć parametry połączenia używane przez aplikację w czasie wykonywania w celu uzyskania dostępu do usługi Azure Storage. Wartości w parametrach połączenia są używane do konstruowania nagłówka *autoryzacji* , który jest przesyłany do usługi Azure Storage. Aby uzyskać więcej informacji, zobacz [Konfigurowanie parametrów połączenia usługi Azure Storage](storage-configure-connection-string.md).
-- **Sygnatura dostępu współdzielonego:** Użyj sygnatury dostępu współdzielonego, aby delegować dostęp do zasobów na koncie magazynu, jeśli nie używasz uwierzytelniania usługi Azure AD. Sygnatura dostępu współdzielonego to token, który hermetyzuje wszystkie informacje konieczne do autoryzowania żądania do usługi Azure Storage przy użyciu adresu URL. Można określić zasób magazynu, przyznanych uprawnień oraz przedział czasu, w którym uprawnienia są prawidłowe w ramach sygnatury dostępu współdzielonego. Aby uzyskać więcej informacji, zobacz [Używanie sygnatur dostępu współdzielonego (SAS)](storage-sas-overview.md).
+- **Sygnatura dostępu współdzielonego:** Użyj sygnatury dostępu współdzielonego, aby delegować dostęp do zasobów na koncie magazynu, jeśli nie używasz autoryzacji usługi Azure AD. Sygnatura dostępu współdzielonego to token, który hermetyzuje wszystkie informacje konieczne do autoryzowania żądania do usługi Azure Storage przy użyciu adresu URL. Można określić zasób magazynu, przyznanych uprawnień oraz przedział czasu, w którym uprawnienia są prawidłowe w ramach sygnatury dostępu współdzielonego. Aby uzyskać więcej informacji, zobacz [Używanie sygnatur dostępu współdzielonego (SAS)](storage-sas-overview.md).
 
 > [!NOTE]
 > Uwierzytelnianie użytkowników lub aplikacji przy użyciu poświadczeń usługi Azure AD zapewnia doskonałe zabezpieczenia i łatwość użycia w innych sposobach autoryzacji. Mimo że można nadal korzystać z autoryzacji klucza współużytkowanego w aplikacjach, korzystanie z usługi Azure AD powoduje obejście konieczności przechowywania klucza dostępu do konta w kodzie. Możesz również nadal używać sygnatur dostępu współdzielonego, aby udzielać szczegółowego dostępu do zasobów na koncie magazynu, ale usługa Azure AD oferuje podobne możliwości bez konieczności zarządzania tokenami SAS ani martwić się o odwoływanie złamanych SAS. 
 >
-> Firma Microsoft zaleca używanie uwierzytelniania usługi Azure AD dla obiektów BLOB usługi Azure Storage i kolejkowanie aplikacji, o ile jest to możliwe.
+> Firma Microsoft zaleca korzystanie z autoryzacji usługi Azure AD dla obiektów BLOB usługi Azure Storage i kolejkowanie aplikacji, o ile jest to możliwe.
 
 ## <a name="copying-data-into-a-storage-account"></a>Kopiowanie danych do konta magazynu
 

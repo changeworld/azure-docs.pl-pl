@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: mlearned
-ms.openlocfilehash: cf9dc304efea8874d16953f74bf88a4317760819
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 369729f10de4a55cd14bb866795ea1aa15b3d9da
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69031839"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639783"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>Wersja zapoznawcza — Ogranicz ruch wychodzący dla węzłów klastra i Kontroluj dostęp do wymaganych portów i usług w usłudze Azure Kubernetes Service (AKS)
 
@@ -58,6 +58,10 @@ W celach zarządzania i operacyjnych węzły w klastrze AKS muszą uzyskiwać do
 Aby zwiększyć bezpieczeństwo klastra AKS, możesz ograniczyć ruch wychodzący. Klaster jest skonfigurowany do ściągania obrazów kontenera systemu podstawowego z MCR lub ACR. W przypadku zablokowania ruchu wychodzącego w ten sposób należy zdefiniować określone porty i nazwy FQDN, aby umożliwić węzłom AKS poprawne komunikowanie się z wymaganymi usługami zewnętrznymi. Bez tych autoryzowanych portów i nazw FQDN węzły AKS nie mogą komunikować się z serwerem interfejsu API ani instalować składników podstawowych.
 
 Do zabezpieczenia ruchu wychodzącego i definiowania wymaganych portów i adresów można użyć [zapory platformy Azure][azure-firewall] lub urządzenia zapory innej firmy. Usługa AKS nie tworzy automatycznie tych reguł. Następujące porty i adresy są przeznaczone do celów referencyjnych podczas tworzenia odpowiednich reguł w zaporze sieciowej.
+
+> [!IMPORTANT]
+> W przypadku korzystania z zapory platformy Azure w celu ograniczenia ruchu wychodzącego i utworzenia trasy zdefiniowanej przez użytkownika (UDR) w celu wymuszenia całego ruchu wychodzącego upewnij się, że utworzono odpowiednią regułę DNAT w zaporze, aby prawidłowo zezwolić na ruch przychodzący. Używanie zapory platformy Azure z UDR powoduje przerwanie konfiguracji transferu danych przychodzących z powodu routingu asymetrycznego. (Problem występuje, ponieważ podsieć AKS ma domyślną trasę, która przechodzi do prywatnego adresu IP zapory, ale używasz publicznego modułu równoważenia obciążenia — ruch przychodzący lub usługa Kubernetes typu: Moduł równoważenia obciążenia). W takim przypadku ruch przychodzącego modułu równoważenia obciążenia jest odbierany za pośrednictwem jego publicznego adresu IP, ale ścieżka zwrotna przechodzi przez prywatny adres IP zapory. Ze względu na to, że Zapora jest stanowa, opuszcza pakiet, ponieważ Zapora nie rozpoznaje ustanowionej sesji. Aby dowiedzieć się, jak zintegrować zaporę platformy Azure z ruchem przychodzącym lub usługą równoważenia obciążenia, zobacz [integrowanie zapory platformy Azure z usługą azure usługa Load Balancer w warstwie Standardowa](https://docs.microsoft.com/en-us/azure/firewall/integrate-lb).
+>
 
 W programie AKS istnieją dwa zestawy portów i adresów:
 

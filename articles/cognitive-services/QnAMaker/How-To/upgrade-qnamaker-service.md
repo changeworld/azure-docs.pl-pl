@@ -1,7 +1,7 @@
 ---
-title: Uaktualnianie usługi QnA Maker — QnA Maker
+title: Uaktualnij usługę QnA Maker — QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Udostępnianie lub uaktualnienia usługi QnA Maker, aby można było zarządzać zasobami lepiej.
+description: Udostępnianie lub uaktualnianie usług QnA Maker w celu lepszego zarządzania zasobami.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,83 +10,83 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: diberry
-ms.openlocfilehash: 2fdbb245f838d92e84d1247faa610a2f1a66c532
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: df4aa2d6a3c4690fb1fc38b0f4f7d49afccdd657
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439763"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640479"
 ---
-# <a name="share-or-upgrade-your-qna-maker-service"></a>Udostępnianie lub Uaktualnij usługi QnA Maker
-Udostępnianie lub uaktualnienia usługi QnA Maker, aby można było zarządzać zasobami lepiej. 
+# <a name="share-or-upgrade-your-qna-maker-service"></a>Udostępnianie lub uaktualnianie usługi QnA Maker
+Udostępnianie lub uaktualnianie usług QnA Maker w celu lepszego zarządzania zasobami. 
 
-Można uaktualnić poszczególne składniki stosu usługi QnA Maker po pierwszym utworzeniu. Zobacz szczegóły dotyczące składników zależnych i wybór jednostki SKU [tutaj](https://aka.ms/qnamaker-docs-capacity).
+Po wstępnym utworzeniu można uaktualnić poszczególne składniki stosu QnA Maker. Zobacz szczegóły dotyczące składników zależnych i wyboru jednostki SKU [tutaj](https://aka.ms/qnamaker-docs-capacity).
 
-## <a name="share-existing-services-with-qna-maker"></a>Udostępnianie istniejące usługi QnA Maker
+## <a name="share-existing-services-with-qna-maker"></a>Udostępnianie istniejących usług za pomocą QnA Maker
 
-Usługa QnA Maker tworzy kilka zasobów platformy Azure. Aby można było ograniczyć zarządzanie, a następnie korzystać z dzieleniem kosztów, skorzystaj z poniższej tabeli, aby dowiedzieć się tym, co można, a czego nie można udostępnić:
+QnA Maker tworzy kilka zasobów platformy Azure. Aby ograniczyć zarządzanie i korzystać z zalet udostępniania kosztów, Skorzystaj z poniższej tabeli, aby dowiedzieć się, co można i czego nie można udostępnić:
 
 |Usługa|Udostępnij|
 |--|--|
 |Cognitive Services|X|
-|plan usługi App service|✔|
+|Plan usługi aplikacji|✔|
 |App Service|X|
 |Application Insights|✔|
-|Search Service|✔|
+|Usługa wyszukiwania|✔|
 
-## <a name="upgrade-qna-maker-management-sku"></a>Uaktualnianie usługi QnA Maker zarządzania jednostki SKU
+## <a name="upgrade-qna-maker-management-sku"></a>Uaktualnij jednostkę SKU zarządzania QnA Maker
 
-Gdy musisz mieć więcej pytań i odpowiedzi w Twojej bazie wiedzy, poza Twoja bieżąca warstwa Uaktualnij warstwę cenową usługi QnA Maker. 
+Jeśli potrzebujesz więcej pytań i odpowiedzi w bazie wiedzy, poza bieżącą warstwą, Uaktualnij warstwę cenową usługi QnA Maker Service. 
 
-Aby uaktualnić zarządzania usługi QnA Maker jednostki SKU:
+Aby uaktualnić jednostkę SKU zarządzania QnA Maker:
 
-1. Przejdź do zasobu usługi QnA Maker w witrynie Azure portal i wybierz **warstwa cenowa**.
+1. Przejdź do zasobu QnA Maker w Azure Portal i wybierz pozycję **warstwa cenowa**.
 
-    ![Zasób usługi QnA Maker](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource.png)
+    ![Zasób QnA Maker](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource.png)
 
-2. Wybierz odpowiednie jednostki SKU i naciśnij klawisz **wybierz**.
+2. Wybierz odpowiednią jednostkę SKU i naciśnij **pozycję Wybierz**.
 
-    ![Ceny usługi QnA Maker](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-pricing-page.png)
+    ![Cennik QnA Maker](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-pricing-page.png)
 
-## <a name="upgrade-app-service"></a>Uaktualnij usługę App service
+## <a name="upgrade-app-service"></a>Uaktualnij usługę App Service
 
- W przypadku bazy wiedzy musi obsługiwać więcej żądań z aplikacji klienckich, należy uaktualnić usługi app service w warstwie cenowej.
+ Gdy baza wiedzy musi obpracować więcej żądań z aplikacji klienckiej, należy uaktualnić warstwę cenową usługi App Service.
 
-Możesz [skalowanie w górę](https://docs.microsoft.com/azure/app-service/web-sites-scale) lub w dół usługi App service.
+Usługę App Service można [skalować w górę](https://docs.microsoft.com/azure/app-service/manage-scale-up) lub w dół.
 
-1. Przejdź do zasobu usługi aplikacji w witrynie Azure portal, a następnie wybierz pozycję **skalowanie w górę** lub **skalowanie w dół** opcje zgodnie z potrzebami.
+1. Przejdź do zasobu usługi App Service w Azure Portal i wybierz pozycję **Skaluj w górę** lub **w dół** odpowiednio do potrzeb.
 
-    ![Skala usługi aplikacji usługi QnA Maker](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-scale.png)
+    ![Skalowanie usługi App Service QnA Maker](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-scale.png)
 
 ## <a name="upgrade-azure-search-service"></a>Uaktualnij usługę Azure Search
 
-Podczas planowania mają wiele bazy wiedzy, Uaktualnij warstwę cenową usługi Azure Search. 
+Planując posiadanie wielu baz wiedzy, należy uaktualnić warstwę cenową usługi Azure Search. 
 
-Obecnie nie jest możliwe do wykonania od razu uaktualnienia platformy Azure, wyszukaj jednostki SKU. Można jednak utworzyć nowy zasób usługi Azure search z odpowiednią jednostką SKU, przywrócenia danych do nowego zasobu i połączyć go do stosu usługi QnA Maker.
+Obecnie nie jest możliwe przeprowadzenie uaktualnienia w miejscu jednostki SKU usługi Azure Search. Można jednak utworzyć nowy zasób usługi Azure Search z odpowiednią jednostką SKU, przywrócić dane do nowego zasobu, a następnie połączyć je z stosem QnA Maker.
 
-1. Utwórz nowy zasób usługi Azure search w witrynie Azure portal, a następnie wybierz odpowiednią jednostkę SKU.
+1. Utwórz nowy zasób usługi Azure Search w Azure Portal i wybierz żądaną jednostkę SKU.
 
-    ![Usługa QnA Maker Azure wyszukiwania zasobów](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-new.png)
+    ![QnA Maker zasobów usługi Azure Search](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-new.png)
 
-2. Przywróć indeksy z oryginalny zasób usługi Azure search na nową. Zobacz przykładowy kod przywracania kopii zapasowej [tutaj](https://github.com/pchoudhari/QnAMakerBackupRestore).
+2. Przywróć indeksy z oryginalnego zasobu usługi Azure Search do nowego. Zapoznaj się z przykładowym [](https://github.com/pchoudhari/QnAMakerBackupRestore)kodem przywracania kopii zapasowej.
 
-3. Po przywróceniu danych, przejdź do nowego zasobu usługi Azure search, wybierz opcję **klucze**i zanotuj **nazwa** i **klucz administratora**.
+3. Po przywróceniu danych przejdź do nowego zasobu usługi Azure Search, wybierz pozycję **klucze**i zanotuj **nazwę** i **klucz administratora**.
 
-    ![Usługa QnA Maker w usłudze Azure search kluczy](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-keys.png)
+    ![QnA Maker kluczy usługi Azure Search](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-keys.png)
 
-4. Aby połączyć nowy zasób usługi Azure search do stosu usługi QnA Maker, przejdź do usługi QnA Maker aplikacji.
+4. Aby połączyć nowy zasób usługi Azure Search ze stosem QnA Maker, przejdź do usługi QnA Maker App Service.
 
-    ![Usługa QnA Maker usługi App Service](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource-list-appservice.png)
+    ![QnA Maker appService](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource-list-appservice.png)
 
-5. Wybierz **ustawienia aplikacji** i Zastąp **AzureSearchName** i **AzureSearchAdminKey** pól z kroku 3.
+5. Wybierz pozycję **Ustawienia aplikacji** i Zastąp pola **AzureSearchName** i **AzureSearchAdminKey** w kroku 3.
 
-    ![Ustawienie usługi App Service usługa QnA Maker](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-settings.png)
+    ![QnA Maker ustawienie appService](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-settings.png)
 
 6. Uruchom ponownie usługi App service.
 
-    ![Ponowne uruchomienie usługi App Service usługa QnA Maker](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
+    ![QnA Maker ponowne uruchomienie appService](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Użyj usługi QnA Maker API](../Quickstarts/csharp.md)
+> [Użyj interfejs API usługi QnA Maker](../Quickstarts/csharp.md)

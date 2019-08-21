@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 08/07/2019
-ms.openlocfilehash: e75f2fdd0530b92e8c8405b74c2a364ff9e9e28e
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.date: 08/16/2019
+ms.openlocfilehash: 6e734a661557b024257fcd1b9d9c2da6a3bc8f85
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935434"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640222"
 ---
 # <a name="issues-with-region-servers-in-azure-hdinsight"></a>Problemy z serwerami regionów w usłudze Azure HDInsight
 
@@ -27,7 +27,7 @@ Po uruchomieniu `hbase hbck` polecenia zostanie wyświetlony komunikat o błędz
 multiple regions being unassigned or holes in the chain of regions
 ```
 
-Z poziomu interfejsu użytkownika Apache HBase Master można zauważyć, że liczba regionów jest niezrównoważona na wszystkich serwerach regionów.
+W interfejsie użytkownika Apache HBase Master można zobaczyć liczbę regionów, które są niezrównoważone na wszystkich serwerach regionów. Następnie można uruchomić `hbase hbck` polecenie, aby zobaczyć otwory w łańcuchu regionów.
 
 ### <a name="cause"></a>Przyczyna
 
@@ -37,7 +37,7 @@ Dziury mogą być wynikiem regionów trybu offline.
 
 Napraw przydziały. Wykonaj poniższe kroki, aby przywrócić stan Normalny nieprzypisanych regionów:
 
-1. Zaloguj się do klastra usługi HDInsight HBase przy użyciu protokołu SSH.
+1. Zaloguj się do klastra HBase usługi HDInsight przy użyciu protokołu SSH.
 
 1. Uruchom `hbase zkcli` polecenie, aby nawiązać połączenie z powłoką dozorcy.
 
@@ -45,7 +45,7 @@ Napraw przydziały. Wykonaj poniższe kroki, aby przywrócić stan Normalny niep
 
 1. Zamknij powłokę dozorcy za `exit` pomocą polecenia.
 
-1. Otwórz interfejs użytkownika Ambari i uruchom ponownie usługę Active HBase Master z poziomu usługi Ambari.
+1. Otwórz interfejs użytkownika Apache Ambari, a następnie uruchom ponownie usługę Active HBase Master.
 
 1. Uruchom `hbase hbck` ponownie polecenie (bez żadnych dalszych opcji). Sprawdź dane wyjściowe i upewnij się, że wszystkie regiony są przypisane.
 
@@ -61,7 +61,7 @@ Nie można uruchomić serwerów regionów.
 
 Dzielenie wielu katalogów WAL.
 
-1. Pobierz listę bieżących Wals: `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out`.
+1. Pobierz listę bieżących WALs: `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out`.
 
 1. `wals.out` Sprawdź plik. W przypadku zbyt wielu katalogów dzielenia (począwszy od znaku *-dzielenia) serwer regionu prawdopodobnie kończy się niepowodzeniem z powodu tych katalogów.
 

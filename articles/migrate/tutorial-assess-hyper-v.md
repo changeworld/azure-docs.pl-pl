@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/11/2019
+ms.date: 08/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 60e1db913336cc9f9e355c2e8f8466854de20389
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: b93d9ee65850749e79714b632584f1977ca88c81
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828333"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639983"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Ocenianie maszyn wirtualnych funkcji Hyper-V za pomocą oceny serwera Azure Migrate
 
@@ -73,7 +73,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
     - Podczas migrowania maszyn wirtualnych możesz wybrać inny region docelowy platformy Azure. Wszystkie regiony platformy Azure są obsługiwane w celu migracji.
 
 7. Kliknij przycisk **Dalej**.
-8. W **narzędziu Wybierz ocenę**wybierz **pozycję Azure Migrate: **Następnie**Ocena** > serwera.
+8. W **narzędziu Wybierz ocenę**wybierz **pozycję Azure Migrate: Ocena serwera > Dalej.
 
     ![Tworzenie projektu Azure Migrate](./media/tutorial-assess-hyper-v/assessment-tool.png)
 
@@ -128,13 +128,17 @@ Przed wdrożeniem należy sprawdzić, czy spakowany plik jest bezpieczny.
 
 Zaimportuj pobrany plik i Utwórz maszynę wirtualną.
 
-1. Wyodrębnij plik skompresowanego dysku VHD do folderu na hoście funkcji Hyper-V, który będzie obsługiwał maszynę wirtualną urządzenia. Trzy foldery są wyodrębniane.
+1. Po pobraniu skompresowanego pliku VHD na hosta funkcji Hyper-V, na którym zostanie umieszczona maszyna wirtualna urządzenia, Wyodrębnij plik zip.
+    - W wyodrębnionej lokalizacji plik rozpakuje się do folderu o nazwie **AzureMigrateAppliance_VersionNumber**.
+    - Ten folder zawiera podfolder o nazwie **AzureMigrateAppliance_VersionNumber**.
+    - Ten podfolder zawiera trzy dalsze **migawki**podfolderów, **wirtualne dyski twarde**i **Virtual Machines**.
+
 2. Otwórz Menedżera funkcji Hyper-V. W obszarze **Akcje**kliknij pozycję **Importuj maszynę wirtualną**.
 
     ![Wdrażanie wirtualnego dysku twardego](./media/tutorial-assess-hyper-v/deploy-vhd.png)
 
 2. Po rozpoczęciu **pracy**Kreatora importu maszyny wirtualnej > kliknij przycisk **dalej**.
-3. W obszarze **lokalizowanie folderu**określ folder zawierający wyodrębniony wirtualny dysk twardy. Następnie kliknij przycisk **Next** (Dalej).
+3. W obszarze **lokalizowanie folderu**wybierz folder **Virtual Machines** . Następnie kliknij przycisk **Next** (Dalej).
 1. W obszarze **Wybierz maszynę wirtualną**kliknij przycisk **dalej**.
 2. W obszarze **Wybierz typ importu**kliknij pozycję **Kopiuj maszynę wirtualną (Utwórz nowy unikatowy identyfikator)** . Następnie kliknij przycisk **Next** (Dalej).
 3. W obszarze **Wybierz lokalizację**docelową pozostaw ustawienie domyślne. Kliknij przycisk **Dalej**.
@@ -331,7 +335,7 @@ Klasyfikacje zaufania dla oceny są następujące.
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku zostaną wykonane następujące czynności:
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/08/2019
 ms.author: kumud
-ms.openlocfilehash: cc89e9284e6dbb735aef08100c99a5a7fdb87549
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 75af2012c4e6287a2fbe76098c2a325e6c9ae2ef
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248842"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640690"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli-preview"></a>Wdrażanie aplikacji podwójnego stosu IPv6 w usłudze Azure Virtual Network — interfejs wiersza polecenia (wersja zapoznawcza)
 
@@ -130,7 +130,7 @@ az network lb create \
 
 Utwórz adres IP frontonu IPV6 za pomocą [AZ Network lb fronton-IP Create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create). Poniższy przykład tworzy konfigurację adresu IP frontonu o nazwie *dsLbFrontEnd_v6* i dołącza adres *dsPublicIP_v6* :
 
-```azurepowershell-interactive
+```azurecli
 az network lb frontend-ip create \
 --lb-name dsLB  \
 --name dsLbFrontEnd_v6  \
@@ -154,7 +154,7 @@ az network lb address-pool create \
 
 Reguła modułu równoważenia obciążenia służy do definiowania sposobu dystrybucji ruchu do maszyn wirtualnych. Zdefiniuj konfigurację adresu IP frontonu na potrzeby ruchu przychodzącego oraz pulę adresów IP zaplecza do odbierania ruchu, wraz z wymaganym portem źródłowym i docelowym. 
 
-Utwórz regułę modułu równoważenia obciążenia za pomocą polecenia [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create). Poniższy przykład tworzy reguły modułu równoważenia obciążenia o nazwie *dsLBrule_v4* i *dsLBrule_v6* i równoważy ruch na  porcie TCP *80* do konfiguracji adresu IP frontonu IPv4 i IPv6:
+Utwórz regułę modułu równoważenia obciążenia za pomocą polecenia [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create). Poniższy przykład tworzy reguły modułu równoważenia obciążenia o nazwie *dsLBrule_v4* i *dsLBrule_v6* i równoważy ruch na porcie TCP *80* do konfiguracji adresu IP frontonu IPv4 i IPv6:
 
 ```azurecli
 az network lb rule create \

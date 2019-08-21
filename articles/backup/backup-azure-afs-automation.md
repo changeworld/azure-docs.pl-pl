@@ -5,15 +5,15 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/05/2018
+ms.date: 08/20/2019
 ms.author: dacurwin
 ms.reviewer: pullabhk
-ms.openlocfilehash: f933b926aa0e277976416ae1b3b2eb684d9fcc85
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
-ms.translationtype: MT
+ms.openlocfilehash: f736d7f1dde8f268033d7c80322b91543672e68f
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955084"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69638524"
 ---
 # <a name="back-up-and-restore-azure-files-with-powershell"></a>Tworzenie kopii zapasowych i przywracanie Azure Files przy użyciu programu PowerShell
 
@@ -262,6 +262,12 @@ testAzureFS       Backup               Completed            11/12/2018 2:42:07 P
 ```
 
 Migawki udziałów plików platformy Azure są używane podczas wykonywania kopii zapasowych, więc zwykle zadanie jest wykonywane przez czas, gdy polecenie zwróci te dane wyjściowe.
+
+### <a name="using-on-demand-backups-to-extend-retention"></a>Korzystanie z kopii zapasowych na żądanie w celu zwiększenia okresu przechowywania
+
+Kopie zapasowe na żądanie mogą służyć do przechowywania migawek przez 10 lat. Harmonogramy mogą służyć do uruchamiania skryptów programu PowerShell na żądanie z wybranym przechowywaniem, a tym samym wykonywania migawek w regularnych odstępach czasu każdego tygodnia, miesiąca lub roku. Tworzenie regularnych migawek polega na ograniczeniach [kopii zapasowych na żądanie](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#how-many-on-demand-backups-can-i-take-per-file-share-) przy użyciu usługi Azure Backup.
+
+Jeśli szukasz przykładowych skryptów, możesz zapoznać się z przykładowym skryptem w witrynie GitHub https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup) (przy użyciu Azure Automation elementu Runbook, który umożliwia okresowe planowanie tworzenia kopii zapasowych i ich zachowanie nawet do 10 lat.
 
 ### <a name="modify-the-protection-policy"></a>Modyfikowanie zasad ochrony
 

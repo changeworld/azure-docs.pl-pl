@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: bb4ac9953bcadd9e49cee5b7b99e853705b6567c
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 9609a886bdcbf093cffaf888f9aeaff0d61acec1
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990285"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636650"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Skonfiguruj aplikację App Service w Azure Portal
 
@@ -167,7 +167,7 @@ W [Azure Portal]przejdź do strony zarządzania aplikacją. W menu po lewej stro
 
 ![Ustawienia ogólne](./media/configure-common/open-general.png)
 
-Tutaj można skonfigurować niektóre typowe ustawienia dla aplikacji. Niektóre ustawienia wymagają skalowania [do wyższych warstw cenowych](web-sites-scale.md).
+Tutaj można skonfigurować niektóre typowe ustawienia dla aplikacji. Niektóre ustawienia wymagają skalowania [do wyższych warstw cenowych](manage-scale-up.md).
 
 - **Ustawienia stosu**: Stos oprogramowania do uruchamiania aplikacji, w tym wersje język i zestaw SDK. W przypadku aplikacji systemu Linux i niestandardowych aplikacji kontenerów można również ustawić opcjonalne lub plik startowy.
 - **Ustawienia platformy**: Umożliwia skonfigurowanie ustawień platformy hostingu, w tym:
@@ -268,4 +268,4 @@ Zobacz [Konfigurowanie niestandardowego kontenera systemu Linux dla Azure App Se
 [How to: Monitor web endpoint status]: https://go.microsoft.com/fwLink/?LinkID=279906
 [Podstawowe informacje o monitorowaniu w Azure App Service]: ./web-sites-monitor.md
 [tryb potokowy]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
-[Skalowanie aplikacji w Azure App Service]: ./web-sites-scale.md
+[Skalowanie aplikacji w Azure App Service]: ./manage-scale-up.md

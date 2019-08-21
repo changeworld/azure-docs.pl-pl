@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 3637676a330b324d5620885f0cbe50d4aa68ed51
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 2efeb37f8b98f4cf9a29ec8a6976146b81aab26b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779045"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641051"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL Database często zadawane pytania dotyczące wystąpienia zarządzanego
 
@@ -36,8 +36,7 @@ Aby uzyskać dostęp do dostępnych warstw usług i ich cech, zobacz [różnice 
 
 ## <a name="where-can-i-find-known-issues-and-bugs"></a>Gdzie mogę znaleźć znane problemy i usterki?
 
-Aby zapoznać się z usterkami i znanymi problemami, zobacz temat [zmiany](sql-database-managed-instance-transact-sql-information.md#Changes) i [znane problemy](sql-database-managed-instance-transact-sql-information.md#Issues).
-
+Aby poznać usterki i znane problemy, zobacz [znane problemy](sql-database-managed-instance-transact-sql-information.md#Issues).
 
 ## <a name="can-a-managed-instance-have-the-same-name-as-on-premises-sql-server"></a>Czy wystąpienie zarządzane może mieć taką samą nazwę jak SQL Server lokalnego?
 

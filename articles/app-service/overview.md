@@ -15,16 +15,16 @@ ms.topic: overview
 ms.date: 01/04/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5ce8abd08f82a2a8b69cc996bfd8f7f060bb8c23
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 8a7268ebae80df5a0004e824641e24b979b9c79f
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205044"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637711"
 ---
 # <a name="app-service-overview"></a>Omówienie usługi App Service
 
-*Usługa Azure App Service* jest oparty na protokole HTTP usługi do hostowania aplikacji sieci web, interfejsów API REST i zaplecza aplikacji mobilnych. Możesz programować w ulubionym języku — .NET, .NET Core, Java, Ruby, Node.js, PHP lub Python. Aplikacje można łatwo uruchamiać i skalować w środowiskach opartych zarówno na systemie Windows, jak i Linux. W przypadku środowisk opartych na systemie Linux zobacz [Usługa App Service w systemie Linux](containers/app-service-linux-intro.md). 
+*Azure App Service* to usługa oparta na protokole HTTP do hostowania aplikacji sieci Web, interfejsów API REST i zaplecza mobilnego. Możesz programować w ulubionym języku — .NET, .NET Core, Java, Ruby, Node.js, PHP lub Python. Aplikacje można łatwo uruchamiać i skalować w środowiskach opartych zarówno na systemie Windows, jak i Linux. W przypadku środowisk opartych na systemie Linux zobacz [Usługa App Service w systemie Linux](containers/app-service-linux-intro.md). 
 
 Usługa App Service nie tylko dodaje do aplikacji możliwości platformy Microsoft Azure, takie jak zabezpieczenia, równoważenie obciążenia, automatyczne skalowanie i automatyczne zarządzanie. Umożliwia również korzystanie z funkcji metodyki DevOps, takich jak ciągłe wdrażanie z usług Azure DevOps, GitHub, Docker Hub i innych źródeł, zarządzanie pakietami, środowiska przejściowe, domena niestandardowa i certyfikaty SSL. 
 
@@ -36,7 +36,7 @@ Poniżej przedstawiono kilka najważniejszych funkcji usługi App Service:
 
 * **Wiele języków i platform** — usługa App Service zapewnia najwyższej jakości obsługę środowisk ASP.NET, ASP.NET Core, Java, Ruby, Node.js, PHP i Python. Można również uruchamiać [program PowerShell oraz inne skrypty lub pliki wykonywalne](webjobs-create.md) jako usługi w tle.
 * **Optymalizacja metodyki DevOps** — konfigurowanie [ciągłej integracji i wdrażania](deploy-continuous-deployment.md) za pomocą usług Azure DevOps, GitHub, BitBucket, Docker Hub lub Azure Container Registry. Promowanie aktualizacji za pośrednictwem [środowisk testowych i przejściowych](deploy-staging-slots.md). Zarządzaj aplikacjami w usłudze App Service za pomocą programu [Azure PowerShell](/powershell/azureps-cmdlets-docs) lub [międzyplatformowego interfejsu wiersza polecenia](/cli/azure/install-azure-cli).
-* **Globalne skalowanie i wysoka dostępność** — ręczne lub automatyczne skalowanie [w pionie](web-sites-scale.md) lub [w poziomie](../monitoring-and-diagnostics/insights-how-to-scale.md). Hostuj aplikacje w dowolnym miejscu globalnej infrastruktury centrum danych firmy Microsoft i korzystaj z wysokiej dostępności usługi App Service zapewnianej w umowie [SLA](https://azure.microsoft.com/support/legal/sla/app-service/).
+* **Globalne skalowanie i wysoka dostępność** — ręczne lub automatyczne skalowanie [w pionie](manage-scale-up.md) lub [w poziomie](../monitoring-and-diagnostics/insights-how-to-scale.md). Hostuj aplikacje w dowolnym miejscu globalnej infrastruktury centrum danych firmy Microsoft i korzystaj z wysokiej dostępności usługi App Service zapewnianej w umowie [SLA](https://azure.microsoft.com/support/legal/sla/app-service/).
 * **Połączenia z platformami SaaS i danymi lokalnymi** — możliwość wyboru spośród ponad 50 [łączników](../connectors/apis-list.md) obsługujących systemy dla przedsiębiorstw (takie jak SAP), usługi SaaS (takie jak Salesforce) oraz serwisy internetowe (takie jak Facebook). Dostęp do danych lokalnych przy użyciu [połączeń hybrydowych](app-service-hybrid-connections.md) i [sieci wirtualnych platformy Azure](web-sites-integrate-with-vnet.md).
 * **Bezpieczeństwo i zgodność** — usługa App Service jest [zgodna ze standardami ISO, SOC i PCI](https://www.microsoft.com/en-us/trustcenter). Uwierzytelnianie użytkowników za pomocą [usługi Azure Active Directory](configure-authentication-provider-aad.md) lub danych logowania z serwisów społecznościowych ([Google](configure-authentication-provider-google.md), [Facebook](configure-authentication-provider-facebook.md), [Twitter](configure-authentication-provider-twitter.md) i [ Microsoft](configure-authentication-provider-microsoft.md)). Utwórz [ograniczenia adresów IP](app-service-ip-restrictions.md) i [zarządzaj tożsamościami usługi](overview-managed-identity.md).
 * **Szablony aplikacji** — możliwość wyboru z obszernej listy szablonów aplikacji dostępnych w portalu [Azure Marketplace](https://azure.microsoft.com/marketplace/), takich jak WordPress, Joomla i Drupal.
@@ -46,7 +46,7 @@ Poniżej przedstawiono kilka najważniejszych funkcji usługi App Service:
 
 Oprócz usługi App Service platforma Azure oferuje inne usługi, które mogą służyć do hostingu witryn i aplikacji internetowych. W przypadku większości scenariuszy najlepszym wyborem jest usługa App Service.  W przypadku architektury mikrousług należy rozważyć usługę [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric). W razie konieczności sprawowania większej kontroli nad maszynami wirtualnymi, na których działa kod, należy wziąć pod uwagę usługę [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/). Aby uzyskać więcej informacji o tym, jak dokonać wyboru między usługami Azure, zobacz [Azure App Service, Virtual Machines, Service Fabric, and Cloud Services comparison](overview-compare.md) (Porównanie usług Azure App Service, Virtual Machines, Service Fabric i Cloud Services).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Utwórz swoją pierwszą aplikację internetową.
 

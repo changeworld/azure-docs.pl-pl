@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 6a29117ff6e5173063bc2aced87f08f1a6aea425
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8b4b5553605042499a9a8f3343ac4e6678e7006f
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559589"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640424"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>Przygotowywanie danych do tworzenia niestandardowego głosu
 
@@ -74,7 +74,7 @@ Postępuj zgodnie z poniższymi wskazówkami podczas przygotowywania dźwięku.
 
 Plik transkrypcji jest plikiem w postaci zwykłego tekstu. Te wskazówki służą do przygotowania transkrypcji.
 
-| Właściwość | Wartość |
+| Właściwość | Value |
 | -------- | ----- |
 | Format pliku | Zwykły tekst (. txt) |
 | Format kodowania | ANSI/ASCII, UTF-8, UTF-8 — BOM, UTF-16-LE lub UTF-16. W przypadku metody zh-CN, ANSI/ASCII i UTF-8 nie są obsługiwane. |
@@ -104,7 +104,7 @@ W niektórych przypadkach może nie być dostępne żadne segmenty audio. Udost�
 
 Postępuj zgodnie z poniższymi wskazówkami podczas przygotowywania audio dla segmentacji.
 
-| Właściwość | Wartość |
+| Właściwość | Value |
 | -------- | ----- |
 | Format pliku | Plik RIFF (. wav) z częstotliwością próbkowania wynoszącą co najmniej 16 kHz-16 bitów w module PCM lub MP3 z szybkością bitową wynoszącą co najmniej 256 KB/s, pogrupowane w pliku. zip |
 | Nazwa pliku | Tylko znaki ASCII. Znaki Unicode w nazwie będą kończyć się niepowodzeniem (na przykład znaki chińskie lub symbole takie jak "—"). Nie są dozwolone zduplikowane nazwy. |
@@ -124,7 +124,7 @@ Transkrypcje muszą zostać przygotowane do specyfikacji wymienionych w tej tabe
 | Nazwa pliku | Użyj tej samej nazwy co pasujący plik audio |
 | Format kodowania | UTF-8 — tylko BOM |
 | Liczba wypowiedzi w wierszu | Bez limitu |
-| Maksymalna wielkość pliku | 50 MLN |
+| Maksymalna wielkość pliku | 50 MB |
 
 Wszystkie pliki transkrypcji w tym typie danych powinny być pogrupowane w pliku zip. W pliku zip nie jest dozwolony podfolder. Na przykład przekazano plik zip zawierający plik audio o nazwie "kingstory. wav", 45 s Long, a drugi o nazwie "queenstory. mp3", 200 s Long. Należy przekazać inny plik zip zawierający dwa transkrypcje, jeden o nazwie "kingstory. txt", drugi jeden "queenstory. txt". W każdym zwykłym pliku tekstowym należy zapewnić pełną transkrypcję dla pasującego dźwięku.
 
@@ -139,7 +139,7 @@ Postępuj zgodnie z poniższymi wskazówkami podczas przygotowywania dźwięku.
 > [!NOTE]
 > Usługa segmentacji Long-audio będzie korzystać z funkcji transkrypcji przetwarzania wsadowego zamiany mowy na tekst, która obsługuje tylko użytkowników Standard Subscription (S0).
 
-| Właściwość | Wartość |
+| Właściwość | Value |
 | -------- | ----- |
 | Format pliku | Plik RIFF (. wav) z częstotliwością próbkowania wynoszącą co najmniej 16 kHz-16 bitów w module PCM lub MP3 z szybkością bitową wynoszącą co najmniej 256 KB/s, pogrupowane w pliku. zip |
 | Nazwa pliku | Tylko znaki ASCII. Znaki Unicode w nazwie będą kończyć się niepowodzeniem (na przykład znaki chińskie lub symbole takie jak "—"). Nie można duplikować nazwy. |

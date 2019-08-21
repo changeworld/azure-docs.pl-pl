@@ -1,57 +1,55 @@
 ---
-title: Rozwiązywanie typowych problemów indeksatora wyszukiwania — usługa Azure Search
-description: Napraw błędy i często spotykanych problemów z indeksatorów w usłudze Azure Search w tym połączenia ze źródłem danych, Zapora i brakujących dokumentów.
+title: Rozwiązywanie typowych problemów z indeksatorem wyszukiwania — Azure Search
+description: Rozwiązywanie błędów i typowych problemów dotyczących indeksatorów w Azure Search, w tym połączenia ze źródłem danych, zapory i brakujących dokumentów.
 author: mgottein
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: magottei
-ms.custom: seodec2018
-ms.openlocfilehash: 1cb3260fa11354de963318a023fec912d082eae4
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 4692be287e9b38cf116107d2e7c1043f23a6b34b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653398"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640598"
 ---
-# <a name="troubleshooting-common-indexer-issues-in-azure-search"></a>Rozwiązywanie typowych problemów indeksatora w usłudze Azure Search
+# <a name="troubleshooting-common-indexer-issues-in-azure-search"></a>Rozwiązywanie typowych problemów indeksatora w Azure Search
 
-Indeksatory można uruchamiać na kilka problemów podczas indeksowania danych do usługi Azure Search. Główne kategorie awarii:
+Indeksatory mogą być uruchamiane w wielu problemach podczas indeksowania danych w Azure Search. Główne kategorie niepowodzeń obejmują:
 
-* [Łączenie ze źródłem danych](#data-source-connection-errors)
+* [Nawiązywanie połączenia ze źródłem danych](#data-source-connection-errors)
 * [Przetwarzanie dokumentu](#document-processing-errors)
 * [Pozyskiwanie dokumentów do indeksu](#index-errors)
 
-## <a name="data-source-connection-errors"></a>Błędy połączenia źródła danych
+## <a name="data-source-connection-errors"></a>Błędy połączenia ze źródłem danych
 
 ### <a name="blob-storage"></a>Blob Storage
 
 #### <a name="storage-account-firewall"></a>Zapora konta magazynu
 
-Usługa Azure Storage udostępnia można skonfigurować zapory. Domyślnie Zapora jest wyłączona, usługa Azure Search do połączenia się z kontem magazynu.
+Usługa Azure Storage udostępnia konfigurowalną zaporę. Zapora jest domyślnie wyłączona, Azure Search może nawiązać połączenie z kontem magazynu.
 
-Istnieje nie określony komunikat o błędzie, gdy Zapora jest włączona. Zazwyczaj błędy zapory wyglądać `The remote server returned an error: (403) Forbidden`.
+Jeśli Zapora jest włączona, nie ma określonego komunikatu o błędzie. Zwykle błędy zapory są podobne do `The remote server returned an error: (403) Forbidden`.
 
-Możesz sprawdzić, czy Zapora jest włączona w [portal](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal). Jedynym obejściem obsługiwanych jest Wyłącz zaporę, wybierając pozycję zezwolić na dostęp z ["Wszystkie sieci"](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal).
+Możesz sprawdzić, czy Zapora jest włączona w [portalu](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal). Jedynym obsługiwanym obejściem jest wyłączenie zapory poprzez wybranie opcji Zezwalaj na dostęp ze [wszystkich sieci](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal).
 
-Jeśli indeksator nie ma dołączonych zestawu umiejętności, możesz _może_ próba [dodać wyjątek](https://docs.microsoft.com/azure/storage/common/storage-network-security#managing-ip-network-rules) dla adresów IP usługi wyszukiwania. Jednak ten scenariusz nie jest obsługiwane i nie jest gwarantowane do pracy.
+Jeśli indeksator nie ma dołączonego zestawu umiejętności, możesz spróbować [dodać wyjątek](https://docs.microsoft.com/azure/storage/common/storage-network-security#managing-ip-network-rules) dla adresów IP usługi wyszukiwania. Jednak ten scenariusz nie jest obsługiwany i nie jest gwarantowany jego działania.
 
-Można znaleźć adres IP usługi wyszukiwania, wysyłając polecenie ping do nazwy FQDN (`<your-search-service-name>.search.windows.net`).
+Adres IP usługi wyszukiwania można sprawdzić, uruchamiając polecenie ping według nazwy FQDN (`<your-search-service-name>.search.windows.net`).
 
 ### <a name="cosmos-db"></a>Cosmos DB
 
-#### <a name="indexing-isnt-enabled"></a>Indeksowanie nie jest włączona
+#### <a name="indexing-isnt-enabled"></a>Indeksowanie nie jest włączone
 
-Usługa Azure Search ma niejawne zależność indeksowania usługi Cosmos DB. Po wyłączeniu automatycznego indeksowania w usłudze Cosmos DB, Azure Search zwraca stan pomyślne, ale nie może zawartość kontenerów indeksu. Aby uzyskać instrukcje dotyczące Sprawdź ustawienia i włączyć indeksowanie, zobacz [zarządzania indeksowaniem w usłudze Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-azure-portal).
+Azure Search ma niejawną zależność od indeksowania Cosmos DB. Jeśli wyłączysz automatyczne indeksowanie w Cosmos DB, Azure Search zwróci stan pomyślne, ale nie będzie można indeksować zawartości kontenera. Aby uzyskać instrukcje dotyczące sprawdzania ustawień i włączania indeksowania, zobacz [Zarządzanie indeksowanie w Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-azure-portal).
 
 ## <a name="document-processing-errors"></a>Błędy przetwarzania dokumentu
 
-### <a name="unprocessable-or-unsupported-documents"></a>Brakuje lub nieobsługiwany dokumentów
+### <a name="unprocessable-or-unsupported-documents"></a>Nieprzetworzone lub nieobsługiwane dokumenty
 
-Indeksowanie obiektów blob [dokumentów, które formaty dokumentów są jawnie obsługiwane.](search-howto-indexing-azure-blob-storage.md#supported-document-formats). Czasami kontenera magazynu obiektów blob zawiera nieobsługiwany dokumenty. Czasami może występować problematyczne dokumentów. Możesz uniknąć zatrzymywanie indeksator nad tymi dokumentami, [zmieniając opcje konfiguracji](search-howto-indexing-azure-blob-storage.md#dealing-with-errors):
+Indeksator obiektów BLOB umożliwia dokumentowanie [formatów dokumentów, które są jawnie obsługiwane.](search-howto-indexing-azure-blob-storage.md#supported-document-formats) Czasami kontener magazynu obiektów BLOB zawiera nieobsługiwane dokumenty. Inne przypadki mogą wystąpić problemy z dokumentami. Możesz uniknąć zatrzymywania indeksatora w tych dokumentach, [zmieniając opcje konfiguracji](search-howto-indexing-azure-blob-storage.md#dealing-with-errors):
 
 ```
 PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
@@ -66,10 +64,10 @@ api-key: [admin key]
 
 ### <a name="missing-document-content"></a>Brak zawartości dokumentu
 
-Indeksowanie obiektów blob [wyszukuje i wyodrębnia tekst z obiektów blob w kontenerze](search-howto-indexing-azure-blob-storage.md#how-azure-search-indexes-blobs). Niektórych problemów dzięki możliwości wyodrębniania tekstu obejmują:
+Indeksator obiektów BLOB [odnajduje i wyodrębnia tekst z obiektów BLOB w kontenerze](search-howto-indexing-azure-blob-storage.md#how-azure-search-indexes-blobs). Niektóre problemy z wyodrębnianiem tekstu obejmują:
 
-* Dokument zawiera wyłącznie skanowaniu. Obiektów blob plików PDF, które mają zawartość nietekstową, np. skanowaniu (jpg), nie generują wyników w potoku indeksowania standardowych obiektów blob. Jeśli masz zawartość obrazu za pomocą elementów tekstowych, możesz użyć [wyszukiwania kognitywnego](cognitive-search-concept-image-scenarios.md) do znalezienia i wyodrębnianie tekstu.
-* Indeksowanie obiektów blob jest skonfigurowany do tylko metadane indeksu. Aby wyodrębnić zawartość, indeksatora obiektów blob musi być skonfigurowana do [wyodrębnić zawartość i metadane](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed):
+* Dokument zawiera tylko zeskanowane obrazy. Obiekty blob PDF, które zawierają zawartość nietekstową, na przykład zeskanowane obrazy (JPGs), nie generują wyników w standardowym potoku indeksowania obiektów BLOB. Jeśli masz zawartość obrazu z elementami tekstowymi, możesz użyć [wyszukiwania poznawczego](cognitive-search-concept-image-scenarios.md) do znajdowania i wyodrębniania tekstu.
+* Indeksator obiektu BLOB jest skonfigurowany tylko do indeksowania metadanych. Aby wyodrębnić zawartość, indeksator obiektu BLOB musi być skonfigurowany do [wyodrębniania zawartości i metadanych](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed):
 
 ```
 PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
@@ -82,14 +80,14 @@ api-key: [admin key]
 }
 ```
 
-## <a name="index-errors"></a>Indeks błędów
+## <a name="index-errors"></a>Błędy indeksowania
 
-### <a name="missing-documents"></a>Brak dokumentów
+### <a name="missing-documents"></a>Brakujące dokumenty
 
-Indeksatory wyszukiwania dokumentów z [źródła danych](https://docs.microsoft.com/rest/api/searchservice/create-data-source). Czasami dokumentów ze źródła danych, do którego należy indeksować prawdopodobnie brakuje z indeksu. Istnieje kilka typowych przyczyn, że te błędy mogą występować:
+Indeksatory Znajdź dokumenty ze [źródła danych](https://docs.microsoft.com/rest/api/searchservice/create-data-source). Czasami dokument ze źródła danych, który powinien być indeksowany, prawdopodobnie nie znajduje się w indeksie. Istnieje kilka typowych powodów, dla których mogą wystąpić te błędy:
 
-* Zindeksował dokumentu. Sprawdź portal dla uruchomienia pomyślne indeksatora.
-* Dokument został zaktualizowany po uruchomienie indeksatora. Jeśli indeksator znajduje się na [harmonogram](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-schedule), będzie ostatecznie ponowne uruchomienie i wybierze dokumentu.
-* [Zapytania](https://docs.microsoft.com/rest/api/searchservice/create-data-source#request-body-syntax) określone w danych źródłowych wyłącza dokument. Indeksatory nie można indeksować dokumenty, które nie należą do źródła danych.
-* [Mapowania pól](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings) lub [wyszukiwania kognitywnego](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) zmieniono dokument i jego wygląda inaczej, niż jest to oczekiwane.
-* Użyj [odnośników w dokumencie interfejsu API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) można znaleźć w dokumencie.
+* Dokument nie został zindeksowany. Sprawdź, czy Portal zakończył działanie indeksatora.
+* Dokument został zaktualizowany po uruchomieniu indeksatora. Jeśli indeksator jest zgodnie z harmonogramem [](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-schedule), zostanie on ostatecznie uruchomiony i zostanie pobrany do dokumentu.
+* [Zapytanie](https://docs.microsoft.com/rest/api/searchservice/create-data-source#request-body-syntax) określone w źródle danych wyklucza dokument. Indeksatory nie mogą indeksować dokumentów, które nie są częścią źródła danych.
+* [Mapowania pól](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings) lub [wyszukiwania poznawczego](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) zmieniły dokument i wyglądają inaczej niż oczekiwano.
+* Użyj [interfejsu API dokumentu wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/lookup-document) , aby znaleźć dokument.

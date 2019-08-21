@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 489ff1824c4bc45ee7ed31e9c96377975a32baa4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 8df01c204a6893f4e2ff1c2ff22fa337d77c519b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879243"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637591"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory inteligentnego blokowania
 
@@ -48,7 +48,7 @@ W przypadku korzystania z [uwierzytelniania przekazywanego](../hybrid/how-to-con
 Na przykład jeśli chcesz, aby licznik usługi Azure AD miał wartość większą niż AD, usługa Azure AD będzie 120 sekund (2 minuty), a w usłudze Premium AD jest ustawiona na 1 minutę (60 s).
 
 > [!IMPORTANT]
-> Obecnie administrator nie może odblokować kont w chmurze użytkowników, jeśli zostały one zablokowane przez funkcję inteligentnej blokady. Administrator musi poczekać na wygaśnięcie czasu trwania blokady.
+> Obecnie administrator nie może odblokować kont w chmurze użytkowników, jeśli zostały one zablokowane przez funkcję inteligentnej blokady. Administrator musi poczekać na wygaśnięcie czasu trwania blokady. Użytkownik może jednak odblokować przy użyciu funkcji samoobsługowego resetowania hasła (SSPR) z zaufanego urządzenia lub lokalizacji.
 
 ## <a name="verify-on-premises-account-lockout-policy"></a>Weryfikuj Zasady blokady konta lokalnego
 

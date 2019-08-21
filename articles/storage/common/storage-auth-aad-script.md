@@ -9,12 +9,12 @@ ms.date: 07/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d6a85d0f9480418bd840786e17ee258dbdb90c48
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 32b3f113658a20790e0f149739a882004f12fe21
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985208"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640825"
 ---
 # <a name="run-azure-cli-or-powershell-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>Uruchamianie interfejsu wiersza polecenia platformy Azure lub poleceń programu PowerShell przy użyciu poświadczeń usługi Azure AD w celu uzyskania dostępu do danych obiektu BLOB lub kolejki
 
@@ -26,7 +26,7 @@ Można przypisać uprawnienia do obiektów blob i kolejek danych do podmiotu zab
 
 Rozszerzenia są obsługiwane dla operacji w kontenerach i kolejkach. Operacje, które można wywołać, zależą od uprawnień udzielonych podmiotowi zabezpieczeń usługi Azure AD, za pomocą którego logujesz się do interfejsu wiersza polecenia platformy Azure lub programu PowerShell. Uprawnienia do kontenerów lub kolejek usługi Azure Storage są przypisywane za pośrednictwem kontroli dostępu opartej na rolach (RBAC). Na przykład, jeśli przypisano rolę **czytnika danych obiektów BLOB** , można uruchamiać polecenia skryptów, które odczytują dane z kontenera lub kolejki. Jeśli przypisano rolę **współautor danych obiektów BLOB** , można uruchamiać polecenia skryptów, które odczytują, zapisują lub usuwają kontener lub kolejkę lub zawarte w nich dane. 
 
-Aby uzyskać szczegółowe informacje o uprawnieniach wymaganych dla każdej operacji usługi Azure Storage w kontenerze lub kolejce, zobacz [wywoływanie operacji magazynu przy użyciu tokenów OAuth](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#call-storage-operations-with-oauth-tokens).  
+Aby uzyskać szczegółowe informacje o uprawnieniach wymaganych dla każdej operacji usługi Azure Storage w kontenerze lub kolejce, zobacz [wywoływanie operacji magazynu przy użyciu tokenów OAuth](https://docs.microsoft.com/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens).  
 
 ## <a name="call-cli-commands-using-azure-ad-credentials"></a>Wywoływanie poleceń interfejsu wiersza polecenia przy użyciu poświadczeń usługi Azure AD
 

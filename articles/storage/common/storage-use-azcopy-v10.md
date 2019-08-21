@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 6b127738d4be79c30d1791d7313c0f8f7eacaf36
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
-ms.translationtype: MT
+ms.openlocfilehash: 60b3d1dcc7d60b25319b3fa5dd740541a457927f
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985152"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640087"
 ---
 # <a name="get-started-with-azcopy"></a>Wprowadzenie do narzędzia AzCopy
 
@@ -65,9 +65,9 @@ Użyj tej tabeli jako przewodnika:
 |**BLOB Storage (hierarchiczne przestrzeń nazw)** | Usługa Azure AD & SAS |
 |**Magazyn plików** | Tylko SAS |
 
-### <a name="option-1-use-azure-ad"></a>Option 1: Korzystanie z usługi Azure AD
+### <a name="option-1-use-azure-active-directory"></a>Option 1: Użyj Azure Active Directory
 
-Za pomocą usługi Azure AD można podać poświadczenia jeden raz zamiast konieczności dołączania tokenu sygnatury dostępu współdzielonego do każdego polecenia.  
+Za pomocą Azure Active Directory można podać poświadczenia jeden raz zamiast konieczności dołączania tokenu sygnatury dostępu współdzielonego do każdego polecenia.  
 
 > [!NOTE]
 > W bieżącej wersji, jeśli planujesz skopiować obiekty blob między kontami magazynu, musisz dołączyć token sygnatury dostępu współdzielonego do każdego źródłowego adresu URL. Token sygnatury dostępu współdzielonego można pominąć tylko z docelowego adresu URL. Aby zapoznać się z przykładami, zobacz [Kopiuj obiekty blob między kontami magazynu](storage-use-azcopy-blobs.md).
@@ -149,7 +149,7 @@ $env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
 ```
 
 > [!NOTE]
-> Rozważ użycie monitu, jak pokazano w tym przykładzie. W ten sposób wpis tajny klienta nie będzie wyświetlany w historii poleceń konsoli. 
+> Rozważ użycie monitu, jak pokazano w tym przykładzie. Dzięki temu Twoje hasło nie będzie wyświetlane w historii poleceń konsoli.  
 
 Następnie wpisz następujące polecenie, a następnie naciśnij klawisz ENTER.
 
@@ -170,7 +170,7 @@ Następnie ustaw `AZCOPY_SPA_CERT_PASSWORD` dla zmiennej środowiskowej hasło c
 > [!NOTE]
 > Upewnij się, że ta wartość jest ustawiona w wierszu polecenia, a nie w ustawieniach zmiennych środowiskowych systemu operacyjnego. Dzięki temu wartość jest dostępna tylko dla bieżącej sesji.
 
-Ten przykład pokazuje, jak można to zrobić w programie PowerShell.
+Ten przykład pokazuje, jak to zadanie można wykonać w programie PowerShell.
 
 ```azcopy
 $env:AZCOPY_SPA_CERT_PASSWORD="$(Read-Host -prompt "Enter key")"

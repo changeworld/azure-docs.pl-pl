@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 348cd0eccc66adb29a7564bbbeca99fffec28957
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: fdef1457254b6deb8a0b791b11c94154518b4301
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562862"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636433"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions skalowanie i hosting
 
@@ -101,7 +101,7 @@ Należy wziąć pod uwagę plan App Service w następujących sytuacjach:
 
 Płacisz za aplikacje funkcji w planie App Service, tak jak w przypadku innych zasobów App Service, takich jak aplikacje sieci Web. Aby uzyskać szczegółowe informacje na temat działania planu App Service, zobacz [szczegółowe Omówienie planów Azure App Service](../app-service/overview-hosting-plans.md).
 
-Plan App Service umożliwia ręczne skalowanie w poziomie przez dodanie większej liczby wystąpień maszyn wirtualnych. Możesz również włączyć automatyczne skalowanie. Aby uzyskać więcej informacji, zobacz [Ręczne lub automatyczne skalowanie liczby wystąpień](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Możesz również skalować w górę, wybierając inny plan App Service. Aby uzyskać więcej informacji, zobacz [skalowanie w górę aplikacji na platformie Azure](../app-service/web-sites-scale.md). 
+Plan App Service umożliwia ręczne skalowanie w poziomie przez dodanie większej liczby wystąpień maszyn wirtualnych. Możesz również włączyć automatyczne skalowanie. Aby uzyskać więcej informacji, zobacz [Ręczne lub automatyczne skalowanie liczby wystąpień](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Możesz również skalować w górę, wybierając inny plan App Service. Aby uzyskać więcej informacji, zobacz [skalowanie w górę aplikacji na platformie Azure](../app-service/manage-scale-up.md). 
 
 Podczas uruchamiania funkcji JavaScript w planie App Service należy wybrać plan, który ma mniej procesorów wirtualnych vCPU. Aby uzyskać więcej informacji, zobacz [Wybieranie planów App Service z pojedynczym rdzeniem](functions-reference-node.md#choose-single-vcpu-app-service-plans). 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 

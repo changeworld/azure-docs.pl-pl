@@ -1,131 +1,131 @@
 ---
-title: Opis sposobu użycia odwołania Twins cyfrowego Azure struktury Swagger | Dokumentacja firmy Microsoft
-description: Zrozumienia sposobu używania Azure cyfrowego Twins Swagger dokumentację referencyjną.
+title: Informacje dotyczące korzystania z usługi Azure Digital bliźniaczych reprezentacji Reference Microsoft Docs
+description: Informacje dotyczące korzystania z dokumentacji programu Azure Digital bliźniaczych reprezentacji Swagger.
 author: kingdomofends
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 06/29/2019
+ms.date: 08/16/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 9d4fd798309398dff38081cc66b4071c5dd1f5bf
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 1344b86b9fa922dc22870dda495ff367a511b8ca
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670789"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640260"
 ---
-# <a name="azure-digital-twins-swagger-reference-documentation"></a>Dokumentacja platformy Azure cyfrowego Twins struktury Swagger
+# <a name="azure-digital-twins-swagger-reference-documentation"></a>Dokumentacja usługi Azure Digital bliźniaczych reprezentacji Swagger
 
-Każde elastycznie wystąpienie Twins cyfrowych platformy Azure zawiera swój własny automatycznie wygenerowaną dokumentację referencyjną struktury Swagger.
+Każde zainicjowane wystąpienie usługi Azure Digital bliźniaczych reprezentacji zawiera własną, automatycznie wygenerowaną dokumentację programu Swagger.
 
-[Struktury swagger](https://swagger.io/), lub [OpenAPI](https://www.openapis.org/), łączy w sobie złożone informacje interfejsu API do zasobów odwołanie interakcyjne i niezależny od języka. Struktury swagger zawiera materiały referencyjne krytycznych, o których ładunki JSON, metody HTTP i punkty końcowe służące do wykonywania operacji dotyczących interfejsu API.
+Struktura [Swagger](https://swagger.io/)lub [openapi](https://www.openapis.org/)umożliwia łączenie złożonych informacji interfejsu API z zasobami referencyjnymi w języku interaktywnym i niezależny od. Struktura Swagger zawiera krytyczne materiały referencyjne na temat tego, które ładunki JSON, metody HTTP i określone punkty końcowe służą do wykonywania operacji na interfejsie API.
 
-## <a name="swagger-summary"></a>Podsumowanie swagger
+## <a name="swagger-summary"></a>Podsumowanie struktury Swagger
 
-Struktury swagger zawiera podsumowanie interaktywnego interfejsu API, który zawiera:
+Struktura Swagger zawiera interaktywne podsumowanie interfejsu API, w tym:
 
-* Interfejs API i obiekt informacji o modelu.
-* Punkty końcowe interfejsu API REST, określających, ładunki żądania wymagany, nagłówki, parametrów, kontekstu ścieżki i metody HTTP.
+* Interfejs API i informacje o modelu obiektu.
+* Punkty końcowe interfejsu API REST, które określają wymagane ładunki żądań, nagłówki, parametry, ścieżki kontekstu i metody HTTP.
 * Testowanie funkcji interfejsu API.
-* Przykładowe informacje o odpowiedzi używany do sprawdzania poprawności i Potwierdź odpowiedzi HTTP.
+* Przykładowe informacje dotyczące odpowiedzi służące do weryfikowania i potwierdzania odpowiedzi HTTP.
 * Informacje o kodzie błędu.
 
-Struktury swagger jest wygodne narzędzie na potrzeby programowania i testowania wywołań do cyfrowego Twins zarządzania interfejsów API usługi Azure.
+Struktura Swagger to wygodne narzędzie pomocne przy tworzeniu i testowaniu wywołań interfejsów API usługi Azure Digital bliźniaczych reprezentacji Management.
 
 [!INCLUDE [Digital Twins Swagger](../../includes/digital-twins-swagger.md)]
 
 ## <a name="reference-material"></a>Materiały referencyjne
 
-Automatycznie generowanych materiały referencyjne dla struktury Swagger zawiera krótkie podsumowanie dotyczące ważnych pojęć, dostępnych punktów końcowych interfejsu API zarządzania oraz opis każdego modelu obiektu ułatwiające projektowanie i testowanie.
+Automatycznie wygenerowany materiał referencyjny struktury Swagger zawiera krótkie omówienie ważnych pojęć, dostępnych punktów końcowych interfejsu API zarządzania i opis każdego modelu obiektów, aby pomóc w tworzeniu i testowaniu.
 
-Krótkie podsumowanie Opisuje interfejs API.
+Zwięzłe podsumowanie zawiera opis interfejsu API.
 
-[![Top struktury swagger](media/how-to-use-swagger/swagger-management-top-img.png)](media/how-to-use-swagger/swagger-management-top-img.png#lightbox)
+[![Struktura Swagger — Góra](media/how-to-use-swagger/swagger-management-top-img.png)](media/how-to-use-swagger/swagger-management-top-img.png#lightbox)
 
-Modele obiektów interfejsu API zarządzania są także wyświetlane.
+Są również wyświetlane modele obiektów interfejsu API zarządzania.
 
-[![Modele struktury swagger](media/how-to-use-swagger/swagger-management-models-img.png)](media/how-to-use-swagger/swagger-management-models-img.png#lightbox)
+[![Modele Swagger](media/how-to-use-swagger/swagger-management-models-img.png)](media/how-to-use-swagger/swagger-management-models-img.png#lightbox)
 
-Możesz wybrać każdego modelu obiektów uwzględnione na liście, aby uzyskać bardziej szczegółowe podsumowanie kluczowych atrybutów.
+Możesz wybrać każdy z wymienionych modeli obiektów, aby uzyskać bardziej szczegółowy opis atrybutów klucza.
 
-[![Model struktury swagger](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
+[![Model Swagger](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
 
-Wygenerowany modele obiektów struktury Swagger są wygodne wyświetlić wszystkie dostępne Azure cyfrowego bliźniaczych reprezentacji [obiektów i interfejsów API](./concepts-objectmodel-spatialgraph.md). Deweloperzy mogą używać tego zasobu, podczas ich tworzenia rozwiązań na Twins cyfrowych platformy Azure.
+Wygenerowane modele obiektów Swagger są wygodne do wyświetlania wszystkich dostępnych [obiektów i interfejsów API](./concepts-objectmodel-spatialgraph.md)usługi Azure Digital bliźniaczych reprezentacji. Deweloperzy mogą korzystać z tego zasobu podczas tworzenia rozwiązań na platformie Azure Digital bliźniaczych reprezentacji.
 
 ## <a name="endpoint-summary"></a>Podsumowanie punktu końcowego
 
-Struktury swagger zawiera również szczegółowe omówienie wszystkich punktów końcowych, które tworzą interfejsy API Management.
+Struktura Swagger zawiera również szczegółowe omówienie wszystkich punktów końcowych, które tworzą interfejsy API zarządzania.
 
-Każdy punkt końcowy, wymienionych obejmowały żądanie wymaganych informacji, takich jak:
+Każdy z wymienionych punktów końcowych zawiera również wymagane informacje o żądaniu, takie jak:
 
 * Wymagane parametry.
-* Typy danych wymaganego parametru.
-* Metoda HTTP, aby uzyskać dostęp do zasobu.
+* Wymagany typ danych parametru.
+* Metoda HTTP uzyskiwania dostępu do zasobu.
 
-[![Punkty końcowe programu swagger](media/how-to-use-swagger/swagger-management-endpoints-img.png)](media/how-to-use-swagger/swagger-management-endpoints-img.png#lightbox)
+[![Punkty końcowe struktury Swagger](media/how-to-use-swagger/swagger-management-endpoints-img.png)](media/how-to-use-swagger/swagger-management-endpoints-img.png#lightbox)
 
-Aby wyświetlić bardziej szczegółowym omówieniem, wybierz poszczególne zasoby.
+Aby zapoznać się z bardziej szczegółowym omówieniem, wybierz każdy zasób.
 
-## <a name="use-swagger-to-test-endpoints"></a>Użyj platformy Swagger, aby przetestować punktów końcowych
+## <a name="use-swagger-to-test-endpoints"></a>Użyj struktury Swagger do testowania punktów końcowych
 
-Jednym z zaawansowane funkcje, jakie zapewnia struktury Swagger jest możliwość testowania punkt końcowy interfejsu API bezpośrednio w ramach dokumentacji interfejsu użytkownika.
+Jedną z zaawansowanych funkcji struktury Swagger zapewnia możliwość przetestowania punktu końcowego interfejsu API bezpośrednio za pomocą interfejsu użytkownika dokumentacji.
 
-Po wybraniu określonego punktu końcowego, zobacz **wypróbuj działanie rozwiązania**.
+Po wybraniu określonego punktu końcowego zobaczysz **go**.
 
-[![Spróbuj struktury swagger](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
+[![Wypróbuj strukturę Swagger](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
 
-Rozwiń tę sekcję, aby wyświetlić pola wejściowe dla wszystkich wymaganych i opcjonalnych parametrów. Wprowadź prawidłowe wartości, a następnie wybierz pozycję **Execute**.
+Rozwiń tę sekcję, aby wyświetlić pola wejściowe dla każdego wymaganego i opcjonalnego parametru. Wprowadź prawidłowe wartości, a następnie wybierz pozycję **Wykonaj**.
 
-[![Nastąpiła struktury swagger](media/how-to-use-swagger/swagger-management-tried-img.png)](media/how-to-use-swagger/swagger-management-tried-img.png#lightbox)
+[![Próba struktury Swagger](media/how-to-use-swagger/swagger-management-tried-img.png)](media/how-to-use-swagger/swagger-management-tried-img.png#lightbox)
 
-Po wykonaniu testu, można sprawdzić poprawność danych odpowiedzi.
+Po wykonaniu testu można sprawdzić poprawność danych odpowiedzi.
 
-## <a name="swagger-response-data"></a>Dane odpowiedzi programu swagger
+## <a name="swagger-response-data"></a>Dane odpowiedzi struktury Swagger
 
-Każdy punkt końcowy, wymienionych obejmuje również dane treści odpowiedzi weryfikowanie programowania i testów. Te przykłady obejmują kodów stanu i chcesz zobaczyć, czy liczba pomyślnych żądań HTTP w formacie JSON.
+Każdy z wymienionych punktów końcowych zawiera również dane treści odpowiedzi w celu zweryfikowania rozwoju i testów. Te przykłady obejmują kody stanu i kod JSON, które mają być wyświetlane w przypadku pomyślnych żądań HTTP.
 
-[![Odpowiedź struktury swagger](media/how-to-use-swagger/swagger-management-response-img.png)](media/how-to-use-swagger/swagger-management-response-img.png#lightbox)
+[![Odpowiedź struktury Swagger](media/how-to-use-swagger/swagger-management-response-img.png)](media/how-to-use-swagger/swagger-management-response-img.png#lightbox)
 
-Przykłady obejmują również kody błędów, aby ułatwić debugowanie lub ulepszenia niepowodzenie testów.
+Przykłady zawierają również kody błędów ułatwiające debugowanie lub usprawnienie testów zakończonych niepowodzeniem.
 
-## <a name="swagger-oauth-20-authorization"></a>Struktury swagger autoryzacji OAuth 2.0
+## <a name="swagger-oauth-20-authorization"></a>Autoryzacja OAuth 2,0 programu Swagger
 
 > [!NOTE]
-> * Nazwy głównej użytkownika, który utworzono zasób Twins cyfrowych platformy Azure będzie mieć przypisanie roli administratora miejsca i będzie można utworzyć przypisania roli dodatkowe dla innych użytkowników. Incydentami użytkowników oraz ich ról, może być upoważnionych do wywoływania interfejsów API.
+> * Podmiot zabezpieczeń, który utworzył zasób usługi Azure Digital bliźniaczych reprezentacji, będzie miał przypisanie roli administratora miejsca i będzie mógł tworzyć dodatkowe przypisania ról dla innych użytkowników. Takie Użytkownicy i ich role mogą być autoryzowane do wywoływania interfejsów API.
 
-1. Postępuj zgodnie z instrukcjami w [ten przewodnik Szybki Start](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) lub [Zarejestruj swoją aplikację Twins cyfrowych platformy Azure przy użyciu starszej wersji usługi Azure Active Directory](./how-to-use-legacy-aad.md) do tworzenia i konfigurowania aplikacji usługi Azure AD. Alternatywnie można ponownie użyć istniejącej rejestracji aplikacji.
+1. Wykonaj kroki opisane w [tym przewodniku szybki start](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) lub [zarejestruj swoją aplikację usługi azure Digital bliźniaczych reprezentacji Azure Active Directory w starszej wersji](./how-to-use-legacy-aad.md) , aby utworzyć i skonfigurować aplikację usługi Azure AD. Alternatywnie możesz ponownie użyć istniejącej rejestracji aplikacji.
 
-1. Dodaj następujący adres url odpowiedzi do rejestracji aplikacji:
+1. Dodaj następujący adres URL odpowiedzi do rejestracji aplikacji:
 
     ```plaintext
     https://YOUR_SWAGGER_URL/ui/oauth2-redirect-html
     ```
-    | Name (Nazwa)  | Zamień na | Przykład |
+    | Name  | Zamień na | Przykład |
     |---------|---------|---------|
-    | YOUR_SWAGGER_URL | Adres URL dokumentacji interfejsu API REST zarządzania znalezione w portalu  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
+    | YOUR_SWAGGER_URL | Adres URL dokumentacji interfejsu API REST zarządzania znajduje się w portalu  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
 1. Skopiuj identyfikator aplikacji usługi Azure AD.
 
-Po zakończeniu rejestracji usługi Azure Active Directory:
+Po zakończeniu rejestracji Azure Active Directory:
 
-1. Wybierz **Autoryzuj** przycisk na stronie struktury swagger.
+1. Wybierz przycisk **Autoryzuj** na stronie struktury Swagger.
 
-    [![Wybierz Swagger autoryzować przycisku](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
+    [![Wybierz przycisk Autoryzuj autoryzację](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
 
-1. Wklej identyfikator aplikacji do **client_id** pola.
+1. Wklej identyfikator aplikacji do pola **client_id** .
 
-    [![Pole client_id struktury swagger](media/how-to-use-swagger/swagger-auth-form.png)](media/how-to-use-swagger/swagger-auth-form.png#lightbox)
+    [![Pole client_id struktury Swagger](media/how-to-use-swagger/swagger-auth-form.png)](media/how-to-use-swagger/swagger-auth-form.png#lightbox)
 
-1. Następnie nastąpi przekierowanie do następujących modalne sukcesu.
+1. Następnie nastąpi przekierowanie do poniższego modalnego sukcesu.
 
-    [![Modalne przekierowania struktury swagger](media/how-to-use-swagger/swagger-auth-redirect-img.png)](media/how-to-use-swagger/swagger-auth-redirect-img.png#lightbox)
+    [![Modalne przekierowanie struktury Swagger](media/how-to-use-swagger/swagger-auth-redirect-img.png)](media/how-to-use-swagger/swagger-auth-redirect-img.png#lightbox)
 
-Aby dowiedzieć się więcej o testowaniu interaktywnie żądania chronione przez OAuth 2.0, zobacz [oficjalną dokumentacją](https://swagger.io/docs/specification/authentication/oauth2/).
+Aby dowiedzieć się więcej na temat interakcyjnych żądań testowania chronionych przez uwierzytelnianie OAuth 2,0, zobacz [oficjalną dokumentację](https://swagger.io/docs/specification/authentication/oauth2/).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o modele obiektów Twins cyfrowych platformy Azure i wykres analizy przestrzennej, przeczytaj [zrozumieć Azure cyfrowego bliźniaczych reprezentacji obiektów modeli](./concepts-objectmodel-spatialgraph.md).
+- Aby dowiedzieć się więcej na temat modeli obiektów Digital bliźniaczych reprezentacji i grafu analiz przestrzennych, przeczytaj artykuł [Omówienie modeli obiektów Digital bliźniaczych reprezentacji platformy Azure](./concepts-objectmodel-spatialgraph.md).
 
-- Aby dowiedzieć się, jak można uwierzytelnić przy użyciu interfejsu API zarządzania, przeczytaj [Uwierzytelnij za pomocą interfejsów API](./security-authenticating-apis.md).
+- Aby dowiedzieć się, jak uwierzytelniać się za pomocą interfejsu API zarządzania, przeczytaj artykuł [uwierzytelnianie za pomocą interfejsów API](./security-authenticating-apis.md).

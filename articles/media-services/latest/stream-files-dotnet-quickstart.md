@@ -1,6 +1,6 @@
 ---
 title: Przesyłanie strumieniowe plików wideo za pomocą usługi Azure Media Services — .NET | Microsoft Docs
-description: Wykonaj kroki tego samouczka, aby utworzyć nowe konto usługi Azure Media Services, Koduj plik i prześlij go strumieniowo do usługi Azure Media Player.
+description: Wykonaj kroki tego samouczka, aby utworzyć nowe konto Azure Media Services, zakodować plik i przesłać go strumieniowo do Azure Media Player.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,21 +11,21 @@ ms.service: media-services
 ms.workload: media
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/20/2019
+ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: 3834b4f07f6450f498831accfa6640f55bc5855a
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: 7f997865ba33a51c3e3aa7a4c7e990037be9e534
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65550182"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637337"
 ---
-# <a name="tutorial-stream-video-files---net"></a>Samouczek: Przesyłanie strumieniowe plików wideo — .NET
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>Samouczek: Kodowanie pliku zdalnego na podstawie adresu URL i strumieniowego wideo — .NET
 
-W tym samouczku pokazano, jak łatwo jest do zakodowania i rozpocząć przesyłanie strumieniowe wideo na podstawie różnych przeglądarek i urządzeń za pomocą usługi Azure Media Services. Zawartość wejściową można określić przy użyciu adresów URL HTTP, adresów URL SAS lub ścieżek do plików znajdujących się w magazynie obiektów blob platformy Azure.
+W tym samouczku pokazano, jak łatwo zakodować i rozpocząć przesyłanie strumieniowe wideo na wielu różnych przeglądarkach i urządzeniach przy użyciu Azure Media Services. Zawartość wejściową można określić przy użyciu adresów URL HTTP, adresów URL SAS lub ścieżek do plików znajdujących się w magazynie obiektów blob platformy Azure.
 W przykładzie w tym temacie kodowana jest zawartość, która jest udostępniana za pośrednictwem adresu URL protokołu HTTPS. Pamiętaj, że obecnie usługa AMS w wersji 3 nie obsługuje fragmentarycznego kodowania transferu za pośrednictwem adresów URL HTTPS.
 
-Na koniec samouczka można przesyłać strumieniowo wideo.  
+Na końcu samouczka będziesz mieć możliwość przesyłania strumieniowego wideo.  
 
 ![Odtwarzanie wideo](./media/stream-files-dotnet-quickstart/final-video.png)
 
@@ -66,9 +66,9 @@ Objaśnienia działania poszczególnych funkcji w przykładzie znajdziesz po spr
 Po uruchomieniu aplikacji zostaną wyświetlone adresy URL, których można użyć do odtwarzania wideo za pomocą różnych protokołów. 
 
 1. Naciśnij klawisze Ctrl+F5, aby uruchomić aplikację *EncodeAndStreamFiles*.
-2. Wybierz protokół **HLS** firmy Apple — kończy się ciągiem *manifest(format=m3u8-aapl)*— i skopiuj adres URL przesyłania strumieniowego z konsoli.
+2. Wybierz protokół **HLS** firmy Apple — kończy się ciągiem *manifest(format=m3u8-aapl)* — i skopiuj adres URL przesyłania strumieniowego z konsoli.
 
-![Dane wyjściowe](./media/stream-files-tutorial-with-api/output.png)
+![Output](./media/stream-files-tutorial-with-api/output.png)
 
 W przykładowym [kodzie źródłowym](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) możesz zobaczyć, jak jest zbudowany adres URL. Aby go utworzyć, musisz połączyć nazwę hosta punktu końcowego przesyłania strumieniowego i ścieżkę lokalizatora przesyłania strumieniowego.  
 
@@ -89,7 +89,7 @@ Usługi Azure Media Player można użyć do testowania, ale nie należy jej uży
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli nie potrzebujesz już zasobów w grupie zasobów, w tym usługi Media Services i kont magazynu, utworzony na potrzeby tego samouczka, Usuń grupę zasobów.
+Jeśli nie potrzebujesz już żadnych zasobów w grupie zasobów, w tym Media Services i kont magazynu utworzonych dla tego samouczka, Usuń grupę zasobów.
 
 Wykonaj następujące polecenie interfejsu wiersza polecenia:
 

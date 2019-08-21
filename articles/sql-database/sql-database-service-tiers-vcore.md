@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: e5af3803ebb4cb0a88a082d3c85d0df68da8d1b8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a23f71a38324d9751846f1308f79d3a4e746fd85
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566612"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637283"
 ---
 # <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>Wybierz spośród warstw usług rdzeń wirtualny i Przeprowadź migrację z warstw usług DTU
 
@@ -28,7 +28,7 @@ Model zakupu oparty na wirtualnym rdzeniu (rdzeń wirtualny) umożliwia niezale�
 Sprzęt obliczenia zapewnia znacznie większą ilość pamięci na rdzeń wirtualny. Jednak sprzęt 5 rdzeń umożliwia skalowanie zasobów obliczeniowych znacznie więcej.
 
 > [!IMPORTANT]
-> Nowe bazy danych obliczenia nie są już obsługiwane w regionie AustraliaEast.
+> Nowe bazy danych obliczenia nie są już obsługiwane w regionach Australia Wschodnia lub Brazylia Południowa.
 > [!NOTE]
 > Aby uzyskać informacje o warstwach usług opartych na jednostkach DTU, zobacz [warstwy usług dla modelu zakupu opartego na](sql-database-service-tiers-dtu.md)jednostkach DTU. Aby uzyskać informacje o różnicach między warstwami usług dla modeli zakupów opartych na jednostkach DTU i rdzeń wirtualny, zobacz [Azure SQL Database modele zakupu](sql-database-purchase-models.md).
 
@@ -135,7 +135,7 @@ Jeśli tworzysz geograficzną lokację w puli elastycznej dla pojedynczej podsta
 
 Możesz skopiować dowolną bazę danych z rozmiarem obliczeń opartym na jednostkach DTU do bazy danych o rozmiarze obliczeń opartym na rdzeń wirtualny bez ograniczeń lub specjalnej sekwencjonowania, o ile docelowy rozmiar obliczeń obsługuje maksymalny rozmiar bazy danych źródłowej bazy danych. Kopia bazy danych tworzy migawkę danych w czasie rozpoczęcia operacji kopiowania i nie synchronizuje danych między źródłem a obiektem docelowym.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dla określonych rozmiarów obliczeń i opcji rozmiaru magazynu dostępnych dla pojedynczych baz danych zobacz [SQL Database limity zasobów opartych na rdzeń wirtualny dla pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md).
 - W przypadku określonych rozmiarów obliczeń i opcji rozmiaru magazynu dla pul elastycznych zobacz [SQL Database limity zasobów opartych na rdzeń wirtualny dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes).

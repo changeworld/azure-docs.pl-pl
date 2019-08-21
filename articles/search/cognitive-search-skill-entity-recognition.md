@@ -5,18 +5,17 @@ services: search
 manager: pablocas
 author: luiscabrer
 ms.service: search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: 1328edfd9a049daf9244df992b55f4fb1585c8ba
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 25f6075d1e026745d4db1a60149e109a0f9636a4
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841083"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69635951"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Umiejętność rozpoznawania jednostek
 
@@ -52,7 +51,7 @@ Są to jednostki, które są dobrze znane, ale nie są klasyfikowane jako częś
 | Wprowadź nazwę      | Opis                   |
 |---------------|-------------------------------|
 | languageCode  | Opcjonalny. Wartość domyślna to `"en"`.  |
-| text          | Tekst do przeanalizowania.          |
+| text          | Tekst do analizy.          |
 
 ## <a name="skill-outputs"></a>Wyniki umiejętności
 

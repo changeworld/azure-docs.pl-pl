@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 08/19/2019
+ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: 60cd87b6cecfb30ebc90f445c79e25c241980a86
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 45520d39c822c734e3fc725bca3375e93983a118
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623334"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637453"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Samouczek: Zestawy danych testów wsadowych
 
@@ -197,8 +197,6 @@ Wartość **zadania** jednostki, podany w wypowiedzi testu jest zazwyczaj jedneg
 6. Wybierz przycisk **Uruchom**. Zaczekaj, aż testu jest wykonywane.
 
 7. Wybierz **wyniki**.
-
-[!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
 ## <a name="review-entity-batch-results"></a>Przejrzyj wyniki partii jednostek
 

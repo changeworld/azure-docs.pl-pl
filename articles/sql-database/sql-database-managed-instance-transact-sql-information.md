@@ -11,28 +11,30 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 5e9972c5fea7aaa2e6b5270aff87343437b1963e
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
-ms.translationtype: MT
+ms.openlocfilehash: b792c0fc5d02a84d45b47ac68e0058144f31e673
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624006"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641014"
 ---
-# <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database różnice T-SQL wystąpienia zarządzanego w programie SQL Server
+# <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Różnice w języku T-SQL wystąpienia zarządzanego, ograniczenia i znane problemy
 
-Ten artykuł zawiera podsumowanie i wyjaśnienie różnic między składnią i zachowaniem Azure SQL Database wystąpienia zarządzanego i aparatu bazy danych SQL Server lokalnych. Omówiono następujące zagadnienia:<a name="Differences"></a>
+Ten artykuł zawiera podsumowanie i wyjaśnienie różnic między składnią i zachowaniem Azure SQL Database wystąpienia zarządzanego i aparatu bazy danych SQL Server lokalnych. Opcja wdrażania wystąpienia zarządzanego zapewnia wysoką zgodność z lokalnym aparatem bazy danych SQL Server. Większość funkcji aparatu bazy danych SQL Server jest obsługiwana w wystąpieniu zarządzanym.
+
+![Migracja](./media/sql-database-managed-instance/migration.png)
+
+Istnieją pewne ograniczenia PaaS wprowadzone w wystąpieniu zarządzanym, a niektóre zmiany zachowań są porównywane z SQL Server. Różnice są podzielone na następujące kategorie:<a name="Differences"></a>
 
 - [Dostępność](#availability) obejmuje różnice w przypadku, gdy są [zawsze włączone](#always-on-availability) i [kopie zapasowe](#backup).
 - [Zabezpieczenia](#security) obejmują różnice między [inspekcjami](#auditing), [certyfikatami](#certificates), poświadczeniami, [dostawcami usług kryptograficznych](#cryptographic-providers), [logowania i użytkownikami](#logins-and-users)oraz [kluczem usługi i kluczem głównym usługi](#service-key-and-service-master-key). [](#credential)
 - [Konfiguracja](#configuration) obejmuje różnice w [rozszerzeniu puli buforów](#buffer-pool-extension), [Sortowanie](#collation), [poziomy zgodności](#compatibility-levels), [dublowanie bazy danych](#database-mirroring), [Opcje bazy danych](#database-options), [Agent SQL Server](#sql-server-agent)i [Opcje tabeli](#tables).
 - [Funkcje](#functionalities) obejmują [BULK INSERT/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc), [transakcji rozproszonych](#distributed-transactions), [zdarzeń rozszerzonych](#extended-events), [bibliotek zewnętrznych](#external-libraries), [FILESTREAM i FileTable](#filestream-and-filetable), [pełnotekstowego Wyszukiwanie semantyczne](#full-text-semantic-search), [połączone serwery](#linked-servers), [baza](#polybase), [replikacja](#replication), [przywracanie](#restore-statement), [Service Broker](#service-broker), [procedury składowane, funkcje i wyzwalacze](#stored-procedures-functions-and-triggers).
 - [Ustawienia środowiska](#Environment) , takie jak sieci wirtualnych i konfiguracje podsieci.
-- [Funkcje, które mają inne zachowanie w wystąpieniach zarządzanych](#Changes).
-- [Tymczasowe ograniczenia i znane problemy](#Issues).
 
-Opcja wdrażania wystąpienia zarządzanego zapewnia wysoką zgodność z lokalnym aparatem bazy danych SQL Server. Większość funkcji aparatu bazy danych SQL Server jest obsługiwana w wystąpieniu zarządzanym.
+Większość z tych funkcji jest ograniczeniami architektury i reprezentuje funkcje usługi.
 
-![Migracja](./media/sql-database-managed-instance/migration.png)
+Ta strona zawiera również informacje o [tymczasowych znanych problemach](#Issues) , które zostały wykryte w wystąpieniu zarządzanym, które zostaną rozwiązane w przyszłości.
 
 ## <a name="availability"></a>Dostępność
 
@@ -499,6 +501,18 @@ Broker usług dla wielu wystąpień nie jest obsługiwany:
 - `Extended stored procedures`nie są obsługiwane, w `sp_addextendedproc`tym `sp_dropextendedproc`  i. Zobacz [rozszerzone procedury składowane](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql).
 - `sp_attach_db`, `sp_attach_single_file_db` i`sp_detach_db` nie są obsługiwane. Zobacz [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql)i [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
 
+### <a name="system-functions-and-variables"></a>Funkcje systemowe i zmienne
+
+Następujące zmienne, funkcje i widoki zwracają różne wyniki:
+
+- `SERVERPROPERTY('EngineEdition')`Zwraca wartość 8. Ta właściwość jednoznacznie identyfikuje wystąpienie zarządzane. Zobacz [ServerProperty](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
+- `SERVERPROPERTY('InstanceName')`Zwraca wartość NULL, ponieważ koncepcja wystąpienia, która istnieje dla SQL Server nie ma zastosowania do wystąpienia zarządzanego. Zobacz [ServerProperty ("InstanceName")](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
+- `@@SERVERNAME`Zwraca pełną nazwę DNS "Connected", na przykład my-managed-instance.wcus17662feb9ce98.database.windows.net. Zobacz [@@SERVERNAME](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql). 
+- `SYS.SERVERS`Zwraca pełną nazwę DNS "Connected", taką jak `myinstance.domain.database.windows.net` właściwości "name" i "data_source". Zobacz sekcję [sys. SERWERY](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql).
+- `@@SERVICENAME`Zwraca wartość NULL, ponieważ koncepcja usługi, która istnieje dla SQL Server nie ma zastosowania do wystąpienia zarządzanego. Zobacz [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql).
+- `SUSER_ID`jest obsługiwana. Zwraca wartość NULL, jeśli logowanie za pomocą usługi Azure AD nie znajduje się w pliku sys. syslogins. Zobacz [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql). 
+- `SUSER_SID`nie jest obsługiwana. Zwracane są błędne dane, które są tymczasowym znanym problemem. Zobacz [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql). 
+
 ## <a name="Environment"></a>Ograniczenia środowiska
 
 ### <a name="subnet"></a>Subnet
@@ -513,33 +527,25 @@ Broker usług dla wielu wystąpień nie jest obsługiwany:
 - Po utworzeniu wystąpienia zarządzanego przeniesienie wystąpienia zarządzanego lub sieci wirtualnej do innej grupy zasobów lub subskrypcji nie jest obsługiwane.
 - Niektóre usługi, takie jak środowiska App Service, Aplikacje logiki i wystąpienia zarządzane (używane na potrzeby replikacji geograficznej, replikacji transakcyjnej lub połączonych serwerów) nie mogą uzyskać dostępu do wystąpień zarządzanych w różnych regionach, jeśli ich sieci wirtualnych są połączone przy użyciu [globalnego Komunikacja równorzędna](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). Możesz połączyć się z tymi zasobami za pośrednictwem ExpressRoute lub sieci VNet-to-VNet za pośrednictwem bram sieci wirtualnej.
 
-### <a name="tempdb-size"></a>Rozmiar bazy danych TEMPDB
+### <a name="tempdb"></a>TEMPDB
 
 Maksymalny rozmiar `tempdb` pliku nie może być większy niż 24 GB na rdzeń w warstwie ogólnego przeznaczenia. Maksymalny `tempdb` rozmiar w warstwie krytyczne dla działania firmy jest ograniczony przez rozmiar magazynu wystąpień. `Tempdb`rozmiar pliku dziennika jest ograniczony do 120 GB zarówno w warstwach Ogólnego przeznaczenia i Krytyczne dla działania firmy. Niektóre zapytania mogą zwrócić błąd, jeśli potrzebują ponad 24 GB na rdzeń w `tempdb` lub, jeśli generują więcej niż 120 GB danych dziennika.
 
-## <a name="Changes"></a>Zmiany zachowania
+### <a name="error-logs"></a>Dzienniki błędów
 
-Następujące zmienne, funkcje i widoki zwracają różne wyniki:
+Wystąpienie zarządzane umieszcza pełne informacje w dziennikach błędów. Istnieje wiele wewnętrznych zdarzeń systemowych, które są rejestrowane w dzienniku błędów. Użyj niestandardowej procedury, aby odczytać dzienniki błędów, które filtrują pewne nieistotne wpisy. Aby uzyskać więcej informacji, zobacz [wystąpienie zarządzane — sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
 
-- `SERVERPROPERTY('EngineEdition')`Zwraca wartość 8. Ta właściwość jednoznacznie identyfikuje wystąpienie zarządzane. Zobacz [ServerProperty](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
-- `SERVERPROPERTY('InstanceName')`Zwraca wartość NULL, ponieważ koncepcja wystąpienia, która istnieje dla SQL Server nie ma zastosowania do wystąpienia zarządzanego. Zobacz [ServerProperty ("InstanceName")](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
-- `@@SERVERNAME`Zwraca pełną nazwę DNS "Connected", na przykład my-managed-instance.wcus17662feb9ce98.database.windows.net. Zobacz [@@SERVERNAME](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql). 
-- `SYS.SERVERS`Zwraca pełną nazwę DNS "Connected", taką jak `myinstance.domain.database.windows.net` właściwości "name" i "data_source". Zobacz sekcję [sys. SERWERY](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql).
-- `@@SERVICENAME`Zwraca wartość NULL, ponieważ koncepcja usługi, która istnieje dla SQL Server nie ma zastosowania do wystąpienia zarządzanego. Zobacz [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql).
-- `SUSER_ID`jest obsługiwana. Zwraca wartość NULL, jeśli logowanie za pomocą usługi Azure AD nie znajduje się w pliku sys. syslogins. Zobacz [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql). 
-- `SUSER_SID`nie jest obsługiwana. Zwracane są błędne dane, które są tymczasowym znanym problemem. Zobacz [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql). 
+## <a name="Issues"></a>Znane problemy
 
-## <a name="Issues"></a>Znane problemy i ograniczenia
-
-### <a name="cross-database-service-broker-dialogs-dont-work-after-service-tier-upgrade"></a>Okna dialogowe Service Broker między bazami danych nie działają po uaktualnieniu warstwy usług
+### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>Okna dialogowe Service Broker między bazami danych muszą zostać zainicjowane po uaktualnieniu warstwy usług
 
 **Dniu** 2019 sie
 
-Okna dialogowe Service Broker między bazami danych nie dostarczą komunikatów po operacji zmiany warstwy usług. Każda zmiana rozmiaru magazynu rdzeni wirtualnych lub wystąpienia w wystąpieniu zarządzanym spowoduje `service_broke_guid` zmianę wartości w widoku [sys. databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) dla wszystkich baz danych. Wszystkie `DIALOG` utworzone przy użyciu instrukcji [BEGIN dialog](https://docs.microsoft.com/en-us/sql/t-sql/statements/begin-dialog-conversation-transact-sql) , które odwołują się do brokerów usług w innej bazie danych według identyfikatora GUID, nie będą mogły dostarczać komunikatów.
+Okna dialogowe Service Broker między bazami danych przestaną przekazanie komunikatów do usług w innych bazach danych po operacji zmiany warstwy usług. Komunikaty nie są **tracone** i znajdują się w kolejce nadawcy. Każda zmiana rozmiaru magazynu rdzeni wirtualnych lub wystąpienia w wystąpieniu zarządzanym spowoduje `service_broke_guid` zmianę wartości w widoku [sys. databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) dla wszystkich baz danych. Wszystkie `DIALOG` utworzone przy użyciu instrukcji [BEGIN dialog](https://docs.microsoft.com/en-us/sql/t-sql/statements/begin-dialog-conversation-transact-sql) , które odwołują się do brokerów usług w innej bazie danych, zatrzymają dostarczanie komunikatów do usługi docelowej.
 
-**Poprawkę** Przed aktualizacją warstwy usług Zatrzymaj wszystkie działania, które używają konwersacji między bazami danych Service Broker.
+**Poprawkę** Przed aktualizacją warstwy usług Zatrzymaj wszystkie działania, które używają konwersacji między bazami danych Service Broker. Jeśli pozostałe komunikaty są niedostarczone po zmianie warstwy usług, należy odczytać komunikaty z kolejki źródłowej i ponownie wysłać je do kolejki docelowej.
 
-### <a name="some-aad-login-types-cannot-be-impersonated"></a>Niektóre typy logowania usługi AAD nie mogą być personifikowane
+### <a name="impresonification-of-aad-login-types-is-not-supported"></a>Impresonification typów logowania usługi AAD nie są obsługiwane
 
 **Dniu** Lipiec 2019
 
@@ -547,11 +553,19 @@ Personifikacja `EXECUTE AS USER` przy `EXECUTE AS LOGIN` użyciu lub następują
 -   Aliasy użytkowników usługi AAD. W tym przypadku `15517`zwracany jest następujący błąd.
 - Nazwy logowania i użytkownicy usługi AAD w oparciu o aplikacje lub nazwy główne usług w usłudze AAD. W takim przypadku `15517` zwracane są następujące błędy i `15406`.
 
+### <a name="database-email"></a>Adres e-mail bazy danych 
+
 ### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@queryparametr nie jest obsługiwany w sp_send_db_mail
 
 **Dniu** Kwiecień 2019
 
 Parametr w procedurze sp_send_db_mail nie działa. [](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) `@query`
+
+### <a name="transactional-replication-must-be-reconfigured-after-geo-failover"></a>Należy ponownie skonfigurować replikację transakcyjną po geograficznym przejściu do trybu failover
+
+**Dniu** Mar 2019
+
+Jeśli replikacja transakcyjna jest włączona w bazie danych w grupie autotrybu failover, administrator wystąpienia zarządzanego musi oczyścić wszystkie publikacje na starym serwerze podstawowym i skonfigurować je ponownie na nowym serwerze podstawowym po przejściu w tryb failover do innego regionu. Aby uzyskać więcej informacji, zobacz [replikacja](#replication) .
 
 ### <a name="aad-logins-and-users-are-not-supported-in-tools"></a>Nazwy logowania i użytkownicy usługi AAD nie są obsługiwane w narzędziach
 
@@ -588,13 +602,7 @@ W kilku widokach systemu, licznikach wydajności, komunikatach o błędach, XEve
 
 ### <a name="error-logs-arent-persisted"></a>Dzienniki błędów nie są utrwalone
 
-Dzienniki błędów dostępne w wystąpieniu zarządzanym nie są utrwalane, a ich rozmiar nie jest uwzględniony w maksymalnym limicie magazynu. Dzienniki błędów mogą być automatycznie wymazywane w przypadku przełączenia w tryb failover.
-
-### <a name="error-logs-are-verbose"></a>Dzienniki błędów są pełne
-
-Wystąpienie zarządzane umieszcza pełne informacje w dziennikach błędów i większość z nich nie ma znaczenia. 
-
-**Poprawkę** Użyj niestandardowej procedury, aby odczytać dzienniki błędów, które filtrują pewne nieistotne wpisy. Aby uzyskać więcej informacji, zobacz [wystąpienie zarządzane — sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
+Dzienniki błędów dostępne w wystąpieniu zarządzanym nie są utrwalane, a ich rozmiar nie jest uwzględniony w maksymalnym limicie magazynu. Dzienniki błędów mogą być automatycznie wymazywane w przypadku przełączenia w tryb failover. W historii dzienników błędów mogą występować luki, ponieważ wystąpienie zarządzane zostało przesunięte kilka czasu na kilka maszyn wirtualnych.
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>Zakres transakcji w dwóch bazach danych w tym samym wystąpieniu nie jest obsługiwany
 

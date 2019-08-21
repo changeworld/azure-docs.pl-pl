@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: c225971675557ba9bc98aafa25d17a3ef95a594a
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 9f6f3d43f80b3c69b0c1106b8e395b4d8f5d32ab
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624945"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640702"
 ---
 # <a name="deploy-service-fabric-application-with-system-assigned-managed-identity-preview"></a>Wdrażanie aplikacji Service Fabric przy użyciu tożsamości zarządzanej przypisanej do systemu (wersja zapoznawcza)
 
@@ -92,7 +92,7 @@ Ta właściwość deklaruje (do Azure Resource Manager i dostawcy zasobów zarz�
     ```
     Jest to równoważne mapowanie tożsamości do usługi zgodnie z powyższym opisem, ale z perspektywy definicji usługi. Tożsamość jest przywoływana tutaj przez przyjazną nazwę`WebAdmin`(), zgodnie z deklaracją w manifeście aplikacji.
 
-## <a name="related-articles"></a>Pokrewne artykuły:
+## <a name="next-steps"></a>Następne kroki
 
 * Przejrzyj [obsługę tożsamości zarządzanych](./concepts-managed-identity.md) w usłudze Azure Service Fabric
 

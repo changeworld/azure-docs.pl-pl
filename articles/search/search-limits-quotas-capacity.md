@@ -2,20 +2,18 @@
 title: Limity usługi dla warstw i jednostek SKU — Azure Search
 description: Limity usługi używane do planowania pojemności oraz maksymalne limity żądań i odpowiedzi dla Azure Search.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
-ms.devlang: NA
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 35beb55d7326b954a568a377b73696fe598742c5
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 9ddc7ad8882b30a17be5820116da72c5ab32fad9
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348303"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640623"
 ---
 # <a name="service-limits-in-azure-search"></a>Limity usługi w Azure Search
 Maksymalne limity dotyczące magazynu, obciążeń i ilości indeksów, dokumentów i innych obiektów zależą od tego, czy zainicjowano [obsługę administracyjną Azure Search](search-create-service-portal.md) w warstwach **bezpłatna**, **podstawowa**, **standardowa**i **zoptymalizowana pod kątem magazynu** .

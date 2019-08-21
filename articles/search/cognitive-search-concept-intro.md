@@ -6,17 +6,15 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.subservice: cognitive-search
-ms.devlang: NA
 ms.topic: overview
 ms.date: 08/15/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: c537e2671dcc266e28e5fa8a040088c83394f260
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 89c56496ed1f356ffedf4df93f1728bd4acda323
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563451"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639955"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Co to jest "wyszukiwanie poznawcze" w Azure Search?
 

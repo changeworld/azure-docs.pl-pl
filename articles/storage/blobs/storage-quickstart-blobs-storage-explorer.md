@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 11/15/2018
 ms.author: tamram
-ms.openlocfilehash: 929ba7e28bca608359e76f9eeb130c61ba3235a0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: cd31d1c40f30ebc8341c2126da22f8a74cb05438
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435804"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640516"
 ---
 # <a name="quickstart-use-azure-storage-explorer-to-create-a-blob-in-object-storage"></a>Szybki start: tworzenie obiektu blob w magazynie obiektów za pomocą Eksploratora usługi Azure Storage
 
@@ -29,9 +29,9 @@ W przypadku tego przewodnika Szybki start wymagane jest zainstalowanie Eksplorat
 
 Podczas pierwszego uruchomienia wyświetlane jest okno **Eksplorator usługi Microsoft Azure Storage — nawiązywanie połączenia**. Eksplorator usługi Storage oferuje kilka sposobów nawiązywania połączenia z kontami magazynu. W poniższej tabeli przedstawiono różne sposoby nawiązywania połączenia:
 
-|Zadanie|Przeznaczenie|
+|Zadanie|Cel|
 |---|---|
-|Dodawanie konta platformy Azure | Przekierowuje Cię do strony logowania organizacji w celu uwierzytelniania na platformie Azure. |
+|Dodawanie konta platformy Azure | Przekierowuje użytkownika do strony logowania w organizacji w celu uwierzytelnienia na platformie Azure. |
 |Używanie parametrów połączenia lub identyfikatora URI sygnatury dostępu współdzielonego | Umożliwia bezpośredni dostęp do kontenera lub konta magazynu za pomocą tokenu sygnatury dostępu współdzielonego lub udostępnionych parametrów połączenia. |
 |Używanie nazwy i klucza konta magazynu| Użyj nazwy i klucza konta magazynu do nawiązania połączenia z magazynem Azure Storage.|
 
@@ -47,7 +47,7 @@ Po nawiązaniu połączenia Eksplorator usługi Azure Storage zostanie załadowa
 
 Obiekty blob są zawsze przesyłane do kontenera. Umożliwia to organizowanie grup obiektów blob w sposób podobny do organizowania plików w folderach na komputerze.
 
-Aby utworzyć kontener, rozwiń konto magazynu utworzone w poprzednim kroku. Wybierz pozycję **Kontenery obiektów blob**, rozwiń ją, a następnie wybierz pozycję **Utwórz kontener obiektów blob**. Wprowadź nazwę kontenera obiektów blob. Zobacz [utworzyć kontener](storage-quickstart-blobs-dotnet.md#create-a-container) sekcji, aby uzyskać listę reguł i ograniczeń dotyczących nazewnictwa kontenerów obiektów blob. Po zakończeniu naciśnij klawisz **Enter**, aby utworzyć kontener obiektów blob. Po pomyślnym utworzeniu kontener obiektów blob zostanie wyświetlony w folderze **Kontenery obiektów blob** dla wybranego konta magazynu.
+Aby utworzyć kontener, rozwiń konto magazynu utworzone w poprzednim kroku. Wybierz pozycję **Kontenery obiektów blob**, rozwiń ją, a następnie wybierz pozycję **Utwórz kontener obiektów blob**. Wprowadź nazwę kontenera obiektów blob. Zapoznaj się z sekcją [Tworzenie kontenera](storage-quickstart-blobs-dotnet.md#create-a-container) , aby zapoznać się z listą reguł i ograniczeń dotyczących nazewnictwa kontenerów obiektów BLOB. Po zakończeniu naciśnij klawisz **Enter**, aby utworzyć kontener obiektów blob. Po pomyślnym utworzeniu kontener obiektów blob zostanie wyświetlony w folderze **Kontenery obiektów blob** dla wybranego konta magazynu.
 
 ## <a name="upload-blobs-to-the-container"></a>Przekazywanie obiektów blob do kontenera
 
@@ -93,7 +93,7 @@ Sygnatury dostępu współdzielonego można pobierać za pomocą Eksploratora us
 
 ![Eksplorator usługi Microsoft Azure Storage — wyświetlanie listy obiektów blob w kontenerze](media/storage-quickstart-blobs-storage-explorer/sharedaccesssignature.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start przedstawiono metodę transferowania plików między dyskiem lokalnym i usługą Azure Blob Storage przy użyciu **Eksploratora usługi Azure Storage**. Aby dowiedzieć się więcej na temat pracy z usługą Blob Storage, przejdź do instrukcji dotyczących magazynu obiektów blob.
 

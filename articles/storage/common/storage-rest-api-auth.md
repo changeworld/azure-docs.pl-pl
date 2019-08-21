@@ -1,24 +1,24 @@
 ---
-title: Wywoływanie operacji interfejsu API REST usług Azure Storage, w tym uwierzytelniania | Microsoft Docs
-description: Wywoływanie operacji interfejsu API REST usług Azure Storage, łącznie z uwierzytelnianiem
+title: Wywoływanie operacji interfejsu API REST usług Azure Storage przy użyciu autoryzacji klucza współużytkowanego | Microsoft Docs
+description: Użyj interfejsu API REST usługi Azure Storage, aby utworzyć żądanie do usługi BLOB Storage przy użyciu autoryzacji klucza współużytkowanego.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 08/19/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 2149bfb68697129680c45f15c6cce359863fbc59
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1463a470c84d38ebc30e32cf539aa9d6f64a6854
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989938"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640663"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Korzystanie z interfejsu API REST usługi Azure Storage
 
-W tym artykule pokazano, jak używać interfejsów API REST usługi Blob Storage i jak uwierzytelniać wywołanie usługi. Jest ona zapisywana z punktu widzenia dewelopera, który wie, że niczego nie dotyczy, i nie ma pomysłu, jak wykonać wywołanie REST. Zapoznaj się z dokumentacją referencyjną dla wywołania REST i zobacz, jak przetłumaczyć ją na rzeczywiste wywołanie REST — które pola są gotowe? Po zapoznaniu się ze sposobem konfigurowania wywołania REST możesz skorzystać z tej wiedzy, aby użyć dowolnego interfejsu API REST usługi Storage.
+W tym artykule pokazano, jak używać interfejsów API REST usługi Blob Storage i jak autoryzować wywołanie do usługi. Jest ona zapisywana z punktu widzenia dewelopera, który wie, że niczego nie dotyczy, i nie ma pomysłu, jak wykonać wywołanie REST. Zapoznaj się z dokumentacją referencyjną dla wywołania REST i zobacz, jak przetłumaczyć ją na rzeczywiste wywołanie REST — które pola są gotowe? Po zapoznaniu się ze sposobem konfigurowania wywołania REST możesz skorzystać z tej wiedzy, aby użyć dowolnego interfejsu API REST usługi Storage.
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
@@ -267,12 +267,13 @@ Teraz, gdy zrozumiesz, jak utworzyć żądanie, wywołać usługę i przeanalizo
 ## <a name="creating-the-authorization-header"></a>Tworzenie nagłówka autoryzacji
 
 > [!TIP]
-> Usługa Azure Storage obsługuje teraz integrację Azure Active Directory (Azure AD) dla obiektów blob i kolejek. Usługa Azure AD oferuje znacznie prostsze środowisko do autoryzowania żądania do usługi Azure Storage. Aby uzyskać więcej informacji o korzystaniu z usługi Azure AD do autoryzacji operacji REST, zobacz [uwierzytelnianie za pomocą Azure Active Directory](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory). Aby zapoznać się z omówieniem integracji usługi Azure AD z usługą Azure Storage, zobacz temat [uwierzytelnianie dostępu do usługi Azure Storage przy użyciu Azure Active Directory](storage-auth-aad.md).
+> Usługa Azure Storage obsługuje teraz integrację Azure Active Directory (Azure AD) dla obiektów blob i kolejek. Usługa Azure AD oferuje znacznie prostsze środowisko do autoryzowania żądania do usługi Azure Storage. Aby uzyskać więcej informacji na temat autoryzacji operacji REST przy użyciu usługi Azure AD, zobacz [Autoryzuj z Azure Active Directory](/rest/api/storageservices/authorize-with-azure-active-directory). Aby zapoznać się z omówieniem integracji usługi Azure AD z usługą Azure Storage, zobacz temat [uwierzytelnianie dostępu do usługi Azure Storage przy użyciu Azure Active Directory](storage-auth-aad.md).
 
-Istnieje artykuł objaśniający koncepcję koncepcyjnie (bez kodu), w jaki sposób przeprowadzać [uwierzytelnianie dla usług Azure Storage](/rest/api/storageservices/Authorization-for-the-Azure-Storage-Services).
+Istnieje artykuł objaśniający koncepcje koncepcyjnie (bez kodu) jak [autoryzować żądania do usługi Azure Storage](/rest/api/storageservices/authorize-requests-to-azure-storage).
+
 Poinformujmy o tym, że artykuł jest odpowiednio widoczny i Pokaż kod.
 
-Najpierw Użyj uwierzytelniania klucza współużytkowanego. Format nagłówka autoryzacji wygląda następująco:
+Najpierw Użyj autoryzacji klucza współużytkowanego. Format nagłówka autoryzacji wygląda następująco:
 
 ```  
 Authorization="SharedKey <storage account name>:<signature>"  
@@ -360,7 +361,7 @@ Ta część ciągu podpisu reprezentuje konto magazynu wskazywane przez żądani
 
 Jeśli masz parametry zapytania, ten przykład obejmuje również te parametry. Oto kod, który obsługuje także dodatkowe parametry zapytania i parametry zapytania z wieloma wartościami. Pamiętaj, że tworzysz ten kod, aby działał dla wszystkich interfejsów API REST. Chcesz uwzględnić wszystkie możliwości, nawet jeśli metoda ListContainers nie potrzebuje wszystkich z nich.
 
-```csharp 
+```csharp
 private static string GetCanonicalizedResource(Uri address, string storageAccountName)
 {
     // The absolute path will be "/" because for we're getting a list of containers.
@@ -376,7 +377,7 @@ private static string GetCanonicalizedResource(Uri address, string storageAccoun
         sb.Append('\n').Append(item).Append(':').Append(values[item]);
     }
 
-    return sb.ToString();
+    return sb.ToString().ToLower();
 }
 ```
 
@@ -571,3 +572,4 @@ W tym artykule przedstawiono sposób tworzenia żądania do interfejsu API REST 
 * [Interfejs API REST usługi BLOB Service](/rest/api/storageservices/blob-service-rest-api)
 * [Interfejs API REST usługi plików](/rest/api/storageservices/file-service-rest-api)
 * [Interfejs API REST usługi kolejkowania](/rest/api/storageservices/queue-service-rest-api)
+* [Interfejs API REST usługi Table Service](/rest/api/storageservices/table-service-rest-api)

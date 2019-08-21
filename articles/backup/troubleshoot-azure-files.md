@@ -4,22 +4,21 @@ description: W tym artykule znajdują się informacje dotyczące rozwiązywania 
 ms.service: backup
 author: dcurwin
 ms.author: dacurwin
-ms.date: 07/22/2019
+ms.date: 08/20/2019
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 486c0ae674f1549206b7aa3110faf31132c22f2a
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 1182c7d4ac9a103e752a8cd0c392c5e57f1eebd0
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639396"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637580"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Rozwiązywanie problemów związanych z tworzeniem kopii zapasowej udziałów plików platformy Azure
 Korzystając z informacji znajdujących się w poniższych tabelach możesz rozwiązywać problemy i usuwać błędy napotkane podczas używania funkcji tworzenia kopii zapasowej udziałów plików platformy Azure.
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Ograniczenia dotyczące tworzenia kopii zapasowej udziału plików platformy Azure w okresie korzystania z wersji zapoznawczej
 Funkcja tworzenia kopii zapasowych udziałów plików platformy Azure jest dostępna w wersji zapoznawczej. Obsługiwane są udziały plików platformy Azure na kontach magazynu ogólnego przeznaczenia w wersji 1 i 2. Następujące scenariusze tworzenia kopii zapasowej nie są obsługiwane w przypadku udziałów plików platformy Azure:
-- Nie można chronić udziałów plików platformy Azure w ramach kont magazynu, które mają włączone sieci wirtualne lub zaporę.
 - Nie ma dostępnego interfejsu wiersza polecenia do ochrony usługi Azure Files z poziomu usługi Azure Backup.
 - Maksymalna liczba zaplanowanych kopii zapasowych to jedna dziennie.
 - Maksymalna liczba kopii zapasowych na żądanie to cztery dziennie.
@@ -51,7 +50,6 @@ Poniższa tabela dotyczy konfigurowania kopii zapasowej:
 | Osiągnięto maksymalną liczbę migawek dla tego udziału plików. Tworzenie kolejnych migawek będzie możliwe po wygaśnięciu starszych. | <ul><li> Ten błąd może wystąpić podczas tworzenia wielu kopii zapasowych na żądanie dla pliku. <li> Istnieje limit 200 migawek na udział plików łącznie z migawkami tworzonymi w ramach usługi Azure Backup. Starsze zaplanowane kopie zapasowych (lub migawki) są czyszczone automatycznie. Kopie zapasowe na żądanie (lub migawki) muszą zostać usunięte po osiągnięciu maksymalnego limitu.<li> Usuń kopie zapasowe na żądanie (migawki udziałów plików platformy Azure) z portalu usługi Azure Files. **Uwaga**: punkty odzyskiwania zostaną utracone w przypadku usunięcia migawek utworzonych za pomocą usługi Azure Backup. |
 | Tworzenie kopii zapasowej udziału plików lub jego przywracanie nie powiodło się z powodu ograniczania usługi magazynu. Może to być spowodowane tym, że usługa magazynu jest zajęta przetwarzaniem innych żądań dla danego konta magazynu.| Spróbuj ponownie wykonać operację po pewnym czasie. |
 | Przywracanie nie powiodło się, ponieważ docelowy udziału plików nie został odnaleziony. | <ul><li>Sprawdź, czy wybrane konto magazynu istnieje, a docelowy udziału plików nie został usunięty. <li> Sprawdź, czy dla konta magazynu obsługiwane jest tworzenie kopii zapasowej udziału plików. |
-| Kopie zapasowe usługi Azure Backup nie są obecnie obsługiwane w przypadku udziałów plików platformy Azure w ramach kont magazynu, które mają włączone sieci wirtualne. | Wyłącz sieci wirtualne w ramach konta magazynu, aby zapewnić powodzenie operacji tworzenia kopii zapasowych i przywracania. |
 | Zadania tworzenia kopii zapasowej lub przywracania nie powiodły się, ponieważ konto magazynu jest w stanie zablokowanym. | Usuń blokadę konta magazynu lub użyj opcji usunięcia blokady zamiast odczytu blokady, a następnie spróbuj ponownie wykonać operację. |
 | Odzyskiwanie nie powiodło się, ponieważ liczba plików zakończonych niepowodzeniem jest większa niż wartość progowa. | <ul><li> Przyczyny niepowodzenia odzyskiwania są wymienione w pliku (ścieżka jest podana w szczegółach zadania). Usuń przyczyny niepowodzenia, a następnie ponów próbę wykonania operacji przywracania tylko dla plików zakończonych niepowodzeniem. <li> Typowe przyczyny błędów przywracania plików: <br/> -pliki zakończone niepowodzeniem są używane <br/> -w katalogu nadrzędnym istnieje katalog o tej samej nazwie, co plik zakończony niepowodzeniem |
 | Odzyskiwanie nie powiodło się, ponieważ żaden plik nie mógł zostać odzyskany. | <ul><li> Przyczyny niepowodzenia odzyskiwania są wymienione w pliku (ścieżka jest podana w szczegółach zadania). Usuń przyczyny niepowodzenia, a następnie spróbuj ponownie wykonać operację przywracania tylko dla plików zakończonych niepowodzeniem. <li> Typowe przyczyny błędów przywracania plików: <br/> -pliki zakończone niepowodzeniem są używane <br/> -w katalogu nadrzędnym istnieje katalog o tej samej nazwie, co plik zakończony niepowodzeniem |

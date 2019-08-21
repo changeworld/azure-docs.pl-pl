@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: abnarain
-ms.openlocfilehash: 87b32fdef449945b1e8facac2ac5a51b4ef67972
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 3f49bed0253a380dbcb0a526364c85c2031b0116
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617600"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640323"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Samouczek: Kopiowanie danych z lokalnej bazy danych programu SQL Server do usługi Azure Blob Storage
 W tym samouczku użyjesz programu Azure PowerShell, aby utworzyć potok usługi Data Factory, który kopiuje dane z lokalnej bazy danych programu SQL Server do usługi Azure Blob Storage. Utworzysz własne środowisko Integration Runtime (Self-hosted), służące do przenoszenia danych między lokalnym magazynem danych i magazynem danych w chmurze. 
@@ -76,7 +76,7 @@ W tym samouczku używasz nazwy i klucza swojego konta usługi Azure Storage. Pob
 
 1. W okienku po lewej stronie wybierz pozycję **Więcej usług**, zastosuj filtrowanie według słowa kluczowego **magazyn**, a następnie wybierz pozycję **Konta magazynu**.
 
-    ![Wyszukiwanie konta magazynu](media/tutorial-hybrid-copy-powershell/search-storage-account.png)
+    ![Wyszukiwanie konta magazynu](media/doc-common-process/search-storage-account.png)
 
 1. Na liście kont magazynu znajdź swoje konto magazynu, w razie potrzeby używając filtrowania, a następnie wybierz to konto. 
 

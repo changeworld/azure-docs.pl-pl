@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/03/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 21a42b2986b52282fbab914fa702d8c4a323ed35
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1f5a144728614ee13bf4f08bb594f0546d446880
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611948"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640782"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformy i funkcje obsługiwane przez Azure Security Center
 
@@ -111,7 +111,7 @@ Aby uzyskać informacje o tym, kiedy są generowane zalecenia dla każdej z tych
 |------|------|-----|-----|
 | Windows Defender (oprogramowanie firmy Microsoft chroniące przed złośliwym kodem)| Windows Server 2016| Nie, wbudowana w system operacyjny| Tak |
 | System Center Endpoint Protection (oprogramowanie firmy Microsoft chroniące przed złośliwym kodem) | Windows Server 2012 R2, 2012, 2008 R2 (Zobacz uwagi poniżej) | Za pomocą rozszerzenia | Tak |
-| Trend Micro — wszystkie wersje | Rodzina systemów Windows Server  | Nie | Tak |
+| Trend Micro — wszystkie wersje * | Rodzina systemów Windows Server  | Nie | Tak |
 | Symantec — w wersji co najmniej 12.1.1100| Rodzina systemów Windows Server  | Nie | Tak |
 | McAfee — w wersji co najmniej 10 | Rodzina systemów Windows Server  | Nie | Tak |
 | McAfee — w wersji co najmniej 10 | Rodzina serwerów z systemem Linux  | Nie | Opcję **\*** |
@@ -121,6 +121,7 @@ Aby uzyskać informacje o tym, kiedy są generowane zalecenia dla każdej z tych
 
 > [!NOTE]
 > - Wykrywanie programu System Center Endpoint Protection (SCEP) na maszynie wirtualnej z systemem Windows Server 2008 R2 wymaga zainstalowania protokołu SCEP po wystąpieniu programu PowerShell 3,0 (lub w górnej wersji).
+> - Wykrywanie programu Trend Micro Protection jest obsługiwane przez agentów zabezpieczeń systemu głębokiego.  Agenci OfficeScan nie są obsługiwani.
 
 ## <a name="supported-paas-features"></a>Obsługiwane funkcje PaaS
 

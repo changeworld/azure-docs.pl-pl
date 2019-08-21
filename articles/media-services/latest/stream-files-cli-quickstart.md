@@ -1,6 +1,6 @@
 ---
-title: Stream plików wideo za pomocą wiersza polecenia platformy Azure i usługi Azure Media Services | Dokumentacja firmy Microsoft
-description: Wykonaj kroki tego samouczka, aby utworzyć nowe konto usługi Azure Media Services, Koduj plik i prześlij go strumieniowo do usługi Azure Media Player.
+title: Przesyłanie strumieniowe plików wideo za pomocą Azure Media Services i interfejsu wiersza polecenia platformy Azure | Microsoft Docs
+description: Wykonaj kroki tego samouczka, aby utworzyć nowe konto Azure Media Services, zakodować plik i przesłać go strumieniowo do Azure Media Player.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,22 +11,22 @@ ms.service: media-services
 ms.workload: media
 ms.topic: tutorial
 ms.custom: ''
-ms.date: 02/19/2019
+ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: cce424b11cc4cd587c6e7c50bc8bdf988004a43a
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: 58193a94d09dee5df611acf5d98c8661dd18abbb
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65550197"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639966"
 ---
-# <a name="tutorial-stream-video-files---cli"></a>Samouczek: Przesyłanie strumieniowe plików wideo — interfejs wiersza polecenia
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---cli"></a>Samouczek: Kodowanie pliku zdalnego na podstawie adresu URL i strumieniowego wideo — interfejs wiersza polecenia
 
-W tym samouczku pokazano, jak łatwo kodowanie i przesyłanie strumieniowe filmów wideo na różnych przeglądarkach i urządzeniach, przy użyciu usługi Azure Media Services i wiersza polecenia platformy Azure. Zawartość danych wejściowych można określić przy użyciu protokołu HTTPS lub adresy URL sygnatury dostępu Współdzielonego lub ścieżki do plików w usłudze Azure Blob storage.
+W tym samouczku przedstawiono sposób łatwego kodowania i strumieniowego przesyłania filmów wideo w różnych przeglądarkach i urządzeniach przy użyciu Azure Media Services i interfejsu wiersza polecenia platformy Azure. Możesz określić zawartość wejściową, używając adresów URL lub ścieżek protokołu HTTPS lub SAS do plików w usłudze Azure Blob Storage.
 
-W przykładzie w tym artykule koduje zawartości, który należy udostępnić za pośrednictwem adresu URL HTTPS. Usługa Media Services v3 nie obsługuje obecnie transferu pakietowego kodowania za pośrednictwem adresy URL HTTPS.
+W przykładzie w tym artykule zakodowana jest zawartość, którą można uzyskać za pośrednictwem adresu URL HTTPS. Media Services V3 nie obsługuje obecnie kodowania transferu fragmentarycznego za pośrednictwem adresów URL protokołu HTTPS.
 
-Do końca tego samouczka będziesz mieć możliwość przesyłania strumieniowego wideo.  
+Po zakończeniu tego samouczka będziesz mieć możliwość przesyłania strumieniowego wideo.  
 
 ![Odtwarzanie wideo](./media/stream-files-dotnet-quickstart/final-video.png)
 
@@ -34,9 +34,9 @@ Do końca tego samouczka będziesz mieć możliwość przesyłania strumienioweg
 
 ## <a name="create-a-media-services-account"></a>Tworzenie konta usługi Media Services
 
-Zanim można szyfrowanie, kodowanie, analizowanie, zarządzanie i przesyłanie strumieniowe zawartości na platformie Azure, musisz utworzyć konto usługi Media Services. To konto musi być skojarzony z co najmniej jedno konto magazynu.
+Aby można było szyfrować, kodować, analizować, zarządzać i przesyłać strumieniowo zawartość multimedialną na platformie Azure, należy utworzyć konto Media Services. To konto musi być skojarzone z co najmniej jednym kontem magazynu.
 
-Konto usługi Media Services i wszystkie skojarzone konta magazynu muszą być w tej samej subskrypcji platformy Azure. Zaleca się użycie kont magazynu, które znajdują się w tym samym miejscu, co konto usługi Media Services, aby ograniczyć koszty wyjścia z opóźnieniami i danych.
+Twoje konto Media Services i wszystkie powiązane konta magazynu muszą znajdować się w tej samej subskrypcji platformy Azure. Zalecamy używanie kont magazynu, które są w tym samym miejscu co konto Media Services, aby ograniczyć opóźnienia i koszty danych wyjściowych.
 
 ### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
@@ -44,11 +44,11 @@ Konto usługi Media Services i wszystkie skojarzone konta magazynu muszą być w
 az group create -n amsResourceGroup -l westus2
 ```
 
-### <a name="create-an-azure-storage-account"></a>Tworzenie konta usługi Azure Storage
+### <a name="create-an-azure-storage-account"></a>Tworzenie konta usługi Azure storage
 
-W tym przykładzie firma Microsoft konto ogólnego przeznaczenia v2 Standard LRS.
+W tym przykładzie utworzymy standardowe konto LRS w wersji 2.
 
-Jeśli chcesz poeksperymentować z kontami magazynu, użyj parametru `--sku Standard_LRS`. Gdy jesteś pobrania jednostki SKU dla środowiska produkcyjnego, rozważ użycie `--sku Standard_RAGRS`, zapewniającą replikacji geograficznej dla ciągłości działania. Aby uzyskać więcej informacji, zobacz temat [Konta magazynu](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest).
+Jeśli chcesz poeksperymentować z kontami magazynu, użyj parametru `--sku Standard_LRS`. W przypadku wybrania jednostki SKU do produkcji należy rozważyć użycie `--sku Standard_RAGRS`, która zapewnia replikację geograficzną dla ciągłości działania. Aby uzyskać więcej informacji, zobacz temat [Konta magazynu](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest).
  
 ```azurecli
 az storage account create -n amsstorageaccount --kind StorageV2 --sku Standard_LRS -l westus2 -g amsResourceGroup
@@ -60,7 +60,7 @@ az storage account create -n amsstorageaccount --kind StorageV2 --sku Standard_L
 az ams account create --n amsaccount -g amsResourceGroup --storage-account amsstorageaccount -l westus2
 ```
 
-Pojawi się odpowiedź podobna:
+Otrzymujesz odpowiedź w następujący sposób:
 
 ```
 {
@@ -83,13 +83,13 @@ Pojawi się odpowiedź podobna:
 
 ## <a name="start-the-streaming-endpoint"></a>Uruchamianie punktu końcowego przesyłania strumieniowego
 
-Następujące polecenie z wiersza polecenia platformy Azure rozpoczyna się domyślnie **punkt końcowy przesyłania strumieniowego**.
+Następujące polecenie interfejsu wiersza polecenia platformy Azure uruchamia domyślny **punkt końcowy przesyłania strumieniowego**.
 
 ```azurecli
 az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
 ```
 
-Pojawi się odpowiedź podobna:
+Otrzymujesz odpowiedź w następujący sposób:
 
 ```
 az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
@@ -119,21 +119,21 @@ az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
 }
 ```
 
-Jeśli punkt końcowy przesyłania strumieniowego jest już uruchomiona, zostanie wyświetlony ten komunikat:
+Jeśli punkt końcowy przesyłania strumieniowego jest już uruchomiony, zostanie wyświetlony następujący komunikat:
 
 ```
 (InvalidOperation) The server cannot execute the operation in its current state.
 ```
 
-## <a name="create-a-transform-for-adaptive-bitrate-encoding"></a>Utwórz przekształcenia do kodowania z adaptacyjną szybkością transmisji bitów
+## <a name="create-a-transform-for-adaptive-bitrate-encoding"></a>Utwórz transformację dla kodowania z adaptacyjną szybkością transmisji bitów
 
-Utwórz **transformację** w celu skonfigurowania typowych zadań związanych z kodowaniem lub analizowaniem wideo. W tym przykładzie robimy kodowania z adaptacyjną szybkością transmisji bitów. Możemy przesłać zadanie w ramach transformacji, który utworzyliśmy. Zadanie to żądanie do usługi Media Services na przekształcenie, które dotyczą danego filmu wideo lub audio zawartości danych wejściowych.
+Utwórz **transformację** w celu skonfigurowania typowych zadań związanych z kodowaniem lub analizowaniem wideo. W tym przykładzie stosujemy kodowanie z adaptacyjną szybkością transmisji bitów. Następnie prześlemy zadanie w ramach utworzonego przekształcenia. Zadanie to żądanie Media Services, aby zastosować transformację do danych wejściowych zawartości wideo lub audio.
 
 ```azurecli
 az ams transform create --name testEncodingTransform --preset AdaptiveStreaming --description 'a simple Transform for Adaptive Bitrate Encoding' -g amsResourceGroup -a amsaccount
 ```
 
-Pojawi się odpowiedź podobna:
+Otrzymujesz odpowiedź w następujący sposób:
 
 ```
 {
@@ -159,13 +159,13 @@ Pojawi się odpowiedź podobna:
 
 ## <a name="create-an-output-asset"></a>Tworzenie zasobu wyjściowego
 
-Tworzenie danych wyjściowych **zasobów** o używaniu danych wyjściowych zadania kodowania.
+Utwórz **zasób** wyjściowy, który ma być używany jako dane wyjściowe zadania kodowania.
 
 ```azurecli
 az ams asset create -n testOutputAssetName -a amsaccount -g amsResourceGroup
 ```
 
-Pojawi się odpowiedź podobna:
+Otrzymujesz odpowiedź w następujący sposób:
 
 ```
 {
@@ -184,22 +184,22 @@ Pojawi się odpowiedź podobna:
 }
 ```
 
-## <a name="start-a-job-by-using-https-input"></a>Uruchom zadanie przy użyciu protokołu HTTPS w danych wejściowych
+## <a name="start-a-job-by-using-https-input"></a>Rozpocznij zadanie przy użyciu danych wejściowych protokołu HTTPS
 
-Po przesłaniu zadania do przetwarzania plików wideo należy stwierdzić, gdzie można znaleźć wejściowego filmu wideo usługi Media Services. Jedną z opcji jest określenie adresu URL HTTPS jako dane wejściowe zadania, jak pokazano w poniższym przykładzie.
+Gdy przesyłane są zadania w celu przetworzenia filmów wideo, należy powiedzieć, Media Services gdzie znaleźć wejściowy film wideo. Jedną z opcji jest określenie adresu URL protokołu HTTPS jako danych wejściowych zadania, jak pokazano w tym przykładzie.
 
-Po uruchomieniu polecenia `az ams job start` można ustawić etykietę dla danych wyjściowych zadania. Etykieta może następnie umożliwia zidentyfikowanie, co to jest elementu zawartości wyjściowej.
+Po uruchomieniu polecenia `az ams job start` można ustawić etykietę dla danych wyjściowych zadania. Następnie możesz użyć etykiety, aby określić, do czego ma wynikowy element zawartości.
 
-- Jeśli przypisujesz wartość do etykiety "--dane wyjściowe — zasoby do" assetname = label ".
-- Jeśli wartość nie przypisuj do etykiety, ustaw "--dane wyjściowe — zasoby do" assetname = ".
+- W przypadku przypisywania wartości do etykiety ustaw wartość "--Output-Assets" na "assetname = Label".
+- Jeśli nie przypiszesz wartości do etykiety, ustaw wartość "--Output-Assets" na "assetname =".
 
-  Należy zauważyć, że firma Microsoft dodać "=" do `output-assets`.
+  Zwróć uwagę, że dodajemy "=" `output-assets`do.
 
 ```azurecli
 az ams job start --name testJob001 --transform-name testEncodingTransform --base-uri 'https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/' --files 'Ignite-short.mp4' --output-assets testOutputAssetName= -a amsaccount -g amsResourceGroup 
 ```
 
-Pojawi się odpowiedź podobna:
+Otrzymujesz odpowiedź w następujący sposób:
 
 ```
 {
@@ -236,15 +236,15 @@ Pojawi się odpowiedź podobna:
 
 ### <a name="check-status"></a>Sprawdzanie stanu
 
-W ciągu pięciu minut Sprawdź stan zadania. Powinien być "zakończeniem." Nie zostało zakończone, sprawdź ponownie za kilka minut. Po zakończeniu, przejdź do następnego kroku i Utwórz **lokalizatora przesyłania strumieniowego**.
+W ciągu pięciu minut Sprawdź stan zadania. Powinien być "zakończony". Nie zostało zakończone, sprawdź ponownie za kilka minut. Po zakończeniu przejdź do następnego kroku i Utwórz **lokalizator przesyłania strumieniowego**.
 
 ```azurecli
 az ams job show -a amsaccount -g amsResourceGroup -t testEncodingTransform -n testJob001
 ```
 
-## <a name="create-a-streaming-locator-and-get-a-path"></a>Utwórz Lokalizator przesyłania strumieniowego i uzyskać ścieżki
+## <a name="create-a-streaming-locator-and-get-a-path"></a>Tworzenie lokalizatora przesyłania strumieniowego i pobieranie ścieżki
 
-Po zakończeniu kodowania następnym krokiem jest udostępnienie klientom w wyjściowym elemencie zawartości wideo, które można odtwarzać. Aby to zrobić, najpierw należy utworzyć Lokalizator przesyłania strumieniowego. Następnie kompilacji adresów URL, których klienci mogą używać przesyłania strumieniowego.
+Po zakończeniu kodowania następnym krokiem jest udostępnienie klientom w wyjściowym elemencie zawartości wideo, które można odtwarzać. Aby to zrobić, najpierw utwórz lokalizator przesyłania strumieniowego. Następnie utwórz adresy URL przesyłania strumieniowego, których klienci mogą używać.
 
 ### <a name="create-a-streaming-locator"></a>Tworzenie lokalizatora przesyłania strumieniowego
 
@@ -252,7 +252,7 @@ Po zakończeniu kodowania następnym krokiem jest udostępnienie klientom w wyj�
 az ams streaming-locator create -n testStreamingLocator --asset-name testOutputAssetName --streaming-policy-name Predefined_ClearStreamingOnly  -g amsResourceGroup -a amsaccount 
 ```
 
-Pojawi się odpowiedź podobna:
+Otrzymujesz odpowiedź w następujący sposób:
 
 ```
 {
@@ -272,13 +272,13 @@ Pojawi się odpowiedź podobna:
 }
 ```
 
-### <a name="get-streaming-locator-paths"></a>Rozpoczynanie przesyłania strumieniowego lokalizatora ścieżki
+### <a name="get-streaming-locator-paths"></a>Pobierz ścieżki lokalizatora przesyłania strumieniowego
 
 ```azurecli
 az ams streaming-locator get-paths -a amsaccount -g amsResourceGroup -n testStreamingLocator
 ```
 
-Pojawi się odpowiedź podobna:
+Otrzymujesz odpowiedź w następujący sposób:
 
 ```
 {
@@ -309,7 +309,7 @@ Pojawi się odpowiedź podobna:
 }
 ```
 
-Skopiuj na żywo przesyłania strumieniowego (HLS) ścieżki HTTP. W tym przypadku ma `/e01b2be1-5ea4-42ca-ae5d-7fe704a5962f/ignite.ism/manifest(format=m3u8-aapl)`.
+Skopiuj ścieżkę HTTP Live Streaming (HLS). W tym przypadku jest `/e01b2be1-5ea4-42ca-ae5d-7fe704a5962f/ignite.ism/manifest(format=m3u8-aapl)`to.
 
 ## <a name="build-the-url"></a>Tworzenie adresu URL 
 
@@ -318,9 +318,9 @@ Skopiuj na żywo przesyłania strumieniowego (HLS) ścieżki HTTP. W tym przypad
 ```azurecli
 az ams streaming-endpoint list -a amsaccount -g amsResourceGroup -n default
 ```
-Skopiuj wartość `hostName`. W tym przypadku ma `amsaccount-usw22.streaming.media.azure.net`.
+Skopiuj wartość `hostName`. W tym przypadku jest `amsaccount-usw22.streaming.media.azure.net`to.
 
-### <a name="assemble-the-url"></a>Złóż adresu URL
+### <a name="assemble-the-url"></a>Złóż adres URL
 
 „https://” + &lt;wartość hostName&gt; + &lt;wartość ścieżki Hls&gt;
 
@@ -328,29 +328,29 @@ Oto przykład:
 
 `https://amsaccount-usw22.streaming.media.azure.net/7f19e783-927b-4e0a-a1c0-8a140c49856c/ignite.ism/manifest(format=m3u8-aapl)`
 
-## <a name="test-playback-by-using-azure-media-player"></a>Podczas odtwarzania testu za pomocą usługi Azure Media Player
+## <a name="test-playback-by-using-azure-media-player"></a>Testowanie odtwarzania przy użyciu Azure Media Player
 
 > [!NOTE]
-> Jeśli gracz znajduje się w witrynie HTTPS, upewnij się, można uruchomić do adresu URL "https".
+> Jeśli odtwarzacz jest hostowany w witrynie HTTPS, upewnij się, że adres URL został uruchomiony przy użyciu protokołu HTTPS.
 
-1. Otwórz przeglądarkę internetową i przejdź do [ https://aka.ms/azuremediaplayer/ ](https://aka.ms/azuremediaplayer/).
-2. W **adresu URL** pole, wklej adres URL, który utworzoną w poprzedniej sekcji. Możesz wkleić adres URL w formacie Smooth, Dash lub HLS. Usługa Azure Media Player automatycznie zastosuje odpowiednie protokołu przesyłania strumieniowego do odtwarzania na urządzeniu.
-3. Wybierz **aktualizacja Player**.
+1. Otwórz przeglądarkę internetową i przejdź do [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/).
+2. W polu **adres URL** Wklej adres URL skompilowany w poprzedniej sekcji. Możesz wkleić adres URL w HLS, myślniku lub gładkim formacie. Azure Media Player automatycznie użyje odpowiedniego protokołu przesyłania strumieniowego do odtwarzania na urządzeniu.
+3. Wybierz pozycję **Aktualizuj odtwarzacz**.
 
 >[!NOTE]
 >Usługi Azure Media Player można użyć do testowania, ale nie należy jej używać w środowisku produkcyjnym.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli nie potrzebujesz już zasobów w grupie zasobów, w tym usługi Media Services i kont magazynu, utworzone na potrzeby tego samouczka, Usuń grupę zasobów.
+Jeśli nie potrzebujesz już żadnych zasobów w grupie zasobów, w tym Media Services i kont magazynu utworzonych dla tego samouczka, Usuń grupę zasobów.
 
-Uruchom następujące polecenie interfejsu wiersza polecenia:
+Uruchom to polecenie interfejsu wiersza polecenia:
 
 ```azurecli
 az group delete --name amsResourceGroup
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Przegląd usługi Media Services](media-services-overview.md)
+[Przegląd Media Services](media-services-overview.md)
 

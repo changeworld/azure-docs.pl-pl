@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 08/05/2019
-ms.openlocfilehash: aab93e1ecd112f7ef9fdb0829469efa14aff2e98
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 05c5d42d3c20948df4f42db50dd93abd60288c00
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623988"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639574"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Zabezpieczanie zadań eksperymentowania i wnioskowania usługi Azure ML w ramach Virtual Network platformy Azure
 
@@ -163,7 +163,15 @@ Konfiguracja reguły sieciowej grupy zabezpieczeń w Azure Portal jest pokazana 
 
 Jeśli używasz wymuszonego tunelowania z środowisko obliczeniowe usługi Machine Learning, Dodaj [trasy zdefiniowane przez użytkownika (UDR)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) do podsieci zawierającej zasób obliczeniowy.
 
-* Ustanów UDR dla każdego adresu IP, który jest używany przez usługę Azure Batch w regionie, w którym znajdują się zasoby. Te UDR umożliwiają usłudze Batch komunikowanie się z węzłami obliczeniowymi w celu planowania zadań. Aby uzyskać listę adresów IP usługi Batch, skontaktuj się z pomocą techniczną platformy Azure.
+* Ustanów UDR dla każdego adresu IP, który jest używany przez usługę Azure Batch w regionie, w którym znajdują się zasoby. Te UDR umożliwiają usłudze Batch komunikowanie się z węzłami obliczeniowymi w celu planowania zadań. Aby uzyskać listę adresów IP usługi Batch, użyj jednej z następujących metod:
+
+    * Pobierz [zakresy adresów IP platformy Azure i Tagi usług](https://www.microsoft.com/download/details.aspx?id=56519) i Przeszukaj plik `BatchNodeManagement.<region>`, gdzie `<region>` jest Twoim regionem świadczenia usługi Azure.
+
+    * Użyj [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) , aby pobrać te informacje. Poniższy przykład pobiera informacje o adresie IP i filtruje informacje dla regionu Wschodnie stany USA 2:
+
+        ```azurecli-interactive
+        az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
+        ```
 
 * Ruch wychodzący do usługi Azure Storage nie może być blokowany przez lokalne urządzenie sieciowe. W odróżnieniu od tego adresy URL `<account>.table.core.windows.net`mają `<account>.queue.core.windows.net`postać, `<account>.blob.core.windows.net`i.
 

@@ -1,6 +1,6 @@
 ---
-title: Jak zresetować lokalne hasło systemu Linux na maszynach wirtualnych platformy Azure | Dokumentacja firmy Microsoft
-description: Wprowadź instrukcje resetowania hasła lokalnego systemu Linux na maszynie Wirtualnej platformy Azure
+title: Jak zresetować hasło lokalnego systemu Linux na maszynach wirtualnych platformy Azure | Microsoft Docs
+description: Wprowadź kroki resetowania lokalnego hasła systemu Linux na maszynie wirtualnej platformy Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: Deland-Han
@@ -11,36 +11,39 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
-ms.date: 06/15/2018
+ms.date: 08/20/2019
 ms.author: delhan
-ms.openlocfilehash: d96d75f4f2623476f7af4e6eea930c1f2c503e3a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8fc51dfb90158316b3fe6c11b5265f1cf3251505
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60306955"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641046"
 ---
-# <a name="how-to-reset-local-linux-password-on-azure-vms"></a>Jak zresetować lokalne hasło systemu Linux na maszynach wirtualnych platformy Azure
+# <a name="how-to-reset-local-linux-password-on-azure-vms"></a>Jak zresetować hasło lokalnego systemu Linux na maszynach wirtualnych platformy Azure
 
-W tym artykule przedstawiono kilka metod do resetowania haseł usługi lokalnego systemu Linux maszyny wirtualnej (VM). Jeśli konto użytkownika wygasło lub po prostu chcesz utworzyć nowe konto, można użyć następujących metod do tworzenia nowego konta administratora lokalnego i ponownie uzyskać dostęp do maszyny Wirtualnej.
+W tym artykule wprowadzono kilka metod resetowania lokalnych haseł maszyn wirtualnych z systemem Linux. Jeśli konto użytkownika wygasło lub po prostu chcesz utworzyć nowe konto, możesz użyć następujących metod, aby utworzyć nowe konto administratora lokalnego i ponownie uzyskać dostęp do maszyny wirtualnej.
 
 ## <a name="symptoms"></a>Objawy
 
-Nie można zalogować się do maszyny Wirtualnej, a pojawi się komunikat informujący o tym, że hasło używane jest niepoprawny. Ponadto nie można użyć VMAgent, aby zresetować hasło w witrynie Azure portal.
+Nie można zalogować się do maszyny wirtualnej i zostanie wyświetlony komunikat informujący o niepoprawnym użyciu hasła. Ponadto nie można użyć VMAgent do zresetowania hasła na Azure Portal.
 
-## <a name="manual-password-reset-procedure"></a>Procedury resetowania haseł usługi ręczna
+## <a name="manual-password-reset-procedure"></a>Procedura ręcznego resetowania hasła
 
-1.  Usuń maszynę Wirtualną i Zachowaj dołączonych dysków.
+> [!NOTE]
+> Poniższe kroki nie mają zastosowania do maszyny wirtualnej z dyskiem niezarządzanym.
 
-2.  Dołącz dysk systemu operacyjnego jako dysku danych do innej maszyny Wirtualnej z danych czasowych w tej samej lokalizacji.
+1. Utwórz migawkę dysku systemu operacyjnego z zaatakowaną maszyną wirtualną, Stwórz dysk na podstawie migawki, a następnie Dołącz dysk do maszyny wirtualnej rozwiązywania problemów. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z maszyną wirtualną z systemem Windows przez dołączenie dysku systemu operacyjnego do maszyny wirtualnej odzyskiwania przy użyciu Azure Portal](troubleshoot-recovery-disks-portal-linux.md).
 
-3.  Uruchom następujące polecenie SSH na maszynie Wirtualnej danych czasowych stają się administrator.
+2. Nawiąż połączenie z maszyną wirtualną rozwiązywania problemów przy użyciu Pulpit zdalny.
+
+3.  Uruchom następujące polecenie SSH na maszynie wirtualnej rozwiązywania problemów, aby zostać użytkownikiem.
 
     ```bash
     sudo su
     ```
 
-4.  Uruchom **fdisk -l** lub Przyjrzyj się dzienniki systemowe, aby znaleźć nowo dołączonego dysku. Znajdź nazwę dysku do zainstalowania. Następnie na tymczasowa maszyna wirtualna, Znajdź odpowiedni plik dziennika.
+4.  Uruchom narzędzia **fdisk-l** lub Sprawdź dzienniki systemu, aby znaleźć nowo dołączony dysk. Znajdź nazwę dysku do zainstalowania. Następnie na maszynie wirtualnej czasowej Sprawdź odpowiedni plik dziennika.
 
     ```bash
     grep SCSI /var/log/kern.log (ubuntu)
@@ -53,19 +56,19 @@ Nie można zalogować się do maszyny Wirtualnej, a pojawi się komunikat inform
     kernel: [ 9707.100572] sd 3:0:0:0: [sdc] Attached SCSI disk
     ```
 
-5.  Tworzenie punktu instalacji o nazwie **tempmount**.
+5.  Utwórz punkt instalacji o nazwie **tempmount**.
 
     ```bash
     mkdir /tempmount
     ```
 
-6.  Zainstaluj dysk systemu operacyjnego w punkcie instalacji. Zazwyczaj trzeba zainstalować *sdc1* lub *sdc2*. To zależy od hostingu partycji w */etc* katalogu z dysku maszyny przerwane.
+6.  Zainstaluj dysk systemu operacyjnego w punkcie instalacji. Zwykle konieczna jest instalacja *sdc1* lub *sdc2*. Będzie to zależało od partycji hostingu w katalogu */etc* na uszkodzonym dysku komputera.
 
     ```bash
     mount /dev/sdc1 /tempmount
     ```
 
-7.  Przed wprowadzeniem jakichkolwiek zmian, należy utworzyć kopie podstawowe pliki poświadczeń:
+7.  Utwórz kopie podstawowych plików poświadczeń przed wprowadzeniem jakichkolwiek zmian:
 
     ```bash
     cp /etc/passwd /etc/passwd_orig    
@@ -76,13 +79,13 @@ Nie można zalogować się do maszyny Wirtualnej, a pojawi się komunikat inform
     cp /tempmount/etc/shadow /tempmount/etc/shadow_orig
     ```
 
-8.  Resetowanie hasła użytkownika, które są potrzebne:
+8.  Zresetuj wymagane hasło użytkownika:
 
     ```bash
     passwd <<USER>> 
     ```
 
-9.  Przenieś zmodyfikowanych plików do poprawnej lokalizacji na dysku maszyny przerwane.
+9.  Przenieś zmodyfikowane pliki do odpowiedniej lokalizacji na dysku uszkodzonej maszyny.
 
     ```bash
     cp /etc/passwd /tempmount/etc/passwd
@@ -91,19 +94,19 @@ Nie można zalogować się do maszyny Wirtualnej, a pojawi się komunikat inform
     cp /etc/shadow_orig /etc/shadow
     ```
 
-10. Wróć do głównego i odinstalować dysk.
+10. Wróć do katalogu głównego i Odinstaluj dysk.
 
     ```bash
     cd /
     umount /tempmount
     ```
 
-11. Odłącz dysk z portalu zarządzania.
+11. W Azure Portal Odłącz dysk od maszyny wirtualnej rozwiązywania problemów.
 
-12. Ponowne utworzenie maszyny Wirtualnej.
+12. [Zmień dysk systemu operacyjnego dla maszyny wirtualnej, której to dotyczy](troubleshoot-recovery-disks-portal-linux.md#swap-the-os-disk-for-the-vm).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Rozwiązywanie problemów z maszyny Wirtualnej platformy Azure, dołączając dysk systemu operacyjnego do innej maszyny Wirtualnej platformy Azure](https://social.technet.microsoft.com/wiki/contents/articles/18710.troubleshoot-azure-vm-by-attaching-os-disk-to-another-azure-vm.aspx)
+* [Rozwiązywanie problemów z maszyną wirtualną Azure przez dołączenie dysku systemu operacyjnego do innej maszyny wirtualnej](https://social.technet.microsoft.com/wiki/contents/articles/18710.troubleshoot-azure-vm-by-attaching-os-disk-to-another-azure-vm.aspx)
 
-* [Interfejs wiersza polecenia platformy Azure: Jak usunąć i ponownie wdróż Maszynę wirtualną z wirtualnego dysku twardego](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/azure-cli-how-to-delete-and-re-deploy-a-vm-from-vhd/)
+* [Interfejs wiersza polecenia platformy Azure: Jak usunąć i ponownie wdrożyć maszynę wirtualną z dysku VHD](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/azure-cli-how-to-delete-and-re-deploy-a-vm-from-vhd/)

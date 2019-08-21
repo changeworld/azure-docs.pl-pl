@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/14/2016
+ms.date: 08/19/2019
 ms.author: genli
-ms.openlocfilehash: 6a848717e4796e0bb35cbcf045bb50fabf543c1b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 21122847c1b417b00cfe8c69b8324a2f73bf31ea
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617657"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641126"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Rozwiązywanie problemów z maszyną wirtualną z systemem Linux przez dołączenie dysku systemu operacyjnego do maszyny wirtualnej odzyskiwania przy użyciu Azure Portal
 Jeśli maszyna wirtualna z systemem Linux napotyka błąd rozruchu lub dysku, może być konieczne wykonanie kroków rozwiązywania problemów na wirtualnym dysku twardym. Typowym przykładem może być nieprawidłowy wpis w `/etc/fstab` programie, który uniemożliwia pomyślne uruchomienie maszyny wirtualnej. W tym artykule szczegółowo opisano sposób używania Azure Portal do łączenia wirtualnego dysku twardego z inną maszyną wirtualną z systemem Linux w celu usunięcia błędów, a następnie ponownego utworzenia oryginalnej maszyny wirtualnej.
@@ -27,7 +27,7 @@ Jeśli maszyna wirtualna z systemem Linux napotyka błąd rozruchu lub dysku, mo
 Proces rozwiązywania problemów jest następujący:
 
 1. Zatrzymaj zaatakowaną maszynę wirtualną.
-1. Utwórz migawkę dysku systemu operacyjnego dla maszyny wirtualnej.
+1. Utwórz migawkę dysku systemu operacyjnego maszyny wirtualnej.
 1. Utwórz wirtualny dysk twardy na podstawie migawki.
 1. Dołącz i Zainstaluj wirtualny dysk twardy na innej maszynie wirtualnej z systemem Windows w celu rozwiązywania problemów.
 1. Nawiąż połączenie z maszyną wirtualną rozwiązywania problemów. Edytuj pliki lub Uruchom dowolne narzędzia, aby rozwiązać problemy dotyczące oryginalnego wirtualnego dysku twardego.
@@ -175,18 +175,6 @@ Azure Portal teraz obsługuje zmianę dysku systemu operacyjnego maszyny wirtual
 
 1. Wybierz nowy dysk, który został naprawiony, a następnie wpisz nazwę maszyny wirtualnej, aby potwierdzić zmianę. Jeśli dysk nie jest wyświetlany na liście, odczekaj 10% minut po odłączeniu dysku od maszyny wirtualnej rozwiązywania problemów. Upewnij się również, że dysk znajduje się w tej samej lokalizacji co maszyna wirtualna.
 1. Wybierz przycisk OK.
-
-## <a name="re-enable-boot-diagnostics"></a>Włącz ponownie diagnostykę rozruchu
-Podczas tworzenia maszyny wirtualnej na podstawie istniejącego wirtualnego dysku twardego Diagnostyka rozruchu może nie być automatycznie włączona. Aby sprawdzić stan diagnostyki rozruchu i włączyć je w razie potrzeby, wybierz maszynę wirtualną w portalu. W obszarze **monitorowanie**kliknij pozycję **Ustawienia diagnostyki**. Upewnij się, że stan jest **włączony**, i zaznacz pole wyboru obok pozycji **Diagnostyka rozruchu** jest zaznaczone. Jeśli wprowadzisz jakiekolwiek zmiany, kliknij przycisk **Zapisz**:
-
-![Aktualizowanie ustawień diagnostyki rozruchu](./media/troubleshoot-recovery-disks-portal-linux/reenable-boot-diagnostics.png)
-
-## <a name="troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk"></a>Rozwiązywanie problemów z maszyną wirtualną na dysku zarządzanym przez dołączenie nowego dysku systemu operacyjnego
-1. Zatrzymaj zastosowana maszyna wirtualna.
-2. [Utwórz migawkę dysku zarządzanego](../windows/snapshot-copy-managed-disk.md) dysku systemu operacyjnego na maszynie wirtualnej dysku zarządzanego.
-3. [Utwórz dysk zarządzany na podstawie migawki](../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md).
-4. [Dołącz dysk zarządzany jako dysk danych maszyny wirtualnej](../windows/attach-disk-ps.md).
-5. [Zmień dysk danych z kroku 4 na dysk systemu operacyjnego](../windows/os-disk-swap.md).
 
 ## <a name="next-steps"></a>Następne kroki
 Jeśli masz problemy z nawiązywaniem połączenia z maszyną wirtualną, zobacz [Rozwiązywanie problemów z połączeniami SSH z maszyną wirtualną platformy Azure](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Problemy z uzyskiwaniem dostępu do aplikacji uruchomionych na maszynie wirtualnej można znaleźć w temacie Rozwiązywanie problemów z [łącznością aplikacji na maszynie wirtualnej z systemem Linux](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

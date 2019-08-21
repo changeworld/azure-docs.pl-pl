@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/24/2018
+ms.date: 08/19/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73033f91e9d20c56fedc6b4faf26dcf312fce1e1
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: fe0a3c8cbee92be85fe415a4d44d5493940bb45a
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321111"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69638623"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Instrukcje: Tworzenie jednostki usługi z certyfikatem przy użyciu programu Azure PowerShell
 
@@ -49,6 +49,9 @@ Najłatwiejszym sposobem sprawdzenia, czy Twoje konto ma odpowiednie uprawnienia
 ## <a name="create-service-principal-with-self-signed-certificate"></a>Tworzenie jednostki usługi z certyfikatem z podpisem własnym
 
 Poniższy przykład przedstawia prosty scenariusz. Używa polecenie [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) , aby utworzyć jednostkę usługi z certyfikatem z podpisem własnym, a następnie za pomocą właściwości [New-AzureRmRoleAssignment](/powershell/module/az.resources/new-azroleassignment) przypisać rolę [współautor](../../role-based-access-control/built-in-roles.md#contributor) do jednostki usługi. Zakres przypisania roli to aktualnie wybrana subskrypcja platformy Azure. Aby wybrać inną subskrypcję, użyj polecenie [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext).
+
+> [!NOTE]
+> Polecenie cmdlet New-SelfSignedCertificate i moduł PKI nie są obecnie obsługiwane w programie PowerShell Core. 
 
 ```powershell
 $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" `

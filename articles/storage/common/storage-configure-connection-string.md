@@ -9,16 +9,16 @@ ms.date: 06/20/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 0f73871d8248b2f52bab5934eef03d883c72ed79
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d1106865b3a2ea3164090896c5b90ab08f996f3d
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985408"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640505"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Konfiguracja parametrów połączenia usługi Azure Storage
 
-Parametry połączenia zawierają informacje o uwierzytelnianiu wymagane przez aplikację do uzyskiwania dostępu do danych na koncie usługi Azure Storage w środowisku uruchomieniowym przy użyciu autoryzacji klucza współużytkowanego. Parametry połączenia można skonfigurować w taki sposób, aby:
+Parametry połączenia zawierają informacje o autoryzacji wymagane przez aplikację do uzyskiwania dostępu do danych na koncie usługi Azure Storage w środowisku uruchomieniowym przy użyciu autoryzacji klucza współużytkowanego. Parametry połączenia można skonfigurować w taki sposób, aby:
 
 * Nawiązywanie połączenia z emulatorem usługi Azure Storage.
 * Uzyskaj dostęp do konta magazynu na platformie Azure.

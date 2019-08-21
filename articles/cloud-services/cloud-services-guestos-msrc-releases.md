@@ -10,17 +10,72 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/2/2019
+ms.date: 8/19/2019
 ms.author: raiye
-ms.openlocfilehash: 6f7fc27674ad26d8de8dd5d0c6c801b269b0e686
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: c27438dbbeffc0837c3d71d9bb532803655538b8
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941707"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637545"
 ---
 # <a name="azure-guest-os"></a>System operacyjny gościa platformy Azure
 W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Response Center (MSRC) zastosowane do systemu operacyjnego gościa platformy Azure. Przeszukaj ten artykuł, aby ustalić, czy dana aktualizacja dotyczy systemu operacyjnego gościa, którego używasz. Aktualizacje są zawsze przenoszone dla określonej [rodziny][family-explain] , w której zostały wprowadzone.
+
+
+## <a name="august-2019-guest-os"></a>System operacyjny gościa z sierpnia 2019
+
+>[!NOTE]
+>System operacyjny gościa z sierpnia jest obecnie wdrażany na maszynach wirtualnych usługi w chmurze skonfigurowanych do aktualizacji automatycznych. Po zakończeniu wprowadzania ta wersja zostanie udostępniona do ręcznego aktualizowania za pomocą plików Azure Portal i konfiguracji. W systemie operacyjnym gościa z sierpnia uwzględniono następujące poprawki. Ta lista może ulec zmianie.
+
+| Kategoria produktu | Nadrzędny artykuł bazy wiedzy | Opis luki w zabezpieczeniach | System operacyjny gościa | Data wprowadzenia po raz pierwszy |
+| --- | --- | --- | --- | --- |
+|  Rel 19-08   |  [4512482]  |  Zabezpieczenia systemu Windows   |  3,76  |  13 sierpnia 2019  |
+|  Rel 19-08   |  [4494175]  |  Włączenia mikrokodu Update   |  5,34  |  18 Jun 2019  |
+|  Rel 19-08   |  [4512517]  |  Najnowsza aktualizacja zbiorcza   |  5,34  |  13 sierpnia 2019  |
+|  Rel 19-08   |  [4494174]  |  Włączenia mikrokodu Update   |  6.1  |  18 Jun 2019  |
+|  Rel 19-08   |  [4511553]  |  Najnowsza aktualizacja zbiorcza   |  6.1  |  13 sierpnia 2019  |
+|  Rel 19-08   |  [4512486]  |  Zabezpieczenia systemu Windows   |  2,89  |  13 sierpnia 2019  |
+|  Rel 19-08   |  [4512489]  |  Zabezpieczenia systemu Windows   |  4,69  |  13 sierpnia 2019  |
+|  Rel 19-08   |  [4511872]  |  Internet Explorer    |  2,89, 3,76, 4,69  |  15 sie 2019  |
+|  Rel 19-08   |  [4507449]  |  Niezwiązane z zabezpieczeniami   |  2,89  |  9 lipca 2019  |
+|  Rel 19-08   |  [4507000]  |  .NET 4.5.2, niezwiązane z zabezpieczeniami   |  3,76  |  12 sierpnia 2019  |
+|  Rel 19-08   |  [4507002]  |  .NET 3,5, niezwiązane z zabezpieczeniami   |  3,76  |  12 sierpnia 2019  |
+|  Rel 19-08   |  [4507462]  |  Niezwiązane z zabezpieczeniami   |  3,76  |  9 lipca 2019  |
+|  Rel 19-08   |  [4506999]  |  .NET 4.5.2, niezwiązane z zabezpieczeniami    |  4,69  |  12 sierpnia 2019  |
+|  Rel 19-08   |  [4507005]  |  .NET 3,5, niezwiązane z zabezpieczeniami    |  4,69  |  12 sierpnia 2019  |
+|  Rel 19-08   |  [4507448]  |  Niezwiązane z zabezpieczeniami   |  4,69  |  9 lipca 2019  |
+|  Rel 19-08   |  [4509091]  |  Obsługa aktualizacji stosu   |  5,34  |  9 lipca 2019  |
+|  Rel 19-08   |  [4509095]  |  Obsługa aktualizacji stosu   |  6.1  |  9 lipca 2019  |
+|  Rel 19-08   |  [4512937]  |  Obsługa aktualizacji stosu   |  6.1  |  29 lipca 2019  |
+|  Rel 19-08   |  [4507004]  |  Środowisko .NET 3.5.1 niezwiązane z zabezpieczeniami    |  2,89  |  12 sierpnia 2019  |
+|  Rel 19-08   |  [4504418]  |  Obsługa aktualizacji stosu   |  3,76, 4,69  |  11 lipca 2019 r.  |
+|  Rel 19-08   |  [4507001]  |  .NET 4.5.2, niezwiązane z zabezpieczeniami   |  2,89  |  12 sierpnia 2019  |
+|  Rel 19-08   |  [4507704]  |  Ustawienie czasu letniego w systemie Windows dla Brazylii i Maroka   |  2,89, 3,76, 4,69, 5,34  |  13 sierpnia 2019  |
+
+[4512482]: https://support.microsoft.com/kb/4512482
+[4494175]: https://support.microsoft.com/kb/4494175
+[4512517]: https://support.microsoft.com/kb/4512517
+[4494174]: https://support.microsoft.com/kb/4494174
+[4511553]: https://support.microsoft.com/kb/4511553
+[4512486]: https://support.microsoft.com/kb/4512486
+[4512489]: https://support.microsoft.com/kb/4512489
+[4511872]: https://support.microsoft.com/kb/4511872
+[4507449]: https://support.microsoft.com/kb/4507449
+[4507000]: https://support.microsoft.com/kb/4507000
+[4507002]: https://support.microsoft.com/kb/4507002
+[4507462]: https://support.microsoft.com/kb/4507462
+[4506999]: https://support.microsoft.com/kb/4506999
+[4507005]: https://support.microsoft.com/kb/4507005
+[4507448]: https://support.microsoft.com/kb/4507448
+[4509091]: https://support.microsoft.com/kb/4509091
+[4509095]: https://support.microsoft.com/kb/4509095
+[4512937]: https://support.microsoft.com/kb/4512937
+[4507004]: https://support.microsoft.com/kb/4507004
+[4504418]: https://support.microsoft.com/kb/4504418
+[4507001]: https://support.microsoft.com/kb/4507001
+[4507704]: https://support.microsoft.com/kb/4507704
+
 
 ## <a name="july-2019-guest-os"></a>OS systemu operacyjnego gościa 2019
 

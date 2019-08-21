@@ -7,12 +7,12 @@ ms.date: 07/20/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 40ee855aa01a9b24e35fb9863221e3607786d407
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 1b6348173f47b570efff25bf09e9a427ff2ba9b5
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722020"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640991"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-for-net"></a>Szybki start: Biblioteka kliencka usługi Azure Blob Storage dla platformy .NET
 
@@ -129,7 +129,7 @@ namespace blob_quickstart
 
 ### <a name="copy-your-credentials-from-the-azure-portal"></a>Kopiowanie poświadczeń z witryny Azure Portal
 
-Aplikacja przykładowa musi uwierzytelnić dostęp do konta magazynu. W celu uwierzytelnienia dodaj do aplikacji poświadczenia konta magazynu w postaci parametrów połączenia. Wyświetl poświadczenia konta magazynu, wykonując następujące czynności:
+Gdy aplikacja Przykładowa wysyła żądanie do usługi Azure Storage, musi mieć autoryzację. Aby autoryzować żądanie, Dodaj poświadczenia konta magazynu do aplikacji jako parametry połączenia. Wyświetl poświadczenia konta magazynu, wykonując następujące czynności:
 
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
 2. Odszukaj konto magazynu.
@@ -384,7 +384,7 @@ Po naciśnięciu klawisza **Enter** aplikacja usunie kontener magazynu i pliki. 
 
 Po zweryfikowaniu plików naciśnij dowolny klawisz, aby zakończyć demonstrację i usunąć pliki testowe.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start opisano następujące czynności: przekazywanie, pobieranie i wyświetlanie listy obiektów blob przy użyciu platformy .NET.
 

@@ -10,18 +10,88 @@ ms.author: jmartens
 author: j-martens
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: ec913133ef97a632b12db2859bd4ac32df70a1c5
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
-ms.translationtype: MT
+ms.openlocfilehash: 684a84431c8348ddafab8cefbe831c2b58c3cee6
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828622"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639944"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Informacje o wersji usługi Azure Machine Learning
 
 Ten artykuł zawiera informacje o wersji usługi Azure Machine Learning.  Aby uzyskać pełną zawartość referencyjną SDK, odwiedź stronę referencyjną [**głównego zestawu sdk Azure Machine Learning dla języka Python**](https://aka.ms/aml-sdk) .
 
 Zobacz [listę znanych problemów](resource-known-issues.md) informacje na temat znanych błędów i rozwiązania problemu.
+
+## <a name="2019-08-19"></a>2019-08-19
+
+### <a name="azure-machine-learning-sdk-for-python-v1057"></a>Zestaw Azure Machine Learning SDK dla języka Python v 1.0.57
++ **Nowe funkcje**
+  + Włączone `TabularDataset` do użycia przez AutomatedML. Aby dowiedzieć się `TabularDataset`więcej na temat https://aka.ms/azureml/howto/createdatasets, odwiedź stronę.
+  
++ **Poprawki i ulepszenia błędów**
+  + **automl-Client-Core-nativeclient**
+    + Naprawiono błąd, zgłoszony, gdy szkolenia i/lub etykiety sprawdzania poprawności (y i y_valid) są podane w formie ramki danych Pandas, ale nie jako tablicy numpy.
+    + Zaktualizowany interfejs do utworzenia, `RawDataContext` aby wymagał tylko danych `AutoMLBaseSettings` i obiektu.
+    +  Zezwól użytkownikom AutoML na porzucanie serii szkoleniowych, które nie są wystarczająco długie podczas prognozowania. -Zezwalaj użytkownikom AutoML na upuszczanie ziaren z zestawu testów, który nie istnieje w zestawie szkoleniowym podczas prognozowania.
+  + **Azure — interfejs wiersza polecenia**
+    + Teraz można zaktualizować certyfikat protokołu SSL dla punktu końcowego oceniania wdrożonego w klastrze AKS zarówno dla wygenerowanego przez firmę Microsoft, jak i dla certyfikatu klienta.
+  + **Azure-automl-Core**
+    + Rozwiązano problem w AutoML, w którym wiersze z brakującymi etykietami nie zostały prawidłowo usunięte.
+    + Ulepszono rejestrowanie błędów w AutoML; Pełne komunikaty o błędach będą teraz zawsze zapisywane w pliku dziennika.
+    + AutoML zaktualizował Przypinanie pakietu do dołączenia `azureml-defaults`, `azureml-dataprep` `azureml-explain-model`, i. AutoML nie będzie już ostrzegał o niezgodności pakietów (z wyjątkiem `azureml-train-automl` pakietu).
+    + Rozwiązano problem w szeregów czasowych, w którym podziały OKS mają nierówne rozmiary powodujące niepowodzenie obliczeń w pojemniku.
+    + W przypadku korzystania z iteracji zestawu danych dla typu uczenia krzyżowego, jeśli zakończył się problemami z pobraniem modeli przeszkolonych na całym zestawie, wystąpił niespójność między modelami wag i modelami, które zostały wprowadzone do głosu Zestawy.
+    + Naprawiono błąd, zgłoszony, gdy szkolenia i/lub etykiety sprawdzania poprawności (y i y_valid) są podane w formie ramki danych Pandas, ale nie jako tablicy numpy.
+    + Rozwiązano problem z zadaniami prognozowania, gdy żaden z nich nie został napotkany w kolumnach logicznych tabel wejściowych.
+    + Zezwól użytkownikom AutoML na porzucanie serii szkoleniowych, które nie są wystarczająco długie podczas prognozowania. -Zezwalaj użytkownikom AutoML na upuszczanie ziaren z zestawu testów, który nie istnieje w zestawie szkoleniowym podczas prognozowania.
+  + **azureml-core**
+    + Rozwiązano problem z porządkowaniem parametrów blob_cache_timeout.
+    + Dodano zewnętrzne Typy wyjątków dopasowania i transformacji do błędów systemowych.
+    + Dodano obsługę Key Vault wpisów tajnych dla zdalnych uruchomień. Dodaj magazyn usługi Azure. Core. classing, aby dodać, pobrać i wyświetlić wpisy tajne z magazynu kluczy skojarzonego z Twoim obszarem roboczym. Obsługiwane są następujące operacje:
+      + Azure. Core. Workspace. Workspace. Get _default_keyvault ()
+      + Azure. Core., Magazyn kluczy. _secret (nazwa, wartość)
+      + Azure. Core. kluczy. Magazyn kluczy. Set _secrets (secrets_dict)
+      + Azure. Core., Magazyn kluczy. Get _secret (nazwa)
+      + Azure. Core. w magazynie kluczy. _secrets. get (secrets_list)
+      + Azure. Core., Magazyn kluczy. list_secrets ()
+    + Dodatkowe metody uzyskiwania domyślnego magazynu kluczy i uzyskiwania wpisów tajnych podczas zdalnego uruchomienia:
+      + Azure. Core. Workspace. Workspace. Get _default_keyvault ()
+      + Azure. Core. Run. Run. Get _secret (nazwa)
+      + Azure. Core. Run. Run. Get _secrets (secrets_list)
+    + Dodano dodatkowe parametry przesłonięcia w celu przesłania polecenia CLI.
+    + Zwiększ niezawodność wywołań interfejsu API, aby rozszerzać ponowną próbę na typowe wyjątki biblioteki żądań.
+    + Dodano obsługę przesyłania przebiegów z przesłanego przebiegu.
+    + Rozwiązano problem związany z wygaśnięciem tokenu sygnatury dostępu współdzielonego w FileWatcher, który spowodował zatrzymanie przekazywania plików po wygaśnięciu tokenu początkowego.
+    + Obsługiwane Importowanie plików CSV/TSV protokołu HTTP w zestawie danych Python SDK.
+    + Zaniechano metody Workspace. Setup (). Komunikat z ostrzeżeniem pokazywany użytkownikom sugeruje użycie polecenia Create () lub Get ()/from_config ().
+    + Dodano środowisko. Add _private_pip_wheel (), które umożliwia przekazywanie prywatnych niestandardowych pakietów języka Python (. WHL) do obszaru roboczego i bezpieczne używanie ich do kompilowania/zmaterializowania środowiska.
+    + Teraz można zaktualizować certyfikat protokołu SSL dla punktu końcowego oceniania wdrożonego w klastrze AKS zarówno dla wygenerowanego przez firmę Microsoft, jak i dla certyfikatu klienta.
+  + **azureml-explain-model**
+    + Dodano parametr służący do dodawania identyfikatora modelu do wyjaśnień podczas przekazywania.
+    + Dodano `is_raw` znakowanie do wyjaśnień w pamięci i przekazywanie.
+    + Dodano obsługę pytorch i testy dla pakietu Azure-Wyjaśnij model.
+  + **azureml-opendatasets**
+    + Obsługa wykrywania i rejestrowania środowiska testowego.
+    + Dodano klasy w celu uzyskania wypełniania do USA według powiatów i zip.
+  + **azureml-pipeline-core**
+    + Dodano Właściwość Label do definicji portów wejściowych i wyjściowych.
+  + **Azure-Telemetria**
+    + Naprawiono niepoprawną konfigurację telemetrii.
+  + **azureml-train-automl**
+    + Naprawiono usterkę dotyczącą niepowodzenia instalacji, błąd nie był rejestrowany w polu "błędy" dla uruchomienia Instalatora i dlatego nie został on zapisany w nadrzędnym przebiegu "Errors".
+    + Rozwiązano problem w AutoML, w którym wiersze z brakującymi etykietami nie zostały prawidłowo usunięte.
+    + Zezwól użytkownikom AutoML na porzucanie serii szkoleniowych, które nie są wystarczająco długie podczas prognozowania.
+    + Zezwalaj użytkownikom AutoML na upuszczanie ziaren z zestawu testów, który nie istnieje w zestawie szkoleniowym podczas prognozowania.
+    + Teraz AutoMLStep przechodzi przez konfigurację automl do zaplecza, aby uniknąć problemów z zmianami lub dodatkami nowych parametrów konfiguracji.
+  + **azureml-train-core**
+    + Dodano obsługę Torch 1,2 w PyTorch szacowania.
+  + **Azure — widżety**
+    + Udoskonalone wykresy macierzowe z błędami na potrzeby szkoleń klasyfikacji.
+
+### <a name="azure-portal"></a>Azure Portal
++ **Funkcja wersji zapoznawczej**
+  + Przesyłanie strumieniowe plików dziennika i danych wyjściowych jest teraz dostępne dla stron szczegółów uruchamiania. Po włączeniu przełącznika podglądu pliki będą przesyłać strumieniowo aktualizacje w czasie rzeczywistym.
 
 ## <a name="2019-08-05"></a>2019-08-05
 

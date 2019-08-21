@@ -1,11 +1,9 @@
 ---
-title: Jak nawiązać połączenie telefoniczne z usługi Twilio (Java) | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak nawiązać połączenie telefoniczne ze strony sieci web w aplikacji Java na platformie Azure za pomocą usługi Twilio.
+title: Jak nawiązać połączenie telefoniczne z Twilio (Java) | Microsoft Docs
+description: Dowiedz się, jak nawiązać połączenie telefoniczne ze strony sieci Web przy użyciu Twilio w aplikacji Java na platformie Azure.
 services: ''
 documentationcenter: java
-author: devinrader
-manager: twilio
-editor: mollybos
+author: georgewallace
 ms.assetid: 0381789e-e775-41a0-a784-294275192b1d
 ms.service: multiple
 ms.workload: na
@@ -13,32 +11,32 @@ ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
 ms.date: 11/25/2014
-ms.author: microsofthelp@twilio.com
-ms.openlocfilehash: 0d055b1a78622665137a6abad18681a728ae2b30
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: gwallace
+ms.openlocfilehash: 2bb721002ad072bb850869ed52b9738380ff9e6e
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60422669"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636127"
 ---
-# <a name="how-to-make-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>Jak nawiązać połączenie telefoniczne w aplikacji Java na platformie Azure za pomocą usługi Twilio
-Poniższy przykład pokazuje, jak można użyć usługi Twilio, aby nawiązać połączenie ze strony sieci web hostowanych na platformie Azure. Wynikłej aplikacji zostanie wyświetlony monit dla wartości połączenia telefonicznego, jak pokazano na poniższym zrzucie ekranu.
+# <a name="how-to-make-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>Jak nawiązać połączenie telefoniczne za pomocą Twilio w aplikacji Java na platformie Azure
+Poniższy przykład pokazuje, jak można użyć Twilio do wywołania ze strony sieci Web hostowanej na platformie Azure. Aplikacja wynikowa wyświetli monit dla użytkownika o wartości połączeń telefonicznych, jak pokazano na poniższym zrzucie ekranu.
 
-![Formularz wywołania platformy Azure za pomocą usługi Twilio i środowiska Java][twilio_java]
+![Formularz wywołania platformy Azure z użyciem Twilio i języka Java][twilio_java]
 
-Należy wykonać następujące czynności, aby użyć kodu, w tym temacie:
+Aby użyć kodu w tym temacie, należy wykonać następujące czynności:
 
-1. Uzyskiwanie konta usługi Twilio i uwierzytelnianie tokenu. Aby rozpocząć pracę z usługą Twilio, ocenić ceny na [ https://www.twilio.com/pricing ] [ twilio_pricing]. Możesz zarejestrować się w [ https://www.twilio.com/try-twilio ] [ try_twilio]. Aby uzyskać informacji na temat interfejsów API dostarczonych przez usługi Twilio, zobacz [ https://www.twilio.com/api ] [ twilio_api].
-2. Uzyskaj Twilio JAR. W [ https://github.com/twilio/twilio-java ] [ twilio_java_github], możesz pobrać źródła usługi GitHub i Utwórz własny plik JAR lub pobrać wstępnie skompilowany plik JAR (z lub bez zależności).
-   Kod w tym temacie zostały zapisane, za pomocą wstępnie skompilowanych JAR TwilioJava 3.3.8 z zależności.
-3. Dodaj plik JAR do ścieżki kompilacji języka Java.
-4. Jeśli używasz środowiska Eclipse do tworzenia tej aplikacji Java, obejmują usługi Twilio, JAR w pliku wdrożenia aplikacji (WAR) przy użyciu funkcji zestawu wdrażania w środowisku Eclipse. Jeśli nie używasz środowiska Eclipse do tworzenia tej aplikacji Java, upewnij się, Twilio, JAR jest w ramach tej samej roli platformy Azure jako swoją aplikację Java i dodany do ścieżki klas w aplikacji.
-5. Upewnij się, magazyn kluczy cacerts zawiera certyfikat urzędu certyfikacji Secure firmy Equifax z MD5 odcisku palca 67:CB:9 D: C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4 (numer seryjny jest 35:DE:F4:CF i odcisk palca SHA1 jest D2:32:09:AD:23:D 3:14:23:21:74:E4:0 D: 7F:9 D: 62:13:97:86:63:3A). Jest to certyfikat urzędu certyfikacji certyfikat dla [ https://api.twilio.com ] [ twilio_api_service] usługa, która jest wywoływana, gdy za pomocą interfejsów API usługi Twilio. Informacje o dodawaniu tego certyfikatu urzędu certyfikacji do magazynu cacert swoje JDK, zobacz [Dodawanie certyfikatu do Store certyfikatu urzędu certyfikacji Java][add_ca_cert].
+1. Uzyskaj konto Twilio i token uwierzytelniania. Aby rozpocząć pracę z usługą Twilio, Oceń ceny [https://www.twilio.com/pricing][twilio_pricing]pod adresem. Możesz zarejestrować się w [https://www.twilio.com/try-twilio][try_twilio]usłudze. Informacje o interfejsie API udostępnianym przez Twilio można [https://www.twilio.com/api][twilio_api]znaleźć w temacie.
+2. Uzyskaj Twilio JAR. Na [https://github.com/twilio/twilio-java][twilio_java_github]stronie można pobrać źródła usługi GitHub i utworzyć własny plik JAR lub pobrać wstępnie utworzony jar (z zależnościami lub bez).
+   Kod w tym temacie został zapisany przy użyciu wstępnie skompilowanego JAR TwilioJava-3.3.8-with-zależności.
+3. Dodaj plik JAR do ścieżki kompilacji Java.
+4. Jeśli używasz dyrektywy zaćmienie do utworzenia tej aplikacji Java, Dołącz plik JAR Twilio w pliku wdrożenia aplikacji (WAR) przy użyciu funkcji zestawu wdrożeniowego z przeznaczeniem. Jeśli nie korzystasz z programu Zastąp do tworzenia tej aplikacji Java, upewnij się, że Twilio JAR jest zawarty w tej samej roli platformy Azure co aplikacja Java i dodana do ścieżki klasy aplikacji.
+5. Upewnij się, że magazyn kluczy cacerts zawiera certyfikat bezpiecznego urzędu certyfikacji Equifax z sygnaturą typu MD5 67: CB: 9D: C0:13:24:8A: 82:9B: B2:17:1E: D1:1B: EC: D4 (numer seryjny to 35: DE: F4) i odcisk palca SHA1 to D2:32:09: AD: 23: D 3:14:23:21:74: E4:0D: 7F: 9D: 62:13:97:86:63:3A). Jest to certyfikat urzędu certyfikacji dla usługi, który jest wywoływany w przypadku korzystania z [https://api.twilio.com][twilio_api_service] interfejsów API Twilio. Informacje o dodawaniu tego certyfikatu urzędu certyfikacji do magazynu cacert JDK można znaleźć w temacie [Dodawanie certyfikatu do magazynu certyfikatów urzędu certyfikacji Java][add_ca_cert].
 
-Ponadto znajomość odpowiednie informacje zawiera temat [utworzenie Hello World aplikacji przy użyciu zestawu narzędzi platformy Azure dla środowiska Eclipse][azure_java_eclipse_hello_world], lub z innych technik do hostowania aplikacji Java na platformie Azure, jeśli jesteś Nie można za pomocą środowiska Eclipse, zdecydowanie zaleca się.
+Zapoznaj się z informacjami na temat [tworzenia aplikacji Hello World przy użyciu Azure Toolkit for Eclipse][azure_java_eclipse_hello_world]lub z innymi technikami do hostowania aplikacji Java na platformie Azure, jeśli nie używasz funkcji przeliczania.
 
-## <a name="create-a-web-form-for-making-a-call"></a>Tworzenie formularza sieci web nawiązywania połączenia
-Poniższy kod przedstawia sposób tworzenia formularza sieci web do pobierania danych użytkownika do nawiązywania połączenia. Dla celów tego przykładu, nowe dynamicznego projektu internetowego, o nazwie **TwilioCloud**, został utworzony, i **callform.jsp** został dodany jako pliku JSP.
+## <a name="create-a-web-form-for-making-a-call"></a>Utwórz formularz sieci Web na potrzeby wywołania
+Poniższy kod pokazuje, jak utworzyć formularz sieci Web, aby pobrać dane użytkownika w celu utworzenia wywołania. Na potrzeby tego przykładu utworzono nowy dynamiczny projekt sieci Web o nazwie **TwilioCloud**, a **callform. jsp** został dodany jako plik JSP.
 
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
         pageEncoding="ISO-8859-1" %>
@@ -78,8 +76,8 @@ Poniższy kod przedstawia sposób tworzenia formularza sieci web do pobierania d
     </body>
     </html>
 
-## <a name="create-the-code-to-make-the-call"></a>Tworzenie kodu do wykonania wywołania
-Następujący kod, który jest wywoływana, gdy użytkownik wykona w postaci wyświetlanej przez callform.jsp, tworzy komunikat wywołania i generuje wywołanie. Do celów tego przykładu, nosi nazwę pliku JSP **makecall.jsp** i została dodana do **TwilioCloud** projektu. (Użyj swojego konta usługi Twilio i uwierzytelniania tokenu zamiast wartości symboli zastępczych, przypisany do **accountSID** i **authToken** w poniższym kodzie.)
+## <a name="create-the-code-to-make-the-call"></a>Utwórz kod, aby wykonać wywołanie
+Poniższy kod, który jest wywoływany, gdy użytkownik ukończy formularz wyświetlany przez callform. JSP, tworzy komunikat wywołania i generuje wywołanie. Na potrzeby tego przykładu plik JSP ma nazwę **MakeCall. jsp** i został dodany do projektu **TwilioCloud** . (Użyj konta Twilio i tokenu uwierzytelniania zamiast wartości zastępczych przypisanych do **accountSID** i **authToken** w poniższym kodzie).
 
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     import="java.util.*"
@@ -162,35 +160,35 @@ Następujący kod, który jest wywoływana, gdy użytkownik wykona w postaci wy�
     </body>
     </html>
 
-Oprócz wywołania makecall.jsp Wyświetla punktu końcowego usługi Twilio, wersja interfejsu API i stan połączenia. Przykładem jest poniższy zrzut ekranu:
+Oprócz wykonywania wywołania, MakeCall. jsp wyświetla punkt końcowy Twilio, wersję interfejsu API i stan wywołania. Przykładem jest następujący zrzut ekranu:
 
-![Odpowiedź wywołania platformy Azure za pomocą usługi Twilio i środowiska Java][twilio_java_response]
+![Odpowiedź na wywołanie platformy Azure przy użyciu Twilio i języka Java][twilio_java_response]
 
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
-Poniżej przedstawiono ogólne kroki, aby uruchomić aplikację; Szczegóły dotyczące tych kroków można znaleźć w [utworzenie Hello World aplikacji przy użyciu zestawu narzędzi platformy Azure dla środowiska Eclipse][azure_java_eclipse_hello_world].
+Poniżej przedstawiono ogólne kroki uruchamiania aplikacji; Szczegółowe informacje dotyczące tych kroków można znaleźć podczas [tworzenia aplikacji Hello World przy użyciu Azure Toolkit for Eclipse][azure_java_eclipse_hello_world].
 
-1. Eksportuj swoje TwilioCloud WAR na platformie Azure **approot** folderu. 
-2. Modyfikowanie **startup.cmd** rozpakować swoje WAR TwilioCloud.
-3. Skompiluj aplikację w emulatorze obliczeń.
-4. Uruchom wdrożenie w emulatorze obliczeń.
-5. Otwórz przeglądarkę, a następnie uruchom `http://localhost:8080/TwilioCloud/callform.jsp`.
-6. Wprowadź wartości w formularzu, kliknij przycisk **wykonać następujące wywołanie**, a następnie wyświetlenie wyników w makecall.jsp.
+1. Wyeksportuj WAR TwilioCloud do folderu **głównego aplikacji** platformy Azure. 
+2. Zmodyfikuj **Start. cmd** , aby rozpakować wojny TwilioCloud.
+3. Kompiluj aplikację dla emulatora obliczeń.
+4. Rozpocznij wdrażanie w emulatorze obliczeniowym.
+5. Otwórz przeglądarkę i uruchom `http://localhost:8080/TwilioCloud/callform.jsp`polecenie.
+6. Wprowadź wartości w formularzu, kliknij pozycję **Utwórz to wywołanie**, a następnie Zobacz wyniki w MakeCall. JSP.
 
-Gdy wszystko jest gotowe do wdrożenia na platformie Azure, ponownej kompilacji do wdrożenia w chmurze, Wdróż na platformie Azure i uruchomić http://*your_hosted_name*.cloudapp.net/TwilioCloud/callform.jsp w przeglądarce (Zastąp wartość dla  *your_hosted_name*).
+Gdy wszystko będzie gotowe do wdrożenia na platformie Azure, Skompiluj ponownie w celu wdrożenia w chmurze, wdróż ją na platformie Azure i uruchom http://*your_hosted_name*. cloudapp.NET/TwilioCloud/callform.jsp w przeglądarce (Zastąp wartość *your_hosted_name*).
 
-## <a name="next-steps"></a>Kolejne kroki
-Ten kod podano Wam podstawowe funkcje za pomocą usługi Twilio w języku Java na platformie Azure. Przed wdrożeniem na platformie Azure w środowisku produkcyjnym, można dodać więcej obsługę błędów lub innych funkcji. Na przykład:
+## <a name="next-steps"></a>Następne kroki
+Ten kod został dostarczony, aby pokazać podstawowe funkcje przy użyciu programu Twilio w języku Java na platformie Azure. Przed wdrożeniem na platformie Azure w środowisku produkcyjnym warto dodać więcej obsługi błędów lub innych funkcji. Na przykład:
 
-* Zamiast przy użyciu formularza sieci web, można użyć usługi Azure storage blob lub bazy danych SQL do przechowywania numerów telefonów i wywołać tekstu. Aby dowiedzieć się, jak za pomocą usługi Azure storage BLOB w języku Java, zobacz [sposób użycia usługi Blob Storage w języku Java][howto_blob_storage_java]. 
-* Można użyć **RoleEnvironment.getConfigurationSettings** można pobrać usługi Twilio identyfikator konta i uwierzytelniania tokenu z ustawień konfiguracji wdrożenia, zamiast kodować wartości w makecall.jsp. Aby uzyskać informacje o **RoleEnvironment** klasy, zobacz [przy użyciu biblioteki uruchomieniowej usługi platformy Azure w JSP] [ azure_runtime_jsp] oraz dokumentację pakietu środowiska uruchomieniowego usługi Azure w [ http://dl.windowsazure.com/javadoc][azure_javadoc].
-* Kod makecall.jsp przypisuje adres URL dostarczone do usługi Twilio, [ https://twimlets.com/message ] [ twimlet_message_url], **adresu Url** zmiennej. Ten adres URL zawiera odpowiedź Twilio Markup Language (TwiML), która informuje o sposobie kontynuować wywołanie usługi Twilio. Na przykład może zawierać TwiML, który jest zwracany **&lt;Say&gt;** zlecenie, powstałego w tekście jest używany do odbiorcy połączenia. Zamiast przy użyciu adresu URL dostarczone do usługi Twilio, można utworzyć usługi odpowie na żądanie firmy Twilio; Aby uzyskać więcej informacji, zobacz [sposobu użycia Twilio dla połączeń głosowych i SMS funkcji w języku Java][howto_twilio_voice_sms_java]. Więcej informacji na temat TwiML znajduje się w temacie [ https://www.twilio.com/docs/api/twiml ] [ twiml]i dowiedzieć się więcej o **&lt; Say&gt;** i innych poleceń usługi Twilio można znaleźć na stronie [ https://www.twilio.com/docs/api/twiml/say ] [ twilio_say].
-* Zapoznaj się ze wskazówkami zabezpieczeń Twilio na [ https://www.twilio.com/docs/security ] [ twilio_docs_security].
+* Zamiast korzystać z formularza sieci Web, można użyć obiektów BLOB usługi Azure Storage lub SQL Database do przechowywania numerów telefonów i wywoływać tekst. Aby uzyskać informacje o korzystaniu z obiektów BLOB usługi Azure Storage w języku Java, zobacz [jak używać usługi BLOB Storage z poziomu języka Java][howto_blob_storage_java]. 
+* Można użyć **RoleEnvironment. getConfigurationSettings** , aby pobrać identyfikator konta Twilio i token uwierzytelniania z ustawień konfiguracji wdrożenia, zamiast na stałe kodowanie wartości w MakeCall. JSP. Aby uzyskać informacje na temat klasy **RoleEnvironment** , zobacz [Korzystanie z biblioteki środowiska uruchomieniowego usługi platformy Azure w artykule JSP][azure_runtime_jsp] i dokumentacji pakietu [http://dl.windowsazure.com/javadoc][azure_javadoc]środowiska uruchomieniowego usługi platformy Azure pod adresem.
+* Kod MakeCall. jsp przypisuje adres URL podany przez Twilio, [https://twimlets.com/message][twimlet_message_url]do zmiennej **URL** . Ten adres URL zawiera odpowiedź Twilio Markup Language (TwiML), która informuje Twilio, jak kontynuować wywoływanie. Na przykład zwracana TwiML może zawierać **&lt;&gt;** czasownik, który powoduje wypowiadanie tekstu do odbiorcy wywołania. Zamiast używać adresu URL podanego przez Twilio, można utworzyć własną usługę, aby odpowiedzieć na żądanie Twilio; Aby uzyskać więcej informacji, zobacz [jak używać funkcji Twilio na potrzeby obsługi głosu i programu SMS w języku Java][howto_twilio_voice_sms_java]. Więcej informacji na temat TwiML można znaleźć pod [https://www.twilio.com/docs/api/twiml][twiml]adresem i więcej informacji na  **&lt; temat&gt; powiedzieć** i innych zleceń Twilio można znaleźć pod [https://www.twilio.com/docs/api/twiml/say][twilio_say]adresem.
+* Zapoznaj się ze wskazówkami [https://www.twilio.com/docs/security][twilio_docs_security]dotyczącymi zabezpieczeń Twilio na stronie.
 
-Aby uzyskać dodatkowe informacje na temat usługi Twilio, zobacz [ https://www.twilio.com/docs ] [ twilio_docs].
+Aby uzyskać dodatkowe informacje na temat Twilio [https://www.twilio.com/docs][twilio_docs], zobacz.
 
 ## <a name="see-also"></a>Zobacz też
-* [Jak za pomocą usługi Twilio dla połączeń głosowych i SMS funkcji w języku Java][howto_twilio_voice_sms_java]
-* [Dodawanie certyfikatu do Store certyfikatu urzędu certyfikacji w języku Java][add_ca_cert]
+* [Jak używać funkcji Twilio do obsługi głosu i programu SMS w języku Java][howto_twilio_voice_sms_java]
+* [Dodawanie certyfikatu do magazynu certyfikatów urzędu certyfikacji Java][add_ca_cert]
 
 [twilio_pricing]: https://www.twilio.com/pricing
 [try_twilio]: https://www.twilio.com/try-twilio

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 05/24/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: e216503cac2db55115bd4c1b5bf0e2f6e50355fc
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: b54f69edfebca2786ec996b1ca71cea933179b58
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190856"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641029"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Wprowadzenie do usługi Azure Blob Storage
 
@@ -29,7 +29,7 @@ Magazyn obiektów blob oferuje trzy typy zasobów:
 
 Na poniższym diagramie przedstawiono relacje między tymi zasobami.
 
-![Relacja między konto Blob i zasobu kontenera](./media/storage-blob-introduction/blob1.png)
+![Relacja między obiektem BLOB konta a zasobem kontenera](./media/storage-blob-introduction/blob1.png)
 
 ### <a name="storage-accounts"></a>Konta magazynu
 
@@ -56,7 +56,7 @@ Usługa Azure Storage obsługuje trzy typy obiektów blob:
 
 * **Blokowe obiekty blob** mogą zawierać dane tekstowe i binarne o rozmiarze do około 4,7 TB. Blokowe obiekty blob składają się z bloków danych, którymi można zarządzać indywidualnie.
 * **Uzupełnialne obiekty blob** również składają się z bloków, podobnie jak blokowe obiekty blob, lecz są zoptymalizowane pod kątem operacji dołączania. Uzupełnialne obiekty blob doskonale sprawdzają się w sytuacjach takich jak zapisywanie danych dzienników z maszyn wirtualnych.
-* **Stronicowe obiekty blob** umożliwiają przechowywanie plików o dostępie swobodnym o rozmiarze do 8 TB. Stronicowe obiekty BLOB przechowywane pliki wirtualnych dysków twardych (VHD) i służyć jako dyski maszyn wirtualnych platformy Azure. Aby uzyskać więcej informacji na temat stronicowych obiektów blob, zobacz [Overview of Azure page blobs (Omówienie stronicowych obiektów blob platformy Azure)](storage-blob-pageblob-overview.md)
+* **Stronicowe obiekty blob** umożliwiają przechowywanie plików o dostępie swobodnym o rozmiarze do 8 TB. Stronicowe obiekty blob przechowują pliki wirtualnych dysków twardych (VHD) i stanowią dyski dla maszyn wirtualnych platformy Azure. Aby uzyskać więcej informacji na temat stronicowych obiektów blob, zobacz [Overview of Azure page blobs (Omówienie stronicowych obiektów blob platformy Azure)](storage-blob-pageblob-overview.md)
 
 Aby uzyskać więcej informacji na temat różnych typów obiektów blob, zobacz temat [Understanding Block Blobs, Append Blobs, and Page Blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) (Omówienie blokowych, uzupełnialnych i stronicowych obiektów blob).
 
@@ -66,12 +66,12 @@ Istnieje wiele rozwiązań do migrowania istniejących danych do magazynu obiekt
 
 - **AzCopy** to łatwe w użyciu narzędzie wiersza polecenia dla systemu Windows i Linux, które służy do kopiowania danych do i z magazynu obiektów blob, między kontenerami oraz między kontami magazynu. Aby uzyskać więcej informacji na temat narzędzia AzCopy, zobacz temat [Transfer data with the AzCopy v10 (Preview)](../common/storage-use-azcopy-v10.md) (Przenoszenie danych przy użyciu narzędzia AzCopy w wersji 10 [wersja zapoznawcza]). 
 - **Biblioteka przenoszenia danych usługi Azure Storage** jest biblioteką .NET służącą do przenoszenia danych między usługami Azure Storage. Narzędzie AzCopy zostało utworzone przy użyciu biblioteki przenoszenia danych. Więcej informacji można znaleźć w [dokumentacji referencyjnej](/dotnet/api/microsoft.azure.storage.datamovement) biblioteki przenoszenia danych. 
-- **Usługa Azure Data Factory** obsługuje kopiowanie danych do i z magazynu obiektów blob przy użyciu klucza konta, sygnatury dostępu współdzielonego, jednostki usługi lub tożsamości zarządzanych do uwierzytelnienia zasobów platformy Azure. Aby uzyskać więcej informacji, zobacz temat [Copy data to or from Azure Blob storage by using Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) (Kopiowanie danych do i z usługi Azure Blob Storage za pomocą usługi Azure Data Factory). 
+- **Azure Data Factory** obsługuje kopiowanie danych do i z usługi BLOB Storage przy użyciu klucza konta, sygnatury dostępu współdzielonego, nazwy głównej usługi lub tożsamości zarządzanych dla zasobów platformy Azure. Aby uzyskać więcej informacji, zobacz temat [Copy data to or from Azure Blob storage by using Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) (Kopiowanie danych do i z usługi Azure Blob Storage za pomocą usługi Azure Data Factory). 
 - **Blobfuse** jest sterownikiem wirtualnego systemu plików usługi Azure Blob Storage. Sterownik blobfuse umożliwia dostęp do istniejących danych blokowych obiektów blob na koncie magazynu za pomocą systemu plików w systemie Linux. Aby uzyskać więcej informacji, zobacz temat [How to mount Blob storage as a file system with blobfuse](storage-how-to-mount-container-linux.md) (Jak zainstalować magazyn obiektów blob jako system plików przy użyciu sterownika blobfuse).
-- **Urządzenie Azure Data Box** usługa jest dostępna na przesyłanie danych lokalnych do usługi Blob storage, po dużych zestawów danych lub sieci ograniczenia przekazywania danych przez sieć określenie. W zależności od rozmiar danych, możesz poprosić o [dysku Azure Data Box](../../databox/data-box-disk-overview.md), [urządzenia Azure Data Box](../../databox/data-box-overview.md), lub [Azure Data Box mocno](../../databox/data-box-heavy-overview.md) urządzeń firmy Microsoft. Możesz następnie skopiować dane do tych urządzeń i odeślemy je do firmy Microsoft do przekazania do magazynu obiektów Blob.
-- **Usługa Azure Import/Export** zapewniono możliwość importowania lub eksportowania dużych ilości danych do i z konta magazynu przy użyciu dysków twardych, które należy podać. Aby uzyskać więcej informacji, zobacz [Use the Microsoft Azure Import/Export service to transfer data to Blob Storage](../common/storage-import-export-service.md) (Przesyłanie danych do usługi Blob Storage za pomocą usługi Microsoft Azure Import/Export).
+- Usługa **Azure Data Box** jest dostępna do transferowania danych lokalnych do magazynu obiektów blob, gdy duże zestawy danych lub ograniczenia sieci umożliwiają przekazywanie danych przez nierealistyczny czas. W zależności od rozmiaru danych można żądać [Azure Data Box Disk](../../databox/data-box-disk-overview.md), [Azure Data Box](../../databox/data-box-overview.md)lub [Azure Data Box Heavy](../../databox/data-box-heavy-overview.md) urządzeń od firmy Microsoft. Następnie możesz skopiować dane na te urządzenia i przesłać je z powrotem do firmy Microsoft w celu przekazania ich do magazynu obiektów BLOB.
+- **Usługa Azure Import/Export** umożliwia importowanie i eksportowanie dużych ilości danych do i z konta magazynu przy użyciu podanych dysków twardych. Aby uzyskać więcej informacji, zobacz [Use the Microsoft Azure Import/Export service to transfer data to Blob Storage](../common/storage-import-export-service.md) (Przesyłanie danych do usługi Blob Storage za pomocą usługi Microsoft Azure Import/Export).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Tworzenie konta magazynu](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [Azure Storage scalability and performance targets](../common/storage-scalability-targets.md) (Cele dotyczące skalowalności i wydajności usługi Azure Storage)

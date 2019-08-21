@@ -4,16 +4,16 @@ ms.service: billing
 ms.topic: include
 ms.date: 05/09/2019
 ms.author: glenga
-ms.openlocfilehash: aa43fe6c7999b8fa73419916870f9dfca0c01e3d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: d00af77a2d502cb534a4ab4a0db9231e5e8748b7
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68601358"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636448"
 ---
 | Resource | [Plan zużycia](../articles/azure-functions/functions-scale.md#consumption-plan) | [Plan Premium](../articles/azure-functions/functions-scale.md#premium-plan) | [Plan App Service](../articles/azure-functions/functions-scale.md#app-service-plan) <sup>1</sup> |
 | --- | --- | --- | --- |
-| Skalowanie w poziomie | Sterowane zdarzeniami | Sterowane zdarzeniami | [Ręczne/automatyczne skalowanie](../articles/app-service/web-sites-scale.md) | 
+| Skalowanie w poziomie | Sterowane zdarzeniami | Sterowane zdarzeniami | [Ręczne/automatyczne skalowanie](../articles/app-service/manage-scale-up.md) | 
 | Maksymalna liczba wystąpień | 200 | 20 | 10-20 |
 |Domyślny [czas trwania](../articles/azure-functions/functions-scale.md#timeout) (w min) |5 | 30 |30<sup>2</sup> |
 |Maksymalny czas [trwania](../articles/azure-functions/functions-scale.md#timeout) (w min) |10 | Unbounded | niepowiązane<sup>3</sup> |

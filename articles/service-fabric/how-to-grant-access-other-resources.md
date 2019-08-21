@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: atsenthi
-ms.openlocfilehash: 1facd85563a54de2b703bbc8c192976db92c30f7
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 07b26fb86392b26ef45c4370741a32efc7dc436b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624903"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640928"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>Udzielanie zarządzanej tożsamości aplikacji Service Fabric do zasobów platformy Azure (wersja zapoznawcza)
 
@@ -73,15 +73,3 @@ Aby uzyskać więcej informacji, zobacz temat [magazyny — aktualizacje zasad d
 * [Wdrażanie aplikacji Service Fabric platformy Azure przy użyciu tożsamości zarządzanej przypisanej do systemu](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 
 * [Wdrażanie aplikacji Service Fabric platformy Azure przy użyciu tożsamości zarządzanej przypisanej przez użytkownika](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-
-## <a name="related-articles"></a>Pokrewne artykuły:
-
-* Przejrzyj [obsługę tożsamości zarządzanych](./concepts-managed-identity.md) w usłudze Azure Service Fabric
-
-* [Wdróż nowy](./configure-new-azure-service-fabric-enable-managed-identity.md) Klaster Service Fabric platformy Azure z obsługą tożsamości zarządzanej 
-
-* [Włącz zarządzaną tożsamość](./configure-existing-cluster-enable-managed-identity-token-service.md) w istniejącym klastrze Service Fabric platformy Azure
-
-* Korzystanie [z zarządzanej tożsamości aplikacji Service Fabric z kodu źródłowego](./how-to-managed-identity-service-fabric-app-code.md)
-
-* Zapoznaj się z listą [usług platformy Azure, które obsługują uwierzytelnianie usługi Azure AD](../active-directory/managed-identities-azure-resources/services-support-msi.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2018
 ms.author: v-mohabe
-ms.openlocfilehash: 87f5a14bcd6003ad81b663ed97e5349dcbff2a30
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 597670803514fa59faaafdad73786cdb745a0976
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296527"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640903"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Zaawansowana ochrona przed zagrożeniami w usłudze Windows Defender przy użyciu Azure Security Center
 
@@ -51,7 +51,7 @@ Można dokładniej zbadać alert, przestawiając się do programu Windows Defend
 
 ## <a name="platform-support"></a>Obsługa platform
 
-Usługa Windows Defender ATP w Security Center obsługuje wykrywanie w systemach operacyjnych Windows Server 2012 R2 i Windows Server 2016 należących do standardowej subskrypcji usługi.
+Usługa Windows Defender ATP w Security Center obsługuje wykrywanie w systemach operacyjnych Windows Server 2016, 2012 R2 i 2008 R2 z dodatkiem SP1 w standardowej subskrypcji usługi.
 
 > [!NOTE]
 > W przypadku używania Azure Security Center do monitorowania serwerów usługa Windows Defender ATP jest automatycznie tworzona i domyślnie są przechowywane dane ATP dotyczące programu Windows Defender. Jeśli musisz przenieść dane do innej lokalizacji, musisz skontaktować się z pomoc techniczna firmy Microsoft w celu zresetowania dzierżawy.
@@ -60,7 +60,7 @@ Usługa Windows Defender ATP w Security Center obsługuje wykrywanie w systemach
 
 Aby dołączać serwery do Security Center, kliknij przycisk **Przejdź do Azure Security Center do** dołączania serwerów z usługi Windows Defender ATP Server dołączanie.
 
-1. W bloku  dołączania wybierz lub Utwórz obszar roboczy, w którym mają zostać zapisane dane. <br>
+1. W bloku dołączania wybierz lub Utwórz obszar roboczy, w którym mają zostać zapisane dane. <br>
 2. Jeśli nie widzisz wszystkich obszarów roboczych, może to być spowodowane brakiem uprawnień, upewnij się, że obszar roboczy jest ustawiony na warstwę Standardowa usługi Azure Security. Aby uzyskać więcej informacji [, zobacz Uaktualnianie do warstwy standardowa Security Center w celu zwiększenia bezpieczeństwa](security-center-pricing.md).
     
 3. Wybierz pozycję **Dodaj serwery** , aby wyświetlić instrukcje dotyczące sposobu instalowania Microsoft Monitoring Agent. 
@@ -115,7 +115,7 @@ Aby wygenerować niegroźny alert testu Windows Defender ATP:
 
 5. W oknie badanie wybierz link, aby przejść do portalu usługi Windows Defender ATP.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Ustawianie zasad zabezpieczeń w Azure Security Center](tutorial-security-policy.md): Dowiedz się, jak skonfigurować zasady zabezpieczeń dla subskrypcji i grup zasobów platformy Azure.
 - [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w Azure Security Center](security-center-recommendations.md): Dowiedz się, jak zalecenia ułatwiają ochronę zasobów platformy Azure.

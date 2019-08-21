@@ -1,24 +1,26 @@
 ---
-title: Przegląd dzienników zapory usługi Azure
-description: W tym artykule przedstawiono omówienie dzienników diagnostycznych zapory usługi Azure.
+title: Omówienie dzienników i metryk zapory platformy Azure
+description: Ten artykuł zawiera omówienie dzienników i metryk diagnostyki zapory platformy Azure.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 9/24/2018
+ms.date: 08/21/2019
 ms.author: victorh
-ms.openlocfilehash: c129c394f3d694b832722287027c1f9e58028a33
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8524c8f05a5d48755ab1ccca62f0fd53870190bb
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61065856"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640238"
 ---
-# <a name="azure-firewall-logs"></a>Dzienniki zapory platformy Azure
+# <a name="azure-firewall-logs-and-metrics"></a>Dzienniki i metryki zapory platformy Azure
 
 Usługę Azure Firewall możesz monitorować przy użyciu dzienników zapory. Ponadto dzienniki aktywności umożliwiają inspekcję operacji wykonywanych względem zasobów usługi Azure Firewall.
 
 Niektóre z tych dzienników są dostępne za pośrednictwem portalu. Dzienniki mogą być wysyłane do [dzienników usługi Azure Monitor](../azure-monitor/insights/azure-networking-analytics.md), usługi Storage i Event Hubs oraz analizowane za pomocą dzienników usługi Azure Monitor lub innych narzędzi, takich jak program Excel i usługa Power BI.
+
+Metryki są lekkie i obsługują scenariusze niemal w czasie rzeczywistym, dzięki czemu mogą być używane do tworzenia alertów i szybkiego wykrywania problemów. 
 
 ## <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
 
@@ -26,7 +28,7 @@ Niektóre z tych dzienników są dostępne za pośrednictwem portalu. Dzienniki 
 
 * **Dziennik reguł aplikacji**
 
-   Dziennik reguły aplikacji są zapisywane na koncie magazynu, przesyłane strumieniowo do usługi Event hubs i/lub wysyłane do usługi Azure Monitor dzienników, tylko wtedy, gdy włączono dla każdej zapory usługi Azure. W wyniku każdego nowego połączenia, które jest zgodne z jedną ze skonfigurowanych reguł aplikacji, jest tworzony dziennik dla zaakceptowanego/odrzuconego połączenia. Dane są rejestrowane w formacie JSON, jak pokazano w poniższym przykładzie:
+   Dziennik reguł aplikacji jest zapisywany na koncie magazynu przesyłanym strumieniowo do centrów zdarzeń i/lub wysyłany do dzienników Azure Monitor tylko wtedy, gdy włączono go dla każdej zapory platformy Azure. W wyniku każdego nowego połączenia, które jest zgodne z jedną ze skonfigurowanych reguł aplikacji, jest tworzony dziennik dla zaakceptowanego/odrzuconego połączenia. Dane są rejestrowane w formacie JSON, jak pokazano w poniższym przykładzie:
 
    ```
    Category: application rule logs.
@@ -49,7 +51,7 @@ Niektóre z tych dzienników są dostępne za pośrednictwem portalu. Dzienniki 
 
 * **Dziennik reguł sieci**
 
-   Dziennik reguły sieci są zapisywane na koncie magazynu, przesyłane strumieniowo do usługi Event hubs i/lub wysyłane do usługi Azure Monitor dzienników, tylko wtedy, gdy włączono dla każdej zapory usługi Azure. W wyniku każdego nowego połączenia, które jest zgodne z jedną ze skonfigurowanych reguł sieci, jest tworzony dziennik dla zaakceptowanego/odrzuconego połączenia. Dane są rejestrowane w formacie JSON, jak pokazano w poniższym przykładzie:
+   Dziennik reguł sieci jest zapisywany na koncie magazynu przesyłanym strumieniowo do centrów zdarzeń i/lub wysyłanych do Azure Monitor dzienników tylko wtedy, gdy włączono go dla każdej zapory platformy Azure. W wyniku każdego nowego połączenia, które jest zgodne z jedną ze skonfigurowanych reguł sieci, jest tworzony dziennik dla zaakceptowanego/odrzuconego połączenia. Dane są rejestrowane w formacie JSON, jak pokazano w poniższym przykładzie:
 
    ```
    Category: network rule logs.
@@ -73,17 +75,53 @@ Niektóre z tych dzienników są dostępne za pośrednictwem portalu. Dzienniki 
 
 Masz trzy opcje przechowywania dzienników:
 
-* **Konto magazynu**: Konta magazynu są używane dla dzienników najlepiej, gdy dzienniki są przechowywane przez dłuższy czas i sprawdzone w razie.
-* **Usługa Event hubs**: Usługa Event hubs to doskonałe rozwiązanie umożliwiające integrację z innymi informacjami i zdarzeniami (SEIM) narzędzia do zarządzania zabezpieczeniami, aby otrzymywać alerty dotyczące zasobów.
-* **Dzienniki platformy Azure Monitor**: Dzienniki platformy Azure Monitor najlepiej nadaje się do ogólnego monitorowania w czasie rzeczywistym, w aplikacji lub przyglądanie się trendom.
+* **Konto magazynu**: Konta magazynu najlepiej używać w przypadku dzienników, gdy dzienniki są przechowywane przez dłuższy czas i są przeglądane w razie potrzeby.
+* **Centra zdarzeń**: Centra zdarzeń to doskonałe rozwiązanie umożliwiające integrację z innymi narzędziami do zarządzania informacjami i zdarzeniami zabezpieczeń (SEIM) w celu uzyskania alertów dotyczących zasobów.
+* **Azure monitor dzienników**: Dzienniki Azure Monitor najlepiej sprawdzają się w czasie rzeczywistym monitorowania aplikacji lub patrząc na trendy.
 
 ## <a name="activity-logs"></a>Dzienniki aktywności
 
    Wpisy dziennika aktywności są zbierane domyślnie i można je wyświetlać w witrynie Azure Portal.
 
-   Korzystając z [dzienników aktywności platformy Azure](../azure-resource-manager/resource-group-audit.md) (znanych wcześniej jako dzienniki operacyjne i dzienniki inspekcji), możesz wyświetlać wszystkie operacje przesyłane do Twojej subskrypcji platformy Azure.
+   Aby wyświetlić wszystkie operacje przesłane do subskrypcji platformy Azure, można użyć [dzienników aktywności platformy Azure](../azure-resource-manager/resource-group-audit.md) (znanych wcześniej jako dzienników operacyjnych i dzienników inspekcji).
+
+## <a name="metrics"></a>Metryki
+
+Metryki w Azure Monitor to wartości liczbowe, które opisują niektóre aspekty systemu w określonym czasie. Metryki są zbierane co minutę i są przydatne do zgłaszania alertów, ponieważ mogą być często próbkowane. Alert może być uruchamiany szybko z stosunkowo prostą logiką.
+
+Następujące metryki są dostępne dla zapory platformy Azure:
+
+- **Liczba trafień reguł aplikacji** — liczba trafień reguły aplikacji.
+
+    Jednostka: liczba
+
+- **Przetworzone dane** — ilość danych przechodzących przez zaporę.
+
+    Jednostka: bajty
+
+- **Stan kondycji zapory** — wskazuje na kondycję zapory.
+
+    Jednostka: procent
+
+   Ta Metryka ma dwa wymiary:
+  - **Stan**: Możliwe wartości to *dobra kondycja*, *zła kondycja*.
+  - **Przyczyna**: Wskazuje przyczynę odpowiedniego stanu zapory. Na przykład może wskazywać porty z podłączaniem *adresów sieciowych* , jeśli stan zapory jest negatywny lub w złej kondycji.
 
 
-## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się, jak monitorować dzienniki zapory platformy Azure i metryk, zobacz [samouczka: Monitoruj dzienniki zapory usługi Azure](tutorial-diagnostics.md).
+- **Liczba trafień reguł sieci** — liczba trafień reguły sieci.
+
+    Jednostka: liczba
+
+- **Wykorzystanie portów** przez przystawkę adresów sieciowych — wartość procentowa portów, które zostały wykorzystane przez zaporę.
+
+    Jednostka: procent
+
+   Po dodaniu większej liczby publicznych adresów IP do zapory dostępne są więcej portów, co zmniejsza wykorzystanie portów. Ponadto, gdy Zapora skaluje się z różnych powodów (na przykład procesora CPU lub przepływności), dostępne są również dodatkowe porty. W związku z tym, procent wykorzystania portów przydziałów adresów sieciowych może zostać wyłączony bez dodawania jakichkolwiek publicznych adresów IP, po prostu ze względu na skalowanie usługi. Możesz bezpośrednio kontrolować liczbę dostępnych publicznych adresów IP w celu zwiększenia liczby portów dostępnych w zaporze. Nie można jednak bezpośrednio kontrolować skalowania zapory. Obecnie porty protokołu reportowego są dodawane tylko dla pierwszych pięciu publicznych adresów IP.   
+
+
+## <a name="next-steps"></a>Następne kroki
+
+- Aby dowiedzieć się, jak monitorować dzienniki i metryki zapory [platformy Azure, zobacz Samouczek: Monitoruj dzienniki](tutorial-diagnostics.md)zapory platformy Azure.
+
+- Aby dowiedzieć się więcej o metrykach w Azure Monitor, zobacz [metryki w Azure monitor](../azure-monitor/platform/data-platform-metrics.md).

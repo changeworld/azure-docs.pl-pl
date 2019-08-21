@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 72614a7f804f404e3e560d944db7b3d2e496c383
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: a3817b3e9f62a863f3fea9305ef169db2eb84491
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68705668"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637942"
 ---
 # <a name="getting-started"> </a>Informacje o funkcji Mobile Apps w usłudze Azure App Service
 
@@ -83,7 +83,7 @@ Poniższe funkcje platformy są przydatne w przypadku witryn produkcyjnych aplik
 
   Dowiedz się więcej na temat [środowiska usługi App Service].
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby rozpocząć pracę z funkcją Mobile Apps w usłudze Azure App Service, wykonaj kroki samouczka z [wprowadzeniem]. Samouczek zawiera podstawowe informacje na temat tworzenia wybranego klienta i zaplecza mobilnego. Obejmuje on również zagadnienia, takie jak integrowanie uwierzytelniania, synchronizacji w trybie offline i powiadomień wypychanych. Kroki samouczka można wykonać wielokrotnie, jeden raz dla każdej aplikacji klienta.
 
@@ -104,7 +104,7 @@ Aby uzyskać więcej informacji o platformie Azure App Service, zobacz temat [Us
 [Xamarin.iOS i Xamarin.Android]: ./app-service-mobile-dotnet-how-to-use-client-library.md
 [Xamarin.Forms]: ./app-service-mobile-xamarin-forms-get-started.md
 [Apache Cordova]: ./app-service-mobile-cordova-how-to-use-client-library.md
-[skalowania automatycznego]: ../app-service/web-sites-scale.md
+[skalowania automatycznego]: ../app-service/manage-scale-up.md
 [środowiska przejściowe]: ../app-service/deploy-staging-slots.md
 [połączenia hybrydowe]: ../biztalk-services/integration-hybrid-connection-overview.md
 [sieci wirtualnych]: ../app-service/web-sites-integrate-with-vnet.md
