@@ -930,6 +930,8 @@
               href: platform/alerts-understand-migration.md
             - name: Korzystanie z narzędzia do migracji
               href: platform/alerts-using-migration-tool.md
+            - name: Proces automatycznej migracji
+              href: platform/alerts-automatic-migration.md
             - name: Zarządzanie alertami metryk klasycznych
               href: platform/alerts-classic-portal.md
             - name: Tworzenie alertu metryki klasycznej za pomocą szablonu usługi Resource Manager

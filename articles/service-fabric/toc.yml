@@ -108,7 +108,7 @@
 - name: Przykłady
   items:
     - name: Przykłady kodu
-      href: 'https://azure.microsoft.com/resources/samples/?service=service-fabric'
+      href: 'https://docs.microsoft.com/samples/browse/'
     - name: Azure PowerShell
       href: service-fabric-powershell-samples.md
     - name: Interfejs wiersza polecenia usługi Service Fabric
@@ -354,7 +354,7 @@
       href: service-fabric-api-management-overview.md
     - name: Model zasobów aplikacji
       href: service-fabric-concept-resource-model.md
-    - name: Tożsamość zarządzana
+    - name: Tożsamość zarządzana (wersja zapoznawcza)
       href: concepts-managed-identity.md
 - name: Przewodniki z instrukcjami
   items:
@@ -747,7 +747,7 @@
           href: service-fabric-reverse-proxy-diagnostics.md
         - name: Rozwiązywanie problemów z klastrem lokalnym
           href: service-fabric-troubleshoot-local-cluster-setup.md
-    - name: Używanie tożsamości zarządzanej w aplikacjach usługi Service Fabric
+    - name: Używanie tożsamości zarządzanej w aplikacjach usługi Service Fabric (wersja zapoznawcza)
       items:
         - name: Konfiguracja klastra
           items:

@@ -149,6 +149,8 @@
           href: display-feature-information-android.md
         - name: Dodawanie warstwy kafelków
           href: how-to-add-tile-layer-android-map.md
+    - name: Przesyłanie opinii o danych
+      href: how-to-use-feedback-tool.md
 - name: Dokumentacja
   items:
     - name: Rozszerzenia interfejsu API i parametrów
