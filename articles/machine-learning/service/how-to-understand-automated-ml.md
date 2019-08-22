@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: ea85a0906ce231312c491d31a33c331480d23812
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: a5632767ef8230d16b47f350436fda53794efdf5
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68362157"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872568"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Informacje o zautomatyzowanych wynikach uczenia maszynowego
 
@@ -41,21 +41,21 @@ Po uruchomieniu zautomatyzowanego eksperymentu w usłudze Machine Learning histo
 
 1. Przejdź do swojego obszaru roboczego.
 
-1. W lewym panelu obszaru roboczego wybierz pozycję eksperymenty .
+1. W lewym panelu obszaru roboczego wybierz pozycję eksperymenty.
 
    ![Zrzut ekranu przedstawiający menu eksperymentu](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-menu.png)
 
 1. Na liście eksperymentów wybierz ten, który chcesz poznać.
 
-   ![Lista eksperymentu](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list.png)
+   [![Lista eksperymentów](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list-expanded.png)
 
 1. W dolnej tabeli wybierz **numer uruchomienia**.
 
-   ![Uruchomienie eksperymentu](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run.png)
+   Przebieg eksperymentu) [ ![](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run-expanded.png)
 
 1. W tabeli iteracje wybierz **numer iteracji** dla modelu, który ma zostać poddany dalszej analizie.
 
-   ![Model doświadczenia](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model.png)
+   [![Model eksperymentu](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model-expanded.png)
 
 Te same wyniki są również widoczne podczas uruchamiania, gdy używasz `RunDetails` [widżetu Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py).
 
@@ -192,7 +192,7 @@ Po każdym uruchomieniu widać przewidywane a true wykresu dla każdego modelu r
 
 Przykład 1: Model regresji z niską dokładnością ![w przypadku prognozowania modelu regresji z niską dokładnością w przewidywaniach](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression1.png)
 
-Przykład 2: Model regresji z wysoką dokładnością w prognozie ![modelu regresji o wysokiej dokładności w jej prognozach](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)
+Przykład 2: Model regresji z wysoką dokładnością w prognozie [ ![modelu regresji o wysokiej dokładności w jej prognozach](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2-expanded.png)
 
 
 

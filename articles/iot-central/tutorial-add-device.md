@@ -9,14 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: b073a270fabb8657be19b79601fa90f1b9a0351b
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 03fd31333a97290a5e8a00029867fc4e73a0cdd7
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "66015224"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875605"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Samouczek: Dodawanie rzeczywistego urządzenia do aplikacji usługi Azure IoT Central
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 Ten samouczek przedstawia dodawanie rzeczywistego urządzenia do aplikacji usługi Microsoft Azure IoT Central i konfigurowanie go.
 
@@ -36,13 +38,10 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem konstruktor powinien ukończyć co najmniej pierwszy samouczek przeznaczony dla konstruktorów w celu utworzenia aplikacji usługi Azure IoT Central:
+Przed rozpoczęciem konstruktor powinien ukończyć co najmniej pierwszy samouczek przeznaczony dla konstruktorów w celu utworzenia aplikacji usługi Azure IoT Central: [Definiowanie nowego typu urządzenia](tutorial-define-device-type.md) (wymagany)
 
-* [Definiowanie nowego typu urządzenia](tutorial-define-device-type.md) (wymagany)
-* [Konfigurowanie reguł i akcji dla urządzenia](tutorial-configure-rules.md) (opcjonalny)
-* [Dostosowywanie widoków operatora](tutorial-customize-operator.md) (opcjonalny)
 
-Zainstaluj [Node.js](https://nodejs.org/) wersji 8.0.0 lub później na komputerze deweloperskim. Możesz uruchomić `node --version` w wierszu polecenia, aby sprawdzić swoją wersję. Oprogramowanie Node.js jest dostępne dla różnych systemów operacyjnych.
+Zainstaluj program [Node. js](https://nodejs.org/) w wersji 8.0.0 lub nowszej na komputerze deweloperskim. Aby sprawdzić swoją `node --version` wersję, można uruchomić polecenie w wierszu polecenia. Oprogramowanie Node.js jest dostępne dla różnych systemów operacyjnych.
 
 ## <a name="add-a-real-device"></a>Dodawanie rzeczywistego urządzenia
 
@@ -52,13 +51,13 @@ Aby dodać rzeczywiste urządzenie do aplikacji, należy użyć szablonu urządz
 
    ![Strona Device Explorer pokazująca połączony klimatyzator](media/tutorial-add-device/explorer.png)
 
-   **Device Explorer** pokazuje **połączone klimatyzacyjne** szablon urządzeń i symulowanych urządzeń. Podczas tworzenia szablonu urządzenia IoT Central automatycznie tworzy symulowane urządzenie.
+   **Device Explorer** przedstawia szablon urządzenia z **warunkiem podłączonego powietrza** oraz symulowane urządzenie. Podczas tworzenia szablonu urządzenia IoT Central automatycznie tworzy symulowane urządzenie.
 
-2. Aby uruchomić Podłączanie urządzenia rzeczywistym połączonych klimatyzacyjne, zaznacz **+**, następnie **rzeczywistych**:
+2. Aby rozpocząć łączenie z rzeczywistym podłączonym urządzeniem klimatyzacyjnym, wybierz **+** , a następnie **prawdziwe**:
 
    ![Rozpoczynanie dodawania nowego rzeczywistego połączonego klimatyzatora](media/tutorial-add-device/newreal.png)
 
-3. Wprowadź identyfikator urządzenia (powinno wskazywać na małe litery) lub użyj sugerowanego identyfikator urządzenia. Możesz także podać nazwę nowego urządzenia i wybrać polecenie **Utwórz**.
+3. Wprowadź identyfikator urządzenia (powinien mieć wartość małe litery) lub użyj sugerowanego identyfikatora urządzenia. Możesz także podać nazwę nowego urządzenia i wybrać polecenie **Utwórz**.
 
    ![Zmienianie nazwy urządzenia](media/tutorial-add-device/rename.png)
 
@@ -70,19 +69,19 @@ Rzeczywiste urządzenie jest tworzone na podstawie szablonu urządzenia **Połą
 
     ![Synchronizowanie ustawień](media/tutorial-add-device/settingssyncing.png)
 
-2. Na **właściwości** strona nowej, rzeczywistego urządzenia, zarówno lokalizacji usługi i Data ostatniego usługi są edytowalnych właściwości. Pola numeru seryjnego i wersji oprogramowania układowego są puste do momentu połączenia urządzenia z aplikacją. Te wartości tylko do odczytu są wysyłane z urządzenia i nie może być edytowany.
+2. Na stronie **Właściwości** nowego urządzenia rzeczywistego, obie lokalizacje usługi i Data ostatniej usługi są edytowalnymi właściwościami. Pola numeru seryjnego i wersji oprogramowania układowego są puste do momentu połączenia urządzenia z aplikacją. Te wartości tylko do odczytu są wysyłane z urządzenia i nie można ich edytować.
 
     ![Właściwości rzeczywistego urządzenia](media/tutorial-add-device/setproperties1.png)
 
 3. Dla rzeczywistego urządzenia możesz wyświetlić strony **Miary**, **Reguły** i **Pulpit nawigacyjny**.
 
-## <a name="generate-connection-string"></a>Generowanie parametrów połączenia
+## <a name="generate-connection-string"></a>Generuj parametry połączenia
 
-Deweloper urządzenia musi osadzić *parametry połączenia* rzeczywistego urządzenia w kodzie uruchamianym na urządzeniu. Parametry połączenia umożliwia urządzeniu nawiązać bezpiecznego połączenia z aplikacją. Poniższe kroki pokazują, możesz wygenerować parametry połączenia i przygotuj klienta kodu w języku Node.js.
+Deweloper urządzenia musi osadzić *parametry połączenia* rzeczywistego urządzenia w kodzie uruchamianym na urządzeniu. Parametry połączenia umożliwiają bezpieczne nawiązywanie połączenia z aplikacją przez urządzenie. Poniższe kroki pokazują generowanie parametrów połączenia i przygotowanie kodu Node. js klienta.
 
 ## <a name="prepare-the-client-code"></a>Przygotowywanie kodu klienta
 
-Przykładowy kod w tym artykule został napisany w [Node.js](https://nodejs.org/) i zawiera wystarczającą ilość kodu:
+Przykładowy kod w tym artykule został zapisany w języku [Node. js](https://nodejs.org/) i zawiera kod wystarczający do:
 
 * nawiązania połączenia jako urządzenie z aplikacją usługi Azure IoT Central;
 * wysłania danych telemetrycznych temperatury jako połączony klimatyzator;
@@ -90,11 +89,11 @@ Przykładowy kod w tym artykule został napisany w [Node.js](https://nodejs.org/
 * wysłania odpowiedzi do operatora, który użył ustawienia **Ustaw temperaturę**.
 * obsługuje polecenie Echo z poziomu aplikacji usługi Azure IoT Central.
 
-Artykuły wymienione w [następne kroki](#next-steps) sekcji zawierają przykłady bardziej szczegółowy i Pokaż innych językach programowania. Aby uzyskać więcej informacji na temat sposobu, w jaki urządzenia łączą się z usługą Azure IoT Central, patrz artykuł [Łączność urządzeń](concepts-connectivity.md).
+Artykuły wymienione w sekcji [następne kroki](#next-steps) zawierają więcej kompletnych przykładów i są wyświetlane w innych językach programowania. Aby uzyskać więcej informacji na temat sposobu, w jaki urządzenia łączą się z usługą Azure IoT Central, patrz artykuł [Łączność urządzeń](concepts-connectivity.md).
 
 W poniższej procedurze pokazano, jak przygotować przykład dla oprogramowania [Node.js](https://nodejs.org/):
 
-### <a name="get-the-device-connection-information"></a>Pobieranie informacji o połączeniu urządzenia
+### <a name="get-the-device-connection-information"></a>Pobierz informacje o połączeniu z urządzeniem
 
 1. Parametry połączenia dla wystąpienia urządzenia w aplikacji są generowane na podstawie informacji o urządzeniu udostępnionych przez usługę IoT Central.
 
@@ -102,15 +101,15 @@ W poniższej procedurze pokazano, jak przygotować przykład dla oprogramowania 
 
    ![Strona Urządzenie przedstawiająca link umożliwiający wyświetlenie informacji o połączeniu](media/tutorial-add-device/connectionlink.png)
 
-1. Na stronie połączenie z urządzeniem Zanotuj **identyfikator zakresu**, **identyfikator urządzenia** i **klucz podstawowy** wartości. Użyjesz tych wartości w następnym kroku.
+1. Na stronie połączenie urządzenia Zanotuj **Identyfikatory zakresu**, **Identyfikator urządzenia** i wartości **klucza podstawowego** . Użyjesz tych wartości w następnym kroku.
 
    ![Szczegóły połączenia](media/tutorial-add-device/device-connect.png)
 
-### <a name="generate-the-connection-string"></a>Generowanie parametrów połączenia
+### <a name="generate-the-connection-string"></a>Generuj parametry połączenia
 
 [!INCLUDE [iot-central-howto-connection-string](../../includes/iot-central-howto-connection-string.md)]
 
-### <a name="prepare-the-nodejs-project"></a>Przygotowanie projektu środowiska Node.js
+### <a name="prepare-the-nodejs-project"></a>Przygotowywanie projektu Node. js
 
 1. Utwórz folder o nazwie `connectedairconditioner` na komputerze deweloperskim.
 
@@ -153,9 +152,9 @@ W poniższej procedurze pokazano, jak przygotować przykład dla oprogramowania 
 
 1. Zapisz zmiany wprowadzone do tej pory, ale pozostaw plik otwarty.
 
-## <a name="review-client-code"></a>Przejrzyj kod klienta
+## <a name="review-client-code"></a>Przegląd kodu klienta
 
-W poprzedniej sekcji utworzono szkielet projektu oprogramowania Node.js dla aplikacji, która nawiązuje połączenie z aplikacją usługi Azure IoT Central. Następnym krokiem jest, aby dodać kod, aby:
+W poprzedniej sekcji utworzono szkielet projektu oprogramowania Node.js dla aplikacji, która nawiązuje połączenie z aplikacją usługi Azure IoT Central. Następnym krokiem jest dodanie kodu do:
 
 * nawiązuje połączenie z aplikacją usługi Azure IoT Central,
 * wysyła dane telemetryczne do aplikacji usługi Azure IoT Central,
@@ -244,7 +243,7 @@ W poprzedniej sekcji utworzono szkielet projektu oprogramowania Node.js dla apli
 
     * oczekuje na wysłanie żądanej właściwości przez usługę Azure IoT Central,
     * lokalizuje odpowiednią funkcję do wywołania w celu obsłużenia zmiany ustawienia,
-    * wysyła potwierdzenie z powrotem do aplikacji usługi Azure IoT Central.
+    * Wysyła potwierdzenie z powrotem do aplikacji IoT Central platformy Azure.
 
 1. Aby odpowiedzieć na polecenie, takie jak **echo**, z aplikacji usługi Azure IoT Central, dodaj następującą definicję:
 
@@ -301,7 +300,7 @@ Aby skonfigurować kod klienta pod kątem nawiązywania połączenia z aplikacj�
     var connectionString = '{your device connection string}';
     ```
 
-1. Zastąp element `{your device connection string}` parametrami połączenia rzeczywistego urządzenia. Możesz skopiować parametry połączenia, który został wygenerowany w poprzednim kroku.
+1. Zastąp element `{your device connection string}` parametrami połączenia rzeczywistego urządzenia. Zostały skopiowane parametry połączenia wygenerowane w poprzednim kroku.
 
 1. Zapisz zmiany w pliku **ConnectedAirConditioner.js**.
 
@@ -320,7 +319,7 @@ Aby skonfigurować kod klienta pod kątem nawiązywania połączenia z aplikacj�
 
 1. Po około 30 sekundach zobaczysz dane telemetryczne na stronie **Miary** urządzenia:
 
-   ![Rzeczywiste ~ ~ telemetrii](media/tutorial-add-device/realtelemetry.png)
+   ![Prawdziwa Telemetria ~ ~](media/tutorial-add-device/realtelemetry.png)
 
 1. Na stronie **Ustawienia** widać, że ustawienie jest teraz zsynchronizowane. Po pierwszym połączeniu urządzenia odebrało ono wartość ustawienia i potwierdziło zmianę:
 
@@ -337,7 +336,7 @@ Aby skonfigurować kod klienta pod kątem nawiązywania połączenia z aplikacj�
 
     ![Dane telemetryczne temperatury mają teraz większe wartości](media/tutorial-add-device/highertemperature.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
@@ -348,7 +347,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > * Poznawanie sposobu mapowania kodu klienta na aplikację
 > * Konfigurowanie kodu klienta dla rzeczywistego urządzenia
 
-Teraz, gdy rzeczywistego urządzenia po połączeniu z aplikacją usługi Azure IoT Central, poniżej przedstawiono niektóre sugerowane dalsze czynności.
+Teraz, gdy połączono rzeczywiste urządzenie z aplikacją IoT Central platformy Azure, Oto kilka sugerowanych następnych kroków.
 
 Jako operator możesz dowiedzieć się, jak wykonywać następujące działania:
 
@@ -358,8 +357,8 @@ Jako operator możesz dowiedzieć się, jak wykonywać następujące działania:
 
 Jako deweloper urządzenia możesz dowiedzieć się, jak wykonywać następujące działania:
 
-* [Przygotuj i podłącz urządzenie Mxchip (C)](howto-connect-devkit.md)
-* [Przygotowanie i Połącz z urządzeniem Raspberry Pi (Python)](howto-connect-raspberry-pi-python.md)
-* [Przygotowanie i Połącz z urządzeniem Raspberry Pi (C#)](howto-connect-raspberry-pi-csharp.md)
-* [Przygotuj i podłącz urządzenie z systemu Windows 10 IoT core (C#)](howto-connect-windowsiotcore.md)
+* [Przygotowywanie i łączenie urządzenia DevKit (C)](howto-connect-devkit.md)
+* [Przygotowywanie i łączenie Raspberry Pi (Python)](howto-connect-raspberry-pi-python.md)
+* [Przygotuj i Połącz Raspberry Pi (C#)](howto-connect-raspberry-pi-csharp.md)
+* [Przygotowanie i podłączenie urządzenia z systemem Windows 10 IoT CoreC#()](howto-connect-windowsiotcore.md)
 * [Łączenie ogólnego klienta Node.js z aplikacją usługi Azure IoT Central](howto-connect-nodejs.md)

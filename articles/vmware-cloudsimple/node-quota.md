@@ -3,21 +3,21 @@ title: Rozwiązanie VMware platformy Azure według przydziału węzła CloudSimp
 description: Opisuje limity przydziału dla węzłów CloudSimple oraz sposób żądania zwiększenia limitu przydziału
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/30/2019
+ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e765d7c87f2f941a5e2d558b71c4e5a71d2df9b1
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 5da91f37d197e9d427343a09d0376076c356e92d
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816673"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877816"
 ---
 # <a name="cloudsimple-node-quota-limits"></a>Limity przydziału węzłów CloudSimple
 
-Cztery węzły są domyślną ilością dostępną do aprowizacji, gdy subskrypcja jest włączona dla usługi CloudSimple.  Można zainicjować obsługę dowolnego [typu węzła](cloudsimple-node.md) z Azure Portal.  Do utworzenia chmury prywatnej wymagane jest co najmniej trzy węzły tej samej jednostki SKU.  Jeśli Zainicjowano obsługę węzłów, podczas próby aprowizacji dodatkowych węzłów może zostać wyświetlony komunikat o błędzie.
+Cztery węzły są domyślną ilością dostępną do zakupu, gdy subskrypcja jest włączona dla usługi CloudSimple.  Każdy [Typ węzła](cloudsimple-node.md) można zakupić z poziomu Azure Portal.  Aby można było utworzyć chmurę prywatną, wymagane są co najmniej trzy węzły tej samej jednostki SKU.  Jeśli węzły zostały kupione, podczas próby zakupu dodatkowych węzłów może zostać wyświetlony komunikat o błędzie.
 
 ## <a name="quota-increase"></a>Zwiększenie limitu przydziału
 
@@ -38,7 +38,7 @@ Możesz również skontaktować się z przedstawicielem [azurevmwaresales@micros
 * Jednostka SKU węzła
 * Liczba dodatkowych węzłów, dla których żądasz zwiększenia limitu przydziału
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Inicjowanie obsługi węzłów](create-nodes.md)
+* [Kup węzły](create-nodes.md)
 * [Przegląd węzłów CloudSimple](cloudsimple-node.md)
