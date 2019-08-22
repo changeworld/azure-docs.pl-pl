@@ -70,7 +70,7 @@ Witryna Azure portal ma kreatora, który przeprowadzi Cię przez tworzenie manif
 
 ### <a name="specify-routes"></a>Określanie tras
 
-Domyślnie Kreator umożliwia trasy o nazwie **trasy** i zdefiniowane jako **FROM /* do $nadrzędne **, oznacza to, że wszystkie komunikaty generowane przez moduły są wysyłane do usługi IoT hub.  
+Domyślnie Kreator umożliwia trasy o nazwie **trasy** i zdefiniowane jako **FROM /\* do $nadrzędne**, oznacza to, że wszystkie komunikaty generowane przez moduły są wysyłane do usługi IoT hub.  
 
 Dodawanie lub aktualizowanie tras przy użyciu informacji z [zadeklarować trasy](module-composition.md#declare-routes), a następnie wybierz **dalej** można przejść do sekcji przeglądu.
 

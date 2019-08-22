@@ -65,7 +65,7 @@ Najpierw należy utworzyć funkcję wyzwalaną przez protokół HTTP, która roz
 
     ![Wybierz szablon HTTP starter](./media/quickstart-js-vscode/create-function-choose-template.png)
 
-3. Pozostaw nazwę domyślną `DurableFunctionsHttpStart` i naciśnij klawisz *** Enter **, następnie wybierz pozycję **anonimowe** uwierzytelniania.
+3. Pozostaw nazwę domyślną `DurableFunctionsHttpStart` i naciśnij klawisz ** **Enter**, następnie wybierz pozycję **anonimowe** uwierzytelniania.
 
     ![Wybieranie uwierzytelniania anonimowego](./media/quickstart-js-vscode/create-function-anonymous-auth.png)
 

@@ -52,7 +52,7 @@ Odszyfrowywanie za pomocą techniki Envelope działa w następujący sposób:
 Biblioteka klienta magazynu używa [algorytmu AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) w celu szyfrowania danych użytkownika. W przypadku trybu [szyfrowania bloku blokowego (CBC)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) z algorytmem AES. Każda usługa działa nieco inaczej, więc omawiamy każdą z nich w tym miejscu.
 
 ### <a name="blobs"></a>Obiekty blob
-Biblioteka klienta obsługuje obecnie szyfrowanie tylko całych obiektów BLOB. Szyfrowanie jest obsługiwane, gdy użytkownicy korzystają z metod **Create***. W przypadku plików do pobrania obsługiwane są zarówno pobieranie w całości, jak i zakres, a ponadto dostępne są przetwarzanie równoległe przekazywania i pobierania.
+Biblioteka klienta obsługuje obecnie szyfrowanie tylko całych obiektów BLOB. Szyfrowanie jest obsługiwane, gdy użytkownicy korzystają z metod **Create** *. W przypadku plików do pobrania obsługiwane są zarówno pobieranie w całości, jak i zakres, a ponadto dostępne są przetwarzanie równoległe przekazywania i pobierania.
 
 Podczas szyfrowania Biblioteka klienta generuje losowy wektor inicjacji (IV) z 16 bajtów wraz z losowym kluczem szyfrowania zawartości (CEK) wynoszącym 32 bajtów i przeprowadź szyfrowanie koperty danych obiektów BLOB przy użyciu tych informacji. Opakowany CEK i niektóre dodatkowe metadane szyfrowania są następnie przechowywane jako metadane obiektów BLOB wraz z zaszyfrowanego obiektu BLOB w usłudze.
 
