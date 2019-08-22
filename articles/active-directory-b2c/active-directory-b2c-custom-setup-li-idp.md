@@ -76,7 +76,7 @@ Jeśli chcesz, aby użytkownicy mogli się logować przy użyciu konta LinkedIn,
 
 Zdefiniuj konto serwisu LinkedIn jako dostawcę oświadczeń, dodając je do elementu **ClaimsProviders** w pliku rozszerzenia zasad.
 
-1. Otwórz plik *SocialAndLocalAccounts/ **TrustFrameworkExtensions. XML** *w edytorze. Ten plik znajduje się w [pakiecie startowym zasad niestandardowych][starter-pack] pobranym jako część jednego z wymagań wstępnych.
+1. Otwórz plik *SocialAndLocalAccounts/ **TrustFrameworkExtensions. XML*** w edytorze. Ten plik znajduje się w [pakiecie startowym zasad niestandardowych][starter-pack] pobranym jako część jednego z wymagań wstępnych.
 1. Znajdź element **ClaimsProviders** . Jeśli nie istnieje, Dodaj ją do elementu głównego.
 1. Dodaj nową **ClaimsProvider** w następujący sposób:
 
