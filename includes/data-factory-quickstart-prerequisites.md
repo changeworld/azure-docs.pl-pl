@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/27/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: dc12d77e9a57938051300277940b6e5107e45496
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 0a2bf306ccfa3a4a4fc80d0d55493f284185bba9
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234548"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648379"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -38,22 +38,18 @@ Aby uzyskać więcej informacji, zobacz następujące artykuły:
 ### <a name="azure-storage-account"></a>Konto magazynu Azure
 W tym samouczku Szybki start używasz konta usługi Azure Storage ogólnego przeznaczenia (w szczególności usługi Blob Storage) jako *źródłowego* i *docelowego* magazynu danych. Jeśli nie masz konta usługi Azure Storage ogólnego przeznaczenia, zobacz [Tworzenie konta magazynu](../articles/storage/common/storage-quickstart-create-account.md), aby uzyskać informacje o jego tworzeniu. 
 
-#### <a name="get-the-storage-account-name-and-account-key"></a>Pobieranie nazwy konta i klucza konta magazynu
-W tym przewodniku Szybki start będzie potrzebna nazwa i klucz konta usługi Azure Storage. Poniższa procedura służy do pobierania nazwy i klucza konta magazynu: 
+#### <a name="get-the-storage-account-name"></a>Pobieranie nazwy konta magazynu
+Do tego przewodnika Szybki Start potrzebna jest nazwa konta usługi Azure Storage. Poniższa procedura zawiera opis czynności w celu uzyskania nazwy konta magazynu: 
 
 1. W przeglądarce internetowej przejdź do [Azure Portal](https://portal.azure.com) i zaloguj się przy użyciu nazwy użytkownika i hasła platformy Azure.
 2. Wybierz pozycję **wszystkie usługi** > **Magazyn** > **konto magazynu**.
 3. Na stronie **konta magazynu** odfiltruj konto magazynu (w razie potrzeby), a następnie wybierz swoje konto magazynu. 
-4.  -   *Napaskubocznymnazwykonta>stroniekontamagazynuprzejdźdoetykietyustawieniaiwybierzpozycjękluczedostępu.\<* Zostanie wyświetlona - nazwa ****  *konta>klucze\<* dostępu.
-
-   ![Pobieranie nazwy i klucza konta magazynu](media/data-factory-quickstart-prerequisites/storage-account-name-key.png)
-5. Skopiuj wartości pól **Nazwa konta magazynu** i **klucz1** do schowka. Wklej je do Notatnika lub innego edytora i zapisz plik. Będziesz ich używać w dalszej części tego samouczka Szybki start.   
 
 #### <a name="create-a-blob-container"></a>Tworzenie kontenera obiektów blob
 W tej sekcji utworzysz kontener obiektów blob o nazwie **adftutorial** w usłudze Azure Blob Storage.
 
-1.  >  -  **** Na pasku bocznym strony  *nazwakonta>pasekdostępuwybierzpozycjęprzeglądobiektówBLOB.\<*
-2. Na pasku narzędzi -  *nazwa konta>obiektyblobwybierzpozycję\<* kontener. ****
+1. Na stronie konto magazynu wybierz pozycję **Przegląd** > **obiektów BLOB**.
+2. Na pasku narzędzi -  *nazwa konta>obiektyblobwybierzpozycję\<* kontener.
 3. W oknie dialogowym **Nowy kontener** wprowadź jako nazwę **adftutorial**, a następnie wybierz przycisk **OK**. *Nazwa\<konta >*  - **obiektów BLOB** jest aktualizowana w celu uwzględnienia adftutorial na liście kontenerów.
 
    ![Lista kontenerów](media/data-factory-quickstart-prerequisites/list-of-containers.png)
@@ -68,7 +64,7 @@ Jane, Doe
 
 Zapisz plik w folderze **C:\ADFv2QuickStartPSH** . (Jeśli folder jeszcze nie istnieje, utwórz go). Następnie wróć do Azure Portal i wykonaj następujące kroki:
 
-1. Na stronie -  *nazwa konta>obiektówblobzlewejstronywybierzpozycjęadftutorialzlistyzaktualizowanychkontenerów\<* . **** (Jeśli zamknięto okno lub przeszedł do innej strony, zaloguj się do [Azure Portal](https://portal.azure.com) ponownie, wybierz pozycję **wszystkie usługi** > **Magazyn** > **konta**magazynu, wybierz konto magazynu, a następnie wybierz pozycję **obiekty blob** **adftutorial.** )  > 
+1. Na stronie -  *nazwa konta>obiektówblobzlewejstronywybierzpozycjęadftutorialzlistyzaktualizowanychkontenerów\<* . (Jeśli zamknięto okno lub przeszedł do innej strony, zaloguj się do [Azure Portal](https://portal.azure.com) ponownie, wybierz pozycję **wszystkie usługi** > **Magazyn** > **konta**magazynu, wybierz konto magazynu, a następnie wybierz pozycję **obiekty blob** **adftutorial.** )  > 
 2. Na pasku narzędzi strony kontenera **adftutorial** wybierz pozycję **Przekaż**.
 3. Na stronie **przekazywanie obiektu BLOB** zaznacz pole **pliki** , a następnie wyszukaj i wybierz plik **EMP. txt** .
 4. Rozwiń nagłówek **Zaawansowane** . Zostanie wyświetlona strona, jak pokazano:

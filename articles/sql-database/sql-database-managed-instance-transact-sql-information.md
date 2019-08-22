@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: b792c0fc5d02a84d45b47ac68e0058144f31e673
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
-ms.translationtype: HT
+ms.openlocfilehash: 8ed9b86f8dd4f255a6ea8420ef27fbb131df91a9
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/20/2019
-ms.locfileid: "69641014"
+ms.locfileid: "69644892"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Różnice w języku T-SQL wystąpienia zarządzanego, ograniczenia i znane problemy
 
@@ -545,15 +545,13 @@ Okna dialogowe Service Broker między bazami danych przestaną przekazanie komun
 
 **Poprawkę** Przed aktualizacją warstwy usług Zatrzymaj wszystkie działania, które używają konwersacji między bazami danych Service Broker. Jeśli pozostałe komunikaty są niedostarczone po zmianie warstwy usług, należy odczytać komunikaty z kolejki źródłowej i ponownie wysłać je do kolejki docelowej.
 
-### <a name="impresonification-of-aad-login-types-is-not-supported"></a>Impresonification typów logowania usługi AAD nie są obsługiwane
+### <a name="impersonification-of-aad-login-types-is-not-supported"></a>Impersonification typów logowania usługi AAD nie są obsługiwane
 
 **Dniu** Lipiec 2019
 
 Personifikacja `EXECUTE AS USER` przy `EXECUTE AS LOGIN` użyciu lub następujących głównych podmiotów usługi AAD nie jest obsługiwana:
 -   Aliasy użytkowników usługi AAD. W tym przypadku `15517`zwracany jest następujący błąd.
 - Nazwy logowania i użytkownicy usługi AAD w oparciu o aplikacje lub nazwy główne usług w usłudze AAD. W takim przypadku `15517` zwracane są następujące błędy i `15406`.
-
-### <a name="database-email"></a>Adres e-mail bazy danych 
 
 ### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@queryparametr nie jest obsługiwany w sp_send_db_mail
 

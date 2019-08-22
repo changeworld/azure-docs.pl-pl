@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: cbrooks
-ms.openlocfilehash: 13eef9beb6c86683c56efc744dc42b4614b84fe9
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: b813ef89bb1a55f769d0ea2391855ba5d671c140
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946480"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648790"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reagowanie na zdarzenia magazynu obiektów BLOB
 
@@ -32,6 +32,8 @@ Jeśli chcesz wypróbować tę usługę teraz, zobacz dowolny z tych artykułów
 |Azure Portal    |[Szybki start: Kierowanie zdarzeń magazynu obiektów BLOB do punktu końcowego sieci Web za pomocą Azure Portal](https://docs.microsoft.com/azure/event-grid/blob-event-quickstart-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |PowerShell    |[Szybki start: Kierowanie zdarzeń magazynu do punktu końcowego w sieci Web przy użyciu programu PowerShell](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Interfejs wiersza polecenia platformy Azure    |[Szybki start: Kierowanie zdarzeń magazynu do punktu końcowego sieci Web przy użyciu interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+
+Jeśli Twoje konto ma hierarchiczną przestrzeń nazw, w tym samouczku pokazano, jak połączyć się z subskrypcją Event Grid, funkcją platformy Azure i [zadaniem](https://docs.azuredatabricks.net/user-guide/jobs.html) w Azure Databricks: [Ręczny Użyj zdarzeń Azure Data Lake Storage Gen2, aby zaktualizować tabelę](data-lake-storage-events.md)różnicową danych.
 
 ## <a name="the-event-model"></a>Model zdarzenia
 

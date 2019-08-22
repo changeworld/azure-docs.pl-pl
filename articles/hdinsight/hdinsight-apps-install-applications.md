@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: 38b37b45964dd724b18f22a478be0d85a7036ce7
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 9b96294362400891113812e308ff59bd0e438b90
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946969"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873365"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Instalowanie aplikacji Apache Hadoop innych firm w usłudze Azure HDInsight
 
@@ -37,7 +37,7 @@ Na poniższej liście przedstawiono opublikowane aplikacje:
 |[Gwiazda Presto dla usługi Azure HDInsight](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/starburst.starburst-presto) |Hadoop |Presto to szybki i skalowalny, rozproszony aparat zapytań SQL. Zaprojektowana z myślą o separacji magazynu i mocy obliczeniowej, Presto to idealne rozwiązanie dla wykonywanie zapytań o dane w usługi Azure Data Lake Storage, bazy danych usługi Azure Blob Storage, SQL i NoSQL oraz innych źródeł danych. |
 |[Moduł zbierający dane StreamSets dla chmury usługi HDInsight](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/streamsets.streamsets-data-collector-hdinsight) |Hadoop,HBase,Spark,Kafka |Moduł zbierający dane StreamSets to lekki, zaawansowany aparat, który przesyła strumieniowo dane w czasie rzeczywistym. Użyj modułu zbierającego dane, aby kierować i przetwarzać dane w strumieniach danych. Jest on dostarczany z 30-dniową licencją próbną. |
 |[Trifacta Wrangler Enterprise](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/trifacta.tr01) |Hadoop, Spark, HBase |Usługa Trifacta Wrangler Enterprise for HDInsight obsługuje dane korporacyjne dla całego przedsiębiorstwa w przypadku dowolnej skali danych. Kosztem korzystania z Trifacta na platformie Azure jest kombinacja kosztów subskrypcji Trifacta plus koszty infrastruktury platformy Azure dla maszyn wirtualnych. |
-|[Platforma danych Unifi](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/unifi-software.unifi-data-catalog) |Hadoop, HBase, burza, Spark |Platforma danych Unifi to bezproblemowo zintegrowany pakiet narzędzi do samodzielnej obsługi danych, który umożliwia użytkownikom biznesowym sprostanie wyzwaniom związanym z danymi, które zwiększają zyski, obniżają koszty lub złożoność operacyjną. |
+|[Platforma danych Unifi](https://unifisoftware.com/platform/) |Hadoop, HBase, burza, Spark |Platforma danych Unifi to bezproblemowo zintegrowany pakiet narzędzi do samodzielnej obsługi danych, który umożliwia użytkownikom biznesowym sprostanie wyzwaniom związanym z danymi, które zwiększają zyski, obniżają koszty lub złożoność operacyjną. |
 |[Unraveldata APM](https://azuremarketplace.microsoft.com/marketplace/apps/unravel-data.unravel-app) |platforma Spark |Aplikacja danych Unravel dla klastra usługi HDInsight Spark. |
 |[Data Catalogy z linią wodną](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/waterline_data.waterline_data) |platforma Spark |Wykazy, organizują i zarządza danymi przy użyciu AI do autotagów danych z warunkami biznesowymi. Wykaz posługiwać się biznesowych firmy wodnej jest składnikiem Powodzenie krytycznych, samoobsługowej analizy, zgodności i nadzoru i w celu zarządzania. |
 
@@ -83,7 +83,7 @@ Portal zawiera listę zainstalowanych aplikacji usługi HDInsight dla klastra or
     |Właściwość | Opis |
     |---|---|
     |Nazwa aplikacji |Nazwa aplikacji. |
-    |Stan |Stan aplikacji. |
+    |State |Stan aplikacji. |
     |Strona sieci Web |Adres URL aplikacji sieci Web wdrożonej w węźle brzegowym. Poświadczenie jest identyczne z poświadczeniami użytkownika protokołu HTTP skonfigurowanymi dla klastra. |
     |Punkt końcowy SSH |Do łączenia się z węzłem brzegowym można użyć protokołu SSH. Poświadczenia protokołu SSH są identyczne z poświadczeniami użytkownika protokołu SSH skonfigurowanymi dla klastra. Aby uzyskać informacje, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
     |Opis | Opis aplikacji. |

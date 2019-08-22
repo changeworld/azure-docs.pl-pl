@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 184cdaddc638461d50f322292d5cfaf28ab93093
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 0e60607d50722a4496dc8f4ad7d609cdf9fd5792
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950525"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877173"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Przydziały IoT Hub i ograniczanie przepustowości
 
@@ -25,6 +25,10 @@ Każda subskrypcja platformy Azure może mieć maksymalnie 50 centrów IoT i mak
 Każde centrum IoT jest aprowizowane za pomocą określonej liczby jednostek w określonej warstwie. Warstwa i liczba jednostek określają maksymalny dzienny limit przydziału komunikatów, które można wysłać. Rozmiar komunikatu używany do obliczania dziennego limitu wynosi 0,5 KB dla koncentratora warstwy bezpłatnej i 4 KB dla wszystkich innych warstw. Aby uzyskać więcej informacji, zobacz [Cennik usługi Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 Warstwa określa również limity ograniczania, które IoT Hub wymuszane we wszystkich operacjach.
+
+### <a name="iot-plug-and-play"></a>IoT Plug and Play
+
+W publicznej wersji zapoznawczej urządzenia IoT Plug and Play będą wysyłać osobne komunikaty dla poszczególnych interfejsów, co może zwiększyć liczbę komunikatów zliczane do limitu przydziału wiadomości.
 
 ## <a name="operation-throttles"></a>Ograniczenia operacji
 

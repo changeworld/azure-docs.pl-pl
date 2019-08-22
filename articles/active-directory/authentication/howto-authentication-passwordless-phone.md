@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 164a71354423bebc1422ba94747f2daeec33909d
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: e9c21ff5c4c94eecc7bb1a6643e46166df80edf4
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828932"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648321"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Włącz logowanie bez hasła przy użyciu aplikacji Microsoft Authenticator (wersja zapoznawcza)
 
@@ -92,7 +92,7 @@ Użytkownicy końcowi korzystający z usług MFA za pomocą lokalnego serwera us
 
 ### <a name="device-registration"></a>Rejestracja urządzenia
 
-Jednym z wymagań wstępnych tworzenia nowego, silnego poświadczenia, jest to, że urządzenie musi być również zarejestrowane w ramach dzierżawy usługi Azure AD dla pojedynczego użytkownika. Ze względu na bieżące ograniczenia rejestracji urządzeń urządzenie może być rejestrowane tylko w jednej dzierżawie. Ten limit oznacza, że tylko jedno konto służbowe w aplikacji Microsoft Authenticator może być włączone do logowania za pomocą telefonu.
+Jedno z wymagań wstępnych dotyczących tworzenia nowego silnego poświadczenia polega na tym, że urządzenie, na którym zainstalowano aplikację Microsoft Authenticator, musi być również zarejestrowane w ramach dzierżawy usługi Azure AD dla pojedynczego użytkownika. Ze względu na bieżące ograniczenia rejestracji urządzeń urządzenie może być rejestrowane tylko w jednej dzierżawie. Ten limit oznacza, że tylko jedno konto służbowe w aplikacji Microsoft Authenticator może być włączone do logowania za pomocą telefonu.
 
 > [!NOTE]
 > Rejestracja urządzeń nie jest taka sama jak w przypadku zarządzania urządzeniami lub "MDM". W katalogu usługi Azure AD kojarzy tylko identyfikator urządzenia i identyfikator użytkownika.  

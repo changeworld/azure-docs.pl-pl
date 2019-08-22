@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 786c5725046885a0321696e95703c53081e96979
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1b731d8000e748813649ea32c91b9566a8bc245a
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560336"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648602"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Samouczek: wyodrębnianie nazw przy użyciu prostej jednostki i listy fraz
 
@@ -137,7 +137,7 @@ Proste jednostki wymagają wielu przykładów do zapewnienia wysokiego poziomu p
 
 1. Oznacz etykietami stanowiska w przykładowych wypowiedziach
 
-    Jeśli w jednej intencji znajduje się więcej przykładowych wypowiedzi niż w innej, dla tej intencji występuje wyższe prawdopodobieństwo, że będzie najczęściej przewidywana w tekście. 
+    Jeśli istnieje więcej przykładowych wyrażenia długości w jednym zamiarze niż inne zamierzenie, ten cel ma większe prawdopodobieństwo uzyskania najwyższej przewidywanej zamiaru. 
 
 ## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Trenowanie aplikacji w celu umożliwienia testowania zmian w intencji 
 

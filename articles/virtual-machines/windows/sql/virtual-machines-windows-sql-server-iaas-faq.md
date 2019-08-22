@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 80c90ceb0e2edac47d67b99e7fb7f03c1ab82fb1
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 5b3c65361f45c8ad5bdf3adf89dc3002c229d0d0
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882351"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650405"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Często zadawane pytania dotyczące SQL Server uruchomionych na maszynach wirtualnych z systemem Windows na platformie Azure
 
@@ -87,7 +87,7 @@ Ten artykuł zawiera odpowiedzi na niektóre z najczęstszych pytań dotyczącyc
 
    Aby uzyskać bezpłatną licencję pasywną dla aktywnej pomocniczej grupy dostępności lub wystąpienia klastra trybu failover, należy spełnić wszystkie następujące kryteria, które opisano w [dokumencie Podręcznik licencjonowania](https://download.microsoft.com/download/7/8/C/78CDF005-97C1-4129-926B-CE4A6FE92CF5/SQL_Server_2017_Licensing_guide.pdf):
 
-   1. Masz możliwość przenoszenia [licencji](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2) w ramach programu [Software Assurance](https://www.microsoft.comlicensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3). 
+   1. Masz możliwość przenoszenia [licencji](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2) w ramach programu [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3). 
    1. Wystąpienie SQL Server pasywne nie obsługuje SQL Server danych do klientów ani nie uruchamia aktywnych obciążeń SQL Server. Jest on używany tylko do synchronizacji z serwerem podstawowym i w inny sposób utrzymują pasywną bazę danych w stanie rezerwy aktywnej. Jeśli obsługuje dane, takie jak raporty do klientów korzystających z aktywnych obciążeń SQL Server lub wykonywania dowolnego "pracy", takich jak dodatkowe kopie zapasowe z serwera pomocniczego, musi to być płatne wystąpienie SQL Server licencjonowane. 
    1. Licencja na aktywną SQL Server jest objęta programem Software Assurance i umożliwia obsługę **jednego** pasywnego wystąpienia SQL Server awaryjnego, z maksymalnie taką samą ilością obliczeń jak licencjonowany aktywny serwer. 
    1. Pomocnicza maszyna wirtualna SQL Server wykorzystuje [model licencji](virtual-machines-windows-sql-ahb.md)"BYOL" lub korzyść użycia hybrydowego platformy Azure (AHB). 

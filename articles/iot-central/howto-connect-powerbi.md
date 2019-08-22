@@ -1,101 +1,103 @@
 ---
-title: Wizualizuj dane na pulpicie nawigacyjnym usługi Power BI z usługi Azure IoT Central | Dokumentacja firmy Microsoft
-description: Rozwiązania usługi Power BI dla usługi Azure IoT Central umożliwia wizualizowanie i analizowanie danych IoT Central.
+title: Wizualizowanie danych usługi Azure IoT Central na pulpicie nawigacyjnym Power BI | Microsoft Docs
+description: Użyj rozwiązania Power BI dla IoT Central platformy Azure, aby wizualizować i analizować dane IoT Central.
 ms.service: iot-central
 services: iot-central
 author: viv-liu
 ms.author: viviali
 ms.date: 06/09/2019
 ms.topic: conceptual
-ms.openlocfilehash: 16d7691d59e0805c7f8cf565a599ca5e6a78a7cf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 897b72dd7b292492e45cdc7401fe1acc5c86ca20
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67053047"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877452"
 ---
-# <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Wizualizowanie i analizowanie danych usługi Azure IoT Central na pulpicie nawigacyjnym usługi Power BI
+# <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Wizualizowanie i analizowanie danych IoT Central platformy Azure na pulpicie nawigacyjnym Power BI
 
-*W tym temacie mają zastosowanie do administratorów.*
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
-![Usługa Power BI rozwiązanie potoku](media/howto-connect-powerbi/iot-continuous-data-export.png)
+*Ten temat ma zastosowanie do administratorów.*
 
-Rozwiązania usługi Power BI dla usługi Azure IoT Central umożliwia twórz zaawansowane pulpity nawigacyjne usługi Power BI do monitorowania wydajności urządzeń IoT. Na pulpicie nawigacyjnym usługi Power BI możesz wykonywać następujące czynności:
-- Śledzenie danych, ile urządzeń jest wysyłany wraz z upływem czasu
-- Porównaj ilość danych telemetrii, stanów i zdarzenia
-- Identyfikowanie urządzeń przesyłających raporty mnóstwo pomiarów
-- Obserwowanie trendów historycznych pomiarów urządzenia
-- Zidentyfikować problematyczne urządzenia, które wysyłania partii zdarzeń krytycznych
+![Potok rozwiązania Power BI](media/howto-connect-powerbi/iot-continuous-data-export.png)
 
-To rozwiązanie Konfiguruje potok, który przenosi dane na koncie magazynu obiektów Blob platformy Azure z [ciągły Eksport danych](howto-export-data.md). Te dane są przekazywane za pośrednictwem do usługi Azure Functions, Azure Data Factory i Azure SQL Database, przetwarzać i przekształcać dane. Dane wyjściowe można zwizualizować i analizowane w raporcie usługi Power BI, który można pobrać jako plik PBIX. Wszystkie te zasoby są tworzone w ramach subskrypcji platformy Azure, więc można dostosować do własnych potrzeb każdego składnika.
+Użyj rozwiązania Power BI dla IoT Central platformy Azure, aby utworzyć zaawansowany pulpit nawigacyjny Power BI do monitorowania wydajności urządzeń IoT. Na pulpicie nawigacyjnym Power BI można:
+- Śledzenie ilości danych wysyłanych przez urządzenia z biegiem czasu
+- Porównanie ilości danych między telemetrią, Stanami i zdarzeniami
+- Zidentyfikuj urządzenia, które zgłaszają wiele pomiarów
+- Obserwuj historyczne trendy pomiarów urządzeń
+- Identyfikowanie problematycznych urządzeń, które wysyłają wiele krytycznych zdarzeń
 
-## <a name="get-the-power-bi-solution-for-azure-iot-centralhttpsakamsiotcentralpowerbisolutiontemplate-from-microsoft-appsource"></a>Pobierz [usługi Power BI Solution dla usługi Azure IoT Central](https://aka.ms/iotcentralpowerbisolutiontemplate) z usługi Microsoft AppSource.
+To rozwiązanie konfiguruje potok, który pobiera dane z konta usługi Azure Blob Storage z [ciągłego eksportu danych](howto-export-data.md). Te dane są przesyłane przez program do Azure Functions, Azure Data Factory i Azure SQL Database do przetwarzania i przekształcania danych. Dane wyjściowe można wizualizować i analizować w Power BI raport, który można pobrać jako plik PBIX. Wszystkie te zasoby są tworzone w ramach subskrypcji platformy Azure, dzięki czemu można dostosować każdy składnik do swoich potrzeb.
+
+## <a name="get-the-power-bi-solution-for-azure-iot-centralhttpsakamsiotcentralpowerbisolutiontemplate-from-microsoft-appsource"></a>Pobierz [Power BI rozwiązanie dla platformy Azure IoT Central](https://aka.ms/iotcentralpowerbisolutiontemplate) z Microsoft AppSource.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Konfigurowanie rozwiązania wymaga następujących elementów:
+Skonfigurowanie rozwiązania wymaga następujących czynności:
 - Dostęp do subskrypcji platformy Azure
-- Wyeksportowane dane przy użyciu [ciągły Eksport danych](howto-export-data.md) z aplikacji IoT Central. Zalecane jest włączenie pomiarów, urządzeń i strumieni szablonu urządzenia do w pełni wykorzystać pulpit nawigacyjny usługi Power BI.
-- Usługa Power BI Desktop (Najnowsza wersja)
-- Usługa Power BI Pro (Jeśli chcesz udostępnić pulpit nawigacyjny)
+- Wyeksportowane dane przy użyciu [ciągłego eksportu danych](howto-export-data.md) z aplikacji IoT Central. Zalecamy włączenie pomiarów, urządzeń i strumieni szablonów urządzeń w celu maksymalnego wykorzystania pulpitu nawigacyjnego Power BI.
+- Power BI Desktop (Najnowsza wersja)
+- Power BI Pro (Jeśli chcesz udostępnić pulpit nawigacyjny innym osobom)
 
 ## <a name="reports"></a>Raporty
 
 Dwa raporty są generowane automatycznie. 
 
-Pierwszy raport przedstawia widok historycznych pomiarów zgłaszane przez urządzenia i dzieli różnego rodzaju pomiarów i urządzeń, które wysłały największa liczba pomiarów dotyczących prawdziwych.
+Pierwszy raport przedstawia historyczny widok pomiarów raportowanych przez urządzenia i dzieli różne typy pomiarów i urządzeń, które przesłały najwyższą liczbę pomiarów.
 
-![Strona raportu usługi Power BI 1](media/howto-connect-powerbi/template-page1-hasdata.PNG)
+![Strona raportu Power BI 1](media/howto-connect-powerbi/template-page1-hasdata.PNG)
 
-Drugi raport bardziej omawia zdarzeń i pokazuje widok historyczny błędów i ostrzeżeń zgłaszanych. Pokazuje również, które urządzenia zgłaszanej największa liczba zdarzeń wszystkich programach i połączeniach, a także specjalnie zdarzeń błędu i ostrzeżenia.
+Drugi raport omówieniach bardziej szczegółowy i zawiera historyczny widok błędów i ostrzeżeń zgłoszonych. Przedstawiono w nim również, które urządzenia zgłaszają największą liczbę zdarzeń, a także szczegółowe zdarzenia błędów i zdarzenia ostrzegawcze.
 
-![Strona raportu usługi Power BI 2](media/howto-connect-powerbi/template-page2-hasdata.PNG)
+![Strona raportu Power BI 2](media/howto-connect-powerbi/template-page2-hasdata.PNG)
 
 ## <a name="architecture"></a>Architektura
-Wszystkie zasoby, które zostały utworzone są dostępne w witrynie Azure portal. Wszystko, co powinna być w jednej grupie zasobów.
+Do wszystkich utworzonych zasobów można uzyskać dostęp w Azure Portal. Wszystkie elementy powinny znajdować się w jednej grupie zasobów.
 
-![Azure Portal widok grupy zasobów](media/howto-connect-powerbi/azure-deployment.PNG)
+![Widok grupy zasobów w witrynie Azure Portal](media/howto-connect-powerbi/azure-deployment.PNG)
 
-Szczegółowe informacje na temat poszczególnych zasobów i jak zostanie wykorzystany jest opisane poniżej.
+Szczegóły poszczególnych zasobów i sposobu ich użycia opisano poniżej.
 
 ### <a name="azure-functions"></a>Azure Functions
-Aplikacja funkcji platformy Azure pobiera wyzwalane każdorazowo, gdy nowy plik jest zapisywany do magazynu obiektów Blob. Funkcje wyodrębniania pól w ramach każdego pomiarów, urządzeń i plików szablonów urządzeń i wypełnienie kilka pośrednich tabel SQL ma być używany przez usługi Azure Data Factory.
+Aplikacja funkcji platformy Azure jest wyzwalana za każdym razem, gdy nowy plik zostanie zapisany w magazynie obiektów BLOB. Funkcje wyodrębniają pola w ramach każdego pomiaru, urządzeń i pliku szablonów urządzeń i wypełniają kilka pośrednich tabel SQL, które mają być używane przez Azure Data Factory.
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
-Usługa Azure Data Factory łączy się z bazą danych SQL jako połączona usługa. Jest ono wykonywane działania procedury składowanej, które przetwarza dane i zapisz go w tabelach analizy.
+Azure Data Factory nawiązuje połączenie z bazą danych SQL jako połączoną usługę. Uruchamia działania procedur składowanych, które przetwarzają dane i przechowują je w tabelach analizy.
 
 ### <a name="azure-sql-database"></a>Azure SQL Database
-Te tabele są tworzone automatycznie, aby wypełnić domyślnych raportów. Eksploruj te schematy w usłudze Power BI i tworzyć własne wizualizacje oparte na tych danych.
+Te tabele są tworzone automatycznie w celu wypełnienia raportów domyślnych. Zapoznaj się z tymi schematami w Power BI i możesz utworzyć własne wizualizacje na tych danych.
 
 | Nazwa tabeli |
 |------------|
-|[analizy]. [Pomiarów]|
-|[analizy]. Komunikaty [o]|
-|[etap]. [Pomiarów]|
-|[analytics].[Properties]|
+|[Analiza]. Pomiarów|
+|[Analiza]. Komunikaty|
+|[etap]. Pomiarów|
+|[Analiza]. Aœciwoœci|
 |[analytics].[PropertyDefinitions]|
-|[analizy]. [MeasurementDefinitions]|
-|[analizy]. [Urządzeń]|
-|[analizy]. [DeviceTemplates]|
-|[dbo]. [date]|
-|[dbo].[ChangeTracking]|
+|[Analiza]. [MeasurementDefinitions]|
+|[Analiza]. Urządzeniem|
+|[Analiza]. [DeviceTemplates]|
+|[dbo]. dniu|
+|[dbo]. Śledzenia zmian|
 
 ## <a name="estimated-costs"></a>Szacowane koszty
 
-W tym miejscu jest zaangażowane oszacować koszty platformy Azure (funkcji platformy Azure, Data Factory, Azure SQL). Wszystkie ceny są podane w USD. Należy pamiętać, że ceny różnią się zależnie od regionu, dzięki czemu zawsze powinna wyszukiwać najnowszymi cenami poszczególnych usług, aby uzyskać rzeczywiste ceny.
-Następujące wartości domyślne są ustawione dla Ciebie w szablonie (możesz zmodyfikować któregoś z powyższych po elementy Pobierz):
+Poniżej przedstawiono oszacowanie kosztów platformy Azure (Azure Function, Data Factory, Azure SQL). Wszystkie ceny są podane w USD. Należy pamiętać, że ceny różnią się w zależności od regionu, więc zawsze należy szukać najnowszych cen poszczególnych usług w celu uzyskania rzeczywistych cen.
+Następujące wartości domyślne są ustawiane w szablonie (można je zmodyfikować po skonfigurowaniu):
 
-- Usługa Azure Functions: Plan usługi App Service w wersji S1, 74.40 $/ miesiąc
-- S1 usługi Azure SQL, ~$30/month
+- Azure Functions: Plan App Service S1, $74.40 miesięcznie
+- Azure SQL S1, ~ $30 miesięcznie
 
-Zachęcamy do zapoznania się z różne opcje cenowe i dostosować elementy do własnych potrzeb.
+Zachęcamy do zapoznania się z różnymi opcjami cenowymi i dostosowaniem ich do Twoich potrzeb.
 
 ## <a name="resources"></a>Zasoby
 
-Odwiedź stronę usługi AppSource, aby uzyskać [usługi Power BI Solution dla usługi Azure IoT Central](https://aka.ms/iotcentralpowerbisolutiontemplate).
+Odwiedź stronę AppSource, aby uzyskać [Power BI rozwiązanie dla IoT Central platformy Azure](https://aka.ms/iotcentralpowerbisolutiontemplate).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy wiesz jak wizualizować dane w usłudze Power BI, poniżej przedstawiono sugerowany następnego kroku:
+Teraz, gdy wiesz już, jak wizualizować dane w Power BI, poniżej przedstawiono sugerowany następny krok:
 
 > [!div class="nextstepaction"]
 > [Jak zarządzać urządzeniami](howto-manage-devices.md)

@@ -1,0 +1,46 @@
+---
+title: Rozwiązanie VMware firmy Azure według CloudSimple — wybierz rozwiązanie do równoważenia obciążenia dla chmur prywatnych CloudSimple
+description: Opisuje opcje równoważenia obciążenia wdrażanie aplikacji w chmurze prywatnej
+author: sharaths-cs
+ms.author: b-shsury
+ms.date: 08/20/2019
+ms.topic: article
+ms.service: azure-vmware-cloudsimple
+ms.reviewer: cynthn
+manager: dikamath
+ms.openlocfilehash: f6fc5112f7106c6cc8f8736237ce803da43cd882
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69881049"
+---
+# <a name="choose-a-load-balancing-solution-for-cloudsimple-private-clouds"></a>Wybierz rozwiązanie do równoważenia obciążenia dla chmur prywatnych CloudSimple
+
+Podczas wdrażania aplikacji w chmurze prywatnej CloudSimple można wybrać dowolną z kilku opcji równoważenia obciążenia.
+
+Możesz wybrać wirtualny lub oparty na oprogramowaniu moduł równoważenia obciążenia w chmurze prywatnej usługi CloudSimple, a nawet użyć modułu równoważenia obciążenia (P7) platformy Azure działającego w ramach subskrypcji platformy Azure, aby frontonować maszyny wirtualne warstwy sieci Web działające w chmurze prywatnej CloudSimple. Oto kilka opcji:
+
+## <a name="virtual-load-balancers"></a>Wirtualne moduły równoważenia obciążenia
+
+Wirtualne urządzenia usługi równoważenia obciążenia można wdrożyć w środowisku VMware za pomocą interfejsu vCenter i skonfigurować je do frontonu ruchu aplikacji.
+
+Niektórzy popularni dostawcy: NginX http://nginx.org/en/docs/http/load_balancing.html F5-BigIP — Traffic Manager: https://www.f5.com/products/big-ip-services/virtual-editions Citrix ADC: https://www.citrix.com/products/citrix-adc/
+
+## <a name="azure-l7-load-balancer"></a>Moduł równoważenia obciążenia (P7) platformy Azure
+
+W przypadku korzystania z usługi Azure Application Gateway jako modułu równoważenia obciążenia P7 dla aplikacji działającej w chmurze prywatnej nie trzeba zarządzać oprogramowaniem usługi równoważenia obciążenia. Oprogramowanie usługi równoważenia obciążenia jest zarządzane przez platformę Azure. Wszystkie maszyny wirtualne warstwy sieci Web w chmurze prywatnej używają prywatnych adresów IP i nie wymagają dodatkowych reguł translatora adresów sieciowych ani publicznych adresów IP do rozpoznawania nazw. Maszyny wirtualne warstwy sieci Web komunikują się z Application Gateway platformy Azure za pośrednictwem połączenia prywatnego, o małym opóźnieniu i dużej przepustowości.
+
+Aby dowiedzieć się więcej o konfigurowaniu tego rozwiązania, zapoznaj się z przewodnikiem po rozwiązaniu dotyczącym korzystania z usługi Azure Application Gateway jako modułu równoważenia obciążenia P7.
+
+## <a name="azure-internal-load-balancer"></a>Wewnętrzny moduł równoważenia obciążenia platformy Azure
+
+Jeśli zdecydujesz się uruchomić aplikację w ramach wdrożenia hybrydowego, w którym warstwa frontonu internetowego jest uruchomiona w sieci wirtualnej platformy Azure w ramach subskrypcji platformy Azure, a warstwa bazy danych aplikacji jest uruchomiona na maszynach wirtualnych programu VMware w chmurze prywatnej CloudSimple, możesz użyć wewnętrznego ładowania platformy Azure Moduł równoważenia obciążenia (P4) przed maszynami wirtualnymi warstwy bazy danych na potrzeby zarządzania ruchem.
+
+Aby dowiedzieć się więcej, zobacz Dokumentacja [wewnętrzna Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer) platformy Azure.
+
+## <a name="global-server-load-balancer"></a>Moduł równoważenia obciążenia serwera globalnego
+
+Jeśli szukasz modułu równoważenia obciążenia opartego na systemie DNS, możesz skorzystać z rozwiązań innych firm dostępnych w witrynie Azure Marketplace lub przejść na natywne rozwiązanie platformy Azure.
+
+Azure Traffic Manager to oparty na systemie DNS moduł równoważenia obciążenia, który umożliwia optymalne dystrybuowanie ruchu do usług w globalnych regionach platformy Azure i lokalnych, zapewniając wysoką dostępność i czas odpowiedzi. Aby dowiedzieć się więcej, zobacz dokumentację usługi Azure [Traffic Manager](../traffic-manager/traffic-manager-configure-geographic-routing-method.md) .

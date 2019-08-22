@@ -1,13 +1,13 @@
 ---
-title: Dodać profile oceniania do indeksu wyszukiwania — usługa Azure Search
-description: Zwiększ randze wyszukiwania dla wyników wyszukiwania w usłudze Azure Search, dodając profile oceniania.
+title: Dodawanie profilów oceniania do indeksu wyszukiwania — Azure Search
+description: Zwiększ wyniki określania rangi wyszukiwania dla Azure Search wyników wyszukiwania, dodając profile oceniania.
 ms.date: 05/02/2019
 services: search
 ms.service: search
 ms.topic: conceptual
 author: Brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,22 +19,22 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 9ccb6944227208cee8601751cf43a53c111c09c6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 547cd318a922e242198e1d2aee6806f73a16bd64
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65021627"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648865"
 ---
-# <a name="add-scoring-profiles-to-an-azure-search-index"></a>Dodać profile oceniania do indeksu usługi Azure Search
+# <a name="add-scoring-profiles-to-an-azure-search-index"></a>Dodawanie profilów oceniania do indeksu Azure Search
 
-  Ocenianie odwołuje się do obliczania *Wyszukaj wynik* dla każdego elementu w wynikach wyszukiwania. Wynik jest wskaźnikiem istotności elementów w kontekście bieżącej operacji wyszukiwania. Im większa liczba punktów, tym większe znaczenie elementu. W wynikach wyszukiwania elementy są uporządkowane od największej do niski, oparte na wyszukiwaniu obliczane dla każdego elementu rangi.  
+  Ocenianie odnosi się do obliczenia *wyniku wyszukiwania* dla każdego elementu zwróconego w wynikach wyszukiwania. Wynik jest wskaźnikiem istotności elementu w kontekście bieżącej operacji wyszukiwania. Im wyższy wynik, tym bardziej istotny element. W wynikach wyszukiwania elementy mają rangę uporządkowaną od wysokiej do niskiego poziomu na podstawie wyników wyszukiwania obliczonych dla każdego elementu.  
 
- Usługa Azure Search korzysta z domyślnego przyznawania ocen, aby obliczenia wyniku początkowej, ale można dostosować obliczenia za pośrednictwem *profil oceniania*. Profile oceniania zapewniają większą kontrolę nad kolejność elementów w wynikach wyszukiwania. Na przykład można zwiększyć elementów, w oparciu o ich potencjalne przychody, promowanie nowe elementy i być może zwiększyć elementy, które zostały w spisie jest za długa.  
+ Azure Search używa domyślnego oceniania, aby obliczyć początkowy wynik, ale można dostosować obliczenia za pośrednictwem *profilu oceniania*. Profile oceniania zapewniają większą kontrolę nad klasyfikacją elementów w wynikach wyszukiwania. Na przykład możesz chcieć poprawić elementy w oparciu o potencjalną przychody, podwyższyć poziom nowych elementów lub ewentualnie poprawić elementy, które zostały zbyt długie.  
 
- Profil oceniania jest częścią definicji indeksu, składa się z pól ważona, funkcje i parametry.  
+ Profil oceniania jest częścią definicji indeksu składającą się z pól ważonych, funkcji i parametrów.  
 
- Umożliwiają oszacowanie wygląda profilu oceniania, poniższy przykład pokazuje prosty profil o nazwie "geograficznej". Ta zwiększa elementy, które zawierają termin wyszukiwania w **hotelName** pola. Korzysta również `distance` funkcję, aby preferował elementów znajdujących się w ciągu dziesięciu kilometrów od bieżącej lokalizacji. Ktoś wyszukuje wystąpienia terminu "numer identyfikacyjny" i "numer identyfikacyjny" stanie się być częścią Nazwa hotelu, dokumenty, które obejmują hotele za pomocą "inn" w promieniu 10 KM bieżącą lokalizację pojawi się wyżej w wynikach wyszukiwania.  
+ Aby przedstawić pomysł dotyczący tego, jak wygląda profil oceniania, Poniższy przykład pokazuje prosty profil o nazwie "Geo". Ta wartość zwiększa elementy, które mają termin wyszukiwania w polu **hotelname** . Używa ona również `distance` funkcji, aby preferować elementy, które znajdują się w obrębie dziesięciu kilometrów bieżącej lokalizacji. Jeśli ktoś przeszukuje termin "Inn", a "Inn" będzie częścią nazwy hotelu, dokumenty, które zawierają Hotele z "Inn" w promieniu 10 kilometrów bieżącej lokalizacji, będą wyświetlane w wynikach wyszukiwania.  
 
 
 ```  
@@ -63,34 +63,34 @@ ms.locfileid: "65021627"
 ```  
 
 
- Aby użyć tego profilu oceniania, zapytanie jest określona w sposób wybierz profil, który w ciągu zapytania. W poniższym zapytaniu Zwróć uwagę, parametr zapytania `scoringProfile=geo` w żądaniu.  
+ Aby użyć tego profilu oceniania, zapytanie jest formułowane w celu określenia profilu w ciągu zapytania. W poniższym zapytaniu Zwróć uwagę na parametr `scoringProfile=geo` zapytania w żądaniu.  
 
 ```  
 GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentLocation--122.123,44.77233&api-version=2019-05-06 
 ```  
 
- To zapytanie wyszukuje wystąpienia terminu "numer identyfikacyjny" i przekazuje w bieżącej lokalizacji. Zwróć uwagę, że to zapytanie zawiera inne parametry takich jak `scoringParameter`. Parametry zapytania są opisane w [wyszukiwania dokumentów &#40;interfejsu API REST usługi Azure Search&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).  
+ To zapytanie wyszukuje termin "Inn" i przekazuje w bieżącej lokalizacji. Zwróć uwagę, że to zapytanie zawiera inne parametry, `scoringParameter`takie jak. Parametry zapytania są opisane w [dokumentach &#40;wyszukiwania Azure Search Interfejs&#41;API REST usługi](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).  
 
- Kliknij przycisk [przykład](#bkmk_ex) Aby zapoznać się z bardziej szczegółowy przykład profilu oceniania.  
+ Kliknij [przykład](#bkmk_ex) , aby zapoznać się z bardziej szczegółowym przykładem profilu oceniania.  
 
-## <a name="what-is-default-scoring"></a>Co to jest oceniania domyślny?  
- Ocenianie oblicza wynik wyszukiwania dla każdego elementu w zestawie rangi uporządkowanych wyników. Każdy element w zestawie wyników wyszukiwania jest przypisany wyniku wyszukiwania, a następnie randze spośród wszystkich dokumentów najwyższej do najniższej. Elementy z wyższym wyniki są zwracane do aplikacji. Domyślnie zwracane są najważniejsze 50, ale można użyć `$top` parametru do zwrócenia mniejszy lub większy liczbę elementów (maksymalnie 1000 w jednej odpowiedzi).  
+## <a name="what-is-default-scoring"></a>Co to jest ocena domyślna?  
+ Ocenianie oblicza wynik wyszukiwania dla każdego elementu w zestawie wyników uporządkowane według rangi. Każdy element w zestawie wyników wyszukiwania ma przypisany wynik wyszukiwania, a następnie rangę do najniższego. Elementy o wyższych wynikach są zwracane do aplikacji. Domyślnie są zwracane górne 50, ale można użyć `$top` parametru, aby zwrócić mniejszą lub większą liczbę elementów (do 1000 w jednej odpowiedzi).  
 
-Wynik wyszukiwania jest obliczana na podstawie właściwości statystyczne danych i zapytania. Usługa Azure Search znajduje dokumenty, które zawierają terminy wyszukiwania w ciągu zapytania (niektóre lub wszystkie, w zależności od `searchMode`), favoring dokumentów, które zawierają wiele wystąpień termin wyszukiwania. Wynik wyszukiwania przechodzi w górę nawet większe, jeśli termin jest rzadkie dla indeksu danych, ale typowe w dokumencie. Podstawa dla tej metody do przetwarzania informacji o zgodności jest znany jako [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) lub określenie częstotliwości odwrotność dokumentu częstotliwości.  
+Wynik wyszukiwania jest obliczany na podstawie właściwości statystycznych danych i zapytania. Azure Search odnajduje dokumenty, które zawierają terminy wyszukiwania w ciągu zapytania (niektóre lub wszystkie, w `searchMode`zależności od), preferując dokumenty zawierające wiele wystąpień wyszukiwanego terminu. Wynik wyszukiwania jest nawet wyższy, jeśli termin jest rzadki w indeksie danych, ale jest często używany w dokumencie. Podstawą tego podejścia do obliczania istotności jest znana wartość [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) lub Term częstotliwość odwracania dokumentu.  
 
- Przy założeniu, że nie ma żadnych niestandardowych sortowanie, wyniki są następnie randze spośród wszystkich dokumentów według wyników wyszukiwania zanim zostaną one zwrócone do aplikacji wywołującej. Jeśli nie określono $top, zwracane są 50 elementów o najwyższym wynikiem wyszukiwania.  
+ Przy założeniu, że nie ma sortowania niestandardowego, wyniki są klasyfikowane według wyniku wyszukiwania przed zwróceniem do aplikacji wywołującej. Jeśli nie określono $top, zwracane są elementy 50 o najwyższej punktacji wyszukiwania.  
 
- Wartości wynik wyszukiwania można powtarzać w całym zestawie wyników. Przykładowo może istnieć 10 elementów z wynikiem 1.2, 20 elementów z wynikiem 1.0 i 20 elementów z wynikiem wynosi 0,5. Gdy wiele trafień mają ten sam wynik wyszukiwania, kolejność tych samych towarów ocenami nie jest zdefiniowana, a nie jest stabilna. Uruchom zapytanie ponownie, a zobaczysz w nim elementy pozycji przesunięcia. Biorąc pod uwagę dwa elementy z oceną identyczne, nie ma gwarancji co występuje jako pierwszy.  
+ Wartości wyniku wyszukiwania można powtarzać w zestawie wyników. Przykładowo może być 10 elementów z wynikiem 1,2, 20 elementów z wynikiem 1,0 i 20 elementów z wynikiem 0,5. Gdy wiele trafień ma ten sam wynik wyszukiwania, kolejność tego samego oceny elementów nie jest zdefiniowana i nie jest stabilna. Uruchom ponownie zapytanie i możesz zobaczyć pozycje zmiany położenia. W przypadku dwóch elementów o identycznym wyniku nie ma gwarancji, która jest wyświetlana w pierwszej kolejności.  
 
-## <a name="when-to-use-custom-scoring"></a>Kiedy należy używać niestandardowego przyznawania ocen  
- Należy utworzyć co najmniej jeden profil oceniania, gdy nie jest akceptowana wartość domyślna Klasyfikacja zachowanie wystarczający w spełnienie celów biznesowych. Na przykład można zdecydować, czy nowo dodanych elementów powinny favor, trafności wyszukiwania. Podobnie Niewykluczone, że pole zawierające marża zysku lub inne pole, wskazując potencjalne przychody. Ulepszanie trafień, które zapewniają korzyści dla Twojej firmy może być ważnym czynnikiem w podejmowaniu decyzji o użyciu profile oceniania.  
+## <a name="when-to-use-custom-scoring"></a>Kiedy używać oceniania niestandardowego  
+ Należy utworzyć co najmniej jeden profil oceniania, gdy domyślne zachowanie klasyfikacji nie jest wystarczająco dużo zgodne z celami biznesowymi. Na przykład możesz zdecydować, że istotność wyszukiwania powinna preferować nowo dodane elementy. Podobnie może istnieć pole zawierające marżę zysku lub inne pole wskazujące potencjalną przychody. Zwiększenie możliwości zwiększania korzyści dla Twojej firmy może być ważnym czynnikiem decydującym o korzystaniu z profilów oceniania.  
 
- Na podstawie dokładność kolejność również jest implementowane za pomocą profile oceniania. Należy wziąć pod uwagę strony wyników wyszukiwania używane w przeszłości, dzięki którym możesz sortować według ceny, Data, ocena lub istotności. W usłudze Azure Search profile oceniania dysku opcji "przydatność". Definicja istotności jest kontrolowana przez Ciebie uzależniona od celów biznesowych i typu wyszukiwania, które mają zostać dostarczone.  
+ Kolejność oparta na dokładność jest również wdrażana za pomocą profilów oceniania. Zapoznaj się ze stronami wyników wyszukiwania, które były używane w przeszłości, aby posortować według ceny, daty, oceny lub istotności. W Azure Search, profile oceniania mają opcję "istotność". Definicja istotności jest kontrolowana przez użytkownika, predykaty z celami biznesowymi i typem środowiska wyszukiwania, które chcesz dostarczyć.  
 
-##  <a name="bkmk_ex"></a> Przykład  
- Jak wspomniano wcześniej, dostosowane oceniania jest implementowane za pomocą co najmniej jeden profil oceniania zdefiniowanej w schemacie indeksu.  
+##  <a name="bkmk_ex"></a>Przyklad  
+ Jak wspomniano wcześniej, dostosowana Ocena jest implementowana przez co najmniej jeden profil oceniania zdefiniowany w schemacie indeksu.  
 
- Ten przykład przedstawia schematu indeksu dwa profile oceniania (`boostGenre`, `newAndHighlyRated`). Wszystkie zapytania względem tego indeksu, który zawiera profil albo parametr zapytania będziesz używać profilu, który będzie oceniać zestaw wyników.  
+ Ten przykład przedstawia schemat indeksu z dwoma profilami oceniania (`boostGenre`, `newAndHighlyRated`). Każde zapytanie względem tego indeksu, które zawiera profil jako parametr zapytania, będzie używać profilu do oceny zestawu wyników.  
 
 ```  
 {  
@@ -158,23 +158,23 @@ Wynik wyszukiwania jest obliczana na podstawie właściwości statystyczne danyc
 ```  
 
 ## <a name="workflow"></a>Przepływ pracy  
- Aby zaimplementować niestandardowe zachowanie oceniania, Dodaj profil oceniania schematu, który definiuje indeks. Może mieć maksymalnie 100 profile w ramach indeksu oceniania (zobacz [limity usługi](search-limits-quotas-capacity.md)), ale w czasie w dowolnej podanej kwerendy można określić tylko jeden profil.  
+ Aby zaimplementować niestandardowe zachowanie oceniania, Dodaj profil oceniania do schematu, który definiuje indeks. W indeksie mogą znajdować się maksymalnie 100 profile oceniania (zobacz [limity usługi](search-limits-quotas-capacity.md)), ale w danym momencie można określić tylko jeden profil w danym zapytaniu.  
 
- Rozpoczynać [szablonu](#bkmk_template) podane w tym temacie.  
+ Zacznij od [szablonu](#bkmk_template) podanego w tym temacie.  
 
- Podaj nazwę. Profile oceniania są opcjonalne, ale jeśli dodasz jeden, wymagana jest nazwa. Należy postępować zgodnie z konwencjami nazewnictwa dla pola (rozpoczyna się od litery i pozwala uniknąć znaki specjalne i słowa zastrzeżone). Zobacz [reguły nazewnictwa &#40;usługi Azure Search&#41; ](https://docs.microsoft.com/rest/api/searchservice/naming-rules) pełną listę.  
+ Podaj nazwę. Profile oceniania są opcjonalne, ale jeśli je dodajesz, nazwa jest wymagana. Upewnij się, że przestrzegasz konwencji nazewnictwa dla pól (rozpoczyna się od litery, unika znaków specjalnych i słów zarezerwowanych). Aby uzyskać pełną listę, zobacz [ &#40;reguły nazewnictwa Azure Search&#41; ](https://docs.microsoft.com/rest/api/searchservice/naming-rules) .  
 
- Treść profilu oceniania jest tworzona z pól ważona i funkcji.  
+ Treść profilu oceniania jest tworzona na podstawie ważonych pól i funkcji.  
 
 |||  
 |-|-|  
-|**Wagi**|Określ pary nazwa wartość, których przypisanie względną wagę do pola. W [przykład](#bkmk_ex), albumTitle gatunku i artistName pola są odpowiednio wzmocnione wersje od 1.5, 5 i 2. Dlaczego jest gatunku wzmocnione znacznie wyższe niż inne? Jeśli wyszukiwanie jest przeprowadzane nad danymi, które są nieco jednorodnego (tak jak w przypadku za pomocą "gatunku" w `musicstoreindex`), możesz potrzebować większej wariancji w względnych wag. Na przykład w `musicstoreindex`, "rock" pojawia się jako zarówno gatunku i w opisach gatunku identycznie ma inną pisownię. Chcąc gatunku, aby zrównoważyć opis gatunku, pole gatunku należy znacznie wyższa waga względnych.|  
-|**Funkcje**|Używany, gdy dodatkowe obliczenia są wymagane dla określonych kontekstach. Prawidłowe wartości to `freshness`, `magnitude`, `distance`, i `tag`. Każda funkcja ma następujące parametry, które są unikatowe.<br /><br /> -   `freshness` Jeśli chcesz zwiększyć możliwości, należy użyć jak nowej lub starej element to. Tej funkcji należy używać tylko z `datetime` pola (edm. DataTimeOffset). Zwróć uwagę `boostingDuration` atrybut jest używany tylko w przypadku `freshness` funkcji.<br />-   `magnitude` należy używać, gdy chcesz zwiększyć oparte na sposób wysokiego lub niska wartość liczbowa jest. Scenariusze, które wywołują tę funkcję, aby uzyskać obejmują zwiększania wyniku marża zysku, najwyższej ceny, najniższą cenę lub liczba plików do pobrania. Ta funkcja może służyć tylko z polami Podwójna precyzja i liczby całkowitej.<br />     Aby uzyskać `magnitude` funkcji, można odwrócić zakresu, wysoka, aby małych, jeśli chcesz, aby odwrotność wzorca (na przykład, aby elementy boost tańszych więcej niż wyższych cenach elementów). Biorąc pod uwagę zakres cen od 100 do $1, należy ustawić `boostingRangeStart` 100 i `boostingRangeEnd` od 1 do poprawienia elementów niższej cenie.<br />-   `distance` należy używać, gdy użytkownik chce zwiększyć sąsiedztwie lub lokalizacji geograficznej. Tej funkcji należy używać tylko z `Edm.GeographyPoint` pola.<br />-   `tag` należy używać, gdy użytkownik chce zwiększyć według tagów w typowych między dokumentami a zapytania wyszukiwania. Tej funkcji należy używać tylko z `Edm.String` i `Collection(Edm.String)` pola.<br /><br /> **Reguły dotyczące używania funkcji**<br /><br /> Typ funkcji (`freshness`, `magnitude`, `distance`), `tag` muszą być małymi literami.<br /><br /> Funkcji nie może zawierać wartości null ani być pusta. W szczególności jeśli nazwa pola, należy ustawić tekst w rodzaju.<br /><br /> Funkcje można stosować tylko do pól z możliwością filtrowania. Zobacz [Create Index &#40;interfejsu API REST usługi Azure Search&#41; ](https://docs.microsoft.com/rest/api/searchservice/create-index) Aby uzyskać więcej informacji na temat pól z możliwością filtrowania.<br /><br /> Funkcje będzie stosowany tylko do pól, które są zdefiniowane w kolekcji pól indeks.|  
+|**Ważenie**|Określ pary nazwa-wartość, które przypisują względną wagę do pola. W [przykładzie](#bkmk_ex)pola albumTitle, gatunek i artyściname są podwyższane odpowiednio do 1,5, 5 i 2. Dlaczego gatunek jest podwyższany o wiele więcej niż inne? Jeśli wyszukiwanie jest przeprowadzane nad danymi, które są dość jednorodne (podobnie jak w przypadku "gatunek" w `musicstoreindex`), może być potrzebna większa Wariancja w odniesieniu do wag względnych. Na przykład w `musicstoreindex`, "Rock" pojawia się zarówno jako gatunek, jak i w identycznie sformułowanych opisach gatunku. Jeśli chcesz, aby gatunek miał wartość Opis gatunku, pole gatunek będzie wymagało znacznie wyższej wagi względnej.|  
+|**Funkcje**|Używane, gdy dodatkowe obliczenia są wymagane dla określonych kontekstów. Prawidłowe wartości to `freshness`, `magnitude`, `distance`, i `tag`. Każda funkcja ma parametry, które są unikatowe dla niego.<br /><br /> -   `freshness`powinien być używany, gdy chcesz zwiększyć, jak ma być nowy lub stary element. Tej funkcji można używać tylko z `datetime` polami (EDM. DataTimeOffset). Zauważ, `boostingDuration` że atrybut jest używany tylko `freshness` z funkcją.<br />-   `magnitude`powinien być używany, gdy chcesz wzrosnąć w zależności od tego, jak wysoka lub niska wartość liczbowa jest. Scenariusze, które wywołują tę funkcję, obejmują zwiększenie wydajności według marży zysku, najwyższej ceny, najniższej ceny lub liczby pobrań. Tej funkcji można używać tylko z polami Double i Integer.<br />     W przypadku `magnitude` funkcji można odwrócić zakres, wysoki do niskiej, jeśli chcesz, aby wzorzec odwrotny (na przykład w celu zwiększenia liczby elementów o niższych cenach przekraczających wyższą cenę). Uwzględniając asortyment cen od $100 do $1, należy ustawić na wartość `boostingRangeStart` 100 i `boostingRangeEnd` o 1, aby zwiększyć poziom niższych cen.<br />-   `distance`powinien być używany, gdy chcesz zwiększyć się według lokalizacji w sąsiedztwie lub geograficznym. Tej funkcji można używać tylko z `Edm.GeographyPoint` polami.<br />-   `tag`należy używać, gdy chcesz zwiększyć zgodność tagów wspólnych między dokumentami i kwerendami wyszukiwania. Tej funkcji można używać tylko z `Edm.String` polami i. `Collection(Edm.String)`<br /><br /> **Reguły korzystania z funkcji**<br /><br /> Typ funkcji (`freshness`, `magnitude`, `distance`,) `tag` musi być małymi literami.<br /><br /> Funkcje nie mogą zawierać wartości null ani pustych. W przypadku uwzględnienia wartości pola NazwaPola należy ustawić ją na coś.<br /><br /> Funkcje mogą być stosowane tylko do pól z możliwością filtrowania. Aby uzyskać więcej informacji na temat pól z możliwością filtrowania, zobacz temat [Tworzenie interfejsu API &#40;&#41; REST usługi indeksowania Azure Search](https://docs.microsoft.com/rest/api/searchservice/create-index) .<br /><br /> Funkcje mogą być stosowane tylko do pól, które są zdefiniowane w kolekcji Fields indeksu.|  
 
- Po zdefiniowaniu indeksu, należy utworzyć indeks przez przekazanie schemat indeksu, a następnie dokumentów. Zobacz [Create Index &#40;interfejsu API REST usługi Azure Search&#41; ](https://docs.microsoft.com/rest/api/searchservice/create-index) i [Add, Update lub usuwanie dokumentów &#40;interfejsu API REST usługi Azure Search&#41; ](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) instrukcje na temat tych operacji. Po utworzeniu indeksu powinny mieć profil oceniania funkcjonalności, który pracuje z danymi wyszukiwania.  
+ Po zdefiniowaniu indeksu Skompiluj indeks, przekazując schemat indeksu, a następnie dokumenty. Instrukcje dotyczące tych operacji można znaleźć w temacie [Tworzenie interfejsu API &#40;&#41; REST usługi indeksowania Azure Search](https://docs.microsoft.com/rest/api/searchservice/create-index) i [Dodawanie, aktualizowanie lub usuwanie dokumentów &#40;Azure Search interfejs API&#41; REST usługi](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) . Po skompilowaniu indeksu powinien istnieć funkcjonalny profil oceniania, który współpracuje z danymi wyszukiwania.  
 
-##  <a name="bkmk_template"></a> Szablon  
- W tej sekcji przedstawiono składnię i szablon profile oceniania. Zapoznaj się [indeksu dokumentacja atrybutów](#bkmk_indexref) w następnej sekcji, aby uzyskać opis atrybutów.  
+##  <a name="bkmk_template"></a>Formularza  
+ W tej sekcji przedstawiono składnię i szablon dla profilów oceniania. Opisy atrybutów można znaleźć w dokumentacji dotyczącej [atrybutów indeksu](#bkmk_indexref) w następnej sekcji.  
 
 ```  
 . . .   
@@ -227,64 +227,64 @@ Wynik wyszukiwania jest obliczana na podstawie właściwości statystyczne danyc
 . . .  
 ```  
 
-##  <a name="bkmk_indexref"></a> Dokumentacja atrybutów indeksu  
+##  <a name="bkmk_indexref"></a>Odwołania do atrybutów indeksu  
 
 > [!NOTE]  
->  Funkcję oceniania będzie stosowany tylko do pól, które są filtrowania.  
+>  Funkcję oceniania można stosować tylko do pól, które są filtrowane.  
 
 |Atrybut|Opis|  
 |---------------|-----------------|  
-|`Name`|Wymagany. To jest nazwa profilu oceniania. Jest zgodna z tej samej konwencji nazewnictwa pola. To musi zaczynać się literą, nie może zawierać kropki, dwukropki i @ symbole i nie może zaczynać się od wyrażenia "azureSearch" (z uwzględnieniem wielkości liter).|  
-|`Text`|Zawiera właściwość wagi.|  
-|`Weights`|Opcjonalny. Pary nazwa wartość, który określa nazwę pola i — Względna waga. Względna waga musi być dodatnią liczbą całkowitą lub zmiennoprzecinkową. Wartość maksymalna to wartość int32. MaxValue.<br /><br /> Można określić nazwę pola bez odpowiedniej wagi. Wagi są używane do wskazać wagę jedno pole względem innego.|  
-|`Functions`|Opcjonalny. Funkcję oceniania będzie stosowany tylko do pól, które są filtrowania.|  
-|`Type`|Wymagane na potrzeby oceniania funkcji. Wskazuje typ funkcja do użycia. Prawidłowe wartości to wielkości, świeżości, odległości i tagu. Może zawierać więcej niż jedną funkcję w każdym profilu oceniania. Nazwa funkcji musi być małymi literami.|  
-|`Boost`|Wymagane na potrzeby oceniania funkcji. Liczba dodatnia używana jako mnożnik nieprzetworzonej oceny. Nie może być równa 1.|  
-|`Fieldname`|Wymagane na potrzeby oceniania funkcji. Funkcja oceniania będzie stosowany tylko do pól, które są częścią kolekcji pól Indeks i które są filtrowania. Ponadto każdy typ funkcji wprowadza dodatkowe ograniczenia (świeżości jest używany z pól daty i godziny, wielkości z liczbą całkowitą lub podwójne pola i odległość z polami lokalizacji). Można określić tylko jedno pole dla definicji funkcji. Na przykład aby użyć wielkości dwa razy ten sam profil, będziesz potrzebować obejmujący dwa wielkości definicje, jeden dla każdego pola.|  
-|`Interpolation`|Wymagane na potrzeby oceniania funkcji. Określa nachylenie dla którego zwiększania wyniku od początku zakresu do końca zakresu. Prawidłowe wartości to liniowej (ustawienie domyślne), stała, umożliwiającej obliczanie kwadratów i skali logarytmicznej. Zobacz [Ustaw interpolations](#bkmk_interpolation) Aby uzyskać szczegółowe informacje.|  
-|`magnitude`|Wielkość oceniania funkcja jest używana do wpływanie na podstawie zakresu wartości pola liczbowego. Najbardziej typowe przykłady użycia tego należą:<br /><br /> -   **Klasyfikacji w formie gwiazdek:** Instrukcja ALTER oceniania na podstawie wartości w polu "Ocena Star". Gdy dwa elementy są istotne, element o wyższych ocena pojawi się najpierw.<br />-   **Margines:** Gdy dwa dokumenty są istotne, sprzedawcy mogą chcieć zwiększania dokumentów, które mają wyższe marginesy najpierw.<br />-   **Kliknij liczniki:** Aplikacje, które śledzą kliknij za pomocą akcji do produktów lub stron, można użyć wielkości boost elementów, które przeważnie, aby uzyskać najbardziej ruchu.<br />-   **Pobierz liczniki:** Dla aplikacji, śledzenie pliki do pobrania, wielkości funkcja pozwala na zwiększenie elementy, które mają najwięcej plików do pobrania.|  
-|`magnitude` &#124; `boostingRangeStart`|Ustawia wartość początkową zakresu, w którym jest oceniana. Wartość musi być liczbą całkowitą lub zmiennoprzecinkową. Dla klasyfikacji w formie gwiazdek od 1 do 4 będzie to 1. Marginesy w ponad 50% będzie to 50.|  
-|`magnitude` &#124; `boostingRangeEnd`|Ustawia wartość końcową zakresu, w którym jest oceniana. Wartość musi być liczbą całkowitą lub zmiennoprzecinkową. Dla klasyfikacji w formie gwiazdek od 1 do 4 będzie to 4.|  
-|`magnitude` &#124; `constantBoostBeyondRange`|Prawidłowe wartości to true lub false (domyślnie). Po ustawieniu na wartość true, pełne zwiększanie wyniku będzie stosowane do dokumentów, które mają wartość pola docelowego jest większa niż górna granica zakresu. Jeśli wartość to false, zwiększanie wyniku tej funkcji nie zostanie zastosowany do dokumentów, których wartość pola docelowego jest spoza zakresu.|  
-|`freshness`|Świeżości oceniania funkcja służy do zmiany świeżości na podstawie wartości w `DateTimeOffset` pola. Na przykład element z datą nowszą można sklasyfikować wyższe niż starszych elementów.<br /><br /> Istnieje również możliwość rangi elementy, takie jak zdarzenia kalendarza znajdują się daty w przyszłości, tak, aby bliżej elementy bieżącej można sklasyfikować wyższej niż elementów bardziej szczegółowo w przyszłości.<br /><br /> W bieżącej wersji usługi co koniec zakresu problem zostanie rozwiązany do bieżącego czasu. Drugi to czas w przeszłości, w oparciu o `boostingDuration`. Aby zwiększyć zakres czasu w przyszłości, należy użyć ujemnych `boostingDuration`.<br /><br /> Szybkość, z jaką zwiększania wyniku zmieni się z maksymalnie i minimalny zakres jest określany przez interpolacji stosowane do profilu oceniania (zobacz rysunek poniżej). Aby odwrócić zwiększenie współczynnika stosowane, wybierz współczynnik boost mniejsza niż 1.|  
-|`freshness` &#124; `boostingDuration`|Ustawia okres, po którym zwiększanie wyniku zostanie zatrzymane dla określonego dokumentu. Zobacz [Ustaw boostingDuration](#bkmk_boostdur) w poniższej sekcji o składni i przykłady.|  
-|`distance`|Odległość, używanych funkcji oceniania wpływa na wynik dokumentu, zależnie od zamknąć lub znacznie są względem odwołanie do lokalizacji geograficznej. Lokalizacja odwołanie jest podawana jako część zapytania w parametrze (przy użyciu `scoringParameterquery` ciąg opcji) jako długa, lat argumentu.|  
-|`distance` &#124; `referencePointParameter`|Parametr przekazywany w zapytaniach do użycia jako odwołanie do lokalizacji. `scoringParameter` to parametr zapytania. Zobacz [wyszukiwania dokumentów &#40;interfejsu API REST usługi Azure Search&#41; ](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) opisy parametrów zapytania.|  
-|`distance` &#124; `boostingDistance`|Liczba, która określa odległość w kilometrów od lokalizacji gdzie kończy się końca zakresu zwiększania wyniku.|  
-|`tag`|Tag oceniania funkcja jest używana do wpływa na wynik dokumentu na podstawie tagów w dokumentach i zapytaniach wyszukiwania. Dokumenty, które mają tagi wspólnych zapytania wyszukiwania będą zwiększane. Tagi dla zapytania wyszukiwania jest dostarczana jako parametr oceniania w każdym żądaniu wyszukiwania (przy użyciu `scoringParameterquery` ciąg opcji).|  
-|`tag` &#124; `tagsParameter`|Parametr przekazywany w zapytaniach, aby określić znaczniki dla określonego żądania. `scoringParameter` to parametr zapytania. Zobacz [wyszukiwania dokumentów &#40;interfejsu API REST usługi Azure Search&#41; ](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) opisy parametrów zapytania.|  
-|`functionAggregation`|Opcjonalny. Ma zastosowanie tylko wtedy, gdy funkcje są określone. Prawidłowe wartości to: Suma (ustawienie domyślne), średnią, minimalna, maksymalna i firstMatching. Wynik wyszukiwania jest pojedyncza wartość, która jest obliczany na podstawie wielu zmiennych, łącznie z wielu funkcji. Ten atrybut wskazuje, jak zwiększa wszystkich funkcji są łączone w jednej wartości zagregowanej zwiększania, który następnie jest stosowany do wyniku podstawowego dokumentu. Wynik podstawowy opiera się na [tf-idf](http://www.tfidf.com/) wartości obliczane na podstawie dokumentu i zapytania wyszukiwania.|  
-|`defaultScoringProfile`|Podczas wykonywania żądania wyszukiwania, jeśli nie określono profil oceniania, a następnie oceniania domyślnej jest używana ([tf-idf](http://www.tfidf.com/) tylko).<br /><br /> Domyślna nazwa profilu oceniania można ustawić w tym miejscu, powodując usługi Azure Search użyć tego profilu, gdy nie określonego profilu jest podany w żądaniu wyszukiwania.|  
+|`Name`|Wymagane. To jest nazwa profilu oceniania. Jest ona zgodna z tymi samymi konwencjami nazewnictwa pola. Musi rozpoczynać się od litery, nie może zawierać kropek, dwukropków lub znaków @ symboli i nie może rozpoczynać się od frazy "azureSearch" (z uwzględnieniem wielkości liter).|  
+|`Text`|Zawiera właściwość wag.|  
+|`Weights`|Opcjonalny. Para nazwa-wartość, która określa nazwę pola i względną wagę. Względna waga musi być dodatnią liczbą całkowitą lub liczbą zmiennoprzecinkową. Wartość maksymalna to Int32. MaxValue.<br /><br /> Możesz określić nazwę pola bez odpowiedniej wagi. Wagi są używane do wskazania znaczenia jednego pola względem innego.|  
+|`Functions`|Opcjonalna. Funkcję oceniania można stosować tylko do pól, które są filtrowane.|  
+|`Type`|Wymagane dla funkcji oceniania. Wskazuje typ funkcji, która ma zostać użyta. Prawidłowe wartości to wielkość, świeżość, odległość i tag. W każdym profilu oceniania można uwzględnić więcej niż jedną funkcję. Nazwa funkcji musi zawierać małe litery.|  
+|`Boost`|Wymagane dla funkcji oceniania. Liczba dodatnia używana jako mnożnik dla nieprzetworzonego wyniku. Wartość nie może być równa 1.|  
+|`Fieldname`|Wymagane dla funkcji oceniania. Funkcja oceniania może zostać zastosowana tylko do pól, które są częścią kolekcji pól indeksu, i które są do filtrowania. Ponadto każdy typ funkcji wprowadza dodatkowe ograniczenia (świeżość jest używana z polami DateTime, wielkości z liczbami całkowitymi lub polami podwójnymi oraz odległości z polami lokalizacji). Można określić tylko jedno pole dla każdej definicji funkcji. Na przykład, aby użyć wielkości dwa razy w tym samym profilu, należy uwzględnić dwie definicje, jeden dla każdego pola.|  
+|`Interpolation`|Wymagane dla funkcji oceniania. Definiuje nachylenie, dla którego wzrost wyniku zwiększa się od początku zakresu do końca zakresu. Prawidłowe wartości to liniowe (domyślne), stałe, kwadratowe i logarytmiczne. Aby uzyskać szczegółowe informacje, zobacz [Ustawianie interpolacji](#bkmk_interpolation) .|  
+|`magnitude`|Funkcja oceny wielkości służy do zmiany klasyfikacji na podstawie zakresu wartości dla pola liczbowego. Poniżej przedstawiono niektóre typowe przykłady użycia:<br /><br /> -   **Klasyfikacje gwiazdkowe:** Zmień ocenianie na podstawie wartości w polu "Klasyfikacja gwiazdkowa". Gdy są istotne dwa elementy, zostanie wyświetlony pierwszy element o wyższej ocenie.<br />-   **Praw** Jeśli istnieją dwa dokumenty, sprzedawca detaliczny może chcieć poprawić dokumenty, które mają wyższe marginesy.<br />-   **Liczba elementów do kliknięcia:** W przypadku aplikacji, które śledzą akcje klikania dla produktów lub stron, można użyć wielkości, aby zwiększyć elementy, które mają na celu uzyskanie większości ruchu.<br />-   **Liczba pobrań:** W przypadku aplikacji, które śledzą pobieranie, funkcja o wielkości umożliwia zwiększenie poziomu elementów, które mają najwięcej pobrań.|  
+|`magnitude` &#124; `boostingRangeStart`|Ustawia wartość początkową zakresu, w którym ma być oceniane znaczenie. Wartość musi być liczbą całkowitą lub zmiennoprzecinkową. W przypadku klasyfikacji z gwiazdką od 1 do 4 będzie to 1. W przypadku marginesów powyżej 50% będzie to 50.|  
+|`magnitude` &#124; `boostingRangeEnd`|Ustawia wartość końcową zakresu, w którym ma być oceniane znaczenie. Wartość musi być liczbą całkowitą lub zmiennoprzecinkową. W przypadku klasyfikacji z gwiazdką od 1 do 4 będzie to 4.|  
+|`magnitude` &#124; `constantBoostBeyondRange`|Prawidłowe wartości to true lub false (wartość domyślna). Po ustawieniu na wartość true, pełne podwyższenie poziomu będzie nadal stosowane do dokumentów, które mają wartość pola docelowego wyższego niż górny koniec zakresu. W przypadku wartości false zwiększenie tej funkcji nie zostanie zastosowane do dokumentów mających wartość pola docelowego, które wykracza poza zakres.|  
+|`freshness`|Funkcja oceny Aktualności służy do zmiany rankingu ocen dla elementów na podstawie wartości w `DateTimeOffset` polach. Na przykład element o późniejszej dacie może być wyższy niż starsze elementy.<br /><br /> Istnieje również możliwość ustalania rangi elementów, takich jak zdarzenia kalendarza w przyszłych terminach, takich jak elementy bliżej obecnego elementu mogą być bardziej uporządkowane niż dalsze w przyszłości.<br /><br /> W bieżącej wersji usługi jeden koniec zakresu zostanie ustalony do bieżącego czasu. Druga końcowa to godzina w przeszłości oparta na `boostingDuration`. Aby zwiększyć liczbę razy w przyszłości, użyj wartości ujemnej `boostingDuration`.<br /><br /> Częstotliwość, z jaką zmiany zwiększające się z zakresu maksymalnego i minimalnego są określane przez interpolację zastosowana do profilu oceniania (zobacz rysunek poniżej). Aby odwrócić współczynnik zwiększania poziomu, wybierz współczynnik zwiększania wartości mniejszej niż 1.|  
+|`freshness` &#124; `boostingDuration`|Ustawia okres, po upływie którego podwyższanie poziomu zostanie zatrzymane dla określonego dokumentu. Zobacz [Ustaw boostingDuration](#bkmk_boostdur) w poniższej sekcji, aby zapoznać się ze składnią i przykładami.|  
+|`distance`|Funkcja oceniania odległości służy do wpływania na wynik dokumentu w zależności od tego, jak blisko lub daleko odnoszą się do lokalizacji geograficznej odniesienia. Lokalizacja odniesienia jest określana jako część zapytania w parametrze (przy użyciu `scoringParameterquery` opcji String) jako długość argumentu w formacie.|  
+|`distance` &#124; `referencePointParameter`|Parametr, który ma zostać przesłany w zapytaniach, aby można go było użyć jako lokalizacji odwołania. `scoringParameter`jest parametrem zapytania. Opisy parametrów zapytań można znaleźć w temacie [Search Documents &#40;Azure Search&#41; API REST usługi](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) .|  
+|`distance` &#124; `boostingDistance`|Liczba, która wskazuje odległość w kilometrach od lokalizacji odniesienia, w której upływa zakres zwiększania.|  
+|`tag`|Funkcja oceniania tagów służy do wpływania na wyniki dokumentów w oparciu o Tagi w dokumentach i wyszukiwania zapytań. Dokumenty zawierające Tagi wspólne z zapytaniem wyszukiwania zostaną podwyższane. Tagi dla zapytania wyszukiwania są dostarczane jako parametr oceniania w każdym żądaniu wyszukiwania (przy użyciu `scoringParameterquery` opcji String).|  
+|`tag` &#124; `tagsParameter`|Parametr, który ma zostać przesłany w zapytaniach, aby określić Tagi dla określonego żądania. `scoringParameter`jest parametrem zapytania. Opisy parametrów zapytań można znaleźć w temacie [Search Documents &#40;Azure Search&#41; API REST usługi](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) .|  
+|`functionAggregation`|Opcjonalna. Stosuje się tylko wtedy, gdy są określone funkcje. Prawidłowe wartości to: sum (wartość domyślna), Average, minimum, maksimum i firstMatching. Wynikiem wyszukiwania jest pojedyncza wartość, która jest obliczana na podstawie wielu zmiennych, w tym wielu funkcji. Ten atrybut wskazuje, w jaki sposób wzrosty wszystkich funkcji są łączone w pojedynczej agregacji zagregowanej, która następnie jest stosowana do oceny dokumentu podstawowego. Wynik podstawowy jest oparty na wartości [TF-IDF](http://www.tfidf.com/) obliczonej na podstawie dokumentu i zapytania wyszukiwania.|  
+|`defaultScoringProfile`|W przypadku wykonywania żądania wyszukiwania, jeśli nie określono żadnego profilu oceniania, zostanie użyte domyślne ocenianie (tylko w programie[TF-IDF](http://www.tfidf.com/) ).<br /><br /> W tym miejscu można ustawić domyślną nazwę profilu oceniania, co spowoduje, że Azure Search używać tego profilu, gdy w żądaniu wyszukiwania nie zostanie określony konkretny profil.|  
 
-##  <a name="bkmk_interpolation"></a> Zestaw interpolations  
- Interpolations umożliwiają ustawienie kształt nachylenie używane do oceniania. Ponieważ oceniania jest wysoko lub nisko, zmniejsza się zawsze nachylenie, ale interpolacji określa krzywą nachylenie w dół. Można użyć następujących interpolations:  
+##  <a name="bkmk_interpolation"></a>Ustaw interpolacje  
+ Interpolacje umożliwiają ustawienie kształtu skośnego używanego do oceniania. Ze względu na to, że ocena jest wysoka do niska, nachylenie jest zawsze zmniejszane, ale Interpolacja określa krzywą skośnego spadku. Następujące interpolacje mogą być używane:  
 
 |||  
 |-|-|  
-|`Linear`|Dla elementów, które znajdują się w zakresie maksymalne i minimalne boost stosowany do elementu, zostanie wykonane w stale zmniejsza ilość. Liniowy jest interpolacji domyślnego profilu oceniania.|  
-|`Constant`|Dla elementów, które znajdują się w początkowej i końcowej zakresu stałe zwiększanie wyniku zostaną zastosowane do rangi wyników.|  
-|`Quadratic`|Porównaniu interpolacji liniowej ma boost stale maleje umożliwiającej obliczanie kwadratów początkowo zostaną obniżone tempie mniejszych, a następnie jako zbliża się koniec zakresu, jego maleje interwałem znacznie wyższa. Ta opcja interpolacji nie jest dozwolone w tagu funkcje oceniania.|  
-|`Logarithmic`|Porównaniu interpolacji liniowej ma boost stale maleje skali logarytmicznej początkowo zostaną obniżone tempie wyższej, a następnie jako zbliża się koniec zakresu, jego maleje w znacznie mniejszych odstępach czasu. Ta opcja interpolacji nie jest dozwolone w tagu funkcje oceniania.|  
+|`Linear`|W przypadku elementów, które znajdują się w zakresie maksymalnym i minimalnym, podwyższanie poziomu zastosowana do elementu zostanie wykonane w sposób stale zmniejszany. Skala liniowa jest domyślną interpolacją dla profilu oceniania.|  
+|`Constant`|Dla elementów, które znajdują się w zakresie początkowym i końcowym, do wyników rangi zostanie zastosowana stała podwyższanie poziomu.|  
+|`Quadratic`|W porównaniu do interpolacji liniowej, która ma ciągle zmniejszający się wzrost, kwadrat będzie początkowo zmniejszany w mniejszym tempie, a następnie, jak zbliża się do zakresu końcowego, zmniejsza się w znacznie większym interwale. Ta opcja interpolacji nie jest dozwolona w funkcjach oceniania tagów.|  
+|`Logarithmic`|W porównaniu do interpolacji liniowej, która ma ciągle zmniejszający się wzrost, LOGARYTM logarytmiczny będzie początkowo zmniejszany w większym tempie, a następnie, jak zbliża się do zakresu końcowego, zmniejsza się w znacznie mniejszym interwale. Ta opcja interpolacji nie jest dozwolona w funkcjach oceniania tagów.|  
 
- ![LOG10 — stałe, liniowych, kwadratowych, linii na wykresie](media/scoring-profiles/azuresearch_scorefunctioninterpolationgrapht.png "AzureSearch_ScoreFunctionInterpolationGrapht")  
+ ![Stałe, liniowe, kwadratowe, log10 — linie na grafie](media/scoring-profiles/azuresearch_scorefunctioninterpolationgrapht.png "AzureSearch_ScoreFunctionInterpolationGrapht")  
 
-##  <a name="bkmk_boostdur"></a> Zestaw boostingDuration  
- `boostingDuration` jest to atrybut `freshness` funkcji. Służy do ustawienia wygasania kropki, po którym zwiększanie wyniku zostanie zatrzymane dla określonego dokumentu. Na przykład aby zwiększyć linia produktów lub marki dla 10-dniowego okresu promocyjnego, należy określić 10-dniowego okresu jako "P10D" w tych dokumentach.  
+##  <a name="bkmk_boostdur"></a>Ustaw boostingDuration  
+ `boostingDuration`jest atrybutem `freshness` funkcji. Służy on do ustawiania okresu ważności, po upływie którego podwyższanie poziomu zostanie zatrzymane dla określonego dokumentu. Na przykład aby zwiększyć linię produktu lub markę dla 10-dniowego okresu promocyjnego, należy określić 10-dniowy okres jako "P10D" dla tych dokumentów.  
 
- `boostingDuration` muszą być sformatowane jako wartość XSD "dayTimeDuration" (ograniczony podzestaw wartości czasu trwania ISO 8601). Wzorzec ten jest: "P[nD][T[nH][nM][nS]]".  
+ `boostingDuration`musi być sformatowana jako wartość XSD "dayTimeDuration" (ograniczony podzbiór wartości Duration ISO 8601). Wzorzec dla tego elementu to: "P [nD] [T [nH] [nM] [nS]]".  
 
- Poniższa tabela zawiera kilka przykładów.  
+ W poniższej tabeli przedstawiono kilka przykładów.  
 
-|Czas trwania|boostingDuration|  
+|Duration|boostingDuration|  
 |--------------|----------------------|  
 |1 dzień|"P1D"|  
 |2 dni i 12 godzin|"P2DT12H"|  
 |15 minut|"PT15M"|  
-|30 dni, 5 godzin, 10 minut, a 6.334 sekund|"P30DT5H10M6.334S"|  
+|30 dni, 5 godzin, 10 minut i 6,334 sekund|"P30DT5H10M6.334S"|  
 
- Aby uzyskać więcej przykładów, zobacz [schematu XML: Typy danych (witryna sieci web adresem W3.org)](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration).  
+ Aby uzyskać więcej przykładów, [zobacz Schemat XML: Typy danych (witryna sieci Web W3.org)](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration).  
 
 ## <a name="see-also"></a>Zobacz także  
- [REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice/)   
- [Tworzenie indeksu &#40;interfejsu API REST usługi Azure Search&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)   
- [Zestaw SDK platformy .NET usługi Azure Search](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  
+ [Usługa Azure Search REST](https://docs.microsoft.com/rest/api/searchservice/)   
+ [Tworzenie interfejsu &#40;API REST usługi indeksowania Azure Search&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)   
+ [Zestaw SDK Azure Search .NET](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  

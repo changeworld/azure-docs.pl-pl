@@ -1,6 +1,6 @@
 ---
-title: Store poświadczeń w usłudze Azure Key Vault | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak przechowywać poświadczenia dla magazynów danych używanych w usługi Azure key vault, usługi Azure Data Factory automatycznie do pobrania w czasie wykonywania.
+title: Przechowywanie poświadczeń w Azure Key Vault | Microsoft Docs
+description: Dowiedz się, jak przechowywać poświadczenia dla magazynów danych używanych w magazynie kluczy platformy Azure, które Azure Data Factory mogą być automatycznie pobierane w czasie wykonywania.
 services: data-factory
 author: linda33wj
 manager: craigg
@@ -11,52 +11,52 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 71f78685ee5fa340ec22c63e3e7f057bef122474
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 735013046f65a9dba345c52db883df0b114ba7f2
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67048516"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69892051"
 ---
-# <a name="store-credential-in-azure-key-vault"></a>Store poświadczeń w usłudze Azure Key Vault
+# <a name="store-credential-in-azure-key-vault"></a>Przechowywanie poświadczeń w Azure Key Vault
 
-Możesz przechowywać poświadczenia dla magazynów danych i obliczeń w [usługi Azure Key Vault](../key-vault/key-vault-whatis.md). Usługa Azure Data Factory umożliwia pobranie poświadczeń podczas wykonywania działania, który używa magazynu danych/obliczenia.
+Poświadczenia dla magazynów danych i obliczeń można przechowywać w [Azure Key Vault](../key-vault/key-vault-whatis.md). Azure Data Factory Pobiera poświadczenia podczas wykonywania działania, które korzysta z magazynu/obliczeń danych.
 
-Obecnie wszystkie typy działań, z wyjątkiem działań niestandardowych obsługują tę funkcję. Dla konfiguracji łącznika w szczególności Sprawdź sekcję "właściwości połączonej usługi" w folderze [każdego tematu łącznika](copy-activity-overview.md#supported-data-stores-and-formats) Aby uzyskać szczegółowe informacje.
+Obecnie wszystkie typy działań z wyjątkiem działania niestandardowego obsługują tę funkcję. Aby uzyskać szczegółowe informacje na temat konfiguracji łącznika, należy zapoznać się z sekcją "właściwości połączonej usługi" w [poszczególnych tematach łączników](copy-activity-overview.md#supported-data-stores-and-formats) .
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Ta funkcja opiera się na tożsamości zarządzanych fabryki danych. Dowiedz się, jak to działa z [tożsamości zarządzanej dla usługi Data factory](data-factory-service-identity.md) i upewnij się, fabryki danych skojarzony jeden.
+Ta funkcja opiera się na tożsamości zarządzanej przez fabrykę danych. Dowiedz się, jak działa z [tożsamości zarządzanej usługi Fabryka danych](data-factory-service-identity.md) i upewnij się, że Fabryka danych ma skojarzoną aplikację.
 
 ## <a name="steps"></a>Kroki
 
-Aby odwołać poświadczenia przechowywane w usłudze Azure Key Vault, musisz:
+Aby odwołać się do poświadczeń przechowywanych w Azure Key Vault, należy:
 
-1. **Pobieranie danych fabryki zarządzanych tożsamości** kopiując wartość "Zarządzanych identyfikator aplikacji tożsamości" wygenerowane wraz z fabryką. Jeśli używasz usługi ADF tworzenia interfejsu użytkownika, identyfikator aplikacji tożsamości zarządzanej będą wyświetlane w oknie tworzenia połączonej usługi Azure Key Vault; można je również pobrać z witryny Azure portal, zapoznaj się [tożsamości zarządzanej usługi fabryka danych pobierania](data-factory-service-identity.md#retrieve-managed-identity).
-2. **Udzielić dostępu tożsamości zarządzanej do usługi Azure Key Vault.** W magazynie kluczy -> zasady -> dostępu Dodaj nowy -> search to zarządzane identyfikator aplikacji tożsamości, aby udzielić **uzyskać** uprawnienie na liście rozwijanej uprawnienia klucza tajnego. Umożliwia ona tej fabryce wyznaczone do dostępu do klucza tajnego w magazynie kluczy.
-3. **Tworzenie połączonej usługi wskazuje usłudze Azure Key Vault.** Zapoznaj się [usługę połączoną usługi Azure Key Vault](#azure-key-vault-linked-service).
-4. **Tworzenie połączonej usługi magazynu danych, wewnątrz której odwołanie odpowiadający mu klucz tajny przechowywanych w magazynie.** Zapoznaj się [odwołanie wpisu tajnego, przechowywanych w magazynie kluczy](#reference-secret-stored-in-key-vault).
+1. **Pobierz tożsamość zarządzaną fabryki danych** przez skopiowanie wartości "Identyfikator zarządzanej tożsamości aplikacji", która jest generowana wraz z fabryką. Jeśli używasz interfejsu użytkownika tworzenia APD, identyfikator aplikacji zarządzanej tożsamości będzie widoczny w oknie tworzenia połączonej usługi Azure Key Vault. można go również pobrać z Azure Portal, aby [pobrać tożsamość zarządzaną przez fabrykę danych](data-factory-service-identity.md#retrieve-managed-identity).
+2. **Przyznaj zarządzanej tożsamości dostęp do Azure Key Vault.** W magazynie kluczy — > zasad dostępu — > Dodaj nowe-> Przeszukaj identyfikator zarządzanej tożsamości aplikacji, aby udzielić uprawnienia **Get** na liście rozwijanej uprawnienia do wpisów tajnych. Umożliwia to wyznaczeniu fabryki dostęp do wpisów tajnych w magazynie kluczy.
+3. **Utwórz połączoną usługę wskazującą Azure Key Vault.** Zapoznaj się z [Azure Key Vault połączoną usługą](#azure-key-vault-linked-service).
+4. **Utwórz połączoną usługę magazynu danych, w której znajduje się odwołanie do odpowiedniego klucza tajnego przechowywanego w magazynie kluczy.** Zapoznaj się z [wpisem tajnym referencyjnym przechowywanym w magazynie kluczy](#reference-secret-stored-in-key-vault).
 
-## <a name="azure-key-vault-linked-service"></a>Usługa Azure Key Vault połączone
+## <a name="azure-key-vault-linked-service"></a>Azure Key Vault połączona usługa
 
-Następujące właściwości są obsługiwane w przypadku usługi połączonej usługi Azure Key Vault:
+Następujące właściwości są obsługiwane dla Azure Key Vault połączonej usługi:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **AzureKeyVault**. | Yes |
-| baseUrl | Podaj adres URL usługi Azure Key Vault. | Yes |
+| type | Właściwość Type musi mieć ustawioną wartość: **AzureKeyVault**. | Tak |
+| baseUrl | Określ adres URL Azure Key Vault. | Tak |
 
-**Korzystanie z tworzenia interfejsu użytkownika:**
+**Korzystanie z interfejsu użytkownika tworzenia:**
 
-Kliknij przycisk **połączeń** -> **połączonych usług** ->  **+ nowy** -> Wyszukaj "Usługi Azure Key Vault":
+Kliknij kolejno pozycje **połączenia** -> **połączone usługi** -> **i nowe** -> Wyszukaj ciąg "Azure Key Vault":
 
-![Wyszukiwanie AKV](media/store-credentials-in-key-vault/search-akv.png)
+![Wyszukaj AKV](media/store-credentials-in-key-vault/search-akv.png)
 
-Wybierz udostępnione Azure Key Vault gdzie przechowywane są Twoje poświadczenia. Możesz zrobić **Testuj połączenie** aby upewnić się, że Twoje AKV połączenie jest poprawne. 
+Wybierz Azure Key Vault, w którym są przechowywane Twoje poświadczenia. Możesz **przetestować połączenie** , aby upewnić się, że połączenie usługi AKV jest prawidłowe. 
 
 ![Konfigurowanie AKV](media/store-credentials-in-key-vault/configure-akv.png)
 
-**Przykład kodu JSON:**
+**Przykład JSON:**
 
 ```json
 {
@@ -70,27 +70,27 @@ Wybierz udostępnione Azure Key Vault gdzie przechowywane są Twoje poświadczen
 }
 ```
 
-## <a name="reference-secret-stored-in-key-vault"></a>Klucz tajny odwołanie przechowywanych w magazynie kluczy
+## <a name="reference-secret-stored-in-key-vault"></a>Wpis tajny odwołania przechowywany w magazynie kluczy
 
-Następujące właściwości są obsługiwane w przypadku skonfigurowania pola w połączonej usłudze odwołujące się do niej wpisu tajnego usługi key vault:
+Następujące właściwości są obsługiwane podczas konfigurowania pola w połączonej usłudze, do którego odwołuje się klucz tajny magazynu kluczy:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Typ pola musi być równa: **AzureKeyVaultSecret**. | Yes |
-| secretName | Nazwa wpisu tajnego w usłudze azure key vault. | Yes |
-| secretVersion | Wersja wpisu tajnego w usłudze azure key vault.<br/>Jeśli nie zostanie określony, zawsze używa najnowszej wersji klucza tajnego.<br/>Jeśli zostanie określony, następnie go pozostanie przypisane do danej wersji.| Nie |
-| store | Odnosi się do usługi połączonej usługi Azure Key Vault, używanej do przechowywania poświadczeń. | Yes |
+| type | Właściwość Type pola musi być ustawiona na: **AzureKeyVaultSecret**. | Tak |
+| secretName | Nazwa wpisu tajnego w Azure Key Vault. | Tak |
+| Wersjawpisutajnego | Wersja wpisu tajnego w Azure Key Vault.<br/>Jeśli nie zostanie określony, zawsze używa najnowszej wersji klucza tajnego.<br/>Jeśli ta wartość jest określona, zostanie ona dodana do danej wersji.| Nie |
+| store | Odnosi się do Azure Key Vault połączonej usługi, która jest używana do przechowywania poświadczeń. | Tak |
 
-**Korzystanie z tworzenia interfejsu użytkownika:**
+**Korzystanie z interfejsu użytkownika tworzenia:**
 
-Wybierz **usługi Azure Key Vault** dla wpisu tajnego pól podczas tworzenia połączenia z magazynu danych/obliczeń. Wybierz udostępnione klucza magazynu połączoną usługę Azure i podaj **Nazwa wpisu tajnego**. Opcjonalnie możesz podać również wersja wpisu tajnego. 
+Wybierz **Azure Key Vault** dla pól tajnych podczas tworzenia połączenia z magazynem danych/obliczeniem. Wybierz połączoną usługę Azure Key Vault i podaj **nazwę klucza tajnego**. Opcjonalnie możesz również podać wersję tajną. 
 
 >[!TIP]
->Łączniki przy użyciu parametrów połączenia w połączonej usłudze, takiej jak SQL Server, usługi Blob storage itp., można przechowywać tylko pole klucza tajnego np. hasła w AKV lub do przechowywania ciągu całego połączenia w AKV. Możesz znaleźć obie opcje w interfejsie użytkownika.
+>W przypadku łączników korzystających z parametrów połączenia w połączonej usłudze, takich jak SQL Server, BLOB Storage itp., można wybrać opcję przechowywania tylko pola tajnego, np. Password in AKV lub przechowywania całych parametrów połączenia w AKV. Obie opcje można znaleźć w interfejsie użytkownika.
 
-![Konfigurowanie AKV wpisu tajnego](media/store-credentials-in-key-vault/configure-akv-secret.png)
+![Konfigurowanie wpisu tajnego AKV](media/store-credentials-in-key-vault/configure-akv-secret.png)
 
-**Przykład kodu JSON: (zobacz sekcję "password")**
+**Przykład JSON: (zobacz sekcję "hasło")**
 
 ```json
 {
@@ -115,5 +115,5 @@ Wybierz **usługi Azure Key Vault** dla wpisu tajnego pól podczas tworzenia po�
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

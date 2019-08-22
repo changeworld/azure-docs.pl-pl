@@ -8,14 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: ced771002ca9f542f89dbf74ba4a4745ad2a0339
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: aa5ff93b4f1f6392f753a88d57a072f542fc16e2
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850174"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877268"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Samouczek: Dostosowywanie widoków operatora usługi Azure IoT Central
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 W tym samouczku przedstawiono, jak konstruktor może dostosować widok operatora aplikacji. Po wprowadzeniu zmian w aplikacji jako konstruktor możesz wyświetlić podgląd widoku operatora w aplikacji usługi Microsoft Azure IoT Central.
 
@@ -28,8 +30,8 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Konfigurowanie układu ustawień urządzenia
 > * Konfigurowanie układu właściwości urządzenia
 > * Wyświetlanie podglądu urządzenia jako operator
-> * Skonfiguruj domyślny pulpit nawigacyjny aplikacji
-> * Domyślny pulpit nawigacyjny aplikacji jako operator w wersji zapoznawczej
+> * Konfigurowanie domyślnego pulpitu nawigacyjnego aplikacji
+> * Podgląd domyślnego pulpitu nawigacyjnego aplikacji jako operatora
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -46,7 +48,7 @@ Jako konstruktor możesz zdefiniować informacje wyświetlane na pulpicie nawiga
 
     ![Strona Szablony urządzeń](media/tutorial-customize-operator/devicetemplates.png)
 
-2. Aby dostosować pulpit nawigacyjny urządzenia, wybierz opcję **połączone klimatyzacyjne (1.0.0)** urządzenia szablon został utworzony w [Definiowanie nowego typu urządzenia w aplikacji](tutorial-define-device-type.md) samouczka.
+2. Aby dostosować pulpit nawigacyjny urządzenia, wybierz urządzenie szablonu urządzenia **1.0.0 (Application Conditioner)** utworzone w samouczku [Definiowanie nowego urządzenia w aplikacji](tutorial-define-device-type.md) .
 
 3. Aby edytować pulpit nawigacyjny, wybierz kartę **Pulpit nawigacyjny**.
 
@@ -56,8 +58,8 @@ Jako konstruktor możesz zdefiniować informacje wyświetlane na pulpicie nawiga
 
     | Ustawienie     | Wartość |
     | ----------- | ----- |
-    | Name (Nazwa)        | Temperatura maksymalna |
-    | Przedział czasu  | Ostatni tydzień |
+    | Name        | Temperatura maksymalna |
+    | Zakres czasu  | Ubiegły tydzień |
     | Typ miary | Telemetria |
     | Miara | temperature |
     | Agregacja | Maksimum |
@@ -91,7 +93,7 @@ Poza pulpitem nawigacyjnym i ustawieniami możesz także skonfigurować widok op
 
     ![Edytowanie układu właściwości](media/tutorial-customize-operator/propertieslayout.png)
 
-## <a name="preview-the-device"></a>Urządzenia w wersji zapoznawczej
+## <a name="preview-the-device"></a>Podgląd urządzenia
 
 Możesz użyć strony **Szablony urządzeń**, aby dostosować karty Pulpit nawigacyjny, Ustawienia i Właściwości dla operatora. Możesz użyć strony narzędzia **Device Explorer**, aby wyświetlić szablon urządzenia i go użyć.
 
@@ -113,25 +115,25 @@ Możesz użyć strony **Szablony urządzeń**, aby dostosować karty Pulpit nawi
 
     ![Widok operatora dla pulpitu nawigacyjnego urządzenia](media/tutorial-customize-operator/operatordashboard.png)
 
-## <a name="configure-the-default-dashboard"></a>Skonfiguruj domyślny pulpit nawigacyjny
+## <a name="configure-the-default-dashboard"></a>Konfigurowanie domyślnego pulpitu nawigacyjnego
 
-Jeśli konstruktor lub operator loguje się do aplikacji usługi Azure IoT Central, zobaczy pulpit nawigacyjny aplikacji. Jako Konstruktor można skonfigurować zawartość domyślny pulpit nawigacyjny, aby uwzględnić zawartość najbardziej przydatne i istotne dla operatora.
+Gdy Konstruktor lub operator loguje się do aplikacji IoT Central platformy Azure, zobaczy pulpit nawigacyjny aplikacji. Jako Konstruktor można skonfigurować zawartość domyślnego pulpitu nawigacyjnego, aby zawierał najbardziej przydatną i odpowiednią zawartość dla operatora.
 
 > [!NOTE]
-> Użytkownicy mogą również tworzyć własne osobistych pulpitów nawigacyjnych i wybierz jedną z nich domyślnie.
+> Użytkownicy mogą również tworzyć własne osobiste pulpity nawigacyjne i wybierać jedną z nich jako domyślną.
 
-1. Aby dostosować domyślny pulpit nawigacyjny aplikacji, przejdź do **pulpit nawigacyjny** strony i wybierz **Edytuj** w górnym rogu strony. Biblioteki obiektów, które można dodać do pulpitu nawigacyjnego zostanie wyświetlony panel.
+1. Aby dostosować domyślny pulpit nawigacyjny aplikacji, przejdź do strony **pulpit nawigacyjny** i wybierz pozycję **Edytuj** w prawym górnym rogu strony. Zostanie wyświetlony panel z biblioteką obiektów, które można dodać do pulpitu nawigacyjnego.
 
     ![Strona pulpitu nawigacyjnego](media/tutorial-customize-operator/builderhome.png)
 
-2. Aby dostosować pulpit nawigacyjny, należy dodać Kafelki z **biblioteki**. Wybierz pozycję **Link** i dodaj szczegóły witryny internetowej organizacji. Następnie wybierz polecenie **Zapisz**:
+2. Aby dostosować pulpit nawigacyjny, Dodaj kafelki z **biblioteki**. Wybierz pozycję **Link** i dodaj szczegóły witryny internetowej organizacji. Następnie wybierz polecenie **Zapisz**:
 
-    ![Dodaj łącze do pulpitu nawigacyjnego](media/tutorial-customize-operator/addlink.png)
+    ![Dodawanie linku do pulpitu nawigacyjnego](media/tutorial-customize-operator/addlink.png)
 
     > [!NOTE]
     > Istnieje także możliwość dodania linków do stron w aplikacji usługi Azure IoT Central. Na przykład możesz dodać link do pulpitu nawigacyjnego urządzenia lub strony ustawień.
 
-3. Opcjonalnie wybierz opcję **obraz** i przekazania obrazu do wyświetlenia na pulpicie nawigacyjnym. Obraz może mieć adres URL, do którego możesz przejść po jego wybraniu:
+3. Opcjonalnie wybierz pozycję **obraz** i Przekaż obraz, który ma być wyświetlany na pulpicie nawigacyjnym. Obraz może zawierać adres URL, do którego należy przejść po jego wybraniu:
 
     ![Dodawanie obrazu do pulpitu nawigacyjnego](media/tutorial-customize-operator/addimage.png)
 
@@ -139,11 +141,11 @@ Jeśli konstruktor lub operator loguje się do aplikacji usługi Azure IoT Centr
 
 ## <a name="preview-the-dashboard"></a>Podgląd pulpitu nawigacyjnego
 
-Aby pulpit nawigacyjny aplikacji jako operator w wersji zapoznawczej, wybierz pozycję **gotowe** w górnym rogu strony.
+Aby wyświetlić podgląd pulpitu nawigacyjnego aplikacji jako operatora, wybierz pozycję **gotowe** w prawym górnym rogu strony.
 
 ![Przełączanie trybu projektowania](media/tutorial-customize-operator/operatorviewhome.png)
 
-Możesz wybrać Kafelki linkiem i obrazem, aby przejść do adresów URL, Ustaw jako Konstruktor.
+Możesz wybrać link i kafelki obrazu, aby przejść do adresów URL ustawionych jako Konstruktor.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: a1a980e1f8b004c4a3dba53e4f83367022074c7c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e3aaf943b5eecd9ec1853c09ea36156b98560d3d
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60884491"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648705"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Użyj obrazu z witryny Azure Marketplace do utworzenia maszyny wirtualnej programu Terraform z systemem Linux przy użyciu tożsamości zarządzanych dla zasobów platformy Azure
 
@@ -85,7 +85,7 @@ Uprawnienia współautora ułatwiają tożsamości usługi zarządzanej na maszy
 
 `. ~/tfEnv.sh`
 
-Poprzedni skrypt używa mechanizmu [interaktywnego logowania programu AZ CLI 2.0](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) do uwierzytelnienia na platformie Azure i przypisania uprawnień współautora tożsamości zarządzanej maszyny wirtualnej dla całej subskrypcji. 
+Poprzedni skrypt używa mechanizmu [interaktywnego logowania programu AZ CLI 2.0](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest#sign-in-interactively) do uwierzytelnienia na platformie Azure i przypisania uprawnień współautora tożsamości zarządzanej maszyny wirtualnej dla całej subskrypcji. 
 
  Maszyna wirtualna ma zaplecze stanu zdalnego programu Terraform. Aby włączyć je we wdrożeniu programu Terraform, skopiuj plik remoteState.tf z katalogu tfTemplate do katalogu głównego skryptów programu Terraform.  
 
@@ -93,7 +93,7 @@ Poprzedni skrypt używa mechanizmu [interaktywnego logowania programu AZ CLI 2.0
 
  Aby uzyskać więcej informacji na temat zarządzania stanem zdalnym, zobacz [tę stronę o stanie zdalnym programu Terraform](https://www.terraform.io/docs/state/remote.html). W tym pliku jest uwidoczniony klucz dostępu magazynu. Należy go wykluczyć przed zaewidencjonowaniem plików konfiguracji programu Terraform w kontroli źródła.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym artykule przedstawiono sposób konfigurowania maszyny wirtualnej programu Terraform z systemem Linux na platformie Azure. Poniżej przedstawiono kilka dodatkowych zasobów zawierających więcej informacji na temat narzędzia Terraform na platformie Azure: 
 
  [Centrum narzędzia Terraform w witrynie Microsoft.com](https://docs.microsoft.com/azure/terraform/)  

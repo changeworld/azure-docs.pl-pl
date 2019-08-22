@@ -1,6 +1,6 @@
 ---
-title: Komunikaty AS2 integracji przedsiębiorstw B2B — Azure Logic Apps
-description: Wymienianie komunikatów AS2 w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
+title: AS2 messages for B2B Enterprise Integration — Azure Logic Apps
+description: Komunikaty programu Exchange AS2 w Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,122 +8,117 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.date: 04/22/2019
-ms.openlocfilehash: b494f6524e5105a95bc8a24a6fa2521abcca3f7b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/22/2019
+ms.openlocfilehash: b1e7664aa08171c16c83e17ad93977b29e31b5c0
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64729401"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656454"
 ---
-# <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Wymienianie komunikatów AS2 integracji przedsiębiorstw B2B w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
+# <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Komunikaty programu Exchange AS2 dla integracji z usługą B2B Enterprise w Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
 
-Aby pracować z komunikatów AS2 w usłudze Azure Logic Apps, można użyć łącznika AS2, który zawiera wyzwalacze i akcje dla zarządzania komunikacją AS2. Na przykład aby ustanowić bezpieczeństwa i niezawodności, podczas przesyłania wiadomości, służy te akcje:
+Aby móc korzystać z komunikatów AS2 w Azure Logic Apps, można użyć łącznika AS2, który udostępnia wyzwalacze i akcje zarządzania komunikacją AS2. Aby na przykład nawiązać bezpieczeństwo i niezawodność podczas przesyłania komunikatów, możesz użyć następujących akcji:
 
-* [**Koduj jako komunikat AS2** akcji](#encode) zapewniające szyfrowania, cyfrowe podpisywanie i Potwierdzanie za pośrednictwem komunikatu powiadomienia dyspozycji (MDN) pomocy bez odrzucania obsługi. Na przykład ta akcja ma zastosowanie AS2/HTTP, nagłówków i wykonuje te zadania, w przypadku skonfigurowania:
+* [ **AS2** zakodować akcję](#encode) w celu zapewnienia szyfrowania, podpisywania cyfrowego i potwierdzeń poprzez powiadomienia o dyspozycjach komunikatów (powiadomienia MDN), które ułatwiają odrzucanie. Na przykład ta akcja stosuje nagłówki AS2/HTTP i wykonuje te zadania po skonfigurowaniu:
 
-  * Objawy komunikatów wychodzących.
-  * Szyfruje komunikaty wychodzące.
-  * Kompresuje wiadomości.
+  * Podpisuje komunikaty wychodzące.
+  * Szyfruje wiadomości wychodzące.
+  * Kompresuje komunikat.
   * Przesyła nazwę pliku w nagłówku MIME.
 
-* [**Dekoduj komunikat AS2** akcji](#decode) zapewniające odszyfrowywania cyfrowe podpisywanie i Potwierdzanie za pośrednictwem komunikatu powiadomienia dyspozycji (MDN). Na przykład ta akcja powoduje wykonanie następujących zadań: 
+* [ **AS2** akcja dekodowania](#decode) do zapewniania odszyfrowywania, podpisywania cyfrowego i potwierdzeń przy użyciu powiadomień o dyspozycjach komunikatów (powiadomienia MDN). Na przykład ta akcja wykonuje następujące zadania:
 
-  * Przetwarza nagłówków AS2/HTTP.
-  * Uzgadnia odebranych komunikatów Mdn z oryginalnej wiadomości wychodzących.
-  * Aktualizacje i koreluje uznawania bazy danych.
+  * Przetwarza nagłówki AS2/HTTP.
+  * Uzgadnia odebrane MDNs z oryginalnymi komunikatami wychodzącymi.
+  * Aktualizuje i skorelowanie rekordów w bazie danych bez wylogowania.
   * Zapisuje rekordy dla raportowania stanu AS2.
-  * Treści ładunek danych wyjściowych algorytmem Base64.
-  * Określa, czy wymagane są komunikatów Mdn. AS2 — na podstawie umowy, określa, czy komunikatów Mdn powinny być synchroniczna lub asynchroniczna.
-  * Generuje synchronicznych lub asynchronicznych komunikatów Mdn, w oparciu o umowy AS2.
-  * Ustawia właściwości i tokenów korelacji komunikatów Mdn.
+  * Wyprowadza zawartość ładunku jako zakodowaną algorytmem Base64.
+  * Określa, czy MDNs jest wymagane. W oparciu o umowę AS2 określa, czy MDNs powinna być synchroniczna czy asynchroniczna.
+  * Generuje synchroniczną lub asynchroniczną MDNs w oparciu o umowę AS2.
+  * Ustawia tokeny korelacji i właściwości na serwerze MDNs.
 
-  Ta akcja powoduje również wykonanie tych zadań w przypadku skonfigurowania:
+  Ta akcja wykonuje także następujące zadania po skonfigurowaniu:
 
   * Weryfikuje podpis.
   * Odszyfrowuje komunikaty.
-  * Dekompresuje wiadomości. 
-  * Sprawdź, a nie zezwalaj na duplikaty identyfikatorów komunikatów.
+  * Dekompresuje komunikat.
+  * Sprawdź i nie Zezwalaj na duplikaty identyfikatora wiadomości.
 
-W tym artykule przedstawiono sposób dodawania kodowanie AS2 i dekodowania akcji do istniejącej aplikacji logiki.
+W tym artykule pokazano, jak dodać akcje kodowania i dekodowania AS2 do istniejącej aplikacji logiki.
+
+> [!IMPORTANT]
+> Oryginalny łącznik AS2 będzie przestarzały, więc upewnij się, że zamiast niego używasz łącznika **AS2 (v2)** . Ta wersja zapewnia te same możliwości co wersja oryginalna, jest natywna dla środowiska uruchomieniowego Logic Apps i zapewnia znaczną poprawę wydajności w zakresie przepływności i rozmiaru wiadomości. Dodatkowo łącznik macierzysty v2 nie wymaga utworzenia połączenia z kontem integracji. Zamiast tego, zgodnie z opisem w sekcji wymagania wstępne, należy się upewnić, że konto integracji zostało połączone z aplikacją logiki, w której zamierzasz korzystać z łącznika.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz jeszcze subskrypcji platformy Azure [Załóż bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
+* Subskrypcja platformy Azure. Jeśli nie masz jeszcze subskrypcji platformy Azure, [zarejestruj się, aby skorzystać z bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
 
-* Aplikacja logiki, z której chcesz użyć łącznika AS2 i wyzwalacza uruchamiającego przepływ pracy aplikacji logiki. Łącznik AS2 udostępnia tylko akcje, wyzwalacze nie. Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [Szybki Start: Utwórz swoją pierwszą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Aplikacja logiki, z której ma być używany łącznik AS2 i wyzwalacz, który uruchamia przepływ pracy aplikacji logiki. Łącznik AS2 zawiera tylko akcje, a nie wyzwalacze. Jeśli jesteś nowym usługą Logic Apps, zapoznaj [się](../logic-apps/logic-apps-overview.md) z tematem [Azure Logic Apps i szybki start: Utwórz swoją pierwszą aplikację](../logic-apps/quickstart-create-first-logic-app-workflow.md)logiki.
 
-* [Konta integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) który ma skojarzony z subskrypcją platformy Azure i połączone z aplikacją logiki, w którym planujesz używać łącznika AS2. Zarówno swojej logiki aplikacji i konto integracji muszą istnieć w tej samej lokalizacji lub regionu platformy Azure.
+* [Konto integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) skojarzone z subskrypcją platformy Azure i połączone z aplikacją logiki, w której zamierzasz używać łącznika AS2. Zarówno aplikacja logiki, jak i konto integracji muszą istnieć w tej samej lokalizacji lub regionie platformy Azure.
 
-* Co najmniej dwóch [partnerami handlowymi](../logic-apps/logic-apps-enterprise-integration-partners.md) czy zdefiniowanych już w ramach konta integracji przy użyciu kwalifikator tożsamości AS2.
+* Co najmniej dwóch [partnerów handlowych](../logic-apps/logic-apps-enterprise-integration-partners.md) , które zostały już zdefiniowane na koncie integracji, przy użyciu kwalifikatora tożsamości AS2.
 
-* Przed użyciem łącznika AS2, należy utworzyć AS2 [umowy](../logic-apps/logic-apps-enterprise-integration-agreements.md) między partnerami handlowymi i magazynu tej umowy na koncie integracji.
+* Aby można było korzystać z łącznika AS2, należy utworzyć [umowę](../logic-apps/logic-apps-enterprise-integration-agreements.md) AS2 między partnerami handlowymi i przechowywać tę umowę na koncie integracji.
 
-* Jeśli używasz [usługi Azure Key Vault](../key-vault/key-vault-overview.md) certyfikatu zarządzania, sprawdź, że klucze magazynu na **Szyfruj** i **odszyfrować** operacji. W przeciwnym razie kodowania i dekodowania akcje działać.
+* Jeśli używasz [Azure Key Vault](../key-vault/key-vault-overview.md) do zarządzania certyfikatami, sprawdź, czy klucze magazynu umożliwiają wykonywanie operacji **szyfrowania** i **odszyfrowywania** . W przeciwnym razie akcje kodowania i dekodowania kończą się niepowodzeniem.
 
-  W witrynie Azure portal przejdź do magazynu kluczy, wyświetlanie klucz magazynu **dozwolone operacje**i upewnij się, że **Szyfruj** i **odszyfrować** operacje są zaznaczone.
+  W Azure Portal przejdź do magazynu kluczy, Wyświetl **dozwolone operacje**klucza magazynu i upewnij się, że są wybrane operacje **szyfrowania** i odszyfrowywania .
 
-  ![Sprawdź kluczowe operacje magazynu](media/logic-apps-enterprise-integration-as2/vault-key-permitted-operations.png)
+  ![Sprawdzanie operacji klucza magazynu](media/logic-apps-enterprise-integration-as2/vault-key-permitted-operations.png)
 
 <a name="encode"></a>
 
 ## <a name="encode-as2-messages"></a>Kodowanie komunikatów AS2
 
-1. Jeśli nie jest już w [witryny Azure portal](https://portal.azure.com), Otwórz aplikację logiki w Projektancie aplikacji logiki.
+1. Jeśli jeszcze tego nie zrobiono, w [Azure Portal](https://portal.azure.com)Otwórz aplikację logiki w Projektancie aplikacji logiki.
 
-1. W Projektancie Dodaj nową akcję do aplikacji logiki. 
+1. W projektancie Dodaj nową akcję do aplikacji logiki.
 
-1. W obszarze **wybierz akcję** i wyszukiwania, wybierz **wszystkich**. W polu wyszukiwania wprowadź "kodowanie as2" i wybierz następującą akcję: **Koduj jako komunikat AS2**.
+1. W obszarze **Wybierz akcję** i pole wyszukiwania wybierz pozycję **wszystkie**. W polu wyszukiwania wprowadź ciąg "AS2 Encode" i upewnij się, że wybrano akcję AS2 (v2): **Kodowanie AS2**
 
-   ![Wybierz pozycję "Koduj komunikat AS2."](./media/logic-apps-enterprise-integration-as2/select-as2-encode.png)
+   ![Wybierz pozycję "AS2 Encode"](./media/logic-apps-enterprise-integration-as2/select-as2-encode.png)
 
-1. Jeśli masz istniejące połączenie z kontem integracji, zostanie wyświetlony monit Utwórz teraz tego połączenia. Nazwij połączenie, wybierz konto integracji, który chcesz połączyć, a następnie wybierz **Utwórz**.
-
-   ![Utwórz połączenie z kontem integracji](./media/logic-apps-enterprise-integration-as2/as2-create-connection.png)  
- 
-1. Teraz podaj informacje dotyczące tych właściwości:
+1. Podaj teraz informacje o tych właściwościach:
 
    | Właściwość | Opis |
    |----------|-------------|
-   | **AS2-z** | Identyfikator nadawcy wiadomości określony przez umowy AS2 |
-   | **AS2 — do** | Identyfikator odbiorcy komunikat określony przez umowy AS2 |
-   | **body** | Ładunek komunikatu |
+   | **Komunikat do zakodowania** | Ładunek wiadomości |
+   | **AS2 z** | Identyfikator nadawcy wiadomości określony przez umowę AS2 |
+   | **AS2 do** | Identyfikator odbiorcy wiadomości określony przez umowę AS2 |
    |||
 
    Na przykład:
 
-   ![Właściwości kodowania komunikatu](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
+   ![Właściwości kodowania komunikatów](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
 
 <a name="decode"></a>
 
 ## <a name="decode-as2-messages"></a>Dekodowanie komunikatów AS2
 
-1. Jeśli nie jest już w [witryny Azure portal](https://portal.azure.com), Otwórz aplikację logiki w Projektancie aplikacji logiki.
+1. Jeśli jeszcze tego nie zrobiono, w [Azure Portal](https://portal.azure.com)Otwórz aplikację logiki w Projektancie aplikacji logiki.
 
-1. W Projektancie Dodaj nową akcję do aplikacji logiki. 
+1. W projektancie Dodaj nową akcję do aplikacji logiki.
 
-1. W obszarze **wybierz akcję** i wyszukiwania, wybierz **wszystkich**. W polu wyszukiwania wprowadź "dekodowania as2" i wybierz następującą akcję: **Dekoduj komunikat AS2**
+1. W obszarze **Wybierz akcję** i pole wyszukiwania wybierz pozycję **wszystkie**. W polu wyszukiwania wprowadź ciąg "dekodowanie AS2" i upewnij się, że wybrano akcję AS2 (v2): **Dekodowanie AS2**
 
-   ![Wybierz opcję "dekodowania AS2 komunikat"](media/logic-apps-enterprise-integration-as2/select-as2-decode.png)
+   ![Wybierz pozycję "dekodowanie AS2"](media/logic-apps-enterprise-integration-as2/select-as2-decode.png)
 
-1. Jeśli masz istniejące połączenie z kontem integracji, zostanie wyświetlony monit Utwórz teraz tego połączenia. Nazwij połączenie, wybierz konto integracji, który chcesz połączyć, a następnie wybierz **Utwórz**.
+1. Aby **komunikat był kodowany** i właściwości **nagłówków wiadomości** , wybierz te wartości z poprzedniego wyzwalacza lub wyjść akcji.
 
-   ![Utwórz połączenie z kontem integracji](./media/logic-apps-enterprise-integration-as2/as2-create-connection.png)  
+   Załóżmy na przykład, że aplikacja logiki otrzymuje komunikaty przez wyzwalacz żądania. Można wybrać dane wyjściowe z tego wyzwalacza.
 
-1. Aby uzyskać **treści** i **nagłówki**, wybierz te wartości z danych wyjściowych poprzedniej, wyzwalacza lub akcji.
+   ![Wybieranie treści i nagłówków z danych wyjściowych żądania](media/logic-apps-enterprise-integration-as2/as2-message-decoding-details.png)
 
-   Na przykład załóżmy, że Twoja aplikacja logiki odbiera komunikaty za pośrednictwem wyzwalacza żądania. Możesz wybrać dane wyjściowe z tego wyzwalacza.
+## <a name="sample"></a>Próbka
 
-   ![Wybierz nagłówki i treść z danych wyjściowych żądań](media/logic-apps-enterprise-integration-as2/as2-message-decoding-details.png) 
-
-## <a name="sample"></a>Sample
-
-Aby wypróbować wdrażanie scenariusza AS2 przykład i aplikacji logiki w pełni funkcjonalne, zobacz [AS2 szablon aplikacji logiki i scenariusz](https://azure.microsoft.com/documentation/templates/201-logic-app-as2-send-receive/).
+Aby spróbować wdrożyć w pełni działającą aplikację logiki i przykład scenariusza AS2, zobacz [szablon i scenariusz aplikacji logiki AS2](https://azure.microsoft.com/documentation/templates/201-logic-app-as2-send-receive/).
 
 ## <a name="connector-reference"></a>Dokumentacja łączników
 
-Szczegóły techniczne, takich jak wyzwalacze, akcje i ograniczeń, zgodnie z opisem w łącznika interfejsu OpenAPI (dawniej Swagger) plików, zobacz [strona referencyjna łącznika](/connectors/as2/).
+Aby uzyskać szczegółowe informacje techniczne, takie jak wyzwalacze, akcje i limity, zgodnie z opisem w pliku OpenAPI łącznika (dawniej Swagger), zobacz [stronę odwołania łącznika](/connectors/as2/).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o [pakiet integracyjny dla przedsiębiorstw](logic-apps-enterprise-integration-overview.md)

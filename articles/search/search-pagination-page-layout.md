@@ -2,7 +2,7 @@
 title: Jak korzystać z wyników wyszukiwania — Azure Search
 description: Tworzenie struktury i sortowanie wyników wyszukiwania, pobieranie liczby dokumentów i Dodawanie nawigacji zawartości do wyników wyszukiwania w Azure Search.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.devlang: ''
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: bb86a75be464cb78a16170626bc96778d43bb8b6
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 9fa2baf64dbb35d85c55635d7522075d61bfc17d
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67974617"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647705"
 ---
 # <a name="how-to-work-with-search-results-in-azure-search"></a>Jak korzystać z wyników wyszukiwania w Azure Search
 Ten artykuł zawiera wskazówki dotyczące implementowania standardowych elementów strony wyników wyszukiwania, takich jak łączna liczba, pobieranie dokumentów, kolejność sortowania i nawigacja. Opcje dotyczące strony, które tworzą dane lub informacje w wynikach wyszukiwania, są określane za pomocą żądań przeszukiwania [dokumentów](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) wysyłanych do usługi Azure Search. 
@@ -78,7 +78,7 @@ W Azure Search sortowanie jest oparte na `$orderby` wyrażeniu, dla wszystkich p
 
 Istotność jest silnie skojarzona z profilami oceniania. Możesz użyć domyślnej oceny, która opiera się na analizie tekstu i statystyce do klasyfikowania wszystkich wyników, z wyższymi wynikami do dokumentów o większej lub silniejszym dopasowań w wyszukiwanym terminie.
 
-Alternatywne zamówienia sortowania są zwykle skojarzone ze  zdarzeniami onkliknięcia, które wywołują z powrotem do metody, która kompiluje porządek sortowania. Na przykład, uwzględniając ten element strony:
+Alternatywne zamówienia sortowania są zwykle skojarzone ze zdarzeniami onkliknięcia, które wywołują z powrotem do metody, która kompiluje porządek sortowania. Na przykład, uwzględniając ten element strony:
 
  ![][4]
 
@@ -96,7 +96,7 @@ Nawigacja wyszukiwania jest wspólna na stronie wyników, często znajdującej s
 
 ## <a name="filters-at-the-page-level"></a>Filtry na poziomie strony
 
-Jeśli projekt rozwiązania zawiera dedykowane strony wyszukiwania dla określonych typów zawartości (na przykład aplikacji detalicznej online zawierającej działy w górnej części strony), można wstawić [wyrażenie filtru](search-filters.md) obok zdarzenia onkliknięcia do  Otwórz stronę w stanie sprzed przefiltrowania.
+Jeśli projekt rozwiązania zawiera dedykowane strony wyszukiwania dla określonych typów zawartości (na przykład aplikacji detalicznej online zawierającej działy w górnej części strony), można wstawić [wyrażenie filtru](search-filters.md) obok zdarzenia onkliknięcia do Otwórz stronę w stanie sprzed przefiltrowania.
 
 Filtr można wysłać z wyrażeniem wyszukiwania lub bez niego. Na przykład następujące żądanie przefiltruje nazwę marki, zwracając tylko te dokumenty, które pasują do niego.
 

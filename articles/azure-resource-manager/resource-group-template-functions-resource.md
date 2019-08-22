@@ -4,14 +4,14 @@ description: Opisuje funkcje, aby użyć w szablonie usługi Azure Resource Mana
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 08/06/2019
+ms.date: 08/20/2019
 ms.author: tomfitz
-ms.openlocfilehash: 2ec6e58438e7be953e1f672fb815ff3f68a7f252
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2cd37405176eefa8f4445942b9fbf1afc2a7404a
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839260"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650428"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Funkcje zasobów dla szablonów usługi Azure Resource Manager
 
@@ -429,7 +429,7 @@ W przypadku konstruowania w pełni kwalifikowanego odwołania do zasobu kolejno�
 
 **{Resource-Provider-Namespace}/{Parent-Resource-Type}/{Parent-Resource-Name} [/{Child-Resource-Type}/{Child-resource-name}]**
 
-Na przykład:
+Przykład:
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt`jest niepoprawny `Microsoft.Compute/virtualMachines/extensions/myVM/myExt`
 
@@ -634,7 +634,7 @@ Powyższy przykład zwraca obiekt, w następującym formacie:
 
 ## <a name="resourceid"></a>resourceId
 
-`resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2]...)`
+`resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)`
 
 Zwraca unikatowy identyfikator zasobu. Aby użyć tej funkcji, jeśli nazwa zasobu jest niejednoznaczny lub nie jest aprowizowany w ramach tego samego szablonu. 
 
@@ -646,43 +646,46 @@ Zwraca unikatowy identyfikator zasobu. Aby użyć tej funkcji, jeśli nazwa zaso
 | resourceGroupName |Nie |ciąg |Wartość domyślna to bieżącej grupie zasobów. Należy określić tę wartość, gdy jest potrzebne do pobierania zasobów w innej grupie zasobów. |
 | Typ zasobu |Yes |ciąg |Typ zasobu, włącznie z przestrzenią nazw dostawcy zasobów. |
 | resourceName1 |Yes |ciąg |Nazwa zasobu. |
-| resourceName2 |Nie |ciąg |Następny zasobu Nazwa segment Jeśli zasób jest zagnieżdżony. |
+| resourceName2 |Nie |ciąg |Następny segment nazwy zasobu, w razie konieczności. |
+
+Kontynuuj dodawanie nazw zasobów jako parametrów, gdy typ zasobu zawiera więcej segmentów.
 
 ### <a name="return-value"></a>Wartość zwracana
 
 Identyfikator jest zwracany w następującym formacie:
 
-```json
-/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-```
+**/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}**
+
 
 ### <a name="remarks"></a>Uwagi
 
-W przypadku użycia `resourceId()` z [wdrożeniem na poziomie subskrypcji](deploy-to-subscription.md)funkcja może pobrać tylko identyfikator zasobów wdrożonych na tym poziomie. Można na przykład uzyskać identyfikator definicji zasad lub definicji roli, ale nie identyfikator konta magazynu. W przypadku wdrożeń dla grupy zasobów, przeciwieństwem jest true. Nie można uzyskać identyfikatora zasobu wdrożonego na poziomie subskrypcji.
+Liczba parametrów, które należy podać, zależy od tego, czy zasób jest zasobem nadrzędnym, czy podrzędnym, oraz czy zasób znajduje się w tej samej subskrypcji lub grupie zasobów.
 
-Wartości parametrów, które określisz, zależą od tego, czy zasób jest w tej samej subskrypcji i grupie zasobów co bieżącego wdrożenia. Aby uzyskać identyfikator zasobu dla konta magazynu w tej samej subskrypcji i grupie zasobów, użyj:
-
-```json
-"[resourceId('Microsoft.Storage/storageAccounts','examplestorage')]"
-```
-
-Aby uzyskać identyfikator zasobu dla konta magazynu w tej samej subskrypcji, ale inną grupę zasobów, użyj:
+Aby uzyskać identyfikator zasobu dla zasobu nadrzędnego w tej samej subskrypcji i grupie zasobów, podaj typ i nazwę zasobu.
 
 ```json
-"[resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
+"[resourceId('Microsoft.ServiceBus/namespaces', 'namespace1')]"
 ```
 
-Aby uzyskać identyfikator zasobu dla konta magazynu w innej subskrypcji i grupie zasobów, użyj:
+Aby uzyskać identyfikator zasobu dla zasobu podrzędnego, należy zwrócić uwagę na liczbę segmentów w typie zasobu. Podaj nazwę zasobu dla każdego segmentu typu zasobu. Nazwa segmentu odpowiada zasobowi, który istnieje dla tej części hierarchii.
+
+```json
+"[resourceId('Microsoft.ServiceBus/namespaces/queues/authorizationRules', 'namespace1', 'queue1', 'auth1')]"
+```
+
+Aby uzyskać identyfikator zasobu dla zasobu w tej samej subskrypcji, ale w innej grupie zasobów, podaj nazwę grupy zasobów.
+
+```json
+"[resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts', 'examplestorage')]"
+```
+
+Aby uzyskać identyfikator zasobu dla zasobu w innej subskrypcji i grupie zasobów, podaj identyfikator subskrypcji i nazwę grupy zasobów.
 
 ```json
 "[resourceId('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
 ```
 
-Aby uzyskać identyfikator zasobu dla bazy danych w innej grupie zasobów, należy użyć:
-
-```json
-"[resourceId('otherResourceGroup', 'Microsoft.SQL/servers/databases', parameters('serverName'), parameters('databaseName'))]"
-```
+W przypadku użycia `resourceId()` z [wdrożeniem na poziomie subskrypcji](deploy-to-subscription.md)funkcja może pobrać tylko identyfikator zasobów wdrożonych na tym poziomie. Można na przykład uzyskać identyfikator definicji zasad lub definicji roli, ale nie identyfikator konta magazynu. W przypadku wdrożeń dla grupy zasobów, przeciwieństwem jest true. Nie można uzyskać identyfikatora zasobu wdrożonego na poziomie subskrypcji.
 
 Aby uzyskać identyfikator zasobu na poziomie subskrypcji podczas wdrażania w zakresie subskrypcji, użyj:
 

@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 08/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 217a51c1032f946e8aaf377627f30aa4faa83a86
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 9fe63ba810724216b1b356896b621f1e5b021bbf
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542713"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891980"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>Samouczek: Azure Active Directory Integracja z logowaniem jednokrotnym (SSO) przy użyciu produktu Workday
 
@@ -227,7 +227,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
     ![Konfiguracja logowania] jednokrotnego (./media/workday-tutorial/WorkdaySSOConfiguratio.png "Konfiguracja logowania") jednokrotnego
 
-    a.  W polu tekstowym **Identyfikator dostawcy usług** wpisz **https://www.workday.com** .
+    a.  W polu tekstowym **Identyfikator dostawcy usług** wpisz **http://www.workday.com** .
 
     b. Wybierz pozycję **nie rób korekt w zainicjowanym programie Sp żądanie uwierzytelniania**.
 

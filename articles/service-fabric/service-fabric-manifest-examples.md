@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: pepogors
-ms.openlocfilehash: 10419240f730a6b68f1161f158f7f903a98a9933
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: dc3384821ddfba0a137a74297bc44903b6ed5d1d
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035605"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650574"
 ---
 # <a name="service-fabric-application-and-service-manifest-examples"></a>Service Fabric przykłady manifestów aplikacji i usług
 Ta sekcja zawiera przykłady manifestów aplikacji i usług. Te przykłady nie są przeznaczone do wyświetlania ważnych scenariuszy, ale do wyświetlania różnych dostępnych ustawień i sposobu ich używania. 
@@ -39,7 +39,7 @@ Poniżej znajduje się indeks widocznych funkcji i przykładowe manifesty, któr
 |[Deklarowanie pakietu danych](service-fabric-application-and-service-manifests.md)|[Manifest usługi VotingData](service-fabric-manifest-example-reliable-services-app.md#votingdata-service-manifest)|
 |[Przesłoń zmienne środowiskowe](service-fabric-get-started-containers.md#configure-and-set-environment-variables)|[Manifest aplikacji kontenera](service-fabric-manifest-example-container-app.md#application-manifest)|
 |[Konfigurowanie mapowania portów między hostami](service-fabric-get-started-containers.md#configure-container-port-to-host-port-mapping-and-container-to-container-discovery)| [Manifest aplikacji kontenera](service-fabric-manifest-example-container-app.md#application-manifest)|
-|[Konfigurowanie uwierzytelniania rejestru kontenerów](service-fabric-get-started-containers.md#configure-container-registry-authentication)|[Manifest aplikacji kontenera](service-fabric-manifest-example-container-app.md#application-manifest)|
+|[Konfigurowanie uwierzytelniania rejestru kontenerów](service-fabric-get-started-containers.md#configure-container-repository-authentication)|[Manifest aplikacji kontenera](service-fabric-manifest-example-container-app.md#application-manifest)|
 |[Ustaw tryb izolacji](service-fabric-get-started-containers.md#configure-isolation-mode)|[Manifest aplikacji kontenera](service-fabric-manifest-example-container-app.md#application-manifest)|
 |[Określ obrazy kontenerów właściwych dla kompilacji systemu operacyjnego](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)|[Manifest aplikacji kontenera](service-fabric-manifest-example-container-app.md#application-manifest)|
 |[Ustawianie zmiennych środowiskowych](service-fabric-get-started-containers.md#configure-and-set-environment-variables)|[Manifest usługi FrontEndService kontenera](service-fabric-manifest-example-container-app.md#frontendservice-service-manifest), [manifest usługi kontenera BackEndService](service-fabric-manifest-example-container-app.md#backendservice-service-manifest)|

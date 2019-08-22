@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: e18d6519d1ee3c1750757af5c59157de8bdde80c
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 3c16d8b5f1611c6c05e60d65551f73eb2d395668
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637912"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872902"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Tworzenie kopii zapasowych baz danych programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -175,7 +175,7 @@ Jak odnajdywać bazy danych uruchomione na maszynie wirtualnej:
    Aby zoptymalizować obciążenia kopii zapasowych, usługa Azure Backup ustawia maksymalną liczbę baz danych w jednym zadaniu tworzenia kopii zapasowej na 50.
 
      * Aby chronić więcej niż 50 baz danych, skonfiguruj wiele kopii zapasowych.
-     * Aby włączyć [](#enable-auto-protection) całe wystąpienie lub zawsze włączona Grupa dostępności. Z listy rozwijanej Autoochrona wybierz pozycję **włączone**, a następnie wybierz przycisk **OK**.
+     * Aby [włączyć](#enable-auto-protection) całe wystąpienie lub zawsze włączona Grupa dostępności, na liście rozwijanej **Autoochrona** wybierz pozycję **włączone**, a następnie wybierz przycisk **OK**.
 
     > [!NOTE]
     > Funkcja [automatycznej ochrony](#enable-auto-protection) nie tylko włącza ochronę wszystkich istniejących baz danych, ale również automatycznie chroni wszystkie nowe bazy danych dodane do tego wystąpienia lub grupy dostępności.  

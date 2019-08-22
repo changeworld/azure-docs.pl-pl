@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 3d3fc1541fb99d8d1219392158c3b87cd6ff99aa
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
-ms.translationtype: MT
+ms.openlocfilehash: 37624c79a345f956de9a289c672340e391199e2f
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033533"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650718"
 ---
 # <a name="create-a-new-saas-offer"></a>Utwórz nową ofertę SaaS
 
@@ -302,12 +302,7 @@ Aby dowiedzieć się, jak będzie bardziej atrakcyjny opis oferty, możesz uży�
 
     Powyższy sposób będzie wyglądać następująco:
 
-    <h1>To jest nagłówek 1</h1> 
-    <h2>To jest nagłówek 2</h2> 
-    <h3>To jest nagłówek 3</h3> 
-    <h4>Jest to nagłówek 4</h4> 
-    <h5>Jest to nagłówek 5</h5> 
-    <h6>To jest nagłówek 6</h6> 
+    ![Przykładowe nagłówki](./media/heading.png)
 
 #### <a name="links"></a>Łącza
 

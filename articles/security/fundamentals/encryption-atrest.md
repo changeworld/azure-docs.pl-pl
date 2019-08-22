@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/02/2019
+ms.date: 08/20/2019
 ms.author: barclayn
-ms.openlocfilehash: 89acc86526d1017e97efbf1812e02cfb6a240953
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 910057e0e81219a68608441530d03ca1a2411b02
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035423"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875098"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Szyfrowanie danych platformy Azure — w spoczynku
 
@@ -254,14 +254,14 @@ Obsługa szyfrowania serwera jest obecnie udostępniana za pomocą funkcji SQL o
 
 Szyfrowanie po stronie klienta Azure SQL Database danych jest obsługiwane za pomocą funkcji [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) . Always Encrypted używa klucza utworzonego i przechowywanego przez klienta. Klienci mogą przechowywać klucz główny w magazynie certyfikatów systemu Windows, Azure Key Vault lub lokalnych sprzętowych modułach zabezpieczeń. Za pomocą SQL Server Management Studio użytkownicy SQL wybierają klucz, którego chcesz użyć do zaszyfrowania kolumny.
 
-|                                  |                    | **Model szyfrowania i zarządzanie kluczami** |                    |
-|----------------------------------|--------------------|-----------------------------------------|--------------------|
-|                                  | **Po stronie serwera przy użyciu klucza zarządzanego przez usługę**     | **Po stronie serwera przy użyciu klucza zarządzanego przez klienta**             | **Po stronie klienta przy użyciu programu zarządzanego przez klienta**      |
-| **AI i Machine Learning**      |                    |                    |                    |
+#### <a name="encryption-model-and-key-management"></a>Model szyfrowania i zarządzanie kluczami
+
+| **Po stronie serwera przy użyciu klucza zarządzanego przez usługę** |**Po stronie serwera przy użyciu klucza zarządzanego przez klienta**| **Po stronie klienta przy użyciu programu zarządzanego przez klienta** | **AI i Machine Learning**   |
+|--------------------|-------------------|----------------------|--------------------|
 | Azure Search                     | Tak                | -                  | -                  |
 | Azure Machine Learning Service   | Tak                | -                  | -                  |
 | Azure Machine Learning Studio    | Tak                | Wersja zapoznawcza, RSA 2048-bit | -               |
-| Power BI                         | Tak                | Wersja zapoznawcza, RSA 2048-bit | -                  |
+| Power BI                         | Tak                | Wersja zapoznawcza, RSA 2048-bit | -               |
 | **Analiza**                    |                    |                    |                    |
 | Usługa Azure Stream Analytics           | Tak                | -                  | -                  |
 | Event Hubs                       | Tak                | -                  | -                  |
@@ -282,7 +282,7 @@ Szyfrowanie po stronie klienta Azure SQL Database danych jest obsługiwane za po
 | Azure SQL Database               | Tak                | Tak, RSA 2048-bit  | Tak                |
 | Azure SQL Database MariaDB   | Tak                | -                  | -                  |
 | Azure SQL Database dla programu MySQL     | Tak                | -                  | -                  |
-| Azure SQL Database PostgreSQL | Tak                | -                  | -                  |
+| Azure SQL Database PostgreSQL | Tak                | -                  | -                 |
 | Azure SQL Data Warehouse         | Tak                | Tak, RSA 2048-bit  | Tak                |
 | SQL Server Stretch Database      | Tak                | Tak, RSA 2048-bit  | Tak                |
 | Table Storage                    | Tak                | -                  | Tak                |

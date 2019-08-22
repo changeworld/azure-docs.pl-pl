@@ -1,6 +1,6 @@
 ---
-title: Połącz ogólnego klienta aplikacji Node.js usługi Azure IoT Central | Dokumentacja firmy Microsoft
-description: Jako deweloper urządzenia jak połączyć ogólny urządzenia środowiska Node.js do aplikacji usługi Azure IoT Central.
+title: Łączenie ogólnej aplikacji klienckiej Node. js z platformą Azure IoT Central | Microsoft Docs
+description: Jako deweloper urządzenia dołączają ogólne urządzenie Node. js do aplikacji IoT Central platformy Azure.
 author: dominicbetts
 ms.author: dobett
 ms.date: 06/14/2019
@@ -8,139 +8,141 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 90e4a061e38fdd3a13a640363069fae3a18e0b49
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 3b73344a233182fe8366795cfa111b706c6d06ac
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444246"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876256"
 ---
-# <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Łączenie aplikacji klienckiej ogólnego aplikację usługi Azure IoT Central (Node.js)
+# <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Łączenie ogólnej aplikacji klienckiej z aplikacją usługi Azure IoT Central (Node. js)
 
-W tym artykule opisano jak Deweloper urządzenia do łączenia z ogólnych aplikacji Node.js reprezentujący rzeczywistego urządzenia do aplikacji Microsoft Azure IoT Central.
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
+
+W tym artykule opisano sposób, w jaki deweloper urządzenia nawiązuje połączenie ogólnej aplikacji node. js reprezentującej rzeczywiste urządzenie z aplikacją IoT Central Microsoft Azure.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 Do wykonania kroków opisanych w tym artykule potrzebne są:
 
-1. Aplikacja usługi Azure IoT Central. Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
-1. Jest maszyna deweloperska z [Node.js](https://nodejs.org/) wersji 4.0.0 lub nowszej. Możesz uruchomić `node --version` w wierszu polecenia, aby sprawdzić swoją wersję. Oprogramowanie Node.js jest dostępne dla różnych systemów operacyjnych.
+1. Aplikacja IoT Central platformy Azure. Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
+1. Komputer deweloperski z zainstalowanym środowiskiem [Node. js](https://nodejs.org/) w wersji 4.0.0 lub nowszej. Aby sprawdzić swoją `node --version` wersję, można uruchomić polecenie w wierszu polecenia. Oprogramowanie Node.js jest dostępne dla różnych systemów operacyjnych.
 
 ## <a name="create-a-device-template"></a>Tworzenie szablonu urządzenia
 
-W aplikacji usługi Azure IoT Central potrzebne są szablon urządzenia z pomiarów następujące właściwości urządzenia, ustawienia i polecenia:
+W aplikacji IoT Central platformy Azure potrzebny jest szablon urządzenia z następującymi pomiarami:, właściwościami, ustawieniami i poleceniami.
 
-### <a name="telemetry-measurements"></a>Pomiary dotyczące prawdziwych danych telemetrycznych
+### <a name="telemetry-measurements"></a>Pomiary telemetrii
 
-Dodaj następujące dane telemetryczne na **pomiarów** strony:
+Na stronie **pomiary** Dodaj następujące dane telemetryczne:
 
 | Nazwa wyświetlana | Nazwa pola  | Jednostki | Min. | Maks. | Miejsca dziesiętne |
 | ------------ | ----------- | ----- | --- | --- | -------------- |
-| Temperatura  | temperature | F     | 60  | 110 | 0              |
+| Temperatura  | temperature | P     | 60  | 110 | 0              |
 | Wilgotność     | humidity    | %     | 0   | 100 | 0              |
-| Wykorzystanie     | pressure    | kPa   | 80  | 110 | 0              |
+| Ciśnienie     | pressure    | kPa   | 80  | 110 | 0              |
 
 > [!NOTE]
-> Typ danych miary telemetrii jest zmiennoprzecinkowy numer punktu.
+> Typ danych pomiaru telemetrii jest liczbą zmiennoprzecinkową.
 
-Wprowadź nazwy pól dokładnie tak jak pokazano w tabeli do szablonu urządzenia. Jeśli nazwy pól są niezgodne nazwy właściwości w odpowiednim kodzie urządzenia, dane telemetryczne nie można wyświetlić w aplikacji.
+Wprowadź nazwy pól dokładnie tak, jak pokazano w tabeli w szablonie urządzenia. Jeśli nazwy pól nie są zgodne z nazwami właściwości w odpowiednim kodzie urządzenia, dane telemetryczne nie mogą być wyświetlane w aplikacji.
 
 ### <a name="state-measurements"></a>Pomiary stanu
 
-Dodaj następujący stan na **pomiarów** strony:
+Na stronie **pomiary** należy dodać następujący stan:
 
 | Nazwa wyświetlana | Nazwa pola  | Wartość 1 | Nazwa wyświetlana | Wartość 2 | Nazwa wyświetlana |
 | ------------ | ----------- | --------| ------------ | ------- | ------------ | 
 | Tryb wentylatora     | fanmode     | 1       | Działanie      | 0       | Zatrzymano      |
 
 > [!NOTE]
-> Typ danych miary stanu jest ciągiem.
+> Typ danych pomiaru stanu to ciąg.
 
-Wprowadź nazwy pól dokładnie tak jak pokazano w tabeli do szablonu urządzenia. Jeśli nazwy pól są niezgodne nazwy właściwości w odpowiednim kodzie urządzenia, stan, nie można wyświetlić w aplikacji.
+Wprowadź nazwy pól dokładnie tak, jak pokazano w tabeli w szablonie urządzenia. Jeśli nazwy pól nie są zgodne z nazwami właściwości w odpowiednim kodzie urządzenia, stan nie może być wyświetlany w aplikacji.
 
-### <a name="event-measurements"></a>Zdarzenie pomiarów
+### <a name="event-measurements"></a>Pomiary zdarzeń
 
-Dodaj następujące zdarzenie na **pomiarów** strony:
+Na stronie **pomiary** Dodaj następujące zdarzenie:
 
 | Nazwa wyświetlana | Nazwa pola  | severity |
 | ------------ | ----------- | -------- |
-| Przegrzaniu  | przegrzeje się    | Błąd    |
+| Przegrzaniu  | overheat    | Błąd    |
 
 > [!NOTE]
-> Typ danych miary zdarzeń jest ciągiem.
+> Typ danych pomiaru zdarzenia to ciąg.
 
 ### <a name="location-measurements"></a>Pomiary lokalizacji
 
-Dodaj następujące miary lokalizacji na **pomiarów** strony:
+Na stronie **pomiary** Dodaj następujące pomiary lokalizacji:
 
 | Nazwa wyświetlana | Nazwa pola  |
 | ------------ | ----------- |
 | Location     | location    |
 
-Pomiar lokalizacji, typu danych składa się z dwóch liczb zmiennoprzecinkowych liczb zmiennoprzecinkowych pod długości i szerokości geograficznej i opcjonalnie liczbę zmiennoprzecinkową o wysokość.
+Typ danych pomiar lokalizacji składa się z dwóch liczb zmiennoprzecinkowych dla długości geograficznej i szerokości geograficznej oraz opcjonalnej liczby zmiennoprzecinkowej dla wysokości.
 
-Wprowadź nazwy pól dokładnie tak jak pokazano w tabeli do szablonu urządzenia. Jeśli nazwy pól są niezgodne nazwy właściwości w odpowiednim kodzie urządzenia, lokalizacji nie można wyświetlić w aplikacji.
+Wprowadź nazwy pól dokładnie tak, jak pokazano w tabeli w szablonie urządzenia. Jeśli nazwy pól nie są zgodne z nazwami właściwości w odpowiednim kodzie urządzenia, lokalizacja nie może zostać wyświetlona w aplikacji.
 
 ### <a name="device-properties"></a>Właściwości urządzenia
 
-Dodaj następujące właściwości urządzenia na **właściwości** strony:
+Na stronie **Właściwości** Dodaj następujące właściwości urządzenia:
 
 | Nazwa wyświetlana        | Nazwa pola        | Typ danych |
 | ------------------- | ----------------- | --------- |
-| Numer seryjny       | serialNumber      | tekst      |
-| Producent urządzenia | Producent      | tekst      |
+| Numer seryjny       | serialNumber      | text      |
+| Producent urządzenia | producent      | text      |
 
-Wprowadź nazwy pól dokładnie tak jak pokazano w tabeli do szablonu urządzenia. Jeśli nazwy pól są niezgodne nazwy właściwości w odpowiednim kodzie urządzenia, właściwości nie można wyświetlić w aplikacji.
+Wprowadź nazwy pól dokładnie tak, jak pokazano w tabeli w szablonie urządzenia. Jeśli nazwy pól nie są zgodne z nazwami właściwości w odpowiednim kodzie urządzenia, właściwości nie mogą być wyświetlane w aplikacji.
 
 ### <a name="settings"></a>Ustawienia
 
-Dodaj następujący kod **numer** ustawień na **ustawienia** strony:
+Dodaj następujące ustawienia **liczbowe** na stronie **Ustawienia** :
 
 | Nazwa wyświetlana    | Nazwa pola     | Jednostki | Miejsca dziesiętne | Min. | Maks.  | Początkowa |
 | --------------- | -------------- | ----- | -------- | --- | ---- | ------- |
-| Wentylator szybkości       | fanSpeed       | obr. / min   | 0        | 0   | 3000 | 0       |
-| Ustaw temperaturę | setTemperature | F     | 0        | 20  | 200  | 80      |
+| Szybkość wentylatorów       | fanSpeed       | rpm   | 0        | 0   | 3000 | 0       |
+| Ustaw temperaturę | setTemperature | P     | 0        | 20  | 200  | 80      |
 
-Wprowadź nazwę pola dokładnie tak jak pokazano w tabeli do szablonu urządzenia. Jeśli nazwy pól są niezgodne nazwy właściwości w odpowiednim kodzie urządzenie, urządzenie nie może odbierać wartości ustawienia.
+Wprowadź nazwę pola dokładnie tak, jak pokazano w tabeli w szablonie urządzenia. Jeśli nazwy pól nie są zgodne z nazwami właściwości w odpowiednim kodzie urządzenia, urządzenie nie może odebrać wartości ustawienia.
 
 ### <a name="commands"></a>Polecenia
 
-Dodaj następujące polecenie na **polecenia** strony:
+Na stronie **polecenia** Dodaj następujące polecenie:
 
 | Nazwa wyświetlana    | Nazwa pola     | Domyślny limit czasu | Typ danych |
 | --------------- | -------------- | --------------- | --------- |
-| Odliczanie       | Odliczanie      | 30              | numer    |
+| Licz       | licz      | 30              | numer    |
 
-Dodaj następujące pola wejściowego, do polecenia odliczania:
+Dodaj następujące pole wejściowe do polecenia odliczania:
 
-| Nazwa wyświetlana    | Nazwa pola     | Typ danych | Wartość |
+| Nazwa wyświetlana    | Nazwa pola     | Typ danych | Value |
 | --------------- | -------------- | --------- | ----- |
-| Są liczone od      | countFrom      | numer    | 10    |
+| Liczba od      | countFrom      | numer    | 10    |
 
-Wprowadź nazwy pól dokładnie tak jak pokazano w tabelach do szablonu urządzenia. Jeśli nazwy pól są niezgodne nazwy właściwości w odpowiednim kodzie urządzenie, urządzenie nie może przetworzyć polecenia.
+Wprowadź nazwy pól dokładnie tak, jak pokazano w tabelach w szablonie urządzenia. Jeśli nazwy pól nie są zgodne z nazwami właściwości w odpowiednim kodzie urządzenia, urządzenie nie może przetworzyć polecenia.
 
 ## <a name="add-a-real-device"></a>Dodawanie rzeczywistego urządzenia
 
-W aplikacji usługi Azure IoT Central należy dodać do szablonu urządzenia, który został utworzony w poprzedniej sekcji rzeczywistego urządzenia.
+W aplikacji IoT Central platformy Azure Dodaj rzeczywiste urządzenie do szablonu urządzenia utworzonego w poprzedniej sekcji.
 
-Następnie postępuj zgodnie z instrukcjami w samouczku "Dodaj urządzenia", aby [Generowanie ciąg połączenia dla rzeczywistego urządzenia](tutorial-add-device.md#generate-connection-string). Można użyć tych parametrów połączenia w poniższej sekcji:
+Następnie postępuj zgodnie z instrukcjami podanymi w samouczku "Dodawanie urządzenia", aby [wygenerować parametry połączenia dla rzeczywistego urządzenia](tutorial-add-device.md#generate-connection-string). Te parametry połączenia są używane w następującej sekcji:
 
 ### <a name="create-a-nodejs-application"></a>Tworzenie aplikacji w języku Node.js
 
-Poniższe kroki pokazują jak utworzyć aplikację kliencką, która implementuje rzeczywistego urządzenia, które dodanych do aplikacji. W tym miejscu aplikacji Node.js reprezentuje rzeczywistego urządzenia. 
+Poniższe kroki pokazują, jak utworzyć aplikację kliencką, która implementuje rzeczywiste urządzenie dodane do aplikacji. W tym miejscu aplikacja Node. js reprezentuje rzeczywiste urządzenie. 
 
 1. Utwórz folder o nazwie `connected-air-conditioner-adv` na maszynie. Przejdź do tego folderu w środowisku wiersza polecenia.
 
-1. Aby zainicjować projektu środowiska Node.js, uruchom następujące polecenia:
+1. Aby zainicjować projekt node. js, uruchom następujące polecenia:
 
     ```cmd/sh
     npm init
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-1. Utwórz plik o nazwie **connectedAirConditionerAdv.js** w `connected-air-conditioner-adv` folderu.
+1. Utwórz plik o nazwie **connectedAirConditionerAdv. js** w `connected-air-conditioner-adv` folderze.
 
-1. Dodaj następujący kod `require` instrukcji na początku **connectedAirConditionerAdv.js** pliku:
+1. Dodaj następujące `require` instrukcje na początku pliku **connectedAirConditionerAdv. js** :
 
     ```javascript
     "use strict";
@@ -161,9 +163,9 @@ Poniższe kroki pokazują jak utworzyć aplikację kliencką, która implementuj
     var client = clientFromConnectionString(connectionString);
     ```
 
-    Aktualizuj symbol zastępczy `{your device connection string}` z [parametry połączenia urządzenia](tutorial-add-device.md#generate-connection-string). W tym przykładzie należy zainicjować `targetTemperature` na zero, można użyć bieżącej odczytu z urządzenia lub wartość z bliźniaczej reprezentacji urządzenia.
+    Zaktualizuj symbol zastępczy `{your device connection string}` za pomocą [parametrów połączenia urządzenia](tutorial-add-device.md#generate-connection-string). W tym przykładzie zainicjowano `targetTemperature` do zera, można użyć bieżącego odczytu z urządzenia lub wartości z sznurka urządzenia.
 
-1. Aby wysłać dane telemetryczne, stan, zdarzeń i pomiary lokalizacji do aplikacji usługi Azure IoT Central, dodaj następującą funkcję do pliku:
+1. Aby wysyłać pomiary danych telemetrycznych, stanowych, zdarzeń i lokalizacji do aplikacji IoT Central platformy Azure, Dodaj następującą funkcję do pliku:
 
     ```javascript
     // Send device measurements.
@@ -191,7 +193,7 @@ Poniższe kroki pokazują jak utworzyć aplikację kliencką, która implementuj
     }
     ```
 
-1. Aby wysłać właściwości urządzenia z aplikacją usługi Azure IoT Central, dodaj następującą funkcję do pliku:
+1. Aby wysłać właściwości urządzenia do aplikacji IoT Central platformy Azure, Dodaj następującą funkcję do pliku:
 
     ```javascript
     // Send device reported properties.
@@ -201,7 +203,7 @@ Poniższe kroki pokazują jak utworzyć aplikację kliencką, która implementuj
     }
     ```
 
-1. Aby zdefiniować ustawienia, które odpowiada urządzenie, dodaj następującą definicję:
+1. Aby zdefiniować ustawienia, na które odpowiada urządzenie, Dodaj następującą definicję:
 
     ```javascript
     // Add any settings your device supports,
@@ -227,7 +229,7 @@ Poniższe kroki pokazują jak utworzyć aplikację kliencką, która implementuj
     };
     ```
 
-1. Aby obsłużyć zaktualizowanych ustawień z poziomu aplikacji usługi Azure IoT Central, Dodaj następujący element do pliku:
+1. Aby obsłużyć zaktualizowane ustawienia w aplikacji IoT Central platformy Azure, Dodaj następujący plik do pliku:
 
     ```javascript
     // Handle settings changes that come from Azure IoT Central via the device twin.
@@ -254,7 +256,7 @@ Poniższe kroki pokazują jak utworzyć aplikację kliencką, która implementuj
     }
     ```
 
-1. Dodaj następujący kod do obsługi polecenia odliczania wysyłane z aplikacji IoT Central:
+1. Dodaj następujący kod, aby obsłużyć polecenie odliczania wysyłane z aplikacji IoT Central:
 
     ```javascript
     // Handle countdown command
@@ -327,36 +329,36 @@ Poniższe kroki pokazują jak utworzyć aplikację kliencką, która implementuj
     client.open(connectCallback);
     ```
 
-## <a name="run-your-nodejs-application"></a>Uruchamianie aplikacji Node.js
+## <a name="run-your-nodejs-application"></a>Uruchamianie aplikacji node. js
 
-W środowisku wiersza polecenia, uruchom następujące polecenie:
+Uruchom następujące polecenie w środowisku wiersza polecenia:
 
 ```cmd/sh
 node connectedAirConditionerAdv.js
 ```
 
-Operator w aplikacji usługi Azure IoT Central rzeczywistego urządzenia możesz wykonywać następujące czynności:
+Jako operator w aplikacji IoT Central platformy Azure, możesz:
 
-* Wyświetlanie danych telemetrycznych na **pomiarów** strony:
+* Wyświetlanie telemetrii na stronie **miary** :
 
     ![Wyświetlanie danych telemetrycznych](media/howto-connect-nodejs/viewtelemetry.png)
 
-* Wyświetlanie lokalizacji na **pomiarów** strony:
+* Wyświetl lokalizację na stronie **pomiary** :
 
-    ![Wyświetlanie lokalizacji pomiarów](media/howto-connect-nodejs/viewlocation.png)
+    ![Wyświetl pomiary lokalizacji](media/howto-connect-nodejs/viewlocation.png)
 
-* Wyświetlanie wartości właściwości urządzenia, które są wysyłane z urządzenia **właściwości** strony. Właściwości urządzenia Kafelki aktualizacji, gdy urządzenia przenośnego:
+* Wyświetl wartości właściwości urządzenia wysyłane z urządzenia na stronie **Właściwości** . Kafelki właściwości urządzenia są aktualizowane po nawiązaniu połączenia z urządzeniem:
 
     ![Wyświetl właściwości urządzenia](media/howto-connect-nodejs/viewproperties.png)
 
-* Ustaw wentylator temperatury szybkość i docelowej z **ustawienia** strony:
+* Ustaw prędkość dla wentylatora i docelową temperaturę ze strony **ustawień** :
 
-    ![Wentylator prędkości](media/howto-connect-nodejs/setfanspeed.png)
+    ![Ustaw szybkość wentylatora](media/howto-connect-nodejs/setfanspeed.png)
 
-* Wywołaj polecenie odliczania **polecenia** strony:
+* Wywołaj polecenie odliczania ze strony **poleceń** :
 
-    ![Odliczanie wywołań — polecenie](media/howto-connect-nodejs/callcountdown.png)
+    ![Wywołaj polecenie odliczania](media/howto-connect-nodejs/callcountdown.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz, wyjaśniono, jak połączyć ogólnego klienta Node.js do aplikacji usługi Azure IoT Central, sugerowane następnym krokiem jest Dowiedz się, jak [Konfigurowanie szablonu niestandardowego urządzenia](howto-set-up-template.md) dla urządzenia IoT.
+Teraz, gdy wiesz już, jak połączyć ogólny klient Node. js z aplikacją IoT Central platformy Azure, sugerowanym następnym krokiem jest zapoznanie się z tematem [Konfigurowanie niestandardowego szablonu urządzenia](howto-set-up-template.md) dla własnego urządzenia IoT.

@@ -1,6 +1,6 @@
 ---
-title: Podłącz urządzenie Mxchip z aplikacją usługi Azure IoT Central | Dokumentacja firmy Microsoft
-description: Jako deweloper urządzenia Dowiedz się, jak połączyć urządzenie z systemem zestawu deweloperskiego IoT Mxchip z aplikacją usługi Azure IoT Central.
+title: Połącz urządzenie DevKit z aplikacją usługi Azure IoT Central | Microsoft Docs
+description: Jako deweloper urządzenia dowiesz się, jak połączyć urządzenie zestawu deweloperskiego IoT DevKit z aplikacją IoT Central platformy Azure.
 author: dominicbetts
 ms.author: dobett
 ms.date: 03/22/2019
@@ -8,68 +8,70 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 130ca6bc946d44d80cddba5486d405bfb15523cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 81a355cc7c0d1190ee86fac6ed155380e6e5c0d1
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235880"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877524"
 ---
-# <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Podłącz urządzenie z systemem zestawu deweloperskiego IoT Mxchip z aplikacją usługi Azure IoT Central
+# <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Łączenie urządzenia zestawu deweloperskiego IoT DevKit z aplikacją usługi Azure IoT Central
 
-W tym artykule opisano jak Deweloper urządzenia podłączenia urządzenia zestawu deweloperskiego IoT Mxchip (Mxchip) do aplikacji Microsoft Azure IoT Central.
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
+
+W tym artykule opisano, jak deweloper urządzenia łączy urządzenie zestawu deweloperskiego IoT DevKit (DevKit) z aplikacją IoT Central Microsoft Azure.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 Aby wykonać kroki opisane w tym artykule, potrzebne są następujące zasoby:
 
-1. Aplikacja usługi Azure IoT Central, utworzone na podstawie **Devkits przykładowe** szablon aplikacji. Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
-1. Urządzenie Mxchip. Aby zakupić urządzenia Mxchip, odwiedź stronę [zestawu deweloperskiego IoT Mxchip](https://microsoft.github.io/azure-iot-developer-kit/).
+1. Aplikacja IoT Central platformy Azure utworzona na podstawie przykładowego szablonu aplikacji **Devkits** . Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
+1. Urządzenie DevKit. Aby kupić urządzenie z systemem DevKit, odwiedź stronę [zestawu deweloperskiego IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/).
 
 ## <a name="sample-devkits-application"></a>Przykładowa aplikacja Devkits
 
-Aplikacja utworzone na podstawie **Devkits przykładowe** szablon aplikacji zawiera **zestawu deweloperskiego** szablon urządzenia, który definiuje następujące właściwości urządzenia:
+Aplikacja utworzona na podstawie przykładowego szablonu aplikacji **Devkits** zawiera szablon urządzenia **zestawu deweloperskiego** , który definiuje następujące właściwości urządzenia:
 
-- Pomiary telemetrii dla **wilgotności**, **temperatury**, **wykorzystanie**, **magnetometrów** (mierzoną wzdłuż X, Y osi Z), **Przyspieszeniomierza** (mierzoną wzdłuż X, Y osi Z), i **Żyroskop** (mierzoną wzdłuż X, Y osi Z).
-- Stan miary dla **stan urządzenia**.
-- Miary zdarzeń dla **użycia B przycisku**.
-- Ustawienia dla **napięcia**, **bieżącego**, **szybkość wentylator**i **IR** przełącznika.
-- Właściwości urządzenia **zdechną numer** i **lokalizacji urządzenia**, czyli właściwości location.
-- Właściwość w chmurze **wyprodukowany w**.
-- Polecenia **Echo** i **odliczania**. Po odebraniu rzeczywistego urządzenia **Echo** polecenie pokazuje wartość wysłane na ekranie urządzenia. Po odebraniu rzeczywistego urządzenia **odliczania** polecenia cykle LED przy użyciu wzorca i urządzenie wysyła odliczania wartości z powrotem do IoT Central.
+- Pomiary danych telemetrycznych dla **wilgotności**, **temperatury**, **ciśnienia**, **Magnetometer** (mierzone wzdłuż x, y, z osi z), **przyspieszeniomierz** (mierzone wzdłuż x, y, z osi z) i **żyroskop** (mierzone wzdłuż x, y, osi z).
+- Pomiar stanu **urządzenia**.
+- Pomiar zdarzeń dla **przycisku B**został naciśnięty.
+- Ustawienia **napięcia**, **prądu**, **szybkości wentylatora**i przełącznika **IR** .
+- Właściwości urządzenia **numer** i **Lokalizacja urządzenia**, która jest właściwością Location.
+- Właściwość chmury **została wyprodukowana w**.
+- Polecenia **echo** iodliczanie. Gdy rzeczywiste urządzenie odbiera polecenie **echo** , wyświetla wartość wysłaną na ekranie urządzenia. Gdy rzeczywiste urządzenie odbiera polecenie odliczania, przechodzi przez wzorzec, a urządzenie wysyła odliczane wartości z powrotem do IoT Central.
 
-Aby uzyskać szczegółowe informacje o konfiguracji, zobacz [Szczegóły szablonu zestawu deweloperskiego urządzenia](#mxchip-device-template-details)
+Aby uzyskać szczegółowe informacje o konfiguracji, zobacz [zestawu deweloperskiego Device Template](#mxchip-device-template-details) Details
 
 ## <a name="add-a-real-device"></a>Dodawanie rzeczywistego urządzenia
 
-### <a name="get-your-device-connection-details"></a>Uczyń swoje urządzenie szczegóły połączenia
+### <a name="get-your-device-connection-details"></a>Pobierz szczegóły połączenia z urządzeniem
 
-W aplikacji usługi Azure IoT Central, Dodaj prawdziwe urządzenie z **zestawu deweloperskiego** szablon urządzenia i zanotować szczegóły połączenia urządzenia: **Zakres Identyfikatora, identyfikator urządzenia i klucz podstawowy**:
+W aplikacji IoT Central platformy Azure Dodaj rzeczywiste urządzenie z szablonu urządzenia **zestawu deweloperskiego** i zanotuj szczegóły połączenia urządzenia: **Identyfikator zakresu, identyfikator urządzenia i klucz podstawowy**:
 
-1. Dodaj **rzeczywistego urządzenia** Device Explorer, zaznacz **+ nowy > rzeczywistych** dodać rzeczywistego urządzenia.
+1. Dodaj **rzeczywiste urządzenie** z Device Explorer, wybierz pozycję **+ Nowy > rzeczywiste** , aby dodać rzeczywiste urządzenie.
 
-    * Wprowadzić małymi literami **identyfikator urządzenia**, lub użyj sugerowanego **identyfikator urządzenia**.
-    * Wprowadź **nazwy urządzenia**, lub użyć sugerowanej nazwy
+    * Wprowadź **Identyfikator urządzenia**małymi literami lub użyj sugerowanego **identyfikatora urządzenia**.
+    * Wprowadź **nazwę urządzenia**lub użyj sugerowanej nazwy
 
     ![Dodaj urządzenie](media/howto-connect-devkit/add-device.png)
 
-1. Aby uzyskać szczegóły połączenia urządzenia **identyfikator zakresu**, **identyfikator urządzenia**, i **klucza podstawowego**, wybierz opcję **Connect** na stronie urządzenia.
+1. Aby uzyskać szczegóły połączenia z urządzeniem, **Identyfikator zakresu**, **Identyfikator urządzenia**i **klucz podstawowy**, wybierz pozycję **Połącz** na stronie urządzenia.
 
     ![Szczegóły połączenia](media/howto-connect-devkit/device-connect.png)
 
-1. Zanotuj szczegóły połączenia. Teraz możesz tymczasowo odłączony od Internetu, podczas przygotowywania urządzenia Mxchip w następnym kroku.
+1. Zanotuj szczegóły połączenia. Po przygotowaniu urządzenia DevKit w następnym kroku nastąpi tymczasowe odłączenie od Internetu.
 
-### <a name="prepare-the-devkit-device"></a>Przygotuj urządzenie Mxchip
+### <a name="prepare-the-devkit-device"></a>Przygotowywanie urządzenia DevKit
 
-Jeśli wcześniej używano urządzenia i chcesz ponownie skonfigurować go do korzystania z innej sieci Wi-Fi, parametry połączenia lub pomiaru danych telemetrycznych, naciśnij klawisz, zarówno **A** i **B** przycisków w tym samym czasie. Jeśli to nie zadziała, naciśnij klawisz **resetowania** przycisk, a następnie spróbuj ponownie.
+Jeśli urządzenie zostało wcześniej użyte i chcesz zmienić jego konfigurację tak, aby korzystała z innej sieci Wi-Fi, parametrów połączenia lub pomiaru telemetrii, naciśnij jednocześnie przyciski a i **B** . Jeśli to nie zadziała, naciśnij przycisk **Resetuj** i spróbuj ponownie.
 
-#### <a name="to-prepare-the-devkit-device"></a>Aby przygotować urządzenie Mxchip
+#### <a name="to-prepare-the-devkit-device"></a>Aby przygotować urządzenie DevKit
 
-1. Pobierz najnowszy wstępnie skompilowanych usługi Azure IoT Central oprogramowania układowego dla zestawu deweloperskiego z [zwalnia](https://aka.ms/iotcentral-docs-MXChip-releases) strony w witrynie GitHub.
-1. Podłącz urządzenie Mxchip do komputera deweloperskiego za pomocą kabla USB. W Windows na dysku mapowane na pamięć na urządzeniu Mxchip zostanie otwarte okno Eksploratora plików. Na przykład dysk może być wywoływana **az3166 usługi (D:)** .
-1. Przeciągnij **iotCentral.bin** pliku na okno dysku. Po zakończeniu kopiowania urządzenie uruchamia się ponownie z nowym oprogramowaniem układowym.
+1. Pobierz najnowsze wstępnie skompilowane oprogramowanie układowe IoT Central platformy Azure dla zestawu deweloperskiego ze strony [wydań](https://aka.ms/iotcentral-docs-MXChip-releases) w witrynie GitHub.
+1. Podłącz urządzenie DevKit do komputera deweloperskiego przy użyciu kabla USB. W systemie Windows okno Eksploratora plików otwiera się na dysku mapowanym na magazyn na urządzeniu DevKit. Na przykład dysk może mieć nazwę **AZ3166 (D:)** .
+1. Przeciągnij plik **iotCentral. bin** do okna dysku. Po zakończeniu kopiowania urządzenie zostanie uruchomione ponownie z nowym oprogramowaniem układowym.
 
-1. Po ponownym uruchomieniu urządzenia Mxchip, wyświetli się następujący ekran:
+1. Po ponownym uruchomieniu urządzenia DevKit zostanie wyświetlony następujący ekran:
 
     ```
     Connect HotSpot:
@@ -79,71 +81,71 @@ Jeśli wcześniej używano urządzenia i chcesz ponownie skonfigurować go do ko
     ```
 
     > [!NOTE]
-    > Jeśli na ekranie są wyświetlane inaczej, zresetować urządzenie i naciśnij klawisz **A** i **B** przyciski na urządzeniu, w tym samym czasie, aby ponownie uruchomić urządzenie.
+    > Jeśli na ekranie jest wyświetlana jakakolwiek inna zawartość, zresetuj urządzenie i naciśnij przycisk a i **B** na urządzeniu w tym samym czasie, aby ponownie uruchomić urządzenie.
 
-1. Urządzenie jest teraz w trybie punktu dostępu. Można połączyć z tym punktem dostępu do sieci Wi-Fi, z komputera lub urządzenia przenośnego.
+1. Urządzenie jest teraz w trybie punktu dostępu (AP). Możesz połączyć się z tym punktem dostępu Wi-Fi z komputera lub urządzenia przenośnego.
 
-1. Na komputerze telefonie lub tablecie połączyć do nazwy sieci Wi-Fi, które są wyświetlane na ekranie urządzenia. Po nawiązaniu połączenia z tą siecią, nie masz dostępu do Internetu. Ten stan jest oczekiwana i są tylko połączenia z tą siecią, przez krótki czas podczas konfigurowania urządzenia.
+1. Na komputerze, telefonie lub tablecie z nazwą sieci Wi-Fi wyświetlaną na ekranie urządzenia. Po nawiązaniu połączenia z tą siecią nie masz dostępu do Internetu. Ten stan jest oczekiwany, a połączenie z tą siecią odbywa się tylko przez krótki czas podczas konfigurowania urządzenia.
 
-1. Otwórz przeglądarkę internetową i przejdź do [ http://192.168.0.1/start ](http://192.168.0.1/start). Następujące wyświetla stronę sieci web:
+1. Otwórz przeglądarkę internetową i przejdź do [http://192.168.0.1/start](http://192.168.0.1/start). Zostanie wyświetlona następująca strona sieci Web:
 
     ![Strona konfiguracji urządzenia](media/howto-connect-devkit/configpage.png)
 
-    Na stronie sieci web wprowadź:
+    Na stronie sieci Web wprowadź:
     - Nazwa sieci Wi-Fi
-    - Twoje hasło dostępu do sieci Wi-Fi
-    - Kod PIN wyświetlane na ekranie urządzenia
-    - Szczegóły połączenia **identyfikator zakresu**, **identyfikator urządzenia**, i **klucz podstawowy** urządzenia (powinien został już zapisany zgodnie z krokami)
-    - Wybierz wszystkie dostępne dane telemetryczne miary
+    - Hasło sieciowe sieci Wi-Fi
+    - Kod PIN wyświetlany na ekranie urządzenia
+    - **Identyfikator zakresu**szczegółów połączenia, **Identyfikator urządzenia**i **klucz podstawowy** urządzenia (należy go wcześniej zapisać po wykonaniu kroków).
+    - Zaznacz wszystkie dostępne pomiary telemetrii
 
-1. Po wybraniu **Konfigurowanie urządzenia**, zostanie wyświetlona następująca strona:
+1. Po wybraniu opcji **Konfiguruj urządzenie**zostanie wyświetlona strona:
 
-    ![Urządzenia skonfigurowane](media/howto-connect-devkit/deviceconfigured.png)
+    ![Urządzenie skonfigurowane](media/howto-connect-devkit/deviceconfigured.png)
 
-1. Naciśnij klawisz **resetowania** przycisk na urządzeniu.
+1. Naciśnij przycisk **Reset** na urządzeniu.
 
-## <a name="view-the-telemetry"></a>Widok danych telemetrycznych
+## <a name="view-the-telemetry"></a>Wyświetlanie telemetrii
 
-Po ponownym uruchomieniu urządzenia Mxchip pokazuje ekran na urządzeniu:
+Po ponownym uruchomieniu urządzenia DevKit zostanie wyświetlony ekran na urządzeniu:
 
-* Liczba komunikaty telemetryczne wysyłane.
-* Liczba błędów.
-* Liczba żądanych właściwości odebranych i liczbę zgłaszanych właściwości wysyłanych z.
+* Liczba wysłanych komunikatów telemetrycznych.
+* Liczba niepowodzeń.
+* Liczba odebranych żądanych właściwości i liczba wysłanych raportowanych właściwości.
 
 > [!NOTE]
-> Jeśli urządzenie znajduje się w pętli, gdy próbuje połączyć, sprawdź, czy urządzenie jest **zablokowane** w IoT Central i **odblokowanie** urządzenia, dzięki czemu można połączyć ją do aplikacji.
+> Jeśli urządzenie zostanie wyświetlone w pętli w przypadku próby nawiązania połączenia, sprawdź, czy urządzenie jest **zablokowane** w IoT Central, i Odblokuj to urządzenie, aby umożliwić nawiązywanie połączenia z aplikacją.
 
-Potrząśnij urządzeniem, aby wysłać zgłaszanej właściwości. Urządzenie wysyła losową liczbę jako **zdechną numer** właściwości urządzenia.
+Przetrząsnąć urządzenie, aby wysłać zgłoszoną właściwość. Urządzenie wysyła liczbę losową jako właściwość urządzenia **numeru** elementu.
 
-Wyświetlanie danych telemetrycznych pomiarów i wartości zgłaszanych właściwości i skonfiguruj ustawienia w usłudze Azure IoT Central:
+Można wyświetlić miary danych telemetrycznych i raportowane wartości właściwości oraz skonfigurować ustawienia na platformie Azure IoT Central:
 
-1. Użyj **Device Explorer** można przejść do **pomiarów** strona rzeczywistego urządzenia zestawu deweloperskiego został dodany:
+1. Użyj **Device Explorer** , aby przejść do strony **pomiarów** dla dodanego urządzenia zestawu deweloperskiego:
 
     ![Przejdź do rzeczywistego urządzenia](media/howto-connect-devkit/realdevicenew.png)
 
-1. Na **pomiarów** strony, możesz zobaczyć dane telemetryczne pochodzące z urządzeń zestawu deweloperskiego:
+1. Na stronie **pomiary** można zobaczyć dane telemetryczne pochodzące z urządzenia zestawu deweloperskiego:
 
-    ![Wyświetlanie telemetrii z rzeczywistego urządzenia](media/howto-connect-devkit/devicetelemetrynew.png)
+    ![Wyświetlanie danych telemetrycznych z rzeczywistego urządzenia](media/howto-connect-devkit/devicetelemetrynew.png)
 
-1. Na **właściwości** strony, można wyświetlić ostatni numer struktury i lokalizacji urządzenia zgłoszona przez urządzenie:
+1. Na stronie **Właściwości** można wyświetlić ostatni numer i lokalizację urządzenia zgłoszonego przez urządzenie:
 
     ![Wyświetl właściwości urządzenia](media/howto-connect-devkit/devicepropertynew.png)
 
-1. Na **ustawienia** strony, możesz zaktualizować ustawienia na urządzeniu zestawu deweloperskiego:
+1. Na stronie **Ustawienia** można zaktualizować ustawienia na urządzeniu zestawu deweloperskiego:
 
     ![Wyświetl ustawienia urządzenia](media/howto-connect-devkit/devicesettingsnew.png)
 
-1. Na **polecenia** strony, można wywołać **Echo** i **odliczania** poleceń:
+1. Na stronie **polecenia** można wywołać polecenia **echo** i odliczania :
 
-    ![Wywołanie polecenia](media/howto-connect-devkit/devicecommands.png)
+    ![Wywołania poleceń](media/howto-connect-devkit/devicecommands.png)
 
-1. Na **pulpit nawigacyjny** stronie widać, lokalizacja, mapy
+1. Na stronie **pulpit nawigacyjny** można zobaczyć mapę lokalizacji.
 
-    ![Wyświetl pulpit nawigacyjny z urządzenia](media/howto-connect-devkit/devicedashboardnew.png)
+    ![Wyświetlanie pulpitu nawigacyjnego urządzenia](media/howto-connect-devkit/devicedashboardnew.png)
 
 ## <a name="download-the-source-code"></a>Pobierz kod źródłowy
 
-Jeśli chcesz eksplorować i modyfikować kod urządzenia, możesz ją pobrać z witryny GitHub. Jeśli zamierzasz zmodyfikować kod, należy wykonać te instrukcje, aby [przygotowywanie środowiska deweloperskiego](https://microsoft.github.io/azure-iot-developer-kit/docs/get-started/#step-5-prepare-the-development-environment) pulpitu w systemie operacyjnym.
+Jeśli chcesz eksplorować i modyfikować kod urządzenia, możesz go pobrać z witryny GitHub. Jeśli planujesz zmodyfikować kod, postępuj zgodnie z tymi instrukcjami, aby [przygotować środowisko programistyczne](https://microsoft.github.io/azure-iot-developer-kit/docs/get-started/#step-5-prepare-the-development-environment) dla systemu operacyjnego komputera.
 
 Aby pobrać kod źródłowy, uruchom następujące polecenie na komputerze stacjonarnym:
 
@@ -151,42 +153,42 @@ Aby pobrać kod źródłowy, uruchom następujące polecenie na komputerze stacj
 git clone https://github.com/Azure/iot-central-firmware
 ```
 
-Poprzednie polecenie pobiera kod źródłowy w folderze o nazwie `iot-central-firmware`.
+Poprzednie polecenie pobiera kod źródłowy do folderu o nazwie `iot-central-firmware`.
 
 > [!NOTE]
-> Jeśli **git** nie jest zainstalowany w środowisku deweloperskim, możesz ją pobrać z [ https://git-scm.com/download ](https://git-scm.com/download).
+> Jeśli w środowisku deweloperskim nie zainstalowano usługi **git** , możesz pobrać ją [https://git-scm.com/download](https://git-scm.com/download)z programu.
 
 ## <a name="review-the-code"></a>Przeglądanie kodu
 
-Użyj programu Visual Studio Code, aby otworzyć `MXCHIP/mxchip_advanced` folderze `iot-central-firmware` folderu:
+Użyj Visual Studio Code, aby otworzyć `MXCHIP/mxchip_advanced` folder `iot-central-firmware` w folderze:
 
 ![Visual Studio Code](media/howto-connect-devkit/vscodeview.png)
 
-Aby zobaczyć, jak dane telemetryczne są wysyłane do usługi Azure IoT Central aplikacji, otwórz **telemetry.cpp** w pliku `src` folderu:
+Aby zobaczyć, jak dane telemetryczne są wysyłane do aplikacji IoT Central platformy Azure, Otwórz plik **Telemetria. cpp** w `src` folderze:
 
-- Funkcja `TelemetryController::buildTelemetryPayload` tworzy ładunek danych telemetrycznych w formacie JSON przy użyciu danych z czujników na urządzeniu.
+- Funkcja `TelemetryController::buildTelemetryPayload` tworzy ładunek telemetrii JSON przy użyciu danych z czujników na urządzeniu.
 
-- Funkcja `TelemetryController::sendTelemetryPayload` wywołania `sendTelemetry` w **AzureIOTClient.cpp** wysyłać ładunek JSON usługi IoT Hub używane przez aplikację usługi Azure IoT Central.
+- Funkcja `TelemetryController::sendTelemetryPayload` wywołuje `sendTelemetry` **AzureIOTClient. cpp** , aby wysłać ładunek JSON do IoT Hub używanej przez aplikację Azure IoT Central.
 
-Aby zobaczyć, jak wartości właściwości są zgłaszane do usługi Azure IoT Central aplikacji, otwórz **telemetry.cpp** w pliku `src` folderu:
+Aby zobaczyć, jak wartości właściwości są raportowane do aplikacji IoT Central platformy Azure, Otwórz plik **Telemetria. cpp** w `src` folderze:
 
-- Funkcja `TelemetryController::loop` wysyła **lokalizacji** zgłaszane właściwości co 30 sekund. Używa ona `sendReportedProperty` działa w programach **AzureIOTClient.cpp** pliku źródłowego.
+- Funkcja `TelemetryController::loop` wysyła właściwość o następującej **lokalizacji** co 30 sekund. Używa `sendReportedProperty` funkcji w pliku źródłowym **AzureIOTClient. cpp** .
 
-- Funkcja `TelemetryController::loop` wysyła **dieNumber** zgłaszane właściwości, gdy wykryje przyspieszeniomierza urządzenia, naciśnij dwukrotnie. Używa ona `sendReportedProperty` działa w programach **AzureIOTClient.cpp** pliku źródłowego.
+- Funkcja `TelemetryController::loop` wysyła Właściwość **dieNumber** raportowany, gdy przyspieszeniomierz urządzenia wykryje podwójne naciśnięcie. Używa `sendReportedProperty` funkcji w pliku źródłowym **AzureIOTClient. cpp** .
 
-Aby zobaczyć, jak urządzenie odpowiada na polecenia wywoływane z poziomu aplikacji IoT Central, otwórz **registeredMethodHandlers.cpp** w pliku `src` folderu:
+Aby sprawdzić, jak urządzenie reaguje na polecenia wywoływane z aplikacji IoT Central, Otwórz plik **registeredMethodHandlers. cpp** w `src` folderze:
 
-- **DmEcho** funkcji jest obsługa **echo** polecenia. Pokazuje **displayedValue** zgłoszone w ładunku na ekranie urządzenia.
+- Funkcja **dmEcho** jest programem obsługi dla polecenia **echo** . Przedstawia **displayedValue** w ładunku na ekranie urządzenia.
 
-- **DmCountdown** funkcji jest obsługa **odliczania** polecenia. Zmienia kolor LED urządzenia i używa zgłaszanych właściwości do odesłania wartość odliczania w dół do aplikacji IoT Central. Zgłaszane właściwości ma taką samą nazwę jak polecenie. Funkcja używa `sendReportedProperty` działa w programach **AzureIOTClient.cpp** pliku źródłowego.
+- Funkcja **dmCountdown** jest programem obsługi dla polecenia odliczania. Zmienia kolor diody LED urządzenia i używa raportowanej właściwości do wysłania odliczanej wartości z powrotem do aplikacji IoT Central. Raportowana właściwość ma taką samą nazwę jak polecenie. Funkcja używa `sendReportedProperty` funkcji w pliku źródłowym **AzureIOTClient. cpp** .
 
-Kod w **AzureIOTClient.cpp** plik źródłowy używa funkcji z [Microsoft Azure IoT SDK i bibliotek dla języka C](https://github.com/Azure/azure-iot-sdk-c) do interakcji z usługą IoT Hub.
+Kod w pliku źródłowym **AzureIOTClient. cpp** używa funkcji z [biblioteki SDK i bibliotek usługi IoT dla języka C Microsoft Azure](https://github.com/Azure/azure-iot-sdk-c) , aby współdziałać z IoT Hub.
 
-Aby uzyskać informacje o tym, jak można zmodyfikować, kompilacji i Przekaż przykładowy kod do Twojego urządzenia, zobacz **readme.md** w pliku `MXCHIP/mxchip_advanced` folderu.
+Aby uzyskać informacje na temat modyfikowania, kompilowania i przekazywania przykładowego kodu do urządzenia, zobacz plik **README.MD** w `MXCHIP/mxchip_advanced` folderze.
 
-## <a name="mxchip-device-template-details"></a>Szczegóły szablonu zestawu deweloperskiego urządzenia
+## <a name="mxchip-device-template-details"></a>Szczegóły szablonu urządzenia zestawu deweloperskiego
 
-Aplikacja utworzone na podstawie szablonu aplikacji przykładowej Devkits zawiera szablon zestawu deweloperskiego urządzenia o następującej charakterystyce:
+Aplikacja utworzona na podstawie przykładowego szablonu aplikacji Devkits zawiera szablon urządzenia zestawu deweloperskiego o następujących cechach:
 
 ### <a name="measurements"></a>Miary
 
@@ -195,59 +197,59 @@ Aplikacja utworzone na podstawie szablonu aplikacji przykładowej Devkits zawier
 | Nazwa pola     | Jednostki  | Minimalne | Maksimum | Miejsca dziesiętne |
 | -------------- | ------ | ------- | ------- | -------------- |
 | humidity       | %      | 0       | 100     | 0              |
-| Temp           | °C     | -40     | 120     | 0              |
+| temp           | °C     | -40     | 120     | 0              |
 | pressure       | hPa    | 260     | 1260    | 0              |
 | magnetometerX  | mgauss | -1000   | 1000    | 0              |
 | magnetometerY  | mgauss | -1000   | 1000    | 0              |
 | magnetometerZ  | mgauss | -1000   | 1000    | 0              |
 | accelerometerX | mg     | -2000   | 2000    | 0              |
-| accelerometerY | mg     | -2000   | 2000    | 0              |
+| przyspieszeniomierz | mg     | -2000   | 2000    | 0              |
 | accelerometerZ | mg     | -2000   | 2000    | 0              |
 | gyroscopeX     | mdps   | -2000   | 2000    | 0              |
 | gyroscopeY     | mdps   | -2000   | 2000    | 0              |
 | gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
 
 #### <a name="states"></a>Stany 
-| Name (Nazwa)          | `Display name`   | NORMALNY | UWAGA | ZAGROŻENIA | 
+| Name          | Nazwa wyświetlana   | TYPOW | OSTRZEŻENIE | STANOWIĄ | 
 | ------------- | -------------- | ------ | ------- | ------ | 
-| DeviceState   | Stan urządzenia   | Zielony  | Orange  | Czerwony    | 
+| DeviceState   | Stan urządzenia   | Zielony  | Pomarańczowy  | Czerwony    | 
 
 #### <a name="events"></a>Events 
-| Name (Nazwa)             | `Display name`      | 
+| Name             | Nazwa wyświetlana      | 
 | ---------------- | ----------------- | 
-| ButtonBPressed   | Naciśnięty przycisk B  | 
+| ButtonBPressed   | Naciśnięto przycisk B  | 
 
 ### <a name="settings"></a>Ustawienia
 
 Ustawienia liczbowe
 
-| `Display name` | Nazwa pola | Jednostki | Miejsca dziesiętne | Minimalne | Maksimum | Początkowa |
+| Nazwa wyświetlana | Nazwa pola | Jednostki | Miejsca dziesiętne | Minimalne | Maksimum | Początkowa |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
-| Napięcie      | setVoltage | V | 0              | 0       | 240     | 0       |
-| bieżący      | setCurrent | Amps  | 0              | 0       | 100     | 0       |
-| Wentylator szybkości    | fanSpeed   | OBR. / MIN   | 0              | 0       | 1000    | 0       |
+| Zakres      | setnapięci | Wolty | 0              | 0       | 240     | 0       |
+| Bieżący      | SetCurrent | Amper  | 0              | 0       | 100     | 0       |
+| Szybkość wentylatorów    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
 
-Ustawienia przełącznika
+Przełącz ustawienia
 
-| `Display name` | Nazwa pola | W tekście | Wyłącz tekstu | Początkowa |
+| Nazwa wyświetlana | Nazwa pola | Na tekst | Off text | Początkowa |
 | ------------ | ---------- | ------- | -------- | ------- |
-| IR           | activateIR | ON      | WYŁĄCZONE      | Wyłączone     |
+| IR           | activateIR | WŁĄCZONE      | WYŁĄCZONE      | Wyłączone     |
 
 ### <a name="properties"></a>Właściwości
 
-| Typ            | `Display name` | Nazwa pola | Typ danych |
+| Type            | Nazwa wyświetlana | Nazwa pola | Typ danych |
 | --------------- | ------------ | ---------- | --------- |
-| Właściwości urządzenia | Zdechną liczb   | dieNumber  | numer    |
-| Właściwości urządzenia | Lokalizacji urządzenia   | location  | location    |
-| Text            | Produkowane w     | manufacturedIn   | ND       |
+| Właściwość urządzenia | Numer struktury   | dieNumber  | numer    |
+| Właściwość urządzenia | Lokalizacja urządzenia   | location  | location    |
+| Text            | Wyprodukowane w     | wytworzono   | ND       |
 
 ### <a name="commands"></a>Polecenia
 
-| `Display name` | Nazwa pola | Zwracany typ | Nazwa wyświetlana pola wejściowego | Nazwa pola wejściowego | Typ pola wejściowego |
+| Nazwa wyświetlana | Nazwa pola | Typ zwracany | Nazwa wyświetlana pola wejściowego | Nazwa pola wejściowego | Typ pola wejściowego |
 | ------------ | ---------- | ----------- | ------------------------ | ---------------- | ---------------- |
-| Echo         | echo       | tekst        | wartość, aby wyświetlić         | displayedValue   | tekst             |
-| Odliczanie    | Odliczanie  | numer      | Są liczone od               | countFrom        | numer           |
+| ECHA         | echo       | text        | wartość do wyświetlenia         | displayedValue   | text             |
+| Licz    | licz  | numer      | Liczba od               | countFrom        | numer           |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz, kiedy znasz Łączenie zestawu deweloperskiego IoT Mxchip z aplikacją usługi Azure IoT Central, sugerowane następnym krokiem jest Dowiedz się, jak [Konfigurowanie szablonu niestandardowego urządzenia](howto-set-up-template.md) dla urządzenia IoT.
+Teraz, gdy wiesz już, jak połączyć zestawu deweloperskiego IoT DevKit z aplikacją IoT Central platformy Azure, sugerowanym następnym krokiem jest zapoznanie się z tematem [Konfigurowanie niestandardowego szablonu urządzenia](howto-set-up-template.md) dla własnego urządzenia IoT.

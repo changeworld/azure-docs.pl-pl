@@ -1,6 +1,6 @@
 ---
-title: Żądanie tokenu dostępu — Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć żądanie tokenu dostępu z usługi Azure Active Directory B2C.
+title: Żądanie tokenu dostępu — Azure Active Directory B2C | Microsoft Docs
+description: Dowiedz się, jak zażądać tokenu dostępu z Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,83 +10,83 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1a545f1e0fd1360d9147280454fb8b75bf216152
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: df47b4fc5b8048f76f94486e213285896dab9cb9
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66507387"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874091"
 ---
-# <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Żądanie tokenu dostępu w usłudze Azure Active Directory B2C
+# <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Żądanie tokenu dostępu w Azure Active Directory B2C
 
-*Token dostępu* zawiera oświadczenia, można użyć w usłudze Azure Active Directory (Azure AD) B2C, aby zidentyfikować udzielone uprawnienia do interfejsu API. Podczas wywoływania serwera zasobów, token dostępu musi być obecne w żądaniu HTTP. Token dostępu jest oznaczona jako **access_token** w odpowiedzi z usługi Azure AD B2C. 
+*Token dostępu* zawiera oświadczenia, których można użyć w Azure Active Directory (Azure AD) B2C do zidentyfikowania przyznanych uprawnień do interfejsów API. Podczas wywoływania serwera zasobów token dostępu musi znajdować się w żądaniu HTTP. Token dostępu jest oznaczany jako **access_token** w odpowiedziach z Azure AD B2C.
 
-W tym artykule dowiesz się, jak utworzyć żądanie tokenu dostępu dla aplikacji sieci web i interfejsu API sieci web. Aby uzyskać więcej informacji na temat tokenów w usłudze Azure AD B2C, zobacz [Przegląd tokenów w usłudze Azure Active Directory B2C](active-directory-b2c-reference-tokens.md).
+W tym artykule pokazano, jak zażądać tokenu dostępu dla aplikacji sieci Web i internetowego interfejsu API. Aby uzyskać więcej informacji na temat tokenów w Azure AD B2C, zobacz [Omówienie tokenów w programie Azure Active Directory B2C](active-directory-b2c-reference-tokens.md).
 
 > [!NOTE]
-> **Łańcuchy interfejsu API w sieci Web (w imieniu z) nie jest obsługiwana przez usługę Azure AD B2C.** -Wiele architektur obejmuje internetowego interfejsu API, który musi wywołać inny podrzędny interfejsu API sieci web, zarówno zabezpieczone za pomocą usługi Azure AD B2C. Ten scenariusz jest typowy w klienci, którzy mają internetowy interfejs API zaplecza, która z kolei wywołuje inną usługę. Ten scenariusz łańcuchowych interfejsu API sieci web mogą być obsługiwane przy użyciu przyznania poświadczeń elementu nośnego JWT OAuth w wersji 2.0, znanych także jako przepływu w imieniu z. Jednak przepływ w imieniu z nie jest obecnie wdrażany w usłudze Azure AD B2C.
+> **Łańcuchy interfejsu API sieci Web (w imieniu) nie są obsługiwane przez Azure AD B2C.** — Wiele architektur obejmuje internetowy interfejs API, który musi wywołać inny podrzędny interfejs API sieci Web, zabezpieczony przez Azure AD B2C. Ten scenariusz jest typowy w przypadku klientów mających zaplecze interfejsu API sieci Web, co z kolei wywołuje inną usługę. Ten scenariusz łańcuchowego interfejsu API sieci Web może być obsługiwany przy użyciu dotacji do autoryzacji OAuth 2,0 JWT, w przeciwnym razie nazywanego przepływem. Jednak przepływ w imieniu nie jest obecnie zaimplementowany w Azure AD B2C.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- [Utwórz przepływ użytkownika](tutorial-create-user-flows.md) aby użytkownicy mogli zarejestrować się i zaloguj się do aplikacji.
-- Jeśli użytkownik jeszcze tego nie zrobiono, [Dodaj aplikacji interfejsu API do dzierżawy usługi Azure Active Directory B2C w sieci web](add-web-application.md).
+- [Utwórz przepływ użytkownika](tutorial-create-user-flows.md) , aby umożliwić użytkownikom rejestrowanie się w aplikacji i logowanie się do niej.
+- Jeśli jeszcze tego nie zrobiono, [Dodaj aplikację internetowego interfejsu API do dzierżawy Azure Active Directory B2C](add-web-application.md).
 
 ## <a name="scopes"></a>Zakresy
 
-Zakresy umożliwiają zarządzanie uprawnieniami do chronionych zasobów. Podczas żądania tokenu dostępu, aplikacja kliencka musi określić odpowiednich uprawnień w **zakres** parametr żądania. Na przykład, aby określić **wartość zakresu** z `read` dla interfejsu API, który ma **identyfikator URI Identyfikatora aplikacji** z `https://contoso.onmicrosoft.com/api`, byłoby zakres `https://contoso.onmicrosoft.com/api/read`.
+Zakresy umożliwiają zarządzanie uprawnieniami do chronionych zasobów. Po zażądaniu tokenu dostępu aplikacja kliencka musi określić odpowiednie uprawnienia w parametrze **zakresu** żądania. Na przykład, aby określić `read` **wartość zakresu** dla interfejsu API, który ma `https://contoso.onmicrosoft.com/api` **Identyfikator URI aplikacji** , zakresem `https://contoso.onmicrosoft.com/api/read`będzie.
 
-Zakresy są używane przez internetowy interfejs API w celu implementowania kontroli dostępu opartej na zakresach. Na przykład użytkownicy internetowego interfejsu API mogą mieć dostęp zarówno do odczytu, jak i zapisu lub tylko dostęp do odczytu. Aby nabyć wiele uprawnień w tym samym żądaniu, można dodać wiele wpisów w jednej **zakres** parametr żądania, rozdzielone spacjami.
+Zakresy są używane przez internetowy interfejs API w celu implementowania kontroli dostępu opartej na zakresach. Na przykład użytkownicy internetowego interfejsu API mogą mieć dostęp zarówno do odczytu, jak i zapisu lub tylko dostęp do odczytu. Aby uzyskać wiele uprawnień w tym samym żądaniu, można dodać wiele wpisów w pojedynczym parametrze żądania, rozdzielone spacjami.
 
-Poniższy przykład przedstawia zakresy zdekodowany w adresie URL:
+W poniższym przykładzie przedstawiono zakresy zdekodowane w adresie URL:
 
 ```
 scope=https://contoso.onmicrosoft.com/api/read openid offline_access
 ```
 
-Poniższy przykład przedstawia zakresy zakodowane w adresie URL:
+Poniższy przykład pokazuje zakresy zakodowane w adresie URL:
 
 ```
 scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fapi%2Fread%20openid%20offline_access
 ```
 
-Jeśli zażądasz więcej zakresów niż co będzie udzielany dla aplikacji klienckiej, wywołanie zakończy się pomyślnie, jeśli co najmniej jednego uprawnienia. **Scp** oświadczenia w tokenie dostępu wynikowy jest wypełniana przy użyciu uprawnień, które zostały udzielone pomyślnie. Standardowa OpenID Connect określono kilka wartości specjalny zakres. Wymienione poniżej zakresy reprezentują uprawnienie do dostępu do profilu użytkownika:
+Jeśli zażądasz więcej zakresów niż to, co jest przyznane aplikacji klienckiej, wywołanie powiedzie się, Jeśli przyznano co najmniej jedno uprawnienie. W przypadku wystąpienia usługi **SCP** w uzyskanym tokenie dostępu zostanie wypełniony tylko pomyślnie przyznane uprawnienia. Standard OpenID Connect Connect określa kilka specjalnych wartości zakresu. Następujące zakresy reprezentują uprawnienia dostępu do profilu użytkownika:
 
-- **openid** -żąda tokenu Identyfikatora.
-- **offline_access** -żądania tokenu odświeżania przy użyciu [przepływu kodu autoryzacji](active-directory-b2c-reference-oauth-code.md).
+- **OpenID Connect** — żąda tokenu identyfikatora.
+- **offline_access** — żąda tokenu odświeżania przy użyciu [przepływów kodu uwierzytelniania](active-directory-b2c-reference-oauth-code.md).
 
-Jeśli **response_type** parametru w `/authorize` żądanie zawiera `token`, **zakres** parametr musi zawierać co najmniej jeden zasób zakresu innego niż `openid` i `offline_access`, zostaną przyznane. W przeciwnym razie `/authorize` żądanie nie powiedzie się.
+Jeśli parametr **response_type** w `/authorize` żądaniu zawiera `token`, parametr **SCOPE** musi zawierać co najmniej jeden zakres zasobów inny niż `openid` i `offline_access` , który zostanie przyznany. W przeciwnym razie żądanie zakończy się niepowodzeniem. `/authorize`
 
-## <a name="request-a-token"></a>Żądania tokenu
+## <a name="request-a-token"></a>Żądanie tokenu
 
-Aby żądania tokenu dostępu, musisz mieć kod autoryzacji. Poniżej znajduje się przykład żądanie `/authorize` punktu końcowego dla kodu autoryzacji. Domeny niestandardowe nie są obsługiwane do użytku z tokenami dostępu. Korzystania z domeny name.onmicrosoft.com dzierżawy w adresie URL żądania.
+Aby zażądać tokenu dostępu, musisz mieć kod autoryzacji. Poniżej znajduje się przykład żądania do `/authorize` punktu końcowego kodu autoryzacji. Domeny niestandardowe nie są obsługiwane w przypadku tokenów dostępu. Użyj domeny tenant-name.onmicrosoft.com w adresie URL żądania.
 
-W poniższym przykładzie Zastąp są następujące wartości:
+W poniższym przykładzie zastąpisz następujące wartości:
 
-- `<tenant-name>` — Nazwa dzierżawy usługi Azure AD B2C.
-- `<policy-name>` — Nazwa przepływu niestandardowych zasad lub użytkownika.
-- `<application-ID>` — Identyfikator aplikacji dla aplikacji sieci web, która została zarejestrowana do obsługi przepływu użytkownika.
-- `<redirect-uri>` **Identyfikator URI przekierowania** wprowadzona podczas rejestrowania aplikacji klienckiej.
+- `<tenant-name>`— Nazwa dzierżawy Azure AD B2C.
+- `<policy-name>`— Nazwa zasad niestandardowych lub przepływu użytkownika.
+- `<application-ID>`— Identyfikator aplikacji sieci Web, która została zarejestrowana w celu obsługi przepływu użytkownika.
+- `<redirect-uri>`— **Identyfikator URI przekierowania** wprowadzony podczas rejestrowania aplikacji klienckiej.
 
-```
+```HTTP
 GET https://<tenant-name>.b2clogin.com/tfp/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?
 client_id=<application-ID>
 &nonce=anyRandomValue
 &redirect_uri=https://jwt.ms
 &scope=https://tenant-name>.onmicrosoft.com/api/read
-&response_type=code 
+&response_type=code
 ```
 
-Odpowiedzi z kodem autoryzacji powinny być podobne do poniższego przykładu:
+Odpowiedź z kodem autoryzacji powinna być podobna do tego przykładu:
 
 ```
 https://jwt.ms/?code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
 ```
 
-Po pomyślnym uzyskaniu kodu autoryzacji, można użyć go do wysłania żądania tokenu dostępu:
+Po pomyślnym otrzymaniu kodu autoryzacji można użyć go do żądania tokenu dostępu:
 
-```
+```HTTP
 POST <tenant-name>.onmicrosoft.com/oauth2/v2.0/token?p=<policy-name> HTTP/1.1
-Host: https://<tenant-name>.b2clogin.com
+Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=authorization_code
@@ -97,9 +97,9 @@ grant_type=authorization_code
 &client_secret=2hMG2-_:y12n10vwH...
 ```
 
-Powinny zostać wyświetlone podobną do następującej:
+Powinien zostać wyświetlony komunikat podobny do następującego:
 
-```
+```JSON
 {
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrN...",
     "token_type": "Bearer",
@@ -111,9 +111,9 @@ Powinny zostać wyświetlone podobną do następującej:
 }
 ```
 
-Korzystając z https://jwt.ms zbadać tokenu dostępu, który został zwrócony, powinny zostać wyświetlone informacje podobne do poniższego przykładu:
+W przypadku https://jwt.ms użycia do badania zwróconego tokenu dostępu powinien zostać wyświetlony komunikat podobny do następującego:
 
-```
+```JSON
 {
   "typ": "JWT",
   "alg": "RS256",
@@ -135,6 +135,6 @@ Korzystając z https://jwt.ms zbadać tokenu dostępu, który został zwrócony,
 }.[Signature]
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o sposobie [Konfigurowanie tokenów w usłudze Azure AD B2C](configure-tokens.md)
+- Dowiedz się więcej na temat [konfigurowania tokenów w Azure AD B2C](configure-tokens.md)

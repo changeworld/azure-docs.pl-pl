@@ -1,93 +1,93 @@
 ---
-title: Importowanie danych do indeksu wyszukiwania przy użyciu witryny Azure portal — usługa Azure Search
-description: Dowiedz się, jak używać Kreatora importu danych w witrynie Azure portal Przeszukuj dane platformy Azure z usługi Cosmos DB, magazynu obiektów Blob, usługi table storage, SQL Database i programu SQL Server na maszynach wirtualnych platformy Azure.
+title: Importowanie danych do indeksu wyszukiwania przy użyciu Azure Portal-Azure Search
+description: Dowiedz się, jak za pomocą Kreatora importu danych w Azure Portal przeszukiwać dane platformy Azure z Cosmos DB, BLOB Storage, Table Storage, SQL Database i SQL Server na maszynach wirtualnych platformy Azure.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: a0eefe38fdffd04bb95826f960771bd6430ea687
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e784cbf351bd062712e0fd66332799907a3bcae8
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024780"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648248"
 ---
-# <a name="import-data-wizard-for-azure-search"></a>Kreator importu danych dla usługi Azure Search
+# <a name="import-data-wizard-for-azure-search"></a>Kreator importu danych dla Azure Search
 
-W witrynie Azure Portal na pulpicie nawigacyjnym usługi Azure Search znajduje się kreator **Importuj dane**, który umożliwia ładowanie danych do indeksu. W tle, Kreator konfiguruje i wywołuje *źródła danych*, *indeksu*, i *indeksatora* -automatyzując kilka kroków procesu indeksowania: 
+W witrynie Azure Portal na pulpicie nawigacyjnym usługi Azure Search znajduje się kreator **Importuj dane**, który umożliwia ładowanie danych do indeksu. W tle Kreator konfiguruje i wywołuje *Źródło danych*, *indeks*i *indeksator* — automatyzując kilka kroków procesu indeksowania: 
 
-* Łączy się z zewnętrznym źródłem danych w tej samej subskrypcji platformy Azure.
-* Opcjonalnie integruje przetwarzania optyczne rozpoznawanie znaków lub języka naturalnego do wyodrębniania tekstu z danych bez struktury.
-* Powoduje utworzenie indeksu na podstawie próbkowania danych i metadanych z zewnętrznym źródłem danych.
-* Przeszukuje źródło danych dla zawartość do przeszukiwania, serializacja i ładowanie dokumentów JSON do indeksu.
+* Nawiązuje połączenie z zewnętrznym źródłem danych w ramach tej samej subskrypcji platformy Azure.
+* Opcjonalnie integruje optyczne rozpoznawanie znaków lub przetwarzanie języka naturalnego w celu wyodrębnienia tekstu z danych bez struktury.
+* Generuje indeks na podstawie próbkowania danych i metadanych zewnętrznego źródła danych.
+* Przeszukuje źródło danych w celu przeszukiwania zawartości, serializacji i ładowania dokumentów JSON do indeksu.
 
-Kreator nie może nawiązać połączenie z wstępnie zdefiniowany indeks lub uruchamianie istniejącego indeksatora, ale w kreatorze, można skonfigurować nowego indeksu i indeksatora do obsługi struktury i zachowań, które są potrzebne.
+Kreator nie może połączyć się ze wstępnie zdefiniowanym indeksem lub uruchomić istniejącego indeksatora, ale w kreatorze można skonfigurować nowy indeks lub indeksator, aby obsługiwał potrzebną strukturę i zachowania.
 
-Dopiero zaczynasz korzystać z usługi Azure Search? Krok po kroku [Szybki Start: Importować, indeksu i wykonywać zapytania za pomocą narzędzia portalu](search-get-started-portal.md) będą mogli ją testować importowania i indeksowanie przy użyciu **importowania danych** i zestaw danych próbka wbudowanych nieruchomości.
+Dopiero zaczynasz korzystać z usługi Azure Search? Przejdź do [przewodnika Szybki Start: Importowanie, indeksowanie i wykonywanie zapytań przy użyciu](search-get-started-portal.md) narzędzi portalu do testowania importowania i indeksowania przy użyciu **danych importu** oraz wbudowanego zestawu danych przykładowej nieruchomości.
 
-## <a name="start-importing-data"></a>Rozpocznij importowanie danych
+## <a name="start-importing-data"></a>Rozpocznij Importowanie danych
 
-W tej sekcji wyjaśniono, jak uruchomić kreatora i zawiera ogólne omówienie każdego kroku.
+W tej sekcji wyjaśniono, jak uruchomić kreatora i przedstawiono ogólne omówienie każdego kroku.
 
-1. W [witryny Azure portal](https://portal.azure.com), otwórz stronę usługi wyszukiwanie z pulpitu nawigacyjnego lub [Znajdź swoją usługę](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) na liście usług.
+1. W [Azure Portal](https://portal.azure.com)Otwórz stronę usługi wyszukiwania na pulpicie nawigacyjnym lub [Znajdź usługę](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) na liście usług.
 
-2. Na stronie Przegląd usługi u góry kliknij **importowania danych**.
+2. Na stronie Przegląd usługi u góry kliknij pozycję **Importuj dane**.
 
-   ![Polecenie importu danych w portalu](./media/search-import-data-portal/import-data-cmd2.png "uruchomić Kreatora importu danych")
+   ![Importuj dane — polecenie w portalu](./media/search-import-data-portal/import-data-cmd2.png "Uruchom Kreatora importu danych")
 
    > [!NOTE]
-   > Możesz uruchomić **importowania danych** z innymi usługami platformy Azure, w tym usługi Azure Cosmos DB, Azure SQL Database i Azure Blob storage. Wyszukaj **Dodaj usługę Azure Search** w okienku nawigacji po lewej stronie, na stronie Przegląd usługi.
+   > Można uruchamiać **Importowanie danych** z innych usług platformy Azure, w tym Azure Cosmos DB, Azure SQL Database i usługi Azure Blob Storage. Poszukaj **Azure Search** w okienku nawigacji po lewej stronie Przegląd usługi.
 
-3. W kreatorze jest otwierany **Połącz z danymi**, którym można wybrać zewnętrznego źródła danych na potrzeby importowania. Istnieje kilka sposobów, aby ten krok można dowiedzieć się, dlatego należy przeczytać [dane wejściowe źródła danych](#data-source-inputs) sekcji, aby uzyskać więcej informacji.
+3. Kreator zostanie otwarty w celu **nawiązania połączenia z danymi**, na których można wybrać zewnętrzne źródło danych do użycia w ramach tego importu. Istnieje kilka rzeczy, na które należy zapoznać się z tym krokiem. Pamiętaj, aby przeczytać sekcję dane [wejściowe źródła danych](#data-source-inputs) , aby uzyskać więcej szczegółów.
 
-   ![Kreator importu danych w portalu](./media/search-import-data-portal/import-data-wizard-startup.png "Kreatora importu danych dla usługi Azure Search")
+   ![Kreator importu danych w portalu](./media/search-import-data-portal/import-data-wizard-startup.png "Kreator importu danych dla Azure Search")
 
-4. Następnym ekranem jest **wyszukiwania kognitywnego Dodaj**, w przypadku, gdy chcesz dołączyć optyczne rozpoznawanie znaków (OCR) tekstu w plikach obrazu lub analiza tekstu względem danych bez struktury. Algorytmy sztucznej Inteligencji z usług Cognitive Services są pobierane dla tego zadania. Istnieją dwie części do tego kroku:
+4. Następnie **Dodaj wyszukiwanie poznawcze**, w przypadku których chcesz uwzględnić optyczne rozpoznawanie znaków (OCR) tekstu w plikach obrazów lub analizę tekstu na danych bez struktury. Algorytmy AI z Cognitive Services są pobierane dla tego zadania. Ten krok obejmuje dwie części:
   
-   Po pierwsze, [dołączenia zasobu usług Cognitive Services](cognitive-search-attach-cognitive-services.md) do usługi Azure Search zestawu umiejętności.
+   Najpierw [Dołącz zasób Cognitive Services](cognitive-search-attach-cognitive-services.md) do Azure Search zestawu umiejętności.
   
-   Wybierz drugie, które wzbogacenia sztucznej Inteligencji, które mają zostać objęte zestawu umiejętności. Pokaz wskazówki, zobacz ten [Szybki Start](cognitive-search-quickstart-blob.md).
+   Następnie wybierz, które wzbogacania AI mają być uwzględnione w zestawu umiejętności. Demonstrację przewodnika można znaleźć w tym [przewodniku szybki start](cognitive-search-quickstart-blob.md).
 
-   Jeśli chcesz zaimportować dane, Pomiń ten krok i przejść bezpośrednio do definicji indeksu.
+   Jeśli chcesz jedynie zaimportować dane, Pomiń ten krok i przejdź bezpośrednio do definicji indeksu.
 
-5. Następnym ekranem jest **Dostosuj indeks docelowy**, gdzie możesz zaakceptować lub zmodyfikować schemat indeksu, znajdujące się w kreatorze. Kreator wnioskuje pola i typy danych, dane próbkowania i podczas odczytywania metadanych z zewnętrznego źródła danych.
+5. Następnie **Dostosuj indeks docelowy**, w którym możesz zaakceptować lub zmodyfikować schemat indeksu przedstawiony w kreatorze. Kreator wnioskuje pola i typy danych, pobierając dane próbkowania i odczytując metadane z zewnętrznego źródła danych.
 
-   Dla każdego pola [Sprawdź atrybuty indeksu](#index-definition) umożliwiające konkretne zachowania. Jeśli nie zaznaczysz wszelkie atrybuty indeksu nie będzie można używać. 
+   Dla każdego pola [Sprawdź atrybuty indeksu](#index-definition) , aby włączyć określone zachowania. Jeśli nie wybrano żadnych atrybutów, indeks nie będzie przydatny. 
 
-6. Następnym ekranem jest **Utwórz indeksator**, który jest wynikiem tego kreatora. Indeksator jest przeszukiwarką, która wyodrębnia dane z możliwością wyszukiwania i metadane ze źródła zewnętrznego danych platformy Azure. Wybranie źródła danych i dołączanie dokładniejsze (opcjonalnie) i indeksu, już został konfigurujesz indeksatora czasie poruszania się przez kolejne kroki kreatora.
+6. Następnie **Utwórz indeksator**, który jest produktem tego kreatora. Indeksator to przeszukiwarka, która wyodrębnia dane z możliwością wyszukiwania i metadane z zewnętrznego źródła danych platformy Azure. Wybierając źródło danych i dołączając umiejętności (opcjonalnie) i indeks, można skonfigurować indeksator podczas przechodzenia przez poszczególne kroki kreatora.
 
-   Nadaj nazwę indeksatora, a następnie kliknij przycisk **przesyłania** aby rozpocząć proces importowania. 
+   Nadaj Indeksatorowi nazwę, a następnie kliknij pozycję **Prześlij** , aby rozpocząć proces importowania. 
 
-Indeksowanie w portalu, klikając indeksatora w można monitorować **indeksatory** listy. W miarę ładowania dokumentów liczba dokumentów dla zdefiniowanego indeksu będzie rosnąć. Czasem do odzwierciedlenia najnowszych aktualizacji na stronie portalu może minąć kilka minut.
+Indeksowanie można monitorować w portalu, klikając indeksator na liście indeksatorów. W miarę ładowania dokumentów liczba dokumentów dla zdefiniowanego indeksu będzie rosnąć. Czasem do odzwierciedlenia najnowszych aktualizacji na stronie portalu może minąć kilka minut.
 
-Indeks jest gotowa do obsługi zapytań, zaraz po załadowaniu pierwszy dokument. Możesz użyć [Eksploratora wyszukiwania](search-explorer.md) dla tego zadania.
+Indeks jest gotowy do wykonywania zapytań zaraz po załadowaniu pierwszego dokumentu. Możesz użyć [Eksploratora wyszukiwania](search-explorer.md) dla tego zadania.
 
 <a name="data-source-inputs"></a>
 
 ## <a name="data-source-inputs"></a>Dane wejściowe źródła danych
 
-**Importowania danych** Kreator tworzy obiekt źródła danych trwałych, określając informacje o połączeniu ze źródłem danych zewnętrznych. Obiekt źródła danych jest używane wyłącznie w przypadku [indeksatory](search-indexer-overview.md) i mogą być tworzone dla następujących źródeł danych: 
+Kreator **importu danych** tworzy trwały obiekt źródła danych, określając informacje o połączeniu z zewnętrznym źródłem danych. Obiekt źródła danych jest używany wyłącznie z [indeksatorami](search-indexer-overview.md) i można go utworzyć dla następujących źródeł danych: 
 
 * [Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
+* [Usługi Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
-* [Usługa Azure Table Storage](search-howto-indexing-azure-tables.md) (nieobsługiwane w przypadku [wyszukiwania kognitywnego](cognitive-search-concept-intro.md) potoków)
+* [Table Storage platformy Azure](search-howto-indexing-azure-tables.md) (nieobsługiwane w przypadku potoków [wyszukiwania poznawczego](cognitive-search-concept-intro.md) )
 
-Można importować tylko z pojedynczej tabeli, widoku bazy danych lub równoważnej struktury danych, ale struktura może zawierać podstruktury hierarchiczne lub zagnieżdżony. Aby uzyskać więcej informacji, zobacz [jak modelowanie złożonych typów](search-howto-complex-data-types.md).
+Można importować tylko z pojedynczej tabeli, widoku bazy danych lub równoważnej struktury danych, jednak struktura może zawierać hierarchiczne lub zagnieżdżone struktury podstruktur. Aby uzyskać więcej informacji, zobacz [jak modelować typy złożone](search-howto-complex-data-types.md).
 
-Ta struktura danych należy utworzyć przed uruchomieniem kreatora, i może zawierać zawartości. Nie uruchamiaj **importowania danych** kreatora w źródle danych puste.
+Tę strukturę danych należy utworzyć przed uruchomieniem kreatora i musi zawierać zawartość. Nie uruchamiaj kreatora **importowania danych** w pustym źródle danych.
 
 |  Wybór | Opis |
 | ---------- | ----------- |
-| **Istniejące źródło danych** |Jeśli masz już zdefiniowane indeksatory w usłudze wyszukiwania, możesz użyć istniejącej definicji źródła danych na potrzeby innego importu. W usłudze Azure Search obiekty źródła danych są używane tylko przez indeksatorów. Programistyczne tworzenie obiektu źródła danych lub za pomocą **importowania danych** kreatora.|
-| **Przykłady**| Usługa Azure Search obsługuje bezpłatne globalnego Azure SQL database, można użyć, aby dowiedzieć się więcej o żądaniach importowania i zapytania w usłudze Azure Search. Zobacz [Szybki start: Importować, indeksu i wykonywać zapytania za pomocą narzędzia portalu](search-get-started-portal.md) przewodnik. |
+| **Istniejące źródło danych** |Jeśli masz już zdefiniowane indeksatory w usłudze wyszukiwania, możesz użyć istniejącej definicji źródła danych na potrzeby innego importu. W Azure Search obiekty źródła danych są używane tylko przez indeksatory. Obiekt źródła danych można utworzyć programowo lub za pomocą kreatora **importu danych** .|
+| **Przykłady**| Azure Search obsługuje bezpłatną globalną bazę danych SQL Azure, której można użyć, aby dowiedzieć się więcej o importowaniu i wysyłaniu zapytań w Azure Search. Zobacz [Szybki start: Zaimportuj, Indeksuj i zapytaj przy](search-get-started-portal.md) użyciu narzędzi portalu, aby zapoznać się z przewodnikiem. |
 | **Azure SQL Database** |Nazwę usługi, poświadczenia użytkownika z uprawnieniem do odczytu bazy danych i nazwę bazy danych można określić na stronie lub przy użyciu parametrów połączenia ADO.NET. Wybierz opcję parametrów połączenia, aby wyświetlić lub dostosować właściwości. <br/><br/>Na stronie należy określić tabelę lub widok zawierające zestaw wierszy. Ta opcja jest dostępna po udanym nawiązaniu połączenia. Pojawia się wtedy lista rozwijana, z której można dokonać wyboru. |
-| **Program SQL Server na maszynie wirtualnej platformy Azure** |Określ w pełni kwalifikowaną nazwę, identyfikator użytkownika i hasło i bazy danych jako parametry połączenia. Aby użyć tego źródła danych, należy wcześniej zainstalować w magazynie lokalnym certyfikat szyfrujący połączenie. Aby uzyskać instrukcje, zobacz [SQL VM connection to Azure Search](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md) (Połączenie maszyny wirtualnej bazy danych SQL z usługą Azure Search). <br/><br/>Na stronie należy określić tabelę lub widok zawierające zestaw wierszy. Ta opcja jest dostępna po udanym nawiązaniu połączenia. Pojawia się wtedy lista rozwijana, z której można dokonać wyboru. |
-| **Cosmos DB** |Wymagane jest konto, baza danych i kolekcja. Wszystkie dokumenty w kolekcji zostaną uwzględnione w indeksie. Można zdefiniować zapytanie w celu spłaszczenia lub filtrowania zestawu wierszy, lub pozostaw puste zapytanie. Zapytanie nie jest wymagane w tym kreatorze.|
+| **Program SQL Server na maszynie wirtualnej platformy Azure** |Określ w pełni kwalifikowaną nazwę usługi, identyfikator użytkownika i hasło oraz bazę danych jako parametry połączenia. Aby użyć tego źródła danych, należy wcześniej zainstalować w magazynie lokalnym certyfikat szyfrujący połączenie. Aby uzyskać instrukcje, zobacz [SQL VM connection to Azure Search](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md) (Połączenie maszyny wirtualnej bazy danych SQL z usługą Azure Search). <br/><br/>Na stronie należy określić tabelę lub widok zawierające zestaw wierszy. Ta opcja jest dostępna po udanym nawiązaniu połączenia. Pojawia się wtedy lista rozwijana, z której można dokonać wyboru. |
+| **Cosmos DB** |Wymagane jest konto, baza danych i kolekcja. Wszystkie dokumenty w kolekcji zostaną uwzględnione w indeksie. Można zdefiniować zapytanie, aby spłaszczyć lub filtrować zestaw wierszy, lub pozostawić zapytanie puste. Zapytanie nie jest wymagane w tym kreatorze.|
 | **Azure Blob Storage** |Wymagane jest miedzy innymi konto magazynu i kontener. Opcjonalnie, jeśli nazwa obiektu blob jest zgodna z konwencją nazw wirtualnych do celów grupowania, można określić część nazwy oznaczającą katalog wirtualny jako folder w kontenerze. Więcej informacji zawiera artykuł [Indexing Blob Storage](search-howto-indexing-azure-blob-storage.md) (Indeksowanie w usłudze Blob Storage). |
 | **Azure Table Storage** |Wymagane jest miedzy innymi konto magazynu i nazwa tabeli. Opcjonalnie można określić zapytanie w celu pobrania podzbioru tabel. Więcej informacji zawiera artykuł [Indexing Table Storage](search-howto-indexing-azure-tables.md) (Indeksowanie w usłudze Table Storage). |
 
@@ -96,36 +96,36 @@ Ta struktura danych należy utworzyć przed uruchomieniem kreatora, i może zawi
 
 ## <a name="index-attributes"></a>Atrybuty indeksu
 
-**Importowania danych** kreator wygeneruje indeksu, który zostanie wypełniony dokumentów uzyskany ze źródła danych wejściowych. 
+Kreator **importu danych** generuje indeks, który zostanie wypełniony dokumentami uzyskanymi ze źródła danych wejściowych. 
 
-Dla indeksu funkcjonalności upewnij się, że masz następujące elementy, które są zdefiniowane.
+W przypadku indeksów funkcjonalnych upewnij się, że masz zdefiniowane następujące elementy.
 
-1. Jedno pole musi być oznaczona jako **klucz**, który jest używany do jednoznacznego zidentyfikowania poszczególnych dokumentów. **Klucz** musi być *Edm.string*. 
+1. Jedno pole musi być oznaczone jako **klucz**, który służy do jednoznacznego identyfikowania każdego dokumentu. **Klucz** musi mieć wartość *EDM. String*. 
 
-   Jeśli wartości pól zawierają spacje lub kreski, musisz ustawić **klucz kodowania Base-64** opcji **Utwórz indeksator** krok w obszarze **zaawansowane opcje**, aby pominąć sprawdzenie poprawności tych znaków.
+   Jeśli wartości pola zawierają spacje lub kreski, należy ustawić opcję **kodowania Base-64** w kroku **Utwórz indeksator** w obszarze **Opcje zaawansowane**, aby pominąć sprawdzanie poprawności tych znaków.
 
-1. Ustaw atrybuty indeksu dla każdego pola. Jeśli wybierzesz żadnych atrybutów, indeksu jest zasadniczo pusta, z wyjątkiem wymagane pola klucza. Jako minimum wybierz co najmniej jeden z tych atrybutów dla każdego pola.
+1. Ustaw atrybuty indeksu dla każdego pola. W przypadku wybrania opcji brak atrybutów indeks jest zasadniczo pusty, z wyjątkiem wymaganego pola klucza. Należy wybrać co najmniej jeden z tych atrybutów dla każdego pola.
    
-   + **Pobieranie** zwracanie pola w wynikach wyszukiwania. Każde pole, które zawiera materiały do wyników wyszukiwania musi mieć tego atrybutu. Ustawienie to pole nie ma znacznego wpływu na rozmiar indeksu.
-   + **Można filtrować** umożliwia pola można odwoływać się w wyrażeniach filtru. Każde pole używane w **$filter** wyrażenie musi mieć tego atrybutu. Wyrażenia filtru są dokładne dopasowania. Ponieważ ciągi tekstowe pozostaną nienaruszone, dodatkowy magazyn jest wymagany do uwzględnienia verbatim zawartości.
-   + **Można wyszukiwać** umożliwia wyszukiwanie pełnotekstowe. Każde pole używane w dowolnej postaci zapytania lub w wyrażeniach zapytań musi mieć tego atrybutu. Odwrócony indeksy są tworzone dla każdego pola, które oznaczyć jako **z możliwością wyszukiwania**.
+   + Możliwość **pobierania** zwraca pole w wynikach wyszukiwania. Każde pole, które zapewnia zawartość do wyników wyszukiwania, musi mieć ten atrybut. Ustawienie tego pola nie ma znaczącego wpływu na rozmiar indeksu.
+   + **Filtrowanie** umożliwia odwoływanie się do pola w wyrażeniach filtru. Każde pole używane w wyrażeniu **$Filter** musi mieć ten atrybut. Wyrażenia filtru są dla dokładnych dopasowań. Ponieważ ciągi tekstowe pozostają nienaruszone, do obsługi zawartości Verbatim jest wymagany dodatkowy magazyn.
+   + **Wyszukiwanie** umożliwia wyszukiwanie pełnotekstowe. Każde pole używane w kwerendach w dowolnej postaci lub w wyrażeniach zapytań musi mieć ten atrybut. Odwrócone indeksy są tworzone dla każdego pola, które jest oznaczonejako możliwe do przeszukania.
 
-1. Opcjonalnie można ustawić tych atrybutów, zgodnie z potrzebami:
+1. Opcjonalnie ustaw te atrybuty zgodnie z wymaganiami:
 
-   + **Sortowanie** umożliwia pola, które ma być używany podczas sortowania. Każde pole używane w **$Orderby** wyrażenie musi mieć tego atrybutu.
-   + **Tworzenie aspektów** umożliwia używanie pola w nawigacji aspektowej. Tylko pola również oznaczone jako **możliwość filtrowania** może być oznaczona jako **aspektów**.
+   + Sortowanie umożliwia używanie pola w sortowaniu. Każde pole używane w wyrażeniu **$OrderBy** musi mieć ten atrybut.
+   + Element **kroju** umożliwia pole dla nawigacji aspektowej. Tylko pola oznaczone jako możliwe do **filtrowania** mogą być oznaczone jako **kroju**.
 
-1. Ustaw **analizatora** chcącym języka rozszerzone indeksowanie i wykonywanie zapytań. Wartość domyślna to *standardowa Lucene* , ale można wybrać *Microsoft English* Jeśli chcesz użyć analizatora firmy Microsoft dla zaawansowanego przetwarzania leksykalne, takich jak rozpoznawanie nieregularne formularzy rzeczownika i zlecenie.
+1. Ustaw **Analizator** , jeśli chcesz, aby ulepszone język indeksowania i zapytania. Wartość domyślna to *standardowa Lucene* , ale można wybrać *język angielski firmy Microsoft* , jeśli chcesz użyć analizatora firmy Microsoft do zaawansowanego przetwarzania leksykalnego, takiego jak rozwiązywanie nietypowych form rzeczowników i czasowników.
 
-   + Wybierz **z możliwością wyszukiwania** umożliwiające **analizatora** listy.
-   + Wybierz analizator podany na liście. 
+   + Wybierz opcję **wyszukiwania** , aby włączyć listę **analizatora** .
+   + Wybierz Analizator podany na liście. 
    
-   Obecnie można określić tylko analizatory języka. Skorzystanie z analizatorów niestandardowych lub innych niż analizatory języka, takich jak analizatory słów kluczowych, wzorców itp., będzie wymagać kodu. Aby uzyskać więcej informacji o analizatorach zobacz [Tworzenie indeksu dla dokumentów w wielu językach](search-language-support.md).
+   Obecnie można określić tylko analizatory języka. Skorzystanie z analizatorów niestandardowych lub innych niż analizatory języka, takich jak analizatory słów kluczowych, wzorców itp., będzie wymagać kodu. Aby uzyskać więcej informacji na temat analizatorów, zobacz [Tworzenie indeksu dla dokumentów w wielu językach](search-language-support.md).
 
-1. Wybierz **Sugestora** pole wyboru, aby włączyć podpowiedzi dla zapytania z podpowiedziami pojawiającymi na wybrane pola.
+1. Zaznacz pole wyboru **Sugeruj** , aby włączyć sugestie zapytania typu z wyprzedzeniem dla wybranych pól.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Przejrzyj następujące linki, aby dowiedzieć się więcej o indeksatorach:
 
 * [Indeksowanie w usłudze Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)

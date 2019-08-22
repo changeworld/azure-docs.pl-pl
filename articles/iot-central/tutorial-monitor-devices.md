@@ -9,14 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: d6ad7631ae32f8bd04812093a0fef4fa3d575864
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d716eb761ab406b65f10898b29775327a801ac45
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067410"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875490"
 ---
 # <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>Samouczek: Korzystanie z usługi Azure IoT Central do monitorowania urządzeń
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 W tym samouczku przedstawiono, jak operator może użyć aplikacji usługi Microsoft Azure IoT Central do monitorowania urządzeń i zmieniania ustawień.
 
@@ -55,7 +57,7 @@ Wybierz widok **Pulpit nawigacyjny**, aby wyświetlić informacje o urządzeniu.
 
 ![Pulpit nawigacyjny urządzenia](media/tutorial-monitor-devices/initial_screen.png)
 
-Wykres na pulpicie nawigacyjnym pokazuje wykreśloną temperaturę urządzenia. Można również wyświetlić aktualną temperaturę docelowego dla urządzenia w **właściwości urządzenia** kafelka. Decydujesz, że temperatura docelowa jest zbyt wysoka.
+Wykres na pulpicie nawigacyjnym pokazuje wykreśloną temperaturę urządzenia. Bieżącą temperaturę docelową urządzenia można także zobaczyć na kafelku **Właściwości urządzenia** . Decydujesz, że temperatura docelowa jest zbyt wysoka.
 
 ## <a name="remediate-an-issue"></a>Rozwiązywanie problemu
 
@@ -63,13 +65,13 @@ Aby zmienić temperaturę docelową urządzenia, użyj strony **Ustawienia**:
 
 1. Wybierz pozycję **Ustawienia**. Zmień wartość pola **Ustaw temperaturę** na 75. Wybierz polecenie **Aktualizuj**, aby wysłać nową temperaturę docelowa do urządzenia. Gdy urządzenie potwierdzi zmianę ustawień, stan ustawienia zostanie zmieniony na **zsynchronizowane**:
 
-    ![Aktualizowanie ustawień](media/tutorial-monitor-devices/change_settings.png)
+    ![Aktualizuj ustawienia](media/tutorial-monitor-devices/change_settings.png)
 
 2. Wybierz pozycję **Pulpit nawigacyjny** i zweryfikuj nową wartość ustawienia:
 
     ![Zaktualizowany pulpit nawigacyjny urządzenia](media/tutorial-monitor-devices/new_settings.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

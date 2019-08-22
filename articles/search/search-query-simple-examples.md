@@ -1,8 +1,8 @@
 ---
-title: Przykłady zapytań przy użyciu składni "prosta" wyszukiwania — usługa Azure Search
-description: Przykłady prostego zapytania wyszukiwania pełnotekstowego, filtr wyszukiwania, wyszukiwanie geograficzne, wyszukiwanie aspektowe i inne ciągi zapytań, które umożliwia tworzenie zapytań względem indeksu usługi Azure Search.
+title: Przykłady zapytań używające składni wyszukiwania "Simple" — Azure Search
+description: Proste przykłady zapytania do wyszukiwania pełnotekstowego, wyszukiwania filtrów, wyszukiwania geograficznego, wyszukiwania aspektowego i innych ciągów zapytań używanych do wykonywania zapytań względem indeksu Azure Search.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 tags: Simple query analyzer syntax
 services: search
 ms.service: search
@@ -10,80 +10,80 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 6b7451371fe1562a6763643cd90e5646bd255018
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: df84686e512db90351d5a9815706890bce49848b
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653521"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647617"
 ---
-# <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Przykłady zapytań przy użyciu składni "prosta" wyszukiwania w usłudze Azure Search
+# <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Przykłady zapytań używające składni wyszukiwania "Simple" w Azure Search
 
-[Prosta składnia zapytań](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) wywołuje analizator składni zapytań domyślne do wykonywania zapytań wyszukiwania pełnotekstowego względem indeksu usługi Azure Search. Analizator prostego zapytania jest szybkie i obsługuje typowych scenariuszy w usłudze Azure Search, takich jak wyszukiwanie pełnotekstowe, wyszukiwanie filtrowane i aspektowa i wyszukiwanie geograficzne. W tym artykule należy przejrzeć przykłady pokazujące dostępne operacje zapytań, korzystając z prostą składnię.
+[Prosta Składnia zapytania](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) wywołuje domyślny Analizator zapytań w celu wykonywania zapytań wyszukiwania pełnotekstowego na indeks Azure Search. Prosty Analizator zapytań jest szybki i obsługuje typowe scenariusze w Azure Search, w tym wyszukiwanie pełnotekstowe, filtrowanie i wyszukiwanie aspektów oraz wyszukiwanie geograficzne. W tym artykule opisano przykłady pokazujące operacje zapytania dostępne podczas korzystania z prostej składni.
 
-Składnia zapytania alternatywne jest [pełne Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), takich jak obsługa bardziej złożonych struktur, zapytania, rozmyte i wyszukiwania symboli wieloznacznych, co może zająć dodatkowy czas przetwarzania. Aby uzyskać więcej informacji i przykłady pokazujące pełną składnię, zobacz [przykłady zapytań składni Lucene](search-query-lucene-examples.md).
+Alternatywna składnia zapytania to [pełna Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), obsługujące bardziej złożone struktury zapytań, takie jak rozmyte i wieloznaczne wyszukiwanie, które może zająć więcej czasu. Aby uzyskać więcej informacji i przykładów demonstrujących pełną składnię, zobacz [przykłady zapytań składni Lucene](search-query-lucene-examples.md).
 
-## <a name="formulate-requests-in-postman"></a>Sformułowania żądań w narzędziu Postman
+## <a name="formulate-requests-in-postman"></a>Formułowanie żądań w programie Poster
 
-Poniższe przykłady korzystać z indeksu wyszukiwania Pokazowa składający się z dostępnych zadań na podstawie zestawu danych, dostarczone przez [miasta w Nowym Jorku OpenData](https://nycopendata.socrata.com/) inicjatywy. Te dane nie uważa się bieżących lub ukończone. Indeks znajduje się w piaskownicy usługi obsługiwane przez firmę Microsoft, co oznacza, że nie ma potrzeby subskrypcji platformy Azure lub usługi Azure Search, aby wypróbować te zapytania.
+Poniższe przykłady wykorzystują indeks wyszukiwania zadań NYC składający się z zadań dostępnych na podstawie zestawu danych dostarczonego przez [miasto z inicjatywy New York OpenData](https://nycopendata.socrata.com/) Initiative. Te dane nie powinny być uważane za bieżące ani ukończone. Indeks znajduje się w usłudze piaskownicy dostarczonej przez firmę Microsoft, co oznacza, że nie jest potrzebna subskrypcja platformy Azure ani Azure Search do wypróbowania tych zapytań.
 
-Konieczne jest Postman lub równoważne narzędzie do wystawiania żądań HTTP na GET. Aby uzyskać więcej informacji, zobacz [Eksploruj za pomocą klientów REST](search-get-started-postman.md).
+To, czego potrzebujesz, jest to Poster lub równoważne narzędzie do wystawiania żądań HTTP na potrzeby pobierania. Aby uzyskać więcej informacji, zobacz [Eksplorowanie z klientami REST](search-get-started-postman.md).
 
-### <a name="set-the-request-header"></a>Ustaw nagłówek żądania
+### <a name="set-the-request-header"></a>Ustawianie nagłówka żądania
 
-1. W nagłówku żądania ustaw **Content-Type** do `application/json`.
+1. W nagłówku żądania ustaw wartość w **polu Typ zawartości** na `application/json`.
 
-2. Dodaj **klucz interfejsu api**i ustaw go na następujący ciąg: `252044BE3886FE4A8E3BAA4F595114BB`. Jest to klucz zapytania usługi wyszukiwania piaskownicy hostingu indeksu Pokazowa.
+2. Dodaj **klucz API-Key**i ustaw go na ten ciąg: `252044BE3886FE4A8E3BAA4F595114BB`. Jest to klucz zapytania dla usługi wyszukiwania piaskownicy hostującym indeks zadań NYC.
 
-Po określeniu nagłówek żądania, można użyć ponownie go dla wszystkich zapytań w tym artykule wymienić tylko **wyszukiwania =** ciągu. 
+Po określeniu nagłówka żądania można użyć go ponownie dla wszystkich zapytań w tym artykule, zamieniając tylko ciąg **Search =** String. 
 
   ![Nagłówek żądania narzędzia Postman](media/search-query-lucene-examples/postman-header.png)
 
 ### <a name="set-the-request-url"></a>Ustaw adres URL żądania
 
-Żądanie jest sparowana z adres URL usługi Azure Search punktu końcowego i wyszukaj ciąg zawierający polecenie GET.
+Żądanie jest poleceniem GET z adresem URL zawierającym punkt końcowy Azure Search i ciąg wyszukiwania.
 
   ![Nagłówek żądania narzędzia Postman](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
 
-Kompozycja adresu URL zawiera następujące elementy:
+Kompozycja adresów URL ma następujące elementy:
 
-+ **`https://azs-playground.search.windows.net/`** jest to usługa wyszukiwania w piaskownicy jest obsługiwana przez zespół usługi Azure Search. 
-+ **`indexes/nycjobs/`** jest indeksem Pokazowa w kolekcji indeksów tej usługi. Nazwa usługi i indeksu są wymagane dla żądania.
-+ **`docs`** to kolekcji documents zawierający całą zawartość można wyszukiwać. Klucz interfejsu api zapytań podany w nagłówku żądania działa tylko na operacje odczytu, wybieranie kolekcji dokumentów.
-+ **`api-version=2019-05-06`** Ustawia wartość api-version, czyli wymaganego parametru na każde żądanie.
-+ **`search=*`** jest ciągiem zapytania, które początkowego zapytania ma wartość null, zwraca 50 pierwszych wyników (domyślnie).
++ **`https://azs-playground.search.windows.net/`** jest usługą wyszukiwania piaskownicy obsługiwaną przez zespół deweloperów Azure Search. 
++ **`indexes/nycjobs/`** jest indeksem zadań NYC w kolekcji Indexs tej usługi. W żądaniu wymagane są zarówno nazwę usługi, jak i indeks.
++ **`docs`** jest kolekcją dokumentów zawierającą całą zawartość przeszukiwaną. Klucz API Query-Key podany w nagłówku żądania działa tylko na operacjach odczytu dla kolekcji Documents.
++ **`api-version=2019-05-06`** Ustawia wersję interfejsu API, która jest parametrem wymaganym dla każdego żądania.
++ **`search=*`** jest ciągiem zapytania, który w początkowym zapytaniu ma wartość null, zwracając pierwsze wyniki 50 (domyślnie).
 
-## <a name="send-your-first-query"></a>Wyślij pierwszego zapytania
+## <a name="send-your-first-query"></a>Wyślij pierwsze zapytanie
 
-Jako kroku weryfikacji, wklej następujące żądanie GET, a następnie kliknij przycisk **wysyłania**. Wyniki są zwracane w postaci pełnych dokumentów JSON. Całe dokumenty zostaną zwrócone, co pozwala wyświetlić wszystkie pola i wszystkie wartości.
+W ramach kroku weryfikacji Wklej następujące żądanie do GET i kliknij pozycję **Wyślij**. Wyniki są zwracane w postaci pełnych dokumentów JSON. Zwracane są całe dokumenty, które umożliwiają wyświetlanie wszystkich pól i wszystkich wartości.
 
-Wklej ten adres URL do klienta REST, jako kroku weryfikacji i wyświetlić strukturę dokumentu.
+Wklej ten adres URL do klienta REST jako krok walidacji i Wyświetl strukturę dokumentu.
 
   ```http
   https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=*
   ```
 
-Ciąg zapytania **`search=*`** , odpowiada nieokreślonego wyszukiwania wyszukiwania o wartości null ani być pusta. Nie jest to szczególnie przydatne, ale jest najprostszym wyszukiwania, które można wykonać.
+Ciąg zapytania, **`search=*`** , jest nieokreślonym wyszukiwaniem równym null lub pustego wyszukiwania. Nie jest to szczególnie przydatne, ale jest najprostszym wyszukiwaniem, które można wykonać.
 
-Opcjonalnie można dodać **`$count=true`** do adresu URL, aby zwrócić liczbę dokumentów spełniających kryteria wyszukiwania. W ciągu wyszukiwania puste to wszystkie dokumenty w indeksie (około 2800 w przypadku Pokazowa).
+Opcjonalnie możesz dodać **`$count=true`** do adresu URL, aby zwrócić liczbę dokumentów pasujących do kryteriów wyszukiwania. W przypadku pustego ciągu wyszukiwania jest to wszystkie dokumenty w indeksie (około 2800 w przypadku zadań NYC).
 
-## <a name="how-to-invoke-simple-query-parsing"></a>Jak wywołać proste zapytanie analizy
+## <a name="how-to-invoke-simple-query-parsing"></a>Jak wywołać proste analizowanie zapytań
 
-Dla zapytań interakcyjnych, nie trzeba niczego określać: proste jest ustawieniem domyślnym. W kodzie, jeśli wcześniej wywoływany **queryType = full** składni pełnej kwerendy, można zresetować domyślnej z **queryType = proste**.
+W przypadku zapytań interaktywnych nie trzeba określać niczego: wartość domyślna jest prosta. W kodzie, jeśli wcześniej wywołano **querytype = Full** dla pełnej składni zapytań, można zresetować wartość domyślną przy użyciu typu **querytype = Simple**.
 
-## <a name="example-1-field-scoped-query"></a>Przykład 1: Zakres pola zapytania
+## <a name="example-1-field-scoped-query"></a>Przykład 1: Zapytanie o zakres pola
 
-W pierwszym przykładzie nie jest specyficzne dla analizatora składni, ale możemy prowadzić z nim wprowadzenie pierwszego zapytanie podstawowe pojęcia: zawierania. W tym przykładzie zakresów, wykonywania zapytań i odpowiedzi na kilka konkretnych pól. Ważne jest wiedza, jak i struktury można odczytać odpowiedź w formacie JSON, po narzędzie Postman lub wyszukiwania Eksploratora. 
+Pierwszy przykład nie jest specyficzny dla parsera, ale prowadzimy do tego, aby wprowadzić pierwszą podstawową koncepcję zapytania: zawieranie. To przykładowe zakresy wykonywania zapytania i odpowiedzi na kilka określonych pól. Znajomość sposobu tworzenia struktury odpowiedzi w formacie JSON jest ważna, gdy narzędzie jest dostępne po opublikowaniu lub w Eksploratorze wyszukiwania. 
 
-Celu skrócenia programu, zapytanie jest przeznaczona tylko *business_title* pola, a następnie określa tylko tytuły biznesowe są zwracane. Składnia jest **searchFields** ograniczyć wykonywanie zapytania do tylko pola business_title i **wybierz** można określić pola, które mają zostać uwzględnione w odpowiedzi.
+W przypadku zwięzłości zapytanie odwołuje się tylko do pola *business_title* i określa tylko tytuły biznesowe, które są zwracane. Składnia jest **searchFields** , aby ograniczyć wykonywanie zapytania tylko do pola business_title i określić, które pola są uwzględniane w odpowiedzi.
 
-### <a name="partial-query-string"></a>Ciąg zapytania częściowego
+### <a name="partial-query-string"></a>Częściowy ciąg zapytania
 
 ```http
 searchFields=business_title&$select=business_title&search=*
 ```
 
-W tym miejscu jest tego samego zapytania przy użyciu wielu pól na liście rozdzielonych przecinkami.
+W tym samym zapytaniu z wieloma polami na liście rozdzielanej przecinkami.
 
 ```http
 search=*&searchFields=business_title, posting_type&$select=business_title, posting_type
@@ -95,31 +95,31 @@ search=*&searchFields=business_title, posting_type&$select=business_title, posti
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchFields=business_title&$select=business_title&search=*
 ```
 
-Odpowiedź dla tego zapytania powinien wyglądać podobnie do poniższej zrzut ekranu.
+Odpowiedź na to zapytanie powinna wyglądać podobnie do poniższego zrzutu ekranu.
 
-  ![Postman przykładowa odpowiedź](media/search-query-lucene-examples/postman-sample-results.png)
+  ![Przykładowa odpowiedź Poster](media/search-query-lucene-examples/postman-sample-results.png)
 
-Być może Zauważyłeś, wynik wyszukiwania w odpowiedzi. Jednolite wyniki 1 wystąpić, gdy jest nie rangę, albo ponieważ wyszukiwanie pełnotekstowe nie jest wyszukiwanie lub ponieważ żadne kryteria nie została zastosowana. Dla wartości null wyszukiwania przy użyciu kryteriów wiersze wrócić w dowolnej kolejności. Umieszczonego rzeczywiste kryteria zobaczysz wyniki ewoluować w istotne wartości wyszukiwania.
+Być może zauważono wynik wyszukiwania w odpowiedzi. Jednolite Punktacja 1 występuje, gdy nie ma żadnej rangi, ponieważ wyszukiwanie nie było wyszukiwaniem pełnotekstowym lub nie zastosowano żadnych kryteriów. W przypadku wyszukiwania wartości null bez kryteriów wiersze są przywracane w dowolnej kolejności. Jeśli dołączysz rzeczywiste kryteria, wyniki wyszukiwania zostaną rozdzielone na znaczące wartości.
 
-## <a name="example-2-look-up-by-id"></a>Przykład 2: Wyszukiwanie według Identyfikatora
+## <a name="example-2-look-up-by-id"></a>Przykład 2: Wyszukaj według identyfikatora
 
-W tym przykładzie jest to nieco nietypowe, ale podczas obliczania wyszukiwań, możesz chcieć sprawdzić całą zawartość określonego dokumentu, aby zrozumieć, dlaczego zostało dołączone lub wykluczone z wyników. Aby zwrócić pojedynczego dokumentu w całości, użyj [operacji wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/lookup-document) podawać identyfikatora dokumentu.
+Ten przykład jest nietypowy, ale podczas oceniania zachowań wyszukiwania można chcieć sprawdzić całą zawartość określonego dokumentu, aby zrozumieć, dlaczego został on uwzględniony lub wykluczony z wyników. Aby w całości zwrócić pojedynczy dokument, użyj [operacji Lookup](https://docs.microsoft.com/rest/api/searchservice/lookup-document) do przekazania identyfikatora dokumentu.
 
-Wszystkie dokumenty ma unikatowy identyfikator. Aby wypróbować składnia zapytania wyszukiwania, najpierw zwrócić listę dokumentu identyfikatory tak, aby można było znaleźć należy użyć. Pokazowa, identyfikatory są przechowywane w `id` pola.
+Wszystkie dokumenty mają unikatowy identyfikator. Aby wypróbować składnię zapytania wyszukiwania, najpierw Zwróć listę identyfikatorów dokumentów, aby można było znaleźć jeden do użycia. W przypadku zadań NYC identyfikatory są przechowywane w `id` polu.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchFields=id&$select=id&search=*
 ```
 
-Następny przykład jest zapytaniem wyszukiwania zwraca określony dokument na podstawie `id` "9E1E3AF9-0660-4E00-AF51-9B654925A2D5", która znajdowała się pierwszy w poprzedniej odpowiedzi. Następujące zapytanie zwraca całego dokumentu, nie tylko wybranych pól. 
+Następny przykład to zapytanie wyszukiwania zwracające określony dokument na podstawie `id` "9E1E3AF9-0660-4e00-AF51-9B654925A2D5", który pojawił się wcześniej w poprzedniej odpowiedzi. Poniższe zapytanie zwraca cały dokument, a nie tylko wybrane pola. 
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E00-AF51-9B654925A2D5?api-version=2019-05-06&$count=true&search=*
 ```
 
-## <a name="example-3-filter-queries"></a>Przykład 3: Zapytania filtru
+## <a name="example-3-filter-queries"></a>Przykład 3: Filtruj zapytania
 
-[Składnia filtru](https://docs.microsoft.com/azure/search/search-query-odata-filter) to wyrażenie OData, które można używać z **wyszukiwania** lub samodzielnie. Filtr autonomiczny bez parametru wyszukiwania jest przydatna, podczas wyrażenie filtru jest w stanie do pełnej kwalifikacji dokumentów zainteresowania. Bez ciąg zapytania nie ma żadnej analizy leksykalne lub językową nie oceniania (wszystkie wyniki są 1) i nie klasyfikacji. Należy zauważyć, że ciąg wyszukiwania jest pusty.
+[Składnia filtru](https://docs.microsoft.com/azure/search/search-query-odata-filter) jest wyrażeniem OData, które może być używane z wyszukiwaniem lub przez siebie. Filtr autonomiczny bez parametru wyszukiwania jest przydatny, gdy wyrażenie filtru jest w stanie w pełni kwalifikować dokumenty. Bez ciągu zapytania nie ma analizy leksykalnej ani językowej, brak oceniania (wszystkie wyniki są 1) i bez klasyfikacji. Zwróć uwagę, że ciąg wyszukiwania jest pusty.
 
 ```http
 POST /indexes/nycjobs/docs/search?api-version=2019-05-06
@@ -131,31 +131,31 @@ POST /indexes/nycjobs/docs/search?api-version=2019-05-06
     }
 ```
 
-Przy stosowaniu, najpierw jest stosowany filtr do całego indeksu, a następnie wyszukiwanie jest wykonywane na wynikach filtrowania. Z tego względu filtrowanie może być przydatne, jeśli chcemy poprawić wydajność zapytań, ponieważ pozwala ono zawęzić zestaw dokumentów przetwarzany przez zapytanie wyszukiwania.
+Używany razem filtr jest stosowany najpierw do całego indeksu, a następnie wyszukiwanie jest wykonywane na wynikach filtru. Z tego względu filtrowanie może być przydatne, jeśli chcemy poprawić wydajność zapytań, ponieważ pozwala ono zawęzić zestaw dokumentów przetwarzany przez zapytanie wyszukiwania.
 
-  ![Odpowiedzi na zapytanie filtru](media/search-query-simple-examples/filtered-query.png)
+  ![Filtrowanie odpowiedzi zapytania](media/search-query-simple-examples/filtered-query.png)
 
-Jeśli chcesz wypróbować w narzędziu Postman przy użyciu GET można wkleić w tym ciągu:
+Jeśli chcesz wypróbować tę opcję w programie Poster przy użyciu polecenia GET, możesz wkleić ten ciąg:
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency,salary_range_from&search=&$filter=salary_frequency eq 'Annual' and salary_range_from gt 90000
 ```
 
-Jest innym wydajnym sposobem łączenia filtru i wyszukiwania **`search.ismatch*()`** w wyrażeniu filtru, w którym można korzystać z zapytania wyszukiwania w filtrze. To wyrażenie filtru używa symbolu wieloznacznego w *plan* wybrać business_title, w tym planie termin, planner, planowania i tak dalej.
+Innym zaawansowanym sposobem łączenia filtru i wyszukiwania jest **`search.ismatch*()`** użycie wyrażenia filtru, w którym można użyć zapytania wyszukiwania w filtrze. To wyrażenie filtru używa symbolu wieloznacznego w *planie* do wyboru business_title, w tym terminu, terminarza, planowania i tak dalej.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
 ```
 
-Aby uzyskać więcej informacji na temat funkcji, zobacz [search.ismatch w "Przykładach filtrów"](https://docs.microsoft.com/azure/search/search-query-odata-full-text-search-functions#examples).
+Aby uzyskać więcej informacji na temat funkcji, zobacz [Wyszukaj. IsMatch w "Przykłady filtrowania"](https://docs.microsoft.com/azure/search/search-query-odata-full-text-search-functions#examples).
 
-## <a name="example-4-range-filters"></a>Przykład 4: Filtry zakresów
+## <a name="example-4-range-filters"></a>Przykład 4: Filtry zakresu
 
-Filtrowanie na podstawie zakresu jest świadczona za pośrednictwem **`$filter`** wyrażenia dla każdego typu danych. Poniższe przykłady wyszukiwanie pól liczbowych i. 
+Filtrowanie zakresu jest obsługiwane za **`$filter`** poorednictwem wyrażeń dla dowolnego typu danych. Poniższe przykłady przeszukają pola liczbowe i ciągi. 
 
-Typy danych są ważne w filtry zakresów i działają najlepiej, jeśli dane liczbowe znajduje się w pól liczbowych i dane ciągu w polach ciągu. Dane liczbowe w polach ciąg nie jest odpowiednia dla zakresów, ponieważ ciągi numeryczne są porównywalne w usłudze Azure Search. 
+Typy danych są ważne w filtrach zakresów i działają najlepiej, gdy dane liczbowe znajdują się w polach liczbowych oraz dane ciągu w polach ciągów. Dane liczbowe w polach ciągów nie są odpowiednie dla zakresów, ponieważ ciągi numeryczne nie są porównywalne w Azure Search. 
 
-Poniższe przykłady są w formacie WPIS, aby zwiększyć czytelność (zakresu liczbowego, a następnie zakres tekstu):
+Poniższe przykłady są w formacie POST na potrzeby czytelności (zakres liczbowy, po którym następuje tekst):
 
 ```http
 POST /indexes/nycjobs/docs/search?api-version=2019-05-06
@@ -183,7 +183,7 @@ POST /indexes/nycjobs/docs/search?api-version=2019-05-06
 
   ![Filtr zakresu dla zakresów tekstu](media/search-query-simple-examples/rangefiltertext.png)
 
-Możesz również wypróbować je w narzędziu Postman przy użyciu GET:
+Możesz również wypróbować je w programie Poster przy użyciu polecenia GET:
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&search=&$filter=num_of_positions ge 5 and num_of_positions lt 10&$select=job_id, business_title, num_of_positions, agency&$orderby=agency&$count=true
@@ -194,13 +194,13 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 ```
 
 > [!NOTE]
-> Wielopoziomowe za pośrednictwem zakresów wartości jest typowym wymogiem aplikacji wyszukiwania. Aby uzyskać więcej informacji i przykładów dotyczących tworzenia filtrów dla aspektów struktury nawigacji, zobacz ["Filtrowania na podstawie zakresu" w *jak wdrożyć nawigację aspektową*](search-faceted-navigation.md#filter-based-on-a-range).
+> Aspektowanie zakresów wartości jest typowym wymaganiem aplikacji wyszukiwania. Aby uzyskać więcej informacji i przykładów dotyczących tworzenia filtrów dla struktur nawigacyjnych aspektów, zobacz ["filtrowanie oparte na zakresie" w artykule *jak zaimplementować element nawigacji aspektowej*](search-faceted-navigation.md#filter-based-on-a-range).
 
 ## <a name="example-5-geo-search"></a>Przykład 5: Wyszukiwanie geograficzne
 
-Indeks przykładów zawiera pole geo_location o współrzędne geograficzne. W tym przykładzie użyto [funkcja geo.distance](https://docs.microsoft.com/azure/search/search-query-odata-geo-spatial-functions#examples) która filtruje na dokumentach w obrębie obwód punkt początkowy na zewnątrz do dowolnego odległość (w kilometrach), którą należy podać. Ostatnia wartość w zapytaniu (4), aby zmniejszyć lub zwiększyć prawdopodobieństwo kwerendy, można dostosować.
+Przykładowy indeks zawiera pole geo_location z współrzędnem szerokości geograficznej i długości geograficznej. W tym przykładzie jest stosowana [Funkcja Geo. Distance](https://docs.microsoft.com/azure/search/search-query-odata-geo-spatial-functions#examples) , która filtruje dokumenty w obrębie obwodu punktu początkowego, do dowolnej odległości (w kilometrach), którą zapewniasz. Możesz dostosować ostatnią wartość zapytania (4), aby zmniejszyć lub powiększyć obszar powierzchni zapytania.
 
-Poniższy przykład jest w formacie WPIS, aby zwiększyć czytelność:
+Poniższy przykład jest w formacie POST, aby można było uzyskać czytelność:
 
 ```http
 POST /indexes/nycjobs/docs/search?api-version=2019-05-06
@@ -211,90 +211,90 @@ POST /indexes/nycjobs/docs/search?api-version=2019-05-06
       "count": "true"
     }
 ```
-Aby uzyskać bardziej czytelne wyniki wyniki wyszukiwania są usuwane identyfikator zadania, stanowisko i lokalizacja służbowa. Począwszy od współrzędne zostały uzyskane z losowe dokument w indeksie (w tym przypadku dla lokalizacji pracy na wyspie Staten.
+Aby uzyskać bardziej czytelne wyniki, wyniki wyszukiwania są przycinane w celu uwzględnienia identyfikatora zadania, stanowiska zadania i lokalizacji służbowej. Współrzędne początkowe zostały uzyskane z losowego dokumentu w indeksie (w tym przypadku dla lokalizacji służbowej na Wyspach Staten.
 
-Możesz również wypróbować to w narzędziu Postman przy użyciu GET:
+Możesz również wypróbować tę usługę w programie Poster przy użyciu polecenia GET:
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=&$select=job_id, business_title, work_location&$filter=geo.distance(geo_location, geography'POINT(-74.11734 40.634384)') le 4
 ```
 
-## <a name="example-6-search-precision"></a>Przykład 6: Dokładność wyszukiwania
+## <a name="example-6-search-precision"></a>Przykład 6: Precyzja wyszukiwania
 
-Termin zapytania są pojedyncze terminy, może być wiele z nich, które zostaną ocenione niezależnie. Wyrażenie zapytania są ujęte w znaki cudzysłowu i jego ocenie jako ciąg verbatim. Dokładność dopasowania jest kontrolowana przez operatorów i searchMode.
+Zapytania warunkowe to pojedyncze terminy, być może wiele z nich, które są oceniane niezależnie. Zapytania frazy są ujęte w znaki cudzysłowu i oceniane jako ciąg Verbatim. Precyzja dopasowania jest kontrolowana przez operatory i searchmode.
 
-Przykład 1: **`&search=fire`** zwraca wyniki 150, gdzie wszystkie dopasowania zawierać fire programu word, zawarty w dokumencie.
+Przykład 1: **`&search=fire`** zwraca 150 wyników, gdzie wszystkie dopasowania zawierają słowo pożar w dokumencie.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=fire
 ```
 
-Przykład 2: **`&search=fire department`** zwraca wyniki, 2002. Dopasowania są zwracane dla dokumentów zawierających pożar lub działów.
+Przykład 2: **`&search=fire department`** zwraca 2002 wyników. Dopasowania są zwracane dla dokumentów zawierających ogień lub dział.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=fire department
 ```
 
-Przykład 3: **`&search="fire department"`** zwraca wyniki 82. Otaczający ciąg w cudzysłowie to wyszukiwanie verbatim na oba warianty pojęć i dopasowania znajdują się na warunki tokenami w indeksie, składający się z warunków połączone. To wyjaśnia, dlaczego wyszukiwania, takie jak **`search=+fire +department`** nie odpowiada. Oba warunki są wymagane, ale są skanowane pod kątem niezależnie. 
+Przykład 3: **`&search="fire department"`** zwraca 82 wyników. Ciąg ujęty w cudzysłów to Verbatim wyszukiwanie w obu terminach i dopasowań w indeksie składającym się z połączonych warunków. W tym artykule wyjaśniono, **`search=+fire +department`** dlaczego wyszukiwanie nie jest równoważne. Oba warunki są wymagane, ale są skanowane niezależnie. 
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search="fire department"
 ```
 
-## <a name="example-7-booleans-with-searchmode"></a>Przykład 7: Wartości logiczne z searchMode
+## <a name="example-7-booleans-with-searchmode"></a>Przykład 7: Wartości logiczne z funkcją searchmode
 
-Prosta składnia obsługuje operatory logiczne w formie znaków (`+, -, |`). Parametr searchMode informuje kompromis między dokładności i odwołania, za pomocą `searchMode=any` favoring odwołania (dopasowywania dla dowolnego kryterium kwalifikuje się dokument w zestawie wyników), i `searchMode=all` favoring precyzji (wszystkie kryteria muszą się zgadzać). Wartość domyślna to `searchMode=any`, który mylące, jeśli są układania zapytania przy użyciu wielu operatorów i wprowadzenie szersze zamiast mniejszą niż wyniki. Jest to szczególnie istotne, z użyciem NOT, w którym wyniki obejmują wszystkie dokumenty "nie zawiera" konkretny termin.
+Prosta składnia obsługuje operatory logiczne w postaci znaków (`+, -, |`). Parametr searchmode umożliwia informowanie kompromisów między precyzją i odwołaniem `searchMode=any` , dzięki czemu można przystąpić do odwoływania (dopasowanie dla każdego kryterium uprawnia do dokumentu `searchMode=all` dla zestawu wyników) i uzyskać precyzję (wszystkie kryteria muszą być dopasowane). Wartość domyślna to `searchMode=any`, co może być mylące, jeśli tworzysz zapytanie z wieloma operatorami i uzyskujesz szersze wyniki zamiast węższych wyników. Jest to szczególnie prawdziwe, gdzie wyniki obejmują wszystkie dokumenty "niezawierające" określonego terminu.
 
-Przy użyciu domyślnego searchMode (wszystkie), są zwracane dokumenty 2800: termin zawierającymi wiele części "fire dział", a także wszystkie dokumenty, które nie mają termin "Metrotech Centrum".
+Przy użyciu domyślnego ustawienia searchmode (any) zwracane są dokumenty 2800: te zawierające termin "Straż częściowa" i wszystkie dokumenty, które nie mają terminu "Metrotech Center".
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchMode=any&search="fire department"  -"Metrotech Center"
 ```
 
-  ![Wyszukaj wszystkie tryb](media/search-query-simple-examples/searchmodeany.png)
+  ![dowolny tryb wyszukiwania](media/search-query-simple-examples/searchmodeany.png)
 
-Zmiana searchMode do `all` wymusza skumulowany efekt kryteriami i zwraca mniejszy zestaw wyników — dokumenty 21 - składający się z dokumentów zawierających cała fraza "fire dział" minus te zadania pod adresem Metrotech Centrum.
+Zmiana opcji searchmode `all` w celu wymuszenia skumulowanego wpływu na kryteria i zwrócenie mniejszego zestawu wyników — 21 dokumentów — składających się z dokumentów zawierających całą frazę "Straż pożarowa", minus te zadania w adresie Metrotech Center.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchMode=all&search="fire department"  -"Metrotech Center"
 ```
-  ![Tryb wyszukiwania wszystkie](media/search-query-simple-examples/searchmodeall.png)
+  ![Tryb wyszukiwania wszystko](media/search-query-simple-examples/searchmodeall.png)
 
 ## <a name="example-8-structuring-results"></a>Przykład 8: Tworzenie struktury wyników
 
-Kilka kontroli parametry, które pola są w wyszukiwaniu powoduje liczby zwracanych w każdej partii i porządek sortowania dokumentów. W tym przykładzie resurfaces kilka poprzednich przykładach ograniczania wyników określonych pól za pomocą **$select** instrukcji i kryteria wyszukiwania verbatim, zwracając 82 dopasowań 
+Kilka parametrów kontroluje pola, które znajdują się w wynikach wyszukiwania, liczbę dokumentów zwracanych w każdej partii i kolejność sortowania. Ten przykład ilustruje kilka poprzednich przykładów, ograniczając wyniki do określonych pól przy użyciu instrukcji **$SELECT** i kryteriów wyszukiwania Verbatim, zwracając 82 dopasowań 
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"
 ```
-Dołączany na poprzednim przykładzie, można sortować według tytułu. Tego rodzaju działania, ponieważ jest civil_service_title *sortowanie* w indeksie.
+Dołączenie do poprzedniego przykładu można sortować według tytułu. To sortowanie działa, ponieważ civil_service_title jest do *sortowania* w indeksie.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title
 ```
 
-Stronicowanie wyników jest implementowany przy użyciu **$top** parametru, w tym przypadku zwracając dokumentów pierwsze 5:
+Wyniki stronicowania są implementowane przy użyciu **$Top** parametru, w tym przypadku zwracają 5 najważniejszych dokumentów:
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=0
 ```
 
-Aby uzyskać dalej 5, Pomiń pierwszej partii:
+Aby uzyskać następny 5, Pomiń pierwszą partię:
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=5
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-Spróbuj określić zapytania w kodzie. Poniższe linki wyjaśniono, jak skonfigurować zapytania wyszukiwania dla środowiska .NET i interfejsu API REST przy użyciu domyślnego prostą składnię.
+Spróbuj określić zapytania w kodzie. Poniższe linki wyjaśniają, jak skonfigurować zapytania wyszukiwania dla platformy .NET i interfejsu API REST przy użyciu domyślnej prostej składni.
 
-* [Zapytanie indeksu usługi Azure Search przy użyciu zestawu .NET SDK](search-query-dotnet.md)
-* [Zapytanie indeksu usługi Azure Search przy użyciu interfejsu API REST](search-create-index-rest-api.md)
+* [Tworzenie zapytań dotyczących indeksu Azure Search przy użyciu zestawu .NET SDK](search-query-dotnet.md)
+* [Wykonywanie zapytań dotyczących indeksu Azure Search przy użyciu interfejsu API REST](search-create-index-rest-api.md)
 
-Odwołanie do dodatkowej składni, architektura zapytania i przykłady można znaleźć w następujących łączy:
+Dodatkowe informacje na temat składni, architekturę zapytań i przykłady można znaleźć w następujących linkach:
 
-+ [Przykłady zapytań składni Lucene do tworzenia zaawansowanych zapytań](search-query-lucene-examples.md)
-+ [Jak działa wyszukiwanie pełnotekstowe w usłudze Azure Search](search-lucene-query-architecture.md)
++ [Przykłady zapytań składni Lucene w celu tworzenia zaawansowanych zapytań](search-query-lucene-examples.md)
++ [Jak działa wyszukiwanie pełnotekstowe w Azure Search](search-lucene-query-architecture.md)
 + [Prosta składnia zapytań](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
-+ [Pełne zapytań Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
-+ [Składnia filtru i Orderby](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
++ [Pełne zapytanie Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
++ [Składnia filtru i OrderBy](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)

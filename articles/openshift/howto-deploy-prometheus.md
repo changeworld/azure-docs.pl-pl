@@ -1,46 +1,46 @@
 ---
-title: Wdrażanie wystąpienia Prometheus autonomicznego klastra usługi Azure Red Hat OpenShift | Dokumentacja firmy Microsoft
-description: Utwórz wystąpienie Prometheus w klastrze usługi Azure Red Hat OpenShift w taki sposób, aby monitorować metryki aplikacji.
+title: Wdróż autonomiczne wystąpienie Prometheus w klastrze usługi Azure Red Hat OpenShift | Microsoft Docs
+description: Utwórz wystąpienie Prometheus w klastrze Red Hat OpenShift platformy Azure, aby monitorować metryki aplikacji.
 author: makdaam
 ms.author: b-lejaku
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/17/2019
-keywords: prometheus, aro, openshift, metryki i systemem red hat
-ms.openlocfilehash: a9748932a72106413677b21fe0efd1f69fb02e47
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+keywords: Prometheus, ARO, OpenShift, Metrics, Red Hat
+ms.openlocfilehash: f81a993caa31578e689fb3a90108f3cf0ca81fc2
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827022"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875136"
 ---
-# <a name="deploy-a-standalone-prometheus-instance-in-an-azure-red-hat-openshift-cluster"></a>Wdrażanie wystąpienia Prometheus autonomicznego klastra usługi Azure Red Hat OpenShift
+# <a name="deploy-a-standalone-prometheus-instance-in-an-azure-red-hat-openshift-cluster"></a>Wdrażanie autonomicznego wystąpienia Prometheus w klastrze Red Hat OpenShift platformy Azure
 
-W tym artykule opisano sposób konfigurowania wystąpienia Prometheus autonomicznego, który używa odnajdowania usług w klastrze usługi Azure Red Hat OpenShift.
+W tym artykule opisano sposób konfigurowania autonomicznego wystąpienia Prometheus, które korzysta z odnajdowania usług w klastrze Red Hat OpenShift platformy Azure.
 
 > [!NOTE]
-> Odbiorcy administratora dostęp do klastra Azure Red Hat OpenShift nie jest wymagana.
+> Dostęp administratora klienta do klastra usługi Azure Red Hat OpenShift nie jest wymagany.
 
-Konfiguracja docelowej:
+Konfiguracja docelowa:
 
-- Jeden projekt (prometheus projekt), który zawiera Prometheus i Alertmanager.
-- Dwa projekty projektu project1 aplikacji i project2 aplikacji, które zawierają aplikacji do monitorowania.
+- Jeden projekt (Prometheus-Project), który zawiera Prometheus i Alertmanager.
+- Dwa projekty (App-Project1 i App-Project2), które zawierają aplikacje do monitorowania.
 
-Umożliwią przygotowanie niektórych Prometheus konfiguracji plików lokalnie. Utwórz nowy folder do ich przechowywania. Pliki konfiguracji są przechowywane w klastrze jako wpisy tajne, w przypadku, gdy tokeny klucza tajnego później zostaną dodane do klastra.
+Pliki konfiguracji Prometheus należy przygotować lokalnie. Utwórz nowy folder do przechowywania. Pliki konfiguracji są przechowywane w klastrze jako wpisy tajne w przypadku późniejszego dodania do klastra tokenów tajnych.
 
-## <a name="sign-in-to-the-cluster-by-using-the-oc-tool"></a>Zaloguj się do klastra za pomocą narzędzia oC.
+## <a name="sign-in-to-the-cluster-by-using-the-oc-tool"></a>Logowanie do klastra przy użyciu narzędzia OC
 
-1. Otwórz przeglądarkę sieci web, a następnie przejdź do konsoli sieci web klastra (https://openshift. *losowy identyfikator*. *region*. azmosa.io).
+1. Otwórz przeglądarkę internetową, a następnie przejdź do konsoli sieci Web klastra (https://openshift. *Identyfikator losowy*. *region*. azmosa.IO).
 2. Zaloguj się przy użyciu poświadczeń platformy Azure.
-3. Wybierz swoją nazwę użytkownika w prawym górnym rogu, a następnie wybierz **polecenie logowania kopiowania**.
-4. Wklej swoją nazwę użytkownika w terminalu, który będzie używany.
+3. Wybierz swoją nazwę użytkownika w prawym górnym rogu, a następnie wybierz **polecenie Kopiuj login**.
+4. Wklej nazwę użytkownika do terminala, który będzie używany.
 
 > [!NOTE]
-> Aby zobaczyć, jeśli zarejestrujesz się w klastrze poprawne, uruchom `oc whoami -c` polecenia.
+> Aby sprawdzić, czy logujesz się do odpowiedniego klastra, uruchom `oc whoami -c` polecenie.
 
-## <a name="prepare-the-projects"></a>Przygotowanie projektów
+## <a name="prepare-the-projects"></a>Przygotuj projekty
 
-Do tworzenia projektów, uruchom następujące polecenia:
+Aby utworzyć projekty, uruchom następujące polecenia:
 ```
 oc new-project prometheus-project
 oc new-project app-project1
@@ -49,10 +49,10 @@ oc new-project app-project2
 
 
 > [!NOTE]
-> Można użyć `-n` lub `--namespace` parametru lub Wybierz aktywny projekt, uruchamiając `oc project` polecenia.
+> Możesz użyć `-n` parametru lub `--namespace` albo wybrać `oc project` aktywny projekt, uruchamiając polecenie.
 
-## <a name="prepare-the-prometheus-configuration-file"></a>Przygotuj plik konfiguracyjny Prometheus
-Utwórz plik prometheus.yml, wprowadzając następującą zawartością:
+## <a name="prepare-the-prometheus-configuration-file"></a>Przygotuj plik konfiguracji Prometheus
+Utwórz plik Prometheus. yml, wprowadzając następującą zawartość:
 ```
 global:
   scrape_interval: 30s
@@ -73,18 +73,18 @@ scrape_configs:
           - app-project1
           - app-project2
 ```
-Utwórz klucz tajny o nazwie Prom, wprowadzając następującą konfigurację:
+Utwórz wpis tajny o nazwie prom, wprowadzając następującą konfigurację:
 ```
 oc create secret generic prom --from-file=prometheus.yml -n prometheus-project
 ```
 
-Plik prometheus.yml jest podstawowy plik konfiguracji Prometheus. On ustawia odstępach czasu i umożliwia skonfigurowanie automatycznego odnajdywania w trzy projekty (prometheus projektu, projektu project1 aplikacji project2 aplikacji). Automatycznie wykryty punktów końcowych, które są w pliku konfiguracyjnym poprzedniej pozyskany za pośrednictwem protokołu HTTP bez uwierzytelniania.
+Plik Prometheus. yml to podstawowy plik konfiguracji Prometheus. Ustawia interwały i konfiguruje Autowykrywanie w trzech projektach (Prometheus-Project, App-Project1, App-Project2). W poprzednim pliku konfiguracyjnym punkty końcowe wykryte przez program są odporne na użycie protokołu HTTP bez uwierzytelniania.
 
-Aby uzyskać więcej informacji na temat oskrobaniu punktów końcowych, zobacz [Prometheus scape config](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config).
+Aby uzyskać więcej informacji o punktach końcowych wycinków, zobacz [Prometheus scape config](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config).
 
 
-## <a name="prepare-the-alertmanager-config-file"></a>Przygotowanie pliku config Alertmanager
-Utwórz plik alertmanager.yml, wprowadzając następującą zawartością:
+## <a name="prepare-the-alertmanager-config-file"></a>Przygotuj plik konfiguracji programu Alertmanager
+Utwórz plik alertmanager. yml, wprowadzając następującą zawartość:
 ```
 global:
   resolve_timeout: 5m
@@ -102,30 +102,30 @@ receivers:
 - name: default
 - name: deadmansswitch
 ```
-Utwórz klucz tajny o nazwie Prom alerty, wprowadzając następującą konfigurację:
+Utwórz wpis tajny o nazwie prom-Alerts, wprowadzając następującą konfigurację:
 ```
 oc create secret generic prom-alerts --from-file=alertmanager.yml -n prometheus-project
 ```
 
-Alertmanager.yml jest plikiem konfiguracji Menedżer alertów.
+Alertmanager. yml to plik konfiguracji Menedżera alertów.
 
 > [!NOTE]
-> Aby sprawdzić, czy dwa poprzednie kroki, uruchom `oc get secret -n prometheus-project` polecenia.
+> Aby sprawdzić dwa poprzednie kroki, uruchom `oc get secret -n prometheus-project` polecenie.
 
-## <a name="start-prometheus-and-alertmanager"></a>Rozpocznij Prometheus i Alertmanager
-Przejdź do [openshift/repozytorium origin](https://github.com/openshift/origin/tree/release-3.11/examples/prometheus) i Pobierz [prometheus standalone.yaml](
-https://raw.githubusercontent.com/openshift/origin/release-3.11/examples/prometheus/prometheus-standalone.yaml) szablonu. Zastosuj szablon do projektu prometheus, wprowadzając następującą konfigurację:
+## <a name="start-prometheus-and-alertmanager"></a>Uruchamianie Prometheus i Alertmanager
+Przejdź do [repozytorium OpenShift/Origin](https://github.com/openshift/origin/tree/release-3.11/examples/prometheus) i Pobierz [szablon Prometheus-Standalone. YAML](
+https://raw.githubusercontent.com/openshift/origin/release-3.11/examples/prometheus/prometheus-standalone.yaml) . Zastosuj szablon do Prometheus-Project, wprowadzając następującą konfigurację:
 ```
 oc process -f https://raw.githubusercontent.com/openshift/origin/release-3.11/examples/prometheus/prometheus-standalone.yaml | oc apply -f - -n prometheus-project
 ```
-Plik prometheus standalone.yaml jest szablonem OpenShift. Wystąpienie Prometheus zostanie utworzony przy użyciu serwera proxy protokołu oauth przed jej i wystąpieniem Alertmanager, również jest zabezpieczony za pomocą serwera proxy protokołu oauth. W tym szablonie serwera proxy protokołu oauth jest skonfigurowany do zezwalania, użytkownik może "get" przestrzeni nazw projektu prometheus (zobacz `-openshift-sar` flagi).
+Plik Prometheus-Standalone. YAML to szablon OpenShift. Spowoduje to utworzenie wystąpienia Prometheus z serwerem proxy OAuth przed nim i wystąpieniem programu Alertmanager również zabezpieczony przy użyciu protokołu OAuth-proxy. W tym szablonie serwer proxy uwierzytelniania OAuth jest skonfigurowany tak, aby zezwalał każdemu użytkownikowi, który może "uzyskać" Przestrzeń nazw Prometheus- `-openshift-sar` Project (zobacz flagę).
 
 > [!NOTE]
-> Aby sprawdzić, czy prom StatefulSet zawiera ŻĄDANEGO równe i BIEŻĄCĄ liczbę replik, uruchom `oc get statefulset -n prometheus-project` polecenia. Aby sprawdzić wszystkie zasoby w projekcie, należy uruchomić `oc get all -n prometheus-project` polecenia.
+> Aby sprawdzić, czy prom StatefulSet ma równe i bieżące repliki liczb, uruchom `oc get statefulset -n prometheus-project` polecenie. Aby sprawdzić wszystkie zasoby w projekcie, uruchom `oc get all -n prometheus-project` polecenie.
 
-## <a name="add-permissions-to-allow-service-discovery"></a>Dodaj uprawnienia, aby umożliwić odnajdowanie usługi
+## <a name="add-permissions-to-allow-service-discovery"></a>Dodaj uprawnienia, aby zezwolić na odnajdowanie usług
 
-Utwórz plik prometheus sdrole.yml, wprowadzając następującą zawartością:
+Utwórz plik Prometheus-sdrole. yml, wprowadzając następującą zawartość:
 ```
 apiVersion: template.openshift.io/v1
 kind: Template
@@ -170,46 +170,46 @@ objects:
     name: prom
     namespace: ${PROMETHEUS_PROJECT}
 ```
-Aby zastosować szablon do wszystkich projektów, które chcesz, aby umożliwić odnajdowanie usługi, uruchom następujące polecenia:
+Aby zastosować szablon do wszystkich projektów, z których chcesz zezwolić na odnajdowanie usług, uruchom następujące polecenia:
 ```
 oc process -f prometheus-sdrole.yml | oc apply -f - -n app-project1
 oc process -f prometheus-sdrole.yml | oc apply -f - -n app-project2
+oc process -f prometheus-sdrole.yml | oc apply -f - -n prometheus-project
 ```
-Aby Prometheus zbieranie metryk z samego, zastosuj uprawnienia w projekcie prometheus.
 
 > [!NOTE]
-> Aby sprawdzić, czy rola i RoleBinding zostały utworzone prawidłowo, uruchom `oc get role` i `oc get rolebinding` poleceń.
+> Aby sprawdzić, czy rola i rolabinding zostały utworzone prawidłowo, uruchom `oc get role` polecenia `oc get rolebinding` i.
 
-## <a name="optional-deploy-example-application"></a>Opcjonalnie: Wdrażanie przykładowej aplikacji
+## <a name="optional-deploy-example-application"></a>Opcjonalnie: Wdróż przykładową aplikację
 
-Wszystko działa, ale brak źródeł metryki. Przejdź do adresu URL Prometheus (https://prom-prometheus-project.apps.*losowy identyfikator*.*region*.azmosa.io/). Możesz go znaleźć za pomocą następującego polecenia:
+Wszystko działa, ale nie ma źródeł metryk. Przejdź do adresu URL Prometheus (https://prom-prometheus-project.apps.*losowy identyfikator*.*region*.azmosa.io/). Można go znaleźć za pomocą następującego polecenia:
 
 ```
 oc get route prom -n prometheus-project
 ```
 > [!IMPORTANT]
-> Pamiętaj, aby dodać prefiks https:// na początku nazwy hosta.
+> Pamiętaj, aby dodać prefiks https://do początku nazwy hosta.
 
-**Stan > odnajdowania usługi** strony wyświetli aktywnych elementów docelowych: 0/0.
+Na stronie **odnajdywania usługi > stanu** będą wyświetlane aktywne elementy docelowe 0/0.
 
-Aby wdrożyć przykładową aplikacją, która udostępnia podstawowe metryki języka Python w ramach punktu końcowego /metrics, uruchom następujące polecenia:
+Aby wdrożyć przykładową aplikację, która udostępnia podstawowe metryki języka Python w punkcie końcowym/Metrics, uruchom następujące polecenia:
 ```
 oc new-app python:3.6~https://github.com/Makdaam/prometheus-example --name=example1 -n app-project1
 
 oc new-app python:3.6~https://github.com/Makdaam/prometheus-example --name=example2 -n app-project2
 ```
-Nowe aplikacje powinna zostać wyświetlona jako prawidłowe elementy docelowe, na stronie odnajdowania usług w ciągu 30 sekund po wdrożeniu.
+Nowe aplikacje powinny być wyświetlane jako prawidłowe elementy docelowe na stronie odnajdowania usługi w ciągu 30 sekund od wdrożenia.
 
-Aby uzyskać więcej informacji, wybierz **stan** > **cele**.
+Aby uzyskać więcej szczegółów, wybierz pozycję**cele** **stanu** > .
 
 > [!NOTE]
-> Dla każdego pomyślnie scraped obiektu docelowego Prometheus dodaje punkt danych w górę metryki. Wybierz **Prometheus** w lewym górnym rogu, wprowadź **się** jako wyrażenie, a następnie wybierz **Execute**.
+> Dla każdego pomyślnie wypadków, Prometheus dodaje punkt danych w metryce w górę. W lewym górnym rogu wybierz pozycję **Prometheus** , wprowadź wartość w polu wyrażenie, a następnie wybierz pozycję **Execute (wykonaj**).
 
 ## <a name="next-steps"></a>Następne kroki
 
-Niestandardowej Instrumentacji Prometheus można dodać do aplikacji. Biblioteki klienckie Prometheus, która upraszcza Prometheus metryki przygotowania, jest gotowy dla różnych języków programowania.
+Do aplikacji można dodawać niestandardowe Instrumentacje Prometheus. Biblioteka kliencka Prometheus, która upraszcza przygotowywanie metryk Prometheus, jest gotowa dla różnych języków programowania.
 
-Aby uzyskać więcej informacji zobacz następujące biblioteki usługi GitHub:
+Aby uzyskać więcej informacji, zobacz następujące biblioteki usługi GitHub:
 
  - [Java](https://github.com/prometheus/client_java)
  - [Python](https://github.com/prometheus/client_python)

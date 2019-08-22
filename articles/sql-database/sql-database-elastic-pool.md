@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: 305a35d1d40d94d1ce8e463b4af51eb84278bc3f
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 0b0a6bec7916c056c187ed9e588dd3ac8fea8d84
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510263"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876398"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Pule elastyczne ułatwiają zarządzanie wieloma bazami danych Azure SQL i skalowanie ich
 
@@ -155,8 +155,14 @@ Bazy danych w puli obsługują te same [funkcje ciągłości działalności bizn
 
 Istnieją dwa sposoby tworzenia elastycznej puli w Azure Portal.
 
-1. Pulę elastyczną można utworzyć, przeszukując **pulę elastyczną SQL** w **portalu Marketplace** lub klikając pozycję **+ Dodaj** w bloku przeglądania pul elastycznych SQL. Możesz określić nowy lub istniejący serwer za pomocą tego przepływu pracy aprowizacji puli.
-2. Można też utworzyć pulę elastyczną, przechodząc do istniejącego serwera SQL, a następnie klikając pozycję **Utwórz pulę** , aby utworzyć pulę bezpośrednio na tym serwerze. Jedyną różnicą jest pominięcie tego kroku, w którym należy określić serwer podczas przepływu pracy aprowizacji puli.
+1. Wybierz pozycję **Azure SQL** w menu po lewej stronie Azure Portal. Jeśli na liście nie ma usługi Azure SQL, wybierz pozycję **wszystkie usługi**, a następnie wpisz *SQL Azure* w polu wyszukiwania.
+2. Wybierz pozycję **+ Dodaj** , aby otworzyć stronę **Wybieranie opcji wdrożenia SQL** . Dodatkowe informacje na temat pul elastycznych można wyświetlić, wybierając pozycję **Pokaż szczegóły** na kafelku **bazy danych** .
+3. Na kafelku **bazy danych** wybierz pozycję **Pula elastyczna** na liście rozwijanej **Typ zasobu** , a następnie wybierz pozycję **Utwórz**:
+
+   ![Tworzenie puli elastycznej](./media/sql-database-elastic-pool/create-elastic-pool.png)
+
+
+1. Można też utworzyć pulę elastyczną, przechodząc do istniejącego serwera SQL Azure, a następnie klikając pozycję **+ Nowa pula** , aby utworzyć pulę bezpośrednio na tym serwerze.
 
 > [!NOTE]
 > Można utworzyć wiele pul na serwerze, ale nie można dodawać baz danych z różnych serwerów do tej samej puli.

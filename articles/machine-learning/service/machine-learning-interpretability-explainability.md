@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
 ms.date: 06/21/2019
-ms.openlocfilehash: 1e742c278b9356c7501964541802e0c96dc74b09
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 2e8eb79c4baebebb1974a977394215545ef944db
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358646"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872391"
 ---
 # <a name="model-interpretability-with-azure-machine-learning-service"></a>Interpretowanie modeli za pomocą usługi Azure Machine Learning
 
@@ -28,7 +28,7 @@ Korzystając z klas i metod w zestawie SDK, można uzyskać:
 
 W fazie szkoleniowej cyklu programowania projektanci modeli i oceniający mogą wykorzystywać dane wyjściowe z możliwością interpretacji modelu do weryfikowania postanowień i tworzenia relacji zaufania z uczestnikami projektu.  Wykorzystują one również wgląd w model do debugowania, sprawdzanie poprawności zachowania modelu dopasowuje się do ich celów i sprawdzają poprawność.
 
-W uczeniu maszynowym **funkcje** są polami danych używanymi do przewidywania docelowego punktu danych. Na przykład w celu przewidywania ryzyka kredytowego mogą być używane pola danych dla wieku, rozmiaru konta i wieku konta. W tym przypadku wiek, rozmiar konta i wiek konta są funkcjami . Ważność funkcji informuje o tym, jak każde pole danych ma wpływ na przewidywania modelu. Na przykład wiek może być wielokrotnie używany w prognozie, podczas gdy rozmiar i wiek konta nie wpływają znacząco na dokładność przewidywania. Ten proces umożliwia analitykom danych wyjaśnienie wynikających z przewidywaniami, dzięki czemu zainteresowane strony mają wgląd w to, jakie punkty danych są najważniejsze w modelu.
+W uczeniu maszynowym **funkcje** są polami danych używanymi do przewidywania docelowego punktu danych. Na przykład w celu przewidywania ryzyka kredytowego mogą być używane pola danych dla wieku, rozmiaru konta i wieku konta. W tym przypadku wiek, rozmiar konta i wiek konta są funkcjami. Ważność funkcji informuje o tym, jak każde pole danych ma wpływ na przewidywania modelu. Na przykład wiek może być wielokrotnie używany w prognozie, podczas gdy rozmiar i wiek konta nie wpływają znacząco na dokładność przewidywania. Ten proces umożliwia analitykom danych wyjaśnienie wynikających z przewidywaniami, dzięki czemu zainteresowane strony mają wgląd w to, jakie punkty danych są najważniejsze w modelu.
 
 Korzystając z tych narzędzi, można wyjaśnić modele uczenia maszynowego **globalnie dla wszystkich danych**lub **lokalnie w konkretnym punkcie danych** przy użyciu technologii najnowocześniejszych i skalowalnych w łatwy w użyciu sposób.
 
@@ -69,7 +69,7 @@ __Bezpośrednie wyjaśnienia__ pochodzą z bibliotek zintegrowanych. Zestaw SDK 
 * **Objaśnienie ważności funkcji permutacji**: Ważność funkcji permutacji jest techniką używaną do wyjaśnienia modeli klasyfikacji i regresji, które są sponsorowane przez [papier Breimanych lasów](https://www.stat.berkeley.edu/%7Ebreiman/randomforest2001.pdf) (patrz sekcja 10). Na wysokim poziomie, w jaki działa, jest to spowodowane losowo Shuffling danych jedną funkcją w danym czasie dla całego zestawu danych i obliczaniem, ile metryki wydajności zmniejsza się odsetki. Im większa zmiana, tym bardziej ważna jest funkcja.
 
 * **Wyjaśnienie wapna** (`contrib`): W oparciu o WAPNo, w przypadku użycia przez program do tworzenia lokalnych modeli, można użyć najnowocześniejszego algorytmu "niezależny od" W przeciwieństwie do globalnych modeli zastępczych, WAPNo koncentruje się na lokalnych modelach dwuskładnikowych, aby wyjaśnić poszczególne przewidywania.
-* **Objaśnienie tekstu Han** (`contrib`): Objaśnienie tekstu HAN używa sieci o hierarchicznej uwagi do uzyskiwania wyjaśnień modelu z danych tekstowych dla danego modelu tekstu czarnego pudełka. Firma Microsoft szkoli model wieloskładnikowy HAN w przypadku danych wyjściowych przewidywanych przez model nauczycieli. Po przeprowadzeniu szkolenia globalnie w korpus tekstowym dodaliśmy krok dokładniejszy dla określonego dokumentu w celu poprawienia dokładności wyjaśnień. HAN używa dwukierunkowej RNN z dwiema warstwami uwagi, w których należy zwrócić uwagę na zdanie i słowo. Gdy DNN jest szkolony w modelu nauczyciela i dostrojony do określonego dokumentu, możemy wyodrębnić znaczenia wyrazów z warstw uwagi. Znaleźliśmy HAN, aby mieć dokładniejszy niż WAPNo lub KSZTAŁTowanie danych tekstowych, ale tańsze w odniesieniu do czasu szkolenia. Jednak wprowadziliśmy ulepszenia dotyczące czasu uczenia się, dając użytkownikowi możliwość zainicjowania sieci za pomocą dokładne osadzania wyrazów, chociaż nadal jest to powolne. Czas uczenia można znacznie ulepszyć, uruchamiając HAN na zdalnej maszynie wirtualnej procesora GPU platformy Azure. Implementacja HAN jest opisana w temacie "hierarchiczne sieci do klasyfikacji dokumentów (Yang et al., 2016)" ([https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf](https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf)).
+* **Objaśnienie tekstu Han** (`contrib`): Objaśnienie tekstu HAN używa sieci o hierarchicznej uwagi do uzyskiwania wyjaśnień modelu z danych tekstowych dla danego modelu tekstu czarnego pudełka. Firma Microsoft szkoli model wieloskładnikowy HAN w przypadku danych wyjściowych przewidywanych przez model nauczycieli. Po przeprowadzeniu szkolenia globalnie w korpus tekstowym dodaliśmy krok dokładniejszy dla określonego dokumentu w celu poprawienia dokładności wyjaśnień. HAN używa dwukierunkowej RNN z dwiema warstwami uwagi, w których należy zwrócić uwagę na zdanie i słowo. Gdy DNN jest szkolony w modelu nauczyciela i dostrojony do określonego dokumentu, możemy wyodrębnić znaczenia wyrazów z warstw uwagi. Znaleźliśmy HAN, aby mieć dokładniejszy niż WAPNo lub KSZTAŁTowanie danych tekstowych, ale tańsze w odniesieniu do czasu szkolenia. Jednak wprowadziliśmy ulepszenia dotyczące czasu uczenia się, dając użytkownikowi możliwość zainicjowania sieci za pomocą dokładne osadzania wyrazów, chociaż nadal jest to powolne. Czas uczenia można znacznie ulepszyć, uruchamiając HAN na zdalnej maszynie wirtualnej procesora GPU platformy Azure. Implementacja HAN jest opisana w temacie ["hierarchiczne sieci do klasyfikacji dokumentów (Yang et al., 2016)"](https://www.researchgate.net/publication/305334401_Hierarchical_Attention_Networks_for_Document_Classification).
 
 
 __Meta wyjaśnień__ automatycznie wybierają odpowiedni bezpośredni wyjaśnień i generują najważniejsze informacje na podstawie danego modelu i zestawów danych. Meta deobjaśniający wykorzystuje wszystkie biblioteki (kształt, WAPNo, ślad itp.), które zostały zintegrowane lub rozwinięte. Poniżej znajdują się wyjaśnienia meta dostępne w zestawie SDK:

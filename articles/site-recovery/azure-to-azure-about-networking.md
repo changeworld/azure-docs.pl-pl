@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: c642640d590e1f568fb6f6c5072decd75575ab2d
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: b549e8bf53ca7728b18e04542c7291f0ce720cb0
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543639"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876455"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Informacje o sieci na platformie Azure do replikacji platformy Azure
 
@@ -68,7 +68,7 @@ Jeśli używasz serwera proxy zapory opartego na protokole IP lub reguł sieciow
 
 Zakresy adresów IP Site Recovery są następujące:
 
-   **Obiektów** | **Adres IP Site Recovery** |  **Adres IP monitorowania Site Recovery**
+   **Obiekt docelowy** | **Adres IP Site Recovery** |  **Adres IP monitorowania Site Recovery**
    --- | --- | ---
    Azja Wschodnia | 52.175.17.132 | 13.94.47.61
    Azja Południowo-Wschodnia | 52.187.58.193 | 13.76.179.223
@@ -149,7 +149,7 @@ Te reguły są wymagane, aby można było włączyć replikację z regionu docel
 
    **Location** | **Site Recovery adres IP** |  **Site Recovery monitorowania adresu IP**
     --- | --- | ---
-   Środkowe stany USA | 13.82.88.226 | 104.45.147.24
+   East US | 13.82.88.226 | 104.45.147.24
 
 ## <a name="network-virtual-appliance-configuration"></a>Konfiguracja wirtualnego urządzenia sieciowego
 

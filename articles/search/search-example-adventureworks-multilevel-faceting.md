@@ -1,29 +1,29 @@
 ---
-title: 'Przykład: Wielopoziomowe aspekty — usługa Azure Search'
-description: Dowiedz się, jak tworzyć struktur kategoryzowanie wielopoziomowe taksonomii, tworzenia struktury zagnieżdżonej nawigacji, który może zawierać na stronach aplikacji.
+title: 'Przykład: Wielopoziomowe aspekty — Azure Search'
+description: Dowiedz się, jak tworzyć struktury aspektów dla taksonomii wielopoziomowej, tworząc zagnieżdżoną strukturę nawigacji, którą można uwzględnić na stronach aplikacji.
 author: cstone
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: chstone
-ms.openlocfilehash: e17a91a35b69102e4e0ac6025559bbc32e71d8fb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a6fda0157f0f3a4ca5861acd4bcbead7839e451
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024127"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649932"
 ---
 # <a name="example-multi-level-facets-in-azure-search"></a>Przykład: Wielopoziomowe aspekty w usłudze Azure Search
 
-Usługa Azure Search schematów nie obsługują jawnie wielopoziomowe Taksonomia kategorii, ale możesz przybliżyć się je przez manipulowanie zawartością przed indeksowania, a następnie zastosowanie niektórych specjalnej obsługi do wyników. 
+Schematy Azure Search nie obsługują jawnie kategorii taksonomii wielopoziomowej, ale można je przybliżać przez manipulowanie zawartością przed indeksowaniem, a następnie zastosowanie specjalnej obsługi wyników. 
 
-## <a name="start-with-the-data"></a>Rozpocznij od danych
+## <a name="start-with-the-data"></a>Zacznij od danych
 
-W przykładzie w tym artykule opiera się na poprzednim przykładzie [Model bazy danych AdventureWorks spisu](search-example-adventureworks-modeling.md), aby zademonstrować wielopoziomowe w usłudze Azure Search.
+Przykład w tym artykule kompiluje się w poprzednim przykładzie, [modeluje bazę danych spisu AdventureWorks](search-example-adventureworks-modeling.md), aby przedstawić wielopoziomowe aspekty w Azure Search.
 
-AdventureWorks ma proste taksonomii dwupoziomowej z relacją nadrzędny podrzędny. Taksonomia o stałej długości głębokości tej struktury proste zapytanie sprzężenia SQL może służyć do grupowania taksonomii:
+Program AdventureWorks ma prostą taksonomię dwupoziomową z relacją nadrzędny-podrzędny. W przypadku głębokości taksonomii o stałej długości tej struktury proste zapytanie sprzężenia SQL może służyć do grupowania taksonomii:
 
 ```T-SQL
 SELECT 
@@ -35,27 +35,27 @@ LEFT JOIN
   ON category.ParentProductCategoryId=parent.ProductCategoryId
 ```
 
-  ![Wyniki zapytania](./media/search-example-adventureworks/prod-query-results.png "wyniki zapytania")
+  ![Wyniki zapytania](./media/search-example-adventureworks/prod-query-results.png "Wyniki zapytania")
 
-## <a name="indexing-to-a-collection-field"></a>Indeksowanie w celu pola kolekcji
+## <a name="indexing-to-a-collection-field"></a>Indeksowanie do pola kolekcji
 
-W indeksie zawierające tej struktury, należy utworzyć **Collection(Edm.String)** pola w schemacie usługi Azure Search do przechowywania danych, upewniając się, że atrybuty pola zawierają wyszukiwanie, filtrowanie, tworzenie aspektów, a pobieranie.
+W indeksie zawierającym tę strukturę Utwórz pole **kolekcji (EDM. String)** w schemacie Azure Search, aby zapisać te dane, upewniając się, że atrybuty pola obejmują wyszukiwanie, filtrowanie, tworzenie i pobieranie.
 
-Teraz podczas indeksowania zawartości, która odwołuje się do kategorii określonych taksonomii, Prześlij taksonomii jako tablica zawierająca tekst z poszczególnych poziomów taksonomii. Na przykład dla jednostki z `ProductCategoryId = 5 (Mountain Bikes)`, Prześlij pola jako `[ "Bikes", "Bikes|Mountain Bikes"]`
+Teraz podczas indeksowania zawartości odwołującej się do określonej kategorii taksonomii Prześlij taksonomię jako tablicę zawierającą tekst z każdego poziomu taksonomii. Na przykład dla jednostki z `ProductCategoryId = 5 (Mountain Bikes)`, Prześlij pole jako`[ "Bikes", "Bikes|Mountain Bikes"]`
 
-Zwróć uwagę, włączenie kategorii nadrzędnej "Rowery" wartości kategorii podrzędnych "Rowery górskie". Każdej podkategorii należy osadzić jego pełną ścieżkę względem elementu głównego. Znak separatora potoku jest określana, ale muszą być zgodne i nie powinien pojawić się w tekście źródłowym. Znak separatora będzie służyć w kodzie aplikacji odtworzenie drzewa taksonomii aspekt wyników.
+Zwróć uwagę na umieszczenie kategorii nadrzędnej "Bikes" w podrzędnej wartości kategorii "Mountain Bikes". Każda Podkategoria powinna osadzić całą ścieżkę względem elementu głównego. Separator znaków potoku jest dowolny, ale musi być spójny i nie powinien znajdować się w tekście źródłowym. Znak separatora będzie używany w kodzie aplikacji do odtworzenia drzewa taksonomii z wyników aspektów.
 
-## <a name="construct-the-query"></a>Konstrukcja zapytania
+## <a name="construct-the-query"></a>Konstruowanie zapytania
 
-Podczas wysyłania zapytań, zawiera specyfikację aspekt (gdzie taksonomii jest pole taksonomii aspektów): `facet = taxonomy,count:50,sort:value`
+Podczas wystawiania kwerend należy uwzględnić następujące specyfikacje aspektu (gdzie Taksonomia to pole taksonomii do prezentacji):`facet = taxonomy,count:50,sort:value`
 
-Wartość licznika musi być wystarczająco wysoka, aby zwrócić wszystkie wartości możliwe taksonomii. Danych AdventureWorks zawiera 41 taksonomii różne wartości, więc `count:50` jest wystarczająca.
+Wartość licznika musi być wystarczająco wysoka, aby można było zwracać wszystkie możliwe wartości taksonomii. Dane AdventureWorks zawierają różne wartości taksonomii 41, co `count:50` jest wystarczające.
 
-  ![Filtr aspektowa](./media/search-example-adventureworks/facet-filter.png "Aspektowa filtru")
+  ![Filtr aspektów](./media/search-example-adventureworks/facet-filter.png "Filtr aspektów")
 
 ## <a name="build-the-structure-in-client-code"></a>Tworzenie struktury w kodzie klienta
 
-W kodzie aplikacji klienta należy odtworzyć drzewa taksonomii, dzieląc wartość każdego aspektu na znaku kreski pionowej.
+W kodzie aplikacji klienckiej odkonstruowanie drzewa taksonomii przez podzielenie każdej wartości aspektu w potoku.
 
 ```javascript
 var sum = 0
@@ -82,21 +82,21 @@ results['@search.facets'][field].forEach(function(d) {
 categories.count = sum;
 ```
 
-**Kategorie** obiektu może teraz służyć do renderowania drzewie taksonomii zwijany z dokładne liczniki:
+Obiekt **Categories** może być teraz używany do renderowania zwijanego drzewa taksonomii z dokładnymi licznikami:
 
-  ![Wielopoziomowe filtru aspektowa](./media/search-example-adventureworks/multi-level-facet.png "wielopoziomowej aspektowa filtru")
+  ![wielopoziomowy filtr aspektów](./media/search-example-adventureworks/multi-level-facet.png "wielopoziomowy filtr aspektów")
 
  
-Każde łącze w drzewie, należy zastosować filtr powiązane. Na przykład:
+Każde łącze w drzewie powinno stosować filtr powiązany. Przykład:
 
-+ **Taksonomia/any** `(x:x eq 'Accessories')` zwraca wszystkie dokumenty w gałęzi Akcesoria
-+ **Taksonomia/any** `(x:x eq 'Accessories|Bike Racks')` zwraca tylko dokumenty z Podkategoria Stojakami roweru gałęzi Akcesoria.
++ **Taksonomia/wszystkie** `(x:x eq 'Accessories')` zwraca wszystkie dokumenty w gałęzi akcesoria
++ **Taksonomia/wszystkie** `(x:x eq 'Accessories|Bike Racks')` zwraca tylko dokumenty z podkategorią stojaków rowerowych w gałęzi akcesoria.
 
-Ta metoda będzie skalowana w celu bardziej złożonych scenariuszy takich jak bardziej drzew taksonomii i zduplikowane podkategorii, które występują w obszarze kategorii innego elementu nadrzędnego (na przykład `Bike Components|Forks` i `Camping Equipment|Forks`).
+Ta technika będzie skalowana w celu pokrycia bardziej złożonych scenariuszy, takich jak dokładniejsze drzewa taksonomii i zduplikowane podkategorie, które występują w różnych kategoriach `Camping Equipment|Forks`nadrzędnych (na przykład `Bike Components|Forks` i).
 
 > [!TIP]
-> Prędkość wysyłania zapytań ma wpływ liczba aspektami zwracane. Aby obsługiwać taksonomii bardzo dużych zestawów, należy rozważyć tworzenie aspektów **Edm.String** pola do przechowywania wartości taksonomii najwyższego poziomu dla każdego dokumentu. Zastosuj tę samą technikę powyżej, ale tylko wtedy wykonać zapytania kolekcji reguł (filtrowane według pola taksonomii głównego) po użytkownik rozwija węzeł najwyższego poziomu. Lub, jeśli 100% odwołania nie jest wymagana, po prostu zmniejszenia liczby reguł do numeru uzasadnione i upewnij się, że wpisy reguł są sortowane według liczby.
+> Liczba zwróconych zestawów reguł ma wpływ na szybkość zapytania. Aby obsługiwać bardzo duże zestawy taksonomii, należy rozważyć dodanie pola Fronts **EDM. String** w celu utrzymania wartości taksonomii najwyższego poziomu dla każdego dokumentu. Następnie Zastosuj tę samą technikę powyżej, ale tylko wykonaj zapytanie dotyczące zestawu reguł (filtrowane dla głównego pola taksonomii), gdy użytkownik poszerzy węzeł najwyższego poziomu. Lub jeśli 100% odwoływanie nie jest wymagane, wystarczy zmniejszyć liczbę aspektów do rozsądnej liczby i upewnić się, że wpisy aspektu są sortowane według liczby.
 
 ## <a name="see-also"></a>Zobacz także
 
-[Przykład: Model bazy danych AdventureWorks magazynu na potrzeby usługi Azure Search](search-example-adventureworks-modeling.md)
+[Przykład: Modelowanie bazy danych magazynu AdventureWorks dla Azure Search](search-example-adventureworks-modeling.md)

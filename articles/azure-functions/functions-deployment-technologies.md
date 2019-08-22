@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 9f40ec658fc6725f381300d967c9d7cd61c3a218
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: a0c34fcc70d92f98a6d72e4cd2fc78d34d863d55
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624143"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650455"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Technologie wdrażania w Azure Functions
 
@@ -60,7 +60,7 @@ Po zmianie któregokolwiek z wyzwalaczy infrastruktura funkcji musi pamiętać o
 
 ### <a name="remote-build"></a>Kompilacja zdalna
 
-Azure Functions może automatycznie wykonywać kompilacje na kodzie, który odbiera po wdrożeniach zip. Te kompilacje działają nieco inaczej w zależności od tego, czy aplikacja działa w systemie Windows, czy Linux. Kompilacje zdalne nie są wykonywane, gdy aplikacja została wcześniej ustawiona do uruchamiania w trybie [uruchamiania z pakietu](run-functions-from-deployment-package.md) . 
+Azure Functions może automatycznie wykonywać kompilacje na kodzie, który odbiera po wdrożeniach zip. Te kompilacje działają nieco inaczej w zależności od tego, czy aplikacja działa w systemie Windows, czy Linux. Kompilacje zdalne nie są wykonywane, gdy aplikacja została wcześniej ustawiona do uruchamiania w trybie [uruchamiania z pakietu](run-functions-from-deployment-package.md) . Aby dowiedzieć się, jak korzystać z kompilacji zdalnej, przejdź do pliku [zip Deploy](#zip-deploy).
 
 > [!NOTE]
 > Jeśli masz problemy z kompilacją zdalną, może to być spowodowane tym, że aplikacja została utworzona przed udostępnieniem funkcji (1 sierpnia 2019). Spróbuj utworzyć nową aplikację funkcji.
@@ -85,11 +85,11 @@ Gdy aplikacje są kompilowane zdalnie w systemie Linux, są one [uruchamiane z p
 
 ##### <a name="consumption-preview-plan"></a>Plan zużycia (wersja zapoznawcza)
 
-Aplikacje funkcji systemu Linux działające w ramach planu zużycia nie mają witryny SCM/kudu, która ogranicza opcje wdrażania. Jednak aplikacje funkcji w systemie Linux działające w ramach planu zużycia obsługują kompilacje zdalne. Te kompilacje zdalne używają [Oryx](https://github.com/microsoft/Oryx).
+Aplikacje funkcji systemu Linux działające w ramach planu zużycia nie mają witryny SCM/kudu, która ogranicza opcje wdrażania. Jednak aplikacje funkcji w systemie Linux działające w ramach planu zużycia obsługują kompilacje zdalne.
 
 ##### <a name="dedicated-and-premium-preview-plans"></a>Plany dedykowane i Premium (wersja zapoznawcza)
 
-Aplikacje funkcji działające w systemie Linux w ramach [dedykowanego planu (App Service)](functions-scale.md#app-service-plan) i [planu Premium](functions-scale.md#premium-plan) mają również ograniczoną witrynę SCM/kudu, która sama wykorzystuje [Oryx](https://github.com/microsoft/Oryx).
+Aplikacje funkcji działające w systemie Linux w ramach [dedykowanego planu (App Service)](functions-scale.md#app-service-plan) i [planu Premium](functions-scale.md#premium-plan) mają również ograniczoną witrynę SCM/kudu.
 
 ## <a name="deployment-technology-details"></a>Szczegóły technologii wdrażania
 
@@ -111,7 +111,7 @@ Użyj narzędzia zip Deploy, aby wypchnąć plik zip, który zawiera aplikację 
 
 >__Jak z niej korzystać:__ Wdróż przy użyciu ulubionego narzędzia klienckiego: [Vs Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure)lub [interfejs wiersza polecenia platformy Azure](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure). Aby ręcznie wdrożyć plik zip w aplikacji funkcji, postępuj zgodnie z instrukcjami w temacie [Deploy from a. zip](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
 
-Aby przeprowadzić wdrożenie zip przy użyciu kompilacji zdalnej, użyj następującego [podstawowego narzędzia narzędzi](functions-run-local.md) :
+Aby przeprowadzić wdrożenie zip przy użyciu [kompilacji zdalnej](#remote-build), użyj następującego [podstawowego narzędzia narzędzi](functions-run-local.md) :
 
 ```bash
 func azure functionapp publish <app name> --build remote

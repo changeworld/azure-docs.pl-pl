@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: 646a602d7e6c47454f039a5f4f1981a60b56fa56
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: cacd67e26b13df8ef456ac8f1391e4396f5bdd96
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567520"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873891"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Szybki start: Tworzenie wystąpienia zarządzanego usługi Azure SQL Database
 
@@ -35,11 +35,11 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 Poniższe kroki przedstawiają sposób tworzenia wystąpienia zarządzanego.
 
-1. Wybierz pozycję **Utwórz zasób** w lewym górnym rogu Azure Portal.
-2. Znajdź **wystąpienie zarządzane**, a następnie wybierz **wystąpienie zarządzane Azure SQL**.
-3. Wybierz pozycję **Utwórz**.
+1. Wybierz pozycję **Azure SQL** w menu po lewej stronie Azure Portal. Jeśli na liście nie ma usługi Azure SQL, wybierz pozycję **wszystkie usługi**, a następnie wpisz *SQL Azure* w polu wyszukiwania.
+2. Wybierz pozycję **+ Dodaj** , aby otworzyć stronę **Wybieranie opcji wdrożenia SQL** . Można wyświetlić dodatkowe informacje o Azure SQL Database wystąpieniu zarządzanym, wybierając pozycję **Pokaż szczegóły** na kafelku **wystąpienia zarządzane** .
+3. Wybierz pozycję **Utwórz**:
 
-   ![Tworzenie wystąpienia zarządzanego](./media/sql-database-managed-instance-get-started/managed-instance-create.png)
+   ![Tworzenie wystąpienia zarządzanego](./media/sql-database-managed-instance-get-started/create-managed-instance.png)
 
 4. Wypełnij formularz **wystąpienia zarządzanego SQL** z żądanymi informacjami, korzystając z informacji podanych w poniższej tabeli.
 

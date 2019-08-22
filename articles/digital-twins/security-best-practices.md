@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 08/19/2019
 ms.author: v-adgera
-ms.openlocfilehash: 64a980ba8ed581b3cad369951220d47baf9e17ab
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: f211206bc2408fe55f6742622b5b0e56d1ab4d90
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849296"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656521"
 ---
 # <a name="security-best-practices"></a>Najlepsze rozwiązania dotyczące zabezpieczeń
 
@@ -26,6 +26,9 @@ W tym artykule przedstawiono podsumowanie najważniejszych wskazówek dotyczący
 > [!IMPORTANT]
 > Aby zapewnić maksymalne zabezpieczenia obszaru IoT, zapoznaj się z dodatkowymi zasobami zabezpieczeń. Upewnij się, że dołączasz dostawców urządzeń.
 
+> [!TIP]
+> Użyj [Azure Security Center dla IoT](https://docs.microsoft.com/azure/asc-for-iot/) , aby pomóc wykryć zagrożenia i luki w zabezpieczeniach IoT.
+
 ## <a name="iot-security-best-practices"></a>Najlepsze rozwiązania z zakresu zabezpieczeń IoT
 
 Niektóre kluczowe metody bezpiecznego zabezpieczania urządzeń IoT obejmują:
@@ -36,6 +39,7 @@ Niektóre kluczowe metody bezpiecznego zabezpieczania urządzeń IoT obejmują:
 > * Należy wziąć pod uwagę potencjalne użycie filtrowania adresów IP urządzeń i ograniczeń portów.
 > * Ogranicz przepustowość operacji we/wy i urządzenia, aby zwiększyć wydajność. Ograniczanie szybkości może zwiększyć bezpieczeństwo, zapobiegając atakom typu "odmowa usługi".
 > * Utrzymuj aktualność oprogramowania układowego urządzenia.
+> * Okresowe inspekcje i przeglądanie najlepszych rozwiązań w zakresie zabezpieczeń urządzeń, sieci i bram w miarę ich dalszego ulepszania i rozwoju.
 
 Oto kilka najważniejszych metod bezpiecznego zabezpieczania przestrzeni IoT:
 
@@ -43,6 +47,7 @@ Oto kilka najważniejszych metod bezpiecznego zabezpieczania przestrzeni IoT:
 > * Szyfruj zapisane, przechowywane lub trwałe dane.
 > * Wymagaj, aby hasła lub klucze były okresowo zmieniane lub odświeżane.
 > * Należy uważnie ograniczyć dostęp i uprawnienia według roli. Zobacz sekcję dotyczącą [kontroli dostępu opartej na rolach](#rbac) poniżej.
+> * Rozważ podzieloną topologię sieci, dzięki czemu urządzenia w każdej sieci są odizolowane od innych.
 > * Użyj zaawansowanego szyfrowania. Wymagaj długich haseł i używaj protokołów Secure i uwierzytelniania dwuskładnikowego.
 
 [Monitoruj](./how-to-configure-monitoring.md) Zasoby IoT do śledzenia wartości odstających, zagrożeń lub parametrów zasobów, które wykraczają poza zakres zwykłych operacji. Zarządzanie monitorowaniem za pomocą usługi Azure Analytics.
@@ -68,7 +73,7 @@ Usługa Azure Digital bliźniaczych reprezentacji używa Azure Active Directory 
 
 [!INCLUDE [digital-twins-rbac-best-practices](../../includes/digital-twins-rbac-best-practices.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby dowiedzieć się więcej o najlepszych rozwiązaniach dotyczących usługi Azure IoT, zobacz [najlepsze rozwiązania dotyczące zabezpieczeń IoT](../iot-fundamentals/iot-security-best-practices.md).
 

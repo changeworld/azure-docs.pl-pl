@@ -1,6 +1,6 @@
 ---
-title: Łączenie urządzenia Raspberry Pi z aplikacją usługi Azure IoT Central (C#) | Dokumentacja firmy Microsoft
-description: Jako deweloper urządzenia jak nawiązać połączenie z urządzeniem Raspberry Pi swojej usługi Azure IoT Central aplikacji za pomocą C#.
+title: Łączenie Raspberry Pi z aplikacją platformy Azure IoT Central (C#) | Microsoft Docs
+description: Jako deweloper urządzenia dołączymy Raspberry Pi do aplikacji Azure IoT Central przy użyciu C#programu.
 author: viv-liu
 ms.author: viviali
 ms.date: 04/15/2019
@@ -8,62 +8,64 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 3e77494eacaf16ac23a531cb7a16fe8bf6117006
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3feb0b2b50851903bbd6799f46d489879e62bf43
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64714423"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876217"
 ---
-# <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Łączenie urządzenia Raspberry Pi z aplikacją usługi Azure IoT Central (C#)
+# <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Łączenie Raspberry Pi z aplikacją platformy Azure IoT Central (C#)
 
 [!INCLUDE [howto-raspberrypi-selector](../../includes/iot-central-howto-raspberrypi-selector.md)]
 
-W tym artykule opisano jak Deweloper urządzenia do łączenia z urządzeniem Raspberry Pi z aplikacją Microsoft Azure IoT Central, przy użyciu języka programowania C#.
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
+
+W tym artykule opisano sposób, w jaki deweloper urządzenia nawiązuje połączenie Raspberry Pi z aplikacją IoT Central Microsoft Azure przy użyciu języka C# programowania.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 Aby wykonać kroki opisane w tym artykule, potrzebne są następujące składniki:
 
-* Aplikacja usługi Azure IoT Central, utworzone na podstawie **Devkits przykładowe** szablon aplikacji. Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
-* Urządzenie Raspberry Pi, systemem operacyjnym Raspbian. Urządzenia Raspberry Pi musi mieć możliwość łączenia się z Internetem. Aby uzyskać więcej informacji, zobacz [konfigurowania urządzenia Raspberry Pi](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3).
+* Aplikacja IoT Central platformy Azure utworzona na podstawie przykładowego szablonu aplikacji **Devkits** . Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
+* Urządzenie Raspberry Pi działające w systemie operacyjnym raspbian. Raspberry Pi musi mieć możliwość nawiązania połączenia z Internetem. Aby uzyskać więcej informacji, zobacz [Konfigurowanie Raspberry Pi](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3).
 
-## <a name="sample-devkits-application"></a>**Przykładowy Devkits** aplikacji
+## <a name="sample-devkits-application"></a>**Przykładowa aplikacja Devkits**
 
-Utworzone na podstawie aplikacji **Devkits przykładowe** szablon aplikacji zawiera **Raspberry Pi** szablon urządzenia o następującej charakterystyce:
+Aplikacja utworzona na podstawie przykładowego szablonu aplikacji **Devkits** zawiera szablon urządzenia **Raspberry Pi** o następujących cechach:
 
-- Dane telemetryczne, obejmuje następujące pomiary zbieranych urządzenia:
+- Dane telemetryczne, które obejmują następujące pomiary zebrane przez urządzenie:
   - Wilgotność
   - Temperatura
-  - Wykorzystanie
-  - Magnetometrów (X, Y, Z)
-  - Accelerometer (X, Y, Z)
+  - Ciśnienie
+  - Magnetometer (X, Y, Z)
+  - Przyspieszeniomierz (X, Y, Z)
   - Żyroskop (X, Y, Z)
 - Ustawienia
-  - Napięcie
-  - bieżący
-  - Wentylator szybkości
-  - Przełącz Podczerwieni.
+  - Zakres
+  - Bieżący
+  - Szybkość wentylatorów
+  - Przełącznik IR.
 - Właściwości
-  - Zdechną liczba właściwości urządzenia
+  - Właściwość urządzenia numeru wartości
   - Właściwość chmury lokalizacji
 
-Aby uzyskać szczegółowe konfiguracji szablonu urządzenia, zobacz [Szczegóły szablonu Raspberry Pi urządzenia](#raspberry-pi-device-template-details).
+Aby uzyskać szczegółowe informacje na temat konfiguracji szablonu urządzenia, zobacz [szczegóły szablonu urządzenia Raspberry Pi](#raspberry-pi-device-template-details).
 
 ## <a name="add-a-real-device"></a>Dodawanie rzeczywistego urządzenia
 
-W aplikacji usługi Azure IoT Central, Dodaj prawdziwe urządzenie z **Raspberry Pi** szablon urządzenia. Zwróć uwagę na urządzeniu szczegóły połączenia (**identyfikator zakresu**, **identyfikator urządzenia**, i **klucz podstawowy**). Aby uzyskać więcej informacji, zobacz [dodać rzeczywistego urządzenia do aplikacji usługi Azure IoT Central](tutorial-add-device.md).
+W aplikacji IoT Central platformy Azure Dodaj rzeczywiste urządzenie z szablonu urządzenia **Raspberry Pi** . Zanotuj szczegóły połączenia urządzenia (**Identyfikator zakresu**, **Identyfikator urządzenia**i **klucz podstawowy**). Aby uzyskać więcej informacji, zobacz [Dodawanie rzeczywistego urządzenia do aplikacji IoT Central platformy Azure](tutorial-add-device.md).
 
 ### <a name="create-your-net-application"></a>Tworzenie aplikacji .NET
 
 Tworzenie i testowanie aplikacji urządzenia na komputerze stacjonarnym.
 
-Aby wykonać następujące czynności, można użyć programu Visual Studio Code. Aby uzyskać więcej informacji, zobacz [pracy w języku C#](https://code.visualstudio.com/docs/languages/csharp).
+Aby wykonać poniższe kroki, można użyć Visual Studio Code. Aby uzyskać więcej informacji, zobacz [Praca C#z ](https://code.visualstudio.com/docs/languages/csharp).
 
 > [!NOTE]
-> Jeśli wolisz, możesz wykonać następujące czynności za pomocą edytora inny kod.
+> Jeśli wolisz, możesz wykonać następujące kroki przy użyciu innego edytora kodu.
 
-1. Aby zainicjować projektu .NET i Dodaj wymagane pakiety NuGet, uruchom następujące polecenia:
+1. Aby zainicjować projekt .NET i dodać wymagane pakiety NuGet, uruchom następujące polecenia:
 
    ```cmd/sh
    mkdir pisample
@@ -73,7 +75,7 @@ Aby wykonać następujące czynności, można użyć programu Visual Studio Code
    dotnet restore
    ```
 
-1. Otwórz `pisample` folderu w programie Visual Studio Code. Następnie otwórz **pisample.csproj** pliku projektu. Dodaj `<RuntimeIdentifiers>` tag pokazano w poniższym fragmencie kodu:
+1. `pisample` Otwórz folder w Visual Studio Code. Następnie otwórz plik projektu **pisample. csproj** . `<RuntimeIdentifiers>` Dodaj tag przedstawiony w poniższym fragmencie kodu:
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk">
@@ -89,11 +91,11 @@ Aby wykonać następujące czynności, można użyć programu Visual Studio Code
     ```
 
     > [!NOTE]
-    > Twoje **Microsoft.Azure.Devices.Client** numer wersji pakietu może być większa niż wskazano.
+    > Numer wersji pakietu **Microsoft. Azure. Devices. Client** może być wyższy niż podany.
 
-1. Zapisz **pisample.csproj**. Visual Studio Code jest wyświetlany monit o wykonanie polecenia restore, wybierz opcję **przywrócić**.
+1. Zapisz **pisample. csproj**. Jeśli Visual Studio Code zostanie wyświetlony komunikat z prośbą o wykonanie polecenia Restore, wybierz pozycję **Przywróć**.
 
-1. Otwórz **Program.cs** i zastąp jego zawartość następującym kodem:
+1. Otwórz **program.cs** i Zastąp zawartość następującym kodem:
 
     ```csharp
     using System;
@@ -265,37 +267,37 @@ Aby wykonać następujące czynności, można użyć programu Visual Studio Code
     ```
 
     > [!NOTE]
-    > Aktualizuj symbol zastępczy `{your device connection string}` w następnym kroku.
+    > W następnym kroku zaktualizujesz symbol zastępczy `{your device connection string}` .
 
 ## <a name="run-your-net-application"></a>Uruchamianie aplikacji .NET
 
-Dodaj parametry połączenia specyficzne dla urządzenia do kodu dla tego urządzenia do uwierzytelniania za pomocą usługi Azure IoT Central. Wykonaj te instrukcje, aby [Generowanie parametrów połączenia urządzenia](howto-generate-connection-string.md) przy użyciu **identyfikator zakresu**, **identyfikator urządzenia**, i **klucz podstawowy** wprowadzono należy pamiętać o wcześniej.
+Dodaj parametry połączenia specyficzne dla urządzenia do kodu na potrzeby uwierzytelniania urządzenia za pomocą usługi Azure IoT Central. Postępuj zgodnie z tymi instrukcjami, aby [wygenerować parametry połączenia urządzenia](howto-generate-connection-string.md) przy użyciu **identyfikatora zakresu**, **identyfikatora urządzenia**i **klucza podstawowego** , dla których wykonano wcześniej uwagi.
 
-1. Zastąp `{your device connection string}` w **Program.cs** pliku przy użyciu parametrów połączenia został wygenerowany.
+1. Zastąp `{your device connection string}` element w pliku **program.cs** wygenerowanymi parametrami połączenia.
 
-1. W środowisku wiersza polecenia, uruchom następujące polecenie:
+1. Uruchom następujące polecenie w środowisku wiersza polecenia:
 
    ```cmd/sh
    dotnet restore
    dotnet publish -r linux-arm
    ```
 
-1. Kopiuj `pisample\bin\Debug\netcoreapp2.1\linux-arm\publish` folderu na urządzeniu Raspberry Pi. Możesz użyć **scp** polecenie, aby skopiować pliki, na przykład:
+1. `pisample\bin\Debug\netcoreapp2.1\linux-arm\publish` Skopiuj folder na urządzenie Raspberry Pi. Możesz użyć polecenia **SCP** , aby skopiować pliki, na przykład:
 
     ```cmd/sh
     scp -r publish pi@192.168.0.40:publish
     ```
 
-    Aby uzyskać więcej informacji, zobacz [dostępu zdalnego z urządzeniem Raspberry Pi](https://www.raspberrypi.org/documentation/remote-access/).
+    Aby uzyskać więcej informacji, zobacz [Raspberry Pi dostępu zdalnego](https://www.raspberrypi.org/documentation/remote-access/).
 
-1. Zaloguj się do Twojego urządzenia Raspberry Pi i uruchom następujące polecenia w powłoce:
+1. Zaloguj się do urządzenia Raspberry Pi i uruchom następujące polecenia w powłoce:
 
     ```cmd/sh
     sudo apt-get update
     sudo apt-get install libc6 libcurl3 libgcc1 libgssapi-krb5-2 liblttng-ust0 libstdc++6 libunwind8 libuuid1 zlib1g
     ```
 
-1. Na urządzenia Raspberry Pi uruchom następujące polecenia:
+1. Na Raspberry Pi Uruchom następujące polecenia:
 
     ```cmd/sh
     cd publish
@@ -305,32 +307,32 @@ Dodaj parametry połączenia specyficzne dla urządzenia do kodu dla tego urząd
 
     ![Rozpoczyna się program](./media/howto-connect-raspberry-pi-csharp/device_begin.png)
 
-1. W aplikacji usługi Azure IoT Central można zobaczyć, jak kod uruchomiony na urządzenia Raspberry Pi współdziała z aplikacją:
+1. W aplikacji IoT Central platformy Azure można zobaczyć, jak kod działający w Raspberry Pi współdziała z aplikacją:
 
-   * Na **pomiarów** strony dla Twojego rzeczywistego urządzenia można wyświetlić dane telemetryczne.
-   * Na **właściwości** stronie widać wartości zgłaszanych **zdechną numer** właściwości.
-   * Na **ustawienia** strony, można zmienić różnych ustawień na urządzenia Raspberry Pi, takie jak szybkość napięcia i wychodzącą.
+   * Na stronie **miary** rzeczywistego urządzenia można zobaczyć dane telemetryczne.
+   * Na stronie **Właściwości** można zobaczyć wartość właściwości raportowany **numer** platformy.
+   * Na stronie **Ustawienia** można zmienić różne ustawienia w Raspberry Pi, takie jak napięcie i szybkość wentylatorów.
 
-     Poniższy zrzut ekranu przedstawia Raspberry Pi odbieranie zmiana ustawienia:
+     Poniższy zrzut ekranu przedstawia Raspberry Pi otrzymujący zmianę ustawienia:
 
-     ![Urządzenie raspberry Pi odbiera zmianę ustawień](./media/howto-connect-raspberry-pi-csharp/device_switch.png)
+     ![Raspberry Pi otrzymuje zmianę ustawienia](./media/howto-connect-raspberry-pi-csharp/device_switch.png)
 
-## <a name="raspberry-pi-device-template-details"></a>Szczegóły szablonu w usłudze raspberry Pi urządzenia
+## <a name="raspberry-pi-device-template-details"></a>Szczegóły szablonu urządzenia Raspberry Pi
 
-Utworzone na podstawie aplikacji **Devkits przykładowe** szablon aplikacji zawiera **Raspberry Pi** szablon urządzenia o następującej charakterystyce:
+Aplikacja utworzona na podstawie przykładowego szablonu aplikacji **Devkits** zawiera szablon urządzenia **Raspberry Pi** o następujących cechach:
 
-### <a name="telemetry-measurements"></a>Pomiary dotyczące prawdziwych danych telemetrycznych
+### <a name="telemetry-measurements"></a>Pomiary telemetrii
 
 | Nazwa pola     | Jednostki  | Minimalne | Maksimum | Miejsca dziesiętne |
 | -------------- | ------ | ------- | ------- | -------------- |
 | humidity       | %      | 0       | 100     | 0              |
-| Temp           | °C     | -40     | 120     | 0              |
+| temp           | °C     | -40     | 120     | 0              |
 | pressure       | hPa    | 260     | 1260    | 0              |
 | magnetometerX  | mgauss | -1000   | 1000    | 0              |
 | magnetometerY  | mgauss | -1000   | 1000    | 0              |
 | magnetometerZ  | mgauss | -1000   | 1000    | 0              |
 | accelerometerX | mg     | -2000   | 2000    | 0              |
-| accelerometerY | mg     | -2000   | 2000    | 0              |
+| przyspieszeniomierz | mg     | -2000   | 2000    | 0              |
 | accelerometerZ | mg     | -2000   | 2000    | 0              |
 | gyroscopeX     | mdps   | -2000   | 2000    | 0              |
 | gyroscopeY     | mdps   | -2000   | 2000    | 0              |
@@ -340,25 +342,25 @@ Utworzone na podstawie aplikacji **Devkits przykładowe** szablon aplikacji zawi
 
 Ustawienia liczbowe
 
-| `Display name` | Nazwa pola | Jednostki | Miejsca dziesiętne | Minimalne | Maksimum | Początkowa |
+| Nazwa wyświetlana | Nazwa pola | Jednostki | Miejsca dziesiętne | Minimalne | Maksimum | Początkowa |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
-| Napięcie      | setVoltage | V | 0              | 0       | 240     | 0       |
-| bieżący      | setCurrent | Amps  | 0              | 0       | 100     | 0       |
-| Wentylator szybkości    | fanSpeed   | OBR. / MIN   | 0              | 0       | 1000    | 0       |
+| Zakres      | setnapięci | Wolty | 0              | 0       | 240     | 0       |
+| Bieżący      | SetCurrent | Amper  | 0              | 0       | 100     | 0       |
+| Szybkość wentylatorów    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
 
-Ustawienia przełącznika
+Przełącz ustawienia
 
-| `Display name` | Nazwa pola | W tekście | Wyłącz tekstu | Początkowa |
+| Nazwa wyświetlana | Nazwa pola | Na tekst | Off text | Początkowa |
 | ------------ | ---------- | ------- | -------- | ------- |
-| IR           | activateIR | ON      | WYŁĄCZONE      | Wyłączone     |
+| IR           | activateIR | WŁĄCZONE      | WYŁĄCZONE      | Wyłączone     |
 
 ### <a name="properties"></a>Właściwości
 
-| Typ            | `Display name` | Nazwa pola | Typ danych |
+| Type            | Nazwa wyświetlana | Nazwa pola | Typ danych |
 | --------------- | ------------ | ---------- | --------- |
-| Właściwości urządzenia | Zdechną liczb   | dieNumber  | numer    |
-| Text            | Lokalizacja     | location   | ND       |
+| Właściwość urządzenia | Numer struktury   | dieNumber  | numer    |
+| Text            | Location     | location   | ND       |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Skoro już wiesz, jak połączyć z urządzeniem Raspberry Pi z aplikacją usługi Azure IoT Central, sugerowane następnym krokiem jest Dowiedz się, jak [Konfigurowanie szablonu niestandardowego urządzenia](howto-set-up-template.md) dla urządzenia IoT.
+Teraz, gdy wiesz już, jak połączyć Raspberry Pi z aplikacją Azure IoT Central, sugerowanym następnym krokiem jest zapoznanie się z tematem [Konfigurowanie niestandardowego szablonu urządzenia](howto-set-up-template.md) dla własnego urządzenia IoT.

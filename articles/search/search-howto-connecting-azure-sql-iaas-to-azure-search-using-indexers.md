@@ -1,92 +1,92 @@
 ---
-title: Wyszukaj Azure połączenia maszyny Wirtualnej maszyny wirtualnej SQL Azure dla indeksowania wyszukiwania —
-description: Włączanie połączeń szyfrowanych i Skonfiguruj zaporę, aby umożliwić połączenia do programu SQL Server na maszynie wirtualnej (VM) platformy Azure z indeksatora w usłudze Azure Search.
+title: Połączenie maszyny wirtualnej Azure SQL Machine VM dla indeksowania wyszukiwania — Azure Search
+description: Włącz połączenia szyfrowane i skonfiguruj zaporę tak, aby zezwalała na połączenia SQL Server na maszynie wirtualnej platformy Azure z indeksatora na Azure Search.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 02/04/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 90e5a133bac519cbc5ab2d7b112d51a019e8f698
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7629750da8f58c2c62f15102b60b5b562689f087
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60871284"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656715"
 ---
-# <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>Konfigurowanie połączenia z indeksator usługi Azure Search do programu SQL Server na Maszynie wirtualnej platformy Azure
-Jak wspomniano w [łączenie usługi Azure SQL Database do usługi Azure Search przy użyciu indeksatorów](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), tworzenia indeksatorów względem **programu SQL Server na maszynach wirtualnych Azure** (lub **maszyn wirtualnych platformy Azure SQL** w skrócie) jest obsługiwana przez usługę Azure Search ale istnieje kilka powiązanych z zabezpieczeniami wymagania wstępne dotyczące zajmie się w pierwszej kolejności. 
+# <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>Konfigurowanie połączenia z indeksatora Azure Search do SQL Server na maszynie wirtualnej platformy Azure
+Jak zostało to opisane w sekcji [łączenie Azure SQL Database do Azure Search za pomocą indeksatorów](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), tworzenie indeksatorów względem **SQL Server na maszynach wirtualnych platformy Azure** (lub na **maszynach wirtualnych usługi SQL Azure** dla krótkich) jest obsługiwane przez Azure Search, ale istnieje kilka wymagań wstępnych związanych z bezpieczeństwem Weź pod uwagę pierwsze. 
 
-Połączenia z usługi Azure Search do programu SQL Server na maszynie Wirtualnej jest publicznego połączenia internetowego. Wszystkie środki ochrony, które zwykle należy wykonać w przypadku tych połączeń zgłosić się tutaj również:
+Połączenia z Azure Search do SQL Server na maszynie wirtualnej są publicznym połączeniem internetowym. Wszystkie miary zabezpieczeń, które zwykle są spełnione w przypadku tych połączeń, mają również zastosowanie tutaj:
 
-+ Uzyskiwanie certyfikatu z [dostawcy urzędu certyfikacji](https://en.wikipedia.org/wiki/Certificate_authority#Providers) dla w pełni kwalifikowana nazwa domeny wystąpienia programu SQL Server na maszynie Wirtualnej platformy Azure.
-+ Zainstaluj certyfikat na maszynie Wirtualnej, a następnie, Włącz i skonfiguruj połączeń szyfrowanych na maszynie Wirtualnej, korzystając z instrukcji w tym artykule.
++ Uzyskaj certyfikat od [dostawcy urzędu certyfikacji](https://en.wikipedia.org/wiki/Certificate_authority#Providers) dla w pełni kwalifikowanej nazwy domeny wystąpienia SQL Server na maszynie wirtualnej platformy Azure.
++ Zainstaluj certyfikat na maszynie wirtualnej, a następnie Włącz i skonfiguruj połączenia szyfrowane na maszynie wirtualnej, korzystając z instrukcji przedstawionych w tym artykule.
 
-## <a name="enable-encrypted-connections"></a>Włączanie połączeń szyfrowanych
-Usługa Azure Search wymaga szyfrowanego kanału dla wszystkich żądań indeksatora za pośrednictwem publicznego połączenia internetowego. W tej sekcji przedstawiono kroki, aby umożliwić.
+## <a name="enable-encrypted-connections"></a>Włącz połączenia szyfrowane
+Azure Search wymaga szyfrowanego kanału dla wszystkich żądań indeksatora za pośrednictwem publicznego połączenia internetowego. W tej sekcji przedstawiono kroki, które należy wykonać w celu wykonania tej czynności.
 
-1. Sprawdź właściwości certyfikatu, aby sprawdzić, czy nazwa podmiotu jest w pełni kwalifikowana nazwa domeny (FQDN) dla maszyny Wirtualnej platformy Azure. Aby wyświetlić właściwości, można użyć narzędzia, takiego jak CertUtils lub przystawki Certyfikaty. Nazwa FQDN z sekcji podstawowe elementy bloku usługi maszyny Wirtualnej, można uzyskać w **publiczny adres IP adres/etykieta nazwy DNS** polu [witryny Azure portal](https://portal.azure.com/).
+1. Sprawdź właściwości certyfikatu, aby sprawdzić, czy nazwa podmiotu jest w pełni kwalifikowaną nazwą domeny (FQDN) maszyny wirtualnej platformy Azure. Aby wyświetlić właściwości, można użyć narzędzia, takiego jak CertUtil lub przystawki Certyfikaty. Możesz pobrać nazwę FQDN z sekcji podstawowe bloku usługi maszyny wirtualnej, w polu **publiczny adres IP/etykieta nazwy DNS** w [Azure Portal](https://portal.azure.com/).
    
-   * W przypadku maszyn wirtualnych utworzonych przy użyciu nowszego **usługi Resource Manager** szablonu, nazwy FQDN jest w formacie `<your-VM-name>.<region>.cloudapp.azure.com`
-   * Dla starsze maszyny wirtualne utworzone jako **klasycznego** maszyny Wirtualnej, nazwy FQDN jest w formacie `<your-cloud-service-name.cloudapp.net>`.
+   * W przypadku maszyn wirtualnych utworzonych przy użyciu nowszego szablonu **Menedżer zasobów** nazwa FQDN jest formatowana jako`<your-VM-name>.<region>.cloudapp.azure.com`
+   * W przypadku starszych maszyn wirtualnych utworzonych jako klasyczna maszyna wirtualna nazwa FQDN jest `<your-cloud-service-name.cloudapp.net>`formatowana jako.
 
-2. Konfigurowanie programu SQL Server do używania certyfikatu za pomocą Edytora rejestru (regedit). 
+2. Skonfiguruj SQL Server, aby używać certyfikatu przy użyciu Edytora rejestru (regedit). 
    
-    Mimo że Menedżera konfiguracji SQL Server jest często używana dla tego zadania, nie można użyć go w tym scenariuszu. Go nie odnajdzie zaimportowany certyfikat, ponieważ nazwa FQDN maszyny Wirtualnej na platformie Azure nie pasuje do nazwy FQDN, zgodnie z ustaleniami maszyny Wirtualnej (identyfikuje domeny komputera lokalnego lub domeny sieciowej, do której jest dołączony). Gdy nazwy nie są zgodne, aby określić certyfikat należy użyć programu regedit.
+    Chociaż SQL Server Configuration Manager jest często używany dla tego zadania, nie można go używać w tym scenariuszu. Nie znaleziono zaimportowanego certyfikatu, ponieważ nazwa FQDN maszyny wirtualnej na platformie Azure nie jest zgodna z nazwą FQDN określoną przez maszynę wirtualną (identyfikuje domenę jako komputer lokalny lub domenę sieci, do której jest przyłączona). Gdy nazwy nie są zgodne, należy użyć regedit, aby określić certyfikat.
    
-   * W edytorze regedit przejdź do tego klucza rejestru: `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\[MSSQL13.MSSQLSERVER]\MSSQLServer\SuperSocketNetLib\Certificate`.
+   * W programie regedit przejdź do tego klucza rejestru: `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\[MSSQL13.MSSQLSERVER]\MSSQLServer\SuperSocketNetLib\Certificate`.
      
-     `[MSSQL13.MSSQLSERVER]` Część zależy od wersji i nazwę wystąpienia. 
-   * Ustaw wartość **certyfikatu** klucza **odcisk palca** certyfikatu SSL, które zostały zaimportowane do maszyny Wirtualnej.
+     Część `[MSSQL13.MSSQLSERVER]` różni się w zależności od wersji i nazwy wystąpienia. 
+   * Ustaw wartość klucza **certyfikatu** na **odcisk PALCa** certyfikatu SSL zaimportowanego do maszyny wirtualnej.
      
-     Istnieje kilka sposobów, aby uzyskać odcisk palca, niektóre lepiej niż inne. W przypadku kopiowania z **certyfikaty** przystawkę programu MMC, należy prawdopodobnie przejmą wiodący znak niewidoczne [zgodnie z opisem w tym artykule pomocy technicznej](https://support.microsoft.com/kb/2023869/), które powoduje błąd przy próbie połączenia . Istnieje kilka obejścia dla rozwiązania tego problemu. Najprostsza jest backspace ciągu, a następnie ponownie wpisz pierwszy znak odcisku palca, aby usunąć wiodący znak w polu wartość klucza w programie regedit. Alternatywnie można użyć innego narzędzia do skopiuj odcisk palca.
+     Istnieje kilka sposobów uzyskania odcisku palca, a nieco lepiej niż inne. Jeśli skopiujesz go z przystawki **Certyfikaty** w programie MMC, prawdopodobnie wybierzesz niewidoczny znak wiodący [zgodnie z opisem w tym artykule dotyczącym pomocy technicznej](https://support.microsoft.com/kb/2023869/), co spowoduje wystąpienie błędu podczas próby połączenia. Istnieją różne Obejścia dotyczące rozwiązywania tego problemu. Najłatwiej jest w tym miejscu, a następnie ponownie wpisać pierwszy znak odcisku palca, aby usunąć znak wiodący w polu wartość klucza w regedit. Alternatywnie można użyć innego narzędzia do kopiowania odcisku palca.
 
 3. Udziel uprawnień do konta usługi. 
    
-    Upewnij się, że konto usługi programu SQL Server jest uprawnienie odpowiedniego klucza prywatnego certyfikatu SSL. Jeśli ten krok jest pomijane, programu SQL Server nie zostanie uruchomiona. Możesz użyć **certyfikaty** przystawki lub **CertUtils** dla tego zadania.
+    Upewnij się, że konto usługi SQL Server ma przyznane odpowiednie uprawnienia w kluczu prywatnym certyfikatu SSL. Jeśli zapomina ten krok, SQL Server nie zostanie uruchomiona. Możesz użyć przystawki **Certyfikaty** lub narzędzia **certutil** dla tego zadania.
     
 4. Uruchom ponownie usługę SQL Server.
 
-## <a name="configure-sql-server-connectivity-in-the-vm"></a>Konfigurowanie połączeń programu SQL Server na maszynie wirtualnej
-Po skonfigurowaniu szyfrowanego połączenia wymagane przez usługę Azure Search, istnieją dodatkowe czynności konfiguracyjne wewnętrznej do programu SQL Server na maszynach wirtualnych platformy Azure. Jeśli użytkownik jeszcze tego nie zrobiono, następnym krokiem jest zakończenie konfiguracji za pomocą jednego z następujących artykułów:
+## <a name="configure-sql-server-connectivity-in-the-vm"></a>Konfigurowanie łączności SQL Server na maszynie wirtualnej
+Po skonfigurowaniu połączenia szyfrowanego wymaganego przez Azure Search istnieją dodatkowe czynności konfiguracyjne, które mogą być SQL Server na maszynach wirtualnych platformy Azure. Jeśli jeszcze tego nie zrobiono, następnym krokiem jest zakończenie konfiguracji przy użyciu jednego z następujących artykułów:
 
-* Dla **usługi Resource Manager** maszyny Wirtualnej, zobacz [Connect do maszyny wirtualnej SQL Server na platformie Azure przy użyciu usługi Resource Manager](../virtual-machines/windows/sql/virtual-machines-windows-sql-connect.md). 
-* Dla **klasycznego** maszyny Wirtualnej, zobacz [Connect do programu SQL Server maszynę wirtualną w klasycznym portalu Azure](../virtual-machines/windows/classic/sql-connect.md).
+* Aby uzyskać **Menedżer zasobów** maszyny wirtualnej, zobacz [nawiązywanie połączenia z maszyną wirtualną SQL Server na platformie Azure przy użyciu Menedżer zasobów](../virtual-machines/windows/sql/virtual-machines-windows-sql-connect.md). 
+* W przypadku **klasycznej** maszyny wirtualnej zobacz [nawiązywanie połączenia z maszyną wirtualną SQL Server w klasycznym systemie Azure](../virtual-machines/windows/classic/sql-connect.md).
 
-W szczególności zapoznaj się z sekcją w każdym artykule "łączenia za pośrednictwem Internetu".
+W szczególności zapoznaj się z sekcją w każdym artykule dotyczącym łączenia przez Internet.
 
-## <a name="configure-the-network-security-group-nsg"></a>Konfigurowanie sieciowej grupy zabezpieczeń (NSG)
-Nie jest niczym niezwykłym skonfigurować sieciowej grupy zabezpieczeń i odpowiedni punkt końcowy platformy Azure lub listy kontroli dostępu (ACL) udostępnić maszynie Wirtualnej platformy Azure dla innych stron. Jest szansa, że wykonano to przed umożliwia własną logikę aplikacji, nawiązywania połączenia z maszyną wirtualną Azure SQL. Go nie różni się dla usługi Azure Search połączenia z maszyną wirtualną Azure SQL. 
+## <a name="configure-the-network-security-group-nsg"></a>Konfigurowanie sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń)
+Konfiguracja sieciowej grupy zabezpieczeń i odpowiedniego punktu końcowego platformy Azure lub listy Access Control (ACL) nie jest nietypowa, aby umożliwić dostęp do maszyny wirtualnej platformy Azure innym stronom. W tym celu należy wcześniej wykonać te czynności, aby umożliwić własnej logice aplikacji łączenie się z maszyną wirtualną usługi SQL Azure. Nie jest ona inna dla Azure Search połączenia z maszyną wirtualną usługi SQL Azure. 
 
-Poniższe linki zawierają instrukcje dotyczące konfiguracji sieciowej grupy zabezpieczeń dla wdrożeń maszyn wirtualnych. Użyj tych instrukcji do listy ACL punktu końcowego usługi Azure Search na podstawie jego adresu IP.
+Poniższe linki zawierają instrukcje dotyczące konfiguracji sieciowej grupy zabezpieczeń dla wdrożeń maszyn wirtualnych. Skorzystaj z tych instrukcji, aby uzyskać dostęp do listy ACL Azure Search punktu końcowego na podstawie jego adresu IP.
 
 > [!NOTE]
-> Aby uzyskać ogólne, zobacz [co to jest sieciowa grupa zabezpieczeń?](../virtual-network/security-overview.md)
+> Aby uzyskać ogólne informacje, zobacz [co to jest sieciowa Grupa zabezpieczeń?](../virtual-network/security-overview.md)
 > 
 > 
 
-* Dla **usługi Resource Manager** maszyny Wirtualnej, zobacz [tworzenie sieciowych grup zabezpieczeń dla wdrożeń ARM](../virtual-network/tutorial-filter-network-traffic.md). 
-* Dla **klasycznego** maszyny Wirtualnej, zobacz [tworzenie sieciowych grup zabezpieczeń dla wdrożeń Classic](../virtual-network/virtual-networks-create-nsg-classic-ps.md).
+* Aby uzyskać **Menedżer zasobów** maszyny wirtualnej, zobacz [How to Create sieciowych grup zabezpieczeń for ARM Deployments](../virtual-network/tutorial-filter-network-traffic.md). 
+* Aby zapoznać się z klasyczną maszyną wirtualną, zobacz [jak utworzyć sieciowych grup zabezpieczeń dla wdrożeń klasycznych](../virtual-network/virtual-networks-create-nsg-classic-ps.md).
 
-Adresowanie IP może stanowić kilka wyzwania, które są łatwe przezwyciężyć, jeśli masz świadomość problemu i potencjalnych rozwiązań. W pozostałych sekcjach przedstawiono zalecenia dotyczące obsługi problemów związanych z adresów IP na liście ACL.
+Adresowanie IP może stanowić kilka wyzwań, które można łatwo przezwyciężyć, jeśli masz świadomość problemu i potencjalnych obejść. Pozostałe sekcje zawierają zalecenia dotyczące obsługi problemów związanych z adresami IP na liście ACL.
 
 #### <a name="restrict-access-to-the-search-service-ip-address"></a>Ograniczanie dostępu do adresu IP usługi wyszukiwania
-Zdecydowanie zaleca się ograniczyć dostęp do adresu IP usługi wyszukiwania na liście ACL dokonywane maszynach wirtualnych platformy Azure SQL w pełni otwarta do wszystkich żądań połączenia. Można łatwo znaleźć adres IP, wysyłając polecenie ping nazwa FQDN (na przykład `<your-search-service-name>.search.windows.net`) usługi wyszukiwania.
+Zdecydowanie zalecamy, aby ograniczyć dostęp do adresu IP usługi wyszukiwania na liście kontroli dostępu, zamiast korzystać z całej sieci maszyn wirtualnych z usługą SQL Azure w przypadku wszystkich żądań połączeń. Adres IP można łatwo znaleźć, wysyłając polecenie ping do nazwy FQDN (na przykład `<your-search-service-name>.search.windows.net`) usługi wyszukiwania.
 
-#### <a name="managing-ip-address-fluctuations"></a>Zarządzanie zmianami adresu IP
-Jeśli usługa wyszukiwania ma tylko jedną jednostkę wyszukiwania (oznacza to jedną replikę i jednej partycji), adres IP ulegnie zmianie podczas ponownego uruchamiania komputera usługa rutynowych unieważnienia istniejących listy ACL z adresu IP usługi wyszukiwania.
+#### <a name="managing-ip-address-fluctuations"></a>Zarządzanie fluktuacjami adresów IP
+Jeśli usługa wyszukiwania ma tylko jedną jednostkę wyszukiwania (czyli jedną replikę i jedną partycję), adres IP ulegnie zmianie podczas rutynowych ponownych uruchomień usługi. unieważnienie istniejącej listy kontroli dostępu przy użyciu adresu IP usługi wyszukiwania.
 
-Jednym ze sposobów, aby uniknąć tego błędu kolejne połączenie jest używać więcej niż jednej repliki i jedną partycję w usłudze Azure Search. To zwiększa koszty, ale także rozwiązuje problem adresu IP. W usłudze Azure Search nie zmieniaj adresów IP, jeśli masz więcej niż jednej jednostki wyszukiwania.
+Jednym ze sposobów uniknięcia kolejnego błędu łączności jest użycie więcej niż jednej repliki i jednej partycji w Azure Search. Zwiększa to koszt, ale również rozwiązuje problem z adresem IP. W Azure Search adresy IP nie zmieniają się, jeśli masz więcej niż jedną jednostkę wyszukiwania.
 
-Druga metoda jest zezwalają na połączenie zakończyć się niepowodzeniem, a następnie ponownie skonfiguruj listy ACL w sieciowej grupie zabezpieczeń. Zazwyczaj można oczekiwać, że adresy IP, aby zmienić co kilka tygodni. Dla klientów, którzy wykonują indeksowania kontrolowane na podstawie rzadkie takie podejście może być możliwego do użycia.
+Drugim podejściem jest umożliwienie niepowodzenia połączenia, a następnie ponowne skonfigurowanie list kontroli dostępu w sieciowej grupy zabezpieczeń. Średnio można oczekiwać, że adresy IP są zmieniane co kilka tygodni. W przypadku klientów, którzy przeprowadzają nierzadko kontrolowane indeksowanie, takie podejście może być w dobrej kondycji.
 
-Trzeci podejście możliwego do użycia (ale szczególnie niezabezpieczony) jest Określ zakres adresów IP regionu Azure, w którym zainicjowano usługi wyszukiwania. Lista zakresów adresów IP, z której publiczne adresy IP są przydzielane do zasobów platformy Azure, jest opublikowana w [zakresów adresów IP centrum danych Azure](https://www.microsoft.com/download/details.aspx?id=41653). 
+Trzecią żywotną (ale nieszczególnie bezpieczną) podejściem jest określenie zakresu adresów IP regionu platformy Azure, w którym Zainicjowano obsługę usługi wyszukiwania. Lista zakresów adresów IP, z których publiczne adresy IP są przypisywane do zasobów platformy Azure, jest publikowana w [zakresach adresów IP centrum danych platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653). 
 
-#### <a name="include-the-azure-search-portal-ip-addresses"></a>Zawierać adresy IP z portalu usługi Azure Search
-Korzystania z witryny Azure portal do utworzenia indeksatora logiki portalu usługi Azure Search również musi mieć dostęp do maszyny Wirtualnej SQL Azure podczas tworzenia. Adresy IP z portalu usługi Azure search można znaleźć, wysyłając polecenie ping `stamp2.search.ext.azure.com`.
+#### <a name="include-the-azure-search-portal-ip-addresses"></a>Uwzględnij adresy IP portalu Azure Search
+Jeśli używasz Azure Portal do tworzenia indeksatora, Azure Search logiki portalu wymaga również dostępu do maszyny wirtualnej usługi SQL Azure podczas tworzenia. Adresy IP portalu usługi Azure Search można znaleźć za pomocą polecenia `stamp2.search.ext.azure.com`ping.
 
-## <a name="next-steps"></a>Kolejne kroki
-Za pomocą konfiguracji na bok można teraz określić programu SQL Server na maszynie Wirtualnej platformy Azure jako źródło danych dla indeksatora usługi Azure Search. Zobacz [łączenie usługi Azure SQL Database do usługi Azure Search przy użyciu indeksatorów](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) Aby uzyskać więcej informacji.
+## <a name="next-steps"></a>Następne kroki
+Za pomocą konfiguracji możesz teraz określić SQL Server na maszynie wirtualnej platformy Azure jako źródło danych dla indeksatora Azure Search. Aby uzyskać więcej informacji [, zobacz łączenie Azure SQL Database do Azure Search za pomocą indeksatorów](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) .
 

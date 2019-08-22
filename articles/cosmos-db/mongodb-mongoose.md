@@ -9,18 +9,18 @@ ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
 ms.custom: seodec18
-ms.openlocfilehash: 23275bc639b445b55cafb72c929514541ba00660
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3955b84df401e5832668fa091274caea9af2466e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61333468"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876604"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Łączenie aplikacji Node.js platformy Mongoose w usłudze Azure Cosmos DB
 
-W tym samouczku przedstawiono sposób użycia [Framework platformy Mongoose](https://mongoosejs.com/) w przypadku przechowywania danych w usłudze Cosmos DB. W tym przewodniku używamy interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB. Mongoose to platforma modelowania obiektów usługi MongoDB w środowisku Node.js. Udostępnia ona także proste, bazujące na schematach rozwiązanie do modelowania danych aplikacji.
+W tym samouczku pokazano, jak używać [platformy Mongoose](https://mongoosejs.com/) w przypadku przechowywania danych w Cosmos DB. Dla tego przewodnika korzystamy z interfejsu API Azure Cosmos DB dla MongoDB. Mongoose to platforma modelowania obiektów usługi MongoDB w środowisku Node.js. Udostępnia ona także proste, bazujące na schematach rozwiązanie do modelowania danych aplikacji.
 
-Usługa cosmos DB to usługa globalnie dystrybuowana, wielomodelowa baza danych firmy Microsoft. Dzięki dystrybucji globalnej i możliwości skalowania poziomego w usłudze Cosmos DB możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów.
+Cosmos DB to globalnie dystrybuowana wielomodelowa usługa bazy danych firmy Microsoft. Dzięki dystrybucji globalnej i możliwości skalowania poziomego w usłudze Cosmos DB możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -30,9 +30,9 @@ Usługa cosmos DB to usługa globalnie dystrybuowana, wielomodelowa baza danych 
 
 [Node.js](https://nodejs.org/) w wersji 0.10.29 lub nowszej.
 
-## <a name="create-a-cosmos-account"></a>Tworzenie konta usługi Cosmos
+## <a name="create-a-cosmos-account"></a>Utwórz konto Cosmos
 
-Utwórz konta usługi Cosmos. Jeśli masz już konto, którego chcesz użyć, możesz przejść od razu do zestawu aplikacji Node.js. Jeśli używasz emulatora usługi Azure Cosmos DB, wykonaj czynności opisane w temacie [emulatora usługi Azure Cosmos DB](local-emulator.md) Aby skonfigurować emulator, a następnie przejdź do sekcji do zestawu aplikacji Node.js.
+Utwórzmy konto Cosmos. Jeśli masz już konto, którego chcesz użyć, możesz przejść od razu do konfigurowania aplikacji node. js. Jeśli używasz emulatora Azure Cosmos DB, postępuj zgodnie z instrukcjami w [Azure Cosmos DB emulator](local-emulator.md) , aby skonfigurować emulator i przejść do sekcji Konfigurowanie aplikacji node. js.
 
 [!INCLUDE [cosmos-db-create-dbaccount-mongodb](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
@@ -65,15 +65,15 @@ Utwórz konta usługi Cosmos. Jeśli masz już konto, którego chcesz użyć, mo
     var env = require('dotenv').load();    //Use the .env file to load the variables
     ```
 
-1. Dodaj parametry połączenia usługi Cosmos DB i nazwę bazy danych Cosmos DB do pliku ```.env```.
+1. Dodaj parametry połączenia usługi Cosmos DB i nazwę bazy danych Cosmos DB do pliku ```.env```. Zastąp symbole zastępcze {Cosmos-account-name} i {dbname} własną nazwą konta Cosmos i nazwą bazy danych bez symboli w nawiasach klamrowych.
 
     ```JavaScript
-    COSMOSDB_CONNSTR=mongodb://{cosmos-user}.documents.azure.com:10255/{dbname}
-    COSMODDB_USER=cosmos-user
+    COSMOSDB_CONNSTR=mongodb://{cosmos-account-name}.documents.azure.com:10255/{dbname}
+    COSMODDB_USER=cosmos-account-name
     COSMOSDB_PASSWORD=cosmos-secret
     ```
 
-1. Połączyć z usługą Cosmos DB przy użyciu platformy mongoose, dodając następujący kod na końcu pliku index.js.
+1. Połącz się z Cosmos DB przy użyciu platformy mongoose, dodając następujący kod na końcu index. js.
     ```JavaScript
     mongoose.connect(process.env.COSMOSDB_CONNSTR+"?ssl=true&replicaSet=globaldb", {
       auth: {
@@ -89,9 +89,9 @@ Utwórz konta usługi Cosmos. Jeśli masz już konto, którego chcesz użyć, mo
 
     Teraz, po nawiązaniu połączenia z usługą Azure Cosmos DB, możesz rozpocząć konfigurowanie modeli obiektów na platformie Mongoose.
 
-## <a name="caveats-to-using-mongoose-with-cosmos-db"></a>Zastrzeżenia dotyczące korzystania z platformy Mongoose z usługą Cosmos DB
+## <a name="caveats-to-using-mongoose-with-cosmos-db"></a>Ostrzeżenia dotyczące używania Mongoose z Cosmos DB
 
-Dla każdego utworzonego modelu platforma Mongoose tworzy nową kolekcję. Jednak podane dla kolekcji model rozliczeń za usługę Cosmos DB, może nie być najbardziej efektywny kosztowo sposób sposób, aby przejść, jeśli masz wiele modeli obiektów, które słabo są wypełnione.
+Dla każdego tworzonego modelu Mongoose tworzy nową kolekcję. Jednak z uwzględnieniem modelu rozliczania dla kolekcji Cosmos DB, może to nie być najbardziej wydajny sposób, jeśli masz wiele modeli obiektów, które są w sposób rozrzedzony wypełnione.
 
 W tym przewodniku opisano oba modele. Najpierw zostanie omówiony proces przechowywania jednego typu danych w jednej kolekcji. Jest to domyślne zachowanie platformy Mongoose.
 
@@ -101,7 +101,7 @@ Dzięki temu można przechowywać różne modele danych w tej samej kolekcji, a 
 
 ### <a name="one-collection-per-object-model"></a>Jedna kolekcja na model obiektów
 
-Domyślnym zachowaniem platformy Mongoose jest tworzenie kolekcji usługi MongoDB każdorazowo podczas tworzenia modelu obiektów. W tej sekcji przedstawiono, jak można to osiągnąć przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB. Ta metoda jest zalecana w przypadku przetwarzania modeli obiektów z dużą ilością danych. Jest to domyślny model działania platformy Mongoose, dlatego osoby korzystające z tej platformy nie będą miały problemów z jego implementacją.
+Domyślnym zachowaniem platformy Mongoose jest tworzenie kolekcji usługi MongoDB każdorazowo podczas tworzenia modelu obiektów. W tej sekcji omówiono, jak to osiągnąć za pomocą interfejsu API Azure Cosmos DB MongoDB. Ta metoda jest zalecana, gdy istnieją modele obiektów z dużymi ilościami danych. Jest to domyślny model działania platformy Mongoose, dlatego osoby korzystające z tej platformy nie będą miały problemów z jego implementacją.
 
 1. Otwórz ponownie plik ```index.js```.
 
@@ -152,7 +152,7 @@ Domyślnym zachowaniem platformy Mongoose jest tworzenie kolekcji usługi MongoD
     });
     ```
 
-1. Na koniec Zapisz ten obiekt w usłudze Cosmos DB. Spowoduje to utworzenie kolekcji w obiekcie nadrzędnym.
+1. Na koniec Zapisz obiekt w Cosmos DB. Spowoduje to utworzenie kolekcji w obiekcie nadrzędnym.
 
     ```JavaScript
     family.save((err, saveFamily) => {
@@ -181,11 +181,11 @@ Domyślnym zachowaniem platformy Mongoose jest tworzenie kolekcji usługi MongoD
       });
       ```
 
-1. Teraz przechodząc do witryny Azure portal, zauważysz dwie kolekcje tworzone w usłudze Cosmos DB.
+1. Teraz, przechodząc do Azure Portal, zauważysz dwie kolekcje utworzone w Cosmos DB.
 
-    ![Node.js samouczka — zrzut ekranu witryny Azure Portal przedstawiający konto usługi Azure Cosmos DB z wyróżnionymi wieloma nazwami kolekcji — baza danych Node][multiple-coll]
+    ![Samouczek środowiska Node. js — zrzut ekranu przedstawiający Azure Portal, z uwzględnieniem konta Azure Cosmos DB, z wyróżnionymi wieloma nazwami kolekcji — baza danych Node][multiple-coll]
 
-1. Na koniec spróbujmy odczytać dane z usługi Cosmos DB. Ponieważ korzystamy z domyślnego modelu działania platformy Mongoose, operacje odczytywania są takie same jak inne operacje odczytywania na platformie Mongoose.
+1. Na koniec przeczytajmy dane z Cosmos DB. Ponieważ korzystamy z domyślnego modelu działania platformy Mongoose, operacje odczytywania są takie same jak inne operacje odczytywania na platformie Mongoose.
 
     ```JavaScript
     Family.find({ 'children.gender' : "male"}, function(err, foundFamily){
@@ -195,7 +195,7 @@ Domyślnym zachowaniem platformy Mongoose jest tworzenie kolekcji usługi MongoD
 
 ### <a name="using-mongoose-discriminators-to-store-data-in-a-single-collection"></a>Korzystanie z dyskryminatorów platformy Mongoose w celu umożliwienia przechowywania danych w pojedynczej kolekcji
 
-W przypadku tej metody użyjemy [Dyskryminatorów platformy Mongoose](https://mongoosejs.com/docs/discriminators.html) aby pomóc zoptymalizować koszty poszczególnych kolekcji. Dyskryminatory umożliwiają zdefiniowanie różnicującego „klucza”, który umożliwi przechowywanie, różnicowanie i filtrowanie różnych modeli obiektów.
+W przypadku tej metody używamy [rozróżniaczów Mongoose](https://mongoosejs.com/docs/discriminators.html) , aby ułatwić optymalizację kosztów każdej kolekcji. Dyskryminatory umożliwiają zdefiniowanie różnicującego „klucza”, który umożliwi przechowywanie, różnicowanie i filtrowanie różnych modeli obiektów.
 
 W tym miejscu utworzymy bazowy model obiektów, zdefiniujemy klucz różnicujący i dodamy modele „Family” i „VacationDestinations” jako rozszerzenia modelu bazowego.
 
@@ -288,7 +288,7 @@ W tym miejscu utworzymy bazowy model obiektów, zdefiniujemy klucz różnicując
 
 1. Jeśli teraz wrócisz do witryny Azure Portal, zauważysz, że znajduje się tam tylko jedna kolekcja o nazwie ```alldata```, która zawiera dane zarówno z modelu „Family”, jak i „VacationDestinations”.
 
-    ![Node.js samouczka — zrzut ekranu witryny Azure Portal przedstawiający konto usługi Azure Cosmos DB z wyróżnioną nazwą kolekcji — baza danych Node][alldata]
+    ![Samouczek środowiska Node. js — zrzut ekranu przedstawiający Azure Portal, w którym pokazywane jest konto Azure Cosmos DB z wyróżnioną nazwą kolekcji — baza danych węzła][alldata]
 
 1. Zauważ również, że każdy obiekt ma jeszcze jeden atrybut o nazwie ```__type```, który pomaga rozróżnić te dwa różne modele obiektów.
 
@@ -300,13 +300,13 @@ W tym miejscu utworzymy bazowy model obiektów, zdefiniujemy klucz różnicując
     });
     ```
 
-Jak widać, praca z dyskryminatorami platformy Mongoose jest prosta. Dlatego jeśli masz aplikację, która używa platformy mongoose, ten samouczek jest sposób swoją aplikację wzwyż i uruchamiać aplikacje przy użyciu interfejsu API usługi Azure Cosmos dla bazy danych MongoDB bez konieczności zbyt dużej liczby zmian.
+Jak widać, praca z dyskryminatorami platformy Mongoose jest prosta. Dlatego jeśli masz aplikację, która korzysta z platformy Mongoose Framework, ten samouczek jest sposobem na rozpoczęcie pracy aplikacji przy użyciu interfejsu API usługi Azure Cosmos dla MongoDB bez konieczności zbyt wielu zmian.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, jak [korzystać z programu Studio 3T](mongodb-mongochef.md) za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
 - Dowiedz się, jak [korzystać z programu Robo 3T](mongodb-robomongo.md) za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.

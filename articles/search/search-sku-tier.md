@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: heidist
-ms.openlocfilehash: a874c8a1fe2e8a81e2f42b2c88447fd52b47f3ad
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1c86649a989b16d928a46d322af3d805b6fbf832
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611969"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647348"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Wybierz warstwę cenową dla Azure Search
 
@@ -53,10 +53,10 @@ Więcej informacji o różnych warstwach można znaleźć na [stronie cennika](h
 
 Rozwiązanie oparte na Azure Search może ponosić koszty w następujący sposób:
 
-+ Podstawowa koszt usługi przy minimalnej konfiguracji
-+ Koszt przyrostowy podczas skalowania w górę (Dodawanie replik lub partycji)
-+ Opłaty za przepustowość za transfer danych wychodzących
-+ Wyszukiwanie poznawcze wykorzystujące zasoby Cognitive Services
++ Podstawowa koszt usługi w ramach minimalnej konfiguracji (Tworzenie usługi)
++ Koszt przyrostowy podczas skalowania w górę (Dodaj repliki lub partycje)
++ Opłaty za przepustowość (wychodzący transfer danych) 
++ Wyszukiwanie poznawcze (Dołącz Cognitive Services do wzbogacania AI, Azure Storage for Knowledge Store)
 
 ### <a name="service-costs"></a>Koszty usług
 

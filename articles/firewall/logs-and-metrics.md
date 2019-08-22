@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 08/21/2019
+ms.date: 08/22/2019
 ms.author: victorh
-ms.openlocfilehash: 8524c8f05a5d48755ab1ccca62f0fd53870190bb
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: fea00358fc21cf6f57673e14ebd0feafe532b620
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640238"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876563"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Dzienniki i metryki zapory platformy Azure
 
@@ -95,6 +95,10 @@ Następujące metryki są dostępne dla zapory platformy Azure:
 
     Jednostka: liczba
 
+- **Liczba trafień reguł sieci** — liczba trafień reguły sieci.
+
+    Jednostka: liczba
+
 - **Przetworzone dane** — ilość danych przechodzących przez zaporę.
 
     Jednostka: bajty
@@ -109,9 +113,7 @@ Następujące metryki są dostępne dla zapory platformy Azure:
 
 
 
-- **Liczba trafień reguł sieci** — liczba trafień reguły sieci.
 
-    Jednostka: liczba
 
 - **Wykorzystanie portów** przez przystawkę adresów sieciowych — wartość procentowa portów, które zostały wykorzystane przez zaporę.
 

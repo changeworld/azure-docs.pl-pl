@@ -1,6 +1,6 @@
 ---
-title: Skalowanie usługi Azure IoT Hub | Dokumentacja firmy Microsoft
-description: Jak skalować usługi IoT hub do obsługi przepływność przewidywanego komunikatów i żądanych funkcji. Zawiera podsumowanie obsługiwana przepływność dla każdej warstwy i opcje dotyczące dzielenia na fragmenty.
+title: Skalowanie IoT Hub platformy Azure | Microsoft Docs
+description: Sposób skalowania Centrum IoT w celu obsługi przewidywanej przepływności komunikatów i pożądanych funkcji. Zawiera podsumowanie obsługiwanej przepływności dla każdej warstwy i opcji dla fragmentowania.
 author: wesmc7777
 manager: timlt
 ms.service: iot-hub
@@ -8,133 +8,129 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: wesmc
-ms.openlocfilehash: ea7b38f509fcdaa4e41ce17db3beca44b05a59b2
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 9be0b93335cef919db4efa2fce361bda1f9b934e
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514475"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891993"
 ---
-# <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wybrać właściwą warstwę usługi IoT Hub dla Twojego rozwiązania
+# <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wybieranie odpowiedniej warstwy IoT Hub dla rozwiązania
 
-Każde rozwiązanie IoT jest inny, dzięki czemu usługa Azure IoT Hub oferuje kilka opcji, w oparciu o cenach i skali. W tym artykule mają na celu ułatwić ocenę potrzeb usługi IoT Hub. Aby uzyskać informacje o warstwach usługi IoT Hub, zobacz [cenach usługi IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub).
+Każde rozwiązanie IoT jest inne, więc usługa Azure IoT Hub oferuje kilka opcji na podstawie cen i skali. Ten artykuł ma na celu pomoc w ocenie potrzeb IoT Hub. Informacje o cenach IoT Hub warstwach znajdują się w temacie [IoT Hub Cennik](https://azure.microsoft.com/pricing/details/iot-hub).
 
-Aby zdecydować, którą warstwę usługi IoT Hub jest odpowiednia dla danego rozwiązania, spróbuj odpowiedzieć sobie dwa pytania:
+Aby zdecydować, która warstwa IoT Huba jest odpowiednia dla Twojego rozwiązania, należy zadać sobie dwa pytania:
 
-**Jakie funkcje chcę użyć?**
+**Jakie funkcje są planowane do użycia?**
 
-Usługa Azure IoT Hub oferuje dwie warstwy, podstawowa i standardowa, które różnią się w wiele funkcji, które obsługują. Jeśli rozwiązanie IoT opiera się wokół zbieranie danych z urządzeń i centralnie je analizować, warstwa basic jest prawdopodobnie odpowiedni dla Ciebie. Jeśli chcesz, zdalne sterowanie urządzeniami IoT lub dystrybucji niektórych obciążeń na samych urządzeń za pomocą bardziej zaawansowanych ustawień konfiguracji, należy rozważyć warstwy standardowa. Aby uzyskać szczegółowy podział, które funkcje dostępne w poszczególnych warstwach w dalszym ciągu [warstw podstawowa i standardowa](#basic-and-standard-tiers).
+Usługa Azure IoT Hub oferuje dwie warstwy, podstawowe i standardowe, które różnią się w zależności od liczby obsługiwanych funkcji. Jeśli Twoje rozwiązanie IoT opiera się na zbieraniu danych z urządzeń i analizowaniu ich centralnie, warstwa podstawowa prawdopodobnie jest dla Ciebie odpowiednia. Jeśli chcesz używać bardziej zaawansowanych konfiguracji w celu zdalnego kontrolowania urządzeń IoT lub dystrybucji niektórych obciążeń na samych urządzeniach, należy wziąć pod uwagę warstwę Standardowa. Aby zapoznać się ze szczegółowymi informacjami o tym, które funkcje są zawarte w poszczególnych warstwach, przejdź do [warstw Podstawowa i Standardowa](#basic-and-standard-tiers).
 
-**Jak dużo danych chcę przenieść codziennie?**
+**Ile danych planuję przenieść codziennie?**
 
-Każda warstwa usługi IoT Hub jest dostępna w trzech rozmiarach, na podstawie ogólnej przepływności ilości danych może obsługiwać w każdym dniu. Te rozmiary numerycznie są identyfikowane jako 1, 2 i 3. Na przykład każda jednostka w Centrum IoT poziomu 1 może obsługiwać tysiąc 400 komunikatów dziennie, gdy jednostka poziomu 3 może obsługiwać 300 milionów. Aby uzyskać więcej informacji na temat wytycznych dane w dalszym ciągu [przepływność komunikatów](#message-throughput).
+Każda warstwa IoT Hub jest dostępna w trzech rozmiarach, w zależności od tego, ile przepływności danych może obsłużyć w danym dniu. Te rozmiary są liczbowe identyfikowane jako 1, 2 i 3. Na przykład każda jednostka Centrum IoT Level 1 może obsłużyć 400 000 komunikatów dziennie, natomiast jednostka poziomu 3 może obsłużyć 300 000 000. Aby uzyskać więcej informacji na temat wytycznych dotyczących danych, przejdź do [przepływności komunikatów](#message-throughput).
 
-## <a name="basic-and-standard-tiers"></a>W warstwach podstawowa i standardowa
+## <a name="basic-and-standard-tiers"></a>Warstwy Podstawowa i Standardowa
 
-Warstwy standardowa usługi IoT Hub umożliwia korzystanie z wszystkich funkcji i jest wymagana dla dowolnego rozwiązania IoT, które chcą ułatwić korzystanie z możliwości komunikacji dwukierunkowej. Warstwa podstawowa umożliwia podzbiór funkcji i jest przeznaczona dla rozwiązań IoT, które potrzebują tylko komunikację jednokierunkową z urządzeń do chmury. Obie warstwy oferują te same funkcje zabezpieczeń i uwierzytelniania.
+Standardowa warstwa IoT Hub włącza wszystkie funkcje i jest wymagana dla wszystkich rozwiązań IoT, które chcą korzystać z funkcji komunikacji dwukierunkowej. Warstwa Podstawowa umożliwia podzbiór funkcji i jest przeznaczona dla rozwiązań IoT, które wymagają tylko jednokierunkowej komunikacji między urządzeniami a chmurą. Obie warstwy oferują te same funkcje zabezpieczeń i uwierzytelniania.
 
-Tylko jeden typ [wersji](https://azure.microsoft.com/pricing/details/iot-hub/) w obrębie warstwy można wybrać dla każdej usługi IoT Hub. Na przykład można utworzyć usługi IoT Hub przy użyciu wielu jednostek S1, ale nie kombinację jednostek z różnych wersji, takich jak S1 i B3 lub warstwy S1 i S2.
+Na IoT Hub można wybrać tylko jeden typ [wersji](https://azure.microsoft.com/pricing/details/iot-hub/) w ramach warstwy. Można na przykład utworzyć IoT Hub z wieloma jednostkami S1, ale nie z różnymi jednostkami, takimi jak S1 i B3, lub S1 i S2.
 
-| Możliwości | Warstwa Podstawowa | Warstwa bezpłatna/Standard |
+| Możliwość | Warstwa Podstawowa | Warstwa Bezpłatna/standardowa |
 | ---------- | ---------- | ------------- |
-| [Dane telemetryczne urządzenia do chmury](iot-hub-devguide-messaging.md) | Yes | Tak |
-| [Tożsamość na urządzenie](iot-hub-devguide-identity-registry.md) | Yes | Tak |
-| [Routing komunikatów](iot-hub-devguide-messages-read-custom.md) i [integracji usługi Event Grid](iot-hub-event-grid.md) | Tak | Tak |
+| [Dane telemetryczne z urządzenia do chmury](iot-hub-devguide-messaging.md) | Tak | Tak |
+| [Tożsamość dla urządzenia](iot-hub-devguide-identity-registry.md) | Tak | Tak |
+| [Routing komunikatów](iot-hub-devguide-messages-read-custom.md) i [integracja Event Grid](iot-hub-event-grid.md) | Tak | Tak |
 | [Protokoły HTTP, AMQP i MQTT](iot-hub-devguide-protocols.md) | Tak | Tak |
-| [Usługa Device Provisioning](../iot-dps/about-iot-dps.md) | Tak | Yes |
+| [Usługa Device Provisioning](../iot-dps/about-iot-dps.md) | Tak | Tak |
 | [Monitorowanie i Diagnostyka](iot-hub-monitor-resource-health.md) | Tak | Tak |
-| [Komunikaty z chmury do urządzenia](iot-hub-devguide-c2d-guidance.md) |   | Tak |
-| [Bliźniacze reprezentacje urządzeń](iot-hub-devguide-device-twins.md), [bliźniaczych reprezentacjach modułów](iot-hub-devguide-module-twins.md), i [zarządzania urządzeniami](iot-hub-device-management-overview.md) |   | Yes |
-| [Strumienie urządzenia (wersja zapoznawcza)](iot-hub-device-streams-overview.md) |   | Yes |
-| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Yes |
+| [Obsługa komunikatów z chmury do urządzenia](iot-hub-devguide-c2d-guidance.md) |   | Tak |
+| [Bliźniaczych reprezentacji urządzeń](iot-hub-devguide-device-twins.md), [moduł bliźniaczych reprezentacji](iot-hub-devguide-module-twins.md)i [Zarządzanie urządzeniami](iot-hub-device-management-overview.md) |   | Tak |
+| [Strumienie urządzeń (wersja zapoznawcza)](iot-hub-device-streams-overview.md) |   | Tak |
+| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Tak |
 
-Centrum IoT oferuje bezpłatną warstwę, która jest przeznaczona do testowania i oceny. Zawiera wszystkie funkcje warstwy standardowa, ale ograniczone limity obsługi komunikatów. Nie można uaktualnić z warstwy bezpłatna, podstawowa lub standardowa.
+IoT Hub oferuje również bezpłatną warstwę, która jest przeznaczona do testowania i oceny. Ma ona wszystkie możliwości warstwy Standard, ale ograniczone są ograniczenia obsługi komunikatów. Nie można przeprowadzić uaktualnienia z warstwy Bezpłatna do wersji podstawowa lub standardowa.
 
 ## <a name="partitions"></a>Partycje
 
-Usługa Azure IoT Hubs zawiera wiele kluczowych elementów związanych z [usługi Azure Event Hubs](../event-hubs/event-hubs-features.md), w tym [partycje](../event-hubs/event-hubs-features.md#partitions). Strumienie zdarzeń dla centrów IoT Hub zwykle są wypełniane przy użyciu przychodzących danych telemetrycznych zgłoszonych przez różnych urządzeń IoT. Partycje strumienia zdarzeń służy do zmniejszenia rywalizacji, które występują, gdy jednocześnie odczytu i zapisu do strumieni zdarzeń.
+Centra usługi Azure IoT zawierają wiele podstawowych składników [Event Hubs platformy Azure](../event-hubs/event-hubs-features.md), w tym [partycji](../event-hubs/event-hubs-features.md#partitions). Strumienie zdarzeń dla centrów IoT są zwykle wypełniane przez dane telemetryczne przychodzące zgłaszane przez różne urządzenia IoT. Partycjonowanie strumienia zdarzeń służy do zmniejszania rywalizacji występujących podczas równoczesnego odczytywania i zapisywania do strumieni zdarzeń.
 
-Limit partycji jest wybierany, gdy usługa IoT Hub zostanie utworzona i nie można zmienić. Limit maksymalny partycji dla warstwy podstawowa usługi IoT Hub i IoT Hub w warstwie standardowa wynosi 32. Większość centrów IoT potrzebuje tylko 4 partycjami. Aby uzyskać więcej informacji na temat określania partycji, zobacz często zadawane pytania Event Hubs [partycje ile potrzebuję?](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)
+Limit partycji jest wybierany podczas tworzenia IoT Hub i nie można go zmienić. Maksymalny limit partycji IoT Hub warstwy Podstawowa i IoT Hub to 32. Większość centrów IoT potrzebuje tylko 4 partycji. Aby uzyskać więcej informacji na temat określania partycji, zobacz Event Hubs często zadawane pytania dotyczące [liczby potrzebnych partycji?](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)
 
-## <a name="tier-upgrade"></a>Uaktualnienie warstwy
+## <a name="tier-upgrade"></a>Uaktualnianie warstwy
 
-Po utworzeniu Centrum IoT hub, możesz uaktualnić z warstwy podstawowa do warstwy standard bez przerywania istniejących. Aby uzyskać więcej informacji, zobacz [uaktualnianie Centrum IoT hub](iot-hub-upgrade.md).
+Po utworzeniu usługi IoT Hub można przeprowadzić uaktualnienie z warstwy Podstawowa do warstwy Standardowa bez przerywania istniejących operacji. Aby uzyskać więcej informacji, zobacz [jak uaktualnić Centrum IoT Hub](iot-hub-upgrade.md).
 
-Konfiguracja partycji zmienia się podczas migracji z warstwy podstawowa do warstwy standardowa.
+Konfiguracja partycji pozostaje niezmieniona podczas migracji z warstwy Podstawowa do warstwy Standardowa.
 
 > [!NOTE]
-> W warstwie bezpłatna nie obsługuje uaktualniania do podstawowa lub standardowa.
+> Warstwa Bezpłatna nie obsługuje uaktualniania do wersji podstawowa lub standardowa.
 
 ## <a name="iot-hub-rest-apis"></a>Interfejsy API REST usługi IoT Hub
 
-Różnica w obsługiwanych możliwości między warstwami podstawowa i standardowa usługi IoT Hub oznacza, że niektóre wywołania interfejsu API nie będą działać z hubs w warstwie podstawowa. W poniższej tabeli przedstawiono, które interfejsy API są dostępne:
+Różnica w obsługiwanych możliwościach między warstwami podstawowa i Standardowa IoT Hub oznacza, że niektóre wywołania interfejsu API nie działają w przypadku centrów warstwy Podstawowa. W poniższej tabeli przedstawiono dostępne interfejsy API:
 
-| Interfejs API | Warstwa Podstawowa | Warstwa bezpłatna/Standard |
+| interfejs API | Warstwa Podstawowa | Warstwa Bezpłatna/standardowa |
 | --- | ---------- | ------------- |
-| [Usuwanie urządzenia](https://docs.microsoft.com/rest/api/iothub/service/deletedevice) | Tak | Tak |
-| [Pobieranie urządzenia](https://docs.microsoft.com/rest/api/iothub/service/getdevice) | Tak | Tak |
+| [Usuń urządzenie](https://docs.microsoft.com/rest/api/iothub/service/deletedevice) | Tak | Tak |
+| [Pobierz urządzenie](https://docs.microsoft.com/rest/api/iothub/service/getdevice) | Tak | Tak |
 | [Usuń moduł](https://docs.microsoft.com/rest/api/iothub/service/deletemodule) | Tak | Tak |
-| [Uzyskiwanie modułu](https://docs.microsoft.com/rest/api/iothub/service/getmodule) | Yes | Tak |
-| [Zebranie statystyk, rejestru](https://docs.microsoft.com/rest/api/iothub/service/getdeviceregistrystatistics) | Yes | Tak |
-| [Zebranie statystyk, usługi](https://docs.microsoft.com/rest/api/iothub/service/getservicestatistics) | Tak | Tak |
-| [Utwórz lub zaktualizuj urządzenie](https://docs.microsoft.com/rest/api/iothub/service/createorupdatedevice) | Yes | Tak |
-| [Utwórz lub zaktualizuj moduł](https://docs.microsoft.com/rest/api/iothub/service/createorupdatemodule) | Yes | Yes |
-| [Query IoT Hub](https://docs.microsoft.com/rest/api/iothub/service/queryiothub) | Tak | Yes |
-| [Tworzenie przekazywania plików identyfikatora URI połączenia SAS](https://docs.microsoft.com/rest/api/iothub/device/createfileuploadsasuri) | Tak | Tak |
-| [Otrzymywanie powiadomień urządzenie powiązane](https://docs.microsoft.com/rest/api/iothub/device/receivedeviceboundnotification) | Tak | Yes |
-| [Wyślij zdarzenia urządzenia](https://docs.microsoft.com/rest/api/iothub/device/senddeviceevent) | Tak | Yes |
-| Wysyłanie zdarzeń modułu | Protokół AMQP i tylko MQTT | Protokół AMQP i tylko MQTT |
-| [Zaktualizuj stan przekazywania pliku](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | Tak | Tak |
-| [Operacja urządzenia zbiorczego](https://docs.microsoft.com/rest/api/iothub/service/bulkcreateorupdatedevices) | Tak, z wyjątkiem możliwości usługi IoT Edge | Yes |
-| [Wyczyść kolejkę poleceń](https://docs.microsoft.com/rest/api/iothub/service/purgecommandqueue) |   | Yes |
-| [Pobierz bliźniaczej reprezentacji urządzenia](https://docs.microsoft.com/rest/api/iothub/service/gettwin) |   | Yes |
-| [Pobierz bliźniaczej reprezentacji modułu](https://docs.microsoft.com/rest/api/iothub/service/getmoduletwin) |   | Yes |
+| [Pobierz moduł](https://docs.microsoft.com/rest/api/iothub/service/getmodule) | Tak | Tak |
+| [Pobierz statystyki rejestru](https://docs.microsoft.com/rest/api/iothub/service/getdeviceregistrystatistics) | Tak | Tak |
+| [Pobierz statystyki usług](https://docs.microsoft.com/rest/api/iothub/service/getservicestatistics) | Tak | Tak |
+| [Utwórz lub zaktualizuj urządzenie](https://docs.microsoft.com/rest/api/iothub/service/createorupdatedevice) | Tak | Tak |
+| [Utwórz lub zaktualizuj moduł](https://docs.microsoft.com/rest/api/iothub/service/createorupdatemodule) | Tak | Tak |
+| [IoT Hub zapytań](https://docs.microsoft.com/rest/api/iothub/service/queryiothub) | Tak | Tak |
+| [Tworzenie identyfikatora URI SAS przekazywania plików](https://docs.microsoft.com/rest/api/iothub/device/createfileuploadsasuri) | Tak | Tak |
+| [Odbieranie powiadomienia powiązanego z urządzeniem](https://docs.microsoft.com/rest/api/iothub/device/receivedeviceboundnotification) | Tak | Tak |
+| [Wyślij zdarzenie urządzenia](https://docs.microsoft.com/rest/api/iothub/device/senddeviceevent) | Tak | Tak |
+| Wyślij zdarzenie modułu | Tylko AMQP i MQTT | Tylko AMQP i MQTT |
+| [Aktualizuj stan przekazywania plików](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | Tak | Tak |
+| [Zbiorcza operacja urządzenia](https://docs.microsoft.com/rest/api/iothub/service/bulkcreateorupdatedevices) | Tak, z wyjątkiem możliwości IoT Edge | Tak |
+| [Przeczyść kolejkę poleceń](https://docs.microsoft.com/rest/api/iothub/service/purgecommandqueue) |   | Tak |
+| [Pobierz sznurki urządzenia](https://docs.microsoft.com/rest/api/iothub/service/gettwin) |   | Tak |
+| [Pobierz sznurki modułu](https://docs.microsoft.com/rest/api/iothub/service/getmoduletwin) |   | Tak |
 | [Wywoływanie metody urządzenia](https://docs.microsoft.com/rest/api/iothub/service/invokedevicemethod) |   | Tak |
-| [Zaktualizować bliźniaczej reprezentacji urządzenia](https://docs.microsoft.com/rest/api/iothub/service/updatetwin) |   | Tak |
-| [Aktualizacji bliźniaczej reprezentacji modułu](https://docs.microsoft.com/rest/api/iothub/service/updatemoduletwin) |   | Tak |
-| [Porzuć powiadomień urządzenie powiązane](https://docs.microsoft.com/rest/api/iothub/device/abandondeviceboundnotification) |   | Tak |
-| [Kompletne urządzenie powiązane powiadomień](https://docs.microsoft.com/rest/api/iothub/device/completedeviceboundnotification) |   | Yes |
-| [Anulowanie zadania](https://docs.microsoft.com/rest/api/iothub/service/canceljob) |   | Tak |
-| [Tworzenie zadania](https://docs.microsoft.com/rest/api/iothub/service/createjob) |   | Tak |
+| [Aktualizacja sznurka urządzenia](https://docs.microsoft.com/rest/api/iothub/service/updatetwin) |   | Tak |
+| [Aktualizowanie sznurka modułu](https://docs.microsoft.com/rest/api/iothub/service/updatemoduletwin) |   | Tak |
+| [Powiadomienie o porzucenia urządzenia](https://docs.microsoft.com/rest/api/iothub/device/abandondeviceboundnotification) |   | Tak |
+| [Ukończ powiadomienie powiązane z urządzeniem](https://docs.microsoft.com/rest/api/iothub/device/completedeviceboundnotification) |   | Tak |
+| [Anuluj zadanie](https://docs.microsoft.com/rest/api/iothub/service/canceljob) |   | Tak |
+| [Utwórz zadanie](https://docs.microsoft.com/rest/api/iothub/service/createjob) |   | Tak |
 | [Pobierz zadanie](https://docs.microsoft.com/rest/api/iothub/service/getjob) |   | Tak |
-| [Zapytanie zadania](https://docs.microsoft.com/rest/api/iothub/service/queryjobs) |   | Tak |
+| [Zadania zapytań](https://docs.microsoft.com/rest/api/iothub/service/queryjobs) |   | Tak |
 
 ## <a name="message-throughput"></a>Przepływność komunikatów
 
-Najlepszym sposobem na rozmiar rozwiązanie IoT Hub jest ocena ruchu na podstawie na jednostkę. W szczególności należy wziąć pod uwagę przepływności szczytu wymagane w ramach następujących kategorii operacje:
+Najlepszym sposobem na dopasowanie rozwiązania IoT Hub jest oszacowanie ruchu w poszczególnych jednostkach. W szczególności należy wziąć pod uwagę wymaganą przepustowość szczytową dla następujących kategorii operacji:
 
 * Komunikaty z urządzenia do chmury
 * Komunikaty z chmury do urządzenia
 * Operacje rejestru tożsamości
 
-Ruch jest mierzony na jednostkę podstawową, nie dla koncentratora. Wystąpienie usługi IoT Hub poziomu 1 lub 2 może mieć maksymalnie 200 jednostek skojarzonych z nim. Wystąpienie usługi IoT Hub poziom 3 może mieć maksymalnie 10 jednostek. Po utworzeniu Centrum IoT hub można zmienić liczbę jednostek, lub przenosić między 1, 2 i 3 rozmiary w ramach określonej warstwy bez przerywania istniejących. Aby uzyskać więcej informacji, zobacz [uaktualnianie Centrum IoT Hub](iot-hub-upgrade.md).
+Ruch jest mierzony dla poszczególnych jednostek, nie na koncentratorze. Wystąpienie IoT Hub Level 1 lub 2 może mieć dowolną liczbę skojarzonych z nim 200 jednostek. Wystąpienie IoT Hub poziomu 3 może mieć maksymalnie 10 jednostek. Po utworzeniu Centrum IoT można zmienić liczbę jednostek lub przenieść się między rozmiarem 1, 2 i 3 w ramach określonej warstwy bez przerywania istniejących operacji. Aby uzyskać więcej informacji, zobacz [jak uaktualnić IoT Hub](iot-hub-upgrade.md).
 
-Na przykład możliwości ruchu poszczególnych warstw komunikatów z urządzenia do chmury przestrzegać następujących wytycznych stałą przepływność na poziomie:
+Przykładem możliwości ruchu poszczególnych warstw, komunikaty z urządzenia do chmury są następujące:
 
-| Warstwa | Długoterminowa przepustowość | Wskaźnik wysyłania stałą |
+| Warstwa | Ciągła przepływność | Ciągła szybkość wysyłania |
 | --- | --- | --- |
-| B1, S1 |Maksymalnie minutę 1111 KB na jednostkę<br/>(1,5 GB/dzień/jednostkę) |Średnia krocząca 278 komunikatów na minutę na jednostkę<br/>(400 000 komunikatów/dzień na jednostkę) |
-| B2, S2 |Maksymalnie 16 MB na minutę na jednostkę<br/>(22.8 GB/dzień/jednostkę) |Średnia krocząca 4,167 komunikatów na minutę na jednostkę<br/>(6 milionów komunikatów/dzień na jednostkę) |
-| B3, S3 |Maksymalnie minutę 814 MB na jednostkę<br/>(1144.4 GB/dzień/jednostkę) |Średnia krocząca 208,333 komunikatów na minutę na jednostkę<br/>(300 milionów komunikatów/dzień na jednostkę) |
+| B1, S1 |Do 1111 KB/minutę na jednostkę<br/>(1,5 GB/dzień/jednostka) |Średnia z 278 komunikatów na minutę na jednostkę<br/>(400 000 komunikatów dziennie na jednostkę) |
+| B2, S2 |Do 16 MB na minutę na jednostkę<br/>(22,8 GB/dzień/jednostka) |Średnia z 4 167 komunikatów na minutę na jednostkę<br/>(6 000 000 komunikatów dziennie na jednostkę) |
+| B3, S3 |Do 814 MB/minutę na jednostkę<br/>(1144,4 GB/dzień/jednostka) |Średnia z 208 333 komunikatów na minutę na jednostkę<br/>(300 000 000 komunikatów dziennie na jednostkę) |
 
-Oprócz tego informacji o przepływności, zobacz [usługi IoT Hub, przydziały i ograniczenia](iot-hub-devguide-quotas-throttling.md) i w związku z tym zaprojektować rozwiązanie.
+Oprócz tych informacji o przepływności Zobacz przydziały [i ograniczenia dotyczące IoT Hub](iot-hub-devguide-quotas-throttling.md) i odpowiednio Projektuj rozwiązanie.
 
 ### <a name="identity-registry-operation-throughput"></a>Przepływność operacji rejestru tożsamości
 
-Operacje rejestru tożsamości usługi IoT Hub nie powinna być czasu wykonywania operacji, ponieważ są one głównie powiązane Inicjowanie obsługi administracyjnej urządzeń.
+Operacje rejestru tożsamości IoT Hub nie powinny być operacjami w czasie wykonywania, ponieważ są one głównie związane z aprowizacji urządzeń.
 
-W przypadku serii określonych liczb wydajności, zobacz [usługi IoT Hub, przydziały i ograniczenia](iot-hub-devguide-quotas-throttling.md).
+Aby uzyskać określone numery wydajności, zobacz [IoT Hub przydziały i ograniczenia](iot-hub-devguide-quotas-throttling.md).
 
 ## <a name="auto-scale"></a>Automatyczne skalowanie
 
-Jeśli zbliża się limit dozwolony wiadomości w usłudze IoT Hub, możesz użyć tych [kroki, aby automatycznie skalować](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/) się zwiększać jednostki usługi IoT Hub w tej samej warstwy usługi IoT Hub.
+Jeśli zbliżasz się do dozwolonego limitu komunikatów na IoT Hub, możesz użyć tych [kroków do automatycznego skalowania](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/) , aby zwiększyć jednostkę IoT Hub w tej samej warstwie IoT Hub.
 
-## <a name="sharding"></a>Dzielenie na fragmenty
+## <a name="next-steps"></a>Następne kroki
 
-W jednym centrum IoT umożliwia skalowanie do milionów urządzeń, czasami rozwiązanie wymaga charakterystyk wydajności zależnych, które nie może zagwarantować w jednym centrum IoT. W takim przypadku można podzielić urządzeń w wielu centrach IoT. Wiele centrów IoT smooth wzmożenia ruchu i uzyskać wymagany przepływności lub szybkości operacji, które są wymagane.
+* Aby uzyskać więcej informacji na temat IoT Hub możliwości i szczegółów wydajności, zobacz [IoT Hub cennika](https://azure.microsoft.com/pricing/details/iot-hub) lub [IoT Hub przydziałów i ograniczeń](iot-hub-devguide-quotas-throttling.md).
 
-## <a name="next-steps"></a>Kolejne kroki
-
-* Aby uzyskać więcej informacji na temat możliwości usługi IoT Hub i szczegółowe informacje dotyczące wydajności, zobacz [cenach usługi IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub) lub [usługi IoT Hub, przydziały i ograniczenia](iot-hub-devguide-quotas-throttling.md).
-
-* Aby zmienić warstwę usługi IoT Hub, wykonaj kroki opisane w [uaktualnianie Centrum IoT hub](iot-hub-upgrade.md).
+* Aby zmienić warstwę IoT Hub, wykonaj kroki opisane w sekcji [uaktualnianie Centrum IoT Hub](iot-hub-upgrade.md).

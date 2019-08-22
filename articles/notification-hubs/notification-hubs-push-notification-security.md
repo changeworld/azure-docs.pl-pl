@@ -1,6 +1,6 @@
 ---
-title: Notification Hubs zabezpieczeń
-description: W tym temacie wyjaśniono zabezpieczeń usługi Azure notification hubs.
+title: Zabezpieczenia Notification Hubs
+description: W tym temacie wyjaśniono zabezpieczenia centrów powiadomień platformy Azure.
 services: notification-hubs
 documentationcenter: .net
 author: jwargo
@@ -14,42 +14,40 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: jowargo
-ms.openlocfilehash: 3f5b23028094b545262e9c01640890f2c0b989ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73a6d0eaab286dec9d02bb55eb75f0781bcffcc4
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66431253"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891586"
 ---
-# <a name="notification-hubs-security"></a>Notification Hubs zabezpieczeń
+# <a name="notification-hubs-security"></a>Zabezpieczenia Notification Hubs
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
-W tym temacie opisano model zabezpieczeń usługi Azure Notification hubs.
+W tym temacie opisano model zabezpieczeń usługi Azure Notification Hubs.
 
-## <a name="shared-access-signature-security-sas"></a>Zabezpieczenia sygnatury dostępu współdzielonego (SAS)
+## <a name="shared-access-signature-security-sas"></a>Zabezpieczenia sygnatur dostępu współdzielonego (SAS)
 
-Notification Hubs implementuje schematu zabezpieczenia na poziomie jednostki o nazwie SAS (Shared Access Signature). Ten schemat pozwala jednostek obsługi komunikatów zadeklarować maksymalnie 12 reguły autoryzacji w swoim opisie, które udzielić praw tej jednostki.
+Notification Hubs implementuje schemat zabezpieczeń na poziomie jednostki o nazwie SAS (Sygnatura dostępu współdzielonego). Każda reguła zawiera nazwę, wartość klucza (wspólny klucz tajny) i zestaw praw, jak wyjaśniono w oświadczeniach [zabezpieczeń](#security-claims). Podczas tworzenia centrum powiadomień automatycznie tworzone są dwie reguły: jeden z prawami do nasłuchiwania (używane przez aplikację kliencką) i jeden z prawami (których zaplecze aplikacji).
 
-Każda reguła zawiera nazwę, wartość klucza (wspólny klucz tajny) i zestaw praw, jak wyjaśniono w [oświadczeń zabezpieczeń](#security-claims). Podczas tworzenia Centrum powiadomień, dwie reguły są tworzone automatycznie: jeden z **nasłuchiwania** uprawnień (aplikacja klienta używa) i jeden z **wszystkich** uprawnień (korzysta z zapleczem aplikacji).
+W przypadku zarządzania rejestracją w aplikacjach klienckich, jeśli informacje wysyłane za pośrednictwem powiadomień nie są poufne (na przykład aktualizacje pogody), typowym sposobem uzyskiwania dostępu do centrum powiadomień jest nadanie wartości klucza reguły dostępu tylko do aplikacji klienckiej. i aby dać wartość klucza reguły pełen dostęp do zaplecza aplikacji.
 
-Podczas przeprowadzania Zarządzanie rejestracją w aplikacjach klienckich, jeśli informacje są wysyłane za pośrednictwem powiadomienia nie jest wielkość liter (na przykład pogoda aktualizacji), typowym sposobem dostęp do danego centrum powiadomień jest oferowanie wartość klucza reguły dostępu tylko do nasłuchiwania aplikacji klienckiej i podać wartość klucza reguły pełny dostęp do zaplecza aplikacji.
+Aplikacje nie powinny osadzać wartości klucza w aplikacjach klienckich ze sklepu Windows, zamiast tego aplikacja kliencka pobiera ją z zaplecza aplikacji podczas uruchamiania.
 
-Aplikacje należy osadzić wartość klucza w aplikacji klienta Windows Store, nie ma zamiast tego pobierz ją z zaplecza aplikacji przy uruchamianiu aplikacji klienckiej.
+Klucz z dostępem do nasłuchiwania umożliwia aplikacji klienckiej rejestrację w celu dowolnych tagów. Jeśli aplikacja wymaga ograniczenia rejestracji do określonych klientów (na przykład gdy Tagi reprezentują identyfikatory użytkowników), zaplecze aplikacji musi wykonać rejestrację. Aby uzyskać więcej informacji, zobacz temat [Zarządzanie rejestracją](notification-hubs-push-notification-registration-management.md). Należy zauważyć, że w ten sposób aplikacja kliencka nie będzie mieć bezpośredniego dostępu do Notification Hubs.
 
-Klucz o **nasłuchiwania** aplikację kliencką do zarejestrowania dla każdego znacznika zezwala na dostęp. Jeśli aplikacja musi ograniczyć rejestracji do określonych tagów do określonych klientów (na przykład, jeśli znaczniki odpowiadają identyfikatory użytkowników), zaplecza aplikacji należy przeprowadzić rejestracji. Aby uzyskać więcej informacji, zobacz [Zarządzanie rejestracją](notification-hubs-push-notification-registration-management.md). Należy pamiętać, że w ten sposób aplikacja kliencka nie będzie miało bezpośredni dostęp do usługi Notification Hubs.
+## <a name="security-claims"></a>Oświadczenia zabezpieczeń
 
-## <a name="security-claims"></a>Oświadczeń zabezpieczeń
+Podobnie jak w przypadku innych jednostek, operacje centrum powiadomień są dozwolone dla trzech oświadczeń zabezpieczeń: **Słuchaj**, **wysyłania**i **zarządzania**.
 
-Podobnie jak inne podmioty, operacje Centrum powiadomień są dozwolone dla trzech oświadczeń zabezpieczeń: **Nasłuchiwanie**, **wysyłania**, i **zarządzanie**.
-
-| Claim   | Opis                                          | Dozwolone operacje |
+| Oświadczenie   | Opis                                          | Dozwolone operacje |
 | ------- | ---------------------------------------------------- | ------------------ |
-| Nasłuchiwanie  | Utwórz/zaktualizuj, Odczyt i usuwanie pojedynczego rejestracji | Utwórz/zaktualizuj rejestracji<br><br>Odczyt rejestracji<br><br>Odczyt wszystkich rejestracji dla dojścia<br><br>Usuwanie rejestracji |
-| Wysyłanie    | Wysyłanie komunikatów do Centrum powiadomień                | Wyślij wiadomość |
-| Zarządzanie  | CRUDs (w tym aktualizowanie poświadczenia systemu powiadomień platformy i kluczy zabezpieczeń) w usłudze Notification Hubs i odczytu rejestracji na podstawie tagów |Usługa tworzenia/aktualizacji/odczyt/usuwanie notification hubs<br><br>Odczyt rejestracji według tagu |
+| Nasłuchuj  | Tworzenie/aktualizowanie, odczytywanie i usuwanie pojedynczych rejestracji | Utwórz/zaktualizuj rejestrację<br><br>Odczytaj rejestrację<br><br>Odczytaj wszystkie rejestracje dla dojścia<br><br>Usuń rejestrację |
+| Wyślij    | Wysyłanie komunikatów do centrum powiadomień                | Wyślij wiadomość |
+| Zarządzanie  | CRUDs na Notification Hubs (w tym aktualizowanie poświadczeń PNS i kluczy zabezpieczeń) oraz odczytywanie rejestracji w oparciu o Tagi |Tworzenie/aktualizowanie/odczytywanie/usuwanie centrów powiadomień<br><br>Odczytaj rejestracje według tagu |
 
-Notification Hubs akceptuje podpisu wygenerować tokeny z udostępnione klucze skonfigurowane bezpośrednio w Centrum powiadomień.
+Notification Hubs akceptuje tokeny sygnatur wygenerowane z użyciem kluczy udostępnionych skonfigurowanych bezpośrednio w centrum powiadomień.
 
-Nie jest możliwe wysłanie powiadomienia do więcej niż jednej przestrzeni nazw. Przestrzenie nazw to kontener logiczny dla usługi notification hubs i nie są związane z wysyłaniem powiadomień.
-Zasady dostępu na poziomie przestrzeni nazw (poświadczenia) może służyć do operacji na poziomie przestrzeni nazw, na przykład: wyświetlanie listy usługi notification hubs, tworzenie lub usuwanie usługi notification hubs, itp. Tylko zasady dostępu na poziomie koncentratora będzie można wysyłać powiadomienia.
+Wysłanie powiadomienia do więcej niż jednej przestrzeni nazw nie jest możliwe. Przestrzenie nazw są logicznymi kontenerami dla centrów powiadomień i nie są związane z wysyłaniem powiadomień.
+Zasady dostępu na poziomie przestrzeni nazw (poświadczenia) mogą być używane dla operacji na poziomie przestrzeni nazw, na przykład: Wyświetlanie listy centrów powiadomień, tworzenie lub usuwanie centrów powiadomień itp. Tylko zasady dostępu na poziomie centrum umożliwiają wysyłanie powiadomień.

@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9b7157cd58abc7f1fecf288e72b0232c8a67b7ee
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 4aa948a785153dd0d70a9af41ae0ed25036827f8
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512591"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656266"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Korzystanie z modelu usługi Azure Machine Learning, wdrożyć jako usługę sieci web
 
@@ -43,7 +43,7 @@ Klasa [Azure. Core. WebService](https://docs.microsoft.com/python/api/azureml-co
 * `auth_enabled`-Jeśli jest włączone `True`uwierzytelnianie klucza; `False`w przeciwnym razie.
 * `token_auth_enabled`-Jeśli uwierzytelnianie tokenu jest włączone, `True`w przeciwnym razie `False`,.
 * `scoring_uri` Adres interfejsu API REST.
-
+* `swagger_uri`-Adres specyfikacji OpenAPI. Ten identyfikator URI jest dostępny po włączeniu automatycznego generowania schematu. Aby uzyskać więcej informacji, zobacz [Wdrażanie modeli za pomocą usługi Azure Machine Learning](how-to-deploy-and-where.md#schema).
 
 Istnieją trzy sposoby, aby pobrać te informacje dotyczące wdrożonymi usługami sieci web:
 
@@ -56,6 +56,7 @@ Istnieją trzy sposoby, aby pobrać te informacje dotyczące wdrożonymi usługa
                                            image_config=image_config,
                                            workspace=ws)
     print(service.scoring_uri)
+    print(service.swagger_uri)
     ```
 
 * Możesz użyć `Webservice.list` można pobrać listy wdrożonych usług sieci web dla modeli w obszarze roboczym. Można dodać filtry, aby zawęzić listę informacje zwrócone. Aby uzyskać więcej informacji o tym, co można filtrować, zobacz dokumentację dotyczącą usługi [WebService. list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) .
@@ -63,6 +64,7 @@ Istnieją trzy sposoby, aby pobrać te informacje dotyczące wdrożonymi usługa
     ```python
     services = Webservice.list(ws)
     print(services[0].scoring_uri)
+    print(services[0].swagger_uri)
     ```
 
 * Jeśli znasz nazwę wdrożonej usługi, możesz utworzyć nowe wystąpienie programu `Webservice`i podać nazwę obszaru roboczego i usługi jako parametry. Nowy obiekt zawiera informacje o wdrożonej usługi.
@@ -70,11 +72,12 @@ Istnieją trzy sposoby, aby pobrać te informacje dotyczące wdrożonymi usługa
     ```python
     service = Webservice(workspace=ws, name='myservice')
     print(service.scoring_uri)
+    print(service.swagger_uri)
     ```
 
 ### <a name="authentication-for-services"></a>Uwierzytelnianie dla usług
 
-Azure Machine Learning zapewnia dwa sposoby kontroli dostępu do usług sieci Web. 
+Azure Machine Learning zapewnia dwa sposoby kontroli dostępu do usług sieci Web.
 
 |Metoda uwierzytelniania|ACI|AKS|
 |---|---|---|

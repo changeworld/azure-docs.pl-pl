@@ -1,24 +1,21 @@
 ---
 title: Azure Functions skalowanie i hosting | Microsoft Docs
 description: Dowiedz się, jak wybierać między planem zużycia Azure Functions a planem Premium.
-services: functions
-documentationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 keywords: Azure Functions, Functions, plan zużycia, plan Premium, przetwarzanie zdarzeń, elementy webhook, dynamiczne obliczenia, architektura bezserwerowa
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.service: azure-functions
-ms.devlang: multiple
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fdef1457254b6deb8a0b791b11c94154518b4301
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: c39ee29b9a4449000d44e44bc6feae407cf4cd38
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69636433"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874949"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions skalowanie i hosting
 
@@ -143,9 +140,6 @@ Aby dowiedzieć się więcej na temat typów kont magazynu, zobacz [wprowadzenie
 W planach zużycia i Premium infrastruktura Azure Functions skaluje zasoby procesora i pamięci, dodając kolejne wystąpienia hosta funkcji na podstawie liczby zdarzeń wyzwalanych przez jej funkcje. Każde wystąpienie hosta funkcji w planie zużycia jest ograniczone do 1,5 GB pamięci i jednego procesora CPU.  Wystąpieniem hosta jest cała aplikacja funkcji, co oznacza, że wszystkie funkcje w ramach zasobu funkcji udział aplikacji w ramach wystąpienia i skalowania w tym samym czasie. Aplikacje funkcji, które współużytkują ten sam plan zużycia, są skalowane niezależnie.  W planie Premium rozmiar planu określi dostępną pamięć i procesor dla wszystkich aplikacji w tym wystąpieniu.  
 
 Pliki kodu funkcji są przechowywane w udziałach Azure Files na głównym koncie magazynu funkcji. Po usunięciu głównego konta magazynu aplikacji funkcji pliki kodu funkcji zostaną usunięte i nie będzie można go odzyskać.
-
-> [!NOTE]
-> W przypadku korzystania z wyzwalacza obiektu BLOB w planie zużycia może istnieć maksymalnie 10 minut opóźnienia w przetwarzaniu nowych obiektów BLOB. To opóźnienie występuje, gdy aplikacja funkcji przestała działać. Po uruchomieniu aplikacji funkcji obiekty blob są przetwarzane natychmiast. Aby uniknąć tego opóźnienia zimnego startu, użyj planu Premium lub użyj wyzwalacza [Event Grid](functions-bindings-event-grid.md). Aby uzyskać więcej informacji, zobacz artykuł dotyczący [powiązań wyzwalacza obiektów BLOB](functions-bindings-storage-blob.md#trigger).
 
 ### <a name="runtime-scaling"></a>Skalowanie środowiska uruchomieniowego
 

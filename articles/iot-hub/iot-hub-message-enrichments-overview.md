@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 5ef1749217dd8980892d7bf933cbe1412929fbbd
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 9e3df59af33d6e5fdd1024d42c34dc2b4ed3184e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976993"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873194"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>Wzbogacanie komunikatów dla komunikatów IoT Hub między urządzeniami a chmurą (wersja zapoznawcza)
 
@@ -76,6 +76,8 @@ Aby dowiedzieć się, jak wypróbować wzbogacanie komunikatów, zobacz [Samoucz
 
 * Łączny rozmiar komunikatów, łącznie z wzbogacami, nie może przekroczyć 256 KB. Jeśli rozmiar komunikatu przekracza 256 KB, IoT Hub spowoduje porzucenie komunikatu. Za pomocą [metryk IoT Hub](iot-hub-metrics.md) można identyfikować i debugować błędy podczas usuwania komunikatów. Na przykład można monitorować D2C. telemetrię. ruch wychodzący. nieprawidłowy.
 
+* Wzbogacanie komunikatów nie mają zastosowania do zdarzeń zmiany wieloosiowych (część [Plug and Play publicznej wersji zapoznawczej IoT](../iot-pnp/overview-iot-plug-and-play.md)).
+
 ## <a name="pricing"></a>Cennik
 
 Wzbogacanie komunikatów są dostępne bez dodatkowych opłat. Obecnie opłata jest naliczana w przypadku wysyłania komunikatu do IoT Hub. Opłata jest naliczana tylko raz dla tego komunikatu, nawet jeśli komunikat przejdzie do wielu punktów końcowych.
@@ -87,6 +89,8 @@ Ta funkcja jest dostępna w wersji zapoznawczej i jest dostępna we wszystkich r
 ## <a name="next-steps"></a>Następne kroki
 
 Zapoznaj się z tymi artykułami, aby uzyskać więcej informacji na temat routingu komunikatów do IoT Hub:
+
+* [Samouczek dotyczący ulepszeń komunikatów](tutorial-message-enrichments.md)
 
 * [Używanie routingu komunikatów IoT Hub do wysyłania komunikatów z urządzenia do chmury do różnych punktów końcowych](iot-hub-devguide-messages-d2c.md)
 

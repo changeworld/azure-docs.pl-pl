@@ -5,15 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 6/1/2019
+ms.date: 08/22/2019
 ms.author: victorh
-ms.openlocfilehash: 5bfb3a093cd101f30daf4439dc8f58b5b4f693ca
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: da8142ad035eec338a3c1ba1a23be7c2be470a04
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68740886"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891721"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Często zadawane pytania dotyczące Application Gateway
 
@@ -361,6 +360,13 @@ Można również użyć szablonu Menedżer zasobów, który służy do instalowa
 ### <a name="what-could-cause-backend-health-to-return-an-unknown-status"></a>Co może spowodować, że kondycja zaplecza zwróci nieznany stan?
 
 Zazwyczaj w przypadku zablokowania dostępu do zaplecza przez grupę zabezpieczeń sieci (sieciowej grupy zabezpieczeń), niestandardowy serwer DNS lub Routing zdefiniowany przez użytkownika (UDR) w podsieci bramy aplikacji jest wyświetlany nieznany stan. Aby uzyskać więcej informacji, zobacz temat [kondycja zaplecza, rejestrowanie diagnostyki i metryki dla Application Gateway](application-gateway-diagnostics.md).
+
+### <a name="is-there-any-case-where-nsg-flow-logs-wont-show-allowed-traffic"></a>Czy istnieją przypadki, w których dzienniki przepływu sieciowej grupy zabezpieczeń nie będą pokazywały dozwolonego ruchu?
+
+Tak. Jeśli konfiguracja pasuje do poniższego scenariusza, w dziennikach przepływu sieciowej grupy zabezpieczeń nie będzie widoczny dozwolony ruch:
+- Wdrożono Application Gateway v2
+- Masz sieciowej grupy zabezpieczeń w podsieci bramy aplikacji
+- Włączono dzienniki przepływu sieciowej grupy zabezpieczeń na tym sieciowej grupy zabezpieczeń
 
 ## <a name="next-steps"></a>Następne kroki
 

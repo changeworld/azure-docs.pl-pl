@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/09/2019
+ms.date: 08/20/2019
 ms.author: v-adgera
-ms.openlocfilehash: 7ceb36d818c84642461372f0df70c8088908550c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 66dbfd09ef07740c07ddb010b73e33e783340e5a
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965812"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873644"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Jak skonfigurować usługę Poster dla usługi bliźniaczych reprezentacji Digital
 
@@ -53,7 +53,9 @@ Skonfiguruj aplikację Azure Active Directory tak, aby korzystała z niejawnego 
 
 ## <a name="obtain-an-oauth-20-token"></a>Uzyskaj token OAuth 2,0
 
-Następnie skonfiguruj i skonfiguruj program do ogłaszania w celu uzyskania tokenu Azure Active Directory. Następnie należy wykonać uwierzytelnione żądanie HTTP na platformie Azure Digital bliźniaczych reprezentacji przy użyciu uzyskanego tokenu:
+[!INCLUDE [digital-twins-management-api](../../includes/digital-twins-management-api.md)]
+
+Skonfiguruj i skonfiguruj aplikację do ogłaszania w celu uzyskania tokenu Azure Active Directory. Następnie należy wykonać uwierzytelnione żądanie HTTP na platformie Azure Digital bliźniaczych reprezentacji przy użyciu uzyskanego tokenu:
 
 1. Przejdź do [www.getpostman.com](https://www.getpostman.com/) , aby pobrać aplikację.
 1. Sprawdź, czy **adres URL autoryzacji** jest poprawny. Powinien on mieć format:
@@ -62,7 +64,7 @@ Następnie skonfiguruj i skonfiguruj program do ogłaszania w celu uzyskania tok
     https://login.microsoftonline.com/YOUR_AZURE_TENANT.onmicrosoft.com/oauth2/authorize?resource=0b07f429-9f4b-4714-9392-cc5e8e80c8b0
     ```
 
-    | Name (Nazwa)  | Zamień na | Przykład |
+    | Name  | Zamień na | Przykład |
     |---------|---------|---------|
     | YOUR_AZURE_TENANT | Nazwa dzierżawy lub organizacji | `microsoft` |
 
@@ -75,7 +77,7 @@ Następnie skonfiguruj i skonfiguruj program do ogłaszania w celu uzyskania tok
     | Adres URL uwierzytelniania | Użyj **adresu URL autoryzacji** z kroku 2 |
     | Identyfikator klienta | Użyj **identyfikatora aplikacji** dla aplikacji Azure Active Directory, która została utworzona lub przetworzona w poprzedniej sekcji |
     | Scope | Pozostaw puste |
-    | Stan | Pozostaw puste |
+    | State | Pozostaw puste |
     | Uwierzytelnianie klienta | `Send as Basic Auth header` |
 
 1. Klient powinien teraz wyglądać następująco:

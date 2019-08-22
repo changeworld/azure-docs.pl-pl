@@ -9,16 +9,18 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 56ced4f5e2fd0fbf829f72cff2413998398a7a09
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 30bfd3b119b3ae4badbda50747158e8b08a9dd08
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066017"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875522"
 ---
 # <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Samouczek: Konfigurowanie reguł i akcji dla urządzenia w usłudze Azure IoT Central
 
 *Ten artykuł dotyczy operatorów, konstruktorów i administratorów.*
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 W ramach tego samouczka jest tworzona reguła, która powoduje wysyłanie wiadomości e-mail, gdy temperatura w połączonym klimatyzatorze przekroczy 90&deg; F.
 
@@ -26,7 +28,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 > [!div class="checklist"]
 > * Tworzenie reguły opartej na danych telemetrycznych
-> * Dodawanie akcji
+> * Dodaj akcję
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -34,15 +36,15 @@ Przed rozpoczęciem należy ukończyć samouczek [Definiowanie nowego typu urzą
 
 ## <a name="create-a-telemetry-based-rule"></a>Tworzenie reguły opartej na danych telemetrycznych
 
-1. Aby dodać nowej reguły na podstawie danych telemetrycznych aplikacji, w menu nawigacji po lewej stronie wybierz **szablonów urządzeń**:
+1. Aby dodać nową regułę opartą na telemetrii do aplikacji, w menu nawigacji po lewej stronie wybierz pozycję **Szablony urządzeń**:
 
     ![Strona Szablony urządzeń](media/tutorial-configure-rules/templatespage1.png)
 
     Zostanie wyświetlony szablon urządzenia **Połączony klimatyzator (1.0.0)** utworzony w ramach poprzedniego samouczka.
 
-2. Aby dostosować szablon urządzenia, wybierz opcję **połączone klimatyzacyjne** szablon utworzony w poprzednim samouczku.
+2. Aby dostosować szablon urządzenia, wybierz szablon **warunki połączonego środowiska AIR** utworzony w poprzednim samouczku.
 
-3. Można dodać reguły na podstawie danych telemetrycznych w **reguły** widoku, wybierz opcję **reguły**, wybierz opcję **+ Nowa reguła**, a następnie wybierz **Telemetrii**:
+3. Aby dodać regułę opartą na telemetrii w widoku **reguły** , wybierz pozycję **reguły**, wybierz pozycję **+ Nowa reguła**, a następnie wybierz pozycję **Telemetria**:
 
     ![Widok Reguły](media/tutorial-configure-rules/newrule.png)
 
@@ -50,7 +52,7 @@ Przed rozpoczęciem należy ukończyć samouczek [Definiowanie nowego typu urzą
 
     | Ustawienie                                      | Wartość                             |
     | -------------------------------------------- | ------------------------------    |
-    | Name (Nazwa)                                         | Alert temperatury klimatyzatora |
+    | Name                                         | Alert temperatury klimatyzatora |
     | Włącz regułę dla wszystkich urządzeń z tego szablonu | Włączone                                |
     | Warunek                                    | Temperatura jest wyższa niż 90    |
     | Agregacja                                  | Brak                              |
@@ -59,7 +61,7 @@ Przed rozpoczęciem należy ukończyć samouczek [Definiowanie nowego typu urzą
 
     Następnie wybierz pozycję **Zapisz**.
 
-## <a name="add-an-action"></a>Dodawanie akcji
+## <a name="add-an-action"></a>Dodaj akcję
 
 W ramach definiowania reguły definiuje się także akcję uruchamianą, gdy warunki reguły są spełnione. W tym samouczku utworzysz regułę z akcją, która będzie wysyłać wiadomość e-mail z powiadomieniem.
 
@@ -69,9 +71,9 @@ W ramach definiowania reguły definiuje się także akcję uruchamianą, gdy war
 
 2. Aby zdefiniować akcję, użyj informacji w poniższej tabeli:
 
-    | Ustawienie   | Wartość                          |
+    | Ustawienie   | Value                          |
     | --------- | ------------------------------ |
-    | Do        | Twój adres e-mail             |
+    | Zadanie        | Twój adres e-mail             |
     | Uwagi     | Temperatura klimatyzatora przekracza wartość progową. |
 
     > [!NOTE]
@@ -88,14 +90,14 @@ Wkrótce po zapisaniu reguły stanie się ona aktywna. Gdy warunki zdefiniowane 
 > [!NOTE]
 > Po zakończeniu testowania wyłącz regułę, aby zatrzymać wysyłanie wiadomości do Twojej skrzynki odbiorczej.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 <!-- Repeat task list from intro -->
 > [!div class="nextstepaction"]
 > * Tworzenie reguły opartej na danych telemetrycznych
-> * Dodawanie akcji
+> * Dodaj akcję
 
 Teraz, gdy zdefiniowano regułę opartą na wartości progowej, sugerowanym następnym krokiem jest [dostosowanie widoków operatora](tutorial-customize-operator.md).
 

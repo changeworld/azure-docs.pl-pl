@@ -1,6 +1,6 @@
 ---
-title: 'Szybki start: Wykonywanie skryptu języka R w klastrze usługi ML w usłudze Azure HDInsight przy użyciu programu RStudio Server'
-description: W przewodniku Szybki Start można wykonać skryptu języka R w klastrze usługi ML w usłudze Azure HDInsight przy użyciu programu RStudio Server.
+title: 'Szybki start: Wykonywanie skryptu języka R w klastrze usług ML w usłudze Azure HDInsight przy użyciu serwera RStudio'
+description: W ramach przewodnika Szybki Start wykonujesz skrypt języka R w klastrze usług ML w usłudze Azure HDInsight przy użyciu serwera RStudio.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,32 +8,32 @@ ms.topic: quickstart
 ms.date: 06/19/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 484763adfa154dcdf226b03f1f591d248532ee35
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 295430027afabcfcf793a87ae5859dc9c6675966
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450919"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876310"
 ---
-# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-rstudio-server"></a>Szybki start: Wykonywanie skryptu języka R w klastrze usługi ML w usłudze Azure HDInsight przy użyciu programu RStudio Server
+# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-rstudio-server"></a>Szybki start: Wykonywanie skryptu języka R w klastrze usług ML w usłudze Azure HDInsight przy użyciu serwera RStudio
 
-Usługi ML w usłudze Azure HDInsight pozwala skryptom języka R używać platformy Apache Spark i Apache Hadoop MapReduce do wykonywania obliczeń rozproszonych. Usługi ML Określa, jak wywołania są wykonywane przez ustawienie kontekstu obliczeniowego. Węzeł krawędzi klastra zapewnia wygodne miejsce do łączenia z klastrem i do uruchamiania skryptów języka R. Z węzłem krawędzi istnieje możliwość uruchamiania równoległego rozproszonego funkcje kolekcję funkcji RevoScaleR między rdzeniami serwera węzła krawędzi. Można również uruchomić je w węzłach klastra za pomocą jego RevoScaleR Hadoop Mapreduce lub konteksty wystąpień obliczeniowych platformy Apache Spark.
+Usługi ML w usłudze Azure HDInsight umożliwiają używanie skryptów języka R Apache Spark i Apache Hadoop MapReduce do uruchamiania obliczeń rozproszonych. Usługa ML kontroluje sposób wykonywania wywołań przez ustawienie kontekstu obliczeniowego. Węzeł brzegowy klastra zapewnia wygodne miejsce do łączenia się z klastrem i uruchamiania skryptów języka R. Węzeł brzegowy umożliwia uruchamianie równoległych funkcji rozproszonych kolekcję funkcji revoscaler na różnych rdzeniach serwera węzła brzegowego. Można je również uruchamiać w węzłach klastra przy użyciu mapy usługi Hadoop w usłudze kolekcję funkcji revoscaler, zmniejszając lub Apache Spark konteksty obliczeniowe.
 
-W tym przewodniku Szybki Start dowiesz się, jak uruchomić skrypt języka R z programu RStudio Server, który demonstruje sposób użycia platformy Spark dla rozproszone obliczenia R. Określi kontekst obliczeniowy do wykonywania obliczeń lokalnie w węźle krawędzi, a następnie ponownie rozłożona na węzły w klastrze HDInsight.
+W tym przewodniku szybki start dowiesz się, jak uruchomić skrypt języka R z serwerem RStudio, który demonstruje użycie platformy Spark w przypadku obliczeń rozproszonych języka R. Zdefiniujesz kontekst obliczeniowy do wykonywania obliczeń lokalnie w węźle brzegowym i ponownie dystrybuowany w węzłach klastra usługi HDInsight.
 
 ## <a name="prerequisite"></a>Wymagania wstępne
 
-Klaster usługi ML HDInsight. Zobacz [tworzenie technologii Apache Hadoop clusters, przy użyciu witryny Azure portal](../hdinsight-hadoop-create-linux-clusters-portal.md) i wybierz **usługi ML** dla **typ klastra**.
+Klaster usługi ML w usłudze HDInsight. Zobacz [Tworzenie klastrów Apache Hadoop przy użyciu Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) i wybierz pozycję **usługi ml** dla **typu klastra**.
 
 ## <a name="connect-to-rstudio-server"></a>Łączenie z programem RStudio Server
 
-RStudio Server działa w węźle krawędzi klastra. Przejdź do następującego adresu URL gdzie `CLUSTERNAME` to nazwa utworzonego klastra usługi ML:
+Serwer RStudio jest uruchamiany w węźle brzegowym klastra. Przejdź do następującego adresu URL, `CLUSTERNAME` gdzie to nazwa utworzonego klastra usług ml:
 
 ```
 https://CLUSTERNAME.azurehdinsight.net/rstudio/
 ```
 
-Podczas pierwszego logowania należy dwukrotnego uwierzytelnienia. Dla pierwszego monitu dotyczącego uwierzytelniania Podaj identyfikator logowania administratora klastra i hasło, wartością domyślną jest `admin`. Dla drugiego monitu dotyczącego uwierzytelniania Podaj logowania SSH i hasło, wartością domyślną jest `sshuser`. Kolejne logowania wymagane tylko poświadczenia protokołu SSH.
+Gdy logujesz się po raz pierwszy, musisz uwierzytelnić się dwa razy. W przypadku pierwszego monitu o uwierzytelnienie Podaj nazwę logowania administratora klastra i hasło, `admin`wartość domyślna to. W przypadku drugiego monitu uwierzytelniania Podaj nazwę logowania SSH i hasło, wartość domyślna `sshuser`to. Kolejne logowania wymagają tylko poświadczeń SSH.
 
 Po nawiązaniu połączenia ekran powinien przypominać następujący zrzut ekranu:
 
@@ -41,7 +41,7 @@ Po nawiązaniu połączenia ekran powinien przypominać następujący zrzut ekra
 
 ## <a name="use-a-compute-context"></a>Używanie kontekstu obliczeniowego
 
-1. Z programu RStudio Server Użyj poniższego kodu, aby załadować przykładowe dane do domyślnego magazynu dla HDInsight:
+1. Z serwera RStudio należy użyć następującego kodu do załadowania przykładowych danych do domyślnego magazynu dla usługi HDInsight:
 
     ```RStudio
     # Set the HDFS (WASB) location of example data
@@ -76,9 +76,9 @@ Po nawiązaniu połączenia ekran powinien przypominać następujący zrzut ekra
      rxHadoopCopyFromLocal(source, bigDataDirRoot)
     ```
 
-    Ten krok może zająć około 8 minut.
+    Wykonanie tego kroku może potrwać około 8 minut.
 
-1. Utwórz trochę informacji o danych i zdefiniujmy dwa źródła danych. Wprowadź następujący kod w RStudio:
+1. Utwórz informacje o danych i zdefiniuj dwa źródła danych. Wprowadź następujący kod w RStudio:
 
     ```RStudio
     # Define the HDFS (WASB) file system
@@ -105,7 +105,7 @@ Po nawiązaniu połączenia ekran powinien przypominać następujący zrzut ekra
      formula = "ARR_DEL15 ~ ORIGIN + DAY_OF_WEEK + DEP_TIME + DEST"
     ```
 
-1. Uruchom regresję logistyczną na danych przy użyciu **lokalnego** kontekstu obliczeniowego. Wprowadź następujący kod w RStudio:
+1. Uruchom regresję logistyczną na danych za pomocą **lokalnego** kontekstu obliczeniowego. Wprowadź następujący kod w RStudio:
 
     ```RStudio
     # Set a local compute context
@@ -120,7 +120,7 @@ Po nawiązaniu połączenia ekran powinien przypominać następujący zrzut ekra
      summary(modelLocal)
     ```
 
-    Obliczenia powinno zająć około 7 minut. Powinny pojawić się dane wyjściowe kończące się wierszami podobnymi do następującego fragmentu kodu:
+    Obliczenia powinny zakończyć się w około 7 minutach. Powinny pojawić się dane wyjściowe kończące się wierszami podobnymi do następującego fragmentu kodu:
 
     ```output
     Data: airOnTimeDataLocal (RxTextData Data Source)
@@ -150,7 +150,7 @@ Po nawiązaniu połączenia ekran powinien przypominać następujący zrzut ekra
       Number of iterations: 7
     ```
 
-1. Uruchom ten sam przy użyciu regresji logistycznej **Spark** kontekstu. Dzięki kontekstowi aparatu Spark przetwarzanie jest dystrybuowane do wszystkich węzłów procesu roboczego w klastrze usługi HDInsight. Wprowadź następujący kod w RStudio:
+1. Uruchom tę samą regresję logistyczną za pomocą kontekstu **Spark** . Dzięki kontekstowi aparatu Spark przetwarzanie jest dystrybuowane do wszystkich węzłów procesu roboczego w klastrze usługi HDInsight. Wprowadź następujący kod w RStudio:
 
     ```RStudio
     # Define the Spark compute context
@@ -168,17 +168,20 @@ Po nawiązaniu połączenia ekran powinien przypominać następujący zrzut ekra
      summary(modelSpark)
     ```
 
-    Obliczenia powinno zająć około 5 minut.
+    Obliczenia powinny zakończyć się około 5 minut.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Po ukończeniu tego przewodnika Szybki Start możesz usunąć klaster. Dzięki usłudze HDInsight dane są przechowywane w usłudze Azure Storage, więc można bezpiecznie usunąć klaster, gdy nie jest używany. Opłaty za klaster usługi HDInsight są naliczane nawet wtedy, gdy nie jest używany. Ponieważ opłaty za klaster są wielokrotnie większe niż opłaty za magazyn, ze względów ekonomicznych warto usuwać klastry, gdy nie są używane.
+Po zakończeniu przewodnika Szybki Start możesz chcieć usunąć klaster. Dzięki usłudze HDInsight dane są przechowywane w usłudze Azure Storage, więc można bezpiecznie usunąć klaster, gdy nie jest używany. Opłaty za klaster usługi HDInsight są naliczane nawet wtedy, gdy nie jest używany. Ponieważ opłaty za klaster są wielokrotnie większe niż opłaty za magazyn, ze względów ekonomicznych warto usuwać klastry, gdy nie są używane.
 
-Aby usunąć klaster, zobacz [usunąć klaster usługi HDInsight przy użyciu przeglądarki, programu PowerShell lub interfejsu wiersza polecenia Azure](../hdinsight-delete-cluster.md).
+Aby usunąć klaster, zobacz [usuwanie klastra usługi HDInsight przy użyciu przeglądarki, programu PowerShell lub interfejsu wiersza polecenia platformy Azure](../hdinsight-delete-cluster.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki Start przedstawiono sposób uruchamiania skryptu R, za pomocą programu RStudio Server, który pokazano przy użyciu platformy Spark dla rozproszone obliczenia R.  Przejdź do następnego artykułu, aby dowiedzieć się, opcje, które są dostępne określić, czy i w jaki sposób wykonywania jest zrównoleglona na rdzeni węzła krawędzi lub klastra HDInsight.
+W tym przewodniku szybki start przedstawiono sposób uruchamiania skryptu języka R z serwerem RStudio, który pokazano przy użyciu platformy Spark dla rozproszonych obliczeń języka R.  Przejdź do następnego artykułu, aby dowiedzieć się, jakie opcje są dostępne, aby określić, czy i jak wykonywanie jest równoległe między rdzeniami węzła krawędzi lub klastra usługi HDInsight.
 
 > [!div class="nextstepaction"]
->[COMPUTE context options obliczeniowego usługi ML w HDInsight](./r-server-compute-contexts.md)
+>[Opcje kontekstu obliczeniowego dla usług ML w usłudze HDInsight](./r-server-compute-contexts.md)
+
+> [!NOTE]
+> Ta strona zawiera opis funkcji oprogramowania RStudio. Microsoft Azure HDInsight nie jest powiązany z RStudio, Inc.

@@ -1,7 +1,7 @@
 ---
 title: Narzędzie Eksplorator wyszukiwania do wykonywania zapytań dotyczących danych w Azure Portal-Azure Search
 description: Użyj narzędzi Azure Portal, takich jak Eksplorator wyszukiwania, aby wykonywać zapytania dotyczące indeksów w Azure Search. Wprowadź wyszukiwane terminy lub w pełni kwalifikowane ciągi wyszukiwania, używając składni zaawansowanej.
-manager: cgronlun
+manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 87e5ec82299ef9ddc8bc8756196bb2ace3d1f6f3
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: e941e487adaac38c4ec3bd61a58b4b0c61f4c80a
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414241"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649967"
 ---
 # <a name="search-explorer-for-querying-data-in-azure-search"></a>Eksplorator wyszukiwania do wykonywania zapytań dotyczących danych w Azure Search 
 
@@ -149,7 +149,7 @@ Porady dotyczące wyszukiwania w **Eksploratorze wyszukiwania**:
 + Wyrażenia zapytania i filtru muszą być łączone w składni obsługiwane przez Azure Search. Wartość domyślna to [prosta składnia](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), ale opcjonalnie można użyć pełnych [Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) dla bardziej zaawansowanych zapytań. [Wyrażenia filtru](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) są składnią OData.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W następujących zasobach udostępniono dodatkowe informacje o składni oraz przykłady.
 

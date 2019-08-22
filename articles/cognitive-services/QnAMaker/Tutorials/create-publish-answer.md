@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 01/24/2019
+ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: dfd0a04da9f4f728bd43d8d3fcd4c671e9b95a47
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f81492dcdd095762127baabda14da602c6698ef6
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562899"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69646990"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>Samouczek: używanie języka C# do tworzenia bazy wiedzy, a następnie odpowiadania na pytanie z bazy wiedzy
 
@@ -30,7 +30,7 @@ Ten samouczek przedstawia sposób programowego tworzenia i publikowania bazy wie
 > * Używanie programu Curl do wykonywania zapytań w bazie wiedzy
 
 
-Ten przewodnik Szybki start wywołuje interfejsy API usługi QnA Maker:
+To wywołanie narzędzia do szybkiego startu QnA Maker interfejsy API REST:
 
 * [Tworzenie bazy wiedzy](https://go.microsoft.com/fwlink/?linkid=2092179)
 * [Pobieranie szczegółów operacji](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)

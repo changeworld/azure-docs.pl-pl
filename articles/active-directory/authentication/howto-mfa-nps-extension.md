@@ -1,6 +1,6 @@
 ---
-title: Użyj istniejących serwerów zasad Sieciowych, zapewniając Azure MFA — usłudze Azure Active Directory
-description: Dodawanie funkcji weryfikacji dwuetapowej oparte na chmurze do istniejącej infrastruktury uwierzytelniania
+title: Użyj istniejących serwerów NPS w celu zapewnienia możliwości usługi Azure MFA — Azure Active Directory
+description: Dodawanie funkcji weryfikacji dwuetapowej opartej na chmurze do istniejącej infrastruktury uwierzytelniania
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,75 +11,75 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca6f79b5febdbf12c80ab85d07117bf937babef0
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 879404b264e9ea6c544c6edf509001b38997bb0c
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798208"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874344"
 ---
-# <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrowanie istniejącej infrastruktury NPS przy użyciu usługi Azure Multi-Factor Authentication
+# <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrowanie istniejącej infrastruktury NPS z usługą Azure MFA Authentication
 
-Rozszerzenia serwera zasad sieciowych (NPS) dla usługi Azure MFA dodaje oparte na chmurze usługa MFA możliwości do infrastruktury uwierzytelniania przy użyciu istniejących serwerów. Za pomocą rozszerzenia serwera NPS można dodać połączenie telefoniczne, wiadomość SMS lub weryfikacji aplikacji telefonicznej do istniejącego przepływu uwierzytelniania bez konieczności instalowania, konfigurowania i konserwacji nowe serwery. 
+Rozszerzenie serwera zasad sieciowych (NPS) dla usługi Azure MFA dodaje funkcje MFA oparte na chmurze do infrastruktury uwierzytelniania przy użyciu istniejących serwerów. Za pomocą rozszerzenia serwera NPS można dodać połączenie telefoniczne, wiadomość tekstową lub weryfikację aplikacji telefonicznej do istniejącego przepływu uwierzytelniania bez konieczności instalowania, konfigurowania i konserwowania nowych serwerów. 
 
-To rozszerzenie został utworzony dla organizacji, które chcesz chronić połączenia sieci VPN bez wdrażania serwera usługi Azure MFA. Rozszerzenia serwera NPS działa jako karty między RADIUS i oparte na chmurze usługi Azure MFA, aby zapewnić drugi składnik uwierzytelniania federacyjnego lub zsynchronizowanych użytkowników.
+To rozszerzenie zostało utworzone dla organizacji, które chcą chronić połączenia sieci VPN bez wdrażania serwera usługi Azure MFA. Rozszerzenie serwera NPS pełni rolę karty między usługą Azure MFA a opartą na chmurze, aby zapewnić drugi czynnik uwierzytelniania dla federacyjnych lub synchronizowanych użytkowników.
 
-W przypadku używania rozszerzenia serwera NPS dla usługi Azure MFA, przepływ uwierzytelniania obejmuje następujące składniki: 
+W przypadku korzystania z rozszerzenia serwera NPS dla usługi Azure MFA przepływ uwierzytelniania obejmuje następujące składniki: 
 
-1. **Serwer sieci VPN naNAS/** odbiera żądania od klientów sieci VPN i konwertuje je na serwery NPS żądania usługi RADIUS. 
-2. **Serwer NPS** nawiązanie połączenia z usługi Active Directory w celu przeprowadzenia podstawowego uwierzytelniania dla żądań usługi RADIUS, a w razie powodzenia, przekazuje żądanie do wszystkich zainstalowanych rozszerzeń.  
-3. **Rozszerzenia serwera NPS** wyzwala żądania do usługi Azure MFA uwierzytelniania pomocniczego. Po rozszerzenie odbiera odpowiedź, a jeśli żądanie uwierzytelniania MFA zakończy się powodzeniem, kończy żądanie uwierzytelniania, zapewniając serwera NPS przy użyciu tokenów zabezpieczających, które zawierają oświadczenia usługi MFA, wystawiony przez usługę STS platformy Azure.  
-4. **Usługa Azure MFA** komunikuje się z usługą Azure Active Directory, aby pobrać szczegóły użytkownika i wykonuje dodatkowego uwierzytelniania przy użyciu metody weryfikacji, skonfigurowane dla użytkownika.
+1. **Serwer nas/VPN** odbiera żądania od klientów sieci VPN i konwertuje je na żądania usługi RADIUS do serwerów NPS. 
+2. **Serwer NPS** łączy się z Active Directory w celu przeprowadzenia podstawowego uwierzytelniania dla żądań RADIUS, a po pomyślnym przekazanie żądania do dowolnych zainstalowanych rozszerzeń.  
+3. **Rozszerzenie serwera NPS** wyzwala żądanie do usługi Azure MFA na potrzeby uwierzytelniania pomocniczego. Gdy rozszerzenie odbierze odpowiedź, a jeśli wyzwanie usługi MFA powiedzie się, kończy żądanie uwierzytelnienia, dostarczając serwer zasad sieciowych z tokenami zabezpieczającymi, które zawierają żądanie MFA wystawione przez usługę Azure STS.  
+4. **Usługa Azure MFA** komunikuje się z Azure Active Directory, aby pobrać szczegóły użytkownika i wykonuje uwierzytelnianie pomocnicze przy użyciu metody weryfikacji skonfigurowanej dla użytkownika.
 
-Na poniższym diagramie przedstawiono ten przepływ żądania uwierzytelniania wysokiego poziomu: 
+Na poniższym diagramie przedstawiono przepływ żądań uwierzytelniania wysokiego poziomu: 
 
 ![Diagram przepływu uwierzytelniania](./media/howto-mfa-nps-extension/auth-flow.png)
 
 ## <a name="plan-your-deployment"></a>Planowanie wdrożenia
 
-Rozszerzenia serwera NPS automatycznie obsługuje nadmiarowość, więc nie trzeba specjalnej konfiguracji.
+Rozszerzenie NPS automatycznie obsługuje nadmiarowość, dlatego nie jest potrzebna specjalna konfiguracja.
 
-Można utworzyć dowolną liczbę serwerów NPS z obsługą usługi Azure MFA. Instalacji wielu serwerów, należy używać certyfikatu klienta różnicy dla każdego z nich. Tworzenie certyfikatu dla każdego serwera oznacza indywidualnie zaktualizować każdego certyfikatu, a nie martwić się o przestoje na wszystkich serwerach.
+W razie potrzeby można utworzyć dowolną liczbę serwerów NPS z obsługą usługi Azure MFA. W przypadku instalowania wielu serwerów należy użyć różnicowego certyfikatu klienta dla każdej z nich. Tworzenie certyfikatu dla każdego serwera oznacza, że każdy certyfikat można zaktualizować osobno i nie martw się o przestoje na wszystkich serwerach.
 
-Serwery sieci VPN trasy żądań uwierzytelniania, w związku z czym muszą znać nowe serwery NPS z obsługą usługi Azure MFA.
+Serwery sieci VPN rozsyłają żądania uwierzytelniania, dlatego muszą mieć świadomość istnienia nowych serwerów NPS z obsługą usługi Azure MFA.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Rozszerzenia serwera NPS jest przeznaczony do pracy z istniejącą infrastrukturą. Upewnij się, że masz następujące wymagania wstępne, przed przystąpieniem do wykonywania.
+Rozszerzenie serwera NPS jest przeznaczone do pracy z istniejącą infrastrukturą. Przed rozpoczęciem upewnij się, że zostały spełnione następujące wymagania wstępne.
 
 ### <a name="licenses"></a>Licencje
 
-Rozszerzenia serwera NPS dla usługi Azure MFA jest dostępna dla klientów z [licencji dla usługi Azure Multi-Factor Authentication](multi-factor-authentication.md) (dołączone do usługi Azure AD Premium, EMS lub licencję autonomiczną usługi MFA). Na podstawie użycia licencji na usługę Azure MFA, takich jak dla określonego użytkownika lub uwierzytelnianie licencji na nie są zgodne z rozszerzeniem serwera NPS. 
+Rozszerzenie serwera NPS dla usługi Azure MFA jest dostępne dla klientów z [licencjami na uwierzytelnianie wieloskładnikowe systemu Azure](multi-factor-authentication.md) (w tym Azure AD — wersja Premium, EMS lub autonomiczną licencję usługi MFA). Licencje na korzystanie z usługi Azure MFA, takie jak na użytkownika lub licencje uwierzytelniania, są niezgodne z rozszerzeniem serwera NPS. 
 
 ### <a name="software"></a>Oprogramowanie
 
-Windows Server 2008 R2 z dodatkiem SP1 lub nowszego.
+Windows Server 2008 R2 z dodatkiem SP1 lub nowszym.
 
 ### <a name="libraries"></a>Biblioteki
 
 Te biblioteki są instalowane automatycznie z rozszerzeniem.
 
-- [Pakiety Visual C++ Redistributable for Visual Studio 2013 (X64)](https://www.microsoft.com/download/details.aspx?id=40784)
-- [Microsoft Azure Active Directory Module for Windows PowerShell w wersji 1.1.166.0](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)
+- [Pakiety C++ redystrybucyjne Visual dla Visual Studio 2013 (x64)](https://www.microsoft.com/download/details.aspx?id=40784)
+- [Moduł Microsoft Azure Active Directory dla Windows PowerShell wersja 1.1.166.0](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)
 
-Microsoft Azure Active Directory Module for Windows PowerShell jest zainstalowany, jeśli nie jest jeszcze obecna, za pomocą skryptu konfiguracji, który można uruchomić jako część procesu instalacji. Nie ma potrzeby do zainstalowania tego modułu wcześniej, jeśli nie został jeszcze zainstalowany.
+Moduł Microsoft Azure Active Directory dla Windows PowerShell jest zainstalowany, jeśli jeszcze nie istnieje, za pomocą skryptu konfiguracji uruchamianego w ramach procesu instalacji. Nie ma potrzeby instalowania tego modułu przed czasem, jeśli nie został jeszcze zainstalowany.
 
 ### <a name="azure-active-directory"></a>Usługa Azure Active Directory
 
-Wszyscy przy użyciu rozszerzenia serwera NPS musi być synchronizowane z usługą Azure Active Directory za pomocą usługi Azure AD Connect, a musi być zarejestrowana na potrzeby uwierzytelniania Wieloskładnikowego.
+Każdy użytkownik korzystający z rozszerzenia serwera NPS musi być synchronizowany do Azure Active Directory przy użyciu Azure AD Connect i musi być zarejestrowany dla usługi MFA.
 
-Podczas instalowania rozszerzenia potrzebne poświadczenia Identyfikatora i administratora katalogu dla dzierżawy usługi Azure AD. Można znaleźć Identyfikatora katalogu w [witryny Azure portal](https://portal.azure.com). Zaloguj się jako administrator, wybierz opcję **usługi Azure Active Directory** ikonę po lewej stronie, następnie wybierz pozycję **właściwości**. Skopiuj identyfikator GUID w **identyfikator katalogu** pole, a następnie zapisz go. Użyjesz tego identyfikatora GUID jako identyfikator dzierżawy, po zainstalowaniu rozszerzenia serwera NPS.
+Po zainstalowaniu rozszerzenia wymagany jest identyfikator katalogu i poświadczenia administratora dla dzierżawy usługi Azure AD. Można znaleźć Identyfikatora katalogu w [witryny Azure portal](https://portal.azure.com). Zaloguj się jako administrator, wybierz ikonę **Azure Active Directory** po lewej stronie, a następnie wybierz pozycję **Właściwości**. Skopiuj identyfikator GUID w polu **Identyfikator katalogu** i Zapisz go. Ten identyfikator GUID jest używany jako identyfikator dzierżawy podczas instalowania rozszerzenia serwera NPS.
 
-![Znajdź swój identyfikator katalogu, w obszarze właściwości usługi Azure Active Directory](./media/howto-mfa-nps-extension/find-directory-id.png)
+![Znajdź identyfikator katalogu w obszarze Azure Active Directory właściwości](./media/howto-mfa-nps-extension/find-directory-id.png)
 
 ### <a name="network-requirements"></a>Wymagania dotyczące sieci
 
-Serwer NPS musi być w stanie komunikować się z następujących adresów URL przez porty 80 i 443.
+Serwer NPS musi mieć możliwość komunikowania się z następującymi adresami URL za pośrednictwem portów 80 i 443.
 
 - https:\//adnotifications.windowsazure.com
 - https:\//login.microsoftonline.com
 
-Ponadto do ukończenia jest wymagana łączność z następującymi adresami URL [Instalatora karty przy użyciu dostarczonego skryptu programu PowerShell](#run-the-powershell-script)
+Ponadto do ukończenia [instalacji karty przy użyciu podanego skryptu programu PowerShell](#run-the-powershell-script) jest wymagane połączenie z następującymi adresami URL
 
 - https:\//login.microsoftonline.com
 - https:\//provisioningapi.microsoftonline.com
@@ -87,167 +87,167 @@ Ponadto do ukończenia jest wymagana łączność z następującymi adresami URL
 
 ## <a name="prepare-your-environment"></a>Przygotowywanie środowiska
 
-Przed zainstalowaniem rozszerzenia serwera NPS, chcesz Państwu w przygotowaniu środowiska do obsługi ruchu uwierzytelniania.
+Przed zainstalowaniem rozszerzenia serwera NPS należy przygotować środowisko do obsługi ruchu związanego z uwierzytelnianiem.
 
-### <a name="enable-the-nps-role-on-a-domain-joined-server"></a>Włącz rolę serwera NPS na serwerze przyłączonym do domeny
+### <a name="enable-the-nps-role-on-a-domain-joined-server"></a>Włączanie roli serwera NPS na serwerze przyłączonym do domeny
 
-Serwer NPS nawiązuje połączenie z usługą Azure Active Directory i uwierzytelnianie żądań usługi MFA. Wybierz jeden serwer dla tej roli. Firma Microsoft zaleca, wybierając serwer, który nie obsługuje żądania od innych usług, ponieważ rozszerzenia serwera NPS zgłasza błędy dla wszystkich żądań, które nie są usługi RADIUS. Serwer NPS musi być skonfigurowany jako serwer uwierzytelniania podstawowego i pomocniczego dla środowiska; nie jest żądań usługi RADIUS serwera proxy na inny serwer.
+Serwer NPS łączy się z Azure Active Directory i uwierzytelnia żądania MFA. Wybierz jeden serwer dla tej roli. Zalecamy wybranie serwera, który nie obsługuje żądań z innych usług, ponieważ rozszerzenie zasad sieciowych zgłasza błędy dla żądań, które nie są RADIUS. Serwer NPS musi być skonfigurowany jako podstawowy i pomocniczy serwer uwierzytelniania dla danego środowiska. serwer proxy nie może żądania usługi RADIUS na inny serwer.
 
-1. Na serwerze, otwórz **Kreatora dodawania ról i funkcji** menu Menedżera serwera Przewodnik Szybki Start.
-2. Wybierz **Instalacja oparta na rolach lub oparta na funkcjach** dla danego typu instalacji.
-3. Wybierz **usług zasad sieciowych i dostępu** roli serwera. Okno wyskakujące może poinformować wymaganych funkcji, aby uruchomić tę rolę.
-4. Kontynuuj pracę z kreatorem, aż strona potwierdzenia. Wybierz pozycję **Zainstaluj**.
+1. Na serwerze Otwórz **Kreatora dodawania ról i funkcji** z menu Menedżer serwera przewodnika Szybki Start.
+2. Dla typu instalacji wybierz opcję Instalacja oparta na **rolach lub oparta** na funkcjach.
+3. Wybierz rolę serwera **usług zasad sieciowych i dostępu sieciowego** . Okno może się pojawić w celu poinformowania o wymaganych funkcjach do uruchomienia tej roli.
+4. Kontynuuj pracę kreatora aż do strony potwierdzenia. Wybierz pozycję **Zainstaluj**.
 
-Teraz, gdy serwer wyznaczony serwera zasad sieciowych, należy także skonfigurować ten serwer do obsługi przychodzących żądań usługi RADIUS z rozwiązanie sieci VPN.
+Teraz, gdy masz serwer dla serwera zasad sieciowych, należy również skonfigurować ten serwer do obsługi przychodzących żądań RADIUS z rozwiązania sieci VPN.
 
-### <a name="configure-your-vpn-solution-to-communicate-with-the-nps-server"></a>Konfiguruj rozwiązanie sieci VPN do komunikowania się za pomocą serwera NPS
+### <a name="configure-your-vpn-solution-to-communicate-with-the-nps-server"></a>Skonfiguruj rozwiązanie sieci VPN do komunikacji z serwerem NPS
 
-W zależności od których możesz użyć rozwiązania sieci VPN różnią się kroki, aby skonfigurować zasady uwierzytelniania usługi RADIUS. Skonfiguruj te zasady, aby wskazywały serwer usługi RADIUS serwera NPS.
+W zależności od używanego rozwiązania sieci VPN kroki konfigurowania zasad uwierzytelniania usługi RADIUS różnią się. Skonfiguruj te zasady, aby wskazywały serwer NPS usługi RADIUS.
 
-### <a name="sync-domain-users-to-the-cloud"></a>Użytkownicy domeny synchronizacji w chmurze
+### <a name="sync-domain-users-to-the-cloud"></a>Synchronizuj użytkowników domeny z chmurą
 
-Ten krok może już być ukończone w dzierżawie, ale warto dokładnie sprawdzić, czy program Azure AD Connect został zsynchronizowany później baz danych.
+Ten krok można już zakończyć w dzierżawie, ale warto sprawdzić, czy Azure AD Connect ostatnio synchronizować bazy danych.
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator.
-2. Select **Azure Active Directory** > **Azure AD Connect**
-3. Sprawdź, czy stan usługi synchronizacji **włączone** i które ostatniej synchronizacji było krócej niż godzinę temu.
+2. Wybierz **Azure Active Directory** > **Azure AD Connect**
+3. Sprawdź, czy stan synchronizacji jest **włączony** i czy Ostatnia synchronizacja była krótsza niż godzina temu.
 
-Jeśli potrzebujesz Konferencję nowe działanie synchronizacji, nam instrukcje w [synchronizacji programu Azure AD Connect: Harmonogram](../hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler).
+Aby rozpocząć pracę z nową rundą synchronizacji, należy wykonać instrukcje podane w [Azure AD Connect synchronizacji: Harmonogram](../hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler).
 
-### <a name="determine-which-authentication-methods-your-users-can-use"></a>Określanie użytkowników można użyć metod uwierzytelniania
+### <a name="determine-which-authentication-methods-your-users-can-use"></a>Określanie metod uwierzytelniania, których użytkownicy mogą używać
 
-Istnieją dwa czynniki wpływające na metody uwierzytelniania, które są dostępne z wdrożeniem rozszerzenia serwera NPS:
+Istnieją dwa czynniki wpływające na to, które metody uwierzytelniania są dostępne z wdrożeniem rozszerzenia serwera NPS:
 
-1. Algorytm szyfrowania hasła, które są używane między klientem RADIUS (sieci VPN, serwer Netscaler lub innych) i serwerach NPS.
-   - **PAP** obsługuje wszystkie metody uwierzytelniania usługi Azure MFA w chmurze: połączenie telefoniczne, wiadomość tekstowa jednokierunkowe, powiadomienie aplikacji mobilnej i kod weryfikacyjny aplikacji mobilnej.
-   - **CHAPV2** i **EAP** obsługi połączeń telefonicznych i powiadomienia przez aplikacje mobilne.
+1. Algorytm szyfrowania hasła używany przez klienta usługi RADIUS (serwer sieci VPN, serwera usługi lub innego) i serwery NPS.
+   - **Protokół PAP** obsługuje wszystkie metody uwierzytelniania usługi Azure MFA w chmurze: połączenie telefoniczne, jednokierunkową wiadomość tekstową, powiadomienie aplikacji mobilnej i kod weryfikacyjny aplikacji mobilnej.
+   - **CHAPv2** i **Protokół EAP** obsługują połączenia telefoniczne i powiadomienia aplikacji mobilnej.
 
       > [!NOTE]
-      > Podczas wdrażania rozszerzenia serwera NPS, należy użyć tych czynników do oceny, metody, które są dostępne dla użytkowników. Jeśli Twój klient RADIUS obsługą protokołu PAP, ale klienta UX nie ma pola wejściowe, aby uzyskać kod weryfikacyjny, następnie połączeń telefonicznych i powiadomienia przez aplikacje mobilne są dwie opcje obsługiwane.
+      > Podczas wdrażania rozszerzenia serwera NPS należy użyć tych czynników do obliczenia, które metody są dostępne dla użytkowników. Jeśli Klient RADIUS obsługuje protokół PAP, ale środowisko użytkownika klienta nie ma pól wejściowych dla kodu weryfikacyjnego, połączenie telefoniczne i powiadomienie aplikacji mobilnej są dwoma obsługiwanymi opcjami.
       >
-      > Ponadto jeśli klienta sieci VPN UX obsługuje złożone dane wejściowe i skonfigurowano zasady dostępu do sieci — uwierzytelnianie może się powieść, jednak żadne atrybuty RADIUS skonfigurowane w zasadach sieci będą dotyczyć ani dostępu do urządzenia sieciowego, Podobnie jak serwer RRAS ani klienta sieci VPN. W rezultacie klient sieci VPN może być szerszy dostęp niż żądany lub mniej Brak dostępu.
+      > Ponadto, jeśli środowisko użytkownika klienta sieci VPN obsługuje pole wejściowe i skonfigurowano zasady dostępu do sieci — uwierzytelnianie może się powieść, jednak żaden z atrybutów RADIUS skonfigurowanych w zasadach sieciowych nie zostanie zastosowany do ani do urządzenia dostępu do sieci. Podobnie jak w przypadku serwera RRAS ani klienta sieci VPN. W związku z tym klient VPN może mieć większy dostęp niż pożądany lub mniejszy od dostępu.
       >
 
-2. Metody wprowadzania danych, aplikacja kliencka (sieci VPN, serwer Netscaler lub innych) może obsługiwać. Na przykład klient sieci VPN może mieć metod, aby umożliwić użytkownika o wpisanie kodu weryfikacyjnego z aplikacji mobilnej lub tekst?
+2. Metody wejściowe, które może obsłużyć aplikacja kliencka (sieć VPN, serwer sieci lub inny). Czy na przykład klient sieci VPN ma pewne środki, aby zezwolić użytkownikowi na wpisywanie kodu weryfikacyjnego z aplikacji tekstowej lub mobilnej?
 
-Możesz [Wyłącz metod uwierzytelniania nieobsługiwany](howto-mfa-mfasettings.md#verification-methods) na platformie Azure.
+Nieobsługiwane [metody uwierzytelniania można wyłączyć](howto-mfa-mfasettings.md#verification-methods) na platformie Azure.
 
-### <a name="register-users-for-mfa"></a>Zarejestrowania użytkowników na potrzeby usługi MFA
+### <a name="register-users-for-mfa"></a>Rejestrowanie użytkowników usługi MFA
 
-Przed wdrożeniem i użyć rozszerzenia serwera NPS dla użytkowników, które są wymagane do przeprowadzenia weryfikacji dwuetapowej wymagają rejestracji usługi MFA. Więcej od razu Aby przetestować rozszerzenie, zgodnie z wdrożeniem, musisz mieć konto co najmniej jeden test, w pełni zarejestrowany do uwierzytelniania wieloskładnikowego.
+Przed wdrożeniem i użyciem rozszerzenia serwera NPS użytkownicy, którzy są zobowiązani do przeprowadzenia weryfikacji dwuetapowej, muszą zostać zarejestrowani na potrzeby usługi MFA. Natychmiast, aby przetestować rozszerzenie podczas jego wdrażania, wymagane jest co najmniej jedno konto testowe, które jest w pełni zarejestrowane na potrzeby uwierzytelniania wieloskładnikowego.
 
-Aby uzyskać konto test pracy, wykonaj następujące kroki:
+Wykonaj następujące kroki, aby rozpocząć Uruchamianie konta testowego:
 
-1. Zaloguj się do [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup) za pomocą konta testowego.
+1. Zaloguj się do [https://aka.ms/mfasetup](https://aka.ms/mfasetup) programu przy użyciu konta testowego.
 2. Postępuj zgodnie z monitami, aby skonfigurować metodę weryfikacji.
-3. [Tworzenie zasad dostępu warunkowego](howto-mfa-getstarted.md#create-conditional-access-policy) wymaganie usługi Multi-Factor authentication dla konta testowego.
+3. [Utwórz zasady dostępu warunkowego](howto-mfa-getstarted.md#create-conditional-access-policy) , aby wymagać uwierzytelniania wieloskładnikowego dla konta testowego.
 
 ## <a name="install-the-nps-extension"></a>Instalowanie rozszerzenia serwera NPS
 
 > [!IMPORTANT]
-> Instalowanie rozszerzenia serwera NPS na innym serwerze niż punkt dostępu do sieci VPN.
+> Zainstaluj rozszerzenie serwera NPS na innym serwerze niż punkt dostępu sieci VPN.
 
-### <a name="download-and-install-the-nps-extension-for-azure-mfa"></a>Pobieranie i instalowanie rozszerzenia serwera NPS dla usługi Azure MFA
+### <a name="download-and-install-the-nps-extension-for-azure-mfa"></a>Pobieranie i Instalowanie rozszerzenia serwera NPS dla usługi Azure MFA
 
-1. [Pobierz rozszerzenia serwera NPS](https://aka.ms/npsmfa) z Centrum pobierania Microsoft.
-2. Skopiuj plik binarny serwera zasad sieciowych, którą chcesz skonfigurować.
-3. Uruchom *setup.exe* i postępuj zgodnie z instrukcjami instalacji. Jeśli wystąpią błędy, należy dokładnie dwie biblioteki z sekcji wymagań wstępnych zostały pomyślnie zainstalowane.
+1. [Pobierz rozszerzenie serwera NPS](https://aka.ms/npsmfa) z centrum pobierania Microsoft.
+2. Skopiuj plik binarny do serwera zasad sieciowych, który chcesz skonfigurować.
+3. Uruchom *plik Setup. exe* i postępuj zgodnie z instrukcjami instalacji. Jeśli wystąpią błędy, należy dokładnie sprawdzić, czy dwie biblioteki z sekcji wymagania wstępne zostały zainstalowane pomyślnie.
 
-#### <a name="upgrade-the-nps-extension"></a>Uaktualnij rozszerzenia serwera NPS
+#### <a name="upgrade-the-nps-extension"></a>Uaktualnianie rozszerzenia serwera NPS
 
-Podczas uaktualniania istniejącego rozszerzenia serwera NPS dla instalacji, aby uniknąć ponownego uruchomienia serwera bazowego wykonaj następujące czynności:
+Podczas uaktualniania istniejącej instalacji rozszerzenia serwera NPS, aby uniknąć ponownego uruchomienia podstawowego serwera, wykonaj następujące czynności:
 
-1. Odinstalować istniejącą wersję
-1. Uruchamianie nowego Instalatora
-1. Uruchom ponownie usługę serwera zasad sieciowych (IAS)
+1. Odinstaluj istniejącą wersję
+1. Uruchom Nowy Instalator
+1. Ponowne uruchamianie usługi serwera zasad sieciowych (IAS)
 
 ### <a name="run-the-powershell-script"></a>Uruchom skrypt programu PowerShell
 
-Instalator tworzy skrypt programu PowerShell w tej lokalizacji: `C:\Program Files\Microsoft\AzureMfa\Config` (gdzie C:\ to dysk instalacji). Ten skrypt programu PowerShell wykonuje następujące akcje za każdym razem, gdy jest uruchomiony:
+Instalator utworzy skrypt programu PowerShell w tej lokalizacji: `C:\Program Files\Microsoft\AzureMfa\Config` (gdzie C:\ jest dyskiem instalacyjnym). Ten skrypt programu PowerShell wykonuje następujące akcje przy każdym uruchomieniu:
 
 - Utwórz certyfikat z podpisem własnym.
-- Kojarzenie klucz publiczny certyfikatu do jednostki w usłudze Azure AD usługi.
-- Store certyfikat w magazynie certyfikatów komputera lokalnego.
-- Udzielanie dostępu do klucza prywatnego certyfikatu do sieci użytkownika.
-- Uruchom ponownie serwer NPS.
+- Skojarz klucz publiczny certyfikatu z jednostką usługi w usłudze Azure AD.
+- Zapisz certyfikat w magazynie certyfikatów komputera lokalnego.
+- Przyznaj dostęp do klucza prywatnego certyfikatu użytkownikowi sieci.
+- Uruchom ponownie serwer zasad sieciowych.
 
-Jeśli nie chcesz używać certyfikatów (zamiast certyfikatów z podpisem własnym, które generuje skrypt programu PowerShell), uruchom skrypt programu PowerShell, aby ukończyć instalację. Po zainstalowaniu rozszerzenia na wielu serwerach każdy z nich powinna mieć własny certyfikat.
+Jeśli nie chcesz używać własnych certyfikatów (zamiast certyfikatów z podpisem własnym, które generuje skrypt programu PowerShell), uruchom skrypt programu PowerShell, aby zakończyć instalację. Jeśli zainstalujesz rozszerzenie na wielu serwerach, każdy z nich powinien mieć własny certyfikat.
 
 1. Uruchom program Windows PowerShell jako administrator.
 2. Zmień katalogi.
 
    `cd "C:\Program Files\Microsoft\AzureMfa\Config"`
 
-3. Uruchom skrypt programu PowerShell, utworzony przez Instalatora.
+3. Uruchom skrypt programu PowerShell utworzony przez Instalatora.
 
    `.\AzureMfaNpsExtnConfigSetup.ps1`
 
 4. Zaloguj się do usługi Azure AD jako administrator.
-5. Program PowerShell monituje o podanie identyfikatora dzierżawy. Użyj katalogu identyfikator GUID, który został skopiowany z witryny Azure portal w sekcji wymagania wstępne.
-6. Po zakończeniu działania skryptu, PowerShell wyświetla komunikat o powodzeniu.  
+5. Program PowerShell zapyta o identyfikator dzierżawy. Użyj identyfikatora GUID, który został skopiowany z Azure Portal w sekcji wymagania wstępne.
+6. Po zakończeniu skryptu program PowerShell wyświetla komunikat o powodzeniu.  
 
-Powtórz te kroki dla pozostałych serwerów zasad Sieciowych, które chcesz skonfigurować Równoważenie obciążenia sieciowego.
+Powtórz te kroki na wszystkich dodatkowych serwerach NPS, które chcesz skonfigurować do równoważenia obciążenia.
 
-Jeśli wygasł poprzedniego certyfikat komputera, a nowy certyfikat został wygenerowany, należy usunąć wszelkie wygasłych certyfikatów. Posiadanie wygasłych certyfikatów może spowodować problemy z rozszerzeniem serwera NPS, uruchamianie.
+Jeśli poprzedni certyfikat komputera wygasł i został wygenerowany nowy certyfikat, należy usunąć wszystkie wygasłe certyfikaty. Wygaśnięcie certyfikatów może spowodować problemy z uruchamianiem rozszerzenia serwera NPS.
 
 > [!NOTE]
-> Jeśli używasz własnych certyfikatów zamiast generowania certyfikatów za pomocą skryptu programu PowerShell, upewnij się, zostaną wyrównane do konwencji nazewnictwa serwera NPS. Nazwa podmiotu musi być **CN =\<TenantID\>, OU = rozszerzenia serwera NPS Microsoft**. 
+> Jeśli używasz własnych certyfikatów zamiast generować certyfikaty przy użyciu skryptu programu PowerShell, upewnij się, że są one wyrównane do konwencji nazewnictwa NPS. Nazwa podmiotu musi być **CN =\<TenantID\>, OU = Microsoft NPS Extension**. 
 
 ### <a name="certificate-rollover"></a>Przerzucanie certyfikatów
 
-W wersji 1.0.1.32 rozszerzenia serwera NPS, odczytywanie wiele certyfikatów jest teraz obsługiwane. Ta funkcja może pomóc w ułatwienia aktualizacje stopniowe certyfikatu przed jego wygaśnięciem. Jeśli Twoja organizacja działa poprzednia wersja rozszerzenia serwera NPS, należy uaktualnić do wersji 1.0.1.32 lub nowszej.
+W przypadku wydania 1.0.1.32 rozszerzenia serwera NPS jest teraz obsługiwane odczytywanie wielu certyfikatów. Ta funkcja pomoże ułatwić aktualizowanie aktualizacji certyfikatów przed ich wygaśnięciem. Jeśli w organizacji jest uruchomiona Starsza wersja rozszerzenia serwera NPS, należy przeprowadzić uaktualnienie do wersji 1.0.1.32 lub nowszej.
 
-Certyfikaty utworzone przez `AzureMfaNpsExtnConfigSetup.ps1` skryptu są ważne przez 2 lata. Organizacje z branży IT powinny monitorować certyfikatów do wygaśnięcia. Certyfikaty dla rozszerzenia serwera NPS są umieszczane w magazynie certyfikatów komputera lokalnego, w obszarze osobiste i wystawiony dla Identyfikatora dzierżawy są przekazywane do skryptu.
+Certyfikaty utworzone przez `AzureMfaNpsExtnConfigSetup.ps1` skrypt są ważne przez 2 lata. Organizacje IT powinny monitorować certyfikaty do wygaśnięcia. Certyfikaty rozszerzenia serwera NPS są umieszczane w magazynie certyfikatów komputera lokalnego w obszarze osobistym i są wystawiane dla identyfikatora dzierżawy dostarczonego do skryptu.
 
-Gdy certyfikat zbliża się data wygaśnięcia, należy utworzyć nowy certyfikat go zastąpić.  Ten proces odbywa się przez uruchomienie `AzureMfaNpsExtnConfigSetup.ps1` ponownie i zachowanie tego samego Identyfikatora dzierżawy, po wyświetleniu monitu. Ten proces należy powtórzyć na każdym serwerze NPS w danym środowisku.
+Gdy certyfikat zbliża się do daty wygaśnięcia, należy utworzyć nowy certyfikat w celu jego zastąpienia.  Ten proces jest realizowany przez `AzureMfaNpsExtnConfigSetup.ps1` ponowne uruchomienie i utrzymywanie tego samego identyfikatora dzierżawy po wyświetleniu monitu. Ten proces należy powtórzyć na każdym serwerze NPS w środowisku.
 
 ## <a name="configure-your-nps-extension"></a>Konfigurowanie rozszerzenia serwera NPS
 
-Ta sekcja obejmuje zagadnienia dotyczące projektowania i sugestie dotyczące pomyślnych wdrożeniach rozszerzenia serwera NPS.
+Ta sekcja zawiera zagadnienia dotyczące projektowania i sugestie dotyczące pomyślnych wdrożeń rozszerzenia serwera NPS.
 
 ### <a name="configuration-limitations"></a>Ograniczenia konfiguracji
 
-- Rozszerzenia serwera NPS dla usługi Azure MFA nie obejmuje narzędzia do migracji użytkowników i ustawienia z serwera usługi MFA w chmurze. Z tego powodu zaleca się korzystanie z rozszerzenia dla nowych wdrożeń zamiast istniejącego wdrożenia. Użycie rozszerzenia na istniejące wdrożenie, użytkownicy muszą wykonać w górę dowód ponownie, aby wypełnić ich szczegóły uwierzytelniania MFA w chmurze.  
-- Rozszerzenia serwera NPS używa nazwy UPN w lokalnej usłudze Active directory do identyfikacji użytkownika w usłudze Azure MFA do wykonywania uwierzytelniania pomocniczego Aby użyć innego identyfikatora alternatywnego Identyfikatora logowania lub pole niestandardowe usługi Active Directory niż nazwa UPN można skonfigurować rozszerzenia. Aby uzyskać więcej informacji, zapoznaj się z artykułem [opcji zaawansowanej konfiguracji dla rozszerzenia serwera NPS do uwierzytelniania wieloskładnikowego](howto-mfa-nps-extension-advanced.md).
-- Nie wszystkie protokoły szyfrowania obsługuje wszystkie metody weryfikacji.
-   - **PAP** obsługuje połączenie telefoniczne, wiadomość tekstowa jednokierunkowe, powiadomienie aplikacji mobilnej i kod weryfikacyjny aplikacji mobilnej
-   - **CHAPV2** i **EAP** obsługi połączeń telefonicznych i powiadomienia przez aplikacje mobilne
+- Rozszerzenie serwera NPS dla usługi Azure MFA nie obejmuje narzędzi do migrowania użytkowników i ustawień z serwera MFA do chmury. Z tego powodu sugerujemy użycie rozszerzenia dla nowych wdrożeń, a nie istniejącego wdrożenia. Jeśli używasz rozszerzenia w istniejącym wdrożeniu, użytkownicy muszą ponownie wykonać próbę, aby wypełnić szczegóły usługi MFA w chmurze.  
+- Rozszerzenie serwera NPS używa nazwy UPN z lokalnej usługi Active Directory do identyfikowania użytkownika w usłudze Azure MFA na potrzeby uwierzytelniania pomocniczego. Rozszerzenie można skonfigurować tak, aby używało innego identyfikatora, takiego jak alternatywny identyfikator logowania lub niestandardowe pole Active Directory inne niż nazwa UPN. Aby uzyskać więcej informacji, zobacz [Zaawansowane opcje konfiguracji rozszerzenia serwera NPS dla usługi uwierzytelnianie wieloskładnikowe](howto-mfa-nps-extension-advanced.md).
+- Nie wszystkie protokoły szyfrowania obsługują wszystkie metody weryfikacji.
+   - **Protokół PAP** obsługuje połączenie telefoniczne, jednokierunkową wiadomość tekstową, powiadomienie aplikacji mobilnej i kod weryfikacyjny aplikacji mobilnej
+   - **CHAPv2** i obsługa **protokołu EAP** oraz powiadomienia aplikacji mobilnej
 
-### <a name="control-radius-clients-that-require-mfa"></a>Klienci usługi RADIUS kontrolki, które wymagają usługi MFA
+### <a name="control-radius-clients-that-require-mfa"></a>Sterowanie klientami usługi RADIUS, którzy wymagają uwierzytelniania wieloskładnikowego
 
-Po włączeniu usługi MFA dla klienta usługi RADIUS, za pomocą rozszerzenia serwera NPS wszystkie uwierzytelnienia dla tego klienta są wymagane do przeprowadzenia uwierzytelniania Wieloskładnikowego. Jeśli chcesz włączyć usługę MFA dla niektórych klientów usługi RADIUS, a innych nie można skonfigurować dwa serwery NPS i zainstaluj rozszerzenie na tylko jeden z nich. Konfigurowanie klientów RADIUS, które chcesz wymagać uwierzytelniania Wieloskładnikowego w celu wysyłania żądań do serwera zasad Sieciowych skonfigurowano rozszerzenie i innych klientów RADIUS, serwer NPS nie jest skonfigurowany z rozszerzeniem.
+Po włączeniu uwierzytelniania wieloskładnikowego dla klienta usługi RADIUS przy użyciu rozszerzenia serwera NPS wszystkie uwierzytelnienia tego klienta są wymagane do przeprowadzenia uwierzytelniania MFA. Aby włączyć uwierzytelnianie wieloskładnikowe dla niektórych klientów usługi RADIUS, ale nie dla innych, można skonfigurować dwa serwery zasad sieciowych i zainstalować rozszerzenie tylko dla jednego z nich. Skonfiguruj klientów usługi RADIUS, którzy mają wymagać uwierzytelniania wieloskładnikowego, aby wysyłać żądania do serwera NPS skonfigurowanego z rozszerzeniem, a inni klienci usługi RADIUS na serwerze NPS nie zostali skonfigurowani przy użyciu rozszerzenia.
 
-### <a name="prepare-for-users-that-arent-enrolled-for-mfa"></a>Przygotuj dla użytkowników, które nie zostały zarejestrowane na potrzeby usługi MFA
+### <a name="prepare-for-users-that-arent-enrolled-for-mfa"></a>Przygotuj dla użytkowników, którzy nie są zarejestrowani na potrzeby uwierzytelniania wieloskładnikowego
 
-Jeśli masz użytkowników, którzy nie są zarejestrowane na potrzeby usługi MFA, można określić, co się dzieje, gdy użytkownik próbuje uwierzytelnić. Użyj ustawienia rejestru *REQUIRE_USER_MATCH* w ścieżce rejestru *HKLM\Software\Microsoft\AzureMFA* do sterowania zachowaniem funkcji. To ustawienie jest dostępna opcja jednej konfiguracji:
+Jeśli masz użytkowników, którzy nie zostali zarejestrowani na potrzeby uwierzytelniania wieloskładnikowego, możesz określić, co się dzieje podczas próby uwierzytelnienia. Użyj ustawienia rejestru *REQUIRE_USER_MATCH* w ścieżce rejestru *HKLM\Software\Microsoft\AzureMFA* , aby kontrolować zachowanie funkcji. To ustawienie ma jedną opcję konfiguracji:
 
 | Klucz | Value | Domyślny |
 | --- | ----- | ------- |
-| REQUIRE_USER_MATCH | PRAWDA/FAŁSZ | Nieustawione (odpowiada to TRUE) |
+| REQUIRE_USER_MATCH | PRAWDA/FAŁSZ | Nie ustawiono (odpowiednik wartości TRUE) |
 
-To ustawienie ma na celu ustalić, co należy zrobić, gdy użytkownik nie zostanie zarejestrowane na potrzeby usługi MFA. Jeśli klucz nie istnieje, nie jest ustawiona lub jest ustawiona na TRUE i użytkownik nie jest zarejestrowany, a następnie rozszerzenie kończy się niepowodzeniem żądania uwierzytelniania MFA. Gdy jest ustawiona na wartość FALSE, a użytkownik nie jest zarejestrowany, uwierzytelnianie będzie kontynuowane bez przeprowadzenia uwierzytelniania Wieloskładnikowego. Jeśli użytkownik jest zarejestrowany w usłudze MFA, muszą zostać uwierzytelnione za pomocą usługi MFA nawet wtedy, gdy REQUIRE_USER_MATCH jest ustawiona na wartość FALSE.
+Celem tego ustawienia jest określenie, co należy zrobić, gdy użytkownik nie jest zarejestrowany na potrzeby usługi MFA. Jeśli klucz nie istnieje, nie jest ustawiony lub jest ustawiony na wartość TRUE, a użytkownik nie jest zarejestrowany, a następnie rozszerzenie nie powiedzie się. Gdy klucz jest ustawiony na wartość FALSE, a użytkownik nie jest zarejestrowany, uwierzytelnianie jest wykonywane bez wykonywania usługi MFA. Jeśli użytkownik jest zarejestrowany w ramach usługi MFA, musi uwierzytelnić się za pomocą usługi MFA, nawet jeśli REQUIRE_USER_MATCH jest ustawiona na wartość FALSE.
 
-Można utworzyć ten klucz i ustawić wartość FALSE, gdy użytkownicy są dołączania, a może nie wszystkie ono zarejestrowane na potrzeby usługi Azure MFA jeszcze. Jednak ponieważ klucza pozwala na użytkowników, którzy nie są zarejestrowane na potrzeby usługi MFA do logowania, należy je usunąć ten klucz przed przejściem do środowiska produkcyjnego.
+Możesz utworzyć ten klucz i ustawić dla niego wartość FALSE, gdy użytkownicy zostaną dołączeni i mogą nie być jeszcze zarejestrowani w usłudze Azure MFA. Jednak ponieważ ustawienie klucza zezwala użytkownikom, którzy nie są zarejestrowani na potrzeby uwierzytelniania wieloskładnikowego, należy usunąć ten klucz przed przejściem do środowiska produkcyjnego.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
 ### <a name="nps-extension-health-check-script"></a>Skrypt sprawdzania kondycji rozszerzenia serwera NPS
 
-Poniższy skrypt jest dostępna w galerii TechNet do wykonywania podstawowych kondycji wyboru czynności podczas rozwiązywania problemów z rozszerzeniem serwera NPS.
+Poniższy skrypt jest dostępny w galerii TechNet, aby wykonać podstawowe kroki kontroli kondycji podczas rozwiązywania problemów z rozszerzeniem serwera NPS.
 
-[MFA_NPS_Troubleshooter.ps1](https://gallery.technet.microsoft.com/Azure-MFA-NPS-Extension-648de6bb)
-
----
-
-### <a name="how-do-i-verify-that-the-client-cert-is-installed-as-expected"></a>Jak sprawdzić, czy certyfikat klienta został zainstalowany, zgodnie z oczekiwaniami?
-
-Wyszukaj certyfikat z podpisem własnym utworzony przez Instalatora w magazynie certyfikatów i upewnij się, że klucz prywatny, ma uprawnienia przyznane użytkownikowi **Usługa sieciowa**. Certyfikat ma nazwę podmiotu **CN \<tenantid\>, OU = rozszerzenia serwera NPS firmy Microsoft**
-
-Certyfikaty z podpisem własnym generowanych przez *AzureMfaNpsExtnConfigSetup.ps1* skryptu również mieć okresu istnienia ważności na dwa lata. Podczas sprawdzania, czy certyfikat jest zainstalowany, należy także sprawdzić, czy certyfikat nie wygasł.
+[MFA_NPS_Troubleshooter. ps1](https://gallery.technet.microsoft.com/Azure-MFA-NPS-Extension-648de6bb)
 
 ---
 
-### <a name="how-can-i-verify-that-my-client-cert-is-associated-to-my-tenant-in-azure-active-directory"></a>Jak zweryfikować, że moje certyfikat klienta jest skojarzony z dzierżawą usługi Azure Active Directory?
+### <a name="how-do-i-verify-that-the-client-cert-is-installed-as-expected"></a>Jak mogę sprawdzić, czy certyfikat klienta został zainstalowany zgodnie z oczekiwaniami?
+
+Wyszukaj certyfikat z podpisem własnym utworzony przez Instalatora w magazynie certyfikatów i sprawdź, czy klucz prywatny ma uprawnienia przyznane **usłudze sieciowej**użytkownika. Certyfikat ma nazwę podmiotu  **\<CN tenantid\>, OU = Microsoft NPS Extension**
+
+Certyfikaty z podpisem własnym wygenerowane przez skrypt *AzureMfaNpsExtnConfigSetup. ps1* mają również okres istnienia ważności wynoszący dwa lata. Podczas sprawdzania, czy certyfikat jest zainstalowany, należy również sprawdzić, czy certyfikat nie wygasł.
+
+---
+
+### <a name="how-can-i-verify-that-my-client-cert-is-associated-to-my-tenant-in-azure-active-directory"></a>Jak sprawdzić, czy mój certyfikat klienta jest skojarzony z moją dzierżawą w Azure Active Directory?
 
 Otwórz wiersz polecenia programu PowerShell i uruchom następujące polecenia:
 
@@ -257,9 +257,9 @@ Connect-MsolService
 Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1
 ```
 
-Te polecenia drukowania wszystkie certyfikaty skojarzenie dzierżawy z wystąpieniem usługi rozszerzenia serwera NPS w sesji programu PowerShell. Znajdź certyfikat, eksportując Twojego certyfikatu klienta w formacie "X.509(.cer) algorytmem Base-64" bez klucza prywatnego i porównaj je z listy za pomocą programu PowerShell.
+Te polecenia służą do drukowania wszystkich certyfikatów kojarzenia dzierżawcy z wystąpieniem rozszerzenia serwera NPS w sesji programu PowerShell. Poszukaj certyfikatu przez wyeksportowanie certyfikatu klienta jako plik "Base-64 encoded X. 509 (. cer)" bez klucza prywatnego i porównaj go z listą z programu PowerShell.
 
-Poniższe polecenie utworzy plik o nazwie "npscertificate" na dysku "C:" w formacie cer.
+Następujące polecenie spowoduje utworzenie pliku o nazwie "npscertificate" na dysku "C:" w formacie. cer.
 
 ``` PowerShell
 import-module MSOnline
@@ -267,59 +267,59 @@ Connect-MsolService
 Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1 | select -ExpandProperty "value" | out-file c:\npscertficicate.cer
 ```
 
-Po uruchomieniu tego polecenia, przejdź do dysku C, zlokalizuj plik i kliknij go dwukrotnie. Przejdź do szczegółów i przewiń w dół do "odciskiem palca", porównać odcisk palca certyfikatu zainstalowanego na serwerze do wskazanego. Odciski palców certyfikatu powinien być zgodny.
+Po uruchomieniu tego polecenia przejdź do dysku C, Znajdź plik i kliknij go dwukrotnie. Przejdź do szczegółów i przewiń w dół do pozycji "odcisk palca", porównaj odcisk palca certyfikatu zainstalowanego na serwerze z tym serwerem. Odciski palców certyfikatu powinny być zgodne.
 
-Nieprawidłowa-z i ważne — aż sygnatury czasowe, które znajdują się w postaci czytelnej dla człowieka, można odfiltrować misfits oczywiste, jeśli polecenie zwraca więcej niż jeden certyfikat.
-
----
-
-### <a name="why-cant-i-sign-in"></a>Dlaczego niedomiaru mogę się zarejestrować?
-
-Upewnij się, że hasło nie wygasło. Rozszerzenia serwera NPS nie obsługuje zmieniania hasła jako część przepływu pracy logowania. Aby uzyskać dalszą pomoc, skontaktuj się z pracownikami działu IT Twojej organizacji.
+Prawidłowymi i prawidłowymi sygnaturami czasowymi, które znajdują się w formularzu czytelnym dla człowieka, można użyć do odfiltrowania oczywistych nieprawidłowych wartości, jeśli polecenie zwróci więcej niż jeden certyfikat.
 
 ---
 
-### <a name="why-are-my-requests-failing-with-adal-token-error"></a>Dlaczego moje żądania kończą się niepowodzeniem z powodu błędu tokenu biblioteki ADAL?
+### <a name="why-cant-i-sign-in"></a>Dlaczego nie mogę się zalogować?
 
-Ten błąd może być spowodowane jedną z kilku powodów. Wykonaj następujące kroki, aby ułatwić rozwiązywanie problemów:
+Sprawdź, czy hasło nie wygasło. Rozszerzenie serwera NPS nie obsługuje zmieniania haseł w ramach przepływu pracy logowania. Skontaktuj się z działem IT swojej organizacji, aby uzyskać dalszą pomoc.
 
-1. Uruchom ponownie serwer NPS.
-2. Sprawdź, czy ten certyfikat klienta został zainstalowany zgodnie z oczekiwaniami.
-3. Sprawdź, czy certyfikat jest skojarzony z dzierżawą w usłudze Azure AD.
+---
+
+### <a name="why-are-my-requests-failing-with-adal-token-error"></a>Dlaczego moje żądania kończą się niepowodzeniem z powodu błędu tokenu ADAL?
+
+Ten błąd może być spowodowany jedną z kilku przyczyn. Wykonaj następujące kroki, aby pomóc w rozwiązywaniu problemów:
+
+1. Uruchom ponownie serwer zasad sieciowych.
+2. Sprawdź, czy certyfikat klienta został zainstalowany zgodnie z oczekiwaniami.
+3. Sprawdź, czy certyfikat jest skojarzony z dzierżawcą w usłudze Azure AD.
 4. Upewnij się, że adres https://login.microsoftonline.com/ jest dostępny z serwera, na którym działa rozszerzenie.
 
 ---
 
-### <a name="why-does-authentication-fail-with-an-error-in-http-logs-stating-that-the-user-is-not-found"></a>Dlaczego uwierzytelnianie nie powiódł się z powodu błędu w dziennikach HTTP z informacją, że użytkownik nie został znaleziony?
+### <a name="why-does-authentication-fail-with-an-error-in-http-logs-stating-that-the-user-is-not-found"></a>Dlaczego uwierzytelnianie kończy się niepowodzeniem z powodu błędu w dziennikach HTTP informujących o tym, że użytkownik nie został znaleziony?
 
-Sprawdź, czy AD Connect jest uruchomiona, a użytkownik musi być obecny w usłudze Azure Active Directory i usługi Windows Active Directory.
+Sprawdź, czy program AD Connect działa i czy użytkownik jest obecny w systemie Windows Active Directory i Azure Active Directory.
 
 ---
 
-### <a name="why-do-i-see-http-connect-errors-in-logs-with-all-my-authentications-failing"></a>Dlaczego widzę HTTP skupionej błędy w dziennikach Moje uwierzytelnień kończy się niepowodzeniem?
+### <a name="why-do-i-see-http-connect-errors-in-logs-with-all-my-authentications-failing"></a>Dlaczego widzę błędy połączenia HTTP w dziennikach ze wszystkimi moimi uwierzytelnianiem kończy się niepowodzeniem?
 
 Upewnij się, że adres https://adnotifications.windowsazure.com jest osiągalny z serwera, na którym działa rozszerzenie NPS.
 
 ---
 
-### <a name="why-is-authentication-not-working-despite-a-valid-certificate-being-present"></a>Dlaczego uwierzytelnianie nie działa, mimo obecności ważnego certyfikatu?
+### <a name="why-is-authentication-not-working-despite-a-valid-certificate-being-present"></a>Dlaczego uwierzytelnianie nie działa, pomimo obecności ważnego certyfikatu?
 
-Jeśli wygasł poprzedniego certyfikat komputera, a nowy certyfikat został wygenerowany, należy usunąć wszelkie wygasłych certyfikatów. Posiadanie wygasłych certyfikatów może spowodować problemy z rozszerzeniem serwera NPS, uruchamianie.
+Jeśli poprzedni certyfikat komputera wygasł i został wygenerowany nowy certyfikat, należy usunąć wszystkie wygasłe certyfikaty. Wygaśnięcie certyfikatów może spowodować problemy z uruchamianiem rozszerzenia serwera NPS.
 
-Aby sprawdzić, czy mają prawidłowy certyfikat, sprawdź Store certyfikat konta komputera lokalnego za pomocą programu MMC, a następnie upewnij się, że certyfikat nie został przekazany datę jego wygaśnięcia. Aby wygenerować certyfikat nowo, ponownie uruchom kroki opisane w sekcji "[uruchomienia skryptu programu PowerShell](#run-the-powershell-script)"
+Aby sprawdzić, czy masz prawidłowy certyfikat, sprawdź magazyn certyfikatów konta komputera lokalnego przy użyciu programu MMC, a następnie upewnij się, że certyfikat nie przeszedł jego daty wygaśnięcia. Aby wygenerować nowy prawidłowy certyfikat, wykonaj kroki opisane w sekcji "[Uruchamianie skryptu programu PowerShell](#run-the-powershell-script)".
 
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>Zarządzanie protokołami TLS/SSL i zestawami szyfrowania
 
-Zalecane jest, że mechanizmów szyfrowania starsze, słabszej je wyłączyć lub usunąć, chyba że wymagane przez Twoją organizację. Informacje o tym, jak wykonać to zadanie, można znaleźć w artykule [Managing SSL/TLS Protocols and Cipher Suites for AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) (Zarządzanie protokołami SSL/TLS i zestawami szyfrowania dla usług AD FS).
+Zaleca się, aby starsze i słabsze mechanizmy szyfrowania były wyłączone lub usunięte, chyba że jest to wymagane przez organizację. Informacje o tym, jak wykonać to zadanie, można znaleźć w artykule [Managing SSL/TLS Protocols and Cipher Suites for AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) (Zarządzanie protokołami SSL/TLS i zestawami szyfrowania dla usług AD FS).
 
-### <a name="additional-troubleshooting"></a>Dodatkowe procedury rozwiązywania problemów
+### <a name="additional-troubleshooting"></a>Dodatkowe Rozwiązywanie problemów
 
-Dodatkowe wskazówki i możliwe rozwiązania można znaleźć w artykule [komunikatami o błędach z rozszerzenia serwera NPS dla usługi Azure Multi-Factor Authentication](howto-mfa-nps-extension-errors.md).
+Dodatkowe wskazówki dotyczące rozwiązywania problemów i możliwe rozwiązania można znaleźć w artykule [Rozwiązywanie komunikatów o błędach z rozszerzenia serwera NPS dla usługi Azure](howto-mfa-nps-extension-errors.md)MFA.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Konfigurowanie alternatywnych identyfikatorów logowania lub Ustaw listy wyjątków dla adresów IP, który nie należy wykonywać weryfikacji dwuetapowej w [opcji zaawansowanej konfiguracji dla rozszerzenia serwera NPS do uwierzytelniania wieloskładnikowego](howto-mfa-nps-extension-advanced.md)
+- Skonfiguruj Alternatywne identyfikatory logowania lub skonfiguruj listę wyjątków dla adresów IP, które nie powinny przeprowadzać weryfikacji dwuetapowej w [zaawansowanych opcjach konfiguracji dla rozszerzenia serwera NPS na potrzeby uwierzytelniania](howto-mfa-nps-extension-advanced.md) wieloskładnikowego
 
-- Dowiedz się, jak zintegrować [bramy usług pulpitu zdalnego](howto-mfa-nps-extension-rdg.md) i [serwerów sieci VPN](howto-mfa-nps-extension-vpn.md) przy użyciu rozszerzenia serwera NPS
+- Dowiedz się, jak zintegrować [pulpit zdalny bramę](howto-mfa-nps-extension-rdg.md) i [serwery sieci VPN](howto-mfa-nps-extension-vpn.md) przy użyciu rozszerzenia serwera NPS
 
 - [Resolve error messages from the NPS extension for Azure Multi-Factor Authentication](howto-mfa-nps-extension-errors.md) (Rozstrzyganie komunikatów o błędach z rozszerzenia serwera NPS dotyczących usługi Azure Multi-Factor Authentication)

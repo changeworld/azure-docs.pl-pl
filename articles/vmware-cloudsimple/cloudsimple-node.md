@@ -1,40 +1,40 @@
 ---
-title: Przegląd węzłów dla rozwiązań VMware według CloudSimple — Azure
+title: Rozwiązanie VMware firmy Azure według CloudSimple — Omówienie węzłów
 description: Dowiedz się więcej o węzłach i pojęciach CloudSimple.
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/10/2019
+ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 346bd046810ebae5142bc23400419857000d0c8e
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 58af69b401400c7b2f663a91de8bf38bc9a296a3
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812578"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877698"
 ---
 # <a name="cloudsimple-nodes-overview"></a>Przegląd węzłów CloudSimple
 
-Węzeł:
+Węzły są blokami konstrukcyjnymi chmury prywatnej. Węzeł:
 
 * Dedykowany Host obliczeniowy bez systemu operacyjnego, na którym zainstalowano VMware ESXi funkcji hypervisor  
-* Jednostka obliczeniowa, którą można zainicjować lub zarezerwować w celu utworzenia chmur prywatnych  
-* Dostępne do aprowizacji lub rezerwowania w regionie, w którym jest dostępna usługa CloudSimple
+* Jednostka obliczeniowa, którą można zakupić lub zarezerwować w celu utworzenia chmur prywatnych
+* Dostępne do zakupu lub rezerwowania w regionie, w którym jest dostępna usługa CloudSimple
 
-Węzły tworzą bloki w chmurze prywatnej.  Aby utworzyć chmurę prywatną, potrzebne są co najmniej trzy węzły tej samej jednostki SKU.  Aby rozwinąć chmurę prywatną, Dodaj dodatkowe węzły.  Można dodać węzły do istniejącego klastra. Można też utworzyć nowy klaster za pomocą węzłów aprowizacji w Azure Portal i skojarzyć je z usługą CloudSimple.  Wszystkie węzły, które są obsługiwane, są widoczne w ramach usługi CloudSimple.  Chmurę prywatną można utworzyć na podstawie węzłów zainicjowanych w portalu CloudSimple.
+Chmurę prywatną można utworzyć na podstawie zakupionych węzłów. Aby utworzyć chmurę prywatną, potrzebne są co najmniej trzy węzły tej samej jednostki SKU. Aby rozwinąć chmurę prywatną, Dodaj dodatkowe węzły.  Można dodać węzły do istniejącego klastra lub utworzyć nowy klaster przez wykupienie węzłów w Azure Portal i skojarzenie ich z usługą CloudSimple.  Wszystkie zakupione węzły są widoczne w ramach usługi CloudSimple.  
 
-## <a name="provisioned-nodes"></a>Węzły inicjowane
+## <a name="purchased-nodes"></a>Zakupione węzły
 
-Węzły z zainicjowaną obsługą zapewniają pojemność płatność zgodnie z rzeczywistym użyciem. Węzły aprowizacji ułatwiają szybkie skalowanie klastra VMware na żądanie. Możesz dodać węzły w razie potrzeby lub usunąć węzeł aprowizacji, aby przeskalować swój klaster VMware. na węzłach inicjowanych jest rozliczana co miesiąc i naliczana jest opłata za subskrypcję, w której są one inicjowane:
+Zakupione węzły zapewniają pojemność płatną zgodnie z rzeczywistym użyciem. Węzły zakupów ułatwiają szybkie skalowanie klastra VMware na żądanie. Możesz dodać węzły w razie potrzeby lub usunąć zakupionego węzła, aby przeskalować swój klaster VMware. Zakupione węzły są rozliczane co miesiąc i są naliczane za subskrypcję, w której zostały zakupione.
 
 * Jeśli płacisz za subskrypcję platformy Azure za pomocą karty kredytowej, karta jest rozliczana od razu.
 * Jeśli opłata jest naliczana według faktury, opłaty są naliczane na następnej fakturze.
 
 ## <a name="vmware-solution-by-cloudsimple-nodes-sku"></a>Rozwiązanie VMware według jednostki SKU węzłów CloudSimple
 
-Następujące węzły typów są dostępne do aprowizacji lub rezerwacji.
+Następujące typy węzłów są dostępne do zakupu lub rezerwacji.
 
 | SKU | CS28 — węzeł | CS36 — węzeł |
 |-----|-------------|-------------|
@@ -57,5 +57,5 @@ Poniższe limity węzłów mają zastosowanie do chmur prywatnych.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się, jak [inicjować obsługę węzłów](create-nodes.md)
-* Informacje o [chmurze prywatnej](cloudsimple-private-cloud.md)
+* Dowiedz się, jak [kupić węzły](create-nodes.md)
+* Informacje o [chmurach prywatnych](cloudsimple-private-cloud.md)

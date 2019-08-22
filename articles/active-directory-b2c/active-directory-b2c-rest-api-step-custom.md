@@ -1,51 +1,51 @@
 ---
-title: Interfejs API REST oświadczeń wymiany - Azure Active Directory B2C
-description: Wymiana oświadczeń interfejsu API REST należy dodać do zasad niestandardowych w Active Directory B2C.
+title: Wymiana oświadczeń interfejsu API REST — Azure Active Directory B2C
+description: Dodaj wymianę oświadczeń interfejsu API REST do zasad niestandardowych w Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 08/21/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0bdef508e12a3b11143149b330da73838b53f860
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 42129870c6ab2bb5e58bdf9aaa323a3d64b479f8
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439011"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69644924"
 ---
-# <a name="add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Dodawanie interfejsu API REST oświadczeń wymiany do zasad niestandardowych w usłudze Azure Active Directory B2C
+# <a name="add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Dodawanie wymiany oświadczeń interfejsu API REST do zasad niestandardowych w Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Możesz dodać interakcję z interfejsu API RESTful do Twojej [zasady niestandardowe](active-directory-b2c-overview-custom.md) w usłudze Azure Active Directory (Azure AD) B2C. W tym artykule przedstawiono sposób tworzenia podróży użytkownika usługi Azure AD B2C, który współdziała z usług RESTful.
+Interakcję z interfejsem API RESTful można dodać do [zasad niestandardowych](active-directory-b2c-overview-custom.md) w Azure Active Directory (Azure AD) B2C. W tym artykule opisano sposób tworzenia Azure AD B2Cj podróży użytkowników, która współdziała z usługami RESTful Services.
 
-Interakcja zawiera oświadczenia wymianę informacji między oświadczenia interfejsu API REST i usługi Azure AD B2C. Wymiana oświadczeń mają następującą charakterystykę:
+Interakcja obejmuje wymianę informacji między oświadczeniami interfejsu API REST a Azure AD B2C. Wymiany oświadczeń mają następującą charakterystykę:
 
-- Może być zaprojektowane jako kroku aranżacji.
-- Można wyzwolić akcję zewnętrznych. Na przykład zarejestrować zdarzenie w zewnętrznej bazie danych.
-- Może służyć do pobierania wartości, a następnie zapisać ją w bazie danych użytkownika.
-- Można zmienić przepływem wykonania.
+- Może być zaprojektowana jako krok aranżacji.
+- Może wyzwalać akcję zewnętrzną. Na przykład może rejestrować zdarzenie w zewnętrznej bazie danych.
+- Można go użyć, aby pobrać wartość, a następnie zapisać ją w bazie danych użytkownika.
+- Może zmienić przepływ wykonywania.
 
-Scenariusz, który jest reprezentowany w tym artykule zawiera następujące akcje:
+Scenariusz przedstawiony w tym artykule obejmuje następujące akcje:
 
 1. Wyszukaj użytkownika w systemie zewnętrznym.
-2. Uzyskaj miasta, w którym użytkownik jest zarejestrowany.
-3. Ten atrybut należy powrócić do aplikacji jako oświadczenia.
+2. Zapoznaj się z miastom, w którym użytkownik jest zarejestrowany.
+3. Zwróć ten atrybut do aplikacji jako element Claim.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Wykonaj kroki [wprowadzenie do zasad niestandardowych](active-directory-b2c-get-started-custom.md).
-- Punkt końcowy interfejsu API REST do interakcji z. To proste Azure działa jako przykład korzysta z artykułu. Aby utworzyć funkcję platformy Azure, zobacz [tworzenie pierwszej funkcji w witrynie Azure portal](../azure-functions/functions-create-first-azure-function.md).
+- Wykonaj kroki opisane w temacie Wprowadzenie [do zasad niestandardowych](active-directory-b2c-get-started-custom.md).
+- Punkt końcowy interfejsu API REST do współpracy z usługą. W tym artykule jest na przykład stosowana prosta funkcja platformy Azure. Aby utworzyć funkcję platformy Azure, zobacz [Tworzenie pierwszej funkcji w Azure Portal](../azure-functions/functions-create-first-azure-function.md).
 
-## <a name="prepare-the-api"></a>Przygotowanie interfejsu API
+## <a name="prepare-the-api"></a>Przygotowywanie interfejsu API
 
-W tej sekcji należy przygotować funkcji platformy Azure, aby otrzymać wartość `email`, a następnie zwracają wartość `city` mogą służyć za pomocą usługi Azure AD B2C jako oświadczenia.
+W tej sekcji przygotowasz funkcję platformy Azure do otrzymania wartości `email`, a następnie zwracają `city` wartość, która może być używana przez Azure AD B2C jako rolę.
 
-Zmień pliku run.csx dla funkcji platformy Azure, utworzony w celu użyj następującego kodu:
+Zmień plik Run. CSX dla funkcji platformy Azure, która została utworzona, aby użyć następującego kodu:
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -82,11 +82,11 @@ public class ResponseContent
 }
 ```
 
-## <a name="configure-the-claims-exchange"></a>Skonfiguruj oświadczenia w programie exchange
+## <a name="configure-the-claims-exchange"></a>Konfigurowanie wymiany oświadczeń
 
-Profil techniczny zawiera konfigurację programu exchange oświadczenia.
+Profil techniczny zapewnia konfigurację dla wymiany roszczeń.
 
-Otwórz *TrustFrameworkExtensions.xml* pliku i Dodaj następujący kod **ClaimsProvider** — element XML wewnątrz **ClaimsProviders** elementu.
+Otwórz plik *TrustFrameworkExtensions. XML* i Dodaj następujący element **ClaimsProvider** XML wewnątrz elementu **ClaimsProviders** .
 
 ```XML
 <ClaimsProvider>
@@ -97,8 +97,10 @@ Otwórz *TrustFrameworkExtensions.xml* pliku i Dodaj następujący kod **ClaimsP
       <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
         <Item Key="ServiceUrl">https://myfunction.azurewebsites.net/api/HttpTrigger1?code=bAZ4lLy//ZHZxmncM8rI7AgjQsrMKmVXBpP0vd9smOzdXDDUIaLljA==</Item>
-        <Item Key="AuthenticationType">None</Item>
         <Item Key="SendClaimsIn">Body</Item>
+        <!-- Set AuthenticationType to Basic or ClientCertificate in production environments -->
+        <Item Key="AuthenticationType">None</Item>
+        <!-- REMOVE the following line in production environments -->
         <Item Key="AllowInsecureAuthInProduction">true</Item>
       </Metadata>
       <InputClaims>
@@ -113,11 +115,13 @@ Otwórz *TrustFrameworkExtensions.xml* pliku i Dodaj następujący kod **ClaimsP
 </ClaimsProvider>
 ```
 
-**InputClaims** element definiuje oświadczenia, które są wysyłane do usługi REST. W tym przykładzie wartość oświadczenia `givenName` są wysyłane do usługi REST jako oświadczenie `email`. **OutputClaims** element definiuje oświadczenia, które oczekują usługi REST.
+Element **InputClaims** definiuje oświadczenia, które są wysyłane do usługi REST. W tym przykładzie wartość żądania `givenName` jest wysyłana do usługi REST jako jako zastrzeżenie. `email` Element **OutputClaims** definiuje oświadczenia, które są oczekiwane w usłudze Rest.
 
-## <a name="add-the-claim-definition"></a>Dodawanie definicji oświadczenia
+Powyższe `AuthenticationType` Komentarze i `AllowInsecureAuthInProduction` określają zmiany, które należy wykonać po przejściu do środowiska produkcyjnego. Aby dowiedzieć się, jak zabezpieczyć interfejsy API usługi RESTful w środowisku produkcyjnym, zobacz [Secure RESTful interfejsy API z uwierzytelnianiem Basic](active-directory-b2c-custom-rest-api-netfw-secure-basic.md) i [Secure RESTful API z uwierzytelnianiem certyfikatu](active-directory-b2c-custom-rest-api-netfw-secure-cert.md).
 
-Dodaj definicję dla `city` wewnątrz **BuildingBlocks** elementu. Możesz znaleźć tego elementu na początku pliku TrustFrameworkExtensions.xml.
+## <a name="add-the-claim-definition"></a>Dodaj definicję żądania
+
+Dodaj definicję `city` wewnątrz elementu **BuildingBlocks** . Ten element można znaleźć na początku pliku TrustFrameworkExtensions. XML.
 
 ```XML
 <BuildingBlocks>
@@ -132,11 +136,11 @@ Dodaj definicję dla `city` wewnątrz **BuildingBlocks** elementu. Możesz znale
 </BuildingBlocks>
 ```
 
-## <a name="add-an-orchestration-step"></a>Dodawanie kroku aranżacji
+## <a name="add-an-orchestration-step"></a>Dodaj krok aranżacji
 
-Istnieje wiele przypadków użycia, w którym wywołania interfejsu API REST może służyć jako kroku aranżacji. Krok aranżacji może służyć jako aktualizację do systemu zewnętrznego po pomyślnym zakończeniu zadania, takie jak rejestracji po raz pierwszy lub aktualizacja profilu Aby zachować synchronizację informacji. W tym przypadku jest używany rozszerzyć informacje do aplikacji po edycji profilu.
+Istnieje wiele przypadków użycia, w których wywołanie interfejsu API REST może być używane jako krok aranżacji. Jako krok aranżacji może służyć jako aktualizacja systemu zewnętrznego, gdy użytkownik pomyślnie ukończy zadanie, takie jak rejestracja w czasie pierwszym lub jako aktualizacja profilu, aby zachować synchronizację informacji. W takim przypadku służy do rozszerzenia informacji dostarczonych do aplikacji po przeprowadzeniu edycji profilu.
 
-Dodawanie kroku do podróży użytkownika edycji profilu. Po użytkownik jest uwierzytelniany (aranżacji: kroki 1 – 4 następujący kod XML), a użytkownik udostępnił informacje zaktualizowany profil (krok 5). Kopia profilu edycji kodu XML podróży użytkownika z *TrustFrameworkBase.xml* pliku do usługi *TrustFrameworkExtensions.xml* pliku wewnątrz **podróży użytkowników** elementu. Następnie wprowadzić zmiany w kroku 6.
+Dodaj krok do profilu Edytuj podróż użytkownika. Po uwierzytelnieniu użytkownika (kroki aranżacji 1-4 w poniższym kodzie XML), a użytkownik podał zaktualizowane informacje o profilu (krok 5). Skopiuj z pliku *TrustFrameworkBase. XML* do pliku *TrustFrameworkExtensions. XML* wewnątrz elementu **UserJourneys** . Następnie wprowadź modyfikację jako krok 6.
 
 ```XML
 <OrchestrationStep Order="6" Type="ClaimsExchange">
@@ -146,7 +150,7 @@ Dodawanie kroku do podróży użytkownika edycji profilu. Po użytkownik jest uw
 </OrchestrationStep>
 ```
 
-Końcowe XML dla podróży użytkownika powinien wyglądać następująco:
+Końcowy kod XML dla podróży użytkownika powinien wyglądać podobnie do tego przykładu:
 
 ```XML
 <UserJourney Id="ProfileEdit">
@@ -204,11 +208,11 @@ Końcowe XML dla podróży użytkownika powinien wyglądać następująco:
 </UserJourney>
 ```
 
-## <a name="add-the-claim"></a>Dodaj oświadczenie
+## <a name="add-the-claim"></a>Dodawanie żądania
 
-Edytuj *ProfileEdit.xml* pliku i Dodaj `<OutputClaim ClaimTypeReferenceId="city" />` do **OutputClaims** elementu.
+Edytuj plik *ProfileEdit. XML* i Dodaj `<OutputClaim ClaimTypeReferenceId="city" />` go do elementu **OutputClaims** .
 
-Po dodaniu nowego oświadczenia, profilu technicznego wygląda następująco:
+Po dodaniu nowego żądania profil techniczny wygląda podobnie do tego przykładu:
 
 ```XML
 <TechnicalProfile Id="PolicyProfile">
@@ -223,15 +227,15 @@ Po dodaniu nowego oświadczenia, profilu technicznego wygląda następująco:
 </TechnicalProfile>
 ```
 
-## <a name="upload-your-changes-and-test"></a>Przekazywanie zmian i testowanie
+## <a name="upload-your-changes-and-test"></a>Przekaż zmiany i przetestuj
 
-1. (Opcjonalne:) Zapisz (pobierając) istniejącą wersję plików przed kontynuowaniem.
-2. Przekaż *TrustFrameworkExtensions.xml* i *ProfileEdit.xml* a następnie wybierz pozycję Tak, aby zastąpić istniejący plik.
-3. Wybierz **B2C_1A_ProfileEdit**.
-4. Aby uzyskać **wybierz aplikację** na stronie Przegląd zasad niestandardowych, wybierz aplikację sieci web o nazwie *webapp1* który został wcześniej zarejestrowany. Upewnij się, że **adres URL odpowiedzi** jest `https://jwt.ms`.
-4. Wybierz **Uruchom teraz**. Zaloguj się przy użyciu poświadczeń konta, a następnie kliknij przycisk **Kontynuuj**.
+1. Obowiązkowe Przed kontynuowaniem Zapisz istniejącą wersję (pobierając) plików.
+2. Przekaż pliki *TrustFrameworkExtensions. XML* i *ProfileEdit. XML* i wybierz, aby zastąpić istniejący plik.
+3. Wybierz pozycję **B2C_1A_ProfileEdit**.
+4. Dla **opcji wybierz aplikację** na stronie Przegląd zasad niestandardowych wybierz aplikację sieci Web o nazwie *webapp1* , która została wcześniej zarejestrowana. Upewnij się, że **adres URL odpowiedzi** to `https://jwt.ms`.
+4. Wybierz pozycję **Uruchom teraz**. Zaloguj się przy użyciu poświadczeń konta, a następnie kliknij przycisk **Kontynuuj**.
 
-Jeśli wszystko jest prawidłowo skonfigurowane, token zawiera nowe oświadczenie `city`, z wartością `Redmond`.
+Jeśli wszystko jest prawidłowo skonfigurowane, token zawiera nowe `city`zgłoszenie z wartością. `Redmond`
 
 ```JSON
 {
@@ -249,7 +253,15 @@ Jeśli wszystko jest prawidłowo skonfigurowane, token zawiera nowe oświadczeni
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Istnieje również możliwość projektowania interakcji jako profil sprawdzania poprawności. Aby uzyskać więcej informacji, zobacz [instruktażu: Integracja interfejsu API REST wymianą oświadczeń podróży użytkownika usługi Azure AD B2C jako sprawdzanie poprawności danych wejściowych użytkownika](active-directory-b2c-rest-api-validation-custom.md).
-- [Modyfikowanie edytowania profilu do zbierania dodatkowych informacji od użytkowników](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
+Interakcję można także zaprojektować jako profil weryfikacji. Aby uzyskać więcej informacji, [zobacz Przewodnik: Integruj wymianę oświadczeń interfejsu API REST w trakcie Azure AD B2C użytkownika podczas sprawdzania poprawności danych wejściowych](active-directory-b2c-rest-api-validation-custom.md)użytkownika.
+
+[Zmodyfikuj edytowanie profilu w celu zebrania dodatkowych informacji od użytkowników](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
+
+[Odwoła Profil techniczny RESTful](restful-technical-profile.md)
+
+Aby dowiedzieć się, jak zabezpieczyć interfejsy API, zobacz następujące artykuły:
+
+* [Zabezpieczanie interfejsu API usługi RESTful przy użyciu uwierzytelniania podstawowego (nazwa użytkownika i hasło)](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
+* [Zabezpieczanie interfejsu API usługi RESTful przy użyciu certyfikatów klienta](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)

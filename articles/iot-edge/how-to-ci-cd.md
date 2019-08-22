@@ -4,26 +4,29 @@ description: Skonfiguruj ciągłą integrację i ciągłe wdrażanie — usługi
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 01/22/2019
+ms.date: 08/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 659a6f5acaac848084ed1e9590a414191542b54a
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: e14025a5a7a3e81404498638d6f6f9c5ff18ed58
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414628"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650778"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Ciągła integracja i ciągłe wdrażanie w usłudze Azure IoT Edge
 
 Możesz łatwo przyjmować DevOps z aplikacjami Azure IoT Edge przy użyciu wbudowanych zadań Azure IoT Edge w Azure Pipelines. W tym artykule pokazano, jak za pomocą funkcji ciągłej integracji i ciągłego wdrażania Azure Pipelines szybko i Azure IoT Edge wydajniej kompilować, testować i wdrażać aplikacje. 
 
-W tym artykule dowiesz się, jak za pomocą wbudowanych Azure IoT Edge zadań dla Azure Pipelines utworzyć dwa potoki dla rozwiązania IoT Edge. Najpierw pobiera kod i kompiluje rozwiązanie, wypychając obrazy modułu do rejestru kontenerów i tworząc manifest wdrożenia. Druga z nich wdraża moduły na IoT Edge urządzenia.  
-
 ![Diagram — ciągła Integracja i ciągłe dostarczanie gałęzie rozwoju i produkcji](./media/how-to-ci-cd/cd.png)
 
+W tym artykule dowiesz się, jak za pomocą wbudowanych Azure IoT Edge zadań dla Azure Pipelines utworzyć dwa potoki dla rozwiązania IoT Edge. W Azure IoT Edge zadaniach można używać czterech akcji.
+   - **Obrazy modułów Azure IoT Edge-Build** pobierają kod rozwiązania IoT Edge i kompilują obrazy kontenerów.
+   - **Obrazy modułów wypychania Azure IoT Edge** wypychania obrazów modułów do określonego rejestru kontenerów.
+   - **Azure IoT Edge — generowanie manifestu wdrożenia** przyjmuje plik Deployment. Template. JSON i zmienne, a następnie generuje plik manifestu wdrożenia Final IoT Edge.
+   - **Azure IoT Edge-Deploy do IoT Edge urządzeń** pomaga tworzyć wdrożenia IoT Edge na jednym lub wielu urządzeniach IoT Edge.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -77,15 +80,15 @@ W tej sekcji utworzysz nowy potok kompilacji. Skonfiguruj potok do automatyczneg
     
      ![Konfigurowanie puli agentów kompilacji](./media/how-to-ci-cd/configure-env.png)
 
-5. Potok jest wstępnie skonfigurowany przy użyciu zadania o nazwie **zadanie agenta 1**. Wybierz znak plus ( **+** ), aby dodać trzy zadania do zadania: **Azure IoT Edge** dwa razy i **Opublikuj artefakty kompilacji** jeden raz. (Umieść wskaźnik myszy nad nazwą każdego zadania, aby wyświetlić przycisk **Dodaj** ).
+5. Potok jest wstępnie skonfigurowany przy użyciu zadania o nazwie **zadanie agenta 1**. Wybierz znak plus ( **+** ), aby dodać trzy zadania do zadania: **Azure IoT Edge** dwa razy, **Skopiuj pliki** raz i **Opublikuj artefakty kompilacji** jeden raz. (Umieść wskaźnik myszy nad nazwą każdego zadania, aby wyświetlić przycisk **Dodaj** ).
 
    ![Dodawanie Azure IoT Edge zadania](./media/how-to-ci-cd/add-iot-edge-task.png)
 
-   Gdy zostaną dodane wszystkie trzy zadania, zadanie agenta będzie wyglądać podobnie do poniższego przykładu:
+   Po dodaniu wszystkich czterech zadań zadanie agenta będzie wyglądać podobnie do poniższego przykładu:
     
    ![Trzy zadania w potoku kompilacji](./media/how-to-ci-cd/add-tasks.png)
 
-6. Wybierz pierwsze zadanie **Azure IoT Edge** , aby je edytować. To zadanie kompiluje wszystkie moduły w rozwiązaniu z określoną platformą docelową, a także generuje plik **Deployment. JSON** , który informuje IoT Edge urządzeń o sposobie konfigurowania wdrożenia.
+6. Wybierz pierwsze zadanie **Azure IoT Edge** , aby je edytować. To zadanie kompiluje wszystkie moduły w rozwiązaniu z określoną platformą docelową.
 
    * **Nazwa wyświetlana**: Zaakceptuj domyślne **obrazy modułu Azure IoT Edge-Build**.
    * **Akcja**: Zaakceptuj domyślne **obrazy modułu kompilacji**. 
@@ -93,7 +96,7 @@ W tej sekcji utworzysz nowy potok kompilacji. Skonfiguruj potok do automatyczneg
    * **Platforma domyślna**: Wybierz odpowiednią platformę dla modułów na podstawie docelowego urządzenia IoT Edge. 
    * **Zmienne wyjściowe**: Zmienne wyjściowe zawierają nazwę odwołania, której można użyć do skonfigurowania ścieżki pliku, w którym zostanie wygenerowany plik Deployment. JSON. Ustaw nazwę odwołania na coś do zapamiętania, na przykład **Edge**. 
 
-7. Wybierz drugie zadanie **Azure IoT Edge** , aby je edytować. To zadanie powoduje wypchnięcie wszystkich obrazów modułu do rejestru kontenerów, które zostały wybrane. Dodaje także poświadczenia rejestru kontenera do pliku **Deployment. JSON** , dzięki czemu urządzenie IoT Edge będzie miało dostęp do obrazów modułów. 
+7. Wybierz drugie zadanie **Azure IoT Edge** , aby je edytować. To zadanie powoduje wypchnięcie wszystkich obrazów modułu do rejestru kontenerów, które zostały wybrane.
 
    * **Nazwa wyświetlana**: Nazwa wyświetlana jest automatycznie aktualizowana, gdy pole akcji ulega zmianie. 
    * **Akcja**: Użyj listy rozwijanej, aby wybrać **obrazy modułu wypychania**. 
@@ -103,24 +106,32 @@ W tej sekcji utworzysz nowy potok kompilacji. Skonfiguruj potok do automatyczneg
 
    Jeśli masz wiele rejestry kontenerów do hostowania obrazów modułu, musisz zduplikowane to zadanie, wybierz inny rejestr kontenerów, a następnie użyj **obejścia moduły** w ustawieniach zaawansowanych, aby pominąć obrazów, które nie są w tym określonego rejestru.
 
-8. Wybierz zadanie **Opublikuj artefakty kompilacji** , aby je edytować. Podaj ścieżkę do pliku wdrożenia wygenerowanego przez zadanie kompilacji. Ustaw **ścieżkę do wartości Opublikuj** , aby odpowiadała zmiennej wyjściowej ustawionej w zadaniu modułu kompilacji. Na przykład `$(edge.DEPLOYMENT_FILE_PATH)`. Pozostaw pozostałe wartości jako wartości domyślne. 
+8. Wybierz zadanie **Kopiuj pliki** , aby je edytować. To zadanie służy do kopiowania plików do katalogu przemieszczania artefaktu.
 
-9. Otwórz kartę **wyzwalacze** i zaznacz pole wyboru **Włącz integrację ciągłą**. Upewnij się, że gałąź z kodem jest dołączony.
+   * **Nazwa wyświetlana**: Kopiuj pliki do: Folder docelowy.
+   * **Zawartość**: Umieść dwa wiersze w tej sekcji `deployment.template.json` i. `**/module.json` Te dwa typy plików są danymi wejściowymi do generowania manifestu wdrażania IoT Edge. Należy skopiować do folderu przemieszczania artefaktu i opublikować go dla potoku wydania.
+   * **Folder docelowy**: Umieść zmienną `$(Build.ArtifactStagingDirectory)`. Zobacz temat [Tworzenie zmiennych](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) , aby dowiedzieć się więcej o opisie.
+
+9. Wybierz zadanie **Opublikuj artefakty kompilacji** , aby je edytować. Podaj ścieżkę katalogu przemieszczania artefaktu do zadania, aby można było opublikować ścieżkę w potoku wydania.
+   
+   * **Nazwa wyświetlana**: Publikuj artefakt: upuść.
+   * **Ścieżka do opublikowania**: Umieść zmienną `$(Build.ArtifactStagingDirectory)`. Zobacz temat [Tworzenie zmiennych](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) , aby dowiedzieć się więcej o opisie.
+   * **Nazwa artefaktu**: upuść.
+   * **Lokalizacja publikowania artefaktu**: Azure Pipelines.
+
+
+10. Otwórz kartę **wyzwalacze** i zaznacz pole wyboru **Włącz integrację ciągłą**. Upewnij się, że gałąź z kodem jest dołączony.
 
     ![Włącz wyzwalacz ciągłej integracji](./media/how-to-ci-cd/configure-trigger.png)
 
-10. Zapisz nowy potok kompilacji przy użyciu przycisku **Zapisz** .
+11. Zapisz nowy potok kompilacji przy użyciu przycisku **Zapisz** .
 
 Ten potok jest teraz skonfigurowany do automatycznego uruchamiania podczas wypychania nowego kodu do repozytorium. Ostatnim zadaniem, opublikowanie artefaktów potoku, jest wyzwalanie potoku wydania. Przejdź do następnej sekcji, aby skompilować potok wersji. 
 
 ## <a name="configure-continuous-deployment"></a>Konfigurowanie ciągłego wdrażania
 W tej sekcji utworzysz potok wydania, który jest skonfigurowany do automatycznego uruchamiania, gdy potok kompilacji pospadnie artefakty, a dzienniki wdrażania zostaną wyświetlone w Azure Pipelines.
 
-W tej sekcji utworzysz dwa różne etapy, jeden dla wdrożeń testowych i jeden dla wdrożeń produkcyjnych. 
-
-### <a name="create-test-stage"></a>Utwórz etap testu
-
-Utwórz nowy potok i skonfiguruj jego pierwszy etap w celu zapewnienia jakości wdrożeń. 
+Utwórz nowy potok i Dodaj nowy etap 
 
 1. W **wersji** kartę, wybrać **+ nowy potok**. Lub, jeśli masz już potoki wersji, wybierz przycisk **+ Nowy** i wybierz pozycję **+ Nowy potok wersji**.  
 
@@ -130,9 +141,7 @@ Utwórz nowy potok i skonfiguruj jego pierwszy etap w celu zapewnienia jakości 
 
     ![Uruchom zadanie puste](./media/how-to-ci-cd/start-with-empty-job.png)
 
-3. Nowy potok wydania jest inicjowany z jednym etapem, zwanym **etapem 1**. Zmień nazwę etapu 1 na **pytania** i traktowanie jako środowisko testowe. Zwykle potoki ciągłego wdrażania mają wiele etapów. Możesz tworzyć więcej informacji na podstawie DevOps. Zamknij okno Szczegóły etapu po jego zmianie nazwy. 
-
-    ![Tworzenie etapów środowiska testowego](./media/how-to-ci-cd/QA-env.png)
+3. Nowy potok wydania jest inicjowany z jednym etapem, zwanym **etapem 1**. Zmień nazwę etapu 1 na **dev** i Traktuj ją jako środowisko testowe. Zwykle potoki ciągłego wdrażania mają wiele etapów, w tym **dev**, **Staging** and **prod**. Możesz tworzyć więcej informacji na podstawie DevOps. Zamknij okno Szczegóły etapu po jego zmianie nazwy. 
 
 4. Połącz wydanie z artefaktami kompilacji, które są publikowane przez potok kompilacji. Kliknij przycisk **Dodaj** w obszarze artefaktów.
 
@@ -146,57 +155,46 @@ Utwórz nowy potok i skonfiguruj jego pierwszy etap w celu zapewnienia jakości 
 
    ![Konfigurowanie wyzwalacza ciągłego wdrażania](./media/how-to-ci-cd/add-a-trigger.png)
 
-7. Etap **pytania i odpowiedzi** jest wstępnie konfigurowany przy użyciu jednego zadania i zero zadań. Z menu potok wybierz pozycję **zadania** , a następnie wybierz etap **pytania i odpowiedzi** .  Wybierz zadanie i liczbę zadań, aby skonfigurować zadania na tym etapie.
+7. Etap **dev** jest wstępnie skonfigurowany przy użyciu jednego zadania i zero zadań. Z menu potok wybierz pozycję **zadania** , a następnie wybierz etap **dev** .  Wybierz zadanie i liczbę zadań, aby skonfigurować zadania na tym etapie.
 
-    ![Skonfiguruj zadania pytań i odpowiedzi](./media/how-to-ci-cd/view-stage-tasks.png)
+    ![Konfigurowanie zadań deweloperskich](./media/how-to-ci-cd/view-stage-tasks.png)
 
-8. Na etapie pytania i odpowiedzi powinno zostać wyświetlone domyślne **zadanie agenta**. Można skonfigurować szczegółowe informacje o zadaniu agenta, ale zadanie wdrażania jest zależne od platformy, aby można było użyć **hostowanej program VS2017** lub **hostowanej Ubuntu 1604** w **puli agentów** (lub dowolnego innego agenta zarządzanego przez siebie). 
+8. Na etapie **dev** należy zobaczyć domyślne **zadanie agenta**. Można skonfigurować szczegółowe informacje o zadaniu agenta, ale zadanie wdrażania jest zależne od platformy, aby można było użyć **hostowanej program VS2017** lub **hostowanej Ubuntu 1604** w **puli agentów** (lub dowolnego innego agenta zarządzanego przez siebie). 
 
-9. Wybierz znak plus ( **+** ), aby dodać jedno zadanie. Wyszukaj i Dodaj **Azure IoT Edge**. 
+9. Wybierz znak plus ( **+** ), aby dodać dwa zadania. Wyszukaj i Dodaj **Azure IoT Edge** dwa razy.
 
-    ![Dodaj zadania dla pytań i odpowiedzi](./media/how-to-ci-cd/add-task-qa.png)
+    ![Dodawanie zadań deweloperskich](./media/how-to-ci-cd/add-task-qa.png)
 
-10. Wybierz nowe zadanie Azure IoT Edge i skonfiguruj je przy użyciu następujących wartości:
+10. Wybierz pierwsze zadanie **Azure IoT Edge** i skonfiguruj je przy użyciu następujących wartości:
 
     * **Nazwa wyświetlana**: Nazwa wyświetlana jest automatycznie aktualizowana, gdy pole akcji ulega zmianie. 
-    * **Akcja**: Użyj listy rozwijanej, aby wybrać opcję **Wdróż do IoT Edge urządzenia**. Zmiana wartości akcji spowoduje również zaktualizowanie nazwy wyświetlanej zadania tak, aby była zgodna.
+    * **Akcja**: Użyj listy rozwijanej, aby wybrać opcję **Generuj manifest wdrożenia**. Zmiana wartości akcji spowoduje również zaktualizowanie nazwy wyświetlanej zadania tak, aby była zgodna.
+    * **plik Template. JSON**: Umieść ścieżkę `$(System.DefaultWorkingDirectory)/Drop/drop/deployment.template.json`. Ścieżka jest publikowana z potoku kompilacji.
+    * **Platforma domyślna**: Podczas kompilowania obrazów modułów należy wybrać tę samą wartość.
+    * **Ścieżka wyjściowa**: Umieść ścieżkę `$(System.DefaultWorkingDirectory)/Drop/drop/configs/deployment.json`. Ta ścieżka to końcowy plik manifestu wdrażania IoT Edge.
+
+    Te konfiguracje ułatwiają zastępowanie adresów URL obrazów modułów `deployment.template.json` w pliku. Funkcja **Generuj manifest wdrożenia** pomaga również zastąpić zmienne dokładnie wartością określoną w `deployment.template.json` pliku. W programie vs/vs Code określasz wartość rzeczywistą w `.env` pliku. W Azure Pipelines należy ustawić wartość na karcie zmienne potoku wydania. Przejdź do karty zmienne i skonfiguruj nazwę i wartość w następujący sposób.
+
+    * **ACR_ADDRESS**: Twój adres Azure Container Registry. 
+    * **ACR_PASSWORD**: Twoje Azure Container Registry hasło.
+    * **ACR_USER**: Twoja nazwa użytkownika Azure Container Registry.
+
+    Jeśli w projekcie znajdują się inne zmienne, możesz określić nazwę i wartość na tej karcie. W przypadku wygenerowania manifestu rozmieszczenia można rozpoznać tylko zmienne `${VARIABLE}` , należy się upewnić, że są one `*.template.json` używane w plikach.
+
+    ![Konfigurowanie zmiennych dla potoku wydania](./media/how-to-ci-cd/configure-variables.png)
+
+10. Wybierz drugie zadanie **Azure IoT Edge** i skonfiguruj je przy użyciu następujących wartości:
+
+    * **Nazwa wyświetlana**: Nazwa wyświetlana jest automatycznie aktualizowana, gdy pole akcji ulega zmianie. 
+    * **Akcja**: Użyj listy rozwijanej, aby wybrać opcję **Wdróż do IoT Edge urządzeń**. Zmiana wartości akcji spowoduje również zaktualizowanie nazwy wyświetlanej zadania tak, aby była zgodna.
     * **Subskrypcja platformy Azure**: Wybierz subskrypcję zawierającą IoT Hub.
     * **Nazwa IoT Hub**: Wybierz Centrum IoT hub. 
     * **Wybierz jedno/kilka urządzeń**: Wybierz, czy potok wydania ma zostać wdrożony na jednym urządzeniu, czy na wielu urządzeniach. 
       * W przypadku wdrażania na jednym urządzeniu wprowadź **IoT Edge identyfikator urządzenia**. 
-      * W przypadku wdrażania na wielu urządzeniach należy określić **warunek docelowy**urządzenia. Warunek docelowy jest filtr, aby dopasować zbiór urządzeń brzegowych w usłudze IoT Hub. Jeśli chcesz użyć znaczników urządzenia jako warunek, należy zaktualizować urządzenie odpowiednie tagi z bliźniaczej reprezentacji urządzenia usługi IoT Hub. Zaktualizuj **IoT Edge identyfikator wdrożenia** i **IoT Edge priorytet wdrożenia** w obszarze Ustawienia zaawansowane. Aby uzyskać więcej informacji na temat tworzenia wdrożenia dla wielu urządzeń, zobacz [opis IoT Edge wdrożeń automatycznych](module-deployment-monitoring.md).
+      * W przypadku wdrażania na wielu urządzeniach należy określić **warunek docelowy**urządzenia. Warunek docelowy to filtr zgodny z zestawem IoT Edge urządzeń w IoT Hub. Jeśli chcesz użyć znaczników urządzenia jako warunek, należy zaktualizować urządzenie odpowiednie tagi z bliźniaczej reprezentacji urządzenia usługi IoT Hub. Zaktualizuj **IoT Edge identyfikator wdrożenia** i **IoT Edge priorytet wdrożenia** w obszarze Ustawienia zaawansowane. Aby uzyskać więcej informacji na temat tworzenia wdrożenia dla wielu urządzeń, zobacz [opis IoT Edge wdrożeń automatycznych](module-deployment-monitoring.md).
+    * Rozwiń pozycję Ustawienia zaawansowane, wybierz pozycję **IoT Edge identyfikator wdrożenia**, umieść `$(System.TeamProject)-$(Release.EnvironmentName)`zmienną. Mapuje projekt i nazwę wydania na identyfikator wdrożenia IoT Edge.
 
 11. Wybierz pozycję **Zapisz** , aby zapisać zmiany w nowym potoku wydania. Wróć do widoku potoku, wybierając pozycję **potok** z menu. 
-
-### <a name="create-production-stage"></a>Utwórz etap produkcyjny
-
-Utwórz drugi etap potoku wydania dla wdrożenia produkcyjnego. 
-
-1. Utwórz drugi etap dla środowiska produkcyjnego, usuwając etap usługi pytania i odpowiedzi. Umieść kursor na etapie pytań i odpowiedzi, a następnie wybierz przycisk klon. 
-
-    ![Klonowanie etapu](./media/how-to-ci-cd/clone-stage.png)
-
-2. Wybierz nowy etap o nazwie **kopia funkcji pytań i odpowiedzi**, aby otworzyć jego właściwości. Zmień nazwę **etapu na**produkcyjny dla środowiska produkcyjnego. Zamknij okno właściwości etapu. 
-
-3. Aby otworzyć zadania etapów PRODUKCYJNych, wybierz pozycję **zadania** z menu potok, a następnie wybierz etap **produkcyjny** . 
-
-4. Wybierz zadanie Azure IoT Edge, aby skonfigurować je w środowisku produkcyjnym. Ustawienia wdrożenia są prawdopodobnie takie same dla pytań i odpowiedzi, z tą różnicą, że chcesz wskazać inne urządzenie lub zestaw urządzeń w środowisku produkcyjnym. Zaktualizuj pole Identyfikator urządzenia lub pola warunku docelowego i identyfikatora wdrożenia dla urządzeń produkcyjnych. 
-
-5. Zapisz go za pomocą przycisku **Zapisz** . A następnie wybierz pozycję **potok** , aby wrócić do widoku potoku.
-    
-6. Sposób, w jaki ten potok wersji jest obecnie skonfigurowany, artefakt kompilacji wyzwoli etap kontroli **jakości** , a następnie etap **produkcyjny** za każdym razem, gdy zostanie ukończona Nowa kompilacja. Jednak zazwyczaj chcemy zintegrować niektóre przypadki testowe na urządzeniach z PYTANIAmi i ręcznie zatwierdzić wdrożenie dla środowiska produkcyjnego. Wykonaj następujące kroki, aby utworzyć warunek zatwierdzenia dla etapu PRODUKCYJNEgo:
-
-    1. Otwórz panel Ustawienia **warunków przed wdrożeniem** .
-
-        ![Otwórz warunki przed wdrożeniem](./media/how-to-ci-cd/pre-deploy-conditions.png)    
-
-    2. Przełącz warunek **zatwierdzania przed wdrożeniem** na **włączony**. Dodaj co najmniej jednego użytkownika lub grupę w polu **osoby zatwierdzające** i dostosuj wszystkie inne zasady zatwierdzania. Aby zapisać zmiany, zamknij panel warunki przed wdrożeniem.
-    
-       ![Zestaw warunków](./media/how-to-ci-cd/set-pre-deployment-conditions.png)
-
-
-7. Zapisz potok wersji za pomocą przycisku **Zapisz** . 
-
     
 ## <a name="verify-iot-edge-cicd-with-the-build-and-release-pipelines"></a>Sprawdź IoT Edge ciągłej integracji/ciągłego wdrażania z kompilacją a potoki wersji
 
@@ -208,17 +206,21 @@ Aby wyzwolić zadanie kompilacji, możesz wypchnięciu zatwierdzenia do repozyto
 
     ![Ręczne wyzwalacza](./media/how-to-ci-cd/manual-trigger.png)
 
-3. Wybierz zadanie kompilacji, aby obserwować jego postępy. W przypadku pomyślnego ukończenia potoku kompilacji jest wyzwalane wydanie na etap kontroli **jakości** . 
+3. Wybierz zadanie kompilacji, aby obserwować jego postępy. W przypadku pomyślnego ukończenia potoku kompilacji jest wyzwalane wydanie do etapu **dev** . 
 
     ![Kompilacja dzienników](./media/how-to-ci-cd/build-logs.png)
 
-4. Pomyślne wdrożenie na etapie **pytań i odpowiedzi** wyzwala powiadomienie do osoby zatwierdzającej. Sprawdź, czy moduły zostały pomyślnie wdrożone na urządzeniu lub urządzeniach, które są przeznaczone do etapu kontroli jakości. Następnie przejdź do pozycji Zwolnij potok i przekaż zatwierdzenie wersji, aby przejść do etapu PRODUKCYJNEgo, wybierając  przycisk produkcyjny, a następnie wybierając pozycję Zatwierdź. 
+4. Pomyślne wydanie **deweloperskie** tworzy IoT Edge wdrożenie IoT Edge urządzeń docelowych.
 
-    ![Oczekuje na zatwierdzenie](./media/how-to-ci-cd/pending-approval.png)
+    ![Wydanie do deweloperów](./media/how-to-ci-cd/pending-approval.png)
 
-5. Po osoby zatwierdzającej zatwierdzić tę zmianę, można je było wdrożyć do **PROD**.
+5. Kliknij pozycję etap **deweloperów** , aby wyświetlić dzienniki wydań.
 
-## <a name="next-steps"></a>Kolejne kroki
+    ![Dzienniki wydań](./media/how-to-ci-cd/release-logs.png)
 
+
+
+## <a name="next-steps"></a>Następne kroki
+* Przykład IoT Edge DevOps Best Practices w [projekcie DevOps platformy Azure dla IoT Edge](how-to-devops-project.md)
 * Omówienie wdrożenia usługi IoT Edge w [wdrożeń zrozumieć usługi IoT Edge dla urządzeń z jednej lub w odpowiedniej skali](module-deployment-monitoring.md)
 * Przewodnik po krokach do utworzenia, aktualizacji lub usunięcia wdrożenia w [wdrażanie i monitorowanie moduły usługi IoT Edge na dużą skalę](how-to-deploy-monitor.md).

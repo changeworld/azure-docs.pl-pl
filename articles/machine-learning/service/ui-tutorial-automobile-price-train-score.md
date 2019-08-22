@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 07/21/2019
-ms.openlocfilehash: b0d227b71677db1d6b4ce8386b02cf957ca259f7
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.date: 08/16/2019
+ms.openlocfilehash: a2134853c48ca09faa150f038be2d9327af75eee
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668410"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891626"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>Samouczek: Przewidywanie ceny samochodów za pomocą interfejsu wizualnego
 
@@ -27,9 +27,11 @@ W części pierwszej należy skonfigurować środowisko, przeciągnąć i upuśc
 W pierwszej części samouczka dowiesz się, jak:
 
 > [!div class="checklist"]
-> * Importowanie i czyszczenie danych
+> * Tworzenie nowego eksperymentu
+> * Importowanie danych
+> * Przygotowywanie danych
 > * Uczenie modelu uczenia maszynowego
-> * Ocena i Ocena modelu
+> * Oceń model uczenia maszynowego
 
 W [drugiej części](ui-tutorial-automobile-price-deploy.md) tego samouczka dowiesz się, jak wdrożyć model predykcyjny jako usługę sieci Web platformy Azure, aby można było używać go do przewidywania cen wszelkich samochodów w oparciu o specyfikacje techniczne, które wysyłasz. 
 
@@ -37,13 +39,17 @@ Kompletna wersja tego samouczka jest dostępna jako przykładowy eksperyment.
 
 Aby go znaleźć, na **stronie eksperymenty**wybierz pozycję **Dodaj nową**, **a następnie wybierz pozycję przykład 1-regresja: Eksperyment cenowy dla samochodów (Basic** ).
 
-## <a name="create-a-workspace"></a>Tworzenie obszaru roboczego
+## <a name="create-a-new-experiment"></a>Tworzenie nowego eksperymentu
+
+Aby utworzyć eksperyment interfejsu wizualizacji, należy najpierw potrzebować obszaru roboczego usługi Uczenie maszynowe platformy Azure. W tej sekcji dowiesz się, jak utworzyć oba te zasoby.
+
+### <a name="create-a-new-workspace"></a>Utwórz nowy obszar roboczy
 
 Jeśli masz obszar roboczy usługi Azure Machine Learning, przejdź do następnej sekcji.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-## <a name="create-new-experiment"></a>Utwórz nowy eksperyment
+### <a name="create-an-experiment"></a>Tworzenie eksperymentu
 
 1. Otwórz obszar roboczy w [Azure Portal](https://portal.azure.com/).
 
@@ -57,7 +63,7 @@ Jeśli masz obszar roboczy usługi Azure Machine Learning, przejdź do następne
 
 1. Wybierz domyślną nazwę eksperymentu **"eksperyment utworzony w...** " w górnej części kanwy i zmień jej nazwę na zrozumiałą. Na przykład **"Funkcja prognozowania cen dla samochodów"** . Nazwa nie musi być unikatowa.
 
-## <a name="specify-data"></a>Określ dane
+## <a name="import-data"></a>Importowanie danych
 
 Uczenie maszynowe jest zależne od danych. Na szczęście, istnieje kilka przykładowych zestawów danych zawartych w tym interfejsie, które są dostępne do eksperymentowania z. Na potrzeby tego samouczka Użyj przykładowych **danych cen samochodów (RAW)** usługi DataSet. 
 
@@ -65,7 +71,7 @@ Uczenie maszynowe jest zależne od danych. Na szczęście, istnieje kilka przyk�
 
 1. Wybierz zestaw danych, **dane cen samochodów (RAW)** i przeciągnij je na kanwę.
 
-   ![Przeciągnij dane do kanwy](./media/ui-tutorial-automobile-price-train-score/drag-data.png)
+   ![Przeciągnij dane do kanwy](./media/ui-tutorial-automobile-price-train-score/drag-data.gif)
 
 1. Wybierz kolumny danych, z którymi chcesz współpracować. Wpisz **Wybierz** w polu wyszukiwania w górnej części palety, aby znaleźć moduł **SELECT Columns in DataSet (Wybieranie kolumn w zestawie danych** ).
 
@@ -87,11 +93,11 @@ Uczenie maszynowe jest zależne od danych. Na szczęście, istnieje kilka przyk�
 
     W oknie dialogowym **Wybieranie kolumn** wybierz pozycję **wszystkie kolumny** i Dołącz **wszystkie funkcje**. Okno dialogowe powinno wyglądać następująco:
 
-     ![Selektor kolumn](./media/ui-tutorial-automobile-price-train-score/select-all.png)
+     ![Selektor kolumn](./media/ui-tutorial-automobile-price-train-score/select-all.gif)
 
 1. W prawym dolnym rogu wybierz przycisk **OK** , aby zamknąć selektora kolumn.
 
-## <a name="run-the-experiment"></a>Uruchamianie eksperymentu
+### <a name="run-the-experiment"></a>Uruchamianie eksperymentu
 
 W dowolnym momencie kliknij port wyjściowy zestawu danych lub modułu, aby zobaczyć, jak wyglądają dane w tym momencie w przepływie danych. Jeśli opcja **Wizualizacja** jest wyłączona, należy najpierw uruchomić eksperyment.
 
@@ -100,7 +106,7 @@ W dowolnym momencie kliknij port wyjściowy zestawu danych lub modułu, aby zoba
 Gdy element docelowy obliczeń będzie dostępny, eksperyment zostanie uruchomiony. Po zakończeniu przebiegu jest wyświetlany zielony znacznik wyboru dla każdego modułu.
 
 
-## <a name="visualize-the-data"></a>Wizualizacja danych
+### <a name="visualize-the-data"></a>Wizualizacja danych
 
 Po uruchomieniu początkowego eksperymentu możesz wizualizować dane, aby dowiedzieć się więcej na temat zestawu danych, który posiadasz.
 
@@ -110,9 +116,9 @@ Po uruchomieniu początkowego eksperymentu możesz wizualizować dane, aby dowie
 
     W tym zestawie danych poszczególne wiersze reprezentują samochody, a zmienne skojarzone z samochodami są wyświetlane jako kolumny. Ten zestaw danych zawiera 205 wierszy i 26 kolumn.
 
-     Za każdym razem, gdy klikniesz kolumnę danych, informacje statystyczne i obraz **wizualizacji** tej kolumny pojawiają się po lewej stronie. Na przykład po kliknięciu przycisku **"Liczba drzwi"** zobaczysz dwa unikatowe wartości i dwa brakujące wartości. Przewiń w dół, aby wyświetlić wartości: dwa i cztery drzwi.
+    Za każdym razem, gdy klikniesz kolumnę danych, informacje statystyczne i obraz **wizualizacji** tej kolumny pojawiają się po lewej stronie.
 
-     ![Podgląd danych](./media/ui-tutorial-automobile-price-train-score/preview-data.gif)
+    [![Podgląd danych](./media/ui-tutorial-automobile-price-train-score/preview-data.gif)](./media/ui-tutorial-automobile-price-train-score/preview-data.gif#lightbox)
 
 1. Kliknij każdą kolumnę, aby dowiedzieć się więcej o zestawie danych, i pomyśl o tym, czy te kolumny będą przydatne do przewidywania cen samochodów.
 
@@ -137,15 +143,11 @@ Najpierw Usuń kolumnę **znormalizowanych strat** .
 
     * W prawym dolnym rogu wybierz przycisk **OK** , aby zamknąć selektora kolumn.
 
-    ![Wykluczanie kolumny](./media/ui-tutorial-automobile-price-train-score/exclude-column.png)
+    ![Wykluczanie kolumny](./media/ui-tutorial-automobile-price-train-score/exclude-column.gif)
         
     Teraz okienko właściwości dla opcji Wybieranie kolumn w zestawie danych wskazuje, że zostanie przekazane przez wszystkie kolumny z zestawu danych z wyjątkiem **znormalizowanych strat**.
         
     Okienko właściwości pokazuje, że kolumna **znormalizowana strata** jest wykluczona.
-        
-    ![Okienko właściwości](./media/ui-tutorial-automobile-price-train-score/property-pane.png)
-        
-    Aby dodać komentarz do modułu, kliknij dwukrotnie moduł i wpisz tekst. Pozwoli to od razu sprawdzić rolę modułu w eksperymencie. 
 
 1. Kliknij dwukrotnie moduł **Wybieranie kolumn w zestawie danych** i wpisz komentarz "Wykluczanie znormalizowanych strat". 
     
@@ -168,22 +170,22 @@ Podczas uczenia modelu trzeba wykonać coś dotyczące brakujących danych. W ta
 1. W okienku właściwości wybierz pozycję **Usuń cały wiersz** w obszarze **Tryb czyszczenia**.
 
 1. Kliknij dwukrotnie moduł i wpisz komentarz „Usunięcie wierszy z brakującymi wartościami”.
- 
-    ![Usuń wiersze](./media/ui-tutorial-automobile-price-train-score/remove-rows.png)
 
     Eksperyment powinien teraz wyglądać następująco:
     
     ![Zaznacz kolumnę](./media/ui-tutorial-automobile-price-train-score/experiment-clean.png)
 
-## <a name="train-the-model"></a>Uczenie modelu
+## <a name="train-a-machine-learning-model"></a>Uczenie modelu uczenia maszynowego
 
 Teraz, gdy dane są gotowe, można utworzyć model predykcyjny. Będziesz używać danych do uczenia modelu. Następnie testujesz model, aby sprawdzić, jak ścisłe jest przewidywalność cen.
+
+### <a name="select-an-algorithm"></a>Wybieranie algorytmu
 
 Algorytmy **klasyfikacji** i **regresji** to dwa typy nadzorowanego uczenia maszynowego. **Klasyfikacja** przewiduje odpowiedź ze zdefiniowanego zestawu kategorii, takich jak kolor (czerwony, niebieski lub zielony). **Regresja** służy do przewidywania liczby.
 
 Ponieważ chcesz przewidzieć cenę, która jest liczbą, możesz użyć algorytmu regresji. W tym przykładzie zostanie użyty model regresji liniowej.
 
-Uczenie modelu przez nadanie mu zestawu danych, który zawiera cenę. Model skanuje dane i wyszukuje korelacje między funkcjami samochodu i jego ceną.
+### <a name="split-the-data"></a>Podziel dane
 
 Użyj swoich danych w celu przeprowadzenia szkolenia modelu i przetestowania go, dzieląc dane na oddzielne szkolenie i testowanie zestawów danych.
 
@@ -191,17 +193,17 @@ Użyj swoich danych w celu przeprowadzenia szkolenia modelu i przetestowania go,
 
 1. Wybierz moduł **Split Data** . W okienku właściwości ustaw ułamek wierszy w pierwszym zestawie danych wyjściowych na 0,7. W ten sposób będziemy używać 70 procent danych do uczenia modelu i zatrzymamy 30% do testowania.
 
-    ![Zrzut ekranu przedstawiający poprawną konfigurację okienka właściwości. Wartość "Split Data" powinna być równa "Split Rows", 0,7, Random Split, 0, false.](./media/ui-tutorial-automobile-price-train-score/split-data.png)
-
 1. Kliknij dwukrotnie pozycję **dane podzielone** i wpisz komentarz "Podziel zestaw danych na zestaw szkoleniowy (0.7) i zestaw testów (0,3)"
+
+### <a name="train-the-model"></a>Uczenie modelu
+
+Uczenie modelu przez nadanie mu zestawu danych, który zawiera cenę. Model skanuje dane i wyszukuje korelacje między funkcjami samochodu i jego ceną.
 
 1. Aby wybrać algorytm uczenia, usuń zaznaczenie pola wyszukiwania palety modułu.
 
 1. Rozwiń **Machine Learning** a następnie rozwiń węzeł **zainicjuj model**. Zostaną wyświetlone różne kategorie modułów, których można użyć do zainicjowania algorytmów uczenia maszynowego.
 
 1. Na potrzeby tego eksperymentu > wybierz**regresja liniowa** regresji i przeciągnij ją do kanwy eksperymentu.
-
-    ![Zrzut ekranu przedstawiający poprawną konfigurację okienka właściwości. Wartość "Split Data" powinna być równa "Split Rows", 0,7, Random Split, 0, false.](./media/ui-tutorial-automobile-price-train-score/linear-regression-module.png)
 
 1. Znajdź i przeciągnij moduł **uczenie modelu** do kanwy eksperymentu. Połącz dane wyjściowe modułu regresji liniowej z lewym wejściem modułu uczenie modelu i Połącz dane wyjściowe szkoleń (lewy port) modułu **Split Data (podział danych** ) z prawym wejściem modułu **szkolenia model** .
 
@@ -215,7 +217,7 @@ Użyj swoich danych w celu przeprowadzenia szkolenia modelu i przetestowania go,
 
     ![Zrzut ekranu przedstawiający poprawną konfigurację eksperymentu po dodaniu modułu uczenie modelu.](./media/ui-tutorial-automobile-price-train-score/train-graph.png)
 
-## <a name="score-and-evaluate-the-model"></a>Ocena i Ocena modelu
+## <a name="evaluate-a-machine-learning-model"></a>Oceń model uczenia maszynowego
 
 Teraz, gdy model został przeszkolony przy użyciu 70 procent danych, możesz użyć jej do oceny innych 30 procent danych, aby zobaczyć, jak dobrze działa model.
 
@@ -245,31 +247,11 @@ Następujące statystyki są wyświetlane dla modelu:
 
 W przypadku wszystkich powyższych statystyk mniejsze wartości oznaczają lepszą jakość modelu. Mniejsze wartości błędów wskazują na ściślejsze dopasowanie prognoz do rzeczywistych wartości. Dla współczynnika wyznaczania wartość bliższej wartości to 1 (1,0), tym lepsze przewidywania.
 
-## <a name="manage-experiments-in-azure-machine-learning-service-workspace"></a>Zarządzanie eksperymentami w obszarze roboczym usługi Azure Machine Learning
-
-Eksperymenty utworzone w interfejsie wizualizacji mogą być zarządzane za pomocą obszaru roboczego usługi Azure Machine Learning. Użyj obszaru roboczego, aby zobaczyć bardziej szczegółowe informacje, takie jak uruchamianie eksperymentów indywidualnych, dzienniki diagnostyczne, wykresy wykonawcze i nie tylko.
-
-1. Otwórz obszar roboczy w [Azure Portal](https://portal.azure.com/).  
-
-1. W obszarze roboczym wybierzpozycję eksperymenty. Następnie wybierz utworzony eksperyment.
-
-    ![Zrzut ekranu przedstawiający sposób nawigowania do eksperymentów w Azure Portal](./media/ui-tutorial-automobile-price-train-score/portal-experiments.png)
-
-    Na tej stronie zostanie wyświetlony przegląd eksperymentu i jego najnowszych uruchomień.
-
-    ![Zrzut ekranu przedstawiający przegląd statystyk eksperymentów w Azure Portal](./media/ui-tutorial-automobile-price-train-score/experiment-overview.png)
-
-1. Wybierz numer uruchomienia, aby wyświetlić więcej szczegółów dotyczących określonego wykonania.
-
-    ![Raport szczegółowy przebiegu zrzutu ekranu](./media/ui-tutorial-automobile-price-train-score/run-details.png)
-
-    Raport przebiegu jest aktualizowany w czasie rzeczywistym. Jeśli użyto **skryptu Execute Python** lub wykonywania modułu **skryptu języka R** w Twoim eksperymentie, można określić dzienniki skryptów do danych wyjściowych na karcie **dzienniki** .
-
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 [!INCLUDE [aml-ui-cleanup](../../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W pierwszej części tego samouczka zostały wykonane następujące czynności:
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: 2ed93846e0a1ab98b25bdfbe33b34779996da82b
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: 6882476cabc3dc3a737f31eeeb4ccd92e5ea6ee0
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782643"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872745"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektura odzyskiwania po awarii z platformy Azure do platformy Azure
 
@@ -74,7 +74,7 @@ Domyślnymi ustawieniami zasad replikacji można zarządzać i modyfikować w na
 - Ustawienia można modyfikować po włączeniu replikacji.
 - W każdej chwili można utworzyć zasady replikacji, a następnie zastosować je po włączeniu replikacji.
 
-### <a name="multi-vm-consistency"></a>Spójność wielu maszyn wirtualnych
+### <a name="multi-vm-consistency"></a>Spójność między MASZYNami wirtualnymi
 
 Jeśli chcesz, aby maszyny wirtualne były replikowane ze sobą i w trybie failover współużytkowane punkty odzyskiwania spójne z awarią i aplikacjami, możesz zebrać je razem w grupie replikacji. Spójność wielu maszyn wirtualnych wpływa na wydajność obciążeń i powinna być używana tylko w przypadku maszyn wirtualnych korzystających z obciążeń, które wymagają spójności na wszystkich komputerach. 
 
@@ -95,13 +95,13 @@ Site Recovery wykonuje migawki w następujący sposób:
 
 W poniższej tabeli objaśniono różne typy spójności.
 
-### <a name="crash-consistent"></a>Spójne na poziomie awarii
+### <a name="crash-consistent"></a>Spójny na poziomie awarii
 
 **Opis** | **Szczegóły** | **Zalecenie**
 --- | --- | ---
 Migawka spójna pod kątem awarii przechwytuje dane znajdujące się na dysku podczas tworzenia migawki. Nie zawiera żadnych elementów w pamięci.<br/><br/> Zawiera odpowiednik danych na dysku, które mogą być obecne, jeśli maszyna wirtualna uległa awarii lub przewód zasilający został pobrany z serwera na chwilę, gdy migawka została wykonana.<br/><br/> Spójna awaria nie gwarantuje spójności danych dla systemu operacyjnego lub aplikacji na maszynie wirtualnej. | Site Recovery domyślnie tworzy punkty odzyskiwania spójne z awarią co pięć minut. Nie można zmodyfikować tego ustawienia.<br/><br/>  | Obecnie większość aplikacji może odzyskać z punktów spójnych z awarią.<br/><br/> Punkty odzyskiwania spójne z awarią są zwykle wystarczające do replikacji systemów operacyjnych i aplikacji, takich jak serwery DHCP i serwery wydruku.
 
-### <a name="app-consistent"></a>Spójne na poziomie aplikacji
+### <a name="app-consistent"></a>Spójna na poziomie aplikacji
 
 **Opis** | **Szczegóły** | **Zalecenie**
 --- | --- | ---
@@ -139,6 +139,7 @@ Jeśli dostęp wychodzący dla maszyn wirtualnych jest kontrolowany za pomocą a
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>Połączenia ruchu wychodzącego dla zakresów adresów IP
 
 Aby sterować łącznością wychodzącą dla maszyn wirtualnych przy użyciu adresów IP, Zezwól na te adresy.
+Należy pamiętać, że szczegółowe informacje o wymaganiach dotyczących łączności sieciowej można znaleźć w temacie [Obsługa sieci — oficjalny dokument](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges) 
 
 #### <a name="source-region-rules"></a>Reguły regionu źródłowego
 

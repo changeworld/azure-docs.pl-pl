@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: a5ced51eabe708dc7883fc91e5b6fa67f9211381
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f2b95affd08c989a9d1cdee53c0a4e6df16af106
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559631"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69892033"
 ---
 # <a name="what-is-custom-speech"></a>Co to jest Custom Speech?
 
-[Custom Speech](https://aka.ms/custom-speech) to zestaw narzędzi online, dzięki którym można oszacować i poprawić dokładność zamiany mowy na mowę firmy Microsoft dla aplikacji, narzędzi i produktów. Wszystkie te rzeczy są potrzebne do rozpoczęcia pracy z kilkuem plików audio. Skorzystaj z poniższych linków, aby rozpocząć tworzenie niestandardowego środowiska zamiany mowy na tekst.
+[Custom Speech](https://aka.ms/customspeech) to zestaw narzędzi online, dzięki którym można oszacować i poprawić dokładność zamiany mowy na mowę firmy Microsoft dla aplikacji, narzędzi i produktów. Wszystkie te rzeczy są potrzebne do rozpoczęcia pracy z kilkuem plików audio. Skorzystaj z poniższych linków, aby rozpocząć tworzenie niestandardowego środowiska zamiany mowy na tekst.
 
 ## <a name="whats-in-custom-speech"></a>Co znajduje się w Custom Speech?
 
@@ -61,7 +61,7 @@ Zawartość, taka jak dane, modele, testy i punkty końcowe, są zorganizowane w
 
 Aby utworzyć swój pierwszy projekt, wybierz **mowę zamiany mowy na tekst/** niestandardową, a następnie kliknij pozycję **Nowy projekt**. Postępuj zgodnie z instrukcjami wyświetlanymi przez kreatora, aby utworzyć projekt. Po utworzeniu projektu powinny zostać wyświetlone cztery karty: **Dane**, **testowanie**, **uczenie**i **wdrażanie**. Skorzystaj z linków w [sekcji Następne kroki](#next-steps) , aby dowiedzieć się, jak korzystać z każdej karty.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Przygotowywanie i testowanie danych](how-to-custom-speech-test-data.md)
 * [Inspekcja danych](how-to-custom-speech-inspect-data.md)

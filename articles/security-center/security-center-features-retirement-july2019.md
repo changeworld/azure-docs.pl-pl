@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/16/2019
 ms.author: yoafr
-ms.openlocfilehash: 8e7456eff3062ef6667e7b0022ea9740c397a493
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 5ffa77a05e6019ee6b5e29c5af5ed0130e027cae
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679243"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876500"
 ---
 > [!NOTE]
 > W tym dokumencie szczegółowo przedstawiono listę funkcji, które zostały wycofane z Azure Security Center 31 lipca 2019.
@@ -160,7 +160,7 @@ Security Center można włączyć [zintegrowane rozwiązania zabezpieczeń na pl
 - [Microsoft Advanced Threat Analytics](https://docs.microsoft.com/azure/sentinel/connect-azure-atp)
 - [Azure AD Identity Protection](https://docs.microsoft.com/azure/sentinel/connect-azure-ad-identity-protection)
 
-Po wycofaniu nie będzie można dodawać ani modyfikować żadnych typów rozwiązań wymienionych na poprzedniej liście z poziomu interfejsu użytkownika lub interfejsu API.
+Po wycofaniu nie będzie można dodawać ani modyfikować żadnych typów rozwiązań wymienionych na poprzedniej liście z poziomu interfejsu użytkownika lub interfejsu API. Azure Security Center nie będzie już wykrywał żadnych nowych wystąpień wymienionych rozwiązań partnerskich.
 
 Jeśli masz istniejące połączone rozwiązania, zachęcamy do przejścia na platformę Azure.
 
@@ -190,7 +190,7 @@ Firma Microsoft zaleca, aby przełączyć się do Azure Security Center. Zapewni
 
 Możesz uzyskać oryginalne zapytania Log Analytics, które wypełniają pulpit nawigacyjny zabezpieczenia i inspekcja w [repozytorium GitHub](https://github.com/Azure/Azure-Security-Center/tree/master/Legacy%20Log%20Analytics%20dashboards) dla Security Center.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej o [Azure Security Center](https://docs.microsoft.com/azure/security-center/).
 - Dowiedz się więcej na temat [platformy Azure — wskaźnik](https://docs.microsoft.com/azure/sentinel).

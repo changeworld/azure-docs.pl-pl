@@ -1,119 +1,122 @@
 ---
-title: Monitorowanie usługi Azure IoT Hub przy użyciu metryk | Dokumentacja firmy Microsoft
-description: Sposób, aby ocenić i monitorowanie ogólnej kondycji usługi IoT Hub przy użyciu metryk usługi Azure IoT Hub.
+title: Używanie metryk do monitorowania IoT Hub platformy Azure | Microsoft Docs
+description: Jak oceniać i monitorować ogólną kondycję centrów IoT przy użyciu metryk IoT Hub platformy Azure.
 author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jlian
-ms.openlocfilehash: 6afebfe9a5db713e31fed0acd2e8ad7244f30037
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 948cdb2ab1af3fe93566497186c025f7f8f39b2e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274923"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877091"
 ---
-# <a name="understand-iot-hub-metrics"></a>Omówienie usługi IoT Hub metryki
+# <a name="understand-iot-hub-metrics"></a>Informacje o metrykach IoT Hub
 
-Metryki usługi IoT Hub umożliwiają lepsze dane dotyczące stanu zasobów usługi Azure IoT w subskrypcji platformy Azure. Metryki usługi IoT Hub pozwalają ocenić ogólną kondycję usługi IoT Hub i dołączone do niego urządzenia. Statystyki użytkownika są ważne, ponieważ ułatwiają one sprawdzanie, co się dzieje z IoT hub i pomocy główną przyczynę problemów związanych z bez konieczności skontaktuj się z działem pomocy technicznej platformy Azure.
+Metryki IoT Hub zapewniają lepsze dane dotyczące stanu zasobów usługi Azure IoT w ramach subskrypcji platformy Azure. Metryki IoT Hub umożliwiają ocenę ogólnej kondycji usługi IoT Hub i podłączonych do niej urządzeń. Dane statystyczne związane z użytkownikiem są ważne, ponieważ pomagają zobaczyć, co się dzieje z Centrum IoT Hub, i pomóc w wykorzystaniu problemów głównych, bez konieczności kontaktowania się z pomocą techniczną platformy Azure.
 
-Metryki są domyślnie włączone. Możesz wyświetlić metryki usługi IoT Hub w witrynie Azure portal.
+Metryki są domyślnie włączone. Możesz wyświetlić metryki IoT Hub z Azure Portal.
 
-## <a name="how-to-view-iot-hub-metrics"></a>Jak wyświetlić metryki usługi IoT Hub
+> [!NOTE]
+> Za pomocą metryk IoT Hub można wyświetlać informacje o urządzeniach Plug and Play IoT podłączonych do IoT Hub. Urządzenia Plug and Play IoT są częścią [publicznej wersji zapoznawczej iot Plug and Play](../iot-pnp/overview-iot-plug-and-play.md).
 
-1. Utwórz centrum IoT. Instrukcje można znaleźć na temat tworzenia Centrum IoT hub w [wysyłanie danych telemetrycznych z urządzenia do usługi IoT Hub](quickstart-send-telemetry-dotnet.md) przewodnik.
+## <a name="how-to-view-iot-hub-metrics"></a>Jak wyświetlić metryki IoT Hub
 
-2. Otwórz blok Centrum IoT hub. W tym miejscu, kliknij przycisk **metryki**.
+1. Utwórz centrum IoT. Instrukcje dotyczące sposobu tworzenia Centrum IoT można znaleźć w przewodniku wysyłanie danych [telemetrycznych z urządzenia do IoT Hub](quickstart-send-telemetry-dotnet.md) .
+
+2. Otwórz blok Centrum IoT. Z tego miejsca kliknijpozycję metryki.
    
-    ![Zrzut ekranu przedstawiający, gdzie jest opcja metryki na stronie zasobów usługi IoT Hub](./media/iot-hub-metrics/enable-metrics-1.png)
+    ![Zrzut ekranu przedstawiający, gdzie znajduje się opcja metryki na stronie zasobów IoT Hub](./media/iot-hub-metrics/enable-metrics-1.png)
 
-3. W bloku metryk możesz wyświetlać metryki dla usługi IoT hub i tworzenie niestandardowych widoków metryk. 
+3. W bloku metryk można wyświetlić metryki Centrum IoT i utworzyć niestandardowe widoki metryk. 
    
-    ![Zrzut ekranu przedstawiający stronę metryki dla usługi IoT Hub](./media/iot-hub-metrics/enable-metrics-2.png)
+    ![Zrzut ekranu przedstawiający stronę metryki dla IoT Hub](./media/iot-hub-metrics/enable-metrics-2.png)
     
-4. Użytkownik może wysłać dane metryk do punktu końcowego usługi Event Hubs lub konta usługi Azure Storage, klikając **ustawień diagnostycznych**, następnie **Dodaj ustawienie diagnostyczne**
+4. Możesz wysłać dane metryk do punktu końcowego Event Hubs lub konta usługi Azure Storage, klikając pozycję **Ustawienia diagnostyczne**, a następnie **Dodaj ustawienie diagnostyczne**
 
-   ![Zrzut ekranu przedstawiający, gdzie jest przycisk ustawień diagnostycznych](./media/iot-hub-metrics/enable-metrics-3.png)
+   ![Zrzut ekranu przedstawiający przycisk ustawień diagnostycznych](./media/iot-hub-metrics/enable-metrics-3.png)
 
-## <a name="iot-hub-metrics-and-how-to-use-them"></a>Metryki usługi IoT Hub i sposobu ich używania
+## <a name="iot-hub-metrics-and-how-to-use-them"></a>IoT Hub metryki i sposoby ich używania
 
-IoT Hub udostępnia kilka metryk, aby Przegląd kondycji Centrum i całkowita liczba podłączonych urządzeń. Możesz połączyć informacje z wielu metryk do malowania większy obraz stanu usługi IoT hub. W poniższej tabeli opisano metryk, który śledzi każde Centrum IoT hub i jak wszystkie metryki odnosi się do ogólnego stanu usługi IoT hub.
+IoT Hub zawiera kilka metryk, które umożliwiają przedstawienie informacji o kondycji centrum oraz łącznej liczbie połączonych urządzeń. Możesz połączyć informacje z wielu metryk, aby malować większy obraz stanu Centrum IoT. W poniższej tabeli opisano metryki poszczególnych ścieżek Centrum IoT oraz sposób, w jaki każda Metryka odnosi się do ogólnego stanu Centrum IoT Hub.
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|d2c<br>.telemetry<br>.ingress.<br>allProtocol|Próby wysłania komunikatu telemetrii|Count|Łącznie|Liczba komunikatów danych telemetrycznych z urządzenia do chmury podjęto próbę wysłania do Centrum IoT hub|Nie wymiarów|
-|d2c<br>.telemetry<br>.ingress<br>.SUCCESS|Komunikaty telemetryczne wysyłane|Count|Łącznie|Liczba komunikatów danych telemetrycznych z urządzenia do chmury pomyślnie wysłany do usługi IoT hub|Nie wymiarów|
-|c2d<br>.Commands<br>.egress<br>.Complete<br>.SUCCESS|Polecenia zakończona|Licznik|Łącznie|Wiele poleceń z chmury do urządzenia zakończyło się powodzeniem, urządzenie|Nie wymiarów|
-|c2d<br>.Commands<br>.egress<br>.Abandon<br>.SUCCESS|Polecenia porzucone|Count|Łącznie|Wiele poleceń chmura urządzenie porzucone przez urządzenie|Nie wymiarów|
-|c2d<br>.Commands<br>.egress<br>.reject<br>.SUCCESS|Polecenia odrzucone|Count|Łącznie|Wiele poleceń chmura urządzenie odrzucone przez urządzenie|Nie wymiarów|
-|urządzenia<br>.totalDevices|Łączna liczba urządzeń (przestarzałe)|Licznik|Łącznie|Liczba urządzeń zarejestrowanych do Centrum IoT hub|Nie wymiarów|
-|urządzenia<br>.connectedDevices<br>.allProtocol|Połączone urządzenia (przestarzałe) |Licznik|Łącznie|Liczba urządzeń podłączonych do Centrum IoT hub|Nie wymiarów|
-|d2c<br>.telemetry<br>.egress<br>.SUCCESS|Routingu: wydana komunikaty telemetryczne|Count|Łącznie|Liczba przypadków, gdy wiadomości zostały pomyślnie dostarczone do wszystkich punktów końcowych przy użyciu routingu w usłudze IoT Hub. Jeśli komunikat jest kierowany do wielu punktów końcowych, ta wartość zwiększa się o jeden dla każdego skutecznej. Jeśli komunikat jest dostarczane do tego samego punktu końcowego wiele razy, ta wartość zwiększa się o jeden dla każdego skutecznej.|Nie wymiarów|
-|d2c<br>.telemetry<br>.egress<br>.dropped|Routingu: porzucone komunikaty telemetryczne |Licznik|Łącznie|Liczba przypadków, gdy komunikaty zostały porzucone przez usługę IoT Hub routing z powodu braku punktów końcowych. Ta wartość nie jest liczony komunikaty dostarczane do trasy rezerwowej, gdy porzuconych wiadomości nie są dostarczane istnieje.|Nie wymiarów|
-|d2c<br>.telemetry<br>.egress<br>.orphaned|Routingu: porzucone komunikaty telemetryczne |Licznik|Łącznie|Liczba przypadków, gdy komunikaty zostały oddzielone kierując usługi IoT Hub, ponieważ nie pasują do żadnych reguł routingu (w tym reguły rezerwowego). |Nie wymiarów|
-|d2c<br>.telemetry<br>.egress<br>.invalid|Routing: komunikaty telemetryczne niezgodne|Licznik|Łącznie|Liczba razy routingu w usłudze IoT Hub nie można dostarczać komunikatów z powodu niezgodności z punktem końcowym. Ta wartość nie obejmuje ponownych prób.|Nie wymiarów|
-|d2c<br>.telemetry<br>.egress<br>.fallback|Routing: komunikaty dostarczane do rezerwowego|Count|Łącznie|Liczba przypadków, dostarczenia komunikatów w Centrum IoT Hub routingu do skojarzonej z trasą rezerwowego punktu końcowego.|Nie wymiarów|
-|d2c<br>.Endpoints<br>.egress<br>.eventHubs|Routing: komunikaty dostarczane do Centrum zdarzeń|Licznik|Łącznie|Liczba przypadków, gdy Centrum IoT Hub routingu pomyślnie dostarczone wiadomości do punktów końcowych Centrum zdarzeń.|Nie wymiarów|
-|d2c<br>.Endpoints<br>.latency<br>.eventHubs|Routing: komunikat o opóźnieniu dla Centrum zdarzeń|MS|Średnia|Średnie opóźnienie (w milisekundach) między komunikatów przychodzących do usługi IoT Hub i ruch przychodzący komunikat do punktu końcowego Centrum zdarzeń.|Nie wymiarów|
-|d2c<br>.Endpoints<br>.egress<br>.serviceBusQueues|Routing: komunikaty dostarczane do kolejki usługi Service Bus|Count|Łącznie|Liczba przypadków, gdy usługi IoT Hub routingu pomyślnie dostarczone wiadomości do punktów końcowych kolejki usługi Service Bus.|Nie wymiarów|
-|d2c<br>.Endpoints<br>.latency<br>.serviceBusQueues|Routing: opóźnienie komunikat do kolejki usługi Service Bus|MS|Średnia|Średnie opóźnienie (w milisekundach) między komunikatów przychodzących do usługi IoT Hub i transferu danych przychodzących danych telemetrycznych komunikat do punktu końcowego kolejki usługi Service Bus.|Nie wymiarów|
-|d2c<br>.Endpoints<br>.egress<br>.serviceBusTopics|Routing: komunikaty dostarczane do tematu usługi Service Bus|Count|Łącznie|Liczba przypadków, gdy Centrum IoT Hub routingu pomyślnie dostarczone wiadomości do punktów końcowych z tematu usługi Service Bus.|Nie wymiarów|
-|d2c<br>.Endpoints<br>.latency<br>.serviceBusTopics|Routing: opóźnienie komunikat do tematu usługi Service Bus|MS|Średnia|Średnie opóźnienie (w milisekundach) między komunikatów przychodzących do usługi IoT Hub i transferu danych przychodzących danych telemetrycznych komunikat do punktu końcowego tematu usługi Service Bus.|Nie wymiarów|
-|d2c<br>.Endpoints<br>.egress<br>.builtIn<br>.events|Routing: komunikaty dostarczane do komunikaty/zdarzenia|Count|Łącznie|Liczba przypadków, gdy Centrum IoT Hub routingu pomyślnie dostarczone wiadomości do wbudowany punkt końcowy (komunikaty/zdarzenia). Ta metryka tylko uruchamia działa po włączeniu routingu (https://aka.ms/iotrouting) dla Centrum IoT hub.|Nie wymiarów|
-|d2c<br>.Endpoints<br>.latency<br>.builtIn.events|Routing: komunikat o opóźnieniu komunikaty/zdarzenia|MS|Średnia|Średnie opóźnienie (w milisekundach) między komunikatów przychodzących do usługi IoT Hub i transferu danych przychodzących danych telemetrycznych wiadomości do wbudowany punkt końcowy (komunikaty/zdarzenia). Ta metryka tylko uruchamia działa po włączeniu routingu (https://aka.ms/iotrouting) dla Centrum IoT hub.|Nie wymiarów|
-|d2c<br>.Endpoints<br>.egress<br>.storage|Routing: komunikaty dostarczane do magazynu|Count|Łącznie|Liczba przypadków, gdy usługi IoT Hub routingu pomyślnie dostarczone wiadomości do punktów końcowych magazynu.|Nie wymiarów|
-|d2c<br>.Endpoints<br>.latency<br>.storage|Routing: komunikat o opóźnieniu magazynu|MS|Średnia|Średnie opóźnienie (w milisekundach) między komunikatów przychodzących do usługi IoT Hub i transferu danych przychodzących danych telemetrycznych komunikat do punktu końcowego magazynu.|Nie wymiarów|
-|d2c<br>.Endpoints<br>.egress<br>.storage<br>.Bytes|Routing: dane dostarczane do magazynu|Bajty|Łącznie|Ilość danych (w bajtach) routingu w usłudze IoT Hub dostarczone do punktów końcowych magazynu.|Nie wymiarów|
-|d2c<br>.Endpoints<br>.egress<br>.storage<br>.blobs|Routing: obiektów blob jest dostarczane do magazynu|Count|Łącznie|Liczba przypadków, gdy routingu w usłudze IoT Hub dostarczane obiekty BLOB do przechowywania punktów końcowych.|Nie wymiarów|
-|EventGridDeliveries|Event Grid dostaw (wersja zapoznawcza)|Licznik|Łącznie|Liczba zdarzeń usługi IoT Hub opublikowany usługi Event Grid. Wymiar wyniku na użytek liczba udanych i nieudanych żądań. Typ zdarzenia wymiar zawiera typ zdarzenia (https://aka.ms/ioteventgrid). Aby zobaczyć, gdzie pochodzą żądania, należy użyć w wymiarze typ zdarzenia.|Wynik, typ zdarzenia|
-|EventGridLatency|Czas oczekiwania na zdarzenie siatki (wersja zapoznawcza)|MS|Średnia|Średnie opóźnienie (w milisekundach) od kiedy zdarzeń usługi Iot Hub został wygenerowany podczas zdarzenia zostały opublikowane w usłudze Event Grid. Ta liczba jest średnia pomiędzy wszystkich typów zdarzeń. Użyj w wymiarze typ zdarzenia, aby zobaczyć opóźnienie określonych typach zdarzenia.|Typ zdarzenia|
-|d2c<br>.Twin<br>.read<br>.SUCCESS|Pomyślne bliźniacze odczyty z urządzenia|Count|Łącznie|Liczba wszystkich pomyślnie zainicjował urządzenia bliźniacze odczyty na dysku.|Nie wymiarów|
-|d2c<br>.Twin<br>.read<br>.failure|Nie powiodło się bliźniacze odczyty z urządzenia|Licznik|Łącznie|Zainicjowane przez urządzenie bliźniacze odczyty liczbę wszystkich, nie powiodło się.|Nie wymiarów|
-|d2c<br>.Twin<br>.read<br>.size|Rozmiar odpowiedzi bliźniacze odczyty z urządzenia|Bajty|Średnia|Średnią, minimalna i maksymalna elementu wszystkie udane, inicjowane przez urządzenie bliźniaczej reprezentacji odczytów.|Nie wymiarów|
-|d2c<br>.Twin<br>.Update<br>.SUCCESS|Liczba aktualizacji bliźniaczej reprezentacji pomyślnie z urządzeń|Licznik|Łącznie|Liczba wszystkich pomyślnie zainicjował urządzenia aktualizacji bliźniaczej reprezentacji.|Nie wymiarów|
-|d2c<br>.Twin<br>.Update<br>.failure|Niepowodzenie aktualizacji bliźniaczej reprezentacji urządzenia|Count|Łącznie|Liczba wszystkich nie powiodło się aktualizacji inicjowane przez urządzenie bliźniaczej reprezentacji.|Nie wymiarów|
-|d2c<br>.Twin<br>.Update<br>.size|Rozmiar aktualizacji bliźniaczej reprezentacji urządzenia|Bajty|Średnia|Średnia, minimum i maksymalny rozmiar wszystkich pomyślnie, inicjowane przez urządzenie bliźniaczej reprezentacji aktualizacji.|Nie wymiarów|
-|c2d<br>.Methods<br>.SUCCESS|Pomyślne bezpośrednie wywołania metod|Count|Łącznie|Liczba wszystkich pomyślnych wywołań metody bezpośredniej.|Nie wymiarów|
-|c2d<br>.Methods<br>.failure|Niepowodzenie wywołania metody bezpośredniej|Licznik|Łącznie|Liczba wszystkich nie wywołania metody bezpośredniej.|Nie wymiarów|
-|c2d<br>.Methods<br>.requestSize|Rozmiar żądania wywołania metody bezpośredniej|Bajty|Średnia|Średnia, minimum i maksimum wszystkich pomyślnych żądań metody bezpośredniej.|Nie wymiarów|
-|c2d<br>.Methods<br>.responseSize|Rozmiar odpowiedzi z wywołania metody bezpośredniej|Bajty|Średnia|Średnia, minimum i maksimum wszystkich pomyślne odpowiedzi metody bezpośredniej.|Nie wymiarów|
-|c2d<br>.Twin<br>.read<br>.SUCCESS|Pomyślne bliźniacze odczyty z zaplecza|Licznik|Łącznie|Liczba wszystkich pomyślnie zainicjował zakończenia kopii bliźniacze odczyty na dysku.|Nie wymiarów|
-|c2d<br>.Twin<br>.read<br>.failure|Nie powiodło się bliźniacze odczyty z zaplecza|Count|Łącznie|Zainicjowano zakończenia kopii bliźniacze odczyty liczbę wszystkich, nie powiodło się.|Nie wymiarów|
-|c2d<br>.Twin<br>.read<br>.size|Rozmiar odpowiedzi bliźniacze odczyty z zaplecza|Bajty|Średnia|Średnią, minimalna i maksymalna elementu wszystkie udane, zainicjowanych zakończenia wstecz bliźniaczej reprezentacji odczytów.|Nie wymiarów|
-|c2d<br>.Twin<br>.Update<br>.SUCCESS|Liczba aktualizacji bliźniaczej reprezentacji pomyślnie z zaplecza|Count|Łącznie|Liczba wszystkich pomyślnie zainicjował zakończenia kopii aktualizacji bliźniaczej reprezentacji.|Nie wymiarów|
-|c2d<br>.Twin<br>.Update<br>.failure|Liczba aktualizacji bliźniaczej reprezentacji nie powiodło się z zaplecza|Licznik|Łącznie|Liczba wszystkich nie powiodło się aktualizacji inicjowane przez zakończenia wstecz bliźniaczej reprezentacji.|Nie wymiarów|
-|c2d<br>.Twin<br>.Update<br>.size|Rozmiar aktualizacji bliźniaczej reprezentacji z zaplecza|Bajty|Średnia|Średnia, minimum i maksymalny rozmiar wszystkich pomyślnie, zainicjowanych zakończenia wstecz bliźniaczej reprezentacji aktualizacji.|Nie wymiarów|
-|TwinQueries<br>.SUCCESS|Zapytania dotyczące bliźniaczych reprezentacji pomyślne|Licznik|Łącznie|Liczba wszystkich zapytań bliźniaczych reprezentacji się pomyślnie.|Nie wymiarów|
-|TwinQueries<br>.failure|Zapytania dotyczące bliźniaczych reprezentacji nie powiodło się|Licznik|Łącznie|Liczba wszystkich zapytań bliźniaczych reprezentacji nie powiodło się.|Nie wymiarów|
-|TwinQueries<br>.resultSize|Rozmiar wyników zapytań bliźniaczych reprezentacji|Bajty|Średnia|Średnia, minimum i maksymalny rozmiar wyników wszystkich zapytań bliźniaczych pomyślne.|Nie wymiarów|
-|Zadania<br>.createTwinUpdateJob<br>.SUCCESS|Pomyślne utworzenie kont zadań aktualizacji bliźniaczej reprezentacji|Count|Łącznie|Liczba wszystkich pomyślne utworzenie zadania aktualizacji bliźniaczej reprezentacji.|Nie wymiarów|
-|Zadania<br>.createTwinUpdateJob<br>.failure|Nie powiodło się tworzenie zadania aktualizacji bliźniaczej reprezentacji|Licznik|Łącznie|Liczba wszystkich nie powiodło się utworzenie zadania aktualizacji bliźniaczej reprezentacji.|Nie wymiarów|
-|Zadania<br>.createDirectMethodJob<br>.SUCCESS|Pomyślne utworzenie kont zadań wywołania metody|Count|Łącznie|Liczba wszystkich pomyślnym utworzeniu zadania wywołania metody bezpośredniej.|Nie wymiarów|
-|Zadania<br>.createDirectMethodJob<br>.failure|Nie powiodło się tworzenie zadań wywołania metody|Licznik|Łącznie|Liczba wszystkich nie powiodło się tworzenie zadań wywołania metody bezpośredniej.|Nie wymiarów|
-|Zadania<br>.listJobs<br>.SUCCESS|Zakończonych powodzeniem wywołań do wyświetlania listy zadań|Count|Łącznie|Liczba wszystkich zakończonych powodzeniem wywołań do wyświetlania listy zadań.|Nie wymiarów|
-|Zadania<br>.listJobs<br>.failure|Niepowodzenie wywołania do wyświetlania listy zadań|Count|Łącznie|Liczba wszystkich wywołań zakończonych niepowodzeniem wyświetlania listy zadań.|Nie wymiarów|
-|Zadania<br>.cancelJob<br>.SUCCESS|Anulowane zadania pomyślne|Licznik|Łącznie|Liczba wszystkich pomyślnych wywołań, aby anulować zadanie.|Nie wymiarów|
-|Zadania<br>.cancelJob<br>.failure|Anulowane zadania nie powiodło się|Licznik|Łącznie|Liczba wszystkich wywołań zakończonych niepowodzeniem można anulować zadania.|Nie wymiarów|
-|Zadania<br>.queryJobs<br>.SUCCESS|Pomyślnie wykonane zadanie zapytań|Count|Łącznie|Liczba wszystkich zakończonych powodzeniem wywołań do zadania kwerendy.|Nie wymiarów|
-|Zadania<br>.queryJobs<br>.failure|Nie powiodło się zadanie odpytuje|Licznik|Łącznie|Liczba wszystkich wywołań zakończonych niepowodzeniem zadania kwerendy.|Nie wymiarów|
-|Zadania<br>.Completed|Ukończone zadania|Licznik|Łącznie|Liczba wszystkich zakończonych zadań.|Nie wymiarów|
-|Zadania<br>.failed|Zadania zakończone niepowodzeniem|Licznik|Łącznie|Liczba wszystkich zadań zakończonych niepowodzeniem.|Nie wymiarów|
-|d2c<br>.telemetry<br>.ingress<br>.sendThrottle|Liczby błędów ograniczania dostępności|Count|Łącznie|Ogranicza liczby błędów ograniczania dostępności z powodu przepływności urządzenia|Nie wymiarów|
-|dailyMessage<br>QuotaUsed|Całkowita liczba komunikatów używane|Count|Średnia|Liczba całkowita liczba wiadomości używanych obecnie. Jest to wartość zbiorcza, która jest resetowany do zera UTC 00:00 każdego dnia.|Nie wymiarów|
-|deviceDataUsage|Użycie danych łączna liczba urządzeń|Bajty|Łącznie|Bajty przesłane do i z wszelkie urządzenia podłączone do usługi IotHub|Nie wymiarów|
-|totalDeviceCount|Łączna liczba urządzeń (wersja zapoznawcza)|Count|Średnia|Liczba urządzeń zarejestrowanych do Centrum IoT hub|Nie wymiarów|
-|Połączone<br>DeviceCount|Połączone urządzenia (wersja zapoznawcza)|Licznik|Średnia|Liczba urządzeń podłączonych do Centrum IoT hub|Nie wymiarów|
-|Konfiguracje|Konfiguracja metryki|Count|Łącznie|Metryki dla operacji konfiguracji|Nie wymiarów|
+|d2c<br>. Telemetria<br>ruch przychodzący.<br>allProtocol|Próby wysłania komunikatów telemetrycznych|Count|Łącznie|Liczba komunikatów telemetrycznych z urządzenia do chmury, które próbowano wysłać do centrum IoT Hub|Nie wymiarów|
+|d2c<br>. Telemetria<br>ruch przychodzący<br>. powodzenie|Wysłane komunikaty telemetryczne|Count|Łącznie|Liczba pomyślnie wysłanych komunikatów telemetrycznych z urządzenia do chmury do centrum IoT Hub|Nie wymiarów|
+|c2d<br>. polecenia<br>ruch wychodzący<br>. Complete<br>. powodzenie|Polecenia ukończone|Count|Łącznie|Liczba poleceń z chmury do urządzenia ukończonych pomyślnie przez urządzenie|Nie wymiarów|
+|c2d<br>. polecenia<br>ruch wychodzący<br>. Abandon<br>. powodzenie|Polecenia porzucone|Count|Łącznie|Liczba poleceń z chmury do urządzenia porzuconych przez urządzenie|Nie wymiarów|
+|c2d<br>. polecenia<br>ruch wychodzący<br>. Odrzuć<br>. powodzenie|Polecenia odrzucone|Count|Łącznie|Liczba poleceń z chmury do urządzenia odrzuconych przez urządzenie|Nie wymiarów|
+|urządzenia<br>.totalDevices|Łączna liczba urządzeń (przestarzałe)|Count|Łącznie|Liczba urządzeń zarejestrowanych w usłudze IoT Hub|Nie wymiarów|
+|urządzenia<br>.connectedDevices<br>.allProtocol|Podłączone urządzenia (przestarzałe) |Count|Łącznie|Liczba urządzeń podłączonych do centrum IoT Hub|Nie wymiarów|
+|d2c<br>. Telemetria<br>ruch wychodzący<br>. powodzenie|Routing: dostarczono komunikaty telemetryczne|Count|Łącznie|Liczba pomyślnie dostarczonych komunikatów do wszystkich punktów końcowych używających routingu IoT Hub. Jeśli komunikat jest kierowany do wielu punktów końcowych, ta wartość zwiększa się o jeden dla każdego pomyślnego dostarczenia. Jeśli wiadomość jest przekazywana do tego samego punktu końcowego wiele razy, ta wartość zwiększa się o jeden dla każdego pomyślnego dostarczenia.|Nie wymiarów|
+|d2c<br>. Telemetria<br>ruch wychodzący<br>. upuszczone|Routing: porzucone komunikaty telemetryczne |Count|Łącznie|Liczba porzuconych komunikatów przez IoT Hub Routing ze względu na martwe punkty końcowe. Ta wartość nie zlicza komunikatów dostarczonych do trasy rezerwowej, ponieważ opuszczone wiadomości nie są tam dostarczane.|Nie wymiarów|
+|d2c<br>. Telemetria<br>ruch wychodzący<br>. oddzielone|Routing: oddzielone komunikaty telemetryczne |Count|Łącznie|Liczba oddzielonych komunikatów przez IoT Hub Routing, ponieważ nie są one zgodne z żadną regułą routingu (w tym regułą rezerwową). |Nie wymiarów|
+|d2c<br>. Telemetria<br>ruch wychodzący<br>. nieprawidłowy|Routing: komunikaty telemetryczne są niezgodne|Count|Łącznie|Liczba przypadków, gdy Routing IoT Hub nie mógł dostarczyć komunikatów z powodu niezgodności z punktem końcowym. Ta wartość nie obejmuje ponownych prób.|Nie wymiarów|
+|d2c<br>. Telemetria<br>ruch wychodzący<br>. Fallback|Routing: komunikaty dostarczane do powrotu|Count|Łącznie|Liczba IoT Hub komunikatów dostarczonych przez funkcję routingu do punktu końcowego skojarzonego z trasą rezerwową.|Nie wymiarów|
+|d2c<br>. punkty końcowe<br>ruch wychodzący<br>. eventHubs|Routing: komunikaty dostarczane do centrum zdarzeń|Count|Łącznie|Liczba pomyślnie dostarczonych komunikatów do punktów końcowych centrum zdarzeń w usłudze IoT Hub Routing.|Nie wymiarów|
+|d2c<br>. punkty końcowe<br>. opóźnienie<br>. eventHubs|Routing: opóźnienie komunikatu dla centrum zdarzeń|MS|Average|Średnie opóźnienie (w milisekundach) między komunikatami przychodzącymi do IoT Hub i komunikatów przychodzących w punkcie końcowym centrum zdarzeń.|Nie wymiarów|
+|d2c<br>. punkty końcowe<br>ruch wychodzący<br>.serviceBusQueues|Routing: komunikaty dostarczone do kolejki Service Bus|Count|Łącznie|Liczba pomyślnie dostarczonych komunikatów do Service Bus punktów końcowych kolejki w usłudze IoT Hub Routing.|Nie wymiarów|
+|d2c<br>. punkty końcowe<br>. opóźnienie<br>.serviceBusQueues|Routing: opóźnienie komunikatu dla kolejki Service Bus|MS|Average|Średnie opóźnienie (w milisekundach) między komunikatami przychodzącymi do IoT Hub i telemetrii komunikatów przychodzących do punktu końcowego kolejki Service Bus.|Nie wymiarów|
+|d2c<br>. punkty końcowe<br>ruch wychodzący<br>.serviceBusTopics|Routing: komunikaty dostarczane do Service Bus tematu|Count|Łącznie|Liczba pomyślnie dostarczonych komunikatów przez IoT Hub Routing do Service Bus punktów końcowych tematu.|Nie wymiarów|
+|d2c<br>. punkty końcowe<br>. opóźnienie<br>.serviceBusTopics|Routing: opóźnienie komunikatu dla Service Bus tematu|MS|Average|Średnie opóźnienie (w milisekundach) między komunikatami przychodzącymi do IoT Hub i komunikatów telemetrycznych w punkcie końcowym tematu Service Bus.|Nie wymiarów|
+|d2c<br>. punkty końcowe<br>ruch wychodzący<br>. wbudowane<br>. Events|Routing: komunikaty dostarczane do komunikatów/zdarzeń|Count|Łącznie|Liczba pomyślnie dostarczonych komunikatów do wbudowanego punktu końcowego (komunikaty/zdarzenia) IoT Hub Routing. Ta Metryka uruchamia się tylko wtedy, gdy Routing https://aka.ms/iotrouting) jest włączony (dla Centrum IoT Hub).|Nie wymiarów|
+|d2c<br>. punkty końcowe<br>. opóźnienie<br>.builtIn.events|Routing: opóźnienie komunikatów dla komunikatów/zdarzeń|MS|Average|Średnie opóźnienie (w milisekundach) między komunikatami przychodzącymi do IoT Hub i komunikatów telemetrycznych w wbudowanym punkcie końcowym (komunikaty/zdarzenia). Ta Metryka uruchamia się tylko wtedy, gdy Routing https://aka.ms/iotrouting) jest włączony (dla Centrum IoT Hub).|Nie wymiarów|
+|d2c<br>. punkty końcowe<br>ruch wychodzący<br>Magazyn.|Routing: komunikaty dostarczane do magazynu|Count|Łącznie|Liczba pomyślnie dostarczonych komunikatów do punktów końcowych usługi Routing IoT Hub.|Nie wymiarów|
+|d2c<br>. punkty końcowe<br>. opóźnienie<br>Magazyn.|Routing: opóźnienie komunikatu dla magazynu|MS|Average|Średnie opóźnienie (w milisekundach) między komunikatami przychodzącymi do IoT Hub i komunikatów telemetrycznych w punkcie końcowym magazynu.|Nie wymiarów|
+|d2c<br>. punkty końcowe<br>ruch wychodzący<br>Magazyn.<br>. bajtów|Routing: dane dostarczane do magazynu|Bajty|Łącznie|Ilość danych (w bajtach) IoT Hub Routing dostarczany do punktów końcowych magazynu.|Nie wymiarów|
+|d2c<br>. punkty końcowe<br>ruch wychodzący<br>Magazyn.<br>. obiekty blob|Routing: obiekty blob dostarczane do magazynu|Count|Łącznie|Ile razy usługa Routing IoT Hub dostarczać obiekty blob do punktów końcowych magazynu.|Nie wymiarów|
+|EventGridDeliveries|Dostawy Event Grid (wersja zapoznawcza)|Count|Łącznie|Liczba zdarzeń IoT Hub opublikowanych do Event Grid. Użyj wymiaru wynik dla liczby żądań zakończonych powodzeniem i niepowodzeniem. Wymiar EventType przedstawia typ zdarzenia (https://aka.ms/ioteventgrid). Aby zobaczyć, skąd pochodzą żądania, użyj wymiaru EventType.|Wynik, typ zdarzenia|
+|EventGridLatency|Opóźnienie Event Grid (wersja zapoznawcza)|MS|Average|Średnie opóźnienie (w milisekundach) od momentu wygenerowania zdarzenia usługi IoT Hub po opublikowaniu zdarzenia w Event Grid. Ta liczba jest średnia między wszystkimi typami zdarzeń. Użyj wymiaru EventType, aby zobaczyć opóźnienie określonego typu zdarzenia.|EventType|
+|d2c<br>. sznurki<br>. Przeczytaj<br>. powodzenie|Pomyślne odczyty sznurów z urządzeń|Count|Łącznie|Liczba wszystkich udanych operacji zainicjowanych przez urządzenie.|Nie wymiarów|
+|d2c<br>. sznurki<br>. Przeczytaj<br>. Niepowodzenie|Nieudane odczyty sznurów z urządzeń|Count|Łącznie|Liczba wszystkich nieudanych operacji zainicjowanych przez urządzenie.|Nie wymiarów|
+|d2c<br>. sznurki<br>. Przeczytaj<br>. rozmiar|Rozmiar odpowiedzi dla sznurów odczytanych z urządzeń|Bajty|Average|Średnia, minimum i maksimum wszystkich udanych zainicjowanych przez urządzenia sznurów.|Nie wymiarów|
+|d2c<br>. sznurki<br>. Update<br>. powodzenie|Pomyślne aktualizacje bliźniaczych urządzeń|Count|Łącznie|Liczba wszystkich pomyślnych aktualizacji typu bliźniaczych zainicjowanych przez urządzenie.|Nie wymiarów|
+|d2c<br>. sznurki<br>. Update<br>. Niepowodzenie|Niepowodzenie aktualizacji bliźniaczych z urządzeń|Count|Łącznie|Liczba wszystkich niezakończonych niepowodzeniem aktualizacji dwuosiowych zainicjowanych przez urządzenie.|Nie wymiarów|
+|d2c<br>. sznurki<br>. Update<br>. rozmiar|Rozmiar aktualizacji bliźniaczych z urządzeń|Bajty|Average|Średni, minimalny i maksymalny rozmiar wszystkich pomyślnych aktualizacji typu dwuosiowego zainicjowanego przez urządzenie.|Nie wymiarów|
+|c2d<br>. metody<br>. powodzenie|Pomyślne wywołania metody bezpośredniej|Count|Łącznie|Liczba wszystkich pomyślnych wywołań metody bezpośredniej.|Nie wymiarów|
+|c2d<br>. metody<br>. Niepowodzenie|Nieudane wywołania metody bezpośredniej|Count|Łącznie|Liczba wszystkich wywołań metod bezpośrednich zakończonych niepowodzeniem.|Nie wymiarów|
+|c2d<br>. metody<br>.requestSize|Rozmiar żądania wywołań metody bezpośredniej|Bajty|Average|Średnia, minimum i maksimum wszystkich pomyślnych żądań metody bezpośredniej.|Nie wymiarów|
+|c2d<br>. metody<br>.responseSize|Rozmiar odpowiedzi wywołań metody bezpośredniej|Bajty|Average|Średnia, minimum i maksimum wszystkich zakończonych powodzeniem odpowiedzi metody bezpośredniej.|Nie wymiarów|
+|c2d<br>. sznurki<br>. Przeczytaj<br>. powodzenie|Pomyślne odczyty sznurów z zaplecza|Count|Łącznie|Liczba wszystkich zakończonych powodzeniem odczytów dwuosiowych zainicjowanych z powrotem.|Nie wymiarów|
+|c2d<br>. sznurki<br>. Przeczytaj<br>. Niepowodzenie|Nieudane odczyty sznurów z zaplecza|Count|Łącznie|Liczba wszystkich zakończonych niepowodzeniem odczytów dwuosiowych zainicjowanych z powrotem.|Nie wymiarów|
+|c2d<br>. sznurki<br>. Przeczytaj<br>. rozmiar|Rozmiar odpowiedzi na odwrocie od zaplecza|Bajty|Average|Średnia, minimum i maksimum wszystkich udanych zainicjowanych z powrotem sznurów danych.|Nie wymiarów|
+|c2d<br>. sznurki<br>. Update<br>. powodzenie|Pomyślne aktualizacje bliźniaczych z zaplecza|Count|Łącznie|Liczba wszystkich pomyślnych aktualizacji typu bliźniaczych zainicjowanych z powrotem.|Nie wymiarów|
+|c2d<br>. sznurki<br>. Update<br>. Niepowodzenie|Niepowodzenie aktualizacji bliźniaczych z zaplecza|Count|Łącznie|Liczba wszystkich niezakończonych niepowodzeniem aktualizacji typu bliźniaczych zainicjowanych z powrotem.|Nie wymiarów|
+|c2d<br>. sznurki<br>. Update<br>. rozmiar|Rozmiar aktualizacji przędzy od zaplecza|Bajty|Average|Średni, minimalny i maksymalny rozmiar wszystkich pomyślnych aktualizacji typu sznurka zainicjowanych z powrotem.|Nie wymiarów|
+|twinQueries<br>. powodzenie|Pomyślne zapytania bliźniaczy|Count|Łącznie|Liczba wszystkich udanych zapytań bliźniaczych.|Nie wymiarów|
+|twinQueries<br>. Niepowodzenie|Niepowodzenie zapytań bliźniaczych|Count|Łącznie|Liczba wszystkich zakończonych niepowodzeniem zapytań bliźniaczych.|Nie wymiarów|
+|twinQueries<br>.resultSize|Rozmiar wyniku zapytań bliźniaczych|Bajty|Average|Średnia, minimalna i maksymalna wielkość wyniku wszystkich udanych zapytań bliźniaczych.|Nie wymiarów|
+|zadania<br>.createTwinUpdateJob<br>. powodzenie|Pomyślne utworzenie dwuosiowych zadań aktualizacji|Count|Łącznie|Liczba wszystkich udanych tworzenia zadań aktualizacji z przędzą.|Nie wymiarów|
+|zadania<br>.createTwinUpdateJob<br>. Niepowodzenie|Nie można utworzyć dwuosiowych zadań aktualizacji|Count|Łącznie|Liczba wszystkich nieudanych operacji tworzenia zadań aktualizacji z przędzą.|Nie wymiarów|
+|zadania<br>.createDirectMethodJob<br>. powodzenie|Pomyślne utworzenie zadań wywołania metody|Count|Łącznie|Liczba wszystkich pomyślnych operacji tworzenia zadań wywołania metody bezpośredniej.|Nie wymiarów|
+|zadania<br>.createDirectMethodJob<br>. Niepowodzenie|Nie można utworzyć zadań wywołania metody|Count|Łącznie|Liczba wszystkich nieudanych operacji tworzenia zadań wywołania metody bezpośredniej.|Nie wymiarów|
+|zadania<br>.listJobs<br>. powodzenie|Pomyślne wywołania do zadań na liście|Count|Łącznie|Liczba wszystkich udanych wywołań do listy zadań.|Nie wymiarów|
+|zadania<br>.listJobs<br>. Niepowodzenie|Wywołania zakończone niepowodzeniem do listy zadań|Count|Łącznie|Liczba wszystkich wywołań zakończonych niepowodzeniem w celu wyświetlenia listy zadań.|Nie wymiarów|
+|zadania<br>.cancelJob<br>. powodzenie|Pomyślne anulowania zadań|Count|Łącznie|Liczba wszystkich udanych wywołań do anulowania zadania.|Nie wymiarów|
+|zadania<br>.cancelJob<br>. Niepowodzenie|Nieudane anulowania zadań|Count|Łącznie|Liczba wszystkich wywołań zakończonych niepowodzeniem w celu anulowania zadania.|Nie wymiarów|
+|zadania<br>.queryJobs<br>. powodzenie|Pomyślne zapytania dotyczące zadań|Count|Łącznie|Liczba wszystkich udanych wywołań do zadań zapytań.|Nie wymiarów|
+|zadania<br>.queryJobs<br>. Niepowodzenie|Nieudane kwerendy zadań|Count|Łącznie|Liczba wszystkich wywołań zakończonych niepowodzeniem w celu wykonywania zapytań dotyczących zadań.|Nie wymiarów|
+|zadania<br>. ukończone|Ukończone zadania|Count|Łącznie|Liczba wszystkich ukończonych zadań.|Nie wymiarów|
+|zadania<br>. Niepowodzenie|Zadania zakończone niepowodzeniem|Count|Łącznie|Liczba wszystkich zadań zakończonych niepowodzeniem.|Nie wymiarów|
+|d2c<br>. Telemetria<br>ruch przychodzący<br>.sendThrottle|Liczba błędów ograniczania|Count|Łącznie|Liczba błędów ograniczania z powodu ograniczeń przepływności urządzenia|Nie wymiarów|
+|dailyMessage<br>QuotaUsed|Całkowita liczba użytych komunikatów|Count|Average|Całkowita liczba użytych komunikatów. Jest to skumulowana wartość, która jest resetowana do zera o godzinie 00:00 czasu każdego dnia.|Nie wymiarów|
+|deviceDataUsage|Całkowite użycie danych urządzenia|Bajty|Łącznie|Bajty przesłane do i z dowolnych urządzeń podłączonych do usługi IotHub|Nie wymiarów|
+|totalDeviceCount|Łączna liczba urządzeń (wersja zapoznawcza)|Count|Average|Liczba urządzeń zarejestrowanych w usłudze IoT Hub|Nie wymiarów|
+|łączona<br>Liczba urządzeń|Podłączone urządzenia (wersja zapoznawcza)|Count|Average|Liczba urządzeń podłączonych do centrum IoT Hub|Nie wymiarów|
+|komputerów|Metryki konfiguracji|Count|Łącznie|Metryki dla operacji konfiguracji|Nie wymiarów|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz, po zapoznaniu z omówieniem usługi IoT Hub metryki skorzystaj z tego linku, aby dowiedzieć się więcej na temat zarządzania usługi Azure IoT Hub:
+Teraz, po zapoznaniu się z omówieniem metryk IoT Hub, Skorzystaj z tego linku, aby dowiedzieć się więcej na temat zarządzania usługą Azure IoT Hub:
 
 * [Monitorowanie operacji](iot-hub-operations-monitoring.md)
 
-Aby bliżej zapoznać się z możliwościami usługi IoT Hub, zobacz:
+Aby dowiedzieć się więcej o możliwościach IoT Hub, zobacz:
 
-* [Przewodnik dla deweloperów usługi IoT Hub](iot-hub-devguide.md)
+* [Przewodnik dla deweloperów IoT Hub](iot-hub-devguide.md)
 
-* [Wdrażanie rozwiązań SI na urządzeniach brzegowych za pomocą usługi Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Wdrażanie AI na urządzeniach brzegowych za pomocą Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)

@@ -1,23 +1,23 @@
 ---
-title: Tabele zapory — rozwiązanie VMware według CloudSimple — Azure
+title: Rozwiązanie VMware firmy Azure według CloudSimple — tabele zapory
 description: Dowiedz się więcej na temat tabel i reguł zapory chmury prywatnej CloudSimple.
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/10/2019
+ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9d25aa9252f061cee7f4cffdca42f00d84f719a3
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 89bef6cef48f2b972aa3f931008b0db84431b832
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812667"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877711"
 ---
 # <a name="firewall-tables-overview"></a>Tabele zapory — Omówienie
 
-W tabeli zapory są wyświetlane reguły filtrowania ruchu sieciowego do i z zasobów w chmurze prywatnej. Można je zastosować do sieci VLAN lub podsieci. Reguły kontrolują ruch sieciowy między siecią źródłową lub adresem IP oraz siecią docelową lub adresem IP.
+W tabeli zapory są wyświetlane reguły filtrowania ruchu sieciowego do i z zasobów w chmurze prywatnej. Tabele zapory można stosować do sieci VLAN/podsieci. Reguły kontrolują ruch sieciowy między siecią źródłową lub adresem IP a siecią docelową lub adresem IP.
 
 ## <a name="firewall-rules"></a>Reguły zapory
 
@@ -26,7 +26,7 @@ W poniższej tabeli opisano parametry w regule zapory.
 | Właściwość | Szczegóły |
 | ---------| --------|
 | **Nazwa** | Nazwa, która jednoznacznie identyfikuje regułę zapory i jej przeznaczenie. |
-| **Priorytet** | Liczba z zakresu od 100 do 4096, z 100 jest najwyższy priorytet. Reguły są przetwarzane w kolejności priorytetów. Gdy ruch jest zgodny z regułą, przetwarzanie reguł zostanie zatrzymane. W związku z tym wszystkie reguły istniejące z niższymi priorytetami, które mają takie same atrybuty jak reguły o wyższych priorytetach nie są przetwarzane.  Należy zachować ostrożność, aby uniknąć reguł powodujących konflikt. |
+| **Priorytet** | Liczba z zakresu od 100 do 4096, z 100 jest najwyższy priorytet. Reguły są przetwarzane w kolejności priorytetów. Gdy ruch napotyka zgodność z regułą, przetwarzanie reguł zostanie zatrzymane. W efekcie reguły o niższych priorytetach, które mają te same atrybuty co reguły o wyższych priorytetach nie są przetwarzane.  Należy zachować ostrożność, aby uniknąć reguł powodujących konflikt. |
 | **Śledzenie stanu** | Śledzenie może być bezstanowe (Chmura prywatna, Internet lub sieć VPN) lub stanowa (Public IP).  |
 | **Protokół** | Dostępne opcje to TCP lub UDP. Jeśli jest wymagany protokół ICMP, użyj dowolnego z nich. |
 | **Kierunek** | Określa, czy ta reguła ma zastosowanie do ruchu przychodzącego, czy wychodzącego. |
@@ -53,13 +53,13 @@ Do przepływu ruchu w odwrotnym kierunku mogą być wymagane dodatkowe reguły. 
 
 W każdej tabeli zapory są tworzone następujące reguły domyślne.
 
-|Priority|Name (Nazwa)|Śledzenie stanu|Direction|Typ ruchu|Protocol|Source|Port źródłowy|Element docelowy|Port docelowy|Action|
+|Priority|Name|Śledzenie stanu|Direction|Typ ruchu|Protocol|Source|Port źródłowy|Element docelowy|Port docelowy|Action|
 |--------|----|--------------|---------|------------|--------|------|-----------|-----------|----------------|------|
 |65000|allow-all-to-internet|Stanowych|Wychodzące|Publiczny adres IP lub ruch internetowy|Wszyscy|Any|Any|Any|Any|Allow|
 |65001|Odmów — wszystko-z Internetu|Stanowych|Przychodzący|Publiczny adres IP lub ruch internetowy|Wszyscy|Any|Any|Any|Any|Zablokuj|
 |65002|Zezwól na dostęp do sieci intranet|Bezstanowe|Wychodzące|Ruch wewnętrzny lub sieci VPN w chmurze prywatnej|Wszyscy|Any|Any|Any|Any|Allow|
 |65003|allow-all-from-intranet|Bezstanowe|Przychodzący|Ruch wewnętrzny lub sieci VPN w chmurze prywatnej|Wszyscy|Any|Any|Any|Any|Allow|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Konfigurowanie tabel i reguł zapory](https://docs.azure.cloudsimple.com/firewall/)
+* [Konfigurowanie tabel i reguł zapory](firewall.md)

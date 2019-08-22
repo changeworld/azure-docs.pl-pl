@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/16/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 0e78d9cfce59615a53534fe9815205e39f64853d
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 89c24512e50dedbf10d145088ec77c2e6e303d1e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868830"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873165"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>Tworzenie obszaru roboczego dla usługi Azure Machine Learning przy użyciu szablonu Azure Resource Manager
 
@@ -38,10 +38,10 @@ Następujący szablon Menedżer zasobów może służyć do tworzenia obszaru ro
 Ten szablon umożliwia utworzenie następujących usług platformy Azure:
 
 * Grupa zasobów platformy Azure
-* Konto usługi Azure Storage
+* Konto magazynu platformy Azure
 * W usłudze Azure Key Vault
 * Azure Application Insights
-* Azure Container Registry
+* Rejestr kontenerów platformy Azure
 * Obszar roboczy usługi Azure Machine Learning
 
 Grupa zasobów to kontener, w którym znajdują się usługi. Różne usługi są wymagane przez obszar roboczy Azure Machine Learning.
@@ -71,8 +71,6 @@ Aby uzyskać więcej informacji na temat szablonów, zobacz następujące artyku
    * Grupa zasobów: Wybierz lub Utwórz grupę zasobów, w której mają być zawarte usługi.
    * Nazwa obszaru roboczego: Nazwa do użycia dla obszaru roboczego Azure Machine Learning, który zostanie utworzony. Nazwa obszaru roboczego musi zawierać od 3 do 33 znaków. Może zawierać tylko znaki alfanumeryczne i znak "-".
    * Lokalizacja: Wybierz lokalizację, w której zostaną utworzone zasoby.
-
-     ![Parametry szablonu w Azure Portal](media/how-to-create-workspace-template/template-parameters.png)
 
 Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów z szablonu niestandardowego](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
 

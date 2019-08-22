@@ -2,24 +2,24 @@
 title: 'Szybki start: Tworzenie, ładowanie i wykonywanie zapytań względem indeksu przy użyciu Azure Portal-Azure Search'
 description: Użyj Kreatora importowania danych w Azure Portal, aby utworzyć, załadować i zbadać swój pierwszy indeks w programie Azure Search.
 author: lobrien
-manager: cgronlun
+manager: nitinme
 tags: azure-portal
 services: search
 ms.service: search
 ms.topic: quickstart
 ms.date: 07/01/2019
 ms.author: laobri
-ms.openlocfilehash: e8baa2ae5f60926f46be577a02d3c23ad6b77b79
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: c2950b35f207f772f1190a2f8f104098eeb43375
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828465"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656346"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>Szybki start: Tworzenie indeksu Azure Search przy użyciu Azure Portal
 > [!div class="op_single_selector"]
 > * [Portal](search-get-started-portal.md)
-> * [Program PowerShell](search-get-started-powershell.md)
+> * [PowerShell](search-get-started-powershell.md)
 > * [Postman](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
 > * [C#](search-get-started-dotnet.md)
@@ -273,7 +273,7 @@ Zasoby można znaleźć w portalu i zarządzać nimi za pomocą linku **wszystki
 
 Jeśli używasz bezpłatnej usługi, pamiętaj, że masz ograniczone do trzech indeksów, indeksatorów i źródeł danych. Możesz usunąć poszczególne elementy w portalu, aby zachować limit. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Możesz lepiej poznać usługę Azure Search przy użyciu narzędzi programistycznych:
 

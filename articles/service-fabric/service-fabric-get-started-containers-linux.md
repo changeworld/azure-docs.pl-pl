@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/4/2019
 ms.author: atsenthi
-ms.openlocfilehash: dde124a568581c53a4168b1c84e5df8a9d55155f
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 2bb9a5e8e42901f22d9f68d691684614c7161620
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599554"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650668"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Tworzenie pierwszej aplikacji kontenera usługi Service Fabric w systemie Linux
 > [!div class="op_single_selector"]
@@ -181,28 +181,11 @@ Określ mapowanie portu w odpowiednim formacie. W tym artykule należy podać ``
 ![Generator Yeoman usługi Service Fabric dla kontenerów][sf-yeoman]
 
 ## <a name="configure-container-repository-authentication"></a>Konfigurowanie uwierzytelniania repozytorium kontenerów
- Jeśli kontener wymaga uwierzytelniania w prywatnym repozytorium, dodaj parametr `RepositoryCredentials`. Na potrzeby tego artykułu dodaj nazwę konta i hasło dla rejestru kontenerów myregistry.azurecr.io. Upewnij się, że zasady zostały dodane w tagu „ServiceManifestImport” odpowiadającym właściwemu pakietowi usług.
 
-```xml
-   <ServiceManifestImport>
-      <ServiceManifestRef ServiceManifestName="MyServicePkg" ServiceManifestVersion="1.0.0" />
-    <Policies>
-        <ContainerHostPolicies CodePackageRef="Code">
-        <RepositoryCredentials AccountName="myregistry" Password="=P==/==/=8=/=+u4lyOB=+=nWzEeRfF=" PasswordEncrypted="false"/>
-        <PortBinding ContainerPort="80" EndpointRef="myServiceTypeEndpoint"/>
-        </ContainerHostPolicies>
-    </Policies>
-   </ServiceManifestImport>
-``` 
-
-Zalecamy zaszyfrowanie hasła do repozytorium. Zapoznaj się z instrukcjami dotyczącymi zarządzania zaszyfrowanymi wpisami [tajnymi w aplikacjach Service Fabric](service-fabric-application-secret-management.md) .
-
-### <a name="configure-cluster-wide-credentials"></a>Konfigurowanie poświadczeń dla całego klastra
-Zapoznaj [się z dokumentacją tutaj](
-service-fabric-get-started-containers.md#configure-cluster-wide-credentials)
+Zobacz [uwierzytelnianie repozytorium kontenerów](configure-container-repository-credentials.md), aby dowiedzieć się, jak skonfigurować różne typy uwierzytelniania na potrzeby pobierania obrazów kontenerów.
 
 ## <a name="configure-isolation-mode"></a>Konfigurowanie trybu izolacji
-W wersji 6,3 środowiska uruchomieniowego izolacja maszyny wirtualnej jest obsługiwana w przypadku kontenerów systemu Linux, a tym samym obsługa dwóch trybów izolacji dla kontenerów: proces i HyperV. W trybie izolacji funkcji Hyper-v jądra są izolowane między poszczególnymi kontenerami i hostami kontenerów. Izolacja HyperV jest implementowana [](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker)przy użyciu czystych kontenerów. Tryb izolacji jest określony dla klastrów systemu Linux w `ServicePackageContainerPolicy` elemencie w pliku manifestu aplikacji. Tryby izolacji, które można określić, to `process`, `hyperv` i `default`. Wartość domyślna to tryb izolacji procesu. Poniższy fragment kodu przedstawia sposób określania trybu izolacji w pliku manifestu aplikacji.
+W przypadku wersji 6,3 środowiska uruchomieniowego izolacja maszyny wirtualnej jest obsługiwana w przypadku kontenerów systemu Linux, w związku z czym obsługa dwóch trybów izolacji dla kontenerów: proces i funkcja Hyper-V. W trybie izolacji funkcji Hyper-V jądra są izolowane między poszczególnymi kontenerami i hostami kontenerów. Izolacja funkcji Hyper-V jest implementowana przy użyciu [czystych kontenerów](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker). Tryb izolacji jest określony dla klastrów systemu Linux w `ServicePackageContainerPolicy` elemencie w pliku manifestu aplikacji. Tryby izolacji, które można określić, to `process`, `hyperv` i `default`. Wartość domyślna to tryb izolacji procesu. Poniższy fragment kodu przedstawia sposób określania trybu izolacji w pliku manifestu aplikacji.
 
 ```xml
 <ServiceManifestImport>
@@ -288,7 +271,7 @@ Otwórz przeglądarkę i przejdź do Service Fabric Explorer przy użyciu protok
 
 Nawiąż połączenie z działającym kontenerem. Otwórz przeglądarkę internetową, wskazując adres IP zwrócony na porcie 4000, na przykład "http:\//localhost: 4000". W przeglądarce powinien zostać wyświetlony nagłówek „Hello World!”.
 
-![Witaj świecie!][hello-world]
+![Hello World!][hello-world]
 
 
 ## <a name="clean-up"></a>Czyszczenie
@@ -493,7 +476,7 @@ W środowisku uruchomieniowym usługi Service Fabric w wersji 6.2 lub nowszej mo
 
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Dowiedz się więcej o uruchamianiu [kontenerów w usłudze Service Fabric](service-fabric-containers-overview.md).
 * Zapoznaj się z samouczkiem [Deploy a .NET application in a container](service-fabric-host-app-in-a-container.md) (Wdrażanie aplikacji .NET w kontenerze).
 * Uzyskaj informacje o [cyklu życia aplikacji](service-fabric-application-lifecycle.md) usługi Service Fabric.

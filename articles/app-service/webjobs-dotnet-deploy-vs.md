@@ -15,12 +15,12 @@ ms.workload: azure-vs
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: d50acc50880229626c847d41d9abe9a9e13d9c6e
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 58d03d80c82fbf58803f7fefa8ef60c19f99bced
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736110"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876883"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Opracowywanie i wdrażanie zadań WebJob za pomocą programu Visual Studio — Azure App Service
 
@@ -90,7 +90,7 @@ Projekt można wdrożyć jako zadanie WebJob lub połączyć go z projektem siec
 
 Jeśli używasz programu Visual Studio 2015, zainstaluj [zestaw Azure SDK dla programu .NET (Visual Studio 2015)](https://azure.microsoft.com/downloads/).
 
-Jeśli używasz programu Visual Studio 2019, zainstaluj [obciążenie Programowanie na platformie Azure](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---choose-workloads).
+Jeśli używasz programu Visual Studio 2017, zainstaluj [obciążenie Programowanie na platformie Azure](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---choose-workloads).
 
 ### <a id="convert"></a>Włącz wdrażanie zadań WebJob dla istniejącego projektu aplikacji konsolowej
 
@@ -241,7 +241,7 @@ Następujące ustawienia są obsługiwane przez Zadania WebJob:
 | `schedule` | Wyzwolone | Uruchom zadanie WebJob na podstawie harmonogramu opartego na języku cronus. Aby dowiedzieć się więcej, zobacz [artykuł](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)dotyczący wyzwalacza czasomierza. |
 | `stopping_wait_time`| Wszyscy | Umożliwia sterowanie zachowaniem zamknięcia. Aby dowiedzieć się więcej, zobacz temat [bezpieczne zamykanie](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Dowiedz się więcej o zestawie SDK zadań WebJob](webjobs-sdk-how-to.md)

@@ -9,33 +9,31 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 05/06/2019
-ms.openlocfilehash: cf35651f7dd839e8792029851b9bfe278036624c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: eb84dc1b5bf3f756e484ef27aaa998ab6b94cc51
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183848"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891640"
 ---
-Eksperyment działa na cel obliczenia zasobu obliczeniowego, który jest dołączony do swojego obszaru roboczego.  Po utworzeniu obliczeniowego elementu docelowego, możesz użyć go ponownie dla przyszłych przebiegów.
+Eksperyment jest uruchamiany w miejscu docelowym obliczeń, zasobem obliczeniowym dołączonym do obszaru roboczego.  Po utworzeniu obiektu docelowego obliczeń można użyć go ponownie do przyszłych przebiegów.
 
-1. Wybierz **Uruchom** u dołu, aby uruchomić eksperyment.
+1. Wybierz pozycję **Uruchom** u dołu, aby uruchomić eksperyment.
 
-     ![Uruchamianie eksperymentu](./media/aml-ui-create-training-compute/run-experiment.png)
-
-1. Gdy **celów obliczeń Instalatora** zostanie wyświetlone okno dialogowe, jeśli obszar roboczy ma już zasobu obliczeniowego, możesz wybrać go teraz.  W przeciwnym razie wybierz **Utwórz nową**.
+1. Gdy zostanie wyświetlone okno dialogowe **cele obliczeń instalacji** , jeśli obszar roboczy ma już zasób obliczeniowy, możesz go wybrać teraz.  W przeciwnym razie wybierz pozycję **Utwórz nowy**.
 
     > [!NOTE]
-    > Interfejs graficzny można uruchamiać eksperymenty tylko na cele obliczeniowego usługi Machine Learning. Inne obliczeniowych elementów docelowych nie będą wyświetlane.
+    > Interfejs wizualny może uruchamiać tylko eksperymenty dla środowisko obliczeniowe usługi Machine Learning obiektów docelowych. Inne elementy docelowe obliczeń nie będą wyświetlane.
 
 1. Podaj nazwę zasobu obliczeniowego.
 
 1. Wybierz pozycję **Uruchom**.
 
-    ![Instalator obliczeniowych elementów docelowych](./media/aml-ui-create-training-compute/set-compute.png)
+    ![Skonfiguruj cel obliczeń](./media/aml-ui-create-training-compute/set-compute.png)
 
-    Zasób obliczeniowy będą teraz tworzone. Stan jest wyświetlany w prawym górnym rogu eksperymentu. 
+    Zasób obliczeniowy zostanie teraz utworzony. Wyświetl stan w prawym górnym rogu eksperymentu. 
 
     > [!NOTE]
-    > Trwa około 5 minut na utworzenie zasobów obliczeniowych. Po utworzeniu zasobu możesz użyć go ponownie i pominąć ten czas oczekiwania dla przyszłych przebiegów.
+    > Utworzenie zasobu obliczeniowego trwa około 5 minut. Po utworzeniu zasobu można go ponownie wykorzystać i pominąć ten czas oczekiwania na przyszłe uruchomienia.
     >
-    > Zasobów obliczeniowych zostanie automatyczne skalowanie na 0 węzłów w stanie bezczynności koszty.  Gdy używasz go ponownie z opóźnieniem, ponownie mogą występować około 5 minut czasu oczekiwania podczas skanowane ponownie w.
+    > Zasób obliczeniowy zostanie automatycznie przeskalowany do 0 węzłów, gdy jest w stanie bezczynności, aby zaoszczędzić koszt.  Gdy użyjesz go ponownie po opóźnieniu, możesz ponownie wykonać około 5 minut czasu oczekiwania podczas skalowania w górę.

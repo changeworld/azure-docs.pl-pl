@@ -2,17 +2,17 @@
 title: Interfejs API realizacji SaaS w wersji 2 | Portal Azure Marketplace
 description: W tym artykule wyjaśniono, jak utworzyć i zarządzać ofertą SaaS w AppSource i witrynie Azure Marketplace przy użyciu skojarzonych interfejsów API realizacji w wersji 2.
 services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: qianw211
 ms.service: marketplace
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: 276699b9316a0c4fd428038f2c967bdf934f449c
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: a2041aefcfdcb1746e64f50c7cb53b3bfaec3299
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016040"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872802"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>Interfejsy API realizacji SaaS w wersji 2 
 
@@ -116,7 +116,7 @@ Rozwiązywanie punktu końcowego umożliwia wydawcy rozpoznanie tokenu witryny M
 
 *Kody odpowiedzi:*
 
-Kod: 200<br>
+Kodu 200<br>
 Rozwiązuje nieprzezroczysty token do subskrypcji SaaS. Treść odpowiedzi:
  
 
@@ -130,16 +130,16 @@ Rozwiązuje nieprzezroczysty token do subskrypcji SaaS. Treść odpowiedzi:
 }
 ```
 
-Kod: 400<br>
+Kodu 400<br>
 Nieprawidłowe żądanie. Brak "x-MS-Marketplace", źle sformułowano lub wygasło.
 
-Kod: 403<br>
-Bez autoryzacji. Nie podano tokenu uwierzytelniania lub jest on nieprawidłowy lub żądanie próbuje uzyskać dostęp do przejęcia, które nie należy do bieżącego wydawcy.
+Kodu 403<br>
+Próby. Nie podano tokenu uwierzytelniania lub jest on nieprawidłowy lub żądanie próbuje uzyskać dostęp do przejęcia, które nie należy do bieżącego wydawcy.
 
-Kod: 404<br>
+Kodu 404<br>
 Nie znaleziono.
 
-Kod: 500<br>
+Kodu 500<br>
 Wewnętrzny błąd serwera.
 
 ```json
@@ -179,7 +179,7 @@ Wyświetla wszystkie subskrypcje SaaS wydawcy.
 
 *Kody odpowiedzi:*
 
-Kod: 200 <br/>
+Kodu 200 <br/>
 Pobiera wydawcę i odpowiednie subskrypcje dla wszystkich ofert wydawcy na podstawie tokenu uwierzytelniania.
 Ładunek odpowiedzi:<br>
 
@@ -218,10 +218,10 @@ Pobiera wydawcę i odpowiednie subskrypcje dla wszystkich ofert wydawcy na podst
 
 Token kontynuacji będzie dostępny tylko wtedy, gdy istnieją dodatkowe "strony" planów do pobrania. 
 
-Kod: 403 <br>
-Bez autoryzacji. Nie podano tokenu uwierzytelniania lub jest on nieprawidłowy lub żądanie próbuje uzyskać dostęp do przejęcia, które nie należy do bieżącego wydawcy. 
+Kodu 403 <br>
+Próby. Nie podano tokenu uwierzytelniania lub jest on nieprawidłowy lub żądanie próbuje uzyskać dostęp do przejęcia, które nie należy do bieżącego wydawcy. 
 
-Kod: 500<br>
+Kodu 500<br>
 Wewnętrzny błąd serwera.
 
 ```json
@@ -257,7 +257,7 @@ Pobiera określoną subskrypcję SaaS. To wywołanie służy do uzyskiwania info
 
 *Kody odpowiedzi:*
 
-Kod: 200<br>
+Kodu 200<br>
 Pobiera subskrypcję SaaS z identyfikatora. Ładunek odpowiedzi:<br>
 
 ```json
@@ -287,13 +287,13 @@ Response Body:
 }
 ```
 
-Kod: 403<br>
-Bez autoryzacji. Nie podano tokenu uwierzytelniania lub jest on nieprawidłowy lub żądanie próbuje uzyskać dostęp do przejęcia, które nie należy do bieżącego wydawcy.
+Kodu 403<br>
+Próby. Nie podano tokenu uwierzytelniania lub jest on nieprawidłowy lub żądanie próbuje uzyskać dostęp do przejęcia, które nie należy do bieżącego wydawcy.
 
-Kod: 404<br>
+Kodu 404<br>
 Nie znaleziono.<br> 
 
-Kod: 500<br>
+Kodu 500<br>
 Wewnętrzny błąd serwera.<br>
 
 ```json
@@ -327,7 +327,7 @@ Użyj tego wywołania, aby dowiedzieć się, czy istnieją oferty prywatne lub p
 
 *Kody odpowiedzi:*
 
-Kod: 200<br>
+Kodu 200<br>
 Pobiera listę dostępnych planów dla klienta. Treść odpowiedzi:
 
 ```json
@@ -340,13 +340,13 @@ Pobiera listę dostępnych planów dla klienta. Treść odpowiedzi:
 }
 ```
 
-Kod: 404<br>
+Kodu 404<br>
 Nie znaleziono.<br> 
 
-Kod: 403<br>
-Bez autoryzacji. Nie podano tokenu uwierzytelniania lub jest on nieprawidłowy lub żądanie próbuje uzyskać dostęp do przejęcia, które nie należy do bieżącego wydawcy. <br> 
+Kodu 403<br>
+Próby. Nie podano tokenu uwierzytelniania lub jest on nieprawidłowy lub żądanie próbuje uzyskać dostęp do przejęcia, które nie należy do bieżącego wydawcy. <br> 
 
-Kod: 500<br>
+Kodu 500<br>
 Wewnętrzny błąd serwera.<br>
 
 ```json
@@ -388,19 +388,19 @@ Wewnętrzny błąd serwera.<br>
 
 *Kody odpowiedzi:*
 
-Kod: 200<br>
+Kodu 200<br>
 Aktywuje subskrypcję.<br>
 
-Kod: 400<br>
+Kodu 400<br>
 Złe żądanie: Błędy walidacji.
 
-Kod: 403<br>
-Bez autoryzacji. Nie podano tokenu uwierzytelniania lub jest on nieprawidłowy lub żądanie próbuje uzyskać dostęp do przejęcia, które nie należy do bieżącego wydawcy.
+Kodu 403<br>
+Próby. Nie podano tokenu uwierzytelniania lub jest on nieprawidłowy lub żądanie próbuje uzyskać dostęp do przejęcia, które nie należy do bieżącego wydawcy.
 
-Kod: 404<br>
+Kodu 404<br>
 Nie znaleziono.
 
-Kod: 500<br>
+Kodu 500<br>
 Wewnętrzny błąd serwera.
 
 ```json
@@ -451,19 +451,19 @@ Request Body:
 
 *Kody odpowiedzi:*
 
-Kod: 202<br>
+Kodu 202<br>
 Żądanie zmiany planu zostało zaakceptowane. Partner oczekuje na sondowanie lokalizacji operacji w celu określenia sukcesu lub niepowodzenia. <br>
 
-Kod: 400<br>
+Kodu 400<br>
 Złe żądanie: Błędy walidacji.
 
-Kod: 403<br>
-Bez autoryzacji. Nie podano tokenu uwierzytelniania lub jest on nieprawidłowy lub żądanie próbuje uzyskać dostęp do przejęcia, które nie należy do bieżącego wydawcy.
+Kodu 403<br>
+Próby. Nie podano tokenu uwierzytelniania lub jest on nieprawidłowy lub żądanie próbuje uzyskać dostęp do przejęcia, które nie należy do bieżącego wydawcy.
 
-Kod: 404<br>
+Kodu 404<br>
 Nie znaleziono.
 
-Kod: 500<br>
+Kodu 500<br>
 Wewnętrzny błąd serwera.
 
 ```json
@@ -517,20 +517,20 @@ Request Body:
 
 *Kody odpowiedzi:*
 
-Kod: 202<br>
+Kodu 202<br>
 Żądanie zmiany ilości zostało zaakceptowane. Partner oczekuje na sondowanie lokalizacji operacji w celu określenia sukcesu lub niepowodzenia. <br>
 
-Kod: 400<br>
+Kodu 400<br>
 Złe żądanie: Błędy walidacji.
 
 
-Kod: 403<br>
-Bez autoryzacji. Nie podano tokenu uwierzytelniania lub jest on nieprawidłowy lub żądanie próbuje uzyskać dostęp do przejęcia, które nie należy do bieżącego wydawcy.
+Kodu 403<br>
+Próby. Nie podano tokenu uwierzytelniania lub jest on nieprawidłowy lub żądanie próbuje uzyskać dostęp do przejęcia, które nie należy do bieżącego wydawcy.
 
-Kod: 404<br>
+Kodu 404<br>
 Nie znaleziono.
 
-Kod: 500<br>
+Kodu 500<br>
 Wewnętrzny błąd serwera.
 
 ```json
@@ -569,19 +569,19 @@ Anuluj subskrypcję i Usuń określoną subskrypcję.
 
 *Kody odpowiedzi:*
 
-Kod: 202<br>
+Kodu 202<br>
 Partner zainicjował wywołanie anulowania subskrypcji SaaS.<br>
 
-Kod: 400<br>
+Kodu 400<br>
 Usuwanie subskrypcji z opcją **Usuń** nie w `allowedCustomerOperations`.
 
-Kod: 403<br>
-Bez autoryzacji. Nie podano tokenu uwierzytelniania lub jest on nieprawidłowy lub żądanie próbuje uzyskać dostęp do przejęcia, które nie należy do bieżącego wydawcy.
+Kodu 403<br>
+Próby. Nie podano tokenu uwierzytelniania lub jest on nieprawidłowy lub żądanie próbuje uzyskać dostęp do przejęcia, które nie należy do bieżącego wydawcy.
 
-Kod: 404<br>
+Kodu 404<br>
 Nie znaleziono.
 
-Kod: 500<br>
+Kodu 500<br>
 Wewnętrzny błąd serwera.
 
 ```json
@@ -622,7 +622,7 @@ Wyświetla listę zaległych operacji dla bieżącego wydawcy.
 
 *Kody odpowiedzi:*
 
-Kod: 200<br> Pobiera listę oczekujących operacji w ramach subskrypcji. Ładunek odpowiedzi:
+Kodu 200<br> Pobiera listę oczekujących operacji w ramach subskrypcji. Ładunek odpowiedzi:
 
 ```json
 [{
@@ -640,16 +640,16 @@ Kod: 200<br> Pobiera listę oczekujących operacji w ramach subskrypcji. Ładune
 ```
 
 
-Kod: 400<br>
+Kodu 400<br>
 Złe żądanie: Błędy walidacji.
 
-Kod: 403<br>
-Bez autoryzacji. Nie podano tokenu uwierzytelniania lub jest on nieprawidłowy lub żądanie próbuje uzyskać dostęp do przejęcia, które nie należy do bieżącego wydawcy.
+Kodu 403<br>
+Próby. Nie podano tokenu uwierzytelniania lub jest on nieprawidłowy lub żądanie próbuje uzyskać dostęp do przejęcia, które nie należy do bieżącego wydawcy.
 
-Kod: 404<br>
+Kodu 404<br>
 Nie znaleziono.
 
-Kod: 500<br>
+Kodu 500<br>
 Wewnętrzny błąd serwera.
 
 ```json
@@ -685,7 +685,7 @@ Umożliwia wydawcy śledzenie stanu określonej wyzwalanej operacji asynchronicz
 
 *Kody odpowiedzi:*<br>
 
-Kod: 200<br> Pobiera określoną oczekującą operację SaaS. Ładunek odpowiedzi:
+Kodu 200<br> Pobiera określoną oczekującą operację SaaS. Ładunek odpowiedzi:
 
 ```json
 Response body:
@@ -704,16 +704,16 @@ Response body:
 
 ```
 
-Kod: 400<br>
+Kodu 400<br>
 Złe żądanie: Błędy walidacji.
 
-Kod: 403<br>
-Bez autoryzacji. Nie podano tokenu uwierzytelniania lub jest on nieprawidłowy lub żądanie próbuje uzyskać dostęp do przejęcia, które nie należy do bieżącego wydawcy.
+Kodu 403<br>
+Próby. Nie podano tokenu uwierzytelniania lub jest on nieprawidłowy lub żądanie próbuje uzyskać dostęp do przejęcia, które nie należy do bieżącego wydawcy.
  
-Kod: 404<br>
+Kodu 404<br>
 Nie znaleziono.
 
-Kod: 500<br> Wewnętrzny błąd serwera.
+Kodu 500<br> Wewnętrzny błąd serwera.
 
 ```json
 {
@@ -760,21 +760,21 @@ Zaktualizuj stan operacji, aby wskazać powodzenie lub niepowodzenie przy użyci
 
 *Kody odpowiedzi:*
 
-Kod: 200<br> Wywołanie do informowania o zakończeniu operacji po stronie partnera. Na przykład ta odpowiedź może sygnalizować zmianę miejsc lub planów.
+Kodu 200<br> Wywołanie do informowania o zakończeniu operacji po stronie partnera. Na przykład ta odpowiedź może sygnalizować zmianę miejsc lub planów.
 
-Kod: 400<br>
+Kodu 400<br>
 Złe żądanie: Błędy walidacji.
 
-Kod: 403<br>
-Bez autoryzacji. Nie podano tokenu uwierzytelniania lub jest on nieprawidłowy lub żądanie próbuje uzyskać dostęp do przejęcia, które nie należy do bieżącego wydawcy.
+Kodu 403<br>
+Próby. Nie podano tokenu uwierzytelniania lub jest on nieprawidłowy lub żądanie próbuje uzyskać dostęp do przejęcia, które nie należy do bieżącego wydawcy.
 
-Kod: 404<br>
+Kodu 404<br>
 Nie znaleziono.
 
-Kod: 409<br>
+Kodu 409<br>
 Kolizj. Na przykład istnieje już nowsza transakcja.
 
-Kod: 500<br> Wewnętrzny błąd serwera.
+Kodu 500<br> Wewnętrzny błąd serwera.
 
 ```json
 {
@@ -790,7 +790,6 @@ Kod: 500<br> Wewnętrzny błąd serwera.
 
 Wydawca musi zaimplementować element webhook w tej usłudze SaaS, aby aktywnie powiadamiać użytkowników o zmianach w swojej usłudze. Usługa SaaS powinna wywołać interfejs API operacji w celu weryfikacji i autoryzacji przed wykonaniem akcji na powiadomieniu elementu webhook.
 
-Aby zapewnić bezpieczną komunikację, firma Microsoft zawiera token JWT Azure Active Directory w nagłówku autoryzacji w ramach wywołania. Dostawcy SaaS są zachęcani do sprawdzania poprawności tokenu JWT zgodnie z opisem w artykule [tokeny dostępu platformy tożsamości firmy Microsoft](https://docs.microsoft.com/azure/active-directory/develop/access-tokens) w celu upewnienia się, że akceptowane są tylko prawidłowe wywołania.
 
 ```json
 {

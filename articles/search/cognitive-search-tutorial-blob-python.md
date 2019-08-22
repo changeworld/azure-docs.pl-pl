@@ -1,7 +1,7 @@
 ---
 title: 'Samouczek języka Python: Wywołaj Cognitive Services w potoku wzbogacenia AI — Azure Search'
 description: Przejdź do przykładowego sposobu wyodrębniania danych, języka naturalnego i przetwarzania obrazu AI w Azure Search przy użyciu notesu Python Jupyter. Wyodrębnione dane są indeksowane i łatwo dostępne przez zapytanie.
-manager: cgronlun
+manager: nitinme
 author: LisaLeib
 services: search
 ms.service: search
@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: v-lilei
-ms.openlocfilehash: af355ec353e12c30723597927883cb23dfa31e71
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2cde1fe258d2caf7e7dc9d8ede582364f42c676b
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840920"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648884"
 ---
 # <a name="python-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>Samouczek języka Python: Wywołaj interfejsy API usług Cognitive Services w potoku indeksowania Azure Search
 
@@ -277,7 +277,7 @@ W tej sekcji zdefiniujesz schemat indeksu, określając pola do uwzględnienia w
 
 W tym ćwiczeniu są używane następujące pola i typy pól:
 
-| field-names: | id         | content   | languageCode | keyPhrases         | organizations     |
+| field-names: | id         | zawartość   | languageCode | keyPhrases         | organizations     |
 |--------------|----------|-------|----------|--------------------|-------------------|
 | field-types: | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
 

@@ -1,6 +1,6 @@
 ---
-title: Zalecenia dotyczące zabezpieczeń dla usługi Azure IoT | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera podsumowanie dodatkowe kroki w celu zapewnienia bezpieczeństwa w rozwiązaniu Azure IoT Hub.
+title: Zalecenia dotyczące zabezpieczeń dla usługi Azure IoT | Microsoft Docs
+description: Ten artykuł zawiera podsumowanie dodatkowych kroków zapewniających bezpieczeństwo rozwiązań IoT Hub platformy Azure.
 author: dsk-2015
 manager: philmea
 ms.service: iot-hub
@@ -9,60 +9,60 @@ ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: dkshir
 ms.custom: security-recommendations
-ms.openlocfilehash: 4416f3149c33a0c9a437b2fbd6a48729a5a7f044
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 55ca189d5f4622a395ffe603d7f0d6764db82f3d
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722856"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877221"
 ---
-# <a name="security-recommendations-for-azure-internet-of-things-iot-deployment"></a>Zalecenia dotyczące zabezpieczeń dla wdrożenia usługi Azure Internet of Things (IoT)
+# <a name="security-recommendations-for-azure-internet-of-things-iot-deployment"></a>Zalecenia dotyczące zabezpieczeń dla wdrożenia usługi Azure Internet rzeczy (IoT)
 
-Ten artykuł zawiera zalecenia dotyczące zabezpieczeń dla usługi Azure IoT. Wdrażanie tych zaleceń dotyczących pomocy, które spełniają Twoje obowiązki zabezpieczeń jako klient korzystający z usługi Azure IoT i będzie poprawi ogólnego stanu zabezpieczeń dla rozwiązań IoT. Aby uzyskać więcej informacji na temat funkcji wewnętrznych zabezpieczeń oferowanych przez usługi Azure IoT, przeczytaj [zabezpieczenia IoT od podstaw](iot-security-ground-up.md).
+Ten artykuł zawiera zalecenia dotyczące zabezpieczeń usług Azure IoT. Wdrożenie tych zaleceń pomoże Ci zrealizować zobowiązania z zakresu bezpieczeństwa jako klienta usługi Azure IoT i poprawi ogólne zabezpieczenia twoich rozwiązań IoT. Aby uzyskać więcej informacji na temat wewnętrznych funkcji zabezpieczeń udostępnianych przez usługę Azure IoT, zapoznaj [się z artykułem ochrona IoT od podstaw](iot-security-ground-up.md).
 
 ## <a name="general"></a>Ogólne
 
 | Zalecenie | Komentarze |
 |-|-|
-| Najnowsze informacje | Użyj najnowszej wersji obsługiwanych platform, języków programowania, protokołów i struktur. |
-| Zabezpieczanie klucze uwierzytelniania | Zabezpieczanie identyfikatorów urządzeń i ich klucze uwierzytelniania fizycznie po wdrożeniu. Pozwoli to uniknąć maskująca złośliwego urządzenia jako zarejestrowanego urządzenia. |
-| Korzystanie z zestawów SDK urządzeń, gdy jest to możliwe | Zestawy SDK urządzeń implementacji różnych funkcji zabezpieczeń, takie jak szyfrowanie, uwierzytelniania i tak dalej, aby pomóc w projektowaniu aplikacji urządzenia niezawodne i bezpieczne. Zobacz [poznawanie i używanie usługi Azure IoT Hub SDKs](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) Aby uzyskać więcej informacji. |
+| Bądź na bieżąco | Używaj najnowszych wersji obsługiwanych platform, języków programowania, protokołów i struktur. |
+| Zabezpieczanie kluczy uwierzytelniania | Przechowuj identyfikatory urządzeń i ich klucze uwierzytelniania fizycznie bezpiecznie po wdrożeniu. Pozwoli to uniknąć powstania złośliwego urządzenia jako zarejestrowanego urządzenia. |
+| Użyj zestawów SDK urządzeń, gdy jest to możliwe | Zestawy SDK urządzeń implementują różne funkcje zabezpieczeń, takie jak szyfrowanie, uwierzytelnianie i tak dalej, aby pomóc w opracowaniu niezawodnej i bezpiecznej aplikacji urządzenia. Aby uzyskać więcej informacji [, zobacz Omówienie zestawów SDK platformy IoT Hub Azure i ich używanie](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) . |
 
 
 ## <a name="identity-and-access-management"></a>Zarządzanie tożsamościami i dostępem
 
 | Zalecenie | Komentarze |
 |-|-|
-| Definiowanie kontroli dostępu dla koncentratora | [Zrozumienie i zdefiniuj typ dostępu](iot-security-deployment.md#securing-the-cloud) każdego składnika mają w rozwiązaniu IoT Hub, oparta na funkcjach. Dozwolone uprawnienia są *odczytu rejestru*, *RegistryReadWrite*, *ServiceConnect*, i *DeviceConnect*. Domyślne [współużytkowane zasady dostępu w usłudze IoT hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security#access-control-and-permissions) pomaga też zdefiniować uprawnienia dla każdego składnika, na podstawie jego roli. |
-| Definiowanie kontroli dostępu do usług zaplecza | Danych pozyskanych przez rozwiązania usługi IoT Hub mogą być używane przez inne usługi Azure takie jak [Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/), [usługi Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/), [usługi App Service](https://docs.microsoft.com/azure/app-service/), [Logic Apps](https://docs.microsoft.com/azure/logic-apps/), i [magazynu obiektów Blob](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction). Upewnij się zrozumieć i umożliwić odpowiednie uprawnienia dostępu, zgodnie z opisem w przypadku tych usług. |
+| Definiowanie kontroli dostępu do centrum | [Zrozumienie i Definiowanie typu dostępu](iot-security-deployment.md#securing-the-cloud) każdego składnika, który będzie znajdował się w rozwiązaniu IoT Hub, na podstawie jego funkcjonalności. Dozwolonymi uprawnieniami są *odczyty rejestru*, *RegistryReadWrite*, serviceconnect i *DeviceConnect*. Domyślne [zasady dostępu współdzielonego w usłudze IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security#access-control-and-permissions) mogą także ułatwić Definiowanie uprawnień dla każdego składnika na podstawie jego roli. |
+| Definiowanie kontroli dostępu dla usług zaplecza | Dane pozyskane przez rozwiązanie IoT Hub mogą być używane przez inne usługi platformy Azure, takie jak [Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/), [Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/), [App Service](https://docs.microsoft.com/azure/app-service/), [Logic Apps](https://docs.microsoft.com/azure/logic-apps/)i [Magazyn obiektów BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction). Upewnij się, że rozumiesz i zezwolisz na odpowiednie uprawnienia dostępu zgodnie z opisem dla tych usług. |
 
 
 ## <a name="data-protection"></a>Ochrona danych
 
 | Zalecenie | Komentarze |
 |-|-|
-| Bezpieczne uwierzytelnianie urządzeń | Zapewnienia bezpiecznej komunikacji między urządzeniami a Centrum IoT, przy użyciu [klucza unikatową tożsamość lub zabezpieczeń tokenu](iot-security-deployment.md#iot-hub-security-tokens), lub [certyfikat X.509 na urządzeniu](iot-security-deployment.md#x509-certificate-based-device-authentication) dla każdego urządzenia. Użyj odpowiedniej metody do [używać tokenów zabezpieczających, na podstawie wybranego protokołu (MQTT, AMQP lub HTTPS)](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security). |
-| Bezpieczna komunikacja urządzenia | Usługi IoT Hub zabezpiecza połączenia na urządzeniach przy użyciu standardu zabezpieczeń TLS (Transport Layer), obsługa wersji 1.2, 1.2 i 1.0. Użyj [protokołu TLS 1.2](https://tools.ietf.org/html/rfc5246) zapewnienie zapewnienia maksymalnego poziomu bezpieczeństwa. |
-| Bezpieczna komunikacja usług | IoT Hub udostępnia punktach końcowych pozwala na łączenie z usługami zaplecza, takich jak [usługi Azure Storage](/azure/storage/) lub [usługi Event Hubs](/azure/event-hubs) przy użyciu protokołu TLS i żaden punkt końcowy jest uwidaczniany w niezaszyfrowanego kanału. Po tych danych osiągnie tych usług zaplecza w celu przechowywania lub analizy, upewnij się stosować odpowiednich metod zabezpieczeń i szyfrowania za daną usługę i chronić poufne informacje w wewnętrznej bazie danych. |
+| Bezpieczne uwierzytelnianie urządzeń | Zapewnianie bezpiecznej komunikacji między urządzeniami i centrum IoT Hub przy użyciu unikatowego [klucza tożsamości lub tokenu zabezpieczającego](iot-security-deployment.md#iot-hub-security-tokens)lub [certyfikatu X. 509](iot-security-deployment.md#x509-certificate-based-device-authentication) dla każdego urządzenia. Użyj odpowiedniej metody, aby [użyć tokenów zabezpieczających na podstawie wybranego protokołu (MQTT, AMQP lub https)](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security). |
+| Zabezpieczanie komunikacji urządzeń | IoT Hub zabezpiecza połączenie z urządzeniami przy użyciu standardu Transport Layer Security (TLS), obsługując wersje 1,2 i 1,0. Aby zapewnić maksymalne bezpieczeństwo, użyj [protokołu TLS 1,2](https://tools.ietf.org/html/rfc5246) . |
+| Bezpieczna komunikacja z usługą | IoT Hub udostępnia punkty końcowe do nawiązywania połączeń z usługami zaplecza, takimi jak [usługa Azure Storage](/azure/storage/) , lub [Event Hubs](/azure/event-hubs) przy użyciu tylko protokołu TLS, a punkt końcowy nie jest ujawniany na nieszyfrowanym kanale. Gdy te dane osiągną te usługi zaplecza do przechowywania lub analizy, należy zastosować odpowiednie metody zabezpieczeń i szyfrowania dla tej usługi oraz chronić poufne informacje w zapleczu. |
 
 
 ## <a name="networking"></a>Networking
 
 | Zalecenie | Komentarze |
 |-|-|
-| Ochrona dostępu do urządzeń | Zachowywanie sprzętu porty urządzeń absolutnego minimum, aby zapobiec nieautoryzowanemu dostępowi. Ponadto tworzyć mechanizmy, aby zapobiec lub naruszeniem fizycznego urządzenia. Odczyt [najlepsze rozwiązania dotyczące zabezpieczeń IoT](iot-security-best-practices.md) Aby uzyskać szczegółowe informacje. |
-| Tworzenie bezpiecznego sprzętu | Włączenie funkcji zabezpieczeń, np. szyfrowany magazyn lub Trusted Platform Module (TPM), aby zwiększyć bezpieczeństwo urządzeń i infrastruktury. System operacyjny urządzenia i sterowniki uaktualniony do najnowszej wersji, a jeśli wystarczająca ilość miejsca, należy zainstalować przed wirusami i złośliwym możliwości. Odczyt [architekturę zabezpieczeń IoT](iot-security-architecture.md) Aby zrozumieć, jak może to ułatwić, Eliminuj zagrożenia bezpieczeństwa kilka. |
+| Ochrona dostępu do urządzeń | Aby uniknąć niepożądanego dostępu, przechowuj porty sprzętowe na urządzeniach jako minimum systemu operacyjnego. Ponadto mechanizmy kompilacji, aby zapobiec lub wykryć fizyczne manipulowanie urządzeniem. Przeczytaj temat [najlepsze rozwiązania z zakresu zabezpieczeń IoT](iot-security-best-practices.md) , aby uzyskać szczegółowe informacje. |
+| Tworzenie bezpiecznego sprzętu | Włączenie funkcji zabezpieczeń, takich jak zaszyfrowany magazyn lub moduł TPM (TPM), aby zapewnić lepszą ochronę urządzeń i infrastruktury. Zadbaj, aby system operacyjny i sterowniki sterownika były uaktualnione do najnowszych wersji, a jeśli miejsce zezwala, zainstaluj program antywirusowy i oprogramowanie chroniące przed złośliwym kodem. Przeczytaj temat [Architektura zabezpieczeń IoT](iot-security-architecture.md) , aby zrozumieć, jak może to pomóc w eliminowaniu kilku zagrożeń bezpieczeństwa. |
 
 
 ## <a name="monitoring"></a>Monitorowanie
 
 | Zalecenie | Komentarze |
 |-|-|
-| Monitorowanie nieautoryzowanego dostępu do urządzenia |  Monitorowanie naruszenia zabezpieczeń lub naruszeniem fizyczne urządzenia lub jego portów, należy użyć funkcji rejestrowania system operacyjny urządzenia. |
-| Monitorowanie rozwiązania IoT z chmury | Monitorowanie ogólnej kondycji usługi IoT Hub rozwiązania przy użyciu [metryk w usłudze Azure Monitor](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics). |
-| Konfigurowanie diagnostyki | Ściśle Obejrzyj operacji, rejestrowanie zdarzeń w rozwiązaniu, a następnie wysyłając dzienników diagnostycznych do usługi Azure Monitor, aby uzyskać wgląd w wydajność. Odczyt [monitorowanie i diagnozowanie problemów w usłudze IoT hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitor-resource-health) Aby uzyskać więcej informacji. |
+| Monitoruj nieautoryzowany dostęp do urządzeń |  Funkcja rejestrowania systemu operacyjnego urządzenia służy do monitorowania wszelkich naruszeń zabezpieczeń lub fizycznego manipulowania urządzeniem lub jego portów. |
+| Monitoruj rozwiązanie IoT w chmurze | Monitoruj ogólną kondycję rozwiązania IoT Hub przy użyciu [metryk w Azure monitor](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics). |
+| Konfigurowanie diagnostyki | Uważnie Monitoruj operacje przez rejestrowanie zdarzeń w rozwiązaniu, a następnie wysyłanie dzienników diagnostycznych do Azure Monitor, aby uzyskać wgląd w wydajność. Aby uzyskać więcej informacji, przeczytaj artykuł [monitorowanie i diagnozowanie problemów w centrum IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitor-resource-health) . |
 
 ## <a name="next-steps"></a>Następne kroki
 
-W przypadku zaawansowanych scenariuszy dotyczących usługi Azure IoT może być konieczne należy wziąć pod uwagę dodatkowe wymagania dotyczące zabezpieczeń. Zobacz [architekturę zabezpieczeń IoT](iot-security-architecture.md) Aby uzyskać więcej wskazówek.
+W przypadku zaawansowanych scenariuszy dotyczących usługi Azure IoT konieczne może być uwzględnienie dodatkowych wymagań w zakresie zabezpieczeń. Zobacz [Architektura zabezpieczeń IoT](iot-security-architecture.md) , aby uzyskać więcej wskazówek.
 

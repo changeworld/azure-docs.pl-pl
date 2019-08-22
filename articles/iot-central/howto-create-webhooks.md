@@ -1,6 +1,6 @@
 ---
-title: Tworzenie elementów webhook w regułach w usłudze Azure IoT Central | Dokumentacja firmy Microsoft
-description: Tworzenie elementów webhook w usłudze Azure IoT Central automatycznie powiadamiać innych aplikacji, gdy wyzwolenie reguły.
+title: Tworzenie elementów webhook dla reguł na platformie Azure IoT Central | Microsoft Docs
+description: Tworzenie elementów webhook w usłudze Azure IoT Central w celu automatycznego powiadamiania innych aplikacji o pożaru reguł.
 author: viv-liu
 ms.author: viviali
 ms.date: 06/16/2019
@@ -8,40 +8,42 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: fdeefdc1ec5372d6ac17f0f985ee0c50ce902e56
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 508e8b4b3a909e87f538f67b1ad9a5efdbcd9551
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165321"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876037"
 ---
-# <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>Utwórz akcje elementu webhook na reguły w usłudze Azure IoT Central
+# <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>Tworzenie akcji elementu webhook dla reguł na platformie Azure IoT Central
 
 *Ten temat dotyczy konstruktorów i administratorów.*
 
-Elementy Webhook pozwalają połączyć aplikację IoT Central do innych aplikacji i usług, zdalne monitorowanie i powiadomienia. Elementy Webhook powiadamiają automatycznie, inne aplikacje i usługi, z którymi się łączysz zawsze wtedy, gdy reguła jest wyzwalana w swojej aplikacji IoT Central. Aplikację IoT Central wysyła żądanie POST do punktu końcowego HTTP innej aplikacji, przy każdym wyzwoleniu reguły. Ładunek zawiera szczegóły dotyczące urządzenia i wyzwalacza reguły.
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
+
+Elementy webhook umożliwiają łączenie aplikacji IoT Central z innymi aplikacjami i usługami na potrzeby zdalnego monitorowania i powiadomień. Elementy webhook automatycznie powiadamiają inne aplikacje i usługi, które są połączone przy każdym wyzwoleniu reguły w aplikacji IoT Central. Aplikacja IoT Central wysyła żądanie POST do punktu końcowego HTTP innej aplikacji przy każdym wyzwoleniu reguły. Ładunek zawiera szczegóły urządzenia i szczegóły wyzwalacza reguł.
 
 ## <a name="set-up-the-webhook"></a>Konfigurowanie elementu webhook
 
-W tym przykładzie połączenie z narzędzia RequestBin powiadomieniom reguły wyzwalać przy użyciu elementów webhook.
+W tym przykładzie nawiążesz połączenie z usługą RequestBin, aby otrzymywać powiadomienia, gdy reguły wyzwalają korzystanie z elementów webhook.
 
 1. Otwórz [RequestBin](https://requestbin.net/).
 
-1. Utwórz nowe narzędzia RequestBin i kopiowania **URL pojemnika**.
+1. Utwórz nowy RequestBin i skopiuj **adres URL bin**.
 
-1. Tworzenie [reguły telemetrii](howto-create-telemetry-rules.md) lub [reguły zdarzenia](howto-create-event-rules.md). Zapisać regułę, a następnie dodaj nową akcję.
+1. Utwórz [regułę](howto-create-telemetry-rules.md) telemetrii lub [regułę zdarzenia](howto-create-event-rules.md). Zapisz regułę i Dodaj nową akcję.
 
-    ![Ekran tworzenia elementu Webhook](media/howto-create-webhooks/webhookcreate.png)
+    ![Ekran tworzenia elementu webhook](media/howto-create-webhooks/webhookcreate.png)
 
-1. Wybierz akcję elementu webhook i podać nazwę wyświetlaną i wklej adres URL pojemnika, jako adres URL wywołania zwrotnego.
+1. Wybierz akcję elementu webhook i podaj nazwę wyświetlaną, a następnie wklej adres URL bin jako adres URL wywołania zwrotnego.
 
-1. Zapisać reguły.
+1. Zapisz regułę.
 
-Po wyzwoleniu reguły, spowoduje to wyświetlenie nowego żądania są wyświetlane w RequestBin.
+Teraz, gdy reguła zostanie wyzwolona, zobaczysz nowe żądanie w RequestBin.
 
-## <a name="payload"></a>ładunek
+## <a name="payload"></a>Ładunek
 
-Po wyzwoleniu reguły żądanie HTTP POST wykonywane, aby adres URL wywołania zwrotnego zawierającego ładunek json z pomiarów, urządzenia, reguły i szczegóły dotyczące aplikacji. Reguły telemetrii ładunek wygląda podobnie do poniższego:
+Gdy reguła jest wyzwalana, żądanie HTTP POST jest wykonywane w adresie URL wywołania zwrotnego zawierającego ładunek JSON z danymi pomiarów, urządzeń, reguł i aplikacji. Dla reguły telemetrii ładunek wygląda następująco:
 
 ```json
 {
@@ -91,10 +93,10 @@ Po wyzwoleniu reguły żądanie HTTP POST wykonywane, aby adres URL wywołania z
 
 ## <a name="known-limitations"></a>Znane ograniczenia
 
-Obecnie nie ma sposobu anulowania subskrypcji/subskrypcji z tych elementów webhook przy użyciu interfejsu API.
+Obecnie nie ma możliwości programistycznego subskrybowania/anulowania subskrypcji z tych elementów webhook za pośrednictwem interfejsu API.
 
-Jeśli masz pomysły dotyczące poprawy tę funkcję, opublikuj swoje sugestie naszych [Uservoice forum](https://feedback.azure.com/forums/911455-azure-iot-central).
+Jeśli masz pomysły dotyczące ulepszania tej funkcji, Opublikuj swoje sugestie na naszym [forum UserVoice](https://feedback.azure.com/forums/911455-azure-iot-central).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Skoro już wiesz, jak konfigurowanie i używanie elementów webhook, sugerowane następnym krokiem jest Eksplorowanie [tworzenia przepływów pracy w programie Microsoft Flow](howto-add-microsoft-flow.md).
+Teraz, gdy już wiesz, jak skonfigurować elementy webhook i korzystać z nich, sugerowanym następnym krokiem jest Eksplorowanie [przepływów pracy w Microsoft Flow](howto-add-microsoft-flow.md).

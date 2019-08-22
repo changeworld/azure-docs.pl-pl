@@ -1,21 +1,21 @@
 ---
-title: Integruj wymianę usługi API REST w trakcie podróży użytkownika Azure Active Directory B2C | Microsoft Docs
-description: Integruj wymiany z usługą interfejsu API REST w trakcie Azure AD B2C użytkownika podczas weryfikacji danych wejściowych użytkownika.
+title: Integruj wymianę oświadczeń interfejsu API REST w trakcie podróży użytkownika Azure Active Directory B2C
+description: Integruj wymianę oświadczeń interfejsu API REST w trakcie Azure AD B2C użytkownika podczas weryfikacji danych wejściowych użytkownika.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/30/2017
+ms.date: 08/21/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ed26c4d90738e10f3eb5a9a486cd2734090abd0e
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 49cd049c56e0c1d80318f9323aefe2d128774f3f
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227252"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69645123"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>Integruj wymianę oświadczeń interfejsu API REST w trakcie Azure AD B2C użytkownika w trakcie sprawdzania poprawności danych wejściowych użytkownika
 
@@ -24,6 +24,7 @@ ms.locfileid: "68227252"
 Korzystając z struktury obsługi tożsamości, która jest zależna od Azure Active Directory B2C (Azure AD B2C), można zintegrować z interfejsem API RESTful w podróży użytkownika. W tym instruktażu dowiesz się, jak Azure AD B2C współdziała z usługami .NET Framework RESTful Services (Web API).
 
 ## <a name="introduction"></a>Wprowadzenie
+
 Za pomocą Azure AD B2C można dodać własną logikę biznesową do podróży użytkownika, wywołując własną usługę RESTful. Struktura środowiska tożsamości wysyła dane do usługi RESTful w kolekcji *oświadczeń wejściowych* i odbiera dane z powrotem z RESTful w kolekcji *oświadczeń wyjściowych* . Dzięki integracji z usługą RESTful można:
 
 * **Sprawdź poprawność danych wejściowych użytkownika**: Ta akcja uniemożliwia utrwalanie nieprawidłowych danych w usłudze Azure AD. Jeśli wartość użytkownika jest nieprawidłowa, usługa RESTful zwraca komunikat o błędzie, który nakazuje użytkownikowi dostarczenie wpisu. Na przykład możesz sprawdzić, czy w bazie danych klienta istnieje adres e-mail podany przez użytkownika.
@@ -34,59 +35,60 @@ Za pomocą Azure AD B2C można dodać własną logikę biznesową do podróży u
 Integrację z usługami RESTful można zaprojektować w następujący sposób:
 
 * **Profil techniczny weryfikacji**: Wywołanie usługi RESTful odbywa się w ramach weryfikacji profilu technicznego określonego profilu technicznego. Profil techniczny weryfikacji weryfikuje dane dostarczone przez użytkownika przed przejściem użytkownika do przodu. Profil techniczny weryfikacji umożliwia:
-   * Wyślij oświadczenia wejściowe.
-   * Sprawdź poprawność oświadczeń wejściowych i Zgłoś niestandardowe komunikaty o błędach.
-   * Wyślij wychodzące oświadczenia wyjściowe.
+  * Wyślij oświadczenia wejściowe.
+  * Sprawdź poprawność oświadczeń wejściowych i Zgłoś niestandardowe komunikaty o błędach.
+  * Wyślij wychodzące oświadczenia wyjściowe.
 
 * **Wymiana oświadczeń**: Ten projekt jest podobny do sprawdzania poprawności profilu technicznego, ale występuje w ramach kroku aranżacji. Ta definicja jest ograniczona do:
-   * Wyślij oświadczenia wejściowe.
-   * Wyślij wychodzące oświadczenia wyjściowe.
+  * Wyślij oświadczenia wejściowe.
+  * Wyślij wychodzące oświadczenia wyjściowe.
 
 ## <a name="restful-walkthrough"></a>Przewodnik po RESTful
+
 W tym instruktażu tworzysz .NET Framework internetowy interfejs API, który sprawdza poprawność danych wejściowych użytkownika i udostępnia numer lojalnościowy użytkownika. Na przykład aplikacja może udzielić dostępu do korzyści z pakietu *Platinum* na podstawie numeru lojalnościowego.
 
 Omówienie:
-* Utwórz usługę RESTful (.NET Framework Web API).
-* Użyj usługi RESTful w podróży użytkownika.
-* Wyślij oświadczenia wejściowe i przeczytaj je w kodzie.
-* Sprawdź poprawność nazwy użytkownika.
-* Wyślij do tyłu numer lojalnościowy.
-* Dodaj numer lojalności do tokenu sieci Web JSON (JWT).
+
+* Opracowywanie usługi RESTful (.NET Framework Web API)
+* Korzystanie z usługi RESTful w podróży użytkownika
+* Wysyłanie oświadczeń wejściowych i odczytywanie ich w kodzie
+* Weryfikowanie imienia użytkownika
+* Wyślij do tyłu numer lojalnościowy
+* Dodawanie numeru lojalnościowego do tokenu sieci Web JSON (JWT)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 Wykonaj kroki opisane w artykule [wprowadzenie do zasad niestandardowych](active-directory-b2c-get-started-custom.md) .
 
 ## <a name="step-1-create-an-aspnet-web-api"></a>Krok 1: Tworzenie interfejsu API sieci Web ASP.NET
 
 1. W programie Visual Studio Utwórz projekt, wybierając pozycję **plik** > **Nowy** > **projekt**.
-
-2. W oknie **Nowy projekt**  > wybierz pozycję **Visual C#**  **Web** > **ASP.NET Web Application (.NET Framework)** .
-
-3. W polu **Nazwa** wpisz nazwę aplikacji (na przykład *contoso. AADB2C. API*), a następnie wybierz **przycisk OK**.
+1. W oknie **Nowy projekt**  > wybierz pozycję **Visual C#**  **Web** > **ASP.NET Web Application (.NET Framework)** .
+1. W polu **Nazwa** wpisz nazwę aplikacji (na przykład *contoso. AADB2C. API*), a następnie wybierz **przycisk OK**.
 
     ![Tworzenie nowego projektu programu Visual Studio w programie Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-create-project.png)
 
-4. W oknie **Nowa aplikacja sieci web ASP.NET** wybierz szablon internetowego **interfejsu API** lub **aplikacji interfejsu API platformy Azure** .
+1. W oknie **Nowa aplikacja sieci web ASP.NET** wybierz szablon internetowego **interfejsu API** lub **aplikacji interfejsu API platformy Azure** .
 
     ![Wybieranie szablonu internetowego interfejsu API w programie Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-select-web-api.png)
 
-5. Upewnij się, że uwierzytelnianie jest ustawione na wartość **bez uwierzytelniania**.
-
-6. Wybierz **OK** do tworzenia projektu.
+1. Upewnij się, że uwierzytelnianie jest ustawione na wartość **bez uwierzytelniania**.
+1. Wybierz **OK** do tworzenia projektu.
 
 ## <a name="step-2-prepare-the-rest-api-endpoint"></a>Krok 2: Przygotowywanie punktu końcowego interfejsu API REST
 
 ### <a name="step-21-add-data-models"></a>Krok 2.1. Dodaj modele danych
+
 Modele reprezentują oświadczenia wejściowe i dane wyjściowe oświadczeń w usłudze RESTful. Kod odczytuje dane wejściowe przez deserializacji modelu oświadczeń wejściowych z ciągu JSON na C# obiekt (model). Interfejs API sieci Web ASP.NET automatycznie deserializacji wynikowego modelu oświadczeń z powrotem do formatu JSON, a następnie zapisuje zserializowane dane do treści komunikatu odpowiedzi HTTP.
 
 Utwórz model reprezentujący oświadczenia wejściowe, wykonując następujące czynności:
 
 1. Jeśli Eksplorator rozwiązań nie jest jeszcze otwarty, wybierz pozycję **Wyświetl** > **Eksplorator rozwiązań**.
-2. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy folder **Modele**, wybierz polecenie **Dodaj**, a następnie kliknij pozycję **Klasa**.
+1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy folder **Modele**, wybierz polecenie **Dodaj**, a następnie kliknij pozycję **Klasa**.
 
     ![Element menu Dodaj klasę wybraną w programie Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-model.png)
 
-3. Nazwij klasę `InputClaimsModel`, a następnie Dodaj następujące właściwości `InputClaimsModel` do klasy:
+1. Nazwij klasę `InputClaimsModel`, a następnie Dodaj następujące właściwości `InputClaimsModel` do klasy:
 
     ```csharp
     namespace Contoso.AADB2C.API.Models
@@ -100,7 +102,7 @@ Utwórz model reprezentujący oświadczenia wejściowe, wykonując następujące
     }
     ```
 
-4. Utwórz nowy model, `OutputClaimsModel`a następnie Dodaj następujące właściwości `OutputClaimsModel` do klasy:
+1. Utwórz nowy model, `OutputClaimsModel`a następnie Dodaj następujące właściwości `OutputClaimsModel` do klasy:
 
     ```csharp
     namespace Contoso.AADB2C.API.Models
@@ -112,7 +114,7 @@ Utwórz model reprezentujący oświadczenia wejściowe, wykonując następujące
     }
     ```
 
-5. Utwórz jeszcze jeden model `B2CResponseContent`, który służy do generowania komunikatów o błędach sprawdzania poprawności danych wejściowych. Dodaj następujące właściwości do `B2CResponseContent` klasy, podaj brakujące odwołania, a następnie Zapisz plik:
+1. Utwórz jeszcze jeden model `B2CResponseContent`, który służy do generowania komunikatów o błędach sprawdzania poprawności danych wejściowych. Dodaj następujące właściwości do `B2CResponseContent` klasy, podaj brakujące odwołania, a następnie Zapisz plik:
 
     ```csharp
     namespace Contoso.AADB2C.API.Models
@@ -134,23 +136,24 @@ Utwórz model reprezentujący oświadczenia wejściowe, wykonując następujące
     ```
 
 ### <a name="step-22-add-a-controller"></a>Krok 2.2. Dodawanie kontrolera
+
 W internetowym interfejsie API _kontroler_ jest obiektem, który obsługuje żądania HTTP. Kontroler zwraca oświadczenia wyjściowe lub, jeśli imię nie jest prawidłowe, wygeneruje komunikat o błędzie protokołu HTTP powodującego konflikt.
 
 1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy folder **Kontrolery**, wybierz polecenie **Dodaj**, a następnie kliknij pozycję **Kontroler**.
 
     ![Dodawanie nowego kontrolera w programie Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-1.png)
 
-2. W oknie **Dodawanie szkieletu** wybierz pozycję **kontroler interfejsu API sieci Web — pusty**, a następnie wybierz pozycję **Dodaj**.
+1. W oknie **Dodawanie szkieletu** wybierz pozycję **kontroler interfejsu API sieci Web — pusty**, a następnie wybierz pozycję **Dodaj**.
 
     ![Wybieranie kontrolera Web API 2 — pusty w programie Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-2.png)
 
-3. W oknie **Dodawanie kontrolera** Nadaj nazwę kontrolerowi **IdentityController**, a następnie wybierz pozycję **Dodaj**.
+1. W oknie **Dodawanie kontrolera** Nadaj nazwę kontrolerowi **IdentityController**, a następnie wybierz pozycję **Dodaj**.
 
     ![Wprowadzanie nazwy kontrolera w programie Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-3.png)
 
     Tworzenie szkieletu tworzy plik o nazwie *IdentityController.cs* w folderze *controllers* .
 
-4. Jeśli plik *IdentityController.cs* nie jest jeszcze otwarty, kliknij go dwukrotnie, a następnie zastąp kod w pliku następującym kodem:
+1. Jeśli plik *IdentityController.cs* nie jest jeszcze otwarty, kliknij go dwukrotnie, a następnie zastąp kod w pliku następującym kodem:
 
     ```csharp
     using Contoso.AADB2C.API.Models;
@@ -204,29 +207,31 @@ W internetowym interfejsie API _kontroler_ jest obiektem, który obsługuje żą
     ```
 
 ## <a name="step-3-publish-the-project-to-azure"></a>Krok 3: Publikowanie projektu na platformie Azure
+
 1. W Eksplorator rozwiązań kliknij prawym przyciskiem myszy projekt **contoso. AADB2C. API** , a następnie wybierz pozycję **Publikuj**.
 
     ![Publikowanie w usłudze Microsoft Azure App Service za pomocą programu Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-1.png)
 
-2. W oknie **Publikowanie** wybierz pozycję **Microsoft Azure App Service**, a następnie wybierz pozycję **Publikuj**.
+1. W oknie **Publikowanie** wybierz pozycję **Microsoft Azure App Service**, a następnie wybierz pozycję **Publikuj**.
 
     ![Utwórz nowe App Service Microsoft Azure w programie Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-2.png)
 
     Zostanie otwarte okno **tworzenia App Service** . W tym celu należy utworzyć wszystkie zasoby platformy Azure niezbędne do uruchomienia aplikacji sieci Web ASP.NET na platformie Azure.
 
-    > [!NOTE]
-    >Aby uzyskać więcej informacji o sposobach publikowania, zobacz [Tworzenie aplikacji sieci web ASP.NET na platformie Azure](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet).
+    > [!TIP]
+    > Aby uzyskać więcej informacji o sposobach publikowania, zobacz [Tworzenie aplikacji sieci web ASP.NET na platformie Azure](../app-service/app-service-web-get-started-dotnet-framework.md).
 
-3. W polu **Nazwa aplikacji sieci Web** wpisz unikatową nazwę aplikacji (prawidłowe znaki to a-z, 0-9 i łączników (-). Adres URL aplikacji sieci Web to http://< APP_NAME >. azurewebsites. NET, gdzie *APP_NAME* to nazwa aplikacji sieci Web. Możesz zaakceptować automatycznie wygenerowaną nazwę, która jest unikatowa.
+1. W polu **Nazwa aplikacji sieci Web** wpisz unikatową nazwę aplikacji (prawidłowe znaki to a-z, 0-9 i łączników (-). Adres URL aplikacji sieci Web to http://< APP_NAME >. azurewebsites. NET, gdzie *APP_NAME* to nazwa aplikacji sieci Web. Możesz zaakceptować automatycznie wygenerowaną nazwę, która jest unikatowa.
 
     ![Konfigurowanie właściwości App Service](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-3.png)
 
-4. Aby rozpocząć tworzenie zasobów platformy Azure, wybierz pozycję **Utwórz**.
+1. Aby rozpocząć tworzenie zasobów platformy Azure, wybierz pozycję **Utwórz**.
     Po utworzeniu aplikacji sieci Web ASP.NET Kreator opublikuje ją na platformie Azure, a następnie uruchomi aplikację w domyślnej przeglądarce.
 
-6. Skopiuj adres URL aplikacji sieci Web.
+1. Skopiuj adres URL aplikacji sieci Web.
 
 ## <a name="step-4-add-the-new-loyaltynumber-claim-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>Krok 4: Dodaj nowe `loyaltyNumber` zastrzeżenie do schematu pliku TrustFrameworkExtensions. XML
+
 Nie zdefiniowano jeszcze żądania w naszym schemacie. `loyaltyNumber` Dodaj definicję w obrębie `<BuildingBlocks>` elementu, którą można znaleźć na początku pliku *TrustFrameworkExtensions. XML* .
 
 ```xml
@@ -242,6 +247,7 @@ Nie zdefiniowano jeszcze żądania w naszym schemacie. `loyaltyNumber` Dodaj def
 ```
 
 ## <a name="step-5-add-a-claims-provider"></a>Krok 5. Dodawanie dostawcy oświadczeń
+
 Każdy dostawca oświadczeń musi mieć co najmniej jeden profil techniczny, który określa punkty końcowe i protokoły wymagane do komunikowania się z dostawcą oświadczeń.
 
 Dostawca oświadczeń może mieć wiele profilów technicznych z różnych powodów. Można na przykład zdefiniować wiele profilów technicznych, ponieważ dostawca oświadczeń obsługuje wiele protokołów, punkty końcowe mogą mieć różne możliwości, a wydania mogą zawierać oświadczenia, które mają różne poziomy gwarancji. Możliwe jest zaakceptowanie poufnych oświadczeń w jednej podróży użytkownika, ale nie w innej.
@@ -269,8 +275,10 @@ Znajdź węzeł, a następnie Dodaj następujący fragment kodu XML `<ClaimsProv
       <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
         <Item Key="ServiceUrl">https://your-app-name.azurewebsites.NET/api/identity/signup</Item>
-        <Item Key="AuthenticationType">None</Item>
         <Item Key="SendClaimsIn">Body</Item>
+        <!-- Set AuthenticationType to Basic or ClientCertificate in production environments -->
+        <Item Key="AuthenticationType">None</Item>
+        <!-- REMOVE the following line in production environments -->
         <Item Key="AllowInsecureAuthInProduction">true</Item>
       </Metadata>
       <InputClaims>
@@ -297,7 +305,10 @@ Znajdź węzeł, a następnie Dodaj następujący fragment kodu XML `<ClaimsProv
 </ClaimsProvider>
 ```
 
+Powyższe `AuthenticationType` Komentarze i `AllowInsecureAuthInProduction` określają zmiany, które należy wykonać po przejściu do środowiska produkcyjnego. Aby dowiedzieć się, jak zabezpieczyć interfejsy API usługi RESTful w środowisku produkcyjnym, zobacz [Secure RESTful interfejsy API z uwierzytelnianiem Basic](active-directory-b2c-custom-rest-api-netfw-secure-basic.md) i [Secure RESTful API z uwierzytelnianiem certyfikatu](active-directory-b2c-custom-rest-api-netfw-secure-cert.md).
+
 ## <a name="step-6-add-the-loyaltynumber-claim-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>Krok 6: `loyaltyNumber` Dodaj zastrzeżenie do pliku zasad jednostki uzależnionej, aby zgłoszenie zostało wysłane do aplikacji
+
 Edytuj plik jednostki uzależnionej *SignUpOrSignIn. XML* i zmodyfikuj element profilu technicznym ID = "PolicyProfile", aby dodać następujące elementy: `<OutputClaim ClaimTypeReferenceId="loyaltyNumber" />`.
 
 Po dodaniu nowego żądania kod jednostki uzależnionej będzie wyglądać następująco:
@@ -327,19 +338,20 @@ Po dodaniu nowego żądania kod jednostki uzależnionej będzie wyglądać nast�
 
 1. W [Azure Portal](https://portal.azure.com)przejdź do [kontekstu Azure AD B2C dzierżawy](active-directory-b2c-navigate-to-b2c-context.md), a następnie otwórz **Azure AD B2C**.
 
-2. Wybierz pozycję **platforma obsługi tożsamości**.
+1. Wybierz pozycję **platforma obsługi tożsamości**.
 
-3. Otwórz **wszystkie zasady**.
+1. Otwórz **wszystkie zasady**.
 
-4. Wybierz pozycję **Przekaż zasady**.
+1. Wybierz pozycję **Przekaż zasady**.
 
-5. Zaznacz pole wyboru **Zastąp zasady, jeśli istnieje** .
+1. Zaznacz pole wyboru **Zastąp zasady, jeśli istnieje** .
 
-6. Przekaż plik TrustFrameworkExtensions. XML i upewnij się, że przeszedł sprawdzanie poprawności.
+1. Przekaż plik TrustFrameworkExtensions. XML i upewnij się, że przeszedł sprawdzanie poprawności.
 
-7. Powtórz poprzedni krok przy użyciu pliku SignUpOrSignIn. XML.
+1. Powtórz poprzedni krok przy użyciu pliku SignUpOrSignIn. XML.
 
 ## <a name="step-8-test-the-custom-policy-by-using-run-now"></a>Krok 8: Testowanie zasad niestandardowych za pomocą polecenia Uruchom teraz
+
 1. Wybierz pozycję **Azure AD B2C ustawienia**, a następnie przejdź do **struktury obsługi tożsamości**.
 
     > [!NOTE]
@@ -357,7 +369,7 @@ Po dodaniu nowego żądania kod jednostki uzależnionej będzie wyglądać nast�
 4. W podanym polu **Nazwa** wpisz nazwę (inną niż "test").
     Azure AD B2C rejestruje użytkownika, a następnie wysyła loyaltyNumber do aplikacji. Zanotuj liczbę z tego tokenu JWT.
 
-```
+```JSON
 {
   "typ": "JWT",
   "alg": "RS256",
@@ -379,9 +391,16 @@ Po dodaniu nowego żądania kod jednostki uzależnionej będzie wyglądać nast�
 ```
 
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>Obowiązkowe Pobieranie kompletnych plików zasad i kodu
+
 * Po ukończeniu przewodnika [wprowadzenie do zasad niestandardowych](active-directory-b2c-get-started-custom.md) zalecamy utworzenie scenariusza przy użyciu własnych niestandardowych plików zasad. W odniesieniu do Twojej dokumentacji udostępniono [przykładowe pliki zasad](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw).
+
 * Możesz pobrać kompletny kod z przykładowego [rozwiązania programu Visual Studio, aby uzyskać odwołanie](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/).
 
 ## <a name="next-steps"></a>Następne kroki
+
+Następnym zadaniem jest zabezpieczenie interfejsu API usługi RESTful przy użyciu uwierzytelniania opartego na certyfikatach podstawowych lub klienckich. Aby dowiedzieć się, jak zabezpieczyć interfejsy API, zobacz następujące artykuły:
+
 * [Zabezpieczanie interfejsu API usługi RESTful przy użyciu uwierzytelniania podstawowego (nazwa użytkownika i hasło)](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
 * [Zabezpieczanie interfejsu API usługi RESTful przy użyciu certyfikatów klienta](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
+
+Aby uzyskać informacje o wszystkich elementach dostępnych w profilu technicznym RESTful, [Zobacz temat dokumentacja: Profil](restful-technical-profile.md)techniczny RESTful.

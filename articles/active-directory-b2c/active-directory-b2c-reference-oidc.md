@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 08/22/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 36efdb7db57d3acfa7384d904e9be8faad4c6534
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 35abb84f92ed9a7295c45afc69b673a3be46be15
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622072"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874132"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Logowanie w sieci Web za pomocą OpenID Connect Connect in Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ Azure AD B2C rozszerza standardowy protokół połączenia OpenID Connect, aby w
 
 Gdy aplikacja sieci Web wymaga uwierzytelnienia użytkownika i uruchomienia przepływu użytkownika, może kierować użytkownika do `/authorize` punktu końcowego. Użytkownik wykonuje akcję w zależności od przepływu użytkownika.
 
-W tym żądaniu klient wskazuje uprawnienia, które muszą uzyskać od użytkownika w `scope` parametrze i określa przepływ użytkownika do uruchomienia. Trzy przykłady są podane w poniższych sekcjach (z podziałami wierszy na potrzeby czytelności), z których każdy korzysta z innego przepływu użytkownika. Aby poznać sposób działania poszczególnych żądań, spróbuj wkleić żądanie do przeglądarki i uruchomić ją. Możesz zamienić `fabrikamb2c` na nazwę dzierżawy, jeśli istnieje, i utworzyć przepływ użytkownika. Należy również zamienić `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6`. Zastąp ten identyfikator klienta IDENTYFIKATORem aplikacji utworzonej przez Ciebie rejestracji aplikacji. Na przykład`{policy}` `b2c_1_sign_in`Zmień nazwę zasad () na nazwę zasad, która znajduje się w dzierżawie.
+W tym żądaniu klient wskazuje uprawnienia, które muszą uzyskać od użytkownika w `scope` parametrze i określa przepływ użytkownika do uruchomienia. Aby uzyskać informacje na temat sposobu działania żądania, spróbuj wkleić żądanie do przeglądarki i uruchomić ją. Zamień `{tenant}` na nazwę dzierżawy. Zamień `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` na identyfikator aplikacji aplikacji, która została wcześniej zarejestrowana w dzierżawie. Na przykład`{policy}` `b2c_1_sign_in`Zmień nazwę zasad () na nazwę zasad, która znajduje się w dzierżawie.
 
 ```HTTP
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/authorize?
@@ -48,7 +48,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | Parametr | Wymagane | Opis |
 | --------- | -------- | ----------- |
 | dzierżaw | Tak | Nazwa dzierżawy Azure AD B2C |
-| zasad | Tak | Przepływ użytkownika, który jest uruchamiany. Jest to nazwa przepływu użytkownika utworzonego w dzierżawie Azure AD B2C. Nazwa przepływu użytkownika powinna zaczynać `b2c_1_`się od. Na przykład: `b2c_1_sign_in`, `b2c_1_sign_up`, lub `b2c_1_edit_profile`. |
+| zasad | Tak | Przepływ użytkownika do uruchomienia. Określ nazwę przepływu użytkownika utworzonego w dzierżawie Azure AD B2C. Na przykład: `b2c_1_sign_in`, `b2c_1_sign_up`, lub `b2c_1_edit_profile`. |
 | client_id | Tak | Identyfikator aplikacji, który [Azure Portal](https://portal.azure.com/) przypisany do aplikacji. |
 | nonce | Tak | Wartość dołączona do żądania (wygenerowanego przez aplikację), która jest uwzględniona w tokenie zwracanego identyfikatora jako jako element Claim. Aplikacja może następnie zweryfikować tę wartość, aby zmniejszyć ataki metodą powtórzeń tokenu. Wartość jest zazwyczaj losowym unikatowym ciągiem, który może służyć do identyfikowania pochodzenia żądania. |
 | response_type | Tak | Musi zawierać token identyfikatora dla OpenID Connect Connect. Jeśli aplikacja sieci Web wymaga również tokenów do wywoływania internetowego interfejsu API, można użyć `code+id_token`programu. |
@@ -274,14 +274,14 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 | --------- | -------- | ----------- |
 | dzierżaw | Tak | Nazwa dzierżawy Azure AD B2C |
 | zasad | Tak | Przepływ użytkownika, którego chcesz użyć do podpisania użytkownika z poziomu aplikacji. |
-| id_token_hint| Nie | Wcześniej wystawiony token ID do przekazania do punktu końcowego wylogowania jako wskazówkę dotyczącą bieżącej uwierzytelnionej sesji użytkownika końcowego z klientem. |
-| post_logout_redirect_uri | Nie | Adres URL, do którego użytkownik powinien zostać przekierowany po pomyślnym wylogowaniu. Jeśli ta wartość nie jest uwzględniona, Azure AD B2C pokazuje, że użytkownik jest komunikatem ogólnym. |
+| id_token_hint| Nie | Wcześniej wystawiony token ID do przekazania do punktu końcowego wylogowania jako wskazówkę dotyczącą bieżącej uwierzytelnionej sesji użytkownika końcowego z klientem. `id_token_hint` Zapewnia, `post_logout_redirect_uri` że jest to zarejestrowany adres URL odpowiedzi w ustawieniach aplikacji Azure AD B2C. |
+| post_logout_redirect_uri | Nie | Adres URL, do którego użytkownik powinien zostać przekierowany po pomyślnym wylogowaniu. Jeśli ta wartość nie jest uwzględniona, Azure AD B2C pokazuje, że użytkownik jest komunikatem ogólnym. O ile nie podano `id_token_hint`, nie należy rejestrować tego adresu URL jako adresu URL odpowiedzi w ustawieniach aplikacji Azure AD B2C. |
 | state | Nie | `state` Jeśli parametr zostanie uwzględniony w żądaniu, ta sama wartość powinna pojawić się w odpowiedzi. Aplikacja powinna sprawdzić, czy `state` wartości w żądaniu i odpowiedzi są identyczne. |
 
-### <a name="require-id-token-hint-in-logout-request"></a>Wymagaj wskazówki tokenu identyfikatora w żądaniu wylogowania
+### <a name="secure-your-logout-redirect"></a>Zabezpiecz przekierowanie wylogowania
 
 Po wylogowaniu użytkownik zostanie przekierowany na identyfikator URI określony w `post_logout_redirect_uri` parametrze, bez względu na adresy URL odpowiedzi określone dla aplikacji. Jeśli jednak zostanie przekierowany `id_token_hint` prawidłowy, Azure AD B2C sprawdza, czy `post_logout_redirect_uri` wartość jest zgodna z skonfigurowanymi identyfikatorami URI przekierowania dla aplikacji przed przekazaniem. Jeśli nie skonfigurowano zgodnego adresu URL odpowiedzi dla aplikacji, zostanie wyświetlony komunikat o błędzie i użytkownik nie zostanie przekierowany.
 
-### <a name="external-identity-provider-session"></a>Sesja zewnętrznego dostawcy tożsamości
+### <a name="external-identity-provider-sign-out"></a>Wylogowywanie zewnętrznego dostawcy tożsamości
 
 Kierowanie użytkownika do `end_session` punktu końcowego czyści część stanu logowania jednokrotnego użytkownika przy użyciu Azure AD B2C, ale nie podpisuje użytkownika poza sesją dostawcy tożsamości (Social Identity Provider). Jeśli użytkownik wybierze ten sam dostawcy tożsamości podczas kolejnego logowania, zostanie ponownie uwierzytelniony bez wprowadzania poświadczeń. Jeśli użytkownik chce wylogować się z aplikacji, nie musi to oznaczać, że chce się wylogować z konta w serwisie Facebook. Jeśli jednak są używane konta lokalne, sesja użytkownika zostanie zakończona prawidłowo.

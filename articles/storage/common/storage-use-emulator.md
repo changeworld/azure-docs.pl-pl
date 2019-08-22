@@ -7,12 +7,12 @@ ms.date: 08/10/2018
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 9e0e024a5bd3c9cf16879bb9ea93727a338ddbf4
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
-ms.translationtype: MT
+ms.openlocfilehash: ee8dd9da186013dc168e20e6b8b842cca85de172
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986402"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877623"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Korzystanie z emulatora usługi Azure Storage na potrzeby tworzenia i testowania
 
@@ -221,9 +221,21 @@ W emulatorze nie ma żadnych różnic związanych z magazynem kolejek.
 
 ## <a name="storage-emulator-release-notes"></a>Informacje o wersji emulatora magazynu
 
+### <a name="version-510"></a>Wersja 5,10
+
+* Emulator magazynu nie odrzuci wersji 2019-07-07 usług magazynu dla punktów końcowych obiektów blob, kolejek i Table service.
+
+### <a name="version-59"></a>Wersja 5,9
+
+* Emulator magazynu nie odrzuci wersji 2019-02-02 usług magazynu dla punktów końcowych obiektów blob, kolejek i Table service.
+
+### <a name="version-58"></a>Wersja 5,8
+
+* Emulator magazynu nie odrzuci wersji 2018-11-09 usług magazynu dla punktów końcowych obiektów blob, kolejek i Table service.
+
 ### <a name="version-57"></a>Wersja 5,7
 
-Naprawiono usterkę powodującą awarię, jeśli rejestrowanie zostało włączone.
+* Naprawiono usterkę powodującą awarię, jeśli rejestrowanie zostało włączone.
 
 ### <a name="version-56"></a>Wersja 5,6
 
@@ -236,11 +248,11 @@ Naprawiono usterkę powodującą awarię, jeśli rejestrowanie zostało włączo
 
 ### <a name="version-54"></a>Wersja 5,4
 
-Aby poprawić stabilność instalacji, Emulator nie próbuje zarezerwować portów w czasie instalacji. Jeśli żądane są rezerwacje portów, użyj opcji *-reserveports* polecenia **init** , aby je określić.
+* Aby poprawić stabilność instalacji, Emulator nie próbuje zarezerwować portów w czasie instalacji. Jeśli żądane są rezerwacje portów, użyj opcji *-reserveports* polecenia **init** , aby je określić.
 
 ### <a name="version-53"></a>Wersja 5,3
 
-Emulator magazynu obsługuje teraz wersję 2017-07-29 usług magazynu dla punktów końcowych obiektów blob, kolejek i Table service.
+* Emulator magazynu obsługuje teraz wersję 2017-07-29 usług magazynu dla punktów końcowych obiektów blob, kolejek i Table service.
 
 ### <a name="version-52"></a>Wersja 5,2
 
@@ -249,7 +261,7 @@ Emulator magazynu obsługuje teraz wersję 2017-07-29 usług magazynu dla punkt�
 
 ### <a name="version-51"></a>Wersja 5,1
 
-Rozwiązano problem polegający na tym, że emulator `DataServiceVersion` magazynu zwrócił nagłówek w niektórych odpowiedziach, gdzie usługa nie została.
+* Rozwiązano problem polegający na tym, że emulator `DataServiceVersion` magazynu zwrócił nagłówek w niektórych odpowiedziach, gdzie usługa nie została.
 
 ### <a name="version-50"></a>Wersja 5,0
 

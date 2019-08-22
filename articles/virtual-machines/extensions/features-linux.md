@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: 8227aa366c8f5149d4212e6cdd00e2745db84814
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f2397c67b71cc370a0a98d44bb02e5ee77551afb
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881950"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650645"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Rozszerzenia i funkcje maszyny wirtualnej dla systemu Linux
 
@@ -86,7 +86,7 @@ Poniższe metody mogą służyć do uruchamiania rozszerzenia dla istniejącej m
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Rozszerzenia maszyny wirtualnej platformy Azure można uruchamiać dla istniejącej maszyny wirtualnej za pomocą polecenia [AZ VM Extension Set](/cli/azure/vm/extension#az-vm-extension-set) . W poniższym przykładzie zostanie uruchomione niestandardowe rozszerzenie skryptu dla maszyny wirtualnej o nazwie *myVM* w grupie zasobów o nazwie Moja *resourceName*. Zastąp przykładową nazwę grupy zasobów, nazwę maszyny wirtualnej i skrypt do https://raw.githubusercontent.com/me/project/hello.sh) uruchomienia (z własnymi informacjami. 
+Rozszerzenia maszyny wirtualnej platformy Azure można uruchamiać dla istniejącej maszyny wirtualnej za pomocą polecenia [AZ VM Extension Set](/cli/azure/vm/extension#az-vm-extension-set) . W poniższym przykładzie zostanie uruchomione niestandardowe rozszerzenie skryptu dla maszyny wirtualnej o nazwie *myVM* w grupie zasobów o nazwie Moja *resourceName*. Zastąp przykładową nazwę grupy zasobów, nazwę maszyny wirtualnej i skrypt do uruchomienia (\/https:/RAW.githubusercontent.com/Me/Project/Hello.sh) przy użyciu własnych informacji. 
 
 ```azurecli
 az vm extension set `

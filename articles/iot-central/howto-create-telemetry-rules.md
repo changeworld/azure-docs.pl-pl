@@ -1,6 +1,6 @@
 ---
-title: Tworzenie i zarządzanie regułami telemetrii w aplikacji usługi Azure IoT Central | Dokumentacja firmy Microsoft
-description: Reguły telemetrii w usłudze Azure IoT Central umożliwiają monitorowanie urządzeń w czasie zbliżonym do rzeczywistego i automatycznie wywołują akcje, takie jak wysyłanie wiadomości e-mail po wyzwoleniu reguły.
+title: Tworzenie reguł telemetrycznych w aplikacji IoT Central platformy Azure i zarządzanie nimi | Microsoft Docs
+description: Reguły telemetrii IoT Central platformy Azure umożliwiają monitorowanie urządzeń w czasie niemal rzeczywistym oraz automatyczne wywoływanie akcji, takich jak wysyłanie wiadomości e-mail, gdy reguła jest wyzwalana.
 author: ankitgupta
 ms.author: ankitgup
 ms.date: 06/09/2019
@@ -8,109 +8,111 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 8684301b83e01989c745b63848995142cb766188
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3ac8e488de11abc3471df836ca852cf3dc85c82f
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052972"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877364"
 ---
-# <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Utwórz regułę telemetrii i Konfigurowanie powiadomień w aplikacji usługi Azure IoT Central
+# <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Tworzenie reguły telemetrii i Konfigurowanie powiadomień w aplikacji IoT Central platformy Azure
 
 *Ten artykuł dotyczy operatorów, konstruktorów i administratorów.*
 
-Usługa Azure IoT Central umożliwia zdalne monitorowanie połączonych urządzeń. Reguły usługi Azure IoT Central umożliwiają monitorowanie urządzeń w czasie zbliżonym do rzeczywistego i automatycznie wykonywanie akcji, takich jak wysłać wiadomość e-mail lub wyzwalacza Microsoft Flow. Za pomocą kilku kliknięć można określić warunek, który chcesz monitorować dane urządzenia i skonfiguruj odpowiednie działanie. W tym artykule opisano sposób tworzenia reguły do monitorowania telemetrii wysyłanej przez urządzenie.
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
-Urządzenia mogą korzystać z pomiaru telemetrii, aby wysłać dane liczbowe z urządzenia. Reguła telemetrii uaktywnia danych telemetrycznych z wybranego urządzenia przekracza określoną wartość progową.
+Za pomocą usługi Azure IoT Central można zdalnie monitorować połączone urządzenia. Reguły IoT Central platformy Azure umożliwiają monitorowanie urządzeń w czasie niemal rzeczywistym i automatyczne wywoływanie akcji, takich jak wysyłanie wiadomości e-mail lub wyzwalacza Microsoft Flow. Wystarczy kilka kliknięć, aby zdefiniować warunek monitorowania danych urządzenia i konfigurowania odpowiedniej akcji. W tym artykule wyjaśniono, jak utworzyć reguły monitorowania danych telemetrycznych wysyłanych przez urządzenie.
 
-## <a name="create-a-telemetry-rule"></a>Utwórz regułę telemetrii
+Aby wysyłać dane liczbowe z urządzenia, urządzenia mogą używać pomiarów telemetrii. Reguła telemetrii wyzwala, gdy wybrane dane telemetryczne urządzenia przecinają określony próg.
 
-Aby utworzyć regułę telemetrii, szablon urządzenia musi mieć co najmniej jednego pomiaru danych telemetrycznych zdefiniowane. W tym przykładzie użyto urządzenia mrożone Automat, który wysyła dane telemetryczne dotyczące temperatury i wilgotności. Reguła monitoruje temperatura zgłoszona przez urządzenia i wysyła wiadomość e-mail, gdy przejdzie ponad 80 stopni.
+## <a name="create-a-telemetry-rule"></a>Tworzenie reguły telemetrii
 
-1. Za pomocą **szablonów urządzeń** stronie, przejść do szablonu urządzenia, dla którego dodajesz reguły dla.
+Aby utworzyć regułę telemetrii, szablon urządzenia musi mieć zdefiniowany co najmniej jeden pomiar telemetrii. W tym przykładzie jest używane urządzenie maszyny z systemem chłodzenia w systemie, które wysyła dane telemetryczne temperatury i wilgotności. Reguła monitoruje temperaturę zgłoszoną przez urządzenie i wysyła wiadomość e-mail, gdy znajdzie się ona powyżej 80 stopni.
 
-1. Jeśli nie utworzono jeszcze żadnych reguł, zostanie wyświetlony następujący ekran:
+1. Korzystając ze strony **Szablony urządzeń** , przejdź do szablonu urządzenia, dla którego chcesz dodać regułę.
 
-    ![Jeszcze żadnych reguł](media/howto-create-telemetry-rules/rules_landing_page1.png)
+1. Jeśli nie utworzono jeszcze żadnych reguł, zobaczysz następujący ekran:
 
-1. Na **reguły** zaznacz **+ Nowa reguła** wyświetlić typy reguł, które można utworzyć.
+    ![Nie ma jeszcze reguł](media/howto-create-telemetry-rules/rules_landing_page1.png)
 
-1. Wybierz **Telemetrii** można utworzyć regułę do monitorowania danych telemetrycznych z urządzenia.
+1. Na karcie **reguły** wybierz pozycję **+ Nowa reguła** , aby wyświetlić typy reguł, które możesz utworzyć.
 
-    ![Typy zasad](media/howto-create-telemetry-rules/rule_types1.png)
+1. Wybierz pozycję telemetrię, aby utworzyć regułę służącą do monitorowania danych telemetrycznych urządzenia.
 
-1. Wprowadź nazwę, która pomaga w identyfikacji reguły, w tym szablonie urządzenia.
+    ![Typy reguł](media/howto-create-telemetry-rules/rule_types1.png)
 
-1. Aby od razu włączyć zasadę dla wszystkich urządzeń, które są tworzone dla tego szablonu, Przełącz **Włącz regułę dla wszystkich urządzeń dla tego szablonu**.
+1. Wprowadź nazwę, która pomoże zidentyfikować regułę w tym szablonie urządzenia.
+
+1. Aby natychmiast włączyć regułę dla wszystkich urządzeń utworzonych dla tego szablonu, przełącz **regułę włączania dla wszystkich urządzeń dla tego szablonu**.
 
    ![Szczegóły reguły](media/howto-create-telemetry-rules/rule_detail1.png)
 
-    Reguła automatycznie stosuje do wszystkich urządzeń na podstawie szablonu urządzenia.
+    Reguła zostanie automatycznie zastosowana do wszystkich urządzeń objętych szablonem urządzenia.
 
-### <a name="configure-the-rule-conditions"></a>Konfigurowanie warunków reguły
+### <a name="configure-the-rule-conditions"></a>Skonfiguruj warunki reguły
 
 Warunek definiuje kryteria, które są monitorowane przez regułę.
 
-1. Wybierz **+** obok **warunki** można dodać nowego warunku.
+1. Wybierz **+** obok pozycji **warunki** , aby dodać nowy warunek.
 
-1. Wybierz dane telemetryczne, którą chcesz monitorować z **pomiaru** listy rozwijanej.
+1. Wybierz dane telemetryczne, które chcesz monitorować , z listy rozwijanej miara.
 
-1. Następnie wybierz pozycję **agregacji**, **Operator**i podaj **próg** wartość.
-   - Agregacja jest opcjonalne. Bez agregacji, wyzwolenie reguły dla każdego punktu danych telemetrii, który spełnia warunek. Na przykład jeśli reguła jest skonfigurowany do wyzwalania, gdy temperatura przekracza 80, a następnie wyzwolenie reguły niemal natychmiast gdy urządzenie zgłosi temperatury > 80.
-   - Jeśli funkcja agregująca takie jak średnia, wartość minimalna, maksymalna, liczba jest wybierany następnie użytkownik musi podać **przedział czasu agregacji** za pośrednictwem której warunek musi zostać ocenione. Na przykład jeśli ustawisz okres na "5 minut" i reguła szuka średnia temperatura powyżej 80, reguła jest wyzwalana w przypadku średnia temperatura przekracza 80 dla co najmniej 5 minut. Częstotliwość oceny reguły jest taka sama jak **przedział czasu agregacji**, oznacza to, w tym przykładzie reguła jest szacowana co 5 minut.
+1. Następnie wybierz **agregację**, **operator**i podaj wartość **progową** .
+   - Agregacja jest opcjonalna. Bez agregacji reguła wyzwala dla każdego punktu danych telemetrii, który spełnia warunek. Na przykład, jeśli reguła jest skonfigurowana do wyzwalania, gdy temperatura jest większa niż 80, reguła jest wyzwalana niemal natychmiast, gdy urządzenie zgłosi temperaturę > 80.
+   - Jeśli funkcja agregująca, taka jak Average, min, Max, jest wybierana, użytkownik musi podać **zagregowany przedział czasu** , w którym należy oszacować warunek. Na przykład jeśli ustawisz okres jako "5 minut", a Twoja reguła szuka średniej temperatury powyżej 80, reguła jest wyzwalana, gdy średnia temperatura przekroczy 80 przez co najmniej 5 minut. Częstotliwość oceny reguł jest taka sama jak w przedziale **czasu zagregowanym**, co oznacza, że w tym przykładzie reguła jest szacowana co 5 minut.
 
      ![Warunek](media/howto-create-telemetry-rules/aggregate_condition_filled_out1.png)
 
      >[!NOTE]
-     >Można dodać więcej niż jednej miary dane telemetryczne w ramach **warunek**. Jeśli określono wiele warunków, wszystkie warunki muszą być spełnione dla tej reguły wyzwolić. Każdy warunek pobiera przyłączone niejawnie przez klauzulę "I". Korzystając z agregacji, musi być agregowana co miary.
+     >W warunku można dodać więcej niż jedną miarętelemetrię. W przypadku określenia wielu warunków wszystkie warunki muszą być spełnione, aby reguła była wyzwalana. Każdy warunek jest przyłączony przez klauzulę "i" niejawnie. W przypadku korzystania z agregacji każdy pomiar musi być zagregowany.
 
-### <a name="configure-actions"></a>Konfigurowanie akcji
+### <a name="configure-actions"></a>Skonfiguruj akcje
 
-W tej sekcji pokazano, jak skonfigurować akcje do wykonania po wyzwoleniu reguły. Akcje Pobierz wywoływane, gdy wszystkie warunki określone w regule zostaną obliczone na wartość true.
+W tej sekcji pokazano, jak skonfigurować akcje do wykonania, gdy reguła jest wyzwalana. Akcje są wywoływane, gdy wszystkie warunki określone w regule mają wartość true.
 
-1. Wybierz **+** obok **akcje**. W tym miejscu zobaczysz listę dostępnych akcji.  
+1. Wybierz pozycję obok akcji **+** . W tym miejscu zostanie wyświetlona lista dostępnych akcji.  
 
-    ![Dodawanie akcji](media/howto-create-telemetry-rules/add_action1.png)
+    ![Dodaj akcję](media/howto-create-telemetry-rules/add_action1.png)
 
-1. Wybierz **E-mail** akcję, wprowadź prawidłowy adres e-mail w **do** pola, a następnie podaj notatkę pojawią się w treści wiadomości e-mail po wyzwoleniu reguły.
+1. Wybierz akcję **e-mail** , wprowadź prawidłowy adres e-mail w polu **do** , a następnie podaj notatkę, która będzie wyświetlana w treści wiadomości e-mail, gdy reguła jest wyzwalana.
 
     > [!NOTE]
-    > Wiadomości e-mail są wysyłane tylko do użytkowników, które zostały dodane do aplikacji i Logowanie zostało wykonane co najmniej raz. Dowiedz się więcej o [Zarządzanie użytkownikami](howto-administer.md) w usłudze Azure IoT Central.
+    > Wiadomości e-mail są wysyłane tylko do użytkowników, którzy zostali dodani do aplikacji i zarejestrowali się co najmniej raz. Dowiedz się więcej na temat [zarządzania użytkownikami](howto-administer.md) w usłudze Azure IoT Central.
 
-   ![Konfigurowanie akcji](media/howto-create-telemetry-rules/configure_action1.png)
+   ![Konfiguruj akcję](media/howto-create-telemetry-rules/configure_action1.png)
 
-1. Aby zapisać regułę, wybierz **Zapisz**. Reguła przechodzi na żywo w ciągu kilku minut i rozpoczyna monitorowanie dane telemetryczne są wysyłane do aplikacji. Gdy zostanie spełniony warunek określony w regule, zasada wyzwala akcji dotyczącej wiadomości e-mail skonfigurowany.
+1. Aby zapisać regułę, wybierz pozycję **Zapisz**. Reguła przechodzi na żywo w ciągu kilku minut i zacznie monitorować dane telemetryczne wysyłane do aplikacji. Gdy warunek określony w regule zostanie spełniony, reguła wyzwala skonfigurowaną akcję poczty e-mail.
 
-Możesz dodać inne akcje reguły, takie jak Microsoft Flow i elementów webhook. Możesz dodać maksymalnie 5 czynności dla każdej reguły.
+Do reguły można dodać inne akcje, takie jak Microsoft Flow i elementy webhook. Można dodać maksymalnie 5 akcji dla każdej reguły.
 
-- [Microsoft Flow akcji](howto-add-microsoft-flow.md) Konferencję przepływu pracy w Microsoft Flow po wyzwoleniu reguły 
-- [Akcja elementu Webhook](howto-create-webhooks.md) do powiadamiania innych usług, po wyzwoleniu reguły
+- [Microsoft Flow akcję](howto-add-microsoft-flow.md) uruchamiania przepływu pracy w Microsoft Flow, gdy reguła jest wyzwalana 
+- [Akcja elementu webhook](howto-create-webhooks.md) , która powiadamia inne usługi o wyzwoleniu reguły
 
-## <a name="parameterize-the-rule"></a>Parametryzacja reguły
+## <a name="parameterize-the-rule"></a>Sparametryzuj regułę
 
-Reguły mogą generować niektóre wartości z **właściwości urządzenia** jako parametry. Przy użyciu parametrów jest przydatne w scenariuszach, gdzie telemetria progi różnią się na różnych urządzeniach. Podczas tworzenia reguły, wybierz polecenie Właściwości urządzenia, który określa próg, takie jak **osiągnie maksymalny próg idealne**, zamiast podawać wartości bezwzględnej, takie jak 80 stopni. Zasada jest wykonywana, jest on zgodny danych telemetrycznych z urządzenia z wartością ustawioną we właściwości urządzenia.
+Reguły mogą wyprowadzać pewne geograficznej z **Właściwości urządzenia** jako parametry. Używanie parametrów jest przydatne w scenariuszach, w których progi telemetrii różnią się w zależności od różnych urządzeń. Podczas tworzenia reguły wybierz właściwość urządzenia, która określa próg, taki jak **Maksymalny idealny próg**, zamiast podać wartość bezwzględną, na przykład 80 stopni. Gdy reguła jest wykonywana, dopasowuje dane telemetryczne urządzenia z wartością ustawioną we właściwości urządzenia.
 
-Przy użyciu parametrów jest efektywny sposób zmniejszenia liczby reguł do zarządzania na urządzeniu szablonu.
+Używanie parametrów jest efektywnym sposobem na zmniejszenie liczby reguł do zarządzania dla każdego szablonu urządzenia.
 
-Akcje mogą być również konfigurowane przy użyciu **właściwości urządzenia** jako parametr. Jeśli adres e-mail jest przechowywany jako właściwość, a następnie mogą być używane podczas definiowania **do** adresu.
+Akcje można również skonfigurować za pomocą **Właściwości urządzenia** jako parametru. Jeśli adres e-mail jest przechowywany jako właściwość, można go użyć podczas definiowania adresu **do** .
 
 ## <a name="delete-a-rule"></a>Usuwanie reguły
 
-Jeśli nie potrzebujesz już regułę, usuń go, otwierając reguły i wybierając pozycję **Usuń**. Usuwanie reguły spowoduje usunięcie jej z szablonu urządzenia i wszystkie skojarzone urządzenia.
+Jeśli reguła nie jest już potrzebna, usuń ją, otwierając regułę i wybierając pozycję **Usuń**. Usunięcie reguły spowoduje usunięcie jej z szablonu urządzenia i wszystkich skojarzonych urządzeń.
 
-## <a name="enable-or-disable-a-rule-for-a-device-template"></a>Włączanie lub wyłączanie reguły szablonu urządzenia
+## <a name="enable-or-disable-a-rule-for-a-device-template"></a>Włączanie lub wyłączanie reguły dla szablonu urządzenia
 
-Przejdź do urządzenia, a następnie wybierz regułę, którą chcesz włączyć lub wyłączyć. Przełącz **Włącz regułę dla wszystkich urządzeń z tego szablonu** przycisk reguły, aby włączyć lub wyłączyć regułę dla wszystkich urządzeń, które są skojarzone z szablonem urządzenia.
+Przejdź do urządzenia i wybierz regułę, którą chcesz włączyć lub wyłączyć. Przełącz **regułę włączania dla wszystkich urządzeń tego szablonu** w regule, aby włączyć lub wyłączyć regułę dla wszystkich urządzeń, które są skojarzone z szablonem urządzenia.
 
-## <a name="enable-or-disable-a-rule-for-a-device"></a>Włącza lub wyłącza regułę dla urządzenia
+## <a name="enable-or-disable-a-rule-for-a-device"></a>Włączanie lub wyłączanie reguły dla urządzenia
 
-Przejdź do urządzenia, a następnie wybierz regułę, którą chcesz włączyć lub wyłączyć. Przełącz **Włącz regułę dla tego urządzenia** przycisk, aby włączyć lub wyłączyć regułę dla tego urządzenia.
+Przejdź do urządzenia i wybierz regułę, którą chcesz włączyć lub wyłączyć. Przełącz **regułę włączania dla tego urządzenia** , aby włączyć lub wyłączyć regułę dla tego urządzenia.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy wiesz jak utworzyć zasady w aplikacji usługi Azure IoT Central, poniżej przedstawiono niektóre następny krok:
+Teraz, gdy wiesz już, jak tworzyć reguły w aplikacji IoT Central platformy Azure, Oto kilka następnych kroków:
 
 - [Dodawanie akcji Microsoft Flow w regułach](howto-add-microsoft-flow.md)
-- [Dodawanie akcji elementu Webhook w regułach](howto-create-webhooks.md)
-- [Wiele akcji, aby uruchamiała się z co najmniej jedną regułę grupy](howto-use-action-groups.md)
+- [Dodaj akcję elementu webhook w regułach](howto-create-webhooks.md)
+- [Grupuj wiele akcji do uruchomienia z jednej lub kilku reguł](howto-use-action-groups.md)
 - [Jak zarządzać urządzeniami](howto-manage-devices.md)

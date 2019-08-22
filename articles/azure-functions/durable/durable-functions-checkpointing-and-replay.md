@@ -1,6 +1,6 @@
 ---
-title: Punkty kontrolne, jak i powtarzanie w funkcje trwałe - Azure
-description: Dowiedz się, jak punkty kontrolne i odpowiedzi działa w rozszerzenia funkcji trwałych dla usługi Azure Functions.
+title: Punkty kontrolne i powtarzanie w Durable Functions — Azure
+description: Dowiedz się, w jaki sposób punkty kontrolne i odpowiedzi działają w rozszerzeniu Durable Functions Azure Functions.
 services: functions
 author: ggailey777
 manager: jeconnoc
@@ -10,22 +10,22 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: b1fd31a758501620129fdbbc532b8defcf927045
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4ed9e4aced7983cce10a577b38c1c170474cf83d
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60648503"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876858"
 ---
-# <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Punkty kontrolne, jak i powtarzanie w funkcje trwałe (usługi Azure Functions)
+# <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Punkty kontrolne i powtarzanie w Durable Functions (Azure Functions)
 
-Jednym z kluczowych atrybutów funkcje trwałe jest **niezawodnego wykonania**. Działanie i funkcje programu orchestrator mogą być uruchamiane w różnych maszyn wirtualnych w centrum danych, a tych maszyn wirtualnych lub podstawowej infrastruktury sieci nie jest 100% czasu.
+Jednym z kluczowych atrybutów Durable Functions jest **niezawodne wykonywanie**. Funkcje programu Orchestrator i funkcje działania mogą być uruchomione na różnych maszynach wirtualnych w centrum danych, a te maszyny wirtualne lub podstawowa infrastruktura sieciowa nie są 100% niezawodne.
 
-Pomimo tego funkcje trwałe zapewnia niezawodne wykonywanie aranżacji. Robi to przy użyciu kolejki magazynu do wywoływania funkcji dysku, jak również historię wykonywania okresowo punkty kontrolne do tabel magazynu (przy użyciu wzorca projektowego chmury, znane jako [określania źródła zdarzeń](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)). Następnie można odtworzyć tej historii może automatycznie odbudować miejsca w pamięci stan funkcji orkiestratora.
+Pomimo tego Durable Functions zapewnia niezawodne wykonywanie aranżacji. Robi to za pomocą kolejek magazynu do wywołania funkcji i przez okresowe Tworzenie punktów kontrolnych historii wykonywania w tabelach magazynu (przy użyciu wzorca projektowego w chmurze znanego jako [źródła zdarzeń](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)). Tę historię można następnie odtworzyć w celu automatycznego odbudowy stanu znajdującego się w pamięci funkcji programu Orchestrator.
 
 ## <a name="orchestration-history"></a>Historia aranżacji
 
-Załóżmy, że masz następującą funkcję programu orchestrator:
+Załóżmy, że masz następującą funkcję programu Orchestrator:
 
 ### <a name="c"></a>C#
 
@@ -45,7 +45,7 @@ public static async Task<List<string>> Run(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
+### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -61,75 +61,75 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-W każdej `await` (C#) lub `yield` — instrukcja (JavaScript), punkty kontrolne trwałe Framework zadania stanu wykonywania funkcji do usługi table storage. Ten stan jest, co jest nazywane *historii aranżacji*.
+W każdej `await` instrukcjiC#() `yield` lub (JavaScript), trwała struktura zadań określa stan wykonywania funkcji w usłudze Table Storage. Ten stan jest określany mianem *historii aranżacji*.
 
 ## <a name="history-table"></a>Tabela historii
 
-Ogólnie rzecz biorąc trwałe Framework zadanie wykonuje następujące czynności na każdy punkt kontrolny:
+Ogólnie rzecz biorąc, usługa trwałej struktury zadań w każdym punkcie kontrolnym wykonuje następujące czynności:
 
-1. Zapisuje historię wykonywania do tabel usługi Azure Storage.
-2. Komunikaty umieszczeniu funkcji koordynatora potrzebuje do wywołania.
-3. Komunikaty umieszczeniu programu orchestrator, sama &mdash; na przykład czasomierz trwałych wiadomości.
+1. Zapisuje historię wykonywania w tabelach usługi Azure Storage.
+2. Komunikaty enqueues dla funkcji wywoływanych przez koordynatora.
+3. Komunikaty enqueues dla programu Orchestrator &mdash; na przykład trwałe komunikaty czasomierza.
 
-Po zakończeniu punktu kontrolnego, funkcja orkiestratora jest bezpłatne ma zostać usunięty z pamięci, dopóki nie ma więcej pracy wykonania.
+Po zakończeniu punktu kontrolnego funkcja programu Orchestrator jest bezpłatna do usunięcia z pamięci, dopóki nie będzie więcej pracy.
 
 > [!NOTE]
-> Usługi Azure Storage nie zapewnia żadnej gwarancji transakcyjnych między zapisywania danych do magazynu tabel i kolejek. Aby obsługiwać błędy, używa dostawcy magazynu funkcje trwałe *spójności ostatecznej* wzorców. Te wzorce upewnij się, że żadne dane utracone w przypadku awarii lub utraty łączności w środku punktu kontrolnego.
+> Usługa Azure Storage nie zapewnia żadnych transakcyjnych gwarancji między zapisywaniem danych w usłudze Table Storage i kolejkami. Aby obsłużyć błędy, dostawca magazynu Durable Functions będzie używać wzorców *spójności ostatecznej* . Te wzorce zapewniają, że żadne dane nie zostaną utracone w przypadku awarii lub utraty łączności w środku punktu kontrolnego.
 
-Po zakończeniu historię pokazanych wcześniej funkcji wygląda podobnie do poniższego obrazu w usłudze Azure Table Storage (skrót dla celów ilustracyjnych):
+Po zakończeniu historia funkcji pokazanej wcześniej wygląda podobnie do następującej na platformie Azure Table Storage (skrócona dla celów ilustracyjnych):
 
-| PartitionKey (identyfikator wystąpienia)                     | Typ zdarzenia             | Znacznik czasu               | Dane wejściowe | Name (Nazwa)             | Wynik                                                    | Stan |
+| PartitionKey (identyfikator wystąpienia)                     | EventType             | Timestamp               | Dane wejściowe | Name             | Wynik                                                    | State |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     |
-| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | Wartość null  | E1_HelloSequence |                                                           |                     |
-| eaee885b | TaskScheduled         | 2017-05-05T18:45:32.670Z |       | E1_SayHello      |                                                           |                     |
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:32.670Z |       |                  |                                                           |                     |
+| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | wartość null  | E1_HelloSequence |                                                           |                     |
+| eaee885b | TaskScheduled         | 2017-05-05T18:45:32.670 Z |       | E1_SayHello      |                                                           |                     |
+| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:32.670 Z |       |                  |                                                           |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.232Z |       |                  |                                                           |                     |
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.201Z |       |                  | "" "Hello Tokio!" ""                                        |                     |
-| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.435Z |       | E1_SayHello      |                                                           |                     |
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.435Z |       |                  |                                                           |                     |
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     |
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.763Z |       |                  | "" "Hello Seattle!" ""                                      |                     |
-| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.857Z |       | E1_SayHello      |                                                           |                     |
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     |
+| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.201Z |       |                  | "" Hello Tokio! ""                                        |                     |
+| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.435 Z |       | E1_SayHello      |                                                           |                     |
+| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.435 Z |       |                  |                                                           |                     |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.857 Z |       |                  |                                                           |                     |
+| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.763 Z |       |                  | "" Hello Seattle! ""                                      |                     |
+| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.857 Z |       | E1_SayHello      |                                                           |                     |
+| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.857 Z |       |                  |                                                           |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:35.032Z |       |                  |                                                           |                     |
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.919Z |       |                  | "" "Hello Londyn!" ""                                       |                     |
-| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[""Hello Tokio!" ",""Hello Seattle!" ",""Londyn Hello!" "]" | Ukończone           |
+| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.919Z |       |                  | "" Hello Londyn! ""                                       |                     |
+| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[" Hello Tokio! "", "Hello Seattle!" "," Hello Londyn! ""] " | Ukończone           |
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:35.044Z |       |                  |                                                           |                     |
 
-Kilka uwagi dotyczące wartości kolumn:
+Kilka informacji o wartościach kolumn:
 
 * **PartitionKey**: Zawiera identyfikator wystąpienia aranżacji.
-* **Typ zdarzenia**: Reprezentuje typ zdarzenia. Może być jedną z następujących typów:
-  * **OrchestrationStarted**: Funkcja orkiestratora wznowić jego działanie od await lub jest uruchomiony po raz pierwszy. `Timestamp` Kolumna jest używana do wypełniania deterministyczną wartość dla [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) interfejsu API.
-  * **ExecutionStarted**: Funkcja orkiestratora Rozpoczęto wykonywanie po raz pierwszy. To zdarzenie zawiera również dane wejściowe funkcji w `Input` kolumny.
-  * **TaskScheduled**: Funkcja działanie zostało zaplanowane. Nazwa funkcji działania są przechwytywane w `Name` kolumny.
-  * **TaskCompleted**: Ukończono działanie funkcji działania. Wynik funkcji znajduje się w `Result` kolumny.
-  * **TimerCreated**: Trwałe Czasomierz został utworzony. `FireAt` Kolumna zawiera zaplanowanego czasu UTC, w którym okresu działania czasomierza.
-  * **TimerFired**: Trwałe czasomierza uruchamiane.
-  * **EventRaised**: Wystąpienie zewnętrznego zdarzenia zostało wysłane do wystąpienia aranżacji. `Name` Kolumna zawiera nazwę zdarzenia i `Input` kolumny przechwytuje ładunek zdarzenia.
-  * **OrchestratorCompleted**: Funkcja programu orchestrator, oczekiwane.
-  * **ContinueAsNew**: Funkcja orkiestratora ukończone i ponownego uruchomienia sam nowy stan. `Result` Kolumna zawiera wartości, który jest używany jako dane wejściowe w uruchomiono ponownie wystąpienia.
-  * **ExecutionCompleted**: Funkcja orkiestratora zakończyło się lub nie powiodło się. Dane wyjściowe funkcji lub szczegóły błędu są przechowywane w `Result` kolumny.
+* **Typ zdarzenia**: Reprezentuje typ zdarzenia. Może być jednym z następujących typów:
+  * **OrchestrationStarted**: Funkcja programu Orchestrator została wznowiona z oczekiwania lub jest uruchomiona po raz pierwszy. Kolumna służy do wypełniania wartości deterministycznej interfejsu API [CurrentUtcDateTime.](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) `Timestamp`
+  * **ExecutionStarted**: Funkcja programu Orchestrator rozpoczęła wykonywanie po raz pierwszy. To zdarzenie zawiera również dane wejściowe funkcji w `Input` kolumnie.
+  * **TaskScheduled**: Zaplanowano funkcję działania. Nazwa funkcji działania jest przechwytywana w `Name` kolumnie.
+  * **TaskCompleted**: Ukończono funkcję działania. Wynik funkcji znajduje się w `Result` kolumnie.
+  * **TimerCreated**: Utworzono trwały czasomierz. `FireAt` Kolumna zawiera zaplanowany czas UTC, po upływie którego czasomierz wygasa.
+  * **TimerFired**: Wyzwolono trwały czasomierz.
+  * **EventRaised**: Zewnętrzne zdarzenie zostało wysłane do wystąpienia aranżacji. Kolumna przechwytuje nazwę zdarzenia `Input` , a kolumna przechwytuje ładunek zdarzenia. `Name`
+  * **OrchestratorCompleted**: Oczekiwano funkcji programu Orchestrator.
+  * **ContinueAsNew**: Funkcja programu Orchestrator została zakończona i uruchomiona ponownie z nowym stanem. `Result` Kolumna zawiera wartość, która jest używana jako dane wejściowe w ponownie uruchomionym wystąpieniu.
+  * **ExecutionCompleted**: Funkcja programu Orchestrator działała do ukończenia (lub nie powiodła się). Dane wyjściowe funkcji lub szczegóły błędu są przechowywane w `Result` kolumnie.
 * **Sygnatura czasowa**: Sygnatura czasowa UTC zdarzenia historii.
 * **Nazwa**: Nazwa funkcji, która została wywołana.
-* **Dane wejściowe**: Formacie JSON dane wejściowe funkcji.
-* **Wynik**: Dane wyjściowe funkcji; oznacza to, że jego wartość zwracaną.
+* **Dane wejściowe**: Dane wejściowe dla funkcji w formacie JSON.
+* **Wynik**: Dane wyjściowe funkcji; oznacza to, że wartość zwracana.
 
 > [!WARNING]
-> Chociaż jest to przydatne jako narzędzie debugowania nie wykona wszelkich zależności w tej tabeli. Go mogą ulec zmianie w miarę rozwoju rozszerzenia funkcji trwałych.
+> Chociaż jest to narzędzie do debugowania, nie należy podejmować żadnych zależności od tej tabeli. Może ulec zmianie w miarę rozwoju rozszerzenia Durable Functions.
 
-Za każdym razem, gdy funkcja wznawiając `await` (C#) lub `yield` (JavaScript), trwałe Framework zadania uruchomienia funkcji programu orchestrator od podstaw. Po każdym ponownym uruchomieniu konsultować się historię wykonywania, aby ustalić, czy miała bieżącej operacji asynchronicznej należy umieścić.  Jeśli operacja miało miejsce, platformę natychmiast odtwarza wynik tej operacji, a następnie przechodzi do następnego `await` (C#) lub `yield` (JavaScript). Ten proces jest kontynuowany, dopóki powtórzone całą historię, w tym momencie zmiennych lokalnych w funkcji programu orchestrator zostaną przywrócone poprzednie wartości.
+Za każdym razem, gdy funkcja wznawia działanie `await` zC#() `yield` lub (JavaScript), trwała struktura zadań ponownie uruchamia funkcję programu Orchestrator od podstaw. Na każdym z nich należy ponownie sprawdzić historię wykonywania, aby ustalić, czy bieżąca operacja asynchroniczna została wykonana.  Jeśli operacja miała miejsce, struktura odtwarza dane wyjściowe tej operacji natychmiast i przechodzi do następnego `await` (C#) lub `yield` (JavaScript). Ten proces jest kontynuowany, dopóki cała historia nie zostanie powtórzona, w tym momencie wszystkie zmienne lokalne w funkcji programu Orchestrator zostaną przywrócone do poprzednich wartości.
 
-## <a name="orchestrator-code-constraints"></a>Ograniczenia kodu programu orchestrator
+## <a name="orchestrator-code-constraints"></a>Ograniczenia kodu programu Orchestrator
 
-Zachowanie powtarzania tworzy ograniczenia dotyczące typu kodu, które mogą być zapisywane w funkcji programu orchestrator:
+Zachowanie powtarzania tworzy ograniczenia dotyczące typu kodu, który można napisać w funkcji programu Orchestrator:
 
-* Kod programu orchestrator musi być **deterministyczne**. Zostaną odtworzone wiele razy, a musi mieć ten sam wynik każdorazowo. Na przykład nie bezpośrednie wywołania pobieranie bieżącej daty/godziny, Pobierz liczb losowych, Generowanie losowe identyfikatory GUID lub wywoływać zdalne punkty końcowe.
+* Kod programu Orchestrator musibyć deterministyczny. Zostanie ona powtórzona wiele razy i musi generować ten sam wynik za każdym razem. Na przykład żadne bezpośrednie wywołania do pobrania bieżącej daty/godziny, pobrania losowych identyfikatorów GUID lub wywołania do zdalnych punktów końcowych.
 
-  Jeśli kod orchestrator serwer musi pobrać bieżącej daty/godziny, powinna korzystać [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) (.NET) lub `currentUtcDateTime` (JavaScript) interfejsu API, który jest bezpieczny dla powtórzeń.
+  Jeśli kod programu Orchestrator wymaga pobrania bieżącej daty/godziny, powinien on używać interfejsu API [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) (.NET) lub `currentUtcDateTime` (JavaScript), który jest bezpieczny do odtworzenia.
 
-  Jeśli kod orchestrator musi wygenerować losowy identyfikator GUID, należy użyć [NewGuid](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_NewGuid) interfejsu API (.NET), który jest bezpieczny dla powtarzania lub generacji GUID delegata do działania — funkcja (JavaScript), ponieważ w tym przykładzie:
+  Jeśli kod programu Orchestrator musi generować losowy identyfikator GUID, powinien korzystać z interfejsu API [NewGuid](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_NewGuid) (.NET), który jest bezpieczny do odtworzenia, lub delegowania generowania identyfikatora GUID do funkcji działania (JavaScript), jak w poniższym przykładzie:
 
   ```javascript
   const uuid = require("uuid/v1");
@@ -139,37 +139,37 @@ Zachowanie powtarzania tworzy ograniczenia dotyczące typu kodu, które mogą by
   }
   ```
 
-  Operacji nie deterministyczne musi odbywać się w funkcji działań. Obejmuje to dowolna interakcja z powiązaniami innych danych wejściowych lub wyjściowych. Dzięki temu wszystkie wartości niedeterministyczne wygenerowano po pierwszym wykonaniu i zapisywane w historii wykonywania. Kolejne wykonania będzie używać wartości zapisane automatycznie.
+  Operacje niedeterministyczne muszą być wykonywane w funkcjach działania. Obejmuje to wszelką interakcję z innymi powiązaniami wejściowymi lub wyjściowymi. Daje to pewność, że wszystkie wartości niedeterministyczne będą generowane raz podczas pierwszego wykonywania i zapisywane w historii wykonywania. Kolejne wykonania spowodują użycie zapisanej wartości automatycznie.
 
-* Powinien zostać zwrócony kod orchestrator **nieblokującej na poziomie**. Na przykład, oznacza to nie operacji We/Wy i nie wywołania `Thread.Sleep` (.NET) lub równoważnych interfejsów API.
+* Kod programu Orchestrator nie powinien być **blokowany**. Na przykład oznacza to brak operacji we/wy i brak wywołań do `Thread.Sleep` (.NET) lub równoważnych interfejsów API.
 
-  Jeśli program orchestrator wymaga opóźnienie, można użyć [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) (.NET) lub `createTimer` (JavaScript) interfejsu API.
+  Jeśli koordynator musi opóźnić korzystanie z interfejsu API programu ( [](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) .NET) lub `createTimer` (JavaScript).
 
-* Kod orchestrator musi **nigdy zainicjowana żadnych operacji asynchronicznej** z wyjątkiem przy użyciu [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) interfejsu API lub `context.df` obiektu interfejsu API. Na przykład nie `Task.Run`, `Task.Delay` lub `HttpClient.SendAsync` na platformie .NET, lub `setTimeout()` i `setInterval()` w języku JavaScript. Trwałe Framework zadanie wykonuje kod programu orchestrator w jednym wątku i nie mogą współdziałać z innymi wątkami, które można uwzględnić w harmonogramie przez inne asynchronicznych interfejsów API.
+* Kod programu Orchestrator **nigdy nie może inicjować żadnej operacji asynchronicznej** , chyba że jest `context.df` używany interfejs API [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) lub interfejs API obiektu. Na `Task.Run`przykład nie `setInterval()` , `Task.Delay` lub `HttpClient.SendAsync` w programie .NET lub `setTimeout()` w języku JavaScript. Trwała struktura zadań wykonuje kod programu Orchestrator w pojedynczym wątku i nie może współdziałać z innymi wątkami, które mogą być zaplanowane przez inne asynchroniczne interfejsy API. W `InvalidOperationException` takim przypadku wyjątek jest zgłaszany.
 
-* **Należy unikać pętli nieskończonej** w kodzie programu orchestrator. Ponieważ trwałe Framework zadań zapisuje historię wykonywania w miarę postępów funkcji aranżacji, wejścia w nieskończoną pętlę może spowodować wystąpienie programu orchestrator mało pamięci. W przypadku scenariuszy nieskończoną pętlę przy użyciu interfejsów API takich jak [ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) (.NET) lub `continueAsNew` (JavaScript), aby ponownie uruchomić wykonywanie funkcji i odrzucić poprzednie historii wykonywania.
+* W kodzie programu Orchestrator **należy unikać nieskończonych pętli** . Ponieważ trwała struktura zadań zapisuje historię wykonywania w miarę postępów funkcji aranżacji, pętla nieskończona może spowodować, że w wystąpieniu programu Orchestrator brakuje pamięci. W przypadku scenariuszy pętli nieskończonej Użyj interfejsów API, takich jak [ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) ( `continueAsNew` .NET) lub (JavaScript), aby ponownie uruchomić wykonywanie funkcji i odrzucić poprzednią historię wykonania.
 
-* Funkcje programu orchestrator języka JavaScript nie może być `async`. Ich musi być zadeklarowana jako generator synchroniczne funkcje.
+* Funkcje programu Orchestrator w języku `async`JavaScript nie mogą być. Muszą być zadeklarowane jako funkcje generatora synchronicznego.
 
-Podczas tych ograniczeń może wydawać się czasochłonnym zadaniem w najpierw w praktyce, które nie są trudne do postępuj zgodnie z. Trwałe Framework zadań podejmuje próbę wykrycia naruszenia powyższych zasad i zgłasza `NonDeterministicOrchestrationException`. Jednak to zachowanie wykrywania jest największej staranności i nie zależą od niej.
-
-> [!NOTE]
-> Wszystkie te reguły dotyczą tylko funkcje wyzwalane `orchestrationTrigger` powiązania. Działanie funkcji wyzwalanej przez `activityTrigger` powiązanie i funkcje, które używają `orchestrationClient` powiązania ma nie tych ograniczeń.
-
-## <a name="durable-tasks-net"></a>Niezawodne zadania (.NET)
+Chociaż te ograniczenia mogą wydawać się zniechęcające na początku, w rzeczywistości nie są trudne do obserwowania. Nietrwała platforma zadań próbuje wykryć naruszenia powyższych reguł i wygeneruje `NonDeterministicOrchestrationException`. Takie zachowanie jest jednak najlepszym rozwiązaniem i nie powinno być od niego zależne.
 
 > [!NOTE]
-> W tej sekcji opisano szczegóły wewnętrznej implementacji trwałe Framework zadania. Funkcje trwałe można użyć, nie wiedząc o tym te informacje. Ma się tylko po to, aby lepiej zrozumieć zachowanie powtarzania.
+> Wszystkie te reguły mają zastosowanie tylko do funkcji wyzwalanych przez `orchestrationTrigger` powiązanie. Funkcje działania wyzwalane przez `activityTrigger` powiązanie oraz funkcje, które `orchestrationClient` używają powiązania, nie mają takich ograniczeń.
 
-Zadania, które mogą być bezpiecznie oczekiwana w funkcjach programu orchestrator są czasami określane jako *trwałe zadania*. Są to zadania, które są tworzone i zarządzane przez platformę, trwałe zadania. Należą do nich zadania zwracany przez `CallActivityAsync`, `WaitForExternalEvent`, i `CreateTimer`.
+## <a name="durable-tasks-net"></a>Zadania trwałe (.NET)
 
-Te *trwałe zadania* wewnętrznie są zarządzane za pomocą listy `TaskCompletionSource` obiektów. Podczas ponownego odtwarzania te zadania są tworzone w ramach wykonywania kodu programu orchestrator i zostały wykonane, ponieważ dyspozytor wylicza pokrewnych zdarzeń w historii. To wszystko odbywa się synchronicznie, dopóki cała historia zostały odtworzone, za pomocą pojedynczego wątku. Wszelkie trwałe zadania, które nie zostały zakończone przed końcem powtarzania historii ma odpowiednie działania przeprowadzone. Na przykład komunikat może być umieszczony w kolejce do wywołania funkcji działania.
+> [!NOTE]
+> W tej sekcji opisano wewnętrzne szczegóły implementacji dla trwałej struktury zadań. Możesz użyć Durable Functions bez znajomości tych informacji. Jest ona przeznaczona tylko do zrozumienia zachowania powtarzania.
 
-Opisane tu zachowanie wykonywania pomoże zrozumieć, dlaczego kod funkcji programu orchestrator nie należy nigdy nie `await` zadań nietrwałe: Wątek dyspozytora nie może czekać na jego zakończenie i wszelkie wywołania zwrotnego przez to zadanie może potencjalnie uszkodzić śledzenia stan funkcji programu orchestrator. Niektóre testy środowiska uruchomieniowego są stosowane do wypróbowania zapobiec takiej sytuacji.
+Zadania, które można bezpiecznie oczekiwać w funkcjach programu Orchestrator, są czasami określane jako *zadania trwałe*. Są to zadania, które są tworzone i zarządzane przez strukturę zadań trwałych. Przykłady to zadania zwracane przez `CallActivityAsync`, `WaitForExternalEvent`i `CreateTimer`.
 
-Jeśli chcesz dowiedzieć się więcej o tym, jak trwałe Framework zadanie wykonuje funkcje programu orchestrator, najlepiej, aby zrobić to zapoznać się z [trwałe zadań kod źródłowy w serwisie GitHub](https://github.com/Azure/durabletask). W szczególności, zobacz [TaskOrchestrationExecutor.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) i [TaskOrchestrationContext.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs)
+Te *zadania trwałe* są zarządzane wewnętrznie przy użyciu listy `TaskCompletionSource` obiektów. Podczas odtwarzania te zadania są tworzone w ramach wykonywania kodu programu Orchestrator i są wykonywane, gdy Dyspozytor wylicza odpowiednie zdarzenia historii. To wszystko zostało wykonane synchronicznie przy użyciu jednego wątku, dopóki cała historia nie zostanie powtórzona. Wszelkie zadania trwałe, które nie są wykonywane na końcu powtarzania historii, mają odpowiednie działania. Na przykład komunikat może być w kolejce do wywołania funkcji działania.
 
-## <a name="next-steps"></a>Kolejne kroki
+Opisane w tym miejscu zachowanie dotyczące wykonywania powinno ułatwić zrozumienie, dlaczego kod funkcji programu `await` Orchestrator nigdy nie jest nietrwały: wątek dyspozytora nie może czekać na ukończenie i każde wywołanie zwrotne przez to zadanie może spowodować uszkodzenie śledzenia stan funkcji programu Orchestrator. Niektóre testy środowiska uruchomieniowego są gotowe do tego celu.
+
+Jeśli chcesz uzyskać więcej informacji na temat sposobu wykonywania funkcji programu Orchestrator przez strukturę zadań trwałych, najlepszym rozwiązaniem jest zapoznaj się z [kodem źródłowym zadania trwałego w witrynie GitHub](https://github.com/Azure/durabletask). W szczególności zobacz [TaskOrchestrationExecutor.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) i [TaskOrchestrationContext.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs)
+
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o Zarządzanie wystąpieniami](durable-functions-instance-management.md)
+> [Informacje o zarządzaniu wystąpieniami](durable-functions-instance-management.md)

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/02/2019
+ms.date: 8/20/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 91dd397095718b3b43e41767af422801fd50b7f1
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 25fb94afdfe68510c66cff130a3abc8b74d7311d
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295680"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647322"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Alerty zabezpieczeń w Azure Security Center
 
@@ -50,7 +50,7 @@ W poniższych tematach opisano, jak Security Center wykorzystuje różne dane te
 
 ## <a name="what-are-alert-incidents"></a>Co to są zdarzenia związane z alertami?
 
-Zdarzenie zabezpieczeń to kolekcja powiązanych alertów, a nie każdego pojedynczego alertu. Security Center używa fuzji do skorelowania różnych alertów i niskiej dokładności sygnałów do zdarzeń zabezpieczeń.
+Zdarzenie zabezpieczeń to kolekcja powiązanych alertów, a nie każdego pojedynczego alertu. Security Center używa [korelacji alertów inteligentnych w chmurze](security-center-alerts-cloud-smart.md) w celu skorelowania różnych alertów i niskiej dokładności sygnałów do zdarzeń zabezpieczeń.
 
 Korzystając z incydentów, Security Center zapewnia jeden widok kampanii ataku i wszystkich powiązanych alertów. Ten widok umożliwia szybkie zrozumienie działań podejmowanych przez osobę atakującą oraz zasobów, których dotyczy problem. Aby uzyskać więcej informacji, zobacz [korelacja alertów inteligentnych w chmurze](security-center-alerts-cloud-smart.md).
 
@@ -73,7 +73,7 @@ Aby skonfigurować wykrywanie zaawansowane, przeprowadź uaktualnienie usługi A
 3. Na stronie Ustawienia wybierz pozycję **warstwa cenowa**. 
    Bezpłatna wersja próbna jest dostępna w danym miesiącu. Aby dowiedzieć się więcej, zobacz [stronę](https://azure.microsoft.com/pricing/details/security-center/)z cennikiem. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Ten artykuł zawiera informacje o tym, co to są alerty zabezpieczeń i różne typy alertów dostępne w Security Center. Więcej informacji znajduje się w następujących tematach:
 

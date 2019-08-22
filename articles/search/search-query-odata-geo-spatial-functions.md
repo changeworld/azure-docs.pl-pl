@@ -1,13 +1,13 @@
 ---
-title: Odwołanie do funkcji geoprzestrzenne OData — usługa Azure Search
-description: OData funkcje geoprzestrzenne, geo.distance i geo.intersects w zapytaniach usługi Azure Search.
+title: Odwołanie do funkcji geograficznej OData — Azure Search
+description: Funkcje geoprzestrzenne OData, geograficzne. odległość i geograficznie. przecinają się w Azure Search zapytaniach.
 ms.date: 06/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
 author: brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,22 +19,22 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 0ce63ab1143c784eb3e10f47c20ef2b5034d63a7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9585a9a7ea976ed32ccb8eed1e69877339196f87
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079797"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647579"
 ---
-# <a name="odata-geo-spatial-functions-in-azure-search---geodistance-and-geointersects"></a>Funkcje geoprzestrzenne OData w usłudze Azure Search - `geo.distance` i `geo.intersects`
+# <a name="odata-geo-spatial-functions-in-azure-search---geodistance-and-geointersects"></a>Funkcje geoprzestrzenne OData w Azure Search `geo.distance` i`geo.intersects`
 
-Usługa Azure Search obsługuje zapytania geoprzestrzenne w [wyrażenia filtru OData](query-odata-filter-orderby-syntax.md) za pośrednictwem `geo.distance` i `geo.intersects` funkcji. `geo.distance` Funkcja zwraca odległość w kilometrach między dwoma punktami, jednego pola lub zmiennej zakresu i stała jest przekazywany jako część filtru. `geo.intersects` Funkcja zwraca `true` Jeśli dany punkt znajduje się w danym wielokąta, w której punkt jest zmienną pola lub zakresu i Wielokąt jest określony jako stała przekazanych jako część filtru.
+Azure Search obsługuje zapytania przestrzenne geograficznie w [wyrażeniach filtru OData](query-odata-filter-orderby-syntax.md) za `geo.intersects` pośrednictwem `geo.distance` funkcji i. `geo.distance` Funkcja zwraca odległość w kilometrach między dwoma punktami, jedną jako zmienną pola lub zakres i jedną z nich jest stałą przekazaną w ramach filtra. `geo.intersects` Funkcja zwraca`true` , jeśli dany punkt znajduje się w obrębie danego wielokąta, gdzie punkt jest zmienną pola lub zakresu, a Wielokąt jest określony jako element stały przekazany jako część filtru.
 
-`geo.distance` Funkcji można używać w [ **$orderby** parametru](search-query-odata-orderby.md) sortowanie wyników wyszukiwania przez odległość od danego punktu. Składnia `geo.distance` w **$orderby** jest taka sama jak w **$filter**. Korzystając z `geo.distance` w **$orderby**, pole, którego dotyczy musi być typu `Edm.GeographyPoint` i musi być również **sortowanie**.
+Funkcji można także użyć w parametrze [ **$OrderBy** ](search-query-odata-orderby.md) , aby posortować wyniki wyszukiwania według odległości od danego punktu. `geo.distance` Składnia dla `geo.distance` w **$OrderBy** jest taka sama jak w **$Filter**. W przypadku `geo.distance` korzystania z programu w **$OrderBy**pole, do którego ma zastosowanie, musi `Edm.GeographyPoint` być typu, a także do **sortowania**.
 
 ## <a name="syntax"></a>Składnia
 
-Następujące EBNF ([rozszerzony formularz Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definiuje gramatyki `geo.distance` i `geo.intersects` geoprzestrzenne wartości, na których działają, a także funkcje:
+Następujący EBNF ([Extended back-Naura form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definiuje gramatykę `geo.distance` i funkcje oraz `geo.intersects` wartości przestrzenne, na których działają:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -58,69 +58,69 @@ geo_polygon ::=
 lon_lat_list ::= lon_lat(',' lon_lat)*
 ```
 
-Diagram składni interaktywne jest również dostępna:
+Dostępny jest również interaktywny diagram składni:
 
 > [!div class="nextstepaction"]
-> [Diagram składni OData dla usługi Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#geo_distance_call)
+> [Diagram składni OData dla Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#geo_distance_call)
 
 > [!NOTE]
-> Zobacz [dokumentacja składni wyrażenia OData dla usługi Azure Search](search-query-odata-syntax-reference.md) dla EBNF ukończone.
+> Zapoznaj się z informacjami o [składni wyrażenia OData dla Azure Search](search-query-odata-syntax-reference.md) , aby uzyskać pełną EBNF.
 
-### <a name="geodistance"></a>geo.distance
+### <a name="geodistance"></a>Lokalizacja geograficzna
 
-`geo.distance` Funkcja przyjmuje dwa parametry typu `Edm.GeographyPoint` i zwraca `Edm.Double` wartość, która jest odległość między nimi w kilometrach. To różni się od innych usług, które obsługują geoprzestrzenne operacje usługi OData, które zwracają zazwyczaj odległości liczniki.
+Funkcja przyjmuje dwa parametry typu `Edm.GeographyPoint` i zwraca `Edm.Double` wartość, która jest odległości między nimi w kilometrach. `geo.distance` Różni się to od innych usług, które obsługują operacje przestrzenne w geograficznie, które zwykle zwracają odległości w licznikach.
 
-Jeden z parametrów do `geo.distance` musi być stałą punkt lokalizacji geograficznej i innych musi być ścieżką pola (lub zmienną zakresu, w przypadku filtr Iterowanie pola typu `Collection(Edm.GeographyPoint)`). Kolejność tych parametrów nie ma znaczenia.
+Jeden z parametrów `geo.distance` musi być stałą punktu geograficznego, a drugi musi być ścieżką pola (lub zmienną zakresu w przypadku filtrowania filtru dla pola typu `Collection(Edm.GeographyPoint)`). Kolejność tych parametrów nie ma znaczenia.
 
-Stała punkt lokalizacji geograficznej ma postać `geography'POINT(<longitude> <latitude>)'`, której długość i szerokość geograficzną stałych numerycznych.
+Stała punktu geograficznego ma postać `geography'POINT(<longitude> <latitude>)'`, gdzie długość geograficzna i Szerokość geograficzna są stałymi liczbowymi.
 
 > [!NOTE]
-> Korzystając z `geo.distance` w filtrze, możesz porównać odległość zwrócona przez funkcję przy użyciu stałej `lt`, `le`, `gt`, lub `ge`. Operatory `eq` i `ne` nie są obsługiwane podczas porównywania odległości. Na przykład, jest to poprawne użycie `geo.distance`: `$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 5`.
+> W przypadku `geo.distance` użycia w filtrze należy porównać odległość zwracaną przez funkcję ze stałą przy użyciu `lt`, `le`, `gt`, lub `ge`. Operatory `eq` i`ne` nie są obsługiwane w przypadku porównywania odległości. Na przykład jest to poprawne użycie programu `geo.distance`:. `$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 5`
 
-### <a name="geointersects"></a>Geo.intersects
+### <a name="geointersects"></a>geograficznie. intersects
 
-`geo.intersects` Funkcja przyjmuje zmienną typu `Edm.GeographyPoint` i stałą `Edm.GeographyPolygon` i zwraca `Edm.Boolean`  --  `true` Jeśli punkt znajduje się w granicach wielokąta `false` inaczej.
+`Edm.Boolean`  --  `false` Funkcja przyjmuje zmienną typu `Edm.GeographyPoint` i stałą `Edm.GeographyPolygon` i zwraca wartość ,jeślipunktznajdujesięwgranicachwielokąta,wprzeciwnymrazie.`true` `geo.intersects`
 
-Wielokąt jest dwuwymiarowy powierzchni przechowywany jako sekwencja punktów Definiowanie otaczający pierścienia (zobacz [przykłady](#examples) poniżej). Wielokąt musi zostać zamknięty, czyli pierwszy i ostatni punkt zestawów musi być taka sama. [Punkty wielokąta musi znajdować się w kolejności do ruchu wskazówek zegara](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
+Wielokąt jest powierzchnią dwuwymiarową przechowywaną jako sekwencja punktów definiujących pierścień ograniczenia (Zobacz poniższe [przykłady](#examples) ). Wielokąt musi być zamknięty, co oznacza, że pierwszy i ostatni zestaw punktów muszą być takie same. [Punkty w wielokąta muszą znajdować się w porządku w lewo](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
 
-### <a name="geo-spatial-queries-and-polygons-spanning-the-180th-meridian"></a>Zapytania geoprzestrzenne i wielokątów obejmujące 180th południków
+### <a name="geo-spatial-queries-and-polygons-spanning-the-180th-meridian"></a>Zapytania przestrzenne geograficznie i wielokąty obejmujące 180th południka
 
-Dla zapytania geoprzestrzenne wiele bibliotek formułowania kwerendę, która obejmuje 180th południków (w pobliżu linii zmiany) jest off-limits lub wymaga obejście tego problemu, takie jak podział wielokąta na dwa, jeden po obu stronach południka.
+W przypadku wielu geograficznie dowolnych bibliotek zapytań, które zawierają 180th południa (blisko linii zmiany), jest limitów lub wymaga obejścia, takiego jak dzielenie wielokąta na dwie, jeden po obu stronach południka.
 
-W usłudze Azure Search, zapytania geoprzestrzenne, obejmujących 180 stopni długości geograficznej będzie działać zgodnie z oczekiwaniami, jeśli kształt zapytania jest prostokątnym zestawem i Twoje współrzędne Wyrównaj do układu siatki wzdłuż długości i szerokości geograficznej (na przykład `geo.intersects(location, geography'POLYGON((179 65, 179 66, -179 66, -179 65, 179 65))'`). W przeciwnym razie w przypadku innych niż prostokątne lub niewyrównanych kształtów, należy wziąć pod uwagę podejście split wielokąta.  
+W Azure Search zapytania przestrzenne, które zawierają 180-stopniowy rozmiar geograficzna, będą działały zgodnie z oczekiwaniami, jeśli kształt zapytania jest prostokątny, a współrzędne są wyrównane do układu siatki wzdłuż długości `geo.intersects(location, geography'POLYGON((179 65, 179 66, -179 66, -179 65, 179 65))'`i szerokości geograficznej (na przykład). W przeciwnym razie dla kształtów nieprostokątnych lub niewyrównanych Rozważmy podejście Split wielokąt.  
 
-### <a name="geo-spatial-functions-and-null"></a>Funkcje geoprzestrzenne i `null`
+### <a name="geo-spatial-functions-and-null"></a>Funkcje przestrzenne i`null`
 
-Jak wszystkich innych pól niż kolekcji w usłudze Azure Search pola typu `Edm.GeographyPoint` może zawierać `null` wartości. Gdy usługa Azure Search szacują `geo.intersects` dla pola, które jest `null`, wynikiem zawsze będzie `false`. Zachowanie `geo.distance` w tym przypadku zależy od kontekstu:
+Podobnie jak wszystkie inne pola niebędące kolekcjami w Azure Search, `Edm.GeographyPoint` pola typu `null` mogą zawierać wartości. Gdy Azure Search oblicza `geo.intersects` dla pola, które jest `null`, wynik będzie zawsze `false`. Zachowanie `geo.distance` w tym przypadku zależy od kontekstu:
 
-- W filtrach `geo.distance` z `null` wyniki w polu `null`. Oznacza to, ponieważ dokument nie będą zgodne `null` w porównaniu do żadnych innych niż null wartość będącą wynikiem oceny `false`.
-- Podczas sortowania wyników za pomocą **$orderby**, `geo.distance` z `null` pól wyników w możliwie największy odstęp. Mniejsza od wszystkich innych sortowania dokumentów za pomocą takiego pola podczas kierunek sortowania `asc` jest używana (ustawienie domyślne) i jest wyższy niż wszystkie inne, gdy jest kierunek `desc`.
+- W filtrach `geo.distance` , `null` pole powoduje `null`. Oznacza to, że dokument będzie niezgodny `null` , ponieważ w porównaniu do dowolnej wartości innej niż null `false`jest obliczany.
+- Podczas sortowania wyników przyużyciu $OrderBy `geo.distance` , `null` pole powoduje maksymalną możliwą odległość. Dokumenty z takimi polami będą sortowane mniej niż wszystkie inne osoby, gdy `asc` jest używany kierunek sortowania (wartość domyślna) i większe niż wszystkie inne, gdy kierunek `desc`jest.
 
 ## <a name="examples"></a>Przykłady
 
 ### <a name="filter-examples"></a>Przykłady filtrów
 
-Znajdź wszystkie hoteli w ciągu 10 km od punktu danego odwołania (gdzie lokalizacji jest polem typu `Edm.GeographyPoint`):
+Znajdź wszystkie hotele w promieniu 10 kilometrów danego punktu odwołania (lokalizacja jest polem typu `Edm.GeographyPoint`):
 
     geo.distance(location, geography'POINT(-122.131577 47.678581)') le 10
 
-Znajdź wszystkie hotele, w ramach danego okienka ekranu, określane jako wielokąta (gdzie lokalizacji jest polem typu `Edm.GeographyPoint`). Należy pamiętać, że Wielokąt jest zamknięty (zestawy pierwszy i ostatni punkt muszą być takie same) i [punkty muszą być wymienione w kolejności do ruchu wskazówek zegara](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
+Znajdź wszystkie hotele w obrębie danego okienka ekranu opisane jako wielokąt (lokalizacja jest polem typu `Edm.GeographyPoint`). Należy zauważyć, że Wielokąt jest zamknięty (pierwszy i ostatni zestaw punktów musi być taki sam), a [punkty muszą być wymienione w porządku w lewo](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
 
     geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
 
-### <a name="order-by-examples"></a>Przykłady klauzuli ORDER by
+### <a name="order-by-examples"></a>Order — przykłady
 
-Sortuj malejąco według hotele `rating`, następnie rosnącej według odległości od danej współrzędnych:
+Sortuj Hotele malejąco `rating`według, a następnie rosnąco według odległości od danego współrzędnych:
 
     rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
 
-Sortowanie hotele malejąco według `search.score` i `rating`, a następnie w polu rosnąco przez odległości od danej współrzędne tak, aby między dwa hotele z ocenami identyczne, znajdującego się najbliżej jest wymienione jako pierwsze:
+Sortuj Hotele w kolejności malejącej `search.score` według `rating`i, a następnie w kolejności rosnącej według odległości od podanych współrzędnych, tak aby między dwiema hoteli z identycznymi klasyfikacjami była wyświetlana pierwsza z nich:
 
     search.score() desc,rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
 
-## <a name="next-steps"></a>Kolejne kroki  
+## <a name="next-steps"></a>Następne kroki  
 
-- [Filtry w usłudze Azure Search](search-filters.md)
-- [Omówienie języka wyrażenia OData dla usługi Azure Search](query-odata-filter-orderby-syntax.md)
-- [Dokumentacja składni wyrażenia OData dla usługi Azure Search](search-query-odata-syntax-reference.md)
-- [Wyszukiwanie w dokumentach &#40;interfejsu API REST usługi Azure Search&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Filtry w Azure Search](search-filters.md)
+- [Przegląd języka wyrażenia OData dla Azure Search](query-odata-filter-orderby-syntax.md)
+- [Odwołanie do składni wyrażenia OData dla Azure Search](search-query-odata-syntax-reference.md)
+- [Wyszukaj dokumenty &#40;Azure Search interfejs API REST usługi&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

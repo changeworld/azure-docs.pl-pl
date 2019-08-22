@@ -1,23 +1,23 @@
 ---
-title: Rozwiązanie VMware według CloudSimple — publiczny adres IP platformy Azure
-description: Dowiedz się więcej na temat publicznych adresów IP i ich korzyści dla rozwiązań VMware według CloudSimple
+title: Rozwiązanie VMware firmy Azure według CloudSimple — publiczny adres IP
+description: Dowiedz się więcej o publicznych adresach IP i ich korzyściach na platformie Azure VMware przez CloudSimple
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/10/2019
+ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 29d2bdb75a7f4409e6b3ffee2608cfe7adde6b1f
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 147ab6b5ace4493e1a0b303c320cb2e81d829b29
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812525"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877680"
 ---
 # <a name="cloudsimple-public-ip-address-overview"></a>Publiczny adres IP CloudSimple — Omówienie
 
-Publiczny adres IP umożliwia zasobom internetowym komunikowanie się z ruchem przychodzącym do zasobów w chmurze prywatnej w prywatnym adresie IP. Prywatny adres IP to maszyna wirtualna lub programowy moduł równoważenia obciążenia. Prywatny adres IP znajduje się w prywatnej chmurze vCenter. Publiczny adres IP umożliwia udostępnianie usług uruchomionych w chmurze prywatnej w Internecie.
+Publiczny adres IP umożliwia zasobom internetowym komunikowanie się z zasobami w chmurze prywatnej w prywatnym adresie IP. Prywatny adres IP to maszyna wirtualna lub programowy moduł równoważenia obciążenia w usłudze vCenter w chmurze prywatnej. Publiczny adres IP umożliwia udostępnianie usług uruchomionych w chmurze prywatnej w Internecie.
 
 Publiczny adres IP jest przydzielany do prywatnego adresu IP, dopóki nie zostanie przypisany. Publiczny adres IP można przypisać tylko do jednego prywatnego adresu IP.
 
@@ -33,4 +33,4 @@ Użycie publicznego adresu IP do komunikacji przychodzącej zapewnia następują
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się, jak [przydzielić publiczny adres IP](https://docs.azure.cloudsimple.com/public-ips/)
+* Dowiedz się, jak [przydzielić publiczny adres IP](public-ips.md)

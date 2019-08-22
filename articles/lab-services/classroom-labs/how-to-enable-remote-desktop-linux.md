@@ -1,6 +1,6 @@
 ---
-title: Włączanie pulpitu zdalnego dla systemu Linux w usłudze Azure Lab Services | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak włączyć Pulpit zdalny dla maszyn wirtualnych systemu Linux w laboratorium w usłudze Azure Lab Services.
+title: Włączanie pulpitu zdalnego dla systemu Linux w Azure Lab Services | Microsoft Docs
+description: Dowiedz się, jak włączyć pulpit zdalny dla maszyn wirtualnych z systemem Linux w laboratorium w Azure Lab Services.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -11,85 +11,69 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/24/2019
+ms.date: 08/20/2019
 ms.author: spelluru
-ms.openlocfilehash: 389d467bd9672743d4a086e8a1c505fb0366dba7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d08105e78274300eb7ee0a8c0ad146a737d0ffa
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237109"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69644952"
 ---
-# <a name="enable-and-use-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>Włączanie i używanie usług pulpitu zdalnego dla maszyn wirtualnych systemu Linux w laboratorium w usłudze Azure Lab Services
+# <a name="enable-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>Włącz pulpit zdalny dla maszyn wirtualnych z systemem Linux w laboratorium w Azure Lab Services
 W tym artykule przedstawiono sposób wykonywania następujących zadań:
 
-- Włączanie pulpitu zdalnego dla maszyny Wirtualnej systemu Linux
-- Jak dla nauczycieli może łączyć się z szablonu maszyny Wirtualnej za pomocą połączenia pulpitu zdalnego (RDP).
-- Jak studenci się połączyć z uczniów maszyny Wirtualnej za pośrednictwem protokołu RDP
+- Włączanie pulpitu zdalnego dla maszyny wirtualnej z systemem Linux
+- Jak nauczyciel może połączyć się z szablonową maszyną wirtualną za pośrednictwem Podłączanie pulpitu zdalnego (RDP).
 
-## <a name="enable-remote-desktop-for-linux-vm"></a>Włączanie pulpitu zdalnego dla maszyny Wirtualnej systemu Linux
-Podczas tworzenia laboratorium, aby umożliwić nauczycielom **połączeń usług pulpitu zdalnego** dla **Linux** obrazów. **Podłączanie pulpitu zdalnego włączyć** opcja jest wyświetlana po wybraniu obrazu systemu Linux dla szablonu. Gdy ta opcja jest włączona, nauczyciele mogą łączyć się szablonu maszyny Wirtualnej i maszyn wirtualnych dla uczniów, za pośrednictwem protokołu RDP (pulpitu zdalnego). 
+## <a name="enable-remote-desktop-for-linux-vm"></a>Włączanie pulpitu zdalnego dla maszyny wirtualnej z systemem Linux
+Podczas tworzenia laboratorium nauczyciele mogą włączyć Podłączanie **pulpitu zdalnego** dla obrazów systemu **Linux** . Opcja **włącz Podłączanie pulpitu zdalnego** jest wyświetlana, gdy dla szablonu wybrano obraz systemu Linux. Gdy ta opcja jest włączona, nauczyciele mogą łączyć się z MASZYNami wirtualnymi z szablonami i uczniami za pośrednictwem protokołu RDP (Pulpit zdalny). 
 
-![Włączanie połączeń usług pulpitu zdalnego dla obrazu systemu Linux](../media/how-to-enable-remote-desktop-linux/enable-rdp-option.png)
+![Włączanie połączenia pulpitu zdalnego dla obrazu systemu Linux](../media/how-to-enable-remote-desktop-linux/enable-rdp-option.png)
 
-Na **Włączanie Podłączanie pulpitu zdalnego** okno komunikatu, wybierz opcję **Kontynuuj przy użyciu pulpitu zdalnego**. 
+W oknie dialogowym **Włączanie komunikatu Podłączanie pulpitu zdalnego** wybierz pozycję **Kontynuuj z pulpit zdalny**. 
 
-![Włączanie połączeń usług pulpitu zdalnego dla obrazu systemu Linux](../media/how-to-enable-remote-desktop-linux/enabling-remote-desktop-connection-dialog.png)
+![Włączanie połączenia pulpitu zdalnego dla obrazu systemu Linux](../media/how-to-enable-remote-desktop-linux/enabling-remote-desktop-connection-dialog.png)
 
 > [!IMPORTANT] 
-> Włączanie **połączeń usług pulpitu zdalnego** tylko otwiera **RDP** port na maszynach z systemem Linux. Możesz jako nauczyciel, połącz się po raz pierwszy przy użyciu protokołu SSH maszyny z systemem Linux i zainstalować pakiety protokołu RDP i graficznego interfejsu użytkownika, dzięki czemu można nawiązać połączenie później przy użyciu protokołu RDP maszyny z systemem Linux. Następnie możesz **publikowania** obrazu tak, aby uczniowie może protokołu RDP w systemie uczniów maszyn wirtualnych systemu Linux. 
+> Włączenie usługi **Podłączanie pulpitu zdalnego** otwiera tylko port **RDP** na maszynach z systemem Linux. Po raz pierwszy Nawiąż połączenie z maszyną z systemem Linux przy użyciu protokołu SSH, a następnie zainstaluj pakiety RDP i GUI, aby można było połączyć się z maszyną z systemem Linux przy użyciu protokołu RDP. Następnie opublikujesz obraz tak, aby studenci mogli na maszynach wirtualnych z systemem Linux mieć protokół RDP. 
 
 ## <a name="supported-operating-systems"></a>Obsługiwane systemy operacyjne
-Obecnie połączeń usług pulpitu zdalnego jest obsługiwana dla następujących systemów operacyjnych:
+Obecnie jest obsługiwane Podłączanie pulpitu zdalnego dla następujących systemów operacyjnych:
 
-- openSUSE Leap 42.3
-- Opartych na systemie centOS w wersji 7.5
-- Debian 9 "Stretch."
-- Ubuntu Server 16.04 LTS
+- openSUSE przestępnie 42,3
+- CentOS — based 7,5
+- Debian 9 "rozciąganie"
+- Ubuntu Server 16,04 LTS
 
-## <a name="teachers-connecting-to-the-template-vm-using-rdp"></a>Nauczyciele nawiązywania połączenia z szablonu maszyny Wirtualnej przy użyciu protokołu RDP
-Nauczyciele musi nawiązać połączenie z szablonu maszyny Wirtualnej przy użyciu protokołu SSH, najpierw, a następnie zainstalować pakiety protokołu RDP i graficznego interfejsu użytkownika na nim. Następnie nauczycieli następujące kroki służą połączyć się z maszyn wirtualnych systemu Linux przy użyciu protokołu RDP: 
+## <a name="teachers-connecting-to-the-template-vm-using-rdp"></a>Nauczyciele łączące się z maszyną wirtualną przy użyciu protokołu RDP
+Nauczyciele muszą połączyć się z szablonową maszyną wirtualną przy użyciu protokołu SSH, a następnie zainstalować na niej pakiety RDP i GUI. Następnie nauczyciele mogą połączyć się z maszynami wirtualnymi z systemem Linux przy użyciu protokołu RDP, wykonując następujące czynności: 
 
-Zostanie wyświetlony **pulpitu zdalnego** opcję nawiązywania połączenia z szablonu maszyny Wirtualnej w czasie tworzenia laboratorium. 
+Zobaczysz opcję **pulpit zdalny** , aby połączyć się z SZABLONową maszyną wirtualną w momencie tworzenia laboratorium. 
 
-![Łączenie do szablonu, za pośrednictwem protokołu RDP w czasie tworzenia](../media/how-to-enable-remote-desktop-linux/connect-at-creation.png)
+![Nawiązywanie połączenia z szablonem za pośrednictwem protokołu RDP w momencie tworzenia](../media/how-to-enable-remote-desktop-linux/connect-at-creation.png)
 
-Zostanie wyświetlony **pulpitu zdalnego** opcja na stronie głównej laboratorium, po utworzeniu laboratorium i szablonu maszyny Wirtualnej jest uruchomiona. Jeśli nie jest już uruchomiona, uruchom szablon maszyny Wirtualnej. 
+Na stronie głównej laboratorium zobaczysz opcję **pulpit zdalny** po utworzeniu laboratorium i uruchomieniu szablonu VM. Uruchom szablonową maszynę wirtualną, jeśli nie została już uruchomiona. 
 
-![Łączenie do szablonu, za pośrednictwem protokołu RDP po utworzeniu laboratorium](../media/how-to-enable-remote-desktop-linux/rdp-after-lab-creation.png) 
+![Nawiązywanie połączenia z szablonem za pośrednictwem protokołu RDP po utworzeniu laboratorium](../media/how-to-enable-remote-desktop-linux/rdp-after-lab-creation.png) 
 
-Aby uzyskać więcej informacji dotyczących nawiązywania połączenia z maszyną wirtualną przy użyciu klienta SSH lub RDP Zobacz [nawiąż połączenie przy użyciu klienta SSH lub RDP]((#connect-using-ssh-or-rdp). 
+Aby uzyskać więcej informacji na temat nawiązywania połączenia z maszyną wirtualną przy użyciu protokołu SSH lub RDP, zobacz [nawiązywanie połączenia przy użyciu protokołu SSH lub RDP] ((#connect-using-SSH-lub-RDP). 
 
-## <a name="teachers-connecting-to-a-student-vm-using-rdp"></a>Nauczyciele nawiązywania połączenia z student maszyny Wirtualnej przy użyciu protokołu RDP
-Nauczyciel/Profesor mogą łączyć się student maszyny Wirtualnej z, przełączając się **maszyn wirtualnych** wyświetlić, a następnie wybierając **połączyć** ikony. Wcześniej należy nauczycieli **publikowania** obrazu szablonu za pomocą protokołu RDP i graficzny interfejs użytkownika pakietów zainstalowanych na nim. 
+## <a name="teachers-connecting-to-a-student-vm-using-rdp"></a>Nauczyciele łączące się z maszyną wirtualną uczniów przy użyciu protokołu RDP
+Nauczyciel/profesor może połączyć się z maszyną wirtualną ucznia, przełączając się do widoku **Virtual Machines** i wybierając ikonę **Połącz** . Wcześniej nauczyciele muszą **opublikować** obraz szablonu z zainstalowanymi pakietami RDP i graficznym interfejsem użytkownika. 
 
-![Nauczyciele nawiązywania połączenia z maszyny Wirtualnej dla uczniów](../media/how-to-enable-remote-desktop-linux/teacher-connect-to-student-vm.png)
+![Nauczyciele łączące się z maszyną wirtualną ucznia](../media/how-to-enable-remote-desktop-linux/teacher-connect-to-student-vm.png)
 
-Aby uzyskać więcej informacji dotyczących nawiązywania połączenia z maszyną wirtualną przy użyciu klienta SSH lub RDP Zobacz [nawiąż połączenie przy użyciu klienta SSH lub RDP]((#connect-using-ssh-or-rdp). 
+Aby uzyskać więcej informacji na temat nawiązywania połączenia z maszyną wirtualną przy użyciu protokołu SSH lub RDP, zobacz [nawiązywanie połączenia przy użyciu protokołu SSH lub RDP] ((#connect-using-SSH-lub-RDP). 
 
-## <a name="students-connecting-to-the-student-vm"></a>Studenci nawiązywania połączenia z maszyny Wirtualnej dla uczniów
-Student może protokołu RDP w systemie do ich maszyn wirtualnych systemu Linux po właściciel laboratorium (nauczyciel/Profesor) **publikuje** szablonu maszyny Wirtualnej przy użyciu protokołu RDP i graficzny interfejs użytkownika pakiety zainstalowane na komputerze. Oto konkretne kroki: 
-
-1. Gdy Uczeń loguje się do portalu Labs bezpośrednio (`https://labs.azure.com`) lub za pomocą łącza rejestracji (`https://labs.azure.com/register/<registrationCode>`), dla każdego ucznia laboratorium ma dostęp do jest wyświetlany Kafelek. 
-2. Na kafelku, wybierz **Start** Jeśli maszyna wirtualna jest zatrzymana. 
-3. Wybierz przycisk **Połącz**. Zostaną wyświetlone dwie opcje, aby nawiązać połączenie z maszyną Wirtualną: **SSH** i **pulpitu zdalnego**.
-
-    ![Student maszyny Wirtualnej — opcje połączenia](../media/how-to-enable-remote-desktop-linux/student-vm-connect-options.png)
-
-## <a name="connect-using-ssh-or-rdp"></a>Nawiązywanie połączenia przy użyciu klienta SSH lub RDP
-Jeśli wybierzesz **SSH** opcji, zapoznaj się z poniższymi **nawiązywanie połączenia z maszyną wirtualną** okno dialogowe:  
+## <a name="connect-using-ssh-or-rdp"></a>Nawiązywanie połączenia przy użyciu protokołu SSH lub RDP
+W przypadku wybrania opcji **SSH** zostanie wyświetlone okno dialogowe **Połącz z maszyną wirtualną** :  
 
 ![Parametry połączenia SSH](../media/how-to-enable-remote-desktop-linux/ssh-connection-string.png)
 
-Wybierz **kopiowania** przycisk znajdujący się obok pola tekstowego, skopiuj go do Schowka. Zapisz parametry połączenia SSH. Użyj tych parametrów połączenia z poziomu terminalu SSH (takich jak [Putty](https://www.putty.org/)) nawiązywania połączenia z maszyną wirtualną.
+Wybierz przycisk **Kopiuj** obok pola tekstowego, aby skopiować go do Schowka. Zapisz parametry połączenia SSH. Użyj tych parametrów połączenia z terminalu SSH (jak tutaj [](https://www.putty.org/)), aby nawiązać połączenie z maszyną wirtualną.
 
-Jeśli wybierzesz **RDP** opcji, plik RDP jest pobierany na swojej maszynie. Zapisz go i otwórz go, aby połączyć się z komputerem. 
+W przypadku wybrania opcji **RDP** na komputerze zostanie pobrany plik RDP. Zapisz go i Otwórz, aby nawiązać połączenie z maszyną. 
 
-## <a name="next-steps"></a>Kolejne kroki
-Zobacz następujące artykuły:
-
-- [As an admin, create and manage lab accounts (Tworzenie kont laboratoriów i zarządzanie nimi jako administrator)](how-to-manage-lab-accounts.md)
-- [As a lab owner, create and manage labs (Tworzenie laboratoriów i zarządzanie nimi jako właściciel laboratorium)](how-to-manage-classroom-labs.md)
-- [As a lab owner, set up and publish templates (Konfigurowanie i tworzenie szablonów jako właściciel laboratorium)](how-to-create-manage-template.md)
-- [Jako użytkownik laboratorium dostęp do laboratoriów na potrzeby zajęć](how-to-use-classroom-lab.md)
-
+## <a name="next-steps"></a>Następne kroki
+Po włączeniu funkcji Podłączanie pulpitu zdalnego przez instruktora studenci mogą łączyć się z maszynami wirtualnymi za pośrednictwem protokołu RDP/SSH. Aby uzyskać więcej informacji, zobacz [Korzystanie z pulpitu zdalnego dla maszyn wirtualnych z systemem Linux w laboratorium z klasą](how-to-use-remote-desktop-linux-student.md). 

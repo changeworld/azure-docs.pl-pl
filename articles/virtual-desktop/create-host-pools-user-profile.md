@@ -1,71 +1,71 @@
 ---
-title: Skonfiguruj udział profilu użytkownika dla puli hosta Windows wirtualnego pulpitu (wersja zapoznawcza) — platformy Azure
-description: Jak skonfigurować kontener profilu FSLogix puli hosta Windows wirtualnego Desktop w wersji zapoznawczej.
+title: Tworzenie kontenera profilu FSLogix dla puli hostów przy użyciu udziału plików opartego na maszynach wirtualnych — Azure
+description: Jak skonfigurować kontener profilu FSLogix dla puli hostów systemu Windows Virtual Desktop w wersji zapoznawczej przy użyciu udziału plików opartego na maszynie wirtualnej.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/05/2019
+ms.date: 08/20/2019
 ms.author: helohr
-ms.openlocfilehash: 692902c28b336dd46a7c6f00d5cf5a61ee9f7328
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: cf3d682e4d0c68822267a4e63846d80b632cbdcc
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67619102"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876792"
 ---
-# <a name="set-up-a-user-profile-share-for-a-host-pool"></a>Konfigurowanie udziału profilu użytkownika dla puli hostów
+# <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Tworzenie kontenera profilu dla puli hostów przy użyciu udziału plików
 
-Usługa Windows wirtualnego pulpitu (wersja zapoznawcza) oferuje FSLogix profilu kontenery jako rozwiązanie profilu użytkownika zalecane. Nie zaleca się, że przy użyciu rozwiązania dysku profilu użytkownika (UPD), które będą przestarzałe w przyszłych wersjach Windows pulpitu wirtualnego.
+Usługa Windows Virtual Desktop w wersji zapoznawczej oferuje kontenery profilu FSLogix jako zalecane rozwiązanie profilu użytkownika. Nie zalecamy korzystania z rozwiązania profilu użytkownika (UPD), które będzie przestarzałe w przyszłych wersjach pulpitu wirtualnego systemu Windows.
 
-W tej sekcji opisano, jak skonfigurować udział FSLogix profilu kontener dla zestawu hostów. Ogólne dokumentację dotyczącą FSLogix, zobacz [witryny FSLogix](https://docs.fslogix.com/).
+W tym artykule opisano sposób konfigurowania udziału kontenera FSLogix profile dla puli hostów przy użyciu udziału plików opartego na maszynach wirtualnych. Więcej dokumentacji FSLogix można znaleźć w [witrynie FSLogix](https://docs.fslogix.com/).
 
-## <a name="create-a-new-virtual-machine-that-will-act-as-a-file-share"></a>Tworzenie nowej maszyny wirtualnej, który będzie pełnił rolę udziału plików
+## <a name="create-a-new-virtual-machine-that-will-act-as-a-file-share"></a>Utwórz nową maszynę wirtualną, która będzie pełnić rolę udziału plików
 
-Podczas tworzenia maszyny wirtualnej, należy umieścić go w obu tej samej sieci wirtualnej jako maszyny wirtualne w puli hosta lub w sieci wirtualnej, który ma łączność do hostowania maszyn wirtualnych w puli. Można utworzyć maszynę wirtualną na wiele sposobów:
+Podczas tworzenia maszyny wirtualnej należy ją umieścić w tej samej sieci wirtualnej co maszyny wirtualne puli hostów lub w sieci wirtualnej, która ma łączność z maszynami wirtualnymi puli hostów. Maszynę wirtualną można utworzyć na wiele sposobów:
 
-- [Utwórz maszynę wirtualną z obrazu w galerii systemu Azure](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#create-virtual-machine)
+- [Tworzenie maszyny wirtualnej na podstawie obrazu z galerii platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#create-virtual-machine)
 - [Tworzenie maszyny wirtualnej na podstawie obrazu zarządzanego](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed)
-- [Utwórz maszynę wirtualną z obrazu niezarządzanego](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
+- [Tworzenie maszyny wirtualnej na podstawie obrazu niezarządzanego](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
 
-Po utworzeniu maszyny wirtualnej, należy je przyłączania do domeny, wykonując następujące czynności:
+Po utworzeniu maszyny wirtualnej Dołącz ją do domeny, wykonując następujące czynności:
 
-1. [Łączenie z maszyną wirtualną](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) przy użyciu poświadczeń dostarczonych podczas tworzenia maszyny wirtualnej.
-2. Na maszynie wirtualnej Uruchom **Panelu sterowania** i wybierz **systemu**.
-3. Wybierz **nazwy komputera**, wybierz opcję **zmiany ustawień**, a następnie wybierz pozycję **zmiany...**
-4. Wybierz **domeny** , a następnie wprowadź domeny usługi Active Directory w sieci wirtualnej.
-5. Uwierzytelnianie przy użyciu konta domeny, które ma uprawnienia do przyłączania do domeny komputerów.
+1. [Połącz](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) się z maszyną wirtualną przy użyciu poświadczeń podanych podczas tworzenia maszyny wirtualnej.
+2. Na maszynie wirtualnej Uruchom **Panel sterowania** , a następnie wybierz pozycję **system**.
+3. Wybierz pozycję **Nazwa komputera**, wybierz pozycję **Zmień ustawienia**, a następnie wybierz pozycję **Zmień.**
+4. Wybierz pozycję **domena** , a następnie wprowadź domenę Active Directory w sieci wirtualnej.
+5. Uwierzytelnianie przy użyciu konta domeny, które ma uprawnienia do komputerów przyłączania do domeny.
 
-## <a name="prepare-the-virtual-machine-to-act-as-a-file-share-for-user-profiles"></a>Przygotowywanie maszyny wirtualnej, która będzie działać jako udziału plików profilów użytkowników
+## <a name="prepare-the-virtual-machine-to-act-as-a-file-share-for-user-profiles"></a>Przygotuj maszynę wirtualną do działania jako udział plików dla profilów użytkowników
 
-Poniżej przedstawiono ogólne instrukcje o tym, jak przygotować maszynę wirtualną do działania jako udziału plików profilów użytkowników:
+Poniżej znajdują się ogólne instrukcje dotyczące przygotowania maszyny wirtualnej do działania jako udział plików dla profilów użytkowników:
 
-1. Dodaj użytkowników Windows wirtualnego pulpitu usługi Active Directory do [grupy zabezpieczeń usługi Active Directory](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-security-groups). Ta grupa zabezpieczeń będzie używany do uwierzytelniania użytkowników pulpitu wirtualnego Windows do maszyny wirtualnej udziału plików, właśnie utworzony.
-2. [Łączenie z maszyną wirtualną w udziale plików](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine).
-3. Na maszynie wirtualnej udziału plików, należy utworzyć folder na **dysku C** który będzie używany jako udział profilu.
-4. Kliknij prawym przyciskiem myszy nowy folder, wybierz **właściwości**, wybierz opcję **udostępniania**, a następnie wybierz **Udostępnianie zaawansowane...** .
-5. Wybierz **Udostępnij ten folder**, wybierz opcję **uprawnień...** , a następnie wybierz **Dodaj...** .
-6. Wyszukaj grupy zabezpieczeń, do której dodano użytkowników pulpitu wirtualnego Windows, a następnie upewnij się, że grupa ma **Pełna kontrola**.
-7. Po dodaniu do grupy zabezpieczeń, kliknij prawym przyciskiem myszy folder, wybierz **właściwości**, wybierz opcję **udostępniania**, następnie skopiować **ścieżkę sieciową** do użycia później.
+1. Dodaj pulpit wirtualny systemu Windows Active Directory użytkowników do [Active Directory grupy zabezpieczeń](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-security-groups). Ta grupa zabezpieczeń zostanie użyta do uwierzytelnienia użytkowników pulpitu wirtualnego systemu Windows na utworzoną maszynę wirtualną udziału plików.
+2. [Nawiąż połączenie z maszyną wirtualną udziału plików](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine).
+3. Na maszynie wirtualnej udziału plików Utwórz folder na **dysku C** , który będzie używany jako udział profilu.
+4. Kliknij prawym przyciskiem myszy nowy folder, wybierz pozycję **Właściwości**, wybierz pozycję **udostępnianie**, a następnie wybierz pozycję **Udostępnianie zaawansowane...** .
+5. Wybierz pozycję **Udostępnij ten folder**, wybierz pozycję **uprawnienia...** , a następnie wybierz pozycję **Dodaj.**
+6. Wyszukaj grupę zabezpieczeń, do której dodano użytkowników pulpitu wirtualnego systemu Windows, a następnie upewnij się, że grupa ma **pełną kontrolę**.
+7. Po dodaniu grupy zabezpieczeń kliknij prawym przyciskiem myszy folder, wybierz polecenie **Właściwości**, wybierz pozycję **udostępnianie**, a następnie skopiuj **ścieżkę sieciową** do użycia w przyszłości.
 
-Aby uzyskać więcej informacji o uprawnieniach, zobacz [dokumentacji FSLogix](https://docs.fslogix.com/display/20170529/Requirements%2B-%2BProfile%2BContainers).
+Aby uzyskać więcej informacji o uprawnieniach, zobacz [dokumentację usługi FSLogix](https://docs.microsoft.com/fslogix/fslogix-storage-config-ht).
 
-## <a name="configure-the-fslogix-profile-container"></a>Konfiguruj kontener profilu FSLogix
+## <a name="configure-the-fslogix-profile-container"></a>Konfigurowanie kontenera profilu FSLogix
 
-Aby skonfigurować maszyn wirtualnych z oprogramowaniem FSLogix, wykonaj następujące czynności na każdej maszynie zarejestrowany do puli hosta:
+Aby skonfigurować maszyny wirtualne przy użyciu oprogramowania FSLogix, wykonaj następujące czynności na każdym komputerze zarejestrowanym w puli hostów:
 
-1. [Łączenie z maszyną wirtualną](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) przy użyciu poświadczeń dostarczonych podczas tworzenia maszyny wirtualnej.
-2. Uruchom przeglądarkę internetową i przejdź do [ten link](https://go.microsoft.com/fwlink/?linkid=2084562) do pobrania agenta FSLogix. W ramach publicznej wersji zapoznawczej Windows pulpitu wirtualnego otrzymasz klucz licencji, aby aktywować oprogramowania FSLogix. Klucz jest plik LicenseKey.txt zawarte w pliku zip FSLogix agenta.
-3. Przejdź do jednej \\ \\Win32\\wersji lub \\ \\X64\\wersji w pliku zip i uruchom **FSLogixAppsSetup** do zainstalowania agenta FSLogix.
-4. Przejdź do **Program Files** > **FSLogix** > **aplikacje** Aby upewnić się, jest zainstalowany agent.
-5. Z start menu Uruchom **RegEdit** jako administrator. Przejdź do **komputera\\HKEY_LOCAL_MACHINE\\oprogramowania\\FSLogix**.
-6. Utwórz klucz o nazwie **profile**.
-7. Utwórz następujące wartości dla klucza profilów:
+1. [Połącz](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) się z maszyną wirtualną przy użyciu poświadczeń podanych podczas tworzenia maszyny wirtualnej.
+2. Uruchom przeglądarkę internetową i przejdź do [tego linku](https://go.microsoft.com/fwlink/?linkid=2084562) , aby pobrać agenta FSLogix.
+3. Przejdź do wersji \\ \\Win32\\lub \\ x64 w pliku zip, a następnie uruchom program FSLogixAppsSetup w celu zainstalowania agenta FSLogix.\\ \\  Aby dowiedzieć się więcej na temat sposobu instalowania programu FSLogix, zobacz [pobieranie i Instalowanie FSLogix](https://docs.microsoft.com/fslogix/install-ht).
+4. Przejdź do **pliku Program Files** > **FSLogix** > **Apps** , aby potwierdzić, że Agent jest zainstalowany.
+5. Z menu Start Uruchom polecenie **regedit** jako administrator. Przejdź do **komputera\\HKEY_LOCAL_MACHINE\\Software\\FSLogix**.
+6. Utwórz klucz o nazwie **Profile**.
+7. Utwórz następujące wartości dla klucza profile:
 
-| Name (Nazwa)                | Type               | Dane/wartość                        |
+| Name                | Type               | Dane/wartość                        |
 |---------------------|--------------------|-----------------------------------|
-| Włączono             | DWORD              | 1                                 |
-| VHDLocations        | Wartość ciągu wielokrotnego | "Ścieżka sieciowa dla udziału plików"     |
+| Włączono             | OSTATNIE              | 1                                 |
+| VHDLocations        | Wartość ciągu wielociągowego | "Ścieżka sieciowa udziału plików"     |
 
 >[!IMPORTANT]
->Aby zabezpieczyć środowisku pulpitu wirtualnego Windows na platformie Azure, zalecamy nie otwieraj portu wejściowego 3389 na maszynach wirtualnych. Pulpit wirtualny Windows nie wymaga otwartego portu dla ruchu przychodzącego 3389 dla użytkowników puli hosta maszyn wirtualnych. Jeśli musisz otworzyć port 3389 na potrzeby rozwiązywania problemów, zalecamy użycie [dostęp do maszyny Wirtualnej just-in-time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).
+>Aby zabezpieczyć środowisko pulpitu wirtualnego systemu Windows na platformie Azure, zalecamy, aby nie otwierać portu przychodzącego 3389 na maszynach wirtualnych. Pulpit wirtualny systemu Windows nie wymaga otwartego portu przychodzącego 3389 dla użytkowników w celu uzyskania dostępu do maszyn wirtualnych puli hostów. Jeśli musisz otworzyć port 3389 w celu rozwiązywania problemów, zalecamy użycie [dostępu just in Time do maszyny wirtualnej](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).

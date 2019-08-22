@@ -1,128 +1,128 @@
 ---
-title: Zachowania zabezpieczeń i danych — usługa Azure Search
-description: Usługa Azure Search jest zgodna z SOC 2, HIPAA i innych certyfikatów. Służy do przefiltrowania połączenia i szyfrowania, uwierzytelniania i tożsamości dostęp do danych przez użytkowników i grupy identyfikatorów zabezpieczeń w usłudze Azure Search.
+title: Bezpieczeństwo i prywatność danych — Azure Search
+description: Azure Search jest zgodny z SOC 2, HIPAA i innymi certyfikatami. Łączenie i szyfrowanie danych, uwierzytelnianie i dostęp do tożsamości za poorednictwem identyfikatorów zabezpieczeń użytkowników i grup w filtrach Azure Search.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: f366726f539a817f515a78fbc35bfeaa3b65514e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fbad9624d6b76593ac4e77283f63904e9c006bcd
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024498"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647792"
 ---
-# <a name="security-and-data-privacy-in-azure-search"></a>Zachowania zabezpieczeń i danych w usłudze Azure Search
+# <a name="security-and-data-privacy-in-azure-search"></a>Bezpieczeństwo i prywatność danych w Azure Search
 
-Kompleksowe funkcje zabezpieczeń i kontroli dostępu są wbudowane w usłudze Azure Search, aby upewnić się, że prywatnej zawartość pozostaje w ten sposób. W tym artykule wylicza zgodności standardów i funkcje zabezpieczeń wbudowane w usłudze Azure Search.
+Kompleksowe funkcje zabezpieczeń i kontroli dostępu są wbudowane w Azure Search, aby zapewnić, że prywatna zawartość pozostaje w ten sposób. W tym artykule wymieniono funkcje zabezpieczeń i standardy zgodności wbudowane w Azure Search.
 
-Architektura zabezpieczeń usługi Azure Search zakresów zabezpieczeń fizycznych, zaszyfrowanego transmisji, szyfrowany Magazyn oraz zgodność ze standardami całej platformy. Pod względem operacyjnym usługi Azure Search akceptuje tylko uwierzytelnione żądania. Opcjonalnie można dodać użytkownika kontroli dostępu do zawartości za pomocą filtrów zabezpieczeń. W tym artykule dotyczą zabezpieczeń w każdej warstwie, ale koncentruje się głównie na jak są zabezpieczone dane i operacji w usłudze Azure Search.
+Azure Search Architektura zabezpieczeń obejmuje zabezpieczenia fizyczne, zaszyfrowane transporty, zaszyfrowane magazyny i zgodność ze standardami na poziomie platformy. Działanie Azure Search akceptuje tylko uwierzytelnione żądania. Opcjonalnie można dodać kontrolę dostępu dla poszczególnych użytkowników do zawartości za poorednictwem filtrów zabezpieczeń. Ten artykuł dotyka zabezpieczeń każdej warstwy, ale głównie koncentruje się na sposobie zabezpieczania danych i operacji w Azure Search.
 
 ## <a name="standards-compliance-iso-27001-soc-2-hipaa"></a>Zgodność ze standardami: ISO 27001, SOC 2, HIPAA
 
-Usługa Azure Search jest certyfikowany do pracy następujące standardy jako [ogłoszone w czerwcu 2018](https://azure.microsoft.com/blog/azure-search-is-now-certified-for-several-levels-of-compliance/):
+Azure Search jest certyfikowany dla następujących standardów, zgodnie z [ogłoszeniem w czerwcu 2018](https://azure.microsoft.com/blog/azure-search-is-now-certified-for-several-levels-of-compliance/):
 
 + [ISO 27001:2013](https://www.iso.org/isoiec-27001-information-security.html) 
-+ [Audyt SOC 2 typu 2 zgodności](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) pełny raport, przejdź do [platformy Azure — i platformy Azure dla instytucji rządowych SOC 2 typu II raportu](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports). 
-+ [Health Insurance Portability and Accountability Act (HIPAA)](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act)
-+ [GxP (21 CFR Part 11)](https://en.wikipedia.org/wiki/Title_21_CFR_Part_11)
++ [Zgodność SOC 2 typu 2](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) Aby uzyskać pełny raport, przejdź do [raportu Azure-i Azure Government SOC 2 Type II](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports). 
++ [Przenośność i odpowiedzialność z tytułu odpowiedzialności ubezpieczeniowej (HIPAA)](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act)
++ [GxP (21 CFR część 11)](https://en.wikipedia.org/wiki/Title_21_CFR_Part_11)
 + [HITRUST](https://en.wikipedia.org/wiki/HITRUST)
-+ [PCI DSS Level 1](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
-+ [Australia IRAP Unclassified DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
++ [Poziom PCI DSS 1](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
++ [Australia IRAP niesklasyfikowany DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
 
-Zgodność ze standardami dotyczy funkcji jest ogólnie dostępna. Funkcje w wersji zapoznawczej są certyfikowane podczas przejścia, które są ogólnie dostępne i nie mogą być używane w rozwiązaniach o wymagania rygorystyczne standardy. Certyfikacja zgodności jest udokumentowany w [zgodności omówienie platformy Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) i [Centrum zaufania](https://www.microsoft.com/en-us/trustcenter). 
+Zgodność ze standardami dotyczy ogólnie dostępnych funkcji. Funkcje w wersji zapoznawczej są certyfikowane, gdy przechodzą do ogólnej dostępności i nie mogą być używane w rozwiązaniach mających ścisłe wymagania dotyczące standardów. Certyfikacja zgodności jest udokumentowana w temacie [Omówienie zgodności Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) i [Centrum zaufania](https://www.microsoft.com/en-us/trustcenter). 
 
-## <a name="encrypted-transmission-and-storage"></a>Zaszyfrowanego transmisji i przechowywania
+## <a name="encrypted-transmission-and-storage"></a>Zaszyfrowana transmisja i magazyn
 
-Szyfrowanie rozszerza się w całym całego potoku indeksowania: z połączeń, za pośrednictwem przesyłania i w dół do indeksowane dane przechowywane w usłudze Azure Search.
+Szyfrowanie rozciąga się w całym potoku indeksowania: od połączeń, transmisji i w dół do indeksowanych danych przechowywanych w Azure Search.
 
 | Warstwa zabezpieczeń | Opis |
 |----------------|-------------|
-| Szyfrowanie podczas transferu <br>(HTTPS/SSL/TLS) | Usługa Azure Search nasłuchuje na porcie HTTPS 443. Na platformie połączenia z usługami platformy Azure są szyfrowane. <br/><br/>Wszystkie usługi klienta usługi Azure Search interakcje są protokoły SSL/TLS 1.2 stanie.  Należy użyć zabezpieczeń TLSv1.2 dla połączeń SSL z usługą.|
-| Szyfrowanie w spoczynku <br>Klucze zarządzane przez firmy Microsoft | Szyfrowanie jest w pełni internalized indeksowaniem z nie zauważalnego wpływu na indeksowanie czas do zakończenia lub rozmiar indeksu. Nastąpi to automatycznie na indeksowanie wszystkich tym na aktualizacje przyrostowe indeksu, który nie jest w pełni zaszyfrowane (utworzonym przed stycznia 2018 r.).<br><br>Wewnętrznie, szyfrowanie jest oparte na [szyfrowanie usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption), za pomocą 256-bitowego [szyfrowania AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).<br><br> Szyfrowanie jest wewnętrzny do usługi Azure Search przy użyciu certyfikatów i kluczy szyfrowania zarządza wewnętrznie przez firmę Microsoft i powszechnie stosowane. Nie można włączyć szyfrowanie lub wyłączyć, zarządzanie lub Zastąp własnych kluczy lub wyświetlić ustawienia szyfrowania w portalu lub programowo.<br><br>Szyfrowanie w spoczynku ogłoszono 24 stycznia 2018 r. i ma zastosowanie do wszystkich warstwach usługi, w tym usług udostępnionych (wersja bezpłatna), we wszystkich regionach. Pełne szyfrowanie indeksów utworzonych przed tą datą należy porzucić i ponownie skompilowany w kolejności do szyfrowania. W przeciwnym razie są szyfrowane tylko nowe dane dodane po 24 stycznia.|
-| Szyfrowanie w spoczynku <br>Klucze zarządzane przez klienta | Szyfrowanie za pomocą kluczy klienta zarządzanego jest **Podgląd** services funkcja, która nie jest dostępna bezpłatnie. Usługi płatne, jest on dostępny tylko dla usług wyszukiwania utworzonych na lub po 2019 stycznia przy użyciu najnowszej wersji zapoznawczej wersji interfejsu api (interfejs api-version = 2019-05-06-Preview).<br><br>Indeksy usługi Azure Search i mapy synonimów mogą teraz być szyfrowane, gdy za pomocą kluczy zarządzanych kluczy klienta w usłudze Azure Key Vault. Aby dowiedzieć się więcej, zobacz [zarządzać kluczami szyfrowania w usłudze Azure Search](search-security-manage-encryption-keys.md).<br>Ta funkcja nie zastępuje domyślne szyfrowanie danych magazynowanych, ale raczej zastosowane oprócz go.<br>Włączenie tej funkcji zwiększyć rozmiar indeksu i obniżyć wydajność zapytań. Na podstawie obserwacji do daty, użytkownik może pojawić się wzrost o 30 – 60% czas zapytania mimo, że rzeczywista wydajność może się różnić w zależności od definicji indeksu i typy zapytań. Ze względu na to wpływ na wydajność zaleca się tylko włączyć tę funkcję tylko dla indeksów, które rzeczywiście tego wymagają.
+| Szyfrowanie podczas przesyłania <br>(HTTPS/SSL/TLS) | Azure Search nasłuchuje na porcie HTTPS 443. Na całej platformie połączenia z usługami platformy Azure są szyfrowane. <br/><br/>Wszystkie interakcje Azure Search klient-usługa to obsługa protokołu SSL/TLS 1,2.  Upewnij się, że używasz TLSv 1.2 dla połączeń SSL z usługą.|
+| Szyfrowanie w spoczynku <br>Klucze zarządzane przez firmę Microsoft | Szyfrowanie jest w pełni wewnętrzne w procesie indeksowania, bez wymiernego wpływu na indeksowanie czasu do ukończenia lub rozmiaru indeksu. Odbywa się to automatycznie na wszystkich indeksach, w tym w przypadku aktualizacji przyrostowych, do indeksu, który nie jest w pełni szyfrowany (utworzony przed stycznia 2018).<br><br>Wewnętrznie szyfrowanie jest oparte na [usłudze Azure szyfrowanie usługi Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)przy użyciu 256-bitowego [szyfrowania AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).<br><br> Szyfrowanie jest wewnętrzne do Azure Search, z certyfikatami i kluczami szyfrowania, które są zarządzane wewnętrznie przez firmę Microsoft i stosowane uniwersalnie. Nie można włączać ani wyłączać szyfrowania, zarządzać nimi ani zastępować własnych kluczy lub wyświetlać ustawienia szyfrowania w portalu lub programowo.<br><br>Szyfrowanie w spoczynku zostało ogłoszone w 24 stycznia 2018 i ma zastosowanie do wszystkich warstw usług, w tym udostępnionych (bezpłatnych) usług, we wszystkich regionach. Aby można było przeprowadzić pełne szyfrowanie, indeksy utworzone przed tą datą muszą zostać porzucone i ponownie skompilowane w celu zaszyfrowania. W przeciwnym razie tylko nowe dane dodane po 24 stycznia są szyfrowane.|
+| Szyfrowanie w spoczynku <br>Klucze zarządzane przez klienta | Szyfrowanie za pomocą kluczy zarządzanych przez klienta to funkcja w **wersji** zapoznawczej, która nie jest dostępna dla bezpłatnych usług. W przypadku płatnych usług jest on dostępny tylko dla usług wyszukiwania utworzonych w dniu lub po styczniu 2019 przy użyciu najnowszego interfejsu API wersji zapoznawczej (API-Version = 2019-05 -06-Preview).<br><br>Azure Search indeksy i mapy synonimów mogą teraz być szyfrowane w czasie spoczynku z kluczami zarządzanymi klucze klienta w programie Azure Key Vault. Aby dowiedzieć się więcej, zobacz [Zarządzanie kluczami szyfrowania w Azure Search](search-security-manage-encryption-keys.md).<br>Ta funkcja nie zastępuje domyślnego szyfrowania w spoczynku, ale zamiast tego stosuje się do niego.<br>Włączenie tej funkcji spowoduje zwiększenie rozmiaru indeksu i spadek wydajności zapytań. Na podstawie obserwacji do daty można oczekiwać, że w czasie wykonywania zapytań zostanie wyświetlony wzrost o 30%-60%, chociaż Rzeczywista wydajność będzie się różnić w zależności od definicji indeksu i typów zapytań. Ze względu na ten wpływ na wydajność zalecamy włączenie tej funkcji tylko w przypadku indeksów, które naprawdę wymagają tego.
 
-## <a name="azure-wide-user-access-controls"></a>Kontrolę dostępu użytkowników w całej platformy Azure
+## <a name="azure-wide-user-access-controls"></a>Kontrola dostępu użytkowników w całej platformie Azure
 
-Wiele mechanizmów zabezpieczeń są dostępne sieci platformy Azure i Utwórz automatycznie dostępne w ten sposób z zasobami usługi Azure Search.
+Dostępne są różne mechanizmy zabezpieczeń platformy Azure, które są automatycznie dostępne dla utworzonych zasobów Azure Search.
 
-+ [Blokady na poziomie zasobów, aby zapobiec usunięciu lub subskrypcji](../azure-resource-manager/resource-group-lock-resources.md)
-+ [Oparta na rolach kontrola dostępu (RBAC) do kontrolowania dostępu do informacji i operacje administracyjne](../role-based-access-control/overview.md)
++ [Blokuje na poziomie subskrypcji lub zasobu, aby zapobiec usunięciu](../azure-resource-manager/resource-group-lock-resources.md)
++ [Access Control oparte na rolach (RBAC) do kontrolowania dostępu do informacji i operacji administracyjnych](../role-based-access-control/overview.md)
 
-Wszystkich usług platformy Azure obsługuje kontroli dostępu opartej na rolach (RBAC) do ustawiania poziomów dostępu spójne we wszystkich usługach. Na przykład wyświetlanie poufne dane, takie jak klucz administratora jest ograniczony do ról właściciel i współautor, wyświetlanie stanu usługi jest dostępne dla członków żadnej roli. RBAC zawiera role właściciela, współautora i czytelnika. Domyślnie wszyscy administratorzy usługi są członkami roli właściciela.
+Wszystkie usługi platformy Azure obsługują funkcję kontroli dostępu opartej na rolach (RBAC) na potrzeby spójnego ustawiania poziomów dostępu dla wszystkich usług. Na przykład wyświetlanie poufnych danych, takich jak klucz administratora, jest ograniczone do ról właściciela i współautora, podczas gdy wyświetlanie stanu usługi jest dostępne dla członków dowolnej roli. RBAC oferuje role właściciela, współautora i czytelnika. Domyślnie wszyscy Administratorzy usługi są członkami roli właściciela.
 
 <a name="service-access-and-authentication"></a>
 
-## <a name="service-access-and-authentication"></a>Dostęp do usługi i uwierzytelniania
+## <a name="service-access-and-authentication"></a>Dostęp do usługi i uwierzytelnianie
 
-Gdy usługa Azure Search dziedziczy zabezpieczenia zabezpieczeń platformy Azure, zapewnia również swój własny uwierzytelniania opartego na kluczu. Klucz interfejsu api to ciąg składający się z liter i cyfr generowany losowo. Typ klucza (admin lub zapytanie) określa poziom dostępu. Przesyłanie prawidłowy klucz jest traktowany jako będący dowód żądanie pochodzi z zaufanego jednostki. 
+Chociaż Azure Search dziedziczy zabezpieczenia platformy Azure, zapewnia także własne uwierzytelnianie oparte na kluczach. Klucz API-Key jest ciągiem zawierającym losowo wygenerowane liczby i litery. Typ klucza (administrator lub zapytanie) określa poziom dostępu. Przesyłanie prawidłowego klucza jest uważane za potwierdzenie, że żądanie pochodzi od zaufanej jednostki. 
 
-Istnieją dwa poziomy dostępu do usługi wyszukiwania włączane przez dwa typy kluczy:
+Istnieją dwa poziomy dostępu do usługi wyszukiwania, które są obsługiwane przez dwa typy kluczy:
 
-* Dostęp administratora (prawidłowe w kontekście operacji odczytu i zapisu względem usługi)
-* Dostęp zapytań (ważny dla operacji tylko do odczytu, takich jak zapytania względem kolekcji dokumentów indeksu)
+* Dostęp administratora (prawidłowy dla każdej operacji odczytu i zapisu do usługi)
+* Dostęp do zapytań (prawidłowy dla operacji tylko do odczytu, takich jak zapytania, względem kolekcji dokumentów indeksu)
 
-*Klucze administratora* są tworzone, gdy usługa jest aprowizowana. Dostępne są dwa klucze administratora, wyznaczony jako *podstawowego* i *dodatkowej* je bezpośrednio, ale w rzeczywistości są one wymienne. Każda usługa ma dwa klucze administratora, dzięki czemu można je przerzucić jeden bez utraty dostępu do usługi. Możesz [administratora ponowne generowanie klucza](search-security-api-keys.md#regenerate-admin-keys) okresowo na zabezpieczeń platformy Azure najlepszych rozwiązań, ale nie można dodać do liczby kluczy administratora całkowitej. Istnieje więcej niż dwa klucze administratora dla usługi wyszukiwania.
+*Klucze administratora* są tworzone podczas aprowizacji usługi. Istnieją dwa klucze administracyjne, wyznaczono jako *podstawowa* i *pomocnicza* , aby zapewnić ich bezpośrednie, ale w rzeczywistości są one zamienne. Każda usługa ma dwa klucze administracyjne, aby można było ją wycofać bez utraty dostępu do usługi. [Klucz administratora można wygenerować ponownie](search-security-api-keys.md#regenerate-admin-keys) okresowo według najlepszych rozwiązań w zakresie zabezpieczeń platformy Azure, ale nie można dodać do całkowitej liczby kluczy administratora. Istnieje maksymalnie dwa klucze administratora dla każdej usługi wyszukiwania.
 
-*Kluczami zapytań* są tworzone w miarę potrzeb i są przeznaczone dla aplikacji klienckich, które wystawiają zapytania. Możesz utworzyć maksymalnie 50 klucze zapytania. W kodzie aplikacji należy określić adres URL wyszukiwania i klucz interfejsu api zapytań, aby zezwolić na dostęp tylko do odczytu do kolekcji documents określonego indeksu. Punkt końcowy, klucz interfejsu api, aby uzyskać dostęp tylko do odczytu i indeksu docelowego określa poziom zakresu i dostęp do połączenia z aplikacji klienckiej.
+*Klucze zapytań* są tworzone w miarę potrzeby i są przeznaczone dla aplikacji klienckich, które wysyłają zapytania. Można utworzyć maksymalnie 50 kluczy zapytań. W polu kod aplikacji należy określić adres URL wyszukiwania i klucz API-Key, aby zezwolić na dostęp tylko do odczytu do kolekcji dokumenty określonego indeksu. Punkt końcowy, klucz interfejsu API dla dostępu tylko do odczytu i indeks docelowy określają zakres i poziom dostępu połączenia z aplikacji klienckiej.
 
-Wymagane jest uwierzytelnienie na każde żądanie, w którym każde żądanie składa się z kluczem obowiązkowe, operacji i obiektu. Gdy połączonych ze sobą, dwóch poziomach uprawnień (pełny lub tylko do odczytu), a także kontekst (na przykład dla operacji zapytania względem indeksu) są wystarczające dla zapewniających bezpieczeństwo szerokim w operacji usługi. Aby uzyskać więcej informacji na temat kluczy, zobacz [tworzenie i zarządzanie kluczami interfejsu api](search-security-api-keys.md).
+Dla każdego żądania wymagane jest uwierzytelnianie, gdzie każde żądanie składa się z klucza obowiązkowego, operacji i obiektu. Po połączeniu ze sobą dwa poziomy uprawnień (pełne lub tylko do odczytu) oraz kontekst (na przykład operacja zapytania na indeksie) są wystarczające do zapewnienia bezpieczeństwa pełnego spektrum operacji usługi. Aby uzyskać więcej informacji na temat kluczy, zobacz [Tworzenie kluczy API i zarządzanie nimi](search-security-api-keys.md).
 
 ## <a name="index-access"></a>Dostęp do indeksu
 
-W usłudze Azure Search konkretnego indeksu nie jest zabezpieczanego obiektu. Zamiast tego dostęp do indeksu jest określany w warstwie usługi (Odczyt lub zapis), wraz z kontekstu operacji.
+W Azure Search pojedynczym indeksem nie jest obiekt zabezpieczany. Zamiast tego, dostęp do indeksu jest określany w warstwie usług (dostęp do odczytu lub zapisu) wraz z kontekstem operacji.
 
-Na potrzeby dostępu użytkownika końcowego można strukturę żądań zapytań połączyć się przy użyciu klucza zapytania, co sprawia, że wszystkie żądania tylko do odczytu i obejmują określonego indeksu używanych przez aplikację. W żądaniu zapytania nie obowiązuje koncepcja indeksów lub jednocześnie dostęp do wielu indeksów, dzięki czemu wszystkie żądania docelowe jeden indeks zgodnie z definicją. W efekcie konstruowania żądania zapytania, sama (klucz oraz indeksu pojedynczy element docelowy) definiuje granicy zabezpieczeń.
+W przypadku dostępu użytkowników końcowych można określać strukturę żądań zapytań w celu nawiązania połączenia przy użyciu klucza zapytania, co oznacza, że każdy żądania jest tylko do odczytu i zawiera określony indeks używany przez aplikację. W żądaniu zapytania nie istnieje koncepcja sprzęgania indeksów lub uzyskiwania dostępu do wielu indeksów jednocześnie, więc wszystkie żądania są kierowane do jednego indeksu według definicji. W związku z tym konstruowanie samego żądania zapytania (klucz Plus pojedynczy indeks docelowy) definiuje granicę zabezpieczeń.
 
-Takimi samymi jest dostępu administratorów i deweloperów indeksów: zarówno musi uzyskać dostęp do tworzenia, usuwania i aktualizowania obiektów zarządzanych przez usługę. Każda osoba mająca klucz administratora usługi można przeczytać, zmodyfikować lub usunąć dowolnego indeksu w ramach tej samej usługi. W celu ochrony przed przypadkowym lub złośliwym usunięciem indeksów trwałych kod do kontroli źródła wewnętrznych jest nieosiągnięcia cofania niechciane indeksu usunięcie lub zmiana. Usługa Azure Search ma trybu failover w ramach klastra, aby zapewnić dostępność, ale nie przechowuje ani nie wykonywanie własności kodu użytego do utworzenia lub ładowanie indeksów.
+Dostęp administratora i dewelopera do indeksów jest niezróżnicowany: oba muszą mieć dostęp do zapisu, aby tworzyć, usuwać i aktualizować obiekty zarządzane przez usługę. Każda osoba mająca klucz administracyjny do usługi może odczytywać, modyfikować lub usuwać dowolne indeksy w tej samej usłudze. W celu ochrony przed przypadkowym lub złośliwym usunięciem indeksów, wewnętrzna kontrola źródła dla zasobów kodu jest środkiem do odwrócenia niechcianego usunięcia lub modyfikacji indeksu. Azure Search przełączenia w tryb failover w klastrze w celu zapewnienia dostępności, ale nie przechowuje lub nie wykonuje zastrzeżonego kodu używanego do tworzenia lub ładowania indeksów.
 
-Wielodostępność rozwiązań wymagających granic zabezpieczeń na poziomie indeksu w przypadku takich rozwiązań zazwyczaj obejmują warstwy środkowej, w których klientów używać do obsługi izolacji indeksu. Aby uzyskać więcej informacji na temat przypadek użycia wielodostępnych zobacz [wzorce projektowe dla wielodostępnych aplikacji SaaS i usługa Azure Search](search-modeling-multitenant-saas-applications.md).
+W przypadku rozwiązań wielodostępnych wymagających granic zabezpieczeń na poziomie indeksu takie rozwiązania zwykle obejmują warstwę środkową, której klienci używają do obsługi izolacji indeksów. Aby uzyskać więcej informacji na temat wielodostępnego przypadku użycia, zobacz [wzorce projektowania dla wielodostępnych aplikacji SaaS i Azure Search](search-modeling-multitenant-saas-applications.md).
 
-## <a name="admin-access"></a>Prawa dostępu administratora
+## <a name="admin-access"></a>Dostęp administratora
 
-[Dostępu opartej na rolach (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) Określa, czy masz dostęp do formantów za pośrednictwem usługi i jego zawartości. Jeśli jesteś właścicielem lub współautorem w usłudze Azure Search, możesz użyć portalu lub programu PowerShell **Az.Search** modułu do utworzenia, aktualizacji lub usuwania obiektów w usłudze. Można również użyć [interfejsu API REST zarządzania usługi Azure Search](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
+[Dostęp oparty na rolach (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) określa, czy masz dostęp do kontrolek usługi i jej zawartości. Jeśli jesteś właścicielem lub współautorem usługi Azure Search, możesz użyć portalu lub modułu PowerShell **AZ. Search** do tworzenia, aktualizowania lub usuwania obiektów w usłudze. Można również użyć [interfejsu API REST zarządzania Azure Search](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
 
 ## <a name="user-access"></a>Dostęp użytkowników
 
-Domyślnie dostęp użytkowników do indeksu jest określany przez klucz dostępu dla żądania zapytania. Większość deweloperów, tworzenie i przypisywanie [ *kluczami zapytań* ](search-security-api-keys.md) na żądanie wyszukiwania po stronie klienta. Klucz zapytania przyznaje dostęp do odczytu do całej zawartości w indeksie.
+Domyślnie dostęp użytkownika do indeksu jest określany przez klucz dostępu w żądaniu zapytania. Większość deweloperów tworzy i przypisuje [*klucze zapytań*](search-security-api-keys.md) dla żądań wyszukiwania po stronie klienta. Klucz zapytania umożliwia dostęp do odczytu do całej zawartości w indeksie.
 
-Jeśli potrzebujesz szczegółowego, na użytkownika na kontrolę zawartości, możesz utworzyć filtrów zabezpieczeń na zapytania, zwracając dokumenty skojarzone z tożsamością zabezpieczeń. Zamiast wstępnie zdefiniowanych ról i przypisań ról, kontrola dostępu oparta na tożsamości jest implementowany jako *filtru* czy TRIM wyszukiwanie wyników dokumentów i zawartości oparte na tożsamości. W poniższej tabeli opisano dwa podejścia do wyników wyszukiwania przycinania zawartości nieautoryzowanym.
+Jeśli potrzebujesz szczegółowej kontroli nad zawartością, możesz utworzyć filtry zabezpieczeń dla zapytań, zwracając dokumenty skojarzone z daną tożsamością zabezpieczeń. Zamiast wstępnie zdefiniowanych ról i przypisań ról kontrola dostępu oparta na tożsamości jest implementowana jako *Filtr* , który przycina wyniki wyszukiwania dokumentów i zawartości na podstawie tożsamości. W poniższej tabeli opisano dwa podejścia do przycinania wyników wyszukiwania nieautoryzowanej zawartości.
 
 | Podejście | Opis |
 |----------|-------------|
-|[Dostosowanie do zabezpieczeń oparte na filtrów tożsamości](search-security-trimming-for-azure-search.md)  | Dokumenty podstawowy przepływ pracy do wykonywania kontroli dostępu tożsamości użytkownika. Obejmuje dodawanie identyfikatorów zabezpieczeń do indeksu i wyjaśnia, filtrowania pod kątem tego pola, aby przyciąć wyniki zabronionych zawartości. |
-|[Dostosowanie do zabezpieczeń oparte na tożsamości usługi Azure Active Directory](search-security-trimming-for-azure-search-with-aad.md)  | Ten artykuł stanowi rozszerzenie poprzednim artykule, zapewniając kroki pobierania tożsamości z usługi Azure Active Directory (AAD), jednego z [bezpłatnych usług](https://azure.microsoft.com/free/) na platformie chmury platformy Azure. |
+|[Przycinanie zabezpieczeń na podstawie filtrów tożsamości](search-security-trimming-for-azure-search.md)  | Dokumentuje podstawowy przepływ pracy dotyczący implementowania kontroli dostępu do tożsamości użytkownika. Obejmuje ona Dodawanie identyfikatorów zabezpieczeń do indeksu, a następnie objaśnia filtrowanie względem tego pola, aby przyciąć wyniki zabronionej zawartości. |
+|[Przycinanie zabezpieczeń oparte na tożsamościach Azure Active Directory](search-security-trimming-for-azure-search-with-aad.md)  | Ten artykuł został rozbudowany w poprzednim artykule, co zapewnia procedurę pobierania tożsamości z usługi Azure Active Directory (AAD), jednej z [bezpłatnych usług](https://azure.microsoft.com/free/) na platformie Azure w chmurze. |
 
-## <a name="table-permissioned-operations"></a>Tabela: Operacje otrzymało uprawnienia
+## <a name="table-permissioned-operations"></a>Tabele Operacje z uprawnieniami
 
-W poniższej tabeli przedstawiono operacje, dozwolone w usłudze Azure Search i klucz, który umożliwia odblokowanie dostępu do określonej operacji.
+Poniższa tabela zawiera podsumowanie operacji dozwolonych w Azure Search oraz tego, który klucz odblokowuje dostęp do określonej operacji.
 
 | Operacja | Uprawnienia |
 |-----------|-------------------------|
-| Tworzenie usługi | Właściciel subskrypcji platformy Azure|
-| Skalowanie usługi | Klucz administratora, współautora w zasobie lub właściciela RBAC  |
-| Usuwanie usługi | Klucz administratora, współautora w zasobie lub właściciela RBAC |
-| Tworzenie, modyfikowanie i usuwanie obiektów w usłudze: <br>Indeksy i składniki (takie jak definicje analizatora, profile oceniania, opcje CORS), indeksatory, źródła danych, synonimy, sugestory. | Klucz administratora, współautora w zasobie lub właściciela RBAC  |
-| Tworzenie zapytań względem indeksu | Klucz administratora lub zapytanie (RBAC, role nie dotyczy) |
-| Zapytania informacje systemowe, takie jak zwracanie statystyki, liczniki i listy obiektów. | Klucz administratora, RBAC dla zasobu (właściciel, współautor, Czytelnik) |
-| Zarządzanie kluczami administratora | Klucz administratora, współautora w zasobie lub właściciela RBAC. |
-| Zarządzanie kluczami zapytań |  Klucz administratora, współautora w zasobie lub właściciela RBAC.  |
+| Tworzenie usługi | Posiadacz subskrypcji platformy Azure|
+| Skalowanie usługi | Klucz administracyjny, właściciel RBAC lub współautor zasobu  |
+| Usuwanie usługi | Klucz administracyjny, właściciel RBAC lub współautor zasobu |
+| Tworzenie, modyfikowanie i usuwanie obiektów w usłudze: <br>Indeksy i części składników (w tym definicje analizatora, profile oceniania, opcje CORS), indeksatory, źródła danych, synonimy, sugestie. | Klucz administracyjny, właściciel RBAC lub współautor zasobu  |
+| Tworzenie zapytań względem indeksu | Administrator lub klucz zapytania (RBAC nie dotyczy) |
+| Badaj informacje o systemie, takie jak zwracanie statystyk, liczników i list obiektów. | Klucz administratora, RBAC dla zasobu (właściciel, współautor, czytelnik) |
+| Zarządzaj kluczami administratora | Klucz administracyjny, właściciel RBAC lub współautor zasobu. |
+| Zarządzanie kluczami zapytań |  Klucz administracyjny, właściciel RBAC lub współautor zasobu.  |
 
 ## <a name="physical-security"></a>Zabezpieczenia fizyczne
 
-Centra danych firmy Microsoft zapewniają wiodące w branży zabezpieczeń fizycznych i są zgodne z szeroką gamę standardami i przepisami. Aby dowiedzieć się więcej, przejdź do [globalnych centrów danych](https://www.microsoft.com/cloud-platform/global-datacenters) strony lub Obejrzyj krótki film wideo na danych Centrum zabezpieczeń.
+Centra danych firmy Microsoft zapewniają wiodące w branży zabezpieczenia fizyczne i są zgodne z obszernym portfelem standardów i przepisów. Aby dowiedzieć się więcej, przejdź do strony [Globalne centra danych](https://www.microsoft.com/cloud-platform/global-datacenters) lub obejrzyj krótkie wideo w zabezpieczeniach centrum danych.
 
 > [!VIDEO https://www.youtube.com/embed/r1cyTL8JqRg]
 
 
 ## <a name="see-also"></a>Zobacz także
 
-+ [Rozpoczynanie pracy .NET (pokazuje przy użyciu klucza administratora, aby utworzyć indeks)](search-create-index-dotnet.md)
-+ [Rozpoczynanie pracy POZOSTAŁEJ (pokazuje przy użyciu klucza administratora, aby utworzyć indeks)](search-create-index-rest-api.md)
-+ [Kontrola dostępu na podstawie tożsamości przy użyciu filtrów usługi Azure Search](search-security-trimming-for-azure-search.md)
-+ [Aktywna kontrola dostępu na podstawie tożsamości katalogu przy użyciu filtrów usługi Azure Search](search-security-trimming-for-azure-search-with-aad.md)
-+ [Filtry w usłudze Azure Search](search-filters.md)
++ [Wprowadzenie do platformy .NET (w celu utworzenia indeksu przy użyciu klucza administratora)](search-create-index-dotnet.md)
++ [Wprowadzenie do usługi REST (w celu utworzenia indeksu przy użyciu klucza administratora)](search-create-index-rest-api.md)
++ [Kontrola dostępu oparta na tożsamościch za pomocą filtrów Azure Search](search-security-trimming-for-azure-search.md)
++ [Active Directory kontroli dostępu opartej na tożsamościach przy użyciu filtrów Azure Search](search-security-trimming-for-azure-search-with-aad.md)
++ [Filtry w Azure Search](search-filters.md)

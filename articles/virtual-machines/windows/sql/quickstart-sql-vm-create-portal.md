@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 05/11/2018
+ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fb35cc99164cc8da047e8309d63bf7909abf4815
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 50297147d371898c35259bf4be59337eaa716579
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846029"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877852"
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>Szybki start: Tworzenie maszyny wirtualnej systemu Windows z programem SQL Server 2017 w witrynie Azure Portal
 
@@ -42,16 +42,15 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com) przy użyciu swojego konta.
 
-1. W witrynie Azure Portal wybierz polecenie **Utwórz zasób**. 
+1. Wybierz pozycję **Azure SQL** w menu po lewej stronie Azure Portal. Jeśli na liście nie ma **usługi Azure SQL** , wybierz pozycję **wszystkie usługi**, a następnie wpisz *SQL Azure* w polu wyszukiwania.
+1. Wybierz pozycję **+ Dodaj** , aby otworzyć stronę **Wybieranie opcji wdrożenia SQL** . Dodatkowe informacje można wyświetlić, wybierając pozycję **Pokaż szczegóły** na kafelku **maszyny wirtualne SQL** .
+1. Wybierz obraz **Free SQL Server License: SQL Server deweloper 2017 na obrazie systemu** Windows Server 2016 z listy rozwijanej.
 
-1. W polu wyszukiwania wpisz `SQL Server 2017 Developer on Windows Server 2016`i naciśnij klawisz ENTER. Rozwiń opcję SQL Server 2017 w systemie Windows Server 2016. 
-
-1. Wybierz obraz **Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016** (Bezpłatna licencja programu SQL Server: SQL Server 2017 Developer w systemie Windows Server 2016). W tym samouczku jest używana wersja Developer — w pełni funkcjonalna wersja programu SQL Server, bezpłatna w przypadku zastosowań obejmujących tworzenie i testowanie. Opłaty dotyczą tylko kosztów obsługi maszyny wirtualnej. Aby uzyskać więcej informacji na temat cen, zobacz [Pricing guidance for SQL Server Azure VMs](virtual-machines-windows-sql-server-pricing-guidance.md) (Wskazówki dotyczące cen maszyn wirtualnych platformy Azure z programem SQL Server).
-
-   ![Nowe okno wyszukiwania](./media/quickstart-sql-vm-create-portal/newsearch.png)
-
+   ![Nowe okno wyszukiwania](./media/quickstart-sql-vm-create-portal/select-sql-2017-vm-image.png)
 
 1. Wybierz pozycję **Utwórz**.
+
+   ![Nowe okno wyszukiwania](./media/quickstart-sql-vm-create-portal/create-sql-2017-vm-image.png)
 
 ## <a id="configure"></a> Podawanie podstawowych informacji
 
@@ -66,7 +65,7 @@ Na karcie **podstawowe** podaj następujące informacje:
     1. Wybierz lokalizację dla **regionu**. 
     1. Na potrzeby tego przewodnika Szybki Start pozostaw opcję **dostępność** ustawioną na niewymaganą _nadmiarowość infrastruktury_. Aby uzyskać więcej informacji na temat opcji dostępności, zobacz [dostępność](../../windows/availability.md). 
     1. Na liście **obraz** wybierz pozycję _bezpłatna SQL Server Licencja: SQL Server 2017 Developer w systemie Windows Server_2016. 
-    1. Wybierz opcję **zmiany rozmiaru** maszyny wirtualnej  i wybierz **podstawową ofertę a2** . Pamiętaj, aby wyczyścić zasoby po wykonaniu tych czynności, aby zapobiec nieoczekiwanym opłatom. 
+    1. Wybierz opcję **zmiany rozmiaru** maszyny wirtualnej i wybierz **podstawową ofertę a2** . Pamiętaj, aby wyczyścić zasoby po wykonaniu tych czynności, aby zapobiec nieoczekiwanym opłatom. 
 
    ![Szczegóły wystąpienia](media/quickstart-sql-vm-create-portal/basics-instance-details.png)
 
@@ -78,7 +77,7 @@ Na karcie **podstawowe** podaj następujące informacje:
 
    ![Reguły portów wejściowych](media/quickstart-sql-vm-create-portal/basics-inbound-port-rules.png)
 
-## <a name="sql-server-settings"></a>Ustawienia programu SQL Server
+## <a name="sql-server-settings"></a>Ustawienia serwera SQL Server
 
 Na karcie **ustawienia SQL Server** skonfiguruj następujące opcje:
 

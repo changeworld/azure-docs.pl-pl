@@ -1,6 +1,6 @@
 ---
-title: Podłącz urządzenie SensorTile.box do aplikacji usługi Azure IoT Central | Dokumentacja firmy Microsoft
-description: Jako deweloper urządzenia Dowiedz się, jak połączyć urządzenie SensorTile.box aplikację usługi Azure IoT Central.
+title: Połącz urządzenie SensorTile. Box z aplikacją IoT Central platformy Azure | Microsoft Docs
+description: Jako deweloper urządzenia dowiesz się, jak połączyć urządzenie SensorTile. Box z aplikacją IoT Central platformy Azure.
 author: sarahhubbard
 ms.author: sahubbar
 ms.date: 04/24/2019
@@ -8,100 +8,102 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: sandeep.pujar
-ms.openlocfilehash: 8c1b4a4ab834b2203a7e0b6e4e9e366c3fc38774
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ce0c5abe6e89094623c07afa2d1c85903e0e7ee7
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65472170"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877446"
 ---
-# <a name="connect-sensortilebox-device-to-your-azure-iot-central-application"></a>Podłącz urządzenie SensorTile.box do aplikacji usługi Azure IoT Central
+# <a name="connect-sensortilebox-device-to-your-azure-iot-central-application"></a>Połącz urządzenie SensorTile. Box z aplikacją IoT Central platformy Azure
 
-W tym artykule opisano jak Deweloper urządzenia podłączenia urządzenia SensorTile.box do aplikacji Microsoft Azure IoT Central.
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
+
+W tym artykule opisano, jak deweloper urządzenia łączy urządzenie SensorTile. Box z aplikacją IoT Central Microsoft Azure.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 Aby wykonać kroki opisane w tym artykule, potrzebne są następujące zasoby:
 
-* Urządzenie SensorTile.box. Aby uzyskać więcej informacji, zobacz [SensorTile.box](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mems-motion-sensor-eval-boards/steval-mksbox1v1.html).
-* Czujnik cz ST aplikacji zainstalowane na urządzeniu z systemem Android, możesz [Pobierz go stąd](https://play.google.com/store/apps/details?id=com.st.bluems). Więcej informacji można znaleźć pod adresem: [Czujnik cz ST](https://www.st.com/stblesensor)
-* Aplikacja usługi Azure IoT Central, utworzone na podstawie **DevKits** szablon aplikacji. Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
-* Dodaj **SensorTile.box** szablon urządzenia w aplikacji IoT Central, odwiedzając **szablonów urządzeń** strony, klikając **+ nowy**i wybierając polecenie **SensorTile.box** szablonu.
+* Urządzenie SensorTile. Box. Aby uzyskać więcej informacji, zobacz [SensorTile. Box](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mems-motion-sensor-eval-boards/steval-mksbox1v1.html).
+* Aplikacja czujnika usługi ST beli zainstalowana na urządzeniu z systemem Android można [pobrać z tego miejsca](https://play.google.com/store/apps/details?id=com.st.bluems). Aby uzyskać więcej informacji, odwiedź: [Czujnik beli](https://www.st.com/stblesensor)
+* Aplikacja IoT Central platformy Azure utworzona na podstawie szablonu aplikacji **DevKits** . Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
+* Dodaj szablon urządzenia **SensorTile. Box** do aplikacji IoT Central, odwiedzając stronę **Szablony urządzeń** , klikając pozycję **+ Nowy**i wybierając szablon **SensorTile. Box** .
 
-### <a name="get-your-device-connection-details"></a>Uczyń swoje urządzenie szczegóły połączenia
+### <a name="get-your-device-connection-details"></a>Pobierz szczegóły połączenia z urządzeniem
 
-W aplikacji usługi Azure IoT Central, Dodaj prawdziwe urządzenie z **SensorTile.box** szablon urządzenia i zanotować szczegóły połączenia urządzenia: **Identyfikator zakresu**, **identyfikator urządzenia**, i **klucz podstawowy**:
+W aplikacji IoT Central platformy Azure Dodaj rzeczywiste urządzenie z szablonu urządzenia **SensorTile. Box** i zanotuj szczegóły połączenia urządzenia: **Identyfikator zakresu**, **Identyfikator urządzenia**i **klucz podstawowy**:
 
-1. Dodaj urządzenia z Device Explorer. Wybierz **+ nowy > rzeczywistych** dodać rzeczywistego urządzenia.
+1. Dodaj urządzenie z Device Explorer. Wybierz pozycję **+ nowy > rzeczywista** , aby dodać rzeczywiste urządzenie.
 
-    * Wprowadzić małymi literami **identyfikator urządzenia**, lub użyj sugerowanego **identyfikator urządzenia**.
-    * Wprowadź **nazwy urządzenia**, lub użyć sugerowanej nazwy
+    * Wprowadź **Identyfikator urządzenia**małymi literami lub użyj sugerowanego **identyfikatora urządzenia**.
+    * Wprowadź **nazwę urządzenia**lub użyj sugerowanej nazwy
 
     ![Dodaj urządzenie](media/howto-connect-sensortile/real-device.png)
 
-1. Aby uzyskać szczegóły połączenia urządzenia **identyfikator zakresu**, **identyfikator urządzenia**, i **klucza podstawowego**, wybierz opcję **Connect** na stronie urządzenia.
+1. Aby uzyskać szczegóły połączenia z urządzeniem, **Identyfikator zakresu**, **Identyfikator urządzenia**i **klucz podstawowy**, wybierz pozycję **Połącz** na stronie urządzenia.
 
     ![Szczegóły połączenia](media/howto-connect-sensortile/connect-device.png)
 
-1. Zanotuj szczegóły połączenia. Teraz możesz tymczasowo odłączony od Internetu, podczas przygotowywania urządzenia Mxchip w następnym kroku.
+1. Zanotuj szczegóły połączenia. Po przygotowaniu urządzenia DevKit w następnym kroku nastąpi tymczasowe odłączenie od Internetu.
 
-## <a name="set-up-the-sensortilebox-with-the-mobile-application"></a>Konfigurowanie SensorTile.box z aplikacją mobilną
+## <a name="set-up-the-sensortilebox-with-the-mobile-application"></a>Skonfiguruj SensorTile. Box przy użyciu aplikacji mobilnej
 
-W tej sekcji dowiesz się, jak wypychać oprogramowanie układowe aplikacji na urządzeniu. Możesz następnie jak wysyłać dane urządzenia IoT Central za pośrednictwem aplikacji mobilnej ST cz czujników przy użyciu połączenia Bluetooth niski energii (Włącz).
+W tej sekcji dowiesz się, jak wypchnąć oprogramowanie układowe aplikacji na urządzenie. Następnie wysyłasz dane urządzenia do IoT Central za pośrednictwem aplikacji mobilnej czujnika usługi ST
 
-1. Otwórz aplikację czujnik cz ST i naciśnij klawisz **Utwórz nową aplikację** przycisku.
+1. Otwórz aplikację czujnika beli i naciśnij przycisk **Utwórz nową aplikację** .
 
-    ![Tworzenie aplikacji](media/howto-connect-sensortile/create-app.png)
+    ![Utwórz aplikację](media/howto-connect-sensortile/create-app.png)
 
-1. Wybierz **Barometer** aplikacji.
-1. Naciśnij przycisk Prześlij.
+1. Wybierz aplikację **BAROMETER** .
+1. Naciśnij przycisk Przekaż.
 
-    ![Przekazywanie barometer](media/howto-connect-sensortile/barometer-upload.png)
+    ![BAROMETER przekazywanie](media/howto-connect-sensortile/barometer-upload.png)
 
-1. Naciśnij przycisk Odtwórz, skojarzone z Twojej SensorTile.box.
-1. Po zakończeniu procesu SensorTile.box strumieni za pośrednictwem cz temperatury, wykorzystanie i wilgotności.
+1. Naciśnij przycisk Odtwórz skojarzony z Twoim SensorTile. Box.
+1. Po zakończeniu procesu, SensorTile. Box strumieniuje temperaturę, ciśnienie i wilgotność w czasie.
 
-## <a name="connect-the-sensortilebox-to-the-cloud"></a>Łączenie SensorTile.box z chmurą
+## <a name="connect-the-sensortilebox-to-the-cloud"></a>Połącz SensorTile. Box z chmurą
 
-W tej sekcji dowiesz się, jak połączyć SensorTile.box dla aplikacji mobilnej i połączyć z aplikacjami mobilnymi do chmury.
+W tej sekcji dowiesz się, jak połączyć SensorTile. Box z aplikacją mobilną i połączyć aplikację mobilną z chmurą.
 
-1. Korzystając z menu po lewej stronie wybierz **rejestrowanie chmury** przycisku.
+1. Korzystając z menu po lewej stronie, wybierz przycisk **Rejestrowanie w chmurze** .
 
-    ![Rejestrowanie chmury](media/howto-connect-sensortile/cloud-logging.png)
+    ![Rejestrowanie w chmurze](media/howto-connect-sensortile/cloud-logging.png)
 
-1. Wybierz **usługi Azure IoT Central** jako dostawcy chmury.
-1. Wstaw identyfikator urządzenia i identyfikator zakresu, które wcześniej zostały podane.
+1. Wybierz pozycję **Azure IoT Central** jako dostawcę chmury.
+1. Wstaw identyfikator urządzenia i identyfikator zakresu, które zostały wcześniej odnotowane.
 
     ![Poświadczenia](media/howto-connect-sensortile/credentials.png)
 
-1. Wybierz **klucz aplikacji** przycisku radiowego.
-1. Kliknij przycisk **Connect** i wybierz dane telemetryczne, który chcesz przekazać.
+1. Wybierz przycisk radiowy **klucz aplikacji** .
+1. Kliknij przycisk **Połącz** i wybierz dane telemetryczne, które chcesz przekazać.
 1. Po kilku sekundach dane są wyświetlane na pulpicie nawigacyjnym aplikacji IoT Central.
 
-## <a name="sensortilebox-device-template-details"></a>Szczegóły szablonu urządzenia SensorTile.box
+## <a name="sensortilebox-device-template-details"></a>Szczegóły szablonu urządzenia SensorTile. Box
 
-Aplikacja utworzone na podstawie szablonu urządzenia SensorTile.box o następującej charakterystyce:
+Aplikacja utworzona na podstawie szablonu urządzenia SensorTile. Box o następujących cechach:
 
 ### <a name="telemetry"></a>Telemetria
 
 | Nazwa pola     | Jednostki  | Minimalne | Maksimum | Miejsca dziesiętne |
 | -------------- | ------ | ------- | ------- | -------------- |
 | humidity       | %      | 30       | 90     | 1              |
-| Temp           | °C     | 0     | 40     | 1              |
+| temp           | °C     | 0     | 40     | 1              |
 | pressure       | mbar    | 900     | 1100    | 2              |
 | magnetometerX  | mgauss | -1000   | 1000    | 0              |
 | magnetometerY  | mgauss | -1000   | 1000    | 0              |
 | magnetometerZ  | mgauss | -1000   | 1000    | 0              |
 | accelerometerX | mg     | -2000   | 2000    | 0              |
-| accelerometerY | mg     | -2000   | 2000    | 0              |
+| przyspieszeniomierz | mg     | -2000   | 2000    | 0              |
 | accelerometerZ | mg     | -2000   | 2000    | 0              |
-| gyroscopeX     | dps   | -3276   | 3276    | 1              |
-| gyroscopeY     | dps   | -3276   | 3276    | 1              |
-| gyroscopeZ     | dps   | -3276   | 3276    | 1              |
+| gyroscopeX     | dokumenty   | -3276   | 3276    | 1              |
+| gyroscopeY     | dokumenty   | -3276   | 3276    | 1              |
+| gyroscopeZ     | dokumenty   | -3276   | 3276    | 1              |
 | FFT_X     |    |    |     |               |
 | FFT_Y     |    |    |     |               |
 | FFT_Z     |    |    |     |               |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz, wyjaśniono, jak połączyć SensorTile.box do aplikacji usługi Azure IoT Central, sugerowane następnym krokiem jest Dowiedz się, [sposób konfigurowania szablonu niestandardowego urządzenia](howto-set-up-template.md) dla urządzenia IoT.
+Teraz, gdy wiesz już, jak połączyć SensorTile. Box z aplikacją IoT Central platformy Azure, sugerowanym następnym krokiem jest zapoznanie się z [tematem Konfigurowanie niestandardowego szablonu urządzenia](howto-set-up-template.md) dla własnego urządzenia IoT.

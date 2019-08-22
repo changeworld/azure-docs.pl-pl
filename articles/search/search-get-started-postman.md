@@ -2,19 +2,19 @@
 title: 'Przewodnik Szybki Start: Tworzenie, ładowanie i wykonywanie zapytań względem indeksów przy użyciu programu Poster-Azure Search'
 description: Dowiedz się, jak wywoływać interfejsy API REST Azure Search przy użyciu programu Poster oraz dane przykładowe i definicje.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 07/11/2019
 ms.author: heidist
-ms.openlocfilehash: e3912e90762977bc801279fde481fc26516e51a6
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: b1fcca0b135852660890f9f7591ee115d2ef2b47
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882640"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656776"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>Szybki start: Tworzenie indeksu Azure Search w programie Poster przy użyciu interfejsów API REST
 > [!div class="op_single_selector"]
@@ -22,7 +22,7 @@ ms.locfileid: "68882640"
 > * [C#](search-create-index-dotnet.md)
 > * [Python](search-get-started-python.md)
 > * [Portal](search-get-started-portal.md)
-> * [Program PowerShell](search-howto-dotnet-sdk.md)
+> * [PowerShell](search-howto-dotnet-sdk.md)
 >*
 
 Jednym z najprostszych sposobów eksplorowania [Azure Search interfejsów API REST](https://docs.microsoft.com/rest/api/searchservice) jest użycie programu Poster lub innego narzędzia do testowania sieci Web w celu sformułowania żądań HTTP i sprawdzenia odpowiedzi. Za pomocą odpowiednich narzędzi i niniejszej instrukcji możesz wysyłać żądania i wyświetlać odpowiedzi przed napisaniem jakiegokolwiek kodu.
