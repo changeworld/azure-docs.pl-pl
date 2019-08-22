@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: ebb9028aab8626554d0f5fede15129c141d441cb
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 7ec731c6b75ff556c9e00f7041fea32f807fe5f4
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035330"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69892020"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network często zadawane pytania
 
@@ -29,9 +29,11 @@ Usługa Azure Virtual Network (VNet) to reprezentacja własnej sieci w chmurze. 
 
 Użyj sieci wirtualnych, aby:
 
-* Utwórz dedykowaną sieć wirtualną tylko w chmurze, czasami nie musisz wymagać konfiguracji obejmującej wiele lokalizacji dla Twojego rozwiązania. Podczas tworzenia sieci wirtualnej usługi i maszyny wirtualne w sieci wirtualnej mogą komunikować się bezpośrednio i bezpiecznie ze sobą w chmurze. Nadal można skonfigurować połączenia punktów końcowych dla maszyn wirtualnych i usług, które wymagają komunikacji z Internetem w ramach rozwiązania.
-* Bezpiecznie zwiększaj możliwości centrum danych za pomocą sieci wirtualnych, możesz tworzyć tradycyjne sieci VPN typu lokacja-lokacja (S2S) w celu bezpiecznego skalowania swojej pojemności centrum. Sieci VPN S2S używają protokołu IPSEC do zapewnienia bezpiecznego połączenia między firmową bramą sieci VPN i platformą Azure.
-* Włącz scenariusze chmury hybrydowej sieci wirtualnych zapewniają elastyczność umożliwiającą obsługę szeregu scenariuszy chmury hybrydowej. Aplikacje oparte na chmurze można bezpiecznie połączyć z dowolnym typem systemu lokalnego, takim jak Komputery mainframe i systemy UNIX.
+* Utwórz dedykowaną sieć wirtualną obsługującą tylko chmurę prywatną. Czasami nie jest wymagane, aby Twoje rozwiązanie nie wymagało konfiguracji obejmującej wiele lokalizacji. Podczas tworzenia sieci wirtualnej usługi i maszyny wirtualne w sieci wirtualnej mogą komunikować się bezpośrednio i bezpiecznie ze sobą w chmurze. Nadal można skonfigurować połączenia punktów końcowych dla maszyn wirtualnych i usług, które wymagają komunikacji z Internetem w ramach rozwiązania.
+
+* Bezpieczne rozszeranie centrum danych. Za pomocą sieci wirtualnych można tworzyć tradycyjne sieci VPN typu lokacja-lokacja (S2S) w celu bezpiecznego skalowania pojemności centrum danych. Sieci VPN S2S używają protokołu IPSEC do zapewnienia bezpiecznego połączenia między firmową bramą sieci VPN i platformą Azure.
+
+* Włącz scenariusze chmury hybrydowej. Sieci wirtualnych zapewniają elastyczność umożliwiającą obsługę szeregu scenariuszy chmury hybrydowej. Aplikacje oparte na chmurze można bezpiecznie połączyć z dowolnym typem systemu lokalnego, takim jak Komputery mainframe i systemy UNIX.
 
 ### <a name="how-do-i-get-started"></a>Jak rozpocząć?
 Przejdź do [dokumentacji sieci wirtualnej](https://docs.microsoft.com/azure/virtual-network/) , aby rozpocząć pracę. Ta zawartość zawiera przegląd i informacje dotyczące wdrażania dla wszystkich funkcji sieci wirtualnej.

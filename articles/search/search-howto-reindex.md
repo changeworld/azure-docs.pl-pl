@@ -1,106 +1,106 @@
 ---
-title: Ponowne kompilowanie indeksu usługi Azure Search, lub Odśwież zawartość do przeszukiwania — usługa Azure Search
-description: Dodawanie nowych elementów, a następnie zaktualizować istniejące elementy lub dokumentów lub usuwanie przestarzałych dokumentów w ponownej pełnej kompilacji lub częściowe Indeksowanie przyrostowe, w celu odświeżenia indeksu usługi Azure Search.
+title: Odbuduj indeks Azure Search lub Odśwież zawartość z możliwością przeszukiwania — Azure Search
+description: Dodaj nowe elementy, zaktualizuj istniejące elementy lub dokumenty lub Usuń przestarzałe dokumenty z pełnego przebudowy lub częściowego indeksowania przyrostowego, aby odświeżyć indeks Azure Search.
 services: search
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 ms.service: search
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 2595912732389c8a415d1854a84a7b9c182e4dc7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8a03472b72ea7c2dc69d79400e33d5ec65cc6126
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60871152"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647688"
 ---
-# <a name="how-to-rebuild-an-azure-search-index"></a>Jak odbudować indeksu usługi Azure Search
+# <a name="how-to-rebuild-an-azure-search-index"></a>Jak skompilować indeks Azure Search
 
-W tym artykule wyjaśniono, jak odbudować indeksu usługi Azure Search, okoliczności, w których są wymagane ponowne kompilowanie i zalecenia dotyczące eliminacji wpływ ponowne kompilowanie dla żądań zapytań trwających.
+W tym artykule wyjaśniono, jak ponownie skompilować indeks Azure Search, sytuacje, w których są wymagane ponowne kompilacje oraz Zalecenia dotyczące łagodzenia wpływu rekompilacji na bieżące żądania zapytań.
 
-A *odbudować* odnosi się do porzucania i ponownego tworzenia struktury danych fizycznych skojarzonych z indeksu, w tym wszystkie pola na podstawie odwróconą indeksy. W usłudze Azure Search nie można porzucić i ponownie utwórz poszczególne pola. Do ponownego utworzenia indeksu, należy usunąć wszystkie magazyny pola, ponownie utworzony na podstawie istniejących lub poprawionego schematu indeksu, a następnie wypełniona przy użyciu przeniesiony do indeksu i pobierane z zewnętrznych źródeł danych. Często służąca do reorganizacji indeksów w czasie projektowania, ale również może być konieczne odbudowanie indeksu poziomie produkcyjnym w celu uwzględnienia zmian strukturalnych, takich jak dodawanie typów złożonych lub Dodawanie pola do sugestory.
+Odbudowanie odwołuje się do porzucania i ponownego tworzenia fizycznych struktur danych skojarzonych z indeksem, w tym wszystkich odwróconych indeksów opartych na polach. W Azure Search nie można porzucić i ponownie utworzyć poszczególnych pól. Aby ponownie skompilować indeks, należy usunąć wszystkie magazyny pól, utworzyć je ponownie na podstawie istniejącego lub zmienionego schematu indeksu, a następnie ponownie wypełnić dane wypchnięte do indeksu lub pobrać ze źródeł zewnętrznych. Często można ponownie skompilować indeksy podczas opracowywania, ale może być również konieczne odbudowanie indeksu poziomu produkcyjnego w celu uwzględnienia zmian strukturalnych, takich jak dodawanie typów złożonych lub dodawanie pól do sugestii.
 
-W przeciwieństwie do ponowne kompilowanie przyjmujące indeksu w trybie offline *odświeżania danych* działa jako zadanie w tle. Możesz dodawać, Usuń i Zamień dokumenty przy minimalnym zakłóceniu obciążeń związanych z zapytaniami, mimo że wykonywanie zapytań zwykle trwa dłużej. Aby uzyskać więcej informacji na temat aktualizowania indeksowanie zawartości, zobacz [Add, Update lub usuwanie dokumentów](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
+W przeciwieństwie do rekompilacji, które mają indeks w trybie offline, *odświeżanie danych* jest uruchamiane jako zadanie w tle. Można dodawać, usuwać i zamieniać dokumenty z minimalnymi zakłóceniami w celu wykonywania zapytań, chociaż zapytania zazwyczaj trwają dłużej. Aby uzyskać więcej informacji na temat aktualizowania zawartości indeksu, zobacz [Dodawanie, aktualizowanie lub usuwanie dokumentów](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
 
-## <a name="rebuild-conditions"></a>Ponownie skompiluj warunków
+## <a name="rebuild-conditions"></a>Warunki ponownego kompilowania
 
 | Warunek | Opis |
 |-----------|-------------|
-| Zmiana definicji pola | Zmiana nazwy pola, typ danych lub określonych [atrybutami indeksu](https://docs.microsoft.com/rest/api/searchservice/create-index) (wyszukiwanie, filtrowanie, sortowanie, tworzenie aspektów) wymaga ponownej pełnej kompilacji. |
-| Przypisz Analizator do pola | [Analizatory](search-analyzers.md) są zdefiniowane w indeksie, a następnie przypisywane do pól. W dowolnym momencie można dodać nową definicję analizatora do indeksu, ale można je tylko *przypisać* analizator po utworzeniu pola. Dotyczy to zarówno **analizatora** i **indexAnalyzer** właściwości. **SearchAnalyzer** właściwość jest wyjątek (można przypisać tę właściwość do istniejącego pola). |
-| Aktualizowanie lub usuwanie definicji analyzer w ramach indeksu | Nie można usunąć ani zmieniać istniejącej analizator konfiguracji (analizator, tokenizatora, filtr tokenu lub char filtr) w indeksie, chyba, że odbudować całego indeksu. |
-| Dodaj pole do sugestora | Jeśli pole już istnieje i chcesz dodać ją do [Sugestory](index-add-suggesters.md) konstruowania, należy odbudować indeksu. |
-| Usuń pole | Aby fizycznie Usuń wszystkie ślady pola, musisz odbudować indeksu. Po bezpośrednim ponowna kompilacja nie jest możliwe, można modyfikować kodu aplikacji, aby wyłączyć dostęp do pola "usunięta". Fizycznie definicję pola i zawartość pozostają w indeksie aż do następnego ponowną kompilację, po zastosowaniu schematu, które pomija pola w danym. |
-| Przełącznik warstwy | Jeśli potrzebujesz większej pojemności, nie istnieje żadne uaktualnienia w miejscu. Nowa usługa jest tworzony w nowym punkcie pojemności, a indeksy muszą zostać skompilowane od podstaw w nowej wersji usługi. |
+| Zmiana definicji pola | Zmiana nazwy pola, typu danych lub określonych [atrybutów indeksu](https://docs.microsoft.com/rest/api/searchservice/create-index) (wyszukiwanie, filtrowanie, sortowanie, tworzenie i tworzenie) wymaga pełnej kompilacji. |
+| Przypisz Analizator do pola | [Analizatory](search-analyzers.md) są zdefiniowane w indeksie, a następnie przypisywane do pól. W dowolnym momencie możesz dodać nową definicję analizatora do indeksu, ale można *przypisać* Analizator tylko po utworzeniu pola. Dotyczy to zarówno analizatora, jak i właściwości **indexAnalyzer** . Właściwość **searchAnalyzer** jest wyjątkiem (można przypisać tę właściwość do istniejącego pola). |
+| Aktualizowanie lub usuwanie definicji analizatora w indeksie | Nie można usunąć ani zmienić istniejącej konfiguracji analizatora (analizator, tokenizatora, filtr tokenu lub filtr znaków) w indeksie, chyba że cały indeks zostanie odbudowany. |
+| Dodawanie pola do sugestii | Jeśli pole już istnieje i chcesz dodać je do konstrukcji sugerującej, [](index-add-suggesters.md) należy ponownie skompilować indeks. |
+| Usuń pole | Aby fizycznie usunąć wszystkie ślady pola, należy ponownie skompilować indeks. Gdy bezpośrednie ponowne kompilowanie nie jest praktyczne, można zmodyfikować kod aplikacji, aby wyłączyć dostęp do pola "usunięte". Fizycznie definicja pola i zawartość pozostają w indeksie do momentu kolejnej ponownej kompilacji, gdy zastosuje schemat, który pomija pole w danym momencie. |
+| Przełącz warstwy | Jeśli potrzebujesz większej pojemności, nie ma uaktualnienia w miejscu. Nowa usługa zostanie utworzona w nowym punkcie pojemności, a indeksy muszą być zbudowane od podstaw w nowej usłudze. |
 
-Inne zmiany można wprowadzić bez wpływu na istniejących struktur fizycznych. Ściślej mówiąc, wykonaj następujące zmiany *nie* wymagają odbudowywanie indeksu:
+Wszelkie inne modyfikacje mogą być wprowadzane bez wpływu na istniejące struktury fizyczne. W szczególnych przypadkach następujące zmiany nie wymagają odbudowania indeksu:
 
-+ Dodawanie nowego pola
-+ Ustaw **pobieranie** atrybutu istniejącego pola
-+ Ustaw **searchAnalyzer** na istniejącego pola
-+ Dodaj nową definicję analyzer w ramach indeksu
-+ Dodawanie, aktualizowanie lub usuwanie profile oceniania
-+ Dodawanie, aktualizowanie lub usuwanie ustawień specyfikacji CORS
++ Dodaj nowe pole
++ Ustaw atrybut możliwy do **pobierania** dla istniejącego pola
++ Ustaw **searchAnalyzer** dla istniejącego pola
++ Dodaj nową definicję analizatora w indeksie
++ Dodawanie, aktualizowanie lub usuwanie profilów oceniania
++ Dodawanie, aktualizowanie lub usuwanie ustawień mechanizmu CORS
 + Dodawanie, aktualizowanie lub usuwanie synonymMaps
 
-Po dodaniu nowego pola, istniejących dokumentów indeksowanych podano wartość null dla nowego pola. Podczas odświeżania danych w przyszłości wartości z zewnętrznego źródła danych, Zastąp wartości null, dodawane przez usługę Azure Search. Aby uzyskać więcej informacji na temat aktualizowania indeksowanie zawartości, zobacz [Add, Update lub usuwanie dokumentów](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
+Po dodaniu nowego pola, istniejące indeksowane dokumenty otrzymują wartość null dla nowego pola. W przypadku późniejszego odświeżenia danych wartości z zewnętrznych danych źródłowych zastąpią wartości null dodane przez Azure Search. Aby uzyskać więcej informacji na temat aktualizowania zawartości indeksu, zobacz [Dodawanie, aktualizowanie lub usuwanie dokumentów](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
 
-## <a name="partial-or-incremental-indexing"></a>Indeksowanie częściowego lub przyrostowe
+## <a name="partial-or-incremental-indexing"></a>Częściowe lub przyrostowe indeksowanie
 
-W usłudze Azure Search nie możesz kontrolować indeksowanie poszczególnych pól, wybierając Usuń lub Utwórz ponownie określonych pól. Podobnie, nie istnieje wbudowany mechanizm dla [indeksować dokumenty na podstawie kryteriów](https://stackoverflow.com/questions/40539019/azure-search-what-is-the-best-way-to-update-a-batch-of-documents). Wszelkie wymagania dotyczące indeksowania oparte na kryteria muszą zostać spełnione poprzez kod niestandardowy.
+W Azure Search nie można kontrolować indeksowania dla poszczególnych pól, wybierając opcję usuwania lub ponownego tworzenia określonych pól. Podobnie nie istnieje wbudowany mechanizm [indeksowania dokumentów na podstawie kryteriów](https://stackoverflow.com/questions/40539019/azure-search-what-is-the-best-way-to-update-a-batch-of-documents). Wszelkie wymagania dotyczące indeksowania opartego na kryteriach muszą być spełnione przez kod niestandardowy.
 
-Co można zrobić, jest jednak *Odśwież dokumenty* w indeksie. W przypadku wielu rozwiązań wyszukiwania zewnętrzne źródło danych jest nietrwały, a synchronizacja między źródłem danych i indeksu wyszukiwania jest powszechną praktyką. W kodzie, wywołania [Add, Update lub usuwanie dokumentów](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) operacji lub [odpowiednik .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexesoperationsextensions.createorupdate?view=azure-dotnet) można zaktualizować indeksu zawartości lub aby dodać wartości dla nowego pola.
+Jednak można to łatwo zrobić, *odświeżając dokumenty* w indeksie. W przypadku wielu rozwiązań wyszukiwania zewnętrzne dane źródłowe są nietrwałe, a synchronizacja między danymi źródłowymi a indeksem wyszukiwania jest powszechną procedurą. W kodzie, wywołaj operację [Dodawanie, aktualizowanie lub usuwanie dokumentów](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) lub [równoważnej oprogramowaniu .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexesoperationsextensions.createorupdate?view=azure-dotnet) , aby zaktualizować zawartość indeksu lub dodać wartości dla nowego pola.
 
-## <a name="partial-indexing-with-indexers"></a>Partial indeksowania przy użyciu indeksatorów
+## <a name="partial-indexing-with-indexers"></a>Częściowe indeksowanie za pomocą indeksatorów
 
-[Indeksatory](search-indexer-overview.md) upraszcza zadanie odświeżania danych. Indeksator może indeksowanie tylko jedną tabelę lub widok w zewnętrznym źródle danych. Indeksowanie wiele tabel, najprostszą metodą jest utworzenie widoku, który łączy projektów i tabele kolumny, które mają być indeksowane. 
+[Indeksatory](search-indexer-overview.md) upraszczają zadanie odświeżania danych. Indeksator może indeksować tylko jedną tabelę lub widok w zewnętrznym źródle danych. Aby indeksować wiele tabel, najprostszym podejściem jest utworzenie widoku, który sprzęga tabele i projekty kolumn, które mają być indeksowane. 
 
-Korzystając z indeksatorów, które przeszukują zewnętrznych źródeł danych, sprawdź, czy kolumna "znacznik limitu górnego" w danych źródłowych. Jeśli istnieje, służy do zmiany przyrostowe wykrywania przez pobieranie tylko te wiersze zawierające nowy lub poprawiony zawartości. Aby uzyskać [usługi Azure Blob storage](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection), `lastModified` pole jest używane. Na [usługi Azure Table storage](search-howto-indexing-azure-tables.md#incremental-indexing-and-deletion-detection), `timestamp` pełni tę samą funkcję. Podobnie, zarówno [indeksator usługi Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) i [indeksator usługi Azure Cosmos DB](search-howto-index-cosmosdb.md#indexing-changed-documents) mają pola Oflagowanie aktualizacji wiersza. 
+W przypadku używania indeksatorów, które przeszukują zewnętrzne źródła danych, należy sprawdzić, czy w danych źródłowych znajduje się kolumna "górny znacznik". Jeśli taki istnieje, można go użyć do wykrywania zmian przyrostowych przez pobranie tylko tych wierszy zawierających nową lub poprawioną zawartość. W przypadku [usługi Azure Blob Storage](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) `lastModified` używane jest pole. W [usłudze Azure Table Storage](search-howto-indexing-azure-tables.md#incremental-indexing-and-deletion-detection)program `timestamp` służy do tego samego celu. Podobnie zarówno [Azure SQL Database Indexer](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) , Azure Cosmos DB jak i [indeksator](search-howto-index-cosmosdb.md#indexing-changed-documents) mają pola do oflagowania aktualizacji wierszy. 
 
-Aby uzyskać więcej informacji na temat indeksatorów, zobacz [omówienie indeksatorów](search-indexer-overview.md) i [zresetować indeksatora interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/reset-indexer).
+Aby uzyskać więcej informacji na temat indeksatorów, zobacz [Omówienie indeksatora](search-indexer-overview.md) i [Resetowanie interfejsu API REST indeksatora](https://docs.microsoft.com/rest/api/searchservice/reset-indexer).
 
-## <a name="how-to-rebuild-an-index"></a>Jak odbudować indeksu
+## <a name="how-to-rebuild-an-index"></a>Jak ponownie skompilować indeks
 
-Plan w pełni częste, ponownie kompiluje podczas tworzenia active, gdy indeks schematy są w stanie strumienia. W przypadku aplikacji już w środowisku produkcyjnym zaleca się utworzenie nowego indeksu równolegle działającą istniejący indeks, aby uniknąć przestoju zapytania.
+Planuj częste, pełne ponowne kompilacje podczas aktywnego programowania, gdy schematy indeksów są w stanie strumieniowym. W przypadku aplikacji znajdujących się już w środowisku produkcyjnym zalecamy utworzenie nowego indeksu, który jest uruchamiany obok istniejącego indeksu, aby uniknąć przestojów zapytań.
 
-Uprawnienia odczytu i zapisu na poziomie usługi są wymagane do aktualizacji indeksu. 
+Uprawnienia do odczytu i zapisu na poziomie usługi są wymagane na potrzeby aktualizacji indeksu. 
 
-Nie można odbudować indeksu w portalu. Programowo, można wywołać [aktualizacji indeksu — interfejs API REST](https://docs.microsoft.com/rest/api/searchservice/update-index) lub [równoważnych interfejsów API platformy .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexesoperations.createorupdatewithhttpmessagesasync?view=azure-dotnet) dla pełnej rekompilacji. Żądanie aktualizacji indeksu jest taka sama jak [utworzyć indeks interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/create-index), ale ma inny kontekst.
+Nie można odbudować indeksu w portalu. Programowo można wywołać [interfejs API REST indeksu aktualizacji](https://docs.microsoft.com/rest/api/searchservice/update-index) lub [równoważne interfejsy API platformy .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexesoperations.createorupdatewithhttpmessagesasync?view=azure-dotnet) na potrzeby pełnej kompilacji. Żądanie indeksu aktualizacji jest identyczne, aby można było [utworzyć interfejs API REST indeksu](https://docs.microsoft.com/rest/api/searchservice/create-index), ale ma inny kontekst.
 
-Poniższy przepływ pracy jest ukierunkowane pod kątem interfejsu API REST, ale informacje dotyczą zestawu SDK platformy .NET.
+Następujący przepływ pracy jest rozliczany z interfejsem API REST, ale stosuje się jednakowo do zestawu .NET SDK.
 
-1. Podczas ponownego wykorzystania, nazwę indeksu [Usuń istniejący indeks](https://docs.microsoft.com/rest/api/searchservice/delete-index). 
+1. Podczas ponownego używania nazwy indeksu Porzuć [istniejący indeks](https://docs.microsoft.com/rest/api/searchservice/delete-index). 
 
-   Wszelkie zapytania dla tego indeksu, od razu są opuszczane. Usuwanie indeksu jest nieodwracalne niszczenie magazynu fizycznego dla kolekcji pól i innych konstrukcji. Upewnij się, że jesteś wyczyść na temat skutków usuwania indeksu, zanim ją upuścisz. 
+   Wszystkie zapytania ukierunkowane na ten indeks zostaną natychmiast usunięte. Usuwanie indeksu jest nieodwracalne, co niszczy magazyn fizyczny dla kolekcji pól i innych konstrukcji. Pamiętaj, aby usunąć indeks przed jego usunięciem. 
 
-2. Formułowanie [Aktualizowanie indeksu](https://docs.microsoft.com/rest/api/searchservice/update-index) żądanie do punktu końcowego usługi, klucz interfejsu API i [klucz administratora](https://docs.microsoft.com/azure/search/search-security-api-keys). Klucz administratora jest wymagana dla operacji zapisu.
+2. Formułowanie żądania [indeksu aktualizacji](https://docs.microsoft.com/rest/api/searchservice/update-index) przy użyciu punktu końcowego usługi, klucza API i [klucza administratora](https://docs.microsoft.com/azure/search/search-security-api-keys). Dla operacji zapisu wymagany jest klucz administratora.
 
-3. W treści żądania Udostępnij schematu indeksu na definicje pól zmienione lub zmodyfikowane. Treść żądania zawiera schemat indeksu, a także tworzy do oceniania, profile, analizatory, sugestory i opcje CORS. Wymagania dotyczące schematu są udokumentowane w artykule [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index).
+3. W treści żądania Podaj schemat indeksu ze zmienionym lub zmodyfikowanym definicją pola. Treść żądania zawiera schemat indeksu, a także konstrukcje dotyczące profilów oceniania, analizatorów, sugestii i opcji CORS. Wymagania schematu są udokumentowane w temacie [create index](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
-4. Wyślij [Aktualizowanie indeksu](https://docs.microsoft.com/rest/api/searchservice/update-index) żądania odbudować fizycznych wyrażenie indeksu w usłudze Azure Search. 
+4. Wyślij żądanie [indeksu aktualizacji](https://docs.microsoft.com/rest/api/searchservice/update-index) w celu odbudowania fizycznego wyrażenia indeksu w Azure Search. 
 
-5. [Ładowanie indeksu z dokumentami](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) ze źródła zewnętrznego.
+5. [Załaduj indeks z dokumentami](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) ze źródła zewnętrznego.
 
-Podczas tworzenia indeksu magazynu fizycznego jest przydzielany dla każdego pola w schemacie indeksu z odwróconą Indeks utworzony dla każdego pola, którą można przeszukiwać. Pola, które nie znajdują się wyszukiwanie mogą być używane w filtry lub wyrażeń, ale nie mają odwrócona, indeksy i czy nie pełnotekstowego lub rozmyte przeszukiwania. Na odbudowywanie indeksu usunąć i ponownie utworzyć te indeksy odwróconą na podstawie schematu indeksu, należy podać.
+Podczas tworzenia indeksu magazyn fizyczny jest przypisywany dla każdego pola w schemacie indeksu z odwróconym indeksem utworzonym dla każdego pola z możliwością wyszukiwania. Pola, które nie są możliwe do wyszukiwania, mogą być używane w filtrach lub wyrażeniach, ale nie mają odwróconych indeksów i nie są pełnotekstowe ani rozmyte. W przypadku ponownego kompilowania indeksu te odwrócone indeksy są usuwane i ponownie tworzone na podstawie pożądanego schematu indeksu.
 
-Podczas ładowania indeks każdego pola odwróconą indeks został wypełniony wszystkie wyrazy unikatowy, tokenami z poszczególnych dokumentów, map do dokumentu odpowiednich identyfikatorów. Na przykład podczas indeksowania zestawu danych hotele, odwrócony Indeks utworzony dla pola miejscowości może zawierać warunki dla Seattle, Portland i tak dalej. Dokumenty, które zawierają Seattle lub Portland w polu Miasto musi ich identyfikator dokumentu, na liście obok termin. W przypadku dowolnego [Dodawanie, aktualizowanie lub usuwanie](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) operacji i Lista identyfikatorów dokumentów są odpowiednio aktualizowane.
+Po załadowaniu indeksu, odwrócony indeks każdego pola jest wypełniany wszystkimi unikatowymi wyrazami tokenów z każdego dokumentu, z mapą odpowiadającymi identyfikatorami dokumentów. Na przykład podczas indeksowania zestawu danych hoteli, odwrócony Indeks utworzony dla pola miasto może zawierać terminy dla Seattle, Portland i tak dalej. Dokumenty, które zawierają Seattle lub Portland w polu miasto, będą miały swój identyfikator dokumentu na liście wraz z terminem. Na każdej operacji [dodawania, aktualizowania lub usuwania](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) zostanie odpowiednio zaktualizowana lista warunki i identyfikator dokumentu.
 
 > [!NOTE]
-> Jeśli rygorystyczne wymagania umowy SLA, można rozważyć aprowizacji nową usługę w szczególności dla tej pracy, programować za i indeksowania, pojawiają się w pełną izolację od indeksu produkcji. Osobna usługa działa na swój własny sprzęt, eliminując możliwości rywalizacji o zasoby. Po zakończeniu tworzenia będzie albo pozostanie nowego indeksu w miejscu, przekierowywanie zapytań do nowego punktu końcowego i indeks lub należy uruchomić kod zakończenia publikowania poprawione indeksu w usłudze Azure Search, oryginalnym. Nie istnieje obecnie mechanizm przenoszenia indeksu gotowych do użycia do innej usługi.
+> Jeśli masz rygorystyczne wymagania umowy SLA, możesz rozważyć zainicjowanie obsługi nowej usługi przeznaczonej dla tej pracy, z uwzględnieniem tworzenia i indeksowania w pełnej izolacji z poziomu indeksu produkcyjnego. Oddzielna usługa jest uruchamiana na własnym sprzęcie, eliminując wszelką możliwość rywalizacji o zasoby. Po zakończeniu opracowywania należy pozostawić nowy indeks, przekierować zapytania do nowego punktu końcowego i indeksu lub uruchomić gotowy kod, aby opublikować poprawiony indeks w oryginalnej usłudze Azure Search. Obecnie nie ma mechanizmu przechodzenia gotowego do użycia indeksu do innej usługi.
 
 ## <a name="view-updates"></a>Wyświetl aktualizacje
 
-Możesz rozpocząć wykonywanie zapytania dotyczącego indeksu, jak tylko pierwszy dokument jest ładowany. Jeśli znasz identyfikator dokumentu [interfejsu API REST dokumentu wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/lookup-document) zwraca określonego dokumentu. Do testowania w szerszym powinien poczekaj, aż indeks jest w pełni załadowane i następnie użyj zapytania, aby sprawdzić kontekstu, które powinny być widoczne.
+Możesz rozpocząć wykonywanie zapytań względem indeksu zaraz po załadowaniu pierwszego dokumentu. Jeśli znasz identyfikator dokumentu, [interfejs API REST dokumentu wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/lookup-document) zwraca określony dokument. W celu szerszego testowania należy zaczekać, aż indeks zostanie całkowicie załadowany, a następnie użyć zapytań w celu sprawdzenia kontekstu, który powinien być widoczny.
 
 ## <a name="see-also"></a>Zobacz także
 
 + [Omówienie indeksatora](search-indexer-overview.md)
-+ [Indeks dużych zestawów danych na dużą skalę](search-howto-large-index.md)
++ [Indeksowanie dużych zestawów danych na dużą skalę](search-howto-large-index.md)
 + [Indeksowanie w portalu](search-import-data-portal.md)
-+ [Indeksator usługi Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
++ [Azure SQL Database indeksator](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 + [Indeksator usługi Azure Cosmos DB](search-howto-index-cosmosdb.md)
 + [Indeksator usługi Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 + [Indeksator usługi Azure Table Storage](search-howto-indexing-azure-tables.md)
-+ [Zabezpieczenia w usłudze Azure Search](search-security-overview.md)
++ [Zabezpieczenia w Azure Search](search-security-overview.md)
