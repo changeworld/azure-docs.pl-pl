@@ -110,7 +110,7 @@ Aby skopiować dane z usługi ServiceNow, należy ustawić typ źródła w dzia�
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **ServiceNowSource** | Yes |
+| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **ServiceNowSource** | Yes |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Actual.alm_asset"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 Należy pamiętać, że podczas określania schematu i kolumn dla usługi ServiceNow w zapytaniu i **dotyczą [porady dotyczące wydajności](#performance-tips) na domniemanie wydajności kopiowania**.
