@@ -72,7 +72,7 @@ Następujący kod JSON zawiera schemat dla rozszerzenia maszyny Wirtualnej progr
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | string (date) |
 | publisher | `Chef.Bootstrap.WindowsAzure` | ciąg |
-| — typ | `LinuxChefClient` (Linux), `ChefClient` (Windows) | ciąg |
+| type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | ciąg |
 | typeHandlerVersion | `1210.12` | string (double) |
 
 ### <a name="settings"></a>Ustawienia
