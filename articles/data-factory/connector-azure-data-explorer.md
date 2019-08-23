@@ -68,7 +68,7 @@ Dla połączonej usługi Azure Eksplorator danych są obsługiwane następujące
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | Właściwość **Type** musi być ustawiona na wartość **AzureDataExplorer** | Tak |
+| type | Właściwość **Type** musi być ustawiona na wartość **AzureDataExplorer** | Tak |
 | endpoint | Adres URL punktu końcowego klastra Eksplorator danych platformy Azure z formatem jako `https://<clusterName>.<regionName>.kusto.windows.net`. | Tak |
 | database | Nazwa bazy danych. | Yes |
 | tenant | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Jest to zazwyczaj znany jako "**Identyfikator urzędu**" w parametrach [połączenia Kusto](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Pobierz ją przez umieszczenie kursora myszy w prawym górnym rogu Azure Portal. | Tak |
