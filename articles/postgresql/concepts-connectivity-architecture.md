@@ -1,32 +1,32 @@
 ---
-title: Architektura łączności w usłudze Azure Database for PostgreSQL
-description: W tym artykule opisano architekturę łączności dla usługi Azure Database for postgresql w warstwie serwera.
+title: Architektura łączności w Azure Database for PostgreSQL
+description: Opisuje architekturę łączności dla serwera Azure Database for PostgreSQL.
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: 0d91458c555c819c4bcf97215a712719ebc5eb71
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 92844f0fe3a851802836015a1340983eb4633ed2
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588954"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900549"
 ---
-# <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Architektura łączności w usłudze Azure Database for PostgreSQL
-W tym artykule opisano usługi Azure Database for postgresql — architektura łączności również, jak ruch będzie kierowany do usługi Azure Database for postgresql w warstwie wystąpienie bazy danych z klientami zarówno wewnątrz jednej, jak i spoza platformy Azure.
+# <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Architektura łączności w Azure Database for PostgreSQL
+W tym artykule opisano architekturę Azure Database for PostgreSQL łączności oraz sposób kierowania ruchu do wystąpienia bazy danych Azure Database for PostgreSQL z klientów zarówno w ramach platformy Azure, jak i poza nią.
 
 ## <a name="connectivity-architecture"></a>Architektura łączności
-Połączenie z bazą danych Azure database for PostgreSQL zostanie nawiązane za pośrednictwem bramy, który jest odpowiedzialny za routing połączenia przychodzące do fizycznej lokalizacji serwera w naszym klastrów. Na poniższym diagramie przedstawiono przepływ ruchu.
+Połączenie z Azure Database for PostgreSQL jest nawiązywane za pomocą bramy, która jest odpowiedzialna za kierowanie połączeń przychodzących do lokalizacji fizycznej serwera w naszych klastrach. Na poniższym diagramie przedstawiono przepływ ruchu.
 
-![Przegląd architektury połączenia](./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png)
+![Przegląd architektury łączności](./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png)
 
-Jako klient połączenia z bazą danych, otrzymują parametry połączenia, które nawiązuje połączenie z bramą. Ta brama jest publiczny adres IP, który nasłuchuje na porcie 5432. Wewnątrz bazy danych clusterz ruch jest przekazywany do odpowiedniej usługi Azure Database for PostgreSQL. W związku z tym aby połączyć się z serwerem, takich jak z sieci firmowej, należy otworzyć zaporę po stronie klienta, aby zezwolić na ruch wychodzący można było nawiązać połączenie naszego bram. Poniżej można znaleźć pełną listę adresy IP używane przez naszych bramy na region.
+Gdy klient nawiązuje połączenie z bazą danych, otrzymują parametry połączenia, które łączą się z bramą. Ta brama ma publiczny adres IP, który nasłuchuje na porcie 5432. Wewnątrz ruchu klastra bazy danych jest przekazywany do odpowiednich Azure Database for PostgreSQL. W związku z tym, aby nawiązać połączenie z serwerem, na przykład z sieci firmowej, należy otworzyć Zaporę po stronie klienta, aby zezwolić na ruch wychodzący z naszych bram. Poniżej znajdziesz pełną listę adresów IP używanych przez nasze bramy na region.
 
-## <a name="azure-database-for-postgresql-gateway-ip-addresses"></a>Usługa Azure Database for postgresql — adresy IP
-W poniższej tabeli wymieniono podstawowe i pomocnicze adresy IP usługi Azure Database for postgresql w warstwie bramy dla wszystkich obszarach danych. Podstawowy adres IP jest bieżący adres IP bramy, a drugi adres IP jest adresem IP trybu failover w przypadku awarii podstawowego. Jak wspomniano wcześniej, klienci powinna zezwalać na ruch wychodzący do adresów IP. Drugi adres IP nie będzie nasłuchiwać na wszystkie usługi, dopóki nie zostanie aktywowany przez usługę Azure Database for PostgreSQL do akceptowania połączeń.
+## <a name="azure-database-for-postgresql-gateway-ip-addresses"></a>Adresy IP bramy Azure Database for PostgreSQL
+W poniższej tabeli wymieniono podstawowe i pomocnicze adresy IP bramy Azure Database for PostgreSQL dla wszystkich obszarów danych. Podstawowy adres IP to bieżący adres IP bramy, a drugi adres IP to adres IP trybu failover w przypadku awarii podstawowej. Jak wspomniano, klienci powinni zezwolić na ruch wychodzący zarówno do adresów IP. Drugi adres IP nie nasłuchuje w żadnej usłudze, dopóki nie zostanie aktywowany przez Azure Database for PostgreSQL w celu zaakceptowania połączeń.
 
-| **Nazwa regionu** | **Adres IP podstawowego** | **Adres IP pomocniczego** |
+| **Nazwa regionu** | **Podstawowy adres IP** | **Pomocniczy adres IP** |
 |:----------------|:-------------|:------------------------|
 | Australia Wschodnia | 13.75.149.87 | 40.79.161.1 |
 | Australia Południowo-Wschodnia | 191.239.192.109 | 13.73.109.251 |
@@ -34,7 +34,7 @@ W poniższej tabeli wymieniono podstawowe i pomocnicze adresy IP usługi Azure D
 | Kanada Środkowa | 40.85.224.249 | |
 | Kanada Wschodnia | 40.86.226.166 | |
 | Środkowe stany USA | 23.99.160.139 | 13.67.215.62 |
-| Chiny wschodnie 1 | 139.219.130.35 | |
+| Chiny Wschodnie 1 | 139.219.130.35 | |
 | Chiny Wschodnie 2 | 40.73.82.1 | |
 | Chiny Północne 1 | 139.219.15.17 | |
 | Chiny Północne 2 | 40.73.50.0 | |
@@ -62,9 +62,9 @@ W poniższej tabeli wymieniono podstawowe i pomocnicze adresy IP usługi Azure D
 ||||
 
 > [!NOTE]
-> *Wschodnie stany USA 2* ma również trzeciorzędny adres IP `52.167.104.0`.
+> *Wschodnie stany USA 2* również mają adres `52.167.104.0`IP trzeciego rzędu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Tworzenie i zarządzanie nimi — Azure Database for postgresql w warstwie reguł zapory przy użyciu witryny Azure portal](./howto-manage-firewall-using-portal.md)
-* [Tworzenie i zarządzanie nimi — Azure Database for postgresql w warstwie reguł zapory przy użyciu wiersza polecenia platformy Azure](./howto-manage-firewall-using-cli.md)
+* [Tworzenie reguł zapory Azure Database for PostgreSQL i zarządzanie nimi za pomocą Azure Portal](./howto-manage-firewall-using-portal.md)
+* [Tworzenie reguł zapory Azure Database for PostgreSQL przy użyciu interfejsu wiersza polecenia platformy Azure i zarządzanie nimi](./howto-manage-firewall-using-cli.md)

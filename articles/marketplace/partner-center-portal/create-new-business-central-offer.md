@@ -7,16 +7,16 @@ ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 8dbb25f0b854f1ebbc9d8871689a87d4d5b1cfbe
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 0d6721c2ef24665035cc4a99c9bf3804b312fe75
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036841"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900162"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Utwórz nową ofertę Dynamics 365 Business Central
 
-W tym temacie wyjaśniono, jak utworzyć nową ofertę Dynamics 365 Business Central. [Microsoft Dynamics 365 Business Central](https://dynamics.microsoft.com/business-central) to system planowania zasobów przedsiębiorstwa (ERP), który obsługuje szeroką gamę procesów, w tym finansów, operacji, łańcucha dostaw, zarządzania projektami i handlu elektronicznego. Pakiety premium obsługują również zarządzanie usługami i ich produkcję. Wszystkie oferty dla programu Dynamics 365 Business Central muszą przejść przez nasz proces certyfikacji.
+W tym temacie wyjaśniono, jak utworzyć nową ofertę Dynamics 365 Business Central. [Microsoft Dynamics 365 Business Central](https://dynamics.microsoft.com/business-central) to system planowania zasobów przedsiębiorstwa (ERP), który obsługuje szeroką gamę procesów firmy, w tym finansów, operacji, łańcucha dostaw, CRM i zarządzania projektami oraz handlu elektronicznego. Pakiety premium obsługują również klasyczny model wdrażania i produkcję. Wszystkie oferty dla programu Dynamics 365 Business Central muszą przejść przez nasz proces certyfikacji.
 
 Aby rozpocząć tworzenie ofert Dynamics 365 Business Central, należy najpierw [utworzyć konto Centrum partnerskiego](./create-account.md) i otworzyć [komercyjny pulpit nawigacyjny Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)z wybraną stroną **Przegląd** .
 
@@ -28,7 +28,7 @@ Wybierz przycisk **+ Nowa oferta** , a następnie wybierz element menu **Dynamic
 
 ### <a name="offer-id-and-alias"></a>Identyfikator oferty i alias
 
-- **Identyfikator oferty**: Unikatowy identyfikator dla każdej oferty na koncie. Ten identyfikator będzie widoczny dla klientów w adresie URL dla oferty witryny Marketplace i szablonów Azure Resource Manager (jeśli dotyczy). Identyfikator oferty musi zawierać małe litery alfanumeryczne (w tym łączniki i znaki podkreślenia, ale nie odstępy). Jest to ograniczone do 50 znaków i nie można go zmienić po wybraniu opcji **Utwórz**.  Jeśli na przykład wprowadzisz polecenie *test-Offer-1* tutaj, adres URL oferty będzie mieć `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`wartość.
+- **Identyfikator oferty**: Unikatowy identyfikator dla każdej oferty na koncie. Ten identyfikator będzie widoczny dla klientów w adresie URL dla oferty witryny Marketplace i szablonów Azure Resource Manager (jeśli dotyczy). Identyfikator oferty musi składać się z małych liter alfanumerycznych (w tym łączników i podkreśleń, ale nie odstępów), ograniczonych do 50 znaków i nie można go zmienić po wybraniu pozycji **Utwórz**.  Jeśli na przykład wprowadzisz polecenie *test-Offer-1* tutaj, adres URL oferty będzie mieć `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`wartość.
 
 - **Alias oferty**: Nazwa używana do odwoływania się do oferty w centrum partnerskim. Ta nazwa nie będzie używana w portalu Marketplace i różni się od nazwy oferty i innych wartości, które będą widoczne dla klientów. Tej wartości nie można zmienić po wybraniu opcji **Utwórz**.
 
@@ -61,7 +61,7 @@ Zbierz informacje kontaktowe klienta, łącząc system zarządzania relacjami z 
 
 Test jest doskonałym sposobem na pokazanie oferty potencjalnym klientom, dając im możliwość "Wypróbuj przed zakupem", co spowodowało zwiększenie konwersji i generowanie wysoce wykwalifikowanych klientów. [Dowiedz się więcej o testowaniu dysków.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
 
-Aby włączyć stację testową, zaznacz pole wyboru **Włącz dysk testowy** . Następnie należy skonfigurować środowisko demonstracyjne w [konfiguracji technicznej na dysku testowym](#test-drive-technical-configuration) , aby umożliwić klientom wypróbowanie oferty przez określony czas. 
+Aby włączyć stację testową, zaznacz pole wyboru **Włącz dysk testowy** . Następnie należy skonfigurować środowisko demonstracyjne w [konfiguracji technicznej na dysku testowym](#test-drive-technical-configuration) , aby umożliwić klientom próbę skorzystania z oferty przez ustalony okres. 
 
 #### <a name="type-of-test-drive"></a>Typ dysku testowego
 
@@ -82,27 +82,11 @@ Wybierz jedną z następujących opcji:
 
 ## <a name="connect-lead-management"></a>Zarządzanie potencjalnymi klientami
 
-Połącz się z klientami bezpośrednio, łącząc się z systemem zarządzania relacjami z klientami (CRM). Gdy to zrobisz, otrzymasz informacje kontaktowe klienta, gdy klient wyraża zainteresowanie lub wdroży produkt.
+[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
 
-Aby połączyć system CRM, wybierz pozycję **Połącz**.
+Aby uzyskać więcej informacji, zobacz temat [Zarządzanie potencjalnymi klientami — Omówienie](./commercial-marketplace-get-customer-leads.md).
 
-### <a name="choose-a-lead-destination"></a>Wybierz miejsce docelowe potencjalnego klienta
-
-Po wybraniu opcji **Połącz**zobaczysz menu rozwijane, w którym można wybrać system CRM, a następnie podać szczegóły połączenia.
-
-Centrum partnerskie obsługuje następujące systemy CRM do zarządzania potencjalnymi klientami. Wybierz łącze do instrukcji instalacji.
-
-- [Tabela platformy Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) — podaj parametry połączenia z kontem magazynu. 
-- [Dynamics 365 dla zaangażowania klienta (dawniej Dynamics CRM Online](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) — Podaj adres URL wystąpienia usługi Dynamics 365 i tryb uwierzytelniania (Office 365 lub Azure Active Directory).
-- [Punkt końcowy https](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https) — Podaj adres URL punktu końcowego HTTPS. 
-- [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) — podaj identyfikator serwera, identyfikator konta Munchkin i identyfikator formularza.
-- [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) — podaj identyfikator organizacji.
-
-#### <a name="additional-lead-management-resources"></a>Dodatkowe zasoby zarządzania potencjalnymi klientami
-
-- [Często zadawane pytania dotyczące zarządzania potencjalnymi klientami](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Typowe błędy konfiguracji lidera](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
-- [Przegląd zarządzania potencjalnymi klientami — Omówienie jednego modułu stronicowania](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
+Pamiętaj, aby **zapisać** przed przejściem do następnej sekcji.
 
 ## <a name="properties"></a>Właściwości
 
@@ -110,7 +94,7 @@ Strona **Właściwości** umożliwia definiowanie kategorii i branż używanych 
 
 ### <a name="category"></a>Kategoria
 
-Wybierz co najmniej jedną i maksymalnie trzy kategorie. Zostaną one użyte do złożenia oferty w odpowiednich obszarach wyszukiwania w portalu Marketplace. Pamiętaj, aby dowiedzieć się, jak Twoja oferta obsługuje te kategorie w opisie oferty. 
+Wybierz co najmniej jedną i maksymalnie trzy kategorie, które będą używane do umieszczania oferty w odpowiednich obszarach wyszukiwania w portalu Marketplace. Pamiętaj, aby dowiedzieć się, jak Twoja oferta obsługuje te kategorie w opisie oferty. 
 
 ### <a name="industry"></a>Branża
 
@@ -136,7 +120,7 @@ Jeśli nie sprawdzisz pola **Używaj standardowej umowy?** , musisz podać włas
 
 ## <a name="offer-listing"></a>Lista oferty
 
-Na stronie z listą ofert są wyświetlane Języki, w których zostanie wyświetlona oferta. Należy pamiętać, że obecnie jedyną dostępną opcją jest **angielski (Stany Zjednoczone)** .
+Na stronie z listą ofert są wyświetlane Języki, w których zostanie wyświetlona oferta. Obecnie tylko w **języku angielskim (Stany Zjednoczone)** jest jedyną dostępną opcją.
 
 Musisz zdefiniować szczegóły witryny Marketplace (nazwę oferty, opis, obrazy itp.) dla każdego języka/rynku. Wybierz nazwę języka/rynku, aby podać te informacje.
 
@@ -149,7 +133,7 @@ Nazwa wprowadzona w tym miejscu będzie wyświetlana klientom jako tytuł oferty
 
 ### <a name="short-description"></a>Krótki opis
 
-Podaj krótki opis oferty (do 100 znaków). Ta możliwość może być używana w wynikach wyszukiwania w portalu Marketplace.
+Podaj krótki opis oferty (do 100 znaków), która może być używana w wynikach wyszukiwania w portalu Marketplace.
 
 ### <a name="description"></a>Opis
 
@@ -157,7 +141,7 @@ Podaj dłuższy opis oferty (do 3 000 znaków). Ten opis będzie wyświetlany kl
 
 Niektóre porady dotyczące pisania opisu:  
 
-- Jasno opisz swoją wartość oferty w pierwszych kilku zdaniach opisu. Dołącz następujące elementy do swojej wartości:
+- Jasno opisz swoją wartość oferty w pierwszych kilku zdaniach opisu. Uwzględnij następujące elementy na swojej pozycji wartości:
   - Opis produktu
   - Typ użytkownika, który korzysta z produktu
   - Klienci muszą lub cierpią adresy produktów
@@ -194,7 +178,7 @@ W sekcji **skontaktuj się z** pomocą techniczną należy również podać **ad
 
 ### <a name="supporting-documents"></a>Dokumenty pomocnicze
 
-Musisz podać co najmniej jeden (i maksymalnie trzy) powiązane dokumenty marketingowe, takie jak oficjalne dokumenty, broszury, listy kontrolne lub prezentacje. Te dokumenty muszą mieć format PDF.
+Podaj co najmniej jeden (i maksymalnie trzy) powiązane dokumenty marketingowe, takie jak oficjalne dokumenty, broszury, listy kontrolne lub prezentacje. Te dokumenty muszą mieć format PDF.
 
 ### <a name="marketplace-images"></a>Obrazy z witryny Marketplace
 
@@ -202,7 +186,7 @@ W tej sekcji można podać logo i obrazy, które będą używane podczas wyświe
 
 #### <a name="store-logos"></a>Logo sklepu
 
-Musisz podać logo swojej oferty w dwóch rozmiarach: **Małe (48 x 48)** i **duże (216 x 216)** .
+Podaj logo swojej oferty w dwóch rozmiarach: **Małe (48 x 48)** i **duże (216 x 216)** .
 
 #### <a name="hero"></a>Duży obraz
 
@@ -226,16 +210,16 @@ Na stronie **dostępność** są dostępne opcje dotyczące lokalizacji i sposob
 
 ### <a name="markets"></a>Wprowadza
 
-Ta sekcja umożliwia określenie rynków, w których oferta powinna być dostępna. Aby to zrobić, wybierz pozycję **Edytuj rynki.** Spowoduje to wyświetlenie okna podręcznego **wyboru rynku** .
+Ta sekcja umożliwia określenie rynków, w których oferta powinna być dostępna. Aby to zrobić, wybierz pozycję **Edytuj rynki**, co spowoduje wyświetlenie okna podręcznego **wyboru na rynku** .
 
 Domyślnie nie wybrano żadnych rynków, ale musisz wybrać co najmniej jeden rynek, aby opublikować swoją ofertę. Kliknij przycisk **Zaznacz wszystko** , aby udostępnić ofertę na każdym możliwym rynku, lub wybierz konkretne rynki, które chcesz dodać. Po zakończeniu wybierz pozycję **Zapisz**.
 
-Należy zauważyć, że dokonane wybory dotyczą tylko nowych nabyć; Jeśli ktoś ma już aplikację na określonym rynku, a później usuniesz ten rynek, osoby, które już posiadają ofertę na tym rynku, będą mogły nadal z nich korzystać, ale żaden nowy klient nie będzie mógł uzyskać swojej oferty.
+Wybrane tutaj ustawienia dotyczą tylko nowych nabyć; Jeśli ktoś ma już aplikację na określonym rynku, a później usuniesz ten rynek, osoby, które już posiadają ofertę na tym rynku, będą mogły nadal z nich korzystać, ale żaden nowy klient nie będzie mógł uzyskać swojej oferty.
 
 > [!IMPORTANT]
 > Odpowiedzialność za spełnienie wszelkich lokalnych wymagań prawnych, nawet jeśli te wymagania nie są wymienione w tym miejscu lub w centrum partnerskim.
 
-Pamiętaj, że nawet w przypadku wybrania wszystkich rynków, lokalne prawa i ograniczenia lub inne czynniki mogą uniemożliwić wystawianie niektórych ofert w niektórych krajach i regionach.
+Należy pamiętać, że nawet jeśli wybrano opcję Wszystkie rynki, prawa lokalne i ograniczenia lub inne czynniki mogą uniemożliwiać wystawienie niektórych ofert w niektórych krajach i regionach.
 
 ### <a name="preview-audience"></a>Podgląd odbiorców
 
@@ -256,7 +240,7 @@ Wybierz opcję, która ma zastosowanie do oferty:
 
 ### <a name="file-upload"></a>Przekazywanie pliku
 
-W przypadku wybrania pozycji **Dodaj na** wyższym miejscu możesz przekazać plik pakietu oferty wraz z plikami pakietu dla każdego rozszerzenia, na którym ma zależności.
+Jeśli zaznaczono opcję **Dodaj na** wyższym miejscu, należy przekazać plik pakietu oferty wraz z plikami pakietu dla każdego rozszerzenia, na którym ma zależności.
 
 #### <a name="extensions-package-file"></a>Plik pakietu rozszerzeń
 
@@ -268,7 +252,7 @@ Wymagane, jeśli oferta musi być zainstalowana wraz z innym rozszerzeniem, któ
 
 #### <a name="dependency-package-file"></a>Plik pakietu zależności
 
-Wymagane, jeśli oferta musi być zainstalowana wraz z innym rozszerzeniem, które zostało już opublikowane w portalu Marketplace. Jeśli tak, Przekaż swój plik. app lub. zip tutaj.
+Wymagane, jeśli oferta musi być zainstalowana wraz z innym rozszerzeniem, które zostało już opublikowane w portalu Marketplace. Jeśli tak, Przekaż swój `.app` plik `.zip` lub tutaj.
 
 ### <a name="url-to-app-installation"></a>Adres URL instalacji aplikacji
 
@@ -301,7 +285,7 @@ Szablon wdrożenia zawierający wszystkie zasoby platformy Azure, które składa
 
 - **Szablon Azure Resource Manager na dysku testowym**: Przekaż plik zip zawierający szablon Azure Resource Manager.  Dowiedz się więcej o tworzeniu szablonu Azure Resource Manager w artykule Szybki Start [Tworzenie i wdrażanie szablonów Azure Resource Manager przy użyciu Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
 
-- **Czas trwania dysku testowego** (wymagane): Wprowadź czas aktywności dysku testowego w ciągu kilku godzin. Wersji testowej kończy się automatycznie po zakończeniu tego okresu. Ten czas trwania może być ustawiony tylko przez całą liczbę godzin (np. "2" godz. "1,5" jest nieprawidłowy).
+- **Czas trwania dysku testowego** (wymagane): Wprowadź czas aktywności dysku testowego w ciągu kilku godzin. Wersji testowej kończy się automatycznie po zakończeniu tego okresu. Ten czas trwania może być ustawiony tylko przez całą liczbę godzin (na przykład "2" godzin, "1,5" jest nieprawidłowy).
 
 ### <a name="technical-configuration-for-dynamics-365-test-drive"></a>Konfiguracja techniczna dla systemu Dynamics 365 Test Drive
 
@@ -309,13 +293,13 @@ Firma Microsoft może usunąć złożoność konfigurowania dysku testowego, udo
 
 - **Maksymalna liczba współbieżnych dysków testowych** (wymagane): Ustaw maksymalną liczbę klientów, którzy mogą jednocześnie używać danego dysku testowego. Każdy użytkownik współbieżny będzie korzystał z licencji Dynamics 365, gdy test jest aktywny, więc należy upewnić się, że masz wystarczającą liczbę dostępnych licencji do obsługi maksymalnego ustawionego limitu. Zalecana wartość 3-5.
 
-- **Czas trwania dysku testowego** (wymagane): Wprowadź czas aktywności dysku testowego, określając liczbę godzin. Po tylu godzinach sesja zostanie zakończona i nie będzie już korzystać z jednej z Twoich licencji. Zalecamy użycie wartości 2-24 godzin w zależności od złożoności oferty. Ten czas trwania może być ustawiony tylko przez całą liczbę godzin (np. "2" godz. "1,5" jest nieprawidłowy).  Użytkownik może zażądać nowej sesji, jeśli są one nieaktualne i chcą ponownie uzyskać dostęp do dysku testowego.
+- **Czas trwania dysku testowego** (wymagane): Wprowadź czas aktywności dysku testowego, określając liczbę godzin. Po tylu godzinach sesja zostanie zakończona i nie będzie już korzystać z jednej z Twoich licencji. Zalecamy użycie wartości 2-24 godzin w zależności od złożoności oferty. Ten czas trwania może być ustawiony tylko przez całą liczbę godzin (na przykład "2" godzin, "1,5" jest nieprawidłowy).  Użytkownik może zażądać nowej sesji, jeśli są one nieaktualne i chcą ponownie uzyskać dostęp do dysku testowego.
 
-- **Adres URL wystąpienia** (wymagane): Adres URL, pod którym klient rozpocznie swój dysk testowy. Zwykle jest to adres URL wystąpienia Dynamics 365, na którym działa Twoja aplikacja z zainstalowanymi przykładowymi danymi (np https://testdrive.crm.dynamics.com).
+- **Adres URL wystąpienia** (wymagane): Adres URL, pod którym klient rozpocznie swój dysk testowy. Zwykle jest to adres URL wystąpienia usługi Dynamics 365 z uruchomioną aplikacją z zainstalowanymi przykładowymi danymi https://testdrive.crm.dynamics.com) (na przykład.
 
-- **Adres URL internetowego interfejsu API wystąpienia** (wymagane): Pobierz adres URL internetowego interfejsu API dla wystąpienia usługi Dynamics 365, logując się do konta Microsoft 365 i przechodząc do **ustawień** \&gt; **Dostosowanie** \&gt; **Zasoby dla deweloperów** \&gt; **Interfejs API sieci Web wystąpienia (główny adres URL usługi)** , skopiuj adres URL znaleziony tutaj https://testdrive.crm.dynamics.com/api/data/v9.0) (np.
+- **Adres URL internetowego interfejsu API wystąpienia** (wymagane): Pobierz adres URL internetowego interfejsu API dla wystąpienia usługi Dynamics 365, logując się do konta Microsoft 365 i przechodząc do **ustawień** \&gt; **Dostosowanie** \&gt; **Zasoby dla deweloperów** \&gt; **Interfejs API sieci Web wystąpienia (główny adres URL usługi)** , skopiuj adres URL znaleziony w tym https://testdrive.crm.dynamics.com/api/data/v9.0) miejscu (na przykład.
 
-- **Nazwa roli** (wymagane): Podaj nazwę roli zabezpieczeń zdefiniowaną w niestandardowym dysku testowym Dynamics 365. Ta wartość zostanie przypisana do użytkownika w trakcie jego dysku testowego (np. roli "Test-Drive-role").
+- **Nazwa roli** (wymagane): Podaj nazwę roli zabezpieczeń zdefiniowaną w niestandardowym dysku testowym Dynamics 365, która zostanie przypisana do użytkownika podczas testu na dysku (na przykład-roli Test-Drive-role).
 
 ### <a name="technical-configuration-for-logic-app-test-drive"></a>Konfiguracja techniczna dla dysku testowego aplikacji logiki
 
@@ -339,15 +323,15 @@ Produkty, które chcą zaprezentować interaktywną wizualizację Power BI, mog�
 
 ### <a name="deployment-subscription-details"></a>Szczegóły subskrypcji wdrożenia
 
-Aby wdrożyć dysk testowy w Twoim imieniu, Utwórz i podaj oddzielną, unikatową subskrypcję platformy Azure. (Niewymagane w przypadku Power BI dysków testowych).
+Aby wdrożyć dysk testowy w Twoim imieniu, utwórz oddzielną i unikatową subskrypcję platformy Azure. (Niewymagane w przypadku Power BI dysków testowych).
 
-- **Identyfikator subskrypcji platformy Azure** (wymagane dla Azure Resource Manager i aplikacji logiki): Wprowadź identyfikator subskrypcji, aby udzielić dostępu do usług konta platformy Azure na potrzeby raportowania użycia zasobów i rozliczeń. Zalecamy [utworzenie oddzielnej subskrypcji platformy Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription) , która ma być używana na potrzeby dysków testowych, jeśli jeszcze jej nie masz. Identyfikator subskrypcji platformy Azure można znaleźć, logując się do [Azure Portal](https://portal.azure.com/) i przechodząc do karty **subskrypcje** w menu po lewej stronie. Wybranie karty spowoduje wyświetlenie identyfikatora subskrypcji (np. "a83645ac-1234-5ab6-6789-1h234g764ghty").
+- **Identyfikator subskrypcji platformy Azure** (wymagane dla Azure Resource Manager i aplikacji logiki): Wprowadź identyfikator subskrypcji, aby udzielić dostępu do usług konta platformy Azure na potrzeby raportowania użycia zasobów i rozliczeń. Zalecamy [utworzenie oddzielnej subskrypcji platformy Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription) , która ma być używana na potrzeby dysków testowych, jeśli jeszcze jej nie masz. Identyfikator subskrypcji platformy Azure można znaleźć, logując się do [Azure Portal](https://portal.azure.com/) i przechodząc do karty **subskrypcje** w menu po lewej stronie. Wybranie karty spowoduje wyświetlenie identyfikatora subskrypcji (na przykład "a83645ac-1234-5ab6-6789-1h234g764ghty").
 
-- **Identyfikator dzierżawy usługi Azure AD** (wymagane): Wprowadź [Identyfikator dzierżawy](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)usługi Azure Active Directory (AD). Aby znaleźć ten identyfikator, zaloguj się do [Azure Portal](https://portal.azure.com/), wybierz kartę Active Directory w menu po lewej stronie, wybierz pozycję **Właściwości** , a następnie wyszukaj numer **identyfikatora katalogu** na liście (np. 50c464d3-4930-494c-963c-1e951d15360e). Możesz również wyszukać identyfikator dzierżawy w organizacji przy użyciu adresu URL nazwy domeny w [https://www.whatismytenantid.com](https://www.whatismytenantid.com):.
+- **Identyfikator dzierżawy usługi Azure AD** (wymagane): Wprowadź [Identyfikator dzierżawy](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)usługi Azure Active Directory (AD). Aby znaleźć ten identyfikator, zaloguj się do [Azure Portal](https://portal.azure.com/), wybierz kartę Active Directory w menu po lewej stronie, wybierz pozycję * * Właściwości, a następnie wyszukaj numer **identyfikatora katalogu** na liście (na przykład 50c464d3-4930-494c-963c-1e951d15360e). Możesz również wyszukać identyfikator dzierżawy w organizacji przy użyciu adresu URL nazwy domeny w [https://www.whatismytenantid.com](https://www.whatismytenantid.com):.
 
 - **Nazwa dzierżawy usługi Azure AD** (wymagane w przypadku dynamicznego 365): Wprowadź nazwę Azure Active Directory (AD). Aby znaleźć tę nazwę, zaloguj się do [Azure Portal](https://portal.azure.com/), w prawym górnym rogu nazwa dzierżawy zostanie wyświetlona w polu Nazwa konta.
 
-- **Identyfikator aplikacji usługi Azure AD** (wymagane): Wprowadź [Identyfikator aplikacji](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)Azure Active Directory (AD). Aby znaleźć ten identyfikator, zaloguj się do [Azure Portal](https://portal.azure.com/), wybierz kartę Active Directory w menu po lewej stronie, wybierz pozycję **rejestracje aplikacji**, a następnie wyszukaj numer **identyfikatora aplikacji** (np. 50c464d3-4930-494c-963c-1e951d15360e).
+- **Identyfikator aplikacji usługi Azure AD** (wymagane): Wprowadź [Identyfikator aplikacji](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)Azure Active Directory (AD). Aby znaleźć ten identyfikator, zaloguj się do [Azure Portal](https://portal.azure.com/), wybierz kartę Active Directory w menu po lewej stronie, wybierz pozycję **rejestracje aplikacji**, a następnie wyszukaj numer **identyfikatora aplikacji** na liście (na przykład 50c464d3-4930-494c-963c-1e951d15360e).
 
 - **Wpis tajny klienta aplikacji usługi Azure AD** (wymagane): Wprowadź [wpis tajny klienta](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets)aplikacji usługi Azure AD. Aby znaleźć tę wartość, zaloguj się do [Azure Portal](https://portal.azure.com/). Wybierz kartę **Azure Active Directory** w menu po lewej stronie, wybierz pozycję **rejestracje aplikacji**, a następnie wybierz aplikację testową. Następnie wybierz pozycję **Certyfikaty i**wpisy tajne, wybierz pozycję **Nowy wpis tajny klienta**, wprowadź opis, wybierz pozycję **nigdy nie** w obszarze **wygaśnięcie**, a następnie wybierz pozycję **Dodaj**. Należy pamiętać o skopiowaniu wartości. (Nie opuszczaj strony przed wykonaniem tej czynności lub nie będziesz mieć dostępu do wartości).
 
@@ -355,7 +339,7 @@ Pamiętaj, aby **zapisać** przed przejściem do następnej sekcji.
 
 ### <a name="test-drive-marketplace-listings"></a>Testowanie aukcji z portalu Marketplace
 
-Opcja **wystaw w witrynie Marketplace** znajdująca się na karcie **dysk testowy** zawiera Języki, w których dostępny jest dysk testowy. Należy pamiętać, że obecnie dostępna jest tylko **Wersja angielskojęzyczna (Stany Zjednoczone)** . Wybierz nazwę języka, aby wprowadzić informacje opisujące środowisko testowe.
+Opcja **wystaw w witrynie Marketplace** znajdująca się na karcie **dysk testowy** zawiera Języki, w których dostępny jest dysk testowy. Obecnie w **języku angielskim (Stany Zjednoczone)** jest jedyną dostępną lokalizacją. Wybierz nazwę języka, aby wprowadzić informacje opisujące środowisko testowe.
 
 - **Opis** (wymagane): Opisz swoją wersję testową, która zostanie wykazana, jakie są cele dla użytkownika w celu poeksperymentowania z programem, funkcje do eksplorowania i wszelkie istotne informacje pomocne w ustaleniu, czy chcesz uzyskać ofertę. W tym polu można wprowadzić do 3 000 znaków tekstu. 
 
@@ -363,10 +347,10 @@ Opcja **wystaw w witrynie Marketplace** znajdująca się na karcie **dysk testow
 
 - **Ręczne użytkownika** (wymagane): Szczegółowy przewodnik dotyczący środowiska testowego. Podręcznik użytkownika powinien obejmować dokładnie te informacje, które klient ma uzyskać, z dysku testowego i służy jako odwołanie do wszelkich pytań, które mogą mieć. Plik musi być w formacie PDF i mieć nazwę (maksymalnie 255 znaków) po przekazaniu.
 
-- **Wideo Dodaj filmy** wideo (opcjonalnie): Filmy wideo można przekazać do usługi YouTube lub Vimeo i przywoływane w tym miejscu za pomocą linku i miniatury (533 x 324 pikseli), aby klient mógł wyświetlić szczegółowe informacje ułatwiające lepsze zrozumienie dysku testowego, w tym sposób pomyślnego użycia funkcji Zaproponuj i zrozumieć scenariusze, które wyróżnią swoje korzyści.
+- **Wideo Dodaj filmy** wideo (opcjonalnie): Filmy wideo można przekazać do usługi YouTube lub Vimeo i przywoływane w tym miejscu za pomocą linku i miniatury (533 x 324 pikseli), aby klient mógł wyświetlić szczegółowe informacje ułatwiające lepsze zrozumienie dysku testowego, w tym sposób pomyślnego użycia funkcji programu. Twoja oferta i informacje o scenariuszach, które wyróżnią swoje korzyści.
   - **Nazwa** potrzeb
   - **Adres URL (tylko w serwisie YouTube lub Vimeo)** potrzeb
-  - **Miniatura (533 x 324px)** : Plik obrazu musi być w formacie PNG.
+  - **Miniatura (533 x 324 pikseli)** : Plik obrazu musi być w formacie PNG.
 
 ## <a name="supplemental-content"></a>Dodatkowa zawartość
 
@@ -382,11 +366,11 @@ Wskaż, czy rozwiązanie obsługuje wersję podstawowa i/lub Premium systemu Mic
 
 ### <a name="key-usage-scenario"></a>Scenariusz użycia klucza
 
-Musisz przekazać plik PDF, który zawiera listę scenariuszy użycia klucza oferty wymienionych w dokumencie (format PDF). Wszystkie scenariusze wymienione w tym miejscu mogą być weryfikowane przez nasz zespół ds. weryfikacji przed zatwierdzeniem oferty dla portalu Marketplace.
+`.pdf` Przekaż plik, który zawiera listę scenariuszy użycia klucza oferty wymienionych w dokumencie (format PDF). Wszystkie scenariusze wymienione w tym miejscu mogą być weryfikowane przez nasz zespół ds. weryfikacji przed zatwierdzeniem oferty dla portalu Marketplace.
 
 ### <a name="app-tests-automation"></a>Automatyzacja testów aplikacji
 
-Musisz również przekazać plik **automatyzacji testów aplikacji** tutaj (. app).
+Przekaż również plik **automatyzacji testów aplikacji** tutaj (. app).
 
 ### <a name="test-accounts"></a>Konta testowe
 
@@ -398,14 +382,14 @@ Jeśli konto testowe jest konieczne, aby nasz zespół certyfikacji mógł prawi
 
 Po zakończeniu wszystkich wymaganych sekcji oferty wybierz pozycję **Publikuj** w prawym górnym rogu portalu. Nastąpi przekierowanie do strony **Recenzja i publikowanie** . 
 
-Jeśli ta oferta jest publikowana po raz pierwszy, możesz:
+Jeśli po raz pierwszy publikujesz tę ofertę, możesz:
 
 - Zobacz stan ukończenia dla każdej sekcji oferty.
     - *Nie uruchomiono* — oznacza, że sekcja nie została dotknięcia i należy ją ukończyć.
     - *Niekompletne* — oznacza, że sekcja zawiera błędy, które muszą zostać naprawione lub wymaga podania więcej informacji. Wróć do sekcji i zaktualizuj ją.
     - *Zakończone* — oznacza, że sekcja została ukończona, wszystkie wymagane dane zostały dostarczone i nie występują żadne błędy. Wszystkie sekcje oferty muszą być w stanie kompletnym, zanim będzie możliwe przesłanie oferty.
 - W sekcji **uwagi dotyczące certyfikacji** Podaj instrukcje dotyczące testowania dla zespołu certyfikacji, aby upewnić się, że aplikacja została prawidłowo przetestowana, a także dodatkowe uwagi przydatne do poznania aplikacji.
-- Prześlij ofertę do opublikowania, wybierając pozycję **Prześlij**. Wyślemy Ci wiadomość e-mail z prośbą o udostępnienie wersji zapoznawczej oferty, którą można przejrzeć i zatwierdzić. Musisz wrócić do Centrum partnerskiego i wybrać pozycję **Przejdź na żywo** , aby uzyskać ofertę opublikowania oferty na publiczną (lub w przypadku prywatnej oferty dla odbiorców prywatnych).
+- Prześlij ofertę do opublikowania, wybierając pozycję **Prześlij**. Wyślemy Ci wiadomość e-mail, gdy zostanie udostępniona wersja zapoznawcza oferty, którą możesz przejrzeć i zatwierdzić. Wróć do Centrum partnerskiego i wybierz pozycję **Przejdź na żywo** , aby uzyskać ofertę opublikowania oferty na publiczną (lub w przypadku prywatnej oferty dla odbiorców prywatnych).
 
 ## <a name="next-steps"></a>Następne kroki
 

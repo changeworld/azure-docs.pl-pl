@@ -3,19 +3,19 @@ author: MashaMSFT
 ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
-ms.date: 06/19/2019
+ms.date: 07/31/2019
 ms.author: mathoma
-ms.openlocfilehash: ffa48d55703347883edf96a0a27ee52d19189976
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: d19e21edd31be461ba30e8985e80c4651bbbb02d
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935036"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69894088"
 ---
-W tym kroku utworzysz grupę zasobów i Azure SQL Database pojedynczą bazę danych.
+W tym kroku utworzysz Azure SQL Database pojedynczą bazę danych. 
 
 > [!IMPORTANT]
-> Należy pamiętać o skonfigurowaniu reguł zapory do korzystania z publicznego adresu IP komputera, na którym wykonywane są kroki opisane w tym artykule. 
+> Pamiętaj, aby skonfigurować reguły zapory w celu używania publicznego adresu IP komputera, którego używasz do wykonania tego artykułu.
 >
 > Aby uzyskać więcej informacji, zobacz [Tworzenie reguły zapory na poziomie bazy danych](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) lub Określanie adresu IP używanego dla reguły zapory na poziomie serwera dla komputera, zobacz [Tworzenie zapory na poziomie serwera](../sql-database-server-level-firewall-rule.md).  
 
@@ -23,10 +23,11 @@ W tym kroku utworzysz grupę zasobów i Azure SQL Database pojedynczą bazę dan
 
 Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu Azure Portal.
 
-1. W lewym górnym rogu witryny Azure Portal wybierz pozycję **Utwórz zasób**.
-2. Wybierz pozycję **bazy danych** , a następnie wybierz pozycję **SQL Database** , aby otworzyć stronę **Tworzenie SQL Database** .
+1. Wybierz pozycję **Azure SQL** w menu po lewej stronie Azure Portal. Jeśli na liście nie ma **usługi Azure SQL** , wybierz pozycję **wszystkie usługi**, a następnie wpisz *SQL Azure* w polu wyszukiwania.
+2. Wybierz pozycję **+ Dodaj** , aby otworzyć stronę **Wybieranie opcji wdrożenia SQL** . Aby wyświetlić dodatkowe informacje o różnych bazach danych, wybierz pozycję **Pokaż szczegóły** na kafelku **bazy danych** .
+3. Wybierz pozycję **Utwórz**:
 
-   ![Tworzenie pojedynczej bazy danych](../media/sql-database-get-started-portal/create-database-1.png)
+   ![Tworzenie pojedynczej bazy danych](../media/sql-database-get-started-portal/create-single-database.png)
 
 3. Na karcie **podstawowe** w sekcji **szczegóły projektu** wpisz lub wybierz następujące wartości:
 
@@ -75,7 +76,7 @@ Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu Azure Portal.
 
 9. W formularzu **SQL Database** wybierz opcję **Utwórz**, aby wdrożyć i aprowizować grupę zasobów, serwer i bazę danych.
 
-# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

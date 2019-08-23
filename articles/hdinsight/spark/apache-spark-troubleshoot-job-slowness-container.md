@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 07/29/2019
-ms.openlocfilehash: 78dff1b9d9db4e54ab1a8f7203088753e206c610
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.date: 08/21/2019
+ms.openlocfilehash: 635b7adb8753b7e9490e8f14a0699c09297fdbbb
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641957"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899092"
 ---
 # <a name="scenario-apache-spark-job-run-slowly-when-the-azure-storage-container-contains-many-files-in-azure-hdinsight"></a>Scenariusz: Uruchamianie zadania Apache Spark wolno, gdy kontener usługi Azure Storage zawiera wiele plików w usłudze Azure HDInsight
 
@@ -26,8 +26,6 @@ Podczas uruchamiania klastra usługi HDInsight zadanie Apache Spark, które zapi
 Jest to znany problem z platformą Spark. Spowolnienie pochodzi z `ListBlob` i `GetBlobProperties` operacji podczas wykonywania zadania Spark.
 
 Aby śledzić partycje, platforma Spark musi obsługiwać `FileStatusCache` , która zawiera informacje o strukturze katalogów. Korzystając z tej pamięci podręcznej, platforma Spark może analizować ścieżki i wiedzieć o dostępnych partycjach. Zaletą śledzenia partycji jest to, że platforma Spark dotyka tylko niezbędnych plików podczas odczytywania danych. Aby zapewnić aktualność informacji, podczas pisania nowych danych platforma Spark musi wyświetlić listę wszystkich plików w katalogu i zaktualizować tę pamięć podręczną.
-
-W przypadku platformy Spark 1,6 za każdym razem, gdy aktualizujesz katalog, należy wyczyścić pamięć podręczną (2) rekursywnie wszystkie pliki i (3) zaktualizować całą pamięć podręczną. Spowoduje to powstanie wielu operacji związanych z listą.
 
 W platformie Spark 2,1, chociaż nie potrzebujemy aktualizacji pamięci podręcznej po każdym zapisie, platforma Spark sprawdzi, czy istniejąca kolumna partycji jest zgodna z proponowaną jedną w bieżącym żądaniu zapisu, więc będzie również prowadzić do tworzenia listy operacji na początku każdego zapisu.
 

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: e076d6fed8cb3baf6b62dc3ede6ddd34732ed7a2
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 95df72875338b6964f42075404cf9c30ba132f9d
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562078"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900208"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informacje o limitach i konfiguracji Azure Logic Apps
 
@@ -253,9 +253,11 @@ Po usunięciu aplikacji logiki nie są tworzone wystąpienia nowych przebiegów.
 
 ## <a name="firewall-configuration-ip-addresses"></a>Konfiguracja zapory: Adresy IP
 
-Wszystkie aplikacje logiki w tym samym regionie używają tych samych zakresów adresów IP. Aby zapewnić obsługę wywołań, które bezpośrednio tworzą aplikacje logiki przy użyciu [protokołu HTTP](../connectors/connectors-native-http.md), [http + Swagger](../connectors/connectors-native-http-swagger.md)i innych żądań HTTP, skonfiguruj zapory za pomocą *wszystkich* [przychodzących](#inbound) *i* [wychodzących](#outbound) adresów IP używanych przez usługę Logic Apps , w oparciu o regiony, w których istnieją aplikacje logiki. Te adresy są wyświetlane w obszarze nagłówki **przychodzące** i wychodzące w tej sekcji i są sortowane według regionów.
+Wszystkie aplikacje logiki w tym samym regionie używają tych samych zakresów adresów IP. Aby zapewnić obsługę wywołań, które bezpośrednio tworzą aplikacje logiki przy użyciu [protokołu HTTP](../connectors/connectors-native-http.md), [http + Swagger](../connectors/connectors-native-http-swagger.md)i innych żądań HTTP, skonfiguruj zapory za pomocą *wszystkich* [przychodzących](#inbound) *i* [wychodzących](#outbound) adresów IP używanych przez usługę Logic Apps , w oparciu o regiony, w których istnieją aplikacje logiki. Te adresy są wyświetlane w obszarze nagłówki **przychodzące** i wychodzące w tej sekcji i są sortowane według regionów. 
 
 Aby zapewnić obsługę wywołań wywoływanych przez [Łączniki zarządzane przez firmę Microsoft](../connectors/apis-list.md) , należy skonfigurować zaporę ze *wszystkimi* wychodzącymi adresami IP używanymi przez te łączniki w oparciu o regiony, w których istnieją aplikacje logiki. [](#outbound) Te adresy są wyświetlane pod nagłówkiem wychodzącym w tej sekcji i są sortowane według regionów.
+
+W przypadku aplikacji logiki, które działają w środowisku usługi integracji (ISE), upewnij się, że [te porty są otwarte](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports).
 
 W przypadku [Azure Government](../azure-government/documentation-government-overview.md) i [platformy Azure z Chin](https://docs.microsoft.com/azure/china/), zastrzeżone adresy IP dla łączników nie są obecnie dostępne.
 

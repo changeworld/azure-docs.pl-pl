@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: e87fc74b3fa989471f9074a33fc66d8cb8250aa0
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 2cc8f4f81ad95376dcbc10c2952c1b2ed95ffe42
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927838"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907914"
 ---
 # <a name="introduction-to-azure-security"></a>Wprowadzenie do zabezpieczeń platformy Azure
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Wiemy, że zabezpieczenia to zadanie jedno w chmurze i jak ważne jest, aby znaleźć dokładne i aktualne informacje o zabezpieczeniach platformy Azure. Jednym z najlepszych powodów używania platformy Azure dla aplikacji i usług jest skorzystanie z zalet szerokiej gamy narzędzi i możliwości zabezpieczeń. Te narzędzia i funkcje ułatwiają tworzenie bezpiecznych rozwiązań na bezpiecznej platformie Azure. Microsoft Azure zapewnia poufność, integralność i dostępność danych klientów, a także umożliwia przejrzyste odpowiedzialności.
 
 Aby lepiej zrozumieć zbieranie elementów kontroli zabezpieczeń wdrożonych w ramach Microsoft Azure z perspektywy klienta i firmy Microsoft, ten oficjalny dokument "wprowadzenie do zabezpieczeń platformy Azure" jest zapisywana w celu zapewnienia kompleksowego wyglądu w obszarze zabezpieczenia dostępne dla Microsoft Azure.
@@ -270,6 +270,7 @@ Zapora aplikacji sieci Web to funkcja [platformy Azure Application Gateway](../.
 
 
 Scentralizowana zapora aplikacji internetowej chroniąca przed atakami z Internetu sprawia, że zarządzanie zabezpieczeniami jest znacznie prostsze oraz zapewnia lepszą ochronę aplikacji przed intruzami. Zapora aplikacji internetowej może reagować na zagrożenia bezpieczeństwa szybciej — poprzez wdrażanie poprawek zapobiegających wykorzystaniu znanych luk w zabezpieczeniach w centralnej lokalizacji zamiast w poszczególnych aplikacjach internetowych. Istniejące bramy aplikacji można łatwo przekonwertować na bramę aplikacji z zaporą aplikacji internetowej.
+
 ### <a name="traffic-manager"></a>Traffic Manager
 [Platforma Microsoft Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) umożliwia kontrolowanie dystrybucji ruchu użytkowników dla punktów końcowych usługi w różnych centrach danych. Punkty końcowe usługi obsługiwane przez Traffic Manager obejmują maszyny wirtualne platformy Azure, Web Apps i usługi w chmurze. Usługi Traffic Manager można również używać z zewnętrznymi punktami końcowymi poza platformą Azure. Traffic Manager używa systemu nazw domen (DNS) do kierowania żądań klientów do najbardziej odpowiedniego punktu końcowego na podstawie [metody routingu ruchu](../../traffic-manager/traffic-manager-routing-methods.md) i kondycji punktów końcowych.
 
@@ -295,18 +296,8 @@ Następujące kategorie dzienników diagnostycznych można włączyć dla siecio
 -   Licznik reguł: Zawiera wpisy dotyczące liczby przypadków zastosowania każdej reguły sieciowej grupy zabezpieczeń do odmowy lub zezwolenia na ruch.
 
 ### <a name="azure-security-center"></a>Azure Security Center
-Security Center pomaga zapobiegać zagrożeniom, wykrywać je i reagować na nie oraz zapewnia lepszą widoczność i kontrolę nad bezpieczeństwem zasobów platformy Azure. Zapewnia zintegrowane monitorowanie zabezpieczeń i zarządzanie zasadami w ramach subskrypcji platformy Azure, pomaga wykrywać zagrożenia, które w przeciwnym razie mogłyby być niezauważalne, i współpracować z szeroką ekosystemem rozwiązań zabezpieczających. Centrum zaleceń sieciowych dotyczących zapór, sieciowych grup zabezpieczeń, konfigurowania reguł ruchu przychodzącego i innych.
 
-Dostępne są następujące zalecenia dotyczące sieci:
-
--   [Dodawanie zapory nowej generacji](../../security-center/security-center-add-next-generation-firewall.md) Zalecane jest dodanie zapory nowej generacji (zapory następnej generacji) od partnera firmy Microsoft w celu zwiększenia bezpieczeństwa zabezpieczeń
-
--   [Kierowanie ruchu tylko przez zapory następnej generacji](../../security-center/security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only) Zaleca się skonfigurowanie zasad sieciowych grup zabezpieczeń (sieciowej grupy zabezpieczeń), które wymuszają ruch przychodzący do maszyny wirtualnej za poorednictwem zapory następnej generacji.
-
--   [Włącz sieciowe grupy zabezpieczeń w podsieciach lub na maszynach wirtualnych](../../security-center/security-center-enable-network-security-groups.md) Zaleca włączenie sieciowych grup zabezpieczeń w podsieciach lub maszynach wirtualnych.
-
--   [Ograniczanie dostępu za poorednictwem punktu końcowego](../../security-center/security-center-restrict-access-through-internet-facing-endpoints.md) połączonego z Internetem Zaleca skonfigurowanie reguł ruchu przychodzącego dla sieciowych grup zabezpieczeń.
-
+[Azure Security Center](../../security-center/security-center-intro.md) stale analizuje stan zabezpieczeń zasobów platformy Azure pod kątem najlepszych rozwiązań z zakresu zabezpieczeń sieci. Gdy Security Center identyfikuje potencjalne luki w zabezpieczeniach, tworzy [zalecenia](../../security-center/security-center-recommendations.md) , które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek do zabezpieczania i zabezpieczania zasobów.
 
 ## <a name="compute"></a>Wystąpienia obliczeniowe
 
@@ -352,9 +343,9 @@ Zabezpieczanie systemów, aplikacji i danych rozpoczyna się od kontroli dostęp
 
 ### <a name="secure-identity"></a>Bezpieczna tożsamość
 Firma Microsoft używa wielu rozwiązań w zakresie zabezpieczeń i usług w celu zarządzania tożsamościami i dostępem.
--   [Uwierzytelnianie wieloskładnikowe](https://azure.microsoft.com/services/multi-factor-authentication/) wymaga od użytkowników korzystania z wielu metod w celu uzyskania dostępu, lokalnego i w chmurze. Zapewnia silne uwierzytelnianie dzięki szerokiemu zakresowi opcji łatwej weryfikacji, jednocześnie udostępniając użytkownikom prosty proces logowania.
+-   [Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/) wymaga od użytkowników korzystania z wielu metod w celu uzyskania dostępu, lokalnego i w chmurze. Zapewnia silne uwierzytelnianie dzięki szerokiemu zakresowi opcji łatwej weryfikacji, jednocześnie udostępniając użytkownikom prosty proces logowania.
 
--   [Microsoft Authenticator](https://aka.ms/authenticator) zapewnia przyjazne dla użytkownika środowisko uwierzytelniania wieloskładnikowego, które działa z kontami Microsoft Azure Active Directory i Microsoft, i obejmuje obsługę noszenia i zatwierdzeń opartych na odcisku palca.
+-   [Microsoft Authenticator](https://aka.ms/authenticator) zapewnia przyjazne dla użytkownika środowisko Multi-Factor Authentication, które działa zarówno w Microsoft Azure Active Directory, jak i na kontach Microsoft, i obejmuje obsługę noszenia i zatwierdzeń opartych na odcisku palca.
 
 -   [Wymuszanie zasad haseł](https://azure.microsoft.com/documentation/articles/active-directory-passwords-policy/) zwiększa bezpieczeństwo tradycyjnych haseł, nakładając długość i wymagania dotyczące złożoności, wymuszone rotacje okresowe i blokadę konta po nieudanej próbie uwierzytelnienia.
 
@@ -369,7 +360,7 @@ Firma Microsoft używa wielu rozwiązań w zakresie zabezpieczeń i usług w cel
 
 | Funkcje bezpłatne/wspólne     | Podstawowe funkcje    |Funkcje w warstwie Premium P1 |Funkcje Premium P2 | Azure Active Directory Join — powiązane funkcje systemu Windows 10|
 | :------------- | :------------- |:------------- |:------------- |:------------- |
-|   [Obiekty katalogu](../../active-directory/active-directory-whatis.md), [Zarządzanie użytkownikami/grupami (Dodawanie/aktualizowanie/usuwanie)/oparta na użytkownikach Inicjowanie obsługi, rejestracja urządzeń](../../active-directory/active-directory-whatis.md), logowanie jednokrotne [(SSO)](../../active-directory/active-directory-whatis.md), samoobsługowe [Zmienianie haseł dla użytkowników w chmurze](../../active-directory/active-directory-whatis.md), [łączenie (aparat synchronizacji rozszerza katalogi lokalne do Azure Active Directory)](../../active-directory/active-directory-whatis.md), [raporty dotyczące zabezpieczeń/użycia](../../active-directory/active-directory-whatis.md)       |   [Zarządzanie dostępem oparte na grupach/Inicjowanie obsługi administracyjnej](../../active-directory/active-directory-whatis.md), samoobsługowe [resetowanie haseł dla użytkowników w chmurze](../../active-directory/active-directory-whatis.md), [znakowanie firmowe (strona logowania/dostosowywanie panelu dostępu)](../../active-directory/active-directory-whatis.md), [serwer proxy aplikacji](../../active-directory/active-directory-whatis.md), [Umowa SLA 99,9%](../../active-directory/active-directory-whatis.md) |  Samoobsługowe [Zarządzanie grupami i aplikacjami/samoobsługowe Dodawanie aplikacji/grupy dynamiczne](../../active-directory/active-directory-whatis.md), samoobsługowe [resetowanie haseł/zmiana/Odblokowywanie przy użyciu lokalnego zapisu w](../../active-directory/active-directory-whatis.md)usłudze [uwierzytelniania wieloskładnikowego (serwer MFA) )](../../active-directory/active-directory-whatis.md), Program [MIM cal + serwer mim](../../active-directory/active-directory-whatis.md), [Cloud App Discovery](../../active-directory/active-directory-whatis.md), [Connect Health](../../active-directory/active-directory-whatis.md), [Automatyczne Przerzucanie haseł dla kont grup](../../active-directory/active-directory-whatis.md)|    [Ochrona tożsamości](../../active-directory/identity-protection/overview.md), [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)|   [Przyłączanie urządzenia do usługi Azure AD, logowanie JEDNOkrotne na komputerze stacjonarnym, Microsoft Passport usługi Azure AD, odzyskiwanie funkcji BitLocker przez administratora](../../active-directory/active-directory-whatis.md), [Automatyczne rejestrowanie w usłudze MDM, samoobsługowe odzyskiwanie funkcji BitLocker, dodatkowi Administratorzy lokalni na urządzeniach z systemem Windows 10 za pośrednictwem](../../active-directory/active-directory-whatis.md)|
+|   [Obiekty katalogu](../../active-directory/active-directory-whatis.md), [Zarządzanie użytkownikami/grupami (Dodawanie/aktualizowanie/usuwanie)/oparta na użytkownikach Inicjowanie obsługi, rejestracja urządzeń](../../active-directory/active-directory-whatis.md), logowanie jednokrotne [(SSO)](../../active-directory/active-directory-whatis.md), samoobsługowe [Zmienianie haseł dla użytkowników w chmurze](../../active-directory/active-directory-whatis.md), [łączenie (aparat synchronizacji rozszerza katalogi lokalne do Azure Active Directory)](../../active-directory/active-directory-whatis.md), [raporty dotyczące zabezpieczeń/użycia](../../active-directory/active-directory-whatis.md)       |   [Zarządzanie dostępem oparte na grupach/Inicjowanie obsługi administracyjnej](../../active-directory/active-directory-whatis.md), samoobsługowe [resetowanie haseł dla użytkowników w chmurze](../../active-directory/active-directory-whatis.md), [znakowanie firmowe (strona logowania/dostosowywanie panelu dostępu)](../../active-directory/active-directory-whatis.md), [serwer proxy aplikacji](../../active-directory/active-directory-whatis.md), [Umowa SLA 99,9%](../../active-directory/active-directory-whatis.md) |  [Samoobsługowe zarządzanie grupami i aplikacjami/samoobsługowe Dodawanie aplikacji/grupy dynamiczne](../../active-directory/active-directory-whatis.md), samoobsługowe [resetowanie haseł/zmiana/Odblokowywanie przy użyciu lokalnych zapisów](../../active-directory/active-directory-whatis.md), [Multi-Factor Authentication (serwer usługi MFA) )](../../active-directory/active-directory-whatis.md), Program [MIM cal + serwer mim](../../active-directory/active-directory-whatis.md), [Cloud App Discovery](../../active-directory/active-directory-whatis.md), [Connect Health](../../active-directory/active-directory-whatis.md), [Automatyczne Przerzucanie haseł dla kont grup](../../active-directory/active-directory-whatis.md)|    [Ochrona tożsamości](../../active-directory/identity-protection/overview.md), [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)|   [Przyłączanie urządzenia do usługi Azure AD, logowanie JEDNOkrotne na komputerze stacjonarnym, Microsoft Passport usługi Azure AD, odzyskiwanie funkcji BitLocker przez administratora](../../active-directory/active-directory-whatis.md), [Automatyczne rejestrowanie w usłudze MDM, samoobsługowe odzyskiwanie funkcji BitLocker, dodatkowi Administratorzy lokalni na urządzeniach z systemem Windows 10 za pośrednictwem](../../active-directory/active-directory-whatis.md)|
 
 
 - [Cloud App Discovery](../../active-directory/cloudappdiscovery-get-started.md) to funkcja Premium Azure Active Directory, która pozwala identyfikować aplikacje w chmurze, które są używane przez pracowników w organizacji.
@@ -387,7 +378,7 @@ Firma Microsoft używa wielu rozwiązań w zakresie zabezpieczeń i usług w cel
 - [Serwer proxy aplikacji usługi Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-application-proxy-get-started/) zapewnia Logowanie jednokrotne i bezpieczny dostęp zdalny do aplikacji sieci Web hostowanych lokalnie.
 
 ## <a name="next-steps"></a>Następne kroki
-- [Wprowadzenie do zabezpieczeń Microsoft Azure](./https://docs.microsoft.com/azure/security)
+- [Wprowadzenie do zabezpieczeń Microsoft Azure](https://docs.microsoft.com/azure/security)
 
 Usługi i funkcje platformy Azure, które służą do zabezpieczania usług i danych w ramach systemu Azure
 

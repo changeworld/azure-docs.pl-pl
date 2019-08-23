@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7cf87c3a146f51666a2c24c7cd0d6e9425159225
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: ad321dfa3db69c89b8da080673cb3bab02e4af66
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228933"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905220"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Pracuj z poprzednią wersją Azure Migrate
 
@@ -80,8 +80,8 @@ Widok gotowości platformy Azure w ocenie przedstawia stan gotowości każdej ma
 --- | --- | ---
 Gotowa na platformę Azure | Brak problemów ze zgodnością. Maszynę można zmigrować na platformę Azure, a jej uruchomienie na platformie Azure spowoduje pełną pomoc techniczną platformy Azure. | W przypadku maszyn wirtualnych, które są gotowe do migracji, usługa Azure Migrate wyświetla zalecany rozmiar maszyny wirtualnej na platformie Azure.
 Warunkowo gotowa na platformę Azure | Komputer może przeprowadzić rozruch na platformie Azure, ale może nie mieć pełnej pomocy technicznej platformy Azure. Na przykład maszyna ze starszą wersją systemu Windows Server, która nie jest obsługiwana na platformie Azure. | Azure Migrate objaśnia problemy z gotowością i zawiera czynności zaradcze.
-Niegotowa na platformę Azure |  Maszyna wirtualna nie zostanie przeprowadzony na platformie Azure. Na przykład jeśli maszyna wirtualna ma dysk o pojemności ponad 4 TB, nie może być hostowana na platformie Azure. | Azure Migrate objaśnia problemy z gotowością i zawiera czynności zaradcze.
-Nieznana gotowość | Azure Migrate nie może zidentyfikować gotowości platformy Azure, zwykle ponieważ dane nie są dostępne.
+Brak gotowości na platformę Azure |  Maszyna wirtualna nie zostanie przeprowadzony na platformie Azure. Na przykład jeśli maszyna wirtualna ma dysk o pojemności ponad 4 TB, nie może być hostowana na platformie Azure. | Azure Migrate objaśnia problemy z gotowością i zawiera czynności zaradcze.
+Gotowość nieznana | Azure Migrate nie może zidentyfikować gotowości platformy Azure, zwykle ponieważ dane nie są dostępne.
 
 
 #### <a name="azure-vm-properties"></a>Właściwości maszyny wirtualnej platformy Azure
@@ -244,8 +244,7 @@ Aby zainstalować agenta na komputerze z systemem Linux:
 
 ### <a name="install-the-mma-agent-on-a-machine-monitored-by-operations-manager"></a>Zainstaluj agenta MMA na komputerze monitorowanym przez Operations Manager
 
-W przypadku maszyn monitorowanych przez System Center Operations Manager 2012 R2 lub nowsze nie ma potrzeby instalowania agenta MMA. Service Map integruje się z Operations Manager MMA, aby zebrać niezbędne dane zależności. [Dowiedz się więcej](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites). Agent zależności musi być zainstalowany.
-
+W przypadku maszyn monitorowanych przez program System Center Operations Manager w wersji 2012 R2 lub nowszej nie ma potrzeby instalowania agenta MMA. Service Map integruje się z Operations Manager MMA, aby zebrać niezbędne dane zależności. [Dowiedz się więcej](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites). Agent zależności musi być zainstalowany.
 
 ### <a name="install-the-dependency-agent"></a>Instalowanie agenta zależności
 
@@ -254,9 +253,11 @@ W przypadku maszyn monitorowanych przez System Center Operations Manager 2012 R2
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-- Dowiedz się więcej o obsłudze agentów zależności dla systemów operacyjnych [Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) i [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems) .
-- [Dowiedz się więcej](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) na temat sposobu instalowania agenta zależności za pomocą skryptów.
+- Dowiedz się więcej o [obsłudze agentów zależności](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) dla systemów operacyjnych Windows i Linux.
+- [Dowiedz się więcej](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples) na temat sposobu instalowania agenta zależności za pomocą skryptów.
 
+>[!NOTE]
+> Artykuł Azure Monitor dla maszyn wirtualnych, do którego odwołuje się opis wymagań wstępnych systemu oraz metod wdrażania agenta zależności, dotyczą także rozwiązania Service Map.
 
 ### <a name="create-a-group-with-dependency-mapping"></a>Tworzenie grupy z mapowaniem zależności
 

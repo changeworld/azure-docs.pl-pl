@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: df13a6638c5ed72532b020ef7074123a2159b1c4
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: d000d8390375466232c7daac2a4a056ef424be79
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69536315"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972381"
 ---
 # <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>Skonfiguruj połączenie sieci VPN z chmurą prywatną CloudSimple
 
@@ -26,7 +26,7 @@ Bramy sieci VPN umożliwiają łączenie się z siecią CloudSimple z sieci loka
 
 W regionie można utworzyć jedną bramę sieci VPN typu lokacja-lokacja i jedną bramę sieci VPN typu punkt-lokacja.
 
-## <a name="point-to-site-vpn"></a>Sieć VPN typu punkt-lokacja
+## <a name="point-to-site-vpn"></a>Sieci VPN typu punkt lokacja
 
 Aby utworzyć bramę sieci VPN typu punkt-lokacja, zobacz [Tworzenie bramy sieci VPN typu punkt-lokacja](vpn-gateway.md#create-point-to-site-vpn-gateway).
 

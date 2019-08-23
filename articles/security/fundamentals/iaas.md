@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/05/2019
 ms.author: barclayn
-ms.openlocfilehash: c04d5fc5b455c798ffc8cb4a88948deaea0cf348
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 0e8be1675dd2b400f89ab17fe85c037066302409
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927925"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906016"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Najlepsze rozwiązania dotyczące zabezpieczeń dla obciążeń IaaS na platformie Azure
 W tym artykule opisano najlepsze rozwiązania w zakresie zabezpieczeń dotyczące maszyn wirtualnych i systemów operacyjnych.
@@ -182,7 +182,7 @@ Monitorowanie i ograniczanie łączności z Internetem bezpośrednio z maszyn wi
 **Szczegóły**: Użyj RBAC, aby upewnić się, że tylko Centralna Grupa sieciowa ma uprawnienia do zasobów sieciowych.
 
 **Najlepsze rozwiązanie**: Zidentyfikuj i skoryguj uwidocznione maszyny wirtualne, które zezwalają na dostęp z "dowolnego" źródłowego adresu IP.   
-**Szczegóły**: Użyj Azure Security Center. Security Center zaleca się ograniczyć dostęp za pośrednictwem punktów końcowych dostępnych z Internetu, jeśli dowolna z grup zabezpieczeń sieci ma co najmniej jedną regułę ruchu przychodzącego, która zezwala na dostęp z "dowolnego" źródłowego adresu IP. Security Center będzie zalecać edytowanie tych reguł ruchu przychodzącego w celu [ograniczenia dostępu](../../security-center/security-center-restrict-access-through-internet-facing-endpoints.md) do źródłowych adresów IP, które w rzeczywistości potrzebują dostępu.
+**Szczegóły**: Użyj Azure Security Center. Security Center zaleca się ograniczyć dostęp za pośrednictwem punktów końcowych dostępnych z Internetu, jeśli dowolna z grup zabezpieczeń sieci ma co najmniej jedną regułę ruchu przychodzącego, która zezwala na dostęp z "dowolnego" źródłowego adresu IP. Security Center będzie zalecać edytowanie tych reguł ruchu przychodzącego w celu [ograniczenia dostępu](../../security-center/security-center-network-recommendations.md) do źródłowych adresów IP, które w rzeczywistości potrzebują dostępu.
 
 **Najlepsze rozwiązanie**: Ogranicz porty zarządzania (RDP, SSH).   
 **Szczegóły**: [Dostęp z maszyn wirtualnych just-in-Time (JIT)](../../security-center/security-center-just-in-time.md) może służyć do blokowania ruchu przychodzącego do maszyn wirtualnych platformy Azure, co zmniejsza narażenie na ataki, zapewniając łatwy dostęp do łączenia się z maszynami wirtualnymi w razie potrzeby. Po włączeniu JIT Security Center blokuje ruch przychodzący do maszyn wirtualnych platformy Azure przez utworzenie reguły sieciowej grupy zabezpieczeń. Wybierasz porty na maszynie wirtualnej, do której zostanie zablokowany ruch przychodzący. Te porty są kontrolowane przez rozwiązanie JIT.

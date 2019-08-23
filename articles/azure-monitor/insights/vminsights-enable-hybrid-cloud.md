@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/12/2019
 ms.author: magoedte
-ms.openlocfilehash: e8241069a8671919b70dfbe44fe28c99a05358c5
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: b06fe477f551977b1357f3b1b185cb340a948052
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489728"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905494"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-a-hybrid-environment"></a>Włącz Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) dla środowiska hybrydowego
 
@@ -42,6 +42,9 @@ Kroki umożliwiające wykonanie tego zadania są podsumowane w następujący spo
 3. Należy włączyć zbieranie liczników wydajności.
 
 4. Wdrażanie usługi Azure Monitor dla maszyn wirtualnych.
+
+>[!NOTE]
+>Informacje opisane w tym artykule dotyczące wdrażania agenta zależności dotyczą również [rozwiązania Service map](service-map.md).  
 
 ## <a name="install-the-dependency-agent-on-windows"></a>Instalowanie agenta zależności na Windows
 

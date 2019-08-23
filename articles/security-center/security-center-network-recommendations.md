@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: v-mohabe
-ms.openlocfilehash: fb91d6a9cdc56c88b424b7e0382f283c8b55dac9
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 6dfd3bd86e55d19bf1c15486a502a4cbab3c96a8
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234326"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905301"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Ochrona zasobów sieciowych w Azure Security Center
 Azure Security Center stale analizuje stan zabezpieczeń zasobów platformy Azure pod kątem najlepszych rozwiązań z zakresu zabezpieczeń sieci. Gdy Security Center identyfikuje potencjalne luki w zabezpieczeniach, tworzy zalecenia, które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek do zabezpieczania i zabezpieczania zasobów.
@@ -33,7 +33,7 @@ Ten artykuł dotyczy zaleceń, które dotyczą zasobów platformy Azure z punktu
 Strona **Sieć** zawiera przegląd sekcji, w których można szczegółowe, aby uzyskać więcej informacji na temat kondycji zasobów sieciowych:
 
 - Mapa sieci (tylko Azure Security Center warstwy Standardowa)
-- Adaptacyjne wzmocnienie zabezpieczeń sieci
+- Adaptacyjne wzmacnianie zabezpieczeń sieci
 - Zalecenia dotyczące zabezpieczeń sieci.
 - Blok starszej **sieci** (poprzedni blok sieci) 
  
@@ -152,7 +152,7 @@ Należy włączyć Standard DDoS Protection|Ochrona sieci wirtualnych zawierają
 ## <a name="see-also"></a>Zobacz także
 Aby dowiedzieć się więcej na temat zalecenia, które mają zastosowanie do innych typów zasobów platformy Azure, zobacz następujące tematy:
 
-* [Ochrona maszyn wirtualnych w usłudze Azure Security Center](security-center-virtual-machine-recommendations.md)
+* [Ochrona maszyn i aplikacji w usłudze Azure Security Center](security-center-virtual-machine-protection.md)
 * [Ochrona aplikacji w usłudze Azure Security Center](security-center-application-recommendations.md)
 * [Ochrona usługi Azure SQL w usłudze Azure Security Center](security-center-sql-service-recommendations.md)
 

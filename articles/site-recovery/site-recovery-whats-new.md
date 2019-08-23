@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 08/22/2019
 ms.author: raynew
-ms.openlocfilehash: 1ce71665a924c6681af418075d8cc635c73f8a1a
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 3dc20036ead29c62d47b4a628d7ce8101b9d31f4
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717672"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972521"
 ---
 # <a name="whats-new-in-site-recovery"></a>Co nowego w usłudze Site Recovery
 
@@ -24,6 +24,27 @@ Jeśli masz sugestie dotyczące Site Recovery funkcji, chętnie poznamy [Twoją 
 ## <a name="installing-updates"></a>Instalowanie aktualizacji
 
 Zapoznaj się z [tym artykułem](service-updates-how-to.md) , aby uzyskać pomoc techniczną dotyczącą aktualizacji Site Recovery.
+
+## <a name="updates-august-2019"></a>Aktualizacje (sierpień 2019)
+
+### <a name="update-rollup-39"></a>Pakiet zbiorczy aktualizacji 39
+
+[Pakiet zbiorczy aktualizacji 39](https://support.microsoft.com/help/4517283/update-rollup-39-for-azure-site-recovery) udostępnia następujące aktualizacje.
+
+**Aktualizacja** | **Szczegóły**
+--- | ---
+**Dostawcy i agenci** | Aktualizacje Site Recovery agentów i dostawców (zgodnie z opisem w pakiecie zbiorczym)
+**Rozwiązywanie poprawek/ulepszeń** | Szereg poprawek i ulepszeń (zgodnie z opisem w pakiecie zbiorczym)
+
+
+### <a name="azure-vm-disaster-recovery"></a>Odzyskiwanie po awarii maszyny wirtualnej platformy Azure
+
+W tabeli zestawiono nowe funkcje odzyskiwania po awarii maszyny wirtualnej platformy Azure.
+
+**Funkcja** | **Szczegóły**
+--- | ---
+**Szyfrowanie bez usługi Azure AD** | Szyfrowanie bez aplikacji usługi Azure AD jest teraz obsługiwane na potrzeby replikacji maszyny wirtualnej platformy Azure do dysków zarządzanych z systemem Windows.
+**Zasoby sieciowe do przejścia w tryb failover** | W przypadku przechodzenia w tryb failover do innego regionu można teraz dołączać ustawienia zasobów sieciowych (sieciowych grup zabezpieczeń, równoważenie obciążenia, publiczny adres IP) do maszyny wirtualnej. 
 
 ## <a name="updates-july-2019"></a>Aktualizacje (lipiec 2019)
 

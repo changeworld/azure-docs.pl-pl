@@ -1,131 +1,132 @@
 ---
-title: Zarządzanie międzydzierżawowa oferujące morskiej Azure
-description: Zarządzanie zasobami platformy Azure delegowanego umożliwia to środowisko do zarządzania w wielu dzierżawach.
+title: Obsługa wielu dzierżawców za pomocą usługi Azure Lighthouse
+description: Zarządzanie zasobami delegowanymi przez platformę Azure umożliwia korzystanie z funkcji zarządzania między dzierżawcami.
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
 ms.date: 07/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 15454d4b3f0abad6166c4b163df6c8652669d649
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: f6468e62e9969aa87d51e25ed220bf7d4bed989e
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67809904"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971566"
 ---
-# <a name="cross-tenant-management-experiences"></a>Zarządzanie dzierżawą dla wielu środowisk
+# <a name="cross-tenant-management-experiences"></a>Środowiska zarządzania wieloma dzierżawami
 
-W tym artykule opisano scenariusze, które, jako dostawca usług za pomocą [Azure delegowane zarządzanie zasobami](../concepts/azure-delegated-resource-management.md) do zarządzania zasobami platformy Azure dla wielu klientów z w ramach dzierżawy w [witryny Azure portal ](https://portal.azure.com).
+W tym artykule opisano scenariusze, które mogą być używane przez dostawcę usług w ramach [zarządzania zasobami delegowanymi przez platformę Azure](../concepts/azure-delegated-resource-management.md) w celu zarządzania zasobami platformy Azure dla wielu klientów z poziomu dzierżawy w [Azure Portal](https://portal.azure.com).
 
 > [!NOTE]
-> Zarządzanie zasobami platformy Azure delegowanego można również w przedsiębiorstwie, który ma wiele dzierżaw własne w celu ułatwienia administracji w wielu dzierżawach.
+> Zarządzanie zasobami delegowanymi przez platformę Azure może być również używane w przedsiębiorstwie, które ma wiele dzierżawców, aby uprościć administrację między dzierżawcami.
 
-## <a name="understanding-customer-tenants"></a>Informacje o dzierżawach klienta
+## <a name="understanding-customer-tenants"></a>Zrozumienie dzierżawców klientów
 
-Dzierżawy usługi Azure Active Directory (Azure AD) to reprezentacja organizacji. Jest to dedykowane wystąpienie usługi Azure AD organizacja otrzymuje podczas tworzenia relacji z firmą Microsoft przez zarejestrowanie się do platformy Azure, Microsoft 365 lub innych usług. Każda dzierżawa usługi Azure AD jest odrębna i oddzielona od innych dzierżaw usługi Azure AD, a ma swój własny identyfikator dzierżawy (GUID). Aby uzyskać więcej informacji, zobacz [co to jest Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
+Dzierżawa usługi Azure Active Directory (Azure AD) jest reprezentacją organizacji. Jest to dedykowane wystąpienie usługi Azure AD, które organizacja otrzymuje podczas tworzenia relacji z firmą Microsoft, rejestrując się na platformie Azure, Microsoft 365 lub innych usługach. Każda dzierżawa usługi Azure AD jest odrębna i oddzielona od innych dzierżaw usługi Azure AD i ma własny identyfikator dzierżawy (GUID). Aby uzyskać więcej informacji, zobacz [co to jest Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
 
-Zazwyczaj aby można było zarządzać zasobami platformy Azure dla klientów, dostawców usług musi zalogować się do witryny Azure portal przy użyciu konta skojarzone z dzierżawcą tego klienta, wymagających administratorem w dzierżawie klienta, aby utworzyć i zarządzać kontami użytkowników w przypadku dostawcy usług.
+Zazwyczaj, aby zarządzać zasobami platformy Azure dla klienta, dostawcy usług będą musieli zalogować się do Azure Portal przy użyciu konta skojarzonego z dzierżawcą tego klienta, co wymaga od administratora dzierżawy klienta tworzenia kont użytkowników i zarządzania nimi. dla dostawcy usług.
 
-Za pomocą funkcji zarządzania usługi Azure resource delegowanego procesu dołączania określa użytkowników w dzierżawie dostawcy usług, którzy będą mogli uzyskać dostęp i zarządzanie nimi, subskrypcji, grupy zasobów i zasobów w dzierżawie klienta. Tacy użytkownicy mogą następnie zaloguj się do witryny Azure portal przy użyciu własnych poświadczeń. W witrynie Azure portal mogą zarządzać zasobami należącymi do wszystkich klientów, do których mają dostęp. Można to zrobić, odwiedzając [moich klientów](../how-to/view-manage-customers.md) strony w witrynie Azure portal lub, pracując bezpośrednio w kontekście tego klienta subskrypcji, w witrynie Azure portal lub za pośrednictwem interfejsów API.
+W przypadku zarządzania zasobami delegowanymi przez platformę Azure proces dołączania określa użytkowników w dzierżawie dostawcy usług, którzy będą mogli uzyskiwać dostęp do subskrypcji, grup zasobów i zasobów w dzierżawie klienta oraz zarządzać nimi. Ci użytkownicy mogą następnie zalogować się do Azure Portal przy użyciu własnych poświadczeń. W ramach Azure Portal mogą zarządzać zasobami należącymi do wszystkich klientów, do których mają dostęp. Można to zrobić, odwiedzając stronę [moi klienci](../how-to/view-manage-customers.md) w Azure Portal lub pracując bezpośrednio w kontekście subskrypcji tego klienta w Azure Portal lub za pośrednictwem interfejsów API.
 
-Zarządzanie zasobami platformy Azure delegowanego umożliwia większą elastyczność i zarządzanie zasobami dla wielu klientów bez konieczności logowania się na różnych kontach w różnych dzierżawach. Na przykład dostawcy usług mogą mieć trzech klientów przy użyciu różne obowiązki i poziomy dostępu, jak pokazano poniżej:
+Zarządzanie zasobami delegowanymi przez platformę Azure umożliwia większą elastyczność zarządzania zasobami dla wielu klientów bez konieczności logowania się do różnych kont w różnych dzierżawach. Na przykład dostawca usług może mieć trzech klientów z różnymi zakresami obowiązków i poziomów dostępu, jak pokazano poniżej:
 
-![Trzy dzierżaw klientów przedstawiający obowiązki dostawcy usług](../media/azure-delegated-resource-management-customer-tenants.jpg)
+![Trzy dzierżawy klienta pokazujące obowiązki dostawcy usług](../media/azure-delegated-resource-management-customer-tenants.jpg)
 
-Za pomocą usługi Azure resource delegowanego zarządzania autoryzowani użytkownicy zalogować się do dzierżawy dostawcy usług dostępu do tych zasobów, jak pokazano poniżej:
+Korzystając z funkcji zarządzania zasobami delegowanymi przez platformę Azure, autoryzowani użytkownicy mogą zalogować się do dzierżawy dostawcy usług, aby uzyskać dostęp do tych zasobów, jak pokazano poniżej:
 
-![Zasoby dla klientów zarządzanych przy użyciu jednej usługi dostawcy dzierżawy](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
+![Zasoby klienta zarządzane za poorednictwem jednej dzierżawy dostawcy usług](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
 
 ## <a name="supported-services-and-scenarios"></a>Obsługiwane usługi i scenariusze
 
-Obecnie możliwości zarządzania międzydzierżawowa obsługuje następujące scenariusze z zasobami delegowanego klienta:
+Obecnie środowisko zarządzania między dzierżawcami obsługuje następujące scenariusze z delegowanymi zasobami klientów:
 
-[Usługa Azure Automation](https://docs.microsoft.com/azure/automation/):
+[Azure Automation](https://docs.microsoft.com/azure/automation/):
 
-- Użyj konta usługi automation, aby dostępu oraz pracy z zasobami klienta delegowanego
+- Korzystanie z kont usługi Automation w celu uzyskiwania dostępu do delegowanych zasobów klienta i pracy z nim
 
 [Azure Backup](https://docs.microsoft.com/azure/backup/):
 
-- Tworzenie kopii zapasowej i przywracanie danych klientów w dzierżawach klienta
+- Tworzenie kopii zapasowych i przywracanie danych klienta w dzierżawach klientów
 
 [Usługa Azure Kubernetes Service (AKS)](https://docs.microsoft.com//azure/aks/):
 
-- Zarządzanie środowiskami usługi hostowanej platformy Kubernetes i wdrażać konteneryzowane aplikacje i zarządzać w ramach dzierżawy klienta
+- Zarządzanie hostowanymi środowiskami Kubernetes oraz wdrażanie aplikacji kontenerowych i zarządzanie nimi w ramach dzierżawców klientów
 
-[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/):
+[Azure monitor](https://docs.microsoft.com/azure/azure-monitor/):
 
-- Wyświetl alerty dla delegowanego subskrypcje w witrynie Azure portal lub programowo przy użyciu wywołań interfejsu API REST, możliwość wyświetlania alertów dla wszystkich subskrypcji
-- Wyświetl szczegóły dziennika aktywności dla delegowanego subskrypcji
-- Analiza dzienników: Wykonywanie zapytań dotyczących danych w obszarach roboczych klienta zdalnego, w wielu dzierżaw
+- Wyświetlanie alertów dotyczących delegowanych subskrypcji w Azure Portal lub programowo przy użyciu wywołań interfejsu API REST, z możliwością wyświetlania alertów we wszystkich subskrypcjach
+- Wyświetl szczegóły dziennika aktywności dla delegowanych subskrypcji
+- Analiza dzienników: Wykonywanie zapytań dotyczących danych ze zdalnych obszarów roboczych klientów w wielu dzierżawcach
 
-[Usługa Azure Policy](https://docs.microsoft.com/azure/governance/policy/):
+[Azure Policy](https://docs.microsoft.com/azure/governance/policy/):
 
-- Migawki zgodności Pokaż szczegóły dla przypisanych zasad w ramach subskrypcji delegowanego
-- Tworzenie i edytowanie definicji zasad w ramach subskrypcji delegowanego
-- Przypisywanie definicji zasad zdefiniowanych przez klienta w ramach subskrypcji delegowanego
-- Klienci widzą zasad utworzonych przez dostawcę usług wraz z jakiekolwiek zasady, które zostały one utworzone samodzielnie
-- Koryguje deployIfNotExists przypisania w ramach dzierżawy klienta, jeśli dla klienta została skonfigurowana tożsamość zarządzaną i *roleDefinitionIds* dla tego przypisania zasad
+- Migawki zgodności pokazują szczegóły przypisanych zasad w ramach delegowanych subskrypcji
+- Tworzenie i edytowanie definicji zasad w ramach delegowanej subskrypcji
+- Przypisywanie definicji zasad zdefiniowanych przez klienta w ramach delegowanej subskrypcji
+- Klienci widzą zasady utworzone przez dostawcę usług wraz ze wszystkimi utworzonymi przez siebie zasadami
+- Może skorygować przydziały deployIfNotExists w dzierżawach klientów, jeśli klient skonfigurował zarządzaną tożsamość i *roleDefinitionIds* dla tego przypisania zasad
 
 [Wykres zasobów platformy Azure](https://docs.microsoft.com/azure/governance/resource-graph/):
 
-- W wynikach kwerendy zwrócone, dzięki czemu możesz ustalić, czy subskrypcja należy do dzierżawy klienta lub dzierżawa dostawcy usługi obejmuje teraz identyfikator dzierżawy
+- Zawiera teraz identyfikator dzierżawy w zwróconych wynikach zapytania, co pozwala na ustalenie, czy subskrypcja należy do dzierżawy klienta lub dostawcy usług.
 
-[Usługa Azure Security Center](https://docs.microsoft.com/azure/security-center/):
+[Azure Security Center](https://docs.microsoft.com/azure/security-center/):
 
-- Widoczność międzydzierżawowe
-  - Monitorowanie zgodności z zasadami zabezpieczeń i upewnij się zakresu zabezpieczeń, w zasobach wszystkich dzierżaw
-  - Zgodność z przepisami ciągłe monitorowanie z przekraczaniem wielu klientów w ramach jednego widoku
-  - Monitorowanie, klasyfikacja i priorytety informacje z możliwością działania zabezpieczeń zalecenia za pomocą secure obliczania wyniku
-- Zarządzanie ogólnego poziomu zabezpieczeń międzydzierżawowe
+- Widoczność między dzierżawami
+  - Monitoruj zgodność z zasadami zabezpieczeń i zapewniaj pokrycie zabezpieczeń we wszystkich zasobach dzierżawców
+  - Ciągłe monitorowanie zgodności z przepisami dla wielu klientów w jednym widoku
+  - Monitoruj, klasyfikacja i ustalaj priorytety rekomendacji dotyczących zabezpieczeń z bezpiecznym obliczaniem wyniku
+- Zarządzanie Stanami zabezpieczeń między dzierżawcami
   - Zarządzanie zasadami zabezpieczeń
-  - Podejmowanie akcji na zasoby, które są niezgodne z zaleceniami dotyczącymi zabezpieczeń informacje z możliwością działania
+  - Podejmowanie działań dotyczących zasobów niezgodnych z zaleceniami dotyczącymi zabezpieczeń z możliwością podejmowania działań
   - Zbieranie i przechowywanie danych związanych z zabezpieczeniami
-- Wykrywanie zagrożeń międzydzierżawowy i ochrony
-  - Wykrywanie zagrożeń w zasobach dzierżawców
-  - Stosowanie kontrolek ochrony zaawansowanych zagrożeń, takich jak just-in-time (JIT) w maszynie Wirtualnej dostępu
-  - Utrwalanie konfiguracji grupy zabezpieczeń sieci z adaptacyjne wzmacniania ochrony sieci
-  - Upewnij się, że serwery działają tylko aplikacji i procesów, które należy je funkcje adaptacyjnego sterowania aplikacjami
-  - Monitor zmienia się na ważnych plików i wpisy rejestru za pomocą pliku Integrity Monitoring (FIM)
+- Wykrywanie zagrożeń i ochrona między dzierżawcami
+  - Wykrywanie zagrożeń między zasobami dzierżawców
+  - Stosowanie zaawansowanych kontrolek ochrony przed zagrożeniami, takich jak dostęp do maszyny wirtualnej just-in-Time (JIT)
+  - Konfiguracja grupy zabezpieczeń sieci z ograniczeniami w ramach adaptacyjnej ochrony sieci
+  - Upewnij się, że na serwerach działają tylko aplikacje i procesy, które powinny należeć do adaptacyjnego sterowania aplikacjami
+  - Monitorowanie zmian ważnych plików i wpisów rejestru przy użyciu monitorowania integralności plików (FIM)
 
 [Azure Service Health](https://docs.microsoft.com/azure/service-health/):
 
-- Monitorowanie kondycji zasobów klienta za pomocą usługi Azure Resource Health
-- Śledź kondycję usług platformy Azure używane przez klientów
+- Monitoruj kondycję zasobów klientów za pomocą Azure Resource Health
+- Śledzenie kondycji usług platformy Azure używanych przez klientów
 
 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/):
 
-- Zarządzanie opcje odzyskiwania po awarii dla maszyn wirtualnych platformy Azure w dzierżawach klienta (należy zauważyć, że nie można użyć konta Uruchom jako można skopiować rozszerzenia maszyn wirtualnych)
+- Zarządzanie opcjami odzyskiwania po awarii dla maszyn wirtualnych platformy Azure w dzierżawach klientów (należy pamiętać, że nie można używać kont Uruchom jako do kopiowania rozszerzeń maszyn wirtualnych)
 
-[Usługa Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/):
+[Virtual Machines platformy Azure](https://docs.microsoft.com/azure/virtual-machines/):
 
-- Użyj rozszerzenia maszyny wirtualnej, aby podać po wdrożeniu konfiguracji oraz zadania automatyzacji na maszynach wirtualnych platformy Azure w dzierżawach klienta
+- Korzystanie z rozszerzeń maszyny wirtualnej w celu zapewnienia konfiguracji po wdrożeniu i zadań automatyzacji na maszynach wirtualnych platformy Azure w dzierżawach klientów
 - Rozwiązywanie problemów z maszynami wirtualnymi platformy Azure w dzierżawach klientów przy użyciu diagnostyki rozruchu
-- Dostęp do maszyn wirtualnych, za pomocą konsoli szeregowej w dzierżawach klienta
-- Pamiętaj, że usługi Azure Active Directory nie można używać do logowania zdalnego z maszyną wirtualną maszyny Wirtualnej nie można zintegrować z usługą Key Vault hasła, wpisy tajne i klucze szyfrowania do szyfrowania dysku
+- Dostęp do maszyn wirtualnych za pomocą konsoli szeregowej w dzierżawach klientów
+- Należy pamiętać, że nie można użyć Azure Active Directory do zdalnego logowania do maszyny wirtualnej i nie można zintegrować maszyny wirtualnej z Key Vault hasła, wpisów tajnych lub kluczy kryptograficznych na potrzeby szyfrowania dysków
 
-[Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/):
+[Virtual Network platformy Azure](https://docs.microsoft.com/azure/virtual-network/):
 
-- Wdrażanie i zarządzanie sieciami wirtualnymi i wirtualne karty sieciowe (vNICs) w ramach dzierżawy klienta
+- Wdrażaj sieci wirtualne i karty interfejsu sieci wirtualnej (vNICs) w ramach dzierżawców klientów i zarządzaj nimi
 
-Żądania pomocy technicznej:
+Żądania obsługi:
 
-- Otwierać żądania pomocy technicznej dla delegowanego zasobów z **Pomoc i obsługa techniczna** bloku w witrynie Azure portal (Wybieranie planu pomocy technicznej dostępne dla delegowanego zakresu)
+- Otwarte żądania obsługi dla delegowanych zasobów z bloku **Pomoc i obsługa techniczna** w Azure Portal (wybranie planu pomocy technicznej dostępnego dla delegowanego zakresu)
 
-Za pomocą wszystkich scenariuszy należy pamiętać o następujących ograniczeniach bieżący:
+## <a name="current-limitations"></a>Bieżące ograniczenia
+We wszystkich scenariuszach należy pamiętać o następujących bieżących ograniczeniach:
 
-- Żądań obsługiwanych przez usługę Azure Resource Manager mogą być wykonywane przy użyciu usługi Azure resource delegowanego management. Operacja identyfikatorów URI dla tych żądań, rozpoczynać `https://management.azure.com`. Jednakże żądań, które są obsługiwane przez wystąpienie typu zasobu (np. dostęp do wpisów tajnych usługi KeyVault lub dostępu do magazynu danych) nie są obsługiwane za pomocą funkcji zarządzania usługi Azure resource delegowanego. Operacja identyfikatorów URI te żądania zaczynają się zwykle adres który jest unikatowy dla wystąpienia, takie jak `https://myaccount.blob.core.windows.net` lub `https://mykeyvault.vault.azure.net/`. One również są zwykle operacje na danych, a nie operacji zarządzania. 
-- Przypisania ról, należy użyć kontroli dostępu opartej na rolach (RBAC) [wbudowane role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles). Wszystkie wbudowane role są obecnie obsługiwane za pomocą funkcji zarządzania usługi Azure resource delegowanego z wyjątkiem właściciela, Administrator dostępu użytkowników lub wszystkie wbudowane role z [elementy DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) uprawnień. Role niestandardowe i [ról administratora klasyczni](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) również nie są obsługiwane.
-- Obecnie nie można dołączyć subskrypcji (lub grupy zasobów w ramach subskrypcji) na platformie Azure delegować zarządzanie zasobami, jeśli subskrypcja używa usługi Azure Databricks. Podobnie jeśli subskrypcja została zarejestrowana dla dołączania przy użyciu **Microsoft.ManagedServices** dostawcy zasobów nie można utworzyć obszar roboczy usługi Databricks dla tej subskrypcji w tej chwili.
+- Żądania obsługiwane przez Azure Resource Manager można wykonać przy użyciu funkcji zarządzania zasobami delegowanymi przez platformę Azure. Identyfikatory URI operacji dla tych żądań zaczynają `https://management.azure.com`się od. Jednak żądania, które są obsługiwane przez wystąpienie typu zasobu (takie jak dostęp do magazynu kluczy lub dostęp do danych magazynu), nie są obsługiwane przez delegowane zarządzanie zasobami platformy Azure. Identyfikatory URI operacji dla tych żądań zwykle zaczynają się od adresu, który jest unikatowy dla Twojego wystąpienia, `https://myaccount.blob.core.windows.net` takiego `https://mykeyvault.vault.azure.net/`jak lub. Te ostatnie również są zazwyczaj operacjami na danych, a nie operacjami zarządzania. 
+- Przypisania ról muszą używać [wbudowanych ról](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)kontroli dostępu opartej na ROLACH (RBAC). Wszystkie wbudowane role są obecnie obsługiwane przez delegowane zarządzanie zasobami platformy Azure z wyjątkiem właściciela, administratora dostępu użytkowników lub wszelkich wbudowanych ról z uprawnieniami dataactions. [](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) Role niestandardowe i [role administratora klasycznej subskrypcji](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) nie są również obsługiwane.
+- Obecnie nie można dołączyć subskrypcji (lub grupy zasobów w ramach subskrypcji) do zarządzania zasobami delegowanymi przez platformę Azure, jeśli subskrypcja używa Azure Databricks. Podobnie, jeśli subskrypcja została zarejestrowana w celu dołączenia do dostawcy zasobów **Microsoft. ManagedServices** , nie będzie można w tej chwili utworzyć obszaru roboczego dla tej subskrypcji.
 
-## <a name="using-apis-and-management-tools-with-cross-tenant-management"></a>Za pomocą narzędzia do zarządzania i interfejsów API za pomocą funkcji zarządzania wielu dzierżawach
+## <a name="using-apis-and-management-tools-with-cross-tenant-management"></a>Korzystanie z interfejsów API i narzędzi do zarządzania w ramach zarządzania przez wiele dzierżawców
 
-Obsługiwane usługi i wymienione powyżej można wykonywać zadania zarządzania, bezpośrednio w portalu lub przy użyciu narzędzia interfejsów API i zarządzania (na przykład wiersza polecenia platformy Azure i programu Azure PowerShell). Wszystkie istniejące interfejsy API mogą służyć podczas pracy z zasobami delegowanego (dla usługi, które są obsługiwane).
+Obsługiwane usługi i scenariusze wymienione powyżej umożliwiają wykonywanie zadań zarządzania bezpośrednio w portalu lub za pomocą interfejsów API i narzędzi do zarządzania (takich jak interfejs wiersza polecenia platformy Azure i Azure PowerShell). Wszystkie istniejące interfejsy API mogą być używane podczas pracy z delegowanymi zasobami (dla usług, które są obsługiwane).
 
-Istnieją również interfejsy API specyficzne dla wykonywanie zadań zarządzania platformy Azure zasobu delegowanego. Aby uzyskać więcej informacji, zobacz **odwołania** sekcji.
+Istnieją także interfejsy API specyficzne dla wykonywania zadań zarządzania zasobami delegowanymi przez platformę Azure. Aby uzyskać więcej informacji, zobacz sekcję dotyczącą **odwołania** .
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dołączanie klientów na platformie Azure delegowane zarządzanie zasobami, albo przez [przy użyciu szablonów usługi Azure Resource Manager](../how-to/onboard-customer.md) lub [publikowanie oferty usług zarządzanych prywatną lub publiczną w portalu Azure Marketplace](../how-to/publish-managed-services-offers.md).
-- [Wyświetlanie i zarządzanie nimi klienci](../how-to/view-manage-customers.md) , przechodząc do **moich klientów** w witrynie Azure portal.
+- Dołączanie klientów do zarządzania zasobami delegowanymi przez platformę Azure za [pomocą szablonów Azure Resource Manager](../how-to/onboard-customer.md) lub [opublikowanie oferty usług zarządzanych w witrynie Azure Marketplace](../how-to/publish-managed-services-offers.md).
+- [Wyświetlaj klientów i zarządzaj nimi](../how-to/view-manage-customers.md) , przechodząc do **moich klientów** w Azure Portal.

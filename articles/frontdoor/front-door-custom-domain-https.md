@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: 48733a8c2a554fc62c7731b6c0fb4ef5b8d45159
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5b44bfd94dffa14fcd501f5e0ddea11309adabf6
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450190"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907840"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Samouczek: konfigurowanie protokołu HTTPS w niestandardowej domenie usługi Front Door
 
@@ -79,13 +79,19 @@ Możesz włączyć funkcję HTTPS przy użyciu własnego certyfikatu. Ten proces
 1. Usługa Azure Key Vault: musisz mieć konto usługi Azure Key Vault uruchomione w ramach tej samej subskrypcji co usługa Front Door, dla której chcesz włączyć niestandardowy protokół HTTPS. Utwórz konto usługi Azure Key Vault, jeśli go nie masz.
 
 > [!WARNING]
-> Usługa drzwiami frontowymi aktualnie obsługuje tylko konta usługi Key Vault w tej samej subskrypcji co Konfiguracja wejściu. Wybranie usługi Key Vault z innej subskrypcji niż usługa Front Door spowoduje błąd.
+> Usługa frontonu platformy Azure obecnie obsługuje tylko konta Key Vault w tej samej subskrypcji, w której znajduje się konfiguracja z drzwiami wstępnymi. Wybranie usługi Key Vault z innej subskrypcji niż usługa Front Door spowoduje błąd.
 
-2. Certyfikaty usługi Azure Key Vault: jeśli masz już certyfikat, możesz przekazać go bezpośrednio na konto usługi Azure Key Vault lub utworzyć nowy certyfikat bezpośrednio za pomocą usługi Azure Key Vault za pośrednictwem jednego z partnerskich urzędów certyfikacji, z którymi zintegrowana jest usługa Azure Key Vault.
+2. Certyfikaty usługi Azure Key Vault: jeśli masz już certyfikat, możesz przekazać go bezpośrednio na konto usługi Azure Key Vault lub utworzyć nowy certyfikat bezpośrednio za pomocą usługi Azure Key Vault za pośrednictwem jednego z partnerskich urzędów certyfikacji, z którymi zintegrowana jest usługa Azure Key Vault. Przekaż swój certyfikat jako obiekt **certyfikatu** , a nie **wpis tajny**.
+
+> [!IMPORTANT]
+> Należy przekazać certyfikat w formacie PFX **bez** ochrony hasłem.
 
 #### <a name="register-azure-front-door-service"></a>Rejestrowanie usługi Azure Front Door Service
 
 Zarejestruj jednostkę usługi dla usługi Azure Front Door Service jako aplikację w usłudze Azure Active Directory za pomocą programu PowerShell.
+
+> [!NOTE]
+> Tę akcję należy wykonać tylko **raz** dla każdego dzierżawcy.
 
 1. Jeśli to konieczne, zainstaluj program [Azure PowerShell](/powershell/azure/install-az-ps) za pomocą programu PowerShell na komputerze lokalnym.
 
@@ -95,18 +101,19 @@ Zarejestruj jednostkę usługi dla usługi Azure Front Door Service jako aplikac
 
 #### <a name="grant-azure-front-door-service-access-to-your-key-vault"></a>Udzielanie usłudze Azure Front Door Service dostępu do magazynu kluczy
  
-Udziel usłudze Azure Front Door Service uprawnień dostępu do certyfikatów w obszarze wpisów tajnych na koncie usługi Azure Key Vault.
+Udziel uprawnienia usługi Azure front-drzwi do uzyskiwania dostępu do certyfikatów na koncie Azure Key Vault.
 
 1. Na koncie magazynu kluczy w obszarze USTAWIENIA wybierz pozycję **Zasady dostępu**, a następnie wybierz pozycję **Dodaj nową**, aby utworzyć nową zasadę.
 
-2. W obszarze **Wybierz podmiot zabezpieczeń** wyszukaj wartość **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037** i wybierz pozycję **Microsoft.Azure.Frontdoor**. Kliknij pozycję **Wybierz**.
+2. W obszarze **Wybierz podmiot zabezpieczeń** wyszukaj wartość **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037** i wybierz pozycję **Microsoft.Azure.Frontdoor**. Kliknij przycisk **wybierz**.
 
+3. W obszarze **uprawnienia do klucza tajnego**wybierz pozycję **Pobierz** , aby umożliwić przednim drzwiom pobranie certyfikatu.
 
-3. W obszarze **Uprawnienia klucza tajnego** wybierz pozycję **Pobierz**, aby zezwolić usłudze Front Door na użycie tych uprawnień do pobrania i wyświetlenia certyfikatów. 
+4. W obszarze **uprawnienia certyfikatu**wybierz pozycję **Pobierz** , aby umożliwić przednim drzwiom pobranie certyfikatu.
 
-4. Kliknij przycisk **OK**. 
+5. Kliknij przycisk **OK**. 
 
-    Usługa Azure Front Door Service ma teraz dostęp do tego magazynu kluczy i certyfikatów (kluczy tajnych), które są przechowywane w tym magazynie kluczy.
+    Usługa frontonu platformy Azure może teraz uzyskiwać dostęp do tego Key Vault i certyfikatów przechowywanych w tym Key Vault.
  
 #### <a name="select-the-certificate-for-azure-front-door-service-to-deploy"></a>Wybieranie certyfikatu do wdrożenia dla usługi Azure Front Door Service
  
@@ -140,13 +147,13 @@ Jeśli używasz własnego certyfikatu, walidacja domeny nie jest wymagana.
 
 Rekord CNAME powinien mieć następujący format, gdzie *Nazwa* to nazwa domeny niestandardowej, a *Wartość* to domyślna nazwa hosta .azurefd.net usługi Front Door:
 
-| Name (Nazwa)            | Typ  | Wartość                 |
+| Name            | Typ  | Value                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azurefd.net |
 
 Aby uzyskać więcej informacji na temat rekordów CNAME, zobacz [Tworzenie rekordu DNS CNAME](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain).
 
-Jeśli rekord CNAME na poprawny format, firma DigiCert weryfikuje nazwę domeny niestandardowej i tworzy dedykowany certyfikat dla nazwy domeny. Firma DigitCert nie wysyła weryfikacyjnej wiadomości e-mail i nie trzeba zatwierdzać swojego żądania. Certyfikat jest ważny przez jeden rok i jest automatycznie odnawiany przed wygaśnięciem. Przejdź do sekcji [Oczekiwanie na propagację](#wait-for-propagation). 
+Jeśli rekord CNAME na poprawny format, firma DigiCert weryfikuje nazwę domeny niestandardowej i tworzy dedykowany certyfikat dla nazwy domeny. Firma DigitCert nie wysyła weryfikacyjnej wiadomości e-mail i nie trzeba zatwierdzać swojego żądania. Certyfikat jest ważny przez jeden rok i zostanie odnowiony przed jego wygaśnięciem. Przejdź do sekcji [Oczekiwanie na propagację](#wait-for-propagation). 
 
 Automatyczna walidacja przeważnie trwa kilka minut. Jeśli w ciągu godziny nie zobaczysz zweryfikowanej domeny, otwórz bilet pomocy technicznej.
 
@@ -169,7 +176,7 @@ webmaster@&lt;your-domain-name.com&gt;
 hostmaster@&lt;your-domain-name.com&gt;  
 postmaster@&lt;nazwa-domeny.com&gt;  
 
-W ciągu kilku minut otrzymasz wiadomość e-mail (podobną do poniższego przykładu) z prośbą o zatwierdzenie żądania. Jeśli używasz filtru spamu, Dodaj admin@digicert.com do jego listy dozwolonych. Jeśli w ciągu 24 godzin nie otrzymasz wiadomości e-mail, skontaktuj się z działem pomocy technicznej firmy Microsoft.
+W ciągu kilku minut otrzymasz wiadomość e-mail (podobną do poniższego przykładu) z prośbą o zatwierdzenie żądania. Jeśli używasz filtru spamu, Dodaj admin@digicert.com go do listy dozwolonych. Jeśli w ciągu 24 godzin nie otrzymasz wiadomości e-mail, skontaktuj się z działem pomocy technicznej firmy Microsoft.
 
 Po kliknięciu linku zatwierdzania następuje przekierowanie do formularza zatwierdzania online. Postępuj zgodnie z instrukcjami w formularzu. Dostępne są dwie opcje weryfikacji:
 
@@ -177,7 +184,7 @@ Po kliknięciu linku zatwierdzania następuje przekierowanie do formularza zatwi
 
 - Możesz zatwierdzać tylko nazwę określonego hosta używaną w tym żądaniu. W przypadku kolejnych żądań będzie wymagane dodatkowe zatwierdzanie.
 
-Po zatwierdzeniu firma DigiCert kończy tworzenie certyfikatu dla niestandardowej nazwy domeny. Certyfikat jest ważny przez jeden rok i jest automatycznie odnawiany przed wygaśnięciem.
+Po zatwierdzeniu firma DigiCert kończy tworzenie certyfikatu dla niestandardowej nazwy domeny. Certyfikat jest ważny przez jeden rok i zostanie odnowiony przed jego wygaśnięciem.
 
 ## <a name="wait-for-propagation"></a>Oczekiwanie na propagację
 
@@ -260,7 +267,7 @@ W poniższej tabeli przedstawiono postęp operacji w przypadku wyłączenia prot
     Nie, rekord autoryzacji urzędu certyfikacji nie jest obecnie wymagany. Jeśli jednak istnieje, musi zawierać firmę DigiCert jako prawidłowy urząd certyfikacji.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, jak [utworzyć usługę Front Door](quickstart-create-front-door.md).
 - Dowiedz się, [jak działa usługa Front Door](front-door-routing-architecture.md).

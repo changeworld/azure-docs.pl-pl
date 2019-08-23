@@ -42,7 +42,7 @@
       href: plan-conditional-access.md
     - name: Najlepsze praktyki
       href: best-practices.md
-    - name: Typowe szablony zasad
+    - name: Typowe zasady dostępu warunkowego
       items:
         - name: Wymaganie uwierzytelniania wieloskładnikowego dla administratorów
           href: howto-conditional-access-policy-admin-mfa.md

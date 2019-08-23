@@ -4,13 +4,13 @@ title: Dokumentacja interfejsu API wyszukiwania lokalnych firm Bing
 titleSuffix: Azure Cognitive Services
 metadata:
   title: Dokumentacja interfejsu API wyszukiwania lokalnych firm Bing
+  titleSuffix: Azure Cognitive Services
   description: 'Interfejs API wyszukiwania lokalnych firm Bing jest usługą RESTful, która pozwala aplikacjom znajdować lokalne firmy na podstawie zapytań wyszukiwania.'
   services: cognitive-services
   author: aahill
   manager: nitinme
+  ms.service: cognitive-services
   ms.subservice: bing-local-business
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 08/02/2018
   ms.author: rosh
