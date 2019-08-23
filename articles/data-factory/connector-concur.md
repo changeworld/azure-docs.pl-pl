@@ -82,7 +82,7 @@ Aby skopiować dane z Concur, należy ustawić właściwość typu zestawu danyc
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | Właściwość Type zestawu danych musi być ustawiona na wartość: **ConcurObject** | Tak |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **ConcurObject** | Tak |
 | tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 
@@ -113,7 +113,7 @@ Aby skopiować dane z Concur, należy ustawić typ źródła w działaniu kopiow
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **ConcurSource** | Yes |
+| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **ConcurSource** | Yes |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Opportunities where Id = xxx "`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**
