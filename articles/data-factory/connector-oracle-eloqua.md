@@ -44,7 +44,7 @@ Następujące właściwości są obsługiwane dla Oracle Eloqua połączone usł
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | Właściwość Type musi mieć ustawioną wartość: **Eloqua** | Tak |
+| type | Właściwość Type musi mieć ustawioną wartość: **Eloqua** | Tak |
 | endpoint | Punkt końcowy serwera Eloqua. Eloqua obsługuje wiele centrów danych w celu określenia punktu końcowego, zaloguj się do https://login.eloqua.com przy użyciu swoich poświadczeń, a następnie skopiuj **bazowy adres URL** części od adresu URL za pomocą wzorca `xxx.xxx.eloqua.com`. | Yes |
 | username | Nazwa lokacji i nazwa użytkownika konta Eloqua w formie: `SiteName\Username` np. `Eloqua\Alice`.  | Yes |
 | password | Hasło odpowiadający nazwie użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
