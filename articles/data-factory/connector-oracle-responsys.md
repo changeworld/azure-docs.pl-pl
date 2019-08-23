@@ -44,7 +44,7 @@ Następujące właściwości są obsługiwane w przypadku Responsys Oracle poł�
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | Właściwość Type musi mieć ustawioną wartość: **Responsys** | Yes |
+| type | Właściwość Type musi mieć ustawioną wartość: **Responsys** | Yes |
 | endpoint | Punkt końcowy serwera Respopnsys  | Yes |
 | clientId | Identyfikator klienta skojarzony z aplikacją Responsys.  | Yes |
 | clientSecret | Klucz tajny klienta, powiązane z daną aplikacją Responsys. Możesz oznaczyć to pole jako element SecureString, aby bezpiecznie przechowywać go w podajniku APD, lub przechowywać hasło w Azure Key Vault i wypróbować działanie Copy APD z tego miejsca podczas kopiowania danych — Dowiedz się więcej z [poświadczeń sklepu w Key Vault](store-credentials-in-key-vault.md). | Tak |
@@ -114,7 +114,7 @@ Aby skopiować dane z bazy danych Oracle Responsys, należy ustawić typ źród�
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **ResponsysSource** | Tak |
+| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **ResponsysSource** | Tak |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**
