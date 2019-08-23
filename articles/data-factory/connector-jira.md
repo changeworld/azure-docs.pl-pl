@@ -81,7 +81,7 @@ Aby skopiować dane z programu Jira, należy ustawić właściwość typu zestaw
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | Właściwość Type zestawu danych musi być ustawiona na wartość: **JiraObject** | Tak |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **JiraObject** | Tak |
 | tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
