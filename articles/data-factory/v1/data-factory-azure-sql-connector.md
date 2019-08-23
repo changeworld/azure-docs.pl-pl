@@ -65,7 +65,7 @@ Azure SQL połączone łącza do usług Azure SQL database z fabryką danych. Po
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| — typ |Właściwość type musi być równa: **AzureSqlDatabase** |Tak |
+| type |Właściwość type musi być równa: **AzureSqlDatabase** |Tak |
 | connectionString |Podaj informacje wymagane do połączenia z wystąpieniem usługi Azure SQL Database dla właściwości connectionString. Obsługiwane jest tylko uwierzytelnianie podstawowe. |Yes |
 
 > [!IMPORTANT]
