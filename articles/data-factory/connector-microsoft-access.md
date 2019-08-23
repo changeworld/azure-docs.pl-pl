@@ -120,7 +120,7 @@ Aby skopiować dane z magazynu danych zgodnego z programem Microsoft Access, w s
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **MicrosoftAccessSource** | Yes |
+| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **MicrosoftAccessSource** | Yes |
 | query | Użyj zapytania niestandardowego do odczytywania danych. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**
