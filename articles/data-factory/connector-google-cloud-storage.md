@@ -93,7 +93,7 @@ Aby skopiować dane z **Parquet, rozdzielanego tekstem lub formatu binarnego**, 
 
 | Właściwość   | Opis                                                  | Wymagane |
 | ---------- | ------------------------------------------------------------ | -------- |
-| — typ       | Właściwość `location` Type w elemencie DataSet musi być ustawiona na wartość **AmazonS3Location**. | Tak      |
+| type       | Właściwość `location` Type w elemencie DataSet musi być ustawiona na wartość **AmazonS3Location**. | Tak      |
 | bucketName | Nazwa zasobnika S3.                                          | Tak      |
 | folderPath | Ścieżka do folderu w danym przedziale. Jeśli chcesz użyć symboli wieloznacznych do filtrowania folderów, pomiń to ustawienie i określ ustawienia źródła działania. | Nie       |
 | fileName   | Nazwa pliku w podanym zasobniku + folderPath. Jeśli chcesz użyć symboli wieloznacznych do filtrowania plików, pomiń to ustawienie i określ ustawienia źródła działania. | Nie       |
