@@ -123,7 +123,7 @@ Następujący kod JSON definiuje opartych na systemie Linux usługi połączonej
 ### <a name="properties"></a>Właściwości
 | Właściwość                     | Opis                              | Wymagane |
 | ---------------------------- | ---------------------------------------- | -------- |
-| — typ                         | Ustaw właściwość typu **HDInsightOnDemand**. | Tak      |
+| type                         | Ustaw właściwość typu **HDInsightOnDemand**. | Tak      |
 | clusterSize                  | Liczba węzłów procesu roboczego i dane w klastrze. Klaster HDInsight jest tworzony z 2 węzłami głównymi, oprócz liczby węzłów procesu roboczego, które określisz dla tej właściwości. Węzły mają rozmiar maszyna wirtualna Standard_D3, która ma 4 rdzenie. Klaster z węzłami procesu roboczego 4 przyjmuje 24 rdzenie (4\*4 = 16 rdzeni dla węzłów procesu roboczego oraz 2\*4 = 8 rdzeni dla węzłów głównych). Aby uzyskać szczegółowe informacje o warstwie maszyna wirtualna Standard_D3, zobacz [opartych na systemie Linux z Tworzenie klastrów usługi Hadoop w HDInsight](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md). | Yes      |
 | timeToLive                   | Dozwolony czas bezczynności, po dla klastra HDInsight na żądanie. Określa, jak długo klastra HDInsight na żądanie pozostaje aktywne po zakończeniu wykonywania działań w przypadku żadnych aktywnych działań w klastrze.<br /><br />Na przykład, jeśli działanie uruchamiania ma 6 minut i **timeToLive** jest ustawiony na 5 minut, pozostaje klaster aktywny przez 5 minut, po upływie 6 minut operacji przetwarzania uruchomienia działania. Jeśli uruchomienie innego działania jest wykonywane w tym 6-minutowym oknie, jest on przetwarzany przez tego samego klastra.<br /><br />Tworzenie klastra usługi HDInsight na żądanie jest kosztowną operacją (może upłynąć trochę czasu). Użyj tego ustawienia, zgodnie z potrzebami, aby poprawić wydajność usługi data Factory dzięki ponownemu wykorzystaniu klastra usługi HDInsight na żądanie.<br /><br />Jeśli ustawisz **timeToLive** wartość **0**, klaster jest usuwany, zaraz po zakończeniu uruchamiania działania. Jednak jeśli ustawisz o wysokiej wartości, klastra mogą pozostać bezczynny, co niepotrzebnie wysokich kosztów. Jest to ważne, aby ustawić odpowiednią wartość zgodnie z potrzebami.<br /><br />Jeśli **timeToLive** odpowiednio wartość, wiele potoków można udostępniać wystąpienia klastra HDInsight na żądanie. | Yes      |
 | version                      | Wersja klastra HDInsight. Dla dozwolonych wersji HDInsight, zobacz [HDInsight obsługiwane wersje](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions). Jeśli ta wartość nie jest określona, [najnowszej wersji domyślnej usługi HDI](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning) jest używany. | Nie       |
@@ -307,7 +307,7 @@ Innym rozwiązaniem jest zapewnienie **batchUri** punktu końcowego. Na przykła
 ### <a name="properties"></a>Właściwości
 | Właściwość          | Opis                              | Wymagane |
 | ----------------- | ---------------------------------------- | -------- |
-| — typ              | Ustaw właściwość typu **AzureBatch**. | Yes      |
+| type              | Ustaw właściwość typu **AzureBatch**. | Yes      |
 | accountName       | Nazwa konta usługi Batch.         | Tak      |
 | accessKey         | Klucz dostępu dla konta usługi Batch.  | Yes      |
 | poolName          | Nazwa puli maszyn wirtualnych.    | Tak      |
@@ -334,7 +334,7 @@ Można utworzyć usługi Machine Learning połączone do zarejestrowania punktu 
 ### <a name="properties"></a>Właściwości
 | Właściwość   | Opis                              | Wymagane |
 | ---------- | ---------------------------------------- | -------- |
-| Typ       | Ustaw właściwość typu **usługi Azure ml**. | Tak      |
+| Type       | Ustaw właściwość typu **AzureML**. | Tak      |
 | mlEndpoint | Adres URL wsadowego oceniania.                   | Tak      |
 | ApiKey     | Interfejs API opublikowanego modelu obszaru roboczego firmy.     | Yes      |
 
@@ -345,7 +345,7 @@ W poniższej tabeli opisano ogólne właściwości, które są używane w defini
 
 | Właściwość                 | Opis                              | Wymagane                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
-| — typ                 | Ustaw właściwość typu **AzureDataLakeAnalytics**. | Tak                                      |
+| type                 | Ustaw właściwość typu **AzureDataLakeAnalytics**. | Tak                                      |
 | accountName          | Nazwa konta usługi Data Lake Analytics.  | Yes                                      |
 | dataLakeAnalyticsUri | Identyfikator URI Data Lake Analytics.           | Nie                                       |
 | subscriptionId       | Identyfikator subskrypcji platformy Azure.                    | Nie<br /><br />(Jeśli nie zostanie określony, subskrypcję fabryki danych jest używany). |
