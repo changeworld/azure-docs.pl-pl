@@ -59,7 +59,7 @@ Dla połączonej usługi Salesforce są obsługiwane następujące właściwośc
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ |Właściwość Type musi być ustawiona na wartość **SalesforceServiceCloud**. |Yes |
+| type |Właściwość Type musi być ustawiona na wartość **SalesforceServiceCloud**. |Yes |
 | environmentUrl | Określ adres URL wystąpienia chmury usługi Salesforce. <br> -Wartość domyślna `"https://login.salesforce.com"`to. <br> -Aby skopiować dane z piaskownicy, `"https://test.salesforce.com"`Określ. <br> -Aby skopiować dane z domeny niestandardowej, określ, na przykład `"https://[domain].my.salesforce.com"`,. |Nie |
 | username |Określ nazwę użytkownika dla konta użytkownika. |Yes |
 | password |Określ hasło dla konta użytkownika.<br/><br/>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
@@ -179,7 +179,7 @@ Aby skopiować dane z chmury usługi Salesforce, w sekcji **Źródło** działan
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | Właściwość Type źródła działania Copy musi być ustawiona na wartość **SalesforceServiceCloudSource**. | Tak |
+| type | Właściwość Type źródła działania Copy musi być ustawiona na wartość **SalesforceServiceCloudSource**. | Tak |
 | query |Użyj zapytania niestandardowego do odczytywania danych. Można użyć zapytania [SOQL (Object Query Language)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) lub zapytania SQL-92. Zobacz więcej porad w sekcji [porady dotyczące zapytań](#query-tips) . Jeśli nie określono zapytania, zostaną pobrane wszystkie dane obiektu chmury usługi Salesforce określonego w "objectApiName" w zestawie danych. | Nie (Jeśli określono wartość "objectApiName" w zestawie danych) |
 | readBehavior | Wskazuje, czy mają być zbadane istniejące rekordy, czy też mają być poszukiwane wszystkie rekordy, w tym usunięte. Jeśli nie zostanie określony, domyślnym zachowaniem jest pierwsze. <br>Dozwolone wartości: **zapytanie** (wartość domyślna), **queryAll**.  | Nie |
 
@@ -226,7 +226,7 @@ Aby skopiować dane do chmury usługi Salesforce, w sekcji **ujścia** działani
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | Właściwość Type ujścia działania Copy musi być ustawiona na wartość **SalesforceServiceCloudSink**. | Tak |
+| type | Właściwość Type ujścia działania Copy musi być ustawiona na wartość **SalesforceServiceCloudSink**. | Tak |
 | writeBehavior | Zachowanie zapisu dla operacji.<br/>Dozwolone wartości to **INSERT** i **upsert**. | Nie (wartość domyślna to Insert) |
 | externalIdFieldName | Nazwa pola identyfikatora zewnętrznego dla operacji upsert. Określone pole musi być zdefiniowane jako "pole identyfikatora zewnętrznego" w obiekcie chmury usługi Salesforce. Nie może mieć wartości NULL w odpowiednich danych wejściowych. | Tak dla "upsert" |
 | writeBatchSize | Liczba wierszy danych zapisywana w chmurze usługi Salesforce w każdej partii. | Nie (domyślnie 5 000) |
