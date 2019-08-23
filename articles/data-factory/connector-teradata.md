@@ -143,7 +143,7 @@ Aby skopiować dane z programu Teradata, obsługiwane są następujące właści
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na `TeradataTable`wartość. | Tak |
 | database | Nazwa bazy danych programu Teradata. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
-| table | Nazwa tabeli w bazie danych programu Teradata. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
+| table | Nazwa tabeli w bazie danych programu Teradata. | Nie (Jeśli określono parametr "query" w źródle działania) |
 
 **Przykład:**
 
@@ -196,7 +196,7 @@ Aby skopiować dane z programu Teradata, w sekcji **Źródło** działania kopio
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type źródła działania Copy musi być ustawiona na `TeradataSource`wartość. | Tak |
-| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Może to być na przykład `"SELECT * FROM MyTable"`.<br>Po włączeniu obciążenia partycjonowanego należy podłączyć wszystkie odpowiednie wbudowane parametry partycji w zapytaniu. Przykłady można znaleźć w sekcji [Kopiowanie równoległe z programu Teradata](#parallel-copy-from-teradata) . | Nie (Jeśli określono tabelę w zestawie danych) |
+| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Może to być na przykład `"SELECT * FROM MyTable"`.<br>Po włączeniu obciążenia partycjonowanego należy podłączyć wszystkie odpowiednie wbudowane parametry partycji w zapytaniu. Przykłady można znaleźć w sekcji [Kopiowanie równoległe z programu Teradata](#parallel-copy-from-teradata) . | Nie (Jeśli określono table w zestawie danych) |
 | partitionOptions | Określa opcje partycjonowania danych używane do ładowania danych z programu Teradata. <br>Dozwolone wartości to: **Brak** (wartość domyślna), **hash** i **DynamicRange**.<br>Gdy opcja partycji jest włączona (to nie `None`jest), należy również [`parallelCopies`](copy-activity-performance.md#parallel-copy) skonfigurować ustawienie dla działania kopiowania. Określa to równoległy stopień, który umożliwia współbieżne ładowanie danych z bazy danych programu Teradata. Można na przykład ustawić wartość 4. | Nie |
 | partitionSettings | Określ grupę ustawień partycjonowania danych. <br>Zastosuj, gdy opcja partycji `None`nie jest. | Nie |
 | partitionColumnName | Określ nazwę kolumny źródłowej **w typie liczb całkowitych** , która będzie używana przez partycjonowanie zakresu do kopiowania równoległego. Jeśli nie zostanie określony, klucz podstawowy tabeli zostanie wykryty i użyty jako kolumna partycji. <br>Zastosuj, gdy opcja partycji to `Hash` lub `DynamicRange`. Jeśli używasz zapytania, aby pobrać dane źródłowe, hak `?AdfHashPartitionCondition` lub `?AdfRangePartitionColumnName` w klauzuli WHERE. Zobacz przykład w sekcji [Kopiowanie równoległe z programu Teradata](#parallel-copy-from-teradata) . | Nie |
