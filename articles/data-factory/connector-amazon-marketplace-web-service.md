@@ -88,7 +88,7 @@ Aby skopiować dane z usługa internetowa witryny Amazon Marketplace, należy us
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | Właściwość Type zestawu danych musi być ustawiona na wartość: **AmazonMWSObject** | Tak |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **AmazonMWSObject** | Tak |
 | tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
