@@ -251,6 +251,8 @@
           href: mitigate-se.md
         - name: Zaplanowane zdarzenia
           href: scheduled-events.md
+        - name: Monitorowanie zaplanowanych zdarzeń
+          href: scheduled-event-service.md
         - name: Monitorowanie metadanych
           href: instance-metadata-service.md
         - name: Włączanie wirtualizacji zagnieżdżonej

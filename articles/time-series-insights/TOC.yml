@@ -146,30 +146,30 @@
   items:
     - name: Rozwiązania
       items:
-        - name: Wstępnie skonfigurowane rozwiązania usługi IoT Suite
-          href: /azure/iot-suite
         - name: IoT Central
           href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: Akceleratory rozwiązań IoT
+          href: /azure/iot-accelerators
     - name: Usługi platformy
       items:
         - name: Usługa IoT Hub
           href: /azure/iot-hub
+        - name: IoT Plug and Play
+          href: /azure/iot-pnp
         - name: Usługa IoT Hub Device Provisioning
           href: /azure/iot-dps
+        - name: Zestawy SDK usługi IoT
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: Maps
           href: /azure/azure-maps
-        - name: Zestawy SDK usług
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: Time Series Insights
           href: /azure/time-series-insights
-    - name: Brzeg
+    - name: IoT Edge
       items:
-        - name: IoT Edge
+        - name: Azure IoT Edge
           href: /azure/iot-edge
-        - name: Zestawy SDK urządzenia IoT
+        - name: Zestawy SDK urządzeń IoT
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
-    - name: Usługa Azure Stream Analytics
-      href: /azure/stream-analytics/
 - name: Zasoby
   items:
     - name: Żądania danych klienta

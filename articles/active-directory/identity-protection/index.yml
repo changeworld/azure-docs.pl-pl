@@ -1,40 +1,55 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Usługa Azure AD Identity Protection
+### YamlMime:Landing
+title: Dokumentacja usługi Azure AD Identity Protection
+summary: Dowiedz się, jak używać usługi Identity Protection do identyfikowania i eliminowania zagrożeń związanych z tożsamościami w swojej organizacji
 metadata:
-  document_id: null
-  title: 'Dokumentacja usługi Azure Active Directory Identity Protection — przewodniki Szybki start, koncepcje, materiały | Microsoft Docs'
-  description: 'Dowiedz się, jak skonfigurować i przetestować usługę Azure Active Directory Identity Protection.'
+  title: Dokumentacja usługi Azure AD Identity Protection
+  description: Dowiedz się, jak używać usługi Identity Protection do identyfikowania i eliminowania zagrożeń związanych z tożsamościami w swojej organizacji
   services: active-directory
-  ms.subservice: identity-protection
-  author: MicrosoftGuyJFlo
-  manager: daveba
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: identity-protection
   ms.topic: landing-page
-  ms.date: 09/14/2018
+  author: MicrosoftGuyJFlo
   ms.author: joflore
-abstract:
-  description: 'Dowiedz się, jak działa wykrywanie potencjalnie naruszonych tożsamości i jak zaimplementować automatyczne reagowanie na nie. Usługa Azure Active Directory Identity Protection to funkcja usługi Azure AD Premium P2, oferująca poniższe możliwości:<ul><li>Wykrywanie potencjalnych luk w zabezpieczeniach wpływających na tożsamości w organizacji</li><li>Konfigurowanie zasad dostępu warunkowego w celu automatycznego reagowania na podejrzane działania związane z tożsamościami w organizacji</li><li>Badanie podejrzanych zdarzeń i podejmowanie odpowiednich działań w celu rozwiązania problemów</li></ul><br> Poniżej przedstawiono zasoby ułatwiające szybkie rozpoczęcie pracy.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ./media/index/video.png
-      width: 246
-    title: Wprowadzenie do usługi Azure AD Identity Protection
-    href: 'https://www.youtube.com/watch?v=zI3jn_G0_Ns'
-    width: 246
-sections:
-  - title: 5-minutowe przewodniki Szybki start
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak skonfigurować zasady dostępu warunkowego dotyczące ryzyka logowania dla typowych scenariuszy dostępu.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/i_security-management.png
-            text: Blokowanie dostępu po wykryciu ryzykownej sesji
-            href: quickstart-sign-in-risk-policy.md
+  ms.date: 08/20/2019
+  ms.collection: M365-identity-device-management
+  ms.openlocfilehash: 5f69dff8568c308d7a8eb9d80e247ef7cfc58acd
+  ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 08/21/2019
+  ms.locfileid: "69874112"
+landingContent:
+- title: Informacje o ochronie tożsamości
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest ochrona tożsamości?
+      url: overview-v2.md
+    - text: Przedstawiamy omówienie zabezpieczeń
+      url: security-overview.md
+- title: Badanie zdarzeń o podwyższonym ryzyku
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurowanie zasad ryzyka
+      url: howto-configure-risk-policies.md
+    - text: Badanie ryzykownych użytkowników i logowań
+      url: howto-investigate-risky-users-signins.md
+  - linkListType: reference
+    links:
+    - text: Typy zdarzeń
+      url: risk-events-reference.md
+- title: Ochrona tożsamości
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Środowisko logowania
+      url: flows.md
+  - linkListType: how-to-guide
+    links:
+    - text: Symulowanie ryzykownych zdarzeń
+      url: playbook.md
+  - linkListType: quickstart
+    links:
+    - text: Blokowanie dostępu po wykryciu ryzykownej sesji
+      url: quickstart-sign-in-risk-policy.md

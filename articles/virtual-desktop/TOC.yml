@@ -34,8 +34,10 @@
       href: create-host-pools-powershell.md
     - name: Stosowanie licencji systemu Windows do hostów sesji usługi Windows Virtual Desktop
       href: apply-windows-license.md
-    - name: Konfigurowanie udziału profilu użytkownika dla puli hostów
+    - name: Tworzenie kontenera profilu dla puli hostów za pomocą udziału plików
       href: create-host-pools-user-profile.md
+    - name: Tworzenie kontenera profilu dla puli hostów za pomocą usługi Azure NetApp Files
+      href: create-fslogix-profile-container.md
     - name: Konfigurowanie metody równoważenia obciążenia usługi Windows Virtual Desktop
       href: configure-host-pool-load-balancing.md
     - name: Przygotowywanie i dostosowywanie głównego obrazu wirtualnego dysku twardego

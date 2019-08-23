@@ -102,7 +102,9 @@
           items:
             - name: Tworzenie grupy dynamicznej
               href: groups-create-rule.md
-            - name: Reguły grupy dynamicznej
+            - name: Aktualizowanie reguły członkostwa
+              href: groups-update-rule.md
+            - name: Reguły grupy dynamicznej i ich składnia
               href: groups-dynamic-membership.md
             - name: Zmienianie typu członkostwa grupy
               href: groups-change-type.md

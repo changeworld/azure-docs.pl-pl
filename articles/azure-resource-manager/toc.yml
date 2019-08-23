@@ -97,9 +97,6 @@
         - name: Modularyzowanie szablonów
           displayName: 'linked templates, nested templates'
           href: resource-group-linked-templates.md
-        - name: Zarządzanie wpisami tajnymi
-          displayname: key vault
-          href: resource-manager-keyvault-parameter.md
         - name: Tworzenie wielu wystąpień
           href: resource-group-create-multiple.md
         - name: Używanie rozszerzeń szablonów
@@ -124,6 +121,13 @@
           href: secure-template-with-sas-token.md
         - name: Wdrażanie w wielu grupach zasobów lub subskrypcjach
           href: resource-manager-cross-resource-group-deployment.md
+    - name: Podawanie parametrów
+      items:
+        - name: Tworzenie pliku parametrów
+          href: resource-manager-parameter-files.md
+        - name: Przekazywanie poufnych wartości
+          displayname: key vault
+          href: resource-manager-keyvault-parameter.md
     - name: CI/CD
       items:
         - name: Projekt programu VS z potokami

@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: alkohli
   ms.author: alkohli
-  ms.date: 08/14/2019
-  ms.openlocfilehash: 03de9ceffe4495b1c3a39dad6617cc72d022fbbd
-  ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+  ms.date: 08/16/2019
+  ms.openlocfilehash: 2c42ee93804eb1e0e24b0b67925a092cc8517ceb
+  ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 08/16/2019
-  ms.locfileid: "69557837"
+  ms.lasthandoff: 08/20/2019
+  ms.locfileid: "69650369"
 landingContent:
 - title: Informacje o rodzinie urządzeń Data Box
   linkLists:
@@ -53,75 +53,43 @@ landingContent:
     links:
     - text: Usługa Data Box
       url: data-box-system-requirements.md
-    - text: Dla magazynu obiektów blob usługi Data Box
-      url: data-box-system-requirements-rest.md
     - text: Usługa Data Box Disk
       url: data-box-disk-system-requirements.md
     - text: Usługa Data Box Heavy
       url: data-box-heavy-system-requirements.md
-- title: Wdrażanie usługi Data Box
+- title: Kolejność, konfiguracja, kopiowanie, powracanie
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Zamówienie
+    - text: Data Box
       url: data-box-deploy-ordered.md
-    - text: Podłączenie
-      url: data-box-deploy-set-up.md
-    - text: Nawiązywanie połączenia, kopiowanie danych za pośrednictwem protokołu SMB
-      url: data-box-deploy-copy-data.md
-    - text: Zwracanie, przekazywanie, weryfikowanie danych platformy Azure
-      url: data-box-deploy-picked-up.md
-- title: Wdrażanie usługi Data Box Disk
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Zamówienie
+    - text: Data Box Disk
       url: data-box-disk-deploy-ordered.md
-    - text: Odblokowywanie i nawiązywanie połączenia
-      url: data-box-disk-deploy-set-up.md
-    - text: Kopiowanie, weryfikowanie danych
-      url: data-box-disk-deploy-copy-data.md
-    - text: Zwracanie, przekazywanie, weryfikowanie danych platformy Azure
-      url: data-box-disk-deploy-picked-up.md
-- title: Wdrażanie usługi Data Box Heavy
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Zamówienie
+    - text: Data Box Heavy
       url: data-box-heavy-deploy-ordered.md
-    - text: Podłączenie
-      url: data-box-heavy-deploy-set-up.md
-    - text: Nawiązywanie połączenia, kopiowanie danych za pośrednictwem protokołu SMB
-      url: data-box-heavy-deploy-copy-data.md
-    - text: Zwracanie, przekazywanie, weryfikowanie danych platformy Azure
-      url: data-box-heavy-deploy-picked-up.md
 - title: Zarządzanie urządzeniem
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Usługa Data Box, usługa Data Box Heavy na platformie Azure
+    - text: Urządzenie Data Box na platformie Azure
       url: data-box-portal-admin.md
-    - text: Usługa Data Box, usługa Data Box Heavy za pośrednictwem lokalnego interfejsu użytkownika
-      url: data-box-local-web-ui-admin.md
     - text: Usługa Data Box Disk na platformie Azure
       url: data-box-portal-ui-admin.md
-- title: Często zadawane pytania
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Często zadawane pytania — usługa Data Box
-      url: data-box-faq.md
-    - text: Często zadawane pytania — usługa Data Box Disk
-      url: data-box-disk-faq.md
+    - text: Urządzenie Data Box Heavy na platformie Azure
+      url: data-box-portal-admin.md
 - title: Rozwiązywanie problemów
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Usługa Data Box, usługa Data Box Heavy
+    - text: Data Box
       url: data-box-troubleshoot.md
-    - text: Magazyn obiektów blob usługi Data Box
-      url: data-box-troubleshoot-rest.md
     - text: Data Box Disk
       url: data-box-disk-troubleshoot.md
+    - text: Data Box Heavy
+      url: data-box-troubleshoot.md
+    - text: Za pośrednictwem urządzenia Data Box — często zadawane pytania
+      url: data-box-faq.md
+    - text: Za pośrednictwem urządzenia Data Box Disk — często zadawane pytania
+      url: data-box-disk-faq.md
     - text: Otwieranie biletu pomocy technicznej
       url: data-box-disk-contact-microsoft-support.md

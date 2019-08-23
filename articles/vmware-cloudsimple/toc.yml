@@ -105,7 +105,7 @@
             - name: Wyświetlanie listy użytkowników
               href: users.md
             - name: Konfigurowanie połączenia sieci wirtualnej z chmurą prywatną
-              href: 'https://docs.azure.cloudsimple.com/virtual-network-connection/'
+              href: virtual-network-connection.md
             - name: Edytowanie profilu użytkownika
               href: 'https://docs.azure.cloudsimple.com/editprofile/'
         - name: Konfigurowanie maszyn wirtualnych VMware dla chmury prywatnej
@@ -124,11 +124,11 @@
               href: escalate-privileges.md
             - name: Konfigurowanie obciążenia protokołu DHCP i systemu DNS
               href: dns-dhcp-setup.md
-            - name: Sieć VPN NSX warstwy 2 na potrzeby migracji
-              href: 'https://docs.azure.cloudsimple.com/migrate-workloads/#migrating-vms-using-nsx-layer-2-vpn'
+            - name: Migrowanie obciążeń przy użyciu rozciągniętych sieci warstwy 2
+              href: migration-layer-2-vpn.md
         - name: Sieć chmury prywatnej
           items:
-            - name: Połączenie sieci VPN między środowiskiem lokalnym i chmurą prywatną
+            - name: Połączenie sieci VPN między środowiskiem lokalnym a chmurą prywatną
               href: set-up-vpn.md
             - name: Połączenie z siecią lokalną za pomocą usługi ExpressRoute
               href: on-premises-connection.md
@@ -145,24 +145,28 @@
             - name: Konfigurowanie serwera vCenter chmury prywatnej jako punktu końcowego automatyzacji vRealize
               href: configure-server-vrealize-automation-endpoint.md
             - name: Migrowanie maszyn wirtualnych obciążeń do chmury prywatnej
-              href: 'https://docs.azure.cloudsimple.com/migrate-workloads/'
+              href: migrate-workloads.md
             - name: Zapewnianie wysokiej dostępności aplikacji w oprogramowaniu VMware na platformie Azure
               href: 'https://docs.azure.cloudsimple.com/ensuring-high-availability/'
+            - name: Wybieranie rozwiązania do równoważenia obciążenia
+              href: load-balancers.md
         - name: Ekosystem oprogramowania VMware
           items:
             - name: Tworzenie kopii zapasowych maszyn wirtualnych obciążeń
               href: backup-workloads-veeam.md
+            - name: Konfigurowanie chmury prywatnej jako lokalizacji odzyskiwania po awarii za pomocą rozwiązania Zerto
+              href: disaster-recovery-zerto.md
             - name: Przewodnik po rozwiązaniu VMware Horizon
               href: 'https://docs.azure.cloudsimple.com/horizon-guide/'
             - name: Konfigurowanie szyfrowania sieci vSAN dla chmury prywatnej
               href: vsan-encryption.md
-            - name: Wdrażanie rozwiązania Oracle RAC w chmurze prywatnej CloudSimple
-              href: 'https://docs.azure.cloudsimple.com/oracle-rac/'
+            - name: Optymalizacja chmury prywatnej dla programu Oracle RAC
+              href: oracle-real-application-clusters.md
         - name: Podstawowa integracja z platformą Azure
           items:
             - name: Źródło tożsamości usługi Azure AD w centrum vCenter chmury prywatnej
               href: azure-ad.md
             - name: Połączenie z siecią lokalną za pomocą usługi ExpressRoute
-              href: 'https://docs.azure.cloudsimple.com/on-premises-connection/'
+              href: on-premises-connection.md
             - name: Połączenie z siecią wirtualną platformy Azure za pomocą usługi ExpressRoute
-              href: 'https://docs.azure.cloudsimple.com/azure-expressroute-connection/'
+              href: azure-expressroute-connection.md

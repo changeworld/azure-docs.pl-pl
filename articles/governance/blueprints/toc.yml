@@ -32,7 +32,7 @@
         - name: Omówienie
           displayName: 'standards, irs, 1075'
           href: ./samples/irs-1075/index.md
-        - name: Mapowanie mechanizmów kontroli
+        - name: Mapowanie kontrolek
           displayName: 'standards, irs, 1075'
           href: ./samples/irs-1075/control-mapping.md
     - name: ISO 27001
@@ -40,7 +40,7 @@
         - name: Omówienie
           displayName: 'standards, iso, 27001'
           href: ./samples/iso27001/index.md
-        - name: Mapowanie mechanizmów kontroli
+        - name: Mapowanie kontrolek
           displayName: 'standards, iso, 27001'
           href: ./samples/iso27001/control-mapping.md
         - name: Procedura wdrażania
@@ -51,7 +51,7 @@
         - name: Omówienie
           displayName: 'standards, iso, 27001, shared services'
           href: ./samples/iso27001-shared/index.md
-        - name: Mapowanie mechanizmów kontroli
+        - name: Mapowanie kontrolek
           displayName: 'standards, iso, 27001'
           href: ./samples/iso27001-shared/control-mapping.md
         - name: Procedura wdrażania
@@ -62,7 +62,7 @@
         - name: Omówienie
           displayName: 'standards, iso, 27001, shared services'
           href: ./samples/iso27001-ase-sql-workload/index.md
-        - name: Mapowanie mechanizmów kontroli
+        - name: Mapowanie kontrolek
           displayName: 'standards, iso, 27001'
           href: ./samples/iso27001-ase-sql-workload/control-mapping.md
         - name: Procedura wdrażania
@@ -73,7 +73,7 @@
         - name: Omówienie
           displayName: 'standards, nist, 800-53, rev 4'
           href: ./samples/nist-sp-800-53-rev4/index.md
-        - name: Mapowanie mechanizmów kontroli
+        - name: Mapowanie kontrolek
           displayName: 'standards, nist, 800-53, rev 4'
           href: ./samples/nist-sp-800-53-rev4/control-mapping.md
         - name: Procedura wdrażania
@@ -84,7 +84,7 @@
         - name: Omówienie
           displayName: 'standards, Payment Card Industry Data Security Standard'
           href: ./samples/pci-dss-3.2.1/index.md
-        - name: Mapowanie mechanizmów kontroli
+        - name: Mapowanie kontrolek
           displayName: 'standards, Payment Card Industry Data Security Standard'
           href: ./samples/pci-dss-3.2.1/control-mapping.md
         - name: Procedura wdrażania
@@ -95,12 +95,28 @@
         - name: Omówienie
           displayName: 'standards, uk official, uk nhs'
           href: ./samples/ukofficial/index.md
-        - name: Mapowanie mechanizmów kontroli
+        - name: Mapowanie kontrolek
           displayName: 'standards, uk official, uk nhs'
           href: ./samples/ukofficial/control-mapping.md
         - name: Procedura wdrażania
           displayName: 'standards, uk official, uk nhs'
           href: ./samples/ukofficial/deploy.md
+    - name: CAF Foundation
+      items:
+        - name: Omówienie
+          displayName: 'caf, foundation'
+          href: ./samples/caf-foundation/index.md
+        - name: Procedura wdrażania
+          displayName: 'caf, foundation, deploy'
+          href: ./samples/caf-foundation/deploy.md
+    - name: Strefa docelowa migracji w przewodniku CAF
+      items:
+        - name: Omówienie
+          displayName: 'caf, migrate, landing zone'
+          href: ./samples/caf-migrate-landing-zone/index.md
+        - name: Procedura wdrażania
+          displayName: 'caf, migrate, landing zone, deploy'
+          href: ./samples/caf-migrate-landing-zone/deploy.md
 - name: Pojęcia
   items:
     - name: Cykl życia strategii

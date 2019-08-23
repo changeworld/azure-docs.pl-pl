@@ -1,35 +1,59 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentacja tożsamości urządzeń usługi Azure AD
+summary: Dowiedz się, jak skonfigurować tożsamości urządzeń i zarządzać nimi w usłudze Azure AD.
 metadata:
-  document_id: null
-  title: 'Dokumentacja zarządzania tożsamościami urządzeń usługi Azure Active Directory — samouczki, pojęcia, materiały informacyjne | Microsoft Docs'
-  description: 'Dowiedz się, jak skonfigurować tożsamości urządzeń i zarządzać nimi w usłudze Azure AD.'
+  title: Dokumentacja tożsamości urządzeń usługi Azure AD
+  description: Dowiedz się, jak skonfigurować tożsamości urządzeń i zarządzać nimi w usłudze Azure AD.
   services: active-directory
-  ms.subservice: devices
-  author: MicrosoftGuyJFlo
-  manager: daveba
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: devices
   ms.topic: landing-page
-  ms.date: 08/14/2018
+  author: MicrosoftGuyJFlo
   ms.author: joflore
-abstract:
-  description: 'Za pomocą urządzeń w usłudze Azure AD użytkownicy uzyskują dostęp do zasobów firmowych. Aby chronić zasoby firmowe, administrator IT chce zarządzać tymi tożsamościami urządzeń w usłudze Azure AD. W ten sposób może zapewnić, że użytkownicy uzyskują dostęp do zasobów z urządzeń, które spełniają standardy dotyczące zabezpieczeń i zgodności.<br>Zarządzanie tożsamościami urządzeń stanowi również podstawę w przypadku dostępu warunkowego opartego na urządzeniach. Korzystając z dostępu warunkowego opartego na urządzeniach, można zagwarantować, że dostęp do zasobów w środowisku jest możliwy tylko przy użyciu urządzeń zarządzanych.'
-sections:
-  - title: Samouczki krok po kroku
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak zintegrować lokalne urządzenia dołączone do usługi AD z usługą Azure AD.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/i_security-management.png
-            text: Domeny zarządzane
-            href: hybrid-azuread-join-managed-domains.md
-          - image:
-              src: ./media/index/i_security-management.png
-            text: Domeny federacyjne
-            href: hybrid-azuread-join-federated-domains.md
+  ms.date: 08/20/2019
+  ms.collection: M365-identity-device-management
+  ms.openlocfilehash: e26be2206ba63fa4721ced7ed1a2f35ddc63a5fd
+  ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 08/20/2019
+  ms.locfileid: "69648936"
+landingContent:
+- title: Informacje o tożsamości urządzenia
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest tożsamość urządzenia?
+      url: overview.md
+    - text: Co to jest roaming stanu dla przedsiębiorstw?
+      url: enterprise-state-roaming-overview.md
+  - linkListType: concept
+    links:
+    - text: Urządzenia zarejestrowane w usłudze Azure AD
+      url: concept-azure-ad-register.md
+    - text: Urządzenia dołączone do usługi Azure AD
+      url: concept-azure-ad-join.md
+    - text: Urządzenia dołączone hybrydowo do usługi Azure AD
+      url: concept-azure-ad-join-hybrid.md
+    - text: Logowanie jednokrotne do zasobów lokalnych
+      url: azuread-join-sso.md
+    - text: Podstawowe tokeny odświeżania
+      url: concept-primary-refresh-token.md
+- title: Konfigurowanie urządzeń przyłączonych do usługi Azure AD oraz zarządzanie nimi
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Planowanie implementacji dołączania do usługi Azure AD
+      url: azureadjoin-plan.md
+    - text: Zarządzanie lokalną grupą administratorów na urządzeniach przyłączonych do usługi Azure AD
+      url: assign-local-admin.md
+    - text: Zarządzanie nieaktywnymi urządzeniami w usłudze Azure AD i zarządzanie nimi
+      url: manage-stale-devices.md
+- title: Konfigurowanie urządzeń przyłączonych do hybrydowej usługi Azure AD oraz zarządzanie nimi
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Planowanie implementacji dołączania do hybrydowej usługi Azure AD
+      url: hybrid-azuread-join-plan.md
+    - text: Rozwiązywanie problemów z urządzeniami przyłączonymi do hybrydowej usługi Azure AD
+      url: troubleshoot-hybrid-join-windows-current.md

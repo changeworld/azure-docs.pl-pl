@@ -1,0 +1,39 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentacja usługi IoT Plug and Play (wersja zapoznawcza)
+metadata:
+  title: 'Dokumentacja usługi IoT Plug and Play (wersja zapoznawcza) — samouczki, dokumentacja interfejsu API | Microsoft Docs'
+  description: 'Dowiedz się, jak używać usługi IoT Plug and Play za pomocą samouczków, dokumentacji interfejsu API, wideo i innej dokumentacji.'
+  author: dominicbetts
+  manager: philmea
+  ms.service: iot-pnp
+  services: iot-pnp
+  ms.topic: landing-page
+  ms.date: 07/23/2019
+  ms.author: dobett
+abstract:
+  description: 'Dowiedz się, jak używać usługi IoT Plug and Play (wersja zapoznawcza) do zdefiniowania modelu urządzenia, który pozwala, aby rozwiązanie w chmurze automatycznie rozumiało Twoje urządzenie i wchodziło z nim w interakcje — wszystko to bez konieczności pisania kodu dla urządzenia. Samouczki, dokumentacja interfejsu API, wideo i inna dokumentacja ułatwiają łączenie urządzeń z rozwiązaniami w chmurze, takimi jak Azure IoT Central lub aplikacje partnerskie.'
+  aside:
+    image:
+      alt: null
+      height: 110
+      src: media/index/video-thumb-pnp-introduction.png
+      width: 250
+    title: 'Wprowadzenie do usługi IoT Plug and Play. (11:54)'
+    href: 'https://channel9.msdn.com/Shows/Internet-of-Things-Show/Introduction-to-IoT-Plug-and-Play/player'
+    width: 250
+sections:
+  - title: 5-minutowe przewodniki Szybki start
+    items:
+      - type: paragraph
+        text: 'Dowiedz się, jak <a href="quickstart-create-pnp-device">używać modelu możliwości urządzenia do tworzenia urządzenia</a>.'
+      - type: paragraph
+        text: 'Dowiedz się, jak <a href="quickstart-connect-pnp-device-solution">połączyć urządzenie z Twoim rozwiązaniem</a>.'
+  - title: Samouczki krok po kroku
+    items:
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-pnp-visual-studio-code">Tworzenie urządzenia przy użyciu programu Visual Studio Code</a>
+          - html: <a href="tutorial-build-device-certification">Tworzenie urządzenia gotowego do certyfikacji</a>
+          - html: <a href="tutorial-certification-test">Certyfikowanie urządzenia</a>

@@ -44,6 +44,8 @@
               href: ./appsource-offer-publishing-guide.md
             - name: Włączanie możliwości publikowania ofert w witrynach AppSource i Marketplace z użyciem usługi Azure Active Directory
               href: ./enable-appsource-marketplace-using-azure-ad.md
+            - name: Zintegrowane rozwiązania
+              href: ./integrated-solutions-for-publishers.md
         - name: Najlepsze rozwiązania marketingowe
           href: ./gtm-marketing-best-practices.md
           items:

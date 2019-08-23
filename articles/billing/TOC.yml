@@ -179,12 +179,14 @@
   items:
     - name: Nie odnaleziono żadnych subskrypcji
       href: billing-no-subscriptions-found.md
+    - name: Problemy z płatnościami
+      href: billing-troubleshoot-azure-payment-issues.md
     - name: Odrzucona karta
-      href: 'https://support.microsoft.com/en-us/help/4042960'
+      href: billing-troubleshoot-declined-card.md
     - name: Problemy z tworzeniem konta
-      href: 'https://support.microsoft.com/en-us/help/4042959'
-    - name: Problemy z logowaniem
-      href: 'https://support.microsoft.com/en-us/help/4042961'
+      href: billing-troubleshoot-azure-sign-up.md
+    - name: Problemy z logowaniem do subskrypcji
+      href: billing-troubleshoot-sign-in-issue.md
     - name: Wyłączony widok kosztów przedsiębiorstwa
       href: billing-enterprise-mgmt-grp-troubleshoot-cost-view.md
     - name: Kontakt z pomocą techniczną

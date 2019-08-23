@@ -5,14 +5,15 @@ author: DCtheGeek
 manager: carmonm
 ms.service: blueprints
 ms.topic: sample
-ms.date: 06/26/2019
+ms.date: 08/20/2019
 ms.author: dacoulte
-ms.openlocfilehash: e1bafdaa2883afb44aa3c609c0ccba0ce9d0a4ab
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 884777bce761f6b16581a28038bf9a28ce6a3801
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934160"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650522"
 ---
 # <a name="azure-blueprints-samples"></a>Przykłady usługi Azure Blueprints
 
@@ -22,14 +23,26 @@ Poniższa tabela zawiera linki do przykładów dla usługi Azure Blueprints. Ka�
 
 |  |  |
 |---------|---------|
-|[IRS 1075](./irs-1075/index.md)| Zapewnia zabezpieczenia zgodności z wytycznymi IRS 1075.|
+| [IRS 1075](./irs-1075/index.md) | Zapewnia zabezpieczenia zgodności z wytycznymi IRS 1075.|
 | [ISO 27001](./iso27001/index.md) | Zapewnia zabezpieczenia zgodności z wytycznymi ISO 27001. |
 | [Usługi udostępnione ISO 27001](./iso27001-shared/index.md) | Zawiera zestaw wzorców zgodnej infrastruktury i ochronę w postaci zasad, które ułatwiają zaświadczanie za pomocą standardu ISO 27001. |
 | [Obciążenie środowiska App Service Environment/bazy danych SQL ISO 27001](./iso27001-ase-sql-workload/index.md) | Zapewnia dodatkową infrastrukturę dla przykładu strategii [usług udostępnionych ISO 27001](./iso27001-shared/index.md). |
 | [NIST SP 800-53 R4](./nist-sp-800-53-rev4/index.md) | Zapewnia zabezpieczenia zgodności z wytycznymi NIST SP 800-53 R4. |
 | [PCI-DSS 3.2.1](./pci-dss-3.2.1/index.md) | Udostępnia zestaw zasad, które ułatwiają zachowanie zgodności ze standardem PCI-DSS 3.2.1. |
 | [Ład UK OFFICIAL i UK NHS](./ukofficial/index.md) | Zawiera zestaw wzorców zgodnej infrastruktury i ochronę w postaci zasad, które ułatwiają zaświadczanie na potrzeby standardów UK OFFICIAL i UK NHS. |
+| [CAF Foundation](./caf-foundation/index.md) | Zawiera zestaw kontroli ułatwiających zarządzanie zasobami w chmurze zgodnie z przewodnikiem [Microsoft Cloud Adoption Framework dla platformy Azure (CAF)](/azure/architecture/cloud-adoption/governance/journeys/index.md). |
+| [Strefa docelowa migracji w przewodniku CAF](./caf-migrate-landing-zone/index.md) | Zawiera zestaw kontroli ułatwiających konfigurowanie migracji Twojego pierwszego obciążenia i zarządzanie zasobami w chmurze zgodnie z przewodnikiem [Microsoft Cloud Adoption Framework (CAF) dla platformy Azure](/azure/architecture/cloud-adoption/migrate/index.md). |
 
+## <a name="samples-strategy"></a>Strategia dotycząca przykładów
+
+![Strategia dotycząca przykładowych strategii](../media/blueprint-samples-strategy.png)
+
+Strategie CAF Foundation i strefy docelowej migracji w przewodniku CAF zakładają, że klient przygotowuje istniejącą czystą pojedynczą subskrypcję do migracji lokalnych zasobów/obciążeń na platformę Azure.
+(Regiony A i B na rysunku powyżej).  
+
+Istnieje możliwość przejścia po przykładowych strategiach i wyszukania wzorców dostosowań, które stosuje klient. Istnieje również możliwość proaktywnego rozwiązywania problemów ze strategiami, które są charakterystyczne dla branży, takiej jak usługi finansowe i handel elektroniczny (górny koniec regionu B). Podobnie wyobrażamy sobie tworzenie strategii dla złożonych zagadnień architektonicznych, takich jak wiele subskrypcji, wysoka dostępność, zasoby obejmujące wiele regionów i klienci implementujący kontrole dla istniejących subskrypcji i zasobów (regiony C i D).
+
+Istnieją przykładowe strategie stanowiące rozwiązanie dla scenariusza klienta, w którym wymagania dotyczące zgodności i złożoność architektury są wysokie (region E na rysunku powyżej). Region F powyżej jest regionem, który zostanie obsłużony przez klientów i partnerów wykorzystujących przykładowe strategie i dostosowujących je do swoich niepowtarzalnych potrzeb.
 
 ## <a name="next-steps"></a>Następne kroki
 
