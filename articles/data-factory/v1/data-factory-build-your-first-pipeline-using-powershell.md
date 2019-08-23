@@ -217,7 +217,7 @@ W tym kroku opisano tworzenie zestawów danych do reprezentowania danych wejści
 
    | Właściwość | Opis |
    |:--- |:--- |
-   | — typ |Właściwość type jest ustawiona na wartość AzureBlob, ponieważ dane znajdują się w magazynie obiektów blob Azure. |
+   | type |Właściwość type jest ustawiona na wartość AzureBlob, ponieważ dane znajdują się w magazynie obiektów blob Azure. |
    | linkedServiceName |Odnosi się do elementu StorageLinkedService utworzonego wcześniej. |
    | fileName |Ta właściwość jest opcjonalna. Jeśli tę właściwość pominiesz, zostaną wybrane wszystkie pliki z folderu folderPath. W tym przypadku zostanie przetworzony tylko plik input.log. |
    | type |Pliki dziennika są w formacie tekstowym, więc używana jest wartość TextFormat. |

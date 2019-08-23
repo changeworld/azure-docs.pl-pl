@@ -60,7 +60,7 @@ Jeśli jesteś nowym użytkownikiem usługi Azure Data Factory, zapoznaj się z 
 | ------------------- | ------------------------------------------------------------ | -------- |
 | name                | Nazwa działania                                         | Yes      |
 | description         | Tekst opisujący przeznaczenie działania                | Nie       |
-| — typ                | Dla działania programu Hive typ działania jest HDinsightHive        | Yes      |
+| type                | Dla działania programu Hive typ działania jest HDinsightHive        | Yes      |
 | linkedServiceName   | Odwołanie do klastra HDInsight zarejestrowany jako połączonej usługi w usłudze Data Factory. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz [usługi połączone usługi Compute](compute-linked-services.md) artykułu. | Tak      |
 | scriptLinkedService | Odwołanie do połączoną usługę Azure Storage używany do przechowywania skryptu programu hive służącego do wykonania. Jeśli nie określisz ta połączona usługa połączona usługa Azure Storage zdefiniowane w połączonej usługi HDInsight jest używany. | Nie       |
 | scriptPath          | Podaj ścieżkę do pliku skryptu w usłudze Azure Storage, określane za pomocą elementu scriptLinkedService. Nazwa pliku jest rozróżniana wielkość liter. | Tak      |

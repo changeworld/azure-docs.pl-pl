@@ -69,7 +69,7 @@ Poniższa tabela zawiera opisy elementów JSON, które są specyficzne dla usłu
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| — typ |Właściwość type musi być równa: **Salesforce**. |Yes |
+| type |Właściwość type musi być równa: **Salesforce**. |Yes |
 | environmentUrl | Określ wystąpienie adres URL usługi Salesforce. <br><br> -Wartością domyślną jest "https:\//login.salesforce.com". <br> -Aby skopiować dane z piaskownicy, należy określić "https://test.salesforce.com". <br> — Aby skopiować dane z domeny niestandardowej, określić, na przykład "https://[domain].my.salesforce.com". |Nie |
 | username |Określ nazwę użytkownika dla konta użytkownika. |Tak |
 | password |Określ hasło dla konta użytkownika. |Yes |

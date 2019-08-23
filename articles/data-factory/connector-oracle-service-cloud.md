@@ -44,7 +44,7 @@ Następujące właściwości są obsługiwane dla usługi w chmurze usługi Orac
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | Właściwość Type musi mieć ustawioną wartość: **OracleServiceCloud** | Tak |
+| type | Właściwość Type musi mieć ustawioną wartość: **OracleServiceCloud** | Tak |
 | host | Adres URL wystąpienia usługi w chmurze firmy Oracle.  | Yes |
 | username | Nazwa użytkownika, który umożliwia dostęp do serwera usługi w chmurze firmy Oracle.  | Yes |
 | password | Hasło odpowiadający nazwie użytkownika, podane w kluczu nazwy użytkownika. Możesz oznaczyć to pole jako element SecureString, aby bezpiecznie przechowywać go w podajniku APD, lub przechowywać hasło w Azure Key Vault i wypróbować działanie Copy APD z tego miejsca podczas kopiowania danych — Dowiedz się więcej z [poświadczeń sklepu w Key Vault](store-credentials-in-key-vault.md). | Yes |

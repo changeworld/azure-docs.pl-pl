@@ -136,7 +136,7 @@ Poniższa tabela zawiera opis właściwości w definicji JSON działania:
 | --- | --- | --- |
 | name | Nazwa działania. Określ nazwę, która reprezentuje akcję wykonywaną przez działanie. <br/><ul><li>Maksymalna liczba znaków: 260</li><li>Musi zaczynać się literą, cyfrą lub znakiem podkreślenia (\_)</li><li>Nie może zawierać następujących znaków: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Yes |
 | description | Tekst opisujący przeznaczenie działania |Yes |
-| — typ | Typ działania. Zobacz [działania przenoszenia danych](#data-movement-activities) i [działania przekształcania danych](#data-transformation-activities) sekcje dla różnych typów działań. |Yes |
+| type | Typ działania. Zobacz [działania przenoszenia danych](#data-movement-activities) i [działania przekształcania danych](#data-transformation-activities) sekcje dla różnych typów działań. |Yes |
 | inputs |Tabele wejściowe używane przez działanie<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Yes |
 | outputs |Dane wyjściowe tabele używane przez działanie.<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": "outputtable1" } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": "outputtable1" }, { "name": "outputtable2" }  ],` |Tak |
 | linkedServiceName |Nazwa połączonej usługi używana na potrzeby działania. <br/><br/>Działanie może wymagać określenia połączonej usługi, która stanowi łącze do wymaganego środowiska obliczeniowego. |Tak dla działań HDInsight i Azure Machine Learning działanie wsadowego oceniania przez <br/><br/>Nie dla wszystkich innych |

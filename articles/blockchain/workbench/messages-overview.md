@@ -579,7 +579,7 @@ Zawiera informacje, po wywołaniu funkcji kontraktu, takich jak nazwy funkcji, p
 
 | Name (Nazwa) | Opis |
 |------|-------------|
-| — typ | Typ obiektu wywołującego, takich jak kontraktu lub przez użytkownika |
+| type | Typ obiektu wywołującego, takich jak kontraktu lub przez użytkownika |
 | id | Unikatowy identyfikator obiektu wywołującego w aplikacji Azure Blockchain Workbench |
 | ledgerIdentifier | Unikatowy identyfikator wywołującego w księdze |
 
@@ -862,15 +862,15 @@ Zawiera informacje, gdy użytkownik ma przypisaną rolę w aplikacji Workbench, 
 |------|-------------|
 | id | Unikatowy identyfikator użytkownika w aplikacji Azure Blockchain Workbench |
 | type | Typ użytkownika przypisującego |
-| ChainIdentifier | Unikatowy identyfikator użytkownika na rejestr |
+| chainIdentifier | Unikatowy identyfikator użytkownika na rejestr |
 
 #### <a name="roleassignment-assignee"></a>RoleAssignment osoby przypisanej
 
 | Name (Nazwa) | Opis |
 |------|-------------|
 | id | Unikatowy identyfikator użytkownika w aplikacji Azure Blockchain Workbench |
-| — typ | Typ osoby przypisanej |
-| ChainIdentifier | Unikatowy identyfikator użytkownika na rejestr |
+| type | Typ osoby przypisanej |
+| chainIdentifier | Unikatowy identyfikator użytkownika na rejestr |
 
 Przykład *EventMessage RoleAssignment* z aplikacji Blockchain Workbench:
 

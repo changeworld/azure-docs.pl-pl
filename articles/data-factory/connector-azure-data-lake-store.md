@@ -173,7 +173,7 @@ Następujące właściwości są obsługiwane dla Azure Data Lake Store Gen1 w o
 
 | Właściwość   | Opis                                                  | Wymagane |
 | ---------- | ------------------------------------------------------------ | -------- |
-| — typ       | Właściwość `location` typu w elemencie DataSet musi być ustawiona na **AzureDataLakeStoreLocation**. | Tak      |
+| type       | Właściwość `location` typu w elemencie DataSet musi być ustawiona na **AzureDataLakeStoreLocation**. | Tak      |
 | folderPath | Ścieżka do folderu. Jeśli chcesz użyć symbolu wieloznacznego do filtrowania folderów, pomiń to ustawienie i określ je w ustawieniach źródła działania. | Nie       |
 | fileName   | Nazwa pliku pod podanym folderPath. Jeśli chcesz użyć symbolu wieloznacznego do filtrowania plików, pomiń to ustawienie i określ je w ustawieniach źródła działania. | Nie       |
 

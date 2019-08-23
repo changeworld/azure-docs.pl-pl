@@ -77,7 +77,7 @@ Następujące właściwości są obsługiwane w działaniu kopiowania ***\*źró
 
 | Właściwość       | Opis                                                  | Wymagane |
 | -------------- | ------------------------------------------------------------ | -------- |
-| — typ           | Właściwość typu źródła działania kopiowania musi być równa **DelimitedTextSource**. | Yes      |
+| type           | Właściwość typu źródła działania kopiowania musi być równa **DelimitedTextSource**. | Yes      |
 | formatSettings | Grupa właściwości. Zapoznaj się **tekst rozdzielany Odczytaj ustawienia** w poniższej tabeli. | Nie       |
 | storeSettings  | Grupa właściwości o tym, jak można odczytać danych z magazynu danych. Każdy łącznik opartych na plikach ma swoje własne obsługiwane ustawienia odczytu w ramach `storeSettings`. **Szczegółowe informacje w artykule łącznika -> Sekcja właściwości działania kopiowania**. | Nie       |
 
@@ -102,7 +102,7 @@ Obsługiwane **tekst rozdzielany zapis ustawień** w obszarze `formatSettings`:
 
 | Właściwość      | Opis                                                  | Wymagane                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| — typ          | Typ formatsettings — musi być równa **DelimitedTextWriteSetting**. | Tak                                                   |
+| type          | Typ formatsettings — musi być równa **DelimitedTextWriteSetting**. | Tak                                                   |
 | fileExtension | Rozszerzenie pliku używany do nazywania plików wyjściowych, np. `.csv`, `.txt`. Musi być określony, gdy `fileName` nie została określona w danych wyjściowych DelimitedText zestawu danych. | Tak, jeśli nie określono nazwy pliku wyjściowego zestawu danych |
 
 ## <a name="mapping-data-flow-properties"></a>Mapowanie właściwości z przepływu danych

@@ -73,7 +73,7 @@ Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla po
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| — typ |Właściwość type musi być równa: **Sieć Web** |Tak |
+| type |Właściwość type musi być równa: **Sieć Web** |Tak |
 | url |Adres URL źródła w sieci Web |Tak |
 | authenticationType |Anonimowe. |Tak |
 

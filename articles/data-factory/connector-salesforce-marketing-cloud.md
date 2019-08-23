@@ -114,7 +114,7 @@ Aby skopiować dane z usługi Salesforce Marketing Cloud, należy ustawić typ �
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **SalesforceMarketingCloudSource** | Tak |
+| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **SalesforceMarketingCloudSource** | Tak |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**
