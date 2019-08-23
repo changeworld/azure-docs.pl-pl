@@ -592,7 +592,7 @@ Do usługi Azure Data Lake Store definiowania połączonej usługi, należy usta
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | Właściwość type musi być równa: **AzureDataLakeStore** | Yes |
+| type | Właściwość type musi być równa: **AzureDataLakeStore** | Yes |
 | dataLakeStoreUri | Określ informacje o koncie usługi Azure Data Lake Store. W następującym formacie: `https://[accountname].azuredatalakestore.net/webhdfs/v1` lub `adl://[accountname].azuredatalakestore.net/`. | Yes |
 | subscriptionId | Identyfikator subskrypcji platformy Azure, do której należy Data Lake Store. | Wymagane dla ujścia |
 | resourceGroupName | Nazwa grupy zasobów platformy Azure, do której należy Data Lake Store. | Wymagane dla ujścia |
@@ -1400,7 +1400,7 @@ Aby połączyć konto usługi Azure storage z fabryką danych przy użyciu **klu
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ |Właściwość type musi być równa: **AzureStorage** |Yes |
+| type |Właściwość type musi być równa: **AzureStorage** |Yes |
 | connectionString |Określ informacje potrzebne do łączenia z usługą Azure storage dla właściwości connectionString. |Tak |
 
 **Przykład:**
