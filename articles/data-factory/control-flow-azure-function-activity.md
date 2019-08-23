@@ -32,7 +32,7 @@ Zwracany typ funkcji platformy Azure musi być prawidłowym `JObject`. (Należy 
 
 | **Property** | **Opis** | **Wymagane** |
 | --- | --- | --- |
-| — typ   | Właściwość type musi być równa: **AzureFunction** | tak |
+| type   | Właściwość type musi być równa: **AzureFunction** | tak |
 | adres url aplikacji funkcji | Adres URL dla aplikacji funkcji platformy Azure. Format jest `https://<accountname>.azurewebsites.net`. Ten adres URL jest wartością w **adresu URL** sekcji podczas przeglądania aplikacji funkcji w witrynie Azure portal  | tak |
 | klucz funkcji | Klucz dostępu dla funkcji platformy Azure. Kliknij pozycję **Zarządzaj** sekcji dla odpowiedniej funkcji, a następnie skopiuj albo **funkcyjne** lub **klucz hosta**. Dowiedz się więcej tutaj: [Usługa Azure Functions HTTP wyzwalaczy i powiązań](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) | tak |
 |   |   |   |
