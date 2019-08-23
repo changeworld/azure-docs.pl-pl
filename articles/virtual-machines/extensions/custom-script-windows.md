@@ -107,7 +107,7 @@ Te elementy powinny być traktowane jako dane poufne i określone w konfiguracji
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.Compute | ciąg |
-| — typ | CustomScriptExtension | ciąg |
+| type | CustomScriptExtension | ciąg |
 | typeHandlerVersion | 1.9 | int |
 | fileUris (np.) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | array |
 | timestamp (np.) | 123456789 | 32-bitowa liczba całkowita |
